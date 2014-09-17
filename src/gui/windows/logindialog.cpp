@@ -193,7 +193,7 @@ void LoginDialog::postInit()
         mPassField->requestFocus();
 
     mLoginButton->setEnabled(canSubmit());
-    mRegisterButton->setEnabled(Net::getLoginHandler()->isRegistrationEnabled()
+    mRegisterButton->setEnabled(loginHandler->isRegistrationEnabled()
         || !mLoginData->registerUrl.empty());
 }
 
@@ -218,7 +218,7 @@ void LoginDialog::action(const ActionEvent &event)
     }
     else if (eventId == "register")
     {
-        if (Net::getLoginHandler()->isRegistrationEnabled())
+        if (loginHandler->isRegistrationEnabled())
         {
             prepareUpdate();
             client->setState(STATE_REGISTER_PREP);

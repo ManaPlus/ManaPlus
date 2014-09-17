@@ -138,7 +138,7 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
         return;
 
     const Token &token =
-        static_cast<LoginHandler*>(Net::getLoginHandler())->getToken();
+        static_cast<LoginHandler*>(loginHandler)->getToken();
 
     LocalPlayer *const tempPlayer = new LocalPlayer(
         msg.readInt32("account id"), 0);
@@ -310,7 +310,7 @@ void CharServerHandler::switchCharacter() const
 void CharServerHandler::connect()
 {
     const Token &token =
-        static_cast<LoginHandler*>(Net::getLoginHandler())->getToken();
+        static_cast<LoginHandler*>(loginHandler)->getToken();
 
     if (!mNetwork)
         return;
@@ -359,8 +359,7 @@ void CharServerHandler::setCharCreateDialog(CharCreateDialog *const window)
     // TRANSLATORS: playe stat
     attributes.push_back(_("Luck:"));
 
-    const Token &token =
-        static_cast<LoginHandler*>(Net::getLoginHandler())->getToken();
+    const Token &token = static_cast<LoginHandler*>(loginHandler)->getToken();
 
     int minStat = CharDB::getMinStat();
     if (!minStat)

@@ -616,8 +616,8 @@ void Client::gameClear()
     StatusEffect::unload();
     ModDB::unload();
 
-    if (Net::getLoginHandler())
-        Net::getLoginHandler()->clearWorlds();
+    if (loginHandler)
+        loginHandler->clearWorlds();
 
     if (chatHandler)
         chatHandler->clear();
@@ -818,7 +818,7 @@ int Client::gameExec()
         if (mState == STATE_CONNECT_GAME &&
             gameHandler->isConnected())
         {
-            Net::getLoginHandler()->disconnect();
+            loginHandler->disconnect();
         }
         else if (mState == STATE_CONNECT_SERVER &&
                  mOldState == STATE_CHOOSE_SERVER)
@@ -885,13 +885,13 @@ int Client::gameExec()
         }
         else if (mState == STATE_CONNECT_SERVER &&
                  mOldState != STATE_CHOOSE_SERVER &&
-                 Net::getLoginHandler()->isConnected())
+                 loginHandler->isConnected())
         {
             mState = STATE_PRE_LOGIN;
         }
         else if (mState == STATE_WORLD_SELECT && mOldState == STATE_UPDATE)
         {
-            if (Net::getLoginHandler()->getWorlds().size() < 2)
+            if (loginHandler->getWorlds().size() < 2)
                 mState = STATE_PRE_LOGIN;
         }
         else if (mOldState == STATE_START ||
@@ -1107,7 +1107,7 @@ int Client::gameExec()
                         // TRANSLATORS: connection dialog header
                         _("Logging in"), STATE_SWITCH_SERVER);
                     mCurrentDialog->postInit();
-                    Net::getLoginHandler()->loginOrRegister(&loginData);
+                    loginHandler->loginOrRegister(&loginData);
                     BLOCK_END("Client::gameExec STATE_LOGIN_ATTEMPT")
                     break;
 
@@ -1116,7 +1116,7 @@ int Client::gameExec()
                     logger->log1("State: WORLD SELECT");
                     {
                         TranslationManager::loadCurrentLang();
-                        Worlds worlds = Net::getLoginHandler()->getWorlds();
+                        Worlds worlds = loginHandler->getWorlds();
 
                         if (worlds.empty())
                         {
@@ -1125,7 +1125,7 @@ int Client::gameExec()
                         }
                         else if (worlds.size() == 1)
                         {
-                            Net::getLoginHandler()->chooseServer(
+                            loginHandler->chooseServer(
                                 0, mCurrentServer.persistentIp);
                             mState = STATE_UPDATE;
                         }
@@ -1410,7 +1410,7 @@ int Client::gameExec()
                         // TRANSLATORS: connection dialog header
                         _("Requesting registration details"), STATE_LOGIN);
                     mCurrentDialog->postInit();
-                    Net::getLoginHandler()->getRegistrationDetails();
+                    loginHandler->getRegistrationDetails();
                     BLOCK_END("Client::gameExec STATE_REGISTER_PREP")
                     break;
 
@@ -1423,7 +1423,7 @@ int Client::gameExec()
                 case STATE_REGISTER_ATTEMPT:
                     BLOCK_START("Client::gameExec STATE_REGISTER_ATTEMPT")
                     logger->log("Username is %s", loginData.username.c_str());
-                    Net::getLoginHandler()->registerAccount(&loginData);
+                    loginHandler->registerAccount(&loginData);
                     BLOCK_END("Client::gameExec STATE_REGISTER_ATTEMPT")
                     break;
 
@@ -1439,7 +1439,7 @@ int Client::gameExec()
                     BLOCK_START("Client::gameExec "
                         "STATE_CHANGEPASSWORD_ATTEMPT")
                     logger->log1("State: CHANGE PASSWORD ATTEMPT");
-                    Net::getLoginHandler()->changePassword(loginData.username,
+                    loginHandler->changePassword(loginData.username,
                         loginData.password, loginData.newPassword);
                     BLOCK_END("Client::gameExec STATE_CHANGEPASSWORD_ATTEMPT")
                     break;
@@ -1470,7 +1470,7 @@ int Client::gameExec()
 
                 case STATE_CHANGEEMAIL_ATTEMPT:
                     logger->log1("State: CHANGE EMAIL ATTEMPT");
-                    Net::getLoginHandler()->changeEmail(loginData.email);
+                    loginHandler->changeEmail(loginData.email);
                     break;
 
                 case STATE_CHANGEEMAIL_SUCCESS:
@@ -1495,13 +1495,13 @@ int Client::gameExec()
 
                 case STATE_UNREGISTER_ATTEMPT:
                     logger->log1("State: UNREGISTER ATTEMPT");
-                    Net::getLoginHandler()->unregisterAccount(
+                    loginHandler->unregisterAccount(
                             loginData.username, loginData.password);
                     break;
 
                 case STATE_UNREGISTER_SUCCESS:
                     logger->log1("State: UNREGISTER SUCCESS");
-                    Net::getLoginHandler()->disconnect();
+                    loginHandler->disconnect();
 
                     mCurrentDialog = DialogsManager::openErrorDialog(
                         // TRANSLATORS: unregister message header
@@ -1518,7 +1518,7 @@ int Client::gameExec()
                     BLOCK_START("Client::gameExec STATE_SWITCH_SERVER")
                     logger->log1("State: SWITCH SERVER");
 
-                    Net::getLoginHandler()->disconnect();
+                    loginHandler->disconnect();
                     gameHandler->disconnect();
                     gameHandler->clear();
                     settings.serverName.clear();
@@ -1535,10 +1535,10 @@ int Client::gameExec()
                     BLOCK_START("Client::gameExec STATE_SWITCH_LOGIN")
                     logger->log1("State: SWITCH LOGIN");
 
-                    Net::getLoginHandler()->logout();
-                    Net::getLoginHandler()->disconnect();
+                    loginHandler->logout();
+                    loginHandler->disconnect();
                     gameHandler->disconnect();
-                    Net::getLoginHandler()->connect();
+                    loginHandler->connect();
 
                     mState = STATE_LOGIN;
                     BLOCK_END("Client::gameExec STATE_SWITCH_LOGIN")

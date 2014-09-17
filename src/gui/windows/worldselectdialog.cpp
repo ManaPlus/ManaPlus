@@ -105,7 +105,7 @@ void WorldSelectDialog::action(const ActionEvent &event)
     {
         mChangeLoginButton->setEnabled(false);
         mChooseWorld->setEnabled(false);
-        Net::getLoginHandler()->chooseServer(mWorldList->getSelected(),
+        loginHandler->chooseServer(mWorldList->getSelected(),
             settings.persistentIp);
 
         // Check in case netcode moves us forward

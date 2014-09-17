@@ -130,10 +130,8 @@ void ChangeEmailDialog::action(const ActionEvent &event)
         std::stringstream errorMsg;
         int error = 0;
 
-        const unsigned int min = Net::getLoginHandler()
-            ->getMinPasswordLength();
-        const unsigned int max = Net::getLoginHandler()
-            ->getMaxPasswordLength();
+        const unsigned int min = loginHandler->getMinPasswordLength();
+        const unsigned int max = loginHandler->getMaxPasswordLength();
 
         if (newFirstEmail.length() < min)
         {

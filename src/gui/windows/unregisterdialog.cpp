@@ -121,10 +121,8 @@ void UnRegisterDialog::action(const ActionEvent &event)
         std::stringstream errorMsg;
         bool error = false;
 
-        const unsigned int min = Net::getLoginHandler()
-            ->getMinPasswordLength();
-        const unsigned int max = Net::getLoginHandler()
-            ->getMaxPasswordLength();
+        const unsigned int min = loginHandler->getMinPasswordLength();
+        const unsigned int max = loginHandler->getMaxPasswordLength();
 
         if (password.length() < min)
         {

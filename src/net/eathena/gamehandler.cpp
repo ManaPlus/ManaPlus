@@ -107,8 +107,7 @@ void GameHandler::connect()
 
     mNetwork->connect(mapServer);
 
-    const Token &token =
-        static_cast<LoginHandler*>(Net::getLoginHandler())->getToken();
+    const Token &token = static_cast<LoginHandler*>(loginHandler)->getToken();
 
 
     if (client->getState() == STATE_CONNECT_GAME)

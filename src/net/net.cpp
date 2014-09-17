@@ -51,6 +51,7 @@ namespace Net
     class GeneralHandler;
     class GuildHandler;
     class InventoryHandler;
+    class LoginHandler;
 }
 
 Net::AdminHandler *adminHandler = nullptr;
@@ -75,11 +76,6 @@ Net::AuctionHandler *auctionHandler = nullptr;
 Net::CashShopHandler *cashShopHandler = nullptr;
 Net::FamilyHandler *familyHandler = nullptr;
 Net::BankHandler *bankHandler = nullptr;
-
-Net::LoginHandler *Net::getLoginHandler()
-{
-    return loginHandler;
-}
 
 Net::NpcHandler *Net::getNpcHandler()
 {
@@ -164,10 +160,10 @@ void connectToServer(const ServerInfo &server)
         networkType = server.type;
     }
 
-    if (getLoginHandler())
+    if (loginHandler)
     {
-        getLoginHandler()->setServer(server);
-        getLoginHandler()->connect();
+        loginHandler->setServer(server);
+        loginHandler->connect();
     }
     BLOCK_END("Net::connectToServer")
 }

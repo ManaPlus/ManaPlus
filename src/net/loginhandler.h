@@ -109,4 +109,6 @@ class LoginHandler notfinal
 
 }  // namespace Net
 
+extern Net::LoginHandler *loginHandler;
+
 #endif  // NET_LOGINHANDLER_H

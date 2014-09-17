@@ -73,7 +73,7 @@ RegisterDialog::RegisterDialog(LoginData *const data) :
 {
     setCloseButton(true);
 
-    const int optionalActions = Net::getLoginHandler()->
+    const int optionalActions = loginHandler->
         supportedOptionalActions();
 
     // TRANSLATORS: register dialog. label.
@@ -178,14 +178,10 @@ void RegisterDialog::action(const ActionEvent &event)
         std::string errorMsg;
         int error = 0;
 
-        const unsigned int minUser = Net::getLoginHandler()
-            ->getMinUserNameLength();
-        const unsigned int maxUser = Net::getLoginHandler()
-            ->getMaxUserNameLength();
-        const unsigned int minPass = Net::getLoginHandler()
-            ->getMinPasswordLength();
-        const unsigned int maxPass = Net::getLoginHandler()
-            ->getMaxPasswordLength();
+        const unsigned int minUser = loginHandler->getMinUserNameLength();
+        const unsigned int maxUser = loginHandler->getMaxUserNameLength();
+        const unsigned int minPass = loginHandler->getMinPasswordLength();
+        const unsigned int maxPass = loginHandler->getMaxPasswordLength();
 
         if (user.length() < minUser)
         {

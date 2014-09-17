@@ -110,10 +110,8 @@ void ChangePasswordDialog::action(const ActionEvent &event)
         std::stringstream errorMsg;
         int error = 0;
 
-        const unsigned int min = Net::getLoginHandler()
-            ->getMinPasswordLength();
-        const unsigned int max = Net::getLoginHandler()
-            ->getMaxPasswordLength();
+        const unsigned int min = loginHandler->getMinPasswordLength();
+        const unsigned int max = loginHandler->getMaxPasswordLength();
 
         // Check old Password
         if (oldPassword.empty())

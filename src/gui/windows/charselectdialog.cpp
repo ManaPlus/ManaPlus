@@ -93,8 +93,7 @@ CharSelectDialog::CharSelectDialog(LoginData *const data) :
     setCloseButton(true);
     setFocusable(true);
 
-    const int optionalActions = Net::getLoginHandler()
-        ->supportedOptionalActions();
+    const int optionalActions = loginHandler->supportedOptionalActions();
 
     ContainerPlacer placer;
     placer = getPlacer(0, 0);
