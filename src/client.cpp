@@ -765,8 +765,8 @@ int Client::gameExec()
             continue;
 
         BLOCK_START("Client::gameExec 3")
-        if (Net::getGeneralHandler())
-            Net::getGeneralHandler()->flushNetwork();
+        if (generalHandler)
+            generalHandler->flushNetwork();
         BLOCK_END("Client::gameExec 3")
 
         BLOCK_START("Client::gameExec 4")
@@ -1369,8 +1369,8 @@ int Client::gameExec()
                     mCurrentDialog = nullptr;
 
                     logger->log1("State: GAME");
-                    if (Net::getGeneralHandler())
-                        Net::getGeneralHandler()->reloadPartially();
+                    if (generalHandler)
+                        generalHandler->reloadPartially();
                     mGame = new Game;
                     BLOCK_END("Client::gameExec STATE_GAME")
                     break;
@@ -1573,8 +1573,8 @@ int Client::gameExec()
                 case STATE_FORCE_QUIT:
                     BLOCK_START("Client::gameExec STATE_FORCE_QUIT")
                     logger->log1("State: FORCE QUIT");
-                    if (Net::getGeneralHandler())
-                        Net::getGeneralHandler()->unload();
+                    if (generalHandler)
+                        generalHandler->unload();
                     mState = STATE_EXIT;
                     BLOCK_END("Client::gameExec STATE_FORCE_QUIT")
                   break;

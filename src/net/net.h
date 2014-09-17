@@ -36,7 +36,6 @@
 namespace Net
 {
 
-class GeneralHandler;
 class GuildHandler;
 class InventoryHandler;
 class LoginHandler;
@@ -49,7 +48,6 @@ class SkillHandler;
 class TradeHandler;
 class ServerFeatures;
 
-GeneralHandler *getGeneralHandler() A_WARN_UNUSED;
 GuildHandler *getGuildHandler() A_WARN_UNUSED;
 InventoryHandler *getInventoryHandler() A_WARN_UNUSED;
 LoginHandler *getLoginHandler() A_WARN_UNUSED;

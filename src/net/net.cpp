@@ -48,6 +48,7 @@ namespace Net
     class ChatHandler;
     class FamilyHandler;
     class GameHandler;
+    class GeneralHandler;
 }
 
 Net::AdminHandler *adminHandler = nullptr;
@@ -72,11 +73,6 @@ Net::AuctionHandler *auctionHandler = nullptr;
 Net::CashShopHandler *cashShopHandler = nullptr;
 Net::FamilyHandler *familyHandler = nullptr;
 Net::BankHandler *bankHandler = nullptr;
-
-Net::GeneralHandler *Net::getGeneralHandler()
-{
-    return generalHandler;
-}
 
 Net::GuildHandler *Net::getGuildHandler()
 {
@@ -141,14 +137,14 @@ ServerInfo::Type networkType = ServerInfo::UNKNOWN;
 void connectToServer(const ServerInfo &server)
 {
     BLOCK_START("Net::connectToServer")
-    if (networkType == server.type && getGeneralHandler())
+    if (networkType == server.type && generalHandler)
     {
-        getGeneralHandler()->reload();
+        generalHandler->reload();
     }
     else
     {
-        if (networkType != ServerInfo::UNKNOWN && getGeneralHandler())
-            getGeneralHandler()->unload();
+        if (networkType != ServerInfo::UNKNOWN && generalHandler)
+            generalHandler->unload();
 
         switch (server.type)
         {
@@ -171,7 +167,7 @@ void connectToServer(const ServerInfo &server)
                 break;
         }
 
-        getGeneralHandler()->load();
+        generalHandler->load();
 
         networkType = server.type;
     }
@@ -186,7 +182,7 @@ void connectToServer(const ServerInfo &server)
 
 void unload()
 {
-    GeneralHandler *const handler = getGeneralHandler();
+    GeneralHandler *const handler = generalHandler;
     if (handler)
         handler->unload();
 }

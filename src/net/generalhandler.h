@@ -53,4 +53,6 @@ class GeneralHandler notfinal
 
 }  // namespace Net
 
+extern Net::GeneralHandler *generalHandler;
+
 #endif  // NET_GENERALHANDLER_H

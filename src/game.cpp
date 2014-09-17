@@ -289,7 +289,7 @@ static void createGuiWindows()
     if (localPlayer)
         localPlayer->updateStatus();
 
-    Net::getGeneralHandler()->gameStarted();
+    generalHandler->gameStarted();
 }
 
 /**
@@ -297,7 +297,7 @@ static void createGuiWindows()
  */
 static void destroyGuiWindows()
 {
-    Net::getGeneralHandler()->gameEnded();
+    generalHandler->gameEnded();
 
     if (whoIsOnline)
         whoIsOnline->setAllowUpdate(false);
