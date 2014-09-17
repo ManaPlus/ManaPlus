@@ -40,4 +40,6 @@ class QuestHandler notfinal
 
 }  // namespace Net
 
+extern Net::QuestHandler *questHandler;
+
 #endif  // NET_QUESTHANDLER_H

@@ -44,6 +44,7 @@ QuestHandler::QuestHandler() :
         0
     };
     handledMessages = _messages;
+    questHandler = this;
 }
 
 void QuestHandler::handleMessage(Net::MessageIn &msg)
