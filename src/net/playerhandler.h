@@ -103,4 +103,6 @@ class PlayerHandler notfinal
 
 }  // namespace Net
 
+extern Net::PlayerHandler *playerHandler;
+
 #endif  // NET_PLAYERHANDLER_H

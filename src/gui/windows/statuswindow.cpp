@@ -129,7 +129,7 @@ StatusWindow::StatusWindow() :
         getThemeColor(Theme::XP_BAR_OUTLINE));
 
     const bool magicBar = gameHandler->canUseMagicBar();
-    const int job = Net::getPlayerHandler()->getJobLocation()
+    const int job = playerHandler->getJobLocation()
               && serverConfig.getValueBool("showJob", true);
 
     if (magicBar)
@@ -137,7 +137,7 @@ StatusWindow::StatusWindow() :
         max = PlayerInfo::getAttribute(Attributes::MAX_MP);
         // TRANSLATORS: status window label
         mMpLabel = new Label(this, _("MP:"));
-        const bool useMagic = Net::getPlayerHandler()->canUseMagic();
+        const bool useMagic = playerHandler->canUseMagic();
         mMpBar = new ProgressBar(this, max ? static_cast<float>(
             PlayerInfo::getAttribute(Attributes::MAX_MP))
             / static_cast<float>(max) : static_cast<float>(0),
@@ -217,7 +217,7 @@ StatusWindow::StatusWindow() :
     place(0, 6, mCharacterPointsLabel, 5);
     place(0, 5, mCopyButton);
 
-    if (Net::getPlayerHandler()->canCorrectAttributes())
+    if (playerHandler->canCorrectAttributes())
     {
         mCorrectionPointsLabel = new Label(this, "C");
         place(0, 7, mCorrectionPointsLabel, 5);
@@ -265,7 +265,7 @@ void StatusWindow::statChanged(const int id,
     if (blocked)
         return;
 
-    if (id == Net::getPlayerHandler()->getJobLocation())
+    if (id == playerHandler->getJobLocation())
     {
         if (mJobLvlLabel)
         {
@@ -462,7 +462,7 @@ void StatusWindow::updateMPBar(ProgressBar *const bar,
     if (maxMp > 0)
         prog = static_cast<float>(mp) / static_cast<float>(maxMp);
 
-    if (Net::getPlayerHandler()->canUseMagic())
+    if (playerHandler->canUseMagic())
     {
         bar->setColor(getThemeColor(Theme::MP_BAR),
             getThemeColor(Theme::MP_BAR_OUTLINE));
@@ -523,7 +523,7 @@ void StatusWindow::updateJobBar(ProgressBar *const bar, const bool percent)
         return;
 
     const std::pair<int, int> exp =  PlayerInfo::getStatExperience(
-        Net::getPlayerHandler()->getJobLocation());
+        playerHandler->getJobLocation());
     updateProgressBar(bar, exp.first, exp.second, percent);
 }
 
@@ -754,7 +754,7 @@ ChangeDisplay::ChangeDisplay(const Widget2 *const widget,
     place(6, 0, mInc);
     place(7, 0, mPoints);
 
-    if (Net::getPlayerHandler()->canCorrectAttributes())
+    if (playerHandler->canCorrectAttributes())
     {
         // TRANSLATORS: status window label (minus sign)
         mDec = new Button(this, _("-"), "dec", this);
@@ -793,7 +793,7 @@ void ChangeDisplay::setPointsNeeded(const int needed)
 
 void ChangeDisplay::action(const ActionEvent &event)
 {
-    if (Net::getPlayerHandler()->canCorrectAttributes() &&
+    if (playerHandler->canCorrectAttributes() &&
         event.getSource() == mDec)
     {
         const int newcorrpoints = PlayerInfo::getAttribute(
@@ -807,7 +807,7 @@ void ChangeDisplay::action(const ActionEvent &event)
         const int newbase = PlayerInfo::getStatBase(mId) - 1;
         PlayerInfo::setStatBase(mId, newbase);
 
-        Net::getPlayerHandler()->decreaseAttribute(mId);
+        playerHandler->decreaseAttribute(mId);
     }
     else if (event.getSource() == mInc)
     {
@@ -828,7 +828,7 @@ void ChangeDisplay::action(const ActionEvent &event)
 
         for (unsigned f = 0; f < mInc->getClickCount(); f ++)
         {
-            Net::getPlayerHandler()->increaseAttribute(mId);
+            playerHandler->increaseAttribute(mId);
             if (cnt != 1)
                 SDL_Delay(100);
         }

@@ -56,6 +56,7 @@ namespace Net
     class NpcHandler;
     class PartyHandler;
     class PetHandler;
+    class PlayerHandler;
 }
 
 Net::AdminHandler *adminHandler = nullptr;
@@ -80,11 +81,6 @@ Net::AuctionHandler *auctionHandler = nullptr;
 Net::CashShopHandler *cashShopHandler = nullptr;
 Net::FamilyHandler *familyHandler = nullptr;
 Net::BankHandler *bankHandler = nullptr;
-
-Net::PlayerHandler *Net::getPlayerHandler()
-{
-    return playerHandler;
-}
 
 Net::SkillHandler *Net::getSkillHandler()
 {

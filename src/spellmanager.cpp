@@ -142,7 +142,7 @@ void SpellManager::invoke(const int spellId) const
         return;
 
     if (spell->getCommandType() == TEXT_COMMAND_TEXT
-        || (Net::getPlayerHandler()->canUseMagic()
+        || (playerHandler->canUseMagic()
         && PlayerInfo::getSkillLevel(SKILL_MAGIC)
         >= static_cast<signed>(spell->getBaseLvl())
         && PlayerInfo::getSkillLevel(static_cast<int>(

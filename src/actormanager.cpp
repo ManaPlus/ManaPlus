@@ -1180,7 +1180,7 @@ void ActorManager::healTarget() const
 void ActorManager::heal(const Being *const target) const
 {
     if (!localPlayer || !chatWindow || !localPlayer->isAlive()
-        || !Net::getPlayerHandler()->canUseMagic())
+        || !playerHandler->canUseMagic())
     {
         return;
     }
@@ -1259,7 +1259,7 @@ void ActorManager::heal(const Being *const target) const
 void ActorManager::itenplz() const
 {
     if (!localPlayer || !chatWindow || !localPlayer->isAlive()
-        || !Net::getPlayerHandler()->canUseMagic())
+        || !playerHandler->canUseMagic())
     {
         return;
     }

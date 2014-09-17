@@ -164,8 +164,8 @@ Being::Being(const int id,
     mIsGM(false),
     mType(type),
     mSpeechBubble(nullptr),
-    mWalkSpeed(Net::getPlayerHandler()->getDefaultWalkSpeed()),
-    mSpeed(Net::getPlayerHandler()->getDefaultWalkSpeed().x),
+    mWalkSpeed(playerHandler->getDefaultWalkSpeed()),
+    mSpeed(playerHandler->getDefaultWalkSpeed().x),
     mIp(),
     mSpriteRemap(new int[20]),
     mSpriteHide(new int[20]),
@@ -325,14 +325,9 @@ void Being::setSubtype(const uint16_t subtype, const uint8_t look)
             mYDiff = mInfo->getSortOffsetY();
             const int speed = mInfo->getWalkSpeed();
             if (!speed)
-            {
-                setWalkSpeed(Net::getPlayerHandler()
-                    ->getDefaultWalkSpeed());
-            }
+                setWalkSpeed(playerHandler->getDefaultWalkSpeed());
             else
-            {
                 setWalkSpeed(Vector(speed, speed, 0));
-            }
         }
     }
     else if (mType == ActorType::Player)

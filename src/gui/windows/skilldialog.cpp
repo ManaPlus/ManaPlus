@@ -111,10 +111,7 @@ void SkillDialog::action(const ActionEvent &event)
         if (tab)
         {
             if (const SkillInfo *const info = tab->getSelectedInfo())
-            {
-                Net::getPlayerHandler()->increaseSkill(
-                    static_cast<uint16_t>(info->id));
-            }
+                playerHandler->increaseSkill(static_cast<uint16_t>(info->id));
         }
     }
     else if (eventId == "sel")

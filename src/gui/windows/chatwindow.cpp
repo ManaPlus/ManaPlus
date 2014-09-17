@@ -921,7 +921,7 @@ void ChatWindow::statChanged(const int id,
     if (!mShowBattleEvents || !config.getBoolValue("showJobExp"))
         return;
 
-    if (id != Net::getPlayerHandler()->getJobLocation())
+    if (id != playerHandler->getJobLocation())
         return;
 
     const std::pair<int, int> exp = PlayerInfo::getStatExperience(id);

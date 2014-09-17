@@ -601,7 +601,7 @@ void WhoIsOnline::download()
     else
     {
         if (PacketLimiter::limitPackets(PACKET_ONLINELIST))
-            Net::getPlayerHandler()->requestOnlineList();
+            playerHandler->requestOnlineList();
     }
 }
 
@@ -701,7 +701,7 @@ void WhoIsOnline::action(const ActionEvent &event)
             if (PacketLimiter::limitPackets(PACKET_ONLINELIST))
             {
                 mUpdateTimer = cur_time;
-                Net::getPlayerHandler()->requestOnlineList();
+                playerHandler->requestOnlineList();
             }
         }
     }

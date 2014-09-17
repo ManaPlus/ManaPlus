@@ -45,8 +45,8 @@ struct PlayerDeathListener final : public ActionListener
 {
     void action(const ActionEvent &event A_UNUSED)
     {
-        if (Net::getPlayerHandler())
-            Net::getPlayerHandler()->respawn();
+        if (playerHandler)
+            playerHandler->respawn();
         deathNotice = nullptr;
 
         DialogsManager::closeDialogs();

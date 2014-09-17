@@ -326,7 +326,7 @@ void pickUpItem(const FloorItem *const item, const bool sfx)
 {
     if (sfx)
         ItemSoundManager::playSfx(item, ItemSoundEvent::PICKUP);
-    Net::getPlayerHandler()->pickUp(item);
+    playerHandler->pickUp(item);
 }
 
 // --- Misc -------------------------------------------------------------------
@@ -362,7 +362,7 @@ void setTrading(const bool trading)
 
 void updateAttrs()
 {
-    const Net::PlayerHandler *const handler = Net::getPlayerHandler();
+    const Net::PlayerHandler *const handler = playerHandler;
     if (!handler)
         return;
     const int attr = handler->getAttackLocation();

@@ -561,7 +561,7 @@ void LocalPlayer::setDestination(const int x, const int y)
     {
         if (settings.moveType != 1)
         {
-            Net::getPlayerHandler()->setDestination(x, y, mDirection);
+            playerHandler->setDestination(x, y, mDirection);
             Being::setDestination(x, y);
         }
         else
@@ -576,16 +576,16 @@ void LocalPlayer::setDestination(const int x, const int y)
             if (mDirection & BeingDirection::RIGHT)
                 newDir |= BeingDirection::LEFT;
 
-            Net::getPlayerHandler()->setDestination(x, y, newDir);
+            playerHandler->setDestination(x, y, newDir);
 
 //            if (PacketLimiter::limitPackets(PACKET_DIRECTION))
             {
                 setDirection(newDir);
-                Net::getPlayerHandler()->setDirection(newDir);
+                playerHandler->setDirection(newDir);
             }
 
             Being::setDestination(x, y);
-            Net::getPlayerHandler()->setDestination(x, y, mDirection);
+            playerHandler->setDestination(x, y, mDirection);
         }
     }
 }
@@ -647,7 +647,7 @@ void LocalPlayer::startWalking(const unsigned char dir)
 
 //            if (PacketLimiter::limitPackets(PACKET_DIRECTION))
         {
-            Net::getPlayerHandler()->setDirection(dir);
+            playerHandler->setDirection(dir);
             setDirection(dir);
         }
     }
@@ -664,7 +664,7 @@ void LocalPlayer::stopWalking(const bool sendToServer)
                        static_cast<int>(getPosition().y));
         if (sendToServer)
         {
-            Net::getPlayerHandler()->setDestination(
+            playerHandler->setDestination(
                     static_cast<int>(getPosition().x),
                     static_cast<int>(getPosition().y), -1);
         }
@@ -701,7 +701,7 @@ bool LocalPlayer::toggleSit() const
             return true;
     }
 
-    Net::getPlayerHandler()->changeAction(newAction);
+    playerHandler->changeAction(newAction);
     return true;
 }
 
@@ -710,7 +710,7 @@ bool LocalPlayer::updateSit() const
     if (!PacketLimiter::limitPackets(PACKET_SIT))
         return false;
 
-    Net::getPlayerHandler()->changeAction(mAction);
+    playerHandler->changeAction(mAction);
     return true;
 }
 
@@ -719,7 +719,7 @@ bool LocalPlayer::emote(const uint8_t emotion)
     if (!PacketLimiter::limitPackets(PACKET_EMOTE))
         return false;
 
-    Net::getPlayerHandler()->emote(emotion);
+    playerHandler->emote(emotion);
     return true;
 }
 
@@ -769,7 +769,7 @@ void LocalPlayer::attack(Being *const target, const bool keep,
         if (!dontChangeEquipment)
             changeEquipmentBeforeAttack(target);
 
-        Net::getPlayerHandler()->attack(target->getId(), mServerAttack);
+        playerHandler->attack(target->getId(), mServerAttack);
     }
 
     if (!keep)
@@ -782,7 +782,7 @@ void LocalPlayer::stopAttack(const bool keepAttack)
         return;
 
     if (mServerAttack && mAction == BeingAction::ATTACK)
-        Net::getPlayerHandler()->stopAttack();
+        playerHandler->stopAttack();
 
     untarget();
     if (!keepAttack || !mAttackNext)
@@ -1035,7 +1035,7 @@ void LocalPlayer::statChanged(const int id,
                               const int oldVal1,
                               const int oldVal2)
 {
-    if (!mShowJobExp || id != Net::getPlayerHandler()->getJobLocation())
+    if (!mShowJobExp || id != playerHandler->getJobLocation())
         return;
 
     const std::pair<int, int> exp = PlayerInfo::getStatExperience(id);
@@ -1206,7 +1206,7 @@ void LocalPlayer::moveToHome()
             const Vector pos = mHomes[(*iter).first];
             if (mX == pos.x && mY == pos.y)
             {
-                Net::getPlayerHandler()->setDestination(
+                playerHandler->setDestination(
                         static_cast<int>(pos.x),
                         static_cast<int>(pos.y),
                         static_cast<int>(mDirection));
@@ -1353,25 +1353,25 @@ void LocalPlayer::crazyMove1()
     {
         setWalkingDir(BeingDirection::UP);
         setDirection(BeingDirection::LEFT);
-        Net::getPlayerHandler()->setDirection(BeingDirection::LEFT);
+        playerHandler->setDirection(BeingDirection::LEFT);
     }
     else if (mDirection == BeingDirection::LEFT)
     {
         setWalkingDir(BeingDirection::LEFT);
         setDirection(BeingDirection::DOWN);
-        Net::getPlayerHandler()->setDirection(BeingDirection::DOWN);
+        playerHandler->setDirection(BeingDirection::DOWN);
     }
     else if (mDirection == BeingDirection::DOWN)
     {
         setWalkingDir(BeingDirection::DOWN);
         setDirection(BeingDirection::RIGHT);
-        Net::getPlayerHandler()->setDirection(BeingDirection::RIGHT);
+        playerHandler->setDirection(BeingDirection::RIGHT);
     }
     else if (mDirection == BeingDirection::RIGHT)
     {
         setWalkingDir(BeingDirection::RIGHT);
         setDirection(BeingDirection::UP);
-        Net::getPlayerHandler()->setDirection(BeingDirection::UP);
+        playerHandler->setDirection(BeingDirection::UP);
     }
 }
 
@@ -1387,28 +1387,28 @@ void LocalPlayer::crazyMove2()
     {
         setWalkingDir(BeingDirection::UP | BeingDirection::LEFT);
         setDirection(BeingDirection::RIGHT);
-        Net::getPlayerHandler()->setDirection(
+        playerHandler->setDirection(
             BeingDirection::DOWN | BeingDirection::RIGHT);
     }
     else if (mDirection == BeingDirection::RIGHT)
     {
         setWalkingDir(BeingDirection::UP | BeingDirection::RIGHT);
         setDirection(BeingDirection::DOWN);
-        Net::getPlayerHandler()->setDirection(
+        playerHandler->setDirection(
             BeingDirection::DOWN | BeingDirection::LEFT);
     }
     else if (mDirection == BeingDirection::DOWN)
     {
         setWalkingDir(BeingDirection::DOWN | BeingDirection::RIGHT);
         setDirection(BeingDirection::LEFT);
-        Net::getPlayerHandler()->setDirection(
+        playerHandler->setDirection(
             BeingDirection::UP | BeingDirection::LEFT);
     }
     else if (mDirection == BeingDirection::LEFT)
     {
         setWalkingDir(BeingDirection::DOWN | BeingDirection::LEFT);
         setDirection(BeingDirection::UP);
-        Net::getPlayerHandler()->setDirection(
+        playerHandler->setDirection(
             BeingDirection::UP | BeingDirection::RIGHT);
     }
 }
@@ -1444,7 +1444,7 @@ void LocalPlayer::crazyMove3()
 //        return;
 
     setDirection(BeingDirection::DOWN);
-    Net::getPlayerHandler()->setDirection(BeingDirection::DOWN);
+    playerHandler->setDirection(BeingDirection::DOWN);
 }
 
 void LocalPlayer::crazyMove4()
@@ -1670,7 +1670,7 @@ void LocalPlayer::crazyMove9()
             mCrazyMoveState = 2;
             if (!allowAction())
                 return;
-            Net::getPlayerHandler()->changeAction(BeingAction::SIT);
+            playerHandler->changeAction(BeingAction::SIT);
             break;
         case 2:
             mCrazyMoveState = 3;
@@ -1786,7 +1786,7 @@ void LocalPlayer::crazyMoveA()
 //                    if (PacketLimiter::limitPackets(PACKET_DIRECTION))
                     {
                         setDirection(BeingDirection::DOWN);
-                        Net::getPlayerHandler()->setDirection(
+                        playerHandler->setDirection(
                             BeingDirection::DOWN);
                     }
                     break;
@@ -1794,7 +1794,7 @@ void LocalPlayer::crazyMoveA()
 //                    if (PacketLimiter::limitPackets(PACKET_DIRECTION))
                     {
                         setDirection(BeingDirection::UP);
-                        Net::getPlayerHandler()->setDirection(
+                        playerHandler->setDirection(
                             BeingDirection::UP);
                     }
                     break;
@@ -1802,7 +1802,7 @@ void LocalPlayer::crazyMoveA()
 //                    if (PacketLimiter::limitPackets(PACKET_DIRECTION))
                     {
                         setDirection(BeingDirection::LEFT);
-                        Net::getPlayerHandler()->setDirection(
+                        playerHandler->setDirection(
                             BeingDirection::LEFT);
                     }
                     break;
@@ -1810,7 +1810,7 @@ void LocalPlayer::crazyMoveA()
 //                    if (PacketLimiter::limitPackets(PACKET_DIRECTION))
                     {
                         setDirection(BeingDirection::RIGHT);
-                        Net::getPlayerHandler()->setDirection(
+                        playerHandler->setDirection(
                             BeingDirection::RIGHT);
                     }
                     break;
@@ -1836,7 +1836,7 @@ void LocalPlayer::crazyMoveA()
                                 break;
                         }
                         setDirection(dir);
-                        Net::getPlayerHandler()->setDirection(dir);
+                        playerHandler->setDirection(dir);
                     }
                     break;
                 case 'R':
@@ -1861,7 +1861,7 @@ void LocalPlayer::crazyMoveA()
                                 break;
                         }
                         setDirection(dir);
-                        Net::getPlayerHandler()->setDirection(dir);
+                        playerHandler->setDirection(dir);
                     }
                     break;
                 case 'b':
@@ -1886,7 +1886,7 @@ void LocalPlayer::crazyMoveA()
                                 break;
                         }
                         setDirection(dir);
-                        Net::getPlayerHandler()->setDirection(dir);
+                        playerHandler->setDirection(dir);
                     }
                     break;
                 case '0':
@@ -2191,7 +2191,7 @@ void LocalPlayer::specialMove(const unsigned char direction)
 void LocalPlayer::magicAttack() const
 {
     if (!chatWindow || !isAlive()
-        || !Net::getPlayerHandler()->canUseMagic())
+        || !playerHandler->canUseMagic())
     {
         return;
     }
@@ -2690,7 +2690,7 @@ void LocalPlayer::targetMoved() const
             if (!PacketLimiter::limitPackets(PACKET_ATTACK))
                 return;
             logger->log("LocalPlayer::targetMoved");
-            Net::getPlayerHandler()->attack(mTarget->getId(), mServerAttack);
+            playerHandler->attack(mTarget->getId(), mServerAttack);
         }
     }
 */
@@ -2851,7 +2851,7 @@ void LocalPlayer::imitateAction(const Being *const being,
     if (!mPlayerImitated.empty() && being->getName() == mPlayerImitated)
     {
         setAction(action);
-        Net::getPlayerHandler()->changeAction(action);
+        playerHandler->changeAction(action);
     }
 }
 
@@ -2879,12 +2879,12 @@ void LocalPlayer::imitateDirection(const Being *const being,
                 dir2 |= BeingDirection::UP;
 
             setDirection(dir2);
-            Net::getPlayerHandler()->setDirection(dir2);
+            playerHandler->setDirection(dir2);
         }
         else
         {
             setDirection(dir);
-            Net::getPlayerHandler()->setDirection(dir);
+            playerHandler->setDirection(dir);
         }
     }
 }
@@ -3238,7 +3238,7 @@ void LocalPlayer::updateStatus() const
         if (mInactive)
             status |= BeingFlag::INACTIVE;
 
-        Net::getPlayerHandler()->updateStatus(status);
+        playerHandler->updateStatus(status);
     }
 }
 

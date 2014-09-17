@@ -71,13 +71,13 @@ MiniStatusWindow::MiniStatusWindow() :
         "hpprogressbar.xml", "hpprogressbar_fill.xml",
         "hp bar", _("health bar"))),
     mMpBar(gameHandler->canUseMagicBar()
-        ? createBar(0, 100, 0, Net::getPlayerHandler()->canUseMagic()
+        ? createBar(0, 100, 0, playerHandler->canUseMagic()
         ? Theme::MP_BAR : Theme::NO_MP_BAR,
-        Net::getPlayerHandler()->canUseMagic()
+        playerHandler->canUseMagic()
         ? Theme::PROG_MP : Theme::PROG_NO_MP,
-        Net::getPlayerHandler()->canUseMagic()
+        playerHandler->canUseMagic()
         ? "mpprogressbar.xml" : "nompprogressbar.xml",
-        Net::getPlayerHandler()->canUseMagic()
+        playerHandler->canUseMagic()
         ? "mpprogressbar_fill.xml" : "nompprogressbar_fill.xml",
         // TRANSLATORS: status bar name
         "mp bar", _("mana bar")) : nullptr),
@@ -122,7 +122,7 @@ MiniStatusWindow::MiniStatusWindow() :
     if (gameHandler->canUseMagicBar() && statusWindow)
         statusWindow->updateMPBar(mMpBar);
 
-    const int job = Net::getPlayerHandler()->getJobLocation()
+    const int job = playerHandler->getJobLocation()
         && serverConfig.getValueBool("showJob", true);
 
     StatusWindow::updateXPBar(mXpBar);
@@ -383,12 +383,12 @@ void MiniStatusWindow::mouseMoved(MouseEvent &event)
     else if (event.getSource() == mJobBar)
     {
         const std::pair<int, int> exp =  PlayerInfo::getStatExperience(
-            Net::getPlayerHandler()->getJobLocation());
+            playerHandler->getJobLocation());
 
         // TRANSLATORS: job bar label
         const std::string level = strprintf(_("Job level: %d"),
             PlayerInfo::getStatBase(
-            Net::getPlayerHandler()->getJobLocation()));
+            playerHandler->getJobLocation()));
 
         if (exp.first > exp.second)
         {
