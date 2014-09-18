@@ -46,6 +46,7 @@ SkillHandler::SkillHandler() :
         SMSG_SKILL_FAILED,
         SMSG_PLAYER_SKILL_UP,
         SMSG_PLAYER_SKILL_COOLDOWN,
+        SMSG_PLAYER_SKILL_COOLDOWN_LIST,
         0
     };
     handledMessages = _messages;
@@ -70,6 +71,10 @@ void SkillHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_PLAYER_SKILL_COOLDOWN:
             processSkillCoolDown(msg);
+            break;
+
+        case SMSG_PLAYER_SKILL_COOLDOWN_LIST:
+            processSkillCoolDownList(msg);
             break;
 
         default:
@@ -153,6 +158,19 @@ void SkillHandler::processSkillCoolDown(Net::MessageIn &msg)
     const int duration = msg.readInt32("duration");
     if (skillDialog)
         skillDialog->setSkillDuration(skillId, duration);
+}
+
+void SkillHandler::processSkillCoolDownList(Net::MessageIn &msg)
+{
+    const int count = (msg.readInt16("len") - 4) / 10;
+    for (int f = 0; f < count; f ++)
+    {
+        const int skillId = msg.readInt16("skill id");
+        msg.readInt32("total");
+        const int duration = msg.readInt32("duration");
+        if (skillDialog)
+            skillDialog->setSkillDuration(skillId, duration);
+    }
 }
 
 }  // namespace EAthena
