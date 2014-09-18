@@ -213,6 +213,7 @@
 #define SMSG_PVP_INFO                0x0210
 
 #define SMSG_CHAT_IGNORE_LIST        0x00d4
+#define SMSG_CHAT_DISPLAY            0x00d7
 
 #define SMSG_MAIL_OPEN_WINDOW        0x0260
 
