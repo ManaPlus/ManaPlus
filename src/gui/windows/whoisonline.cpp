@@ -112,7 +112,8 @@ WhoIsOnline::WhoIsOnline() :
     mShowLevel(false),
     mUpdateOnlineList(config.getBoolValue("updateOnlineList")),
     mGroupFriends(true),
-    mServerSideList(serverFeatures->haveServerOnlineList())
+    mServerSideList(serverFeatures->haveServerOnlineList()),
+    mWebList(serverFeatures->haveOnlineList())
 {
     mCurlError[0] = 0;
     setWindowName("WhoIsOnline");
@@ -586,7 +587,12 @@ int WhoIsOnline::downloadThread(void *ptr)
 
 void WhoIsOnline::download()
 {
-    if (!mServerSideList)
+    if (mServerSideList)
+    {
+        if (PacketLimiter::limitPackets(PACKET_ONLINELIST))
+            playerHandler->requestOnlineList();
+    }
+    else if (mWebList)
     {
         mDownloadComplete = true;
         if (mThread && SDL_GetThreadID(mThread))
@@ -597,11 +603,6 @@ void WhoIsOnline::download()
             "whoisonline", this);
         if (mThread == nullptr)
             mDownloadStatus = UPDATE_ERROR;
-    }
-    else
-    {
-        if (PacketLimiter::limitPackets(PACKET_ONLINELIST))
-            playerHandler->requestOnlineList();
     }
 }
 
