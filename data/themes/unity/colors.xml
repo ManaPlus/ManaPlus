@@ -121,6 +121,7 @@
         <color id="BROWN" color="#05FF2E" />
         <color id="OLDCHAT" color="#05FF2E" />
         <color id="AWAYCHAT" color="#05FF2E" />
+        <color id="SKILL_COOLDOWN" color="#5090ff" />
     </palette>
 
     <progressbar id="HP" color="#ff0000,e28000,c38948,0f6a20" />

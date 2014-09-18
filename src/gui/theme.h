@@ -299,6 +299,7 @@ class Theme final : public Palette,
             OLDCHAT_OUTLINE,
             AWAYCHAT,
             AWAYCHAT_OUTLINE,
+            SKILL_COOLDOWN,
             THEME_COLORS_END
         };
 

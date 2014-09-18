@@ -107,6 +107,7 @@
         <color id="STATUS_BAR_OUTLINE" color="#000000" />
         <color id="JOB_BAR" color="#ffffff" />
         <color id="JOB_BAR_OUTLINE" color="#000000" />
+        <color id="SKILL_COOLDOWN" color="#5090ff" />
     </palette>
 
     <palette id="1">

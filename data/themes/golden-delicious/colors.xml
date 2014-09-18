@@ -108,6 +108,7 @@
         <color id="JOB_BAR" color="#ffa0a0" />
         <color id="JOB_BAR_OUTLINE" color="#221111" />
         <color id="SHOP_WARNING" color="#701111" />
+        <color id="SKILL_COOLDOWN" color="#5090ff" />
     </palette>
 
     <palette id="1">
