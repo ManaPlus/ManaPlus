@@ -61,6 +61,7 @@ class Party;
 class SpeechBubble;
 class Text;
 
+struct ChatObject;
 struct ParticleInfo;
 
 extern volatile int cur_time;
@@ -893,6 +894,11 @@ class Being notfinal : public ActorSprite,
         virtual int getLastAttackY() const
         { return mLastAttackY; }
 
+        void setChat(ChatObject *const obj);
+
+        const ChatObject *getChat() const
+        { return mChat; }
+
     protected:
         /**
          * Updates name's location.
@@ -1011,6 +1017,7 @@ class Being notfinal : public ActorSprite,
         std::vector<Being*> mPets;
         Being *mOwner;
         Particle *mSpecialParticle;
+        ChatObject *mChat;
 
         int mX;             // position in tiles
         int mY;             // position in tiles

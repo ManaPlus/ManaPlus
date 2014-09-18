@@ -22,6 +22,8 @@
 
 #include "net/eathena/chathandler.h"
 
+#include "actormanager.h"
+
 #include "being/localplayer.h"
 
 #include "gui/chatconsts.h"
@@ -32,6 +34,8 @@
 
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
+
+#include "resources/chatobject.h"
 
 #include "utils/stringutils.h"
 
@@ -452,12 +456,17 @@ void ChatHandler::processChatIgnoreList(Net::MessageIn &msg)
 void ChatHandler::processChatDisplay(Net::MessageIn &msg)
 {
     const int len = msg.readInt16("len") - 17;
-    msg.readInt32("owner account id");
-    msg.readInt32("char id");
-    msg.readInt16("max users");
-    msg.readInt16("current users");
-    msg.readUInt8("type");
-    msg.readString(len, "title");
+    ChatObject *const obj = new ChatObject;
+    obj->ownerId = msg.readInt32("owner account id");
+    obj->charId = msg.readInt32("char id");
+    obj->maxUsers = msg.readInt16("max users");
+    obj->currentUsers = msg.readInt16("current users");
+    obj->type = msg.readUInt8("type");
+    obj->title = msg.readString(len, "title");
+
+    Being *const dstBeing = actorManager->findBeing(obj->ownerId);
+    if (dstBeing)
+        dstBeing->setChat(obj);
 }
 
 }  // namespace EAthena

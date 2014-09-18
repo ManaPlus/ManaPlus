@@ -64,6 +64,7 @@
 #include "net/serverfeatures.h"
 
 #include "resources/attack.h"
+#include "resources/chatobject.h"
 #include "resources/emoteinfo.h"
 #include "resources/emotesprite.h"
 #include "resources/iteminfo.h"
@@ -174,6 +175,7 @@ Being::Being(const int id,
     mPets(),
     mOwner(nullptr),
     mSpecialParticle(nullptr),
+    mChat(nullptr),
     mX(0),
     mY(0),
     mSortOffsetY(0),
@@ -254,6 +256,7 @@ Being::~Being()
     delete2(mText);
     delete2(mEmotionSprite);
     delete2(mAnimationEffect);
+    delete2(mChat);
 
     if (mOwner)
         mOwner->unassignPet(this);
@@ -3420,4 +3423,10 @@ void Being::recreateItemParticles()
             }
         }
     }
+}
+
+void Being::setChat(ChatObject *const obj)
+{
+    delete mChat;
+    mChat = obj;
 }
