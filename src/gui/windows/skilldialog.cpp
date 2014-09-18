@@ -430,15 +430,21 @@ SkillInfo* SkillDialog::getSkillByItem(const int itemId) const
 void SkillDialog::setSkillDuration(const int id, const int duration)
 {
     SkillMap::const_iterator it = mSkills.find(id);
+    SkillInfo *info = nullptr;
+    if (it == mSkills.end())
+    {
+        addSkill(id, "", 0, 0, false, SkillType::Unknown, 0);
+        it = mSkills.find(id);
+    }
     if (it != mSkills.end())
     {
-        SkillInfo *const info = (*it).second;
-        if (info)
-        {
-            info->duration = duration;
-            info->durationTime = tick_time;
-            addSkillDuration(info);
-        }
+        info = (*it).second;
+    }
+    if (info)
+    {
+        info->duration = duration;
+        info->durationTime = tick_time;
+        addSkillDuration(info);
     }
 }
 
