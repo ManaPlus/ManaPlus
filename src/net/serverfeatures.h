@@ -31,7 +31,7 @@ class ServerFeatures notfinal
         virtual ~ServerFeatures()
         { }
 
-        virtual bool haveOnlineList() const = 0;
+        virtual bool haveServerOnlineList() const = 0;
 
         virtual bool havePartyNickInvite() const = 0;
 
