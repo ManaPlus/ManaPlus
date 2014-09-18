@@ -564,7 +564,7 @@ void SkillDialog::addSkillDuration(SkillInfo *const skill)
 
 void SkillDialog::slowLogic()
 {
-    FOR_EACH (std::vector<SkillInfo*>::const_iterator, it, mDurations)
+    FOR_EACH (std::vector<SkillInfo*>::iterator, it, mDurations)
     {
         SkillInfo *const skill = *it;
         if (skill)
