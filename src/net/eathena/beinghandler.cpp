@@ -1775,4 +1775,33 @@ void BeingHandler::processBeingResurrect(Net::MessageIn &msg) const
     BLOCK_END("BeingHandler::processBeingResurrect")
 }
 
+void BeingHandler::processPlayerGuilPartyInfo(Net::MessageIn &msg) const
+{
+    BLOCK_START("BeingHandler::processPlayerGuilPartyInfo")
+    if (!actorManager)
+    {
+        BLOCK_END("BeingHandler::processPlayerGuilPartyInfo")
+        return;
+    }
+
+    Being *const dstBeing = actorManager->findBeing(msg.readInt32("being id"));
+
+    if (dstBeing)
+    {
+        dstBeing->setPartyName(msg.readString(24, "party name"));
+        if (!guildManager || !GuildManager::getEnableGuildBot())
+        {
+            dstBeing->setGuildName(msg.readString(24, "guild name"));
+            dstBeing->setGuildPos(msg.readString(24, "guild pos"));
+        }
+        else
+        {
+            msg.skip(48);
+        }
+        dstBeing->addToCache();
+        msg.readString(24, "?");
+    }
+    BLOCK_END("BeingHandler::processPlayerGuilPartyInfo")
+}
+
 }  // namespace EAthena

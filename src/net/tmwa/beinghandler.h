@@ -85,6 +85,8 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
 
         void processBeingResurrect(Net::MessageIn &msg) const;
 
+        void processPlayerGuilPartyInfo(Net::MessageIn &msg) const;
+
         static void setServerGender(Being *const being,
                                     const uint8_t gender);
 
