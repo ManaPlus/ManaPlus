@@ -36,6 +36,8 @@ class ServerFeatures final : public Net::ServerFeatures
 
         bool haveServerOnlineList() const override final;
 
+        bool haveOnlineList() const override final;
+
         bool havePartyNickInvite() const override final;
 
         bool haveChangePartyLeader() const override final;
