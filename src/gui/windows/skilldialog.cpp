@@ -62,6 +62,7 @@ SkillDialog::SkillDialog() :
     Window(_("Skills"), false, nullptr, "skills.xml"),
     ActionListener(),
     mSkills(),
+    mDurations(),
     mTabs(new TabbedArea(this)),
     mDeleteTabs(),
     mPointsLabel(new Label(this, "0")),
@@ -197,6 +198,7 @@ void SkillDialog::clearSkills()
 
     delete_all(mSkills);
     mSkills.clear();
+    mDurations.clear();
 }
 
 void SkillDialog::hideSkills()
@@ -433,8 +435,9 @@ void SkillDialog::setSkillDuration(const int id, const int duration)
         SkillInfo *const info = (*it).second;
         if (info)
         {
-            info->duration = duration / 10;
+            info->duration = duration;
             info->durationTime = tick_time;
+            addSkillDuration(info);
         }
     }
 }
@@ -539,6 +542,41 @@ void SkillDialog::useSkill(const SkillInfo *const info)
             case SkillType::Unused:
             default:
                 break;
+        }
+    }
+}
+
+void SkillDialog::addSkillDuration(SkillInfo *const skill)
+{
+    FOR_EACH (std::vector<SkillInfo*>::const_iterator, it, mDurations)
+    {
+        if ((*it)->id == skill->id)
+            return;
+    }
+    mDurations.push_back(skill);
+}
+
+void SkillDialog::slowLogic()
+{
+    FOR_EACH (std::vector<SkillInfo*>::const_iterator, it, mDurations)
+    {
+        SkillInfo *const skill = *it;
+        if (skill)
+        {
+            const int time = get_elapsed_time(skill->durationTime);
+            if (time >= skill->duration)
+            {
+                it = mDurations.erase(it);
+                skill->cooldown = 0;
+                skill->duration = 0;
+                skill->durationTime = 0;
+                if (it != mDurations.begin())
+                    -- it;
+            }
+            else if (time)
+            {
+                skill->cooldown = skill->duration * 100 / time;
+            }
         }
     }
 }

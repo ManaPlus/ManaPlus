@@ -58,6 +58,7 @@ class SkillListBox final : public ListBox
             mPopup(new SkillPopup),
             mTextColor(getThemeColor(Theme::TEXT)),
             mTextColor2(getThemeColor(Theme::TEXT_OUTLINE)),
+            mCooldownColor(getThemeColor(Theme::SKILL_COOLDOWN)),
             mTextPadding(mSkin ? mSkin->getOption("textPadding", 34) : 34),
             mSpacing(mSkin ? mSkin->getOption("spacing", 0) : 0),
             mSkillClicked(false)
@@ -101,20 +102,40 @@ class SkillListBox final : public ListBox
             mHighlightColor.a = static_cast<int>(mAlpha * 255.0F);
             graphics->setColor(mHighlightColor);
 
+            const int width1 = getWidth();
+            const int usableWidth = width1 - 2 * mPadding;
+
             // Draw filled rectangle around the selected list element
             if (mSelected >= 0)
             {
                 graphics->fillRectangle(Rect(mPadding, getRowHeight()
-                    * mSelected + mPadding, getWidth() - 2 * mPadding,
+                    * mSelected + mPadding, usableWidth,
                     getRowHeight()));
             }
 
             // Draw the list elements
-            graphics->setColorAll(mTextColor, mTextColor2);
             Font *const font = getFont();
             const int space = font->getHeight() + mSpacing;
-            const int width2 = getWidth() - mPadding;
-            for (int i = 0, y = 1;
+            const int width2 = width1 - mPadding;
+
+            graphics->setColor(mCooldownColor);
+            for (int i = 0, y = 1 + mPadding;
+                 i < model->getNumberOfElements();
+                 ++i, y += getRowHeight())
+            {
+                SkillInfo *const e = model->getSkillAt(i);
+                if (e)
+                {
+                    if (e->cooldown)
+                    {
+                        graphics->fillRectangle(Rect(mPadding, y,
+                            usableWidth * 100 / e->cooldown, 10));
+                    }
+                }
+            }
+
+            graphics->setColorAll(mTextColor, mTextColor2);
+            for (int i = 0, y = 1 + mPadding;
                  i < model->getNumberOfElements();
                  ++i, y += getRowHeight())
             {
@@ -122,14 +143,13 @@ class SkillListBox final : public ListBox
                 if (e)
                 {
                     const SkillData *const data = e->data;
-                    const int yPad = y + mPadding;
                     const std::string &description = data->description;
-                    graphics->drawImage(data->icon, mPadding, yPad);
-                    font->drawString(graphics, data->name, mTextPadding, yPad);
+                    graphics->drawImage(data->icon, mPadding, y);
+                    font->drawString(graphics, data->name, mTextPadding, y);
                     if (!description.empty())
                     {
                         font->drawString(graphics, description,
-                            mTextPadding, yPad + space);
+                            mTextPadding, y + space);
                     }
 
                     if (e->skillLevelWidth < 0)
@@ -139,7 +159,7 @@ class SkillListBox final : public ListBox
                     }
 
                     font->drawString(graphics, e->skillLevel, width2
-                        - e->skillLevelWidth, yPad);
+                        - e->skillLevelWidth, y);
                 }
             }
         }
@@ -221,6 +241,7 @@ class SkillListBox final : public ListBox
         SkillPopup *mPopup;
         Color mTextColor;
         Color mTextColor2;
+        Color mCooldownColor;
         int mTextPadding;
         int mSpacing;
         bool mSkillClicked;

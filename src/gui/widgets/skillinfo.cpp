@@ -52,6 +52,7 @@ SkillInfo::SkillInfo() :
     sp(0),
     duration(0),
     durationTime(0),
+    cooldown(0),
     type(SkillType::Unknown),
     modifiable(false),
     visible(false)

@@ -110,11 +110,16 @@ class SkillDialog final : public Window,
 
         void playUpdateEffect(const int id) const;
 
+        void slowLogic();
+
         static void useSkill(const SkillInfo *const info);
 
     private:
+        void addSkillDuration(SkillInfo *const skill);
+
         typedef std::map<int, SkillInfo*> SkillMap;
         SkillMap mSkills;
+        std::vector<SkillInfo*> mDurations;
         TabbedArea *mTabs;
         std::list<Tab*> mDeleteTabs;
         Label *mPointsLabel;

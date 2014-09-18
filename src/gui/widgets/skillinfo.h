@@ -59,6 +59,7 @@ struct SkillInfo final
     int sp;
     int duration;
     int durationTime;
+    int cooldown;
     SkillType::SkillType type;
     bool modifiable;
     bool visible;

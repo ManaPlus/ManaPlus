@@ -616,6 +616,9 @@ void Game::slowLogic()
         DelayedManager::delayedLoad();
     if (guildManager)
         guildManager->slowLogic();
+    if (skillDialog)
+        skillDialog->slowLogic();
+
     PacketCounters::update();
 
     // Handle network stuff
