@@ -57,6 +57,8 @@ struct SkillInfo final
     unsigned int id;
     int range;
     int sp;
+    int duration;
+    int durationTime;
     SkillType::SkillType type;
     bool modifiable;
     bool visible;

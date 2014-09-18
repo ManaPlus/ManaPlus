@@ -95,6 +95,8 @@ class SkillDialog final : public Window,
 
         SkillInfo* getSkillByItem(const int itemId) const A_WARN_UNUSED;
 
+        void setSkillDuration(const int id, const int duration);
+
         bool hasSkills() const A_WARN_UNUSED
         { return !mSkills.empty(); }
 

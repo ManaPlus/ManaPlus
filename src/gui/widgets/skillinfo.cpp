@@ -50,6 +50,8 @@ SkillInfo::SkillInfo() :
     id(0),
     range(0),
     sp(0),
+    duration(0),
+    durationTime(0),
     type(SkillType::Unknown),
     modifiable(false),
     visible(false)

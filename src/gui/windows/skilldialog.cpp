@@ -48,6 +48,7 @@
 
 #include "utils/dtor.h"
 #include "utils/gettext.h"
+#include "utils/timer.h"
 
 #include "resources/beingcommon.h"
 #include "resources/skillconsts.h"
@@ -422,6 +423,20 @@ SkillInfo* SkillDialog::getSkillByItem(const int itemId) const
     if (it != mSkills.end())
         return (*it).second;
     return nullptr;
+}
+
+void SkillDialog::setSkillDuration(const int id, const int duration)
+{
+    SkillMap::const_iterator it = mSkills.find(id);
+    if (it != mSkills.end())
+    {
+        SkillInfo *const info = (*it).second;
+        if (info)
+        {
+            info->duration = duration / 10;
+            info->durationTime = tick_time;
+        }
+    }
 }
 
 void SkillDialog::widgetResized(const Event &event)

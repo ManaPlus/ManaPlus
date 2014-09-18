@@ -149,9 +149,10 @@ void SkillHandler::processPlayerSkills(Net::MessageIn &msg)
 
 void SkillHandler::processSkillCoolDown(Net::MessageIn &msg)
 {
-    // +++ need add cool down bar in skills window and in ministatus?
-    msg.readInt16("skill id");
-    msg.readInt32("duration");
+    const int skillId = msg.readInt16("skill id");
+    const int duration = msg.readInt32("duration");
+    if (skillDialog)
+        skillDialog->setSkillDuration(skillId, duration);
 }
 
 }  // namespace EAthena
