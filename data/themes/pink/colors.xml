@@ -4,6 +4,7 @@
         <color id="BROWSERBOX" color="#FF00FF" />
         <color id="SELFNICK" color="#FF00FF" />
         <color id="TEXT" color="#FF00FF" />
+        <color id="TEXT_DISABLED" color="#FF00FF" />
         <color id="CARET" color="#FF00FF" />
         <color id="SHADOW" color="#000000" />
         <color id="OUTLINE" color="#000000" />

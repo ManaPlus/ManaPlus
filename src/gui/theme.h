@@ -300,6 +300,8 @@ class Theme final : public Palette,
             AWAYCHAT,
             AWAYCHAT_OUTLINE,
             SKILL_COOLDOWN,
+            TEXT_DISABLED,
+            TEXT_DISABLED_OUTLINE,
             THEME_COLORS_END
         };
 

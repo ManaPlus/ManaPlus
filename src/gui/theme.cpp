@@ -839,7 +839,9 @@ static int readColorType(const std::string &type)
         "OLDCHAT_OUTLINE",
         "AWAYCHAT",
         "AWAYCHAT_OUTLINE",
-        "SKILL_COOLDOWN"
+        "SKILL_COOLDOWN",
+        "TEXT_DISABLED",
+        "TEXT_DISABLED_OUTLINE"
     };
 
     if (type.empty())

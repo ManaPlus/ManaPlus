@@ -4,6 +4,7 @@
         <color id="BROWSERBOX" color="#f9eabc" />
         <color id="SELFNICK" color="#808600" />
         <color id="TEXT" color="#e8d8aa" />
+        <color id="TEXT_DISABLED" color="#e8d8aa" />
         <color id="CARET" color="#F8E8DC" />
         <color id="SHADOW" color="#000000" />
         <color id="OUTLINE" color="#000000" />
@@ -114,6 +115,7 @@
     <palette id="1">
         <color id="SELFNICK" color="#402600" />
         <color id="TEXT" color="#C0C670" />
+        <color id="TEXT_DISABLED" color="#C0C670" />
         <color id="CARET" color="#e8d8aa" />
         <color id="SHADOW" color="#000000" />
         <color id="OUTLINE" color="#000000" />
@@ -277,6 +279,7 @@
         <color id="PARTY_CHAT_TAB" color="#a0a0a0" />
         <color id="SELFNICK" color="#402600" />
         <color id="TEXT" color="#7fFF10" />
+        <color id="TEXT_DISABLED" color="#7fFF10" />
         <color id="CARET" color="#80561f" />
         <color id="SHADOW" color="#000000" />
         <color id="OUTLINE" color="#000000" />
