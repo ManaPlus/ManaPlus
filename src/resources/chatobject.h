@@ -29,7 +29,7 @@ struct ChatObject final
 {
     ChatObject() :
         ownerId(0),
-        charId(0),
+        chatId(0),
         maxUsers(0),
         currentUsers(0),
         type(0),
@@ -40,7 +40,7 @@ struct ChatObject final
     A_DELETE_COPY(ChatObject)
 
     int ownerId;
-    int charId;
+    int chatId;
     uint16_t maxUsers;
     uint16_t currentUsers;
     uint8_t type;

@@ -458,7 +458,7 @@ void ChatHandler::processChatDisplay(Net::MessageIn &msg)
     const int len = msg.readInt16("len") - 17;
     ChatObject *const obj = new ChatObject;
     obj->ownerId = msg.readInt32("owner account id");
-    obj->charId = msg.readInt32("char id");
+    obj->chatId = msg.readInt32("chat id");
     obj->maxUsers = msg.readInt16("max users");
     obj->currentUsers = msg.readInt16("current users");
     obj->type = msg.readUInt8("type");
