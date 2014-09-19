@@ -68,6 +68,7 @@ ChatHandler::ChatHandler() :
         SMSG_FORMAT_MESSAGE_NUMBER,
         SMSG_FORMAT_MESSAGE_SKILL,
         SMSG_CHAT_DISPLAY,
+        SMSG_CHAT_JOIN_ACK,
         0
     };
     handledMessages = _messages;
@@ -134,6 +135,10 @@ void ChatHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_CHAT_DISPLAY:
             processChatDisplay(msg);
+            break;
+
+        case SMSG_CHAT_JOIN_ACK:
+            processChatJoinAck(msg);
             break;
 
         default:
@@ -478,6 +483,17 @@ void ChatHandler::joinChat(const ChatObject *const chat,
     MessageOut outMsg(CMSG_CHAT_JOIN);
     outMsg.writeInt32(chat->chatId, "chat id");
     outMsg.writeString(password, 8, "password");
+}
+
+void ChatHandler::processChatJoinAck(Net::MessageIn &msg)
+{
+    const int count = msg.readInt16("len") - 8;
+    msg.readInt32("chat id");
+    for (int f = 0; f < count; f ++)
+    {
+        msg.readInt32("role");
+        msg.readString(24, "name");
+    }
 }
 
 }  // namespace EAthena
