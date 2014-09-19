@@ -249,6 +249,7 @@
 #define SMSG_NPC_VIEWPOINT           0x0144
 
 #define SMSG_MERCENARY_UPDATE        0x02a2
+#define SMSG_MERCENARY_INFO          0x029b
 
 /**********************************
  *  Packets from client to server *

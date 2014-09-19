@@ -42,6 +42,7 @@ class MercenaryHandler final : public MessageHandler,
     protected:
         void processMercenaryUpdate(Net::MessageIn &msg);
 
+        void processMercenaryInfo(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

@@ -40,6 +40,7 @@ MercenaryHandler::MercenaryHandler() :
     static const uint16_t _messages[] =
     {
         SMSG_MERCENARY_UPDATE,
+        SMSG_MERCENARY_INFO,
         0
     };
     handledMessages = _messages;
@@ -54,6 +55,10 @@ void MercenaryHandler::handleMessage(Net::MessageIn &msg)
             processMercenaryUpdate(msg);
             break;
 
+        case SMSG_MERCENARY_INFO:
+            processMercenaryInfo(msg);
+            break;
+
         default:
             break;
     }
@@ -61,9 +66,34 @@ void MercenaryHandler::handleMessage(Net::MessageIn &msg)
 
 void MercenaryHandler::processMercenaryUpdate(Net::MessageIn &msg)
 {
-    // +++ need create if need mercenary being and update stat
+    // +++ need create if need mercenary being and update stats
     msg.readInt16("type");
     msg.readInt32("value");
+}
+
+void MercenaryHandler::processMercenaryInfo(Net::MessageIn &msg)
+{
+    // +++ need create if need mercenary being and update stats
+    msg.readInt32("account id");  // owner
+    msg.readInt16("atk");
+    msg.readInt16("matk");
+    msg.readInt16("hit");
+    msg.readInt16("crit/10");
+    msg.readInt16("def");
+    msg.readInt16("mdef");
+    msg.readInt16("flee");
+    msg.readInt16("attack speed");
+    msg.readString(24, "name");
+    msg.readInt16("level");
+    msg.readInt32("hp");
+    msg.readInt32("max hp");
+    msg.readInt32("sp");
+    msg.readInt32("max sp");
+    msg.readInt32("expire time");
+    msg.readInt16("faith");
+    msg.readInt32("calls");
+    msg.readInt32("kills");
+    msg.readInt16("attack range");
 }
 
 }  // namespace EAthena
