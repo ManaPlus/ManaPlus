@@ -406,7 +406,7 @@ void InventoryHandler::processPlayerInventory(Net::MessageIn &msg)
 
     msg.readInt16("len");
 
-    const int number = (msg.getLength() - 4) / 23;
+    const int number = (msg.getLength() - 4) / 24;
     const uint8_t identified = 1;
 
     for (int loop = 0; loop < number; loop++)
