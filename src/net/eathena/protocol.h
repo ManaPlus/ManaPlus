@@ -250,6 +250,7 @@
 
 #define SMSG_MERCENARY_UPDATE        0x02a2
 #define SMSG_MERCENARY_INFO          0x029b
+#define SMSG_MERCENARY_SKILLS        0x029d
 
 /**********************************
  *  Packets from client to server *

@@ -41,6 +41,7 @@ MercenaryHandler::MercenaryHandler() :
     {
         SMSG_MERCENARY_UPDATE,
         SMSG_MERCENARY_INFO,
+        SMSG_MERCENARY_SKILLS,
         0
     };
     handledMessages = _messages;
@@ -57,6 +58,10 @@ void MercenaryHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_MERCENARY_INFO:
             processMercenaryInfo(msg);
+            break;
+
+        case SMSG_MERCENARY_SKILLS:
+            processMercenarySkills(msg);
             break;
 
         default:
@@ -94,6 +99,22 @@ void MercenaryHandler::processMercenaryInfo(Net::MessageIn &msg)
     msg.readInt32("calls");
     msg.readInt32("kills");
     msg.readInt16("attack range");
+}
+
+void MercenaryHandler::processMercenarySkills(Net::MessageIn &msg)
+{
+    // +++ need create if need mercenary being and update stats
+    const int count = (msg.readInt16("len") - 4) / 37;
+    for (int f = 0; f < count; f ++)
+    {
+        msg.readInt16("skill id");
+        msg.readInt32("inf");
+        msg.readInt16("level");
+        msg.readInt16("sp");
+        msg.readInt16("attack range");
+        msg.readString(24, "name");
+        msg.readUInt8("upgradable");
+    }
 }
 
 }  // namespace EAthena
