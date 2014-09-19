@@ -57,6 +57,7 @@ namespace Net
     class InventoryHandler;
     class LoginHandler;
     class MailHandler;
+    class MercenaryHandler;
     class NpcHandler;
     class PartyHandler;
     class PetHandler;
@@ -85,6 +86,7 @@ Net::BeingHandler *beingHandler = nullptr;
 Net::BuySellHandler *buySellHandler = nullptr;
 Net::ServerFeatures *serverFeatures = nullptr;
 Net::MailHandler *mailHandler = nullptr;
+Net::MercenaryHandler *mercenaryHandler = nullptr;
 Net::AuctionHandler *auctionHandler = nullptr;
 Net::CashShopHandler *cashShopHandler = nullptr;
 Net::FamilyHandler *familyHandler = nullptr;

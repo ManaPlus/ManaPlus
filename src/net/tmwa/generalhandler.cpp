@@ -54,6 +54,7 @@
 #include "net/tmwa/itemhandler.h"
 #include "net/tmwa/loginhandler.h"
 #include "net/tmwa/mailhandler.h"
+#include "net/tmwa/mercenaryhandler.h"
 #include "net/tmwa/network.h"
 #include "net/tmwa/npchandler.h"
 #include "net/tmwa/partyhandler.h"
@@ -104,7 +105,8 @@ GeneralHandler::GeneralHandler() :
     mAuctionHandler(new AuctionHandler),
     mCashShopHandler(new CashShopHandler),
     mFamilyHandler(new FamilyHandler),
-    mBankHandler(new BankHandler)
+    mBankHandler(new BankHandler),
+    mMercenaryHandler(new MercenaryHandler)
 {
     static const uint16_t _messages[] =
     {
@@ -223,6 +225,7 @@ void GeneralHandler::load()
     mNetwork->registerHandler(mCashShopHandler);
     mNetwork->registerHandler(mFamilyHandler);
     mNetwork->registerHandler(mBankHandler);
+    mNetwork->registerHandler(mMercenaryHandler);
 }
 
 void GeneralHandler::reload()

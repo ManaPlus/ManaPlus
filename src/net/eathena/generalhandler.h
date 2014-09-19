@@ -84,6 +84,7 @@ class GeneralHandler final : public MessageHandler,
         MessageHandlerPtr mCashShopHandler;
         MessageHandlerPtr mFamilyHandler;
         MessageHandlerPtr mBankHandler;
+        MessageHandlerPtr mMercenaryHandler;
 };
 
 }  // namespace EAthena
