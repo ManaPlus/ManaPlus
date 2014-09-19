@@ -140,7 +140,7 @@ void PlayerHandler::handleMessage(Net::MessageIn &msg)
 
 void PlayerHandler::attack(const int id, const bool keep) const
 {
-    MessageOut outMsg(CMSG_PLAYER_CHANGE_ACT);
+    createOutPacket(CMSG_PLAYER_CHANGE_ACT);
     outMsg.writeInt32(id);
     if (keep)
         outMsg.writeInt8(7);
@@ -150,12 +150,12 @@ void PlayerHandler::attack(const int id, const bool keep) const
 
 void PlayerHandler::stopAttack() const
 {
-    MessageOut outMsg(CMSG_PLAYER_STOP_ATTACK);
+    createOutPacket(CMSG_PLAYER_STOP_ATTACK);
 }
 
 void PlayerHandler::emote(const uint8_t emoteId) const
 {
-    MessageOut outMsg(CMSG_PLAYER_EMOTE);
+    createOutPacket(CMSG_PLAYER_EMOTE);
     outMsg.writeInt8(emoteId);
 }
 
@@ -163,7 +163,7 @@ void PlayerHandler::increaseAttribute(const int attr) const
 {
     if (attr >= STR && attr <= LUK)
     {
-        MessageOut outMsg(CMSG_STAT_UPDATE_REQUEST);
+        createOutPacket(CMSG_STAT_UPDATE_REQUEST);
         outMsg.writeInt16(static_cast<int16_t>(attr));
         outMsg.writeInt8(1);
     }
@@ -174,7 +174,7 @@ void PlayerHandler::increaseSkill(const uint16_t skillId) const
     if (PlayerInfo::getAttribute(Attributes::SKILL_POINTS) <= 0)
         return;
 
-    MessageOut outMsg(CMSG_SKILL_LEVELUP_REQUEST);
+    createOutPacket(CMSG_SKILL_LEVELUP_REQUEST);
     outMsg.writeInt16(skillId);
 }
 
@@ -183,7 +183,7 @@ void PlayerHandler::pickUp(const FloorItem *const floorItem) const
     if (!floorItem)
         return;
 
-    MessageOut outMsg(CMSG_ITEM_PICKUP);
+    createOutPacket(CMSG_ITEM_PICKUP);
     outMsg.writeInt32(floorItem->getId());
     TmwAthena::InventoryHandler *const handler =
         static_cast<TmwAthena::InventoryHandler*>(inventoryHandler);
@@ -193,7 +193,7 @@ void PlayerHandler::pickUp(const FloorItem *const floorItem) const
 
 void PlayerHandler::setDirection(const unsigned char direction) const
 {
-    MessageOut outMsg(CMSG_PLAYER_CHANGE_DIR);
+    createOutPacket(CMSG_PLAYER_CHANGE_DIR);
     outMsg.writeInt16(0);
     outMsg.writeInt8(direction);
 }
@@ -201,7 +201,7 @@ void PlayerHandler::setDirection(const unsigned char direction) const
 void PlayerHandler::setDestination(const int x, const int y,
                                    const int direction) const
 {
-    MessageOut outMsg(CMSG_PLAYER_CHANGE_DEST);
+    createOutPacket(CMSG_PLAYER_CHANGE_DEST);
     outMsg.writeCoordinates(static_cast<uint16_t>(x),
         static_cast<uint16_t>(y),
         static_cast<unsigned char>(direction));
@@ -227,20 +227,20 @@ void PlayerHandler::changeAction(const BeingAction::Action &action) const
             return;
     }
 
-    MessageOut outMsg(CMSG_PLAYER_CHANGE_ACT);
+    createOutPacket(CMSG_PLAYER_CHANGE_ACT);
     outMsg.writeInt32(0);
     outMsg.writeInt8(type);
 }
 
 void PlayerHandler::respawn() const
 {
-    MessageOut outMsg(CMSG_PLAYER_RESTART);
+    createOutPacket(CMSG_PLAYER_RESTART);
     outMsg.writeInt8(0);
 }
 
 void PlayerHandler::requestOnlineList() const
 {
-    MessageOut outMsg(CMSG_ONLINE_LIST);
+    createOutPacket(CMSG_ONLINE_LIST);
 }
 
 void PlayerHandler::removeOption() const
@@ -327,7 +327,7 @@ void PlayerHandler::processOnlineList(Net::MessageIn &msg)
 
 void PlayerHandler::updateStatus(const uint8_t status) const
 {
-    MessageOut outMsg(CMSG_SET_STATUS);
+    createOutPacket(CMSG_SET_STATUS);
     outMsg.writeInt8(status);
     outMsg.writeInt8(0);
 }

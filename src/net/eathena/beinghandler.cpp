@@ -111,7 +111,7 @@ BeingHandler::BeingHandler(const bool enableSync) :
 
 void BeingHandler::requestNameById(const int id) const
 {
-    MessageOut outMsg(CMSG_NAME_REQUEST);
+    createOutPacket(CMSG_NAME_REQUEST);
     outMsg.writeInt32(id);  // readLong(2));
 }
 
@@ -297,7 +297,7 @@ void BeingHandler::undress(Being *const being) const
 
 void BeingHandler::requestRanks(const Rank::Rank rank) const
 {
-    MessageOut outMsg(CMSG_REQUEST_RANKS);
+    createOutPacket(CMSG_REQUEST_RANKS);
     outMsg.writeInt16(static_cast<int16_t>(rank), "type");
 }
 
@@ -1689,7 +1689,7 @@ void BeingHandler::viewPlayerEquipment(const Being *const being)
     if (!being)
         return;
 
-    MessageOut outMsg(CMSG_PLAYER_VIEW_EQUIPMENT);
+    createOutPacket(CMSG_PLAYER_VIEW_EQUIPMENT);
     outMsg.writeInt32(being->getId(), "account id");
 }
 

@@ -61,21 +61,21 @@ void BankHandler::handleMessage(Net::MessageIn &msg)
 
 void BankHandler::deposit(const int money) const
 {
-    MessageOut outMsg(CMSG_BANK_DEPOSIT);
+    createOutPacket(CMSG_BANK_DEPOSIT);
     outMsg.writeInt32(0, "account id");
     outMsg.writeInt32(money, "money");
 }
 
 void BankHandler::withdraw(const int money) const
 {
-    MessageOut outMsg(CMSG_BANK_WITHDRAW);
+    createOutPacket(CMSG_BANK_WITHDRAW);
     outMsg.writeInt32(0, "account id");
     outMsg.writeInt32(money, "money");
 }
 
 void BankHandler::check() const
 {
-    MessageOut outMsg(CMSG_BANK_CHECK);
+    createOutPacket(CMSG_BANK_CHECK);
     outMsg.writeInt32(0, "account id");
 }
 

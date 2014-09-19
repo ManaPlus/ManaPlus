@@ -81,38 +81,38 @@ void AdminHandler::handleMessage(Net::MessageIn &msg)
 
 void AdminHandler::announce(const std::string &text) const
 {
-    MessageOut outMsg(CMSG_ADMIN_ANNOUNCE);
+    createOutPacket(CMSG_ADMIN_ANNOUNCE);
     outMsg.writeInt16(static_cast<int16_t>(text.length() + 4), "len");
     outMsg.writeString(text, static_cast<int>(text.length()), "message");
 }
 
 void AdminHandler::localAnnounce(const std::string &text) const
 {
-    MessageOut outMsg(CMSG_ADMIN_LOCAL_ANNOUNCE);
+    createOutPacket(CMSG_ADMIN_LOCAL_ANNOUNCE);
     outMsg.writeInt16(static_cast<int16_t>(text.length() + 4), "len");
     outMsg.writeString(text, static_cast<int>(text.length()), "message");
 }
 
 void AdminHandler::hide(const bool h A_UNUSED) const
 {
-    MessageOut outMsg(CMSG_ADMIN_HIDE);
+    createOutPacket(CMSG_ADMIN_HIDE);
     outMsg.writeInt32(0, "unused");
 }
 
 void AdminHandler::kick(const int playerId) const
 {
-    MessageOut outMsg(CMSG_ADMIN_KICK);
+    createOutPacket(CMSG_ADMIN_KICK);
     outMsg.writeInt32(playerId, "account id");
 }
 
 void AdminHandler::kickAll() const
 {
-    MessageOut outMsg(CMSG_ADMIN_KICK_ALL);
+    createOutPacket(CMSG_ADMIN_KICK_ALL);
 }
 
 void AdminHandler::warp(const std::string &map, const int x, const int y) const
 {
-    MessageOut outMsg(CMSG_PLAYER_MAPMOVE);
+    createOutPacket(CMSG_PLAYER_MAPMOVE);
     outMsg.writeString(map, 16, "map");
     outMsg.writeInt16(static_cast<int16_t>(x), "x");
     outMsg.writeInt16(static_cast<int16_t>(y), "y");
@@ -120,25 +120,25 @@ void AdminHandler::warp(const std::string &map, const int x, const int y) const
 
 void AdminHandler::resetStats() const
 {
-    MessageOut outMsg(CMSG_ADMIN_RESET_PLAYER);
+    createOutPacket(CMSG_ADMIN_RESET_PLAYER);
     outMsg.writeInt16(0, "flag");
 }
 
 void AdminHandler::resetSkills() const
 {
-    MessageOut outMsg(CMSG_ADMIN_RESET_PLAYER);
+    createOutPacket(CMSG_ADMIN_RESET_PLAYER);
     outMsg.writeInt16(1, "flag");
 }
 
 void AdminHandler::gotoName(const std::string &name) const
 {
-    MessageOut outMsg(CMSG_ADMIN_GOTO);
+    createOutPacket(CMSG_ADMIN_GOTO);
     outMsg.writeString(name, 24, "name");
 }
 
 void AdminHandler::recallName(const std::string &name) const
 {
-    MessageOut outMsg(CMSG_ADMIN_RECALL);
+    createOutPacket(CMSG_ADMIN_RECALL);
     outMsg.writeString(name, 24, "name");
 }
 
@@ -149,7 +149,7 @@ void AdminHandler::mute(const Being *const being,
     if (!being)
         return;
 
-    MessageOut outMsg(CMSG_ADMIN_MUTE);
+    createOutPacket(CMSG_ADMIN_MUTE);
     outMsg.writeInt32(being->getId(), "account id");
     outMsg.writeInt8(static_cast<int8_t>(type), "type");
     outMsg.writeInt16(static_cast<int16_t>(limit), "value");
@@ -157,7 +157,7 @@ void AdminHandler::mute(const Being *const being,
 
 void AdminHandler::muteName(const std::string &name) const
 {
-    MessageOut outMsg(CMSG_ADMIN_MUTE_NAME);
+    createOutPacket(CMSG_ADMIN_MUTE_NAME);
     outMsg.writeString(name, 24, "name");
 }
 
@@ -166,14 +166,14 @@ void AdminHandler::requestLogin(const Being *const being) const
     if (!being)
         return;
 
-    MessageOut outMsg(CMSG_ADMIN_ID_TO_LOGIN);
+    createOutPacket(CMSG_ADMIN_ID_TO_LOGIN);
     outMsg.writeInt32(being->getId(), "account id");
 }
 
 void AdminHandler::setTileType(const int x, const int y,
                                const int type) const
 {
-    MessageOut outMsg(CMSG_ADMIN_SET_TILE_TYPE);
+    createOutPacket(CMSG_ADMIN_SET_TILE_TYPE);
     outMsg.writeInt16(static_cast<int16_t>(x), "x");
     outMsg.writeInt16(static_cast<int16_t>(y), "y");
     outMsg.writeInt16(static_cast<int16_t>(type), "type");
@@ -184,7 +184,7 @@ void AdminHandler::unequipAll(const Being *const being) const
     if (!being)
         return;
 
-    MessageOut outMsg(CMSG_ADMIN_UNEQUIP_ALL);
+    createOutPacket(CMSG_ADMIN_UNEQUIP_ALL);
     outMsg.writeInt32(being->getId(), "account id");
 }
 
@@ -206,7 +206,7 @@ void AdminHandler::processSetTileType(Net::MessageIn &msg)
 void AdminHandler::requestStats(const std::string &name)
 {
     mStatsName = name;
-    MessageOut outMsg(CMSG_ADMIN_REQUEST_STATS);
+    createOutPacket(CMSG_ADMIN_REQUEST_STATS);
     outMsg.writeString(name, 24);
 }
 

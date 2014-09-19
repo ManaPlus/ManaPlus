@@ -120,7 +120,7 @@ void PartyHandler::handleMessage(Net::MessageIn &msg)
 
 void PartyHandler::create(const std::string &name) const
 {
-    MessageOut outMsg(CMSG_PARTY_CREATE);
+    createOutPacket(CMSG_PARTY_CREATE);
     outMsg.writeString(name.substr(0, 23), 24);
 }
 
@@ -133,12 +133,12 @@ void PartyHandler::invite(const std::string &name) const
         name, ActorType::Player);
     if (being)
     {
-        MessageOut outMsg(CMSG_PARTY_INVITE);
+        createOutPacket(CMSG_PARTY_INVITE);
         outMsg.writeInt32(being->getId(), "account id");
     }
     else
     {
-        MessageOut outMsg(CMSG_PARTY_INVITE2);
+        createOutPacket(CMSG_PARTY_INVITE2);
         outMsg.writeString(name, 24, "nick");
     }
 }
@@ -148,7 +148,7 @@ void PartyHandler::inviteResponse(const std::string &inviter A_UNUSED,
 {
     if (localPlayer)
     {
-        MessageOut outMsg(CMSG_PARTY_INVITED2);
+        createOutPacket(CMSG_PARTY_INVITED2);
         outMsg.writeInt32(localPlayer->getId());
         outMsg.writeInt8(static_cast<int8_t>(accept ? 1 : 0));
     }
@@ -156,14 +156,14 @@ void PartyHandler::inviteResponse(const std::string &inviter A_UNUSED,
 
 void PartyHandler::leave() const
 {
-    MessageOut outMsg(CMSG_PARTY_LEAVE);
+    createOutPacket(CMSG_PARTY_LEAVE);
 }
 
 void PartyHandler::kick(const Being *const being) const
 {
     if (being)
     {
-        MessageOut outMsg(CMSG_PARTY_KICK);
+        createOutPacket(CMSG_PARTY_KICK);
         outMsg.writeInt32(being->getId());
         outMsg.writeString("", 24);  // unused
     }
@@ -181,14 +181,14 @@ void PartyHandler::kick(const std::string &name) const
         return;
     }
 
-    MessageOut outMsg(CMSG_PARTY_KICK);
+    createOutPacket(CMSG_PARTY_KICK);
     outMsg.writeInt32(m->getID());
     outMsg.writeString(name, 24);  // unused
 }
 
 void PartyHandler::chat(const std::string &text) const
 {
-    MessageOut outMsg(CMSG_PARTY_MESSAGE);
+    createOutPacket(CMSG_PARTY_MESSAGE);
     const std::string mes = std::string(localPlayer->getName()).append(
         " : ").append(text);
 
@@ -203,7 +203,7 @@ void PartyHandler::setShareExperience(const Net::PartyShare::Type share) const
     if (share == Net::PartyShare::NOT_POSSIBLE)
         return;
 
-    MessageOut outMsg(CMSG_PARTY_SETTINGS);
+    createOutPacket(CMSG_PARTY_SETTINGS);
     outMsg.writeInt16(static_cast<int16_t>(share));
     outMsg.writeInt16(static_cast<int16_t>(mShareItems));
 }
@@ -214,7 +214,7 @@ void PartyHandler::setShareItems(const Net::PartyShare::Type share) const
     if (share == Net::PartyShare::NOT_POSSIBLE)
         return;
 
-    MessageOut outMsg(CMSG_PARTY_SETTINGS);
+    createOutPacket(CMSG_PARTY_SETTINGS);
     outMsg.writeInt16(static_cast<int16_t>(mShareExp));
     outMsg.writeInt16(static_cast<int16_t>(share));
 }
@@ -452,13 +452,13 @@ void PartyHandler::changeLeader(const std::string &name) const
         name, ActorType::Player);
     if (!being)
         return;
-    MessageOut outMsg(CMSG_PARTY_CHANGE_LEADER);
+    createOutPacket(CMSG_PARTY_CHANGE_LEADER);
     outMsg.writeInt32(being->getId());
 }
 
 void PartyHandler::allowInvite(const bool allow) const
 {
-    MessageOut outMsg(CMSG_PARTY_ALLOW_INVITES);
+    createOutPacket(CMSG_PARTY_ALLOW_INVITES);
     outMsg.writeInt8(allow ? 1 : 0);
 }
 

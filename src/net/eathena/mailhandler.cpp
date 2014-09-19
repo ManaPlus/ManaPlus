@@ -78,44 +78,44 @@ void MailHandler::processMailOpen(Net::MessageIn &msg) const
 
 void MailHandler::refresh()
 {
-    MessageOut outMsg(CMSG_MAIL_REFRESH_INBOX);
+    createOutPacket(CMSG_MAIL_REFRESH_INBOX);
 }
 
 void MailHandler::readMessage(const int msgId)
 {
-    MessageOut outMsg(CMSG_MAIL_READ_MESSAGE);
+    createOutPacket(CMSG_MAIL_READ_MESSAGE);
     outMsg.writeInt32(msgId, "message id");
 }
 
 void MailHandler::getAttach(const int msgId)
 {
-    MessageOut outMsg(CMSG_MAIL_GET_ATTACH);
+    createOutPacket(CMSG_MAIL_GET_ATTACH);
     outMsg.writeInt32(msgId, "message id");
 }
 
 void MailHandler::deleteMessage(const int msgId)
 {
-    MessageOut outMsg(CMSG_MAIL_DELETE_MESSAGE);
+    createOutPacket(CMSG_MAIL_DELETE_MESSAGE);
     outMsg.writeInt32(msgId, "message id");
 }
 
 void MailHandler::returnMessage(const int msgId)
 {
-    MessageOut outMsg(CMSG_MAIL_RETURN_MESSAGE);
+    createOutPacket(CMSG_MAIL_RETURN_MESSAGE);
     outMsg.writeInt32(msgId, "message id");
     outMsg.writeString("", 24, "unused");
 }
 
 void MailHandler::setAttach(const int index, const int amount)
 {
-    MessageOut outMsg(CMSG_MAIL_SET_ATTACH);
+    createOutPacket(CMSG_MAIL_SET_ATTACH);
     outMsg.writeInt16(static_cast<int16_t>(index + INVENTORY_OFFSET), "index");
     outMsg.writeInt32(amount, "amount");
 }
 
 void MailHandler::resetAttach(const int flag)
 {
-    MessageOut outMsg(CMSG_MAIL_RESET_ATTACH);
+    createOutPacket(CMSG_MAIL_RESET_ATTACH);
     outMsg.writeInt16(static_cast<int16_t>(flag), "flag");
 }
 
@@ -127,7 +127,7 @@ void MailHandler::send(const std::string &name,
         message = message.substr(0, 255);
     const int sz = static_cast<int>(message.size());
 
-    MessageOut outMsg(CMSG_MAIL_SEND);
+    createOutPacket(CMSG_MAIL_SEND);
     outMsg.writeInt16(69 + sz);
     outMsg.writeString(name, 24, "name");
     outMsg.writeString(title, 40, "title");

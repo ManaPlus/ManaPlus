@@ -118,7 +118,7 @@ void LoginHandler::changePassword(const std::string &restrict username
                                   const std::string &restrict newPassword)
                                   const
 {
-    MessageOut outMsg(CMSG_CHAR_PASSWORD_CHANGE);
+    createOutPacket(CMSG_CHAR_PASSWORD_CHANGE);
     outMsg.writeStringNoLog(oldPassword, 24);
     outMsg.writeStringNoLog(newPassword, 24);
 }
@@ -128,7 +128,7 @@ void LoginHandler::sendLoginRegister(const std::string &restrict username,
                                      const std::string &restrict email
                                      A_UNUSED) const
 {
-    MessageOut outMsg(CMSG_LOGIN_REGISTER);
+    createOutPacket(CMSG_LOGIN_REGISTER);
     outMsg.writeInt32(20, "client version");
     outMsg.writeString(username, 24, "login");
     outMsg.writeStringNoLog(password, 24, "password");

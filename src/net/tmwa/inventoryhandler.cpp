@@ -158,7 +158,7 @@ void InventoryHandler::equipItem(const Item *const item) const
     if (!item)
         return;
 
-    MessageOut outMsg(CMSG_PLAYER_EQUIP);
+    createOutPacket(CMSG_PLAYER_EQUIP);
     outMsg.writeInt16(static_cast<int16_t>(
         item->getInvIndex() + INVENTORY_OFFSET));
     outMsg.writeInt16(0);
@@ -169,7 +169,7 @@ void InventoryHandler::unequipItem(const Item *const item) const
     if (!item)
         return;
 
-    MessageOut outMsg(CMSG_PLAYER_UNEQUIP);
+    createOutPacket(CMSG_PLAYER_UNEQUIP);
     outMsg.writeInt16(static_cast<int16_t>(
         item->getInvIndex() + INVENTORY_OFFSET));
 }
@@ -179,7 +179,7 @@ void InventoryHandler::useItem(const Item *const item) const
     if (!item)
         return;
 
-    MessageOut outMsg(CMSG_PLAYER_INVENTORY_USE);
+    createOutPacket(CMSG_PLAYER_INVENTORY_USE);
     outMsg.writeInt16(static_cast<int16_t>(
         item->getInvIndex() + INVENTORY_OFFSET));
     outMsg.writeInt32(item->getId());  // unused
@@ -190,7 +190,7 @@ void InventoryHandler::dropItem(const Item *const item, const int amount) const
     if (!item)
         return;
 
-    MessageOut outMsg(CMSG_PLAYER_INVENTORY_DROP);
+    createOutPacket(CMSG_PLAYER_INVENTORY_DROP);
     outMsg.writeInt16(static_cast<int16_t>(
         item->getInvIndex() + INVENTORY_OFFSET));
     outMsg.writeInt16(static_cast<int16_t>(amount));
@@ -198,7 +198,7 @@ void InventoryHandler::dropItem(const Item *const item, const int amount) const
 
 void InventoryHandler::closeStorage(const int type A_UNUSED) const
 {
-    MessageOut outMsg(CMSG_CLOSE_STORAGE);
+    createOutPacket(CMSG_CLOSE_STORAGE);
 }
 
 void InventoryHandler::moveItem2(const int source, const int slot,
@@ -206,14 +206,14 @@ void InventoryHandler::moveItem2(const int source, const int slot,
 {
     if (source == Inventory::INVENTORY && destination == Inventory::STORAGE)
     {
-        MessageOut outMsg(CMSG_MOVE_TO_STORAGE);
+        createOutPacket(CMSG_MOVE_TO_STORAGE);
         outMsg.writeInt16(static_cast<int16_t>(slot + INVENTORY_OFFSET));
         outMsg.writeInt32(amount);
     }
     else if (source == Inventory::STORAGE
              && destination == Inventory::INVENTORY)
     {
-        MessageOut outMsg(CSMG_MOVE_FROM_STORAGE);
+        createOutPacket(CSMG_MOVE_FROM_STORAGE);
         outMsg.writeInt16(static_cast<int16_t>(slot + STORAGE_OFFSET));
         outMsg.writeInt32(amount);
     }

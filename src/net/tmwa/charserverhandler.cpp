@@ -258,7 +258,7 @@ void CharServerHandler::chooseCharacter(Net::Character *const character)
     mSelectedCharacter = character;
     mCharSelectDialog = nullptr;
 
-    MessageOut outMsg(CMSG_CHAR_SELECT);
+    createOutPacket(CMSG_CHAR_SELECT);
     outMsg.writeInt8(static_cast<unsigned char>(mSelectedCharacter->slot),
         "slot");
 }
@@ -271,7 +271,7 @@ void CharServerHandler::newCharacter(const std::string &name, const int slot,
                                      const unsigned char look,
                                      const std::vector<int> &stats) const
 {
-    MessageOut outMsg(CMSG_CHAR_CREATE);
+    createOutPacket(CMSG_CHAR_CREATE);
     outMsg.writeString(name, 24, "name");
     for (int i = 0; i < 6; i++)
         outMsg.writeInt8(static_cast<unsigned char>(stats[i]), "stat");
@@ -295,7 +295,7 @@ void CharServerHandler::deleteCharacter(Net::Character *const character)
 
     mSelectedCharacter = character;
 
-    MessageOut outMsg(CMSG_CHAR_DELETE);
+    createOutPacket(CMSG_CHAR_DELETE);
     outMsg.writeInt32(mSelectedCharacter->dummy->getId(), "id?");
     outMsg.writeString("a@a.com", 40, "email");
 }
@@ -303,7 +303,7 @@ void CharServerHandler::deleteCharacter(Net::Character *const character)
 void CharServerHandler::switchCharacter() const
 {
     // This is really a map-server packet
-    MessageOut outMsg(CMSG_PLAYER_RESTART);
+    createOutPacket(CMSG_PLAYER_RESTART);
     outMsg.writeInt8(1, "flag");
 }
 
@@ -317,7 +317,7 @@ void CharServerHandler::connect()
 
     mNetwork->disconnect();
     mNetwork->connect(charServer);
-    MessageOut outMsg(CMSG_CHAR_SERVER_CONNECT);
+    createOutPacket(CMSG_CHAR_SERVER_CONNECT);
     outMsg.writeInt32(token.account_ID, "account id");
     outMsg.writeInt32(token.session_ID1, "session id1");
     outMsg.writeInt32(token.session_ID2, "session id2");

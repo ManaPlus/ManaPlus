@@ -129,7 +129,7 @@ void ChatHandler::talk(const std::string &restrict text,
 
     if (serverFeatures->haveChatChannels() && channel.size() == 3)
     {
-        MessageOut outMsg(CMSG_CHAT_MESSAGE2);
+        createOutPacket(CMSG_CHAT_MESSAGE2);
         // Added + 1 in order to let eAthena parse admin commands correctly
         outMsg.writeInt16(static_cast<int16_t>(mes.length() + 4 + 3 + 1),
             "len");
@@ -140,7 +140,7 @@ void ChatHandler::talk(const std::string &restrict text,
     }
     else
     {
-        MessageOut outMsg(CMSG_CHAT_MESSAGE);
+        createOutPacket(CMSG_CHAT_MESSAGE);
         // Added + 1 in order to let eAthena parse admin commands correctly
         outMsg.writeInt16(static_cast<int16_t>(mes.length() + 4 + 1), "len");
         outMsg.writeString(mes, static_cast<int>(mes.length() + 1), "message");
@@ -149,7 +149,7 @@ void ChatHandler::talk(const std::string &restrict text,
 
 void ChatHandler::talkRaw(const std::string &mes) const
 {
-    MessageOut outMsg(CMSG_CHAT_MESSAGE);
+    createOutPacket(CMSG_CHAT_MESSAGE);
     outMsg.writeInt16(static_cast<int16_t>(mes.length() + 4), "len");
     outMsg.writeString(mes, static_cast<int>(mes.length()), "message");
 }
@@ -157,7 +157,7 @@ void ChatHandler::talkRaw(const std::string &mes) const
 void ChatHandler::privateMessage(const std::string &restrict recipient,
                                  const std::string &restrict text)
 {
-    MessageOut outMsg(CMSG_CHAT_WHISPER);
+    createOutPacket(CMSG_CHAT_WHISPER);
     outMsg.writeInt16(static_cast<int16_t>(text.length() + 28), "len");
     outMsg.writeString(recipient, 24, "recipient nick");
     outMsg.writeString(text, static_cast<int>(text.length()), "message");
@@ -166,7 +166,7 @@ void ChatHandler::privateMessage(const std::string &restrict recipient,
 
 void ChatHandler::who() const
 {
-    MessageOut outMsg(CMSG_WHO_REQUEST);
+    createOutPacket(CMSG_WHO_REQUEST);
 }
 
 void ChatHandler::sendRaw(const std::string &args) const
@@ -238,7 +238,7 @@ void ChatHandler::ignoreAll() const
 {
     if (!serverFeatures->haveServerIgnore())
         return;
-    MessageOut outMsg(CMSG_IGNORE_ALL);
+    createOutPacket(CMSG_IGNORE_ALL);
     outMsg.writeInt8(0, "flag");
 }
 
@@ -246,20 +246,20 @@ void ChatHandler::unIgnoreAll() const
 {
     if (!serverFeatures->haveServerIgnore())
         return;
-    MessageOut outMsg(CMSG_IGNORE_ALL);
+    createOutPacket(CMSG_IGNORE_ALL);
     outMsg.writeInt8(1, "flag");
 }
 
 void ChatHandler::ignore(const std::string &nick) const
 {
-    MessageOut outMsg(CMSG_IGNORE_NICK);
+    createOutPacket(CMSG_IGNORE_NICK);
     outMsg.writeString(nick, 24, "nick");
     outMsg.writeInt8(0, "flag");
 }
 
 void ChatHandler::unIgnore(const std::string &nick) const
 {
-    MessageOut outMsg(CMSG_IGNORE_NICK);
+    createOutPacket(CMSG_IGNORE_NICK);
     outMsg.writeString(nick, 24, "nick");
     outMsg.writeInt8(1, "flag");
 }

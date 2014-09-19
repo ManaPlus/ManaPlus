@@ -100,19 +100,19 @@ void PetHandler::catchPet(const Being *const being) const
     if (!being)
         return;
 
-    MessageOut outMsg(CMSG_PET_CATCH);
+    createOutPacket(CMSG_PET_CATCH);
     outMsg.writeInt32(being->getId(), "monster id");
 }
 
 void PetHandler::requestPetState(const int data) const
 {
-    MessageOut outMsg(CMSG_PET_REQUEST_STATE);
+    createOutPacket(CMSG_PET_REQUEST_STATE);
     outMsg.writeInt32(data, "param");
 }
 
 void PetHandler::setName(const std::string &name) const
 {
-    MessageOut outMsg(CMSG_PET_SET_NAME);
+    createOutPacket(CMSG_PET_SET_NAME);
     outMsg.writeString(name, 24, "name");
 }
 

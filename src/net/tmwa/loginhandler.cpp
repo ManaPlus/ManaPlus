@@ -111,7 +111,7 @@ void LoginHandler::connect()
         return;
 
     mNetwork->connect(mServer);
-    MessageOut outMsg(CMSG_SERVER_VERSION_REQUEST);
+    createOutPacket(CMSG_SERVER_VERSION_REQUEST);
 }
 
 bool LoginHandler::isConnected() const
@@ -134,7 +134,7 @@ void LoginHandler::changePassword(const std::string &restrict username
                                   const std::string &restrict newPassword)
                                   const
 {
-    MessageOut outMsg(CMSG_CHAR_PASSWORD_CHANGE);
+    createOutPacket(CMSG_CHAR_PASSWORD_CHANGE);
     outMsg.writeStringNoLog(oldPassword, 24, "old password");
     outMsg.writeStringNoLog(newPassword, 24, "new password");
 }
@@ -145,7 +145,7 @@ void LoginHandler::sendLoginRegister(const std::string &restrict username,
 {
     if (email.empty())
     {
-        MessageOut outMsg(CMSG_LOGIN_REGISTER);
+        createOutPacket(CMSG_LOGIN_REGISTER);
         outMsg.writeInt32(0, "client version");
         outMsg.writeString(username, 24, "login");
         outMsg.writeStringNoLog(password, 24, "password");
@@ -160,7 +160,7 @@ void LoginHandler::sendLoginRegister(const std::string &restrict username,
     }
     else
     {
-        MessageOut outMsg(CMSG_LOGIN_REGISTER2);
+        createOutPacket(CMSG_LOGIN_REGISTER2);
         outMsg.writeInt32(0, "client version");
         outMsg.writeString(username, 24, "login");
         outMsg.writeStringNoLog(password, 24, "password");
@@ -183,7 +183,7 @@ ServerInfo *LoginHandler::getCharServer() const
 
 void LoginHandler::requestUpdateHosts()
 {
-    MessageOut outMsg(CMSG_SEND_CLIENT_INFO);
+    createOutPacket(CMSG_SEND_CLIENT_INFO);
     outMsg.writeInt8(CLIENT_PROTOCOL_VERSION);
     outMsg.writeInt8(0, "unused");
 }

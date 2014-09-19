@@ -97,7 +97,7 @@ void GameHandler::handleMessage(Net::MessageIn &msg)
 
 void GameHandler::mapLoadedEvent() const
 {
-    MessageOut outMsg(CMSG_MAP_LOADED);
+    createOutPacket(CMSG_MAP_LOADED);
 }
 
 void GameHandler::connect()
@@ -125,7 +125,7 @@ void GameHandler::connect()
     }
 
     // Send login infos
-    MessageOut outMsg(CMSG_MAP_SERVER_CONNECT);
+    createOutPacket(CMSG_MAP_SERVER_CONNECT);
     outMsg.writeInt32(token.account_ID, "account id");
     outMsg.writeInt32(mCharID, "char id");
     outMsg.writeInt32(token.session_ID1, "session key1");
@@ -157,7 +157,7 @@ void GameHandler::disconnect()
 
 void GameHandler::quit() const
 {
-    MessageOut outMsg(CMSG_CLIENT_QUIT);
+    createOutPacket(CMSG_CLIENT_QUIT);
 }
 
 void GameHandler::ping(const int tick) const

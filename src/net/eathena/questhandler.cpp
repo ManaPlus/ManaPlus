@@ -185,7 +185,7 @@ void QuestHandler::processRemoveQuest(Net::MessageIn &msg)
 void QuestHandler::setQeustActiveState(const int questId,
                                        const bool active) const
 {
-    MessageOut outMsg(CMSG_QUEST_ACTIVATE);
+    createOutPacket(CMSG_QUEST_ACTIVATE);
     outMsg.writeInt32(questId, "quest id");
     outMsg.writeInt8(active ? 1 : 0, "activate");
 }

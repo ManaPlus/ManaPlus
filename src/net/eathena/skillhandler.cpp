@@ -85,7 +85,7 @@ void SkillHandler::handleMessage(Net::MessageIn &msg)
 void SkillHandler::useBeing(const int id, const int level,
                             const int beingId) const
 {
-    MessageOut outMsg(CMSG_SKILL_USE_BEING);
+    createOutPacket(CMSG_SKILL_USE_BEING);
     outMsg.writeInt16(static_cast<int16_t>(id));
     outMsg.writeInt16(static_cast<int16_t>(level));
     outMsg.writeInt32(beingId);
@@ -94,7 +94,7 @@ void SkillHandler::useBeing(const int id, const int level,
 void SkillHandler::usePos(const int id, const int level,
                           const int x, const int y) const
 {
-    MessageOut outMsg(CMSG_SKILL_USE_POSITION);
+    createOutPacket(CMSG_SKILL_USE_POSITION);
     outMsg.writeInt16(static_cast<int16_t>(level));
     outMsg.writeInt16(static_cast<int16_t>(id));
     outMsg.writeInt16(static_cast<int16_t>(x));
@@ -105,7 +105,7 @@ void SkillHandler::usePos(const int id, const int level,
                           const int x, const int y,
                           const std::string &text) const
 {
-    MessageOut outMsg(CMSG_SKILL_USE_POSITION_MORE);
+    createOutPacket(CMSG_SKILL_USE_POSITION_MORE);
     outMsg.writeInt16(static_cast<int16_t>(level), "level");
     outMsg.writeInt16(static_cast<int16_t>(id), "id");
     outMsg.writeInt16(static_cast<int16_t>(x), "x");
@@ -115,7 +115,7 @@ void SkillHandler::usePos(const int id, const int level,
 
 void SkillHandler::useMap(const int id, const std::string &map) const
 {
-    MessageOut outMsg(CMSG_SKILL_USE_MAP);
+    createOutPacket(CMSG_SKILL_USE_MAP);
     outMsg.writeInt16(static_cast<int16_t>(id));
     outMsg.writeString(map, 16);
 }

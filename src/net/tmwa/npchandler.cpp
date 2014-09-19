@@ -111,20 +111,20 @@ void NpcHandler::handleMessage(Net::MessageIn &msg)
 
 void NpcHandler::talk(const int npcId) const
 {
-    MessageOut outMsg(CMSG_NPC_TALK);
+    createOutPacket(CMSG_NPC_TALK);
     outMsg.writeInt32(npcId);
     outMsg.writeInt8(0);  // unused
 }
 
 void NpcHandler::nextDialog(const int npcId) const
 {
-    MessageOut outMsg(CMSG_NPC_NEXT_REQUEST);
+    createOutPacket(CMSG_NPC_NEXT_REQUEST);
     outMsg.writeInt32(npcId);
 }
 
 void NpcHandler::closeDialog(const int npcId)
 {
-    MessageOut outMsg(CMSG_NPC_CLOSE);
+    createOutPacket(CMSG_NPC_CLOSE);
     outMsg.writeInt32(npcId);
 
     const NpcDialogs::iterator it = NpcDialog::mNpcDialogs.find(npcId);
@@ -141,21 +141,21 @@ void NpcHandler::closeDialog(const int npcId)
 
 void NpcHandler::listInput(const int npcId, const unsigned char value) const
 {
-    MessageOut outMsg(CMSG_NPC_LIST_CHOICE);
+    createOutPacket(CMSG_NPC_LIST_CHOICE);
     outMsg.writeInt32(npcId);
     outMsg.writeInt8(value);
 }
 
 void NpcHandler::integerInput(const int npcId, const int value) const
 {
-    MessageOut outMsg(CMSG_NPC_INT_RESPONSE);
+    createOutPacket(CMSG_NPC_INT_RESPONSE);
     outMsg.writeInt32(npcId);
     outMsg.writeInt32(value);
 }
 
 void NpcHandler::stringInput(const int npcId, const std::string &value) const
 {
-    MessageOut outMsg(CMSG_NPC_STR_RESPONSE);
+    createOutPacket(CMSG_NPC_STR_RESPONSE);
     outMsg.writeInt16(static_cast<int16_t>(value.length() + 9));
     outMsg.writeInt32(npcId);
     outMsg.writeString(value, static_cast<int>(value.length()));
@@ -164,14 +164,14 @@ void NpcHandler::stringInput(const int npcId, const std::string &value) const
 
 void NpcHandler::buy(const int beingId) const
 {
-    MessageOut outMsg(CMSG_NPC_BUY_SELL_REQUEST);
+    createOutPacket(CMSG_NPC_BUY_SELL_REQUEST);
     outMsg.writeInt32(beingId);
     outMsg.writeInt8(0);  // Buy
 }
 
 void NpcHandler::sell(const int beingId) const
 {
-    MessageOut outMsg(CMSG_NPC_BUY_SELL_REQUEST);
+    createOutPacket(CMSG_NPC_BUY_SELL_REQUEST);
     outMsg.writeInt32(beingId);
     outMsg.writeInt8(1);  // Sell
 }
@@ -179,7 +179,7 @@ void NpcHandler::sell(const int beingId) const
 void NpcHandler::buyItem(const int beingId A_UNUSED, const int itemId,
                          const unsigned char color, const int amount) const
 {
-    MessageOut outMsg(CMSG_NPC_BUY_REQUEST);
+    createOutPacket(CMSG_NPC_BUY_REQUEST);
     if (serverFeatures->haveItemColors())
     {
         outMsg.writeInt16(10);  // One item (length of packet)
@@ -199,7 +199,7 @@ void NpcHandler::buyItem(const int beingId A_UNUSED, const int itemId,
 void NpcHandler::sellItem(const int beingId A_UNUSED,
                           const int itemId, const int amount) const
 {
-    MessageOut outMsg(CMSG_NPC_SELL_REQUEST);
+    createOutPacket(CMSG_NPC_SELL_REQUEST);
     outMsg.writeInt16(8);  // One item (length of packet)
     outMsg.writeInt16(static_cast<int16_t>(itemId + INVENTORY_OFFSET));
     outMsg.writeInt16(static_cast<int16_t>(amount));

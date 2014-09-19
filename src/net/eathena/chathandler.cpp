@@ -160,7 +160,7 @@ void ChatHandler::talk(const std::string &restrict text,
     const std::string mes = std::string(localPlayer->getName()).append(
         " : ").append(text);
 
-    MessageOut outMsg(CMSG_CHAT_MESSAGE);
+    createOutPacket(CMSG_CHAT_MESSAGE);
     // Added + 1 in order to let eAthena parse admin commands correctly
     outMsg.writeInt16(static_cast<int16_t>(mes.length() + 4 + 1), "len");
     outMsg.writeString(mes, static_cast<int>(mes.length() + 1), "message");
@@ -168,7 +168,7 @@ void ChatHandler::talk(const std::string &restrict text,
 
 void ChatHandler::talkRaw(const std::string &mes) const
 {
-    MessageOut outMsg(CMSG_CHAT_MESSAGE);
+    createOutPacket(CMSG_CHAT_MESSAGE);
     outMsg.writeInt16(static_cast<int16_t>(mes.length() + 4), "len");
     outMsg.writeString(mes, static_cast<int>(mes.length()), "message");
 }
@@ -176,7 +176,7 @@ void ChatHandler::talkRaw(const std::string &mes) const
 void ChatHandler::privateMessage(const std::string &restrict recipient,
                                  const std::string &restrict text)
 {
-    MessageOut outMsg(CMSG_CHAT_WHISPER);
+    createOutPacket(CMSG_CHAT_WHISPER);
     outMsg.writeInt16(static_cast<int16_t>(text.length() + 28 + 1), "len");
     outMsg.writeString(recipient, 24, "recipient nick");
     outMsg.writeString(text, static_cast<int>(text.length()), "message");
@@ -186,7 +186,7 @@ void ChatHandler::privateMessage(const std::string &restrict recipient,
 
 void ChatHandler::who() const
 {
-    MessageOut outMsg(CMSG_WHO_REQUEST);
+    createOutPacket(CMSG_WHO_REQUEST);
 }
 
 void ChatHandler::sendRaw(const std::string &args) const
@@ -256,34 +256,34 @@ void ChatHandler::processRaw(MessageOut &restrict outMsg,
 
 void ChatHandler::ignoreAll() const
 {
-    MessageOut outMsg(CMSG_IGNORE_ALL);
+    createOutPacket(CMSG_IGNORE_ALL);
     outMsg.writeInt8(0, "flag");
 }
 
 void ChatHandler::unIgnoreAll() const
 {
-    MessageOut outMsg(CMSG_IGNORE_ALL);
+    createOutPacket(CMSG_IGNORE_ALL);
     outMsg.writeInt8(1, "flag");
 }
 
 
 void ChatHandler::ignore(const std::string &nick) const
 {
-    MessageOut outMsg(CMSG_IGNORE_NICK);
+    createOutPacket(CMSG_IGNORE_NICK);
     outMsg.writeString(nick, 24, "nick");
     outMsg.writeInt8(0, "flag");
 }
 
 void ChatHandler::unIgnore(const std::string &nick) const
 {
-    MessageOut outMsg(CMSG_IGNORE_NICK);
+    createOutPacket(CMSG_IGNORE_NICK);
     outMsg.writeString(nick, 24, "nick");
     outMsg.writeInt8(1, "flag");
 }
 
 void ChatHandler::requestIgnoreList() const
 {
-    MessageOut outMsg(CMSG_REQUEST_IGNORE_LIST);
+    createOutPacket(CMSG_REQUEST_IGNORE_LIST);
 }
 
 void ChatHandler::createChatRoom(const std::string &title,
@@ -291,7 +291,7 @@ void ChatHandler::createChatRoom(const std::string &title,
                                  const int limit,
                                  const bool isPublic)
 {
-    MessageOut outMsg(CMSG_CREAYE_CHAT_ROOM);
+    createOutPacket(CMSG_CREAYE_CHAT_ROOM);
     outMsg.writeInt16(static_cast<int16_t>(
         password.size() + title.size() + 5), "len");
     outMsg.writeInt16(static_cast<int16_t>(limit), "limit");
@@ -308,7 +308,7 @@ void ChatHandler::battleTalk(const std::string &text) const
     const std::string mes = std::string(localPlayer->getName()).append(
         " : ").append(text);
 
-    MessageOut outMsg(CMSG_BATTLE_CHAT_MESSAGE);
+    createOutPacket(CMSG_BATTLE_CHAT_MESSAGE);
     // Added + 1 in order to let eAthena parse admin commands correctly
     outMsg.writeInt16(static_cast<int16_t>(mes.length() + 4 + 1), "len");
     outMsg.writeString(mes, static_cast<int>(mes.length() + 1), "message");
@@ -485,7 +485,7 @@ void ChatHandler::joinChat(const ChatObject *const chat,
     if (!chat)
         return;
 
-    MessageOut outMsg(CMSG_CHAT_JOIN);
+    createOutPacket(CMSG_CHAT_JOIN);
     outMsg.writeInt32(chat->chatId, "chat id");
     outMsg.writeString(password, 8, "password");
 }
