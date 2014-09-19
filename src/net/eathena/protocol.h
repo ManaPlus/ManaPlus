@@ -227,6 +227,27 @@
 
 #define SMSG_BANK_STATUS             0x09a6
 
+#define SMSG_SOLVE_CHAR_NAME         0x0194
+#define SMSG_SKILL_CASTING           0x07fb
+#define SMSG_SKILL_CAST_CANCEL       0x01b9
+#define SMSG_SKILL_NO_DAMAGE         0x011a
+#define SMSG_SKILL_GROUND_NO_DAMAGE  0x0117
+#define SMSG_SKILL_ENTRY             0x09ca
+
+#define SMSG_BEING_IP_RESPONSE       0x020c
+#define SMSG_PVP_MAP_MODE            0x0199
+#define SMSG_PVP_SET                 0x019a
+#define SMSG_MAP_TYPE_PROPERTY2      0x099b
+#define SMSG_IGNORE_ALL_RESPONSE     0x00d2
+#define SMSG_ONLINE_LIST             0x0211
+#define SMSG_NPC_COMMAND             0x0212
+
+#define SMSG_MAP_ACCOUNT_ID          0x0283
+#define SMSG_PLAYER_SHORTCUTS        0x07d9
+#define SMSG_PLAYER_SHOW_EQUIP       0x02da
+#define SMSG_NPC_CUTIN               0x01b3
+#define SMSG_NPC_VIEWPOINT           0x0144
+
 /**********************************
  *  Packets from client to server *
  **********************************/
@@ -401,26 +422,5 @@
 #define CMSG_BANK_DEPOSIT            0x09a7
 #define CMSG_BANK_WITHDRAW           0x09a9
 #define CMSG_BANK_CHECK              0x09ab
-
-#define SMSG_SOLVE_CHAR_NAME         0x0194
-#define SMSG_SKILL_CASTING           0x07fb
-#define SMSG_SKILL_CAST_CANCEL       0x01b9
-#define SMSG_SKILL_NO_DAMAGE         0x011a
-#define SMSG_SKILL_GROUND_NO_DAMAGE  0x0117
-#define SMSG_SKILL_ENTRY             0x09ca
-
-#define SMSG_BEING_IP_RESPONSE       0x020c
-#define SMSG_PVP_MAP_MODE            0x0199
-#define SMSG_PVP_SET                 0x019a
-#define SMSG_MAP_TYPE_PROPERTY2      0x099b
-#define SMSG_IGNORE_ALL_RESPONSE     0x00d2
-#define SMSG_ONLINE_LIST             0x0211
-#define SMSG_NPC_COMMAND             0x0212
-
-#define SMSG_MAP_ACCOUNT_ID          0x0283
-#define SMSG_PLAYER_SHORTCUTS        0x07d9
-#define SMSG_PLAYER_SHOW_EQUIP       0x02da
-#define SMSG_NPC_CUTIN               0x01b3
-#define SMSG_NPC_VIEWPOINT           0x0144
 
 #endif  // NET_EATHENA_PROTOCOL_H
