@@ -38,7 +38,7 @@
 namespace TmwAthena
 {
 
-MessageOut::MessageOut(const int16_t id) :
+MessageOut::MessageOut(const int16_t id, const char *const str) :
     Net::MessageOut(id),
     mNetwork(TmwAthena::Network::instance())
 {
@@ -46,7 +46,7 @@ MessageOut::MessageOut(const int16_t id) :
     mData = mNetwork->mOutBuffer + static_cast<size_t>(mNetwork->mOutSize);
 
     // +++ can be issue. call to virtual member
-    writeInt16(id, "packet id");
+    writeInt16(id, str);
 }
 
 void MessageOut::expand(const size_t bytes)
