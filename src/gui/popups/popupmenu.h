@@ -177,6 +177,8 @@ class PopupMenu final : public Popup, public LinkHandler
 
         void addWindowMenu(Window *const window);
 
+        void addChat(const Being *const being);
+
         void showGMPopup();
 
         BrowserBox *mBrowserBox;

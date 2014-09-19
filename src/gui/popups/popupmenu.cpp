@@ -68,6 +68,7 @@
 #include "net/adminhandler.h"
 #include "net/beinghandler.h"
 #include "net/buysellhandler.h"
+#include "net/chathandler.h"
 #include "net/guildhandler.h"
 #include "net/inventoryhandler.h"
 #include "net/net.h"
@@ -76,6 +77,7 @@
 #include "net/serverfeatures.h"
 #include "net/tradehandler.h"
 
+#include "resources/chatobject.h"
 #include "resources/iteminfo.h"
 #include "resources/mapitemtype.h"
 #include "resources/skillconsts.h"
@@ -235,6 +237,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
             mBrowserBox->addRow("move", _("Move"));
             addPlayerMisc();
             addBuySell(being);
+            addChat(being);
             break;
         }
 
@@ -257,6 +260,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
             // TRANSLATORS: popup menu item
             // TRANSLATORS: add comment to npc
             mBrowserBox->addRow("addcomment", _("Add comment"));
+            addChat(being);
             break;
 
         case ActorType::Monster:
@@ -1818,6 +1822,12 @@ void PopupMenu::handleLink(const std::string &link,
         if (Widget::widgetExists(mWindow))
             mWindow->setSticky(true);
     }
+    else if (link == "join chat" && being)
+    {
+        const ChatObject *const chat = being->getChat();
+        if (chat)
+            chatHandler->joinChat(chat, "");
+    }
     else if (!link.compare(0, 10, "guild-pos-"))
     {
         if (localPlayer)
@@ -2728,6 +2738,21 @@ void PopupMenu::addParty(const std::string &nick)
             }
             mBrowserBox->addRow("##3---");
         }
+    }
+}
+
+void PopupMenu::addChat(const Being *const being)
+{
+    if (!being)
+        return;
+    const ChatObject *const chat = being->getChat();
+    if (chat)
+    {
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: invite player to party
+        mBrowserBox->addRow("join chat",
+            strprintf(_("Join chat %s"), chat->title.c_str()).c_str());
+        mBrowserBox->addRow("##3---");
     }
 }
 
