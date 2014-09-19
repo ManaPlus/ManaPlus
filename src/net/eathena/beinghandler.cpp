@@ -916,11 +916,6 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
 
     if (!dstBeing)
     {
-        // Being with id >= 110000000 and job 0 are better
-        // known as ghosts, so don't create those.
-        if (job == 0 && id >= 110000000)
-            return;
-
         if (actorManager->isBlocked(id) == true)
             return;
 
@@ -1091,11 +1086,6 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
 
     if (!dstBeing)
     {
-        // Being with id >= 110000000 and job 0 are better
-        // known as ghosts, so don't create those.
-        if (job == 0 && id >= 110000000)
-            return;
-
         if (actorManager->isBlocked(id) == true)
             return;
 
@@ -1262,11 +1252,6 @@ void BeingHandler::processBeingSpawn(Net::MessageIn &msg)
 
     if (!dstBeing)
     {
-        // Being with id >= 110000000 and job 0 are better
-        // known as ghosts, so don't create those.
-        if (job == 0 && id >= 110000000)
-            return;
-
         if (actorManager->isBlocked(id) == true)
             return;
 
