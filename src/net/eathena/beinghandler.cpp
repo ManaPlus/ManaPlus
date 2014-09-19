@@ -65,6 +65,7 @@ BeingHandler::BeingHandler(const bool enableSync) :
         SMSG_BEING_MOVE,
         SMSG_BEING_MOVE2,
         SMSG_BEING_REMOVE,
+        SMSG_BEING_REMOVE_SKILL,
         SMSG_SKILL_DAMAGE,
         SMSG_BEING_ACTION,
         SMSG_BEING_ACTION2,
@@ -136,6 +137,10 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_BEING_REMOVE:
             processBeingRemove(msg);
+            break;
+
+        case SMSG_BEING_REMOVE_SKILL:
+            processBeingRemoveSkil(msg);
             break;
 
         case SMSG_BEING_RESURRECT:
@@ -1802,6 +1807,12 @@ void BeingHandler::processPlayerGuilPartyInfo(Net::MessageIn &msg) const
         dstBeing->addToCache();
     }
     BLOCK_END("BeingHandler::processPlayerGuilPartyInfo")
+}
+
+void BeingHandler::processBeingRemoveSkil(Net::MessageIn &msg) const
+{
+    // +++ if skill unit was added, here need remove it from actors
+    msg.readInt32("skill unit id");
 }
 
 }  // namespace EAthena

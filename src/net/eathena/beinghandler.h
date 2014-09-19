@@ -109,6 +109,8 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
         void processBeingResurrect(Net::MessageIn &msg) const;
 
         void processPlayerGuilPartyInfo(Net::MessageIn &msg) const;
+
+        void processBeingRemoveSkil(Net::MessageIn &msg) const;
 };
 
 }  // namespace EAthena
