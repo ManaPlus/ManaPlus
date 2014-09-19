@@ -215,6 +215,7 @@
 #define SMSG_CHAT_IGNORE_LIST        0x00d4
 #define SMSG_CHAT_DISPLAY            0x00d7
 #define SMSG_CHAT_JOIN_ACK           0x00db
+#define SMSG_CHAT_LEAVE              0x00dd
 
 #define SMSG_MAIL_OPEN_WINDOW        0x0260
 

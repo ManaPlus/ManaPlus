@@ -69,6 +69,7 @@ ChatHandler::ChatHandler() :
         SMSG_FORMAT_MESSAGE_SKILL,
         SMSG_CHAT_DISPLAY,
         SMSG_CHAT_JOIN_ACK,
+        SMSG_CHAT_LEAVE,
         0
     };
     handledMessages = _messages;
@@ -139,6 +140,10 @@ void ChatHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_CHAT_JOIN_ACK:
             processChatJoinAck(msg);
+            break;
+
+        case SMSG_CHAT_LEAVE:
+            processChatLeave(msg);
             break;
 
         default:
@@ -494,6 +499,13 @@ void ChatHandler::processChatJoinAck(Net::MessageIn &msg)
         msg.readInt32("role");
         msg.readString(24, "name");
     }
+}
+
+void ChatHandler::processChatLeave(Net::MessageIn &msg)
+{
+    msg.readInt16("users");
+    msg.readString(24, "name");
+    msg.readUInt8("flag");  // 0 - left, 1 - kicked
 }
 
 }  // namespace EAthena
