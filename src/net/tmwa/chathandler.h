@@ -72,6 +72,9 @@ class ChatHandler final : public MessageHandler, public Ea::ChatHandler
 
         void battleTalk(const std::string &text) const override final;
 
+        void joinChat(const ChatObject *const chat,
+                      const std::string &password) const override final;
+
     protected:
         void processChat(Net::MessageIn &msg);
 

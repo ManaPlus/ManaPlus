@@ -23,10 +23,13 @@
 #ifndef NET_CHATHANDLER_H
 #define NET_CHATHANDLER_H
 
+
 #include <iosfwd>
 #include <string>
 
 #include "localconsts.h"
+
+struct ChatObject;
 
 namespace Net
 {
@@ -72,6 +75,9 @@ class ChatHandler notfinal
                                     const bool isPublic) = 0;
 
         virtual void battleTalk(const std::string &text) const = 0;
+
+        virtual void joinChat(const ChatObject *const chat,
+                              const std::string &password) const = 0;
 };
 
 }  // namespace Net

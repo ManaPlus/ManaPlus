@@ -469,4 +469,15 @@ void ChatHandler::processChatDisplay(Net::MessageIn &msg)
         dstBeing->setChat(obj);
 }
 
+void ChatHandler::joinChat(const ChatObject *const chat,
+                           const std::string &password) const
+{
+    if (!chat)
+        return;
+
+    MessageOut outMsg(CMSG_CHAT_JOIN);
+    outMsg.writeInt32(chat->chatId, "chat id");
+    outMsg.writeString(password, 8, "password");
+}
+
 }  // namespace EAthena

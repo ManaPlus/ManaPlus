@@ -453,4 +453,9 @@ void ChatHandler::processWhisperResponse(Net::MessageIn &msg)
     processWhisperResponseContinue(type);
 }
 
+void ChatHandler::joinChat(const ChatObject *const chat A_UNUSED,
+                           const std::string &password A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena
