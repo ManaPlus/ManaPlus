@@ -38,6 +38,10 @@ class MercenaryHandler final : public MessageHandler,
         A_DELETE_COPY(MercenaryHandler)
 
         void handleMessage(Net::MessageIn &msg) override final;
+
+    protected:
+        void processMercenaryUpdate(Net::MessageIn &msg);
+
 };
 
 }  // namespace EAthena

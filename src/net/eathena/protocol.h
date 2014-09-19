@@ -248,6 +248,8 @@
 #define SMSG_NPC_CUTIN               0x01b3
 #define SMSG_NPC_VIEWPOINT           0x0144
 
+#define SMSG_MERCENARY_UPDATE        0x02a2
+
 /**********************************
  *  Packets from client to server *
  **********************************/

@@ -39,6 +39,7 @@ MercenaryHandler::MercenaryHandler() :
 {
     static const uint16_t _messages[] =
     {
+        SMSG_MERCENARY_UPDATE,
         0
     };
     handledMessages = _messages;
@@ -49,9 +50,20 @@ void MercenaryHandler::handleMessage(Net::MessageIn &msg)
 {
     switch (msg.getId())
     {
+        case SMSG_MERCENARY_UPDATE:
+            processMercenaryUpdate(msg);
+            break;
+
         default:
             break;
     }
+}
+
+void MercenaryHandler::processMercenaryUpdate(Net::MessageIn &msg)
+{
+    // +++ need create if need mercenary being and update stat
+    msg.readInt16("type");
+    msg.readInt32("value");
 }
 
 }  // namespace EAthena
