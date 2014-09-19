@@ -53,7 +53,7 @@ void MessageOut::writeInt8(const int8_t value, const char *const str)
 {
     expand(1);
     mData[mPos] = value;
-    DEBUGLOG2("writeInt8: " + toStringPrint(static_cast<unsigned int>(
+    DEBUGLOG2("writeInt8:  " + toStringPrint(static_cast<unsigned int>(
         static_cast<uint8_t>(value))),
         mPos, str);
     mPos += 1;
