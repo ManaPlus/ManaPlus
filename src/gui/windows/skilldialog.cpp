@@ -57,6 +57,17 @@
 
 SkillDialog *skillDialog = nullptr;
 
+static SkillOwner::Type parseOwner(const std::string &str)
+{
+    if (str == "player")
+        return SkillOwner::Player;
+    else if (str == "mercenary")
+        return SkillOwner::Mercenary;
+    else if (str == "homunculus")
+        return SkillOwner::Homunculus;
+    return SkillOwner::Player;
+}
+
 SkillDialog::SkillDialog() :
     // TRANSLATORS: skills dialog name
     Window(_("Skills"), false, nullptr, "skills.xml"),
@@ -201,12 +212,12 @@ void SkillDialog::clearSkills()
     mDurations.clear();
 }
 
-void SkillDialog::hideSkills()
+void SkillDialog::hideSkills(const SkillOwner::Type owner)
 {
     FOR_EACH (SkillMap::iterator, it, mSkills)
     {
         SkillInfo *const info = (*it).second;
-        if (info)
+        if (info && info->owner == owner)
             info->visible = false;
     }
 }
@@ -280,6 +291,8 @@ void SkillDialog::loadXmlFile(const std::string &fileName)
                         skill->update();
                         skill->useButton = XML::getProperty(
                             node, "useButton", _("Use"));
+                        skill->owner = parseOwner(XML::getProperty(
+                            node, "owner", "player"));
                         model->addSkill(skill);
                         mSkills[id] = skill;
                     }
@@ -367,7 +380,8 @@ bool SkillDialog::updateSkill(const int id,
     return false;
 }
 
-void SkillDialog::addSkill(const int id,
+void SkillDialog::addSkill(const SkillOwner::Type owner,
+                           const int id,
                            const std::string &name,
                            const int level,
                            const int range,
@@ -380,6 +394,7 @@ void SkillDialog::addSkill(const int id,
         SkillInfo *const skill = new SkillInfo;
         skill->id = static_cast<unsigned int>(id);
         skill->type = type;
+        skill->owner = owner;
         SkillData *const data = skill->data;
         if (name.empty())
         {
@@ -427,13 +442,15 @@ SkillInfo* SkillDialog::getSkillByItem(const int itemId) const
     return nullptr;
 }
 
-void SkillDialog::setSkillDuration(const int id, const int duration)
+void SkillDialog::setSkillDuration(const SkillOwner::Type owner,
+                                   const int id,
+                                   const int duration)
 {
     SkillMap::const_iterator it = mSkills.find(id);
     SkillInfo *info = nullptr;
     if (it == mSkills.end())
     {
-        addSkill(id, "", 0, 0, false, SkillType::Unknown, 0);
+        addSkill(owner, id, "", 0, 0, false, SkillType::Unknown, 0);
         it = mSkills.find(id);
     }
     if (it != mSkills.end())

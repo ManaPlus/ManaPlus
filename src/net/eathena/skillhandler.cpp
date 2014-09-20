@@ -127,7 +127,7 @@ void SkillHandler::processPlayerSkills(Net::MessageIn &msg)
     int updateSkill = 0;
 
     if (skillDialog)
-        skillDialog->hideSkills();
+        skillDialog->hideSkills(SkillOwner::Player);
     for (int k = 0; k < skillCount; k++)
     {
         const int skillId = msg.readInt16("skill id");
@@ -145,7 +145,10 @@ void SkillHandler::processPlayerSkills(Net::MessageIn &msg)
         if (skillDialog)
         {
             if (!skillDialog->updateSkill(skillId, range, up, inf, sp))
-                skillDialog->addSkill(skillId, name, level, range, up, inf, sp);
+            {
+                skillDialog->addSkill(SkillOwner::Player,
+                    skillId, name, level, range, up, inf, sp);
+            }
         }
     }
     if (updateSkill && skillDialog)
@@ -157,7 +160,7 @@ void SkillHandler::processSkillCoolDown(Net::MessageIn &msg)
     const int skillId = msg.readInt16("skill id");
     const int duration = msg.readInt32("duration");
     if (skillDialog)
-        skillDialog->setSkillDuration(skillId, duration);
+        skillDialog->setSkillDuration(SkillOwner::Player, skillId, duration);
 }
 
 void SkillHandler::processSkillCoolDownList(Net::MessageIn &msg)
@@ -169,7 +172,10 @@ void SkillHandler::processSkillCoolDownList(Net::MessageIn &msg)
         msg.readInt32("total");
         const int duration = msg.readInt32("duration");
         if (skillDialog)
-            skillDialog->setSkillDuration(skillId, duration);
+        {
+            skillDialog->setSkillDuration(SkillOwner::Player,
+                skillId, duration);
+        }
     }
 }
 

@@ -27,6 +27,7 @@
 
 #include "listeners/actionlistener.h"
 
+#include "resources/skillowner.h"
 #include "resources/skilltype.h"
 
 class Button;
@@ -73,7 +74,7 @@ class SkillDialog final : public Window,
 
         void clearSkills();
 
-        void hideSkills();
+        void hideSkills(const SkillOwner::Type owner);
 
         void loadSkills();
 
@@ -83,7 +84,8 @@ class SkillDialog final : public Window,
                          const SkillType::SkillType type,
                          const int sp);
 
-        void addSkill(const int id,
+        void addSkill(const SkillOwner::Type owner,
+                      const int id,
                       const std::string &name,
                       const int level,
                       const int range,
@@ -95,7 +97,9 @@ class SkillDialog final : public Window,
 
         SkillInfo* getSkillByItem(const int itemId) const A_WARN_UNUSED;
 
-        void setSkillDuration(const int id, const int duration);
+        void setSkillDuration(const SkillOwner::Type owner,
+                              const int id,
+                              const int duration);
 
         bool hasSkills() const A_WARN_UNUSED
         { return !mSkills.empty(); }

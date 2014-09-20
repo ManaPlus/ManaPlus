@@ -91,7 +91,8 @@ void SkillHandler::processPlayerSkillUp(Net::MessageIn &msg)
         if (!skillDialog->updateSkill(skillId, range,
             up, SkillType::Unknown, sp))
         {
-            skillDialog->addSkill(skillId, "", level,
+            skillDialog->addSkill(SkillOwner::Player,
+                skillId, "", level,
                 range, up, SkillType::Unknown, sp);
         }
     }

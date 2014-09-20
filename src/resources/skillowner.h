@@ -30,6 +30,6 @@ namespace SkillOwner
         Homunculus = 2
     };
 
-};
+}
 
 #endif  // RESOURCES_SKILLOWNER_H

@@ -136,7 +136,10 @@ void SkillHandler::processPlayerSkills(Net::MessageIn &msg)
         if (skillDialog)
         {
             if (!skillDialog->updateSkill(skillId, range, up, inf, sp))
-                skillDialog->addSkill(skillId, "", level, range, up, inf, sp);
+            {
+                skillDialog->addSkill(SkillOwner::Player,
+                    skillId, "", level, range, up, inf, sp);
+            }
         }
     }
     if (updateSkill && skillDialog)
