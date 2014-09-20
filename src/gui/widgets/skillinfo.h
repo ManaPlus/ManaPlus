@@ -25,6 +25,7 @@
 
 #include "gui/color.h"
 
+#include "resources/skillowner.h"
 #include "resources/skilltype.h"
 
 #include <vector>
@@ -61,6 +62,7 @@ struct SkillInfo final
     int durationTime;
     int cooldown;
     SkillType::SkillType type;
+    SkillOwner::Type owner;
     bool modifiable;
     bool visible;
 

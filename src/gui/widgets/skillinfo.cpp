@@ -54,6 +54,7 @@ SkillInfo::SkillInfo() :
     durationTime(0),
     cooldown(0),
     type(SkillType::Unknown),
+    owner(SkillOwner::Player),
     modifiable(false),
     visible(false)
 {
