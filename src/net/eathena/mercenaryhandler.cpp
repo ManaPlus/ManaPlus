@@ -24,6 +24,9 @@
 #include "logger.h"
 
 #include "being/being.h"
+#include "being/playerinfo.h"
+
+#include "gui/windows/skilldialog.h"
 
 #include "net/ea/eaprotocol.h"
 
@@ -112,17 +115,28 @@ void MercenaryHandler::processMercenaryInfo(Net::MessageIn &msg)
 
 void MercenaryHandler::processMercenarySkills(Net::MessageIn &msg)
 {
-    // +++ need create if need mercenary being and update stats
+    if (skillDialog)
+        skillDialog->hideSkills(SkillOwner::Mercenary);
     const int count = (msg.readInt16("len") - 4) / 37;
     for (int f = 0; f < count; f ++)
     {
-        msg.readInt16("skill id");
-        msg.readInt32("inf");
-        msg.readInt16("level");
-        msg.readInt16("sp");
-        msg.readInt16("attack range");
-        msg.readString(24, "name");
-        msg.readUInt8("upgradable");
+        const int skillId = msg.readInt16("skill id");
+        const SkillType::SkillType inf = static_cast<SkillType::SkillType>(
+            msg.readInt32("inf"));
+        const int level = msg.readInt16("skill level");
+        const int sp = msg.readInt16("sp");
+        const int range = msg.readInt16("range");
+        const std::string name = msg.readString(24, "skill name");
+        const int up = msg.readUInt8("up flag");
+        PlayerInfo::setSkillLevel(skillId, level);
+        if (skillDialog)
+        {
+            if (!skillDialog->updateSkill(skillId, range, up, inf, sp))
+            {
+                skillDialog->addSkill(SkillOwner::Mercenary,
+                    skillId, name, level, range, up, inf, sp);
+            }
+        }
     }
 }
 
