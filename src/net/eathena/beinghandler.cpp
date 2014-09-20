@@ -285,6 +285,47 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
     }
 }
 
+Being *BeingHandler::createBeing2(const int id,
+                                  const int16_t job,
+                                  const BeingType::BeingType beingType) const
+{
+    if (!actorManager)
+        return nullptr;
+
+    ActorType::Type type = ActorType::Unknown;
+    switch (beingType)
+    {
+        case BeingType::PC:
+            type = ActorType::Player;
+            break;
+        case BeingType::NPC:
+        case BeingType::NPC_EVENT:
+            type = ActorType::Npc;
+            break;
+        case BeingType::MONSTER:
+            type = ActorType::Monster;
+            break;
+        case BeingType::ITEM:
+        case BeingType::SKILL:
+        case BeingType::ELEMENTAL:
+            logger->log("not supported object type: %d, job: %d",
+                static_cast<int>(beingType), static_cast<int>(job));
+            break;
+        case BeingType::CHAT:
+        case BeingType::PET:
+        case BeingType::HOMUN:
+        case BeingType::MERSOL:
+            type = ActorType::Monster;
+            logger->log("not supported object type: %d, job: %d",
+                static_cast<int>(beingType), static_cast<int>(job));
+            break;
+    }
+    if (job == 45 && beingType == BeingType::NPC_EVENT)
+        type = ActorType::Portal;
+
+    return actorManager->createBeing(id, type, job);
+}
+
 void BeingHandler::undress(Being *const being) const
 {
     being->setSprite(SPRITE_BOTTOMCLOTHES, 0);
@@ -885,7 +926,8 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
         return;
 
     msg.readInt16("len");
-    msg.readUInt8("object type");
+    const BeingType::BeingType type = static_cast<BeingType::BeingType>(
+        msg.readUInt8("object type"));
 
     // Information about a being in range
     const int id = msg.readInt32("being id");
@@ -919,7 +961,7 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
         if (actorManager->isBlocked(id) == true)
             return;
 
-        dstBeing = createBeing(id, job);
+        dstBeing = createBeing2(id, job, type);
 
         if (!dstBeing)
             return;
@@ -1047,7 +1089,8 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
         return;
 
     msg.readInt16("len");
-    msg.readUInt8("object type");
+    const BeingType::BeingType type = static_cast<BeingType::BeingType>(
+        msg.readUInt8("object type"));
 
     // Information about a being in range
     const int id = msg.readInt32("being id");
@@ -1089,7 +1132,7 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
         if (actorManager->isBlocked(id) == true)
             return;
 
-        dstBeing = createBeing(id, job);
+        dstBeing = createBeing2(id, job, type);
 
         if (!dstBeing)
             return;
@@ -1217,7 +1260,8 @@ void BeingHandler::processBeingSpawn(Net::MessageIn &msg)
         return;
 
     msg.readInt16("len");
-    msg.readUInt8("object type");
+    const BeingType::BeingType type = static_cast<BeingType::BeingType>(
+        msg.readUInt8("object type"));
 
     // Information about a being in range
     const int id = msg.readInt32("being id");
@@ -1255,7 +1299,7 @@ void BeingHandler::processBeingSpawn(Net::MessageIn &msg)
         if (actorManager->isBlocked(id) == true)
             return;
 
-        dstBeing = createBeing(id, job);
+        dstBeing = createBeing2(id, job, type);
 
         if (!dstBeing)
             return;

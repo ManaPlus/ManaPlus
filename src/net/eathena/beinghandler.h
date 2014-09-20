@@ -25,6 +25,7 @@
 
 #include "net/ea/beinghandler.h"
 
+#include "net/eathena/beingtype.h"
 #include "net/eathena/messagehandler.h"
 
 namespace EAthena
@@ -46,6 +47,10 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
         void requestRanks(const Rank::Rank rank) const override final;
 
     protected:
+        Being *createBeing2(const int id,
+                            const int16_t job,
+                            const BeingType::BeingType beingType) const;
+
         void processBeingChangeLook(Net::MessageIn &msg) const;
 
         void processBeingChangeLook2(Net::MessageIn &msg) const;
@@ -97,7 +102,6 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
 
         void viewPlayerEquipment(const Being *const being) override final;
 
-    protected:
         void processSkillGroundNoDamage(Net::MessageIn &msg) const;
 
         void processSkillEntry(Net::MessageIn &msg) const;
