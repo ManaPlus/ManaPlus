@@ -221,7 +221,7 @@ Being::Being(const int id,
     setMap(map);
     setSubtype(subtype, 0);
 
-    if (mType == ActorType::Player)
+    if (mType == ActorType::Player || mType == ActorType::Mercenary)
         mShowName = config.getBoolValue("visiblenames");
     else if (mType != ActorType::Npc)
         mGotComment = true;
@@ -838,7 +838,7 @@ void Being::setName(const std::string &name)
     {
         mName = name;
 
-        if (mType == ActorType::Player && getShowName())
+        if (getShowName())
             showName();
     }
 }

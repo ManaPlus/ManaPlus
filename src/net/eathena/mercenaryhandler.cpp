@@ -20,7 +20,10 @@
 
 #include "net/eathena/mercenaryhandler.h"
 
+#include "actormanager.h"
 #include "logger.h"
+
+#include "being/being.h"
 
 #include "net/ea/eaprotocol.h"
 
@@ -79,7 +82,7 @@ void MercenaryHandler::processMercenaryUpdate(Net::MessageIn &msg)
 void MercenaryHandler::processMercenaryInfo(Net::MessageIn &msg)
 {
     // +++ need create if need mercenary being and update stats
-    msg.readInt32("account id");  // owner
+    Being *const dstBeing = actorManager->findBeing(msg.readInt32("being id"));
     msg.readInt16("atk");
     msg.readInt16("matk");
     msg.readInt16("hit");
@@ -88,8 +91,8 @@ void MercenaryHandler::processMercenaryInfo(Net::MessageIn &msg)
     msg.readInt16("mdef");
     msg.readInt16("flee");
     msg.readInt16("attack speed");
-    msg.readString(24, "name");
-    msg.readInt16("level");
+    const std::string name = msg.readString(24, "name");
+    const int level = msg.readInt16("level");
     msg.readInt32("hp");
     msg.readInt32("max hp");
     msg.readInt32("sp");
@@ -98,7 +101,13 @@ void MercenaryHandler::processMercenaryInfo(Net::MessageIn &msg)
     msg.readInt16("faith");
     msg.readInt32("calls");
     msg.readInt32("kills");
-    msg.readInt16("attack range");
+    const int range = msg.readInt16("attack range");
+    if (dstBeing)
+    {
+        dstBeing->setName(name);
+        dstBeing->setLevel(level);
+        dstBeing->setAttackRange(range);
+    }
 }
 
 void MercenaryHandler::processMercenarySkills(Net::MessageIn &msg)
