@@ -24,6 +24,7 @@
 #include "logger.h"
 
 #include "being/being.h"
+#include "being/localplayer.h"
 #include "being/playerinfo.h"
 
 #include "gui/windows/skilldialog.h"
@@ -110,6 +111,8 @@ void MercenaryHandler::processMercenaryInfo(Net::MessageIn &msg)
         dstBeing->setName(name);
         dstBeing->setLevel(level);
         dstBeing->setAttackRange(range);
+        if (localPlayer)
+            localPlayer->setMercenary(dstBeing->getId());
     }
 }
 

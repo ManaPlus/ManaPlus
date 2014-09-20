@@ -38,6 +38,7 @@
 #include "gui/windows/botcheckerwindow.h"
 #include "gui/windows/chatwindow.h"
 #include "gui/windows/equipmentwindow.h"
+#include "gui/windows/skilldialog.h"
 #include "gui/windows/socialwindow.h"
 #include "gui/windows/questswindow.h"
 
@@ -800,21 +801,31 @@ void ActorManager::logic()
     BLOCK_START("ActorManager::logic 1")
     FOR_EACH (ActorSpritesConstIterator, it, mDeleteActors)
     {
-        if (!*it)
+        const ActorSprite *const actor = *it;
+        if (!actor)
             continue;
 
-        if ((*it) && (*it)->getType() == ActorType::Player)
+        const ActorType::Type &type = actor->getType();
+        if (type == ActorType::Player)
         {
-            const Being *const being = static_cast<const Being*>(*it);
+            const Being *const being = static_cast<const Being*>(actor);
             being->addToCache();
             if (beingEquipmentWindow)
                 beingEquipmentWindow->resetBeing(being);
         }
+        else if (localPlayer && type == ActorType::Mercenary)
+        {
+            if (actor->getId() == localPlayer->getMercenary())
+            {
+                localPlayer->setMercenary(0);
+                skillDialog->hideSkills(SkillOwner::Mercenary);
+            }
+        }
         if (localPlayer)
         {
-            if (localPlayer->getTarget() == *it)
+            if (localPlayer->getTarget() == actor)
                 localPlayer->setTarget(nullptr);
-            if (localPlayer->getPickUpTarget() == *it)
+            if (localPlayer->getPickUpTarget() == actor)
                 localPlayer->unSetPickUpTarget();
         }
         if (viewport)

@@ -403,6 +403,12 @@ class LocalPlayer final : public Being,
         AwayListener *getAwayListener() const A_WARN_UNUSED
         { return mAwayListener; }
 
+        void setMercenary(const int id)
+        { mMercenaryId = id; }
+
+        int getMercenary() const
+        { return mMercenaryId; }
+
     protected:
         void updateCoords() override final;
 
@@ -484,6 +490,7 @@ class LocalPlayer final : public Being,
         std::string mTestParticleName;
         int mTestParticleTime;
         unsigned long mTestParticleHash;
+        int mMercenaryId;
         unsigned char mWalkingDir;  // The direction the player is walking in.
         /** Whether or not the name settings have changed */
         bool mUpdateName;
