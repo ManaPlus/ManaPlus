@@ -305,6 +305,9 @@ Being *BeingHandler::createBeing2(const int id,
         case BeingType::MONSTER:
             type = ActorType::Monster;
             break;
+        case BeingType::MERSOL:
+            type = ActorType::Mercenary;
+            break;
         case BeingType::ITEM:
         case BeingType::SKILL:
         case BeingType::ELEMENTAL:
@@ -314,7 +317,6 @@ Being *BeingHandler::createBeing2(const int id,
         case BeingType::CHAT:
         case BeingType::PET:
         case BeingType::HOMUN:
-        case BeingType::MERSOL:
             type = ActorType::Monster;
             logger->log("not supported object type: %d, job: %d",
                 static_cast<int>(beingType), static_cast<int>(job));

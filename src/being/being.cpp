@@ -292,7 +292,7 @@ void Being::setSubtype(const uint16_t subtype, const uint8_t look)
     mSubType = subtype;
     mLook = look;
 
-    if (mType == ActorType::Monster)
+    if (mType == ActorType::Monster || mType == ActorType::Mercenary)
     {
         mInfo = MonsterDB::get(mSubType);
         if (mInfo)
@@ -544,7 +544,7 @@ void Being::takeDamage(Being *const attacker, const int amount,
             color = &userPalette->getColor(UserPalette::MISS);
         }
     }
-    else if (mType == ActorType::Monster)
+    else if (mType == ActorType::Monster || mType == ActorType::Mercenary)
     {
         if (attacker == localPlayer)
         {
@@ -2909,6 +2909,7 @@ std::string Being::loadComment(const std::string &name,
         case ActorType::Portal:
         case ActorType::LocalPet:
         case ActorType::Avatar:
+        case ActorType::Mercenary:
         default:
             return "";
     }
