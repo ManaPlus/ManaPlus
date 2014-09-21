@@ -889,6 +889,7 @@ SET(SRCS
     localconsts.h
     being/localplayer.cpp
     being/localplayer.h
+    being/mercenaryinfo.h
     being/pickup.h
     logger.cpp
     logger.h

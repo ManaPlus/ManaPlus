@@ -259,7 +259,11 @@ Being::~Being()
     delete2(mChat);
 
     if (mOwner)
-        mOwner->unassignPet(this);
+    {
+        if (mType == ActorType::LocalPet)
+            mOwner->unassignPet(this);
+        mOwner = nullptr;
+    }
     FOR_EACH (std::vector<Being*>::iterator, it, mPets)
     {
         Being *pet = *it;

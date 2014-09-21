@@ -813,6 +813,7 @@ void ActorManager::logic()
             if (beingEquipmentWindow)
                 beingEquipmentWindow->resetBeing(being);
         }
+/*
         else if (localPlayer && type == ActorType::Mercenary)
         {
             if (actor->getId() == localPlayer->getMercenary())
@@ -825,6 +826,7 @@ void ActorManager::logic()
                 }
             }
         }
+*/
         if (localPlayer)
         {
             if (localPlayer->getTarget() == actor)

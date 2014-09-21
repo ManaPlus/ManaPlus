@@ -25,6 +25,7 @@
 
 #include "being/being.h"
 #include "being/localplayer.h"
+#include "being/mercenaryinfo.h"
 #include "being/playerinfo.h"
 
 #include "gui/windows/skilldialog.h"
@@ -111,8 +112,14 @@ void MercenaryHandler::processMercenaryInfo(Net::MessageIn &msg)
         dstBeing->setName(name);
         dstBeing->setLevel(level);
         dstBeing->setAttackRange(range);
+        dstBeing->setOwner(localPlayer);
         if (localPlayer)
-            localPlayer->setMercenary(dstBeing->getId());
+        {
+            MercenaryInfo *const mercenary = new MercenaryInfo;
+            mercenary->id = dstBeing->getId();
+            mercenary->name = name;
+            PlayerInfo::setMercenary(mercenary);
+        }
     }
 }
 

@@ -26,6 +26,7 @@
 #include "inventory.h"
 
 #include "being/attributes.h"
+#include "being/mercenaryinfo.h"
 
 #include "itemsoundmanager.h"
 
@@ -53,6 +54,7 @@ int mCharId = 0;
 
 Inventory *mInventory = nullptr;
 Equipment *mEquipment = nullptr;
+MercenaryInfo *mMercenary = nullptr;
 
 bool mTrading = false;
 int mLevelProgress = 0;
@@ -388,6 +390,7 @@ void init()
 void deinit()
 {
     clearInventory();
+    delete2(mMercenary);
 }
 
 void loadData()
@@ -460,6 +463,18 @@ void unprotectItem(const int id)
 bool isItemProtected(const int id)
 {
     return mProtectedItems.find(id) != mProtectedItems.end();
+}
+
+void setMercenary(MercenaryInfo *const info)
+{
+    if (mMercenary)
+        delete mMercenary;
+    mMercenary = info;
+}
+
+MercenaryInfo *getMercenary()
+{
+    return mMercenary;
 }
 
 }  // namespace PlayerInfo

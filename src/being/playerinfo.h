@@ -62,6 +62,8 @@ class FloorItem;
 class Inventory;
 class Item;
 
+struct MercenaryInfo;
+
 /**
  * A database like namespace which holds global info about the localplayer
  *
@@ -233,6 +235,10 @@ namespace PlayerInfo
     void unprotectItem(const int id);
 
     bool isItemProtected(const int id);
+
+    MercenaryInfo *getMercenary();
+
+    void setMercenary(MercenaryInfo *const info);
 
 }  // namespace PlayerInfo
 
