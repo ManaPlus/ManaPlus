@@ -66,4 +66,9 @@ impHandler0(targetNPC)
     return setTarget(ActorType::Npc, true);
 }
 
+impHandler0(targetMercenary)
+{
+    return setTarget(ActorType::Mercenary, true);
+}
+
 }  // namespace Actions

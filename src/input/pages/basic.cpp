@@ -129,6 +129,12 @@ SetupActionData setupActionDataBasic[] =
     },
     {
         // TRANSLATORS: input action name
+        N_("Target mercenary"),
+        InputAction::TARGET_MERCENARY,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
         N_("Catch pet"),
         InputAction::CATCH_PET,
         "",

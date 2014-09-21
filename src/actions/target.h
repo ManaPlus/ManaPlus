@@ -31,6 +31,7 @@ namespace Actions
     decHandler(targetMonster);
     decHandler(targetClosestMonster);
     decHandler(targetNPC);
+    decHandler(targetMercenary);
 }  // namespace Actions
 
 #undef decHandler
