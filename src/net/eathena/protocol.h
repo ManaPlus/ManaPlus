@@ -427,4 +427,6 @@
 #define CMSG_BANK_WITHDRAW           0x09a9
 #define CMSG_BANK_CHECK              0x09ab
 
+#define SMSG_MERCENARY_ACTION        0x029f
+
 #endif  // NET_EATHENA_PROTOCOL_H

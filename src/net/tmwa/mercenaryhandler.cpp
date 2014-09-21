@@ -46,4 +46,8 @@ void MercenaryHandler::handleMercenaryMessage(const int cmd A_UNUSED)
 {
 }
 
+void MercenaryHandler::fire()
+{
+}
+
 }  // namespace TmwAthena
