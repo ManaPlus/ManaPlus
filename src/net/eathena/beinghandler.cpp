@@ -319,6 +319,7 @@ Being *BeingHandler::createBeing2(const int id,
         case BeingType::CHAT:
         case BeingType::PET:
         case BeingType::HOMUN:
+        default:
             type = ActorType::Monster;
             logger->log("not supported object type: %d, job: %d",
                 static_cast<int>(beingType), static_cast<int>(job));
