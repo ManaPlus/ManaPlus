@@ -479,6 +479,8 @@ void setMercenaryBeing(Being *const being)
         return;
     being->setName(mMercenary->name);
     being->setOwner(localPlayer);
+    being->setLevel(mMercenary->level);
+    being->setAttackRange(mMercenary->range);
 }
 
 MercenaryInfo *getMercenary()

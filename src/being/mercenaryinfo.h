@@ -26,14 +26,18 @@
 struct MercenaryInfo final
 {
     MercenaryInfo() :
+        name(),
         id(0),
-        name()
+        level(0),
+        range(0)
     { }
 
     A_DELETE_COPY(MercenaryInfo)
 
-    int id;
     std::string name;
+    int id;
+    int level;
+    int range;
 };
 
 #endif  // BEING_MERCENARYINFO_H

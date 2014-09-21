@@ -115,10 +115,10 @@ void MercenaryHandler::processMercenaryInfo(Net::MessageIn &msg)
         MercenaryInfo *const mercenary = new MercenaryInfo;
         mercenary->id = dstBeing->getId();
         mercenary->name = name;
+        mercenary->level = level;
+        mercenary->range = range;
         PlayerInfo::setMercenary(mercenary);
         PlayerInfo::setMercenaryBeing(dstBeing);
-        dstBeing->setLevel(level);
-        dstBeing->setAttackRange(range);
     }
 }
 
