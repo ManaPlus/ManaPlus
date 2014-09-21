@@ -151,8 +151,12 @@ void SkillHandler::processPlayerSkills(Net::MessageIn &msg)
             }
         }
     }
-    if (updateSkill && skillDialog)
-        skillDialog->playUpdateEffect(updateSkill);
+    if (skillDialog)
+    {
+        skillDialog->update();
+        if (updateSkill)
+            skillDialog->playUpdateEffect(updateSkill);
+    }
 }
 
 void SkillHandler::processSkillCoolDown(Net::MessageIn &msg)

@@ -818,7 +818,11 @@ void ActorManager::logic()
             if (actor->getId() == localPlayer->getMercenary())
             {
                 localPlayer->setMercenary(0);
-                skillDialog->hideSkills(SkillOwner::Mercenary);
+                if (skillDialog)
+                {
+                    skillDialog->hideSkills(SkillOwner::Mercenary);
+                    skillDialog->updateModels();
+                }
             }
         }
         if (localPlayer)

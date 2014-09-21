@@ -141,6 +141,8 @@ void MercenaryHandler::processMercenarySkills(Net::MessageIn &msg)
             }
         }
     }
+    if (skillDialog)
+        skillDialog->update();
 }
 
 }  // namespace EAthena

@@ -70,6 +70,8 @@ class SkillDialog final : public Window,
          */
         void update();
 
+        void updateModels();
+
         void loadXmlFile(const std::string &fileName);
 
         void clearSkills();

@@ -196,8 +196,31 @@ void SkillDialog::update()
 
     FOR_EACH (SkillMap::const_iterator, it, mSkills)
     {
-        if ((*it).second && (*it).second->modifiable)
-            (*it).second->update();
+        SkillInfo *const info = (*it).second;
+        if (info && info->modifiable)
+            info->update();
+    }
+}
+
+void SkillDialog::updateModels()
+{
+    std::set<SkillModel*> models;
+
+    FOR_EACH (SkillMap::const_iterator, it, mSkills)
+    {
+        SkillInfo *const info = (*it).second;
+        if (info)
+        {
+            SkillModel *const model = info->model;
+            if (model)
+                models.insert(model);
+        }
+    }
+    FOR_EACH (std::set<SkillModel*>::iterator, it, models)
+    {
+        SkillModel *const model = *it;
+        if (model)
+            model->updateVisibilities();
     }
 }
 
@@ -218,7 +241,10 @@ void SkillDialog::hideSkills(const SkillOwner::Type owner)
     {
         SkillInfo *const info = (*it).second;
         if (info && info->owner == owner)
+        {
+            PlayerInfo::setSkillLevel(info->id, 0);
             info->visible = false;
+        }
     }
 }
 
