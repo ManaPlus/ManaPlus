@@ -66,6 +66,7 @@
 #include "net/download.h"
 #include "net/gamehandler.h"
 #include "net/ipc.h"
+#include "net/mercenaryhandler.h"
 #include "net/net.h"
 #include "net/pethandler.h"
 #include "net/playerhandler.h"
@@ -1171,6 +1172,12 @@ impHandler(catchPet)
         localPlayer->setTarget(target);
     if (target)
         petHandler->catchPet(target);
+    return true;
+}
+
+impHandler0(mercenaryFire)
+{
+    mercenaryHandler->fire();
     return true;
 }
 

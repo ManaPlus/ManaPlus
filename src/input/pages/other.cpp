@@ -364,6 +364,12 @@ SetupActionData setupActionDataOther[] =
         "",
     },
     {
+        // TRANSLATORS: input action name
+        N_("Fire your mercenary"),
+        InputAction::MERCENARY_FIRE,
+        "",
+    },
+    {
         "",
         InputAction::NO_VALUE,
         ""

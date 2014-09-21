@@ -480,6 +480,7 @@ namespace InputAction
         CATCH_PET,
         IGNORE_WHISPER,
         UNIGNORE_WHISPER,
+        MERCENARY_FIRE,
         TOTAL
     };
 }  // namespace InputAction

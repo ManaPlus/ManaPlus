@@ -4062,6 +4062,15 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputCondition::INGAME,
         "serverunignore",
         false},
+    {"keyMercenaryFire",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::mercenaryFire,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "mercenaryfire|firemercenary",
+        false}
 };
 
 #endif  // INPUT_INPUTACTIONMAP_H
