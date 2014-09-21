@@ -540,4 +540,8 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
     BLOCK_END("InventoryHandler::processPlayerStorageAdd")
 }
 
+void InventoryHandler::selectEgg(const Item *const item A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

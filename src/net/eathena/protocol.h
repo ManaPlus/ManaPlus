@@ -404,6 +404,7 @@
 #define CMSG_PET_CATCH               0x019f
 #define CMSG_PET_REQUEST_STATE       0x01a9
 #define CMSG_PET_SET_NAME            0x01a5
+#define CMSG_PET_SELECT_EGG          0x01a7
 
 #define CMSG_DORI_DORI               0x01e7
 #define CMSG_EXPLOSION_SPIRITS       0x01ed

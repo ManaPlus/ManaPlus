@@ -66,6 +66,8 @@ class InventoryHandler final : public MessageHandler,
         void favoriteItem(const Item *const item,
                           const bool favorite) const override final;
 
+        void selectEgg(const Item *const item) const override final;
+
     protected:
         void processPlayerEquipment(Net::MessageIn &msg);
 

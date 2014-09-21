@@ -82,6 +82,8 @@ class InventoryHandler notfinal
 
         virtual void favoriteItem(const Item *const item,
                                   const bool favorite) const = 0;
+
+        virtual void selectEgg(const Item *const item) const = 0;
 };
 
 }  // namespace Net

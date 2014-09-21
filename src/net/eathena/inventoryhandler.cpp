@@ -589,4 +589,11 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
     BLOCK_END("InventoryHandler::processPlayerStorageAdd")
 }
 
+void InventoryHandler::selectEgg(const Item *const item) const
+{
+    createOutPacket(CMSG_PET_SELECT_EGG);
+    outMsg.writeInt16(static_cast<int16_t>(
+        item->getInvIndex() + INVENTORY_OFFSET), "index");
+}
+
 }  // namespace EAthena
