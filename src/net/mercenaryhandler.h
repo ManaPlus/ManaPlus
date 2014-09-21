@@ -33,6 +33,8 @@ class MercenaryHandler notfinal
     public:
         virtual ~MercenaryHandler()
         { }
+
+        virtual void handleMercenaryMessage(const int cmd) = 0;
 };
 
 }  // namespace Net

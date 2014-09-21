@@ -42,4 +42,8 @@ void MercenaryHandler::handleMessage(Net::MessageIn &msg A_UNUSED)
 {
 }
 
+void MercenaryHandler::handleMercenaryMessage(const int cmd A_UNUSED)
+{
+}
+
 }  // namespace TmwAthena

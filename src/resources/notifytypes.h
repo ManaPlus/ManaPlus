@@ -103,6 +103,11 @@ namespace NotifyTypes
         PET_CATCH_FAILED,
         PET_CATCH_SUCCESS,
         PET_CATCH_UNKNOWN,
+        MERCENARY_EXPIRED,
+        MERCENARY_KILLED,
+        MERCENARY_FIRED,
+        MERCENARY_RUN,
+        MERCENARY_UNKNOWN,
 
         TYPE_END
     };

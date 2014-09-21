@@ -334,6 +334,26 @@ namespace NotifyManager
             // TRANSLATORS: notification message
             N_("Pet catch unkown error: %d."),
             NotifyFlags::INT},
+        {"mercenary expired",
+            // TRANSLATORS: notification message
+            N_("Your mercenary duty hour is over."),
+            NotifyFlags::EMPTY},
+        {"mercenary killed",
+            // TRANSLATORS: notification message
+            N_("Your mercenary was killed."),
+            NotifyFlags::EMPTY},
+        {"mercenary fired",
+            // TRANSLATORS: notification message
+            N_("Your mercenary was fired."),
+            NotifyFlags::EMPTY},
+        {"mercenary run",
+            // TRANSLATORS: notification message
+            N_("Your mercenary run away."),
+            NotifyFlags::EMPTY},
+        {"mercenary unknown",
+            // TRANSLATORS: notification message
+            N_("Mercenary unknown state."),
+            NotifyFlags::EMPTY}
     };
 }  // namespace NotifyManager
 #endif  // RESOURCES_NOTIFICATIONS_H

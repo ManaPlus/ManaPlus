@@ -813,20 +813,6 @@ void ActorManager::logic()
             if (beingEquipmentWindow)
                 beingEquipmentWindow->resetBeing(being);
         }
-/*
-        else if (localPlayer && type == ActorType::Mercenary)
-        {
-            if (actor->getId() == localPlayer->getMercenary())
-            {
-                localPlayer->setMercenary(0);
-                if (skillDialog)
-                {
-                    skillDialog->hideSkills(SkillOwner::Mercenary);
-                    skillDialog->updateModels();
-                }
-            }
-        }
-*/
         if (localPlayer)
         {
             if (localPlayer->getTarget() == actor)

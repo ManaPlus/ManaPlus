@@ -22,6 +22,7 @@
 
 #include "actormanager.h"
 #include "logger.h"
+#include "notifymanager.h"
 
 #include "being/being.h"
 #include "being/localplayer.h"
@@ -34,6 +35,8 @@
 
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
+
+#include "resources/notifytypes.h"
 
 #include "debug.h"
 
@@ -150,6 +153,35 @@ void MercenaryHandler::processMercenarySkills(Net::MessageIn &msg)
     }
     if (skillDialog)
         skillDialog->update();
+}
+
+void MercenaryHandler::handleMercenaryMessage(const int cmd)
+{
+    PlayerInfo::setMercenary(nullptr);
+    if (skillDialog)
+    {
+        skillDialog->hideSkills(SkillOwner::Mercenary);
+        skillDialog->update();
+    }
+
+    switch (cmd)
+    {
+        case 0:
+            NotifyManager::notify(NotifyTypes::MERCENARY_EXPIRED);
+            break;
+        case 1:
+            NotifyManager::notify(NotifyTypes::MERCENARY_KILLED);
+            break;
+        case 2:
+            NotifyManager::notify(NotifyTypes::MERCENARY_FIRED);
+            break;
+        case 3:
+            NotifyManager::notify(NotifyTypes::MERCENARY_RUN);
+            break;
+        default:
+            NotifyManager::notify(NotifyTypes::MERCENARY_UNKNOWN);
+            break;
+    }
 }
 
 }  // namespace EAthena

@@ -32,6 +32,8 @@
 
 #include "gui/windows/chatwindow.h"
 
+#include "net/mercenaryhandler.h"
+
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
@@ -332,7 +334,10 @@ void ChatHandler::processFormatMessage(Net::MessageIn &msg)
     int msgId = msg.readInt16("msg id");
     // +++ here need load message from configuration file
     const std::string chatMsg = strprintf("Message #%d", msgId);
-    processChatContinue(chatMsg);
+    if (msgId >= 1266 && msgId <= 1269)
+        mercenaryHandler->handleMercenaryMessage(msgId - 1266);
+    else
+        processChatContinue(chatMsg);
 }
 
 void ChatHandler::processFormatMessageNumber(Net::MessageIn &msg)

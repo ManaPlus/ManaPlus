@@ -37,6 +37,8 @@ class MercenaryHandler final : public MessageHandler,
         A_DELETE_COPY(MercenaryHandler)
 
         void handleMessage(Net::MessageIn &msg) override final;
+
+        void handleMercenaryMessage(const int cmd) override final;
 };
 
 }  // namespace TmwAthena
