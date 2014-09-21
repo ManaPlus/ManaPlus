@@ -148,7 +148,7 @@ void MercenaryHandler::processMercenarySkills(Net::MessageIn &msg)
         }
     }
     if (skillDialog)
-        skillDialog->update();
+        skillDialog->updateModels();
 }
 
 void MercenaryHandler::handleMercenaryMessage(const int cmd)
@@ -157,7 +157,7 @@ void MercenaryHandler::handleMercenaryMessage(const int cmd)
     if (skillDialog)
     {
         skillDialog->hideSkills(SkillOwner::Mercenary);
-        skillDialog->update();
+        skillDialog->updateModels();
     }
 
     switch (cmd)
