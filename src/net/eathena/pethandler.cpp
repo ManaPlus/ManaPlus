@@ -47,6 +47,7 @@ PetHandler::PetHandler() :
     {
         SMSG_PET_MESSAGE,
         SMSG_PET_ROULETTE,
+        SMSG_PET_EGGS_LIST,
         0
     };
     handledMessages = _messages;
@@ -64,6 +65,10 @@ void PetHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_PET_ROULETTE:
             processPetRoulette(msg);
+            break;
+
+        case SMSG_PET_EGGS_LIST:
+            processEggsList(msg);
             break;
 
         default:
@@ -136,6 +141,15 @@ void PetHandler::processPetRoulette(Net::MessageIn &msg)
         default:
             NotifyManager::notify(NotifyTypes::PET_CATCH_UNKNOWN, data);
             break;
+    }
+}
+
+void PetHandler::processEggsList(Net::MessageIn &msg)
+{
+    const int count = (msg.readInt16("len") - 4) / 2;
+    for (int f = 0; f < count; f ++)
+    {
+        msg.readInt16("egg index");
     }
 }
 

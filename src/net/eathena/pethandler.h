@@ -60,6 +60,8 @@ class PetHandler final :  public MessageHandler, public Net::PetHandler
     protected:
         void processPetRoulette(Net::MessageIn &msg);
 
+        void processEggsList(Net::MessageIn &msg);
+
         int mRandCounter;
 };
 
