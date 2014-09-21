@@ -58,6 +58,7 @@ struct PlayerInfoBackend final
     IntMap mSkills;
 };
 
+class Being;
 class FloorItem;
 class Inventory;
 class Item;
@@ -240,6 +241,7 @@ namespace PlayerInfo
 
     void setMercenary(MercenaryInfo *const info);
 
+    void setMercenaryBeing(Being *const being);
 }  // namespace PlayerInfo
 
 #endif  // BEING_PLAYERINFO_H

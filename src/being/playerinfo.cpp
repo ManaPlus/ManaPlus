@@ -26,6 +26,7 @@
 #include "inventory.h"
 
 #include "being/attributes.h"
+#include "being/localplayer.h"
 #include "being/mercenaryinfo.h"
 
 #include "itemsoundmanager.h"
@@ -470,6 +471,14 @@ void setMercenary(MercenaryInfo *const info)
     if (mMercenary)
         delete mMercenary;
     mMercenary = info;
+}
+
+void setMercenaryBeing(Being *const being)
+{
+    if (!being || !mMercenary)
+        return;
+    being->setName(mMercenary->name);
+    being->setOwner(localPlayer);
 }
 
 MercenaryInfo *getMercenary()

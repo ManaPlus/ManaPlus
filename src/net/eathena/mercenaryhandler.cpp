@@ -110,19 +110,15 @@ void MercenaryHandler::processMercenaryInfo(Net::MessageIn &msg)
     msg.readInt32("calls");
     msg.readInt32("kills");
     const int range = msg.readInt16("attack range");
-    if (dstBeing)
+    if (dstBeing && localPlayer)
     {
-        dstBeing->setName(name);
+        MercenaryInfo *const mercenary = new MercenaryInfo;
+        mercenary->id = dstBeing->getId();
+        mercenary->name = name;
+        PlayerInfo::setMercenary(mercenary);
+        PlayerInfo::setMercenaryBeing(dstBeing);
         dstBeing->setLevel(level);
         dstBeing->setAttackRange(range);
-        dstBeing->setOwner(localPlayer);
-        if (localPlayer)
-        {
-            MercenaryInfo *const mercenary = new MercenaryInfo;
-            mercenary->id = dstBeing->getId();
-            mercenary->name = name;
-            PlayerInfo::setMercenary(mercenary);
-        }
     }
 }
 

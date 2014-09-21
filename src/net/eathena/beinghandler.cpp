@@ -28,6 +28,8 @@
 #include "party.h"
 
 #include "being/localplayer.h"
+#include "being/mercenaryinfo.h"
+#include "being/playerinfo.h"
 
 #include "input/keyboardconfig.h"
 
@@ -325,7 +327,14 @@ Being *BeingHandler::createBeing2(const int id,
     if (job == 45 && beingType == BeingType::NPC_EVENT)
         type = ActorType::Portal;
 
-    return actorManager->createBeing(id, type, job);
+    Being *const being = actorManager->createBeing(id, type, job);
+    if (beingType == BeingType::MERSOL)
+    {
+        MercenaryInfo *const info = PlayerInfo::getMercenary();
+        if (info && info->id == id)
+            PlayerInfo::setMercenaryBeing(being);
+    }
+    return being;
 }
 
 void BeingHandler::undress(Being *const being) const
