@@ -73,6 +73,7 @@
 #include "resources/db/avatardb.h"
 #include "resources/db/emotedb.h"
 #include "resources/db/itemdb.h"
+#include "resources/db/mercenarydb.h"
 #include "resources/db/monsterdb.h"
 #include "resources/db/npcdb.h"
 #include "resources/db/petdb.h"
@@ -296,9 +297,20 @@ void Being::setSubtype(const uint16_t subtype, const uint8_t look)
     mSubType = subtype;
     mLook = look;
 
-    if (mType == ActorType::Monster || mType == ActorType::Mercenary)
+    if (mType == ActorType::Monster)
     {
         mInfo = MonsterDB::get(mSubType);
+        if (mInfo)
+        {
+            setName(mInfo->getName());
+            setupSpriteDisplay(mInfo->getDisplay(), true, 0,
+                mInfo->getColor(mLook));
+            mYDiff = mInfo->getSortOffsetY();
+        }
+    }
+    else if (mType == ActorType::Mercenary)
+    {
+        mInfo = MercenaryDB::get(mSubType);
         if (mInfo)
         {
             setName(mInfo->getName());

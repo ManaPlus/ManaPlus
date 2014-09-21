@@ -104,6 +104,7 @@
 #include "resources/db/sounddb.h"
 #include "resources/db/itemdb.h"
 #include "resources/db/mapdb.h"
+#include "resources/db/mercenarydb.h"
 #include "resources/db/moddb.h"
 #include "resources/db/monsterdb.h"
 #include "resources/db/npcdb.h"
@@ -608,6 +609,7 @@ void Client::gameClear()
     SoundDB::unload();
     EmoteDB::unload();
     ItemDB::unload();
+    MercenaryDB::unload();
     MonsterDB::unload();
     NPCDB::unload();
     AvatarDB::unload();
@@ -1249,6 +1251,7 @@ int Client::gameExec()
                     MapDB::load();
                     ItemDB::load();
                     Being::load();
+                    MercenaryDB::load();
                     MonsterDB::load();
                     AvatarDB::load();
                     WeaponsDB::load();

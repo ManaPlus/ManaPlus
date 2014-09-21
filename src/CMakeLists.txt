@@ -621,6 +621,8 @@ SET(SRCS
     resources/itemtypemapdata.h
     resources/db/mapdb.cpp
     resources/db/mapdb.h
+    resources/db/mercenarydb.cpp
+    resources/db/mercenarydb.h
     resources/db/moddb.cpp
     resources/db/moddb.h
     resources/mapinfo.h
