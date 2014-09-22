@@ -66,12 +66,11 @@ void EggSelectionDialog::initButtons()
     mShopItems->setMergeDuplicates(false);
 }
 
-void EggSelectionDialog::sellAction(const ActionEvent &event)
+void EggSelectionDialog::sellAction(const ActionEvent &event A_UNUSED)
 {
     if (mAmountItems <= 0 || mAmountItems > mMaxItems)
         return;
 
-    const std::string &eventId = event.getId();
     const int selectedItem = mShopItemList->getSelected();
     ShopItem *const item = mShopItems->at(selectedItem);
     if (!item)

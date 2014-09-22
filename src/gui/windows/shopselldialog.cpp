@@ -59,12 +59,11 @@ ShopSellDialog::ShopSellDialog(const std::string &nick) :
 {
 }
 
-void ShopSellDialog::sellAction(const ActionEvent &event)
+void ShopSellDialog::sellAction(const ActionEvent &event A_UNUSED)
 {
     if (mAmountItems <= 0 || mAmountItems > mMaxItems)
         return;
 
-    const std::string &eventId = event.getId();
     const int selectedItem = mShopItemList->getSelected();
     ShopItem *const item = mShopItems->at(selectedItem);
     if (!item || PlayerInfo::isItemProtected(item->getId()))
