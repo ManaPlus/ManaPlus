@@ -42,17 +42,8 @@ ShopItem::ShopItem(const int inventoryIndex, const int id,
     mPrice(price),
     mShowQuantity(true)
 {
-    if (serverFeatures->haveItemColors())
-    {
-        mDisplayName = std::string(getInfo().getName(color)).append(" (")
-            .append(Units::formatCurrency(mPrice)).append(") ");
-    }
-    else
-    {
-        mDisplayName = std::string(getInfo().getName()).append(" (")
-            .append(Units::formatCurrency(mPrice)).append(") ");
-    }
-    if (quantity > 0)
+    updateDisplayName(quantity);
+    if (quantity > 1)
         mDisplayName.append("[").append(toString(quantity)).append("]");
 
     setInvIndex(inventoryIndex);
@@ -66,16 +57,7 @@ ShopItem::ShopItem(const int id, const unsigned char color, const int price) :
     mPrice(price),
     mShowQuantity(false)
 {
-    if (serverFeatures->haveItemColors())
-    {
-        mDisplayName = std::string(getInfo().getName(color)).append(" (")
-            .append(Units::formatCurrency(mPrice)).append(")");
-    }
-    else
-    {
-        mDisplayName = std::string(getInfo().getName()).append(" (")
-            .append(Units::formatCurrency(mPrice)).append(")");
-    }
+    updateDisplayName(0);
     setInvIndex(-1);
     addDuplicate(-1, 0);
 }
@@ -90,23 +72,25 @@ ShopItem::~ShopItem()
     }
 }
 
+void ShopItem::updateDisplayName(const int quantity)
+{
+    if (serverFeatures->haveItemColors())
+        mDisplayName = std::string(getInfo().getName(mColor));
+    else
+        mDisplayName = std::string(getInfo().getName());
+    if (mPrice)
+    {
+        mDisplayName.append(" (").append(
+            Units::formatCurrency(mPrice)).append(") ");
+    }
+    if (quantity > 1)
+        mDisplayName.append("[").append(toString(quantity)).append("]");
+}
+
 void ShopItem::update()
 {
     if (mShowQuantity)
-    {
-        if (serverFeatures->haveItemColors())
-        {
-            mDisplayName = std::string(getInfo().getName(mColor)).append(" (")
-                .append(Units::formatCurrency(mPrice)).append(") ");
-        }
-        else
-        {
-            mDisplayName = std::string(getInfo().getName()).append(" (")
-                .append(Units::formatCurrency(mPrice)).append(") ");
-        }
-        if (mQuantity > 0)
-            mDisplayName.append("[").append(toString(mQuantity)).append("]");
-    }
+        updateDisplayName(mQuantity);
 }
 
 void ShopItem::addDuplicate(const int inventoryIndex, const int quantity)

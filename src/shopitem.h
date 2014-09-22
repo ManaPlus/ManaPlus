@@ -132,6 +132,8 @@ class ShopItem final : public Item
         { return mDisplayName; }
 
     protected:
+        void updateDisplayName(const int quantity);
+
         std::string mDisplayName;
 
         /**
