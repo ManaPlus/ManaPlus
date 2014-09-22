@@ -27,12 +27,13 @@
 
 #include "gui/dialogtype.h"
 
+#include "gui/widgets/selldialog.h"
+
 #include "gui/windows/confirmdialog.h"
 #include "gui/windows/buyselldialog.h"
 #include "gui/windows/buydialog.h"
 #include "gui/windows/npcdialog.h"
 #include "gui/windows/okdialog.h"
-#include "gui/windows/selldialog.h"
 #include "gui/windows/updaterwindow.h"
 
 #include "net/inventoryhandler.h"

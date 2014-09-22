@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_WINDOWS_SELLDIALOG_H
-#define GUI_WINDOWS_SELLDIALOG_H
+#ifndef GUI_WIDGETS_SELLDIALOG_H
+#define GUI_WIDGETS_SELLDIALOG_H
 
 #include "gui/widgets/window.h"
 
@@ -139,4 +139,4 @@ class SellDialog notfinal : public Window,
         int mAmountItems;
 };
 
-#endif  // GUI_WINDOWS_SELLDIALOG_H
+#endif  // GUI_WIDGETS_SELLDIALOG_H

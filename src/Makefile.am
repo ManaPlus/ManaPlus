@@ -531,8 +531,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/windows/registerdialog.h \
 	      gui/sdlinput.cpp \
 	      gui/sdlinput.h \
-	      gui/windows/selldialog.cpp \
-	      gui/windows/selldialog.h \
+	      gui/widgets/selldialog.cpp \
+	      gui/widgets/selldialog.h \
 	      gui/windows/serverdialog.cpp \
 	      gui/windows/serverdialog.h \
 	      gui/windows/setupwindow.cpp \

@@ -37,6 +37,8 @@
 #include "gui/gui.h"
 #include "gui/sdlinput.h"
 
+#include "gui/widgets/selldialog.h"
+
 #include "gui/widgets/tabs/setup_input.h"
 
 #include "gui/windows/buydialog.h"
@@ -44,7 +46,6 @@
 #include "gui/windows/inventorywindow.h"
 #include "gui/windows/npcdialog.h"
 #include "gui/windows/npcpostdialog.h"
-#include "gui/windows/selldialog.h"
 #include "gui/windows/setupwindow.h"
 #include "gui/windows/textdialog.h"
 #include "gui/windows/tradewindow.h"

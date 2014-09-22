@@ -23,7 +23,7 @@
 #ifndef GUI_WINDOWS_NPCSELLDIALOG_H
 #define GUI_WINDOWS_NPCSELLDIALOG_H
 
-#include "gui/windows/selldialog.h"
+#include "gui/widgets/selldialog.h"
 
 /**
  * The sell dialog.

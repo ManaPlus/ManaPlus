@@ -23,7 +23,7 @@
 #ifndef GUI_WINDOWS_SHOPSELLDIALOG_H
 #define GUI_WINDOWS_SHOPSELLDIALOG_H
 
-#include "gui/windows/selldialog.h"
+#include "gui/widgets/selldialog.h"
 
 /**
  * The sell dialog.
