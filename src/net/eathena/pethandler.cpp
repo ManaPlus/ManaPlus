@@ -20,9 +20,11 @@
 
 #include "net/eathena/pethandler.h"
 
+#include "actormanager.h"
 #include "inventory.h"
 #include "notifymanager.h"
 
+#include "being/petinfo.h"
 #include "being/playerinfo.h"
 
 #include "gui/chatconsts.h"
@@ -183,20 +185,65 @@ void PetHandler::processEggsList(Net::MessageIn &msg)
 
 void PetHandler::processPetData(Net::MessageIn &msg)
 {
-    msg.readUInt8("type");
-    msg.readInt32("pet id");
-    msg.readInt32("param");
+    const int cmd = msg.readUInt8("type");
+    const int id = msg.readInt32("pet id");
+    Being *const dstBeing = actorManager->findBeing(id);
+    const int data = msg.readInt32("data");
+    if (!cmd)  // pre init
+    {
+        PetInfo *const info = new PetInfo;
+        info->id = id;
+        PlayerInfo::setPet(info);
+        PlayerInfo::setPetBeing(dstBeing);
+        return;
+    }
+    PetInfo *const info = PlayerInfo::getPet();
+    if (!info)
+        return;
+    switch (cmd)
+    {
+        case 1:  // intimacy
+            info->intimacy = data;
+            break;
+        case 2:  // hunger
+            info->hungry = data;
+            break;
+        case 3:  // accesory
+            info->equip = data;
+            break;
+        case 4:  // performance
+            info->performance = data;
+            break;
+        case 5:  // hair style
+            info->hairStyle = data;
+            break;
+        default:
+            break;
+    }
 }
 
 void PetHandler::processPetStatus(Net::MessageIn &msg)
 {
-    msg.readString(24, "pet name");
+    const std::string name = msg.readString(24, "pet name");
     msg.readUInt8("rename flag");
-    msg.readInt16("level");
-    msg.readInt16("hungry");
-    msg.readInt16("intimate");
-    msg.readInt16("equip");
-    msg.readInt16("class");
+    const int level = msg.readInt16("level");
+    const int hungry = msg.readInt16("hungry");
+    const int intimacy = msg.readInt16("intimacy");
+    const int equip = msg.readInt16("equip");
+    const int race = msg.readInt16("class");
+
+//    Being *const being = PlayerInfo::getPetBeing();
+//    if (being)
+//        being->setLevel(level);
+
+    PetInfo *const info = PlayerInfo::getPet();
+    if (!info)
+        return;
+    info->level = level;
+    info->hungry = hungry;
+    info->intimacy = intimacy;
+    info->equip = equip;
+    info->race = race;
 }
 
 }  // namespace EAthena

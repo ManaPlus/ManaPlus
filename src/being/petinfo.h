@@ -30,8 +30,11 @@ struct PetInfo final
         id(0),
         level(0),
         hungry(0),
-        intimate(0),
-        race(0)
+        intimacy(0),
+        race(0),
+        performance(0),
+        hairStyle(0),
+        equip(0)
     { }
 
     A_DELETE_COPY(PetInfo)
@@ -40,7 +43,11 @@ struct PetInfo final
     int id;
     int level;
     int hungry;
+    int intimacy;
     int race;
+    int performance;
+    int hairStyle;
+    int equip;
 };
 
 #endif  // BEING_PETINFO_H

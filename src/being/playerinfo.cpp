@@ -28,6 +28,7 @@
 #include "being/attributes.h"
 #include "being/localplayer.h"
 #include "being/mercenaryinfo.h"
+#include "being/petinfo.h"
 
 #include "itemsoundmanager.h"
 
@@ -56,6 +57,7 @@ int mCharId = 0;
 Inventory *mInventory = nullptr;
 Equipment *mEquipment = nullptr;
 MercenaryInfo *mMercenary = nullptr;
+PetInfo *mPet = nullptr;
 
 bool mTrading = false;
 int mLevelProgress = 0;
@@ -486,6 +488,27 @@ void setMercenaryBeing(Being *const being)
 MercenaryInfo *getMercenary()
 {
     return mMercenary;
+}
+
+void setPet(PetInfo *const info)
+{
+    if (mPet)
+        delete mPet;
+    mPet = info;
+}
+
+void setPetBeing(Being *const being)
+{
+    if (!being || !mPet)
+        return;
+    being->setName(mPet->name);
+    being->setOwner(localPlayer);
+    being->setLevel(mPet->level);
+}
+
+PetInfo *getPet()
+{
+    return mPet;
 }
 
 }  // namespace PlayerInfo

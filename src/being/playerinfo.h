@@ -64,6 +64,7 @@ class Inventory;
 class Item;
 
 struct MercenaryInfo;
+struct PetInfo;
 
 /**
  * A database like namespace which holds global info about the localplayer
@@ -242,6 +243,12 @@ namespace PlayerInfo
     void setMercenary(MercenaryInfo *const info);
 
     void setMercenaryBeing(Being *const being);
+
+    PetInfo *getPet();
+
+    void setPet(PetInfo *const info);
+
+    void setPetBeing(Being *const being);
 }  // namespace PlayerInfo
 
 #endif  // BEING_PLAYERINFO_H
