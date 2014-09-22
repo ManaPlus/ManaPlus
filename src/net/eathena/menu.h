@@ -23,8 +23,6 @@
 
 #include "net/eathena/menutype.h"
 
-#include "debug.h"
-
 namespace EAthena
 {
     extern MenuType::Type menu;
