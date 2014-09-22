@@ -56,6 +56,7 @@ PetHandler::PetHandler() :
         SMSG_PET_MESSAGE,
         SMSG_PET_ROULETTE,
         SMSG_PET_EGGS_LIST,
+        SMSG_PET_DATA,
         0
     };
     handledMessages = _messages;
@@ -77,6 +78,10 @@ void PetHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_PET_EGGS_LIST:
             processEggsList(msg);
+            break;
+
+        case SMSG_PET_DATA:
+            processPetData(msg);
             break;
 
         default:
@@ -169,6 +174,13 @@ void PetHandler::processEggsList(Net::MessageIn &msg)
         if (item)
             dialog->addItem(item, 0);
     }
+}
+
+void PetHandler::processPetData(Net::MessageIn &msg)
+{
+    msg.readUInt8("type");
+    msg.readInt32("pet id");
+    msg.readInt32("param");
 }
 
 }  // namespace EAthena
