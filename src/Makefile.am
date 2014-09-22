@@ -1018,6 +1018,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      being/localplayer.cpp \
 	      being/localplayer.h \
 	      being/mercenaryinfo.h \
+	      being/petinfo.h \
 	      being/pickup.h \
 	      logger.cpp \
 	      logger.h \
