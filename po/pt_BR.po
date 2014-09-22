@@ -154,15 +154,15 @@ msgstr "Variáveis de ambiente despejada"
 
 #: src/actions/actions.cpp:1136
 msgid "Uploaded config into:"
-msgstr "configuaração de arquivos enviados em: "
+msgstr "configuaração de arquivos enviados em:"
 
 #: src/actions/actions.cpp:1145
 msgid "Uploaded server config into:"
-msgstr "Configuração de servidor enviado em: "
+msgstr "Configuração de servidor enviado em:"
 
 #: src/actions/actions.cpp:1154
 msgid "Uploaded log into:"
-msgstr "Registro enviado em: "
+msgstr "Registro enviado em:"
 
 #. TRANSLATORS: whisper send
 #: src/actions/chat.cpp:219
