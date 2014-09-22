@@ -44,6 +44,8 @@ class ShopSellDialog final : public SellDialog
 
     protected:
         void sellAction(const ActionEvent &event) override final;
+
+        std::string mNick;
 };
 
 #endif  // GUI_WINDOWS_SHOPSELLDIALOG_H

@@ -55,35 +55,14 @@
 
 SellDialog::DialogList SellDialog::instances;
 
-SellDialog::SellDialog(const int npcId) :
+SellDialog::SellDialog() :
     // TRANSLATORS: sell dialog name
     Window(_("Sell"), false, nullptr, "sell.xml"),
     ActionListener(),
     SelectionListener(),
-    mNick(""),
-    mNpcId(npcId),
     mPlayerMoney(0),
     mMaxItems(0),
     mAmountItems(0)
-{
-    init();
-}
-
-SellDialog::SellDialog(const std::string &nick) :
-    // TRANSLATORS: sell dialog name
-    Window(_("Sell"), false, nullptr, "sell.xml"),
-    ActionListener(),
-    SelectionListener(),
-    mNick(nick),
-    mNpcId(-1),
-    mPlayerMoney(0),
-    mMaxItems(0),
-    mAmountItems(0)
-{
-    init();
-}
-
-void SellDialog::init()
 {
     setWindowName("Sell");
     setResizable(true);

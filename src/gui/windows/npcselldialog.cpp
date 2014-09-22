@@ -54,7 +54,8 @@
 #include "debug.h"
 
 NpcSellDialog::NpcSellDialog(const int npcId) :
-    SellDialog(npcId)
+    SellDialog(),
+    mNpcId(npcId)
 {
 }
 

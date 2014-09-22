@@ -54,7 +54,8 @@
 #include "debug.h"
 
 ShopSellDialog::ShopSellDialog(const std::string &nick) :
-    SellDialog(nick)
+    SellDialog(),
+    mNick(nick)
 {
 }
 

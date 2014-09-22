@@ -51,7 +51,7 @@ class SellDialog notfinal : public Window,
          *
          * @see Window::Window
          */
-        explicit SellDialog(const int npcId);
+        SellDialog();
 
         /**
          * Constructor.
@@ -64,8 +64,6 @@ class SellDialog notfinal : public Window,
          * Destructor
          */
         ~SellDialog();
-
-        void init();
 
         /**
          * Resets the dialog, clearing inventory.
@@ -124,8 +122,6 @@ class SellDialog notfinal : public Window,
 
         virtual void sellAction(const ActionEvent &event) = 0;
 
-        std::string mNick;
-
         Button *mSellButton;
         Button *mQuitButton;
         Button *mAddMaxButton;
@@ -138,7 +134,6 @@ class SellDialog notfinal : public Window,
         Slider *mSlider;
         ShopItems *mShopItems;
 
-        int mNpcId;
         int mPlayerMoney;
         int mMaxItems;
         int mAmountItems;

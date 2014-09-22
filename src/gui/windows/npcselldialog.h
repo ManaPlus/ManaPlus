@@ -44,6 +44,8 @@ class NpcSellDialog final : public SellDialog
 
     protected:
         void sellAction(const ActionEvent &event) override final;
+
+        int mNpcId;
 };
 
 #endif  // GUI_WINDOWS_NPCSELLDIALOG_H
