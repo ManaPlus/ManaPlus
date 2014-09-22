@@ -28,7 +28,7 @@
 #include "gui/windows/chatwindow.h"
 #include "gui/windows/confirmdialog.h"
 #include "gui/windows/itemamountwindow.h"
-#include "gui/windows/selldialog.h"
+#include "gui/windows/shopselldialog.h"
 #include "gui/windows/setupwindow.h"
 #include "gui/windows/tradewindow.h"
 
@@ -652,7 +652,7 @@ void ShopWindow::showList(const std::string &nick, std::string data)
     else if (data.find("S1") == 0)
     {
         data = data.substr(2);
-        sellDialog = new SellDialog(nick);
+        sellDialog = new ShopSellDialog(nick);
     }
     else
     {

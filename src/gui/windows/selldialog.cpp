@@ -245,19 +245,7 @@ void SellDialog::action(const ActionEvent &event)
     else if ((eventId == "presell" || eventId == "sell" || eventId == "yes")
              && mAmountItems > 0 && mAmountItems <= mMaxItems)
     {
-        if (mNpcId != -1)
-        {
-            sellAction(event);
-        }
-        else
-        {
-            ShopItem *const item = mShopItems->at(selectedItem);
-            buySellHandler->sendSellRequest(mNick,
-                    item, mAmountItems);
-
-            if (tradeWindow)
-                tradeWindow->addAutoItem(mNick, item, mAmountItems);
-        }
+        sellAction(event);
     }
 }
 

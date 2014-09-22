@@ -122,8 +122,7 @@ class SellDialog notfinal : public Window,
          */
         void updateButtonsAndLabels();
 
-        virtual void sellAction(const ActionEvent &event A_UNUSED)
-        { }
+        virtual void sellAction(const ActionEvent &event) = 0;
 
         std::string mNick;
 
