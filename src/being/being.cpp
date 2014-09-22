@@ -222,10 +222,16 @@ Being::Being(const int id,
     setMap(map);
     setSubtype(subtype, 0);
 
-    if (mType == ActorType::Player || mType == ActorType::Mercenary)
+    if (mType == ActorType::Player
+        || mType == ActorType::Mercenary
+        || mType == ActorType::Pet)
+    {
         mShowName = config.getBoolValue("visiblenames");
+    }
     else if (mType != ActorType::Npc)
+    {
         mGotComment = true;
+    }
 
     config.addListener("visiblenames", this);
 
@@ -297,7 +303,7 @@ void Being::setSubtype(const uint16_t subtype, const uint8_t look)
     mSubType = subtype;
     mLook = look;
 
-    if (mType == ActorType::Monster)
+    if (mType == ActorType::Monster || mType == ActorType::Pet)
     {
         mInfo = MonsterDB::get(mSubType);
         if (mInfo)
@@ -560,7 +566,9 @@ void Being::takeDamage(Being *const attacker, const int amount,
             color = &userPalette->getColor(UserPalette::MISS);
         }
     }
-    else if (mType == ActorType::Monster || mType == ActorType::Mercenary)
+    else if (mType == ActorType::Monster
+             || mType == ActorType::Mercenary
+             || mType == ActorType::Pet)
     {
         if (attacker == localPlayer)
         {
@@ -2926,6 +2934,7 @@ std::string Being::loadComment(const std::string &name,
         case ActorType::LocalPet:
         case ActorType::Avatar:
         case ActorType::Mercenary:
+        case ActorType::Pet:
         default:
             return "";
     }

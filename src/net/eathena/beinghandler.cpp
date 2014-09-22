@@ -310,6 +310,9 @@ Being *BeingHandler::createBeing2(const int id,
         case BeingType::MERSOL:
             type = ActorType::Mercenary;
             break;
+        case BeingType::PET:
+            type = ActorType::Pet;
+            break;
         case BeingType::ITEM:
         case BeingType::SKILL:
         case BeingType::ELEMENTAL:
@@ -317,7 +320,6 @@ Being *BeingHandler::createBeing2(const int id,
                 static_cast<int>(beingType), static_cast<int>(job));
             break;
         case BeingType::CHAT:
-        case BeingType::PET:
         case BeingType::HOMUN:
         default:
             type = ActorType::Monster;

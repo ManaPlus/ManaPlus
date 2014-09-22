@@ -33,6 +33,7 @@ namespace ActorType
         FloorItem,
         Portal,
         LocalPet,
+        Pet,
         Avatar,
         Mercenary
     };

@@ -245,7 +245,10 @@ Being *ActorManager::createBeing(const int id,
     Being *const being = new Being(id, type, subtype, mMap);
 
     mActors.insert(being);
-    if (type == ActorType::Player || type == ActorType::Npc)
+    if (type == ActorType::Player
+        || type == ActorType::Npc
+        || type == ActorType::Mercenary
+        || type == ActorType::Pet)
     {
         being->updateFromCache();
         beingHandler->requestNameById(id);
