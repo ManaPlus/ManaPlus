@@ -382,6 +382,8 @@ SET(SRCS
     gui/windows/npcdialog.h
     gui/windows/npcpostdialog.cpp
     gui/windows/npcpostdialog.h
+    gui/windows/npcselldialog.cpp
+    gui/windows/npcselldialog.h
     gui/windows/okdialog.cpp
     gui/windows/okdialog.h
     gui/windows/outfitwindow.cpp

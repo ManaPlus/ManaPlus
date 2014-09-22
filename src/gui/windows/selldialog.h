@@ -41,9 +41,9 @@ class Slider;
  *
  * \ingroup Interface
  */
-class SellDialog final : public Window,
-                         private ActionListener,
-                         private SelectionListener
+class SellDialog notfinal : public Window,
+                            public ActionListener,
+                            private SelectionListener
 {
     public:
         /**
@@ -113,7 +113,7 @@ class SellDialog final : public Window,
          */
         static void closeAll();
 
-    private:
+    protected:
         typedef std::list<SellDialog*> DialogList;
         static DialogList instances;
 
@@ -121,6 +121,9 @@ class SellDialog final : public Window,
          * Updates the state of buttons and labels.
          */
         void updateButtonsAndLabels();
+
+        virtual void sellAction(const ActionEvent &event A_UNUSED)
+        { }
 
         std::string mNick;
 

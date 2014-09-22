@@ -31,7 +31,7 @@
 
 #include "gui/windows/chatwindow.h"
 #include "gui/windows/buyselldialog.h"
-#include "gui/windows/selldialog.h"
+#include "gui/windows/npcselldialog.h"
 
 #include "gui/windows/buydialog.h"
 #include "gui/windows/shopwindow.h"
@@ -146,7 +146,7 @@ void BuySellHandler::processNpcSell(Net::MessageIn &msg) const
     const int n_items = (msg.getLength() - 4) / 10;
     if (n_items > 0)
     {
-        SellDialog *const dialog = new SellDialog(mNpcId);
+        SellDialog *const dialog = new NpcSellDialog(mNpcId);
         dialog->setMoney(PlayerInfo::getAttribute(Attributes::MONEY));
 
         for (int k = 0; k < n_items; k++)

@@ -247,60 +247,7 @@ void SellDialog::action(const ActionEvent &event)
     {
         if (mNpcId != -1)
         {
-            ShopItem *const item = mShopItems->at(selectedItem);
-            if (PlayerInfo::isItemProtected(item->getId()))
-                return;
-            if (eventId == "presell")
-            {
-                const ItemInfo &info = ItemDB::get(item->getId());
-                if (info.isProtected())
-                {
-                    ConfirmDialog *const dialog = new ConfirmDialog(
-                        // TRANSLATORS: sell confirmation header
-                        _("sell item"),
-                        // TRANSLATORS: sell confirmation message
-                        strprintf(_("Do you really want to sell %s?"),
-                        info.getName().c_str()), SOUND_REQUEST, false, true);
-                    dialog->postInit();
-                    dialog->addActionListener(this);
-                    return;
-                }
-            }
-            // Attempt sell
-            mPlayerMoney +=
-                mAmountItems * mShopItems->at(selectedItem)->getPrice();
-            mMaxItems -= mAmountItems;
-            while (mAmountItems > 0)
-            {
-                // This order is important, item->getCurrentInvIndex() would
-                // return the inventory index of the next Duplicate otherwise.
-                const int itemIndex = item->getCurrentInvIndex();
-                const int sellCount = item->sellCurrentDuplicate(mAmountItems);
-                npcHandler->sellItem(mNpcId, itemIndex, sellCount);
-                mAmountItems -= sellCount;
-            }
-
-            mPlayerMoney +=
-                mAmountItems * mShopItems->at(selectedItem)->getPrice();
-            mAmountItems = 1;
-            mSlider->setValue(0);
-
-            if (mMaxItems)
-            {
-                updateButtonsAndLabels();
-            }
-            else
-            {
-                // All were sold
-                mShopItemList->setSelected(-1);
-                delete mShopItems->at(selectedItem);
-                mShopItems->erase(selectedItem);
-
-                Rect scroll;
-                scroll.y = mShopItemList->getRowHeight() * (selectedItem + 1);
-                scroll.height = mShopItemList->getRowHeight();
-                mShopItemList->showPart(scroll);
-            }
+            sellAction(event);
         }
         else
         {
@@ -368,8 +315,8 @@ void SellDialog::updateButtonsAndLabels()
     mQuantityLabel->setCaption(strprintf("%d / %d", mAmountItems, mMaxItems));
     // TRANSLATORS: sell dialog label
     mMoneyLabel->setCaption(strprintf(_("Price: %s / Total: %s"),
-                    Units::formatCurrency(income).c_str(),
-                    Units::formatCurrency(mPlayerMoney + income).c_str()));
+        Units::formatCurrency(income).c_str(),
+        Units::formatCurrency(mPlayerMoney + income).c_str()));
     if (item)
         item->update();
 }
