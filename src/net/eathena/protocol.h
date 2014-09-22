@@ -226,6 +226,7 @@
 #define SMSG_PET_ROULETTE            0x01a0
 #define SMSG_PET_EGGS_LIST           0x01a6
 #define SMSG_PET_DATA                0x01a4
+#define SMSG_PET_STATUS              0x01a2
 
 #define SMSG_BANK_STATUS             0x09a6
 

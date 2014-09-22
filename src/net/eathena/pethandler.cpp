@@ -57,6 +57,7 @@ PetHandler::PetHandler() :
         SMSG_PET_ROULETTE,
         SMSG_PET_EGGS_LIST,
         SMSG_PET_DATA,
+        SMSG_PET_STATUS,
         0
     };
     handledMessages = _messages;
@@ -82,6 +83,10 @@ void PetHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_PET_DATA:
             processPetData(msg);
+            break;
+
+        case SMSG_PET_STATUS:
+            processPetStatus(msg);
             break;
 
         default:
@@ -181,6 +186,17 @@ void PetHandler::processPetData(Net::MessageIn &msg)
     msg.readUInt8("type");
     msg.readInt32("pet id");
     msg.readInt32("param");
+}
+
+void PetHandler::processPetStatus(Net::MessageIn &msg)
+{
+    msg.readString(24, "pet name");
+    msg.readUInt8("rename flag");
+    msg.readInt16("level");
+    msg.readInt16("hungry");
+    msg.readInt16("intimate");
+    msg.readInt16("equip");
+    msg.readInt16("class");
 }
 
 }  // namespace EAthena
