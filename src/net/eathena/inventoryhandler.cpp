@@ -32,6 +32,7 @@
 #include "net/net.h"
 #include "net/serverfeatures.h"
 
+#include "net/eathena/menu.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
@@ -594,6 +595,7 @@ void InventoryHandler::selectEgg(const Item *const item) const
     createOutPacket(CMSG_PET_SELECT_EGG);
     outMsg.writeInt16(static_cast<int16_t>(
         item->getInvIndex() + INVENTORY_OFFSET), "index");
+    menu = MenuType::Unknown;
 }
 
 }  // namespace EAthena
