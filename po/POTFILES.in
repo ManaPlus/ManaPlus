@@ -34,6 +34,7 @@ src/gui/userpalette.cpp
 src/gui/widgets/characterdisplay.cpp
 src/gui/widgets/itemcontainer.cpp
 src/gui/widgets/itemlinkhandler.cpp
+src/gui/widgets/selldialog.cpp
 src/gui/widgets/setupitem.cpp
 src/gui/widgets/skillinfo.cpp
 src/gui/widgets/tabs/battletab.cpp
@@ -82,6 +83,7 @@ src/gui/windows/debugwindow.cpp
 src/gui/windows/didyouknowwindow.cpp
 src/gui/windows/editdialog.cpp
 src/gui/windows/editserverdialog.cpp
+src/gui/windows/eggselectiondialog.cpp
 src/gui/windows/emotewindow.cpp
 src/gui/windows/equipmentwindow.cpp
 src/gui/windows/helpwindow.cpp
@@ -93,11 +95,11 @@ src/gui/windows/minimap.cpp
 src/gui/windows/ministatuswindow.cpp
 src/gui/windows/npcdialog.cpp
 src/gui/windows/npcpostdialog.cpp
+src/gui/windows/npcselldialog.cpp
 src/gui/windows/outfitwindow.cpp
 src/gui/windows/questswindow.cpp
 src/gui/windows/quitdialog.cpp
 src/gui/windows/registerdialog.cpp
-src/gui/windows/selldialog.cpp
 src/gui/windows/serverdialog.cpp
 src/gui/windows/setupwindow.cpp
 src/gui/windows/shopwindow.cpp
@@ -138,6 +140,7 @@ src/net/ea/skillhandler.cpp
 src/net/eathena/generalhandler.cpp
 src/net/eathena/loginhandler.cpp
 src/net/ea/tradehandler.cpp
+src/net/tmwa/charserverhandler.cpp
 src/net/tmwa/generalhandler.cpp
 src/render/rendererslistsdl2.h
 src/render/rendererslistsdl.h
