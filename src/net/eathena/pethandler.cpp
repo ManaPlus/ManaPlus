@@ -27,6 +27,7 @@
 #include "net/chathandler.h"
 #include "net/net.h"
 
+#include "net/eathena/menu.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
@@ -147,6 +148,7 @@ void PetHandler::processPetRoulette(Net::MessageIn &msg)
 void PetHandler::processEggsList(Net::MessageIn &msg)
 {
     const int count = (msg.readInt16("len") - 4) / 2;
+    menu = MenuType::Eggs;
     for (int f = 0; f < count; f ++)
     {
         msg.readInt16("egg index");
