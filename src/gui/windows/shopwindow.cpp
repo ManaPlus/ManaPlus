@@ -653,6 +653,7 @@ void ShopWindow::showList(const std::string &nick, std::string data)
     {
         data = data.substr(2);
         sellDialog = new ShopSellDialog(nick);
+        sellDialog->postInit();
     }
     else
     {

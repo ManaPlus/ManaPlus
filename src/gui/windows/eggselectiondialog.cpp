@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gui/windows/shopselldialog.h"
+#include "gui/windows/eggselectiondialog.h"
 
 #include "shopitem.h"
 #include "units.h"
@@ -42,24 +42,30 @@
 #include "gui/widgets/shoplistbox.h"
 #include "gui/widgets/slider.h"
 
-#include "net/buysellhandler.h"
-#include "net/net.h"
-#include "net/npchandler.h"
+#include "net/inventoryhandler.h"
 
-#include "resources/iteminfo.h"
-
-#include "utils/delete2.h"
 #include "utils/gettext.h"
 
 #include "debug.h"
 
-ShopSellDialog::ShopSellDialog(const std::string &nick) :
-    SellDialog(true),
-    mNick(nick)
+EggSelectionDialog::EggSelectionDialog() :
+    SellDialog(false)
 {
+    // TRANSLATORS: egg selection dialog name
+    setWindowName(_("Select egg"));
+    // TRANSLATORS: egg selection dialog name
+    setCaption(_("Select egg"));
 }
 
-void ShopSellDialog::sellAction(const ActionEvent &event)
+void EggSelectionDialog::initButtons()
+{
+    logger->log("EggSelectionDialog::initButtons");
+    // TRANSLATORS: egg selection dialog button
+    mSellButton->setCaption(_("Select"));
+    mSellButton->adjustSize();
+}
+
+void EggSelectionDialog::sellAction(const ActionEvent &event)
 {
     if (mAmountItems <= 0 || mAmountItems > mMaxItems)
         return;
@@ -67,10 +73,7 @@ void ShopSellDialog::sellAction(const ActionEvent &event)
     const std::string &eventId = event.getId();
     const int selectedItem = mShopItemList->getSelected();
     ShopItem *const item = mShopItems->at(selectedItem);
-    if (!item || PlayerInfo::isItemProtected(item->getId()))
+    if (!item)
         return;
-    buySellHandler->sendSellRequest(mNick, item, mAmountItems);
-
-    if (tradeWindow)
-        tradeWindow->addAutoItem(mNick, item, mAmountItems);
+    inventoryHandler->selectEgg(item);
 }

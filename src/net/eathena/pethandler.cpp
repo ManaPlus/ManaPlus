@@ -20,12 +20,19 @@
 
 #include "net/eathena/pethandler.h"
 
+#include "inventory.h"
 #include "notifymanager.h"
+
+#include "being/playerinfo.h"
 
 #include "gui/chatconsts.h"
 
+#include "gui/windows/eggselectiondialog.h"
+
 #include "net/chathandler.h"
 #include "net/net.h"
+
+#include "net/ea/eaprotocol.h"
 
 #include "net/eathena/menu.h"
 #include "net/eathena/messageout.h"
@@ -149,9 +156,18 @@ void PetHandler::processEggsList(Net::MessageIn &msg)
 {
     const int count = (msg.readInt16("len") - 4) / 2;
     menu = MenuType::Eggs;
+
+    SellDialog *const dialog = new EggSelectionDialog;
+    dialog->postInit();
+    Inventory *const inv = PlayerInfo::getInventory();
+
     for (int f = 0; f < count; f ++)
     {
-        msg.readInt16("egg index");
+        const int index = msg.readInt16("index") - INVENTORY_OFFSET;
+        const Item *const item = inv->getItem(index);
+
+        if (item)
+            dialog->addItem(item, 0);
     }
 }
 

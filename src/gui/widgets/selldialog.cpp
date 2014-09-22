@@ -55,14 +55,30 @@
 
 SellDialog::DialogList SellDialog::instances;
 
-SellDialog::SellDialog() :
+SellDialog::SellDialog(const bool isSell) :
     // TRANSLATORS: sell dialog name
     Window(_("Sell"), false, nullptr, "sell.xml"),
     ActionListener(),
     SelectionListener(),
+    mSellButton(nullptr),
+    mQuitButton(nullptr),
+    mAddMaxButton(nullptr),
+    mIncreaseButton(nullptr),
+    mDecreaseButton(nullptr),
+    mShopItemList(nullptr),
+    mScrollArea(nullptr),
+    mMoneyLabel(nullptr),
+    mQuantityLabel(nullptr),
+    mSlider(nullptr),
+    mShopItems(nullptr),
     mPlayerMoney(0),
     mMaxItems(0),
-    mAmountItems(0)
+    mAmountItems(0),
+    mIsSell(isSell)
+{
+}
+
+void SellDialog::postInit()
 {
     setWindowName("Sell");
     setResizable(true);
@@ -85,33 +101,14 @@ SellDialog::SellDialog() :
         getOptionBool("showbackground"), "sell_background.xml");
     mScrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
 
-    mSlider = new Slider(this, 1.0, 1.0);
-
-    mQuantityLabel = new Label(this, strprintf(
-        "%d / %d", mAmountItems, mMaxItems));
-    mQuantityLabel->setAlignment(Graphics::CENTER);
-    // TRANSLATORS: sell dialog label
-    mMoneyLabel = new Label(this, strprintf(_("Price: %s / Total: %s"),
-                                      "", ""));
-
-    // TRANSLATORS: sell dialog button
-    mIncreaseButton = new Button(this, _("+"), "inc", this);
-    // TRANSLATORS: sell dialog button
-    mDecreaseButton = new Button(this, _("-"), "dec", this);
     // TRANSLATORS: sell dialog button
     mSellButton = new Button(this, _("Sell"), "presell", this);
     // TRANSLATORS: sell dialog button
     mQuitButton = new Button(this, _("Quit"), "quit", this);
-    // TRANSLATORS: sell dialog button
-    mAddMaxButton = new Button(this, _("Max"), "max", this);
 
-    mDecreaseButton->adjustSize();
-    mDecreaseButton->setWidth(mIncreaseButton->getWidth());
+    initButtons();
 
-    mIncreaseButton->setEnabled(false);
-    mDecreaseButton->setEnabled(false);
     mSellButton->setEnabled(false);
-    mSlider->setEnabled(false);
 
     mShopItemList->setDistributeMousePressed(false);
     mShopItemList->setPriceCheck(false);
@@ -119,21 +116,50 @@ SellDialog::SellDialog() :
     mShopItemList->setActionEventId("sell");
     mShopItemList->addActionListener(this);
 
-    mSlider->setActionEventId("slider");
-    mSlider->addActionListener(this);
-
     ContainerPlacer placer;
     placer = getPlacer(0, 0);
 
-    placer(0, 0, mScrollArea, 8, 5).setPadding(3);
-    placer(0, 5, mDecreaseButton);
-    placer(1, 5, mSlider, 3);
-    placer(4, 5, mIncreaseButton);
-    placer(5, 5, mQuantityLabel, 2);
-    placer(7, 5, mAddMaxButton);
-    placer(0, 6, mMoneyLabel, 8);
-    placer(6, 7, mSellButton);
-    placer(7, 7, mQuitButton);
+    if (mIsSell)
+    {
+        // TRANSLATORS: sell dialog button
+        mIncreaseButton = new Button(this, _("+"), "inc", this);
+        // TRANSLATORS: sell dialog button
+        mDecreaseButton = new Button(this, _("-"), "dec", this);
+        // TRANSLATORS: sell dialog button
+        mAddMaxButton = new Button(this, _("Max"), "max", this);
+        mSlider = new Slider(this, 1.0, 1.0);
+
+        mQuantityLabel = new Label(this, strprintf(
+            "%d / %d", mAmountItems, mMaxItems));
+        mQuantityLabel->setAlignment(Graphics::CENTER);
+        // TRANSLATORS: sell dialog label
+        mMoneyLabel = new Label(this, strprintf(_("Price: %s / Total: %s"),
+            "", ""));
+
+        mDecreaseButton->adjustSize();
+        mDecreaseButton->setWidth(mIncreaseButton->getWidth());
+        mIncreaseButton->setEnabled(false);
+        mDecreaseButton->setEnabled(false);
+        mSlider->setEnabled(false);
+        mSlider->setActionEventId("slider");
+        mSlider->addActionListener(this);
+
+        placer(0, 0, mScrollArea, 8, 5).setPadding(3);
+        placer(0, 5, mDecreaseButton);
+        placer(1, 5, mSlider, 3);
+        placer(4, 5, mIncreaseButton);
+        placer(5, 5, mQuantityLabel, 2);
+        placer(7, 5, mAddMaxButton);
+        placer(0, 6, mMoneyLabel, 8);
+        placer(6, 7, mSellButton);
+        placer(7, 7, mQuitButton);
+    }
+    else
+    {
+        placer(0, 0, mScrollArea, 8, 5).setPadding(3);
+        placer(6, 5, mSellButton);
+        placer(7, 5, mQuitButton);
+    }
 
     Layout &layout = getLayout();
     layout.setRowHeight(0, LayoutType::SET);
@@ -203,26 +229,25 @@ void SellDialog::action(const ActionEvent &event)
         mAmountItems = static_cast<int>(mSlider->getValue());
         updateButtonsAndLabels();
     }
-    else if (eventId == "inc" && mAmountItems < mMaxItems)
+    else if (eventId == "inc" && mSlider && mAmountItems < mMaxItems)
     {
         mAmountItems++;
         mSlider->setValue(mAmountItems);
         updateButtonsAndLabels();
     }
-    else if (eventId == "dec" && mAmountItems > 1)
+    else if (eventId == "dec" && mSlider && mAmountItems > 1)
     {
         mAmountItems--;
         mSlider->setValue(mAmountItems);
         updateButtonsAndLabels();
     }
-    else if (eventId == "max")
+    else if (eventId == "max" && mSlider)
     {
         mAmountItems = mMaxItems;
         mSlider->setValue(mAmountItems);
         updateButtonsAndLabels();
     }
-    else if ((eventId == "presell" || eventId == "sell" || eventId == "yes")
-             && mAmountItems > 0 && mAmountItems <= mMaxItems)
+    else if (eventId == "presell" || eventId == "sell" || eventId == "yes")
     {
         sellAction(event);
     }
@@ -232,10 +257,12 @@ void SellDialog::valueChanged(const SelectionEvent &event A_UNUSED)
 {
     // Reset amount of items and update labels
     mAmountItems = 1;
-    mSlider->setValue(0);
-
+    if (mSlider)
+    {
+        mSlider->setValue(0);
+        mSlider->setScale(1, mMaxItems);
+    }
     updateButtonsAndLabels();
-    mSlider->setScale(1, mMaxItems);
 }
 
 void SellDialog::setMoney(const int amount)
@@ -274,16 +301,26 @@ void SellDialog::updateButtonsAndLabels()
 
     // Update Buttons and slider
     mSellButton->setEnabled(mAmountItems > 0);
-    mDecreaseButton->setEnabled(mAmountItems > 1);
-    mIncreaseButton->setEnabled(mAmountItems < mMaxItems);
-    mSlider->setEnabled(mMaxItems > 1);
+    if (mDecreaseButton)
+        mDecreaseButton->setEnabled(mAmountItems > 1);
+    if (mIncreaseButton)
+        mIncreaseButton->setEnabled(mAmountItems < mMaxItems);
+    if (mSlider)
+        mSlider->setEnabled(mMaxItems > 1);
 
-    // Update the quantity and money labels
-    mQuantityLabel->setCaption(strprintf("%d / %d", mAmountItems, mMaxItems));
-    // TRANSLATORS: sell dialog label
-    mMoneyLabel->setCaption(strprintf(_("Price: %s / Total: %s"),
-        Units::formatCurrency(income).c_str(),
-        Units::formatCurrency(mPlayerMoney + income).c_str()));
+    if (mQuantityLabel)
+    {
+        // Update the quantity and money labels
+        mQuantityLabel->setCaption(strprintf("%d / %d",
+            mAmountItems, mMaxItems));
+    }
+    if (mMoneyLabel)
+    {
+        // TRANSLATORS: sell dialog label
+        mMoneyLabel->setCaption(strprintf(_("Price: %s / Total: %s"),
+            Units::formatCurrency(income).c_str(),
+            Units::formatCurrency(mPlayerMoney + income).c_str()));
+    }
     if (item)
         item->update();
 }

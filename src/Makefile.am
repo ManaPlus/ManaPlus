@@ -472,6 +472,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/windows/editdialog.h \
 	      gui/windows/editserverdialog.cpp \
 	      gui/windows/editserverdialog.h \
+	      gui/windows/eggselectiondialog.cpp \
+	      gui/windows/eggselectiondialog.h \
 	      gui/windows/emotewindow.cpp \
 	      gui/windows/emotewindow.h \
 	      gui/windows/equipmentwindow.cpp \

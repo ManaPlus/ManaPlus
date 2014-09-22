@@ -48,15 +48,8 @@ class SellDialog notfinal : public Window,
     public:
         /**
          * Constructor.
-         *
-         * @see Window::Window
          */
-        SellDialog();
-
-        /**
-         * Constructor.
-         */
-        explicit SellDialog(const std::string &nick);
+        explicit SellDialog(const bool isSell);
 
         A_DELETE_COPY(SellDialog)
 
@@ -111,6 +104,8 @@ class SellDialog notfinal : public Window,
          */
         static void closeAll();
 
+        void postInit();
+
     protected:
         typedef std::list<SellDialog*> DialogList;
         static DialogList instances;
@@ -121,6 +116,9 @@ class SellDialog notfinal : public Window,
         void updateButtonsAndLabels();
 
         virtual void sellAction(const ActionEvent &event) = 0;
+
+        virtual void initButtons()
+        { }
 
         Button *mSellButton;
         Button *mQuitButton;
@@ -137,6 +135,8 @@ class SellDialog notfinal : public Window,
         int mPlayerMoney;
         int mMaxItems;
         int mAmountItems;
+
+        bool mIsSell;
 };
 
 #endif  // GUI_WIDGETS_SELLDIALOG_H

@@ -147,6 +147,7 @@ void BuySellHandler::processNpcSell(Net::MessageIn &msg) const
     if (n_items > 0)
     {
         SellDialog *const dialog = new NpcSellDialog(mNpcId);
+        dialog->postInit();
         dialog->setMoney(PlayerInfo::getAttribute(Attributes::MONEY));
 
         for (int k = 0; k < n_items; k++)
