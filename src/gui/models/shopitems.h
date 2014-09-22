@@ -121,6 +121,9 @@ class ShopItems final : public ListModel
         std::vector<ShopItem*> &items() A_WARN_UNUSED
         { return mShopItems; }
 
+        void setMergeDuplicates(const bool b)
+        { mMergeDuplicates = b; }
+
     private:
         /**
          * Searches the current items in the shop for the specified

@@ -63,6 +63,7 @@ void EggSelectionDialog::initButtons()
     // TRANSLATORS: egg selection dialog button
     mSellButton->setCaption(_("Select"));
     mSellButton->adjustSize();
+    mShopItems->setMergeDuplicates(false);
 }
 
 void EggSelectionDialog::sellAction(const ActionEvent &event)
