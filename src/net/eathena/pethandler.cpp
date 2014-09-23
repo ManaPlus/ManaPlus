@@ -66,6 +66,7 @@ PetHandler::PetHandler() :
         SMSG_PET_EGGS_LIST,
         SMSG_PET_DATA,
         SMSG_PET_STATUS,
+        SMSG_PET_FOOD,
         0
     };
     handledMessages = _messages;
@@ -95,6 +96,10 @@ void PetHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_PET_STATUS:
             processPetStatus(msg);
+            break;
+
+        case SMSG_PET_FOOD:
+            processPetFood(msg);
             break;
 
         default:
@@ -268,6 +273,13 @@ void PetHandler::processPetStatus(Net::MessageIn &msg)
     info->intimacy = intimacy;
     info->equip = equip;
     info->race = race;
+}
+
+void PetHandler::processPetFood(Net::MessageIn &msg)
+{
+    // +++ need show notification message about success or fail
+    msg.readUInt8("result");
+    msg.readInt16("food id");
 }
 
 }  // namespace EAthena

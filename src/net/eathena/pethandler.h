@@ -66,6 +66,8 @@ class PetHandler final :  public MessageHandler, public Net::PetHandler
 
         void processPetStatus(Net::MessageIn &msg);
 
+        void processPetFood(Net::MessageIn &msg);
+
         int mRandCounter;
 };
 
