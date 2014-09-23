@@ -24,12 +24,15 @@
 #include "inventory.h"
 #include "notifymanager.h"
 
+#include "being/localplayer.h"
 #include "being/petinfo.h"
 #include "being/playerinfo.h"
 
 #include "gui/chatconsts.h"
 
 #include "gui/windows/eggselectiondialog.h"
+
+#include "gui/widgets/tabs/chattab.h"
 
 #include "net/chathandler.h"
 #include "net/net.h"
@@ -41,6 +44,9 @@
 #include "net/eathena/protocol.h"
 
 #include "resources/notifytypes.h"
+
+#include "utils/gettext.h"
+#include "utils/stringutils.h"
 
 #include "debug.h"
 
@@ -143,8 +149,26 @@ void PetHandler::setName(const std::string &name) const
 
 void PetHandler::processPetMessage(Net::MessageIn &msg)
 {
-    msg.readInt32("pet id");
-    msg.readInt32("param");
+    const int id = msg.readInt32("pet id");
+    const int data = msg.readInt32("param");
+    Being *const dstBeing = actorManager->findBeing(id);
+    if (!dstBeing)
+        return;
+
+    const int hungry = data - (dstBeing->getSubType() - 100) * 100 - 50;
+    if (hungry >= 0 && hungry <= 4)
+    {
+        if (localChatTab && localPlayer)
+        {
+            std::string nick = strprintf(_("%s's pet"),
+                localPlayer->getName().c_str());
+            localChatTab->chatLog(nick, strprintf("hungry level %d", hungry));
+        }
+        PetInfo *const info = PlayerInfo::getPet();
+        if (!info || info->id != id)
+            return;
+        info->hungry = hungry;
+    }
 }
 
 void PetHandler::processPetRoulette(Net::MessageIn &msg)
