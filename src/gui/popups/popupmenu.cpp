@@ -71,6 +71,7 @@
 #include "net/chathandler.h"
 #include "net/guildhandler.h"
 #include "net/inventoryhandler.h"
+#include "net/mercenaryhandler.h"
 #include "net/net.h"
 #include "net/npchandler.h"
 #include "net/partyhandler.h"
@@ -300,6 +301,13 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
             }
             break;
         }
+
+        case ActorType::Mercenary:
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: fire mercenary
+            mBrowserBox->addRow("fire mercenary", _("Fire"));
+            mBrowserBox->addRow("##3---");
+            break;
 
         case ActorType::Avatar:
         case ActorType::Unknown:
@@ -1827,6 +1835,10 @@ void PopupMenu::handleLink(const std::string &link,
         const ChatObject *const chat = being->getChat();
         if (chat)
             chatHandler->joinChat(chat, "");
+    }
+    else if (link == "fire mercenary")
+    {
+        mercenaryHandler->fire();
     }
     else if (!link.compare(0, 10, "guild-pos-"))
     {
