@@ -27,6 +27,8 @@
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
+#include "gui/widgets/skillinfo.h"
+
 #include "gui/windows/skilldialog.h"
 
 #include "net/eathena/messageout.h"
@@ -206,8 +208,7 @@ void SkillHandler::processSkillFailed(Net::MessageIn &msg)
     }
 
     std::string txt;
-    if (success == static_cast<int>(SKILL_FAILED)
-        && skillId == static_cast<int>(SKILL_BASIC))
+    if (success == static_cast<int>(SKILL_FAILED) && bskill != 0)
     {
         if (localPlayer && bskill == static_cast<int>(BSKILL_EMOTE)
             && reason == static_cast<int>(RFAIL_SKILLDEP))
@@ -215,38 +216,11 @@ void SkillHandler::processSkillFailed(Net::MessageIn &msg)
             localPlayer->stopAdvert();
         }
 
-        switch (bskill)
-        {
-            case BSKILL_TRADE:
-                // TRANSLATORS: error message
-                txt = _("Trade failed!");
-                break;
-            case BSKILL_EMOTE:
-                // TRANSLATORS: error message
-                txt = _("Emote failed!");
-                break;
-            case BSKILL_SIT:
-                // TRANSLATORS: error message
-                txt = _("Sit failed!");
-                break;
-            case BSKILL_CREATECHAT:
-                // TRANSLATORS: error message
-                txt = _("Chat creating failed!");
-                break;
-            case BSKILL_JOINPARTY:
-                // TRANSLATORS: error message
-                txt = _("Could not join party!");
-                break;
-            case BSKILL_SHOUT:
-                // TRANSLATORS: error message
-                txt = _("Cannot shout!");
-                break;
-            default:
-                logger->log("QQQ SMSG_SKILL_FAILED: bskill "
-                            + toString(bskill));
-                break;
-        }
-
+        SkillInfo *const info = skillDialog->getSkill(bskill);
+        if (info)
+            txt = info->errorText;
+        else
+            txt = strprintf(_("Unknown skill error: %d"), bskill);
         txt.append(" ");
 
         switch (reason)
@@ -302,25 +276,11 @@ void SkillHandler::processSkillFailed(Net::MessageIn &msg)
     }
     else
     {
-        switch (skillId)
-        {
-            case SKILL_WARP :
-                // TRANSLATORS: error message
-                txt = _("Warp failed...");
-                break;
-            case SKILL_STEAL :
-                // TRANSLATORS: error message
-                txt = _("Could not steal anything...");
-                break;
-            case SKILL_ENVENOM :
-                // TRANSLATORS: error message
-                txt = _("Poison had no effect...");
-                break;
-            default:
-                logger->log("QQQ SMSG_SKILL_FAILED: skillId "
-                            + toString(skillId));
-                break;
-        }
+        SkillInfo *const info = skillDialog->getSkill(skillId);
+        if (info)
+            txt = info->errorText;
+        else
+            txt = strprintf(_("Unknown skill error: %d"), skillId);
     }
 
     NotifyManager::notify(NotifyTypes::SKILL_FAIL_MESSAGE, txt);

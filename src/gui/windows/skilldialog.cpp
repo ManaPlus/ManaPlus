@@ -448,7 +448,7 @@ void SkillDialog::addSkill(const SkillOwner::Type owner,
         skill->sp = sp;
         skill->update();
         skill->useButton = _("Use");
-        skill->errorText = name;
+        skill->errorText = strprintf(_("Failed skill: %s"), name.c_str());
         mDefaultModel->addSkill(skill);
 
         mSkills[id] = skill;
