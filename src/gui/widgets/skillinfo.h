@@ -48,6 +48,7 @@ struct SkillInfo final
     std::string skillExp;
     std::string skillEffect;
     std::string useButton;
+    std::string errorText;
     float progress;
     Color color;
     SkillDataMap dataMap;

@@ -306,6 +306,10 @@ void SkillDialog::loadXmlFile(const std::string &fileName)
                         id += SKILL_VAR_MIN_ID;
                     }
 
+                    std::string name = XML::langProperty(node, "name",
+                        // TRANSLATORS: skills dialog. skill id
+                        strprintf(_("Skill %d"), id));
+
                     SkillInfo *skill = getSkill(id);
                     if (!skill)
                     {
@@ -319,13 +323,12 @@ void SkillDialog::loadXmlFile(const std::string &fileName)
                             node, "useButton", _("Use"));
                         skill->owner = parseOwner(XML::getProperty(
                             node, "owner", "player"));
+                        skill->errorText = XML::getProperty(
+                            node, "errorText", name);
                         model->addSkill(skill);
                         mSkills[id] = skill;
                     }
 
-                    std::string name = XML::langProperty(node, "name",
-                        // TRANSLATORS: skills dialog. skill id
-                        strprintf(_("Skill %d"), id));
                     std::string icon = XML::getProperty(node, "icon", "");
                     const int level = XML::getProperty(node, "level", 0);
                     SkillData *data = skill->getData(level);
@@ -445,6 +448,7 @@ void SkillDialog::addSkill(const SkillOwner::Type owner,
         skill->sp = sp;
         skill->update();
         skill->useButton = _("Use");
+        skill->errorText = name;
         mDefaultModel->addSkill(skill);
 
         mSkills[id] = skill;

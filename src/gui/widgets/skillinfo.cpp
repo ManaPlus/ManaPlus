@@ -40,6 +40,7 @@ SkillInfo::SkillInfo() :
     skillExp(),
     skillEffect(),
     useButton(),
+    errorText(),
     progress(0.0F),
     color(),
     dataMap(),
