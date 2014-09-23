@@ -75,6 +75,7 @@
 #include "net/net.h"
 #include "net/npchandler.h"
 #include "net/partyhandler.h"
+#include "net/pethandler.h"
 #include "net/serverfeatures.h"
 #include "net/tradehandler.h"
 
@@ -306,6 +307,23 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
             // TRANSLATORS: popup menu item
             // TRANSLATORS: fire mercenary
             mBrowserBox->addRow("fire mercenary", _("Fire"));
+            mBrowserBox->addRow("##3---");
+            break;
+
+        case ActorType::Pet:
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: feed pet
+            mBrowserBox->addRow("pet feed", _("Feed"));
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: pet drop loot
+            mBrowserBox->addRow("pet drop loot", _("Drop loot"));
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: pet unequip item
+            mBrowserBox->addRow("pet unequip", _("Unequip"));
+            mBrowserBox->addRow("##3---");
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: pet return to egg
+            mBrowserBox->addRow("pet to egg", _("Return to egg"));
             mBrowserBox->addRow("##3---");
             break;
 
@@ -1839,6 +1857,22 @@ void PopupMenu::handleLink(const std::string &link,
     else if (link == "fire mercenary")
     {
         mercenaryHandler->fire();
+    }
+    else if (link == "pet feed")
+    {
+        petHandler->feed();
+    }
+    else if (link == "pet drop loot")
+    {
+        petHandler->dropLoot();
+    }
+    else if (link == "pet to egg")
+    {
+        petHandler->returnToEgg();
+    }
+    else if (link == "pet unequip")
+    {
+        petHandler->unequip();
     }
     else if (!link.compare(0, 10, "guild-pos-"))
     {
