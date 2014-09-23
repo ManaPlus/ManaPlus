@@ -4079,6 +4079,15 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputAction::NO_VALUE, 50,
         InputCondition::INGAME | InputCondition::NOTARGET,
         "targetmercenary",
+        false},
+    {"keyTargetPet",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::targetPet,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME | InputCondition::NOTARGET,
+        "targetpet",
         false}
 };
 

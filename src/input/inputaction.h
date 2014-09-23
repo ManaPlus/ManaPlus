@@ -482,6 +482,7 @@ namespace InputAction
         UNIGNORE_WHISPER,
         MERCENARY_FIRE,
         TARGET_MERCENARY,
+        TARGET_PET,
         TOTAL
     };
 }  // namespace InputAction

@@ -71,4 +71,9 @@ impHandler0(targetMercenary)
     return setTarget(ActorType::Mercenary, true);
 }
 
+impHandler0(targetPet)
+{
+    return setTarget(ActorType::Pet, true);
+}
+
 }  // namespace Actions
