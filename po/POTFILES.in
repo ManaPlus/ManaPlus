@@ -139,6 +139,7 @@ src/net/ea/playerhandler.cpp
 src/net/ea/skillhandler.cpp
 src/net/eathena/generalhandler.cpp
 src/net/eathena/loginhandler.cpp
+src/net/eathena/pethandler.cpp
 src/net/ea/tradehandler.cpp
 src/net/tmwa/charserverhandler.cpp
 src/net/tmwa/generalhandler.cpp
