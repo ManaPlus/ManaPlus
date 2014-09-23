@@ -140,9 +140,9 @@ void PetHandler::catchPet(const Being *const being) const
     outMsg.writeInt32(being->getId(), "monster id");
 }
 
-void PetHandler::requestPetState(const int data) const
+void PetHandler::sendPetMessage(const int data) const
 {
-    createOutPacket(CMSG_PET_REQUEST_STATE);
+    createOutPacket(CMSG_PET_SEND_MESSAGE);
     outMsg.writeInt32(data, "param");
 }
 

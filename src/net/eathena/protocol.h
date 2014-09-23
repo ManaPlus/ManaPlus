@@ -406,7 +406,7 @@
 #define CMSG_PLAYER_SET_MEMO         0x011d
 
 #define CMSG_PET_CATCH               0x019f
-#define CMSG_PET_REQUEST_STATE       0x01a9
+#define CMSG_PET_SEND_MESSAGE        0x01a9
 #define CMSG_PET_SET_NAME            0x01a5
 #define CMSG_PET_SELECT_EGG          0x01a7
 #define CMSG_PET_MENU_ACTION         0x01a1

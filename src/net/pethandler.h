@@ -45,7 +45,7 @@ class PetHandler notfinal
 
         virtual void catchPet(const Being *const being) const = 0;
 
-        virtual void requestPetState(const int data) const = 0;
+        virtual void sendPetMessage(const int data) const = 0;
 
         virtual void setName(const std::string &name) const = 0;
 

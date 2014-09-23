@@ -51,7 +51,7 @@ class PetHandler final :  public MessageHandler, public Net::PetHandler
 
         void catchPet(const Being *const being) const override final;
 
-        void requestPetState(const int data) const override final;
+        void sendPetMessage(const int data) const override final;
 
         void setName(const std::string &name) const override final;
 

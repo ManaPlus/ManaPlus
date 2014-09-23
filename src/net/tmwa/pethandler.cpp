@@ -78,7 +78,7 @@ void PetHandler::catchPet(const Being *const being A_UNUSED) const
 {
 }
 
-void PetHandler::requestPetState(const int data A_UNUSED) const
+void PetHandler::sendPetMessage(const int data A_UNUSED) const
 {
 }
 
