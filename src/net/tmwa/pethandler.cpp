@@ -86,4 +86,24 @@ void PetHandler::setName(const std::string &name A_UNUSED) const
 {
 }
 
+void PetHandler::requestStatus() const
+{
+}
+
+void PetHandler::feed() const
+{
+}
+
+void PetHandler::dropLoot() const
+{
+}
+
+void PetHandler::returnToEgg() const
+{
+}
+
+void PetHandler::unequip() const
+{
+}
+
 }  // namespace TmwAthena

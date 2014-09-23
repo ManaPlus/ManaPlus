@@ -48,6 +48,16 @@ class PetHandler notfinal
         virtual void requestPetState(const int data) const = 0;
 
         virtual void setName(const std::string &name) const = 0;
+
+        virtual void requestStatus() const = 0;
+
+        virtual void feed() const = 0;
+
+        virtual void dropLoot() const = 0;
+
+        virtual void returnToEgg() const = 0;
+
+        virtual void unequip() const = 0;
 };
 
 }  // namespace Net

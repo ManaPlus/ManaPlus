@@ -55,6 +55,16 @@ class PetHandler final :  public MessageHandler, public Net::PetHandler
 
         void setName(const std::string &name) const override final;
 
+        void requestStatus() const override final;
+
+        void feed() const override final;
+
+        void dropLoot() const override final;
+
+        void returnToEgg() const override final;
+
+        void unequip() const override final;
+
     protected:
         int mRandCounter;
 };

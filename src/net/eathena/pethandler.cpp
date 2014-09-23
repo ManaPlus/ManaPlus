@@ -282,4 +282,35 @@ void PetHandler::processPetFood(Net::MessageIn &msg)
     msg.readInt16("food id");
 }
 
+void PetHandler::requestStatus() const
+{
+    createOutPacket(CMSG_PET_MENU_ACTION);
+    outMsg.writeInt8(0);
+}
+
+void PetHandler::feed() const
+{
+    createOutPacket(CMSG_PET_MENU_ACTION);
+    outMsg.writeInt8(1);
+}
+
+void PetHandler::dropLoot() const
+{
+    createOutPacket(CMSG_PET_MENU_ACTION);
+    outMsg.writeInt8(2);  // performance
+}
+
+void PetHandler::returnToEgg() const
+{
+    createOutPacket(CMSG_PET_MENU_ACTION);
+    outMsg.writeInt8(3);
+    PlayerInfo::setPet(nullptr);
+}
+
+void PetHandler::unequip() const
+{
+    createOutPacket(CMSG_PET_MENU_ACTION);
+    outMsg.writeInt8(4);
+}
+
 }  // namespace EAthena
