@@ -303,9 +303,20 @@ void Being::setSubtype(const uint16_t subtype, const uint8_t look)
     mSubType = subtype;
     mLook = look;
 
-    if (mType == ActorType::Monster || mType == ActorType::Pet)
+    if (mType == ActorType::Monster)
     {
         mInfo = MonsterDB::get(mSubType);
+        if (mInfo)
+        {
+            setName(mInfo->getName());
+            setupSpriteDisplay(mInfo->getDisplay(), true, 0,
+                mInfo->getColor(mLook));
+            mYDiff = mInfo->getSortOffsetY();
+        }
+    }
+    if (mType == ActorType::Pet)
+    {
+        mInfo = PETDB::get(mSubType);
         if (mInfo)
         {
             setName(mInfo->getName());
