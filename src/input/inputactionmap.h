@@ -4088,7 +4088,16 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputAction::NO_VALUE, 50,
         InputCondition::INGAME | InputCondition::NOTARGET,
         "targetpet",
-        false}
+        false},
+    {"keyPetSetName",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::setPetName,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "setpetname|petsetname",
+        false},
 };
 
 #endif  // INPUT_INPUTACTIONMAP_H

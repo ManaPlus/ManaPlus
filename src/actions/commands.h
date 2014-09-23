@@ -73,6 +73,7 @@ namespace Actions
     decHandler(debugSpawn);
     decHandler(serverIgnoreWhisper);
     decHandler(serverUnIgnoreWhisper);
+    decHandler(setPetName);
 }  // namespace Actions
 
 #undef decHandler

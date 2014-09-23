@@ -483,6 +483,7 @@ namespace InputAction
         MERCENARY_FIRE,
         TARGET_MERCENARY,
         TARGET_PET,
+        PET_SET_NAME,
         TOTAL
     };
 }  // namespace InputAction

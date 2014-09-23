@@ -690,4 +690,14 @@ impHandler(serverUnIgnoreWhisper)
     return true;
 }
 
+impHandler(setPetName)
+{
+    const std::string args = event.args;
+    if (args.empty())
+        return false;
+
+    petHandler->setName(args);
+    return true;
+}
+
 }  // namespace Actions
