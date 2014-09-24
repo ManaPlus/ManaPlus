@@ -530,6 +530,7 @@ SET(SRCS
     net/gamehandler.h
     net/generalhandler.h
     net/guildhandler.h
+    net/homunculushandler.h
     net/inventoryhandler.h
     net/ipc.cpp
     net/ipc.h

@@ -55,6 +55,7 @@ namespace Net
     class GameHandler;
     class GeneralHandler;
     class GuildHandler;
+    class HomunculusHandler;
     class InventoryHandler;
     class LoginHandler;
     class MailHandler;
@@ -94,6 +95,7 @@ Net::FamilyHandler *familyHandler = nullptr;
 Net::BankHandler *bankHandler = nullptr;
 Net::QuestHandler *questHandler = nullptr;
 Net::BuyingStoreHandler *buyingStoreHandler = nullptr;
+Net::HomunculusHandler *homunculusHandler = nullptr;
 
 namespace Net
 {

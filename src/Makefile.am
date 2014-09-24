@@ -657,6 +657,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      net/gamehandler.h \
 	      net/generalhandler.h \
 	      net/guildhandler.h \
+	      net/homunculushandler.h \
 	      net/inventoryhandler.h \
 	      net/ipc.cpp \
 	      net/ipc.h \
@@ -1246,6 +1247,8 @@ manaplus_SOURCES += \
 	      net/tmwa/generalhandler.h \
 	      net/tmwa/guildhandler.cpp \
 	      net/tmwa/guildhandler.h \
+	      net/tmwa/homunculushandler.cpp \
+	      net/tmwa/homunculushandler.h \
 	      net/tmwa/inventoryhandler.cpp \
 	      net/tmwa/inventoryhandler.h \
 	      net/tmwa/itemhandler.cpp \
@@ -1315,6 +1318,8 @@ manaplus_SOURCES += net/eathena/adminhandler.cpp \
 	      net/eathena/generalhandler.h \
 	      net/eathena/guildhandler.cpp \
 	      net/eathena/guildhandler.h \
+	      net/eathena/homunculushandler.cpp \
+	      net/eathena/homunculushandler.h \
 	      net/eathena/inventoryhandler.cpp \
 	      net/eathena/inventoryhandler.h \
 	      net/eathena/itemhandler.cpp \

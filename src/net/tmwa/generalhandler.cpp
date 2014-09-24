@@ -51,6 +51,7 @@
 #include "net/tmwa/familyhandler.h"
 #include "net/tmwa/gamehandler.h"
 #include "net/tmwa/guildhandler.h"
+#include "net/tmwa/homunculushandler.h"
 #include "net/tmwa/inventoryhandler.h"
 #include "net/tmwa/itemhandler.h"
 #include "net/tmwa/loginhandler.h"
@@ -108,7 +109,8 @@ GeneralHandler::GeneralHandler() :
     mFamilyHandler(new FamilyHandler),
     mBankHandler(new BankHandler),
     mMercenaryHandler(new MercenaryHandler),
-    mBuyingStoreHandler(new BuyingStoreHandler)
+    mBuyingStoreHandler(new BuyingStoreHandler),
+    mHomunculusHandler(new HomunculusHandler)
 {
     static const uint16_t _messages[] =
     {
@@ -229,6 +231,7 @@ void GeneralHandler::load()
     mNetwork->registerHandler(mBankHandler);
     mNetwork->registerHandler(mMercenaryHandler);
     mNetwork->registerHandler(mBuyingStoreHandler);
+    mNetwork->registerHandler(mHomunculusHandler);
 }
 
 void GeneralHandler::reload()
