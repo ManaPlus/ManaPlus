@@ -47,6 +47,7 @@ HomunculusHandler::HomunculusHandler() :
     {
         SMSG_HOMUNCULUS_SKILLS,
         SMSG_HOMUNCULUS_DATA,
+        SMSG_HOMUNCULUS_INFO,
         0
     };
     handledMessages = _messages;
@@ -63,6 +64,10 @@ void HomunculusHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_HOMUNCULUS_DATA:
             processHomunculusData(msg);
+            break;
+
+        case SMSG_HOMUNCULUS_INFO:
+            processHomunculusInfo(msg);
             break;
 
         default:
@@ -132,6 +137,48 @@ void HomunculusHandler::processHomunculusData(Net::MessageIn &msg)
             break;
         default:
             break;
+    }
+}
+
+void HomunculusHandler::processHomunculusInfo(Net::MessageIn &msg)
+{
+    const std::string name = msg.readString(24, "name");
+    msg.readUInt8("flags");  // 0x01 - renamed, 0x02 - vaporize, 0x04 - alive
+    const int level = msg.readInt16("level");
+    const int hungry = msg.readInt16("hungry");
+    const int intimacy = msg.readInt16("intimacy");
+    const int equip = msg.readInt16("equip");
+    msg.readInt16("atk");
+    msg.readInt16("matk");
+    msg.readInt16("hit");
+    msg.readInt16("luk/3 or crit/10");
+    msg.readInt16("def");
+    msg.readInt16("mdef");
+    msg.readInt16("flee");
+    msg.readInt16("attack speed");
+    msg.readInt16("hp");
+    msg.readInt16("max hp");
+    msg.readInt16("sp");
+    msg.readInt16("max sp");
+    msg.readInt32("exp");
+    msg.readInt32("next exp");
+    msg.readInt16("skill points");
+    const int range = msg.readInt16("attack range");
+
+    HomunculusInfo *const info = PlayerInfo::getHomunculus();
+    if (!info)  // we cant find homunculus being because id is missing
+        return;
+    Being *const dstBeing = actorManager->findBeing(info->id);
+
+    if (dstBeing)
+    {
+        info->name = name;
+        info->level = level;
+        info->range = range;
+        info->hungry = hungry;
+        info->intimacy = intimacy;
+        info->equip = equip;
+        PlayerInfo::setHomunculusBeing(dstBeing);
     }
 }
 

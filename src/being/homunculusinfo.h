@@ -28,6 +28,8 @@ struct HomunculusInfo final
     HomunculusInfo() :
         name(),
         id(0),
+        level(0),
+        range(0),
         hungry(0),
         intimacy(0),
         equip(0)
@@ -37,6 +39,8 @@ struct HomunculusInfo final
 
     std::string name;
     int id;
+    int level;
+    int range;
     int hungry;
     int intimacy;
     int equip;
