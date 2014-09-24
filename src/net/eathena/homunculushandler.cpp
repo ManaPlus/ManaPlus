@@ -22,6 +22,10 @@
 
 #include "logger.h"
 
+#include "being/playerinfo.h"
+
+#include "gui/windows/skilldialog.h"
+
 #include "net/ea/eaprotocol.h"
 
 #include "net/eathena/messageout.h"
@@ -39,6 +43,7 @@ HomunculusHandler::HomunculusHandler() :
 {
     static const uint16_t _messages[] =
     {
+        SMSG_HOMUNCULUS_SKILLS,
         0
     };
     handledMessages = _messages;
@@ -49,9 +54,43 @@ void HomunculusHandler::handleMessage(Net::MessageIn &msg)
 {
     switch (msg.getId())
     {
+        case SMSG_HOMUNCULUS_SKILLS:
+            processHomunculusSkills(msg);
+            break;
+
         default:
             break;
     }
+}
+
+void HomunculusHandler::processHomunculusSkills(Net::MessageIn &msg)
+{
+    if (skillDialog)
+        skillDialog->hideSkills(SkillOwner::Homunculus);
+
+    const int count = (msg.readInt16("len") - 4) / 37;
+    for (int f = 0; f < count; f ++)
+    {
+        const int skillId = msg.readInt16("skill id");
+        const SkillType::SkillType inf = static_cast<SkillType::SkillType>(
+            msg.readInt16("inf"));
+        const int level = msg.readInt16("skill level");
+        const int sp = msg.readInt16("sp");
+        const int range = msg.readInt16("range");
+        const std::string name = msg.readString(24, "skill name");
+        const int up = msg.readUInt8("up flag");
+        PlayerInfo::setSkillLevel(skillId, level);
+        if (skillDialog)
+        {
+            if (!skillDialog->updateSkill(skillId, range, up, inf, sp))
+            {
+                skillDialog->addSkill(SkillOwner::Homunculus,
+                    skillId, name, level, range, up, inf, sp);
+            }
+        }
+    }
+    if (skillDialog)
+        skillDialog->updateModels();
 }
 
 }  // namespace EAthena

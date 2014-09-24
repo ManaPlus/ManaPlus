@@ -38,6 +38,9 @@ class HomunculusHandler final : public MessageHandler,
         A_DELETE_COPY(HomunculusHandler)
 
         void handleMessage(Net::MessageIn &msg) override final;
+
+    protected:
+        void processHomunculusSkills(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
