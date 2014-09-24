@@ -35,7 +35,8 @@ namespace ActorType
         LocalPet,
         Pet,
         Avatar,
-        Mercenary
+        Mercenary,
+        Homunculus
     };
 }  // namespace ActorType
 

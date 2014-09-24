@@ -303,7 +303,7 @@ void Being::setSubtype(const uint16_t subtype, const uint8_t look)
     mSubType = subtype;
     mLook = look;
 
-    if (mType == ActorType::Monster)
+    if (mType == ActorType::Monster || mType == ActorType::Homunculus)
     {
         mInfo = MonsterDB::get(mSubType);
         if (mInfo)
