@@ -138,6 +138,8 @@
 #define SMSG_GM_CHAT2                0x01c3
 #define SMSG_WALK_RESPONSE           0x0087
 
+#define SMSG_BUYINGSTORE_OPEN        0x0810
+
 // Receiving a request to trade
 #define SMSG_TRADE_REQUEST           0x01f4
 #define SMSG_TRADE_RESPONSE          0x00e7

@@ -38,6 +38,9 @@ class BuyingStoreHandler final : public MessageHandler,
         A_DELETE_COPY(BuyingStoreHandler)
 
         void handleMessage(Net::MessageIn &msg) override final;
+
+    protected:
+        void processBuyingStoreOpen(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

@@ -39,6 +39,7 @@ BuyingStoreHandler::BuyingStoreHandler() :
 {
     static const uint16_t _messages[] =
     {
+        SMSG_BUYINGSTORE_OPEN,
         0
     };
     handledMessages = _messages;
@@ -49,9 +50,19 @@ void BuyingStoreHandler::handleMessage(Net::MessageIn &msg)
 {
     switch (msg.getId())
     {
+        case SMSG_BUYINGSTORE_OPEN:
+            processBuyingStoreOpen(msg);
+            break;
+
         default:
             break;
     }
+}
+
+void BuyingStoreHandler::processBuyingStoreOpen(Net::MessageIn &msg)
+{
+    // +++ need create store dialog
+    msg.readUInt8("slots");
 }
 
 }  // namespace EAthena
