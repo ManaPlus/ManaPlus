@@ -826,6 +826,7 @@ SET(SRCS
     being/compoundsprite.h
     being/cookingtype.h
     being/gender.h
+    being/homunculusinfo.h
     listeners/configlistener.h
     configuration.cpp
     configuration.h
