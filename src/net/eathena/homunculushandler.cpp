@@ -20,8 +20,10 @@
 
 #include "net/eathena/homunculushandler.h"
 
+#include "actormanager.h"
 #include "logger.h"
 
+#include "being/homunculusinfo.h"
 #include "being/playerinfo.h"
 
 #include "gui/windows/skilldialog.h"
@@ -44,6 +46,7 @@ HomunculusHandler::HomunculusHandler() :
     static const uint16_t _messages[] =
     {
         SMSG_HOMUNCULUS_SKILLS,
+        SMSG_HOMUNCULUS_DATA,
         0
     };
     handledMessages = _messages;
@@ -56,6 +59,10 @@ void HomunculusHandler::handleMessage(Net::MessageIn &msg)
     {
         case SMSG_HOMUNCULUS_SKILLS:
             processHomunculusSkills(msg);
+            break;
+
+        case SMSG_HOMUNCULUS_DATA:
+            processHomunculusData(msg);
             break;
 
         default:
@@ -91,6 +98,40 @@ void HomunculusHandler::processHomunculusSkills(Net::MessageIn &msg)
     }
     if (skillDialog)
         skillDialog->updateModels();
+}
+
+void HomunculusHandler::processHomunculusData(Net::MessageIn &msg)
+{
+    msg.readUInt8("unused");
+    const int cmd = msg.readUInt8("state");
+    const int id = msg.readInt32("homunculus id");
+    Being *const dstBeing = actorManager->findBeing(id);
+    const int data = msg.readInt32("data");
+    if (!cmd)  // pre init
+    {
+        HomunculusInfo *const info = new HomunculusInfo;
+        info->id = id;
+        PlayerInfo::setHomunculus(info);
+        PlayerInfo::setHomunculusBeing(dstBeing);
+        return;
+    }
+    HomunculusInfo *const info = PlayerInfo::getHomunculus();
+    if (!info)
+        return;
+    switch (cmd)
+    {
+        case 1:  // intimacy
+            info->intimacy = data;
+            break;
+        case 2:  // hunger
+            info->hungry = data;
+            break;
+        case 3:  // accesory
+            info->equip = data;
+            break;
+        default:
+            break;
+    }
 }
 
 }  // namespace EAthena

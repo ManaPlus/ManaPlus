@@ -63,6 +63,7 @@ class FloorItem;
 class Inventory;
 class Item;
 
+struct HomunculusInfo;
 struct MercenaryInfo;
 struct PetInfo;
 
@@ -249,6 +250,12 @@ namespace PlayerInfo
     void setPet(PetInfo *const info);
 
     void setPetBeing(Being *const being);
+
+    HomunculusInfo *getHomunculus();
+
+    void setHomunculus(HomunculusInfo *const info);
+
+    void setHomunculusBeing(Being *const being);
 }  // namespace PlayerInfo
 
 #endif  // BEING_PLAYERINFO_H

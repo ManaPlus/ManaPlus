@@ -26,6 +26,7 @@
 #include "inventory.h"
 
 #include "being/attributes.h"
+#include "being/homunculusinfo.h"
 #include "being/localplayer.h"
 #include "being/mercenaryinfo.h"
 #include "being/petinfo.h"
@@ -57,6 +58,7 @@ int mCharId = 0;
 Inventory *mInventory = nullptr;
 Equipment *mEquipment = nullptr;
 MercenaryInfo *mMercenary = nullptr;
+HomunculusInfo *mHomunculus = nullptr;
 PetInfo *mPet = nullptr;
 
 bool mTrading = false;
@@ -509,6 +511,26 @@ void setPetBeing(Being *const being)
 PetInfo *getPet()
 {
     return mPet;
+}
+
+void setHomunculus(HomunculusInfo *const info)
+{
+    if (mHomunculus)
+        delete mHomunculus;
+    mHomunculus = info;
+}
+
+void setHomunculusBeing(Being *const being)
+{
+    if (!being || !mPet)
+        return;
+    being->setName(mHomunculus->name);
+    being->setOwner(localPlayer);
+}
+
+HomunculusInfo *getHomunculus()
+{
+    return mHomunculus;
 }
 
 }  // namespace PlayerInfo

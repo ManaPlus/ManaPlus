@@ -41,6 +41,8 @@ class HomunculusHandler final : public MessageHandler,
 
     protected:
         void processHomunculusSkills(Net::MessageIn &msg);
+
+        void processHomunculusData(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

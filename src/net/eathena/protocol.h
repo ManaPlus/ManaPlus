@@ -259,6 +259,7 @@
 #define SMSG_MERCENARY_SKILLS        0x029d
 
 #define SMSG_HOMUNCULUS_SKILLS       0x0235
+#define SMSG_HOMUNCULUS_DATA         0x0230
 
 /**********************************
  *  Packets from client to server *
