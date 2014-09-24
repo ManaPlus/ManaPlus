@@ -46,6 +46,7 @@ namespace Net
     class AuctionHandler;
     class BankHandler;
     class BeingHandler;
+    class BuyingStoreHandler;
     class BuySellHandler;
     class CashShopHandler;
     class CharServerHandler;
@@ -92,6 +93,7 @@ Net::CashShopHandler *cashShopHandler = nullptr;
 Net::FamilyHandler *familyHandler = nullptr;
 Net::BankHandler *bankHandler = nullptr;
 Net::QuestHandler *questHandler = nullptr;
+Net::BuyingStoreHandler *buyingStoreHandler = nullptr;
 
 namespace Net
 {

@@ -644,6 +644,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      net/bankhandler.h \
 	      net/cashshophandler.h \
 	      net/beinghandler.h \
+	      net/buyingstorehandler.h \
 	      net/buysellhandler.h \
 	      net/character.h \
 	      net/charserverhandler.cpp \
@@ -1229,6 +1230,8 @@ manaplus_SOURCES += \
 	      net/tmwa/cashshophandler.h \
 	      net/tmwa/beinghandler.cpp \
 	      net/tmwa/beinghandler.h \
+	      net/tmwa/buyingstorehandler.cpp \
+	      net/tmwa/buyingstorehandler.h \
 	      net/tmwa/buysellhandler.cpp \
 	      net/tmwa/buysellhandler.h \
 	      net/tmwa/charserverhandler.cpp \
@@ -1295,6 +1298,8 @@ manaplus_SOURCES += net/eathena/adminhandler.cpp \
 	      net/eathena/cashshophandler.h \
 	      net/eathena/beinghandler.cpp \
 	      net/eathena/beinghandler.h \
+	      net/eathena/buyingstorehandler.cpp \
+	      net/eathena/buyingstorehandler.h \
 	      net/eathena/beingtype.h \
 	      net/eathena/buysellhandler.cpp \
 	      net/eathena/buysellhandler.h \

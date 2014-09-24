@@ -1297,6 +1297,8 @@ SET(SRCS_TMWA
     net/tmwa/cashshophandler.h
     net/tmwa/beinghandler.cpp
     net/tmwa/beinghandler.h
+    net/tmwa/buyingstorehandler.cpp
+    net/tmwa/buyingstorehandler.h
     net/tmwa/buysellhandler.cpp
     net/tmwa/buysellhandler.h
     net/tmwa/charserverhandler.cpp
@@ -1362,6 +1364,8 @@ SET(SRCS_EATHENA
     net/eathena/cashshophandler.h
     net/eathena/beinghandler.cpp
     net/eathena/beinghandler.h
+    net/eathena/buyingstorehandler.cpp
+    net/eathena/buyingstorehandler.h
     net/eathena/beingtype.h
     net/eathena/buysellhandler.cpp
     net/eathena/buysellhandler.h

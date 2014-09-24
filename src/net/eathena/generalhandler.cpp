@@ -43,6 +43,7 @@
 #include "net/eathena/auctionhandler.h"
 #include "net/eathena/bankhandler.h"
 #include "net/eathena/beinghandler.h"
+#include "net/eathena/buyingstorehandler.h"
 #include "net/eathena/buysellhandler.h"
 #include "net/eathena/cashshophandler.h"
 #include "net/eathena/chathandler.h"
@@ -106,7 +107,8 @@ GeneralHandler::GeneralHandler() :
     mCashShopHandler(new CashShopHandler),
     mFamilyHandler(new FamilyHandler),
     mBankHandler(new BankHandler),
-    mMercenaryHandler(new MercenaryHandler)
+    mMercenaryHandler(new MercenaryHandler),
+    mBuyingStoreHandler(new BuyingStoreHandler)
 {
     static const uint16_t _messages[] =
     {
@@ -210,6 +212,7 @@ void GeneralHandler::load()
     mNetwork->registerHandler(mFamilyHandler);
     mNetwork->registerHandler(mBankHandler);
     mNetwork->registerHandler(mMercenaryHandler);
+    mNetwork->registerHandler(mBuyingStoreHandler);
 }
 
 void GeneralHandler::reload()
