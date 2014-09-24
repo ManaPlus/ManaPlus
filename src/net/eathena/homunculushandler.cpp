@@ -81,6 +81,7 @@ void HomunculusHandler::processHomunculusSkills(Net::MessageIn &msg)
         const int skillId = msg.readInt16("skill id");
         const SkillType::SkillType inf = static_cast<SkillType::SkillType>(
             msg.readInt16("inf"));
+        msg.readInt16("unused");
         const int level = msg.readInt16("skill level");
         const int sp = msg.readInt16("sp");
         const int range = msg.readInt16("range");
