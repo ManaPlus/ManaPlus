@@ -179,4 +179,10 @@ void HomunculusHandler::processHomunculusInfo(Net::MessageIn &msg)
     PlayerInfo::setHomunculusBeing(dstBeing);
 }
 
+void HomunculusHandler::setName(const std::string &name) const
+{
+    createOutPacket(CMSG_HOMUNCULUS_SET_NAME);
+    outMsg.writeString(name, 24, "name");
+}
+
 }  // namespace EAthena

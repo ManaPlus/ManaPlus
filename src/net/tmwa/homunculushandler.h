@@ -37,6 +37,8 @@ class HomunculusHandler final : public MessageHandler,
         A_DELETE_COPY(HomunculusHandler)
 
         void handleMessage(Net::MessageIn &msg) override final;
+
+        void setName(const std::string &name) const override final;
 };
 
 }  // namespace TmwAthena

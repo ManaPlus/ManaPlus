@@ -417,6 +417,8 @@
 #define CMSG_PET_SELECT_EGG          0x01a7
 #define CMSG_PET_MENU_ACTION         0x01a1
 
+#define CMSG_HOMUNCULUS_SET_NAME     0x0231
+
 #define CMSG_DORI_DORI               0x01e7
 #define CMSG_EXPLOSION_SPIRITS       0x01ed
 #define CMSG_PVP_INFO                0x020f

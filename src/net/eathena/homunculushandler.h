@@ -39,6 +39,8 @@ class HomunculusHandler final : public MessageHandler,
 
         void handleMessage(Net::MessageIn &msg) override final;
 
+        void setName(const std::string &name) const override final;
+
     protected:
         void processHomunculusSkills(Net::MessageIn &msg);
 

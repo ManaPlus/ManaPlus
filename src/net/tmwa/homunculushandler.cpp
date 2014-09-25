@@ -42,4 +42,8 @@ void HomunculusHandler::handleMessage(Net::MessageIn &msg A_UNUSED)
 {
 }
 
+void HomunculusHandler::setName(const std::string &name A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

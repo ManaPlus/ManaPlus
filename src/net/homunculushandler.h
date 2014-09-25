@@ -33,6 +33,8 @@ class HomunculusHandler notfinal
     public:
         virtual ~HomunculusHandler()
         { }
+
+        virtual void setName(const std::string &name) const = 0;
 };
 
 }  // namespace Net
