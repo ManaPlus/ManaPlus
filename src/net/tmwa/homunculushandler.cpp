@@ -50,4 +50,8 @@ void HomunculusHandler::moveToMaster() const
 {
 }
 
+void HomunculusHandler::move(const int x A_UNUSED, const int y A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

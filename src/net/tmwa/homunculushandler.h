@@ -41,6 +41,8 @@ class HomunculusHandler final : public MessageHandler,
         void setName(const std::string &name) const override final;
 
         void moveToMaster() const override final;
+
+        void move(const int x, const int y) const override final;
 };
 
 }  // namespace TmwAthena

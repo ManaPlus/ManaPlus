@@ -43,6 +43,8 @@ class HomunculusHandler final : public MessageHandler,
 
         void moveToMaster() const override final;
 
+        void move(const int x, const int y) const override final;
+
     protected:
         void processHomunculusSkills(Net::MessageIn &msg);
 

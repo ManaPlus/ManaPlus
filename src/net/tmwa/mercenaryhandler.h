@@ -43,6 +43,8 @@ class MercenaryHandler final : public MessageHandler,
         void fire() override final;
 
         void moveToMaster() const override final;
+
+        void move(const int x, const int y) const override final;
 };
 
 }  // namespace TmwAthena

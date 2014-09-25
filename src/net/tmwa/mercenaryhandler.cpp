@@ -54,4 +54,8 @@ void MercenaryHandler::moveToMaster() const
 {
 }
 
+void MercenaryHandler::move(const int x A_UNUSED, const int y A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

@@ -195,4 +195,14 @@ void MercenaryHandler::moveToMaster() const
     outMsg.writeInt32(id);
 }
 
+void MercenaryHandler::move(const int x, const int y) const
+{
+    const int id = PlayerInfo::getMercenaryId();
+    if (!id)
+        return;
+    createOutPacket(CMSG_HOMMERC_MOVE_TO);
+    outMsg.writeInt32(id);
+    outMsg.writeCoordinates(x, y, 0U);
+}
+
 }  // namespace EAthena

@@ -37,6 +37,8 @@ class HomunculusHandler notfinal
         virtual void setName(const std::string &name) const = 0;
 
         virtual void moveToMaster() const = 0;
+
+        virtual void move(const int x, const int y) const = 0;
 };
 
 }  // namespace Net

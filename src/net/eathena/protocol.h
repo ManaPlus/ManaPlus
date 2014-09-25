@@ -419,6 +419,7 @@
 
 #define CMSG_HOMUNCULUS_SET_NAME     0x0231
 #define CMSG_HOMMERC_MOVE_TO_MASTER  0x0234
+#define CMSG_HOMMERC_MOVE_TO         0x0232
 
 #define CMSG_DORI_DORI               0x01e7
 #define CMSG_EXPLOSION_SPIRITS       0x01ed
