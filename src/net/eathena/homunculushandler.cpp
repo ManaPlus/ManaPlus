@@ -204,4 +204,15 @@ void HomunculusHandler::move(const int x, const int y) const
     outMsg.writeCoordinates(x, y, 0U);
 }
 
+void HomunculusHandler::attack(const int targetId, const bool keep) const
+{
+    const int id = PlayerInfo::getHomunculusId();
+    if (!id)
+        return;
+    createOutPacket(CMSG_HOMMERC_ATTACK);
+    outMsg.writeInt32(id);
+    outMsg.writeInt32(targetId);
+    outMsg.writeInt8(keep ? 1 : 0);
+}
+
 }  // namespace EAthena

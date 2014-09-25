@@ -41,6 +41,8 @@ class MercenaryHandler notfinal
         virtual void moveToMaster() const = 0;
 
         virtual void move(const int x, const int y) const = 0;
+
+        virtual void attack(const int targetId, const bool keep) const = 0;
 };
 
 }  // namespace Net

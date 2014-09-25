@@ -45,6 +45,8 @@ class HomunculusHandler final : public MessageHandler,
 
         void move(const int x, const int y) const override final;
 
+        void attack(const int targetId, const bool keep) const override final;
+
     protected:
         void processHomunculusSkills(Net::MessageIn &msg);
 
