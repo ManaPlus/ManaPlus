@@ -48,6 +48,7 @@ HomunculusHandler::HomunculusHandler() :
         SMSG_HOMUNCULUS_SKILLS,
         SMSG_HOMUNCULUS_DATA,
         SMSG_HOMUNCULUS_INFO,
+        SMSG_HOMUNCULUS_SKILL_UP,
         0
     };
     handledMessages = _messages;
@@ -68,6 +69,10 @@ void HomunculusHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_HOMUNCULUS_INFO:
             processHomunculusInfo(msg);
+            break;
+
+        case SMSG_HOMUNCULUS_SKILL_UP:
+            processHomunculusSkillUp(msg);
             break;
 
         default:
@@ -177,6 +182,29 @@ void HomunculusHandler::processHomunculusInfo(Net::MessageIn &msg)
     info->intimacy = intimacy;
     info->equip = equip;
     PlayerInfo::setHomunculusBeing(dstBeing);
+}
+
+void HomunculusHandler::processHomunculusSkillUp(Net::MessageIn &msg)
+{
+    const int skillId = msg.readInt16("skill id");
+    const int level = msg.readInt16("level");
+    const int sp = msg.readInt16("sp");
+    const int range = msg.readInt16("range");
+    const int up = msg.readUInt8("up flag");
+
+    if (skillDialog && PlayerInfo::getSkillLevel(skillId) != level)
+        skillDialog->playUpdateEffect(skillId);
+    PlayerInfo::setSkillLevel(skillId, level);
+    if (skillDialog)
+    {
+        if (!skillDialog->updateSkill(skillId, range,
+            up, SkillType::Unknown, sp))
+        {
+            skillDialog->addSkill(SkillOwner::Homunculus,
+                skillId, "", level,
+                range, up, SkillType::Unknown, sp);
+        }
+    }
 }
 
 void HomunculusHandler::setName(const std::string &name) const

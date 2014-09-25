@@ -261,6 +261,7 @@
 #define SMSG_HOMUNCULUS_SKILLS       0x0235
 #define SMSG_HOMUNCULUS_DATA         0x0230
 #define SMSG_HOMUNCULUS_INFO         0x022e
+#define SMSG_HOMUNCULUS_SKILL_UP     0x0239
 
 /**********************************
  *  Packets from client to server *
