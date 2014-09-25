@@ -260,6 +260,8 @@ namespace PlayerInfo
     int getHomunculusId();
 
     int getMercenaryId();
+
+    void updateMoveAI();
 }  // namespace PlayerInfo
 
 #endif  // BEING_PLAYERINFO_H

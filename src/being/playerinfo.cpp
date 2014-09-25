@@ -39,7 +39,9 @@
 
 #include "resources/iteminfo.h"
 
+#include "net/homunculushandler.h"
 #include "net/inventoryhandler.h"
+#include "net/mercenaryhandler.h"
 #include "net/net.h"
 #include "net/playerhandler.h"
 
@@ -541,6 +543,14 @@ int getHomunculusId()
 int getMercenaryId()
 {
     return mMercenary ? mMercenary->id : 0;
+}
+
+void updateMoveAI()
+{
+    if (mMercenary)
+        mercenaryHandler->moveToMaster();
+    if (mHomunculus)
+        homunculusHandler->moveToMaster();
 }
 
 }  // namespace PlayerInfo
