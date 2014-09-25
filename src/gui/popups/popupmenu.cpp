@@ -70,6 +70,7 @@
 #include "net/buysellhandler.h"
 #include "net/chathandler.h"
 #include "net/guildhandler.h"
+#include "net/homunculushandler.h"
 #include "net/inventoryhandler.h"
 #include "net/mercenaryhandler.h"
 #include "net/net.h"
@@ -306,7 +307,14 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
         case ActorType::Mercenary:
             // TRANSLATORS: popup menu item
             // TRANSLATORS: fire mercenary
+            mBrowserBox->addRow("mercenary to master", _("Move to master"));
+            mBrowserBox->addRow("##3---");
             mBrowserBox->addRow("fire mercenary", _("Fire"));
+            mBrowserBox->addRow("##3---");
+            break;
+
+        case ActorType::Homunculus:
+            mBrowserBox->addRow("homunculus to master", _("Move to master"));
             mBrowserBox->addRow("##3---");
             break;
 
@@ -1857,6 +1865,14 @@ void PopupMenu::handleLink(const std::string &link,
     else if (link == "fire mercenary")
     {
         mercenaryHandler->fire();
+    }
+    else if (link == "mercenary to master")
+    {
+        mercenaryHandler->moveToMaster();
+    }
+    else if (link == "homunculus to master")
+    {
+        homunculusHandler->moveToMaster();
     }
     else if (link == "pet feed")
     {
