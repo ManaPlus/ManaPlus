@@ -306,15 +306,26 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
 
         case ActorType::Mercenary:
             // TRANSLATORS: popup menu item
-            // TRANSLATORS: fire mercenary
+            // TRANSLATORS: Mercenary move to master
             mBrowserBox->addRow("mercenary to master", _("Move to master"));
             mBrowserBox->addRow("##3---");
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: fire mercenary
             mBrowserBox->addRow("fire mercenary", _("Fire"));
             mBrowserBox->addRow("##3---");
             break;
 
         case ActorType::Homunculus:
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: Mercenary move to master
             mBrowserBox->addRow("homunculus to master", _("Move to master"));
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: feed homunculus
+            mBrowserBox->addRow("homunculus feed", _("Feed"));
+            mBrowserBox->addRow("##3---");
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: delete homunculus
+            mBrowserBox->addRow("homunculus delete", _("Kill"));
             mBrowserBox->addRow("##3---");
             break;
 
@@ -1873,6 +1884,14 @@ void PopupMenu::handleLink(const std::string &link,
     else if (link == "homunculus to master")
     {
         homunculusHandler->moveToMaster();
+    }
+    else if (link == "homunculus feed")
+    {
+        homunculusHandler->feed();
+    }
+    else if (link == "homunculus delete")
+    {
+        homunculusHandler->fire();
     }
     else if (link == "pet feed")
     {
