@@ -59,6 +59,8 @@ class SkillHandler final : public MessageHandler, public Ea::SkillHandler
         void processSkillCoolDown(Net::MessageIn &msg);
 
         void processSkillCoolDownList(Net::MessageIn &msg);
+
+        void processSkillSnap(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

@@ -57,6 +57,7 @@ SkillHandler::SkillHandler() :
         SMSG_PLAYER_SKILL_UP,
         SMSG_PLAYER_SKILL_COOLDOWN,
         SMSG_PLAYER_SKILL_COOLDOWN_LIST,
+        SMSG_SKILL_SNAP,
         0
     };
     handledMessages = _messages;
@@ -85,6 +86,10 @@ void SkillHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_PLAYER_SKILL_COOLDOWN_LIST:
             processSkillCoolDownList(msg);
+            break;
+
+        case SMSG_SKILL_SNAP:
+            processSkillSnap(msg);
             break;
 
         default:
@@ -284,6 +289,13 @@ void SkillHandler::processSkillFailed(Net::MessageIn &msg)
     }
 
     NotifyManager::notify(NotifyTypes::SKILL_FAIL_MESSAGE, txt);
+}
+
+void SkillHandler::processSkillSnap(Net::MessageIn &msg)
+{
+    msg.readInt32("being id");
+    msg.readInt16("x");
+    msg.readInt16("y");
 }
 
 }  // namespace EAthena
