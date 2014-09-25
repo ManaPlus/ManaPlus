@@ -29,6 +29,8 @@
 
 class BeingInfo;
 
+struct SpriteDisplay;
+
 #define loadXmlDir(name, function) \
     { \
         StringVect listVect; \
@@ -55,6 +57,11 @@ namespace BeingCommon
     void getIncludeFiles(const std::string &dir,
                          StringVect &list,
                          const std::string &ext);
+
+    bool readObjectNodes(XmlNodePtr &node,
+                         SpriteDisplay &display,
+                         BeingInfo *const currentInfo,
+                         const std::string &dbName);
 }
 
 #endif  // RESOURCES_BEINGCOMMON_H

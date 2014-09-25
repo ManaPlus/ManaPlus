@@ -20,10 +20,14 @@
 
 #include "resources/beingcommon.h"
 
+#include "configuration.h"
+#include "logger.h"
+
 #include "utils/files.h"
 #include "utils/stringutils.h"
 
 #include "resources/beinginfo.h"
+#include "resources/spritereference.h"
 
 #include <algorithm>
 
@@ -63,4 +67,116 @@ void BeingCommon::getIncludeFiles(const std::string &dir,
             list.push_back(str);
     }
     std::sort(list.begin(), list.end());
+}
+
+bool BeingCommon::readObjectNodes(XmlNodePtr &spriteNode,
+                                  SpriteDisplay &display,
+                                  BeingInfo *const currentInfo,
+                                  const std::string &dbName)
+{
+    if (xmlNameEqual(spriteNode, "sprite"))
+    {
+        if (!spriteNode->xmlChildrenNode)
+            return true;
+
+        SpriteReference *const currentSprite = new SpriteReference;
+        currentSprite->sprite = reinterpret_cast<const char*>(
+            spriteNode->xmlChildrenNode->content);
+
+        currentSprite->variant = XML::getProperty(
+            spriteNode, "variant", 0);
+        display.sprites.push_back(currentSprite);
+        return true;
+    }
+    else if (xmlNameEqual(spriteNode, "sound"))
+    {
+        if (!spriteNode->xmlChildrenNode)
+            return true;
+
+        const std::string event = XML::getProperty(
+            spriteNode, "event", "");
+        const int delay = XML::getProperty(
+            spriteNode, "delay", 0);
+        const char *const filename = reinterpret_cast<const char*>(
+            spriteNode->xmlChildrenNode->content);
+
+        if (event == "hit")
+        {
+            currentInfo->addSound(ItemSoundEvent::HIT, filename, delay);
+        }
+        else if (event == "miss")
+        {
+            currentInfo->addSound(ItemSoundEvent::MISS, filename, delay);
+        }
+        else if (event == "hurt")
+        {
+            currentInfo->addSound(ItemSoundEvent::HURT, filename, delay);
+        }
+        else if (event == "die")
+        {
+            currentInfo->addSound(ItemSoundEvent::DIE, filename, delay);
+        }
+        else if (event == "move")
+        {
+            currentInfo->addSound(ItemSoundEvent::MOVE, filename, delay);
+        }
+        else if (event == "sit")
+        {
+            currentInfo->addSound(ItemSoundEvent::SIT, filename, delay);
+        }
+        else if (event == "sittop")
+        {
+            currentInfo->addSound(ItemSoundEvent::SITTOP, filename, delay);
+        }
+        else if (event == "spawn")
+        {
+            currentInfo->addSound(ItemSoundEvent::SPAWN, filename, delay);
+        }
+        else
+        {
+            logger->log((dbName + ": Warning, sound effect %s for "
+                "unknown event %s of monster %s").c_str(),
+                filename, event.c_str(),
+                currentInfo->getName().c_str());
+        }
+        return true;
+    }
+    else if (xmlNameEqual(spriteNode, "attack"))
+    {
+        const int attackId = XML::getProperty(spriteNode, "id", 0);
+        const int effectId = XML::getProperty(spriteNode, "effect-id",
+            paths.getIntValue("effectId"));
+        const int hitEffectId = XML::getProperty(spriteNode, "hit-effect-id",
+            paths.getIntValue("hitEffectId"));
+        const int criticalHitEffectId = XML::getProperty(spriteNode,
+            "critical-hit-effect-id",
+            paths.getIntValue("criticalHitEffectId"));
+        const int missEffectId = XML::getProperty(spriteNode, "miss-effect-id",
+            paths.getIntValue("missEffectId"));
+
+        const std::string spriteAction = XML::getProperty(spriteNode, "action",
+            "attack");
+        const std::string skySpriteAction = XML::getProperty(spriteNode,
+            "skyaction", "skyattack");
+        const std::string waterSpriteAction = XML::getProperty(spriteNode,
+            "wateraction", "waterattack");
+
+        const std::string missileParticle = XML::getProperty(spriteNode,
+            "missile-particle", "");
+
+        currentInfo->addAttack(attackId, spriteAction, skySpriteAction,
+            waterSpriteAction, effectId, hitEffectId,
+            criticalHitEffectId, missEffectId, missileParticle);
+        return true;
+    }
+    else if (xmlNameEqual(spriteNode, "particlefx"))
+    {
+        if (!spriteNode->xmlChildrenNode)
+            return true;
+
+        display.particles.push_back(reinterpret_cast<const char*>(
+            spriteNode->xmlChildrenNode->content));
+        return true;
+    }
+    return false;
 }
