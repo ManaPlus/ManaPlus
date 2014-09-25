@@ -37,6 +37,8 @@ class MercenaryHandler notfinal
         virtual void handleMercenaryMessage(const int cmd) = 0;
 
         virtual void fire() = 0;
+
+        virtual void moveToMaster() const = 0;
 };
 
 }  // namespace Net

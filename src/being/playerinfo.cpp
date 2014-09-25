@@ -533,4 +533,14 @@ HomunculusInfo *getHomunculus()
     return mHomunculus;
 }
 
+int getHomunculusId()
+{
+    return mHomunculus ? mHomunculus->id : 0;
+}
+
+int getMercenaryId()
+{
+    return mMercenary ? mMercenary->id : 0;
+}
+
 }  // namespace PlayerInfo

@@ -256,6 +256,10 @@ namespace PlayerInfo
     void setHomunculus(HomunculusInfo *const info);
 
     void setHomunculusBeing(Being *const being);
+
+    int getHomunculusId();
+
+    int getMercenaryId();
 }  // namespace PlayerInfo
 
 #endif  // BEING_PLAYERINFO_H

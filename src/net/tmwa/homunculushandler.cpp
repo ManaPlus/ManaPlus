@@ -46,4 +46,8 @@ void HomunculusHandler::setName(const std::string &name A_UNUSED) const
 {
 }
 
+void HomunculusHandler::moveToMaster() const
+{
+}
+
 }  // namespace TmwAthena

@@ -43,6 +43,8 @@ class MercenaryHandler final : public MessageHandler,
 
         void fire() override final;
 
+        void moveToMaster() const override final;
+
     protected:
         void processMercenaryUpdate(Net::MessageIn &msg);
 

@@ -418,6 +418,7 @@
 #define CMSG_PET_MENU_ACTION         0x01a1
 
 #define CMSG_HOMUNCULUS_SET_NAME     0x0231
+#define CMSG_HOMMERC_MOVE_TO_MASTER  0x0234
 
 #define CMSG_DORI_DORI               0x01e7
 #define CMSG_EXPLOSION_SPIRITS       0x01ed

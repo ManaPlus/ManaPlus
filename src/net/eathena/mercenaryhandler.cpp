@@ -186,4 +186,13 @@ void MercenaryHandler::fire()
     outMsg.writeInt8(2, "action");  // delete
 }
 
+void MercenaryHandler::moveToMaster() const
+{
+    const int id = PlayerInfo::getMercenaryId();
+    if (!id)
+        return;
+    createOutPacket(CMSG_HOMMERC_MOVE_TO_MASTER);
+    outMsg.writeInt32(id);
+}
+
 }  // namespace EAthena

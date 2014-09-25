@@ -50,4 +50,8 @@ void MercenaryHandler::fire()
 {
 }
 
+void MercenaryHandler::moveToMaster() const
+{
+}
+
 }  // namespace TmwAthena

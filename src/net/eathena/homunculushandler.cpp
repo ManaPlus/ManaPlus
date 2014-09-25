@@ -185,4 +185,13 @@ void HomunculusHandler::setName(const std::string &name) const
     outMsg.writeString(name, 24, "name");
 }
 
+void HomunculusHandler::moveToMaster() const
+{
+    const int id = PlayerInfo::getHomunculusId();
+    if (!id)
+        return;
+    createOutPacket(CMSG_HOMMERC_MOVE_TO_MASTER);
+    outMsg.writeInt32(id);
+}
+
 }  // namespace EAthena
