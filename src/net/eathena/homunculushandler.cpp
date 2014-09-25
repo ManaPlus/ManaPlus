@@ -170,16 +170,13 @@ void HomunculusHandler::processHomunculusInfo(Net::MessageIn &msg)
         return;
     Being *const dstBeing = actorManager->findBeing(info->id);
 
-    if (dstBeing)
-    {
-        info->name = name;
-        info->level = level;
-        info->range = range;
-        info->hungry = hungry;
-        info->intimacy = intimacy;
-        info->equip = equip;
-        PlayerInfo::setHomunculusBeing(dstBeing);
-    }
+    info->name = name;
+    info->level = level;
+    info->range = range;
+    info->hungry = hungry;
+    info->intimacy = intimacy;
+    info->equip = equip;
+    PlayerInfo::setHomunculusBeing(dstBeing);
 }
 
 }  // namespace EAthena

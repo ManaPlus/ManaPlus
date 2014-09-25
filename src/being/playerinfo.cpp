@@ -522,7 +522,7 @@ void setHomunculus(HomunculusInfo *const info)
 
 void setHomunculusBeing(Being *const being)
 {
-    if (!being || !mPet)
+    if (!being || !mHomunculus)
         return;
     being->setName(mHomunculus->name);
     being->setOwner(localPlayer);
