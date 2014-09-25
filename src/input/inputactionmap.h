@@ -4098,6 +4098,15 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputCondition::INGAME,
         "setpetname|petsetname",
         false},
+    {"keyHomunculusSetName",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::setHomunculusName,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "sethomunname|homunsetname|sethomunculusname|homunculussetname",
+        false}
 };
 
 #endif  // INPUT_INPUTACTIONMAP_H

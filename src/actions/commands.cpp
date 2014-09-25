@@ -40,6 +40,7 @@
 #include "net/adminhandler.h"
 #include "net/chathandler.h"
 #include "net/guildhandler.h"
+#include "net/homunculushandler.h"
 #include "net/net.h"
 #include "net/pethandler.h"
 #include "net/serverfeatures.h"
@@ -697,6 +698,16 @@ impHandler(setPetName)
         return false;
 
     petHandler->setName(args);
+    return true;
+}
+
+impHandler(setHomunculusName)
+{
+    const std::string args = event.args;
+    if (args.empty())
+        return false;
+
+    homunculusHandler->setName(args);
     return true;
 }
 

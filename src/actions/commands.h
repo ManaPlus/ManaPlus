@@ -74,6 +74,7 @@ namespace Actions
     decHandler(serverIgnoreWhisper);
     decHandler(serverUnIgnoreWhisper);
     decHandler(setPetName);
+    decHandler(setHomunculusName);
 }  // namespace Actions
 
 #undef decHandler

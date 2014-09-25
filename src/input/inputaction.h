@@ -484,6 +484,7 @@ namespace InputAction
         TARGET_MERCENARY,
         TARGET_PET,
         PET_SET_NAME,
+        HOMUNCULUS_SET_NAME,
         TOTAL
     };
 }  // namespace InputAction
