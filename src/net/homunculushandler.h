@@ -41,6 +41,10 @@ class HomunculusHandler notfinal
         virtual void move(const int x, const int y) const = 0;
 
         virtual void attack(const int targetId, const bool keep) const = 0;
+
+        virtual void feed() const = 0;
+
+        virtual void fire() const = 0;
 };
 
 }  // namespace Net

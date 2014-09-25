@@ -215,4 +215,18 @@ void HomunculusHandler::attack(const int targetId, const bool keep) const
     outMsg.writeInt8(keep ? 1 : 0);
 }
 
+void HomunculusHandler::feed() const
+{
+    createOutPacket(CMSG_HOMUNCULUS_MENU);
+    outMsg.writeInt16(0, "type");
+    outMsg.writeInt8(1, "command");  // feed
+}
+
+void HomunculusHandler::fire() const
+{
+    createOutPacket(CMSG_HOMUNCULUS_MENU);
+    outMsg.writeInt16(0, "type");
+    outMsg.writeInt8(2, "command");  // delete
+}
+
 }  // namespace EAthena

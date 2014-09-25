@@ -59,4 +59,12 @@ void HomunculusHandler::attack(const int targetId A_UNUSED,
 {
 }
 
+void HomunculusHandler::feed() const
+{
+}
+
+void HomunculusHandler::fire() const
+{
+}
+
 }  // namespace TmwAthena
