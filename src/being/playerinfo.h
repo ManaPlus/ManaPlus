@@ -262,6 +262,8 @@ namespace PlayerInfo
     int getMercenaryId();
 
     void updateMoveAI();
+
+    void updateAttackAi(const int targetId, const bool keep);
 }  // namespace PlayerInfo
 
 #endif  // BEING_PLAYERINFO_H

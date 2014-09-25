@@ -553,4 +553,12 @@ void updateMoveAI()
         homunculusHandler->moveToMaster();
 }
 
+void updateAttackAi(const int targetId, const bool keep)
+{
+    if (mMercenary)
+        mercenaryHandler->attack(targetId, keep);
+    if (mHomunculus)
+        homunculusHandler->attack(targetId, keep);
+}
+
 }  // namespace PlayerInfo

@@ -771,7 +771,9 @@ void LocalPlayer::attack(Being *const target, const bool keep,
         if (!dontChangeEquipment)
             changeEquipmentBeforeAttack(target);
 
-        playerHandler->attack(target->getId(), mServerAttack);
+        const int targetId = target->getId();
+        playerHandler->attack(targetId, mServerAttack);
+        PlayerInfo::updateAttackAi(targetId, mServerAttack);
     }
 
     if (!keep)
