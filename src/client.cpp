@@ -101,6 +101,7 @@
 #include "resources/db/colordb.h"
 #include "resources/db/deaddb.h"
 #include "resources/db/emotedb.h"
+#include "resources/db/homunculusdb.h"
 #include "resources/db/sounddb.h"
 #include "resources/db/itemdb.h"
 #include "resources/db/mapdb.h"
@@ -610,6 +611,7 @@ void Client::gameClear()
     EmoteDB::unload();
     ItemDB::unload();
     MercenaryDB::unload();
+    HomunculusDB::unload();
     MonsterDB::unload();
     NPCDB::unload();
     AvatarDB::unload();
@@ -1252,6 +1254,7 @@ int Client::gameExec()
                     ItemDB::load();
                     Being::load();
                     MercenaryDB::load();
+                    HomunculusDB::load();
                     MonsterDB::load();
                     AvatarDB::load();
                     WeaponsDB::load();

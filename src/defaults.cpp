@@ -558,6 +558,9 @@ DefaultsData* getPathsDefaults()
     AddDEF("mercenariesFile", "mercenaries.xml");
     AddDEF("mercenariesPatchFile", "mercenaries_patch.xml");
     AddDEF("mercenariesPatchDir", "mercenaries.d");
+    AddDEF("homunculusesFile", "homunculuses.xml");
+    AddDEF("homunculusesPatchFile", "homunculuses_patch.xml");
+    AddDEF("homunculusesPatchDir", "homunculuses.d");
     AddDEF("mapsRemapFile", "maps/remap.xml");
     AddDEF("mapsRemapPatchFile", "maps/remap_patch.xml");
     AddDEF("mapsRemapPatchDir", "maps/remap.d");

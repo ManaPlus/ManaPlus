@@ -72,6 +72,7 @@
 
 #include "resources/db/avatardb.h"
 #include "resources/db/emotedb.h"
+#include "resources/db/homunculusdb.h"
 #include "resources/db/itemdb.h"
 #include "resources/db/mercenarydb.h"
 #include "resources/db/monsterdb.h"
@@ -224,7 +225,8 @@ Being::Being(const int id,
 
     if (mType == ActorType::Player
         || mType == ActorType::Mercenary
-        || mType == ActorType::Pet)
+        || mType == ActorType::Pet
+        || mType == ActorType::Homunculus)
     {
         mShowName = config.getBoolValue("visiblenames");
     }
@@ -303,7 +305,7 @@ void Being::setSubtype(const uint16_t subtype, const uint8_t look)
     mSubType = subtype;
     mLook = look;
 
-    if (mType == ActorType::Monster || mType == ActorType::Homunculus)
+    if (mType == ActorType::Monster)
     {
         mInfo = MonsterDB::get(mSubType);
         if (mInfo)
@@ -328,6 +330,17 @@ void Being::setSubtype(const uint16_t subtype, const uint8_t look)
     else if (mType == ActorType::Mercenary)
     {
         mInfo = MercenaryDB::get(mSubType);
+        if (mInfo)
+        {
+            setName(mInfo->getName());
+            setupSpriteDisplay(mInfo->getDisplay(), true, 0,
+                mInfo->getColor(mLook));
+            mYDiff = mInfo->getSortOffsetY();
+        }
+    }
+    if (mType == ActorType::Homunculus)
+    {
+        mInfo = HomunculusDB::get(mSubType);
         if (mInfo)
         {
             setName(mInfo->getName());
@@ -579,7 +592,8 @@ void Being::takeDamage(Being *const attacker, const int amount,
     }
     else if (mType == ActorType::Monster
              || mType == ActorType::Mercenary
-             || mType == ActorType::Pet)
+             || mType == ActorType::Pet
+             || mType == ActorType::Homunculus)
     {
         if (attacker == localPlayer)
         {
@@ -2945,6 +2959,7 @@ std::string Being::loadComment(const std::string &name,
         case ActorType::LocalPet:
         case ActorType::Avatar:
         case ActorType::Mercenary:
+        case ActorType::Homunculus:
         case ActorType::Pet:
         default:
             return "";
