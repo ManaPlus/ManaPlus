@@ -90,6 +90,7 @@ void GameModifiers::init()
     settings.imitationMode = config.getIntValue("imitationMode");
     settings.disableGameModifiers = config.getBoolValue(
         "disableGameModifiers");
+    settings.awayMode = false;
 //    UpdateStatusListener::distributeEvent();
 }
 
