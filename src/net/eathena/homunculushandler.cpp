@@ -22,6 +22,7 @@
 
 #include "actormanager.h"
 #include "logger.h"
+#include "notifymanager.h"
 
 #include "being/homunculusinfo.h"
 #include "being/playerinfo.h"
@@ -32,6 +33,13 @@
 
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
+
+#include "resources/iteminfo.h"
+#include "resources/notifytypes.h"
+
+#include "resources/db/itemdb.h"
+
+#include "utils/stringutils.h"
 
 #include "debug.h"
 
@@ -49,6 +57,7 @@ HomunculusHandler::HomunculusHandler() :
         SMSG_HOMUNCULUS_DATA,
         SMSG_HOMUNCULUS_INFO,
         SMSG_HOMUNCULUS_SKILL_UP,
+        SMSG_HOMUNCULUS_FOOD,
         0
     };
     handledMessages = _messages;
@@ -73,6 +82,10 @@ void HomunculusHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_HOMUNCULUS_SKILL_UP:
             processHomunculusSkillUp(msg);
+            break;
+
+        case SMSG_HOMUNCULUS_FOOD:
+            processHomunculusFood(msg);
             break;
 
         default:
@@ -204,6 +217,22 @@ void HomunculusHandler::processHomunculusSkillUp(Net::MessageIn &msg)
                 skillId, "", level,
                 range, up, SkillType::Unknown, sp);
         }
+    }
+}
+
+void HomunculusHandler::processHomunculusFood(Net::MessageIn &msg)
+{
+    const int flag = msg.readUInt8("fail");
+    const int itemId = msg.readInt16("food id");
+    if (flag)
+    {
+        NotifyManager::notify(NotifyTypes::HOMUNCULUS_FEED_OK);
+    }
+    else
+    {
+        const std::string name = strprintf("[@@%d|%s@@]", itemId,
+            ItemDB::get(itemId).getName().c_str());
+        NotifyManager::notify(NotifyTypes::HOMUNCULUS_FEED_FAIL, name);
     }
 }
 

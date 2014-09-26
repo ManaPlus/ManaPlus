@@ -263,6 +263,7 @@
 #define SMSG_HOMUNCULUS_DATA         0x0230
 #define SMSG_HOMUNCULUS_INFO         0x022e
 #define SMSG_HOMUNCULUS_SKILL_UP     0x0239
+#define SMSG_HOMUNCULUS_FOOD         0x022f
 
 /**********************************
  *  Packets from client to server *

@@ -353,7 +353,15 @@ namespace NotifyManager
         {"mercenary unknown",
             // TRANSLATORS: notification message
             N_("Mercenary unknown state."),
-            NotifyFlags::EMPTY}
+            NotifyFlags::EMPTY},
+        {"homunculus feed ok",
+            // TRANSLATORS: notification message
+            N_("Your feed your homunculus."),
+            NotifyFlags::EMPTY},
+        {"homunculus feed failed",
+            // TRANSLATORS: notification message
+            N_("You cant feed homunculus, because not have %s."),
+            NotifyFlags::STRING}
     };
 }  // namespace NotifyManager
 #endif  // RESOURCES_NOTIFICATIONS_H

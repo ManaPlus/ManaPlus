@@ -108,6 +108,8 @@ namespace NotifyTypes
         MERCENARY_FIRED,
         MERCENARY_RUN,
         MERCENARY_UNKNOWN,
+        HOMUNCULUS_FEED_OK,
+        HOMUNCULUS_FEED_FAIL,
 
         TYPE_END
     };
