@@ -711,7 +711,7 @@ impHandler(setHomunculusName)
     return true;
 }
 
-impHandler(fireHomunculus)
+impHandler0(fireHomunculus)
 {
     homunculusHandler->fire();
     return true;
