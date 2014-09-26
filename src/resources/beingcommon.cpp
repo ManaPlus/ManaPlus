@@ -24,7 +24,6 @@
 #include "logger.h"
 
 #include "utils/files.h"
-#include "utils/stringutils.h"
 
 #include "resources/beinginfo.h"
 #include "resources/spritereference.h"
@@ -69,7 +68,7 @@ void BeingCommon::getIncludeFiles(const std::string &dir,
     std::sort(list.begin(), list.end());
 }
 
-bool BeingCommon::readObjectNodes(XmlNodePtr &spriteNode,
+bool BeingCommon::readObjectNodes(XmlNodePtrConst &spriteNode,
                                   SpriteDisplay &display,
                                   BeingInfo *const currentInfo,
                                   const std::string &dbName)

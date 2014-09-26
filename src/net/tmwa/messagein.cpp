@@ -27,8 +27,6 @@
 
 #include "logger.h"
 
-#include "utils/stringutils.h"
-
 #include <SDL_endian.h>
 
 #include "debug.h"

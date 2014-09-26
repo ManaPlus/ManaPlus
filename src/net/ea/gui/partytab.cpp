@@ -30,7 +30,6 @@
 
 #include "being/localplayer.h"
 
-#include "net/net.h"
 #include "net/partyhandler.h"
 #include "net/serverfeatures.h"
 

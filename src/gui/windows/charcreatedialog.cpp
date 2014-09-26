@@ -40,7 +40,6 @@
 #include "gui/widgets/slider.h"
 #include "gui/widgets/textfield.h"
 
-#include "net/net.h"
 #include "net/serverfeatures.h"
 
 #include "resources/iteminfo.h"
@@ -51,6 +50,7 @@
 
 #include "utils/delete2.h"
 #include "utils/gettext.h"
+#include "utils/stringutils.h"
 
 #include "debug.h"
 

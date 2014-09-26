@@ -26,8 +26,6 @@
 
 #include "being/localplayer.h"
 
-#include "net/net.h"
-
 #include "net/eathena/loginhandler.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/network.h"

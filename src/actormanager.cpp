@@ -38,7 +38,6 @@
 #include "gui/windows/botcheckerwindow.h"
 #include "gui/windows/chatwindow.h"
 #include "gui/windows/equipmentwindow.h"
-#include "gui/windows/skilldialog.h"
 #include "gui/windows/socialwindow.h"
 #include "gui/windows/questswindow.h"
 
@@ -49,7 +48,6 @@
 
 #include "net/beinghandler.h"
 #include "net/charserverhandler.h"
-#include "net/net.h"
 #include "net/packetlimiter.h"
 #include "net/playerhandler.h"
 

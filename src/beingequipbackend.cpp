@@ -23,7 +23,6 @@
 #include "being/being.h"
 
 #include "net/inventoryhandler.h"
-#include "net/net.h"
 
 #include "utils/delete2.h"
 

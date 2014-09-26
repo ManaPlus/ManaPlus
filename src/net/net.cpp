@@ -36,8 +36,6 @@
 #include "net/eathena/generalhandler.h"
 #endif
 
-#include "utils/stringutils.h"
-
 #include "debug.h"
 
 namespace Net
@@ -57,7 +55,6 @@ namespace Net
     class GuildHandler;
     class HomunculusHandler;
     class InventoryHandler;
-    class LoginHandler;
     class MailHandler;
     class MercenaryHandler;
     class NpcHandler;
@@ -68,7 +65,7 @@ namespace Net
     class ServerFeatures;
     class SkillHandler;
     class TradeHandler;
-}
+}  // namespace Net
 
 Net::AdminHandler *adminHandler = nullptr;
 Net::CharServerHandler *charServerHandler = nullptr;

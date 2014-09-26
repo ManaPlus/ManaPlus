@@ -23,24 +23,11 @@
 #include "gui/windows/eggselectiondialog.h"
 
 #include "shopitem.h"
-#include "units.h"
-
-#include "being/playerinfo.h"
-
-#include "gui/windows/confirmdialog.h"
-#include "gui/windows/setupwindow.h"
-#include "gui/windows/tradewindow.h"
 
 #include "gui/models/shopitems.h"
 
 #include "gui/widgets/button.h"
-#include "gui/widgets/containerplacer.h"
-#include "gui/widgets/label.h"
-#include "gui/widgets/layout.h"
-#include "gui/widgets/layouttype.h"
-#include "gui/widgets/scrollarea.h"
 #include "gui/widgets/shoplistbox.h"
-#include "gui/widgets/slider.h"
 
 #include "net/inventoryhandler.h"
 
@@ -72,7 +59,7 @@ void EggSelectionDialog::sellAction(const ActionEvent &event A_UNUSED)
         return;
 
     const int selectedItem = mShopItemList->getSelected();
-    ShopItem *const item = mShopItems->at(selectedItem);
+    const ShopItem *const item = mShopItems->at(selectedItem);
     if (!item)
         return;
     inventoryHandler->selectEgg(item);

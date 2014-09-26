@@ -31,7 +31,6 @@
 #include "resources/resourcemanager.h"
 #include "configuration.h"
 
-#include "net/net.h"
 #include "net/serverfeatures.h"
 
 #include "debug.h"

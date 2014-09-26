@@ -25,7 +25,6 @@
 #include "actormanager.h"
 #include "animatedsprite.h"
 #include "beingequipbackend.h"
-#include "client.h"
 #include "configuration.h"
 #include "effectmanager.h"
 #include "guild.h"
@@ -56,7 +55,6 @@
 
 #include "net/charserverhandler.h"
 #include "net/gamehandler.h"
-#include "net/net.h"
 #include "net/npchandler.h"
 #include "net/packetlimiter.h"
 #include "net/pethandler.h"

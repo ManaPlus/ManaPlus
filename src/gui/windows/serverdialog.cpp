@@ -28,8 +28,6 @@
 #include "main.h"
 #include "settings.h"
 
-#include "events/keyevent.h"
-
 #include "input/inputaction.h"
 
 #include "net/download.h"

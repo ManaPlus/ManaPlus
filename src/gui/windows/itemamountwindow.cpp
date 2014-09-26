@@ -30,7 +30,6 @@
 #include "input/keyboardconfig.h"
 
 #include "net/inventoryhandler.h"
-#include "net/net.h"
 #include "gui/viewport.h"
 
 #include "gui/models/itemsmodel.h"

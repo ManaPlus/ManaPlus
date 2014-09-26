@@ -29,7 +29,6 @@
 
 #include "gui/windows/buydialog.h"
 
-#include "net/net.h"
 #include "net/serverfeatures.h"
 
 #include "net/tmwa/protocol.h"

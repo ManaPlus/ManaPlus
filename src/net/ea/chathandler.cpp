@@ -36,7 +36,6 @@
 #include "gui/widgets/tabs/gmtab.h"
 
 #include "net/messagein.h"
-#include "net/net.h"
 #include "net/serverfeatures.h"
 
 #include "net/ea/eaprotocol.h"

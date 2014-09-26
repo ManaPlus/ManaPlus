@@ -27,8 +27,6 @@
 
 namespace EAthena
 {
-class MessageOut;
-
 class BankHandler final : public MessageHandler,
                           public Net::BankHandler
 {

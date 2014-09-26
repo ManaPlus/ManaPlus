@@ -27,8 +27,6 @@
 
 namespace EAthena
 {
-class MessageOut;
-
 class BuyingStoreHandler final : public MessageHandler,
                                  public Net::BuyingStoreHandler
 {

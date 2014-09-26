@@ -45,7 +45,6 @@
 
 #include "net/adminhandler.h"
 #include "net/buysellhandler.h"
-#include "net/net.h"
 #include "net/npchandler.h"
 
 #include "resources/iteminfo.h"

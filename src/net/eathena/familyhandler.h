@@ -27,8 +27,6 @@
 
 namespace EAthena
 {
-class MessageOut;
-
 class FamilyHandler final : public MessageHandler,
                             public Net::FamilyHandler
 {

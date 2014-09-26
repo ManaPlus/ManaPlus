@@ -26,8 +26,6 @@
 
 #include "gui/theme.h"
 
-#include "gui/color.h"
-
 #include "gui/fonts/font.h"
 
 #include "debug.h"

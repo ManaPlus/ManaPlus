@@ -223,6 +223,7 @@ void EditServerDialog::action(const ActionEvent &event)
                 mPortField->getText().c_str()));
             mServer.persistentIp = mPersistentIp->isSelected();
 
+#if defined(TMWA_SUPPORT) || defined(EATHENA_SUPPORT)
             if (mTypeField)
             {
                 switch (mTypeField->getSelected())
@@ -252,6 +253,7 @@ void EditServerDialog::action(const ActionEvent &event)
                 }
             }
             else
+#endif  // defined(TMWA_SUPPORT) || defined(EATHENA_SUPPORT)
             {
                 mServer.type = ServerInfo::TMWATHENA;
             }

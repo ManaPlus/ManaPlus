@@ -23,7 +23,6 @@
 #include "gui/windows/buyselldialog.h"
 
 #include "net/buysellhandler.h"
-#include "net/net.h"
 #include "net/npchandler.h"
 
 #include "gui/windows/setupwindow.h"

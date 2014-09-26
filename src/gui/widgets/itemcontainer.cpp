@@ -41,11 +41,11 @@
 #include "gui/windows/shopwindow.h"
 #include "gui/windows/shortcutwindow.h"
 
-#include "net/net.h"
 #include "net/inventoryhandler.h"
 #include "net/tradehandler.h"
 
 #include "utils/gettext.h"
+#include "utils/stringutils.h"
 
 #include "resources/image.h"
 #include "resources/iteminfo.h"

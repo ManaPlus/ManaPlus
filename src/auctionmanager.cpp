@@ -24,7 +24,6 @@
 #include "configuration.h"
 
 #include "net/chathandler.h"
-#include "net/net.h"
 
 #include "debug.h"
 

@@ -27,8 +27,6 @@
 
 namespace EAthena
 {
-class MessageOut;
-
 class MercenaryHandler final : public MessageHandler,
                                public Net::MercenaryHandler
 {

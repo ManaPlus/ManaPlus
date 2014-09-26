@@ -20,10 +20,6 @@
 
 #include "net/eathena/bankhandler.h"
 
-#include "logger.h"
-
-#include "net/ea/eaprotocol.h"
-
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 

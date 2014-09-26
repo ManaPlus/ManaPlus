@@ -26,12 +26,10 @@
 
 #include "resources/beingcommon.h"
 #include "resources/beinginfo.h"
-#include "resources/spritereference.h"
 
 #include "resources/map/blockmask.h"
 
 #include "utils/dtor.h"
-#include "utils/gettext.h"
 
 #include "configuration.h"
 
@@ -76,7 +74,8 @@ void HomunculusDB::loadXmlFile(const std::string &fileName)
     {
         if (xmlNameEqual(homunculusNode, "include"))
         {
-            const std::string name = XML::getProperty(homunculusNode, "name", "");
+            const std::string name = XML::getProperty(
+                homunculusNode, "name", "");
             if (!name.empty())
                 loadXmlFile(name);
             continue;
@@ -95,7 +94,8 @@ void HomunculusDB::loadXmlFile(const std::string &fileName)
             currentInfo = new BeingInfo;
 
         currentInfo->setBlockType(BlockType::MONSTER);
-        BeingCommon::readBasicAttributes(currentInfo, homunculusNode, "attack");
+        BeingCommon::readBasicAttributes(currentInfo,
+            homunculusNode, "attack");
 
         currentInfo->setMaxHP(XML::getProperty(homunculusNode, "maxHP", 0));
 

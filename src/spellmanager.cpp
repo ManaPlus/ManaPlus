@@ -30,7 +30,6 @@
 
 #include "gui/windows/chatwindow.h"
 
-#include "net/net.h"
 #include "net/playerhandler.h"
 
 #include "utils/dtor.h"

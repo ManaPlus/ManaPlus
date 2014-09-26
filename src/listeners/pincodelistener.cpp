@@ -21,7 +21,6 @@
 #include "listeners/pincodelistener.h"
 
 #include "net/charserverhandler.h"
-#include "net/net.h"
 
 #include "gui/windows/editdialog.h"
 

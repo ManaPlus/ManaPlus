@@ -34,7 +34,6 @@
 #include "gui/widgets/tabs/guildchattab.h"
 
 #include "net/chathandler.h"
-#include "net/net.h"
 #include "net/packetlimiter.h"
 
 #include "utils/delete2.h"

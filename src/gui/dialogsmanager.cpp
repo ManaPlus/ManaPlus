@@ -37,7 +37,6 @@
 #include "gui/windows/updaterwindow.h"
 
 #include "net/inventoryhandler.h"
-#include "net/net.h"
 
 #include "utils/gettext.h"
 

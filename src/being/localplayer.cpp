@@ -24,7 +24,6 @@
 
 #include "actormanager.h"
 #include "animatedsprite.h"
-#include "client.h"
 #include "configuration.h"
 #include "dropshortcut.h"
 #include "gamemodifiers.h"
@@ -64,7 +63,6 @@
 #include "net/beinghandler.h"
 #include "net/chathandler.h"
 #include "net/inventoryhandler.h"
-#include "net/net.h"
 #include "net/packetlimiter.h"
 #include "net/pethandler.h"
 #include "net/playerhandler.h"

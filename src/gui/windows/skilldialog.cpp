@@ -42,7 +42,6 @@
 
 #include "gui/widgets/tabs/skilltab.h"
 
-#include "net/net.h"
 #include "net/playerhandler.h"
 #include "net/skillhandler.h"
 

@@ -28,8 +28,6 @@
 
 #include "gui/chatconsts.h"
 
-#include "gui/widgets/tabs/chattab.h"
-
 #include "gui/windows/chatwindow.h"
 
 #include "net/mercenaryhandler.h"

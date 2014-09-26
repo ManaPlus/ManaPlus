@@ -35,12 +35,11 @@
 
 #include "net/chathandler.h"
 #include "net/guildhandler.h"
-#include "net/net.h"
 #include "net/partyhandler.h"
 #include "net/serverfeatures.h"
 
 #include "utils/booleanoptions.h"
-#include "utils/gettext.h"
+#include "utils/stringutils.h"
 
 #include "debug.h"
 
@@ -261,7 +260,8 @@ impHandler(createParty)
     if (event.args.empty())
     {
         // TRANSLATORS: create party message
-        event.tab->chatLog(_("Party name is missing."), ChatMsgType::BY_SERVER);
+        event.tab->chatLog(_("Party name is missing."),
+            ChatMsgType::BY_SERVER);
     }
     else
     {
@@ -278,7 +278,8 @@ impHandler(createGuild)
     if (event.args.empty())
     {
         // TRANSLATORS: create guild message
-        event.tab->chatLog(_("Guild name is missing."), ChatMsgType::BY_SERVER);
+        event.tab->chatLog(_("Guild name is missing."),
+            ChatMsgType::BY_SERVER);
     }
     else
     {
@@ -299,7 +300,8 @@ impHandler(party)
     else
     {
         // TRANSLATORS: party invite message
-        event.tab->chatLog(_("Please specify a name."), ChatMsgType::BY_SERVER);
+        event.tab->chatLog(_("Please specify a name."),
+            ChatMsgType::BY_SERVER);
     }
     return true;
 }

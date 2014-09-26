@@ -25,11 +25,7 @@
 #include "shopitem.h"
 #include "units.h"
 
-#include "being/playerinfo.h"
-
-#include "gui/windows/confirmdialog.h"
 #include "gui/windows/setupwindow.h"
-#include "gui/windows/tradewindow.h"
 
 #include "gui/models/shopitems.h"
 
@@ -42,14 +38,9 @@
 #include "gui/widgets/shoplistbox.h"
 #include "gui/widgets/slider.h"
 
-#include "net/buysellhandler.h"
-#include "net/net.h"
-#include "net/npchandler.h"
-
-#include "resources/iteminfo.h"
-
 #include "utils/delete2.h"
 #include "utils/gettext.h"
+#include "utils/stringutils.h"
 
 #include "debug.h"
 

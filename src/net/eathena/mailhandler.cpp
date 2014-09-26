@@ -71,7 +71,7 @@ void MailHandler::processMailOpen(Net::MessageIn &msg) const
             break;
 
         default:
-            logger->log("unknown mail window open flag: %u", flag);
+            logger->log("unknown mail window open flag: %d", flag);
             break;
     }
 }
@@ -128,10 +128,10 @@ void MailHandler::send(const std::string &name,
     const int sz = static_cast<int>(message.size());
 
     createOutPacket(CMSG_MAIL_SEND);
-    outMsg.writeInt16(69 + sz);
+    outMsg.writeInt16(static_cast<int16_t>(69 + sz));
     outMsg.writeString(name, 24, "name");
     outMsg.writeString(title, 40, "title");
-    outMsg.writeInt8(sz);
+    outMsg.writeInt8(static_cast<int8_t>(sz));
     outMsg.writeString(message, sz, "message");
 }
 

@@ -27,11 +27,12 @@
 #include "being/localplayer.h"
 
 #include "net/chathandler.h"
-#include "net/net.h"
 
 #include "gui/windows/chatwindow.h"
 
 #include "gui/widgets/windowcontainer.h"
+
+#include "utils/stringutils.h"
 
 #include "debug.h"
 

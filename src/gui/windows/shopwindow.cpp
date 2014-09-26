@@ -57,7 +57,6 @@
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
 
-#include "net/net.h"
 #include "net/chathandler.h"
 #include "net/tradehandler.h"
 

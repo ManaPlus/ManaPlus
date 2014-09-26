@@ -29,17 +29,13 @@
 #include "gui/windows/charcreatedialog.h"
 #include "gui/windows/okdialog.h"
 
-#include "net/ea/loginhandler.h"
 #include "net/ea/eaprotocol.h"
 
 #include "net/character.h"
 #include "net/messagein.h"
-#include "net/net.h"
 
 #include "utils/dtor.h"
 #include "utils/gettext.h"
-
-#include "resources/db/chardb.h"
 
 #include "debug.h"
 

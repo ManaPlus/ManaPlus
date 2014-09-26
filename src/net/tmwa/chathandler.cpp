@@ -30,7 +30,6 @@
 
 #include "gui/windows/chatwindow.h"
 
-#include "net/net.h"
 #include "net/serverfeatures.h"
 
 #include "net/tmwa/messageout.h"
@@ -282,7 +281,7 @@ void ChatHandler::battleTalk(const std::string &text A_UNUSED) const
 void ChatHandler::processChat(Net::MessageIn &msg)
 {
     BLOCK_START("ChatHandler::processChat")
-    int chatMsgLength = msg.readInt16("len") - 4;
+    const int chatMsgLength = msg.readInt16("len") - 4;
     if (chatMsgLength <= 0)
     {
         BLOCK_END("ChatHandler::processChat")
@@ -295,7 +294,7 @@ void ChatHandler::processChat(Net::MessageIn &msg)
 void ChatHandler::processChat2(Net::MessageIn &msg)
 {
     BLOCK_START("ChatHandler::processChat")
-    int chatMsgLength = msg.readInt16("len") - 4 - 3;
+    const int chatMsgLength = msg.readInt16("len") - 4 - 3;
     std::string channel;
     channel = msg.readUInt8("channel byte 0");
     channel += msg.readUInt8("channel byte 1");

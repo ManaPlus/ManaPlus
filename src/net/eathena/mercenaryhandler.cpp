@@ -21,7 +21,6 @@
 #include "net/eathena/mercenaryhandler.h"
 
 #include "actormanager.h"
-#include "logger.h"
 #include "notifymanager.h"
 
 #include "being/being.h"
@@ -30,8 +29,6 @@
 #include "being/playerinfo.h"
 
 #include "gui/windows/skilldialog.h"
-
-#include "net/ea/eaprotocol.h"
 
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
@@ -202,7 +199,9 @@ void MercenaryHandler::move(const int x, const int y) const
         return;
     createOutPacket(CMSG_HOMMERC_MOVE_TO);
     outMsg.writeInt32(id);
-    outMsg.writeCoordinates(x, y, 0U);
+    outMsg.writeCoordinates(static_cast<uint16_t>(x),
+        static_cast<uint16_t>(y),
+        0U);
 }
 
 void MercenaryHandler::attack(const int targetId, const bool keep) const
@@ -213,7 +212,7 @@ void MercenaryHandler::attack(const int targetId, const bool keep) const
     createOutPacket(CMSG_HOMMERC_ATTACK);
     outMsg.writeInt32(id);
     outMsg.writeInt32(targetId);
-    outMsg.writeInt8(keep ? 1 : 0);
+    outMsg.writeInt8(static_cast<int8_t>(keep ? 1 : 0));
 }
 
 }  // namespace EAthena

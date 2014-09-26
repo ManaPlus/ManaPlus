@@ -43,7 +43,7 @@ namespace EAthena
             RepairWespon,
             Teleport,
             Warp,
-            WeaponeRefine,
+            WeaponeRefine
         };
     }  // namespace MenuType
 }  // namespace EAthena

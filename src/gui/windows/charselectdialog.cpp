@@ -52,7 +52,6 @@
 #include "net/character.h"
 #include "net/logindata.h"
 #include "net/loginhandler.h"
-#include "net/net.h"
 #include "net/registrationoptions.h"
 
 #include "debug.h"

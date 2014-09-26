@@ -41,7 +41,6 @@
 #include "net/chathandler.h"
 #include "net/guildhandler.h"
 #include "net/homunculushandler.h"
-#include "net/net.h"
 #include "net/pethandler.h"
 #include "net/serverfeatures.h"
 

@@ -29,7 +29,6 @@
 #include "soundmanager.h"
 
 #include "net/guildhandler.h"
-#include "net/net.h"
 
 #include "gui/windows/chatwindow.h"
 

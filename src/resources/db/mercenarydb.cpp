@@ -26,12 +26,10 @@
 
 #include "resources/beingcommon.h"
 #include "resources/beinginfo.h"
-#include "resources/spritereference.h"
 
 #include "resources/map/blockmask.h"
 
 #include "utils/dtor.h"
-#include "utils/gettext.h"
 
 #include "configuration.h"
 
@@ -76,7 +74,8 @@ void MercenaryDB::loadXmlFile(const std::string &fileName)
     {
         if (xmlNameEqual(mercenaryNode, "include"))
         {
-            const std::string name = XML::getProperty(mercenaryNode, "name", "");
+            const std::string name = XML::getProperty(
+                mercenaryNode, "name", "");
             if (!name.empty())
                 loadXmlFile(name);
             continue;

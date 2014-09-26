@@ -26,7 +26,6 @@
 #include "configuration.h"
 #include "effectmanager.h"
 #include "game.h"
-#include "guildmanager.h"
 #include "party.h"
 
 #include "being/localplayer.h"

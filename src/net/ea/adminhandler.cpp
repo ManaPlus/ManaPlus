@@ -25,8 +25,9 @@
 #include "gui/chatconsts.h"
 
 #include "net/chathandler.h"
-#include "net/net.h"
 #include "net/serverfeatures.h"
+
+#include "utils/stringutils.h"
 
 #include <string>
 

@@ -22,8 +22,6 @@
 
 #include "net/ea/skillhandler.h"
 
-#include "logger.h"
-
 #include "being/playerinfo.h"
 
 #include "gui/windows/skilldialog.h"

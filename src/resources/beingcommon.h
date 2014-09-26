@@ -58,10 +58,10 @@ namespace BeingCommon
                          StringVect &list,
                          const std::string &ext);
 
-    bool readObjectNodes(XmlNodePtr &node,
+    bool readObjectNodes(XmlNodePtrConst &spriteNode,
                          SpriteDisplay &display,
                          BeingInfo *const currentInfo,
                          const std::string &dbName);
-}
+}  // namespace BeingCommon
 
 #endif  // RESOURCES_BEINGCOMMON_H

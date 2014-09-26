@@ -47,7 +47,6 @@
 #include "being/playerrelations.h"
 
 #include "net/download.h"
-#include "net/net.h"
 #include "net/packetlimiter.h"
 #include "net/playerhandler.h"
 #include "net/serverfeatures.h"

@@ -27,8 +27,6 @@
 
 namespace EAthena
 {
-class MessageOut;
-
 class AuctionHandler final : public MessageHandler, public Net::AuctionHandler
 {
     public:

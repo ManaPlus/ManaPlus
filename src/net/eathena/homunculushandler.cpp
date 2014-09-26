@@ -21,15 +21,12 @@
 #include "net/eathena/homunculushandler.h"
 
 #include "actormanager.h"
-#include "logger.h"
 #include "notifymanager.h"
 
 #include "being/homunculusinfo.h"
 #include "being/playerinfo.h"
 
 #include "gui/windows/skilldialog.h"
-
-#include "net/ea/eaprotocol.h"
 
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
@@ -258,7 +255,9 @@ void HomunculusHandler::move(const int x, const int y) const
         return;
     createOutPacket(CMSG_HOMMERC_MOVE_TO);
     outMsg.writeInt32(id);
-    outMsg.writeCoordinates(x, y, 0U);
+    outMsg.writeCoordinates(static_cast<uint16_t>(x),
+        static_cast<uint16_t>(y),
+        0U);
 }
 
 void HomunculusHandler::attack(const int targetId, const bool keep) const
@@ -269,7 +268,7 @@ void HomunculusHandler::attack(const int targetId, const bool keep) const
     createOutPacket(CMSG_HOMMERC_ATTACK);
     outMsg.writeInt32(id);
     outMsg.writeInt32(targetId);
-    outMsg.writeInt8(keep ? 1 : 0);
+    outMsg.writeInt8(static_cast<int8_t>(keep ? 1 : 0));
 }
 
 void HomunculusHandler::feed() const

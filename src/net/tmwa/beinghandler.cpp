@@ -26,7 +26,6 @@
 #include "guild.h"
 #include "guildmanager.h"
 #include "party.h"
-#include "position.h"
 
 #include "being/localplayer.h"
 
@@ -36,11 +35,10 @@
 #include "gui/windows/outfitwindow.h"
 #include "gui/windows/socialwindow.h"
 
-#include "net/net.h"
+#include "net/serverfeatures.h"
 
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
-#include "net/tmwa/serverfeatures.h"
 #include "net/tmwa/sprite.h"
 
 #include "resources/iteminfo.h"

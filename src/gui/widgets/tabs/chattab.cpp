@@ -45,7 +45,6 @@
 #include "input/inputmanager.h"
 
 #include "net/chathandler.h"
-#include "net/net.h"
 
 #include "resources/iteminfo.h"
 

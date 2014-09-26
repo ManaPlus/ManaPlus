@@ -26,8 +26,6 @@
 
 #include "being/localplayer.h"
 
-#include "net/net.h"
-
 #include "net/tmwa/loginhandler.h"
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/network.h"

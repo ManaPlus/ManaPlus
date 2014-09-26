@@ -67,7 +67,6 @@
 #include "net/gamehandler.h"
 #include "net/ipc.h"
 #include "net/mercenaryhandler.h"
-#include "net/net.h"
 #include "net/pethandler.h"
 #include "net/playerhandler.h"
 #include "net/uploadcharinfo.h"

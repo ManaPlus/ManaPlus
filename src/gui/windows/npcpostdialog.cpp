@@ -32,7 +32,6 @@
 
 #include "gui/widgets/tabs/chattab.h"
 
-#include "net/net.h"
 #include "net/npchandler.h"
 
 #include "utils/gettext.h"

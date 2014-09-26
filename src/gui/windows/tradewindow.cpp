@@ -51,7 +51,6 @@
 
 #include "gui/widgets/tabs/chattab.h"
 
-#include "net/net.h"
 #include "net/tradehandler.h"
 
 #include "utils/gettext.h"

@@ -32,7 +32,6 @@
 #include "net/eathena/protocol.h"
 
 #include "utils/gettext.h"
-#include "utils/paths.h"
 
 #include "debug.h"
 

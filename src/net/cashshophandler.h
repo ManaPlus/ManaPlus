@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_CACHSHOPHANDLER_H
-#define NET_CACHSHOPHANDLER_H
+#ifndef NET_CASHSHOPHANDLER_H
+#define NET_CASHSHOPHANDLER_H
 
 #include <string>
 
@@ -39,4 +39,4 @@ class CashShopHandler notfinal
 
 extern Net::CashShopHandler *cashShopHandler;
 
-#endif  // NET_CACHSHOPHANDLER_H
+#endif  // NET_CASHSHOPHANDLER_H

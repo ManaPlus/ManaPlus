@@ -42,7 +42,6 @@
 #include "net/homunculushandler.h"
 #include "net/inventoryhandler.h"
 #include "net/mercenaryhandler.h"
-#include "net/net.h"
 #include "net/playerhandler.h"
 
 #include "utils/delete2.h"

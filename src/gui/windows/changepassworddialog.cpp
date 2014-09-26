@@ -37,7 +37,6 @@
 
 #include "net/logindata.h"
 #include "net/loginhandler.h"
-#include "net/net.h"
 
 #include "utils/delete2.h"
 #include "utils/gettext.h"

@@ -43,7 +43,6 @@
 
 #include "net/logindata.h"
 #include "net/loginhandler.h"
-#include "net/net.h"
 #include "net/registrationoptions.h"
 #include "net/serverfeatures.h"
 

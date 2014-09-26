@@ -28,7 +28,6 @@
 
 #include "gui/windows/npcdialog.h"
 
-#include "net/net.h"
 #include "net/serverfeatures.h"
 
 #include "net/tmwa/messageout.h"

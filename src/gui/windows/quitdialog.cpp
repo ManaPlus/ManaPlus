@@ -40,7 +40,6 @@
 
 #include "net/charserverhandler.h"
 #include "net/gamehandler.h"
-#include "net/net.h"
 
 #include "resources/map/map.h"
 

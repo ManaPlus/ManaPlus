@@ -60,13 +60,14 @@ class TypeListModel final : public ListModel
             else if (elementIndex == 2)
                 return "eAthena";
 #endif  // EATHENA_SUPPORT
+            else
 #else   // TMWA_SUPPORT
 #ifdef EATHENA_SUPPORT
             if (elementIndex == 0)
                 return "eAthena";
+            else
 #endif  // EATHENA_SUPPORT
 #endif  // TMWA_SUPPORT
-            else
                 return "Unknown";
         }
 };

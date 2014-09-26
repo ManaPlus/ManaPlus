@@ -26,7 +26,6 @@
 #include "logger.h"
 
 #include "net/inventoryhandler.h"
-#include "net/net.h"
 
 #include "resources/iteminfo.h"
 
@@ -34,6 +33,7 @@
 
 #include "utils/delete2.h"
 #include "utils/gettext.h"
+#include "utils/stringutils.h"
 
 #include <algorithm>
 #include <functional>

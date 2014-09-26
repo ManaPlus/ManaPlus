@@ -333,6 +333,9 @@ void Minimap::draw(Graphics *graphics)
                 case ActorType::FloorItem:
                 case ActorType::Portal:
                 case ActorType::LocalPet:
+                case ActorType::Pet:
+                case ActorType::Mercenary:
+                case ActorType::Homunculus:
                 default:
                     continue;
             }

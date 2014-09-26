@@ -30,7 +30,6 @@
 #include "gui/windows/npcdialog.h"
 #include "gui/windows/outfitwindow.h"
 
-#include "net/net.h"
 #include "net/playerhandler.h"
 
 #include "debug.h"

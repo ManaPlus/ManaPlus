@@ -50,7 +50,6 @@
 #include "gui/widgets/vertcontainer.h"
 #include "gui/widgets/windowcontainer.h"
 
-#include "net/net.h"
 #include "net/playerhandler.h"
 #include "net/gamehandler.h"
 

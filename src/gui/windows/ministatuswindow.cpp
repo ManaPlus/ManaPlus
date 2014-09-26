@@ -41,7 +41,6 @@
 
 #include "gui/widgets/progressbar.h"
 
-#include "net/net.h"
 #include "net/playerhandler.h"
 #include "net/gamehandler.h"
 

@@ -41,7 +41,6 @@
 #include "resources/iteminfo.h"
 #include "resources/resourcemanager.h"
 
-#include "net/net.h"
 #include "net/serverfeatures.h"
 
 #include "debug.h"

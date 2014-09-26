@@ -32,7 +32,6 @@
 
 #include "net/character.h"
 #include "net/logindata.h"
-#include "net/net.h"
 
 #include "net/eathena/attrs.h"
 #include "net/eathena/gamehandler.h"
@@ -44,11 +43,9 @@
 
 #include "resources/iteminfo.h"
 
-#include "resources/db/chardb.h"
 #include "resources/db/itemdb.h"
 
 #include "utils/dtor.h"
-#include "utils/gettext.h"
 
 #include "debug.h"
 

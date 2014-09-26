@@ -202,8 +202,8 @@ void SkillHandler::processSkillFailed(Net::MessageIn &msg)
 {
     // Action failed (ex. sit because you have not reached the
     // right level)
-    const int skillId   = msg.readInt16("skill id");
-    const int16_t bskill  = msg.readInt32("btype");
+    const int skillId = msg.readInt16("skill id");
+    const int bskill  = msg.readInt32("btype");
     const signed char success = msg.readUInt8("success");
     const signed char reason  = msg.readUInt8("reason");
     if (success != static_cast<int>(SKILL_FAILED)

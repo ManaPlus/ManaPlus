@@ -35,7 +35,6 @@
 #include "gui/widgets/tabs/chattab.h"
 
 #include "net/chathandler.h"
-#include "net/net.h"
 
 #include "net/ea/eaprotocol.h"
 
@@ -268,6 +267,7 @@ void PetHandler::processPetStatus(Net::MessageIn &msg)
     PetInfo *const info = PlayerInfo::getPet();
     if (!info)
         return;
+    info->name = name;
     info->level = level;
     info->hungry = hungry;
     info->intimacy = intimacy;

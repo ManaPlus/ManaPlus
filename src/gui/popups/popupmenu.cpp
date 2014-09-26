@@ -73,7 +73,6 @@
 #include "net/homunculushandler.h"
 #include "net/inventoryhandler.h"
 #include "net/mercenaryhandler.h"
-#include "net/net.h"
 #include "net/npchandler.h"
 #include "net/partyhandler.h"
 #include "net/pethandler.h"

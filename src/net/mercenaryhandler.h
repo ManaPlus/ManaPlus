@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_MECENARYHANDLER_H
-#define NET_MECENARYHANDLER_H
+#ifndef NET_MERCENARYHANDLER_H
+#define NET_MERCENARYHANDLER_H
 
 #include <string>
 
@@ -49,4 +49,4 @@ class MercenaryHandler notfinal
 
 extern Net::MercenaryHandler *mercenaryHandler;
 
-#endif  // NET_MECENARYHANDLER_H
+#endif  // NET_MERCENARYHANDLER_H

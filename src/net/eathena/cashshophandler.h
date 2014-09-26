@@ -27,8 +27,6 @@
 
 namespace EAthena
 {
-class MessageOut;
-
 class CashShopHandler final : public MessageHandler,
                               public Net::CashShopHandler
 {

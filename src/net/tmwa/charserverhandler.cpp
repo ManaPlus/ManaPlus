@@ -32,7 +32,6 @@
 
 #include "net/character.h"
 #include "net/logindata.h"
-#include "net/net.h"
 #include "net/serverfeatures.h"
 
 #include "net/tmwa/attrs.h"

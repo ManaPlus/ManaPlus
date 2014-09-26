@@ -21,6 +21,8 @@
 #ifndef BEING_HOMUNCULUSINFO_H
 #define BEING_HOMUNCULUSINFO_H
 
+#include <string>
+
 #include "localconsts.h"
 
 struct HomunculusInfo final

@@ -28,7 +28,6 @@
 
 #include "utils/stringutils.h"
 
-#include "net/net.h"
 #include "net/serverfeatures.h"
 
 #include "debug.h"

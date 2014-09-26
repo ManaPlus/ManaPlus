@@ -20,11 +20,7 @@
 
 #include "net/eathena/familyhandler.h"
 
-#include "logger.h"
-
 #include "being/being.h"
-
-#include "net/ea/eaprotocol.h"
 
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"

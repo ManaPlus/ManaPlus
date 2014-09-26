@@ -23,7 +23,7 @@
 #include "debug.h"
 
 extern int serverVersion;
-extern int tmwServerVersion;
+extern unsigned int tmwServerVersion;
 extern Net::ServerFeatures *serverFeatures;
 
 namespace TmwAthena

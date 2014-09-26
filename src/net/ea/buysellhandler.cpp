@@ -37,7 +37,6 @@
 #include "gui/windows/shopwindow.h"
 
 #include "net/chathandler.h"
-#include "net/net.h"
 
 #include "net/ea/eaprotocol.h"
 

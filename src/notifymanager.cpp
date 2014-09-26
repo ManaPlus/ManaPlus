@@ -28,13 +28,14 @@
 #include "gui/widgets/tabs/chattab.h"
 
 #include "net/guildhandler.h"
-#include "net/net.h"
 #include "net/partyhandler.h"
 
 #include "resources/notifications.h"
 #include "resources/notifytypes.h"
 
 #include "resources/db/sounddb.h"
+
+#include "utils/stringutils.h"
 
 #include "debug.h"
 

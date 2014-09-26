@@ -52,7 +52,6 @@
 
 #include "gui/popups/createpartypopup.h"
 
-#include "net/net.h"
 #include "net/serverfeatures.h"
 
 #include "debug.h"

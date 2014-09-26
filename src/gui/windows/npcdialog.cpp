@@ -57,7 +57,6 @@
 #include "resources/db/avatardb.h"
 #include "resources/db/npcdb.h"
 
-#include "net/net.h"
 #include "net/npchandler.h"
 #include "net/packetlimiter.h"
 

@@ -27,8 +27,6 @@
 
 namespace EAthena
 {
-class MessageOut;
-
 class HomunculusHandler final : public MessageHandler,
                                 public Net::HomunculusHandler
 {

@@ -58,7 +58,6 @@
 #include "gui/widgets/textfield.h"
 
 #include "net/inventoryhandler.h"
-#include "net/net.h"
 
 #include "resources/iteminfo.h"
 

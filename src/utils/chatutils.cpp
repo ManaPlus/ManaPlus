@@ -33,9 +33,10 @@
 
 #include "net/chathandler.h"
 #include "net/guildhandler.h"
-#include "net/net.h"
 #include "net/partyhandler.h"
 #include "net/serverfeatures.h"
+
+#include "utils/stringutils.h"
 
 #include "debug.h"
 

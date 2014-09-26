@@ -816,14 +816,12 @@ void Viewport::mouseMoved(MouseEvent &event A_UNUSED)
         switch (type)
         {
             case ActorType::Npc:
-                gui->setCursorType(mHoverBeing->getHoverCursor());
-                break;
-
             case ActorType::Monster:
-                gui->setCursorType(mHoverBeing->getHoverCursor());
-                break;
-
             case ActorType::Portal:
+            case ActorType::LocalPet:
+            case ActorType::Pet:
+            case ActorType::Mercenary:
+            case ActorType::Homunculus:
                 gui->setCursorType(mHoverBeing->getHoverCursor());
                 break;
 
@@ -831,7 +829,6 @@ void Viewport::mouseMoved(MouseEvent &event A_UNUSED)
             case ActorType::FloorItem:
             case ActorType::Unknown:
             case ActorType::Player:
-            case ActorType::LocalPet:
             default:
                 gui->setCursorType(Cursor::CURSOR_POINTER);
                 break;
