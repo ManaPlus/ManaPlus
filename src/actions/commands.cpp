@@ -711,4 +711,10 @@ impHandler(setHomunculusName)
     return true;
 }
 
+impHandler(fireHomunculus)
+{
+    homunculusHandler->fire();
+    return true;
+}
+
 }  // namespace Actions

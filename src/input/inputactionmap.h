@@ -4106,6 +4106,15 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputAction::NO_VALUE, 50,
         InputCondition::INGAME,
         "sethomunname|homunsetname|sethomunculusname|homunculussetname",
+        false},
+    {"keyHomunculusFire",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::fireHomunculus,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "firehomunculus|homunculusfire",
         false}
 };
 

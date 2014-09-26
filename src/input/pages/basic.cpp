@@ -230,6 +230,12 @@ SetupActionData setupActionDataBasic[] =
         "",
     },
     {
+        // TRANSLATORS: input action name
+        N_("Fire your homunculus"),
+        InputAction::HOMUNCULUS_FIRE,
+        "",
+    },
+    {
         "",
         InputAction::NO_VALUE,
         ""
