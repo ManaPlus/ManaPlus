@@ -1,3 +1,19 @@
+2014-09-27 New release 1.4.9.27
+fix: chat creation on hercules.
+fix: away mode if was disconnect from server.
+add: support hecules packet version 201500.
+add: option for compile with/without tmwa/evol support.
+add: different hercules packets.
+add: ignore list for logging packets.
+add: formatting in debug packets log.
+add: names for sent packets in debug log.
+add: skills cooldown.
+add: theme colors for disabled text.
+add: basic support for chat objects.
+add: mercenary, pets, homunculus basic support (hercules).
+add: actions for targeting mercenaries, pets, homunculuses.
+add: error text for skills.
+
 2014-09-14 New release 1.4.9.14
 fix: heal shorcut action.
 fix: crash with context menu before connecting to game.
