@@ -2683,7 +2683,7 @@ msgstr "Neznámý:"
 #: src/gui/widgets/skillinfo.cpp:148
 #, c-format
 msgid " / Mana: -%d"
-msgstr "/ Mana: -%d"
+msgstr " / Mana: -%d"
 
 #: src/gui/widgets/skillinfo.cpp:154
 #, c-format
