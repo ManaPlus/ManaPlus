@@ -253,6 +253,10 @@ Being *ActorManager::createBeing(const int id,
         if (localPlayer)
             localPlayer->checkNewName(being);
     }
+    else if (type == ActorType::Portal)
+    {
+        beingHandler->requestNameById(id);
+    }
     if (type == ActorType::Player)
     {
         if (botCheckerWindow)

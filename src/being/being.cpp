@@ -233,6 +233,9 @@ Being::Being(const int id,
         mGotComment = true;
     }
 
+    if (mType == ActorType::Portal)
+        mShowName = false;
+
     config.addListener("visiblenames", this);
 
     reReadConfig();

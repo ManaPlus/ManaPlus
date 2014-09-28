@@ -33,9 +33,13 @@
 
 #include "particle/particle.h"
 
+#include "gui/viewport.h"
+
 #include "gui/windows/botcheckerwindow.h"
 #include "gui/windows/socialwindow.h"
 #include "gui/windows/killstats.h"
+
+#include "resources/mapitemtype.h"
 
 #include "resources/map/map.h"
 
@@ -331,7 +335,20 @@ void BeingHandler::processNameResponse(Net::MessageIn &msg) const
         }
         else
         {
-            dstBeing->setName(msg.readString(24, "name"));
+            const std::string name = msg.readString(24, "name");
+            if (dstBeing->getType() != ActorType::Portal)
+            {
+                dstBeing->setName(name);
+            }
+            else if (viewport)
+            {
+                Map *const map = viewport->getMap();
+                if (map)
+                {
+                    map->addPortalTile(name, MapItemType::PORTAL,
+                        dstBeing->getTileX(), dstBeing->getTileY());
+                }
+            }
             dstBeing->updateGuild();
             dstBeing->addToCache();
 
