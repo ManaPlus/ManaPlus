@@ -327,11 +327,14 @@ void Minimap::draw(Graphics *graphics)
                     type = UserPalette::NPC;
                     break;
 
+                case ActorType::Portal:
+                    type = UserPalette::PORTAL_HIGHLIGHT;
+                    break;
+
                 case ActorType::Avatar:
                 case ActorType::Unknown:
                 case ActorType::Player:
                 case ActorType::FloorItem:
-                case ActorType::Portal:
                 case ActorType::LocalPet:
                 case ActorType::Pet:
                 case ActorType::Mercenary:
