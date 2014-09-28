@@ -397,7 +397,7 @@ impHandler(imitation)
     return true;
 }
 
-impHandler(sendMail)
+impHandler0(sendMail)
 {
     return false;
 }
