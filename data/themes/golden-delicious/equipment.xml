@@ -9,6 +9,8 @@
         <option name="itemPadding" value="3" />
         <option name="boxSize" value="38" />
         <option name="stickySpacing" value="6" />
+        <option name="tabHeightAdjust" value="16" />
+        <option name="tabPadding" value="2" />
 
         <!-- Top Row -->
         <part type="top-left-corner" xpos="0" ypos="0" width="30" height="53" />

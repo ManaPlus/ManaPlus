@@ -3,6 +3,8 @@
     <widget type="Window" xpos="190" ypos="30">
         <option name="itemPadding" value="2" />
         <option name="boxSize" value="36" />
+        <option name="tabHeightAdjust" value="16" />
+        <option name="tabPadding" value="2" />
 
         <!-- Top Row -->
         <part type="top-left-corner" xpos="0" ypos="0" width="10" height="10" />
