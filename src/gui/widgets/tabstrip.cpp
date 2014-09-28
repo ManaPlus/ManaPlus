@@ -49,6 +49,7 @@ Widget *TabStrip::createWidget(const std::string &text) const
     widget->adjustSize();
     if (!mCount)
         widget->setPressed(true);
+    widget->setTag(mWidgets.size());
     return widget;
 }
 

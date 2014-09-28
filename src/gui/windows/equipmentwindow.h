@@ -26,6 +26,7 @@
 #include "equipment.h"
 #include "localconsts.h"
 
+#include "gui/widgets/equipmentpage.h"
 #include "gui/widgets/window.h"
 
 #include "utils/xml.h"
@@ -40,6 +41,7 @@ class Image;
 class ImageSet;
 class Item;
 class PlayerBox;
+class TabStrip;
 
 struct EquipmentBox;
 
@@ -102,14 +104,23 @@ class EquipmentWindow final : public Window,
 
         void fillDefault();
 
+        void updatePage();
+
+        int addPage(const std::string &name);
+
+        void addDefaultPage();
+
         void addBox(const int idx, int x, int y, const int imageIndex);
 
         void loadWindow(const XmlNodePtrConst windowNode);
 
-        void loadPlayerBox(const XmlNodePtr playerBoxNode);
+        void loadPage(const XmlNodePtr node);
+
+        void loadPlayerBox(const XmlNodePtr playerBoxNode, const int page);
 
         void loadSlot(const XmlNodePtr slotNode,
-                      const ImageSet *const imageset);
+                      const ImageSet *const imageset,
+                      const int page);
 
         static int parseSlotName(const std::string &name) A_WARN_UNUSED;
 
@@ -123,7 +134,8 @@ class EquipmentWindow final : public Window,
         Image *mSlotBackground;
         Image *mSlotHighlightedBackground;
         ImageCollection *mVertexes;
-        std::vector<EquipmentBox*> mBoxes;
+        std::vector<EquipmentPage*> mPages;
+        TabStrip *mTabs;
         Color mHighlightColor;
         Color mBorderColor;
         Color mLabelsColor;
@@ -136,7 +148,10 @@ class EquipmentWindow final : public Window,
         int mMinY;
         int mMaxX;
         int mMaxY;
+        int mYPadding;
+        int mSelectedTab;
         bool mForing;
+        bool mHaveDefaultPage;
 };
 
 extern EquipmentWindow *equipmentWindow;

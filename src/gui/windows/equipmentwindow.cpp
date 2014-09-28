@@ -41,7 +41,9 @@
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/equipmentbox.h"
+#include "gui/widgets/equipmentpage.h"
 #include "gui/widgets/playerbox.h"
+#include "gui/widgets/tabstrip.h"
 
 #include "resources/imageset.h"
 #include "resources/itemslot.h"
@@ -73,7 +75,8 @@ EquipmentWindow::EquipmentWindow(Equipment *const equipment,
     mSlotBackground(),
     mSlotHighlightedBackground(),
     mVertexes(new ImageCollection),
-    mBoxes(),
+    mPages(),
+    mTabs(nullptr),
     mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
     mBorderColor(getThemeColor(Theme::BORDER)),
     mLabelsColor(getThemeColor(Theme::LABEL)),
@@ -86,8 +89,19 @@ EquipmentWindow::EquipmentWindow(Equipment *const equipment,
     mMinY(345),
     mMaxX(0),
     mMaxY(0),
-    mForing(foring)
+    mYPadding(0),
+    mSelectedTab(0),
+    mForing(foring),
+    mHaveDefaultPage(false)
 {
+    const int size = config.getIntValue("fontSize")
+        + getOption("tabHeightAdjust", 16);
+    mTabs = new TabStrip(this, "equipment", size);
+    mTabs->addActionListener(this);
+    mTabs->setActionEventId("tab_");
+
+    mYPadding = mTabs->getHeight() + getOption("tabPadding", 2);
+
     if (setupWindow)
         setupWindow->registerWindowForReset(this);
 
@@ -95,7 +109,7 @@ EquipmentWindow::EquipmentWindow(Equipment *const equipment,
         mBoxSize = 36;
 
     // Control that shows the Player
-    mPlayerBox->setDimension(Rect(50, 80, 74, 168));
+    mPlayerBox->setDimension(Rect(50, 80 + mYPadding, 74, 168));
     mPlayerBox->setPlayer(being);
 
     if (foring)
@@ -107,13 +121,9 @@ EquipmentWindow::EquipmentWindow(Equipment *const equipment,
     setSaveVisible(true);
     setStickyButtonLock(true);
 
-    mBoxes.reserve(BOX_COUNT);
-    for (int f = 0; f < BOX_COUNT; f ++)
-        mBoxes.push_back(nullptr);
-
     fillBoxes();
     recalcSize();
-
+    updatePage();
     loadWindowState();
 }
 
@@ -128,6 +138,7 @@ void EquipmentWindow::postInit()
     theme->loadRect(rect, "equipment_background.xml", "", 0, 1);
     mSlotBackground = rect.grid[0];
     mSlotHighlightedBackground = rect.grid[1];
+    add(mTabs);
     add(mPlayerBox);
     add(mUnequip);
     enableVisibleSound(true);
@@ -141,8 +152,12 @@ EquipmentWindow::~EquipmentWindow()
             delete mEquipment->getBackend();
         delete2(mEquipment)
     }
-    delete_all(mBoxes);
-    mBoxes.clear();
+    FOR_EACH (std::vector<EquipmentPage*>::iterator, it, mPages)
+    {
+        std::vector<EquipmentBox*> &boxes = (*it)->boxes;
+        delete_all(boxes);
+        boxes.clear();
+    }
     if (mImageSet)
     {
         mImageSet->decRef();
@@ -164,13 +179,14 @@ void EquipmentWindow::draw(Graphics *graphics)
     int i = 0;
     Font *const font = getFont();
     const int fontHeight = font->getHeight();
+    const std::vector<EquipmentBox*> &boxes = mPages[mSelectedTab]->boxes;
 
     if (isBatchDrawRenders(openGLMode))
     {
         if (mLastRedraw)
         {
             mVertexes->clear();
-            FOR_EACH (std::vector<EquipmentBox*>::const_iterator, it, mBoxes)
+            FOR_EACH (std::vector<EquipmentBox*>::const_iterator, it, boxes)
             {
                 const EquipmentBox *const box = *it;
                 if (!box)
@@ -198,8 +214,8 @@ void EquipmentWindow::draw(Graphics *graphics)
     }
     else
     {
-        for (std::vector<EquipmentBox*>::const_iterator it = mBoxes.begin(),
-             it_end = mBoxes.end(); it != it_end; ++ it, ++ i)
+        for (std::vector<EquipmentBox*>::const_iterator it = boxes.begin(),
+             it_end = boxes.end(); it != it_end; ++ it, ++ i)
         {
             const EquipmentBox *const box = *it;
             if (!box)
@@ -223,8 +239,8 @@ void EquipmentWindow::draw(Graphics *graphics)
     }
 
     i = 0;
-    for (std::vector<EquipmentBox*>::const_iterator it = mBoxes.begin(),
-         it_end = mBoxes.end(); it != it_end; ++ it, ++ i)
+    for (std::vector<EquipmentBox*>::const_iterator it = boxes.begin(),
+         it_end = boxes.end(); it != it_end; ++ it, ++ i)
     {
         const EquipmentBox *const box = *it;
         if (!box)
@@ -263,15 +279,37 @@ void EquipmentWindow::draw(Graphics *graphics)
 
 void EquipmentWindow::action(const ActionEvent &event)
 {
-    if (!mEquipment)
-        return;
-
-    if (event.getId() == "unequip" && mSelected > -1)
+    const std::string &eventId = event.getId();
+    if (eventId == "unequip")
     {
+        if (!mEquipment || mSelected == -1)
+            return;
+
         const Item *const item = mEquipment->getEquipment(mSelected);
         PlayerInfo::unequipItem(item, true);
         setSelected(-1);
     }
+    else if (!eventId.find("tab_"))
+    {
+        Button *const button = dynamic_cast<Button*>(event.getSource());
+        if (!button)
+            return;
+        mSelectedTab = button->getTag();
+        updatePage();
+    }
+}
+
+void EquipmentWindow::updatePage()
+{
+    EquipmentPage *const page = mPages[mSelectedTab];
+    const bool visible = page->showPlayerBox;
+    mPlayerBox->setVisible(visible);
+    if (visible)
+    {
+        mPlayerBox->setDimension(Rect(page->x, page->y,
+            page->width, page->height));
+    }
+    mRedraw = true;
 }
 
 Item *EquipmentWindow::getItem(const int x, const int y) const
@@ -281,8 +319,9 @@ Item *EquipmentWindow::getItem(const int x, const int y) const
 
     int i = 0;
 
-    for (std::vector<EquipmentBox*>::const_iterator it = mBoxes.begin(),
-         it_end = mBoxes.end(); it != it_end; ++ it, ++ i)
+    std::vector<EquipmentBox*> &boxes = mPages[mSelectedTab]->boxes;
+    for (std::vector<EquipmentBox*>::const_iterator it = boxes.begin(),
+         it_end = boxes.end(); it != it_end; ++ it, ++ i)
     {
         const EquipmentBox *const box = *it;
         if (!box)
@@ -318,8 +357,9 @@ void EquipmentWindow::mousePressed(MouseEvent& event)
 
         bool inBox(false);
 
-        for (std::vector<EquipmentBox*>::const_iterator it = mBoxes.begin(),
-             it_end = mBoxes.end(); it != it_end; ++ it, ++ i)
+        std::vector<EquipmentBox*> &boxes = mPages[mSelectedTab]->boxes;
+        for (std::vector<EquipmentBox*>::const_iterator it = boxes.begin(),
+             it_end = boxes.end(); it != it_end; ++ it, ++ i)
         {
             const EquipmentBox *const box = *it;
             if (!box)
@@ -401,8 +441,9 @@ void EquipmentWindow::mouseReleased(MouseEvent &event)
         {
             const int x = event.getX();
             const int y = event.getY();
+            std::vector<EquipmentBox*> &boxes = mPages[mSelectedTab]->boxes;
             for (std::vector<EquipmentBox*>::const_iterator
-                 it = mBoxes.begin(), it_end = mBoxes.end();
+                 it = boxes.begin(), it_end = boxes.end();
                  it != it_end; ++ it)
             {
                 const EquipmentBox *const box = *it;
@@ -510,32 +551,68 @@ void EquipmentWindow::fillBoxes()
 
     for_each_xml_child_node(node, root)
     {
-        if (xmlNameEqual(node, "playerbox"))
-            loadPlayerBox(node);
+        if (xmlNameEqual(node, "page"))
+        {
+            loadPage(node);
+        }
+        else if (xmlNameEqual(node, "playerbox"))
+        {
+            addDefaultPage();
+            loadPlayerBox(node, 0);
+        }
         else if (xmlNameEqual(node, "slot"))
-            loadSlot(node, mImageSet);
+        {
+            addDefaultPage();
+            loadSlot(node, mImageSet, 0);
+        }
     }
     delete doc;
 }
 
-void EquipmentWindow::loadPlayerBox(const XmlNodePtr playerBoxNode)
+void EquipmentWindow::addDefaultPage()
 {
-    mPlayerBox->setDimension(Rect(
-        XML::getProperty(playerBoxNode, "x", 50),
-        XML::getProperty(playerBoxNode, "y", 80),
-        XML::getProperty(playerBoxNode, "width", 74),
-        XML::getProperty(playerBoxNode, "height", 168)));
+    if (!mHaveDefaultPage)
+    {
+        mHaveDefaultPage = true;
+        addPage(_("default"));
+    }
+}
+
+void EquipmentWindow::loadPage(const XmlNodePtr node)
+{
+    // TRANSLATORS: unknown equipment page name
+    const std::string &name = XML::langProperty(node, "name", _("Unknown"));
+    const int page = addPage(name);
+    for_each_xml_child_node(childNode, node)
+    {
+        if (xmlNameEqual(childNode, "playerbox"))
+            loadPlayerBox(childNode, page);
+        else if (xmlNameEqual(childNode, "slot"))
+            loadSlot(childNode, mImageSet, page);
+    }
+}
+
+void EquipmentWindow::loadPlayerBox(const XmlNodePtr playerBoxNode,
+                                    const int page)
+{
+    EquipmentPage *const data = mPages[page];
+    data->x = XML::getProperty(playerBoxNode, "x", 50);
+    data->y = XML::getProperty(playerBoxNode, "y", 80) + mYPadding;
+    data->width = XML::getProperty(playerBoxNode, "width", 74);
+    data->height = XML::getProperty(playerBoxNode, "height", 168);
 }
 
 void EquipmentWindow::loadSlot(const XmlNodePtr slotNode,
-                               const ImageSet *const imageset)
+                               const ImageSet *const imageset,
+                               const int page)
 {
     const int slot = parseSlotName(XML::getProperty(slotNode, "name", ""));
     if (slot < 0)
         return;
 
     const int x = XML::getProperty(slotNode, "x", 0) + getPadding();
-    const int y = XML::getProperty(slotNode, "y", 0) + getTitleBarHeight();
+    const int y = XML::getProperty(slotNode, "y", 0)
+        + getTitleBarHeight() + mYPadding;
     const int imageIndex = XML::getProperty(slotNode, "image", -1);
     Image *image = nullptr;
 
@@ -545,16 +622,17 @@ void EquipmentWindow::loadSlot(const XmlNodePtr slotNode,
         image = imageset->get(imageIndex);
     }
 
-    if (mBoxes[slot])
+    std::vector<EquipmentBox*> &boxes = mPages[page]->boxes;
+    if (boxes[slot])
     {
-        EquipmentBox *const box = mBoxes[slot];
+        EquipmentBox *const box = boxes[slot];
         box->x = x;
         box->y = y;
         box->image = image;
     }
     else
     {
-        mBoxes[slot] = new EquipmentBox(x, y, image);
+        boxes[slot] = new EquipmentBox(x, y, image);
     }
     if (x < mMinX)
         mMinX = x;
@@ -660,8 +738,9 @@ void EquipmentWindow::addBox(const int idx, int x, int y, const int imageIndex)
     }
 
     x += getPadding();
-    y += getTitleBarHeight();
-    mBoxes[idx] = new EquipmentBox(x, y, image);
+    y += getTitleBarHeight() + mYPadding;
+    std::vector<EquipmentBox*> &boxes = mPages[0]->boxes;
+    boxes[idx] = new EquipmentBox(x, y, image);
 
     if (x < mMinX)
         mMinX = x;
@@ -676,6 +755,22 @@ void EquipmentWindow::addBox(const int idx, int x, int y, const int imageIndex)
 void EquipmentWindow::recalcSize()
 {
     mMaxX += mMinX;
-    mMaxY += mMinY + mUnequip->getHeight() + mButtonPadding;
+    mMaxY += mMinY;
+    mTabs->setWidth(mMaxX);
+    mMaxY += mUnequip->getHeight() - mYPadding;
     setDefaultSize(mMaxX, mMaxY, ImageRect::CENTER);
+}
+
+int EquipmentWindow::addPage(const std::string &name)
+{
+    EquipmentPage *const page = new EquipmentPage;
+    mPages.push_back(page);
+    std::vector<EquipmentBox*> &boxes = page->boxes;
+
+    boxes.reserve(BOX_COUNT);
+    for (int f = 0; f < BOX_COUNT; f ++)
+        boxes.push_back(nullptr);
+
+    mTabs->addButton(name);
+    return mPages.size() - 1;
 }
