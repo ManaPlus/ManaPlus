@@ -75,7 +75,8 @@ const std::string ColorTypeNames[] =
     "ColorRoadPoint",
     "ColorNet",
     "ColorPet",
-    "ColorMercenary"
+    "ColorMercenary",
+    "ColorHomunculus"
 };
 
 std::string UserPalette::getConfigName(const std::string &typeName)
@@ -220,6 +221,8 @@ UserPalette::UserPalette() :
     addColor(PET, 0xffffff, STATIC, _("Pets"));
     // TRANSLATORS: palette color
     addColor(MERCENARY, 0xffffff, STATIC, _("Mercenary"));
+    // TRANSLATORS: palette color
+    addColor(HOMUNCULUS, 0xffffff, STATIC, _("Homunculus"));
     commit(true);
 }
 

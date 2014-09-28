@@ -340,11 +340,14 @@ void Minimap::draw(Graphics *graphics)
                     type = UserPalette::MERCENARY;
                     break;
 
+                case ActorType::Homunculus:
+                    type = UserPalette::HOMUNCULUS;
+                    break;
+
                 case ActorType::Avatar:
                 case ActorType::Unknown:
                 case ActorType::Player:
                 case ActorType::FloorItem:
-                case ActorType::Homunculus:
                 default:
                     continue;
             }

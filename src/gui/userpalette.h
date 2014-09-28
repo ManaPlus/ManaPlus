@@ -80,6 +80,7 @@ class UserPalette final : public Palette, public ListModel
             NET,
             PET,
             MERCENARY,
+            HOMUNCULUS,
             USER_COLOR_LAST
         };
 
