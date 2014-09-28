@@ -78,6 +78,7 @@ class UserPalette final : public Palette, public ListModel
             HOME_PLACE_BORDER,
             ROAD_POINT,
             NET,
+            PET,
             USER_COLOR_LAST
         };
 
