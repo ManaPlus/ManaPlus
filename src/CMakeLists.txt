@@ -802,8 +802,6 @@ SET(SRCS
     animationdelayload.h
     particle/animationparticle.cpp
     particle/animationparticle.h
-    auctionmanager.cpp
-    auctionmanager.h
     avatar.cpp
     avatar.h
     being/being.cpp

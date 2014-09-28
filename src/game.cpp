@@ -25,7 +25,6 @@
 #include "main.h"
 
 #include "actormanager.h"
-#include "auctionmanager.h"
 #include "animatedsprite.h"
 #include "client.h"
 #include "configuration.h"
@@ -141,7 +140,6 @@ static void initEngines()
 {
     actorManager = new ActorManager;
     effectManager = new EffectManager;
-    AuctionManager::init();
     GuildManager::init();
 
     particleEngine = new Particle();
@@ -301,9 +299,6 @@ static void destroyGuiWindows()
     if (whoIsOnline)
         whoIsOnline->setAllowUpdate(false);
 
-    if (auctionManager)
-        auctionManager->clear();
-
     if (guildManager)
         guildManager->clear();
 
@@ -338,9 +333,6 @@ static void destroyGuiWindows()
     delete2(questsWindow);
     delete2(whoIsOnline);
     delete2(killStats);
-
-    if (auctionManager && AuctionManager::getEnableAuctionBot())
-        auctionManager->reload();
 
     if (guildManager && GuildManager::getEnableGuildBot())
         guildManager->reload();
@@ -433,7 +425,6 @@ Game::~Game()
     delete2(mCurrentMap)
     delete2(spellManager)
     delete2(spellShortcut)
-    delete2(auctionManager)
     delete2(guildManager)
 #ifdef USE_MUMBLE
     delete2(mumbleManager)

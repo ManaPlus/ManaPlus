@@ -44,7 +44,6 @@
 #include "gui/widgets/shoplistbox.h"
 
 #include "actormanager.h"
-#include "auctionmanager.h"
 #include "configuration.h"
 #include "inventory.h"
 #include "item.h"
@@ -169,22 +168,8 @@ ShopWindow::ShopWindow() :
     placer(0, 7, mAnnounceLinks, 8);
     placer(15, 7, mCloseButton);
 
-    if (auctionManager && auctionManager->getEnableAuctionBot())
-    {
-        mBuyAuctionButton = new Button(this,
-            // TRANSLATORS: shop window button
-            _("Auction"), "auction buy", this);
-        mSellAuctionButton = new Button(this,
-            // TRANSLATORS: shop window button
-            _("Auction"), "auction sell", this);
-        placer(4, 6, mBuyAuctionButton);
-        placer(12, 6, mSellAuctionButton);
-    }
-    else
-    {
-        mBuyAuctionButton = nullptr;
-        mSellAuctionButton = nullptr;
-    }
+    mBuyAuctionButton = nullptr;
+    mSellAuctionButton = nullptr;
 
     Layout &layout = getLayout();
     layout.setRowHeight(0, LayoutType::SET);

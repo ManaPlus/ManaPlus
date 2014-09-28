@@ -21,7 +21,6 @@
 #include "actions/commands.h"
 
 #include "actormanager.h"
-#include "auctionmanager.h"
 #include "configuration.h"
 
 #include "actions/actiondef.h"
@@ -400,11 +399,6 @@ impHandler(imitation)
 
 impHandler(sendMail)
 {
-    if (auctionManager && auctionManager->getEnableAuctionBot())
-    {
-        auctionManager->sendMail(event.args);
-        return true;
-    }
     return false;
 }
 

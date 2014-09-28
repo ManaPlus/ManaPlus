@@ -291,10 +291,6 @@ Setup_Other::Setup_Other(const Widget2 *const widget) :
     new SetupItemLabel(_("Bots support"), "", this);
 
     // TRANSLATORS: settings option
-    new SetupItemCheckBox(_("Enable auction bot support"), "",
-        "enableAuctionBot", this, "enableAuctionBotEvent", false);
-
-    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable guild bot support and disable native "
         "guild support"), "", "enableGuildBot", this,
         "enableGuildBotEvent", false);
@@ -436,6 +432,5 @@ void Setup_Other::externalUpdated()
 {
     reread("showJob");
     reread("enableGuildBot");
-    reread("enableAuctionBot");
     reread("enableBuggyServers");
 }
