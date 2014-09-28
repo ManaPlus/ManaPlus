@@ -709,6 +709,7 @@ void EquipmentWindow::fillDefault()
     if (mImageSet)
         mImageSet->decRef();
 
+    addDefaultPage();
     mImageSet = Theme::getImageSetFromTheme(
         "equipmentbox.png", 32, 32);
 
