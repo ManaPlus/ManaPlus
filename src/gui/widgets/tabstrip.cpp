@@ -58,8 +58,9 @@ void TabStrip::action(const ActionEvent &event)
     WidgetGroup::action(event);
     if (event.getSource())
     {
-        const Widget *const widget = event.getSource();
-        if (static_cast<const Button*>(widget)->isPressed2())
+        Widget *const widget = event.getSource();
+        Button *const button = static_cast<Button*>(widget);
+        if (button->isPressed2())
         {
             FOR_EACH (WidgetListConstIterator, iter, mWidgets)
             {
@@ -69,6 +70,10 @@ void TabStrip::action(const ActionEvent &event)
                     button->setPressed(false);
                 }
             }
+        }
+        else
+        {
+            button->setPressed(true);
         }
     }
 }
