@@ -336,11 +336,14 @@ void Minimap::draw(Graphics *graphics)
                     type = UserPalette::PET;
                     break;
 
+                case ActorType::Mercenary:
+                    type = UserPalette::MERCENARY;
+                    break;
+
                 case ActorType::Avatar:
                 case ActorType::Unknown:
                 case ActorType::Player:
                 case ActorType::FloorItem:
-                case ActorType::Mercenary:
                 case ActorType::Homunculus:
                 default:
                     continue;
