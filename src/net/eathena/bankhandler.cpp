@@ -36,6 +36,8 @@ BankHandler::BankHandler() :
     static const uint16_t _messages[] =
     {
         SMSG_BANK_STATUS,
+        SMSG_BANK_DEPOSIT,
+        SMSG_BANK_WITHDRAW,
         0
     };
     handledMessages = _messages;
@@ -48,6 +50,14 @@ void BankHandler::handleMessage(Net::MessageIn &msg)
     {
         case SMSG_BANK_STATUS:
             processBankStatus(msg);
+            break;
+
+        case SMSG_BANK_DEPOSIT:
+            processBankDeposit(msg);
+            break;
+
+        case SMSG_BANK_WITHDRAW:
+            processBankWithdraw(msg);
             break;
 
         default:
@@ -79,6 +89,20 @@ void BankHandler::processBankStatus(Net::MessageIn &msg)
 {
     msg.readInt64("money");
     msg.readInt16("reason");
+}
+
+void BankHandler::processBankDeposit(Net::MessageIn &msg)
+{
+    msg.readInt16("reason");
+    msg.readInt64("money");
+    msg.readInt32("balance");
+}
+
+void BankHandler::processBankWithdraw(Net::MessageIn &msg)
+{
+    msg.readInt16("reason");
+    msg.readInt64("money");
+    msg.readInt32("balance");
 }
 
 }  // namespace EAthena

@@ -233,6 +233,8 @@
 #define SMSG_PET_FOOD                0x01a3
 
 #define SMSG_BANK_STATUS             0x09a6
+#define SMSG_BANK_DEPOSIT            0x09a8
+#define SMSG_BANK_WITHDRAW           0x09aa
 
 #define SMSG_SOLVE_CHAR_NAME         0x0194
 #define SMSG_SKILL_CASTING           0x07fb

@@ -45,6 +45,10 @@ class BankHandler final : public MessageHandler,
 
     protected:
         void processBankStatus(Net::MessageIn &msg);
+
+        void processBankDeposit(Net::MessageIn &msg);
+
+        void processBankWithdraw(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
