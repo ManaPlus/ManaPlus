@@ -66,8 +66,8 @@ void TabStrip::action(const ActionEvent &event)
             {
                 if (*iter != widget)
                 {
-                    Button *const button = static_cast<Button*>(*iter);
-                    button->setPressed(false);
+                    Button *const button2 = static_cast<Button*>(*iter);
+                    button2->setPressed(false);
                 }
             }
         }
