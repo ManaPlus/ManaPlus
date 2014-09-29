@@ -356,7 +356,7 @@ namespace NotifyManager
             NotifyFlags::EMPTY},
         {"homunculus feed ok",
             // TRANSLATORS: notification message
-            N_("Your feed your homunculus."),
+            N_("You feed your homunculus."),
             NotifyFlags::EMPTY},
         {"homunculus feed failed",
             // TRANSLATORS: notification message
