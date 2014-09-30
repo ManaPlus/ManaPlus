@@ -191,7 +191,11 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
                 value), static_cast<float>(value), 0));
             PlayerInfo::setStatBase(Attributes::WALK_SPEED, value);
             PlayerInfo::setStatMod(Attributes::WALK_SPEED, 0);
-        break;
+            break;
+        case 0x0003:
+            PlayerInfo::setStatBase(Attributes::KARMA, value);
+            PlayerInfo::setStatMod(Attributes::KARMA, 0);
+            break;
         case 0x0004:
             break;  // manner
         case 0x0005:

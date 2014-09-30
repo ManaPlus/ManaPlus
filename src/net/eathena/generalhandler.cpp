@@ -367,6 +367,7 @@ void GeneralHandler::gameStarted() const
     statusWindow->addAttribute(Attributes::WALK_SPEED, _("Walk Delay"));
     statusWindow->addAttribute(Attributes::ATTACK_RANGE, _("Attack Range"));
     statusWindow->addAttribute(Attributes::ATTACK_SPEED, _("Damage per sec."));
+    statusWindow->addAttribute(Attributes::KARMA, _("Karma"));
 }
 
 void GeneralHandler::gameEnded() const

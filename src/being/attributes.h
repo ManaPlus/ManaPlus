@@ -45,7 +45,8 @@ namespace Attributes
         ATTACK_DELAY = 100,
         ATTACK_RANGE = 101,
         WALK_SPEED = 102,
-        ATTACK_SPEED = 103
+        ATTACK_SPEED = 103,
+        KARMA
     };
 }  // namespace Attributes
 
