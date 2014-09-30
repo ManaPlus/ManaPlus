@@ -369,7 +369,7 @@ void SocialWindow::action(const ActionEvent &event)
     {
         std::string name = mPartyCreateDialog->getText();
 
-        if (name.size() > 16)
+        if (name.size() > 24)
             return;
 
         partyHandler->create(name);
