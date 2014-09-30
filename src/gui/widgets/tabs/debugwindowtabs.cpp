@@ -282,7 +282,9 @@ TargetDebugTab::TargetDebugTab(const Widget2 *const widget) :
     // TRANSLATORS: debug window label
     mCriticalHitLabel(new Label(this, strprintf("%s ?", _("Critical hit:")))),
     // TRANSLATORS: debug window label
-    mKarmaLabel(new Label(this, strprintf("%s ?", _("Karma:"))))
+    mKarmaLabel(new Label(this, strprintf("%s ?", _("Karma:")))),
+    // TRANSLATORS: debug window label
+    mMannerLabel(new Label(this, strprintf("%s ?", _("Manner:"))))
 {
     LayoutHelper h(this);
     ContainerPlacer place = h.getPlacer(0, 0);
@@ -299,6 +301,7 @@ TargetDebugTab::TargetDebugTab(const Widget2 *const widget) :
     place(0, 9, mMaxHitLabel, 2);
     place(0, 10, mCriticalHitLabel, 2);
     place(0, 11, mKarmaLabel, 2);
+    place(0, 12, mMannerLabel, 2);
 
     place.getCell().matchColWidth(0, 0);
     place = h.getPlacer(0, 1);
@@ -360,6 +363,9 @@ void TargetDebugTab::logic()
         mKarmaLabel->setCaption(strprintf("%s %d",
             // TRANSLATORS: debug window label
             _("Karma:"), target->getKarma()));
+        mMannerLabel->setCaption(strprintf("%s %d",
+            // TRANSLATORS: debug window label
+            _("Manner:"), target->getManner()));
 
         const int delay = target->getAttackDelay();
         if (delay)
@@ -399,6 +405,8 @@ void TargetDebugTab::logic()
         mCriticalHitLabel->setCaption(strprintf("%s ?", _("Critical hit:")));
         // TRANSLATORS: debug window label
         mKarmaLabel->setCaption(strprintf("%s ?", _("Karma:")));
+        // TRANSLATORS: debug window label
+        mMannerLabel->setCaption(strprintf("%s ?", _("Manner:")));
     }
 
     mTargetLabel->adjustSize();
@@ -412,6 +420,7 @@ void TargetDebugTab::logic()
     mMaxHitLabel->adjustSize();
     mCriticalHitLabel->adjustSize();
     mKarmaLabel->adjustSize();
+    mMannerLabel->adjustSize();
     BLOCK_END("TargetDebugTab::logic")
 }
 
