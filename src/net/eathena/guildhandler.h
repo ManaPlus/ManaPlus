@@ -72,6 +72,9 @@ class GuildHandler final : public Ea::GuildHandler, public MessageHandler
                           const override final;
 
         void checkMaster() const;
+
+    protected:
+        void processGuildUpdateCoords(Net::MessageIn &msg) const;
 };
 
     extern Ea::GuildTab *guildTab;

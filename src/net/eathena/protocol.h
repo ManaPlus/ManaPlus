@@ -204,6 +204,7 @@
 #define SMSG_GUILD_DEL_ALLIANCE      0x0184
 #define SMSG_GUILD_OPPOSITION_ACK    0x0181
 #define SMSG_GUILD_BROKEN            0x015e
+#define SMSG_GUILD_UPDATE_COORDS     0x01eb
 
 #define SMSG_QUEST_ADD               0x02b3
 #define SMSG_QUEST_LIST              0x02b1

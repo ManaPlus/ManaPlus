@@ -68,6 +68,7 @@ GuildHandler::GuildHandler() :
         SMSG_GUILD_DEL_ALLIANCE,
         SMSG_GUILD_OPPOSITION_ACK,
         SMSG_GUILD_BROKEN,
+        SMSG_GUILD_UPDATE_COORDS,
         0
     };
     handledMessages = _messages;
@@ -187,8 +188,25 @@ void GuildHandler::handleMessage(Net::MessageIn &msg)
             processGuildBroken(msg);
             break;
 
+        case SMSG_GUILD_UPDATE_COORDS:
+            processGuildUpdateCoords(msg);
+            break;
+
         default:
             break;
+    }
+}
+
+void GuildHandler::processGuildUpdateCoords(Net::MessageIn &msg) const
+{
+    const int id = msg.readInt32("account id");
+    const int x = msg.readInt16("x");
+    const int y = msg.readInt16("y");
+    if (Ea::taGuild)
+    {
+        GuildMember *const m = Ea::taGuild->getMember(id);
+        m->setX(x);
+        m->setY(y);
     }
 }
 
