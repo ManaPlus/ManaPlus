@@ -614,7 +614,7 @@ void BeingHandler::processPlayerUpdate1(Net::MessageIn &msg) const
     }
 
     msg.readInt16("emblem");
-    msg.readInt16("manner");
+    dstBeing->setManner(msg.readInt16("manner"));
     dstBeing->setStatusEffectBlock(32, msg.readInt16("opt3"));
     dstBeing->setKarma(msg.readUInt8("karma"));
     dstBeing->setGender(Being::intToGender(msg.readUInt8("gender")));
@@ -739,7 +739,7 @@ void BeingHandler::processPlayerUpdate2(Net::MessageIn &msg) const
     }
 
     msg.readInt16("emblem");
-    msg.readInt16("manner");
+    dstBeing->setManner(msg.readInt16("manner"));
     dstBeing->setStatusEffectBlock(32, msg.readInt16("opt3"));
     dstBeing->setKarma(msg.readUInt8("karma"));
     dstBeing->setGender(Being::intToGender(msg.readUInt8("gender")));
@@ -864,7 +864,7 @@ void BeingHandler::processPlayerMove(Net::MessageIn &msg) const
     }
 
     msg.readInt16("emblem");
-    msg.readInt16("manner");
+    dstBeing->setManner(msg.readInt16("manner"));
     dstBeing->setStatusEffectBlock(32, msg.readInt16("opt3"));
     dstBeing->setKarma(msg.readUInt8("karma"));
     dstBeing->setGender(Being::intToGender(msg.readUInt8("gender")));
@@ -1031,7 +1031,7 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
     msg.readInt16("robe");
     msg.readInt32("guild id");
     msg.readInt16("guild emblem");
-    msg.readInt16("manner");
+    dstBeing->setManner(msg.readInt16("manner"));
     dstBeing->setStatusEffectBlock(32, static_cast<uint16_t>(
         msg.readInt32("opt3")));
     dstBeing->setKarma(msg.readUInt8("karma"));
@@ -1196,7 +1196,7 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
     msg.readInt16("robe");
     msg.readInt32("guild id");
     msg.readInt16("guild emblem");
-    msg.readInt16("manner");
+    dstBeing->setManner(msg.readInt16("manner"));
     dstBeing->setStatusEffectBlock(32, static_cast<uint16_t>(
         msg.readInt32("opt3")));
     dstBeing->setKarma(msg.readUInt8("karma"));
@@ -1363,7 +1363,7 @@ void BeingHandler::processBeingSpawn(Net::MessageIn &msg)
     msg.readInt16("robe");
     msg.readInt32("guild id");
     msg.readInt16("guild emblem");
-    msg.readInt16("manner");
+    dstBeing->setManner(msg.readInt16("manner"));
     dstBeing->setStatusEffectBlock(32, static_cast<uint16_t>(
         msg.readInt32("opt3")));
     dstBeing->setKarma(msg.readUInt8("karma"));

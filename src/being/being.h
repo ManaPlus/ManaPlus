@@ -905,6 +905,12 @@ class Being notfinal : public ActorSprite,
         int getKarma() const
         { return mKarma; }
 
+        void setManner(const int manner)
+        { mManner = manner; }
+
+        int getManner() const
+        { return mManner; }
+
     protected:
         /**
          * Updates name's location.
@@ -1072,6 +1078,7 @@ class Being notfinal : public ActorSprite,
         unsigned int mNumber;
         int mUsageCounter;
         int mKarma;
+        int mManner;
         uint8_t mLook;
         unsigned char mHairColor;
         bool mErased;

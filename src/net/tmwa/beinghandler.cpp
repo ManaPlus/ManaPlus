@@ -554,7 +554,7 @@ void BeingHandler::processPlayerUpdate1(Net::MessageIn &msg) const
     }
 
     msg.readInt16("emblem");
-    msg.readInt16("manner");
+    dstBeing->setManner(msg.readInt16("manner"));
     dstBeing->setStatusEffectBlock(32, msg.readInt16("opt3"));
     dstBeing->setKarma(msg.readUInt8("karma"));
     // reserving bit for future usage
@@ -705,7 +705,7 @@ void BeingHandler::processPlayerUpdate2(Net::MessageIn &msg) const
     }
 
     msg.readInt16("emblem");
-    msg.readInt16("manner");
+    dstBeing->setManner(msg.readInt16("manner"));
     dstBeing->setStatusEffectBlock(32, msg.readInt16("opt3"));
     dstBeing->setKarma(msg.readUInt8("karma"));
     // reserving bit for future usage
@@ -856,7 +856,7 @@ void BeingHandler::processPlayerMove(Net::MessageIn &msg) const
     }
 
     msg.readInt16("emblem");
-    msg.readInt16("manner");
+    dstBeing->setManner(msg.readInt16("manner"));
     dstBeing->setStatusEffectBlock(32, msg.readInt16("opt3"));
     dstBeing->setKarma(msg.readUInt8("karma"));
     // reserving bit for future usage
@@ -1127,7 +1127,7 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
         msg.readInt16("guild emblem");
     }
 
-    msg.readInt16("manner");
+    dstBeing->setManner(msg.readInt16("manner"));
     dstBeing->setStatusEffectBlock(32, msg.readInt16("opt3"));
     if (serverFeatures->haveMonsterAttackRange()
         && dstBeing->getType() == ActorType::Monster)
@@ -1331,7 +1331,7 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
         msg.readInt16("guild emblem");
     }
 
-    msg.readInt16("manner");
+    dstBeing->setManner(msg.readInt16("manner"));
     dstBeing->setStatusEffectBlock(32, msg.readInt16("opt3"));
     if (serverFeatures->haveMonsterAttackRange()
         && dstBeing->getType() == ActorType::Monster)

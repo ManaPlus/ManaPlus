@@ -160,7 +160,7 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
 
     msg.readInt32("option");
     tempPlayer->setKarma(msg.readInt32("karma"));
-    msg.readInt32("manner");
+    tempPlayer->setManner(msg.readInt32("manner"));
     msg.readInt16("character points left");
 
     data.mAttributes[Attributes::HP] = msg.readInt16("hp");
