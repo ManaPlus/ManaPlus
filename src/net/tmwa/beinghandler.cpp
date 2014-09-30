@@ -556,7 +556,7 @@ void BeingHandler::processPlayerUpdate1(Net::MessageIn &msg) const
     msg.readInt16("emblem");
     msg.readInt16("manner");
     dstBeing->setStatusEffectBlock(32, msg.readInt16("opt3"));
-    msg.readUInt8("karma");
+    dstBeing->setKarma(msg.readUInt8("karma"));
     // reserving bit for future usage
     dstBeing->setGender(Being::intToGender(
         static_cast<uint8_t>(msg.readUInt8("gender") & 3)));
@@ -707,7 +707,7 @@ void BeingHandler::processPlayerUpdate2(Net::MessageIn &msg) const
     msg.readInt16("emblem");
     msg.readInt16("manner");
     dstBeing->setStatusEffectBlock(32, msg.readInt16("opt3"));
-    msg.readUInt8("karma");
+    dstBeing->setKarma(msg.readUInt8("karma"));
     // reserving bit for future usage
     dstBeing->setGender(Being::intToGender(
         static_cast<uint8_t>(msg.readUInt8("gender") & 3)));
@@ -858,7 +858,7 @@ void BeingHandler::processPlayerMove(Net::MessageIn &msg) const
     msg.readInt16("emblem");
     msg.readInt16("manner");
     dstBeing->setStatusEffectBlock(32, msg.readInt16("opt3"));
-    msg.readUInt8("karma");
+    dstBeing->setKarma(msg.readUInt8("karma"));
     // reserving bit for future usage
     dstBeing->setGender(Being::intToGender(
         static_cast<uint8_t>(msg.readUInt8("gender") & 3)));
@@ -1138,7 +1138,7 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
     }
     else
     {
-        msg.readUInt8("karma");
+        dstBeing->setKarma(msg.readUInt8("karma"));
     }
     uint8_t gender = msg.readUInt8("gender");
 
@@ -1342,7 +1342,7 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
     }
     else
     {
-        msg.readUInt8("karma");
+        dstBeing->setKarma(msg.readUInt8("karma"));
     }
     uint8_t gender = msg.readUInt8("gender");
 

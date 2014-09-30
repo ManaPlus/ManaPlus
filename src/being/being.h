@@ -899,6 +899,12 @@ class Being notfinal : public ActorSprite,
         const ChatObject *getChat() const
         { return mChat; }
 
+        void setKarma(const int karma)
+        { mKarma = karma; }
+
+        int getKarma() const
+        { return mKarma; }
+
     protected:
         /**
          * Updates name's location.
@@ -1065,6 +1071,7 @@ class Being notfinal : public ActorSprite,
         unsigned int mPvpRank;
         unsigned int mNumber;
         int mUsageCounter;
+        int mKarma;
         uint8_t mLook;
         unsigned char mHairColor;
         bool mErased;

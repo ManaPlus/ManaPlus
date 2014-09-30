@@ -616,8 +616,7 @@ void BeingHandler::processPlayerUpdate1(Net::MessageIn &msg) const
     msg.readInt16("emblem");
     msg.readInt16("manner");
     dstBeing->setStatusEffectBlock(32, msg.readInt16("opt3"));
-    msg.readUInt8("karma");
-    // reserving bit for future usage
+    dstBeing->setKarma(msg.readUInt8("karma"));
     dstBeing->setGender(Being::intToGender(msg.readUInt8("gender")));
 
     if (!disguiseId)
@@ -742,8 +741,7 @@ void BeingHandler::processPlayerUpdate2(Net::MessageIn &msg) const
     msg.readInt16("emblem");
     msg.readInt16("manner");
     dstBeing->setStatusEffectBlock(32, msg.readInt16("opt3"));
-    msg.readUInt8("karma");
-    // reserving bit for future usage
+    dstBeing->setKarma(msg.readUInt8("karma"));
     dstBeing->setGender(Being::intToGender(msg.readUInt8("gender")));
 
     if (!disguiseId)
@@ -868,8 +866,7 @@ void BeingHandler::processPlayerMove(Net::MessageIn &msg) const
     msg.readInt16("emblem");
     msg.readInt16("manner");
     dstBeing->setStatusEffectBlock(32, msg.readInt16("opt3"));
-    msg.readUInt8("karma");
-    // reserving bit for future usage
+    dstBeing->setKarma(msg.readUInt8("karma"));
     dstBeing->setGender(Being::intToGender(msg.readUInt8("gender")));
 
     if (!disguiseId)
@@ -1037,7 +1034,7 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
     msg.readInt16("manner");
     dstBeing->setStatusEffectBlock(32, static_cast<uint16_t>(
         msg.readInt32("opt3")));
-    msg.readUInt8("karma");
+    dstBeing->setKarma(msg.readUInt8("karma"));
     uint8_t gender = msg.readUInt8("gender");
 
     if (dstBeing->getType() == ActorType::Player)
@@ -1202,7 +1199,7 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
     msg.readInt16("manner");
     dstBeing->setStatusEffectBlock(32, static_cast<uint16_t>(
         msg.readInt32("opt3")));
-    msg.readUInt8("karma");
+    dstBeing->setKarma(msg.readUInt8("karma"));
     uint8_t gender = msg.readUInt8("gender");
 
     if (dstBeing->getType() == ActorType::Player)
@@ -1369,7 +1366,7 @@ void BeingHandler::processBeingSpawn(Net::MessageIn &msg)
     msg.readInt16("manner");
     dstBeing->setStatusEffectBlock(32, static_cast<uint16_t>(
         msg.readInt32("opt3")));
-    msg.readUInt8("karma");
+    dstBeing->setKarma(msg.readUInt8("karma"));
     uint8_t gender = msg.readUInt8("gender");
 
     if (dstBeing->getType() == ActorType::Player)
@@ -1784,7 +1781,7 @@ void BeingHandler::processPlaterStatusChange(Net::MessageIn &msg) const
     const uint16_t stunMode = msg.readInt16("stun mode");
     uint32_t statusEffects = msg.readInt16("status effect");
     statusEffects |= (static_cast<uint32_t>(msg.readInt32("opt?"))) << 16;
-    msg.readUInt8("karma");
+    dstBeing->setKarma(msg.readUInt8("karma"));
 
     dstBeing->setStunMode(stunMode);
     dstBeing->setStatusEffectBlock(0, static_cast<uint16_t>(

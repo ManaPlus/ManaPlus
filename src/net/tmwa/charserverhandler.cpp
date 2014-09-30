@@ -159,7 +159,7 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     const int misc1 = msg.readInt16("misc1");
 
     msg.readInt32("option");
-    msg.readInt32("karma");
+    tempPlayer->setKarma(msg.readInt32("karma"));
     msg.readInt32("manner");
     msg.readInt16("character points left");
 
