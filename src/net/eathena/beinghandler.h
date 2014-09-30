@@ -115,6 +115,8 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
         void processPlayerGuilPartyInfo(Net::MessageIn &msg) const;
 
         void processBeingRemoveSkil(Net::MessageIn &msg) const;
+
+        void processBeingFakeName(Net::MessageIn &msg) const;
 };
 
 }  // namespace EAthena

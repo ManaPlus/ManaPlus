@@ -105,6 +105,7 @@ BeingHandler::BeingHandler(const bool enableSync) :
         SMSG_PLAYER_HP,
         SMSG_SKILL_AUTO_CAST,
         SMSG_RANKS_LIST,
+        SMSG_BEING_FAKE_NAME,
         0
     };
     handledMessages = _messages;
@@ -280,6 +281,10 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_RANKS_LIST:
             processRanksList(msg);
+            break;
+
+        case SMSG_BEING_FAKE_NAME:
+            processBeingFakeName(msg);
             break;
 
         default:
@@ -1858,6 +1863,27 @@ void BeingHandler::processBeingRemoveSkil(Net::MessageIn &msg) const
 {
     // +++ if skill unit was added, here need remove it from actors
     msg.readInt32("skill unit id");
+}
+
+void BeingHandler::processBeingFakeName(Net::MessageIn &msg) const
+{
+    const BeingType::BeingType type = static_cast<BeingType::BeingType>(
+        msg.readUInt8("object type"));
+    const int id = msg.readInt32("npc id");
+    msg.skip(8, "unused");
+    const int job = msg.readInt16("class?");  // 111
+    msg.skip(30, "unused");
+    uint16_t x, y;
+    uint8_t dir;
+    msg.readCoordinates(x, y, dir, "position");
+    msg.readUInt8("sx");
+    msg.readUInt8("sy");
+    msg.skip(4, "unsued");
+
+    Being *const dstBeing = createBeing2(id, job, type);
+    dstBeing->setSubtype(job, 0);
+    dstBeing->setTileCoords(x, y);
+    dstBeing->setDirection(dir);
 }
 
 }  // namespace EAthena
