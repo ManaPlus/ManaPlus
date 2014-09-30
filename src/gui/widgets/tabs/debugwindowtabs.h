@@ -102,6 +102,7 @@ class TargetDebugTab final : public DebugTab
         Label *mMinHitLabel;
         Label *mMaxHitLabel;
         Label *mCriticalHitLabel;
+        Label *mKarmaLabel;
 };
 
 class NetDebugTab final : public DebugTab

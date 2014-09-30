@@ -280,7 +280,9 @@ TargetDebugTab::TargetDebugTab(const Widget2 *const widget) :
     // TRANSLATORS: debug window label
     mMaxHitLabel(new Label(this, strprintf("%s ?", _("Maximum hit:")))),
     // TRANSLATORS: debug window label
-    mCriticalHitLabel(new Label(this, strprintf("%s ?", _("Critical hit:"))))
+    mCriticalHitLabel(new Label(this, strprintf("%s ?", _("Critical hit:")))),
+    // TRANSLATORS: debug window label
+    mKarmaLabel(new Label(this, strprintf("%s ?", _("Karma:"))))
 {
     LayoutHelper h(this);
     ContainerPlacer place = h.getPlacer(0, 0);
@@ -296,6 +298,7 @@ TargetDebugTab::TargetDebugTab(const Widget2 *const widget) :
     place(0, 8, mMinHitLabel, 2);
     place(0, 9, mMaxHitLabel, 2);
     place(0, 10, mCriticalHitLabel, 2);
+    place(0, 11, mKarmaLabel, 2);
 
     place.getCell().matchColWidth(0, 0);
     place = h.getPlacer(0, 1);
@@ -354,6 +357,9 @@ void TargetDebugTab::logic()
         mCriticalHitLabel->setCaption(strprintf("%s %d",
             // TRANSLATORS: debug window label
             _("Critical hit:"), target->getCriticalHit()));
+        mKarmaLabel->setCaption(strprintf("%s %d",
+            // TRANSLATORS: debug window label
+            _("Karma:"), target->getKarma()));
 
         const int delay = target->getAttackDelay();
         if (delay)
@@ -391,6 +397,8 @@ void TargetDebugTab::logic()
         mMaxHitLabel->setCaption(strprintf("%s ?", _("Maximum hit:")));
         // TRANSLATORS: debug window label
         mCriticalHitLabel->setCaption(strprintf("%s ?", _("Critical hit:")));
+        // TRANSLATORS: debug window label
+        mKarmaLabel->setCaption(strprintf("%s ?", _("Karma:")));
     }
 
     mTargetLabel->adjustSize();
@@ -400,6 +408,10 @@ void TargetDebugTab::logic()
     mTargetPartyLabel->adjustSize();
     mTargetGuildLabel->adjustSize();
     mAttackDelayLabel->adjustSize();
+    mMinHitLabel->adjustSize();
+    mMaxHitLabel->adjustSize();
+    mCriticalHitLabel->adjustSize();
+    mKarmaLabel->adjustSize();
     BLOCK_END("TargetDebugTab::logic")
 }
 
