@@ -421,7 +421,7 @@ void PlayerHandler::processPlayerStatUpdate5(Net::MessageIn &msg)
 
     PlayerInfo::setStatBase(CRIT, msg.readInt16("crit"));
 
-    msg.readInt16("manner");
+    PlayerInfo::setStatBase(Attributes::MANNER, msg.readInt16("manner"));
     msg.readInt16("unused?");
     BLOCK_END("PlayerHandler::processPlayerStatUpdate5")
 }

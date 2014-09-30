@@ -368,6 +368,7 @@ void GeneralHandler::gameStarted() const
     statusWindow->addAttribute(Attributes::ATTACK_RANGE, _("Attack Range"));
     statusWindow->addAttribute(Attributes::ATTACK_SPEED, _("Damage per sec."));
     statusWindow->addAttribute(Attributes::KARMA, _("Karma"));
+    statusWindow->addAttribute(Attributes::MANNER, _("Manner"));
 }
 
 void GeneralHandler::gameEnded() const

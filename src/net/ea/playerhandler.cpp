@@ -197,7 +197,9 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
             PlayerInfo::setStatMod(Attributes::KARMA, 0);
             break;
         case 0x0004:
-            break;  // manner
+            PlayerInfo::setStatBase(Attributes::MANNER, value);
+            PlayerInfo::setStatMod(Attributes::MANNER, 0);
+            break;
         case 0x0005:
             PlayerInfo::setAttribute(Attributes::HP, value);
             if (localPlayer->isInParty() && Party::getParty(1))
