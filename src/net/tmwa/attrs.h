@@ -40,8 +40,7 @@ namespace TmwAthena
         DEF,
         MATK,
         MDEF,
-        HIT,
-        FLEE
+        HIT
     };
 }  // namespace TmwAthena
 

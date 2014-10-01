@@ -40,8 +40,7 @@ namespace EAthena
         DEF,
         MATK,
         MDEF,
-        HIT,
-        FLEE
+        HIT
     };
 }  // namespace EAthena
 

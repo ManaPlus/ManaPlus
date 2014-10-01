@@ -418,8 +418,8 @@ void PlayerHandler::processPlayerStatUpdate5(Net::MessageIn &msg)
 
     PlayerInfo::setStatBase(HIT, msg.readInt16("hit"));
 
-    PlayerInfo::setStatBase(FLEE, msg.readInt16("flee"), false);
-    PlayerInfo::setStatMod(FLEE, msg.readInt16("flee+"));
+    PlayerInfo::setStatBase(Attributes::FLEE, msg.readInt16("flee"), false);
+    PlayerInfo::setStatMod(Attributes::FLEE, msg.readInt16("flee+"));
 
     PlayerInfo::setStatBase(Attributes::CRIT, msg.readInt16("crit"));
 

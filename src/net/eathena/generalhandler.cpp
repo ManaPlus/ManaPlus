@@ -360,7 +360,7 @@ void GeneralHandler::gameStarted() const
     // xgettext:no-c-format
     statusWindow->addAttribute(HIT, _("% Accuracy"));
     // xgettext:no-c-format
-    statusWindow->addAttribute(FLEE, _("% Evade"));
+    statusWindow->addAttribute(Attributes::FLEE, _("% Evade"));
     // xgettext:no-c-format
     statusWindow->addAttribute(Attributes::CRIT, _("% Critical"));
     statusWindow->addAttribute(Attributes::ATTACK_DELAY, _("Attack Delay"));

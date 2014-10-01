@@ -38,8 +38,7 @@ enum
     EA_DEF,
     EA_MATK,
     EA_MDEF,
-    EA_HIT,
-    EA_FLEE
+    EA_HIT
 };
 
 enum

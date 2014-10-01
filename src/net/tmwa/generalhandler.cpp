@@ -330,7 +330,7 @@ void GeneralHandler::gameStarted() const
     statusWindow->addAttribute(HIT, _("% Accuracy"));
     // TRANSLATORS: player stat
     // xgettext:no-c-format
-    statusWindow->addAttribute(FLEE, _("% Evade"));
+    statusWindow->addAttribute(Attributes::FLEE, _("% Evade"));
     // TRANSLATORS: player stat
     // xgettext:no-c-format
     statusWindow->addAttribute(Attributes::CRIT, _("% Critical"));
