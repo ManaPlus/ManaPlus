@@ -38,6 +38,8 @@
 
 #include "gui/windows/outfitwindow.h"
 
+#include "net/ea/eaprotocol.h"
+
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 #include "net/eathena/sprite.h"
@@ -106,6 +108,7 @@ BeingHandler::BeingHandler(const bool enableSync) :
         SMSG_SKILL_AUTO_CAST,
         SMSG_RANKS_LIST,
         SMSG_BEING_FAKE_NAME,
+        SMSG_BEING_STAT_UPDATE_1,
         0
     };
     handledMessages = _messages;
@@ -285,6 +288,10 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_BEING_FAKE_NAME:
             processBeingFakeName(msg);
+            break;
+
+        case SMSG_BEING_STAT_UPDATE_1:
+            processBeingStatUpdate1(msg);
             break;
 
         default:
@@ -1881,6 +1888,24 @@ void BeingHandler::processBeingFakeName(Net::MessageIn &msg) const
     dstBeing->setSubtype(job, 0);
     dstBeing->setTileCoords(x, y);
     dstBeing->setDirection(dir);
+}
+
+void BeingHandler::processBeingStatUpdate1(Net::MessageIn &msg) const
+{
+    const int id = msg.readInt32("account id");
+    const int type = msg.readInt16("type");
+    const int value = msg.readInt32("value");
+
+    Being *const dstBeing = actorManager->findBeing(id);
+    if (!dstBeing)
+        return;
+
+    if (type != Ea::MANNER)
+    {
+        logger->log("Error: unknown being stat type: %d", type);
+        return;
+    }
+    dstBeing->setManner(value);
 }
 
 }  // namespace EAthena

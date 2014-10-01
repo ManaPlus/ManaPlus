@@ -117,6 +117,8 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
         void processBeingRemoveSkil(Net::MessageIn &msg) const;
 
         void processBeingFakeName(Net::MessageIn &msg) const;
+
+        void processBeingStatUpdate1(Net::MessageIn &msg) const;
 };
 
 }  // namespace EAthena
