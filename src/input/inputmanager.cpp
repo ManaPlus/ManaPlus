@@ -38,6 +38,7 @@
 #include "gui/sdlinput.h"
 
 #include "gui/widgets/selldialog.h"
+#include "gui/widgets/textfield.h"
 
 #include "gui/widgets/tabs/setup_input.h"
 
@@ -657,7 +658,23 @@ void InputManager::updateConditionMask()
         !InventoryWindow::isAnyInputFocused() &&
         (!tradeWindow || !tradeWindow->isInpupFocused()))
     {
-        mMask |= InputCondition::NOINPUT;
+        if (gui)
+        {
+            FocusHandler *const focus = gui->getFocusHandler();
+            if (focus)
+            {
+                if (!dynamic_cast<TextField*>(focus->getFocused()))
+                    mMask |= InputCondition::NOINPUT;
+            }
+            else
+            {
+                mMask |= InputCondition::NOINPUT;
+            }
+        }
+        else
+        {
+            mMask |= InputCondition::NOINPUT;
+        }
     }
 
     if (!BuyDialog::isActive() && !SellDialog::isActive())
