@@ -34,7 +34,6 @@
 #include "net/logindata.h"
 #include "net/serverfeatures.h"
 
-#include "net/tmwa/attrs.h"
 #include "net/tmwa/gamehandler.h"
 #include "net/tmwa/loginhandler.h"
 #include "net/tmwa/messageout.h"

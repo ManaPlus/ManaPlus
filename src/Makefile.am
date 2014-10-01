@@ -1224,7 +1224,6 @@ manaplus_CXXFLAGS += -DTMWA_SUPPORT
 manaplus_SOURCES += \
 	      net/tmwa/adminhandler.cpp \
 	      net/tmwa/adminhandler.h \
-	      net/tmwa/attrs.h \
 	      net/tmwa/auctionhandler.cpp \
 	      net/tmwa/auctionhandler.h \
 	      net/tmwa/bankhandler.cpp \
@@ -1294,7 +1293,6 @@ if ENABLE_EATHENA
 manaplus_CXXFLAGS += -DEATHENA_SUPPORT
 manaplus_SOURCES += net/eathena/adminhandler.cpp \
 	      net/eathena/adminhandler.h \
-	      net/eathena/attrs.h \
 	      net/eathena/auctionhandler.cpp \
 	      net/eathena/auctionhandler.h \
 	      net/eathena/bankhandler.cpp \

@@ -27,7 +27,6 @@
 
 #include "gui/windows/statuswindow.h"
 
-#include "net/eathena/attrs.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 #include "net/eathena/inventoryhandler.h"

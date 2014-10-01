@@ -33,7 +33,6 @@
 #include "net/character.h"
 #include "net/logindata.h"
 
-#include "net/eathena/attrs.h"
 #include "net/eathena/gamehandler.h"
 #include "net/eathena/loginhandler.h"
 #include "net/eathena/messageout.h"

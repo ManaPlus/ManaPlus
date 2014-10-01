@@ -39,7 +39,6 @@
 #include "net/ea/gui/partytab.h"
 
 #include "net/tmwa/adminhandler.h"
-#include "net/tmwa/attrs.h"
 #include "net/tmwa/auctionhandler.h"
 #include "net/tmwa/bankhandler.h"
 #include "net/tmwa/beinghandler.h"

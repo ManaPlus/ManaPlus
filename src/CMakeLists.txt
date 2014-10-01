@@ -1291,7 +1291,6 @@ SET(SRCS_EVOL
 SET(SRCS_TMWA
     net/tmwa/adminhandler.cpp
     net/tmwa/adminhandler.h
-    net/tmwa/attrs.h
     net/tmwa/auctionhandler.cpp
     net/tmwa/auctionhandler.h
     net/tmwa/bankhandler.cpp
@@ -1360,7 +1359,6 @@ SET(SRCS_TMWA
 SET(SRCS_EATHENA
     net/eathena/adminhandler.cpp
     net/eathena/adminhandler.h
-    net/eathena/attrs.h
     net/eathena/auctionhandler.cpp
     net/eathena/auctionhandler.h
     net/eathena/bankhandler.cpp
