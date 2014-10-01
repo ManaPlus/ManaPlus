@@ -436,4 +436,12 @@ void PlayerHandler::processPlayerHeal(Net::MessageIn &msg)
     msg.readInt16("value");
 }
 
+void PlayerHandler::setStat(const int type,
+                            const int base,
+                            const int mod,
+                            const bool notify) const
+{
+    Ea::PlayerHandler::setStat(type, base, mod, notify);
+}
+
 }  // namespace EAthena

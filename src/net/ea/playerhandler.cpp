@@ -173,193 +173,18 @@ void PlayerHandler::processPlayerWarp(Net::MessageIn &msg)
     BLOCK_END("PlayerHandler::processPlayerWarp")
 }
 
-void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
+void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg) const
 {
     BLOCK_START("PlayerHandler::processPlayerStatUpdate1")
-    const int type = msg.readInt16();
-    const int value = msg.readInt32();
+    const int type = msg.readInt16("type");
+    const int value = msg.readInt32("value");
     if (!localPlayer)
     {
         BLOCK_END("PlayerHandler::processPlayerStatUpdate1")
         return;
     }
 
-    switch (type)
-    {
-        case 0x0000:
-            localPlayer->setWalkSpeed(Vector(static_cast<float>(
-                value), static_cast<float>(value), 0));
-            PlayerInfo::setStatBase(Attributes::WALK_SPEED, value);
-            PlayerInfo::setStatMod(Attributes::WALK_SPEED, 0);
-            break;
-        case 0x0003:
-            PlayerInfo::setStatBase(Attributes::KARMA, value);
-            PlayerInfo::setStatMod(Attributes::KARMA, 0);
-            break;
-        case 0x0004:
-            PlayerInfo::setStatBase(Attributes::MANNER, value);
-            PlayerInfo::setStatMod(Attributes::MANNER, 0);
-            break;
-        case 0x0005:
-            PlayerInfo::setAttribute(Attributes::HP, value);
-            if (localPlayer->isInParty() && Party::getParty(1))
-            {
-                PartyMember *const m = Party::getParty(1)
-                    ->getMember(localPlayer->getId());
-                if (m)
-                {
-                    m->setHp(value);
-                    m->setMaxHp(PlayerInfo::getAttribute(Attributes::MAX_HP));
-                }
-            }
-            break;
-        case 0x0006:
-            PlayerInfo::setAttribute(Attributes::MAX_HP, value);
-
-            if (localPlayer->isInParty() && Party::getParty(1))
-            {
-                PartyMember *const m = Party::getParty(1)->getMember(
-                    localPlayer->getId());
-                if (m)
-                {
-                    m->setHp(PlayerInfo::getAttribute(Attributes::HP));
-                    m->setMaxHp(value);
-                }
-            }
-            break;
-        case 0x0007:
-            PlayerInfo::setAttribute(Attributes::MP, value);
-            break;
-        case 0x0008:
-            PlayerInfo::setAttribute(Attributes::MAX_MP, value);
-            break;
-        case 0x0009:
-            PlayerInfo::setAttribute(Attributes::CHAR_POINTS, value);
-            break;
-        case 0x000b:
-            PlayerInfo::setAttribute(Attributes::LEVEL, value);
-            if (localPlayer)
-            {
-                localPlayer->setLevel(value);
-                localPlayer->updateName();
-            }
-            break;
-        case 0x000c:
-            PlayerInfo::setAttribute(Attributes::SKILL_POINTS, value);
-            if (skillDialog)
-                skillDialog->update();
-            break;
-        case 0x0018:
-            if (!weightNotice && config.getBoolValue("weightMsg"))
-            {
-                const int max = PlayerInfo::getAttribute(
-                    Attributes::MAX_WEIGHT) / 2;
-                const int total = PlayerInfo::getAttribute(
-                    Attributes::TOTAL_WEIGHT);
-                if (value >= max && total < max)
-                {
-                    weightNoticeTime = cur_time + 5;
-                    // TRANSLATORS: message header
-                    weightNotice = new OkDialog(_("Message"),
-                        // TRANSLATORS: weight message
-                        _("You are carrying more than "
-                        "half your weight. You are "
-                        "unable to regain health."),
-                        // TRANSLATORS: ok dialog button
-                        _("OK"),
-                        DialogType::OK,
-                        false, true, nullptr, 260);
-                    weightNotice->addActionListener(
-                        &weightListener);
-                }
-                else if (value < max && total >= max)
-                {
-                    weightNoticeTime = cur_time + 5;
-                    // TRANSLATORS: message header
-                    weightNotice = new OkDialog(_("Message"),
-                        // TRANSLATORS: weight message
-                        _("You are carrying less than "
-                        "half your weight. You "
-                        "can regain health."),
-                        // TRANSLATORS: ok dialog button
-                        _("OK"),
-                        DialogType::OK,
-                        false, true, nullptr, 260);
-                    weightNotice->addActionListener(
-                        &weightListener);
-                }
-            }
-            PlayerInfo::setAttribute(Attributes::TOTAL_WEIGHT, value);
-            break;
-        case 0x0019:
-            PlayerInfo::setAttribute(Attributes::MAX_WEIGHT, value);
-            break;
-
-        case 0x0029:
-            PlayerInfo::setStatBase(EA_ATK, value);
-            PlayerInfo::updateAttrs();
-            break;
-        case 0x002a:
-            PlayerInfo::setStatMod(EA_ATK, value);
-            PlayerInfo::updateAttrs();
-            break;
-
-        case 0x002b:
-            PlayerInfo::setStatBase(EA_MATK, value);
-            break;
-        case 0x002c:
-            PlayerInfo::setStatMod(EA_MATK, value);
-            break;
-
-        case 0x002d:
-            PlayerInfo::setStatBase(EA_DEF, value);
-            break;
-        case 0x002e:
-            PlayerInfo::setStatMod(EA_DEF, value);
-            break;
-
-        case 0x002f:
-            PlayerInfo::setStatBase(EA_MDEF, value);
-            break;
-        case 0x0030:
-            PlayerInfo::setStatMod(EA_MDEF, value);
-            break;
-
-        case 0x0031:
-            PlayerInfo::setStatBase(EA_HIT, value);
-            break;
-
-        case 0x0032:
-            PlayerInfo::setStatBase(EA_FLEE, value);
-            break;
-        case 0x0033:
-            PlayerInfo::setStatMod(EA_FLEE, value);
-            break;
-
-        case 0x0034:
-            PlayerInfo::setStatBase(EA_CRIT, value);
-            break;
-
-        case 0x0035:
-            localPlayer->setAttackSpeed(value);
-            PlayerInfo::setStatBase(Attributes::ATTACK_DELAY, value);
-            PlayerInfo::setStatMod(Attributes::ATTACK_DELAY, 0);
-            PlayerInfo::updateAttrs();
-            break;
-
-        case 0x0037:
-            PlayerInfo::setStatBase(EA_JOB, value);
-            break;
-
-        case 500:
-            localPlayer->setGMLevel(value);
-            break;
-
-        default:
-            logger->log("QQQQ PLAYER_STAT_UPDATE_1 "
-                        + toString(type) + "," + toString(value));
-            break;
-    }
+    setStat(type, value, -1, true);
 
     if (PlayerInfo::getAttribute(Attributes::HP) == 0 && !deathNotice)
     {
@@ -380,66 +205,29 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
     BLOCK_END("PlayerHandler::processPlayerStatUpdate1")
 }
 
-void PlayerHandler::processPlayerStatUpdate2(Net::MessageIn &msg)
+void PlayerHandler::processPlayerStatUpdate2(Net::MessageIn &msg) const
 {
     BLOCK_START("PlayerHandler::processPlayerStatUpdate2")
-    const int type = msg.readInt16();
-    switch (type)
-    {
-        case 0x0001:
-            PlayerInfo::setAttribute(Attributes::EXP, msg.readInt32());
-            break;
-        case 0x0002:
-            PlayerInfo::setStatExperience(EA_JOB, msg.readInt32(),
-            PlayerInfo::getStatExperience(EA_JOB).second);
-            break;
-        case 0x0014:
-        {
-            const int oldMoney = PlayerInfo::getAttribute(Attributes::MONEY);
-            const int newMoney = msg.readInt32();
-            if (newMoney > oldMoney)
-            {
-                NotifyManager::notify(NotifyTypes::MONEY_GET,
-                    Units::formatCurrency(newMoney - oldMoney));
-            }
-            else if (newMoney < oldMoney)
-            {
-                NotifyManager::notify(NotifyTypes::MONEY_SPENT,
-                    Units::formatCurrency(oldMoney - newMoney).c_str());
-            }
-
-            PlayerInfo::setAttribute(Attributes::MONEY, newMoney);
-            break;
-        }
-        case 0x0016:
-            PlayerInfo::setAttribute(Attributes::EXP_NEEDED, msg.readInt32());
-            break;
-        case 0x0017:
-            PlayerInfo::setStatExperience(EA_JOB,
-                PlayerInfo::getStatExperience(EA_JOB).first, msg.readInt32());
-            break;
-        default:
-            logger->log("QQQQ PLAYER_STAT_UPDATE_2 " + toString(type));
-            break;
-    }
+    const int type = msg.readInt16("type");
+    const int value = msg.readInt32("value");
+    setStat(type, value, -1, true);
     BLOCK_END("PlayerHandler::processPlayerStatUpdate2")
 }
 
-void PlayerHandler::processPlayerStatUpdate3(Net::MessageIn &msg)
+void PlayerHandler::processPlayerStatUpdate3(Net::MessageIn &msg) const
 {
     BLOCK_START("PlayerHandler::processPlayerStatUpdate3")
-    const int type = msg.readInt32();
-    const int base = msg.readInt32();
-    const int bonus = msg.readInt32();
+    const int type = msg.readInt32("type");
+    const int base = msg.readInt32("base");
+    const int bonus = msg.readInt32("bonus");
 
-    PlayerInfo::setStatBase(type, base, false);
-    PlayerInfo::setStatMod(type, bonus);
+    setStat(type, base, bonus, false);
     if (type == EA_ATK || type == Attributes::ATTACK_DELAY)
         PlayerInfo::updateAttrs();
     BLOCK_END("PlayerHandler::processPlayerStatUpdate3")
 }
 
-void PlayerHandler::processPlayerStatUpdate4(Net::MessageIn &msg)
+void PlayerHandler::processPlayerStatUpdate4(Net::MessageIn &msg) const
 {
     BLOCK_START("PlayerHandler::processPlayerStatUpdate4")
     const int type = msg.readInt16();
@@ -455,42 +243,17 @@ void PlayerHandler::processPlayerStatUpdate4(Net::MessageIn &msg)
         NotifyManager::notify(NotifyTypes::SKILL_RAISE_ERROR);
     }
 
-    PlayerInfo::setStatBase(type, value);
+    setStat(type, value, -1, true);
     BLOCK_END("PlayerHandler::processPlayerStatUpdate4")
 }
 
-void PlayerHandler::processPlayerStatUpdate6(Net::MessageIn &msg)
+void PlayerHandler::processPlayerStatUpdate6(Net::MessageIn &msg) const
 {
     BLOCK_START("PlayerHandler::processPlayerStatUpdate6")
-    const int type = msg.readInt16();
+    const int type = msg.readInt16("type");
+    const int value = msg.readUInt8("value");
     if (statusWindow)
-    {
-        switch (type)
-        {
-            case 0x0020:
-                statusWindow->setPointsNeeded(EA_STR, msg.readUInt8());
-                break;
-            case 0x0021:
-                statusWindow->setPointsNeeded(EA_AGI, msg.readUInt8());
-                break;
-            case 0x0022:
-                statusWindow->setPointsNeeded(EA_VIT, msg.readUInt8());
-                break;
-            case 0x0023:
-                statusWindow->setPointsNeeded(EA_INT, msg.readUInt8());
-                break;
-            case 0x0024:
-                statusWindow->setPointsNeeded(EA_DEX, msg.readUInt8());
-                break;
-            case 0x0025:
-                statusWindow->setPointsNeeded(EA_LUK, msg.readUInt8());
-                break;
-            default:
-                logger->log("QQQQ PLAYER_STAT_UPDATE_6 "
-                            + toString(type));
-                break;
-        }
-    }
+        setStat(type, value, -1, true);
     BLOCK_END("PlayerHandler::processPlayerStatUpdate6")
 }
 
@@ -526,6 +289,257 @@ int PlayerHandler::getJobLocation() const
 int PlayerHandler::getAttackLocation() const
 {
     return EA_ATK;
+}
+
+#define setStatComplex(stat) \
+    PlayerInfo::setStatBase(stat, base, notify); \
+    if (mod != -1) \
+        PlayerInfo::setStatMod(stat, mod)
+
+void PlayerHandler::setStat(const int type,
+                            const int base,
+                            const int mod,
+                            const bool notify) const
+{
+    switch (type)
+    {
+        case EA_STR:
+            setStatComplex(EA_STR);
+            break;
+        case EA_AGI:
+            setStatComplex(EA_AGI);
+            break;
+        case EA_VIT:
+            setStatComplex(EA_VIT);
+            break;
+        case EA_INT:
+            setStatComplex(EA_INT);
+            break;
+        case EA_DEX:
+            setStatComplex(EA_DEX);
+            break;
+        case EA_LUK:
+            setStatComplex(EA_LUK);
+            break;
+
+        case 0x0000:
+            localPlayer->setWalkSpeed(Vector(static_cast<float>(
+                base), static_cast<float>(base), 0));
+            PlayerInfo::setStatBase(Attributes::WALK_SPEED, base);
+            PlayerInfo::setStatMod(Attributes::WALK_SPEED, 0);
+            break;
+        case 0x0001:
+            PlayerInfo::setAttribute(Attributes::EXP, base);
+            break;
+        case 0x0002:
+            PlayerInfo::setStatExperience(EA_JOB, base,
+                PlayerInfo::getStatExperience(EA_JOB).second);
+            break;
+        case 0x0003:
+            PlayerInfo::setStatBase(Attributes::KARMA, base);
+            PlayerInfo::setStatMod(Attributes::KARMA, 0);
+            break;
+        case 0x0004:
+            PlayerInfo::setStatBase(Attributes::MANNER, base);
+            PlayerInfo::setStatMod(Attributes::MANNER, 0);
+            break;
+        case 0x0005:
+            PlayerInfo::setAttribute(Attributes::HP, base);
+            if (localPlayer->isInParty() && Party::getParty(1))
+            {
+                PartyMember *const m = Party::getParty(1)
+                    ->getMember(localPlayer->getId());
+                if (m)
+                {
+                    m->setHp(base);
+                    m->setMaxHp(PlayerInfo::getAttribute(Attributes::MAX_HP));
+                }
+            }
+            break;
+
+        case 0x0006:
+            PlayerInfo::setAttribute(Attributes::MAX_HP, base);
+
+            if (localPlayer->isInParty() && Party::getParty(1))
+            {
+                PartyMember *const m = Party::getParty(1)->getMember(
+                    localPlayer->getId());
+                if (m)
+                {
+                    m->setHp(PlayerInfo::getAttribute(Attributes::HP));
+                    m->setMaxHp(base);
+                }
+            }
+            break;
+        case 0x0007:
+            PlayerInfo::setAttribute(Attributes::MP, base);
+            break;
+        case 0x0008:
+            PlayerInfo::setAttribute(Attributes::MAX_MP, base);
+            break;
+        case 0x0009:
+            PlayerInfo::setAttribute(Attributes::CHAR_POINTS, base);
+            break;
+        case 0x000b:
+            PlayerInfo::setAttribute(Attributes::LEVEL, base);
+            if (localPlayer)
+            {
+                localPlayer->setLevel(base);
+                localPlayer->updateName();
+            }
+            break;
+        case 0x000c:
+            PlayerInfo::setAttribute(Attributes::SKILL_POINTS, base);
+            if (skillDialog)
+                skillDialog->update();
+            break;
+        case 0x0014:
+        {
+            const int oldMoney = PlayerInfo::getAttribute(Attributes::MONEY);
+            const int newMoney = base;
+            if (newMoney > oldMoney)
+            {
+                NotifyManager::notify(NotifyTypes::MONEY_GET,
+                    Units::formatCurrency(newMoney - oldMoney));
+            }
+            else if (newMoney < oldMoney)
+            {
+                NotifyManager::notify(NotifyTypes::MONEY_SPENT,
+                    Units::formatCurrency(oldMoney - newMoney).c_str());
+            }
+
+            PlayerInfo::setAttribute(Attributes::MONEY, newMoney);
+            break;
+        }
+        case 0x0016:
+            PlayerInfo::setAttribute(Attributes::EXP_NEEDED, base);
+            break;
+        case 0x0017:
+            PlayerInfo::setStatExperience(EA_JOB,
+                PlayerInfo::getStatExperience(EA_JOB).first, base);
+            break;
+        case 0x0018:
+            if (!weightNotice && config.getBoolValue("weightMsg"))
+            {
+                const int max = PlayerInfo::getAttribute(
+                    Attributes::MAX_WEIGHT) / 2;
+                const int total = PlayerInfo::getAttribute(
+                    Attributes::TOTAL_WEIGHT);
+                if (base >= max && total < max)
+                {
+                    weightNoticeTime = cur_time + 5;
+                    // TRANSLATORS: message header
+                    weightNotice = new OkDialog(_("Message"),
+                        // TRANSLATORS: weight message
+                        _("You are carrying more than "
+                        "half your weight. You are "
+                        "unable to regain health."),
+                        // TRANSLATORS: ok dialog button
+                        _("OK"),
+                        DialogType::OK,
+                        false, true, nullptr, 260);
+                    weightNotice->addActionListener(
+                        &weightListener);
+                }
+                else if (base < max && total >= max)
+                {
+                    weightNoticeTime = cur_time + 5;
+                    // TRANSLATORS: message header
+                    weightNotice = new OkDialog(_("Message"),
+                        // TRANSLATORS: weight message
+                        _("You are carrying less than "
+                        "half your weight. You "
+                        "can regain health."),
+                        // TRANSLATORS: ok dialog button
+                        _("OK"),
+                        DialogType::OK,
+                        false, true, nullptr, 260);
+                    weightNotice->addActionListener(
+                        &weightListener);
+                }
+            }
+            PlayerInfo::setAttribute(Attributes::TOTAL_WEIGHT, base);
+            break;
+        case 0x0019:
+            PlayerInfo::setAttribute(Attributes::MAX_WEIGHT, base);
+            break;
+        case 0x0020:
+            statusWindow->setPointsNeeded(EA_STR, base);
+            break;
+        case 0x0021:
+            statusWindow->setPointsNeeded(EA_AGI, base);
+            break;
+        case 0x0022:
+            statusWindow->setPointsNeeded(EA_VIT, base);
+            break;
+        case 0x0023:
+            statusWindow->setPointsNeeded(EA_INT, base);
+            break;
+        case 0x0024:
+            statusWindow->setPointsNeeded(EA_DEX, base);
+            break;
+        case 0x0025:
+            statusWindow->setPointsNeeded(EA_LUK, base);
+            break;
+
+        case 0x0029:
+            PlayerInfo::setStatBase(EA_ATK, base);
+            PlayerInfo::updateAttrs();
+            break;
+        case 0x002a:
+            PlayerInfo::setStatMod(EA_ATK, base);
+            PlayerInfo::updateAttrs();
+            break;
+
+        case 0x002b:
+            PlayerInfo::setStatBase(EA_MATK, base);
+            break;
+        case 0x002c:
+            PlayerInfo::setStatMod(EA_MATK, base);
+            break;
+        case 0x002d:
+            PlayerInfo::setStatBase(EA_DEF, base);
+            break;
+        case 0x002e:
+            PlayerInfo::setStatMod(EA_DEF, base);
+            break;
+
+        case 0x002f:
+            PlayerInfo::setStatBase(EA_MDEF, base);
+            break;
+        case 0x0030:
+            PlayerInfo::setStatMod(EA_MDEF, base);
+            break;
+
+        case 0x0031:
+            PlayerInfo::setStatBase(EA_HIT, base);
+            break;
+
+        case 0x0032:
+            PlayerInfo::setStatBase(EA_FLEE, base);
+            break;
+        case 0x0033:
+            PlayerInfo::setStatMod(EA_FLEE, base);
+            break;
+        case 0x0034:
+            PlayerInfo::setStatBase(EA_CRIT, base);
+            break;
+
+        case 0x0035:
+            localPlayer->setAttackSpeed(base);
+            PlayerInfo::setStatBase(Attributes::ATTACK_DELAY, base);
+            PlayerInfo::setStatMod(Attributes::ATTACK_DELAY, 0);
+            PlayerInfo::updateAttrs();
+            break;
+        case 0x0037:
+            PlayerInfo::setStatBase(EA_JOB, base);
+            break;
+
+        default:
+            logger->log("Error: Unknown stat set: %d, values: %d, %d",
+                type, base, mod);
+            break;
+    }
 }
 
 }  // namespace Ea
