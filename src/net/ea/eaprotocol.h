@@ -29,8 +29,7 @@ enum
 
     EA_STR = 0xd,
     EA_AGI,
-    EA_VIT,
-    EA_INT
+    EA_VIT
 };
 
 enum

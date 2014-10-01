@@ -311,7 +311,8 @@ void GeneralHandler::gameStarted() const
     // TRANSLATORS: player stat
     statusWindow->addAttribute(VIT, _("Vitality"), "vit", true);
     // TRANSLATORS: player stat
-    statusWindow->addAttribute(INT, _("Intelligence"), "int", true);
+    statusWindow->addAttribute(Attributes::INT,
+        _("Intelligence"), "int", true);
     // TRANSLATORS: player stat
     statusWindow->addAttribute(Attributes::DEX, _("Dexterity"), "dex", true);
     // TRANSLATORS: player stat

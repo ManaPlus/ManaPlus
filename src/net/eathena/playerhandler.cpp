@@ -312,11 +312,16 @@ void PlayerHandler::processPlayerStatUpdate5(Net::MessageIn &msg)
         msg.readUInt8("vit cost");
 
     val = msg.readUInt8("int");
-    PlayerInfo::setStatBase(INT, val);
+    PlayerInfo::setStatBase(Attributes::INT, val);
     if (statusWindow)
-        statusWindow->setPointsNeeded(INT, msg.readUInt8("int cost"));
+    {
+        statusWindow->setPointsNeeded(Attributes::INT,
+            msg.readUInt8("int cost"));
+    }
     else
+    {
         msg.readUInt8("int cost");
+    }
 
     val = msg.readUInt8("dex");
     PlayerInfo::setStatBase(Attributes::DEX, val);
