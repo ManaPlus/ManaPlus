@@ -42,6 +42,7 @@ namespace Attributes
         SKILL_POINTS,
         CHAR_POINTS,
         CORR_POINTS,
+        LUK = 18,
         ATTACK_DELAY = 100,
         ATTACK_RANGE = 101,
         WALK_SPEED = 102,

@@ -154,7 +154,7 @@ void PlayerHandler::emote(const uint8_t emoteId) const
 
 void PlayerHandler::increaseAttribute(const int attr) const
 {
-    if (attr >= STR && attr <= LUK)
+    if (attr >= STR && attr <= Attributes::LUK)
     {
         createOutPacket(CMSG_STAT_UPDATE_REQUEST);
         outMsg.writeInt16(static_cast<int16_t>(attr));
@@ -326,11 +326,16 @@ void PlayerHandler::processPlayerStatUpdate5(Net::MessageIn &msg)
         msg.readUInt8("dex cost");
 
     val = msg.readUInt8("luk");
-    PlayerInfo::setStatBase(LUK, val);
+    PlayerInfo::setStatBase(Attributes::LUK, val);
     if (statusWindow)
-        statusWindow->setPointsNeeded(LUK, msg.readUInt8("luk cost"));
+    {
+        statusWindow->setPointsNeeded(Attributes::LUK,
+            msg.readUInt8("luk cost"));
+    }
     else
+    {
         msg.readUInt8("luk cost");
+    }
 
     PlayerInfo::setStatBase(Attributes::ATK, msg.readInt16("left atk"), false);
     PlayerInfo::setStatMod(Attributes::ATK, msg.readInt16("right atk"));

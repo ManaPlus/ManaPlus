@@ -351,7 +351,7 @@ void GeneralHandler::gameStarted() const
     statusWindow->addAttribute(VIT, _("Vitality"), "vit", true);
     statusWindow->addAttribute(INT, _("Intelligence"), "int", true);
     statusWindow->addAttribute(DEX, _("Dexterity"), "dex", true);
-    statusWindow->addAttribute(LUK, _("Luck"), "luk", true);
+    statusWindow->addAttribute(Attributes::LUK, _("Luck"), "luk", true);
 
     statusWindow->addAttribute(Attributes::ATK, _("Attack"));
     statusWindow->addAttribute(Attributes::DEF, _("Defense"));

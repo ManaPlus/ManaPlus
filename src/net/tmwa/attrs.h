@@ -33,8 +33,7 @@ namespace TmwAthena
         AGI,
         VIT,
         INT,
-        DEX,
-        LUK
+        DEX
     };
 }  // namespace TmwAthena
 

@@ -33,8 +33,7 @@ namespace EAthena
         AGI,
         VIT,
         INT,
-        DEX,
-        LUK
+        DEX
     };
 }  // namespace EAthena
 
