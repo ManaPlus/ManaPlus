@@ -333,7 +333,7 @@ void GeneralHandler::gameStarted() const
     statusWindow->addAttribute(FLEE, _("% Evade"));
     // TRANSLATORS: player stat
     // xgettext:no-c-format
-    statusWindow->addAttribute(CRIT, _("% Critical"));
+    statusWindow->addAttribute(Attributes::CRIT, _("% Critical"));
     // TRANSLATORS: player stat
     statusWindow->addAttribute(Attributes::ATTACK_DELAY, _("Attack Delay"));
     // TRANSLATORS: player stat

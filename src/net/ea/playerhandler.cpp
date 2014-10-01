@@ -515,7 +515,7 @@ void PlayerHandler::setStat(const int type,
             PlayerInfo::setStatMod(EA_FLEE, base);
             break;
         case 0x0034:
-            PlayerInfo::setStatBase(EA_CRIT, base);
+            PlayerInfo::setStatBase(Attributes::CRIT, base);
             break;
         case 0x0035:
             localPlayer->setAttackSpeed(base);

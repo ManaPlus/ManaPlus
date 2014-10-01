@@ -362,7 +362,7 @@ void GeneralHandler::gameStarted() const
     // xgettext:no-c-format
     statusWindow->addAttribute(FLEE, _("% Evade"));
     // xgettext:no-c-format
-    statusWindow->addAttribute(CRIT, _("% Critical"));
+    statusWindow->addAttribute(Attributes::CRIT, _("% Critical"));
     statusWindow->addAttribute(Attributes::ATTACK_DELAY, _("Attack Delay"));
     statusWindow->addAttribute(Attributes::WALK_SPEED, _("Walk Delay"));
     statusWindow->addAttribute(Attributes::ATTACK_RANGE, _("Attack Range"));

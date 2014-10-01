@@ -47,7 +47,8 @@ namespace Attributes
         WALK_SPEED = 102,
         ATTACK_SPEED = 103,
         KARMA,
-        MANNER
+        MANNER,
+        CRIT
     };
 }  // namespace Attributes
 

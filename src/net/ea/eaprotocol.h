@@ -39,11 +39,7 @@ enum
     EA_MATK,
     EA_MDEF,
     EA_HIT,
-    EA_FLEE,
-    EA_CRIT
-
-//    KARMA,
-//    MANNER
+    EA_FLEE
 };
 
 enum

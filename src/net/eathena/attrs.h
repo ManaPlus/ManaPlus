@@ -41,11 +41,7 @@ namespace EAthena
         MATK,
         MDEF,
         HIT,
-        FLEE,
-        CRIT
-
-//        KARMA,
-//        MANNER
+        FLEE
     };
 }  // namespace EAthena
 

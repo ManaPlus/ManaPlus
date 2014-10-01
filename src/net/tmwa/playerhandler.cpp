@@ -421,7 +421,7 @@ void PlayerHandler::processPlayerStatUpdate5(Net::MessageIn &msg)
     PlayerInfo::setStatBase(FLEE, msg.readInt16("flee"), false);
     PlayerInfo::setStatMod(FLEE, msg.readInt16("flee+"));
 
-    PlayerInfo::setStatBase(CRIT, msg.readInt16("crit"));
+    PlayerInfo::setStatBase(Attributes::CRIT, msg.readInt16("crit"));
 
     PlayerInfo::setStatBase(Attributes::MANNER, msg.readInt16("manner"));
     msg.readInt16("unused?");

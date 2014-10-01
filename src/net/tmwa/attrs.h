@@ -41,11 +41,7 @@ namespace TmwAthena
         MATK,
         MDEF,
         HIT,
-        FLEE,
-        CRIT
-
-//        KARMA,
-//        MANNER
+        FLEE
     };
 }  // namespace TmwAthena
 

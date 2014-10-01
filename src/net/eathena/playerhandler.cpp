@@ -353,7 +353,7 @@ void PlayerHandler::processPlayerStatUpdate5(Net::MessageIn &msg)
     PlayerInfo::setStatBase(FLEE, msg.readInt16("flee"), false);
     PlayerInfo::setStatMod(FLEE, msg.readInt16("flee2/10"));
 
-    PlayerInfo::setStatBase(CRIT, msg.readInt16("crit/10"));
+    PlayerInfo::setStatBase(Attributes::CRIT, msg.readInt16("crit/10"));
 
     PlayerInfo::setAttribute(Attributes::ATTACK_DELAY,
         msg.readInt16("attack speed"));
