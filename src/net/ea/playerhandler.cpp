@@ -303,25 +303,6 @@ void PlayerHandler::setStat(const int type,
 {
     switch (type)
     {
-        case EA_STR:
-            setStatComplex(EA_STR);
-            break;
-        case EA_AGI:
-            setStatComplex(EA_AGI);
-            break;
-        case EA_VIT:
-            setStatComplex(EA_VIT);
-            break;
-        case EA_INT:
-            setStatComplex(EA_INT);
-            break;
-        case EA_DEX:
-            setStatComplex(EA_DEX);
-            break;
-        case EA_LUK:
-            setStatComplex(EA_LUK);
-            break;
-
         case 0x0000:
             localPlayer->setWalkSpeed(Vector(static_cast<float>(
                 base), static_cast<float>(base), 0));
@@ -356,7 +337,6 @@ void PlayerHandler::setStat(const int type,
                 }
             }
             break;
-
         case 0x0006:
             PlayerInfo::setAttribute(Attributes::MAX_HP, base);
 
@@ -392,6 +372,24 @@ void PlayerHandler::setStat(const int type,
             PlayerInfo::setAttribute(Attributes::SKILL_POINTS, base);
             if (skillDialog)
                 skillDialog->update();
+            break;
+        case 0x000d:
+            setStatComplex(EA_STR);
+            break;
+        case 0x000e:
+            setStatComplex(EA_AGI);
+            break;
+        case 0x000f:
+            setStatComplex(EA_VIT);
+            break;
+        case 0x0010:
+            setStatComplex(EA_INT);
+            break;
+        case 0x0011:
+            setStatComplex(EA_DEX);
+            break;
+        case 0x0012:
+            setStatComplex(EA_LUK);
             break;
         case 0x0014:
         {
@@ -481,7 +479,6 @@ void PlayerHandler::setStat(const int type,
         case 0x0025:
             statusWindow->setPointsNeeded(EA_LUK, base);
             break;
-
         case 0x0029:
             PlayerInfo::setStatBase(EA_ATK, base);
             PlayerInfo::updateAttrs();
@@ -490,7 +487,6 @@ void PlayerHandler::setStat(const int type,
             PlayerInfo::setStatMod(EA_ATK, base);
             PlayerInfo::updateAttrs();
             break;
-
         case 0x002b:
             PlayerInfo::setStatBase(EA_MATK, base);
             break;
@@ -503,18 +499,15 @@ void PlayerHandler::setStat(const int type,
         case 0x002e:
             PlayerInfo::setStatMod(EA_DEF, base);
             break;
-
         case 0x002f:
             PlayerInfo::setStatBase(EA_MDEF, base);
             break;
         case 0x0030:
             PlayerInfo::setStatMod(EA_MDEF, base);
             break;
-
         case 0x0031:
             PlayerInfo::setStatBase(EA_HIT, base);
             break;
-
         case 0x0032:
             PlayerInfo::setStatBase(EA_FLEE, base);
             break;
@@ -524,7 +517,6 @@ void PlayerHandler::setStat(const int type,
         case 0x0034:
             PlayerInfo::setStatBase(EA_CRIT, base);
             break;
-
         case 0x0035:
             localPlayer->setAttackSpeed(base);
             PlayerInfo::setStatBase(Attributes::ATTACK_DELAY, base);
