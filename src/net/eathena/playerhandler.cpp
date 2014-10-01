@@ -348,7 +348,7 @@ void PlayerHandler::processPlayerStatUpdate5(Net::MessageIn &msg)
     PlayerInfo::setStatBase(MDEF, msg.readInt16("left mdef"), false);
     PlayerInfo::setStatMod(MDEF, msg.readInt16("right mdef"));
 
-    PlayerInfo::setStatBase(HIT, msg.readInt16("hit"));
+    PlayerInfo::setStatBase(Attributes::HIT, msg.readInt16("hit"));
 
     PlayerInfo::setStatBase(Attributes::FLEE, msg.readInt16("flee"), false);
     PlayerInfo::setStatMod(Attributes::FLEE, msg.readInt16("flee2/10"));

@@ -506,7 +506,7 @@ void PlayerHandler::setStat(const int type,
             PlayerInfo::setStatMod(EA_MDEF, base);
             break;
         case 0x0031:
-            PlayerInfo::setStatBase(EA_HIT, base);
+            PlayerInfo::setStatBase(Attributes::HIT, base);
             break;
         case 0x0032:
             PlayerInfo::setStatBase(Attributes::FLEE, base);

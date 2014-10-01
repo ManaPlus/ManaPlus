@@ -327,7 +327,7 @@ void GeneralHandler::gameStarted() const
     statusWindow->addAttribute(MDEF, _("M.Defense"));
     // TRANSLATORS: player stat
     // xgettext:no-c-format
-    statusWindow->addAttribute(HIT, _("% Accuracy"));
+    statusWindow->addAttribute(Attributes::HIT, _("% Accuracy"));
     // TRANSLATORS: player stat
     // xgettext:no-c-format
     statusWindow->addAttribute(Attributes::FLEE, _("% Evade"));

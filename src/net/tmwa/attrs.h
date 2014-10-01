@@ -39,8 +39,7 @@ namespace TmwAthena
         ATK,
         DEF,
         MATK,
-        MDEF,
-        HIT
+        MDEF
     };
 }  // namespace TmwAthena
 

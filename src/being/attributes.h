@@ -49,7 +49,8 @@ namespace Attributes
         KARMA,
         MANNER,
         CRIT,
-        FLEE
+        FLEE,
+        HIT
     };
 }  // namespace Attributes
 
