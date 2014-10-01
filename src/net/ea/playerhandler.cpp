@@ -494,10 +494,10 @@ void PlayerHandler::setStat(const int type,
             PlayerInfo::setStatMod(Attributes::MATK, base);
             break;
         case 0x002d:
-            PlayerInfo::setStatBase(EA_DEF, base);
+            PlayerInfo::setStatBase(Attributes::DEF, base);
             break;
         case 0x002e:
-            PlayerInfo::setStatMod(EA_DEF, base);
+            PlayerInfo::setStatMod(Attributes::DEF, base);
             break;
         case 0x002f:
             PlayerInfo::setStatBase(Attributes::MDEF, base);

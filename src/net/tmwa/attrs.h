@@ -36,8 +36,7 @@ namespace TmwAthena
         DEX,
         LUK,
 
-        ATK,
-        DEF
+        ATK
     };
 }  // namespace TmwAthena
 

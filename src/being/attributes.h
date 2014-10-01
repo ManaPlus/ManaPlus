@@ -52,7 +52,8 @@ namespace Attributes
         FLEE,
         HIT,
         MDEF,
-        MATK
+        MATK,
+        DEF
     };
 }  // namespace Attributes
 

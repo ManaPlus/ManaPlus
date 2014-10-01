@@ -320,7 +320,7 @@ void GeneralHandler::gameStarted() const
     // TRANSLATORS: player stat
     statusWindow->addAttribute(ATK, _("Attack"));
     // TRANSLATORS: player stat
-    statusWindow->addAttribute(DEF, _("Defense"));
+    statusWindow->addAttribute(Attributes::DEF, _("Defense"));
     // TRANSLATORS: player stat
     statusWindow->addAttribute(Attributes::MATK, _("M.Attack"));
     // TRANSLATORS: player stat

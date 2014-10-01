@@ -34,8 +34,7 @@ enum
     EA_DEX,
     EA_LUK,
 
-    EA_ATK,
-    EA_DEF
+    EA_ATK
 };
 
 enum

@@ -36,8 +36,7 @@ namespace EAthena
         DEX,
         LUK,
 
-        ATK,
-        DEF
+        ATK
     };
 }  // namespace EAthena
 

@@ -410,8 +410,8 @@ void PlayerHandler::processPlayerStatUpdate5(Net::MessageIn &msg)
     val = msg.readInt16("matk+");
     PlayerInfo::setStatMod(Attributes::MATK, val);
 
-    PlayerInfo::setStatBase(DEF, msg.readInt16("def"), false);
-    PlayerInfo::setStatMod(DEF, msg.readInt16("def+"));
+    PlayerInfo::setStatBase(Attributes::DEF, msg.readInt16("def"), false);
+    PlayerInfo::setStatMod(Attributes::DEF, msg.readInt16("def+"));
 
     PlayerInfo::setStatBase(Attributes::MDEF, msg.readInt16("mdef"), false);
     PlayerInfo::setStatMod(Attributes::MDEF, msg.readInt16("mdef+"));
