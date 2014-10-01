@@ -36,8 +36,7 @@ enum
 
     EA_ATK,
     EA_DEF,
-    EA_MATK,
-    EA_MDEF
+    EA_MATK
 };
 
 enum

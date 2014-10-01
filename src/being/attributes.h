@@ -50,7 +50,8 @@ namespace Attributes
         MANNER,
         CRIT,
         FLEE,
-        HIT
+        HIT,
+        MDEF
     };
 }  // namespace Attributes
 

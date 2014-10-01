@@ -38,8 +38,7 @@ namespace EAthena
 
         ATK,
         DEF,
-        MATK,
-        MDEF
+        MATK
     };
 }  // namespace EAthena
 

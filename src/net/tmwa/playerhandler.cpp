@@ -413,8 +413,8 @@ void PlayerHandler::processPlayerStatUpdate5(Net::MessageIn &msg)
     PlayerInfo::setStatBase(DEF, msg.readInt16("def"), false);
     PlayerInfo::setStatMod(DEF, msg.readInt16("def+"));
 
-    PlayerInfo::setStatBase(MDEF, msg.readInt16("mdef"), false);
-    PlayerInfo::setStatMod(MDEF, msg.readInt16("mdef+"));
+    PlayerInfo::setStatBase(Attributes::MDEF, msg.readInt16("mdef"), false);
+    PlayerInfo::setStatMod(Attributes::MDEF, msg.readInt16("mdef+"));
 
     PlayerInfo::setStatBase(Attributes::HIT, msg.readInt16("hit"));
 

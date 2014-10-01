@@ -500,10 +500,10 @@ void PlayerHandler::setStat(const int type,
             PlayerInfo::setStatMod(EA_DEF, base);
             break;
         case 0x002f:
-            PlayerInfo::setStatBase(EA_MDEF, base);
+            PlayerInfo::setStatBase(Attributes::MDEF, base);
             break;
         case 0x0030:
-            PlayerInfo::setStatMod(EA_MDEF, base);
+            PlayerInfo::setStatMod(Attributes::MDEF, base);
             break;
         case 0x0031:
             PlayerInfo::setStatBase(Attributes::HIT, base);

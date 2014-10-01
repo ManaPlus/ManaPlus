@@ -324,7 +324,7 @@ void GeneralHandler::gameStarted() const
     // TRANSLATORS: player stat
     statusWindow->addAttribute(MATK, _("M.Attack"));
     // TRANSLATORS: player stat
-    statusWindow->addAttribute(MDEF, _("M.Defense"));
+    statusWindow->addAttribute(Attributes::MDEF, _("M.Defense"));
     // TRANSLATORS: player stat
     // xgettext:no-c-format
     statusWindow->addAttribute(Attributes::HIT, _("% Accuracy"));
