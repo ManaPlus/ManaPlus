@@ -379,7 +379,7 @@ void PlayerHandler::setStat(const int type,
             setStatComplex(EA_INT);
             break;
         case 0x0011:
-            setStatComplex(EA_DEX);
+            setStatComplex(Attributes::DEX);
             break;
         case 0x0012:
             setStatComplex(Attributes::LUK);
@@ -467,7 +467,7 @@ void PlayerHandler::setStat(const int type,
             statusWindow->setPointsNeeded(EA_INT, base);
             break;
         case 0x0024:
-            statusWindow->setPointsNeeded(EA_DEX, base);
+            statusWindow->setPointsNeeded(Attributes::DEX, base);
             break;
         case 0x0025:
             statusWindow->setPointsNeeded(Attributes::LUK, base);

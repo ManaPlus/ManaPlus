@@ -313,7 +313,7 @@ void GeneralHandler::gameStarted() const
     // TRANSLATORS: player stat
     statusWindow->addAttribute(INT, _("Intelligence"), "int", true);
     // TRANSLATORS: player stat
-    statusWindow->addAttribute(DEX, _("Dexterity"), "dex", true);
+    statusWindow->addAttribute(Attributes::DEX, _("Dexterity"), "dex", true);
     // TRANSLATORS: player stat
     statusWindow->addAttribute(Attributes::LUK, _("Luck"), "luk", true);
     // TRANSLATORS: player stat

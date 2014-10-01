@@ -32,8 +32,7 @@ namespace TmwAthena
         STR = 0xd,
         AGI,
         VIT,
-        INT,
-        DEX
+        INT
     };
 }  // namespace TmwAthena
 

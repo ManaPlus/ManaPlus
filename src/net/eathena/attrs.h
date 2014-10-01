@@ -32,8 +32,7 @@ namespace EAthena
         STR = 0xd,
         AGI,
         VIT,
-        INT,
-        DEX
+        INT
     };
 }  // namespace EAthena
 
