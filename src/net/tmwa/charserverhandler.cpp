@@ -146,7 +146,7 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     PlayerInfoBackend &data = character->data;
     data.mAttributes[Attributes::EXP] = msg.readInt32("exp");
     data.mAttributes[Attributes::MONEY] = msg.readInt32("money");
-    Stat &jobStat = data.mStats[static_cast<size_t>(JOB)];
+    Stat &jobStat = data.mStats[static_cast<size_t>(Attributes::JOB)];
     jobStat.exp = msg.readInt32("job");
 
     const int temp = msg.readInt32("job level");

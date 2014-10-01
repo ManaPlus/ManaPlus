@@ -25,10 +25,6 @@
 
 namespace EAthena
 {
-    enum
-    {
-        JOB = 0xa
-    };
 }  // namespace EAthena
 
 #endif  // NET_EATHENA_ATTRS_H

@@ -25,11 +25,6 @@
 
 enum
 {
-    EA_JOB = 0xa
-};
-
-enum
-{
     EA_SPRITE_BASE = 0,
     EA_SPRITE_SHOE,
     EA_SPRITE_BOTTOMCLOTHES,

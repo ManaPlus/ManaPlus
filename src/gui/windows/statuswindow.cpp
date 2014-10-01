@@ -128,8 +128,8 @@ StatusWindow::StatusWindow() :
         getThemeColor(Theme::XP_BAR_OUTLINE));
 
     const bool magicBar = gameHandler->canUseMagicBar();
-    const int job = playerHandler->getJobLocation()
-              && serverConfig.getValueBool("showJob", true);
+    const int job = Attributes::JOB
+        && serverConfig.getValueBool("showJob", true);
 
     if (magicBar)
     {
@@ -264,7 +264,7 @@ void StatusWindow::statChanged(const int id,
     if (blocked)
         return;
 
-    if (id == playerHandler->getJobLocation())
+    if (id == Attributes::JOB)
     {
         if (mJobLvlLabel)
         {
@@ -522,7 +522,7 @@ void StatusWindow::updateJobBar(ProgressBar *const bar, const bool percent)
         return;
 
     const std::pair<int, int> exp =  PlayerInfo::getStatExperience(
-        playerHandler->getJobLocation());
+        Attributes::JOB);
     updateProgressBar(bar, exp.first, exp.second, percent);
 }
 

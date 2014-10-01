@@ -53,8 +53,6 @@ class PlayerHandler notfinal : public Net::PlayerHandler
 
         Vector getDefaultWalkSpeed() const override final A_WARN_UNUSED;
 
-        int getJobLocation() const override final A_WARN_UNUSED;
-
     protected:
         virtual void setStat(const int type,
                              const int base,

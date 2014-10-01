@@ -1037,7 +1037,7 @@ void LocalPlayer::statChanged(const int id,
                               const int oldVal1,
                               const int oldVal2)
 {
-    if (!mShowJobExp || id != playerHandler->getJobLocation())
+    if (!mShowJobExp || id != Attributes::JOB)
         return;
 
     const std::pair<int, int> exp = PlayerInfo::getStatExperience(id);

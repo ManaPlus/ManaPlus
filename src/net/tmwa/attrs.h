@@ -25,10 +25,6 @@
 
 namespace TmwAthena
 {
-    enum
-    {
-        JOB = 0xa
-    };
 }  // namespace TmwAthena
 
 #endif  // NET_TMWA_ATTRS_H

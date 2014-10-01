@@ -279,11 +279,6 @@ bool PlayerHandler::canUseMagic() const
     return PlayerInfo::getStatEffective(Attributes::MATK) > 0;
 }
 
-int PlayerHandler::getJobLocation() const
-{
-    return EA_JOB;
-}
-
 #define setStatComplex(stat) \
     PlayerInfo::setStatBase(stat, base, notify); \
     if (mod != -1) \
@@ -306,8 +301,8 @@ void PlayerHandler::setStat(const int type,
             PlayerInfo::setAttribute(Attributes::EXP, base);
             break;
         case 0x0002:
-            PlayerInfo::setStatExperience(EA_JOB, base,
-                PlayerInfo::getStatExperience(EA_JOB).second);
+            PlayerInfo::setStatExperience(Attributes::JOB, base,
+                PlayerInfo::getStatExperience(Attributes::JOB).second);
             break;
         case 0x0003:
             PlayerInfo::setStatBase(Attributes::KARMA, base);
@@ -406,8 +401,8 @@ void PlayerHandler::setStat(const int type,
             PlayerInfo::setAttribute(Attributes::EXP_NEEDED, base);
             break;
         case 0x0017:
-            PlayerInfo::setStatExperience(EA_JOB,
-                PlayerInfo::getStatExperience(EA_JOB).first, base);
+            PlayerInfo::setStatExperience(Attributes::JOB,
+                PlayerInfo::getStatExperience(Attributes::JOB).first, base);
             break;
         case 0x0018:
             if (!weightNotice && config.getBoolValue("weightMsg"))
@@ -517,7 +512,7 @@ void PlayerHandler::setStat(const int type,
             PlayerInfo::updateAttrs();
             break;
         case 0x0037:
-            PlayerInfo::setStatBase(EA_JOB, base);
+            PlayerInfo::setStatBase(Attributes::JOB, base);
             break;
 
         default:

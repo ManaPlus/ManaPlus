@@ -121,7 +121,7 @@ MiniStatusWindow::MiniStatusWindow() :
     if (gameHandler->canUseMagicBar() && statusWindow)
         statusWindow->updateMPBar(mMpBar);
 
-    const int job = playerHandler->getJobLocation()
+    const int job = Attributes::JOB
         && serverConfig.getValueBool("showJob", true);
 
     StatusWindow::updateXPBar(mXpBar);
@@ -382,12 +382,11 @@ void MiniStatusWindow::mouseMoved(MouseEvent &event)
     else if (event.getSource() == mJobBar)
     {
         const std::pair<int, int> exp =  PlayerInfo::getStatExperience(
-            playerHandler->getJobLocation());
+            Attributes::JOB);
 
         // TRANSLATORS: job bar label
         const std::string level = strprintf(_("Job level: %d"),
-            PlayerInfo::getStatBase(
-            playerHandler->getJobLocation()));
+            PlayerInfo::getStatBase(Attributes::JOB));
 
         if (exp.first > exp.second)
         {
