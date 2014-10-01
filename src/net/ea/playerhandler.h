@@ -55,8 +55,6 @@ class PlayerHandler notfinal : public Net::PlayerHandler
 
         int getJobLocation() const override final A_WARN_UNUSED;
 
-        int getAttackLocation() const override final A_WARN_UNUSED;
-
     protected:
         virtual void setStat(const int type,
                              const int base,

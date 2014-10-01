@@ -32,9 +32,7 @@ enum
     EA_VIT,
     EA_INT,
     EA_DEX,
-    EA_LUK,
-
-    EA_ATK
+    EA_LUK
 };
 
 enum

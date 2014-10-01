@@ -34,9 +34,7 @@ namespace EAthena
         VIT,
         INT,
         DEX,
-        LUK,
-
-        ATK
+        LUK
     };
 }  // namespace EAthena
 

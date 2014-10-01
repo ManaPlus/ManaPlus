@@ -370,17 +370,13 @@ void setTrading(const bool trading)
 
 void updateAttrs()
 {
-    const Net::PlayerHandler *const handler = playerHandler;
-    if (!handler)
-        return;
-    const int attr = handler->getAttackLocation();
     const int attackDelay = getStatBase(Attributes::ATTACK_DELAY);
-    if (attr != -1 && attackDelay)
+    if (attackDelay)
     {
-        setStatBase(Attributes::ATTACK_SPEED, getStatBase(attr) * 1000
-            / attackDelay, false);
-        setStatMod(Attributes::ATTACK_SPEED, getStatMod(attr) * 1000
-            / attackDelay, true);
+        setStatBase(Attributes::ATTACK_SPEED,
+            getStatBase(Attributes::ATK) * 1000 / attackDelay, false);
+        setStatMod(Attributes::ATTACK_SPEED,
+            getStatMod(Attributes::ATK) * 1000 / attackDelay, true);
     }
     else
     {

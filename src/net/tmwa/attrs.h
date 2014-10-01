@@ -34,9 +34,7 @@ namespace TmwAthena
         VIT,
         INT,
         DEX,
-        LUK,
-
-        ATK
+        LUK
     };
 }  // namespace TmwAthena
 

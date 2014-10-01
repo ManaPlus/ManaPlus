@@ -53,7 +53,8 @@ namespace Attributes
         HIT,
         MDEF,
         MATK,
-        DEF
+        DEF,
+        ATK
     };
 }  // namespace Attributes
 

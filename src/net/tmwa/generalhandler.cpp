@@ -318,7 +318,7 @@ void GeneralHandler::gameStarted() const
     statusWindow->addAttribute(LUK, _("Luck"), "luk", true);
 
     // TRANSLATORS: player stat
-    statusWindow->addAttribute(ATK, _("Attack"));
+    statusWindow->addAttribute(Attributes::ATK, _("Attack"));
     // TRANSLATORS: player stat
     statusWindow->addAttribute(Attributes::DEF, _("Defense"));
     // TRANSLATORS: player stat

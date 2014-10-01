@@ -222,8 +222,6 @@ void PlayerHandler::processPlayerStatUpdate3(Net::MessageIn &msg) const
     const int bonus = msg.readInt32("bonus");
 
     setStat(type, base, bonus, false);
-    if (type == EA_ATK || type == Attributes::ATTACK_DELAY)
-        PlayerInfo::updateAttrs();
     BLOCK_END("PlayerHandler::processPlayerStatUpdate3")
 }
 
@@ -284,11 +282,6 @@ bool PlayerHandler::canUseMagic() const
 int PlayerHandler::getJobLocation() const
 {
     return EA_JOB;
-}
-
-int PlayerHandler::getAttackLocation() const
-{
-    return EA_ATK;
 }
 
 #define setStatComplex(stat) \
@@ -480,11 +473,11 @@ void PlayerHandler::setStat(const int type,
             statusWindow->setPointsNeeded(EA_LUK, base);
             break;
         case 0x0029:
-            PlayerInfo::setStatBase(EA_ATK, base);
+            PlayerInfo::setStatBase(Attributes::ATK, base);
             PlayerInfo::updateAttrs();
             break;
         case 0x002a:
-            PlayerInfo::setStatMod(EA_ATK, base);
+            PlayerInfo::setStatMod(Attributes::ATK, base);
             PlayerInfo::updateAttrs();
             break;
         case 0x002b:

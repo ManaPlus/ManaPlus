@@ -332,8 +332,8 @@ void PlayerHandler::processPlayerStatUpdate5(Net::MessageIn &msg)
     else
         msg.readUInt8("luk cost");
 
-    PlayerInfo::setStatBase(ATK, msg.readInt16("left atk"), false);
-    PlayerInfo::setStatMod(ATK, msg.readInt16("right atk"));
+    PlayerInfo::setStatBase(Attributes::ATK, msg.readInt16("left atk"), false);
+    PlayerInfo::setStatMod(Attributes::ATK, msg.readInt16("right atk"));
     PlayerInfo::updateAttrs();
 
     val = msg.readInt16("right matk");

@@ -353,7 +353,7 @@ void GeneralHandler::gameStarted() const
     statusWindow->addAttribute(DEX, _("Dexterity"), "dex", true);
     statusWindow->addAttribute(LUK, _("Luck"), "luk", true);
 
-    statusWindow->addAttribute(ATK, _("Attack"));
+    statusWindow->addAttribute(Attributes::ATK, _("Attack"));
     statusWindow->addAttribute(Attributes::DEF, _("Defense"));
     statusWindow->addAttribute(Attributes::MATK, _("M.Attack"));
     statusWindow->addAttribute(Attributes::MDEF, _("M.Defense"));
