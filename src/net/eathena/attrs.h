@@ -37,8 +37,7 @@ namespace EAthena
         LUK,
 
         ATK,
-        DEF,
-        MATK
+        DEF
     };
 }  // namespace EAthena
 

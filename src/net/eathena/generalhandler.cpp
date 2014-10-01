@@ -355,7 +355,7 @@ void GeneralHandler::gameStarted() const
 
     statusWindow->addAttribute(ATK, _("Attack"));
     statusWindow->addAttribute(DEF, _("Defense"));
-    statusWindow->addAttribute(MATK, _("M.Attack"));
+    statusWindow->addAttribute(Attributes::MATK, _("M.Attack"));
     statusWindow->addAttribute(Attributes::MDEF, _("M.Defense"));
     // xgettext:no-c-format
     statusWindow->addAttribute(Attributes::HIT, _("% Accuracy"));

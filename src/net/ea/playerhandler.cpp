@@ -278,7 +278,7 @@ void PlayerHandler::processPlayerArrowMessage(Net::MessageIn &msg)
 
 bool PlayerHandler::canUseMagic() const
 {
-    return PlayerInfo::getStatEffective(EA_MATK) > 0;
+    return PlayerInfo::getStatEffective(Attributes::MATK) > 0;
 }
 
 int PlayerHandler::getJobLocation() const
@@ -488,10 +488,10 @@ void PlayerHandler::setStat(const int type,
             PlayerInfo::updateAttrs();
             break;
         case 0x002b:
-            PlayerInfo::setStatBase(EA_MATK, base);
+            PlayerInfo::setStatBase(Attributes::MATK, base);
             break;
         case 0x002c:
-            PlayerInfo::setStatMod(EA_MATK, base);
+            PlayerInfo::setStatMod(Attributes::MATK, base);
             break;
         case 0x002d:
             PlayerInfo::setStatBase(EA_DEF, base);

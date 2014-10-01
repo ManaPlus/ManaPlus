@@ -51,7 +51,8 @@ namespace Attributes
         CRIT,
         FLEE,
         HIT,
-        MDEF
+        MDEF,
+        MATK
     };
 }  // namespace Attributes
 

@@ -337,10 +337,10 @@ void PlayerHandler::processPlayerStatUpdate5(Net::MessageIn &msg)
     PlayerInfo::updateAttrs();
 
     val = msg.readInt16("right matk");
-    PlayerInfo::setStatBase(MATK, val, false);
+    PlayerInfo::setStatBase(Attributes::MATK, val, false);
 
     val = msg.readInt16("left matk");
-    PlayerInfo::setStatMod(MATK, val);
+    PlayerInfo::setStatMod(Attributes::MATK, val);
 
     PlayerInfo::setStatBase(DEF, msg.readInt16("left def"), false);
     PlayerInfo::setStatMod(DEF, msg.readInt16("right def"));
