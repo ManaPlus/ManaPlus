@@ -42,9 +42,6 @@ ShopItem::ShopItem(const int inventoryIndex, const int id,
     mShowQuantity(true)
 {
     updateDisplayName(quantity);
-    if (quantity > 1)
-        mDisplayName.append("[").append(toString(quantity)).append("]");
-
     setInvIndex(inventoryIndex);
     addDuplicate(inventoryIndex, quantity);
 }
