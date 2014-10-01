@@ -119,6 +119,8 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
         void processBeingFakeName(Net::MessageIn &msg) const;
 
         void processBeingStatUpdate1(Net::MessageIn &msg) const;
+
+        void processPlaterStatusChange2(Net::MessageIn &msg) const;
 };
 
 }  // namespace EAthena
