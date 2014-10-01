@@ -370,7 +370,7 @@ void PlayerHandler::setStat(const int type,
             setStatComplex(EA_STR);
             break;
         case 0x000e:
-            setStatComplex(EA_AGI);
+            setStatComplex(Attributes::AGI);
             break;
         case 0x000f:
             setStatComplex(Attributes::VIT);
@@ -458,7 +458,7 @@ void PlayerHandler::setStat(const int type,
             statusWindow->setPointsNeeded(EA_STR, base);
             break;
         case 0x0021:
-            statusWindow->setPointsNeeded(EA_AGI, base);
+            statusWindow->setPointsNeeded(Attributes::AGI, base);
             break;
         case 0x0022:
             statusWindow->setPointsNeeded(Attributes::VIT, base);

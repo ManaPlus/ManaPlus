@@ -29,8 +29,7 @@ namespace EAthena
     {
         JOB = 0xa,
 
-        STR = 0xd,
-        AGI
+        STR = 0xd
     };
 }  // namespace EAthena
 

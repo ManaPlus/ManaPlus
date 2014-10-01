@@ -307,7 +307,7 @@ void GeneralHandler::gameStarted() const
     // TRANSLATORS: player stat
     statusWindow->addAttribute(STR, _("Strength"), "str", true);
     // TRANSLATORS: player stat
-    statusWindow->addAttribute(AGI, _("Agility"), "agi", true);
+    statusWindow->addAttribute(Attributes::AGI, _("Agility"), "agi", true);
     // TRANSLATORS: player stat
     statusWindow->addAttribute(Attributes::VIT, _("Vitality"), "vit", true);
     // TRANSLATORS: player stat
