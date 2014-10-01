@@ -28,8 +28,7 @@ enum
     EA_JOB = 0xa,
 
     EA_STR = 0xd,
-    EA_AGI,
-    EA_VIT
+    EA_AGI
 };
 
 enum

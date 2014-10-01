@@ -373,11 +373,16 @@ void PlayerHandler::processPlayerStatUpdate5(Net::MessageIn &msg)
         msg.readUInt8("agi cost");
 
     val = msg.readUInt8("vit");
-    PlayerInfo::setStatBase(VIT, val);
+    PlayerInfo::setStatBase(Attributes::VIT, val);
     if (statusWindow)
-        statusWindow->setPointsNeeded(VIT, msg.readUInt8("vit cost"));
+    {
+        statusWindow->setPointsNeeded(Attributes::VIT,
+            msg.readUInt8("vit cost"));
+    }
     else
+    {
         msg.readUInt8("vit cost");
+    }
 
     val = msg.readUInt8("int");
     PlayerInfo::setStatBase(Attributes::INT, val);

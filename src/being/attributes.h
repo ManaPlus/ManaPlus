@@ -42,6 +42,7 @@ namespace Attributes
         SKILL_POINTS,
         CHAR_POINTS,
         CORR_POINTS,
+        VIT = 15,
         INT = 16,
         DEX = 17,
         LUK = 18,

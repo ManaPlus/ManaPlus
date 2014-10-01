@@ -30,8 +30,7 @@ namespace TmwAthena
         JOB = 0xa,
 
         STR = 0xd,
-        AGI,
-        VIT
+        AGI
     };
 }  // namespace TmwAthena
 

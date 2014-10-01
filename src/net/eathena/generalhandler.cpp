@@ -348,7 +348,7 @@ void GeneralHandler::gameStarted() const
 
     statusWindow->addAttribute(STR, _("Strength"), "str", true);
     statusWindow->addAttribute(AGI, _("Agility"), "agi", true);
-    statusWindow->addAttribute(VIT, _("Vitality"), "vit", true);
+    statusWindow->addAttribute(Attributes::VIT, _("Vitality"), "vit", true);
     statusWindow->addAttribute(Attributes::INT,
         _("Intelligence"), "int", true);
     statusWindow->addAttribute(Attributes::DEX, _("Dexterity"), "dex", true);
