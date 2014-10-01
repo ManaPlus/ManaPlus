@@ -27,9 +27,7 @@ namespace TmwAthena
 {
     enum
     {
-        JOB = 0xa,
-
-        STR = 0xd
+        JOB = 0xa
     };
 }  // namespace TmwAthena
 

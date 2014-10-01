@@ -42,6 +42,7 @@ namespace Attributes
         SKILL_POINTS,
         CHAR_POINTS,
         CORR_POINTS,
+        STR = 13,
         AGI = 14,
         VIT = 15,
         INT = 16,

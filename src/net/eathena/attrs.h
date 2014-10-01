@@ -27,9 +27,7 @@ namespace EAthena
 {
     enum
     {
-        JOB = 0xa,
-
-        STR = 0xd
+        JOB = 0xa
     };
 }  // namespace EAthena
 

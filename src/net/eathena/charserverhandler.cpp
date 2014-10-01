@@ -198,7 +198,10 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     character->dummy = tempPlayer;
 
     for (int i = 0; i < 6; i++)
-        character->data.mStats[i + STR].base = msg.readUInt8("stat");
+    {
+        character->data.mStats[i + Attributes::STR].base
+            = msg.readUInt8("stat");
+    }
 
     tempPlayer->setSprite(SPRITE_SHOE, shoes);
     tempPlayer->setSprite(SPRITE_GLOVES, gloves);

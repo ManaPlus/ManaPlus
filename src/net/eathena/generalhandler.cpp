@@ -346,7 +346,7 @@ void GeneralHandler::gameStarted() const
     // protection against double addition attributes.
     statusWindow->clearAttributes();
 
-    statusWindow->addAttribute(STR, _("Strength"), "str", true);
+    statusWindow->addAttribute(Attributes::STR, _("Strength"), "str", true);
     statusWindow->addAttribute(Attributes::AGI, _("Agility"), "agi", true);
     statusWindow->addAttribute(Attributes::VIT, _("Vitality"), "vit", true);
     statusWindow->addAttribute(Attributes::INT,

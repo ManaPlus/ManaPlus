@@ -25,9 +25,7 @@
 
 enum
 {
-    EA_JOB = 0xa,
-
-    EA_STR = 0xd
+    EA_JOB = 0xa
 };
 
 enum

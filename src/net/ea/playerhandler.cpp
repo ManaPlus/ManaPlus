@@ -367,7 +367,7 @@ void PlayerHandler::setStat(const int type,
                 skillDialog->update();
             break;
         case 0x000d:
-            setStatComplex(EA_STR);
+            setStatComplex(Attributes::STR);
             break;
         case 0x000e:
             setStatComplex(Attributes::AGI);
@@ -455,7 +455,7 @@ void PlayerHandler::setStat(const int type,
             PlayerInfo::setAttribute(Attributes::MAX_WEIGHT, base);
             break;
         case 0x0020:
-            statusWindow->setPointsNeeded(EA_STR, base);
+            statusWindow->setPointsNeeded(Attributes::STR, base);
             break;
         case 0x0021:
             statusWindow->setPointsNeeded(Attributes::AGI, base);
