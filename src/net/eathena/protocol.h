@@ -78,6 +78,7 @@
 #define SMSG_PLAYER_ARROW_EQUIP      0x013c
 #define SMSG_PLAYER_ARROW_MESSAGE    0x013b
 #define SMSG_PLAYER_SKILLS           0x010f
+#define SMSG_PLAYER_ADD_SKILL        0x0111
 #define SMSG_PLAYER_SKILL_UP         0x010e
 #define SMSG_PLAYER_HEAL             0x013d
 #define SMSG_PLAYER_SKILL_COOLDOWN   0x043d

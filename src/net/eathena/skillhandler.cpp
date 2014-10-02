@@ -58,6 +58,7 @@ SkillHandler::SkillHandler() :
         SMSG_PLAYER_SKILL_COOLDOWN,
         SMSG_PLAYER_SKILL_COOLDOWN_LIST,
         SMSG_SKILL_SNAP,
+        SMSG_PLAYER_ADD_SKILL,
         0
     };
     handledMessages = _messages;
@@ -90,6 +91,10 @@ void SkillHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_SKILL_SNAP:
             processSkillSnap(msg);
+            break;
+
+        case SMSG_PLAYER_ADD_SKILL:
+            processSkillAdd(msg);
             break;
 
         default:
@@ -168,6 +173,34 @@ void SkillHandler::processPlayerSkills(Net::MessageIn &msg)
     }
     if (skillDialog)
     {
+        skillDialog->update();
+        if (updateSkill)
+            skillDialog->playUpdateEffect(updateSkill);
+    }
+}
+
+void SkillHandler::processSkillAdd(Net::MessageIn &msg)
+{
+    int updateSkill = 0;
+    const int skillId = msg.readInt16("skill id");
+    const SkillType::SkillType inf = static_cast<SkillType::SkillType>(
+        msg.readInt32("inf"));
+    const int level = msg.readInt16("skill level");
+    const int sp = msg.readInt16("sp");
+    const int range = msg.readInt16("range");
+    const std::string name = msg.readString(24, "skill name");
+    const int up = msg.readUInt8("up flag");
+    const int oldLevel = PlayerInfo::getSkillLevel(skillId);
+    if (oldLevel && oldLevel != level)
+        updateSkill = skillId;
+    PlayerInfo::setSkillLevel(skillId, level);
+    if (skillDialog)
+    {
+        if (!skillDialog->updateSkill(skillId, range, up, inf, sp))
+        {
+            skillDialog->addSkill(SkillOwner::Player,
+                skillId, name, level, range, up, inf, sp);
+        }
         skillDialog->update();
         if (updateSkill)
             skillDialog->playUpdateEffect(updateSkill);
