@@ -91,12 +91,20 @@ class Being notfinal : public ActorSprite,
 
         enum AttackType
         {
-            HIT = 0x00,
-            CRITICAL = 0x0a,
-            MULTI = 0x08,
-            REFLECT = 0x04,
-            FLEE = 0x0b,
-            SKILL = 0xff,
+            HIT           = 0,
+            PICKUP        = 1,
+            SIT           = 2,
+            STAND         = 3,
+            REFLECT       = 4,
+            SPLASH        = 5,
+            SKILL         = 6,
+            REPEATE       = 7,
+            MULTI         = 8,
+            MULTI_REFLECT = 9,
+            CRITICAL      = 10,
+            FLEE          = 11,
+            TOUCH_SKILL   = 12,
+//?         SKILL = 0xff,
             MISS = 0xffff   // pseudo value for miss attacks
         };
 

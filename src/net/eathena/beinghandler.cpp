@@ -1559,8 +1559,12 @@ void BeingHandler::processBeingAction2(Net::MessageIn &msg) const
         case Being::HIT:  // Damage
         case Being::CRITICAL:  // Critical Damage
         case Being::MULTI:  // Critical Damage
+        case Being::MULTI_REFLECT:
         case Being::REFLECT:  // Reflected Damage
         case Being::FLEE:  // Lucky Dodge
+        case Being::SPLASH:
+        case Being::SKILL:
+        case Being::REPEATE:
             if (srcBeing)
             {
                 if (srcSpeed && srcBeing->getType() == ActorType::Player)
@@ -1577,13 +1581,13 @@ void BeingHandler::processBeingAction2(Net::MessageIn &msg) const
             }
             break;
 
-        case 0x01:  // dead or pickup?
+        case Being::PICKUP:
             break;
-            // tmw server can send here garbage?
-//            if (srcBeing)
-//                srcBeing->setAction(BeingAction::DEAD, 0);
 
-        case 0x02:  // Sit
+        case Being::TOUCH_SKILL:
+            break;
+
+        case Being::SIT:
             if (srcBeing)
             {
                 srcBeing->setAction(BeingAction::SIT, 0);
@@ -1596,7 +1600,7 @@ void BeingHandler::processBeingAction2(Net::MessageIn &msg) const
             }
             break;
 
-        case 0x03:  // Stand up
+        case Being::STAND:
             if (srcBeing)
             {
                 srcBeing->setAction(BeingAction::STAND, 0);
