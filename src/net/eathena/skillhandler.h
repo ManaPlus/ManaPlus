@@ -64,6 +64,8 @@ class SkillHandler final : public MessageHandler, public Ea::SkillHandler
 
         void processSkillAdd(Net::MessageIn &msg);
 
+        void processSkillUpdate(Net::MessageIn &msg);
+
         void processSkillDelete(Net::MessageIn &msg);
 };
 

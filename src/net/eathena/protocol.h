@@ -80,6 +80,7 @@
 #define SMSG_PLAYER_SKILLS           0x010f
 #define SMSG_PLAYER_ADD_SKILL        0x0111
 #define SMSG_PLAYER_DELETE_SKILL     0x0441
+#define SMSG_PLAYER_UPDATE_SKILL     0x07e1
 #define SMSG_PLAYER_SKILL_UP         0x010e
 #define SMSG_PLAYER_HEAL             0x013d
 #define SMSG_PLAYER_SKILL_COOLDOWN   0x043d
