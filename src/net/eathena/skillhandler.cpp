@@ -59,6 +59,7 @@ SkillHandler::SkillHandler() :
         SMSG_PLAYER_SKILL_COOLDOWN_LIST,
         SMSG_SKILL_SNAP,
         SMSG_PLAYER_ADD_SKILL,
+        SMSG_PLAYER_DELETE_SKILL,
         0
     };
     handledMessages = _messages;
@@ -95,6 +96,10 @@ void SkillHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_PLAYER_ADD_SKILL:
             processSkillAdd(msg);
+            break;
+
+        case SMSG_PLAYER_DELETE_SKILL:
+            processSkillDelete(msg);
             break;
 
         default:
@@ -205,6 +210,12 @@ void SkillHandler::processSkillAdd(Net::MessageIn &msg)
         if (updateSkill)
             skillDialog->playUpdateEffect(updateSkill);
     }
+}
+
+void SkillHandler::processSkillDelete(Net::MessageIn &msg)
+{
+    // ignored, because after this packet server will send all skills.
+    msg.readInt32("skill id");
 }
 
 void SkillHandler::processSkillCoolDown(Net::MessageIn &msg)
