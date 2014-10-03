@@ -254,6 +254,7 @@
 #define SMSG_PVP_MAP_MODE            0x0199
 #define SMSG_PVP_SET                 0x019a
 #define SMSG_MAP_TYPE_PROPERTY2      0x099b
+#define SMSG_MAP_TYPE                0x01d6
 #define SMSG_IGNORE_ALL_RESPONSE     0x00d2
 #define SMSG_ONLINE_LIST             0x0211
 #define SMSG_NPC_COMMAND             0x0212

@@ -104,6 +104,7 @@ BeingHandler::BeingHandler(const bool enableSync) :
         SMSG_PVP_MAP_MODE,
         SMSG_PVP_SET,
         SMSG_MAP_TYPE_PROPERTY2,
+        SMSG_MAP_TYPE,
         SMSG_MONSTER_HP,
         SMSG_PLAYER_HP,
         SMSG_SKILL_AUTO_CAST,
@@ -280,6 +281,10 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_MAP_TYPE_PROPERTY2:
             processMapTypeProperty(msg);
+            break;
+
+        case SMSG_MAP_TYPE:
+            processMapType(msg);
             break;
 
         case SMSG_MONSTER_HP:
@@ -1447,8 +1452,14 @@ void BeingHandler::processBeingSpawn(Net::MessageIn &msg)
 void BeingHandler::processMapTypeProperty(Net::MessageIn &msg) const
 {
     msg.readInt16("type");
-    // need get pvp and other flags from here
+    // +++ need get pvp and other flags from here
     msg.readInt32("flags");
+}
+
+void BeingHandler::processMapType(Net::MessageIn &msg) const
+{
+    // battle ground map or not
+    msg.readInt16("type");
 }
 
 void BeingHandler::processSkillCasting(Net::MessageIn &msg) const
