@@ -110,6 +110,8 @@ namespace NotifyTypes
         MERCENARY_UNKNOWN,
         HOMUNCULUS_FEED_OK,
         HOMUNCULUS_FEED_FAIL,
+        CARD_INSERT_FAILED,
+        CARD_INSERT_SUCCESS,
 
         TYPE_END
     };

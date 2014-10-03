@@ -361,7 +361,15 @@ namespace NotifyManager
         {"homunculus feed failed",
             // TRANSLATORS: notification message
             N_("You cant feed homunculus, because not have %s."),
-            NotifyFlags::STRING}
+            NotifyFlags::STRING},
+        {"card insert failed",
+            // TRANSLATORS: notification message
+            N_("Card insert failed."),
+            NotifyFlags::EMPTY},
+        {"card insert success",
+            // TRANSLATORS: notification message
+            N_("Card inserted."),
+            NotifyFlags::EMPTY}
     };
 }  // namespace NotifyManager
 #endif  // RESOURCES_NOTIFICATIONS_H
