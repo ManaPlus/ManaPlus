@@ -86,6 +86,8 @@ class InventoryHandler final : public MessageHandler,
         void processPlayerStorageEquip(Net::MessageIn &msg);
 
         void processPlayerStorageAdd(Net::MessageIn &msg);
+
+        void processPlayerUseCard(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

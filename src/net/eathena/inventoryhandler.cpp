@@ -69,6 +69,7 @@ InventoryHandler::InventoryHandler() :
         SMSG_PLAYER_UNEQUIP,
         SMSG_PLAYER_ARROW_EQUIP,
         SMSG_PLAYER_ATTACK_RANGE,
+        SMSG_PLAYER_UNE_CARD,
         0
     };
     handledMessages = _messages;
@@ -149,6 +150,10 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_PLAYER_ARROW_EQUIP:
             processPlayerArrowEquip(msg);
+            break;
+
+        case SMSG_PLAYER_UNE_CARD:
+            processPlayerUseCard(msg);
             break;
 
         default:
@@ -587,6 +592,16 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
         }
     }
     BLOCK_END("InventoryHandler::processPlayerStorageAdd")
+}
+
+void InventoryHandler::processPlayerUseCard(Net::MessageIn &msg)
+{
+    // +++ here need show dialog with item selection for card.
+    const int count = (msg.readInt16("len") - 4) / 2;
+    for (int f = 0; f < count; f ++)
+    {
+        msg.readInt16("item id");
+    }
 }
 
 void InventoryHandler::selectEgg(const Item *const item) const
