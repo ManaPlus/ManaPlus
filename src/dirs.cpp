@@ -338,7 +338,14 @@ void Dirs::initUpdatesDir()
 
     // Don't go out of range int he next check
     if (settings.updateHost.length() < 2)
+    {
+        if (settings.updatesDir.empty())
+        {
+            settings.updatesDir = std::string("updates/").append(
+                settings.serverName);
+        }
         return;
+    }
 
     const size_t sz = settings.updateHost.size();
     // Remove any trailing slash at the end of the update host
