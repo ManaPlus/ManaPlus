@@ -260,6 +260,8 @@ class UpdaterWindow final : public Window,
         bool mLoadUpdates;
 
         bool mValidateXml;
+
+        bool mSkipPatches;
 };
 
 extern UpdaterWindow *updaterWindow;

@@ -208,7 +208,8 @@ UpdaterWindow::UpdaterWindow(const std::string &restrict updateHost,
     mDownloadComplete(true),
     mUserCancel(false),
     mLoadUpdates(applyUpdates),
-    mValidateXml(false)
+    mValidateXml(false),
+    mSkipPatches(false)
 {
     setWindowName("UpdaterWindow");
     setResizable(true);
@@ -236,6 +237,14 @@ UpdaterWindow::UpdaterWindow(const std::string &restrict updateHost,
     layout.setRowHeight(0, LayoutType::SET);
 
     addKeyListener(this);
+
+    if (mUpdateHost.empty())
+    {
+        const std::vector<std::string> &mirrors = settings.updateMirrors;
+        if (mirrors.begin() != mirrors.end())
+            mUpdateHost = *mirrors.begin();
+        mSkipPatches = true;
+    }
 
     loadWindowState();
 }
@@ -934,7 +943,7 @@ void UpdaterWindow::logic()
                 }
                 else
                 {
-                    if (!mUpdateHost.empty())
+                    if (!mSkipPatches)
                     {
                         // Download of updates completed
                         mCurrentFile = "latest.txt";
