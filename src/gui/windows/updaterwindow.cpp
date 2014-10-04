@@ -934,13 +934,20 @@ void UpdaterWindow::logic()
                 }
                 else
                 {
-                    // Download of updates completed
-                    mCurrentFile = "latest.txt";
-                    mStoreInMemory = true;
-                    mDownloadStatus = UPDATE_PATCH;
-                    mValidateXml = false;
-                    download();  // download() changes
-                                 // mDownloadComplete to false
+                    if (!mUpdateHost.empty())
+                    {
+                        // Download of updates completed
+                        mCurrentFile = "latest.txt";
+                        mStoreInMemory = true;
+                        mDownloadStatus = UPDATE_PATCH;
+                        mValidateXml = false;
+                        download();  // download() changes
+                                     // mDownloadComplete to false
+                    }
+                    else
+                    {
+                        mDownloadStatus = UPDATE_COMPLETE;
+                    }
                 }
             }
             break;
