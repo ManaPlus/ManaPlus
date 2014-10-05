@@ -65,6 +65,7 @@ CharServerHandler::CharServerHandler() :
     Ea::CharServerHandler(),
     mPinSeed(0),
     mPinAccountId(0),
+    mRenameId(0),
     mNeedCreatePin(false)
 {
     static const uint16_t _messages[] =
@@ -79,6 +80,7 @@ CharServerHandler::CharServerHandler() :
         SMSG_CHAR_MAP_INFO,
         SMSG_CHANGE_MAP_SERVER,
         SMSG_CHAR_PINCODE_STATUS,
+        SMSG_CHAR_CHECK_RENAME,
         SMSG_CHAR_RENAME,
         0
     };
@@ -128,6 +130,10 @@ void CharServerHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_CHAR_PINCODE_STATUS:
             processPincodeStatus(msg);
+            break;
+
+        case SMSG_CHAR_CHECK_RENAME:
+            processCharCheckRename(msg);
             break;
 
         case SMSG_CHAR_RENAME:
@@ -483,14 +489,42 @@ void CharServerHandler::processCharCreate(Net::MessageIn &msg)
 void CharServerHandler::renameCharacter(const int id,
                                         const std::string &newName)
 {
-    createOutPacket(CMSG_CHAR_RENAME);
+    createOutPacket(CMSG_CHAR_CHECK_RENAME);
+    mRenameId = id;
     outMsg.writeInt32(id, "char id");
     outMsg.writeString(newName, 24, "name");
 }
 
-void CharServerHandler::processCharRename(Net::MessageIn &msg)
+void CharServerHandler::processCharCheckRename(Net::MessageIn &msg)
 {
     if (msg.readInt16("flag"))
+    {
+        createOutPacket(CMSG_CHAR_RENAME);
+        outMsg.writeInt32(mRenameId, "char id");
+/*
+        // TRANSLATORS: info message
+        new OkDialog(_("Info"), _("Character renamed."),
+            // TRANSLATORS: ok dialog button
+            _("OK"),
+            DialogType::OK,
+            true, true, nullptr, 260);
+*/
+    }
+    else
+    {
+        // TRANSLATORS: info message
+        new OkDialog(_("Error"), _("Character rename error."),
+            // TRANSLATORS: ok dialog button
+            _("Error"),
+            DialogType::ERROR,
+            true, true, nullptr, 260);
+    }
+}
+
+void CharServerHandler::processCharRename(Net::MessageIn &msg)
+{
+    const int flag = msg.readInt16("flag");
+    if (!flag)
     {
         // TRANSLATORS: info message
         new OkDialog(_("Info"), _("Character renamed."),
@@ -501,11 +535,32 @@ void CharServerHandler::processCharRename(Net::MessageIn &msg)
     }
     else
     {
+        std::string message;
+        switch (flag)
+        {
+            case 1:
+                // TRANSLATORS: char rename error
+                message = _("Rename not allowed.");
+                break;
+            case 2:
+                // TRANSLATORS: char rename error
+                message = _("New name is not set.");
+                break;
+            case 3:
+            default:
+                // TRANSLATORS: char rename error
+                message = _("Character rename error.");
+                break;
+            case 4:
+                // TRANSLATORS: char rename error
+                message = _("Character not found.");
+                break;
+        }
         // TRANSLATORS: info message
-        new OkDialog(_("Info"), _("Character rename error."),
+        new OkDialog(_("Info"), message,
             // TRANSLATORS: ok dialog button
-            _("Error"),
-            DialogType::ERROR,
+            _("OK"),
+            DialogType::OK,
             true, true, nullptr, 260);
     }
 }
