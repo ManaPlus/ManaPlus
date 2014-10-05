@@ -132,4 +132,9 @@ bool ServerFeatures::haveEightDirections() const
     return true;
 }
 
+bool ServerFeatures::haveCharRename() const
+{
+    return true;
+}
+
 }  // namespace EAthena

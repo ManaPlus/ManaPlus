@@ -134,4 +134,9 @@ bool ServerFeatures::haveEightDirections() const
     return false;
 }
 
+bool ServerFeatures::haveCharRename() const
+{
+    return false;
+}
+
 }  // namespace TmwAthena

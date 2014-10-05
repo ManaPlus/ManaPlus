@@ -70,6 +70,8 @@ class ServerFeatures notfinal
         virtual bool haveEmailOnRegister() const = 0;
 
         virtual bool haveEightDirections() const = 0;
+
+        virtual bool haveCharRename() const = 0;
 };
 
 }  // namespace Net

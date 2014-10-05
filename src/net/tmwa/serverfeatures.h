@@ -73,6 +73,8 @@ class ServerFeatures final : public Net::ServerFeatures
         bool haveEmailOnRegister() const override final;
 
         bool haveEightDirections() const override final;
+
+        bool haveCharRename() const override final;
 };
 
 }  // namespace TmwAthena
