@@ -75,6 +75,7 @@ CharServerHandler::CharServerHandler() :
         SMSG_CHAR_MAP_INFO,
         SMSG_CHANGE_MAP_SERVER,
         SMSG_CHAR_PINCODE_STATUS,
+        SMSG_CHAR_RENAME,
         0
     };
     handledMessages = _messages;
@@ -123,6 +124,10 @@ void CharServerHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_CHAR_PINCODE_STATUS:
             processPincodeStatus(msg);
+            break;
+
+        case SMSG_CHAR_RENAME:
+            processCharRename(msg);
             break;
 
         default:
@@ -480,6 +485,11 @@ void CharServerHandler::renameCharacter(Net::Character *const character,
     createOutPacket(CMSG_CHAR_RENAME);
     outMsg.writeInt32(mSelectedCharacter->dummy->getId(), "char id");
     outMsg.writeString(newName, 24, "name");
+}
+
+void CharServerHandler::processCharRename(Net::MessageIn &msg)
+{
+    msg.readInt16("flag");
 }
 
 }  // namespace EAthena

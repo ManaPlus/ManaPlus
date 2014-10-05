@@ -90,6 +90,8 @@ class CharServerHandler final : public MessageHandler,
 
         void processCharCreate(Net::MessageIn &msg);
 
+        void processCharRename(Net::MessageIn &msg);
+
     private:
         uint32_t mPinSeed;
         uint32_t mPinAccountId;
