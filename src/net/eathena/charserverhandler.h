@@ -79,6 +79,8 @@ class CharServerHandler final : public MessageHandler,
         void setCharCreateDialog(CharCreateDialog *const window)
                                  override final;
 
+        void changeSlot(const int oldSlot, const int newSlot) override final;
+
     protected:
         void readPlayerData(Net::MessageIn &msg,
                             Net::Character *const character,

@@ -561,4 +561,12 @@ void CharServerHandler::processCharRename(Net::MessageIn &msg)
     }
 }
 
+void CharServerHandler::changeSlot(const int oldSlot, const int newSlot)
+{
+    createOutPacket(CMSG_CHAR_CHANGE_SLOT);
+    outMsg.writeInt16(oldSlot, "old slot");
+    outMsg.writeInt16(newSlot, "new slot");
+    outMsg.writeInt16(0, "unused");
+}
+
 }  // namespace EAthena

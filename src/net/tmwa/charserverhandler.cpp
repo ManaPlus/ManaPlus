@@ -516,4 +516,9 @@ void CharServerHandler::renameCharacter(const int id A_UNUSED,
 {
 }
 
+void CharServerHandler::changeSlot(const int oldSlot A_UNUSED,
+                                   const int newSlot A_UNUSED)
+{
+}
+
 }  // namespace TmwAthena

@@ -295,6 +295,7 @@
 #define CMSG_CHAR_CREATE_PIN         0x08ba
 #define CMSG_CHAR_CHECK_RENAME       0x08fc
 #define CMSG_CHAR_RENAME             0x028f
+#define CMSG_CHAR_CHANGE_SLOT        0x08d4
 
 #define CMSG_MAP_SERVER_CONNECT      0x089c
 #define CMSG_MAP_PING                0x035f /**< Send to server with tick */

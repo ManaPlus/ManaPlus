@@ -80,6 +80,8 @@ class CharServerHandler notfinal
 
         virtual void setNewPincode(const std::string &pin) = 0;
 
+        virtual void changeSlot(const int oldSlot, const int newSlot) = 0;
+
     protected:
         CharServerHandler() :
             mCharacters(),
