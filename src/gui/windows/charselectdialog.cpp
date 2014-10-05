@@ -68,9 +68,9 @@ CharSelectDialog::CharSelectDialog(LoginData *const data) :
     KeyListener(),
     mLoginData(data),
     // TRANSLATORS: char select dialog. button.
-    mSwitchLoginButton(new Button(this, _("Switch Login"), "switch", this)),
+    mSwitchLoginButton(new Button(this, _("Switch"), "switch", this)),
     // TRANSLATORS: char select dialog. button.
-    mChangePasswordButton(new Button(this, _("Change Password"),
+    mChangePasswordButton(new Button(this, _("Password"),
                           "change_password", this)),
     mUnregisterButton(nullptr),
     mChangeEmailButton(nullptr),
