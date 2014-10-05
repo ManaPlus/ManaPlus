@@ -511,8 +511,8 @@ void CharServerHandler::processCharCreate2(Net::MessageIn &msg)
     BLOCK_END("CharServerHandler::processCharCreate2")
 }
 
-void CharServerHandler::renameCharacter(const int id,
-                                        const std::string &newName)
+void CharServerHandler::renameCharacter(const int id A_UNUSED,
+                                        const std::string &newName A_UNUSED)
 {
 }
 
