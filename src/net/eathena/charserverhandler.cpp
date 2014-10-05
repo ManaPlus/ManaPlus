@@ -471,4 +471,15 @@ void CharServerHandler::processCharCreate(Net::MessageIn &msg)
     BLOCK_END("CharServerHandler::processCharCreate")
 }
 
+void CharServerHandler::renameCharacter(Net::Character *const character,
+                                        const std::string &newName)
+{
+    if (!character)
+        return;
+
+    createOutPacket(CMSG_CHAR_RENAME);
+    outMsg.writeInt32(mSelectedCharacter->dummy->getId(), "char id");
+    outMsg.writeString(newName, 24, "name");
+}
+
 }  // namespace EAthena

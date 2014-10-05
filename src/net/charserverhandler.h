@@ -63,6 +63,9 @@ class CharServerHandler notfinal
 
         virtual void deleteCharacter(Net::Character *const character) = 0;
 
+        virtual void renameCharacter(Net::Character *const character,
+                                     const std::string &newName) = 0;
+
         virtual void switchCharacter() const = 0;
 
         virtual unsigned int baseSprite() const A_WARN_UNUSED = 0;

@@ -511,4 +511,9 @@ void CharServerHandler::processCharCreate2(Net::MessageIn &msg)
     BLOCK_END("CharServerHandler::processCharCreate2")
 }
 
+void CharServerHandler::renameCharacter(Net::Character *const character,
+                                        const std::string &newName)
+{
+}
+
 }  // namespace TmwAthena
