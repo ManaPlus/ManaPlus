@@ -51,7 +51,7 @@ class CharServerHandler final : public MessageHandler,
                           const unsigned char look,
                           const std::vector<int> &stats) const override final;
 
-        void renameCharacter(Net::Character *const character,
+        void renameCharacter(const int id,
                              const std::string &newName) override final;
 
         void deleteCharacter(Net::Character *const character) override final;

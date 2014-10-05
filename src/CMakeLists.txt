@@ -795,6 +795,8 @@ SET(SRCS
     listeners/awaylistener.cpp
     listeners/awaylistener.h
     listeners/baselistener.hpp
+    listeners/charrenamelistener.cpp
+    listeners/charrenamelistener.h
     actormanager.cpp
     actormanager.h
     animatedsprite.cpp

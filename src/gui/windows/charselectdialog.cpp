@@ -32,6 +32,7 @@
 
 #include "being/attributes.h"
 
+#include "listeners/charrenamelistener.h"
 #include "listeners/pincodelistener.h"
 
 #include "gui/dialogtype.h"
@@ -53,6 +54,7 @@
 #include "net/logindata.h"
 #include "net/loginhandler.h"
 #include "net/registrationoptions.h"
+#include "net/serverfeatures.h"
 
 #include "debug.h"
 
@@ -80,6 +82,8 @@ CharSelectDialog::CharSelectDialog(LoginData *const data) :
     mInfoButton(new Button(this, _("Info"), "info", this)),
     // TRANSLATORS: char select dialog. button.
     mDeleteButton(new Button(this, _("Delete"), "delete", this)),
+    // TRANSLATORS: char select dialog. button.
+    mRenameButton(nullptr),
     mCharacterView(nullptr),
     mCharacterEntries(0),
     mCharServerHandler(charServerHandler),
@@ -123,6 +127,12 @@ CharSelectDialog::CharSelectDialog(LoginData *const data) :
 
     placer(n, 0, mDeleteButton);
     n ++;
+    if (serverFeatures->haveCharRename())
+    {
+        mRenameButton = new Button(this, _("Rename"), "rename", this);
+        placer(n, 0, mRenameButton);
+        n ++;
+    }
     placer(n, 0, mInfoButton);
     n ++;
 
@@ -220,6 +230,18 @@ void CharSelectDialog::action(const ActionEvent &event)
         {
             (new CharDeleteConfirm(this, selected))->postInit();
             return;
+        }
+        else if (eventId == "rename"
+                 && mCharacterEntries[selected]->getCharacter())
+        {
+            LocalPlayer *const player = mCharacterEntries[
+                selected]->getCharacter()->dummy;
+            EditDialog *const dialog = new EditDialog(
+                _("Please enter new name"), player->getName(), "OK");
+            dialog->postInit();
+            charRenameListener.setId(player->getId());
+            charRenameListener.setDialog(dialog);
+            dialog->addActionListener(&charRenameListener);
         }
         else if (eventId == "info")
         {

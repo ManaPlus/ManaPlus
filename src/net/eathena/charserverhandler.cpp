@@ -28,7 +28,10 @@
 
 #include "being/attributes.h"
 
+#include "gui/dialogtype.h"
+
 #include "gui/windows/charcreatedialog.h"
+#include "gui/windows/okdialog.h"
 
 #include "net/character.h"
 #include "net/logindata.h"
@@ -45,6 +48,7 @@
 #include "resources/db/itemdb.h"
 
 #include "utils/dtor.h"
+#include "utils/gettext.h"
 
 #include "debug.h"
 
@@ -476,20 +480,34 @@ void CharServerHandler::processCharCreate(Net::MessageIn &msg)
     BLOCK_END("CharServerHandler::processCharCreate")
 }
 
-void CharServerHandler::renameCharacter(Net::Character *const character,
+void CharServerHandler::renameCharacter(const int id,
                                         const std::string &newName)
 {
-    if (!character)
-        return;
-
     createOutPacket(CMSG_CHAR_RENAME);
-    outMsg.writeInt32(mSelectedCharacter->dummy->getId(), "char id");
+    outMsg.writeInt32(id, "char id");
     outMsg.writeString(newName, 24, "name");
 }
 
 void CharServerHandler::processCharRename(Net::MessageIn &msg)
 {
-    msg.readInt16("flag");
+    if (msg.readInt16("flag"))
+    {
+        // TRANSLATORS: info message
+        new OkDialog(_("Info"), _("Character renamed."),
+            // TRANSLATORS: ok dialog button
+            _("OK"),
+            DialogType::OK,
+            true, true, nullptr, 260);
+    }
+    else
+    {
+        // TRANSLATORS: info message
+        new OkDialog(_("Info"), _("Character rename error."),
+            // TRANSLATORS: ok dialog button
+            _("Error"),
+            DialogType::ERROR,
+            true, true, nullptr, 260);
+    }
 }
 
 }  // namespace EAthena

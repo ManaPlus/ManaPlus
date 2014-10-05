@@ -115,6 +115,7 @@ class CharSelectDialog final : public Window,
         Button *mPlayButton;
         Button *mInfoButton;
         Button *mDeleteButton;
+        Button *mRenameButton;
         CharacterViewBase *mCharacterView;
 
         std::vector<CharacterDisplay*> mCharacterEntries;
