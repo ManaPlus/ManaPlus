@@ -172,7 +172,8 @@ LocalPlayer::LocalPlayer(const int id, const uint16_t subtype) :
     mKeepAttacking(false),
     mPathSetByMouse(false),
     mWaitPing(false),
-    mShowNavigePath(false)
+    mShowNavigePath(false),
+    mAllowRename(false)
 {
     logger->log1("LocalPlayer::LocalPlayer");
 

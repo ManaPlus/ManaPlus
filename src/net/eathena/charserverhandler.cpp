@@ -235,7 +235,7 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     msg.readInt32("delete date");
     msg.readInt32("robe");
     msg.readInt32("slot change");
-    msg.readInt32("rename (inverse)");
+    tempPlayer->setRename(msg.readInt32("rename (inverse)"));
 }
 
 void CharServerHandler::chooseCharacter(Net::Character *const character)

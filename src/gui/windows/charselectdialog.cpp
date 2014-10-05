@@ -593,6 +593,11 @@ void CharSelectDialog::updateState()
     {
         // TRANSLATORS: char select dialog. button.
         mPlayButton->setCaption(_("Play"));
+
+        LocalPlayer *const player = mCharacterEntries[
+            idx]->getCharacter()->dummy;
+        if (player)
+            mRenameButton->setEnabled(player->getRename() ? true : false);
     }
     else
     {

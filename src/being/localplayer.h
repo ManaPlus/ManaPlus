@@ -403,6 +403,12 @@ class LocalPlayer final : public Being,
         AwayListener *getAwayListener() const A_WARN_UNUSED
         { return mAwayListener; }
 
+        void setRename(const bool r)
+        { mAllowRename = r; }
+
+        bool getRename() const
+        { return mAllowRename; }
+
     protected:
         void updateCoords() override final;
 
@@ -510,6 +516,7 @@ class LocalPlayer final : public Being,
         bool mPathSetByMouse;
         bool mWaitPing;
         bool mShowNavigePath;
+        bool mAllowRename;
 };
 
 extern LocalPlayer *localPlayer;
