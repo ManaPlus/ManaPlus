@@ -95,6 +95,7 @@ class CharServerHandler final : public MessageHandler,
         void processCharRename(Net::MessageIn &msg);
 
     private:
+        std::string mNewName;
         uint32_t mPinSeed;
         uint32_t mPinAccountId;
         uint32_t mRenameId;

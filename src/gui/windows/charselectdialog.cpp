@@ -605,3 +605,23 @@ void CharSelectDialog::updateState()
         mPlayButton->setCaption(_("Create"));
     }
 }
+
+void CharSelectDialog::setName(const int id, const std::string &newName)
+{
+    for (unsigned int i = 0, sz = static_cast<unsigned int>(
+         mCharacterEntries.size()); i < sz; ++i)
+    {
+        if (!mCharacterEntries[i])
+            continue;
+        CharacterDisplay *const character = mCharacterEntries[i];
+        if (!character)
+            continue;
+        LocalPlayer *const player = character->getCharacter()->dummy;
+        if (player && player->getId() == id)
+        {
+            player->setName(newName);
+            character->update();
+            return;
+        }
+    }
+}

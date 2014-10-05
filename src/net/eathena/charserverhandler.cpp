@@ -31,6 +31,7 @@
 #include "gui/dialogtype.h"
 
 #include "gui/windows/charcreatedialog.h"
+#include "gui/windows/charselectdialog.h"
 #include "gui/windows/okdialog.h"
 
 #include "net/character.h"
@@ -63,6 +64,7 @@ extern ServerInfo mapServer;
 CharServerHandler::CharServerHandler() :
     MessageHandler(),
     Ea::CharServerHandler(),
+    mNewName(),
     mPinSeed(0),
     mPinAccountId(0),
     mRenameId(0),
@@ -491,6 +493,7 @@ void CharServerHandler::renameCharacter(const int id,
 {
     createOutPacket(CMSG_CHAR_CHECK_RENAME);
     mRenameId = id;
+    mNewName = newName;
     outMsg.writeInt32(id, "char id");
     outMsg.writeString(newName, 24, "name");
 }
@@ -501,14 +504,6 @@ void CharServerHandler::processCharCheckRename(Net::MessageIn &msg)
     {
         createOutPacket(CMSG_CHAR_RENAME);
         outMsg.writeInt32(mRenameId, "char id");
-/*
-        // TRANSLATORS: info message
-        new OkDialog(_("Info"), _("Character renamed."),
-            // TRANSLATORS: ok dialog button
-            _("OK"),
-            DialogType::OK,
-            true, true, nullptr, 260);
-*/
     }
     else
     {
@@ -526,6 +521,7 @@ void CharServerHandler::processCharRename(Net::MessageIn &msg)
     const int flag = msg.readInt16("flag");
     if (!flag)
     {
+        mCharSelectDialog->setName(mRenameId, mNewName);
         // TRANSLATORS: info message
         new OkDialog(_("Info"), _("Character renamed."),
             // TRANSLATORS: ok dialog button

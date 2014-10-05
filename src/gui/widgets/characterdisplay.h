@@ -82,9 +82,9 @@ class CharacterDisplay final : public Container,
 
         void mousePressed(MouseEvent &event) override final;
 
-    private:
         void update();
 
+    private:
         Net::Character *mCharacter;
         PlayerBox *mPlayerBox;
         Label *mName;
