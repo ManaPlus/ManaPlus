@@ -23,6 +23,7 @@
 #define BEING_PLAYERINFO_H
 
 #include "equipment.h"
+#include "guildpositionflags.h"
 #include "state.h"
 
 #include <map>
@@ -264,6 +265,10 @@ namespace PlayerInfo
     void updateMoveAI();
 
     void updateAttackAi(const int targetId, const bool keep);
+
+    void setGuildPositionFlags(const GuildPositionFlags::Type pos);
+
+    GuildPositionFlags::Type getGuildPositionFlags();
 }  // namespace PlayerInfo
 
 #endif  // BEING_PLAYERINFO_H

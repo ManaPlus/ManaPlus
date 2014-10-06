@@ -342,12 +342,14 @@ void GuildHandler::checkMaster() const
 
 void GuildHandler::processGuildPositionInfo(Net::MessageIn &msg) const
 {
-    const int guildId =  msg.readInt32();
-    const int emblem =  msg.readInt32();
-    const int posMode =  msg.readInt32();
-    msg.readInt32();  // Unused
-    msg.readUInt8();  // Unused
-    std::string guildName = msg.readString(24);
+    const int guildId =  msg.readInt32("guild id");
+    const int emblem =  msg.readInt32("emblem");
+    const int posMode =  msg.readInt32("position");
+    msg.readInt32("unused");
+    msg.readUInt8("usused");
+    std::string guildName = msg.readString(24, "guild name");
+
+    PlayerInfo::setGuildPositionFlags(GuildPositionFlags::Invite);
 
     Guild *const g = Guild::getGuild(static_cast<int16_t>(guildId));
     if (!g)

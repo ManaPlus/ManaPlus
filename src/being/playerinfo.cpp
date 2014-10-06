@@ -61,6 +61,7 @@ Equipment *mEquipment = nullptr;
 MercenaryInfo *mMercenary = nullptr;
 HomunculusInfo *mHomunculus = nullptr;
 PetInfo *mPet = nullptr;
+GuildPositionFlags::Type mGuildPositionFlags = GuildPositionFlags::None;
 
 bool mTrading = false;
 int mLevelProgress = 0;
@@ -554,6 +555,16 @@ void updateAttackAi(const int targetId, const bool keep)
         mercenaryHandler->attack(targetId, keep);
     if (mHomunculus)
         homunculusHandler->attack(targetId, keep);
+}
+
+void setGuildPositionFlags(const GuildPositionFlags::Type pos)
+{
+    mGuildPositionFlags = pos;
+}
+
+GuildPositionFlags::Type getGuildPositionFlags()
+{
+    return mGuildPositionFlags;
 }
 
 }  // namespace PlayerInfo

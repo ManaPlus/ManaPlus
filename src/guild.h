@@ -25,6 +25,8 @@
 
 #include "avatar.h"
 
+#include "guildpositionflags.h"
+
 #include "gui/models/avatarlistmodel.h"
 
 #include "utils/dtor.h"
@@ -210,11 +212,11 @@ class Guild final : public AvatarListModel
         explicit Guild(const int16_t id);
 
         MemberList mMembers;
+        PositionsMap mPositions;
         std::string mName;
+        int mEmblemId;
         int16_t mId;
         bool mCanInviteUsers;
-        int mEmblemId;
-        PositionsMap mPositions;
         bool mServerGuild;
 };
 

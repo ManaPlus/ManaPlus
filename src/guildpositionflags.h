@@ -29,8 +29,9 @@ namespace GuildPositionFlags
 {
     enum Type
     {
+        None    = 0x00,
         Invite  = 0x01,
-        Expel = 0x10
+        Expel   = 0x10
     };
 }
 

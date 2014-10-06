@@ -355,12 +355,13 @@ void GuildHandler::checkMaster() const
 
 void GuildHandler::processGuildPositionInfo(Net::MessageIn &msg) const
 {
-    const int guildId =  msg.readInt32();
-    const int emblem =  msg.readInt32();
-    const int posMode =  msg.readInt32();
-    msg.readInt32();  // Unused
-    msg.readUInt8();  // Unused
-    std::string guildName = msg.readString(24);
+    const int guildId =  msg.readInt32("guild id");
+    const int emblem =  msg.readInt32("elblem id");
+    PlayerInfo::setGuildPositionFlags(
+        static_cast<GuildPositionFlags::Type>(msg.readInt32("mode")));
+    msg.readUInt8("guild master");
+    msg.readInt32("unused");
+    std::string guildName = msg.readString(24, "guild name");
 
     Guild *const g = Guild::getGuild(static_cast<int16_t>(guildId));
     if (!g)
@@ -385,9 +386,6 @@ void GuildHandler::processGuildPositionInfo(Net::MessageIn &msg) const
         localPlayer->setGuild(g);
         localPlayer->setGuildName(g->getName());
     }
-
-    logger->log("Guild position info: %d %d %d %s\n", guildId,
-                emblem, posMode, guildName.c_str());
 }
 
 }  // namespace EAthena

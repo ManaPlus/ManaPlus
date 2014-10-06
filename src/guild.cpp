@@ -89,11 +89,11 @@ Guild::GuildMap Guild::guilds;
 
 Guild::Guild(const int16_t id) :
     mMembers(),
+    mPositions(),
     mName(),
+    mEmblemId(0),
     mId(id),
     mCanInviteUsers(false),
-    mEmblemId(0),
-    mPositions(),
     mServerGuild(true)
 {
     guilds[id] = this;
