@@ -249,7 +249,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("enableReorderSprites", true);
     AddDEF("showip", false);
     AddDEF("seflMouseHeal", true);
-    AddDEF("enableLazyScrolling", true);
+    AddDEF("enableLazyScrolling", false);
     AddDEF("extMouseTargeting", true);
     AddDEF("showMVP", false);
     AddDEF("pvpAttackType", 0);
@@ -352,7 +352,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("uselonglivesprites", false);
     AddDEF("uselonglivesounds", true);
     AddDEF("screenDensity", 0);
-    AddDEF("cfgver", 9);
+    AddDEF("cfgver", 10);
     AddDEF("enableDebugLog", false);
     AddDEF("doubleClick", true);
     AddDEF("useDiagonalSpeed", true);

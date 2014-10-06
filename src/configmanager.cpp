@@ -319,6 +319,8 @@ void ConfigManager::checkConfigVersion()
         config.deleteKey("videodetected");
         config.setValue("moveToTargetType", 10);
     }
+    if (version < 10)
+        config.setValue("enableLazyScrolling", false);
 
-    config.setValue("cfgver", 9);
+    config.setValue("cfgver", 10);
 }
