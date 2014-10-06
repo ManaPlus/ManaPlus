@@ -72,10 +72,17 @@ class GuildHandler final : public Ea::GuildHandler, public MessageHandler
                           const override final;
 
         void checkMaster() const;
+
+    protected:
+        void processGuildPositionInfo(Net::MessageIn &msg) const;
 };
 
     extern Ea::GuildTab *guildTab;
-    extern Guild *taGuild;
 }  // namespace TmwAthena
+
+namespace Ea
+{
+    extern Guild *taGuild;
+}
 
 #endif  // NET_TMWA_GUILDHANDLER_H

@@ -75,10 +75,16 @@ class GuildHandler final : public Ea::GuildHandler, public MessageHandler
 
     protected:
         void processGuildUpdateCoords(Net::MessageIn &msg) const;
+
+        void processGuildPositionInfo(Net::MessageIn &msg) const;
 };
 
-    extern Ea::GuildTab *guildTab;
-    extern Guild *taGuild;
+//    extern Ea::GuildTab *guildTab;
 }  // namespace EAthena
+
+namespace Ea
+{
+    extern Guild *taGuild;
+}
 
 #endif  // NET_EATHENA_GUILDHANDLER_H

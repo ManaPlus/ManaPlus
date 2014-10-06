@@ -22,11 +22,16 @@
 #include "net/tmwa/guildhandler.h"
 
 #include "actormanager.h"
+#include "configuration.h"
 
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
+#include "gui/windows/chatwindow.h"
+
 #include "net/serverfeatures.h"
+
+#include "net/ea/gui/guildtab.h"
 
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
@@ -333,6 +338,43 @@ void GuildHandler::changeNotice(const int guildId,
 void GuildHandler::checkMaster() const
 {
     MessageOut msg(CMSG_GUILD_CHECK_MASTER);
+}
+
+void GuildHandler::processGuildPositionInfo(Net::MessageIn &msg) const
+{
+    const int guildId =  msg.readInt32();
+    const int emblem =  msg.readInt32();
+    const int posMode =  msg.readInt32();
+    msg.readInt32();  // Unused
+    msg.readUInt8();  // Unused
+    std::string guildName = msg.readString(24);
+
+    Guild *const g = Guild::getGuild(static_cast<int16_t>(guildId));
+    if (!g)
+        return;
+
+    g->setName(guildName);
+    g->setEmblemId(emblem);
+    if (!Ea::taGuild)
+        Ea::taGuild = g;
+    if (!Ea::guildTab && chatWindow)
+    {
+        Ea::guildTab = new Ea::GuildTab(chatWindow);
+        if (config.getBoolValue("showChatHistory"))
+            Ea::guildTab->loadFromLogFile("#Guild");
+        if (localPlayer)
+            localPlayer->addGuild(Ea::taGuild);
+        memberList(guildId);
+    }
+
+    if (localPlayer)
+    {
+        localPlayer->setGuild(g);
+        localPlayer->setGuildName(g->getName());
+    }
+
+    logger->log("Guild position info: %d %d %d %s\n", guildId,
+                emblem, posMode, guildName.c_str());
 }
 
 }  // namespace TmwAthena

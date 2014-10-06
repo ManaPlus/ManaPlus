@@ -105,43 +105,6 @@ void GuildHandler::processGuildCreateResponse(Net::MessageIn &msg) const
     }
 }
 
-void GuildHandler::processGuildPositionInfo(Net::MessageIn &msg) const
-{
-    const int guildId =  msg.readInt32();
-    const int emblem =  msg.readInt32();
-    const int posMode =  msg.readInt32();
-    msg.readInt32();  // Unused
-    msg.readUInt8();  // Unused
-    std::string guildName = msg.readString(24);
-
-    Guild *const g = Guild::getGuild(static_cast<int16_t>(guildId));
-    if (!g)
-        return;
-
-    g->setName(guildName);
-    g->setEmblemId(emblem);
-    if (!taGuild)
-        taGuild = g;
-    if (!guildTab && chatWindow)
-    {
-        guildTab = new GuildTab(chatWindow);
-        if (config.getBoolValue("showChatHistory"))
-            guildTab->loadFromLogFile("#Guild");
-        if (localPlayer)
-            localPlayer->addGuild(taGuild);
-        memberList(guildId);
-    }
-
-    if (localPlayer)
-    {
-        localPlayer->setGuild(g);
-        localPlayer->setGuildName(g->getName());
-    }
-
-    logger->log("Guild position info: %d %d %d %s\n", guildId,
-                emblem, posMode, guildName.c_str());
-}
-
 void GuildHandler::processGuildMemberLogin(Net::MessageIn &msg) const
 {
     const int accountId = msg.readInt32();  // Account ID

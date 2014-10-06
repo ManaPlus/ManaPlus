@@ -53,8 +53,6 @@ class GuildHandler notfinal : public Net::GuildHandler
 
         virtual void processGuildCreateResponse(Net::MessageIn &msg) const;
 
-        virtual void processGuildPositionInfo(Net::MessageIn &msg) const;
-
         virtual void processGuildMemberLogin(Net::MessageIn &msg) const;
 
         virtual void processGuildMasterOrMember(Net::MessageIn &msg) const;
