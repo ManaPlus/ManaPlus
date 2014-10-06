@@ -138,6 +138,18 @@ namespace NotifyManager
             // TRANSLATORS: notification message
             N_("You have left the party."),
             NotifyFlags::EMPTY},
+        {"party left deny",
+            // TRANSLATORS: notification message
+            N_("You cant left party on this map."),
+            NotifyFlags::EMPTY},
+        {"party kicked",
+            // TRANSLATORS: notification message
+            N_("You was kicked from party."),
+            NotifyFlags::EMPTY},
+        {"party kick deny",
+            // TRANSLATORS: notification message
+            N_("You cant be kicked kicked from party on this map."),
+            NotifyFlags::EMPTY},
         {"party user joined",
             // TRANSLATORS: notification message
             N_("%s has joined your party."),
@@ -189,6 +201,18 @@ namespace NotifyManager
         {"party user left",
             // TRANSLATORS: notification message
             N_("%s has left your party."),
+            NotifyFlags::PARTY_STRING},
+        {"party user left deny",
+            // TRANSLATORS: notification message
+            N_("%s cant be kicked from party on this map."),
+            NotifyFlags::PARTY_STRING},
+        {"party user kicked",
+            // TRANSLATORS: notification message
+            N_("%s has kicked from your party."),
+            NotifyFlags::PARTY_STRING},
+        {"party user kick deny",
+            // TRANSLATORS: notification message
+            N_("%s cant be kicked from party on this map."),
             NotifyFlags::PARTY_STRING},
         {"party unknown user msg",
             // TRANSLATORS: notification message

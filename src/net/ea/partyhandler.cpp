@@ -188,20 +188,43 @@ void PartyHandler::processPartyMove(Net::MessageIn &msg) const
 
 void PartyHandler::processPartyLeave(Net::MessageIn &msg) const
 {
-    const int id = msg.readInt32();
-    const std::string nick = msg.readString(24);
-    msg.readUInt8();     // fail
+    const int id = msg.readInt32("account id");
+    const std::string nick = msg.readString(24, "nick");
+    const int reason = msg.readUInt8("flag");
     if (!localPlayer)
         return;
 
     if (id == localPlayer->getId())
     {
+        switch (reason)
+        {
+            case 0:
+            default:
+                NotifyManager::notify(NotifyTypes::PARTY_LEFT);
+                break;
+
+            case 1:
+                NotifyManager::notify(NotifyTypes::PARTY_KICKED);
+                break;
+
+            case 2:
+                NotifyManager::notify(NotifyTypes::PARTY_LEFT_DENY);
+                break;
+
+            case 3:
+                NotifyManager::notify(NotifyTypes::PARTY_KICK_DENY);
+                break;
+        }
+
+        if (reason >= 2)
+            return;
+
         if (Ea::taParty)
         {
             Ea::taParty->removeFromMembers();
             Ea::taParty->clearMembers();
         }
-        NotifyManager::notify(NotifyTypes::PARTY_LEFT);
+
         delete2(Ea::partyTab)
 
         if (socialWindow && Ea::taParty)
@@ -210,7 +233,29 @@ void PartyHandler::processPartyLeave(Net::MessageIn &msg) const
     }
     else
     {
-        NotifyManager::notify(NotifyTypes::PARTY_USER_LEFT, nick);
+        switch (reason)
+        {
+            case 0:
+            default:
+                NotifyManager::notify(NotifyTypes::PARTY_USER_LEFT, nick);
+                break;
+
+            case 1:
+                NotifyManager::notify(NotifyTypes::PARTY_USER_KICKED, nick);
+                break;
+
+            case 2:
+                NotifyManager::notify(NotifyTypes::PARTY_USER_LEFT_DENY, nick);
+                break;
+
+            case 3:
+                NotifyManager::notify(NotifyTypes::PARTY_USER_KICK_DENY, nick);
+                break;
+        }
+
+        if (reason >= 2)
+            return;
+
         if (actorManager)
         {
             Being *const b = actorManager->findBeing(id);
