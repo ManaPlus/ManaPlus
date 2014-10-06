@@ -84,6 +84,7 @@ CharServerHandler::CharServerHandler() :
         SMSG_CHAR_PINCODE_STATUS,
         SMSG_CHAR_CHECK_RENAME,
         SMSG_CHAR_RENAME,
+        SMSG_CHAR_CHANGE_SLOT,
         0
     };
     handledMessages = _messages;
@@ -140,6 +141,10 @@ void CharServerHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_CHAR_RENAME:
             processCharRename(msg);
+            break;
+
+        case SMSG_CHAR_CHANGE_SLOT:
+            processCharChangeSlot(msg);
             break;
 
         default:
@@ -567,6 +572,13 @@ void CharServerHandler::changeSlot(const int oldSlot, const int newSlot)
     outMsg.writeInt16(oldSlot, "old slot");
     outMsg.writeInt16(newSlot, "new slot");
     outMsg.writeInt16(0, "unused");
+}
+
+void CharServerHandler::processCharChangeSlot(Net::MessageIn &msg)
+{
+    msg.readInt16("len");
+    msg.readInt16("flag");  // 0 - ok, 1 - error
+    msg.readInt16("unused");
 }
 
 }  // namespace EAthena
