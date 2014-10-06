@@ -986,6 +986,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      guild.h \
 	      guildmanager.cpp \
 	      guildmanager.h \
+	      guildpositionflags.h \
 	      particle/imageparticle.cpp \
 	      particle/imageparticle.h \
 	      imagesprite.cpp \
