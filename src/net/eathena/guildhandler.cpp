@@ -28,6 +28,7 @@
 #include "being/playerinfo.h"
 
 #include "gui/windows/chatwindow.h"
+#include "gui/windows/socialwindow.h"
 
 #include "net/ea/gui/guildtab.h"
 
@@ -385,6 +386,25 @@ void GuildHandler::processGuildPositionInfo(Net::MessageIn &msg) const
     {
         localPlayer->setGuild(g);
         localPlayer->setGuildName(g->getName());
+    }
+}
+
+void GuildHandler::processGuildMemberLogin(Net::MessageIn &msg) const
+{
+    const int accountId = msg.readInt32("account id");
+    const int charId = msg.readInt32("char id");
+    const int online = msg.readInt32("flag");
+    if (Ea::taGuild)
+    {
+        GuildMember *const m = Ea::taGuild->getMember(accountId, charId);
+        if (m)
+        {
+            m->setOnline(online);
+            if (Ea::guildTab)
+                Ea::guildTab->showOnline(m->getName(), online);
+            if (socialWindow)
+                socialWindow->updateGuildCounter();
+        }
     }
 }
 

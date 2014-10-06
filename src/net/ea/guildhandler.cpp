@@ -105,25 +105,6 @@ void GuildHandler::processGuildCreateResponse(Net::MessageIn &msg) const
     }
 }
 
-void GuildHandler::processGuildMemberLogin(Net::MessageIn &msg) const
-{
-    const int accountId = msg.readInt32();  // Account ID
-    const int charId = msg.readInt32();     // Char ID
-    const int online = msg.readInt32();     // Flag
-    if (taGuild)
-    {
-        GuildMember *const m = taGuild->getMember(accountId, charId);
-        if (m)
-        {
-            m->setOnline(online);
-            if (guildTab)
-                guildTab->showOnline(m->getName(), online);
-            if (socialWindow)
-                socialWindow->updateGuildCounter();
-        }
-    }
-}
-
 void GuildHandler::processGuildMasterOrMember(Net::MessageIn &msg) const
 {
     msg.readInt32();  // Type (0x57 for member, 0xd7 for master)

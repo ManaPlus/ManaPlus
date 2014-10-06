@@ -28,6 +28,7 @@
 #include "being/playerinfo.h"
 
 #include "gui/windows/chatwindow.h"
+#include "gui/windows/socialwindow.h"
 
 #include "net/serverfeatures.h"
 
@@ -377,6 +378,25 @@ void GuildHandler::processGuildPositionInfo(Net::MessageIn &msg) const
 
     logger->log("Guild position info: %d %d %d %s\n", guildId,
                 emblem, posMode, guildName.c_str());
+}
+
+void GuildHandler::processGuildMemberLogin(Net::MessageIn &msg) const
+{
+    const int accountId = msg.readInt32("account id");
+    const int charId = msg.readInt32("char id");
+    const int online = msg.readInt32("flag");
+    if (Ea::taGuild)
+    {
+        GuildMember *const m = Ea::taGuild->getMember(accountId, charId);
+        if (m)
+        {
+            m->setOnline(online);
+            if (Ea::guildTab)
+                Ea::guildTab->showOnline(m->getName(), online);
+            if (socialWindow)
+                socialWindow->updateGuildCounter();
+        }
+    }
 }
 
 }  // namespace TmwAthena
