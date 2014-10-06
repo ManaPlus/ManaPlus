@@ -394,12 +394,18 @@ void GuildHandler::processGuildMemberLogin(Net::MessageIn &msg) const
     const int accountId = msg.readInt32("account id");
     const int charId = msg.readInt32("char id");
     const int online = msg.readInt32("flag");
+    const Gender::Type gender = Being::intToGender(static_cast<uint8_t>(
+        msg.readInt16("sex")));
+    msg.readInt16("hair");
+    msg.readInt16("hair color");
     if (Ea::taGuild)
     {
         GuildMember *const m = Ea::taGuild->getMember(accountId, charId);
         if (m)
         {
             m->setOnline(online);
+            if (online)
+                m->setGender(gender);
             if (Ea::guildTab)
                 Ea::guildTab->showOnline(m->getName(), online);
             if (socialWindow)
