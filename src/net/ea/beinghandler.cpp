@@ -425,12 +425,13 @@ void BeingHandler::processPlayerMoveToAttack(Net::MessageIn &msg A_UNUSED)
                                              const
 {
     BLOCK_START("BeingHandler::processPlayerStop")
-    /*
-      * This is an *advisory* message, telling the client that
-      * it needs to move the character before attacking
-      * a target (out of range, obstruction in line of fire).
-      * We can safely ignore this...
-      */
+    msg.readInt32("target id");
+    msg.readInt16("target x");
+    msg.readInt16("target y");
+    msg.readInt16("x");
+    msg.readInt16("y");
+    msg.readInt16("attack range");
+
     if (localPlayer)
         localPlayer->fixAttackTarget();
     BLOCK_END("BeingHandler::processPlayerStop")
