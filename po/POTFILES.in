@@ -136,6 +136,7 @@ src/net/ea/gui/partytab.cpp
 src/net/ea/loginhandler.cpp
 src/net/ea/network.cpp
 src/net/ea/playerhandler.cpp
+src/net/eathena/charserverhandler.cpp
 src/net/eathena/generalhandler.cpp
 src/net/eathena/loginhandler.cpp
 src/net/eathena/pethandler.cpp
