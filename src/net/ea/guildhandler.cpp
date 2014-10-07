@@ -112,18 +112,19 @@ void GuildHandler::processGuildMasterOrMember(Net::MessageIn &msg) const
 
 void GuildHandler::processGuildBasicInfo(Net::MessageIn &msg)
 {
-    const int guildId = msg.readInt32();      // Guild ID
-    const int level = msg.readInt32();        // Guild level
-    const int members = msg.readInt32();      // 'Connect member'
-    const int maxMembers = msg.readInt32();   // 'Max member'
-    const int avgLevel = msg.readInt32();     // Average level
-    const int exp = msg.readInt32();          // Exp
-    const int nextExp = msg.readInt32();      // Next exp
-    msg.skip(16);                             // 0 unused
-    std::string name = msg.readString(24);    // Name
-    std::string master = msg.readString(24);  // Master's name
-    std::string castle = msg.readString(20);  // Castles
-                            // (ie: "Six Castles" or "None Taken")
+    const int guildId = msg.readInt32("guild id");
+    const int level = msg.readInt32("guild level");
+    const int members = msg.readInt32("connect member");
+    const int maxMembers = msg.readInt32("max member");
+    const int avgLevel = msg.readInt32("average level");
+    const int exp = msg.readInt32("exp");
+    const int nextExp = msg.readInt32("next exp");
+    msg.skip(12, "unused");
+    const int emblem = msg.readInt32("emblem id");
+    std::string name = msg.readString(24, "guild name");
+    std::string master = msg.readString(24, "master name");
+    std::string castle = msg.readString(16, "castles");
+    msg.readInt32("unused");
 
     if (guildTab && showBasicInfo)
     {
@@ -161,6 +162,7 @@ void GuildHandler::processGuildBasicInfo(Net::MessageIn &msg)
     if (!g)
         return;
     g->setName(name);
+    g->setEmblemId(emblem);
 }
 
 void GuildHandler::processGuildAlianceInfo(Net::MessageIn &msg) const
