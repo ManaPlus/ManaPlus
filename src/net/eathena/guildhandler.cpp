@@ -421,10 +421,8 @@ void GuildHandler::processGuildMemberLogin(Net::MessageIn &msg) const
 
 void GuildHandler::processGuildExpulsion(Net::MessageIn &msg) const
 {
-    msg.skip(2);    // size (can be many explusions in list)
-    const std::string nick = msg.readString(24);  // Name (of expulsed?)
-    msg.skip(24);        // acc
-    msg.readString(44);  // Message
+    const std::string nick = msg.readString(24, "name");
+    msg.readString(40, "message");
 
     processGuildExpulsionContinue(nick);
 }
