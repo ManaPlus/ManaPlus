@@ -300,10 +300,10 @@ void GuildHandler::processGuildPositionChanged(Net::MessageIn &msg) const
 
 void GuildHandler::processGuildMemberPosChange(Net::MessageIn &msg) const
 {
-    msg.readInt16();                        // Always 16
-    const int accountId = msg.readInt32();  // Account ID
-    const int charId = msg.readInt32();     // Char ID
-    const int pos = msg.readInt32();        // Position
+    msg.readInt16("len");
+    const int accountId = msg.readInt32("account id");
+    const int charId = msg.readInt32("char id");
+    const int pos = msg.readInt32("position");
     if (taGuild)
     {
         GuildMember *const m = taGuild->getMember(accountId, charId);
