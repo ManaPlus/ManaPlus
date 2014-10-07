@@ -235,7 +235,8 @@
 
 #define SMSG_MAIL_OPEN_WINDOW        0x0260
 
-#define SMSG_ASK_FOR_CHILD           0x01f6
+#define SMSG_FAMILY_ASK_FOR_CHILD    0x01f6
+#define SMSG_FAMILY_CALL_PARTNER     0x01e6
 
 #define SMSG_PET_MESSAGE             0x01aa
 #define SMSG_PET_ROULETTE            0x01a0
@@ -459,8 +460,8 @@
 #define CMSG_MAIL_RESET_ATTACH       0x0246
 #define CMSG_MAIL_SEND               0x0248
 
-#define CMSG_ASK_FOR_CHILD           0x01f9
-#define CMSG_ASK_FOR_CHILD_REPLY     0x01f7
+#define CMSG_FAMILY_ASK_FOR_CHILD    0x01f9
+#define CMSG_FAMILY_ASK_FOR_CHILD_REPLY 0x01f7
 
 #define CMSG_BANK_DEPOSIT            0x09a7
 #define CMSG_BANK_WITHDRAW           0x09a9

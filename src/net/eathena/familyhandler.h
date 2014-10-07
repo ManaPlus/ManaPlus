@@ -44,6 +44,8 @@ class FamilyHandler final : public MessageHandler,
     protected:
         void processAskForChild(Net::MessageIn &msg);
 
+        void processCallPartner(Net::MessageIn &msg);
+
     private:
         int mParent1;
         int mParent2;

@@ -39,7 +39,8 @@ FamilyHandler::FamilyHandler() :
 {
     static const uint16_t _messages[] =
     {
-        SMSG_ASK_FOR_CHILD,
+        SMSG_FAMILY_ASK_FOR_CHILD,
+        SMSG_FAMILY_CALL_PARTNER,
         0
     };
     handledMessages = _messages;
@@ -50,8 +51,12 @@ void FamilyHandler::handleMessage(Net::MessageIn &msg)
 {
     switch (msg.getId())
     {
-        case SMSG_ASK_FOR_CHILD:
+        case SMSG_FAMILY_ASK_FOR_CHILD:
             processAskForChild(msg);
+            break;
+
+        case SMSG_FAMILY_CALL_PARTNER:
+            processCallPartner(msg);
             break;
 
         default:
@@ -64,7 +69,7 @@ void FamilyHandler::askForChild(const Being *const being)
     if (!being)
         return;
 
-    createOutPacket(CMSG_ASK_FOR_CHILD);
+    createOutPacket(CMSG_FAMILY_ASK_FOR_CHILD);
     outMsg.writeInt32(being->getId());
 }
 
@@ -75,9 +80,14 @@ void FamilyHandler::processAskForChild(Net::MessageIn &msg)
     msg.readString(24, "name who ask");
 }
 
+void FamilyHandler::processCallPartner(Net::MessageIn &msg)
+{
+    msg.readString(24, "name");
+}
+
 void FamilyHandler::askForChildReply(const bool accept)
 {
-    createOutPacket(CMSG_ASK_FOR_CHILD_REPLY);
+    createOutPacket(CMSG_FAMILY_ASK_FOR_CHILD_REPLY);
     outMsg.writeInt32(mParent1, "parent1");
     outMsg.writeInt32(mParent2, "parent2");
     outMsg.writeInt32(accept ? 0: 1, "result");
