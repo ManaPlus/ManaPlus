@@ -27,7 +27,8 @@ namespace SkillOwner
     {
         Player     = 0,
         Mercenary  = 1,
-        Homunculus = 2
+        Homunculus = 2,
+        Guild      = 3
     };
 
 }

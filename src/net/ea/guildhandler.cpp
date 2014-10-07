@@ -26,8 +26,10 @@
 #include "notifymanager.h"
 
 #include "being/localplayer.h"
+#include "being/playerinfo.h"
 
 #include "gui/windows/chatwindow.h"
+#include "gui/windows/skilldialog.h"
 #include "gui/windows/socialwindow.h"
 
 #include "net/messagein.h"
@@ -325,24 +327,33 @@ void GuildHandler::processGuildEmblem(Net::MessageIn &msg) const
 
 void GuildHandler::processGuildSkillInfo(Net::MessageIn &msg) const
 {
-    const int length = msg.readInt16();
-    const int count = (length - 6) / 37;
+    const int count = (msg.readInt16("len") - 6) / 37;
+    msg.readInt16("skill points");
 
-    msg.readInt16();  // 'Skill point'
-
-    if (length < 6)
-        return;
+    if (skillDialog)
+        skillDialog->hideSkills(SkillOwner::Guild);
     for (int i = 0; i < count; i++)
     {
-        msg.readInt16();  // ID
-        msg.readInt16();  // 'Info' (unknown atm)
-        msg.readInt16();  // 0 unused
-        msg.readInt16();  // Level
-        msg.readInt16();  // SP
-        msg.readInt16();  // 'Range'
-        msg.skip(24);     // 0 unused
-        msg.readUInt8();  // Can be increased
+        const int skillId = msg.readInt16("skill id");
+        const SkillType::SkillType inf = static_cast<SkillType::SkillType>(
+            msg.readInt32("inf"));
+        const int level = msg.readInt16("skill level");
+        const int sp = msg.readInt16("sp");
+        const int range = msg.readInt16("range");
+        const std::string name = msg.readString(24, "skill name");
+        const int up = msg.readUInt8("up flag");
+        PlayerInfo::setSkillLevel(skillId, level);
+        if (skillDialog)
+        {
+            if (!skillDialog->updateSkill(skillId, range, up, inf, sp))
+            {
+                skillDialog->addSkill(SkillOwner::Guild,
+                    skillId, name, level, range, up, inf, sp);
+            }
+        }
     }
+    if (skillDialog)
+        skillDialog->updateModels();
 }
 
 void GuildHandler::processGuildNotice(Net::MessageIn &msg) const
