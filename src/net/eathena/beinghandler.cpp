@@ -75,6 +75,7 @@ BeingHandler::BeingHandler(const bool enableSync) :
         SMSG_BEING_ACTION2,
         SMSG_BEING_SELFEFFECT,
         SMSG_BEING_SPECIAL_EFFECT,
+        SMSG_BEING_SOUND_EFFECT,
         SMSG_BEING_EMOTION,
         SMSG_BEING_CHANGE_LOOKS,
         SMSG_BEING_CHANGE_LOOKS2,
@@ -177,6 +178,10 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_BEING_SPECIAL_EFFECT:
             processBeingSpecialEffect(msg);
+            break;
+
+        case SMSG_BEING_SOUND_EFFECT:
+            processBeingSoundEffect(msg);
             break;
 
         case SMSG_BEING_EMOTION:
@@ -1709,6 +1714,15 @@ void BeingHandler::processBeingSpecialEffect(Net::MessageIn &msg) const
     // type is not same with self/misc effect.
     msg.readInt32("account id");
     msg.readInt32("effect type");
+}
+
+void BeingHandler::processBeingSoundEffect(Net::MessageIn &msg) const
+{
+    // +++ need play this effect.
+    msg.readString(24, "sound effect name");
+    msg.readUInt8("type");
+    msg.readInt32("unused");
+    msg.readInt32("source being id");
 }
 
 void BeingHandler::setServerGender(Being *const being, const uint8_t gender)
