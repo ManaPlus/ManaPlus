@@ -81,8 +81,6 @@ class GuildHandler notfinal : public Net::GuildHandler
 
         virtual void processGuildLeave(Net::MessageIn &msg) const;
 
-        virtual void processGuildExpulsion(Net::MessageIn &msg) const;
-
         virtual void processGuildExpulsionList(Net::MessageIn &msg) const;
 
         virtual void processGuildMessage(Net::MessageIn &msg) const;
@@ -98,6 +96,8 @@ class GuildHandler notfinal : public Net::GuildHandler
         virtual void processGuildOppositionAck(Net::MessageIn &msg) const;
 
         virtual void processGuildBroken(Net::MessageIn &msg) const;
+
+        void processGuildExpulsionContinue(const std::string &nick) const;
 
         void clear() const override final;
 

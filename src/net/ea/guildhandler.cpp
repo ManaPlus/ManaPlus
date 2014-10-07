@@ -448,49 +448,6 @@ void GuildHandler::processGuildLeave(Net::MessageIn &msg) const
     }
 }
 
-void GuildHandler::processGuildExpulsion(Net::MessageIn &msg) const
-{
-    msg.skip(2);    // size (can be many explusions in list)
-    const std::string nick = msg.readString(24);  // Name (of expulsed?)
-    msg.skip(24);        // acc
-    msg.readString(44);  // Message
-    if (taGuild)
-        taGuild->removeMember(nick);
-
-    if (!localPlayer)
-        return;
-
-    if (nick == localPlayer->getName())
-    {
-        if (taGuild)
-        {
-            taGuild->removeFromMembers();
-            taGuild->clearMembers();
-        }
-        NotifyManager::notify(NotifyTypes::GUILD_KICKED);
-        delete2(guildTab)
-
-        if (socialWindow && taGuild)
-            socialWindow->removeTab(taGuild);
-        if (actorManager)
-            actorManager->updatePlayerColors();
-    }
-    else
-    {
-        NotifyManager::notify(NotifyTypes::GUILD_USER_KICKED, nick);
-        if (actorManager)
-        {
-            Being *const b = actorManager->findBeingByName(
-                nick, ActorType::Player);
-
-            if (b)
-                b->clearGuilds();
-            if (taGuild)
-                taGuild->removeMember(nick);
-        }
-    }
-}
-
 void GuildHandler::processGuildExpulsionList(Net::MessageIn &msg) const
 {
     const int length = msg.readInt16();
@@ -575,6 +532,45 @@ void GuildHandler::clear() const
 ChatTab *GuildHandler::getTab() const
 {
     return guildTab;
+}
+
+void GuildHandler::processGuildExpulsionContinue(const std::string &nick) const
+{
+    if (taGuild)
+        taGuild->removeMember(nick);
+
+    if (!localPlayer)
+        return;
+
+    if (nick == localPlayer->getName())
+    {
+        if (taGuild)
+        {
+            taGuild->removeFromMembers();
+            taGuild->clearMembers();
+        }
+        NotifyManager::notify(NotifyTypes::GUILD_KICKED);
+        delete2(guildTab)
+
+        if (socialWindow && taGuild)
+            socialWindow->removeTab(taGuild);
+        if (actorManager)
+            actorManager->updatePlayerColors();
+    }
+    else
+    {
+        NotifyManager::notify(NotifyTypes::GUILD_USER_KICKED, nick);
+        if (actorManager)
+        {
+            Being *const b = actorManager->findBeingByName(
+                nick, ActorType::Player);
+
+            if (b)
+                b->clearGuilds();
+            if (taGuild)
+                taGuild->removeMember(nick);
+        }
+    }
 }
 
 }  // namespace Ea

@@ -23,6 +23,7 @@
 
 #include "actormanager.h"
 #include "configuration.h"
+#include "notifymanager.h"
 
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
@@ -36,6 +37,10 @@
 
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
+
+#include "resources/notifytypes.h"
+
+#include "utils/delete2.h"
 
 #include "debug.h"
 
@@ -397,6 +402,16 @@ void GuildHandler::processGuildMemberLogin(Net::MessageIn &msg) const
                 socialWindow->updateGuildCounter();
         }
     }
+}
+
+void GuildHandler::processGuildExpulsion(Net::MessageIn &msg) const
+{
+    msg.skip(2, "len?");
+    const std::string nick = msg.readString(24, "name?");
+    msg.skip(24, "player name");
+    msg.readString(44, "message");  // Message
+
+    processGuildExpulsionContinue(nick);
 }
 
 }  // namespace TmwAthena

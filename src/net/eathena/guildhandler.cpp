@@ -23,6 +23,7 @@
 
 #include "actormanager.h"
 #include "configuration.h"
+#include "notifymanager.h"
 
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
@@ -34,6 +35,10 @@
 
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
+
+#include "resources/notifytypes.h"
+
+#include "utils/delete2.h"
 
 #include "debug.h"
 
@@ -412,6 +417,16 @@ void GuildHandler::processGuildMemberLogin(Net::MessageIn &msg) const
                 socialWindow->updateGuildCounter();
         }
     }
+}
+
+void GuildHandler::processGuildExpulsion(Net::MessageIn &msg) const
+{
+    msg.skip(2);    // size (can be many explusions in list)
+    const std::string nick = msg.readString(24);  // Name (of expulsed?)
+    msg.skip(24);        // acc
+    msg.readString(44);  // Message
+
+    processGuildExpulsionContinue(nick);
 }
 
 }  // namespace EAthena
