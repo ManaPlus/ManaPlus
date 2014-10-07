@@ -96,6 +96,8 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
 
         void processBeingSpecialEffect(Net::MessageIn &msg) const;
 
+        void processBeingSpecialEffectNum(Net::MessageIn &msg) const;
+
         void processBeingSoundEffect(Net::MessageIn &msg) const;
 
         static void setServerGender(Being *const being,

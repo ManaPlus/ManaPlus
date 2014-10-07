@@ -75,6 +75,7 @@ BeingHandler::BeingHandler(const bool enableSync) :
         SMSG_BEING_ACTION2,
         SMSG_BEING_SELFEFFECT,
         SMSG_BEING_SPECIAL_EFFECT,
+        SMSG_BEING_SPECIAL_EFFECT_NUM,
         SMSG_BEING_SOUND_EFFECT,
         SMSG_BEING_EMOTION,
         SMSG_BEING_CHANGE_LOOKS,
@@ -178,6 +179,10 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_BEING_SPECIAL_EFFECT:
             processBeingSpecialEffect(msg);
+            break;
+
+        case SMSG_BEING_SPECIAL_EFFECT_NUM:
+            processBeingSpecialEffectNum(msg);
             break;
 
         case SMSG_BEING_SOUND_EFFECT:
@@ -1714,6 +1719,15 @@ void BeingHandler::processBeingSpecialEffect(Net::MessageIn &msg) const
     // type is not same with self/misc effect.
     msg.readInt32("account id");
     msg.readInt32("effect type");
+}
+
+void BeingHandler::processBeingSpecialEffectNum(Net::MessageIn &msg) const
+{
+    // +++ need somhow show this effects.
+    // type is not same with self/misc effect.
+    msg.readInt32("account id");
+    msg.readInt32("effect type");
+    msg.readInt32("num");  // effect variable
 }
 
 void BeingHandler::processBeingSoundEffect(Net::MessageIn &msg) const
