@@ -1915,7 +1915,7 @@ void BeingHandler::processPlayerGuilPartyInfo(Net::MessageIn &msg) const
 
     if (dstBeing)
     {
-        msg.readString(24, "char name");
+        dstBeing->setName(msg.readString(24, "char name"));
         dstBeing->setPartyName(msg.readString(24, "party name"));
         if (!guildManager || !GuildManager::getEnableGuildBot())
         {
@@ -1924,7 +1924,8 @@ void BeingHandler::processPlayerGuilPartyInfo(Net::MessageIn &msg) const
         }
         else
         {
-            msg.skip(48);
+            msg.readString(24, "guild name");
+            msg.readString(24, "guild pos");
         }
         dstBeing->addToCache();
     }
