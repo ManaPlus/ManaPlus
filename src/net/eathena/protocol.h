@@ -205,7 +205,7 @@
 #define SMSG_GUILD_INVITE            0x016a
 #define SMSG_GUILD_INVITE_ACK        0x0169
 #define SMSG_GUILD_LEAVE             0x015a
-#define SMSG_GUILD_EXPULSION         0x015c
+#define SMSG_GUILD_EXPULSION         0x0839
 #define SMSG_GUILD_EXPULSION_LIST    0x0163
 #define SMSG_GUILD_MESSAGE           0x017f
 #define SMSG_GUILD_SKILL_UP          0x010e
