@@ -414,4 +414,20 @@ void GuildHandler::processGuildExpulsion(Net::MessageIn &msg) const
     processGuildExpulsionContinue(nick);
 }
 
+void GuildHandler::processGuildExpulsionList(Net::MessageIn &msg) const
+{
+    const int length = msg.readInt16("len");
+    if (length < 4)
+        return;
+
+    const int count = (length - 4) / 88;
+
+    for (int i = 0; i < count; i++)
+    {
+        msg.readString(24, "name of expulsed");
+        msg.readString(24, "name of expluser");
+        msg.readString(24, "message");
+    }
+}
+
 }  // namespace TmwAthena

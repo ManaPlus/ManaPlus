@@ -81,8 +81,6 @@ class GuildHandler notfinal : public Net::GuildHandler
 
         virtual void processGuildLeave(Net::MessageIn &msg) const;
 
-        virtual void processGuildExpulsionList(Net::MessageIn &msg) const;
-
         virtual void processGuildMessage(Net::MessageIn &msg) const;
 
         virtual void processGuildSkillUp(Net::MessageIn &msg) const;

@@ -448,22 +448,6 @@ void GuildHandler::processGuildLeave(Net::MessageIn &msg) const
     }
 }
 
-void GuildHandler::processGuildExpulsionList(Net::MessageIn &msg) const
-{
-    const int length = msg.readInt16();
-    if (length < 4)
-        return;
-
-    const int count = (length - 4) / 88;
-
-    for (int i = 0; i < count; i++)
-    {
-        msg.readString(24);  // Name (of expulsed?)
-        msg.readString(24);  // 'Acc' (name of expulser?)
-        msg.readString(24);  // Message
-    }
-}
-
 void GuildHandler::processGuildMessage(Net::MessageIn &msg) const
 {
     const int msgLength = msg.readInt16() - 4;

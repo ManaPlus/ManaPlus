@@ -81,6 +81,8 @@ class GuildHandler final : public Ea::GuildHandler, public MessageHandler
         void processGuildMemberLogin(Net::MessageIn &msg) const;
 
         void processGuildExpulsion(Net::MessageIn &msg) const;
+
+        void processGuildExpulsionList(Net::MessageIn &msg) const;
 };
 
 //    extern Ea::GuildTab *guildTab;
