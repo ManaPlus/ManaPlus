@@ -46,6 +46,8 @@ class FamilyHandler final : public MessageHandler,
 
         void processCallPartner(Net::MessageIn &msg);
 
+        void processDivorced(Net::MessageIn &msg);
+
     private:
         int mParent1;
         int mParent2;
