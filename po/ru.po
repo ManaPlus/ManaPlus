@@ -8652,12 +8652,12 @@ msgstr "Игрок не онлайн!"
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:351
 msgid "Pet catch failed."
-msgstr "Попытка поймать не удалась"
+msgstr "Попытка поймать не удалась."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:355
 msgid "Pet catched."
-msgstr "Питомец пойман"
+msgstr "Питомец пойман."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:359

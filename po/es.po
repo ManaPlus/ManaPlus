@@ -2705,7 +2705,7 @@ msgstr ""
 #. TRANSLATORS: Skill type
 #: src/gui/widgets/skillinfo.cpp:142
 msgid "Unknown:"
-msgstr "Desconocido"
+msgstr "Desconocido:"
 
 #: src/gui/widgets/skillinfo.cpp:148
 #, c-format
@@ -8674,7 +8674,7 @@ msgstr "Mascota capturada."
 #: src/resources/notifications.h:359
 #, c-format
 msgid "Pet catch unkown error: %d."
-msgstr "Error desconocido en captura de mascota: %d"
+msgstr "Error desconocido en captura de mascota: %d."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:363
@@ -8711,7 +8711,7 @@ msgstr "Alimentaste a tu homúnculo."
 #: src/resources/notifications.h:387
 #, c-format
 msgid "You cant feed homunculus, because not have %s."
-msgstr "No puedes alimentar al homúnculo, porque no tienes %s"
+msgstr "No puedes alimentar al homúnculo, porque no tienes %s."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:391
