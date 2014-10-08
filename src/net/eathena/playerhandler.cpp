@@ -58,6 +58,7 @@ PlayerHandler::PlayerHandler() :
         SMSG_PLAYER_GET_EXP,
         SMSG_PVP_INFO,
         SMSG_PLAYER_HEAL,
+        SMSG_PLAYER_SKILL_MESSAGE,
         0
     };
     handledMessages = _messages;
@@ -123,6 +124,10 @@ void PlayerHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_PLAYER_HEAL:
             processPlayerHeal(msg);
+            break;
+
+        case SMSG_PLAYER_SKILL_MESSAGE:
+            processPlayerSkillMessage(msg);
             break;
 
         default:
@@ -464,6 +469,12 @@ void PlayerHandler::processPlayerHeal(Net::MessageIn &msg)
     // 7 - sp
     msg.readInt16("var id");
     msg.readInt16("value");
+}
+
+void PlayerHandler::processPlayerSkillMessage(Net::MessageIn &msg)
+{
+    // +++ need show this message
+    msg.readInt32("type");
 }
 
 void PlayerHandler::setStat(const int type,
