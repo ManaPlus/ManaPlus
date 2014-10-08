@@ -596,7 +596,7 @@ void CharSelectDialog::updateState()
 
         LocalPlayer *const player = mCharacterEntries[
             idx]->getCharacter()->dummy;
-        if (player)
+        if (player && mRenameButton)
             mRenameButton->setEnabled(player->getRename() ? true : false);
     }
     else
