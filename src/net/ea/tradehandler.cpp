@@ -137,56 +137,6 @@ void TradeHandler::processTradeResponseContinue(const uint8_t type) const
     }
 }
 
-void TradeHandler::processTradeItemAddResponse(Net::MessageIn &msg)
-{
-    // Trade: New Item add response (was 0x00ea, now 01b1)
-    const int index = msg.readInt16() - INVENTORY_OFFSET;
-    Item *item = nullptr;
-    if (PlayerInfo::getInventory())
-        item = PlayerInfo::getInventory()->getItem(index);
-
-    if (!item)
-    {
-        if (tradeWindow)
-            tradeWindow->receivedOk(true);
-        return;
-    }
-    const int quantity = msg.readInt16();
-
-    const uint8_t res = msg.readUInt8();
-    switch (res)
-    {
-        case 0:
-            // Successfully added item
-            if (tradeWindow)
-            {
-                tradeWindow->addItem2(item->getId(), true,
-                    quantity, item->getRefine(), item->getColor(),
-                    item->isEquipment());
-            }
-            item->increaseQuantity(-quantity);
-            break;
-        case 1:
-            // Add item failed - player overweighted
-            NotifyManager::notify(NotifyTypes::
-                TRADE_ADD_PARTNER_OVER_WEIGHT);
-            break;
-        case 2:
-            // Add item failed - player has no free slot
-            NotifyManager::notify(NotifyTypes::TRADE_ADD_PARTNER_NO_SLOTS);
-            break;
-        case 3:
-            // Add item failed - non tradable item
-            NotifyManager::notify(NotifyTypes::TRADE_ADD_UNTRADABLE_ITEM);
-            break;
-        default:
-            NotifyManager::notify(NotifyTypes::TRADE_ADD_ERROR);
-            logger->log("QQQ SMSG_TRADE_ITEM_ADD_RESPONSE: "
-                        + toString(res));
-            break;
-    }
-}
-
 void TradeHandler::processTradeOk(Net::MessageIn &msg)
 {
     // 0 means ok from myself, 1 means ok from other;
