@@ -254,37 +254,6 @@ void BeingHandler::processBeingAction(Net::MessageIn &msg) const
     BLOCK_END("BeingHandler::processBeingAction")
 }
 
-void BeingHandler::processBeingSelfEffect(Net::MessageIn &msg) const
-{
-    BLOCK_START("BeingHandler::processBeingSelfEffect")
-    if (!effectManager || !actorManager)
-    {
-        BLOCK_END("BeingHandler::processBeingSelfEffect")
-        return;
-    }
-
-    const int id = static_cast<uint32_t>(msg.readInt32("being id"));
-    Being *const being = actorManager->findBeing(id);
-    if (!being)
-    {
-        BLOCK_END("BeingHandler::processBeingSelfEffect")
-        return;
-    }
-
-    const int effectType = msg.readInt32("effect type");
-
-    if (Particle::enabled)
-        effectManager->trigger(effectType, being);
-
-    // +++ need dehard code effectType == 3
-    if (effectType == 3 && being->getType() == ActorType::Player
-        && socialWindow)
-    {   // reset received damage
-        socialWindow->resetDamage(being->getName());
-    }
-    BLOCK_END("BeingHandler::processBeingSelfEffect")
-}
-
 void BeingHandler::processBeingEmotion(Net::MessageIn &msg) const
 {
     BLOCK_START("BeingHandler::processBeingEmotion")

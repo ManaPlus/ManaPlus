@@ -92,6 +92,8 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
 
         static void applyPlayerAction(Being *const being,
                                       const uint8_t type);
+
+        void processBeingSelfEffect(Net::MessageIn &msg) const;
 };
 
 }  // namespace TmwAthena

@@ -52,8 +52,6 @@ class BeingHandler notfinal : public Net::BeingHandler
 
         virtual void processBeingAction(Net::MessageIn &msg) const;
 
-        virtual void processBeingSelfEffect(Net::MessageIn &msg) const;
-
         virtual void processBeingEmotion(Net::MessageIn &msg) const;
 
         virtual void processNameResponse(Net::MessageIn &msg) const;

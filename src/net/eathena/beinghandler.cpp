@@ -23,6 +23,7 @@
 #include "net/eathena/beinghandler.h"
 
 #include "actormanager.h"
+#include "effectmanager.h"
 #include "guild.h"
 #include "guildmanager.h"
 #include "party.h"
@@ -30,6 +31,8 @@
 #include "being/localplayer.h"
 #include "being/mercenaryinfo.h"
 #include "being/playerinfo.h"
+
+#include "particle/particle.h"
 
 #include "input/keyboardconfig.h"
 
@@ -1975,6 +1978,30 @@ void BeingHandler::processBeingStatUpdate1(Net::MessageIn &msg) const
         return;
     }
     dstBeing->setManner(value);
+}
+
+void BeingHandler::processBeingSelfEffect(Net::MessageIn &msg) const
+{
+    BLOCK_START("BeingHandler::processBeingSelfEffect")
+    if (!effectManager || !actorManager)
+    {
+        BLOCK_END("BeingHandler::processBeingSelfEffect")
+        return;
+    }
+
+    const int id = static_cast<uint32_t>(msg.readInt32("being id"));
+    Being *const being = actorManager->findBeing(id);
+    if (!being)
+    {
+        BLOCK_END("BeingHandler::processBeingSelfEffect")
+        return;
+    }
+
+    const int effectType = msg.readInt32("effect type");
+    if (Particle::enabled)
+        effectManager->trigger(effectType, being);
+
+    BLOCK_END("BeingHandler::processBeingSelfEffect")
 }
 
 }  // namespace EAthena
