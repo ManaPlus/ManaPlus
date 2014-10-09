@@ -209,7 +209,7 @@ void TradeHandler::processTradeItemAdd(Net::MessageIn &msg)
 
 void TradeHandler::processTradeItemAddResponse(Net::MessageIn &msg)
 {
-    const int index = msg.readInt16("index") - INVENTORY_OFFSET;
+    msg.readInt16("index");
     const uint8_t res = msg.readUInt8("fail");
     switch (res)
     {
