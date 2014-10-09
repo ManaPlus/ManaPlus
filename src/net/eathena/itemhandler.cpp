@@ -40,6 +40,7 @@ ItemHandler::ItemHandler() :
         SMSG_ITEM_VISIBLE,
         SMSG_ITEM_DROPPED,
         SMSG_ITEM_REMOVE,
+        SMSG_GRAFFITI_VISIBLE,
         0
     };
     handledMessages = _messages;
@@ -59,6 +60,10 @@ void ItemHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_ITEM_REMOVE:
             processItemRemove(msg);
+            break;
+
+        case SMSG_GRAFFITI_VISIBLE:
+            processGraffiti(msg);
             break;
 
         default:
@@ -83,6 +88,18 @@ void ItemHandler::processItemDropped(Net::MessageIn &msg)
         actorManager->createItem(id, itemId,
             x, y, amount, identify, subX, subY);
     }
+}
+
+void ItemHandler::processGraffiti(Net::MessageIn &msg)
+{
+    msg.readInt32("graffiti id");
+    msg.readInt32("creator id");
+    msg.readInt16("x");
+    msg.readInt16("y");
+    msg.readUInt8("job");
+    msg.readUInt8("visible");
+    msg.readUInt8("is content");
+    msg.readString(80, "text");
 }
 
 }  // namespace EAthena

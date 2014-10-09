@@ -97,6 +97,7 @@
 #define SMSG_SKILL_SNAP              0x08d2
 #define SMSG_ITEM_USE_RESPONSE       0x00a8
 #define SMSG_ITEM_VISIBLE            0x009d /**< An item is on the floor */
+#define SMSG_GRAFFITI_VISIBLE        0x01c9
 #define SMSG_ITEM_DROPPED            0x084b /**< An item is dropped */
 #define SMSG_ITEM_REMOVE             0x00a1 /**< An item disappers */
 #define SMSG_BEING_VISIBLE           0x0915
