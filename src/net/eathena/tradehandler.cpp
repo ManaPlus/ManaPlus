@@ -163,9 +163,10 @@ void TradeHandler::processTradeRequest(Net::MessageIn &msg) const
 
 void TradeHandler::processTradeResponse2(Net::MessageIn &msg) const
 {
-    msg.readUInt8("type");
+    const uint8_t type = msg.readUInt8("type");
     msg.readInt32("char id");
     msg.readInt16("base level");
+    processTradeResponseContinue(type);
 }
 
 void TradeHandler::processTradeItemAdd(Net::MessageIn &msg)
