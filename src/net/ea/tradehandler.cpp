@@ -78,8 +78,13 @@ void TradeHandler::processTradeResponse(Net::MessageIn &msg) const
         respond(false);
         return;
     }
+    const uint8_t type = msg.readUInt8("type");
+    processTradeResponseContinue(type);
+}
 
-    switch (msg.readUInt8())
+void TradeHandler::processTradeResponseContinue(const uint8_t type) const
+{
+    switch (type)
     {
         case 0:  // Too far away
             NotifyManager::notify(NotifyTypes::TRADE_FAIL_FAR_AWAY,

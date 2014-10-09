@@ -43,6 +43,7 @@ class TradeHandler notfinal : public Net::TradeHandler
         void removeItem(const int slotNum,
                         const int amount) const override final;
 
+    protected:
         void processTradeResponse(Net::MessageIn &msg) const;
 
         static void processTradeItemAddResponse(Net::MessageIn &msg);
@@ -54,6 +55,8 @@ class TradeHandler notfinal : public Net::TradeHandler
         static void processTradeComplete(Net::MessageIn &msg);
 
         void processTradeRequestContinue(const std::string &partner) const;
+
+        void processTradeResponseContinue(const uint8_t type) const;
 };
 
 }  // namespace Ea
