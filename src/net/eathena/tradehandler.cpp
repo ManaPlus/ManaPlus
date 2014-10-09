@@ -60,6 +60,7 @@ TradeHandler::TradeHandler() :
         SMSG_TRADE_OK,
         SMSG_TRADE_CANCEL,
         SMSG_TRADE_COMPLETE,
+        SMSG_TRADE_UNDO,
         0
     };
     handledMessages = _messages;
@@ -101,6 +102,10 @@ void TradeHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_TRADE_COMPLETE:
             processTradeComplete(msg);
+            break;
+
+        case SMSG_TRADE_UNDO:
+            processTradeUndo(msg);
             break;
 
         default:
@@ -233,6 +238,11 @@ void TradeHandler::processTradeItemAddResponse(Net::MessageIn &msg)
                         + toString(res));
             break;
     }
+}
+
+void TradeHandler::processTradeUndo(Net::MessageIn &msg A_UNUSED) const
+{
+    // +++ here need clear trade window from partner side?
 }
 
 }  // namespace EAthena

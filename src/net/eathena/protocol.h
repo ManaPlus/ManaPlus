@@ -164,6 +164,7 @@
 #define SMSG_TRADE_OK                0x00ec
 #define SMSG_TRADE_CANCEL            0x00ee
 #define SMSG_TRADE_COMPLETE          0x00f0
+#define SMSG_TRADE_UNDO              0x00f1
 
 #define SMSG_PARTY_CREATE            0x00fa
 #define SMSG_PARTY_INFO              0x00fb
