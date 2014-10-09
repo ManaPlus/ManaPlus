@@ -16,9 +16,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-10-08 01:19+0300\n"
-"PO-Revision-Date: 2014-10-02 12:22+0000\n"
-"Last-Translator: Alexsl <alexlsh@mail.ru>\n"
+"POT-Creation-Date: 2014-10-10 00:16+0300\n"
+"PO-Revision-Date: 2014-10-09 21:14+0000\n"
+"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/manaplus/"
 "language/ru/)\n"
 "Language: ru\n"
@@ -1680,13 +1680,13 @@ msgstr "Добавить в список игнорирования"
 #. TRANSLATORS: Mercenary move to master
 #: src/gui/popups/popupmenu.cpp:309 src/gui/popups/popupmenu.cpp:320
 msgid "Move to master"
-msgstr ""
+msgstr "Перейти к владельцу"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: fire mercenary
 #: src/gui/popups/popupmenu.cpp:313
 msgid "Fire"
-msgstr ""
+msgstr "Уволить"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: feed homunculus
@@ -2556,17 +2556,17 @@ msgstr "Бордюр тайлов"
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:221
 msgid "Pets"
-msgstr ""
+msgstr "Питомцы"
 
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:223
 msgid "Mercenary"
-msgstr ""
+msgstr "Наемник"
 
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:225
 msgid "Homunculus"
-msgstr ""
+msgstr "Гомункул"
 
 #: src/gui/widgets/characterdisplay.cpp:135
 #, c-format
@@ -2678,12 +2678,12 @@ msgstr "Неизвестный"
 #. TRANSLATORS: Skill type
 #: src/gui/widgets/skillinfo.cpp:118
 msgid "Ground"
-msgstr ""
+msgstr "Земля"
 
 #. TRANSLATORS: Skill type
 #: src/gui/widgets/skillinfo.cpp:123
 msgid "Self"
-msgstr ""
+msgstr "Сам"
 
 #. TRANSLATORS: Skill type
 #: src/gui/widgets/skillinfo.cpp:128
@@ -2698,17 +2698,17 @@ msgstr "Поддержка"
 #. TRANSLATORS: Skill type
 #: src/gui/widgets/skillinfo.cpp:138
 msgid "Target trap"
-msgstr ""
+msgstr "Ловушка"
 
 #. TRANSLATORS: Skill type
 #: src/gui/widgets/skillinfo.cpp:142
 msgid "Unknown:"
-msgstr ""
+msgstr "Неизвестно:"
 
 #: src/gui/widgets/skillinfo.cpp:148
 #, c-format
 msgid " / Mana: -%d"
-msgstr ""
+msgstr " / Мана: -%d"
 
 #: src/gui/widgets/skillinfo.cpp:154
 #, c-format
@@ -2946,14 +2946,14 @@ msgstr "Критический удар:"
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:365
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:407
 msgid "Karma:"
-msgstr ""
+msgstr "Карма:"
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:287
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:368
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:409
 msgid "Manner:"
-msgstr ""
+msgstr "Манеры:"
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:333
@@ -3895,7 +3895,7 @@ msgstr "Включить отлад. лог"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:365
 msgid "Ignore logging packets"
-msgstr ""
+msgstr "Исключить из логгирования пакеты"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:369
@@ -5190,15 +5190,13 @@ msgstr "Аккаунт %s (последний вход %s)"
 
 #. TRANSLATORS: char select dialog. button.
 #: src/gui/windows/charselectdialog.cpp:73
-#, fuzzy
 msgid "Switch"
-msgstr "Сменить героя"
+msgstr "Сменить"
 
 #. TRANSLATORS: char select dialog. button.
 #: src/gui/windows/charselectdialog.cpp:75
-#, fuzzy
 msgid "Password"
-msgstr "Пароль:"
+msgstr "Пароль"
 
 #. TRANSLATORS: char select dialog. button.
 #. TRANSLATORS: updater window button
@@ -5242,9 +5240,8 @@ msgid "Please set new pincode"
 msgstr "Пожалуйста, установите новый пин код"
 
 #: src/gui/windows/charselectdialog.cpp:240
-#, fuzzy
 msgid "Please enter new name"
-msgstr "Пожалуйста, установите новый пин код"
+msgstr "Пожалуйста, введите новое имя"
 
 #. TRANSLATORS: char select dialog. player info message.
 #: src/gui/windows/charselectdialog.cpp:259
@@ -5902,7 +5899,7 @@ msgstr "Показывать ссылки"
 
 #. TRANSLATORS: shop window dialog
 #. TRANSLATORS: trade message
-#: src/gui/windows/shopwindow.cpp:776 src/net/ea/tradehandler.cpp:233
+#: src/gui/windows/shopwindow.cpp:776 src/net/ea/tradehandler.cpp:192
 msgid "Request for Trade"
 msgstr "Запрос на Торговлю"
 
@@ -5937,7 +5934,7 @@ msgstr "Умение %d"
 #: src/gui/windows/skilldialog.cpp:450
 #, c-format
 msgid "Failed skill: %s"
-msgstr ""
+msgstr "Неудача умения: %s"
 
 #. TRANSLATORS: here P is title for visible players tab in social window
 #: src/gui/windows/socialwindow.cpp:77
@@ -6405,7 +6402,7 @@ msgstr "Выбор игрока"
 #. TRANSLATORS: input action name
 #: src/input/pages/basic.cpp:132
 msgid "Target mercenary"
-msgstr ""
+msgstr "Выделение наемника"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/basic.cpp:138
@@ -6485,7 +6482,7 @@ msgstr "Вернуться в безопасный видео режим"
 #. TRANSLATORS: input action name
 #: src/input/pages/basic.cpp:234
 msgid "Fire your homunculus"
-msgstr ""
+msgstr "Уволить гомункула"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/chat.cpp:33
@@ -7037,7 +7034,7 @@ msgstr "Выгрузить конфиг сервера"
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:368
 msgid "Fire your mercenary"
-msgstr ""
+msgstr "Уволить наемника"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/outfits.cpp:37
@@ -7558,19 +7555,19 @@ msgstr "Замки: %s"
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/net/ea/gui/partytab.cpp:106 src/resources/notifications.h:191
+#: src/net/ea/gui/partytab.cpp:106 src/resources/notifications.h:207
 msgid "Item sharing enabled."
 msgstr "Обмен предметами включен."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/net/ea/gui/partytab.cpp:111 src/resources/notifications.h:195
+#: src/net/ea/gui/partytab.cpp:111 src/resources/notifications.h:211
 msgid "Item sharing disabled."
 msgstr "Обмен предметами выключен."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/net/ea/gui/partytab.cpp:116 src/resources/notifications.h:199
+#: src/net/ea/gui/partytab.cpp:116 src/resources/notifications.h:215
 msgid "Item sharing not possible."
 msgstr "Обмен предметами невозможен."
 
@@ -7581,19 +7578,19 @@ msgstr "Статус обмена предметами неизвестен."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/net/ea/gui/partytab.cpp:156 src/resources/notifications.h:179
+#: src/net/ea/gui/partytab.cpp:156 src/resources/notifications.h:195
 msgid "Experience sharing enabled."
 msgstr "Обмен опытом включен."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/net/ea/gui/partytab.cpp:161 src/resources/notifications.h:183
+#: src/net/ea/gui/partytab.cpp:161 src/resources/notifications.h:199
 msgid "Experience sharing disabled."
 msgstr "Обмен опытом выключен."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/net/ea/gui/partytab.cpp:166 src/resources/notifications.h:187
+#: src/net/ea/gui/partytab.cpp:166 src/resources/notifications.h:203
 msgid "Experience sharing not possible."
 msgstr "Обмен опытом невозможен."
 
@@ -7722,30 +7719,27 @@ msgstr ""
 #. TRANSLATORS: char rename error
 #: src/net/eathena/charserverhandler.cpp:516
 #: src/net/eathena/charserverhandler.cpp:553
-#, fuzzy
 msgid "Character rename error."
-msgstr "Персонаж удален."
+msgstr "Ошибка изменения имени персонажа."
 
 #: src/net/eathena/charserverhandler.cpp:531
-#, fuzzy
 msgid "Character renamed."
-msgstr "Персонаж удален."
+msgstr "Персонаж переименован."
 
 #. TRANSLATORS: char rename error
 #: src/net/eathena/charserverhandler.cpp:544
 msgid "Rename not allowed."
-msgstr ""
+msgstr "Изменение имени запрещено."
 
 #. TRANSLATORS: char rename error
 #: src/net/eathena/charserverhandler.cpp:548
 msgid "New name is not set."
-msgstr ""
+msgstr "Новое имя не указано."
 
 #. TRANSLATORS: char rename error
 #: src/net/eathena/charserverhandler.cpp:557
-#, fuzzy
 msgid "Character not found."
-msgstr "Очки персонажа: %d"
+msgstr "Персонаж не найден."
 
 #. TRANSLATORS: player stat
 #: src/net/eathena/generalhandler.cpp:123 src/net/tmwa/generalhandler.cpp:124
@@ -7809,13 +7803,12 @@ msgid "Speed hack detected."
 msgstr "Обнаружен взлом скорости."
 
 #: src/net/eathena/generalhandler.cpp:179
-#, fuzzy
 msgid "Server full."
-msgstr "Сервер:"
+msgstr "Сервер переполнен."
 
 #: src/net/eathena/generalhandler.cpp:182
 msgid "Sorry, you are underaged."
-msgstr ""
+msgstr "К сожалению вы несовершеннолетний."
 
 #. TRANSLATORS: error message
 #: src/net/eathena/generalhandler.cpp:185 src/net/tmwa/generalhandler.cpp:185
@@ -7824,81 +7817,79 @@ msgstr "Двойная попытка подключения."
 
 #: src/net/eathena/generalhandler.cpp:188
 msgid "To many connections from same ip."
-msgstr ""
+msgstr "Слишком много соединений с одного адреса."
 
 #: src/net/eathena/generalhandler.cpp:191
 msgid "Not paid for this time."
-msgstr ""
+msgstr "Не оплачено."
 
 #: src/net/eathena/generalhandler.cpp:194
 msgid "Pay suspended."
-msgstr ""
+msgstr "Оплата приостановлена."
 
 #: src/net/eathena/generalhandler.cpp:197
 msgid "Pay changed."
-msgstr ""
+msgstr "Оплата изменена."
 
 #: src/net/eathena/generalhandler.cpp:200
 msgid "Pay wrong ip."
-msgstr ""
+msgstr "Оплачен другой адрес."
 
 #: src/net/eathena/generalhandler.cpp:203
 msgid "Pay game room."
-msgstr ""
+msgstr "Оплатите за комнату."
 
 #: src/net/eathena/generalhandler.cpp:206
 msgid "Disconnect forced by GM."
-msgstr ""
+msgstr "ГМ отключил вас от сервера."
 
 #: src/net/eathena/generalhandler.cpp:210
 msgid "Ban japan refuse."
-msgstr ""
+msgstr "Японский бан."
 
 #: src/net/eathena/generalhandler.cpp:213
 msgid "Remained other account."
-msgstr ""
+msgstr "Остались другие аккаунты."
 
 #: src/net/eathena/generalhandler.cpp:216
 msgid "Ip unfair."
-msgstr ""
+msgstr "Неправильный адрес."
 
 #: src/net/eathena/generalhandler.cpp:219
 msgid "Ip count all."
-msgstr ""
+msgstr "Превышение колчиства соединений с одного адреса."
 
 #: src/net/eathena/generalhandler.cpp:222
 msgid "Ip count."
-msgstr ""
+msgstr "Превышение колчиства соединений с одного адреса."
 
 #: src/net/eathena/generalhandler.cpp:226
 msgid "Memory."
-msgstr ""
+msgstr "Память."
 
 #: src/net/eathena/generalhandler.cpp:229
 msgid "Han valid."
-msgstr ""
+msgstr "Корректный han."
 
 #: src/net/eathena/generalhandler.cpp:232
 msgid "Ip limited access."
-msgstr ""
+msgstr "Ограничение по ip адресу."
 
 #: src/net/eathena/generalhandler.cpp:235
-#, fuzzy
 msgid "Over characters list."
-msgstr "Персонаж удален."
+msgstr "Слишком много персонажей."
 
 #: src/net/eathena/generalhandler.cpp:238
 msgid "Ip blocked."
-msgstr ""
+msgstr "Адрес заблокирован."
 
 #: src/net/eathena/generalhandler.cpp:241
-#, fuzzy
 msgid "Invalid password count."
-msgstr "Старый пароль указан неверно."
+msgstr "Некорректное число символов в пароле."
 
 #: src/net/eathena/generalhandler.cpp:244
 msgid "Not allowed race."
-msgstr ""
+msgstr "Некорректная расса."
 
 #. TRANSLATORS: error message
 #: src/net/eathena/generalhandler.cpp:247 src/net/tmwa/generalhandler.cpp:189
@@ -7994,16 +7985,16 @@ msgstr "Урон в сек."
 
 #: src/net/eathena/generalhandler.cpp:370
 msgid "Karma"
-msgstr ""
+msgstr "Карма"
 
 #: src/net/eathena/generalhandler.cpp:371
 msgid "Manner"
-msgstr ""
+msgstr "Манеры"
 
 #: src/net/eathena/skillhandler.cpp:304 src/net/eathena/skillhandler.cpp:364
 #, c-format
 msgid "Unknown skill error: %d"
-msgstr ""
+msgstr "Неисвестная ошибка умений: %d"
 
 #. TRANSLATORS: error message
 #: src/net/eathena/skillhandler.cpp:311 src/net/tmwa/skillhandler.cpp:224
@@ -8061,13 +8052,13 @@ msgid "Huh? What's that?"
 msgstr "А? Что это?"
 
 #. TRANSLATORS: trade header
-#: src/net/ea/tradehandler.cpp:100
+#: src/net/ea/tradehandler.cpp:105
 #, c-format
 msgid "Trade: You and %s"
 msgstr "Торговля: Вы и %s"
 
 #. TRANSLATORS: trade message
-#: src/net/ea/tradehandler.cpp:235
+#: src/net/ea/tradehandler.cpp:194
 #, c-format
 msgid "%s wants to trade with you, do you accept?"
 msgstr "%s хочет торговать с Вами, Вы принимаете предложение?"
@@ -8286,432 +8277,457 @@ msgstr "Нельзя купить."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:47
+#, fuzzy
+msgid "Unable to buy. You not have enought money."
+msgstr "У вас недостаточно денег."
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:51
+#, fuzzy
+msgid "Unable to buy. You overweight."
+msgstr "Нельзя купить."
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:55
+msgid "Unable to buy. You have too many items."
+msgstr ""
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:59
 msgid "Nothing to sell."
 msgstr "Нечего продавать."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:51
+#: src/resources/notifications.h:63
 msgid "Thanks for selling."
 msgstr "Спасибо за продажу."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:55
+#: src/resources/notifications.h:67
 msgid "Unable to sell."
 msgstr "Нельзя продать."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:59
+#: src/resources/notifications.h:71
 msgid "Unable to sell while trading."
 msgstr "Невозможно продавать в режиме обмена."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:63
+#: src/resources/notifications.h:75
 msgid "Unable to sell unsellable item."
 msgstr "Невозможно продать непродаваемый предмет."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:67
+#: src/resources/notifications.h:79
 #, c-format
 msgid "Online users: %d"
 msgstr "Пользователей онлайн: %d"
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:71
+#: src/resources/notifications.h:83
 msgid "Guild created."
 msgstr "Гильдия создана."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:75
+#: src/resources/notifications.h:87
 msgid "You are already in guild."
 msgstr "Вы и так в гильдии."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:79
+#: src/resources/notifications.h:91
 msgid "Emperium check failed."
 msgstr "Имперская проверка провалена."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:83
+#: src/resources/notifications.h:95
 msgid "Unknown server response."
 msgstr "Неизвестный ответ сервера."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:87
+#: src/resources/notifications.h:99
 msgid "You have left the guild."
 msgstr "Вы покинули гильдию."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:91
+#: src/resources/notifications.h:103
 msgid "Could not invite user to guild."
 msgstr "Не удалось пригласить пользователя в гильдию."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:95
+#: src/resources/notifications.h:107
 msgid "User rejected guild invite."
 msgstr "Пользователь отклонил приглашение."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:99
+#: src/resources/notifications.h:111
 msgid "User is now part of your guild."
 msgstr "Пользователь теперь в Вашей гильдии."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:103
+#: src/resources/notifications.h:115
 msgid "Your guild is full."
 msgstr "Ваша гильдия полна."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:107
+#: src/resources/notifications.h:119
 msgid "Unknown guild invite response."
 msgstr "Неизвестный ответ на приглашение в гильдию."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:111
+#: src/resources/notifications.h:123
 #, c-format
 msgid "%s has left your guild."
 msgstr "%s покинул Вашу гильдию."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:115
+#: src/resources/notifications.h:127
 msgid "You were kicked from guild."
 msgstr "Вас выгнали из гильдии."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:119
+#: src/resources/notifications.h:131
 #, c-format
 msgid "%s has kicked from your guild."
 msgstr "%s был вышвырнут из Вашей гильдии."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:123
+#: src/resources/notifications.h:135
 msgid "Failed to use item."
 msgstr "Не удалось использовать предмет."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:127
+#: src/resources/notifications.h:139
 msgid "Unable to equip."
 msgstr "Нельзя экипировать."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:131
+#: src/resources/notifications.h:143
+msgid "Unable to equip because you have wrong level."
+msgstr ""
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:147
 msgid "Could not create party."
 msgstr "Не удалось создать группу."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:135
+#: src/resources/notifications.h:151
 msgid "Party successfully created."
 msgstr "Группа успешно создана."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:139
+#: src/resources/notifications.h:155
 msgid "You have left the party."
 msgstr "Вы покинули группу."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:143
-#, fuzzy
+#: src/resources/notifications.h:159
 msgid "You cant left party on this map."
-msgstr "Вы покинули группу."
+msgstr "Вы не можете покинуть группу на этой карте."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:147
-#, fuzzy
+#: src/resources/notifications.h:163
 msgid "You was kicked from party."
-msgstr "Вас выгнали из гильдии."
+msgstr "Вас выкинули из группы."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:151
-msgid "You cant be kicked kicked from party on this map."
-msgstr ""
+#: src/resources/notifications.h:167
+#, fuzzy
+msgid "You cant be kicked from party on this map."
+msgstr "%s не может быть удален из группы на этой карте."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:155
+#: src/resources/notifications.h:171
 #, c-format
 msgid "%s has joined your party."
 msgstr "%s присоединился к группе."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:159
+#: src/resources/notifications.h:175
 #, c-format
 msgid "%s is already a member of a party."
 msgstr "%s уже в Вашей группе."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:163
+#: src/resources/notifications.h:179
 #, c-format
 msgid "%s refused your invitation."
 msgstr "%s отверг Ваше приглашение."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:167
+#: src/resources/notifications.h:183
 #, c-format
 msgid "%s is now a member of your party."
 msgstr "%s теперь в Вашей группе."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:171
+#: src/resources/notifications.h:187
 #, c-format
 msgid "%s can't join your party because party is full."
 msgstr "%s не может присоединиться к Вашей группе, т.к. группа переполнена."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:175
+#: src/resources/notifications.h:191
 #, c-format
 msgid "QQQ Unknown invite response for %s."
 msgstr "QQQ Неизвестный ответ на приглашение для %s."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:203
+#: src/resources/notifications.h:219
 #, c-format
 msgid "%s has left your party."
 msgstr "%s покинул Вашу группу."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:207 src/resources/notifications.h:215
-#, fuzzy, c-format
+#: src/resources/notifications.h:223 src/resources/notifications.h:231
+#, c-format
 msgid "%s cant be kicked from party on this map."
-msgstr "%s был вышвырнут из Вашей гильдии."
+msgstr "%s не может быть удален из группы на этой карте."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:211
-#, fuzzy, c-format
+#: src/resources/notifications.h:227
+#, c-format
 msgid "%s has kicked from your party."
-msgstr "%s был вышвырнут из Вашей гильдии."
+msgstr "%s был удален из группы."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:219
+#: src/resources/notifications.h:235
 #, c-format
 msgid "An unknown member tried to say: %s"
 msgstr "Неизвестный участник попытался сказать: %s"
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:223
+#: src/resources/notifications.h:239
 #, c-format
 msgid "%s is not in your party!"
 msgstr "%s не в группе!"
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:227
+#: src/resources/notifications.h:243
 #, c-format
 msgid "You picked up %s."
 msgstr "Вы получили %s."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:231
+#: src/resources/notifications.h:247
 #, c-format
 msgid "You spent %s."
 msgstr "Вы потратили %s."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:235
+#: src/resources/notifications.h:251
 msgid "Cannot raise skill!"
 msgstr "Не удалось увеличить навык!"
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:239
+#: src/resources/notifications.h:255
 msgid "Equip ammunition first."
 msgstr "Для начала экипируйтесь стрелами/патронами."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:243
+#: src/resources/notifications.h:259
 #, c-format
 msgid "Trading with %s isn't possible. Trade partner is too far away."
 msgstr "Торговля с %s невозможна. Партнер по торговле слишком далеко."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:248
+#: src/resources/notifications.h:264
 #, c-format
 msgid "Trading with %s isn't possible. Character doesn't exist."
 msgstr "Торговля с %s невозможна. Такой персонаж не существует."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:252
+#: src/resources/notifications.h:268
 msgid "Trade cancelled due to an unknown reason."
 msgstr "Торговля отменена по неизвестной причине."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:256
+#: src/resources/notifications.h:272
 #, c-format
 msgid "Trade with %s cancelled."
 msgstr "Торговля с %s отменена."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:260
+#: src/resources/notifications.h:276
+#, fuzzy, c-format
+msgid "Trade with %s cancelled, because player is busy"
+msgstr "Торговля с %s отменена."
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:280
 #, c-format
 msgid "Unhandled trade cancel packet with %s"
 msgstr "Неизвестный пакет при торговле с %s"
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:264
+#: src/resources/notifications.h:284
 msgid "Failed adding item. Trade partner is over weighted."
 msgstr "Не удалось добавить предмет. Партнер по торговле перегружен."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:268
+#: src/resources/notifications.h:288
 msgid "Failed adding item. Trade partner has no free slot."
 msgstr "Не удалось добавить предмет. У партнера по торговле кончилось место."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:272
+#: src/resources/notifications.h:292
 msgid "Failed adding item. You can't trade this item."
 msgstr "Ошибка добавления предмета. Вы не можете торговать этим предметом."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:276
+#: src/resources/notifications.h:296
 msgid "Failed adding item for unknown reason."
 msgstr "Не удалось добавить предмет по неизвестной причине."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:280
+#: src/resources/notifications.h:300
 msgid "Trade canceled."
 msgstr "Торговля отменена."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:284
+#: src/resources/notifications.h:304
 msgid "Trade completed."
 msgstr "Торговля завершена."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:288
+#: src/resources/notifications.h:308
 msgid "Kick failed!"
 msgstr "Не удалось вышвырнуть!"
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:292
+#: src/resources/notifications.h:312
 msgid "Kick succeeded!"
 msgstr "Игрок вышвырнут!"
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:296
+#: src/resources/notifications.h:316
 #, c-format
 msgid "MVP player: %s"
 msgstr "MVP игрок: %s"
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:300
+#: src/resources/notifications.h:320
 msgid "All whispers ignored."
 msgstr "Включено игнорирование всех приватных сообщений."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:304
+#: src/resources/notifications.h:324
 msgid "All whispers ignore failed."
 msgstr "Не удалось игнорирование всех приватных сообщение."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:308
+#: src/resources/notifications.h:328
 msgid "All whispers unignored."
 msgstr "Убрано игнорирование всех приватных сообщений."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:312
+#: src/resources/notifications.h:332
 msgid "All whispers unignore failed."
 msgstr "Не удалось убрать игнорирование всех приватных сообщение."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:319
+#: src/resources/notifications.h:339
 msgid "pvp off, gvg off"
 msgstr "PVP выкл, GVG выкл"
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:323
+#: src/resources/notifications.h:343
 msgid "pvp on"
 msgstr "PVP вкл"
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:327
+#: src/resources/notifications.h:347
 msgid "gvg on"
 msgstr "GVG вкл"
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:331
+#: src/resources/notifications.h:351
 msgid "pvp on, gvg on"
 msgstr "PVP вкл, GVG выкл"
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:335
+#: src/resources/notifications.h:355
 msgid "unknown pvp"
 msgstr "неизвестный статус PVP"
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:339
+#: src/resources/notifications.h:359
 #, c-format
 msgid "Char from account %s is already in your party!"
 msgstr "Персонаж с аккаунта %s уже в вашей группе!"
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:343
+#: src/resources/notifications.h:363
 #, c-format
 msgid "%s blocked invite!"
 msgstr "%s заблокировал приглашение!"
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:347
+#: src/resources/notifications.h:367
 msgid "Char is not online!"
 msgstr "Игрок не онлайн!"
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:351
+#: src/resources/notifications.h:371
 msgid "Pet catch failed."
 msgstr "Попытка поймать не удалась."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:355
+#: src/resources/notifications.h:375
 msgid "Pet catched."
 msgstr "Питомец пойман."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:359
+#: src/resources/notifications.h:379
 #, c-format
 msgid "Pet catch unkown error: %d."
-msgstr ""
-
-#. TRANSLATORS: notification message
-#: src/resources/notifications.h:363
-msgid "Your mercenary duty hour is over."
-msgstr ""
-
-#. TRANSLATORS: notification message
-#: src/resources/notifications.h:367
-msgid "Your mercenary was killed."
-msgstr ""
-
-#. TRANSLATORS: notification message
-#: src/resources/notifications.h:371
-msgid "Your mercenary was fired."
-msgstr ""
-
-#. TRANSLATORS: notification message
-#: src/resources/notifications.h:375
-msgid "Your mercenary run away."
-msgstr ""
-
-#. TRANSLATORS: notification message
-#: src/resources/notifications.h:379
-msgid "Mercenary unknown state."
-msgstr ""
+msgstr "Неизвестная ошибка при ловле питомца: %d."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:383
-#, fuzzy
-msgid "You feed your homunculus."
-msgstr "Вы накормили гомункула"
+msgid "Your mercenary duty hour is over."
+msgstr "Время работы вашего наемника истекло."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:387
+msgid "Your mercenary was killed."
+msgstr "Ваш наемник был убит."
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:391
+msgid "Your mercenary was fired."
+msgstr "Ваш наемник был уволен."
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:395
+msgid "Your mercenary run away."
+msgstr "Ваш намник бежал."
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:399
+msgid "Mercenary unknown state."
+msgstr "Неизвестное состояние наемника."
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:403
+msgid "You feed your homunculus."
+msgstr "Вы покормили гомункула."
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:407
 #, c-format
 msgid "You cant feed homunculus, because not have %s."
 msgstr "Вы не можете накормить гомункула, потому что нет %s."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:391
-#, fuzzy
+#: src/resources/notifications.h:411
 msgid "Card insert failed."
-msgstr "Не удалось начать торговлю!"
+msgstr "Ошибка вставки карточки."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:395
+#: src/resources/notifications.h:415
 msgid "Card inserted."
-msgstr ""
+msgstr "Карточка вставлена."
 
 #. TRANSLATORS: chat option changed message
 #: src/utils/booleanoptions.h:27
@@ -8720,9 +8736,3 @@ msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
 msgstr ""
 "/%s может принимать значение \"yes\", \"no\", \"true\", \"false\", \"1\" или "
 "\"0\"."
-
-#~ msgid "Enable auction bot support"
-#~ msgstr "Включить поддержку бота AuctionBot"
-
-#~ msgid "Auction"
-#~ msgstr "Аукцион"
