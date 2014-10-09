@@ -124,6 +124,10 @@ void TradeHandler::processTradeResponseContinue(const uint8_t type) const
             }
             PlayerInfo::setTrading(false);
             break;
+        case 5:
+            NotifyManager::notify(NotifyTypes::TRADE_CANCELLED_BUSY,
+                tradePartnerName);
+            break;
         default:  // Shouldn't happen as well, but to be sure
             NotifyManager::notify(NotifyTypes::TRADE_ERROR_UNKNOWN,
                 tradePartnerName);

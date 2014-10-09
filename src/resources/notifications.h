@@ -271,6 +271,10 @@ namespace NotifyManager
             // TRANSLATORS: notification message
             N_("Trade with %s cancelled."),
             NotifyFlags::STRING},
+        {"trade cancelled busy",
+            // TRANSLATORS: notification message
+            N_("Trade with %s cancelled, because player is busy"),
+            NotifyFlags::STRING},
         {"trade error unknown",
             // TRANSLATORS: notification message
             N_("Unhandled trade cancel packet with %s"),
