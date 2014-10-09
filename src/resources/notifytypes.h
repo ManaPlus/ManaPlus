@@ -54,6 +54,7 @@ namespace NotifyTypes
         GUILD_USER_KICKED,
         USE_FAILED,
         EQUIP_FAILED,
+        EQUIP_FAILED_LEVEL,
         PARTY_CREATE_FAILED,
         PARTY_CREATED,
         PARTY_LEFT,

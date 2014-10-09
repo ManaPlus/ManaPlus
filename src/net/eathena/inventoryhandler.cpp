@@ -486,10 +486,20 @@ void InventoryHandler::processPlayerEquip(Net::MessageIn &msg)
     msg.readInt16("sprite");
     const uint8_t flag = msg.readUInt8("result");
 
-    if (flag)
-        NotifyManager::notify(NotifyTypes::EQUIP_FAILED);
-    else
-        mEquips.setEquipment(getSlot(equipType), index);
+    switch (flag)
+    {
+        case 0:
+            mEquips.setEquipment(getSlot(equipType), index);
+            break;
+        case 1:
+            NotifyManager::notify(NotifyTypes::EQUIP_FAILED_LEVEL);
+            break;
+
+        case 2:
+        default:
+            NotifyManager::notify(NotifyTypes::EQUIP_FAILED);
+            break;
+    }
     BLOCK_END("InventoryHandler::processPlayerEquip")
 }
 
