@@ -164,7 +164,7 @@ namespace NotifyManager
             NotifyFlags::EMPTY},
         {"party kick deny",
             // TRANSLATORS: notification message
-            N_("You cant be kicked kicked from party on this map."),
+            N_("You cant be kicked from party on this map."),
             NotifyFlags::EMPTY},
         {"party user joined",
             // TRANSLATORS: notification message
