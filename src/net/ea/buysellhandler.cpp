@@ -170,18 +170,34 @@ void BuySellHandler::processNpcSell(Net::MessageIn &msg) const
 
 void BuySellHandler::processNpcBuyResponse(Net::MessageIn &msg) const
 {
-    if (msg.readUInt8("response") == 0U)
+    const uint8_t response = msg.readUInt8("response");
+    if (response == 0U)
     {
         NotifyManager::notify(NotifyTypes::BUY_DONE);
+        return;
     }
-    else
+    // Reset player money since buy dialog already assumed purchase
+    // would go fine
+    if (mBuyDialog)
+        mBuyDialog->setMoney(PlayerInfo::getAttribute(Attributes::MONEY));
+    switch (response)
     {
-        // Reset player money since buy dialog already assumed purchase
-        // would go fine
-        if (mBuyDialog)
-            mBuyDialog->setMoney(PlayerInfo::getAttribute(Attributes::MONEY));
-        NotifyManager::notify(NotifyTypes::BUY_FAILED);
-    }
+        case 1:
+            NotifyManager::notify(NotifyTypes::BUY_FAILED_NO_MONEY);
+            break;
+
+        case 2:
+            NotifyManager::notify(NotifyTypes::BUY_FAILED_OVERWEIGHT);
+            break;
+
+        case 3:
+            NotifyManager::notify(NotifyTypes::BUY_FAILED_TOO_MANY_ITEMS);
+            break;
+
+        default:
+            NotifyManager::notify(NotifyTypes::BUY_FAILED);
+            break;
+    };
 }
 
 }  // namespace Ea

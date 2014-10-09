@@ -42,6 +42,18 @@ namespace NotifyManager
             // TRANSLATORS: notification message
             N_("Unable to buy."),
             NotifyFlags::EMPTY},
+        {"buy fail no money",
+            // TRANSLATORS: notification message
+            N_("Unable to buy. You not have enought money."),
+            NotifyFlags::EMPTY},
+        {"buy fail overweight",
+            // TRANSLATORS: notification message
+            N_("Unable to buy. You overweight."),
+            NotifyFlags::EMPTY},
+        {"buy fail too many items",
+            // TRANSLATORS: notification message
+            N_("Unable to buy. You have too many items."),
+            NotifyFlags::EMPTY},
         {"sell empty",
             // TRANSLATORS: notification message
             N_("Nothing to sell."),
