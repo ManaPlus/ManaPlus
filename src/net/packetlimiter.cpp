@@ -23,7 +23,6 @@
 #include "configuration.h"
 #include "settings.h"
 
-//#include "utils/stringutils.h"
 #include "utils/timer.h"
 
 #include <fstream>

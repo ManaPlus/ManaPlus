@@ -24,8 +24,6 @@
 
 #include "main.h"
 
-#include "events/keyevent.h"
-
 #include "input/inputaction.h"
 
 #include "gui/dialogtype.h"

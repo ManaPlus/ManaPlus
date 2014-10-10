@@ -121,8 +121,7 @@ MiniStatusWindow::MiniStatusWindow() :
     if (gameHandler->canUseMagicBar() && statusWindow)
         statusWindow->updateMPBar(mMpBar);
 
-    const int job = Attributes::JOB
-        && serverConfig.getValueBool("showJob", true);
+    const bool job = serverConfig.getValueBool("showJob", true);
 
     StatusWindow::updateXPBar(mXpBar);
 

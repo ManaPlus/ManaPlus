@@ -25,7 +25,6 @@
 #include "configuration.h"
 #include "game.h"
 #include "soundmanager.h"
-#include "units.h"
 
 #include "being/attributes.h"
 #include "being/beingflag.h"
@@ -37,7 +36,6 @@
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
 
-#include "gui/windows/skilldialog.h"
 #include "gui/windows/whoisonline.h"
 
 #include "gui/onlineplayer.h"

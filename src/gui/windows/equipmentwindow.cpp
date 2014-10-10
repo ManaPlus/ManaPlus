@@ -773,5 +773,5 @@ int EquipmentWindow::addPage(const std::string &name)
         boxes.push_back(nullptr);
 
     mTabs->addButton(name);
-    return mPages.size() - 1;
+    return static_cast<int>(mPages.size()) - 1;
 }

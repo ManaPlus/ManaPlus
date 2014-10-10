@@ -26,8 +26,6 @@
 #include "gui/sdlinput.h"
 #endif
 
-#include "events/keyevent.h"
-
 #include "input/inputaction.h"
 
 #include "utils/stringutils.h"

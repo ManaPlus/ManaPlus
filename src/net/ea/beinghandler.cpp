@@ -24,14 +24,11 @@
 
 #include "actormanager.h"
 #include "configuration.h"
-#include "effectmanager.h"
 #include "game.h"
 #include "party.h"
 
 #include "being/localplayer.h"
 #include "being/playerrelations.h"
-
-#include "particle/particle.h"
 
 #include "gui/viewport.h"
 
@@ -390,8 +387,7 @@ void BeingHandler::processPlayerStop(Net::MessageIn &msg) const
     BLOCK_END("BeingHandler::processPlayerStop")
 }
 
-void BeingHandler::processPlayerMoveToAttack(Net::MessageIn &msg A_UNUSED)
-                                             const
+void BeingHandler::processPlayerMoveToAttack(Net::MessageIn &msg) const
 {
     BLOCK_START("BeingHandler::processPlayerStop")
     msg.readInt32("target id");

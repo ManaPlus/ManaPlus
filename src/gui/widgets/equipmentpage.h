@@ -25,8 +25,9 @@
 
 #include "localconsts.h"
 
-class EquipmentBox;
 class PlayerBox;
+
+struct EquipmentBox;
 
 struct EquipmentPage final
 {

@@ -80,8 +80,6 @@
 #include "settings.h"
 #include "touchmanager.h"
 
-#include "events/keyevent.h"
-
 #include "listeners/focuslistener.h"
 #include "listeners/guiconfiglistener.h"
 #include "listeners/keylistener.h"

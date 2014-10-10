@@ -24,8 +24,6 @@
 
 #include "client.h"
 
-#include "events/keyevent.h"
-
 #include "input/inputaction.h"
 
 #include "listeners/wrongdatanoticelistener.h"

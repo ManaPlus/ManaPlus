@@ -25,8 +25,6 @@
 #include "client.h"
 #include "configuration.h"
 
-#include "events/keyevent.h"
-
 #include "input/inputaction.h"
 
 #include "listeners/openurllistener.h"

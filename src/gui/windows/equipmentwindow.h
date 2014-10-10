@@ -26,7 +26,6 @@
 #include "equipment.h"
 #include "localconsts.h"
 
-#include "gui/widgets/equipmentpage.h"
 #include "gui/widgets/window.h"
 
 #include "utils/xml.h"
@@ -43,7 +42,7 @@ class Item;
 class PlayerBox;
 class TabStrip;
 
-struct EquipmentBox;
+struct EquipmentPage;
 
 /**
  * Equipment dialog.

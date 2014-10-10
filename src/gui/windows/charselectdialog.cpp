@@ -26,8 +26,6 @@
 #include "configuration.h"
 #include "units.h"
 
-#include "events/keyevent.h"
-
 #include "input/inputaction.h"
 
 #include "being/attributes.h"
@@ -234,7 +232,7 @@ void CharSelectDialog::action(const ActionEvent &event)
         else if (eventId == "rename"
                  && mCharacterEntries[selected]->getCharacter())
         {
-            LocalPlayer *const player = mCharacterEntries[
+            const LocalPlayer *const player = mCharacterEntries[
                 selected]->getCharacter()->dummy;
             EditDialog *const dialog = new EditDialog(
                 _("Please enter new name"), player->getName(), "OK");
@@ -525,8 +523,7 @@ void CharSelectDialog::setLocked(const bool locked)
         mUnregisterButton->setEnabled(!locked);
     if (mChangeEmailButton)
         mChangeEmailButton->setEnabled(!locked);
-    if (mPlayButton)
-        mPlayButton->setEnabled(!locked);
+    mPlayButton->setEnabled(!locked);
     if (mDeleteButton)
         mDeleteButton->setEnabled(!locked);
 
@@ -575,8 +572,7 @@ void CharSelectDialog::close()
 void CharSelectDialog::widgetResized(const Event &event)
 {
     Window::widgetResized(event);
-    if (mCharacterView)
-        mCharacterView->resize();
+    mCharacterView->resize();
 }
 
 void CharSelectDialog::updateState()
@@ -594,7 +590,7 @@ void CharSelectDialog::updateState()
         // TRANSLATORS: char select dialog. button.
         mPlayButton->setCaption(_("Play"));
 
-        LocalPlayer *const player = mCharacterEntries[
+        const LocalPlayer *const player = mCharacterEntries[
             idx]->getCharacter()->dummy;
         if (player && mRenameButton)
             mRenameButton->setEnabled(player->getRename() ? true : false);

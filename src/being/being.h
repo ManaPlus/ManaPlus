@@ -104,7 +104,7 @@ class Being notfinal : public ActorSprite,
             CRITICAL      = 10,
             FLEE          = 11,
             TOUCH_SKILL   = 12,
-//?         SKILL = 0xff,
+//          SKILL = 0xff,
             MISS = 0xffff   // pseudo value for miss attacks
         };
 

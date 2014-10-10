@@ -659,7 +659,7 @@ impHandler(debugSpawn)
     for (int x = -half; x < cnt - half; x ++)
     {
         for (int y =  -half; y < cnt - half; y ++)
-            actorManager->cloneBeing(localPlayer, x, y, cnt);
+            ActorManager::cloneBeing(localPlayer, x, y, cnt);
     }
     return true;
 }

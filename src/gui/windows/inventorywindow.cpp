@@ -29,8 +29,6 @@
 #include "being/attributes.h"
 #include "being/playerinfo.h"
 
-#include "events/keyevent.h"
-
 #include "input/inputmanager.h"
 
 #include "gui/gui.h"

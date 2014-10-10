@@ -23,7 +23,6 @@
 
 #include "actormanager.h"
 #include "configuration.h"
-#include "notifymanager.h"
 
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
@@ -35,10 +34,6 @@
 
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
-
-#include "resources/notifytypes.h"
-
-#include "utils/delete2.h"
 
 #include "debug.h"
 

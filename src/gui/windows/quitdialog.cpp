@@ -27,8 +27,6 @@
 #include "soundconsts.h"
 #include "soundmanager.h"
 
-#include "events/keyevent.h"
-
 #include "input/inputaction.h"
 
 #include "gui/dialogsmanager.h"

@@ -67,7 +67,6 @@
 #include "render/opengldebug.h"
 
 #include "net/chathandler.h"
-#include "net/playerhandler.h"
 
 #include "utils/copynpaste.h"
 #include "utils/delete2.h"

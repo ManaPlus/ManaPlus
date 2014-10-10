@@ -22,7 +22,6 @@
 
 #include "net/messagein.h"
 
-#include "net/net.h"
 #include "net/packetcounters.h"
 
 #include "utils/stringutils.h"

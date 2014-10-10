@@ -65,7 +65,7 @@ void BuySellDialog::init()
     if (setupWindow)
         setupWindow->registerWindowForReset(this);
 
-    static const char *buttonNames[] =
+    static const char *const buttonNames[] =
     {
         // TRANSLATORS: shop window button
         N_("Buy"),

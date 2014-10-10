@@ -65,8 +65,6 @@
 
 #include "gui/widgets/tabbedarea.h"
 
-#include "events/keyevent.h"
-
 #include "input/inputaction.h"
 
 #include "gui/gui.h"

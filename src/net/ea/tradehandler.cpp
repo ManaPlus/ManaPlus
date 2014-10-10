@@ -22,9 +22,6 @@
 
 #include "net/ea/tradehandler.h"
 
-#include "inventory.h"
-#include "item.h"
-#include "logger.h"
 #include "notifymanager.h"
 
 #include "being/playerinfo.h"
@@ -34,8 +31,6 @@
 #include "gui/windows/tradewindow.h"
 
 #include "net/messagein.h"
-
-#include "net/ea/eaprotocol.h"
 
 #include "utils/gettext.h"
 

@@ -68,8 +68,6 @@
 #include "graphicsvertexes.h"
 #include "settings.h"
 
-#include "events/keyevent.h"
-
 #include "input/inputaction.h"
 
 #include "resources/image.h"

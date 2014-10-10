@@ -71,7 +71,7 @@ namespace Ea
         ATTACK_DELAY = 53,
         JOB          = 55
     };
-}  // namespace Net
+}  // namespace Ea
 
 enum
 {

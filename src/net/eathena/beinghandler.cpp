@@ -1947,7 +1947,7 @@ void BeingHandler::processBeingFakeName(Net::MessageIn &msg) const
         msg.readUInt8("object type"));
     const int id = msg.readInt32("npc id");
     msg.skip(8, "unused");
-    const int job = msg.readInt16("class?");  // 111
+    const uint16_t job = msg.readInt16("class?");  // 111
     msg.skip(30, "unused");
     uint16_t x, y;
     uint8_t dir;

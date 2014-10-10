@@ -22,7 +22,6 @@
 
 #include "net/eathena/tradehandler.h"
 
-#include "inventory.h"
 #include "item.h"
 #include "notifymanager.h"
 

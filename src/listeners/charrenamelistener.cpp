@@ -20,8 +20,9 @@
 
 #include "listeners/charrenamelistener.h"
 
-#include "gui/windows/charselectdialog.h"
 #include "gui/windows/editdialog.h"
+
+#include "net/charserverhandler.h"
 
 #include "debug.h"
 

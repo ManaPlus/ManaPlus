@@ -30,7 +30,6 @@ namespace SkillOwner
         Homunculus = 2,
         Guild      = 3
     };
-
-}
+}  // namespace SkillOwner
 
 #endif  // RESOURCES_SKILLOWNER_H

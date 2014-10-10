@@ -128,8 +128,7 @@ StatusWindow::StatusWindow() :
         getThemeColor(Theme::XP_BAR_OUTLINE));
 
     const bool magicBar = gameHandler->canUseMagicBar();
-    const int job = Attributes::JOB
-        && serverConfig.getValueBool("showJob", true);
+    const bool job = serverConfig.getValueBool("showJob", true);
 
     if (magicBar)
     {
