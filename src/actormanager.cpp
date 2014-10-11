@@ -50,6 +50,7 @@
 #include "net/charserverhandler.h"
 #include "net/packetlimiter.h"
 #include "net/playerhandler.h"
+#include "net/serverfeatures.h"
 
 #include "resources/iteminfo.h"
 
@@ -252,6 +253,11 @@ Being *ActorManager::createBeing(const int id,
         beingHandler->requestNameById(id);
         if (localPlayer)
             localPlayer->checkNewName(being);
+    }
+    else if (type == ActorType::Monster)
+    {
+        if (serverFeatures->haveMonsterName())
+            beingHandler->requestNameById(id);
     }
     else if (type == ActorType::Portal)
     {

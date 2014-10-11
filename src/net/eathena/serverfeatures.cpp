@@ -137,4 +137,9 @@ bool ServerFeatures::haveCharRename() const
     return true;
 }
 
+bool ServerFeatures::haveMonsterName() const
+{
+    return true;
+}
+
 }  // namespace EAthena
