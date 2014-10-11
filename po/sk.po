@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-10-08 01:19+0300\n"
-"PO-Revision-Date: 2014-10-08 10:01+0000\n"
+"POT-Creation-Date: 2014-10-10 00:16+0300\n"
+"PO-Revision-Date: 2014-10-10 10:01+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Slovak (http://www.transifex.com/projects/p/manaplus/language/sk/)\n"
 "MIME-Version: 1.0\n"
@@ -5868,7 +5868,7 @@ msgstr ""
 
 #. TRANSLATORS: shop window dialog
 #. TRANSLATORS: trade message
-#: src/gui/windows/shopwindow.cpp:776 src/net/ea/tradehandler.cpp:233
+#: src/gui/windows/shopwindow.cpp:776 src/net/ea/tradehandler.cpp:192
 msgid "Request for Trade"
 msgstr ""
 
@@ -7519,19 +7519,19 @@ msgstr ""
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/net/ea/gui/partytab.cpp:106 src/resources/notifications.h:191
+#: src/net/ea/gui/partytab.cpp:106 src/resources/notifications.h:207
 msgid "Item sharing enabled."
 msgstr ""
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/net/ea/gui/partytab.cpp:111 src/resources/notifications.h:195
+#: src/net/ea/gui/partytab.cpp:111 src/resources/notifications.h:211
 msgid "Item sharing disabled."
 msgstr ""
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/net/ea/gui/partytab.cpp:116 src/resources/notifications.h:199
+#: src/net/ea/gui/partytab.cpp:116 src/resources/notifications.h:215
 msgid "Item sharing not possible."
 msgstr ""
 
@@ -7542,19 +7542,19 @@ msgstr ""
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/net/ea/gui/partytab.cpp:156 src/resources/notifications.h:179
+#: src/net/ea/gui/partytab.cpp:156 src/resources/notifications.h:195
 msgid "Experience sharing enabled."
 msgstr ""
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/net/ea/gui/partytab.cpp:161 src/resources/notifications.h:183
+#: src/net/ea/gui/partytab.cpp:161 src/resources/notifications.h:199
 msgid "Experience sharing disabled."
 msgstr ""
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/net/ea/gui/partytab.cpp:166 src/resources/notifications.h:187
+#: src/net/ea/gui/partytab.cpp:166 src/resources/notifications.h:203
 msgid "Experience sharing not possible."
 msgstr ""
 
@@ -8012,13 +8012,13 @@ msgid "Huh? What's that?"
 msgstr ""
 
 #. TRANSLATORS: trade header
-#: src/net/ea/tradehandler.cpp:100
+#: src/net/ea/tradehandler.cpp:105
 #, c-format
 msgid "Trade: You and %s"
 msgstr ""
 
 #. TRANSLATORS: trade message
-#: src/net/ea/tradehandler.cpp:235
+#: src/net/ea/tradehandler.cpp:194
 #, c-format
 msgid "%s wants to trade with you, do you accept?"
 msgstr ""
@@ -8237,426 +8237,452 @@ msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:47
-msgid "Nothing to sell."
+msgid "Unable to buy. You not have enought money."
 msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:51
-msgid "Thanks for selling."
+msgid "Unable to buy. You overweight."
 msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:55
-msgid "Unable to sell."
+msgid "Unable to buy. You have too many items."
 msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:59
-msgid "Unable to sell while trading."
+msgid "Nothing to sell."
 msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:63
-msgid "Unable to sell unsellable item."
+msgid "Thanks for selling."
 msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:67
+msgid "Unable to sell."
+msgstr ""
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:71
+msgid "Unable to sell while trading."
+msgstr ""
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:75
+msgid "Unable to sell unsellable item."
+msgstr ""
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:79
 #, c-format
 msgid "Online users: %d"
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:71
+#: src/resources/notifications.h:83
 msgid "Guild created."
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:75
+#: src/resources/notifications.h:87
 msgid "You are already in guild."
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:79
+#: src/resources/notifications.h:91
 msgid "Emperium check failed."
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:83
+#: src/resources/notifications.h:95
 msgid "Unknown server response."
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:87
+#: src/resources/notifications.h:99
 msgid "You have left the guild."
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:91
+#: src/resources/notifications.h:103
 msgid "Could not invite user to guild."
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:95
+#: src/resources/notifications.h:107
 msgid "User rejected guild invite."
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:99
+#: src/resources/notifications.h:111
 msgid "User is now part of your guild."
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:103
+#: src/resources/notifications.h:115
 msgid "Your guild is full."
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:107
+#: src/resources/notifications.h:119
 msgid "Unknown guild invite response."
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:111
+#: src/resources/notifications.h:123
 #, c-format
 msgid "%s has left your guild."
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:115
+#: src/resources/notifications.h:127
 msgid "You were kicked from guild."
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:119
+#: src/resources/notifications.h:131
 #, c-format
 msgid "%s has kicked from your guild."
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:123
+#: src/resources/notifications.h:135
 msgid "Failed to use item."
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:127
+#: src/resources/notifications.h:139
 msgid "Unable to equip."
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:131
-msgid "Could not create party."
-msgstr ""
-
-#. TRANSLATORS: notification message
-#: src/resources/notifications.h:135
-msgid "Party successfully created."
-msgstr ""
-
-#. TRANSLATORS: notification message
-#: src/resources/notifications.h:139
-msgid "You have left the party."
-msgstr ""
-
-#. TRANSLATORS: notification message
 #: src/resources/notifications.h:143
-msgid "You cant left party on this map."
+msgid "Unable to equip because you have wrong level."
 msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:147
-msgid "You was kicked from party."
+msgid "Could not create party."
 msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:151
-msgid "You cant be kicked kicked from party on this map."
+msgid "Party successfully created."
 msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:155
-#, c-format
-msgid "%s has joined your party."
+msgid "You have left the party."
 msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:159
-#, c-format
-msgid "%s is already a member of a party."
+msgid "You cant left party on this map."
 msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:163
-#, c-format
-msgid "%s refused your invitation."
+msgid "You was kicked from party."
 msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:167
-#, c-format
-msgid "%s is now a member of your party."
+msgid "You cant be kicked from party on this map."
 msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:171
 #, c-format
-msgid "%s can't join your party because party is full."
+msgid "%s has joined your party."
 msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:175
 #, c-format
+msgid "%s is already a member of a party."
+msgstr ""
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:179
+#, c-format
+msgid "%s refused your invitation."
+msgstr ""
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:183
+#, c-format
+msgid "%s is now a member of your party."
+msgstr ""
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:187
+#, c-format
+msgid "%s can't join your party because party is full."
+msgstr ""
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:191
+#, c-format
 msgid "QQQ Unknown invite response for %s."
-msgstr ""
-
-#. TRANSLATORS: notification message
-#: src/resources/notifications.h:203
-#, c-format
-msgid "%s has left your party."
-msgstr ""
-
-#. TRANSLATORS: notification message
-#: src/resources/notifications.h:207 src/resources/notifications.h:215
-#, c-format
-msgid "%s cant be kicked from party on this map."
-msgstr ""
-
-#. TRANSLATORS: notification message
-#: src/resources/notifications.h:211
-#, c-format
-msgid "%s has kicked from your party."
 msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:219
 #, c-format
-msgid "An unknown member tried to say: %s"
+msgid "%s has left your party."
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:223
+#: src/resources/notifications.h:223 src/resources/notifications.h:231
 #, c-format
-msgid "%s is not in your party!"
+msgid "%s cant be kicked from party on this map."
 msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:227
 #, c-format
-msgid "You picked up %s."
-msgstr ""
-
-#. TRANSLATORS: notification message
-#: src/resources/notifications.h:231
-#, c-format
-msgid "You spent %s."
+msgid "%s has kicked from your party."
 msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:235
-msgid "Cannot raise skill!"
+#, c-format
+msgid "An unknown member tried to say: %s"
 msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:239
-msgid "Equip ammunition first."
+#, c-format
+msgid "%s is not in your party!"
 msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:243
 #, c-format
+msgid "You picked up %s."
+msgstr ""
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:247
+#, c-format
+msgid "You spent %s."
+msgstr ""
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:251
+msgid "Cannot raise skill!"
+msgstr ""
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:255
+msgid "Equip ammunition first."
+msgstr ""
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:259
+#, c-format
 msgid "Trading with %s isn't possible. Trade partner is too far away."
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:248
+#: src/resources/notifications.h:264
 #, c-format
 msgid "Trading with %s isn't possible. Character doesn't exist."
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:252
+#: src/resources/notifications.h:268
 msgid "Trade cancelled due to an unknown reason."
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:256
+#: src/resources/notifications.h:272
 #, c-format
 msgid "Trade with %s cancelled."
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:260
+#: src/resources/notifications.h:276
+#, c-format
+msgid "Trade with %s cancelled, because player is busy"
+msgstr ""
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:280
 #, c-format
 msgid "Unhandled trade cancel packet with %s"
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:264
+#: src/resources/notifications.h:284
 msgid "Failed adding item. Trade partner is over weighted."
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:268
+#: src/resources/notifications.h:288
 msgid "Failed adding item. Trade partner has no free slot."
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:272
+#: src/resources/notifications.h:292
 msgid "Failed adding item. You can't trade this item."
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:276
+#: src/resources/notifications.h:296
 msgid "Failed adding item for unknown reason."
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:280
+#: src/resources/notifications.h:300
 msgid "Trade canceled."
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:284
+#: src/resources/notifications.h:304
 msgid "Trade completed."
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:288
+#: src/resources/notifications.h:308
 msgid "Kick failed!"
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:292
+#: src/resources/notifications.h:312
 msgid "Kick succeeded!"
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:296
+#: src/resources/notifications.h:316
 #, c-format
 msgid "MVP player: %s"
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:300
+#: src/resources/notifications.h:320
 msgid "All whispers ignored."
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:304
+#: src/resources/notifications.h:324
 msgid "All whispers ignore failed."
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:308
+#: src/resources/notifications.h:328
 msgid "All whispers unignored."
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:312
+#: src/resources/notifications.h:332
 msgid "All whispers unignore failed."
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:319
+#: src/resources/notifications.h:339
 msgid "pvp off, gvg off"
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:323
+#: src/resources/notifications.h:343
 msgid "pvp on"
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:327
+#: src/resources/notifications.h:347
 msgid "gvg on"
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:331
+#: src/resources/notifications.h:351
 msgid "pvp on, gvg on"
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:335
-msgid "unknown pvp"
-msgstr ""
-
-#. TRANSLATORS: notification message
-#: src/resources/notifications.h:339
-#, c-format
-msgid "Char from account %s is already in your party!"
-msgstr ""
-
-#. TRANSLATORS: notification message
-#: src/resources/notifications.h:343
-#, c-format
-msgid "%s blocked invite!"
-msgstr ""
-
-#. TRANSLATORS: notification message
-#: src/resources/notifications.h:347
-msgid "Char is not online!"
-msgstr ""
-
-#. TRANSLATORS: notification message
-#: src/resources/notifications.h:351
-msgid "Pet catch failed."
-msgstr ""
-
-#. TRANSLATORS: notification message
 #: src/resources/notifications.h:355
-msgid "Pet catched."
+msgid "unknown pvp"
 msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:359
 #, c-format
-msgid "Pet catch unkown error: %d."
+msgid "Char from account %s is already in your party!"
 msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:363
-msgid "Your mercenary duty hour is over."
+#, c-format
+msgid "%s blocked invite!"
 msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:367
-msgid "Your mercenary was killed."
+msgid "Char is not online!"
 msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:371
-msgid "Your mercenary was fired."
+msgid "Pet catch failed."
 msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:375
-msgid "Your mercenary run away."
+msgid "Pet catched."
 msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:379
-msgid "Mercenary unknown state."
+#, c-format
+msgid "Pet catch unkown error: %d."
 msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:383
-msgid "You feed your homunculus."
+msgid "Your mercenary duty hour is over."
 msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:387
+msgid "Your mercenary was killed."
+msgstr ""
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:391
+msgid "Your mercenary was fired."
+msgstr ""
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:395
+msgid "Your mercenary run away."
+msgstr ""
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:399
+msgid "Mercenary unknown state."
+msgstr ""
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:403
+msgid "You feed your homunculus."
+msgstr ""
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:407
 #, c-format
 msgid "You cant feed homunculus, because not have %s."
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:391
+#: src/resources/notifications.h:411
 msgid "Card insert failed."
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:395
+#: src/resources/notifications.h:415
 msgid "Card inserted."
 msgstr ""
 
