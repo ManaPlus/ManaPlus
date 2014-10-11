@@ -1,3 +1,26 @@
+2014-10-11 New release 1.4.10.11
+fix: portals color on minimap.
+fix: portal names (hercules).
+fix: press on selected button in buttons group.
+fix: add missing disconnect errors.
+fix: creation party name size in social window.
+fix: duplicate numbers in sell dialog.
+fix: input fields detection for action keys rules.
+fix: updates downloading if server not give update server.
+fix: some guild packets (hercules).
+remove: auction bot support.
+add: pets, mercenary, homunculus minimap color.
+add: pages in equipment window.
+add: extend equipment window theming.
+add: player attributes karma, manner.
+add: some missing packets (hercules).
+add: missing attack packets.
+add: missing buy fail reasons.
+add; missing equip, trade error messages.
+add: rename characters if admins allow this (hercules).
+add: missing leave party statuses.
+add: by default disable lazy scrolling.
+
 2014-09-27 New release 1.4.9.27
 fix: chat creation on hercules.
 fix: away mode if was disconnect from server.
