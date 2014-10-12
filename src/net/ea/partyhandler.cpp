@@ -41,8 +41,6 @@
 
 #include "debug.h"
 
-PartyTab *partyTab = nullptr;
-
 namespace Ea
 {
 

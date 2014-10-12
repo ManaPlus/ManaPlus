@@ -39,6 +39,8 @@
 
 #include "debug.h"
 
+PartyTab *partyTab = nullptr;
+
 PartyTab::PartyTab(const Widget2 *const widget) :
     // TRANSLATORS: party chat tab name
     ChatTab(widget, _("Party"), "")
