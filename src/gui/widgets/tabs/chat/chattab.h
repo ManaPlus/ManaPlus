@@ -39,6 +39,14 @@ class ScrollArea;
     if (debugChatTab) \
         debugChatTab->chatLog(str);
 
+#define setTabColors(name) \
+    setTabColor(&getThemeColor(name), \
+        &getThemeColor(name##_OUTLINE)); \
+    setHighlightedTabColor(&getThemeColor(name##_HIGHLIGHTED), \
+        &getThemeColor(name##_HIGHLIGHTED_OUTLINE)); \
+    setSelectedTabColor(&getThemeColor(name##_SELECTED), \
+        &getThemeColor(name##_SELECTED_OUTLINE))
+
 /**
  * A tab for the chat window. This is special to ease chat handling.
  */
