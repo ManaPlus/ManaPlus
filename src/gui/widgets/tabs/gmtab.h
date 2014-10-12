@@ -22,7 +22,7 @@
 #define GUI_WIDGETS_TABS_GMTAB_H
 
 #include "gui/widgets/tabs/chat/chattab.h"
-#include "gui/widgets/tabs/chattabtype.h"
+#include "gui/widgets/tabs/chat/chattabtype.h"
 
 /**
  * A tab for whispers from a single player.

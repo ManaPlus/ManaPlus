@@ -45,7 +45,7 @@
 #include "gui/windows/updaterwindow.h"
 
 #include "gui/widgets/tabs/chat/chattab.h"
-#include "gui/widgets/tabs/chattabtype.h"
+#include "gui/widgets/tabs/chat/chattabtype.h"
 
 #include "debug.h"
 

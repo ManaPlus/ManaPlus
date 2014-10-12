@@ -40,7 +40,7 @@
 #include "gui/widgets/itemlinkhandler.h"
 #include "gui/widgets/tabbedarea.h"
 
-#include "gui/widgets/tabs/chattabtype.h"
+#include "gui/widgets/tabs/chat/chattabtype.h"
 
 #include "input/inputmanager.h"
 

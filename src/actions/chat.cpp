@@ -31,7 +31,7 @@
 #include "gui/windows/chatwindow.h"
 
 #include "gui/widgets/tabs/chat/chattab.h"
-#include "gui/widgets/tabs/chattabtype.h"
+#include "gui/widgets/tabs/chat/chattabtype.h"
 
 #include "net/chathandler.h"
 #include "net/guildhandler.h"

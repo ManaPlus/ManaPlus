@@ -24,7 +24,7 @@
 #define NET_EA_GUI_GUILDTAB_H
 
 #include "gui/widgets/tabs/chat/chattab.h"
-#include "gui/widgets/tabs/chattabtype.h"
+#include "gui/widgets/tabs/chat/chattabtype.h"
 
 namespace Ea
 {

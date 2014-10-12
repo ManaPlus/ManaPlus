@@ -24,7 +24,7 @@
 #define GUI_WIDGETS_TABS_GUILDCHATTAB_H
 
 #include "gui/widgets/tabs/chat/chattab.h"
-#include "gui/widgets/tabs/chattabtype.h"
+#include "gui/widgets/tabs/chat/chattabtype.h"
 
 /**
  * A tab for a guild chat channel.

@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_WIDGETS_TABS_CHATTABTYPE_H
-#define GUI_WIDGETS_TABS_CHATTABTYPE_H
+#ifndef GUI_WIDGETS_TABS_CHAT_CHATTABTYPE_H
+#define GUI_WIDGETS_TABS_CHAT_CHATTABTYPE_H
 
 namespace ChatTabType
 {
@@ -38,4 +38,4 @@ namespace ChatTabType
     };
 }  // namespace ChatTabType
 
-#endif  // GUI_WIDGETS_TABS_CHATTABTYPE_H
+#endif  // GUI_WIDGETS_TABS_CHAT_CHATTABTYPE_H
