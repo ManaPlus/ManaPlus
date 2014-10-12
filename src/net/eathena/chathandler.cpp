@@ -184,6 +184,12 @@ void ChatHandler::privateMessage(const std::string &restrict recipient,
     mSentWhispers.push(recipient);
 }
 
+void ChatHandler::channelMessage(const std::string &restrict channel,
+                                 const std::string &restrict text)
+{
+    privateMessage(channel, text);
+}
+
 void ChatHandler::who() const
 {
     createOutPacket(CMSG_WHO_REQUEST);

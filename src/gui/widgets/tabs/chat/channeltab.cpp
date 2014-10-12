@@ -50,7 +50,7 @@ void ChannelTab::handleInput(const std::string &msg)
 {
     std::string newMsg;
     newMsg = ChatWindow::doReplace(msg);
-    chatHandler->privateMessage(mChannelName, newMsg);
+    chatHandler->channelMessage(mChannelName, newMsg);
 }
 
 bool ChannelTab::handleCommand(const std::string &restrict type,

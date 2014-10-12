@@ -163,6 +163,11 @@ void ChatHandler::privateMessage(const std::string &restrict recipient,
     mSentWhispers.push(recipient);
 }
 
+void ChatHandler::channelMessage(const std::string &restrict channel A_UNUSED,
+                                 const std::string &restrict text A_UNUSED)
+{
+}
+
 void ChatHandler::who() const
 {
     createOutPacket(CMSG_WHO_REQUEST);
