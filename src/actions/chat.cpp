@@ -226,7 +226,7 @@ impHandler(query)
     const std::string &args = event.args;
     if (chatWindow)
     {
-        if (chatWindow->addChatTab(args, true))
+        if (chatWindow->addChatTab(args, true, true))
         {
             chatWindow->saveState();
             return true;

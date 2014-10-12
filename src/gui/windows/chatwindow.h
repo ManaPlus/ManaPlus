@@ -203,7 +203,8 @@ class ChatWindow final : public Window,
                                   const bool switchTo = false) A_WARN_UNUSED;
 
         ChatTab *addChatTab(const std::string &name,
-                            const bool switchTo = false) A_WARN_UNUSED;
+                            const bool switchTo,
+                            const bool join) A_WARN_UNUSED;
 
         void removeAllWhispers();
 
@@ -288,6 +289,8 @@ class ChatWindow final : public Window,
 
         static void localPetEmote(const std::string &nick,
                                   const uint8_t emoteId);
+
+        void postConnection();
 
 #ifdef USE_PROFILER
         void logicChildren();

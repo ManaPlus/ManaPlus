@@ -1203,16 +1203,31 @@ ChannelTab *ChatWindow::addChannelTab(const std::string &name,
 }
 
 ChatTab *ChatWindow::addChatTab(const std::string &name,
-                                const bool switchTo)
+                                const bool switchTo,
+                                const bool join)
 {
     if (serverFeatures->haveChatChannels() && name.size() > 1
         && name[0] == '#')
     {
-        return addChannelTab(name, switchTo);
+        ChatTab *const tab = addChannelTab(name, switchTo);
+        if (tab && join)
+            chatHandler->joinChannel(name);
+        return tab;
     }
     else
     {
         return addWhisperTab(name, switchTo);
+    }
+}
+
+void ChatWindow::postConnection()
+{
+    FOR_EACH (ChannelMap::const_iterator, iter, mChannels)
+    {
+        ChatTab *const tab = iter->second;
+        if (!tab)
+            return;
+        chatHandler->joinChannel(tab->getChannelName());
     }
 }
 
@@ -1699,10 +1714,11 @@ void ChatWindow::loadState()
 
         if (nick.empty())
             break;
+
         const int flags = serverConfig.getValue(
             "chatWhisperFlags" + toString(num), 1);
 
-        ChatTab *const tab = addChatTab(nick, false);
+        ChatTab *const tab = addChatTab(nick, false, false);
         if (tab)
         {
             tab->setAllowHighlight(flags & 1);

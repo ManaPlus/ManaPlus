@@ -391,6 +391,8 @@ Game::Game() :
 
     initEngines();
 
+    chatWindow->postConnection();
+
     // Initialize beings
     if (actorManager)
         actorManager->setPlayer(localPlayer);
