@@ -35,7 +35,7 @@
 
 #include "net/ea/guildhandler.h"
 
-#include "net/ea/gui/guildtab.h"
+#include "gui/widgets/tabs/chat/guildtab.h"
 #include "net/ea/gui/partytab.h"
 
 #include "net/tmwa/adminhandler.h"
@@ -351,7 +351,7 @@ void GeneralHandler::gameEnded() const
         socialWindow->removeTab(Ea::taParty);
     }
 
-    delete2(Ea::guildTab);
+    delete2(guildTab);
     delete2(Ea::partyTab);
 }
 

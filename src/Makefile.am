@@ -1182,8 +1182,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      resources/map/walklayer.cpp \
 	      resources/map/walklayer.h \
 	      winver.h \
-	      net/ea/gui/guildtab.cpp \
-	      net/ea/gui/guildtab.h \
+	      gui/widgets/tabs/chat/guildtab.cpp \
+	      gui/widgets/tabs/chat/guildtab.h \
 	      net/ea/gui/partytab.cpp \
 	      net/ea/gui/partytab.h \
 	      net/ea/adminhandler.cpp \

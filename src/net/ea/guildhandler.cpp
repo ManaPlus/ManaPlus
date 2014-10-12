@@ -32,7 +32,7 @@
 
 #include "net/messagein.h"
 
-#include "net/ea/gui/guildtab.h"
+#include "gui/widgets/tabs/chat/guildtab.h"
 
 #include "utils/delete2.h"
 #include "utils/gettext.h"
@@ -42,9 +42,10 @@
 
 #include "debug.h"
 
+GuildTab *guildTab = nullptr;
+
 namespace Ea
 {
-GuildTab *guildTab = nullptr;
 Guild *taGuild = nullptr;
 
 GuildHandler::GuildHandler() :

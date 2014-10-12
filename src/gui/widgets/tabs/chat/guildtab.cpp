@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "net/ea/gui/guildtab.h"
+#include "gui/widgets/tabs/chat/guildtab.h"
 
 #include "chatlogger.h"
 #include "configuration.h"
@@ -38,7 +38,8 @@
 
 namespace Ea
 {
-extern Guild *taGuild;
+    extern Guild *taGuild;
+}  // namespace Ea
 
 GuildTab::GuildTab(const Widget2 *const widget) :
     // TRANSLATORS: guild chat tab name
@@ -72,25 +73,25 @@ bool GuildTab::handleCommand(const std::string &restrict type,
             guildHandler->create(args);
     }
 */
-    if (type == "invite" && taGuild)
+    if (type == "invite" && Ea::taGuild)
     {
-        guildHandler->invite(taGuild->getId(), args);
+        guildHandler->invite(Ea::taGuild->getId(), args);
     }
-    else if (type == "leave" && taGuild)
+    else if (type == "leave" && Ea::taGuild)
     {
-        guildHandler->leave(taGuild->getId());
+        guildHandler->leave(Ea::taGuild->getId());
     }
-    else if (type == "kick" && taGuild)
+    else if (type == "kick" && Ea::taGuild)
     {
-        guildHandler->kick(taGuild->getMember(args), "");
+        guildHandler->kick(Ea::taGuild->getMember(args), "");
     }
-    else if (type == "notice" && taGuild)
+    else if (type == "notice" && Ea::taGuild)
     {
         std::string str1 = args.substr(0, 60);
         std::string str2("");
         if (args.size() > 60)
             str2 = args.substr(60);
-        guildHandler->changeNotice(taGuild->getId(), str1, str2);
+        guildHandler->changeNotice(Ea::taGuild->getId(), str1, str2);
     }
     else
     {
@@ -102,17 +103,17 @@ bool GuildTab::handleCommand(const std::string &restrict type,
 
 void GuildTab::handleInput(const std::string &msg)
 {
-    if (!taGuild)
+    if (!Ea::taGuild)
         return;
 
-    guildHandler->chat(taGuild->getId(),
+    guildHandler->chat(Ea::taGuild->getId(),
         ChatWindow::doReplace(msg));
 }
 
 void GuildTab::getAutoCompleteList(StringVect &names) const
 {
-    if (taGuild)
-        taGuild->getNames(names);
+    if (Ea::taGuild)
+        Ea::taGuild->getNames(names);
 }
 
 void GuildTab::getAutoCompleteCommands(StringVect &names) const
@@ -140,5 +141,3 @@ void GuildTab::optionChanged(const std::string &value)
     if (value == "showGuildOnline")
         mShowOnline = config.getBoolValue("showGuildOnline");
 }
-
-}  // namespace Ea

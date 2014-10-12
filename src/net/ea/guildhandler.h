@@ -29,10 +29,10 @@ namespace Net
     class MessageIn;
 }
 
-namespace Ea
-{
 class GuildTab;
 
+namespace Ea
+{
 class GuildHandler notfinal : public Net::GuildHandler
 {
     public:
@@ -106,7 +106,8 @@ class GuildHandler notfinal : public Net::GuildHandler
 };
 
 extern Guild *taGuild;
-extern GuildTab *guildTab;
 }  // namespace Ea
+
+extern GuildTab *guildTab;
 
 #endif  // NET_EA_GUILDHANDLER_H

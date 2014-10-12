@@ -30,7 +30,7 @@
 #include "gui/windows/chatwindow.h"
 #include "gui/windows/socialwindow.h"
 
-#include "net/ea/gui/guildtab.h"
+#include "gui/widgets/tabs/chat/guildtab.h"
 
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
@@ -372,11 +372,11 @@ void GuildHandler::processGuildPositionInfo(Net::MessageIn &msg) const
     g->setEmblemId(emblem);
     if (!Ea::taGuild)
         Ea::taGuild = g;
-    if (!Ea::guildTab && chatWindow)
+    if (!guildTab && chatWindow)
     {
-        Ea::guildTab = new Ea::GuildTab(chatWindow);
+        guildTab = new GuildTab(chatWindow);
         if (config.getBoolValue("showChatHistory"))
-            Ea::guildTab->loadFromLogFile("#Guild");
+            guildTab->loadFromLogFile("#Guild");
         if (localPlayer)
             localPlayer->addGuild(Ea::taGuild);
         memberList(guildId);
@@ -406,8 +406,8 @@ void GuildHandler::processGuildMemberLogin(Net::MessageIn &msg) const
             m->setOnline(online);
             if (online)
                 m->setGender(gender);
-            if (Ea::guildTab)
-                Ea::guildTab->showOnline(m->getName(), online);
+            if (guildTab)
+                guildTab->showOnline(m->getName(), online);
             if (socialWindow)
                 socialWindow->updateGuildCounter();
         }

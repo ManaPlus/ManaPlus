@@ -174,6 +174,10 @@ SET(SRCS
     gui/widgets/tabs/chat/emulateguildtab.h
     gui/widgets/tabs/chat/gmtab.cpp
     gui/widgets/tabs/chat/gmtab.h
+    gui/widgets/tabs/chat/guildtab.cpp
+    gui/widgets/tabs/chat/guildtab.h
+    net/ea/gui/partytab.cpp
+    net/ea/gui/partytab.h
     gui/widgets/horizontcontainer.cpp
     gui/widgets/horizontcontainer.h
     gui/widgets/icon.cpp
@@ -1250,10 +1254,6 @@ SET(DYE_CMD_SRCS
 )
 
 SET(SRCS_EVOL
-    net/ea/gui/guildtab.cpp
-    net/ea/gui/guildtab.h
-    net/ea/gui/partytab.cpp
-    net/ea/gui/partytab.h
     net/ea/adminhandler.cpp
     net/ea/adminhandler.h
     net/ea/beinghandler.cpp

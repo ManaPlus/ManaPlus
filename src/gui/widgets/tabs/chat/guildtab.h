@@ -20,14 +20,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_EA_GUI_GUILDTAB_H
-#define NET_EA_GUI_GUILDTAB_H
+#ifndef GUI_WIDGETS_TABS_CHAT_GUILDTAB_H
+#define GUI_WIDGETS_TABS_CHAT_GUILDTAB_H
 
 #include "gui/widgets/tabs/chat/chattab.h"
 #include "gui/widgets/tabs/chat/chattabtype.h"
-
-namespace Ea
-{
 
 /**
  * A tab for a guild chat channel.
@@ -62,6 +59,4 @@ class GuildTab notfinal : public ChatTab,
         void getAutoCompleteCommands(StringVect &names) const override final;
 };
 
-}  // namespace Ea
-
-#endif  // NET_EA_GUI_GUILDTAB_H
+#endif  // GUI_WIDGETS_TABS_CHAT_GUILDTAB_H

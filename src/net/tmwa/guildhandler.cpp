@@ -32,7 +32,7 @@
 
 #include "net/serverfeatures.h"
 
-#include "net/ea/gui/guildtab.h"
+#include "gui/widgets/tabs/chat/guildtab.h"
 
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
@@ -360,11 +360,11 @@ void GuildHandler::processGuildPositionInfo(Net::MessageIn &msg) const
     g->setEmblemId(emblem);
     if (!Ea::taGuild)
         Ea::taGuild = g;
-    if (!Ea::guildTab && chatWindow)
+    if (!guildTab && chatWindow)
     {
-        Ea::guildTab = new Ea::GuildTab(chatWindow);
+        guildTab = new GuildTab(chatWindow);
         if (config.getBoolValue("showChatHistory"))
-            Ea::guildTab->loadFromLogFile("#Guild");
+            guildTab->loadFromLogFile("#Guild");
         if (localPlayer)
             localPlayer->addGuild(Ea::taGuild);
         memberList(guildId);
@@ -391,8 +391,8 @@ void GuildHandler::processGuildMemberLogin(Net::MessageIn &msg) const
         if (m)
         {
             m->setOnline(online);
-            if (Ea::guildTab)
-                Ea::guildTab->showOnline(m->getName(), online);
+            if (guildTab)
+                guildTab->showOnline(m->getName(), online);
             if (socialWindow)
                 socialWindow->updateGuildCounter();
         }

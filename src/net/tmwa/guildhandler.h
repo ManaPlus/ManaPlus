@@ -83,8 +83,9 @@ class GuildHandler final : public Ea::GuildHandler, public MessageHandler
         void processGuildExpulsionList(Net::MessageIn &msg) const;
 };
 
-    extern Ea::GuildTab *guildTab;
 }  // namespace TmwAthena
+
+extern GuildTab *guildTab;
 
 namespace Ea
 {
