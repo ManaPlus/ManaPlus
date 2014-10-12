@@ -64,6 +64,8 @@
 #include "gui/widgets/tabs/chat/tradetab.h"
 #include "gui/widgets/tabs/chat/whispertab.h"
 
+#include "input/inputmanager.h"
+
 #include "render/opengldebug.h"
 
 #include "net/chathandler.h"
@@ -378,15 +380,13 @@ void ChatWindow::closeTab() const
     if (!mChatTabs)
         return;
 
-    Tab *const tab = mChatTabs->getTabByIndex(
-        mChatTabs->getSelectedTabIndex());
+    ChatTab *const tab = dynamic_cast<ChatTab*>(mChatTabs->getTabByIndex(
+        mChatTabs->getSelectedTabIndex()));
     if (!tab)
         return;
-    WhisperTab *const whisper = dynamic_cast<WhisperTab* const>(tab);
-    if (!whisper)
-        return;
-
-    whisper->handleCommand("close", "");
+    const ChatTabType::Type &type = tab->getType();
+    if (type == ChatTabType::WHISPER || type == ChatTabType::CHANNEL)
+        tab->handleCommand("close", "");
 }
 
 void ChatWindow::defaultTab()
@@ -546,6 +546,13 @@ void ChatWindow::removeWhisper(const std::string &nick)
     mWhispers.erase(tempNick);
 }
 
+void ChatWindow::removeChannel(const std::string &name)
+{
+    std::string tempName = name;
+    toLower(tempName);
+    mChannels.erase(tempName);
+}
+
 void ChatWindow::removeAllWhispers()
 {
     std::list<ChatTab*> tabs;
@@ -681,16 +688,16 @@ void ChatWindow::mousePressed(MouseEvent &event)
             if (tab)
             {
                 event.consume();
+                ChatTab *const cTab = dynamic_cast<ChatTab*>(tab);
                 if (inputManager.isActionActive(static_cast<int>(
                     InputAction::CHAT_MOD)))
                 {
-                    ChatTab *const wTab = dynamic_cast<WhisperTab*>(tab);
-                    if (wTab)
-                        wTab->handleCommand("close", "");
+                    inputManager.executeChatCommand(
+                        InputAction::CLOSE_CHAT_TAB,
+                        std::string(), cTab);
                 }
                 else
                 {
-                    ChatTab *const cTab = dynamic_cast<ChatTab*>(tab);
                     if (cTab)
                     {
                         popupMenu->showChatPopup(viewport->mMouseX,

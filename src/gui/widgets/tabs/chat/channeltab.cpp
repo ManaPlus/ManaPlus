@@ -25,6 +25,8 @@
 #include "chatlogger.h"
 #include "configuration.h"
 
+#include "gui/widgets/windowcontainer.h"
+
 #include "gui/windows/chatwindow.h"
 
 #include "net/chathandler.h"
@@ -40,6 +42,8 @@ ChannelTab::ChannelTab(const Widget2 *const widget,
 
 ChannelTab::~ChannelTab()
 {
+    if (chatWindow)
+        chatWindow->removeChannel(mChannelName);
 }
 
 void ChannelTab::handleInput(const std::string &msg)
@@ -47,4 +51,24 @@ void ChannelTab::handleInput(const std::string &msg)
     std::string newMsg;
     newMsg = ChatWindow::doReplace(msg);
     chatHandler->privateMessage(mChannelName, newMsg);
+}
+
+bool ChannelTab::handleCommand(const std::string &restrict type,
+                               const std::string &restrict args A_UNUSED)
+{
+    if (type == "close")
+    {
+        if (windowContainer)
+            windowContainer->scheduleDelete(this);
+        else
+            delete this;
+        if (chatWindow)
+            chatWindow->defaultTab();
+    }
+    else
+    {
+        return false;
+    }
+
+    return true;
 }

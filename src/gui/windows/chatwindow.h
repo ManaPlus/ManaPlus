@@ -294,6 +294,7 @@ class ChatWindow final : public Window,
 #endif
 
     protected:
+        friend class ChannelTab;
         friend class ChatTab;
         friend class WhisperTab;
         friend class PopupMenu;
@@ -307,6 +308,8 @@ class ChatWindow final : public Window,
         void addTab(ChatTab *const tab);
 
         void removeWhisper(const std::string &nick);
+
+        void removeChannel(const std::string &nick);
 
         void autoComplete();
 

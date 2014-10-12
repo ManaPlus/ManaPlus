@@ -41,6 +41,9 @@ class ChannelTab final : public ChatTab
 
     protected:
         void handleInput(const std::string &msg) override final;
+
+        bool handleCommand(const std::string &restrict type,
+                           const std::string &restrict args) override final;
 };
 
 #endif  // GUI_WIDGETS_TABS_CHAT_CHANNELTAB_H

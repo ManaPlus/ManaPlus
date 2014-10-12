@@ -134,7 +134,7 @@ class ChatTab notfinal : public Tab
         /**
          * Returns type of the being.
          */
-        int getType() const A_WARN_UNUSED
+        ChatTabType::Type getType() const A_WARN_UNUSED
         { return mType; }
 
         void saveToLogFile(std::string msg) const;

@@ -685,7 +685,8 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
 
     mBrowserBox->clearRows();
 
-    if (tab->getType() == static_cast<int>(ChatTabType::WHISPER))
+    const ChatTabType::Type &type = tab->getType();
+    if (type == ChatTabType::WHISPER || type == ChatTabType::CHANNEL)
     {
         // TRANSLATORS: popup menu item
         // TRANSLATORS: close chat tab
@@ -746,7 +747,7 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
     mBrowserBox->addRow("chat clipboard", _("Copy to clipboard"));
     mBrowserBox->addRow("##3---");
 
-    if (tab->getType() == static_cast<int>(ChatTabType::WHISPER))
+    if (type == ChatTabType::WHISPER)
     {
         const WhisperTab *const wTab = static_cast<WhisperTab*>(tab);
         std::string name = wTab->getNick();
@@ -847,6 +848,7 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
             mBrowserBox->addRow("##3---");
         }
     }
+
     addWindowMenu(chatWindow);
     // TRANSLATORS: popup menu item
     // TRANSLATORS: close menu
