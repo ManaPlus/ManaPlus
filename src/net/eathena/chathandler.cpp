@@ -517,4 +517,11 @@ void ChatHandler::processChatLeave(Net::MessageIn &msg)
     msg.readUInt8("flag");  // 0 - left, 1 - kicked
 }
 
+void ChatHandler::joinChannel(const std::string &channel)
+{
+    // to join channel need use gm commands or send something.
+    // here we sending invisible message.
+    channelMessage(channel, "\302\202G");
+}
+
 }  // namespace EAthena

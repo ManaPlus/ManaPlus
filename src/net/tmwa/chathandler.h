@@ -51,6 +51,8 @@ class ChatHandler final : public MessageHandler, public Ea::ChatHandler
         void channelMessage(const std::string &restrict channel,
                             const std::string &restrict text) override final;
 
+        void joinChannel(const std::string &channel) override final;
+
         void who() const override final;
 
         void sendRaw(const std::string &args) const;

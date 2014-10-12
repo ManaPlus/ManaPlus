@@ -56,6 +56,8 @@ class ChatHandler notfinal
         virtual void channelMessage(const std::string &restrict channel,
                                     const std::string &restrict text) = 0;
 
+        virtual void joinChannel(const std::string &channel) = 0;
+
         virtual void who() const = 0;
 
         virtual void sendRaw(const std::string &args) const = 0;
