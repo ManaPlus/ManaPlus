@@ -62,12 +62,14 @@ static const unsigned int MAX_WORD_SIZE = 50;
 ChatTab::ChatTab(const Widget2 *const widget,
                  const std::string &name,
                  const std::string &channel,
+                 const std::string &logName,
                  const ChatTabType::Type &type) :
     Tab(widget),
     mTextOutput(new BrowserBox(this, BrowserBox::AUTO_WRAP, true,
        "browserbox.xml")),
     mScrollArea(new ScrollArea(this, mTextOutput, false)),
     mChannelName(channel),
+    mLogName(logName),
     mType(type),
     mAllowHightlight(true),
     mRemoveNames(false),
@@ -461,7 +463,7 @@ bool ChatTab::handleCommands(const std::string &type, const std::string &args)
     return handleCommand(type, args);
 }
 
-void ChatTab::saveToLogFile(const std::string &msg) const
+void ChatTab::saveToLogFile(std::string msg) const
 {
     if (chatLogger)
     {
@@ -469,10 +471,14 @@ void ChatTab::saveToLogFile(const std::string &msg) const
         {
             chatLogger->log(msg);
         }
-        else if (getType() == ChatTabType::DEBUG
-                 && config.getBoolValue("enableDebugLog"))
+        else if (getType() == ChatTabType::DEBUG)
         {
-            chatLogger->log("#Debug", msg);
+            if (config.getBoolValue("enableDebugLog"))
+                chatLogger->log("#Debug", msg);
+        }
+        else if (!mLogName.empty())
+        {
+            chatLogger->log(mLogName, msg);
         }
     }
 }

@@ -42,8 +42,6 @@ class GuildTab notfinal : public ChatTab,
         bool handleCommand(const std::string &restrict type,
                            const std::string &restrict args) override final;
 
-        void saveToLogFile(const std::string &msg) const override final;
-
         void playNewMessageSound() const override final;
 
         void optionChanged(const std::string &value) override final;

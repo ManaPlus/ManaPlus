@@ -30,7 +30,7 @@ GmTab *gmChatTab = nullptr;
 
 GmTab::GmTab(const Widget2 *const widget) :
     // TRANSLATORS: gb tab name
-    ChatTab(widget, _("GM"), "", ChatTabType::GM)
+    ChatTab(widget, _("GM"), "", "#GM", ChatTabType::GM)
 {
     setTabColors(Theme::GM_CHAT_TAB);
 }
@@ -46,12 +46,6 @@ void GmTab::handleInput(const std::string &msg)
 
 void GmTab::handleCommand(const std::string &msg A_UNUSED)
 {
-}
-
-void GmTab::saveToLogFile(const std::string &msg) const
-{
-    if (chatLogger)
-        chatLogger->log("#GM", msg);
 }
 
 void GmTab::getAutoCompleteList(StringVect &names A_UNUSED) const

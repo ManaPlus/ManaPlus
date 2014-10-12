@@ -43,7 +43,7 @@ PartyTab *partyTab = nullptr;
 
 PartyTab::PartyTab(const Widget2 *const widget) :
     // TRANSLATORS: party chat tab name
-    ChatTab(widget, _("Party"), "", ChatTabType::PARTY)
+    ChatTab(widget, _("Party"), "", "#Party", ChatTabType::PARTY)
 {
     setTabColors(Theme::PARTY_CHAT_TAB);
     mShowOnline = config.getBoolValue("showPartyOnline");
@@ -222,12 +222,6 @@ void PartyTab::getAutoCompleteCommands(StringVect &names) const
     names.push_back("/exp");
     if (serverFeatures->haveChangePartyLeader())
         names.push_back("/setleader ");
-}
-
-void PartyTab::saveToLogFile(const std::string &msg) const
-{
-    if (chatLogger)
-        chatLogger->log("#Party", msg);
 }
 
 void PartyTab::playNewMessageSound() const

@@ -232,7 +232,7 @@ static void createGuiWindows()
 
     // TRANSLATORS: chat tab header
     localChatTab = new ChatTab(chatWindow, _("General"),
-        GENERAL_CHANNEL, ChatTabType::INPUT);
+        GENERAL_CHANNEL, "#General", ChatTabType::INPUT);
     localChatTab->setAllowHighlight(false);
     if (config.getBoolValue("showChatHistory"))
         localChatTab->loadFromLogFile("#General");
@@ -249,7 +249,8 @@ static void createGuiWindows()
     }
 
     // TRANSLATORS: chat tab header
-    debugChatTab = new ChatTab(chatWindow, _("Debug"), "", ChatTabType::DEBUG);
+    debugChatTab = new ChatTab(chatWindow, _("Debug"), "",
+        "#Debug", ChatTabType::DEBUG);
     debugChatTab->setAllowHighlight(false);
 
     if (config.getBoolValue("enableTradeTab"))

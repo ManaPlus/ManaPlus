@@ -40,8 +40,6 @@ class WhisperTab final : public ChatTab
         bool handleCommand(const std::string &restrict type,
                            const std::string &restrict args) override final;
 
-        void saveToLogFile(const std::string &msg) const override final;
-
         void setWhisperTabColors();
 
         void setWhisperTabOfflineColors();

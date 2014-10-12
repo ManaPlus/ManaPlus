@@ -38,7 +38,7 @@
 
 WhisperTab::WhisperTab(const Widget2 *const widget,
                        const std::string &nick) :
-    ChatTab(widget, nick, "", ChatTabType::WHISPER),
+    ChatTab(widget, nick, "", nick, ChatTabType::WHISPER),
     mNick(nick)
 {
     setWhisperTabColors();
@@ -108,12 +108,6 @@ bool WhisperTab::handleCommand(const std::string &restrict type,
     }
 
     return true;
-}
-
-void WhisperTab::saveToLogFile(const std::string &msg) const
-{
-    if (chatLogger)
-        chatLogger->log(getNick(), msg);
 }
 
 void WhisperTab::getAutoCompleteList(StringVect &names) const

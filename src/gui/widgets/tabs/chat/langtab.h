@@ -33,8 +33,6 @@ class LangTab final : public ChatTab
         A_DELETE_COPY(LangTab)
 
         ~LangTab();
-
-        void saveToLogFile(const std::string &msg) const override final;
 };
 
 extern LangTab *langChatTab;

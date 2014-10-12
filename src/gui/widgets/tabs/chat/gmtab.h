@@ -36,8 +36,6 @@ class GmTab final : public ChatTab
 
         ~GmTab();
 
-        void saveToLogFile(const std::string &msg) const override final;
-
     protected:
         void getAutoCompleteList(StringVect &names) const override final;
 

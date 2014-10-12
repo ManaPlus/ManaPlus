@@ -37,8 +37,6 @@ class BattleTab final : public ChatTab
         A_DELETE_COPY(BattleTab)
 
         ~BattleTab();
-
-        void saveToLogFile(const std::string &msg) const override final;
 };
 
 extern BattleTab *battleChatTab;

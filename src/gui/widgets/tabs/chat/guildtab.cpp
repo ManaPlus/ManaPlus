@@ -43,7 +43,7 @@ namespace Ea
 
 GuildTab::GuildTab(const Widget2 *const widget) :
     // TRANSLATORS: guild chat tab name
-    ChatTab(widget, _("Guild"), "", ChatTabType::GUILD)
+    ChatTab(widget, _("Guild"), "", "#Guild", ChatTabType::GUILD)
 {
     setTabColors(Theme::GUILD_CHAT_TAB);
     mShowOnline = config.getBoolValue("showGuildOnline");
@@ -118,12 +118,6 @@ void GuildTab::getAutoCompleteCommands(StringVect &names) const
     names.push_back("/kick ");
     names.push_back("/notice ");
     names.push_back("/leave");
-}
-
-void GuildTab::saveToLogFile(const std::string &msg) const
-{
-    if (chatLogger)
-        chatLogger->log("#Guild", msg);
 }
 
 void GuildTab::playNewMessageSound() const

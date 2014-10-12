@@ -31,16 +31,10 @@ LangTab *langChatTab = nullptr;
 LangTab::LangTab(const Widget2 *const widget,
                  const std::string &lang) :
     // TRANSLATORS: lang chat tab name
-    ChatTab(widget, _("Lang"), lang + " ", ChatTabType::LANG)
+    ChatTab(widget, _("Lang"), lang + " ", "#Lang", ChatTabType::LANG)
 {
 }
 
 LangTab::~LangTab()
 {
-}
-
-void LangTab::saveToLogFile(const std::string &msg) const
-{
-    if (chatLogger)
-        chatLogger->log(std::string("#Lang"), std::string(msg));
 }

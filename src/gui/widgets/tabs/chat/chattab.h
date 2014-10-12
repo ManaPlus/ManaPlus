@@ -59,6 +59,7 @@ class ChatTab notfinal : public Tab
         ChatTab(const Widget2 *const widget,
                 const std::string &name,
                 const std::string &channel,
+                const std::string &logName,
                 const ChatTabType::Type &type);
 
         A_DELETE_COPY(ChatTab)
@@ -136,7 +137,7 @@ class ChatTab notfinal : public Tab
         int getType() const A_WARN_UNUSED
         { return mType; }
 
-        virtual void saveToLogFile(const std::string &msg) const;
+        void saveToLogFile(std::string msg) const;
 
         const std::list<std::string> &getRows() const A_WARN_UNUSED
         { return mTextOutput->getRows(); }
@@ -198,6 +199,7 @@ class ChatTab notfinal : public Tab
         BrowserBox *mTextOutput;
         ScrollArea *mScrollArea;
         std::string mChannelName;
+        std::string mLogName;
         ChatTabType::Type mType;
         bool mAllowHightlight;
         bool mRemoveNames;

@@ -34,7 +34,7 @@ TradeTab *tradeChatTab = nullptr;
 
 TradeTab::TradeTab(const Widget2 *const widget) :
     // TRANSLATORS: trade chat tab name
-    ChatTab(widget, _("Trade"), TRADE_CHANNEL, ChatTabType::TRADE)
+    ChatTab(widget, _("Trade"), TRADE_CHANNEL, "#Trade", ChatTabType::TRADE)
 {
 }
 
@@ -46,10 +46,4 @@ void TradeTab::handleInput(const std::string &msg)
 {
     std::string str("\302\202" + msg);
     ChatTab::handleInput(str);
-}
-
-void TradeTab::saveToLogFile(const std::string &msg) const
-{
-    if (chatLogger)
-        chatLogger->log(std::string("#Trade"), std::string(msg));
 }
