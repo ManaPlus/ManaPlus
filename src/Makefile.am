@@ -319,8 +319,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/statuswindowattrs.h \
 	      gui/widgets/label.cpp \
 	      gui/widgets/label.h \
-	      gui/widgets/tabs/langtab.cpp \
-	      gui/widgets/tabs/langtab.h \
+	      gui/widgets/tabs/chat/langtab.cpp \
+	      gui/widgets/tabs/chat/langtab.h \
 	      gui/widgets/layout.cpp \
 	      gui/widgets/layout.h \
 	      gui/widgets/layoutarray.cpp \

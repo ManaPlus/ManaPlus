@@ -89,7 +89,7 @@
 #include "gui/widgets/virtshortcutcontainer.h"
 
 #include "gui/widgets/tabs/chat/gmtab.h"
-#include "gui/widgets/tabs/langtab.h"
+#include "gui/widgets/tabs/chat/langtab.h"
 #include "gui/widgets/tabs/tradetab.h"
 
 #include "net/generalhandler.h"

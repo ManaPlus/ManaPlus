@@ -82,7 +82,7 @@
 #include "gui/widgets/skilldata.h"
 #include "gui/widgets/skillinfo.h"
 
-#include "gui/widgets/tabs/langtab.h"
+#include "gui/widgets/tabs/chat/langtab.h"
 
 #include "utils/delete2.h"
 #include "utils/files.h"
