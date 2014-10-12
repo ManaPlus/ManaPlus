@@ -52,7 +52,7 @@
 #include "gui/widgets/tabbedarea.h"
 #include "gui/windows/whoisonline.h"
 
-#include "gui/widgets/tabs/battletab.h"
+#include "gui/widgets/tabs/chat/battletab.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/chatinput.h"

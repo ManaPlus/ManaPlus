@@ -1,6 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2008-2009  The Mana World Development Team
+ *  Copyright (C) 2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
  *  Copyright (C) 2011-2014  The ManaPlus Developers
  *
@@ -20,31 +20,30 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gui/widgets/tabs/battletab.h"
+#ifndef GUI_WIDGETS_TABS_CHAT_BATTLETAB_H
+#define GUI_WIDGETS_TABS_CHAT_BATTLETAB_H
 
-#include "chatlogger.h"
-#include "configuration.h"
+#include "gui/widgets/tabs/chattab.h"
+#include "gui/widgets/tabs/chattabtype.h"
 
-#include "utils/gettext.h"
-
-#include "debug.h"
-
-BattleTab *battleChatTab = nullptr;
-
-BattleTab::BattleTab(const Widget2 *const widget) :
-    // TRANSLATORS: battle chat tab name
-    ChatTab(widget, _("Battle"), "")
+/**
+ * A tab for a party chat channel.
+ */
+class BattleTab final : public ChatTab
 {
-    if (config.getBoolValue("showChatHistory"))
-        loadFromLogFile("#Battle");
-}
+    public:
+        explicit BattleTab(const Widget2 *const widget);
 
-BattleTab::~BattleTab()
-{
-}
+        A_DELETE_COPY(BattleTab)
 
-void BattleTab::saveToLogFile(const std::string &msg) const
-{
-    if (chatLogger)
-        chatLogger->log(std::string("#Battle"), std::string(msg));
-}
+        ~BattleTab();
+
+        int getType() const override final A_WARN_UNUSED
+        { return ChatTabType::BATTLE; }
+
+        void saveToLogFile(const std::string &msg) const override final;
+};
+
+extern BattleTab *battleChatTab;
+
+#endif  // GUI_WIDGETS_TABS_CHAT_BATTLETAB_H

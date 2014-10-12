@@ -240,8 +240,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/models/avatarlistmodel.h \
 	      gui/models/beingslistmodel.h \
 	      gui/models/colorlistmodel.h \
-	      gui/widgets/tabs/battletab.cpp \
-	      gui/widgets/tabs/battletab.h \
+	      gui/widgets/tabs/chat/battletab.cpp \
+	      gui/widgets/tabs/chat/battletab.h \
 	      gui/widgets/browserbox.cpp \
 	      gui/widgets/browserbox.h \
 	      gui/widgets/button.cpp \

@@ -81,7 +81,7 @@
 #include "gui/windows/questswindow.h"
 #include "gui/windows/whoisonline.h"
 
-#include "gui/widgets/tabs/battletab.h"
+#include "gui/widgets/tabs/chat/battletab.h"
 
 #include "gui/widgets/emoteshortcutcontainer.h"
 #include "gui/widgets/itemshortcutcontainer.h"
