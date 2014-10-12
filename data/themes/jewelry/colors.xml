@@ -38,6 +38,12 @@
         <color id="BATTLE_CHAT_TAB_HIGHLIGHTED_OUTLINE" color="#63450a" />
         <color id="BATTLE_CHAT_TAB_SELECTED" color="#f8eacf" />
         <color id="BATTLE_CHAT_TAB_SELECTED_OUTLINE" color="#63450a" />
+        <color id="CHANNEL_CHAT_TAB" color="#efd7a7" />
+        <color id="CHANNEL_CHAT_TAB_OUTLINE" color="#473005" />
+        <color id="CHANNEL_CHAT_TAB_HIGHLIGHTED" color="#f8eacf" />
+        <color id="CHANNEL_CHAT_TAB_HIGHLIGHTED_OUTLINE" color="#63450a" />
+        <color id="CHANNEL_CHAT_TAB_SELECTED" color="#f8eacf" />
+        <color id="CHANNEL_CHAT_TAB_SELECTED_OUTLINE" color="#63450a" />
         <color id="TEXTBOX" color="#000000" />
         <color id="TEXTFIELD" color="#000000" />
         <color id="WINDOW" color="#f1d9a9" />
@@ -158,6 +164,12 @@
         <color id="BATTLE_CHAT_TAB_HIGHLIGHTED_OUTLINE" color="#63450a" />
         <color id="BATTLE_CHAT_TAB_SELECTED" color="#f8eacf" />
         <color id="BATTLE_CHAT_TAB_SELECTED_OUTLINE" color="#63450a" />
+        <color id="CHANNEL_CHAT_TAB" color="#efd7a7" />
+        <color id="CHANNEL_CHAT_TAB_OUTLINE" color="#473005" />
+        <color id="CHANNEL_CHAT_TAB_HIGHLIGHTED" color="#f8eacf" />
+        <color id="CHANNEL_CHAT_TAB_HIGHLIGHTED_OUTLINE" color="#63450a" />
+        <color id="CHANNEL_CHAT_TAB_SELECTED" color="#f8eacf" />
+        <color id="CHANNEL_CHAT_TAB_SELECTED_OUTLINE" color="#63450a" />
         <color id="TAB_FLASH" color="#a7ff2a" />
         <color id="TAB_FLASH_OUTLINE" color="#142200" />
         <color id="TAB_PLAYER_FLASH" color="#ff96f6" />
@@ -348,6 +360,12 @@
         <color id="BATTLE_CHAT_TAB_HIGHLIGHTED_OUTLINE" color="#000000" />
         <color id="BATTLE_CHAT_TAB_SELECTED" color="#f8eacf" />
         <color id="BATTLE_CHAT_TAB_SELECTED_OUTLINE" color="#000000" />
+        <color id="CHANNEL_CHAT_TAB" color="#efd7a7" />
+        <color id="CHANNEL_CHAT_TAB_OUTLINE" color="#000000" />
+        <color id="CHANNEL_CHAT_TAB_HIGHLIGHTED" color="#f8eacf" />
+        <color id="CHANNEL_CHAT_TAB_HIGHLIGHTED_OUTLINE" color="#000000" />
+        <color id="CHANNEL_CHAT_TAB_SELECTED" color="#f8eacf" />
+        <color id="CHANNEL_CHAT_TAB_SELECTED_OUTLINE" color="#000000" />
         <color id="TEXTBOX" color="#000000" />
         <color id="TEXTFIELD" color="#000000" />
         <color id="WINDOW" color="#f1d9a9" />

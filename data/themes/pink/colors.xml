@@ -28,6 +28,9 @@
         <color id="BATTLE_CHAT_TAB" color="#FF32FF" />
         <color id="BATTLE_CHAT_TAB_HIGHLIGHTED" color="#FF32FF" />
         <color id="BATTLE_CHAT_TAB_SELECTED" color="#FF32FF" />
+        <color id="CHANNEL_CHAT_TAB" color="#FF32FF" />
+        <color id="CHANNEL_CHAT_TAB_HIGHLIGHTED" color="#FF32FF" />
+        <color id="CHANNEL_CHAT_TAB_SELECTED" color="#FF32FF" />
         <color id="TEXTBOX" color="#FF00FF" />
         <color id="TEXTFIELD" color="#FF00FF" />
         <color id="WINDOW" color="#FF00FF" />

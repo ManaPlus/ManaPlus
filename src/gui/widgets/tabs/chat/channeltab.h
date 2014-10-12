@@ -1,5 +1,7 @@
 /*
  *  The ManaPlus Client
+ *  Copyright (C) 2009  The Mana World Development Team
+ *  Copyright (C) 2009-2010  The Mana Developers
  *  Copyright (C) 2011-2014  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
@@ -18,25 +20,27 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_WIDGETS_TABS_CHAT_CHATTABTYPE_H
-#define GUI_WIDGETS_TABS_CHAT_CHATTABTYPE_H
+#ifndef GUI_WIDGETS_TABS_CHAT_CHANNELTAB_H
+#define GUI_WIDGETS_TABS_CHAT_CHANNELTAB_H
 
-namespace ChatTabType
+#include "gui/widgets/tabs/chat/chattab.h"
+#include "gui/widgets/tabs/chat/chattabtype.h"
+
+/**
+ * A tab for a chat channel.
+ */
+class ChannelTab final : public ChatTab
 {
-    enum Type
-    {
-        UNKNOWN = 0,
-        INPUT,
-        WHISPER,
-        PARTY,
-        GUILD,
-        DEBUG,
-        TRADE,
-        BATTLE,
-        LANG,
-        GM,
-        CHANNEL
-    };
-}  // namespace ChatTabType
+    public:
+        ChannelTab(const Widget2 *const widget,
+            const std::string &channel);
 
-#endif  // GUI_WIDGETS_TABS_CHAT_CHATTABTYPE_H
+        A_DELETE_COPY(ChannelTab)
+
+        ~ChannelTab();
+
+    protected:
+        void handleInput(const std::string &msg) override final;
+};
+
+#endif  // GUI_WIDGETS_TABS_CHAT_CHANNELTAB_H

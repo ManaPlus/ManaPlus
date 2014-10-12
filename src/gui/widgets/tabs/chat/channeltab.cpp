@@ -1,5 +1,7 @@
 /*
  *  The ManaPlus Client
+ *  Copyright (C) 2008-2009  The Mana World Development Team
+ *  Copyright (C) 2009-2010  The Mana Developers
  *  Copyright (C) 2011-2014  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
@@ -18,25 +20,31 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_WIDGETS_TABS_CHAT_CHATTABTYPE_H
-#define GUI_WIDGETS_TABS_CHAT_CHATTABTYPE_H
+#include "gui/widgets/tabs/chat/channeltab.h"
 
-namespace ChatTabType
+#include "chatlogger.h"
+#include "configuration.h"
+
+#include "gui/windows/chatwindow.h"
+
+#include "net/chathandler.h"
+
+#include "debug.h"
+
+ChannelTab::ChannelTab(const Widget2 *const widget,
+                       const std::string &channel) :
+    ChatTab(widget, channel, channel, channel, ChatTabType::CHANNEL)
 {
-    enum Type
-    {
-        UNKNOWN = 0,
-        INPUT,
-        WHISPER,
-        PARTY,
-        GUILD,
-        DEBUG,
-        TRADE,
-        BATTLE,
-        LANG,
-        GM,
-        CHANNEL
-    };
-}  // namespace ChatTabType
+    setTabColors(Theme::CHANNEL_CHAT_TAB);
+}
 
-#endif  // GUI_WIDGETS_TABS_CHAT_CHATTABTYPE_H
+ChannelTab::~ChannelTab()
+{
+}
+
+void ChannelTab::handleInput(const std::string &msg)
+{
+    std::string newMsg;
+    newMsg = ChatWindow::doReplace(msg);
+    chatHandler->privateMessage(mChannelName, newMsg);
+}
