@@ -36,7 +36,7 @@
 #include "net/ea/guildhandler.h"
 
 #include "gui/widgets/tabs/chat/guildtab.h"
-#include "net/ea/gui/partytab.h"
+#include "gui/widgets/tabs/chat/partytab.h"
 
 #include "net/eathena/adminhandler.h"
 #include "net/eathena/auctionhandler.h"
@@ -380,7 +380,7 @@ void GeneralHandler::gameEnded() const
     }
 
     delete2(guildTab);
-    delete2(Ea::partyTab);
+    delete2(partyTab);
 }
 
 }  // namespace EAthena

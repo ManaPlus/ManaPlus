@@ -33,7 +33,7 @@
 
 #include "net/messagein.h"
 
-#include "net/ea/gui/partytab.h"
+#include "gui/widgets/tabs/chat/partytab.h"
 
 #include "utils/delete2.h"
 
@@ -41,10 +41,11 @@
 
 #include "debug.h"
 
+PartyTab *partyTab = nullptr;
+
 namespace Ea
 {
 
-PartyTab *partyTab = nullptr;
 Party *taParty = nullptr;
 
 PartyHandler::PartyHandler() :
@@ -168,7 +169,7 @@ void PartyHandler::processPartyMove(Net::MessageIn &msg) const
         m->setY(msg.readInt16());       // y
         const bool online = msg.readUInt8() != 0;
         if (m->getOnline() != online)
-            Ea::partyTab->showOnline(m->getName(), online);
+            partyTab->showOnline(m->getName(), online);
         m->setOnline(online);           // online (if 0)
         msg.readString(24);             // party
         msg.readString(24);             // nick
@@ -225,7 +226,7 @@ void PartyHandler::processPartyLeave(Net::MessageIn &msg) const
             Ea::taParty->clearMembers();
         }
 
-        delete2(Ea::partyTab)
+        delete2(partyTab)
 
         if (socialWindow && Ea::taParty)
             socialWindow->removeTab(Ea::taParty);
@@ -318,9 +319,9 @@ ChatTab *PartyHandler::getTab() const
 
 void PartyHandler::createTab() const
 {
-    Ea::partyTab = new Ea::PartyTab(chatWindow);
+    partyTab = new PartyTab(chatWindow);
     if (config.getBoolValue("showChatHistory"))
-        Ea::partyTab->loadFromLogFile("#Party");
+        partyTab->loadFromLogFile("#Party");
 }
 
 }  // namespace Ea

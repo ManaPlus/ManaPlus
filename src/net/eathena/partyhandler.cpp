@@ -30,7 +30,7 @@
 #include "gui/windows/chatwindow.h"
 #include "gui/windows/socialwindow.h"
 
-#include "net/ea/gui/partytab.h"
+#include "gui/widgets/tabs/chat/partytab.h"
 
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
@@ -243,8 +243,8 @@ void PartyHandler::processPartyMemberInfo(Net::MessageIn &msg)
     PartyMember *const member = Ea::taParty->addMember(id, nick);
     if (member)
     {
-        if (Ea::partyTab && member->getOnline() != online)
-            Ea::partyTab->showOnline(nick, online);
+        if (partyTab && member->getOnline() != online)
+            partyTab->showOnline(nick, online);
         member->setLeader(leader);
         member->setOnline(online);
         member->setMap(map);
@@ -255,7 +255,7 @@ void PartyHandler::processPartyMemberInfo(Net::MessageIn &msg)
 
 void PartyHandler::processPartySettings(Net::MessageIn &msg)
 {
-    if (!Ea::partyTab)
+    if (!partyTab)
     {
         if (!chatWindow)
             return;
@@ -279,7 +279,7 @@ void PartyHandler::processPartyInfo(Net::MessageIn &msg) const
         logger->log1("error: party empty in SMSG_PARTY_INFO");
         Ea::taParty = Party::getParty(1);
     }
-    if (!Ea::partyTab)
+    if (!partyTab)
         createTab();
 
     if (Ea::taParty)
@@ -340,14 +340,14 @@ void PartyHandler::processPartyInfo(Net::MessageIn &msg) const
             PartyMember *const member = Ea::taParty->addMember(id, nick);
             if (member)
             {
-                if (!joined && Ea::partyTab)
+                if (!joined && partyTab)
                 {
                     if (!names.empty() && ((onlineNames.find(nick)
                         == onlineNames.end() && online)
                         || (onlineNames.find(nick) != onlineNames.end()
                         && !online)))
                     {
-                        Ea::partyTab->showOnline(nick, online);
+                        partyTab->showOnline(nick, online);
                     }
 
                     member->setLeader(leader);
@@ -389,12 +389,12 @@ void PartyHandler::processPartyMessage(Net::MessageIn &msg) const
     if (pos != std::string::npos)
         chatMsg.erase(0, pos + 3);
 
-    if (Ea::taParty && Ea::partyTab)
+    if (Ea::taParty && partyTab)
     {
         const PartyMember *const member = Ea::taParty->getMember(id);
         if (member)
         {
-            Ea::partyTab->chatLog(member->getName(), chatMsg);
+            partyTab->chatLog(member->getName(), chatMsg);
         }
         else
         {
@@ -406,7 +406,7 @@ void PartyHandler::processPartyMessage(Net::MessageIn &msg) const
 
 void PartyHandler::processPartyInviteResponse(Net::MessageIn &msg) const
 {
-    if (!Ea::partyTab)
+    if (!partyTab)
         return;
 
     const std::string nick = msg.readString(24, "nick");

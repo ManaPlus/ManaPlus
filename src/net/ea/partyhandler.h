@@ -25,6 +25,7 @@
 #include "net/partyhandler.h"
 
 class Party;
+class PartyTab;
 
 namespace Net
 {
@@ -33,8 +34,6 @@ namespace Net
 
 namespace Ea
 {
-class PartyTab;
-
 class PartyHandler notfinal : public Net::PartyHandler
 {
     public:
@@ -82,9 +81,10 @@ class PartyHandler notfinal : public Net::PartyHandler
         Net::PartyShare::Type mShareItems;
 };
 
-extern PartyTab *partyTab;
 extern Party *taParty;
 
 }  // namespace Ea
+
+extern PartyTab *partyTab;
 
 #endif  // NET_EA_PARTYHANDLER_H

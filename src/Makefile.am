@@ -1184,8 +1184,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      winver.h \
 	      gui/widgets/tabs/chat/guildtab.cpp \
 	      gui/widgets/tabs/chat/guildtab.h \
-	      net/ea/gui/partytab.cpp \
-	      net/ea/gui/partytab.h \
+	      gui/widgets/tabs/chat/partytab.cpp \
+	      gui/widgets/tabs/chat/partytab.h \
 	      net/ea/adminhandler.cpp \
 	      net/ea/adminhandler.h \
 	      net/ea/beinghandler.cpp \

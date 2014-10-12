@@ -176,8 +176,8 @@ SET(SRCS
     gui/widgets/tabs/chat/gmtab.h
     gui/widgets/tabs/chat/guildtab.cpp
     gui/widgets/tabs/chat/guildtab.h
-    net/ea/gui/partytab.cpp
-    net/ea/gui/partytab.h
+    gui/widgets/tabs/chat/partytab.cpp
+    gui/widgets/tabs/chat/partytab.h
     gui/widgets/horizontcontainer.cpp
     gui/widgets/horizontcontainer.h
     gui/widgets/icon.cpp

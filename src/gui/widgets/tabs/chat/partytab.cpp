@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "net/ea/gui/partytab.h"
+#include "gui/widgets/tabs/chat/partytab.h"
 
 #include "chatlogger.h"
 #include "configuration.h"
@@ -38,9 +38,6 @@
 #include "utils/booleanoptions.h"
 
 #include "debug.h"
-
-namespace Ea
-{
 
 PartyTab::PartyTab(const Widget2 *const widget) :
     // TRANSLATORS: party chat tab name
@@ -247,5 +244,3 @@ void PartyTab::optionChanged(const std::string &value)
     if (value == "showPartyOnline")
         mShowOnline = config.getBoolValue("showPartyOnline");
 }
-
-}  // namespace Ea

@@ -30,7 +30,7 @@
 #include "gui/windows/chatwindow.h"
 #include "gui/windows/socialwindow.h"
 
-#include "net/ea/gui/partytab.h"
+#include "gui/widgets/tabs/chat/partytab.h"
 
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
@@ -204,7 +204,7 @@ void PartyHandler::setShareItems(const Net::PartyShare::Type share) const
 
 void PartyHandler::processPartySettings(Net::MessageIn &msg)
 {
-    if (!Ea::partyTab)
+    if (!partyTab)
     {
         if (!chatWindow)
             return;
@@ -286,14 +286,14 @@ void PartyHandler::processPartyInfo(Net::MessageIn &msg) const
             PartyMember *const member = Ea::taParty->addMember(id, nick);
             if (member)
             {
-                if (!joined && Ea::partyTab)
+                if (!joined && partyTab)
                 {
                     if (!names.empty() && ((onlineNames.find(nick)
                         == onlineNames.end() && online)
                         || (onlineNames.find(nick) != onlineNames.end()
                         && !online)))
                     {
-                        Ea::partyTab->showOnline(nick, online);
+                        partyTab->showOnline(nick, online);
                     }
 
                     member->setLeader(leader);
@@ -331,12 +331,12 @@ void PartyHandler::processPartyMessage(Net::MessageIn &msg) const
     const int id = msg.readInt32();
     const std::string chatMsg = msg.readString(msgLength);
 
-    if (Ea::taParty && Ea::partyTab)
+    if (Ea::taParty && partyTab)
     {
         const PartyMember *const member = Ea::taParty->getMember(id);
         if (member)
         {
-            Ea::partyTab->chatLog(member->getName(), chatMsg);
+            partyTab->chatLog(member->getName(), chatMsg);
         }
         else
         {
@@ -348,7 +348,7 @@ void PartyHandler::processPartyMessage(Net::MessageIn &msg) const
 
 void PartyHandler::processPartyInviteResponse(Net::MessageIn &msg) const
 {
-    if (!Ea::partyTab)
+    if (!partyTab)
         return;
 
     const std::string nick = msg.readString(24);

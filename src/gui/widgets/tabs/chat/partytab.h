@@ -20,14 +20,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_EA_GUI_PARTYTAB_H
-#define NET_EA_GUI_PARTYTAB_H
+#ifndef GUI_WIDGETS_TABS_CHAT_PARTYTAB_H
+#define GUI_WIDGETS_TABS_CHAT_PARTYTAB_H
 
 #include "gui/widgets/tabs/chat/chattab.h"
 #include "gui/widgets/tabs/chat/chattabtype.h"
-
-namespace Ea
-{
 
 /**
  * A tab for a party chat channel.
@@ -64,6 +61,4 @@ class PartyTab notfinal : public ChatTab,
 
 extern PartyTab *partyTab;
 
-}  // namespace Ea
-
-#endif  // NET_EA_GUI_PARTYTAB_H
+#endif  // GUI_WIDGETS_TABS_CHAT_PARTYTAB_H
