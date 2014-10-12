@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gui/widgets/tabs/tradetab.h"
+#include "gui/widgets/tabs/chat/tradetab.h"
 
 #include "chatlogger.h"
 

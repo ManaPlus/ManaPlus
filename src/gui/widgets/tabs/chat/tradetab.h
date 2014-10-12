@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_WIDGETS_TABS_TRADETAB_H
-#define GUI_WIDGETS_TABS_TRADETAB_H
+#ifndef GUI_WIDGETS_TABS_CHAT_TRADETAB_H
+#define GUI_WIDGETS_TABS_CHAT_TRADETAB_H
 
 #include "gui/widgets/tabs/chat/chattab.h"
 #include "gui/widgets/tabs/chat/chattabtype.h"
@@ -49,4 +49,4 @@ class TradeTab final : public ChatTab
 
 extern TradeTab *tradeChatTab;
 
-#endif  // GUI_WIDGETS_TABS_TRADETAB_H
+#endif  // GUI_WIDGETS_TABS_CHAT_TRADETAB_H

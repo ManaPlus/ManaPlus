@@ -430,8 +430,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/textfield.h \
 	      gui/widgets/textpreview.cpp \
 	      gui/widgets/textpreview.h \
-	      gui/widgets/tabs/tradetab.cpp \
-	      gui/widgets/tabs/tradetab.h \
+	      gui/widgets/tabs/chat/tradetab.cpp \
+	      gui/widgets/tabs/chat/tradetab.h \
 	      gui/widgets/vertcontainer.cpp \
 	      gui/widgets/vertcontainer.h \
 	      gui/widgets/tabs/whispertab.cpp \
