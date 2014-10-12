@@ -35,6 +35,7 @@ BattleTab::BattleTab(const Widget2 *const widget) :
     // TRANSLATORS: battle chat tab name
     ChatTab(widget, _("Battle"), "", "#Battle", ChatTabType::BATTLE)
 {
+    setTabColors(Theme::BATTLE_CHAT_TAB);
     if (config.getBoolValue("showChatHistory"))
         loadFromLogFile("#Battle");
 }

@@ -25,6 +25,9 @@
         <color id="TAB" color="#13f00d" />
         <color id="TAB_HIGHLIGHTED" color="#13f00d" />
         <color id="TAB_SELECTED" color="#13f00d" />
+        <color id="BATTLE_CHAT_TAB" color="#13f00d" />
+        <color id="BATTLE_CHAT_TAB_HIGHLIGHTED" color="#13f00d" />
+        <color id="BATTLE_CHAT_TAB_SELECTED" color="#13f00d" />
         <color id="TEXTBOX" color="#ffffff" />
         <color id="TEXTFIELD" color="#ffffff" />
         <color id="WINDOW" color="#ffffff" />
