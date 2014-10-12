@@ -38,6 +38,7 @@
 #include <set>
 
 class Button;
+class ChannelTab;
 class ChatTab;
 class ChatInput;
 class ColorListModel;
@@ -198,7 +199,15 @@ class ChatWindow final : public Window,
 
         WhisperTab *getWhisperTab(const std::string &nick) const A_WARN_UNUSED;
 
+        ChannelTab *addChannelTab(const std::string &name,
+                                  const bool switchTo = false) A_WARN_UNUSED;
+
+        ChatTab *addChatTab(const std::string &name,
+                            const bool switchTo = false) A_WARN_UNUSED;
+
         void removeAllWhispers();
+
+        void removeAllChannels();
 
         void ignoreAllWhispers();
 
@@ -218,6 +227,8 @@ class ChatWindow final : public Window,
         void loadState();
 
         void saveState() const;
+
+        bool saveTab(const int num, ChatTab *const tab) const;
 
         void loadCustomList();
 
@@ -332,8 +343,11 @@ class ChatWindow final : public Window,
         bool addCurrentToHistory();
 
         typedef std::map<const std::string, WhisperTab*> TabMap;
+        typedef std::map<const std::string, ChannelTab*> ChannelMap;
+
         /** Manage whisper tabs */
         TabMap mWhispers;
+        ChannelMap mChannels;
 
         typedef History::iterator HistoryIterator;
         History mHistory;          /**< Command history. */

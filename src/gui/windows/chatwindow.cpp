@@ -49,17 +49,17 @@
 
 #include "gui/windows/emotewindow.h"
 #include "gui/windows/setupwindow.h"
-#include "gui/widgets/tabbedarea.h"
 #include "gui/windows/whoisonline.h"
-
-#include "gui/widgets/tabs/chat/battletab.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/chatinput.h"
 #include "gui/widgets/dropdown.h"
 #include "gui/widgets/itemlinkhandler.h"
 #include "gui/widgets/scrollarea.h"
+#include "gui/widgets/tabbedarea.h"
 
+#include "gui/widgets/tabs/chat/battletab.h"
+#include "gui/widgets/tabs/chat/channeltab.h"
 #include "gui/widgets/tabs/chat/langtab.h"
 #include "gui/widgets/tabs/chat/tradetab.h"
 #include "gui/widgets/tabs/chat/whispertab.h"
@@ -67,6 +67,7 @@
 #include "render/opengldebug.h"
 
 #include "net/chathandler.h"
+#include "net/serverfeatures.h"
 
 #include "utils/copynpaste.h"
 #include "utils/delete2.h"
@@ -94,6 +95,7 @@ ChatWindow::ChatWindow() :
     mChatInput(new ChatInput(this)),
     mRainbowColor(0),
     mWhispers(),
+    mChannels(),
     mHistory(),
     mCurHist(),
     mCommands(),
@@ -200,6 +202,7 @@ ChatWindow::~ChatWindow()
     saveState();
     config.setValue("ReturnToggles", mReturnToggles);
     removeAllWhispers();
+    removeAllChannels();
     delete2(mItemLinkHandler);
     delete2(mColorPicker);
     delete2(mColorListModel);
@@ -557,6 +560,22 @@ void ChatWindow::removeAllWhispers()
     }
 
     mWhispers.clear();
+}
+
+void ChatWindow::removeAllChannels()
+{
+    std::list<ChatTab*> tabs;
+
+    FOR_EACH (ChannelMap::iterator, iter, mChannels)
+        tabs.push_back(iter->second);
+
+    for (std::list<ChatTab*>::iterator it = tabs.begin();
+         it != tabs.end(); ++it)
+    {
+        delete *it;
+    }
+
+    mChannels.clear();
 }
 
 void ChatWindow::ignoreAllWhispers()
@@ -1149,6 +1168,46 @@ WhisperTab *ChatWindow::getWhisperTab(const std::string &nick) const
     return ret;
 }
 
+ChannelTab *ChatWindow::addChannelTab(const std::string &name,
+                                      const bool switchTo)
+{
+    std::string tempName = name;
+    toLower(tempName);
+
+    const ChannelMap::const_iterator i = mChannels.find(tempName);
+    ChannelTab *ret = nullptr;
+
+    if (i != mChannels.end())
+    {
+        ret = i->second;
+    }
+    else
+    {
+        ret = new ChannelTab(this, name);
+        mChannels[tempName] = ret;
+        if (config.getBoolValue("showChatHistory"))
+            ret->loadFromLogFile(name);
+    }
+
+    if (switchTo)
+        mChatTabs->setSelectedTab(ret);
+
+    return ret;
+}
+
+ChatTab *ChatWindow::addChatTab(const std::string &name,
+                                const bool switchTo)
+{
+    if (serverFeatures->haveChatChannels() && name.size() > 1
+        && name[0] == '#')
+    {
+        return addChannelTab(name, switchTo);
+    }
+    else
+    {
+        return addWhisperTab(name, switchTo);
+    }
+}
 
 #define changeColor(fun) \
     { \
@@ -1636,7 +1695,7 @@ void ChatWindow::loadState()
         const int flags = serverConfig.getValue(
             "chatWhisperFlags" + toString(num), 1);
 
-        ChatTab *const tab = addWhisperTab(nick);
+        ChatTab *const tab = addChatTab(nick, false);
         if (tab)
         {
             tab->setAllowHighlight(flags & 1);
@@ -1650,25 +1709,23 @@ void ChatWindow::loadState()
 void ChatWindow::saveState() const
 {
     int num = 0;
+    for (ChannelMap::const_iterator iter = mChannels.begin(),
+         iter_end = mChannels.end(); iter != iter_end && num < 50; ++iter)
+    {
+        if (!iter->second)
+            return;
+        if (!saveTab(num, iter->second))
+            continue;
+        num ++;
+    }
+
     for (TabMap::const_iterator iter = mWhispers.begin(),
          iter_end = mWhispers.end(); iter != iter_end && num < 50; ++iter)
     {
         if (!iter->second)
             return;
-
-        const WhisperTab *const tab = static_cast<WhisperTab*>(iter->second);
-
-        if (!tab)
+        if (!saveTab(num, iter->second))
             continue;
-
-        serverConfig.setValue("chatWhisper" + toString(num),
-            tab->getNick());
-
-        serverConfig.setValue("chatWhisperFlags" + toString(num),
-            static_cast<int>(tab->getAllowHighlight())
-            + (2 * static_cast<int>(tab->getRemoveNames()))
-            + (4 * static_cast<int>(tab->getNoAway())));
-
         num ++;
     }
 
@@ -1678,6 +1735,22 @@ void ChatWindow::saveState() const
         serverConfig.deleteKey("chatWhisperFlags" + toString(num));
         num ++;
     }
+}
+
+bool ChatWindow::saveTab(const int num, ChatTab *const tab) const
+{
+    if (!tab)
+        return false;
+
+    serverConfig.setValue("chatWhisper" + toString(num),
+        tab->getChannelName());
+
+    serverConfig.setValue("chatWhisperFlags" + toString(num),
+        static_cast<int>(tab->getAllowHighlight())
+        + (2 * static_cast<int>(tab->getRemoveNames()))
+        + (4 * static_cast<int>(tab->getNoAway())));
+
+    return true;
 }
 
 std::string ChatWindow::doReplace(const std::string &msg)

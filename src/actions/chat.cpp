@@ -223,9 +223,10 @@ impHandler(msg)
 
 impHandler(query)
 {
+    const std::string &args = event.args;
     if (chatWindow)
     {
-        if (chatWindow->addWhisperTab(event.args, true))
+        if (chatWindow->addChatTab(args, true))
         {
             chatWindow->saveState();
             return true;
@@ -234,10 +235,10 @@ impHandler(query)
 
     if (event.tab)
     {
-        // TRANSLATORS: new whisper query
-        event.tab->chatLog(strprintf(_("Cannot create a whisper tab for nick "
-            "\"%s\"! It either already exists, or is you."),
-            event.args.c_str()), ChatMsgType::BY_SERVER);
+        // TRANSLATORS: new whisper or channel query
+        event.tab->chatLog(strprintf(_("Cannot create a whisper tab "
+            "\"%s\"! It either already exists."),
+            args.c_str()), ChatMsgType::BY_SERVER);
     }
     return true;
 }
