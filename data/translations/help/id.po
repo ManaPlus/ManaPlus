@@ -1,12 +1,13 @@
 # en#
 # Translators:
+# Aviv wahyudin <apip45@gmail.com>, 2014
 # Fuad Fauzi <me@fuadfauzi.web.id>, 2013
 # Fuad Fauzi <me@fuadfauzi.web.id>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2014-03-09 22:58+0000\n"
-"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"PO-Revision-Date: 2014-10-12 11:32+0000\n"
+"Last-Translator: Aviv wahyudin <apip45@gmail.com>\n"
 "Language-Team: Indonesian (http://www.transifex.com/projects/p/manaplus/language/id/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -46,10 +47,10 @@ msgid "Back to Index"
 msgstr "Kembali ke Indeks"
 
 msgid "\"Quests window\""
-msgstr ""
+msgstr "\"Jendela misi\""
 
 msgid "\"Quick drop window\""
-msgstr ""
+msgstr "\"Jendela membuang cepat\""
 
 msgid ""
 " You can improve your skills by increasing job level. Each job level\n"
@@ -90,7 +91,7 @@ msgid "/heal NICK - heal nick."
 msgstr ""
 
 msgid "\"Select OK\""
-msgstr ""
+msgstr "\"Pilih OK\""
 
 msgid "/dumpe - dump environment variables into chat."
 msgstr ""

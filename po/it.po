@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-10-11 18:47+0300\n"
+"POT-Creation-Date: 2014-10-12 14:46+0300\n"
 "PO-Revision-Date: 2014-10-10 10:01+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/manaplus/"
@@ -58,7 +58,7 @@ msgstr ""
 #: src/gui/windows/editserverdialog.cpp:59
 #: src/gui/windows/editserverdialog.cpp:206
 #: src/gui/windows/itemamountwindow.cpp:158 src/gui/windows/quitdialog.cpp:68
-#: src/gui/windows/registerdialog.cpp:243 src/gui/windows/socialwindow.cpp:503
+#: src/gui/windows/registerdialog.cpp:243 src/gui/windows/socialwindow.cpp:504
 #: src/gui/windows/textdialog.cpp:48 src/gui/windows/unregisterdialog.cpp:149
 #: src/net/ea/charserverhandler.cpp:143 src/net/ea/charserverhandler.cpp:162
 #: src/net/ea/charserverhandler.cpp:175 src/net/ea/gamehandler.cpp:79
@@ -179,7 +179,7 @@ msgstr ""
 
 #. TRANSLATORS: create party message
 #. TRANSLATORS: chat error message
-#: src/actions/chat.cpp:263 src/net/ea/gui/partytab.cpp:79
+#: src/actions/chat.cpp:263 src/gui/widgets/tabs/chat/partytab.cpp:78
 msgid "Party name is missing."
 msgstr "Manca il nome del party."
 
@@ -296,7 +296,7 @@ msgid "Accepting incoming trade requests"
 msgstr "Le richieste di scambio in arrivo saranno accettate"
 
 #. TRANSLATORS: visible beings on map
-#: src/actormanager.cpp:1310
+#: src/actormanager.cpp:1316
 msgid "Visible on map"
 msgstr "Visibile nella mappa"
 
@@ -421,8 +421,8 @@ msgstr ""
 #. TRANSLATORS: add player to completle ignore list
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player to ignore list
-#: src/being/playerrelations.cpp:468 src/gui/popups/popupmenu.cpp:2672
-#: src/gui/popups/popupmenu.cpp:2714
+#: src/being/playerrelations.cpp:468 src/gui/popups/popupmenu.cpp:2673
+#: src/gui/popups/popupmenu.cpp:2715
 msgid "Completely ignore"
 msgstr "Ignora completamente."
 
@@ -496,8 +496,8 @@ msgstr "Aiuto"
 #. TRANSLATORS: quests window button
 #. TRANSLATORS: shop window button
 #: src/client.cpp:937 src/client.cpp:1389 src/client.cpp:1403
-#: src/gui/dialogsmanager.cpp:84 src/gui/popups/popupmenu.cpp:691
-#: src/gui/popups/popupmenu.cpp:923 src/gui/windows/didyouknowwindow.cpp:81
+#: src/gui/dialogsmanager.cpp:84 src/gui/popups/popupmenu.cpp:692
+#: src/gui/popups/popupmenu.cpp:924 src/gui/windows/didyouknowwindow.cpp:81
 #: src/gui/windows/inventorywindow.cpp:224 src/gui/windows/npcdialog.cpp:74
 #: src/gui/windows/npcdialog.cpp:112 src/gui/windows/questswindow.cpp:77
 #: src/gui/windows/shopwindow.cpp:83
@@ -631,14 +631,14 @@ msgid "dyecmd srcdyestring dstfile"
 msgstr ""
 
 #. TRANSLATORS: chat tab header
-#: src/game.cpp:234 src/gui/widgets/tabs/chattab.cpp:482
+#: src/game.cpp:234 src/gui/widgets/tabs/chat/chattab.cpp:482
 msgid "General"
 msgstr "Generale"
 
 #. TRANSLATORS: chat tab header
 #. TRANSLATORS: full button name
 #. TRANSLATORS: debug window name
-#: src/game.cpp:251 src/gui/widgets/tabs/chattab.cpp:484
+#: src/game.cpp:251 src/gui/widgets/tabs/chat/chattab.cpp:484
 #: src/gui/windowmenu.cpp:149 src/gui/windows/debugwindow.cpp:42
 msgid "Debug"
 msgstr "Debug"
@@ -1212,8 +1212,8 @@ msgstr ""
 
 #. TRANSLATORS: language
 #. TRANSLATORS: popup menu header
-#: src/gui/models/langlistmodel.h:45 src/gui/popups/popupmenu.cpp:2375
-#: src/gui/popups/popupmenu.cpp:2453 src/gui/widgets/tabs/socialtabbase.h:48
+#: src/gui/models/langlistmodel.h:45 src/gui/popups/popupmenu.cpp:2376
+#: src/gui/popups/popupmenu.cpp:2454 src/gui/widgets/tabs/socialtabbase.h:48
 msgid "(default)"
 msgstr "(default)"
 
@@ -1464,7 +1464,7 @@ msgstr "Commento: %s"
 
 #. TRANSLATORS: party popup item
 #. TRANSLATORS: party creation message
-#: src/gui/popups/createpartypopup.h:51 src/gui/windows/socialwindow.cpp:500
+#: src/gui/popups/createpartypopup.h:51 src/gui/windows/socialwindow.cpp:501
 msgid "Create Party"
 msgstr "Crea gruppo"
 
@@ -1487,20 +1487,20 @@ msgstr "Crea gruppo"
 #. TRANSLATORS: unregister dialog. button.
 #. TRANSLATORS: updater window button
 #. TRANSLATORS: input action name
-#: src/gui/popups/createpartypopup.h:54 src/gui/popups/popupmenu.cpp:363
-#: src/gui/popups/popupmenu.cpp:411 src/gui/popups/popupmenu.cpp:507
-#: src/gui/popups/popupmenu.cpp:554 src/gui/popups/popupmenu.cpp:589
-#: src/gui/popups/popupmenu.cpp:620 src/gui/popups/popupmenu.cpp:645
-#: src/gui/popups/popupmenu.cpp:670 src/gui/popups/popupmenu.cpp:852
-#: src/gui/popups/popupmenu.cpp:879 src/gui/popups/popupmenu.cpp:912
-#: src/gui/popups/popupmenu.cpp:2117 src/gui/popups/popupmenu.cpp:2153
-#: src/gui/popups/popupmenu.cpp:2203 src/gui/popups/popupmenu.cpp:2245
-#: src/gui/popups/popupmenu.cpp:2286 src/gui/popups/popupmenu.cpp:2354
-#: src/gui/popups/popupmenu.cpp:2432 src/gui/popups/popupmenu.cpp:2466
-#: src/gui/popups/popupmenu.cpp:2492 src/gui/popups/popupmenu.cpp:2513
-#: src/gui/popups/popupmenu.cpp:2534 src/gui/popups/popupmenu.cpp:2559
-#: src/gui/popups/popupmenu.cpp:2576 src/gui/popups/popupmenu.cpp:2886
-#: src/gui/popups/popupmenu.cpp:3012 src/gui/windows/buyselldialog.cpp:75
+#: src/gui/popups/createpartypopup.h:54 src/gui/popups/popupmenu.cpp:364
+#: src/gui/popups/popupmenu.cpp:412 src/gui/popups/popupmenu.cpp:508
+#: src/gui/popups/popupmenu.cpp:555 src/gui/popups/popupmenu.cpp:590
+#: src/gui/popups/popupmenu.cpp:621 src/gui/popups/popupmenu.cpp:646
+#: src/gui/popups/popupmenu.cpp:671 src/gui/popups/popupmenu.cpp:853
+#: src/gui/popups/popupmenu.cpp:880 src/gui/popups/popupmenu.cpp:913
+#: src/gui/popups/popupmenu.cpp:2118 src/gui/popups/popupmenu.cpp:2154
+#: src/gui/popups/popupmenu.cpp:2204 src/gui/popups/popupmenu.cpp:2246
+#: src/gui/popups/popupmenu.cpp:2287 src/gui/popups/popupmenu.cpp:2355
+#: src/gui/popups/popupmenu.cpp:2433 src/gui/popups/popupmenu.cpp:2467
+#: src/gui/popups/popupmenu.cpp:2493 src/gui/popups/popupmenu.cpp:2514
+#: src/gui/popups/popupmenu.cpp:2535 src/gui/popups/popupmenu.cpp:2560
+#: src/gui/popups/popupmenu.cpp:2577 src/gui/popups/popupmenu.cpp:2887
+#: src/gui/popups/popupmenu.cpp:3013 src/gui/windows/buyselldialog.cpp:75
 #: src/gui/windows/changeemaildialog.cpp:58
 #: src/gui/windows/changepassworddialog.cpp:60
 #: src/gui/windows/charcreatedialog.cpp:127
@@ -1524,8 +1524,8 @@ msgstr "Peso: %s"
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: trade with player
 #. TRANSLATORS: trade chat tab name
-#: src/gui/popups/popupmenu.cpp:164 src/gui/popups/popupmenu.cpp:764
-#: src/gui/widgets/tabs/tradetab.cpp:37
+#: src/gui/popups/popupmenu.cpp:165 src/gui/popups/popupmenu.cpp:765
+#: src/gui/widgets/tabs/chat/tradetab.cpp:37
 msgid "Trade"
 msgstr "Commercia"
 
@@ -1539,8 +1539,8 @@ msgstr "Commercia"
 #. TRANSLATORS: bot checker window table header
 #. TRANSLATORS: input action name
 #. TRANSLATORS: player stat
-#: src/gui/popups/popupmenu.cpp:167 src/gui/popups/popupmenu.cpp:273
-#: src/gui/popups/popupmenu.cpp:767 src/gui/widgets/skillinfo.cpp:113
+#: src/gui/popups/popupmenu.cpp:168 src/gui/popups/popupmenu.cpp:274
+#: src/gui/popups/popupmenu.cpp:768 src/gui/widgets/skillinfo.cpp:113
 #: src/gui/windows/botcheckerwindow.cpp:89 src/input/pages/basic.cpp:42
 #: src/net/eathena/generalhandler.cpp:356 src/net/tmwa/generalhandler.cpp:320
 msgid "Attack"
@@ -1548,40 +1548,40 @@ msgstr "Attacco"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: send whisper to player
-#: src/gui/popups/popupmenu.cpp:170 src/gui/popups/popupmenu.cpp:432
+#: src/gui/popups/popupmenu.cpp:171 src/gui/popups/popupmenu.cpp:433
 msgid "Whisper"
 msgstr "Sussurra"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: heal player
-#: src/gui/popups/popupmenu.cpp:176 src/gui/popups/popupmenu.cpp:771
+#: src/gui/popups/popupmenu.cpp:177 src/gui/popups/popupmenu.cpp:772
 msgid "Heal"
 msgstr "Cura"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: kick player from guild
-#: src/gui/popups/popupmenu.cpp:196 src/gui/popups/popupmenu.cpp:212
-#: src/gui/popups/popupmenu.cpp:478 src/gui/popups/popupmenu.cpp:797
+#: src/gui/popups/popupmenu.cpp:197 src/gui/popups/popupmenu.cpp:213
+#: src/gui/popups/popupmenu.cpp:479 src/gui/popups/popupmenu.cpp:798
 msgid "Kick from guild"
 msgstr "Caccia dalla gilda"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: change player position in guild
-#: src/gui/popups/popupmenu.cpp:203 src/gui/popups/popupmenu.cpp:219
-#: src/gui/popups/popupmenu.cpp:485 src/gui/popups/popupmenu.cpp:804
+#: src/gui/popups/popupmenu.cpp:204 src/gui/popups/popupmenu.cpp:220
+#: src/gui/popups/popupmenu.cpp:486 src/gui/popups/popupmenu.cpp:805
 msgid "Change pos in guild"
 msgstr "Cambia ruolo nella gilda"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: invite player to guild
-#: src/gui/popups/popupmenu.cpp:229 src/gui/popups/popupmenu.cpp:495
-#: src/gui/popups/popupmenu.cpp:815
+#: src/gui/popups/popupmenu.cpp:230 src/gui/popups/popupmenu.cpp:496
+#: src/gui/popups/popupmenu.cpp:816
 msgid "Invite to guild"
 msgstr "Invita nell gilda"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: set player invisible for self by id
-#: src/gui/popups/popupmenu.cpp:236
+#: src/gui/popups/popupmenu.cpp:237
 msgid "Nuke"
 msgstr "Nascondi"
 
@@ -1599,9 +1599,9 @@ msgstr "Nascondi"
 #. TRANSLATORS: move to player location
 #. TRANSLATORS: input tab sub tab name
 #. TRANSLATORS: bot checker window table header
-#: src/gui/popups/popupmenu.cpp:239 src/gui/popups/popupmenu.cpp:261
-#: src/gui/popups/popupmenu.cpp:462 src/gui/popups/popupmenu.cpp:613
-#: src/gui/popups/popupmenu.cpp:778 src/gui/popups/popupmenu.cpp:838
+#: src/gui/popups/popupmenu.cpp:240 src/gui/popups/popupmenu.cpp:262
+#: src/gui/popups/popupmenu.cpp:463 src/gui/popups/popupmenu.cpp:614
+#: src/gui/popups/popupmenu.cpp:779 src/gui/popups/popupmenu.cpp:839
 #: src/gui/setupinputpages.cpp:45 src/gui/windows/botcheckerwindow.cpp:93
 msgid "Move"
 msgstr "Movimento"
@@ -1610,7 +1610,7 @@ msgstr "Movimento"
 #. TRANSLATORS: talk with npc
 #. TRANSLATORS: bot checker window table header
 #. TRANSLATORS: input action name
-#: src/gui/popups/popupmenu.cpp:251 src/gui/windows/botcheckerwindow.cpp:91
+#: src/gui/popups/popupmenu.cpp:252 src/gui/windows/botcheckerwindow.cpp:91
 #: src/input/pages/basic.cpp:90
 msgid "Talk"
 msgstr "Parla"
@@ -1621,7 +1621,7 @@ msgstr "Parla"
 #. TRANSLATORS: buy item
 #. TRANSLATORS: buy dialog name
 #. TRANSLATORS: shop window button
-#: src/gui/popups/popupmenu.cpp:254 src/gui/popups/popupmenu.cpp:2745
+#: src/gui/popups/popupmenu.cpp:255 src/gui/popups/popupmenu.cpp:2746
 #: src/gui/windows/buydialog.cpp:183 src/gui/windows/buydialog.cpp:199
 #: src/gui/windows/buydialog.cpp:260 src/gui/windows/buyselldialog.cpp:71
 msgid "Buy"
@@ -1634,7 +1634,7 @@ msgstr "Compra"
 #. TRANSLATORS: sell dialog name
 #. TRANSLATORS: sell dialog button
 #. TRANSLATORS: shop window button
-#: src/gui/popups/popupmenu.cpp:257 src/gui/popups/popupmenu.cpp:2748
+#: src/gui/popups/popupmenu.cpp:258 src/gui/popups/popupmenu.cpp:2749
 #: src/gui/widgets/selldialog.cpp:51 src/gui/widgets/selldialog.cpp:96
 #: src/gui/windows/buyselldialog.cpp:73
 msgid "Sell"
@@ -1644,26 +1644,26 @@ msgstr "Vendi"
 #. TRANSLATORS: add comment to npc
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add comment to player
-#: src/gui/popups/popupmenu.cpp:264 src/gui/popups/popupmenu.cpp:442
-#: src/gui/popups/popupmenu.cpp:2848
+#: src/gui/popups/popupmenu.cpp:265 src/gui/popups/popupmenu.cpp:443
+#: src/gui/popups/popupmenu.cpp:2849
 msgid "Add comment"
 msgstr "Aggiungi commento"
 
 #. TRANSLATORS: remove monster from attack list
 #. TRANSLATORS: popup menu item
-#: src/gui/popups/popupmenu.cpp:285
+#: src/gui/popups/popupmenu.cpp:286
 msgid "Remove from attack list"
 msgstr "Rimuovi dalla lista Attacco"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add monster to priotiry attack list
-#: src/gui/popups/popupmenu.cpp:292
+#: src/gui/popups/popupmenu.cpp:293
 msgid "Add to priority attack list"
 msgstr "Aggiungi alla lista Attacco - Priorità"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add monster to attack list
-#: src/gui/popups/popupmenu.cpp:296
+#: src/gui/popups/popupmenu.cpp:297
 msgid "Add to attack list"
 msgstr "Aggiungi alla lista Attacco"
 
@@ -1671,19 +1671,19 @@ msgstr "Aggiungi alla lista Attacco"
 #. TRANSLATORS: add monster to ignore list
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add item to pickup list
-#: src/gui/popups/popupmenu.cpp:300 src/gui/popups/popupmenu.cpp:2868
+#: src/gui/popups/popupmenu.cpp:301 src/gui/popups/popupmenu.cpp:2869
 msgid "Add to ignore list"
 msgstr "Aggiungi alla lista Ignora"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: Mercenary move to master
-#: src/gui/popups/popupmenu.cpp:309 src/gui/popups/popupmenu.cpp:320
+#: src/gui/popups/popupmenu.cpp:310 src/gui/popups/popupmenu.cpp:321
 msgid "Move to master"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: fire mercenary
-#: src/gui/popups/popupmenu.cpp:313
+#: src/gui/popups/popupmenu.cpp:314
 msgid "Fire"
 msgstr ""
 
@@ -1691,19 +1691,19 @@ msgstr ""
 #. TRANSLATORS: feed homunculus
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: feed pet
-#: src/gui/popups/popupmenu.cpp:323 src/gui/popups/popupmenu.cpp:334
+#: src/gui/popups/popupmenu.cpp:324 src/gui/popups/popupmenu.cpp:335
 msgid "Feed"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: delete homunculus
-#: src/gui/popups/popupmenu.cpp:327
+#: src/gui/popups/popupmenu.cpp:328
 msgid "Kill"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: pet drop loot
-#: src/gui/popups/popupmenu.cpp:337
+#: src/gui/popups/popupmenu.cpp:338
 msgid "Drop loot"
 msgstr ""
 
@@ -1711,7 +1711,7 @@ msgstr ""
 #. TRANSLATORS: pet unequip item
 #. TRANSLATORS: equipment window button
 #. TRANSLATORS: inventory button
-#: src/gui/popups/popupmenu.cpp:340 src/gui/windows/equipmentwindow.cpp:72
+#: src/gui/popups/popupmenu.cpp:341 src/gui/windows/equipmentwindow.cpp:72
 #: src/gui/windows/inventorywindow.cpp:173 src/resources/itemtypemapdata.h:47
 #: src/resources/itemtypemapdata.h:51 src/resources/itemtypemapdata.h:55
 #: src/resources/itemtypemapdata.h:59 src/resources/itemtypemapdata.h:63
@@ -1724,7 +1724,7 @@ msgstr "Togli"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: pet return to egg
-#: src/gui/popups/popupmenu.cpp:344
+#: src/gui/popups/popupmenu.cpp:345
 msgid "Return to egg"
 msgstr ""
 
@@ -1732,44 +1732,44 @@ msgstr ""
 #. TRANSLATORS: add being name to chat
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player name to chat
-#: src/gui/popups/popupmenu.cpp:358 src/gui/popups/popupmenu.cpp:503
+#: src/gui/popups/popupmenu.cpp:359 src/gui/popups/popupmenu.cpp:504
 msgid "Add name to chat"
 msgstr "Aggiungi nome alla chat"
 
 #. TRANSLATORS: popup menu header
 #. TRANSLATORS: settings tab name
-#: src/gui/popups/popupmenu.cpp:388 src/gui/widgets/tabs/setup_players.cpp:38
+#: src/gui/popups/popupmenu.cpp:389 src/gui/widgets/tabs/setup_players.cpp:38
 msgid "Players"
 msgstr "Giocatori"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: kick player from party
-#: src/gui/popups/popupmenu.cpp:454 src/gui/popups/popupmenu.cpp:2793
-#: src/gui/popups/popupmenu.cpp:2817
+#: src/gui/popups/popupmenu.cpp:455 src/gui/popups/popupmenu.cpp:2794
+#: src/gui/popups/popupmenu.cpp:2818
 msgid "Kick from party"
 msgstr "Caccia dal party"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: pickup item from ground
-#: src/gui/popups/popupmenu.cpp:536 src/gui/popups/popupmenu.cpp:545
+#: src/gui/popups/popupmenu.cpp:537 src/gui/popups/popupmenu.cpp:546
 msgid "Pick up"
 msgstr "Raccogli"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add item name to chat
-#: src/gui/popups/popupmenu.cpp:550 src/gui/popups/popupmenu.cpp:2113
-#: src/gui/popups/popupmenu.cpp:2189 src/gui/popups/popupmenu.cpp:2231
+#: src/gui/popups/popupmenu.cpp:551 src/gui/popups/popupmenu.cpp:2114
+#: src/gui/popups/popupmenu.cpp:2190 src/gui/popups/popupmenu.cpp:2232
 msgid "Add to chat"
 msgstr "Aggiungi alla chat"
 
 #. TRANSLATORS: popup menu header
-#: src/gui/popups/popupmenu.cpp:571 src/gui/popups/popupmenu.cpp:603
+#: src/gui/popups/popupmenu.cpp:572 src/gui/popups/popupmenu.cpp:604
 msgid "Map Item"
 msgstr "Oggetto mappa"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: rename map item
-#: src/gui/popups/popupmenu.cpp:574 src/gui/windows/charselectdialog.cpp:130
+#: src/gui/popups/popupmenu.cpp:575 src/gui/windows/charselectdialog.cpp:130
 msgid "Rename"
 msgstr "Rinomina"
 
@@ -1779,20 +1779,20 @@ msgstr "Rinomina"
 #. TRANSLATORS: remove attack target
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: remove item from pickup filter
-#: src/gui/popups/popupmenu.cpp:577 src/gui/popups/popupmenu.cpp:2428
-#: src/gui/popups/popupmenu.cpp:2462
+#: src/gui/popups/popupmenu.cpp:578 src/gui/popups/popupmenu.cpp:2429
+#: src/gui/popups/popupmenu.cpp:2463
 msgid "Remove"
 msgstr "Rimuovi"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: warp to map item
-#: src/gui/popups/popupmenu.cpp:584 src/gui/popups/popupmenu.cpp:609
+#: src/gui/popups/popupmenu.cpp:585 src/gui/popups/popupmenu.cpp:610
 msgid "Warp"
 msgstr "Teletrasporto"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: move camera to map item
-#: src/gui/popups/popupmenu.cpp:616
+#: src/gui/popups/popupmenu.cpp:617
 msgid "Move camera"
 msgstr "Muovi telecamera"
 
@@ -1801,7 +1801,7 @@ msgstr "Muovi telecamera"
 #. TRANSLATORS: full button name
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: outfits window name
-#: src/gui/popups/popupmenu.cpp:634 src/gui/setupinputpages.cpp:53
+#: src/gui/popups/popupmenu.cpp:635 src/gui/setupinputpages.cpp:53
 #: src/gui/windowmenu.cpp:141 src/gui/windows/inventorywindow.cpp:190
 #: src/gui/windows/outfitwindow.cpp:60
 msgid "Outfits"
@@ -1809,69 +1809,69 @@ msgstr "Attrezzatura"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: clear selected outfit
-#: src/gui/popups/popupmenu.cpp:637
+#: src/gui/popups/popupmenu.cpp:638
 msgid "Clear outfit"
 msgstr ""
 
 #. TRANSLATORS: popup menu header
 #. TRANSLATORS: full button name
-#: src/gui/popups/popupmenu.cpp:663 src/gui/windowmenu.cpp:125
+#: src/gui/popups/popupmenu.cpp:664 src/gui/windowmenu.cpp:125
 msgid "Spells"
 msgstr "Spells"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: edit selected spell
-#: src/gui/popups/popupmenu.cpp:666
+#: src/gui/popups/popupmenu.cpp:667
 msgid "Edit spell"
 msgstr "Modifica Incantesimo"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: remove all text from chat tab
 #. TRANSLATORS: npc dialog button
-#: src/gui/popups/popupmenu.cpp:696 src/gui/windows/npcdialog.cpp:109
+#: src/gui/popups/popupmenu.cpp:697 src/gui/windows/npcdialog.cpp:109
 msgid "Clear"
 msgstr "Cancella"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: disable chat tab highlight
-#: src/gui/popups/popupmenu.cpp:703
+#: src/gui/popups/popupmenu.cpp:704
 msgid "Disable highlight"
 msgstr "Disabilita highlight"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: enable chat tab highlight
-#: src/gui/popups/popupmenu.cpp:709
+#: src/gui/popups/popupmenu.cpp:710
 msgid "Enable highlight"
 msgstr "Abilita highlight"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: do not remove player names from chat tab
-#: src/gui/popups/popupmenu.cpp:715
+#: src/gui/popups/popupmenu.cpp:716
 msgid "Don't remove name"
 msgstr "Non rimuovere il nome"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: remove player names from chat tab
-#: src/gui/popups/popupmenu.cpp:721
+#: src/gui/popups/popupmenu.cpp:722
 msgid "Remove name"
 msgstr "Rimuovi nome"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: enable away messages in chat tab
-#: src/gui/popups/popupmenu.cpp:727
+#: src/gui/popups/popupmenu.cpp:728
 msgid "Enable away"
 msgstr "Abilita modalita' Away"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: disable away messages in chat tab
-#: src/gui/popups/popupmenu.cpp:733
+#: src/gui/popups/popupmenu.cpp:734
 msgid "Disable away"
 msgstr "Disabilita modalita' Away"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: enable away messages in chat tab
 #. TRANSLATORS: social window button
-#: src/gui/popups/popupmenu.cpp:740 src/gui/windows/socialwindow.cpp:90
+#: src/gui/popups/popupmenu.cpp:741 src/gui/windows/socialwindow.cpp:91
 msgid "Leave"
 msgstr "Lascia"
 
@@ -1881,79 +1881,79 @@ msgstr "Lascia"
 #. TRANSLATORS: copy link to clipboard
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: copy npc text to clipboard
-#: src/gui/popups/popupmenu.cpp:745 src/gui/popups/popupmenu.cpp:2530
-#: src/gui/popups/popupmenu.cpp:2572
+#: src/gui/popups/popupmenu.cpp:746 src/gui/popups/popupmenu.cpp:2531
+#: src/gui/popups/popupmenu.cpp:2573
 msgid "Copy to clipboard"
 msgstr "Copia negli appunti"
 
 #. TRANSLATORS: popup menu header
-#: src/gui/popups/popupmenu.cpp:861
+#: src/gui/popups/popupmenu.cpp:862
 msgid "Change guild position"
 msgstr "Cambia posizione nella gilda"
 
 #. TRANSLATORS: popup menu header
-#: src/gui/popups/popupmenu.cpp:906
+#: src/gui/popups/popupmenu.cpp:907
 msgid "window"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: unlock window
-#: src/gui/popups/popupmenu.cpp:932
+#: src/gui/popups/popupmenu.cpp:933
 msgid "Unlock"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: lock window
-#: src/gui/popups/popupmenu.cpp:938
+#: src/gui/popups/popupmenu.cpp:939
 msgid "Lock"
 msgstr ""
 
 #. TRANSLATORS: number of chars in string should be near original
-#: src/gui/popups/popupmenu.cpp:1433
+#: src/gui/popups/popupmenu.cpp:1434
 msgid "Rename map sign          "
 msgstr "Rinomina mappa           "
 
 #. TRANSLATORS: number of chars in string should be near original
-#: src/gui/popups/popupmenu.cpp:1435
+#: src/gui/popups/popupmenu.cpp:1436
 msgid "Name:                    "
 msgstr "Nome:                    "
 
-#: src/gui/popups/popupmenu.cpp:1459
+#: src/gui/popups/popupmenu.cpp:1460
 msgid "Player comment            "
 msgstr "Commento giocatore:       "
 
 #. TRANSLATORS: number of chars in string should be near original
-#: src/gui/popups/popupmenu.cpp:1461
+#: src/gui/popups/popupmenu.cpp:1462
 msgid "Comment:                      "
 msgstr "Commento:                     "
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add item to trade
-#: src/gui/popups/popupmenu.cpp:2030
+#: src/gui/popups/popupmenu.cpp:2031
 msgid "Add to trade"
 msgstr "Aggiungi allo scambio"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add 10 item amount to trade
-#: src/gui/popups/popupmenu.cpp:2037
+#: src/gui/popups/popupmenu.cpp:2038
 msgid "Add to trade 10"
 msgstr "Aggiungi 10"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add half item amount to trade
-#: src/gui/popups/popupmenu.cpp:2041
+#: src/gui/popups/popupmenu.cpp:2042
 msgid "Add to trade half"
 msgstr "Aggiungi metà"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add all amount except one item to trade
-#: src/gui/popups/popupmenu.cpp:2044
+#: src/gui/popups/popupmenu.cpp:2045
 msgid "Add to trade all-1"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add all amount item to trade
-#: src/gui/popups/popupmenu.cpp:2047
+#: src/gui/popups/popupmenu.cpp:2048
 msgid "Add to trade all"
 msgstr "Aggiungi tutti"
 
@@ -1962,64 +1962,64 @@ msgstr "Aggiungi tutti"
 #. TRANSLATORS: storage button
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: setup button
-#: src/gui/popups/popupmenu.cpp:2055 src/gui/popups/popupmenu.cpp:2185
-#: src/gui/popups/popupmenu.cpp:2226 src/gui/windows/inventorywindow.cpp:220
+#: src/gui/popups/popupmenu.cpp:2056 src/gui/popups/popupmenu.cpp:2186
+#: src/gui/popups/popupmenu.cpp:2227 src/gui/windows/inventorywindow.cpp:220
 #: src/gui/windows/inventorywindow.cpp:716 src/gui/windows/setupwindow.cpp:97
 msgid "Store"
 msgstr "Magazzino"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add 10 item amount to storage
-#: src/gui/popups/popupmenu.cpp:2062
+#: src/gui/popups/popupmenu.cpp:2063
 msgid "Store 10"
 msgstr "Salva 10"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add half item amount to storage
-#: src/gui/popups/popupmenu.cpp:2066
+#: src/gui/popups/popupmenu.cpp:2067
 msgid "Store half"
 msgstr "Salva metà"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add all except one item amount to storage
-#: src/gui/popups/popupmenu.cpp:2069
+#: src/gui/popups/popupmenu.cpp:2070
 msgid "Store all-1"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add all item amount to storage
-#: src/gui/popups/popupmenu.cpp:2072
+#: src/gui/popups/popupmenu.cpp:2073
 msgid "Store all"
 msgstr "Salva tutto"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: get item from storage
 #. TRANSLATORS: storage button
-#: src/gui/popups/popupmenu.cpp:2084 src/gui/windows/inventorywindow.cpp:222
+#: src/gui/popups/popupmenu.cpp:2085 src/gui/windows/inventorywindow.cpp:222
 msgid "Retrieve"
 msgstr "Recupera"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: get 10 item amount from storage
-#: src/gui/popups/popupmenu.cpp:2091
+#: src/gui/popups/popupmenu.cpp:2092
 msgid "Retrieve 10"
 msgstr "Ritira 10"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: get half item amount from storage
-#: src/gui/popups/popupmenu.cpp:2095
+#: src/gui/popups/popupmenu.cpp:2096
 msgid "Retrieve half"
 msgstr "Ritira metà"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: get all except one item amount from storage
-#: src/gui/popups/popupmenu.cpp:2098
+#: src/gui/popups/popupmenu.cpp:2099
 msgid "Retrieve all-1"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: get all item amount from storage
-#: src/gui/popups/popupmenu.cpp:2101
+#: src/gui/popups/popupmenu.cpp:2102
 msgid "Retrieve all"
 msgstr "Ritira tutto"
 
@@ -2029,7 +2029,7 @@ msgstr "Ritira tutto"
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: skills dialog button
 #. TRANSLATORS: inventory button
-#: src/gui/popups/popupmenu.cpp:2147 src/gui/popups/popupmenu.cpp:2936
+#: src/gui/popups/popupmenu.cpp:2148 src/gui/popups/popupmenu.cpp:2937
 #: src/gui/windows/inventorywindow.cpp:171
 #: src/gui/windows/inventorywindow.cpp:629 src/gui/windows/skilldialog.cpp:80
 #: src/gui/windows/skilldialog.cpp:152 src/gui/windows/skilldialog.cpp:322
@@ -2039,41 +2039,41 @@ msgid "Use"
 msgstr "Usa"
 
 #. TRANSLATORS: popup menu item
-#: src/gui/popups/popupmenu.cpp:2241
+#: src/gui/popups/popupmenu.cpp:2242
 msgid "Clear drop window"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
-#: src/gui/popups/popupmenu.cpp:2272 src/gui/popups/popupmenu.cpp:2333
+#: src/gui/popups/popupmenu.cpp:2273 src/gui/popups/popupmenu.cpp:2334
 msgid "Hide"
 msgstr "Nascondi"
 
 #. TRANSLATORS: popup menu item
-#: src/gui/popups/popupmenu.cpp:2279 src/gui/popups/popupmenu.cpp:2340
+#: src/gui/popups/popupmenu.cpp:2280 src/gui/popups/popupmenu.cpp:2341
 msgid "Show"
 msgstr "Mostra"
 
 #. TRANSLATORS: popup menu item
-#: src/gui/popups/popupmenu.cpp:2347
+#: src/gui/popups/popupmenu.cpp:2348
 msgid "Reset yellow bar"
 msgstr "Reset barra gialla"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: copy status to chat
 #. TRANSLATORS: status window button
-#: src/gui/popups/popupmenu.cpp:2351 src/gui/windows/statuswindow.cpp:93
+#: src/gui/popups/popupmenu.cpp:2352 src/gui/windows/statuswindow.cpp:93
 msgid "Copy to chat"
 msgstr "Copia in Chat"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: move attack target up
-#: src/gui/popups/popupmenu.cpp:2391 src/gui/popups/popupmenu.cpp:2410
+#: src/gui/popups/popupmenu.cpp:2392 src/gui/popups/popupmenu.cpp:2411
 msgid "Move up"
 msgstr "Muovi Su"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: move attack target down
-#: src/gui/popups/popupmenu.cpp:2397 src/gui/popups/popupmenu.cpp:2416
+#: src/gui/popups/popupmenu.cpp:2398 src/gui/popups/popupmenu.cpp:2417
 msgid "Move down"
 msgstr "Muovi Giù"
 
@@ -2081,155 +2081,155 @@ msgstr "Muovi Giù"
 #. TRANSLATORS: undress item from player
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: undress player
-#: src/gui/popups/popupmenu.cpp:2488 src/gui/popups/popupmenu.cpp:2845
+#: src/gui/popups/popupmenu.cpp:2489 src/gui/popups/popupmenu.cpp:2846
 msgid "Undress"
 msgstr "Spogliati"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: copy text to clipboard
-#: src/gui/popups/popupmenu.cpp:2506
+#: src/gui/popups/popupmenu.cpp:2507
 msgid "Copy"
 msgstr "Copia"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: paste text from clipboard
-#: src/gui/popups/popupmenu.cpp:2509
+#: src/gui/popups/popupmenu.cpp:2510
 msgid "Paste"
 msgstr "Incolla"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: open link in browser
-#: src/gui/popups/popupmenu.cpp:2527
+#: src/gui/popups/popupmenu.cpp:2528
 msgid "Open link"
 msgstr "Apri link"
 
 #. TRANSLATORS: popup menu header
-#: src/gui/popups/popupmenu.cpp:2545
+#: src/gui/popups/popupmenu.cpp:2546
 msgid "Show window"
 msgstr "Mostra Finestra"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player to disregarded list
-#: src/gui/popups/popupmenu.cpp:2618 src/gui/popups/popupmenu.cpp:2654
-#: src/gui/popups/popupmenu.cpp:2693 src/gui/popups/popupmenu.cpp:2711
+#: src/gui/popups/popupmenu.cpp:2619 src/gui/popups/popupmenu.cpp:2655
+#: src/gui/popups/popupmenu.cpp:2694 src/gui/popups/popupmenu.cpp:2712
 msgid "Disregard"
 msgstr "Ignora"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player to ignore list
 #. TRANSLATORS: confirm dialog button
-#: src/gui/popups/popupmenu.cpp:2621 src/gui/popups/popupmenu.cpp:2657
-#: src/gui/popups/popupmenu.cpp:2696 src/gui/windows/confirmdialog.cpp:60
+#: src/gui/popups/popupmenu.cpp:2622 src/gui/popups/popupmenu.cpp:2658
+#: src/gui/popups/popupmenu.cpp:2697 src/gui/windows/confirmdialog.cpp:60
 msgid "Ignore"
 msgstr "Ignora"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player to black list
-#: src/gui/popups/popupmenu.cpp:2624 src/gui/popups/popupmenu.cpp:2699
+#: src/gui/popups/popupmenu.cpp:2625 src/gui/popups/popupmenu.cpp:2700
 msgid "Black list"
 msgstr "Lista nera"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player to enemy list
-#: src/gui/popups/popupmenu.cpp:2627 src/gui/popups/popupmenu.cpp:2660
+#: src/gui/popups/popupmenu.cpp:2628 src/gui/popups/popupmenu.cpp:2661
 msgid "Set as enemy"
 msgstr "Identifica come nemico"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player to erased list
-#: src/gui/popups/popupmenu.cpp:2630 src/gui/popups/popupmenu.cpp:2663
-#: src/gui/popups/popupmenu.cpp:2675 src/gui/popups/popupmenu.cpp:2684
-#: src/gui/popups/popupmenu.cpp:2702
+#: src/gui/popups/popupmenu.cpp:2631 src/gui/popups/popupmenu.cpp:2664
+#: src/gui/popups/popupmenu.cpp:2676 src/gui/popups/popupmenu.cpp:2685
+#: src/gui/popups/popupmenu.cpp:2703
 msgid "Erase"
 msgstr "Elimina"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player to friends list
-#: src/gui/popups/popupmenu.cpp:2640
+#: src/gui/popups/popupmenu.cpp:2641
 msgid "Be friend"
 msgstr "Chiedi amicizia"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: remove player from ignore list
-#: src/gui/popups/popupmenu.cpp:2651 src/gui/popups/popupmenu.cpp:2669
-#: src/gui/popups/popupmenu.cpp:2681 src/gui/popups/popupmenu.cpp:2690
-#: src/gui/popups/popupmenu.cpp:2708
+#: src/gui/popups/popupmenu.cpp:2652 src/gui/popups/popupmenu.cpp:2670
+#: src/gui/popups/popupmenu.cpp:2682 src/gui/popups/popupmenu.cpp:2691
+#: src/gui/popups/popupmenu.cpp:2709
 msgid "Unignore"
 msgstr "Stop Ignora"
 
 #. TRANSLATORS: popup menu item
-#: src/gui/popups/popupmenu.cpp:2727
+#: src/gui/popups/popupmenu.cpp:2728
 msgid "Follow"
 msgstr "Segui"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: imitate player
-#: src/gui/popups/popupmenu.cpp:2731
+#: src/gui/popups/popupmenu.cpp:2732
 msgid "Imitation"
 msgstr "Imita"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: buy item
-#: src/gui/popups/popupmenu.cpp:2755 src/gui/popups/popupmenu.cpp:2770
+#: src/gui/popups/popupmenu.cpp:2756 src/gui/popups/popupmenu.cpp:2771
 msgid "Buy (?)"
 msgstr "Compra (?)"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: sell item
-#: src/gui/popups/popupmenu.cpp:2758 src/gui/popups/popupmenu.cpp:2773
+#: src/gui/popups/popupmenu.cpp:2759 src/gui/popups/popupmenu.cpp:2774
 msgid "Sell (?)"
 msgstr "Vendi (?)"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: invite player to party
-#: src/gui/popups/popupmenu.cpp:2787 src/gui/popups/popupmenu.cpp:2811
+#: src/gui/popups/popupmenu.cpp:2788 src/gui/popups/popupmenu.cpp:2812
 msgid "Invite to party"
 msgstr "Invita nel party"
 
-#: src/gui/popups/popupmenu.cpp:2834
+#: src/gui/popups/popupmenu.cpp:2835
 #, c-format
 msgid "Join chat %s"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
-#: src/gui/popups/popupmenu.cpp:2842
+#: src/gui/popups/popupmenu.cpp:2843
 msgid "Show Items"
 msgstr "Mostra Oggetti"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: remove item from pickup list
-#: src/gui/popups/popupmenu.cpp:2859
+#: src/gui/popups/popupmenu.cpp:2860
 msgid "Remove from pickup list"
 msgstr "Rimuovi dalla lista 'Raccogli'"
 
 #. TRANSLATORS: popup menu item
-#: src/gui/popups/popupmenu.cpp:2864
+#: src/gui/popups/popupmenu.cpp:2865
 msgid "Add to pickup list"
 msgstr "Aggiungi alla lista 'Raccogli'"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: remove protection from item
-#: src/gui/popups/popupmenu.cpp:2913
+#: src/gui/popups/popupmenu.cpp:2914
 msgid "Unprotect item"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add protection to item
-#: src/gui/popups/popupmenu.cpp:2922
+#: src/gui/popups/popupmenu.cpp:2923
 msgid "Protect item"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: drop item
 #. TRANSLATORS: inventory button
-#: src/gui/popups/popupmenu.cpp:2951 src/gui/windows/inventorywindow.cpp:186
+#: src/gui/popups/popupmenu.cpp:2952 src/gui/windows/inventorywindow.cpp:186
 #: src/gui/windows/inventorywindow.cpp:724
 msgid "Drop..."
 msgstr "Lascia..."
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: drop all item amount
-#: src/gui/popups/popupmenu.cpp:2954
+#: src/gui/popups/popupmenu.cpp:2955
 msgid "Drop all"
 msgstr "Lascia tutto"
 
@@ -2237,7 +2237,7 @@ msgstr "Lascia tutto"
 #. TRANSLATORS: drop item
 #. TRANSLATORS: full button name
 #. TRANSLATORS: inventory button
-#: src/gui/popups/popupmenu.cpp:2960 src/gui/windowmenu.cpp:129
+#: src/gui/popups/popupmenu.cpp:2961 src/gui/windowmenu.cpp:129
 #: src/gui/windows/inventorywindow.cpp:729
 msgid "Drop"
 msgstr "Lascia"
@@ -2245,49 +2245,49 @@ msgstr "Lascia"
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: split items
 #. TRANSLATORS: inventory button
-#: src/gui/popups/popupmenu.cpp:2968 src/gui/windows/inventorywindow.cpp:188
+#: src/gui/popups/popupmenu.cpp:2969 src/gui/windows/inventorywindow.cpp:188
 msgid "Split"
 msgstr "Dividi"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: gm commands
-#: src/gui/popups/popupmenu.cpp:2978
+#: src/gui/popups/popupmenu.cpp:2979
 msgid "GM..."
 msgstr ""
 
 #. TRANSLATORS: popup menu header
-#: src/gui/popups/popupmenu.cpp:2986
+#: src/gui/popups/popupmenu.cpp:2987
 msgid "GM commands"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: check player ip
-#: src/gui/popups/popupmenu.cpp:2991
+#: src/gui/popups/popupmenu.cpp:2992
 msgid "Check ip"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: go to player position
-#: src/gui/popups/popupmenu.cpp:2994
+#: src/gui/popups/popupmenu.cpp:2995
 msgid "Goto"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: recall player to current position
-#: src/gui/popups/popupmenu.cpp:2997
+#: src/gui/popups/popupmenu.cpp:2998
 msgid "Recall"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: revive player
 #. TRANSLATORS: ok dialog button
-#: src/gui/popups/popupmenu.cpp:3000 src/net/ea/playerhandler.cpp:195
+#: src/gui/popups/popupmenu.cpp:3001 src/net/ea/playerhandler.cpp:195
 msgid "Revive"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: kick player
-#: src/gui/popups/popupmenu.cpp:3005
+#: src/gui/popups/popupmenu.cpp:3006
 msgid "Kick"
 msgstr "Caccia"
 
@@ -2715,38 +2715,116 @@ msgid "Range: %d"
 msgstr ""
 
 #. TRANSLATORS: battle chat tab name
-#: src/gui/widgets/tabs/battletab.cpp:36
+#: src/gui/widgets/tabs/chat/battletab.cpp:36
 msgid "Battle"
 msgstr "Battaglia"
 
 #. TRANSLATORS: chat message
-#: src/gui/widgets/tabs/chattab.cpp:164
+#: src/gui/widgets/tabs/chat/chattab.cpp:164
 msgid "Global announcement:"
 msgstr "Annuncio generale:"
 
 #. TRANSLATORS: chat message
-#: src/gui/widgets/tabs/chattab.cpp:170
+#: src/gui/widgets/tabs/chat/chattab.cpp:170
 #, c-format
 msgid "Global announcement from %s:"
 msgstr "Annuncio generale da %s:"
 
 #. TRANSLATORS: chat message
-#: src/gui/widgets/tabs/chattab.cpp:196
+#: src/gui/widgets/tabs/chat/chattab.cpp:196
 #, c-format
 msgid "%s whispers: %s"
 msgstr "%s sussurra: %s"
 
 #. TRANSLATORS: chat message
-#: src/gui/widgets/tabs/chattab.cpp:557
+#: src/gui/widgets/tabs/chat/chattab.cpp:557
 #, c-format
 msgid "%s is now Online."
 msgstr ""
 
 #. TRANSLATORS: chat message
-#: src/gui/widgets/tabs/chattab.cpp:562
+#: src/gui/widgets/tabs/chat/chattab.cpp:562
 #, c-format
 msgid "%s is now Offline."
 msgstr ""
+
+#. TRANSLATORS: guild chat tab name
+#. TRANSLATORS: tab in social window
+#: src/gui/widgets/tabs/chat/emulateguildtab.cpp:39
+#: src/gui/widgets/tabs/chat/guildtab.cpp:46
+#: src/gui/widgets/tabs/socialguildtab2.h:48
+#: src/gui/widgets/tabs/socialguildtab.h:50
+msgid "Guild"
+msgstr "Gilda"
+
+#. TRANSLATORS: gb tab name
+#: src/gui/widgets/tabs/chat/gmtab.cpp:33
+msgid "GM"
+msgstr ""
+
+#. TRANSLATORS: lang chat tab name
+#: src/gui/widgets/tabs/chat/langtab.cpp:34
+msgid "Lang"
+msgstr ""
+
+#. TRANSLATORS: party chat tab name
+#. TRANSLATORS: tab in social window
+#: src/gui/widgets/tabs/chat/partytab.cpp:46
+#: src/gui/widgets/tabs/socialpartytab.h:51
+msgid "Party"
+msgstr "Party"
+
+#. TRANSLATORS: chat message
+#. TRANSLATORS: notification message
+#: src/gui/widgets/tabs/chat/partytab.cpp:105
+#: src/resources/notifications.h:207
+msgid "Item sharing enabled."
+msgstr "Gestione in comune oggetti attivata."
+
+#. TRANSLATORS: chat message
+#. TRANSLATORS: notification message
+#: src/gui/widgets/tabs/chat/partytab.cpp:110
+#: src/resources/notifications.h:211
+msgid "Item sharing disabled."
+msgstr "Gestione in comune oggetti disattivata."
+
+#. TRANSLATORS: chat message
+#. TRANSLATORS: notification message
+#: src/gui/widgets/tabs/chat/partytab.cpp:115
+#: src/resources/notifications.h:215
+msgid "Item sharing not possible."
+msgstr "Gestione in comune oggetti non puo' essere attivata."
+
+#. TRANSLATORS: chat message
+#: src/gui/widgets/tabs/chat/partytab.cpp:120
+msgid "Item sharing unknown."
+msgstr "Oggetti in comune sconosciuti."
+
+#. TRANSLATORS: chat message
+#. TRANSLATORS: notification message
+#: src/gui/widgets/tabs/chat/partytab.cpp:155
+#: src/resources/notifications.h:195
+msgid "Experience sharing enabled."
+msgstr "Esperienza in comune attivata."
+
+#. TRANSLATORS: chat message
+#. TRANSLATORS: notification message
+#: src/gui/widgets/tabs/chat/partytab.cpp:160
+#: src/resources/notifications.h:199
+msgid "Experience sharing disabled."
+msgstr "Esperienza in comune disattivata."
+
+#. TRANSLATORS: chat message
+#. TRANSLATORS: notification message
+#: src/gui/widgets/tabs/chat/partytab.cpp:165
+#: src/resources/notifications.h:203
+msgid "Experience sharing not possible."
+msgstr "Esperienza in comune non puo' essere attivata."
+
+#. TRANSLATORS: chat message
+#: src/gui/widgets/tabs/chat/partytab.cpp:170
+msgid "Experience sharing unknown."
+msgstr "Esperienza in comune sconosciuta."
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:53
@@ -2991,25 +3069,6 @@ msgstr "In: %d bytes/s"
 #, c-format
 msgid "Out: %d bytes/s"
 msgstr "Out: %d bytes/s"
-
-#. TRANSLATORS: gb tab name
-#: src/gui/widgets/tabs/gmtab.cpp:33
-msgid "GM"
-msgstr ""
-
-#. TRANSLATORS: guild chat tab name
-#. TRANSLATORS: tab in social window
-#. TRANSLATORS: guild chat tab name
-#: src/gui/widgets/tabs/guildchattab.cpp:39
-#: src/gui/widgets/tabs/socialguildtab2.h:48
-#: src/gui/widgets/tabs/socialguildtab.h:50 src/net/ea/gui/guildtab.cpp:45
-msgid "Guild"
-msgstr "Gilda"
-
-#. TRANSLATORS: lang chat tab name
-#: src/gui/widgets/tabs/langtab.cpp:34
-msgid "Lang"
-msgstr ""
 
 #. TRANSLATORS: audio tab in settings
 #: src/gui/widgets/tabs/setup_audio.cpp:51
@@ -4708,12 +4767,6 @@ msgstr "Nav"
 msgid "Portals: %u/%u"
 msgstr ""
 
-#. TRANSLATORS: tab in social window
-#. TRANSLATORS: party chat tab name
-#: src/gui/widgets/tabs/socialpartytab.h:51 src/net/ea/gui/partytab.cpp:47
-msgid "Party"
-msgstr "Party"
-
 #: src/gui/widgets/tabs/socialpartytab.h:85
 #, c-format
 msgid "Invited user %s to party."
@@ -4875,7 +4928,7 @@ msgstr "SOC"
 
 #. TRANSLATORS: full button name
 #. TRANSLATORS: social window name
-#: src/gui/windowmenu.cpp:117 src/gui/windows/socialwindow.cpp:63
+#: src/gui/windowmenu.cpp:117 src/gui/windows/socialwindow.cpp:64
 msgid "Social"
 msgstr "Sociale"
 
@@ -4978,7 +5031,7 @@ msgstr "Quantita':"
 #. TRANSLATORS: social window button
 #: src/gui/windows/buydialog.cpp:260 src/gui/windows/charcreatedialog.cpp:125
 #: src/gui/windows/charselectdialog.cpp:601
-#: src/gui/windows/socialwindow.cpp:86
+#: src/gui/windows/socialwindow.cpp:87
 msgid "Create"
 msgstr "Crea"
 
@@ -5923,126 +5976,126 @@ msgid "Failed skill: %s"
 msgstr ""
 
 #. TRANSLATORS: here P is title for visible players tab in social window
-#: src/gui/windows/socialwindow.cpp:77
+#: src/gui/windows/socialwindow.cpp:78
 msgid "P"
 msgstr "P"
 
 #. TRANSLATORS: here F is title for friends tab in social window
-#: src/gui/windows/socialwindow.cpp:82
+#: src/gui/windows/socialwindow.cpp:83
 msgid "F"
 msgstr "F"
 
 #. TRANSLATORS: social window button
-#: src/gui/windows/socialwindow.cpp:88
+#: src/gui/windows/socialwindow.cpp:89
 msgid "Invite"
 msgstr "Invita"
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/socialwindow.cpp:276
+#: src/gui/windows/socialwindow.cpp:277
 #, c-format
 msgid "Accepted party invite from %s."
 msgstr "Accettato invito al gruppo da parte di %s."
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/socialwindow.cpp:287
+#: src/gui/windows/socialwindow.cpp:288
 #, c-format
 msgid "Rejected party invite from %s."
 msgstr "Rifiutato invito al gruppo da parte di %s."
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/socialwindow.cpp:304
+#: src/gui/windows/socialwindow.cpp:305
 #, c-format
 msgid "Accepted guild invite from %s."
 msgstr "Accettato invito alla gilda da parte di %s."
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/socialwindow.cpp:318
+#: src/gui/windows/socialwindow.cpp:319
 #, c-format
 msgid "Rejected guild invite from %s."
 msgstr "Rifiutato invito alla gilda da parte di %s."
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/socialwindow.cpp:358
+#: src/gui/windows/socialwindow.cpp:359
 #, c-format
 msgid "Creating guild called %s."
 msgstr "Stai creando una gilda chiamata %s."
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/socialwindow.cpp:379
+#: src/gui/windows/socialwindow.cpp:380
 #, c-format
 msgid "Creating party called %s."
 msgstr "Stai creando un party chiamato %s."
 
 #. TRANSLATORS: guild creation message
-#: src/gui/windows/socialwindow.cpp:394
+#: src/gui/windows/socialwindow.cpp:395
 msgid "Guild Name"
 msgstr "Nome della gilda"
 
 #. TRANSLATORS: guild creation message
-#: src/gui/windows/socialwindow.cpp:396
+#: src/gui/windows/socialwindow.cpp:397
 msgid "Choose your guild's name."
 msgstr "Scegli un nome per la tua gilda."
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/socialwindow.cpp:412
+#: src/gui/windows/socialwindow.cpp:413
 msgid "Received guild request, but one already exists."
 msgstr "Ricevuto invito ad una gilda, ma ne hai già una."
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/socialwindow.cpp:420
+#: src/gui/windows/socialwindow.cpp:421
 #, c-format
 msgid "%s has invited you to join the guild %s."
 msgstr "%s ti ha invitato ad entrare nella gilda %s."
 
 #. TRANSLATORS: guild invite message
-#: src/gui/windows/socialwindow.cpp:427
+#: src/gui/windows/socialwindow.cpp:428
 msgid "Accept Guild Invite"
 msgstr "Accetta invito alla gilda"
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/socialwindow.cpp:443
+#: src/gui/windows/socialwindow.cpp:444
 msgid "Received party request, but one already exists."
 msgstr "Ricevuta richiesta di party, ma ne esiste già una."
 
 #. TRANSLATORS: party invite message
-#: src/gui/windows/socialwindow.cpp:455
+#: src/gui/windows/socialwindow.cpp:456
 msgid "You have been invited you to join a party."
 msgstr "Sei stato invitato ad entrare in un party."
 
 #. TRANSLATORS: party invite message
-#: src/gui/windows/socialwindow.cpp:460
+#: src/gui/windows/socialwindow.cpp:461
 #, c-format
 msgid "You have been invited to join the %s party."
 msgstr "Sei stato invitato ad entrare nel gruppo %s."
 
 #. TRANSLATORS: party invite message
-#: src/gui/windows/socialwindow.cpp:469
+#: src/gui/windows/socialwindow.cpp:470
 #, c-format
 msgid "%s has invited you to join their party."
 msgstr "%s ti ha invitato ad unirti al suo party."
 
 #. TRANSLATORS: party invite message
-#: src/gui/windows/socialwindow.cpp:475
+#: src/gui/windows/socialwindow.cpp:476
 #, c-format
 msgid "%s has invited you to join the %s party."
 msgstr "%s ti ha invitato ad unirti al party %s."
 
 #. TRANSLATORS: party invite message
-#: src/gui/windows/socialwindow.cpp:485
+#: src/gui/windows/socialwindow.cpp:486
 msgid "Accept Party Invite"
 msgstr "Accetta invito nel party"
 
-#: src/gui/windows/socialwindow.cpp:501
+#: src/gui/windows/socialwindow.cpp:502
 msgid "Cannot create party. You are already in a party"
 msgstr "Impossibile creare un party, sei già in un party"
 
 #. TRANSLATORS: party creation message
-#: src/gui/windows/socialwindow.cpp:510
+#: src/gui/windows/socialwindow.cpp:511
 msgid "Party Name"
 msgstr "Nome del gruppo"
 
 #. TRANSLATORS: party creation message
-#: src/gui/windows/socialwindow.cpp:512
+#: src/gui/windows/socialwindow.cpp:513
 msgid "Choose your party's name."
 msgstr "Scegli un nome per il tuo party."
 
@@ -7485,104 +7538,58 @@ msgid "Request to quit denied!"
 msgstr "Richiesta di chiusura rifiutata!"
 
 #. TRANSLATORS: guild info message
-#: src/net/ea/guildhandler.cpp:134
+#: src/net/ea/guildhandler.cpp:135
 #, c-format
 msgid "Guild name: %s"
 msgstr "Nome Gilda: %s"
 
 #. TRANSLATORS: guild info message
-#: src/net/ea/guildhandler.cpp:137
+#: src/net/ea/guildhandler.cpp:138
 #, c-format
 msgid "Guild master: %s"
 msgstr "Master di Gilda: %s"
 
 #. TRANSLATORS: guild info message
-#: src/net/ea/guildhandler.cpp:140
+#: src/net/ea/guildhandler.cpp:141
 #, c-format
 msgid "Guild level: %d"
 msgstr "Livello Gilda: %d"
 
 #. TRANSLATORS: guild info message
-#: src/net/ea/guildhandler.cpp:143
+#: src/net/ea/guildhandler.cpp:144
 #, c-format
 msgid "Online members: %d"
 msgstr "Membri Online: %d"
 
 #. TRANSLATORS: guild info message
-#: src/net/ea/guildhandler.cpp:146
+#: src/net/ea/guildhandler.cpp:147
 #, c-format
 msgid "Max members: %d"
 msgstr "Numero massimo Membri: %d"
 
 #. TRANSLATORS: guild info message
-#: src/net/ea/guildhandler.cpp:149
+#: src/net/ea/guildhandler.cpp:150
 #, c-format
 msgid "Average level: %d"
 msgstr "Livello Medio: %d"
 
 #. TRANSLATORS: guild info message
-#: src/net/ea/guildhandler.cpp:152
+#: src/net/ea/guildhandler.cpp:153
 #, c-format
 msgid "Guild exp: %d"
 msgstr "Punti Exp Gilda: %d"
 
 #. TRANSLATORS: guild info message
-#: src/net/ea/guildhandler.cpp:155
+#: src/net/ea/guildhandler.cpp:156
 #, c-format
 msgid "Guild next exp: %d"
 msgstr ""
 
 #. TRANSLATORS: guild info message
-#: src/net/ea/guildhandler.cpp:158
+#: src/net/ea/guildhandler.cpp:159
 #, c-format
 msgid "Guild castle: %s"
 msgstr ""
-
-#. TRANSLATORS: chat message
-#. TRANSLATORS: notification message
-#: src/net/ea/gui/partytab.cpp:106 src/resources/notifications.h:207
-msgid "Item sharing enabled."
-msgstr "Gestione in comune oggetti attivata."
-
-#. TRANSLATORS: chat message
-#. TRANSLATORS: notification message
-#: src/net/ea/gui/partytab.cpp:111 src/resources/notifications.h:211
-msgid "Item sharing disabled."
-msgstr "Gestione in comune oggetti disattivata."
-
-#. TRANSLATORS: chat message
-#. TRANSLATORS: notification message
-#: src/net/ea/gui/partytab.cpp:116 src/resources/notifications.h:215
-msgid "Item sharing not possible."
-msgstr "Gestione in comune oggetti non puo' essere attivata."
-
-#. TRANSLATORS: chat message
-#: src/net/ea/gui/partytab.cpp:121
-msgid "Item sharing unknown."
-msgstr "Oggetti in comune sconosciuti."
-
-#. TRANSLATORS: chat message
-#. TRANSLATORS: notification message
-#: src/net/ea/gui/partytab.cpp:156 src/resources/notifications.h:195
-msgid "Experience sharing enabled."
-msgstr "Esperienza in comune attivata."
-
-#. TRANSLATORS: chat message
-#. TRANSLATORS: notification message
-#: src/net/ea/gui/partytab.cpp:161 src/resources/notifications.h:199
-msgid "Experience sharing disabled."
-msgstr "Esperienza in comune disattivata."
-
-#. TRANSLATORS: chat message
-#. TRANSLATORS: notification message
-#: src/net/ea/gui/partytab.cpp:166 src/resources/notifications.h:203
-msgid "Experience sharing not possible."
-msgstr "Esperienza in comune non puo' essere attivata."
-
-#. TRANSLATORS: chat message
-#: src/net/ea/gui/partytab.cpp:171
-msgid "Experience sharing unknown."
-msgstr "Esperienza in comune sconosciuta."
 
 #. TRANSLATORS: error message
 #: src/net/ea/loginhandler.cpp:153
