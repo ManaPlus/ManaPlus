@@ -92,7 +92,7 @@ bool ServerFeatures::haveLookSelection() const
     return false;
 }
 
-bool ServerFeatures::haveChatChannels() const
+bool ServerFeatures::haveSpecialChatChannels() const
 {
     return false;
 }

@@ -126,7 +126,7 @@ void ChatHandler::talk(const std::string &restrict text,
     const std::string mes = std::string(localPlayer->getName()).append(
         " : ").append(text);
 
-    if (serverFeatures->haveChatChannels() && channel.size() == 3)
+    if (serverFeatures->haveSpecialChatChannels() && channel.size() == 3)
     {
         createOutPacket(CMSG_CHAT_MESSAGE2);
         // Added + 1 in order to let eAthena parse admin commands correctly
