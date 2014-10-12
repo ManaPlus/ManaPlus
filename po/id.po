@@ -358,7 +358,7 @@ msgstr "Barang milik orang lain."
 #. TRANSLATORS: pickup error message
 #: src/being/localplayer.cpp:849
 msgid "Unknown problem picking up item."
-msgstr "Masalah mengambil barang yang tidak diketahui"
+msgstr "Masalah mengambil barang yang tidak diketahui."
 
 #. TRANSLATORS: %d is number,
 #. [@@%d|%s@@] - here player can see link to item
