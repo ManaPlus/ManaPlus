@@ -18,7 +18,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gui/widgets/tabs/gmtab.h"
+#include "gui/widgets/tabs/chat/gmtab.h"
 
 #include "chatlogger.h"
 

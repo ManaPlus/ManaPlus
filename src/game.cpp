@@ -88,7 +88,7 @@
 #include "gui/widgets/spellshortcutcontainer.h"
 #include "gui/widgets/virtshortcutcontainer.h"
 
-#include "gui/widgets/tabs/gmtab.h"
+#include "gui/widgets/tabs/chat/gmtab.h"
 #include "gui/widgets/tabs/langtab.h"
 #include "gui/widgets/tabs/tradetab.h"
 

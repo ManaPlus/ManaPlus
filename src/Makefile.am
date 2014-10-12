@@ -292,8 +292,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/models/langlistmodel.h \
 	      gui/widgets/flowcontainer.cpp \
 	      gui/widgets/flowcontainer.h \
-	      gui/widgets/tabs/gmtab.cpp \
-	      gui/widgets/tabs/gmtab.h \
+	      gui/widgets/tabs/chat/gmtab.cpp \
+	      gui/widgets/tabs/chat/gmtab.h \
 	      gui/widgets/tabs/guildchattab.cpp \
 	      gui/widgets/tabs/guildchattab.h \
 	      gui/widgets/guitable.cpp \

@@ -57,7 +57,7 @@
 #include "gui/windows/socialwindow.h"
 #include "gui/windows/updaterwindow.h"
 
-#include "gui/widgets/tabs/gmtab.h"
+#include "gui/widgets/tabs/chat/gmtab.h"
 #include "gui/widgets/tabs/whispertab.h"
 
 #include "net/beinghandler.h"

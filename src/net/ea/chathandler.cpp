@@ -33,7 +33,7 @@
 #include "gui/windows/chatwindow.h"
 #include "gui/windows/shopwindow.h"
 
-#include "gui/widgets/tabs/gmtab.h"
+#include "gui/widgets/tabs/chat/gmtab.h"
 
 #include "net/messagein.h"
 #include "net/serverfeatures.h"
