@@ -54,7 +54,7 @@
 #include "gui/windows/shopwindow.h"
 #include "gui/windows/shortcutwindow.h"
 
-#include "gui/widgets/tabs/chattab.h"
+#include "gui/widgets/tabs/chat/chattab.h"
 
 #include "render/graphics.h"
 #if defined USE_OPENGL

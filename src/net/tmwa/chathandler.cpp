@@ -26,7 +26,7 @@
 
 #include "being/localplayer.h"
 
-#include "gui/widgets/tabs/chattab.h"
+#include "gui/widgets/tabs/chat/chattab.h"
 
 #include "gui/windows/chatwindow.h"
 

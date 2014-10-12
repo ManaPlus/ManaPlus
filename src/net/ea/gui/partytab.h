@@ -23,7 +23,7 @@
 #ifndef NET_EA_GUI_PARTYTAB_H
 #define NET_EA_GUI_PARTYTAB_H
 
-#include "gui/widgets/tabs/chattab.h"
+#include "gui/widgets/tabs/chat/chattab.h"
 #include "gui/widgets/tabs/chattabtype.h"
 
 namespace Ea

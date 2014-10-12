@@ -131,11 +131,11 @@ SET(SRCS
     gui/widgets/characterviewnormal.h
     gui/widgets/characterviewsmall.cpp
     gui/widgets/characterviewsmall.h
-    gui/widgets/tabs/chattab.cpp
-    gui/widgets/tabs/chattab.h
     gui/widgets/tabs/chattabtype.h
     gui/widgets/tabs/debugwindowtabs.cpp
     gui/widgets/tabs/debugwindowtabs.h
+    gui/widgets/tabs/chat/chattab.cpp
+    gui/widgets/tabs/chat/chattab.h
     gui/widgets/chatinput.h
     gui/widgets/checkbox.cpp
     gui/widgets/checkbox.h

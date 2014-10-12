@@ -30,7 +30,7 @@
 
 #include "gui/viewport.h"
 
-#include "gui/widgets/tabs/chattab.h"
+#include "gui/widgets/tabs/chat/chattab.h"
 
 #include "listeners/updatestatuslistener.h"
 

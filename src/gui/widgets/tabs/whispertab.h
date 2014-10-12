@@ -23,7 +23,7 @@
 #ifndef GUI_WIDGETS_TABS_WHISPERTAB_H
 #define GUI_WIDGETS_TABS_WHISPERTAB_H
 
-#include "gui/widgets/tabs/chattab.h"
+#include "gui/widgets/tabs/chat/chattab.h"
 #include "gui/widgets/tabs/chattabtype.h"
 
 /**

@@ -32,7 +32,7 @@
 
 #include "gui/windows/eggselectiondialog.h"
 
-#include "gui/widgets/tabs/chattab.h"
+#include "gui/widgets/tabs/chat/chattab.h"
 
 #include "net/chathandler.h"
 

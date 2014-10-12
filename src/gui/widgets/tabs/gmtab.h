@@ -21,7 +21,7 @@
 #ifndef GUI_WIDGETS_TABS_GMTAB_H
 #define GUI_WIDGETS_TABS_GMTAB_H
 
-#include "gui/widgets/tabs/chattab.h"
+#include "gui/widgets/tabs/chat/chattab.h"
 #include "gui/widgets/tabs/chattabtype.h"
 
 /**

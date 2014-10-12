@@ -49,7 +49,7 @@
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/textfield.h"
 
-#include "gui/widgets/tabs/chattab.h"
+#include "gui/widgets/tabs/chat/chattab.h"
 
 #include "net/tradehandler.h"
 

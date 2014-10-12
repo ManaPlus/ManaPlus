@@ -33,7 +33,7 @@
 #include "gui/windows/okdialog.h"
 #include "gui/windows/outfitwindow.h"
 
-#include "gui/widgets/tabs/chattab.h"
+#include "gui/widgets/tabs/chat/chattab.h"
 
 #include "resources/map/map.h"
 

@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_WIDGETS_TABS_CHATTAB_H
-#define GUI_WIDGETS_TABS_CHATTAB_H
+#ifndef GUI_WIDGETS_TABS_CHAT_CHATTAB_H
+#define GUI_WIDGETS_TABS_CHAT_CHATTAB_H
 
 #include "gui/chatmsgtype.h"
 
@@ -195,4 +195,4 @@ class ChatTab notfinal : public Tab
 extern ChatTab *localChatTab;
 extern ChatTab *debugChatTab;
 
-#endif  // GUI_WIDGETS_TABS_CHATTAB_H
+#endif  // GUI_WIDGETS_TABS_CHAT_CHATTAB_H

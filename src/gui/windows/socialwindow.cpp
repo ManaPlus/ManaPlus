@@ -40,7 +40,6 @@
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/tabbedarea.h"
 
-#include "gui/widgets/tabs/chattab.h"
 #include "gui/widgets/tabs/socialattacktab.h"
 #include "gui/widgets/tabs/socialfriendstab.h"
 #include "gui/widgets/tabs/socialguildtab.h"
@@ -49,6 +48,8 @@
 #include "gui/widgets/tabs/socialpartytab.h"
 #include "gui/widgets/tabs/socialpickuptab.h"
 #include "gui/widgets/tabs/socialplayerstab.h"
+
+#include "gui/widgets/tabs/chat/chattab.h"
 
 #include "gui/popups/createpartypopup.h"
 
