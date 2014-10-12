@@ -27,7 +27,7 @@
 
 class ChatTab;
 class Guild;
-class GuildChatTab;
+class EmulateGuildTab;
 
 class GuildManager final
 {
@@ -92,7 +92,7 @@ class GuildManager final
         bool mSentNameRequest;
         bool mHavePower;
         StringVect mTempList;
-        GuildChatTab *mTab;
+        EmulateGuildTab *mTab;
         bool mRequest;
         int mRequestTime;
         bool mGotOnlineInfo;

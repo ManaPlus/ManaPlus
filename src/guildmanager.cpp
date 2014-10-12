@@ -31,7 +31,7 @@
 #include "gui/windows/chatwindow.h"
 #include "gui/windows/socialwindow.h"
 
-#include "gui/widgets/tabs/chat/guildchattab.h"
+#include "gui/widgets/tabs/chat/emulateguildtab.h"
 
 #include "net/chathandler.h"
 #include "net/packetlimiter.h"
@@ -229,7 +229,7 @@ void GuildManager::createTab(Guild *const guild)
 {
     if (!mTab)
     {
-        mTab = new GuildChatTab(chatWindow);
+        mTab = new EmulateGuildTab(chatWindow);
         if (config.getBoolValue("showChatHistory"))
             mTab->loadFromLogFile("#Guild");
         if (localPlayer)

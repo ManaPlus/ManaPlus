@@ -292,10 +292,10 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/models/langlistmodel.h \
 	      gui/widgets/flowcontainer.cpp \
 	      gui/widgets/flowcontainer.h \
+	      gui/widgets/tabs/chat/emulateguildtab.cpp \
+	      gui/widgets/tabs/chat/emulateguildtab.h \
 	      gui/widgets/tabs/chat/gmtab.cpp \
 	      gui/widgets/tabs/chat/gmtab.h \
-	      gui/widgets/tabs/chat/guildchattab.cpp \
-	      gui/widgets/tabs/chat/guildchattab.h \
 	      gui/widgets/guitable.cpp \
 	      gui/widgets/guitable.h \
 	      gui/widgets/horizontcontainer.cpp \

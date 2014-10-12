@@ -20,24 +20,24 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_WIDGETS_TABS_CHAT_GUILDCHATTAB_H
-#define GUI_WIDGETS_TABS_CHAT_GUILDCHATTAB_H
+#ifndef GUI_WIDGETS_TABS_CHAT_EMULATEGUILDTAB_H
+#define GUI_WIDGETS_TABS_CHAT_EMULATEGUILDTAB_H
 
 #include "gui/widgets/tabs/chat/chattab.h"
 #include "gui/widgets/tabs/chat/chattabtype.h"
 
 /**
- * A tab for a guild chat channel.
+ * Emulate guild tab, because server not support normal guilds.
  */
-class GuildChatTab final : public ChatTab,
-                           public ConfigListener
+class EmulateGuildTab final : public ChatTab,
+                              public ConfigListener
 {
     public:
-        explicit GuildChatTab(const Widget2 *const widget);
+        explicit EmulateGuildTab(const Widget2 *const widget);
 
-        A_DELETE_COPY(GuildChatTab)
+        A_DELETE_COPY(EmulateGuildTab)
 
-        ~GuildChatTab();
+        ~EmulateGuildTab();
 
         bool handleCommand(const std::string &restrict type,
                            const std::string &restrict args) override final;
@@ -59,4 +59,4 @@ class GuildChatTab final : public ChatTab,
         void getAutoCompleteCommands(StringVect &names) const override final;
 };
 
-#endif  // GUI_WIDGETS_TABS_CHAT_GUILDCHATTAB_H
+#endif  // GUI_WIDGETS_TABS_CHAT_EMULATEGUILDTAB_H

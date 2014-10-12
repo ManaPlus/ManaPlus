@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gui/widgets/tabs/chat/guildchattab.h"
+#include "gui/widgets/tabs/chat/emulateguildtab.h"
 
 #include "chatlogger.h"
 #include "configuration.h"
@@ -34,7 +34,7 @@
 
 #include "debug.h"
 
-GuildChatTab::GuildChatTab(const Widget2 *const widget) :
+EmulateGuildTab::EmulateGuildTab(const Widget2 *const widget) :
     // TRANSLATORS: guild chat tab name
     ChatTab(widget, _("Guild"), "")
 {
@@ -48,14 +48,14 @@ GuildChatTab::GuildChatTab(const Widget2 *const widget) :
     config.addListener("showGuildOnline", this);
 }
 
-GuildChatTab::~GuildChatTab()
+EmulateGuildTab::~EmulateGuildTab()
 {
     config.removeListeners(this);
     CHECKLISTENERS
 }
 
-bool GuildChatTab::handleCommand(const std::string &restrict type,
-                                 const std::string &restrict args)
+bool EmulateGuildTab::handleCommand(const std::string &restrict type,
+                                    const std::string &restrict args)
 {
     if (type == "invite" && guildManager)
         guildManager->invite(args);
@@ -71,14 +71,14 @@ bool GuildChatTab::handleCommand(const std::string &restrict type,
     return true;
 }
 
-void GuildChatTab::handleInput(const std::string &msg)
+void EmulateGuildTab::handleInput(const std::string &msg)
 {
     if (!guildManager)
         return;
     guildManager->chat(ChatWindow::doReplace(msg));
 }
 
-void GuildChatTab::getAutoCompleteList(StringVect &names) const
+void EmulateGuildTab::getAutoCompleteList(StringVect &names) const
 {
     if (!guildManager)
         return;
@@ -86,7 +86,7 @@ void GuildChatTab::getAutoCompleteList(StringVect &names) const
     guildManager->getNames(names);
 }
 
-void GuildChatTab::getAutoCompleteCommands(StringVect &names) const
+void EmulateGuildTab::getAutoCompleteCommands(StringVect &names) const
 {
     names.push_back("/help");
     names.push_back("/invite ");
@@ -95,18 +95,18 @@ void GuildChatTab::getAutoCompleteCommands(StringVect &names) const
     names.push_back("/notice ");
 }
 
-void GuildChatTab::saveToLogFile(const std::string &msg) const
+void EmulateGuildTab::saveToLogFile(const std::string &msg) const
 {
     if (chatLogger)
         chatLogger->log("#Guild", msg);
 }
 
-void GuildChatTab::playNewMessageSound() const
+void EmulateGuildTab::playNewMessageSound() const
 {
     soundManager.playGuiSound(SOUND_GUILD);
 }
 
-void GuildChatTab::optionChanged(const std::string &value)
+void EmulateGuildTab::optionChanged(const std::string &value)
 {
     if (value == "showGuildOnline")
         mShowOnline = config.getBoolValue("showGuildOnline");
