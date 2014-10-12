@@ -115,6 +115,11 @@ void WhisperTab::getAutoCompleteList(StringVect &names) const
     names.push_back(mNick);
 }
 
+void WhisperTab::getAutoCompleteCommands(StringVect& commands) const
+{
+    commands.push_back("/close");
+}
+
 void WhisperTab::setWhisperTabColors()
 {
     setTabColors(Theme::WHISPER_TAB);

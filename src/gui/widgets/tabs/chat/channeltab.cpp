@@ -72,3 +72,9 @@ bool ChannelTab::handleCommand(const std::string &restrict type,
 
     return true;
 }
+
+void ChannelTab::getAutoCompleteCommands(StringVect& commands) const
+{
+    commands.push_back("/close");
+    commands.push_back(mChannelName);
+}

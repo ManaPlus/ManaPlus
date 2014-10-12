@@ -48,6 +48,10 @@ class WhisperTab final : public ChatTab
         friend class ChatWindow;
 
         void getAutoCompleteList(StringVect &names) const override final;
+
+        void getAutoCompleteCommands(StringVect& commands)
+                                     const override final;
+
         /**
          * Constructor.
          *

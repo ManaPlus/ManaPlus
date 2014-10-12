@@ -44,6 +44,9 @@ class ChannelTab final : public ChatTab
 
         bool handleCommand(const std::string &restrict type,
                            const std::string &restrict args) override final;
+
+        void getAutoCompleteCommands(StringVect& commands)
+                                     const override final;
 };
 
 #endif  // GUI_WIDGETS_TABS_CHAT_CHANNELTAB_H
