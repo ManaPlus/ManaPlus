@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gui/widgets/tabs/guildchattab.h"
+#include "gui/widgets/tabs/chat/guildchattab.h"
 
 #include "chatlogger.h"
 #include "configuration.h"

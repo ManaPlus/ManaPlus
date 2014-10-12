@@ -172,8 +172,8 @@ SET(SRCS
     gui/widgets/flowcontainer.h
     gui/widgets/tabs/chat/gmtab.cpp
     gui/widgets/tabs/chat/gmtab.h
-    gui/widgets/tabs/guildchattab.cpp
-    gui/widgets/tabs/guildchattab.h
+    gui/widgets/tabs/chat/guildchattab.cpp
+    gui/widgets/tabs/chat/guildchattab.h
     gui/widgets/horizontcontainer.cpp
     gui/widgets/horizontcontainer.h
     gui/widgets/icon.cpp

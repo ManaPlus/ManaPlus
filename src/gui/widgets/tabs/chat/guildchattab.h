@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_WIDGETS_TABS_GUILDCHATTAB_H
-#define GUI_WIDGETS_TABS_GUILDCHATTAB_H
+#ifndef GUI_WIDGETS_TABS_CHAT_GUILDCHATTAB_H
+#define GUI_WIDGETS_TABS_CHAT_GUILDCHATTAB_H
 
 #include "gui/widgets/tabs/chat/chattab.h"
 #include "gui/widgets/tabs/chat/chattabtype.h"
@@ -59,4 +59,4 @@ class GuildChatTab final : public ChatTab,
         void getAutoCompleteCommands(StringVect &names) const override final;
 };
 
-#endif  // GUI_WIDGETS_TABS_GUILDCHATTAB_H
+#endif  // GUI_WIDGETS_TABS_CHAT_GUILDCHATTAB_H
