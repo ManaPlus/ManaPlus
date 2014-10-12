@@ -60,6 +60,8 @@ class ServerFeatures final : public Net::ServerFeatures
 
         bool haveSpecialChatChannels() const override final;
 
+        bool haveChatChannels() const override final;
+
         bool haveServerIgnore() const override final;
 
         bool haveMove3() const override final;

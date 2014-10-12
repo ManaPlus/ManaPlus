@@ -97,6 +97,11 @@ bool ServerFeatures::haveSpecialChatChannels() const
     return false;
 }
 
+bool ServerFeatures::haveChatChannels() const
+{
+    return true;
+}
+
 bool ServerFeatures::haveServerIgnore() const
 {
     return true;

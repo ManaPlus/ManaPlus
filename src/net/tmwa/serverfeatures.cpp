@@ -99,6 +99,11 @@ bool ServerFeatures::haveSpecialChatChannels() const
     return serverVersion >= 8;
 }
 
+bool ServerFeatures::haveChatChannels() const
+{
+    return false;
+}
+
 bool ServerFeatures::haveServerIgnore() const
 {
     return tmwServerVersion == 0;
