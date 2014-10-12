@@ -43,7 +43,7 @@ PartyTab *partyTab = nullptr;
 
 PartyTab::PartyTab(const Widget2 *const widget) :
     // TRANSLATORS: party chat tab name
-    ChatTab(widget, _("Party"), "")
+    ChatTab(widget, _("Party"), "", ChatTabType::PARTY)
 {
     setTabColor(&getThemeColor(Theme::PARTY_CHAT_TAB),
         &getThemeColor(Theme::PARTY_CHAT_TAB_OUTLINE));

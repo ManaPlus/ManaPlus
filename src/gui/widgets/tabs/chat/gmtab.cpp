@@ -30,7 +30,7 @@ GmTab *gmChatTab = nullptr;
 
 GmTab::GmTab(const Widget2 *const widget) :
     // TRANSLATORS: gb tab name
-    ChatTab(widget, _("GM"), "")
+    ChatTab(widget, _("GM"), "", ChatTabType::GM)
 {
     setTabColor(&getThemeColor(Theme::GM_CHAT_TAB),
         &getThemeColor(Theme::GM_CHAT_TAB_OUTLINE));

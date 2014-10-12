@@ -29,6 +29,8 @@
 
 #include "gui/widgets/tabs/tab.h"
 
+#include "gui/widgets/tabs/chat/chattabtype.h"
+
 #include "localconsts.h"
 
 class ScrollArea;
@@ -48,7 +50,8 @@ class ChatTab notfinal : public Tab
          */
         ChatTab(const Widget2 *const widget,
                 const std::string &name,
-                const std::string &channel);
+                const std::string &channel,
+                const ChatTabType::Type &type);
 
         A_DELETE_COPY(ChatTab)
 
@@ -122,7 +125,8 @@ class ChatTab notfinal : public Tab
         /**
          * Returns type of the being.
          */
-        virtual int getType() const A_WARN_UNUSED;
+        int getType() const A_WARN_UNUSED
+        { return mType; }
 
         virtual void saveToLogFile(const std::string &msg) const;
 
@@ -186,6 +190,7 @@ class ChatTab notfinal : public Tab
         BrowserBox *mTextOutput;
         ScrollArea *mScrollArea;
         std::string mChannelName;
+        ChatTabType::Type mType;
         bool mAllowHightlight;
         bool mRemoveNames;
         bool mNoAway;

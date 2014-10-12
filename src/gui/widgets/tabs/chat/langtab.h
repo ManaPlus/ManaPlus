@@ -34,9 +34,6 @@ class LangTab final : public ChatTab
 
         ~LangTab();
 
-        int getType() const override final A_WARN_UNUSED
-        { return ChatTabType::LANG; }
-
         void saveToLogFile(const std::string &msg) const override final;
 };
 

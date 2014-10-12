@@ -33,7 +33,7 @@ BattleTab *battleChatTab = nullptr;
 
 BattleTab::BattleTab(const Widget2 *const widget) :
     // TRANSLATORS: battle chat tab name
-    ChatTab(widget, _("Battle"), "")
+    ChatTab(widget, _("Battle"), "", ChatTabType::BATTLE)
 {
     if (config.getBoolValue("showChatHistory"))
         loadFromLogFile("#Battle");

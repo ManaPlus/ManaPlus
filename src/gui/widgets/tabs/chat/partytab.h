@@ -42,9 +42,6 @@ class PartyTab notfinal : public ChatTab,
         bool handleCommand(const std::string &restrict type,
                            const std::string &restrict args) override final;
 
-        int getType() const override final A_WARN_UNUSED
-        { return ChatTabType::PARTY; }
-
         void saveToLogFile(const std::string &msg) const override final;
 
         void playNewMessageSound() const override final;

@@ -231,7 +231,8 @@ static void createGuiWindows()
     questsWindow = new QuestsWindow;
 
     // TRANSLATORS: chat tab header
-    localChatTab = new ChatTab(chatWindow, _("General"), GENERAL_CHANNEL);
+    localChatTab = new ChatTab(chatWindow, _("General"),
+        GENERAL_CHANNEL, ChatTabType::INPUT);
     localChatTab->setAllowHighlight(false);
     if (config.getBoolValue("showChatHistory"))
         localChatTab->loadFromLogFile("#General");
@@ -248,7 +249,7 @@ static void createGuiWindows()
     }
 
     // TRANSLATORS: chat tab header
-    debugChatTab = new ChatTab(chatWindow, _("Debug"), "");
+    debugChatTab = new ChatTab(chatWindow, _("Debug"), "", ChatTabType::DEBUG);
     debugChatTab->setAllowHighlight(false);
 
     if (config.getBoolValue("enableTradeTab"))

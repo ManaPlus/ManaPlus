@@ -36,7 +36,7 @@
 
 EmulateGuildTab::EmulateGuildTab(const Widget2 *const widget) :
     // TRANSLATORS: guild chat tab name
-    ChatTab(widget, _("Guild"), "")
+    ChatTab(widget, _("Guild"), "", ChatTabType::GUILD)
 {
     setTabColor(&getThemeColor(Theme::GUILD_CHAT_TAB),
         &getThemeColor(Theme::GUILD_CHAT_TAB_OUTLINE));

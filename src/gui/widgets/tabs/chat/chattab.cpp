@@ -40,8 +40,6 @@
 #include "gui/widgets/itemlinkhandler.h"
 #include "gui/widgets/tabbedarea.h"
 
-#include "gui/widgets/tabs/chat/chattabtype.h"
-
 #include "input/inputmanager.h"
 
 #include "net/chathandler.h"
@@ -63,12 +61,14 @@ static const unsigned int MAX_WORD_SIZE = 50;
 
 ChatTab::ChatTab(const Widget2 *const widget,
                  const std::string &name,
-                 const std::string &channel) :
+                 const std::string &channel,
+                 const ChatTabType::Type &type) :
     Tab(widget),
     mTextOutput(new BrowserBox(this, BrowserBox::AUTO_WRAP, true,
        "browserbox.xml")),
     mScrollArea(new ScrollArea(this, mTextOutput, false)),
     mChannelName(channel),
+    mType(type),
     mAllowHightlight(true),
     mRemoveNames(false),
     mNoAway(false),
@@ -475,16 +475,6 @@ void ChatTab::saveToLogFile(const std::string &msg) const
             chatLogger->log("#Debug", msg);
         }
     }
-}
-
-int ChatTab::getType() const
-{
-    if (getCaption() == "General" || getCaption() == _("General"))
-        return ChatTabType::INPUT;
-    else if (getCaption() == "Debug" || getCaption() == _("Debug"))
-        return ChatTabType::DEBUG;
-    else
-        return ChatTabType::UNKNOWN;
 }
 
 void ChatTab::addRow(std::string &line)
