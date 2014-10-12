@@ -62,9 +62,9 @@
 #include "gui/widgets/progressbar.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/textfield.h"
-#include "gui/widgets/tabs/whispertab.h"
 
 #include "gui/widgets/tabs/chat/chattab.h"
+#include "gui/widgets/tabs/chat/whispertab.h"
 
 #include "net/adminhandler.h"
 #include "net/beinghandler.h"

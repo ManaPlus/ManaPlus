@@ -34,7 +34,7 @@
 #include "gui/windows/socialwindow.h"
 #include "gui/windows/outfitwindow.h"
 
-#include "gui/widgets/tabs/whispertab.h"
+#include "gui/widgets/tabs/chat/whispertab.h"
 
 #include "net/adminhandler.h"
 #include "net/chathandler.h"

@@ -58,7 +58,7 @@
 #include "gui/windows/updaterwindow.h"
 
 #include "gui/widgets/tabs/chat/gmtab.h"
-#include "gui/widgets/tabs/whispertab.h"
+#include "gui/widgets/tabs/chat/whispertab.h"
 
 #include "net/beinghandler.h"
 #include "net/chathandler.h"

@@ -62,7 +62,7 @@
 
 #include "gui/widgets/tabs/chat/langtab.h"
 #include "gui/widgets/tabs/chat/tradetab.h"
-#include "gui/widgets/tabs/whispertab.h"
+#include "gui/widgets/tabs/chat/whispertab.h"
 
 #include "render/opengldebug.h"
 

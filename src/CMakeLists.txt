@@ -312,8 +312,8 @@ SET(SRCS
     gui/widgets/tabs/chat/tradetab.h
     gui/widgets/vertcontainer.cpp
     gui/widgets/vertcontainer.h
-    gui/widgets/tabs/whispertab.cpp
-    gui/widgets/tabs/whispertab.h
+    gui/widgets/tabs/chat/whispertab.cpp
+    gui/widgets/tabs/chat/whispertab.h
     gui/widgets/widget2.h
     gui/widgets/widgetgroup.cpp
     gui/widgets/widgetgroup.h
