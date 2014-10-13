@@ -406,8 +406,7 @@ void ChatHandler::processColorChat(Net::MessageIn &msg)
     processChatContinue(message, ChatMsgType::BY_UNKNOWN);
 }
 
-std::string ChatHandler::extractChannelFromMessage(std::string &chatMsg,
-                                                   ChatMsgType::Type &own)
+std::string ChatHandler::extractChannelFromMessage(std::string &chatMsg)
 {
     std::string msg = chatMsg;
     std::string channel(GENERAL_CHANNEL);
@@ -425,7 +424,7 @@ std::string ChatHandler::extractChannelFromMessage(std::string &chatMsg,
 
 void ChatHandler::processChatContinue(std::string chatMsg, ChatMsgType::Type own)
 {
-    const std::string channel = extractChannelFromMessage(chatMsg, own);
+    const std::string channel = extractChannelFromMessage(chatMsg);
     bool allow(true);
     if (chatWindow)
     {
