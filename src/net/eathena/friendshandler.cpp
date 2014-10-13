@@ -97,4 +97,14 @@ void FriendsHandler::invite(const std::string &name) const
     outMsg.writeString(name, 24, "name");
 }
 
+void FriendsHandler::inviteResponse(const int accountId,
+                                    const int charId,
+                                    const bool accept) const
+{
+    createOutPacket(CMSG_FRIENDS_REQUEST_ACK);
+    outMsg.writeInt32(accountId, "account id");
+    outMsg.writeInt32(charId, "char id");
+    outMsg.writeInt32(accept ? 1 : 0, "result");
+}
+
 }  // namespace EAthena

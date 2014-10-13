@@ -38,6 +38,10 @@ class FriendsHandler final : public MessageHandler,
         void handleMessage(Net::MessageIn &msg) override final;
 
         void invite(const std::string &name) const override final;
+
+        void inviteResponse(const int accountId,
+                            const int charId,
+                            const bool accept) const override final;
 };
 
 }  // namespace TmwAthena

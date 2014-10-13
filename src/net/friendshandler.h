@@ -33,6 +33,10 @@ class FriendsHandler notfinal
     public:
         virtual void invite(const std::string &name) const = 0;
 
+        virtual void inviteResponse(const int accountId,
+                                    const int charId,
+                                    const bool accept) const = 0;
+
         virtual ~FriendsHandler()
         { }
 };

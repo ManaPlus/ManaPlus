@@ -51,4 +51,10 @@ void FriendsHandler::invite(const std::string &name A_UNUSED) const
 {
 }
 
+void FriendsHandler::inviteResponse(const int accountId A_UNUSED,
+                                    const int charId A_UNUSED,
+                                    const bool accept A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena
