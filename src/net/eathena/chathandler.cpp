@@ -378,8 +378,19 @@ void ChatHandler::processColorChat(Net::MessageIn &msg)
         return;
     }
 
-    processChatContinue(msg.readRawString(chatMsgLength, "message"),
-        ChatMsgType::BY_UNKNOWN);
+    std::string message = msg.readRawString(chatMsgLength, "message");
+    std::string msg2 = message;
+    if (findCutFirst(msg2, "You're now in the '#") && findCutLast(msg2, "'"))
+    {
+        const size_t idx = msg2.find("' channel for '");
+        if (idx != std::string::npos && chatWindow)
+        {
+            chatWindow->addChannelTab(std::string("#").append(
+                msg2.substr(0, idx)), false);
+            return;
+        }
+    }
+    processChatContinue(message, ChatMsgType::BY_UNKNOWN);
 }
 
 std::string ChatHandler::extractChannelFromMessage(std::string &chatMsg,
