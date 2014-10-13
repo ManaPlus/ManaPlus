@@ -1192,6 +1192,7 @@ ChannelTab *ChatWindow::addChannelTab(const std::string &name,
     {
         ret = new ChannelTab(this, name);
         mChannels[tempName] = ret;
+        ret->setAllowHighlight(false);
         if (config.getBoolValue("showChatHistory"))
             ret->loadFromLogFile(name);
     }
