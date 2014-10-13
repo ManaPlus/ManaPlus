@@ -47,4 +47,8 @@ void FriendsHandler::handleMessage(Net::MessageIn &msg)
     }
 }
 
+void FriendsHandler::invite(const std::string &name A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

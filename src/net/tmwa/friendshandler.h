@@ -36,6 +36,8 @@ class FriendsHandler final : public MessageHandler,
         A_DELETE_COPY(FriendsHandler)
 
         void handleMessage(Net::MessageIn &msg) override final;
+
+        void invite(const std::string &name) const override final;
 };
 
 }  // namespace TmwAthena

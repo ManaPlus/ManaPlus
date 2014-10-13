@@ -37,6 +37,8 @@ class FriendsHandler final : public MessageHandler,
 
         void handleMessage(Net::MessageIn &msg) override final;
 
+        void invite(const std::string &name) const override final;
+
     protected:
         void processPlayerOnline(Net::MessageIn &msg);
 

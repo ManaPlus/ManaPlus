@@ -31,6 +31,8 @@ namespace Net
 class FriendsHandler notfinal
 {
     public:
+        virtual void invite(const std::string &name) const = 0;
+
         virtual ~FriendsHandler()
         { }
 };

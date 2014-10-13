@@ -20,6 +20,7 @@
 
 #include "net/eathena/friendshandler.h"
 
+#include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
 #include "debug.h"
@@ -88,6 +89,12 @@ void FriendsHandler::processRequestAck(Net::MessageIn &msg)
     msg.readInt32("account id");
     msg.readInt32("char id");
     msg.readString(24, "name");
+}
+
+void FriendsHandler::invite(const std::string &name) const
+{
+    createOutPacket(CMSG_FRIENDS_ADD_PLAYER);
+    outMsg.writeString(name, 24, "name");
 }
 
 }  // namespace EAthena

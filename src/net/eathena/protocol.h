@@ -479,4 +479,6 @@
 
 #define SMSG_MERCENARY_ACTION        0x029f
 
+#define CMSG_FRIENDS_ADD_PLAYER      0x023b
+
 #endif  // NET_EATHENA_PROTOCOL_H
