@@ -62,6 +62,10 @@ class ChatHandler notfinal : public Net::ChatHandler
         void processWhisperResponseContinue(const uint8_t type);
 
     protected:
+        std::string getPopLastWhisperNick();
+
+        std::string getLastWhisperNick();
+
         typedef std::queue<std::string> WhisperQueue;
         WhisperQueue mSentWhispers;
         int mMotdTime;

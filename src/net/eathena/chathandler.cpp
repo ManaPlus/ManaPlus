@@ -37,6 +37,7 @@
 
 #include "resources/chatobject.h"
 
+#include "utils/gettext.h"
 #include "utils/stringutils.h"
 
 #include <string>
@@ -503,6 +504,21 @@ void ChatHandler::processWhisperResponse(Net::MessageIn &msg)
 
     const uint8_t type = msg.readUInt8("response");
     msg.readInt32("unknown");
+    if (type == 1 && chatWindow)
+    {
+        const std::string nick = getLastWhisperNick();
+        if (nick.size() > 1 && nick[0] == '#')
+        {
+            chatWindow->channelChatLog(nick,
+                // TRANSLATORS: chat message
+                strprintf(_("Message could not be sent, channel "
+                "%s is not exists."), nick.c_str()),
+                ChatMsgType::BY_SERVER, false, false);
+            if (!mSentWhispers.empty())
+                mSentWhispers.pop();
+            return;
+        }
+    }
     processWhisperResponseContinue(type);
 }
 

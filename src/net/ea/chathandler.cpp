@@ -82,7 +82,7 @@ void ChatHandler::talkPet(const std::string &restrict text,
     talk(action, channel);
 }
 
-void ChatHandler::processWhisperResponseContinue(const uint8_t type)
+std::string ChatHandler::getPopLastWhisperNick()
 {
     std::string nick;
     if (mSentWhispers.empty())
@@ -94,7 +94,22 @@ void ChatHandler::processWhisperResponseContinue(const uint8_t type)
         nick = mSentWhispers.front();
         mSentWhispers.pop();
     }
+    return nick;
+}
 
+std::string ChatHandler::getLastWhisperNick()
+{
+    std::string nick;
+    if (mSentWhispers.empty())
+        nick = "user";
+    else
+        nick = mSentWhispers.front();
+    return nick;
+}
+
+void ChatHandler::processWhisperResponseContinue(const uint8_t type)
+{
+    const std::string nick = getPopLastWhisperNick();
     switch (type)
     {
         case 0x00:
