@@ -1559,6 +1559,10 @@ bool ChatWindow::resortChatLog(std::string line, ChatMsgType::Type own,
                     ignoreRecord, tryRemoveColors);
             }
         }
+        else if (serverFeatures->haveChatChannels())
+        {
+            channelChatLog(channel, line, own, ignoreRecord, tryRemoveColors);
+        }
         else if (mShowAllLang)
         {
             localChatTab->chatLog(prefix + line, own,
@@ -1582,6 +1586,33 @@ void ChatWindow::battleChatLog(const std::string &line, ChatMsgType::Type own,
         battleChatTab->chatLog(line, own, ignoreRecord, tryRemoveColors);
     else if (debugChatTab)
         debugChatTab->chatLog(line, own, ignoreRecord, tryRemoveColors);
+}
+
+void ChatWindow::channelChatLog(const std::string &channel,
+                                const std::string &line,
+                                ChatMsgType::Type own,
+                                const bool ignoreRecord,
+                                const bool tryRemoveColors)
+{
+    std::string tempChannel = channel;
+    toLower(tempChannel);
+
+    ChannelTab *tab = nullptr;
+    const ChannelMap::const_iterator i = mChannels.find(tempChannel);
+
+    if (i != mChannels.end())
+    {
+        tab = i->second;
+    }
+    else
+    {
+        tab = addChannelTab(channel, false);
+        if (tab)
+            saveState();
+    }
+
+    if (tab)
+        tab->chatLog(line, own, ignoreRecord, tryRemoveColors);
 }
 
 void ChatWindow::localPetSay(const std::string &nick, const std::string &text)

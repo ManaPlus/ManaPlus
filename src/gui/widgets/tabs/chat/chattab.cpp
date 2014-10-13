@@ -43,6 +43,7 @@
 #include "input/inputmanager.h"
 
 #include "net/chathandler.h"
+#include "net/serverfeatures.h"
 
 #include "resources/iteminfo.h"
 
@@ -217,7 +218,8 @@ void ChatTab::chatLog(std::string line, ChatMsgType::Type own,
     }
 
     // if configured, move magic messages log to debug chat tab
-    if (localChatTab && this == localChatTab
+    if (!serverFeatures->haveChatChannels()
+        && localChatTab && this == localChatTab
         && ((config.getBoolValue("showMagicInDebug")
         && own == ChatMsgType::BY_PLAYER
         && tmp.text.length() > 1

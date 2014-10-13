@@ -81,6 +81,8 @@ class ChatHandler final : public MessageHandler, public Ea::ChatHandler
                       const std::string &password) const override final;
 
     protected:
+        static std::string extractChannelFromMessage(std::string &chatMsg);
+
         void processChat(Net::MessageIn &msg);
 
         void processColorChat(Net::MessageIn &msg);

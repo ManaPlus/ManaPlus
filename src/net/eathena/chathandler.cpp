@@ -380,19 +380,35 @@ void ChatHandler::processColorChat(Net::MessageIn &msg)
     processChatContinue(msg.readRawString(chatMsgLength, "message"));
 }
 
+std::string ChatHandler::extractChannelFromMessage(std::string &chatMsg)
+{
+    std::string msg = chatMsg;
+    std::string channel(GENERAL_CHANNEL);
+    if (findCutFirst(msg, "[ #"))
+    {   // found channel message
+        const size_t idx = msg.find(" ] ");
+        if (idx != std::string::npos)
+        {
+            channel = std::string("#").append(msg.substr(0, idx));
+            chatMsg = msg.substr(idx + 3);
+        }
+    }
+    return channel;
+}
+
 void ChatHandler::processChatContinue(std::string chatMsg)
 {
-    const size_t pos = chatMsg.find(" : ", 0);
-
+    const std::string channel = extractChannelFromMessage(chatMsg);
     bool allow(true);
     if (chatWindow)
     {
         allow = chatWindow->resortChatLog(chatMsg,
             ChatMsgType::BY_PLAYER,
-            GENERAL_CHANNEL,
+            channel,
             false, true);
     }
 
+    const size_t pos = chatMsg.find(" : ", 0);
     if (pos != std::string::npos)
         chatMsg.erase(0, pos + 3);
 
@@ -521,7 +537,7 @@ void ChatHandler::joinChannel(const std::string &channel)
 {
     // to join channel need use gm commands or send something.
     // here we sending invisible message.
-    channelMessage(channel, "\302\202G");
+    channelMessage(channel, "\302\202\302");
 }
 
 }  // namespace EAthena

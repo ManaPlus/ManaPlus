@@ -223,6 +223,12 @@ class ChatWindow final : public Window,
                                   const bool ignoreRecord = false,
                                   const bool tryRemoveColors = true);
 
+        void channelChatLog(const std::string &channel,
+                            const std::string &line,
+                            ChatMsgType::Type own,
+                            const bool ignoreRecord,
+                            const bool tryRemoveColors);
+
         void updateOnline(const std::set<std::string> &onlinePlayers) const;
 
         void loadState();
