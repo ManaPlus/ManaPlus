@@ -390,6 +390,18 @@ void ChatHandler::processColorChat(Net::MessageIn &msg)
             return;
         }
     }
+    else
+    {
+        const std::string nick = mSentWhispers.front();
+        if (nick.size() > 1 && nick[0] == '#')
+        {
+            if (message == strprintf("[ %s ] %s : \302\202\302",
+                nick.c_str(), localPlayer->getName().c_str()))
+            {
+                mSentWhispers.pop();
+            }
+        }
+    }
     processChatContinue(message, ChatMsgType::BY_UNKNOWN);
 }
 
