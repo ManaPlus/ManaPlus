@@ -288,6 +288,7 @@
 #define SMSG_HOMUNCULUS_FOOD         0x022f
 
 #define SMSG_FRIENDS_PLAYER_ONLINE   0x0206
+#define SMSG_FRIENDS_LIST            0x0201
 
 /**********************************
  *  Packets from client to server *

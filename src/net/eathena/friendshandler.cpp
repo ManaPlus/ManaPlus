@@ -35,6 +35,7 @@ FriendsHandler::FriendsHandler() :
     static const uint16_t _messages[] =
     {
         SMSG_FRIENDS_PLAYER_ONLINE,
+        SMSG_FRIENDS_LIST,
         0
     };
     handledMessages = _messages;
@@ -49,6 +50,10 @@ void FriendsHandler::handleMessage(Net::MessageIn &msg)
             processPlayerOnline(msg);
             break;
 
+        case SMSG_FRIENDS_LIST:
+            processFriendsList(msg);
+            break;
+
         default:
             break;
     }
@@ -59,6 +64,17 @@ void FriendsHandler::processPlayerOnline(Net::MessageIn &msg)
     msg.readInt32("account id");
     msg.readInt32("char id");
     msg.readUInt8("flag");  // 0 - online, 1 - offline
+}
+
+void FriendsHandler::processFriendsList(Net::MessageIn &msg)
+{
+    const int count = (msg.readInt16("size") - 4) / 32;
+    for (int f = 0; f < count; f ++)
+    {
+        msg.readInt32("account id");
+        msg.readInt32("char id");
+        msg.readString(24, "name");
+    }
 }
 
 }  // namespace EAthena

@@ -39,6 +39,8 @@ class FriendsHandler final : public MessageHandler,
 
     protected:
         void processPlayerOnline(Net::MessageIn &msg);
+
+        void processFriendsList(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
