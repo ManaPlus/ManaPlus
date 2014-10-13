@@ -1460,13 +1460,29 @@ std::string ChatWindow::autoCompleteHistory(const std::string &partName) const
     return autoComplete(nameList, partName);
 }
 
-bool ChatWindow::resortChatLog(std::string line, ChatMsgType::Type own,
+bool ChatWindow::resortChatLog(std::string line,
+                               ChatMsgType::Type own,
                                const std::string &channel,
                                const bool ignoreRecord,
                                const bool tryRemoveColors)
 {
     if (own == ChatMsgType::BY_UNKNOWN)
-        own = ChatMsgType::BY_SERVER;
+    {
+        const size_t pos = line.find(" : ");
+        if (pos != std::string::npos)
+        {
+            if (line.length() <= pos + 3)
+                own = ChatMsgType::BY_SERVER;
+            else if (line.substr(0, pos) == localPlayer->getName())
+                own = ChatMsgType::BY_PLAYER;
+            else
+                own = ChatMsgType::BY_OTHER;
+        }
+        else
+        {
+            own = ChatMsgType::BY_SERVER;
+        }
+    }
 
     std::string prefix;
     if (!channel.empty())

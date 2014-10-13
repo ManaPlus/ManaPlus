@@ -379,7 +379,7 @@ void ChatHandler::processColorChat(Net::MessageIn &msg)
     }
 
     processChatContinue(msg.readRawString(chatMsgLength, "message"),
-        ChatMsgType::BY_SERVER);
+        ChatMsgType::BY_UNKNOWN);
 }
 
 std::string ChatHandler::extractChannelFromMessage(std::string &chatMsg,
@@ -394,7 +394,6 @@ std::string ChatHandler::extractChannelFromMessage(std::string &chatMsg,
         {
             channel = std::string("#").append(msg.substr(0, idx));
             chatMsg = msg.substr(idx + 3);
-            own = ChatMsgType::BY_OTHER;
         }
     }
     return channel;
