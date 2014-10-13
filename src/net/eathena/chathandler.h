@@ -25,6 +25,8 @@
 
 #include "net/ea/chathandler.h"
 
+#include "gui/chatmsgtype.h"
+
 #include "net/eathena/messagehandler.h"
 
 namespace EAthena
@@ -81,13 +83,14 @@ class ChatHandler final : public MessageHandler, public Ea::ChatHandler
                       const std::string &password) const override final;
 
     protected:
-        static std::string extractChannelFromMessage(std::string &chatMsg);
+        static std::string extractChannelFromMessage(std::string &chatMsg,
+                                                     ChatMsgType::Type &own);
 
         void processChat(Net::MessageIn &msg);
 
         void processColorChat(Net::MessageIn &msg);
 
-        void processChatContinue(std::string chatMsg);
+        void processChatContinue(std::string chatMsg, ChatMsgType::Type own);
 
         void processWhisper(Net::MessageIn &msg) const;
 

@@ -330,7 +330,8 @@ void ChatHandler::processChat(Net::MessageIn &msg)
         return;
     }
 
-    processChatContinue(msg.readRawString(chatMsgLength, "message"));
+    processChatContinue(msg.readRawString(chatMsgLength, "message"),
+        ChatMsgType::BY_PLAYER);
 }
 
 void ChatHandler::processFormatMessage(Net::MessageIn &msg)
@@ -341,7 +342,7 @@ void ChatHandler::processFormatMessage(Net::MessageIn &msg)
     if (msgId >= 1266 && msgId <= 1269)
         mercenaryHandler->handleMercenaryMessage(msgId - 1266);
     else
-        processChatContinue(chatMsg);
+        processChatContinue(chatMsg, ChatMsgType::BY_SERVER);
 }
 
 void ChatHandler::processFormatMessageNumber(Net::MessageIn &msg)
@@ -351,7 +352,7 @@ void ChatHandler::processFormatMessageNumber(Net::MessageIn &msg)
     // +++ here need load message from configuration file
     const std::string chatMsg = strprintf(
         "Message #%d, value: %d", msgId, value);
-    processChatContinue(chatMsg);
+    processChatContinue(chatMsg, ChatMsgType::BY_SERVER);
 }
 
 void ChatHandler::processFormatMessageSkill(Net::MessageIn &msg)
@@ -361,7 +362,7 @@ void ChatHandler::processFormatMessageSkill(Net::MessageIn &msg)
     // +++ here need load message from configuration file
     const std::string chatMsg = strprintf(
         "Message #%d, skill: %d", msgId, skillId);
-    processChatContinue(chatMsg);
+    processChatContinue(chatMsg, ChatMsgType::BY_SERVER);
 }
 
 void ChatHandler::processColorChat(Net::MessageIn &msg)
@@ -377,10 +378,12 @@ void ChatHandler::processColorChat(Net::MessageIn &msg)
         return;
     }
 
-    processChatContinue(msg.readRawString(chatMsgLength, "message"));
+    processChatContinue(msg.readRawString(chatMsgLength, "message"),
+        ChatMsgType::BY_SERVER);
 }
 
-std::string ChatHandler::extractChannelFromMessage(std::string &chatMsg)
+std::string ChatHandler::extractChannelFromMessage(std::string &chatMsg,
+                                                   ChatMsgType::Type &own)
 {
     std::string msg = chatMsg;
     std::string channel(GENERAL_CHANNEL);
@@ -391,19 +394,20 @@ std::string ChatHandler::extractChannelFromMessage(std::string &chatMsg)
         {
             channel = std::string("#").append(msg.substr(0, idx));
             chatMsg = msg.substr(idx + 3);
+            own = ChatMsgType::BY_OTHER;
         }
     }
     return channel;
 }
 
-void ChatHandler::processChatContinue(std::string chatMsg)
+void ChatHandler::processChatContinue(std::string chatMsg, ChatMsgType::Type own)
 {
-    const std::string channel = extractChannelFromMessage(chatMsg);
+    const std::string channel = extractChannelFromMessage(chatMsg, own);
     bool allow(true);
     if (chatWindow)
     {
         allow = chatWindow->resortChatLog(chatMsg,
-            ChatMsgType::BY_PLAYER,
+            own,
             channel,
             false, true);
     }
