@@ -50,6 +50,7 @@ namespace Net
     class CharServerHandler;
     class ChatHandler;
     class FamilyHandler;
+    class FriendsHandler;
     class GameHandler;
     class GeneralHandler;
     class GuildHandler;
@@ -93,6 +94,7 @@ Net::BankHandler *bankHandler = nullptr;
 Net::QuestHandler *questHandler = nullptr;
 Net::BuyingStoreHandler *buyingStoreHandler = nullptr;
 Net::HomunculusHandler *homunculusHandler = nullptr;
+Net::FriendsHandler *friendsHandler = nullptr;
 
 namespace Net
 {
