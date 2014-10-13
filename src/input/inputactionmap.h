@@ -2909,7 +2909,7 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         &Actions::query,
         InputAction::NO_VALUE, 50,
         InputCondition::INGAME,
-        "q|query",
+        "q|query|j|join",
         true},
     {"keyClearChatTab",
         InputType::UNKNOWN, InputAction::NO_VALUE,
