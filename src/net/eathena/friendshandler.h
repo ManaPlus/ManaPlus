@@ -36,6 +36,9 @@ class FriendsHandler final : public MessageHandler,
         A_DELETE_COPY(FriendsHandler)
 
         void handleMessage(Net::MessageIn &msg) override final;
+
+    protected:
+        void processPlayerOnline(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

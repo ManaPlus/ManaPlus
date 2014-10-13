@@ -20,6 +20,8 @@
 
 #include "net/eathena/friendshandler.h"
 
+#include "net/eathena/protocol.h"
+
 #include "debug.h"
 
 extern Net::FriendsHandler *friendsHandler;
@@ -32,6 +34,7 @@ FriendsHandler::FriendsHandler() :
 {
     static const uint16_t _messages[] =
     {
+        SMSG_FRIENDS_PLAYER_ONLINE,
         0
     };
     handledMessages = _messages;
@@ -42,9 +45,20 @@ void FriendsHandler::handleMessage(Net::MessageIn &msg)
 {
     switch (msg.getId())
     {
+        case SMSG_FRIENDS_PLAYER_ONLINE:
+            processPlayerOnline(msg);
+            break;
+
         default:
             break;
     }
+}
+
+void FriendsHandler::processPlayerOnline(Net::MessageIn &msg)
+{
+    msg.readInt32("account id");
+    msg.readInt32("char id");
+    msg.readUInt8("flag");  // 0 - online, 1 - offline
 }
 
 }  // namespace EAthena

@@ -287,6 +287,8 @@
 #define SMSG_HOMUNCULUS_SKILL_UP     0x0239
 #define SMSG_HOMUNCULUS_FOOD         0x022f
 
+#define SMSG_FRIENDS_PLAYER_ONLINE   0x0206
+
 /**********************************
  *  Packets from client to server *
  **********************************/
