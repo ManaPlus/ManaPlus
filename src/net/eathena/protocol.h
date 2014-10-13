@@ -289,6 +289,7 @@
 
 #define SMSG_FRIENDS_PLAYER_ONLINE   0x0206
 #define SMSG_FRIENDS_LIST            0x0201
+#define SMSG_FRIENDS_REQUEST_ACK     0x0209
 
 /**********************************
  *  Packets from client to server *

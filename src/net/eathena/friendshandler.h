@@ -41,6 +41,8 @@ class FriendsHandler final : public MessageHandler,
         void processPlayerOnline(Net::MessageIn &msg);
 
         void processFriendsList(Net::MessageIn &msg);
+
+        void processRequestAck(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
