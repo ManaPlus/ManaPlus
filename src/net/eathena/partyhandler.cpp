@@ -62,6 +62,7 @@ PartyHandler::PartyHandler() :
         SMSG_PARTY_MESSAGE,
         SMSG_PARTY_INVITATION_STATS,
         SMSG_PARTY_MEMBER_INFO,
+        SMSG_PARTY_ITEM_PICKUP,
         0
     };
     handledMessages = _messages;
@@ -111,6 +112,9 @@ void PartyHandler::handleMessage(Net::MessageIn &msg)
             break;
         case SMSG_PARTY_MEMBER_INFO:
             processPartyMemberInfo(msg);
+            break;
+        case SMSG_PARTY_ITEM_PICKUP:
+            processPartyItemPickup(msg);
             break;
 
         default:
@@ -460,6 +464,23 @@ void PartyHandler::allowInvite(const bool allow) const
 {
     createOutPacket(CMSG_PARTY_ALLOW_INVITES);
     outMsg.writeInt8(static_cast<int8_t>(allow ? 1 : 0));
+}
+
+void PartyHandler::processPartyItemPickup(Net::MessageIn &msg) const
+{
+    // +++ probably need add option to show pickup notifications
+    // in party tab
+    msg.readInt32("account id");
+    msg.readInt16("item id");
+    msg.readUInt8("identify");
+    msg.readUInt8("attribute");
+    msg.readUInt8("refine");
+    msg.readInt16("card0");
+    msg.readInt16("card1");
+    msg.readInt16("card2");
+    msg.readInt16("card3");
+    msg.readInt16("equip location");
+    msg.readUInt8("item type");
 }
 
 }  // namespace EAthena
