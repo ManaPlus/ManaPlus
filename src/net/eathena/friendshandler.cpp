@@ -107,4 +107,11 @@ void FriendsHandler::inviteResponse(const int accountId,
     outMsg.writeInt32(accept ? 1 : 0, "result");
 }
 
+void FriendsHandler::remove(const int accountId, const int charId) const
+{
+    createOutPacket(CMSG_FRIENDS_DELETE_PLAYER);
+    outMsg.writeInt32(accountId, "account id");
+    outMsg.writeInt32(charId, "char id");
+}
+
 }  // namespace EAthena

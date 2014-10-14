@@ -37,6 +37,8 @@ class FriendsHandler notfinal
                                     const int charId,
                                     const bool accept) const = 0;
 
+        virtual void remove(const int accountId, const int charId) const = 0;
+
         virtual ~FriendsHandler()
         { }
 };

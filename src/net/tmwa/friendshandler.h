@@ -42,6 +42,9 @@ class FriendsHandler final : public MessageHandler,
         void inviteResponse(const int accountId,
                             const int charId,
                             const bool accept) const override final;
+
+        void remove(const int accountId,
+                    const int charId) const override final;
 };
 
 }  // namespace TmwAthena

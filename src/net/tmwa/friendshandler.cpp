@@ -57,4 +57,9 @@ void FriendsHandler::inviteResponse(const int accountId A_UNUSED,
 {
 }
 
+void FriendsHandler::remove(const int accountId A_UNUSED,
+                            const int charId A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena
