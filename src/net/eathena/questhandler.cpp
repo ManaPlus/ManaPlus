@@ -44,6 +44,7 @@ QuestHandler::QuestHandler() :
         SMSG_QUEST_LIST_OBJECTIVES,
         SMSG_QUEST_UPDATE_OBJECTIVES,
         SMSG_QUEST_REMOVE,
+        SMSG_QUEST_ACTIVATE,
         0
     };
     handledMessages = _messages;
@@ -73,6 +74,10 @@ void QuestHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_QUEST_REMOVE:
             processRemoveQuest(msg);
+            break;
+
+        case SMSG_QUEST_ACTIVATE:
+            processActivateQuest(msg);
             break;
 
         default:
@@ -180,6 +185,13 @@ void QuestHandler::processRemoveQuest(Net::MessageIn &msg)
         skillDialog->updateQuest(var, val);
         skillDialog->playUpdateEffect(var + SKILL_VAR_MIN_ID);
     }
+}
+
+void QuestHandler::processActivateQuest(Net::MessageIn &msg)
+{
+    // +++ need enable/disable quests depend on this packet
+    msg.readInt32("quest id");
+    msg.readUInt8("activate");
 }
 
 void QuestHandler::setQeustActiveState(const int questId,
