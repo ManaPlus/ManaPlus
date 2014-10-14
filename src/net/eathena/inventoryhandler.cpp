@@ -72,6 +72,7 @@ InventoryHandler::InventoryHandler() :
         SMSG_PLAYER_UNE_CARD,
         SMSG_PLAYER_INSERT_CARD,
         SMSG_PLAYER_ITEM_RENTAL_TIME,
+        SMSG_PLAYER_ITEM_RENTAL_EXPIRED,
         0
     };
     handledMessages = _messages;
@@ -164,6 +165,10 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_PLAYER_ITEM_RENTAL_TIME:
             processPlayerItemRentalTime(msg);
+            break;
+
+        case SMSG_PLAYER_ITEM_RENTAL_EXPIRED:
+            processPlayerItemRentalExpired(msg);
             break;
 
         default:
@@ -647,6 +652,13 @@ void InventoryHandler::processPlayerItemRentalTime(Net::MessageIn &msg)
     // +++ need update item rental time
     msg.readInt16("item id");
     msg.readInt32("seconds");
+}
+
+void InventoryHandler::processPlayerItemRentalExpired(Net::MessageIn &msg)
+{
+    // ++ need remove item from inventory
+    msg.readInt16("index");
+    msg.readInt16("item id");
 }
 
 }  // namespace EAthena

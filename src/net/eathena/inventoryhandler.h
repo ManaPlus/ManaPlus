@@ -92,6 +92,8 @@ class InventoryHandler final : public MessageHandler,
         void processPlayerInsertCard(Net::MessageIn &msg);
 
         void processPlayerItemRentalTime(Net::MessageIn &msg);
+
+        void processPlayerItemRentalExpired(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
