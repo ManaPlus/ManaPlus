@@ -93,6 +93,8 @@ class NpcHandler final : public MessageHandler, public Ea::NpcHandler
         static void processNpcViewPoint(Net::MessageIn &msg);
 
         void processNpcShowProgressBar(Net::MessageIn &msg) const;
+
+        void processNpcCloseTimeout(Net::MessageIn &msg) const;
 };
 
 }  // namespace EAthena

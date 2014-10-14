@@ -53,6 +53,7 @@ NpcHandler::NpcHandler() :
         SMSG_NPC_CUTIN,
         SMSG_NPC_VIEWPOINT,
         SMSG_NPC_SHOW_PROGRESS_BAR,
+        SMSG_NPC_CLOSE_TIMEOUT,
         0
     };
     handledMessages = _messages;
@@ -97,6 +98,10 @@ void NpcHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_NPC_SHOW_PROGRESS_BAR:
             processNpcShowProgressBar(msg);
+            break;
+
+        case SMSG_NPC_CLOSE_TIMEOUT:
+            processNpcCloseTimeout(msg);
             break;
 
         default:
@@ -322,6 +327,12 @@ void NpcHandler::processNpcShowProgressBar(Net::MessageIn &msg) const
     // +++ probably need show progress bar in npc dialog
     msg.readInt32("color");
     msg.readInt32("seconds");
+}
+
+void NpcHandler::processNpcCloseTimeout(Net::MessageIn &msg) const
+{
+    // this packet send after npc closed by timeout.
+    msg.readInt32("npc id");
 }
 
 }  // namespace EAthena

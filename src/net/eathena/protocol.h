@@ -140,6 +140,7 @@
 #define SMSG_NPC_MESSAGE             0x00b4
 #define SMSG_NPC_NEXT                0x00b5
 #define SMSG_NPC_CLOSE               0x00b6
+#define SMSG_NPC_CLOSE_TIMEOUT       0x08d6
 #define SMSG_NPC_CHOICE              0x00b7 /**< Display a choice */
 #define SMSG_NPC_BUY_SELL_CHOICE     0x00c4
 #define SMSG_NPC_BUY                 0x00c6
