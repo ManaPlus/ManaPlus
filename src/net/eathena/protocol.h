@@ -298,6 +298,8 @@
 
 #define SMSG_AUCTION_OPEN_WINDOW     0x025f
 
+#define SMSG_ELEMENTAL_UPDATE_STATUS 0x081e
+
 /**********************************
  *  Packets from client to server *
  **********************************/

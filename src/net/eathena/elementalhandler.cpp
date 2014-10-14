@@ -20,6 +20,8 @@
 
 #include "net/eathena/elementalhandler.h"
 
+#include "net/eathena/protocol.h"
+
 #include "debug.h"
 
 extern Net::ElementalHandler *elementalHandler;
@@ -32,6 +34,7 @@ ElementalHandler::ElementalHandler() :
 {
     static const uint16_t _messages[] =
     {
+        SMSG_ELEMENTAL_UPDATE_STATUS,
         0
     };
     handledMessages = _messages;
@@ -42,9 +45,19 @@ void ElementalHandler::handleMessage(Net::MessageIn &msg)
 {
     switch (msg.getId())
     {
+        case SMSG_ELEMENTAL_UPDATE_STATUS:
+            processElementalUpdateStatus(msg);
+            break;
+
         default:
             break;
     }
+}
+
+void ElementalHandler::processElementalUpdateStatus(Net::MessageIn &msg)
+{
+    msg.readInt16("type");
+    msg.readInt32("value");
 }
 
 }  // namespace EAthena
