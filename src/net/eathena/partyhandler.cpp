@@ -63,6 +63,7 @@ PartyHandler::PartyHandler() :
         SMSG_PARTY_INVITATION_STATS,
         SMSG_PARTY_MEMBER_INFO,
         SMSG_PARTY_ITEM_PICKUP,
+        SMSG_PARTY_LEADER,
         0
     };
     handledMessages = _messages;
@@ -115,6 +116,9 @@ void PartyHandler::handleMessage(Net::MessageIn &msg)
             break;
         case SMSG_PARTY_ITEM_PICKUP:
             processPartyItemPickup(msg);
+            break;
+        case SMSG_PARTY_LEADER:
+            processPartyLeader(msg);
             break;
 
         default:
@@ -481,6 +485,18 @@ void PartyHandler::processPartyItemPickup(Net::MessageIn &msg) const
     msg.readInt16("card3");
     msg.readInt16("equip location");
     msg.readUInt8("item type");
+}
+
+void PartyHandler::processPartyLeader(Net::MessageIn &msg) const
+{
+    PartyMember *const oldMember = Ea::taParty->getMember(
+        msg.readInt32("old leder id"));
+    PartyMember *const newMember = Ea::taParty->getMember(
+        msg.readInt32("new leder id"));
+    if (oldMember)
+        oldMember->setLeader(false);
+    if (newMember)
+        newMember->setLeader(true);
 }
 
 }  // namespace EAthena
