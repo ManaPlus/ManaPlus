@@ -45,6 +45,7 @@ QuestHandler::QuestHandler() :
         SMSG_QUEST_UPDATE_OBJECTIVES,
         SMSG_QUEST_REMOVE,
         SMSG_QUEST_ACTIVATE,
+        SMSG_QUEST_NPC_EFFECT,
         0
     };
     handledMessages = _messages;
@@ -78,6 +79,10 @@ void QuestHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_QUEST_ACTIVATE:
             processActivateQuest(msg);
+            break;
+
+        case SMSG_QUEST_NPC_EFFECT:
+            processNpcQuestEffect(msg);
             break;
 
         default:
@@ -192,6 +197,17 @@ void QuestHandler::processActivateQuest(Net::MessageIn &msg)
     // +++ need enable/disable quests depend on this packet
     msg.readInt32("quest id");
     msg.readUInt8("activate");
+}
+
+void QuestHandler::processNpcQuestEffect(Net::MessageIn &msg)
+{
+    // this packed mostly useless, because manaplus can show any
+    // kind of effects based on quest states.
+    msg.readInt32("npc id");
+    msg.readInt16("x");
+    msg.readInt16("y");
+    msg.readInt16("state");
+    msg.readInt16("color");
 }
 
 void QuestHandler::setQeustActiveState(const int questId,

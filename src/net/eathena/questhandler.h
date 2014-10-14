@@ -52,6 +52,8 @@ class QuestHandler final : public MessageHandler, public Net::QuestHandler
         static void processRemoveQuest(Net::MessageIn &msg);
 
         static void processActivateQuest(Net::MessageIn &msg);
+
+        static void processNpcQuestEffect(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
