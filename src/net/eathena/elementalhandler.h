@@ -39,6 +39,8 @@ class ElementalHandler final : public MessageHandler,
 
     protected:
         void processElementalUpdateStatus(Net::MessageIn &msg);
+
+        void processElementalInfo(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

@@ -35,6 +35,7 @@ ElementalHandler::ElementalHandler() :
     static const uint16_t _messages[] =
     {
         SMSG_ELEMENTAL_UPDATE_STATUS,
+        SMSG_ELEMENTAL_INFO,
         0
     };
     handledMessages = _messages;
@@ -49,6 +50,10 @@ void ElementalHandler::handleMessage(Net::MessageIn &msg)
             processElementalUpdateStatus(msg);
             break;
 
+        case SMSG_ELEMENTAL_INFO:
+            processElementalInfo(msg);
+            break;
+
         default:
             break;
     }
@@ -58,6 +63,15 @@ void ElementalHandler::processElementalUpdateStatus(Net::MessageIn &msg)
 {
     msg.readInt16("type");
     msg.readInt32("value");
+}
+
+void ElementalHandler::processElementalInfo(Net::MessageIn &msg)
+{
+    msg.readInt32("elemental id");
+    msg.readInt32("hp");
+    msg.readInt32("max hp");
+    msg.readInt32("sp");
+    msg.readInt32("max sp");
 }
 
 }  // namespace EAthena
