@@ -20,6 +20,8 @@
 
 #include "net/eathena/auctionhandler.h"
 
+#include "net/eathena/protocol.h"
+
 #include "debug.h"
 
 extern Net::AuctionHandler *auctionHandler;
@@ -32,6 +34,7 @@ AuctionHandler::AuctionHandler() :
 {
     static const uint16_t _messages[] =
     {
+        SMSG_AUCTION_OPEN_WINDOW,
         0
     };
     handledMessages = _messages;
@@ -42,9 +45,18 @@ void AuctionHandler::handleMessage(Net::MessageIn &msg)
 {
     switch (msg.getId())
     {
+        case SMSG_AUCTION_OPEN_WINDOW:
+            processOpenWindow(msg);
+            break;
+
         default:
             break;
     }
+}
+
+void AuctionHandler::processOpenWindow(Net::MessageIn &msg)
+{
+    msg.readInt32("flag");  // 0 - open, 1 - close
 }
 
 }  // namespace EAthena

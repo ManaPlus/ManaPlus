@@ -35,6 +35,9 @@ class AuctionHandler final : public MessageHandler, public Net::AuctionHandler
         A_DELETE_COPY(AuctionHandler)
 
         void handleMessage(Net::MessageIn &msg) override final;
+
+    protected:
+        void processOpenWindow(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

@@ -291,6 +291,8 @@
 #define SMSG_FRIENDS_LIST            0x0201
 #define SMSG_FRIENDS_REQUEST_ACK     0x0209
 
+#define SMSG_AUCTION_OPEN_WINDOW     0x025f
+
 /**********************************
  *  Packets from client to server *
  **********************************/
