@@ -653,6 +653,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      net/charserverhandler.cpp \
 	      net/charserverhandler.h \
 	      net/chathandler.h \
+	      net/elementalhandler.h \
 	      net/familyhandler.h \
 	      net/friendshandler.h \
 	      net/download.cpp \
@@ -1246,6 +1247,8 @@ manaplus_SOURCES += \
 	      net/tmwa/charserverhandler.h \
 	      net/tmwa/chathandler.cpp \
 	      net/tmwa/chathandler.h \
+	      net/tmwa/elementalhandler.cpp \
+	      net/tmwa/elementalhandler.h \
 	      net/tmwa/familyhandler.cpp \
 	      net/tmwa/familyhandler.h \
 	      net/tmwa/friendshandler.cpp \
@@ -1318,6 +1321,8 @@ manaplus_SOURCES += net/eathena/adminhandler.cpp \
 	      net/eathena/charserverhandler.h \
 	      net/eathena/chathandler.cpp \
 	      net/eathena/chathandler.h \
+	      net/eathena/elementalhandler.cpp \
+	      net/eathena/elementalhandler.h \
 	      net/eathena/familyhandler.cpp \
 	      net/eathena/familyhandler.h \
 	      net/eathena/friendshandler.cpp \

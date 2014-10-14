@@ -531,6 +531,7 @@ SET(SRCS
     net/charserverhandler.cpp
     net/charserverhandler.h
     net/chathandler.h
+    net/elementalhandler.h
     net/download.cpp
     net/download.h
     net/downloadstatus.h
@@ -1312,6 +1313,8 @@ SET(SRCS_TMWA
     net/tmwa/charserverhandler.h
     net/tmwa/chathandler.cpp
     net/tmwa/chathandler.h
+    net/tmwa/elementalhandler.cpp
+    net/tmwa/elementalhandler.h
     net/tmwa/familyhandler.cpp
     net/tmwa/familyhandler.h
     net/tmwa/friendshandler.cpp
@@ -1383,6 +1386,8 @@ SET(SRCS_EATHENA
     net/eathena/charserverhandler.h
     net/eathena/chathandler.cpp
     net/eathena/chathandler.h
+    net/eathena/elementalhandler.cpp
+    net/eathena/elementalhandler.h
     net/eathena/familyhandler.cpp
     net/eathena/familyhandler.h
     net/eathena/friendshandler.cpp
