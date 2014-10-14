@@ -71,6 +71,7 @@ InventoryHandler::InventoryHandler() :
         SMSG_PLAYER_ATTACK_RANGE,
         SMSG_PLAYER_UNE_CARD,
         SMSG_PLAYER_INSERT_CARD,
+        SMSG_PLAYER_ITEM_RENTAL_TIME,
         0
     };
     handledMessages = _messages;
@@ -159,6 +160,10 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_PLAYER_INSERT_CARD:
             processPlayerInsertCard(msg);
+            break;
+
+        case SMSG_PLAYER_ITEM_RENTAL_TIME:
+            processPlayerItemRentalTime(msg);
             break;
 
         default:
@@ -635,6 +640,13 @@ void InventoryHandler::selectEgg(const Item *const item) const
     outMsg.writeInt16(static_cast<int16_t>(
         item->getInvIndex() + INVENTORY_OFFSET), "index");
     menu = MenuType::Unknown;
+}
+
+void InventoryHandler::processPlayerItemRentalTime(Net::MessageIn &msg)
+{
+    // +++ need update item rental time
+    msg.readInt16("item id");
+    msg.readInt32("seconds");
 }
 
 }  // namespace EAthena
