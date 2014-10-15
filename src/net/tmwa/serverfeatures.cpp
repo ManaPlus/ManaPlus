@@ -149,4 +149,9 @@ bool ServerFeatures::haveMonsterName() const
     return false;
 }
 
+bool ServerFeatures::haveBankApi() const
+{
+    return false;
+}
+
 }  // namespace TmwAthena

@@ -79,6 +79,8 @@ class ServerFeatures final : public Net::ServerFeatures
         bool haveEightDirections() const override final;
 
         bool haveCharRename() const override final;
+
+        bool haveBankApi() const override final;
 };
 
 }  // namespace EAthena

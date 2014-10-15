@@ -147,4 +147,9 @@ bool ServerFeatures::haveMonsterName() const
     return true;
 }
 
+bool ServerFeatures::haveBankApi() const
+{
+    return true;
+}
+
 }  // namespace EAthena
