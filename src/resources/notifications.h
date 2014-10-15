@@ -413,6 +413,15 @@ namespace NotifyManager
         {"card insert success",
             // TRANSLATORS: notification message
             N_("Card inserted."),
+            NotifyFlags::EMPTY},
+        {"bank deposit failed",
+            // TRANSLATORS: notification message
+            N_("Deposit failed. Probably you not have money to deposit."),
+            NotifyFlags::EMPTY},
+        {"bank withdraw failed",
+            // TRANSLATORS: notification message
+            N_("Withdraw failed. Probably you not have money "
+                "in bank for withdraw."),
             NotifyFlags::EMPTY}
     };
 }  // namespace NotifyManager

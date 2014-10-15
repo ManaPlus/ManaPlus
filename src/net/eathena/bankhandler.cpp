@@ -20,10 +20,14 @@
 
 #include "net/eathena/bankhandler.h"
 
+#include "notifymanager.h"
+
 #include "listeners/banklistener.h"
 
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
+
+#include "resources/notifytypes.h"
 
 #include "debug.h"
 
@@ -96,18 +100,22 @@ void BankHandler::processBankStatus(Net::MessageIn &msg)
 
 void BankHandler::processBankDeposit(Net::MessageIn &msg)
 {
-    msg.readInt16("reason");
+    const int reason = msg.readInt16("reason");
     const int money = static_cast<int>(msg.readInt64("money"));
     msg.readInt32("balance");
     BankListener::distributeEvent(money);
+    if (reason)
+        NotifyManager::notify(NotifyTypes::BANK_DEPOSIT_FAILED);
 }
 
 void BankHandler::processBankWithdraw(Net::MessageIn &msg)
 {
-    msg.readInt16("reason");
+    const int reason = msg.readInt16("reason");
     const int money = static_cast<int>(msg.readInt64("money"));
     msg.readInt32("balance");
     BankListener::distributeEvent(money);
+    if (reason)
+        NotifyManager::notify(NotifyTypes::BANK_WITHDRAW_FAILED);
 }
 
 }  // namespace EAthena

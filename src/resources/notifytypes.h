@@ -123,6 +123,8 @@ namespace NotifyTypes
         HOMUNCULUS_FEED_FAIL,
         CARD_INSERT_FAILED,
         CARD_INSERT_SUCCESS,
+        BANK_DEPOSIT_FAILED,
+        BANK_WITHDRAW_FAILED,
 
         TYPE_END
     };
