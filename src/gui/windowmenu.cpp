@@ -143,6 +143,10 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
     addButton(N_("UP"),
         // TRANSLATORS: full button name
         _("Updates"), x, h, InputAction::WINDOW_UPDATER, false);
+    // TRANSLATORS: short button name for bank window.
+    addButton(N_("BA"),
+        // TRANSLATORS: full button name
+        _("Bank"), x, h, InputAction::WINDOW_BANK, false);
     // TRANSLATORS: short button name for debug window.
     addButton(N_("DBG"),
         // TRANSLATORS: full button name
