@@ -51,6 +51,7 @@ namespace Actions
     decHandler(didYouKnowWindowShow);
     decHandler(questsWindowShow);
     decHandler(updaterWindowShow);
+    decHandler(bankWindowShow);
 }  // namespace Actions
 
 #undef decHandler

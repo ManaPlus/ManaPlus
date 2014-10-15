@@ -397,6 +397,8 @@ SET(SRCS
     gui/windows/okdialog.h
     gui/windows/outfitwindow.cpp
     gui/windows/outfitwindow.h
+    gui/windows/bankwindow.cpp
+    gui/windows/bankwindow.h
     gui/windows/botcheckerwindow.cpp
     gui/windows/botcheckerwindow.h
     gui/windows/textcommandeditor.cpp
@@ -801,6 +803,8 @@ SET(SRCS
     listeners/attributelistener.h
     listeners/awaylistener.cpp
     listeners/awaylistener.h
+    listeners/banklistener.cpp
+    listeners/banklistener.h
     listeners/baselistener.hpp
     listeners/charrenamelistener.cpp
     listeners/charrenamelistener.h

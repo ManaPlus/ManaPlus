@@ -486,6 +486,7 @@ namespace InputAction
         PET_SET_NAME,
         HOMUNCULUS_SET_NAME,
         HOMUNCULUS_FIRE,
+        WINDOW_BANK,
         TOTAL
     };
 }  // namespace InputAction

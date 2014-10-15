@@ -59,6 +59,7 @@
 
 #include "gui/fonts/font.h"
 
+#include "gui/windows/bankwindow.h"
 #include "gui/windows/botcheckerwindow.h"
 #include "gui/windows/chatwindow.h"
 #include "gui/windows/debugwindow.h"
@@ -222,6 +223,7 @@ static void createGuiWindows()
             new SpellShortcutContainer(nullptr, f));
     }
 
+    bankWindow = new BankWindow;
     botCheckerWindow = new BotCheckerWindow;
     whoIsOnline = new WhoIsOnline;
     whoIsOnline->postInit();
@@ -331,6 +333,7 @@ static void destroyGuiWindows()
     delete2(socialWindow)
     delete2(dropShortcutWindow);
     delete2(spellShortcutWindow);
+    delete2(bankWindow);
     delete2(botCheckerWindow);
     delete2(questsWindow);
     delete2(whoIsOnline);

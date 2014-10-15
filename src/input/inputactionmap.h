@@ -4115,7 +4115,16 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputAction::NO_VALUE, 50,
         InputCondition::INGAME,
         "firehomunculus|homunculusfire",
-        false}
+        false},
+    {"keyWindowBank",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT | Input::GRP_GUI,
+        &Actions::bankWindowShow,
+        InputAction::NO_VALUE, 50,
+        InputCondition::SHORTCUT0,
+        "bank|openbank",
+        false},
 };
 
 #endif  // INPUT_INPUTACTIONMAP_H

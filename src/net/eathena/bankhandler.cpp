@@ -20,6 +20,8 @@
 
 #include "net/eathena/bankhandler.h"
 
+#include "listeners/banklistener.h"
+
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
@@ -87,22 +89,25 @@ void BankHandler::check() const
 
 void BankHandler::processBankStatus(Net::MessageIn &msg)
 {
-    msg.readInt64("money");
+    const int money = static_cast<int>(msg.readInt64("money"));
     msg.readInt16("reason");
+    BankListener::distributeEvent(money);
 }
 
 void BankHandler::processBankDeposit(Net::MessageIn &msg)
 {
     msg.readInt16("reason");
-    msg.readInt64("money");
+    const int money = static_cast<int>(msg.readInt64("money"));
     msg.readInt32("balance");
+    BankListener::distributeEvent(money);
 }
 
 void BankHandler::processBankWithdraw(Net::MessageIn &msg)
 {
     msg.readInt16("reason");
-    msg.readInt64("money");
+    const int money = static_cast<int>(msg.readInt64("money"));
     msg.readInt32("balance");
+    BankListener::distributeEvent(money);
 }
 
 }  // namespace EAthena

@@ -51,6 +51,12 @@ SetupActionData setupActionDataWindows[] =
     },
     {
         // TRANSLATORS: input action name
+        N_("Bank Window"),
+        InputAction::WINDOW_BANK,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
         N_("Help Window"),
         InputAction::WINDOW_HELP,
         "",

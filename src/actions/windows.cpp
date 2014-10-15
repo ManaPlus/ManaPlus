@@ -24,6 +24,7 @@
 
 #include "gui/dialogsmanager.h"
 
+#include "gui/windows/bankwindow.h"
 #include "gui/windows/skilldialog.h"
 #include "gui/windows/socialwindow.h"
 #include "gui/windows/statuswindow.h"
@@ -46,6 +47,8 @@
 
 #include "gui/widgets/tabs/chat/chattab.h"
 #include "gui/widgets/tabs/chat/chattabtype.h"
+
+#include "net/serverfeatures.h"
 
 #include "debug.h"
 
@@ -244,6 +247,15 @@ impHandler0(didYouKnowWindowShow)
 impHandler0(questsWindowShow)
 {
     showHideWindow(questsWindow);
+    return true;
+}
+
+impHandler0(bankWindowShow)
+{
+    if (!serverFeatures->haveBankApi())
+        return false;
+
+    showHideWindow(bankWindow);
     return true;
 }
 
