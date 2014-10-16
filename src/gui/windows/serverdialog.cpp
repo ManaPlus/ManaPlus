@@ -531,9 +531,14 @@ void ServerDialog::loadServers(const bool addNew)
                     server.port = defaultPortForServerType(server.type);
                 }
             }
-            else if ((xmlNameEqual(subNode, "description")
-                     && server.description.empty()) || (!lang.empty()
-                     && xmlNameEqual(subNode, description2.c_str())))
+            else if (!subNode->xmlChildrenNode)
+            {
+                continue;
+            }
+
+            if ((xmlNameEqual(subNode, "description")
+                && server.description.empty()) || (!lang.empty()
+                && xmlNameEqual(subNode, description2.c_str())))
             {
                 server.description = reinterpret_cast<const char*>(
                     subNode->xmlChildrenNode->content);

@@ -322,6 +322,8 @@ ParticleEmitter::ParticleEmitter(const XmlNodePtrConst emitterNode,
         }
         else if (xmlNameEqual(propertyNode, "deatheffect"))
         {
+            if (!propertyNode->xmlChildrenNode)
+                continue;
             mDeathEffect = reinterpret_cast<const char*>(
                 propertyNode->xmlChildrenNode->content);
             mDeathEffectConditions = 0x00;

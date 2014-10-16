@@ -431,8 +431,11 @@ void ItemDB::loadXmlFile(const std::string &fileName, int &tagNum)
             }
             else if (xmlNameEqual(itemChild, "particlefx"))
             {
-                display.particles.push_back(reinterpret_cast<const char*>(
-                    itemChild->xmlChildrenNode->content));
+                if (itemChild->xmlChildrenNode)
+                {
+                    display.particles.push_back(reinterpret_cast<const char*>(
+                        itemChild->xmlChildrenNode->content));
+                }
             }
             else if (xmlNameEqual(itemChild, "sound"))
             {
@@ -745,6 +748,8 @@ static void loadSpriteRef(ItemInfo *const itemInfo, const XmlNodePtr node)
 
 static void loadSoundRef(ItemInfo *const itemInfo, const XmlNodePtr node)
 {
+    if (!node->xmlChildrenNode)
+        return;
     const std::string event = XML::getProperty(node, "event", "");
     const std::string filename = reinterpret_cast<const char*>(
         node->xmlChildrenNode->content);
@@ -768,6 +773,8 @@ static void loadFloorSprite(SpriteDisplay *const display,
 {
     for_each_xml_child_node(spriteNode, floorNode)
     {
+        if (!spriteNode->xmlChildrenNode)
+            continue;
         if (xmlNameEqual(spriteNode, "sprite"))
         {
             SpriteReference *const currentSprite = new SpriteReference;
