@@ -50,15 +50,15 @@ class HomunculusHandler final : public MessageHandler,
         void fire() const override final;
 
     protected:
-        void processHomunculusSkills(Net::MessageIn &msg);
+        static void processHomunculusSkills(Net::MessageIn &msg);
 
-        void processHomunculusData(Net::MessageIn &msg);
+        static void processHomunculusData(Net::MessageIn &msg);
 
-        void processHomunculusInfo(Net::MessageIn &msg);
+        static void processHomunculusInfo(Net::MessageIn &msg);
 
-        void processHomunculusSkillUp(Net::MessageIn &msg);
+        static void processHomunculusSkillUp(Net::MessageIn &msg);
 
-        void processHomunculusFood(Net::MessageIn &msg);
+        static void processHomunculusFood(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
