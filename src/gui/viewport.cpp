@@ -743,7 +743,7 @@ void Viewport::optionChanged(const std::string &name)
         mLongMouseClick = config.getBoolValue("longmouseclick");
 }
 
-void Viewport::mouseMoved(MouseEvent &event A_UNUSED)
+void Viewport::mouseMoved(MouseEvent &event)
 {
     // Check if we are on the map
     if (!mMap || !localPlayer || !actorManager)
@@ -808,7 +808,7 @@ void Viewport::mouseMoved(MouseEvent &event A_UNUSED)
             }
         }
     }
-    if (popupManager->isTextPopupVisible())
+    if (!event.isConsumed() && popupManager->isTextPopupVisible())
         popupManager->hideTextPopup();
 
     if (mHoverBeing)
