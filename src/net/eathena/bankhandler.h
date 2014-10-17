@@ -44,11 +44,11 @@ class BankHandler final : public MessageHandler,
         void check() const override final;
 
     protected:
-        void processBankStatus(Net::MessageIn &msg);
+        static void processBankStatus(Net::MessageIn &msg);
 
-        void processBankDeposit(Net::MessageIn &msg);
+        static void processBankDeposit(Net::MessageIn &msg);
 
-        void processBankWithdraw(Net::MessageIn &msg);
+        static void processBankWithdraw(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

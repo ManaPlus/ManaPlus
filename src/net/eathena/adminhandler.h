@@ -76,13 +76,13 @@ class AdminHandler final : public MessageHandler, public Ea::AdminHandler
         void requestStats(const std::string &name) override final;
 
     protected:
-        void processAdminGetLoginAck(Net::MessageIn &msg);
+        static void processAdminGetLoginAck(Net::MessageIn &msg);
 
-        void processSetTileType(Net::MessageIn &msg);
+        static void processSetTileType(Net::MessageIn &msg);
 
-        void processAccountStats(Net::MessageIn &msg);
+        static void processAccountStats(Net::MessageIn &msg);
 
-        std::string mStatsName;
+        static std::string mStatsName;
 };
 
 }  // namespace EAthena

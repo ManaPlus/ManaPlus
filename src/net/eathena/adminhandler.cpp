@@ -38,10 +38,11 @@ extern Net::AdminHandler *adminHandler;
 namespace EAthena
 {
 
+std::string AdminHandler::mStatsName;
+
 AdminHandler::AdminHandler() :
     MessageHandler(),
-    Ea::AdminHandler(),
-    mStatsName()
+    Ea::AdminHandler()
 {
     static const uint16_t _messages[] =
     {

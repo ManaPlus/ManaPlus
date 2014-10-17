@@ -37,7 +37,7 @@ class AuctionHandler final : public MessageHandler, public Net::AuctionHandler
         void handleMessage(Net::MessageIn &msg) override final;
 
     protected:
-        void processOpenWindow(Net::MessageIn &msg);
+        static void processOpenWindow(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
