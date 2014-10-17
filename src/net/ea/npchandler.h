@@ -49,26 +49,24 @@ class NpcHandler notfinal : public Net::NpcHandler
 
         void endShopping(const int beingId) const override final;
 
-        virtual int getNpc(Net::MessageIn &msg) = 0;
+        static void processNpcChoice(Net::MessageIn &msg);
 
-        void processNpcChoice(Net::MessageIn &msg);
+        static void processNpcMessage(Net::MessageIn &msg);
 
-        void processNpcMessage(Net::MessageIn &msg);
+        static void processNpcClose(Net::MessageIn &msg);
 
-        void processNpcClose(Net::MessageIn &msg);
+        static void processNpcNext(Net::MessageIn &msg);
 
-        void processNpcNext(Net::MessageIn &msg);
+        static void processNpcIntInput(Net::MessageIn &msg);
 
-        void processNpcIntInput(Net::MessageIn &msg);
-
-        void processNpcStrInput(Net::MessageIn &msg);
+        static void processNpcStrInput(Net::MessageIn &msg);
 
     protected:
         NpcHandler();
 
-        NpcDialog *mDialog;
+        static NpcDialog *mDialog;
 
-        bool mRequestLang;
+        static bool mRequestLang;
 };
 
 }  // namespace Ea

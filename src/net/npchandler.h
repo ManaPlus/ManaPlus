@@ -32,11 +32,15 @@
 namespace Net
 {
 
+class MessageIn;
+
 class NpcHandler notfinal
 {
     public:
         virtual ~NpcHandler()
         { }
+
+        virtual int getNpc(Net::MessageIn &msg) = 0;
 
         virtual void talk(const int npcId) const = 0;
 

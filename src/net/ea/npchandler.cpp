@@ -33,10 +33,13 @@
 namespace Ea
 {
 
-NpcHandler::NpcHandler() :
-    mDialog(nullptr),
-    mRequestLang(false)
+NpcDialog *NpcHandler::mDialog = nullptr;
+bool NpcHandler::mRequestLang = false;
+
+NpcHandler::NpcHandler()
 {
+    mDialog = nullptr;
+    mRequestLang = false;
 }
 
 void NpcHandler::sendLetter(const int npcId A_UNUSED,
@@ -55,7 +58,7 @@ void NpcHandler::endShopping(const int beingId A_UNUSED) const
 
 void NpcHandler::processNpcChoice(Net::MessageIn &msg)
 {
-    getNpc(msg);
+    npcHandler->getNpc(msg);
     mRequestLang = false;
 
     if (mDialog)
@@ -71,7 +74,7 @@ void NpcHandler::processNpcChoice(Net::MessageIn &msg)
 
 void NpcHandler::processNpcMessage(Net::MessageIn &msg)
 {
-    getNpc(msg);
+    npcHandler->getNpc(msg);
     mRequestLang = false;
 
     const std::string message = msg.readString(msg.getLength() - 8);
@@ -85,7 +88,7 @@ void NpcHandler::processNpcMessage(Net::MessageIn &msg)
 void NpcHandler::processNpcClose(Net::MessageIn &msg)
 {
     // Show the close button
-    getNpc(msg);
+    npcHandler->getNpc(msg);
     mRequestLang = false;
     if (mDialog)
         mDialog->showCloseButton();
@@ -94,7 +97,7 @@ void NpcHandler::processNpcClose(Net::MessageIn &msg)
 void NpcHandler::processNpcNext(Net::MessageIn &msg)
 {
     // Show the next button
-    getNpc(msg);
+    npcHandler->getNpc(msg);
     mRequestLang = false;
     if (mDialog)
         mDialog->showNextButton();
@@ -103,7 +106,7 @@ void NpcHandler::processNpcNext(Net::MessageIn &msg)
 void NpcHandler::processNpcIntInput(Net::MessageIn &msg)
 {
     // Request for an integer
-    getNpc(msg);
+    npcHandler->getNpc(msg);
     mRequestLang = false;
     if (mDialog)
         mDialog->integerRequest(0);
@@ -112,11 +115,11 @@ void NpcHandler::processNpcIntInput(Net::MessageIn &msg)
 void NpcHandler::processNpcStrInput(Net::MessageIn &msg)
 {
     // Request for a string
-    int npcId = getNpc(msg);
+    int npcId = npcHandler->getNpc(msg);
     if (mRequestLang)
     {
         mRequestLang = false;
-        stringInput(npcId, getLangSimple());
+        npcHandler->stringInput(npcId, getLangSimple());
     }
     else if (mDialog)
     {

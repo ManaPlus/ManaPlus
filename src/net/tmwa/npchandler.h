@@ -69,9 +69,9 @@ class NpcHandler final : public MessageHandler, public Ea::NpcHandler
 
         int getNpc(Net::MessageIn &msg) override final;
 
-        void processNpcCommand(Net::MessageIn &msg);
+        static void processNpcCommand(Net::MessageIn &msg);
 
-        void processChangeTitle(Net::MessageIn &msg);
+        static void processChangeTitle(Net::MessageIn &msg);
 
         void produceMix(const int nameId,
                         const int materialId1,

@@ -291,7 +291,7 @@ int NpcHandler::getNpc(Net::MessageIn &msg)
 
 void NpcHandler::processNpcCommand(Net::MessageIn &msg)
 {
-    const int npcId = getNpc(msg);
+    const int npcId = npcHandler->getNpc(msg);
     mRequestLang = false;
 
     const int cmd = msg.readInt16();
@@ -334,7 +334,7 @@ void NpcHandler::processNpcCommand(Net::MessageIn &msg)
             }
             break;
         case 5:  // close dialog
-            closeDialog(npcId);
+            npcHandler->closeDialog(npcId);
             break;
         case 6:  // show avatar
             if (mDialog)
@@ -376,7 +376,7 @@ void NpcHandler::processNpcCommand(Net::MessageIn &msg)
 
 void NpcHandler::processChangeTitle(Net::MessageIn &msg)
 {
-    getNpc(msg);
+    npcHandler->getNpc(msg);
     mRequestLang = false;
     const std::string str = msg.readString();
     if (mDialog)

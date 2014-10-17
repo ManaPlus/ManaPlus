@@ -322,14 +322,14 @@ void NpcHandler::processNpcViewPoint(Net::MessageIn &msg)
     msg.readInt32("color");
 }
 
-void NpcHandler::processNpcShowProgressBar(Net::MessageIn &msg) const
+void NpcHandler::processNpcShowProgressBar(Net::MessageIn &msg)
 {
     // +++ probably need show progress bar in npc dialog
     msg.readInt32("color");
     msg.readInt32("seconds");
 }
 
-void NpcHandler::processNpcCloseTimeout(Net::MessageIn &msg) const
+void NpcHandler::processNpcCloseTimeout(Net::MessageIn &msg)
 {
     // this packet send after npc closed by timeout.
     msg.readInt32("npc id");
