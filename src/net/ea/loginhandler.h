@@ -87,17 +87,13 @@ class LoginHandler notfinal : public Net::LoginHandler
                                        const std::string &password)
                                        const override final;
 
-        virtual void procecessCharPasswordResponse(Net::MessageIn &msg) const;
+        static void processCharPasswordResponse(Net::MessageIn &msg);
 
-        virtual void processUpdateHost(Net::MessageIn &msg);
+        static void processUpdateHost(Net::MessageIn &msg);
 
-        virtual void processUpdateHost2(Net::MessageIn &msg) const = 0;
+        static void processLoginData(Net::MessageIn &msg);
 
-        virtual void processLoginData(Net::MessageIn &msg);
-
-        virtual void processLoginError(Net::MessageIn &msg) const;
-
-        virtual void processServerVersion(Net::MessageIn &msg) = 0;
+        static void processLoginError(Net::MessageIn &msg);
 
         void loginOrRegister(LoginData *const data) const override final;
 
@@ -108,11 +104,11 @@ class LoginHandler notfinal : public Net::LoginHandler
                                        const std::string &password,
                                        const std::string &email) const = 0;
 
-        bool mVersionResponse;
-        bool mRegistrationEnabled;
-        std::string mUpdateHost;
-        Worlds mWorlds;
-        Token mToken;
+        static std::string mUpdateHost;
+        static Worlds mWorlds;
+        static Token mToken;
+        static bool mVersionResponse;
+        static bool mRegistrationEnabled;
 };
 
 }  // namespace Ea

@@ -42,14 +42,19 @@
 namespace Ea
 {
 
+std::string LoginHandler::mUpdateHost;
+Worlds LoginHandler::mWorlds;
+Token LoginHandler::mToken;
+bool LoginHandler::mVersionResponse = false;
+bool LoginHandler::mRegistrationEnabled = true;
+
 LoginHandler::LoginHandler() :
-    Net::LoginHandler(),
-    mVersionResponse(false),
-    mRegistrationEnabled(true),
-    mUpdateHost(),
-    mWorlds(),
-    mToken()
+    Net::LoginHandler()
 {
+    mVersionResponse = false;
+    mRegistrationEnabled = true;
+    mUpdateHost.clear();
+    mWorlds.clear();
     mToken.clear();
 }
 
@@ -133,7 +138,7 @@ void LoginHandler::clearWorlds()
     mWorlds.clear();
 }
 
-void LoginHandler::procecessCharPasswordResponse(Net::MessageIn &msg) const
+void LoginHandler::processCharPasswordResponse(Net::MessageIn &msg)
 {
     // 0: acc not found, 1: success, 2: password mismatch, 3: pass too short
     const uint8_t errMsg = msg.readUInt8("result code");
@@ -189,7 +194,7 @@ void LoginHandler::processLoginData(Net::MessageIn &msg)
 {
     msg.skip(2, "len");
 
-    clearWorlds();
+    loginHandler->clearWorlds();
 
     const int worldCount = (msg.getLength() - 47) / 32;
 
@@ -225,7 +230,7 @@ void LoginHandler::processLoginData(Net::MessageIn &msg)
     client->setState(STATE_WORLD_SELECT);
 }
 
-void LoginHandler::processLoginError(Net::MessageIn &msg) const
+void LoginHandler::processLoginError(Net::MessageIn &msg)
 {
     const uint8_t code = msg.readUInt8("error");
     logger->log("Login::error code: %u", static_cast<unsigned int>(code));

@@ -67,7 +67,7 @@ void LoginHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_CHAR_PASSWORD_RESPONSE:
-            procecessCharPasswordResponse(msg);
+            processCharPasswordResponse(msg);
             break;
 
         case SMSG_LOGIN_DATA:
@@ -146,7 +146,7 @@ ServerInfo *LoginHandler::getCharServer() const
     return &charServer;
 }
 
-void LoginHandler::processLoginError2(Net::MessageIn &msg) const
+void LoginHandler::processLoginError2(Net::MessageIn &msg)
 {
     const uint32_t code = msg.readInt32("error");
     logger->log("Login::error code: %u", code);
@@ -220,7 +220,7 @@ void LoginHandler::processLoginError2(Net::MessageIn &msg) const
     client->setState(STATE_ERROR);
 }
 
-void LoginHandler::processUpdateHost2(Net::MessageIn &msg A_UNUSED) const
+void LoginHandler::processUpdateHost2(Net::MessageIn &msg A_UNUSED)
 {
 }
 

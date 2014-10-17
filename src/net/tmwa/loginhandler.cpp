@@ -75,7 +75,7 @@ void LoginHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_CHAR_PASSWORD_RESPONSE:
-            procecessCharPasswordResponse(msg);
+            processCharPasswordResponse(msg);
             break;
 
         case SMSG_UPDATE_HOST:
@@ -241,7 +241,7 @@ void LoginHandler::processServerVersion(Net::MessageIn &msg)
     mVersionResponse = true;
 }
 
-void LoginHandler::processUpdateHost2(Net::MessageIn &msg) const
+void LoginHandler::processUpdateHost2(Net::MessageIn &msg)
 {
     const int len = msg.readInt16("len") - 4;
     const std::string updateHost = msg.readString(len, "host");
