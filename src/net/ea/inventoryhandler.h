@@ -43,6 +43,7 @@ namespace Ea
 {
 
 typedef std::vector<InventoryItem> InventoryItems;
+typedef std::queue<int> PickupQueue;
 
 class InventoryHandler notfinal : public Net::InventoryHandler
 {
@@ -86,15 +87,15 @@ class InventoryHandler notfinal : public Net::InventoryHandler
 
         static void processItemUseResponse(Net::MessageIn &msg);
 
-        void processPlayerStorageStatus(Net::MessageIn &msg);
+        static void processPlayerStorageStatus(Net::MessageIn &msg);
 
-        void processPlayerStorageRemove(Net::MessageIn &msg);
+        static void processPlayerStorageRemove(Net::MessageIn &msg);
 
-        void processPlayerStorageClose(Net::MessageIn &msg);
+        static void processPlayerStorageClose(Net::MessageIn &msg);
 
         static void processPlayerAttackRange(Net::MessageIn &msg);
 
-        void processPlayerArrowEquip(Net::MessageIn &msg);
+        static void processPlayerArrowEquip(Net::MessageIn &msg);
 
         void closeStorage() override final;
 
@@ -106,14 +107,12 @@ class InventoryHandler notfinal : public Net::InventoryHandler
     protected:
         InventoryHandler();
 
-        EquipBackend mEquips;
-        InventoryItems mInventoryItems;
-        Inventory *mStorage;
-        InventoryWindow *mStorageWindow;
-        bool mDebugInventory;
-
-        typedef std::queue<int> PickupQueue;
-        PickupQueue mSentPickups;
+        static EquipBackend mEquips;
+        static InventoryItems mInventoryItems;
+        static Inventory *mStorage;
+        static InventoryWindow *mStorageWindow;
+        static PickupQueue mSentPickups;
+        static bool mDebugInventory;
 };
 
 }  // namespace Ea

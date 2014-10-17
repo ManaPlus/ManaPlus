@@ -69,31 +69,31 @@ class InventoryHandler final : public MessageHandler,
         void selectEgg(const Item *const item) const override final;
 
     protected:
-        void processPlayerEquipment(Net::MessageIn &msg);
+        static void processPlayerEquipment(Net::MessageIn &msg);
 
-        void processPlayerInventoryAdd(Net::MessageIn &msg);
+        static void processPlayerInventoryAdd(Net::MessageIn &msg);
 
-        void processPlayerInventory(Net::MessageIn &msg);
+        static void processPlayerInventory(Net::MessageIn &msg);
 
-        void processPlayerStorage(Net::MessageIn &msg);
+        static void processPlayerStorage(Net::MessageIn &msg);
 
-        void processPlayerEquip(Net::MessageIn &msg);
+        static void processPlayerEquip(Net::MessageIn &msg);
 
-        void processPlayerUnEquip(Net::MessageIn &msg);
+        static void processPlayerUnEquip(Net::MessageIn &msg);
 
-        void processPlayerInventoryRemove2(Net::MessageIn &msg);
+        static void processPlayerInventoryRemove2(Net::MessageIn &msg);
 
-        void processPlayerStorageEquip(Net::MessageIn &msg);
+        static void processPlayerStorageEquip(Net::MessageIn &msg);
 
-        void processPlayerStorageAdd(Net::MessageIn &msg);
+        static void processPlayerStorageAdd(Net::MessageIn &msg);
 
-        void processPlayerUseCard(Net::MessageIn &msg);
+        static void processPlayerUseCard(Net::MessageIn &msg);
 
-        void processPlayerInsertCard(Net::MessageIn &msg);
+        static void processPlayerInsertCard(Net::MessageIn &msg);
 
-        void processPlayerItemRentalTime(Net::MessageIn &msg);
+        static void processPlayerItemRentalTime(Net::MessageIn &msg);
 
-        void processPlayerItemRentalExpired(Net::MessageIn &msg);
+        static void processPlayerItemRentalExpired(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

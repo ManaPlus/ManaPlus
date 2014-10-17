@@ -88,14 +88,22 @@ const Equipment::Slot EQUIP_CONVERT[] =
 namespace Ea
 {
 
-InventoryHandler::InventoryHandler() :
-    mEquips(),
-    mInventoryItems(),
-    mStorage(nullptr),
-    mStorageWindow(nullptr),
-    mDebugInventory(true),
-    mSentPickups()
+EquipBackend InventoryHandler::mEquips;
+InventoryItems InventoryHandler::mInventoryItems;
+Inventory *InventoryHandler::mStorage = nullptr;
+InventoryWindow *InventoryHandler::mStorageWindow = nullptr;
+PickupQueue InventoryHandler::mSentPickups;
+bool InventoryHandler::mDebugInventory = true;
+
+InventoryHandler::InventoryHandler()
 {
+    mEquips.clear();
+    mInventoryItems.clear();
+    mStorage = nullptr;
+    mStorageWindow = nullptr;
+    while (!mSentPickups.empty())
+        mSentPickups.pop();
+    mDebugInventory = true;
 }
 
 InventoryHandler::~InventoryHandler()
