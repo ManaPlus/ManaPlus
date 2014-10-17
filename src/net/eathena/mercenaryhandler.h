@@ -48,11 +48,11 @@ class MercenaryHandler final : public MessageHandler,
         void attack(const int targetId, const bool keep) const override final;
 
     protected:
-        void processMercenaryUpdate(Net::MessageIn &msg);
+        static void processMercenaryUpdate(Net::MessageIn &msg);
 
-        void processMercenaryInfo(Net::MessageIn &msg);
+        static void processMercenaryInfo(Net::MessageIn &msg);
 
-        void processMercenarySkills(Net::MessageIn &msg);
+        static void processMercenarySkills(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
