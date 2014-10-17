@@ -51,15 +51,15 @@ class BuySellHandler notfinal : public Net::BuySellHandler
                                      const ShopItem *const item,
                                      const int amount) const override final;
 
-        virtual void processNpcBuySellChoice(Net::MessageIn &msg);
+        static void processNpcBuySellChoice(Net::MessageIn &msg);
 
-        virtual void processNpcSell(Net::MessageIn &msg) const;
+        static void processNpcSell(Net::MessageIn &msg);
 
-        virtual void processNpcBuyResponse(Net::MessageIn &msg) const;
+        static void processNpcBuyResponse(Net::MessageIn &msg);
 
     protected:
-        int mNpcId;
-        BuyDialog *mBuyDialog;
+        static int mNpcId;
+        static BuyDialog *mBuyDialog;
 };
 
 }  // namespace Ea

@@ -39,7 +39,7 @@ class BuySellHandler final : public MessageHandler, public Ea::BuySellHandler
 
         void handleMessage(Net::MessageIn &msg);
 
-        void processNpcBuy(Net::MessageIn &msg);
+        static void processNpcBuy(Net::MessageIn &msg);
 
         static void processNpcSellResponse(Net::MessageIn &msg);
 };

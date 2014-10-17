@@ -49,10 +49,13 @@
 namespace Ea
 {
 
-BuySellHandler::BuySellHandler() :
-    mNpcId(0),
-    mBuyDialog(nullptr)
+int BuySellHandler::mNpcId = 0;
+BuyDialog *BuySellHandler::mBuyDialog = nullptr;
+
+BuySellHandler::BuySellHandler()
 {
+    mNpcId = 0;
+    mBuyDialog = nullptr;
 }
 
 void BuySellHandler::requestSellList(const std::string &nick) const
@@ -139,7 +142,7 @@ void BuySellHandler::processNpcBuySellChoice(Net::MessageIn &msg)
     }
 }
 
-void BuySellHandler::processNpcSell(Net::MessageIn &msg) const
+void BuySellHandler::processNpcSell(Net::MessageIn &msg)
 {
     msg.readInt16("len");
     const int n_items = (msg.getLength() - 4) / 10;
@@ -168,7 +171,7 @@ void BuySellHandler::processNpcSell(Net::MessageIn &msg) const
     }
 }
 
-void BuySellHandler::processNpcBuyResponse(Net::MessageIn &msg) const
+void BuySellHandler::processNpcBuyResponse(Net::MessageIn &msg)
 {
     const uint8_t response = msg.readUInt8("response");
     if (response == 0U)
