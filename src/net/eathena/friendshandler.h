@@ -47,11 +47,11 @@ class FriendsHandler final : public MessageHandler,
                     const int charId) const override final;
 
     protected:
-        void processPlayerOnline(Net::MessageIn &msg);
+        static void processPlayerOnline(Net::MessageIn &msg);
 
-        void processFriendsList(Net::MessageIn &msg);
+        static void processFriendsList(Net::MessageIn &msg);
 
-        void processRequestAck(Net::MessageIn &msg);
+        static void processRequestAck(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
