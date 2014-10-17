@@ -32,11 +32,15 @@ extern Net::FamilyHandler *familyHandler;
 namespace EAthena
 {
 
+int FamilyHandler::mParent1 = 0;
+int FamilyHandler::mParent2 = 0;
+
 FamilyHandler::FamilyHandler() :
-    MessageHandler(),
-    mParent1(0),
-    mParent2(0)
+    MessageHandler()
 {
+    mParent1 = 0;
+    mParent2 = 0;
+
     static const uint16_t _messages[] =
     {
         SMSG_FAMILY_ASK_FOR_CHILD,

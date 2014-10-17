@@ -42,15 +42,15 @@ class FamilyHandler final : public MessageHandler,
         void askForChildReply(const bool accept) override final;
 
     protected:
-        void processAskForChild(Net::MessageIn &msg);
+        static void processAskForChild(Net::MessageIn &msg);
 
-        void processCallPartner(Net::MessageIn &msg);
+        static void processCallPartner(Net::MessageIn &msg);
 
-        void processDivorced(Net::MessageIn &msg);
+        static void processDivorced(Net::MessageIn &msg);
 
     private:
-        int mParent1;
-        int mParent2;
+        static int mParent1;
+        static int mParent2;
 };
 
 }  // namespace EAthena
