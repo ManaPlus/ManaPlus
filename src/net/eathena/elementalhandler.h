@@ -38,9 +38,9 @@ class ElementalHandler final : public MessageHandler,
         void handleMessage(Net::MessageIn &msg) override final;
 
     protected:
-        void processElementalUpdateStatus(Net::MessageIn &msg);
+        static void processElementalUpdateStatus(Net::MessageIn &msg);
 
-        void processElementalInfo(Net::MessageIn &msg);
+        static void processElementalInfo(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
