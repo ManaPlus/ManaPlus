@@ -57,7 +57,7 @@ class MailHandler final : public MessageHandler, public Net::MailHandler
                   std::string message) override final;
 
     protected:
-        void processMailOpen(Net::MessageIn &msg) const;
+        static void processMailOpen(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
