@@ -38,7 +38,7 @@ class BuyingStoreHandler final : public MessageHandler,
         void handleMessage(Net::MessageIn &msg) override final;
 
     protected:
-        void processBuyingStoreOpen(Net::MessageIn &msg);
+        static void processBuyingStoreOpen(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
