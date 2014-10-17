@@ -76,6 +76,7 @@ int Label::mInstances = 0;
 
 Label::Label(const Widget2 *const widget) :
     Widget(widget),
+    ToolTipListener(),
     mCaption(),
     mAlignment(Graphics::LEFT),
     mPadding(0)
@@ -86,6 +87,7 @@ Label::Label(const Widget2 *const widget) :
 Label::Label(const Widget2 *const widget,
              const std::string &caption) :
     Widget(widget),
+    ToolTipListener(),
     mCaption(caption),
     mAlignment(Graphics::LEFT),
     mPadding(0)
@@ -110,10 +112,12 @@ Label::~Label()
         if (theme)
             theme->unload(mSkin);
     }
+    removeMouseListener(this);
 }
 
 void Label::init()
 {
+    addMouseListener(this);
     mAllowLogic = false;
     mForegroundColor = getThemeColor(Theme::LABEL);
     mForegroundColor2 = getThemeColor(Theme::LABEL_OUTLINE);

@@ -67,6 +67,8 @@
 
 #include "gui/widgets/widget.h"
 
+#include "listeners/tooltiplistener.h"
+
 #include "localconsts.h"
 
 class Skin;
@@ -77,7 +79,8 @@ class Skin;
  *
  * \ingroup GUI
  */
-class Label final : public Widget
+class Label final : public Widget,
+                    public ToolTipListener
 {
     public:
         /**
