@@ -1118,6 +1118,8 @@ SET(SRCS
     listeners/statlistener.cpp
     listeners/statlistener.h
     listeners/tablemodellistener.h
+    listeners/tooltiplistener.cpp
+    listeners/tooltiplistener.h
     listeners/updatestatuslistener.cpp
     listeners/updatestatuslistener.h
     listeners/uploadlistener.cpp
