@@ -34,6 +34,8 @@ class CharSelectDialog;
 namespace Net
 {
 
+class MessageIn;
+
 struct Character;
 
 typedef std::list<Character*> Characters;
@@ -82,25 +84,30 @@ class CharServerHandler notfinal
 
         virtual void changeSlot(const int oldSlot, const int newSlot) = 0;
 
-    protected:
-        CharServerHandler() :
-            mCharacters(),
-            mSelectedCharacter(nullptr),
-            mCharSelectDialog(nullptr),
-            mCharCreateDialog(nullptr)
-        {}
+        virtual void readPlayerData(Net::MessageIn &msg,
+                                    Net::Character *const character,
+                                    const bool withColors) const = 0;
 
-        void updateCharSelectDialog();
-        void unlockCharSelectDialog();
+    protected:
+        CharServerHandler()
+        {
+            mCharacters.clear();
+            mSelectedCharacter = nullptr;
+            mCharSelectDialog = nullptr;
+            mCharCreateDialog = nullptr;
+        }
+
+        static void updateCharSelectDialog();
+        static void unlockCharSelectDialog();
 
         /** The list of available characters. */
-        Net::Characters mCharacters;
+        static Net::Characters mCharacters;
 
         /** The selected character. */
-        Net::Character *mSelectedCharacter;
+        static Net::Character *mSelectedCharacter;
 
-        CharSelectDialog *mCharSelectDialog;
-        CharCreateDialog *mCharCreateDialog;
+        static CharSelectDialog *mCharSelectDialog;
+        static CharCreateDialog *mCharCreateDialog;
 };
 
 }  // namespace Net

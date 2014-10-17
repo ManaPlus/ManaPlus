@@ -28,6 +28,11 @@
 namespace Net
 {
 
+Net::Characters CharServerHandler::mCharacters;
+Net::Character *CharServerHandler::mSelectedCharacter = nullptr;
+CharSelectDialog *CharServerHandler::mCharSelectDialog = nullptr;
+CharCreateDialog *CharServerHandler::mCharCreateDialog = nullptr;
+
 void CharServerHandler::updateCharSelectDialog()
 {
     if (mCharSelectDialog)

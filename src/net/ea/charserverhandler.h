@@ -54,22 +54,18 @@ class CharServerHandler notfinal : public Net::CharServerHandler
 
         virtual void connect() = 0;
 
-        virtual void processCharLoginError(Net::MessageIn &msg) const;
+        static void processCharLoginError(Net::MessageIn &msg);
 
-        virtual void processCharCreateFailed(Net::MessageIn &msg);
+        static void processCharCreateFailed(Net::MessageIn &msg);
 
-        virtual void processCharDelete(Net::MessageIn &msg);
+        static void processCharDelete(Net::MessageIn &msg);
 
-        virtual void processCharDeleteFailed(Net::MessageIn &msg);
+        static void processCharDeleteFailed(Net::MessageIn &msg);
 
         virtual void clear() override final;
 
     protected:
         CharServerHandler();
-
-        virtual void readPlayerData(Net::MessageIn &msg,
-                                    Net::Character *const character,
-                                    const bool withColors) const = 0;
 };
 
 }  // namespace Ea

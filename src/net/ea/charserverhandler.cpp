@@ -77,7 +77,7 @@ unsigned int CharServerHandler::maxSprite() const
     return EA_SPRITE_VECTOREND;
 }
 
-void CharServerHandler::processCharLoginError(Net::MessageIn &msg) const
+void CharServerHandler::processCharLoginError(Net::MessageIn &msg)
 {
     BLOCK_START("CharServerHandler::processCharLoginError")
     switch (msg.readUInt8("error"))

@@ -61,15 +61,22 @@ namespace EAthena
 extern ServerInfo charServer;
 extern ServerInfo mapServer;
 
+std::string CharServerHandler::mNewName;
+uint32_t CharServerHandler::mPinSeed = 0;
+uint32_t CharServerHandler::mPinAccountId = 0;
+uint32_t CharServerHandler::mRenameId = 0;
+bool CharServerHandler::mNeedCreatePin = false;
+
 CharServerHandler::CharServerHandler() :
     MessageHandler(),
-    Ea::CharServerHandler(),
-    mNewName(),
-    mPinSeed(0),
-    mPinAccountId(0),
-    mRenameId(0),
-    mNeedCreatePin(false)
+    Ea::CharServerHandler()
 {
+    mNewName.clear();
+    mPinSeed = 0;
+    mPinAccountId = 0;
+    mRenameId = 0;
+    mNeedCreatePin = false;
+
     static const uint16_t _messages[] =
     {
         SMSG_CHAR_LOGIN,
@@ -479,7 +486,7 @@ void CharServerHandler::processCharCreate(Net::MessageIn &msg)
 {
     BLOCK_START("CharServerHandler::processCharCreate")
     Net::Character *const character = new Net::Character;
-    readPlayerData(msg, character, false);
+    charServerHandler->readPlayerData(msg, character, false);
     mCharacters.push_back(character);
 
     updateCharSelectDialog();

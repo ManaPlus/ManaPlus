@@ -81,29 +81,29 @@ class CharServerHandler final : public MessageHandler,
 
         void changeSlot(const int oldSlot, const int newSlot) override final;
 
-    protected:
         void readPlayerData(Net::MessageIn &msg,
                             Net::Character *const character,
                             const bool) const override final;
 
-        void processPincodeStatus(Net::MessageIn &msg);
+    protected:
+        static void processPincodeStatus(Net::MessageIn &msg);
 
         static void processCharLogin2(Net::MessageIn &msg);
 
-        void processCharCreate(Net::MessageIn &msg);
+        static void processCharCreate(Net::MessageIn &msg);
 
-        void processCharCheckRename(Net::MessageIn &msg);
+        static void processCharCheckRename(Net::MessageIn &msg);
 
-        void processCharRename(Net::MessageIn &msg);
+        static void processCharRename(Net::MessageIn &msg);
 
-        void processCharChangeSlot(Net::MessageIn &msg);
+        static void processCharChangeSlot(Net::MessageIn &msg);
 
     private:
-        std::string mNewName;
-        uint32_t mPinSeed;
-        uint32_t mPinAccountId;
-        uint32_t mRenameId;
-        bool mNeedCreatePin;
+        static std::string mNewName;
+        static uint32_t mPinSeed;
+        static uint32_t mPinAccountId;
+        static uint32_t mRenameId;
+        static bool mNeedCreatePin;
 };
 
 }  // namespace EAthena

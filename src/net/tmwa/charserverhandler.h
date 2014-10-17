@@ -82,14 +82,14 @@ class CharServerHandler final : public MessageHandler,
 
         void changeSlot(const int oldSlot, const int newSlot) override final;
 
-    protected:
         void readPlayerData(Net::MessageIn &msg,
                             Net::Character *const character,
                             const bool withColors) const override final;
 
-        void processCharCreate(Net::MessageIn &msg);
+    protected:
+        static void processCharCreate(Net::MessageIn &msg);
 
-        void processCharCreate2(Net::MessageIn &msg);
+        static void processCharCreate2(Net::MessageIn &msg);
 };
 
 }  // namespace TmwAthena

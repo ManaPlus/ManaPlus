@@ -479,7 +479,7 @@ void CharServerHandler::processCharCreate(Net::MessageIn &msg)
 {
     BLOCK_START("CharServerHandler::processCharCreate")
     Net::Character *const character = new Net::Character;
-    readPlayerData(msg, character, false);
+    charServerHandler->readPlayerData(msg, character, false);
     mCharacters.push_back(character);
 
     updateCharSelectDialog();
@@ -497,7 +497,7 @@ void CharServerHandler::processCharCreate2(Net::MessageIn &msg)
 {
     BLOCK_START("CharServerHandler::processCharCreate2")
     Net::Character *const character = new Net::Character;
-    readPlayerData(msg, character, true);
+    charServerHandler->readPlayerData(msg, character, true);
     mCharacters.push_back(character);
 
     updateCharSelectDialog();
