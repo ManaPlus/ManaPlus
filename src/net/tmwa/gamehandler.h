@@ -57,7 +57,7 @@ class GameHandler final : public MessageHandler, public Ea::GameHandler
         { return false; }
 
     protected:
-        void processMapLogin(Net::MessageIn &msg) const;
+        static void processMapLogin(Net::MessageIn &msg);
 };
 
 }  // namespace TmwAthena

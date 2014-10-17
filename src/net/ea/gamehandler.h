@@ -50,19 +50,19 @@ class GameHandler notfinal : public Net::GameHandler
         virtual bool canUseMagicBar() const override final A_WARN_UNUSED
         { return true; }
 
-        virtual void processWhoAnswer(Net::MessageIn &msg) const;
+        static void processWhoAnswer(Net::MessageIn &msg);
 
-        virtual void processCharSwitchResponse(Net::MessageIn &msg) const;
+        static void processCharSwitchResponse(Net::MessageIn &msg);
 
-        virtual void processMapQuitResponse(Net::MessageIn &msg) const;
+        static void processMapQuitResponse(Net::MessageIn &msg);
 
         virtual void clear() override final;
 
         virtual void initEngines() const override final;
 
     protected:
-        std::string mMap;
-        int mCharID;  // < Saved for map-server switching
+        static std::string mMap;
+        static int mCharID;  // < Saved for map-server switching
 };
 
 }  // namespace Ea

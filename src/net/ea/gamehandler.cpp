@@ -41,10 +41,14 @@
 namespace Ea
 {
 
+std::string GameHandler::mMap;
+int GameHandler::mCharID = 0;
+
 GameHandler::GameHandler() :
-    mMap(),
-    mCharID(0)
+    Net::GameHandler()
 {
+    mMap.clear();
+    mCharID = 0;
 }
 
 void GameHandler::who() const
@@ -56,19 +60,19 @@ void GameHandler::setMap(const std::string &map)
     mMap = map.substr(0, map.rfind("."));
 }
 
-void GameHandler::processWhoAnswer(Net::MessageIn &msg) const
+void GameHandler::processWhoAnswer(Net::MessageIn &msg)
 {
     NotifyManager::notify(NotifyTypes::ONLINE_USERS,
         msg.readInt32("users count"));
 }
 
-void GameHandler::processCharSwitchResponse(Net::MessageIn &msg) const
+void GameHandler::processCharSwitchResponse(Net::MessageIn &msg)
 {
     if (msg.readUInt8("response"))
         client->setState(STATE_SWITCH_CHARACTER);
 }
 
-void GameHandler::processMapQuitResponse(Net::MessageIn &msg) const
+void GameHandler::processMapQuitResponse(Net::MessageIn &msg)
 {
     if (msg.readUInt8("response"))
     {

@@ -173,7 +173,7 @@ void GameHandler::processMapAccountId(Net::MessageIn &msg)
     msg.readInt32("account id");
 }
 
-void GameHandler::processMapLogin(Net::MessageIn &msg) const
+void GameHandler::processMapLogin(Net::MessageIn &msg)
 {
     unsigned char direction;
     uint16_t x, y;
@@ -188,8 +188,13 @@ void GameHandler::processMapLogin(Net::MessageIn &msg) const
 
     mLastHost &= 0xffffff;
 
-    if (mNetwork)
-        mNetwork->pauseDispatch();
+    GameHandler *const g = dynamic_cast<GameHandler*>(gameHandler);
+    if (g)
+    {
+        Network *const network = g->mNetwork;
+        if (network)
+            network->pauseDispatch();
+    }
 
     // Switch now or we'll have problems
     client->setState(STATE_GAME);
@@ -197,7 +202,7 @@ void GameHandler::processMapLogin(Net::MessageIn &msg) const
         localPlayer->setTileCoords(x, y);
 }
 
-void GameHandler::processServerTick(Net::MessageIn &msg) const
+void GameHandler::processServerTick(Net::MessageIn &msg)
 {
     msg.readInt32("tick");
 }
