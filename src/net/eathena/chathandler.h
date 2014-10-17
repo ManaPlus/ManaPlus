@@ -85,33 +85,34 @@ class ChatHandler final : public MessageHandler, public Ea::ChatHandler
     protected:
         static std::string extractChannelFromMessage(std::string &chatMsg);
 
-        void processChat(Net::MessageIn &msg);
+        static void processChat(Net::MessageIn &msg);
 
-        void processColorChat(Net::MessageIn &msg);
+        static void processColorChat(Net::MessageIn &msg);
 
-        void processChatContinue(std::string chatMsg, ChatMsgType::Type own);
+        static void processChatContinue(std::string chatMsg,
+                                        ChatMsgType::Type own);
 
-        void processWhisper(Net::MessageIn &msg) const;
+        static void processWhisper(Net::MessageIn &msg);
 
-        void processWhisperResponse(Net::MessageIn &msg);
+        static void processWhisperResponse(Net::MessageIn &msg);
 
-        void processGmChat(Net::MessageIn &msg);
+        static void processGmChat(Net::MessageIn &msg);
 
-        void processGmChat2(Net::MessageIn &msg);
+        static void processGmChat2(Net::MessageIn &msg);
 
-        void processChatIgnoreList(Net::MessageIn &msg);
+        static void processChatIgnoreList(Net::MessageIn &msg);
 
-        void processFormatMessage(Net::MessageIn &msg);
+        static void processFormatMessage(Net::MessageIn &msg);
 
-        void processFormatMessageNumber(Net::MessageIn &msg);
+        static void processFormatMessageNumber(Net::MessageIn &msg);
 
-        void processFormatMessageSkill(Net::MessageIn &msg);
+        static void processFormatMessageSkill(Net::MessageIn &msg);
 
-        void processChatDisplay(Net::MessageIn &msg);
+        static void processChatDisplay(Net::MessageIn &msg);
 
-        void processChatJoinAck(Net::MessageIn &msg);
+        static void processChatJoinAck(Net::MessageIn &msg);
 
-        void processChatLeave(Net::MessageIn &msg);
+        static void processChatLeave(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

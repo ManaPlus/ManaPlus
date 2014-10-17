@@ -51,13 +51,20 @@
 namespace Ea
 {
 
-ChatHandler::ChatHandler() :
-    mSentWhispers(),
-    mMotdTime(-1),
-    mShowAllLang(serverConfig.getValue("showAllLang", 0)),
-    mShowMotd(config.getBoolValue("showmotd")),
-    mSkipping(true)
+WhisperQueue ChatHandler::mSentWhispers;
+int ChatHandler::mMotdTime = -1;
+bool ChatHandler::mShowAllLang = false;
+bool ChatHandler::mShowMotd = false;
+bool ChatHandler::mSkipping = true;
+
+ChatHandler::ChatHandler()
 {
+    if (!mSentWhispers.empty())
+        mSentWhispers.pop();
+    mMotdTime = -1;
+    mShowAllLang = serverConfig.getValue("showAllLang", 0);
+    mShowMotd = config.getBoolValue("showmotd");
+    mSkipping = true;
 }
 
 void ChatHandler::clear()
@@ -157,7 +164,7 @@ void ChatHandler::processWhisperResponseContinue(const uint8_t type)
 }
 
 void ChatHandler::processWhisperContinue(const std::string &nick,
-                                         std::string chatMsg) const
+                                         std::string chatMsg)
 {
     // ignoring future whisper messages
     if (chatMsg.find("\302\202G") == 0 || chatMsg.find("\302\202A") == 0)
@@ -277,7 +284,7 @@ void ChatHandler::processWhisperContinue(const std::string &nick,
     BLOCK_END("ChatHandler::processWhisper")
 }
 
-void ChatHandler::processBeingChat(Net::MessageIn &msg) const
+void ChatHandler::processBeingChat(Net::MessageIn &msg)
 {
     if (!actorManager)
         return;
@@ -356,7 +363,7 @@ void ChatHandler::processBeingChat(Net::MessageIn &msg) const
     BLOCK_END("ChatHandler::processBeingChat")
 }
 
-void ChatHandler::processMVP(Net::MessageIn &msg) const
+void ChatHandler::processMVP(Net::MessageIn &msg)
 {
     BLOCK_START("ChatHandler::processMVP")
     // Display MVP player
@@ -372,7 +379,7 @@ void ChatHandler::processMVP(Net::MessageIn &msg) const
     BLOCK_END("ChatHandler::processMVP")
 }
 
-void ChatHandler::processIgnoreAllResponse(Net::MessageIn &msg) const
+void ChatHandler::processIgnoreAllResponse(Net::MessageIn &msg)
 {
     BLOCK_START("ChatHandler::processIgnoreAllResponse")
     const uint8_t action = msg.readUInt8("action");

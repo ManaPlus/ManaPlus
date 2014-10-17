@@ -81,18 +81,18 @@ class ChatHandler final : public MessageHandler, public Ea::ChatHandler
                       const std::string &password) const override final;
 
     protected:
-        void processChat(Net::MessageIn &msg);
+        static void processChat(Net::MessageIn &msg);
 
-        void processChat2(Net::MessageIn &msg);
+        static void processChat2(Net::MessageIn &msg);
 
-        void processChatContinue(std::string chatMsg,
-                                 const std::string &channel);
+        static void processChatContinue(std::string chatMsg,
+                                        const std::string &channel);
 
-        void processGmChat(Net::MessageIn &msg);
+        static void processGmChat(Net::MessageIn &msg);
 
-        void processWhisper(Net::MessageIn &msg) const;
+        static void processWhisper(Net::MessageIn &msg);
 
-        void processWhisperResponse(Net::MessageIn &msg);
+        static void processWhisperResponse(Net::MessageIn &msg);
 };
 
 }  // namespace TmwAthena

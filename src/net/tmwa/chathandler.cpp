@@ -434,7 +434,7 @@ void ChatHandler::processGmChat(Net::MessageIn &msg)
     BLOCK_END("ChatHandler::processChat")
 }
 
-void ChatHandler::processWhisper(Net::MessageIn &msg) const
+void ChatHandler::processWhisper(Net::MessageIn &msg)
 {
     BLOCK_START("ChatHandler::processWhisper")
     const int chatMsgLength = msg.readInt16("len") - 28;

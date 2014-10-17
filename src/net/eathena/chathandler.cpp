@@ -481,7 +481,7 @@ void ChatHandler::processGmChat2(Net::MessageIn &msg)
         chatWindow->addGlobalMessage(chatMsg);
 }
 
-void ChatHandler::processWhisper(Net::MessageIn &msg) const
+void ChatHandler::processWhisper(Net::MessageIn &msg)
 {
     BLOCK_START("ChatHandler::processWhisper")
     const int chatMsgLength = msg.readInt16("len") - 32;

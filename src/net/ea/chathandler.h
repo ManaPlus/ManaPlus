@@ -35,6 +35,8 @@ namespace Net
 namespace Ea
 {
 
+typedef std::queue<std::string> WhisperQueue;
+
 class ChatHandler notfinal : public Net::ChatHandler
 {
     public:
@@ -48,30 +50,29 @@ class ChatHandler notfinal : public Net::ChatHandler
         void me(const std::string &restrict text,
                 const std::string &restrict channel) const override final;
 
-        virtual void processBeingChat(Net::MessageIn &msg) const;
+        static void processBeingChat(Net::MessageIn &msg);
 
-        virtual void processMVP(Net::MessageIn &msg) const;
+        static void processMVP(Net::MessageIn &msg);
 
-        virtual void processIgnoreAllResponse(Net::MessageIn &msg) const;
+        static void processIgnoreAllResponse(Net::MessageIn &msg);
 
         void clear() override final;
 
-        void processWhisperContinue(const std::string &nick,
-                                    std::string chatMsg) const;
+        static void processWhisperContinue(const std::string &nick,
+                                           std::string chatMsg);
 
-        void processWhisperResponseContinue(const uint8_t type);
+        static void processWhisperResponseContinue(const uint8_t type);
 
     protected:
-        std::string getPopLastWhisperNick();
+        static std::string getPopLastWhisperNick();
 
-        std::string getLastWhisperNick();
+        static std::string getLastWhisperNick();
 
-        typedef std::queue<std::string> WhisperQueue;
-        WhisperQueue mSentWhispers;
-        int mMotdTime;
-        bool mShowAllLang;
-        bool mShowMotd;
-        bool mSkipping;
+        static WhisperQueue mSentWhispers;
+        static int mMotdTime;
+        static bool mShowAllLang;
+        static bool mShowMotd;
+        static bool mSkipping;
 };
 
 }  // namespace Ea
