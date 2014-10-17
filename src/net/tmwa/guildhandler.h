@@ -74,13 +74,13 @@ class GuildHandler final : public Ea::GuildHandler, public MessageHandler
         void checkMaster() const;
 
     protected:
-        void processGuildPositionInfo(Net::MessageIn &msg) const;
+        static void processGuildPositionInfo(Net::MessageIn &msg);
 
-        void processGuildMemberLogin(Net::MessageIn &msg) const;
+        static void processGuildMemberLogin(Net::MessageIn &msg);
 
-        void processGuildExpulsion(Net::MessageIn &msg) const;
+        static void processGuildExpulsion(Net::MessageIn &msg);
 
-        void processGuildExpulsionList(Net::MessageIn &msg) const;
+        static void processGuildExpulsionList(Net::MessageIn &msg);
 };
 
 }  // namespace TmwAthena

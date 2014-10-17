@@ -48,9 +48,11 @@ namespace Ea
 {
 Guild *taGuild = nullptr;
 
-GuildHandler::GuildHandler() :
-    showBasicInfo(false)
+bool GuildHandler::showBasicInfo = false;
+
+GuildHandler::GuildHandler()
 {
+    showBasicInfo = false;
 }
 
 GuildHandler::~GuildHandler()
@@ -74,7 +76,7 @@ void GuildHandler::endAlliance(const int guildId A_UNUSED,
 {
 }
 
-void GuildHandler::processGuildCreateResponse(Net::MessageIn &msg) const
+void GuildHandler::processGuildCreateResponse(Net::MessageIn &msg)
 {
     const uint8_t flag = msg.readUInt8();
 
@@ -107,7 +109,7 @@ void GuildHandler::processGuildCreateResponse(Net::MessageIn &msg) const
     }
 }
 
-void GuildHandler::processGuildMasterOrMember(Net::MessageIn &msg) const
+void GuildHandler::processGuildMasterOrMember(Net::MessageIn &msg)
 {
     msg.readInt32();  // Type (0x57 for member, 0xd7 for master)
 }
@@ -167,7 +169,7 @@ void GuildHandler::processGuildBasicInfo(Net::MessageIn &msg)
     g->setEmblemId(emblem);
 }
 
-void GuildHandler::processGuildAlianceInfo(Net::MessageIn &msg) const
+void GuildHandler::processGuildAlianceInfo(Net::MessageIn &msg)
 {
     const int length = msg.readInt16();
     if (length < 4)
@@ -182,7 +184,7 @@ void GuildHandler::processGuildAlianceInfo(Net::MessageIn &msg) const
     }
 }
 
-void GuildHandler::processGuildMemberList(Net::MessageIn &msg) const
+void GuildHandler::processGuildMemberList(Net::MessageIn &msg)
 {
     const int length = msg.readInt16();
     if (length < 4)
@@ -253,7 +255,7 @@ void GuildHandler::processGuildMemberList(Net::MessageIn &msg) const
         socialWindow->updateGuildCounter(onlineNum, totalNum);
 }
 
-void GuildHandler::processGuildPosNameList(Net::MessageIn &msg) const
+void GuildHandler::processGuildPosNameList(Net::MessageIn &msg)
 {
     if (!taGuild)
     {
@@ -274,7 +276,7 @@ void GuildHandler::processGuildPosNameList(Net::MessageIn &msg) const
     }
 }
 
-void GuildHandler::processGuildPosInfoList(Net::MessageIn &msg) const
+void GuildHandler::processGuildPosInfoList(Net::MessageIn &msg)
 {
     const int length = msg.readInt16();
     if (length < 4)
@@ -290,7 +292,7 @@ void GuildHandler::processGuildPosInfoList(Net::MessageIn &msg) const
     }
 }
 
-void GuildHandler::processGuildPositionChanged(Net::MessageIn &msg) const
+void GuildHandler::processGuildPositionChanged(Net::MessageIn &msg)
 {
     msg.readInt16();     // Always 44
     msg.readInt32();     // ID
@@ -300,7 +302,7 @@ void GuildHandler::processGuildPositionChanged(Net::MessageIn &msg) const
     msg.readString(24);  // Name
 }
 
-void GuildHandler::processGuildMemberPosChange(Net::MessageIn &msg) const
+void GuildHandler::processGuildMemberPosChange(Net::MessageIn &msg)
 {
     msg.readInt16("len");
     const int accountId = msg.readInt32("account id");
@@ -314,7 +316,7 @@ void GuildHandler::processGuildMemberPosChange(Net::MessageIn &msg) const
     }
 }
 
-void GuildHandler::processGuildEmblem(Net::MessageIn &msg) const
+void GuildHandler::processGuildEmblem(Net::MessageIn &msg)
 {
     const int length = msg.readInt16();
 
@@ -325,7 +327,7 @@ void GuildHandler::processGuildEmblem(Net::MessageIn &msg) const
     msg.skip(length - 12);  // Emblem data (unknown format)
 }
 
-void GuildHandler::processGuildSkillInfo(Net::MessageIn &msg) const
+void GuildHandler::processGuildSkillInfo(Net::MessageIn &msg)
 {
     const int count = (msg.readInt16("len") - 6) / 37;
     msg.readInt16("skill points");
@@ -356,7 +358,7 @@ void GuildHandler::processGuildSkillInfo(Net::MessageIn &msg) const
         skillDialog->updateModels();
 }
 
-void GuildHandler::processGuildNotice(Net::MessageIn &msg) const
+void GuildHandler::processGuildNotice(Net::MessageIn &msg)
 {
     const std::string msg1 = msg.readString(60);   // Mes1
     const std::string msg2 = msg.readString(120);  // Mes2
@@ -367,7 +369,7 @@ void GuildHandler::processGuildNotice(Net::MessageIn &msg) const
     }
 }
 
-void GuildHandler::processGuildInvite(Net::MessageIn &msg) const
+void GuildHandler::processGuildInvite(Net::MessageIn &msg)
 {
     const int guildId = msg.readInt32();
     const std::string guildName = msg.readString(24);
@@ -376,7 +378,7 @@ void GuildHandler::processGuildInvite(Net::MessageIn &msg) const
         socialWindow->showGuildInvite(guildName, guildId, "");
 }
 
-void GuildHandler::processGuildInviteAck(Net::MessageIn &msg) const
+void GuildHandler::processGuildInviteAck(Net::MessageIn &msg)
 {
     const uint8_t flag = msg.readUInt8();
     if (!guildTab)
@@ -406,7 +408,7 @@ void GuildHandler::processGuildInviteAck(Net::MessageIn &msg) const
     }
 }
 
-void GuildHandler::processGuildLeave(Net::MessageIn &msg) const
+void GuildHandler::processGuildLeave(Net::MessageIn &msg)
 {
     const std::string nick = msg.readString(24);  // Name
     msg.readString(40);                           // Message
@@ -448,7 +450,7 @@ void GuildHandler::processGuildLeave(Net::MessageIn &msg) const
     }
 }
 
-void GuildHandler::processGuildMessage(Net::MessageIn &msg) const
+void GuildHandler::processGuildMessage(Net::MessageIn &msg)
 {
     const int msgLength = msg.readInt16() - 4;
 
@@ -472,7 +474,7 @@ void GuildHandler::processGuildMessage(Net::MessageIn &msg) const
     }
 }
 
-void GuildHandler::processGuildSkillUp(Net::MessageIn &msg) const
+void GuildHandler::processGuildSkillUp(Net::MessageIn &msg)
 {
     msg.readInt16();  // Skill ID
     msg.readInt16();  // Level
@@ -481,29 +483,29 @@ void GuildHandler::processGuildSkillUp(Net::MessageIn &msg) const
     msg.readUInt8();  // unused? (always 1)
 }
 
-void GuildHandler::processGuildReqAlliance(Net::MessageIn &msg) const
+void GuildHandler::processGuildReqAlliance(Net::MessageIn &msg)
 {
     msg.readInt32();     // Account ID
     msg.readString(24);  // Name
 }
 
-void GuildHandler::processGuildReqAllianceAck(Net::MessageIn &msg) const
+void GuildHandler::processGuildReqAllianceAck(Net::MessageIn &msg)
 {
     msg.readInt32();  // Flag
 }
 
-void GuildHandler::processGuildDelAlliance(Net::MessageIn &msg) const
+void GuildHandler::processGuildDelAlliance(Net::MessageIn &msg)
 {
     msg.readInt32();  // Guild ID
     msg.readInt32();  // Flag
 }
 
-void GuildHandler::processGuildOppositionAck(Net::MessageIn &msg) const
+void GuildHandler::processGuildOppositionAck(Net::MessageIn &msg)
 {
     msg.readUInt8();  // Flag
 }
 
-void GuildHandler::processGuildBroken(Net::MessageIn &msg) const
+void GuildHandler::processGuildBroken(Net::MessageIn &msg)
 {
     msg.readInt32();  // Flag
 }
@@ -518,7 +520,7 @@ ChatTab *GuildHandler::getTab() const
     return guildTab;
 }
 
-void GuildHandler::processGuildExpulsionContinue(const std::string &nick) const
+void GuildHandler::processGuildExpulsionContinue(const std::string &nick)
 {
     if (taGuild)
         taGuild->removeMember(nick);

@@ -203,7 +203,7 @@ void GuildHandler::handleMessage(Net::MessageIn &msg)
     }
 }
 
-void GuildHandler::processGuildUpdateCoords(Net::MessageIn &msg) const
+void GuildHandler::processGuildUpdateCoords(Net::MessageIn &msg)
 {
     const int id = msg.readInt32("account id");
     const int x = msg.readInt16("x");
@@ -354,7 +354,7 @@ void GuildHandler::checkMaster() const
     MessageOut msg(CMSG_GUILD_CHECK_MASTER);
 }
 
-void GuildHandler::processGuildPositionInfo(Net::MessageIn &msg) const
+void GuildHandler::processGuildPositionInfo(Net::MessageIn &msg)
 {
     const int guildId =  msg.readInt32("guild id");
     const int emblem =  msg.readInt32("elblem id");
@@ -379,7 +379,7 @@ void GuildHandler::processGuildPositionInfo(Net::MessageIn &msg) const
             guildTab->loadFromLogFile("#Guild");
         if (localPlayer)
             localPlayer->addGuild(Ea::taGuild);
-        memberList(guildId);
+        guildHandler->memberList(guildId);
     }
 
     if (localPlayer)
@@ -389,7 +389,7 @@ void GuildHandler::processGuildPositionInfo(Net::MessageIn &msg) const
     }
 }
 
-void GuildHandler::processGuildMemberLogin(Net::MessageIn &msg) const
+void GuildHandler::processGuildMemberLogin(Net::MessageIn &msg)
 {
     const int accountId = msg.readInt32("account id");
     const int charId = msg.readInt32("char id");
@@ -414,7 +414,7 @@ void GuildHandler::processGuildMemberLogin(Net::MessageIn &msg) const
     }
 }
 
-void GuildHandler::processGuildExpulsion(Net::MessageIn &msg) const
+void GuildHandler::processGuildExpulsion(Net::MessageIn &msg)
 {
     const std::string nick = msg.readString(24, "name");
     msg.readString(40, "message");
@@ -422,7 +422,7 @@ void GuildHandler::processGuildExpulsion(Net::MessageIn &msg) const
     processGuildExpulsionContinue(nick);
 }
 
-void GuildHandler::processGuildExpulsionList(Net::MessageIn &msg) const
+void GuildHandler::processGuildExpulsionList(Net::MessageIn &msg)
 {
     const int length = msg.readInt16("len");
     if (length < 4)

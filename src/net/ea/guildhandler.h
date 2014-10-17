@@ -51,58 +51,58 @@ class GuildHandler notfinal : public Net::GuildHandler
         void endAlliance(const int guildId,
                          const int otherGuildId) const override final;
 
-        virtual void processGuildCreateResponse(Net::MessageIn &msg) const;
+        static void processGuildCreateResponse(Net::MessageIn &msg);
 
-        virtual void processGuildMasterOrMember(Net::MessageIn &msg) const;
+        static void processGuildMasterOrMember(Net::MessageIn &msg);
 
-        virtual void processGuildBasicInfo(Net::MessageIn &msg);
+        static void processGuildBasicInfo(Net::MessageIn &msg);
 
-        virtual void processGuildAlianceInfo(Net::MessageIn &msg) const;
+        static void processGuildAlianceInfo(Net::MessageIn &msg);
 
-        virtual void processGuildMemberList(Net::MessageIn &msg) const;
+        static void processGuildMemberList(Net::MessageIn &msg);
 
-        virtual void processGuildPosNameList(Net::MessageIn &msg) const;
+        static void processGuildPosNameList(Net::MessageIn &msg);
 
-        virtual void processGuildPosInfoList(Net::MessageIn &msg) const;
+        static void processGuildPosInfoList(Net::MessageIn &msg);
 
-        virtual void processGuildPositionChanged(Net::MessageIn &msg) const;
+        static void processGuildPositionChanged(Net::MessageIn &msg);
 
-        virtual void processGuildMemberPosChange(Net::MessageIn &msg) const;
+        static void processGuildMemberPosChange(Net::MessageIn &msg);
 
-        virtual void processGuildEmblem(Net::MessageIn &msg) const;
+        static void processGuildEmblem(Net::MessageIn &msg);
 
-        virtual void processGuildSkillInfo(Net::MessageIn &msg) const;
+        static void processGuildSkillInfo(Net::MessageIn &msg);
 
-        virtual void processGuildNotice(Net::MessageIn &msg) const;
+        static void processGuildNotice(Net::MessageIn &msg);
 
-        virtual void processGuildInvite(Net::MessageIn &msg) const;
+        static void processGuildInvite(Net::MessageIn &msg);
 
-        virtual void processGuildInviteAck(Net::MessageIn &msg) const;
+        static void processGuildInviteAck(Net::MessageIn &msg);
 
-        virtual void processGuildLeave(Net::MessageIn &msg) const;
+        static void processGuildLeave(Net::MessageIn &msg);
 
-        virtual void processGuildMessage(Net::MessageIn &msg) const;
+        static void processGuildMessage(Net::MessageIn &msg);
 
-        virtual void processGuildSkillUp(Net::MessageIn &msg) const;
+        static void processGuildSkillUp(Net::MessageIn &msg);
 
-        virtual void processGuildReqAlliance(Net::MessageIn &msg) const;
+        static void processGuildReqAlliance(Net::MessageIn &msg);
 
-        virtual void processGuildReqAllianceAck(Net::MessageIn &msg) const;
+        static void processGuildReqAllianceAck(Net::MessageIn &msg);
 
-        virtual void processGuildDelAlliance(Net::MessageIn &msg) const;
+        static void processGuildDelAlliance(Net::MessageIn &msg);
 
-        virtual void processGuildOppositionAck(Net::MessageIn &msg) const;
+        static void processGuildOppositionAck(Net::MessageIn &msg);
 
-        virtual void processGuildBroken(Net::MessageIn &msg) const;
+        static void processGuildBroken(Net::MessageIn &msg);
 
-        void processGuildExpulsionContinue(const std::string &nick) const;
+        static void processGuildExpulsionContinue(const std::string &nick);
 
         void clear() const override final;
 
         ChatTab *getTab() const override final;
 
     protected:
-        bool showBasicInfo;
+        static bool showBasicInfo;
 };
 
 extern Guild *taGuild;
