@@ -45,47 +45,47 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
 
         void requestRanks(const Rank::Rank rank A_UNUSED) const override final;
 
-        void viewPlayerEquipment(const Being *const being) override final;
-
     protected:
-        void processBeingChangeLook(Net::MessageIn &msg) const;
+        void viewPlayerEquipment(const Being *const being);
 
-        void processBeingChangeLook2(Net::MessageIn &msg) const;
+        static void processBeingChangeLook(Net::MessageIn &msg);
 
-        void processBeingVisible(Net::MessageIn &msg);
+        static void processBeingChangeLook2(Net::MessageIn &msg);
 
-        void processBeingMove(Net::MessageIn &msg);
+        static void processBeingVisible(Net::MessageIn &msg);
+
+        static void processBeingMove(Net::MessageIn &msg);
 
         static void processNameResponse2(Net::MessageIn &msg);
 
-        void processPlayerUpdate1(Net::MessageIn &msg) const;
+        static void processPlayerUpdate1(Net::MessageIn &msg);
 
-        void processPlayerUpdate2(Net::MessageIn &msg) const;
+        static void processPlayerUpdate2(Net::MessageIn &msg);
 
-        void processPlayerMove(Net::MessageIn &msg) const;
+        static void processPlayerMove(Net::MessageIn &msg);
 
         static void processBeingMove3(Net::MessageIn &msg);
 
-        void processBeingSpawn(Net::MessageIn &msg);
+        static void processBeingSpawn(Net::MessageIn &msg);
 
-        void processSkillCasting(Net::MessageIn &msg) const;
+        static void processSkillCasting(Net::MessageIn &msg);
 
-        void processBeingStatusChange(Net::MessageIn &msg) const;
+        static void processBeingStatusChange(Net::MessageIn &msg);
 
-        void processBeingMove2(Net::MessageIn &msg) const;
+        static void processBeingMove2(Net::MessageIn &msg);
 
-        void processBeingChangeDirection(Net::MessageIn &msg) const;
+        static void processBeingChangeDirection(Net::MessageIn &msg);
 
-        void processBeingChangeLookContinue(Being *const dstBeing,
-                                            const uint8_t type,
-                                            const int id,
-                                            const int id2) const;
+        static void processBeingChangeLookContinue(Being *const dstBeing,
+                                                   const uint8_t type,
+                                                   const int id,
+                                                   const int id2);
 
-        void processPlaterStatusChange(Net::MessageIn &msg) const;
+        static void processPlaterStatusChange(Net::MessageIn &msg);
 
-        void processBeingResurrect(Net::MessageIn &msg) const;
+        static void processBeingResurrect(Net::MessageIn &msg);
 
-        void processPlayerGuilPartyInfo(Net::MessageIn &msg) const;
+        static void processPlayerGuilPartyInfo(Net::MessageIn &msg);
 
         static void setServerGender(Being *const being,
                                     const uint8_t gender);
@@ -93,7 +93,7 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
         static void applyPlayerAction(Being *const being,
                                       const uint8_t type);
 
-        void processBeingSelfEffect(Net::MessageIn &msg) const;
+        static void processBeingSelfEffect(Net::MessageIn &msg);
 };
 
 }  // namespace TmwAthena

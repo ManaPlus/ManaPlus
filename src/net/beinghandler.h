@@ -43,8 +43,6 @@ class BeingHandler notfinal
         virtual void undress(Being *const being) const = 0;
 
         virtual void requestRanks(const Rank::Rank rank) const = 0;
-
-        virtual void viewPlayerEquipment(const Being *const being) = 0;
 };
 
 }  // namespace Net

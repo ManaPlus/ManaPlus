@@ -36,42 +36,42 @@ class BeingHandler notfinal : public Net::BeingHandler
     protected:
         explicit BeingHandler(const bool enableSync);
 
-        Being *createBeing(const int id,
-                           const int16_t job) const A_WARN_UNUSED;
+        static Being *createBeing(const int id,
+                                  const int16_t job) A_WARN_UNUSED;
 
-        virtual void setSprite(Being *const being, const unsigned int slot,
-                               const int id,
-                               const std::string &color = "",
-                               const unsigned char colorId = 1,
-                               const bool isWeapon = false,
-                               const bool isTempSprite = false) const;
+        static void setSprite(Being *const being, const unsigned int slot,
+                              const int id,
+                              const std::string &color = "",
+                              const unsigned char colorId = 1,
+                              const bool isWeapon = false,
+                              const bool isTempSprite = false);
 
-        virtual void processBeingRemove(Net::MessageIn &msg) const;
+        static void processBeingRemove(Net::MessageIn &msg);
 
-        virtual void processSkillDamage(Net::MessageIn &msg) const;
+        static void processSkillDamage(Net::MessageIn &msg);
 
-        virtual void processBeingAction(Net::MessageIn &msg) const;
+        static void processBeingAction(Net::MessageIn &msg);
 
-        virtual void processBeingEmotion(Net::MessageIn &msg) const;
+        static void processBeingEmotion(Net::MessageIn &msg);
 
-        virtual void processNameResponse(Net::MessageIn &msg) const;
+        static void processNameResponse(Net::MessageIn &msg);
 
-        virtual void processIpResponse(Net::MessageIn &msg) const;
+        static void processIpResponse(Net::MessageIn &msg);
 
-        virtual void processPlayerStop(Net::MessageIn &msg) const;
+        static void processPlayerStop(Net::MessageIn &msg);
 
-        virtual void processPlayerMoveToAttack(Net::MessageIn &msg) const;
+        static void processPlayerMoveToAttack(Net::MessageIn &msg);
 
-        virtual void processSkillNoDamage(Net::MessageIn &msg) const;
+        static void processSkillNoDamage(Net::MessageIn &msg);
 
-        virtual void processPvpMapMode(Net::MessageIn &msg) const;
+        static void processPvpMapMode(Net::MessageIn &msg);
 
-        virtual void processPvpSet(Net::MessageIn &msg) const;
+        static void processPvpSet(Net::MessageIn &msg);
 
         // Should we honor server "Stop Walking" packets
-        bool mSync;
-        int mSpawnId;
-        bool mHideShield;
+        static int mSpawnId;
+        static bool mSync;
+        static bool mHideShield;
 };
 
 }  // namespace Ea

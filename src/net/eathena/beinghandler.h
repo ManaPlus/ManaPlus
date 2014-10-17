@@ -47,58 +47,58 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
         void requestRanks(const Rank::Rank rank) const override final;
 
     protected:
-        Being *createBeing2(const int id,
-                            const int16_t job,
-                            const BeingType::BeingType beingType) const;
+        static Being *createBeing2(const int id,
+                                   const int16_t job,
+                                   const BeingType::BeingType beingType);
 
-        void processBeingChangeLook(Net::MessageIn &msg) const;
+        static void processBeingChangeLook(Net::MessageIn &msg);
 
-        void processBeingChangeLook2(Net::MessageIn &msg) const;
+        static void processBeingChangeLook2(Net::MessageIn &msg);
 
-        void processBeingVisible(Net::MessageIn &msg);
+        static void processBeingVisible(Net::MessageIn &msg);
 
-        void processBeingMove(Net::MessageIn &msg);
+        static void processBeingMove(Net::MessageIn &msg);
 
-        void processBeingSpawn(Net::MessageIn &msg);
+        static void processBeingSpawn(Net::MessageIn &msg);
 
         static void processNameResponse2(Net::MessageIn &msg);
 
-        void processPlayerUpdate1(Net::MessageIn &msg) const;
+        static void processPlayerUpdate1(Net::MessageIn &msg);
 
-        void processPlayerUpdate2(Net::MessageIn &msg) const;
+        static void processPlayerUpdate2(Net::MessageIn &msg);
 
-        void processPlayerMove(Net::MessageIn &msg) const;
+        static void processPlayerMove(Net::MessageIn &msg);
 
-        void processMapTypeProperty(Net::MessageIn &msg) const;
+        static void processMapTypeProperty(Net::MessageIn &msg);
 
-        void processMapType(Net::MessageIn &msg) const;
+        static void processMapType(Net::MessageIn &msg);
 
-        void processSkillCasting(Net::MessageIn &msg) const;
+        static void processSkillCasting(Net::MessageIn &msg);
 
-        void processBeingStatusChange(Net::MessageIn &msg) const;
+        static void processBeingStatusChange(Net::MessageIn &msg);
 
-        void processBeingMove2(Net::MessageIn &msg) const;
+        static void processBeingMove2(Net::MessageIn &msg);
 
-        void processBeingAction2(Net::MessageIn &msg) const;
+        static void processBeingAction2(Net::MessageIn &msg);
 
-        void processMonsterHp(Net::MessageIn &msg) const;
+        static void processMonsterHp(Net::MessageIn &msg);
 
-        void processSkillAutoCast(Net::MessageIn &msg) const;
+        static void processSkillAutoCast(Net::MessageIn &msg);
 
-        void processRanksList(Net::MessageIn &msg) const;
+        static void processRanksList(Net::MessageIn &msg);
 
-        void processBeingChangeDirection(Net::MessageIn &msg) const;
+        static void processBeingChangeDirection(Net::MessageIn &msg);
 
-        void processBeingChangeLookContinue(Being *const dstBeing,
-                                            const uint8_t type,
-                                            const int id,
-                                            const int id2) const;
+        static void processBeingChangeLookContinue(Being *const dstBeing,
+                                                   const uint8_t type,
+                                                   const int id,
+                                                   const int id2);
 
-        void processBeingSpecialEffect(Net::MessageIn &msg) const;
+        static void processBeingSpecialEffect(Net::MessageIn &msg);
 
-        void processBeingSpecialEffectNum(Net::MessageIn &msg) const;
+        static void processBeingSpecialEffectNum(Net::MessageIn &msg);
 
-        void processBeingSoundEffect(Net::MessageIn &msg) const;
+        static void processBeingSoundEffect(Net::MessageIn &msg);
 
         static void setServerGender(Being *const being,
                                     const uint8_t gender);
@@ -106,29 +106,29 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
         static void applyPlayerAction(Being *const being,
                                       const uint8_t type);
 
-        void viewPlayerEquipment(const Being *const being) override final;
+        void viewPlayerEquipment(const Being *const being);
 
-        void processSkillGroundNoDamage(Net::MessageIn &msg) const;
+        static void processSkillGroundNoDamage(Net::MessageIn &msg);
 
-        void processSkillEntry(Net::MessageIn &msg) const;
+        static void processSkillEntry(Net::MessageIn &msg);
 
-        void processPlaterStatusChange(Net::MessageIn &msg) const;
+        static void processPlaterStatusChange(Net::MessageIn &msg);
 
-        void processPlaterStatusChangeNoTick(Net::MessageIn &msg) const;
+        static void processPlaterStatusChangeNoTick(Net::MessageIn &msg);
 
-        void processBeingResurrect(Net::MessageIn &msg) const;
+        static void processBeingResurrect(Net::MessageIn &msg);
 
-        void processPlayerGuilPartyInfo(Net::MessageIn &msg) const;
+        static void processPlayerGuilPartyInfo(Net::MessageIn &msg);
 
-        void processBeingRemoveSkil(Net::MessageIn &msg) const;
+        static void processBeingRemoveSkil(Net::MessageIn &msg);
 
-        void processBeingFakeName(Net::MessageIn &msg) const;
+        static void processBeingFakeName(Net::MessageIn &msg);
 
-        void processBeingStatUpdate1(Net::MessageIn &msg) const;
+        static void processBeingStatUpdate1(Net::MessageIn &msg);
 
-        void processPlaterStatusChange2(Net::MessageIn &msg) const;
+        static void processPlaterStatusChange2(Net::MessageIn &msg);
 
-        void processBeingSelfEffect(Net::MessageIn &msg) const;
+        static void processBeingSelfEffect(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

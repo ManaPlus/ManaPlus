@@ -44,14 +44,18 @@
 
 namespace Ea
 {
-BeingHandler::BeingHandler(const bool enableSync) :
-    mSync(enableSync),
-    mSpawnId(0),
-    mHideShield(config.getBoolValue("hideShield"))
+int BeingHandler::mSpawnId = 0;
+bool BeingHandler::mSync = false;
+bool BeingHandler::mHideShield = false;
+
+BeingHandler::BeingHandler(const bool enableSync)
 {
+    mSync = enableSync;
+    mSpawnId = 0;
+    mHideShield = config.getBoolValue("hideShield");
 }
 
-Being *BeingHandler::createBeing(const int id, const int16_t job) const
+Being *BeingHandler::createBeing(const int id, const int16_t job)
 {
     if (!actorManager)
         return nullptr;
@@ -74,14 +78,14 @@ void BeingHandler::setSprite(Being *const being, const unsigned int slot,
                              const int id, const std::string &color,
                              const unsigned char colorId,
                              const bool isWeapon,
-                             const bool isTempSprite) const
+                             const bool isTempSprite)
 {
     if (!being)
         return;
     being->updateSprite(slot, id, color, colorId, isWeapon, isTempSprite);
 }
 
-void BeingHandler::processBeingRemove(Net::MessageIn &msg) const
+void BeingHandler::processBeingRemove(Net::MessageIn &msg)
 {
     BLOCK_START("BeingHandler::processBeingRemove")
     if (!actorManager || !localPlayer)
@@ -132,7 +136,7 @@ void BeingHandler::processBeingRemove(Net::MessageIn &msg) const
     BLOCK_END("BeingHandler::processBeingRemove")
 }
 
-void BeingHandler::processSkillDamage(Net::MessageIn &msg) const
+void BeingHandler::processSkillDamage(Net::MessageIn &msg)
 {
     BLOCK_START("BeingHandler::processSkillDamage")
     if (!actorManager)
@@ -160,7 +164,7 @@ void BeingHandler::processSkillDamage(Net::MessageIn &msg) const
     BLOCK_END("BeingHandler::processSkillDamage")
 }
 
-void BeingHandler::processBeingAction(Net::MessageIn &msg) const
+void BeingHandler::processBeingAction(Net::MessageIn &msg)
 {
     BLOCK_START("BeingHandler::processBeingAction")
     if (!actorManager)
@@ -251,7 +255,7 @@ void BeingHandler::processBeingAction(Net::MessageIn &msg) const
     BLOCK_END("BeingHandler::processBeingAction")
 }
 
-void BeingHandler::processBeingEmotion(Net::MessageIn &msg) const
+void BeingHandler::processBeingEmotion(Net::MessageIn &msg)
 {
     BLOCK_START("BeingHandler::processBeingEmotion")
     if (!localPlayer || !actorManager)
@@ -281,7 +285,7 @@ void BeingHandler::processBeingEmotion(Net::MessageIn &msg) const
     BLOCK_END("BeingHandler::processBeingEmotion")
 }
 
-void BeingHandler::processNameResponse(Net::MessageIn &msg) const
+void BeingHandler::processNameResponse(Net::MessageIn &msg)
 {
     BLOCK_START("BeingHandler::processNameResponse")
     if (!localPlayer || !actorManager)
@@ -342,7 +346,7 @@ void BeingHandler::processNameResponse(Net::MessageIn &msg) const
     BLOCK_END("BeingHandler::processNameResponse")
 }
 
-void BeingHandler::processIpResponse(Net::MessageIn &msg) const
+void BeingHandler::processIpResponse(Net::MessageIn &msg)
 {
     BLOCK_START("BeingHandler::processIpResponse")
     if (!actorManager)
@@ -357,7 +361,7 @@ void BeingHandler::processIpResponse(Net::MessageIn &msg) const
     BLOCK_END("BeingHandler::processIpResponse")
 }
 
-void BeingHandler::processPlayerStop(Net::MessageIn &msg) const
+void BeingHandler::processPlayerStop(Net::MessageIn &msg)
 {
     BLOCK_START("BeingHandler::processPlayerStop")
     if (!actorManager || !localPlayer)
@@ -387,7 +391,7 @@ void BeingHandler::processPlayerStop(Net::MessageIn &msg) const
     BLOCK_END("BeingHandler::processPlayerStop")
 }
 
-void BeingHandler::processPlayerMoveToAttack(Net::MessageIn &msg) const
+void BeingHandler::processPlayerMoveToAttack(Net::MessageIn &msg)
 {
     BLOCK_START("BeingHandler::processPlayerStop")
     msg.readInt32("target id");
@@ -402,7 +406,7 @@ void BeingHandler::processPlayerMoveToAttack(Net::MessageIn &msg) const
     BLOCK_END("BeingHandler::processPlayerStop")
 }
 
-void BeingHandler::processSkillNoDamage(Net::MessageIn &msg) const
+void BeingHandler::processSkillNoDamage(Net::MessageIn &msg)
 {
     msg.readInt16("skill id");
     msg.readInt16("heal");
@@ -411,7 +415,7 @@ void BeingHandler::processSkillNoDamage(Net::MessageIn &msg) const
     msg.readUInt8("fail");
 }
 
-void BeingHandler::processPvpMapMode(Net::MessageIn &msg) const
+void BeingHandler::processPvpMapMode(Net::MessageIn &msg)
 {
     BLOCK_START("BeingHandler::processPvpMapMode")
     const Game *const game = Game::instance();
@@ -427,7 +431,7 @@ void BeingHandler::processPvpMapMode(Net::MessageIn &msg) const
     BLOCK_END("BeingHandler::processPvpMapMode")
 }
 
-void BeingHandler::processPvpSet(Net::MessageIn &msg) const
+void BeingHandler::processPvpSet(Net::MessageIn &msg)
 {
     BLOCK_START("BeingHandler::processPvpSet")
     const int id = msg.readInt32("being id");

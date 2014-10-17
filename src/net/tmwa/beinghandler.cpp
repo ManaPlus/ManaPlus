@@ -256,7 +256,7 @@ void BeingHandler::requestRanks(const Rank::Rank rank A_UNUSED) const
 {
 }
 
-void BeingHandler::processBeingChangeLook(Net::MessageIn &msg) const
+void BeingHandler::processBeingChangeLook(Net::MessageIn &msg)
 {
     BLOCK_START("BeingHandler::processBeingChangeLook")
     if (!actorManager)
@@ -281,7 +281,7 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg) const
     BLOCK_END("BeingHandler::processBeingChangeLook")
 }
 
-void BeingHandler::processBeingChangeLook2(Net::MessageIn &msg) const
+void BeingHandler::processBeingChangeLook2(Net::MessageIn &msg)
 {
     BLOCK_START("BeingHandler::processBeingChangeLook")
     if (!actorManager)
@@ -319,7 +319,7 @@ void BeingHandler::processBeingChangeLook2(Net::MessageIn &msg) const
 void BeingHandler::processBeingChangeLookContinue(Being *const dstBeing,
                                                   const uint8_t type,
                                                   const int id,
-                                                  const int id2) const
+                                                  const int id2)
 {
     if (dstBeing->getType() == ActorType::Player)
         dstBeing->setOtherTime();
@@ -467,7 +467,7 @@ void BeingHandler::processNameResponse2(Net::MessageIn &msg)
     BLOCK_END("BeingHandler::processNameResponse2")
 }
 
-void BeingHandler::processPlayerUpdate1(Net::MessageIn &msg) const
+void BeingHandler::processPlayerUpdate1(Net::MessageIn &msg)
 {
     BLOCK_START("BeingHandler::processPlayerMoveUpdate")
     if (!actorManager || !localPlayer)
@@ -509,7 +509,7 @@ void BeingHandler::processPlayerUpdate1(Net::MessageIn &msg) const
     {
         actorManager->undelete(dstBeing);
         if (serverVersion < 1)
-            requestNameById(id);
+            beingHandler->requestNameById(id);
     }
 
     uint8_t dir = dstBeing->getDirectionDelayed();
@@ -619,7 +619,7 @@ void BeingHandler::processPlayerUpdate1(Net::MessageIn &msg) const
     BLOCK_END("BeingHandler::processPlayerMoveUpdate")
 }
 
-void BeingHandler::processPlayerUpdate2(Net::MessageIn &msg) const
+void BeingHandler::processPlayerUpdate2(Net::MessageIn &msg)
 {
     BLOCK_START("BeingHandler::processPlayerMoveUpdate")
     if (!actorManager || !localPlayer)
@@ -661,7 +661,7 @@ void BeingHandler::processPlayerUpdate2(Net::MessageIn &msg) const
     {
         actorManager->undelete(dstBeing);
         if (serverVersion < 1)
-            requestNameById(id);
+            beingHandler->requestNameById(id);
     }
 
     uint8_t dir = dstBeing->getDirectionDelayed();
@@ -767,7 +767,7 @@ void BeingHandler::processPlayerUpdate2(Net::MessageIn &msg) const
     BLOCK_END("BeingHandler::processPlayerMoveUpdate")
 }
 
-void BeingHandler::processPlayerMove(Net::MessageIn &msg) const
+void BeingHandler::processPlayerMove(Net::MessageIn &msg)
 {
     BLOCK_START("BeingHandler::processPlayerMoveUpdate")
     if (!actorManager || !localPlayer)
@@ -809,7 +809,7 @@ void BeingHandler::processPlayerMove(Net::MessageIn &msg) const
     {
         actorManager->undelete(dstBeing);
         if (serverVersion < 1)
-            requestNameById(id);
+            beingHandler->requestNameById(id);
     }
 
     const uint8_t dir = dstBeing->getDirectionDelayed();
@@ -1063,7 +1063,7 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
         {
             actorManager->undelete(dstBeing);
             if (serverVersion < 1)
-                requestNameById(id);
+                beingHandler->requestNameById(id);
         }
     }
 
@@ -1273,7 +1273,7 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
         {
             actorManager->undelete(dstBeing);
             if (serverVersion < 1)
-                requestNameById(id);
+                beingHandler->requestNameById(id);
         }
     }
 
@@ -1410,7 +1410,7 @@ void BeingHandler::processBeingSpawn(Net::MessageIn &msg)
     BLOCK_END("BeingHandler::processBeingSpawn")
 }
 
-void BeingHandler::processSkillCasting(Net::MessageIn &msg) const
+void BeingHandler::processSkillCasting(Net::MessageIn &msg)
 {
     msg.readInt32("src id");
     msg.readInt32("dst id");
@@ -1421,7 +1421,7 @@ void BeingHandler::processSkillCasting(Net::MessageIn &msg) const
     msg.readInt32("cast time");
 }
 
-void BeingHandler::processBeingStatusChange(Net::MessageIn &msg) const
+void BeingHandler::processBeingStatusChange(Net::MessageIn &msg)
 {
     BLOCK_START("BeingHandler::processBeingStatusChange")
     if (!actorManager)
@@ -1441,7 +1441,7 @@ void BeingHandler::processBeingStatusChange(Net::MessageIn &msg) const
     BLOCK_END("BeingHandler::processBeingStatusChange")
 }
 
-void BeingHandler::processBeingMove2(Net::MessageIn &msg) const
+void BeingHandler::processBeingMove2(Net::MessageIn &msg)
 {
     BLOCK_START("BeingHandler::processBeingMove2")
     if (!actorManager)
@@ -1481,7 +1481,7 @@ void BeingHandler::processBeingMove2(Net::MessageIn &msg) const
     BLOCK_END("BeingHandler::processBeingMove2")
 }
 
-void BeingHandler::processBeingChangeDirection(Net::MessageIn &msg) const
+void BeingHandler::processBeingChangeDirection(Net::MessageIn &msg)
 {
     BLOCK_START("BeingHandler::processBeingChangeDirection")
     if (!actorManager)
@@ -1562,7 +1562,7 @@ void BeingHandler::viewPlayerEquipment(const Being *const being A_UNUSED)
 {
 }
 
-void BeingHandler::processPlaterStatusChange(Net::MessageIn &msg) const
+void BeingHandler::processPlaterStatusChange(Net::MessageIn &msg)
 {
     BLOCK_START("BeingHandler::processPlayerStop")
     if (!actorManager)
@@ -1590,7 +1590,7 @@ void BeingHandler::processPlaterStatusChange(Net::MessageIn &msg) const
     BLOCK_END("BeingHandler::processPlayerStop")
 }
 
-void BeingHandler::processBeingResurrect(Net::MessageIn &msg) const
+void BeingHandler::processBeingResurrect(Net::MessageIn &msg)
 {
     BLOCK_START("BeingHandler::processBeingResurrect")
     if (!actorManager || !localPlayer)
@@ -1618,7 +1618,7 @@ void BeingHandler::processBeingResurrect(Net::MessageIn &msg) const
     BLOCK_END("BeingHandler::processBeingResurrect")
 }
 
-void BeingHandler::processPlayerGuilPartyInfo(Net::MessageIn &msg) const
+void BeingHandler::processPlayerGuilPartyInfo(Net::MessageIn &msg)
 {
     BLOCK_START("BeingHandler::processPlayerGuilPartyInfo")
     if (!actorManager)
@@ -1647,7 +1647,7 @@ void BeingHandler::processPlayerGuilPartyInfo(Net::MessageIn &msg) const
     BLOCK_END("BeingHandler::processPlayerGuilPartyInfo")
 }
 
-void BeingHandler::processBeingSelfEffect(Net::MessageIn &msg) const
+void BeingHandler::processBeingSelfEffect(Net::MessageIn &msg)
 {
     BLOCK_START("BeingHandler::processBeingSelfEffect")
     if (!effectManager || !actorManager)
