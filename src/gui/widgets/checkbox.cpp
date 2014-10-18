@@ -89,7 +89,7 @@ CheckBox::CheckBox(const Widget2 *const widget,
                    ActionListener *const listener,
                    const std::string &restrict eventId) :
     Widget(widget),
-    MouseListener(),
+    ToolTipListener(),
     KeyListener(),
     mSelected(selected),
     mCaption(),
@@ -233,9 +233,10 @@ void CheckBox::mouseEntered(MouseEvent& event A_UNUSED)
     mHasMouse = true;
 }
 
-void CheckBox::mouseExited(MouseEvent& event A_UNUSED)
+void CheckBox::mouseExited(MouseEvent& event)
 {
     mHasMouse = false;
+    ToolTipListener::mouseExited(event);
 }
 
 void CheckBox::keyPressed(KeyEvent& event)

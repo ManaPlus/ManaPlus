@@ -40,9 +40,9 @@ class ToolTipListener notfinal : public MouseListener
         std::string getToolTip() const
         { return mToolTip; }
 
-        void mouseMoved(MouseEvent &event) override final;
+        void mouseMoved(MouseEvent &event) override;
 
-        void mouseExited(MouseEvent &event) override final;
+        void mouseExited(MouseEvent &event) override;
 
     protected:
         std::string mToolTip;

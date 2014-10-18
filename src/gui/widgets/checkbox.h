@@ -67,7 +67,7 @@
 #define GUI_WIDGETS_CHECKBOX_H
 
 #include "listeners/keylistener.h"
-#include "listeners/mouselistener.h"
+#include "listeners/tooltiplistener.h"
 
 #include "gui/widgets/widget.h"
 
@@ -81,7 +81,7 @@ class Skin;
  * \ingroup GUI
  */
 class CheckBox final : public Widget,
-                       public MouseListener,
+                       public ToolTipListener,
                        public KeyListener
 {
     public:
