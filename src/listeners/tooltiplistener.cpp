@@ -53,7 +53,7 @@ void ToolTipListener::mouseMoved(MouseEvent &event)
     textPopup->show(x, y, mToolTip);
 }
 
-void ToolTipListener::mouseExited(MouseEvent &event)
+void ToolTipListener::mouseExited(MouseEvent &event A_UNUSED)
 {
     if (mToolTip.empty())
         return;
