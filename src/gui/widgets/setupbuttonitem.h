@@ -31,6 +31,7 @@ class SetupButtonItem final : public SetupItem
 {
     public:
         SetupButtonItem(const std::string &restrict text,
+                        const std::string &restrict description,
                         const std::string &restrict actionEventId,
                         SetupTabScroll *restrict const parent,
                         const std::string &restrict eventName,

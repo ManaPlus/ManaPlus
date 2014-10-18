@@ -360,9 +360,9 @@ void SetupItemTextField::createControls()
     if (mUseBase64)
         mValue = decodeBase64String(mValue);
     mHorizont = new HorizontContainer(this, 32, 2);
+    mHorizont->setToolTip(mDescription);
 
     mLabel = new Label(this, mText);
-    mLabel->setToolTip(mDescription);
     mTextField = new TextField(this, mValue, true, mParent, mEventName);
     // TRANSLATORS: setup item button
     mButton = new Button(this, _("Edit"), mEventName + "_EDIT", mParent);
@@ -493,9 +493,9 @@ void SetupItemIntTextField::createControls()
 {
     load();
     mHorizont = new HorizontContainer(this, 32, 2);
+    mHorizont->setToolTip(mDescription);
 
     mLabel = new Label(this, mText);
-    mLabel->setToolTip(mDescription);
     mTextField = new IntTextField(this, atoi(mValue.c_str()),
         mMin, mMax, true, 30);
     mTextField->setActionEventId(mEventName);
@@ -677,9 +677,9 @@ void SetupItemDropDown::createControls()
 {
     load();
     mHorizont = new HorizontContainer(this, 32, 2);
+    mHorizont->setToolTip(mDescription);
 
     mLabel = new Label(this, mText);
-    mLabel->setToolTip(mDescription);
     mDropDown = new DropDown(this, mModel);
     mDropDown->setActionEventId(mEventName);
     mDropDown->addActionListener(mParent);
@@ -777,9 +777,9 @@ void SetupItemSlider::createControls()
 {
     load();
     mHorizont = new HorizontContainer(this, 32, 2);
+    mHorizont->setToolTip(mDescription);
 
     mLabel = new Label(this, mText);
-    mLabel->setToolTip(mDescription);
     mSlider = new Slider(this, mMin, mMax, mStep);
     mSlider->setActionEventId(mEventName);
     mSlider->addActionListener(mParent);
@@ -905,11 +905,11 @@ void SetupItemSlider2::createControls()
 {
     load();
     mHorizont = new HorizontContainer(this, 32, 2);
+    mHorizont->setToolTip(mDescription);
 
     const int width = getMaxWidth();
 
     mLabel = new Label(this, mText);
-    mLabel->setToolTip(mDescription);
     mLabel2 = new Label(this, "");
     mLabel2->setWidth(width);
     mSlider = new Slider(this, mMin, mMax, mStep);
@@ -1074,9 +1074,9 @@ void SetupItemSliderList::createControls()
 {
     load();
     mHorizont = new HorizontContainer(this, 32, 2);
+    mHorizont->setToolTip(mDescription);
 
     mLabel = new Label(this, mText);
-    mLabel->setToolTip(mDescription);
     mSlider = new SliderList(this, mModel);
     mSlider->postInit(mParent, mEventName);
     mSlider->setSelectedString(mValue);

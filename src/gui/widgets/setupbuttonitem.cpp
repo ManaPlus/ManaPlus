@@ -29,11 +29,12 @@
 #include "debug.h"
 
 SetupButtonItem::SetupButtonItem(const std::string &restrict text,
+                                 const std::string &restrict description,
                                  const std::string &restrict actionEventId,
                                  SetupTabScroll *restrict const parent,
                                  const std::string &restrict eventName,
                                  ActionListener *const listener) :
-    SetupItem(text, "", "", parent, eventName, false),
+    SetupItem(text, description, "", parent, eventName, false),
     mHorizont(nullptr),
     mButton(nullptr)
 {
@@ -68,6 +69,7 @@ void SetupButtonItem::rereadValue()
 void SetupButtonItem::createControls()
 {
     mHorizont = new HorizontContainer(this, 32, 2);
+    mHorizont->setToolTip(mDescription);
 
     // TRANSLATORS: setup item button
     mHorizont->add(mWidget);

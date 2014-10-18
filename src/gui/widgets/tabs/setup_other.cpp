@@ -374,7 +374,7 @@ Setup_Other::Setup_Other(const Widget2 *const widget) :
         "logInput", this, "logInputEvent");
 
     // TRANSLATORS: settings option
-    new SetupButtonItem(_("Upload log file"), "upload",
+    new SetupButtonItem(_("Upload log file"), "", "upload",
         this, "uploadLog", &uploadListener);
 
     // TRANSLATORS: settings option
