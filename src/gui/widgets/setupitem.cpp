@@ -239,6 +239,7 @@ void SetupItemCheckBox::createControls()
 {
     load();
     mCheckBox = new CheckBox(this, mText, mValue != "0", mParent, mEventName);
+    mCheckBox->setToolTip(mDescription);
     mWidget = mCheckBox;
     mParent->getContainer()->add1(mWidget);
     mParent->addControl(this);
