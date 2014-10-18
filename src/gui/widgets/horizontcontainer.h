@@ -24,6 +24,7 @@
 
 #include "gui/widgets/container.h"
 
+#include "listeners/tooltiplistener.h"
 #include "listeners/widgetlistener.h"
 
 #include "localconsts.h"
@@ -34,7 +35,8 @@
  * This container places it's contents veritcally.
  */
 class HorizontContainer final : public Container,
-                                public WidgetListener
+                                public WidgetListener,
+                                public ToolTipListener
 {
     public:
         HorizontContainer(const Widget2 *const widget,
