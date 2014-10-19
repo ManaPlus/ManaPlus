@@ -163,7 +163,7 @@ void TradeHandler::cancel() const
     createOutPacket(CMSG_TRADE_CANCEL_REQUEST);
 }
 
-void TradeHandler::processTradeRequest(Net::MessageIn &msg) const
+void TradeHandler::processTradeRequest(Net::MessageIn &msg)
 {
     const std::string &partner = msg.readString(24, "name");
     msg.readInt32("char id");
@@ -171,7 +171,7 @@ void TradeHandler::processTradeRequest(Net::MessageIn &msg) const
     processTradeRequestContinue(partner);
 }
 
-void TradeHandler::processTradeResponse2(Net::MessageIn &msg) const
+void TradeHandler::processTradeResponse2(Net::MessageIn &msg)
 {
     const uint8_t type = msg.readUInt8("type");
     msg.readInt32("char id");
@@ -239,7 +239,7 @@ void TradeHandler::processTradeItemAddResponse(Net::MessageIn &msg)
     }
 }
 
-void TradeHandler::processTradeUndo(Net::MessageIn &msg A_UNUSED) const
+void TradeHandler::processTradeUndo(Net::MessageIn &msg A_UNUSED)
 {
     // +++ here need clear trade window from partner side?
 }

@@ -64,20 +64,20 @@ void TradeHandler::removeItem(const int slotNum A_UNUSED,
 {
 }
 
-void TradeHandler::processTradeResponse(Net::MessageIn &msg) const
+void TradeHandler::processTradeResponse(Net::MessageIn &msg)
 {
     if (confirmDlg || tradePartnerName.empty()
         || !player_relations.hasPermission(tradePartnerName,
         PlayerRelation::TRADE))
     {
-        respond(false);
+        tradeHandler->respond(false);
         return;
     }
     const uint8_t type = msg.readUInt8("type");
     processTradeResponseContinue(type);
 }
 
-void TradeHandler::processTradeResponseContinue(const uint8_t type) const
+void TradeHandler::processTradeResponseContinue(const uint8_t type)
 {
     switch (type)
     {
@@ -164,14 +164,13 @@ void TradeHandler::processTradeComplete(Net::MessageIn &msg A_UNUSED)
 }
 
 void TradeHandler::processTradeRequestContinue(const std::string &partner)
-                                               const
 {
     if (player_relations.hasPermission(partner,
         PlayerRelation::TRADE))
     {
         if (PlayerInfo::isTrading() || confirmDlg)
         {
-            respond(false);
+            tradeHandler->respond(false);
             return;
         }
 
@@ -194,13 +193,13 @@ void TradeHandler::processTradeRequestContinue(const std::string &partner)
             }
             else
             {
-                respond(true);
+                tradeHandler->respond(true);
             }
         }
     }
     else
     {
-        respond(false);
+        tradeHandler->respond(false);
         return;
     }
 }

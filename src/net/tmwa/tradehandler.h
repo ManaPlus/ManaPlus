@@ -55,7 +55,7 @@ class TradeHandler final : public MessageHandler, public Ea::TradeHandler
         void cancel() const override final;
 
     protected:
-        void processTradeRequest(Net::MessageIn &msg) const;
+        static void processTradeRequest(Net::MessageIn &msg);
 
         static void processTradeItemAdd(Net::MessageIn &msg);
 

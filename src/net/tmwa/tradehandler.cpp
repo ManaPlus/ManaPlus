@@ -156,7 +156,7 @@ void TradeHandler::cancel() const
     createOutPacket(CMSG_TRADE_CANCEL_REQUEST);
 }
 
-void TradeHandler::processTradeRequest(Net::MessageIn &msg) const
+void TradeHandler::processTradeRequest(Net::MessageIn &msg)
 {
     processTradeRequestContinue(msg.readString(24, "name"));
 }
