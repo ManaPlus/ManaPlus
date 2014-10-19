@@ -23,7 +23,7 @@
 #include "gui/gui.h"
 #include "gui/viewport.h"
 
-#include "gui/popups/textpopup.h"
+#include "gui/popups/textboxpopup.h"
 
 #include "debug.h"
 
@@ -50,13 +50,12 @@ void ToolTipListener::mouseMoved(MouseEvent &event)
     }
 
     event.consume();
-    textPopup->show(x, y, mToolTip);
+    textBoxPopup->show(x, y, mToolTip);
 }
 
 void ToolTipListener::mouseExited(MouseEvent &event A_UNUSED)
 {
     if (mToolTip.empty())
         return;
-
-    textPopup->hide();
+    textBoxPopup->hide();
 }
