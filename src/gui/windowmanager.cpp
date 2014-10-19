@@ -35,6 +35,7 @@
 #include "gui/popups/itempopup.h"
 #include "gui/popups/popupmenu.h"
 #include "gui/popups/spellpopup.h"
+#include "gui/popups/textboxpopup.h"
 #include "gui/popups/textpopup.h"
 
 #include "gui/windows/didyouknowwindow.h"
@@ -103,6 +104,8 @@ void WindowManager::createWindows()
     beingPopup->postInit();
     textPopup = new TextPopup;
     textPopup->postInit();
+    textBoxPopup = new TextBoxPopup;
+    textBoxPopup->postInit();
     itemPopup = new ItemPopup;
     itemPopup->postInit();
     spellPopup = new SpellPopup;
@@ -111,6 +114,7 @@ void WindowManager::createWindows()
 
 void WindowManager::deleteWindows()
 {
+    delete2(textBoxPopup);
     delete2(textPopup);
     delete2(beingPopup);
     delete2(itemPopup);

@@ -499,6 +499,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/popups/spellpopup.h \
 	      gui/popups/statuspopup.cpp \
 	      gui/popups/statuspopup.h \
+	      gui/popups/textboxpopup.cpp \
+	      gui/popups/textboxpopup.h \
 	      gui/windows/killstats.cpp \
 	      gui/windows/killstats.h \
 	      gui/windows/logindialog.cpp \
