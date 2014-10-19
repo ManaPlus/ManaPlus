@@ -69,7 +69,6 @@ void SetupButtonItem::rereadValue()
 void SetupButtonItem::createControls()
 {
     mHorizont = new HorizontContainer(this, 32, 2);
-    mHorizont->setToolTip(mDescription);
 
     // TRANSLATORS: setup item button
     mHorizont->add(mWidget);

@@ -92,9 +92,9 @@ void SetupActionDropDown::createControls()
 
     load();
     mHorizont = new HorizontContainer(this, 32, 2);
-    mHorizont->setToolTip(mDescription);
 
     mLabel = new Label(this, mText);
+    mLabel->setToolTip(mDescription);
     mDropDown = new DropDown(this, mModel);
     mDropDown->setActionEventId(mEventName);
     mDropDown->addActionListener(mParent);
