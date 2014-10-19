@@ -277,7 +277,7 @@ void PartyHandler::processPartySettings(Net::MessageIn &msg)
     processPartySettingsContinue(exp, item);
 }
 
-void PartyHandler::processPartyInfo(Net::MessageIn &msg) const
+void PartyHandler::processPartyInfo(Net::MessageIn &msg)
 {
     bool isOldParty = false;
     std::set<std::string> names;
@@ -384,7 +384,7 @@ void PartyHandler::processPartyInfo(Net::MessageIn &msg) const
     }
 }
 
-void PartyHandler::processPartyMessage(Net::MessageIn &msg) const
+void PartyHandler::processPartyMessage(Net::MessageIn &msg)
 {
     const int msgLength = msg.readInt16() - 8;
     if (msgLength <= 0)
@@ -412,7 +412,7 @@ void PartyHandler::processPartyMessage(Net::MessageIn &msg) const
     }
 }
 
-void PartyHandler::processPartyInviteResponse(Net::MessageIn &msg) const
+void PartyHandler::processPartyInviteResponse(Net::MessageIn &msg)
 {
     if (!partyTab)
         return;
@@ -470,7 +470,7 @@ void PartyHandler::allowInvite(const bool allow) const
     outMsg.writeInt8(static_cast<int8_t>(allow ? 1 : 0));
 }
 
-void PartyHandler::processPartyItemPickup(Net::MessageIn &msg) const
+void PartyHandler::processPartyItemPickup(Net::MessageIn &msg)
 {
     // +++ probably need add option to show pickup notifications
     // in party tab
@@ -487,7 +487,7 @@ void PartyHandler::processPartyItemPickup(Net::MessageIn &msg) const
     msg.readUInt8("item type");
 }
 
-void PartyHandler::processPartyLeader(Net::MessageIn &msg) const
+void PartyHandler::processPartyLeader(Net::MessageIn &msg)
 {
     PartyMember *const oldMember = Ea::taParty->getMember(
         msg.readInt32("old leder id"));

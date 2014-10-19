@@ -218,7 +218,7 @@ void PartyHandler::processPartySettings(Net::MessageIn &msg)
     processPartySettingsContinue(exp, item);
 }
 
-void PartyHandler::processPartyInfo(Net::MessageIn &msg) const
+void PartyHandler::processPartyInfo(Net::MessageIn &msg)
 {
     bool isOldParty = false;
     std::set<std::string> names;
@@ -322,7 +322,7 @@ void PartyHandler::processPartyInfo(Net::MessageIn &msg) const
     }
 }
 
-void PartyHandler::processPartyMessage(Net::MessageIn &msg) const
+void PartyHandler::processPartyMessage(Net::MessageIn &msg)
 {
     const int msgLength = msg.readInt16() - 8;
     if (msgLength <= 0)
@@ -346,7 +346,7 @@ void PartyHandler::processPartyMessage(Net::MessageIn &msg) const
     }
 }
 
-void PartyHandler::processPartyInviteResponse(Net::MessageIn &msg) const
+void PartyHandler::processPartyInviteResponse(Net::MessageIn &msg)
 {
     if (!partyTab)
         return;

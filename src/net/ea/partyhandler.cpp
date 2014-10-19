@@ -45,11 +45,14 @@ namespace Ea
 {
 
 Party *taParty = nullptr;
+Net::PartyShare::Type PartyHandler::mShareExp = Net::PartyShare::UNKNOWN;
+Net::PartyShare::Type PartyHandler::mShareItems = Net::PartyShare::UNKNOWN;
 
 PartyHandler::PartyHandler() :
-    mShareExp(Net::PartyShare::UNKNOWN),
-    mShareItems(Net::PartyShare::UNKNOWN)
+    Net::PartyHandler()
 {
+    mShareExp = Net::PartyShare::UNKNOWN;
+    mShareItems = Net::PartyShare::UNKNOWN;
     taParty = Party::getParty(1);
 }
 
@@ -72,7 +75,7 @@ void PartyHandler::clear() const
     taParty = nullptr;
 }
 
-void PartyHandler::processPartyCreate(Net::MessageIn &msg) const
+void PartyHandler::processPartyCreate(Net::MessageIn &msg)
 {
     if (msg.readUInt8())
         NotifyManager::notify(NotifyTypes::PARTY_CREATE_FAILED);
@@ -80,7 +83,7 @@ void PartyHandler::processPartyCreate(Net::MessageIn &msg) const
         NotifyManager::notify(NotifyTypes::PARTY_CREATED);
 }
 
-void PartyHandler::processPartyInvited(Net::MessageIn &msg) const
+void PartyHandler::processPartyInvited(Net::MessageIn &msg)
 {
     const int id = msg.readInt32();
     const std::string partyName = msg.readString(24);
@@ -154,7 +157,7 @@ void PartyHandler::processPartySettingsContinue(const int16_t exp,
     }
 }
 
-void PartyHandler::processPartyMove(Net::MessageIn &msg) const
+void PartyHandler::processPartyMove(Net::MessageIn &msg)
 {
     const int id = msg.readInt32();  // id
     PartyMember *m = nullptr;
@@ -185,7 +188,7 @@ void PartyHandler::processPartyMove(Net::MessageIn &msg) const
     }
 }
 
-void PartyHandler::processPartyLeave(Net::MessageIn &msg) const
+void PartyHandler::processPartyLeave(Net::MessageIn &msg)
 {
     const int id = msg.readInt32("account id");
     const std::string nick = msg.readString(24, "nick");
@@ -269,7 +272,7 @@ void PartyHandler::processPartyLeave(Net::MessageIn &msg) const
     }
 }
 
-void PartyHandler::processPartyUpdateHp(Net::MessageIn &msg) const
+void PartyHandler::processPartyUpdateHp(Net::MessageIn &msg)
 {
     const int id = msg.readInt32();
     const int hp = msg.readInt16();
@@ -292,7 +295,7 @@ void PartyHandler::processPartyUpdateHp(Net::MessageIn &msg) const
     }
 }
 
-void PartyHandler::processPartyUpdateCoords(Net::MessageIn &msg) const
+void PartyHandler::processPartyUpdateCoords(Net::MessageIn &msg)
 {
     const int id = msg.readInt32();  // id
     PartyMember *m = nullptr;
@@ -315,7 +318,7 @@ ChatTab *PartyHandler::getTab() const
     return partyTab;
 }
 
-void PartyHandler::createTab() const
+void PartyHandler::createTab()
 {
     partyTab = new PartyTab(chatWindow);
     if (config.getBoolValue("showChatHistory"))

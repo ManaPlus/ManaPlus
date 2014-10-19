@@ -63,24 +63,24 @@ class PartyHandler final : public MessageHandler, public Ea::PartyHandler
 
         void changeLeader(const std::string &name) const override final;
 
-        void processPartySettings(Net::MessageIn &msg);
-
         void allowInvite(const bool allow) const override final;
 
     protected:
-        void processPartyInvitationStats(Net::MessageIn &msg);
+        static void processPartySettings(Net::MessageIn &msg);
 
-        void processPartyMemberInfo(Net::MessageIn &msg);
+        static void processPartyInvitationStats(Net::MessageIn &msg);
 
-        void processPartyInfo(Net::MessageIn &msg) const;
+        static void processPartyMemberInfo(Net::MessageIn &msg);
 
-        void processPartyMessage(Net::MessageIn &msg) const;
+        static void processPartyInfo(Net::MessageIn &msg);
 
-        void processPartyInviteResponse(Net::MessageIn &msg) const;
+        static void processPartyMessage(Net::MessageIn &msg);
 
-        void processPartyItemPickup(Net::MessageIn &msg) const;
+        static void processPartyInviteResponse(Net::MessageIn &msg);
 
-        void processPartyLeader(Net::MessageIn &msg) const;
+        static void processPartyItemPickup(Net::MessageIn &msg);
+
+        static void processPartyLeader(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

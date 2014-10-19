@@ -66,13 +66,13 @@ class PartyHandler final : public MessageHandler, public Ea::PartyHandler
         void allowInvite(const bool allow) const override final;
 
     protected:
-        void processPartySettings(Net::MessageIn &msg);
+        static void processPartySettings(Net::MessageIn &msg);
 
-        void processPartyInfo(Net::MessageIn &msg) const;
+        static void processPartyInfo(Net::MessageIn &msg);
 
-        void processPartyMessage(Net::MessageIn &msg) const;
+        static void processPartyMessage(Net::MessageIn &msg);
 
-        void processPartyInviteResponse(Net::MessageIn &msg) const;
+        static void processPartyInviteResponse(Net::MessageIn &msg);
 };
 
 }  // namespace TmwAthena

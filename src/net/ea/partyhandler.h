@@ -59,26 +59,26 @@ class PartyHandler notfinal : public Net::PartyHandler
 
         ChatTab *getTab() const override final;
 
-        virtual void processPartyCreate(Net::MessageIn &msg) const;
-
-        virtual void processPartyInvited(Net::MessageIn &msg) const;
-
-        virtual void processPartyMove(Net::MessageIn &msg) const;
-
-        virtual void processPartyLeave(Net::MessageIn &msg) const;
-
-        virtual void processPartyUpdateHp(Net::MessageIn &msg) const;
-
-        virtual void processPartyUpdateCoords(Net::MessageIn &msg) const;
-
-        void processPartySettingsContinue(const int16_t exp,
-                                          const int16_t item);
-
-        void createTab() const;
-
     protected:
-        Net::PartyShare::Type mShareExp;
-        Net::PartyShare::Type mShareItems;
+        static void createTab();
+
+        static void processPartyCreate(Net::MessageIn &msg);
+
+        static void processPartyInvited(Net::MessageIn &msg);
+
+        static void processPartyMove(Net::MessageIn &msg);
+
+        static void processPartyLeave(Net::MessageIn &msg);
+
+        static void processPartyUpdateHp(Net::MessageIn &msg);
+
+        static void processPartyUpdateCoords(Net::MessageIn &msg);
+
+        static void processPartySettingsContinue(const int16_t exp,
+                                                 const int16_t item);
+
+        static Net::PartyShare::Type mShareExp;
+        static Net::PartyShare::Type mShareItems;
 };
 
 extern Party *taParty;
