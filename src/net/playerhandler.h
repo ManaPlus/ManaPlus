@@ -95,6 +95,11 @@ class PlayerHandler notfinal
         virtual void revive() const = 0;
 
         virtual void setViewEquipment(const bool allow) const = 0;
+
+        virtual void setStat(const int type,
+                             const int base,
+                             const int mod,
+                             const bool notify) const = 0;
 };
 
 }  // namespace Net

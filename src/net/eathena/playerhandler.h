@@ -54,9 +54,6 @@ class PlayerHandler final : public MessageHandler, public Ea::PlayerHandler
                           const override final;
         void updateStatus(const uint8_t status) const override final;
 
-        static void processPlayerShortcuts(Net::MessageIn &msg);
-        static void processPlayerShowEquip(Net::MessageIn &msg);
-
         void requestOnlineList() const override final;
         void respawn() const override final;
         void setShortcut(const int idx,
@@ -78,15 +75,19 @@ class PlayerHandler final : public MessageHandler, public Ea::PlayerHandler
                      const int mod,
                      const bool notify) const override final;
 
-        void processPlayerStatUpdate5(Net::MessageIn &msg);
+        static void processPlayerShortcuts(Net::MessageIn &msg);
 
-        void processPlayerGetExp(Net::MessageIn &msg);
+        static void processPlayerShowEquip(Net::MessageIn &msg);
 
-        void processPvpInfo(Net::MessageIn &msg);
+        static void processPlayerStatUpdate5(Net::MessageIn &msg);
 
-        void processPlayerHeal(Net::MessageIn &msg);
+        static void processPlayerGetExp(Net::MessageIn &msg);
 
-        void processPlayerSkillMessage(Net::MessageIn &msg);
+        static void processPvpInfo(Net::MessageIn &msg);
+
+        static void processPlayerHeal(Net::MessageIn &msg);
+
+        static void processPlayerSkillMessage(Net::MessageIn &msg);
 
         static void processWalkResponse(Net::MessageIn &msg);
 };

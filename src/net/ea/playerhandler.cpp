@@ -173,7 +173,7 @@ void PlayerHandler::processPlayerWarp(Net::MessageIn &msg)
     BLOCK_END("PlayerHandler::processPlayerWarp")
 }
 
-void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg) const
+void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
 {
     BLOCK_START("PlayerHandler::processPlayerStatUpdate1")
     const int type = msg.readInt16("type");
@@ -184,7 +184,7 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg) const
         return;
     }
 
-    setStat(type, value, -1, true);
+    playerHandler->setStat(type, value, -1, true);
 
     if (PlayerInfo::getAttribute(Attributes::HP) == 0 && !deathNotice)
     {
@@ -205,27 +205,27 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg) const
     BLOCK_END("PlayerHandler::processPlayerStatUpdate1")
 }
 
-void PlayerHandler::processPlayerStatUpdate2(Net::MessageIn &msg) const
+void PlayerHandler::processPlayerStatUpdate2(Net::MessageIn &msg)
 {
     BLOCK_START("PlayerHandler::processPlayerStatUpdate2")
     const int type = msg.readInt16("type");
     const int value = msg.readInt32("value");
-    setStat(type, value, -1, true);
+    playerHandler->setStat(type, value, -1, true);
     BLOCK_END("PlayerHandler::processPlayerStatUpdate2")
 }
 
-void PlayerHandler::processPlayerStatUpdate3(Net::MessageIn &msg) const
+void PlayerHandler::processPlayerStatUpdate3(Net::MessageIn &msg)
 {
     BLOCK_START("PlayerHandler::processPlayerStatUpdate3")
     const int type = msg.readInt32("type");
     const int base = msg.readInt32("base");
     const int bonus = msg.readInt32("bonus");
 
-    setStat(type, base, bonus, false);
+    playerHandler->setStat(type, base, bonus, false);
     BLOCK_END("PlayerHandler::processPlayerStatUpdate3")
 }
 
-void PlayerHandler::processPlayerStatUpdate4(Net::MessageIn &msg) const
+void PlayerHandler::processPlayerStatUpdate4(Net::MessageIn &msg)
 {
     BLOCK_START("PlayerHandler::processPlayerStatUpdate4")
     const int type = msg.readInt16();
@@ -241,17 +241,17 @@ void PlayerHandler::processPlayerStatUpdate4(Net::MessageIn &msg) const
         NotifyManager::notify(NotifyTypes::SKILL_RAISE_ERROR);
     }
 
-    setStat(type, value, -1, true);
+    playerHandler->setStat(type, value, -1, true);
     BLOCK_END("PlayerHandler::processPlayerStatUpdate4")
 }
 
-void PlayerHandler::processPlayerStatUpdate6(Net::MessageIn &msg) const
+void PlayerHandler::processPlayerStatUpdate6(Net::MessageIn &msg)
 {
     BLOCK_START("PlayerHandler::processPlayerStatUpdate6")
     const int type = msg.readInt16("type");
     const int value = msg.readUInt8("value");
     if (statusWindow)
-        setStat(type, value, -1, true);
+        playerHandler->setStat(type, value, -1, true);
     BLOCK_END("PlayerHandler::processPlayerStatUpdate6")
 }
 
