@@ -71,6 +71,7 @@ class SkillHandler notfinal : public Net::SkillHandler
 
         A_DELETE_COPY(SkillHandler)
 
+    protected:
         static void processPlayerSkillUp(Net::MessageIn &msg);
 };
 

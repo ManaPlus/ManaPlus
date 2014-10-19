@@ -54,19 +54,19 @@ class SkillHandler final : public MessageHandler, public Ea::SkillHandler
     protected:
         static void processSkillFailed(Net::MessageIn &msg);
 
-        void processPlayerSkills(Net::MessageIn &msg);
+        static void processPlayerSkills(Net::MessageIn &msg);
 
-        void processSkillCoolDown(Net::MessageIn &msg);
+        static void processSkillCoolDown(Net::MessageIn &msg);
 
-        void processSkillCoolDownList(Net::MessageIn &msg);
+        static void processSkillCoolDownList(Net::MessageIn &msg);
 
-        void processSkillSnap(Net::MessageIn &msg);
+        static void processSkillSnap(Net::MessageIn &msg);
 
-        void processSkillAdd(Net::MessageIn &msg);
+        static void processSkillAdd(Net::MessageIn &msg);
 
-        void processSkillUpdate(Net::MessageIn &msg);
+        static void processSkillUpdate(Net::MessageIn &msg);
 
-        void processSkillDelete(Net::MessageIn &msg);
+        static void processSkillDelete(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

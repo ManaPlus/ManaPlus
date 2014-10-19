@@ -54,7 +54,7 @@ class SkillHandler final : public MessageHandler, public Ea::SkillHandler
     protected:
         static void processSkillFailed(Net::MessageIn &msg);
 
-        void processPlayerSkills(Net::MessageIn &msg);
+        static void processPlayerSkills(Net::MessageIn &msg);
 };
 
 }  // namespace TmwAthena
