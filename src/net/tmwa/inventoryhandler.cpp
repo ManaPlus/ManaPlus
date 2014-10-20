@@ -319,8 +319,34 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
 
     if (err)
     {
+        Pickup::Type pickup;
+        switch (err)
+        {
+            case 1:
+                pickup = Pickup::BAD_ITEM;
+                break;
+            case 2:
+                pickup = Pickup::TOO_HEAVY;
+                break;
+            case 3:
+                pickup = Pickup::TOO_FAR;
+                break;
+            case 4:
+                pickup = Pickup::INV_FULL;
+                break;
+            case 5:
+                pickup = Pickup::STACK_FULL;
+                break;
+            case 6:
+                pickup = Pickup::DROP_STEAL;
+                break;
+            default:
+                pickup = Pickup::UNKNOWN;
+                logger->log("unknown pickup type: %d", err);
+                break;
+        }
         if (localPlayer)
-            localPlayer->pickedUp(itemInfo, 0, identified, floorId, err);
+            localPlayer->pickedUp(itemInfo, 0, identified, floorId, pickup);
     }
     else
     {

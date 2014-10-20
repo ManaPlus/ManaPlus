@@ -844,6 +844,14 @@ void LocalPlayer::pickedUp(const ItemInfo &itemInfo, const int amount,
                 // TRANSLATORS: pickup error message
                 msg = N_("Item belongs to someone else.");
                 break;
+            case Pickup::MAX_AMOUNT:
+                // TRANSLATORS: pickup error message
+                msg = N_("You cant pickup this amount of items.");
+                break;
+            case Pickup::STACK_AMOUNT:
+                // TRANSLATORS: pickup error message
+                msg = N_("Your item stack has max amount.");
+                break;
             default:
                 // TRANSLATORS: pickup error message
                 msg = N_("Unknown problem picking up item.");

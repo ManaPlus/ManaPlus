@@ -33,12 +33,15 @@ namespace Pickup
     enum Type
     {
         OKAY = 0,
+        UNKNOWN,
         BAD_ITEM,
         TOO_HEAVY,
         TOO_FAR,
         INV_FULL,
         STACK_FULL,
-        DROP_STEAL
+        DROP_STEAL,
+        MAX_AMOUNT,
+        STACK_AMOUNT
     };
 }  // namespace Pickup
 
