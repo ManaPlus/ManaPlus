@@ -1410,6 +1410,7 @@ SET(SRCS_EATHENA
     net/eathena/homunculushandler.h
     net/eathena/inventoryhandler.cpp
     net/eathena/inventoryhandler.h
+    net/eathena/itemflags.h
     net/eathena/itemhandler.cpp
     net/eathena/itemhandler.h
     net/eathena/loginhandler.cpp

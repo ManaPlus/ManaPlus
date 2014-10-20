@@ -31,6 +31,7 @@
 
 #include "net/serverfeatures.h"
 
+#include "net/eathena/itemflags.h"
 #include "net/eathena/menu.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
@@ -304,15 +305,12 @@ void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
         equipment->setBackend(&mEquips);
     }
     const int number = (msg.getLength() - 4) / 31;
-    const uint8_t identified = 1;
 
     for (int loop = 0; loop < number; loop++)
     {
         const int index = msg.readInt16("index") - INVENTORY_OFFSET;
         const int itemId = msg.readInt16("item id");
         msg.readUInt8("item type");
-//        uint8_t identified = msg.readUInt8();      // identify flag
-
         msg.readInt32("location");
         const int equipType = msg.readInt32("wear state");
         const uint8_t refine = static_cast<uint8_t>(msg.readInt8("refine"));
@@ -323,13 +321,12 @@ void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
         msg.readInt32("hire expire date (?)");
         msg.readInt16("equip type");
         msg.readInt16("item sprite number");
-        msg.readInt8("flags");
-
-        // need get actual identify flag
+        ItemFlags flags;
+        flags.byte = msg.readUInt8("flags");
         if (inventory)
         {
             inventory->setItem(index, itemId, 1, refine,
-                identified, true);
+                1, true);
         }
 
         if (equipType)
@@ -407,14 +404,14 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
                 break;
         }
         if (localPlayer)
-            localPlayer->pickedUp(itemInfo, 0, identified, floorId, pickup);
+            localPlayer->pickedUp(itemInfo, 0, 1, floorId, pickup);
     }
     else
     {
         if (localPlayer)
         {
             localPlayer->pickedUp(itemInfo, amount,
-                identified, floorId, Pickup::OKAY);
+                1, floorId, Pickup::OKAY);
         }
 
         if (inventory)
@@ -424,11 +421,8 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
             if (item && item->getId() == itemId)
                 amount += item->getQuantity();
 
-            if (!serverFeatures->haveItemColors() && identified > 1)
-                identified = 1;
-
             inventory->setItem(index, itemId, amount, refine,
-                identified, equipType != 0);
+                1, equipType != 0);
         }
         ArrowsListener::distributeEvent();
     }
@@ -453,7 +447,6 @@ void InventoryHandler::processPlayerInventory(Net::MessageIn &msg)
     msg.readInt16("len");
 
     const int number = (msg.getLength() - 4) / 24;
-    const uint8_t identified = 1;
 
     for (int loop = 0; loop < number; loop++)
     {
@@ -467,16 +460,13 @@ void InventoryHandler::processPlayerInventory(Net::MessageIn &msg)
         msg.readInt16("card2");
         msg.readInt16("card3");
         msg.readInt32("hire expire date (?)");
-        msg.readInt8("flags");
-
-        // need get actual identify flag
-        // Trick because arrows are not considered equipment
-//      const bool isEquipment = arrow & 0x8000;
+        ItemFlags flags;
+        flags.byte = msg.readUInt8("flags");
 
         if (inventory)
         {
             inventory->setItem(index, itemId, amount,
-                0, identified, false);
+                0, 1, false);
         }
     }
     BLOCK_END("InventoryHandler::processPlayerInventory")
@@ -491,7 +481,6 @@ void InventoryHandler::processPlayerStorage(Net::MessageIn &msg)
     msg.readString(24, "storage name");
 
     const int number = (msg.getLength() - 4) / 23;
-    const uint8_t identified = 1;
 
     for (int loop = 0; loop < number; loop++)
     {
@@ -505,11 +494,11 @@ void InventoryHandler::processPlayerStorage(Net::MessageIn &msg)
         msg.readInt16("card2");
         msg.readInt16("card3");
         msg.readInt32("hire expire date (?)");
-        msg.readInt8("flags");
+        ItemFlags flags;
+        flags.byte = msg.readUInt8("flags");
 
-        // need get actual identify flag
         mInventoryItems.push_back(Ea::InventoryItem(index, itemId,
-            amount, 0, identified, false));
+            amount, 0, 1, false));
     }
     BLOCK_END("InventoryHandler::processPlayerInventory")
 }
@@ -585,7 +574,6 @@ void InventoryHandler::processPlayerStorageEquip(Net::MessageIn &msg)
     BLOCK_START("InventoryHandler::processPlayerStorageEquip")
     msg.readInt16("len");
     const int number = (msg.getLength() - 4 - 24) / 31;
-    const uint8_t identified = 1;
 
     msg.readString(24, "storage name");
     for (int loop = 0; loop < number; loop++)
@@ -604,11 +592,11 @@ void InventoryHandler::processPlayerStorageEquip(Net::MessageIn &msg)
         msg.readInt32("hire expire date");
         msg.readInt16("bind on equip");
         msg.readInt16("sprite");
-        msg.readInt8("flags");
+        ItemFlags flags;
+        flags.byte = msg.readUInt8("flags");
 
-        // need get identified from flags
         mInventoryItems.push_back(Ea::InventoryItem(index,
-            itemId, amount, refine, identified, false));
+            itemId, amount, refine, 1, false));
     }
     BLOCK_END("InventoryHandler::processPlayerStorageEquip")
 }
@@ -631,7 +619,7 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
 
     if (Item *const item = mStorage->getItem(index))
     {
-        item->setId(itemId, identified);
+        item->setId(itemId, 1);
         item->increaseQuantity(amount);
     }
     else
@@ -639,7 +627,7 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
         if (mStorage)
         {
             mStorage->setItem(index, itemId, amount,
-                refine, identified, false);
+                refine, 1, false);
         }
     }
     BLOCK_END("InventoryHandler::processPlayerStorageAdd")
