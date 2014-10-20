@@ -208,17 +208,6 @@ void clearInventory()
         mInventory->clear();
 }
 
-void setInventoryItem(const int index, const int id,
-                      const int amount, const uint8_t refine)
-{
-    bool equipment = false;
-    const ItemType::Type itemType = ItemDB::get(id).getType();
-    if (itemType != ItemType::UNUSABLE && itemType != ItemType::USABLE)
-        equipment = true;
-    if (mInventory)
-        mInventory->setItem(index, id, amount, refine, 1, equipment, false);
-}
-
 Equipment *getEquipment()
 {
     return mEquipment;

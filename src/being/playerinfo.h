@@ -155,12 +155,6 @@ namespace PlayerInfo
     void clear();
 
     /**
-     * Changes the inventory item at the given slot.
-     */
-    void setInventoryItem(const int index, const int id,
-                          const int amount, const uint8_t refine);
-
-    /**
      * Returns the player's equipment.
      */
     Equipment *getEquipment() A_WARN_UNUSED;
