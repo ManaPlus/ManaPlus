@@ -216,7 +216,7 @@ void setInventoryItem(const int index, const int id,
     if (itemType != ItemType::UNUSABLE && itemType != ItemType::USABLE)
         equipment = true;
     if (mInventory)
-        mInventory->setItem(index, id, amount, refine, equipment);
+        mInventory->setItem(index, id, amount, refine, 1, equipment, false);
 }
 
 Equipment *getEquipment()

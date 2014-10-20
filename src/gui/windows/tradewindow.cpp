@@ -197,9 +197,9 @@ void TradeWindow::addItem(const int id,
                           const unsigned char color) const
 {
     if (own)
-        mMyInventory->addItem(id, quantity, refine, color);
+        mMyInventory->addItem(id, quantity, refine, color, false, false);
     else
-        mPartnerInventory->addItem(id, quantity, refine, color);
+        mPartnerInventory->addItem(id, quantity, refine, color, false, false);
 }
 
 void TradeWindow::addItem2(const int id, const bool own, const int quantity,
@@ -207,9 +207,14 @@ void TradeWindow::addItem2(const int id, const bool own, const int quantity,
                            const bool equipment) const
 {
     if (own)
-        mMyInventory->addItem(id, quantity, refine, color, equipment);
+    {
+        mMyInventory->addItem(id, quantity, refine, color, equipment, false);
+    }
     else
-        mPartnerInventory->addItem(id, quantity, refine, color, equipment);
+    {
+        mPartnerInventory->addItem(id, quantity, refine, color,
+            equipment, false);
+    }
 }
 
 void TradeWindow::changeQuantity(const int index, const bool own,

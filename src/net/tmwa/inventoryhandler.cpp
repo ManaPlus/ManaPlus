@@ -272,7 +272,7 @@ void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
         if (inventory)
         {
             inventory->setItem(index, itemId, 1, refine,
-                identified, true);
+                identified, true, false);
         }
 
         if (equipType)
@@ -367,7 +367,7 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
                 identified = 1;
 
             inventory->setItem(index, itemId, amount, refine,
-                identified, equipType != 0);
+                identified, equipType != 0, false);
         }
         ArrowsListener::distributeEvent();
     }
@@ -422,7 +422,7 @@ void InventoryHandler::processPlayerInventory(Net::MessageIn &msg)
         if (inventory)
         {
             inventory->setItem(index, itemId, amount,
-                0, identified, isEquipment);
+                0, identified, isEquipment, false);
         }
     }
     BLOCK_END("InventoryHandler::processPlayerInventory")
@@ -559,7 +559,7 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
                 identified = 1;
 
             mStorage->setItem(index, itemId, amount,
-                refine, identified, false);
+                refine, identified, false, false);
         }
     }
     BLOCK_END("InventoryHandler::processPlayerStorageAdd")

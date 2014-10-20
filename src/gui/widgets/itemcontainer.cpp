@@ -551,7 +551,10 @@ void ItemContainer::mouseReleased(MouseEvent &event)
             inventory = PlayerInfo::getInventory();
             const Item *const item = inventory->getItem(dragDrop.getTag());
             if (item && !PlayerInfo::isItemProtected(item->getId()))
-                mInventory->addItem(item->getId(), 1, 1, item->getColor());
+            {
+                mInventory->addItem(item->getId(), 1, 1, item->getColor(),
+                    false, false);
+            }
             return;
         }
         else if (src == DRAGDROP_SOURCE_NPC)

@@ -40,12 +40,12 @@ class Item notfinal
         /**
          * Constructor.
          */
-        explicit Item(const int id = -1,
-                      const int quantity = 0,
-                      const uint8_t refine = 0,
-                      const uint8_t color = 1,
-                      const bool equipment = false,
-                      const bool equipped = false);
+        Item(const int id,
+             const int quantity,
+             const uint8_t refine,
+             const uint8_t color,
+             const bool equipment,
+             const bool equipped);
 
         A_DELETE_COPY(Item)
 
@@ -55,7 +55,7 @@ class Item notfinal
         virtual ~Item();
 
         /**
-         * Sets the item id, identifying the item type.
+         * Sets the item id, color the item type.
          */
         void setId(const int id, const unsigned char color);
 
