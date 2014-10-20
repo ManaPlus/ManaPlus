@@ -87,16 +87,25 @@ class Inventory final
         /**
          * Adds a new item in a free slot.
          */
-        void addItem(const int id, const int quantity, const uint8_t refine,
-                     const unsigned char color, const bool equipment,
+        void addItem(const int id,
+                     const int quantity,
+                     const uint8_t refine,
+                     const unsigned char color,
+                     const bool identified,
+                     const bool equipment,
                      const bool equipped);
 
         /**
          * Sets the item at the given position.
          */
-        void setItem(const int index, const int id, const int quantity,
-                     const uint8_t refine, const unsigned char color,
-                     const bool equipment, const bool equipped);
+        void setItem(const int index,
+                     const int id,
+                     const int quantity,
+                     const uint8_t refine,
+                     const unsigned char color,
+                     const bool identified,
+                     const bool equipment,
+                     const bool equipped);
 
         /**
          * Remove a item from the inventory.

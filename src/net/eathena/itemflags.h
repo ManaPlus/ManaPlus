@@ -33,7 +33,7 @@ namespace EAthena
             unsigned char isDamaged    : 1;
             unsigned char isFavorite   : 1;
             unsigned char spareBits    : 5;
-        } __attribute__((packed));
+        } bits;
         uint8_t byte;
     } __attribute__((packed));
 }  // namespace EAthena

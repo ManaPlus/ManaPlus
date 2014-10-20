@@ -30,6 +30,8 @@
 
 #include "gui/windows/tradewindow.h"
 
+#include "net/serverfeatures.h"
+
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
 
@@ -178,8 +180,16 @@ void TradeHandler::processTradeItemAdd(Net::MessageIn &msg)
         }
         else
         {
-            tradeWindow->addItem2(type, false, amount,
-                refine, identify, false);
+            if (serverFeatures->haveItemColors())
+            {
+                tradeWindow->addItem2(type, false, amount,
+                    refine, identify, true, false);
+            }
+            else
+            {
+                tradeWindow->addItem2(type, false, amount,
+                    refine, 1, identify != 0, false);
+            }
         }
     }
 }
@@ -209,7 +219,7 @@ void TradeHandler::processTradeItemAddResponse(Net::MessageIn &msg)
             {
                 tradeWindow->addItem2(item->getId(), true,
                     quantity, item->getRefine(), item->getColor(),
-                    item->isEquipment());
+                    item->getIdentified(), item->isEquipment());
             }
             item->increaseQuantity(-quantity);
             break;

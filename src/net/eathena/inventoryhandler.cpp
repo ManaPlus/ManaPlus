@@ -326,7 +326,7 @@ void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
         if (inventory)
         {
             inventory->setItem(index, itemId, 1, refine,
-                1, true, false);
+                1, flags.bits.isIdentified, true, false);
         }
 
         if (equipType)
@@ -422,7 +422,7 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
                 amount += item->getQuantity();
 
             inventory->setItem(index, itemId, amount, refine,
-                1, equipType != 0, false);
+                1, identified != 0, equipType != 0, false);
         }
         ArrowsListener::distributeEvent();
     }
@@ -466,7 +466,7 @@ void InventoryHandler::processPlayerInventory(Net::MessageIn &msg)
         if (inventory)
         {
             inventory->setItem(index, itemId, amount,
-                0, 1, false, false);
+                0, 1, flags.bits.isIdentified, false, false);
         }
     }
     BLOCK_END("InventoryHandler::processPlayerInventory")
@@ -498,7 +498,7 @@ void InventoryHandler::processPlayerStorage(Net::MessageIn &msg)
         flags.byte = msg.readUInt8("flags");
 
         mInventoryItems.push_back(Ea::InventoryItem(index, itemId,
-            amount, 0, 1, false));
+            amount, 0, 1, flags.bits.isIdentified, false));
     }
     BLOCK_END("InventoryHandler::processPlayerInventory")
 }
@@ -596,7 +596,7 @@ void InventoryHandler::processPlayerStorageEquip(Net::MessageIn &msg)
         flags.byte = msg.readUInt8("flags");
 
         mInventoryItems.push_back(Ea::InventoryItem(index,
-            itemId, amount, refine, 1, false));
+            itemId, amount, refine, 1, flags.bits.isIdentified, false));
     }
     BLOCK_END("InventoryHandler::processPlayerStorageEquip")
 }
@@ -627,7 +627,7 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
         if (mStorage)
         {
             mStorage->setItem(index, itemId, amount,
-                refine, 1, false, false);
+                refine, 1, identified != 0, false, false);
         }
     }
     BLOCK_END("InventoryHandler::processPlayerStorageAdd")

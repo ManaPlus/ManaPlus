@@ -194,26 +194,38 @@ void TradeWindow::addItem(const int id,
                           const bool own,
                           const int quantity,
                           const uint8_t refine,
-                          const unsigned char color) const
-{
-    if (own)
-        mMyInventory->addItem(id, quantity, refine, color, false, false);
-    else
-        mPartnerInventory->addItem(id, quantity, refine, color, false, false);
-}
-
-void TradeWindow::addItem2(const int id, const bool own, const int quantity,
-                           const uint8_t refine, const unsigned char color,
-                           const bool equipment) const
+                          const unsigned char color,
+                          const bool identified) const
 {
     if (own)
     {
-        mMyInventory->addItem(id, quantity, refine, color, equipment, false);
+        mMyInventory->addItem(id, quantity, refine, color,
+            identified, false, false);
     }
     else
     {
         mPartnerInventory->addItem(id, quantity, refine, color,
-            equipment, false);
+            identified, false, false);
+    }
+}
+
+void TradeWindow::addItem2(const int id,
+                           const bool own,
+                           const int quantity,
+                           const uint8_t refine,
+                           const unsigned char color,
+                           const bool identified,
+                           const bool equipment) const
+{
+    if (own)
+    {
+        mMyInventory->addItem(id, quantity, refine, color,
+            identified, equipment, false);
+    }
+    else
+    {
+        mPartnerInventory->addItem(id, quantity, refine, color,
+            identified, equipment, false);
     }
 }
 

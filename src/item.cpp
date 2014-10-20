@@ -37,8 +37,12 @@
 
 DragDrop dragDrop(nullptr, DRAGDROP_SOURCE_EMPTY);
 
-Item::Item(const int id, const int quantity, const uint8_t refine,
-           const unsigned char color, const bool equipment,
+Item::Item(const int id,
+           const int quantity,
+           const uint8_t refine,
+           const unsigned char color,
+           const bool identified,
+           const bool equipment,
            const bool equipped) :
     mId(0),
     mColor(0),
@@ -50,7 +54,10 @@ Item::Item(const int id, const int quantity, const uint8_t refine,
     mInvIndex(0),
     mEquipment(equipment),
     mEquipped(equipped),
-    mInEquipment(false)
+    mInEquipment(false),
+    mIdentified(identified),
+    mDamaged(false),
+    mFavorite(false)
 {
     setId(id, color);
 }

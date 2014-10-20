@@ -278,8 +278,14 @@ void InventoryHandler::processPlayerStorageStatus(Net::MessageIn &msg)
 
     FOR_EACH (Ea::InventoryItems::const_iterator, it, mInventoryItems)
     {
-        mStorage->setItem((*it).slot, (*it).id, (*it).quantity,
-            (*it).refine, (*it).color, (*it).equip, false);
+        mStorage->setItem((*it).slot,
+            (*it).id,
+            (*it).quantity,
+            (*it).refine,
+            (*it).color,
+            (*it).identified,
+            (*it).equip,
+            false);
     }
     mInventoryItems.clear();
 

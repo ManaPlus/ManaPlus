@@ -44,6 +44,7 @@ class Item notfinal
              const int quantity,
              const uint8_t refine,
              const uint8_t color,
+             const bool identified,
              const bool equipment,
              const bool equipped);
 
@@ -168,6 +169,12 @@ class Item notfinal
         const std::string &getDescription() const A_WARN_UNUSED
         { return mDescription; }
 
+        void setIdentified(const bool b)
+        { mIdentified = b; }
+
+        bool getIdentified() const A_WARN_UNUSED
+        { return mIdentified; }
+
         int mId;              /**< Item type id. */
         unsigned char mColor;
         int mQuantity;        /**< Number of items. */
@@ -181,6 +188,9 @@ class Item notfinal
         bool mEquipment;      /**< Item is equipment. */
         bool mEquipped;       /**< Item is equipped. */
         bool mInEquipment;    /**< Item is in equipment */
+        bool mIdentified;
+        bool mDamaged;
+        bool mFavorite;
 };
 
 #endif  // ITEM_H
