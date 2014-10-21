@@ -284,6 +284,7 @@ void InventoryHandler::processPlayerStorageStatus(Net::MessageIn &msg)
             (*it).refine,
             (*it).color,
             (*it).identified,
+            (*it).damaged,
             (*it).equip,
             false);
     }

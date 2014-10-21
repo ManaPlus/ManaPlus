@@ -45,6 +45,7 @@ class Item notfinal
              const uint8_t refine,
              const uint8_t color,
              const bool identified,
+             const bool damaged,
              const bool equipment,
              const bool equipped);
 
@@ -174,6 +175,12 @@ class Item notfinal
 
         bool getIdentified() const A_WARN_UNUSED
         { return mIdentified; }
+
+        void setDamaged(const bool b)
+        { mDamaged = b; }
+
+        bool getDamaged() const A_WARN_UNUSED
+        { return mDamaged; }
 
         int mId;              /**< Item type id. */
         unsigned char mColor;

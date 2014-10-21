@@ -201,7 +201,7 @@ void TradeHandler::processTradeItemAdd(Net::MessageIn &msg)
         else
         {
             tradeWindow->addItem2(type, false, amount,
-                refine, 1, identify != 0, false);
+                refine, 1, identify != 0, false, false);
         }
     }
 }

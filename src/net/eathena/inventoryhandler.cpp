@@ -326,7 +326,7 @@ void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
         if (inventory)
         {
             inventory->setItem(index, itemId, 1, refine,
-                1, flags.bits.isIdentified, true, false);
+                1, flags.bits.isIdentified, flags.bits.isDamaged, true, false);
         }
 
         if (equipType)
@@ -351,7 +351,7 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
     int amount = msg.readInt16("count");
     const int itemId = msg.readInt16("item id");
     uint8_t identified = msg.readUInt8("identified");
-    msg.readUInt8("is damaged");
+    const uint8_t damaged = msg.readUInt8("is damaged");
     const uint8_t refine = msg.readUInt8("refine");
     msg.readInt16("card0");
     msg.readInt16("card1");
@@ -422,7 +422,7 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
                 amount += item->getQuantity();
 
             inventory->setItem(index, itemId, amount, refine,
-                1, identified != 0, equipType != 0, false);
+                1, identified != 0, damaged != 0, equipType != 0, false);
         }
         ArrowsListener::distributeEvent();
     }
@@ -466,7 +466,8 @@ void InventoryHandler::processPlayerInventory(Net::MessageIn &msg)
         if (inventory)
         {
             inventory->setItem(index, itemId, amount,
-                0, 1, flags.bits.isIdentified, false, false);
+                0, 1, flags.bits.isIdentified,
+                flags.bits.isDamaged, false, false);
         }
     }
     BLOCK_END("InventoryHandler::processPlayerInventory")
@@ -498,7 +499,8 @@ void InventoryHandler::processPlayerStorage(Net::MessageIn &msg)
         flags.byte = msg.readUInt8("flags");
 
         mInventoryItems.push_back(Ea::InventoryItem(index, itemId,
-            amount, 0, 1, flags.bits.isIdentified, false));
+            amount, 0, 1, flags.bits.isIdentified,
+            flags.bits.isDamaged, false));
     }
     BLOCK_END("InventoryHandler::processPlayerInventory")
 }
@@ -596,7 +598,8 @@ void InventoryHandler::processPlayerStorageEquip(Net::MessageIn &msg)
         flags.byte = msg.readUInt8("flags");
 
         mInventoryItems.push_back(Ea::InventoryItem(index,
-            itemId, amount, refine, 1, flags.bits.isIdentified, false));
+            itemId, amount, refine, 1, flags.bits.isIdentified,
+            flags.bits.isDamaged, false));
     }
     BLOCK_END("InventoryHandler::processPlayerStorageEquip")
 }
@@ -627,7 +630,7 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
         if (mStorage)
         {
             mStorage->setItem(index, itemId, amount,
-                refine, 1, identified != 0, false, false);
+                refine, 1, identified != 0, false, false, false);
         }
     }
     BLOCK_END("InventoryHandler::processPlayerStorageAdd")

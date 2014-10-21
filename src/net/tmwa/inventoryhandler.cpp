@@ -271,12 +271,12 @@ void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
             if (serverFeatures->haveItemColors())
             {
                 inventory->setItem(index, itemId, 1, refine,
-                    identified, true, true, false);
+                    identified, true, false, true, false);
             }
             else
             {
                 inventory->setItem(index, itemId, 1, refine,
-                    1, identified != 0, true, false);
+                    1, identified != 0, false, true, false);
             }
         }
 
@@ -371,12 +371,12 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
             if (serverFeatures->haveItemColors())
             {
                 inventory->setItem(index, itemId, amount, refine,
-                    identified, true, equipType != 0, false);
+                    identified, true, false, equipType != 0, false);
             }
             else
             {
                 inventory->setItem(index, itemId, amount, refine,
-                    1, identified != 0, equipType != 0, false);
+                    1, identified != 0, false, equipType != 0, false);
             }
         }
         ArrowsListener::distributeEvent();
@@ -431,12 +431,12 @@ void InventoryHandler::processPlayerInventory(Net::MessageIn &msg)
             if (serverFeatures->haveItemColors())
             {
                 inventory->setItem(index, itemId, amount,
-                    0, identified, true, isEquipment, false);
+                    0, identified, true, false, isEquipment, false);
             }
             else
             {
                 inventory->setItem(index, itemId, amount,
-                    0, 1, identified != 0, isEquipment, false);
+                    0, 1, identified != 0, false, isEquipment, false);
             }
         }
     }
@@ -474,12 +474,12 @@ void InventoryHandler::processPlayerStorage(Net::MessageIn &msg)
         if (serverFeatures->haveItemColors())
         {
             mInventoryItems.push_back(Ea::InventoryItem(index, itemId,
-                amount, 0, identified, true, false));
+                amount, 0, identified, true, false, false));
         }
         else
         {
             mInventoryItems.push_back(Ea::InventoryItem(index, itemId,
-                amount, 0, 1, identified != 0, false));
+                amount, 0, 1, identified != 0, false, false));
         }
     }
     BLOCK_END("InventoryHandler::processPlayerInventory")
@@ -547,12 +547,12 @@ void InventoryHandler::processPlayerStorageEquip(Net::MessageIn &msg)
         if (serverFeatures->haveItemColors())
         {
             mInventoryItems.push_back(Ea::InventoryItem(index,
-                itemId, amount, refine, identified, true, false));
+                itemId, amount, refine, identified, true, false, false));
         }
         else
         {
             mInventoryItems.push_back(Ea::InventoryItem(index,
-                itemId, amount, refine, 1, identified != 0, false));
+                itemId, amount, refine, 1, identified != 0, false, false));
         }
     }
     BLOCK_END("InventoryHandler::processPlayerStorageEquip")
@@ -583,12 +583,12 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
             if (serverFeatures->haveItemColors())
             {
                 mStorage->setItem(index, itemId, amount,
-                    refine, identified, true, false, false);
+                    refine, identified, true, false, false, false);
             }
             else
             {
                 mStorage->setItem(index, itemId, amount,
-                    refine, 1, identified != 0, false, false);
+                    refine, 1, identified != 0, false, false, false);
             }
         }
     }

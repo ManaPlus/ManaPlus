@@ -72,7 +72,8 @@ class TradeWindow final : public Window,
                      const int quantity,
                      const uint8_t refine,
                      const unsigned char color,
-                     const bool identified) const;
+                     const bool identified,
+                     const bool damaged) const;
 
         /**
          * Reset both item containers
@@ -88,6 +89,7 @@ class TradeWindow final : public Window,
                       const uint8_t refine,
                       const unsigned char color,
                       const bool identified,
+                      const bool damaged,
                       const bool equipment) const;
 
         /**

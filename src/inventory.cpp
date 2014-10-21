@@ -108,11 +108,12 @@ void Inventory::addItem(const int id,
                         const uint8_t refine,
                         const uint8_t color,
                         const bool identified,
+                        const bool damaged,
                         const bool equipment,
                         const bool equipped)
 {
     setItem(getFreeSlot(), id, quantity, refine, color,
-        identified, equipment, equipped);
+        identified, damaged, equipment, equipped);
 }
 
 void Inventory::setItem(const int index,
@@ -121,6 +122,7 @@ void Inventory::setItem(const int index,
                         const uint8_t refine,
                         const unsigned char color,
                         const bool identified,
+                        const bool damaged,
                         const bool equipment,
                         const bool equipped)
 {
@@ -134,7 +136,7 @@ void Inventory::setItem(const int index,
     if (!item1 && id > 0)
     {
         Item *const item = new Item(id, quantity, refine, color,
-            identified, equipment, equipped);
+            identified, damaged, equipment, equipped);
         item->setInvIndex(index);
         mItems[index] = item;
         mUsed++;
@@ -146,6 +148,8 @@ void Inventory::setItem(const int index,
         item1->setQuantity(quantity);
         item1->setRefine(refine);
         item1->setEquipment(equipment);
+        item1->setIdentified(identified);
+        item1->setDamaged(damaged);
     }
     else if (item1)
     {

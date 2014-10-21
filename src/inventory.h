@@ -92,6 +92,7 @@ class Inventory final
                      const uint8_t refine,
                      const unsigned char color,
                      const bool identified,
+                     const bool damaged,
                      const bool equipment,
                      const bool equipped);
 
@@ -104,6 +105,7 @@ class Inventory final
                      const uint8_t refine,
                      const unsigned char color,
                      const bool identified,
+                     const bool damaged,
                      const bool equipment,
                      const bool equipped);
 

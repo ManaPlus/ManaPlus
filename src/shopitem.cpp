@@ -32,10 +32,12 @@
 
 #include "debug.h"
 
-ShopItem::ShopItem(const int inventoryIndex, const int id,
+ShopItem::ShopItem(const int inventoryIndex,
+                   const int id,
                    const unsigned char color,
-                   const int quantity, const int price) :
-    Item(id, 0, 0, color, true, false, false),
+                   const int quantity,
+                   const int price) :
+    Item(id, 0, 0, color, true, false, false, false),
     mDisplayName(),
     mDuplicates(),
     mPrice(price),
@@ -47,7 +49,7 @@ ShopItem::ShopItem(const int inventoryIndex, const int id,
 }
 
 ShopItem::ShopItem(const int id, const unsigned char color, const int price) :
-    Item(id, 0, 0, color, true, false, false),
+    Item(id, 0, 0, color, true, false, false, false),
     mDisplayName(),
     mDuplicates(),
     mPrice(price),
