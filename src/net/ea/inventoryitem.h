@@ -42,6 +42,7 @@ class InventoryItem final
     public:
         int slot;
         int id;
+        int cards[4];
         int quantity;
         uint8_t refine;
         unsigned char color;
@@ -52,6 +53,7 @@ class InventoryItem final
 
         InventoryItem(const int slot0,
                       const int id0,
+                      const int *const cards0,
                       const int quantity0,
                       const uint8_t refine0,
                       const unsigned char color0,
@@ -69,6 +71,8 @@ class InventoryItem final
             favorite(favorite0),
             equip(equip0)
         {
+            for (int f = 0; f < 4; f ++)
+                cards[f] = cards0[f];
         }
 };
 
