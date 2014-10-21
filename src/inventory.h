@@ -111,6 +111,10 @@ class Inventory final
                      const bool equipment,
                      const bool equipped);
 
+        void setCards(const int index,
+                      const int *const cards,
+                      const int size);
+
         /**
          * Remove a item from the inventory.
          */

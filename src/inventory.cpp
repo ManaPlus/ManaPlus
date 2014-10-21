@@ -160,6 +160,20 @@ void Inventory::setItem(const int index,
     }
 }
 
+void Inventory::setCards(const int index,
+                         const int *const cards,
+                         const int size)
+{
+    if (index < 0 || index >= static_cast<int>(mSize))
+    {
+        logger->log("Warning: invalid inventory index: %d", index);
+        return;
+    }
+
+    Item *const item1 = mItems[index];
+    item1->setCards(cards, size);
+}
+
 void Inventory::clear()
 {
     for (unsigned i = 0; i < mSize; i++)
