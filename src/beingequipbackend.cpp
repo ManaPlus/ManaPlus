@@ -43,7 +43,8 @@ BeingEquipBackend::BeingEquipBackend(Being *const being)
             if (id > 0 && idx >= 0 && idx < EQUIPMENT_SIZE)
             {
                 mEquipment[idx] = new Item(id, 1, 0,
-                    being->mSpriteColorsIds[f], true, false, true, true);
+                    being->mSpriteColorsIds[f],
+                    true, false, false, true, true);
             }
         }
     }

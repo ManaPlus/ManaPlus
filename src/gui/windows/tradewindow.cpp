@@ -196,17 +196,18 @@ void TradeWindow::addItem(const int id,
                           const uint8_t refine,
                           const unsigned char color,
                           const bool identified,
-                          const bool damaged) const
+                          const bool damaged,
+                          const bool favorite) const
 {
     if (own)
     {
         mMyInventory->addItem(id, quantity, refine, color,
-            identified, damaged, false, false);
+            identified, damaged, favorite, false, false);
     }
     else
     {
         mPartnerInventory->addItem(id, quantity, refine, color,
-            identified, damaged, false, false);
+            identified, damaged, favorite, false, false);
     }
 }
 
@@ -217,17 +218,18 @@ void TradeWindow::addItem2(const int id,
                            const unsigned char color,
                            const bool identified,
                            const bool damaged,
+                           const bool favorite,
                            const bool equipment) const
 {
     if (own)
     {
         mMyInventory->addItem(id, quantity, refine, color,
-            identified, damaged, equipment, false);
+            identified, damaged, favorite, equipment, false);
     }
     else
     {
         mPartnerInventory->addItem(id, quantity, refine, color,
-            identified, damaged, equipment, false);
+            identified, damaged, favorite, equipment, false);
     }
 }
 

@@ -326,7 +326,9 @@ void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
         if (inventory)
         {
             inventory->setItem(index, itemId, 1, refine,
-                1, flags.bits.isIdentified, flags.bits.isDamaged, true, false);
+                1, flags.bits.isIdentified, flags.bits.isDamaged,
+                flags.bits.isFavorite,
+                true, false);
         }
 
         if (equipType)
@@ -422,7 +424,8 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
                 amount += item->getQuantity();
 
             inventory->setItem(index, itemId, amount, refine,
-                1, identified != 0, damaged != 0, equipType != 0, false);
+                1, identified != 0, damaged != 0, false,
+                equipType != 0, false);
         }
         ArrowsListener::distributeEvent();
     }
@@ -467,7 +470,8 @@ void InventoryHandler::processPlayerInventory(Net::MessageIn &msg)
         {
             inventory->setItem(index, itemId, amount,
                 0, 1, flags.bits.isIdentified,
-                flags.bits.isDamaged, false, false);
+                flags.bits.isDamaged, flags.bits.isFavorite,
+                false, false);
         }
     }
     BLOCK_END("InventoryHandler::processPlayerInventory")
@@ -500,7 +504,7 @@ void InventoryHandler::processPlayerStorage(Net::MessageIn &msg)
 
         mInventoryItems.push_back(Ea::InventoryItem(index, itemId,
             amount, 0, 1, flags.bits.isIdentified,
-            flags.bits.isDamaged, false));
+            flags.bits.isDamaged, flags.bits.isFavorite, false));
     }
     BLOCK_END("InventoryHandler::processPlayerInventory")
 }
@@ -599,7 +603,7 @@ void InventoryHandler::processPlayerStorageEquip(Net::MessageIn &msg)
 
         mInventoryItems.push_back(Ea::InventoryItem(index,
             itemId, amount, refine, 1, flags.bits.isIdentified,
-            flags.bits.isDamaged, false));
+            flags.bits.isDamaged, flags.bits.isFavorite, false));
     }
     BLOCK_END("InventoryHandler::processPlayerStorageEquip")
 }
@@ -630,7 +634,7 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
         if (mStorage)
         {
             mStorage->setItem(index, itemId, amount,
-                refine, 1, identified != 0, false, false, false);
+                refine, 1, identified != 0, false, false, false, false);
         }
     }
     BLOCK_END("InventoryHandler::processPlayerStorageAdd")

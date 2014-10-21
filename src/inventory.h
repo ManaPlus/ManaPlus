@@ -93,6 +93,7 @@ class Inventory final
                      const unsigned char color,
                      const bool identified,
                      const bool damaged,
+                     const bool favorite,
                      const bool equipment,
                      const bool equipped);
 
@@ -106,6 +107,7 @@ class Inventory final
                      const unsigned char color,
                      const bool identified,
                      const bool damaged,
+                     const bool favorite,
                      const bool equipment,
                      const bool equipped);
 

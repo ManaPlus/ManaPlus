@@ -468,7 +468,9 @@ void NpcDialog::action(const ActionEvent &event)
             if (item)
             {
                 mInventory->addItem(item->getId(), 1, 1, item->getColor(),
-                    item->getIdentified(), item->getDamaged(), false, false);
+                    item->getIdentified(), item->getDamaged(),
+                    item->getFavorite(),
+                    false, false);
             }
         }
     }

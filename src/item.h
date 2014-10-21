@@ -46,6 +46,7 @@ class Item notfinal
              const uint8_t color,
              const bool identified,
              const bool damaged,
+             const bool favorite,
              const bool equipment,
              const bool equipped);
 
@@ -181,6 +182,12 @@ class Item notfinal
 
         bool getDamaged() const A_WARN_UNUSED
         { return mDamaged; }
+
+        void setFavorite(const bool b)
+        { mFavorite = b; }
+
+        bool getFavorite() const A_WARN_UNUSED
+        { return mFavorite; }
 
         int mId;              /**< Item type id. */
         unsigned char mColor;

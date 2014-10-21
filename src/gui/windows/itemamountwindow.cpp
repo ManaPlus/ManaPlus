@@ -319,7 +319,7 @@ void ItemAmountWindow::action(const ActionEvent &event)
         const int id = ItemDB::get(mItemsModal->getElementAt(
             mItemDropDown->getSelected())).getId();
 
-        mItem = new Item(id, 10000, 0, 1, true, false, false, false);
+        mItem = new Item(id, 10000, 0, 1, true, false, false, false, false);
 
         if (mUsage == ShopBuyAdd)
             mMax = 10000;

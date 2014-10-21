@@ -183,12 +183,12 @@ void TradeHandler::processTradeItemAdd(Net::MessageIn &msg)
             if (serverFeatures->haveItemColors())
             {
                 tradeWindow->addItem2(type, false, amount,
-                    refine, identify, true, false, false);
+                    refine, identify, true, false, false, false);
             }
             else
             {
                 tradeWindow->addItem2(type, false, amount,
-                    refine, 1, identify != 0, false, false);
+                    refine, 1, identify != 0, false, false, false);
             }
         }
     }
@@ -220,7 +220,7 @@ void TradeHandler::processTradeItemAddResponse(Net::MessageIn &msg)
                 tradeWindow->addItem2(item->getId(), true,
                     quantity, item->getRefine(), item->getColor(),
                     item->getIdentified(), item->getDamaged(),
-                    item->isEquipment());
+                    item->getFavorite(), item->isEquipment());
             }
             item->increaseQuantity(-quantity);
             break;

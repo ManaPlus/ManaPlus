@@ -43,6 +43,7 @@ Item::Item(const int id,
            const unsigned char color,
            const bool identified,
            const bool damaged,
+           const bool favorite,
            const bool equipment,
            const bool equipped) :
     mId(0),
@@ -58,7 +59,7 @@ Item::Item(const int id,
     mInEquipment(false),
     mIdentified(identified),
     mDamaged(damaged),
-    mFavorite(false)
+    mFavorite(favorite)
 {
     setId(id, color);
 }
