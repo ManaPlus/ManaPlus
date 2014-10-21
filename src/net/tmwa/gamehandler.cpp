@@ -159,8 +159,8 @@ void GameHandler::quit() const
 
 void GameHandler::ping(const int tick) const
 {
-    MessageOut msg(CMSG_MAP_PING);
-    msg.writeInt32(tick, "tick");
+    createOutPacket(CMSG_MAP_PING);
+    outMsg.writeInt32(tick, "tick");
 }
 
 void GameHandler::disconnect2() const
