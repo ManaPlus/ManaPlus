@@ -25,15 +25,17 @@
 
 namespace EAthena
 {
+    struct ItemFlagBits final
+    {
+        unsigned char isIdentified : 1;
+        unsigned char isDamaged    : 1;
+        unsigned char isFavorite   : 1;
+        unsigned char spareBits    : 5;
+    };
+
     union ItemFlags final
     {
-        struct bits
-        {
-            unsigned char isIdentified : 1;
-            unsigned char isDamaged    : 1;
-            unsigned char isFavorite   : 1;
-            unsigned char spareBits    : 5;
-        } bits;
+        ItemFlagBits bits;
         uint8_t byte;
     } __attribute__((packed));
 }  // namespace EAthena
