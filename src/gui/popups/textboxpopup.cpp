@@ -32,7 +32,7 @@
 TextBoxPopup *textBoxPopup = nullptr;
 
 TextBoxPopup::TextBoxPopup() :
-    Popup("TextBoxPopup", "textpopup.xml"),
+    Popup("TextBoxPopup", "textboxpopup.xml"),
     mTextBox(new TextBox(this))
 {
 }
