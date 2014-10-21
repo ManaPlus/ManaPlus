@@ -199,19 +199,14 @@ void TradeWindow::addItem(const int id,
                           const bool damaged,
                           const bool favorite) const
 {
-    if (own)
-    {
-        mMyInventory->addItem(id, quantity, refine, color,
-            identified, damaged, favorite, false, false);
-    }
-    else
-    {
-        mPartnerInventory->addItem(id, quantity, refine, color,
-            identified, damaged, favorite, false, false);
-    }
+    Inventory *inv = own ? mMyInventory.get() : mPartnerInventory.get();
+    inv->addItem(id, quantity, refine, color,
+        identified, damaged, favorite, false, false);
 }
 
 void TradeWindow::addItem2(const int id,
+                           const int *const cards,
+                           const int sz,
                            const bool own,
                            const int quantity,
                            const uint8_t refine,
@@ -221,16 +216,11 @@ void TradeWindow::addItem2(const int id,
                            const bool favorite,
                            const bool equipment) const
 {
-    if (own)
-    {
-        mMyInventory->addItem(id, quantity, refine, color,
-            identified, damaged, favorite, equipment, false);
-    }
-    else
-    {
-        mPartnerInventory->addItem(id, quantity, refine, color,
-            identified, damaged, favorite, equipment, false);
-    }
+    Inventory *inv = own ? mMyInventory.get() : mPartnerInventory.get();
+    const int slot = inv->addItem(id, quantity, refine, color,
+        identified, damaged, favorite, equipment, false);
+    if (slot >= 0)
+        inv->setCards(slot, cards, sz);
 }
 
 void TradeWindow::changeQuantity(const int index, const bool own,

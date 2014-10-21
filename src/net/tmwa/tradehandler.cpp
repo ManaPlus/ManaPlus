@@ -170,7 +170,9 @@ void TradeHandler::processTradeItemAdd(Net::MessageIn &msg)
     const uint8_t identify = msg.readUInt8();  // identified flag
     msg.readUInt8();  // attribute
     const uint8_t refine = msg.readUInt8();  // refine
-    msg.skip(8);      // card (4 shorts)
+    int cards[4];
+    for (int f = 0; f < 4; f++)
+        cards[f] = msg.readInt16("card");
 
     if (tradeWindow)
     {
@@ -182,12 +184,16 @@ void TradeHandler::processTradeItemAdd(Net::MessageIn &msg)
         {
             if (serverFeatures->haveItemColors())
             {
-                tradeWindow->addItem2(type, false, amount,
+                tradeWindow->addItem2(type,
+                    cards, 4,
+                    false, amount,
                     refine, identify, true, false, false, false);
             }
             else
             {
-                tradeWindow->addItem2(type, false, amount,
+                tradeWindow->addItem2(type,
+                    cards, 4,
+                    false, amount,
                     refine, 1, identify != 0, false, false, false);
             }
         }
@@ -217,8 +223,9 @@ void TradeHandler::processTradeItemAddResponse(Net::MessageIn &msg)
             // Successfully added item
             if (tradeWindow)
             {
-                tradeWindow->addItem2(item->getId(), true,
-                    quantity, item->getRefine(), item->getColor(),
+                tradeWindow->addItem2(item->getId(),
+                    item->getCards(), 4,
+                    true, quantity, item->getRefine(), item->getColor(),
                     item->getIdentified(), item->getDamaged(),
                     item->getFavorite(), item->isEquipment());
             }

@@ -479,10 +479,8 @@ void PartyHandler::processPartyItemPickup(Net::MessageIn &msg)
     msg.readUInt8("identify");
     msg.readUInt8("attribute");
     msg.readUInt8("refine");
-    msg.readInt16("card0");
-    msg.readInt16("card1");
-    msg.readInt16("card2");
-    msg.readInt16("card3");
+    for (int f = 0; f < 4; f++)
+        msg.readInt16("card");
     msg.readInt16("equip location");
     msg.readUInt8("item type");
 }

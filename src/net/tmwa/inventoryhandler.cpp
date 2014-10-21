@@ -258,7 +258,9 @@ void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
         const int equipType = msg.readInt16();
         msg.readUInt8();  // attribute
         const uint8_t refine = msg.readUInt8();
-        msg.skip(8);  // card
+        int cards[4];
+        for (int f = 0; f < 4; f++)
+            cards[f] = msg.readInt16("card");
 
         if (mDebugInventory)
         {
@@ -278,6 +280,7 @@ void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
                 inventory->setItem(index, itemId, 1, refine,
                     1, identified != 0, false, false, true, false);
             }
+            inventory->setCards(index, cards, 4);
         }
 
         if (equipType)
@@ -304,8 +307,9 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
     uint8_t identified = msg.readUInt8();
     msg.readUInt8();  // attribute
     const uint8_t refine = msg.readUInt8();
-    for (int i = 0; i < 4; i++)
-        msg.readInt16();  // cards[i]
+    int cards[4];
+    for (int f = 0; f < 4; f++)
+        cards[f] = msg.readInt16("card");
     const int equipType = msg.readInt16();
     msg.readUInt8();  // itemType
 
@@ -378,6 +382,7 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
                 inventory->setItem(index, itemId, amount, refine,
                     1, identified != 0, false, false, equipType != 0, false);
             }
+            inventory->setCards(index, cards, 4);
         }
         ArrowsListener::distributeEvent();
     }
@@ -438,6 +443,7 @@ void InventoryHandler::processPlayerInventory(Net::MessageIn &msg)
                 inventory->setItem(index, itemId, amount,
                     0, 1, identified != 0, false, false, isEquipment, false);
             }
+            inventory->setCards(index, cards, 4);
         }
     }
     BLOCK_END("InventoryHandler::processPlayerInventory")
@@ -474,12 +480,12 @@ void InventoryHandler::processPlayerStorage(Net::MessageIn &msg)
         if (serverFeatures->haveItemColors())
         {
             mInventoryItems.push_back(Ea::InventoryItem(index, itemId,
-                amount, 0, identified, true, false, false, false));
+                cards, amount, 0, identified, true, false, false, false));
         }
         else
         {
             mInventoryItems.push_back(Ea::InventoryItem(index, itemId,
-                amount, 0, 1, identified != 0, false, false, false));
+                cards, amount, 0, 1, identified != 0, false, false, false));
         }
     }
     BLOCK_END("InventoryHandler::processPlayerInventory")
@@ -546,14 +552,14 @@ void InventoryHandler::processPlayerStorageEquip(Net::MessageIn &msg)
 
         if (serverFeatures->haveItemColors())
         {
-            mInventoryItems.push_back(Ea::InventoryItem(index,
-                itemId, amount, refine, identified, true,
+            mInventoryItems.push_back(Ea::InventoryItem(index, itemId,
+                cards, amount, refine, identified, true,
                 false, false, false));
         }
         else
         {
-            mInventoryItems.push_back(Ea::InventoryItem(index,
-                itemId, amount, refine, 1, identified != 0,
+            mInventoryItems.push_back(Ea::InventoryItem(index, itemId,
+                cards, amount, refine, 1, identified != 0,
                 false, false, false));
         }
     }
@@ -570,8 +576,9 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
     unsigned char identified = msg.readUInt8();
     msg.readUInt8();  // attribute
     const uint8_t refine = msg.readUInt8();
-    for (int i = 0; i < 4; i++)
-        msg.readInt16();  // card i
+    int cards[4];
+    for (int f = 0; f < 4; f++)
+        cards[f] = msg.readInt16("card");
 
     if (Item *const item = mStorage->getItem(index))
     {
@@ -592,6 +599,7 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
                 mStorage->setItem(index, itemId, amount,
                     refine, 1, identified != 0, false, false, false, false);
             }
+            mStorage->setCards(index, cards, 4);
         }
     }
     BLOCK_END("InventoryHandler::processPlayerStorageAdd")

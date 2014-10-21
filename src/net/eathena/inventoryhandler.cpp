@@ -314,10 +314,9 @@ void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
         msg.readInt32("location");
         const int equipType = msg.readInt32("wear state");
         const uint8_t refine = static_cast<uint8_t>(msg.readInt8("refine"));
-        msg.readInt16("card0");
-        msg.readInt16("card1");
-        msg.readInt16("card2");
-        msg.readInt16("card3");
+        int cards[4];
+        for (int f = 0; f < 4; f++)
+            cards[f] = msg.readInt16("card");
         msg.readInt32("hire expire date (?)");
         msg.readInt16("equip type");
         msg.readInt16("item sprite number");
@@ -329,6 +328,7 @@ void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
                 1, flags.bits.isIdentified, flags.bits.isDamaged,
                 flags.bits.isFavorite,
                 true, false);
+            inventory->setCards(index, cards, 4);
         }
 
         if (equipType)
@@ -355,10 +355,9 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
     uint8_t identified = msg.readUInt8("identified");
     const uint8_t damaged = msg.readUInt8("is damaged");
     const uint8_t refine = msg.readUInt8("refine");
-    msg.readInt16("card0");
-    msg.readInt16("card1");
-    msg.readInt16("card2");
-    msg.readInt16("card3");
+    int cards[4];
+    for (int f = 0; f < 4; f++)
+        cards[f] = msg.readInt16("card");
     const int equipType = msg.readInt32("location");
     msg.readUInt8("item type");
     const unsigned char err = msg.readUInt8("result");
@@ -426,6 +425,7 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
             inventory->setItem(index, itemId, amount, refine,
                 1, identified != 0, damaged != 0, false,
                 equipType != 0, false);
+            inventory->setCards(index, cards, 4);
         }
         ArrowsListener::distributeEvent();
     }
@@ -458,10 +458,9 @@ void InventoryHandler::processPlayerInventory(Net::MessageIn &msg)
         msg.readUInt8("item type");
         const int amount = msg.readInt16("count");
         msg.readInt32("wear state / equip");
-        msg.readInt16("card0");
-        msg.readInt16("card1");
-        msg.readInt16("card2");
-        msg.readInt16("card3");
+        int cards[4];
+        for (int f = 0; f < 4; f++)
+            cards[f] = msg.readInt16("card");
         msg.readInt32("hire expire date (?)");
         ItemFlags flags;
         flags.byte = msg.readUInt8("flags");
@@ -472,6 +471,7 @@ void InventoryHandler::processPlayerInventory(Net::MessageIn &msg)
                 0, 1, flags.bits.isIdentified,
                 flags.bits.isDamaged, flags.bits.isFavorite,
                 false, false);
+            inventory->setCards(index, cards, 4);
         }
     }
     BLOCK_END("InventoryHandler::processPlayerInventory")
@@ -494,16 +494,15 @@ void InventoryHandler::processPlayerStorage(Net::MessageIn &msg)
         msg.readUInt8("item type");
         const int amount = msg.readInt16("count");
         msg.readInt32("wear state / equip");
-        msg.readInt16("card0");
-        msg.readInt16("card1");
-        msg.readInt16("card2");
-        msg.readInt16("card3");
+        int cards[4];
+        for (int f = 0; f < 4; f++)
+            cards[f] = msg.readInt16("card");
         msg.readInt32("hire expire date (?)");
         ItemFlags flags;
         flags.byte = msg.readUInt8("flags");
 
         mInventoryItems.push_back(Ea::InventoryItem(index, itemId,
-            amount, 0, 1, flags.bits.isIdentified,
+            cards, amount, 0, 1, flags.bits.isIdentified,
             flags.bits.isDamaged, flags.bits.isFavorite, false));
     }
     BLOCK_END("InventoryHandler::processPlayerInventory")
@@ -591,18 +590,17 @@ void InventoryHandler::processPlayerStorageEquip(Net::MessageIn &msg)
         msg.readInt32("location");
         msg.readInt32("wear state");
         const uint8_t refine = msg.readUInt8("refine level");
-        msg.readInt16("card0");
-        msg.readInt16("card1");
-        msg.readInt16("card2");
-        msg.readInt16("card3");
+        int cards[4];
+        for (int f = 0; f < 4; f++)
+            cards[f] = msg.readInt16("card");
         msg.readInt32("hire expire date");
         msg.readInt16("bind on equip");
         msg.readInt16("sprite");
         ItemFlags flags;
         flags.byte = msg.readUInt8("flags");
 
-        mInventoryItems.push_back(Ea::InventoryItem(index,
-            itemId, amount, refine, 1, flags.bits.isIdentified,
+        mInventoryItems.push_back(Ea::InventoryItem(index, itemId,
+            cards, amount, refine, 1, flags.bits.isIdentified,
             flags.bits.isDamaged, flags.bits.isFavorite, false));
     }
     BLOCK_END("InventoryHandler::processPlayerStorageEquip")
@@ -619,10 +617,9 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
     const unsigned char identified = msg.readUInt8("identify");
     msg.readUInt8("attribute");
     const uint8_t refine = msg.readUInt8("refine");
-    msg.readInt16("card0");
-    msg.readInt16("card1");
-    msg.readInt16("card2");
-    msg.readInt16("card3");
+    int cards[4];
+    for (int f = 0; f < 4; f++)
+        cards[f] = msg.readInt16("card");
 
     if (Item *const item = mStorage->getItem(index))
     {
@@ -635,6 +632,7 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
         {
             mStorage->setItem(index, itemId, amount,
                 refine, 1, identified != 0, false, false, false, false);
+            mStorage->setCards(index, cards, 4);
         }
     }
     BLOCK_END("InventoryHandler::processPlayerStorageAdd")

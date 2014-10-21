@@ -87,15 +87,15 @@ class Inventory final
         /**
          * Adds a new item in a free slot.
          */
-        void addItem(const int id,
-                     const int quantity,
-                     const uint8_t refine,
-                     const unsigned char color,
-                     const bool identified,
-                     const bool damaged,
-                     const bool favorite,
-                     const bool equipment,
-                     const bool equipped);
+        int addItem(const int id,
+                    const int quantity,
+                    const uint8_t refine,
+                    const unsigned char color,
+                    const bool identified,
+                    const bool damaged,
+                    const bool favorite,
+                    const bool equipment,
+                    const bool equipped);
 
         /**
          * Sets the item at the given position.

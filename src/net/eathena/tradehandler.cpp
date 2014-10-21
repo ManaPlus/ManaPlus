@@ -187,10 +187,9 @@ void TradeHandler::processTradeItemAdd(Net::MessageIn &msg)
     const uint8_t identify = msg.readUInt8("identify");
     msg.readUInt8("attribute");
     const uint8_t refine = msg.readUInt8("refine");
-    msg.readInt16("card 0");
-    msg.readInt16("card 1");
-    msg.readInt16("card 2");
-    msg.readInt16("card 3");
+    int cards[4];
+    for (int f = 0; f < 4; f++)
+        cards[f] = msg.readInt16("card");
 
     if (tradeWindow)
     {
@@ -200,7 +199,9 @@ void TradeHandler::processTradeItemAdd(Net::MessageIn &msg)
         }
         else
         {
-            tradeWindow->addItem2(type, false, amount,
+            tradeWindow->addItem2(type,
+                cards, 4,
+                false, amount,
                 refine, 1, identify != 0, false, false, false);
         }
     }

@@ -103,18 +103,20 @@ Item *Inventory::findItem(const int itemId, const unsigned char color) const
     return nullptr;
 }
 
-void Inventory::addItem(const int id,
-                        const int quantity,
-                        const uint8_t refine,
-                        const uint8_t color,
-                        const bool identified,
-                        const bool damaged,
-                        const bool favorite,
-                        const bool equipment,
-                        const bool equipped)
+int Inventory::addItem(const int id,
+                       const int quantity,
+                       const uint8_t refine,
+                       const uint8_t color,
+                       const bool identified,
+                       const bool damaged,
+                       const bool favorite,
+                       const bool equipment,
+                       const bool equipped)
 {
-    setItem(getFreeSlot(), id, quantity, refine, color,
+    const int slot = getFreeSlot();
+    setItem(slot, id, quantity, refine, color,
         identified, damaged, favorite, equipment, equipped);
+    return slot;
 }
 
 void Inventory::setItem(const int index,

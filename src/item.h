@@ -197,6 +197,9 @@ class Item notfinal
 
         void setCards(const int *const cards, const int size);
 
+        const int *getCards() const
+        { return mCards; }
+
         int mId;              /**< Item type id. */
         unsigned char mColor;
         int mQuantity;        /**< Number of items. */
