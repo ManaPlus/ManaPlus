@@ -31,6 +31,8 @@
 
 class Image;
 
+const int maxCards = 4;
+
 /**
  * Represents one or more instances of a certain item type.
  */
@@ -189,6 +191,12 @@ class Item notfinal
         bool getFavorite() const A_WARN_UNUSED
         { return mFavorite; }
 
+        void setCard(const int index, const int id);
+
+        int getCard(const int index) const;
+
+        void setCards(const int *const cards, const int size);
+
         int mId;              /**< Item type id. */
         unsigned char mColor;
         int mQuantity;        /**< Number of items. */
@@ -197,6 +205,7 @@ class Item notfinal
         Image *mImage;        /**< Item image. */
         std::string mDescription;
         std::map <int, int> mTags;
+        int mCards[maxCards];
         uint8_t mRefine;      /**< Item refine level. */
         int mInvIndex;        /**< Inventory index. */
         bool mEquipment;      /**< Item is equipment. */

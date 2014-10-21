@@ -52,6 +52,7 @@ Item::Item(const int id,
     mImage(nullptr),
     mDescription(),
     mTags(),
+    mCards(),
     mRefine(refine),
     mInvIndex(0),
     mEquipment(equipment),
@@ -62,6 +63,8 @@ Item::Item(const int id,
     mFavorite(favorite)
 {
     setId(id, color);
+    for (int f = 0; f < 4; f ++)
+        mCards[f] = 0;
 }
 
 Item::~Item()
@@ -129,4 +132,29 @@ std::string Item::getName() const
         return info.getName(mColor);
     else
         return info.getName();
+}
+
+void Item::setCard(const int index, const int id)
+{
+    if (index < 0 || index >= maxCards)
+        return;
+    mCards[index] = id;
+}
+
+int Item::getCard(const int index) const
+{
+    if (index < 0 || index >= maxCards)
+        return 0 ;
+    return mCards[index];
+}
+
+void Item::setCards(const int *const cards, const int size)
+{
+    if (size < 0 || !cards)
+        return;
+    int sz = size;
+    if (sz > maxCards)
+        sz = maxCards;
+    for (int f = 0; f < sz; f ++)
+        mCards[f] = cards[f];
 }
