@@ -22,6 +22,7 @@
 
 #include "net/eathena/tradehandler.h"
 
+#include "inventory.h"
 #include "item.h"
 #include "notifymanager.h"
 
@@ -44,6 +45,8 @@ extern Net::TradeHandler *tradeHandler;
 
 namespace EAthena
 {
+int TradeHandler::mQuantity = 0;
+uint16_t TradeHandler::mItemIndex = -1;
 
 TradeHandler::TradeHandler() :
     MessageHandler(),
@@ -64,6 +67,8 @@ TradeHandler::TradeHandler() :
     };
     handledMessages = _messages;
     tradeHandler = this;
+    mItemIndex = -1;
+    mQuantity = 0;
 }
 
 
@@ -135,9 +140,10 @@ void TradeHandler::addItem(const Item *const item, const int amount) const
     if (!item)
         return;
 
+    mItemIndex = item->getInvIndex();
+    mQuantity = amount;
     createOutPacket(CMSG_TRADE_ITEM_ADD_REQUEST);
-    outMsg.writeInt16(static_cast<int16_t>(
-        item->getInvIndex() + INVENTORY_OFFSET));
+    outMsg.writeInt16(static_cast<int16_t>(mItemIndex + INVENTORY_OFFSET));
     outMsg.writeInt32(amount);
 }
 
@@ -215,15 +221,24 @@ void TradeHandler::processTradeItemAddResponse(Net::MessageIn &msg)
     {
         case 0:  // Successfully added item
         case 9:  // silent added item
+        {
+            Item *const item = PlayerInfo::getInventory()->getItem(
+                mItemIndex);
+            if (!item)
+                return;
             if (tradeWindow)
             {
-                // here need add cached item
-//                tradeWindow->addItem2(item->getId(), true,
-//                    quantity, item->getRefine(), item->getColor(),
-//                    item->isEquipment());
+                tradeWindow->addItem2(item->getId(),
+                    item->getCards(), 4,
+                    true, mQuantity, item->getRefine(), item->getColor(),
+                    item->getIdentified(), item->getDamaged(),
+                    item->getFavorite(), item->isEquipment());
             }
-//            item->increaseQuantity(-quantity);
+            item->increaseQuantity(-mQuantity);
+            mItemIndex = -1;
+            mQuantity = 0;
             break;
+        }
         case 1:
             // Add item failed - player overweighted
             NotifyManager::notify(NotifyTypes::

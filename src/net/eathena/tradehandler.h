@@ -64,6 +64,9 @@ class TradeHandler final : public MessageHandler, public Ea::TradeHandler
         static void processTradeItemAdd(Net::MessageIn &msg);
 
         static void processTradeItemAddResponse(Net::MessageIn &msg);
+
+        static int mQuantity;
+        static uint16_t mItemIndex;
 };
 
 }  // namespace EAthena
