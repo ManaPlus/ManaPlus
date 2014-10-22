@@ -70,6 +70,7 @@ src/gui/widgets/tabs/socialpickuptab.h
 src/gui/widgets/tabs/socialplayerstab.h
 src/gui/widgets/tabs/socialtabbase.h
 src/gui/windowmenu.cpp
+src/gui/windows/bankwindow.cpp
 src/gui/windows/botcheckerwindow.cpp
 src/gui/windows/buydialog.cpp
 src/gui/windows/buyselldialog.cpp
@@ -137,7 +138,9 @@ src/net/ea/loginhandler.cpp
 src/net/ea/network.cpp
 src/net/ea/playerhandler.cpp
 src/net/eathena/charserverhandler.cpp
+src/net/eathena/chathandler.cpp
 src/net/eathena/generalhandler.cpp
+src/net/eathena/itemflags.h
 src/net/eathena/loginhandler.cpp
 src/net/eathena/pethandler.cpp
 src/net/eathena/skillhandler.cpp
