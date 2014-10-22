@@ -393,7 +393,7 @@ void ChatHandler::processColorChat(Net::MessageIn &msg)
     }
     else
     {
-        const std::string nick = mSentWhispers.front();
+        const std::string nick = getLastWhisperNick();
         if (nick.size() > 1 && nick[0] == '#')
         {
             if (message == strprintf("[ %s ] %s : \302\202\302",
