@@ -615,6 +615,7 @@ SET(SRCS
     resources/effectdescription.h
     resources/emoteinfo.h
     resources/emotesprite.h
+    resources/equipmentslots.h
     resources/db/emotedb.cpp
     resources/db/emotedb.h
     resources/db/homunculusdb.cpp

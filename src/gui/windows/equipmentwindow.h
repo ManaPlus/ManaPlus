@@ -94,6 +94,8 @@ class EquipmentWindow final : public Window,
 
         void recalcSize();
 
+        static void prepareSlotNames();
+
     private:
         Item *getItem(const int x, const int y) const A_WARN_UNUSED;
 
@@ -122,6 +124,8 @@ class EquipmentWindow final : public Window,
                       const int page);
 
         static int parseSlotName(const std::string &name) A_WARN_UNUSED;
+
+        static std::map<std::string, int> mSlotNames;
 
         Equipment *mEquipment;
 

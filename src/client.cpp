@@ -62,6 +62,7 @@
 #include "gui/windows/changepassworddialog.h"
 #include "gui/windows/charselectdialog.h"
 #include "gui/windows/connectiondialog.h"
+#include "gui/windows/equipmentwindow.h"
 #include "gui/windows/logindialog.h"
 #include "gui/windows/npcdialog.h"
 #include "gui/windows/okdialog.h"
@@ -1262,6 +1263,7 @@ int Client::gameExec()
 //                    ModDB::load();
                     StatusEffect::load();
                     Units::loadUnits();
+                    EquipmentWindow::prepareSlotNames();
 
                     ActorSprite::load();
 

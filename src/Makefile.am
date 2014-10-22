@@ -79,6 +79,7 @@ dyecmd_SOURCES = gui/cliprect.cpp \
 	      resources/effectdescription.h \
 	      resources/emoteinfo.h \
 	      resources/emotesprite.h \
+	      resources/equipmentslots.h \
 	      resources/image.cpp \
 	      resources/image.h \
 	      resources/imagehelper.cpp \
