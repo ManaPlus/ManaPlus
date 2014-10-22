@@ -647,58 +647,98 @@ void EquipmentWindow::loadSlot(const XmlNodePtr slotNode,
 int EquipmentWindow::parseSlotName(const std::string &name)
 {
     int id = -1;
-    if (name == "shoes" || name == "boot" || name == "boots")
+    if (name == "shoes" || name == "boot"
+        || name == "boots" || name == "slot4")
     {
         id = 4;
     }
-    else if (name == "bottomclothes" || name == "bottom" || name == "pants")
+    else if (name == "bottomclothes" || name == "bottom"
+             || name == "pants" || name == "slot3")
     {
         id = 3;
     }
     else if (name == "topclothes" || name == "top"
-             || name == "torso" || name == "body")
+             || name == "torso" || name == "body" || name == "slot0")
     {
         id = 0;
     }
-    else if (name == "misc1" || name == "cape")
+    else if (name == "misc1" || name == "cape" || name == "slot5")
     {
         id = 5;
     }
-    else if (name == "misc2" || name == "scarf" || name == "scarfs")
+    else if (name == "misc2" || name == "scarf"
+             || name == "scarfs" || name == "slot7")
     {
         id = 7;
     }
-    else if (name == "hat" || name == "hats")
+    else if (name == "hat" || name == "hats" || name == "slot2")
     {
         id = 2;
     }
-    else if (name == "wings")
+    else if (name == "wings" || name == "slot6")
     {
         id = 6;
     }
-    else if (name == "glove" || name == "gloves")
+    else if (name == "glove" || name == "gloves" || name == "slot1")
     {
         id = 1;
     }
-    else if (name == "weapon" || name == "weapons")
+    else if (name == "weapon" || name == "weapons" || name == "slot8")
     {
         id = 8;
     }
-    else if (name == "shield" || name == "shields")
+    else if (name == "shield" || name == "shields" || name == "slot9")
     {
         id = 9;
     }
-    else if (name == "amulet" || name == "amulets")
+    else if (name == "amulet" || name == "amulets" || name == "slot11")
     {
         id = 11;
     }
-    else if (name == "ring" || name == "rings")
+    else if (name == "ring" || name == "rings" || name == "slot12")
     {
         id = 12;
     }
-    else if (name == "arrow" || name == "arrows" || name == "ammo")
+    else if (name == "arrow" || name == "arrows"
+             || name == "ammo" || name == "slot10")
     {
         id = 10;
+    }
+    else if (name == "slot13")
+    {
+        id = 13;
+    }
+    else if (name == "slot14")
+    {
+        id = 14;
+    }
+    else if (name == "slot15")
+    {
+        id = 15;
+    }
+    else if (name == "slot16")
+    {
+        id = 16;
+    }
+    else if (name == "slot17")
+    {
+        id = 17;
+    }
+    else if (name == "slot18")
+    {
+        id = 18;
+    }
+    else if (name == "slot19")
+    {
+        id = 19;
+    }
+    else if (name == "slot20")
+    {
+        id = 20;
+    }
+    else if (name == "slot21")
+    {
+        id = 21;
     }
 
     return id;
