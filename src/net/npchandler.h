@@ -56,9 +56,6 @@ class NpcHandler notfinal
         virtual void stringInput(const int npcId,
                                  const std::string &value) const = 0;
 
-        virtual void sendLetter(const int npcId, const std::string &recipient,
-                                const std::string &text) const = 0;
-
         virtual void startShopping(const int beingId) const = 0;
 
         virtual void buy(const int beingId) const = 0;

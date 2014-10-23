@@ -42,12 +42,6 @@ NpcHandler::NpcHandler()
     mRequestLang = false;
 }
 
-void NpcHandler::sendLetter(const int npcId A_UNUSED,
-                            const std::string &recipient A_UNUSED,
-                            const std::string &text A_UNUSED) const
-{
-}
-
 void NpcHandler::startShopping(const int beingId A_UNUSED) const
 {
 }

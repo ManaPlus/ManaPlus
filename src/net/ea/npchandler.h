@@ -42,9 +42,6 @@ class NpcHandler notfinal : public Net::NpcHandler
     public:
         A_DELETE_COPY(NpcHandler)
 
-        void sendLetter(const int npcId, const std::string &recipient,
-                        const std::string &text) const override final;
-
         void startShopping(const int beingId) const override final;
 
         void endShopping(const int beingId) const override final;
