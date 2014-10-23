@@ -189,7 +189,7 @@ void MercenaryHandler::moveToMaster() const
     if (!id)
         return;
     createOutPacket(CMSG_HOMMERC_MOVE_TO_MASTER);
-    outMsg.writeInt32(id);
+    outMsg.writeInt32(id, "mercenary id");
 }
 
 void MercenaryHandler::move(const int x, const int y) const
@@ -198,21 +198,21 @@ void MercenaryHandler::move(const int x, const int y) const
     if (!id)
         return;
     createOutPacket(CMSG_HOMMERC_MOVE_TO);
-    outMsg.writeInt32(id);
+    outMsg.writeInt32(id, "mercenary id");
     outMsg.writeCoordinates(static_cast<uint16_t>(x),
         static_cast<uint16_t>(y),
-        0U);
+        0U, "position");
 }
 
 void MercenaryHandler::attack(const int targetId, const bool keep) const
 {
-    const int id = PlayerInfo::getHomunculusId();
+    const int id = PlayerInfo::getMercenaryId();
     if (!id)
         return;
     createOutPacket(CMSG_HOMMERC_ATTACK);
-    outMsg.writeInt32(id);
-    outMsg.writeInt32(targetId);
-    outMsg.writeInt8(static_cast<int8_t>(keep ? 1 : 0));
+    outMsg.writeInt32(id, "mercenary id");
+    outMsg.writeInt32(targetId, "target id");
+    outMsg.writeInt8(static_cast<int8_t>(keep ? 1 : 0), "keep");
 }
 
 }  // namespace EAthena
