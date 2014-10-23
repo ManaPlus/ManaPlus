@@ -276,7 +276,7 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
         0, GL_RGBA, GL_UNSIGNED_BYTE, tmpImage->pixels);
 
 #ifdef DEBUG_OPENGL
-//  disabled for now, because debugger cant show it
+//  disabled for now, because debugger can't show it
 //    if (isGLNotNull(mglLabelObject))
 //    {
 //        const char *const text = "image text";

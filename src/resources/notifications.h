@@ -44,11 +44,11 @@ namespace NotifyManager
             NotifyFlags::EMPTY},
         {"buy fail no money",
             // TRANSLATORS: notification message
-            N_("Unable to buy. You not have enought money."),
+            N_("Unable to buy. You don't have enough money."),
             NotifyFlags::EMPTY},
         {"buy fail overweight",
             // TRANSLATORS: notification message
-            N_("Unable to buy. You overweight."),
+            N_("Unable to buy. It is too heavy."),
             NotifyFlags::EMPTY},
         {"buy fail too many items",
             // TRANSLATORS: notification message
@@ -84,7 +84,7 @@ namespace NotifyManager
             NotifyFlags::EMPTY},
         {"guild already",
             // TRANSLATORS: notification message
-            N_("You are already in guild."),
+            N_("You are already in a guild."),
             NotifyFlags::EMPTY},
         {"guild create fail",
             // TRANSLATORS: notification message
@@ -144,7 +144,7 @@ namespace NotifyManager
             NotifyFlags::EMPTY},
         {"party create failed",
             // TRANSLATORS: notification message
-            N_("Could not create party."),
+            N_("Couldn't create party."),
             NotifyFlags::EMPTY},
         {"party created",
             // TRANSLATORS: notification message
@@ -156,15 +156,15 @@ namespace NotifyManager
             NotifyFlags::EMPTY},
         {"party left deny",
             // TRANSLATORS: notification message
-            N_("You cant left party on this map."),
+            N_("You can't leave party on this map."),
             NotifyFlags::EMPTY},
         {"party kicked",
             // TRANSLATORS: notification message
-            N_("You was kicked from party."),
+            N_("You were kicked from party."),
             NotifyFlags::EMPTY},
         {"party kick deny",
             // TRANSLATORS: notification message
-            N_("You cant be kicked from party on this map."),
+            N_("You can't be kicked from party on this map."),
             NotifyFlags::EMPTY},
         {"party user joined",
             // TRANSLATORS: notification message
@@ -220,7 +220,7 @@ namespace NotifyManager
             NotifyFlags::PARTY_STRING},
         {"party user left deny",
             // TRANSLATORS: notification message
-            N_("%s cant be kicked from party on this map."),
+            N_("%s can't be kicked from party on this map."),
             NotifyFlags::PARTY_STRING},
         {"party user kicked",
             // TRANSLATORS: notification message
@@ -228,7 +228,7 @@ namespace NotifyManager
             NotifyFlags::PARTY_STRING},
         {"party user kick deny",
             // TRANSLATORS: notification message
-            N_("%s cant be kicked from party on this map."),
+            N_("%s can't be kicked from party on this map."),
             NotifyFlags::PARTY_STRING},
         {"party unknown user msg",
             // TRANSLATORS: notification message
@@ -404,7 +404,7 @@ namespace NotifyManager
             NotifyFlags::EMPTY},
         {"homunculus feed failed",
             // TRANSLATORS: notification message
-            N_("You cant feed homunculus, because not have %s."),
+            N_("You can't feed homunculus, because you don't have %s."),
             NotifyFlags::STRING},
         {"card insert failed",
             // TRANSLATORS: notification message
@@ -420,8 +420,8 @@ namespace NotifyManager
             NotifyFlags::EMPTY},
         {"bank withdraw failed",
             // TRANSLATORS: notification message
-            N_("Withdraw failed. Probably you not have money "
-                "in bank for withdraw."),
+            N_("Withdraw failed. You probably don't have this "
+                "amount of money in the bank right now."),
             NotifyFlags::EMPTY}
     };
 }  // namespace NotifyManager

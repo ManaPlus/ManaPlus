@@ -155,7 +155,7 @@ Font::~Font()
 
 TTF_Font *Font::openFont(const char *const name, const int size)
 {
-// disabled for now because some systems like gentoo cant use it
+// disabled for now because some systems like gentoo can't use it
 // #ifdef USE_SDL2
 //    SDL_RWops *const rw = MPHYSFSRWOPS_openRead(name);
 //    if (!rw)

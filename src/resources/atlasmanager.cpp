@@ -186,7 +186,7 @@ void AtlasManager::simpleSort(const std::string &restrict name,
                 tempHeight = 0;
             }
 
-            // cant put image with this height
+            // can't put image with this height
             if (y + img->mBounds.h > size)
             {
                 x = 0;

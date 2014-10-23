@@ -846,7 +846,7 @@ void LocalPlayer::pickedUp(const ItemInfo &itemInfo, const int amount,
                 break;
             case Pickup::MAX_AMOUNT:
                 // TRANSLATORS: pickup error message
-                msg = N_("You cant pickup this amount of items.");
+                msg = N_("You can't pickup this amount of items.");
                 break;
             case Pickup::STACK_AMOUNT:
                 // TRANSLATORS: pickup error message

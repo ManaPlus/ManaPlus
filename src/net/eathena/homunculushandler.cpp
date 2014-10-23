@@ -181,7 +181,7 @@ void HomunculusHandler::processHomunculusInfo(Net::MessageIn &msg)
     const int range = msg.readInt16("attack range");
 
     HomunculusInfo *const info = PlayerInfo::getHomunculus();
-    if (!info)  // we cant find homunculus being because id is missing
+    if (!info)  // we can't find homunculus being because id is missing
         return;
     Being *const dstBeing = actorManager->findBeing(info->id);
 

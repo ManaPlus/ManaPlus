@@ -52,14 +52,14 @@ void *GlxHelper::createContext(const unsigned long window,
         || isGLNull(mglXCreateContextAttribs)
         || isGLNull(mglXChooseFBConfig))
     {
-        logger->log("Cant change context, functions in driver "
+        logger->log("Can't change context, functions in driver "
             "not implimented");
         XSetErrorHandler(handler);
         return context;
     }
     if (!context)
     {
-        logger->log("Cant change context, because current "
+        logger->log("Can't change context, because current "
             "context not created");
         XSetErrorHandler(handler);
         return context;
