@@ -174,7 +174,7 @@ void GameHandler::processMapLogin(Net::MessageIn &msg)
     uint16_t x, y;
     msg.readInt32("tick");
     msg.readCoordinates(x, y, direction, "position");
-    msg.skip(2, "unknown?");
+    msg.readInt16("unknown?");
     logger->log("Protocol: Player start position: (%d, %d),"
                 " Direction: %d", x, y, direction);
 
