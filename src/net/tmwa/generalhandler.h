@@ -61,6 +61,8 @@ class GeneralHandler final : public MessageHandler,
         void gameEnded() const override final;
 
     protected:
+        static void processConnectionProblem(Net::MessageIn &msg);
+
         MessageHandlerPtr mAdminHandler;
         MessageHandlerPtr mBeingHandler;
         MessageHandlerPtr mBuySellHandler;

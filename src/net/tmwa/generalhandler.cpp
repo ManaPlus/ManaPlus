@@ -152,55 +152,57 @@ void GeneralHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_CONNECTION_PROBLEM:
-        {
-            const uint8_t code = msg.readUInt8();
-            logger->log("Connection problem: %u",
-                static_cast<unsigned int>(code));
-
-            switch (code)
-            {
-                case 0:
-                    // TRANSLATORS: error message
-                    errorMessage = _("Authentication failed.");
-                    break;
-                case 1:
-                    // TRANSLATORS: error message
-                    errorMessage = _("No servers available.");
-                    break;
-                case 2:
-                    if (client->getState() == STATE_GAME)
-                    {
-                        // TRANSLATORS: error message
-                        errorMessage = _("Someone else is trying to use this "
-                                         "account.");
-                    }
-                    else
-                    {
-                        // TRANSLATORS: error message
-                        errorMessage = _("This account is already logged in.");
-                    }
-                    break;
-                case 3:
-                    // TRANSLATORS: error message
-                    errorMessage = _("Speed hack detected.");
-                    break;
-                case 8:
-                    // TRANSLATORS: error message
-                    errorMessage = _("Duplicated login.");
-                    break;
-                default:
-                    // TRANSLATORS: error message
-                    errorMessage = _("Unknown connection error.");
-                    break;
-            }
-            client->setState(STATE_ERROR);
+            processConnectionProblem(msg);
             break;
-        }
 
         default:
             break;
     }
     BLOCK_END("GeneralHandler::handleMessage")
+}
+
+void GeneralHandler::processConnectionProblem(Net::MessageIn &msg)
+{
+    const uint8_t code = msg.readUInt8();
+    logger->log("Connection problem: %u", static_cast<unsigned int>(code));
+
+    switch (code)
+    {
+        case 0:
+            // TRANSLATORS: error message
+            errorMessage = _("Authentication failed.");
+            break;
+        case 1:
+            // TRANSLATORS: error message
+            errorMessage = _("No servers available.");
+            break;
+        case 2:
+            if (client->getState() == STATE_GAME)
+            {
+                // TRANSLATORS: error message
+                errorMessage = _("Someone else is trying to use this "
+                         "account.");
+            }
+            else
+            {
+                // TRANSLATORS: error message
+                errorMessage = _("This account is already logged in.");
+            }
+            break;
+        case 3:
+            // TRANSLATORS: error message
+            errorMessage = _("Speed hack detected.");
+            break;
+        case 8:
+            // TRANSLATORS: error message
+            errorMessage = _("Duplicated login.");
+            break;
+        default:
+            // TRANSLATORS: error message
+            errorMessage = _("Unknown connection error.");
+            break;
+    }
+    client->setState(STATE_ERROR);
 }
 
 void GeneralHandler::load()
