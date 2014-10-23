@@ -42,10 +42,6 @@ class NpcHandler notfinal : public Net::NpcHandler
     public:
         A_DELETE_COPY(NpcHandler)
 
-        void startShopping(const int beingId) const override final;
-
-        void endShopping(const int beingId) const override final;
-
         static void processNpcChoice(Net::MessageIn &msg);
 
         static void processNpcMessage(Net::MessageIn &msg);

@@ -42,14 +42,6 @@ NpcHandler::NpcHandler()
     mRequestLang = false;
 }
 
-void NpcHandler::startShopping(const int beingId A_UNUSED) const
-{
-}
-
-void NpcHandler::endShopping(const int beingId A_UNUSED) const
-{
-}
-
 void NpcHandler::processNpcChoice(Net::MessageIn &msg)
 {
     npcHandler->getNpc(msg);

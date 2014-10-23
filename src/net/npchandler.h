@@ -56,8 +56,6 @@ class NpcHandler notfinal
         virtual void stringInput(const int npcId,
                                  const std::string &value) const = 0;
 
-        virtual void startShopping(const int beingId) const = 0;
-
         virtual void buy(const int beingId) const = 0;
 
         virtual void sell(const int beingId) const = 0;
@@ -68,8 +66,6 @@ class NpcHandler notfinal
 
         virtual void sellItem(const int beingId, const int itemId,
                               const int amount) const = 0;
-
-        virtual void endShopping(const int beingId) const = 0;
 
         virtual void completeProgressBar() const = 0;
 
