@@ -39,11 +39,11 @@ SkillHandler::SkillHandler()
 
 void SkillHandler::processPlayerSkillUp(Net::MessageIn &msg)
 {
-    const int skillId = msg.readInt16();
-    const int level = msg.readInt16();
-    const int sp = msg.readInt16();
-    const int range = msg.readInt16();
-    const int up = msg.readUInt8();
+    const int skillId = msg.readInt16("skill id");
+    const int level = msg.readInt16("skill level");
+    const int sp = msg.readInt16("sp");
+    const int range = msg.readInt16("range");
+    const int up = msg.readUInt8("up flag");
 
     if (skillDialog && PlayerInfo::getSkillLevel(skillId) != level)
         skillDialog->playUpdateEffect(skillId);

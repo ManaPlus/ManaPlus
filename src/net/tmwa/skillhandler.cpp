@@ -86,19 +86,19 @@ void SkillHandler::useBeing(const int id, const int level,
                             const int beingId) const
 {
     createOutPacket(CMSG_SKILL_USE_BEING);
-    outMsg.writeInt16(static_cast<int16_t>(id));
-    outMsg.writeInt16(static_cast<int16_t>(level));
-    outMsg.writeInt32(beingId);
+    outMsg.writeInt16(static_cast<int16_t>(id), "skill id");
+    outMsg.writeInt16(static_cast<int16_t>(level), "level");
+    outMsg.writeInt32(beingId, "target id");
 }
 
 void SkillHandler::usePos(const int id, const int level,
                           const int x, const int y) const
 {
     createOutPacket(CMSG_SKILL_USE_POSITION);
-    outMsg.writeInt16(static_cast<int16_t>(level));
-    outMsg.writeInt16(static_cast<int16_t>(id));
-    outMsg.writeInt16(static_cast<int16_t>(x));
-    outMsg.writeInt16(static_cast<int16_t>(y));
+    outMsg.writeInt16(static_cast<int16_t>(level), "skill level");
+    outMsg.writeInt16(static_cast<int16_t>(id), "skill id");
+    outMsg.writeInt16(static_cast<int16_t>(x), "x");
+    outMsg.writeInt16(static_cast<int16_t>(y), "y");
 }
 
 void SkillHandler::usePos(const int id, const int level,
@@ -106,8 +106,8 @@ void SkillHandler::usePos(const int id, const int level,
                           const std::string &text) const
 {
     createOutPacket(CMSG_SKILL_USE_POSITION_MORE);
-    outMsg.writeInt16(static_cast<int16_t>(level), "level");
-    outMsg.writeInt16(static_cast<int16_t>(id), "id");
+    outMsg.writeInt16(static_cast<int16_t>(level), "skill level");
+    outMsg.writeInt16(static_cast<int16_t>(id), "skill id");
     outMsg.writeInt16(static_cast<int16_t>(x), "x");
     outMsg.writeInt16(static_cast<int16_t>(y), "y");
     outMsg.writeString(text, 80, "text");
@@ -116,27 +116,27 @@ void SkillHandler::usePos(const int id, const int level,
 void SkillHandler::useMap(const int id, const std::string &map) const
 {
     createOutPacket(CMSG_SKILL_USE_MAP);
-    outMsg.writeInt16(static_cast<int16_t>(id));
-    outMsg.writeString(map, 16);
+    outMsg.writeInt16(static_cast<int16_t>(id), "skill id");
+    outMsg.writeString(map, 16, "map name");
 }
 
 void SkillHandler::processPlayerSkills(Net::MessageIn &msg)
 {
-    msg.readInt16();  // length
+    msg.readInt16("len");
     const int skillCount = (msg.getLength() - 4) / 37;
     int updateSkill = 0;
 
     for (int k = 0; k < skillCount; k++)
     {
-        const int skillId = msg.readInt16();
+        const int skillId = msg.readInt16("skill id");
         const SkillType::SkillType inf = static_cast<SkillType::SkillType>(
-            msg.readInt16());
-        msg.skip(2);  // skill pool flags
-        const int level = msg.readInt16();
-        const int sp = msg.readInt16();
-        const int range = msg.readInt16();
-        msg.skip(24);  // 0 unused
-        const int up = msg.readUInt8();
+            msg.readInt16("inf"));
+        msg.readInt16("skill pool flags");
+        const int level = msg.readInt16("skill level");
+        const int sp = msg.readInt16("sp");
+        const int range = msg.readInt16("range");
+        msg.skip(24, "unused");
+        const int up = msg.readUInt8("up flag");
         const int oldLevel = PlayerInfo::getSkillLevel(skillId);
         if (oldLevel && oldLevel != level)
             updateSkill = skillId;
@@ -162,11 +162,11 @@ void SkillHandler::processSkillFailed(Net::MessageIn &msg)
 {
     // Action failed (ex. sit because you have not reached the
     // right level)
-    const int skillId   = msg.readInt16();
-    const int16_t bskill  = msg.readInt16();
-    msg.readInt16();  // btype
-    const signed char success = msg.readUInt8();
-    const signed char reason  = msg.readUInt8();
+    const int skillId   = msg.readInt16("skill id");
+    const int16_t bskill  = msg.readInt16("bskill");
+    msg.readInt16("btype");
+    const signed char success = msg.readUInt8("success");
+    const signed char reason  = msg.readUInt8("reason");
     if (success != static_cast<int>(SKILL_FAILED)
         && bskill == static_cast<int>(BSKILL_EMOTE))
     {
