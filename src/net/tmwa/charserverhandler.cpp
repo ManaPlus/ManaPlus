@@ -380,7 +380,7 @@ void CharServerHandler::processCharLogin(Net::MessageIn &msg)
 {
     BLOCK_START("CharServerHandler::processCharLogin")
 
-    msg.skip(2, "len");
+    msg.readInt16("len");
     const int slots = msg.readInt16("slots");
     if (slots > 0 && slots < 30)
         loginData.characterSlots = static_cast<uint16_t>(slots);

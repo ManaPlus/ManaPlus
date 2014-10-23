@@ -183,10 +183,10 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     jobStat.base = temp;
     jobStat.mod = temp;
 
-    const int shoes = msg.readInt16();     // look like unused
-    const int gloves = msg.readInt16();    // look like unused
-    const int cape = msg.readInt16();      // look like unused
-    const int misc1 = msg.readInt16();     // look like unused
+    const int shoes = msg.readInt16("shoes");
+    const int gloves = msg.readInt16("gloves");
+    const int cape = msg.readInt16("cape");
+    const int misc1 = msg.readInt16("misc1");
 
     msg.readInt32("option");
     tempPlayer->setKarma(msg.readInt32("karma"));
@@ -196,7 +196,7 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     data.mAttributes[Attributes::HP] = msg.readInt16("hp");
     data.mAttributes[Attributes::MAX_HP] = msg.readInt16("max hp");
 
-    msg.skip(4, "unused");
+    msg.readInt32("unused");
 
     data.mAttributes[Attributes::MP] = msg.readInt16("mp/sp");
     data.mAttributes[Attributes::MAX_MP] = msg.readInt16("max mp/sp");
@@ -221,7 +221,7 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
         msg.readInt16("hair color")));
 
     const int misc2 = msg.readInt16("clothes color");
-    tempPlayer->setName(msg.readString(24));
+    tempPlayer->setName(msg.readString(24, "name"));
 
     character->dummy = tempPlayer;
 
@@ -261,7 +261,8 @@ void CharServerHandler::chooseCharacter(Net::Character *const character)
     mCharSelectDialog = nullptr;
 
     createOutPacket(CMSG_CHAR_SELECT);
-    outMsg.writeInt8(static_cast<unsigned char>(mSelectedCharacter->slot));
+    outMsg.writeInt8(static_cast<unsigned char>(
+        mSelectedCharacter->slot), "slot");
 }
 
 void CharServerHandler::newCharacter(const std::string &name, const int slot,
