@@ -113,7 +113,7 @@ void TradeHandler::request(const Being *const being) const
         return;
 
     createOutPacket(CMSG_TRADE_REQUEST);
-    outMsg.writeInt32(being->getId());
+    outMsg.writeInt32(being->getId(), "player id");
 }
 
 void TradeHandler::respond(const bool accept) const
@@ -122,7 +122,7 @@ void TradeHandler::respond(const bool accept) const
         PlayerInfo::setTrading(false);
 
     createOutPacket(CMSG_TRADE_RESPONSE);
-    outMsg.writeInt8(static_cast<int8_t>(accept ? 3 : 4));
+    outMsg.writeInt8(static_cast<int8_t>(accept ? 3 : 4), "accept");
 }
 
 void TradeHandler::addItem(const Item *const item, const int amount) const
@@ -132,15 +132,15 @@ void TradeHandler::addItem(const Item *const item, const int amount) const
 
     createOutPacket(CMSG_TRADE_ITEM_ADD_REQUEST);
     outMsg.writeInt16(static_cast<int16_t>(
-        item->getInvIndex() + INVENTORY_OFFSET));
-    outMsg.writeInt32(amount);
+        item->getInvIndex() + INVENTORY_OFFSET), "index");
+    outMsg.writeInt32(amount, "amount");
 }
 
 void TradeHandler::setMoney(const int amount) const
 {
     createOutPacket(CMSG_TRADE_ITEM_ADD_REQUEST);
-    outMsg.writeInt16(0);
-    outMsg.writeInt32(amount);
+    outMsg.writeInt16(0, "index");
+    outMsg.writeInt32(amount, "amount");
 }
 
 void TradeHandler::confirm() const
@@ -165,11 +165,11 @@ void TradeHandler::processTradeRequest(Net::MessageIn &msg)
 
 void TradeHandler::processTradeItemAdd(Net::MessageIn &msg)
 {
-    const int amount = msg.readInt32();
-    const int type = msg.readInt16();
-    const uint8_t identify = msg.readUInt8();  // identified flag
-    msg.readUInt8();  // attribute
-    const uint8_t refine = msg.readUInt8();  // refine
+    const int amount = msg.readInt32("amount");
+    const int type = msg.readInt16("type");
+    const uint8_t identify = msg.readUInt8("identify");
+    msg.readUInt8("attribute");
+    const uint8_t refine = msg.readUInt8("refine");
     int cards[4];
     for (int f = 0; f < 4; f++)
         cards[f] = msg.readInt16("card");
@@ -203,7 +203,7 @@ void TradeHandler::processTradeItemAdd(Net::MessageIn &msg)
 void TradeHandler::processTradeItemAddResponse(Net::MessageIn &msg)
 {
     // Trade: New Item add response (was 0x00ea, now 01b1)
-    const int index = msg.readInt16() - INVENTORY_OFFSET;
+    const int index = msg.readInt16("index") - INVENTORY_OFFSET;
     Item *item = nullptr;
     if (PlayerInfo::getInventory())
         item = PlayerInfo::getInventory()->getItem(index);
@@ -214,9 +214,9 @@ void TradeHandler::processTradeItemAddResponse(Net::MessageIn &msg)
             tradeWindow->receivedOk(true);
         return;
     }
-    const int quantity = msg.readInt16();
+    const int quantity = msg.readInt16("amount");
 
-    const uint8_t res = msg.readUInt8();
+    const uint8_t res = msg.readUInt8("status");
     switch (res)
     {
         case 0:

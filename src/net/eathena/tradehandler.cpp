@@ -123,7 +123,7 @@ void TradeHandler::request(const Being *const being) const
         return;
 
     createOutPacket(CMSG_TRADE_REQUEST);
-    outMsg.writeInt32(being->getId());
+    outMsg.writeInt32(being->getId(), "player id");
 }
 
 void TradeHandler::respond(const bool accept) const
@@ -132,7 +132,7 @@ void TradeHandler::respond(const bool accept) const
         PlayerInfo::setTrading(false);
 
     createOutPacket(CMSG_TRADE_RESPONSE);
-    outMsg.writeInt8(static_cast<int8_t>(accept ? 3 : 4));
+    outMsg.writeInt8(static_cast<int8_t>(accept ? 3 : 4), "accept");
 }
 
 void TradeHandler::addItem(const Item *const item, const int amount) const
@@ -143,15 +143,16 @@ void TradeHandler::addItem(const Item *const item, const int amount) const
     mItemIndex = item->getInvIndex();
     mQuantity = amount;
     createOutPacket(CMSG_TRADE_ITEM_ADD_REQUEST);
-    outMsg.writeInt16(static_cast<int16_t>(mItemIndex + INVENTORY_OFFSET));
-    outMsg.writeInt32(amount);
+    outMsg.writeInt16(static_cast<int16_t>(mItemIndex + INVENTORY_OFFSET),
+        "index");
+    outMsg.writeInt32(amount, "amount");
 }
 
 void TradeHandler::setMoney(const int amount) const
 {
     createOutPacket(CMSG_TRADE_ITEM_ADD_REQUEST);
-    outMsg.writeInt16(0);
-    outMsg.writeInt32(amount);
+    outMsg.writeInt16(0, "index");
+    outMsg.writeInt32(amount, "amount");
 }
 
 void TradeHandler::confirm() const

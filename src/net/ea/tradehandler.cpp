@@ -136,9 +136,9 @@ void TradeHandler::processTradeOk(Net::MessageIn &msg)
 {
     // 0 means ok from myself, 1 means ok from other;
     if (tradeWindow)
-        tradeWindow->receivedOk(msg.readUInt8() == 0U);
+        tradeWindow->receivedOk(msg.readUInt8("status") == 0U);
     else
-        msg.readUInt8();
+        msg.readUInt8("status");
 }
 
 void TradeHandler::processTradeCancel(Net::MessageIn &msg A_UNUSED)
