@@ -102,9 +102,9 @@ Vector PlayerHandler::getDefaultWalkSpeed() const
 void PlayerHandler::processPlayerWarp(Net::MessageIn &msg)
 {
     BLOCK_START("PlayerHandler::processPlayerWarp")
-    std::string mapPath = msg.readString(16);
-    int x = msg.readInt16();
-    int y = msg.readInt16();
+    std::string mapPath = msg.readString(16, "map name");
+    int x = msg.readInt16("x");
+    int y = msg.readInt16("y");
 
     logger->log("Warping to %s (%d, %d)", mapPath.c_str(), x, y);
 
@@ -228,9 +228,9 @@ void PlayerHandler::processPlayerStatUpdate3(Net::MessageIn &msg)
 void PlayerHandler::processPlayerStatUpdate4(Net::MessageIn &msg)
 {
     BLOCK_START("PlayerHandler::processPlayerStatUpdate4")
-    const int type = msg.readInt16();
-    const uint8_t ok = msg.readUInt8();
-    const int value = msg.readUInt8();
+    const int type = msg.readInt16("type");
+    const uint8_t ok = msg.readUInt8("flag");
+    const int value = msg.readUInt8("value");
 
     if (ok != 1)
     {
@@ -258,7 +258,7 @@ void PlayerHandler::processPlayerStatUpdate6(Net::MessageIn &msg)
 void PlayerHandler::processPlayerArrowMessage(Net::MessageIn &msg)
 {
     BLOCK_START("PlayerHandler::processPlayerArrowMessage")
-    const int type = msg.readInt16();
+    const int type = msg.readInt16("type");
     switch (type)
     {
         case 0:

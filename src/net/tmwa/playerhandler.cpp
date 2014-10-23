@@ -138,11 +138,11 @@ void PlayerHandler::handleMessage(Net::MessageIn &msg)
 void PlayerHandler::attack(const int id, const bool keep) const
 {
     createOutPacket(CMSG_PLAYER_CHANGE_ACT);
-    outMsg.writeInt32(id);
+    outMsg.writeInt32(id, "target id");
     if (keep)
-        outMsg.writeInt8(7);
+        outMsg.writeInt8(7, "action");
     else
-        outMsg.writeInt8(0);
+        outMsg.writeInt8(0, "action");
 }
 
 void PlayerHandler::stopAttack() const
@@ -153,7 +153,7 @@ void PlayerHandler::stopAttack() const
 void PlayerHandler::emote(const uint8_t emoteId) const
 {
     createOutPacket(CMSG_PLAYER_EMOTE);
-    outMsg.writeInt8(emoteId);
+    outMsg.writeInt8(emoteId, "emote id");
 }
 
 void PlayerHandler::increaseAttribute(const int attr) const
@@ -161,8 +161,8 @@ void PlayerHandler::increaseAttribute(const int attr) const
     if (attr >= Attributes::STR && attr <= Attributes::LUK)
     {
         createOutPacket(CMSG_STAT_UPDATE_REQUEST);
-        outMsg.writeInt16(static_cast<int16_t>(attr));
-        outMsg.writeInt8(1);
+        outMsg.writeInt16(static_cast<int16_t>(attr), "attribute id");
+        outMsg.writeInt8(1, "increment");
     }
 }
 
@@ -172,7 +172,7 @@ void PlayerHandler::increaseSkill(const uint16_t skillId) const
         return;
 
     createOutPacket(CMSG_SKILL_LEVELUP_REQUEST);
-    outMsg.writeInt16(skillId);
+    outMsg.writeInt16(skillId, "skill id");
 }
 
 void PlayerHandler::pickUp(const FloorItem *const floorItem) const
@@ -181,7 +181,7 @@ void PlayerHandler::pickUp(const FloorItem *const floorItem) const
         return;
 
     createOutPacket(CMSG_ITEM_PICKUP);
-    outMsg.writeInt32(floorItem->getId());
+    outMsg.writeInt32(floorItem->getId(), "object id");
     TmwAthena::InventoryHandler *const handler =
         static_cast<TmwAthena::InventoryHandler*>(inventoryHandler);
     if (handler)
@@ -191,8 +191,8 @@ void PlayerHandler::pickUp(const FloorItem *const floorItem) const
 void PlayerHandler::setDirection(const unsigned char direction) const
 {
     createOutPacket(CMSG_PLAYER_CHANGE_DIR);
-    outMsg.writeInt16(0);
-    outMsg.writeInt8(direction);
+    outMsg.writeInt16(0, "unused");
+    outMsg.writeInt8(direction, "direction");
 }
 
 void PlayerHandler::setDestination(const int x, const int y,
@@ -201,7 +201,7 @@ void PlayerHandler::setDestination(const int x, const int y,
     createOutPacket(CMSG_PLAYER_CHANGE_DEST);
     outMsg.writeCoordinates(static_cast<uint16_t>(x),
         static_cast<uint16_t>(y),
-        static_cast<unsigned char>(direction));
+        static_cast<unsigned char>(direction), "destination");
 }
 
 void PlayerHandler::changeAction(const BeingAction::Action &action) const
@@ -225,14 +225,14 @@ void PlayerHandler::changeAction(const BeingAction::Action &action) const
     }
 
     createOutPacket(CMSG_PLAYER_CHANGE_ACT);
-    outMsg.writeInt32(0);
-    outMsg.writeInt8(type);
+    outMsg.writeInt32(0, "unused");
+    outMsg.writeInt8(type, "action");
 }
 
 void PlayerHandler::respawn() const
 {
     createOutPacket(CMSG_PLAYER_RESTART);
-    outMsg.writeInt8(0);
+    outMsg.writeInt8(0, "action");
 }
 
 void PlayerHandler::requestOnlineList() const
@@ -258,7 +258,7 @@ void PlayerHandler::processOnlineList(Net::MessageIn &msg)
         return;
 
     BLOCK_START("PlayerHandler::processOnlineList")
-    const int size = msg.readInt16() - 4;
+    const int size = msg.readInt16("len") - 4;
     std::vector<OnlinePlayer*> arr;
 
     if (!size)
@@ -269,7 +269,7 @@ void PlayerHandler::processOnlineList(Net::MessageIn &msg)
         return;
     }
 
-    char *const start = reinterpret_cast<char*>(msg.readBytes(size));
+    char *const start = reinterpret_cast<char*>(msg.readBytes(size, "nicks"));
     if (!start)
     {
         BLOCK_END("PlayerHandler::processOnlineList")
@@ -325,14 +325,14 @@ void PlayerHandler::processOnlineList(Net::MessageIn &msg)
 void PlayerHandler::updateStatus(const uint8_t status) const
 {
     createOutPacket(CMSG_SET_STATUS);
-    outMsg.writeInt8(status);
-    outMsg.writeInt8(0);
+    outMsg.writeInt8(status, "status");
+    outMsg.writeInt8(0, "unused");
 }
 
 void PlayerHandler::processMapMask(Net::MessageIn &msg)
 {
-    const int mask = msg.readInt32();
-    msg.readInt32();  // unused
+    const int mask = msg.readInt32("mask");
+    msg.readInt32("unused");
     Map *const map = Game::instance()->getCurrentMap();
     if (map)
         map->setMask(mask);
@@ -340,8 +340,8 @@ void PlayerHandler::processMapMask(Net::MessageIn &msg)
 
 void PlayerHandler::processMapMusic(Net::MessageIn &msg)
 {
-    const int size = msg.readInt16() - 5;
-    const std::string music = msg.readString(size);
+    const int size = msg.readInt16("len") - 5;
+    const std::string music = msg.readString(size, "name");
     soundManager.playMusic(music);
 
     Map *const map = viewport->getMap();
