@@ -63,10 +63,7 @@ void AdminHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_ADMIN_KICK_ACK:
-            if (msg.readInt32() == 0)
-                NotifyManager::notify(NotifyTypes::KICK_FAIL);
-            else
-                NotifyManager::notify(NotifyTypes::KICK_SUCCEED);
+            processKickAck(msg);
             break;
 
         default:

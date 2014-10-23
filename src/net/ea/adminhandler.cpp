@@ -22,12 +22,17 @@
 
 #include "net/ea/adminhandler.h"
 
+#include "notifymanager.h"
+
 #include "gui/chatconsts.h"
 
 #include "net/chathandler.h"
+#include "net/messagein.h"
 #include "net/serverfeatures.h"
 
 #include "utils/stringutils.h"
+
+#include "resources/notifytypes.h"
 
 #include <string>
 
@@ -84,6 +89,14 @@ void AdminHandler::createItems(const int id, const int color,
         chatHandler->talk(strprintf("@item %d %d %d",
             id, color, amount), GENERAL_CHANNEL);
     }
+}
+
+void AdminHandler::processKickAck(Net::MessageIn &msg)
+{
+    if (msg.readInt32() == 0)
+        NotifyManager::notify(NotifyTypes::KICK_FAIL);
+    else
+        NotifyManager::notify(NotifyTypes::KICK_SUCCEED);
 }
 
 }  // namespace Ea

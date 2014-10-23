@@ -27,6 +27,11 @@
 
 #include "localconsts.h"
 
+namespace Net
+{
+    class MessageIn;
+}
+
 namespace Ea
 {
 
@@ -57,6 +62,9 @@ class AdminHandler notfinal : public Net::AdminHandler
 
         void createItems(const int id, const int color,
                          const int amount) const override final;
+
+    protected:
+        static void processKickAck(Net::MessageIn &msg);
 };
 
 }  // namespace Ea
