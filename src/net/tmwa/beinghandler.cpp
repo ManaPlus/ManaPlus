@@ -1494,7 +1494,9 @@ void BeingHandler::processBeingChangeDirection(Net::MessageIn &msg)
 
     if (!dstBeing)
     {
-        BLOCK_END("BeingHandler::processBeingChangeDirection")
+        msg.readInt16("unused");
+        msg.readUInt8("direction");
+        BLOCK_END("BeingHandler::processBeingChangeDirection");
         return;
     }
 
@@ -1639,9 +1641,17 @@ void BeingHandler::processPlayerGuilPartyInfo(Net::MessageIn &msg)
         }
         else
         {
-            msg.skip(48);
+            msg.readString(24, "guild name");
+            msg.readString(24, "guild pos");
         }
         dstBeing->addToCache();
+        msg.readString(24, "?");
+    }
+    else
+    {
+        msg.readString(24, "party name");
+        msg.readString(24, "guild name");
+        msg.readString(24, "guild pos");
         msg.readString(24, "?");
     }
     BLOCK_END("BeingHandler::processPlayerGuilPartyInfo")
