@@ -118,8 +118,8 @@ void LoginHandler::changePassword(const std::string &restrict username
                                   const
 {
     createOutPacket(CMSG_CHAR_PASSWORD_CHANGE);
-    outMsg.writeStringNoLog(oldPassword, 24);
-    outMsg.writeStringNoLog(newPassword, 24);
+    outMsg.writeStringNoLog(oldPassword, 24, "old password");
+    outMsg.writeStringNoLog(newPassword, 24, "new password");
 }
 
 void LoginHandler::sendLoginRegister(const std::string &restrict username,
@@ -185,7 +185,7 @@ void LoginHandler::processLoginError2(Net::MessageIn &msg)
                                         "banned from the game until "
                                         "%s.\nPlease contact the GM "
                                         "team via the forums."),
-                                        msg.readString(20).c_str());
+                                        msg.readString(20, "date").c_str());
             break;
         case 7:
             // look like unused

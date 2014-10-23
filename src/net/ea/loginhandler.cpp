@@ -177,7 +177,7 @@ void LoginHandler::processCharPasswordResponse(Net::MessageIn &msg)
 void LoginHandler::processUpdateHost(Net::MessageIn &msg)
 {
     const int len = msg.readInt16("len") - 4;
-    mUpdateHost = msg.readString(len);
+    mUpdateHost = msg.readString(len, "update host");
 
     if (!checkPath(mUpdateHost))
     {
@@ -192,7 +192,7 @@ void LoginHandler::processUpdateHost(Net::MessageIn &msg)
 
 void LoginHandler::processLoginData(Net::MessageIn &msg)
 {
-    msg.skip(2, "len");
+    msg.readInt16("len");
 
     loginHandler->clearWorlds();
 
@@ -203,7 +203,7 @@ void LoginHandler::processLoginData(Net::MessageIn &msg)
     mToken.session_ID2 = msg.readInt32("session id2");
     msg.readInt32("old ip");
     loginData.lastLogin = msg.readString(24, "last login");
-    msg.skip(2, "unused");
+    msg.readInt16("unused");
 
     // reserve bits for future usage
     mToken.sex = Being::intToGender(static_cast<uint8_t>(
@@ -219,8 +219,8 @@ void LoginHandler::processLoginData(Net::MessageIn &msg)
         world->online_users = msg.readInt16("online number");
         config.setValue("updatehost", mUpdateHost);
         world->updateHost = mUpdateHost;
-        msg.skip(2, "maintenance");
-        msg.skip(2, "new");
+        msg.readInt16("maintenance");
+        msg.readInt16("new");
 
         logger->log("Network: Server: %s (%s:%d)", world->name.c_str(),
             ipToString(world->address), world->port);
