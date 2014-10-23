@@ -39,14 +39,14 @@ ItemHandler::~ItemHandler()
 
 void ItemHandler::processItemVisible(Net::MessageIn &msg)
 {
-    const int id = msg.readInt32();
-    const int itemId = msg.readInt16();
-    const uint8_t identify = msg.readUInt8();  // identify flag
-    const int x = msg.readInt16();
-    const int y = msg.readInt16();
-    const int amount = msg.readInt16();
-    const int subX = static_cast<int>(msg.readInt8());
-    const int subY = static_cast<int>(msg.readInt8());
+    const int id = msg.readInt32("item object id");
+    const int itemId = msg.readInt16("item id");
+    const uint8_t identify = msg.readUInt8("identify");
+    const int x = msg.readInt16("x");
+    const int y = msg.readInt16("y");
+    const int amount = msg.readInt16("amount");
+    const int subX = static_cast<int>(msg.readInt8("sub x"));
+    const int subY = static_cast<int>(msg.readInt8("sub y"));
 
     if (actorManager)
     {
@@ -60,7 +60,7 @@ void ItemHandler::processItemRemove(Net::MessageIn &msg)
     if (actorManager)
     {
         if (FloorItem *const item = actorManager
-            ->findItem(msg.readInt32()))
+            ->findItem(msg.readInt32("floor item id")))
         {
             actorManager->destroy(item);
         }
