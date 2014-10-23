@@ -111,20 +111,20 @@ void NpcHandler::handleMessage(Net::MessageIn &msg)
 void NpcHandler::talk(const int npcId) const
 {
     createOutPacket(CMSG_NPC_TALK);
-    outMsg.writeInt32(npcId);
-    outMsg.writeInt8(0);  // unused
+    outMsg.writeInt32(npcId, "npc id");
+    outMsg.writeInt8(0, "unused");
 }
 
 void NpcHandler::nextDialog(const int npcId) const
 {
     createOutPacket(CMSG_NPC_NEXT_REQUEST);
-    outMsg.writeInt32(npcId);
+    outMsg.writeInt32(npcId, "npc id");
 }
 
 void NpcHandler::closeDialog(const int npcId)
 {
     createOutPacket(CMSG_NPC_CLOSE);
-    outMsg.writeInt32(npcId);
+    outMsg.writeInt32(npcId, "npc id");
 
     const NpcDialogs::iterator it = NpcDialog::mNpcDialogs.find(npcId);
     if (it != NpcDialog::mNpcDialogs.end())
@@ -141,38 +141,38 @@ void NpcHandler::closeDialog(const int npcId)
 void NpcHandler::listInput(const int npcId, const unsigned char value) const
 {
     createOutPacket(CMSG_NPC_LIST_CHOICE);
-    outMsg.writeInt32(npcId);
-    outMsg.writeInt8(value);
+    outMsg.writeInt32(npcId, "npc id");
+    outMsg.writeInt8(value, "value");
 }
 
 void NpcHandler::integerInput(const int npcId, const int value) const
 {
     createOutPacket(CMSG_NPC_INT_RESPONSE);
-    outMsg.writeInt32(npcId);
-    outMsg.writeInt32(value);
+    outMsg.writeInt32(npcId, "npc id");
+    outMsg.writeInt32(value, "value");
 }
 
 void NpcHandler::stringInput(const int npcId, const std::string &value) const
 {
     createOutPacket(CMSG_NPC_STR_RESPONSE);
-    outMsg.writeInt16(static_cast<int16_t>(value.length() + 9));
-    outMsg.writeInt32(npcId);
-    outMsg.writeString(value, static_cast<int>(value.length()));
-    outMsg.writeInt8(0);  // Prevent problems with string reading
+    outMsg.writeInt16(static_cast<int16_t>(value.length() + 9), "len");
+    outMsg.writeInt32(npcId, "npc id");
+    outMsg.writeString(value, static_cast<int>(value.length()), "value");
+    outMsg.writeInt8(0, "null byte");
 }
 
 void NpcHandler::buy(const int beingId) const
 {
     createOutPacket(CMSG_NPC_BUY_SELL_REQUEST);
-    outMsg.writeInt32(beingId);
-    outMsg.writeInt8(0);  // Buy
+    outMsg.writeInt32(beingId, "npc id");
+    outMsg.writeInt8(0, "action");
 }
 
 void NpcHandler::sell(const int beingId) const
 {
     createOutPacket(CMSG_NPC_BUY_SELL_REQUEST);
-    outMsg.writeInt32(beingId);
-    outMsg.writeInt8(1);  // Sell
+    outMsg.writeInt32(beingId, "npc id");
+    outMsg.writeInt8(1, "action");
 }
 
 void NpcHandler::buyItem(const int beingId A_UNUSED, const int itemId,
@@ -181,27 +181,29 @@ void NpcHandler::buyItem(const int beingId A_UNUSED, const int itemId,
     createOutPacket(CMSG_NPC_BUY_REQUEST);
     if (serverFeatures->haveItemColors())
     {
-        outMsg.writeInt16(10);  // One item (length of packet)
-        outMsg.writeInt16(static_cast<int16_t>(amount));
-        outMsg.writeInt16(static_cast<int16_t>(itemId));
-        outMsg.writeInt8(color);
-        outMsg.writeInt8(0);
+        outMsg.writeInt16(10, "len");
+        outMsg.writeInt16(static_cast<int16_t>(amount), "amount");
+        outMsg.writeInt16(static_cast<int16_t>(itemId), "item id");
+        outMsg.writeInt8(color, "color");
+        outMsg.writeInt8(0, "unused");
     }
     else
     {
-        outMsg.writeInt16(8);  // One item (length of packet)
-        outMsg.writeInt16(static_cast<int16_t>(amount));
-        outMsg.writeInt16(static_cast<int16_t>(itemId));
+        outMsg.writeInt16(8, "len");
+        outMsg.writeInt16(static_cast<int16_t>(amount), "amount");
+        outMsg.writeInt16(static_cast<int16_t>(itemId), "item id");
     }
 }
 
 void NpcHandler::sellItem(const int beingId A_UNUSED,
-                          const int itemId, const int amount) const
+                          const int itemId,
+                          const int amount) const
 {
     createOutPacket(CMSG_NPC_SELL_REQUEST);
-    outMsg.writeInt16(8);  // One item (length of packet)
-    outMsg.writeInt16(static_cast<int16_t>(itemId + INVENTORY_OFFSET));
-    outMsg.writeInt16(static_cast<int16_t>(amount));
+    outMsg.writeInt16(8, "len");
+    outMsg.writeInt16(static_cast<int16_t>(
+        itemId + INVENTORY_OFFSET), "index");
+    outMsg.writeInt16(static_cast<int16_t>(amount), "amount");
 }
 
 void NpcHandler::completeProgressBar() const
@@ -246,10 +248,10 @@ int NpcHandler::getNpc(Net::MessageIn &msg)
         || msg.getId() == SMSG_NPC_MESSAGE
         || msg.getId() == SMSG_NPC_CHANGETITLE)
     {
-        msg.readInt16();  // length
+        msg.readInt16("len");
     }
 
-    const int npcId = msg.readInt32();
+    const int npcId = msg.readInt32("npc id");
 
     const NpcDialogs::const_iterator diag = NpcDialog::mNpcDialogs.find(npcId);
     mDialog = nullptr;
@@ -294,7 +296,7 @@ void NpcHandler::processNpcCommand(Net::MessageIn &msg)
     const int npcId = npcHandler->getNpc(msg);
     mRequestLang = false;
 
-    const int cmd = msg.readInt16();
+    const int cmd = msg.readInt16("cmd");
     switch (cmd)
     {
         case 0:
@@ -309,9 +311,9 @@ void NpcHandler::processNpcCommand(Net::MessageIn &msg)
         case 2:
             if (viewport)
             {
-                const int id = msg.readInt32();
-                const int x = msg.readInt16();
-                const int y = msg.readInt16();
+                const int id = msg.readInt32("id");
+                const int x = msg.readInt16("x");
+                const int y = msg.readInt16("y");
                 if (!id)
                     viewport->moveCameraToPosition(x, y);
                 else
@@ -327,9 +329,9 @@ void NpcHandler::processNpcCommand(Net::MessageIn &msg)
         case 4:
             if (viewport)
             {
-                msg.readInt32();  // id
-                const int x = msg.readInt16();
-                const int y = msg.readInt16();
+                msg.readInt32("id");
+                const int x = msg.readInt16("x");
+                const int y = msg.readInt16("y");
                 viewport->moveCameraRelative(x, y);
             }
             break;
@@ -340,7 +342,7 @@ void NpcHandler::processNpcCommand(Net::MessageIn &msg)
             if (mDialog)
             {
                 mDialog->showAvatar(static_cast<uint16_t>(
-                    msg.readInt32()));  // avatar id
+                    msg.readInt32("avatar id")));
             }
             break;
         case 7:  // set avatar direction
@@ -348,12 +350,12 @@ void NpcHandler::processNpcCommand(Net::MessageIn &msg)
             {
                 mDialog->setAvatarDirection(
                     Net::MessageIn::fromServerDirection(
-                    static_cast<uint8_t>(msg.readInt32())));  // direction
+                    static_cast<uint8_t>(msg.readInt32("avatar direction"))));
             }
             break;
         case 8:  // set avatar action
             if (mDialog)
-                mDialog->setAvatarAction(msg.readInt32());  // direction
+                mDialog->setAvatarAction(msg.readInt32("avatar action"));
             break;
         case 9:  // clear npc dialog
             if (mDialog)
@@ -361,7 +363,7 @@ void NpcHandler::processNpcCommand(Net::MessageIn &msg)
             break;
         case 10:  // send selected item id
         {
-            int invSize = msg.readInt32();
+            int invSize = msg.readInt32("npc inventory size");
             if (!invSize)
                 invSize = 1;
             if (mDialog)
@@ -378,7 +380,7 @@ void NpcHandler::processChangeTitle(Net::MessageIn &msg)
 {
     npcHandler->getNpc(msg);
     mRequestLang = false;
-    const std::string str = msg.readString();
+    const std::string str = msg.readString(-1, "title");
     if (mDialog)
         mDialog->setCaption(str);
 }

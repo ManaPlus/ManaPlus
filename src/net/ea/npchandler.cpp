@@ -64,11 +64,12 @@ void NpcHandler::processNpcChoice(Net::MessageIn &msg)
     if (mDialog)
     {
         mDialog->choiceRequest();
-        mDialog->parseListItems(msg.readString(msg.getLength() - 8));
+        mDialog->parseListItems(msg.readString(msg.getLength() - 8,
+            "select items"));
     }
     else
     {
-        msg.readString(msg.getLength() - 8);
+        msg.readString(msg.getLength() - 8, "select items");
     }
 }
 
@@ -77,7 +78,7 @@ void NpcHandler::processNpcMessage(Net::MessageIn &msg)
     npcHandler->getNpc(msg);
     mRequestLang = false;
 
-    const std::string message = msg.readString(msg.getLength() - 8);
+    const std::string message = msg.readString(msg.getLength() - 8, "message");
     // ignore future legacy npc commands.
     if (message.size() > 3 && message.substr(0, 3) == "###")
         return;
