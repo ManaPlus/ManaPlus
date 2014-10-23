@@ -285,32 +285,32 @@ void PetHandler::processPetFood(Net::MessageIn &msg)
 void PetHandler::requestStatus() const
 {
     createOutPacket(CMSG_PET_MENU_ACTION);
-    outMsg.writeInt8(0);
+    outMsg.writeInt8(0, "action");
 }
 
 void PetHandler::feed() const
 {
     createOutPacket(CMSG_PET_MENU_ACTION);
-    outMsg.writeInt8(1);
+    outMsg.writeInt8(1, "action");
 }
 
 void PetHandler::dropLoot() const
 {
     createOutPacket(CMSG_PET_MENU_ACTION);
-    outMsg.writeInt8(2);  // performance
+    outMsg.writeInt8(2, "action");  // performance
 }
 
 void PetHandler::returnToEgg() const
 {
     createOutPacket(CMSG_PET_MENU_ACTION);
-    outMsg.writeInt8(3);
+    outMsg.writeInt8(3, "action");
     PlayerInfo::setPet(nullptr);
 }
 
 void PetHandler::unequip() const
 {
     createOutPacket(CMSG_PET_MENU_ACTION);
-    outMsg.writeInt8(4);
+    outMsg.writeInt8(4, "action");
 }
 
 }  // namespace EAthena
