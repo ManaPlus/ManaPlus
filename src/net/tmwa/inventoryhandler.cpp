@@ -159,8 +159,8 @@ void InventoryHandler::equipItem(const Item *const item) const
 
     createOutPacket(CMSG_PLAYER_EQUIP);
     outMsg.writeInt16(static_cast<int16_t>(
-        item->getInvIndex() + INVENTORY_OFFSET));
-    outMsg.writeInt16(0);
+        item->getInvIndex() + INVENTORY_OFFSET), "index");
+    outMsg.writeInt16(0, "unused");
 }
 
 void InventoryHandler::unequipItem(const Item *const item) const
@@ -170,7 +170,7 @@ void InventoryHandler::unequipItem(const Item *const item) const
 
     createOutPacket(CMSG_PLAYER_UNEQUIP);
     outMsg.writeInt16(static_cast<int16_t>(
-        item->getInvIndex() + INVENTORY_OFFSET));
+        item->getInvIndex() + INVENTORY_OFFSET), "index");
 }
 
 void InventoryHandler::useItem(const Item *const item) const
@@ -180,8 +180,8 @@ void InventoryHandler::useItem(const Item *const item) const
 
     createOutPacket(CMSG_PLAYER_INVENTORY_USE);
     outMsg.writeInt16(static_cast<int16_t>(
-        item->getInvIndex() + INVENTORY_OFFSET));
-    outMsg.writeInt32(item->getId());  // unused
+        item->getInvIndex() + INVENTORY_OFFSET), "index");
+    outMsg.writeInt32(item->getId(), "item id");
 }
 
 void InventoryHandler::dropItem(const Item *const item, const int amount) const
@@ -191,8 +191,8 @@ void InventoryHandler::dropItem(const Item *const item, const int amount) const
 
     createOutPacket(CMSG_PLAYER_INVENTORY_DROP);
     outMsg.writeInt16(static_cast<int16_t>(
-        item->getInvIndex() + INVENTORY_OFFSET));
-    outMsg.writeInt16(static_cast<int16_t>(amount));
+        item->getInvIndex() + INVENTORY_OFFSET), "index");
+    outMsg.writeInt16(static_cast<int16_t>(amount), "amount");
 }
 
 void InventoryHandler::closeStorage(const int type A_UNUSED) const
@@ -206,15 +206,17 @@ void InventoryHandler::moveItem2(const int source, const int slot,
     if (source == Inventory::INVENTORY && destination == Inventory::STORAGE)
     {
         createOutPacket(CMSG_MOVE_TO_STORAGE);
-        outMsg.writeInt16(static_cast<int16_t>(slot + INVENTORY_OFFSET));
-        outMsg.writeInt32(amount);
+        outMsg.writeInt16(static_cast<int16_t>(slot + INVENTORY_OFFSET),
+            "index");
+        outMsg.writeInt32(amount, "amount");
     }
     else if (source == Inventory::STORAGE
              && destination == Inventory::INVENTORY)
     {
         createOutPacket(CSMG_MOVE_FROM_STORAGE);
-        outMsg.writeInt16(static_cast<int16_t>(slot + STORAGE_OFFSET));
-        outMsg.writeInt32(amount);
+        outMsg.writeInt16(static_cast<int16_t>(slot + STORAGE_OFFSET),
+            "index");
+        outMsg.writeInt32(amount, "amount");
     }
 }
 
@@ -238,7 +240,7 @@ void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
     Inventory *const inventory = localPlayer
         ? PlayerInfo::getInventory() : nullptr;
 
-    msg.readInt16();  // length
+    msg.readInt16("len");
     Equipment *const equipment = PlayerInfo::getEquipment();
     if (equipment && !equipment->getBackend())
     {   // look like SMSG_PLAYER_INVENTORY was not received
@@ -249,15 +251,15 @@ void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
 
     for (int loop = 0; loop < number; loop++)
     {
-        const int index = msg.readInt16() - INVENTORY_OFFSET;
-        const int itemId = msg.readInt16();
-        const uint8_t itemType = msg.readUInt8();  // type
-        uint8_t identified = msg.readUInt8();      // identify flag
+        const int index = msg.readInt16("index") - INVENTORY_OFFSET;
+        const int itemId = msg.readInt16("item id");
+        const uint8_t itemType = msg.readUInt8("item type");
+        uint8_t identified = msg.readUInt8("identify");
 
-        msg.readInt16();  // equip type
-        const int equipType = msg.readInt16();
-        msg.readUInt8();  // attribute
-        const uint8_t refine = msg.readUInt8();
+        msg.readInt16("equip type?");
+        const int equipType = msg.readInt16("equip type");
+        msg.readUInt8("attribute");
+        const uint8_t refine = msg.readUInt8("refine");
         int cards[4];
         for (int f = 0; f < 4; f++)
             cards[f] = msg.readInt16("card");
@@ -301,20 +303,20 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
         mEquips.clear();
         PlayerInfo::getEquipment()->setBackend(&mEquips);
     }
-    const int index = msg.readInt16() - INVENTORY_OFFSET;
-    int amount = msg.readInt16();
-    const int itemId = msg.readInt16();
-    uint8_t identified = msg.readUInt8();
-    msg.readUInt8();  // attribute
-    const uint8_t refine = msg.readUInt8();
+    const int index = msg.readInt16("index") - INVENTORY_OFFSET;
+    int amount = msg.readInt16("amount");
+    const int itemId = msg.readInt16("item id");
+    uint8_t identified = msg.readUInt8("identified");
+    msg.readUInt8("attribute");
+    const uint8_t refine = msg.readUInt8("refine");
     int cards[4];
     for (int f = 0; f < 4; f++)
         cards[f] = msg.readInt16("card");
-    const int equipType = msg.readInt16();
-    msg.readUInt8();  // itemType
+    const int equipType = msg.readInt16("equip type");
+    msg.readUInt8("item type");
 
     const ItemInfo &itemInfo = ItemDB::get(itemId);
-    const unsigned char err = msg.readUInt8();
+    const unsigned char err = msg.readUInt8("status");
     int floorId;
     if (mSentPickups.empty())
     {
@@ -494,9 +496,9 @@ void InventoryHandler::processPlayerStorage(Net::MessageIn &msg)
 void InventoryHandler::processPlayerEquip(Net::MessageIn &msg)
 {
     BLOCK_START("InventoryHandler::processPlayerEquip")
-    const int index = msg.readInt16() - INVENTORY_OFFSET;
-    const int equipType = msg.readInt16();
-    const uint8_t flag = msg.readUInt8();
+    const int index = msg.readInt16("index") - INVENTORY_OFFSET;
+    const int equipType = msg.readInt16("equip type");
+    const uint8_t flag = msg.readUInt8("flag");
 
     if (!flag)
         NotifyManager::notify(NotifyTypes::EQUIP_FAILED);
@@ -508,9 +510,9 @@ void InventoryHandler::processPlayerEquip(Net::MessageIn &msg)
 void InventoryHandler::processPlayerUnEquip(Net::MessageIn &msg)
 {
     BLOCK_START("InventoryHandler::processPlayerUnEquip")
-    msg.readInt16();  // inder val - INVENTORY_OFFSET;
-    const int equipType = msg.readInt16();
-    const uint8_t flag = msg.readUInt8();
+    msg.readInt16("index");
+    const int equipType = msg.readInt16("equip type");
+    const uint8_t flag = msg.readUInt8("flag");
 
     if (flag)
         mEquips.setEquipment(getSlot(equipType), -1);
@@ -522,23 +524,23 @@ void InventoryHandler::processPlayerUnEquip(Net::MessageIn &msg)
 void InventoryHandler::processPlayerStorageEquip(Net::MessageIn &msg)
 {
     BLOCK_START("InventoryHandler::processPlayerStorageEquip")
-    msg.readInt16();  // length
+    msg.readInt16("len");
     const int number = (msg.getLength() - 4) / 20;
 
     for (int loop = 0; loop < number; loop++)
     {
         int cards[4];
-        const int index = msg.readInt16() - STORAGE_OFFSET;
-        const int itemId = msg.readInt16();
-        const uint8_t itemType = msg.readUInt8();
-        uint8_t identified = msg.readUInt8();
+        const int index = msg.readInt16("index") - STORAGE_OFFSET;
+        const int itemId = msg.readInt16("item id");
+        const uint8_t itemType = msg.readUInt8("item type");
+        uint8_t identified = msg.readUInt8("identified");
         const int amount = 1;
-        msg.readInt16();    // Equip Point?
-        msg.readInt16();    // Another Equip Point?
-        msg.readUInt8();   // Attribute (broken)
-        const uint8_t refine = msg.readUInt8();
+        msg.readInt16("equip point?");
+        msg.readInt16("another equip point?");
+        msg.readUInt8("attribute (broken)");
+        const uint8_t refine = msg.readUInt8("refine");
         for (int i = 0; i < 4; i++)
-            cards[i] = msg.readInt16();
+            cards[i] = msg.readInt16("card");
 
         if (mDebugInventory)
         {
@@ -570,12 +572,12 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
 {
     BLOCK_START("InventoryHandler::processPlayerStorageAdd")
     // Move an item into storage
-    const int index = msg.readInt16() - STORAGE_OFFSET;
-    const int amount = msg.readInt32();
-    const int itemId = msg.readInt16();
-    unsigned char identified = msg.readUInt8();
-    msg.readUInt8();  // attribute
-    const uint8_t refine = msg.readUInt8();
+    const int index = msg.readInt16("index") - STORAGE_OFFSET;
+    const int amount = msg.readInt32("amount");
+    const int itemId = msg.readInt16("item id");
+    unsigned char identified = msg.readUInt8("identified");
+    msg.readUInt8("attribute");
+    const uint8_t refine = msg.readUInt8("refine");
     int cards[4];
     for (int f = 0; f < 4; f++)
         cards[f] = msg.readInt16("card");

@@ -197,7 +197,7 @@ void InventoryHandler::unequipItem(const Item *const item) const
 
     createOutPacket(CMSG_PLAYER_UNEQUIP);
     outMsg.writeInt16(static_cast<int16_t>(
-        item->getInvIndex() + INVENTORY_OFFSET));
+        item->getInvIndex() + INVENTORY_OFFSET), "index");
 }
 
 void InventoryHandler::useItem(const Item *const item) const
@@ -207,8 +207,8 @@ void InventoryHandler::useItem(const Item *const item) const
 
     createOutPacket(CMSG_PLAYER_INVENTORY_USE);
     outMsg.writeInt16(static_cast<int16_t>(
-        item->getInvIndex() + INVENTORY_OFFSET));
-    outMsg.writeInt32(item->getId());  // unused
+        item->getInvIndex() + INVENTORY_OFFSET), "index");
+    outMsg.writeInt32(item->getId(), "unused");
 }
 
 void InventoryHandler::dropItem(const Item *const item, const int amount) const
@@ -218,8 +218,8 @@ void InventoryHandler::dropItem(const Item *const item, const int amount) const
 
     createOutPacket(CMSG_PLAYER_INVENTORY_DROP);
     outMsg.writeInt16(static_cast<int16_t>(
-        item->getInvIndex() + INVENTORY_OFFSET));
-    outMsg.writeInt16(static_cast<int16_t>(amount));
+        item->getInvIndex() + INVENTORY_OFFSET), "index");
+    outMsg.writeInt16(static_cast<int16_t>(amount), "amount");
 }
 
 void InventoryHandler::closeStorage(const int type A_UNUSED) const
@@ -260,8 +260,8 @@ void InventoryHandler::moveItem2(const int source,
     if (packet)
     {
         createOutPacket(packet);
-        outMsg.writeInt16(static_cast<int16_t>(slot + offset));
-        outMsg.writeInt32(amount);
+        outMsg.writeInt16(static_cast<int16_t>(slot + offset), "index");
+        outMsg.writeInt32(amount, "amount");
     }
 }
 

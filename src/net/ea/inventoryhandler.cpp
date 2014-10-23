@@ -193,8 +193,8 @@ void InventoryHandler::processPlayerInventoryRemove(Net::MessageIn &msg)
     Inventory *const inventory = localPlayer
         ? PlayerInfo::getInventory() : nullptr;
 
-    const int index = msg.readInt16() - INVENTORY_OFFSET;
-    const int amount = msg.readInt16();
+    const int index = msg.readInt16("index") - INVENTORY_OFFSET;
+    const int amount = msg.readInt16("amount");
     if (inventory)
     {
         if (Item *const item = inventory->getItem(index))
@@ -214,11 +214,11 @@ void InventoryHandler::processPlayerInventoryUse(Net::MessageIn &msg)
     Inventory *const inventory = localPlayer
         ? PlayerInfo::getInventory() : nullptr;
 
-    const int index = msg.readInt16() - INVENTORY_OFFSET;
-    msg.readInt16();  // item id
-    msg.readInt32();  // id
-    const int amount = msg.readInt16();
-    msg.readUInt8();  // type
+    const int index = msg.readInt16("index") - INVENTORY_OFFSET;
+    msg.readInt16("item id");
+    msg.readInt32("id?");
+    const int amount = msg.readInt16("amount");
+    msg.readUInt8("type");
 
     if (inventory)
     {
@@ -239,10 +239,10 @@ void InventoryHandler::processItemUseResponse(Net::MessageIn &msg)
     Inventory *const inventory = localPlayer
         ? PlayerInfo::getInventory() : nullptr;
 
-    const int index = msg.readInt16() - INVENTORY_OFFSET;
-    const int amount = msg.readInt16();
+    const int index = msg.readInt16("index") - INVENTORY_OFFSET;
+    const int amount = msg.readInt16("amount");
 
-    if (msg.readUInt8() == 0)
+    if (msg.readUInt8("result") == 0)
     {
         NotifyManager::notify(NotifyTypes::USE_FAILED);
     }
@@ -270,8 +270,8 @@ void InventoryHandler::processPlayerStorageStatus(Net::MessageIn &msg)
       * server. It always comes after the two SMSG_PLAYER_STORAGE_...
       * packets that update storage contents.
       */
-    msg.readInt16();  // Used count
-    const int size = msg.readInt16();  // Max size
+    msg.readInt16("used count");
+    const int size = msg.readInt16("max size");
 
     if (!mStorage)
         mStorage = new Inventory(Inventory::STORAGE, size);
@@ -303,8 +303,8 @@ void InventoryHandler::processPlayerStorageRemove(Net::MessageIn &msg)
 {
     BLOCK_START("InventoryHandler::processPlayerStorageRemove")
     // Move an item out of storage
-    const int index = msg.readInt16() - STORAGE_OFFSET;
-    const int amount = msg.readInt16();
+    const int index = msg.readInt16("index") - STORAGE_OFFSET;
+    const int amount = msg.readInt16("amount");
     if (mStorage)
     {
         if (Item *const item = mStorage->getItem(index))
@@ -339,7 +339,7 @@ void InventoryHandler::processPlayerStorageClose(Net::MessageIn &msg A_UNUSED)
 void InventoryHandler::processPlayerAttackRange(Net::MessageIn &msg)
 {
     BLOCK_START("InventoryHandler::processPlayerAttackRange")
-    const int range = msg.readInt16();
+    const int range = msg.readInt16("range");
     if (localPlayer)
         localPlayer->setAttackRange(range);
     PlayerInfo::setStatBase(Attributes::ATTACK_RANGE, range);
@@ -350,7 +350,7 @@ void InventoryHandler::processPlayerAttackRange(Net::MessageIn &msg)
 void InventoryHandler::processPlayerArrowEquip(Net::MessageIn &msg)
 {
     BLOCK_START("InventoryHandler::processPlayerArrowEquip")
-    int index = msg.readInt16();
+    int index = msg.readInt16("index");
     if (index <= 1)
         return;
 
