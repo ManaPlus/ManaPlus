@@ -125,7 +125,7 @@ BeingHandler::BeingHandler(const bool enableSync) :
 void BeingHandler::requestNameById(const int id) const
 {
     createOutPacket(CMSG_NAME_REQUEST);
-    outMsg.writeInt32(id);  // readLong(2));
+    outMsg.writeInt32(id, "being id");
 }
 
 void BeingHandler::handleMessage(Net::MessageIn &msg)
