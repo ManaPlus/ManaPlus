@@ -67,8 +67,8 @@ void QuestHandler::handleMessage(Net::MessageIn &msg)
 
 void QuestHandler::processSetQuestVar(Net::MessageIn &msg)
 {
-    const int var = msg.readInt16();    // variable
-    const int val = msg.readInt32();    // value
+    const int var = msg.readInt16("variable");
+    const int val = msg.readInt32("value");
     if (questsWindow)
     {
         questsWindow->updateQuest(var, val);
@@ -83,11 +83,11 @@ void QuestHandler::processSetQuestVar(Net::MessageIn &msg)
 
 void QuestHandler::processPlayerQuests(Net::MessageIn &msg)
 {
-    const int count = (msg.readInt16() - 4) / 6;
+    const int count = (msg.readInt16("len") - 4) / 6;
     for (int f = 0; f < count; f ++)
     {
-        const int var = msg.readInt16();    // variable
-        const int val = msg.readInt32();    // value
+        const int var = msg.readInt16("variable");
+        const int val = msg.readInt32("value");
         if (questsWindow)
             questsWindow->updateQuest(var, val);
         if (skillDialog)
