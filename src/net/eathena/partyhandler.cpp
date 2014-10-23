@@ -129,7 +129,7 @@ void PartyHandler::handleMessage(Net::MessageIn &msg)
 void PartyHandler::create(const std::string &name) const
 {
     createOutPacket(CMSG_PARTY_CREATE);
-    outMsg.writeString(name.substr(0, 23), 24);
+    outMsg.writeString(name.substr(0, 23), 24, "party name");
 }
 
 void PartyHandler::invite(const std::string &name) const
@@ -157,8 +157,8 @@ void PartyHandler::inviteResponse(const std::string &inviter A_UNUSED,
     if (localPlayer)
     {
         createOutPacket(CMSG_PARTY_INVITED2);
-        outMsg.writeInt32(localPlayer->getId());
-        outMsg.writeInt8(static_cast<int8_t>(accept ? 1 : 0));
+        outMsg.writeInt32(localPlayer->getId(), "account id");
+        outMsg.writeInt8(static_cast<int8_t>(accept ? 1 : 0), "accept");
     }
 }
 
@@ -172,8 +172,8 @@ void PartyHandler::kick(const Being *const being) const
     if (being)
     {
         createOutPacket(CMSG_PARTY_KICK);
-        outMsg.writeInt32(being->getId());
-        outMsg.writeString("", 24);  // unused
+        outMsg.writeInt32(being->getId(), "account id");
+        outMsg.writeString(being->getName(), 24, "player name");
     }
 }
 
@@ -190,8 +190,8 @@ void PartyHandler::kick(const std::string &name) const
     }
 
     createOutPacket(CMSG_PARTY_KICK);
-    outMsg.writeInt32(m->getID());
-    outMsg.writeString(name, 24);  // unused
+    outMsg.writeInt32(m->getID(), "account id");
+    outMsg.writeString(name, 24, "player name");
 }
 
 void PartyHandler::chat(const std::string &text) const
@@ -212,8 +212,8 @@ void PartyHandler::setShareExperience(const Net::PartyShare::Type share) const
         return;
 
     createOutPacket(CMSG_PARTY_SETTINGS);
-    outMsg.writeInt16(static_cast<int16_t>(share));
-    outMsg.writeInt16(static_cast<int16_t>(mShareItems));
+    outMsg.writeInt16(static_cast<int16_t>(share), "share exp");
+    outMsg.writeInt16(static_cast<int16_t>(mShareItems), "share items");
 }
 
 // +++ must be 3 types item, exp, pickup
@@ -223,8 +223,8 @@ void PartyHandler::setShareItems(const Net::PartyShare::Type share) const
         return;
 
     createOutPacket(CMSG_PARTY_SETTINGS);
-    outMsg.writeInt16(static_cast<int16_t>(mShareExp));
-    outMsg.writeInt16(static_cast<int16_t>(share));
+    outMsg.writeInt16(static_cast<int16_t>(mShareExp), "share exp");
+    outMsg.writeInt16(static_cast<int16_t>(share), "share items");
 }
 
 void PartyHandler::processPartyInvitationStats(Net::MessageIn &msg)
@@ -386,7 +386,7 @@ void PartyHandler::processPartyInfo(Net::MessageIn &msg)
 
 void PartyHandler::processPartyMessage(Net::MessageIn &msg)
 {
-    const int msgLength = msg.readInt16() - 8;
+    const int msgLength = msg.readInt16("len") - 8;
     if (msgLength <= 0)
         return;
 
@@ -461,13 +461,13 @@ void PartyHandler::changeLeader(const std::string &name) const
     if (!being)
         return;
     createOutPacket(CMSG_PARTY_CHANGE_LEADER);
-    outMsg.writeInt32(being->getId());
+    outMsg.writeInt32(being->getId(), "account id");
 }
 
 void PartyHandler::allowInvite(const bool allow) const
 {
     createOutPacket(CMSG_PARTY_ALLOW_INVITES);
-    outMsg.writeInt8(static_cast<int8_t>(allow ? 1 : 0));
+    outMsg.writeInt8(static_cast<int8_t>(allow ? 1 : 0), "allow");
 }
 
 void PartyHandler::processPartyItemPickup(Net::MessageIn &msg)

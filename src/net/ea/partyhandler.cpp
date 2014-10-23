@@ -159,32 +159,32 @@ void PartyHandler::processPartySettingsContinue(const int16_t exp,
 
 void PartyHandler::processPartyMove(Net::MessageIn &msg)
 {
-    const int id = msg.readInt32();  // id
+    const int id = msg.readInt32("id");
     PartyMember *m = nullptr;
     if (Ea::taParty)
         m = Ea::taParty->getMember(id);
     if (m)
     {
-        msg.skip(4);                    // 0
-        m->setX(msg.readInt16());       // x
-        m->setY(msg.readInt16());       // y
-        const bool online = msg.readUInt8() != 0;
+        msg.readInt32("unused");
+        m->setX(msg.readInt16("x"));
+        m->setY(msg.readInt16("y"));
+        const bool online = msg.readUInt8("online") != 0;
         if (m->getOnline() != online)
             partyTab->showOnline(m->getName(), online);
-        m->setOnline(online);           // online (if 0)
-        msg.readString(24);             // party
-        msg.readString(24);             // nick
-        m->setMap(msg.readString(16));  // map
+        m->setOnline(online);
+        msg.readString(24, "party");
+        msg.readString(24, "nick");
+        m->setMap(msg.readString(16, "map"));
     }
     else
     {
-        msg.skip(4);         // 0
-        msg.readInt16();     // x
-        msg.readInt16();     // y
-        msg.readUInt8();     // online (if 0)
-        msg.readString(24);  // party
-        msg.readString(24);  // nick
-        msg.readString(16);  // map
+        msg.readInt32("unused");
+        msg.readInt16("x");
+        msg.readInt16("y");
+        msg.readUInt8("online");
+        msg.readString(24, "party");
+        msg.readString(24, "nick");
+        msg.readString(16, "map");
     }
 }
 
@@ -274,9 +274,9 @@ void PartyHandler::processPartyLeave(Net::MessageIn &msg)
 
 void PartyHandler::processPartyUpdateHp(Net::MessageIn &msg)
 {
-    const int id = msg.readInt32();
-    const int hp = msg.readInt16();
-    const int maxhp = msg.readInt16();
+    const int id = msg.readInt32("id");
+    const int hp = msg.readInt16("hp");
+    const int maxhp = msg.readInt16("max hp");
     PartyMember *m = nullptr;
     if (Ea::taParty)
         m = Ea::taParty->getMember(id);
@@ -297,19 +297,19 @@ void PartyHandler::processPartyUpdateHp(Net::MessageIn &msg)
 
 void PartyHandler::processPartyUpdateCoords(Net::MessageIn &msg)
 {
-    const int id = msg.readInt32();  // id
+    const int id = msg.readInt32("id");
     PartyMember *m = nullptr;
     if (Ea::taParty)
         m = Ea::taParty->getMember(id);
     if (m)
     {
-        m->setX(msg.readInt16());    // x
-        m->setY(msg.readInt16());    // y
+        m->setX(msg.readInt16("x"));
+        m->setY(msg.readInt16("y"));
     }
     else
     {
-        msg.readInt16();    // x
-        msg.readInt16();    // y
+        msg.readInt16("x");
+        msg.readInt16("y");
     }
 }
 

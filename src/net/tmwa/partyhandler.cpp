@@ -115,7 +115,7 @@ void PartyHandler::handleMessage(Net::MessageIn &msg)
 void PartyHandler::create(const std::string &name) const
 {
     createOutPacket(CMSG_PARTY_CREATE);
-    outMsg.writeString(name.substr(0, 23), 24);
+    outMsg.writeString(name.substr(0, 23), 24, "party name");
 }
 
 void PartyHandler::invite(const std::string &name) const
@@ -128,7 +128,7 @@ void PartyHandler::invite(const std::string &name) const
     if (being)
     {
         createOutPacket(CMSG_PARTY_INVITE);
-        outMsg.writeInt32(being->getId());
+        outMsg.writeInt32(being->getId(), "account id");
     }
 }
 
@@ -138,8 +138,8 @@ void PartyHandler::inviteResponse(const std::string &inviter A_UNUSED,
     if (localPlayer)
     {
         createOutPacket(CMSG_PARTY_INVITED);
-        outMsg.writeInt32(localPlayer->getId());
-        outMsg.writeInt32(accept ? 1 : 0);
+        outMsg.writeInt32(localPlayer->getId(), "account id");
+        outMsg.writeInt32(accept ? 1 : 0, "accept");
     }
 }
 
@@ -153,8 +153,8 @@ void PartyHandler::kick(const Being *const being) const
     if (being)
     {
         createOutPacket(CMSG_PARTY_KICK);
-        outMsg.writeInt32(being->getId());
-        outMsg.writeString("", 24);  // unused
+        outMsg.writeInt32(being->getId(), "account id");
+        outMsg.writeString("", 24, "unused");
     }
 }
 
@@ -171,15 +171,15 @@ void PartyHandler::kick(const std::string &name) const
     }
 
     createOutPacket(CMSG_PARTY_KICK);
-    outMsg.writeInt32(m->getID());
-    outMsg.writeString(name, 24);  // unused
+    outMsg.writeInt32(m->getID(), "member id");
+    outMsg.writeString(name, 24, "unused");
 }
 
 void PartyHandler::chat(const std::string &text) const
 {
     createOutPacket(CMSG_PARTY_MESSAGE);
-    outMsg.writeInt16(static_cast<int16_t>(text.length() + 4));
-    outMsg.writeString(text, static_cast<int>(text.length()));
+    outMsg.writeInt16(static_cast<int16_t>(text.length() + 4), "len");
+    outMsg.writeString(text, static_cast<int>(text.length()), "text");
 }
 
 void PartyHandler::setShareExperience(const Net::PartyShare::Type share) const
@@ -188,8 +188,8 @@ void PartyHandler::setShareExperience(const Net::PartyShare::Type share) const
         return;
 
     createOutPacket(CMSG_PARTY_SETTINGS);
-    outMsg.writeInt16(static_cast<int16_t>(share));
-    outMsg.writeInt16(static_cast<int16_t>(mShareItems));
+    outMsg.writeInt16(static_cast<int16_t>(share), "share exp");
+    outMsg.writeInt16(static_cast<int16_t>(mShareItems), "share items");
 }
 
 void PartyHandler::setShareItems(const Net::PartyShare::Type share) const
@@ -198,8 +198,8 @@ void PartyHandler::setShareItems(const Net::PartyShare::Type share) const
         return;
 
     createOutPacket(CMSG_PARTY_SETTINGS);
-    outMsg.writeInt16(static_cast<int16_t>(mShareExp));
-    outMsg.writeInt16(static_cast<int16_t>(share));
+    outMsg.writeInt16(static_cast<int16_t>(mShareExp), "share exp");
+    outMsg.writeInt16(static_cast<int16_t>(share), "share items");
 }
 
 void PartyHandler::processPartySettings(Net::MessageIn &msg)
@@ -213,8 +213,8 @@ void PartyHandler::processPartySettings(Net::MessageIn &msg)
     }
 
     // These seem to indicate the sharing mode for exp and items
-    const int16_t exp = msg.readInt16();
-    const int16_t item = msg.readInt16();
+    const int16_t exp = msg.readInt16("share exp");
+    const int16_t item = msg.readInt16("share items");
     processPartySettingsContinue(exp, item);
 }
 
@@ -251,9 +251,9 @@ void PartyHandler::processPartyInfo(Net::MessageIn &msg)
     if (Ea::taParty)
         Ea::taParty->clearMembers();
 
-    const int length = msg.readInt16();
+    const int length = msg.readInt16("len");
     if (Ea::taParty)
-        Ea::taParty->setName(msg.readString(24));
+        Ea::taParty->setName(msg.readString(24, "party name"));
 
     const int count = (length - 28) / 46;
     if (localPlayer && Ea::taParty)
@@ -264,11 +264,11 @@ void PartyHandler::processPartyInfo(Net::MessageIn &msg)
 
     for (int i = 0; i < count; i++)
     {
-        const int id = msg.readInt32();
-        std::string nick = msg.readString(24);
-        std::string map = msg.readString(16);
-        const bool leader = msg.readUInt8() == 0U;
-        const bool online = msg.readUInt8() == 0U;
+        const int id = msg.readInt32("id");
+        std::string nick = msg.readString(24, "nick");
+        std::string map = msg.readString(16, "map");
+        const bool leader = msg.readUInt8("leader") == 0U;
+        const bool online = msg.readUInt8("online") == 0U;
 
         if (Ea::taParty)
         {
@@ -324,12 +324,12 @@ void PartyHandler::processPartyInfo(Net::MessageIn &msg)
 
 void PartyHandler::processPartyMessage(Net::MessageIn &msg)
 {
-    const int msgLength = msg.readInt16() - 8;
+    const int msgLength = msg.readInt16("len") - 8;
     if (msgLength <= 0)
         return;
 
-    const int id = msg.readInt32();
-    const std::string chatMsg = msg.readString(msgLength);
+    const int id = msg.readInt32("id");
+    const std::string chatMsg = msg.readString(msgLength, "message");
 
     if (Ea::taParty && partyTab)
     {
@@ -351,9 +351,9 @@ void PartyHandler::processPartyInviteResponse(Net::MessageIn &msg)
     if (!partyTab)
         return;
 
-    const std::string nick = msg.readString(24);
+    const std::string nick = msg.readString(24, "nick");
 
-    switch (msg.readUInt8())
+    switch (msg.readUInt8("status"))
     {
         case 0:
             NotifyManager::notify(NotifyTypes::PARTY_INVITE_ALREADY_MEMBER,
