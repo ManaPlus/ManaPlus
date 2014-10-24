@@ -22,8 +22,6 @@
 
 #include "gui/widgets/tabs/chat/whispertab.h"
 
-#include "chatlogger.h"
-
 #include "being/localplayer.h"
 
 #include "net/chathandler.h"

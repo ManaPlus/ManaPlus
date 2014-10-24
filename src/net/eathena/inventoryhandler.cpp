@@ -29,8 +29,6 @@
 
 #include "listeners/arrowslistener.h"
 
-#include "net/serverfeatures.h"
-
 #include "net/eathena/itemflags.h"
 #include "net/eathena/menu.h"
 #include "net/eathena/messageout.h"

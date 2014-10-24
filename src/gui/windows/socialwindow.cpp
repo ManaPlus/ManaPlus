@@ -49,8 +49,6 @@
 #include "gui/widgets/tabs/socialpickuptab.h"
 #include "gui/widgets/tabs/socialplayerstab.h"
 
-#include "gui/widgets/tabs/chat/chattab.h"
-
 #include "gui/popups/createpartypopup.h"
 
 #include "net/serverfeatures.h"

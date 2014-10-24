@@ -20,8 +20,6 @@
 
 #include "gui/widgets/tabs/chat/gmtab.h"
 
-#include "chatlogger.h"
-
 #include "utils/gettext.h"
 
 #include "debug.h"

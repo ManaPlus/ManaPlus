@@ -22,7 +22,6 @@
 
 #include "gui/widgets/tabs/chat/emulateguildtab.h"
 
-#include "chatlogger.h"
 #include "configuration.h"
 #include "guildmanager.h"
 #include "soundconsts.h"

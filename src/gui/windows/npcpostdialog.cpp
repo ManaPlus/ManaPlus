@@ -32,21 +32,19 @@
 
 #include "gui/widgets/tabs/chat/chattab.h"
 
-#include "net/npchandler.h"
-
 #include "utils/gettext.h"
 
 #include "debug.h"
 
 NpcPostDialog::DialogList NpcPostDialog::instances;
 
-NpcPostDialog::NpcPostDialog(const int npcId) :
+NpcPostDialog::NpcPostDialog(const int npcId A_UNUSED) :
     // TRANSLATORS: npc post dialog caption
     Window(_("NPC"), false, nullptr, "npcpost.xml"),
     ActionListener(),
     mText(new TextBox(this)),
-    mSender(new TextField(this)),
-    mNpcId(npcId)
+    mSender(new TextField(this))
+//    mNpcId(npcId)
 {
     setContentSize(400, 180);
 }

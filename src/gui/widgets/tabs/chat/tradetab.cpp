@@ -22,8 +22,6 @@
 
 #include "gui/widgets/tabs/chat/tradetab.h"
 
-#include "chatlogger.h"
-
 #include "gui/chatconsts.h"
 
 #include "utils/gettext.h"

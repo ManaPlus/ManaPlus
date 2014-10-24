@@ -25,7 +25,6 @@
 #include "net/partyhandler.h"
 
 class Party;
-class PartyTab;
 
 namespace Net
 {

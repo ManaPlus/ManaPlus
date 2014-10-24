@@ -25,6 +25,8 @@
 
 #include "being/being.h"
 
+#include "being/pickup.h"
+
 #include "gui/userpalette.h"
 
 #include "listeners/actorspritelistener.h"
@@ -174,7 +176,7 @@ class LocalPlayer final : public Being,
          */
         void pickedUp(const ItemInfo &itemInfo, const int amount,
                       const unsigned char color, const int floorItemId,
-                      const unsigned char fail);
+                      const Pickup::Type fail);
 
         int getLevel() const override final A_WARN_UNUSED;
 

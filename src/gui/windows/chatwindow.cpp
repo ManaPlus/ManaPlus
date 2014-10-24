@@ -64,8 +64,6 @@
 #include "gui/widgets/tabs/chat/tradetab.h"
 #include "gui/widgets/tabs/chat/whispertab.h"
 
-#include "input/inputmanager.h"
-
 #include "render/opengldebug.h"
 
 #include "net/chathandler.h"

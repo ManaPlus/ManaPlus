@@ -40,7 +40,6 @@
 #include "gui/widgets/radiobutton.h"
 
 #include "utils/delete2.h"
-#include "utils/gettext.h"
 
 #include "debug.h"
 

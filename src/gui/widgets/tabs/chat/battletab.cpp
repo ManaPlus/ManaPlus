@@ -22,7 +22,6 @@
 
 #include "gui/widgets/tabs/chat/battletab.h"
 
-#include "chatlogger.h"
 #include "configuration.h"
 
 #include "utils/gettext.h"

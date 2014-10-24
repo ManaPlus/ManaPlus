@@ -38,7 +38,6 @@
 
 #include "being/attributes.h"
 #include "being/beingflag.h"
-#include "being/pickup.h"
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
 
@@ -803,9 +802,9 @@ void LocalPlayer::untarget()
 
 void LocalPlayer::pickedUp(const ItemInfo &itemInfo, const int amount,
                            const unsigned char color, const int floorItemId,
-                           const unsigned char fail)
+                           const Pickup::Type fail)
 {
-    if (fail)
+    if (fail != Pickup::OKAY)
     {
         if (actorManager && floorItemId)
         {
@@ -1157,7 +1156,10 @@ void LocalPlayer::moveToTarget(int dist)
             debugPath = mMap->findPath(static_cast<int>(
                 playerPos.x - mapTileSize / 2) / mapTileSize,
                 static_cast<int>(playerPos.y - mapTileSize) / mapTileSize,
-                mTarget->getTileX(), mTarget->getTileY(), getBlockWalkMask(), 0);
+                mTarget->getTileX(),
+                mTarget->getTileY(),
+                getBlockWalkMask(),
+                0);
         }
 
         const size_t sz = debugPath.size();

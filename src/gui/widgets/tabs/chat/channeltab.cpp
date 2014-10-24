@@ -22,9 +22,6 @@
 
 #include "gui/widgets/tabs/chat/channeltab.h"
 
-#include "chatlogger.h"
-#include "configuration.h"
-
 #include "gui/widgets/windowcontainer.h"
 
 #include "gui/windows/chatwindow.h"

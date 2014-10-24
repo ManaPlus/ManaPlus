@@ -69,7 +69,7 @@ class NpcPostDialog final : public Window,
 
         TextBox *mText;
         TextField *mSender;
-        int mNpcId;
+//        int mNpcId;
 };
 
 #endif  // GUI_WINDOWS_NPCPOSTDIALOG_H

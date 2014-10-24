@@ -22,7 +22,6 @@
 
 #include "gui/widgets/tabs/chat/guildtab.h"
 
-#include "chatlogger.h"
 #include "configuration.h"
 #include "guild.h"
 #include "soundconsts.h"

@@ -46,7 +46,7 @@ extern Net::TradeHandler *tradeHandler;
 namespace EAthena
 {
 int TradeHandler::mQuantity = 0;
-uint16_t TradeHandler::mItemIndex = -1;
+int TradeHandler::mItemIndex = -1;
 
 TradeHandler::TradeHandler() :
     MessageHandler(),

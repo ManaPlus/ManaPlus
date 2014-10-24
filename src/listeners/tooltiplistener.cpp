@@ -28,7 +28,8 @@
 #include "debug.h"
 
 ToolTipListener::ToolTipListener() :
-    MouseListener()
+    MouseListener(),
+    mToolTip()
 {
 }
 

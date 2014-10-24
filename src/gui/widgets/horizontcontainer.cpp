@@ -28,6 +28,7 @@ HorizontContainer::HorizontContainer(const Widget2 *const widget,
                                      const int spacing) :
     Container(widget),
     WidgetListener(),
+    ToolTipListener(),
     mSpacing(spacing),
     mCount(0),
     mLastX(spacing)

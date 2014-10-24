@@ -22,16 +22,12 @@
 
 #include "net/tmwa/adminhandler.h"
 
-#include "notifymanager.h"
-
 #include "gui/chatconsts.h"
 
 #include "net/chathandler.h"
 
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
-
-#include "resources/notifytypes.h"
 
 #include "utils/stringutils.h"
 

@@ -112,7 +112,23 @@ impHandler(helpWindowShow)
             return showHelpPage("chatparty", true);
         case ChatTabType::GUILD:
             return showHelpPage("chatguild", true);
+        case ChatTabType::WHISPER:
+            return showHelpPage("chatwhisper", true);
+        case ChatTabType::DEBUG:
+            return showHelpPage("chatdebug", true);
+        case ChatTabType::TRADE:
+            return showHelpPage("chattrade", true);
+        case ChatTabType::BATTLE:
+            return showHelpPage("chatbattle", true);
+        case ChatTabType::LANG:
+            return showHelpPage("chatlang", true);
+        case ChatTabType::GM:
+            return showHelpPage("chatgm", true);
+        case ChatTabType::CHANNEL:
+            return showHelpPage("chatchannel", true);
         default:
+        case ChatTabType::UNKNOWN:
+        case ChatTabType::INPUT:
             return showHelpPage("chatcommands", true);
     }
 }

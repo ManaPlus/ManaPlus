@@ -24,7 +24,6 @@
 #define GUI_WIDGETS_TABS_CHAT_EMULATEGUILDTAB_H
 
 #include "gui/widgets/tabs/chat/chattab.h"
-#include "gui/widgets/tabs/chat/chattabtype.h"
 
 /**
  * Emulate guild tab, because server not support normal guilds.

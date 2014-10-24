@@ -422,7 +422,8 @@ std::string ChatHandler::extractChannelFromMessage(std::string &chatMsg)
     return channel;
 }
 
-void ChatHandler::processChatContinue(std::string chatMsg, ChatMsgType::Type own)
+void ChatHandler::processChatContinue(std::string chatMsg,
+                                      ChatMsgType::Type own)
 {
     const std::string channel = extractChannelFromMessage(chatMsg);
     bool allow(true);

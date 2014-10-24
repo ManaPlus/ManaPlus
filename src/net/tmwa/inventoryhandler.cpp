@@ -254,7 +254,7 @@ void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
         const int index = msg.readInt16("index") - INVENTORY_OFFSET;
         const int itemId = msg.readInt16("item id");
         const uint8_t itemType = msg.readUInt8("item type");
-        uint8_t identified = msg.readUInt8("identify");
+        const uint8_t identified = msg.readUInt8("identify");
 
         msg.readInt16("equip type?");
         const int equipType = msg.readInt16("equip type");
@@ -306,7 +306,7 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
     const int index = msg.readInt16("index") - INVENTORY_OFFSET;
     int amount = msg.readInt16("amount");
     const int itemId = msg.readInt16("item id");
-    uint8_t identified = msg.readUInt8("identified");
+    const uint8_t identified = msg.readUInt8("identified");
     msg.readUInt8("attribute");
     const uint8_t refine = msg.readUInt8("refine");
     int cards[4];
@@ -416,7 +416,7 @@ void InventoryHandler::processPlayerInventory(Net::MessageIn &msg)
         const int index = msg.readInt16("index") - INVENTORY_OFFSET;
         const int itemId = msg.readInt16("item id");
         const uint8_t itemType = msg.readUInt8("item type");
-        uint8_t identified = msg.readUInt8("identified");
+        const uint8_t identified = msg.readUInt8("identified");
         const int amount = msg.readInt16("amount");
         const int arrow = msg.readInt16("arrow");
         for (int i = 0; i < 4; i++)
@@ -465,7 +465,7 @@ void InventoryHandler::processPlayerStorage(Net::MessageIn &msg)
         const int index = msg.readInt16("index") - STORAGE_OFFSET;
         const int itemId = msg.readInt16("item id");
         const uint8_t itemType = msg.readUInt8("item type");
-        uint8_t identified = msg.readUInt8("identified");
+        const uint8_t identified = msg.readUInt8("identified");
         const int amount = msg.readInt16("amount");
         msg.readInt16("arrow");
         for (int i = 0; i < 4; i++)
@@ -533,7 +533,7 @@ void InventoryHandler::processPlayerStorageEquip(Net::MessageIn &msg)
         const int index = msg.readInt16("index") - STORAGE_OFFSET;
         const int itemId = msg.readInt16("item id");
         const uint8_t itemType = msg.readUInt8("item type");
-        uint8_t identified = msg.readUInt8("identified");
+        const uint8_t identified = msg.readUInt8("identified");
         const int amount = 1;
         msg.readInt16("equip point?");
         msg.readInt16("another equip point?");
@@ -575,7 +575,7 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
     const int index = msg.readInt16("index") - STORAGE_OFFSET;
     const int amount = msg.readInt32("amount");
     const int itemId = msg.readInt16("item id");
-    unsigned char identified = msg.readUInt8("identified");
+    const unsigned char identified = msg.readUInt8("identified");
     msg.readUInt8("attribute");
     const uint8_t refine = msg.readUInt8("refine");
     int cards[4];

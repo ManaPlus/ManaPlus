@@ -86,7 +86,16 @@ void outStringNormal(ChatTab *const tab,
             chatHandler->privateMessage(whisper->getNick(), str);
             break;
         }
+        case ChatTabType::DEBUG:
+        case ChatTabType::BATTLE:
+            break;
         default:
+        case ChatTabType::UNKNOWN:
+        case ChatTabType::INPUT:
+        case ChatTabType::TRADE:
+        case ChatTabType::LANG:
+        case ChatTabType::GM:
+        case ChatTabType::CHANNEL:
             chatHandler->talk(def, GENERAL_CHANNEL);
             break;
     }

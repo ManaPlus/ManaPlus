@@ -22,7 +22,6 @@
 
 #include "gui/widgets/tabs/chat/partytab.h"
 
-#include "chatlogger.h"
 #include "configuration.h"
 #include "party.h"
 #include "soundconsts.h"

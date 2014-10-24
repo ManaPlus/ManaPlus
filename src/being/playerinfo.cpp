@@ -37,8 +37,6 @@
 #include "gui/windows/npcdialog.h"
 #include "gui/windows/npcpostdialog.h"
 
-#include "resources/iteminfo.h"
-
 #include "net/homunculushandler.h"
 #include "net/inventoryhandler.h"
 #include "net/mercenaryhandler.h"

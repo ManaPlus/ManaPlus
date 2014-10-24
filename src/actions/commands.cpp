@@ -410,17 +410,11 @@ impHandler(info)
         return false;
     }
 
-    switch (event.tab->getType())
+    if (event.tab->getType() == ChatTabType::GUILD)
     {
-        case ChatTabType::GUILD:
-        {
-            const Guild *const guild = localPlayer->getGuild();
-            if (guild)
-                guildHandler->info(guild->getId());
-            break;
-        }
-        default:
-            break;
+        const Guild *const guild = localPlayer->getGuild();
+        if (guild)
+            guildHandler->info(guild->getId());
     }
     return true;
 }

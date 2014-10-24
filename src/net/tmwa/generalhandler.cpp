@@ -33,8 +33,6 @@
 #include "gui/windows/socialwindow.h"
 #include "gui/windows/statuswindow.h"
 
-#include "net/ea/guildhandler.h"
-
 #include "gui/widgets/tabs/chat/guildtab.h"
 #include "gui/widgets/tabs/chat/partytab.h"
 

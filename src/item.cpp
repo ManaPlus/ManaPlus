@@ -144,7 +144,7 @@ void Item::setCard(const int index, const int id)
 int Item::getCard(const int index) const
 {
     if (index < 0 || index >= maxCards)
-        return 0 ;
+        return 0;
     return mCards[index];
 }
 

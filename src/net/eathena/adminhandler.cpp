@@ -22,12 +22,8 @@
 
 #include "net/eathena/adminhandler.h"
 
-#include "notifymanager.h"
-
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
-
-#include "resources/notifytypes.h"
 
 #include <string>
 
