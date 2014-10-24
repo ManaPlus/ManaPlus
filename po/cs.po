@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-10-22 17:50+0300\n"
-"PO-Revision-Date: 2014-10-10 10:01+0000\n"
+"POT-Creation-Date: 2014-10-24 12:58+0300\n"
+"PO-Revision-Date: 2014-10-23 10:02+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Czech (http://www.transifex.com/projects/p/manaplus/language/"
 "cs/)\n"
@@ -60,8 +60,8 @@ msgstr "Soubor byl uploadován"
 #: src/net/ea/charserverhandler.cpp:143 src/net/ea/charserverhandler.cpp:162
 #: src/net/ea/charserverhandler.cpp:175 src/net/ea/gamehandler.cpp:83
 #: src/net/ea/playerhandler.cpp:424 src/net/ea/playerhandler.cpp:440
-#: src/net/eathena/charserverhandler.cpp:540
-#: src/net/eathena/charserverhandler.cpp:570
+#: src/net/eathena/charserverhandler.cpp:541
+#: src/net/eathena/charserverhandler.cpp:571
 msgid "OK"
 msgstr "OK"
 
@@ -166,11 +166,9 @@ msgstr "Nelze možné zaslat prázdné šeptání!"
 
 #. TRANSLATORS: new whisper or channel query
 #: src/actions/chat.cpp:239
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot create a whisper tab \"%s\"! It either already exists."
 msgstr ""
-"Nelze vytvořit záložku se šeptáním pro \"%s\"! Buďto záložka existuje nebo "
-"jsi to ty."
 
 #. TRANSLATORS: create party message
 #. TRANSLATORS: chat error message
@@ -356,7 +354,7 @@ msgstr "Předmět patří někomu jinému."
 
 #. TRANSLATORS: pickup error message
 #: src/being/localplayer.cpp:849
-msgid "You cant pickup this amount of items."
+msgid "You can't pickup this amount of items."
 msgstr ""
 
 #. TRANSLATORS: pickup error message
@@ -561,8 +559,8 @@ msgstr "Vyměňuji herní servery"
 #: src/gui/windows/registerdialog.cpp:243
 #: src/gui/windows/unregisterdialog.cpp:146
 #: src/net/ea/charserverhandler.cpp:141 src/net/ea/charserverhandler.cpp:173
-#: src/net/eathena/charserverhandler.cpp:523
-#: src/net/eathena/charserverhandler.cpp:525
+#: src/net/eathena/charserverhandler.cpp:524
+#: src/net/eathena/charserverhandler.cpp:526
 msgid "Error"
 msgstr "Chyba"
 
@@ -1548,7 +1546,7 @@ msgstr "Obchod"
 #: src/gui/popups/popupmenu.cpp:168 src/gui/popups/popupmenu.cpp:274
 #: src/gui/popups/popupmenu.cpp:769 src/gui/widgets/skillinfo.cpp:113
 #: src/gui/windows/botcheckerwindow.cpp:89 src/input/pages/basic.cpp:42
-#: src/net/eathena/generalhandler.cpp:362 src/net/tmwa/generalhandler.cpp:326
+#: src/net/eathena/generalhandler.cpp:362 src/net/tmwa/generalhandler.cpp:328
 msgid "Attack"
 msgstr "Útok"
 
@@ -4988,9 +4986,8 @@ msgstr "Aktualizace"
 
 #. TRANSLATORS: short button name for bank window.
 #: src/gui/windowmenu.cpp:147
-#, fuzzy
 msgid "BA"
-msgstr "A"
+msgstr ""
 
 #. TRANSLATORS: full button name
 #. TRANSLATORS: bank window name
@@ -5022,9 +5019,9 @@ msgid "Key: %s"
 msgstr "Klávesa: %s"
 
 #: src/gui/windows/bankwindow.cpp:48 src/gui/windows/bankwindow.cpp:90
-#, fuzzy, c-format
+#, c-format
 msgid "Money in bank: %s"
-msgstr "Peníze: %s"
+msgstr ""
 
 #. TRANSLATORS: bank window button
 #: src/gui/windows/bankwindow.cpp:51
@@ -5292,8 +5289,8 @@ msgstr "Hrát"
 #. TRANSLATORS: info message
 #: src/gui/windows/charselectdialog.cpp:80
 #: src/net/ea/charserverhandler.cpp:160
-#: src/net/eathena/charserverhandler.cpp:538
-#: src/net/eathena/charserverhandler.cpp:568
+#: src/net/eathena/charserverhandler.cpp:539
+#: src/net/eathena/charserverhandler.cpp:569
 msgid "Info"
 msgstr "Informace"
 
@@ -7219,9 +7216,8 @@ msgstr "Okno o ManaPlus"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/windows.cpp:54
-#, fuzzy
 msgid "Bank Window"
-msgstr "Okno s chatem"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/windows.cpp:60
@@ -7756,35 +7752,35 @@ msgstr ""
 "Nesete méně než polovinu vaší váhy. Regenerace života je nyní opět možná."
 
 #. TRANSLATORS: char rename error
-#: src/net/eathena/charserverhandler.cpp:523
-#: src/net/eathena/charserverhandler.cpp:560
+#: src/net/eathena/charserverhandler.cpp:524
+#: src/net/eathena/charserverhandler.cpp:561
 msgid "Character rename error."
 msgstr ""
 
-#: src/net/eathena/charserverhandler.cpp:538
+#: src/net/eathena/charserverhandler.cpp:539
 msgid "Character renamed."
 msgstr ""
 
 #. TRANSLATORS: char rename error
-#: src/net/eathena/charserverhandler.cpp:551
+#: src/net/eathena/charserverhandler.cpp:552
 msgid "Rename not allowed."
 msgstr ""
 
 #. TRANSLATORS: char rename error
-#: src/net/eathena/charserverhandler.cpp:555
+#: src/net/eathena/charserverhandler.cpp:556
 msgid "New name is not set."
 msgstr ""
 
 #. TRANSLATORS: char rename error
-#: src/net/eathena/charserverhandler.cpp:564
+#: src/net/eathena/charserverhandler.cpp:565
 msgid "Character not found."
 msgstr ""
 
 #. TRANSLATORS: chat message
 #: src/net/eathena/chathandler.cpp:513
-#, fuzzy, c-format
+#, c-format
 msgid "Message could not be sent, channel %s is not exists."
-msgstr "Nelze odeslat šeptání, %s není připojen."
+msgstr ""
 
 #. TRANSLATORS: player stat
 #: src/net/eathena/generalhandler.cpp:127 src/net/tmwa/generalhandler.cpp:128
@@ -7823,27 +7819,27 @@ msgid "Luck %s"
 msgstr "Štěstí %s"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:163 src/net/tmwa/generalhandler.cpp:164
+#: src/net/eathena/generalhandler.cpp:163 src/net/tmwa/generalhandler.cpp:173
 msgid "Authentication failed."
 msgstr "Ověření selhalo."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:166 src/net/tmwa/generalhandler.cpp:168
+#: src/net/eathena/generalhandler.cpp:166 src/net/tmwa/generalhandler.cpp:177
 msgid "No servers available."
 msgstr "Nejsou dostupné žádné servery."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:171 src/net/tmwa/generalhandler.cpp:174
+#: src/net/eathena/generalhandler.cpp:171 src/net/tmwa/generalhandler.cpp:183
 msgid "Someone else is trying to use this account."
 msgstr "Někdo jiný se pokouší používat tento účet."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:176 src/net/tmwa/generalhandler.cpp:180
+#: src/net/eathena/generalhandler.cpp:176 src/net/tmwa/generalhandler.cpp:189
 msgid "This account is already logged in."
 msgstr "Tento účet je již přihlášen."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:180 src/net/tmwa/generalhandler.cpp:185
+#: src/net/eathena/generalhandler.cpp:180 src/net/tmwa/generalhandler.cpp:194
 msgid "Speed hack detected."
 msgstr "Detekován podvod s rychlostí."
 
@@ -7856,7 +7852,7 @@ msgid "Sorry, you are underaged."
 msgstr ""
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:189 src/net/tmwa/generalhandler.cpp:189
+#: src/net/eathena/generalhandler.cpp:189 src/net/tmwa/generalhandler.cpp:198
 msgid "Duplicated login."
 msgstr "Duplicitní přihlášení."
 
@@ -7937,94 +7933,94 @@ msgid "Not allowed race."
 msgstr ""
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:251 src/net/tmwa/generalhandler.cpp:193
+#: src/net/eathena/generalhandler.cpp:251 src/net/tmwa/generalhandler.cpp:202
 msgid "Unknown connection error."
 msgstr "Neznámá chyba připojení."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:329 src/net/tmwa/generalhandler.cpp:285
+#: src/net/eathena/generalhandler.cpp:329 src/net/tmwa/generalhandler.cpp:287
 msgid "Got disconnected from server!"
 msgstr "Byl jsem odpojen od server!"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:354 src/net/tmwa/generalhandler.cpp:313
+#: src/net/eathena/generalhandler.cpp:354 src/net/tmwa/generalhandler.cpp:315
 msgid "Strength"
 msgstr "Síla"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:355 src/net/tmwa/generalhandler.cpp:315
+#: src/net/eathena/generalhandler.cpp:355 src/net/tmwa/generalhandler.cpp:317
 msgid "Agility"
 msgstr "Hbitost"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:356 src/net/tmwa/generalhandler.cpp:317
+#: src/net/eathena/generalhandler.cpp:356 src/net/tmwa/generalhandler.cpp:319
 msgid "Vitality"
 msgstr "Vitalita"
 
-#: src/net/eathena/generalhandler.cpp:358 src/net/tmwa/generalhandler.cpp:320
+#: src/net/eathena/generalhandler.cpp:358 src/net/tmwa/generalhandler.cpp:322
 msgid "Intelligence"
 msgstr "Inteligence"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:359 src/net/tmwa/generalhandler.cpp:322
+#: src/net/eathena/generalhandler.cpp:359 src/net/tmwa/generalhandler.cpp:324
 msgid "Dexterity"
 msgstr "Obratnost"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:360 src/net/tmwa/generalhandler.cpp:324
+#: src/net/eathena/generalhandler.cpp:360 src/net/tmwa/generalhandler.cpp:326
 msgid "Luck"
 msgstr "Štěstí"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:363 src/net/tmwa/generalhandler.cpp:328
+#: src/net/eathena/generalhandler.cpp:363 src/net/tmwa/generalhandler.cpp:330
 msgid "Defense"
 msgstr "Obrana"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:364 src/net/tmwa/generalhandler.cpp:330
+#: src/net/eathena/generalhandler.cpp:364 src/net/tmwa/generalhandler.cpp:332
 msgid "M.Attack"
 msgstr "Magický útok"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:365 src/net/tmwa/generalhandler.cpp:332
+#: src/net/eathena/generalhandler.cpp:365 src/net/tmwa/generalhandler.cpp:334
 msgid "M.Defense"
 msgstr "Magická Obr."
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:367 src/net/tmwa/generalhandler.cpp:335
+#: src/net/eathena/generalhandler.cpp:367 src/net/tmwa/generalhandler.cpp:337
 #, no-c-format
 msgid "% Accuracy"
 msgstr "% Přesnost"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:369 src/net/tmwa/generalhandler.cpp:338
+#: src/net/eathena/generalhandler.cpp:369 src/net/tmwa/generalhandler.cpp:340
 #, no-c-format
 msgid "% Evade"
 msgstr "% Uhnutí"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:371 src/net/tmwa/generalhandler.cpp:341
+#: src/net/eathena/generalhandler.cpp:371 src/net/tmwa/generalhandler.cpp:343
 #, no-c-format
 msgid "% Critical"
 msgstr "% Kritický zásah"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:372 src/net/tmwa/generalhandler.cpp:343
+#: src/net/eathena/generalhandler.cpp:372 src/net/tmwa/generalhandler.cpp:345
 msgid "Attack Delay"
 msgstr "Zpoždění útoku"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:373 src/net/tmwa/generalhandler.cpp:345
+#: src/net/eathena/generalhandler.cpp:373 src/net/tmwa/generalhandler.cpp:347
 msgid "Walk Delay"
 msgstr "Zpoždění chůze"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:374 src/net/tmwa/generalhandler.cpp:347
+#: src/net/eathena/generalhandler.cpp:374 src/net/tmwa/generalhandler.cpp:349
 msgid "Attack Range"
 msgstr "Dosah útoku"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:375 src/net/tmwa/generalhandler.cpp:349
+#: src/net/eathena/generalhandler.cpp:375 src/net/tmwa/generalhandler.cpp:351
 msgid "Damage per sec."
 msgstr "Poškození za vteř."
 
@@ -8322,13 +8318,15 @@ msgstr "Nelze koupit."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:47
-msgid "Unable to buy. You not have enought money."
-msgstr ""
+#, fuzzy
+msgid "Unable to buy. You don't have enough money."
+msgstr "Nemáš dost peněz."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:51
-msgid "Unable to buy. You overweight."
-msgstr ""
+#, fuzzy
+msgid "Unable to buy. It is too heavy."
+msgstr "Předmět je příliš těžký."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:55
@@ -8373,7 +8371,8 @@ msgstr "Gilda vytvořena."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:87
-msgid "You are already in guild."
+#, fuzzy
+msgid "You are already in a guild."
 msgstr "Již jste členem gildy."
 
 #. TRANSLATORS: notification message
@@ -8450,7 +8449,8 @@ msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:147
-msgid "Could not create party."
+#, fuzzy
+msgid "Couldn't create party."
 msgstr "Nelze vytvořit partu."
 
 #. TRANSLATORS: notification message
@@ -8465,17 +8465,18 @@ msgstr "Opustil jste partu."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:159
-msgid "You cant left party on this map."
+msgid "You can't leave party on this map."
 msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:163
-msgid "You was kicked from party."
-msgstr ""
+#, fuzzy
+msgid "You were kicked from party."
+msgstr "Byl jste vykopnut z gildy."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:167
-msgid "You cant be kicked from party on this map."
+msgid "You can't be kicked from party on this map."
 msgstr ""
 
 #. TRANSLATORS: notification message
@@ -8522,9 +8523,9 @@ msgstr "%s opustil vaši partu."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:223 src/resources/notifications.h:231
-#, c-format
-msgid "%s cant be kicked from party on this map."
-msgstr ""
+#, fuzzy, c-format
+msgid "%s can't be kicked from party on this map."
+msgstr "%s byl vykopnut z vaší gildy."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:227
@@ -8758,7 +8759,7 @@ msgstr ""
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:407
 #, c-format
-msgid "You cant feed homunculus, because not have %s."
+msgid "You can't feed homunculus, because you don't have %s."
 msgstr ""
 
 #. TRANSLATORS: notification message
@@ -8778,7 +8779,9 @@ msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:423
-msgid "Withdraw failed. Probably you not have money in bank for withdraw."
+msgid ""
+"Withdraw failed. You probably don't have this amount of money in the bank "
+"right now."
 msgstr ""
 
 #. TRANSLATORS: chat option changed message

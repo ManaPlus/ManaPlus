@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-10-22 17:50+0300\n"
-"PO-Revision-Date: 2014-10-10 10:01+0000\n"
+"POT-Creation-Date: 2014-10-24 12:58+0300\n"
+"PO-Revision-Date: 2014-10-23 10:02+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Finnish (http://www.transifex.com/projects/p/manaplus/"
 "language/fi/)\n"
@@ -55,8 +55,8 @@ msgstr ""
 #: src/net/ea/charserverhandler.cpp:143 src/net/ea/charserverhandler.cpp:162
 #: src/net/ea/charserverhandler.cpp:175 src/net/ea/gamehandler.cpp:83
 #: src/net/ea/playerhandler.cpp:424 src/net/ea/playerhandler.cpp:440
-#: src/net/eathena/charserverhandler.cpp:540
-#: src/net/eathena/charserverhandler.cpp:570
+#: src/net/eathena/charserverhandler.cpp:541
+#: src/net/eathena/charserverhandler.cpp:571
 msgid "OK"
 msgstr "Ok"
 
@@ -161,11 +161,9 @@ msgstr "Et voi lähettää tyhjiä kuiskauksia!"
 
 #. TRANSLATORS: new whisper or channel query
 #: src/actions/chat.cpp:239
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot create a whisper tab \"%s\"! It either already exists."
 msgstr ""
-"Kuiskausvälilehden luonti nimelle \"%s\" epäonnistui! Se on joko jo auki tai "
-"käytit omaa nimeäsi."
 
 #. TRANSLATORS: create party message
 #. TRANSLATORS: chat error message
@@ -351,7 +349,7 @@ msgstr "Tavara kuuluu jollekulle muulle."
 
 #. TRANSLATORS: pickup error message
 #: src/being/localplayer.cpp:849
-msgid "You cant pickup this amount of items."
+msgid "You can't pickup this amount of items."
 msgstr ""
 
 #. TRANSLATORS: pickup error message
@@ -555,8 +553,8 @@ msgstr "Vaihdan pelipalvelinta"
 #: src/gui/windows/registerdialog.cpp:243
 #: src/gui/windows/unregisterdialog.cpp:146
 #: src/net/ea/charserverhandler.cpp:141 src/net/ea/charserverhandler.cpp:173
-#: src/net/eathena/charserverhandler.cpp:523
-#: src/net/eathena/charserverhandler.cpp:525
+#: src/net/eathena/charserverhandler.cpp:524
+#: src/net/eathena/charserverhandler.cpp:526
 msgid "Error"
 msgstr "Virhe"
 
@@ -1542,7 +1540,7 @@ msgstr "Tee kaupat"
 #: src/gui/popups/popupmenu.cpp:168 src/gui/popups/popupmenu.cpp:274
 #: src/gui/popups/popupmenu.cpp:769 src/gui/widgets/skillinfo.cpp:113
 #: src/gui/windows/botcheckerwindow.cpp:89 src/input/pages/basic.cpp:42
-#: src/net/eathena/generalhandler.cpp:362 src/net/tmwa/generalhandler.cpp:326
+#: src/net/eathena/generalhandler.cpp:362 src/net/tmwa/generalhandler.cpp:328
 msgid "Attack"
 msgstr "Hyökkää"
 
@@ -4973,9 +4971,8 @@ msgstr ""
 
 #. TRANSLATORS: short button name for bank window.
 #: src/gui/windowmenu.cpp:147
-#, fuzzy
 msgid "BA"
-msgstr "P"
+msgstr ""
 
 #. TRANSLATORS: full button name
 #. TRANSLATORS: bank window name
@@ -5007,9 +5004,9 @@ msgid "Key: %s"
 msgstr "Näppäin: %s"
 
 #: src/gui/windows/bankwindow.cpp:48 src/gui/windows/bankwindow.cpp:90
-#, fuzzy, c-format
+#, c-format
 msgid "Money in bank: %s"
-msgstr "Rahat: %s"
+msgstr ""
 
 #. TRANSLATORS: bank window button
 #: src/gui/windows/bankwindow.cpp:51
@@ -5277,8 +5274,8 @@ msgstr "Pelaa"
 #. TRANSLATORS: info message
 #: src/gui/windows/charselectdialog.cpp:80
 #: src/net/ea/charserverhandler.cpp:160
-#: src/net/eathena/charserverhandler.cpp:538
-#: src/net/eathena/charserverhandler.cpp:568
+#: src/net/eathena/charserverhandler.cpp:539
+#: src/net/eathena/charserverhandler.cpp:569
 msgid "Info"
 msgstr "Tietoja"
 
@@ -7195,9 +7192,8 @@ msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/windows.cpp:54
-#, fuzzy
 msgid "Bank Window"
-msgstr "Keskusteluikkuna"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/windows.cpp:60
@@ -7730,35 +7726,35 @@ msgid "You are carrying less than half your weight. You can regain health."
 msgstr "Kannat roinaa alle puolet elopainoasi, ja paranet jälleen."
 
 #. TRANSLATORS: char rename error
-#: src/net/eathena/charserverhandler.cpp:523
-#: src/net/eathena/charserverhandler.cpp:560
+#: src/net/eathena/charserverhandler.cpp:524
+#: src/net/eathena/charserverhandler.cpp:561
 msgid "Character rename error."
 msgstr ""
 
-#: src/net/eathena/charserverhandler.cpp:538
+#: src/net/eathena/charserverhandler.cpp:539
 msgid "Character renamed."
 msgstr ""
 
 #. TRANSLATORS: char rename error
-#: src/net/eathena/charserverhandler.cpp:551
+#: src/net/eathena/charserverhandler.cpp:552
 msgid "Rename not allowed."
 msgstr ""
 
 #. TRANSLATORS: char rename error
-#: src/net/eathena/charserverhandler.cpp:555
+#: src/net/eathena/charserverhandler.cpp:556
 msgid "New name is not set."
 msgstr ""
 
 #. TRANSLATORS: char rename error
-#: src/net/eathena/charserverhandler.cpp:564
+#: src/net/eathena/charserverhandler.cpp:565
 msgid "Character not found."
 msgstr ""
 
 #. TRANSLATORS: chat message
 #: src/net/eathena/chathandler.cpp:513
-#, fuzzy, c-format
+#, c-format
 msgid "Message could not be sent, channel %s is not exists."
-msgstr "Kuiskausta ei voitu lähettää, %s ei ole kirjautuneena sisään."
+msgstr ""
 
 #. TRANSLATORS: player stat
 #: src/net/eathena/generalhandler.cpp:127 src/net/tmwa/generalhandler.cpp:128
@@ -7797,27 +7793,27 @@ msgid "Luck %s"
 msgstr ""
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:163 src/net/tmwa/generalhandler.cpp:164
+#: src/net/eathena/generalhandler.cpp:163 src/net/tmwa/generalhandler.cpp:173
 msgid "Authentication failed."
 msgstr "Tunnistus epäonnistui."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:166 src/net/tmwa/generalhandler.cpp:168
+#: src/net/eathena/generalhandler.cpp:166 src/net/tmwa/generalhandler.cpp:177
 msgid "No servers available."
 msgstr "Palvelimia ei saatavilla."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:171 src/net/tmwa/generalhandler.cpp:174
+#: src/net/eathena/generalhandler.cpp:171 src/net/tmwa/generalhandler.cpp:183
 msgid "Someone else is trying to use this account."
 msgstr "Joku muu yrittää käyttää tätä tunnusta."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:176 src/net/tmwa/generalhandler.cpp:180
+#: src/net/eathena/generalhandler.cpp:176 src/net/tmwa/generalhandler.cpp:189
 msgid "This account is already logged in."
 msgstr "Tällä tunnuksella on jo kirjauduttu."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:180 src/net/tmwa/generalhandler.cpp:185
+#: src/net/eathena/generalhandler.cpp:180 src/net/tmwa/generalhandler.cpp:194
 msgid "Speed hack detected."
 msgstr "Nopeusviritelmä havaittu."
 
@@ -7830,7 +7826,7 @@ msgid "Sorry, you are underaged."
 msgstr ""
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:189 src/net/tmwa/generalhandler.cpp:189
+#: src/net/eathena/generalhandler.cpp:189 src/net/tmwa/generalhandler.cpp:198
 msgid "Duplicated login."
 msgstr "Kaksinkertainen sisäänkirjautuminen."
 
@@ -7911,94 +7907,94 @@ msgid "Not allowed race."
 msgstr ""
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:251 src/net/tmwa/generalhandler.cpp:193
+#: src/net/eathena/generalhandler.cpp:251 src/net/tmwa/generalhandler.cpp:202
 msgid "Unknown connection error."
 msgstr "Tuntematon yhteysongelma."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:329 src/net/tmwa/generalhandler.cpp:285
+#: src/net/eathena/generalhandler.cpp:329 src/net/tmwa/generalhandler.cpp:287
 msgid "Got disconnected from server!"
 msgstr "Yhteys palvelimeen katkesi!"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:354 src/net/tmwa/generalhandler.cpp:313
+#: src/net/eathena/generalhandler.cpp:354 src/net/tmwa/generalhandler.cpp:315
 msgid "Strength"
 msgstr "Voima"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:355 src/net/tmwa/generalhandler.cpp:315
+#: src/net/eathena/generalhandler.cpp:355 src/net/tmwa/generalhandler.cpp:317
 msgid "Agility"
 msgstr "Ketteryys"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:356 src/net/tmwa/generalhandler.cpp:317
+#: src/net/eathena/generalhandler.cpp:356 src/net/tmwa/generalhandler.cpp:319
 msgid "Vitality"
 msgstr "Elinvoima"
 
-#: src/net/eathena/generalhandler.cpp:358 src/net/tmwa/generalhandler.cpp:320
+#: src/net/eathena/generalhandler.cpp:358 src/net/tmwa/generalhandler.cpp:322
 msgid "Intelligence"
 msgstr "Älykkyys"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:359 src/net/tmwa/generalhandler.cpp:322
+#: src/net/eathena/generalhandler.cpp:359 src/net/tmwa/generalhandler.cpp:324
 msgid "Dexterity"
 msgstr "Näppäryys"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:360 src/net/tmwa/generalhandler.cpp:324
+#: src/net/eathena/generalhandler.cpp:360 src/net/tmwa/generalhandler.cpp:326
 msgid "Luck"
 msgstr "Tuuri"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:363 src/net/tmwa/generalhandler.cpp:328
+#: src/net/eathena/generalhandler.cpp:363 src/net/tmwa/generalhandler.cpp:330
 msgid "Defense"
 msgstr "Puolustus"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:364 src/net/tmwa/generalhandler.cpp:330
+#: src/net/eathena/generalhandler.cpp:364 src/net/tmwa/generalhandler.cpp:332
 msgid "M.Attack"
 msgstr "T.-hyökkäys"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:365 src/net/tmwa/generalhandler.cpp:332
+#: src/net/eathena/generalhandler.cpp:365 src/net/tmwa/generalhandler.cpp:334
 msgid "M.Defense"
 msgstr "T.-puolustus"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:367 src/net/tmwa/generalhandler.cpp:335
+#: src/net/eathena/generalhandler.cpp:367 src/net/tmwa/generalhandler.cpp:337
 #, no-c-format
 msgid "% Accuracy"
 msgstr "% Tarkkuus"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:369 src/net/tmwa/generalhandler.cpp:338
+#: src/net/eathena/generalhandler.cpp:369 src/net/tmwa/generalhandler.cpp:340
 #, no-c-format
 msgid "% Evade"
 msgstr "% Välttö"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:371 src/net/tmwa/generalhandler.cpp:341
+#: src/net/eathena/generalhandler.cpp:371 src/net/tmwa/generalhandler.cpp:343
 #, no-c-format
 msgid "% Critical"
 msgstr "% Täysosuma"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:372 src/net/tmwa/generalhandler.cpp:343
+#: src/net/eathena/generalhandler.cpp:372 src/net/tmwa/generalhandler.cpp:345
 msgid "Attack Delay"
 msgstr "Hyökkäysviive"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:373 src/net/tmwa/generalhandler.cpp:345
+#: src/net/eathena/generalhandler.cpp:373 src/net/tmwa/generalhandler.cpp:347
 msgid "Walk Delay"
 msgstr "Kävelyviive"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:374 src/net/tmwa/generalhandler.cpp:347
+#: src/net/eathena/generalhandler.cpp:374 src/net/tmwa/generalhandler.cpp:349
 msgid "Attack Range"
 msgstr "Hyökkäyskantama"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:375 src/net/tmwa/generalhandler.cpp:349
+#: src/net/eathena/generalhandler.cpp:375 src/net/tmwa/generalhandler.cpp:351
 msgid "Damage per sec."
 msgstr "Vahinko sekunnissa."
 
@@ -8296,13 +8292,15 @@ msgstr "Ostaminen epäonnistui."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:47
-msgid "Unable to buy. You not have enought money."
-msgstr ""
+#, fuzzy
+msgid "Unable to buy. You don't have enough money."
+msgstr "Sinulla ei ole tarpeeksi rahaa."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:51
-msgid "Unable to buy. You overweight."
-msgstr ""
+#, fuzzy
+msgid "Unable to buy. It is too heavy."
+msgstr "Tavara on liian painava."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:55
@@ -8347,7 +8345,8 @@ msgstr "Kilta luotu."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:87
-msgid "You are already in guild."
+#, fuzzy
+msgid "You are already in a guild."
 msgstr "Olet jo killassa."
 
 #. TRANSLATORS: notification message
@@ -8424,7 +8423,8 @@ msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:147
-msgid "Could not create party."
+#, fuzzy
+msgid "Couldn't create party."
 msgstr "Ryhmän luonti epäonnistui."
 
 #. TRANSLATORS: notification message
@@ -8439,17 +8439,18 @@ msgstr "Erosit ryhmästä."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:159
-msgid "You cant left party on this map."
+msgid "You can't leave party on this map."
 msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:163
-msgid "You was kicked from party."
-msgstr ""
+#, fuzzy
+msgid "You were kicked from party."
+msgstr "Sinut potkittiin ulos killasta."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:167
-msgid "You cant be kicked from party on this map."
+msgid "You can't be kicked from party on this map."
 msgstr ""
 
 #. TRANSLATORS: notification message
@@ -8496,9 +8497,9 @@ msgstr "%s on eronnut ryhmästä."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:223 src/resources/notifications.h:231
-#, c-format
-msgid "%s cant be kicked from party on this map."
-msgstr ""
+#, fuzzy, c-format
+msgid "%s can't be kicked from party on this map."
+msgstr "%s on potkittu ulos killastasi."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:227
@@ -8733,7 +8734,7 @@ msgstr ""
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:407
 #, c-format
-msgid "You cant feed homunculus, because not have %s."
+msgid "You can't feed homunculus, because you don't have %s."
 msgstr ""
 
 #. TRANSLATORS: notification message
@@ -8753,7 +8754,9 @@ msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:423
-msgid "Withdraw failed. Probably you not have money in bank for withdraw."
+msgid ""
+"Withdraw failed. You probably don't have this amount of money in the bank "
+"right now."
 msgstr ""
 
 #. TRANSLATORS: chat option changed message
