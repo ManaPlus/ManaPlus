@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-10-24 12:58+0300\n"
-"PO-Revision-Date: 2014-10-23 10:02+0000\n"
+"POT-Creation-Date: 2014-10-25 15:36+0300\n"
+"PO-Revision-Date: 2014-10-25 10:00+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/manaplus/"
 "language/ja/)\n"
@@ -55,7 +55,7 @@ msgstr ""
 #: src/gui/windows/editserverdialog.cpp:59
 #: src/gui/windows/editserverdialog.cpp:206
 #: src/gui/windows/itemamountwindow.cpp:158 src/gui/windows/quitdialog.cpp:68
-#: src/gui/windows/registerdialog.cpp:243 src/gui/windows/socialwindow.cpp:504
+#: src/gui/windows/registerdialog.cpp:243 src/gui/windows/socialwindow.cpp:502
 #: src/gui/windows/textdialog.cpp:48 src/gui/windows/unregisterdialog.cpp:149
 #: src/net/ea/charserverhandler.cpp:143 src/net/ea/charserverhandler.cpp:162
 #: src/net/ea/charserverhandler.cpp:175 src/net/ea/gamehandler.cpp:83
@@ -160,48 +160,48 @@ msgid "Uploaded log into:"
 msgstr ""
 
 #. TRANSLATORS: whisper send
-#: src/actions/chat.cpp:218
+#: src/actions/chat.cpp:227
 msgid "Cannot send empty whispers!"
 msgstr "空のささやきを送信することはできません!"
 
 #. TRANSLATORS: new whisper or channel query
-#: src/actions/chat.cpp:239
+#: src/actions/chat.cpp:248
 #, c-format
 msgid "Cannot create a whisper tab \"%s\"! It either already exists."
 msgstr ""
 
 #. TRANSLATORS: create party message
 #. TRANSLATORS: chat error message
-#: src/actions/chat.cpp:264 src/gui/widgets/tabs/chat/partytab.cpp:72
+#: src/actions/chat.cpp:273 src/gui/widgets/tabs/chat/partytab.cpp:71
 msgid "Party name is missing."
 msgstr "パーティ名がありません."
 
 #. TRANSLATORS: create guild message
-#: src/actions/chat.cpp:282
+#: src/actions/chat.cpp:291
 msgid "Guild name is missing."
 msgstr "ギルド名がありません."
 
 #. TRANSLATORS: party invite message
 #. TRANSLATORS: change relation
-#: src/actions/chat.cpp:304 src/actions/commands.cpp:64
+#: src/actions/chat.cpp:313 src/actions/commands.cpp:64
 msgid "Please specify a name."
 msgstr "名前を入力してください."
 
-#: src/actions/chat.cpp:324
+#: src/actions/chat.cpp:333
 msgid "Return toggles chat."
 msgstr "改行キーでチャット入力ができます."
 
-#: src/actions/chat.cpp:324
+#: src/actions/chat.cpp:333
 msgid "Message closes chat."
 msgstr "チャットを閉じます."
 
 #. TRANSLATORS: message from toggle chat command
-#: src/actions/chat.cpp:335
+#: src/actions/chat.cpp:344
 msgid "Return now toggles chat."
 msgstr "改行キーでチャット入力ができます."
 
 #. TRANSLATORS: message from toggle chat command
-#: src/actions/chat.cpp:344
+#: src/actions/chat.cpp:353
 msgid "Message now closes chat."
 msgstr "チャットを閉じます."
 
@@ -294,82 +294,82 @@ msgid "Visible on map"
 msgstr "マップに表示させる"
 
 #. TRANSLATORS: default race name
-#: src/being/being.cpp:393
+#: src/being/being.cpp:394
 msgid "Human"
 msgstr "人間"
 
-#: src/being/being.cpp:560
+#: src/being/being.cpp:561
 msgid "dodge"
 msgstr "ドッジ"
 
-#: src/being/being.cpp:560
+#: src/being/being.cpp:561
 msgid "miss"
 msgstr "ミス"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being/being.cpp:1869 src/gui/windows/whoisonline.cpp:855
+#: src/being/being.cpp:1870 src/gui/windows/whoisonline.cpp:855
 msgid "A"
 msgstr "A"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being/being.cpp:1874 src/gui/windows/whoisonline.cpp:860
+#: src/being/being.cpp:1875 src/gui/windows/whoisonline.cpp:860
 msgid "I"
 msgstr "I"
 
 #. TRANSLATORS: chat message after death
-#: src/being/localplayer.cpp:380
+#: src/being/localplayer.cpp:379
 #, c-format
 msgid "You were killed by %s"
 msgstr "%sによって殺されました"
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:825
+#: src/being/localplayer.cpp:824
 msgid "Tried to pick up nonexistent item."
 msgstr "存在しないアイテムは拾えません."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:829
+#: src/being/localplayer.cpp:828
 msgid "Item is too heavy."
 msgstr "アイテムが重過ぎます."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:833
+#: src/being/localplayer.cpp:832
 msgid "Item is too far away."
 msgstr "アイテムが遠すぎます."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:837
+#: src/being/localplayer.cpp:836
 msgid "Inventory is full."
 msgstr "インベントリーが満杯です."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:841
+#: src/being/localplayer.cpp:840
 msgid "Stack is too big."
 msgstr "量が多すぎます."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:845
+#: src/being/localplayer.cpp:844
 msgid "Item belongs to someone else."
 msgstr "これは他のプレイヤーのアイテムです."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:849
+#: src/being/localplayer.cpp:848
 msgid "You can't pickup this amount of items."
 msgstr ""
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:853
+#: src/being/localplayer.cpp:852
 msgid "Your item stack has max amount."
 msgstr ""
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:857
+#: src/being/localplayer.cpp:856
 msgid "Unknown problem picking up item."
 msgstr "不明なエラーの為拾えません."
 
 #. TRANSLATORS: %d is number,
 #. [@@%d|%s@@] - here player can see link to item
-#: src/being/localplayer.cpp:881
+#: src/being/localplayer.cpp:880
 #, c-format
 msgid "You picked up %d [@@%d|%s@@]."
 msgid_plural "You picked up %d [@@%d|%s@@]."
@@ -377,43 +377,43 @@ msgstr[0] "%d [@@%d|%s@@]を手に入れました."
 
 #. TRANSLATORS: this is normal experience
 #. TRANSLATORS: get xp message
-#: src/being/localplayer.cpp:1063 src/being/localplayer.cpp:1064
-#: src/being/localplayer.cpp:1100
+#: src/being/localplayer.cpp:1062 src/being/localplayer.cpp:1063
+#: src/being/localplayer.cpp:1099
 msgid "xp"
 msgstr "xp"
 
 #. TRANSLATORS: this is job experience
-#: src/being/localplayer.cpp:1068 src/being/localplayer.cpp:1074
-#: src/being/localplayer.cpp:1080
+#: src/being/localplayer.cpp:1067 src/being/localplayer.cpp:1073
+#: src/being/localplayer.cpp:1079
 msgid "job"
 msgstr "ジョブ"
 
 #. TRANSLATORS: follow command message
-#: src/being/localplayer.cpp:2803
+#: src/being/localplayer.cpp:2805
 #, c-format
 msgid "Follow: %s"
 msgstr ""
 
 #. TRANSLATORS: follow command message
 #. TRANSLATORS: cancel follow message
-#: src/being/localplayer.cpp:2809 src/being/localplayer.cpp:2834
+#: src/being/localplayer.cpp:2811 src/being/localplayer.cpp:2836
 msgid "Follow canceled"
 msgstr "フォローを止める"
 
 #. TRANSLATORS: imitate command message
-#: src/being/localplayer.cpp:2819
+#: src/being/localplayer.cpp:2821
 #, c-format
 msgid "Imitation: %s"
 msgstr ""
 
 #. TRANSLATORS: imitate command message
 #. TRANSLATORS: cancel follow message
-#: src/being/localplayer.cpp:2825 src/being/localplayer.cpp:2839
+#: src/being/localplayer.cpp:2827 src/being/localplayer.cpp:2841
 msgid "Imitation canceled"
 msgstr "真似をやめる"
 
 #. TRANSLATORS: wait player/monster message
-#: src/being/localplayer.cpp:3189
+#: src/being/localplayer.cpp:3191
 #, c-format
 msgid "You see %s"
 msgstr ""
@@ -1466,7 +1466,7 @@ msgstr "コメント: %s"
 
 #. TRANSLATORS: party popup item
 #. TRANSLATORS: party creation message
-#: src/gui/popups/createpartypopup.h:51 src/gui/windows/socialwindow.cpp:501
+#: src/gui/popups/createpartypopup.h:51 src/gui/windows/socialwindow.cpp:499
 msgid "Create Party"
 msgstr "パーティを作る"
 
@@ -1509,9 +1509,9 @@ msgstr "パーティを作る"
 #: src/gui/windows/connectiondialog.cpp:52
 #: src/gui/windows/editserverdialog.cpp:61
 #: src/gui/windows/itemamountwindow.cpp:160
-#: src/gui/windows/npcpostdialog.cpp:72 src/gui/windows/quitdialog.cpp:70
+#: src/gui/windows/npcpostdialog.cpp:70 src/gui/windows/quitdialog.cpp:70
 #: src/gui/windows/registerdialog.cpp:65 src/gui/windows/setupwindow.cpp:95
-#: src/gui/windows/textcommandeditor.cpp:88 src/gui/windows/textdialog.cpp:55
+#: src/gui/windows/textcommandeditor.cpp:87 src/gui/windows/textdialog.cpp:55
 #: src/gui/windows/unregisterdialog.cpp:57
 #: src/gui/windows/updaterwindow.cpp:191 src/input/pages/gui.cpp:105
 msgid "Cancel"
@@ -1527,7 +1527,7 @@ msgstr "重力: %s"
 #. TRANSLATORS: trade with player
 #. TRANSLATORS: trade chat tab name
 #: src/gui/popups/popupmenu.cpp:165 src/gui/popups/popupmenu.cpp:766
-#: src/gui/widgets/tabs/chat/tradetab.cpp:37
+#: src/gui/widgets/tabs/chat/tradetab.cpp:35
 msgid "Trade"
 msgstr "トレード"
 
@@ -1544,7 +1544,7 @@ msgstr "トレード"
 #: src/gui/popups/popupmenu.cpp:168 src/gui/popups/popupmenu.cpp:274
 #: src/gui/popups/popupmenu.cpp:769 src/gui/widgets/skillinfo.cpp:113
 #: src/gui/windows/botcheckerwindow.cpp:89 src/input/pages/basic.cpp:42
-#: src/net/eathena/generalhandler.cpp:362 src/net/tmwa/generalhandler.cpp:328
+#: src/net/eathena/generalhandler.cpp:362 src/net/tmwa/generalhandler.cpp:326
 msgid "Attack"
 msgstr "攻撃"
 
@@ -1873,7 +1873,7 @@ msgstr "AFKを無効にする"
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: enable away messages in chat tab
 #. TRANSLATORS: social window button
-#: src/gui/popups/popupmenu.cpp:742 src/gui/windows/socialwindow.cpp:91
+#: src/gui/popups/popupmenu.cpp:742 src/gui/windows/socialwindow.cpp:89
 msgid "Leave"
 msgstr "退会"
 
@@ -2324,7 +2324,7 @@ msgstr "スマイリー"
 #. TRANSLATORS: settings tab name
 #. TRANSLATORS: chat window name
 #: src/gui/setupinputpages.cpp:55 src/gui/widgets/tabs/setup_chat.cpp:40
-#: src/gui/windowmenu.cpp:88 src/gui/windows/chatwindow.cpp:91
+#: src/gui/windowmenu.cpp:88 src/gui/windows/chatwindow.cpp:89
 msgid "Chat"
 msgstr "チャット"
 
@@ -2717,7 +2717,7 @@ msgid "Range: %d"
 msgstr ""
 
 #. TRANSLATORS: battle chat tab name
-#: src/gui/widgets/tabs/chat/battletab.cpp:36
+#: src/gui/widgets/tabs/chat/battletab.cpp:35
 msgid "Battle"
 msgstr "バトル"
 
@@ -2752,78 +2752,78 @@ msgstr ""
 
 #. TRANSLATORS: guild chat tab name
 #. TRANSLATORS: tab in social window
-#: src/gui/widgets/tabs/chat/emulateguildtab.cpp:39
-#: src/gui/widgets/tabs/chat/guildtab.cpp:46
+#: src/gui/widgets/tabs/chat/emulateguildtab.cpp:38
+#: src/gui/widgets/tabs/chat/guildtab.cpp:45
 #: src/gui/widgets/tabs/socialguildtab2.h:48
 #: src/gui/widgets/tabs/socialguildtab.h:50
 msgid "Guild"
 msgstr "ギルド"
 
 #. TRANSLATORS: gb tab name
-#: src/gui/widgets/tabs/chat/gmtab.cpp:33
+#: src/gui/widgets/tabs/chat/gmtab.cpp:31
 msgid "GM"
 msgstr ""
 
 #. TRANSLATORS: lang chat tab name
-#: src/gui/widgets/tabs/chat/langtab.cpp:34
+#: src/gui/widgets/tabs/chat/langtab.cpp:32
 msgid "Lang"
 msgstr ""
 
 #. TRANSLATORS: party chat tab name
 #. TRANSLATORS: tab in social window
-#: src/gui/widgets/tabs/chat/partytab.cpp:46
+#: src/gui/widgets/tabs/chat/partytab.cpp:45
 #: src/gui/widgets/tabs/socialpartytab.h:51
 msgid "Party"
 msgstr "パーティー"
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/gui/widgets/tabs/chat/partytab.cpp:99 src/resources/notifications.h:207
+#: src/gui/widgets/tabs/chat/partytab.cpp:98 src/resources/notifications.h:207
 msgid "Item sharing enabled."
 msgstr "アイテム共有モード有効."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/gui/widgets/tabs/chat/partytab.cpp:104
+#: src/gui/widgets/tabs/chat/partytab.cpp:103
 #: src/resources/notifications.h:211
 msgid "Item sharing disabled."
 msgstr "アイテム共有モード無効."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/gui/widgets/tabs/chat/partytab.cpp:109
+#: src/gui/widgets/tabs/chat/partytab.cpp:108
 #: src/resources/notifications.h:215
 msgid "Item sharing not possible."
 msgstr "アイテム共有モード不可能."
 
 #. TRANSLATORS: chat message
-#: src/gui/widgets/tabs/chat/partytab.cpp:114
+#: src/gui/widgets/tabs/chat/partytab.cpp:113
 msgid "Item sharing unknown."
 msgstr "アイテム共有モード不明."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/gui/widgets/tabs/chat/partytab.cpp:149
+#: src/gui/widgets/tabs/chat/partytab.cpp:148
 #: src/resources/notifications.h:195
 msgid "Experience sharing enabled."
 msgstr "Expシェアモード有効."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/gui/widgets/tabs/chat/partytab.cpp:154
+#: src/gui/widgets/tabs/chat/partytab.cpp:153
 #: src/resources/notifications.h:199
 msgid "Experience sharing disabled."
 msgstr "Expシェアモード無効."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/gui/widgets/tabs/chat/partytab.cpp:159
+#: src/gui/widgets/tabs/chat/partytab.cpp:158
 #: src/resources/notifications.h:203
 msgid "Experience sharing not possible."
 msgstr "Expシェアモード不可能."
 
 #. TRANSLATORS: chat message
-#: src/gui/widgets/tabs/chat/partytab.cpp:164
+#: src/gui/widgets/tabs/chat/partytab.cpp:163
 msgid "Experience sharing unknown."
 msgstr "Expシェアモード不明."
 
@@ -3857,7 +3857,7 @@ msgstr "ショップモードを有効にする"
 #. TRANSLATORS: npc dialog name
 #. TRANSLATORS: npc post dialog caption
 #: src/gui/widgets/tabs/setup_other.cpp:279 src/gui/windows/npcdialog.cpp:85
-#: src/gui/windows/npcpostdialog.cpp:45
+#: src/gui/windows/npcpostdialog.cpp:43
 msgid "NPC"
 msgstr "NPC"
 
@@ -4236,7 +4236,7 @@ msgstr "全てのささやきを受け取る"
 #: src/gui/widgets/tabs/setup_relations.cpp:77
 #: src/gui/windows/charselectdialog.cpp:82
 #: src/gui/windows/serverdialog.cpp:125 src/gui/windows/shopwindow.cpp:100
-#: src/gui/windows/shopwindow.cpp:107 src/gui/windows/textcommandeditor.cpp:92
+#: src/gui/windows/shopwindow.cpp:107 src/gui/windows/textcommandeditor.cpp:91
 #: src/input/pages/gui.cpp:111
 msgid "Delete"
 msgstr "削除"
@@ -4923,7 +4923,7 @@ msgstr "SOC"
 
 #. TRANSLATORS: full button name
 #. TRANSLATORS: social window name
-#: src/gui/windowmenu.cpp:117 src/gui/windows/socialwindow.cpp:64
+#: src/gui/windowmenu.cpp:117 src/gui/windows/socialwindow.cpp:62
 msgid "Social"
 msgstr "ソーシャル"
 
@@ -5052,7 +5052,7 @@ msgstr "量:"
 #. TRANSLATORS: social window button
 #: src/gui/windows/buydialog.cpp:260 src/gui/windows/charcreatedialog.cpp:125
 #: src/gui/windows/charselectdialog.cpp:601
-#: src/gui/windows/socialwindow.cpp:87
+#: src/gui/windows/socialwindow.cpp:85
 msgid "Create"
 msgstr "作成"
 
@@ -5335,19 +5335,19 @@ msgid "Enter password:"
 msgstr "パスワードを入力して下さい:"
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/chatwindow.cpp:661
+#: src/gui/windows/chatwindow.cpp:659
 #, c-format
 msgid "Present: %s; %d players are present."
 msgstr "現在: %s; %d プレイヤーがいます."
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/chatwindow.cpp:1104
+#: src/gui/windows/chatwindow.cpp:1102
 #, c-format
 msgid "Whispering to %s: %s"
 msgstr "%sにささやき中:%s"
 
 #. TRANSLATORS: owners pet name. For example: 4144's pet
-#: src/gui/windows/chatwindow.cpp:1652 src/net/eathena/pethandler.cpp:167
+#: src/gui/windows/chatwindow.cpp:1650 src/net/eathena/pethandler.cpp:167
 #, c-format
 msgid "%s's pet"
 msgstr ""
@@ -5773,17 +5773,17 @@ msgid "Add"
 msgstr "追加"
 
 #. TRANSLATORS: label in npc post dialog
-#: src/gui/windows/npcpostdialog.cpp:61
+#: src/gui/windows/npcpostdialog.cpp:59
 msgid "To:"
 msgstr "宛先:"
 
 #. TRANSLATORS: button in npc post dialog
-#: src/gui/windows/npcpostdialog.cpp:68
+#: src/gui/windows/npcpostdialog.cpp:66
 msgid "Send"
 msgstr "送信する"
 
 #. TRANSLATORS: npc post message error
-#: src/gui/windows/npcpostdialog.cpp:115
+#: src/gui/windows/npcpostdialog.cpp:113
 msgid "Failed to send as sender or letter invalid."
 msgstr "文字か差出人が無効の為送信に失敗しました."
 
@@ -5995,126 +5995,126 @@ msgid "Failed skill: %s"
 msgstr ""
 
 #. TRANSLATORS: here P is title for visible players tab in social window
-#: src/gui/windows/socialwindow.cpp:78
+#: src/gui/windows/socialwindow.cpp:76
 msgid "P"
 msgstr "周囲"
 
 #. TRANSLATORS: here F is title for friends tab in social window
-#: src/gui/windows/socialwindow.cpp:83
+#: src/gui/windows/socialwindow.cpp:81
 msgid "F"
 msgstr "友達"
 
 #. TRANSLATORS: social window button
-#: src/gui/windows/socialwindow.cpp:89
+#: src/gui/windows/socialwindow.cpp:87
 msgid "Invite"
 msgstr "招待"
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/socialwindow.cpp:277
+#: src/gui/windows/socialwindow.cpp:275
 #, c-format
 msgid "Accepted party invite from %s."
 msgstr "%sからのパーティ招待を承認しました."
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/socialwindow.cpp:288
+#: src/gui/windows/socialwindow.cpp:286
 #, c-format
 msgid "Rejected party invite from %s."
 msgstr "%sからのパーティ招待を拒否しました."
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/socialwindow.cpp:305
+#: src/gui/windows/socialwindow.cpp:303
 #, c-format
 msgid "Accepted guild invite from %s."
 msgstr "%sからのギルド招待を承認しました."
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/socialwindow.cpp:319
+#: src/gui/windows/socialwindow.cpp:317
 #, c-format
 msgid "Rejected guild invite from %s."
 msgstr "%sからのギルド招待を拒否しました."
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/socialwindow.cpp:359
+#: src/gui/windows/socialwindow.cpp:357
 #, c-format
 msgid "Creating guild called %s."
 msgstr "ギルド %sを作成しました."
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/socialwindow.cpp:380
+#: src/gui/windows/socialwindow.cpp:378
 #, c-format
 msgid "Creating party called %s."
 msgstr "パーティ %sを作成しました."
 
 #. TRANSLATORS: guild creation message
-#: src/gui/windows/socialwindow.cpp:395
+#: src/gui/windows/socialwindow.cpp:393
 msgid "Guild Name"
 msgstr "ギルド名"
 
 #. TRANSLATORS: guild creation message
-#: src/gui/windows/socialwindow.cpp:397
+#: src/gui/windows/socialwindow.cpp:395
 msgid "Choose your guild's name."
 msgstr "ギルド名を選んでください."
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/socialwindow.cpp:413
+#: src/gui/windows/socialwindow.cpp:411
 msgid "Received guild request, but one already exists."
 msgstr "ギルド招待を承認したが既に入会しています."
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/socialwindow.cpp:421
+#: src/gui/windows/socialwindow.cpp:419
 #, c-format
 msgid "%s has invited you to join the guild %s."
 msgstr "%sがギルド %sへ招待しています."
 
 #. TRANSLATORS: guild invite message
-#: src/gui/windows/socialwindow.cpp:428
+#: src/gui/windows/socialwindow.cpp:426
 msgid "Accept Guild Invite"
 msgstr "ギルド招待を受け入れる"
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/socialwindow.cpp:444
+#: src/gui/windows/socialwindow.cpp:442
 msgid "Received party request, but one already exists."
 msgstr "パーティ招待を承認したが既に入会しています."
 
 #. TRANSLATORS: party invite message
-#: src/gui/windows/socialwindow.cpp:456
+#: src/gui/windows/socialwindow.cpp:454
 msgid "You have been invited you to join a party."
 msgstr "パーティに招待されました."
 
 #. TRANSLATORS: party invite message
-#: src/gui/windows/socialwindow.cpp:461
+#: src/gui/windows/socialwindow.cpp:459
 #, c-format
 msgid "You have been invited to join the %s party."
 msgstr "パーティ %sに招待されました."
 
 #. TRANSLATORS: party invite message
-#: src/gui/windows/socialwindow.cpp:470
+#: src/gui/windows/socialwindow.cpp:468
 #, c-format
 msgid "%s has invited you to join their party."
 msgstr "%sはあなたをパーティに招待しました."
 
 #. TRANSLATORS: party invite message
-#: src/gui/windows/socialwindow.cpp:476
+#: src/gui/windows/socialwindow.cpp:474
 #, c-format
 msgid "%s has invited you to join the %s party."
 msgstr "%sはあなたを%sというパーティに招待しました."
 
 #. TRANSLATORS: party invite message
-#: src/gui/windows/socialwindow.cpp:486
+#: src/gui/windows/socialwindow.cpp:484
 msgid "Accept Party Invite"
 msgstr "パーティ招待を受け入れます"
 
-#: src/gui/windows/socialwindow.cpp:502
+#: src/gui/windows/socialwindow.cpp:500
 msgid "Cannot create party. You are already in a party"
 msgstr "パーティーを作成することはできません。もうパーティーに入っています"
 
 #. TRANSLATORS: party creation message
-#: src/gui/windows/socialwindow.cpp:511
+#: src/gui/windows/socialwindow.cpp:509
 msgid "Party Name"
 msgstr "パーティ名"
 
 #. TRANSLATORS: party creation message
-#: src/gui/windows/socialwindow.cpp:513
+#: src/gui/windows/socialwindow.cpp:511
 msgid "Choose your party's name."
 msgstr "パーティ名を選んでください."
 
@@ -6157,67 +6157,67 @@ msgid "Correction points: %d"
 msgstr "修正点: %d"
 
 #. TRANSLATORS: command editor name
-#: src/gui/windows/textcommandeditor.cpp:49
+#: src/gui/windows/textcommandeditor.cpp:48
 msgid "Command Editor"
 msgstr "コマンドエディタ"
 
 #. TRANSLATORS: command editor button
-#: src/gui/windows/textcommandeditor.cpp:54
+#: src/gui/windows/textcommandeditor.cpp:53
 msgid "magic"
 msgstr "魔法"
 
 #. TRANSLATORS: command editor button
-#: src/gui/windows/textcommandeditor.cpp:56
+#: src/gui/windows/textcommandeditor.cpp:55
 msgid "other"
 msgstr "他"
 
 #. TRANSLATORS: command editor label
-#: src/gui/windows/textcommandeditor.cpp:58
+#: src/gui/windows/textcommandeditor.cpp:57
 msgid "Symbol:"
 msgstr "シンボル:"
 
 #. TRANSLATORS: command editor label
-#: src/gui/windows/textcommandeditor.cpp:61
+#: src/gui/windows/textcommandeditor.cpp:60
 msgid "Command:"
 msgstr "コマンド:"
 
 #. TRANSLATORS: command editor label
-#: src/gui/windows/textcommandeditor.cpp:64
+#: src/gui/windows/textcommandeditor.cpp:63
 msgid "Comment:"
 msgstr "コメント:"
 
 #. TRANSLATORS: command editor label
-#: src/gui/windows/textcommandeditor.cpp:68
+#: src/gui/windows/textcommandeditor.cpp:67
 msgid "Target Type:"
 msgstr "ターゲットタイプ:"
 
 #. TRANSLATORS: command editor label
-#: src/gui/windows/textcommandeditor.cpp:72
+#: src/gui/windows/textcommandeditor.cpp:71
 msgid "Icon:"
 msgstr "アイコン:"
 
 #. TRANSLATORS: command editor label
-#: src/gui/windows/textcommandeditor.cpp:75
+#: src/gui/windows/textcommandeditor.cpp:74
 msgid "Mana:"
 msgstr "マナ:"
 
 #. TRANSLATORS: command editor label
-#: src/gui/windows/textcommandeditor.cpp:78
+#: src/gui/windows/textcommandeditor.cpp:77
 msgid "Magic level:"
 msgstr "魔法レベル:"
 
 #. TRANSLATORS: command editor label
-#: src/gui/windows/textcommandeditor.cpp:82
+#: src/gui/windows/textcommandeditor.cpp:81
 msgid "Magic School:"
 msgstr "魔法学園:"
 
 #. TRANSLATORS: command editor label
-#: src/gui/windows/textcommandeditor.cpp:85
+#: src/gui/windows/textcommandeditor.cpp:84
 msgid "School level:"
 msgstr "学校レベル:"
 
 #. TRANSLATORS: command editor button
-#: src/gui/windows/textcommandeditor.cpp:90
+#: src/gui/windows/textcommandeditor.cpp:89
 msgid "Save"
 msgstr "セーブ"
 
@@ -7757,69 +7757,69 @@ msgid "Character not found."
 msgstr ""
 
 #. TRANSLATORS: chat message
-#: src/net/eathena/chathandler.cpp:513
+#: src/net/eathena/chathandler.cpp:514
 #, c-format
 msgid "Message could not be sent, channel %s is not exists."
 msgstr ""
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:127 src/net/tmwa/generalhandler.cpp:128
+#: src/net/eathena/generalhandler.cpp:127 src/net/tmwa/generalhandler.cpp:126
 #, c-format
 msgid "Strength %s"
 msgstr ""
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:128 src/net/tmwa/generalhandler.cpp:130
+#: src/net/eathena/generalhandler.cpp:128 src/net/tmwa/generalhandler.cpp:128
 #, c-format
 msgid "Agility %s"
 msgstr ""
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:129 src/net/tmwa/generalhandler.cpp:132
+#: src/net/eathena/generalhandler.cpp:129 src/net/tmwa/generalhandler.cpp:130
 #, c-format
 msgid "Vitality %s"
 msgstr ""
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:130 src/net/tmwa/generalhandler.cpp:134
+#: src/net/eathena/generalhandler.cpp:130 src/net/tmwa/generalhandler.cpp:132
 #, c-format
 msgid "Intelligence %s"
 msgstr ""
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:131 src/net/tmwa/generalhandler.cpp:136
+#: src/net/eathena/generalhandler.cpp:131 src/net/tmwa/generalhandler.cpp:134
 #, c-format
 msgid "Dexterity %s"
 msgstr ""
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:132 src/net/tmwa/generalhandler.cpp:138
+#: src/net/eathena/generalhandler.cpp:132 src/net/tmwa/generalhandler.cpp:136
 #, c-format
 msgid "Luck %s"
 msgstr ""
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:163 src/net/tmwa/generalhandler.cpp:173
+#: src/net/eathena/generalhandler.cpp:163 src/net/tmwa/generalhandler.cpp:171
 msgid "Authentication failed."
 msgstr "認証に失敗しました."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:166 src/net/tmwa/generalhandler.cpp:177
+#: src/net/eathena/generalhandler.cpp:166 src/net/tmwa/generalhandler.cpp:175
 msgid "No servers available."
 msgstr "利用できるサーバーがありません."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:171 src/net/tmwa/generalhandler.cpp:183
+#: src/net/eathena/generalhandler.cpp:171 src/net/tmwa/generalhandler.cpp:181
 msgid "Someone else is trying to use this account."
 msgstr "他からのログインがありました."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:176 src/net/tmwa/generalhandler.cpp:189
+#: src/net/eathena/generalhandler.cpp:176 src/net/tmwa/generalhandler.cpp:187
 msgid "This account is already logged in."
 msgstr "このアカウントは既にログイン中です."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:180 src/net/tmwa/generalhandler.cpp:194
+#: src/net/eathena/generalhandler.cpp:180 src/net/tmwa/generalhandler.cpp:192
 msgid "Speed hack detected."
 msgstr "スピードハックが探知されました."
 
@@ -7832,7 +7832,7 @@ msgid "Sorry, you are underaged."
 msgstr ""
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:189 src/net/tmwa/generalhandler.cpp:198
+#: src/net/eathena/generalhandler.cpp:189 src/net/tmwa/generalhandler.cpp:196
 msgid "Duplicated login."
 msgstr "重複ログイン."
 
@@ -7913,94 +7913,94 @@ msgid "Not allowed race."
 msgstr ""
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:251 src/net/tmwa/generalhandler.cpp:202
+#: src/net/eathena/generalhandler.cpp:251 src/net/tmwa/generalhandler.cpp:200
 msgid "Unknown connection error."
 msgstr "不明な接続エラーです."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:329 src/net/tmwa/generalhandler.cpp:287
+#: src/net/eathena/generalhandler.cpp:329 src/net/tmwa/generalhandler.cpp:285
 msgid "Got disconnected from server!"
 msgstr "サーバーから切断されました!"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:354 src/net/tmwa/generalhandler.cpp:315
+#: src/net/eathena/generalhandler.cpp:354 src/net/tmwa/generalhandler.cpp:313
 msgid "Strength"
 msgstr "攻撃力"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:355 src/net/tmwa/generalhandler.cpp:317
+#: src/net/eathena/generalhandler.cpp:355 src/net/tmwa/generalhandler.cpp:315
 msgid "Agility"
 msgstr "機敏さ"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:356 src/net/tmwa/generalhandler.cpp:319
+#: src/net/eathena/generalhandler.cpp:356 src/net/tmwa/generalhandler.cpp:317
 msgid "Vitality"
 msgstr "防御力"
 
-#: src/net/eathena/generalhandler.cpp:358 src/net/tmwa/generalhandler.cpp:322
+#: src/net/eathena/generalhandler.cpp:358 src/net/tmwa/generalhandler.cpp:320
 msgid "Intelligence"
 msgstr "魔力"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:359 src/net/tmwa/generalhandler.cpp:324
+#: src/net/eathena/generalhandler.cpp:359 src/net/tmwa/generalhandler.cpp:322
 msgid "Dexterity"
 msgstr "命中率"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:360 src/net/tmwa/generalhandler.cpp:326
+#: src/net/eathena/generalhandler.cpp:360 src/net/tmwa/generalhandler.cpp:324
 msgid "Luck"
 msgstr "幸運"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:363 src/net/tmwa/generalhandler.cpp:330
+#: src/net/eathena/generalhandler.cpp:363 src/net/tmwa/generalhandler.cpp:328
 msgid "Defense"
 msgstr "Defense"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:364 src/net/tmwa/generalhandler.cpp:332
+#: src/net/eathena/generalhandler.cpp:364 src/net/tmwa/generalhandler.cpp:330
 msgid "M.Attack"
 msgstr "M.Attack"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:365 src/net/tmwa/generalhandler.cpp:334
+#: src/net/eathena/generalhandler.cpp:365 src/net/tmwa/generalhandler.cpp:332
 msgid "M.Defense"
 msgstr "M.Defense"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:367 src/net/tmwa/generalhandler.cpp:337
+#: src/net/eathena/generalhandler.cpp:367 src/net/tmwa/generalhandler.cpp:335
 #, no-c-format
 msgid "% Accuracy"
 msgstr "% Accuracy"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:369 src/net/tmwa/generalhandler.cpp:340
+#: src/net/eathena/generalhandler.cpp:369 src/net/tmwa/generalhandler.cpp:338
 #, no-c-format
 msgid "% Evade"
 msgstr "% Evade"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:371 src/net/tmwa/generalhandler.cpp:343
+#: src/net/eathena/generalhandler.cpp:371 src/net/tmwa/generalhandler.cpp:341
 #, no-c-format
 msgid "% Critical"
 msgstr "% Critical"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:372 src/net/tmwa/generalhandler.cpp:345
+#: src/net/eathena/generalhandler.cpp:372 src/net/tmwa/generalhandler.cpp:343
 msgid "Attack Delay"
 msgstr "攻撃遅延"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:373 src/net/tmwa/generalhandler.cpp:347
+#: src/net/eathena/generalhandler.cpp:373 src/net/tmwa/generalhandler.cpp:345
 msgid "Walk Delay"
 msgstr " 徒歩遅延"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:374 src/net/tmwa/generalhandler.cpp:349
+#: src/net/eathena/generalhandler.cpp:374 src/net/tmwa/generalhandler.cpp:347
 msgid "Attack Range"
 msgstr "攻撃距離"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:375 src/net/tmwa/generalhandler.cpp:351
+#: src/net/eathena/generalhandler.cpp:375 src/net/tmwa/generalhandler.cpp:349
 msgid "Damage per sec."
 msgstr "ダメージ/秒."
 
@@ -8298,15 +8298,13 @@ msgstr "購買できません."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:47
-#, fuzzy
 msgid "Unable to buy. You don't have enough money."
-msgstr "GP不足です."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:51
-#, fuzzy
 msgid "Unable to buy. It is too heavy."
-msgstr "アイテムが重過ぎます."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:55
@@ -8351,9 +8349,8 @@ msgstr "ギルド作成成功."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:87
-#, fuzzy
 msgid "You are already in a guild."
-msgstr "既にギルドへ入会しています."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:91
@@ -8429,9 +8426,8 @@ msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:147
-#, fuzzy
 msgid "Couldn't create party."
-msgstr "パーティ作成失敗."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:151
@@ -8450,9 +8446,8 @@ msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:163
-#, fuzzy
 msgid "You were kicked from party."
-msgstr "ギルドから追い出されました."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:167
@@ -8503,9 +8498,9 @@ msgstr "%sがパーティから退会しました."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:223 src/resources/notifications.h:231
-#, fuzzy, c-format
+#, c-format
 msgid "%s can't be kicked from party on this map."
-msgstr "%sがギルドから追い出しました."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:227

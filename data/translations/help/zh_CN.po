@@ -1,5 +1,6 @@
 # en#
 # Translators:
+# jiang2010 <272969144@qq.com>, 2014
 # Midoni <qiuhongwen@gmail.com>, 2012
 # Midoni <qiuhongwen@gmail.com>, 2012
 # yudun1989 <yudun1989@gmail.com>, 2014
@@ -7,8 +8,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2014-07-26 21:16+0000\n"
-"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"PO-Revision-Date: 2014-10-24 18:03+0000\n"
+"Last-Translator: jiang2010 <272969144@qq.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/manaplus/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,10 +18,10 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid "/uploadserverconfig - upload server config into pastebin service."
-msgstr ""
+msgstr "/uploadserverconfig - 上传服务设置到pastebin上。"
 
 msgid "/atkhuman - select and attack nearest player."
-msgstr ""
+msgstr "/atkhuman - 选择并攻击最近的玩家"
 
 msgid "\"Outfit shortcut 12\""
 msgstr ""
