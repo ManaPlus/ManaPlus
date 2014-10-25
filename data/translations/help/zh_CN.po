@@ -18,10 +18,10 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid "/uploadserverconfig - upload server config into pastebin service."
-msgstr "/uploadserverconfig - 上传服务设置到pastebin上。"
+msgstr "/uploadserverconfig - 上传服务设置到pastebin上."
 
 msgid "/atkhuman - select and attack nearest player."
-msgstr "/atkhuman - 选择并攻击最近的玩家"
+msgstr "/atkhuman - 选择并攻击最近的玩家."
 
 msgid "\"Outfit shortcut 12\""
 msgstr ""
