@@ -404,7 +404,7 @@ namespace NotifyManager
             NotifyFlags::EMPTY},
         {"homunculus feed failed",
             // TRANSLATORS: notification message
-            N_("You can't feed homunculus, because you don't have %s."),
+            N_("You can't feed homunculus, because you don't have any %s."),
             NotifyFlags::STRING},
         {"card insert failed",
             // TRANSLATORS: notification message
@@ -416,7 +416,8 @@ namespace NotifyManager
             NotifyFlags::EMPTY},
         {"bank deposit failed",
             // TRANSLATORS: notification message
-            N_("Deposit failed. Probably you not have money to deposit."),
+            N_("Deposit failed. You probably don't have this "
+               "amount of money with you right now."),
             NotifyFlags::EMPTY},
         {"bank withdraw failed",
             // TRANSLATORS: notification message

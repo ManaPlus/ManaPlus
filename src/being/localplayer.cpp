@@ -376,7 +376,7 @@ void LocalPlayer::setAction(const BeingAction::Action &action,
         if (!mLastHitFrom.empty())
         {
             // TRANSLATORS: chat message after death
-            debugMsg(strprintf(_("You were killed by %s"),
+            debugMsg(strprintf(_("You were killed by %s."),
                 mLastHitFrom.c_str()));
             mLastHitFrom.clear();
         }

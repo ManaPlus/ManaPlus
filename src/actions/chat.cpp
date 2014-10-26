@@ -246,7 +246,7 @@ impHandler(query)
     {
         // TRANSLATORS: new whisper or channel query
         event.tab->chatLog(strprintf(_("Cannot create a whisper tab "
-            "\"%s\"! It either already exists."),
+            "\"%s\"! It probably already exists."),
             args.c_str()), ChatMsgType::BY_SERVER);
     }
     return true;
