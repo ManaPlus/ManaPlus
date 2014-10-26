@@ -36,6 +36,7 @@ struct SkillData final
     Image *icon;
 
     std::string particle;
+    std::string invokeCmd;
     SoundInfo soundHit;
     SoundInfo soundMiss;
 

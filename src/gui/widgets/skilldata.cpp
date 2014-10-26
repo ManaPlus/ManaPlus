@@ -38,6 +38,7 @@ SkillData::SkillData() :
     description(),
     icon(nullptr),
     particle(),
+    invokeCmd(),
     soundHit(std::string(), 0),
     soundMiss(std::string(), 0)
 {

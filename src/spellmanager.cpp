@@ -182,6 +182,14 @@ void SpellManager::invokeSpell(const TextCommand *const spell,
     chatWindow->localChatInput(parseCommand(spell->getCommand(), target));
 }
 
+void SpellManager::invokeCommand(const std::string &command,
+                                 const Being *const target)
+{
+    if (!chatWindow)
+        return;
+    chatWindow->localChatInput(parseCommand(command, target));
+}
+
 std::string SpellManager::parseCommand(std::string command,
                                        const Being *const target)
 {

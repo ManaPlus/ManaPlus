@@ -67,6 +67,9 @@ class SpellManager final
 
         void swap(const int id1, const int id2);
 
+        static void invokeCommand(const std::string &command,
+                                  const Being *const target);
+
     private:
         void fillSpells();
 

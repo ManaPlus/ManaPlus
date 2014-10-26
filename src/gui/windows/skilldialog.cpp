@@ -25,6 +25,7 @@
 #include "configuration.h"
 #include "effectmanager.h"
 #include "itemshortcut.h"
+#include "spellmanager.h"
 
 #include "being/attributes.h"
 #include "being/localplayer.h"
@@ -361,6 +362,8 @@ void SkillDialog::loadXmlFile(const std::string &fileName)
                         node, "soundMiss", "");
                     data->soundMiss.delay = XML::getProperty(
                         node, "soundMissDelay", 0);
+                    data->invokeCmd = XML::getProperty(
+                        node, "invokeCmd", "");
 
                     skill->addData(level, data);
                 }
@@ -565,6 +568,13 @@ void SkillDialog::playUpdateEffect(const int id) const
 
 void SkillDialog::useSkill(const SkillInfo *const info)
 {
+    const SkillData *const data = info->data;
+    if (data)
+    {
+        const std::string cmd = data->invokeCmd;
+        if (!cmd.empty())
+            SpellManager::invokeCommand(cmd, localPlayer->getTarget());
+    }
     if (info && localPlayer)
     {
         switch (info->type)
