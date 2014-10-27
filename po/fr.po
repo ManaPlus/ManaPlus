@@ -20,9 +20,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-10-25 15:36+0300\n"
-"PO-Revision-Date: 2014-10-25 10:00+0000\n"
-"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"POT-Creation-Date: 2014-10-27 23:03+0300\n"
+"PO-Revision-Date: 2014-10-26 15:51+0000\n"
+"Last-Translator: Alige <aligetmw@hotmail.fr>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/manaplus/language/"
 "fr/)\n"
 "Language: fr\n"
@@ -172,9 +172,11 @@ msgstr "Vous ne pouvez pas envoyer de messages privés vides !"
 
 #. TRANSLATORS: new whisper or channel query
 #: src/actions/chat.cpp:248
-#, c-format
-msgid "Cannot create a whisper tab \"%s\"! It either already exists."
+#, fuzzy, c-format
+msgid "Cannot create a whisper tab \"%s\"! It probably already exists."
 msgstr ""
+"Création d'un onglet de discussion privée \"%s\" impossible ! Il existe "
+"probablement déjà."
 
 #. TRANSLATORS: create party message
 #. TRANSLATORS: chat error message
@@ -325,8 +327,8 @@ msgstr "I"
 
 #. TRANSLATORS: chat message after death
 #: src/being/localplayer.cpp:379
-#, c-format
-msgid "You were killed by %s"
+#, fuzzy, c-format
+msgid "You were killed by %s."
 msgstr "Vous avez été tué par %s."
 
 #. TRANSLATORS: pickup error message
@@ -362,12 +364,12 @@ msgstr "L'objet appartient a quelqu'un d'autre."
 #. TRANSLATORS: pickup error message
 #: src/being/localplayer.cpp:848
 msgid "You can't pickup this amount of items."
-msgstr ""
+msgstr "Tu ne peux pas ramasser cette quantité d'objets."
 
 #. TRANSLATORS: pickup error message
 #: src/being/localplayer.cpp:852
 msgid "Your item stack has max amount."
-msgstr ""
+msgstr "Ta pile de cet objet est pleine."
 
 #. TRANSLATORS: pickup error message
 #: src/being/localplayer.cpp:856
@@ -1575,7 +1577,7 @@ msgstr "Soigner"
 #: src/gui/popups/popupmenu.cpp:197 src/gui/popups/popupmenu.cpp:213
 #: src/gui/popups/popupmenu.cpp:479 src/gui/popups/popupmenu.cpp:799
 msgid "Kick from guild"
-msgstr "Sortir de la guilde"
+msgstr "Éjecter de la guilde"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: change player position in guild
@@ -1759,7 +1761,7 @@ msgstr "Joueurs"
 #: src/gui/popups/popupmenu.cpp:455 src/gui/popups/popupmenu.cpp:2796
 #: src/gui/popups/popupmenu.cpp:2820
 msgid "Kick from party"
-msgstr "Sortir du groupe"
+msgstr "Éjecter du groupe"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: pickup item from ground
@@ -2043,9 +2045,9 @@ msgstr "Reprendre tout"
 #. TRANSLATORS: inventory button
 #: src/gui/popups/popupmenu.cpp:2150 src/gui/popups/popupmenu.cpp:2939
 #: src/gui/windows/inventorywindow.cpp:171
-#: src/gui/windows/inventorywindow.cpp:629 src/gui/windows/skilldialog.cpp:80
-#: src/gui/windows/skilldialog.cpp:152 src/gui/windows/skilldialog.cpp:322
-#: src/gui/windows/skilldialog.cpp:449 src/gui/windows/skilldialog.cpp:531
+#: src/gui/windows/inventorywindow.cpp:629 src/gui/windows/skilldialog.cpp:81
+#: src/gui/windows/skilldialog.cpp:153 src/gui/windows/skilldialog.cpp:323
+#: src/gui/windows/skilldialog.cpp:452 src/gui/windows/skilldialog.cpp:534
 #: src/resources/itemtypemapdata.h:39 src/resources/itemtypemapdata.h:43
 msgid "Use"
 msgstr "Utiliser"
@@ -2669,7 +2671,7 @@ msgstr "Éditer"
 
 #. TRANSLATORS: skill level
 #. TRANSLATORS: skills dialog. skill level
-#: src/gui/widgets/skillinfo.cpp:99 src/gui/windows/skilldialog.cpp:445
+#: src/gui/widgets/skillinfo.cpp:99 src/gui/windows/skilldialog.cpp:448
 #, c-format
 msgid "Lvl: %d"
 msgstr "Niveau : %d"
@@ -4941,7 +4943,7 @@ msgid "SKI"
 msgstr "Cmp"
 
 #. TRANSLATORS: skills dialog name
-#: src/gui/windowmenu.cpp:111 src/gui/windows/skilldialog.cpp:72
+#: src/gui/windowmenu.cpp:111 src/gui/windows/skilldialog.cpp:73
 msgid "Skills"
 msgstr "Compétences"
 
@@ -5004,13 +5006,13 @@ msgstr "Mises à jour"
 #. TRANSLATORS: short button name for bank window.
 #: src/gui/windowmenu.cpp:147
 msgid "BA"
-msgstr ""
+msgstr "CB"
 
 #. TRANSLATORS: full button name
 #. TRANSLATORS: bank window name
 #: src/gui/windowmenu.cpp:149 src/gui/windows/bankwindow.cpp:43
 msgid "Bank"
-msgstr ""
+msgstr "Banque"
 
 #. TRANSLATORS: short button name for debug window.
 #: src/gui/windowmenu.cpp:151
@@ -5038,17 +5040,17 @@ msgstr "Touche : %s"
 #: src/gui/windows/bankwindow.cpp:48 src/gui/windows/bankwindow.cpp:90
 #, c-format
 msgid "Money in bank: %s"
-msgstr ""
+msgstr "Argent dans la banque : %s"
 
 #. TRANSLATORS: bank window button
 #: src/gui/windows/bankwindow.cpp:51
 msgid "Withdraw"
-msgstr ""
+msgstr "Retirer"
 
 #. TRANSLATORS: bank window button
 #: src/gui/windows/bankwindow.cpp:53
 msgid "Deposit"
-msgstr ""
+msgstr "Dépôt"
 
 #. TRANSLATORS: bot checker window header
 #: src/gui/windows/botcheckerwindow.cpp:45
@@ -6003,29 +6005,29 @@ msgid "%s wants to %s %s do you accept?"
 msgstr "%s souhaite %s %s Acceptez-vous ?"
 
 #. TRANSLATORS: skills dialog button
-#: src/gui/windows/skilldialog.cpp:82
+#: src/gui/windows/skilldialog.cpp:83
 msgid "Up"
 msgstr "Augmenter"
 
 #. TRANSLATORS: skills dialog label
-#: src/gui/windows/skilldialog.cpp:192
+#: src/gui/windows/skilldialog.cpp:193
 #, c-format
 msgid "Skill points available: %d"
 msgstr "Points de compétences : %d"
 
 #. TRANSLATORS: skills dialog default skill tab
-#: src/gui/windows/skilldialog.cpp:289
+#: src/gui/windows/skilldialog.cpp:290
 #, c-format
 msgid "Skill Set %d"
 msgstr "Compétence choisie : %d"
 
 #. TRANSLATORS: skills dialog. skill id
-#: src/gui/windows/skilldialog.cpp:310
+#: src/gui/windows/skilldialog.cpp:311
 #, c-format
 msgid "Skill %d"
 msgstr "Compétence %d"
 
-#: src/gui/windows/skilldialog.cpp:450
+#: src/gui/windows/skilldialog.cpp:453
 #, c-format
 msgid "Failed skill: %s"
 msgstr "Compétence ratée : %s"
@@ -7236,7 +7238,7 @@ msgstr "À propos Fenêtre"
 #. TRANSLATORS: input action name
 #: src/input/pages/windows.cpp:54
 msgid "Bank Window"
-msgstr ""
+msgstr "Fenêtre de la Banque"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/windows.cpp:60
@@ -7812,7 +7814,7 @@ msgstr "Personnage non trouvé."
 #: src/net/eathena/chathandler.cpp:514
 #, c-format
 msgid "Message could not be sent, channel %s is not exists."
-msgstr ""
+msgstr "Le message n'a pas pu être envoyé, la chaîne %s n'existe pas."
 
 #. TRANSLATORS: player stat
 #: src/net/eathena/generalhandler.cpp:127 src/net/tmwa/generalhandler.cpp:126
@@ -8351,12 +8353,12 @@ msgstr "Incapable d'acheter."
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:47
 msgid "Unable to buy. You don't have enough money."
-msgstr ""
+msgstr "Impossible d'acheter. Tu n'as pas assez d'argent."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:51
 msgid "Unable to buy. It is too heavy."
-msgstr ""
+msgstr "Impossible d'acheter. C'est trop lourd."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:55
@@ -8402,7 +8404,7 @@ msgstr "Guilde créée."
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:87
 msgid "You are already in a guild."
-msgstr ""
+msgstr "Tu es déjà dans une guilde."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:91
@@ -8479,7 +8481,7 @@ msgstr "Tu n'as pas le niveau pour l'équiper."
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:147
 msgid "Couldn't create party."
-msgstr ""
+msgstr "N'a pas pu créer de groupe."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:151
@@ -8494,17 +8496,17 @@ msgstr "Tu as quitté le groupe."
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:159
 msgid "You can't leave party on this map."
-msgstr ""
+msgstr "Tu ne peux pas quitter le groupe sur cette carte."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:163
 msgid "You were kicked from party."
-msgstr ""
+msgstr "Tu as été éjecté du groupe."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:167
 msgid "You can't be kicked from party on this map."
-msgstr ""
+msgstr "Tu ne peux peux pas être éjecté du groupe sur cette carte."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:171
@@ -8552,7 +8554,7 @@ msgstr "%s a quitté le groupe."
 #: src/resources/notifications.h:223 src/resources/notifications.h:231
 #, c-format
 msgid "%s can't be kicked from party on this map."
-msgstr ""
+msgstr "%s ne peut pas être éjecter du groupe sur cette carte."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:227
@@ -8786,9 +8788,9 @@ msgstr "Tu as nourris ton homoncule."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:407
-#, c-format
-msgid "You can't feed homunculus, because you don't have %s."
-msgstr ""
+#, fuzzy, c-format
+msgid "You can't feed homunculus, because you don't have any %s."
+msgstr "Tu ne peux pas nourrir ton homoncule, car tu n'as pas de %s."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:411
@@ -8802,15 +8804,22 @@ msgstr "Carte insérée."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:419
-msgid "Deposit failed. Probably you not have money to deposit."
+#, fuzzy
+msgid ""
+"Deposit failed. You probably don't have this amount of money with you right "
+"now."
 msgstr ""
+"Le retrait a échoué. Tu n'a probablement pas cette quantité d'argent dans la "
+"banque en ce moment."
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:423
+#: src/resources/notifications.h:424
 msgid ""
 "Withdraw failed. You probably don't have this amount of money in the bank "
 "right now."
 msgstr ""
+"Le retrait a échoué. Tu n'a probablement pas cette quantité d'argent dans la "
+"banque en ce moment."
 
 #. TRANSLATORS: chat option changed message
 #: src/utils/booleanoptions.h:27
@@ -8818,3 +8827,6 @@ msgstr ""
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
 msgstr ""
 "Les options de /%s sont \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
+
+#~ msgid "Deposit failed. Probably you not have money to deposit."
+#~ msgstr "Le dépôt a échoué. Tu n'a probablement pas d'argent à déposer."

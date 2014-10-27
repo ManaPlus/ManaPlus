@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-10-25 15:36+0300\n"
+"POT-Creation-Date: 2014-10-27 23:03+0300\n"
 "PO-Revision-Date: 2014-10-25 10:00+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/manaplus/"
@@ -167,7 +167,7 @@ msgstr "空のささやきを送信することはできません!"
 #. TRANSLATORS: new whisper or channel query
 #: src/actions/chat.cpp:248
 #, c-format
-msgid "Cannot create a whisper tab \"%s\"! It either already exists."
+msgid "Cannot create a whisper tab \"%s\"! It probably already exists."
 msgstr ""
 
 #. TRANSLATORS: create party message
@@ -318,8 +318,8 @@ msgstr "I"
 
 #. TRANSLATORS: chat message after death
 #: src/being/localplayer.cpp:379
-#, c-format
-msgid "You were killed by %s"
+#, fuzzy, c-format
+msgid "You were killed by %s."
 msgstr "%sによって殺されました"
 
 #. TRANSLATORS: pickup error message
@@ -2033,9 +2033,9 @@ msgstr "全部取出す"
 #. TRANSLATORS: inventory button
 #: src/gui/popups/popupmenu.cpp:2150 src/gui/popups/popupmenu.cpp:2939
 #: src/gui/windows/inventorywindow.cpp:171
-#: src/gui/windows/inventorywindow.cpp:629 src/gui/windows/skilldialog.cpp:80
-#: src/gui/windows/skilldialog.cpp:152 src/gui/windows/skilldialog.cpp:322
-#: src/gui/windows/skilldialog.cpp:449 src/gui/windows/skilldialog.cpp:531
+#: src/gui/windows/inventorywindow.cpp:629 src/gui/windows/skilldialog.cpp:81
+#: src/gui/windows/skilldialog.cpp:153 src/gui/windows/skilldialog.cpp:323
+#: src/gui/windows/skilldialog.cpp:452 src/gui/windows/skilldialog.cpp:534
 #: src/resources/itemtypemapdata.h:39 src/resources/itemtypemapdata.h:43
 msgid "Use"
 msgstr "使用"
@@ -2659,7 +2659,7 @@ msgstr "編集"
 
 #. TRANSLATORS: skill level
 #. TRANSLATORS: skills dialog. skill level
-#: src/gui/widgets/skillinfo.cpp:99 src/gui/windows/skilldialog.cpp:445
+#: src/gui/widgets/skillinfo.cpp:99 src/gui/windows/skilldialog.cpp:448
 #, c-format
 msgid "Lvl: %d"
 msgstr "Lvl: %d"
@@ -4912,7 +4912,7 @@ msgid "SKI"
 msgstr "SKI"
 
 #. TRANSLATORS: skills dialog name
-#: src/gui/windowmenu.cpp:111 src/gui/windows/skilldialog.cpp:72
+#: src/gui/windowmenu.cpp:111 src/gui/windows/skilldialog.cpp:73
 msgid "Skills"
 msgstr "スキル"
 
@@ -5967,29 +5967,29 @@ msgid "%s wants to %s %s do you accept?"
 msgstr "%sが%s %sを希望しています。承認しますか?"
 
 #. TRANSLATORS: skills dialog button
-#: src/gui/windows/skilldialog.cpp:82
+#: src/gui/windows/skilldialog.cpp:83
 msgid "Up"
 msgstr "上"
 
 #. TRANSLATORS: skills dialog label
-#: src/gui/windows/skilldialog.cpp:192
+#: src/gui/windows/skilldialog.cpp:193
 #, c-format
 msgid "Skill points available: %d"
 msgstr "スキルポイント: %d"
 
 #. TRANSLATORS: skills dialog default skill tab
-#: src/gui/windows/skilldialog.cpp:289
+#: src/gui/windows/skilldialog.cpp:290
 #, c-format
 msgid "Skill Set %d"
 msgstr "スキルセット %d"
 
 #. TRANSLATORS: skills dialog. skill id
-#: src/gui/windows/skilldialog.cpp:310
+#: src/gui/windows/skilldialog.cpp:311
 #, c-format
 msgid "Skill %d"
 msgstr "スキル %d"
 
-#: src/gui/windows/skilldialog.cpp:450
+#: src/gui/windows/skilldialog.cpp:453
 #, c-format
 msgid "Failed skill: %s"
 msgstr ""
@@ -8734,7 +8734,7 @@ msgstr ""
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:407
 #, c-format
-msgid "You can't feed homunculus, because you don't have %s."
+msgid "You can't feed homunculus, because you don't have any %s."
 msgstr ""
 
 #. TRANSLATORS: notification message
@@ -8749,11 +8749,13 @@ msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:419
-msgid "Deposit failed. Probably you not have money to deposit."
+msgid ""
+"Deposit failed. You probably don't have this amount of money with you right "
+"now."
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:423
+#: src/resources/notifications.h:424
 msgid ""
 "Withdraw failed. You probably don't have this amount of money in the bank "
 "right now."

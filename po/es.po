@@ -6,7 +6,7 @@
 # Andrei Karas <akaras@inbox.ru>, 2011
 # Jumpy <antoinebcn@hotmail.com>, 2011
 # Maria <mtorres2022@gmail.com>, 2012
-# Mr Pirate <salahbubuli44@gmail.com>, 2012
+# SalahEddine <salahbubuli44@gmail.com>, 2012
 # Maria <mtorres2022@gmail.com>, 2012
 # Narus <narus.tmw@gmail.com>, 2012
 # Narus <narus.tmw@gmail.com>, 2012
@@ -15,12 +15,13 @@
 # Nelson  <nelson6eeduardo65@gmail.com>, 2011
 # osuka <owen942009@gmail.com>, 2013-2014
 # osuka <owen942009@gmail.com>, 2012-2013
+# SalahEddine <salahbubuli44@gmail.com>, 2012,2014
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-10-25 15:36+0300\n"
-"PO-Revision-Date: 2014-10-25 10:00+0000\n"
+"POT-Creation-Date: 2014-10-27 23:03+0300\n"
+"PO-Revision-Date: 2014-10-27 20:37+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/manaplus/"
 "language/es/)\n"
@@ -171,9 +172,9 @@ msgstr "¡No se pueden enviar susurros vacíos!"
 
 #. TRANSLATORS: new whisper or channel query
 #: src/actions/chat.cpp:248
-#, c-format
-msgid "Cannot create a whisper tab \"%s\"! It either already exists."
-msgstr ""
+#, fuzzy, c-format
+msgid "Cannot create a whisper tab \"%s\"! It probably already exists."
+msgstr "¡No se pudo crear la pestaña de susurro \"%s\"! Puede que ya exista. "
 
 #. TRANSLATORS: create party message
 #. TRANSLATORS: chat error message
@@ -323,8 +324,8 @@ msgstr "I"
 
 #. TRANSLATORS: chat message after death
 #: src/being/localplayer.cpp:379
-#, c-format
-msgid "You were killed by %s"
+#, fuzzy, c-format
+msgid "You were killed by %s."
 msgstr "Fuiste eliminado por %s"
 
 #. TRANSLATORS: pickup error message
@@ -2039,9 +2040,9 @@ msgstr "Recuperar todo"
 #. TRANSLATORS: inventory button
 #: src/gui/popups/popupmenu.cpp:2150 src/gui/popups/popupmenu.cpp:2939
 #: src/gui/windows/inventorywindow.cpp:171
-#: src/gui/windows/inventorywindow.cpp:629 src/gui/windows/skilldialog.cpp:80
-#: src/gui/windows/skilldialog.cpp:152 src/gui/windows/skilldialog.cpp:322
-#: src/gui/windows/skilldialog.cpp:449 src/gui/windows/skilldialog.cpp:531
+#: src/gui/windows/inventorywindow.cpp:629 src/gui/windows/skilldialog.cpp:81
+#: src/gui/windows/skilldialog.cpp:153 src/gui/windows/skilldialog.cpp:323
+#: src/gui/windows/skilldialog.cpp:452 src/gui/windows/skilldialog.cpp:534
 #: src/resources/itemtypemapdata.h:39 src/resources/itemtypemapdata.h:43
 msgid "Use"
 msgstr "Usar"
@@ -2563,17 +2564,17 @@ msgstr "Borde de tiles"
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:221
 msgid "Pets"
-msgstr ""
+msgstr "Mascotas"
 
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:223
 msgid "Mercenary"
-msgstr ""
+msgstr "Mercenario"
 
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:225
 msgid "Homunculus"
-msgstr ""
+msgstr "Homúnculo"
 
 #: src/gui/widgets/characterdisplay.cpp:135
 #, c-format
@@ -2665,7 +2666,7 @@ msgstr "Editar"
 
 #. TRANSLATORS: skill level
 #. TRANSLATORS: skills dialog. skill level
-#: src/gui/widgets/skillinfo.cpp:99 src/gui/windows/skilldialog.cpp:445
+#: src/gui/widgets/skillinfo.cpp:99 src/gui/windows/skilldialog.cpp:448
 #, c-format
 msgid "Lvl: %d"
 msgstr "Nivel: %d"
@@ -3030,14 +3031,14 @@ msgstr "Golpe crítico:"
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:365
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:407
 msgid "Karma:"
-msgstr ""
+msgstr "Karma:"
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:287
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:368
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:409
 msgid "Manner:"
-msgstr ""
+msgstr "Comportamiento:"
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:333
@@ -4931,7 +4932,7 @@ msgid "SKI"
 msgstr "SKI"
 
 #. TRANSLATORS: skills dialog name
-#: src/gui/windowmenu.cpp:111 src/gui/windows/skilldialog.cpp:72
+#: src/gui/windowmenu.cpp:111 src/gui/windows/skilldialog.cpp:73
 msgid "Skills"
 msgstr "Habilidades"
 
@@ -5000,7 +5001,7 @@ msgstr ""
 #. TRANSLATORS: bank window name
 #: src/gui/windowmenu.cpp:149 src/gui/windows/bankwindow.cpp:43
 msgid "Bank"
-msgstr ""
+msgstr "Banco"
 
 #. TRANSLATORS: short button name for debug window.
 #: src/gui/windowmenu.cpp:151
@@ -5028,17 +5029,17 @@ msgstr "Tecla: %s"
 #: src/gui/windows/bankwindow.cpp:48 src/gui/windows/bankwindow.cpp:90
 #, c-format
 msgid "Money in bank: %s"
-msgstr ""
+msgstr "Dinero en el banco: %s"
 
 #. TRANSLATORS: bank window button
 #: src/gui/windows/bankwindow.cpp:51
 msgid "Withdraw"
-msgstr ""
+msgstr "Retirar"
 
 #. TRANSLATORS: bank window button
 #: src/gui/windows/bankwindow.cpp:53
 msgid "Deposit"
-msgstr ""
+msgstr "Depositar"
 
 #. TRANSLATORS: bot checker window header
 #: src/gui/windows/botcheckerwindow.cpp:45
@@ -5281,12 +5282,12 @@ msgstr "Cuenta %s (fecha de último inicio %s)"
 #. TRANSLATORS: char select dialog. button.
 #: src/gui/windows/charselectdialog.cpp:71
 msgid "Switch"
-msgstr ""
+msgstr "Cambiar"
 
 #. TRANSLATORS: char select dialog. button.
 #: src/gui/windows/charselectdialog.cpp:73
 msgid "Password"
-msgstr ""
+msgstr "Contraseña"
 
 #. TRANSLATORS: char select dialog. button.
 #. TRANSLATORS: updater window button
@@ -5327,11 +5328,11 @@ msgstr "Cuenta %s"
 
 #: src/gui/windows/charselectdialog.cpp:192
 msgid "Please set new pincode"
-msgstr ""
+msgstr "Por favor cree un nuevo pin"
 
 #: src/gui/windows/charselectdialog.cpp:238
 msgid "Please enter new name"
-msgstr ""
+msgstr "Introduzca un nuevo nombre"
 
 #. TRANSLATORS: char select dialog. player info message.
 #: src/gui/windows/charselectdialog.cpp:257
@@ -6000,29 +6001,29 @@ msgid "%s wants to %s %s do you accept?"
 msgstr "%s quiere %s %s ¿aceptas?"
 
 #. TRANSLATORS: skills dialog button
-#: src/gui/windows/skilldialog.cpp:82
+#: src/gui/windows/skilldialog.cpp:83
 msgid "Up"
 msgstr "Incrementar"
 
 #. TRANSLATORS: skills dialog label
-#: src/gui/windows/skilldialog.cpp:192
+#: src/gui/windows/skilldialog.cpp:193
 #, c-format
 msgid "Skill points available: %d"
 msgstr "Puntos disponibles: %d"
 
 #. TRANSLATORS: skills dialog default skill tab
-#: src/gui/windows/skilldialog.cpp:289
+#: src/gui/windows/skilldialog.cpp:290
 #, c-format
 msgid "Skill Set %d"
 msgstr "Habilidades %d"
 
 #. TRANSLATORS: skills dialog. skill id
-#: src/gui/windows/skilldialog.cpp:310
+#: src/gui/windows/skilldialog.cpp:311
 #, c-format
 msgid "Skill %d"
 msgstr "Habilidad %d"
 
-#: src/gui/windows/skilldialog.cpp:450
+#: src/gui/windows/skilldialog.cpp:453
 #, c-format
 msgid "Failed skill: %s"
 msgstr "Habilidad fallida: %s"
@@ -6573,7 +6574,7 @@ msgstr "Volver a modo de video seguro"
 #. TRANSLATORS: input action name
 #: src/input/pages/basic.cpp:234
 msgid "Fire your homunculus"
-msgstr ""
+msgstr "Queme su homúnculo"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/chat.cpp:33
@@ -7075,7 +7076,7 @@ msgstr "Vaciar información de depuración"
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:300
 msgid "Crash client"
-msgstr ""
+msgstr "El cliente crasheo"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:306
@@ -7229,7 +7230,7 @@ msgstr "Ventana Acerca de..."
 #. TRANSLATORS: input action name
 #: src/input/pages/windows.cpp:54
 msgid "Bank Window"
-msgstr ""
+msgstr "Ventana del banco"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/windows.cpp:60
@@ -7773,16 +7774,16 @@ msgstr ""
 #: src/net/eathena/charserverhandler.cpp:524
 #: src/net/eathena/charserverhandler.cpp:561
 msgid "Character rename error."
-msgstr ""
+msgstr "Error de renombrado del personaje."
 
 #: src/net/eathena/charserverhandler.cpp:539
 msgid "Character renamed."
-msgstr ""
+msgstr "Personaje renombrado."
 
 #. TRANSLATORS: char rename error
 #: src/net/eathena/charserverhandler.cpp:552
 msgid "Rename not allowed."
-msgstr ""
+msgstr "No se permite renombrar."
 
 #. TRANSLATORS: char rename error
 #: src/net/eathena/charserverhandler.cpp:556
@@ -7792,13 +7793,13 @@ msgstr ""
 #. TRANSLATORS: char rename error
 #: src/net/eathena/charserverhandler.cpp:565
 msgid "Character not found."
-msgstr ""
+msgstr "Personaje no encontrado."
 
 #. TRANSLATORS: chat message
 #: src/net/eathena/chathandler.cpp:514
 #, c-format
 msgid "Message could not be sent, channel %s is not exists."
-msgstr ""
+msgstr "El mensaje no se pudo enviar, el canal %s no existe."
 
 #. TRANSLATORS: player stat
 #: src/net/eathena/generalhandler.cpp:127 src/net/tmwa/generalhandler.cpp:126
@@ -7863,7 +7864,7 @@ msgstr "Speed hack detectado."
 
 #: src/net/eathena/generalhandler.cpp:183
 msgid "Server full."
-msgstr ""
+msgstr "Servidor lleno."
 
 #: src/net/eathena/generalhandler.cpp:186
 msgid "Sorry, you are underaged."
@@ -7924,7 +7925,7 @@ msgstr ""
 
 #: src/net/eathena/generalhandler.cpp:230
 msgid "Memory."
-msgstr ""
+msgstr "Memoria."
 
 #: src/net/eathena/generalhandler.cpp:233
 msgid "Han valid."
@@ -7940,7 +7941,7 @@ msgstr ""
 
 #: src/net/eathena/generalhandler.cpp:242
 msgid "Ip blocked."
-msgstr ""
+msgstr "IP bloqueada."
 
 #: src/net/eathena/generalhandler.cpp:245
 msgid "Invalid password count."
@@ -8044,16 +8045,16 @@ msgstr "Daño por segundo."
 
 #: src/net/eathena/generalhandler.cpp:376
 msgid "Karma"
-msgstr ""
+msgstr "Karma"
 
 #: src/net/eathena/generalhandler.cpp:377
 msgid "Manner"
-msgstr ""
+msgstr "Comportamiento"
 
 #: src/net/eathena/skillhandler.cpp:304 src/net/eathena/skillhandler.cpp:364
 #, c-format
 msgid "Unknown skill error: %d"
-msgstr ""
+msgstr "Error de habilidad desconocido: %d"
 
 #. TRANSLATORS: error message
 #: src/net/eathena/skillhandler.cpp:311 src/net/tmwa/skillhandler.cpp:224
@@ -8337,12 +8338,12 @@ msgstr "Incapaz de comprar."
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:47
 msgid "Unable to buy. You don't have enough money."
-msgstr ""
+msgstr "Imposible comprar. No tienes suficiente dinero."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:51
 msgid "Unable to buy. It is too heavy."
-msgstr ""
+msgstr "Imposible comprar. Es demasiado pesado."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:55
@@ -8388,7 +8389,7 @@ msgstr "Gremio creado."
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:87
 msgid "You are already in a guild."
-msgstr ""
+msgstr "Ya estas en otro clan."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:91
@@ -8465,7 +8466,7 @@ msgstr ""
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:147
 msgid "Couldn't create party."
-msgstr ""
+msgstr "No se pudo crear un grupo."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:151
@@ -8485,7 +8486,7 @@ msgstr ""
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:163
 msgid "You were kicked from party."
-msgstr ""
+msgstr "Has sido echado del grupo."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:167
@@ -8544,7 +8545,7 @@ msgstr ""
 #: src/resources/notifications.h:227
 #, c-format
 msgid "%s has kicked from your party."
-msgstr ""
+msgstr "%s te ha echado del grupo."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:235
@@ -8607,7 +8608,7 @@ msgstr "Intercambio con %s cancelado."
 #: src/resources/notifications.h:276
 #, c-format
 msgid "Trade with %s cancelled, because player is busy"
-msgstr ""
+msgstr "El intercambio con %s ha sido cancelado, el jugar esta ocupado."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:280
@@ -8772,26 +8773,28 @@ msgstr ""
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:407
 #, c-format
-msgid "You can't feed homunculus, because you don't have %s."
+msgid "You can't feed homunculus, because you don't have any %s."
 msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:411
 msgid "Card insert failed."
-msgstr ""
+msgstr "La tarjeta insertada ha fallado."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:415
 msgid "Card inserted."
-msgstr ""
+msgstr "Tarjeta insertada."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:419
-msgid "Deposit failed. Probably you not have money to deposit."
+msgid ""
+"Deposit failed. You probably don't have this amount of money with you right "
+"now."
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/resources/notifications.h:423
+#: src/resources/notifications.h:424
 msgid ""
 "Withdraw failed. You probably don't have this amount of money in the bank "
 "right now."
