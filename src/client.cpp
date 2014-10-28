@@ -39,6 +39,7 @@
 #include "party.h"
 #include "settings.h"
 #include "soundmanager.h"
+#include "spellshortcut.h"
 #include "statuseffect.h"
 #include "units.h"
 #include "touchmanager.h"
@@ -1242,6 +1243,9 @@ int Client::gameExec()
                     initFeatures();
                     TranslationManager::loadCurrentLang();
                     PlayerInfo::stateChange(mState);
+
+                    spellManager = new SpellManager;
+                    spellShortcut = new SpellShortcut;
 
                     // Load XML databases
                     CharDB::load();

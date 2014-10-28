@@ -601,6 +601,8 @@ SET(SRCS
     resources/db/chardb.h
     resources/db/colordb.cpp
     resources/db/colordb.h
+    resources/db/commandsdb.cpp
+    resources/db/commandsdb.h
     resources/cursor.cpp
     resources/cursor.h
     resources/delayedmanager.cpp

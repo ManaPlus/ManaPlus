@@ -32,6 +32,8 @@
 
 #include "net/playerhandler.h"
 
+#include "resources/db/commandsdb.h"
+
 #include "utils/dtor.h"
 
 #include "debug.h"
@@ -70,36 +72,20 @@ const TextCommand* SpellManager::getSpellByItem(const int itemId) const
 
 void SpellManager::fillSpells()
 {
-// id, std::string name, std::string symbol, ST type, int basicLvl,
-//    MagicSchool school, int schoolLvl, int mana)
+    CommandsDB::load();
 
-    addSpell(new TextCommand(0, "lum", "#lum", "heal with lifestones",
-             ALLOWTARGET, "", 1, SKILL_MAGIC_LIFE, 0, 6));
-    addSpell(new TextCommand(1, "inm", "#inma", "heal", NEEDTARGET,
-             "", 2, SKILL_MAGIC_LIFE, 2, 10));
-    addSpell(new TextCommand(2, "fla", "#flar", "", NOTARGET,
-             "", 1, SKILL_MAGIC_WAR, 0, 10));
-    addSpell(new TextCommand(3, "chi", "#chiza", "", NOTARGET,
-             "", 1, SKILL_MAGIC_WAR, 0, 9));
-    addSpell(new TextCommand(4, "ing", "#ingrav", "", NOTARGET,
-             "", 2, SKILL_MAGIC_WAR, 2, 20));
-    addSpell(new TextCommand(5, "fri", "#frillyar", "", NOTARGET,
-             "", 2, SKILL_MAGIC_WAR, 2, 25));
-    addSpell(new TextCommand(6, "upm", "#upmarmu", "", NOTARGET,
-             "", 2, SKILL_MAGIC_WAR, 2, 20));
-    addSpell(new TextCommand(7, "ite", "#itenplz", "", NOTARGET,
-             "", 1, SKILL_MAGIC_NATURE, 0, 3));
-    addSpell(new TextCommand(8, "bet", "#betsanc", "", ALLOWTARGET,
-             "", 2, SKILL_MAGIC_NATURE, 2, 14));
-    addSpell(new TextCommand(9, "abi", "#abizit", "", NOTARGET,
-             "", 1, SKILL_MAGIC, 0, 1));
-    addSpell(new TextCommand(10, "inw", "#inwilt", "", NOTARGET,
-             "", 2, SKILL_MAGIC, 2, 7));
-    addSpell(new TextCommand(11, "hi", "hi", "", NOTARGET, ""));
-    addSpell(new TextCommand(12, "hea", "heal", "", NOTARGET, ""));
-    addSpell(new TextCommand(13, "@sp", "@spawn maggot 10", "", NOTARGET, ""));
-    for (unsigned f = 12; f < SPELL_SHORTCUT_ITEMS * SPELL_SHORTCUT_TABS; f++)
-        addSpell(new TextCommand(f));
+    CommandsMap &commands = CommandsDB::getAll();
+    FOR_EACH (CommandsMapIter, it, commands)
+        addSpell((*it).second);
+
+    for (unsigned f = 0; f < SPELL_SHORTCUT_ITEMS * SPELL_SHORTCUT_TABS; f++)
+    {
+        const std::map<unsigned int, TextCommand*>::const_iterator
+            it = mSpells.find(f);
+        if (it == mSpells.end())
+            addSpell(new TextCommand(f));
+    }
+    CommandsDB::unload();
 }
 
 bool SpellManager::addSpell(TextCommand *const spell)
@@ -107,6 +93,12 @@ bool SpellManager::addSpell(TextCommand *const spell)
     if (!spell)
         return false;
 
+    const int id = spell->getId();
+    if (id < 0 || id >= SPELL_SHORTCUT_ITEMS * SPELL_SHORTCUT_TABS)
+    {
+        delete spell;
+        return false;
+    }
     const std::map<unsigned int, TextCommand*>::const_iterator
         i = mSpells.find(spell->getId());
     if (i == mSpells.end())
@@ -304,6 +296,13 @@ void SpellManager::load(const bool oldConfig)
     }
 }
 
+#define setOrDel(str, method) \
+    const std::string var##method = spell->method(); \
+    if (var##method != "") \
+        serverConfig.setValue(str + toString(i), var##method); \
+    else \
+        serverConfig.deleteKey(str + toString(i));
+
 void SpellManager::save() const
 {
     for (unsigned i = 0; i < SPELL_SHORTCUT_ITEMS * SPELL_SHORTCUT_TABS; i++)
@@ -311,42 +310,10 @@ void SpellManager::save() const
         const TextCommand *const spell = mSpellsVector[i];
         if (spell)
         {
-            if (spell->getCommand() != "")
-            {
-                serverConfig.setValue("commandShortcutCmd" + toString(i),
-                                      spell->getCommand());
-            }
-            else
-            {
-                serverConfig.deleteKey("commandShortcutCmd" + toString(i));
-            }
-            if (spell->getComment() != "")
-            {
-                serverConfig.setValue("commandShortcutComment" + toString(i),
-                                      spell->getComment());
-            }
-            else
-            {
-                serverConfig.deleteKey("commandShortcutComment" + toString(i));
-            }
-            if (spell->getSymbol() != "")
-            {
-                serverConfig.setValue("commandShortcutSymbol" + toString(i),
-                                      spell->getSymbol());
-            }
-            else
-            {
-                serverConfig.deleteKey("commandShortcutSymbol" + toString(i));
-            }
-            if (spell->getIcon() != "")
-            {
-                serverConfig.setValue("commandShortcutIcon" + toString(i),
-                                      spell->getIcon());
-            }
-            else
-            {
-                serverConfig.deleteKey("commandShortcutIcon" + toString(i));
-            }
+            setOrDel("commandShortcutCmd", getCommand);
+            setOrDel("commandShortcutComment", getComment);
+            setOrDel("commandShortcutSymbol", getSymbol);
+            setOrDel("commandShortcutIcon", getIcon);
             if (spell->getCommand() != "" && spell->getSymbol() != "")
             {
                 serverConfig.setValue("commandShortcutFlags" + toString(i),
@@ -364,6 +331,8 @@ void SpellManager::save() const
         }
     }
 }
+
+#undef setOrDel
 
 std::string SpellManager::autoComplete(const std::string &partName) const
 {

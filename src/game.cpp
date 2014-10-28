@@ -358,8 +358,6 @@ Game::Game() :
     mTime2(cur_time + 10)
 {
     touchManager.setInGame(true);
-    spellManager = new SpellManager;
-    spellShortcut = new SpellShortcut;
 
 //    assert(!mInstance);
     if (mInstance)
@@ -430,8 +428,6 @@ Game::~Game()
     delete2(particleEngine)
     delete2(viewport)
     delete2(mCurrentMap)
-    delete2(spellManager)
-    delete2(spellShortcut)
     delete2(guildManager)
 #ifdef USE_MUMBLE
     delete2(mumbleManager)

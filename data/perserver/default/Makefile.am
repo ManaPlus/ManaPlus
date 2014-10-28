@@ -4,6 +4,7 @@ default_DATA =				\
 	charcreation.xml		\
 	chatcommands.txt		\
 	deadmessages.xml		\
+	defaultcommands.xml		\
 	features.xml		\
 	gmcommands.txt		\
 	weapons.xml

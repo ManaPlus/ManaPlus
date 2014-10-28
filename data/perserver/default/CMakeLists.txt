@@ -2,6 +2,7 @@ SET (FILES
     charcreation.xml
     chatcommands.txt
     deadmessages.xml
+    defaultcommands.xml
     features.xml
     gmcommands.txt
     weapons.xml

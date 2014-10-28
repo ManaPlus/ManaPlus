@@ -26,6 +26,7 @@
 #include "configuration.h"
 #include "game.h"
 #include "settings.h"
+#include "spellshortcut.h"
 #include "touchmanager.h"
 
 #include "gui/gui.h"
@@ -124,6 +125,8 @@ void WindowManager::deleteWindows()
     delete2(helpWindow);
     delete2(setupWindow);
     delete2(userPalette);
+    delete2(spellManager)
+    delete2(spellShortcut)
 }
 
 void WindowManager::initTitle()
