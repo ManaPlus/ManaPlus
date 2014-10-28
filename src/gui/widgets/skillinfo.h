@@ -66,6 +66,7 @@ struct SkillInfo final
     SkillOwner::Type owner;
     bool modifiable;
     bool visible;
+    bool alwaysVisible;
 
     SkillInfo();
     A_DELETE_COPY(SkillInfo)

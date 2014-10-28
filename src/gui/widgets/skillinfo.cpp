@@ -57,7 +57,8 @@ SkillInfo::SkillInfo() :
     type(SkillType::Unknown),
     owner(SkillOwner::Player),
     modifiable(false),
-    visible(false)
+    visible(false),
+    alwaysVisible(false)
 {
     dataMap[0] = new SkillData();
     data = dataMap[0];

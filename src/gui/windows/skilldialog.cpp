@@ -243,7 +243,8 @@ void SkillDialog::hideSkills(const SkillOwner::Type owner)
         if (info && info->owner == owner)
         {
             PlayerInfo::setSkillLevel(info->id, 0);
-            info->visible = false;
+            if (!info->alwaysVisible)
+                info->visible = false;
         }
     }
 }
@@ -316,7 +317,6 @@ void SkillDialog::loadXmlFile(const std::string &fileName)
                         skill = new SkillInfo;
                         skill->id = static_cast<unsigned int>(id);
                         skill->modifiable = false;
-                        skill->visible = false;
                         skill->model = model;
                         skill->update();
                         skill->useButton = XML::getProperty(
@@ -325,6 +325,9 @@ void SkillDialog::loadXmlFile(const std::string &fileName)
                             node, "owner", "player"));
                         skill->errorText = XML::getProperty(
                             node, "errorText", name);
+                        skill->alwaysVisible = XML::getBoolProperty(
+                            node, "alwaysVisible", false);
+                        skill->visible = skill->alwaysVisible;
                         model->addSkill(skill);
                         mSkills[id] = skill;
                     }
@@ -442,6 +445,7 @@ void SkillDialog::addSkill(const SkillOwner::Type owner,
         data->shortName = toString(skill->id);
         skill->modifiable = modifiable;
         skill->visible = false;
+        skill->alwaysVisible = false;
         skill->model = mDefaultModel;
         skill->level = level;
         // TRANSLATORS: skills dialog. skill level
