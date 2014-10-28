@@ -94,7 +94,8 @@ bool SpellManager::addSpell(TextCommand *const spell)
         return false;
 
     const int id = spell->getId();
-    if (id < 0 || id >= SPELL_SHORTCUT_ITEMS * SPELL_SHORTCUT_TABS)
+    if (id < 0 || id >= static_cast<int>(SPELL_SHORTCUT_ITEMS
+        * SPELL_SHORTCUT_TABS))
     {
         delete spell;
         return false;
