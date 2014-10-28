@@ -175,3 +175,8 @@ void replaceVars(std::string &str)
         }
     }
 }
+
+std::string textToMe(const std::string &str)
+{
+    return strprintf("*%s*", str.c_str());
+}

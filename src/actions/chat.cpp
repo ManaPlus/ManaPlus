@@ -39,6 +39,7 @@
 #include "net/serverfeatures.h"
 
 #include "utils/booleanoptions.h"
+#include "utils/chatutils.h"
 #include "utils/stringutils.h"
 
 #include "debug.h"
@@ -318,7 +319,7 @@ impHandler(party)
 
 impHandler(me)
 {
-    outString(event.tab, strprintf("*%s*", event.args.c_str()), event.args);
+    outString(event.tab, textToMe(event.args), event.args);
     return true;
 }
 

@@ -30,6 +30,7 @@
 
 #include "gui/widgets/windowcontainer.h"
 
+#include "utils/chatutils.h"
 #include "utils/stringutils.h"
 
 #include "debug.h"
@@ -75,7 +76,7 @@ void WhisperTab::handleCommand(const std::string &msg)
 
     if (type == "me")
     {
-        std::string str = strprintf("*%s*", args.c_str());
+        std::string str = textToMe(args);
         chatHandler->privateMessage(mNick, str);
         if (localPlayer)
             chatLog(localPlayer->getName(), str);

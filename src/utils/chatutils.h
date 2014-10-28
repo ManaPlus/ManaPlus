@@ -31,4 +31,6 @@ void outStringNormal(ChatTab *const tab,
 
 void replaceVars(std::string &str);
 
+std::string textToMe(const std::string &str);
+
 #endif  // UTILS_CHATUTILS_H
