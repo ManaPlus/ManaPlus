@@ -376,7 +376,7 @@ namespace NotifyManager
             NotifyFlags::EMPTY},
         {"pet catch unknown error",
             // TRANSLATORS: notification message
-            N_("Pet catch unkown error: %d."),
+            N_("Pet catch unknown error: %d."),
             NotifyFlags::INT},
         {"mercenary expired",
             // TRANSLATORS: notification message
