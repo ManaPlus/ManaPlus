@@ -47,7 +47,7 @@
 namespace Actions
 {
 
-static void outString(const ChatTab *const tab,
+static void outString(ChatTab *const tab,
                       const std::string &str,
                       const std::string &def)
 {
@@ -84,16 +84,18 @@ static void outString(const ChatTab *const tab,
             }
             break;
         }
+        case ChatTabType::CHANNEL:
+        case ChatTabType::GM:
+        case ChatTabType::TRADE:
+            tab->chatInput(str);
+            break;
         default:
         case ChatTabType::UNKNOWN:
         case ChatTabType::INPUT:
         case ChatTabType::WHISPER:
         case ChatTabType::DEBUG:
-        case ChatTabType::TRADE:
         case ChatTabType::BATTLE:
         case ChatTabType::LANG:
-        case ChatTabType::GM:
-        case ChatTabType::CHANNEL:
             chatHandler->me(def, GENERAL_CHANNEL);
             break;
     }
