@@ -1577,6 +1577,7 @@ bool ChatWindow::resortChatLog(std::string line,
         else if (serverFeatures->haveChatChannels())
         {
             channelChatLog(channel, line, own, ignoreRecord, tryRemoveColors);
+            return false;
         }
         else if (mShowAllLang)
         {
