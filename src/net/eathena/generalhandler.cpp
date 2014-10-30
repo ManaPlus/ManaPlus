@@ -118,6 +118,7 @@ GeneralHandler::GeneralHandler() :
     static const uint16_t _messages[] =
     {
         SMSG_CONNECTION_PROBLEM,
+        SMSG_MAP_NOT_FOUND,
         0
     };
     handledMessages = _messages;
@@ -145,6 +146,10 @@ void GeneralHandler::handleMessage(Net::MessageIn &msg)
     {
         case SMSG_CONNECTION_PROBLEM:
             processConnectionProblem(msg);
+            break;
+
+        case SMSG_MAP_NOT_FOUND:
+            processMapNotFound(msg);
             break;
 
         default:
@@ -251,6 +256,14 @@ void GeneralHandler::processConnectionProblem(Net::MessageIn &msg)
             errorMessage = _("Unknown connection error.");
             break;
     }
+    client->setState(STATE_ERROR);
+}
+
+void GeneralHandler::processMapNotFound(Net::MessageIn &msg)
+{
+    const int sz = msg.readInt16("len") - 4;
+    msg.readString(sz, "map name?");
+    errorMessage = _("Map not found");
     client->setState(STATE_ERROR);
 }
 

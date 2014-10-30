@@ -28,6 +28,7 @@
  *********************************/
 #define SMSG_SERVER_PING             0x007f /**< Contains server tick */
 #define SMSG_CONNECTION_PROBLEM      0x0081
+#define SMSG_MAP_NOT_FOUND           0x0840
 
 #define SMSG_LOGIN_DATA              0x0069
 #define SMSG_LOGIN_ERROR             0x006a
