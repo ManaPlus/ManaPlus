@@ -274,6 +274,7 @@ void PlayerHandler::setMemo() const
 
 void PlayerHandler::processPlayerShortcuts(Net::MessageIn &msg)
 {
+    msg.readUInt8("unused?");
     for (int f = 0; f < 27; f ++)
     {
         msg.readUInt8("type 0: item, 1: skill");

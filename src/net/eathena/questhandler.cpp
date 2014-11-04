@@ -128,6 +128,9 @@ void QuestHandler::processAddQuests(Net::MessageIn &msg)
     {
         const int var = msg.readInt32("quest id");
         const int val = msg.readUInt8("state");
+        msg.readInt32("time diff");
+        msg.readInt32("time");
+        msg.readInt16("objectives count");
         if (questsWindow)
             questsWindow->updateQuest(var, val);
         if (skillDialog)

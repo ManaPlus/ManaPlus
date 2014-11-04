@@ -54,7 +54,7 @@
 #define SMSG_CHAR_SWITCH_RESPONSE    0x00b3
 #define SMSG_CHANGE_MAP_SERVER       0x0092
 
-#define SMSG_MAP_LOGIN_SUCCESS       0x02eb /**< Contains starting location */
+#define SMSG_MAP_LOGIN_SUCCESS       0x0a18 /**< Contains starting location */
 #define SMSG_MAP_QUIT_RESPONSE       0x018b
 #define SMSG_PLAYER_UPDATE_1         0x01d8
 #define SMSG_PLAYER_UPDATE_2         0x01d9
@@ -228,7 +228,7 @@
 #define SMSG_GUILD_UPDATE_COORDS     0x01eb
 
 #define SMSG_QUEST_ADD               0x02b3
-#define SMSG_QUEST_LIST              0x02b1
+#define SMSG_QUEST_LIST              0x097a
 #define SMSG_QUEST_LIST_OBJECTIVES   0x02b2
 #define SMSG_QUEST_UPDATE_OBJECTIVES 0x02b5
 #define SMSG_QUEST_REMOVE            0x02b4
@@ -280,7 +280,7 @@
 #define SMSG_NPC_COMMAND             0x0212
 
 #define SMSG_MAP_ACCOUNT_ID          0x0283
-#define SMSG_PLAYER_SHORTCUTS        0x07d9
+#define SMSG_PLAYER_SHORTCUTS        0x0a00
 #define SMSG_PLAYER_SHOW_EQUIP       0x02da
 #define SMSG_NPC_CUTIN               0x01b3
 #define SMSG_NPC_VIEWPOINT           0x0144

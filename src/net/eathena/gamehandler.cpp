@@ -185,6 +185,7 @@ void GameHandler::processMapLogin(Net::MessageIn &msg)
         "(%d, %d), Direction: %d",
         x, y, direction);
     msg.readInt16("font");
+    msg.readUInt8("sex");
 
     mLastHost &= 0xffffff;
 
