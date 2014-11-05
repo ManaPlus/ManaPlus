@@ -118,6 +118,7 @@ void connectToServer(const ServerInfo &server)
         switch (server.type)
         {
             case ServerInfo::EATHENA:
+            case ServerInfo::EVOL2:
 #ifdef EATHENA_SUPPORT
                 new EAthena::GeneralHandler;
 #else

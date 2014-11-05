@@ -166,6 +166,17 @@ EditServerDialog::EditServerDialog(ServerDialog *const parent,
             mTypeField->setSelected(0);
 #endif  // TMWA_SUPPORT
             break;
+        case ServerInfo::EVOL2:
+#ifdef EATHENA_SUPPORT
+#ifdef TMWA_SUPPORT
+            mTypeField->setSelected(3);
+#else   // TMWA_SUPPORT
+            mTypeField->setSelected(1);
+#endif  // TMWA_SUPPORT
+#else   // EATHENA_SUPPORT
+            mTypeField->setSelected(0);
+#endif  // EATHENA_SUPPORT
+            break;
     }
 
     setLocationRelativeTo(getParentWindow());
@@ -237,11 +248,17 @@ void EditServerDialog::action(const ActionEvent &event)
                     case 2:
                         mServer.type = ServerInfo::EATHENA;
                         break;
+                    case 3:
+                        mServer.type = ServerInfo::EVOL2;
+                        break;
 #endif
 #else
 #ifdef EATHENA_SUPPORT
                     case 0:
                         mServer.type = ServerInfo::EATHENA;
+                        break;
+                    case 1:
+                        mServer.type = ServerInfo::EVOL2;
                         break;
 #endif
 #endif

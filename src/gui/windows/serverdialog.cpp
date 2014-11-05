@@ -74,9 +74,15 @@ static std::string serverTypeToString(const ServerInfo::Type type)
         case ServerInfo::EVOL:
             return "";
 #endif
-        case ServerInfo::EATHENA:
 #ifdef EATHENA_SUPPORT
+        case ServerInfo::EATHENA:
             return "eAthena";
+        case ServerInfo::EVOL2:
+            return "Evol2";
+#else
+        case ServerInfo::EATHENA:
+        case ServerInfo::EVOL2:
+            return "";
 #endif
         default:
         case ServerInfo::UNKNOWN:
@@ -90,6 +96,7 @@ static uint16_t defaultPortForServerType(const ServerInfo::Type type)
     {
         default:
         case ServerInfo::EATHENA:
+        case ServerInfo::EVOL2:
 #ifdef EATHENA_SUPPORT
             return 6900;
 #endif

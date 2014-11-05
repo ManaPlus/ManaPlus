@@ -40,7 +40,8 @@ class ServerInfo final
             UNKNOWN = 0,
             TMWATHENA,
             EVOL,
-            EATHENA
+            EATHENA,
+            EVOL2
         };
 
         typedef std::pair<int, std::string> VersionString;
@@ -150,8 +151,12 @@ class ServerInfo final
 #ifdef EATHENA_SUPPORT
             else if (compareStrI(serverType, "eathena") == 0)
                 return EATHENA;
+            else if (compareStrI(serverType, "evol2") == 0)
+                return EVOL2;
 #else
             else if (compareStrI(serverType, "eathena") == 0)
+                return TMWATHENA;
+            else if (compareStrI(serverType, "evol2") == 0)
                 return TMWATHENA;
 #endif
             return UNKNOWN;
