@@ -91,6 +91,7 @@ void GameModifiers::init()
     settings.disableGameModifiers = config.getBoolValue(
         "disableGameModifiers");
     settings.awayMode = false;
+    settings.mapDrawType = MapType::NORMAL;
 //    UpdateStatusListener::distributeEvent();
 }
 
