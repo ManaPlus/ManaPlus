@@ -81,6 +81,8 @@ class ServerFeatures final : public Net::ServerFeatures
         bool haveCharRename() const override final;
 
         bool haveBankApi() const override final;
+
+        bool haveServerVersion() const override final;
 };
 
 }  // namespace EAthena

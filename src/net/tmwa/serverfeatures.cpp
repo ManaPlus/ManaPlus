@@ -154,4 +154,9 @@ bool ServerFeatures::haveBankApi() const
     return false;
 }
 
+bool ServerFeatures::haveServerVersion() const
+{
+    return true;
+}
+
 }  // namespace TmwAthena

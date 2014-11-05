@@ -20,6 +20,8 @@
 
 #include "net/eathena/serverfeatures.h"
 
+#include "net/net.h"
+
 #include "debug.h"
 
 extern Net::ServerFeatures *serverFeatures;
@@ -150,6 +152,11 @@ bool ServerFeatures::haveMonsterName() const
 bool ServerFeatures::haveBankApi() const
 {
     return true;
+}
+
+bool ServerFeatures::haveServerVersion() const
+{
+    return Net::getNetworkType() == ServerInfo::EVOL2;
 }
 
 }  // namespace EAthena
