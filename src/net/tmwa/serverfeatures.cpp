@@ -159,4 +159,9 @@ bool ServerFeatures::haveServerVersion() const
     return true;
 }
 
+bool ServerFeatures::haveMapServerVersion() const
+{
+    return false;
+}
+
 }  // namespace TmwAthena

@@ -83,6 +83,8 @@ class ServerFeatures final : public Net::ServerFeatures
         bool haveBankApi() const override final;
 
         bool haveServerVersion() const override final;
+
+        bool haveMapServerVersion() const override final;
 };
 
 }  // namespace TmwAthena

@@ -80,6 +80,8 @@ class ServerFeatures notfinal
         virtual bool haveBankApi() const = 0;
 
         virtual bool haveServerVersion() const = 0;
+
+        virtual bool haveMapServerVersion() const = 0;
 };
 
 }  // namespace Net

@@ -24,6 +24,7 @@
 
 #include "debug.h"
 
+extern int serverVersion;
 extern Net::ServerFeatures *serverFeatures;
 
 namespace EAthena
@@ -157,6 +158,11 @@ bool ServerFeatures::haveBankApi() const
 bool ServerFeatures::haveServerVersion() const
 {
     return Net::getNetworkType() == ServerInfo::EVOL2;
+}
+
+bool ServerFeatures::haveMapServerVersion() const
+{
+    return serverVersion > 0;
 }
 
 }  // namespace EAthena
