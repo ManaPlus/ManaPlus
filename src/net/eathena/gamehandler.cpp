@@ -127,7 +127,7 @@ void GameHandler::connect()
     outMsg.writeInt32(token.account_ID, "account id");
     outMsg.writeInt32(mCharID, "char id");
     outMsg.writeInt32(token.session_ID1, "session key1");
-    outMsg.writeInt32(token.session_ID2, "session key2");
+    outMsg.writeInt32(0, "tick");
     outMsg.writeInt8(Being::genderToInt(token.sex), "sex");
 /*
     if (localPlayer)
