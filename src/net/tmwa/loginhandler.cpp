@@ -273,4 +273,8 @@ int LoginHandler::supportedOptionalActions() const
         : Net::RegistrationOptions::SetGenderOnRegister;
 }
 
+void LoginHandler::sendVersion() const
+{
+}
+
 }  // namespace TmwAthena

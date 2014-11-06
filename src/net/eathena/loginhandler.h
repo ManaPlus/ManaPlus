@@ -60,7 +60,7 @@ class LoginHandler final : public MessageHandler, public Ea::LoginHandler
                             const std::string &restrict newPassword)
                             const override final;
 
-        void sendVersion() const;
+        void sendVersion() const override final;
 
         ServerInfo *getCharServer() const override final A_WARN_UNUSED;
 

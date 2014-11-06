@@ -26,6 +26,8 @@
 
 #include "being/localplayer.h"
 
+#include "net/serverfeatures.h"
+
 #include "net/eathena/loginhandler.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/network.h"
@@ -129,6 +131,8 @@ void GameHandler::connect()
     outMsg.writeInt32(token.session_ID1, "session key1");
     outMsg.writeInt32(0, "tick");
     outMsg.writeInt8(Being::genderToInt(token.sex), "sex");
+    if (serverFeatures->haveMapServerVersion())
+        loginHandler->sendVersion();
 /*
     if (localPlayer)
     {

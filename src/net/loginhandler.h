@@ -95,6 +95,8 @@ class LoginHandler notfinal
 
         virtual void loginOrRegister(LoginData *const data) const = 0;
 
+        virtual void sendVersion() const = 0;
+
         virtual ~LoginHandler()
         { }
 
