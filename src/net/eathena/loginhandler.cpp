@@ -27,6 +27,8 @@
 
 #include "gui/windows/logindialog.h"
 
+#include "net/serverfeatures.h"
+
 #include "net/eathena/messageout.h"
 #include "net/eathena/network.h"
 #include "net/eathena/protocol.h"
@@ -52,6 +54,7 @@ LoginHandler::LoginHandler() :
         SMSG_LOGIN_ERROR,
         SMSG_LOGIN_ERROR2,
         SMSG_CHAR_PASSWORD_RESPONSE,
+        SMSG_SERVER_VERSION_RESPONSE,
         0
     };
     handledMessages = _messages;
@@ -82,6 +85,10 @@ void LoginHandler::handleMessage(Net::MessageIn &msg)
             processLoginError2(msg);
             break;
 
+        case SMSG_SERVER_VERSION_RESPONSE:
+            processServerVersion(msg);
+            break;
+
         default:
             break;
     }
@@ -93,8 +100,15 @@ void LoginHandler::connect()
         return;
 
     mNetwork->connect(mServer);
-    if (client->getState() != STATE_LOGIN)
-        client->setState(STATE_LOGIN);
+    if (serverFeatures->haveServerVersion())
+    {
+        sendVersion();
+    }
+    else
+    {
+        if (client->getState() != STATE_LOGIN)
+            client->setState(STATE_LOGIN);
+    }
 }
 
 bool LoginHandler::isConnected() const
@@ -131,13 +145,6 @@ void LoginHandler::sendLoginRegister(const std::string &restrict username,
     outMsg.writeInt32(20, "client version");
     outMsg.writeString(username, 24, "login");
     outMsg.writeStringNoLog(password, 24, "password");
-
-    /*
-     * eAthena calls the last byte "client version 2", but it isn't used at
-     * at all. We're retasking it, as a bit mask:
-     *  0 - can handle the 0x63 "update host" packet
-     *  1 - defaults to the first char-server (instead of the last)
-     */
     outMsg.writeInt8(0x03, "client type");
 }
 
@@ -222,6 +229,28 @@ void LoginHandler::processLoginError2(Net::MessageIn &msg)
 
 void LoginHandler::processUpdateHost2(Net::MessageIn &msg A_UNUSED)
 {
+}
+
+void LoginHandler::sendVersion() const
+{
+    createOutPacket(CMSG_SERVER_VERSION_REQUEST);
+    outMsg.writeInt32(CLIENT_PROTOCOL_VERSION, "protocol version");
+    outMsg.writeInt32(0, "unused");
+    outMsg.writeInt32(0, "unused");
+    outMsg.writeInt32(0, "unused");
+    outMsg.writeInt32(0, "unused");
+}
+
+void LoginHandler::processServerVersion(Net::MessageIn &msg)
+{
+    msg.readInt16("len");
+    msg.readInt32("unused");
+    serverVersion = msg.readInt32("server version");
+    if (serverVersion > 0)
+        logger->log("Evol2 server version: %d", serverVersion);
+    else
+        logger->log("Hercules without version");
+    client->setState(STATE_LOGIN);
 }
 
 }  // namespace EAthena

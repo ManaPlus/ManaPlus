@@ -27,6 +27,7 @@
 #include "net/eathena/messagehandler.h"
 #include "net/eathena/messagein.h"
 #include "net/eathena/packets.h"
+#include "net/eathena/protocol.h"
 
 #include "utils/delete2.h"
 
@@ -139,7 +140,11 @@ bool Network::messageReady()
     if (mInSize >= 2)
     {
         const int msgId = readWord(0);
-        if (msgId >= 0 && static_cast<unsigned int>(msgId)
+        if (msgId == SMSG_SERVER_VERSION_RESPONSE)
+        {
+            len = 10;
+        }
+        else if (msgId >= 0 && static_cast<unsigned int>(msgId)
             < packet_lengths_size)
         {
             len = packet_lengths[msgId];

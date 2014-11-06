@@ -60,21 +60,21 @@ class LoginHandler final : public MessageHandler, public Ea::LoginHandler
                             const std::string &restrict newPassword)
                             const override final;
 
+        void sendVersion() const;
+
         ServerInfo *getCharServer() const override final A_WARN_UNUSED;
 
         static void processLoginError2(Net::MessageIn &msg);
 
         static void processUpdateHost2(Net::MessageIn &msg);
 
+        static void processServerVersion(Net::MessageIn &msg);
+
     private:
         void sendLoginRegister(const std::string &restrict username,
                                const std::string &restrict password,
                                const std::string &restrict email)
                                const override final;
-
-    // unused
-    void processServerVersion(Net::MessageIn &msg A_UNUSED)
-    { }
 };
 
 }  // namespace EAthena

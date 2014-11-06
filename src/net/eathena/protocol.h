@@ -26,6 +26,8 @@
 /*********************************
  * Packets from server to client *
  *********************************/
+#define SMSG_SERVER_VERSION_RESPONSE 0x7531
+
 #define SMSG_SERVER_PING             0x007f /**< Contains server tick */
 #define SMSG_CONNECTION_PROBLEM      0x0081
 #define SMSG_MAP_NOT_FOUND           0x0840
@@ -307,6 +309,8 @@
 /**********************************
  *  Packets from client to server *
  **********************************/
+
+#define CMSG_SERVER_VERSION_REQUEST  0x7530
 
 #define CMSG_LOGIN_REGISTER          0x0064
 #define CMSG_NAME_REQUEST            0x088a
