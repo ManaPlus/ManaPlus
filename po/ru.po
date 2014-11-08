@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-10-27 23:03+0300\n"
+"POT-Creation-Date: 2014-11-08 12:37+0300\n"
 "PO-Revision-Date: 2014-10-27 20:41+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/manaplus/"
@@ -43,8 +43,8 @@ msgstr "Файл выгружен"
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: text dialog button
 #. TRANSLATORS: ok dialog button
-#: src/actions/actions.cpp:131 src/client.cpp:1463 src/client.cpp:1490
-#: src/gamemodifiers.cpp:423 src/gui/widgets/tabs/setup_input.cpp:163
+#: src/actions/actions.cpp:131 src/client.cpp:1467 src/client.cpp:1494
+#: src/gamemodifiers.cpp:424 src/gui/widgets/tabs/setup_input.cpp:163
 #: src/gui/widgets/tabs/setup_theme.cpp:312
 #: src/gui/widgets/tabs/setup_theme.cpp:343
 #: src/gui/widgets/tabs/setup_video.cpp:248
@@ -57,7 +57,7 @@ msgstr "Файл выгружен"
 #: src/gui/windows/charselectdialog.cpp:275
 #: src/gui/windows/charselectdialog.cpp:311 src/gui/windows/editdialog.cpp:49
 #: src/gui/windows/editserverdialog.cpp:59
-#: src/gui/windows/editserverdialog.cpp:206
+#: src/gui/windows/editserverdialog.cpp:217
 #: src/gui/windows/itemamountwindow.cpp:158 src/gui/windows/quitdialog.cpp:68
 #: src/gui/windows/registerdialog.cpp:243 src/gui/windows/socialwindow.cpp:502
 #: src/gui/windows/textdialog.cpp:48 src/gui/windows/unregisterdialog.cpp:149
@@ -164,48 +164,48 @@ msgid "Uploaded log into:"
 msgstr "Информация о выгруженном логе:"
 
 #. TRANSLATORS: whisper send
-#: src/actions/chat.cpp:227
+#: src/actions/chat.cpp:230
 msgid "Cannot send empty whispers!"
 msgstr "Нельзя отправлять пустые сообщения!"
 
 #. TRANSLATORS: new whisper or channel query
-#: src/actions/chat.cpp:248
+#: src/actions/chat.cpp:251
 #, fuzzy, c-format
 msgid "Cannot create a whisper tab \"%s\"! It probably already exists."
 msgstr "Невозможно создать вкладку \"%s\"! Она уже существует."
 
 #. TRANSLATORS: create party message
 #. TRANSLATORS: chat error message
-#: src/actions/chat.cpp:273 src/gui/widgets/tabs/chat/partytab.cpp:71
+#: src/actions/chat.cpp:276 src/gui/widgets/tabs/chat/partytab.cpp:71
 msgid "Party name is missing."
 msgstr "Не указано название группы."
 
 #. TRANSLATORS: create guild message
-#: src/actions/chat.cpp:291
+#: src/actions/chat.cpp:294
 msgid "Guild name is missing."
 msgstr "Не задано имя гильдии."
 
 #. TRANSLATORS: party invite message
 #. TRANSLATORS: change relation
-#: src/actions/chat.cpp:313 src/actions/commands.cpp:64
+#: src/actions/chat.cpp:316 src/actions/commands.cpp:64
 msgid "Please specify a name."
 msgstr "Пожалуйста, укажите имя."
 
-#: src/actions/chat.cpp:333
+#: src/actions/chat.cpp:336
 msgid "Return toggles chat."
 msgstr "Enter переключает Вас на окно чата."
 
-#: src/actions/chat.cpp:333
+#: src/actions/chat.cpp:336
 msgid "Message closes chat."
 msgstr "Сообщение закрывает чат."
 
 #. TRANSLATORS: message from toggle chat command
-#: src/actions/chat.cpp:344
+#: src/actions/chat.cpp:347
 msgid "Return now toggles chat."
 msgstr "Теперь Return переключает чат."
 
 #. TRANSLATORS: message from toggle chat command
-#: src/actions/chat.cpp:353
+#: src/actions/chat.cpp:356
 msgid "Message now closes chat."
 msgstr "Теперь сообщение закрывает чат."
 
@@ -367,13 +367,13 @@ msgid "Your item stack has max amount."
 msgstr "Слишком много предметов в стэке."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:856
+#: src/being/localplayer.cpp:859
 msgid "Unknown problem picking up item."
 msgstr "Неизвестная проблема при поднятии предмета."
 
 #. TRANSLATORS: %d is number,
 #. [@@%d|%s@@] - here player can see link to item
-#: src/being/localplayer.cpp:880
+#: src/being/localplayer.cpp:883
 #, c-format
 msgid "You picked up %d [@@%d|%s@@]."
 msgid_plural "You picked up %d [@@%d|%s@@]."
@@ -383,43 +383,43 @@ msgstr[2] "Вы подняли %d [@@%d|%s@@]."
 
 #. TRANSLATORS: this is normal experience
 #. TRANSLATORS: get xp message
-#: src/being/localplayer.cpp:1062 src/being/localplayer.cpp:1063
-#: src/being/localplayer.cpp:1099
+#: src/being/localplayer.cpp:1065 src/being/localplayer.cpp:1066
+#: src/being/localplayer.cpp:1102
 msgid "xp"
 msgstr "опыт"
 
 #. TRANSLATORS: this is job experience
-#: src/being/localplayer.cpp:1067 src/being/localplayer.cpp:1073
-#: src/being/localplayer.cpp:1079
+#: src/being/localplayer.cpp:1070 src/being/localplayer.cpp:1076
+#: src/being/localplayer.cpp:1082
 msgid "job"
 msgstr "работа"
 
 #. TRANSLATORS: follow command message
-#: src/being/localplayer.cpp:2805
+#: src/being/localplayer.cpp:2808
 #, c-format
 msgid "Follow: %s"
 msgstr "Следовать за: %s"
 
 #. TRANSLATORS: follow command message
 #. TRANSLATORS: cancel follow message
-#: src/being/localplayer.cpp:2811 src/being/localplayer.cpp:2836
+#: src/being/localplayer.cpp:2814 src/being/localplayer.cpp:2839
 msgid "Follow canceled"
 msgstr "Следование отменено"
 
 #. TRANSLATORS: imitate command message
-#: src/being/localplayer.cpp:2821
+#: src/being/localplayer.cpp:2824
 #, c-format
 msgid "Imitation: %s"
 msgstr "Имитация: %s"
 
 #. TRANSLATORS: imitate command message
 #. TRANSLATORS: cancel follow message
-#: src/being/localplayer.cpp:2827 src/being/localplayer.cpp:2841
+#: src/being/localplayer.cpp:2830 src/being/localplayer.cpp:2844
 msgid "Imitation canceled"
 msgstr "Имитация отменена"
 
 #. TRANSLATORS: wait player/monster message
-#: src/being/localplayer.cpp:3191
+#: src/being/localplayer.cpp:3194
 #, c-format
 msgid "You see %s"
 msgstr "Вы видите %s"
@@ -457,37 +457,37 @@ msgstr "Плавающий пузырек"
 #. TRANSLATORS: setup tab quick button
 #. TRANSLATORS: full button name
 #. TRANSLATORS: setup window name
-#: src/client.cpp:919 src/gui/windowmenu.cpp:166
+#: src/client.cpp:920 src/gui/windowmenu.cpp:166
 #: src/gui/windows/setupwindow.cpp:62
 msgid "Setup"
 msgstr "Настройка"
 
 #. TRANSLATORS: perfoamance tab quick button
 #. TRANSLATORS: settings tab name
-#: src/client.cpp:922 src/gui/widgets/tabs/setup_perfomance.cpp:54
+#: src/client.cpp:923 src/gui/widgets/tabs/setup_perfomance.cpp:54
 msgid "Performance"
 msgstr "Производительность"
 
 #. TRANSLATORS: video tab quick button
 #. TRANSLATORS: video settings tab name
-#: src/client.cpp:925 src/gui/widgets/tabs/setup_video.cpp:105
+#: src/client.cpp:926 src/gui/widgets/tabs/setup_video.cpp:105
 msgid "Video"
 msgstr "Видео"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: theme settings tab name
-#: src/client.cpp:928 src/gui/widgets/tabs/setup_theme.cpp:122
+#: src/client.cpp:929 src/gui/widgets/tabs/setup_theme.cpp:122
 msgid "Theme"
 msgstr "Тема"
 
 #. TRANSLATORS: theme tab quick button
-#: src/client.cpp:931
+#: src/client.cpp:932
 msgid "About"
 msgstr "О Программе"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: help window name
-#: src/client.cpp:934 src/gui/windowmenu.cpp:74
+#: src/client.cpp:935 src/gui/windowmenu.cpp:74
 #: src/gui/windows/helpwindow.cpp:53
 msgid "Help"
 msgstr "Помощь"
@@ -503,7 +503,7 @@ msgstr "Помощь"
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: quests window button
 #. TRANSLATORS: shop window button
-#: src/client.cpp:938 src/client.cpp:1391 src/client.cpp:1405
+#: src/client.cpp:939 src/client.cpp:1395 src/client.cpp:1409
 #: src/gui/dialogsmanager.cpp:84 src/gui/popups/popupmenu.cpp:693
 #: src/gui/popups/popupmenu.cpp:926 src/gui/windows/didyouknowwindow.cpp:81
 #: src/gui/windows/inventorywindow.cpp:224 src/gui/windows/npcdialog.cpp:74
@@ -513,32 +513,32 @@ msgid "Close"
 msgstr "Закрыть"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1064
+#: src/client.cpp:1065
 msgid "Connecting to server"
 msgstr "Идет подключение к серверу..."
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1112
+#: src/client.cpp:1113
 msgid "Logging in"
 msgstr "Авторизация"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1155
+#: src/client.cpp:1156
 msgid "Entering game world"
 msgstr "Входим в игровой мир"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1282
+#: src/client.cpp:1286
 msgid "Requesting characters"
 msgstr "Получение списка персонажей"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1322
+#: src/client.cpp:1326
 msgid "Connecting to the game server"
 msgstr "Подключение к игровому серверу"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1334
+#: src/client.cpp:1338
 msgid "Changing game servers"
 msgstr "Смена игрового сервера"
 
@@ -554,12 +554,12 @@ msgstr "Смена игрового сервера"
 #. TRANSLATORS: error message
 #. TRANSLATORS: info message
 #. TRANSLATORS: ok dialog button
-#: src/client.cpp:1389 src/client.cpp:1403 src/client.cpp:1598
+#: src/client.cpp:1393 src/client.cpp:1407 src/client.cpp:1602
 #: src/gui/windows/changeemaildialog.cpp:167
 #: src/gui/windows/changepassworddialog.cpp:157
 #: src/gui/windows/charcreatedialog.cpp:367
 #: src/gui/windows/charselectdialog.cpp:309
-#: src/gui/windows/editserverdialog.cpp:201
+#: src/gui/windows/editserverdialog.cpp:212
 #: src/gui/windows/registerdialog.cpp:243
 #: src/gui/windows/unregisterdialog.cpp:146
 #: src/net/ea/charserverhandler.cpp:141 src/net/ea/charserverhandler.cpp:173
@@ -569,37 +569,37 @@ msgid "Error"
 msgstr "Ошибка"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1418
+#: src/client.cpp:1422
 msgid "Requesting registration details"
 msgstr "Запрос регистрационных данных"
 
 #. TRANSLATORS: password change message header
-#: src/client.cpp:1459
+#: src/client.cpp:1463
 msgid "Password Change"
 msgstr "Изменить Пароль"
 
 #. TRANSLATORS: password change message text
-#: src/client.cpp:1461
+#: src/client.cpp:1465
 msgid "Password changed successfully!"
 msgstr "Пароль изменен!"
 
 #. TRANSLATORS: email change message header
-#: src/client.cpp:1486
+#: src/client.cpp:1490
 msgid "Email Change"
 msgstr "Сменить Email"
 
 #. TRANSLATORS: email change message text
-#: src/client.cpp:1488
+#: src/client.cpp:1492
 msgid "Email changed successfully!"
 msgstr "Email изменен!"
 
 #. TRANSLATORS: unregister message header
-#: src/client.cpp:1515
+#: src/client.cpp:1519
 msgid "Unregister Successful"
 msgstr "Регистрация удалена"
 
 #. TRANSLATORS: unregister message text
-#: src/client.cpp:1517
+#: src/client.cpp:1521
 msgid "Farewell, come back any time..."
 msgstr "Хорошо, возвращайтесь в любое время..."
 
@@ -652,398 +652,398 @@ msgid "Debug"
 msgstr "Отладка"
 
 #. TRANSLATORS: save file message
-#: src/game.cpp:539
+#: src/game.cpp:535
 #, c-format
 msgid "Screenshot saved as %s"
 msgstr "Снимок экрана сохранен как %s"
 
 #. TRANSLATORS: save file message
-#: src/game.cpp:549
+#: src/game.cpp:545
 msgid "Saving screenshot failed!"
 msgstr "Ошибка при сохранении снимка экрана!"
 
 #. TRANSLATORS: error message text
-#: src/game.cpp:632
+#: src/game.cpp:628
 msgid "The connection to the server was lost."
 msgstr "Соединение с сервером потеряно."
 
 #. TRANSLATORS: error message header
-#: src/game.cpp:635
+#: src/game.cpp:631
 msgid "Network Error"
 msgstr "Ошибка сети"
 
 #. TRANSLATORS: move type in status bar
-#: src/gamemodifiers.cpp:142
+#: src/gamemodifiers.cpp:143
 msgid "(D) default moves"
 msgstr "(D) движения по умолчанию"
 
 #. TRANSLATORS: move type in status bar
-#: src/gamemodifiers.cpp:144
+#: src/gamemodifiers.cpp:145
 msgid "(I) invert moves"
 msgstr "(I) обратное движение"
 
 #. TRANSLATORS: move type in status bar
-#: src/gamemodifiers.cpp:146
+#: src/gamemodifiers.cpp:147
 msgid "(c) moves with some crazy moves"
 msgstr "(c) обычное движение иногда с сумасшедшими движениями"
 
 #. TRANSLATORS: move type in status bar
-#: src/gamemodifiers.cpp:148
+#: src/gamemodifiers.cpp:149
 msgid "(C) moves with crazy moves"
 msgstr "(C) движение с сумасшедшими движениями"
 
 #. TRANSLATORS: move type in status bar
-#: src/gamemodifiers.cpp:150
+#: src/gamemodifiers.cpp:151
 msgid "(d) double normal + crazy"
 msgstr "(d) нормальные и сумасшедшие движения"
 
 #. TRANSLATORS: move type in status bar
-#: src/gamemodifiers.cpp:152
+#: src/gamemodifiers.cpp:153
 msgid "(?) unknown move"
 msgstr "(?) неизвестное движение"
 
 #. TRANSLATORS: crazy move type in status bar
-#: src/gamemodifiers.cpp:177
+#: src/gamemodifiers.cpp:178
 #, c-format
 msgid "(%u) crazy move number %u"
 msgstr "(%u) сумасшедшее движение %u"
 
 #. TRANSLATORS: crazy move type in status bar
-#: src/gamemodifiers.cpp:183
+#: src/gamemodifiers.cpp:184
 msgid "(a) custom crazy move"
 msgstr "(a) пользовательские сумасшедшие движения"
 
 #. TRANSLATORS: crazy move type in status bar
-#: src/gamemodifiers.cpp:188
+#: src/gamemodifiers.cpp:189
 msgid "(?) crazy move"
 msgstr "(?) неизвестные сумасшедшие движения"
 
 #. TRANSLATORS: move to target type in status bar
-#: src/gamemodifiers.cpp:195
+#: src/gamemodifiers.cpp:196
 msgid "(0) default moves to target"
 msgstr "(0) обычное движение к цели"
 
 #. TRANSLATORS: move to target type in status bar
-#: src/gamemodifiers.cpp:197
+#: src/gamemodifiers.cpp:198
 msgid "(1) moves to target in distance 1"
 msgstr "(1) движение к цели на расстояние 1"
 
 #. TRANSLATORS: move to target type in status bar
-#: src/gamemodifiers.cpp:199
+#: src/gamemodifiers.cpp:200
 msgid "(2) moves to target in distance 2"
 msgstr "(2) движение к цели на расстояние 2"
 
 #. TRANSLATORS: move to target type in status bar
-#: src/gamemodifiers.cpp:201
+#: src/gamemodifiers.cpp:202
 msgid "(3) moves to target in distance 3"
 msgstr "(3) движение к цели на расстояние 3"
 
 #. TRANSLATORS: move to target type in status bar
-#: src/gamemodifiers.cpp:203
+#: src/gamemodifiers.cpp:204
 msgid "(4) moves to target in distance 4"
 msgstr "(4) движение к цели на расстояние 4"
 
 #. TRANSLATORS: move to target type in status bar
-#: src/gamemodifiers.cpp:205
+#: src/gamemodifiers.cpp:206
 msgid "(5) moves to target in distance 5"
 msgstr "(5) движение к цели на расстояние 5"
 
 #. TRANSLATORS: move to target type in status bar
-#: src/gamemodifiers.cpp:207
+#: src/gamemodifiers.cpp:208
 msgid "(6) moves to target in distance 6"
 msgstr "(6) движение к цели на расстояние 6"
 
 #. TRANSLATORS: move to target type in status bar
-#: src/gamemodifiers.cpp:209
+#: src/gamemodifiers.cpp:210
 msgid "(7) moves to target in distance 7"
 msgstr "(7) движение к цели на расстояние 7"
 
 #. TRANSLATORS: move to target type in status bar
-#: src/gamemodifiers.cpp:211
+#: src/gamemodifiers.cpp:212
 msgid "(8) moves to target in distance 8"
 msgstr "(8) движение к цели на расстояние 8"
 
 #. TRANSLATORS: move to target type in status bar
-#: src/gamemodifiers.cpp:213
+#: src/gamemodifiers.cpp:214
 msgid "(9) moves to target in distance 9"
 msgstr "(9) движение к цели на расстояние 9"
 
 #. TRANSLATORS: move to target type in status bar
-#: src/gamemodifiers.cpp:215
+#: src/gamemodifiers.cpp:216
 msgid "(A) moves to target in attack range"
 msgstr "(A) движение к цели на расстояние атаки"
 
 #. TRANSLATORS: move to target type in status bar
-#: src/gamemodifiers.cpp:217
+#: src/gamemodifiers.cpp:218
 msgid "(a) archer attack range"
 msgstr "(a) атака лучника"
 
 #. TRANSLATORS: move to target type in status bar
-#: src/gamemodifiers.cpp:219
+#: src/gamemodifiers.cpp:220
 msgid "(B) moves to target in attack range - 1"
 msgstr "(B) движение к цели на расстояние атаки - 1"
 
 #. TRANSLATORS: move to target type in status bar
-#: src/gamemodifiers.cpp:221
+#: src/gamemodifiers.cpp:222
 msgid "(?) move to target"
 msgstr "(?) неизвестное движение к цели"
 
 #. TRANSLATORS: folow mode in status bar
-#: src/gamemodifiers.cpp:227
+#: src/gamemodifiers.cpp:228
 msgid "(D) default follow"
 msgstr "(D) следование по умолчанию"
 
 #. TRANSLATORS: folow mode in status bar
-#: src/gamemodifiers.cpp:229
+#: src/gamemodifiers.cpp:230
 msgid "(R) relative follow"
 msgstr "(R) относительное следование"
 
 #. TRANSLATORS: folow mode in status bar
-#: src/gamemodifiers.cpp:231
+#: src/gamemodifiers.cpp:232
 msgid "(M) mirror follow"
 msgstr "(M) зеркальное следование"
 
 #. TRANSLATORS: folow mode in status bar
-#: src/gamemodifiers.cpp:233
+#: src/gamemodifiers.cpp:234
 msgid "(P) pet follow"
 msgstr "(P) следование как животное"
 
 #. TRANSLATORS: folow mode in status bar
-#: src/gamemodifiers.cpp:235
+#: src/gamemodifiers.cpp:236
 msgid "(?) unknown follow"
 msgstr "(?) неизвестное следование"
 
 #. TRANSLATORS: switch attack type in status bar
 #. TRANSLATORS: attack type in status bar
-#: src/gamemodifiers.cpp:241 src/gamemodifiers.cpp:249
-#: src/gamemodifiers.cpp:263
+#: src/gamemodifiers.cpp:242 src/gamemodifiers.cpp:250
+#: src/gamemodifiers.cpp:264
 msgid "(?) attack"
 msgstr "(?) неизвестная атака"
 
 #. TRANSLATORS: switch attack type in status bar
 #. TRANSLATORS: attack type in status bar
-#: src/gamemodifiers.cpp:243 src/gamemodifiers.cpp:255
+#: src/gamemodifiers.cpp:244 src/gamemodifiers.cpp:256
 msgid "(D) default attack"
 msgstr "(D) обычная атака"
 
 #. TRANSLATORS: switch attack type in status bar
-#: src/gamemodifiers.cpp:245
+#: src/gamemodifiers.cpp:246
 msgid "(s) switch attack without shield"
 msgstr "(s) переключение атаки без щита"
 
 #. TRANSLATORS: switch attack type in status bar
-#: src/gamemodifiers.cpp:247
+#: src/gamemodifiers.cpp:248
 msgid "(S) switch attack with shield"
 msgstr "(S) переключение атаки со щитом"
 
 #. TRANSLATORS: attack type in status bar
-#: src/gamemodifiers.cpp:257
+#: src/gamemodifiers.cpp:258
 msgid "(G) go and attack"
 msgstr "(G) идти и атаковать"
 
 #. TRANSLATORS: attack type in status bar
-#: src/gamemodifiers.cpp:259
+#: src/gamemodifiers.cpp:260
 msgid "(A) go, attack, pickup"
 msgstr "(A) идти, атаковать, собирать"
 
 #. TRANSLATORS: attack type in status bar
-#: src/gamemodifiers.cpp:261
+#: src/gamemodifiers.cpp:262
 msgid "(d) without auto attack"
 msgstr "(d) без автоатаки"
 
 #. TRANSLATORS: pickup size in status bar
-#: src/gamemodifiers.cpp:296
+#: src/gamemodifiers.cpp:297
 msgid "(S) small pick up 1x1 cells"
 msgstr "(S) поднятие в области 1x1"
 
 #. TRANSLATORS: pickup size in status bar
-#: src/gamemodifiers.cpp:298
+#: src/gamemodifiers.cpp:299
 msgid "(D) default pick up 2x1 cells"
 msgstr "(D) поднятие из области 2x1"
 
 #. TRANSLATORS: pickup size in status bar
-#: src/gamemodifiers.cpp:300
+#: src/gamemodifiers.cpp:301
 msgid "(F) forward pick up 2x3 cells"
 msgstr "(F) поднятие из области спереди 2x3"
 
 #. TRANSLATORS: pickup size in status bar
-#: src/gamemodifiers.cpp:302
+#: src/gamemodifiers.cpp:303
 msgid "(3) pick up 3x3 cells"
 msgstr "(3) поднятие из области 3x3"
 
 #. TRANSLATORS: pickup size in status bar
-#: src/gamemodifiers.cpp:304
+#: src/gamemodifiers.cpp:305
 msgid "(g) go and pick up in distance 4"
 msgstr "(g) движение и поднятие на расстоянии 4"
 
 #. TRANSLATORS: pickup size in status bar
-#: src/gamemodifiers.cpp:306
+#: src/gamemodifiers.cpp:307
 msgid "(G) go and pick up in distance 8"
 msgstr "(g) движение и поднятие на расстоянии 8"
 
 #. TRANSLATORS: pickup size in status bar
-#: src/gamemodifiers.cpp:308
+#: src/gamemodifiers.cpp:309
 msgid "(A) go and pick up in max distance"
 msgstr "(A) движение и поднятие на максимальном расстоянии"
 
 #. TRANSLATORS: pickup size in status bar
-#: src/gamemodifiers.cpp:310
+#: src/gamemodifiers.cpp:311
 msgid "(?) pick up"
 msgstr "(?) неизвестный режим поднятия"
 
 #. TRANSLATORS: magic attack in status bar
-#: src/gamemodifiers.cpp:316
+#: src/gamemodifiers.cpp:317
 msgid "(f) use #flar for magic attack"
 msgstr "(f) использовать #flar для атаки"
 
 #. TRANSLATORS: magic attack in status bar
-#: src/gamemodifiers.cpp:318
+#: src/gamemodifiers.cpp:319
 msgid "(c) use #chiza for magic attack"
 msgstr "(c) использовать #chiza для атаки"
 
 #. TRANSLATORS: magic attack in status bar
-#: src/gamemodifiers.cpp:320
+#: src/gamemodifiers.cpp:321
 msgid "(I) use #ingrav for magic attack"
 msgstr "(I) использовать #ingrav для атаки"
 
 #. TRANSLATORS: magic attack in status bar
-#: src/gamemodifiers.cpp:322
+#: src/gamemodifiers.cpp:323
 msgid "(F) use #frillyar for magic attack"
 msgstr "(F) использовать #frillyar для атаки"
 
 #. TRANSLATORS: magic attack in status bar
-#: src/gamemodifiers.cpp:324
+#: src/gamemodifiers.cpp:325
 msgid "(U) use #upmarmu for magic attack"
 msgstr "(U) использовать #upmarmu для атаки"
 
 #. TRANSLATORS: magic attack in status bar
-#: src/gamemodifiers.cpp:326
+#: src/gamemodifiers.cpp:327
 msgid "(?) magic attack"
 msgstr "(?) неизвестная магическая атака"
 
 #. TRANSLATORS: player attack type in status bar
-#: src/gamemodifiers.cpp:332
+#: src/gamemodifiers.cpp:333
 msgid "(a) attack all players"
 msgstr "(a) атаковать всех игроков"
 
 #. TRANSLATORS: player attack type in status bar
-#: src/gamemodifiers.cpp:334
+#: src/gamemodifiers.cpp:335
 msgid "(f) attack all except friends"
 msgstr "(f) атаковать всех кроме друзей"
 
 #. TRANSLATORS: player attack type in status bar
-#: src/gamemodifiers.cpp:336
+#: src/gamemodifiers.cpp:337
 msgid "(b) attack bad relations"
 msgstr "(b) атаковать врагов"
 
 #. TRANSLATORS: player attack type in status bar
-#: src/gamemodifiers.cpp:338
+#: src/gamemodifiers.cpp:339
 msgid "(d) don't attack players"
 msgstr "(d) не атаковать игроков"
 
 #. TRANSLATORS: player attack type in status bar
-#: src/gamemodifiers.cpp:340
+#: src/gamemodifiers.cpp:341
 msgid "(?) pvp attack"
 msgstr "(?) pvp атака"
 
 #. TRANSLATORS: imitation type in status bar
-#: src/gamemodifiers.cpp:346
+#: src/gamemodifiers.cpp:347
 msgid "(D) default imitation"
 msgstr "(D) имитация по умолчанию"
 
 #. TRANSLATORS: imitation type in status bar
-#: src/gamemodifiers.cpp:348
+#: src/gamemodifiers.cpp:349
 msgid "(O) outfits imitation"
 msgstr "(O) имитация нарядов"
 
 #. TRANSLATORS: imitation type in status bar
-#: src/gamemodifiers.cpp:350
+#: src/gamemodifiers.cpp:351
 msgid "(?) imitation"
 msgstr "(?) неизвестная имитация"
 
 #. TRANSLATORS: game modifiers state in status bar
-#: src/gamemodifiers.cpp:356
+#: src/gamemodifiers.cpp:357
 msgid "Game modifiers are enabled"
 msgstr "Игровые модификаторы включены"
 
 #. TRANSLATORS: game modifiers state in status bar
-#: src/gamemodifiers.cpp:358
+#: src/gamemodifiers.cpp:359
 msgid "Game modifiers are disabled"
 msgstr "Игровые модификаторы выключены"
 
 #. TRANSLATORS: game modifiers state in status bar
-#: src/gamemodifiers.cpp:360
+#: src/gamemodifiers.cpp:361
 msgid "Game modifiers are unknown"
 msgstr "Игровые модификаторы в неизвестном положении"
 
 #. TRANSLATORS: map view type in status bar
-#: src/gamemodifiers.cpp:373
+#: src/gamemodifiers.cpp:374
 msgid "(N) normal map view"
 msgstr "(N) обычный режим карты"
 
 #. TRANSLATORS: map view type in status bar
-#: src/gamemodifiers.cpp:375
+#: src/gamemodifiers.cpp:376
 msgid "(D) debug map view"
 msgstr "(D) отладочный режим карты"
 
 #. TRANSLATORS: map view type in status bar
-#: src/gamemodifiers.cpp:377
+#: src/gamemodifiers.cpp:378
 msgid "(u) ultra map view"
 msgstr "(u) специальный режим карты"
 
 #. TRANSLATORS: map view type in status bar
-#: src/gamemodifiers.cpp:379
+#: src/gamemodifiers.cpp:380
 msgid "(U) ultra map view 2"
 msgstr "(U) специальный режим карты 2"
 
 #. TRANSLATORS: map view type in status bar
-#: src/gamemodifiers.cpp:381
+#: src/gamemodifiers.cpp:382
 msgid "(e) empty map view with collision"
 msgstr "(e) режим пустой карты с коллизиями"
 
 #. TRANSLATORS: map view type in status bar
-#: src/gamemodifiers.cpp:383
+#: src/gamemodifiers.cpp:384
 msgid "(E) empty map view"
 msgstr "(E) режим пустой карты"
 
 #. TRANSLATORS: map view type in status bar
-#: src/gamemodifiers.cpp:385
+#: src/gamemodifiers.cpp:386
 msgid "(b) black & white map view"
 msgstr "(b) черно-белый режим карты"
 
 #. TRANSLATORS: pickup size in status bar
-#: src/gamemodifiers.cpp:387
+#: src/gamemodifiers.cpp:388
 msgid "(?) map view"
 msgstr "(?) неизвестный режим карты"
 
 #. TRANSLATORS: away type in status bar
-#: src/gamemodifiers.cpp:393
+#: src/gamemodifiers.cpp:394
 msgid "(O) on keyboard"
 msgstr "(O) возле компьютера"
 
 #. TRANSLATORS: away type in status bar
-#: src/gamemodifiers.cpp:395
+#: src/gamemodifiers.cpp:396
 msgid "(A) away"
 msgstr "(A) отошел"
 
 #. TRANSLATORS: away type in status bar
 #. TRANSLATORS: camera mode in status bar
-#: src/gamemodifiers.cpp:397 src/gamemodifiers.cpp:450
+#: src/gamemodifiers.cpp:398 src/gamemodifiers.cpp:451
 msgid "(?) away"
 msgstr "(?) неизвестный режим отошел"
 
 #. TRANSLATORS: away message box header
-#: src/gamemodifiers.cpp:420
+#: src/gamemodifiers.cpp:421
 msgid "Away"
 msgstr "Отошел"
 
 #. TRANSLATORS: camera mode in status bar
-#: src/gamemodifiers.cpp:446
+#: src/gamemodifiers.cpp:447
 msgid "(G) game camera mode"
 msgstr "(G) игровая камера"
 
 #. TRANSLATORS: camera mode in status bar
-#: src/gamemodifiers.cpp:448
+#: src/gamemodifiers.cpp:449
 msgid "(F) free camera mode"
 msgstr "(F) свободная камера"
 
@@ -1548,9 +1548,9 @@ msgstr "Торговать"
 #. TRANSLATORS: input action name
 #. TRANSLATORS: player stat
 #: src/gui/popups/popupmenu.cpp:168 src/gui/popups/popupmenu.cpp:274
-#: src/gui/popups/popupmenu.cpp:769 src/gui/widgets/skillinfo.cpp:113
+#: src/gui/popups/popupmenu.cpp:769 src/gui/widgets/skillinfo.cpp:114
 #: src/gui/windows/botcheckerwindow.cpp:89 src/input/pages/basic.cpp:42
-#: src/net/eathena/generalhandler.cpp:362 src/net/tmwa/generalhandler.cpp:326
+#: src/net/eathena/generalhandler.cpp:375 src/net/tmwa/generalhandler.cpp:325
 msgid "Attack"
 msgstr "Атака"
 
@@ -2041,7 +2041,7 @@ msgstr "Получить все"
 #: src/gui/windows/inventorywindow.cpp:171
 #: src/gui/windows/inventorywindow.cpp:629 src/gui/windows/skilldialog.cpp:81
 #: src/gui/windows/skilldialog.cpp:153 src/gui/windows/skilldialog.cpp:323
-#: src/gui/windows/skilldialog.cpp:452 src/gui/windows/skilldialog.cpp:534
+#: src/gui/windows/skilldialog.cpp:456 src/gui/windows/skilldialog.cpp:538
 #: src/resources/itemtypemapdata.h:39 src/resources/itemtypemapdata.h:43
 msgid "Use"
 msgstr "Использовать"
@@ -2606,7 +2606,7 @@ msgstr "Открыть ссылку"
 #. TRANSLATORS: input action name
 #: src/gui/widgets/selldialog.cpp:98 src/gui/windows/buydialog.cpp:262
 #: src/gui/windows/quitdialog.cpp:52 src/gui/windows/quitdialog.cpp:57
-#: src/gui/windows/quitdialog.cpp:59 src/gui/windows/serverdialog.cpp:117
+#: src/gui/windows/quitdialog.cpp:59 src/gui/windows/serverdialog.cpp:124
 #: src/input/pages/basic.cpp:216
 msgid "Quit"
 msgstr "Выход"
@@ -2659,65 +2659,65 @@ msgstr "Цена: %s / Всего: %s"
 #. TRANSLATORS: setup item button
 #. TRANSLATORS: servers dialog button
 #: src/gui/widgets/setupitem.cpp:368 src/gui/widgets/setupitem.cpp:505
-#: src/gui/windows/serverdialog.cpp:123
+#: src/gui/windows/serverdialog.cpp:130
 msgid "Edit"
 msgstr "Изменить"
 
 #. TRANSLATORS: skill level
 #. TRANSLATORS: skills dialog. skill level
-#: src/gui/widgets/skillinfo.cpp:99 src/gui/windows/skilldialog.cpp:448
+#: src/gui/widgets/skillinfo.cpp:100 src/gui/windows/skilldialog.cpp:452
 #, c-format
 msgid "Lvl: %d"
 msgstr "Уровень: %d"
 
 #. TRANSLATORS: skill type
-#: src/gui/widgets/skillinfo.cpp:103
+#: src/gui/widgets/skillinfo.cpp:104
 #, c-format
 msgid "Type: %s"
 msgstr "Тип: %s"
 
 #. TRANSLATORS: Skill type
 #. TRANSLATORS: unknown equipment page name
-#: src/gui/widgets/skillinfo.cpp:108 src/gui/windows/equipmentwindow.cpp:586
+#: src/gui/widgets/skillinfo.cpp:109 src/gui/windows/equipmentwindow.cpp:586
 msgid "Unknown"
 msgstr "Неизвестный"
 
 #. TRANSLATORS: Skill type
-#: src/gui/widgets/skillinfo.cpp:118
+#: src/gui/widgets/skillinfo.cpp:119
 msgid "Ground"
 msgstr "Земля"
 
 #. TRANSLATORS: Skill type
-#: src/gui/widgets/skillinfo.cpp:123
+#: src/gui/widgets/skillinfo.cpp:124
 msgid "Self"
 msgstr "Сам"
 
 #. TRANSLATORS: Skill type
-#: src/gui/widgets/skillinfo.cpp:128
+#: src/gui/widgets/skillinfo.cpp:129
 msgid "Unused"
 msgstr "Не использован"
 
 #. TRANSLATORS: Skill type
-#: src/gui/widgets/skillinfo.cpp:133
+#: src/gui/widgets/skillinfo.cpp:134
 msgid "Support"
 msgstr "Поддержка"
 
 #. TRANSLATORS: Skill type
-#: src/gui/widgets/skillinfo.cpp:138
+#: src/gui/widgets/skillinfo.cpp:139
 msgid "Target trap"
 msgstr "Ловушка"
 
 #. TRANSLATORS: Skill type
-#: src/gui/widgets/skillinfo.cpp:142
+#: src/gui/widgets/skillinfo.cpp:143
 msgid "Unknown:"
 msgstr "Неизвестно:"
 
-#: src/gui/widgets/skillinfo.cpp:148
+#: src/gui/widgets/skillinfo.cpp:149
 #, c-format
 msgid " / Mana: -%d"
 msgstr " / Мана: -%d"
 
-#: src/gui/widgets/skillinfo.cpp:154
+#: src/gui/widgets/skillinfo.cpp:155
 #, c-format
 msgid "Range: %d"
 msgstr "Дистанция: %d"
@@ -4247,7 +4247,7 @@ msgstr "Разрешить шептание"
 #. TRANSLATORS: input action name
 #: src/gui/widgets/tabs/setup_relations.cpp:77
 #: src/gui/windows/charselectdialog.cpp:82
-#: src/gui/windows/serverdialog.cpp:125 src/gui/windows/shopwindow.cpp:100
+#: src/gui/windows/serverdialog.cpp:132 src/gui/windows/shopwindow.cpp:100
 #: src/gui/windows/shopwindow.cpp:107 src/gui/windows/textcommandeditor.cpp:91
 #: src/input/pages/gui.cpp:111
 msgid "Delete"
@@ -5370,7 +5370,7 @@ msgid "Whispering to %s: %s"
 msgstr "Вы прошептали %s: %s"
 
 #. TRANSLATORS: owners pet name. For example: 4144's pet
-#: src/gui/windows/chatwindow.cpp:1650 src/net/eathena/pethandler.cpp:167
+#: src/gui/windows/chatwindow.cpp:1651 src/net/eathena/pethandler.cpp:167
 #, c-format
 msgid "%s's pet"
 msgstr "животное %s'а"
@@ -5418,7 +5418,7 @@ msgstr "Редактирование сервера"
 #. TRANSLATORS: edit server dialog button
 #. TRANSLATORS: servers dialog button
 #: src/gui/windows/editserverdialog.cpp:57
-#: src/gui/windows/serverdialog.cpp:119
+#: src/gui/windows/serverdialog.cpp:126
 msgid "Connect"
 msgstr "Соединиться"
 
@@ -5453,7 +5453,7 @@ msgid "Online list url:"
 msgstr "URL онлайн списка:"
 
 #. TRANSLATORS: edit server dialog error message
-#: src/gui/windows/editserverdialog.cpp:203
+#: src/gui/windows/editserverdialog.cpp:214
 msgid "Please at least type both the address and the port of the server."
 msgstr "Пожалуйста введите хотя бы адрес и порт сервера."
 
@@ -5793,7 +5793,7 @@ msgstr "Применить"
 #. TRANSLATORS: shop window label
 #. TRANSLATORS: shop window button
 #. TRANSLATORS: trade window button
-#: src/gui/windows/npcdialog.cpp:114 src/gui/windows/serverdialog.cpp:121
+#: src/gui/windows/npcdialog.cpp:114 src/gui/windows/serverdialog.cpp:128
 #: src/gui/windows/shopwindow.cpp:98 src/gui/windows/shopwindow.cpp:105
 #: src/gui/windows/tradewindow.cpp:83
 msgid "Add"
@@ -5895,53 +5895,53 @@ msgid "Passwords do not match."
 msgstr "Пароли не совпадают."
 
 #. TRANSLATORS: servers dialog name
-#: src/gui/windows/serverdialog.cpp:108
+#: src/gui/windows/serverdialog.cpp:115
 msgid "Choose Your Server"
 msgstr "Выберите сервер"
 
 #. TRANSLATORS: servers dialog button
-#: src/gui/windows/serverdialog.cpp:127
+#: src/gui/windows/serverdialog.cpp:134
 msgid "Load"
 msgstr "Загрузить"
 
 #. TRANSLATORS: servers dialog name
-#: src/gui/windows/serverdialog.cpp:141
+#: src/gui/windows/serverdialog.cpp:148
 msgid "Choose Your Server  *** SAFE MODE ***"
 msgstr "Выбор сервера  *** БЕЗОПАСНЫЙ РЕЖИМ ***"
 
 #. TRANSLATORS: servers dialog checkbox
-#: src/gui/windows/serverdialog.cpp:150
+#: src/gui/windows/serverdialog.cpp:157
 msgid "Use same ip for game sub servers"
 msgstr "Использовать одинаковый IP для игровых суб-серверов"
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:402
+#: src/gui/windows/serverdialog.cpp:409
 #, c-format
 msgid "Downloading server list...%2.2f%%"
 msgstr "Получение списка серверов...%2.2f%%"
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:408
+#: src/gui/windows/serverdialog.cpp:415
 msgid "Waiting for server..."
 msgstr "Ожидание ответа от сервера..."
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:413
+#: src/gui/windows/serverdialog.cpp:420
 msgid "Preparing download"
 msgstr "Подготовка к загрузке"
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:418
+#: src/gui/windows/serverdialog.cpp:425
 msgid "Error retreiving server list!"
 msgstr "Не удалось получить список серверов!"
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:508
+#: src/gui/windows/serverdialog.cpp:515
 msgid "requires a newer version"
 msgstr "требуется более новая версия"
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:513
+#: src/gui/windows/serverdialog.cpp:520
 #, c-format
 msgid "requires v%s"
 msgstr "требуется v%s"
@@ -6005,18 +6005,18 @@ msgid "Skill points available: %d"
 msgstr "Очков навыков осталось: %d"
 
 #. TRANSLATORS: skills dialog default skill tab
-#: src/gui/windows/skilldialog.cpp:290
+#: src/gui/windows/skilldialog.cpp:291
 #, c-format
 msgid "Skill Set %d"
 msgstr "Умение %d"
 
 #. TRANSLATORS: skills dialog. skill id
-#: src/gui/windows/skilldialog.cpp:311
+#: src/gui/windows/skilldialog.cpp:312
 #, c-format
 msgid "Skill %d"
 msgstr "Умение %d"
 
-#: src/gui/windows/skilldialog.cpp:453
+#: src/gui/windows/skilldialog.cpp:457
 #, c-format
 msgid "Failed skill: %s"
 msgstr "Неудача умения: %s"
@@ -7526,7 +7526,7 @@ msgstr ""
 
 #. TRANSLATORS: error message
 #: src/net/ea/charserverhandler.cpp:117 src/net/ea/loginhandler.cpp:284
-#: src/net/eathena/loginhandler.cpp:203
+#: src/net/eathena/loginhandler.cpp:210
 msgid "Wrong name."
 msgstr "Некорректное имя."
 
@@ -7660,43 +7660,43 @@ msgstr "Новый пароль слишком короткий."
 
 #. TRANSLATORS: error message
 #: src/net/ea/loginhandler.cpp:170 src/net/ea/loginhandler.cpp:296
-#: src/net/eathena/loginhandler.cpp:217
+#: src/net/eathena/loginhandler.cpp:224
 msgid "Unknown error."
 msgstr "Неизвестная ошибка."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:242 src/net/eathena/loginhandler.cpp:158
+#: src/net/ea/loginhandler.cpp:242 src/net/eathena/loginhandler.cpp:165
 msgid "Unregistered ID."
 msgstr "Незарегистрированный ID."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:246 src/net/eathena/loginhandler.cpp:162
+#: src/net/ea/loginhandler.cpp:246 src/net/eathena/loginhandler.cpp:169
 msgid "Wrong password."
 msgstr "Неверный пароль."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:251 src/net/eathena/loginhandler.cpp:167
+#: src/net/ea/loginhandler.cpp:251 src/net/eathena/loginhandler.cpp:174
 msgid "Account expired."
 msgstr "Учетная запись просрочена."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:255 src/net/eathena/loginhandler.cpp:171
+#: src/net/ea/loginhandler.cpp:255 src/net/eathena/loginhandler.cpp:178
 msgid "Rejected from server."
 msgstr "Получен отказ от сервера."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:259 src/net/eathena/loginhandler.cpp:175
+#: src/net/ea/loginhandler.cpp:259 src/net/eathena/loginhandler.cpp:182
 msgid ""
 "You have been permanently banned from the game. Please contact the GM team."
 msgstr "Вас навсегда забанили. Пожалуйста, свяжитесь с командой ГМ-ов."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:264 src/net/eathena/loginhandler.cpp:180
+#: src/net/ea/loginhandler.cpp:264 src/net/eathena/loginhandler.cpp:187
 msgid "Client too old."
 msgstr "Клиент устарел."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:268 src/net/eathena/loginhandler.cpp:184
+#: src/net/ea/loginhandler.cpp:268 src/net/eathena/loginhandler.cpp:191
 #, c-format
 msgid ""
 "You have been temporarily banned from the game until %s.\n"
@@ -7705,22 +7705,22 @@ msgstr ""
 "Вас забанили до %s. Пожалуйста, свяжитесь с командой ГМ-ов через форум."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:276 src/net/eathena/loginhandler.cpp:193
+#: src/net/ea/loginhandler.cpp:276 src/net/eathena/loginhandler.cpp:200
 msgid "Server overpopulated."
 msgstr "Сервер переполнен."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:280 src/net/eathena/loginhandler.cpp:198
+#: src/net/ea/loginhandler.cpp:280 src/net/eathena/loginhandler.cpp:205
 msgid "This user name is already taken."
 msgstr "Это имя пользователя уже занято."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:288 src/net/eathena/loginhandler.cpp:208
+#: src/net/ea/loginhandler.cpp:288 src/net/eathena/loginhandler.cpp:215
 msgid "Incorrect email."
 msgstr "Неправильный email."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:292 src/net/eathena/loginhandler.cpp:213
+#: src/net/ea/loginhandler.cpp:292 src/net/eathena/loginhandler.cpp:220
 msgid "Username permanently erased."
 msgstr "Пользователь удален."
 
@@ -7792,252 +7792,257 @@ msgid "Message could not be sent, channel %s is not exists."
 msgstr "Сообщение не может быть отправлено, т.к. канал %s не существует."
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:127 src/net/tmwa/generalhandler.cpp:126
+#: src/net/eathena/generalhandler.cpp:128 src/net/tmwa/generalhandler.cpp:125
 #, c-format
 msgid "Strength %s"
 msgstr "Сила (str) %s"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:128 src/net/tmwa/generalhandler.cpp:128
+#: src/net/eathena/generalhandler.cpp:129 src/net/tmwa/generalhandler.cpp:127
 #, c-format
 msgid "Agility %s"
 msgstr "Выносливость (agi) %s"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:129 src/net/tmwa/generalhandler.cpp:130
+#: src/net/eathena/generalhandler.cpp:130 src/net/tmwa/generalhandler.cpp:129
 #, c-format
 msgid "Vitality %s"
 msgstr "Живучесть (vit) %s"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:130 src/net/tmwa/generalhandler.cpp:132
+#: src/net/eathena/generalhandler.cpp:131 src/net/tmwa/generalhandler.cpp:131
 #, c-format
 msgid "Intelligence %s"
 msgstr "Интеллект (int) %s"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:131 src/net/tmwa/generalhandler.cpp:134
+#: src/net/eathena/generalhandler.cpp:132 src/net/tmwa/generalhandler.cpp:133
 #, c-format
 msgid "Dexterity %s"
 msgstr "Ловкость (dex) %s"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:132 src/net/tmwa/generalhandler.cpp:136
+#: src/net/eathena/generalhandler.cpp:133 src/net/tmwa/generalhandler.cpp:135
 #, c-format
 msgid "Luck %s"
 msgstr "Удача (luk) %s"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:163 src/net/tmwa/generalhandler.cpp:171
+#: src/net/eathena/generalhandler.cpp:168 src/net/tmwa/generalhandler.cpp:170
 msgid "Authentication failed."
 msgstr "Ошибка авторизации."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:166 src/net/tmwa/generalhandler.cpp:175
+#: src/net/eathena/generalhandler.cpp:171 src/net/tmwa/generalhandler.cpp:174
 msgid "No servers available."
 msgstr "Нет доступных серверов."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:171 src/net/tmwa/generalhandler.cpp:181
+#: src/net/eathena/generalhandler.cpp:176 src/net/tmwa/generalhandler.cpp:180
 msgid "Someone else is trying to use this account."
 msgstr "Кто-то еще пытается воспользоваться данным аккаунтом."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:176 src/net/tmwa/generalhandler.cpp:187
+#: src/net/eathena/generalhandler.cpp:181 src/net/tmwa/generalhandler.cpp:186
 msgid "This account is already logged in."
 msgstr "Этот аккаунт уже в сети."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:180 src/net/tmwa/generalhandler.cpp:192
+#: src/net/eathena/generalhandler.cpp:185 src/net/tmwa/generalhandler.cpp:191
 msgid "Speed hack detected."
 msgstr "Обнаружен взлом скорости."
 
-#: src/net/eathena/generalhandler.cpp:183
+#: src/net/eathena/generalhandler.cpp:188
 msgid "Server full."
 msgstr "Сервер переполнен."
 
-#: src/net/eathena/generalhandler.cpp:186
+#: src/net/eathena/generalhandler.cpp:191
 msgid "Sorry, you are underaged."
 msgstr "К сожалению вы несовершеннолетний."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:189 src/net/tmwa/generalhandler.cpp:196
+#: src/net/eathena/generalhandler.cpp:194 src/net/tmwa/generalhandler.cpp:195
 msgid "Duplicated login."
 msgstr "Двойная попытка подключения."
 
-#: src/net/eathena/generalhandler.cpp:192
+#: src/net/eathena/generalhandler.cpp:197
 msgid "To many connections from same ip."
 msgstr "Слишком много соединений с одного адреса."
 
-#: src/net/eathena/generalhandler.cpp:195
+#: src/net/eathena/generalhandler.cpp:200
 msgid "Not paid for this time."
 msgstr "Не оплачено."
 
-#: src/net/eathena/generalhandler.cpp:198
+#: src/net/eathena/generalhandler.cpp:203
 msgid "Pay suspended."
 msgstr "Оплата приостановлена."
 
-#: src/net/eathena/generalhandler.cpp:201
+#: src/net/eathena/generalhandler.cpp:206
 msgid "Pay changed."
 msgstr "Оплата изменена."
 
-#: src/net/eathena/generalhandler.cpp:204
+#: src/net/eathena/generalhandler.cpp:209
 msgid "Pay wrong ip."
 msgstr "Оплачен другой адрес."
 
-#: src/net/eathena/generalhandler.cpp:207
+#: src/net/eathena/generalhandler.cpp:212
 msgid "Pay game room."
 msgstr "Оплатите за комнату."
 
-#: src/net/eathena/generalhandler.cpp:210
+#: src/net/eathena/generalhandler.cpp:215
 msgid "Disconnect forced by GM."
 msgstr "ГМ отключил вас от сервера."
 
-#: src/net/eathena/generalhandler.cpp:214
+#: src/net/eathena/generalhandler.cpp:219
 msgid "Ban japan refuse."
 msgstr "Японский бан."
 
-#: src/net/eathena/generalhandler.cpp:217
+#: src/net/eathena/generalhandler.cpp:222
 msgid "Remained other account."
 msgstr "Остались другие аккаунты."
 
-#: src/net/eathena/generalhandler.cpp:220
+#: src/net/eathena/generalhandler.cpp:225
 msgid "Ip unfair."
 msgstr "Неправильный адрес."
 
-#: src/net/eathena/generalhandler.cpp:223
+#: src/net/eathena/generalhandler.cpp:228
 msgid "Ip count all."
 msgstr "Превышение колчиства соединений с одного адреса."
 
-#: src/net/eathena/generalhandler.cpp:226
+#: src/net/eathena/generalhandler.cpp:231
 msgid "Ip count."
 msgstr "Превышение колчиства соединений с одного адреса."
 
-#: src/net/eathena/generalhandler.cpp:230
+#: src/net/eathena/generalhandler.cpp:235
 msgid "Memory."
 msgstr "Память."
 
-#: src/net/eathena/generalhandler.cpp:233
+#: src/net/eathena/generalhandler.cpp:238
 msgid "Han valid."
 msgstr "Корректный han."
 
-#: src/net/eathena/generalhandler.cpp:236
+#: src/net/eathena/generalhandler.cpp:241
 msgid "Ip limited access."
 msgstr "Ограничение по ip адресу."
 
-#: src/net/eathena/generalhandler.cpp:239
+#: src/net/eathena/generalhandler.cpp:244
 msgid "Over characters list."
 msgstr "Слишком много персонажей."
 
-#: src/net/eathena/generalhandler.cpp:242
+#: src/net/eathena/generalhandler.cpp:247
 msgid "Ip blocked."
 msgstr "IP-адрес заблокирован."
 
-#: src/net/eathena/generalhandler.cpp:245
+#: src/net/eathena/generalhandler.cpp:250
 msgid "Invalid password count."
 msgstr "Некорректное число символов в пароле."
 
-#: src/net/eathena/generalhandler.cpp:248
+#: src/net/eathena/generalhandler.cpp:253
 msgid "Not allowed race."
 msgstr "Некорректная расса."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:251 src/net/tmwa/generalhandler.cpp:200
+#: src/net/eathena/generalhandler.cpp:256 src/net/tmwa/generalhandler.cpp:199
 msgid "Unknown connection error."
 msgstr "Неизвестная ошибка подключения."
 
+#: src/net/eathena/generalhandler.cpp:266
+#, fuzzy
+msgid "Map not found"
+msgstr "Персонаж не найден."
+
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:329 src/net/tmwa/generalhandler.cpp:285
+#: src/net/eathena/generalhandler.cpp:342 src/net/tmwa/generalhandler.cpp:284
 msgid "Got disconnected from server!"
 msgstr "Отключено от сервера!"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:354 src/net/tmwa/generalhandler.cpp:313
+#: src/net/eathena/generalhandler.cpp:367 src/net/tmwa/generalhandler.cpp:312
 msgid "Strength"
 msgstr "Сила (str)"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:355 src/net/tmwa/generalhandler.cpp:315
+#: src/net/eathena/generalhandler.cpp:368 src/net/tmwa/generalhandler.cpp:314
 msgid "Agility"
 msgstr "Выносливость (agi)"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:356 src/net/tmwa/generalhandler.cpp:317
+#: src/net/eathena/generalhandler.cpp:369 src/net/tmwa/generalhandler.cpp:316
 msgid "Vitality"
 msgstr "Живучесть (vit)"
 
-#: src/net/eathena/generalhandler.cpp:358 src/net/tmwa/generalhandler.cpp:320
+#: src/net/eathena/generalhandler.cpp:371 src/net/tmwa/generalhandler.cpp:319
 msgid "Intelligence"
 msgstr "Интеллект (int)"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:359 src/net/tmwa/generalhandler.cpp:322
+#: src/net/eathena/generalhandler.cpp:372 src/net/tmwa/generalhandler.cpp:321
 msgid "Dexterity"
 msgstr "Ловкость (dex)"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:360 src/net/tmwa/generalhandler.cpp:324
+#: src/net/eathena/generalhandler.cpp:373 src/net/tmwa/generalhandler.cpp:323
 msgid "Luck"
 msgstr "Удача (luk)"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:363 src/net/tmwa/generalhandler.cpp:328
+#: src/net/eathena/generalhandler.cpp:376 src/net/tmwa/generalhandler.cpp:327
 msgid "Defense"
 msgstr "Защита"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:364 src/net/tmwa/generalhandler.cpp:330
+#: src/net/eathena/generalhandler.cpp:377 src/net/tmwa/generalhandler.cpp:329
 msgid "M.Attack"
 msgstr "Маг. Атака"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:365 src/net/tmwa/generalhandler.cpp:332
+#: src/net/eathena/generalhandler.cpp:378 src/net/tmwa/generalhandler.cpp:331
 msgid "M.Defense"
 msgstr "Маг.Защита"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:367 src/net/tmwa/generalhandler.cpp:335
+#: src/net/eathena/generalhandler.cpp:380 src/net/tmwa/generalhandler.cpp:334
 #, no-c-format
 msgid "% Accuracy"
 msgstr "% Точности"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:369 src/net/tmwa/generalhandler.cpp:338
+#: src/net/eathena/generalhandler.cpp:382 src/net/tmwa/generalhandler.cpp:337
 #, no-c-format
 msgid "% Evade"
 msgstr "% Уклонения"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:371 src/net/tmwa/generalhandler.cpp:341
+#: src/net/eathena/generalhandler.cpp:384 src/net/tmwa/generalhandler.cpp:340
 #, no-c-format
 msgid "% Critical"
 msgstr "% Критический удар"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:372 src/net/tmwa/generalhandler.cpp:343
+#: src/net/eathena/generalhandler.cpp:385 src/net/tmwa/generalhandler.cpp:342
 msgid "Attack Delay"
 msgstr "Задержка атаки"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:373 src/net/tmwa/generalhandler.cpp:345
+#: src/net/eathena/generalhandler.cpp:386 src/net/tmwa/generalhandler.cpp:344
 msgid "Walk Delay"
 msgstr "Задержка движения"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:374 src/net/tmwa/generalhandler.cpp:347
+#: src/net/eathena/generalhandler.cpp:387 src/net/tmwa/generalhandler.cpp:346
 msgid "Attack Range"
 msgstr "Зона атаки"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:375 src/net/tmwa/generalhandler.cpp:349
+#: src/net/eathena/generalhandler.cpp:388 src/net/tmwa/generalhandler.cpp:348
 msgid "Damage per sec."
 msgstr "Урон в сек."
 
-#: src/net/eathena/generalhandler.cpp:376
+#: src/net/eathena/generalhandler.cpp:389
 msgid "Karma"
 msgstr "Карма"
 
-#: src/net/eathena/generalhandler.cpp:377
+#: src/net/eathena/generalhandler.cpp:390
 msgid "Manner"
 msgstr "Манеры"
 
@@ -8726,8 +8731,8 @@ msgstr "Питомец пойман."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:379
-#, c-format
-msgid "Pet catch unkown error: %d."
+#, fuzzy, c-format
+msgid "Pet catch unknown error: %d."
 msgstr "Неизвестная ошибка при ловле питомца: %d."
 
 #. TRANSLATORS: notification message
