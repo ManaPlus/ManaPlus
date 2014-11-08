@@ -28,9 +28,6 @@
 
 #include "resources/beingcommon.h"
 
-#include "utils/dtor.h"
-#include "utils/gettext.h"
-
 #include "debug.h"
 
 namespace
@@ -121,7 +118,8 @@ void CommandsDB::loadXmlFile(const std::string &fileName)
         if (skill1)
         {
             cmd = new TextCommand(id, name, command, comment,
-                targetType, icon, level1, static_cast<MagicSchool>(skill2), level2, mana);
+                targetType, icon, level1, static_cast<MagicSchool>(skill2),
+                level2, mana);
         }
         else
         {

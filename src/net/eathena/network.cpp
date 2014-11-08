@@ -145,7 +145,7 @@ bool Network::messageReady()
             len = 10;
         }
         else if (msgId >= 0 && static_cast<unsigned int>(msgId)
-            < packet_lengths_size)
+                 < packet_lengths_size)
         {
             len = packet_lengths[msgId];
         }

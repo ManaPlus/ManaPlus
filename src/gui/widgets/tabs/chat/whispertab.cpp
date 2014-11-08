@@ -31,7 +31,6 @@
 #include "gui/widgets/windowcontainer.h"
 
 #include "utils/chatutils.h"
-#include "utils/stringutils.h"
 
 #include "debug.h"
 

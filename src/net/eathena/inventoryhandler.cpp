@@ -25,7 +25,6 @@
 #include "notifymanager.h"
 
 #include "being/localplayer.h"
-#include "being/pickup.h"
 
 #include "listeners/arrowslistener.h"
 

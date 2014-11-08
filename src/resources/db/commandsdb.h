@@ -23,8 +23,6 @@
 #ifndef RESOURCES_DB_COMMANDSDB_H
 #define RESOURCES_DB_COMMANDSDB_H
 
-#include "resources/modinfo.h"
-
 #include <map>
 #include <string>
 

@@ -851,7 +851,10 @@ void LocalPlayer::pickedUp(const ItemInfo &itemInfo, const int amount,
                 // TRANSLATORS: pickup error message
                 msg = N_("Your item stack has max amount.");
                 break;
+            case Pickup::OKAY:
+                break;
             default:
+            case Pickup::UNKNOWN:
                 // TRANSLATORS: pickup error message
                 msg = N_("Unknown problem picking up item.");
                 break;
