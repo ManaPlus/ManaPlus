@@ -1,3 +1,11 @@
+2014-11-08 New release 1.4.11.8
+fix: dont show overhead text for chat channels messages.
+add: invole chat commmands from skills.
+add: update hercules version support to 20141022.
+add: skill attribute to show skill always.
+add: read first time chat commands from configuration file.
+add: server type Evol2.
+
 2014-10-25 New release 1.4.10.25
 add: extent chat tabs theming.
 add: channels support (hercules).
