@@ -67,8 +67,6 @@ class LoginHandler final : public MessageHandler, public Ea::LoginHandler
 
         static void requestUpdateHosts();
 
-        static void processUpdateHost2(Net::MessageIn &msg);
-
     private:
         void sendLoginRegister(const std::string &restrict username,
                                const std::string &restrict password,

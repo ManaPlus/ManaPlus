@@ -242,29 +242,6 @@ void LoginHandler::processServerVersion(Net::MessageIn &msg)
     mVersionResponse = true;
 }
 
-void LoginHandler::processUpdateHost2(Net::MessageIn &msg)
-{
-    const int len = msg.readInt16("len") - 4;
-    const std::string updateHost = msg.readString(len, "host");
-
-    splitToStringVector(loginData.updateHosts, updateHost, '|');
-    FOR_EACH (StringVectIter, it, loginData.updateHosts)
-    {
-        if (!checkPath(*it))
-        {
-            logger->log1("Warning: incorrect update server name");
-            loginData.updateHosts.clear();
-            break;
-        }
-    }
-
-    logger->log("Received update hosts \"%s\" from login server.",
-        updateHost.c_str());
-
-    if (client->getState() == STATE_PRE_LOGIN)
-        client->setState(STATE_LOGIN);
-}
-
 int LoginHandler::supportedOptionalActions() const
 {
     return serverFeatures->haveEmailOnRegister()

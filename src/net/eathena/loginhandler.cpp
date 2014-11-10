@@ -55,6 +55,7 @@ LoginHandler::LoginHandler() :
         SMSG_LOGIN_ERROR2,
         SMSG_CHAR_PASSWORD_RESPONSE,
         SMSG_SERVER_VERSION_RESPONSE,
+        SMSG_UPDATE_HOST,
         0
     };
     handledMessages = _messages;
@@ -87,6 +88,10 @@ void LoginHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_SERVER_VERSION_RESPONSE:
             processServerVersion(msg);
+            break;
+
+        case SMSG_UPDATE_HOST:
+            processUpdateHost(msg);
             break;
 
         default:
