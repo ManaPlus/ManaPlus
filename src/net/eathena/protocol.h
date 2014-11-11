@@ -315,6 +315,7 @@
 #define CMSG_SERVER_VERSION_REQUEST  0x7530
 
 #define CMSG_LOGIN_REGISTER          0x0064
+#define CMSG_LOGIN_REGISTER2         0x027c
 #define CMSG_NAME_REQUEST            0x088a
 
 // Custom change password packet

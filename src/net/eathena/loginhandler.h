@@ -49,9 +49,6 @@ class LoginHandler final : public MessageHandler, public Ea::LoginHandler
 
         void disconnect() override final;
 
-        int supportedOptionalActions() const override final A_WARN_UNUSED
-        { return Net::RegistrationOptions::SetGenderOnRegister; }
-
         unsigned int getMaxPasswordLength() const override final A_WARN_UNUSED
         { return 24; }
 
@@ -63,6 +60,8 @@ class LoginHandler final : public MessageHandler, public Ea::LoginHandler
         void sendVersion() const override final;
 
         ServerInfo *getCharServer() const override final A_WARN_UNUSED;
+
+        int supportedOptionalActions() const override final A_WARN_UNUSED;
 
         static void processLoginError2(Net::MessageIn &msg);
 

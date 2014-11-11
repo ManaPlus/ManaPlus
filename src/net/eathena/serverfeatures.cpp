@@ -132,7 +132,7 @@ bool ServerFeatures::haveMonsterAttackRange() const
 
 bool ServerFeatures::haveEmailOnRegister() const
 {
-    return false;
+    return serverVersion >= 2;
 }
 
 bool ServerFeatures::haveEightDirections() const

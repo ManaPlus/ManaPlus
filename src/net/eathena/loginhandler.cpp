@@ -143,14 +143,24 @@ void LoginHandler::changePassword(const std::string &restrict username
 
 void LoginHandler::sendLoginRegister(const std::string &restrict username,
                                      const std::string &restrict password,
-                                     const std::string &restrict email
-                                     A_UNUSED) const
+                                     const std::string &restrict email) const
 {
-    createOutPacket(CMSG_LOGIN_REGISTER);
-    outMsg.writeInt32(20, "client version");
-    outMsg.writeString(username, 24, "login");
-    outMsg.writeStringNoLog(password, 24, "password");
-    outMsg.writeInt8(0x03, "client type");
+    if (email.empty())
+    {
+        createOutPacket(CMSG_LOGIN_REGISTER);
+        outMsg.writeInt32(20, "client version");
+        outMsg.writeString(username, 24, "login");
+        outMsg.writeStringNoLog(password, 24, "password");
+        outMsg.writeInt8(0x03, "client type");
+    }
+    else
+    {
+        createOutPacket(CMSG_LOGIN_REGISTER2);
+        outMsg.writeString(username, 24, "login");
+        outMsg.writeStringNoLog(password, 24, "password");
+        outMsg.writeInt8(0x03, "client type");
+        outMsg.writeString(email, 40, "email");
+    }
 }
 
 ServerInfo *LoginHandler::getCharServer() const
@@ -256,6 +266,14 @@ void LoginHandler::processServerVersion(Net::MessageIn &msg)
     else
         logger->log("Hercules without version");
     client->setState(STATE_LOGIN);
+}
+
+int LoginHandler::supportedOptionalActions() const
+{
+    return serverFeatures->haveEmailOnRegister()
+        ? Net::RegistrationOptions::SetEmailOnRegister
+        | Net::RegistrationOptions::SetGenderOnRegister
+        : Net::RegistrationOptions::SetGenderOnRegister;
 }
 
 }  // namespace EAthena
