@@ -50,11 +50,11 @@ class MessageOut final : public Net::MessageOut
 
         /**< Writes a short. */
         void writeInt16(const int16_t value,
-                        const char *const str = nullptr);
+                        const char *const str);
 
         /**< Writes a long. */
         void writeInt32(const int32_t value,
-                        const char *const str = nullptr);
+                        const char *const str);
 
         /**
          * Encodes coordinates and direction in 3 bytes.
@@ -62,7 +62,7 @@ class MessageOut final : public Net::MessageOut
         void writeCoordinates(const uint16_t x,
                               const uint16_t y,
                               unsigned char direction,
-                              const char *const str = nullptr);
+                              const char *const str);
 
         void resetPos()
         { mPos = 0; }

@@ -44,31 +44,31 @@ class MessageOut notfinal
 
         /**< Writes a byte. */
         virtual void writeInt8(const int8_t value,
-                               const char *const str = nullptr);
+                               const char *const str);
 
         /**< Writes a short. */
         virtual void writeInt16(int16_t value,
-                                const char *const str = nullptr) = 0;
+                                const char *const str) = 0;
 
         /**< Writes a long. */
         virtual void writeInt32(int32_t value,
-                                const char *const str = nullptr) = 0;
+                                const char *const str) = 0;
 
         /**
          * Writes a string. If a fixed length is not given (-1), it is stored
          * as a short at the start of the string.
          */
         virtual void writeString(const std::string &string,
-                                 int length = -1,
-                                 const char *const str = nullptr);
+                                 int length,
+                                 const char *const str);
 
         /**
          * Writes a string. If a fixed length is not given (-1), it is stored
          * as a short at the start of the string.
          */
         virtual void writeStringNoLog(const std::string &string,
-                                      int length = -1,
-                                      const char *const str = nullptr);
+                                      int length,
+                                      const char *const str);
 
         /**
          * Returns the content of the message.

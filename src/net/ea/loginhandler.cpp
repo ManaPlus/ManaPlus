@@ -234,6 +234,7 @@ void LoginHandler::processLoginError(Net::MessageIn &msg)
 {
     const uint8_t code = msg.readUInt8("error");
     logger->log("Login::error code: %u", static_cast<unsigned int>(code));
+    std::string date = msg.readString(20, "date");
 
     switch (code)
     {
@@ -266,10 +267,8 @@ void LoginHandler::processLoginError(Net::MessageIn &msg)
         case 6:
             // TRANSLATORS: error message
             errorMessage = strprintf(_("You have been temporarily "
-                                        "banned from the game until "
-                                        "%s.\nPlease contact the GM "
-                                        "team via the forums."),
-                                        msg.readString(20).c_str());
+                "banned from the game until %s.\nPlease contact the GM "
+                "team via the forums."), date.c_str());
             break;
         case 7:
             // TRANSLATORS: error message

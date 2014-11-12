@@ -460,7 +460,7 @@ void PlayerHandler::setViewEquipment(const bool allow) const
 {
     createOutPacket(CMSG_PLAYER_SET_EQUIPMENT_VISIBLE);
     outMsg.writeInt32(0, "unused");
-    outMsg.writeInt32(allow ? 1 : 0);
+    outMsg.writeInt32(allow ? 1 : 0, "allow");
 }
 
 void PlayerHandler::processPlayerHeal(Net::MessageIn &msg)

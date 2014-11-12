@@ -221,7 +221,7 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
             break;
 
         case SMSG_SKILL_CAST_CANCEL:
-            msg.readInt32();    // id
+            processSkillCastCancel(msg);
             break;
 
         case SMSG_SKILL_NO_DAMAGE:
@@ -1011,7 +1011,7 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
     else
         spawnId = 0;
     mSpawnId = 0;
-    int16_t speed = msg.readInt16();
+    int16_t speed = msg.readInt16("speed");
     const uint16_t stunMode = msg.readInt16("opt1");
     uint32_t statusEffects = msg.readInt16("opt2");
     statusEffects |= (static_cast<uint32_t>(msg.readInt16("option"))) << 16;
@@ -1221,7 +1221,7 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
     else
         spawnId = 0;
     mSpawnId = 0;
-    int16_t speed = msg.readInt16();
+    int16_t speed = msg.readInt16("speed");
     const uint16_t stunMode = msg.readInt16("opt1");
     uint32_t statusEffects = msg.readInt16("opt2");
     statusEffects |= (static_cast<uint32_t>(msg.readInt16("option"))) << 16;
@@ -1686,6 +1686,11 @@ void BeingHandler::processBeingSelfEffect(Net::MessageIn &msg)
         socialWindow->resetDamage(being->getName());
     }
     BLOCK_END("BeingHandler::processBeingSelfEffect")
+}
+
+void BeingHandler::processSkillCastCancel(Net::MessageIn &msg A_UNUSED)
+{
+    msg.readInt32("skill id");
 }
 
 }  // namespace TmwAthena

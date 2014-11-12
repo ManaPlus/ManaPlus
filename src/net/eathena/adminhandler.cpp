@@ -201,7 +201,7 @@ void AdminHandler::requestStats(const std::string &name)
 {
     mStatsName = name;
     createOutPacket(CMSG_ADMIN_REQUEST_STATS);
-    outMsg.writeString(name, 24);
+    outMsg.writeString(name, 24, "name");
 }
 
 void AdminHandler::processAccountStats(Net::MessageIn &msg)

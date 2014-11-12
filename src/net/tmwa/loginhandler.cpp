@@ -184,7 +184,7 @@ ServerInfo *LoginHandler::getCharServer() const
 void LoginHandler::requestUpdateHosts()
 {
     createOutPacket(CMSG_SEND_CLIENT_INFO);
-    outMsg.writeInt8(CLIENT_PROTOCOL_VERSION);
+    outMsg.writeInt8(CLIENT_PROTOCOL_VERSION, "protocol version");
     outMsg.writeInt8(0, "unused");
 }
 

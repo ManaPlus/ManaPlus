@@ -159,7 +159,7 @@ void GeneralHandler::handleMessage(Net::MessageIn &msg)
 
 void GeneralHandler::processConnectionProblem(Net::MessageIn &msg)
 {
-    const uint8_t code = msg.readUInt8();
+    const uint8_t code = msg.readUInt8("flag");
     logger->log("Connection problem: %u", static_cast<unsigned int>(code));
 
     switch (code)

@@ -298,7 +298,7 @@ void GuildHandler::chat(const int guildId A_UNUSED,
     createOutPacket(CMSG_GUILD_MESSAGE);
     outMsg.writeInt16(static_cast<uint16_t>(str.size() + 4 + 1), "len");
     outMsg.writeString(str, static_cast<int>(str.length()), "message");
-    outMsg.writeInt8(0);
+    outMsg.writeInt8(0, "zero byte");
 }
 
 void GuildHandler::memberList(const int guildId A_UNUSED) const

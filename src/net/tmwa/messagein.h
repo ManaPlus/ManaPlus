@@ -48,11 +48,11 @@ class MessageIn final : public Net::MessageIn
         void postInit();
 
         /**< Reads a short. */
-        int16_t readInt16(const char *const str = nullptr);
+        int16_t readInt16(const char *const str);
         /**< Reads a long. */
-        int32_t readInt32(const char *const str = nullptr);
+        int32_t readInt32(const char *const str);
 
-        int64_t readInt64(const char *const str = nullptr);
+        int64_t readInt64(const char *const str);
 
         uint16_t readId();
 };

@@ -61,18 +61,18 @@ class MessageIn notfinal
         { return mLength > mPos ? mLength - mPos : 0; }
 
         /**< Reads a byte. */
-        virtual unsigned char readUInt8(const char *const str = nullptr);
+        virtual unsigned char readUInt8(const char *const str);
 
         /**< Reads a byte. */
-        virtual signed char readInt8(const char *const str = nullptr);
+        virtual signed char readInt8(const char *const str);
 
         /**< Reads a short. */
-        virtual int16_t readInt16(const char *const str = nullptr) = 0;
+        virtual int16_t readInt16(const char *const str) = 0;
 
         /**< Reads a long. */
-        virtual int32_t readInt32(const char *const str = nullptr) = 0;
+        virtual int32_t readInt32(const char *const str) = 0;
 
-        virtual int64_t readInt64(const char *const str = nullptr) = 0;
+        virtual int64_t readInt64(const char *const str) = 0;
 
         /**
          * Reads a special 3 byte block used by eAthena, containing x and y
@@ -81,7 +81,7 @@ class MessageIn notfinal
         virtual void readCoordinates(uint16_t &restrict x,
                                      uint16_t &restrict y,
                                      uint8_t &restrict direction,
-                                     const char *const str = nullptr);
+                                     const char *const str);
 
         /**
          * Reads a special 5 byte block used by eAthena, containing a source
@@ -91,29 +91,29 @@ class MessageIn notfinal
                                         uint16_t &restrict srcY,
                                         uint16_t &restrict dstX,
                                         uint16_t &restrict dstY,
-                                        const char *const str = nullptr);
+                                        const char *const str);
 
         /**
          * Skips a given number of bytes.
          */
         virtual void skip(const unsigned int length,
-                          const char *const str = nullptr);
+                          const char *const str);
 
-        void skipToEnd(const char *const str = nullptr);
+        void skipToEnd(const char *const str);
 
         /**
          * Reads a string. If a length is not given (-1), it is assumed
          * that the length of the string is stored in a short at the
          * start of the string.
          */
-        virtual std::string readString(int length = -1,
-                                       const char *const dstr = nullptr);
+        virtual std::string readString(int length,
+                                       const char *const dstr);
 
         virtual std::string readRawString(int length,
-                                          const char *const dstr = nullptr);
+                                          const char *const dstr);
 
         unsigned char *readBytes(int length,
-                                 const char *const dstr = nullptr);
+                                 const char *const dstr);
 
         static uint8_t fromServerDirection(const uint8_t serverDir)
                                            A_WARN_UNUSED;

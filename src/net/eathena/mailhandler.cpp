@@ -128,10 +128,10 @@ void MailHandler::send(const std::string &name,
     const int sz = static_cast<int>(message.size());
 
     createOutPacket(CMSG_MAIL_SEND);
-    outMsg.writeInt16(static_cast<int16_t>(69 + sz));
+    outMsg.writeInt16(static_cast<int16_t>(69 + sz), "len");
     outMsg.writeString(name, 24, "name");
     outMsg.writeString(title, 40, "title");
-    outMsg.writeInt8(static_cast<int8_t>(sz));
+    outMsg.writeInt8(static_cast<int8_t>(sz), "message size");
     outMsg.writeString(message, sz, "message");
 }
 

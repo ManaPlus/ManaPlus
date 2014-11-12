@@ -93,7 +93,7 @@ void AdminHandler::createItems(const int id, const int color,
 
 void AdminHandler::processKickAck(Net::MessageIn &msg)
 {
-    if (msg.readInt32() == 0)
+    if (msg.readInt32("flag") == 0)
         NotifyManager::notify(NotifyTypes::KICK_FAIL);
     else
         NotifyManager::notify(NotifyTypes::KICK_SUCCEED);

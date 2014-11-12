@@ -77,7 +77,7 @@ void PartyHandler::clear() const
 
 void PartyHandler::processPartyCreate(Net::MessageIn &msg)
 {
-    if (msg.readUInt8())
+    if (msg.readUInt8("flag"))
         NotifyManager::notify(NotifyTypes::PARTY_CREATE_FAILED);
     else
         NotifyManager::notify(NotifyTypes::PARTY_CREATED);
@@ -85,8 +85,8 @@ void PartyHandler::processPartyCreate(Net::MessageIn &msg)
 
 void PartyHandler::processPartyInvited(Net::MessageIn &msg)
 {
-    const int id = msg.readInt32();
-    const std::string partyName = msg.readString(24);
+    const int id = msg.readInt32("account id");
+    const std::string partyName = msg.readString(24, "party name");
     std::string nick;
 
     if (actorManager)

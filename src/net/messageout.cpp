@@ -66,7 +66,7 @@ void MessageOut::writeString(const std::string &string,
     if (length < 0)
     {
         // Write the length at the start if not fixed
-        writeInt16(static_cast<int16_t>(stringLength));
+        writeInt16(static_cast<int16_t>(stringLength), "len");
         length = stringLength;
     }
     else if (length < stringLength)
@@ -100,7 +100,7 @@ void MessageOut::writeStringNoLog(const std::string &string,
     if (length < 0)
     {
         // Write the length at the start if not fixed
-        writeInt16(static_cast<int16_t>(stringLength));
+        writeInt16(static_cast<int16_t>(stringLength), "len");
         length = stringLength;
     }
     else if (length < stringLength)

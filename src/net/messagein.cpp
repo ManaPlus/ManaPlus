@@ -216,7 +216,7 @@ std::string MessageIn::readString(int length, const char *const dstr)
 {
     // Get string length
     if (length < 0)
-        length = readInt16();
+        length = readInt16("len");
 
     // Make sure the string isn't erroneous
     if (length < 0 || mPos + length > mLength)
@@ -243,7 +243,7 @@ std::string MessageIn::readRawString(int length, const char *const dstr)
 {
     // Get string length
     if (length < 0)
-        length = readInt16();
+        length = readInt16("len");
 
     // Make sure the string isn't erroneous
     if (length < 0 || mPos + length > mLength)
@@ -286,7 +286,7 @@ unsigned char *MessageIn::readBytes(int length, const char *const dstr)
 {
     // Get string length
     if (length < 0)
-        length = readInt16();
+        length = readInt16("len");
 
     // Make sure the string isn't erroneous
     if (length < 0 || mPos + length > mLength)
