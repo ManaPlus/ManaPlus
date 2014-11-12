@@ -193,11 +193,8 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     tempPlayer->setManner(msg.readInt32("manner"));
     msg.readInt16("left points");
 
-    data.mAttributes[Attributes::HP] = msg.readInt16("hp");
-    data.mAttributes[Attributes::MAX_HP] = msg.readInt16("max hp");
-
-    msg.readInt32("unused");
-
+    data.mAttributes[Attributes::HP] = msg.readInt32("hp");
+    data.mAttributes[Attributes::MAX_HP] = msg.readInt32("max hp");
     data.mAttributes[Attributes::MP] = msg.readInt16("mp/sp");
     data.mAttributes[Attributes::MAX_MP] = msg.readInt16("max mp/sp");
 
@@ -250,6 +247,8 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     msg.readInt32("robe");
     msg.readInt32("slot change");
     tempPlayer->setRename(msg.readInt32("rename (inverse)"));
+    // +++ here need use gender
+    msg.readUInt8("gender");
 }
 
 void CharServerHandler::chooseCharacter(Net::Character *const character)
