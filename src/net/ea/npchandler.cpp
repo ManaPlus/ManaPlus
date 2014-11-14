@@ -22,6 +22,8 @@
 
 #include "net/ea/npchandler.h"
 
+#include "gui/viewport.h"
+
 #include "gui/windows/npcdialog.h"
 
 #include "net/messagein.h"
@@ -111,6 +113,91 @@ void NpcHandler::processNpcStrInput(Net::MessageIn &msg)
     else if (mDialog)
     {
         mDialog->textRequest("");
+    }
+}
+
+void NpcHandler::processNpcCommand(Net::MessageIn &msg)
+{
+    const int npcId = npcHandler->getNpc(msg);
+    mRequestLang = false;
+
+    const int cmd = msg.readInt16("cmd");
+    switch (cmd)
+    {
+        case 0:
+            mRequestLang = true;
+            break;
+
+        case 1:
+            if (viewport)
+                viewport->moveCameraToActor(npcId);
+            break;
+
+        case 2:
+            if (viewport)
+            {
+                const int id = msg.readInt32("id");
+                const int x = msg.readInt16("x");
+                const int y = msg.readInt16("y");
+                if (!id)
+                    viewport->moveCameraToPosition(x, y);
+                else
+                    viewport->moveCameraToActor(id, x, y);
+            }
+            break;
+
+        case 3:
+            if (viewport)
+                viewport->returnCamera();
+            break;
+
+        case 4:
+            if (viewport)
+            {
+                msg.readInt32("id");
+                const int x = msg.readInt16("x");
+                const int y = msg.readInt16("y");
+                viewport->moveCameraRelative(x, y);
+            }
+            break;
+        case 5:  // close dialog
+            npcHandler->closeDialog(npcId);
+            break;
+        case 6:  // show avatar
+            if (mDialog)
+            {
+                mDialog->showAvatar(static_cast<uint16_t>(
+                    msg.readInt32("avatar id")));
+            }
+            break;
+        case 7:  // set avatar direction
+            if (mDialog)
+            {
+                mDialog->setAvatarDirection(
+                    Net::MessageIn::fromServerDirection(
+                    static_cast<uint8_t>(msg.readInt32("avatar direction"))));
+            }
+            break;
+        case 8:  // set avatar action
+            if (mDialog)
+                mDialog->setAvatarAction(msg.readInt32("avatar action"));
+            break;
+        case 9:  // clear npc dialog
+            if (mDialog)
+                mDialog->clearRows();
+            break;
+        case 10:  // send selected item id
+        {
+            int invSize = msg.readInt32("npc inventory size");
+            if (!invSize)
+                invSize = 1;
+            if (mDialog)
+                mDialog->itemRequest(invSize);
+            break;
+        }
+        default:
+            logger->log("unknown npc command: %d", cmd);
+            break;
     }
 }
 

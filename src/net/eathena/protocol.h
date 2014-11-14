@@ -279,7 +279,7 @@
 #define SMSG_MAP_TYPE                0x01d6
 #define SMSG_IGNORE_ALL_RESPONSE     0x00d2
 #define SMSG_ONLINE_LIST             0x0211
-#define SMSG_NPC_COMMAND             0x0212
+#define SMSG_NPC_COMMAND             0x0B00
 
 #define SMSG_MAP_ACCOUNT_ID          0x0283
 #define SMSG_PLAYER_SHORTCUTS        0x0a00

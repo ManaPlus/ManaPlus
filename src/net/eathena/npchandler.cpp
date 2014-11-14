@@ -54,6 +54,7 @@ NpcHandler::NpcHandler() :
         SMSG_NPC_VIEWPOINT,
         SMSG_NPC_SHOW_PROGRESS_BAR,
         SMSG_NPC_CLOSE_TIMEOUT,
+        SMSG_NPC_COMMAND,
         0
     };
     handledMessages = _messages;
@@ -102,6 +103,10 @@ void NpcHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_NPC_CLOSE_TIMEOUT:
             processNpcCloseTimeout(msg);
+            break;
+
+        case SMSG_NPC_COMMAND:
+            processNpcCommand(msg);
             break;
 
         default:

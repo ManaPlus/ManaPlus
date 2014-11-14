@@ -54,6 +54,8 @@ class NpcHandler notfinal : public Net::NpcHandler
 
         static void processNpcStrInput(Net::MessageIn &msg);
 
+        static void processNpcCommand(Net::MessageIn &msg);
+
     protected:
         NpcHandler();
 
