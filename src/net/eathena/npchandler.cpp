@@ -311,12 +311,14 @@ int NpcHandler::getNpc(Net::MessageIn &msg)
 
 void NpcHandler::processNpcCutin(Net::MessageIn &msg)
 {
+    mRequestLang = false;
     msg.readString(64, "image name");
     msg.readUInt8("type");
 }
 
 void NpcHandler::processNpcViewPoint(Net::MessageIn &msg)
 {
+    mRequestLang = false;
     // +++ probably need add nav point and start moving to it
     msg.readInt32("npc id");
     msg.readInt32("type");  // 0 display for 15 sec,
@@ -330,6 +332,7 @@ void NpcHandler::processNpcViewPoint(Net::MessageIn &msg)
 
 void NpcHandler::processNpcShowProgressBar(Net::MessageIn &msg)
 {
+    mRequestLang = false;
     // +++ probably need show progress bar in npc dialog
     msg.readInt32("color");
     msg.readInt32("seconds");
@@ -337,6 +340,7 @@ void NpcHandler::processNpcShowProgressBar(Net::MessageIn &msg)
 
 void NpcHandler::processNpcCloseTimeout(Net::MessageIn &msg)
 {
+    mRequestLang = false;
     // this packet send after npc closed by timeout.
     msg.readInt32("npc id");
 }
