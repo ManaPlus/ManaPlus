@@ -125,7 +125,7 @@ class SpriteDef final : public Resource
         /**
          * Include another sprite into this one.
          */
-        void includeSprite(const XmlNodePtr includeNode);
+        void includeSprite(const XmlNodePtr includeNode, const int variant);
 
         /**
          * Complete missing actions by copying existing ones.

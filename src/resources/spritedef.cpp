@@ -194,7 +194,7 @@ void SpriteDef::loadSprite(const XmlNodePtr spriteNode, const int variant,
         else if (xmlNameEqual(node, "action"))
             loadAction(node, variant_offset);
         else if (xmlNameEqual(node, "include"))
-            includeSprite(node);
+            includeSprite(node, variant);
     }
 }
 
@@ -407,7 +407,7 @@ void SpriteDef::loadAnimation(const XmlNodePtr animationNode,
     }  // for frameNode
 }
 
-void SpriteDef::includeSprite(const XmlNodePtr includeNode)
+void SpriteDef::includeSprite(const XmlNodePtr includeNode, const int variant)
 {
     std::string filename = XML::getProperty(includeNode, "file", "");
 
@@ -432,7 +432,7 @@ void SpriteDef::includeSprite(const XmlNodePtr includeNode)
         return;
     }
 
-    loadSprite(rootNode, 0);
+    loadSprite(rootNode, variant);
 }
 
 SpriteDef::~SpriteDef()
