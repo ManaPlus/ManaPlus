@@ -54,6 +54,7 @@ struct Options final
         screenshotDir(),
         test(),
         serverName(),
+        serverType(),
         renderer(-1),
         serverPort(0),
         printHelp(false),
@@ -79,6 +80,7 @@ struct Options final
     std::string screenshotDir;
     std::string test;
     std::string serverName;
+    std::string serverType;
     int renderer;
     uint16_t serverPort;
     bool printHelp;

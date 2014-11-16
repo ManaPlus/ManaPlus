@@ -107,6 +107,8 @@ static void printHelp()
         // TRANSLATORS: command line help
         << _("  -s --server         : Login server name or IP") << std::endl
         // TRANSLATORS: command line help
+        << _("  -y --server-type    : Login server type") << std::endl
+        // TRANSLATORS: command line help
         << _("  -p --port           : Login server port") << std::endl
         // TRANSLATORS: command line help
         << _("  -H --update-host    : Use this update host") << std::endl
@@ -146,7 +148,7 @@ static void printVersion()
 
 static void parseOptions(const int argc, char *const argv[])
 {
-    const char *const optstring = "hvud:U:P:Dc:p:l:L:C:s:t:T:a:r";
+    const char *const optstring = "hvud:U:P:Dc:p:y:l:L:C:s:t:T:a:r";
 
     const struct option long_options[] =
     {
@@ -171,6 +173,7 @@ static void parseOptions(const int argc, char *const argv[])
         { "tests",          no_argument,       nullptr, 'T' },
         { "test",           required_argument, nullptr, 't' },
         { "renderer",       required_argument, nullptr, 'r' },
+        { "server-type",    required_argument, nullptr, 'y' },
         { nullptr,          0,                 nullptr, 0 }
     };
 
@@ -255,6 +258,9 @@ static void parseOptions(const int argc, char *const argv[])
                 break;
             case 'r':
                 options.renderer = static_cast<int>(atoi(optarg));
+                break;
+            case 'y':
+                options.serverType = optarg;
                 break;
             default:
                 break;

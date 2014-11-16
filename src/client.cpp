@@ -404,6 +404,11 @@ void Client::gameInit()
     // Initialize default server
     mCurrentServer.hostname = settings.options.serverName;
     mCurrentServer.port = settings.options.serverPort;
+    if (!settings.options.serverType.empty())
+    {
+        mCurrentServer.type = ServerInfo::parseType(
+            settings.options.serverType);
+    }
 
     loginData.username = settings.options.username;
     loginData.password = settings.options.password;
