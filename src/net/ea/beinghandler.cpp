@@ -446,4 +446,50 @@ void BeingHandler::processPvpSet(Net::MessageIn &msg)
     BLOCK_END("BeingHandler::processPvpSet")
 }
 
+void BeingHandler::processNameResponse2(Net::MessageIn &msg)
+{
+    BLOCK_START("BeingHandler::processNameResponse2")
+    if (!actorManager || !localPlayer)
+    {
+        BLOCK_END("BeingHandler::processNameResponse2")
+        return;
+    }
+
+    const int len = msg.readInt16("len");
+    const int beingId = msg.readInt32("account ic");
+    const std::string str = msg.readString(len - 8, "name");
+    Being *const dstBeing = actorManager->findBeing(beingId);
+    if (dstBeing)
+    {
+        if (beingId == localPlayer->getId())
+        {
+            localPlayer->pingResponse();
+        }
+        else
+        {
+            dstBeing->setName(str);
+            dstBeing->updateGuild();
+            dstBeing->addToCache();
+
+            if (dstBeing->getType() == ActorType::Player)
+                dstBeing->updateColors();
+
+            if (localPlayer)
+            {
+                const Party *const party = localPlayer->getParty();
+                if (party && party->isMember(dstBeing->getId()))
+                {
+                    PartyMember *const member = party->getMember(
+                        dstBeing->getId());
+
+                    if (member)
+                        member->setName(dstBeing->getName());
+                }
+                localPlayer->checkNewName(dstBeing);
+            }
+        }
+    }
+    BLOCK_END("BeingHandler::processNameResponse2")
+}
+
 }  // namespace Ea

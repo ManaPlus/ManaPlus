@@ -528,47 +528,6 @@ void BeingHandler::processBeingChangeLookContinue(Being *const dstBeing,
     }
 }
 
-void BeingHandler::processNameResponse2(Net::MessageIn &msg)
-{
-    if (!actorManager || !localPlayer)
-        return;
-
-    const int len = msg.readInt16("len");
-    const int beingId = msg.readInt32("being id");
-    const std::string str = msg.readString(len - 8, "name");
-    Being *const dstBeing = actorManager->findBeing(beingId);
-    if (dstBeing)
-    {
-        if (beingId == localPlayer->getId())
-        {
-            localPlayer->pingResponse();
-        }
-        else
-        {
-            dstBeing->setName(str);
-            dstBeing->updateGuild();
-            dstBeing->addToCache();
-
-            if (dstBeing->getType() == ActorType::Player)
-                dstBeing->updateColors();
-
-            if (localPlayer)
-            {
-                const Party *const party = localPlayer->getParty();
-                if (party && party->isMember(dstBeing->getId()))
-                {
-                    PartyMember *const member = party->getMember(
-                        dstBeing->getId());
-
-                    if (member)
-                        member->setName(dstBeing->getName());
-                }
-                localPlayer->checkNewName(dstBeing);
-            }
-        }
-    }
-}
-
 void BeingHandler::processPlayerUpdate1(Net::MessageIn &msg)
 {
     if (!actorManager || !localPlayer)
