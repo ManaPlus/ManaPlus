@@ -31,8 +31,6 @@
 #include "net/tmwa/network.h"
 #include "net/tmwa/protocol.h"
 
-#include "utils/paths.h"
-
 #include "debug.h"
 
 extern Net::LoginHandler *loginHandler;

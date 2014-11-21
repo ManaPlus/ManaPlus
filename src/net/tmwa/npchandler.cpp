@@ -24,8 +24,6 @@
 
 #include "being/localplayer.h"
 
-#include "gui/viewport.h"
-
 #include "gui/windows/npcdialog.h"
 
 #include "net/serverfeatures.h"

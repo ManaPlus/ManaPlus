@@ -1642,7 +1642,7 @@ void BeingHandler::processBeingSelfEffect(Net::MessageIn &msg)
     BLOCK_END("BeingHandler::processBeingSelfEffect")
 }
 
-void BeingHandler::processSkillCastCancel(Net::MessageIn &msg A_UNUSED)
+void BeingHandler::processSkillCastCancel(Net::MessageIn &msg)
 {
     msg.readInt32("skill id");
 }
