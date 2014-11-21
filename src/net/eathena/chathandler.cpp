@@ -337,13 +337,36 @@ void ChatHandler::processChat(Net::MessageIn &msg)
 
 void ChatHandler::processFormatMessage(Net::MessageIn &msg)
 {
-    int msgId = msg.readInt16("msg id");
+    const int msgId = msg.readInt16("msg id");
     // +++ here need load message from configuration file
-    const std::string chatMsg = strprintf("Message #%d", msgId);
+    std::string chatMsg;
     if (msgId >= 1266 && msgId <= 1269)
+    {
         mercenaryHandler->handleMercenaryMessage(msgId - 1266);
-    else
-        processChatContinue(chatMsg, ChatMsgType::BY_SERVER);
+        return;
+    }
+    switch (msgId)
+    {
+        case 1334:
+            chatMsg = _("Can't cast skill in this area.");
+            break;
+        case 1335:
+            chatMsg = _("Can't use item in this area.");
+            break;
+        case 1773:
+            chatMsg = _("Can't equip. Wrong level.");
+            break;
+        case 1774:
+            chatMsg = _("Can't use. Wrong level.");
+            break;
+        case 1923:
+            chatMsg = _("Work in progress.");  // busy with npc
+            break;
+        default:
+            chatMsg = strprintf("Message #%d", msgId);
+            break;
+    }
+    processChatContinue(chatMsg, ChatMsgType::BY_SERVER);
 }
 
 void ChatHandler::processFormatMessageNumber(Net::MessageIn &msg)
