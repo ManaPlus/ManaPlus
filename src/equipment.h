@@ -23,7 +23,7 @@
 #ifndef EQUIPMENT_H
 #define EQUIPMENT_H
 
-static const int EQUIPMENT_SIZE = 13;
+static const int EQUIPMENT_SIZE = 22;
 
 #include "localconsts.h"
 
