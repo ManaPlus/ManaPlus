@@ -80,6 +80,9 @@ class EquipBackend final : public Equipment::Backend
             if (!inv)
                 return;
 
+            if (index < 0 || index >= EQUIPMENT_SIZE)
+                return;
+
             // Unequip existing item
             Item *item = inv->getItem(mEquipment[index]);
 
