@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-11-08 12:37+0300\n"
+"POT-Creation-Date: 2014-11-22 13:43+0300\n"
 "PO-Revision-Date: 2014-10-27 20:41+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/manaplus/"
@@ -43,7 +43,7 @@ msgstr "Файл выгружен"
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: text dialog button
 #. TRANSLATORS: ok dialog button
-#: src/actions/actions.cpp:131 src/client.cpp:1467 src/client.cpp:1494
+#: src/actions/actions.cpp:131 src/client.cpp:1472 src/client.cpp:1499
 #: src/gamemodifiers.cpp:424 src/gui/widgets/tabs/setup_input.cpp:163
 #: src/gui/widgets/tabs/setup_theme.cpp:312
 #: src/gui/widgets/tabs/setup_theme.cpp:343
@@ -64,8 +64,8 @@ msgstr "Файл выгружен"
 #: src/net/ea/charserverhandler.cpp:143 src/net/ea/charserverhandler.cpp:162
 #: src/net/ea/charserverhandler.cpp:175 src/net/ea/gamehandler.cpp:83
 #: src/net/ea/playerhandler.cpp:424 src/net/ea/playerhandler.cpp:440
-#: src/net/eathena/charserverhandler.cpp:541
-#: src/net/eathena/charserverhandler.cpp:571
+#: src/net/eathena/charserverhandler.cpp:540
+#: src/net/eathena/charserverhandler.cpp:570
 msgid "OK"
 msgstr "ОК"
 
@@ -457,37 +457,37 @@ msgstr "Плавающий пузырек"
 #. TRANSLATORS: setup tab quick button
 #. TRANSLATORS: full button name
 #. TRANSLATORS: setup window name
-#: src/client.cpp:920 src/gui/windowmenu.cpp:166
+#: src/client.cpp:925 src/gui/windowmenu.cpp:166
 #: src/gui/windows/setupwindow.cpp:62
 msgid "Setup"
 msgstr "Настройка"
 
 #. TRANSLATORS: perfoamance tab quick button
 #. TRANSLATORS: settings tab name
-#: src/client.cpp:923 src/gui/widgets/tabs/setup_perfomance.cpp:54
+#: src/client.cpp:928 src/gui/widgets/tabs/setup_perfomance.cpp:54
 msgid "Performance"
 msgstr "Производительность"
 
 #. TRANSLATORS: video tab quick button
 #. TRANSLATORS: video settings tab name
-#: src/client.cpp:926 src/gui/widgets/tabs/setup_video.cpp:105
+#: src/client.cpp:931 src/gui/widgets/tabs/setup_video.cpp:105
 msgid "Video"
 msgstr "Видео"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: theme settings tab name
-#: src/client.cpp:929 src/gui/widgets/tabs/setup_theme.cpp:122
+#: src/client.cpp:934 src/gui/widgets/tabs/setup_theme.cpp:122
 msgid "Theme"
 msgstr "Тема"
 
 #. TRANSLATORS: theme tab quick button
-#: src/client.cpp:932
+#: src/client.cpp:937
 msgid "About"
 msgstr "О Программе"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: help window name
-#: src/client.cpp:935 src/gui/windowmenu.cpp:74
+#: src/client.cpp:940 src/gui/windowmenu.cpp:74
 #: src/gui/windows/helpwindow.cpp:53
 msgid "Help"
 msgstr "Помощь"
@@ -503,7 +503,7 @@ msgstr "Помощь"
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: quests window button
 #. TRANSLATORS: shop window button
-#: src/client.cpp:939 src/client.cpp:1395 src/client.cpp:1409
+#: src/client.cpp:944 src/client.cpp:1400 src/client.cpp:1414
 #: src/gui/dialogsmanager.cpp:84 src/gui/popups/popupmenu.cpp:693
 #: src/gui/popups/popupmenu.cpp:926 src/gui/windows/didyouknowwindow.cpp:81
 #: src/gui/windows/inventorywindow.cpp:224 src/gui/windows/npcdialog.cpp:74
@@ -513,32 +513,32 @@ msgid "Close"
 msgstr "Закрыть"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1065
+#: src/client.cpp:1070
 msgid "Connecting to server"
 msgstr "Идет подключение к серверу..."
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1113
+#: src/client.cpp:1118
 msgid "Logging in"
 msgstr "Авторизация"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1156
+#: src/client.cpp:1161
 msgid "Entering game world"
 msgstr "Входим в игровой мир"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1286
+#: src/client.cpp:1291
 msgid "Requesting characters"
 msgstr "Получение списка персонажей"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1326
+#: src/client.cpp:1331
 msgid "Connecting to the game server"
 msgstr "Подключение к игровому серверу"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1338
+#: src/client.cpp:1343
 msgid "Changing game servers"
 msgstr "Смена игрового сервера"
 
@@ -554,7 +554,7 @@ msgstr "Смена игрового сервера"
 #. TRANSLATORS: error message
 #. TRANSLATORS: info message
 #. TRANSLATORS: ok dialog button
-#: src/client.cpp:1393 src/client.cpp:1407 src/client.cpp:1602
+#: src/client.cpp:1398 src/client.cpp:1412 src/client.cpp:1607
 #: src/gui/windows/changeemaildialog.cpp:167
 #: src/gui/windows/changepassworddialog.cpp:157
 #: src/gui/windows/charcreatedialog.cpp:367
@@ -563,43 +563,43 @@ msgstr "Смена игрового сервера"
 #: src/gui/windows/registerdialog.cpp:243
 #: src/gui/windows/unregisterdialog.cpp:146
 #: src/net/ea/charserverhandler.cpp:141 src/net/ea/charserverhandler.cpp:173
-#: src/net/eathena/charserverhandler.cpp:524
-#: src/net/eathena/charserverhandler.cpp:526
+#: src/net/eathena/charserverhandler.cpp:523
+#: src/net/eathena/charserverhandler.cpp:525
 msgid "Error"
 msgstr "Ошибка"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1422
+#: src/client.cpp:1427
 msgid "Requesting registration details"
 msgstr "Запрос регистрационных данных"
 
 #. TRANSLATORS: password change message header
-#: src/client.cpp:1463
+#: src/client.cpp:1468
 msgid "Password Change"
 msgstr "Изменить Пароль"
 
 #. TRANSLATORS: password change message text
-#: src/client.cpp:1465
+#: src/client.cpp:1470
 msgid "Password changed successfully!"
 msgstr "Пароль изменен!"
 
 #. TRANSLATORS: email change message header
-#: src/client.cpp:1490
+#: src/client.cpp:1495
 msgid "Email Change"
 msgstr "Сменить Email"
 
 #. TRANSLATORS: email change message text
-#: src/client.cpp:1492
+#: src/client.cpp:1497
 msgid "Email changed successfully!"
 msgstr "Email изменен!"
 
 #. TRANSLATORS: unregister message header
-#: src/client.cpp:1519
+#: src/client.cpp:1524
 msgid "Unregister Successful"
 msgstr "Регистрация удалена"
 
 #. TRANSLATORS: unregister message text
-#: src/client.cpp:1521
+#: src/client.cpp:1526
 msgid "Farewell, come back any time..."
 msgstr "Хорошо, возвращайтесь в любое время..."
 
@@ -1550,7 +1550,7 @@ msgstr "Торговать"
 #: src/gui/popups/popupmenu.cpp:168 src/gui/popups/popupmenu.cpp:274
 #: src/gui/popups/popupmenu.cpp:769 src/gui/widgets/skillinfo.cpp:114
 #: src/gui/windows/botcheckerwindow.cpp:89 src/input/pages/basic.cpp:42
-#: src/net/eathena/generalhandler.cpp:375 src/net/tmwa/generalhandler.cpp:325
+#: src/net/eathena/generalhandler.cpp:375 src/net/tmwa/generalhandler.cpp:326
 msgid "Attack"
 msgstr "Атака"
 
@@ -5295,8 +5295,8 @@ msgstr "Играть"
 #. TRANSLATORS: info message
 #: src/gui/windows/charselectdialog.cpp:80
 #: src/net/ea/charserverhandler.cpp:160
-#: src/net/eathena/charserverhandler.cpp:539
-#: src/net/eathena/charserverhandler.cpp:569
+#: src/net/eathena/charserverhandler.cpp:538
+#: src/net/eathena/charserverhandler.cpp:568
 msgid "Info"
 msgstr "Сведения"
 
@@ -7447,58 +7447,64 @@ msgstr "  -s --server         : Имя или IP сервера авториза
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:110
+#, fuzzy
+msgid "  -y --server-type    : Login server type"
+msgstr "  -s --server         : Имя или IP сервера авторизации"
+
+#. TRANSLATORS: command line help
+#: src/main.cpp:112
 msgid "  -p --port           : Login server port"
 msgstr "  -p --port           : Порт сервера авторизации"
 
 #. TRANSLATORS: command line help
-#: src/main.cpp:112
+#: src/main.cpp:114
 msgid "  -H --update-host    : Use this update host"
 msgstr "  -H --update-host    : Использовать этот узел обновлений"
 
 #. TRANSLATORS: command line help
-#: src/main.cpp:114
+#: src/main.cpp:116
 msgid "  -D --default        : Choose default character server and character"
 msgstr ""
 "  -D --default        : Выбрать персонаж и сервер персонажей по умолчанию"
 
 #. TRANSLATORS: command line help
-#: src/main.cpp:117
+#: src/main.cpp:119
 msgid "  -u --skip-update    : Skip the update downloads"
 msgstr "  -u --skip-update    : Пропустить обновление"
 
 #. TRANSLATORS: command line help
-#: src/main.cpp:119
+#: src/main.cpp:121
 msgid "  -d --data           : Directory to load game data from"
 msgstr "  -d --data           : Загрузить игровые данные из этого каталога"
 
 #. TRANSLATORS: command line help
-#: src/main.cpp:122
+#: src/main.cpp:124
 msgid "  -L --localdata-dir  : Directory to use as local data directory"
 msgstr "  -L --localdata-dir  : Каталог для локальных данных"
 
 #. TRANSLATORS: command line help
-#: src/main.cpp:125
+#: src/main.cpp:127
 msgid "     --screenshot-dir : Directory to store screenshots"
 msgstr "     --screenshot-dir : Сохранять скриншоты в указанном каталоге"
 
 #. TRANSLATORS: command line help
-#: src/main.cpp:128
+#: src/main.cpp:130
 msgid "     --safemode       : Start game in safe mode"
 msgstr "     --safemode       : Запуск игры в безопасном режиме"
 
 #. TRANSLATORS: command line help
-#: src/main.cpp:130
+#: src/main.cpp:132
 msgid "     --renderer       : Set renderer type"
 msgstr "     --renderer       : Устанавливает тип рендера"
 
 #. TRANSLATORS: command line help
-#: src/main.cpp:132
+#: src/main.cpp:134
 msgid "  -T --tests          : Start testing drivers and auto configuring"
 msgstr ""
 "  -T --tests          : Запускает проверку драйверов и автоконфигурацию"
 
 #. TRANSLATORS: command line help
-#: src/main.cpp:136
+#: src/main.cpp:138
 msgid "  -O --no-opengl      : Disable OpenGL for this session"
 msgstr "  -O --no-opengl      : Не использовать OpenGL для этой сессии"
 
@@ -7525,8 +7531,8 @@ msgstr ""
 "Невозможно создать персонажа. Скорее всего, такое имя уже используется."
 
 #. TRANSLATORS: error message
-#: src/net/ea/charserverhandler.cpp:117 src/net/ea/loginhandler.cpp:284
-#: src/net/eathena/loginhandler.cpp:210
+#: src/net/ea/charserverhandler.cpp:117 src/net/ea/loginhandler.cpp:283
+#: src/net/eathena/loginhandler.cpp:225
 msgid "Wrong name."
 msgstr "Некорректное имя."
 
@@ -7659,44 +7665,44 @@ msgid "New password too short."
 msgstr "Новый пароль слишком короткий."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:170 src/net/ea/loginhandler.cpp:296
-#: src/net/eathena/loginhandler.cpp:224
+#: src/net/ea/loginhandler.cpp:170 src/net/ea/loginhandler.cpp:295
+#: src/net/eathena/loginhandler.cpp:239
 msgid "Unknown error."
 msgstr "Неизвестная ошибка."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:242 src/net/eathena/loginhandler.cpp:165
+#: src/net/ea/loginhandler.cpp:243 src/net/eathena/loginhandler.cpp:180
 msgid "Unregistered ID."
 msgstr "Незарегистрированный ID."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:246 src/net/eathena/loginhandler.cpp:169
+#: src/net/ea/loginhandler.cpp:247 src/net/eathena/loginhandler.cpp:184
 msgid "Wrong password."
 msgstr "Неверный пароль."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:251 src/net/eathena/loginhandler.cpp:174
+#: src/net/ea/loginhandler.cpp:252 src/net/eathena/loginhandler.cpp:189
 msgid "Account expired."
 msgstr "Учетная запись просрочена."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:255 src/net/eathena/loginhandler.cpp:178
+#: src/net/ea/loginhandler.cpp:256 src/net/eathena/loginhandler.cpp:193
 msgid "Rejected from server."
 msgstr "Получен отказ от сервера."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:259 src/net/eathena/loginhandler.cpp:182
+#: src/net/ea/loginhandler.cpp:260 src/net/eathena/loginhandler.cpp:197
 msgid ""
 "You have been permanently banned from the game. Please contact the GM team."
 msgstr "Вас навсегда забанили. Пожалуйста, свяжитесь с командой ГМ-ов."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:264 src/net/eathena/loginhandler.cpp:187
+#: src/net/ea/loginhandler.cpp:265 src/net/eathena/loginhandler.cpp:202
 msgid "Client too old."
 msgstr "Клиент устарел."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:268 src/net/eathena/loginhandler.cpp:191
+#: src/net/ea/loginhandler.cpp:269 src/net/eathena/loginhandler.cpp:206
 #, c-format
 msgid ""
 "You have been temporarily banned from the game until %s.\n"
@@ -7705,22 +7711,22 @@ msgstr ""
 "Вас забанили до %s. Пожалуйста, свяжитесь с командой ГМ-ов через форум."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:276 src/net/eathena/loginhandler.cpp:200
+#: src/net/ea/loginhandler.cpp:275 src/net/eathena/loginhandler.cpp:215
 msgid "Server overpopulated."
 msgstr "Сервер переполнен."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:280 src/net/eathena/loginhandler.cpp:205
+#: src/net/ea/loginhandler.cpp:279 src/net/eathena/loginhandler.cpp:220
 msgid "This user name is already taken."
 msgstr "Это имя пользователя уже занято."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:288 src/net/eathena/loginhandler.cpp:215
+#: src/net/ea/loginhandler.cpp:287 src/net/eathena/loginhandler.cpp:230
 msgid "Incorrect email."
 msgstr "Неправильный email."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:292 src/net/eathena/loginhandler.cpp:220
+#: src/net/ea/loginhandler.cpp:291 src/net/eathena/loginhandler.cpp:235
 msgid "Username permanently erased."
 msgstr "Пользователь удален."
 
@@ -7761,94 +7767,115 @@ msgstr ""
 "восстанавливаться."
 
 #. TRANSLATORS: char rename error
-#: src/net/eathena/charserverhandler.cpp:524
-#: src/net/eathena/charserverhandler.cpp:561
+#: src/net/eathena/charserverhandler.cpp:523
+#: src/net/eathena/charserverhandler.cpp:560
 msgid "Character rename error."
 msgstr "Ошибка изменения имени персонажа."
 
-#: src/net/eathena/charserverhandler.cpp:539
+#: src/net/eathena/charserverhandler.cpp:538
 msgid "Character renamed."
 msgstr "Персонаж переименован."
 
 #. TRANSLATORS: char rename error
-#: src/net/eathena/charserverhandler.cpp:552
+#: src/net/eathena/charserverhandler.cpp:551
 msgid "Rename not allowed."
 msgstr "Изменение имени запрещено."
 
 #. TRANSLATORS: char rename error
-#: src/net/eathena/charserverhandler.cpp:556
+#: src/net/eathena/charserverhandler.cpp:555
 msgid "New name is not set."
 msgstr "Новое имя не указано."
 
 #. TRANSLATORS: char rename error
-#: src/net/eathena/charserverhandler.cpp:565
+#: src/net/eathena/charserverhandler.cpp:564
 msgid "Character not found."
 msgstr "Персонаж не найден."
 
+#: src/net/eathena/chathandler.cpp:351
+msgid "Can't cast skill in this area."
+msgstr ""
+
+#: src/net/eathena/chathandler.cpp:354
+#, fuzzy
+msgid "Can't use item in this area."
+msgstr "Нельзя использовать данный ID."
+
+#: src/net/eathena/chathandler.cpp:357
+msgid "Can't equip. Wrong level."
+msgstr ""
+
+#: src/net/eathena/chathandler.cpp:360
+msgid "Can't use. Wrong level."
+msgstr ""
+
+#: src/net/eathena/chathandler.cpp:363
+msgid "Work in progress."
+msgstr ""
+
 #. TRANSLATORS: chat message
-#: src/net/eathena/chathandler.cpp:514
+#: src/net/eathena/chathandler.cpp:537
 #, c-format
 msgid "Message could not be sent, channel %s is not exists."
 msgstr "Сообщение не может быть отправлено, т.к. канал %s не существует."
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:128 src/net/tmwa/generalhandler.cpp:125
+#: src/net/eathena/generalhandler.cpp:128 src/net/tmwa/generalhandler.cpp:126
 #, c-format
 msgid "Strength %s"
 msgstr "Сила (str) %s"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:129 src/net/tmwa/generalhandler.cpp:127
+#: src/net/eathena/generalhandler.cpp:129 src/net/tmwa/generalhandler.cpp:128
 #, c-format
 msgid "Agility %s"
 msgstr "Выносливость (agi) %s"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:130 src/net/tmwa/generalhandler.cpp:129
+#: src/net/eathena/generalhandler.cpp:130 src/net/tmwa/generalhandler.cpp:130
 #, c-format
 msgid "Vitality %s"
 msgstr "Живучесть (vit) %s"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:131 src/net/tmwa/generalhandler.cpp:131
+#: src/net/eathena/generalhandler.cpp:131 src/net/tmwa/generalhandler.cpp:132
 #, c-format
 msgid "Intelligence %s"
 msgstr "Интеллект (int) %s"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:132 src/net/tmwa/generalhandler.cpp:133
+#: src/net/eathena/generalhandler.cpp:132 src/net/tmwa/generalhandler.cpp:134
 #, c-format
 msgid "Dexterity %s"
 msgstr "Ловкость (dex) %s"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:133 src/net/tmwa/generalhandler.cpp:135
+#: src/net/eathena/generalhandler.cpp:133 src/net/tmwa/generalhandler.cpp:136
 #, c-format
 msgid "Luck %s"
 msgstr "Удача (luk) %s"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:168 src/net/tmwa/generalhandler.cpp:170
+#: src/net/eathena/generalhandler.cpp:168 src/net/tmwa/generalhandler.cpp:171
 msgid "Authentication failed."
 msgstr "Ошибка авторизации."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:171 src/net/tmwa/generalhandler.cpp:174
+#: src/net/eathena/generalhandler.cpp:171 src/net/tmwa/generalhandler.cpp:175
 msgid "No servers available."
 msgstr "Нет доступных серверов."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:176 src/net/tmwa/generalhandler.cpp:180
+#: src/net/eathena/generalhandler.cpp:176 src/net/tmwa/generalhandler.cpp:181
 msgid "Someone else is trying to use this account."
 msgstr "Кто-то еще пытается воспользоваться данным аккаунтом."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:181 src/net/tmwa/generalhandler.cpp:186
+#: src/net/eathena/generalhandler.cpp:181 src/net/tmwa/generalhandler.cpp:187
 msgid "This account is already logged in."
 msgstr "Этот аккаунт уже в сети."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:185 src/net/tmwa/generalhandler.cpp:191
+#: src/net/eathena/generalhandler.cpp:185 src/net/tmwa/generalhandler.cpp:192
 msgid "Speed hack detected."
 msgstr "Обнаружен взлом скорости."
 
@@ -7861,7 +7888,7 @@ msgid "Sorry, you are underaged."
 msgstr "К сожалению вы несовершеннолетний."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:194 src/net/tmwa/generalhandler.cpp:195
+#: src/net/eathena/generalhandler.cpp:194 src/net/tmwa/generalhandler.cpp:196
 msgid "Duplicated login."
 msgstr "Двойная попытка подключения."
 
@@ -7942,7 +7969,7 @@ msgid "Not allowed race."
 msgstr "Некорректная расса."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:256 src/net/tmwa/generalhandler.cpp:199
+#: src/net/eathena/generalhandler.cpp:256 src/net/tmwa/generalhandler.cpp:200
 msgid "Unknown connection error."
 msgstr "Неизвестная ошибка подключения."
 
@@ -7952,89 +7979,89 @@ msgid "Map not found"
 msgstr "Персонаж не найден."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:342 src/net/tmwa/generalhandler.cpp:284
+#: src/net/eathena/generalhandler.cpp:342 src/net/tmwa/generalhandler.cpp:285
 msgid "Got disconnected from server!"
 msgstr "Отключено от сервера!"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:367 src/net/tmwa/generalhandler.cpp:312
+#: src/net/eathena/generalhandler.cpp:367 src/net/tmwa/generalhandler.cpp:313
 msgid "Strength"
 msgstr "Сила (str)"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:368 src/net/tmwa/generalhandler.cpp:314
+#: src/net/eathena/generalhandler.cpp:368 src/net/tmwa/generalhandler.cpp:315
 msgid "Agility"
 msgstr "Выносливость (agi)"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:369 src/net/tmwa/generalhandler.cpp:316
+#: src/net/eathena/generalhandler.cpp:369 src/net/tmwa/generalhandler.cpp:317
 msgid "Vitality"
 msgstr "Живучесть (vit)"
 
-#: src/net/eathena/generalhandler.cpp:371 src/net/tmwa/generalhandler.cpp:319
+#: src/net/eathena/generalhandler.cpp:371 src/net/tmwa/generalhandler.cpp:320
 msgid "Intelligence"
 msgstr "Интеллект (int)"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:372 src/net/tmwa/generalhandler.cpp:321
+#: src/net/eathena/generalhandler.cpp:372 src/net/tmwa/generalhandler.cpp:322
 msgid "Dexterity"
 msgstr "Ловкость (dex)"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:373 src/net/tmwa/generalhandler.cpp:323
+#: src/net/eathena/generalhandler.cpp:373 src/net/tmwa/generalhandler.cpp:324
 msgid "Luck"
 msgstr "Удача (luk)"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:376 src/net/tmwa/generalhandler.cpp:327
+#: src/net/eathena/generalhandler.cpp:376 src/net/tmwa/generalhandler.cpp:328
 msgid "Defense"
 msgstr "Защита"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:377 src/net/tmwa/generalhandler.cpp:329
+#: src/net/eathena/generalhandler.cpp:377 src/net/tmwa/generalhandler.cpp:330
 msgid "M.Attack"
 msgstr "Маг. Атака"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:378 src/net/tmwa/generalhandler.cpp:331
+#: src/net/eathena/generalhandler.cpp:378 src/net/tmwa/generalhandler.cpp:332
 msgid "M.Defense"
 msgstr "Маг.Защита"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:380 src/net/tmwa/generalhandler.cpp:334
+#: src/net/eathena/generalhandler.cpp:380 src/net/tmwa/generalhandler.cpp:335
 #, no-c-format
 msgid "% Accuracy"
 msgstr "% Точности"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:382 src/net/tmwa/generalhandler.cpp:337
+#: src/net/eathena/generalhandler.cpp:382 src/net/tmwa/generalhandler.cpp:338
 #, no-c-format
 msgid "% Evade"
 msgstr "% Уклонения"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:384 src/net/tmwa/generalhandler.cpp:340
+#: src/net/eathena/generalhandler.cpp:384 src/net/tmwa/generalhandler.cpp:341
 #, no-c-format
 msgid "% Critical"
 msgstr "% Критический удар"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:385 src/net/tmwa/generalhandler.cpp:342
+#: src/net/eathena/generalhandler.cpp:385 src/net/tmwa/generalhandler.cpp:343
 msgid "Attack Delay"
 msgstr "Задержка атаки"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:386 src/net/tmwa/generalhandler.cpp:344
+#: src/net/eathena/generalhandler.cpp:386 src/net/tmwa/generalhandler.cpp:345
 msgid "Walk Delay"
 msgstr "Задержка движения"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:387 src/net/tmwa/generalhandler.cpp:346
+#: src/net/eathena/generalhandler.cpp:387 src/net/tmwa/generalhandler.cpp:347
 msgid "Attack Range"
 msgstr "Зона атаки"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:388 src/net/tmwa/generalhandler.cpp:348
+#: src/net/eathena/generalhandler.cpp:388 src/net/tmwa/generalhandler.cpp:349
 msgid "Damage per sec."
 msgstr "Урон в сек."
 
