@@ -183,7 +183,7 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     jobStat.base = temp;
     jobStat.mod = temp;
 
-    const int shoes = msg.readInt16("shoes");
+    msg.readInt16("shoes?");
     const int gloves = msg.readInt16("gloves");
     const int cape = msg.readInt16("cape");
     const int misc1 = msg.readInt16("misc1");
@@ -228,6 +228,11 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
             = msg.readUInt8("stat");
     }
 
+    character->slot = msg.readInt16("character slot id");
+    msg.readInt16("rename");
+    msg.readString(16, "map name");
+    msg.readInt32("delete date");
+    const int shoes = msg.readInt32("robe");
     tempPlayer->setSprite(SPRITE_SHOE, shoes);
     tempPlayer->setSprite(SPRITE_GLOVES, gloves);
     tempPlayer->setSprite(SPRITE_CAPE, cape);
@@ -240,11 +245,6 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     tempPlayer->setSprite(SPRITE_HAT, hat);
     tempPlayer->setSprite(SPRITE_TOPCLOTHES, topClothes);
     tempPlayer->setSprite(SPRITE_MISC2, misc2);
-    character->slot = msg.readInt16("character slot id");
-    msg.readInt16("rename");
-    msg.readString(16, "map name");
-    msg.readInt32("delete date");
-    msg.readInt32("robe");
     msg.readInt32("slot change");
     tempPlayer->setRename(msg.readInt32("rename (inverse)"));
     // +++ here need use gender
