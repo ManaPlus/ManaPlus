@@ -84,6 +84,8 @@ class InventoryHandler notfinal
                                   const bool favorite) const = 0;
 
         virtual void selectEgg(const Item *const item) const = 0;
+
+        virtual int getProjectileSlot() const = 0;
 };
 
 }  // namespace Net

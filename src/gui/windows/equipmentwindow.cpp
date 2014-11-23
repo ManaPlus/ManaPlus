@@ -53,11 +53,13 @@
 #include "utils/dtor.h"
 #include "utils/gettext.h"
 
+#include "net/inventoryhandler.h"
+
 #include "debug.h"
 
 EquipmentWindow *equipmentWindow = nullptr;
 EquipmentWindow *beingEquipmentWindow = nullptr;
-static const int BOX_COUNT = 22;
+static const int BOX_COUNT = 27;
 std::map<std::string, int> EquipmentWindow::mSlotNames;
 
 EquipmentWindow::EquipmentWindow(Equipment *const equipment,
@@ -241,6 +243,7 @@ void EquipmentWindow::draw(Graphics *graphics)
     }
 
     i = 0;
+    const int projSlot = inventoryHandler->getProjectileSlot();
     for (std::vector<EquipmentBox*>::const_iterator it = boxes.begin(),
          it_end = boxes.end(); it != it_end; ++ it, ++ i)
     {
@@ -258,7 +261,7 @@ void EquipmentWindow::draw(Graphics *graphics)
                                         // with maximum opacity
                 graphics->drawImage(image, box->x + mItemPadding,
                     box->y + mItemPadding);
-                if (i == ItemSlot::PROJECTILE_SLOT)
+                if (i == projSlot)
                 {
                     graphics->setColorAll(mLabelsColor, mLabelsColor2);
                     const std::string str = toString(item->getQuantity());

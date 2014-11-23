@@ -147,7 +147,7 @@ int InventoryHandler::getSlot(const int eAthenaSlot)
         return Equipment::EQUIP_VECTOREND;
 
     if (eAthenaSlot & 0x8000)
-        return Equipment::EQUIP_PROJECTILE_SLOT;
+        return inventoryHandler->getProjectileSlot();
 
     unsigned int mask = 1;
     int position = 0;
@@ -327,7 +327,7 @@ void InventoryHandler::processPlayerArrowEquip(Net::MessageIn &msg)
         return;
 
     index -= INVENTORY_OFFSET;
-    mEquips.setEquipment(Equipment::EQUIP_PROJECTILE_SLOT, index);
+    mEquips.setEquipment(inventoryHandler->getProjectileSlot(), index);
     ArrowsListener::distributeEvent();
     BLOCK_END("InventoryHandler::processPlayerArrowEquip")
 }

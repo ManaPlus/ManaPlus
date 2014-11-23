@@ -85,7 +85,12 @@ static const EquipmentSlotMap equipmentSlots[] =
     {"slot18",        18},
     {"slot19",        19},
     {"slot20",        20},
-    {"slot21",        21}
+    {"slot21",        21},
+    {"slot22",        22},
+    {"slot23",        23},
+    {"slot24",        24},
+    {"slot25",        25},
+    {"slot26",        26}
 };
 
 #endif  // RESOURCES_EQUIPMENTSLOTS_H

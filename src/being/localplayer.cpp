@@ -2944,7 +2944,7 @@ void LocalPlayer::imitateOutfit(const Being *const player,
             const int equipmentSlot = inventoryHandler
                 ->convertFromServerSlot(sprite);
 //            logger->log("equipmentSlot: " + toString(equipmentSlot));
-            if (equipmentSlot == ItemSlot::PROJECTILE_SLOT)
+            if (equipmentSlot == inventoryHandler->getProjectileSlot())
                 return;
 
             const Item *const item = PlayerInfo::getEquipment(equipmentSlot);

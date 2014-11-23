@@ -71,6 +71,9 @@ class InventoryHandler final : public MessageHandler,
         int convertFromServerSlot(const int serverSlot)
                                   const override final A_WARN_UNUSED;
 
+        int getProjectileSlot() const override final
+        { return 23; }
+
     protected:
         static void processPlayerEquipment(Net::MessageIn &msg);
 

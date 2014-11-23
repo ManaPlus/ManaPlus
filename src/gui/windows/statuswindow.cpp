@@ -50,8 +50,9 @@
 #include "gui/widgets/vertcontainer.h"
 #include "gui/widgets/windowcontainer.h"
 
-#include "net/playerhandler.h"
 #include "net/gamehandler.h"
+#include "net/inventoryhandler.h"
+#include "net/playerhandler.h"
 
 #include "utils/delete2.h"
 #include "utils/gettext.h"
@@ -585,7 +586,7 @@ void StatusWindow::updateArrowsBar(ProgressBar *const bar)
         return;
 
     const Item *const item = equipmentWindow->getEquipment(
-        Equipment::EQUIP_PROJECTILE_SLOT);
+        inventoryHandler->getProjectileSlot());
 
     if (item && item->getQuantity() > 0)
         bar->setText(toString(item->getQuantity()));
