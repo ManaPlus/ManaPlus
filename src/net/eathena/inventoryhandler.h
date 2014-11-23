@@ -68,6 +68,9 @@ class InventoryHandler final : public MessageHandler,
 
         void selectEgg(const Item *const item) const override final;
 
+        int convertFromServerSlot(const int serverSlot)
+                                  const override final A_WARN_UNUSED;
+
     protected:
         static void processPlayerEquipment(Net::MessageIn &msg);
 

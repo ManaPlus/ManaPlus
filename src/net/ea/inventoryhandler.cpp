@@ -65,26 +65,6 @@ const Equipment::Slot EQUIP_POINTS[Equipment::EQUIP_VECTOREND] =
     Equipment::EQUIP_SHADOW_ACCESSORY1_SLOT,  // Shadow Accessory 1
 };
 
-// missing EQUIP_RING1_SLOT
-const Equipment::Slot EQUIP_CONVERT[] =
-{
-    Equipment::EQUIP_PROJECTILE_SLOT,   // 0
-    Equipment::EQUIP_FEET_SLOT,         // SPRITE_SHOE
-    Equipment::EQUIP_LEGS_SLOT,         // SPRITE_BOTTOMCLOTHES
-    Equipment::EQUIP_TORSO_SLOT,        // SPRITE_TOPCLOTHES
-    Equipment::EQUIP_PROJECTILE_SLOT,   // 0
-    Equipment::EQUIP_NECK_SLOT,         // SPRITE_RING
-    Equipment::EQUIP_PROJECTILE_SLOT,   // 0
-    Equipment::EQUIP_HEAD_SLOT,         // SPRITE_HAT
-    Equipment::EQUIP_RING2_SLOT,        // 0
-    Equipment::EQUIP_GLOVES_SLOT,       // SPRITE_GLOVES
-    Equipment::EQUIP_FIGHT1_SLOT,       // SPRITE_WEAPON
-    Equipment::EQUIP_FIGHT2_SLOT,       // SPRITE_SHIELD
-    Equipment::EQUIP_EVOL_RING1_SLOT,   // SPRITE_EVOL1
-    Equipment::EQUIP_EVOL_RING2_SLOT,   // SPRITE_EVOL2
-    Equipment::EQUIP_PROJECTILE_SLOT,   // 0
-};
-
 namespace Ea
 {
 
@@ -161,14 +141,6 @@ size_t InventoryHandler::getSize(const int type) const
             return 0;
     }
 }
-int InventoryHandler::convertFromServerSlot(const int serverSlot) const
-{
-    if (serverSlot < 0 || serverSlot > 13)
-        return 0;
-
-    return static_cast<int>(EQUIP_CONVERT[serverSlot]);
-}
-
 int InventoryHandler::getSlot(const int eAthenaSlot)
 {
     if (eAthenaSlot == 0)

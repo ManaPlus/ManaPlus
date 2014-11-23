@@ -73,9 +73,6 @@ class InventoryHandler notfinal : public Net::InventoryHandler
 
         size_t getSize(const int type) const override final A_WARN_UNUSED;
 
-        int convertFromServerSlot(const int serverSlot)
-                                  const override final A_WARN_UNUSED;
-
         void pushPickup(const int floorId)
         { mSentPickups.push(floorId); }
 
