@@ -881,7 +881,7 @@ void Being::handleSkill(Being *const victim, const int damage,
 
 void Being::setName(const std::string &name)
 {
-    if (mType == ActorType::Npc)
+    if (mType == ActorType::Npc || mType == ActorType::Portal)
     {
         mName = name.substr(0, name.find('#', 0));
         showName();
