@@ -448,23 +448,23 @@ void BeingHandler::processBeingChangeLookContinue(Being *const dstBeing,
         case 1:     // eAthena LOOK_HAIR
             dstBeing->setSpriteID(SPRITE_HAIR, id *-1);
             break;
-        case 2:     // Weapon ID in id, Shield ID in id2
+        case 2:     // LOOK_WEAPON Weapon ID in id, Shield ID in id2
             dstBeing->setSprite(SPRITE_WEAPON, id, "", 1, true);
             if (!mHideShield)
                 dstBeing->setSprite(SPRITE_SHIELD, id2);
             localPlayer->imitateOutfit(dstBeing, SPRITE_SHIELD);
             break;
-        case 3:     // Change lower headgear for eAthena, pants for us
+        case 3:     // LOOK_HEAD_BOTTOM
             dstBeing->setSprite(SPRITE_BOTTOMCLOTHES, id, color,
                 static_cast<unsigned char>(id2));
             localPlayer->imitateOutfit(dstBeing, SPRITE_BOTTOMCLOTHES);
             break;
-        case 4:     // Change upper headgear for eAthena, hat for us
+        case 4:     // LOOK_HEAD_TOP Change upper headgear for eAthena, hat for us
             dstBeing->setSprite(SPRITE_HAT, id, color,
                 static_cast<unsigned char>(id2));
             localPlayer->imitateOutfit(dstBeing, SPRITE_HAT);
             break;
-        case 5:     // Change middle headgear for eathena, armor for us
+        case 5:     // LOOK_HEAD_MID Change middle headgear for eathena, armor for us
             dstBeing->setSprite(SPRITE_TOPCLOTHES, id, color,
                 static_cast<unsigned char>(id2));
             localPlayer->imitateOutfit(dstBeing, SPRITE_TOPCLOTHES);
@@ -494,30 +494,35 @@ void BeingHandler::processBeingChangeLookContinue(Being *const dstBeing,
                 static_cast<unsigned char>(id2));
             localPlayer->imitateOutfit(dstBeing, SPRITE_GLOVES);
             break;
-        case 11:  // LOOK_CAPE
+        case 11:  // LOOK_FLOOR
             dstBeing->setSprite(SPRITE_CAPE, id, color,
                 static_cast<unsigned char>(id2));
             localPlayer->imitateOutfit(dstBeing, SPRITE_CAPE);
             break;
-        case 12:
+        case 12:  // LOOK_ROBE
             dstBeing->setSprite(SPRITE_MISC1, id, color,
                 static_cast<unsigned char>(id2));
             localPlayer->imitateOutfit(dstBeing, SPRITE_MISC1);
             break;
-        case 13:
+        case 13:  // COSTUME_HEAD_TOP
             dstBeing->setSprite(SPRITE_MISC2, id, color,
                 static_cast<unsigned char>(id2));
             localPlayer->imitateOutfit(dstBeing, SPRITE_MISC2);
             break;
-        case 14:
+        case 14:  // COSTUME_HEAD_MID
             dstBeing->setSprite(SPRITE_EVOL1, id, color,
                 static_cast<unsigned char>(id2));
             localPlayer->imitateOutfit(dstBeing, SPRITE_EVOL1);
             break;
-        case 15:
+        case 15:  // COSTUME_HEAD_LOW
             dstBeing->setSprite(SPRITE_EVOL2, id, color,
                 static_cast<unsigned char>(id2));
             localPlayer->imitateOutfit(dstBeing, SPRITE_EVOL2);
+            break;
+        case 16:  // COSTUME_GARMENT
+            dstBeing->setSprite(SPRITE_EVOL3, id, color,
+                static_cast<unsigned char>(id2));
+            localPlayer->imitateOutfit(dstBeing, SPRITE_EVOL3);
             break;
         default:
             logger->log("QQQ3 CHANGE_LOOKS: unsupported type: "
