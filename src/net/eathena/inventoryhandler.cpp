@@ -59,7 +59,7 @@ const Equipment::Slot EQUIP_CONVERT[] =
     Equipment::EQUIP_EVOL_RING2_SLOT,    // 12
     Equipment::EQUIP_PROJECTILE_SLOT,    // 13   SPRITE_EVOL2
     Equipment::EQUIP_COSTUME_ROBE_SLOT,  // 14   SPRITE_EVOL3
-    Equipment::EQUIP_MISSING1_SLOT,      // 15   SPRITE_EVOL4
+    Equipment::EQUIP_RING1_SLOT,         // 15   SPRITE_EVOL4
 };
 
 namespace EAthena

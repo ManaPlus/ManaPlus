@@ -524,6 +524,11 @@ void BeingHandler::processBeingChangeLookContinue(Being *const dstBeing,
                 static_cast<unsigned char>(id2));
             localPlayer->imitateOutfit(dstBeing, SPRITE_EVOL3);
             break;
+        case 17:  // ARMOR
+            dstBeing->setSprite(SPRITE_EVOL4, id, color,
+                static_cast<unsigned char>(id2));
+            localPlayer->imitateOutfit(dstBeing, SPRITE_EVOL4);
+            break;
         default:
             logger->log("QQQ3 CHANGE_LOOKS: unsupported type: "
                     "%d, id: %d", type, id);
