@@ -22,6 +22,8 @@
 
 #include "logger.h"
 
+#include "settings.h"
+
 #include <iostream>
 #include <sstream>
 
@@ -180,6 +182,9 @@ void Logger::dlog2(const std::string &str,
 
 void Logger::log1(const char *const buf)
 {
+    if (settings.disableLoggingInGame)
+        return;
+
     // Get the current system time
     timeval tv;
     gettimeofday(&tv, nullptr);
@@ -198,6 +203,9 @@ void Logger::log1(const char *const buf)
 
 void Logger::log(const char *const log_text, ...)
 {
+    if (settings.disableLoggingInGame)
+        return;
+
     unsigned size = 1024;
     if (strlen(log_text) * 3 > size)
         size = static_cast<unsigned>(strlen(log_text) * 3);
@@ -232,6 +240,9 @@ void Logger::log(const char *const log_text, ...)
 
 void Logger::log_r(const char *const log_text, ...)
 {
+    if (settings.disableLoggingInGame)
+        return;
+
     SDL_mutexP(mMutex);
 
     unsigned size = 1024;

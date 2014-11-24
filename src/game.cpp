@@ -409,10 +409,13 @@ Game::Game() :
 
     if (localPlayer)
         localPlayer->updatePets();
+
+    settings.disableLoggingInGame = config.getBoolValue("disableLoggingInGame");
 }
 
 Game::~Game()
 {
+    settings.disableLoggingInGame = false;
     touchManager.setInGame(false);
     config.write();
     serverConfig.write();

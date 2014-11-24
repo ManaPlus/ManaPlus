@@ -74,7 +74,8 @@ class Settings final
             disableGameModifiers(false),
             awayMode(false),
             pseudoAwayMode(false),
-            fixDeadAnimation(true)
+            fixDeadAnimation(true),
+            disableLoggingInGame(false)
         { }
 
         std::string updateHost;
@@ -118,6 +119,7 @@ class Settings final
         bool awayMode;
         bool pseudoAwayMode;
         bool fixDeadAnimation;
+        bool disableLoggingInGame;
 };
 
 extern Settings settings;

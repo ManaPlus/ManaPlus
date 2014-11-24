@@ -129,7 +129,6 @@ Setup_Perfomance::Setup_Perfomance(const Widget2 *const widget) :
     new SetupItemLabel(_("Different options (enable or disable can "
         "improve performance)"), "", this);
 
-
     mTexturesList->fillFromArray(&texturesList[0], texturesListSize);
     // TRANSLATORS: settings option
     new SetupItemDropDown(_("Enable texture compression (OpenGL)"), "",
@@ -156,6 +155,14 @@ Setup_Perfomance::Setup_Perfomance(const Widget2 *const widget) :
     new SetupItemCheckBox(_("Cache all sounds (can use additional memory)"),
         "", "uselonglivesounds", this,
         "uselonglivesoundsEvent");
+
+    // TRANSLATORS: settings group
+    new SetupItemLabel(_("Critical options (DO NOT change if you don't "
+        "know what it duing)"), "", this);
+
+    // TRANSLATORS: settings option
+    new SetupItemCheckBox(_("Disable logging in game (do not enable)"),
+        "", "disableLoggingInGame", this, "disableLoggingInGameEvent");
 
     setDimension(Rect(0, 0, 550, 350));
 }

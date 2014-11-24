@@ -369,6 +369,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("showserverpos", false);
     AddDEF("textureSize", "1024,1024,1024,1024,1024,1024");
     AddDEF("ignorelogpackets", "");
+    AddDEF("disableLoggingInGame", false);
     return configData;
 }
 
