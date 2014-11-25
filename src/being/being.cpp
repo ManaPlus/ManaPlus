@@ -555,6 +555,8 @@ void Being::takeDamage(Being *const attacker, const int amount,
     if (!userPalette || !attacker)
         return;
 
+    BLOCK_START("Being::takeDamage1")
+
     Font *font = nullptr;
     // TRANSLATORS: hit or miss message in attacks
     const std::string damage = amount ? toString(amount) : type == FLEE ?
@@ -646,6 +648,8 @@ void Being::takeDamage(Being *const attacker, const int amount,
         particleEngine->addTextSplashEffect(damage,
             getPixelX(), getPixelY() - 16, color, font, true);
     }
+    BLOCK_END("Being::takeDamage1")
+    BLOCK_START("Being::takeDamage2")
 
     if (type != SKILL)
         attacker->updateHit(amount);
@@ -704,6 +708,7 @@ void Being::takeDamage(Being *const attacker, const int amount,
                 effectManager->trigger(hitEffectId, this);
         }
     }
+    BLOCK_END("Being::takeDamage2")
 }
 
 int Being::getHitEffect(const Being *const attacker,
@@ -712,6 +717,7 @@ int Being::getHitEffect(const Being *const attacker,
     if (!effectManager)
         return 0;
 
+    BLOCK_START("Being::getHitEffect")
     // Init the particle effect path based on current
     // weapon or default.
     int hitEffectId = 0;
@@ -766,6 +772,7 @@ int Being::getHitEffect(const Being *const attacker,
         // move skills effects to +100000 in effects list
         hitEffectId = attackId + 100000;
     }
+    BLOCK_END("Being::getHitEffect")
     return hitEffectId;
 }
 
@@ -784,6 +791,8 @@ void Being::handleAttack(Being *const victim, const int damage,
 {
     if (!victim || !mInfo)
         return;
+
+    BLOCK_START("Being::handleAttack")
 
     if (this != localPlayer)
         setAction(BeingAction::ATTACK, attackId);
@@ -833,6 +842,7 @@ void Being::handleAttack(Being *const victim, const int damage,
         playSfx(mInfo->getSound((damage > 0) ?
             ItemSoundEvent::HIT : ItemSoundEvent::MISS), victim, true, mX, mY);
     }
+    BLOCK_END("Being::handleAttack")
 }
 
 void Being::handleSkill(Being *const victim, const int damage,
@@ -1065,10 +1075,15 @@ void Being::fireMissile(Being *const victim, const std::string &particle) const
     if (!victim || particle.empty() || !particleEngine)
         return;
 
+    BLOCK_START("Being::fireMissile")
+
     Particle *const target = particleEngine->createChild();
 
     if (!target)
+    {
+        BLOCK_END("Being::fireMissile")
         return;
+    }
 
     Particle *const missile = target->addEffect(
         particle, getPixelX(), getPixelY());
@@ -1083,6 +1098,7 @@ void Being::fireMissile(Being *const victim, const std::string &particle) const
         missile->setDieDistance(8);
         missile->setLifetime(900);
     }
+    BLOCK_END("Being::fireMissile")
 }
 
 std::string Being::getSitAction() const
@@ -3070,6 +3086,7 @@ void Being::updatePercentHP()
 {
     if (!mMaxHP)
         return;
+    BLOCK_START("Being::updatePercentHP")
     if (mHP)
     {
         const unsigned num = mHP * 100 / mMaxHP;
@@ -3080,6 +3097,7 @@ void Being::updatePercentHP()
                 setAction(mAction, 0);
         }
     }
+    BLOCK_END("Being::updatePercentHP")
 }
 
 uint8_t Being::genderToInt(const Gender::Type sex)
@@ -3345,6 +3363,8 @@ void Being::fixPetSpawnPos(int &dstX, int &dstY) const
 void Being::playSfx(const SoundInfo &sound, Being *const being,
                     const bool main, const int x, const int y) const
 {
+    BLOCK_START("Being::playSfx")
+
     if (being)
     {
         // here need add timer and delay sound
@@ -3372,6 +3392,7 @@ void Being::playSfx(const SoundInfo &sound, Being *const being,
     {
         soundManager.playSfx(sound.sound, x, y);
     }
+    BLOCK_END("Being::playSfx")
 }
 
 void Being::setLook(const uint8_t look)

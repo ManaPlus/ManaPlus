@@ -25,6 +25,9 @@
 #include "utils/perfomance.h"
 
 #include "configuration.h"
+#include "game.h"
+
+#include "utils/timer.h"
 
 #include <algorithm>
 #include <cstdarg>
@@ -87,7 +90,8 @@ namespace Perfomance
 
     void flush()
     {
-        file << temp;
+        if (fps < 40)
+            file << temp;
         temp.clear();
 //        file.flush();
     }

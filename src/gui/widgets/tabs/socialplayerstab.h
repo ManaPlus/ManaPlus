@@ -73,6 +73,7 @@ class SocialPlayersTab final : public SocialTab
             if (!actorManager)
                 return;
 
+            BLOCK_START("SocialPlayersTab::updateAvatar")
             Avatar *const avatar = findAvatarbyName(name);
             if (!avatar)
                 return;
@@ -96,6 +97,7 @@ class SocialPlayersTab final : public SocialTab
                 avatar->setIp(being->getIp());
                 avatar->setPoison(being->getPoison());
             }
+            BLOCK_END("SocialPlayersTab::updateAvatar")
         }
 
         void resetDamage(const std::string &name) override final

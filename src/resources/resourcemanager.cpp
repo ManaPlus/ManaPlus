@@ -544,13 +544,20 @@ struct DyedImageLoader final
     std::string path;
     static Resource *load(const void *const v)
     {
+        BLOCK_START("DyedImageLoader::load")
         if (!v)
+        {
+            BLOCK_END("DyedImageLoader::load")
             return nullptr;
+        }
 
         const DyedImageLoader *const rl
             = static_cast<const DyedImageLoader *const>(v);
         if (!rl->manager)
+        {
+            BLOCK_END("DyedImageLoader::load")
             return nullptr;
+        }
 
         std::string path1 = rl->path;
         const size_t p = path1.find('|');
@@ -564,11 +571,13 @@ struct DyedImageLoader final
         if (!rw)
         {
             delete d;
+            BLOCK_END("DyedImageLoader::load")
             return nullptr;
         }
         Resource *const res = d ? imageHelper->load(rw, *d)
             : imageHelper->load(rw);
         delete d;
+        BLOCK_END("DyedImageLoader::load")
         return res;
     }
 };

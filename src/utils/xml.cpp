@@ -85,6 +85,7 @@ namespace XML
         if (Fuzzer::conditionTerminate(filename.c_str()))
             return;
 #endif
+        BLOCK_START("XML::Document::Document")
         int size = 0;
         char *data = nullptr;
         valid = true;
@@ -129,6 +130,7 @@ namespace XML
             logger->log("Error loading %s", filename.c_str());
         }
         mIsValid = valid;
+        BLOCK_END("XML::Document::Document")
     }
 
     Document::Document(const char *const data, const int size) :

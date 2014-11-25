@@ -1527,10 +1527,10 @@ void BeingHandler::processBeingMove2(Net::MessageIn &msg)
 
 void BeingHandler::processBeingAction2(Net::MessageIn &msg)
 {
-    BLOCK_START("BeingHandler::processBeingAction")
+    BLOCK_START("BeingHandler::processBeingAction2")
     if (!actorManager)
     {
-        BLOCK_END("BeingHandler::processBeingAction")
+        BLOCK_END("BeingHandler::processBeingAction2")
         return;
     }
 
@@ -1617,7 +1617,7 @@ void BeingHandler::processBeingAction2(Net::MessageIn &msg)
             logger->log("type: " + toString(type));
             break;
     }
-    BLOCK_END("BeingHandler::processBeingAction")
+    BLOCK_END("BeingHandler::processBeingAction2")
 }
 
 void BeingHandler::processMonsterHp(Net::MessageIn &msg)

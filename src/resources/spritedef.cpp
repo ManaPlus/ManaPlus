@@ -81,6 +81,7 @@ unsigned SpriteDef::findNumber(const unsigned num) const
 SpriteDef *SpriteDef::load(const std::string &animationFile,
                            const int variant, const bool prot)
 {
+    BLOCK_START("SpriteDef::load")
     const size_t pos = animationFile.find('|');
     std::string palettes;
     if (pos != std::string::npos)
@@ -95,6 +96,7 @@ SpriteDef *SpriteDef::load(const std::string &animationFile,
 
         const std::string errorFile = paths.getStringValue("sprites").append(
             paths.getStringValue("spriteErrorFile"));
+        BLOCK_END("SpriteDef::load")
         if (animationFile != errorFile)
             return load(errorFile, 0, prot);
         else
@@ -112,6 +114,7 @@ SpriteDef *SpriteDef::load(const std::string &animationFile,
         def->incRef();
         def->setProtected(true);
     }
+    BLOCK_END("SpriteDef::load")
     return def;
 }
 
@@ -177,6 +180,7 @@ void SpriteDef::substituteActions()
 void SpriteDef::loadSprite(const XmlNodePtr spriteNode, const int variant,
                            const std::string &palettes)
 {
+    BLOCK_START("SpriteDef::loadSprite")
     // Get the variant
     const int variantCount = XML::getProperty(spriteNode, "variants", 0);
     int variant_offset = 0;
@@ -196,6 +200,7 @@ void SpriteDef::loadSprite(const XmlNodePtr spriteNode, const int variant,
         else if (xmlNameEqual(node, "include"))
             includeSprite(node, variant);
     }
+    BLOCK_END("SpriteDef::loadSprite")
 }
 
 void SpriteDef::loadImageSet(const XmlNodePtr node,

@@ -233,6 +233,7 @@ static bool checkFilePath(const char *const fname)
 
 SDL_RWops *PHYSFSRWOPS_openRead(const char *const fname)
 {
+    BLOCK_START("PHYSFSRWOPS_openRead")
 #ifdef __APPLE__
     if (!checkFilePath(fname))
         return nullptr;
@@ -241,7 +242,13 @@ SDL_RWops *PHYSFSRWOPS_openRead(const char *const fname)
     if (Fuzzer::conditionTerminate(fname))
         return nullptr;
 #endif
+#ifdef USE_PROFILER
+    SDL_RWops *const ret = create_rwops(PhysFs::openRead(fname));
+    BLOCK_END("PHYSFSRWOPS_openRead")
+    return ret;
+#else
     return create_rwops(PhysFs::openRead(fname));
+#endif
 } /* PHYSFSRWOPS_openRead */
 
 SDL_RWops *PHYSFSRWOPS_openWrite(const char *const fname)

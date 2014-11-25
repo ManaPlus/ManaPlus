@@ -231,6 +231,7 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
     if (!tmpImage)
         return nullptr;
 
+    BLOCK_START("OpenGLImageHelper::glLoad")
     // Flush current error flag.
     graphicsManager.getLastError();
 
@@ -313,6 +314,7 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
 //        return nullptr;
     }
 
+    BLOCK_END("OpenGLImageHelper::glLoad")
     return new Image(texture, width, height, realWidth, realHeight);
 }
 

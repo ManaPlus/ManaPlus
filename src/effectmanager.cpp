@@ -86,6 +86,7 @@ bool EffectManager::trigger(const int id, Being *const being,
     if (!being || !particleEngine)
         return false;
 
+    BLOCK_START("EffectManager::trigger")
     bool rValue = false;
     FOR_EACH (std::vector<EffectDescription>::const_iterator, i, mEffects)
     {
@@ -106,6 +107,7 @@ bool EffectManager::trigger(const int id, Being *const being,
             break;
         }
     }
+    BLOCK_END("EffectManager::trigger")
     return rValue;
 }
 
