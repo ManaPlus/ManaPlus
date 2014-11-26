@@ -1687,10 +1687,25 @@ void BeingHandler::processBeingChangeDirection(Net::MessageIn &msg)
 
 void BeingHandler::processBeingSpecialEffect(Net::MessageIn &msg)
 {
-    // +++ need somhow show this effects.
-    // type is not same with self/misc effect.
-    msg.readInt32("account id");
-    msg.readInt32("effect type");
+    if (!effectManager || !actorManager)
+        return;
+
+    const int id = static_cast<uint32_t>(msg.readInt32("being id"));
+    Being *const being = actorManager->findBeing(id);
+    if (!being)
+        return;
+
+    const int effectType = msg.readInt32("effect type");
+
+    if (Particle::enabled)
+        effectManager->trigger(effectType, being);
+
+    // +++ need dehard code effectType == 3
+    if (effectType == 3 && being->getType() == ActorType::Player
+        && socialWindow)
+    {   // reset received damage
+        socialWindow->resetDamage(being->getName());
+    }
 }
 
 void BeingHandler::processBeingSpecialEffectNum(Net::MessageIn &msg)
