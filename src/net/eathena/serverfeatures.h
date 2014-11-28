@@ -85,6 +85,8 @@ class ServerFeatures final : public Net::ServerFeatures
         bool haveServerVersion() const override final;
 
         bool haveMapServerVersion() const override final;
+
+        bool haveNpcGender() const override final;
 };
 
 }  // namespace EAthena

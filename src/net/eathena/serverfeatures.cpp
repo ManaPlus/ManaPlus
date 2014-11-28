@@ -165,4 +165,9 @@ bool ServerFeatures::haveMapServerVersion() const
     return serverVersion > 0;
 }
 
+bool ServerFeatures::haveNpcGender() const
+{
+    return serverVersion >= 3;
+}
+
 }  // namespace EAthena

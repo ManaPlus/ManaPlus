@@ -164,4 +164,9 @@ bool ServerFeatures::haveMapServerVersion() const
     return false;
 }
 
+bool ServerFeatures::haveNpcGender() const
+{
+    return serverVersion > 0;
+}
+
 }  // namespace TmwAthena
