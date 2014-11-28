@@ -1034,11 +1034,10 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
     dstBeing->setStatusEffectBlock(32, static_cast<uint16_t>(
         msg.readInt32("opt3")));
     dstBeing->setKarma(msg.readUInt8("karma"));
-    uint8_t gender = msg.readUInt8("gender");
+    uint8_t gender = msg.readUInt8("gender") & 3;
 
     if (dstBeing->getType() == ActorType::Player)
     {
-        gender &= 3;
         dstBeing->setGender(Being::intToGender(gender));
         // Set these after the gender, as the sprites may be gender-specific
         setSprite(dstBeing, SPRITE_HAIR, hairStyle * -1,
@@ -1054,7 +1053,7 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
     }
     else if (dstBeing->getType() == ActorType::Npc)
     {
-        setServerGender(dstBeing, gender);
+        dstBeing->setGender(Being::intToGender(gender));
     }
 
     uint8_t dir;
@@ -1199,11 +1198,10 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
     dstBeing->setStatusEffectBlock(32, static_cast<uint16_t>(
         msg.readInt32("opt3")));
     dstBeing->setKarma(msg.readUInt8("karma"));
-    uint8_t gender = msg.readUInt8("gender");
+    uint8_t gender = msg.readUInt8("gender") & 3;
 
     if (dstBeing->getType() == ActorType::Player)
     {
-        gender &= 3;
         dstBeing->setGender(Being::intToGender(gender));
         // Set these after the gender, as the sprites may be gender-specific
         setSprite(dstBeing, SPRITE_HAIR, hairStyle * -1,
@@ -1219,7 +1217,7 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
     }
     else if (dstBeing->getType() == ActorType::Npc)
     {
-        setServerGender(dstBeing, gender);
+        dstBeing->setGender(Being::intToGender(gender));
     }
 
     uint16_t srcX, srcY, dstX, dstY;
@@ -1366,11 +1364,10 @@ void BeingHandler::processBeingSpawn(Net::MessageIn &msg)
     dstBeing->setStatusEffectBlock(32, static_cast<uint16_t>(
         msg.readInt32("opt3")));
     dstBeing->setKarma(msg.readUInt8("karma"));
-    uint8_t gender = msg.readUInt8("gender");
+    uint8_t gender = msg.readUInt8("gender") & 3;
 
     if (dstBeing->getType() == ActorType::Player)
     {
-        gender &= 3;
         dstBeing->setGender(Being::intToGender(gender));
         // Set these after the gender, as the sprites may be gender-specific
         setSprite(dstBeing, SPRITE_HAIR, hairStyle * -1,
@@ -1386,7 +1383,7 @@ void BeingHandler::processBeingSpawn(Net::MessageIn &msg)
     }
     else if (dstBeing->getType() == ActorType::Npc)
     {
-        setServerGender(dstBeing, gender);
+        dstBeing->setGender(Being::intToGender(gender));
     }
 
     uint8_t dir;
@@ -1724,22 +1721,6 @@ void BeingHandler::processBeingSoundEffect(Net::MessageIn &msg)
     msg.readUInt8("type");
     msg.readInt32("unused");
     msg.readInt32("source being id");
-}
-
-void BeingHandler::setServerGender(Being *const being, const uint8_t gender)
-{
-    switch (gender)
-    {
-        case 2:
-            being->setGender(Gender::FEMALE);
-            break;
-        case 3:
-            being->setGender(Gender::MALE);
-            break;
-        default:
-            being->setGender(Gender::UNSPECIFIED);
-            break;
-    }
 }
 
 void BeingHandler::applyPlayerAction(Being *const being, const uint8_t type)
