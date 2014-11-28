@@ -1117,7 +1117,8 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
         if (!mHideShield)
             setSprite(dstBeing, SPRITE_SHIELD, shield);
     }
-    else if (dstBeing->getType() == ActorType::Npc)
+    else if (dstBeing->getType() == ActorType::Npc
+             && serverFeatures->haveNpcGender())
     {
         setServerGender(dstBeing, gender);
     }
@@ -1321,7 +1322,8 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
         if (!mHideShield)
             setSprite(dstBeing, SPRITE_SHIELD, shield);
     }
-    else if (dstBeing->getType() == ActorType::Npc)
+    else if (dstBeing->getType() == ActorType::Npc
+             && serverFeatures->haveNpcGender())
     {
         setServerGender(dstBeing, gender);
     }

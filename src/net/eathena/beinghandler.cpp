@@ -41,6 +41,8 @@
 
 #include "gui/windows/outfitwindow.h"
 
+#include "net/serverfeatures.h"
+
 #include "net/ea/eaprotocol.h"
 
 #include "net/eathena/messageout.h"
@@ -1051,7 +1053,8 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
 //        if (!mHideShield)
 //            setSprite(dstBeing, SPRITE_SHIELD, shield);
     }
-    else if (dstBeing->getType() == ActorType::Npc)
+    else if (dstBeing->getType() == ActorType::Npc
+             && serverFeatures->haveNpcGender())
     {
         dstBeing->setGender(Being::intToGender(gender));
     }
@@ -1215,7 +1218,8 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
 //        if (!mHideShield)
 //            setSprite(dstBeing, SPRITE_SHIELD, shield);
     }
-    else if (dstBeing->getType() == ActorType::Npc)
+    else if (dstBeing->getType() == ActorType::Npc
+             && serverFeatures->haveNpcGender())
     {
         dstBeing->setGender(Being::intToGender(gender));
     }
@@ -1381,7 +1385,8 @@ void BeingHandler::processBeingSpawn(Net::MessageIn &msg)
 //        if (!mHideShield)
 //            setSprite(dstBeing, SPRITE_SHIELD, shield);
     }
-    else if (dstBeing->getType() == ActorType::Npc)
+    else if (dstBeing->getType() == ActorType::Npc
+             && serverFeatures->haveNpcGender())
     {
         dstBeing->setGender(Being::intToGender(gender));
     }
