@@ -523,4 +523,13 @@ void PlayerHandler::setStat(const int type,
     }
 }
 
+void PlayerHandler::processMapMask(Net::MessageIn &msg)
+{
+    const int mask = msg.readInt32("mask");
+    msg.readInt32("unused");
+    Map *const map = Game::instance()->getCurrentMap();
+    if (map)
+        map->setMask(mask);
+}
+
 }  // namespace Ea

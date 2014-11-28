@@ -329,15 +329,6 @@ void PlayerHandler::updateStatus(const uint8_t status) const
     outMsg.writeInt8(0, "unused");
 }
 
-void PlayerHandler::processMapMask(Net::MessageIn &msg)
-{
-    const int mask = msg.readInt32("mask");
-    msg.readInt32("unused");
-    Map *const map = Game::instance()->getCurrentMap();
-    if (map)
-        map->setMask(mask);
-}
-
 void PlayerHandler::processMapMusic(Net::MessageIn &msg)
 {
     const int size = msg.readInt16("len") - 5;

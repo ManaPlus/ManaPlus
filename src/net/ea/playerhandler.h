@@ -72,6 +72,8 @@ class PlayerHandler notfinal : public Net::PlayerHandler
         static void processPlayerStatUpdate6(Net::MessageIn &msg);
 
         static void processPlayerArrowMessage(Net::MessageIn &msg);
+
+        static void processMapMask(Net::MessageIn &msg);
 };
 
 }  // namespace Ea

@@ -59,6 +59,7 @@ PlayerHandler::PlayerHandler() :
         SMSG_PVP_INFO,
         SMSG_PLAYER_HEAL,
         SMSG_PLAYER_SKILL_MESSAGE,
+        SMSG_MAP_MASK,
         0
     };
     handledMessages = _messages;
@@ -128,6 +129,10 @@ void PlayerHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_PLAYER_SKILL_MESSAGE:
             processPlayerSkillMessage(msg);
+            break;
+
+        case SMSG_MAP_MASK:
+            processMapMask(msg);
             break;
 
         default:
