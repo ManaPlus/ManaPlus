@@ -307,7 +307,10 @@
 #define SMSG_ELEMENTAL_INFO          0x081d
 
 #define SMSG_UPDATE_HOST             0x0063
+
 #define SMSG_MAP_MASK                0x0b02
+
+#define SMSG_MOB_INFO                0x0b03
 
 /**********************************
  *  Packets from client to server *

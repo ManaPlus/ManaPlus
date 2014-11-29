@@ -124,6 +124,8 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
         static void processPlaterStatusChange2(Net::MessageIn &msg);
 
         static void processBeingSelfEffect(Net::MessageIn &msg);
+
+        static void processMobInfo(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

@@ -118,6 +118,7 @@ BeingHandler::BeingHandler(const bool enableSync) :
         SMSG_RANKS_LIST,
         SMSG_BEING_FAKE_NAME,
         SMSG_BEING_STAT_UPDATE_1,
+        SMSG_MOB_INFO,
         0
     };
     handledMessages = _messages;
@@ -317,6 +318,10 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_BEING_STAT_UPDATE_1:
             processBeingStatUpdate1(msg);
+            break;
+
+        case SMSG_MOB_INFO:
+            processMobInfo(msg);
             break;
 
         default:
@@ -1963,6 +1968,18 @@ void BeingHandler::processBeingSelfEffect(Net::MessageIn &msg)
         effectManager->trigger(effectType, being);
 
     BLOCK_END("BeingHandler::processBeingSelfEffect")
+}
+
+void BeingHandler::processMobInfo(Net::MessageIn &msg)
+{
+    const int len = msg.readInt16("len");
+    if (len < 12)
+        return;
+    Being *const dstBeing = actorManager->findBeing(
+        msg.readInt32("monster id"));
+    const int attackRange = msg.readInt32("range");
+    if (dstBeing)
+        dstBeing->setAttackRange(attackRange);
 }
 
 }  // namespace EAthena
