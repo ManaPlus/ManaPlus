@@ -74,6 +74,8 @@ class PlayerHandler notfinal : public Net::PlayerHandler
         static void processPlayerArrowMessage(Net::MessageIn &msg);
 
         static void processMapMask(Net::MessageIn &msg);
+
+        static void processMapMusic(Net::MessageIn &msg);
 };
 
 }  // namespace Ea

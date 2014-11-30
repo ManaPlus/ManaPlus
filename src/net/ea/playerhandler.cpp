@@ -26,6 +26,7 @@
 #include "game.h"
 #include "party.h"
 #include "notifymanager.h"
+#include "soundmanager.h"
 #include "units.h"
 
 #include "being/attributes.h"
@@ -530,6 +531,17 @@ void PlayerHandler::processMapMask(Net::MessageIn &msg)
     Map *const map = Game::instance()->getCurrentMap();
     if (map)
         map->setMask(mask);
+}
+
+void PlayerHandler::processMapMusic(Net::MessageIn &msg)
+{
+    const int size = msg.readInt16("len") - 5;
+    const std::string music = msg.readString(size, "name");
+    soundManager.playMusic(music);
+
+    Map *const map = viewport->getMap();
+    if (map)
+        map->setMusicFile(music);
 }
 
 }  // namespace Ea

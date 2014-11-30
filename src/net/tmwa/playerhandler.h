@@ -85,8 +85,6 @@ class PlayerHandler final : public MessageHandler, public Ea::PlayerHandler
                      const int mod,
                      const bool notify) const override final;
 
-        static void processMapMusic(Net::MessageIn &msg);
-
         static void processPlayerStatUpdate5(Net::MessageIn &msg);
 
         static void processWalkResponse(Net::MessageIn &msg);

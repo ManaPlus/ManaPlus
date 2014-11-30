@@ -24,7 +24,6 @@
 
 #include "configuration.h"
 #include "game.h"
-#include "soundmanager.h"
 
 #include "being/attributes.h"
 #include "being/beingflag.h"
@@ -327,17 +326,6 @@ void PlayerHandler::updateStatus(const uint8_t status) const
     createOutPacket(CMSG_SET_STATUS);
     outMsg.writeInt8(status, "status");
     outMsg.writeInt8(0, "unused");
-}
-
-void PlayerHandler::processMapMusic(Net::MessageIn &msg)
-{
-    const int size = msg.readInt16("len") - 5;
-    const std::string music = msg.readString(size, "name");
-    soundManager.playMusic(music);
-
-    Map *const map = viewport->getMap();
-    if (map)
-        map->setMusicFile(music);
 }
 
 void PlayerHandler::processPlayerStatUpdate5(Net::MessageIn &msg)

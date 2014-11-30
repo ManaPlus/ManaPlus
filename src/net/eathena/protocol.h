@@ -313,6 +313,8 @@
 
 #define SMSG_MOB_INFO                0x0b03
 
+#define SMSG_MAP_MUSIC               0x0b05
+
 /**********************************
  *  Packets from client to server *
  **********************************/

@@ -60,6 +60,7 @@ PlayerHandler::PlayerHandler() :
         SMSG_PLAYER_HEAL,
         SMSG_PLAYER_SKILL_MESSAGE,
         SMSG_MAP_MASK,
+        SMSG_MAP_MUSIC,
         0
     };
     handledMessages = _messages;
@@ -133,6 +134,10 @@ void PlayerHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_MAP_MASK:
             processMapMask(msg);
+            break;
+
+        case SMSG_MAP_MUSIC:
+            processMapMusic(msg);
             break;
 
         default:
