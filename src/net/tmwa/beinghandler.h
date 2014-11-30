@@ -62,8 +62,6 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
 
         static void processPlayerMove(Net::MessageIn &msg);
 
-        static void processBeingMove3(Net::MessageIn &msg);
-
         static void processBeingSpawn(Net::MessageIn &msg);
 
         static void processSkillCasting(Net::MessageIn &msg);

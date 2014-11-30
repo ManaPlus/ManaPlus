@@ -40,6 +40,8 @@
 
 #include "resources/map/map.h"
 
+#include "net/serverfeatures.h"
+
 #include "debug.h"
 
 namespace Ea
@@ -490,6 +492,54 @@ void BeingHandler::processNameResponse2(Net::MessageIn &msg)
         }
     }
     BLOCK_END("BeingHandler::processNameResponse2")
+}
+
+void BeingHandler::processBeingMove3(Net::MessageIn &msg)
+{
+    BLOCK_START("BeingHandler::processBeingMove3")
+    if (!serverFeatures->haveMove3())
+    {
+        BLOCK_END("BeingHandler::processBeingMove3")
+        return;
+    }
+
+    static const int16_t dirx[8] = {0, -1, -1, -1,  0,  1, 1, 1};
+    static const int16_t diry[8] = {1,  1,  0, -1, -1, -1, 0, 1};
+
+    const int len = msg.readInt16("len") - 14;
+    Being *const dstBeing = actorManager->findBeing(
+        msg.readInt32("being id"));
+    if (!dstBeing)
+    {
+        BLOCK_END("BeingHandler::processBeingMove3")
+        return;
+    }
+    const int16_t speed = msg.readInt16("speed");
+    dstBeing->setWalkSpeed(Vector(speed, speed, 0));
+    int16_t x = msg.readInt16("x");
+    int16_t y = msg.readInt16("y");
+    const unsigned char *moves = msg.readBytes(len, "moving path");
+    Path path;
+    if (moves)
+    {
+        for (int f = 0; f < len; f ++)
+        {
+            const unsigned char dir = moves[f];
+            if (dir <= 7)
+            {
+                x += dirx[dir];
+                y += diry[dir];
+                path.push_back(Position(x, y));
+            }
+            else
+            {
+                logger->log("bad move packet: %d", dir);
+            }
+        }
+        delete [] moves;
+    }
+    dstBeing->setPath(path);
+    BLOCK_END("BeingHandler::processBeingMove3")
 }
 
 }  // namespace Ea

@@ -110,6 +110,7 @@
 #define SMSG_BEING_MOVE              0x0914 /**< A nearby monster moves */
 #define SMSG_BEING_SPAWN             0x090f /**< A being spawns nearby */
 #define SMSG_BEING_MOVE2             0x0086 /**< New eAthena being moves */
+#define SMSG_BEING_MOVE3             0x0b04
 #define SMSG_BEING_REMOVE            0x0080
 #define SMSG_BEING_REMOVE_SKILL      0x0120
 #define SMSG_BEING_CHANGE_LOOKS      0x00c3

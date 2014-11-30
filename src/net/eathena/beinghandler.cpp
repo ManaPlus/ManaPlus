@@ -119,6 +119,7 @@ BeingHandler::BeingHandler(const bool enableSync) :
         SMSG_BEING_FAKE_NAME,
         SMSG_BEING_STAT_UPDATE_1,
         SMSG_MOB_INFO,
+        SMSG_BEING_MOVE3,
         0
     };
     handledMessages = _messages;
@@ -322,6 +323,10 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_MOB_INFO:
             processMobInfo(msg);
+            break;
+
+        case SMSG_BEING_MOVE3:
+            processBeingMove3(msg);
             break;
 
         default:
@@ -1230,7 +1235,8 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
     msg.readInt8("ys");
     dstBeing->setAction(BeingAction::STAND, 0);
     dstBeing->setTileCoords(srcX, srcY);
-    dstBeing->setDestination(dstX, dstY);
+    if (!serverFeatures->haveMove3())
+        dstBeing->setDestination(dstX, dstY);
 
     // because server don't send direction in move packet, we fixing it
 
@@ -1517,7 +1523,8 @@ void BeingHandler::processBeingMove2(Net::MessageIn &msg)
 
     dstBeing->setAction(BeingAction::STAND, 0);
     dstBeing->setTileCoords(srcX, srcY);
-    dstBeing->setDestination(dstX, dstY);
+    if (!serverFeatures->haveMove3())
+        dstBeing->setDestination(dstX, dstY);
     if (dstBeing->getType() == ActorType::Player)
         dstBeing->setMoveTime();
     BLOCK_END("BeingHandler::processBeingMove2")
