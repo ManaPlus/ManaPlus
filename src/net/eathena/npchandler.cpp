@@ -55,6 +55,7 @@ NpcHandler::NpcHandler() :
         SMSG_NPC_SHOW_PROGRESS_BAR,
         SMSG_NPC_CLOSE_TIMEOUT,
         SMSG_NPC_COMMAND,
+        SMSG_NPC_CHANGETITLE,
         0
     };
     handledMessages = _messages;
@@ -107,6 +108,10 @@ void NpcHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_NPC_COMMAND:
             processNpcCommand(msg);
+            break;
+
+        case SMSG_NPC_CHANGETITLE:
+            processChangeTitle(msg);
             break;
 
         default:
@@ -261,7 +266,8 @@ void NpcHandler::selectAutoSpell(const int skillId) const
 int NpcHandler::getNpc(Net::MessageIn &msg)
 {
     if (msg.getId() == SMSG_NPC_CHOICE
-        || msg.getId() == SMSG_NPC_MESSAGE)
+        || msg.getId() == SMSG_NPC_MESSAGE
+        || msg.getId() == SMSG_NPC_CHANGETITLE)
     {
         msg.readInt16("len");
     }

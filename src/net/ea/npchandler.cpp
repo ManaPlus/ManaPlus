@@ -201,4 +201,13 @@ void NpcHandler::processNpcCommand(Net::MessageIn &msg)
     }
 }
 
+void NpcHandler::processChangeTitle(Net::MessageIn &msg)
+{
+    npcHandler->getNpc(msg);
+    mRequestLang = false;
+    const std::string str = msg.readString(-1, "title");
+    if (mDialog)
+        mDialog->setCaption(str);
+}
+
 }  // namespace Ea

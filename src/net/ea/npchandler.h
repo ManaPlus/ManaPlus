@@ -56,6 +56,8 @@ class NpcHandler notfinal : public Net::NpcHandler
 
         static void processNpcCommand(Net::MessageIn &msg);
 
+        static void processChangeTitle(Net::MessageIn &msg);
+
     protected:
         NpcHandler();
 

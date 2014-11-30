@@ -289,13 +289,4 @@ int NpcHandler::getNpc(Net::MessageIn &msg)
     return npcId;
 }
 
-void NpcHandler::processChangeTitle(Net::MessageIn &msg)
-{
-    npcHandler->getNpc(msg);
-    mRequestLang = false;
-    const std::string str = msg.readString(-1, "title");
-    if (mDialog)
-        mDialog->setCaption(str);
-}
-
 }  // namespace TmwAthena
