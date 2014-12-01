@@ -29,6 +29,8 @@
 
 #include "being/beingspeech.h"
 
+#include "input/inputmanager.h"
+
 #include "utils/files.h"
 #include "utils/gettext.h"
 #include "utils/mkdir.h"
@@ -270,6 +272,10 @@ void ConfigManager::storeSafeParameters()
 }
 #endif
 
+#define unassignKey(key, value) \
+    if (config.getStringValue(prefix + key) == value) \
+        config.setValue(key, "-1");
+
 void ConfigManager::checkConfigVersion()
 {
     const int version = config.getIntValue("cfgver");
@@ -322,5 +328,19 @@ void ConfigManager::checkConfigVersion()
     if (version < 10)
         config.setValue("enableLazyScrolling", false);
 
-    config.setValue("cfgver", 10);
+    if (version < 11)
+    {
+#ifdef USE_SDL2
+        const std::string prefix = std::string("sdl2");
+#else
+        const std::string prefix = std::string();
+#endif
+        unassignKey("keyDirectUp", "k108");
+        unassignKey("keyDirectDown", "k59");
+        unassignKey("keyDirectLeft", "k107");
+        unassignKey("keyDirectRight", "k39");
+    }
+    config.setValue("cfgver", 11);
 }
+
+#undef unassignKey
