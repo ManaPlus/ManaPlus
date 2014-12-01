@@ -33,6 +33,8 @@ namespace Actions
     decHandler(prevShortcutsTab);
     decHandler(nextCommandsTab);
     decHandler(prevCommandsTab);
+    decHandler(nextInvTab);
+    decHandler(prevInvTab);
 }  // namespace Actions
 
 #undef decHandler

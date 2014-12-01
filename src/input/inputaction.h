@@ -487,6 +487,8 @@ namespace InputAction
         HOMUNCULUS_SET_NAME,
         HOMUNCULUS_FIRE,
         WINDOW_BANK,
+        PREV_INV_TAB,
+        NEXT_INV_TAB,
         TOTAL
     };
 }  // namespace InputAction

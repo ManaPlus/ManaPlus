@@ -77,3 +77,41 @@ void TabStrip::action(const ActionEvent &event)
         }
     }
 }
+
+void TabStrip::nextTab()
+{
+    FOR_EACH (WidgetListConstIterator, iter, mWidgets)
+    {
+        Button *button = static_cast<Button*>(*iter);
+        if (button->isPressed2())
+        {
+            button->setPressed(false);
+            ++iter;
+            if (iter == mWidgets.end())
+                iter = mWidgets.begin();
+            button = static_cast<Button*>(*iter);
+            action(ActionEvent(button, button->getActionEventId()));
+            return;
+        }
+    }
+}
+
+void TabStrip::prevTab()
+{
+    FOR_EACH (WidgetListConstIterator, iter, mWidgets)
+    {
+        Button *button = static_cast<Button*>(*iter);
+        if (button->isPressed2())
+        {
+            button->setPressed(false);
+            if (iter == mWidgets.begin())
+                iter = mWidgets.end();
+            if (iter == mWidgets.begin())
+                return;
+            --iter;
+            button = static_cast<Button*>(*iter);
+            action(ActionEvent(button, button->getActionEventId()));
+            return;
+        }
+    }
+}

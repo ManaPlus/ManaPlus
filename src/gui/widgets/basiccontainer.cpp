@@ -372,3 +372,13 @@ void BasicContainer::setInternalFocusHandler(FocusHandler* focusHandler)
             (*iter)->setFocusHandler(mInternalFocusHandler);
     }
 }
+
+Widget *BasicContainer::findFirstWidget(const std::set<Widget*> &list)
+{
+    FOR_EACHR (WidgetListReverseIterator, iter, mWidgets)
+    {
+        if (list.find(*iter) != list.end())
+            return *iter;
+    }
+    return nullptr;
+}

@@ -22,6 +22,7 @@
 
 #include "actions/actiondef.h"
 
+#include "gui/windows/inventorywindow.h"
 #include "gui/windows/socialwindow.h"
 #include "gui/windows/shortcutwindow.h"
 
@@ -90,6 +91,18 @@ impHandler0(prevCommandsTab)
         return true;
     }
     return false;
+}
+
+impHandler0(nextInvTab)
+{
+    InventoryWindow::nextTab();
+    return true;
+}
+
+impHandler0(prevInvTab)
+{
+    InventoryWindow::prevTab();
+    return true;
 }
 
 }  // namespace Actions

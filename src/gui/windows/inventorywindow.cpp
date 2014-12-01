@@ -54,6 +54,7 @@
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/tabstrip.h"
 #include "gui/widgets/textfield.h"
+#include "gui/widgets/windowcontainer.h"
 
 #include "net/inventoryhandler.h"
 
@@ -744,6 +745,33 @@ bool InventoryWindow::isAnyInputFocused()
             return true;
     }
     return false;
+}
+
+InventoryWindow *InventoryWindow::getFirstVisible()
+{
+    std::set<Widget*> list;
+    FOR_EACH (WindowList::const_iterator, it, invInstances)
+    {
+        if ((*it) && (*it)->isWindowVisible())
+            list.insert(*it);
+    }
+    InventoryWindow *const window = dynamic_cast<InventoryWindow*>(
+        windowContainer->findFirstWidget(list));
+    return window;
+}
+
+void InventoryWindow::nextTab()
+{
+    InventoryWindow *const window = getFirstVisible();
+    if (window)
+        window->mFilter->nextTab();
+}
+
+void InventoryWindow::prevTab()
+{
+    InventoryWindow *const window = getFirstVisible();
+    if (window)
+        window->mFilter->prevTab();
 }
 
 void InventoryWindow::widgetResized(const Event &event)

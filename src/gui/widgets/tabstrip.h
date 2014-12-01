@@ -41,6 +41,10 @@ class TabStrip final : public WidgetGroup
                              const override final A_WARN_UNUSED;
 
         void action(const ActionEvent &event) override final;
+
+        void nextTab();
+
+        void prevTab();
 };
 
 #endif  // GUI_WIDGETS_TABSTRIP_H

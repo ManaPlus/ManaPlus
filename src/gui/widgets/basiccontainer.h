@@ -64,6 +64,7 @@
 #ifndef GUI_WIDGETS_BASICCONTAINER_H
 #define GUI_WIDGETS_BASICCONTAINER_H
 
+#include <set>
 #include <vector>
 
 #include "gui/widgets/widget.h"
@@ -133,6 +134,8 @@ class BasicContainer notfinal : public Widget,
         // Inherited from DeathListener
 
         virtual void death(const Event& event) override;
+
+        Widget *findFirstWidget(const std::set<Widget*> &list);
 
     protected:
         /**

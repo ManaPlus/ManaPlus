@@ -224,6 +224,18 @@ SetupActionData setupActionDataWindows[] =
         "",
     },
     {
+        // TRANSLATORS: input action name
+        N_("Previous inventory tab"),
+        InputAction::PREV_INV_TAB,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        N_("Next inventory tab"),
+        InputAction::NEXT_INV_TAB,
+        "",
+    },
+    {
         "",
         InputAction::NO_VALUE,
         ""

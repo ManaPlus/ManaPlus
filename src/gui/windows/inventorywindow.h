@@ -156,6 +156,12 @@ class InventoryWindow final : public Window,
 
         static bool isAnyInputFocused();
 
+        static InventoryWindow *getFirstVisible();
+
+        static void nextTab();
+
+        static void prevTab();
+
     private:
         /**
          * Updates the weight bar.
