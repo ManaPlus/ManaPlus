@@ -1114,6 +1114,8 @@ SET(SRCS
     listeners/openurllistener.h
     listeners/pincodelistener.cpp
     listeners/pincodelistener.h
+    listeners/playerdeathlistener.cpp
+    listeners/playerdeathlistener.h
     listeners/playerpostdeathlistener.h
     listeners/playerlistener.cpp
     listeners/playerlistener.h
