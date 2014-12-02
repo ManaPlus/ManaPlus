@@ -34,8 +34,6 @@
 
 #include "debug.h"
 
-OkDialog *weightNotice = nullptr;
-
 OkDialog::OkDialog(const std::string &restrict title,
                    const std::string &restrict msg,
                    const std::string &restrict button,

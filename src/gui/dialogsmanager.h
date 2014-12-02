@@ -23,6 +23,7 @@
 #ifndef GUI_DIALOGSMANAGER_H
 #define GUI_DIALOGSMANAGER_H
 
+#include "listeners/attributelistener.h"
 #include "listeners/playerdeathlistener.h"
 
 #include <string>
@@ -31,7 +32,8 @@
 
 class Window;
 
-class DialogsManager final : public PlayerDeathListener
+class DialogsManager final : public AttributeListener,
+                             public PlayerDeathListener
 {
     public:
         DialogsManager();
@@ -45,6 +47,10 @@ class DialogsManager final : public PlayerDeathListener
                                        const bool modal);
 
         void playerDeath() override final;
+
+        void attributeChanged(const int id,
+                              const int oldVal,
+                              const int newVal) override final;
 };
 
 extern DialogsManager *dialogsManager;

@@ -129,8 +129,6 @@
 QuitDialog *quitDialog = nullptr;
 Window *disconnectedDialog = nullptr;
 
-int weightNoticeTime = 0;
-
 bool mStatsReUpdated = false;
 const unsigned adjustDelay = 10;
 

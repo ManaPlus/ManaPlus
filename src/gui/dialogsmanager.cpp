@@ -25,6 +25,8 @@
 #include "configuration.h"
 #include "settings.h"
 
+#include "being/attributes.h"
+
 #include "gui/dialogtype.h"
 
 #include "gui/widgets/selldialog.h"
@@ -37,6 +39,7 @@
 #include "gui/windows/updaterwindow.h"
 
 #include "listeners/playerpostdeathlistener.h"
+#include "listeners/weightlistener.h"
 
 #include "net/inventoryhandler.h"
 
@@ -50,15 +53,19 @@
 #undef ERROR
 #endif
 
-OkDialog *deathNotice;
+OkDialog *deathNotice = nullptr;
 DialogsManager *dialogsManager = nullptr;
+OkDialog *weightNotice = nullptr;
+int weightNoticeTime = 0;
 
 namespace
 {
     PlayerPostDeathListener postDeathListener;
+    WeightListener weightListener;
 }  // namespace
 
 DialogsManager::DialogsManager() :
+    AttributeListener(),
     PlayerDeathListener()
 {
 }
@@ -123,4 +130,51 @@ void DialogsManager::playerDeath()
         DialogType::OK,
         false, true, nullptr, 260);
     deathNotice->addActionListener(&postDeathListener);
+}
+
+void DialogsManager::attributeChanged(const int id,
+                                      const int oldVal,
+                                      const int newVal)
+{
+    if (id == Attributes::TOTAL_WEIGHT)
+    {
+        if (!weightNotice && config.getBoolValue("weightMsg"))
+        {
+            const int max = PlayerInfo::getAttribute(
+                Attributes::MAX_WEIGHT) / 2;
+            const int total = oldVal;
+            if (newVal >= max && total < max)
+            {
+                weightNoticeTime = cur_time + 5;
+                // TRANSLATORS: message header
+                weightNotice = new OkDialog(_("Message"),
+                    // TRANSLATORS: weight message
+                    _("You are carrying more than "
+                    "half your weight. You are "
+                    "unable to regain health."),
+                    // TRANSLATORS: ok dialog button
+                    _("OK"),
+                    DialogType::OK,
+                    false, true, nullptr, 260);
+                weightNotice->addActionListener(
+                    &weightListener);
+            }
+            else if (newVal < max && total >= max)
+            {
+                weightNoticeTime = cur_time + 5;
+                // TRANSLATORS: message header
+                weightNotice = new OkDialog(_("Message"),
+                    // TRANSLATORS: weight message
+                    _("You are carrying less than "
+                    "half your weight. You "
+                    "can regain health."),
+                    // TRANSLATORS: ok dialog button
+                    _("OK"),
+                    DialogType::OK,
+                    false, true, nullptr, 260);
+                weightNotice->addActionListener(
+                    &weightListener);
+            }
+        }
+    }
 }

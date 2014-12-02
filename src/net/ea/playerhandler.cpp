@@ -35,15 +35,12 @@
 #include "gui/dialogtype.h"
 #include "gui/viewport.h"
 
-#include "gui/windows/okdialog.h"
 #include "gui/windows/skilldialog.h"
 #include "gui/windows/statuswindow.h"
 
 #include "resources/notifytypes.h"
 
 #include "resources/map/map.h"
-
-#include "listeners/weightlistener.h"
 
 #include "net/messagein.h"
 
@@ -53,16 +50,9 @@
 
 #include "debug.h"
 
-extern int weightNoticeTime;
-
 // Max. distance we are willing to scroll after a teleport;
 // everything beyond will reset the port hard.
 static const int MAP_TELEPORT_SCROLL_DISTANCE = 8;
-
-namespace
-{
-    WeightListener weightListener;
-}  // anonymous namespace
 
 namespace Ea
 {
@@ -385,45 +375,6 @@ void PlayerHandler::setStat(const int type,
                 PlayerInfo::getStatExperience(Attributes::JOB).first, base);
             break;
         case Ea::TOTAL_WEIGHT:
-            if (!weightNotice && config.getBoolValue("weightMsg"))
-            {
-                const int max = PlayerInfo::getAttribute(
-                    Attributes::MAX_WEIGHT) / 2;
-                const int total = PlayerInfo::getAttribute(
-                    Attributes::TOTAL_WEIGHT);
-                if (base >= max && total < max)
-                {
-                    weightNoticeTime = cur_time + 5;
-                    // TRANSLATORS: message header
-                    weightNotice = new OkDialog(_("Message"),
-                        // TRANSLATORS: weight message
-                        _("You are carrying more than "
-                        "half your weight. You are "
-                        "unable to regain health."),
-                        // TRANSLATORS: ok dialog button
-                        _("OK"),
-                        DialogType::OK,
-                        false, true, nullptr, 260);
-                    weightNotice->addActionListener(
-                        &weightListener);
-                }
-                else if (base < max && total >= max)
-                {
-                    weightNoticeTime = cur_time + 5;
-                    // TRANSLATORS: message header
-                    weightNotice = new OkDialog(_("Message"),
-                        // TRANSLATORS: weight message
-                        _("You are carrying less than "
-                        "half your weight. You "
-                        "can regain health."),
-                        // TRANSLATORS: ok dialog button
-                        _("OK"),
-                        DialogType::OK,
-                        false, true, nullptr, 260);
-                    weightNotice->addActionListener(
-                        &weightListener);
-                }
-            }
             PlayerInfo::setAttribute(Attributes::TOTAL_WEIGHT, base);
             break;
         case Ea::MAX_WEIGHT:
