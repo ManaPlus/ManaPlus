@@ -41,7 +41,7 @@ extern OkDialog *deathNotice;
 /**
   * Listener used for handling death message.
   */
-struct PlayerDeathListener final : public ActionListener
+struct PlayerPostDeathListener final : public ActionListener
 {
     void action(const ActionEvent &event A_UNUSED)
     {

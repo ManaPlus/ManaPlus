@@ -45,7 +45,7 @@
 
 #include "resources/map/map.h"
 
-#include "listeners/playerdeathlistener.h"
+#include "listeners/playerpostdeathlistener.h"
 #include "listeners/weightlistener.h"
 
 #include "net/messagein.h"
@@ -65,7 +65,7 @@ static const int MAP_TELEPORT_SCROLL_DISTANCE = 8;
 namespace
 {
     WeightListener weightListener;
-    PlayerDeathListener deathListener;
+    PlayerPostDeathListener postDeathListener;
 }  // anonymous namespace
 
 namespace Ea
@@ -196,7 +196,7 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
             _("Revive"),
             DialogType::OK,
             false, true, nullptr, 260);
-        deathNotice->addActionListener(&deathListener);
+        deathNotice->addActionListener(&postDeathListener);
         if (localPlayer->getCurrentAction() != BeingAction::DEAD)
         {
             localPlayer->setAction(BeingAction::DEAD, 0);
