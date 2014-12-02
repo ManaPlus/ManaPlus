@@ -69,7 +69,7 @@
 
 #include "gui/widgets/widget.h"
 
-#include "listeners/deathlistener.h"
+#include "listeners/widgetdeathlistener.h"
 
 /**
   * A base class for containers. The class implements the most
@@ -80,12 +80,12 @@
   * @since 0.6.0
   */
 class BasicContainer notfinal : public Widget,
-                                public DeathListener
+                                public WidgetDeathListener
 {
     public:
         explicit BasicContainer(const Widget2 *const widget) :
             Widget(widget),
-            DeathListener(),
+            WidgetDeathListener(),
             mWidgets(),
             mLogicWidgets()
         { }
@@ -131,7 +131,7 @@ class BasicContainer notfinal : public Widget,
 
         virtual Widget *getWidgetAt(int x, int y) override A_WARN_UNUSED;
 
-        // Inherited from DeathListener
+        // Inherited from WidgetDeathListener
 
         virtual void death(const Event& event) override;
 

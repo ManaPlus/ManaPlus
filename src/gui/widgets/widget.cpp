@@ -74,7 +74,7 @@
 #include "gui/focushandler.h"
 
 #include "listeners/actionlistener.h"
-#include "listeners/deathlistener.h"
+#include "listeners/widgetdeathlistener.h"
 #include "listeners/widgetlistener.h"
 
 #include "debug.h"
@@ -117,7 +117,7 @@ Widget::Widget(const Widget2 *const widget) :
 
 Widget::~Widget()
 {
-    FOR_EACH (DeathListenerIterator, iter, mDeathListeners)
+    FOR_EACH (WidgetDeathListenerIterator, iter, mDeathListeners)
     {
         Event event(this);
         (*iter)->death(event);
@@ -258,12 +258,12 @@ void Widget::removeActionListener(ActionListener *const actionListener)
     mActionListeners.remove(actionListener);
 }
 
-void Widget::addDeathListener(DeathListener *const deathListener)
+void Widget::addDeathListener(WidgetDeathListener *const deathListener)
 {
     mDeathListeners.push_back(deathListener);
 }
 
-void Widget::removeDeathListener(DeathListener *const deathListener)
+void Widget::removeDeathListener(WidgetDeathListener *const deathListener)
 {
     mDeathListeners.remove(deathListener);
 }

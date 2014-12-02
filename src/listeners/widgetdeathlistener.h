@@ -61,8 +61,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef LISTENERS_DEATHLISTENER_H
-#define LISTENERS_DEATHLISTENER_H
+#ifndef LISTENERS_WIDGETDEATHLISTENER_H
+#define LISTENERS_WIDGETDEATHLISTENER_H
 
 #include <string>
 
@@ -75,13 +75,13 @@
   * @author Olof Naessén
   * @since 0.6.0
   */
-class DeathListener notfinal
+class WidgetDeathListener notfinal
 {
     public:
         /**
           * Destructor.
           */
-        virtual ~DeathListener()
+        virtual ~WidgetDeathListener()
         { }
 
         /**
@@ -99,8 +99,8 @@ class DeathListener notfinal
           * You should not be able to make an instance of DeathListener,
           * therefore its constructor is protected.
           */
-        DeathListener()
+        WidgetDeathListener()
         { }
 };
 
-#endif  // LISTENERS_DEATHLISTENER_H
+#endif  // LISTENERS_WIDGETDEATHLISTENER_H

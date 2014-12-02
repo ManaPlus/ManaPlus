@@ -76,7 +76,7 @@
 #include "localconsts.h"
 
 class ActionListener;
-class DeathListener;
+class WidgetDeathListener;
 class FocusHandler;
 class FocusListener;
 class Font;
@@ -532,7 +532,7 @@ class Widget notfinal : public Widget2
           * @see removeDeathListener
           * @since 0.1.0
           */
-        void addDeathListener(DeathListener *const deathListener);
+        void addDeathListener(WidgetDeathListener *const deathListener);
 
         /**
           * Removes an added death listener from the widget.
@@ -541,7 +541,7 @@ class Widget notfinal : public Widget2
           * @see addDeathListener
           * @since 0.1.0
           */
-        void removeDeathListener(DeathListener *const deathListener);
+        void removeDeathListener(WidgetDeathListener *const deathListener);
 
         /**
           * Adds a mouse listener to the widget. When a mouse event is 
@@ -1112,17 +1112,17 @@ class Widget notfinal : public Widget2
         /**
           * Typdef.
           */
-        typedef std::list<DeathListener*> DeathListenerList;
+        typedef std::list<WidgetDeathListener*> WidgetDeathListenerList;
 
         /**
           * Holds the death listeners of the widget.
           */ 
-        DeathListenerList mDeathListeners;
+        WidgetDeathListenerList mDeathListeners;
 
         /**
           * Typdef.
           */
-        typedef DeathListenerList::iterator DeathListenerIterator;
+        typedef WidgetDeathListenerList::iterator WidgetDeathListenerIterator;
 
         /**
           * Typdef.
