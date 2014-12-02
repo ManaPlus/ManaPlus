@@ -41,11 +41,8 @@
 
 #include "resources/notifytypes.h"
 
-#include "resources/db/deaddb.h"
-
 #include "resources/map/map.h"
 
-#include "listeners/playerpostdeathlistener.h"
 #include "listeners/weightlistener.h"
 
 #include "net/messagein.h"
@@ -65,7 +62,6 @@ static const int MAP_TELEPORT_SCROLL_DISTANCE = 8;
 namespace
 {
     WeightListener weightListener;
-    PlayerPostDeathListener postDeathListener;
 }  // anonymous namespace
 
 namespace Ea
@@ -186,23 +182,6 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
     }
 
     playerHandler->setStat(type, value, -1, true);
-
-    if (PlayerInfo::getAttribute(Attributes::HP) == 0 && !deathNotice)
-    {
-        // TRANSLATORS: message header
-        deathNotice = new OkDialog(_("Message"),
-            DeadDB::getRandomString(),
-            // TRANSLATORS: ok dialog button
-            _("Revive"),
-            DialogType::OK,
-            false, true, nullptr, 260);
-        deathNotice->addActionListener(&postDeathListener);
-        if (localPlayer->getCurrentAction() != BeingAction::DEAD)
-        {
-            localPlayer->setAction(BeingAction::DEAD, 0);
-            localPlayer->recalcSpritesOrder();
-        }
-    }
     BLOCK_END("PlayerHandler::processPlayerStatUpdate1")
 }
 

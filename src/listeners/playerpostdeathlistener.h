@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LISTENERS_PLAYERDEATHLISTENER_H
-#define LISTENERS_PLAYERDEATHLISTENER_H
+#ifndef LISTENERS_PLAYERPOSTDEATHLISTENER_H
+#define LISTENERS_PLAYERPOSTDEATHLISTENER_H
 
 #include "being/localplayer.h"
 
@@ -60,4 +60,4 @@ struct PlayerPostDeathListener final : public ActionListener
     }
 };
 
-#endif  // LISTENERS_PLAYERDEATHLISTENER_H
+#endif  // LISTENERS_PLAYERPOSTDEATHLISTENER_H

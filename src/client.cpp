@@ -382,7 +382,7 @@ void Client::gameInit()
 
     gui = new Gui();
     gui->postInit(mainGraphics);
-
+    dialogsManager = new DialogsManager;
     popupManager = new PopupManager;
 
     initSoundManager();
@@ -654,6 +654,7 @@ void Client::gameClear()
 
     delete2(mCurrentDialog);
     delete2(popupManager);
+    delete2(dialogsManager);
     delete2(gui);
 
     if (inventoryHandler)

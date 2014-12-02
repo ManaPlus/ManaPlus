@@ -23,15 +23,19 @@
 #ifndef GUI_DIALOGSMANAGER_H
 #define GUI_DIALOGSMANAGER_H
 
+#include "listeners/playerdeathlistener.h"
+
 #include <string>
 
 #include "localconsts.h"
 
 class Window;
 
-class DialogsManager final
+class DialogsManager final : public PlayerDeathListener
 {
     public:
+        DialogsManager();
+
         static void closeDialogs();
 
         static void createUpdaterWindow();
@@ -39,6 +43,10 @@ class DialogsManager final
         static Window *openErrorDialog(const std::string &header,
                                        const std::string &message,
                                        const bool modal);
+
+        void playerDeath() override final;
 };
+
+extern DialogsManager *dialogsManager;
 
 #endif  // GUI_DIALOGSMANAGER_H

@@ -36,7 +36,11 @@
 #include "gui/windows/okdialog.h"
 #include "gui/windows/updaterwindow.h"
 
+#include "listeners/playerpostdeathlistener.h"
+
 #include "net/inventoryhandler.h"
+
+#include "resources/db/deaddb.h"
 
 #include "utils/gettext.h"
 
@@ -46,7 +50,18 @@
 #undef ERROR
 #endif
 
-extern OkDialog *deathNotice;
+OkDialog *deathNotice;
+DialogsManager *dialogsManager = nullptr;
+
+namespace
+{
+    PlayerPostDeathListener postDeathListener;
+}  // namespace
+
+DialogsManager::DialogsManager() :
+    PlayerDeathListener()
+{
+}
 
 void DialogsManager::closeDialogs()
 {
@@ -95,4 +110,17 @@ Window *DialogsManager::openErrorDialog(const std::string &header,
         dialog->postInit();
         return dialog;
     }
+}
+
+void DialogsManager::playerDeath()
+{
+    logger->log("DialogsManager::playerDeath");
+    // TRANSLATORS: message header
+    deathNotice = new OkDialog(_("Message"),
+        DeadDB::getRandomString(),
+        // TRANSLATORS: ok dialog button
+        _("Revive"),
+        DialogType::OK,
+        false, true, nullptr, 260);
+    deathNotice->addActionListener(&postDeathListener);
 }

@@ -31,6 +31,7 @@
 
 #include "listeners/actorspritelistener.h"
 #include "listeners/attributelistener.h"
+#include "listeners/playerdeathlistener.h"
 #include "listeners/statlistener.h"
 
 #include <vector>
@@ -49,6 +50,7 @@ class OkDialog;
 class LocalPlayer final : public Being,
                           public ActorSpriteListener,
                           public AttributeListener,
+                          public PlayerDeathListener,
                           public StatListener
 {
     public:
@@ -288,6 +290,8 @@ class LocalPlayer final : public Being,
          * Called when a option (set with config.addListener()) is changed
          */
         void optionChanged(const std::string &value) override final;
+
+        void playerDeath() override final;
 
         /**
          * set a following player.

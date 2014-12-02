@@ -110,6 +110,7 @@ extern SkillDialog *skillDialog;
 LocalPlayer::LocalPlayer(const int id, const uint16_t subtype) :
     Being(id, ActorType::Player, subtype, nullptr),
     AttributeListener(),
+    PlayerDeathListener(),
     StatListener(),
     mGMLevel(0),
     mCrazyMoveState(0),
@@ -1105,6 +1106,13 @@ void LocalPlayer::attributeChanged(const int id,
         }
         case Attributes::LEVEL:
             mLevel = newVal;
+            break;
+        case Attributes::HP:
+            if (oldVal != 0 && newVal == 0
+                && localPlayer->getCurrentAction() != BeingAction::DEAD)
+            {
+                PlayerDeathListener::distributeEvent();
+            }
             break;
         default:
             break;
@@ -3276,3 +3284,13 @@ void LocalPlayer::setTestParticle(const std::string &fileName,
             mTestParticleHash = UpdaterWindow::getFileHash(mTestParticleName);
     }
 }
+
+void LocalPlayer::playerDeath()
+{
+    if (mAction != BeingAction::DEAD)
+    {
+        setAction(BeingAction::DEAD, 0);
+        recalcSpritesOrder();
+    }
+}
+
