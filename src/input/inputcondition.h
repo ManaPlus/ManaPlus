@@ -35,14 +35,15 @@ namespace InputCondition
         NONPCINPUT = 128,                    // npc input field inactive
         EMODS = 256,                         // game modifiers enabled
         NOTARGET = 512,                      // no target/untarget keys
-                                              // pressed
+                                             // pressed
         NOFOLLOW = 1024,                     // follow mode disabled
         INGAME = 2048,                       // game must be started
         NOBUYSELL = 4096,                    // no active buy or sell dialogs
         NONPCDIALOG = 8192,                  // no active npc dialog or
-                                              // dialog almost closed
+                                             // dialog almost closed
         NOTALKING = 16384,                   // player have no opened
-                                              // dialogs what prevent moving
+                                             // dialogs what prevent moving
+        ALIVE = 32768,                       // player alive
         SHORTCUT = 2 + 4 + 16 + 512 + 2048,  // flags for shortcut keys
         SHORTCUT0 = 2 + 4 + 16 + 512,        // flags for shortcut keys
         GAME = 2 + 4 + 8 + 16 + 64 + 2048,   // main game key

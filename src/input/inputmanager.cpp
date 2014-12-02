@@ -715,6 +715,9 @@ void InputManager::updateConditionMask()
 
     if (!localPlayer || localPlayer->getFollow().empty())
         mMask |= InputCondition::NOFOLLOW;
+
+    if (localPlayer && localPlayer->isAlive())
+        mMask |= InputCondition::ALIVE;
 }
 
 bool InputManager::checkKey(const InputActionData *const key) const
