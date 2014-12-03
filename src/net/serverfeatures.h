@@ -84,6 +84,8 @@ class ServerFeatures notfinal
         virtual bool haveMapServerVersion() const = 0;
 
         virtual bool haveNpcGender() const = 0;
+
+        virtual bool haveJoinChannel() const = 0;
 };
 
 }  // namespace Net

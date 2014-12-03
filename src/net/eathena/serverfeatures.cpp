@@ -170,4 +170,9 @@ bool ServerFeatures::haveNpcGender() const
     return serverVersion >= 3;
 }
 
+bool ServerFeatures::haveJoinChannel() const
+{
+    return serverVersion >= 3;
+}
+
 }  // namespace EAthena

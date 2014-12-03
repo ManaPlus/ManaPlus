@@ -169,4 +169,9 @@ bool ServerFeatures::haveNpcGender() const
     return serverVersion > 0;
 }
 
+bool ServerFeatures::haveJoinChannel() const
+{
+    return false;
+}
+
 }  // namespace TmwAthena
