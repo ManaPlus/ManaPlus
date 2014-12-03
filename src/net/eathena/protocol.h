@@ -249,6 +249,7 @@
 #define SMSG_CHAT_DISPLAY            0x00d7
 #define SMSG_CHAT_JOIN_ACK           0x00db
 #define SMSG_CHAT_LEAVE              0x00dd
+#define SMSG_CHAT_JOIN_CHANNEL       0x0b08
 
 #define SMSG_MAIL_OPEN_WINDOW        0x0260
 
@@ -347,6 +348,7 @@
 #define CMSG_CHAT_WHISPER            0x0096
 #define CMSG_CHAT_WHO                0x00c1
 #define CMSG_CHAT_JOIN               0x00d9
+#define CMSG_CHAT_JOIN_CHANNEL       0x0b07
 #define CMSG_BATTLE_CHAT_MESSAGE     0x02db
 
 #define CMSG_CREAYE_CHAT_ROOM        0x00d5

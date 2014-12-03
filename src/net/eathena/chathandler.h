@@ -113,6 +113,8 @@ class ChatHandler final : public MessageHandler, public Ea::ChatHandler
         static void processChatJoinAck(Net::MessageIn &msg);
 
         static void processChatLeave(Net::MessageIn &msg);
+
+        static void processJoinChannel(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

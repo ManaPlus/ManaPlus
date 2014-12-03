@@ -31,6 +31,7 @@
 #include "gui/windows/chatwindow.h"
 
 #include "net/mercenaryhandler.h"
+#include "net/serverfeatures.h"
 
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
@@ -71,6 +72,7 @@ ChatHandler::ChatHandler() :
         SMSG_CHAT_DISPLAY,
         SMSG_CHAT_JOIN_ACK,
         SMSG_CHAT_LEAVE,
+        SMSG_CHAT_JOIN_CHANNEL,
         0
     };
     handledMessages = _messages;
@@ -145,6 +147,10 @@ void ChatHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_CHAT_LEAVE:
             processChatLeave(msg);
+            break;
+
+        case SMSG_CHAT_JOIN_CHANNEL:
+            processJoinChannel(msg);
             break;
 
         default:
@@ -600,9 +606,44 @@ void ChatHandler::processChatLeave(Net::MessageIn &msg)
 
 void ChatHandler::joinChannel(const std::string &channel)
 {
-    // to join channel need use gm commands or send something.
-    // here we sending invisible message.
-    channelMessage(channel, "\302\202\302");
+    if (serverFeatures->haveJoinChannel())
+    {
+        createOutPacket(CMSG_CHAT_JOIN_CHANNEL);
+        outMsg.writeString(channel, 24, "channel name");
+    }
+    else
+    {
+        channelMessage(channel, "\302\202\302");
+    }
+}
+
+void ChatHandler::processJoinChannel(Net::MessageIn &msg)
+{
+    if (!chatWindow)
+        return;
+
+    const std::string channel = msg.readString(24, "channel name");
+    int flag = msg.readUInt8("flag");
+
+    if (channel.size() < 2)
+        return;
+    switch (flag)
+    {
+        case 0:
+        default:
+            chatWindow->channelChatLog(channel,
+                // TRANSLATORS: chat message
+                strprintf(_("Can't open channel. Channel "
+                "%s is not exists."), channel.c_str()),
+                ChatMsgType::BY_SERVER, false, false);
+            break;
+
+        case 1:
+        case 2:
+            chatWindow->addChannelTab(std::string("#").append(
+                channel.substr(1)), false);
+            break;
+    }
 }
 
 }  // namespace EAthena
