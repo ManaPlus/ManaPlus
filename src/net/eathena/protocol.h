@@ -349,6 +349,7 @@
 #define CMSG_CHAT_WHO                0x00c1
 #define CMSG_CHAT_JOIN               0x00d9
 #define CMSG_CHAT_JOIN_CHANNEL       0x0b07
+#define CMSG_CHAT_PART_CHANNEL       0x0b09
 #define CMSG_BATTLE_CHAT_MESSAGE     0x02db
 
 #define CMSG_CREAYE_CHAT_ROOM        0x00d5

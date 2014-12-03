@@ -466,4 +466,8 @@ void ChatHandler::joinChannel(const std::string &channel A_UNUSED)
 {
 }
 
+void ChatHandler::partChannel(const std::string &channel A_UNUSED)
+{
+}
+
 }  // namespace TmwAthena

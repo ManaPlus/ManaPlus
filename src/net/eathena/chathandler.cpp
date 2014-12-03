@@ -646,4 +646,13 @@ void ChatHandler::processJoinChannel(Net::MessageIn &msg)
     }
 }
 
+void ChatHandler::partChannel(const std::string &channel)
+{
+    if (serverFeatures->haveJoinChannel())
+    {
+        createOutPacket(CMSG_CHAT_PART_CHANNEL);
+        outMsg.writeString(channel, 24, "channel name");
+    }
+}
+
 }  // namespace EAthena

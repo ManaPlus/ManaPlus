@@ -80,6 +80,8 @@ class ChatHandler final : public MessageHandler, public Ea::ChatHandler
         void joinChat(const ChatObject *const chat,
                       const std::string &password) const override final;
 
+        void partChannel(const std::string &channel) override final;
+
     protected:
         static void processChat(Net::MessageIn &msg);
 

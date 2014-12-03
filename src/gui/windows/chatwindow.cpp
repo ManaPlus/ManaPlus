@@ -549,6 +549,7 @@ void ChatWindow::removeChannel(const std::string &name)
     std::string tempName = name;
     toLower(tempName);
     mChannels.erase(tempName);
+    chatHandler->partChannel(name);
 }
 
 void ChatWindow::removeAllWhispers()
