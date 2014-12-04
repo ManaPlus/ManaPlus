@@ -69,7 +69,7 @@ unsigned int CharServerHandler::baseSprite() const
 
 unsigned int CharServerHandler::hairSprite() const
 {
-    return EA_SPRITE_HAIR;
+    return EA_SPRITE_HAIR_COLOR;
 }
 
 unsigned int CharServerHandler::maxSprite() const

@@ -203,7 +203,7 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     const int hairStyle = msg.readInt16("hair style");
     const int weapon = msg.readInt32("weapon");
 
-    tempPlayer->setSprite(SPRITE_WEAPON, weapon, "", 1, true);
+    tempPlayer->setSprite(SPRITE_BODY, weapon, "", 1, true);
 
     data.mAttributes[Attributes::LEVEL] = msg.readInt16("level");
 
@@ -213,7 +213,7 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     const int hat = msg.readInt16("head top");
     const int topClothes = msg.readInt16("head mid");
 
-    tempPlayer->setSprite(SPRITE_HAIR, hairStyle * -1,
+    tempPlayer->setSprite(SPRITE_HAIR_COLOR, hairStyle * -1,
         ItemDB::get(-hairStyle).getDyeColorsString(
         msg.readInt16("hair color")));
 
@@ -233,18 +233,18 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     msg.readString(16, "map name");
     msg.readInt32("delete date");
     const int shoes = msg.readInt32("robe");
-    tempPlayer->setSprite(SPRITE_SHOE, shoes);
-    tempPlayer->setSprite(SPRITE_GLOVES, gloves);
-    tempPlayer->setSprite(SPRITE_CAPE, cape);
-    tempPlayer->setSprite(SPRITE_MISC1, misc1);
-    tempPlayer->setSprite(SPRITE_BOTTOMCLOTHES, bottomClothes);
+    tempPlayer->setSprite(SPRITE_HAIR, shoes);
+    tempPlayer->setSprite(SPRITE_SHOES, gloves);
+    tempPlayer->setSprite(SPRITE_SHIELD, cape);
+    tempPlayer->setSprite(SPRITE_HEAD_TOP, misc1);
+    tempPlayer->setSprite(SPRITE_WEAPON, bottomClothes);
     // to avoid show error (error.xml) need remove this sprite
     if (!config.getBoolValue("hideShield"))
-        tempPlayer->setSprite(SPRITE_SHIELD, shield);
+        tempPlayer->setSprite(SPRITE_FLOOR, shield);
 
-    tempPlayer->setSprite(SPRITE_HAT, hat);
-    tempPlayer->setSprite(SPRITE_TOPCLOTHES, topClothes);
-    tempPlayer->setSprite(SPRITE_MISC2, misc2);
+    tempPlayer->setSprite(SPRITE_CLOTHES_COLOR, hat);
+    tempPlayer->setSprite(SPRITE_HEAD_BOTTOM, topClothes);
+    tempPlayer->setSprite(SPRITE_HEAD_MID, misc2);
     msg.readInt32("slot change");
     tempPlayer->setRename(msg.readInt32("rename (inverse)"));
     // +++ here need use gender

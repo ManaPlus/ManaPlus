@@ -173,7 +173,7 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     const uint8_t look = msg.readUInt8("look");
     tempPlayer->setSubtype(race, look);
     const uint16_t weapon = msg.readInt16("weapon");
-    tempPlayer->setSprite(SPRITE_WEAPON, weapon, "", 1, true);
+    tempPlayer->setSprite(SPRITE_BODY, weapon, "", 1, true);
 
     data.mAttributes[Attributes::LEVEL] = msg.readInt16("level");
 
@@ -186,7 +186,7 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
 
     const uint8_t hairColor = msg.readUInt8("hair color");
     msg.readUInt8("unused");
-    tempPlayer->setSprite(SPRITE_HAIR, hairStyle * -1,
+    tempPlayer->setSprite(SPRITE_HAIR_COLOR, hairStyle * -1,
         ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
     tempPlayer->setHairColor(static_cast<unsigned char>(hairColor));
 
@@ -203,20 +203,20 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
 
     if (withColors)
     {
-        tempPlayer->setSprite(SPRITE_SHOE, shoes, "",
+        tempPlayer->setSprite(SPRITE_HAIR, shoes, "",
             msg.readUInt8("shoes color"));
-        tempPlayer->setSprite(SPRITE_GLOVES, gloves, "",
+        tempPlayer->setSprite(SPRITE_SHOES, gloves, "",
             msg.readUInt8("gloves color"));
-        tempPlayer->setSprite(SPRITE_CAPE, cape, "",
+        tempPlayer->setSprite(SPRITE_SHIELD, cape, "",
             msg.readUInt8("cape color"));
-        tempPlayer->setSprite(SPRITE_MISC1, misc1, "",
+        tempPlayer->setSprite(SPRITE_HEAD_TOP, misc1, "",
             msg.readUInt8("misc1 color"));
-        tempPlayer->setSprite(SPRITE_BOTTOMCLOTHES, bottomClothes,
+        tempPlayer->setSprite(SPRITE_WEAPON, bottomClothes,
             "", msg.readUInt8("bottom clothes color"));
         // to avoid show error (error.xml) need remove this sprite
         if (!config.getBoolValue("hideShield"))
         {
-            tempPlayer->setSprite(SPRITE_SHIELD, shield, "",
+            tempPlayer->setSprite(SPRITE_FLOOR, shield, "",
                 msg.readUInt8("shield color"));
         }
         else
@@ -224,28 +224,28 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
             msg.readUInt8("shield color");
         }
 
-        tempPlayer->setSprite(SPRITE_HAT, hat, "",
+        tempPlayer->setSprite(SPRITE_CLOTHES_COLOR, hat, "",
             msg.readUInt8("head option top color"));
-        tempPlayer->setSprite(SPRITE_TOPCLOTHES, topClothes, "",
+        tempPlayer->setSprite(SPRITE_HEAD_BOTTOM, topClothes, "",
             msg.readUInt8("top clothes color"));
-        tempPlayer->setSprite(SPRITE_MISC2, misc2, "",
+        tempPlayer->setSprite(SPRITE_HEAD_MID, misc2, "",
             msg.readUInt8("misc2 color"));
         msg.skip(5, "unused");
     }
     else
     {
-        tempPlayer->setSprite(SPRITE_SHOE, shoes);
-        tempPlayer->setSprite(SPRITE_GLOVES, gloves);
-        tempPlayer->setSprite(SPRITE_CAPE, cape);
-        tempPlayer->setSprite(SPRITE_MISC1, misc1);
-        tempPlayer->setSprite(SPRITE_BOTTOMCLOTHES, bottomClothes);
+        tempPlayer->setSprite(SPRITE_HAIR, shoes);
+        tempPlayer->setSprite(SPRITE_SHOES, gloves);
+        tempPlayer->setSprite(SPRITE_SHIELD, cape);
+        tempPlayer->setSprite(SPRITE_HEAD_TOP, misc1);
+        tempPlayer->setSprite(SPRITE_WEAPON, bottomClothes);
         // to avoid show error (error.xml) need remove this sprite
         if (!config.getBoolValue("hideShield"))
-            tempPlayer->setSprite(SPRITE_SHIELD, shield);
+            tempPlayer->setSprite(SPRITE_FLOOR, shield);
 
-        tempPlayer->setSprite(SPRITE_HAT, hat);  // head option top
-        tempPlayer->setSprite(SPRITE_TOPCLOTHES, topClothes);
-        tempPlayer->setSprite(SPRITE_MISC2, misc2);
+        tempPlayer->setSprite(SPRITE_CLOTHES_COLOR, hat);  // head option top
+        tempPlayer->setSprite(SPRITE_HEAD_BOTTOM, topClothes);
+        tempPlayer->setSprite(SPRITE_HEAD_MID, misc2);
     }
     character->slot = msg.readUInt8("slot");
     msg.readUInt8("unused");

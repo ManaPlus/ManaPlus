@@ -45,17 +45,17 @@ extern Net::InventoryHandler *inventoryHandler;
 const Equipment::Slot EQUIP_CONVERT[] =
 {
     Equipment::EQUIP_PROJECTILE_SLOT,    // 0    0
-    Equipment::EQUIP_FEET_SLOT,          // 1    SPRITE_SHOE
-    Equipment::EQUIP_LEGS_SLOT,          // 2    SPRITE_BOTTOMCLOTHES
-    Equipment::EQUIP_TORSO_SLOT,         // 3    SPRITE_TOPCLOTHES
+    Equipment::EQUIP_FEET_SLOT,          // 1    SPRITE_HAIR
+    Equipment::EQUIP_LEGS_SLOT,          // 2    SPRITE_WEAPON
+    Equipment::EQUIP_TORSO_SLOT,         // 3    SPRITE_HEAD_BOTTOM
     Equipment::EQUIP_GLOVES_SLOT,        // 4    0
     Equipment::EQUIP_EVOL_RING1_SLOT,    // 5
     Equipment::EQUIP_PROJECTILE_SLOT,    // 6    0
-    Equipment::EQUIP_HEAD_SLOT,          // 7    SPRITE_HAT
+    Equipment::EQUIP_HEAD_SLOT,          // 7    SPRITE_CLOTHES_COLOR
     Equipment::EQUIP_RING2_SLOT,         // 8    0
-    Equipment::EQUIP_PROJECTILE_SLOT,    // 9    SPRITE_GLOVES
-    Equipment::EQUIP_FIGHT1_SLOT,        // 10   SPRITE_WEAPON
-    Equipment::EQUIP_FIGHT2_SLOT,        // 11   SPRITE_SHIELD
+    Equipment::EQUIP_PROJECTILE_SLOT,    // 9    SPRITE_SHOES
+    Equipment::EQUIP_FIGHT1_SLOT,        // 10   SPRITE_BODY
+    Equipment::EQUIP_FIGHT2_SLOT,        // 11   SPRITE_FLOOR
     Equipment::EQUIP_EVOL_RING2_SLOT,    // 12
     Equipment::EQUIP_PROJECTILE_SLOT,    // 13   SPRITE_EVOL2
     Equipment::EQUIP_COSTUME_ROBE_SLOT,  // 14   SPRITE_EVOL3
