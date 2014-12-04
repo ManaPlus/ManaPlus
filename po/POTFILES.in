@@ -136,7 +136,6 @@ src/net/ea/gamehandler.cpp
 src/net/ea/guildhandler.cpp
 src/net/ea/loginhandler.cpp
 src/net/ea/network.cpp
-src/net/ea/playerhandler.cpp
 src/net/eathena/charserverhandler.cpp
 src/net/eathena/chathandler.cpp
 src/net/eathena/generalhandler.cpp
