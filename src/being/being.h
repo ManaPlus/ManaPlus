@@ -86,6 +86,7 @@ class Being notfinal : public ActorSprite,
                        public ConfigListener
 {
     public:
+        friend class ActorManager;
         friend class BeingEquipBackend;
         friend class LocalPlayer;
 
