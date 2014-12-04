@@ -139,7 +139,7 @@ msgstr "Sumber gambar:"
 #. TRANSLATORS: dump command
 #: src/actions/actions.cpp:919 src/actions/actions.cpp:928
 msgid "Resource orphaned images:"
-msgstr "Sumber gambar tak diketahui"
+msgstr "Sumber gambar tak diketahui:"
 
 #. TRANSLATORS: dump environment command
 #: src/actions/actions.cpp:1016
@@ -355,12 +355,12 @@ msgstr "Barang milik orang lain."
 #. TRANSLATORS: pickup error message
 #: src/being/localplayer.cpp:849
 msgid "You can't pickup this amount of items."
-msgstr "Kamu tidak bisa mengambil barang dalam jumlah ini"
+msgstr "Kamu tidak bisa mengambil barang dalam jumlah ini."
 
 #. TRANSLATORS: pickup error message
 #: src/being/localplayer.cpp:853
 msgid "Your item stack has max amount."
-msgstr "Jumlah tumpukan barangmu sudah maksimal"
+msgstr "Jumlah tumpukan barangmu sudah maksimal."
 
 #. TRANSLATORS: pickup error message
 #: src/being/localplayer.cpp:860
@@ -2799,52 +2799,52 @@ msgstr "Kelompok"
 #. TRANSLATORS: notification message
 #: src/gui/widgets/tabs/chat/partytab.cpp:98 src/resources/notifications.h:207
 msgid "Item sharing enabled."
-msgstr "Item sharing diaktifkan"
+msgstr "Item sharing diaktifkan."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
 #: src/gui/widgets/tabs/chat/partytab.cpp:103
 #: src/resources/notifications.h:211
 msgid "Item sharing disabled."
-msgstr "Item sharing dimatikan"
+msgstr "Item sharing dimatikan."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
 #: src/gui/widgets/tabs/chat/partytab.cpp:108
 #: src/resources/notifications.h:215
 msgid "Item sharing not possible."
-msgstr "Item sharing tidak bisa"
+msgstr "Item sharing tidak bisa."
 
 #. TRANSLATORS: chat message
 #: src/gui/widgets/tabs/chat/partytab.cpp:113
 msgid "Item sharing unknown."
-msgstr "Item sharing tidak diketahui"
+msgstr "Item sharing tidak diketahui."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
 #: src/gui/widgets/tabs/chat/partytab.cpp:148
 #: src/resources/notifications.h:195
 msgid "Experience sharing enabled."
-msgstr "Berbagi pengalaman diaktifkan"
+msgstr "Berbagi pengalaman diaktifkan."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
 #: src/gui/widgets/tabs/chat/partytab.cpp:153
 #: src/resources/notifications.h:199
 msgid "Experience sharing disabled."
-msgstr "Berbagi pengalaman dimatikan"
+msgstr "Berbagi pengalaman dimatikan."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
 #: src/gui/widgets/tabs/chat/partytab.cpp:158
 #: src/resources/notifications.h:203
 msgid "Experience sharing not possible."
-msgstr "Berbagi pengalaman tidak bisa"
+msgstr "Berbagi pengalaman tidak bisa."
 
 #. TRANSLATORS: chat message
 #: src/gui/widgets/tabs/chat/partytab.cpp:163
 msgid "Experience sharing unknown."
-msgstr "Berbagi pengalaman tidak diketahui"
+msgstr "Berbagi pengalaman tidak diketahui."
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:53
@@ -2903,7 +2903,7 @@ msgstr "Menggambar panggilan:"
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:79
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:228
 msgid "Texture binds:"
-msgstr "Mengikat tekstur"
+msgstr "Mengikat tekstur:"
 
 #. TRANSLATORS: debug window label, frames per second
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:82
@@ -3007,7 +3007,7 @@ msgstr "Kelompok target:"
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:275
 msgid "Target guild:"
-msgstr "Guild target"
+msgstr "Guild target:"
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:277

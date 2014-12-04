@@ -324,7 +324,7 @@ msgstr "Б"
 #: src/being/localplayer.cpp:380
 #, c-format
 msgid "You were killed by %s."
-msgstr "Вы были убиты %s"
+msgstr "Вы были убиты %s."
 
 #. TRANSLATORS: pickup error message
 #: src/being/localplayer.cpp:825
@@ -7831,7 +7831,7 @@ msgstr "Невозможно использовать, некорректный 
 
 #: src/net/eathena/chathandler.cpp:369
 msgid "Work in progress."
-msgstr "Идет работа"
+msgstr "Идет работа."
 
 #. TRANSLATORS: chat message
 #: src/net/eathena/chathandler.cpp:543

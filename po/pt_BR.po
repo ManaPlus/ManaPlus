@@ -2733,12 +2733,12 @@ msgstr "Armadilha alvo"
 #. TRANSLATORS: Skill type
 #: src/gui/widgets/skillinfo.cpp:143
 msgid "Unknown:"
-msgstr "Desconhecido(a): "
+msgstr "Desconhecido(a):"
 
 #: src/gui/widgets/skillinfo.cpp:149
 #, c-format
 msgid " / Mana: -%d"
-msgstr "/ Mana: -%d"
+msgstr " / Mana: -%d"
 
 #: src/gui/widgets/skillinfo.cpp:155
 #, c-format

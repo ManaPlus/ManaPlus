@@ -253,7 +253,7 @@ msgstr "¡Jugador ya borrado!"
 #. TRANSLATORS: erase command
 #: src/actions/commands.cpp:191
 msgid "Player no longer erased!"
-msgstr "El jugador ya no se encuentra suprimido. "
+msgstr "El jugador ya no se encuentra suprimido!"
 
 #. TRANSLATORS: erase command
 #: src/actions/commands.cpp:193
@@ -367,7 +367,7 @@ msgstr "No puedes recoger esta cantidad de objetos."
 #. TRANSLATORS: pickup error message
 #: src/being/localplayer.cpp:853
 msgid "Your item stack has max amount."
-msgstr "Tu montón de objetos esta al máximo. "
+msgstr "Tu montón de objetos esta al máximo."
 
 #. TRANSLATORS: pickup error message
 #: src/being/localplayer.cpp:860
@@ -7083,7 +7083,7 @@ msgstr "Desconectar rápidamende del servidor"
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:270
 msgid "Disable debug particle"
-msgstr "Desactivar particulas debug "
+msgstr "Desactivar particulas debug"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:276
@@ -7113,12 +7113,12 @@ msgstr "El cliente crasheo"
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:306
 msgid "Dump graphics info into chat"
-msgstr "Descargar la información de los graficos en el chat "
+msgstr "Descargar la información de los graficos en el chat"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:312
 msgid "Dump tests info into chat"
-msgstr "Descargar las informacion del test en el chat "
+msgstr "Descargar las informacion del test en el chat"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:318
@@ -8819,7 +8819,7 @@ msgstr ""
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:395
 msgid "Your mercenary run away."
-msgstr "Tu mercenario huyo. "
+msgstr "Tu mercenario huyo."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:399
@@ -8829,7 +8829,7 @@ msgstr "Estado desconocido del mercenario."
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:403
 msgid "You feed your homunculus."
-msgstr "Alimentas a tu homunculo. "
+msgstr "Alimentas a tu homunculo."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:407
