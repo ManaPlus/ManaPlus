@@ -382,10 +382,12 @@ Being *ActorManager::findBeingByPixel(const int x, const int y,
                 {
                     const FloorItem *const floor
                         = static_cast<const FloorItem*>(*it);
-                    if ((floor->getPixelX() - mapTileSize <= x) &&
-                        (floor->getPixelX() + mapTileSize > x) &&
-                        (floor->getPixelY() - mapTileSize * 2 <= y) &&
-                        (floor->getPixelY() + mapTileSize / 2 > y))
+                    const int px = floor->getPixelX();
+                    const int py = floor->getPixelY();
+                    if ((px - mapTileSize     <= x) &&
+                        (px + mapTileSize     >  x) &&
+                        (py - mapTileSize * 2 <= y) &&
+                        (py + mapTileSize / 2 >  y))
                     {
                         noBeing = true;
                     }
@@ -401,21 +403,24 @@ Being *ActorManager::findBeingByPixel(const int x, const int y,
                 continue;
             }
 
-            if ((being->isAlive()
+            if ((being->mAction != BeingAction::DEAD
                 || (targetDead && being->getType() == ActorType::Player))
-                && (allPlayers ||  being != localPlayer))
+                && (allPlayers || being != localPlayer))
             {
-                if ((being->getPixelX() - mapTileSize / 2 <= x) &&
-                    (being->getPixelX() + mapTileSize / 2 > x) &&
-                    (being->getPixelY() - mapTileSize <= y) &&
-                    (being->getPixelY() > y))
+                const int px = being->getPixelX();
+                const int py = being->getPixelY();
+                if ((px - mapTileSize / 2 <= x) &&
+                    (px + mapTileSize / 2 >  x) &&
+                    (py - mapTileSize     <= y) &&
+                    (py                   >  y))
                 {
                     return being;
                 }
-                else if (!noBeing && (being->getPixelX() - mapTileSize <= x) &&
-                         (being->getPixelX() + mapTileSize > x) &&
-                         (being->getPixelY() - mapTileSize * 2 <= y) &&
-                         (being->getPixelY() + mapTileSize / 2 > y))
+                else if (!noBeing &&
+                         (px - mapTileSize     <= x) &&
+                         (px + mapTileSize     >  x) &&
+                         (py - mapTileSize * 2 <= y) &&
+                         (py + mapTileSize / 2 >  y))
                 {
                     if (tempBeing)
                         noBeing = true;
@@ -450,10 +455,12 @@ Being *ActorManager::findBeingByPixel(const int x, const int y,
                 continue;
             }
 
-            if ((being->getPixelX() - mapTileSize / 2 <= x) &&
-                (being->getPixelX() + mapTileSize / 2 > x) &&
-                (being->getPixelY() - mapTileSize <= y) &&
-                (being->getPixelY() > y))
+            const int px = being->getPixelX();
+            const int py = being->getPixelY();
+            if ((px - mapTileSize / 2 <= x) &&
+                (px + mapTileSize / 2 >  x) &&
+                (py - mapTileSize     <= y) &&
+                (py                   >  y))
             {
                 return being;
             }
