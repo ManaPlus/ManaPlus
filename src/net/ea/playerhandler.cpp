@@ -22,7 +22,6 @@
 
 #include "net/ea/playerhandler.h"
 
-#include "configuration.h"
 #include "game.h"
 #include "party.h"
 #include "notifymanager.h"
@@ -32,7 +31,6 @@
 #include "being/attributes.h"
 #include "being/localplayer.h"
 
-#include "gui/dialogtype.h"
 #include "gui/viewport.h"
 
 #include "gui/windows/skilldialog.h"
@@ -45,8 +43,6 @@
 #include "net/messagein.h"
 
 #include "net/ea/eaprotocol.h"
-
-#include "utils/gettext.h"
 
 #include "debug.h"
 

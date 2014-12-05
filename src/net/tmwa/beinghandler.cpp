@@ -529,7 +529,8 @@ void BeingHandler::processPlayerUpdate1(Net::MessageIn &msg)
             dstBeing->updateSprite(SPRITE_WEAPON, headBottom,
                 "", colors[0]);
             dstBeing->updateSprite(SPRITE_HEAD_BOTTOM, headMid, "", colors[2]);
-            dstBeing->updateSprite(SPRITE_CLOTHES_COLOR, headTop, "", colors[1]);
+            dstBeing->updateSprite(SPRITE_CLOTHES_COLOR, headTop,
+                "", colors[1]);
         }
         else
         {
@@ -680,7 +681,8 @@ void BeingHandler::processPlayerUpdate2(Net::MessageIn &msg)
             dstBeing->updateSprite(SPRITE_WEAPON, headBottom,
                 "", colors[0]);
             dstBeing->updateSprite(SPRITE_HEAD_BOTTOM, headMid, "", colors[2]);
-            dstBeing->updateSprite(SPRITE_CLOTHES_COLOR, headTop, "", colors[1]);
+            dstBeing->updateSprite(SPRITE_CLOTHES_COLOR, headTop,
+                "", colors[1]);
         }
         else
         {
@@ -831,7 +833,8 @@ void BeingHandler::processPlayerMove(Net::MessageIn &msg)
             dstBeing->updateSprite(SPRITE_WEAPON, headBottom,
                 "", colors[0]);
             dstBeing->updateSprite(SPRITE_HEAD_BOTTOM, headMid, "", colors[2]);
-            dstBeing->updateSprite(SPRITE_CLOTHES_COLOR, headTop, "", colors[1]);
+            dstBeing->updateSprite(SPRITE_CLOTHES_COLOR, headTop,
+            "", colors[1]);
         }
         else
         {

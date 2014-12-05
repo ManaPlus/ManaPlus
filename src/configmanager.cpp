@@ -29,8 +29,6 @@
 
 #include "being/beingspeech.h"
 
-#include "input/inputmanager.h"
-
 #include "utils/files.h"
 #include "utils/gettext.h"
 #include "utils/mkdir.h"

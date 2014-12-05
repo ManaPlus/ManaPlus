@@ -47,7 +47,6 @@
 
 #include "resources/equipmentslots.h"
 #include "resources/imageset.h"
-#include "resources/itemslot.h"
 
 #include "utils/delete2.h"
 #include "utils/dtor.h"

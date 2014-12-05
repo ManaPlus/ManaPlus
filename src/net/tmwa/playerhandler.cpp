@@ -23,24 +23,19 @@
 #include "net/tmwa/playerhandler.h"
 
 #include "configuration.h"
-#include "game.h"
 
 #include "being/attributes.h"
 #include "being/beingflag.h"
 #include "being/localplayer.h"
 
+#include "gui/onlineplayer.h"
+
 #include "gui/windows/statuswindow.h"
+#include "gui/windows/whoisonline.h"
 
 #include "net/tmwa/inventoryhandler.h"
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
-
-#include "gui/windows/whoisonline.h"
-
-#include "gui/onlineplayer.h"
-#include "gui/viewport.h"
-
-#include "resources/map/map.h"
 
 #include "debug.h"
 

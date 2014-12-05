@@ -23,7 +23,6 @@
 #include "gui/windows/statuswindow.h"
 
 #include "configuration.h"
-#include "equipment.h"
 #include "gamemodifiers.h"
 #include "inventory.h"
 #include "item.h"

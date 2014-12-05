@@ -408,7 +408,8 @@ Game::Game() :
     if (localPlayer)
         localPlayer->updatePets();
 
-    settings.disableLoggingInGame = config.getBoolValue("disableLoggingInGame");
+    settings.disableLoggingInGame = config.getBoolValue(
+        "disableLoggingInGame");
 }
 
 Game::~Game()

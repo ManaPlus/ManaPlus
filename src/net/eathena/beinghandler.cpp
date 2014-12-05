@@ -37,7 +37,6 @@
 #include "input/keyboardconfig.h"
 
 #include "gui/windows/socialwindow.h"
-#include "gui/windows/killstats.h"
 
 #include "gui/windows/outfitwindow.h"
 
@@ -454,41 +453,41 @@ void BeingHandler::processBeingChangeLookContinue(Being *const dstBeing,
     const std::string color;
     switch (type)
     {
-        case 0:     // change race
+        case 0:  // change race
             dstBeing->setSubtype(static_cast<uint16_t>(id), 0);
             break;
-        case 1:     // eAthena LOOK_HAIR
+        case 1:  // eAthena LOOK_HAIR
             dstBeing->setSpriteID(SPRITE_HAIR_COLOR, id *-1);
             break;
-        case 2:     // LOOK_WEAPON Weapon ID in id, Shield ID in id2
+        case 2:  // LOOK_WEAPON Weapon ID in id, Shield ID in id2
             dstBeing->setSprite(SPRITE_BODY, id, "", 1, true);
             if (!mHideShield)
                 dstBeing->setSprite(SPRITE_FLOOR, id2);
             localPlayer->imitateOutfit(dstBeing, SPRITE_FLOOR);
             break;
-        case 3:     // LOOK_HEAD_BOTTOM
+        case 3:  // LOOK_HEAD_BOTTOM
             dstBeing->setSprite(SPRITE_WEAPON, id, color,
                 static_cast<unsigned char>(id2));
             localPlayer->imitateOutfit(dstBeing, SPRITE_WEAPON);
             break;
-        case 4:     // LOOK_HEAD_TOP Change upper headgear for eAthena, hat for us
+        case 4:  // LOOK_HEAD_TOP Change upper headgear for eAthena, hat for us
             dstBeing->setSprite(SPRITE_CLOTHES_COLOR, id, color,
                 static_cast<unsigned char>(id2));
             localPlayer->imitateOutfit(dstBeing, SPRITE_CLOTHES_COLOR);
             break;
-        case 5:     // LOOK_HEAD_MID Change middle headgear for eathena, armor for us
+        case 5:  // LOOK_HEAD_MID Change middle headgear for eathena, armor for us
             dstBeing->setSprite(SPRITE_HEAD_BOTTOM, id, color,
                 static_cast<unsigned char>(id2));
             localPlayer->imitateOutfit(dstBeing, SPRITE_HEAD_BOTTOM);
             break;
-        case 6:     // eAthena LOOK_HAIR_COLOR
+        case 6:  // eAthena LOOK_HAIR_COLOR
             dstBeing->setSpriteColor(SPRITE_HAIR_COLOR, ItemDB::get(
                 dstBeing->getSpriteID(SPRITE_HAIR_COLOR)).getDyeColorsString(id));
             break;
-        case 7:     // Clothes color
+        case 7:  // Clothes color
             // ignoring it
             break;
-        case 8:     // eAthena LOOK_SHIELD
+        case 8:  // eAthena LOOK_SHIELD
             if (!mHideShield)
             {
                 dstBeing->setSprite(SPRITE_FLOOR, id, color,
@@ -496,12 +495,12 @@ void BeingHandler::processBeingChangeLookContinue(Being *const dstBeing,
             }
             localPlayer->imitateOutfit(dstBeing, SPRITE_FLOOR);
             break;
-        case 9:     // eAthena LOOK_SHOES
+        case 9:  // eAthena LOOK_SHOES
             dstBeing->setSprite(SPRITE_HAIR, id, color,
                 static_cast<unsigned char>(id2));
             localPlayer->imitateOutfit(dstBeing, SPRITE_HAIR);
             break;
-        case 10:   // LOOK_GLOVES
+        case 10:  // LOOK_GLOVES
             dstBeing->setSprite(SPRITE_SHOES, id, color,
                 static_cast<unsigned char>(id2));
             localPlayer->imitateOutfit(dstBeing, SPRITE_SHOES);
@@ -1043,7 +1042,7 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
     dstBeing->setStatusEffectBlock(32, static_cast<uint16_t>(
         msg.readInt32("opt3")));
     dstBeing->setKarma(msg.readUInt8("karma"));
-    uint8_t gender = msg.readUInt8("gender") & 3;
+    uint8_t gender = static_cast<uint8_t>(msg.readUInt8("gender") & 3);
 
     if (dstBeing->getType() == ActorType::Player)
     {
@@ -1205,7 +1204,7 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
     dstBeing->setStatusEffectBlock(32, static_cast<uint16_t>(
         msg.readInt32("opt3")));
     dstBeing->setKarma(msg.readUInt8("karma"));
-    uint8_t gender = msg.readUInt8("gender") & 3;
+    uint8_t gender = static_cast<uint8_t>(msg.readUInt8("gender") & 3);
 
     if (dstBeing->getType() == ActorType::Player)
     {
@@ -1370,7 +1369,7 @@ void BeingHandler::processBeingSpawn(Net::MessageIn &msg)
     dstBeing->setStatusEffectBlock(32, static_cast<uint16_t>(
         msg.readInt32("opt3")));
     dstBeing->setKarma(msg.readUInt8("karma"));
-    uint8_t gender = msg.readUInt8("gender") & 3;
+    uint8_t gender = static_cast<uint8_t>(msg.readUInt8("gender") & 3);
 
     if (dstBeing->getType() == ActorType::Player)
     {

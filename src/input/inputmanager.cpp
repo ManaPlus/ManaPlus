@@ -730,7 +730,8 @@ bool InputManager::checkKey(const InputActionData *const key) const
         || isActionActive0(key->modKeyIndex));
 }
 
-bool InputManager::invokeKey(const InputActionData *const key, const int keyNum)
+bool InputManager::invokeKey(const InputActionData *const key,
+                             const int keyNum)
 {
     // no validation to keyNum because it validated in caller
 
