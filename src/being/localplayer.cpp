@@ -1108,11 +1108,8 @@ void LocalPlayer::attributeChanged(const int id,
             mLevel = newVal;
             break;
         case Attributes::HP:
-            if (oldVal != 0 && newVal == 0
-                && localPlayer->getCurrentAction() != BeingAction::DEAD)
-            {
+            if (oldVal != 0 && newVal == 0)
                 PlayerDeathListener::distributeEvent();
-            }
             break;
         default:
             break;
