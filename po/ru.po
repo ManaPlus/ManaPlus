@@ -17,9 +17,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-12-04 23:19+0300\n"
-"PO-Revision-Date: 2014-12-01 08:47+0000\n"
-"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"POT-Creation-Date: 2014-12-06 11:58+0300\n"
+"PO-Revision-Date: 2014-12-05 14:08+0000\n"
+"Last-Translator: Alexsl <alexlsh@mail.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/manaplus/"
 "language/ru/)\n"
 "Language: ru\n"
@@ -604,7 +604,7 @@ msgid "Farewell, come back any time..."
 msgstr "Хорошо, возвращайтесь в любое время..."
 
 #. TRANSLATORS: directory creation error
-#: src/configmanager.cpp:55 src/dirs.cpp:260 src/dirs.cpp:275 src/dirs.cpp:320
+#: src/configmanager.cpp:53 src/dirs.cpp:260 src/dirs.cpp:275 src/dirs.cpp:320
 #: src/dirs.cpp:488 src/dirs.cpp:496
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
@@ -652,23 +652,23 @@ msgid "Debug"
 msgstr "Отладка"
 
 #. TRANSLATORS: save file message
-#: src/game.cpp:536
+#: src/game.cpp:537
 #, c-format
 msgid "Screenshot saved as %s"
 msgstr "Снимок экрана сохранен как %s"
 
 #. TRANSLATORS: save file message
-#: src/game.cpp:546
+#: src/game.cpp:547
 msgid "Saving screenshot failed!"
 msgstr "Ошибка при сохранении снимка экрана!"
 
 #. TRANSLATORS: error message text
-#: src/game.cpp:629
+#: src/game.cpp:630
 msgid "The connection to the server was lost."
 msgstr "Соединение с сервером потеряно."
 
 #. TRANSLATORS: error message header
-#: src/game.cpp:632
+#: src/game.cpp:633
 msgid "Network Error"
 msgstr "Ошибка сети"
 
@@ -1087,7 +1087,7 @@ msgstr ""
 #: src/gui/models/colorlistmodel.h:33 src/gui/models/sortlistmodelinv.h:34
 #: src/gui/widgets/tabs/setup_other.cpp:79
 #: src/gui/widgets/tabs/setup_visual.cpp:81
-#: src/gui/windows/equipmentwindow.cpp:582
+#: src/gui/windows/equipmentwindow.cpp:581
 msgid "default"
 msgstr "По умолчанию"
 
@@ -1747,7 +1747,7 @@ msgstr "Бросить лут"
 #. TRANSLATORS: pet unequip item
 #. TRANSLATORS: equipment window button
 #. TRANSLATORS: inventory button
-#: src/gui/popups/popupmenu.cpp:341 src/gui/windows/equipmentwindow.cpp:76
+#: src/gui/popups/popupmenu.cpp:341 src/gui/windows/equipmentwindow.cpp:75
 #: src/gui/windows/inventorywindow.cpp:174 src/resources/itemtypemapdata.h:47
 #: src/resources/itemtypemapdata.h:51 src/resources/itemtypemapdata.h:55
 #: src/resources/itemtypemapdata.h:59 src/resources/itemtypemapdata.h:63
@@ -2097,7 +2097,7 @@ msgstr "сбросить настройки"
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: copy status to chat
 #. TRANSLATORS: status window button
-#: src/gui/popups/popupmenu.cpp:2354 src/gui/windows/statuswindow.cpp:94
+#: src/gui/popups/popupmenu.cpp:2354 src/gui/windows/statuswindow.cpp:93
 msgid "Copy to chat"
 msgstr "Скопировать в чат"
 
@@ -2603,8 +2603,8 @@ msgstr "Уровень: %u"
 
 #. TRANSLATORS: status window label
 #: src/gui/widgets/characterdisplay.cpp:138
-#: src/gui/windows/inventorywindow.cpp:555 src/gui/windows/statuswindow.cpp:75
-#: src/gui/windows/statuswindow.cpp:235 src/gui/windows/statuswindow.cpp:342
+#: src/gui/windows/inventorywindow.cpp:555 src/gui/windows/statuswindow.cpp:74
+#: src/gui/windows/statuswindow.cpp:234 src/gui/windows/statuswindow.cpp:341
 #, c-format
 msgid "Money: %s"
 msgstr "Деньги: %s"
@@ -2641,7 +2641,7 @@ msgstr "Выход"
 #: src/gui/widgets/selldialog.cpp:116 src/gui/windows/buydialog.cpp:254
 #: src/gui/windows/itemamountwindow.cpp:156
 #: src/gui/windows/itemamountwindow.cpp:191 src/gui/windows/npcdialog.cpp:105
-#: src/gui/windows/statuswindow.cpp:746
+#: src/gui/windows/statuswindow.cpp:745
 msgid "+"
 msgstr "+"
 
@@ -2654,7 +2654,7 @@ msgstr "+"
 #: src/gui/widgets/selldialog.cpp:118 src/gui/windows/buydialog.cpp:257
 #: src/gui/windows/itemamountwindow.cpp:154
 #: src/gui/windows/itemamountwindow.cpp:188 src/gui/windows/npcdialog.cpp:107
-#: src/gui/windows/statuswindow.cpp:759
+#: src/gui/windows/statuswindow.cpp:758
 msgid "-"
 msgstr "-"
 
@@ -2664,8 +2664,8 @@ msgstr "-"
 #. TRANSLATORS: status window label
 #. TRANSLATORS: status bar label
 #: src/gui/widgets/selldialog.cpp:120 src/gui/windows/buydialog.cpp:264
-#: src/gui/windows/statuswindow.cpp:489 src/gui/windows/statuswindow.cpp:544
-#: src/gui/windows/statuswindow.cpp:743 src/gui/windows/statuswindow.cpp:775
+#: src/gui/windows/statuswindow.cpp:488 src/gui/windows/statuswindow.cpp:543
+#: src/gui/windows/statuswindow.cpp:742 src/gui/windows/statuswindow.cpp:774
 msgid "Max"
 msgstr "Макс"
 
@@ -2699,7 +2699,7 @@ msgstr "Тип: %s"
 
 #. TRANSLATORS: Skill type
 #. TRANSLATORS: unknown equipment page name
-#: src/gui/widgets/skillinfo.cpp:109 src/gui/windows/equipmentwindow.cpp:589
+#: src/gui/widgets/skillinfo.cpp:109 src/gui/windows/equipmentwindow.cpp:588
 msgid "Unknown"
 msgstr "Неизвестный"
 
@@ -4161,12 +4161,12 @@ msgstr "Кешировать все звуки (может использова�
 #: src/gui/widgets/tabs/setup_perfomance.cpp:160
 msgid "Critical options (DO NOT change if you don't know what it duing)"
 msgstr ""
+"Критически важные настройки (НЕ ИЗМЕНЯЙТЕ если вы не знаете что они делают)"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:164
-#, fuzzy
 msgid "Disable logging in game (do not enable)"
-msgstr "Выключить кеширование сущностей (программный режим)"
+msgstr "Отключить ведение лога в игре (не включать)"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_players.cpp:45
@@ -4934,7 +4934,7 @@ msgstr "СН"
 
 #. TRANSLATORS: equipment window name
 #. TRANSLATORS: inventory button
-#: src/gui/windowmenu.cpp:99 src/gui/windows/equipmentwindow.cpp:69
+#: src/gui/windowmenu.cpp:99 src/gui/windows/equipmentwindow.cpp:68
 #: src/gui/windows/inventorywindow.cpp:195
 msgid "Equipment"
 msgstr "Снаряжение"
@@ -5779,7 +5779,7 @@ msgstr "работа"
 #. TRANSLATORS: status bar label
 #. TRANSLATORS: status window label
 #: src/gui/windows/ministatuswindow.cpp:340
-#: src/gui/windows/statuswindow.cpp:246
+#: src/gui/windows/statuswindow.cpp:245
 #, c-format
 msgid "Level: %d (GM %d)"
 msgstr "Уровень: %d (GM %d)"
@@ -5787,8 +5787,8 @@ msgstr "Уровень: %d (GM %d)"
 #. TRANSLATORS: status bar label
 #. TRANSLATORS: status window label
 #: src/gui/windows/ministatuswindow.cpp:347
-#: src/gui/windows/statuswindow.cpp:73 src/gui/windows/statuswindow.cpp:253
-#: src/gui/windows/statuswindow.cpp:378
+#: src/gui/windows/statuswindow.cpp:72 src/gui/windows/statuswindow.cpp:252
+#: src/gui/windows/statuswindow.cpp:377
 #, c-format
 msgid "Level: %d"
 msgstr "Уровень: %d"
@@ -6178,39 +6178,39 @@ msgid "Choose your party's name."
 msgstr "Выберите имя будущей группы."
 
 #. TRANSLATORS: status window label
-#: src/gui/windows/statuswindow.cpp:77
+#: src/gui/windows/statuswindow.cpp:76
 msgid "HP:"
 msgstr "Жизнь:"
 
 #. TRANSLATORS: status window label
-#: src/gui/windows/statuswindow.cpp:80
+#: src/gui/windows/statuswindow.cpp:79
 msgid "Exp:"
 msgstr "Опыт:"
 
 #. TRANSLATORS: status window label
-#: src/gui/windows/statuswindow.cpp:138
+#: src/gui/windows/statuswindow.cpp:137
 msgid "MP:"
 msgstr "Мана:"
 
 #. TRANSLATORS: status window label
-#: src/gui/windows/statuswindow.cpp:181 src/gui/windows/statuswindow.cpp:304
+#: src/gui/windows/statuswindow.cpp:180 src/gui/windows/statuswindow.cpp:303
 #, c-format
 msgid "Job: %d"
 msgstr "Профессия: %d"
 
 #. TRANSLATORS: status window label
-#: src/gui/windows/statuswindow.cpp:183
+#: src/gui/windows/statuswindow.cpp:182
 msgid "Job:"
 msgstr "Профессия:"
 
 #. TRANSLATORS: status window label
-#: src/gui/windows/statuswindow.cpp:239 src/gui/windows/statuswindow.cpp:350
+#: src/gui/windows/statuswindow.cpp:238 src/gui/windows/statuswindow.cpp:349
 #, c-format
 msgid "Character points: %d"
 msgstr "Очки персонажа: %d"
 
 #. TRANSLATORS: status window label
-#: src/gui/windows/statuswindow.cpp:365
+#: src/gui/windows/statuswindow.cpp:364
 #, c-format
 msgid "Correction points: %d"
 msgstr "Очков навыков: %d"
@@ -7399,15 +7399,13 @@ msgstr "Следующая страница команд"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/windows.cpp:228
-#, fuzzy
 msgid "Previous inventory tab"
-msgstr "Прерыдущая страница быстрого использования"
+msgstr "Предыдущая вкладка инвентаря"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/windows.cpp:234
-#, fuzzy
 msgid "Next inventory tab"
-msgstr "слоты интвентаря"
+msgstr "Следующая вкладка инвентаря"
 
 #. TRANSLATORS: inventory type name
 #: src/inventory.cpp:302
@@ -7841,9 +7839,9 @@ msgstr "Сообщение не может быть отправлено, т.к.
 
 #. TRANSLATORS: chat message
 #: src/net/eathena/chathandler.cpp:636
-#, fuzzy, c-format
+#, c-format
 msgid "Can't open channel. Channel %s is not exists."
-msgstr "Сообщение не может быть отправлено, т.к. канал %s не существует."
+msgstr "Не возможно открыть канал. Канал %s не существует."
 
 #. TRANSLATORS: player stat
 #: src/net/eathena/generalhandler.cpp:128 src/net/tmwa/generalhandler.cpp:126
