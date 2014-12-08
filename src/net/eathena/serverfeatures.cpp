@@ -175,4 +175,9 @@ bool ServerFeatures::haveJoinChannel() const
     return serverVersion >= 3;
 }
 
+bool ServerFeatures::haveNpcWhispers() const
+{
+    return true;
+}
+
 }  // namespace EAthena

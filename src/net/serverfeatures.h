@@ -86,6 +86,8 @@ class ServerFeatures notfinal
         virtual bool haveNpcGender() const = 0;
 
         virtual bool haveJoinChannel() const = 0;
+
+        virtual bool haveNpcWhispers() const = 0;
 };
 
 }  // namespace Net

@@ -174,4 +174,9 @@ bool ServerFeatures::haveJoinChannel() const
     return false;
 }
 
+bool ServerFeatures::haveNpcWhispers() const
+{
+    return false;
+}
+
 }  // namespace TmwAthena
