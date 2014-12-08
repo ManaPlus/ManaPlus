@@ -338,7 +338,16 @@ void ConfigManager::checkConfigVersion()
         unassignKey("keyDirectLeft", "k107");
         unassignKey("keyDirectRight", "k39");
     }
-    config.setValue("cfgver", 11);
+    if (version < 12)
+    {
+#ifdef USE_SDL2
+        const std::string prefix = std::string("sdl2");
+#else
+        const std::string prefix = std::string();
+#endif
+        unassignKey("keyAttack", "k120");
+    }
+    config.setValue("cfgver", 12);
 }
 
 #undef unassignKey
