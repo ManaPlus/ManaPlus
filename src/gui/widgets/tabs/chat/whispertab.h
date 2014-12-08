@@ -57,6 +57,7 @@ class WhisperTab final : public ChatTab
          * @param nick  the name of the player this tab is whispering to
          */
         WhisperTab(const Widget2 *const widget,
+                   const std::string &caption,
                    const std::string &nick);
 
         ~WhisperTab();

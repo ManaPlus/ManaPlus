@@ -35,8 +35,9 @@
 #include "debug.h"
 
 WhisperTab::WhisperTab(const Widget2 *const widget,
+                       const std::string &caption,
                        const std::string &nick) :
-    ChatTab(widget, nick, nick, nick, ChatTabType::WHISPER),
+    ChatTab(widget, caption, nick, nick, ChatTabType::WHISPER),
     mNick(nick)
 {
     setWhisperTabColors();

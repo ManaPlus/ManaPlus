@@ -194,7 +194,8 @@ class ChatWindow final : public Window,
                         const std::string &restrict mes,
                         const ChatMsgType::Type own = ChatMsgType::BY_OTHER);
 
-        WhisperTab *addWhisperTab(const std::string &nick,
+        WhisperTab *addWhisperTab(const std::string &caption,
+                                  const std::string &nick,
                                   const bool switchTo = false) A_WARN_UNUSED;
 
         WhisperTab *getWhisperTab(const std::string &nick) const A_WARN_UNUSED;

@@ -1047,7 +1047,7 @@ void ChatWindow::addWhisper(const std::string &restrict nick,
     }
     else if (config.getBoolValue("whispertab"))
     {
-        tab = addWhisperTab(nick);
+        tab = addWhisperTab(nick, nick);
         if (tab)
             saveState();
     }
@@ -1113,7 +1113,8 @@ void ChatWindow::addWhisper(const std::string &restrict nick,
     }
 }
 
-WhisperTab *ChatWindow::addWhisperTab(const std::string &nick,
+WhisperTab *ChatWindow::addWhisperTab(const std::string &caption,
+                                      const std::string &nick,
                                       const bool switchTo)
 {
     if (!localPlayer)
@@ -1137,7 +1138,7 @@ WhisperTab *ChatWindow::addWhisperTab(const std::string &nick,
     }
     else
     {
-        ret = new WhisperTab(this, nick);
+        ret = new WhisperTab(this, caption, nick);
         if (gui && !player_relations.isGoodName(nick))
             ret->setLabelFont(gui->getSecureFont());
         mWhispers[tempNick] = ret;
@@ -1216,7 +1217,7 @@ ChatTab *ChatWindow::addChatTab(const std::string &name,
     }
     else
     {
-        return addWhisperTab(name, switchTo);
+        return addWhisperTab(name, name, switchTo);
     }
 }
 

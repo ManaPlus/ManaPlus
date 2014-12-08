@@ -470,8 +470,9 @@ void AvatarListBox::mousePressed(MouseEvent &event)
     {
         if (type == MapItemType::EMPTY && chatWindow)
         {
+            const std::string &name = model->getAvatarAt(selected)->getName();
             const WhisperTab *const tab = chatWindow->addWhisperTab(
-                model->getAvatarAt(selected)->getName(), true);
+                name, name, true);
             if (tab)
                 chatWindow->saveState();
         }
