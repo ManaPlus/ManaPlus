@@ -26,6 +26,8 @@
 
 #include "being/localplayer.h"
 
+#include "gui/popups/popupmenu.h"
+
 #include "debug.h"
 
 namespace Actions
@@ -74,6 +76,18 @@ impHandler0(targetMercenary)
 impHandler0(targetPet)
 {
     return setTarget(ActorType::Pet, true);
+}
+
+impHandler0(contextMenu)
+{
+    if (!localPlayer)
+        return false;
+    Being *const target = localPlayer->getTarget();
+    if (!target)
+        return true;
+
+    popupMenu->showPopup(target->getPixelX(), target->getPixelY(), target);
+    return true;
 }
 
 }  // namespace Actions

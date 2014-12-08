@@ -489,6 +489,7 @@ namespace InputAction
         WINDOW_BANK,
         PREV_INV_TAB,
         NEXT_INV_TAB,
+        CONTEXT_MENU,
         TOTAL
     };
 }  // namespace InputAction

@@ -33,6 +33,7 @@ namespace Actions
     decHandler(targetNPC);
     decHandler(targetMercenary);
     decHandler(targetPet);
+    decHandler(contextMenu);
 }  // namespace Actions
 
 #undef decHandler

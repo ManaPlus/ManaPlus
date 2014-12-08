@@ -4143,6 +4143,16 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputCondition::NOINPUT | InputCondition::INGAME,
         "nextinvtab",
         false},
+    {"keyContextMenu",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::contextMenu,
+        InputAction::NO_VALUE, 50,
+        InputCondition::NOINPUT | InputCondition::NOAWAY
+            | InputCondition::NOMODAL | InputCondition::INGAME,
+        "contextmenu",
+        false},
 };
 
 #endif  // INPUT_INPUTACTIONMAP_H
