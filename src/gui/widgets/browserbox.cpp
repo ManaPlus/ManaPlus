@@ -914,3 +914,31 @@ void BrowserBox::setForegroundColorAll(const Color &color1,
     mForegroundColor = color1;
     mForegroundColor2 = color2;
 }
+
+void BrowserBox::moveSelectionUp()
+{
+    if (mSelectedLink <= 0)
+        mSelectedLink = static_cast<signed>(mLinks.size()) - 1;
+    else
+        mSelectedLink --;
+}
+
+#include "logger.h"
+
+void BrowserBox::moveSelectionDown()
+{
+    mSelectedLink ++;
+    if (mSelectedLink >= static_cast<signed int>(mLinks.size()))
+        mSelectedLink = 0;
+}
+
+void BrowserBox::selectSelection()
+{
+    if (mSelectedLink < 0 || mSelectedLink >= static_cast<signed int>(
+        mLinks.size()))
+    {
+        return;
+    }
+
+    mLinkHandler->handleLink(mLinks[mSelectedLink].link, nullptr);
+}

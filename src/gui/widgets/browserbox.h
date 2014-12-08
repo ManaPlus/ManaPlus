@@ -196,6 +196,12 @@ class BrowserBox final : public Widget,
         int getDataWidth() const
         { return mDataWidth; }
 
+        void moveSelectionUp();
+
+        void moveSelectionDown();
+
+        void selectSelection();
+
     private:
         int calcHeight() A_WARN_UNUSED;
 

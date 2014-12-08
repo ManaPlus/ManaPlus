@@ -246,6 +246,10 @@ impHandler0(ok)
         dialog->action(ActionEvent(nullptr, "ok"));
         return true;
     }
+    else if (popupMenu->isPopupVisible())
+    {
+        popupMenu->select();
+    }
     return false;
 }
 

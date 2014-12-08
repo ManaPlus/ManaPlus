@@ -148,6 +148,12 @@ class PopupMenu final : public Popup, public LinkHandler
 
         void clear();
 
+        void moveUp();
+
+        void moveDown();
+
+        void select();
+
     private:
         void setMousePos();
 

@@ -3035,3 +3035,18 @@ void PopupMenu::showGMPopup()
 
     showPopup(getX(), getY());
 }
+
+void PopupMenu::moveUp()
+{
+    mBrowserBox->moveSelectionUp();
+}
+
+void PopupMenu::moveDown()
+{
+    mBrowserBox->moveSelectionDown();
+}
+
+void PopupMenu::select()
+{
+    mBrowserBox->selectSelection();
+}

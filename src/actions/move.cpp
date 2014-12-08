@@ -30,6 +30,8 @@
 #include "gui/windows/npcdialog.h"
 #include "gui/windows/outfitwindow.h"
 
+#include "gui/popups/popupmenu.h"
+
 #include "net/playerhandler.h"
 
 #include "debug.h"
@@ -59,6 +61,11 @@ impHandler(moveUp)
 {
     if (inputManager.isActionActive(InputAction::EMOTE))
         return directUp(event);
+    if (popupMenu->isPopupVisible())
+    {
+        popupMenu->moveUp();
+        return true;
+    }
     return closeMoveNpcDialog(false);
 }
 
@@ -66,6 +73,11 @@ impHandler(moveDown)
 {
     if (inputManager.isActionActive(InputAction::EMOTE))
         return directDown(event);
+    if (popupMenu->isPopupVisible())
+    {
+        popupMenu->moveDown();
+        return true;
+    }
     return closeMoveNpcDialog(false);
 }
 
