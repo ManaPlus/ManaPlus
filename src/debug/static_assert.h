@@ -32,7 +32,7 @@
 /**
  * @file    static_assert.h
  *
- * Template class to check validity duing compile time (adapted from Loki).
+ * Template class to check validity during compilation time (adapted from Loki).
  *
  * @version 1.2, 2005/11/22
  * @author  Wu Yongwei

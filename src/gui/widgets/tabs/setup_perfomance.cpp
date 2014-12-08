@@ -158,7 +158,7 @@ Setup_Perfomance::Setup_Perfomance(const Widget2 *const widget) :
 
     // TRANSLATORS: settings group
     new SetupItemLabel(_("Critical options (DO NOT change if you don't "
-        "know what it duing)"), "", this);
+        "know what you're doing)"), "", this);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Disable logging in game (do not enable)"),
