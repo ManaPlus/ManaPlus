@@ -245,11 +245,15 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
         }
 
         case ActorType::Npc:
-            // NPCs can be talked to (single option, candidate for removal
-            // unless more options would be added)
             // TRANSLATORS: popup menu item
             // TRANSLATORS: talk with npc
             mBrowserBox->addRow("talk", _("Talk"));
+            if (serverFeatures->haveNpcWhispers())
+            {
+                // TRANSLATORS: popup menu item
+                // TRANSLATORS: whisper to npc
+                mBrowserBox->addRow("npc whisper", _("Whisper"));
+            }
             // TRANSLATORS: popup menu item
             // TRANSLATORS: buy from npc
             mBrowserBox->addRow("buy", _("Buy"));
@@ -1179,6 +1183,21 @@ void PopupMenu::handleLink(const std::string &link,
             else
             {
                 chatWindow->addInputText(std::string("/w \"").append(
+                    mNick).append("\" "));
+            }
+        }
+    }
+    else if (link == "npc whisper" && !mNick.empty())
+    {
+        if (chatWindow)
+        {
+            if (config.getBoolValue("whispertab"))
+            {
+                chatWindow->localChatInput("/q NPC:" + mNick);
+            }
+            else
+            {
+                chatWindow->addInputText(std::string("/w \"NPC:").append(
                     mNick).append("\" "));
             }
         }
