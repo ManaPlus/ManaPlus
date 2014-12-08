@@ -59,6 +59,8 @@
 
 #include "gui/fonts/font.h"
 
+#include "gui/popups/popupmenu.h"
+
 #include "gui/windows/bankwindow.h"
 #include "gui/windows/botcheckerwindow.h"
 #include "gui/windows/chatwindow.h"
@@ -809,7 +811,8 @@ void Game::handleMove()
         && chatWindow
         && !chatWindow->isInputFocused()
         && !InventoryWindow::isAnyInputFocused()
-        && !quitDialog)
+        && !quitDialog
+        && !popupMenu->isPopupVisible())
     {
         NpcDialog *const dialog = NpcDialog::getActive();
         if (dialog)
