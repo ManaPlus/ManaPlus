@@ -62,11 +62,13 @@
 #endif
 
 #include "net/beinghandler.h"
+#include "net/buysellhandler.h"
 #include "net/chathandler.h"
 #include "net/download.h"
 #include "net/gamehandler.h"
 #include "net/ipc.h"
 #include "net/mercenaryhandler.h"
+#include "net/npchandler.h"
 #include "net/pethandler.h"
 #include "net/playerhandler.h"
 #include "net/uploadcharinfo.h"
@@ -155,6 +157,31 @@ static void uploadFile(const std::string &str,
     info->tab = tab;
     upload->setFile(fileName);
     upload->start();
+}
+
+static Being *findBeing(const std::string &name)
+{
+    Being *being = nullptr;
+    if (name.empty())
+    {
+        being = localPlayer->getTarget();
+    }
+    else
+    {
+        being = actorManager->findBeingByName(
+            name, ActorType::Unknown);
+    }
+    if (!being)
+    {
+        being = actorManager->findNearestLivingBeing(
+            localPlayer, 1, ActorType::Npc, true);
+    }
+    if (!being)
+    {
+        being = actorManager->findNearestLivingBeing(
+            localPlayer, 1, ActorType::Player, true);
+    }
+    return being;
 }
 
 impHandler(emote)
@@ -428,6 +455,44 @@ impHandler0(screenshot)
 impHandler0(ignoreInput)
 {
     return true;
+}
+
+impHandler(buy)
+{
+    Being *being = findBeing(event.args);
+    if (!being)
+        return false;
+
+    if (being->getType() == ActorType::Npc)
+    {
+        npcHandler->buy(being->getId());
+        return true;
+    }
+    else if (being->getType() == ActorType::Player)
+    {
+        buySellHandler->requestSellList(being->getName());
+        return true;
+    }
+    return false;
+}
+
+impHandler(sell)
+{
+    Being *being = findBeing(event.args);
+    if (!being)
+        return false;
+
+    if (being->getType() == ActorType::Npc)
+    {
+        npcHandler->sell(being->getId());
+        return true;
+    }
+    else if (being->getType() == ActorType::Player)
+    {
+        buySellHandler->requestBuyList(being->getName());
+        return true;
+    }
+    return false;
 }
 
 impHandler0(talk)

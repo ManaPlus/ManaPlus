@@ -48,6 +48,8 @@ namespace Actions
     decHandler(screenshot);
     decHandler(ignoreInput);
     decHandler(talk);
+    decHandler(buy);
+    decHandler(sell);
     decHandler(stopAttack);
     decHandler(untarget);
     decHandler(attack);
