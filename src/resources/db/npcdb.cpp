@@ -127,6 +127,13 @@ void NPCDB::loadXmlFile(const std::string &fileName)
                 display.particles.push_back(reinterpret_cast<const char*>(
                     spriteNode->xmlChildrenNode->content));
             }
+            else if (xmlNameEqual(spriteNode, "menu"))
+            {
+                std::string name = XML::getProperty(spriteNode, "name", "");
+                std::string command = XML::getProperty(spriteNode,
+                    "command", "");
+                currentInfo->addMenu(name, command);
+            }
         }
 
         currentInfo->setDisplay(display);

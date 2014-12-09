@@ -1251,6 +1251,7 @@
 		<Unit filename="src/resources/emotesprite.h" />
 		<Unit filename="src/resources/imagehelper.h" />
 		<Unit filename="src/resources/notifytypes.h" />
+		<Unit filename="src/resources/beingmenuitem.h" />
 		<Unit filename="src/resources/imagerect.h" />
 		<Unit filename="src/resources/fboinfo.h" />
 		<Unit filename="src/resources/spritedef.h" />

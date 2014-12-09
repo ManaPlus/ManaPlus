@@ -27,6 +27,7 @@
 
 #include "being/targetcursorsize.h"
 
+#include "resources/beingmenuitem.h"
 #include "resources/soundinfo.h"
 #include "resources/spritedisplay.h"
 
@@ -315,6 +316,8 @@ class BeingInfo final
 
         std::string getColor(const int idx) const A_WARN_UNUSED;
 
+        void addMenu(const std::string &name, const std::string &command);
+
         static void init();
 
         static void clear();
@@ -326,6 +329,7 @@ class BeingInfo final
         Cursor::Cursor mHoverCursor;
         ItemSoundEvents mSounds;
         Attacks mAttacks;
+        std::vector<BeingMenuItem> mMenu;
         unsigned char mBlockWalkMask;
         BlockType::BlockType mBlockType;
         const std::map <int, ColorDB::ItemColor> *mColors;

@@ -214,3 +214,8 @@ std::string BeingInfo::getColor(const int idx) const
         return std::string();
     return it->second.color;
 }
+
+void BeingInfo::addMenu(const std::string &name, const std::string &command)
+{
+    mMenu.push_back(BeingMenuItem(name, command));
+}

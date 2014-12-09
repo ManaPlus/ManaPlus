@@ -596,6 +596,7 @@ SET(SRCS
     resources/beingcommon.h
     resources/beinginfo.cpp
     resources/beinginfo.h
+    resources/beingmenuitem.h
     resources/chatobject.h
     resources/db/chardb.cpp
     resources/db/chardb.h
