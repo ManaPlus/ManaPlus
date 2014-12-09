@@ -713,19 +713,34 @@ impHandler0(fireHomunculus)
     return true;
 }
 
-impHandler(buy)
+static Being *findBeing(const std::string &name)
 {
-    const std::string args = event.args;
     Being *being = nullptr;
-    if (args.empty())
+    if (name.empty())
     {
         being = localPlayer->getTarget();
     }
     else
     {
         being = actorManager->findBeingByName(
-            args, ActorType::Unknown);
+            name, ActorType::Unknown);
     }
+    if (!being)
+    {
+        being = actorManager->findNearestLivingBeing(
+            localPlayer, 1, ActorType::Npc, true);
+    }
+    if (!being)
+    {
+        being = actorManager->findNearestLivingBeing(
+            localPlayer, 1, ActorType::Player, true);
+    }
+    return being;
+}
+
+impHandler(buy)
+{
+    Being *being = findBeing(event.args);
     if (!being)
         return false;
 
@@ -737,6 +752,25 @@ impHandler(buy)
     else if (being->getType() == ActorType::Player)
     {
         buySellHandler->requestSellList(being->getName());
+        return true;
+    }
+    return false;
+}
+
+impHandler(sell)
+{
+    Being *being = findBeing(event.args);
+    if (!being)
+        return false;
+
+    if (being->getType() == ActorType::Npc)
+    {
+        npcHandler->sell(being->getId());
+        return true;
+    }
+    else if (being->getType() == ActorType::Player)
+    {
+        buySellHandler->requestBuyList(being->getName());
         return true;
     }
     return false;

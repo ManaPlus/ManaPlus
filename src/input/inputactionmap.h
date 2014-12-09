@@ -4162,6 +4162,15 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputCondition::GAME,
         "buy",
         false},
+    {"keySell",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::sell,
+        InputAction::NO_VALUE, 50,
+        InputCondition::GAME,
+        "sell",
+        false},
 };
 
 #endif  // INPUT_INPUTACTIONMAP_H

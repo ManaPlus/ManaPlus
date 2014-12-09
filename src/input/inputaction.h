@@ -491,6 +491,7 @@ namespace InputAction
         NEXT_INV_TAB,
         CONTEXT_MENU,
         BUY,
+        SELL,
         TOTAL
     };
 }  // namespace InputAction

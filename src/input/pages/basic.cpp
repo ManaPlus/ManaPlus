@@ -243,6 +243,12 @@ SetupActionData setupActionDataBasic[] =
     },
     {
         // TRANSLATORS: input action name
+        N_("Sell"),
+        InputAction::SELL,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
         N_("Open context menu"),
         InputAction::CONTEXT_MENU,
         "",
