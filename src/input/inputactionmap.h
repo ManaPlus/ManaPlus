@@ -4153,6 +4153,15 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
             | InputCondition::NOMODAL | InputCondition::INGAME,
         "contextmenu",
         false},
+    {"keyBuy",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::buy,
+        InputAction::NO_VALUE, 50,
+        InputCondition::GAME,
+        "buy",
+        false},
 };
 
 #endif  // INPUT_INPUTACTIONMAP_H

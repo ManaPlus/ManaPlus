@@ -490,6 +490,7 @@ namespace InputAction
         PREV_INV_TAB,
         NEXT_INV_TAB,
         CONTEXT_MENU,
+        BUY,
         TOTAL
     };
 }  // namespace InputAction

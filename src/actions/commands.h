@@ -76,6 +76,7 @@ namespace Actions
     decHandler(setPetName);
     decHandler(setHomunculusName);
     decHandler(fireHomunculus);
+    decHandler(buy);
 }  // namespace Actions
 
 #undef decHandler

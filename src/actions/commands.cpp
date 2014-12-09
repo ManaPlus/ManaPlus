@@ -37,9 +37,11 @@
 #include "gui/widgets/tabs/chat/whispertab.h"
 
 #include "net/adminhandler.h"
+#include "net/buysellhandler.h"
 #include "net/chathandler.h"
 #include "net/guildhandler.h"
 #include "net/homunculushandler.h"
+#include "net/npchandler.h"
 #include "net/pethandler.h"
 #include "net/serverfeatures.h"
 
@@ -709,6 +711,35 @@ impHandler0(fireHomunculus)
 {
     homunculusHandler->fire();
     return true;
+}
+
+impHandler(buy)
+{
+    const std::string args = event.args;
+    Being *being = nullptr;
+    if (args.empty())
+    {
+        being = localPlayer->getTarget();
+    }
+    else
+    {
+        being = actorManager->findBeingByName(
+            args, ActorType::Unknown);
+    }
+    if (!being)
+        return false;
+
+    if (being->getType() == ActorType::Npc)
+    {
+        npcHandler->buy(being->getId());
+        return true;
+    }
+    else if (being->getType() == ActorType::Player)
+    {
+        buySellHandler->requestSellList(being->getName());
+        return true;
+    }
+    return false;
 }
 
 }  // namespace Actions
