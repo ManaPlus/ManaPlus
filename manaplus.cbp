@@ -488,6 +488,7 @@
 		<Unit filename="src/listeners/banklistener.cpp" />
 		<Unit filename="src/listeners/playerlistener.cpp" />
 		<Unit filename="src/listeners/awaylistener.cpp" />
+		<Unit filename="src/listeners/playerdeathlistener.cpp" />
 		<Unit filename="src/listeners/attributelistener.cpp" />
 		<Unit filename="src/listeners/errorlistener.cpp" />
 		<Unit filename="src/listeners/pincodelistener.cpp" />
@@ -1154,13 +1155,14 @@
 		<Unit filename="src/listeners/errorlistener.h" />
 		<Unit filename="src/listeners/pincodelistener.h" />
 		<Unit filename="src/listeners/actorspritelistener.h" />
-		<Unit filename="src/listeners/deathlistener.h" />
 		<Unit filename="src/listeners/renamelistener.h" />
+		<Unit filename="src/listeners/playerpostdeathlistener.h" />
 		<Unit filename="src/listeners/playerdeathlistener.h" />
 		<Unit filename="src/listeners/selectionlistener.h" />
 		<Unit filename="src/listeners/requesttradelistener.h" />
 		<Unit filename="src/listeners/guitableactionlistener.h" />
 		<Unit filename="src/listeners/configlistener.h" />
+		<Unit filename="src/listeners/widgetdeathlistener.h" />
 		<Unit filename="src/listeners/attributelistener.h" />
 		<Unit filename="src/listeners/tooltiplistener.h" />
 		<Unit filename="src/listeners/focuslistener.h" />
