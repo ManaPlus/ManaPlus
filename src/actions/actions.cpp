@@ -161,7 +161,11 @@ static void uploadFile(const std::string &str,
 
 static Being *findBeing(const std::string &name)
 {
+    if (!localPlayer || !actorManager)
+        return nullptr;
+
     Being *being = nullptr;
+
     if (name.empty())
     {
         being = localPlayer->getTarget();
@@ -175,11 +179,27 @@ static Being *findBeing(const std::string &name)
     {
         being = actorManager->findNearestLivingBeing(
             localPlayer, 1, ActorType::Npc, true);
+        if (being)
+        {
+            if (abs(being->getTileX() - localPlayer->getTileX()) > 1
+                || abs(being->getTileY() - localPlayer->getTileY()) > 1)
+            {
+                being = nullptr;
+            }
+        }
     }
     if (!being)
     {
         being = actorManager->findNearestLivingBeing(
             localPlayer, 1, ActorType::Player, true);
+        if (being)
+        {
+            if (abs(being->getTileX() - localPlayer->getTileX()) > 1
+                || abs(being->getTileY() - localPlayer->getTileY()) > 1)
+            {
+                being = nullptr;
+            }
+        }
     }
     return being;
 }
@@ -497,30 +517,16 @@ impHandler(sell)
 
 impHandler0(talk)
 {
-    if (localPlayer)
+    Being *being = findBeing(event.args);
+    if (!being)
+        return false;
+
+    if (being)
     {
-        Being *target = localPlayer->getTarget();
-        if (!target && actorManager)
-        {
-            target = actorManager->findNearestLivingBeing(
-                localPlayer, 1, ActorType::Npc, true);
-            // ignore closest target if distance in each direction more than 1
-            if (target)
-            {
-                if (abs(target->getTileX() - localPlayer->getTileX()) > 1
-                    || abs(target->getTileY() - localPlayer->getTileY()) > 1)
-                {
-                    return true;
-                }
-            }
-        }
-        if (target)
-        {
-            if (target->canTalk())
-                target->talkTo();
-            else if (target->getType() == ActorType::Player)
-                new BuySellDialog(target->getName());
-        }
+        if (being->canTalk())
+            being->talkTo();
+        else if (being->getType() == ActorType::Player)
+            new BuySellDialog(being->getName());
         return true;
     }
     return false;
