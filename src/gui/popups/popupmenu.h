@@ -187,6 +187,8 @@ class PopupMenu final : public Popup, public LinkHandler
 
         void showGMPopup();
 
+        bool addBeingMenu();
+
         BrowserBox *mBrowserBox;
         ScrollArea *mScrollArea;
 

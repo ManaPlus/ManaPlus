@@ -85,6 +85,8 @@
 #include "resources/mapitemtype.h"
 #include "resources/skillconsts.h"
 
+#include "resources/db/npcdb.h"
+
 #include "resources/map/map.h"
 #include "resources/map/mapitem.h"
 #include "resources/map/speciallayer.h"
@@ -245,21 +247,25 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
         }
 
         case ActorType::Npc:
-            // TRANSLATORS: popup menu item
-            // TRANSLATORS: talk with npc
-            mBrowserBox->addRow("talk", _("Talk"));
-            if (serverFeatures->haveNpcWhispers())
+            if (!addBeingMenu())
             {
                 // TRANSLATORS: popup menu item
-                // TRANSLATORS: whisper to npc
-                mBrowserBox->addRow("npc whisper", _("Whisper"));
+                // TRANSLATORS: talk with npc
+                mBrowserBox->addRow("talk", _("Talk"));
+                if (serverFeatures->haveNpcWhispers())
+                {
+                    // TRANSLATORS: popup menu item
+                    // TRANSLATORS: whisper to npc
+                    mBrowserBox->addRow("npc whisper", _("Whisper"));
+                }
+                // TRANSLATORS: popup menu item
+                // TRANSLATORS: buy from npc
+                mBrowserBox->addRow("buy", _("Buy"));
+                // TRANSLATORS: popup menu item
+                // TRANSLATORS: sell to npc
+                mBrowserBox->addRow("sell", _("Sell"));
             }
-            // TRANSLATORS: popup menu item
-            // TRANSLATORS: buy from npc
-            mBrowserBox->addRow("buy", _("Buy"));
-            // TRANSLATORS: popup menu item
-            // TRANSLATORS: sell to npc
-            mBrowserBox->addRow("sell", _("Sell"));
+
             mBrowserBox->addRow("##3---");
             // TRANSLATORS: popup menu item
             // TRANSLATORS: move to npc location
@@ -368,6 +374,25 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
     mBrowserBox->addRow("cancel", _("Cancel"));
 
     showPopup(x, y);
+}
+
+bool PopupMenu::addBeingMenu()
+{
+    Being *being = actorManager->findBeing(mBeingId);
+    if (!being)
+        return false;
+
+    BeingInfo *const info = NPCDB::get(being->getSubType());
+    if (!info)
+        return false;
+
+    const std::vector<BeingMenuItem> &menu = info->getMenu();
+    FOR_EACH (std::vector<BeingMenuItem>::const_iterator, it, menu)
+    {
+        const BeingMenuItem &item = *it;
+        mBrowserBox->addRow("@" + item.command, item.name.c_str());
+    }
+    return true;
 }
 
 void PopupMenu::setMousePos()

@@ -111,11 +111,11 @@ void NPCDB::loadXmlFile(const std::string &fileName)
         SpriteDisplay display;
         for_each_xml_child_node(spriteNode, npcNode)
         {
-            if (!spriteNode->xmlChildrenNode)
-                continue;
-
             if (xmlNameEqual(spriteNode, "sprite"))
             {
+                if (!spriteNode->xmlChildrenNode)
+                    continue;
+
                 SpriteReference *const currentSprite = new SpriteReference;
                 currentSprite->sprite = reinterpret_cast<const char*>(
                     spriteNode->xmlChildrenNode->content);
@@ -131,7 +131,7 @@ void NPCDB::loadXmlFile(const std::string &fileName)
             else if (xmlNameEqual(spriteNode, "menu"))
             {
                 std::string name = XML::getProperty(spriteNode, "name", "");
-                std::string command = XML::getProperty(spriteNode,
+                std::string command = XML::langProperty(spriteNode,
                     "command", "");
                 currentInfo->addMenu(name, command);
             }
