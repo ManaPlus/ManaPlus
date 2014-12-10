@@ -390,7 +390,7 @@ bool PopupMenu::addBeingMenu()
     FOR_EACH (std::vector<BeingMenuItem>::const_iterator, it, menu)
     {
         const BeingMenuItem &item = *it;
-        mBrowserBox->addRow("@" + item.command, item.name.c_str());
+        mBrowserBox->addRow("/" + item.command, item.name.c_str());
     }
     return true;
 }
@@ -2023,6 +2023,25 @@ void PopupMenu::handleLink(const std::string &link,
         const int id = atoi(link.substr(12).c_str());
         if (id >= 0)
             inputManager.executeAction(id);
+    }
+    else if(!link.empty() && link[0] == '/')
+    {
+        std::string cmd = link.substr(1);
+        replaceAll(cmd, "'NAME'", mNick);
+        replaceAll(cmd, "'X'", toString(mX));
+        replaceAll(cmd, "'Y'", toString(mY));
+        replaceAll(cmd, "'BEINGID'", toString(mBeingId));
+        replaceAll(cmd, "'FLOORID'", toString(mFloorItemId));
+        replaceAll(cmd, "'ITEMID'", toString(mItemId));
+        replaceAll(cmd, "'ITEMCOLOR'", toString(mItemColor));
+        replaceAll(cmd, "'BEINGTYPEID'", toString(mType));
+        replaceAll(cmd, "'PLAYER'", localPlayer->getName());
+
+        const size_t pos = cmd.find(' ');
+        const std::string type(cmd, 0, pos);
+        std::string args(cmd, pos == std::string::npos ? cmd.size() : pos + 1);
+        args = trim(args);
+        inputManager.executeChatCommand(type, args, mTab);
     }
     // Unknown actions
     else if (link != "cancel")
