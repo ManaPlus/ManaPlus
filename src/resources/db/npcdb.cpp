@@ -140,9 +140,9 @@ void NPCDB::loadXmlFile(const std::string &fileName)
         currentInfo->setDisplay(display);
         if (currentInfo->getMenu().empty())
         {
-            currentInfo->addMenu(_("Talk"), "/talk <NPCNAME>");
-            currentInfo->addMenu(_("Buy"), "/buy <NPCNAME>");
-            currentInfo->addMenu(_("Sell"), "/sell <NPCNAME>");
+            currentInfo->addMenu(_("Talk"), "talk 'NAME'");
+            currentInfo->addMenu(_("Buy"), "buy 'NAME'");
+            currentInfo->addMenu(_("Sell"), "sell 'NAME'");
         }
         mNPCInfos[id] = currentInfo;
     }
