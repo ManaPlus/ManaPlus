@@ -22,6 +22,7 @@
 
 #include "resources/db/npcdb.h"
 
+#include "configuration.h"
 #include "logger.h"
 
 #include "resources/beingcommon.h"
@@ -29,7 +30,7 @@
 #include "resources/spritereference.h"
 
 #include "utils/dtor.h"
-#include "configuration.h"
+#include "utils/gettext.h"
 
 #include "debug.h"
 
@@ -137,6 +138,12 @@ void NPCDB::loadXmlFile(const std::string &fileName)
         }
 
         currentInfo->setDisplay(display);
+        if (currentInfo->getMenu().empty())
+        {
+            currentInfo->addMenu(_("Talk"), "/talk <NPCNAME>");
+            currentInfo->addMenu(_("Buy"), "/buy <NPCNAME>");
+            currentInfo->addMenu(_("Sell"), "/sell <NPCNAME>");
+        }
         mNPCInfos[id] = currentInfo;
     }
 }
