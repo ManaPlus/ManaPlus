@@ -178,33 +178,32 @@ impHandler0(scrollChatDown)
     return false;
 }
 
-impHandler(msg)
+static bool splitWhisper(const std::string &args,
+                         std::string &recvnick,
+                         std::string &message)
 {
-    std::string recvnick;
-    std::string message;
-
-    if (event.args.substr(0, 1) == "\"")
+    if (args.substr(0, 1) == "\"")
     {
-        const size_t pos = event.args.find('"', 1);
+        const size_t pos = args.find('"', 1);
         if (pos != std::string::npos)
         {
-            recvnick = event.args.substr(1, pos - 1);
-            if (pos + 2 < event.args.length())
-                message = event.args.substr(pos + 2, event.args.length());
+            recvnick = args.substr(1, pos - 1);
+            if (pos + 2 < args.length())
+                message = args.substr(pos + 2, args.length());
         }
     }
     else
     {
-        const size_t pos = event.args.find(" ");
+        const size_t pos = args.find(" ");
         if (pos != std::string::npos)
         {
-            recvnick = event.args.substr(0, pos);
-            if (pos + 1 < event.args.length())
-                message = event.args.substr(pos + 1, event.args.length());
+            recvnick = args.substr(0, pos);
+            if (pos + 1 < args.length())
+                message = args.substr(pos + 1, args.length());
         }
         else
         {
-            recvnick = std::string(event.args);
+            recvnick = std::string(args);
             message.clear();
         }
     }
@@ -219,9 +218,21 @@ impHandler(msg)
         toLower(playerName);
         toLower(tempNick);
 
-        if (tempNick.compare(playerName) == 0 || event.args.empty())
-            return true;
+        if (tempNick.compare(playerName) == 0 || args.empty())
+            return false;
 
+        return true;
+    }
+    return false;
+}
+
+impHandler(msg)
+{
+    std::string recvnick;
+    std::string message;
+
+    if (splitWhisper(event.args, recvnick, message))
+    {
         chatWindow->addWhisper(recvnick, message, ChatMsgType::BY_PLAYER);
     }
     else
@@ -230,6 +241,16 @@ impHandler(msg)
         event.tab->chatLog(_("Cannot send empty whispers!"),
             ChatMsgType::BY_SERVER);
     }
+    return true;
+}
+
+impHandler(msg2)
+{
+    std::string recvnick;
+    std::string message;
+
+    if (splitWhisper(event.args, recvnick, message))
+        chatHandler->privateMessage(recvnick, message);
     return true;
 }
 

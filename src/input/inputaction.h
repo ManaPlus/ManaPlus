@@ -492,6 +492,7 @@ namespace InputAction
         CONTEXT_MENU,
         BUY,
         SELL,
+        WHISPER2,
         TOTAL
     };
 }  // namespace InputAction
