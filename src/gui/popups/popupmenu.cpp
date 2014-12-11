@@ -164,7 +164,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
         {
             // TRANSLATORS: popup menu item
             // TRANSLATORS: trade with player
-            mBrowserBox->addRow("trade", _("Trade"));
+            mBrowserBox->addRow("/trade 'NAME'", _("Trade"));
             // TRANSLATORS: popup menu item
             // TRANSLATORS: trade attack player
             mBrowserBox->addRow("attack", _("Attack"));
@@ -792,7 +792,7 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
 
             // TRANSLATORS: popup menu item
             // TRANSLATORS: trade with player
-            mBrowserBox->addRow("trade", _("Trade"));
+            mBrowserBox->addRow("/trade 'NAME'", _("Trade"));
             // TRANSLATORS: popup menu item
             // TRANSLATORS: attack player
             mBrowserBox->addRow("attack", _("Attack"));
@@ -979,16 +979,7 @@ void PopupMenu::handleLink(const std::string &link,
     if (actorManager)
         being = actorManager->findBeing(mBeingId);
 
-    // Trade action
-    if (link == "trade" && being &&
-        being->getType() == ActorType::Player)
-    {
-        tradeHandler->request(being);
-        tradePartnerName = being->getName();
-        if (tradeWindow)
-            tradeWindow->clear();
-    }
-    else if (link == "buy" && being && mBeingId != 0)
+    if (link == "buy" && being && mBeingId != 0)
     {
         if (being->getType() == ActorType::Npc)
             npcHandler->buy(mBeingId);
