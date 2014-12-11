@@ -979,18 +979,8 @@ void PopupMenu::handleLink(const std::string &link,
     if (actorManager)
         being = actorManager->findBeing(mBeingId);
 
-    if (link == "disregard" && being &&
+    if (link == "friend" && being &&
         being->getType() == ActorType::Player)
-    {
-        player_relations.setRelation(being->getName(),
-                                     PlayerRelation::DISREGARDED);
-    }
-    else if (link == "disregard" && !mNick.empty())
-    {
-        player_relations.setRelation(mNick, PlayerRelation::DISREGARDED);
-    }
-    else if (link == "friend" && being &&
-             being->getType() == ActorType::Player)
     {
         player_relations.setRelation(being->getName(), PlayerRelation::FRIEND);
     }
@@ -2584,7 +2574,7 @@ void PopupMenu::addNormalRelations()
 {
     // TRANSLATORS: popup menu item
     // TRANSLATORS: add player to disregarded list
-    mBrowserBox->addRow("disregard", _("Disregard"));
+    mBrowserBox->addRow("/disregard 'NAME'", _("Disregard"));
     // TRANSLATORS: popup menu item
     // TRANSLATORS: add player to ignore list
     mBrowserBox->addRow("/ignore 'NAME'", _("Ignore"));
@@ -2620,7 +2610,7 @@ void PopupMenu::addPlayerRelation(const std::string &name)
             mBrowserBox->addRow("/unignore 'NAME'", _("Unignore"));
             // TRANSLATORS: popup menu item
             // TRANSLATORS: add player to disregarded list
-            mBrowserBox->addRow("disregard", _("Disregard"));
+            mBrowserBox->addRow("/disregard 'NAME'", _("Disregard"));
             // TRANSLATORS: popup menu item
             // TRANSLATORS: add player to ignore list
             mBrowserBox->addRow("/ignore 'NAME'", _("Ignore"));
@@ -2659,7 +2649,7 @@ void PopupMenu::addPlayerRelation(const std::string &name)
             mBrowserBox->addRow("/unignore 'NAME'", _("Unignore"));
             // TRANSLATORS: popup menu item
             // TRANSLATORS: add player to disregarded list
-            mBrowserBox->addRow("disregard", _("Disregard"));
+            mBrowserBox->addRow("/disregard 'NAME'", _("Disregard"));
             // TRANSLATORS: popup menu item
             // TRANSLATORS: add player to ignore list
             mBrowserBox->addRow("/ignore 'NAME'", _("Ignore"));
@@ -2677,7 +2667,7 @@ void PopupMenu::addPlayerRelation(const std::string &name)
             mBrowserBox->addRow("/unignore 'NAME'", _("Unignore"));
             // TRANSLATORS: popup menu item
             // TRANSLATORS: add player to disregarded list
-            mBrowserBox->addRow("disregard", _("Disregard"));
+            mBrowserBox->addRow("/disregard 'NAME'", _("Disregard"));
             // TRANSLATORS: popup menu item
             // TRANSLATORS: add player to ignore list
             mBrowserBox->addRow("/ignore 'NAME'", _("Completely ignore"));
