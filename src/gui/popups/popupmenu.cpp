@@ -979,18 +979,8 @@ void PopupMenu::handleLink(const std::string &link,
     if (actorManager)
         being = actorManager->findBeing(mBeingId);
 
-    if (link == "enemy" && being &&
+    if (link == "erase" && being &&
         being->getType() == ActorType::Player)
-    {
-        player_relations.setRelation(being->getName(),
-            PlayerRelation::ENEMY2);
-    }
-    else if (link == "enemy" && !mNick.empty())
-    {
-        player_relations.setRelation(mNick, PlayerRelation::ENEMY2);
-    }
-    else if (link == "erase" && being &&
-             being->getType() == ActorType::Player)
     {
         player_relations.setRelation(being->getName(), PlayerRelation::ERASED);
         being->updateName();
@@ -2613,7 +2603,7 @@ void PopupMenu::addNormalRelations()
     mBrowserBox->addRow("/blacklist 'NAME'", _("Black list"));
     // TRANSLATORS: popup menu item
     // TRANSLATORS: add player to enemy list
-    mBrowserBox->addRow("enemy", _("Set as enemy"));
+    mBrowserBox->addRow("/enemy 'NAME'", _("Set as enemy"));
     // TRANSLATORS: popup menu item
     // TRANSLATORS: add player to erased list
     mBrowserBox->addRow("erase", _("Erase"));
@@ -2646,7 +2636,7 @@ void PopupMenu::addPlayerRelation(const std::string &name)
             mBrowserBox->addRow("/ignore 'NAME'", _("Ignore"));
             // TRANSLATORS: popup menu item
             // TRANSLATORS: add player to enemy list
-            mBrowserBox->addRow("enemy", _("Set as enemy"));
+            mBrowserBox->addRow("/enemy 'NAME'", _("Set as enemy"));
             // TRANSLATORS: popup menu item
             // TRANSLATORS: add player to erased list
             mBrowserBox->addRow("erase", _("Erase"));
