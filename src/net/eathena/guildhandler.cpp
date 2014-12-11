@@ -211,8 +211,11 @@ void GuildHandler::processGuildUpdateCoords(Net::MessageIn &msg)
     if (Ea::taGuild)
     {
         GuildMember *const m = Ea::taGuild->getMember(id);
-        m->setX(x);
-        m->setY(y);
+        if (m)
+        {
+            m->setX(x);
+            m->setY(y);
+        }
     }
 }
 
