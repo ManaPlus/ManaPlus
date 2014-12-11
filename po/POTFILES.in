@@ -154,6 +154,7 @@ src/resources/db/avatardb.cpp
 src/resources/db/itemdb.cpp
 src/resources/db/moddb.cpp
 src/resources/db/monsterdb.cpp
+src/resources/db/npcdb.cpp
 src/resources/db/petdb.cpp
 src/resources/itemtypemapdata.h
 src/resources/mapreader.cpp
