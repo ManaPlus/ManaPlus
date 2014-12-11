@@ -340,6 +340,32 @@ impHandler(party)
     return true;
 }
 
+impHandler(guild)
+{
+    if (!event.tab || !localPlayer)
+        return false;
+
+    const std::string args = event.args;
+    if (!args.empty())
+    {
+        const Guild *const guild = localPlayer->getGuild();
+        if (guild)
+        {
+            if (guild->getServerGuild())
+                guildHandler->invite(guild->getId(), args);
+            else if (guildManager)
+                guildManager->invite(args);
+        }
+    }
+    else
+    {
+        // TRANSLATORS: guild invite message
+        event.tab->chatLog(_("Please specify a name."),
+            ChatMsgType::BY_SERVER);
+    }
+    return true;
+}
+
 impHandler(me)
 {
     outString(event.tab, textToMe(event.args), event.args);

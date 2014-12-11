@@ -4180,6 +4180,15 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputCondition::INGAME,
         "w2|whisper2|msg2",
         true},
+    {"keyGuild",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::guild,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "guild",
+        true},
 };
 
 #endif  // INPUT_INPUTACTIONMAP_H

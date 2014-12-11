@@ -493,6 +493,7 @@ namespace InputAction
         BUY,
         SELL,
         WHISPER2,
+        GUILD,
         TOTAL
     };
 }  // namespace InputAction
