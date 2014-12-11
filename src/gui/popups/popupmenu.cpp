@@ -251,7 +251,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
             {
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: talk with npc
-                mBrowserBox->addRow("talk", _("Talk"));
+                mBrowserBox->addRow("/talk 'NAME'", _("Talk"));
                 if (serverFeatures->haveNpcWhispers())
                 {
                     // TRANSLATORS: popup menu item
@@ -979,14 +979,9 @@ void PopupMenu::handleLink(const std::string &link,
     if (actorManager)
         being = actorManager->findBeing(mBeingId);
 
-    // Talk To action
-    if (link == "talk" && being && being->canTalk())
-    {
-        being->talkTo();
-    }
     // Trade action
-    else if (link == "trade" && being &&
-             being->getType() == ActorType::Player)
+    if (link == "trade" && being &&
+        being->getType() == ActorType::Player)
     {
         tradeHandler->request(being);
         tradePartnerName = being->getName();
