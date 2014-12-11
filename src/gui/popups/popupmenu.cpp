@@ -260,7 +260,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
                 }
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: buy from npc
-                mBrowserBox->addRow("buy", _("Buy"));
+                mBrowserBox->addRow("/buy 'NAME'", _("Buy"));
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: sell to npc
                 mBrowserBox->addRow("sell", _("Sell"));
@@ -979,18 +979,7 @@ void PopupMenu::handleLink(const std::string &link,
     if (actorManager)
         being = actorManager->findBeing(mBeingId);
 
-    if (link == "buy" && being && mBeingId != 0)
-    {
-        if (being->getType() == ActorType::Npc)
-            npcHandler->buy(mBeingId);
-        else if (being->getType() == ActorType::Player)
-            buySellHandler->requestSellList(being->getName());
-    }
-    else if (link == "buy" && !mNick.empty())
-    {
-        buySellHandler->requestSellList(mNick);
-    }
-    else if (link == "sell" && being && mBeingId != 0)
+    if (link == "sell" && being && mBeingId != 0)
     {
         if (being->getType() == ActorType::Npc)
             npcHandler->sell(mBeingId);
@@ -2794,7 +2783,7 @@ void PopupMenu::addBuySell(const Being *const being)
             {
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: buy item
-                mBrowserBox->addRow("buy", _("Buy"));
+                mBrowserBox->addRow("/buy 'NAME'", _("Buy"));
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: sell item
                 mBrowserBox->addRow("sell", _("Sell"));
@@ -2804,7 +2793,7 @@ void PopupMenu::addBuySell(const Being *const being)
         {
             // TRANSLATORS: popup menu item
             // TRANSLATORS: buy item
-            mBrowserBox->addRow("buy", _("Buy (?)"));
+            mBrowserBox->addRow("/buy 'NAME'", _("Buy (?)"));
             // TRANSLATORS: popup menu item
             // TRANSLATORS: sell item
             mBrowserBox->addRow("sell", _("Sell (?)"));
@@ -2819,7 +2808,7 @@ void PopupMenu::addBuySellDefault()
         mBrowserBox->addRow("##3---");
         // TRANSLATORS: popup menu item
         // TRANSLATORS: buy item
-        mBrowserBox->addRow("buy", _("Buy (?)"));
+        mBrowserBox->addRow("/buy 'NAME'", _("Buy (?)"));
         // TRANSLATORS: popup menu item
         // TRANSLATORS: sell item
         mBrowserBox->addRow("sell", _("Sell (?)"));
