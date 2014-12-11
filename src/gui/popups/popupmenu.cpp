@@ -229,7 +229,8 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
                     {
                         // TRANSLATORS: popup menu item
                         // TRANSLATORS: invite player to guild
-                        mBrowserBox->addRow("guild", _("Invite to guild"));
+                        mBrowserBox->addRow("/guild 'NAME'",
+                            _("Invite to guild"));
                     }
                 }
             }
@@ -522,7 +523,7 @@ void PopupMenu::showPlayerPopup(const std::string &nick)
             {
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: invite player to guild
-                mBrowserBox->addRow("guild", _("Invite to guild"));
+                mBrowserBox->addRow("/guild 'NAME'", _("Invite to guild"));
             }
         }
     }
@@ -843,7 +844,8 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
                     {
                         // TRANSLATORS: popup menu item
                         // TRANSLATORS: invite player to guild
-                        mBrowserBox->addRow("guild", _("Invite to guild"));
+                        mBrowserBox->addRow("/guild 'NAME'",
+                            _("Invite to guild"));
                     }
                 }
             }
@@ -979,22 +981,7 @@ void PopupMenu::handleLink(const std::string &link,
     if (actorManager)
         being = actorManager->findBeing(mBeingId);
 
-    // Guild action
-    if (link == "guild" && !mNick.empty())
-    {
-        if (localPlayer)
-        {
-            const Guild *const guild = localPlayer->getGuild();
-            if (guild)
-            {
-                if (guild->getServerGuild())
-                    guildHandler->invite(guild->getId(), mNick);
-                else if (guildManager)
-                    guildManager->invite(mNick);
-            }
-        }
-    }
-    else if (link == "nuke" && being)
+    if (link == "nuke" && being)
     {
         if (actorManager)
         {
