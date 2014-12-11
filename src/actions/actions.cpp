@@ -561,8 +561,20 @@ impHandler(attack)
         return false;
 
     Being *target = nullptr;
-    if (!event.args.empty())
-        target = actorManager->findNearestByName(event.args);
+    std::string args = event.args;
+    if (!args.empty())
+    {
+        if (args[0] != ':')
+        {
+            target = actorManager->findNearestByName(args);
+        }
+        else
+        {
+            target = actorManager->findBeing(atoi(args.substr(1).c_str()));
+            if (target && target->getType() != ActorType::Monster)
+                target = nullptr;
+        }
+    }
     if (!target)
         target = localPlayer->getTarget();
     else

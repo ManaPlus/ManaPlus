@@ -167,7 +167,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
             mBrowserBox->addRow("/trade 'NAME'", _("Trade"));
             // TRANSLATORS: popup menu item
             // TRANSLATORS: trade attack player
-            mBrowserBox->addRow("attack", _("Attack"));
+            mBrowserBox->addRow("/attack 'NAME'", _("Attack"));
             // TRANSLATORS: popup menu item
             // TRANSLATORS: send whisper to player
             mBrowserBox->addRow("whisper", _("Whisper"));
@@ -281,7 +281,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
             // Monsters can be attacked
             // TRANSLATORS: popup menu item
             // TRANSLATORS: attack monster
-            mBrowserBox->addRow("attack", _("Attack"));
+            mBrowserBox->addRow("/attack :'BEINGID'", _("Attack"));
 
             if (config.getBoolValue("enableAttackFilter"))
             {
@@ -795,7 +795,7 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
             mBrowserBox->addRow("/trade 'NAME'", _("Trade"));
             // TRANSLATORS: popup menu item
             // TRANSLATORS: attack player
-            mBrowserBox->addRow("attack", _("Attack"));
+            mBrowserBox->addRow("/attack 'NAME'", _("Attack"));
             mBrowserBox->addRow("##3---");
             // TRANSLATORS: popup menu item
             // TRANSLATORS: heal player
@@ -979,12 +979,7 @@ void PopupMenu::handleLink(const std::string &link,
     if (actorManager)
         being = actorManager->findBeing(mBeingId);
 
-    if (link == "attack" && being)
-    {
-        if (localPlayer)
-            localPlayer->attack(being, true);
-    }
-    else if (link == "heal" && being && being->getType() != ActorType::Monster)
+    if (link == "heal" && being && being->getType() != ActorType::Monster)
     {
         if (actorManager)
             actorManager->heal(being);
