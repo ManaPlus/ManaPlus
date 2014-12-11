@@ -263,7 +263,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
                 mBrowserBox->addRow("/buy 'NAME'", _("Buy"));
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: sell to npc
-                mBrowserBox->addRow("sell", _("Sell"));
+                mBrowserBox->addRow("/sell 'NAME'", _("Sell"));
             }
 
             mBrowserBox->addRow("##3---");
@@ -979,18 +979,7 @@ void PopupMenu::handleLink(const std::string &link,
     if (actorManager)
         being = actorManager->findBeing(mBeingId);
 
-    if (link == "sell" && being && mBeingId != 0)
-    {
-        if (being->getType() == ActorType::Npc)
-            npcHandler->sell(mBeingId);
-        else if (being->getType() == ActorType::Player)
-            buySellHandler->requestBuyList(being->getName());
-    }
-    else if (link == "sell" && !mNick.empty())
-    {
-        buySellHandler->requestBuyList(mNick);
-    }
-    else if (link == "attack" && being)
+    if (link == "attack" && being)
     {
         if (localPlayer)
             localPlayer->attack(being, true);
@@ -2786,7 +2775,7 @@ void PopupMenu::addBuySell(const Being *const being)
                 mBrowserBox->addRow("/buy 'NAME'", _("Buy"));
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: sell item
-                mBrowserBox->addRow("sell", _("Sell"));
+                mBrowserBox->addRow("/sell 'NAME'", _("Sell"));
             }
         }
         else
@@ -2796,7 +2785,7 @@ void PopupMenu::addBuySell(const Being *const being)
             mBrowserBox->addRow("/buy 'NAME'", _("Buy (?)"));
             // TRANSLATORS: popup menu item
             // TRANSLATORS: sell item
-            mBrowserBox->addRow("sell", _("Sell (?)"));
+            mBrowserBox->addRow("/sell 'NAME'", _("Sell (?)"));
         }
     }
 }
@@ -2811,7 +2800,7 @@ void PopupMenu::addBuySellDefault()
         mBrowserBox->addRow("/buy 'NAME'", _("Buy (?)"));
         // TRANSLATORS: popup menu item
         // TRANSLATORS: sell item
-        mBrowserBox->addRow("sell", _("Sell (?)"));
+        mBrowserBox->addRow("/sell 'NAME'", _("Sell (?)"));
     }
 }
 
