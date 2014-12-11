@@ -979,17 +979,8 @@ void PopupMenu::handleLink(const std::string &link,
     if (actorManager)
         being = actorManager->findBeing(mBeingId);
 
-    if (link == "friend" && being &&
-        being->getType() == ActorType::Player)
-    {
-        player_relations.setRelation(being->getName(), PlayerRelation::FRIEND);
-    }
-    else if (link == "friend" && !mNick.empty())
-    {
-        player_relations.setRelation(mNick, PlayerRelation::FRIEND);
-    }
     // Guild action
-    else if (link == "guild" && !mNick.empty())
+    if (link == "guild" && !mNick.empty())
     {
         if (localPlayer)
         {
@@ -2596,7 +2587,7 @@ void PopupMenu::addPlayerRelation(const std::string &name)
         case PlayerRelation::NEUTRAL:
             // TRANSLATORS: popup menu item
             // TRANSLATORS: add player to friends list
-            mBrowserBox->addRow("friend", _("Be friend"));
+            mBrowserBox->addRow("/friend 'NAME'", _("Be friend"));
             addNormalRelations();
             break;
 
