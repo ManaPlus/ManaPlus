@@ -361,10 +361,21 @@ impHandler(heal)
 {
     if (actorManager && localPlayer)
     {
-        if (!event.args.empty())
+        std::string args = event.args;
+
+        if (!args.empty())
         {
-            const Being *const being = actorManager->findBeingByName(
-                event.args, ActorType::Player);
+            const Being *being = nullptr;
+            if (args[0] == ':')
+            {
+                being = actorManager->findBeing(atoi(args.substr(1).c_str()));
+                if (being && being->getType() == ActorType::Monster)
+                    being = nullptr;
+            }
+            else
+            {
+                being = actorManager->findBeingByName(args, ActorType::Player);
+            }
             if (being)
                 actorManager->heal(being);
         }

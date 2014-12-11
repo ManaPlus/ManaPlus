@@ -176,7 +176,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
 
             // TRANSLATORS: popup menu item
             // TRANSLATORS: heal player
-            mBrowserBox->addRow("heal", _("Heal"));
+            mBrowserBox->addRow("/heal :'BEINGID'", _("Heal"));
             mBrowserBox->addRow("##3---");
 
             addPlayerRelation(name);
@@ -799,7 +799,7 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
             mBrowserBox->addRow("##3---");
             // TRANSLATORS: popup menu item
             // TRANSLATORS: heal player
-            mBrowserBox->addRow("heal", _("Heal"));
+            mBrowserBox->addRow("/heal :'BEINGID'", _("Heal"));
             mBrowserBox->addRow("##3---");
             addPlayerRelation(name);
             mBrowserBox->addRow("##3---");
@@ -979,13 +979,8 @@ void PopupMenu::handleLink(const std::string &link,
     if (actorManager)
         being = actorManager->findBeing(mBeingId);
 
-    if (link == "heal" && being && being->getType() != ActorType::Monster)
-    {
-        if (actorManager)
-            actorManager->heal(being);
-    }
-    else if (link == "unignore" && being &&
-             being->getType() == ActorType::Player)
+    if (link == "unignore" && being &&
+        being->getType() == ActorType::Player)
     {
         player_relations.setRelation(being->getName(),
             PlayerRelation::NEUTRAL);
