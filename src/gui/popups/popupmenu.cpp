@@ -979,18 +979,8 @@ void PopupMenu::handleLink(const std::string &link,
     if (actorManager)
         being = actorManager->findBeing(mBeingId);
 
-    if (link == "erase" && being &&
+    if (link == "disregard" && being &&
         being->getType() == ActorType::Player)
-    {
-        player_relations.setRelation(being->getName(), PlayerRelation::ERASED);
-        being->updateName();
-    }
-    else if (link == "erase" && !mNick.empty())
-    {
-        player_relations.setRelation(mNick, PlayerRelation::ERASED);
-    }
-    else if (link == "disregard" && being &&
-             being->getType() == ActorType::Player)
     {
         player_relations.setRelation(being->getName(),
                                      PlayerRelation::DISREGARDED);
@@ -2606,7 +2596,7 @@ void PopupMenu::addNormalRelations()
     mBrowserBox->addRow("/enemy 'NAME'", _("Set as enemy"));
     // TRANSLATORS: popup menu item
     // TRANSLATORS: add player to erased list
-    mBrowserBox->addRow("erase", _("Erase"));
+    mBrowserBox->addRow("/erase 'NAME'", _("Erase"));
 }
 
 void PopupMenu::addPlayerRelation(const std::string &name)
@@ -2639,7 +2629,7 @@ void PopupMenu::addPlayerRelation(const std::string &name)
             mBrowserBox->addRow("/enemy 'NAME'", _("Set as enemy"));
             // TRANSLATORS: popup menu item
             // TRANSLATORS: add player to erased list
-            mBrowserBox->addRow("erase", _("Erase"));
+            mBrowserBox->addRow("/erase 'NAME'", _("Erase"));
             break;
 
         case PlayerRelation::DISREGARDED:
@@ -2651,7 +2641,7 @@ void PopupMenu::addPlayerRelation(const std::string &name)
             mBrowserBox->addRow("/ignore 'NAME'", _("Completely ignore"));
             // TRANSLATORS: popup menu item
             // TRANSLATORS: add player to erased list
-            mBrowserBox->addRow("erase", _("Erase"));
+            mBrowserBox->addRow("/erase 'NAME'", _("Erase"));
             break;
 
         case PlayerRelation::IGNORED:
@@ -2660,7 +2650,7 @@ void PopupMenu::addPlayerRelation(const std::string &name)
             mBrowserBox->addRow("/unignore 'NAME'", _("Unignore"));
             // TRANSLATORS: popup menu item
             // TRANSLATORS: add player to erased list
-            mBrowserBox->addRow("erase", _("Erase"));
+            mBrowserBox->addRow("/erase 'NAME'", _("Erase"));
             break;
 
         case PlayerRelation::ENEMY2:
@@ -2678,7 +2668,7 @@ void PopupMenu::addPlayerRelation(const std::string &name)
             mBrowserBox->addRow("/blacklist 'NAME'", _("Black list"));
             // TRANSLATORS: popup menu item
             // TRANSLATORS: add player to erased list
-            mBrowserBox->addRow("erase", _("Erase"));
+            mBrowserBox->addRow("/erase 'NAME'", _("Erase"));
             break;
 
         case PlayerRelation::ERASED:
