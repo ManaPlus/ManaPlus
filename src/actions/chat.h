@@ -36,6 +36,7 @@ namespace Actions
     decHandler(scrollChatUp);
     decHandler(scrollChatDown);
     decHandler(msg);
+    decHandler(msgText);
     decHandler(msg2);
     decHandler(query);
     decHandler(clearChatTab);

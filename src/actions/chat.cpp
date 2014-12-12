@@ -20,6 +20,7 @@
 
 #include "actions/chat.h"
 
+#include "configuration.h"
 #include "guildmanager.h"
 
 #include "actions/actiondef.h"
@@ -242,6 +243,22 @@ impHandler(msg)
             ChatMsgType::BY_SERVER);
     }
     return true;
+}
+
+impHandler(msgText)
+{
+    if (!chatWindow)
+        return false;
+
+    if (config.getBoolValue("whispertab"))
+    {
+        chatWindow->localChatInput("/q " + event.args);
+    }
+    else
+    {
+        chatWindow->addInputText(std::string("/w \"").append(
+            event.args).append("\" "));
+    }
 }
 
 impHandler(msg2)

@@ -497,6 +497,7 @@ namespace InputAction
         NUKE,
         USE,
         CHAT_ADD,
+        WHISPER_TEXT,
         TOTAL
     };
 }  // namespace InputAction

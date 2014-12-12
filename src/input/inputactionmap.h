@@ -4216,6 +4216,15 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputCondition::INGAME,
         "addchat|chatadd",
         true},
+    {"keyWhisperText",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::msgText,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "wt|whispertext|msgtext",
+        true},
 };
 
 #endif  // INPUT_INPUTACTIONMAP_H
