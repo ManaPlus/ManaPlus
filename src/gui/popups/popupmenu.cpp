@@ -982,15 +982,7 @@ void PopupMenu::handleLink(const std::string &link,
     if (actorManager)
         being = actorManager->findBeing(mBeingId);
 
-    if (link == "drop" && mItem)
-    {
-        if (!PlayerInfo::isItemProtected(mItem->getId()))
-        {
-            ItemAmountWindow::showWindow(ItemAmountWindow::ItemDrop,
-                inventoryWindow, mItem);
-        }
-    }
-    else if (link == "drop all" && mItem)
+    if (link == "drop all" && mItem)
     {
         PlayerInfo::dropItem(mItem, mItem->getQuantity(), true);
     }
@@ -2732,7 +2724,7 @@ void PopupMenu::addUseDrop(const Item *const item, const bool isProtected)
         {
             // TRANSLATORS: popup menu item
             // TRANSLATORS: drop item
-            mBrowserBox->addRow("drop", _("Drop..."));
+            mBrowserBox->addRow("/dropitem 'ITEMID'", _("Drop..."));
             // TRANSLATORS: popup menu item
             // TRANSLATORS: drop all item amount
             mBrowserBox->addRow("drop all", _("Drop all"));
@@ -2741,7 +2733,7 @@ void PopupMenu::addUseDrop(const Item *const item, const bool isProtected)
         {
             // TRANSLATORS: popup menu item
             // TRANSLATORS: drop item
-            mBrowserBox->addRow("drop", _("Drop"));
+            mBrowserBox->addRow("/dropitem 'ITEMID'", _("Drop"));
         }
     }
 }
