@@ -982,12 +982,7 @@ void PopupMenu::handleLink(const std::string &link,
     if (actorManager)
         being = actorManager->findBeing(mBeingId);
 
-    if (link == "split" && mItem)
-    {
-        ItemAmountWindow::showWindow(ItemAmountWindow::ItemSplit,
-                             inventoryWindow, mItem);
-    }
-    else if (link == "drop" && mItem)
+    if (link == "drop" && mItem)
     {
         if (!PlayerInfo::isItemProtected(mItem->getId()))
         {
@@ -2748,13 +2743,6 @@ void PopupMenu::addUseDrop(const Item *const item, const bool isProtected)
             // TRANSLATORS: drop item
             mBrowserBox->addRow("drop", _("Drop"));
         }
-    }
-
-    if (inventoryHandler->canSplit(item))
-    {
-        // TRANSLATORS: popup menu item
-        // TRANSLATORS: split items
-        mBrowserBox->addRow("split", _("Split"));
     }
 }
 
