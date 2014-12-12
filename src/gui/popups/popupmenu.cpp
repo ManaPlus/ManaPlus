@@ -645,7 +645,7 @@ void PopupMenu::showMapPopup(const int x, const int y,
     mBrowserBox->addRow("/navigate 'X' 'Y'", _("Move"));
     // TRANSLATORS: popup menu item
     // TRANSLATORS: move camera to map item
-    mBrowserBox->addRow("movecamera", _("Move camera"));
+    mBrowserBox->addRow("/movecamera 'X' 'Y'", _("Move camera"));
     mBrowserBox->addRow("##3---");
     // TRANSLATORS: popup menu item
     // TRANSLATORS: close menu
@@ -982,12 +982,7 @@ void PopupMenu::handleLink(const std::string &link,
     if (actorManager)
         being = actorManager->findBeing(mBeingId);
 
-    if (link == "movecamera" && (mX || mY))
-    {
-        if (viewport)
-            viewport->moveCameraToPosition(mX * mapTileSize, mY * mapTileSize);
-    }
-    else if (link == "split" && mItem)
+    if (link == "split" && mItem)
     {
         ItemAmountWindow::showWindow(ItemAmountWindow::ItemSplit,
                              inventoryWindow, mItem);
