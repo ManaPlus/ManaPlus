@@ -170,7 +170,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
             mBrowserBox->addRow("/attack 'NAME'", _("Attack"));
             // TRANSLATORS: popup menu item
             // TRANSLATORS: send whisper to player
-            mBrowserBox->addRow("whisper", _("Whisper"));
+            mBrowserBox->addRow("/whispertext 'NAME'", _("Whisper"));
             addGmCommands();
             mBrowserBox->addRow("##3---");
 
@@ -460,7 +460,7 @@ void PopupMenu::showPlayerPopup(const std::string &nick)
 
     // TRANSLATORS: popup menu item
     // TRANSLATORS: send whisper to player
-    mBrowserBox->addRow("whisper", _("Whisper"));
+    mBrowserBox->addRow("/whispertext 'NAME'", _("Whisper"));
     addGmCommands();
     mBrowserBox->addRow("##3---");
 
@@ -981,22 +981,7 @@ void PopupMenu::handleLink(const std::string &link,
     if (actorManager)
         being = actorManager->findBeing(mBeingId);
 
-    if (link == "whisper" && !mNick.empty())
-    {
-        if (chatWindow)
-        {
-            if (config.getBoolValue("whispertab"))
-            {
-                chatWindow->localChatInput("/q " + mNick);
-            }
-            else
-            {
-                chatWindow->addInputText(std::string("/w \"").append(
-                    mNick).append("\" "));
-            }
-        }
-    }
-    else if (link == "npc whisper" && !mNick.empty())
+    if (link == "npc whisper" && !mNick.empty())
     {
         if (chatWindow)
         {
