@@ -1313,6 +1313,7 @@ impHandler(useItem)
     {
         skillDialog->useItem(itemId);
     }
+    return true;
 }
 
 }  // namespace Actions

@@ -242,6 +242,7 @@ impHandler(chatNuke)
 
     actorManager->addBlock(static_cast<uint32_t>(being->getId()));
     actorManager->destroy(being);
+    return true;
 }
 
 impHandler0(present)
