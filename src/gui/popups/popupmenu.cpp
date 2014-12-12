@@ -981,13 +981,7 @@ void PopupMenu::handleLink(const std::string &link,
     if (actorManager)
         being = actorManager->findBeing(mBeingId);
 
-    // Follow Player action
-    if (link == "follow" && !mNick.empty())
-    {
-        if (localPlayer)
-            localPlayer->setFollow(mNick);
-    }
-    else if (link == "imitation" && !mNick.empty())
+    if (link == "imitation" && !mNick.empty())
     {
         if (localPlayer)
             localPlayer->setImitate(mNick);
@@ -2652,7 +2646,7 @@ void PopupMenu::addFollow()
     if (features.getBoolValue("allowFollow"))
     {
         // TRANSLATORS: popup menu item
-        mBrowserBox->addRow("follow", _("Follow"));
+        mBrowserBox->addRow("/follow 'NAME'", _("Follow"));
     }
     // TRANSLATORS: popup menu item
     // TRANSLATORS: imitate player
