@@ -501,6 +501,7 @@ namespace InputAction
         NAVIGATE_TO,
         CAMERA_MOVE,
         DROP_ITEM,
+        DROP_ITEM_ALL,
         TOTAL
     };
 }  // namespace InputAction

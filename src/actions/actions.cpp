@@ -380,6 +380,20 @@ impHandler(dropItemId)
     return true;
 }
 
+impHandler(dropItemIdAll)
+{
+    const Inventory *const inv = PlayerInfo::getInventory();
+    if (!inv)
+        return false;
+
+    // +++ ignoring item color for now
+    Item *const item = inv->findItem(atoi(event.args.c_str()), 1);
+
+    if (item && !PlayerInfo::isItemProtected(item->getId()))
+        PlayerInfo::dropItem(item, item->getQuantity(), true);
+    return true;
+}
+
 impHandler(heal)
 {
     if (actorManager && localPlayer)
