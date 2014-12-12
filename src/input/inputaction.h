@@ -499,6 +499,7 @@ namespace InputAction
         CHAT_ADD,
         WHISPER_TEXT,
         NAVIGATE_TO,
+        CAMERA_MOVE,
         TOTAL
     };
 }  // namespace InputAction

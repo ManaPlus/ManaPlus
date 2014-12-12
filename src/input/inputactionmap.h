@@ -4234,6 +4234,15 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputCondition::INGAME,
         "navigateto",
         true},
+    {"keyCameraMove",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::moveCamera,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "movecamera|cameramove",
+        true},
 };
 
 #endif  // INPUT_INPUTACTIONMAP_H

@@ -34,6 +34,7 @@
 #include "being/playerrelations.h"
 
 #include "gui/chatconsts.h"
+#include "gui/viewport.h"
 
 #include "gui/windows/chatwindow.h"
 #include "gui/windows/socialwindow.h"
@@ -469,6 +470,19 @@ impHandler(navigateTo)
                 localPlayer->navigateTo(m->getX(), m->getY());
         }
     }
+    return true;
+}
+
+impHandler(moveCamera)
+{
+    int x = 0;
+    int y = 0;
+
+    if (!viewport)
+        return false;
+
+    if (parse2Int(event.args, x, y))
+        viewport->moveCameraToPosition(x * mapTileSize, y * mapTileSize);
     return true;
 }
 
