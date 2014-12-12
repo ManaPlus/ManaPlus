@@ -26,7 +26,9 @@
 #include "emoteshortcut.h"
 #include "game.h"
 #include "graphicsmanager.h"
+#include "inventory.h"
 #include "itemshortcut.h"
+#include "spellmanager.h"
 
 #include "actions/actiondef.h"
 
@@ -53,6 +55,7 @@
 #include "gui/windows/setupwindow.h"
 #include "gui/windows/shopwindow.h"
 #include "gui/windows/shortcutwindow.h"
+#include "gui/windows/skilldialog.h"
 
 #include "gui/widgets/tabs/chat/chattab.h"
 
@@ -76,6 +79,7 @@
 
 #include "resources/iteminfo.h"
 #include "resources/resourcemanager.h"
+#include "resources/skillconsts.h"
 
 #include "resources/db/itemdb.h"
 
@@ -1285,6 +1289,30 @@ impHandler0(mercenaryFire)
 {
     mercenaryHandler->fire();
     return true;
+}
+
+impHandler(useItem)
+{
+    const int itemId = atoi(event.args.c_str());
+
+    if (itemId < SPELL_MIN_ID)
+    {
+        const Inventory *const inv = PlayerInfo::getInventory();
+        if (inv)
+        {
+            // +++ ignoring item color for now
+            const Item *const item = inv->findItem(itemId, 1);
+            PlayerInfo::useEquipItem(item, true);
+        }
+    }
+    else if (itemId < SKILL_MIN_ID && spellManager)
+    {
+        spellManager->useItem(itemId);
+    }
+    else if (skillDialog)
+    {
+        skillDialog->useItem(itemId);
+    }
 }
 
 }  // namespace Actions

@@ -495,6 +495,7 @@ namespace InputAction
         WHISPER2,
         GUILD,
         NUKE,
+        USE,
         TOTAL
     };
 }  // namespace InputAction

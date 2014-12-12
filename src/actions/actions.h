@@ -92,6 +92,7 @@ namespace Actions
     decHandler(uploadLog);
     decHandler(catchPet);
     decHandler(mercenaryFire);
+    decHandler(useItem);
 }  // namespace Actions
 
 #undef decHandler
