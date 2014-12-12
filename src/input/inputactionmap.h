@@ -4243,6 +4243,15 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputCondition::INGAME,
         "movecamera|cameramove",
         true},
+    {"keyDropItem",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::dropItemId,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "dropitem",
+        true},
 };
 
 #endif  // INPUT_INPUTACTIONMAP_H

@@ -50,6 +50,8 @@
 #include "gui/windows/buyselldialog.h"
 #include "gui/windows/chatwindow.h"
 #include "gui/windows/helpwindow.h"
+#include "gui/windows/inventorywindow.h"
+#include "gui/windows/itemamountwindow.h"
 #include "gui/windows/npcdialog.h"
 #include "gui/windows/outfitwindow.h"
 #include "gui/windows/setupwindow.h"
@@ -359,6 +361,23 @@ impHandler0(dropItem)
         return true;
     }
     return false;
+}
+
+impHandler(dropItemId)
+{
+    const Inventory *const inv = PlayerInfo::getInventory();
+    if (!inv)
+        return false;
+
+    // +++ ignoring item color for now
+    Item *const item = inv->findItem(atoi(event.args.c_str()), 1);
+
+    if (item && !PlayerInfo::isItemProtected(item->getId()))
+    {
+        ItemAmountWindow::showWindow(ItemAmountWindow::ItemDrop,
+            inventoryWindow, item);
+    }
+    return true;
 }
 
 impHandler(heal)

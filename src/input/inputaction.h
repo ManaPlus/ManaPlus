@@ -500,6 +500,7 @@ namespace InputAction
         WHISPER_TEXT,
         NAVIGATE_TO,
         CAMERA_MOVE,
+        DROP_ITEM,
         TOTAL
     };
 }  // namespace InputAction
