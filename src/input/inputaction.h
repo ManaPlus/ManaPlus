@@ -496,6 +496,7 @@ namespace InputAction
         GUILD,
         NUKE,
         USE,
+        CHAT_ADD,
         TOTAL
     };
 }  // namespace InputAction

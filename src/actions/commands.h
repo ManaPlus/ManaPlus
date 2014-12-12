@@ -37,6 +37,7 @@ namespace Actions
     decHandler(chatEnemy);
     decHandler(chatErase);
     decHandler(chatNuke);
+    decHandler(chatAdd);
     decHandler(present);
     decHandler(printAll);
     decHandler(move);

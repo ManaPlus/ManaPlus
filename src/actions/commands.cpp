@@ -22,10 +22,14 @@
 
 #include "actormanager.h"
 #include "configuration.h"
+#include "flooritem.h"
+#include "inventory.h"
+#include "item.h"
 
 #include "actions/actiondef.h"
 
 #include "being/localplayer.h"
+#include "being/playerinfo.h"
 #include "being/playerrelations.h"
 
 #include "gui/chatconsts.h"
@@ -42,6 +46,8 @@
 #include "net/homunculushandler.h"
 #include "net/pethandler.h"
 #include "net/serverfeatures.h"
+
+#include "resources/iteminfo.h"
 
 #include "utils/chatutils.h"
 #include "utils/gettext.h"
@@ -242,6 +248,43 @@ impHandler(chatNuke)
 
     actorManager->addBlock(static_cast<uint32_t>(being->getId()));
     actorManager->destroy(being);
+    return true;
+}
+
+impHandler(chatAdd)
+{
+    if (!chatWindow)
+        return false;
+
+    if (event.args.empty())
+        return true;
+
+    const int id = atoi(event.args.c_str());
+    if (!id)
+        return true;
+
+    Inventory *const inv = PlayerInfo::getInventory();
+    const Item *item = nullptr;
+    if (inv)
+    {
+        // +++ need add also color here
+        item = inv->findItem(id, 1);
+    }
+
+    if (item)
+    {
+        // +++ need add also color here
+        chatWindow->addItemText(item->getInfo().getName());
+        return true;
+    }
+
+    const FloorItem *const floorItem = actorManager->findItem(id);
+
+    if (floorItem)
+    {
+        // +++ need add also color here
+        chatWindow->addItemText(floorItem->getInfo().getName());
+    }
     return true;
 }
 

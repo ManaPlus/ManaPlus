@@ -4207,6 +4207,15 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputCondition::INGAME,
         "use|useitem",
         true},
+    {"keyChatAdd",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::chatAdd,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "addchat|chatadd",
+        true},
 };
 
 #endif  // INPUT_INPUTACTIONMAP_H
