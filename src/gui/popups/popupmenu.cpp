@@ -237,7 +237,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
 
             // TRANSLATORS: popup menu item
             // TRANSLATORS: set player invisible for self by id
-            mBrowserBox->addRow("nuke", _("Nuke"));
+            mBrowserBox->addRow("/nuke 'NAME'", _("Nuke"));
             // TRANSLATORS: popup menu item
             // TRANSLATORS: move to player location
             mBrowserBox->addRow("move", _("Move"));
@@ -981,17 +981,8 @@ void PopupMenu::handleLink(const std::string &link,
     if (actorManager)
         being = actorManager->findBeing(mBeingId);
 
-    if (link == "nuke" && being)
-    {
-        if (actorManager)
-        {
-            actorManager->addBlock(static_cast<uint32_t>(
-                being->getId()));
-            actorManager->destroy(being);
-        }
-    }
     // Follow Player action
-    else if (link == "follow" && !mNick.empty())
+    if (link == "follow" && !mNick.empty())
     {
         if (localPlayer)
             localPlayer->setFollow(mNick);
