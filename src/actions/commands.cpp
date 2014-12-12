@@ -101,19 +101,19 @@ static void changeRelation(const InputEvent &event,
                            const PlayerRelation::Relation relation,
                            const std::string &relationText)
 {
-    if (!event.tab)
-        return;
-
     std::string args = getNick(event);
     if (args.empty())
         return;
 
     if (player_relations.getRelation(args) == relation)
     {
-        // TRANSLATORS: change relation
-        event.tab->chatLog(strprintf(_("Player already %s!"),
-                     relationText.c_str()), ChatMsgType::BY_SERVER);
-        return;
+        if (event.tab)
+        {
+            // TRANSLATORS: change relation
+            event.tab->chatLog(strprintf(_("Player already %s!"),
+                relationText.c_str()), ChatMsgType::BY_SERVER);
+            return;
+        }
     }
     else
     {
