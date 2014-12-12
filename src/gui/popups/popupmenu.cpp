@@ -981,13 +981,8 @@ void PopupMenu::handleLink(const std::string &link,
     if (actorManager)
         being = actorManager->findBeing(mBeingId);
 
-    if (link == "imitation" && !mNick.empty())
-    {
-        if (localPlayer)
-            localPlayer->setImitate(mNick);
-    }
     // Pick Up Floor Item action
-    else if ((link == "pickup") && mFloorItemId)
+    if ((link == "pickup") && mFloorItemId)
     {
         if (localPlayer && actorManager)
         {
@@ -2650,7 +2645,7 @@ void PopupMenu::addFollow()
     }
     // TRANSLATORS: popup menu item
     // TRANSLATORS: imitate player
-    mBrowserBox->addRow("imitation", _("Imitation"));
+    mBrowserBox->addRow("/imitation 'NAME'", _("Imitation"));
 }
 
 void PopupMenu::addBuySell(const Being *const being)
