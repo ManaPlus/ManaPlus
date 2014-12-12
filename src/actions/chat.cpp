@@ -259,6 +259,7 @@ impHandler(msgText)
         chatWindow->addInputText(std::string("/w \"").append(
             event.args).append("\" "));
     }
+    return true;
 }
 
 impHandler(msg2)
