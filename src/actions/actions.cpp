@@ -451,12 +451,21 @@ impHandler0(copyEquippedToOutfit)
 
 impHandler0(pickup)
 {
-    if (localPlayer)
+    if (!localPlayer)
+        return false;
+
+    const std::string args = event.args;
+    if (args.empty())
     {
         localPlayer->pickUpItems();
-        return true;
     }
-    return false;
+    else
+    {
+        FloorItem *const item = actorManager->findItem(atoi(args.c_str()));
+        if (item)
+            localPlayer->pickUp(item);
+    }
+    return true;
 }
 
 static void doSit()

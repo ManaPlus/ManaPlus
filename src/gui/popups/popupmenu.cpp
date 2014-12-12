@@ -564,7 +564,7 @@ void PopupMenu::showPopup(const int x, const int y,
         {
             // TRANSLATORS: popup menu item
             // TRANSLATORS: pickup item from ground
-            mBrowserBox->addRow("pickup", _("Pick up"));
+            mBrowserBox->addRow("/pickup 'FLOORID'", _("Pick up"));
             mBrowserBox->addRow("##3---");
         }
         addPickupFilter(name);
@@ -573,7 +573,7 @@ void PopupMenu::showPopup(const int x, const int y,
     {
         // TRANSLATORS: popup menu item
         // TRANSLATORS: pickup item from ground
-        mBrowserBox->addRow("pickup", _("Pick up"));
+        mBrowserBox->addRow("/pickup 'FLOORID'", _("Pick up"));
     }
     addProtection();
     // TRANSLATORS: popup menu item
@@ -981,18 +981,7 @@ void PopupMenu::handleLink(const std::string &link,
     if (actorManager)
         being = actorManager->findBeing(mBeingId);
 
-    // Pick Up Floor Item action
-    if ((link == "pickup") && mFloorItemId)
-    {
-        if (localPlayer && actorManager)
-        {
-            FloorItem *const item = actorManager->findItem(
-                mFloorItemId);
-            if (item)
-                localPlayer->pickUp(item);
-        }
-    }
-    else if (link == "use" && mItemId)
+    if (link == "use" && mItemId)
     {
         if (mItemId < SPELL_MIN_ID)
         {
