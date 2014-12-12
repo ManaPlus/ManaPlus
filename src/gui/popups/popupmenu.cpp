@@ -981,27 +981,7 @@ void PopupMenu::handleLink(const std::string &link,
     if (actorManager)
         being = actorManager->findBeing(mBeingId);
 
-    if (link == "use" && mItemId)
-    {
-        if (mItemId < SPELL_MIN_ID)
-        {
-            const Inventory *const inv = PlayerInfo::getInventory();
-            if (inv)
-            {
-                const Item *const item = inv->findItem(mItemId, mItemColor);
-                PlayerInfo::useEquipItem(item, true);
-            }
-        }
-        else if (mItemId < SKILL_MIN_ID && spellManager)
-        {
-            spellManager->useItem(mItemId);
-        }
-        else if (skillDialog)
-        {
-            skillDialog->useItem(mItemId);
-        }
-    }
-    else if (link == "chat")
+    if (link == "chat")
     {
         if (chatWindow)
         {
@@ -2050,7 +2030,7 @@ void PopupMenu::showItemPopup(const int x, const int y, const int itemId,
         {
             // TRANSLATORS: popup menu item
             // TRANSLATORS: use item
-            mBrowserBox->addRow("use", _("Use"));
+            mBrowserBox->addRow("/use 'ITEMID'", _("Use"));
         }
         addProtection();
         mBrowserBox->addRow("##3---");
@@ -2839,12 +2819,12 @@ void PopupMenu::addUseDrop(const Item *const item, const bool isProtected)
     if (str.empty())
     {
         // TRANSLATORS: popup menu item
-        mBrowserBox->addRow("use", _("Use"));
+        mBrowserBox->addRow("/use 'ITEMID'", _("Use"));
     }
     else
     {
         // TRANSLATORS: popup menu item
-        mBrowserBox->addRow("use", str.c_str());
+        mBrowserBox->addRow("/use 'ITEMID'", str.c_str());
     }
 
     if (!isProtected)
