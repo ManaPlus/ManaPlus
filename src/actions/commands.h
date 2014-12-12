@@ -49,6 +49,7 @@ namespace Actions
     decHandler(pseudoAway);
     decHandler(follow);
     decHandler(navigate);
+    decHandler(navigateTo);
     decHandler(imitation);
     decHandler(sendMail);
     decHandler(info);

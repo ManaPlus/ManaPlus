@@ -25,6 +25,7 @@
 #include "flooritem.h"
 #include "inventory.h"
 #include "item.h"
+#include "party.h"
 
 #include "actions/actiondef.h"
 
@@ -439,6 +440,35 @@ impHandler(navigate)
         localPlayer->navigateTo(x, y);
     else
         localPlayer->navigateClean();
+    return true;
+}
+
+impHandler(navigateTo)
+{
+    if (!localPlayer)
+        return false;
+
+    const std::string args = event.args;
+    if (args.empty())
+        return true;
+
+    Being *const being = actorManager->findBeingByName(args);
+    if (being)
+    {
+        localPlayer->navigateTo(being->getTileX(), being->getTileY());
+    }
+    else if (localPlayer->isInParty())
+    {
+        const Party *const party = localPlayer->getParty();
+        if (party)
+        {
+            const PartyMember *const m = party->getMember(args);
+            const PartyMember *const o = party->getMember(
+                localPlayer->getName());
+            if (m && o && m->getMap() == o->getMap())
+                localPlayer->navigateTo(m->getX(), m->getY());
+        }
+    }
     return true;
 }
 

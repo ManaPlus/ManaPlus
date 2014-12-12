@@ -498,6 +498,7 @@ namespace InputAction
         USE,
         CHAT_ADD,
         WHISPER_TEXT,
+        NAVIGATE_TO,
         TOTAL
     };
 }  // namespace InputAction
