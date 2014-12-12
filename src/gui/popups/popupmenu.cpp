@@ -982,11 +982,7 @@ void PopupMenu::handleLink(const std::string &link,
     if (actorManager)
         being = actorManager->findBeing(mBeingId);
 
-    if (link == "drop all" && mItem)
-    {
-        PlayerInfo::dropItem(mItem, mItem->getQuantity(), true);
-    }
-    else if (link == "store" && mItem)
+    if (link == "store" && mItem)
     {
         ItemAmountWindow::showWindow(ItemAmountWindow::StoreAdd,
             inventoryWindow, mItem);
@@ -2727,7 +2723,7 @@ void PopupMenu::addUseDrop(const Item *const item, const bool isProtected)
             mBrowserBox->addRow("/dropitem 'ITEMID'", _("Drop..."));
             // TRANSLATORS: popup menu item
             // TRANSLATORS: drop all item amount
-            mBrowserBox->addRow("drop all", _("Drop all"));
+            mBrowserBox->addRow("/dropitemall 'ITEMID'", _("Drop all"));
         }
         else
         {
