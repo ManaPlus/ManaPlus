@@ -578,7 +578,7 @@ void PopupMenu::showPopup(const int x, const int y,
     addProtection();
     // TRANSLATORS: popup menu item
     // TRANSLATORS: add item name to chat
-    mBrowserBox->addRow("chat", _("Add to chat"));
+    mBrowserBox->addRow("/addchat 'FLOORID'", _("Add to chat"));
     mBrowserBox->addRow("##3---");
     // TRANSLATORS: popup menu item
     // TRANSLATORS: close menu
@@ -981,43 +981,7 @@ void PopupMenu::handleLink(const std::string &link,
     if (actorManager)
         being = actorManager->findBeing(mBeingId);
 
-    if (link == "chat")
-    {
-        if (chatWindow)
-        {
-            if (mItem)
-            {
-                if (serverFeatures->haveItemColors())
-                {
-                    chatWindow->addItemText(mItem->getInfo().getName(
-                        mItem->getColor()));
-                }
-                else
-                {
-                    chatWindow->addItemText(mItem->getInfo().getName());
-                }
-            }
-            else if (mFloorItemId && actorManager)
-            {
-                const FloorItem *const item = actorManager->findItem(
-                    mFloorItemId);
-
-                if (item)
-                {
-                    if (serverFeatures->haveItemColors())
-                    {
-                        chatWindow->addItemText(item->getInfo().getName(
-                            item->getColor()));
-                    }
-                    else
-                    {
-                        chatWindow->addItemText(item->getInfo().getName());
-                    }
-                }
-            }
-        }
-    }
-    else if (link == "whisper" && !mNick.empty())
+    if (link == "whisper" && !mNick.empty())
     {
         if (chatWindow)
         {
@@ -1996,7 +1960,7 @@ void PopupMenu::showPopup(Window *const parent, const int x, const int y,
     }
     // TRANSLATORS: popup menu item
     // TRANSLATORS: add item name to chat
-    mBrowserBox->addRow("chat", _("Add to chat"));
+    mBrowserBox->addRow("/addchat 'ITEMID'", _("Add to chat"));
     mBrowserBox->addRow("##3---");
     // TRANSLATORS: popup menu item
     // TRANSLATORS: close menu
@@ -2072,7 +2036,7 @@ void PopupMenu::showItemPopup(const int x, const int y, Item *const item)
         }
         // TRANSLATORS: popup menu item
         // TRANSLATORS: add item name to chat
-        mBrowserBox->addRow("chat", _("Add to chat"));
+        mBrowserBox->addRow("/addchat 'ITEMID'", _("Add to chat"));
 
         if (config.getBoolValue("enablePickupFilter"))
         {
@@ -2114,7 +2078,7 @@ void PopupMenu::showDropPopup(const int x, const int y, Item *const item)
         addProtection();
         // TRANSLATORS: popup menu item
         // TRANSLATORS: add item name to chat
-        mBrowserBox->addRow("chat", _("Add to chat"));
+        mBrowserBox->addRow("/addchat 'ITEMID'", _("Add to chat"));
         if (config.getBoolValue("enablePickupFilter"))
         {
             mNick = item->getName();
