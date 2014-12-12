@@ -240,7 +240,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
             mBrowserBox->addRow("/nuke 'NAME'", _("Nuke"));
             // TRANSLATORS: popup menu item
             // TRANSLATORS: move to player location
-            mBrowserBox->addRow("move", _("Move"));
+            mBrowserBox->addRow("/navigateto 'NAME'", _("Move"));
             addPlayerMisc();
             addBuySell(being);
             addChat(being);
@@ -271,7 +271,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
             mBrowserBox->addRow("##3---");
             // TRANSLATORS: popup menu item
             // TRANSLATORS: move to npc location
-            mBrowserBox->addRow("move", _("Move"));
+            mBrowserBox->addRow("/navigateto 'NAME'", _("Move"));
             // TRANSLATORS: popup menu item
             // TRANSLATORS: add comment to npc
             mBrowserBox->addRow("addcomment", _("Add comment"));
@@ -491,7 +491,7 @@ void PopupMenu::showPlayerPopup(const std::string &nick)
                 {
                     // TRANSLATORS: popup menu item
                     // TRANSLATORS: move to player position
-                    mBrowserBox->addRow("move", _("Move"));
+                    mBrowserBox->addRow("/navigate 'X' 'Y'", _("Move"));
                 }
             }
         }
@@ -642,7 +642,7 @@ void PopupMenu::showMapPopup(const int x, const int y,
     }
     // TRANSLATORS: popup menu item
     // TRANSLATORS: move to map item
-    mBrowserBox->addRow("move", _("Move"));
+    mBrowserBox->addRow("/navigate 'X' 'Y'", _("Move"));
     // TRANSLATORS: popup menu item
     // TRANSLATORS: move camera to map item
     mBrowserBox->addRow("movecamera", _("Move camera"));
@@ -808,7 +808,7 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
             addFollow();
             // TRANSLATORS: popup menu item
             // TRANSLATORS: move to player position
-            mBrowserBox->addRow("move", _("Move"));
+            mBrowserBox->addRow("/navigateto 'NAME'", _("Move"));
             addPlayerMisc();
             addBuySell(being);
             mBrowserBox->addRow("##3---");
@@ -869,7 +869,7 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
                     {
                         // TRANSLATORS: popup menu item
                         // TRANSLATORS: move to player location
-                        mBrowserBox->addRow("move", _("Move"));
+                        mBrowserBox->addRow("/navigateto 'NAME'", _("Move"));
                     }
                 }
             }
@@ -982,34 +982,7 @@ void PopupMenu::handleLink(const std::string &link,
     if (actorManager)
         being = actorManager->findBeing(mBeingId);
 
-    if (link == "move" && !mNick.empty())
-    {
-        if (localPlayer)
-        {
-            if (being)
-            {
-                localPlayer->navigateTo(being->getTileX(), being->getTileY());
-            }
-            else if (localPlayer->isInParty())
-            {
-                const Party *const party = localPlayer->getParty();
-                if (party)
-                {
-                    const PartyMember *const m = party->getMember(mNick);
-                    const PartyMember *const o = party->getMember(
-                        localPlayer->getName());
-                    if (m && o && m->getMap() == o->getMap())
-                        localPlayer->navigateTo(m->getX(), m->getY());
-                }
-            }
-        }
-    }
-    else if (link == "move" && (mX || mY))
-    {
-        if (localPlayer)
-            localPlayer->navigateTo(mX, mY);
-    }
-    else if (link == "movecamera" && (mX || mY))
+    if (link == "movecamera" && (mX || mY))
     {
         if (viewport)
             viewport->moveCameraToPosition(mX * mapTileSize, mY * mapTileSize);
