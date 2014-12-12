@@ -257,7 +257,8 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
                 {
                     // TRANSLATORS: popup menu item
                     // TRANSLATORS: whisper to npc
-                    mBrowserBox->addRow("npc whisper", _("Whisper"));
+                    mBrowserBox->addRow("/whispertext NPC:'NAME'",
+                        _("Whisper"));
                 }
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: buy from npc
@@ -981,22 +982,7 @@ void PopupMenu::handleLink(const std::string &link,
     if (actorManager)
         being = actorManager->findBeing(mBeingId);
 
-    if (link == "npc whisper" && !mNick.empty())
-    {
-        if (chatWindow)
-        {
-            if (config.getBoolValue("whispertab"))
-            {
-                chatWindow->localChatInput("/q NPC:" + mNick);
-            }
-            else
-            {
-                chatWindow->addInputText(std::string("/w \"NPC:").append(
-                    mNick).append("\" "));
-            }
-        }
-    }
-    else if (link == "move" && !mNick.empty())
+    if (link == "move" && !mNick.empty())
     {
         if (localPlayer)
         {
