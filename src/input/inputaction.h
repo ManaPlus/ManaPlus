@@ -494,6 +494,7 @@ namespace InputAction
         SELL,
         WHISPER2,
         GUILD,
+        NUKE,
         TOTAL
     };
 }  // namespace InputAction

@@ -229,6 +229,21 @@ impHandler(chatEnemy)
     return true;
 }
 
+impHandler(chatNuke)
+{
+    if (!actorManager)
+        return false;
+
+    const std::string nick = getNick(event);
+    Being *const being = actorManager->findBeingByName(
+        nick, ActorType::Player);
+    if (!being)
+        return true;
+
+    actorManager->addBlock(static_cast<uint32_t>(being->getId()));
+    actorManager->destroy(being);
+}
+
 impHandler0(present)
 {
     if (chatWindow)

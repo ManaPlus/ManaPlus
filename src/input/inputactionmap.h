@@ -4189,6 +4189,15 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputCondition::INGAME,
         "guild",
         true},
+    {"keyNuke",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::chatNuke,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "nuke",
+        true},
 };
 
 #endif  // INPUT_INPUTACTIONMAP_H
