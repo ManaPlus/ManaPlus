@@ -83,26 +83,6 @@ void PartyHandler::processPartyCreate(Net::MessageIn &msg)
         NotifyManager::notify(NotifyTypes::PARTY_CREATED);
 }
 
-void PartyHandler::processPartyInvited(Net::MessageIn &msg)
-{
-    const int id = msg.readInt32("account id");
-    const std::string partyName = msg.readString(24, "party name");
-    std::string nick;
-
-    if (actorManager)
-    {
-        const Being *const being = actorManager->findBeing(id);
-        if (being)
-        {
-            if (being->getType() == ActorType::Player)
-                nick = being->getName();
-        }
-    }
-
-    if (socialWindow)
-        socialWindow->showPartyInvite(partyName, nick);
-}
-
 void PartyHandler::processPartySettingsContinue(const int16_t exp,
                                                 const int16_t item)
 {

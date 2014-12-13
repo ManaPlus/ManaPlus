@@ -63,8 +63,6 @@ class PartyHandler notfinal : public Net::PartyHandler
 
         static void processPartyCreate(Net::MessageIn &msg);
 
-        static void processPartyInvited(Net::MessageIn &msg);
-
         static void processPartyMove(Net::MessageIn &msg);
 
         static void processPartyLeave(Net::MessageIn &msg);

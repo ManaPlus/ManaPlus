@@ -81,6 +81,8 @@ class PartyHandler final : public MessageHandler, public Ea::PartyHandler
         static void processPartyItemPickup(Net::MessageIn &msg);
 
         static void processPartyLeader(Net::MessageIn &msg);
+
+        static void processPartyInvited(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

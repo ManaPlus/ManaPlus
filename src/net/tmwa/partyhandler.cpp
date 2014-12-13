@@ -383,4 +383,24 @@ void PartyHandler::allowInvite(const bool allow A_UNUSED) const
 {
 }
 
+void PartyHandler::processPartyInvited(Net::MessageIn &msg)
+{
+    const int id = msg.readInt32("account id");
+    const std::string partyName = msg.readString(24, "party name");
+    std::string nick;
+
+    if (actorManager)
+    {
+        const Being *const being = actorManager->findBeing(id);
+        if (being)
+        {
+            if (being->getType() == ActorType::Player)
+                nick = being->getName();
+        }
+    }
+
+    if (socialWindow)
+        socialWindow->showPartyInvite(partyName, nick);
+}
+
 }  // namespace TmwAthena
