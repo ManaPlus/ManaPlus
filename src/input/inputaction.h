@@ -506,10 +506,6 @@ namespace InputAction
         DROP_INV_ALL,
         USE_INV,
         INV_TO_STORAGE,
-        INV_TO_STORAGE_10,
-        INV_TO_STORAGE_HALF,
-        INV_TO_STORAGE_ALL_1,
-        INV_TO_STORAGE_ALL,
         TOTAL
     };
 }  // namespace InputAction

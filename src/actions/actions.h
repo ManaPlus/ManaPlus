@@ -99,10 +99,6 @@ namespace Actions
     decHandler(useItem);
     decHandler(useItemInv);
     decHandler(invToStorage);
-    decHandler(invToStorage10);
-    decHandler(invToStorageHalf);
-    decHandler(invToStorageAll1);
-    decHandler(invToStorageAll);
 }  // namespace Actions
 
 #undef decHandler

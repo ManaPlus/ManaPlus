@@ -1803,20 +1803,20 @@ void PopupMenu::showPopup(Window *const parent, const int x, const int y,
                 {
                     // TRANSLATORS: popup menu item
                     // TRANSLATORS: add 10 item amount to storage
-                    mBrowserBox->addRow("/invtostorage10 'INVINDEX'",
+                    mBrowserBox->addRow("/invtostorage 'INVINDEX' 10",
                         _("Store 10"));
                 }
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: add half item amount to storage
-                mBrowserBox->addRow("/invtostoragehalf 'INVINDEX'",
+                mBrowserBox->addRow("/invtostorage 'INVINDEX' /",
                     _("Store half"));
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: add all except one item amount to storage
-                mBrowserBox->addRow("/invtostorageall1 'INVINDEX'",
+                mBrowserBox->addRow("/invtostorage 'INVINDEX' -1",
                     _("Store all-1"));
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: add all item amount to storage
-                mBrowserBox->addRow("/invtostorageall 'INVINDEX'",
+                mBrowserBox->addRow("/invtostorage 'INVINDEX' all",
                     _("Store all"));
             }
             mBrowserBox->addRow("##3---");
