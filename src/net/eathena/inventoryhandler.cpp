@@ -711,7 +711,7 @@ void InventoryHandler::processPlayerStorageRemove(Net::MessageIn &msg)
     BLOCK_START("InventoryHandler::processPlayerStorageRemove")
     // Move an item out of storage
     const int index = msg.readInt16("index") - STORAGE_OFFSET;
-    const int amount = msg.readInt16("amount");
+    const int amount = msg.readInt32("amount");
     if (mStorage)
     {
         if (Item *const item = mStorage->getItem(index))
