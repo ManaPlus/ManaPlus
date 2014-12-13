@@ -48,9 +48,6 @@ class PartyHandler notfinal
 
         virtual void invite(const std::string &name) const = 0;
 
-        virtual void inviteResponse(const std::string &inviter,
-                                    const bool accept) const = 0;
-
         virtual void leave() const = 0;
 
         virtual void kick(const Being *const player) const = 0;
@@ -75,6 +72,10 @@ class PartyHandler notfinal
         virtual void allowInvite(const bool allow) const = 0;
 
         virtual void clear() const = 0;
+
+        virtual void inviteResponse(const std::string &inviter,
+                                    const int partyId,
+                                    const bool accept) const = 0;
 
         virtual ChatTab *getTab() const = 0;
 };

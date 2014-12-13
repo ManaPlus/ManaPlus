@@ -76,7 +76,8 @@ class SocialWindow final : public Window,
         void showGuildCreate();
 
         void showPartyInvite(const std::string &restrict partyName,
-                             const std::string &restrict inviter = "");
+                             const std::string &restrict inviter,
+                             const int partyId);
 
         void showPartyCreate();
 
@@ -169,6 +170,7 @@ class SocialWindow final : public Window,
         Map *mMap;
 
         int mLastUpdateTime;
+        int mPartyId;
         bool mNeedUpdate;
         bool mProcessedPortals;
 };

@@ -152,12 +152,13 @@ void PartyHandler::invite(const std::string &name) const
 }
 
 void PartyHandler::inviteResponse(const std::string &inviter A_UNUSED,
+                                  const int partyId,
                                   const bool accept) const
 {
     if (localPlayer)
     {
         createOutPacket(CMSG_PARTY_INVITED2);
-        outMsg.writeInt32(localPlayer->getId(), "account id");
+        outMsg.writeInt32(partyId, "party id");
         outMsg.writeInt8(static_cast<int8_t>(accept ? 1 : 0), "accept");
     }
 }
@@ -501,20 +502,9 @@ void PartyHandler::processPartyInvited(Net::MessageIn &msg)
 {
     const int id = msg.readInt32("account id");
     const std::string partyName = msg.readString(24, "party name");
-    std::string nick;
-
-    if (actorManager)
-    {
-        const Being *const being = actorManager->findBeing(id);
-        if (being)
-        {
-            if (being->getType() == ActorType::Player)
-                nick = being->getName();
-        }
-    }
 
     if (socialWindow)
-        socialWindow->showPartyInvite(partyName, nick);
+        socialWindow->showPartyInvite(partyName, "", id);
 }
 
 }  // namespace EAthena

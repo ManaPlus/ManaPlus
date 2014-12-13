@@ -133,6 +133,7 @@ void PartyHandler::invite(const std::string &name) const
 }
 
 void PartyHandler::inviteResponse(const std::string &inviter A_UNUSED,
+                                  const int partyId A_UNUSED,
                                   const bool accept) const
 {
     if (localPlayer)
@@ -400,7 +401,7 @@ void PartyHandler::processPartyInvited(Net::MessageIn &msg)
     }
 
     if (socialWindow)
-        socialWindow->showPartyInvite(partyName, nick);
+        socialWindow->showPartyInvite(partyName, nick, 0);
 }
 
 }  // namespace TmwAthena

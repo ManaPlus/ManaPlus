@@ -91,6 +91,7 @@ SocialWindow::SocialWindow() :
     mTabs(new TabbedArea(this)),
     mMap(nullptr),
     mLastUpdateTime(0),
+    mPartyId(0),
     mNeedUpdate(false),
     mProcessedPortals(false)
 {
@@ -275,7 +276,7 @@ void SocialWindow::action(const ActionEvent &event)
                     strprintf(_("Accepted party invite from %s."),
                     mPartyInviter.c_str()));
             }
-            partyHandler->inviteResponse(mPartyInviter, true);
+            partyHandler->inviteResponse(mPartyInviter, mPartyId, true);
         }
         else if (eventId == "no")
         {
@@ -286,7 +287,7 @@ void SocialWindow::action(const ActionEvent &event)
                     strprintf(_("Rejected party invite from %s."),
                     mPartyInviter.c_str()));
             }
-            partyHandler->inviteResponse(mPartyInviter, false);
+            partyHandler->inviteResponse(mPartyInviter, mPartyId, false);
         }
 
         mPartyInviter.clear();
@@ -431,7 +432,8 @@ void SocialWindow::showGuildInvite(const std::string &restrict guildName,
 }
 
 void SocialWindow::showPartyInvite(const std::string &restrict partyName,
-                                   const std::string &restrict inviter)
+                                   const std::string &restrict inviter,
+                                   const int partyId)
 {
     // check there isnt already an invite showing
     if (!mPartyInviter.empty())
@@ -486,6 +488,7 @@ void SocialWindow::showPartyInvite(const std::string &restrict partyName,
     mPartyAcceptDialog->postInit();
     mPartyAcceptDialog->addActionListener(this);
     mPartyInviter = inviter;
+    mPartyId = partyId;
 }
 
 void SocialWindow::showPartyCreate()
