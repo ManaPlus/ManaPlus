@@ -210,6 +210,15 @@ static Being *findBeing(const std::string &name)
     return being;
 }
 
+static Item *getItemByInvIndex(const InputEvent &event)
+{
+    const int index = atoi(event.args.c_str());
+    const Inventory *const inv = PlayerInfo::getInventory();
+    if (inv)
+        return inv->getItem(index);
+    return nullptr;
+}
+
 impHandler(emote)
 {
     const int emotion = 1 + event.action - InputAction::EMOTE_1;
@@ -382,12 +391,7 @@ impHandler(dropItemId)
 
 impHandler(dropItemInv)
 {
-    const Inventory *const inv = PlayerInfo::getInventory();
-    if (!inv)
-        return false;
-
-    Item *const item = inv->getItem(atoi(event.args.c_str()));
-
+    Item *const item = getItemByInvIndex(event);
     if (item && !PlayerInfo::isItemProtected(item->getId()))
     {
         ItemAmountWindow::showWindow(ItemAmountWindow::ItemDrop,
@@ -412,12 +416,7 @@ impHandler(dropItemIdAll)
 
 impHandler(dropItemInvAll)
 {
-    const Inventory *const inv = PlayerInfo::getInventory();
-    if (!inv)
-        return false;
-
-    Item *const item = inv->getItem(atoi(event.args.c_str()));
-
+    Item *const item = getItemByInvIndex(event);
     if (item && !PlayerInfo::isItemProtected(item->getId()))
         PlayerInfo::dropItem(item, item->getQuantity(), true);
     return true;
@@ -1380,26 +1379,16 @@ impHandler(useItem)
 
 impHandler(useItemInv)
 {
-    const int index = atoi(event.args.c_str());
-    const Inventory *const inv = PlayerInfo::getInventory();
-    if (inv)
-    {
-        Item *const item = inv->getItem(index);
-        PlayerInfo::useEquipItem(item, true);
-    }
+    Item *const item = getItemByInvIndex(event);
+    PlayerInfo::useEquipItem(item, true);
     return true;
 }
 
 impHandler(invToStorage)
 {
-    const int index = atoi(event.args.c_str());
-    const Inventory *const inv = PlayerInfo::getInventory();
-    if (inv)
-    {
-        Item *const item = inv->getItem(index);
-        ItemAmountWindow::showWindow(ItemAmountWindow::StoreAdd,
-            inventoryWindow, item);
-    }
+    Item *const item = getItemByInvIndex(event);
+    ItemAmountWindow::showWindow(ItemAmountWindow::StoreAdd,
+        inventoryWindow, item);
     return true;
 }
 
