@@ -982,11 +982,7 @@ void PopupMenu::handleLink(const std::string &link,
     if (actorManager)
         being = actorManager->findBeing(mBeingId);
 
-    if (link == "protect item" && mItemId)
-    {
-        PlayerInfo::protectItem(mItemId);
-    }
-    else if (link == "unprotect item" && mItemId)
+    if (link == "unprotect item" && mItemId)
     {
         PlayerInfo::unprotectItem(mItemId);
     }
@@ -2607,7 +2603,7 @@ void PopupMenu::addProtection()
             mBrowserBox->addRow("##3---");
             // TRANSLATORS: popup menu item
             // TRANSLATORS: add protection to item
-            mBrowserBox->addRow("protect item", _("Protect item"));
+            mBrowserBox->addRow("/protectitem 'ITEMID'", _("Protect item"));
         }
     }
 }
