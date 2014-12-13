@@ -982,13 +982,7 @@ void PopupMenu::handleLink(const std::string &link,
     if (actorManager)
         being = actorManager->findBeing(mBeingId);
 
-    if (link == "retrieve all" && mItem)
-    {
-        inventoryHandler->moveItem2(Inventory::STORAGE,
-            mItem->getInvIndex(), mItem->getQuantity(),
-            Inventory::INVENTORY);
-    }
-    else if (link == "protect item" && mItemId)
+    if (link == "protect item" && mItemId)
     {
         PlayerInfo::protectItem(mItemId);
     }
@@ -1791,7 +1785,8 @@ void PopupMenu::showPopup(Window *const parent, const int x, const int y,
                 _("Retrieve all-1"));
             // TRANSLATORS: popup menu item
             // TRANSLATORS: get all item amount from storage
-            mBrowserBox->addRow("retrieve all", _("Retrieve all"));
+            mBrowserBox->addRow("/storagetoinv 'INVINDEX' all",
+                _("Retrieve all"));
         }
     }
     addProtection();
