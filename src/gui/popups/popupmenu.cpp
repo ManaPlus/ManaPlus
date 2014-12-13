@@ -982,13 +982,7 @@ void PopupMenu::handleLink(const std::string &link,
     if (actorManager)
         being = actorManager->findBeing(mBeingId);
 
-    if (link == "retrieve all-1" && mItem)
-    {
-        inventoryHandler->moveItem2(Inventory::STORAGE,
-            mItem->getInvIndex(), mItem->getQuantity() - 1,
-            Inventory::INVENTORY);
-    }
-    else if (link == "retrieve all" && mItem)
+    if (link == "retrieve all" && mItem)
     {
         inventoryHandler->moveItem2(Inventory::STORAGE,
             mItem->getInvIndex(), mItem->getQuantity(),
@@ -1793,7 +1787,8 @@ void PopupMenu::showPopup(Window *const parent, const int x, const int y,
                 _("Retrieve half"));
             // TRANSLATORS: popup menu item
             // TRANSLATORS: get all except one item amount from storage
-            mBrowserBox->addRow("retrieve all-1", _("Retrieve all-1"));
+            mBrowserBox->addRow("/storagetoinv 'INVINDEX' -1",
+                _("Retrieve all-1"));
             // TRANSLATORS: popup menu item
             // TRANSLATORS: get all item amount from storage
             mBrowserBox->addRow("retrieve all", _("Retrieve all"));
