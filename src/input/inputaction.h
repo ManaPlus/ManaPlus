@@ -508,6 +508,7 @@ namespace InputAction
         INV_TO_STORAGE,
         TRADE_ADD,
         STORAGE_TO_INV,
+        ITEM_PROTECT,
         TOTAL
     };
 }  // namespace InputAction

@@ -4315,6 +4315,15 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputCondition::INGAME,
         "storagetoinv|storageinv",
         true},
+    {"keyProtectItem",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::protectItem,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "protectitem|itemprotect",
+        true},
 };
 
 #endif  // INPUT_INPUTACTIONMAP_H
