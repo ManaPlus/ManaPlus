@@ -98,6 +98,7 @@ namespace Actions
     decHandler(mercenaryFire);
     decHandler(useItem);
     decHandler(useItemInv);
+    decHandler(invToStorage);
 }  // namespace Actions
 
 #undef decHandler

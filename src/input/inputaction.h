@@ -505,6 +505,7 @@ namespace InputAction
         DROP_INV,
         DROP_INV_ALL,
         USE_INV,
+        INV_TO_STORAGE,
         TOTAL
     };
 }  // namespace InputAction

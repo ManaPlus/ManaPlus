@@ -1390,4 +1390,17 @@ impHandler(useItemInv)
     return true;
 }
 
+impHandler(invToStorage)
+{
+    const int index = atoi(event.args.c_str());
+    const Inventory *const inv = PlayerInfo::getInventory();
+    if (inv)
+    {
+        Item *const item = inv->getItem(index);
+        ItemAmountWindow::showWindow(ItemAmountWindow::StoreAdd,
+            inventoryWindow, item);
+    }
+    return true;
+}
+
 }  // namespace Actions
