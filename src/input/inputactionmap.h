@@ -4261,6 +4261,15 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputCondition::INGAME,
         "dropitemall",
         true},
+    {"keyDropInv",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::dropItemInv,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "dropinv",
+        true},
 };
 
 #endif  // INPUT_INPUTACTIONMAP_H

@@ -380,6 +380,22 @@ impHandler(dropItemId)
     return true;
 }
 
+impHandler(dropItemInv)
+{
+    const Inventory *const inv = PlayerInfo::getInventory();
+    if (!inv)
+        return false;
+
+    Item *const item = inv->getItem(atoi(event.args.c_str()));
+
+    if (item && !PlayerInfo::isItemProtected(item->getId()))
+    {
+        ItemAmountWindow::showWindow(ItemAmountWindow::ItemDrop,
+            inventoryWindow, item);
+    }
+    return true;
+}
+
 impHandler(dropItemIdAll)
 {
     const Inventory *const inv = PlayerInfo::getInventory();
