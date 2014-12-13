@@ -71,6 +71,7 @@
 #include "net/chathandler.h"
 #include "net/download.h"
 #include "net/gamehandler.h"
+#include "net/inventoryhandler.h"
 #include "net/ipc.h"
 #include "net/mercenaryhandler.h"
 #include "net/npchandler.h"
@@ -1389,6 +1390,21 @@ impHandler(invToStorage)
     Item *const item = getItemByInvIndex(event);
     ItemAmountWindow::showWindow(ItemAmountWindow::StoreAdd,
         inventoryWindow, item);
+    return true;
+}
+
+impHandler(invToStorage10)
+{
+    Item *const item = getItemByInvIndex(event);
+    if (!item)
+        return true;
+
+    int cnt = 10;
+    if (cnt > item->getQuantity())
+        cnt = item->getQuantity();
+    inventoryHandler->moveItem2(Inventory::INVENTORY,
+        item->getInvIndex(), cnt,
+        Inventory::STORAGE);
     return true;
 }
 

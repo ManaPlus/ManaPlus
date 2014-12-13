@@ -99,6 +99,7 @@ namespace Actions
     decHandler(useItem);
     decHandler(useItemInv);
     decHandler(invToStorage);
+    decHandler(invToStorage10);
 }  // namespace Actions
 
 #undef decHandler
