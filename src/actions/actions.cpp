@@ -1388,8 +1388,50 @@ impHandler(useItemInv)
 impHandler(invToStorage)
 {
     Item *const item = getItemByInvIndex(event);
-    ItemAmountWindow::showWindow(ItemAmountWindow::StoreAdd,
-        inventoryWindow, item);
+    if (!item)
+        return true;
+
+    std::string args = event.args;
+    int amount = 0;
+
+    int idx = args.find(" ");
+    if (idx > 0)
+        args = args.substr(idx + 1);
+    else
+        args.clear();
+
+    if (args.empty())
+    {
+        ItemAmountWindow::showWindow(ItemAmountWindow::StoreAdd,
+            inventoryWindow, item);
+        return true;
+    }
+
+    if (args[0] == '-')
+    {
+        if (args.size() > 1)
+        {
+            amount = item->getQuantity() - atoi(args.substr(1).c_str());
+            if (amount <= 0 || amount > item->getQuantity())
+                amount = item->getQuantity();
+        }
+    }
+    else if (args == "/")
+    {
+        amount = item->getQuantity() / 2;
+    }
+    else if (args == "all")
+    {
+        amount = item->getQuantity();
+    }
+    else
+    {
+        amount = atoi(args.c_str());
+    }
+    inventoryHandler->moveItem2(Inventory::INVENTORY,
+        item->getInvIndex(),
+        amount,
+        Inventory::STORAGE);
     return true;
 }
 
