@@ -1438,7 +1438,25 @@ impHandler(invToStorage)
     {
         ItemAmountWindow::showWindow(ItemAmountWindow::StoreAdd,
             inventoryWindow, item);
+    }
+    return true;
+}
+
+impHandler(tradeAdd)
+{
+    Item *item = nullptr;
+    const int amount = getAmountFromEvent(event, item);
+    if (!item || PlayerInfo::isItemProtected(item->getId()))
         return true;
+
+    if (amount)
+    {
+        tradeWindow->tradeItem(item, amount, true);
+    }
+    else
+    {
+        ItemAmountWindow::showWindow(ItemAmountWindow::TradeAdd,
+            tradeWindow, item);
     }
     return true;
 }
