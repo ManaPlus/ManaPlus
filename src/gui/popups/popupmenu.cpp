@@ -982,12 +982,7 @@ void PopupMenu::handleLink(const std::string &link,
     if (actorManager)
         being = actorManager->findBeing(mBeingId);
 
-    if (link == "addtrade half" && mItem)
-    {
-        if (tradeWindow && !PlayerInfo::isItemProtected(mItem->getId()))
-            tradeWindow->tradeItem(mItem, mItem->getQuantity() / 2, true);
-    }
-    else if (link == "addtrade all-1" && mItem)
+    if (link == "addtrade all-1" && mItem)
     {
         if (tradeWindow && !PlayerInfo::isItemProtected(mItem->getId()))
             tradeWindow->tradeItem(mItem, mItem->getQuantity() - 1, true);
@@ -1765,7 +1760,8 @@ void PopupMenu::showPopup(Window *const parent, const int x, const int y,
                 }
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: add half item amount to trade
-                mBrowserBox->addRow("addtrade half", _("Add to trade half"));
+                mBrowserBox->addRow("/addtrade 'INVINDEX' /",
+                    _("Add to trade half"));
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: add all amount except one item to trade
                 mBrowserBox->addRow("addtrade all-1", _("Add to trade all-1"));
