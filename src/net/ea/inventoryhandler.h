@@ -107,7 +107,6 @@ class InventoryHandler notfinal : public Net::InventoryHandler
         static EquipBackend mEquips;
         static InventoryItems mInventoryItems;
         static Inventory *mStorage;
-        static InventoryWindow *mStorageWindow;
         static PickupQueue mSentPickups;
         static bool mDebugInventory;
 };

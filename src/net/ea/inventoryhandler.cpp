@@ -71,7 +71,6 @@ namespace Ea
 EquipBackend InventoryHandler::mEquips;
 InventoryItems InventoryHandler::mInventoryItems;
 Inventory *InventoryHandler::mStorage = nullptr;
-InventoryWindow *InventoryHandler::mStorageWindow = nullptr;
 PickupQueue InventoryHandler::mSentPickups;
 bool InventoryHandler::mDebugInventory = true;
 
@@ -80,7 +79,7 @@ InventoryHandler::InventoryHandler()
     mEquips.clear();
     mInventoryItems.clear();
     mStorage = nullptr;
-    mStorageWindow = nullptr;
+    storageWindow = nullptr;
     while (!mSentPickups.empty())
         mSentPickups.pop();
     mDebugInventory = true;
@@ -88,10 +87,10 @@ InventoryHandler::InventoryHandler()
 
 InventoryHandler::~InventoryHandler()
 {
-    if (mStorageWindow)
+    if (storageWindow)
     {
-        mStorageWindow->close();
-        mStorageWindow = nullptr;
+        storageWindow->close();
+        storageWindow = nullptr;
     }
 
     delete2(mStorage);
@@ -263,10 +262,10 @@ void InventoryHandler::processPlayerStorageStatus(Net::MessageIn &msg)
     }
     mInventoryItems.clear();
 
-    if (!mStorageWindow)
+    if (!storageWindow)
     {
-        mStorageWindow = new InventoryWindow(mStorage);
-        mStorageWindow->postInit();
+        storageWindow = new InventoryWindow(mStorage);
+        storageWindow->postInit();
     }
     BLOCK_END("InventoryHandler::processPlayerStorageStatus")
 }
@@ -294,12 +293,12 @@ void InventoryHandler::processPlayerStorageClose(Net::MessageIn &msg A_UNUSED)
     BLOCK_START("InventoryHandler::processPlayerStorageClose")
     // Storage access has been closed
     // Storage window deletes itself
-    if (mStorageWindow)
+    if (storageWindow)
     {
-        mStorageWindow->unsetInventory();
-        mStorageWindow->close();
+        storageWindow->unsetInventory();
+        storageWindow->close();
     }
-    mStorageWindow = nullptr;
+    storageWindow = nullptr;
 
     if (mStorage)
         mStorage->clear();
@@ -335,18 +334,18 @@ void InventoryHandler::processPlayerArrowEquip(Net::MessageIn &msg)
 void InventoryHandler::closeStorage()
 {
     BLOCK_START("InventoryHandler::closeStorage")
-    if (mStorageWindow)
+    if (storageWindow)
     {
-        mStorageWindow->unsetInventory();
-        mStorageWindow->close();
-        mStorageWindow = nullptr;
+        storageWindow->unsetInventory();
+        storageWindow->close();
+        storageWindow = nullptr;
     }
     BLOCK_END("InventoryHandler::closeStorage")
 }
 
 void InventoryHandler::forgotStorage()
 {
-    mStorageWindow = nullptr;
+    storageWindow = nullptr;
 }
 
 }  // namespace Ea

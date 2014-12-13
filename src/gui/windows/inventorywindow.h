@@ -200,5 +200,6 @@ class InventoryWindow final : public Window,
 };
 
 extern InventoryWindow *inventoryWindow;
+extern InventoryWindow *storageWindow;
 
 #endif  // GUI_WINDOWS_INVENTORYWINDOW_H
