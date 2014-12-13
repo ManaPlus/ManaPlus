@@ -982,15 +982,7 @@ void PopupMenu::handleLink(const std::string &link,
     if (actorManager)
         being = actorManager->findBeing(mBeingId);
 
-    if (link == "retrieve" && mItem)
-    {
-        if (Widget::widgetExists(mWindow))
-        {
-            ItemAmountWindow::showWindow(ItemAmountWindow::StoreRemove,
-                mWindow, mItem);
-        }
-    }
-    else if (link == "retrieve 10" && mItem)
+    if (link == "retrieve 10" && mItem)
     {
         int cnt = 10;
         if (cnt > mItem->getQuantity())
@@ -1800,7 +1792,7 @@ void PopupMenu::showPopup(Window *const parent, const int x, const int y,
     {
         // TRANSLATORS: popup menu item
         // TRANSLATORS: get item from storage
-        mBrowserBox->addRow("retrieve", _("Retrieve"));
+        mBrowserBox->addRow("/storagetoinv 'INVINDEX'", _("Retrieve"));
         if (cnt > 1)
         {
             if (cnt > 10)
