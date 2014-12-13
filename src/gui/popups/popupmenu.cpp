@@ -982,13 +982,8 @@ void PopupMenu::handleLink(const std::string &link,
     if (actorManager)
         being = actorManager->findBeing(mBeingId);
 
-    if (link == "party" && being &&
-        being->getType() == ActorType::Player)
-    {
-        partyHandler->invite(being->getName());
-    }
-    else if (link == "kick party" && being
-             && being->getType() == ActorType::Player)
+    if (link == "kick party" && being
+        && being->getType() == ActorType::Player)
     {
         partyHandler->kick(being);
     }
@@ -2464,7 +2459,7 @@ void PopupMenu::addPartyName(const std::string &partyName)
             {
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: invite player to party
-                mBrowserBox->addRow("party", _("Invite to party"));
+                mBrowserBox->addRow("/party 'NAME'", _("Invite to party"));
             }
             else
             {
@@ -2488,7 +2483,7 @@ void PopupMenu::addParty(const std::string &nick)
             {
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: invite player to party
-                mBrowserBox->addRow("party", _("Invite to party"));
+                mBrowserBox->addRow("/party 'NAME'", _("Invite to party"));
             }
             else
             {
