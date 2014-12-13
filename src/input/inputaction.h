@@ -504,6 +504,7 @@ namespace InputAction
         DROP_ITEM_ALL,
         DROP_INV,
         DROP_INV_ALL,
+        USE_INV,
         TOTAL
     };
 }  // namespace InputAction

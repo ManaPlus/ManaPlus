@@ -4279,6 +4279,15 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputCondition::INGAME,
         "dropinvall",
         true},
+    {"keyUseInv",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::useItemInv,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "useinv",
+        true},
 };
 
 #endif  // INPUT_INPUTACTIONMAP_H

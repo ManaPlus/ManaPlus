@@ -1378,4 +1378,16 @@ impHandler(useItem)
     return true;
 }
 
+impHandler(useItemInv)
+{
+    const int index = atoi(event.args.c_str());
+    const Inventory *const inv = PlayerInfo::getInventory();
+    if (inv)
+    {
+        Item *const item = inv->getItem(index);
+        PlayerInfo::useEquipItem(item, true);
+    }
+    return true;
+}
+
 }  // namespace Actions
