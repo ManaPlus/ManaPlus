@@ -1501,4 +1501,12 @@ impHandler(protectItem)
     return true;
 }
 
+impHandler(unprotectItem)
+{
+    const int id = atoi(event.args.c_str());
+    if (id > 0)
+        PlayerInfo::unprotectItem(id);
+    return true;
+}
+
 }  // namespace Actions

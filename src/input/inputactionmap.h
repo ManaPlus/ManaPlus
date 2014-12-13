@@ -4324,6 +4324,15 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputCondition::INGAME,
         "protectitem|itemprotect",
         true},
+    {"keyUnProtectItem",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::unprotectItem,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "unprotectitem|itemunprotect",
+        true},
 };
 
 #endif  // INPUT_INPUTACTIONMAP_H
