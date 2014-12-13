@@ -1408,4 +1408,17 @@ impHandler(invToStorage10)
     return true;
 }
 
+impHandler(invToStorageHalf)
+{
+    Item *const item = getItemByInvIndex(event);
+    if (!item)
+        return true;
+
+    inventoryHandler->moveItem2(Inventory::INVENTORY,
+        item->getInvIndex(),
+        item->getQuantity() / 2,
+        Inventory::STORAGE);
+    return true;
+}
+
 }  // namespace Actions
