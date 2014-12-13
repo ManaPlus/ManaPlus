@@ -1742,6 +1742,10 @@ void PopupMenu::handleLink(const std::string &link,
         replaceAll(cmd, "'ITEMCOLOR'", toString(mItemColor));
         replaceAll(cmd, "'BEINGTYPEID'", toString(mType));
         replaceAll(cmd, "'PLAYER'", localPlayer->getName());
+        if (mItem)
+            replaceAll(cmd, "'INVINDEX'", toString(mItem->getInvIndex()));
+        else
+            replaceAll(cmd, "'INVINDEX'", "0");
 
         const size_t pos = cmd.find(' ');
         const std::string type(cmd, 0, pos);
@@ -2720,7 +2724,7 @@ void PopupMenu::addUseDrop(const Item *const item, const bool isProtected)
         {
             // TRANSLATORS: popup menu item
             // TRANSLATORS: drop item
-            mBrowserBox->addRow("/dropitem 'ITEMID'", _("Drop..."));
+            mBrowserBox->addRow("/dropinv 'INVINDEX'", _("Drop..."));
             // TRANSLATORS: popup menu item
             // TRANSLATORS: drop all item amount
             mBrowserBox->addRow("/dropitemall 'ITEMID'", _("Drop all"));
@@ -2729,7 +2733,7 @@ void PopupMenu::addUseDrop(const Item *const item, const bool isProtected)
         {
             // TRANSLATORS: popup menu item
             // TRANSLATORS: drop item
-            mBrowserBox->addRow("/dropitem 'ITEMID'", _("Drop"));
+            mBrowserBox->addRow("/dropinv 'INVINDEX'", _("Drop"));
         }
     }
 }
