@@ -982,15 +982,7 @@ void PopupMenu::handleLink(const std::string &link,
     if (actorManager)
         being = actorManager->findBeing(mBeingId);
 
-    if (link == "addtrade" && mItem)
-    {
-        if (!PlayerInfo::isItemProtected(mItem->getId()))
-        {
-            ItemAmountWindow::showWindow(ItemAmountWindow::TradeAdd,
-                tradeWindow, mItem);
-        }
-    }
-    else if (link == "addtrade 10" && mItem)
+    if (link == "addtrade 10" && mItem)
     {
         if (tradeWindow && !PlayerInfo::isItemProtected(mItem->getId()))
         {
@@ -1771,7 +1763,7 @@ void PopupMenu::showPopup(Window *const parent, const int x, const int y,
         {
             // TRANSLATORS: popup menu item
             // TRANSLATORS: add item to trade
-            mBrowserBox->addRow("addtrade", _("Add to trade"));
+            mBrowserBox->addRow("/addtrade 'INVINDEX'", _("Add to trade"));
             if (cnt > 1)
             {
                 if (cnt > 10)
