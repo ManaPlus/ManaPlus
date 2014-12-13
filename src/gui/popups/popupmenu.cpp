@@ -2727,7 +2727,7 @@ void PopupMenu::addUseDrop(const Item *const item, const bool isProtected)
             mBrowserBox->addRow("/dropinv 'INVINDEX'", _("Drop..."));
             // TRANSLATORS: popup menu item
             // TRANSLATORS: drop all item amount
-            mBrowserBox->addRow("/dropitemall 'ITEMID'", _("Drop all"));
+            mBrowserBox->addRow("/dropinvall 'INVINDEX'", _("Drop all"));
         }
         else
         {
