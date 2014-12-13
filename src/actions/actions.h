@@ -100,6 +100,7 @@ namespace Actions
     decHandler(useItemInv);
     decHandler(invToStorage);
     decHandler(tradeAdd);
+    decHandler(storageToInv);
 }  // namespace Actions
 
 #undef decHandler

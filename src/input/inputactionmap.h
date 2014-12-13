@@ -4306,6 +4306,15 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputCondition::INGAME,
         "tradeadd|addtrade",
         true},
+    {"keyStorageToInv",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::storageToInv,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "storagetoinv|storageinv",
+        true},
 };
 
 #endif  // INPUT_INPUTACTIONMAP_H
