@@ -270,24 +270,6 @@ void InventoryHandler::processPlayerStorageStatus(Net::MessageIn &msg)
     BLOCK_END("InventoryHandler::processPlayerStorageStatus")
 }
 
-void InventoryHandler::processPlayerStorageRemove(Net::MessageIn &msg)
-{
-    BLOCK_START("InventoryHandler::processPlayerStorageRemove")
-    // Move an item out of storage
-    const int index = msg.readInt16("index") - STORAGE_OFFSET;
-    const int amount = msg.readInt16("amount");
-    if (mStorage)
-    {
-        if (Item *const item = mStorage->getItem(index))
-        {
-            item->increaseQuantity(-amount);
-            if (item->getQuantity() == 0)
-                mStorage->removeItemAt(index);
-        }
-    }
-    BLOCK_END("InventoryHandler::processPlayerStorageRemove")
-}
-
 void InventoryHandler::processPlayerStorageClose(Net::MessageIn &msg A_UNUSED)
 {
     BLOCK_START("InventoryHandler::processPlayerStorageClose")

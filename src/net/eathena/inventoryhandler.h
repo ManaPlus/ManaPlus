@@ -100,6 +100,8 @@ class InventoryHandler final : public MessageHandler,
         static void processPlayerItemRentalTime(Net::MessageIn &msg);
 
         static void processPlayerItemRentalExpired(Net::MessageIn &msg);
+
+        static void processPlayerStorageRemove(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

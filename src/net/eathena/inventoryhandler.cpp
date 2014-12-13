@@ -706,4 +706,22 @@ int InventoryHandler::convertFromServerSlot(const int serverSlot) const
     return static_cast<int>(EQUIP_CONVERT[serverSlot]);
 }
 
+void InventoryHandler::processPlayerStorageRemove(Net::MessageIn &msg)
+{
+    BLOCK_START("InventoryHandler::processPlayerStorageRemove")
+    // Move an item out of storage
+    const int index = msg.readInt16("index") - STORAGE_OFFSET;
+    const int amount = msg.readInt16("amount");
+    if (mStorage)
+    {
+        if (Item *const item = mStorage->getItem(index))
+        {
+            item->increaseQuantity(-amount);
+            if (item->getQuantity() == 0)
+                mStorage->removeItemAt(index);
+        }
+    }
+    BLOCK_END("InventoryHandler::processPlayerStorageRemove")
+}
+
 }  // namespace EAthena

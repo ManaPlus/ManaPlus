@@ -86,8 +86,6 @@ class InventoryHandler notfinal : public Net::InventoryHandler
 
         static void processPlayerStorageStatus(Net::MessageIn &msg);
 
-        static void processPlayerStorageRemove(Net::MessageIn &msg);
-
         static void processPlayerStorageClose(Net::MessageIn &msg);
 
         static void processPlayerAttackRange(Net::MessageIn &msg);
