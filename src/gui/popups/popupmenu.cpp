@@ -982,12 +982,7 @@ void PopupMenu::handleLink(const std::string &link,
     if (actorManager)
         being = actorManager->findBeing(mBeingId);
 
-    if (link == "store" && mItem)
-    {
-        ItemAmountWindow::showWindow(ItemAmountWindow::StoreAdd,
-            inventoryWindow, mItem);
-    }
-    else if (link == "store 10" && mItem)
+    if (link == "store 10" && mItem)
     {
         int cnt = 10;
         if (cnt > mItem->getQuantity())
@@ -1828,7 +1823,7 @@ void PopupMenu::showPopup(Window *const parent, const int x, const int y,
         {
             // TRANSLATORS: popup menu item
             // TRANSLATORS: add item to storage
-            mBrowserBox->addRow("store", _("Store"));
+            mBrowserBox->addRow("/invtostorage 'INVINDEX'", _("Store"));
             if (cnt > 1)
             {
                 if (cnt > 10)
@@ -1958,7 +1953,7 @@ void PopupMenu::showItemPopup(const int x, const int y, Item *const item)
         {
             // TRANSLATORS: popup menu item
             // TRANSLATORS: add item to storage
-            mBrowserBox->addRow("store", _("Store"));
+            mBrowserBox->addRow("/invtostorage 'INVINDEX'", _("Store"));
         }
         // TRANSLATORS: popup menu item
         // TRANSLATORS: add item name to chat
@@ -1999,7 +1994,7 @@ void PopupMenu::showDropPopup(const int x, const int y, Item *const item)
         {
             // TRANSLATORS: popup menu item
             // TRANSLATORS: add item to storage
-            mBrowserBox->addRow("store", _("Store"));
+            mBrowserBox->addRow("/invtostorage 'INVINDEX'", _("Store"));
         }
         addProtection();
         // TRANSLATORS: popup menu item
