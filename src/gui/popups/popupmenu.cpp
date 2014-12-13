@@ -982,16 +982,7 @@ void PopupMenu::handleLink(const std::string &link,
     if (actorManager)
         being = actorManager->findBeing(mBeingId);
 
-    if (link == "retrieve 10" && mItem)
-    {
-        int cnt = 10;
-        if (cnt > mItem->getQuantity())
-            cnt = mItem->getQuantity();
-        inventoryHandler->moveItem2(Inventory::STORAGE,
-            mItem->getInvIndex(), cnt,
-            Inventory::INVENTORY);
-    }
-    else if (link == "retrieve half" && mItem)
+    if (link == "retrieve half" && mItem)
     {
         inventoryHandler->moveItem2(Inventory::STORAGE,
             mItem->getInvIndex(), mItem->getQuantity() / 2,
@@ -1799,7 +1790,8 @@ void PopupMenu::showPopup(Window *const parent, const int x, const int y,
             {
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: get 10 item amount from storage
-                mBrowserBox->addRow("retrieve 10", _("Retrieve 10"));
+                mBrowserBox->addRow("/storagetoinv 'INVINDEX' 10",
+                    _("Retrieve 10"));
             }
             // TRANSLATORS: popup menu item
             // TRANSLATORS: get half item amount from storage
