@@ -41,6 +41,7 @@ namespace Actions
     decHandler(dropItemId);
     decHandler(dropItemInv);
     decHandler(dropItemIdAll);
+    decHandler(dropItemInvAll);
     decHandler(heal);
     decHandler(itenplz);
     decHandler(setHome);

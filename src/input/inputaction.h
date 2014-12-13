@@ -503,6 +503,7 @@ namespace InputAction
         DROP_ITEM,
         DROP_ITEM_ALL,
         DROP_INV,
+        DROP_INV_ALL,
         TOTAL
     };
 }  // namespace InputAction
