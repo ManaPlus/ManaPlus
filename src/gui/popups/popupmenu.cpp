@@ -2709,12 +2709,12 @@ void PopupMenu::addUseDrop(const Item *const item, const bool isProtected)
     if (str.empty())
     {
         // TRANSLATORS: popup menu item
-        mBrowserBox->addRow("/use 'ITEMID'", _("Use"));
+        mBrowserBox->addRow("/useinv 'INVINDEX'", _("Use"));
     }
     else
     {
         // TRANSLATORS: popup menu item
-        mBrowserBox->addRow("/use 'ITEMID'", str.c_str());
+        mBrowserBox->addRow("/useinv 'INVINDEX'", str.c_str());
     }
 
     if (!isProtected)
