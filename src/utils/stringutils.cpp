@@ -761,3 +761,13 @@ uint32_t parseNumber(const std::string &str)
         i = atoi(str.c_str());
     return i;
 }
+
+std::string removeToken(std::string &str, const std::string &token)
+{
+    int idx = str.find(token);
+    if (idx > 0)
+        str = str.substr(idx + 1);
+    else
+        str.clear();
+    return str;
+}

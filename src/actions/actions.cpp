@@ -220,6 +220,44 @@ static Item *getItemByInvIndex(const InputEvent &event)
     return nullptr;
 }
 
+static int getAmountFromEvent(const InputEvent &event, Item *&item0)
+{
+    Item *const item = getItemByInvIndex(event);
+    item0 = item;
+    if (!item)
+        return 0;
+
+    std::string str = event.args;
+    removeToken(str, " ");
+
+    if (str.empty())
+        return 0;
+
+    int amount = 0;
+    if (str[0] == '-')
+    {
+        if (str.size() > 1)
+        {
+            amount = item->getQuantity() - atoi(str.substr(1).c_str());
+            if (amount <= 0 || amount > item->getQuantity())
+                amount = item->getQuantity();
+        }
+    }
+    else if (str == "/")
+    {
+        amount = item->getQuantity() / 2;
+    }
+    else if (str == "all")
+    {
+        amount = item->getQuantity();
+    }
+    else
+    {
+        amount = atoi(str.c_str());
+    }
+    return amount;
+}
+
 impHandler(emote)
 {
     const int emotion = 1 + event.action - InputAction::EMOTE_1;
@@ -1387,51 +1425,21 @@ impHandler(useItemInv)
 
 impHandler(invToStorage)
 {
-    Item *const item = getItemByInvIndex(event);
-    if (!item)
-        return true;
-
-    std::string args = event.args;
-    int amount = 0;
-
-    int idx = args.find(" ");
-    if (idx > 0)
-        args = args.substr(idx + 1);
+    Item *item = nullptr;
+    const int amount = getAmountFromEvent(event, item);
+    if (amount)
+    {
+        inventoryHandler->moveItem2(Inventory::INVENTORY,
+            item->getInvIndex(),
+            amount,
+            Inventory::STORAGE);
+    }
     else
-        args.clear();
-
-    if (args.empty())
     {
         ItemAmountWindow::showWindow(ItemAmountWindow::StoreAdd,
             inventoryWindow, item);
         return true;
     }
-
-    if (args[0] == '-')
-    {
-        if (args.size() > 1)
-        {
-            amount = item->getQuantity() - atoi(args.substr(1).c_str());
-            if (amount <= 0 || amount > item->getQuantity())
-                amount = item->getQuantity();
-        }
-    }
-    else if (args == "/")
-    {
-        amount = item->getQuantity() / 2;
-    }
-    else if (args == "all")
-    {
-        amount = item->getQuantity();
-    }
-    else
-    {
-        amount = atoi(args.c_str());
-    }
-    inventoryHandler->moveItem2(Inventory::INVENTORY,
-        item->getInvIndex(),
-        amount,
-        Inventory::STORAGE);
     return true;
 }
 

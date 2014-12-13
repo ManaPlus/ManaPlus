@@ -242,4 +242,6 @@ bool parse2Int(const std::string &args, int &x, int &y);
 
 uint32_t parseNumber(const std::string &str);
 
+std::string removeToken(std::string &str, const std::string &token);
+
 #endif  // UTILS_STRINGUTILS_H
