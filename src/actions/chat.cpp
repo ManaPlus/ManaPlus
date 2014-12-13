@@ -342,18 +342,18 @@ impHandler(createGuild)
 
 impHandler(party)
 {
-    if (!event.tab)
-        return false;
-
     if (!event.args.empty())
     {
         partyHandler->invite(event.args);
     }
     else
     {
-        // TRANSLATORS: party invite message
-        event.tab->chatLog(_("Please specify a name."),
-            ChatMsgType::BY_SERVER);
+        if (event.tab)
+        {
+            // TRANSLATORS: party invite message
+            event.tab->chatLog(_("Please specify a name."),
+                ChatMsgType::BY_SERVER);
+        }
     }
     return true;
 }
