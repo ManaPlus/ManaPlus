@@ -982,12 +982,8 @@ void PopupMenu::handleLink(const std::string &link,
     if (actorManager)
         being = actorManager->findBeing(mBeingId);
 
-    if (link == "unprotect item" && mItemId)
-    {
-        PlayerInfo::unprotectItem(mItemId);
-    }
-    else if (link == "party" && being &&
-             being->getType() == ActorType::Player)
+    if (link == "party" && being &&
+        being->getType() == ActorType::Player)
     {
         partyHandler->invite(being->getName());
     }
@@ -2594,7 +2590,7 @@ void PopupMenu::addProtection()
         mBrowserBox->addRow("##3---");
         // TRANSLATORS: popup menu item
         // TRANSLATORS: remove protection from item
-        mBrowserBox->addRow("unprotect item", _("Unprotect item"));
+        mBrowserBox->addRow("/unprotectitem 'ITEMID'", _("Unprotect item"));
     }
     else
     {
