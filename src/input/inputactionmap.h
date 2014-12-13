@@ -4315,6 +4315,15 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputCondition::INGAME,
         "invtostoragehalf|invstoragehalf",
         true},
+    {"keyInvToStorageAll1",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::invToStorageAll1,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "invtostorageall1|invstorageall1",
+        true},
 };
 
 #endif  // INPUT_INPUTACTIONMAP_H

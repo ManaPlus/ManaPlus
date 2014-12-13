@@ -508,6 +508,7 @@ namespace InputAction
         INV_TO_STORAGE,
         INV_TO_STORAGE_10,
         INV_TO_STORAGE_HALF,
+        INV_TO_STORAGE_ALL_1,
         TOTAL
     };
 }  // namespace InputAction

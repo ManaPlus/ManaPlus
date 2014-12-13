@@ -101,6 +101,7 @@ namespace Actions
     decHandler(invToStorage);
     decHandler(invToStorage10);
     decHandler(invToStorageHalf);
+    decHandler(invToStorageAll1);
 }  // namespace Actions
 
 #undef decHandler
