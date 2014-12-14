@@ -103,6 +103,7 @@ namespace Actions
     decHandler(storageToInv);
     decHandler(protectItem);
     decHandler(unprotectItem);
+    decHandler(kick);
 }  // namespace Actions
 
 #undef decHandler

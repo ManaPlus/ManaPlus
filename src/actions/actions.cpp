@@ -66,6 +66,7 @@
 #include "render/normalopenglgraphics.h"
 #endif
 
+#include "net/adminhandler.h"
 #include "net/beinghandler.h"
 #include "net/buysellhandler.h"
 #include "net/chathandler.h"
@@ -1506,6 +1507,27 @@ impHandler(unprotectItem)
     const int id = atoi(event.args.c_str());
     if (id > 0)
         PlayerInfo::unprotectItem(id);
+    return true;
+}
+
+impHandler(kick)
+{
+    if (!localPlayer || !actorManager)
+        return false;
+
+    Being *target = nullptr;
+    std::string args = event.args;
+    if (!args.empty())
+    {
+        if (args[0] != ':')
+            target = actorManager->findNearestByName(args);
+        else
+            target = actorManager->findBeing(atoi(args.substr(1).c_str()));
+    }
+    if (!target)
+        target = localPlayer->getTarget();
+    if (target)
+        adminHandler->kick(target->getId());
     return true;
 }
 
