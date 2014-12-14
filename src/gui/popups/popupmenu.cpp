@@ -368,7 +368,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
     }
     // TRANSLATORS: popup menu item
     // TRANSLATORS: add being name to chat
-    mBrowserBox->addRow("name", _("Add name to chat"));
+    mBrowserBox->addRow("/addtext 'NAME'", _("Add name to chat"));
     mBrowserBox->addRow("##3---");
 
     // TRANSLATORS: popup menu item
@@ -532,7 +532,7 @@ void PopupMenu::showPlayerPopup(const std::string &nick)
     addBuySellDefault();
     // TRANSLATORS: popup menu item
     // TRANSLATORS: add player name to chat
-    mBrowserBox->addRow("name", _("Add name to chat"));
+    mBrowserBox->addRow("/addtext 'NAME'", _("Add name to chat"));
     mBrowserBox->addRow("##3---");
     // TRANSLATORS: popup menu item
     // TRANSLATORS: close menu
@@ -982,15 +982,9 @@ void PopupMenu::handleLink(const std::string &link,
     if (actorManager)
         being = actorManager->findBeing(mBeingId);
 
-    if (link == "name" && !mNick.empty())
-    {
-        const std::string &name = mNick;
-        if (chatWindow)
-            chatWindow->addInputText(name);
-    }
-    else if (link == "admin-kick" && being &&
-             (being->getType() == ActorType::Player ||
-             being->getType() == ActorType::Monster))
+    if (link == "admin-kick" && being &&
+        (being->getType() == ActorType::Player ||
+        being->getType() == ActorType::Monster))
     {
         adminHandler->kick(being->getId());
     }
