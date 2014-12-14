@@ -263,7 +263,7 @@ void Map::initializeAmbientLayers()
                 mask = 1;
 
             const float parallax = getFloatProperty(name + "parallax");
-            mForegrounds.push_back(new AmbientLayer(img,
+            mBackgrounds.push_back(new AmbientLayer(img,
                 getFloatProperty(name + "parallaxX", parallax),
                 getFloatProperty(name + "parallaxY", parallax),
                 getFloatProperty(name + "posX"),
