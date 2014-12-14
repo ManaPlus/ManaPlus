@@ -613,7 +613,7 @@ void PopupMenu::showPopup(const int x, const int y, MapItem *const mapItem)
         mBrowserBox->addRow("##3---");
         // TRANSLATORS: popup menu item
         // TRANSLATORS: warp to map item
-        mBrowserBox->addRow("warp map", _("Warp"));
+        mBrowserBox->addRow("/warp 'MAPX' 'MAPY'", _("Warp"));
     }
     mBrowserBox->addRow("##3---");
     // TRANSLATORS: popup menu item
@@ -638,7 +638,7 @@ void PopupMenu::showMapPopup(const int x, const int y,
     {
         // TRANSLATORS: popup menu item
         // TRANSLATORS: warp to map item
-        mBrowserBox->addRow("warp map", _("Warp"));
+        mBrowserBox->addRow("/warp 'MAPX' 'MAPY'", _("Warp"));
     }
     // TRANSLATORS: popup menu item
     // TRANSLATORS: move to map item
@@ -1602,6 +1602,16 @@ void PopupMenu::handleLink(const std::string &link,
             replaceAll(cmd, "'INVINDEX'", toString(mItem->getInvIndex()));
         else
             replaceAll(cmd, "'INVINDEX'", "0");
+        if (mMapItem)
+        {
+            replaceAll(cmd, "'MAPX'", toString(mMapItem->getX()));
+            replaceAll(cmd, "'MAPY'", toString(mMapItem->getY()));
+        }
+        else
+        {
+            replaceAll(cmd, "'MAPX'", toString(mX));
+            replaceAll(cmd, "'MAPY'", toString(mY));
+        }
 
         const size_t pos = cmd.find(' ');
         const std::string type(cmd, 0, pos);
