@@ -511,6 +511,7 @@ namespace InputAction
         ITEM_PROTECT,
         ITEM_UNPROTECT,
         KICK_PARTY,
+        ADD_TEXT,
         TOTAL
     };
 }  // namespace InputAction

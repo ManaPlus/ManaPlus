@@ -47,6 +47,7 @@ namespace Actions
     decHandler(me);
     decHandler(toggle);
     decHandler(kickParty);
+    decHandler(addText);
 }  // namespace Actions
 
 #undef decHandler

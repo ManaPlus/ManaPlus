@@ -450,4 +450,11 @@ impHandler(kickParty)
     return true;
 }
 
+impHandler(addText)
+{
+    if (chatWindow)
+        chatWindow->addInputText(event.args);
+    return true;
+}
+
 }  // namespace Actions

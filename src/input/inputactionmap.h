@@ -4342,6 +4342,15 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputCondition::INGAME,
         "kickparty|partykick",
         true},
+    {"keyAddText",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::addText,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "addtext|textadd",
+        true},
 };
 
 #endif  // INPUT_INPUTACTIONMAP_H
