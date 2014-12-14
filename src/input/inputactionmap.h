@@ -4333,6 +4333,15 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputCondition::INGAME,
         "unprotectitem|itemunprotect",
         true},
+    {"keyKickParty",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::kickParty,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "kickparty|partykick",
+        true},
 };
 
 #endif  // INPUT_INPUTACTIONMAP_H

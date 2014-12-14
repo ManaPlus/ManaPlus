@@ -432,4 +432,22 @@ impHandler(toggle)
     }
 }
 
+impHandler(kickParty)
+{
+    if (!event.args.empty())
+    {
+        partyHandler->kick(event.args);
+    }
+    else
+    {
+        if (event.tab)
+        {
+            // TRANSLATORS: party kick message
+            event.tab->chatLog(_("Please specify a name."),
+                ChatMsgType::BY_SERVER);
+        }
+    }
+    return true;
+}
+
 }  // namespace Actions

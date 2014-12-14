@@ -510,6 +510,7 @@ namespace InputAction
         STORAGE_TO_INV,
         ITEM_PROTECT,
         ITEM_UNPROTECT,
+        KICK_PARTY,
         TOTAL
     };
 }  // namespace InputAction
