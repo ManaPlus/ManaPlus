@@ -46,6 +46,7 @@
 #include "net/chathandler.h"
 #include "net/guildhandler.h"
 #include "net/homunculushandler.h"
+#include "net/partyhandler.h"
 #include "net/pethandler.h"
 #include "net/serverfeatures.h"
 
@@ -811,6 +812,12 @@ impHandler(setHomunculusName)
 impHandler0(fireHomunculus)
 {
     homunculusHandler->fire();
+    return true;
+}
+
+impHandler0(leaveParty)
+{
+    partyHandler->leave();
     return true;
 }
 

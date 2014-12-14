@@ -513,6 +513,7 @@ namespace InputAction
         KICK_PARTY,
         ADD_TEXT,
         KICK,
+        LEAVE_PARTY,
         TOTAL
     };
 }  // namespace InputAction

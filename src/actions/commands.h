@@ -80,6 +80,7 @@ namespace Actions
     decHandler(setPetName);
     decHandler(setHomunculusName);
     decHandler(fireHomunculus);
+    decHandler(leaveParty);
 }  // namespace Actions
 
 #undef decHandler
