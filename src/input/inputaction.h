@@ -514,6 +514,7 @@ namespace InputAction
         ADD_TEXT,
         KICK,
         LEAVE_PARTY,
+        WARP,
         TOTAL
     };
 }  // namespace InputAction

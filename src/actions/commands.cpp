@@ -23,6 +23,7 @@
 #include "actormanager.h"
 #include "configuration.h"
 #include "flooritem.h"
+#include "game.h"
 #include "inventory.h"
 #include "item.h"
 #include "party.h"
@@ -818,6 +819,19 @@ impHandler0(fireHomunculus)
 impHandler0(leaveParty)
 {
     partyHandler->leave();
+    return true;
+}
+
+impHandler(warp)
+{
+    int x = 0;
+    int y = 0;
+
+    if (Game::instance() && parse2Int(event.args, x, y))
+    {
+        adminHandler->warp(Game::instance()->getCurrentMapName(),
+            x, y);
+    }
     return true;
 }
 

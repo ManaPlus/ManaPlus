@@ -81,6 +81,7 @@ namespace Actions
     decHandler(setHomunculusName);
     decHandler(fireHomunculus);
     decHandler(leaveParty);
+    decHandler(warp);
 }  // namespace Actions
 
 #undef decHandler
