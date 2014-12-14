@@ -483,7 +483,7 @@ void PopupMenu::showPlayerPopup(const std::string &nick)
             {
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: kick player from party
-                mBrowserBox->addRow("kick party", _("Kick from party"));
+                mBrowserBox->addRow("/kickparty 'NAME'", _("Kick from party"));
                 mBrowserBox->addRow("##3---");
                 const PartyMember *const o = party->getMember(
                     localPlayer->getName());
@@ -982,22 +982,7 @@ void PopupMenu::handleLink(const std::string &link,
     if (actorManager)
         being = actorManager->findBeing(mBeingId);
 
-    if (link == "kick party" && being
-        && being->getType() == ActorType::Player)
-    {
-        partyHandler->kick(being);
-    }
-    else if (link == "kick party" && !mNick.empty())
-    {
-        if (localPlayer && localPlayer->getParty())
-        {
-            const PartyMember *const member = localPlayer->
-                getParty()->getMember(mNick);
-            if (member)
-                partyHandler->kick(mNick);
-        }
-    }
-    else if (link == "name" && !mNick.empty())
+    if (link == "name" && !mNick.empty())
     {
         const std::string &name = mNick;
         if (chatWindow)
@@ -2465,7 +2450,7 @@ void PopupMenu::addPartyName(const std::string &partyName)
             {
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: kick player from party
-                mBrowserBox->addRow("kick party", _("Kick from party"));
+                mBrowserBox->addRow("/kickparty 'NAME'", _("Kick from party"));
             }
             mBrowserBox->addRow("##3---");
         }
@@ -2489,7 +2474,7 @@ void PopupMenu::addParty(const std::string &nick)
             {
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: kick player from party
-                mBrowserBox->addRow("kick party", _("Kick from party"));
+                mBrowserBox->addRow("/kickparty 'NAME'", _("Kick from party"));
             }
             mBrowserBox->addRow("##3---");
         }
