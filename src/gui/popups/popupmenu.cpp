@@ -982,13 +982,7 @@ void PopupMenu::handleLink(const std::string &link,
     if (actorManager)
         being = actorManager->findBeing(mBeingId);
 
-    if (link == "admin-kick" && being &&
-        (being->getType() == ActorType::Player ||
-        being->getType() == ActorType::Monster))
-    {
-        adminHandler->kick(being->getId());
-    }
-    else if (link == "chat close" && mTab)
+    if (link == "chat close" && mTab)
     {
         inputManager.executeChatCommand(InputAction::CLOSE_CHAT_TAB,
             std::string(), mTab);
@@ -2649,7 +2643,7 @@ void PopupMenu::showGMPopup()
         {
             // TRANSLATORS: popup menu item
             // TRANSLATORS: kick player
-            mBrowserBox->addRow("admin-kick", _("Kick"));
+            mBrowserBox->addRow("/kick :'BEINGID'", _("Kick"));
         }
     }
 
