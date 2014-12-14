@@ -770,7 +770,7 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
     {
         // TRANSLATORS: popup menu item
         // TRANSLATORS: enable away messages in chat tab
-        mBrowserBox->addRow("leave party", _("Leave"));
+        mBrowserBox->addRow("/leaveparty", _("Leave"));
         mBrowserBox->addRow("##3---");
     }
     // TRANSLATORS: popup menu item
@@ -986,10 +986,6 @@ void PopupMenu::handleLink(const std::string &link,
     {
         inputManager.executeChatCommand(InputAction::CLOSE_CHAT_TAB,
             std::string(), mTab);
-    }
-    else if (link == "leave party" && mTab)
-    {
-        partyHandler->leave();
     }
     else if (link == "chat clear" && mTab)
     {
