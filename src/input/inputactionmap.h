@@ -4378,6 +4378,15 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputCondition::INGAME,
         "warp",
         true},
+    {"keyClearChat",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::clearChat,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "clearchat|chatclear",
+        false},
 };
 
 #endif  // INPUT_INPUTACTIONMAP_H

@@ -457,4 +457,10 @@ impHandler(addText)
     return true;
 }
 
+impHandler(clearChat)
+{
+    if (chatWindow)
+        chatWindow->clearTab();
+}
+
 }  // namespace Actions

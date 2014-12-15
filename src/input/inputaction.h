@@ -515,6 +515,7 @@ namespace InputAction
         KICK,
         LEAVE_PARTY,
         WARP,
+        CLEAR_CHAT,
         TOTAL
     };
 }  // namespace InputAction
