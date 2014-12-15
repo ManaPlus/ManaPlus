@@ -726,7 +726,7 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
 
     // TRANSLATORS: popup menu item
     // TRANSLATORS: remove all text from chat tab
-    mBrowserBox->addRow("chat clear", _("Clear"));
+    mBrowserBox->addRow("/chatclear", _("Clear"));
     mBrowserBox->addRow("##3---");
 
     if (tab->getAllowHighlight())
@@ -986,11 +986,6 @@ void PopupMenu::handleLink(const std::string &link,
     {
         inputManager.executeChatCommand(InputAction::CLOSE_CHAT_TAB,
             std::string(), mTab);
-    }
-    else if (link == "chat clear" && mTab)
-    {
-        if (chatWindow)
-            chatWindow->clearTab();
     }
     else if (link == "warp map" && mMapItem)
     {
