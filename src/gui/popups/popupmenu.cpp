@@ -987,22 +987,6 @@ void PopupMenu::handleLink(const std::string &link,
         inputManager.executeChatCommand(InputAction::CLOSE_CHAT_TAB,
             std::string(), mTab);
     }
-    else if (link == "warp map" && mMapItem)
-    {
-        if (Game::instance())
-        {
-            adminHandler->warp(Game::instance()->getCurrentMapName(),
-                mMapItem->getX(), mMapItem->getY());
-        }
-    }
-    else if (link == "warp map" && (mX || mY))
-    {
-        if (Game::instance())
-        {
-            adminHandler->warp(Game::instance()->getCurrentMapName(),
-                mX, mY);
-        }
-    }
     else if (link == "remove map" && mMapItem)
     {
         if (viewport)
