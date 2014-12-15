@@ -450,17 +450,18 @@ impHandler(kickParty)
     return true;
 }
 
-impHandler(addText)
+impHandler0(addText)
 {
     if (chatWindow)
         chatWindow->addInputText(event.args);
     return true;
 }
 
-impHandler(clearChat)
+impHandler0(clearChat)
 {
     if (chatWindow)
         chatWindow->clearTab();
+    return true;
 }
 
 }  // namespace Actions
