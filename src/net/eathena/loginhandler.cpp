@@ -127,13 +127,11 @@ void LoginHandler::disconnect()
 
 void LoginHandler::changePassword(const std::string &restrict username
                                   A_UNUSED,
-                                  const std::string &restrict oldPassword,
-                                  const std::string &restrict newPassword)
-                                  const
+                                  const std::string &restrict
+                                  oldPassword A_UNUSED,
+                                  const std::string &restrict
+                                  newPassword A_UNUSED) const
 {
-    createOutPacket(CMSG_CHAR_PASSWORD_CHANGE);
-    outMsg.writeStringNoLog(oldPassword, 24, "old password");
-    outMsg.writeStringNoLog(newPassword, 24, "new password");
 }
 
 void LoginHandler::sendLoginRegister(const std::string &restrict username,

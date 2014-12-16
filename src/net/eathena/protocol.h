@@ -271,6 +271,7 @@
 #define SMSG_MAP_TYPE_PROPERTY2      0x099b
 #define SMSG_MAP_TYPE                0x01d6
 #define SMSG_IGNORE_ALL_RESPONSE     0x00d2
+// unused for now
 #define SMSG_ONLINE_LIST             0x0211
 #define SMSG_NPC_COMMAND             0x0B00
 
@@ -319,7 +320,6 @@
 #define CMSG_NAME_REQUEST            0x088a
 
 // Custom change password packet
-#define CMSG_CHAR_PASSWORD_CHANGE    0x0061
 #define CMSG_CHAR_SERVER_CONNECT     0x0065
 #define CMSG_CHAR_SELECT             0x0066
 #define CMSG_CHAR_CREATE             0x0970
