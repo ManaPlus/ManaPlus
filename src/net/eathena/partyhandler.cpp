@@ -55,7 +55,6 @@ PartyHandler::PartyHandler() :
         SMSG_PARTY_INVITE_RESPONSE,
         SMSG_PARTY_INVITED,
         SMSG_PARTY_SETTINGS,
-        SMSG_PARTY_MOVE,
         SMSG_PARTY_LEAVE,
         SMSG_PARTY_UPDATE_HP,
         SMSG_PARTY_UPDATE_COORDS,
@@ -92,9 +91,6 @@ void PartyHandler::handleMessage(Net::MessageIn &msg)
             break;
         case SMSG_PARTY_SETTINGS:
             processPartySettings(msg);
-            break;
-        case SMSG_PARTY_MOVE:
-            processPartyMove(msg);
             break;
         case SMSG_PARTY_LEAVE:
             processPartyLeave(msg);
