@@ -266,7 +266,6 @@
 #define SMSG_SKILL_GROUND_NO_DAMAGE  0x0117
 #define SMSG_SKILL_ENTRY             0x09ca
 
-#define SMSG_BEING_IP_RESPONSE       0x020c
 #define SMSG_PVP_MAP_MODE            0x0199
 #define SMSG_PVP_SET                 0x019a
 #define SMSG_MAP_TYPE_PROPERTY2      0x099b

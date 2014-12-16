@@ -102,7 +102,6 @@ BeingHandler::BeingHandler(const bool enableSync) :
         SMSG_SKILL_NO_DAMAGE,
         SMSG_SKILL_GROUND_NO_DAMAGE,
         SMSG_SKILL_ENTRY,
-        SMSG_BEING_IP_RESPONSE,
         SMSG_PVP_MAP_MODE,
         SMSG_PVP_SET,
         SMSG_MAP_TYPE_PROPERTY2,
@@ -205,10 +204,6 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_BEING_NAME_RESPONSE2:
             processNameResponse2(msg);
-            break;
-
-        case SMSG_BEING_IP_RESPONSE:
-            processIpResponse(msg);
             break;
 
         case SMSG_SOLVE_CHAR_NAME:
