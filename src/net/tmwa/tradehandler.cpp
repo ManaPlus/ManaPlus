@@ -27,7 +27,9 @@
 #include "notifymanager.h"
 
 #include "being/playerinfo.h"
+#include "being/playerrelations.h"
 
+#include "gui/windows/confirmdialog.h"
 #include "gui/windows/tradewindow.h"
 
 #include "net/serverfeatures.h"
@@ -44,6 +46,9 @@
 #include "debug.h"
 
 extern Net::TradeHandler *tradeHandler;
+
+extern std::string tradePartnerName;
+extern ConfirmDialog *confirmDlg;
 
 namespace TmwAthena
 {
@@ -250,6 +255,19 @@ void TradeHandler::processTradeItemAddResponse(Net::MessageIn &msg)
                         + toString(res));
             break;
     }
+}
+
+void TradeHandler::processTradeResponse(Net::MessageIn &msg)
+{
+    if (confirmDlg || tradePartnerName.empty()
+        || !player_relations.hasPermission(tradePartnerName,
+        PlayerRelation::TRADE))
+    {
+        tradeHandler->respond(false);
+        return;
+    }
+    const uint8_t type = msg.readUInt8("type");
+    processTradeResponseContinue(type);
 }
 
 }  // namespace TmwAthena

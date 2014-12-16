@@ -64,19 +64,6 @@ void TradeHandler::removeItem(const int slotNum A_UNUSED,
 {
 }
 
-void TradeHandler::processTradeResponse(Net::MessageIn &msg)
-{
-    if (confirmDlg || tradePartnerName.empty()
-        || !player_relations.hasPermission(tradePartnerName,
-        PlayerRelation::TRADE))
-    {
-        tradeHandler->respond(false);
-        return;
-    }
-    const uint8_t type = msg.readUInt8("type");
-    processTradeResponseContinue(type);
-}
-
 void TradeHandler::processTradeResponseContinue(const uint8_t type)
 {
     switch (type)

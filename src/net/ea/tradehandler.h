@@ -44,8 +44,6 @@ class TradeHandler notfinal : public Net::TradeHandler
                         const int amount) const override final;
 
     protected:
-        static void processTradeResponse(Net::MessageIn &msg);
-
         static void processTradeOk(Net::MessageIn &msg);
 
         static void processTradeCancel(Net::MessageIn &msg);
