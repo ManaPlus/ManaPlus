@@ -284,6 +284,8 @@
 #define SMSG_MERCENARY_UPDATE        0x02a2
 #define SMSG_MERCENARY_INFO          0x029b
 #define SMSG_MERCENARY_SKILLS        0x029d
+#define SMSG_MERCENARY_ACTION        0x029f
+
 
 #define SMSG_HOMUNCULUS_SKILLS       0x0235
 #define SMSG_HOMUNCULUS_DATA         0x0230
@@ -498,8 +500,6 @@
 #define CMSG_BANK_DEPOSIT            0x09a7
 #define CMSG_BANK_WITHDRAW           0x09a9
 #define CMSG_BANK_CHECK              0x09ab
-
-#define SMSG_MERCENARY_ACTION        0x029f
 
 #define CMSG_FRIENDS_ADD_PLAYER      0x091a
 #define CMSG_FRIENDS_REQUEST_ACK     0x0208
