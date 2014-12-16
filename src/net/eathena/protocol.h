@@ -160,7 +160,6 @@
 
 // Receiving a request to trade
 #define SMSG_TRADE_REQUEST           0x01f4
-#define SMSG_TRADE_RESPONSE          0x00e7
 #define SMSG_TRADE_RESPONSE2         0x01f5
 #define SMSG_TRADE_ITEM_ADD          0x080f
 #define SMSG_TRADE_ITEM_ADD_RESPONSE 0x00ea

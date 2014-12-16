@@ -55,7 +55,6 @@ TradeHandler::TradeHandler() :
     static const uint16_t _messages[] =
     {
         SMSG_TRADE_REQUEST,
-        SMSG_TRADE_RESPONSE,
         SMSG_TRADE_RESPONSE2,
         SMSG_TRADE_ITEM_ADD,
         SMSG_TRADE_ITEM_ADD_RESPONSE,
@@ -78,10 +77,6 @@ void TradeHandler::handleMessage(Net::MessageIn &msg)
     {
         case SMSG_TRADE_REQUEST:
             processTradeRequest(msg);
-            break;
-
-        case SMSG_TRADE_RESPONSE:
-            processTradeResponse(msg);
             break;
 
         case SMSG_TRADE_RESPONSE2:
