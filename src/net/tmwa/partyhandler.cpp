@@ -435,4 +435,27 @@ void PartyHandler::processPartyMove(Net::MessageIn &msg)
     }
 }
 
+void PartyHandler::processPartyUpdateHp(Net::MessageIn &msg)
+{
+    const int id = msg.readInt32("id");
+    const int hp = msg.readInt16("hp");
+    const int maxhp = msg.readInt16("max hp");
+    PartyMember *m = nullptr;
+    if (Ea::taParty)
+        m = Ea::taParty->getMember(id);
+    if (m)
+    {
+        m->setHp(hp);
+        m->setMaxHp(maxhp);
+    }
+
+    // The server only sends this when the member is in range, so
+    // lets make sure they get the party hilight.
+    if (actorManager && Ea::taParty)
+    {
+        if (Being *const b = actorManager->findBeing(id))
+            b->setParty(Ea::taParty);
+    }
+}
+
 }  // namespace TmwAthena

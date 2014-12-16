@@ -65,8 +65,6 @@ class PartyHandler notfinal : public Net::PartyHandler
 
         static void processPartyLeave(Net::MessageIn &msg);
 
-        static void processPartyUpdateHp(Net::MessageIn &msg);
-
         static void processPartyUpdateCoords(Net::MessageIn &msg);
 
         static void processPartySettingsContinue(const int16_t exp,
