@@ -108,7 +108,6 @@
 #define SMSG_BEING_MOVE3             0x0b04
 #define SMSG_BEING_REMOVE            0x0080
 #define SMSG_BEING_REMOVE_SKILL      0x0120
-#define SMSG_BEING_CHANGE_LOOKS      0x00c3
 // Same as 0x00c3, but 16 bit ID
 #define SMSG_BEING_CHANGE_LOOKS2     0x01d7
 #define SMSG_BEING_SELFEFFECT        0x019b

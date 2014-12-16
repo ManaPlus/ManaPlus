@@ -51,8 +51,6 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
                                    const int16_t job,
                                    const BeingType::BeingType beingType);
 
-        static void processBeingChangeLook(Net::MessageIn &msg);
-
         static void processBeingChangeLook2(Net::MessageIn &msg);
 
         static void processBeingVisible(Net::MessageIn &msg);

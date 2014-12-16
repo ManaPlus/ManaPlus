@@ -82,7 +82,6 @@ BeingHandler::BeingHandler(const bool enableSync) :
         SMSG_BEING_SPECIAL_EFFECT_NUM,
         SMSG_BEING_SOUND_EFFECT,
         SMSG_BEING_EMOTION,
-        SMSG_BEING_CHANGE_LOOKS,
         SMSG_BEING_CHANGE_LOOKS2,
         SMSG_BEING_NAME_RESPONSE,
         SMSG_BEING_NAME_RESPONSE2,
@@ -194,10 +193,6 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_BEING_EMOTION:
             processBeingEmotion(msg);
-            break;
-
-        case SMSG_BEING_CHANGE_LOOKS:
-            processBeingChangeLook(msg);
             break;
 
         case SMSG_BEING_CHANGE_LOOKS2:
@@ -387,24 +382,6 @@ void BeingHandler::requestRanks(const Rank::Rank rank) const
 {
     createOutPacket(CMSG_REQUEST_RANKS);
     outMsg.writeInt16(static_cast<int16_t>(rank), "type");
-}
-
-void BeingHandler::processBeingChangeLook(Net::MessageIn &msg)
-{
-    if (!actorManager)
-        return;
-
-    Being *const dstBeing = actorManager->findBeing(
-        msg.readInt32("being id"));
-    const uint8_t type = msg.readUInt8("type");
-
-    const int id = static_cast<int>(msg.readUInt8("id"));
-    const unsigned int id2 = 1U;
-
-    if (!localPlayer || !dstBeing)
-        return;
-
-    processBeingChangeLookContinue(dstBeing, type, id, id2);
 }
 
 void BeingHandler::processBeingChangeLook2(Net::MessageIn &msg)
