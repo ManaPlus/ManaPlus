@@ -1604,4 +1604,19 @@ void BeingHandler::processSkillCastCancel(Net::MessageIn &msg)
     msg.readInt32("skill id");
 }
 
+void BeingHandler::processIpResponse(Net::MessageIn &msg)
+{
+    BLOCK_START("BeingHandler::processIpResponse")
+    if (!actorManager)
+    {
+        BLOCK_END("BeingHandler::processIpResponse")
+        return;
+    }
+
+    Being *const dstBeing = actorManager->findBeing(msg.readInt32("being id"));
+    if (dstBeing)
+        dstBeing->setIp(ipToString(msg.readInt32("ip address")));
+    BLOCK_END("BeingHandler::processIpResponse")
+}
+
 }  // namespace TmwAthena

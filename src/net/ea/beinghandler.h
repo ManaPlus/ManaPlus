@@ -56,8 +56,6 @@ class BeingHandler notfinal : public Net::BeingHandler
 
         static void processNameResponse(Net::MessageIn &msg);
 
-        static void processIpResponse(Net::MessageIn &msg);
-
         static void processPlayerStop(Net::MessageIn &msg);
 
         static void processPlayerMoveToAttack(Net::MessageIn &msg);

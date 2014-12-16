@@ -348,21 +348,6 @@ void BeingHandler::processNameResponse(Net::MessageIn &msg)
     BLOCK_END("BeingHandler::processNameResponse")
 }
 
-void BeingHandler::processIpResponse(Net::MessageIn &msg)
-{
-    BLOCK_START("BeingHandler::processIpResponse")
-    if (!actorManager)
-    {
-        BLOCK_END("BeingHandler::processIpResponse")
-        return;
-    }
-
-    Being *const dstBeing = actorManager->findBeing(msg.readInt32("being id"));
-    if (dstBeing)
-        dstBeing->setIp(ipToString(msg.readInt32("ip address")));
-    BLOCK_END("BeingHandler::processIpResponse")
-}
-
 void BeingHandler::processPlayerStop(Net::MessageIn &msg)
 {
     BLOCK_START("BeingHandler::processPlayerStop")

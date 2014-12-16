@@ -92,6 +92,8 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
         static void processBeingSelfEffect(Net::MessageIn &msg);
 
         static void processSkillCastCancel(Net::MessageIn &msg);
+
+        static void processIpResponse(Net::MessageIn &msg);
 };
 
 }  // namespace TmwAthena
