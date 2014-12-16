@@ -57,7 +57,7 @@ class TradeHandler final : public MessageHandler, public Ea::TradeHandler
     protected:
         static void processTradeRequest(Net::MessageIn &msg);
 
-        static void processTradeResponse2(Net::MessageIn &msg);
+        static void processTradeResponse(Net::MessageIn &msg);
 
         static void processTradeUndo(Net::MessageIn &msg);
 

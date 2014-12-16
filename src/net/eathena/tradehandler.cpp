@@ -55,7 +55,7 @@ TradeHandler::TradeHandler() :
     static const uint16_t _messages[] =
     {
         SMSG_TRADE_REQUEST,
-        SMSG_TRADE_RESPONSE2,
+        SMSG_TRADE_RESPONSE,
         SMSG_TRADE_ITEM_ADD,
         SMSG_TRADE_ITEM_ADD_RESPONSE,
         SMSG_TRADE_OK,
@@ -79,8 +79,8 @@ void TradeHandler::handleMessage(Net::MessageIn &msg)
             processTradeRequest(msg);
             break;
 
-        case SMSG_TRADE_RESPONSE2:
-            processTradeResponse2(msg);
+        case SMSG_TRADE_RESPONSE:
+            processTradeResponse(msg);
             break;
 
         case SMSG_TRADE_ITEM_ADD:
@@ -173,7 +173,7 @@ void TradeHandler::processTradeRequest(Net::MessageIn &msg)
     processTradeRequestContinue(partner);
 }
 
-void TradeHandler::processTradeResponse2(Net::MessageIn &msg)
+void TradeHandler::processTradeResponse(Net::MessageIn &msg)
 {
     const uint8_t type = msg.readUInt8("type");
     msg.readInt32("char id");
