@@ -50,8 +50,6 @@
 #define SMSG_CHAR_DELETE_SUCCEEDED   0x006f
 #define SMSG_CHAR_DELETE_FAILED      0x0070
 #define SMSG_CHAR_MAP_INFO           0x0071
-// Custom packet reply to password change request
-#define SMSG_CHAR_PASSWORD_RESPONSE  0x0062
 
 #define SMSG_CHAR_SWITCH_RESPONSE    0x00b3
 #define SMSG_CHANGE_MAP_SERVER       0x0092

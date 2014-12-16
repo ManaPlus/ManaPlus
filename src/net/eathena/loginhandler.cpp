@@ -53,7 +53,6 @@ LoginHandler::LoginHandler() :
         SMSG_LOGIN_DATA,
         SMSG_LOGIN_ERROR,
         SMSG_LOGIN_ERROR2,
-        SMSG_CHAR_PASSWORD_RESPONSE,
         SMSG_SERVER_VERSION_RESPONSE,
         SMSG_UPDATE_HOST,
         0
@@ -70,10 +69,6 @@ void LoginHandler::handleMessage(Net::MessageIn &msg)
 {
     switch (msg.getId())
     {
-        case SMSG_CHAR_PASSWORD_RESPONSE:
-            processCharPasswordResponse(msg);
-            break;
-
         case SMSG_LOGIN_DATA:
             processLoginData(msg);
             break;
