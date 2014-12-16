@@ -174,7 +174,6 @@
 #define SMSG_PARTY_INVITED           0x02c6
 #define SMSG_PARTY_SETTINGS          0x07d8
 #define SMSG_PARTY_LEAVE             0x0105
-#define SMSG_PARTY_UPDATE_HP         0x0106
 #define SMSG_PARTY_UPDATE_COORDS     0x0107
 #define SMSG_PARTY_MESSAGE           0x0109
 #define SMSG_PARTY_INVITATION_STATS  0x02c9
