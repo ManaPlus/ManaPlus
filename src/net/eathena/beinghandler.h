@@ -65,8 +65,6 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
 
         static void processPlayerUpdate2(Net::MessageIn &msg);
 
-        static void processPlayerMove(Net::MessageIn &msg);
-
         static void processMapTypeProperty(Net::MessageIn &msg);
 
         static void processMapType(Net::MessageIn &msg);
