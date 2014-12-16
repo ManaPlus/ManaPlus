@@ -76,6 +76,8 @@ class PartyHandler final : public MessageHandler, public Ea::PartyHandler
         static void processPartyInviteResponse(Net::MessageIn &msg);
 
         static void processPartyInvited(Net::MessageIn &msg);
+
+        static void processPartyMove(Net::MessageIn &msg);
 };
 
 }  // namespace TmwAthena

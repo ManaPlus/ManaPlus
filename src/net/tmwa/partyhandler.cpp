@@ -404,4 +404,35 @@ void PartyHandler::processPartyInvited(Net::MessageIn &msg)
         socialWindow->showPartyInvite(partyName, nick, 0);
 }
 
+void PartyHandler::processPartyMove(Net::MessageIn &msg)
+{
+    const int id = msg.readInt32("id");
+    PartyMember *m = nullptr;
+    if (Ea::taParty)
+        m = Ea::taParty->getMember(id);
+    if (m)
+    {
+        msg.readInt32("unused");
+        m->setX(msg.readInt16("x"));
+        m->setY(msg.readInt16("y"));
+        const bool online = msg.readUInt8("online") != 0;
+        if (m->getOnline() != online)
+            partyTab->showOnline(m->getName(), online);
+        m->setOnline(online);
+        msg.readString(24, "party");
+        msg.readString(24, "nick");
+        m->setMap(msg.readString(16, "map"));
+    }
+    else
+    {
+        msg.readInt32("unused");
+        msg.readInt16("x");
+        msg.readInt16("y");
+        msg.readUInt8("online");
+        msg.readString(24, "party");
+        msg.readString(24, "nick");
+        msg.readString(16, "map");
+    }
+}
+
 }  // namespace TmwAthena
