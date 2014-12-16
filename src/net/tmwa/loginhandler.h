@@ -63,8 +63,6 @@ class LoginHandler final : public MessageHandler, public Ea::LoginHandler
 
         void sendVersion() const override final;
 
-        static void processServerVersion(Net::MessageIn &msg);
-
         static void requestUpdateHosts();
 
     private:
@@ -72,6 +70,10 @@ class LoginHandler final : public MessageHandler, public Ea::LoginHandler
                                const std::string &restrict password,
                                const std::string &restrict email)
                                const override final;
+
+        static void processServerVersion(Net::MessageIn &msg);
+
+        static void processCharPasswordResponse(Net::MessageIn &msg);
 };
 
 }  // namespace TmwAthena

@@ -31,6 +31,8 @@
 #include "net/tmwa/network.h"
 #include "net/tmwa/protocol.h"
 
+#include "utils/gettext.h"
+
 #include "debug.h"
 
 extern Net::LoginHandler *loginHandler;
@@ -250,6 +252,42 @@ int LoginHandler::supportedOptionalActions() const
 
 void LoginHandler::sendVersion() const
 {
+}
+
+void LoginHandler::processCharPasswordResponse(Net::MessageIn &msg)
+{
+    // 0: acc not found, 1: success, 2: password mismatch, 3: pass too short
+    const uint8_t errMsg = msg.readUInt8("result code");
+    // Successful pass change
+    if (errMsg == 1)
+    {
+        client->setState(STATE_CHANGEPASSWORD_SUCCESS);
+    }
+    // pass change failed
+    else
+    {
+        switch (errMsg)
+        {
+            case 0:
+                errorMessage =
+                    // TRANSLATORS: error message
+                    _("Account was not found. Please re-login.");
+                break;
+            case 2:
+                // TRANSLATORS: error message
+                errorMessage = _("Old password incorrect.");
+                break;
+            case 3:
+                // TRANSLATORS: error message
+                errorMessage = _("New password too short.");
+                break;
+            default:
+                // TRANSLATORS: error message
+                errorMessage = _("Unknown error.");
+                break;
+        }
+        client->setState(STATE_ACCOUNTCHANGE_ERROR);
+    }
 }
 
 }  // namespace TmwAthena

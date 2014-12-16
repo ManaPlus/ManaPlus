@@ -87,8 +87,6 @@ class LoginHandler notfinal : public Net::LoginHandler
                                        const std::string &password)
                                        const override final;
 
-        static void processCharPasswordResponse(Net::MessageIn &msg);
-
         static void processUpdateHost(Net::MessageIn &msg);
 
         static void processLoginData(Net::MessageIn &msg);
