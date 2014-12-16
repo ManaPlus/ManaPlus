@@ -56,7 +56,6 @@
 
 #define SMSG_MAP_LOGIN_SUCCESS       0x0a18 /**< Contains starting location */
 #define SMSG_MAP_QUIT_RESPONSE       0x018b
-#define SMSG_PLAYER_UPDATE_1         0x01d8
 #define SMSG_PLAYER_UPDATE_2         0x01d9
 #define SMSG_PLAYER_MOVE             0x01da /**< A nearby player moves */
 #define SMSG_PLAYER_STOP             0x0088 /**< Stop walking, set position */
