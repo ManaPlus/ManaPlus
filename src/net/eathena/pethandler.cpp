@@ -35,6 +35,7 @@
 #include "gui/widgets/tabs/chat/chattab.h"
 
 #include "net/chathandler.h"
+#include "net/inventoryhandler.h"
 
 #include "net/ea/eaprotocol.h"
 
@@ -195,11 +196,18 @@ void PetHandler::processPetRoulette(Net::MessageIn &msg)
 void PetHandler::processEggsList(Net::MessageIn &msg)
 {
     const int count = (msg.readInt16("len") - 4) / 2;
+    Inventory *const inv = PlayerInfo::getInventory();
     menu = MenuType::Eggs;
 
+    if (count == 1)
+    {
+        const int index = msg.readInt16("index") - INVENTORY_OFFSET;
+        const Item *const item = inv->getItem(index);
+        inventoryHandler->selectEgg(item);
+        return;
+    }
     SellDialog *const dialog = new EggSelectionDialog;
     dialog->postInit();
-    Inventory *const inv = PlayerInfo::getInventory();
 
     for (int f = 0; f < count; f ++)
     {
