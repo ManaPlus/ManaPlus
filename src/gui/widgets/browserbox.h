@@ -173,8 +173,8 @@ class BrowserBox final : public Widget,
         void setAlwaysUpdate(bool n)
         { mAlwaysUpdate = n; }
 
-        void setProcessVersion(bool n)
-        { mProcessVersion = n; }
+        void setProcessVars(bool n)
+        { mProcessVars = n; }
 
         void setEnableImages(bool n)
         { mEnableImages = n; }
@@ -242,7 +242,7 @@ class BrowserBox final : public Widget,
         bool mUseLinksAndUserColors;
         bool mUseEmotes;
         bool mAlwaysUpdate;
-        bool mProcessVersion;
+        bool mProcessVars;
         bool mEnableImages;
         bool mEnableKeys;
         bool mEnableTabs;

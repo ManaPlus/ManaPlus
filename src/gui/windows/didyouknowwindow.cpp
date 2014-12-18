@@ -83,7 +83,7 @@ DidYouKnowWindow::DidYouKnowWindow() :
     mBrowserBox->setLinkHandler(this);
     if (gui)
         mBrowserBox->setFont(gui->getHelpFont());
-    mBrowserBox->setProcessVersion(true);
+    mBrowserBox->setProcessVars(true);
     mBrowserBox->setEnableImages(true);
     mBrowserBox->setEnableKeys(true);
     mBrowserBox->setEnableTabs(true);

@@ -97,7 +97,7 @@ BrowserBox::BrowserBox(const Widget2 *const widget,
     mUseLinksAndUserColors(true),
     mUseEmotes(true),
     mAlwaysUpdate(true),
-    mProcessVersion(false),
+    mProcessVars(false),
     mEnableImages(false),
     mEnableKeys(false),
     mEnableTabs(false)
@@ -271,7 +271,7 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
         newRow = row;
     }
 
-    if (mProcessVersion)
+    if (mProcessVars)
         newRow = replaceAll(newRow, "%VER%", SMALL_VERSION);
 
     if (mEnableTabs)
