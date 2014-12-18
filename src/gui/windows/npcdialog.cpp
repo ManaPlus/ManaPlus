@@ -148,6 +148,7 @@ NpcDialog::NpcDialog(const int npcId) :
     mTextBox->setOpaque(false);
     mTextBox->setMaxRow(config.getIntValue("ChatLogLength"));
     mTextBox->setLinkHandler(mItemLinkHandler);
+    mTextBox->setProcessVars(true);
     mTextBox->setFont(gui->getNpcFont());
     mTextBox->setEnableKeys(true);
     mTextBox->setEnableTabs(true);

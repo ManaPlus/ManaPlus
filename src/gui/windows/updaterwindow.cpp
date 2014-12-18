@@ -218,6 +218,7 @@ UpdaterWindow::UpdaterWindow(const std::string &restrict updateHost,
     mProgressBar->setSmoothProgress(false);
     mBrowserBox->setOpaque(false);
     mBrowserBox->setLinkHandler(this);
+    mBrowserBox->setProcessVars(true);
     mBrowserBox->setEnableKeys(true);
     mBrowserBox->setEnableTabs(true);
     mPlayButton->setEnabled(false);
