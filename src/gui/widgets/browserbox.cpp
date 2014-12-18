@@ -23,6 +23,8 @@
 
 #include "gui/widgets/browserbox.h"
 
+#include "settings.h"
+
 #include "input/inputmanager.h"
 
 #include "gui/gui.h"
@@ -198,6 +200,12 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
     if (getWidth() < 0)
         return;
 
+    if (mProcessVars)
+    {
+        tmp = replaceAll(tmp, "%VER%", SMALL_VERSION);
+        tmp = replaceAll(tmp, "%SUPPORTURL%", settings.supportUrl);
+    }
+
     // Use links and user defined colors
     if (mUseLinksAndUserColors)
     {
@@ -270,9 +278,6 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
     {
         newRow = row;
     }
-
-    if (mProcessVars)
-        newRow = replaceAll(newRow, "%VER%", SMALL_VERSION);
 
     if (mEnableTabs)
     {
