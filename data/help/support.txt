@@ -7,6 +7,9 @@
  can't find a solution to your problem, feel free to check our
  Bugs/Support section of the forum:>>
 
+ <<Current server support url:>>
+     @@%SUPPORTURL%|%SUPPORTURL%@@
+
  <<For Evol Online support:>>
 
  <<Visit IRC channel:>>
