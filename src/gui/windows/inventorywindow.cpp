@@ -763,14 +763,14 @@ InventoryWindow *InventoryWindow::getFirstVisible()
 
 void InventoryWindow::nextTab()
 {
-    InventoryWindow *const window = getFirstVisible();
+    const InventoryWindow *const window = getFirstVisible();
     if (window)
         window->mFilter->nextTab();
 }
 
 void InventoryWindow::prevTab()
 {
-    InventoryWindow *const window = getFirstVisible();
+    const InventoryWindow *const window = getFirstVisible();
     if (window)
         window->mFilter->prevTab();
 }

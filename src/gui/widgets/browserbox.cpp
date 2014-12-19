@@ -928,8 +928,6 @@ void BrowserBox::moveSelectionUp()
         mSelectedLink --;
 }
 
-#include "logger.h"
-
 void BrowserBox::moveSelectionDown()
 {
     mSelectedLink ++;

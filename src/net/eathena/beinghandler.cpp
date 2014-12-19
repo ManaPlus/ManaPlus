@@ -24,9 +24,7 @@
 
 #include "actormanager.h"
 #include "effectmanager.h"
-#include "guild.h"
 #include "guildmanager.h"
-#include "party.h"
 
 #include "being/localplayer.h"
 #include "being/mercenaryinfo.h"
@@ -432,14 +430,16 @@ void BeingHandler::processBeingChangeLookContinue(Being *const dstBeing,
                 static_cast<unsigned char>(id2));
             localPlayer->imitateOutfit(dstBeing, SPRITE_CLOTHES_COLOR);
             break;
-        case 5:  // LOOK_HEAD_MID Change middle headgear for eathena, armor for us
+        case 5:  // LOOK_HEAD_MID Change middle headgear for eathena,
+                 // armor for us
             dstBeing->setSprite(SPRITE_HEAD_BOTTOM, id, color,
                 static_cast<unsigned char>(id2));
             localPlayer->imitateOutfit(dstBeing, SPRITE_HEAD_BOTTOM);
             break;
         case 6:  // eAthena LOOK_HAIR_COLOR
-            dstBeing->setSpriteColor(SPRITE_HAIR_COLOR, ItemDB::get(
-                dstBeing->getSpriteID(SPRITE_HAIR_COLOR)).getDyeColorsString(id));
+            dstBeing->setSpriteColor(SPRITE_HAIR_COLOR,
+                ItemDB::get(dstBeing->getSpriteID(
+                SPRITE_HAIR_COLOR)).getDyeColorsString(id));
             break;
         case 7:  // Clothes color
             // ignoring it

@@ -22,7 +22,6 @@
 
 #include "actormanager.h"
 #include "configuration.h"
-#include "flooritem.h"
 #include "game.h"
 #include "inventory.h"
 #include "item.h"
@@ -494,11 +493,18 @@ impHandler(imitation)
         return false;
 
     if (!event.args.empty())
+    {
         localPlayer->setImitate(event.args);
+    }
     else if (event.tab && event.tab->getType() == ChatTabType::WHISPER)
-        localPlayer->setImitate(static_cast<WhisperTab*>(event.tab)->getNick());
+    {
+        localPlayer->setImitate(static_cast<WhisperTab*>(
+            event.tab)->getNick());
+    }
     else
+    {
         localPlayer->setImitate("");
+    }
     return true;
 }
 

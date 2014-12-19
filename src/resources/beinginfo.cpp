@@ -52,9 +52,12 @@ BeingInfo::BeingInfo() :
     mHoverCursor(Cursor::CURSOR_POINTER),
     mSounds(),
     mAttacks(),
-    mBlockWalkMask(BlockMask::WALL | BlockMask::CHARACTER
-                   | BlockMask::MONSTER | BlockMask::AIR
-                   | BlockMask::WATER),
+    mMenu(),
+    mBlockWalkMask(BlockMask::WALL
+                 | BlockMask::CHARACTER
+                 | BlockMask::MONSTER
+                 | BlockMask::AIR
+                 | BlockMask::WATER),
     mBlockType(BlockType::CHARACTER),
     mColors(nullptr),
     mTargetOffsetX(0),

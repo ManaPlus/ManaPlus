@@ -567,7 +567,7 @@ impHandler0(copyEquippedToOutfit)
     return false;
 }
 
-impHandler0(pickup)
+impHandler(pickup)
 {
     if (!localPlayer)
         return false;
@@ -653,7 +653,7 @@ impHandler(sell)
     return false;
 }
 
-impHandler0(talk)
+impHandler(talk)
 {
     Being *being = findBeing(event.args);
     if (!being)

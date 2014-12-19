@@ -52,6 +52,8 @@
 
 #include "debug.h"
 
+#undef ERROR
+
 static const BeingAction::Action actions[] =
 {
     BeingAction::STAND,

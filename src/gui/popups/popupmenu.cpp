@@ -25,7 +25,6 @@
 #include "actormanager.h"
 #include "configuration.h"
 #include "dropshortcut.h"
-#include "game.h"
 #include "gamemodifiers.h"
 #include "guild.h"
 #include "guildmanager.h"
@@ -46,11 +45,9 @@
 #include "gui/windows/chatwindow.h"
 #include "gui/windows/equipmentwindow.h"
 #include "gui/windows/inventorywindow.h"
-#include "gui/windows/itemamountwindow.h"
 #include "gui/windows/ministatuswindow.h"
 #include "gui/windows/npcdialog.h"
 #include "gui/windows/outfitwindow.h"
-#include "gui/windows/skilldialog.h"
 #include "gui/windows/socialwindow.h"
 #include "gui/windows/textcommandeditor.h"
 #include "gui/windows/textdialog.h"
@@ -68,22 +65,16 @@
 
 #include "net/adminhandler.h"
 #include "net/beinghandler.h"
-#include "net/buysellhandler.h"
 #include "net/chathandler.h"
 #include "net/guildhandler.h"
 #include "net/homunculushandler.h"
-#include "net/inventoryhandler.h"
 #include "net/mercenaryhandler.h"
-#include "net/npchandler.h"
-#include "net/partyhandler.h"
 #include "net/pethandler.h"
 #include "net/serverfeatures.h"
-#include "net/tradehandler.h"
 
 #include "resources/chatobject.h"
 #include "resources/iteminfo.h"
 #include "resources/mapitemtype.h"
-#include "resources/skillconsts.h"
 
 #include "resources/db/npcdb.h"
 
@@ -1565,7 +1556,7 @@ void PopupMenu::handleLink(const std::string &link,
         if (id >= 0)
             inputManager.executeAction(id);
     }
-    else if(!link.empty() && link[0] == '/')
+    else if (!link.empty() && link[0] == '/')
     {
         std::string cmd = link.substr(1);
         replaceAll(cmd, "'NAME'", mNick);

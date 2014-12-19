@@ -450,7 +450,7 @@ impHandler(kickParty)
     return true;
 }
 
-impHandler0(addText)
+impHandler(addText)
 {
     if (chatWindow)
         chatWindow->addInputText(event.args);
