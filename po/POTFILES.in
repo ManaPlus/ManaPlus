@@ -146,6 +146,7 @@ src/net/eathena/skillhandler.cpp
 src/net/ea/tradehandler.cpp
 src/net/tmwa/charserverhandler.cpp
 src/net/tmwa/generalhandler.cpp
+src/net/tmwa/loginhandler.cpp
 src/net/tmwa/skillhandler.cpp
 src/render/rendererslistsdl2.h
 src/render/rendererslistsdl.h
