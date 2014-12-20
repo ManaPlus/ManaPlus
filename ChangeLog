@@ -1,3 +1,14 @@
+2014-12-20 New release 1.4.12.20
+fix: inventory related packets (hercules).
+fix: background paralax.
+add: command /me in pet talk.
+add: npc whispers (hercules).
+add: keyboard navigation in popup menus.
+add: many chat commands.
+add: own context menus for each npc.
+add: autohatch it present only one egg in inventory (hercules).
+add: support url variable in help/npc/update windows.
+
 2014-12-06 New release 1.4.12.6
 fix: block target+attack action in player dead.
 add: additional slots support (hercules).
