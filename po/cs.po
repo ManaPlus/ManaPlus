@@ -7467,7 +7467,7 @@ msgstr "  -s --server         : Přihlaš se k tomuto serveru nebo IP"
 #. TRANSLATORS: command line help
 #: src/main.cpp:110
 msgid "  -y --server-type    : Login server type"
-msgstr "-y --server-type : Typ přihlašovacího serveru"
+msgstr "  -y --server-type    : Typ přihlašovacího serveru"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:112
