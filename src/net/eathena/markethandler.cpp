@@ -36,6 +36,7 @@ MarketHandler::MarketHandler() :
     static const uint16_t _messages[] =
     {
         SMSG_NPC_MARKET_OPEN,
+        SMSG_NPC_MARKET_BUY_ACK,
         0
     };
     handledMessages = _messages;
@@ -48,6 +49,10 @@ void MarketHandler::handleMessage(Net::MessageIn &msg)
     {
         case SMSG_NPC_MARKET_OPEN:
             processMarketOpen(msg);
+            break;
+
+        case SMSG_NPC_MARKET_BUY_ACK:
+            processMarketBuyAck(msg);
             break;
 
         default:
@@ -65,6 +70,17 @@ void MarketHandler::processMarketOpen(Net::MessageIn &msg)
         msg.readInt32("price");
         msg.readInt32("amount");
         msg.readInt16("view");
+    }
+}
+
+void MarketHandler::processMarketBuyAck(Net::MessageIn &msg)
+{
+    const int len = (msg.readInt16("len") - 4) / 8;
+    for (int f = 0; f < len; f ++)
+    {
+        msg.readInt16("item id");
+        msg.readInt16("amount");
+        msg.readInt32("price");
     }
 }
 

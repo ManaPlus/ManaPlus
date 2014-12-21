@@ -45,6 +45,8 @@ class MarketHandler final : public MessageHandler,
 
     protected:
         void processMarketOpen(Net::MessageIn &msg);
+
+        void processMarketBuyAck(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

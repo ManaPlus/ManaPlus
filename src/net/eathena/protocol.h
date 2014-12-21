@@ -150,6 +150,8 @@
 #define SMSG_NPC_SHOW_PROGRESS_BAR   0x02f0
 #define SMSG_NPC_CHANGETITLE         0x0b06
 #define SMSG_NPC_MARKET_OPEN         0x09d5
+#define SMSG_NPC_MARKET_BUY_ACK      0x09d7
+
 #define SMSG_PLAYER_CHAT             0x008e /**< Player talks */
 #define SMSG_WHISPER                 0x0097 /**< Whisper Recieved */
 #define SMSG_WHISPER_RESPONSE        0x09df
