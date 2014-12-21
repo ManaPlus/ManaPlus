@@ -58,6 +58,7 @@ namespace Net
     class HomunculusHandler;
     class InventoryHandler;
     class MailHandler;
+    class MarketHandler;
     class MercenaryHandler;
     class NpcHandler;
     class PartyHandler;
@@ -97,6 +98,7 @@ Net::BuyingStoreHandler *buyingStoreHandler = nullptr;
 Net::HomunculusHandler *homunculusHandler = nullptr;
 Net::FriendsHandler *friendsHandler = nullptr;
 Net::ElementalHandler *elementalHandler = nullptr;
+Net::MarketHandler *marketHandler = nullptr;
 
 namespace Net
 {

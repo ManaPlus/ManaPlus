@@ -57,6 +57,7 @@
 #include "net/eathena/itemhandler.h"
 #include "net/eathena/loginhandler.h"
 #include "net/eathena/mailhandler.h"
+#include "net/eathena/markethandler.h"
 #include "net/eathena/mercenaryhandler.h"
 #include "net/eathena/network.h"
 #include "net/eathena/npchandler.h"
@@ -113,7 +114,8 @@ GeneralHandler::GeneralHandler() :
     mBuyingStoreHandler(new BuyingStoreHandler),
     mHomunculusHandler(new HomunculusHandler),
     mFriendsHandler(new FriendsHandler),
-    mElementalHandler(new ElementalHandler)
+    mElementalHandler(new ElementalHandler),
+    mMarketHandler(new MarketHandler)
 {
     static const uint16_t _messages[] =
     {
@@ -301,6 +303,7 @@ void GeneralHandler::load()
     mNetwork->registerHandler(mHomunculusHandler);
     mNetwork->registerHandler(mFriendsHandler);
     mNetwork->registerHandler(mElementalHandler);
+    mNetwork->registerHandler(mMarketHandler);
 }
 
 void GeneralHandler::reload()

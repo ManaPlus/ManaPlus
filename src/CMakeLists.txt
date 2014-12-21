@@ -550,6 +550,7 @@ SET(SRCS
     net/logindata.h
     net/loginhandler.h
     net/mailhandler.h
+    net/markethandler.h
     net/mercenaryhandler.h
     net/messagehandler.h
     net/messagein.cpp
@@ -1349,6 +1350,8 @@ SET(SRCS_TMWA
     net/tmwa/loginhandler.h
     net/tmwa/mailhandler.cpp
     net/tmwa/mailhandler.h
+    net/tmwa/markethandler.cpp
+    net/tmwa/markethandler.h
     net/tmwa/mercenaryhandler.cpp
     net/tmwa/mercenaryhandler.h
     net/tmwa/messagehandler.cpp
@@ -1426,6 +1429,8 @@ SET(SRCS_EATHENA
     net/eathena/menu.cpp
     net/eathena/menu.h
     net/eathena/menutype.h
+    net/eathena/markethandler.cpp
+    net/eathena/markethandler.h
     net/eathena/mercenaryhandler.cpp
     net/eathena/mercenaryhandler.h
     net/eathena/messagehandler.cpp
