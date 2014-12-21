@@ -20,6 +20,7 @@
 
 #include "net/eathena/markethandler.h"
 
+#include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
 #include "debug.h"
@@ -65,6 +66,11 @@ void MarketHandler::processMarketOpen(Net::MessageIn &msg)
         msg.readInt32("amount");
         msg.readInt16("view");
     }
+}
+
+void MarketHandler::close()
+{
+    createOutPacket(CMSG_NPC_MARKET_CLOSE);
 }
 
 }  // namespace EAthena

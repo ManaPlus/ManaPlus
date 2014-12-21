@@ -36,6 +36,8 @@ class MarketHandler final : public MessageHandler,
         A_DELETE_COPY(MarketHandler)
 
         void handleMessage(Net::MessageIn &msg) override final;
+
+        void close() override final;
 };
 
 }  // namespace TmwAthena

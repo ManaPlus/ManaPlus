@@ -47,4 +47,8 @@ void MarketHandler::handleMessage(Net::MessageIn &msg)
     }
 }
 
+void MarketHandler::close()
+{
+}
+
 }  // namespace TmwAthena

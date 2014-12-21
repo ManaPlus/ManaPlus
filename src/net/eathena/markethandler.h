@@ -37,6 +37,8 @@ class MarketHandler final : public MessageHandler,
 
         void handleMessage(Net::MessageIn &msg) override final;
 
+        void close() override final;
+
     protected:
         void processMarketOpen(Net::MessageIn &msg);
 };

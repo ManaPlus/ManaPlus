@@ -33,6 +33,8 @@ class MarketHandler notfinal
     public:
         virtual ~MarketHandler()
         { }
+
+        virtual void close() = 0;
 };
 
 }  // namespace Net
