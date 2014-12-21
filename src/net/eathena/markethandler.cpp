@@ -73,4 +73,14 @@ void MarketHandler::close()
     createOutPacket(CMSG_NPC_MARKET_CLOSE);
 }
 
+void MarketHandler::buyItem(const int itemId,
+                            const unsigned char color A_UNUSED,
+                            const int amount) const
+{
+    createOutPacket(CMSG_NPC_MARKET_BUY);
+    outMsg.writeInt16(8, "len");
+    outMsg.writeInt16(static_cast<int16_t>(itemId), "item id");
+    outMsg.writeInt16(static_cast<int16_t>(amount), "amount");
+}
+
 }  // namespace EAthena

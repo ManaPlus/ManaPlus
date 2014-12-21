@@ -383,6 +383,7 @@
 #define CMSG_NPC_BUY_REQUEST         0x00c8
 #define CMSG_NPC_SELL_REQUEST        0x00c9
 #define CMSG_NPC_MARKET_CLOSE        0x09d8
+#define CMSG_NPC_MARKET_BUY          0x09d6
 
 #define CMSG_TRADE_REQUEST           0x00e4
 #define CMSG_TRADE_RESPONSE          0x00e6

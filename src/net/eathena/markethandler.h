@@ -39,6 +39,10 @@ class MarketHandler final : public MessageHandler,
 
         void close() override final;
 
+        void buyItem(const int itemId,
+                     const unsigned char color,
+                     const int amount) const override final;
+
     protected:
         void processMarketOpen(Net::MessageIn &msg);
 };

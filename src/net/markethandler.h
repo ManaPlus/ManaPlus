@@ -35,6 +35,10 @@ class MarketHandler notfinal
         { }
 
         virtual void close() = 0;
+
+        virtual void buyItem(const int itemId,
+                             const unsigned char color,
+                             const int amount) const = 0;
 };
 
 }  // namespace Net

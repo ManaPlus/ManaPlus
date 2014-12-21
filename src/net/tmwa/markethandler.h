@@ -38,6 +38,11 @@ class MarketHandler final : public MessageHandler,
         void handleMessage(Net::MessageIn &msg) override final;
 
         void close() override final;
+
+        void buyItem(const int itemId,
+                     const unsigned char color,
+                     const int amount) const override final;
+
 };
 
 }  // namespace TmwAthena
