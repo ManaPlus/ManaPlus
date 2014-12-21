@@ -36,6 +36,9 @@ class MarketHandler final : public MessageHandler,
         A_DELETE_COPY(MarketHandler)
 
         void handleMessage(Net::MessageIn &msg) override final;
+
+    protected:
+        void processMarketOpen(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

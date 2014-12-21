@@ -20,6 +20,8 @@
 
 #include "net/eathena/markethandler.h"
 
+#include "net/eathena/protocol.h"
+
 #include "debug.h"
 
 extern Net::MarketHandler *marketHandler;
@@ -32,6 +34,7 @@ MarketHandler::MarketHandler() :
 {
     static const uint16_t _messages[] =
     {
+        SMSG_NPC_MARKET_OPEN,
         0
     };
     handledMessages = _messages;
@@ -42,8 +45,25 @@ void MarketHandler::handleMessage(Net::MessageIn &msg)
 {
     switch (msg.getId())
     {
+        case SMSG_NPC_MARKET_OPEN:
+            processMarketOpen(msg);
+            break;
+
         default:
             break;
+    }
+}
+
+void MarketHandler::processMarketOpen(Net::MessageIn &msg)
+{
+    const int len = (msg.readInt16("len") - 4) / 13;
+    for (int f = 0; f < len; f ++)
+    {
+        msg.readInt16("item id");
+        msg.readUInt8("type");
+        msg.readInt32("price");
+        msg.readInt32("amount");
+        msg.readInt16("view");
     }
 }
 

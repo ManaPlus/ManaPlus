@@ -149,6 +149,7 @@
 #define SMSG_NPC_STR_INPUT           0x01d4 /**< String input */
 #define SMSG_NPC_SHOW_PROGRESS_BAR   0x02f0
 #define SMSG_NPC_CHANGETITLE         0x0b06
+#define SMSG_NPC_MARKET_OPEN         0x09d5
 #define SMSG_PLAYER_CHAT             0x008e /**< Player talks */
 #define SMSG_WHISPER                 0x0097 /**< Whisper Recieved */
 #define SMSG_WHISPER_RESPONSE        0x09df
@@ -285,7 +286,6 @@
 #define SMSG_MERCENARY_INFO          0x029b
 #define SMSG_MERCENARY_SKILLS        0x029d
 #define SMSG_MERCENARY_ACTION        0x029f
-
 
 #define SMSG_HOMUNCULUS_SKILLS       0x0235
 #define SMSG_HOMUNCULUS_DATA         0x0230
