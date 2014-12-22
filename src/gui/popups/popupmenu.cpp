@@ -1583,7 +1583,6 @@ void PopupMenu::handleLink(const std::string &link,
             replaceAll(cmd, "'MAPY'", toString(mY));
         }
 
-        logger->log("cmd: " + cmd);
         const size_t pos = cmd.find(' ');
         const std::string type(cmd, 0, pos);
         std::string args(cmd, pos == std::string::npos ? cmd.size() : pos + 1);
