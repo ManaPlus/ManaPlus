@@ -45,6 +45,7 @@
 
 #include "net/adminhandler.h"
 #include "net/buysellhandler.h"
+#include "net/markethandler.h"
 #include "net/npchandler.h"
 
 #include "resources/iteminfo.h"
@@ -439,8 +440,19 @@ void BuyDialog::action(const ActionEvent &event)
         else if (mNpcId != -1)
         {
             const ShopItem *const item = mShopItems->at(selectedItem);
-            npcHandler->buyItem(mNpcId, item->getId(),
-                item->getColor(), mAmountItems);
+            if (mNpcId != -3)
+            {
+                npcHandler->buyItem(mNpcId,
+                    item->getId(),
+                    item->getColor(),
+                    mAmountItems);
+            }
+            else
+            {
+                marketHandler->buyItem(item->getId(),
+                    item->getColor(),
+                    mAmountItems);
+            }
 
             // Update money and adjust the max number of items
             // that can be bought

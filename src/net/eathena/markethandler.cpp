@@ -20,8 +20,17 @@
 
 #include "net/eathena/markethandler.h"
 
+#include "notifymanager.h"
+
+#include "being/attributes.h"
+#include "being/playerinfo.h"
+
+#include "gui/windows/buydialog.h"
+
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
+
+#include "resources/notifytypes.h"
 
 #include "debug.h"
 
@@ -29,6 +38,8 @@ extern Net::MarketHandler *marketHandler;
 
 namespace EAthena
 {
+
+BuyDialog *MarketHandler::mBuyDialog = nullptr;
 
 MarketHandler::MarketHandler() :
     MessageHandler()
@@ -41,6 +52,7 @@ MarketHandler::MarketHandler() :
     };
     handledMessages = _messages;
     marketHandler = this;
+    mBuyDialog = nullptr;
 }
 
 void MarketHandler::handleMessage(Net::MessageIn &msg)
@@ -63,25 +75,36 @@ void MarketHandler::handleMessage(Net::MessageIn &msg)
 void MarketHandler::processMarketOpen(Net::MessageIn &msg)
 {
     const int len = (msg.readInt16("len") - 4) / 13;
+
+    mBuyDialog = new BuyDialog(-3);
+    mBuyDialog->setMoney(PlayerInfo::getAttribute(Attributes::MONEY));
+
     for (int f = 0; f < len; f ++)
     {
-        msg.readInt16("item id");
+        const int itemId = msg.readInt16("item id");
         msg.readUInt8("type");
-        msg.readInt32("price");
-        msg.readInt32("amount");
+        const int value = msg.readInt32("price");
+        const int amount = msg.readInt32("amount");
         msg.readInt16("view");
+        const unsigned char color = 1;
+        mBuyDialog->addItem(itemId, color, amount, value);
     }
 }
 
 void MarketHandler::processMarketBuyAck(Net::MessageIn &msg)
 {
-    const int len = (msg.readInt16("len") - 4) / 8;
+    const int len = (msg.readInt16("len") - 5) / 8;
+    const int res = msg.readUInt8("result");
     for (int f = 0; f < len; f ++)
     {
         msg.readInt16("item id");
         msg.readInt16("amount");
         msg.readInt32("price");
     }
+    if (res)
+        NotifyManager::notify(NotifyTypes::BUY_DONE);
+    else
+        NotifyManager::notify(NotifyTypes::BUY_FAILED);
 }
 
 void MarketHandler::close()
@@ -94,9 +117,9 @@ void MarketHandler::buyItem(const int itemId,
                             const int amount) const
 {
     createOutPacket(CMSG_NPC_MARKET_BUY);
-    outMsg.writeInt16(8, "len");
+    outMsg.writeInt16(10, "len");
     outMsg.writeInt16(static_cast<int16_t>(itemId), "item id");
-    outMsg.writeInt16(static_cast<int16_t>(amount), "amount");
+    outMsg.writeInt32(static_cast<int16_t>(amount), "amount");
 }
 
 }  // namespace EAthena
