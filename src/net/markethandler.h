@@ -37,6 +37,7 @@ class MarketHandler notfinal
         virtual void close() = 0;
 
         virtual void buyItem(const int itemId,
+                             const int type,
                              const unsigned char color,
                              const int amount) const = 0;
 };

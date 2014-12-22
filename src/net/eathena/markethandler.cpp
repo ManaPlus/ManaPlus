@@ -113,13 +113,23 @@ void MarketHandler::close()
 }
 
 void MarketHandler::buyItem(const int itemId,
+                            const int type,
                             const unsigned char color A_UNUSED,
                             const int amount) const
 {
+    const bool nonStack = type == 4 || type == 5 || type == 7 || type == 8;
+    int cnt = nonStack ? amount : 1;
+    const int amount2 = nonStack ? 1 : amount;
+    if (cnt > 100)
+        cnt = 100;
+
     createOutPacket(CMSG_NPC_MARKET_BUY);
-    outMsg.writeInt16(10, "len");
-    outMsg.writeInt16(static_cast<int16_t>(itemId), "item id");
-    outMsg.writeInt32(static_cast<int16_t>(amount), "amount");
+    outMsg.writeInt16(4 + 6 * cnt, "len");
+    for (int f = 0; f < cnt; f ++)
+    {
+        outMsg.writeInt16(static_cast<int16_t>(itemId), "item id");
+        outMsg.writeInt32(static_cast<int16_t>(amount2), "amount");
+    }
 }
 
 }  // namespace EAthena

@@ -453,6 +453,7 @@ void BuyDialog::action(const ActionEvent &event)
             else
             {
                 marketHandler->buyItem(item->getId(),
+                    item->getType(),
                     item->getColor(),
                     mAmountItems);
             }

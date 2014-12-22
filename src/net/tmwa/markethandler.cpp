@@ -52,6 +52,7 @@ void MarketHandler::close()
 }
 
 void MarketHandler::buyItem(const int itemId A_UNUSED,
+                            const int type A_UNUSED,
                             const unsigned char color A_UNUSED,
                             const int amount A_UNUSED) const
 {
