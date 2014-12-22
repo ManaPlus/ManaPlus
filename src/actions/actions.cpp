@@ -58,6 +58,7 @@
 #include "gui/windows/shopwindow.h"
 #include "gui/windows/shortcutwindow.h"
 #include "gui/windows/skilldialog.h"
+#include "gui/windows/whoisonline.h"
 
 #include "gui/widgets/tabs/chat/chattab.h"
 
@@ -617,9 +618,18 @@ impHandler0(ignoreInput)
 
 impHandler(buy)
 {
-    Being *being = findBeing(event.args);
+    const std::string args = event.args;
+    Being *being = findBeing(args);
     if (!being)
+    {
+        const std::set<std::string> &players = whoIsOnline->getOnlineNicks();
+        if (players.find(args) != players.end())
+        {
+            buySellHandler->requestSellList(args);
+            return true;
+        }
         return false;
+    }
 
     if (being->getType() == ActorType::Npc)
     {
@@ -636,9 +646,18 @@ impHandler(buy)
 
 impHandler(sell)
 {
-    Being *being = findBeing(event.args);
+    const std::string args = event.args;
+    Being *being = findBeing(args);
     if (!being)
+    {
+        const std::set<std::string> &players = whoIsOnline->getOnlineNicks();
+        if (players.find(args) != players.end())
+        {
+            buySellHandler->requestBuyList(args);
+            return true;
+        }
         return false;
+    }
 
     if (being->getType() == ActorType::Npc)
     {
