@@ -68,6 +68,7 @@ class TradeWindow final : public Window,
          * Add an item to the trade window.
          */
         void addItem(const int id,
+                     const int type,
                      const bool own,
                      const int quantity,
                      const uint8_t refine,
@@ -85,6 +86,7 @@ class TradeWindow final : public Window,
          * Add an item to the trade window.
          */
         void addItem2(const int id,
+                     const int type,
                       const int *const cards,
                       const int sz,
                       const bool own,

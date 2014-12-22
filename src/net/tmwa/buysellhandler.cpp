@@ -105,12 +105,12 @@ void BuySellHandler::processNpcBuy(Net::MessageIn &msg)
     {
         const int value = msg.readInt32("price");
         msg.readInt32("dc value?");
-        msg.readUInt8("type");
+        const int type = msg.readUInt8("type");
         const int itemId = msg.readInt16("item id");
         uint8_t color = 1;
         if (serverFeatures->haveItemColors())
             color = msg.readUInt8("item color");
-        mBuyDialog->addItem(itemId, color, 0, value);
+        mBuyDialog->addItem(itemId, type, color, 0, value);
     }
     mBuyDialog->sort();
 }

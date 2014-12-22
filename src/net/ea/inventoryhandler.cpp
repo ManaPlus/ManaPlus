@@ -251,6 +251,7 @@ void InventoryHandler::processPlayerStorageStatus(Net::MessageIn &msg)
     {
         mStorage->setItem((*it).slot,
             (*it).id,
+            (*it).type,
             (*it).quantity,
             (*it).refine,
             (*it).color,

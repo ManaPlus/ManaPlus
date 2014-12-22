@@ -91,8 +91,11 @@ class BuyDialog final : public Window,
         /**
          * Adds an item to the shop inventory.
          */
-        void addItem(const int id, const unsigned char color,
-                     const int amount, const int price);
+        void addItem(const int id,
+                     const int type,
+                     const unsigned char color,
+                     const int amount,
+                     const int price);
 
         /**
          * Called when receiving actions from the widgets.

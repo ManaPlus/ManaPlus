@@ -38,6 +38,7 @@
 DragDrop dragDrop(nullptr, DRAGDROP_SOURCE_EMPTY);
 
 Item::Item(const int id,
+           const int type,
            const int quantity,
            const uint8_t refine,
            const unsigned char color,
@@ -55,6 +56,7 @@ Item::Item(const int id,
     mCards(),
     mRefine(refine),
     mInvIndex(0),
+    mType(type),
     mEquipment(equipment),
     mEquipped(equipped),
     mInEquipment(false),

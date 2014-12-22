@@ -328,7 +328,10 @@ void ShopWindow::addBuyItem(const Item *const item, const int amount,
         return;
     const bool emp = isShopEmpty();
     mBuyShopItems->addItemNoDup(item->getId(),
-        item->getColor(), amount, price);
+        item->getType(),
+        item->getColor(),
+        amount,
+        price);
     if (emp && localPlayer)
         localPlayer->updateStatus();
 
@@ -342,7 +345,10 @@ void ShopWindow::addSellItem(const Item *const item, const int amount,
         return;
     const bool emp = isShopEmpty();
     mSellShopItems->addItemNoDup(item->getId(),
-        item->getColor(), amount, price);
+        item->getType(),
+        item->getColor(),
+        amount,
+        price);
     if (emp && localPlayer)
         localPlayer->updateStatus();
 
@@ -390,12 +396,12 @@ void ShopWindow::loadList()
                     if (tokens[1] && tokens[2] && mBuyShopItems)
                     {
                         mBuyShopItems->addItem(
-                            tokens[0], 1, tokens[1], tokens[2]);
+                            tokens[0], 0, 1, tokens[1], tokens[2]);
                     }
                     if (tokens[3] && tokens[4] && mSellShopItems)
                     {
                         mSellShopItems->addItem(
-                            tokens[0], 1, tokens[3], tokens[4]);
+                            tokens[0], 0, 1, tokens[3], tokens[4]);
                     }
                 }
             }
@@ -663,7 +669,7 @@ void ShopWindow::showList(const std::string &nick, std::string data)
         int amount = decodeStr(data.substr(f + 6, 3));
         // +++ need impliment colors?
         if (buyDialog && amount > 0)
-            buyDialog->addItem(id, 1, amount, price);
+            buyDialog->addItem(id, 0, 1, amount, price);
         if (sellDialog)
         {
             // +++ need support for colors
@@ -673,9 +679,9 @@ void ShopWindow::showList(const std::string &nick, std::string data)
                 if (item->getQuantity() < amount)
                     amount = item->getQuantity();
                 if (amount > 0)
-                    sellDialog->addItem(id, 1, amount, price);
+                    sellDialog->addItem(id, 0, 1, amount, price);
                 else
-                    sellDialog->addItem(id, 1, -1, price);
+                    sellDialog->addItem(id, 0, 1, -1, price);
             }
         }
     }
@@ -736,7 +742,7 @@ void ShopWindow::processRequest(const std::string &nick, std::string data,
 
     delete mTradeItem;
     // +++ need impliment colors?
-    mTradeItem = new ShopItem(-1, id, 1, amount, price);
+    mTradeItem = new ShopItem(-1, id, 0, 1, amount, price);
 
     if (mode == BUY)
     {

@@ -104,6 +104,7 @@ Item *Inventory::findItem(const int itemId, const unsigned char color) const
 }
 
 int Inventory::addItem(const int id,
+                       const int type,
                        const int quantity,
                        const uint8_t refine,
                        const uint8_t color,
@@ -114,13 +115,14 @@ int Inventory::addItem(const int id,
                        const bool equipped)
 {
     const int slot = getFreeSlot();
-    setItem(slot, id, quantity, refine, color,
+    setItem(slot, id, type, quantity, refine, color,
         identified, damaged, favorite, equipment, equipped);
     return slot;
 }
 
 void Inventory::setItem(const int index,
                         const int id,
+                        const int type,
                         const int quantity,
                         const uint8_t refine,
                         const unsigned char color,
@@ -139,7 +141,7 @@ void Inventory::setItem(const int index,
     Item *const item1 = mItems[index];
     if (!item1 && id > 0)
     {
-        Item *const item = new Item(id, quantity, refine, color,
+        Item *const item = new Item(id, type, quantity, refine, color,
             identified, damaged, favorite, equipment, equipped);
         item->setInvIndex(index);
         mItems[index] = item;

@@ -44,9 +44,12 @@ class ShopItem final : public Item
          * @param quantity number of available copies of the item
          * @param price price of the item
          */
-        ShopItem(const int inventoryIndex, const int id,
+        ShopItem(const int inventoryIndex,
+                 const int id,
+                 const int type,
                  const unsigned char color,
-                 const int quantity, const int price);
+                 const int quantity,
+                 const int price);
 
         /**
          * Constructor. Creates a new ShopItem. Inventory index will be set to
@@ -55,7 +58,10 @@ class ShopItem final : public Item
          * @param id the id of the item
          * @param price price of the item
          */
-        ShopItem(const int id, const unsigned char color, const int price);
+        ShopItem(const int id,
+                 const int type,
+                 const unsigned char color,
+                 const int price);
 
         A_DELETE_COPY(ShopItem)
 

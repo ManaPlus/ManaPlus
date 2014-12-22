@@ -90,8 +90,11 @@ class SellDialog notfinal : public Window,
          */
         void setVisible(bool visible) override final;
 
-        void addItem(const int id, const unsigned char color,
-                     const int amount, const int price);
+        void addItem(const int id,
+                     const int type,
+                     const unsigned char color,
+                     const int amount,
+                     const int price);
 
         /**
          * Returns true if any instances exist.

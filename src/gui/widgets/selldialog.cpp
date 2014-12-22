@@ -182,16 +182,27 @@ void SellDialog::addItem(const Item *const item, const int price)
     if (!item)
         return;
 
-    mShopItems->addItem2(item->getInvIndex(), item->getId(),
-        item->getColor(), item->getQuantity(), price);
+    mShopItems->addItem2(item->getInvIndex(),
+        item->getId(),
+        item->getType(),
+        item->getColor(),
+        item->getQuantity(),
+        price);
 
     mShopItemList->adjustSize();
 }
 
-void SellDialog::addItem(const int id, const unsigned char color,
-                         const int amount, const int price)
+void SellDialog::addItem(const int id,
+                         const int type,
+                         const unsigned char color,
+                         const int amount,
+                         const int price)
 {
-    mShopItems->addItem(id, color, amount, price);
+    mShopItems->addItem(id,
+        type,
+        color,
+        amount,
+        price);
     mShopItemList->adjustSize();
 }
 

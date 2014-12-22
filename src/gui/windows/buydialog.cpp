@@ -335,10 +335,13 @@ void BuyDialog::reset()
     setMoney(0);
 }
 
-void BuyDialog::addItem(const int id, const unsigned char color,
-                        const int amount, const int price)
+void BuyDialog::addItem(const int id,
+                        const int type,
+                        const unsigned char color,
+                        const int amount,
+                        const int price)
 {
-    mShopItems->addItem(id, color, amount, price);
+    mShopItems->addItem(id, type, color, amount, price);
     mShopItemList->adjustSize();
 }
 

@@ -43,6 +43,7 @@ class Item notfinal
          * Constructor.
          */
         Item(const int id,
+             const int type,
              const int quantity,
              const uint8_t refine,
              const uint8_t color,
@@ -200,6 +201,12 @@ class Item notfinal
         const int *getCards() const
         { return mCards; }
 
+        void setType(const int type)
+        { mType = type; }
+
+        int getType() const A_WARN_UNUSED
+        { return mType; }
+
         int mId;              /**< Item type id. */
         unsigned char mColor;
         int mQuantity;        /**< Number of items. */
@@ -211,6 +218,7 @@ class Item notfinal
         int mCards[maxCards];
         uint8_t mRefine;      /**< Item refine level. */
         int mInvIndex;        /**< Inventory index. */
+        int mType;            /**< Item type. */
         bool mEquipment;      /**< Item is equipment. */
         bool mEquipped;       /**< Item is equipped. */
         bool mInEquipment;    /**< Item is in equipment */

@@ -42,6 +42,7 @@ class InventoryItem final
     public:
         int slot;
         int id;
+        int type;
         int cards[4];
         int quantity;
         uint8_t refine;
@@ -53,6 +54,7 @@ class InventoryItem final
 
         InventoryItem(const int slot0,
                       const int id0,
+                      const int type0,
                       const int *const cards0,
                       const int quantity0,
                       const uint8_t refine0,
@@ -63,6 +65,7 @@ class InventoryItem final
                       const bool equip0) :
             slot(slot0),
             id(id0),
+            type(type0),
             quantity(quantity0),
             refine(refine0),
             color(color0),

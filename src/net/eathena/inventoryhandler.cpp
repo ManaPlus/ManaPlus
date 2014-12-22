@@ -328,7 +328,7 @@ void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
     {
         const int index = msg.readInt16("index") - INVENTORY_OFFSET;
         const int itemId = msg.readInt16("item id");
-        msg.readUInt8("item type");
+        const int itemType = msg.readUInt8("item type");
         msg.readInt32("location");
         const int equipType = msg.readInt32("wear state");
         const uint8_t refine = static_cast<uint8_t>(msg.readInt8("refine"));
@@ -342,7 +342,7 @@ void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
         flags.byte = msg.readUInt8("flags");
         if (inventory)
         {
-            inventory->setItem(index, itemId, 1, refine,
+            inventory->setItem(index, itemId, itemType, 1, refine,
                 1, flags.bits.isIdentified, flags.bits.isDamaged,
                 flags.bits.isFavorite,
                 true, false);
@@ -377,7 +377,7 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
     for (int f = 0; f < 4; f++)
         cards[f] = msg.readInt16("card");
     const int equipType = msg.readInt32("location");
-    msg.readUInt8("item type");
+    const int itemType = msg.readUInt8("item type");
     const unsigned char err = msg.readUInt8("result");
     msg.readInt32("hire expire date");
     msg.readInt16("bind on equip");
@@ -440,7 +440,7 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
             if (item && item->getId() == itemId)
                 amount += item->getQuantity();
 
-            inventory->setItem(index, itemId, amount, refine,
+            inventory->setItem(index, itemId, itemType, amount, refine,
                 1, identified != 0, damaged != 0, false,
                 equipType != 0, false);
             inventory->setCards(index, cards, 4);
@@ -473,7 +473,7 @@ void InventoryHandler::processPlayerInventory(Net::MessageIn &msg)
     {
         const int index = msg.readInt16("item index") - INVENTORY_OFFSET;
         const int itemId = msg.readInt16("item id");
-        msg.readUInt8("item type");
+        const int itemType = msg.readUInt8("item type");
         const int amount = msg.readInt16("count");
         msg.readInt32("wear state / equip");
         int cards[4];
@@ -485,7 +485,7 @@ void InventoryHandler::processPlayerInventory(Net::MessageIn &msg)
 
         if (inventory)
         {
-            inventory->setItem(index, itemId, amount,
+            inventory->setItem(index, itemId, itemType, amount,
                 0, 1, flags.bits.isIdentified,
                 flags.bits.isDamaged, flags.bits.isFavorite,
                 false, false);
@@ -509,7 +509,7 @@ void InventoryHandler::processPlayerStorage(Net::MessageIn &msg)
     {
         const int index = msg.readInt16("item index") - STORAGE_OFFSET;
         const int itemId = msg.readInt16("item id");
-        msg.readUInt8("item type");
+        const int itemType = msg.readUInt8("item type");
         const int amount = msg.readInt16("count");
         msg.readInt32("wear state / equip");
         int cards[4];
@@ -519,7 +519,7 @@ void InventoryHandler::processPlayerStorage(Net::MessageIn &msg)
         ItemFlags flags;
         flags.byte = msg.readUInt8("flags");
 
-        mInventoryItems.push_back(Ea::InventoryItem(index, itemId,
+        mInventoryItems.push_back(Ea::InventoryItem(index, itemId, itemType,
             cards, amount, 0, 1, flags.bits.isIdentified,
             flags.bits.isDamaged, flags.bits.isFavorite, false));
     }
@@ -603,7 +603,7 @@ void InventoryHandler::processPlayerStorageEquip(Net::MessageIn &msg)
     {
         const int index = msg.readInt16("index") - STORAGE_OFFSET;
         const int itemId = msg.readInt16("item id");
-        msg.readUInt8("item type");
+        const int itemType = msg.readUInt8("item type");
         const int amount = 1;
         msg.readInt32("location");
         msg.readInt32("wear state");
@@ -617,7 +617,7 @@ void InventoryHandler::processPlayerStorageEquip(Net::MessageIn &msg)
         ItemFlags flags;
         flags.byte = msg.readUInt8("flags");
 
-        mInventoryItems.push_back(Ea::InventoryItem(index, itemId,
+        mInventoryItems.push_back(Ea::InventoryItem(index, itemId, itemType,
             cards, amount, refine, 1, flags.bits.isIdentified,
             flags.bits.isDamaged, flags.bits.isFavorite, false));
     }
@@ -631,7 +631,7 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
     const int index = msg.readInt16("index") - STORAGE_OFFSET;
     const int amount = msg.readInt32("amount");
     const int itemId = msg.readInt16("item id");
-    msg.readUInt8("type");
+    const int itemType = msg.readUInt8("type");
     const unsigned char identified = msg.readUInt8("identify");
     msg.readUInt8("attribute");
     const uint8_t refine = msg.readUInt8("refine");
@@ -648,7 +648,7 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
     {
         if (mStorage)
         {
-            mStorage->setItem(index, itemId, amount,
+            mStorage->setItem(index, itemId, itemType, amount,
                 refine, 1, identified != 0, false, false, false, false);
             mStorage->setCards(index, cards, 4);
         }

@@ -50,23 +50,32 @@ std::string ShopItems::getElementAt(int i)
     return mShopItems.at(i)->getDisplayName();
 }
 
-void ShopItems::addItem(const int id, const unsigned char color,
-                        const int amount, const int price)
+void ShopItems::addItem(const int id,
+                        const int type,
+                        const unsigned char color,
+                        const int amount,
+                        const int price)
 {
-    mShopItems.push_back(new ShopItem(-1, id, color, amount, price));
+    mShopItems.push_back(new ShopItem(-1, id, type, color, amount, price));
 }
 
-void ShopItems::addItemNoDup(const int id, const unsigned char color,
-                             const int amount, const int price)
+void ShopItems::addItemNoDup(const int id,
+                             const int type,
+                             const unsigned char color,
+                             const int amount,
+                             const int price)
 {
     const ShopItem *const item = findItem(id, color);
     if (!item)
-        mShopItems.push_back(new ShopItem(-1, id, color, amount, price));
+        mShopItems.push_back(new ShopItem(-1, id, type, color, amount, price));
 }
 
-void ShopItems::addItem2(const int inventoryIndex, const int id,
+void ShopItems::addItem2(const int inventoryIndex,
+                         const int id,
+                         const int type,
                          const unsigned char color,
-                         const int quantity, const int price)
+                         const int quantity,
+                         const int price)
 {
     ShopItem *item = nullptr;
     if (mMergeDuplicates)
@@ -78,7 +87,7 @@ void ShopItems::addItem2(const int inventoryIndex, const int id,
     }
     else
     {
-        item = new ShopItem(inventoryIndex, id, color, quantity, price);
+        item = new ShopItem(inventoryIndex, id, type, color, quantity, price);
         mShopItems.push_back(item);
     }
 }

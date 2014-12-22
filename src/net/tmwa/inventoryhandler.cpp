@@ -292,12 +292,12 @@ void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
         {
             if (serverFeatures->haveItemColors())
             {
-                inventory->setItem(index, itemId, 1, refine,
+                inventory->setItem(index, itemId, itemType, 1, refine,
                     identified, true, false, false, true, false);
             }
             else
             {
-                inventory->setItem(index, itemId, 1, refine,
+                inventory->setItem(index, itemId, itemType, 1, refine,
                     1, identified != 0, false, false, true, false);
             }
             inventory->setCards(index, cards, 4);
@@ -331,7 +331,7 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
     for (int f = 0; f < 4; f++)
         cards[f] = msg.readInt16("card");
     const int equipType = msg.readInt16("equip type");
-    msg.readUInt8("item type");
+    const int type = msg.readUInt8("item type");
 
     const ItemInfo &itemInfo = ItemDB::get(itemId);
     const unsigned char err = msg.readUInt8("status");
@@ -394,12 +394,12 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
 
             if (serverFeatures->haveItemColors())
             {
-                inventory->setItem(index, itemId, amount, refine,
+                inventory->setItem(index, itemId, type, amount, refine,
                     identified, true, false, false, equipType != 0, false);
             }
             else
             {
-                inventory->setItem(index, itemId, amount, refine,
+                inventory->setItem(index, itemId, type, amount, refine,
                     1, identified != 0, false, false, equipType != 0, false);
             }
             inventory->setCards(index, cards, 4);
@@ -455,12 +455,12 @@ void InventoryHandler::processPlayerInventory(Net::MessageIn &msg)
         {
             if (serverFeatures->haveItemColors())
             {
-                inventory->setItem(index, itemId, amount,
+                inventory->setItem(index, itemId, itemType, amount,
                     0, identified, true, false, false, isEquipment, false);
             }
             else
             {
-                inventory->setItem(index, itemId, amount,
+                inventory->setItem(index, itemId, itemType, amount,
                     0, 1, identified != 0, false, false, isEquipment, false);
             }
             inventory->setCards(index, cards, 4);
@@ -500,12 +500,14 @@ void InventoryHandler::processPlayerStorage(Net::MessageIn &msg)
         if (serverFeatures->haveItemColors())
         {
             mInventoryItems.push_back(Ea::InventoryItem(index, itemId,
-                cards, amount, 0, identified, true, false, false, false));
+                itemType, cards, amount, 0, identified,
+                true, false, false, false));
         }
         else
         {
             mInventoryItems.push_back(Ea::InventoryItem(index, itemId,
-                cards, amount, 0, 1, identified != 0, false, false, false));
+                itemType, cards, amount, 0, 1,
+                identified != 0, false, false, false));
         }
     }
     BLOCK_END("InventoryHandler::processPlayerInventory")
@@ -573,13 +575,13 @@ void InventoryHandler::processPlayerStorageEquip(Net::MessageIn &msg)
         if (serverFeatures->haveItemColors())
         {
             mInventoryItems.push_back(Ea::InventoryItem(index, itemId,
-                cards, amount, refine, identified, true,
+                itemType, cards, amount, refine, identified, true,
                 false, false, false));
         }
         else
         {
             mInventoryItems.push_back(Ea::InventoryItem(index, itemId,
-                cards, amount, refine, 1, identified != 0,
+                itemType, cards, amount, refine, 1, identified != 0,
                 false, false, false));
         }
     }
@@ -611,12 +613,12 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
         {
             if (serverFeatures->haveItemColors())
             {
-                mStorage->setItem(index, itemId, amount,
+                mStorage->setItem(index, itemId, 0, amount,
                     refine, identified, true, false, false, false, false);
             }
             else
             {
-                mStorage->setItem(index, itemId, amount,
+                mStorage->setItem(index, itemId, 0, amount,
                     refine, 1, identified != 0, false, false, false, false);
             }
             mStorage->setCards(index, cards, 4);

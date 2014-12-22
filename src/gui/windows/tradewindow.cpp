@@ -191,6 +191,7 @@ void TradeWindow::setMoney(const int amount)
 }
 
 void TradeWindow::addItem(const int id,
+                          const int type,
                           const bool own,
                           const int quantity,
                           const uint8_t refine,
@@ -200,11 +201,12 @@ void TradeWindow::addItem(const int id,
                           const bool favorite) const
 {
     Inventory *inv = own ? mMyInventory.get() : mPartnerInventory.get();
-    inv->addItem(id, quantity, refine, color,
+    inv->addItem(id, type, quantity, refine, color,
         identified, damaged, favorite, false, false);
 }
 
 void TradeWindow::addItem2(const int id,
+                           const int type,
                            const int *const cards,
                            const int sz,
                            const bool own,
@@ -217,7 +219,7 @@ void TradeWindow::addItem2(const int id,
                            const bool equipment) const
 {
     Inventory *inv = own ? mMyInventory.get() : mPartnerInventory.get();
-    const int slot = inv->addItem(id, quantity, refine, color,
+    const int slot = inv->addItem(id, type, quantity, refine, color,
         identified, damaged, favorite, equipment, false);
     if (slot >= 0)
         inv->setCards(slot, cards, sz);

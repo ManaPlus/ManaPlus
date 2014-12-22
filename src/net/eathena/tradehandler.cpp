@@ -184,7 +184,7 @@ void TradeHandler::processTradeResponse(Net::MessageIn &msg)
 void TradeHandler::processTradeItemAdd(Net::MessageIn &msg)
 {
     const int type = msg.readInt16("type");
-    msg.readUInt8("item type");
+    const int itemType = msg.readUInt8("item type");
     const int amount = msg.readInt32("amount");
     const uint8_t identify = msg.readUInt8("identify");
     msg.readUInt8("attribute");
@@ -201,10 +201,11 @@ void TradeHandler::processTradeItemAdd(Net::MessageIn &msg)
         }
         else
         {
-            tradeWindow->addItem2(type,
+            tradeWindow->addItem2(type, itemType,
                 cards, 4,
                 false, amount,
-                refine, 1, identify != 0, false, false, false);
+                refine, 1, identify != 0,
+                false, false, false);
         }
     }
 }
@@ -224,7 +225,7 @@ void TradeHandler::processTradeItemAddResponse(Net::MessageIn &msg)
                 return;
             if (tradeWindow)
             {
-                tradeWindow->addItem2(item->getId(),
+                tradeWindow->addItem2(item->getId(), item->getType(),
                     item->getCards(), 4,
                     true, mQuantity, item->getRefine(), item->getColor(),
                     item->getIdentified(), item->getDamaged(),

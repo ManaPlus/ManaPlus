@@ -88,6 +88,7 @@ class Inventory final
          * Adds a new item in a free slot.
          */
         int addItem(const int id,
+                    const int type,
                     const int quantity,
                     const uint8_t refine,
                     const unsigned char color,
@@ -102,6 +103,7 @@ class Inventory final
          */
         void setItem(const int index,
                      const int id,
+                     const int type,
                      const int quantity,
                      const uint8_t refine,
                      const unsigned char color,

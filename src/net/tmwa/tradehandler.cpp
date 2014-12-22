@@ -189,14 +189,14 @@ void TradeHandler::processTradeItemAdd(Net::MessageIn &msg)
         {
             if (serverFeatures->haveItemColors())
             {
-                tradeWindow->addItem2(type,
+                tradeWindow->addItem2(type, 0,
                     cards, 4,
                     false, amount,
                     refine, identify, true, false, false, false);
             }
             else
             {
-                tradeWindow->addItem2(type,
+                tradeWindow->addItem2(type, 0,
                     cards, 4,
                     false, amount,
                     refine, 1, identify != 0, false, false, false);
@@ -228,7 +228,7 @@ void TradeHandler::processTradeItemAddResponse(Net::MessageIn &msg)
             // Successfully added item
             if (tradeWindow)
             {
-                tradeWindow->addItem2(item->getId(),
+                tradeWindow->addItem2(item->getId(), item->getType(),
                     item->getCards(), 4,
                     true, quantity, item->getRefine(), item->getColor(),
                     item->getIdentified(), item->getDamaged(),

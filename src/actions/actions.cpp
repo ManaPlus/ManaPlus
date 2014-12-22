@@ -1359,14 +1359,14 @@ impHandler0(createItems)
 
         if (!colors)
         {
-            dialog->addItem(id, 1, 100, 0);
+            dialog->addItem(id, 0, 1, 100, 0);
         }
         else
         {
             for (unsigned char f = 0; f < colors; f ++)
             {
                 if (!info->getColor(f).empty())
-                    dialog->addItem(id, f, 100, 0);
+                    dialog->addItem(id, 0, f, 100, 0);
             }
         }
     }

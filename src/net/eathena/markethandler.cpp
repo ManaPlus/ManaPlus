@@ -82,12 +82,12 @@ void MarketHandler::processMarketOpen(Net::MessageIn &msg)
     for (int f = 0; f < len; f ++)
     {
         const int itemId = msg.readInt16("item id");
-        msg.readUInt8("type");
+        const int type = msg.readUInt8("type");
         const int value = msg.readInt32("price");
         const int amount = msg.readInt32("amount");
         msg.readInt16("view");
         const unsigned char color = 1;
-        mBuyDialog->addItem(itemId, color, amount, value);
+        mBuyDialog->addItem(itemId, type, color, amount, value);
     }
 }
 

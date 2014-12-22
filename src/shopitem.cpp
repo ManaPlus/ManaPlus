@@ -34,10 +34,11 @@
 
 ShopItem::ShopItem(const int inventoryIndex,
                    const int id,
+                   const int type,
                    const unsigned char color,
                    const int quantity,
                    const int price) :
-    Item(id, 0, 0, color, true, false, false, false, false),
+    Item(id, type, 0, 0, color, true, false, false, false, false),
     mDisplayName(),
     mDuplicates(),
     mPrice(price),
@@ -48,8 +49,11 @@ ShopItem::ShopItem(const int inventoryIndex,
     addDuplicate(inventoryIndex, quantity);
 }
 
-ShopItem::ShopItem(const int id, const unsigned char color, const int price) :
-    Item(id, 0, 0, color, true, false, false, false, false),
+ShopItem::ShopItem(const int id,
+                   const int type,
+                   const unsigned char color,
+                   const int price) :
+    Item(id, type, 0, 0, color, true, false, false, false, false),
     mDisplayName(),
     mDuplicates(),
     mPrice(price),

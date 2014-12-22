@@ -552,7 +552,8 @@ void ItemContainer::mouseReleased(MouseEvent &event)
             const Item *const item = inventory->getItem(dragDrop.getTag());
             if (item && !PlayerInfo::isItemProtected(item->getId()))
             {
-                mInventory->addItem(item->getId(), 1, 1, item->getColor(),
+                mInventory->addItem(item->getId(), item->getType(),
+                    1, 1, item->getColor(),
                     item->getIdentified(), item->getDamaged(),
                     item->getFavorite(),
                     false, false);
