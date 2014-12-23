@@ -179,7 +179,7 @@ void MercenaryHandler::handleMercenaryMessage(const int cmd)
 
 void MercenaryHandler::fire()
 {
-    createOutPacket(SMSG_MERCENARY_ACTION);
+    createOutPacket(CMSG_MERCENARY_ACTION);
     outMsg.writeInt8(2, "action");  // delete
 }
 
