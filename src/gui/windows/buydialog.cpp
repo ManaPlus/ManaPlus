@@ -434,15 +434,14 @@ void BuyDialog::action(const ActionEvent &event)
     }
     else if (eventId == "buy" && mAmountItems > 0 && mAmountItems <= mMaxItems)
     {
+        ShopItem *const item = mShopItems->at(selectedItem);
         if (mNpcId == -2)
         {
-            const ShopItem *const item = mShopItems->at(selectedItem);
             adminHandler->createItems(item->getId(),
                 mAmountItems, item->getColor());
         }
         else if (mNpcId != -1)
         {
-            const ShopItem *const item = mShopItems->at(selectedItem);
             if (mNpcId != -3)
             {
                 npcHandler->buyItem(mNpcId,
@@ -456,6 +455,8 @@ void BuyDialog::action(const ActionEvent &event)
                     item->getType(),
                     item->getColor(),
                     mAmountItems);
+                item->increaseQuantity(-mAmountItems);
+                item->update();
             }
 
             // Update money and adjust the max number of items
@@ -471,7 +472,6 @@ void BuyDialog::action(const ActionEvent &event)
         }
         else if (tradeWindow)
         {
-            const ShopItem *const item = mShopItems->at(selectedItem);
             if (item)
             {
                 buySellHandler->sendBuyRequest(mNick,
