@@ -425,7 +425,7 @@ std::string InputManager::getKeyValueString(const int index) const
             if (keyStr.empty())
                 keyStr = str;
             else
-                keyStr.append(" ").append(str);
+                keyStr.append(", ").append(str);
         }
     }
 
