@@ -70,6 +70,8 @@ class InputManager final
 
         std::string getKeyValueByName(const std::string &keyName);
 
+        std::string getKeyValueByNameLong(const std::string &keyName);
+
         void addActionKey(const int action, const int type, const int val);
 
         void setNewKey(const SDL_Event &event, const int type);

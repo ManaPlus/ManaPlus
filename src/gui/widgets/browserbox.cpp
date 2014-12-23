@@ -223,7 +223,7 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
                 if (idx2 == std::string::npos)
                     break;
 
-                const std::string str = inputManager.getKeyValueByName(
+                const std::string str = inputManager.getKeyValueByNameLong(
                     tmp.substr(idx1 + 3, idx2 - idx1 - 3));
                 tmp.replace(idx1, idx2 - idx1 + 1, str);
 

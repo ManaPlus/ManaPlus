@@ -447,6 +447,16 @@ std::string InputManager::getKeyValueByName(const std::string &keyName)
     return getKeyValueString((*it).second);
 }
 
+std::string InputManager::getKeyValueByNameLong(const std::string &keyName)
+{
+    const std::map<std::string, int>::const_iterator
+        it = mNameMap.find(keyName);
+
+    if (it == mNameMap.end())
+        return std::string();
+    return getKeyStringLong((*it).second);
+}
+
 void InputManager::addActionKey(const int action, const int type,
                                 const int val)
 {
