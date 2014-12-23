@@ -26,7 +26,7 @@
 #include "localconsts.h"
 
 const unsigned int SHORTCUT_ITEMS = 20;
-const unsigned int SHORTCUT_TABS = 3;
+const unsigned int SHORTCUT_TABS = 4;
 
 class Item;
 
