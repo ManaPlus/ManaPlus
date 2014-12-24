@@ -36,6 +36,7 @@ CashShopHandler::CashShopHandler() :
     static const uint16_t _messages[] =
     {
         SMSG_NPC_CASH_SHOP_OPEN,
+        SMSG_NPC_CASH_BUY_ACK,
         0
     };
     handledMessages = _messages;
@@ -48,6 +49,10 @@ void CashShopHandler::handleMessage(Net::MessageIn &msg)
     {
         case SMSG_NPC_CASH_SHOP_OPEN:
             processCashShopOpen(msg);
+            break;
+
+        case SMSG_NPC_CASH_BUY_ACK:
+            processCashShopBuyAck(msg);
             break;
 
         default:
@@ -67,6 +72,13 @@ void CashShopHandler::processCashShopOpen(Net::MessageIn &msg)
         msg.readUInt8("item type");
         msg.readInt16("item id");
     }
+}
+
+void CashShopHandler::processCashShopBuyAck(Net::MessageIn &msg)
+{
+    msg.readInt32("cash points");
+    msg.readInt32("kafra points");
+    msg.readInt16("error");
 }
 
 void CashShopHandler::buy(const int points,

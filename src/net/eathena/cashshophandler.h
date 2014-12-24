@@ -44,6 +44,8 @@ class CashShopHandler final : public MessageHandler,
 
     protected:
         static void processCashShopOpen(Net::MessageIn &msg);
+
+        static void processCashShopBuyAck(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

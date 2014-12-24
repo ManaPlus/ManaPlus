@@ -152,6 +152,7 @@
 #define SMSG_NPC_MARKET_OPEN         0x09d5
 #define SMSG_NPC_MARKET_BUY_ACK      0x09d7
 #define SMSG_NPC_CASH_SHOP_OPEN      0x0287
+#define SMSG_NPC_CASH_BUY_ACK        0x0289
 
 #define SMSG_PLAYER_CHAT             0x008e /**< Player talks */
 #define SMSG_WHISPER                 0x0097 /**< Whisper Recieved */
