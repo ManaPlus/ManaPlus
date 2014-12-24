@@ -20,6 +20,8 @@
 
 #include "net/eathena/cashshophandler.h"
 
+#include "net/eathena/protocol.h"
+
 #include "debug.h"
 
 extern Net::CashShopHandler *cashShopHandler;
@@ -32,6 +34,7 @@ CashShopHandler::CashShopHandler() :
 {
     static const uint16_t _messages[] =
     {
+        SMSG_NPC_CASH_SHOP_OPEN,
         0
     };
     handledMessages = _messages;
@@ -42,8 +45,26 @@ void CashShopHandler::handleMessage(Net::MessageIn &msg)
 {
     switch (msg.getId())
     {
+        case SMSG_NPC_CASH_SHOP_OPEN:
+            processCashShopOpen(msg);
+            break;
+
         default:
             break;
+    }
+}
+
+void CashShopHandler::processCashShopOpen(Net::MessageIn &msg)
+{
+    const int count = (msg.readInt16("len") - 12) / 11;
+    msg.readInt32("cash points");
+    msg.readInt32("kafra points");
+    for (int f = 0; f < count; f ++)
+    {
+        msg.readInt32("price");
+        msg.readInt32("discount price");
+        msg.readUInt8("item type");
+        msg.readInt16("item id");
     }
 }
 

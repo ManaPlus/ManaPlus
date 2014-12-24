@@ -36,6 +36,9 @@ class CashShopHandler final : public MessageHandler,
         A_DELETE_COPY(CashShopHandler)
 
         void handleMessage(Net::MessageIn &msg) override final;
+
+    protected:
+        static void processCashShopOpen(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
