@@ -34,10 +34,10 @@ class CashShopHandler notfinal
         virtual ~CashShopHandler()
         { }
 
-        virtual void buy(const int points,
-                         const int itemId,
-                         const unsigned char color,
-                         const int amount) const = 0;
+        virtual void buyItem(const int points,
+                             const int itemId,
+                             const unsigned char color,
+                             const int amount) const = 0;
 
 };
 

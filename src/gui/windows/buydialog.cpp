@@ -45,6 +45,7 @@
 
 #include "net/adminhandler.h"
 #include "net/buysellhandler.h"
+#include "net/cashshophandler.h"
 #include "net/markethandler.h"
 #include "net/npchandler.h"
 
@@ -442,14 +443,7 @@ void BuyDialog::action(const ActionEvent &event)
         }
         else if (mNpcId != Nick)
         {
-            if (mNpcId != Market)
-            {
-                npcHandler->buyItem(mNpcId,
-                    item->getId(),
-                    item->getColor(),
-                    mAmountItems);
-            }
-            else
+            if (mNpcId == Market)
             {
                 marketHandler->buyItem(item->getId(),
                     item->getType(),
@@ -457,6 +451,20 @@ void BuyDialog::action(const ActionEvent &event)
                     mAmountItems);
                 item->increaseQuantity(-mAmountItems);
                 item->update();
+            }
+            else if (mNpcId == Cash)
+            {
+                cashShopHandler->buyItem(item->getPrice(),
+                    item->getId(),
+                    item->getColor(),
+                    mAmountItems);
+            }
+            else
+            {
+                npcHandler->buyItem(mNpcId,
+                    item->getId(),
+                    item->getColor(),
+                    mAmountItems);
             }
 
             // Update money and adjust the max number of items

@@ -39,10 +39,10 @@ class CashShopHandler final : public MessageHandler,
 
         void handleMessage(Net::MessageIn &msg) override final;
 
-        void buy(const int points,
-                 const int itemId,
-                 const unsigned char color,
-                 const int amount) const override final;
+        void buyItem(const int points,
+                     const int itemId,
+                     const unsigned char color,
+                     const int amount) const override final;
 
     protected:
         static void processCashShopOpen(Net::MessageIn &msg);
