@@ -80,7 +80,8 @@ class BuyDialog final : public Window,
         {
             Nick   = -1,
             Items  = -2,
-            Market = -3
+            Market = -3,
+            Cash   = -4
         };
 
         void init();

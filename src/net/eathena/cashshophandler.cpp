@@ -20,6 +20,11 @@
 
 #include "net/eathena/cashshophandler.h"
 
+#include "being/attributes.h"
+#include "being/playerinfo.h"
+
+#include "gui/windows/buydialog.h"
+
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
@@ -29,6 +34,8 @@ extern Net::CashShopHandler *cashShopHandler;
 
 namespace EAthena
 {
+
+BuyDialog *CashShopHandler::mBuyDialog = nullptr;
 
 CashShopHandler::CashShopHandler() :
     MessageHandler()
@@ -41,6 +48,7 @@ CashShopHandler::CashShopHandler() :
     };
     handledMessages = _messages;
     cashShopHandler = this;
+    mBuyDialog = nullptr;
 }
 
 void CashShopHandler::handleMessage(Net::MessageIn &msg)
@@ -63,15 +71,22 @@ void CashShopHandler::handleMessage(Net::MessageIn &msg)
 void CashShopHandler::processCashShopOpen(Net::MessageIn &msg)
 {
     const int count = (msg.readInt16("len") - 12) / 11;
+
+    mBuyDialog = new BuyDialog(BuyDialog::Cash);
+    mBuyDialog->setMoney(PlayerInfo::getAttribute(Attributes::MONEY));
+
     msg.readInt32("cash points");
     msg.readInt32("kafra points");
     for (int f = 0; f < count; f ++)
     {
         msg.readInt32("price");
-        msg.readInt32("discount price");
-        msg.readUInt8("item type");
-        msg.readInt16("item id");
+        const int value = msg.readInt32("discount price");
+        const int type = msg.readUInt8("item type");
+        const int itemId = msg.readInt16("item id");
+        const int color = 1;
+        mBuyDialog->addItem(itemId, type, color, 0, value);
     }
+    mBuyDialog->sort();
 }
 
 void CashShopHandler::processCashShopBuyAck(Net::MessageIn &msg)

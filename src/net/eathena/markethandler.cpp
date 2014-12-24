@@ -89,6 +89,7 @@ void MarketHandler::processMarketOpen(Net::MessageIn &msg)
         const unsigned char color = 1;
         mBuyDialog->addItem(itemId, type, color, amount, value);
     }
+    mBuyDialog->sort();
 }
 
 void MarketHandler::processMarketBuyAck(Net::MessageIn &msg)
