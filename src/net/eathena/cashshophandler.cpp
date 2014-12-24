@@ -20,6 +20,7 @@
 
 #include "net/eathena/cashshophandler.h"
 
+#include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
 #include "debug.h"
@@ -66,6 +67,19 @@ void CashShopHandler::processCashShopOpen(Net::MessageIn &msg)
         msg.readUInt8("item type");
         msg.readInt16("item id");
     }
+}
+
+void CashShopHandler::buy(const int points,
+                          const int itemId,
+                          const unsigned char color A_UNUSED,
+                          const int amount) const
+{
+    createOutPacket(CMSG_NPC_CASH_SHOP_BUY);
+    outMsg.writeInt16(10 + 4, "len");
+    outMsg.writeInt32(points, "points");
+    outMsg.writeInt16(1, "count");
+    outMsg.writeInt16(amount, "amount");
+    outMsg.writeInt16(itemId, "item id");
 }
 
 }  // namespace EAthena

@@ -37,6 +37,11 @@ class CashShopHandler final : public MessageHandler,
         A_DELETE_COPY(CashShopHandler)
 
         void handleMessage(Net::MessageIn &msg) override final;
+
+        void buy(const int points,
+                 const int itemId,
+                 const unsigned char color,
+                 const int amount) const override final;
 };
 
 }  // namespace TmwAthena

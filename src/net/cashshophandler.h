@@ -33,6 +33,12 @@ class CashShopHandler notfinal
     public:
         virtual ~CashShopHandler()
         { }
+
+        virtual void buy(const int points,
+                         const int itemId,
+                         const unsigned char color,
+                         const int amount) const = 0;
+
 };
 
 }  // namespace Net
