@@ -76,6 +76,13 @@ class BuyDialog final : public Window,
          */
         ~BuyDialog();
 
+        enum
+        {
+            Nick   = -1,
+            Items  = -2,
+            Market = -3
+        };
+
         void init();
 
         /**

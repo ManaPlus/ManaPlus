@@ -76,7 +76,7 @@ void MarketHandler::processMarketOpen(Net::MessageIn &msg)
 {
     const int len = (msg.readInt16("len") - 4) / 13;
 
-    mBuyDialog = new BuyDialog(-3);
+    mBuyDialog = new BuyDialog(BuyDialog::Market);
     mBuyDialog->setMoney(PlayerInfo::getAttribute(Attributes::MONEY));
 
     for (int f = 0; f < len; f ++)

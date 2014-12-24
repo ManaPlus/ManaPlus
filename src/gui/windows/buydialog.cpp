@@ -170,7 +170,7 @@ BuyDialog::BuyDialog() :
     SelectionListener(),
     mSortModel(nullptr),
     mSortDropDown(nullptr),
-    mNpcId(-2),
+    mNpcId(Items),
     mMoney(0),
     mAmountItems(0),
     mMaxItems(0),
@@ -202,7 +202,7 @@ BuyDialog::BuyDialog(std::string nick) :
     SelectionListener(),
     mSortModel(new SortListModelBuy),
     mSortDropDown(new DropDown(this, mSortModel, false, false, this, "sort")),
-    mNpcId(-1),
+    mNpcId(Nick),
     mMoney(0),
     mAmountItems(0),
     mMaxItems(0),
@@ -257,7 +257,7 @@ void BuyDialog::init()
     // You may change this symbol if your language uses another.
     mDecreaseButton = new Button(this, _("-"), "dec", this);
     // TRANSLATORS: buy dialog button
-    mBuyButton = new Button(this, mNpcId == -2
+    mBuyButton = new Button(this, mNpcId == Items
         ? _("Create") :_("Buy"), "buy", this);
     // TRANSLATORS: buy dialog button
     mQuitButton = new Button(this, _("Quit"), "quit", this);
@@ -435,14 +435,14 @@ void BuyDialog::action(const ActionEvent &event)
     else if (eventId == "buy" && mAmountItems > 0 && mAmountItems <= mMaxItems)
     {
         ShopItem *const item = mShopItems->at(selectedItem);
-        if (mNpcId == -2)
+        if (mNpcId == Items)
         {
             adminHandler->createItems(item->getId(),
                 mAmountItems, item->getColor());
         }
-        else if (mNpcId != -1)
+        else if (mNpcId != Nick)
         {
-            if (mNpcId != -3)
+            if (mNpcId != Market)
             {
                 npcHandler->buyItem(mNpcId,
                     item->getId(),
@@ -508,7 +508,7 @@ void BuyDialog::updateButtonsAndLabels()
             const int itemPrice = item->getPrice();
 
             // Calculate how many the player can afford
-            if (mNpcId == -2)
+            if (mNpcId == Items)
                 mMaxItems = 100;
             else if (itemPrice)
                 mMaxItems = mMoney / itemPrice;
