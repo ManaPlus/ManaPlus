@@ -304,6 +304,8 @@ int main(int argc, char *argv[])
         _exit(0);
     }
 
+    std::ios::sync_with_stdio(false);
+
 #ifdef ANDROID
     mkdir_r(getSdStoragePath().c_str());
 #endif
