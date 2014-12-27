@@ -108,10 +108,8 @@ void PetHandler::handleMessage(Net::MessageIn &msg)
     BLOCK_END("PetHandler::handleMessage")
 }
 
-void PetHandler::move(const Being *const being A_UNUSED,
-                      const int petId A_UNUSED,
-                      const int x1 A_UNUSED, const int y1 A_UNUSED,
-                      const int x2 A_UNUSED, const int y2 A_UNUSED) const
+void PetHandler::move(const int petId A_UNUSED,
+                      const int x A_UNUSED, const int y A_UNUSED) const
 {
 }
 

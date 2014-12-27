@@ -62,6 +62,17 @@
 namespace Actions
 {
 
+static const Being *getPet()
+{
+    if (!localPlayer)
+        return nullptr;
+
+    const std::vector<Being*> &pets = localPlayer->getPets();
+    if (pets.empty())
+        return nullptr;
+    return *pets.begin();
+}
+
 impHandler(commandEmotePet)
 {
     // need use actual pet id
@@ -127,6 +138,42 @@ impHandler(catchPet)
         localPlayer->setTarget(target);
     if (target)
         petHandler->catchPet(target);
+    return true;
+}
+
+impHandler0(petMoveUp)
+{
+    const Being *const pet = getPet();
+    if (!pet)
+        return false;
+    petHandler->move(pet->getId(), pet->getTileX(), pet->getTileY() - 1);
+    return true;
+}
+
+impHandler0(petMoveDown)
+{
+    const Being *const pet = getPet();
+    if (!pet)
+        return false;
+    petHandler->move(pet->getId(), pet->getTileX(), pet->getTileY() + 1);
+    return true;
+}
+
+impHandler0(petMoveLeft)
+{
+    const Being *const pet = getPet();
+    if (!pet)
+        return false;
+    petHandler->move(pet->getId(), pet->getTileX() - 1, pet->getTileY());
+    return true;
+}
+
+impHandler0(petMoveRight)
+{
+    const Being *const pet = getPet();
+    if (!pet)
+        return false;
+    petHandler->move(pet->getId(), pet->getTileX() + 1, pet->getTileY());
     return true;
 }
 

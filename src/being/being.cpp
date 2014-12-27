@@ -1642,7 +1642,6 @@ void Being::petLogic()
         if (mX != dstX || mY != dstY)
         {
             setPath(mMap->findPath(mX, mY, dstX, dstY, blockWalkMask));
-            petHandler->move(mOwner, mId, mX, mY, dstX, dstY);
             return;
         }
     }

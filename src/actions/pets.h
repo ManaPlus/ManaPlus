@@ -32,6 +32,10 @@ namespace Actions
     decHandler(setPetName);
     decHandler(petEmote);
     decHandler(catchPet);
+    decHandler(petMoveUp);
+    decHandler(petMoveDown);
+    decHandler(petMoveLeft);
+    decHandler(petMoveRight);
 }  // namespace Actions
 
 #undef decHandler

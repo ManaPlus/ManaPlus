@@ -516,6 +516,10 @@ namespace InputAction
         LEAVE_PARTY,
         WARP,
         CLEAR_CHAT,
+        PET_MOVE_UP,
+        PET_MOVE_DOWN,
+        PET_MOVE_LEFT,
+        PET_MOVE_RIGHT,
         TOTAL
     };
 }  // namespace InputAction
