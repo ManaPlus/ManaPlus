@@ -77,7 +77,6 @@
 #include "net/ipc.h"
 #include "net/mercenaryhandler.h"
 #include "net/npchandler.h"
-#include "net/pethandler.h"
 #include "net/playerhandler.h"
 #include "net/uploadcharinfo.h"
 #include "net/tradehandler.h"
@@ -280,22 +279,6 @@ impHandler(emote)
     {
         if (emoteShortcut)
             emoteShortcut->useEmote(emotion);
-        if (Game::instance())
-            Game::instance()->setValidSpeed();
-        return true;
-    }
-
-    return false;
-}
-
-impHandler(petEmote)
-{
-    if (event.action >= InputAction::PET_EMOTE_1
-        && event.action <= InputAction::PET_EMOTE_48)
-    {
-        const int emotion = event.action - InputAction::PET_EMOTE_1;
-        if (emoteShortcut)
-            petHandler->emote(emoteShortcut->getEmote(emotion), 0);
         if (Game::instance())
             Game::instance()->setValidSpeed();
         return true;
@@ -1398,23 +1381,6 @@ impHandler(uploadLog)
         settings.logFileName,
         "?txt",
         event.tab);
-    return true;
-}
-
-impHandler(catchPet)
-{
-    if (!localPlayer || !actorManager)
-        return false;
-
-    Being *target = nullptr;
-    if (!event.args.empty())
-        target = actorManager->findNearestByName(event.args);
-    if (!target)
-        target = localPlayer->getTarget();
-    else
-        localPlayer->setTarget(target);
-    if (target)
-        petHandler->catchPet(target);
     return true;
 }
 

@@ -47,7 +47,6 @@
 #include "net/guildhandler.h"
 #include "net/homunculushandler.h"
 #include "net/partyhandler.h"
-#include "net/pethandler.h"
 #include "net/serverfeatures.h"
 
 #include "resources/iteminfo.h"
@@ -374,14 +373,6 @@ impHandler(commandEmote)
         return true;
     }
     return false;
-}
-
-impHandler(commandEmotePet)
-{
-    // need use actual pet id
-    petHandler->emote(static_cast<uint8_t>(
-        atoi(event.args.c_str())), 0);
-    return true;
 }
 
 impHandler(awayMessage)
@@ -733,23 +724,6 @@ impHandler(talkRaw)
     return true;
 }
 
-impHandler(talkPet)
-{
-    std::string args = event.args;
-    // in future probably need add channel detection
-    if (!localPlayer->getPets().empty())
-    {
-        if (findCutFirst(args, "/me "))
-            args = textToMe(args);
-        chatHandler->talkPet(args, GENERAL_CHANNEL);
-    }
-    else
-    {
-        chatHandler->talk(args, GENERAL_CHANNEL);
-    }
-    return true;
-}
-
 impHandler(gm)
 {
     chatHandler->talk("@wgm " + event.args, GENERAL_CHANNEL);
@@ -793,16 +767,6 @@ impHandler(serverUnIgnoreWhisper)
         return false;
 
     chatHandler->unIgnore(args);
-    return true;
-}
-
-impHandler(setPetName)
-{
-    const std::string args = event.args;
-    if (args.empty())
-        return false;
-
-    petHandler->setName(args);
     return true;
 }
 

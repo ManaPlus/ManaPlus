@@ -30,7 +30,6 @@ struct InputEvent;
 namespace Actions
 {
     decHandler(emote);
-    decHandler(petEmote);
     decHandler(outfit);
     decHandler(mouseClick);
     decHandler(ok);
@@ -94,7 +93,6 @@ namespace Actions
     decHandler(uploadConfig);
     decHandler(uploadServerConfig);
     decHandler(uploadLog);
-    decHandler(catchPet);
     decHandler(mercenaryFire);
     decHandler(useItem);
     decHandler(useItemInv);

@@ -44,7 +44,6 @@ namespace Actions
     decHandler(setTarget);
     decHandler(commandOutfit);
     decHandler(commandEmote);
-    decHandler(commandEmotePet);
     decHandler(awayMessage);
     decHandler(pseudoAway);
     decHandler(follow);
@@ -71,13 +70,11 @@ namespace Actions
     decHandler(enableAway);
     decHandler(testParticle);
     decHandler(talkRaw);
-    decHandler(talkPet);
     decHandler(gm);
     decHandler(hack);
     decHandler(debugSpawn);
     decHandler(serverIgnoreWhisper);
     decHandler(serverUnIgnoreWhisper);
-    decHandler(setPetName);
     decHandler(setHomunculusName);
     decHandler(fireHomunculus);
     decHandler(leaveParty);

@@ -789,6 +789,8 @@ SET(SRCS
     actions/commands.h
     actions/move.cpp
     actions/move.h
+    actions/pets.cpp
+    actions/pets.h
     actions/statusbar.cpp
     actions/statusbar.h
     actions/tabs.cpp

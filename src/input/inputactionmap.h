@@ -29,6 +29,7 @@
 #include "actions/chat.h"
 #include "actions/commands.h"
 #include "actions/move.h"
+#include "actions/pets.h"
 #include "actions/statusbar.h"
 #include "actions/tabs.h"
 #include "actions/target.h"
