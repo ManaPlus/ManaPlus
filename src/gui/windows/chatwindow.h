@@ -23,6 +23,8 @@
 #ifndef GUI_WINDOWS_CHATWINDOW_H
 #define GUI_WINDOWS_CHATWINDOW_H
 
+#include "being/beingdirection.h"
+
 #include "gui/chatmsgtype.h"
 
 #include "gui/widgets/window.h"
@@ -300,6 +302,8 @@ class ChatWindow final : public Window,
         static void localPetMove(const std::string &nick,
                                  const int x, const int y);
 
+        static void localPetDirection(const std::string &nick,
+                                      BeingDirection::Type dir);
         void postConnection();
 
 #ifdef USE_PROFILER

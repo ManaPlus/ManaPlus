@@ -107,6 +107,8 @@ void PetHandler::unequip() const
 
 void PetHandler::setDirection(const BeingDirection::Type type) const
 {
+    chatHandler->talk(strprintf("\302\202\302d%d",
+        static_cast<int>(type)), GENERAL_CHANNEL);
 }
 
 }  // namespace TmwAthena

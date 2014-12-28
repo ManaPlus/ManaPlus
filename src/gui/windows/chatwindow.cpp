@@ -1522,6 +1522,13 @@ bool ChatWindow::resortChatLog(std::string line,
                     if (parse2Int(line, x, y))
                         localPetMove(nick, x, y);
                 }
+                else if (line.find(": \302\202\302d") != std::string::npos)
+                {
+                    const std::string nick = line.substr(0, idx2 - 1);
+                    line = line.substr(idx2 + 6);
+                    localPetDirection(nick, static_cast<BeingDirection::Type>(
+                        atoi(line.c_str())));
+                }
                 // ignore other special message formats.
                 return false;
             }
@@ -1667,31 +1674,41 @@ void ChatWindow::localPetSay(const std::string &nick, const std::string &text)
     }
 }
 
-void ChatWindow::localPetEmote(const std::string &nick, const uint8_t emoteId)
+static Being *getPetForNick(const std::string &nick)
 {
     Being *const being = actorManager->findBeingByName(
         nick, ActorType::Player);
     if (being)
-    {
-        Being *const pet = being->getFirstPet();
-        if (pet)
-            pet->setEmote(emoteId, 0);
-    }
+        return being->getFirstPet();
+    return nullptr;
+}
+
+void ChatWindow::localPetEmote(const std::string &nick, const uint8_t emoteId)
+{
+    Being *const pet = getPetForNick(nick);
+    if (pet)
+        pet->setEmote(emoteId, 0);
 }
 
 void ChatWindow::localPetMove(const std::string &nick,
                               const int x, const int y)
 {
-    Being *const being = actorManager->findBeingByName(
-        nick, ActorType::Player);
-    if (being)
+    Being *const pet = getPetForNick(nick);
+    if (pet)
     {
-        Being *const pet = being->getFirstPet();
-        if (pet)
-        {
-            pet->setDestination(x, y);
-            pet->disablePetAi();
-        }
+        pet->setDestination(x, y);
+        pet->disablePetAi();
+    }
+}
+
+void ChatWindow::localPetDirection(const std::string &nick,
+                                   BeingDirection::Type dir)
+{
+    Being *const pet = getPetForNick(nick);
+    if (pet)
+    {
+        pet->setDirection(dir);
+        pet->disablePetAi();
     }
 }
 
