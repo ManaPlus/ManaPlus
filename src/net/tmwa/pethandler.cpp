@@ -55,7 +55,7 @@ void PetHandler::handleMessage(Net::MessageIn &msg A_UNUSED)
 void PetHandler::move(const int petId A_UNUSED,
                       const int x, const int y) const
 {
-    chatHandler->talk(strprintf("\302\202\302m%d %dg%d",
+    chatHandler->talk(strprintf("\302\202\302m%d,%dg%d",
         x, y, tick_time), GENERAL_CHANNEL);
 }
 
