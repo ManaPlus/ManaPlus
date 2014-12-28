@@ -412,6 +412,18 @@ SetupActionData setupActionDataOther[] =
         "",
     },
     {
+        // TRANSLATORS: input action name
+        N_("Pet ai start"),
+        InputAction::PET_AI_START,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        N_("Pet ai stop"),
+        InputAction::PET_AI_STOP,
+        "",
+    },
+    {
         "",
         InputAction::NO_VALUE,
         ""
