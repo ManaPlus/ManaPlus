@@ -40,6 +40,8 @@ namespace Actions
     decHandler(petDirectDown);
     decHandler(petDirectLeft);
     decHandler(petDirectRight);
+    decHandler(petAiStart);
+    decHandler(petAiStop);
 }  // namespace Actions
 
 #undef decHandler

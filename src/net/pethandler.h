@@ -58,6 +58,8 @@ class PetHandler notfinal
         virtual void unequip() const = 0;
 
         virtual void setDirection(const BeingDirection::Type type) const = 0;
+
+        virtual void startAi(const bool start) const = 0;
 };
 
 }  // namespace Net

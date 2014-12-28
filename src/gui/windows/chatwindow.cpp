@@ -1529,6 +1529,12 @@ bool ChatWindow::resortChatLog(std::string line,
                     localPetDirection(nick, static_cast<BeingDirection::Type>(
                         atoi(line.c_str())));
                 }
+                else if (line.find(": \302\202\302a") != std::string::npos)
+                {
+                    const std::string nick = line.substr(0, idx2 - 1);
+                    line = line.substr(idx2 + 6);
+                    localPetAi(nick, atoi(line.c_str()) ? true : false);
+                }
                 // ignore other special message formats.
                 return false;
             }
@@ -1688,6 +1694,18 @@ void ChatWindow::localPetEmote(const std::string &nick, const uint8_t emoteId)
     Being *const pet = getPetForNick(nick);
     if (pet)
         pet->setEmote(emoteId, 0);
+}
+
+void ChatWindow::localPetAi(const std::string &nick, const bool start)
+{
+    Being *const pet = getPetForNick(nick);
+    if (pet)
+    {
+        if (start)
+            pet->enablePetAi();
+        else
+            pet->disablePetAi();
+    }
 }
 
 void ChatWindow::localPetMove(const std::string &nick,

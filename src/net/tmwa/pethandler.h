@@ -66,6 +66,8 @@ class PetHandler final :  public MessageHandler, public Net::PetHandler
         void setDirection(const BeingDirection::Type type) const
                           override final;
 
+        void startAi(const bool start) const override final;
+
     protected:
         int mRandCounter;
 };

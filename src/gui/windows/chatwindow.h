@@ -304,6 +304,10 @@ class ChatWindow final : public Window,
 
         static void localPetDirection(const std::string &nick,
                                       BeingDirection::Type dir);
+
+        static void localPetAi(const std::string &nick,
+                               const bool start);
+
         void postConnection();
 
 #ifdef USE_PROFILER

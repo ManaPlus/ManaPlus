@@ -323,4 +323,8 @@ void PetHandler::setDirection(const BeingDirection::Type type A_UNUSED) const
 {
 }
 
+void PetHandler::startAi(const bool start A_UNUSED) const
+{
+}
+
 }  // namespace EAthena

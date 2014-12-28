@@ -113,4 +113,10 @@ void PetHandler::setDirection(const BeingDirection::Type type) const
         static_cast<int>(type), tick_time), GENERAL_CHANNEL);
 }
 
+void PetHandler::startAi(const bool start) const
+{
+    chatHandler->talk(strprintf("\302\202\302a%dg%d",
+        start ? 1 : 0, tick_time), GENERAL_CHANNEL);
+}
+
 }  // namespace TmwAthena

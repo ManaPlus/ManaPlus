@@ -524,6 +524,8 @@ namespace InputAction
         PET_DIRECT_DOWN,
         PET_DIRECT_LEFT,
         PET_DIRECT_RIGHT,
+        PET_AI_START,
+        PET_AI_STOP,
         TOTAL
     };
 }  // namespace InputAction
