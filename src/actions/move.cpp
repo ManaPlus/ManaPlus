@@ -23,6 +23,7 @@
 #include "game.h"
 
 #include "actions/actiondef.h"
+#include "actions/pets.h"
 
 #include "being/localplayer.h"
 
@@ -61,6 +62,8 @@ impHandler(moveUp)
 {
     if (inputManager.isActionActive(InputAction::EMOTE))
         return directUp(event);
+    else if (inputManager.isActionActive(InputAction::PET_EMOTE))
+        return petDirectUp(event);
     if (popupMenu->isPopupVisible())
     {
         popupMenu->moveUp();
@@ -73,6 +76,8 @@ impHandler(moveDown)
 {
     if (inputManager.isActionActive(InputAction::EMOTE))
         return directDown(event);
+    else if (inputManager.isActionActive(InputAction::PET_EMOTE))
+        return petDirectDown(event);
     if (popupMenu->isPopupVisible())
     {
         popupMenu->moveDown();
@@ -92,6 +97,8 @@ impHandler(moveLeft)
     }
     if (inputManager.isActionActive(InputAction::EMOTE))
         return directLeft(event);
+    else if (inputManager.isActionActive(InputAction::PET_EMOTE))
+        return petDirectLeft(event);
     return closeMoveNpcDialog(false);
 }
 
@@ -106,6 +113,8 @@ impHandler(moveRight)
     }
     if (inputManager.isActionActive(InputAction::EMOTE))
         return directRight(event);
+    else if (inputManager.isActionActive(InputAction::PET_EMOTE))
+        return petDirectRight(event);
     return closeMoveNpcDialog(false);
 }
 

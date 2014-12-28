@@ -870,8 +870,12 @@ void Game::handleMove()
             localPlayer->cancelFollow();
         }
 
-        if (!inputManager.isActionActive(InputAction::EMOTE) || direction == 0)
+        if ((!inputManager.isActionActive(InputAction::EMOTE) 
+            && !inputManager.isActionActive(InputAction::PET_EMOTE))
+            || direction == 0)
+        {
             moveInDirection(direction);
+        }
     }
     BLOCK_END("Game::handleMove")
 }
