@@ -25,6 +25,7 @@
 #include "net/chathandler.h"
 
 #include "utils/stringutils.h"
+#include "utils/timer.h"
 
 #include "debug.h"
 
@@ -54,7 +55,8 @@ void PetHandler::handleMessage(Net::MessageIn &msg A_UNUSED)
 void PetHandler::move(const int petId A_UNUSED,
                       const int x, const int y) const
 {
-    chatHandler->talk(strprintf("\302\202\302m%d %d", x, y), GENERAL_CHANNEL);
+    chatHandler->talk(strprintf("\302\202\302m%d %dg%d",
+        x, y, tick_time), GENERAL_CHANNEL);
 }
 
 void PetHandler::spawn(const Being *const being A_UNUSED,
@@ -69,8 +71,8 @@ void PetHandler::emote(const uint8_t emoteId, const int petId A_UNUSED)
     if (mRandCounter > 10000)
         mRandCounter = 1000;
 
-    chatHandler->talk(strprintf("\302\202\302e%dz%d",
-        static_cast<int>(emoteId), mRandCounter), GENERAL_CHANNEL);
+    chatHandler->talk(strprintf("\302\202\302e%dz%d%g%d",
+        static_cast<int>(emoteId), mRandCounter, tick_time), GENERAL_CHANNEL);
 }
 
 void PetHandler::catchPet(const Being *const being A_UNUSED) const
@@ -107,8 +109,8 @@ void PetHandler::unequip() const
 
 void PetHandler::setDirection(const BeingDirection::Type type) const
 {
-    chatHandler->talk(strprintf("\302\202\302d%d",
-        static_cast<int>(type)), GENERAL_CHANNEL);
+    chatHandler->talk(strprintf("\302\202\302d%dg%d",
+        static_cast<int>(type), tick_time), GENERAL_CHANNEL);
 }
 
 }  // namespace TmwAthena
