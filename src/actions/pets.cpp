@@ -204,11 +204,13 @@ impHandler0(petDirectRight)
 impHandler0(petAiStart)
 {
     petHandler->startAi(true);
+    return true;
 }
 
 impHandler0(petAiStop)
 {
     petHandler->startAi(false);
+    return true;
 }
 
 }  // namespace Actions
