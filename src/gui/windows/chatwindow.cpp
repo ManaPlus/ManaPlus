@@ -1513,6 +1513,15 @@ bool ChatWindow::resortChatLog(std::string line,
                     localPetEmote(nick, static_cast<uint8_t>(
                         atoi(line.c_str())));
                 }
+                else if (line.find(": \302\202\302m") != std::string::npos)
+                {
+                    const std::string nick = line.substr(0, idx2 - 1);
+                    line = line.substr(idx2 + 6);
+                    int x = 0;
+                    int y = 0;
+                    if (parse2Int(line, x, y))
+                        localPetMove(nick, x, y);
+                }
                 // ignore other special message formats.
                 return false;
             }
@@ -1667,6 +1676,22 @@ void ChatWindow::localPetEmote(const std::string &nick, const uint8_t emoteId)
         Being *const pet = being->getFirstPet();
         if (pet)
             pet->setEmote(emoteId, 0);
+    }
+}
+
+void ChatWindow::localPetMove(const std::string &nick,
+                              const int x, const int y)
+{
+    Being *const being = actorManager->findBeingByName(
+        nick, ActorType::Player);
+    if (being)
+    {
+        Being *const pet = being->getFirstPet();
+        if (pet)
+        {
+            pet->setDestination(x, y);
+            pet->disablePetAi();
+        }
     }
 }
 

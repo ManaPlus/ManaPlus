@@ -920,6 +920,12 @@ class Being notfinal : public ActorSprite,
         int getManner() const
         { return mManner; }
 
+        void disablePetAi()
+        { mPetAi = false; }
+
+        void enablePetAi()
+        { mPetAi = true; }
+
     protected:
         /**
          * Updates name's location.
@@ -1098,6 +1104,7 @@ class Being notfinal : public ActorSprite,
         bool mAway;
         bool mInactive;
         bool mNeedPosUpdate;
+        bool mPetAi;
 };
 
 extern std::list<BeingCacheEntry*> beingInfoCache;

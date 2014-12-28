@@ -211,7 +211,8 @@ Being::Being(const int id,
     mShop(false),
     mAway(false),
     mInactive(false),
-    mNeedPosUpdate(true)
+    mNeedPosUpdate(true),
+    mPetAi(true)
 {
     for (int f = 0; f < 20; f ++)
     {
@@ -1590,9 +1591,12 @@ void Being::petLogic()
         fixPetSpawnPos(dstX, dstY);
         setTileCoords(dstX, dstY);
         petHandler->spawn(mOwner, mId, dstX, dstY);
+        mPetAi = true;
     }
     else if (!followDist || divX > followDist || divY > followDist)
     {
+        if (!mPetAi)
+            return;
         if (!dist)
         {
             fixPetSpawnPos(dstX, dstY);
@@ -1645,6 +1649,9 @@ void Being::petLogic()
             return;
         }
     }
+    if (!mPetAi)
+        return;
+
     if (mOwner->getCurrentAction() != BeingAction::ATTACK)
     {
         if (mAction == BeingAction::ATTACK)

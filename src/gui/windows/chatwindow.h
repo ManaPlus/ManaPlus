@@ -297,6 +297,9 @@ class ChatWindow final : public Window,
         static void localPetEmote(const std::string &nick,
                                   const uint8_t emoteId);
 
+        static void localPetMove(const std::string &nick,
+                                 const int x, const int y);
+
         void postConnection();
 
 #ifdef USE_PROFILER
