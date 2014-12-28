@@ -40,32 +40,56 @@ SetupActionData setupActionDataMove[] =
     },
     {
         // TRANSLATORS: input action name
-        N_("Move Up"),
+        N_("Move player up"),
         InputAction::MOVE_UP,
         "",
     },
     {
         // TRANSLATORS: input action name
-        N_("Move Down"),
+        N_("Move player down"),
         InputAction::MOVE_DOWN,
         "",
     },
     {
         // TRANSLATORS: input action name
-        N_("Move Left"),
+        N_("Move player left"),
         InputAction::MOVE_LEFT,
         "",
     },
     {
         // TRANSLATORS: input action name
-        N_("Move Right"),
+        N_("Move player right"),
         InputAction::MOVE_RIGHT,
         "",
     },
     {
         // TRANSLATORS: input action name
-        N_("Move Forward"),
+        N_("Move player forward"),
         InputAction::MOVE_FORWARD,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        N_("Move pet up"),
+        InputAction::PET_MOVE_UP,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        N_("Move pet down"),
+        InputAction::PET_MOVE_DOWN,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        N_("Move pet left"),
+        InputAction::PET_MOVE_LEFT,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        N_("Move pet right"),
+        InputAction::PET_MOVE_RIGHT,
         "",
     },
     {
