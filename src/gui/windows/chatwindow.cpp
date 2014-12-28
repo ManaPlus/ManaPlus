@@ -1655,17 +1655,20 @@ void ChatWindow::channelChatLog(const std::string &channel,
         tab->chatLog(line, own, ignoreRecord, tryRemoveColors);
 }
 
-void ChatWindow::localPetSay(const std::string &nick, const std::string &text)
+static Being *getPetForNick(const std::string &nick)
 {
     Being *const being = actorManager->findBeingByName(
         nick, ActorType::Player);
-    Being *pet = nullptr;
     if (being)
-    {
-        pet = being->getFirstPet();
-        if (pet)
-            pet->setSpeech(text, GENERAL_CHANNEL);
-    }
+        return being->getFirstPet();
+    return nullptr;
+}
+
+void ChatWindow::localPetSay(const std::string &nick, const std::string &text)
+{
+    Being *const pet = getPetForNick(nick);
+    if (pet)
+        pet->setSpeech(text, GENERAL_CHANNEL);
 
     if (!localChatTab)
         return;
@@ -1678,15 +1681,6 @@ void ChatWindow::localPetSay(const std::string &nick, const std::string &text)
     {
         localChatTab->chatLog(nick, text);
     }
-}
-
-static Being *getPetForNick(const std::string &nick)
-{
-    Being *const being = actorManager->findBeingByName(
-        nick, ActorType::Player);
-    if (being)
-        return being->getFirstPet();
-    return nullptr;
 }
 
 void ChatWindow::localPetEmote(const std::string &nick, const uint8_t emoteId)
