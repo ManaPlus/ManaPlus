@@ -520,6 +520,10 @@ namespace InputAction
         PET_MOVE_DOWN,
         PET_MOVE_LEFT,
         PET_MOVE_RIGHT,
+        PET_DIRECT_UP,
+        PET_DIRECT_DOWN,
+        PET_DIRECT_LEFT,
+        PET_DIRECT_RIGHT,
         TOTAL
     };
 }  // namespace InputAction

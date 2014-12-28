@@ -56,6 +56,8 @@ class PetHandler notfinal
         virtual void returnToEgg() const = 0;
 
         virtual void unequip() const = 0;
+
+        virtual void setDirection(const BeingDirection::Type type) const = 0;
 };
 
 }  // namespace Net

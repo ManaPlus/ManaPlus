@@ -319,4 +319,8 @@ void PetHandler::unequip() const
     outMsg.writeInt8(4, "action");
 }
 
+void PetHandler::setDirection(const BeingDirection::Type type A_UNUSED) const
+{
+}
+
 }  // namespace EAthena

@@ -36,6 +36,10 @@ namespace Actions
     decHandler(petMoveDown);
     decHandler(petMoveLeft);
     decHandler(petMoveRight);
+    decHandler(petDirectUp);
+    decHandler(petDirectDown);
+    decHandler(petDirectLeft);
+    decHandler(petDirectRight);
 }  // namespace Actions
 
 #undef decHandler

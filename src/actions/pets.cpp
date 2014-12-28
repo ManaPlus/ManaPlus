@@ -177,4 +177,28 @@ impHandler0(petMoveRight)
     return true;
 }
 
+impHandler0(petDirectUp)
+{
+    petHandler->setDirection(BeingDirection::UP);
+    return true;
+}
+
+impHandler0(petDirectDown)
+{
+    petHandler->setDirection(BeingDirection::DOWN);
+    return true;
+}
+
+impHandler0(petDirectLeft)
+{
+    petHandler->setDirection(BeingDirection::LEFT);
+    return true;
+}
+
+impHandler0(petDirectRight)
+{
+    petHandler->setDirection(BeingDirection::RIGHT);
+    return true;
+}
+
 }  // namespace Actions

@@ -28,7 +28,7 @@ namespace BeingDirection
     /**
      * Directions, to be used as bitmask values
      */
-    enum BeingDirection
+    enum Type
     {
         DOWN = 1,
         LEFT = 2,

@@ -105,4 +105,8 @@ void PetHandler::unequip() const
 {
 }
 
+void PetHandler::setDirection(const BeingDirection::Type type) const
+{
+}
+
 }  // namespace TmwAthena

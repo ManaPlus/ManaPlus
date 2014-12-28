@@ -63,6 +63,9 @@ class PetHandler final :  public MessageHandler, public Net::PetHandler
 
         void unequip() const override final;
 
+        void setDirection(const BeingDirection::Type type) const
+                          override final;
+
     protected:
         int mRandCounter;
 };
