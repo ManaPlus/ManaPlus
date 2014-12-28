@@ -7574,7 +7574,7 @@ msgstr "  -s --server         :  Nome ou IP do servidor de login"
 #. TRANSLATORS: command line help
 #: src/main.cpp:110
 msgid "  -y --server-type    : Login server type"
-msgstr "-y --server-type: tipo de login do servidor"
+msgstr "  -y --server-type: tipo de login do servidor"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:112
