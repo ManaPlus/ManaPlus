@@ -33,6 +33,12 @@ SetupActionData setupActionDataOther[] =
 {
     {
         // TRANSLATORS: input action name
+        N_("Input ignore"),
+        InputAction::NO_VALUE,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
         N_("Ignore input 1"),
         InputAction::IGNORE_INPUT_1,
         "",
@@ -45,26 +51,62 @@ SetupActionData setupActionDataOther[] =
     },
     {
         // TRANSLATORS: input action name
-        N_("Direct Up"),
+        N_("Direction keys"),
+        InputAction::NO_VALUE,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        N_("Player direct up"),
         InputAction::DIRECT_UP,
         "",
     },
     {
         // TRANSLATORS: input action name
-        N_("Direct Down"),
+        N_("Player direct down"),
         InputAction::DIRECT_DOWN,
         "",
     },
     {
         // TRANSLATORS: input action name
-        N_("Direct Left"),
+        N_("Player direct left"),
         InputAction::DIRECT_LEFT,
         "",
     },
     {
         // TRANSLATORS: input action name
-        N_("Direct Right"),
+        N_("Player direct right"),
         InputAction::DIRECT_RIGHT,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        N_("Pet direct up"),
+        InputAction::PET_DIRECT_UP,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        N_("Pet direct down"),
+        InputAction::PET_DIRECT_DOWN,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        N_("Pet direct left"),
+        InputAction::PET_DIRECT_LEFT,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        N_("Pet direct right"),
+        InputAction::PET_DIRECT_RIGHT,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        N_("Other"),
+        InputAction::NO_VALUE,
         "",
     },
     {
