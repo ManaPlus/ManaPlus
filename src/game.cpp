@@ -871,7 +871,8 @@ void Game::handleMove()
         }
 
         if ((!inputManager.isActionActive(InputAction::EMOTE) 
-            && !inputManager.isActionActive(InputAction::PET_EMOTE))
+            && !inputManager.isActionActive(InputAction::PET_EMOTE)
+            && !inputManager.isActionActive(InputAction::STOP_ATTACK))
             || direction == 0)
         {
             moveInDirection(direction);

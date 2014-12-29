@@ -64,6 +64,8 @@ impHandler(moveUp)
         return directUp(event);
     else if (inputManager.isActionActive(InputAction::PET_EMOTE))
         return petDirectUp(event);
+    else if (inputManager.isActionActive(InputAction::STOP_ATTACK))
+        return petMoveUp(event);
     if (popupMenu->isPopupVisible())
     {
         popupMenu->moveUp();
@@ -78,6 +80,8 @@ impHandler(moveDown)
         return directDown(event);
     else if (inputManager.isActionActive(InputAction::PET_EMOTE))
         return petDirectDown(event);
+    else if (inputManager.isActionActive(InputAction::STOP_ATTACK))
+        return petMoveDown(event);
     if (popupMenu->isPopupVisible())
     {
         popupMenu->moveDown();
@@ -99,6 +103,8 @@ impHandler(moveLeft)
         return directLeft(event);
     else if (inputManager.isActionActive(InputAction::PET_EMOTE))
         return petDirectLeft(event);
+    else if (inputManager.isActionActive(InputAction::STOP_ATTACK))
+        return petMoveLeft(event);
     return closeMoveNpcDialog(false);
 }
 
@@ -115,6 +121,8 @@ impHandler(moveRight)
         return directRight(event);
     else if (inputManager.isActionActive(InputAction::PET_EMOTE))
         return petDirectRight(event);
+    else if (inputManager.isActionActive(InputAction::STOP_ATTACK))
+        return petMoveRight(event);
     return closeMoveNpcDialog(false);
 }
 
