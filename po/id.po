@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2014-12-28 19:54+0300\n"
-"PO-Revision-Date: 2014-12-11 10:00+0000\n"
+"PO-Revision-Date: 2014-12-29 09:57+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Indonesian (http://www.transifex.com/projects/p/manaplus/"
 "language/id/)\n"
@@ -6795,51 +6795,43 @@ msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:43
-#, fuzzy
 msgid "Move player up"
-msgstr "Tampilkan popup pemain"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:49
-#, fuzzy
 msgid "Move player down"
-msgstr "Bergerak kebawah"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:55
-#, fuzzy
 msgid "Move player left"
-msgstr "Siklus target pemain"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:61
-#, fuzzy
 msgid "Move player right"
-msgstr "Siklus target pemain"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:67
-#, fuzzy
 msgid "Move player forward"
-msgstr "Batas tempat rumah"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:73
-#, fuzzy
 msgid "Move pet up"
-msgstr "Bergerak keatas"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:79
-#, fuzzy
 msgid "Move pet down"
-msgstr "Bergerak kebawah"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:85
-#, fuzzy
 msgid "Move pet left"
-msgstr "Bergerak keatas"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:91
@@ -6882,9 +6874,8 @@ msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:36
-#, fuzzy
 msgid "Input ignore"
-msgstr "Batalkan pengabaian"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:42
@@ -6908,9 +6899,8 @@ msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:66
-#, fuzzy
 msgid "Player direct down"
-msgstr "Pemain memukul monster"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:72
@@ -7189,9 +7179,8 @@ msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:416
-#, fuzzy
 msgid "Pet ai start"
-msgstr "Atur ulang stats"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:422

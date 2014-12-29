@@ -17,7 +17,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2014-07-27 11:40+0000\n"
+"PO-Revision-Date: 2014-12-28 22:29+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/manaplus/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -62,6 +62,9 @@ msgstr "\"Окно заданий\""
 
 msgid "\"Quick drop window\""
 msgstr "\"Окно быстрого сброса предметов\""
+
+msgid "Official site:"
+msgstr ""
 
 msgid ""
 " You can improve your skills by increasing job level. Each job level\n"
@@ -192,9 +195,6 @@ msgstr "/dropn - бросить N предметов из любого слот�
 msgid "/enableaway - enable away messages in current tab."
 msgstr "/enableaway - включить уведомления об AFK в этой вкладке."
 
-msgid "/enemy NICK - add nick to enemyes list."
-msgstr "/enemy NICK - добавить ник в список врагов."
-
 msgid "Support"
 msgstr "Поддержка"
 
@@ -203,10 +203,6 @@ msgstr "\"Надетое в наряд\""
 
 msgid "/outfit next - wear next outfit."
 msgstr "/outfit next - надеть следующий костюм."
-
-msgid ""
-"/cleangraphics - remove all cached graphics. Usefull for content developers."
-msgstr "/cleangraphics - стереть кэш графики. Удобен для разработчиков контента."
 
 msgid "\"Outfit shortcut 3\""
 msgstr "\"Наряд 3\""
@@ -393,8 +389,11 @@ msgstr "/present - вывести в чат количество игроков 
 msgid "/dumpogl - dump all OpenGL variables into log file."
 msgstr "/dumpogl - выгрузить все переменные OpenGL в журнал."
 
-msgid "/emotepet N - use emotion number N from your pet."
-msgstr "/emotepet N - использовать эмоцию номер N вашего питомца."
+msgid "Contributors to client development"
+msgstr "В разработке клиентской части принимали участие"
+
+msgid "/gm MESSAGE - send message to all online gms."
+msgstr ""
 
 msgid ""
 "You can do basic searching in help by using command\n"
@@ -768,6 +767,9 @@ msgstr "/dumpgl - вывести версию OpenGL в чат."
 msgid "MOUSE:"
 msgstr "МЫШЬ:"
 
+msgid "Current server support url:"
+msgstr ""
+
 msgid "Player relations"
 msgstr "Отношения между игроками"
 
@@ -975,8 +977,8 @@ msgstr "КЛАВИАТУРА:"
 msgid "Windows"
 msgstr "Окна"
 
-msgid "Contributors to client development"
-msgstr "В разработке клиентской части принимали участие"
+msgid "/emotepet N - use emotion number N from your pet."
+msgstr "/emotepet N - использовать эмоцию номер N вашего питомца."
 
 msgid ""
 "Otherwise see the @@team|Development Team@@ section to have a list of\n"
@@ -985,6 +987,10 @@ msgstr " В противном случае смотрите секцию @@ко
 
 msgid "\"Item shortcut 11\""
 msgstr "\"Горячая клавиша предмета 11\""
+
+msgid ""
+"/cleangraphics - remove all cached graphics. Useful for content developers."
+msgstr ""
 
 msgid "\"Emulate right click from keyboard\""
 msgstr "\"Эмуляция правого клика с клавиатуры\""
@@ -1095,6 +1101,9 @@ msgstr "\"Смайл 6\""
 
 msgid "/disconnect - quick disconnect from server."
 msgstr "/disconnect - быстро отключиться от сервера."
+
+msgid "/enemy NICK - add nick to enemies list."
+msgstr ""
 
 msgid "\"Item shortcut 1\""
 msgstr "\"Горячая клавиша предмета 1\""

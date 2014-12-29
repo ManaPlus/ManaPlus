@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2014-12-28 19:54+0300\n"
-"PO-Revision-Date: 2014-12-20 14:14+0000\n"
+"PO-Revision-Date: 2014-12-29 09:57+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Czech (http://www.transifex.com/projects/p/manaplus/language/"
 "cs/)\n"
@@ -6817,57 +6817,48 @@ msgstr "Pohybové klávesy"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:43
-#, fuzzy
 msgid "Move player up"
-msgstr "Zobrazovat bubliny hráčů"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:49
-#, fuzzy
 msgid "Move player down"
-msgstr "Posunout dolů"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:55
-#, fuzzy
 msgid "Move player left"
-msgstr "Pohyb vlevo"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:61
-#, fuzzy
 msgid "Move player right"
-msgstr "Pohyb vpravo"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:67
-#, fuzzy
 msgid "Move player forward"
-msgstr "Pohyb vpřed"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:73
-#, fuzzy
 msgid "Move pet up"
-msgstr "Posunout nahoru"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:79
-#, fuzzy
 msgid "Move pet down"
-msgstr "Posunout dolů"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:85
-#, fuzzy
 msgid "Move pet left"
-msgstr "Pohyb vlevo"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:91
-#, fuzzy
 msgid "Move pet right"
-msgstr "Pohyb vpravo"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:97
@@ -6905,9 +6896,8 @@ msgstr "Zkratka přesunu k bodu %d"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:36
-#, fuzzy
 msgid "Input ignore"
-msgstr "Odignorovat"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:42
@@ -6921,9 +6911,8 @@ msgstr "Ignorovat vstup 2"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:54
-#, fuzzy
 msgid "Direction keys"
-msgstr "Otočit dolů"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:60
@@ -6932,45 +6921,38 @@ msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:66
-#, fuzzy
 msgid "Player direct down"
-msgstr "Hráč zasáhl monstrum"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:72
-#, fuzzy
 msgid "Player direct left"
-msgstr "Otočit vlevo"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:78
-#, fuzzy
 msgid "Player direct right"
-msgstr "Otočit vpravo"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:84
-#, fuzzy
 msgid "Pet direct up"
-msgstr "Otočit nahoru"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:90
-#, fuzzy
 msgid "Pet direct down"
-msgstr "Otočit dolů"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:96
-#, fuzzy
 msgid "Pet direct left"
-msgstr "Otočit vlevo"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:102
-#, fuzzy
 msgid "Pet direct right"
-msgstr "Otočit vpravo"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:114
@@ -7221,9 +7203,8 @@ msgstr "Zastřel svého žoldáka"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:416
-#, fuzzy
 msgid "Pet ai start"
-msgstr "Reset statistik"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:422

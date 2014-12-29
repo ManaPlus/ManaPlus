@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2014-12-28 19:54+0300\n"
-"PO-Revision-Date: 2014-12-11 10:00+0000\n"
+"PO-Revision-Date: 2014-12-29 09:57+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/manaplus/"
 "language/ja/)\n"
@@ -6797,57 +6797,48 @@ msgstr "キーを移動"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:43
-#, fuzzy
 msgid "Move player up"
-msgstr "プレイヤーポップアップを表示する"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:49
-#, fuzzy
 msgid "Move player down"
-msgstr "下へ移動"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:55
-#, fuzzy
 msgid "Move player left"
-msgstr "左へ移動"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:61
-#, fuzzy
 msgid "Move player right"
-msgstr "右へ移動"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:67
-#, fuzzy
 msgid "Move player forward"
-msgstr "カメラを動かす"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:73
-#, fuzzy
 msgid "Move pet up"
-msgstr "上へ移動"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:79
-#, fuzzy
 msgid "Move pet down"
-msgstr "下へ移動"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:85
-#, fuzzy
 msgid "Move pet left"
-msgstr "左へ移動"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:91
-#, fuzzy
 msgid "Move pet right"
-msgstr "右へ移動"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:97
@@ -6885,9 +6876,8 @@ msgstr "ショートカット %dまで移動"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:36
-#, fuzzy
 msgid "Input ignore"
-msgstr "完全無視解除"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:42
@@ -6901,9 +6891,8 @@ msgstr "インプット２完全無視"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:54
-#, fuzzy
 msgid "Direction keys"
-msgstr "下方向"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:60
@@ -6912,45 +6901,38 @@ msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:66
-#, fuzzy
 msgid "Player direct down"
-msgstr "プレイヤーの位置:"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:72
-#, fuzzy
 msgid "Player direct left"
-msgstr "左方向"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:78
-#, fuzzy
 msgid "Player direct right"
-msgstr "右方向"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:84
-#, fuzzy
 msgid "Pet direct up"
-msgstr "上方向"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:90
-#, fuzzy
 msgid "Pet direct down"
-msgstr "下方向"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:96
-#, fuzzy
 msgid "Pet direct left"
-msgstr "左方向"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:102
-#, fuzzy
 msgid "Pet direct right"
-msgstr "右方向"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:114
@@ -7199,9 +7181,8 @@ msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:416
-#, fuzzy
 msgid "Pet ai start"
-msgstr "統計をリセット"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:422

@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2014-12-28 19:54+0300\n"
-"PO-Revision-Date: 2014-12-11 10:00+0000\n"
+"PO-Revision-Date: 2014-12-29 09:57+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Dutch (Belgium) (http://www.transifex.com/projects/p/manaplus/"
 "language/nl_BE/)\n"
@@ -6803,57 +6803,48 @@ msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:43
-#, fuzzy
 msgid "Move player up"
-msgstr "Geef de spelers popups weer"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:49
-#, fuzzy
 msgid "Move player down"
-msgstr "Beweeg naar beneden"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:55
-#, fuzzy
 msgid "Move player left"
-msgstr "Naar links"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:61
-#, fuzzy
 msgid "Move player right"
-msgstr "Naar rechts"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:67
-#, fuzzy
 msgid "Move player forward"
-msgstr "Thuisplaatsgrens"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:73
-#, fuzzy
 msgid "Move pet up"
-msgstr "Beweeg naar boven"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:79
-#, fuzzy
 msgid "Move pet down"
-msgstr "Beweeg naar beneden"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:85
-#, fuzzy
 msgid "Move pet left"
-msgstr "Naar links"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:91
-#, fuzzy
 msgid "Move pet right"
-msgstr "Naar rechts"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:97
@@ -6891,9 +6882,8 @@ msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:36
-#, fuzzy
 msgid "Input ignore"
-msgstr "Stop Negeren"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:42
@@ -6907,9 +6897,8 @@ msgstr "Ingave 2 negeren"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:54
-#, fuzzy
 msgid "Direction keys"
-msgstr "Juist Onder"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:60
@@ -6918,45 +6907,38 @@ msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:66
-#, fuzzy
 msgid "Player direct down"
-msgstr "Speler raakt monster"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:72
-#, fuzzy
 msgid "Player direct left"
-msgstr "Juist Links"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:78
-#, fuzzy
 msgid "Player direct right"
-msgstr "Juist Rechts"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:84
-#, fuzzy
 msgid "Pet direct up"
-msgstr "Juist Boven"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:90
-#, fuzzy
 msgid "Pet direct down"
-msgstr "Juist Onder"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:96
-#, fuzzy
 msgid "Pet direct left"
-msgstr "Juist Links"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:102
-#, fuzzy
 msgid "Pet direct right"
-msgstr "Juist Rechts"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:114
@@ -7205,9 +7187,8 @@ msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:416
-#, fuzzy
 msgid "Pet ai start"
-msgstr "Herzet statistieken"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:422

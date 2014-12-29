@@ -1,0 +1,1158 @@
+# en#
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: ManaPlus\n"
+"PO-Revision-Date: 2014-12-29 16:37+0000\n"
+"Last-Translator: William Lee <v4r@trioptimum.com>\n"
+"Language-Team: Ukrainian (http://www.transifex.com/projects/p/manaplus/language/uk/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: uk\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+msgid "/uploadserverconfig - upload server config into pastebin service."
+msgstr "/uploadserverconfig - завантажити серверну конфігурацію до сервісу pastebin."
+
+msgid "/atkhuman - select and attack nearest player."
+msgstr "/atkhuman - вибрати та атакувати найближчого гравця."
+
+msgid "\"Outfit shortcut 12\""
+msgstr "\"Спорядження 12\""
+
+msgid "/cacheinfo - show text cache info."
+msgstr "/cacheinfo - показати стан текстового кешу."
+
+msgid ""
+"You can imitate other players by selecting \"imitation\" in player context menu\n"
+" or type chat command: /imitate playername."
+msgstr "Щоб імітувати іншого гравця, виберіть \"imitation\" в контекстному меню\n або застосуйте команду \"/imitate ГРАВЕЦЬ\"."
+
+msgid ""
+" - ##2allow trading##9: Do you wish to allow trade requests from arbitrary\n"
+"   players?"
+msgstr " - ##2дозволити торгівлю##9: якщо ви бажаєте отримувати торгівельні пропозиції\n   від довільних гравців."
+
+msgid "\"Emote shortcut 9\""
+msgstr "\"Смайлик 9\""
+
+msgid "/addignoreattack NAME - add monster to ignore attack list."
+msgstr "/addignoreattack МОБ - додати моба до списку ігнорування при виборі цілі."
+
+msgid "Back to Index"
+msgstr "До змісту"
+
+msgid "\"Quests window\""
+msgstr "\"Вікно завдань\""
+
+msgid "\"Quick drop window\""
+msgstr "\"Вікно швидкого кидання речей\""
+
+msgid "Official site:"
+msgstr "Офіційна сторінка:"
+
+msgid ""
+" You can improve your skills by increasing job level. Each job level\n"
+" gives you 1 point to spend on basic skills."
+msgstr " Ви можете покращувати вміння, збільшуючи рівень Роботи. Кожен рівень\n дає +1 бал, який можна витратити на розвиток базових навичок."
+
+msgid "\"Emote shortcut 10\""
+msgstr "\"Смайлик 10\""
+
+msgid "Content devs"
+msgstr "Розробники контенту"
+
+msgid "Guild chat commands"
+msgstr "Команди чату гільдії"
+
+msgid "/away, /away MSG - set away mode."
+msgstr "/away, /away ПОВІДОМЛЕННЯ - увімкнути режим відсутності."
+
+msgid "GM"
+msgstr "ГМ"
+
+msgid "/addattack NAME - add monster to attack list."
+msgstr "/addattack МОБ - додати моба в список атаки."
+
+msgid "\"Emote shortcut 2\""
+msgstr "\"Смайлик 2\""
+
+msgid "/announce MESSAGE - show global message."
+msgstr "/announce MESSAGE - глобальне оголошення"
+
+msgid "/serverunignoreall - unignore all whispers on server side."
+msgstr "/serverunignoreall - вимкнути ігнорування всіх приватних повідомлень на сервері."
+
+msgid "/createparty NAME - create party with selected name."
+msgstr "/createparty ГРУПА - створити групу"
+
+msgid "/heal NICK - heal nick."
+msgstr "/heal ГРАВЕЦЬ - вилікувати гравця."
+
+msgid "\"Select OK\""
+msgstr "\"Вибрати Ok\""
+
+msgid "/dumpe - dump environment variables into chat."
+msgstr "/dumpe - показати змінні середовища в чаті."
+
+msgid ""
+"If client working very slow, you can improve speed\n"
+"by reading this: @@http://manaplus.org/slowpc|http://manaplus.org/slowpc@@"
+msgstr "Якщо клієнт працює надто повільно, ознайомтеся з матеріалами за посиланням:\n@@http://manaplus.org/slowpc|http://manaplus.org/slowpc@@"
+
+msgid "\"Enable/disable trading\""
+msgstr "\"Дозвіл/заборона торгівлі\""
+
+msgid "/wait NAME - wait for nick or moster with name."
+msgstr "/wait ІМ'Я - сповістити про появу гравця (чи моба) за вказаним ім'ям."
+
+msgid "##2Trade:##9 enables the ability to trade with others."
+msgstr "##2Торгівля:##9 з'являється можливість торгувати з іншими гравцями."
+
+msgid "\"Use magic attack\""
+msgstr "\"Застосувати магічну атаку\""
+
+msgid "\"Who is online window\""
+msgstr "\"Вікно \"Хто онлайн\"\""
+
+msgid "\"Switch pvp attack\""
+msgstr "\"Перемикач PVP атаки\""
+
+msgid "\"Deactivate chat input\""
+msgstr "\"Скинути фокус введення (наприклад, у чаті)\""
+
+msgid "\"Move to navigation point\""
+msgstr "\"Рух до навігаційної точки (або телепорту)\""
+
+msgid "ManaPlus Contributors"
+msgstr "Розробники ManaPlus  "
+
+msgid ""
+"The Mana World##0 is a serious effort to create an innovative free\n"
+" and open source MMORPG world. The Mana World uses 2D graphics and aims to be\n"
+" as much diverse and interactive as possible. All content is licensed\n"
+" under the GPL, making sure this game can't ever run away from you."
+msgstr "Світ Мани##0 - серйозне зусилля зі створення інноваційного вільного та\n відкритого MMORPG всесвіту. Світ Мани використовує 2D графіку та має на меті\n бути як найліпше різноманітною та інтерактивною. Весь контент захищено\n ліцензією GPL, яка гарантує, що гра не втече від вас за браму закритого програмного забезпечення."
+
+msgid "ABOUT MANAPLUS"
+msgstr "ПРО MANAPLUS"
+
+msgid "/pseudoaway, /pseudoaway MSG - set/unset pseudo away mode."
+msgstr "/pseudoaway, /pseudoaway ТЕКСТ - увімкнути/вимкнути режим псевдо-\"Відсутній\"."
+
+msgid "Other contributors"
+msgstr "Інші учасники"
+
+msgid "\"Item shortcuts Key\""
+msgstr "\"Швидкі клавіші предметів\""
+
+msgid ""
+"Communication is often essential to success in this game. You can communicate\n"
+" in several ways:  By chatting and showing emotions (see above), by trading\n"
+" (with the right-click context menu), and by whispering."
+msgstr "Спілкування з іншими гравцями є певною рисою MMORPG :D . Тут ви маєте безліч\n можливостей, як-то чат, смайлики (дивіться вище), торгівля (через правий клік\n та контекстне меню), соціальна взаємодія в групі та гільдії."
+
+msgid "\"Item shortcut 3\""
+msgstr "\"Швидка клавіша предмета 3\""
+
+msgid "\"Change move type\""
+msgstr "\"Змінити програму руху\""
+
+msgid "Tabs"
+msgstr "Вкладки"
+
+msgid "\"Outfit shortcut 4\""
+msgstr "\"Спорядження 4\""
+
+msgid "\"Did you know window\""
+msgstr "\"Вікно \"Чи вам відомо?\""
+
+msgid ""
+"/mail NICK MSG - send offline message to NICK. Working only in tmw server."
+msgstr "/mail ГРАВЕЦЬ ПОВІДОМЛЕННЯ - надіслати офлайн повідомлення гравцю. Працює тільки на TMW серверах."
+
+msgid "Download"
+msgstr "Завантажити"
+
+msgid "/dropn - drop N items from any slot."
+msgstr "/dropn - кинути N предметів з довільного комірця."
+
+msgid "/enableaway - enable away messages in current tab."
+msgstr "/enableaway - увімкнути повідомлення режиму \"Відсутній\" у цій вкладці."
+
+msgid "Support"
+msgstr "Підтримка"
+
+msgid "\"Copy equiped to Outfit\""
+msgstr "\"Копіювати вдягнене речі у вікно швидкого спорядження\""
+
+msgid "/outfit next - wear next outfit."
+msgstr "/outfit next - вдягнути наступне швидке спорядження."
+
+msgid "\"Outfit shortcut 3\""
+msgstr "\"Спорядження 3\""
+
+msgid "\"Quick drop N items\""
+msgstr "\"Швидку кидання N предметів\""
+
+msgid ""
+"/msg NICK text, /whisper NICK text, /w NICK text - send whisper message to "
+"nick."
+msgstr "/msg ГРАВЕЦЬ ТЕКСТ, /whisper ГРАВЕЦЬ ТЕКСТ, /w ГРАВЕЦЬ ТЕКСТ - надіслати приватне повідомлення."
+
+msgid "/movetotarget - move to target position."
+msgstr "/movetotarget - наблизитися до цілі."
+
+msgid "/outfit prev - wear previous outfit."
+msgstr "/outfit prev - вдягнути попереднє швидке спорядження."
+
+msgid "##2Party level2:##9 enables a char to create a party."
+msgstr "##2Група 2 рівня:##9 дозволяє гравцю створити групу."
+
+msgid "/target NICK - select nick as target. Can be monster or player nick."
+msgstr "/target ІМ'Я - зробити гравця (чи моба) мішенню."
+
+msgid "##2ManaPlus version: ##6%VER%"
+msgstr "##2Версія ManaPlus : ##6%VER%"
+
+msgid "COMMANDS"
+msgstr "КОМАНДИ"
+
+msgid "For other server look servers pages for support."
+msgstr "Інформація щодо гри на інших серверах доступна за релевантним посиланням у списку серверів."
+
+msgid "\"Toggle chat\""
+msgstr "\"Перейти до балачки\""
+
+msgid "/talkpet TEXT - talk from your pet."
+msgstr "/talkpet ТЕКСТ - говорити за допомогою вашого улюбленця."
+
+msgid "\"Change attack type\""
+msgstr "\"Змінити тип атаки\""
+
+msgid "Manaplus Developers"
+msgstr "Розробники Manaplus"
+
+msgid "\"On / off audio\""
+msgstr "\"Увімкнути / вимкнути звук\""
+
+msgid "You can change any key in keyboard settings."
+msgstr "Ви можете змінити будь-яку клавішу в налаштуванні."
+
+msgid "\"Previous chat tab line\""
+msgstr "\"Попередній рядок вкладки чату\""
+
+msgid "\"Emote shortcut 13\""
+msgstr "\"Смайлик 13\""
+
+msgid "/disregard NICK - add nick to disregarded list."
+msgstr "/disregard ГРАВЕЦЬ - додати гравця до секретного списку негідників."
+
+msgid "/enablehighlight - enable highlight in current tab."
+msgstr "/enablehighlight - вмикає підсвічування активної вкладки."
+
+msgid "/disableaway - disable away messages in current tab."
+msgstr "/disableaway - вимкнути повідомлення режиму \"Відсутній\" у цій вкладці."
+
+msgid "\"Smilie\""
+msgstr "\"Смайлики\""
+
+msgid "Main development"
+msgstr "Головна розробка"
+
+msgid ""
+" Left click to execute default action: walk, pick up an item, attack a monster\n"
+" and talk to NPCs (be sure to click on their feet). Right click to show up a\n"
+" context menu. Holding [Left Shift] prevents from walking when attacking."
+msgstr " Лівий клік виконує дію за замовчуванням: рухатися, підняти предмет, \n поцілити супротивника чи звернутися до NPC (для впевненості клік повинен \n потрапити на їх нижчу частину). Правий клік викликає контекстне меню.\n Утримання [Left Shift] запобігає руху під час атаки."
+
+msgid "Search string not found."
+msgstr "Розшукуваний рядок не знайдено."
+
+msgid "\"Emote shortcut 7\""
+msgstr "\"Смайлик 7\""
+
+msgid ""
+"You can set any client resolution. In settings in video tab,\n"
+"click on \"custom\" and enter for example: 900x500 and press ok."
+msgstr "Ви можете встановити будь-яку роздільність. Як приклад, клікніть\n\"Значення користувача\" в налаштуванні у вкладці відео, встановіть\nзначення 900x500 та натисніть ОК."
+
+msgid "/attack - attack target."
+msgstr "/attack - атакувати ціль."
+
+msgid "\"Set home location/set arrow\""
+msgstr "\"Встановити домашню клітинку/напрямок\""
+
+msgid "\"Set direction left\""
+msgstr "\"Встановити напрямок ліворуч\""
+
+msgid "\"Equipment window\""
+msgstr "\"Вікно спорядження\""
+
+msgid "Mana Contributors"
+msgstr "В розробці Mana брали участь"
+
+msgid "/dumpt - dump tests info into chat."
+msgstr "/dumpt - надати інформацію про тести в чаті."
+
+msgid "Different patches"
+msgstr "Різні патчі"
+
+msgid "Sound effects"
+msgstr "Звукові ефекти"
+
+msgid "\"Talk\""
+msgstr "\"Діалог\""
+
+msgid "\"Item shortcut 8\""
+msgstr "\"Швидка клавіша предмета 8\""
+
+msgid "/all - show visible beings list in debug tab."
+msgstr "/all - показати список всіх видимих істот у вкладці зневадження."
+
+msgid ""
+"Most commands working in whispers.\n"
+"For example command /imitation in whisper with nick1,\n"
+" similar to command /imitation nick1."
+msgstr "Більшість команд, набраних у приватному чаті, дозволяє вилучити адресата.\nНаприклад, команда \"/imitation\" в приваті з ГРАВЕЦЬ1\nє тотожною команді \"/imitation ГРАВЕЦЬ1\"."
+
+msgid "\"Ignore input 1\""
+msgstr "\"Ігнорувати пристрій введення 1\""
+
+msgid "\"Item shortcut 6\""
+msgstr "\"Швидка клавіша предмета 6\""
+
+msgid ""
+" If you're having troubles, please first of all read the FAQ. If you\n"
+" can't find a solution to your problem, feel free to check our\n"
+" Bugs/Support section of the forum:"
+msgstr " За будь-якими питаннями про гру в першу чергу зверніться до FAQ.\n Якщо пошук відповіді не вдався, будь ласка, звертайтесь в розділ\n Помилки/Підтримка (Bugs/Support) на форумі:"
+
+msgid "/help - show this help."
+msgstr "/help > Показати це вікно"
+
+msgid "\"Outfit shortcut 7\""
+msgstr "\"Спорядження 7\""
+
+msgid "/addpriorityattack NAME - add monster to priority attack list."
+msgstr "/addpriorityattack МОБ - додати моба до пріоритетного списку атаки."
+
+msgid "For TMW support:"
+msgstr "Підтримка TMW:"
+
+msgid "/priceload - load shop price from disc."
+msgstr "/priceload - поновити прейскурант крамниці з файлу на диску."
+
+msgid ""
+" - ##2friend##9:  You consider this player a friend.  The player may chat,\n"
+"   message your in private, or trade with you at any point."
+msgstr " - ##2приятель##9: ви вважаєте цього гравця приятелем. Гравець може писати\n   в загальний чат та в приватні повідомлення, пропонувати торгівлю."
+
+msgid "\"Item shortcut 13\""
+msgstr "\"Швидка клавіша предмета 13\""
+
+msgid "For other servers may exists other copyrights."
+msgstr "Інші сервери можуть мати власні авторські права."
+
+msgid "\"Outfit shortcut 13\""
+msgstr "\"Спорядження 13\""
+
+msgid "/sethome - set home position."
+msgstr "/sethome - встановити домашні координати."
+
+msgid ""
+" - ##2allow whispers##9: Do you wish to allow arbitrary players to send\n"
+"   private messages to you in-game?"
+msgstr " - ##2дозволити шепіт##9: дозволяє іншим гравцям писати вам приватні\n   повідомлення."
+
+msgid "\"Copy outfit\""
+msgstr "\"Копіювати спорядження\""
+
+msgid "/present - print visible players number to chat."
+msgstr "/present - вивести кількість видимих гравців."
+
+msgid "/dumpogl - dump all OpenGL variables into log file."
+msgstr "/dumpogl - розвантажити всі змінні OpenGL в лог ManaPlus."
+
+msgid "Contributors to client development"
+msgstr "В розробці клієнтської частини приймали участь"
+
+msgid "/gm MESSAGE - send message to all online gms."
+msgstr "/gm ТЕКСТ - надіслати повідомлення всім присутнім ГМ'ам."
+
+msgid ""
+"You can do basic searching in help by using command\n"
+"##2?text"
+msgstr "Ви можете використати пошук в системі допомоги застосувавши\n##2?текст"
+
+msgid ""
+"You can buy or sell items from players shops.\n"
+"Right click on player and select \"Buy\" or \"Sell\""
+msgstr "Ви можете купувати та продавати предмети в персональних крамницях гравців.\nНатисніть праву кнопку миші на гравцеві та виберіть \"Купувати\" чи \"Продавати\""
+
+msgid "/unignore NICK - Remove nick from ignore list."
+msgstr "/unignore ГРАВЕЦЬ - прибрати гравця зі списку ігнорування."
+
+msgid ""
+"You can restore yellow bar settings,\n"
+"by right click on it and select in context menu \"Reset yellow bar\"."
+msgstr "Ви можете скинути налаштування Жовтого рядка натиснувши в контекстному меню\n\"Встановити Жовтий рядок за замовчуванням\"."
+
+msgid "\"Emote shortcut 3\""
+msgstr "\"Смайлик 3\""
+
+msgid "/dumpg - dump graphics and some other settings to chat."
+msgstr "/dumpg - вивести налаштування графіки в чат."
+
+msgid "/trade NICK - start trade with nick."
+msgstr "/trade ГРАВЕЦЬ - торгувати з гравцем."
+
+msgid "\"Switch magic attack\""
+msgstr "\"Перемкнути магічну атаку\""
+
+msgid ""
+"You can hide/show bars and buttons by right click and select menu item."
+msgstr "Панелі і кнопки можна показати чи заховати здійснивши правий клік \nта вибравши потрібний елемент в контекстному меню."
+
+msgid "\"Enable / disable away mode\""
+msgstr "\"Увімкнення / вимкнення режиму відсутності (AFK)\""
+
+msgid "\"Commands window\""
+msgstr "\"Вікно команд\""
+
+msgid "Android porting"
+msgstr "Перенесення на Android"
+
+msgid ""
+"You can set away mode,\n"
+"by type in chat command /away"
+msgstr "Ви можете встановити режим відсутності\nнадрукувавши в чаті команду /away"
+
+msgid "Magic skills:"
+msgstr "Магічні вміння:"
+
+msgid "Server news"
+msgstr "Новини сервера"
+
+msgid "/clear - clear current chat tab."
+msgstr "/clear - очистити активну вкладку чату"
+
+msgid "\"Social window\""
+msgstr "\"Вікно спільноти\""
+
+msgid "\"Emote shortcut 4\""
+msgstr "\"Смайлик 4\""
+
+msgid "\"Close chat tab\""
+msgstr "\"Закрити вкладку чату\""
+
+msgid "\"Target player\""
+msgstr "\"Вибрати гравця\""
+
+msgid "/invite NICK - invite a player to your party."
+msgstr "/invite ГРАВЕЦЬ - запросити гравця до групи"
+
+msgid ""
+" - ##2disregarded##9:  You wish to disregard this player, meaning that his or\n"
+"   her chat messages are not logged and trade requests and whispers are\n"
+"   ignored."
+msgstr " - ##2зневажений##9: означає що публічні повідомлення зазначеного гравця не будуть\n   відображатися в чаті, а спроби торгівлі і приватні повідомлення будуть проігноровані."
+
+msgid "\"Debug window\""
+msgstr "\"Вікно зневадження\""
+
+msgid "\"Next chat tab\""
+msgstr "\"Наступна вкладка балачки\""
+
+msgid "\"Change move to target type\""
+msgstr "\"Змінити тип руху до цілі\""
+
+msgid "\"Pickup\""
+msgstr "\"Підняти предмет\""
+
+msgid "\"Item shortcut 2\""
+msgstr "\"Швидка клавіша предмета 2\""
+
+msgid "About current server"
+msgstr "Про поточний сервер"
+
+msgid "\"Quick heal target or self\""
+msgstr "\"Швидке лікування себе чи цілі\""
+
+msgid "Search error"
+msgstr "Помилка пошуку"
+
+msgid "\"Outfit shortcut 9\""
+msgstr "\"Спорядження 9\""
+
+msgid "\"Change attack weapon type\""
+msgstr "\"Зміна типу зброї\""
+
+msgid "\"Move left\""
+msgstr "\"Рух ліворуч\""
+
+msgid ""
+"##9 This file lists all contributors up to the current release. Check the wiki\n"
+"##9 for the currently active development team."
+msgstr "##9 Цей файл відображає всіх учасників розробки аж до поточної версії.\n##9 Перейдіть на wiki щоб дізнатися активний склад команди розробників."
+
+msgid "\"Chat window\""
+msgstr "\"Вікно балачок\""
+
+msgid "\"Change follow mode\""
+msgstr "\"Змінити режим слідування\""
+
+msgid "\"Previous chat tab\""
+msgstr "\"Попередня вкладка балачки\""
+
+msgid "\"Kills stats window\""
+msgstr "\"Вікно статистики атак\""
+
+msgid "\"Outfit shortcut 2\""
+msgstr "\"Спорядження 2\""
+
+msgid "IGNORING COMMUNICATION"
+msgstr "ІГНОРУВАННЯ"
+
+msgid ""
+" - ##2save player list##9: Should your acquaintance list be saved when you\n"
+"   quit the game?  If you enable this option, your list will survive when you\n"
+"   quit and re-start."
+msgstr " - ##2зберегти список гравців##9: означає чи будуть ваші відносини з гравцями\n   збережені при виході з гри (та застосовані наступного разу)."
+
+msgid "Other"
+msgstr "Інше"
+
+msgid "\"Outfit shortcut 14\""
+msgstr "\"Спорядження 14\""
+
+msgid "\"Emote shortcut window\""
+msgstr "\"Вікно смайликів\""
+
+msgid "\"Wear outfit\""
+msgstr "\"Вдягти спорядження\""
+
+msgid "\"Change map view mode\""
+msgstr "\"Зміна режиму зображення карти\""
+
+msgid "Instructions"
+msgstr "Інструкції"
+
+msgid "\"Emote shortcut 12\""
+msgstr "\"Смайлик 12\""
+
+msgid "About The Mana World"
+msgstr "Про Світ Мани"
+
+msgid "/serverignoreall - ignore all whispers on server side."
+msgstr "/serverignoreall - ігнорувати всі приватні повідомлення на боці серверу."
+
+msgid ""
+"##2               SDL, SDL_image, SDL_mixer (Media framework)\n"
+"##2                     SDL_net (Networking framework)\n"
+"##2                        Guichan (GUI framework)\n"
+"##2                   libxml2 (XML parsing and writing)\n"
+"##2                          PhysFS (Data files)\n"
+"##2                        libcurl (HTTP downloads)\n"
+"##2                            zlib (Archives)"
+msgstr "##2 SDL, SDL_image, SDL_mixer (Медіа фреймворк)\n##2 SDL_net (Мережевий фреймворк)\n##2 Guichan (Графичний фреймворк)\n##2 libxml2 (XML розбір і запис)\n##2 PhysFS (Файли даних)\n##2 libcurl (HTTP завантаження)\n##2 zlib (Архіви)"
+
+msgid "\"Sit\""
+msgstr "\"Присісти й відпочити\""
+
+msgid "/navigate x y - move to position x,y in current map in any distance."
+msgstr "/navigate X Y - рухатись до координат X,Y даної карти з довільної позиції."
+
+msgid "SKILLS"
+msgstr "ВМІННЯ"
+
+msgid "Actions"
+msgstr "Дії"
+
+msgid "/emote N - use emotion number N."
+msgstr "/emote N - вжити смайлик N."
+
+msgid "/item 0 - disable party item sharing options."
+msgstr "/item 0 - зберігати власника дропів для членів групи."
+
+msgid "\"Target closest monster\""
+msgstr "\"Приціл на найближчого моба\""
+
+msgid "\"Outfits window\""
+msgstr "\"Вікно швидкого спорядження\""
+
+msgid "Party chat commands"
+msgstr "Команди чату групи"
+
+msgid ""
+"You can walk to warps automatically.\n"
+"Open Social Window (###keyWindowSocial;) and selecy Nav tab,\n"
+"then click on warp what you want."
+msgstr "Ви можете рухатись до телепортів автоматично.\nВідкрийте Вікно спільноти (###keyWindowSocial;), виберіть вкладку \"Нав\"\nі виберіть потрібний телепорт, присутній на карті."
+
+msgid ""
+"##2ManaPlus##9 is extended client based on old code from ##2Mana##9 client.\n"
+" Added many features, improved perfomance, stability, security and more."
+msgstr "##2ManaPlus##9 це розширена версія клієнту на основі старого коду ##2Mana##9.\n Додано багато можливостей, покращена продуктивність, стабільність, безпека та багато іншого."
+
+msgid ""
+"You can disable yellow bar,\n"
+"by pressing ###keyDisableGameModifiers;."
+msgstr "Ви можете відключити жовтий рядок\nнатиснувши ##keyDisableGameModifiers;."
+
+msgid "\"Screenshot\""
+msgstr "\"Знімок екрану\""
+
+msgid "/closeall - close all whispers."
+msgstr "/closeall - закрити всі вкладки приватних повідомлень."
+
+msgid ""
+" To add an item to the shortcut bar click on the item in the inventory window,\n"
+" then click on the box in the shortcut-window which should be associated with\n"
+" the item. To reorder items within the shortcut-window simply click and drag\n"
+" them between the boxes. To remove items you simply drag them outside of the\n"
+" window and drop them."
+msgstr " Щоб додати предмет до вікна швидких предметів, виберіть лівим кліком\n предмет в сумці та клікніть потрібний комірок в вікні швидких предметів.\n Предмети у вікні можна міняти місцями перетаскуванням лівим кліком. Для видалення\n предмета з швидкого доступу просто перетягніть його за межі вікна."
+
+msgid "/query NICK, /q NICK - open new whisper tab for nick."
+msgstr "/query ГРАВЕЦЬ, /q ГРАВЕЦЬ - створює вкладку для приватної розмови з іншим користувачем."
+
+msgid "\"Item shortcut 5\""
+msgstr "\"Швидка клавіша предмета 5\""
+
+msgid "\"Scroll chat up\""
+msgstr "\"Гортати балачку вище\""
+
+msgid ""
+"##2ManaPlus##9 is a serious effort to create an innovative free and open\n"
+" source MMORPG Client. ManaPlus uses 2D graphics and aims to create a large\n"
+" and diverse interactive world. It is licensed under the GPL, making\n"
+" sure this game can't ever run away from you."
+msgstr "##2ManaPlus##9 - серйозне зусилля зі створення інноваційного вільного та\n відкритого MMORPG клієнта. ManaPlus використовує 2D графіку та має на меті\n створення просторих та різноманітних інтерактивних світів. Ліцензія GPL\n гарантує, що гра навряд чи втече від вас за браму закритого програмного забезпечення."
+
+msgid "\"Outfit shortcut 6\""
+msgstr "\"Спорядження 6\""
+
+msgid "Visit IRC channel:"
+msgstr "Відвідати IRC канал:"
+
+msgid "\"Target & attack\""
+msgstr "\"Приціл і атака\""
+
+msgid "\"Item shortcut 10\""
+msgstr "\"Швидка клавіша предмета 10\""
+
+msgid "/where - print current player position to chat."
+msgstr "/where - показати ім'я мапи та координати."
+
+msgid "/exp - show party experience sharing options."
+msgstr "/exp - показати налаштування розділення досвіду в групі."
+
+msgid "/dumpmods - dump all enabled mod names into chat."
+msgstr "/dumpmods - вивести назви всіх включених модів у чат."
+
+msgid "INDEX"
+msgstr "ЗМІСТ"
+
+msgid "\"Outfit shortcut 10\""
+msgstr "\"Спорядження 10\""
+
+msgid "\"Crazy moves\""
+msgstr "\"Божевільні рухи\""
+
+msgid "Website: @@http://manaplus.org/|http://manaplus.org/@@"
+msgstr "Інтернет сайт: @@http://manaplus.org/|http://manaplus.org/@@"
+
+msgid "/uptime - show client uptime."
+msgstr "/uptime - показати час роботи клієнта."
+
+msgid "/imitation NICK - start imitation mode."
+msgstr "/imitation ГРАВЕЦЬ - увімкнути режим імітації."
+
+msgid "\"Ignore input 2\""
+msgstr "\"Ігнорувати пристрій введення 2\""
+
+msgid "\"Scroll chat down\""
+msgstr "\"Гортати балачку нижче\""
+
+msgid "\"Move to target\""
+msgstr "\"Рух до цілі\""
+
+msgid "/ignoreall - add all whispers to ignore list."
+msgstr "/ignoreall - додати всіх в список ігнорування."
+
+msgid "\"Chat auto complete\""
+msgstr "\"Автодоповнення в чаті\""
+
+msgid "/ignore NICK - add nick to ignore list."
+msgstr "/ignore ГРАВЕЦЬ - додати гравця в список ігнорування"
+
+msgid "\"Attack\""
+msgstr "\"Атака\""
+
+msgid "/magicattack - attack target with magic."
+msgstr "/magicattack - атакувати ціль за допомогою магії."
+
+msgid "For ManaPlus Online support:"
+msgstr "Підтримка ManaPlus Online:"
+
+msgid "\"Set direction right\""
+msgstr "\"Встановити напрямок праворуч\""
+
+msgid "Other linux:"
+msgstr "Інші Linux дистрибутиви:"
+
+msgid "DOWNLOADS"
+msgstr "ЗАВАНТАЖЕННЯ"
+
+msgid "/item 1 - enable party item sharing options."
+msgstr "/item 1 - дозволити членам групи ділитися награбованим, кхм, дропами."
+
+msgid "##9Magic skills can be obtain by doing quests and missions in game."
+msgstr "##9Магічні вміння отримуються через виконання квестів та місій у грі."
+
+msgid "/erase NICK - add nick to erased list."
+msgstr "/erase ГРАВЕЦЬ - додати гравця в список стертих."
+
+msgid "COMMUNICATION:"
+msgstr "КОМУНІКАЦІЯ:"
+
+msgid "Search results"
+msgstr "Результат пошуку"
+
+msgid "\"Inventory window\""
+msgstr "\"Сумка (інвентар)\""
+
+msgid "\"Change pickup type\""
+msgstr "\"Зміна типу підбирання предметів\""
+
+msgid "/item - show party item sharing options."
+msgstr "/item - показати стан розподілення дропів у групі."
+
+msgid "move key"
+msgstr "клавіша руху"
+
+msgid "\"Emote shortcut 5\""
+msgstr "\"Смайлик 5\""
+
+msgid "/open URL - open url in browser."
+msgstr "/open URL - відкрити URL у браузері."
+
+msgid ""
+" The player list lists all of your acquaintances.  They are categorised as one\n"
+" of the following:"
+msgstr " Список гравців відображає всі ваші знайомства. Можливі відносини такі:"
+
+msgid "/cleanfonts - remove all cached render strings."
+msgstr "/cleanfonts - стерти всі кешовані строки."
+
+msgid "/dumpgl - dump OpenGL version into chat."
+msgstr "/dumpgl - показати версію OpenGL в чаті."
+
+msgid "MOUSE:"
+msgstr "МИША:"
+
+msgid "Current server support url:"
+msgstr "Сторінка підтримки цього ігрового серверу:"
+
+msgid "Player relations"
+msgstr "Стосунки з гравцями"
+
+msgid ""
+"You can copy value from any bar,\n"
+"by right click on it and select in context menu \"Copy to chat\"."
+msgstr "Ви можете копіювати значення з будь-якої панелі стану через правий клік\nна ній та, відповідно, опцію контекстного меню \"Копіювати в чат\"."
+
+msgid "\"Item shortcut 14\""
+msgstr "\"Швидка клавіша предмета 14\""
+
+msgid "/outfit N - wear outfit number N."
+msgstr "/outfit N - вдягнути швидке спорядження номер N."
+
+msgid "/dirs - show client dirs in debug chat tab."
+msgstr "/dirs - показати системні шляхи клієнта у вкладці зневадження."
+
+msgid "/movetohome - move to home position."
+msgstr "/movetohome - подорожувати додому :)."
+
+msgid "\"Switch quick drop counter\""
+msgstr "\"Перемикання лічильника швидкого кидання\""
+
+msgid "\"Change crazy Move mode\""
+msgstr "\"Зміна режиму божевільних рухів\""
+
+msgid "\"Outfit shortcut 8\""
+msgstr "\"Спорядження 8\""
+
+msgid "\"Change imitation mode\""
+msgstr "\"Зміна режиму імітації\""
+
+msgid "##9Other skills can be obtain by doing quests and missions in game."
+msgstr "##9Інші вміння можуть бути отримані при виконанні місій та квестів у грі."
+
+msgid "\"Reset video mode to safe value\""
+msgstr "\"Скинути відео режим в безпечне значення\""
+
+msgid "/uploadconfig - upload main config into pastebin service."
+msgstr "/uploadconfig - завантажити файл основної конфігурації клієнту до сервісу pastebin."
+
+msgid "/testparticle FILENAME - set test particle on player."
+msgstr "/testparticle ФАЙЛ - застосувати тестові частинки до гравця."
+
+msgid "\"Bot checker window\""
+msgstr "\"Вікно виявлення ботів\""
+
+msgid ""
+" - ##2neutral##9:  As far as the game is concerned, this is the same as not\n"
+"   having the player listed:  the player may chat with you, but may only trade\n"
+"   or whisper if you have this option allowed for everyone."
+msgstr " - ##2нейтральний##9: те ж саме, що не мати певних стосунків взагалі. Можливість\n   торгувати та писати приватні повідомлення контролюється загальними дозволами."
+
+msgid "/url URL - insert url into chat."
+msgstr "/url URL - додати URL у чат."
+
+msgid "\"Help window\""
+msgstr "\"Вікно довідки\""
+
+msgid "\"Outfit shortcut 1\""
+msgstr "\"Спорядження 1\""
+
+msgid ""
+" You may find that not all communication is to your liking.  While most people\n"
+" are nice, some may offend you or try to make your life harder-- since this is\n"
+" an open game, there is nothing the developers can do to prevent this."
+msgstr " Ви можете помітити, що не всі спілкування вам до вподоби. Незважаючи на те, що\n більшість гравців є дружелюбна, певна частка може вас ображати чи намагатись\n зробити ваше життя складніше; оскільки ця гра відкрита, розробники не мають\n можливості багато зробити, щоб цьому запобігти."
+
+msgid "About"
+msgstr "Про гру"
+
+msgid "\"Outfit shortcut 15\""
+msgstr "\"Спорядження 15\""
+
+msgid "\"Move right\""
+msgstr "\"Рух праворуч\""
+
+msgid "##2Emote:##9 enables the ability to express emotions."
+msgstr "##2Смайлики:##9 дозволяє посміхатись :o) ."
+
+msgid "\"Emote shortcut 8\""
+msgstr "\"Смайлик 8\""
+
+msgid "For Evol Online support:"
+msgstr "Служба підтримки Evol Online:"
+
+msgid "/follow NICK - start follow mode."
+msgstr "/follow ГРАВЕЦЬ - іти слідом за даним гравцем."
+
+msgid "To read about whispering and other chat commands, look here:"
+msgstr "Щоб дізнатись про приватні повідомленні (шепіт, whisper)\n та інші команди, заглянь сюди:"
+
+msgid ""
+"You can select other themes.\n"
+"For this you should open settings and select theme tab\n"
+"and change \"gui theme\""
+msgstr "Ви можете вибрати іншу тему інтерфейсу.\nДля цього відкрийте налагодження на вкладці \"Теми\"\nта застосуйте \"тему інтерфейсу\"."
+
+msgid "\"Emote shortcut 11\""
+msgstr "\"Смайлик 11\""
+
+msgid "\"Set direction down\""
+msgstr "\"Встановити напрямок донизу\""
+
+msgid "\"Target NPC\""
+msgstr "\"Вибрати NPC\""
+
+msgid "/info - show guild info. Only for native guilds only."
+msgstr "/info - показати інформацію про гільдію. Тільки для нативних гільдій."
+
+msgid "/neutral NICK - add nick to neutral relation list."
+msgstr "/neutral ГРАВЕЦЬ - додати гравця в нейтральний список."
+
+msgid "THE PLAYER LIST"
+msgstr "СПИСОК ГРАВЦІВ"
+
+msgid "\"Item shortcut window\""
+msgstr "\"Вікно швидких предметів\""
+
+msgid "\"Emote shortcut 1\""
+msgstr "\"Смайлик 1\""
+
+msgid ""
+" - ##2ignored##9:  You wish to completely ignore this player.  You will not\n"
+"   even see floating text for him or her anymore, nor emotions."
+msgstr " - ##2ігнорований##9: якщо ви бажаєте цілком ігнорувати цього гравця.\n   Ви більше не побачите від нього навіть бульбашки повідомлень чи смайлики."
+
+msgid "/me text - send text to chat as /me command in irc."
+msgstr "/me - розказати щось про себе"
+
+msgid "/help - show small help about chat commands. "
+msgstr "/help - відкрити довідку про команди чату."
+
+msgid "Debug"
+msgstr "Зневадження"
+
+msgid "/setdrop N - set drop counter to requested value."
+msgstr "/setdrop N - вказати потрібне значення лічильнику дропів швидкого кидання."
+
+msgid "\"Shop window\""
+msgstr "\"Вікно крамниці\""
+
+msgid "\"Move down\""
+msgstr "\"Рух донизу\""
+
+msgid "\"Setup window\""
+msgstr "\"Вікно налаштування\""
+
+msgid "/removeattack NAME - remove monster from attack list."
+msgstr "/removeattack МОБ - видалити моба зі списку атаки."
+
+msgid "\"Set direction up\""
+msgstr "\"Встановити напрямок вгору\""
+
+msgid "or come visit us on our IRC channel:"
+msgstr "або завітайте до нашого IRC каналу:"
+
+msgid "\"Toggle camera mode\""
+msgstr "\"Перемикання режиму камери\""
+
+msgid "WINDOWS"
+msgstr "ВІКНА"
+
+msgid "SUPPORT"
+msgstr "ПІДТРИМКА"
+
+msgid "/pricesave - save shop price to disc."
+msgstr "/pricesave - зберегти ціни крамниці."
+
+msgid "Look this page for help and downloads:"
+msgstr "Завітайте до цієї сторінки для отримання довідки та оновлення клієнта:"
+
+msgid "Other skills:"
+msgstr "Інші вміння:"
+
+msgid ""
+"You can use mumble voice chat for talking with other players.\n"
+"Start mumble before client start and enable mumble in settings."
+msgstr "Ви можете приєднатись до голосового чату Mumble з іншими гравцями.\nУвімкніть Mumble перед стартом клієнту та активуйте Mumble в налаштуванні."
+
+msgid "\"Move up\""
+msgstr "\"Рух угору\""
+
+msgid "Here contributors from parent projects"
+msgstr "Тут учасники з батьківських проектів"
+
+msgid "\"Item shortcut 4\""
+msgstr "\"Швидка клавіша предмета 4\""
+
+msgid "/who - print online players number to chat."
+msgstr "/who - показати кількість гравців онлайн."
+
+msgid "/createitems - open dialog for creating items."
+msgstr "/createitems - відкрити діалог створення предметів."
+
+msgid "##2Party Level1:##9 enables a char to join a party."
+msgstr "##2Група 1 рівня:##9 дозволяє гравцю приєднуватись до групи."
+
+msgid "\"Outfit shortcut 5\""
+msgstr "\"Спорядження 5\""
+
+msgid "KEYBOARD:"
+msgstr "КЛАВІАТУРА:"
+
+msgid "Windows"
+msgstr "Вікна"
+
+msgid "/emotepet N - use emotion number N from your pet."
+msgstr "/emotepet N - вжити смайлик номер N на вашому улюбленці."
+
+msgid ""
+"Otherwise see the @@team|Development Team@@ section to have a list of\n"
+" developers and how to contact them."
+msgstr "В іншому випадку дивіться секцію @@команда|Команда Розробників@@, щоб\n отримати список розробників та їхні контактні реквізити."
+
+msgid "\"Item shortcut 11\""
+msgstr "\"Швидка клавіша предмета 11\""
+
+msgid ""
+"/cleangraphics - remove all cached graphics. Useful for content developers."
+msgstr "/cleangraphics - стерти графічний кеш. Зручно для розробників контенту."
+
+msgid "\"Emulate right click from keyboard\""
+msgstr "\"Емуляція правого кліку з клавіатури\""
+
+msgid "MacOSX porting"
+msgstr "Перенесення на MacOSX"
+
+msgid ""
+"About yellow bar you can read here:\n"
+"@@http://manaplus.org/yellowbar|http://manaplus.org/yellowbar@@"
+msgstr "Повне пояснення щодо Жовтого рядка можно прочитати тут:\n@@http://manaplus.org/yellowbar|http://manaplus.org/yellowbar@@"
+
+msgid "/drop - drop N items from 0 slot."
+msgstr "/drop - кинути N (відповідно значенню лічильника) предметів з комірця 0."
+
+msgid "/kick NICK - kick someone from the party you are in."
+msgstr "/kick ГРАВЕЦЬ - виштовхати гравця зі своєї групи."
+
+msgid "\"Outfit shortcut 11\""
+msgstr "\"Спорядження 11\""
+
+msgid "\"Disable / enable game modifier keys\""
+msgstr "\"Активація / Деактивація клавіш Жовтого рядка"
+
+msgid "\"Quit\""
+msgstr "\"Вихід\""
+
+msgid "/move X Y - move to X,Y position in short distance."
+msgstr "/move X Y - рухатись в точку X,Y, що знаходиться безпосередньо поруч."
+
+msgid "Themes:"
+msgstr "Теми:"
+
+msgid "\"Hide windows\""
+msgstr "\"Сховати вікна\""
+
+msgid "Chat commands"
+msgstr "Команди чату"
+
+msgid "Trade"
+msgstr "Торгівля"
+
+msgid "/blacklist NICK - add nick to blacklist relation list."
+msgstr "/blacklist ГРАВЕЦЬ - додати гравця до чорного списку."
+
+msgid "Art or images contributors"
+msgstr "Художники"
+
+msgid "/exp 0 - disable party experience sharing options."
+msgstr "/exp 0 - відключити розподілення досвіду між членами групи."
+
+msgid "Basic skills:"
+msgstr "Основні вміння:"
+
+msgid "/uploadlog - upload log into pastebin service."
+msgstr "/uploadlog - завантажити лог в сервіс pastebin."
+
+msgid "/leave - leave the party you are in."
+msgstr "/leave - залишити групу."
+
+msgid "\"Status window\""
+msgstr "\"Вікно стану\""
+
+msgid "/notice TEXT - set notice guild text."
+msgstr "/notice ТЕКСТ - встановити текст повідомлення гільдії."
+
+msgid "/friend NICK, /befriend NICK - add nick to friends list."
+msgstr "/friend ГРАВЕЦЬ, /befriend ГРАВЕЦЬ - приятелювати з гравцем."
+
+msgid "ABOUT THE MANA WORLD"
+msgstr "ПРО СВІТ МАНИ"
+
+msgid "\"Emote shortcut 14\""
+msgstr "\"Смайлик 14\""
+
+msgid "Commands"
+msgstr "Команди"
+
+msgid "\"Stop Attack\""
+msgstr "\"Зупинити атаку\""
+
+msgid "Contributors to client/server development"
+msgstr "В розробці клиєнтської/серверної частини брали участь"
+
+msgid "Sources:"
+msgstr "Тексти програм:"
+
+msgid "To type chat message, press ###keyChat;"
+msgstr "Для введення повідомлень в чат, натисніть ###keyChat;"
+
+msgid "Translators"
+msgstr "Перекладачі"
+
+msgid "\"Next chat tab line\""
+msgstr "\"Наступний рядок вкладки чату\""
+
+msgid "\"Move to home location\""
+msgstr "\"Рухатись до домашньої локації\""
+
+msgid "Powered By"
+msgstr "Зроблено за допомогою"
+
+msgid "\"Skill window\""
+msgstr "\"Вікно вмінь\""
+
+msgid "\"Emote shortcut 6\""
+msgstr "\"Смайлик 6\""
+
+msgid "/disconnect - quick disconnect from server."
+msgstr "/disconnect - швидко від'єднатись від серверу."
+
+msgid "/enemy NICK - add nick to enemies list."
+msgstr "/enemy NICK - маркувати супротивника червоною фарбою."
+
+msgid "\"Item shortcut 1\""
+msgstr "\"Швидка клавіша предмета 1\""
+
+msgid "\"Use #itenplz spell\""
+msgstr "\"Чаклувати заклинання #itenplz\""
+
+msgid "/exp 1 - enable party experience sharing options."
+msgstr "/exp 1 - увімкнути розподілення досвіду серед членів групи."
+
+msgid "/undress NICK - remove all clothes from nick. Local effect only."
+msgstr "/undress ГРАВЕЦЬ - зняти весь одяг з гравця. Виключно локальний ефект."
+
+msgid "\"Quick drop N items from 0 slot\""
+msgstr "\"Швидке кидання N предметів з 0 комірця\""
+
+msgid "/disablehighlight - disable highlight in current tab."
+msgstr "/disablehighlight - вимкнути підсвічування активної вкладки."
+
+msgid "\"Item shortcut 15\""
+msgstr "\"Швидка клавіша предмета 15\""
+
+msgid "Whispers commands"
+msgstr "Команди у вкладках приватних повідомлень"
+
+msgid ""
+"You can see other player equiped items,\n"
+"by right click on player and select in context menu \"Show Items\"."
+msgstr "Ви можете бачити обладунки інших гравців; для цього зробіть по гравцю\nправий клік та оберіть \"Показати спорядження\"."
+
+msgid "Whispers"
+msgstr "Приватні повідомлення (шепіт, whisper)"
+
+msgid "emote key"
+msgstr "клавіша смайлика"
+
+msgid "\"Item shortcut 9\""
+msgstr "\"Швидка клавіша предмета 9\""
+
+msgid ""
+" There you will find a list of all players you are acquainted with, as well as\n"
+" several configuration options:"
+msgstr " Тут знаходиться список гравців, щодо яких ви вказали стосунки, та кілька інших опцій"
+
+msgid "Skills"
+msgstr "Вміння"
+
+msgid "\"Item shortcut 7\""
+msgstr "\"Швидка клавіша предмета 7\""
+
+msgid "\"Minimap window\""
+msgstr "\"Вікно мінімапи\""
+
+msgid ""
+" However, you can protect yourself from such players by ignoring them.  Right-\n"
+" click on them to bring up the context menu, then select `Ignore' or\n"
+" `Disregard' (see below).  You can fine-tune your player relations in the\n"
+" `Setup' menu, which lists all the players you have added to it.  To open this\n"
+" menu, select `Setup' in the upper right corner of the screen, then `Relations'."
+msgstr " Проте ви можете захиститись від таких гравців ігноруючи їх. Зробіть на гравцеві\n правий клік та виберіть в контекстному меню \"Ігнорувати\" чи \"Зневажати\"\n (дивіться нижче). Ви можете ретельно вказати відносини в меню налаштування,\n яке зберігає всі відомі раніше додані стосунки. Меню доступне через вікно\n налаштування (знайдіть в правому верхньому кутку) у вкладці \"Відносини\"."
+
+msgid "\"Item shortcut 12\""
+msgstr "\"Швидка клавіша предмета 12\""
+
+msgid "SHORTCUTS:"
+msgstr "ШВИДКІ КЛАВІШІ:"

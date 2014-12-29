@@ -1,7 +1,7 @@
 # Set of available languages.
 #ar # Disabled because of current client limitations (shaping, RTL)
 #bg # Not enough translations
-#ca # Not enough translations
+ca
 cs
 #da # Not enough translations
 de
@@ -21,7 +21,7 @@ ja
 #ka # Not enough translations
 #nb # Not enough translations
 #nds # Not enough translations
-#nl # Not enough translations
+nl
 nl_BE
 pl
 pt
@@ -29,12 +29,12 @@ pt_BR
 ru
 #sk # Not enough translations
 #sq # Not enough translations
-#sv # Not enough translations
+sv
 sv_SE
 #te # Disabled because of current client limitations (font fallbacking)
 #th # Disabled because of current client limitations (font fallbacking)
 tr
-#uk # Not enough translations
+uk
 zh_CN
 #zh_HK # Disabled because of current client limitations (font fallbacking)
 #zh_TW # Disabled because of current client limitations (font fallbacking)

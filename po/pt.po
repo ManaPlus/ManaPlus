@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2014-12-28 19:54+0300\n"
-"PO-Revision-Date: 2014-12-11 10:00+0000\n"
+"PO-Revision-Date: 2014-12-29 09:57+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/manaplus/"
 "language/pt/)\n"
@@ -6809,57 +6809,48 @@ msgstr "Teclas de movimento"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:43
-#, fuzzy
 msgid "Move player up"
-msgstr "Mostrar popups de jogadores"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:49
-#, fuzzy
 msgid "Move player down"
-msgstr "Mover a baixo"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:55
-#, fuzzy
 msgid "Move player left"
-msgstr "Esquerda"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:61
-#, fuzzy
 msgid "Move player right"
-msgstr "Direita"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:67
-#, fuzzy
 msgid "Move player forward"
-msgstr "Borda do Lugar Inicial"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:73
-#, fuzzy
 msgid "Move pet up"
-msgstr "Mover a cima"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:79
-#, fuzzy
 msgid "Move pet down"
-msgstr "Mover a baixo"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:85
-#, fuzzy
 msgid "Move pet left"
-msgstr "Esquerda"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:91
-#, fuzzy
 msgid "Move pet right"
-msgstr "Direita"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:97
@@ -6897,9 +6888,8 @@ msgstr "Mover para ponto %d"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:36
-#, fuzzy
 msgid "Input ignore"
-msgstr "Não ignorar"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:42
@@ -6913,9 +6903,8 @@ msgstr "Ignorar input 2"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:54
-#, fuzzy
 msgid "Direction keys"
-msgstr "Para baixo"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:60
@@ -6924,45 +6913,38 @@ msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:66
-#, fuzzy
 msgid "Player direct down"
-msgstr "Jogador acerta Monstro"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:72
-#, fuzzy
 msgid "Player direct left"
-msgstr "Para esquerda"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:78
-#, fuzzy
 msgid "Player direct right"
-msgstr "Para direita"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:84
-#, fuzzy
 msgid "Pet direct up"
-msgstr "Para cima"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:90
-#, fuzzy
 msgid "Pet direct down"
-msgstr "Para baixo"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:96
-#, fuzzy
 msgid "Pet direct left"
-msgstr "Para esquerda"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:102
-#, fuzzy
 msgid "Pet direct right"
-msgstr "Para direita"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:114
@@ -7211,9 +7193,8 @@ msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:416
-#, fuzzy
 msgid "Pet ai start"
-msgstr "Resetar Status"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:422

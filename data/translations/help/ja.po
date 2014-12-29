@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2014-03-09 22:58+0000\n"
+"PO-Revision-Date: 2014-12-28 22:29+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/manaplus/language/ja/)\n"
 "MIME-Version: 1.0\n"
@@ -47,6 +47,9 @@ msgid "\"Quests window\""
 msgstr ""
 
 msgid "\"Quick drop window\""
+msgstr ""
+
+msgid "Official site:"
 msgstr ""
 
 msgid ""
@@ -178,9 +181,6 @@ msgstr ""
 msgid "/enableaway - enable away messages in current tab."
 msgstr ""
 
-msgid "/enemy NICK - add nick to enemyes list."
-msgstr ""
-
 msgid "Support"
 msgstr ""
 
@@ -188,10 +188,6 @@ msgid "\"Copy equiped to Outfit\""
 msgstr ""
 
 msgid "/outfit next - wear next outfit."
-msgstr ""
-
-msgid ""
-"/cleangraphics - remove all cached graphics. Usefull for content developers."
 msgstr ""
 
 msgid "\"Outfit shortcut 3\""
@@ -379,7 +375,10 @@ msgstr ""
 msgid "/dumpogl - dump all OpenGL variables into log file."
 msgstr ""
 
-msgid "/emotepet N - use emotion number N from your pet."
+msgid "Contributors to client development"
+msgstr ""
+
+msgid "/gm MESSAGE - send message to all online gms."
 msgstr ""
 
 msgid ""
@@ -754,6 +753,9 @@ msgstr ""
 msgid "MOUSE:"
 msgstr ""
 
+msgid "Current server support url:"
+msgstr ""
+
 msgid "Player relations"
 msgstr ""
 
@@ -961,7 +963,7 @@ msgstr ""
 msgid "Windows"
 msgstr ""
 
-msgid "Contributors to client development"
+msgid "/emotepet N - use emotion number N from your pet."
 msgstr ""
 
 msgid ""
@@ -970,6 +972,10 @@ msgid ""
 msgstr ""
 
 msgid "\"Item shortcut 11\""
+msgstr ""
+
+msgid ""
+"/cleangraphics - remove all cached graphics. Useful for content developers."
 msgstr ""
 
 msgid "\"Emulate right click from keyboard\""
@@ -1080,6 +1086,9 @@ msgid "\"Emote shortcut 6\""
 msgstr ""
 
 msgid "/disconnect - quick disconnect from server."
+msgstr ""
+
+msgid "/enemy NICK - add nick to enemies list."
 msgstr ""
 
 msgid "\"Item shortcut 1\""

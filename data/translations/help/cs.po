@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2014-07-26 21:13+0000\n"
+"PO-Revision-Date: 2014-12-28 22:29+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Czech (http://www.transifex.com/projects/p/manaplus/language/cs/)\n"
 "MIME-Version: 1.0\n"
@@ -50,6 +50,9 @@ msgstr "\"Okno úkolů\""
 
 msgid "\"Quick drop window\""
 msgstr "\"Okno rychlého upuštění\""
+
+msgid "Official site:"
+msgstr ""
 
 msgid ""
 " You can improve your skills by increasing job level. Each job level\n"
@@ -180,9 +183,6 @@ msgstr "/dropn - Upustí N předmětů z jakéhokoli slotu."
 msgid "/enableaway - enable away messages in current tab."
 msgstr "/enableaway - Povolí away zprávy v aktuální záložce."
 
-msgid "/enemy NICK - add nick to enemyes list."
-msgstr "/enemy PŘEZDÍVKA - přidá přezdívku do seznamu nepřátel."
-
 msgid "Support"
 msgstr "Podpora"
 
@@ -191,10 +191,6 @@ msgstr "\"Zkopírovat výzbroj do výbavy\""
 
 msgid "/outfit next - wear next outfit."
 msgstr "/outfit next - obleče další výbavu."
-
-msgid ""
-"/cleangraphics - remove all cached graphics. Usefull for content developers."
-msgstr "/cleangraphics - odstarní veškerou grafiku z vyrovnávací paměti. Užitečné pro vývojaře obsahu."
 
 msgid "\"Outfit shortcut 3\""
 msgstr "\"Zkratka výbavy  3\""
@@ -381,8 +377,11 @@ msgstr "/present - vypíše počet viditelných hráčů do chatu."
 msgid "/dumpogl - dump all OpenGL variables into log file."
 msgstr "/dumpogl - vypíše všecky OpenGL proměnné do souboru se záznamy."
 
-msgid "/emotepet N - use emotion number N from your pet."
-msgstr "/emotepet N - použije smajlíka N pro vašeho mazlíčka."
+msgid "Contributors to client development"
+msgstr "Přispěvatelé k vývoji klienta"
+
+msgid "/gm MESSAGE - send message to all online gms."
+msgstr ""
 
 msgid ""
 "You can do basic searching in help by using command\n"
@@ -756,6 +755,9 @@ msgstr "/dumpgl - zobrazí verzi OpenGL v chatu."
 msgid "MOUSE:"
 msgstr "MYŠ:"
 
+msgid "Current server support url:"
+msgstr ""
+
 msgid "Player relations"
 msgstr "Vztahy hráče"
 
@@ -963,8 +965,8 @@ msgstr "KLÁVESNICE:"
 msgid "Windows"
 msgstr "Okna"
 
-msgid "Contributors to client development"
-msgstr "Přispěvatelé k vývoji klienta"
+msgid "/emotepet N - use emotion number N from your pet."
+msgstr "/emotepet N - použije smajlíka N pro vašeho mazlíčka."
 
 msgid ""
 "Otherwise see the @@team|Development Team@@ section to have a list of\n"
@@ -973,6 +975,10 @@ msgstr "Jinak se podívejte na sekci @@team|Tým vývojařů@@ pro seznam vývoj
 
 msgid "\"Item shortcut 11\""
 msgstr "\"Zkratka předmětu 11\""
+
+msgid ""
+"/cleangraphics - remove all cached graphics. Useful for content developers."
+msgstr ""
 
 msgid "\"Emulate right click from keyboard\""
 msgstr "\"Emulovat pravý klik z klávesnice\""
@@ -1083,6 +1089,9 @@ msgstr "\"Zkratka smajlíka  6\""
 
 msgid "/disconnect - quick disconnect from server."
 msgstr "/disconnect - rychle odpojí od serveru."
+
+msgid "/enemy NICK - add nick to enemies list."
+msgstr ""
 
 msgid "\"Item shortcut 1\""
 msgstr "\"Zkratka předmětu  1\""
