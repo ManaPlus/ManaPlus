@@ -284,8 +284,8 @@ void ItemDB::loadXmlFile(const std::string &fileName, int &tagNum)
         const int pet = XML::getProperty(node, "pet", 0);
         const int maxFloorOffset = XML::getIntProperty(
             node, "maxFloorOffset", mapTileSize, 0, mapTileSize);
-        std::string useButton = XML::getProperty(node, "useButton", "");
-        std::string useButton2 = XML::getProperty(node, "useButton2", "");
+        std::string useButton = XML::langProperty(node, "useButton", "");
+        std::string useButton2 = XML::langProperty(node, "useButton2", "");
         std::string colors;
         colors = XML::getProperty(node, "colors", "");
 
