@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR The ManaPlus Developers
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Andrei Karas <akaras@inbox.ru>, 2011
 # Arnau Mas <thealchemist886@gmail.com>, 2013-2014
@@ -12,11 +12,12 @@ msgstr ""
 "POT-Creation-Date: 2014-12-28 19:54+0300\n"
 "PO-Revision-Date: 2014-12-29 09:57+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
-"Language-Team: Catalan (http://www.transifex.com/projects/p/manaplus/language/ca/)\n"
+"Language-Team: Catalan (http://www.transifex.com/projects/p/manaplus/"
+"language/ca/)\n"
+"Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ca\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. TRANSLATORS: file uploaded message
@@ -1060,8 +1061,7 @@ msgstr ""
 #. TRANSLATORS: weight message
 #: src/gui/dialogsmanager.cpp:152
 msgid ""
-"You are carrying more than half your weight. You are unable to regain "
-"health."
+"You are carrying more than half your weight. You are unable to regain health."
 msgstr ""
 
 #. TRANSLATORS: weight message
@@ -3489,7 +3489,9 @@ msgstr "Conflicte de tecla(es) detectat."
 msgid ""
 "Conflict \"%s\" and \"%s\" keys. Resolve them, or gameplay may result in "
 "strange behaviour."
-msgstr "Conflicte entre les tecles \"%s\" i \"%s\". Resol-lo, o la jugabilitat por resultar afectada."
+msgstr ""
+"Conflicte entre les tecles \"%s\" i \"%s\". Resol-lo, o la jugabilitat por "
+"resultar afectada."
 
 #. TRANSLATORS: unknown key name
 #. TRANSLATORS: quests window quest name
@@ -4474,13 +4476,17 @@ msgstr "Res"
 #: src/gui/widgets/tabs/setup_video.cpp:225
 msgid ""
 "Failed to switch to windowed mode and restoration of old mode also failed!"
-msgstr "Error al canviar al mode finestra, la restauració al mode anterior també ha fallat!"
+msgstr ""
+"Error al canviar al mode finestra, la restauració al mode anterior també ha "
+"fallat!"
 
 #. TRANSLATORS: video error message
 #: src/gui/widgets/tabs/setup_video.cpp:232
 msgid ""
 "Failed to switch to fullscreen mode and restoration of old mode also failed!"
-msgstr "Error al canviar al mode pantalla completa, la restauració al mode anterior també ha fallat!"
+msgstr ""
+"Error al canviar al mode pantalla completa, la restauració al mode anterior "
+"també ha fallat!"
 
 #. TRANSLATORS: video settings warning
 #: src/gui/widgets/tabs/setup_video.cpp:244
@@ -4520,7 +4526,8 @@ msgstr "La resolució de la pantalla ha canviat"
 
 #: src/gui/widgets/tabs/setup_video.cpp:384
 msgid "Some windows may be moved to fit the lowered resolution."
-msgstr "Algunes finestres poden ser mogudes per adaptar-se a la resolució més baixa."
+msgstr ""
+"Algunes finestres poden ser mogudes per adaptar-se a la resolució més baixa."
 
 #. TRANSLATORS: speach type
 #: src/gui/widgets/tabs/setup_visual.cpp:43
@@ -6275,9 +6282,10 @@ msgstr "No tens diners suficients."
 
 #. TRANSLATORS: trade error
 #: src/gui/windows/tradewindow.cpp:495
-msgid ""
-"Failed adding item. You can not overlap one kind of item on the window."
-msgstr "No s'ha pogut afegir objecte. No es pot afegir més d'un mateix tipus d'objecte a la finestra."
+msgid "Failed adding item. You can not overlap one kind of item on the window."
+msgstr ""
+"No s'ha pogut afegir objecte. No es pot afegir més d'un mateix tipus "
+"d'objecte a la finestra."
 
 #. TRANSLATORS: unregister dialog. label.
 #: src/gui/windows/unregisterdialog.cpp:65
@@ -8876,4 +8884,5 @@ msgstr ""
 #: src/utils/booleanoptions.h:27
 #, c-format
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
-msgstr "Les opcions per a /%s son \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
+msgstr ""
+"Les opcions per a /%s son \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."

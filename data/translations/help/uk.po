@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2014-12-29 16:37+0000\n"
+"PO-Revision-Date: 2014-12-29 18:03+0000\n"
 "Last-Translator: William Lee <v4r@trioptimum.com>\n"
 "Language-Team: Ukrainian (http://www.transifex.com/projects/p/manaplus/language/uk/)\n"
 "MIME-Version: 1.0\n"
@@ -32,7 +32,7 @@ msgstr "Щоб імітувати іншого гравця, виберіть \"
 msgid ""
 " - ##2allow trading##9: Do you wish to allow trade requests from arbitrary\n"
 "   players?"
-msgstr " - ##2дозволити торгівлю##9: якщо ви бажаєте отримувати торгівельні пропозиції\n   від довільних гравців."
+msgstr " - ##2дозволити торгівлю##9: чи бажаєте отримувати торгівельні пропозиції\n   від довільних гравців?"
 
 msgid "\"Emote shortcut 9\""
 msgstr "\"Смайлик 9\""
@@ -79,13 +79,13 @@ msgid "\"Emote shortcut 2\""
 msgstr "\"Смайлик 2\""
 
 msgid "/announce MESSAGE - show global message."
-msgstr "/announce MESSAGE - глобальне оголошення"
+msgstr "/announce MESSAGE - глобальне оголошення."
 
 msgid "/serverunignoreall - unignore all whispers on server side."
 msgstr "/serverunignoreall - вимкнути ігнорування всіх приватних повідомлень на сервері."
 
 msgid "/createparty NAME - create party with selected name."
-msgstr "/createparty ГРУПА - створити групу"
+msgstr "/createparty ГРУПА - створити групу."
 
 msgid "/heal NICK - heal nick."
 msgstr "/heal ГРАВЕЦЬ - вилікувати гравця."
@@ -126,7 +126,7 @@ msgid "\"Move to navigation point\""
 msgstr "\"Рух до навігаційної точки (або телепорту)\""
 
 msgid "ManaPlus Contributors"
-msgstr "Розробники ManaPlus  "
+msgstr "Розробники ManaPlus"
 
 msgid ""
 "The Mana World##0 is a serious effort to create an innovative free\n"
@@ -330,7 +330,7 @@ msgid ""
 msgstr " За будь-якими питаннями про гру в першу чергу зверніться до FAQ.\n Якщо пошук відповіді не вдався, будь ласка, звертайтесь в розділ\n Помилки/Підтримка (Bugs/Support) на форумі:"
 
 msgid "/help - show this help."
-msgstr "/help > Показати це вікно"
+msgstr "/help - показати це вікно."
 
 msgid "\"Outfit shortcut 7\""
 msgstr "\"Спорядження 7\""
@@ -364,7 +364,7 @@ msgstr "/sethome - встановити домашні координати."
 msgid ""
 " - ##2allow whispers##9: Do you wish to allow arbitrary players to send\n"
 "   private messages to you in-game?"
-msgstr " - ##2дозволити шепіт##9: дозволяє іншим гравцям писати вам приватні\n   повідомлення."
+msgstr " - ##2дозволити шепіт##9: дозволяти іншим гравцям писати вам приватні\n   повідомлення?"
 
 msgid "\"Copy outfit\""
 msgstr "\"Копіювати спорядження\""
@@ -436,7 +436,7 @@ msgid "Server news"
 msgstr "Новини сервера"
 
 msgid "/clear - clear current chat tab."
-msgstr "/clear - очистити активну вкладку чату"
+msgstr "/clear - очистити активну вкладку чату."
 
 msgid "\"Social window\""
 msgstr "\"Вікно спільноти\""
@@ -451,7 +451,7 @@ msgid "\"Target player\""
 msgstr "\"Вибрати гравця\""
 
 msgid "/invite NICK - invite a player to your party."
-msgstr "/invite ГРАВЕЦЬ - запросити гравця до групи"
+msgstr "/invite ГРАВЕЦЬ - запросити гравця до групи."
 
 msgid ""
 " - ##2disregarded##9:  You wish to disregard this player, meaning that his or\n"
@@ -599,7 +599,7 @@ msgstr "##2ManaPlus##9 це розширена версія клієнту на 
 msgid ""
 "You can disable yellow bar,\n"
 "by pressing ###keyDisableGameModifiers;."
-msgstr "Ви можете відключити жовтий рядок\nнатиснувши ##keyDisableGameModifiers;."
+msgstr "Ви можете відключити жовтий рядок\nнатиснувши ###keyDisableGameModifiers;."
 
 msgid "\"Screenshot\""
 msgstr "\"Знімок екрану\""
@@ -686,7 +686,7 @@ msgid "\"Chat auto complete\""
 msgstr "\"Автодоповнення в чаті\""
 
 msgid "/ignore NICK - add nick to ignore list."
-msgstr "/ignore ГРАВЕЦЬ - додати гравця в список ігнорування"
+msgstr "/ignore ГРАВЕЦЬ - додати гравця в список ігнорування."
 
 msgid "\"Attack\""
 msgstr "\"Атака\""
@@ -884,10 +884,10 @@ msgid ""
 msgstr " - ##2ігнорований##9: якщо ви бажаєте цілком ігнорувати цього гравця.\n   Ви більше не побачите від нього навіть бульбашки повідомлень чи смайлики."
 
 msgid "/me text - send text to chat as /me command in irc."
-msgstr "/me - розказати щось про себе"
+msgstr "/me - розказати щось про себе."
 
 msgid "/help - show small help about chat commands. "
-msgstr "/help - відкрити довідку про команди чату."
+msgstr "/help - відкрити довідку про команди чату. "
 
 msgid "Debug"
 msgstr "Зневадження"
@@ -1132,7 +1132,7 @@ msgstr "\"Швидка клавіша предмета 9\""
 msgid ""
 " There you will find a list of all players you are acquainted with, as well as\n"
 " several configuration options:"
-msgstr " Тут знаходиться список гравців, щодо яких ви вказали стосунки, та кілька інших опцій"
+msgstr " Тут знаходиться список гравців, щодо яких ви вказали стосунки, та кілька інших опцій:"
 
 msgid "Skills"
 msgstr "Вміння"

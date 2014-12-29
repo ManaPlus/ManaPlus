@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR The ManaPlus Developers
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Kristoffer Frisell <kristoffer@frisell.it>, 2013
 msgid ""
@@ -11,11 +11,12 @@ msgstr ""
 "POT-Creation-Date: 2014-12-28 19:54+0300\n"
 "PO-Revision-Date: 2014-12-29 09:57+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
-"Language-Team: Swedish (Sweden) (http://www.transifex.com/projects/p/manaplus/language/sv_SE/)\n"
+"Language-Team: Swedish (Sweden) (http://www.transifex.com/projects/p/"
+"manaplus/language/sv_SE/)\n"
+"Language: sv_SE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: sv_SE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. TRANSLATORS: file uploaded message
@@ -1059,8 +1060,7 @@ msgstr "Återuppliva"
 #. TRANSLATORS: weight message
 #: src/gui/dialogsmanager.cpp:152
 msgid ""
-"You are carrying more than half your weight. You are unable to regain "
-"health."
+"You are carrying more than half your weight. You are unable to regain health."
 msgstr "Du bär på mer än halva din vikt. Du kan inte återfå health."
 
 #. TRANSLATORS: weight message
@@ -3488,7 +3488,9 @@ msgstr "Tangent-konflikt(er) uppmärksammade."
 msgid ""
 "Conflict \"%s\" and \"%s\" keys. Resolve them, or gameplay may result in "
 "strange behaviour."
-msgstr "Konflikt mellan knapparna \"%s\" och \"%s\". Om detta inte löses kan spelet uppföra sig konstigt."
+msgstr ""
+"Konflikt mellan knapparna \"%s\" och \"%s\". Om detta inte löses kan spelet "
+"uppföra sig konstigt."
 
 #. TRANSLATORS: unknown key name
 #. TRANSLATORS: quests window quest name
@@ -3867,7 +3869,8 @@ msgstr "Bots support"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:294
 msgid "Enable guild bot support and disable native guild support"
-msgstr "Aktivera support för guild-bot och avaktivera grund-supporten för guild"
+msgstr ""
+"Aktivera support för guild-bot och avaktivera grund-supporten för guild"
 
 #. TRANSLATORS: settings group
 #: src/gui/widgets/tabs/setup_other.cpp:300
@@ -4473,13 +4476,17 @@ msgstr "Ingen"
 #: src/gui/widgets/tabs/setup_video.cpp:225
 msgid ""
 "Failed to switch to windowed mode and restoration of old mode also failed!"
-msgstr "Misslyckades att ändra till fönster-läge och återställandet av det gamla läget misslyckades också!"
+msgstr ""
+"Misslyckades att ändra till fönster-läge och återställandet av det gamla "
+"läget misslyckades också!"
 
 #. TRANSLATORS: video error message
 #: src/gui/widgets/tabs/setup_video.cpp:232
 msgid ""
 "Failed to switch to fullscreen mode and restoration of old mode also failed!"
-msgstr "Misslyckades att ändra till fullskärms-läge och återställandet av det gamla läget misslyckades också!"
+msgstr ""
+"Misslyckades att ändra till fullskärms-läge och återställandet av det gamla "
+"läget misslyckades också!"
 
 #. TRANSLATORS: video settings warning
 #: src/gui/widgets/tabs/setup_video.cpp:244
@@ -5317,7 +5324,12 @@ msgid ""
 "Level: %u\n"
 "Experience: %u\n"
 "Money: %s"
-msgstr "Hp: %u/%u⏎\nMp: %u/%u⏎\nLevel: %u⏎\nExperience: %u⏎\nMoney: %s"
+msgstr ""
+"Hp: %u/%u⏎\n"
+"Mp: %u/%u⏎\n"
+"Level: %u⏎\n"
+"Experience: %u⏎\n"
+"Money: %s"
 
 #: src/gui/windows/charselectdialog.cpp:309
 msgid "Incorrect password"
@@ -5430,7 +5442,9 @@ msgstr "Online-lista url:"
 #. TRANSLATORS: edit server dialog error message
 #: src/gui/windows/editserverdialog.cpp:214
 msgid "Please at least type both the address and the port of the server."
-msgstr "Snälla, kan du inte bara vara vänlig och skriva in både adress och port till servern."
+msgstr ""
+"Snälla, kan du inte bara vara vänlig och skriva in både adress och port till "
+"servern."
 
 #. TRANSLATORS: egg selection dialog name
 #: src/gui/windows/eggselectiondialog.cpp:42
@@ -6274,9 +6288,10 @@ msgstr "Du har inte tillräckligt med pengar."
 
 #. TRANSLATORS: trade error
 #: src/gui/windows/tradewindow.cpp:495
-msgid ""
-"Failed adding item. You can not overlap one kind of item on the window."
-msgstr "Misslyckades att lägga till item. Du kan inte överlappa ens sorts item i fönstret."
+msgid "Failed adding item. You can not overlap one kind of item on the window."
+msgstr ""
+"Misslyckades att lägga till item. Du kan inte överlappa ens sorts item i "
+"fönstret."
 
 #. TRANSLATORS: unregister dialog. label.
 #: src/gui/windows/unregisterdialog.cpp:65
@@ -7495,7 +7510,8 @@ msgstr "  -h --help           : Visa hjälp"
 #. TRANSLATORS: command line help
 #: src/main.cpp:99
 msgid "  -C --config-dir     : Configuration directory to use"
-msgstr "  -C --config-dir     : Konfiguration för vilken katalog som ska användas"
+msgstr ""
+"  -C --config-dir     : Konfiguration för vilken katalog som ska användas"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:102
@@ -7570,7 +7586,9 @@ msgstr ""
 #. TRANSLATORS: command line help
 #: src/main.cpp:134
 msgid "  -T --tests          : Start testing drivers and auto configuring"
-msgstr "  -T --tests          : Börja testning av drivrutiner och automat-configurering"
+msgstr ""
+"  -T --tests          : Börja testning av drivrutiner och automat-"
+"configurering"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:138
@@ -7595,7 +7613,9 @@ msgstr ""
 #. TRANSLATORS: error message
 #: src/net/ea/charserverhandler.cpp:112
 msgid "Failed to create character. Most likely the name is already taken."
-msgstr "Misslyckades att skapa karaktär. Troligen på grund av att namnet redan är taget."
+msgstr ""
+"Misslyckades att skapa karaktär. Troligen på grund av att namnet redan är "
+"taget."
 
 #. TRANSLATORS: error message
 #: src/net/ea/charserverhandler.cpp:117 src/net/ea/loginhandler.cpp:247
@@ -7740,7 +7760,8 @@ msgstr "Nekad från servern."
 #: src/net/ea/loginhandler.cpp:224 src/net/eathena/loginhandler.cpp:190
 msgid ""
 "You have been permanently banned from the game. Please contact the GM team."
-msgstr "Du har blivit permanent bannad från spelet. Vänligen kontakta GM-teamet."
+msgstr ""
+"Du har blivit permanent bannad från spelet. Vänligen kontakta GM-teamet."
 
 #. TRANSLATORS: error message
 #: src/net/ea/loginhandler.cpp:229 src/net/eathena/loginhandler.cpp:195
@@ -7753,7 +7774,9 @@ msgstr "Klienten är uråldrig."
 msgid ""
 "You have been temporarily banned from the game until %s.\n"
 "Please contact the GM team via the forums."
-msgstr "Du har blivit temporärt bannad från spelet tills %s.⏎ Vänligen kontakta GM-teamet via forumet."
+msgstr ""
+"Du har blivit temporärt bannad från spelet tills %s.⏎ Vänligen kontakta GM-"
+"teamet via forumet."
 
 #. TRANSLATORS: error message
 #: src/net/ea/loginhandler.cpp:239 src/net/eathena/loginhandler.cpp:208
@@ -8875,4 +8898,6 @@ msgstr ""
 #: src/utils/booleanoptions.h:27
 #, c-format
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
-msgstr "Valmöjligheter till /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
+msgstr ""
+"Valmöjligheter till /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", "
+"\"0\"."

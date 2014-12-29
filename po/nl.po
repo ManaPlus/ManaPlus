@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR The ManaPlus Developers
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Elvano Miok <prd.studio@gmail.com>, 2012
 # Jeroen De Meerleer <jeroen.de.meerleer@telenet.be>, 2011
@@ -14,11 +14,12 @@ msgstr ""
 "POT-Creation-Date: 2014-12-28 19:54+0300\n"
 "PO-Revision-Date: 2014-12-29 09:57+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
-"Language-Team: Dutch (Belgium) (http://www.transifex.com/projects/p/manaplus/language/nl_BE/)\n"
+"Language-Team: Dutch (Belgium) (http://www.transifex.com/projects/p/manaplus/"
+"language/nl_BE/)\n"
+"Language: nl_BE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nl_BE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. TRANSLATORS: file uploaded message
@@ -1062,9 +1063,10 @@ msgstr ""
 #. TRANSLATORS: weight message
 #: src/gui/dialogsmanager.cpp:152
 msgid ""
-"You are carrying more than half your weight. You are unable to regain "
-"health."
-msgstr "Je draagt meer dan de helft van jouw eigen gewicht. Je kan geen leven herstellen."
+"You are carrying more than half your weight. You are unable to regain health."
+msgstr ""
+"Je draagt meer dan de helft van jouw eigen gewicht. Je kan geen leven "
+"herstellen."
 
 #. TRANSLATORS: weight message
 #: src/gui/dialogsmanager.cpp:168
@@ -4476,13 +4478,17 @@ msgstr "Geen"
 #: src/gui/widgets/tabs/setup_video.cpp:225
 msgid ""
 "Failed to switch to windowed mode and restoration of old mode also failed!"
-msgstr "Gefaald om te wisselen naar venstermodus en terugkeren naar oude modus faalde ook!"
+msgstr ""
+"Gefaald om te wisselen naar venstermodus en terugkeren naar oude modus "
+"faalde ook!"
 
 #. TRANSLATORS: video error message
 #: src/gui/widgets/tabs/setup_video.cpp:232
 msgid ""
 "Failed to switch to fullscreen mode and restoration of old mode also failed!"
-msgstr "Gefaald om te wisselen naar volledigscherm modus en terugkeren naar oude modus faalde ook!"
+msgstr ""
+"Gefaald om te wisselen naar volledigscherm modus en terugkeren naar oude "
+"modus faalde ook!"
 
 #. TRANSLATORS: video settings warning
 #: src/gui/widgets/tabs/setup_video.cpp:244
@@ -4522,7 +4528,9 @@ msgstr "Scherm Resolutie is gewijzigd"
 
 #: src/gui/widgets/tabs/setup_video.cpp:384
 msgid "Some windows may be moved to fit the lowered resolution."
-msgstr "Enkele vensters kunnen verplaatst worden om te passen in de omlaag gebrachte resolutie."
+msgstr ""
+"Enkele vensters kunnen verplaatst worden om te passen in de omlaag gebrachte "
+"resolutie."
 
 #. TRANSLATORS: speach type
 #: src/gui/widgets/tabs/setup_visual.cpp:43
@@ -6277,9 +6285,10 @@ msgstr "Je hebt niet genoeg geld."
 
 #. TRANSLATORS: trade error
 #: src/gui/windows/tradewindow.cpp:495
-msgid ""
-"Failed adding item. You can not overlap one kind of item on the window."
-msgstr "Kan dat voorwerp niet toevoegen. Je kan één type voorwerp niet overlappen in het venster."
+msgid "Failed adding item. You can not overlap one kind of item on the window."
+msgstr ""
+"Kan dat voorwerp niet toevoegen. Je kan één type voorwerp niet overlappen in "
+"het venster."
 
 #. TRANSLATORS: unregister dialog. label.
 #: src/gui/windows/unregisterdialog.cpp:65
@@ -7583,7 +7592,9 @@ msgstr ""
 #. TRANSLATORS: error message
 #: src/net/ea/charserverhandler.cpp:87
 msgid "Access denied. Most likely, there are too many players on this server."
-msgstr "Toegang geweigerd. Hoogstwaarschijnlijk zijn er teveel spelers op deze server."
+msgstr ""
+"Toegang geweigerd. Hoogstwaarschijnlijk zijn er teveel spelers op deze "
+"server."
 
 #. TRANSLATORS: error message
 #: src/net/ea/charserverhandler.cpp:92
@@ -7756,7 +7767,9 @@ msgstr "Client is te oud."
 msgid ""
 "You have been temporarily banned from the game until %s.\n"
 "Please contact the GM team via the forums."
-msgstr "Je bent tijdelijk geband van het spel tot %s.\nNeem aub contact op met het GM team via de forums."
+msgstr ""
+"Je bent tijdelijk geband van het spel tot %s.\n"
+"Neem aub contact op met het GM team via de forums."
 
 #. TRANSLATORS: error message
 #: src/net/ea/loginhandler.cpp:239 src/net/eathena/loginhandler.cpp:208
@@ -8703,7 +8716,8 @@ msgstr "Kan voorwerp niet toevoegen. Handelspartner heeft geen vrij slot."
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:292
 msgid "Failed adding item. You can't trade this item."
-msgstr "Gefaald om voorwerp toe te voegen. U kan dit voorwerp niet verhandelen."
+msgstr ""
+"Gefaald om voorwerp toe te voegen. U kan dit voorwerp niet verhandelen."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:296
@@ -8878,4 +8892,5 @@ msgstr ""
 #: src/utils/booleanoptions.h:27
 #, c-format
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
-msgstr "Opties voor /%s zijn \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
+msgstr ""
+"Opties voor /%s zijn \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."

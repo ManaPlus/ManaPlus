@@ -1,23 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR The ManaPlus Developers
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # tivasyk <tivasyk@gmail.com>, 2010
+# William Lee <v4r@trioptimum.com>, 2014
 # William Lee <v4r@trioptimum.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2014-12-28 19:54+0300\n"
-"PO-Revision-Date: 2014-12-29 16:44+0000\n"
-"Last-Translator: William Lee <v4r@trioptimum.com>\n"
-"Language-Team: Ukrainian (http://www.transifex.com/projects/p/manaplus/language/uk/)\n"
+"PO-Revision-Date: 2014-12-29 18:29+0000\n"
+"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"Language-Team: Ukrainian (http://www.transifex.com/projects/p/manaplus/"
+"language/uk/)\n"
+"Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: uk\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #. TRANSLATORS: file uploaded message
 #: src/actions/actions.cpp:139
@@ -156,13 +159,15 @@ msgstr "Завантажений лог:"
 #. TRANSLATORS: whisper send
 #: src/actions/chat.cpp:242
 msgid "Cannot send empty whispers!"
-msgstr "Чи ж можна говорити без слів?"
+msgstr "Не можна надсилати порожні повідомлення!"
 
 #. TRANSLATORS: new whisper or channel query
 #: src/actions/chat.cpp:290
 #, c-format
 msgid "Cannot create a whisper tab \"%s\"! It probably already exists."
-msgstr "Неможливо створити вкладку для спілкування з гравцем \"%s\" - або така вже існує, або ви намагаєтесь перешіптуватись сам із собою :P ."
+msgstr ""
+"Неможливо створити вкладку для спілкування з гравцем \"%s\" - або така вже "
+"існує, або ви намагаєтесь перешіптуватись сам із собою :P ."
 
 #. TRANSLATORS: create party message
 #. TRANSLATORS: chat error message
@@ -352,7 +357,7 @@ msgstr "Предмет належить комусь іншому."
 #. TRANSLATORS: pickup error message
 #: src/being/localplayer.cpp:849
 msgid "You can't pickup this amount of items."
-msgstr "Не можливо підняти стільки предметів!"
+msgstr "Не можливо підняти стільки предметів."
 
 #. TRANSLATORS: pickup error message
 #: src/being/localplayer.cpp:853
@@ -1061,9 +1066,10 @@ msgstr "Опритомнити"
 #. TRANSLATORS: weight message
 #: src/gui/dialogsmanager.cpp:152
 msgid ""
-"You are carrying more than half your weight. You are unable to regain "
-"health."
-msgstr "Ви навантажені більше, ніж на половину максимально дозволенного. Тепер ви не зможете відновлюватися."
+"You are carrying more than half your weight. You are unable to regain health."
+msgstr ""
+"Ви навантажені більше, ніж на половину максимально дозволенного. Тепер ви не "
+"зможете відновлюватися."
 
 #. TRANSLATORS: weight message
 #: src/gui/dialogsmanager.cpp:168
@@ -2786,7 +2792,7 @@ msgstr "Розподіл предметів вимкнено."
 #: src/gui/widgets/tabs/chat/partytab.cpp:108
 #: src/resources/notifications.h:215
 msgid "Item sharing not possible."
-msgstr "Неможливо ввімкнути розподіл предметів!"
+msgstr "Неможливо ввімкнути розподіл предметів."
 
 #. TRANSLATORS: chat message
 #: src/gui/widgets/tabs/chat/partytab.cpp:113
@@ -2812,7 +2818,7 @@ msgstr "Розподіл досвіду вимкнено."
 #: src/gui/widgets/tabs/chat/partytab.cpp:158
 #: src/resources/notifications.h:203
 msgid "Experience sharing not possible."
-msgstr "Неможливо ввімкнути розподіл досвіду!"
+msgstr "Неможливо ввімкнути розподіл досвіду."
 
 #. TRANSLATORS: chat message
 #: src/gui/widgets/tabs/chat/partytab.cpp:163
@@ -3490,7 +3496,9 @@ msgstr "Деякі клавіші дублюють одна одну."
 msgid ""
 "Conflict \"%s\" and \"%s\" keys. Resolve them, or gameplay may result in "
 "strange behaviour."
-msgstr "Клавіші \"%s\" та \"%s\" конфліктують. Необхідно усунути повтори,інакше керування може бути ускладненим"
+msgstr ""
+"Клавіші \"%s\" та \"%s\" конфліктують. Необхідно усунути повтори,інакше "
+"керування може бути ускладненим."
 
 #. TRANSLATORS: unknown key name
 #. TRANSLATORS: quests window quest name
@@ -4062,7 +4070,7 @@ msgstr "Обробляти прозорість для істот"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:110
 msgid "Enable reorder sprites (need for mods support)."
-msgstr "Ввімкнути транспозицію спрайтів (потрібне для модів)"
+msgstr "Ввімкнути транспозицію спрайтів (потрібне для модів)."
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:115
@@ -4082,7 +4090,9 @@ msgstr "Вимкнути кешування істот"
 #. TRANSLATORS: settings group
 #: src/gui/widgets/tabs/setup_perfomance.cpp:129
 msgid "Different options (enable or disable can improve performance)"
-msgstr "Різні налаштунки (ввімкнення чи вимкнення може призвести до кращої продуктивності)"
+msgstr ""
+"Різні налаштунки (ввімкнення чи вимкнення може призвести до кращої "
+"продуктивності)"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:134
@@ -4117,7 +4127,8 @@ msgstr "Занести в кеш всі звуки (може забрати до
 #. TRANSLATORS: settings group
 #: src/gui/widgets/tabs/setup_perfomance.cpp:160
 msgid "Critical options (DO NOT change if you don't know what you're doing)"
-msgstr "Критичні налаштунки (НІ В ЯКОМУ РАЗУ не чіпайте, якщо не впевнені, що робите)"
+msgstr ""
+"Критичні налаштунки (НІ В ЯКОМУ РАЗУ не чіпайте, якщо не впевнені, що робите)"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:164
@@ -4203,7 +4214,9 @@ msgstr "Вжити спеціальну діагональну швидкіст�
 #: src/gui/widgets/tabs/setup_players.cpp:105
 msgid ""
 "Emulate right mouse button by long mouse click (useful for touch interfaces)"
-msgstr "Емуляція правого кліку миші подовженим лівим кліком (вживане на тач інтерфейсах)"
+msgstr ""
+"Емуляція правого кліку миші подовженим лівим кліком (вживане на тач "
+"інтерфейсах)"
 
 #. TRANSLATORS: relations table header
 #. TRANSLATORS: bot checker window table header
@@ -5091,7 +5104,7 @@ msgstr "Нова імейл адреса повинна складатись х�
 #. TRANSLATORS: change email error
 #: src/gui/windows/changeemaildialog.cpp:155
 msgid "The email address entries mismatch."
-msgstr "Адреси скриньок не спідпадають!"
+msgstr "Адреси скриньок не спідпадають."
 
 #. TRANSLATORS: change password window name
 #. TRANSLATORS: change password dialog button
@@ -5135,7 +5148,7 @@ msgstr "Пароль повинен складатись менш, ніж з %u 
 #. TRANSLATORS: change password error
 #: src/gui/windows/changepassworddialog.cpp:143
 msgid "The new password entries mismatch."
-msgstr "Вказані паролі не співпадають!"
+msgstr "Вказані паролі не співпадають."
 
 #. TRANSLATORS: char create dialog name
 #: src/gui/windows/charcreatedialog.cpp:77
@@ -5163,7 +5176,7 @@ msgstr "Ім'я:"
 #: src/gui/windows/charcreatedialog.cpp:203
 #: src/gui/windows/outfitwindow.cpp:65
 msgid ">"
-msgstr "▶"
+msgstr ">"
 
 #. TRANSLATORS: This is a narrow symbol used to denote 'previous'.
 #. You may change this symbol if your language uses another.
@@ -5175,7 +5188,7 @@ msgstr "▶"
 #: src/gui/windows/charcreatedialog.cpp:205
 #: src/gui/windows/outfitwindow.cpp:63
 msgid "<"
-msgstr "◀"
+msgstr "<"
 
 #. TRANSLATORS: char create dialog label
 #: src/gui/windows/charcreatedialog.cpp:93
@@ -5190,7 +5203,7 @@ msgstr "Зачіска:"
 #. TRANSLATORS: char create dialog button
 #: src/gui/windows/charcreatedialog.cpp:111
 msgid "^"
-msgstr "▲"
+msgstr "^"
 
 #. TRANSLATORS: char create dialog button
 #. TRANSLATORS: register dialog. button.
@@ -5319,7 +5332,12 @@ msgid ""
 "Level: %u\n"
 "Experience: %u\n"
 "Money: %s"
-msgstr "Hp: %u/%u\nMp: %u/%u\nРівень: %u\nДосвід: %u\nКошти: %s"
+msgstr ""
+"Hp: %u/%u\n"
+"Mp: %u/%u\n"
+"Рівень: %u\n"
+"Досвід: %u\n"
+"Кошти: %s"
 
 #: src/gui/windows/charselectdialog.cpp:309
 msgid "Incorrect password"
@@ -5370,17 +5388,17 @@ msgstr "Мережа"
 #. TRANSLATORS: did you know window name
 #: src/gui/windows/didyouknowwindow.cpp:53
 msgid "Did You Know?"
-msgstr "Чи вам відомо"
+msgstr "Чи вам відомо?"
 
 #. TRANSLATORS: did you know window button
 #: src/gui/windows/didyouknowwindow.cpp:60
 msgid "< Previous"
-msgstr "◀ попереднє"
+msgstr "< попереднє"
 
 #. TRANSLATORS: did you know window button
 #: src/gui/windows/didyouknowwindow.cpp:62
 msgid "Next >"
-msgstr "наступне ▶"
+msgstr "наступне >"
 
 #. TRANSLATORS: did you know window checkbox
 #: src/gui/windows/didyouknowwindow.cpp:64
@@ -5874,7 +5892,7 @@ msgstr "Пароль повинен складатись менш, ніж з %u 
 #. TRANSLATORS: error message
 #: src/gui/windows/registerdialog.cpp:223
 msgid "Passwords do not match."
-msgstr "Неідентичні паролі!"
+msgstr "Неідентичні паролі."
 
 #. TRANSLATORS: servers dialog name
 #: src/gui/windows/serverdialog.cpp:115
@@ -6274,12 +6292,11 @@ msgstr "Ти віддаєш:"
 #. TRANSLATORS: trade error
 #: src/gui/windows/tradewindow.cpp:409
 msgid "You don't have enough money."
-msgstr "У тебе недостатньо коштів!"
+msgstr "У тебе недостатньо коштів."
 
 #. TRANSLATORS: trade error
 #: src/gui/windows/tradewindow.cpp:495
-msgid ""
-"Failed adding item. You can not overlap one kind of item on the window."
+msgid "Failed adding item. You can not overlap one kind of item on the window."
 msgstr "Не вдається додати предмет. Не можна накладати предмети одного типу."
 
 #. TRANSLATORS: unregister dialog. label.
@@ -6305,7 +6322,7 @@ msgstr "Показати всі новини (може бути повільни
 #. TRANSLATORS: update message
 #: src/gui/windows/updaterwindow.cpp:832
 msgid "##1  The update process is incomplete."
-msgstr "##1  Процес поновлення не завершився!"
+msgstr "##1  Процес поновлення не завершився."
 
 #. TRANSLATORS: Continues "The update process is incomplete.".
 #: src/gui/windows/updaterwindow.cpp:834
@@ -7499,7 +7516,8 @@ msgstr "  -h --help           : Показати ще раз цю довідку
 #. TRANSLATORS: command line help
 #: src/main.cpp:99
 msgid "  -C --config-dir     : Configuration directory to use"
-msgstr "  -C --config-file    : Файл, з якого необхідно завантажити налаштування"
+msgstr ""
+"  -C --config-file    : Файл, з якого необхідно завантажити налаштування"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:102
@@ -7534,7 +7552,8 @@ msgstr "  -p --port           : Порт логіну"
 #. TRANSLATORS: command line help
 #: src/main.cpp:114
 msgid "  -H --update-host    : Use this update host"
-msgstr "  -H --update-host    : Сервер, з якого необхідно завантажити оновлення"
+msgstr ""
+"  -H --update-host    : Сервер, з якого необхідно завантажити оновлення"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:116
@@ -7644,7 +7663,7 @@ msgstr "Неможливо видалити персонаж."
 #: src/net/ea/chathandler.cpp:130
 #, c-format
 msgid "Whisper could not be sent, %s is offline."
-msgstr "Неможливо надіслати приватне повідомлення, %s офлайн!"
+msgstr "Неможливо надіслати приватне повідомлення, %s офлайн."
 
 #. TRANSLATORS: chat message
 #: src/net/ea/chathandler.cpp:140
@@ -7723,12 +7742,12 @@ msgstr "Замок гільдії: %s"
 #. TRANSLATORS: error message
 #: src/net/ea/loginhandler.cpp:207 src/net/eathena/loginhandler.cpp:173
 msgid "Unregistered ID."
-msgstr "Не зареєстрований ID!"
+msgstr "Не зареєстрований ID."
 
 #. TRANSLATORS: error message
 #: src/net/ea/loginhandler.cpp:211 src/net/eathena/loginhandler.cpp:177
 msgid "Wrong password."
-msgstr "Неправильний пароль!"
+msgstr "Неправильний пароль."
 
 #. TRANSLATORS: error message
 #: src/net/ea/loginhandler.cpp:216 src/net/eathena/loginhandler.cpp:182
@@ -7757,7 +7776,9 @@ msgstr "Клієнт застарий."
 msgid ""
 "You have been temporarily banned from the game until %s.\n"
 "Please contact the GM team via the forums."
-msgstr "Вас було тимчасово забанено до %s.\nЗвертайтесь до команди ГМ'ів на форумі."
+msgstr ""
+"Вас було тимчасово забанено до %s.\n"
+"Звертайтесь до команди ГМ'ів на форумі."
 
 #. TRANSLATORS: error message
 #: src/net/ea/loginhandler.cpp:239 src/net/eathena/loginhandler.cpp:208
@@ -7767,12 +7788,12 @@ msgstr "Сервер перенаселено."
 #. TRANSLATORS: error message
 #: src/net/ea/loginhandler.cpp:243 src/net/eathena/loginhandler.cpp:213
 msgid "This user name is already taken."
-msgstr "Цей логін все є чимось!"
+msgstr "Цей логін все є чиїмось."
 
 #. TRANSLATORS: error message
 #: src/net/ea/loginhandler.cpp:251 src/net/eathena/loginhandler.cpp:223
 msgid "Incorrect email."
-msgstr "Некоректна електронна пошта!"
+msgstr "Некоректна електронна пошта."
 
 #. TRANSLATORS: error message
 #: src/net/ea/loginhandler.cpp:255 src/net/eathena/loginhandler.cpp:228
@@ -7798,7 +7819,7 @@ msgstr "Не вдається знайти хост \""
 #. TRANSLATORS: error message
 #: src/net/ea/network.cpp:290
 msgid "Connection to server terminated. "
-msgstr "З'єднання з сервером припинене."
+msgstr "З'єднання з сервером припинене. "
 
 #. TRANSLATORS: char rename error
 #: src/net/eathena/charserverhandler.cpp:524
@@ -7906,7 +7927,7 @@ msgstr "Немає доступних серверів."
 #. TRANSLATORS: error message
 #: src/net/eathena/generalhandler.cpp:178 src/net/tmwa/generalhandler.cpp:183
 msgid "Someone else is trying to use this account."
-msgstr "Хтось інший намагається використати цей акаунт!"
+msgstr "Хтось інший намагається використати цей акаунт."
 
 #. TRANSLATORS: error message
 #: src/net/eathena/generalhandler.cpp:183 src/net/tmwa/generalhandler.cpp:189
@@ -7924,7 +7945,7 @@ msgstr "Сервер повний."
 
 #: src/net/eathena/generalhandler.cpp:193
 msgid "Sorry, you are underaged."
-msgstr "Даруйте, але в вас недостатньо віку!"
+msgstr "Даруйте, але в вас недостатньо віку."
 
 #. TRANSLATORS: error message
 #: src/net/eathena/generalhandler.cpp:196 src/net/tmwa/generalhandler.cpp:198
@@ -7957,7 +7978,7 @@ msgstr "Оплатіть кімнату."
 
 #: src/net/eathena/generalhandler.cpp:217
 msgid "Disconnect forced by GM."
-msgstr "ГМ відключив вас від серверу!"
+msgstr "ГМ відключив вас від серверу."
 
 #: src/net/eathena/generalhandler.cpp:221
 msgid "Ban japan refuse."
@@ -8101,7 +8122,7 @@ msgstr "Дальність атаки"
 #. TRANSLATORS: player stat
 #: src/net/eathena/generalhandler.cpp:391 src/net/tmwa/generalhandler.cpp:352
 msgid "Damage per sec."
-msgstr "Ушкодження за секунду"
+msgstr "Ушкодження за секунду."
 
 #: src/net/eathena/generalhandler.cpp:392
 msgid "Karma"
@@ -8169,7 +8190,7 @@ msgstr "Ви забагато тримаєте, щоб це зробити!"
 #. TRANSLATORS: error message
 #: src/net/eathena/skillhandler.cpp:352 src/net/tmwa/skillhandler.cpp:265
 msgid "Huh? What's that?"
-msgstr "Що це було?!"
+msgstr "Що це було?"
 
 #. TRANSLATORS: trade header
 #: src/net/ea/tradehandler.cpp:87
@@ -8413,17 +8434,17 @@ msgstr "Неможливо придбати."
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:47
 msgid "Unable to buy. You don't have enough money."
-msgstr "Неможливо придбати. У вас недостатньо грошей!"
+msgstr "Неможливо придбати. У вас недостатньо грошей."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:51
 msgid "Unable to buy. It is too heavy."
-msgstr "Неможливо придбати. Предмет заважкий!"
+msgstr "Неможливо придбати. Предмет заважкий."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:55
 msgid "Unable to buy. You have too many items."
-msgstr "Неможливо придбати. Ви маєте забагато предметів!"
+msgstr "Неможливо придбати. Ви маєте забагато предметів."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:59
@@ -8433,7 +8454,7 @@ msgstr "Немає що продавати."
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:63
 msgid "Thanks for selling."
-msgstr "Дякуємо за продажу!"
+msgstr "Дякуємо за продажу."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:67
@@ -8448,7 +8469,7 @@ msgstr "Неможливо продати під час торгівлі."
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:75
 msgid "Unable to sell unsellable item."
-msgstr "Не можна продати те, що не можна продати!"
+msgstr "Не можна продати те, що не можна продати."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:79
@@ -8566,7 +8587,7 @@ msgstr "Вас виштовхали з групи."
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:167
 msgid "You can't be kicked from party on this map."
-msgstr "Не можна бути виштовханим з групи на цій мапі!"
+msgstr "Не можна бути виштовханим з групи на цій мапі."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:171
@@ -8596,7 +8617,7 @@ msgstr "%s тепер член вашої групи."
 #: src/resources/notifications.h:187
 #, c-format
 msgid "%s can't join your party because party is full."
-msgstr "%s не може приєднатись до вашої групи - немає місця!"
+msgstr "%s не може приєднатись до вашої групи - немає місця."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:191
@@ -8666,7 +8687,7 @@ msgstr "Торгівля з %s неможлива. Партнер знаходи
 #: src/resources/notifications.h:264
 #, c-format
 msgid "Trading with %s isn't possible. Character doesn't exist."
-msgstr "Торгівля з %s неможлива. Персонаж не існує!"
+msgstr "Торгівля з %s неможлива. Персонаж не існує."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:268
@@ -8873,10 +8894,12 @@ msgstr "Вказана сума для депозиту не відповіда�
 msgid ""
 "Withdraw failed. You probably don't have this amount of money in the bank "
 "right now."
-msgstr "Банк не збирається видавати вам кредити!"
+msgstr "Банк не збирається видавати вам кредити."
 
 #. TRANSLATORS: chat option changed message
 #: src/utils/booleanoptions.h:27
 #, c-format
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
-msgstr "Можливими опціями для /%s є: \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
+msgstr ""
+"Можливими опціями для /%s є: \"yes\", \"no\", \"true\", \"false\", \"1\", "
+"\"0\"."

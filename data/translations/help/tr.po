@@ -1,18 +1,18 @@
 # en#
 # Translators:
-# Aleksandar Djokic <inactive+Cyberdjox@transifex.com>, 2013
-# Aleksandar Djokic <inactive+Cyberdjox@transifex.com>, 2013
+# Oben Devin Çetiner <hiironohige@gmail.com>, 2012
+# Oben Devin Çetiner <hiironohige@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2014-12-29 18:41+0000\n"
+"PO-Revision-Date: 2014-12-29 18:36+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
-"Language-Team: Serbian (http://www.transifex.com/projects/p/manaplus/language/sr/)\n"
+"Language-Team: Turkish (http://www.transifex.com/projects/p/manaplus/language/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: sr\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 msgid "/uploadserverconfig - upload server config into pastebin service."
 msgstr ""
@@ -24,12 +24,12 @@ msgid "\"Outfit shortcut 12\""
 msgstr ""
 
 msgid "/cacheinfo - show text cache info."
-msgstr "/cacheinfo - prikaži informacije iz keš-a."
+msgstr "/cacheinfo - Yazı hafızası bilgisi göster."
 
 msgid ""
 "You can imitate other players by selecting \"imitation\" in player context menu\n"
 " or type chat command: /imitate playername."
-msgstr "Možeš da imitiraš ostale igrače tako što ideš desni klik na igrača i iz menija izabereš opciju \"Imitacija\" ili otkucaj komandu u četu: /imitate NADIMAK."
+msgstr ""
 
 msgid ""
 " - ##2allow trading##9: Do you wish to allow trade requests from arbitrary\n"
@@ -40,10 +40,10 @@ msgid "\"Emote shortcut 9\""
 msgstr ""
 
 msgid "/addignoreattack NAME - add monster to ignore attack list."
-msgstr "/addignoreattack IME - dodaj čudovište na listu za ignorisanje napada."
+msgstr ""
 
 msgid "Back to Index"
-msgstr "Povratak na glavnu stranu"
+msgstr ""
 
 msgid "\"Quests window\""
 msgstr ""
@@ -57,7 +57,7 @@ msgstr ""
 msgid ""
 " You can improve your skills by increasing job level. Each job level\n"
 " gives you 1 point to spend on basic skills."
-msgstr " Možeš poboljšati svoje sposobnosti i veštine povećavajući nivo posla.\n Svaki nivo posla ti\n daje 1 bod da bi se potrošio na nadogradnju osnovnih veština."
+msgstr ""
 
 msgid "\"Emote shortcut 10\""
 msgstr ""
@@ -69,13 +69,13 @@ msgid "Guild chat commands"
 msgstr ""
 
 msgid "/away, /away MSG - set away mode."
-msgstr "/away, /away PORUKA - podesi režim odsutnosti."
+msgstr ""
 
 msgid "GM"
 msgstr ""
 
 msgid "/addattack NAME - add monster to attack list."
-msgstr "/addattack IME - dodavanje čudovišta na listu za napad."
+msgstr ""
 
 msgid "\"Emote shortcut 2\""
 msgstr ""
@@ -84,13 +84,13 @@ msgid "/announce MESSAGE - show global message."
 msgstr ""
 
 msgid "/serverunignoreall - unignore all whispers on server side."
-msgstr "/serverunignoreall - isključi ignorisanje šaptanja na strani servera."
+msgstr "/serverunignoreall - Sunucu tarafındaki tüm fısıldamaları görmezden gelme."
 
 msgid "/createparty NAME - create party with selected name."
-msgstr "/createparty IME - kreiraj partiju sa određenim imenom."
+msgstr ""
 
 msgid "/heal NICK - heal nick."
-msgstr "/heal NADIMAK - izleči igrača sa određenim nadimkom."
+msgstr ""
 
 msgid "\"Select OK\""
 msgstr ""
@@ -128,7 +128,7 @@ msgid "\"Move to navigation point\""
 msgstr ""
 
 msgid "ManaPlus Contributors"
-msgstr "ManaPlus saradnici"
+msgstr "ManaPlus Katkı Sunanlar"
 
 msgid ""
 "The Mana World##0 is a serious effort to create an innovative free\n"
@@ -138,13 +138,13 @@ msgid ""
 msgstr ""
 
 msgid "ABOUT MANAPLUS"
-msgstr "O MANAPLUS-u"
+msgstr "MANAPLUS Hakkında"
 
 msgid "/pseudoaway, /pseudoaway MSG - set/unset pseudo away mode."
-msgstr "/pseudoaway, /pseudoaway PORUKA - podesi/razdesi lažan away mod. Pretvaraš se da nisi tu."
+msgstr ""
 
 msgid "Other contributors"
-msgstr "Ostali saradnici"
+msgstr ""
 
 msgid "\"Item shortcuts Key\""
 msgstr ""
@@ -153,7 +153,7 @@ msgid ""
 "Communication is often essential to success in this game. You can communicate\n"
 " in several ways:  By chatting and showing emotions (see above), by trading\n"
 " (with the right-click context menu), and by whispering."
-msgstr "Komunikacija je često osnov za postizanje uspeha u ovoj igri. Možeš komunicirati\n na nekoliko načina: Ćaskajući i prikazivanjem emotikona (pogledaj iznad), trgovanjem\n (koristeći desni-klik meni), i šaptanjem."
+msgstr ""
 
 msgid "\"Item shortcut 3\""
 msgstr ""
@@ -172,7 +172,7 @@ msgstr ""
 
 msgid ""
 "/mail NICK MSG - send offline message to NICK. Working only in tmw server."
-msgstr "/mail NADIMAK PORUKA - pošalji poruku igraču u slučaju da nije dostupan. Ovo radi samo na tmw serveru."
+msgstr ""
 
 msgid "Download"
 msgstr ""
@@ -184,13 +184,13 @@ msgid "/enableaway - enable away messages in current tab."
 msgstr ""
 
 msgid "Support"
-msgstr "Podrška"
+msgstr ""
 
 msgid "\"Copy equiped to Outfit\""
 msgstr ""
 
 msgid "/outfit next - wear next outfit."
-msgstr "/outfit next - obuci sledeću odeću."
+msgstr ""
 
 msgid "\"Outfit shortcut 3\""
 msgstr ""
@@ -201,28 +201,28 @@ msgstr ""
 msgid ""
 "/msg NICK text, /whisper NICK text, /w NICK text - send whisper message to "
 "nick."
-msgstr "/msg NADIMAK tekst, /whisper NADIMAK tekst, /w NADIMAK tekst - pošalji šapat-poruku nekom igraču."
+msgstr ""
 
 msgid "/movetotarget - move to target position."
 msgstr ""
 
 msgid "/outfit prev - wear previous outfit."
-msgstr "/outfit prev - obuci se u prethodnu odeću."
+msgstr ""
 
 msgid "##2Party level2:##9 enables a char to create a party."
 msgstr ""
 
 msgid "/target NICK - select nick as target. Can be monster or player nick."
-msgstr "/target NADIMAK - izaberi nadimak nekog igrača ili čudovišta za metu."
+msgstr ""
 
 msgid "##2ManaPlus version: ##6%VER%"
 msgstr ""
 
 msgid "COMMANDS"
-msgstr "KOMANDE"
+msgstr ""
 
 msgid "For other server look servers pages for support."
-msgstr "Za ostale servere, pogledaj stranice za podršku."
+msgstr ""
 
 msgid "\"Toggle chat\""
 msgstr ""
@@ -234,13 +234,13 @@ msgid "\"Change attack type\""
 msgstr ""
 
 msgid "Manaplus Developers"
-msgstr "Manaplus saradnici za razvoj"
+msgstr ""
 
 msgid "\"On / off audio\""
 msgstr ""
 
 msgid "You can change any key in keyboard settings."
-msgstr "Možeš promeniti bilo koji taster na tastaturi u podešavanjima za tastaturu."
+msgstr ""
 
 msgid "\"Previous chat tab line\""
 msgstr ""
@@ -249,7 +249,7 @@ msgid "\"Emote shortcut 13\""
 msgstr ""
 
 msgid "/disregard NICK - add nick to disregarded list."
-msgstr "/disregard NADIMAK - dodaj igrača na listu zanemarenih."
+msgstr ""
 
 msgid "/enablehighlight - enable highlight in current tab."
 msgstr ""
@@ -267,10 +267,10 @@ msgid ""
 " Left click to execute default action: walk, pick up an item, attack a monster\n"
 " and talk to NPCs (be sure to click on their feet). Right click to show up a\n"
 " context menu. Holding [Left Shift] prevents from walking when attacking."
-msgstr " Levim klikom se vrše standardne radnje: hodanje, sakupljanje predmeta,\n napadanje čudovišta i razgovaranje sa NPC-ovima (kliktanjem na njihove noge).\n Desnim klikom na njih se dobija meni. Držanjem [levog shift-a] se sprečava hodanje prilikom napadanja."
+msgstr ""
 
 msgid "Search string not found."
-msgstr "Traženi termin nije pronađen."
+msgstr ""
 
 msgid "\"Emote shortcut 7\""
 msgstr ""
@@ -278,10 +278,10 @@ msgstr ""
 msgid ""
 "You can set any client resolution. In settings in video tab,\n"
 "click on \"custom\" and enter for example: 900x500 and press ok."
-msgstr "Možeš podesiti bilo koju rezoluciju klijenta. U podešavanjima na kartici za Video, klikni na \"poseban\" i ukucaj npr. 900x500 i klikni ok."
+msgstr ""
 
 msgid "/attack - attack target."
-msgstr "/attack - napadni metu."
+msgstr ""
 
 msgid "\"Set home location/set arrow\""
 msgstr ""
@@ -293,7 +293,7 @@ msgid "\"Equipment window\""
 msgstr ""
 
 msgid "Mana Contributors"
-msgstr "Mana Saradnici"
+msgstr ""
 
 msgid "/dumpt - dump tests info into chat."
 msgstr ""
@@ -302,7 +302,7 @@ msgid "Different patches"
 msgstr ""
 
 msgid "Sound effects"
-msgstr "Zvučni efekti"
+msgstr ""
 
 msgid "\"Talk\""
 msgstr ""
@@ -311,13 +311,13 @@ msgid "\"Item shortcut 8\""
 msgstr ""
 
 msgid "/all - show visible beings list in debug tab."
-msgstr "/all - prikazuje sva vidljiva stvorenja na listi u debug tab-u."
+msgstr ""
 
 msgid ""
 "Most commands working in whispers.\n"
 "For example command /imitation in whisper with nick1,\n"
 " similar to command /imitation nick1."
-msgstr "Većina komandi koje rade kao šaptanje.\n Na primer komanda /imitation prilikom šaptanja nekom igraču sa nadimkom nick1,\n slična je komandi /imitation nick1"
+msgstr ""
 
 msgid "\"Ignore input 1\""
 msgstr ""
@@ -329,7 +329,7 @@ msgid ""
 " If you're having troubles, please first of all read the FAQ. If you\n"
 " can't find a solution to your problem, feel free to check our\n"
 " Bugs/Support section of the forum:"
-msgstr " Ako imaš poteškoća ili problema, prvo pročitaj sve iz FAQ - često postavljanih pitanja. Ako \nne možeš da pronađeš rešenje za svoj problem, slobodno poseti naš\n Bugs/Support odeljak na forumu:"
+msgstr ""
 
 msgid "/help - show this help."
 msgstr ""
@@ -338,13 +338,13 @@ msgid "\"Outfit shortcut 7\""
 msgstr ""
 
 msgid "/addpriorityattack NAME - add monster to priority attack list."
-msgstr "/addpriorityattack IME - dodaj čudovište na listu prioriteta za napad."
+msgstr ""
 
 msgid "For TMW support:"
 msgstr ""
 
 msgid "/priceload - load shop price from disc."
-msgstr "/priceload - učitaj cene prodavnice sa diska."
+msgstr ""
 
 msgid ""
 " - ##2friend##9:  You consider this player a friend.  The player may chat,\n"
@@ -378,7 +378,7 @@ msgid "/dumpogl - dump all OpenGL variables into log file."
 msgstr ""
 
 msgid "Contributors to client development"
-msgstr "Saradnici za razvoj aplikacije klijenta"
+msgstr ""
 
 msgid "/gm MESSAGE - send message to all online gms."
 msgstr ""
@@ -386,36 +386,36 @@ msgstr ""
 msgid ""
 "You can do basic searching in help by using command\n"
 "##2?text"
-msgstr "Možeš koristiti osnovnu pretragu za pomoć koristeći komandu\n##2?text"
+msgstr ""
 
 msgid ""
 "You can buy or sell items from players shops.\n"
 "Right click on player and select \"Buy\" or \"Sell\""
-msgstr "Možeš kupovati ili prodavati predmete od ostalih igrača preko njihovih prodavnica. Idi desni klik na igrača i izaberi \"Kupi\" ili \"Prodaj\""
+msgstr ""
 
 msgid "/unignore NICK - Remove nick from ignore list."
-msgstr "/unignore NADIMAK - Skloni nadimak igrača sa liste za ignorisanje."
+msgstr ""
 
 msgid ""
 "You can restore yellow bar settings,\n"
 "by right click on it and select in context menu \"Reset yellow bar\"."
-msgstr "Možeš vratiti podešavanja žute table na prethodno stanje, \ntako što odeš desnim klikom i na meniju izaberi opciju \"Vrati žutu tablu na prvobitno stanje\"."
+msgstr ""
 
 msgid "\"Emote shortcut 3\""
 msgstr ""
 
 msgid "/dumpg - dump graphics and some other settings to chat."
-msgstr "/dumpg - izlistaj informacije o grafici i ostala podešavanja u prozor za ćaskanje."
+msgstr ""
 
 msgid "/trade NICK - start trade with nick."
-msgstr "/trade NADIMAK - trguj sa igračem koristeći NADIMAK za njegovo ime."
+msgstr ""
 
 msgid "\"Switch magic attack\""
 msgstr ""
 
 msgid ""
 "You can hide/show bars and buttons by right click and select menu item."
-msgstr "Možeš skrivati i prikazivati table i dugmadi desnim klikom i odabiranjem opcije sa menija."
+msgstr ""
 
 msgid "\"Enable / disable away mode\""
 msgstr ""
@@ -429,16 +429,16 @@ msgstr ""
 msgid ""
 "You can set away mode,\n"
 "by type in chat command /away"
-msgstr "Možeš podesiti \"away\" mod odn. dati do znanja ostalim igračima da trenutno nisi tu, tako što u prozoru za ćaskanje otkucaš komandu /away"
+msgstr ""
 
 msgid "Magic skills:"
-msgstr "Magične veštine:"
+msgstr ""
 
 msgid "Server news"
-msgstr "Vesti o serveru"
+msgstr ""
 
 msgid "/clear - clear current chat tab."
-msgstr "/clear - obriši sve na kartici za ćaskanje."
+msgstr ""
 
 msgid "\"Social window\""
 msgstr ""
@@ -483,7 +483,7 @@ msgid "\"Quick heal target or self\""
 msgstr ""
 
 msgid "Search error"
-msgstr "Greška u pretrazi"
+msgstr ""
 
 msgid "\"Outfit shortcut 9\""
 msgstr ""
@@ -515,7 +515,7 @@ msgid "\"Outfit shortcut 2\""
 msgstr ""
 
 msgid "IGNORING COMMUNICATION"
-msgstr "IGNORISANJE KOMUNIKACIJE"
+msgstr ""
 
 msgid ""
 " - ##2save player list##9: Should your acquaintance list be saved when you\n"
@@ -548,7 +548,7 @@ msgid "About The Mana World"
 msgstr ""
 
 msgid "/serverignoreall - ignore all whispers on server side."
-msgstr "/serverignoreall - ignoriši sva šaptanja sa strane servera."
+msgstr ""
 
 msgid ""
 "##2               SDL, SDL_image, SDL_mixer (Media framework)\n"
@@ -558,22 +558,22 @@ msgid ""
 "##2                          PhysFS (Data files)\n"
 "##2                        libcurl (HTTP downloads)\n"
 "##2                            zlib (Archives)"
-msgstr "##2 SDL, SDL_image, SDL_mixer (Multimedijalna platforma) ##2 SDL_net (Platforma za komunikaciju u mreži) ##2 Guichan (Platforma korisničkog interfejsa) ##2 libxml2 (XML prevođenje, tumačenje i zapisivanje) ##2 PhysFS (Datoteke podataka) ##2 libcurl (HTTP preuzimanja) ##2 zlib (Arhive)"
+msgstr ""
 
 msgid "\"Sit\""
 msgstr ""
 
 msgid "/navigate x y - move to position x,y in current map in any distance."
-msgstr "/navigate x y - idi na poziciju x,y na trenutnoj mapi na bilo koju udaljenost."
+msgstr ""
 
 msgid "SKILLS"
-msgstr "VEŠTINE"
+msgstr ""
 
 msgid "Actions"
-msgstr "Akcije"
+msgstr ""
 
 msgid "/emote N - use emotion number N."
-msgstr "/emote N - koristi emociju pod brojem N."
+msgstr ""
 
 msgid "/item 0 - disable party item sharing options."
 msgstr ""
@@ -607,7 +607,7 @@ msgid "\"Screenshot\""
 msgstr ""
 
 msgid "/closeall - close all whispers."
-msgstr "/closeall - zatvori sva šaputanja."
+msgstr ""
 
 msgid ""
 " To add an item to the shortcut bar click on the item in the inventory window,\n"
@@ -615,10 +615,10 @@ msgid ""
 " the item. To reorder items within the shortcut-window simply click and drag\n"
 " them between the boxes. To remove items you simply drag them outside of the\n"
 " window and drop them."
-msgstr " Da bi dodao predmet na tablu za prečice, klikni na predmet u prozoru za\n popis predmeta koje karakter ima, zatim klikni na kućicu u\n prozoru za prečice koji želiš da povežeš sa tim predmetom.\n Za promenu rasporeda predmeta unutar prozora za prečice jednostavno klikni i\n prevuci iz jedne kućice u drugu. Za uklanjanje samo prevuci predmet izvan prozora i pusti ga."
+msgstr ""
 
 msgid "/query NICK, /q NICK - open new whisper tab for nick."
-msgstr "/query NADIMAK, /q NADIMAK - otvori novi prozor za šaptanje za nekog igrača."
+msgstr ""
 
 msgid "\"Item shortcut 5\""
 msgstr ""
@@ -637,7 +637,7 @@ msgid "\"Outfit shortcut 6\""
 msgstr ""
 
 msgid "Visit IRC channel:"
-msgstr "Poseti IRC kanal za ćaskanje:"
+msgstr ""
 
 msgid "\"Target & attack\""
 msgstr ""
@@ -646,7 +646,7 @@ msgid "\"Item shortcut 10\""
 msgstr ""
 
 msgid "/where - print current player position to chat."
-msgstr "/where - prikaži trenutnu poziciju igrača u prozoru za ćaskanje."
+msgstr ""
 
 msgid "/exp - show party experience sharing options."
 msgstr ""
@@ -655,7 +655,7 @@ msgid "/dumpmods - dump all enabled mod names into chat."
 msgstr ""
 
 msgid "INDEX"
-msgstr "INDEKS"
+msgstr ""
 
 msgid "\"Outfit shortcut 10\""
 msgstr ""
@@ -667,10 +667,10 @@ msgid "Website: @@http://manaplus.org/|http://manaplus.org/@@"
 msgstr ""
 
 msgid "/uptime - show client uptime."
-msgstr "/uptime - prikazivanje vremena, koliko dugo klijent radi od trenutka pokretanja."
+msgstr ""
 
 msgid "/imitation NICK - start imitation mode."
-msgstr "/imitation NADIMAK - pokreni mod za imitaciju."
+msgstr ""
 
 msgid "\"Ignore input 2\""
 msgstr ""
@@ -682,13 +682,13 @@ msgid "\"Move to target\""
 msgstr ""
 
 msgid "/ignoreall - add all whispers to ignore list."
-msgstr "/ignoreall - dodaj sve šaptače na listu za ignorisanje."
+msgstr ""
 
 msgid "\"Chat auto complete\""
 msgstr ""
 
 msgid "/ignore NICK - add nick to ignore list."
-msgstr "/ignore NADIMAK - dodaj ime nekog igrača na listu za ignorisanje."
+msgstr ""
 
 msgid "\"Attack\""
 msgstr ""
@@ -715,13 +715,13 @@ msgid "##9Magic skills can be obtain by doing quests and missions in game."
 msgstr ""
 
 msgid "/erase NICK - add nick to erased list."
-msgstr "/erase NADIMAK - dodaj nadimak igrača na listu izbrisanih."
+msgstr ""
 
 msgid "COMMUNICATION:"
-msgstr "KOMUNIKACIJA:"
+msgstr ""
 
 msgid "Search results"
-msgstr "Rezultati pretrage"
+msgstr ""
 
 msgid "\"Inventory window\""
 msgstr ""
@@ -744,7 +744,7 @@ msgstr ""
 msgid ""
 " The player list lists all of your acquaintances.  They are categorised as one\n"
 " of the following:"
-msgstr " Lista igrača izlistava sve tvoje poznanike. Svi su kategoriani kao jedno\n od sledećeg:"
+msgstr ""
 
 msgid "/cleanfonts - remove all cached render strings."
 msgstr ""
@@ -753,27 +753,27 @@ msgid "/dumpgl - dump OpenGL version into chat."
 msgstr ""
 
 msgid "MOUSE:"
-msgstr "MIŠ:"
+msgstr "FARE:"
 
 msgid "Current server support url:"
 msgstr ""
 
 msgid "Player relations"
-msgstr "Odnosi sa igračima"
+msgstr ""
 
 msgid ""
 "You can copy value from any bar,\n"
 "by right click on it and select in context menu \"Copy to chat\"."
-msgstr "Možeš kopirati informacije sa bilo koje table,\n tako što klikneš desnim klikom na nju i izabereš iz menija \"Kopiraj u prozor za ćaskanje\"."
+msgstr ""
 
 msgid "\"Item shortcut 14\""
 msgstr ""
 
 msgid "/outfit N - wear outfit number N."
-msgstr "/outfit N - obuci odeću pod brojem N."
+msgstr ""
 
 msgid "/dirs - show client dirs in debug chat tab."
-msgstr "/dirs - prikaži direktorijume klijenta u debug tab-u."
+msgstr ""
 
 msgid "/movetohome - move to home position."
 msgstr ""
@@ -824,10 +824,10 @@ msgid ""
 " You may find that not all communication is to your liking.  While most people\n"
 " are nice, some may offend you or try to make your life harder-- since this is\n"
 " an open game, there is nothing the developers can do to prevent this."
-msgstr " Ponekad možeš primetiti da ti stvari koje ostali ljudi pričaju ne odgovaraju.\n Dok je večina ljudi prijatna, neki će te možda uvrediti\n ili čak pokušati da ti zagorčaju život-- s\n obzirom da je ovo besplatna i otvorena igra,\n ne postoji ništa što ljudi koji su napravili ovu igru\n mogu da učine kako bi zaustavili takve stvari."
+msgstr ""
 
 msgid "About"
-msgstr "O programu"
+msgstr ""
 
 msgid "\"Outfit shortcut 15\""
 msgstr ""
@@ -845,10 +845,10 @@ msgid "For Evol Online support:"
 msgstr ""
 
 msgid "/follow NICK - start follow mode."
-msgstr "/follow NADIMAK - započni režim za praćenje."
+msgstr ""
 
 msgid "To read about whispering and other chat commands, look here:"
-msgstr "Da biste pročitali o šaptanju i ostalim komandama za ćaskanje, pogledajte ovde:"
+msgstr "Fısıldama ve diğer sohbet komutlarıyla ilgili okumak için, buraya bak:"
 
 msgid ""
 "You can select other themes.\n"
@@ -869,10 +869,10 @@ msgid "/info - show guild info. Only for native guilds only."
 msgstr ""
 
 msgid "/neutral NICK - add nick to neutral relation list."
-msgstr "/neutral NADIMAK - dodaj nadimak u listu neutralnih odnosa."
+msgstr "/neutral NICK - nick'i nötr ilişki listesine ekle."
 
 msgid "THE PLAYER LIST"
-msgstr "LISTA IGRAČA"
+msgstr ""
 
 msgid "\"Item shortcut window\""
 msgstr ""
@@ -886,16 +886,16 @@ msgid ""
 msgstr ""
 
 msgid "/me text - send text to chat as /me command in irc."
-msgstr "/me tekst - pošalji tekst na čet kao /me komanda na četu."
+msgstr ""
 
 msgid "/help - show small help about chat commands. "
-msgstr "/help - prikazivanje male pomoći o komandama za ćaskanje. "
+msgstr ""
 
 msgid "Debug"
-msgstr "Debug"
+msgstr ""
 
 msgid "/setdrop N - set drop counter to requested value."
-msgstr "/setdrop N - podesi brojač ispuštanja na određenu vrednost."
+msgstr ""
 
 msgid "\"Shop window\""
 msgstr ""
@@ -907,7 +907,7 @@ msgid "\"Setup window\""
 msgstr ""
 
 msgid "/removeattack NAME - remove monster from attack list."
-msgstr "/removeattack IME - skloni čudovište sa liste za napad."
+msgstr ""
 
 msgid "\"Set direction up\""
 msgstr ""
@@ -919,36 +919,36 @@ msgid "\"Toggle camera mode\""
 msgstr ""
 
 msgid "WINDOWS"
-msgstr "PROZORI"
+msgstr ""
 
 msgid "SUPPORT"
-msgstr "PODRŠKA"
+msgstr ""
 
 msgid "/pricesave - save shop price to disc."
-msgstr "/pricesave - spasi cene prodavnice na disk."
+msgstr ""
 
 msgid "Look this page for help and downloads:"
-msgstr "Pogledaj ovu stranicu za pomoć i preuzimanja:"
+msgstr ""
 
 msgid "Other skills:"
-msgstr "Ostale veštine:"
+msgstr ""
 
 msgid ""
 "You can use mumble voice chat for talking with other players.\n"
 "Start mumble before client start and enable mumble in settings."
-msgstr "Možeš koristiti \"mumble voice\" ćaskanje za razgovor sa ostalim igračima \n Pokreni mumble pre pokretanja klijenta i omogući mumble u podešavanju."
+msgstr ""
 
 msgid "\"Move up\""
 msgstr ""
 
 msgid "Here contributors from parent projects"
-msgstr "Ovde su saradnici sa matičnih projekata"
+msgstr ""
 
 msgid "\"Item shortcut 4\""
 msgstr ""
 
 msgid "/who - print online players number to chat."
-msgstr "/who - ispisuje broj igrača koji su dostupni u prozor za ćaskanje."
+msgstr ""
 
 msgid "/createitems - open dialog for creating items."
 msgstr ""
@@ -960,10 +960,10 @@ msgid "\"Outfit shortcut 5\""
 msgstr ""
 
 msgid "KEYBOARD:"
-msgstr "TASTATURA:"
+msgstr "KLAVYE:"
 
 msgid "Windows"
-msgstr "Prozori"
+msgstr ""
 
 msgid "/emotepet N - use emotion number N from your pet."
 msgstr ""
@@ -1007,7 +1007,7 @@ msgid "\"Quit\""
 msgstr ""
 
 msgid "/move X Y - move to X,Y position in short distance."
-msgstr "/move X Y - idi na  X,Y poziciju na kraćem rastojanju."
+msgstr ""
 
 msgid "Themes:"
 msgstr ""
@@ -1016,22 +1016,22 @@ msgid "\"Hide windows\""
 msgstr ""
 
 msgid "Chat commands"
-msgstr "Komande za ćaskanje"
+msgstr ""
 
 msgid "Trade"
-msgstr "Trgovanje"
+msgstr ""
 
 msgid "/blacklist NICK - add nick to blacklist relation list."
-msgstr "/blacklist NADIMAK - dodaj igrača na crnu listu za odnose."
+msgstr ""
 
 msgid "Art or images contributors"
-msgstr "Saradnici za umetnost ili slike"
+msgstr ""
 
 msgid "/exp 0 - disable party experience sharing options."
 msgstr ""
 
 msgid "Basic skills:"
-msgstr "Osnovne veštine:"
+msgstr ""
 
 msgid "/uploadlog - upload log into pastebin service."
 msgstr ""
@@ -1046,7 +1046,7 @@ msgid "/notice TEXT - set notice guild text."
 msgstr ""
 
 msgid "/friend NICK, /befriend NICK - add nick to friends list."
-msgstr "/friend NADIMAK, /befriend NADIMAK - dodaj ime igrača na listu prijatelja."
+msgstr ""
 
 msgid "ABOUT THE MANA WORLD"
 msgstr ""
@@ -1055,13 +1055,13 @@ msgid "\"Emote shortcut 14\""
 msgstr ""
 
 msgid "Commands"
-msgstr "Komande"
+msgstr ""
 
 msgid "\"Stop Attack\""
 msgstr ""
 
 msgid "Contributors to client/server development"
-msgstr "Saradnici za razvoj klijenta/servera"
+msgstr ""
 
 msgid "Sources:"
 msgstr ""
@@ -1070,7 +1070,7 @@ msgid "To type chat message, press ###keyChat;"
 msgstr ""
 
 msgid "Translators"
-msgstr "Prevodioci"
+msgstr "Çevirenler"
 
 msgid "\"Next chat tab line\""
 msgstr ""
@@ -1079,7 +1079,7 @@ msgid "\"Move to home location\""
 msgstr ""
 
 msgid "Powered By"
-msgstr "Podržan od strane"
+msgstr ""
 
 msgid "\"Skill window\""
 msgstr ""
@@ -1088,7 +1088,7 @@ msgid "\"Emote shortcut 6\""
 msgstr ""
 
 msgid "/disconnect - quick disconnect from server."
-msgstr "/disconnect - brzo prekidanje veze sa serverom."
+msgstr ""
 
 msgid "/enemy NICK - add nick to enemies list."
 msgstr ""
@@ -1103,7 +1103,7 @@ msgid "/exp 1 - enable party experience sharing options."
 msgstr ""
 
 msgid "/undress NICK - remove all clothes from nick. Local effect only."
-msgstr "/undress NADIMAK - ukloni svu odeću sa igrača. Samo ćeš ti to moći da vidiš, ostali to ne vide."
+msgstr ""
 
 msgid "\"Quick drop N items from 0 slot\""
 msgstr ""
@@ -1115,15 +1115,15 @@ msgid "\"Item shortcut 15\""
 msgstr ""
 
 msgid "Whispers commands"
-msgstr "Komande za šaputanje"
+msgstr ""
 
 msgid ""
 "You can see other player equiped items,\n"
 "by right click on player and select in context menu \"Show Items\"."
-msgstr "Možeš videti šta drugi igrači imaju od opreme i predmeta, tako što klikneš desnim klikom na igrača i u meniju izabereš \"Prikaži predmete\"."
+msgstr ""
 
 msgid "Whispers"
-msgstr "Šaputanja"
+msgstr ""
 
 msgid "emote key"
 msgstr ""
@@ -1134,10 +1134,10 @@ msgstr ""
 msgid ""
 " There you will find a list of all players you are acquainted with, as well as\n"
 " several configuration options:"
-msgstr " Tamo ćeš naći listu svih svojih poznanika, kao i\n nekoliko opcija za konfiguraciju:"
+msgstr ""
 
 msgid "Skills"
-msgstr "Veštine"
+msgstr ""
 
 msgid "\"Item shortcut 7\""
 msgstr ""
@@ -1151,10 +1151,10 @@ msgid ""
 " `Disregard' (see below).  You can fine-tune your player relations in the\n"
 " `Setup' menu, which lists all the players you have added to it.  To open this\n"
 " menu, select `Setup' in the upper right corner of the screen, then `Relations'."
-msgstr " Međutim, ovde možeš da zaštitiš sebe od takvih igrača tako što ih ignorišeš.\n Desni klik na njih otvara meni, i zatim izaberi \"Ignoriši\" ili\n \"Zanemari\" (pogledaj ispod). Možeš fino podesiti\n svoje odnose sa ostalim igračima u meniju za podešavanje,\n koji prikazuje sve igrače koji su dodati na listu.\n Da bi otvorio ovaj meni, izaberi \"Podešavanje\" iz gornjeg-desnog ugla ekrana,\n i zatim \"Odnosi sa igračima\"."
+msgstr ""
 
 msgid "\"Item shortcut 12\""
 msgstr ""
 
 msgid "SHORTCUTS:"
-msgstr "PREČICE:"
+msgstr ""
