@@ -145,6 +145,8 @@ void EquipmentWindow::postInit()
     add(mPlayerBox);
     add(mUnequip);
     enableVisibleSound(true);
+    mPlayerBox->setActionEventId("playerbox");
+    mPlayerBox->addActionListener(this);
 }
 
 EquipmentWindow::~EquipmentWindow()
@@ -300,6 +302,32 @@ void EquipmentWindow::action(const ActionEvent &event)
             return;
         mSelectedTab = button->getTag();
         updatePage();
+    }
+    else if (eventId == "playerbox")
+    {
+        const DragDropSource src = dragDrop.getSource();
+        if (dragDrop.isEmpty() || (src != DRAGDROP_SOURCE_INVENTORY
+            && src != DRAGDROP_SOURCE_EQUIPMENT))
+        {
+            return;
+        }
+        Inventory *const inventory = localPlayer
+            ? PlayerInfo::getInventory() : nullptr;
+        if (!inventory)
+            return;
+        Item *const item = inventory->findItem(dragDrop.getItem(),
+            dragDrop.getItemColor());
+        if (!item)
+            return;
+
+        if (dragDrop.getSource() == DRAGDROP_SOURCE_INVENTORY)
+        {
+            if (item->isEquipment())
+            {
+                if (!item->isEquipped())
+                    PlayerInfo::equipItem(item, true);
+            }
+        }
     }
 }
 
