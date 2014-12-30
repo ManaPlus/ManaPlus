@@ -317,7 +317,7 @@ msgid ""
 "Most commands working in whispers.\n"
 "For example command /imitation in whisper with nick1,\n"
 " similar to command /imitation nick1."
-msgstr "Većina komandi koje rade kao šaptanje.\n Na primer komanda /imitation prilikom šaptanja nekom igraču sa nadimkom nick1,\n slična je komandi /imitation nick1"
+msgstr "Većina komandi koje rade kao šaptanje.\n Na primer komanda /imitation prilikom šaptanja nekom igraču sa nadimkom nick1,\n slična je komandi /imitation nick1."
 
 msgid "\"Ignore input 1\""
 msgstr ""
