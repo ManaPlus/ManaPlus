@@ -16,6 +16,8 @@
 ##2
     <</help - show small help about chat commands. >>
     <</target NICK - select nick as target. Can be monster or player nick.>>
+    <</targetmercenary - target closest mercenary.>>
+    <</targetpet - target pet.>>
     <</outfit N - wear outfit number N.>>
     <</outfit next - wear next outfit.>>
     <</outfit prev - wear previous outfit.>>
@@ -48,6 +50,8 @@
     <</info - show guild info. Only for native guilds only.>>
     <</wait NAME - wait for nick or moster with name.>>
     <</gm MESSAGE - send message to all online gms.>>
+    <</catchpet - try to catch pet.>>
+
 
 ##9<<Trade>>
 ##2
@@ -107,6 +111,24 @@
 ##2
     <</cleangraphics - remove all cached graphics. Useful for content developers.>>
     <</testparticle FILENAME - set test particle on player.>>
+
+##9<<Mercenaries or homunculuses>>
+    <</mercenaryfire - fire mercenary.>>
+    <</firehomunculus - fire homunculus.>>
+    <</sethomunname NAME - set homunculus name.>>
+
+##9<<Pets>>
+    <</setpetname NAME - set new pet name.>>
+    <</petaistart - enable pet ai.>>
+    <</petaistop - disable pet ai.>>
+    <</petmoveup - move pet one tile up.>>
+    <</petmovedown - move pet one tile down.>>
+    <</petmoveleft - move pet one tile left.>>
+    <</petmoveright - move pet one tile right.>>
+    <</petdirectup - rotate pet up.>>
+    <</petdirectdown - rotate pet down.>>
+    <</petdirectleft - rotate pet left.>>
+    <</petdirectright - rorate pet right.>>
 
 ##9<<Other>>
 ##2
