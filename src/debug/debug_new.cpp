@@ -26,7 +26,7 @@
  *
  * original version changed for ManaPlus
  *
- * Copyright (C) 2011-2014  The ManaPlus Developers
+ * Copyright (C) 2011-2015  The ManaPlus Developers
  */
 
 /**
