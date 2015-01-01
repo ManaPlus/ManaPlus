@@ -48,11 +48,21 @@ CharacterViewSmall::CharacterViewSmall(CharSelectDialog *const widget,
             add(*it);
         }
         const int sz = static_cast<signed>(mCharacterEntries->size());
-        mSelected = 0;
-        mSelectedEntry = (*mCharacterEntries)[mSelected];
-        mSelectedEntry->setVisible(true);
-        mNumber->setCaption(strprintf("%d / %d", mSelected + 1, sz));
-        mNumber->adjustSize();
+        if (sz > 0)
+        {
+            mSelected = 0;
+            mSelectedEntry = (*mCharacterEntries)[mSelected];
+            mSelectedEntry->setVisible(true);
+            mNumber->setCaption(strprintf("%d / %d", mSelected + 1, sz));
+            mNumber->adjustSize();
+        }
+        else
+        {
+            mSelected = -1;
+            mSelectedEntry = nullptr;
+            mNumber->setCaption("0 / 0");
+            mNumber->adjustSize();
+        }
     }
     add(mPrevious);
     add(mNext);
@@ -69,6 +79,8 @@ CharacterViewSmall::~CharacterViewSmall()
 void CharacterViewSmall::show(const int i)
 {
     const int sz = static_cast<signed>(mCharacterEntries->size());
+    if (sz <= 0)
+        return;
     if (mSelectedEntry)
         mSelectedEntry->setVisible(false);
     if (i >= sz)
@@ -85,6 +97,9 @@ void CharacterViewSmall::show(const int i)
 
 void CharacterViewSmall::resize()
 {
+    const int sz = static_cast<signed>(mCharacterEntries->size());
+    if (sz <= 0)
+        return;
     const CharacterDisplay *const firtChar = (*mCharacterEntries)[0];
     const int x = (getWidth() - firtChar->getWidth()) / 2;
     const int y = (getHeight() - firtChar->getHeight()) / 2;

@@ -43,13 +43,25 @@ CharacterViewNormal::CharacterViewNormal(CharSelectDialog *const widget,
             add(character);
             character->setVisible(true);
         }
-        if (mSelected >= 0)
-            (*mCharacterEntries)[mSelected]->setSelect(false);
-        mSelected = 0;
-        (*mCharacterEntries)[0]->setSelect(true);
+        const size_t sz = mCharacterEntries->size();
+        if (mSelected >= 0 && mSelected < sz)
+        {
+            CharacterDisplay *const display = (*mCharacterEntries)[mSelected];
+            if (display)
+                display->setSelect(false);
+        }
+        if (sz > 0)
+        {
+            mSelected = 0;
+            CharacterDisplay *const display = (*mCharacterEntries)[0];
+            display->setSelect(true);
+            setWidth(display->getWidth() * 5 + mPadding * 2);
+        }
+        else
+        {
+            mSelected = -1;
+        }
 
-        const CharacterDisplay *const firtChar = (*mCharacterEntries)[0];
-        setWidth(firtChar->getWidth() * 5 + mPadding * 2);
     }
     setHeight(210 + config.getIntValue("fontSize") * 2);
 }
@@ -74,6 +86,8 @@ void CharacterViewNormal::show(const int i)
 void CharacterViewNormal::resize()
 {
     const int sz = static_cast<signed>(mCharacterEntries->size());
+    if (sz <= 0)
+        return;
     const CharacterDisplay *const firtChar = (*mCharacterEntries)[0];
     int y = 0;
     const int width = firtChar->getWidth();
