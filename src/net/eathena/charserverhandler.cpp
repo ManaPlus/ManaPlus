@@ -248,8 +248,9 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     msg.readInt32("slot change");
     tempPlayer->setRename(msg.readInt32("rename (inverse)"));
 
-    const uint8_t gender = static_cast<uint8_t>(msg.readUInt8("gender") & 3);
-    tempPlayer->setGender(Being::intToGender(gender));
+    const uint8_t gender = static_cast<uint8_t>(msg.readUInt8("gender"));
+    if (gender != 99)
+        tempPlayer->setGender(Being::intToGender(gender));
 }
 
 void CharServerHandler::chooseCharacter(Net::Character *const character)
