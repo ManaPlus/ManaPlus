@@ -47,9 +47,9 @@ class MarketHandler final : public MessageHandler,
                      const int amount) const override final;
 
     protected:
-        void processMarketOpen(Net::MessageIn &msg);
+        static void processMarketOpen(Net::MessageIn &msg);
 
-        void processMarketBuyAck(Net::MessageIn &msg);
+        static void processMarketBuyAck(Net::MessageIn &msg);
 
         static BuyDialog *mBuyDialog;
 };

@@ -43,7 +43,6 @@ class MarketHandler final : public MessageHandler,
                      const int type,
                      const unsigned char color,
                      const int amount) const override final;
-
 };
 
 }  // namespace TmwAthena

@@ -105,8 +105,8 @@ void CashShopHandler::buyItem(const int points,
     outMsg.writeInt16(10 + 4, "len");
     outMsg.writeInt32(points, "points");
     outMsg.writeInt16(1, "count");
-    outMsg.writeInt16(amount, "amount");
-    outMsg.writeInt16(itemId, "item id");
+    outMsg.writeInt16(static_cast<int16_t>(amount), "amount");
+    outMsg.writeInt16(static_cast<int16_t>(itemId), "item id");
 }
 
 }  // namespace EAthena

@@ -61,7 +61,6 @@ CharacterViewNormal::CharacterViewNormal(CharSelectDialog *const widget,
         {
             mSelected = -1;
         }
-
     }
     setHeight(210 + config.getIntValue("fontSize") * 2);
 }

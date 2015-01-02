@@ -38,7 +38,6 @@ class CashShopHandler notfinal
                              const int itemId,
                              const unsigned char color,
                              const int amount) const = 0;
-
 };
 
 }  // namespace Net

@@ -303,7 +303,7 @@ class ChatWindow final : public Window,
                                  const int x, const int y);
 
         static void localPetDirection(const std::string &nick,
-                                      BeingDirection::Type dir);
+                                      uint8_t dir);
 
         static void localPetAi(const std::string &nick,
                                const bool start);

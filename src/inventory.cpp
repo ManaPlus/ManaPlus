@@ -166,7 +166,7 @@ void Inventory::setItem(const int index,
 
 void Inventory::setCards(const int index,
                          const int *const cards,
-                         const int size)
+                         const int size) const
 {
     if (index < 0 || index >= static_cast<int>(mSize))
     {

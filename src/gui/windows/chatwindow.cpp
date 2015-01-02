@@ -1526,7 +1526,7 @@ bool ChatWindow::resortChatLog(std::string line,
                 {
                     const std::string nick = line.substr(0, idx2 - 1);
                     line = line.substr(idx2 + 6);
-                    localPetDirection(nick, static_cast<BeingDirection::Type>(
+                    localPetDirection(nick, static_cast<uint8_t>(
                         atoi(line.c_str())));
                 }
                 else if (line.find(": \302\202\302a") != std::string::npos)
@@ -1714,7 +1714,7 @@ void ChatWindow::localPetMove(const std::string &nick,
 }
 
 void ChatWindow::localPetDirection(const std::string &nick,
-                                   BeingDirection::Type dir)
+                                   uint8_t dir)
 {
     Being *const pet = getPetForNick(nick);
     if (pet)

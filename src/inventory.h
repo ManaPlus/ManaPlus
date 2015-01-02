@@ -115,7 +115,7 @@ class Inventory final
 
         void setCards(const int index,
                       const int *const cards,
-                      const int size);
+                      const int size) const;
 
         /**
          * Remove a item from the inventory.

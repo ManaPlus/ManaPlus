@@ -21,41 +21,20 @@
 #include "actions/pets.h"
 
 #include "actormanager.h"
-#include "configuration.h"
 #include "game.h"
 #include "emoteshortcut.h"
-#include "inventory.h"
-#include "item.h"
-#include "party.h"
 
 #include "actions/actiondef.h"
 
 #include "being/localplayer.h"
-#include "being/playerinfo.h"
-#include "being/playerrelations.h"
 
 #include "gui/chatconsts.h"
-#include "gui/viewport.h"
 
-#include "gui/windows/chatwindow.h"
-#include "gui/windows/socialwindow.h"
-#include "gui/windows/outfitwindow.h"
-
-#include "gui/widgets/tabs/chat/whispertab.h"
-
-#include "net/adminhandler.h"
 #include "net/chathandler.h"
-#include "net/guildhandler.h"
-#include "net/homunculushandler.h"
-#include "net/partyhandler.h"
 #include "net/pethandler.h"
-#include "net/serverfeatures.h"
-
-#include "resources/iteminfo.h"
 
 #include "utils/chatutils.h"
-#include "utils/gettext.h"
-#include "utils/process.h"
+#include "utils/stringutils.h"
 
 #include "debug.h"
 
