@@ -1,3 +1,16 @@
+2015-01-03 New release 1.5.1.3
+fix: chat commands /store, /retreive
+fix: chat commands /buy, /sell
+fix: show long key names in browserbox macroses.
+fix; translation for default equip/unequip/use actions.
+fix: crash with completly broken themes.
+add: another tab in shortcuts window.
+add: pets moving and direction actions and commands.
+add: some new commands to commands help.
+add: per char gender (hercules)
+add: market support (hercules)
+add: cach shop support (hercules)
+
 2014-12-20 New release 1.4.12.20
 fix: inventory related packets (hercules).
 fix: background paralax.
