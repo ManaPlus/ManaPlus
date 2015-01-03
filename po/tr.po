@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-12-28 19:54+0300\n"
+"POT-Creation-Date: 2015-01-03 11:46+0300\n"
 "PO-Revision-Date: 2014-12-29 09:57+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Turkish (http://www.transifex.com/projects/p/manaplus/"
@@ -56,8 +56,8 @@ msgstr ""
 #: src/gui/windows/textdialog.cpp:48 src/gui/windows/unregisterdialog.cpp:149
 #: src/net/ea/charserverhandler.cpp:143 src/net/ea/charserverhandler.cpp:162
 #: src/net/ea/charserverhandler.cpp:175 src/net/ea/gamehandler.cpp:83
-#: src/net/eathena/charserverhandler.cpp:541
-#: src/net/eathena/charserverhandler.cpp:571
+#: src/net/eathena/charserverhandler.cpp:542
+#: src/net/eathena/charserverhandler.cpp:572
 msgid "OK"
 msgstr "TAMAM"
 
@@ -557,8 +557,8 @@ msgstr "Oyun sunucusu değiştiriliyor"
 #: src/gui/windows/registerdialog.cpp:243
 #: src/gui/windows/unregisterdialog.cpp:146
 #: src/net/ea/charserverhandler.cpp:141 src/net/ea/charserverhandler.cpp:173
-#: src/net/eathena/charserverhandler.cpp:524
-#: src/net/eathena/charserverhandler.cpp:526
+#: src/net/eathena/charserverhandler.cpp:525
+#: src/net/eathena/charserverhandler.cpp:527
 msgid "Error"
 msgstr "Hata"
 
@@ -1077,7 +1077,7 @@ msgstr ""
 #: src/gui/models/colorlistmodel.h:33 src/gui/models/sortlistmodelinv.h:34
 #: src/gui/widgets/tabs/setup_other.cpp:79
 #: src/gui/widgets/tabs/setup_visual.cpp:81
-#: src/gui/windows/equipmentwindow.cpp:581
+#: src/gui/windows/equipmentwindow.cpp:609
 msgid "default"
 msgstr "varsayılan"
 
@@ -2664,7 +2664,7 @@ msgstr ""
 
 #. TRANSLATORS: Skill type
 #. TRANSLATORS: unknown equipment page name
-#: src/gui/widgets/skillinfo.cpp:109 src/gui/windows/equipmentwindow.cpp:588
+#: src/gui/widgets/skillinfo.cpp:109 src/gui/windows/equipmentwindow.cpp:616
 msgid "Unknown"
 msgstr ""
 
@@ -5280,8 +5280,8 @@ msgstr "Oyna"
 #. TRANSLATORS: info message
 #: src/gui/windows/charselectdialog.cpp:80
 #: src/net/ea/charserverhandler.cpp:160
-#: src/net/eathena/charserverhandler.cpp:539
-#: src/net/eathena/charserverhandler.cpp:569
+#: src/net/eathena/charserverhandler.cpp:540
+#: src/net/eathena/charserverhandler.cpp:570
 msgid "Info"
 msgstr "Bilgi"
 
@@ -7803,27 +7803,27 @@ msgid "Connection to server terminated. "
 msgstr ""
 
 #. TRANSLATORS: char rename error
-#: src/net/eathena/charserverhandler.cpp:524
-#: src/net/eathena/charserverhandler.cpp:561
+#: src/net/eathena/charserverhandler.cpp:525
+#: src/net/eathena/charserverhandler.cpp:562
 msgid "Character rename error."
 msgstr ""
 
-#: src/net/eathena/charserverhandler.cpp:539
+#: src/net/eathena/charserverhandler.cpp:540
 msgid "Character renamed."
 msgstr ""
 
 #. TRANSLATORS: char rename error
-#: src/net/eathena/charserverhandler.cpp:552
+#: src/net/eathena/charserverhandler.cpp:553
 msgid "Rename not allowed."
 msgstr ""
 
 #. TRANSLATORS: char rename error
-#: src/net/eathena/charserverhandler.cpp:556
+#: src/net/eathena/charserverhandler.cpp:557
 msgid "New name is not set."
 msgstr ""
 
 #. TRANSLATORS: char rename error
-#: src/net/eathena/charserverhandler.cpp:565
+#: src/net/eathena/charserverhandler.cpp:566
 msgid "Character not found."
 msgstr ""
 
@@ -8315,85 +8315,85 @@ msgstr ""
 #. TRANSLATORS: unknown info name
 #. TRANSLATORS: being info default name
 #: src/resources/beinginfo.cpp:50 src/resources/db/avatardb.cpp:88
-#: src/resources/db/itemdb.cpp:324 src/resources/db/moddb.cpp:78
+#: src/resources/db/itemdb.cpp:322 src/resources/db/moddb.cpp:78
 #: src/resources/db/monsterdb.cpp:102 src/resources/modinfo.cpp:29
 msgid "unnamed"
 msgstr "isimsiz"
 
 #. TRANSLATORS: item info label (attack)
-#: src/resources/db/itemdb.cpp:98
+#: src/resources/db/itemdb.cpp:96
 #, c-format
 msgid "Attack %s"
 msgstr ""
 
 #. TRANSLATORS: item info label (attack)
-#: src/resources/db/itemdb.cpp:100
+#: src/resources/db/itemdb.cpp:98
 #, c-format
 msgid "Critical attack %s"
 msgstr ""
 
 #. TRANSLATORS: item info label (magic attack)
-#: src/resources/db/itemdb.cpp:102
+#: src/resources/db/itemdb.cpp:100
 #, c-format
 msgid "M. Attack %s"
 msgstr ""
 
 #. TRANSLATORS: item info label (defence)
-#: src/resources/db/itemdb.cpp:104
+#: src/resources/db/itemdb.cpp:102
 #, c-format
 msgid "Defense %s"
 msgstr ""
 
 #. TRANSLATORS: item info label (defence)
-#: src/resources/db/itemdb.cpp:106
+#: src/resources/db/itemdb.cpp:104
 #, c-format
 msgid "Critical defense %s"
 msgstr ""
 
 #. TRANSLATORS: item info label (magic defence)
-#: src/resources/db/itemdb.cpp:108
+#: src/resources/db/itemdb.cpp:106
 #, c-format
 msgid "M. Defense %s"
 msgstr ""
 
 #. TRANSLATORS: item info label (health)
-#: src/resources/db/itemdb.cpp:110
+#: src/resources/db/itemdb.cpp:108
 #, c-format
 msgid "HP %s"
 msgstr ""
 
 #. TRANSLATORS: item info label (mana)
-#: src/resources/db/itemdb.cpp:112
+#: src/resources/db/itemdb.cpp:110
 #, c-format
 msgid "MP %s"
 msgstr ""
 
 #. TRANSLATORS: item info label (level)
-#: src/resources/db/itemdb.cpp:114
+#: src/resources/db/itemdb.cpp:112
 #, c-format
 msgid "Level %s"
 msgstr ""
 
 #. TRANSLATORS: item info label (moving speed)
-#: src/resources/db/itemdb.cpp:116
+#: src/resources/db/itemdb.cpp:114
 #, c-format
 msgid "Speed %s"
 msgstr ""
 
 #. TRANSLATORS: item info label (health)
-#: src/resources/db/itemdb.cpp:118
+#: src/resources/db/itemdb.cpp:116
 #, c-format
 msgid "Range %s"
 msgstr ""
 
 #. TRANSLATORS: item info label (health)
-#: src/resources/db/itemdb.cpp:120
+#: src/resources/db/itemdb.cpp:118
 #, c-format
 msgid "Flee %s"
 msgstr ""
 
 #. TRANSLATORS: item name
-#: src/resources/db/itemdb.cpp:210
+#: src/resources/db/itemdb.cpp:208
 msgid "Unknown item"
 msgstr "Bilinmeyen nesne"
 
