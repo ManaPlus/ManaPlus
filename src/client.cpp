@@ -412,6 +412,7 @@ void Client::gameInit()
 
     loginData.username = settings.options.username;
     loginData.password = settings.options.password;
+    LoginDialog::savedPassword = settings.options.password;
     loginData.remember = serverConfig.getValue("remember", 1);
     loginData.registerLogin = false;
 
