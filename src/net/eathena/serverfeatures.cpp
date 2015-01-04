@@ -87,7 +87,7 @@ bool ServerFeatures::haveIncompleteChatMessages() const
 
 bool ServerFeatures::haveRaceSelection() const
 {
-    return false;
+    return serverVersion >= 4;
 }
 
 bool ServerFeatures::haveLookSelection() const

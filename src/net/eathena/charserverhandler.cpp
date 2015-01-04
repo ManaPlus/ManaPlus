@@ -36,6 +36,7 @@
 
 #include "net/character.h"
 #include "net/logindata.h"
+#include "net/serverfeatures.h"
 
 #include "net/eathena/gamehandler.h"
 #include "net/eathena/loginhandler.h"
@@ -280,6 +281,8 @@ void CharServerHandler::newCharacter(const std::string &name, const int slot,
     outMsg.writeInt8(static_cast<unsigned char>(slot), "slot");
     outMsg.writeInt16(static_cast<int16_t>(hairColor), "hair color");
     outMsg.writeInt16(static_cast<int16_t>(hairstyle), "hair style");
+    if (serverFeatures->haveRaceSelection())
+        outMsg.writeInt16(static_cast<int16_t>(race), "race");
 }
 
 void CharServerHandler::deleteCharacter(Net::Character *const character)
