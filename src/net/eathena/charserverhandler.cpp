@@ -593,4 +593,18 @@ void CharServerHandler::processCharChangeSlot(Net::MessageIn &msg)
     msg.readInt16("unused");
 }
 
+void CharServerHandler::processCharDeleteFailed(Net::MessageIn &msg A_UNUSED)
+{
+    BLOCK_START("CharServerHandler::processCharDeleteFailed")
+    unlockCharSelectDialog();
+    msg.readUInt8("error");
+    // TRANSLATORS: error message
+    new OkDialog(_("Error"), _("Failed to delete character."),
+        // TRANSLATORS: ok dialog button
+        _("OK"),
+        DialogType::ERROR,
+        true, true, nullptr, 260);
+    BLOCK_END("CharServerHandler::processCharDeleteFailed")
+}
+
 }  // namespace EAthena

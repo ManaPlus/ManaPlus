@@ -165,19 +165,6 @@ void CharServerHandler::processCharDelete(Net::MessageIn &msg A_UNUSED)
     BLOCK_END("CharServerHandler::processCharDelete")
 }
 
-void CharServerHandler::processCharDeleteFailed(Net::MessageIn &msg A_UNUSED)
-{
-    BLOCK_START("CharServerHandler::processCharDeleteFailed")
-    unlockCharSelectDialog();
-    // TRANSLATORS: error message
-    new OkDialog(_("Error"), _("Failed to delete character."),
-        // TRANSLATORS: ok dialog button
-        _("OK"),
-        DialogType::ERROR,
-        true, true, nullptr, 260);
-    BLOCK_END("CharServerHandler::processCharDeleteFailed")
-}
-
 void CharServerHandler::clear()
 {
     delete_all(mCharacters);

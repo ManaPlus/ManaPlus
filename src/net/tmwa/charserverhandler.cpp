@@ -28,7 +28,10 @@
 
 #include "being/attributes.h"
 
+#include "gui/dialogtype.h"
+
 #include "gui/windows/charcreatedialog.h"
+#include "gui/windows/okdialog.h"
 
 #include "net/character.h"
 #include "net/logindata.h"
@@ -519,6 +522,20 @@ void CharServerHandler::renameCharacter(const int id A_UNUSED,
 void CharServerHandler::changeSlot(const int oldSlot A_UNUSED,
                                    const int newSlot A_UNUSED)
 {
+}
+
+void CharServerHandler::processCharDeleteFailed(Net::MessageIn &msg A_UNUSED)
+{
+    BLOCK_START("CharServerHandler::processCharDeleteFailed")
+    unlockCharSelectDialog();
+    msg.readUInt8("error");
+    // TRANSLATORS: error message
+    new OkDialog(_("Error"), _("Failed to delete character."),
+        // TRANSLATORS: ok dialog button
+        _("OK"),
+        DialogType::ERROR,
+        true, true, nullptr, 260);
+    BLOCK_END("CharServerHandler::processCharDeleteFailed")
 }
 
 }  // namespace TmwAthena

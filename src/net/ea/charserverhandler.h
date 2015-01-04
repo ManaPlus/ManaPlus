@@ -60,8 +60,6 @@ class CharServerHandler notfinal : public Net::CharServerHandler
 
         static void processCharDelete(Net::MessageIn &msg);
 
-        static void processCharDeleteFailed(Net::MessageIn &msg);
-
         virtual void clear() override final;
 
     protected:
