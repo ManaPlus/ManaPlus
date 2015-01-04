@@ -763,6 +763,7 @@ SET(SRCS
     utils/sdlhelper.cpp
     utils/sdlhelper.h
     utils/sdlmemoryobject.h
+    utils/stringmap.h
     utils/stringutils.cpp
     utils/stringutils.h
     utils/stringvector.h

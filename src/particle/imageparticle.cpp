@@ -28,7 +28,7 @@
 
 #include "debug.h"
 
-std::map<std::string, int> ImageParticle::imageParticleCountByName;
+StringIntMap ImageParticle::imageParticleCountByName;
 
 ImageParticle::ImageParticle(Image *const image) :
     Particle(),
@@ -39,7 +39,7 @@ ImageParticle::ImageParticle(Image *const image) :
         mImage->incRef();
 
         const std::string &name = mImage->getIdPath();
-        std::map<std::string, int>::iterator it
+        StringIntMapIter it
             = ImageParticle::imageParticleCountByName.find(name);
         if (it == ImageParticle::imageParticleCountByName.end())
             ImageParticle::imageParticleCountByName[name] = 1;
@@ -53,7 +53,7 @@ ImageParticle::~ImageParticle()
     if (mImage)
     {
         const std::string &name = mImage->getIdPath();
-        std::map<std::string, int>::iterator it
+        StringIntMapIter it
             = ImageParticle::imageParticleCountByName.find(name);
         if (it != ImageParticle::imageParticleCountByName.end())
         {

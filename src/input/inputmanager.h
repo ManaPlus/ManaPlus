@@ -26,6 +26,8 @@
 
 #include "events/inputevent.h"
 
+#include "utils/stringmap.h"
+
 #include <list>
 #include <string>
 #include <map>
@@ -142,8 +144,8 @@ class InputManager final
 
         int mMask;
 
-        std::map<std::string, int> mNameMap;
-        std::map<std::string, int> mChatMap;
+        StringIntMap mNameMap;
+        StringIntMap mChatMap;
 
         InputFunction mKey[InputAction::TOTAL];
 };

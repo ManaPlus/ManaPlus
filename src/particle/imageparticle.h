@@ -25,6 +25,8 @@
 
 #include "particle/particle.h"
 
+#include "utils/stringmap.h"
+
 #include <map>
 
 class Image;
@@ -60,7 +62,7 @@ class ImageParticle notfinal : public Particle
         virtual void setAlpha(const float alpha) override final
         { mAlpha = alpha; }
 
-        static std::map<std::string, int> imageParticleCountByName;
+        static StringIntMap imageParticleCountByName;
     protected:
         Image *mImage;   /**< The image used for this particle. */
 };

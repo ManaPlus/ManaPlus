@@ -400,8 +400,7 @@ Skin *Theme::readSkin(const std::string &filename, const bool full)
     int stickySpacing = 3;
     int stickyPadding = 3;
     int resizePadding = 2;
-    std::map<std::string, int> *const mOptions
-        = new std::map<std::string, int>();
+    StringIntMap *const mOptions = new StringIntMap;
 
     // iterate <widget>'s
     for_each_xml_child_node(widgetNode, rootNode)

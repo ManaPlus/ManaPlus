@@ -27,6 +27,7 @@
 
 #include "listeners/configlistener.h"
 
+#include "utils/stringmap.h"
 #include "utils/stringvector.h"
 
 #include "localconsts.h"
@@ -289,12 +290,10 @@ class ActorManager final: public ConfigListener
         defList(Pickup, Items)
         defList(IgnorePickup, Items)
 
-        const std::map<std::string, int> &getAttackMobsMap()
-                                          const A_WARN_UNUSED
+        const StringIntMap &getAttackMobsMap() const A_WARN_UNUSED
         { return mAttackMobsMap; }
 
-        const std::map<std::string, int> &getPriorityAttackMobsMap()
-                                   const A_WARN_UNUSED
+        const StringIntMap &getPriorityAttackMobsMap() const A_WARN_UNUSED
         { return mPriorityAttackMobsMap; }
 
         int getAttackMobIndex(const std::string &name) const A_WARN_UNUSED;
@@ -305,7 +304,7 @@ class ActorManager final: public ConfigListener
         int getPickupItemIndex(const std::string &name) const A_WARN_UNUSED;
 
         static int getIndexByName(const std::string &name,
-                                  const std::map<std::string, int> &map)
+                                  const StringIntMap &map)
                                   A_WARN_UNUSED;
 
         bool checkForPickup(const FloorItem *const item) const A_WARN_UNUSED;
@@ -349,12 +348,12 @@ class ActorManager final: public ConfigListener
 #define defVarsP(mob) \
         std::list<std::string> mPriority##mob;\
         std::set<std::string> mPriority##mob##Set;\
-        std::map<std::string, int> mPriority##mob##Map;
+        StringIntMap mPriority##mob##Map;
 
 #define defVars(mob) \
         std::list<std::string> m##mob;\
         std::set<std::string> m##mob##Set;\
-        std::map<std::string, int> m##mob##Map;\
+        StringIntMap m##mob##Map;\
         std::list<std::string> mIgnore##mob;\
         std::set<std::string> mIgnore##mob##Set;
 

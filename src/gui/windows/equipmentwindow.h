@@ -28,6 +28,7 @@
 
 #include "gui/widgets/window.h"
 
+#include "utils/stringmap.h"
 #include "utils/xml.h"
 
 #include "listeners/actionlistener.h"
@@ -125,7 +126,7 @@ class EquipmentWindow final : public Window,
 
         static int parseSlotName(const std::string &name) A_WARN_UNUSED;
 
-        static std::map<std::string, int> mSlotNames;
+        static StringIntMap mSlotNames;
 
         Equipment *mEquipment;
 

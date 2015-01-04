@@ -45,6 +45,7 @@
 
 #include "utils/base64.h"
 #include "utils/delete2.h"
+#include "utils/stringmap.h"
 
 #include <iostream>
 #include <zlib.h>
@@ -969,7 +970,7 @@ Tileset *MapReader::readTileset(XmlNodePtr node,
                 if (isProps)
                 {
                     // read tile properties to a map for simpler handling
-                    std::map<std::string, int> tileProperties;
+                    StringIntMap tileProperties;
                     for_each_xml_child_node(propertyNode, tileNode)
                     {
                         if (!xmlNameEqual(propertyNode, "property"))
@@ -998,9 +999,9 @@ Tileset *MapReader::readTileset(XmlNodePtr node,
                     for (int i = 0; ; i++)
                     {
                         const std::string iStr(toString(i));
-                        const std::map<std::string, int>::const_iterator iFrame
+                        StringIntMapCIter iFrame
                             = tileProperties.find("animation-frame" + iStr);
-                        const std::map<std::string, int>::const_iterator iDelay
+                        StringIntMapCIter iDelay
                             = tileProperties.find("animation-delay" + iStr);
                         // possible need add random attribute?
                         if (iFrame != tileProperties.end()

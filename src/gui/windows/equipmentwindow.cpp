@@ -59,7 +59,7 @@
 EquipmentWindow *equipmentWindow = nullptr;
 EquipmentWindow *beingEquipmentWindow = nullptr;
 static const int BOX_COUNT = 27;
-std::map<std::string, int> EquipmentWindow::mSlotNames;
+StringIntMap EquipmentWindow::mSlotNames;
 
 EquipmentWindow::EquipmentWindow(Equipment *const equipment,
                                  Being *const being,
@@ -689,7 +689,7 @@ void EquipmentWindow::prepareSlotNames()
 
 int EquipmentWindow::parseSlotName(const std::string &name)
 {
-    std::map<std::string, int>::const_iterator it =  mSlotNames.find(name);
+    StringIntMapCIter it =  mSlotNames.find(name);
     if (it != mSlotNames.end())
         return (*it).second;
     return -1;

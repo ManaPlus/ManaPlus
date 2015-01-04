@@ -439,8 +439,7 @@ std::string InputManager::getKeyValueString(const int index) const
 
 std::string InputManager::getKeyValueByName(const std::string &keyName)
 {
-    const std::map<std::string, int>::const_iterator
-        it = mNameMap.find(keyName);
+    const StringIntMapCIter it = mNameMap.find(keyName);
 
     if (it == mNameMap.end())
         return std::string();
@@ -449,8 +448,7 @@ std::string InputManager::getKeyValueByName(const std::string &keyName)
 
 std::string InputManager::getKeyValueByNameLong(const std::string &keyName)
 {
-    const std::map<std::string, int>::const_iterator
-        it = mNameMap.find(keyName);
+    const StringIntMapCIter it = mNameMap.find(keyName);
 
     if (it == mNameMap.end())
         return std::string();
@@ -770,7 +768,7 @@ bool InputManager::executeChatCommand(const std::string &cmd,
                                       const std::string &args,
                                       ChatTab *const tab)
 {
-    const std::map<std::string, int>::const_iterator it = mChatMap.find(cmd);
+    const StringIntMapCIter it = mChatMap.find(cmd);
     if (it != mChatMap.end())
     {
         ActionFuncPtr func = *(inputActionData[(*it).second].action);

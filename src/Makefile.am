@@ -132,6 +132,7 @@ dyecmd_SOURCES = gui/cliprect.cpp \
 	      utils/sdlhelper.cpp \
 	      utils/sdlhelper.h \
 	      utils/sdlmemoryobject.h \
+	      utils/stringmap.h \
 	      utils/stringutils.cpp \
 	      utils/stringutils.h \
 	      utils/timer.cpp \

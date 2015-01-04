@@ -33,7 +33,7 @@
 #include "debug.h"
 
 #ifdef DEBUG_CONFIG
-std::map<std::string, int> optionsCount;
+StringIntMap optionsCount;
 #define GETLOG() if (logger) {logger->log("config get: " + key); \
     if (mIsMain) optionsCount[key] = 1; }
 #else

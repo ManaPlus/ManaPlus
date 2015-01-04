@@ -25,6 +25,8 @@
 #ifndef GUI_SKIN_H
 #define GUI_SKIN_H
 
+#include "utils/stringmap.h"
+
 #include <map>
 #include <string>
 
@@ -42,7 +44,7 @@ class Skin final
              const std::string &name = "",
              const int padding = 3,
              const int titlePadding = 4,
-             std::map<std::string, int> *restrict const options = nullptr);
+             StringIntMap *restrict const options = nullptr);
 
         A_DELETE_COPY(Skin)
 
@@ -130,7 +132,7 @@ class Skin final
         Image *mStickyImageDown;   /**< Sticky Button Image */
         int mPadding;
         int mTitlePadding;
-        std::map<std::string, int> *mOptions;
+        StringIntMap *mOptions;
 };
 
 #endif  // GUI_SKIN_H

@@ -39,6 +39,7 @@
 
 #include "utils/delete2.h"
 #include "utils/dtor.h"
+#include "utils/stringmap.h"
 
 #include "debug.h"
 
@@ -50,7 +51,7 @@ namespace
     bool mLoaded = false;
     bool mConstructed = false;
     StringVect mTagNames;
-    std::map<std::string, int> mTags;
+    StringIntMap mTags;
     std::map<std::string, ItemSoundEvent::Type> mSoundNames;
 }  // namespace
 

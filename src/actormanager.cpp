@@ -74,15 +74,16 @@ class FindBeingFunctor final
     public:
         bool operator() (const ActorSprite *const actor) const
         {
-            if (!actor || actor->getType() == ActorType::FloorItem
+            if (!actor
+                || actor->getType() == ActorType::FloorItem
                 || actor->getType() == ActorType::Portal)
             {
                 return false;
             }
             const Being *const b = static_cast<const Being* const>(actor);
 
-            const unsigned other_y = y + ((b->getType()
-                == ActorType::Npc) ? 1 : 0);
+            const unsigned other_y = y
+                + ((b->getType() == ActorType::Npc) ? 1 : 0);
             const Vector &pos = b->getPosition();
             return (static_cast<unsigned>(pos.x) / mapTileSize == x &&
                 (static_cast<unsigned>(pos.y) / mapTileSize == y
@@ -121,10 +122,10 @@ class SortBeingFunctor final
             {
                 int w1 = defaultPriorityIndex;
                 int w2 = defaultPriorityIndex;
-                const std::map<std::string, int>::const_iterator it1
-                    = priorityBeings->find(being1->getName());
-                const std::map<std::string, int>::const_iterator it2
-                    = priorityBeings->find(being2->getName());
+                const StringIntMapCIter it1 = priorityBeings->find(
+                    being1->getName());
+                const StringIntMapCIter it2 = priorityBeings->find(
+                    being2->getName());
                 if (it1 != priorityBeings->end())
                     w1 = (*it1).second;
                 if (it2 != priorityBeings->end())
@@ -161,10 +162,10 @@ class SortBeingFunctor final
             {
                 int w1 = defaultAttackIndex;
                 int w2 = defaultAttackIndex;
-                const std::map<std::string, int>::const_iterator it1
-                    = attackBeings->find(being1->getName());
-                const std::map<std::string, int>::const_iterator it2
-                    = attackBeings->find(being2->getName());
+                const StringIntMapCIter it1 = attackBeings->find(
+                    being1->getName());
+                const StringIntMapCIter it2 = attackBeings->find(
+                    being2->getName());
                 if (it1 != attackBeings->end())
                     w1 = (*it1).second;
                 if (it2 != attackBeings->end())
@@ -176,8 +177,8 @@ class SortBeingFunctor final
 
             return (being1->getName() < being2->getName());
         }
-        std::map<std::string, int> *attackBeings;
-        std::map<std::string, int> *priorityBeings;
+        StringIntMap *attackBeings;
+        StringIntMap *priorityBeings;
         int x;
         int y;
         int defaultAttackIndex;
@@ -919,8 +920,8 @@ Being *ActorManager::findNearestLivingBeing(const Being *const aroundBeing,
     std::set<std::string> attackMobs;
     std::set<std::string> priorityMobs;
     std::set<std::string> ignoreAttackMobs;
-    std::map<std::string, int> attackMobsMap;
-    std::map<std::string, int> priorityMobsMap;
+    StringIntMap attackMobsMap;
+    StringIntMap priorityMobsMap;
     int defaultAttackIndex = 10000;
     int defaultPriorityIndex = 10000;
     const int attackRange = localPlayer->getAttackRange();
@@ -959,8 +960,7 @@ Being *ActorManager::findNearestLivingBeing(const Being *const aroundBeing,
         beingActorSorter.attackRange = attackRange;
         if (ignoreAttackMobs.find("") != ignoreAttackMobs.end())
             ignoreDefault = true;
-        std::map<std::string, int>::const_iterator
-            itr = attackMobsMap.find("");
+        StringIntMapCIter itr = attackMobsMap.find("");
         if (itr != attackMobsMap.end())
             defaultAttackIndex = (*itr).second;
         itr = priorityMobsMap.find("");
@@ -1136,8 +1136,8 @@ Being *ActorManager::findNearestLivingBeing(const Being *const aroundBeing,
                 int w2 = defaultPriorityIndex;
                 if (closestBeing)
                 {
-                    const std::map<std::string, int>::const_iterator it2
-                        = priorityMobsMap.find(being->getName());
+                    const StringIntMapCIter it2 =  priorityMobsMap.find(
+                        being->getName());
                     if (it2 != priorityMobsMap.end())
                         w2 = (*it2).second;
 
@@ -1161,8 +1161,8 @@ Being *ActorManager::findNearestLivingBeing(const Being *const aroundBeing,
                 {
                     dist = d;
                     closestBeing = being;
-                    const std::map<std::string, int>::const_iterator it1
-                        = priorityMobsMap.find(being->getName());
+                    const StringIntMapCIter it1 = priorityMobsMap.find(
+                        being->getName());
                     if (it1 != priorityMobsMap.end())
                         index = (*it1).second;
                     else
@@ -1628,10 +1628,9 @@ void ActorManager::rebuildPickupItems()
 }
 
 int ActorManager::getIndexByName(const std::string &name,
-                                 const std::map<std::string, int> &map)
+                                 const StringIntMap &map)
 {
-    const std::map<std::string, int>::const_iterator
-        i = map.find(name);
+    const StringIntMapCIter i = map.find(name);
     if (i == map.end())
         return -1;
 
