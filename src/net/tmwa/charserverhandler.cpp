@@ -292,7 +292,8 @@ void CharServerHandler::newCharacter(const std::string &name, const int slot,
         outMsg.writeInt8(race, "class");
 }
 
-void CharServerHandler::deleteCharacter(Net::Character *const character)
+void CharServerHandler::deleteCharacter(Net::Character *const character,
+                                        const std::string &email A_UNUSED)
 {
     if (!character)
         return;

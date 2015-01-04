@@ -94,7 +94,8 @@ class CharSelectDialog final : public Window,
         void setName(const int id, const std::string &newName);
 
     private:
-        void attemptCharacterDelete(const int index);
+        void attemptCharacterDelete(const int index,
+                                    const std::string &email);
 
         void attemptCharacterSelect(const int index);
 

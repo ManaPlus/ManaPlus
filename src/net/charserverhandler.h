@@ -63,7 +63,8 @@ class CharServerHandler notfinal
                                   const unsigned char look,
                                   const std::vector<int> &stats) const = 0;
 
-        virtual void deleteCharacter(Net::Character *const character) = 0;
+        virtual void deleteCharacter(Net::Character *const character,
+                                     const std::string &email) = 0;
 
         virtual void renameCharacter(const int id,
                                      const std::string &newName) = 0;

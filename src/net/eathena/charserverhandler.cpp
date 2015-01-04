@@ -285,7 +285,8 @@ void CharServerHandler::newCharacter(const std::string &name, const int slot,
         outMsg.writeInt16(static_cast<int16_t>(race), "race");
 }
 
-void CharServerHandler::deleteCharacter(Net::Character *const character)
+void CharServerHandler::deleteCharacter(Net::Character *const character,
+                                        const std::string &email)
 {
     if (!character)
         return;
@@ -294,7 +295,10 @@ void CharServerHandler::deleteCharacter(Net::Character *const character)
 
     createOutPacket(CMSG_CHAR_DELETE);
     outMsg.writeInt32(mSelectedCharacter->dummy->getId(), "id?");
-    outMsg.writeString("a@a.com", 40, "email");
+    if (email.empty())
+        outMsg.writeString("a@a.com", 40, "email");
+    else
+        outMsg.writeString(email, 40, "email");
 }
 
 void CharServerHandler::switchCharacter() const

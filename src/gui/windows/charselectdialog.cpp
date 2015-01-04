@@ -297,20 +297,27 @@ void CharSelectDialog::action(const ActionEvent &event)
     }
     else if (eventId == "try delete character")
     {
-        if (mDeleteDialog && mDeleteIndex != -1 && mDeleteDialog->getText()
-            == LoginDialog::savedPassword)
+        if (mDeleteDialog && mDeleteIndex != -1)
         {
-            attemptCharacterDelete(mDeleteIndex);
-            mDeleteDialog = nullptr;
-        }
-        else
-        {
-            // TRANSLATORS: error message
-            new OkDialog(_("Error"), _("Incorrect password"),
-                // TRANSLATORS: ok dialog button
-                _("OK"),
-                DialogType::ERROR,
-                true, true, nullptr, 260);
+            if (serverFeatures->haveEmailOnDelete())
+            {
+                attemptCharacterDelete(mDeleteIndex, mDeleteDialog->getText());
+                mDeleteDialog = nullptr;
+            }
+            else if (mDeleteDialog->getText() == LoginDialog::savedPassword)
+            {
+                attemptCharacterDelete(mDeleteIndex, "");
+                mDeleteDialog = nullptr;
+            }
+            else
+            {
+                // TRANSLATORS: error message
+                new OkDialog(_("Error"), _("Incorrect password"),
+                    // TRANSLATORS: ok dialog button
+                    _("OK"),
+                    DialogType::ERROR,
+                    true, true, nullptr, 260);
+            }
         }
         mDeleteIndex = -1;
     }
@@ -428,7 +435,8 @@ void CharSelectDialog::keyPressed(KeyEvent &event)
 /**
  * Communicate character deletion to the server.
  */
-void CharSelectDialog::attemptCharacterDelete(const int index)
+void CharSelectDialog::attemptCharacterDelete(const int index,
+                                              const std::string &email)
 {
     if (mLocked)
         return;
@@ -436,7 +444,8 @@ void CharSelectDialog::attemptCharacterDelete(const int index)
     if (mCharacterEntries[index])
     {
         mCharServerHandler->deleteCharacter(
-            mCharacterEntries[index]->getCharacter());
+            mCharacterEntries[index]->getCharacter(),
+            email);
     }
     lock();
 }
@@ -444,10 +453,20 @@ void CharSelectDialog::attemptCharacterDelete(const int index)
 void CharSelectDialog::askPasswordForDeletion(const int index)
 {
     mDeleteIndex = index;
-    mDeleteDialog = new TextDialog(
-        // TRANSLATORS: char deletion question.
-        _("Enter password for deleting character"), _("Enter password:"),
-        this, true);
+    if (serverFeatures->haveEmailOnDelete())
+    {
+        mDeleteDialog = new TextDialog(
+            // TRANSLATORS: char deletion question.
+            _("Enter your email for deleting character"), _("Enter email:"),
+            this, false);
+    }
+    else
+    {
+        mDeleteDialog = new TextDialog(
+            // TRANSLATORS: char deletion question.
+            _("Enter password for deleting character"), _("Enter password:"),
+            this, true);
+    }
     mDeleteDialog->postInit();
     mDeleteDialog->setActionEventId("try delete character");
     mDeleteDialog->addActionListener(this);
