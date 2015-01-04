@@ -134,6 +134,11 @@ bool ServerFeatures::haveEmailOnRegister() const
     return serverVersion >= 7;
 }
 
+bool ServerFeatures::haveEmailOnDelete() const
+{
+    return false;
+}
+
 bool ServerFeatures::haveEightDirections() const
 {
     return false;
