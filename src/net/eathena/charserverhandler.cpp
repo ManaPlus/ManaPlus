@@ -283,6 +283,15 @@ void CharServerHandler::newCharacter(const std::string &name, const int slot,
     outMsg.writeInt16(static_cast<int16_t>(hairstyle), "hair style");
     if (serverFeatures->haveRaceSelection())
         outMsg.writeInt16(static_cast<int16_t>(race), "race");
+    if (serverFeatures->haveCreateCharGender())
+    {
+        int sex = 0;
+        if (gender == Gender::UNSPECIFIED)
+            sex = 99;
+        else
+            sex = Being::genderToInt(gender);
+        outMsg.writeInt8(sex, "gender");
+    }
 }
 
 void CharServerHandler::deleteCharacter(Net::Character *const character,
