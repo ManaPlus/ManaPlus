@@ -350,7 +350,7 @@ void CharServerHandler::setCharCreateDialog(CharCreateDialog *const window)
     const Token &token = static_cast<LoginHandler*>(loginHandler)->getToken();
 
     mCharCreateDialog->setAttributes(attributes, 0, 0, 0);
-    mCharCreateDialog->setFixedGender(true, token.sex);
+    mCharCreateDialog->setDefaultGender(token.sex);
 }
 
 void CharServerHandler::processCharLogin(Net::MessageIn &msg)

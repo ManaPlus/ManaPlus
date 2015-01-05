@@ -73,8 +73,7 @@ class CharCreateDialog final : public Window,
                            const int available,
                            const int min, const int max);
 
-        void setFixedGender(const bool fixed,
-                            const Gender::Type gender = Gender::FEMALE);
+        void setDefaultGender(const Gender::Type gender = Gender::FEMALE);
 
         void logic() override final;
 
