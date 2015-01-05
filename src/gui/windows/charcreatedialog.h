@@ -129,10 +129,6 @@ class CharCreateDialog final : public Window,
         Button *mActionButton;
         Button *mRotateButton;
 
-        RadioButton *mMale;
-        RadioButton *mFemale;
-        RadioButton *mOther;
-
         std::vector<Slider*> mAttributeSlider;
         std::vector<Label*> mAttributeLabel;
         std::vector<Label*> mAttributeValue;

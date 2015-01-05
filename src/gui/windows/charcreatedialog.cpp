@@ -113,12 +113,6 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     mActionButton(new Button(this, _("^"), "action", this)),
     // TRANSLATORS: char create dialog button
     mRotateButton(new Button(this, _(">"), "rotate", this)),
-    // TRANSLATORS: char create dialog button
-    mMale(new RadioButton(this, _("Male"), "gender")),
-    // TRANSLATORS: char create dialog button
-    mFemale(new RadioButton(this, _("Female"), "gender")),
-    // TRANSLATORS: char create dialog button
-    mOther(new RadioButton(this, _("Other"), "gender")),
     mAttributeSlider(),
     mAttributeLabel(),
     mAttributeValue(),
@@ -238,17 +232,6 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
         mGenderStrip->setHeight(50);
     }
 
-    // Default to a Male character
-    mMale->setSelected(true);
-
-    mMale->setActionEventId("gender");
-    mFemale->setActionEventId("gender");
-    mOther->setActionEventId("gender");
-
-    mMale->addActionListener(this);
-    mFemale->addActionListener(this);
-    mOther->addActionListener(this);
-
     mPlayerBox->setWidth(74);
 
     mNameField->setActionEventId("create");
@@ -302,10 +285,6 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     updateSliders();
     setButtonsPosition(w, h);
 
-    mMale->setPosition(30, 120);
-    mFemale->setPosition(100, 120);
-    mOther->setPosition(170, 120);
-
     add(mPlayerBox);
     add(mNameField);
     add(mNameLabel);
@@ -339,10 +318,6 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     add(mAttributesLeft);
     add(mCreateButton);
     add(mCancelButton);
-
-    add(mMale);
-    add(mFemale);
-    add(mOther);
 
     center();
     setVisible(true);
@@ -453,13 +428,6 @@ void CharCreateDialog::action(const ActionEvent &event)
     else if (id == "statslider")
     {
         updateSliders();
-    }
-    else if (id == "gender")
-    {
-        if (mMale->isSelected())
-            mPlayer->setGender(Gender::MALE);
-        else
-            mPlayer->setGender(Gender::FEMALE);
     }
     else if (id == "action")
     {
@@ -614,33 +582,7 @@ void CharCreateDialog::setFixedGender(const bool fixed,
                                       const Gender::Type gender)
 {
     mDefaultGender = gender;
-    if (gender == Gender::FEMALE)
-    {
-        mFemale->setSelected(true);
-        mMale->setSelected(false);
-        mOther->setSelected(false);
-    }
-    else if (gender == Gender::MALE)
-    {
-        mFemale->setSelected(false);
-        mMale->setSelected(true);
-        mOther->setSelected(false);
-    }
-    else
-    {
-        mFemale->setSelected(false);
-        mMale->setSelected(false);
-        mOther->setSelected(true);
-    }
-
     mPlayer->setGender(gender);
-
-    if (fixed)
-    {
-        mMale->setVisible(false);
-        mFemale->setVisible(false);
-        mOther->setVisible(false);
-    }
 }
 
 void CharCreateDialog::updateHair()
