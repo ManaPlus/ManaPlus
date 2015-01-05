@@ -184,4 +184,9 @@ bool ServerFeatures::haveNpcWhispers() const
     return false;
 }
 
+bool ServerFeatures::haveCreateCharGender() const
+{
+    return false;
+}
+
 }  // namespace TmwAthena

@@ -185,4 +185,9 @@ bool ServerFeatures::haveNpcWhispers() const
     return true;
 }
 
+bool ServerFeatures::haveCreateCharGender() const
+{
+    return serverVersion >= 4;
+}
+
 }  // namespace EAthena

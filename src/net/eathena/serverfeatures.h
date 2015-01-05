@@ -93,6 +93,8 @@ class ServerFeatures final : public Net::ServerFeatures
         bool haveJoinChannel() const override final;
 
         bool haveNpcWhispers() const override final;
+
+        bool haveCreateCharGender() const override final;
 };
 
 }  // namespace EAthena
