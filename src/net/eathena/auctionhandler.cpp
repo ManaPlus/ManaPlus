@@ -36,6 +36,7 @@ AuctionHandler::AuctionHandler() :
     {
         SMSG_AUCTION_OPEN_WINDOW,
         SMSG_AUCTION_RESULTS,
+        SMSG_AUCTION_SET_ITEM,
         0
     };
     handledMessages = _messages;
@@ -52,6 +53,10 @@ void AuctionHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_AUCTION_RESULTS:
             processAuctionResults(msg);
+            break;
+
+        case SMSG_AUCTION_SET_ITEM:
+            processAuctionSetItem(msg);
             break;
 
         default:
@@ -86,6 +91,12 @@ void AuctionHandler::processAuctionResults(Net::MessageIn &msg)
         msg.readString(24, "buyer name");
         msg.readInt32("timestamp");
     }
+}
+
+void AuctionHandler::processAuctionSetItem(Net::MessageIn &msg)
+{
+    msg.readInt16("index");
+    msg.readUInt8("flag");
 }
 
 }  // namespace EAthena
