@@ -3072,6 +3072,11 @@ void Being::setEmote(const uint8_t emotion, const int emote_time)
                     else
                         mEmotionTime = emote_time;
                 }
+                const int effectId = info->effectId;
+                if (effectId >= 0)
+                {
+                    effectManager->trigger(effectId, this);
+                }
             }
         }
 

@@ -35,7 +35,8 @@ struct EmoteInfo final
     EmoteInfo() :
         sprites(),
         particles(),
-        time(400)
+        time(400),
+        effectId(-1)
     { }
 
     A_DELETE_COPY(EmoteInfo)
@@ -43,6 +44,7 @@ struct EmoteInfo final
     std::list<EmoteSprite*> sprites;
     StringVect particles;
     int time;
+    int effectId;
 };
 
 #endif  // RESOURCES_EMOTEINFO_H
