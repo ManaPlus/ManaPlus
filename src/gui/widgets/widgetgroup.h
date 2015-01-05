@@ -35,10 +35,12 @@ class WidgetGroup notfinal : public Container,
     public:
         A_DELETE_COPY(WidgetGroup)
 
-        virtual void addButton(const std::string &tag);
+        virtual void addButton(const std::string &tag,
+                               const bool pressed = false);
 
         virtual void addButton(const std::string &restrict text,
-                               const std::string &restrict tag);
+                               const std::string &restrict tag,
+                               const bool pressed = false);
 
         void action(const ActionEvent &event) override;
 
@@ -49,7 +51,8 @@ class WidgetGroup notfinal : public Container,
 
         void widgetResized(const Event &event) override final;
 
-        virtual Widget *createWidget(const std::string &name)
+        virtual Widget *createWidget(const std::string &name,
+                                     const bool pressed = false)
                                      const A_WARN_UNUSED = 0;
 
     protected:

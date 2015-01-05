@@ -38,18 +38,20 @@ WidgetGroup::WidgetGroup(const Widget2 *const widget,
     addWidgetListener(this);
 }
 
-void WidgetGroup::addButton(const std::string &tag)
+void WidgetGroup::addButton(const std::string &tag,
+                            const bool pressed)
 {
-    addButton(tag, tag);
+    addButton(tag, tag, pressed);
 }
 
 void WidgetGroup::addButton(const std::string &restrict text,
-                            const std::string &restrict tag)
+                            const std::string &restrict tag,
+                            const bool pressed)
 {
     if (text.empty() || tag.empty())
         return;
 
-    Widget *const widget = createWidget(text);
+    Widget *const widget = createWidget(text, pressed);
     if (widget)
     {
         widget->setActionEventId(mActionEventId + tag);

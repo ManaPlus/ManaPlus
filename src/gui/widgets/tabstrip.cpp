@@ -28,7 +28,8 @@ TabStrip::TabStrip(const Widget2 *const widget,
                    const std::string &group,
                    const int height,
                    const int spacing) :
-    WidgetGroup(widget, group, height, spacing)
+    WidgetGroup(widget, group, height, spacing),
+    mPressFirst(true)
 {
     mAllowLogic = false;
 }
@@ -36,18 +37,20 @@ TabStrip::TabStrip(const Widget2 *const widget,
 TabStrip::TabStrip(const Widget2 *const widget,
                    const int height,
                    const int spacing) :
-    WidgetGroup(widget, "", height, spacing)
+    WidgetGroup(widget, "", height, spacing),
+    mPressFirst(true)
 {
     mAllowLogic = false;
 }
 
-Widget *TabStrip::createWidget(const std::string &text) const
+Widget *TabStrip::createWidget(const std::string &text,
+                               const bool pressed) const
 {
     Button *const widget = new Button(this);
     widget->setStick(true);
     widget->setCaption(text);
     widget->adjustSize();
-    if (!mCount)
+    if ((!mCount && mPressFirst) || pressed)
         widget->setPressed(true);
     widget->setTag(static_cast<int>(mWidgets.size()));
     return widget;
