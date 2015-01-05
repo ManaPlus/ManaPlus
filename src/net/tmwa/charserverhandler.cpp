@@ -268,7 +268,7 @@ void CharServerHandler::chooseCharacter(Net::Character *const character)
 }
 
 void CharServerHandler::newCharacter(const std::string &name, const int slot,
-                                     const bool gender A_UNUSED,
+                                     const Gender::Type gender A_UNUSED,
                                      const int hairstyle,
                                      const int hairColor,
                                      const unsigned char race,

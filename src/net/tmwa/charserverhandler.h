@@ -45,9 +45,12 @@ class CharServerHandler final : public MessageHandler,
 
         void chooseCharacter(Net::Character *const character) override final;
 
-        void newCharacter(const std::string &name, const int slot,
-                          const bool gender, const int hairstyle,
-                          const int hairColor, const unsigned char race,
+        void newCharacter(const std::string &name,
+                          const int slot,
+                          const Gender::Type gender,
+                          const int hairstyle,
+                          const int hairColor,
+                          const unsigned char race,
                           const unsigned char look,
                           const std::vector<int> &stats) const override final;
 
