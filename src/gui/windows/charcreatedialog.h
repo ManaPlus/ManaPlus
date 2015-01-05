@@ -37,6 +37,7 @@ class Label;
 class PlayerBox;
 class RadioButton;
 class Slider;
+class TabStrip;
 class TextField;
 
 /**
@@ -143,6 +144,8 @@ class CharCreateDialog final : public Window,
         Being *mPlayer;
         PlayerBox *mPlayerBox;
 
+        TabStrip *mGenderStrip;
+
         int mMaxPoints;
         int mUsedPoints;
 
@@ -155,6 +158,9 @@ class CharCreateDialog final : public Window,
         int mHairColor;
 
         int mSlot;
+
+        Gender::Type mDefaultGender;
+        Gender::Type mGender;
 
         unsigned int maxHairColor;
         unsigned int minHairColor;

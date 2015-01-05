@@ -22,6 +22,7 @@
 
 #include "gui/windows/charcreatedialog.h"
 
+#include "configuration.h"
 #include "main.h"
 
 #include "input/inputaction.h"
@@ -36,6 +37,7 @@
 #include "gui/widgets/playerbox.h"
 #include "gui/widgets/radiobutton.h"
 #include "gui/widgets/slider.h"
+#include "gui/widgets/tabstrip.h"
 #include "gui/widgets/textfield.h"
 
 #include "net/serverfeatures.h"
@@ -131,6 +133,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
             nullptr)),
     mPlayerBox(new PlayerBox(this, mPlayer, "charcreate_playerbox.xml",
         "charcreate_selectedplayerbox.xml")),
+    mGenderStrip(nullptr),
     mMaxPoints(0),
     mUsedPoints(0),
     mRace(0),
@@ -140,6 +143,8 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     mHairStyle(0),
     mHairColor(0),
     mSlot(slot),
+    mDefaultGender(Gender::FEMALE),
+    mGender(Gender::UNSPECIFIED),
     maxHairColor(CharDB::getMaxHairColor()),
     minHairColor(CharDB::getMinHairColor()),
     maxHairStyle(CharDB::getMaxHairStyle()),
@@ -150,6 +155,10 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     setStickyButtonLock(true);
     setSticky(true);
     setWindowName("NewCharacter");
+
+    const int w = 480;
+    const int h = 350;
+    setContentSize(w, h);
 
     mPlayer->setGender(Gender::MALE);
     const std::vector<int> &items = CharDB::getDefaultItems();
@@ -208,6 +217,27 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
         mLookNameLabel = new Label(this, "");
     }
 
+    if (serverFeatures->haveCreateCharGender())
+    {
+        const int size = config.getIntValue("fontSize");
+        mGenderStrip = new TabStrip(this, "gender_" + getWindowName(), size + 16);
+        mGenderStrip->setPressFirst(false);
+        mGenderStrip->addActionListener(this);
+        mGenderStrip->setActionEventId("gender_");
+        // TRANSLATORS: one char size female character gender
+        mGenderStrip->addButton(_("F"), "f", false);
+        // TRANSLATORS: one char size male character gender
+        mGenderStrip->addButton(_("M"), "m", false);
+        // TRANSLATORS: one char size unknown character gender
+        mGenderStrip->addButton(_("U"), "u", true);
+        mGenderStrip->setVisible(true);
+        add(mGenderStrip);
+
+        mGenderStrip->setPosition(385, 130);
+        mGenderStrip->setWidth(500);
+        mGenderStrip->setHeight(50);
+    }
+
     // Default to a Male character
     mMale->setSelected(true);
 
@@ -224,10 +254,6 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     mNameField->setActionEventId("create");
     mNameField->addActionListener(this);
 
-    const int w = 480;
-    const int h = 350;
-
-    setContentSize(w, h);
     mPlayerBox->setDimension(Rect(360, 0, 110, 90));
     mActionButton->setPosition(385, 100);
     mRotateButton->setPosition(415, 100);
@@ -241,6 +267,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     const int labelX = 5;
     const int nameX = 145;
     int y = 30;
+
     mPrevHairColorButton->setPosition(leftX, y);
     mNextHairColorButton->setPosition(rightX, y);
     y += 5;
@@ -358,10 +385,14 @@ void CharCreateDialog::action(const ActionEvent &event)
 
             const int characterSlot = mSlot;
 
-            charServerHandler->newCharacter(getName(), characterSlot,
-                mFemale->isSelected(), mHairStyle, mHairColor,
+            charServerHandler->newCharacter(getName(),
+                characterSlot,
+                mGender,
+                mHairStyle,
+                mHairColor,
                 static_cast<unsigned char>(mRace),
-                static_cast<unsigned char>(mLook), atts);
+                static_cast<unsigned char>(mLook),
+                atts);
         }
         else
         {
@@ -443,6 +474,21 @@ void CharCreateDialog::action(const ActionEvent &event)
         if (mDirection >= 4)
             mDirection = 0;
         updatePlayer();
+    }
+    else if (id == "gender_m")
+    {
+        mGender = Gender::MALE;
+        mPlayer->setGender(Gender::MALE);
+    }
+    else if (id == "gender_f")
+    {
+        mGender = Gender::FEMALE;
+        mPlayer->setGender(Gender::FEMALE);
+    }
+    else if (id == "gender_u")
+    {
+        mGender = Gender::UNSPECIFIED;
+        mPlayer->setGender(mDefaultGender);
     }
 }
 
@@ -556,12 +602,18 @@ void CharCreateDialog::setAttributes(const StringVect &labels,
         h = y;
         setContentSize(w, h);
     }
+    if (serverFeatures->haveCreateCharGender() && y < 160)
+    {
+        h = 160;
+        setContentSize(w, h);
+    }
     setButtonsPosition(w, h);
 }
 
 void CharCreateDialog::setFixedGender(const bool fixed,
                                       const Gender::Type gender)
 {
+    mDefaultGender = gender;
     if (gender == Gender::FEMALE)
     {
         mFemale->setSelected(true);
