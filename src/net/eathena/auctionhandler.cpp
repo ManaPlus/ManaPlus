@@ -71,7 +71,7 @@ void AuctionHandler::processOpenWindow(Net::MessageIn &msg)
 
 void AuctionHandler::processAuctionResults(Net::MessageIn &msg)
 {
-    const int count = msg.readInt16("len");
+    msg.readInt16("len");
     msg.readInt32("pages");
     const int itemCount = msg.readInt32("items count");
     for (int f = 0; f < itemCount; f ++)
@@ -84,7 +84,7 @@ void AuctionHandler::processAuctionResults(Net::MessageIn &msg)
         msg.readUInt8("identify");
         msg.readUInt8("attribute");
         msg.readUInt8("refine");
-        for (int f = 0; f < 4; f++)
+        for (int d = 0; d < 4; d ++)
             msg.readInt16("card");
         msg.readInt32("price");
         msg.readInt32("buy now");
