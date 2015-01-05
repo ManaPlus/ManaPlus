@@ -2352,7 +2352,7 @@ void PopupMenu::addFollow()
     }
     // TRANSLATORS: popup menu item
     // TRANSLATORS: imitate player
-    mBrowserBox->addRow("/imitation 'NAME'", _("Imitation"));
+    mBrowserBox->addRow("/imitation 'NAME'", _("Imitate"));
 }
 
 void PopupMenu::addBuySell(const Being *const being)
