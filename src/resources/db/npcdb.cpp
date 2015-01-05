@@ -125,6 +125,9 @@ void NPCDB::loadXmlFile(const std::string &fileName)
             }
             else if (xmlNameEqual(spriteNode, "particlefx"))
             {
+                if (!spriteNode->xmlChildrenNode)
+                    continue;
+
                 display.particles.push_back(reinterpret_cast<const char*>(
                     spriteNode->xmlChildrenNode->content));
             }
