@@ -35,6 +35,7 @@ AuctionHandler::AuctionHandler() :
     static const uint16_t _messages[] =
     {
         SMSG_AUCTION_OPEN_WINDOW,
+        SMSG_AUCTION_RESULTS,
         0
     };
     handledMessages = _messages;
@@ -49,6 +50,10 @@ void AuctionHandler::handleMessage(Net::MessageIn &msg)
             processOpenWindow(msg);
             break;
 
+        case SMSG_AUCTION_RESULTS:
+            processAuctionResults(msg);
+            break;
+
         default:
             break;
     }
@@ -57,6 +62,30 @@ void AuctionHandler::handleMessage(Net::MessageIn &msg)
 void AuctionHandler::processOpenWindow(Net::MessageIn &msg)
 {
     msg.readInt32("flag");  // 0 - open, 1 - close
+}
+
+void AuctionHandler::processAuctionResults(Net::MessageIn &msg)
+{
+    const int count = msg.readInt16("len");
+    msg.readInt32("pages");
+    const int itemCount = msg.readInt32("items count");
+    for (int f = 0; f < itemCount; f ++)
+    {
+        msg.readInt32("auction id");
+        msg.readString(24, "seller name");
+        msg.readInt32("item id");
+        msg.readInt32("auction type");
+        msg.readInt16("item amount");  // always 1
+        msg.readUInt8("identify");
+        msg.readUInt8("attribute");
+        msg.readUInt8("refine");
+        for (int f = 0; f < 4; f++)
+            msg.readInt16("card");
+        msg.readInt32("price");
+        msg.readInt32("buy now");
+        msg.readString(24, "buyer name");
+        msg.readInt32("timestamp");
+    }
 }
 
 }  // namespace EAthena

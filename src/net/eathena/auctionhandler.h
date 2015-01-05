@@ -38,6 +38,8 @@ class AuctionHandler final : public MessageHandler, public Net::AuctionHandler
 
     protected:
         static void processOpenWindow(Net::MessageIn &msg);
+
+        static void processAuctionResults(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
