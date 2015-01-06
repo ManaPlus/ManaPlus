@@ -43,6 +43,7 @@ AuctionHandler::AuctionHandler() :
         SMSG_AUCTION_RESULTS,
         SMSG_AUCTION_SET_ITEM,
         SMSG_AUCTION_MESSAGE,
+        SMSG_AUCTION_CLOSE,
         0
     };
     handledMessages = _messages;
@@ -67,6 +68,10 @@ void AuctionHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_AUCTION_MESSAGE:
             processAuctionMessage(msg);
+            break;
+
+        case SMSG_AUCTION_CLOSE:
+            processAuctionClose(msg);
             break;
 
         default:
@@ -112,6 +117,11 @@ void AuctionHandler::processAuctionSetItem(Net::MessageIn &msg)
 void AuctionHandler::processAuctionMessage(Net::MessageIn &msg)
 {
     msg.readUInt8("message");
+}
+
+void AuctionHandler::processAuctionClose(Net::MessageIn &msg)
+{
+    msg.readInt16("flag");
 }
 
 void AuctionHandler::cancelRequest() const

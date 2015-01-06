@@ -49,6 +49,8 @@ class AuctionHandler final : public MessageHandler, public Net::AuctionHandler
         static void processAuctionSetItem(Net::MessageIn &msg);
 
         static void processAuctionMessage(Net::MessageIn &msg);
+
+        static void processAuctionClose(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
