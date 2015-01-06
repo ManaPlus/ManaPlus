@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef STATE_H
-#define STATE_H
+#ifndef ENUMS_STATE_H
+#define ENUMS_STATE_H
 
 /**
  * All client states.
@@ -68,4 +68,4 @@ enum State
     STATE_AUTORECONNECT_SERVER = 1000
 };
 
-#endif  // STATE_H
+#endif  // ENUMS_STATE_H

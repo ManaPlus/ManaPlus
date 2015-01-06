@@ -23,7 +23,7 @@
 #ifndef CLIENT_H
 #define CLIENT_H
 
-#include "state.h"
+#include "enums/state.h"
 
 #include "listeners/actionlistener.h"
 #include "listeners/configlistener.h"

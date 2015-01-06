@@ -23,7 +23,7 @@
 #ifndef GUI_WINDOWS_CONNECTIONDIALOG_H
 #define GUI_WINDOWS_CONNECTIONDIALOG_H
 
-#include "state.h"
+#include "enums/state.h"
 
 #include "gui/widgets/window.h"
 

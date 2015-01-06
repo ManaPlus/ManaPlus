@@ -24,7 +24,8 @@
 
 #include "equipment.h"
 #include "guildpositionflags.h"
-#include "state.h"
+
+#include "enums/state.h"
 
 #include <map>
 

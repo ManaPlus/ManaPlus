@@ -1054,7 +1054,7 @@ SET(SRCS
     soundmanager.cpp
     soundmanager.h
     sprite.h
-    state.h
+    enums/state.h
     statuseffect.cpp
     statuseffect.h
     render/surfacegraphics.cpp
