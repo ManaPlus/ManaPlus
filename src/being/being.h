@@ -27,13 +27,13 @@
 
 #include "position.h"
 
-#include "listeners/configlistener.h"
-
-#include "being/beingaction.h"
+#include "being/actorsprite.h"
 #include "being/beingdirection.h"
 #include "being/gender.h"
 
-#include "being/actorsprite.h"
+#include "enums/being/beingaction.h"
+
+#include "listeners/configlistener.h"
 
 #include <map>
 
