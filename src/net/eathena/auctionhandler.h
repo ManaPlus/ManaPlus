@@ -57,6 +57,10 @@ class AuctionHandler final : public MessageHandler, public Net::AuctionHandler
                     const std::string &text,
                     const int page) const override final;
 
+        void buy() const override final;
+
+        void sell() const override final;
+
     protected:
         static void processOpenWindow(Net::MessageIn &msg);
 

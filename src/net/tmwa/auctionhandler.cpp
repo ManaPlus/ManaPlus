@@ -77,4 +77,12 @@ void AuctionHandler::search(const AuctionSearchType::Type type A_UNUSED,
 {
 }
 
+void AuctionHandler::buy() const
+{
+}
+
+void AuctionHandler::sell() const
+{
+}
+
 }  // namespace TmwAthena

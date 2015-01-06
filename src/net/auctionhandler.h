@@ -58,6 +58,10 @@ class AuctionHandler notfinal
                             const int auctionId,
                             const std::string &text,
                             const int page) const = 0;
+
+        virtual void buy() const = 0;
+
+        virtual void sell() const = 0;
 };
 
 }  // namespace Net

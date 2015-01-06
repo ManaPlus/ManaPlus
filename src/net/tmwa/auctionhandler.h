@@ -57,6 +57,10 @@ class AuctionHandler final : public MessageHandler, public Net::AuctionHandler
                             const int auctionId,
                             const std::string &text,
                             const int page) const override final;
+
+        void buy() const override final;
+
+        void sell() const override final;
 };
 
 }  // namespace TmwAthena

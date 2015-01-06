@@ -181,4 +181,16 @@ void AuctionHandler::search(const AuctionSearchType::Type type,
     outMsg.writeInt16(page, "page");
 }
 
+void AuctionHandler::buy() const
+{
+    createOutPacket(CMSG_AUCTION_BUY_SELL);
+    outMsg.writeInt16(1, "buy/sell type");
+}
+
+void AuctionHandler::sell() const
+{
+    createOutPacket(CMSG_AUCTION_BUY_SELL);
+    outMsg.writeInt16(0, "buy/sell type");
+}
+
 }  // namespace EAthena
