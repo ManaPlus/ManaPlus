@@ -929,7 +929,7 @@ SET(SRCS
     being/localplayer.h
     being/mercenaryinfo.h
     being/petinfo.h
-    being/pickup.h
+    enums/being/pickup.h
     logger.cpp
     logger.h
     main.cpp

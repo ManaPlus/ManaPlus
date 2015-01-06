@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BEING_PICKUP_H
-#define BEING_PICKUP_H
+#ifndef ENUMS_BEING_PICKUP_H
+#define ENUMS_BEING_PICKUP_H
 
 #include "localconsts.h"
 
@@ -45,4 +45,4 @@ namespace Pickup
     };
 }  // namespace Pickup
 
-#endif  // BEING_PICKUP_H
+#endif  // ENUMS_BEING_PICKUP_H
