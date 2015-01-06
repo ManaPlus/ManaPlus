@@ -25,30 +25,14 @@
 #include "itemsoundmanager.h"
 #include "textcommand.h"
 
+#include "enums/dragdropsource.h"
+
 #include "gui/widgets/skilldata.h"
 #include "gui/widgets/skillinfo.h"
 
 #include "resources/image.h"
 
 #include "localconsts.h"
-
-enum DragDropSource
-{
-    DRAGDROP_SOURCE_EMPTY = 0,
-    DRAGDROP_SOURCE_INVENTORY,
-    DRAGDROP_SOURCE_STORAGE,
-    DRAGDROP_SOURCE_CART,
-    DRAGDROP_SOURCE_TRADE,
-    DRAGDROP_SOURCE_OUTFIT,
-    DRAGDROP_SOURCE_SPELLS,
-    DRAGDROP_SOURCE_SKILLS,
-    DRAGDROP_SOURCE_GROUND,
-    DRAGDROP_SOURCE_DROP,
-    DRAGDROP_SOURCE_SHORTCUTS,
-    DRAGDROP_SOURCE_CRAFT,
-    DRAGDROP_SOURCE_NPC,
-    DRAGDROP_SOURCE_EQUIPMENT
-};
 
 class DragDrop final
 {
