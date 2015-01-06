@@ -94,6 +94,7 @@ class GeneralHandler final : public MessageHandler,
         MessageHandlerPtr mFriendsHandler;
         MessageHandlerPtr mElementalHandler;
         MessageHandlerPtr mMarketHandler;
+        MessageHandlerPtr mVendingHandler;
 };
 
 }  // namespace EAthena

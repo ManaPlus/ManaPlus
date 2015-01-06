@@ -68,6 +68,7 @@ namespace Net
     class ServerFeatures;
     class SkillHandler;
     class TradeHandler;
+    class VendingHandler;
 }  // namespace Net
 
 Net::AdminHandler *adminHandler = nullptr;
@@ -99,6 +100,7 @@ Net::HomunculusHandler *homunculusHandler = nullptr;
 Net::FriendsHandler *friendsHandler = nullptr;
 Net::ElementalHandler *elementalHandler = nullptr;
 Net::MarketHandler *marketHandler = nullptr;
+Net::VendingHandler *vendingHandler = nullptr;
 
 namespace Net
 {

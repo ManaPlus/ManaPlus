@@ -67,6 +67,7 @@
 #include "net/tmwa/tradehandler.h"
 #include "net/tmwa/skillhandler.h"
 #include "net/tmwa/questhandler.h"
+#include "net/tmwa/vendinghandler.h"
 
 #include "resources/db/itemdbstat.h"
 
@@ -113,7 +114,8 @@ GeneralHandler::GeneralHandler() :
     mHomunculusHandler(new HomunculusHandler),
     mFriendsHandler(new FriendsHandler),
     mElementalHandler(new ElementalHandler),
-    mMarketHandler(new MarketHandler)
+    mMarketHandler(new MarketHandler),
+    mVendingHandler(new VendingHandler)
 {
     static const uint16_t _messages[] =
     {
@@ -240,6 +242,7 @@ void GeneralHandler::load()
     mNetwork->registerHandler(mFriendsHandler);
     mNetwork->registerHandler(mElementalHandler);
     mNetwork->registerHandler(mMarketHandler);
+    mNetwork->registerHandler(mVendingHandler);
 }
 
 void GeneralHandler::reload()

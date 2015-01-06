@@ -708,6 +708,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      net/tradehandler.h \
 	      enums/net/updatetype.h \
 	      net/uploadcharinfo.h \
+	      net/vendinghandler.h \
 	      net/worldinfo.h \
 	      net/packetcounters.cpp \
 	      net/packetcounters.h \
@@ -1324,7 +1325,9 @@ manaplus_SOURCES += \
 	      net/tmwa/skillhandler.h \
 	      net/tmwa/sprite.h \
 	      net/tmwa/tradehandler.cpp \
-	      net/tmwa/tradehandler.h
+	      net/tmwa/tradehandler.h \
+	      net/tmwa/vendinghandler.cpp \
+	      net/tmwa/vendinghandler.h
 endif
 
 if ENABLE_EATHENA
@@ -1404,7 +1407,9 @@ manaplus_SOURCES += net/eathena/adminhandler.cpp \
 	      net/eathena/skillhandler.h \
 	      net/eathena/sprite.h \
 	      net/eathena/tradehandler.cpp \
-	      net/eathena/tradehandler.h
+	      net/eathena/tradehandler.h \
+	      net/eathena/vendinghandler.cpp \
+	      net/eathena/vendinghandler.h
 endif
 
 manaplus_SOURCES += \

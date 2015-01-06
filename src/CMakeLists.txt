@@ -577,6 +577,7 @@ SET(SRCS
     net/tradehandler.h
     enums/net/updatetype.h
     net/uploadcharinfo.h
+    net/vendinghandler.h
     net/worldinfo.h
     net/packetcounters.cpp
     net/packetcounters.h
@@ -1391,6 +1392,8 @@ SET(SRCS_TMWA
     net/tmwa/sprite.h
     net/tmwa/tradehandler.cpp
     net/tmwa/tradehandler.h
+    net/tmwa/vendinghandler.cpp
+    net/tmwa/vendinghandler.h
     )
 
 SET(SRCS_EATHENA
@@ -1470,6 +1473,8 @@ SET(SRCS_EATHENA
     net/eathena/sprite.h
     net/eathena/tradehandler.cpp
     net/eathena/tradehandler.h
+    net/eathena/vendinghandler.cpp
+    net/eathena/vendinghandler.h
     )
 
 IF (WIN32)
