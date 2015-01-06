@@ -26,9 +26,9 @@
 #include "resources/map/mapconsts.h"
 
 #include "being/actor.h"
-#include "being/actortype.h"
 #include "being/compoundsprite.h"
 
+#include "enums/being/actortype.h"
 #include "enums/being/targetcursorsize.h"
 #include "enums/being/targetcursortype.h"
 

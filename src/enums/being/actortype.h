@@ -19,8 +19,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BEING_ACTORTYPE_H
-#define BEING_ACTORTYPE_H
+#ifndef ENUMS_BEING_ACTORTYPE_H
+#define ENUMS_BEING_ACTORTYPE_H
 
 namespace ActorType
 {
@@ -40,4 +40,4 @@ namespace ActorType
     };
 }  // namespace ActorType
 
-#endif  // BEING_ACTORTYPE_H
+#endif  // ENUMS_BEING_ACTORTYPE_H
