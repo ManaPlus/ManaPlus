@@ -42,7 +42,7 @@ void AuctionHandler::handleMessage(Net::MessageIn &msg A_UNUSED)
 {
 }
 
-void AuctionHandler::cancelRequest() const
+void AuctionHandler::cancelReg() const
 {
 }
 

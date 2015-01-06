@@ -36,7 +36,7 @@ class AuctionHandler final : public MessageHandler, public Net::AuctionHandler
 
         void handleMessage(Net::MessageIn &msg) override final;
 
-        void cancelRequest() const override final;
+        void cancelReg() const override final;
 
         void setItem(const Item *const item,
                      const int amount) const override final;

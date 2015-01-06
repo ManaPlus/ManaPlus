@@ -36,7 +36,7 @@ class AuctionHandler notfinal
         virtual ~AuctionHandler()
         { }
 
-        virtual void cancelRequest() const = 0;
+        virtual void cancelReg() const = 0;
 
         virtual void setItem(const Item *const item,
                              const int amount) const = 0;

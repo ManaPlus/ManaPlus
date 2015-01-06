@@ -124,9 +124,9 @@ void AuctionHandler::processAuctionClose(Net::MessageIn &msg)
     msg.readInt16("flag");
 }
 
-void AuctionHandler::cancelRequest() const
+void AuctionHandler::cancelReg() const
 {
-    createOutPacket(CMSG_AUCTION_CANCEL_REQUEST);
+    createOutPacket(CMSG_AUCTION_CANCEL_REG);
     outMsg.writeInt16(0, "type"); // unused
 }
 
