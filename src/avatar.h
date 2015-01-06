@@ -23,7 +23,7 @@
 #ifndef AVATAR_H
 #define AVATAR_H
 
-#include "being/gender.h"
+#include "enums/being/gender.h"
 
 #include <string>
 

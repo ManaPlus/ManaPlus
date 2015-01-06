@@ -23,7 +23,7 @@
 #ifndef RESOURCES_ITEMINFO_H
 #define RESOURCES_ITEMINFO_H
 
-#include "being/gender.h"
+#include "enums/being/gender.h"
 
 #include "resources/cursor.h"
 #include "resources/itemtype.h"

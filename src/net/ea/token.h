@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "being/gender.h"
+#include "enums/being/gender.h"
 
 #ifndef NET_EA_TOKEN_H
 #define NET_EA_TOKEN_H

@@ -23,7 +23,7 @@
 #ifndef GUI_WINDOWS_CHARCREATEDIALOG_H
 #define GUI_WINDOWS_CHARCREATEDIALOG_H
 
-#include "being/gender.h"
+#include "enums/being/gender.h"
 
 #include "gui/widgets/window.h"
 

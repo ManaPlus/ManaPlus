@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BEING_GENDER_H
-#define BEING_GENDER_H
+#ifndef ENUMS_BEING_GENDER_H
+#define ENUMS_BEING_GENDER_H
 
 namespace Gender
 {
@@ -34,4 +34,4 @@ namespace Gender
     };
 }  // nemespace Gender
 
-#endif  // BEING_GENDER_H
+#endif  // ENUMS_BEING_GENDER_H

@@ -23,7 +23,7 @@
 #ifndef NET_LOGINDATA_H
 #define NET_LOGINDATA_H
 
-#include "being/gender.h"
+#include "enums/being/gender.h"
 
 #include "enums/net/updatetype.h"
 

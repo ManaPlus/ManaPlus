@@ -23,7 +23,7 @@
 #ifndef INVENTORY_H
 #define INVENTORY_H
 
-#include "being/gender.h"
+#include "enums/being/gender.h"
 
 #include <list>
 #include <string>

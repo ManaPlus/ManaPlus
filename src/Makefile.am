@@ -973,7 +973,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      being/compoundsprite.cpp \
 	      being/compoundsprite.h \
 	      being/cookingtype.h \
-	      being/gender.h \
+	      enums/being/gender.h \
 	      being/homunculusinfo.h \
 	      listeners/configlistener.h \
 	      configuration.cpp \
