@@ -22,8 +22,9 @@
 
 #include "notifymanager.h"
 
-#include "being/attributes.h"
 #include "being/playerinfo.h"
+
+#include "enums/being/attributes.h"
 
 #include "gui/windows/buydialog.h"
 

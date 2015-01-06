@@ -24,10 +24,11 @@
 
 #include "notifymanager.h"
 
+#include "being/localplayer.h"
+
 #include "enums/equipslot.h"
 
-#include "being/attributes.h"
-#include "being/localplayer.h"
+#include "enums/being/attributes.h"
 
 #include "net/messagein.h"
 

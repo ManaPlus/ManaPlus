@@ -32,9 +32,10 @@
 
 #include "actions/actiondef.h"
 
-#include "being/attributes.h"
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
+
+#include "enums/being/attributes.h"
 
 #include "enums/gui/dialogtype.h"
 

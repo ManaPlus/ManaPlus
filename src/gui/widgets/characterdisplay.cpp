@@ -24,7 +24,7 @@
 
 #include "units.h"
 
-#include "being/attributes.h"
+#include "enums/being/attributes.h"
 
 #include "gui/gui.h"
 

@@ -26,8 +26,9 @@
 #include "item.h"
 #include "units.h"
 
-#include "being/attributes.h"
 #include "being/playerinfo.h"
+
+#include "enums/being/attributes.h"
 
 #include "input/inputmanager.h"
 

@@ -36,10 +36,11 @@
 #include "statuseffect.h"
 #include "resources/map/walklayer.h"
 
-#include "being/attributes.h"
 #include "being/beingflag.h"
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
+
+#include "enums/being/attributes.h"
 
 #include "enums/net/packettypes.h"
 

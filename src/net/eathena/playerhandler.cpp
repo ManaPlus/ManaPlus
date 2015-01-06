@@ -22,8 +22,9 @@
 
 #include "net/eathena/playerhandler.h"
 
-#include "being/attributes.h"
 #include "being/localplayer.h"
+
+#include "enums/being/attributes.h"
 
 #include "gui/windows/statuswindow.h"
 

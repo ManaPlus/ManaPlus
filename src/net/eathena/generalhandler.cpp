@@ -26,7 +26,7 @@
 #include "configuration.h"
 #include "logger.h"
 
-#include "being/attributes.h"
+#include "enums/being/attributes.h"
 
 #include "gui/windows/inventorywindow.h"
 #include "gui/windows/skilldialog.h"

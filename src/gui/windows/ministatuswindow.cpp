@@ -26,9 +26,10 @@
 #include "configuration.h"
 #include "inventory.h"
 
-#include "being/attributes.h"
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
+
+#include "enums/being/attributes.h"
 
 #include "gui/popupmanager.h"
 #include "gui/skin.h"

@@ -26,9 +26,9 @@
 #include "configuration.h"
 #include "units.h"
 
-#include "input/inputaction.h"
+#include "enums/being/attributes.h"
 
-#include "being/attributes.h"
+#include "input/inputaction.h"
 
 #include "listeners/charrenamelistener.h"
 #include "listeners/pincodelistener.h"

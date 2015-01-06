@@ -19,8 +19,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BEING_ATTRIBUTES_H
-#define BEING_ATTRIBUTES_H
+#ifndef ENUMS_BEING_ATTRIBUTES_H
+#define ENUMS_BEING_ATTRIBUTES_H
 
 namespace Attributes
 {
@@ -29,7 +29,7 @@ namespace Attributes
      */
     enum Attributes
     {
-        LEVEL = 0,
+        LEVEL        = 0,
         HP,
         MAX_HP,
         MP,
@@ -39,19 +39,19 @@ namespace Attributes
         MONEY,
         TOTAL_WEIGHT,
         MAX_WEIGHT,
-        JOB = 10,
-        STR = 13,
-        AGI = 14,
-        VIT = 15,
-        INT = 16,
-        DEX = 17,
-        LUK = 18,
+        JOB          = 10,
+        STR          = 13,
+        AGI          = 14,
+        VIT          = 15,
+        INT          = 16,
+        DEX          = 17,
+        LUK          = 18,
         SKILL_POINTS,
         CHAR_POINTS,
         CORR_POINTS,
         ATTACK_DELAY = 100,
         ATTACK_RANGE = 101,
-        WALK_SPEED = 102,
+        WALK_SPEED   = 102,
         ATTACK_SPEED = 103,
         KARMA,
         MANNER,
@@ -65,4 +65,4 @@ namespace Attributes
     };
 }  // namespace Attributes
 
-#endif  // BEING_ATTRIBUTES_H
+#endif  // ENUMS_BEING_ATTRIBUTES_H

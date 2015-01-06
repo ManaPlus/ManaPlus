@@ -24,9 +24,10 @@
 
 #include "configuration.h"
 
-#include "being/attributes.h"
 #include "being/beingflag.h"
 #include "being/localplayer.h"
+
+#include "enums/being/attributes.h"
 
 #include "gui/onlineplayer.h"
 

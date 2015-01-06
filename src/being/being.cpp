@@ -33,11 +33,12 @@
 #include "soundmanager.h"
 #include "text.h"
 
-#include "being/attributes.h"
 #include "being/beingcacheentry.h"
 #include "being/beingflag.h"
 #include "being/beingspeech.h"
 #include "being/playerrelations.h"
+
+#include "enums/being/attributes.h"
 
 #include "enums/net/packettypes.h"
 

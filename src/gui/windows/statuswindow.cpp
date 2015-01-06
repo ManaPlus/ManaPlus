@@ -31,9 +31,10 @@
 
 #include "gui/windows/chatwindow.h"
 
-#include "being/attributes.h"
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
+
+#include "enums/being/attributes.h"
 
 #include "gui/windows/equipmentwindow.h"
 #include "gui/windows/setupwindow.h"

@@ -28,8 +28,9 @@
 #include "soundmanager.h"
 #include "units.h"
 
-#include "being/attributes.h"
 #include "being/localplayer.h"
+
+#include "enums/being/attributes.h"
 
 #include "gui/viewport.h"
 

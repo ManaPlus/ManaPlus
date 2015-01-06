@@ -27,8 +27,9 @@
 #include "itemshortcut.h"
 #include "spellmanager.h"
 
-#include "being/attributes.h"
 #include "being/localplayer.h"
+
+#include "enums/being/attributes.h"
 
 #include "gui/models/skillmodel.h"
 

@@ -24,14 +24,15 @@
 #include "client.h"
 #include "configuration.h"
 #include "inventory.h"
+#include "itemsoundmanager.h"
 
-#include "being/attributes.h"
+
 #include "being/homunculusinfo.h"
 #include "being/localplayer.h"
 #include "being/mercenaryinfo.h"
 #include "being/petinfo.h"
 
-#include "itemsoundmanager.h"
+#include "enums/being/attributes.h"
 
 #include "gui/windows/inventorywindow.h"
 #include "gui/windows/npcdialog.h"
