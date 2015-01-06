@@ -25,6 +25,8 @@
 
 #include "localconsts.h"
 
+class Item;
+
 namespace Net
 {
 
@@ -35,6 +37,9 @@ class AuctionHandler notfinal
         { }
 
         virtual void cancelRequest() const = 0;
+
+        virtual void setItem(const Item *const item,
+                             const int amount) const = 0;
 };
 
 }  // namespace Net

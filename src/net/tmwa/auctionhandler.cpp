@@ -46,4 +46,9 @@ void AuctionHandler::cancelRequest() const
 {
 }
 
+void AuctionHandler::setItem(const Item *const item A_UNUSED,
+                             const int amount A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

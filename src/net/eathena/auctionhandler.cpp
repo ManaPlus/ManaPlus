@@ -20,6 +20,10 @@
 
 #include "net/eathena/auctionhandler.h"
 
+#include "item.h"
+
+#include "net/ea/eaprotocol.h"
+
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
@@ -104,6 +108,15 @@ void AuctionHandler::cancelRequest() const
 {
     createOutPacket(CMSG_AUCTION_CANCEL_REQUEST);
     outMsg.writeInt16(0, "type"); // unused
+}
+
+void AuctionHandler::setItem(const Item *const item,
+                             const int amount) const
+{
+    createOutPacket(CMSG_AUCTION_SET_ITEM);
+    outMsg.writeInt16(static_cast<int16_t>(
+        item->getInvIndex() + INVENTORY_OFFSET), "index");
+    outMsg.writeInt32(amount, "amount");  // always 1
 }
 
 }  // namespace EAthena
