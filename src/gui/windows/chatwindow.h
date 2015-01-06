@@ -25,7 +25,7 @@
 
 #include "being/beingdirection.h"
 
-#include "gui/chatmsgtype.h"
+#include "enums/chatmsgtype.h"
 
 #include "gui/widgets/window.h"
 

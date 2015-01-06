@@ -25,7 +25,7 @@
 
 #include "net/ea/chathandler.h"
 
-#include "gui/chatmsgtype.h"
+#include "enums/chatmsgtype.h"
 
 #include "net/eathena/messagehandler.h"
 

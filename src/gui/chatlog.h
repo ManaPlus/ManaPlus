@@ -23,7 +23,7 @@
 #ifndef GUI_CHATLOG_H
 #define GUI_CHATLOG_H
 
-#include "gui/chatmsgtype.h"
+#include "enums/chatmsgtype.h"
 
 #include <string>
 

@@ -23,7 +23,7 @@
 #ifndef GUI_WIDGETS_TABS_CHAT_CHATTAB_H
 #define GUI_WIDGETS_TABS_CHAT_CHATTAB_H
 
-#include "gui/chatmsgtype.h"
+#include "enums/chatmsgtype.h"
 
 #include "gui/widgets/browserbox.h"
 
