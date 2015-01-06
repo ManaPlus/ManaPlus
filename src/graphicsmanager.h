@@ -56,17 +56,6 @@ struct SDL_Renderer;
 #endif
 struct SDL_Window;
 
-enum ScreenDensity
-{
-    DENSITY_UNKNOWN = -1,
-    DENSITY_LOW = 0,
-    DENSITY_MEDIUM = 1,
-    DENSITY_TV = 2,
-    DENSITY_HIGH = 3,
-    DENSITY_XHIGH = 4,
-    DENSITY_XXHIGH = 5
-};
-
 class GraphicsManager final
 {
     public:

@@ -1174,6 +1174,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      soundmanager.cpp \
 	      soundmanager.h \
 	      sprite.h \
+	      enums/screendensity.h \
 	      enums/state.h \
 	      statuseffect.cpp \
 	      statuseffect.h \
