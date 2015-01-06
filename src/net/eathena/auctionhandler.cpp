@@ -139,4 +139,14 @@ void AuctionHandler::setItem(const Item *const item,
     outMsg.writeInt32(amount, "amount");  // always 1
 }
 
+void AuctionHandler::reg(const int currentPrice,
+                         const int maxPrice,
+                         const int hours) const
+{
+    createOutPacket(CMSG_AUCTION_REGISTER);
+    outMsg.writeInt32(currentPrice, "now money");
+    outMsg.writeInt32(maxPrice, "max money");
+    outMsg.writeInt32(hours, "delete hour");
+}
+
 }  // namespace EAthena

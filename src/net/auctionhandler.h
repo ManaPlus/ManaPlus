@@ -40,6 +40,10 @@ class AuctionHandler notfinal
 
         virtual void setItem(const Item *const item,
                              const int amount) const = 0;
+
+        virtual void reg(const int currentPrice,
+                         const int maxPrice,
+                         const int hours) const = 0;
 };
 
 }  // namespace Net

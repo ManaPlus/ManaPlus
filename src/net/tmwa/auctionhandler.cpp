@@ -51,4 +51,10 @@ void AuctionHandler::setItem(const Item *const item A_UNUSED,
 {
 }
 
+void AuctionHandler::reg(const int currentPrice A_UNUSED,
+                         const int maxPrice A_UNUSED,
+                         const int hours A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena
