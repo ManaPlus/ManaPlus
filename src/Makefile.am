@@ -1010,6 +1010,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      guild.h \
 	      guildmanager.cpp \
 	      guildmanager.h \
+	      enums/dragdropsource.h \
 	      enums/equipslot.h \
 	      enums/guildpositionflags.h \
 	      particle/imageparticle.cpp \
