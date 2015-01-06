@@ -23,7 +23,8 @@
 #define NET_BEINGHANDLER_H
 
 #include "being/being.h"
-#include "being/rank.h"
+
+#include "enums/being/rank.h"
 
 #include "net/messagein.h"
 

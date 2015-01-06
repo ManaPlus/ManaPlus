@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BEING_RANK_H
-#define BEING_RANK_H
+#ifndef ENUMS_BEING_RANK_H
+#define ENUMS_BEING_RANK_H
 
 namespace Rank
 {
@@ -32,4 +32,4 @@ namespace Rank
     };
 }  // namespace Rank
 
-#endif  // BEING_RANK_H
+#endif  // ENUMS_BEING_RANK_H
