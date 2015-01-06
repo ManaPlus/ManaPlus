@@ -46,6 +46,8 @@
 #include "being/localplayer.h"
 #include "being/playerrelations.h"
 
+#include "enums/net/packettypes.h"
+
 #include "net/download.h"
 #include "net/packetlimiter.h"
 #include "net/playerhandler.h"

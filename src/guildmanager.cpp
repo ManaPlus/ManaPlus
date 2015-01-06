@@ -28,6 +28,8 @@
 
 #include "being/localplayer.h"
 
+#include "enums/net/packettypes.h"
+
 #include "gui/windows/chatwindow.h"
 #include "gui/windows/socialwindow.h"
 

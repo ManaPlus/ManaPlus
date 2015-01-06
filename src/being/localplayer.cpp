@@ -41,6 +41,8 @@
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
 
+#include "enums/net/packettypes.h"
+
 #include "particle/particle.h"
 
 #include "input/keyboardconfig.h"

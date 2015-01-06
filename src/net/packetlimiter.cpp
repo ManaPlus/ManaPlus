@@ -23,6 +23,8 @@
 #include "configuration.h"
 #include "settings.h"
 
+#include "enums/net/packettypes.h"
+
 #include "utils/timer.h"
 
 #include <fstream>

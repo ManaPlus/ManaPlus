@@ -29,6 +29,8 @@
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
+#include "enums/net/packettypes.h"
+
 #include "net/packetlimiter.h"
 
 #include "debug.h"

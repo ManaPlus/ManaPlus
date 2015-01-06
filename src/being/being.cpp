@@ -39,6 +39,8 @@
 #include "being/beingspeech.h"
 #include "being/playerrelations.h"
 
+#include "enums/net/packettypes.h"
+
 #include "particle/particle.h"
 #include "particle/particleinfo.h"
 

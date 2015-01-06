@@ -18,22 +18,25 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_PACKETLIMITER_H
-#define NET_PACKETLIMITER_H
+#ifndef ENUMS_NET_PACKETLIMITER_H
+#define ENUMS_NET_PACKETLIMITER_H
 
-#include <string>
-
-#include "localconsts.h"
-
-namespace PacketLimiter
+enum PacketTypes
 {
-    void initPacketLimiter();
+    PACKET_CHAT       = 0,
+    PACKET_PICKUP     = 1,
+    PACKET_DROP       = 2,
+    PACKET_NPC_NEXT   = 3,
+    PACKET_NPC_TALK   = 4,
+    PACKET_NPC_INPUT  = 5,
+    PACKET_EMOTE      = 6,
+    PACKET_SIT        = 7,
+    PACKET_DIRECTION  = 8,
+    PACKET_ATTACK     = 9,
+    PACKET_STOPATTACK = 10,
+    PACKET_ONLINELIST = 11,
+    PACKET_WHISPER    = 12,
+    PACKET_SIZE
+};
 
-    void writePacketLimits(const std::string &packetLimitsName);
-
-    bool limitPackets(const int type) A_WARN_UNUSED;
-
-    bool checkPackets(const int type) A_WARN_UNUSED;
-}
-
-#endif  // NET_PACKETLIMITER_H
+#endif  // ENUMS_NET_PACKETLIMITER_H
