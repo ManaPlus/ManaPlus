@@ -1094,7 +1094,7 @@ SET(SRCS
     gui/buttontext.h
     gui/chatconsts.h
     gui/chatlog.h
-    gui/chatmsgtype.h
+    enums/gui/chatmsgtype.h
     gui/cliprect.h
     gui/color.cpp
     gui/color.h
