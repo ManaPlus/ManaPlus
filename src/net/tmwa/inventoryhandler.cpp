@@ -24,6 +24,8 @@
 
 #include "notifymanager.h"
 
+#include "enums/equipslot.h"
+
 #include "being/localplayer.h"
 
 #include "listeners/arrowslistener.h"
@@ -42,22 +44,22 @@
 extern Net::InventoryHandler *inventoryHandler;
 
 // missing EQUIP_RING1_SLOT
-const Equipment::Slot EQUIP_CONVERT[] =
+const EquipSlot::Type EQUIP_CONVERT[] =
 {
-    Equipment::EQUIP_PROJECTILE_SLOT,    // 0    0
-    Equipment::EQUIP_FEET_SLOT,          // 1    SPRITE_HAIR
-    Equipment::EQUIP_LEGS_SLOT,          // 2    SPRITE_WEAPON
-    Equipment::EQUIP_TORSO_SLOT,         // 3    SPRITE_HEAD_BOTTOM
-    Equipment::EQUIP_PROJECTILE_SLOT,    // 4    0
-    Equipment::EQUIP_NECK_SLOT,          // 5    SPRITE_RING
-    Equipment::EQUIP_PROJECTILE_SLOT,    // 6    0
-    Equipment::EQUIP_HEAD_SLOT,          // 7    SPRITE_CLOTHES_COLOR
-    Equipment::EQUIP_RING2_SLOT,         // 8    0
-    Equipment::EQUIP_GLOVES_SLOT,        // 9    SPRITE_SHOES
-    Equipment::EQUIP_FIGHT1_SLOT,        // 10   SPRITE_BODY
-    Equipment::EQUIP_FIGHT2_SLOT,        // 11   SPRITE_FLOOR
-    Equipment::EQUIP_EVOL_RING1_SLOT,    // 12   SPRITE_ROBE
-    Equipment::EQUIP_EVOL_RING2_SLOT,    // 13   SPRITE_EVOL2
+    EquipSlot::PROJECTILE_SLOT,    // 0    0
+    EquipSlot::FEET_SLOT,          // 1    SPRITE_HAIR
+    EquipSlot::LEGS_SLOT,          // 2    SPRITE_WEAPON
+    EquipSlot::TORSO_SLOT,         // 3    SPRITE_HEAD_BOTTOM
+    EquipSlot::PROJECTILE_SLOT,    // 4    0
+    EquipSlot::NECK_SLOT,          // 5    SPRITE_RING
+    EquipSlot::PROJECTILE_SLOT,    // 6    0
+    EquipSlot::HEAD_SLOT,          // 7    SPRITE_CLOTHES_COLOR
+    EquipSlot::RING2_SLOT,         // 8    0
+    EquipSlot::GLOVES_SLOT,        // 9    SPRITE_SHOES
+    EquipSlot::FIGHT1_SLOT,        // 10   SPRITE_BODY
+    EquipSlot::FIGHT2_SLOT,        // 11   SPRITE_FLOOR
+    EquipSlot::EVOL_RING1_SLOT,    // 12   SPRITE_ROBE
+    EquipSlot::EVOL_RING2_SLOT,    // 13   SPRITE_EVOL2
 };
 
 namespace TmwAthena

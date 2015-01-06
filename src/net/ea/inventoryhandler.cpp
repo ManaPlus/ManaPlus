@@ -24,6 +24,8 @@
 
 #include "notifymanager.h"
 
+#include "enums/equipslot.h"
+
 #include "being/attributes.h"
 #include "being/localplayer.h"
 
@@ -39,30 +41,30 @@
 
 #include "debug.h"
 
-const Equipment::Slot EQUIP_POINTS[Equipment::EQUIP_VECTOREND] =
+const EquipSlot::Type EQUIP_POINTS[EquipSlot::VECTOREND] =
 {
-    Equipment::EQUIP_LEGS_SLOT,               // Lower Headgear
-    Equipment::EQUIP_FIGHT1_SLOT,             // Weapon
-    Equipment::EQUIP_GLOVES_SLOT,             // Garment
-    Equipment::EQUIP_RING2_SLOT,              // Accessory 1
-    Equipment::EQUIP_RING1_SLOT,              // Armor
-    Equipment::EQUIP_FIGHT2_SLOT,             // Shield
-    Equipment::EQUIP_FEET_SLOT,               // Footgear
-    Equipment::EQUIP_NECK_SLOT,               // Accessory 2
-    Equipment::EQUIP_HEAD_SLOT,               // Upper Headgear
-    Equipment::EQUIP_TORSO_SLOT,              // Middle Headgear
-    Equipment::EQUIP_EVOL_RING1_SLOT,         // Costume Top Headgear
-    Equipment::EQUIP_EVOL_RING2_SLOT,         // Costume Mid Headgear
-    Equipment::EQUIP_PROJECTILE_SLOT,         // Costume Low Headgear
-    Equipment::EQUIP_COSTUME_ROBE_SLOT,       // Costume Garment/Robe
-    Equipment::EQUIP_MISSING1_SLOT,           // Missing slot 1
-    Equipment::EQUIP_MISSING2_SLOT,           // Missing slot 2
-    Equipment::EQUIP_SHADOW_ARMOR_SLOT,       // Shadow Armor
-    Equipment::EQUIP_SHADOW_WEAPON_SLOT,      // Shadow Weapon
-    Equipment::EQUIP_SHADOW_SHIELD_SLOT,      // Shadow Shield
-    Equipment::EQUIP_SHADOW_SHOES_SLOT,       // Shadow Shoes
-    Equipment::EQUIP_SHADOW_ACCESSORY2_SLOT,  // Shadow Accessory 2
-    Equipment::EQUIP_SHADOW_ACCESSORY1_SLOT,  // Shadow Accessory 1
+    EquipSlot::LEGS_SLOT,               // Lower Headgear
+    EquipSlot::FIGHT1_SLOT,             // Weapon
+    EquipSlot::GLOVES_SLOT,             // Garment
+    EquipSlot::RING2_SLOT,              // Accessory 1
+    EquipSlot::RING1_SLOT,              // Armor
+    EquipSlot::FIGHT2_SLOT,             // Shield
+    EquipSlot::FEET_SLOT,               // Footgear
+    EquipSlot::NECK_SLOT,               // Accessory 2
+    EquipSlot::HEAD_SLOT,               // Upper Headgear
+    EquipSlot::TORSO_SLOT,              // Middle Headgear
+    EquipSlot::EVOL_RING1_SLOT,         // Costume Top Headgear
+    EquipSlot::EVOL_RING2_SLOT,         // Costume Mid Headgear
+    EquipSlot::PROJECTILE_SLOT,         // Costume Low Headgear
+    EquipSlot::COSTUME_ROBE_SLOT,       // Costume Garment/Robe
+    EquipSlot::MISSING1_SLOT,           // Missing slot 1
+    EquipSlot::MISSING2_SLOT,           // Missing slot 2
+    EquipSlot::SHADOW_ARMOR_SLOT,       // Shadow Armor
+    EquipSlot::SHADOW_WEAPON_SLOT,      // Shadow Weapon
+    EquipSlot::SHADOW_SHIELD_SLOT,      // Shadow Shield
+    EquipSlot::SHADOW_SHOES_SLOT,       // Shadow Shoes
+    EquipSlot::SHADOW_ACCESSORY2_SLOT,  // Shadow Accessory 2
+    EquipSlot::SHADOW_ACCESSORY1_SLOT,  // Shadow Accessory 1
 };
 
 namespace Ea
@@ -143,7 +145,7 @@ size_t InventoryHandler::getSize(const int type) const
 int InventoryHandler::getSlot(const int eAthenaSlot)
 {
     if (eAthenaSlot == 0)
-        return Equipment::EQUIP_VECTOREND;
+        return EquipSlot::VECTOREND;
 
     if (eAthenaSlot & 0x8000)
         return inventoryHandler->getProjectileSlot();

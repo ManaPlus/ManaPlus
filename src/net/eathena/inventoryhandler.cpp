@@ -24,6 +24,8 @@
 
 #include "notifymanager.h"
 
+#include "enums/equipslot.h"
+
 #include "being/localplayer.h"
 
 #include "listeners/arrowslistener.h"
@@ -42,24 +44,24 @@
 extern Net::InventoryHandler *inventoryHandler;
 
 // missing EQUIP_RING1_SLOT
-const Equipment::Slot EQUIP_CONVERT[] =
+const EquipSlot::Type EQUIP_CONVERT[] =
 {
-    Equipment::EQUIP_PROJECTILE_SLOT,    // 0    0
-    Equipment::EQUIP_FEET_SLOT,          // 1    SPRITE_HAIR
-    Equipment::EQUIP_LEGS_SLOT,          // 2    SPRITE_WEAPON
-    Equipment::EQUIP_TORSO_SLOT,         // 3    SPRITE_HEAD_BOTTOM
-    Equipment::EQUIP_GLOVES_SLOT,        // 4    0
-    Equipment::EQUIP_EVOL_RING1_SLOT,    // 5
-    Equipment::EQUIP_PROJECTILE_SLOT,    // 6    0
-    Equipment::EQUIP_HEAD_SLOT,          // 7    SPRITE_CLOTHES_COLOR
-    Equipment::EQUIP_RING2_SLOT,         // 8    0
-    Equipment::EQUIP_PROJECTILE_SLOT,    // 9    SPRITE_SHOES
-    Equipment::EQUIP_FIGHT1_SLOT,        // 10   SPRITE_BODY
-    Equipment::EQUIP_FIGHT2_SLOT,        // 11   SPRITE_FLOOR
-    Equipment::EQUIP_EVOL_RING2_SLOT,    // 12
-    Equipment::EQUIP_PROJECTILE_SLOT,    // 13   SPRITE_EVOL2
-    Equipment::EQUIP_COSTUME_ROBE_SLOT,  // 14   SPRITE_EVOL3
-    Equipment::EQUIP_RING1_SLOT,         // 15   SPRITE_EVOL4
+    EquipSlot::PROJECTILE_SLOT,    // 0    0
+    EquipSlot::FEET_SLOT,          // 1    SPRITE_HAIR
+    EquipSlot::LEGS_SLOT,          // 2    SPRITE_WEAPON
+    EquipSlot::TORSO_SLOT,         // 3    SPRITE_HEAD_BOTTOM
+    EquipSlot::GLOVES_SLOT,        // 4    0
+    EquipSlot::EVOL_RING1_SLOT,    // 5
+    EquipSlot::PROJECTILE_SLOT,    // 6    0
+    EquipSlot::HEAD_SLOT,          // 7    SPRITE_CLOTHES_COLOR
+    EquipSlot::RING2_SLOT,         // 8    0
+    EquipSlot::PROJECTILE_SLOT,    // 9    SPRITE_SHOES
+    EquipSlot::FIGHT1_SLOT,        // 10   SPRITE_BODY
+    EquipSlot::FIGHT2_SLOT,        // 11   SPRITE_FLOOR
+    EquipSlot::EVOL_RING2_SLOT,    // 12
+    EquipSlot::PROJECTILE_SLOT,    // 13   SPRITE_EVOL2
+    EquipSlot::COSTUME_ROBE_SLOT,  // 14   SPRITE_EVOL3
+    EquipSlot::RING1_SLOT,         // 15   SPRITE_EVOL4
 };
 
 namespace EAthena

@@ -35,7 +35,8 @@ class Equipment final
         /**
          * Constructor.
          */
-        Equipment(): mBackend(nullptr)
+        Equipment() :
+            mBackend(nullptr)
         { }
 
         A_DELETE_COPY(Equipment)
@@ -45,33 +46,6 @@ class Equipment final
          */
         ~Equipment()
         { mBackend = nullptr; }
-
-        enum Slot
-        {
-            EQUIP_TORSO_SLOT = 0,
-            EQUIP_GLOVES_SLOT = 1,
-            EQUIP_HEAD_SLOT = 2,
-            EQUIP_LEGS_SLOT = 3,
-            EQUIP_FEET_SLOT = 4,
-            EQUIP_RING1_SLOT = 5,
-            EQUIP_RING2_SLOT = 6,
-            EQUIP_NECK_SLOT = 7,
-            EQUIP_FIGHT1_SLOT = 8,
-            EQUIP_FIGHT2_SLOT = 9,
-            EQUIP_PROJECTILE_SLOT = 10,
-            EQUIP_EVOL_RING1_SLOT = 11,
-            EQUIP_EVOL_RING2_SLOT = 12,
-            EQUIP_COSTUME_ROBE_SLOT = 13,
-            EQUIP_MISSING1_SLOT = 14,
-            EQUIP_MISSING2_SLOT = 15,
-            EQUIP_SHADOW_ARMOR_SLOT = 16,
-            EQUIP_SHADOW_WEAPON_SLOT = 17,
-            EQUIP_SHADOW_SHIELD_SLOT = 18,
-            EQUIP_SHADOW_SHOES_SLOT = 19,
-            EQUIP_SHADOW_ACCESSORY1_SLOT = 20,
-            EQUIP_SHADOW_ACCESSORY2_SLOT = 21,
-            EQUIP_VECTOREND
-        };
 
         class Backend notfinal
         {
