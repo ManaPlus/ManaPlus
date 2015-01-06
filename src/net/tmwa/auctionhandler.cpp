@@ -57,4 +57,8 @@ void AuctionHandler::reg(const int currentPrice A_UNUSED,
 {
 }
 
+void AuctionHandler::cancel(const int auctionId A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

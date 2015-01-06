@@ -45,6 +45,8 @@ class AuctionHandler final : public MessageHandler, public Net::AuctionHandler
         void reg(const int currentPrice,
                  const int maxPrice,
                  const int hours) const override final;
+
+        void cancel(const int auctionId) const override final;
 };
 
 }  // namespace TmwAthena

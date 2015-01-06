@@ -149,4 +149,10 @@ void AuctionHandler::reg(const int currentPrice,
     outMsg.writeInt32(hours, "delete hour");
 }
 
+void AuctionHandler::cancel(const int auctionId) const
+{
+    createOutPacket(CMSG_AUCTION_CANCEL);
+    outMsg.writeInt32(auctionId, "auction id");
+}
+
 }  // namespace EAthena

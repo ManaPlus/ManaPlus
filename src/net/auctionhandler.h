@@ -44,6 +44,8 @@ class AuctionHandler notfinal
         virtual void reg(const int currentPrice,
                          const int maxPrice,
                          const int hours) const = 0;
+
+        virtual void cancel(const int auctionId) const = 0;
 };
 
 }  // namespace Net
