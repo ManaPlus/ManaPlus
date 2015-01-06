@@ -25,7 +25,7 @@
 
 #include <iosfwd>
 
-#include "being/cookingtype.h"
+#include "enums/being/cookingtype.h"
 
 #include "localconsts.h"
 

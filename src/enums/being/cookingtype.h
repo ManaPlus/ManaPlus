@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BEING_COOKINGTYPE_H
-#define BEING_COOKINGTYPE_H
+#ifndef ENUMS_BEING_COOKINGTYPE_H
+#define ENUMS_BEING_COOKINGTYPE_H
 
 namespace CookingType
 {
@@ -34,4 +34,4 @@ namespace CookingType
     };
 }  // namespace CookingType
 
-#endif  // BEING_COOKINGTYPE_H
+#endif  // ENUMS_BEING_COOKINGTYPE_H

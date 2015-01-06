@@ -850,7 +850,7 @@ SET(SRCS
     being/compounditem.h
     being/compoundsprite.cpp
     being/compoundsprite.h
-    being/cookingtype.h
+    enums/being/cookingtype.h
     enums/being/gender.h
     being/homunculusinfo.h
     listeners/configlistener.h
