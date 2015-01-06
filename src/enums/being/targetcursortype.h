@@ -19,8 +19,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BEING_TARGETCURSORTYPE_H
-#define BEING_TARGETCURSORTYPE_H
+#ifndef ENUMS_BEING_TARGETCURSORTYPE_H
+#define ENUMS_BEING_TARGETCURSORTYPE_H
 
 namespace TargetCursorType
 {
@@ -33,4 +33,4 @@ namespace TargetCursorType
     };
 }
 
-#endif  // BEING_TARGETCURSORTYPE_H
+#endif  // ENUMS_BEING_TARGETCURSORTYPE_H

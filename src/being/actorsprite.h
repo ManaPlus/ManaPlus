@@ -28,9 +28,9 @@
 #include "being/actor.h"
 #include "being/actortype.h"
 #include "being/compoundsprite.h"
-#include "being/targetcursortype.h"
 
 #include "enums/being/targetcursorsize.h"
+#include "enums/being/targetcursortype.h"
 
 #include "particle/particlelist.h"
 #include "particle/particlevector.h"

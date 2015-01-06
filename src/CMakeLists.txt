@@ -1021,7 +1021,7 @@ SET(SRCS
     being/playerrelations.h
     being/rank.h
     enums/being/targetcursorsize.h
-    being/targetcursortype.h
+    enums/being/targetcursortype.h
     listeners/playerrelationslistener.h
     listeners/renamelistener.cpp
     listeners/renamelistener.h
