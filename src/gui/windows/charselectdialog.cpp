@@ -33,7 +33,7 @@
 #include "listeners/charrenamelistener.h"
 #include "listeners/pincodelistener.h"
 
-#include "gui/dialogtype.h"
+#include "enums/gui/dialogtype.h"
 
 #include "gui/windows/charcreatedialog.h"
 #include "gui/windows/chardeleteconfirm.h"

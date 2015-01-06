@@ -26,7 +26,7 @@
 #include "game.h"
 #include "notifymanager.h"
 
-#include "gui/dialogtype.h"
+#include "enums/gui/dialogtype.h"
 
 #include "gui/windows/okdialog.h"
 

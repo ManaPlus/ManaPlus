@@ -47,12 +47,13 @@
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
 
+#include "enums/gui/dialogtype.h"
+
 #include "input/inputmanager.h"
 #include "input/joystick.h"
 #include "input/keyboardconfig.h"
 
 #include "gui/dialogsmanager.h"
-#include "gui/dialogtype.h"
 #include "gui/gui.h"
 #include "gui/skin.h"
 #include "gui/popupmanager.h"

@@ -25,7 +25,7 @@
 #include "soundconsts.h"
 #include "soundmanager.h"
 
-#include "gui/dialogtype.h"
+#include "enums/gui/dialogtype.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/textbox.h"

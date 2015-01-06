@@ -25,6 +25,8 @@
 
 #include "configuration.h"
 
+#include "enums/gui/dialogtype.h"
+
 #include "input/inputmanager.h"
 #include "input/keyboardconfig.h"
 
@@ -33,7 +35,6 @@
 #include "input/pages/outfits.h"
 #include "input/pages/shortcuts.h"
 
-#include "gui/dialogtype.h"
 #include "gui/gui.h"
 #include "gui/setupinputpages.h"
 

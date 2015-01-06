@@ -27,7 +27,7 @@
 
 #include "being/attributes.h"
 
-#include "gui/dialogtype.h"
+#include "enums/gui/dialogtype.h"
 
 #include "gui/widgets/selldialog.h"
 

@@ -28,7 +28,7 @@
 #include "being/localplayer.h"
 #include "being/playerrelations.h"
 
-#include "gui/dialogtype.h"
+#include "enums/gui/dialogtype.h"
 
 #include "gui/windows/confirmdialog.h"
 #include "gui/windows/okdialog.h"

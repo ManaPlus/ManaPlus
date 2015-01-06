@@ -28,7 +28,7 @@
 
 #include "being/attributes.h"
 
-#include "gui/dialogtype.h"
+#include "enums/gui/dialogtype.h"
 
 #include "gui/windows/charcreatedialog.h"
 #include "gui/windows/okdialog.h"

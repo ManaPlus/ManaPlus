@@ -36,7 +36,8 @@
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
-#include "gui/dialogtype.h"
+#include "enums/gui/dialogtype.h"
+
 #include "gui/gui.h"
 #include "gui/popupmanager.h"
 #include "gui/sdlinput.h"

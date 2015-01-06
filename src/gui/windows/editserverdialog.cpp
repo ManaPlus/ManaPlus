@@ -23,7 +23,7 @@
 
 #include "input/inputaction.h"
 
-#include "gui/dialogtype.h"
+#include "enums/gui/dialogtype.h"
 
 #include "gui/models/typelistmodel.h"
 

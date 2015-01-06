@@ -26,7 +26,8 @@
 
 #include "graphicsmanager.h"
 
-#include "gui/dialogtype.h"
+#include "enums/gui/dialogtype.h"
+
 #include "gui/windowmanager.h"
 
 #include "gui/windows/okdialog.h"
