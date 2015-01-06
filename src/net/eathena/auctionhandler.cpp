@@ -155,4 +155,10 @@ void AuctionHandler::cancel(const int auctionId) const
     outMsg.writeInt32(auctionId, "auction id");
 }
 
+void AuctionHandler::close(const int auctionId) const
+{
+    createOutPacket(CMSG_AUCTION_CLOSE);
+    outMsg.writeInt32(auctionId, "auction id");
+}
+
 }  // namespace EAthena

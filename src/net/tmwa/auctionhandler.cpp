@@ -61,4 +61,8 @@ void AuctionHandler::cancel(const int auctionId A_UNUSED) const
 {
 }
 
+void AuctionHandler::close(const int auctionId A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

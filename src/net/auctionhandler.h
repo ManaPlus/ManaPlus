@@ -46,6 +46,8 @@ class AuctionHandler notfinal
                          const int hours) const = 0;
 
         virtual void cancel(const int auctionId) const = 0;
+
+        virtual void close(const int auctionId) const = 0;
 };
 
 }  // namespace Net

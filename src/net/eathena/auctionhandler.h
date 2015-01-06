@@ -47,6 +47,8 @@ class AuctionHandler final : public MessageHandler, public Net::AuctionHandler
 
         void cancel(const int auctionId) const override final;
 
+        void close(const int auctionId) const override final;
+
     protected:
         static void processOpenWindow(Net::MessageIn &msg);
 
