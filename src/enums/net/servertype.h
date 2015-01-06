@@ -20,35 +20,19 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_NET_H
-#define NET_NET_H
+#ifndef ENUMS_NET_SERVERTYPE_H
+#define ENUMS_NET_SERVERTYPE_H
 
-/**
- * \namespace Net
- *
- * The network communication layer. It is composed of a host of interfaces that
- * interact with different aspects of the game. They have different
- * implementations depending on the type of server the client is connecting to.
- */
-
-#include "net/serverinfo.h"
-
-namespace Net
+namespace ServerType
 {
+    enum Type
+    {
+        UNKNOWN = 0,
+        TMWATHENA,
+        EVOL,
+        EATHENA,
+        EVOL2
+    };
+}
 
-ServerType::Type getNetworkType() A_WARN_UNUSED;
-
-/**
- * Handles server detection and connection
- */
-void connectToServer(const ServerInfo &server);
-
-void unload();
-
-void loadIgnorePackets();
-
-bool isIgnorePacket(const int id);
-
-}  // namespace Net
-
-#endif  // NET_NET_H
+#endif  // ENUMS_NET_SERVERTYPE_H

@@ -60,50 +60,50 @@
 
 static const int MAX_SERVERLIST = 15;
 
-static std::string serverTypeToString(const ServerInfo::Type type)
+static std::string serverTypeToString(const ServerType::Type type)
 {
     switch (type)
     {
 #ifdef TMWA_SUPPORT
-        case ServerInfo::TMWATHENA:
+        case ServerType::TMWATHENA:
             return "TmwAthena";
-        case ServerInfo::EVOL:
+        case ServerType::EVOL:
             return "Evol";
 #else
-        case ServerInfo::TMWATHENA:
-        case ServerInfo::EVOL:
+        case ServerType::TMWATHENA:
+        case ServerType::EVOL:
             return "";
 #endif
 #ifdef EATHENA_SUPPORT
-        case ServerInfo::EATHENA:
+        case ServerType::EATHENA:
             return "eAthena";
-        case ServerInfo::EVOL2:
+        case ServerType::EVOL2:
             return "Evol2";
 #else
-        case ServerInfo::EATHENA:
-        case ServerInfo::EVOL2:
+        case ServerType::EATHENA:
+        case ServerType::EVOL2:
             return "";
 #endif
         default:
-        case ServerInfo::UNKNOWN:
+        case ServerType::UNKNOWN:
             return "";
     }
 }
 
-static uint16_t defaultPortForServerType(const ServerInfo::Type type)
+static uint16_t defaultPortForServerType(const ServerType::Type type)
 {
     switch (type)
     {
         default:
-        case ServerInfo::EATHENA:
-        case ServerInfo::EVOL2:
+        case ServerType::EATHENA:
+        case ServerType::EVOL2:
 #ifdef EATHENA_SUPPORT
             return 6900;
 #endif
-        case ServerInfo::UNKNOWN:
+        case ServerType::UNKNOWN:
 #ifdef TMWA_SUPPORT
-        case ServerInfo::TMWATHENA:
-        case ServerInfo::EVOL:
+        case ServerType::TMWATHENA:
+        case ServerType::EVOL:
 #endif
             return 6901;
     }
@@ -492,7 +492,7 @@ void ServerDialog::loadServers(const bool addNew)
         server.type = ServerInfo::parseType(type);
 
         // Ignore unknown server types
-        if (server.type == ServerInfo::UNKNOWN)
+        if (server.type == ServerType::UNKNOWN)
         {
             logger->log("Ignoring server entry with unknown type: %s",
                         type.c_str());

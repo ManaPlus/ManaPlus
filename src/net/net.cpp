@@ -102,7 +102,7 @@ Net::MarketHandler *marketHandler = nullptr;
 
 namespace Net
 {
-ServerInfo::Type networkType = ServerInfo::UNKNOWN;
+ServerType::Type networkType = ServerType::UNKNOWN;
 std::set<int> ignorePackets;
 
 void connectToServer(const ServerInfo &server)
@@ -114,22 +114,22 @@ void connectToServer(const ServerInfo &server)
     }
     else
     {
-        if (networkType != ServerInfo::UNKNOWN && generalHandler)
+        if (networkType != ServerType::UNKNOWN && generalHandler)
             generalHandler->unload();
 
         switch (server.type)
         {
-            case ServerInfo::EATHENA:
-            case ServerInfo::EVOL2:
+            case ServerType::EATHENA:
+            case ServerType::EVOL2:
 #ifdef EATHENA_SUPPORT
                 new EAthena::GeneralHandler;
 #else
                 new TmwAthena::GeneralHandler;
 #endif
                 break;
-            case ServerInfo::TMWATHENA:
-            case ServerInfo::EVOL:
-            case ServerInfo::UNKNOWN:
+            case ServerType::TMWATHENA:
+            case ServerType::EVOL:
+            case ServerType::UNKNOWN:
             default:
 #ifdef TMWA_SUPPORT
                 new TmwAthena::GeneralHandler;
@@ -160,7 +160,7 @@ void unload()
     ignorePackets.clear();
 }
 
-ServerInfo::Type getNetworkType()
+ServerType::Type getNetworkType()
 {
     return networkType;
 }

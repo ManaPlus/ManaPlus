@@ -162,7 +162,7 @@ bool ServerFeatures::haveBankApi() const
 
 bool ServerFeatures::haveServerVersion() const
 {
-    return Net::getNetworkType() == ServerInfo::EVOL2;
+    return Net::getNetworkType() == ServerType::EVOL2;
 }
 
 bool ServerFeatures::haveMapServerVersion() const

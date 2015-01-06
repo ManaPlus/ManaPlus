@@ -23,6 +23,8 @@
 #ifndef NET_SERVERINFO_H
 #define NET_SERVERINFO_H
 
+#include "enums/net/servertype.h"
+
 #include "utils/stringutils.h"
 
 #include <SDL_stdinc.h>
@@ -35,18 +37,9 @@
 class ServerInfo final
 {
     public:
-        enum Type
-        {
-            UNKNOWN = 0,
-            TMWATHENA,
-            EVOL,
-            EATHENA,
-            EVOL2
-        };
-
         typedef std::pair<int, std::string> VersionString;
 
-        Type type;
+        ServerType::Type type;
         std::string name;
         std::string hostname;
         std::string althostname;
@@ -61,7 +54,7 @@ class ServerInfo final
         bool persistentIp;
 
         ServerInfo() :
-            type(TMWATHENA),
+            type(ServerType::TMWATHENA),
             name(),
             hostname(),
             althostname(),
@@ -103,12 +96,14 @@ class ServerInfo final
 
         bool isValid() const A_WARN_UNUSED
         {
-            return !(hostname.empty() || port == 0 || type == UNKNOWN);
+            return !(hostname.empty()
+                || port == 0
+                || type == ServerType::UNKNOWN);
         }
 
         void clear()
         {
-            type = UNKNOWN;
+            type = ServerType::UNKNOWN;
             name.clear();
             hostname.clear();
             althostname.clear();
@@ -136,30 +131,31 @@ class ServerInfo final
                     port != other.port);
         }
 
-        static Type parseType(const std::string &serverType) A_WARN_UNUSED
+        static ServerType::Type parseType(const std::string &serverType)
+                                          A_WARN_UNUSED
         {
 #ifdef TMWA_SUPPORT
             if (compareStrI(serverType, "tmwathena") == 0)
-                return TMWATHENA;
+                return ServerType::TMWATHENA;
             if (compareStrI(serverType, "evol") == 0)
-                return EVOL;
+                return ServerType::EVOL;
 #else
             if (compareStrI(serverType, "tmwathena") == 0
                 || compareStrI(serverType, "evol") == 0)
-                return EATHENA;
+                return ServerType::EATHENA;
 #endif
 #ifdef EATHENA_SUPPORT
             else if (compareStrI(serverType, "eathena") == 0)
-                return EATHENA;
+                return ServerType::EATHENA;
             else if (compareStrI(serverType, "evol2") == 0)
-                return EVOL2;
+                return ServerType::EVOL2;
 #else
             else if (compareStrI(serverType, "eathena") == 0)
-                return TMWATHENA;
+                return ServerType::TMWATHENA;
             else if (compareStrI(serverType, "evol2") == 0)
-                return TMWATHENA;
+                return ServerType::TMWATHENA;
 #endif
-            return UNKNOWN;
+            return ServerType::UNKNOWN;
         }
 };
 
