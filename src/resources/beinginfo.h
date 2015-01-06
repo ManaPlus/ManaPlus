@@ -23,11 +23,10 @@
 #ifndef RESOURCES_BEINGINFO_H
 #define RESOURCES_BEINGINFO_H
 
-#include "resources/cursor.h"
-
-#include "being/targetcursorsize.h"
+#include "enums/being/targetcursorsize.h"
 
 #include "resources/beingmenuitem.h"
+#include "resources/cursor.h"
 #include "resources/soundinfo.h"
 #include "resources/spritedisplay.h"
 

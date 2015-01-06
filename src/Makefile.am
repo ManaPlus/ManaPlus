@@ -1140,7 +1140,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      being/playerrelations.cpp \
 	      being/playerrelations.h \
 	      being/rank.h \
-	      being/targetcursorsize.h \
+	      enums/being/targetcursorsize.h \
 	      being/targetcursortype.h \
 	      listeners/playerrelationslistener.h \
 	      listeners/renamelistener.cpp \

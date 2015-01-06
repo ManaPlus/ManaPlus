@@ -19,8 +19,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BEING_TARGETCURSORSIZE_H
-#define BEING_TARGETCURSORSIZE_H
+#ifndef ENUMS_BEING_TARGETCURSORSIZE_H
+#define ENUMS_BEING_TARGETCURSORSIZE_H
 
 namespace TargetCursorSize
 {
@@ -33,4 +33,4 @@ namespace TargetCursorSize
     };
 }  // TargetCursorSize
 
-#endif  // BEING_TARGETCURSORSIZE_H
+#endif  // ENUMS_BEING_TARGETCURSORSIZE_H
