@@ -692,7 +692,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      net/netconsts.h \
 	      net/npchandler.h \
 	      net/partyhandler.h \
-	      net/partyshare.h \
+	      enums/net/partyshare.h \
 	      net/pethandler.h \
 	      net/playerhandler.h \
 	      net/questhandler.h \

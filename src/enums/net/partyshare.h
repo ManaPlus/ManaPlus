@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_PARTYSHARE_H
-#define NET_PARTYSHARE_H
+#ifndef ENUMS_NET_PARTYSHARE_H
+#define ENUMS_NET_PARTYSHARE_H
 
 namespace Net
 {
@@ -37,4 +37,4 @@ namespace Net
     }
 }  // namespace Net
 
-#endif  // NET_PARTYSHARE_H
+#endif  // ENUMS_NET_PARTYSHARE_H

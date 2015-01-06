@@ -562,7 +562,7 @@ SET(SRCS
     net/net.h
     net/netconsts.h
     net/partyhandler.h
-    net/partyshare.h
+    enums/net/partyshare.h
     net/pethandler.h
     net/playerhandler.h
     net/registrationoptions.h

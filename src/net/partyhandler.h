@@ -25,9 +25,9 @@
 
 #include "localconsts.h"
 
-#include "gui/widgets/tabs/chat/chattab.h"
+#include "enums/net/partyshare.h"
 
-#include "net/partyshare.h"
+#include "gui/widgets/tabs/chat/chattab.h"
 
 #include <string>
 
