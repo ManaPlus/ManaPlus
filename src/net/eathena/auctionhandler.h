@@ -52,6 +52,11 @@ class AuctionHandler final : public MessageHandler, public Net::AuctionHandler
         void bid(const int auctionId,
                  const int money) const override final;
 
+        void search(const AuctionSearchType::Type type,
+                    const int auctionId,
+                    const std::string &text,
+                    const int page) const override final;
+
     protected:
         static void processOpenWindow(Net::MessageIn &msg);
 

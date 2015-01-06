@@ -169,4 +169,16 @@ void AuctionHandler::bid(const int auctionId,
     outMsg.writeInt32(money, "money");
 }
 
+void AuctionHandler::search(const AuctionSearchType::Type type,
+                            const int auctionId,
+                            const std::string &text,
+                            const int page) const
+{
+    createOutPacket(CMSG_AUCTION_SEARCH);
+    outMsg.writeInt16(static_cast<int16_t>(type), "search type");
+    outMsg.writeInt32(auctionId, "auction id");
+    outMsg.writeString(text, 24, "search text");
+    outMsg.writeInt16(page, "page");
+}
+
 }  // namespace EAthena
