@@ -807,6 +807,7 @@ SET(SRCS
     being/actorsprite.cpp
     being/actorsprite.h
     enums/being/actortype.h
+    enums/being/attacktype.h
     enums/being/attributes.h
     listeners/actorspritelistener.h
     listeners/arrowslistener.cpp

@@ -1111,15 +1111,15 @@ void BeingHandler::processBeingAction2(Net::MessageIn &msg)
 
     switch (type)
     {
-        case Being::HIT:  // Damage
-        case Being::CRITICAL:  // Critical Damage
-        case Being::MULTI:  // Critical Damage
-        case Being::MULTI_REFLECT:
-        case Being::REFLECT:  // Reflected Damage
-        case Being::FLEE:  // Lucky Dodge
-        case Being::SPLASH:
-        case Being::SKILL:
-        case Being::REPEATE:
+        case AttackType::HIT:  // Damage
+        case AttackType::CRITICAL:  // Critical Damage
+        case AttackType::MULTI:  // Critical Damage
+        case AttackType::MULTI_REFLECT:
+        case AttackType::REFLECT:  // Reflected Damage
+        case AttackType::FLEE:  // Lucky Dodge
+        case AttackType::SPLASH:
+        case AttackType::SKILL:
+        case AttackType::REPEATE:
             if (srcBeing)
             {
                 if (srcSpeed && srcBeing->getType() == ActorType::Player)
@@ -1132,17 +1132,17 @@ void BeingHandler::processBeingAction2(Net::MessageIn &msg)
             if (dstBeing)
             {
                 dstBeing->takeDamage(srcBeing, param1,
-                    static_cast<Being::AttackType>(type));
+                    static_cast<AttackType::Type>(type));
             }
             break;
 
-        case Being::PICKUP:
+        case AttackType::PICKUP:
             break;
 
-        case Being::TOUCH_SKILL:
+        case AttackType::TOUCH_SKILL:
             break;
 
-        case Being::SIT:
+        case AttackType::SIT:
             if (srcBeing)
             {
                 srcBeing->setAction(BeingAction::SIT, 0);
@@ -1155,7 +1155,7 @@ void BeingHandler::processBeingAction2(Net::MessageIn &msg)
             }
             break;
 
-        case Being::STAND:
+        case AttackType::STAND:
             if (srcBeing)
             {
                 srcBeing->setAction(BeingAction::STAND, 0);

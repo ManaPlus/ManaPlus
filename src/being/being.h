@@ -29,6 +29,7 @@
 
 #include "being/actorsprite.h"
 
+#include "enums/being/attacktype.h"
 #include "enums/being/beingaction.h"
 #include "enums/being/beingdirection.h"
 #include "enums/being/gender.h"
@@ -89,25 +90,6 @@ class Being notfinal : public ActorSprite,
         friend class ActorManager;
         friend class BeingEquipBackend;
         friend class LocalPlayer;
-
-        enum AttackType
-        {
-            HIT           = 0,
-            PICKUP        = 1,
-            SIT           = 2,
-            STAND         = 3,
-            REFLECT       = 4,
-            SPLASH        = 5,
-            SKILL         = 6,
-            REPEATE       = 7,
-            MULTI         = 8,
-            MULTI_REFLECT = 9,
-            CRITICAL      = 10,
-            FLEE          = 11,
-            TOUCH_SKILL   = 12,
-//          SKILL = 0xff,
-            MISS = 0xffff   // pseudo value for miss attacks
-        };
 
         enum Reachable
         {
@@ -221,7 +203,7 @@ class Being notfinal : public ActorSprite,
          * @param id skill id
          */
         void takeDamage(Being *const attacker, const int damage,
-                        const AttackType type, const int attackId = 1);
+                        const AttackType::Type type, const int attackId = 1);
 
         /**
          * Handles an attack of another being by this being.
@@ -823,7 +805,7 @@ class Being notfinal : public ActorSprite,
         void recalcSpritesOrder();
 
         int getHitEffect(const Being *const attacker,
-                         const AttackType type,
+                         const AttackType::Type type,
                          const int attackId) const A_WARN_UNUSED;
 
         Cursor::Cursor getHoverCursor() const A_WARN_UNUSED
@@ -942,7 +924,7 @@ class Being notfinal : public ActorSprite,
 
         void createSpeechBubble();
 
-        static int getDefaultEffectId(const AttackType &type);
+        static int getDefaultEffectId(const AttackType::Type &type);
 
         BeingInfo *mInfo;
         AnimatedSprite *mEmotionSprite;

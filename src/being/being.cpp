@@ -554,7 +554,7 @@ void Being::setSpeech(const std::string &text, const std::string &channel,
 }
 
 void Being::takeDamage(Being *const attacker, const int amount,
-                       const AttackType type, const int attackId)
+                       const AttackType::Type type, const int attackId)
 {
     if (!userPalette || !attacker)
         return;
@@ -563,17 +563,17 @@ void Being::takeDamage(Being *const attacker, const int amount,
 
     Font *font = nullptr;
     // TRANSLATORS: hit or miss message in attacks
-    const std::string damage = amount ? toString(amount) : type == FLEE ?
-            _("dodge") : _("miss");
+    const std::string damage = amount ? toString(amount)
+        : type == AttackType::FLEE ? _("dodge") : _("miss");
     const Color *color;
 
     if (gui)
         font = gui->getInfoParticleFont();
 
     // Selecting the right color
-    if (type == CRITICAL || type == FLEE)
+    if (type == AttackType::CRITICAL || type == AttackType::FLEE)
     {
-        if (type == CRITICAL)
+        if (type == AttackType::CRITICAL)
             attacker->setCriticalHit(amount);
 
         if (attacker == localPlayer)
@@ -655,7 +655,7 @@ void Being::takeDamage(Being *const attacker, const int amount,
     BLOCK_END("Being::takeDamage1")
     BLOCK_START("Being::takeDamage2")
 
-    if (type != SKILL)
+    if (type != AttackType::SKILL)
         attacker->updateHit(amount);
 
     if (amount > 0)
@@ -707,7 +707,7 @@ void Being::takeDamage(Being *const attacker, const int amount,
         if (effectManager)
         {
             const int hitEffectId = getHitEffect(attacker,
-                MISS, attackId);
+                AttackType::MISS, attackId);
             if (hitEffectId >= 0)
                 effectManager->trigger(hitEffectId, this);
         }
@@ -716,7 +716,7 @@ void Being::takeDamage(Being *const attacker, const int amount,
 }
 
 int Being::getHitEffect(const Being *const attacker,
-                        const AttackType type, const int attackId) const
+                        const AttackType::Type type, const int attackId) const
 {
     if (!effectManager)
         return 0;
@@ -725,7 +725,7 @@ int Being::getHitEffect(const Being *const attacker,
     // Init the particle effect path based on current
     // weapon or default.
     int hitEffectId = 0;
-    if (type != SKILL)
+    if (type != AttackType::SKILL)
     {
         if (attacker)
         {
@@ -733,9 +733,9 @@ int Being::getHitEffect(const Being *const attacker,
                 = attacker->getEquippedWeapon();
             if (attackerWeapon && attacker->getType() == ActorType::Player)
             {
-                if (type == MISS)
+                if (type == AttackType::MISS)
                     hitEffectId = attackerWeapon->getMissEffectId();
-                else if (type != CRITICAL)
+                else if (type != AttackType::CRITICAL)
                     hitEffectId = attackerWeapon->getHitEffectId();
                 else
                     hitEffectId = attackerWeapon->getCriticalHitEffectId();
@@ -748,9 +748,9 @@ int Being::getHitEffect(const Being *const attacker,
                     const Attack *const atk = info->getAttack(attackId);
                     if (atk)
                     {
-                        if (type == MISS)
+                        if (type == AttackType::MISS)
                             hitEffectId = atk->mMissEffectId;
-                        else if (type != CRITICAL)
+                        else if (type != AttackType::CRITICAL)
                             hitEffectId = atk->mHitEffectId;
                         else
                             hitEffectId = atk->mCriticalHitEffectId;
@@ -780,11 +780,11 @@ int Being::getHitEffect(const Being *const attacker,
     return hitEffectId;
 }
 
-int Being::getDefaultEffectId(const AttackType &type)
+int Being::getDefaultEffectId(const AttackType::Type &type)
 {
-    if (type == MISS)
+    if (type == AttackType::MISS)
         return paths.getIntValue("missEffectId");
-    else if (type != CRITICAL)
+    else if (type != AttackType::CRITICAL)
         return paths.getIntValue("hitEffectId");
     else
         return paths.getIntValue("criticalHitEffectId");

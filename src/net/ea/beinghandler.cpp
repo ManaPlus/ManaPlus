@@ -162,7 +162,7 @@ void BeingHandler::processSkillDamage(Net::MessageIn &msg)
     if (srcBeing)
         srcBeing->handleSkill(dstBeing, param1, id, level);
     if (dstBeing)
-        dstBeing->takeDamage(srcBeing, param1, Being::SKILL, id);
+        dstBeing->takeDamage(srcBeing, param1, AttackType::SKILL, id);
     BLOCK_END("BeingHandler::processSkillDamage")
 }
 
@@ -190,11 +190,11 @@ void BeingHandler::processBeingAction(Net::MessageIn &msg)
 
     switch (type)
     {
-        case Being::HIT:  // Damage
-        case Being::CRITICAL:  // Critical Damage
-        case Being::MULTI:  // Critical Damage
-        case Being::REFLECT:  // Reflected Damage
-        case Being::FLEE:  // Lucky Dodge
+        case AttackType::HIT:  // Damage
+        case AttackType::CRITICAL:  // Critical Damage
+        case AttackType::MULTI:  // Critical Damage
+        case AttackType::REFLECT:  // Reflected Damage
+        case AttackType::FLEE:  // Lucky Dodge
             if (srcBeing)
             {
                 if (srcSpeed && srcBeing->getType() == ActorType::Player)
@@ -207,7 +207,7 @@ void BeingHandler::processBeingAction(Net::MessageIn &msg)
             if (dstBeing)
             {
                 dstBeing->takeDamage(srcBeing, param1,
-                    static_cast<Being::AttackType>(type));
+                    static_cast<AttackType::Type>(type));
             }
             break;
 
