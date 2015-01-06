@@ -28,9 +28,9 @@
 #include "position.h"
 
 #include "being/actorsprite.h"
-#include "being/beingdirection.h"
 
 #include "enums/being/beingaction.h"
+#include "enums/being/beingdirection.h"
 #include "enums/being/gender.h"
 
 #include "listeners/configlistener.h"

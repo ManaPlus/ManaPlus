@@ -956,7 +956,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      being/being.h \
 	      enums/being/beingaction.h \
 	      being/beingcacheentry.h \
-	      being/beingdirection.h \
+	      enums/being/beingdirection.h \
 	      being/beingflag.h \
 	      being/beingspeech.h \
 	      beingequipbackend.cpp \

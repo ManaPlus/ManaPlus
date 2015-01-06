@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BEING_BEINGDIRECTION_H
-#define BEING_BEINGDIRECTION_H
+#ifndef ENUMS_BEING_BEINGDIRECTION_H
+#define ENUMS_BEING_BEINGDIRECTION_H
 
 namespace BeingDirection
 {
@@ -37,4 +37,4 @@ namespace BeingDirection
     };
 }  // namespace BeingDirection
 
-#endif  // BEING_BEINGDIRECTION_H
+#endif  // ENUMS_BEING_BEINGDIRECTION_H

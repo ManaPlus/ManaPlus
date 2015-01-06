@@ -23,7 +23,7 @@
 #ifndef GUI_WINDOWS_CHATWINDOW_H
 #define GUI_WINDOWS_CHATWINDOW_H
 
-#include "being/beingdirection.h"
+#include "enums/being/beingdirection.h"
 
 #include "enums/gui/chatmsgtype.h"
 
