@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_UPDATETYPE_H
-#define NET_UPDATETYPE_H
+#ifndef ENUMS_NET_UPDATETYPE_H
+#define ENUMS_NET_UPDATETYPE_H
 
 namespace UpdateType
 {
@@ -34,4 +34,4 @@ namespace UpdateType
     };
 }  // namespace UpdateType
 
-#endif  // NET_UPDATETYPE_H
+#endif  // ENUMS_NET_UPDATETYPE_H

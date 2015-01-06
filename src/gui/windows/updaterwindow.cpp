@@ -26,6 +26,8 @@
 #include "configuration.h"
 #include "settings.h"
 
+#include "enums/net/updatetype.h"
+
 #include "input/inputaction.h"
 
 #include "gui/widgets/browserbox.h"
@@ -38,7 +40,6 @@
 #include "gui/widgets/scrollarea.h"
 
 #include "net/download.h"
-#include "net/updatetype.h"
 
 #include "resources/resourcemanager.h"
 

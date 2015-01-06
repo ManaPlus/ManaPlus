@@ -25,9 +25,9 @@
 
 #include "being/gender.h"
 
-#include "utils/stringvector.h"
+#include "enums/net/updatetype.h"
 
-#include "net/updatetype.h"
+#include "utils/stringvector.h"
 
 #include <string>
 
