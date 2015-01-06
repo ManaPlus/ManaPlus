@@ -161,4 +161,12 @@ void AuctionHandler::close(const int auctionId) const
     outMsg.writeInt32(auctionId, "auction id");
 }
 
+void AuctionHandler::bid(const int auctionId,
+                         const int money) const
+{
+    createOutPacket(CMSG_AUCTION_BID);
+    outMsg.writeInt32(auctionId, "auction id");
+    outMsg.writeInt32(money, "money");
+}
+
 }  // namespace EAthena

@@ -65,4 +65,9 @@ void AuctionHandler::close(const int auctionId A_UNUSED) const
 {
 }
 
+void AuctionHandler::bid(const int auctionId A_UNUSED,
+                         const int money A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

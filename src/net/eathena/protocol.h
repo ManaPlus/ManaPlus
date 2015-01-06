@@ -521,5 +521,6 @@
 #define CMSG_AUCTION_REGISTER        0x024d
 #define CMSG_AUCTION_CANCEL          0x024e
 #define CMSG_AUCTION_CLOSE           0x025d
+#define CMSG_AUCTION_BID             0x024f
 
 #endif  // NET_EATHENA_PROTOCOL_H
