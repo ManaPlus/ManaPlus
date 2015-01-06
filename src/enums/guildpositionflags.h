@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUILDPOSITIONFLAGS_H
-#define GUILDPOSITIONFLAGS_H
+#ifndef ENUMS_GUILDPOSITIONFLAGS_H
+#define ENUMS_GUILDPOSITIONFLAGS_H
 
 class Guild;
 
@@ -35,4 +35,4 @@ namespace GuildPositionFlags
     };
 }
 
-#endif  // GUILDPOSITIONFLAGS_H
+#endif  // ENUMS_GUILDPOSITIONFLAGS_H

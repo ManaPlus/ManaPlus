@@ -884,7 +884,7 @@ SET(SRCS
     guild.h
     guildmanager.cpp
     guildmanager.h
-    guildpositionflags.h
+    enums/guildpositionflags.h
     particle/imageparticle.cpp
     particle/imageparticle.h
     imagesprite.cpp

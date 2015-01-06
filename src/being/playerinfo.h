@@ -23,8 +23,8 @@
 #define BEING_PLAYERINFO_H
 
 #include "equipment.h"
-#include "guildpositionflags.h"
 
+#include "enums/guildpositionflags.h"
 #include "enums/state.h"
 
 #include <map>
