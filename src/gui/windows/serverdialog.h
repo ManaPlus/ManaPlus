@@ -25,7 +25,8 @@
 
 #include "gui/widgets/window.h"
 
-#include "net/downloadstatus.h"
+#include "enums/net/downloadstatus.h"
+
 #include "net/serverinfo.h"
 
 #include "utils/mutex.h"

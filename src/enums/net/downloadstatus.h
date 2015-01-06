@@ -19,20 +19,20 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_DOWNLOADSTATUS_H
-#define NET_DOWNLOADSTATUS_H
+#ifndef ENUMS_NET_DOWNLOADSTATUS_H
+#define ENUMS_NET_DOWNLOADSTATUS_H
 
 namespace DownloadStatus
 {
     enum Type
     {
-        Cancelled = -3,
+        Cancelled   = -3,
         ThreadError = -2,
-        Error = -1,
-        Starting = 0,
-        Idle,
-        Complete
+        Error       = -1,
+        Starting    = 0,
+        Idle        = 1,
+        Complete    = 2
     };
 }  // namespace DownloadStatus
 
-#endif  // NET_DOWNLOADSTATUS_H
+#endif  // ENUMS_NET_DOWNLOADSTATUS_H

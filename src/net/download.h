@@ -22,7 +22,7 @@
 #ifndef NET_DOWNLOAD_H
 #define NET_DOWNLOAD_H
 
-#include "net/downloadstatus.h"
+#include "enums/net/downloadstatus.h"
 
 #include <string>
 #include <queue>

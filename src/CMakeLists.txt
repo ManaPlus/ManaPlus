@@ -538,7 +538,7 @@ SET(SRCS
     net/elementalhandler.h
     net/download.cpp
     net/download.h
-    net/downloadstatus.h
+    enums/net/downloadstatus.h
     net/gamehandler.h
     net/generalhandler.h
     net/guildhandler.h

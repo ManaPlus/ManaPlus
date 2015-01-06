@@ -23,6 +23,8 @@
 #ifndef GUI_WINDOWS_UPDATERWINDOW_H
 #define GUI_WINDOWS_UPDATERWINDOW_H
 
+#include "enums/net/downloadstatus.h"
+
 #include "gui/widgets/linkhandler.h"
 #include "gui/widgets/window.h"
 
@@ -32,8 +34,6 @@
 
 #include "listeners/actionlistener.h"
 #include "listeners/keylistener.h"
-
-#include "net/downloadstatus.h"
 
 #include <string>
 #include <vector>
