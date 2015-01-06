@@ -1099,7 +1099,7 @@ SET(SRCS
     gui/color.cpp
     gui/color.h
     gui/colorpair.h
-    gui/dialogtype.h
+    enums/gui/dialogtype.h
     listeners/errorlistener.cpp
     listeners/errorlistener.h
     listeners/widgetdeathlistener.h

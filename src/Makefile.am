@@ -181,7 +181,7 @@ manaplus_SOURCES += events/actionevent.h \
 	      enums/gui/chatmsgtype.h \
 	      gui/cliprect.h \
 	      gui/color.h \
-	      gui/dialogtype.h \
+	      enums/gui/dialogtype.h \
 	      listeners/errorlistener.cpp \
 	      listeners/errorlistener.h \
 	      listeners/widgetdeathlistener.h \
