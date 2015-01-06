@@ -33,6 +33,8 @@ class AuctionHandler notfinal
     public:
         virtual ~AuctionHandler()
         { }
+
+        virtual void cancelRequest() const = 0;
 };
 
 }  // namespace Net

@@ -20,6 +20,7 @@
 
 #include "net/eathena/auctionhandler.h"
 
+#include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
 #include "debug.h"
@@ -97,6 +98,12 @@ void AuctionHandler::processAuctionSetItem(Net::MessageIn &msg)
 {
     msg.readInt16("index");
     msg.readUInt8("flag");
+}
+
+void AuctionHandler::cancelRequest() const
+{
+    createOutPacket(CMSG_AUCTION_CANCEL_REQUEST);
+    outMsg.writeInt16(0, "type"); // unused
 }
 
 }  // namespace EAthena

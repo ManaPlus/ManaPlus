@@ -42,4 +42,8 @@ void AuctionHandler::handleMessage(Net::MessageIn &msg A_UNUSED)
 {
 }
 
+void AuctionHandler::cancelRequest() const
+{
+}
+
 }  // namespace TmwAthena
