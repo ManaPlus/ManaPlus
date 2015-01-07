@@ -36,6 +36,7 @@ VendingHandler::VendingHandler() :
     {
         SMSG_VENDING_OPEN_REQ,
         SMSG_VENDING_SHOW_BOARD,
+        SMSG_VENDING_HIDE_BOARD,
         0
     };
     handledMessages = _messages;
@@ -54,6 +55,10 @@ void VendingHandler::handleMessage(Net::MessageIn &msg)
             processShowBoard(msg);
             break;
 
+        case SMSG_VENDING_HIDE_BOARD:
+            processHideBoard(msg);
+            break;
+
         default:
             break;
     }
@@ -68,6 +73,11 @@ void VendingHandler::processShowBoard(Net::MessageIn &msg)
 {
     msg.readInt32("owner id");
     msg.readString(80, "shop name");
+}
+
+void VendingHandler::processHideBoard(Net::MessageIn &msg)
+{
+    msg.readInt32("owner id");
 }
 
 }  // namespace EAthena
