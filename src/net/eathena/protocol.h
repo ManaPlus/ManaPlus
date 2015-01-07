@@ -537,5 +537,6 @@
 #define CMSG_VENDING_LIST_REQ        0x0130
 #define CMSG_VENDING_BUY             0x0134
 #define CMSG_VENDING_BUY2            0x0801
+#define CMSG_VENDING_CREATE_SHOP     0x01b2
 
 #endif  // NET_EATHENA_PROTOCOL_H

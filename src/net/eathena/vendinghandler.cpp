@@ -20,7 +20,11 @@
 
 #include "net/eathena/vendinghandler.h"
 
+#include "shopitem.h"
+
 #include "being/being.h"
+
+#include "net/ea/eaprotocol.h"
 
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
@@ -196,6 +200,24 @@ void VendingHandler::buy2(const Being *const being,
     outMsg.writeInt32(vendId, "vend id");
     outMsg.writeInt16(amount, "amount");
     outMsg.writeInt16(index, "index");
+}
+
+void VendingHandler::createShop(const std::string &name,
+                                const bool flag,
+                                std::vector<ShopItem*> &items) const
+{
+    createOutPacket(CMSG_VENDING_CREATE_SHOP);
+    outMsg.writeInt16(85 + items.size() * 8, "len");
+    outMsg.writeString(name, 80, "shop name");
+    outMsg.writeInt8(flag ? 1 : 0, "flag");
+    FOR_EACH (std::vector<ShopItem*>::const_iterator, it, items)
+    {
+        const ShopItem *const item = *it;
+        outMsg.writeInt16(static_cast<int16_t>(
+            item->getInvIndex() + INVENTORY_OFFSET), "index");
+        outMsg.writeInt16(static_cast<int16_t>(item->getQuantity()), "amount");
+        outMsg.writeInt32(item->getPrice(), "price");
+    }
 }
 
 }  // namespace EAthena

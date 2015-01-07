@@ -50,6 +50,10 @@ class VendingHandler final : public MessageHandler,
                   const int index,
                   const int amount) const override final;
 
+        void createShop(const std::string &name,
+                        const bool flag,
+                        std::vector<ShopItem*> &items) const override final;
+
     protected:
         static void processOpenReq(Net::MessageIn &msg);
 

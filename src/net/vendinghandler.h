@@ -22,10 +22,12 @@
 #define NET_VENDINGHANDLER_H
 
 #include <string>
+#include <vector>
 
 #include "localconsts.h"
 
 class Being;
+class ShopItem;
 
 namespace Net
 {
@@ -48,6 +50,10 @@ class VendingHandler notfinal
                           const int vendId,
                           const int index,
                           const int amount) const = 0;
+
+        virtual void createShop(const std::string &name,
+                                const bool flag,
+                                std::vector<ShopItem*> &items) const = 0;
 };
 
 }  // namespace Net
