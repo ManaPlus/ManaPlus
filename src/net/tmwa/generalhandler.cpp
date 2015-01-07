@@ -63,6 +63,7 @@
 #include "net/tmwa/pethandler.h"
 #include "net/tmwa/playerhandler.h"
 #include "net/tmwa/protocol.h"
+#include "net/tmwa/searchstorehandler.h"
 #include "net/tmwa/serverfeatures.h"
 #include "net/tmwa/tradehandler.h"
 #include "net/tmwa/skillhandler.h"
@@ -115,7 +116,8 @@ GeneralHandler::GeneralHandler() :
     mFriendsHandler(new FriendsHandler),
     mElementalHandler(new ElementalHandler),
     mMarketHandler(new MarketHandler),
-    mVendingHandler(new VendingHandler)
+    mVendingHandler(new VendingHandler),
+    mSearchStoreHandler(new SearchStoreHandler)
 {
     static const uint16_t _messages[] =
     {
@@ -243,6 +245,7 @@ void GeneralHandler::load()
     mNetwork->registerHandler(mElementalHandler);
     mNetwork->registerHandler(mMarketHandler);
     mNetwork->registerHandler(mVendingHandler);
+    mNetwork->registerHandler(mSearchStoreHandler);
 }
 
 void GeneralHandler::reload()

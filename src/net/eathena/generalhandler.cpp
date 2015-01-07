@@ -65,6 +65,7 @@
 #include "net/eathena/pethandler.h"
 #include "net/eathena/playerhandler.h"
 #include "net/eathena/protocol.h"
+#include "net/eathena/searchstorehandler.h"
 #include "net/eathena/serverfeatures.h"
 #include "net/eathena/tradehandler.h"
 #include "net/eathena/skillhandler.h"
@@ -117,7 +118,8 @@ GeneralHandler::GeneralHandler() :
     mFriendsHandler(new FriendsHandler),
     mElementalHandler(new ElementalHandler),
     mMarketHandler(new MarketHandler),
-    mVendingHandler(new VendingHandler)
+    mVendingHandler(new VendingHandler),
+    mSearchStoreHandler(new SearchStoreHandler)
 {
     static const uint16_t _messages[] =
     {
@@ -307,6 +309,7 @@ void GeneralHandler::load()
     mNetwork->registerHandler(mElementalHandler);
     mNetwork->registerHandler(mMarketHandler);
     mNetwork->registerHandler(mVendingHandler);
+    mNetwork->registerHandler(mSearchStoreHandler);
 }
 
 void GeneralHandler::reload()

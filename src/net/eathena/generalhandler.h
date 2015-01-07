@@ -95,6 +95,7 @@ class GeneralHandler final : public MessageHandler,
         MessageHandlerPtr mElementalHandler;
         MessageHandlerPtr mMarketHandler;
         MessageHandlerPtr mVendingHandler;
+        MessageHandlerPtr mSearchStoreHandler;
 };
 
 }  // namespace EAthena

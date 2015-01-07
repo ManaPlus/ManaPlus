@@ -65,6 +65,7 @@ namespace Net
     class PetHandler;
     class PlayerHandler;
     class QuestHandler;
+    class SearchStoreHandler;
     class ServerFeatures;
     class SkillHandler;
     class TradeHandler;
@@ -101,6 +102,7 @@ Net::FriendsHandler *friendsHandler = nullptr;
 Net::ElementalHandler *elementalHandler = nullptr;
 Net::MarketHandler *marketHandler = nullptr;
 Net::VendingHandler *vendingHandler = nullptr;
+Net::SearchStoreHandler *searchStoreHandler = nullptr;
 
 namespace Net
 {

@@ -702,6 +702,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      net/registrationoptions.h \
 	      net/sdltcpnet.cpp \
 	      net/sdltcpnet.h \
+	      net/searchstorehandler.h \
 	      net/serverfeatures.h \
 	      net/serverinfo.h \
 	      net/skillhandler.h \
@@ -1319,6 +1320,8 @@ manaplus_SOURCES += \
 	      net/tmwa/protocol.h \
 	      net/tmwa/questhandler.cpp \
 	      net/tmwa/questhandler.h \
+	      net/tmwa/searchstorehandler.cpp \
+	      net/tmwa/searchstorehandler.h \
 	      net/tmwa/serverfeatures.cpp \
 	      net/tmwa/serverfeatures.h \
 	      net/tmwa/skillhandler.cpp \
@@ -1401,6 +1404,8 @@ manaplus_SOURCES += net/eathena/adminhandler.cpp \
 	      net/eathena/protocol.h \
 	      net/eathena/questhandler.cpp \
 	      net/eathena/questhandler.h \
+	      net/eathena/searchstorehandler.cpp \
+	      net/eathena/searchstorehandler.h \
 	      net/eathena/serverfeatures.cpp \
 	      net/eathena/serverfeatures.h \
 	      net/eathena/skillhandler.cpp \
