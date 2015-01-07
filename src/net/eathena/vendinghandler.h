@@ -41,6 +41,10 @@ class VendingHandler final : public MessageHandler,
 
         void open(const Being *const being) const override final;
 
+        void buy(const Being *const being,
+                 const int index,
+                 const int amount) const override final;
+
     protected:
         static void processOpenReq(Net::MessageIn &msg);
 

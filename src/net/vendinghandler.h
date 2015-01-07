@@ -39,6 +39,10 @@ class VendingHandler notfinal
         virtual void close() const = 0;
 
         virtual void open(const Being *const being) const = 0;
+
+        virtual void buy(const Being *const being,
+                         const int index,
+                         const int amount) const = 0;
 };
 
 }  // namespace Net

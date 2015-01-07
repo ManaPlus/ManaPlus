@@ -50,4 +50,10 @@ void VendingHandler::open(const Being *const being A_UNUSED) const
 {
 }
 
+void VendingHandler::buy(const Being *const being A_UNUSED,
+                         const int index A_UNUSED,
+                         const int amount A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena
