@@ -36,6 +36,9 @@ class VendingHandler final : public MessageHandler,
         A_DELETE_COPY(VendingHandler)
 
         void handleMessage(Net::MessageIn &msg) override final;
+
+    protected:
+        static void processOpenReq(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

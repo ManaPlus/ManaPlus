@@ -34,6 +34,7 @@ VendingHandler::VendingHandler() :
 {
     static const uint16_t _messages[] =
     {
+        SMSG_VENDING_OPEN_REQ,
         0
     };
     handledMessages = _messages;
@@ -44,9 +45,18 @@ void VendingHandler::handleMessage(Net::MessageIn &msg)
 {
     switch (msg.getId())
     {
+        case SMSG_VENDING_OPEN_REQ:
+            processOpenReq(msg);
+            break;
+
         default:
             break;
     }
+}
+
+void VendingHandler::processOpenReq(Net::MessageIn &msg)
+{
+    msg.readInt16("slots allowed");
 }
 
 }  // namespace EAthena

@@ -306,6 +306,8 @@
 #define SMSG_AUCTION_MESSAGE         0x0250
 #define SMSG_AUCTION_CLOSE           0x025d
 
+#define SMSG_VENDING_OPEN_REQ        0x012d
+
 #define SMSG_ELEMENTAL_UPDATE_STATUS 0x081e
 #define SMSG_ELEMENTAL_INFO          0x081d
 
