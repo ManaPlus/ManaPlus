@@ -74,6 +74,10 @@ void VendingHandler::handleMessage(Net::MessageIn &msg)
             processOpen(msg);
             break;
 
+        case SMSG_VENDING_REPORT:
+            processReport(msg);
+            break;
+
         default:
             break;
     }
@@ -139,6 +143,12 @@ void VendingHandler::processOpen(Net::MessageIn &msg)
         for (int d = 0; d < 4; d ++)
             msg.readInt16("card");
     }
+}
+
+void VendingHandler::processReport(Net::MessageIn &msg)
+{
+    msg.readInt16("inv index");
+    msg.readInt16("amount");
 }
 
 }  // namespace EAthena
