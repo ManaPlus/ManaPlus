@@ -39,6 +39,7 @@ VendingHandler::VendingHandler() :
         SMSG_VENDING_HIDE_BOARD,
         SMSG_VENDING_ITEMS_LIST,
         SMSG_VENDING_BUY_ACK,
+        SMSG_VENDING_OPEN,
         0
     };
     handledMessages = _messages;
@@ -67,6 +68,10 @@ void VendingHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_VENDING_BUY_ACK:
             processBuyAck(msg);
+            break;
+
+        case SMSG_VENDING_OPEN:
+            processOpen(msg);
             break;
 
         default:
@@ -105,6 +110,8 @@ void VendingHandler::processItemsList(Net::MessageIn &msg)
         msg.readUInt8("identify");
         msg.readUInt8("attribute");
         msg.readUInt8("refine");
+        for (int d = 0; d < 4; d ++)
+            msg.readInt16("card");
     }
 }
 
@@ -113,6 +120,25 @@ void VendingHandler::processBuyAck(Net::MessageIn &msg)
     msg.readInt16("inv index");
     msg.readInt16("amount");
     msg.readUInt8("flag");
+}
+
+void VendingHandler::processOpen(Net::MessageIn &msg)
+{
+    const int count = (msg.readInt16("len") - 8) / 22;
+    msg.readInt32("id");
+    for (int f = 0; f < count; f ++)
+    {
+        msg.readInt32("price");
+        msg.readInt16("inv index");
+        msg.readInt16("amount");
+        msg.readUInt8("item type");
+        msg.readInt16("item id");
+        msg.readUInt8("identify");
+        msg.readUInt8("attribute");
+        msg.readUInt8("refine");
+        for (int d = 0; d < 4; d ++)
+            msg.readInt16("card");
+    }
 }
 
 }  // namespace EAthena
