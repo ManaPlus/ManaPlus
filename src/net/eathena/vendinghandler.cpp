@@ -37,6 +37,7 @@ VendingHandler::VendingHandler() :
         SMSG_VENDING_OPEN_REQ,
         SMSG_VENDING_SHOW_BOARD,
         SMSG_VENDING_HIDE_BOARD,
+        SMSG_VENDING_ITEMS_LIST,
         0
     };
     handledMessages = _messages;
@@ -59,6 +60,10 @@ void VendingHandler::handleMessage(Net::MessageIn &msg)
             processHideBoard(msg);
             break;
 
+        case SMSG_VENDING_ITEMS_LIST:
+            processItemsList(msg);
+            break;
+
         default:
             break;
     }
@@ -78,6 +83,24 @@ void VendingHandler::processShowBoard(Net::MessageIn &msg)
 void VendingHandler::processHideBoard(Net::MessageIn &msg)
 {
     msg.readInt32("owner id");
+}
+
+void VendingHandler::processItemsList(Net::MessageIn &msg)
+{
+    const int count = (msg.readInt16("len") - 12) / 22;
+    msg.readInt32("id");
+    msg.readInt32("vender id");
+    for (int f = 0; f < count; f ++)
+    {
+        msg.readInt32("price");
+        msg.readInt16("amount");
+        msg.readInt16("inv index");
+        msg.readUInt8("item type");
+        msg.readInt16("item id");
+        msg.readUInt8("identify");
+        msg.readUInt8("attribute");
+        msg.readUInt8("refine");
+    }
 }
 
 }  // namespace EAthena
