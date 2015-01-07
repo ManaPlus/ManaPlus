@@ -39,6 +39,8 @@ class VendingHandler final : public MessageHandler,
         void handleMessage(Net::MessageIn &msg) override final;
 
         void close() const override final;
+
+        void open(const Being *const being) const override final;
 };
 
 }  // namespace TmwAthena

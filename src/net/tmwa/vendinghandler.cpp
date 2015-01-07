@@ -46,4 +46,8 @@ void VendingHandler::close() const
 {
 }
 
+void VendingHandler::open(const Being *const being A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

@@ -25,6 +25,8 @@
 
 #include "localconsts.h"
 
+class Being;
+
 namespace Net
 {
 
@@ -35,6 +37,8 @@ class VendingHandler notfinal
         { }
 
         virtual void close() const = 0;
+
+        virtual void open(const Being *const being) const = 0;
 };
 
 }  // namespace Net

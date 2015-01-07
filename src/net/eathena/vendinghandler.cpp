@@ -20,6 +20,8 @@
 
 #include "net/eathena/vendinghandler.h"
 
+#include "being/being.h"
+
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
@@ -155,6 +157,15 @@ void VendingHandler::processReport(Net::MessageIn &msg)
 void VendingHandler::close() const
 {
     createOutPacket(CMSG_VENDING_CLOSE);
+}
+
+void VendingHandler::open(const Being *const being) const
+{
+    if (!being)
+        return;
+
+    createOutPacket(CMSG_VENDING_LIST_REQ);
+    outMsg.writeInt32(being->getId(), "account id");
 }
 
 }  // namespace EAthena

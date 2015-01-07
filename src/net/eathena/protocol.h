@@ -534,5 +534,6 @@
 #define CMSG_AUCTION_BUY_SELL        0x025c
 
 #define CMSG_VENDING_CLOSE           0x012e
+#define CMSG_VENDING_LIST_REQ        0x0130
 
 #endif  // NET_EATHENA_PROTOCOL_H
