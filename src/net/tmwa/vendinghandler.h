@@ -45,6 +45,11 @@ class VendingHandler final : public MessageHandler,
         void buy(const Being *const being,
                  const int index,
                  const int amount) const override final;
+
+        void buy2(const Being *const being,
+                  const int vendId,
+                  const int index,
+                  const int amount) const override final;
 };
 
 }  // namespace TmwAthena

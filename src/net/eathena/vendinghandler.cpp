@@ -182,4 +182,20 @@ void VendingHandler::buy(const Being *const being,
     outMsg.writeInt16(index, "index");
 }
 
+void VendingHandler::buy2(const Being *const being,
+                          const int vendId,
+                          const int index,
+                          const int amount) const
+{
+    if (!being)
+        return;
+
+    createOutPacket(CMSG_VENDING_BUY2);
+    outMsg.writeInt16(16, "len");
+    outMsg.writeInt32(being->getId(), "account id");
+    outMsg.writeInt32(vendId, "vend id");
+    outMsg.writeInt16(amount, "amount");
+    outMsg.writeInt16(index, "index");
+}
+
 }  // namespace EAthena

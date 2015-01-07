@@ -43,6 +43,11 @@ class VendingHandler notfinal
         virtual void buy(const Being *const being,
                          const int index,
                          const int amount) const = 0;
+
+        virtual void buy2(const Being *const being,
+                          const int vendId,
+                          const int index,
+                          const int amount) const = 0;
 };
 
 }  // namespace Net
