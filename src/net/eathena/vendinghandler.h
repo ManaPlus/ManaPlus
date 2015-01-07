@@ -39,6 +39,8 @@ class VendingHandler final : public MessageHandler,
 
     protected:
         static void processOpenReq(Net::MessageIn &msg);
+
+        static void processShowBoard(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
