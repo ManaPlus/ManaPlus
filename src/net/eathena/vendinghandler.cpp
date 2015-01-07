@@ -20,6 +20,7 @@
 
 #include "net/eathena/vendinghandler.h"
 
+#include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
 #include "debug.h"
@@ -149,6 +150,11 @@ void VendingHandler::processReport(Net::MessageIn &msg)
 {
     msg.readInt16("inv index");
     msg.readInt16("amount");
+}
+
+void VendingHandler::close() const
+{
+    createOutPacket(CMSG_VENDING_CLOSE);
 }
 
 }  // namespace EAthena

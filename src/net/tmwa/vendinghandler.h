@@ -37,6 +37,8 @@ class VendingHandler final : public MessageHandler,
         A_DELETE_COPY(VendingHandler)
 
         void handleMessage(Net::MessageIn &msg) override final;
+
+        void close() const override final;
 };
 
 }  // namespace TmwAthena

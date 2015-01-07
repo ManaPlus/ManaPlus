@@ -42,4 +42,8 @@ void VendingHandler::handleMessage(Net::MessageIn &msg A_UNUSED)
 {
 }
 
+void VendingHandler::close() const
+{
+}
+
 }  // namespace TmwAthena

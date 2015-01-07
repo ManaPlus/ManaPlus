@@ -37,6 +37,8 @@ class VendingHandler final : public MessageHandler,
 
         void handleMessage(Net::MessageIn &msg) override final;
 
+        void close() const override final;
+
     protected:
         static void processOpenReq(Net::MessageIn &msg);
 

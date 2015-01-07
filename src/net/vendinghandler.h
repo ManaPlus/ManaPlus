@@ -33,6 +33,8 @@ class VendingHandler notfinal
     public:
         virtual ~VendingHandler()
         { }
+
+        virtual void close() const = 0;
 };
 
 }  // namespace Net
