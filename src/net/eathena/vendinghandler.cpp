@@ -38,6 +38,7 @@ VendingHandler::VendingHandler() :
         SMSG_VENDING_SHOW_BOARD,
         SMSG_VENDING_HIDE_BOARD,
         SMSG_VENDING_ITEMS_LIST,
+        SMSG_VENDING_BUY_ACK,
         0
     };
     handledMessages = _messages;
@@ -62,6 +63,10 @@ void VendingHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_VENDING_ITEMS_LIST:
             processItemsList(msg);
+            break;
+
+        case SMSG_VENDING_BUY_ACK:
+            processBuyAck(msg);
             break;
 
         default:
@@ -101,6 +106,13 @@ void VendingHandler::processItemsList(Net::MessageIn &msg)
         msg.readUInt8("attribute");
         msg.readUInt8("refine");
     }
+}
+
+void VendingHandler::processBuyAck(Net::MessageIn &msg)
+{
+    msg.readInt16("inv index");
+    msg.readInt16("amount");
+    msg.readUInt8("flag");
 }
 
 }  // namespace EAthena

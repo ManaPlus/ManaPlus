@@ -45,6 +45,8 @@ class VendingHandler final : public MessageHandler,
         static void processHideBoard(Net::MessageIn &msg);
 
         static void processItemsList(Net::MessageIn &msg);
+
+        static void processBuyAck(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
