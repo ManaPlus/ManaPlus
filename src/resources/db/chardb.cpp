@@ -38,6 +38,8 @@ namespace
     unsigned mSumStat = 0;
     unsigned mMinLook = 0;
     unsigned mMaxLook = 0;
+    unsigned mMinRace = 0;
+    unsigned mMaxRace = 30;
     std::vector<int> mDefaultItems;
 }  // namespace
 
@@ -82,6 +84,10 @@ void CharDB::load()
             const int id = XML::getProperty(node, "id", 0);
             if (id > 0)
                 mDefaultItems.push_back(id);
+        }
+        else if (xmlNameEqual(node, "race"))
+        {
+            loadMinMax(node, &mMinRace, &mMaxRace);
         }
     }
 
@@ -148,6 +154,16 @@ unsigned CharDB::getMinLook()
 unsigned CharDB::getMaxLook()
 {
     return mMaxLook;
+}
+
+unsigned CharDB::getMinRace()
+{
+    return mMinRace;
+}
+
+unsigned CharDB::getMaxRace()
+{
+    return mMaxRace;
 }
 
 const std::vector<int> &CharDB::getDefaultItems()

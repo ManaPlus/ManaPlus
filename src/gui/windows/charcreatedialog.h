@@ -148,6 +148,8 @@ class CharCreateDialog final : public Window,
         int mLook;
         int mMinLook;
         int mMaxLook;
+        int mMinRace;
+        int mMaxRace;
 
         int mHairStyle;
         int mHairColor;

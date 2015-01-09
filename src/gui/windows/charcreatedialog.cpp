@@ -130,10 +130,12 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     mGenderStrip(nullptr),
     mMaxPoints(0),
     mUsedPoints(0),
-    mRace(0),
+    mRace(CharDB::getMinRace()),
     mLook(0),
     mMinLook(CharDB::getMinLook()),
     mMaxLook(CharDB::getMaxLook()),
+    mMinRace(CharDB::getMinRace()),
+    mMaxRace(CharDB::getMaxRace()),
     mHairStyle(0),
     mHairColor(0),
     mSlot(slot),
@@ -619,10 +621,10 @@ void CharCreateDialog::updateHair()
 
 void CharCreateDialog::updateRace()
 {
-    if (mRace < 0)
-        mRace = Being::getNumOfRaces() - 1;
-    else if (mRace >= Being::getNumOfRaces())
-        mRace = 0;
+    if (mRace < mMinRace)
+        mRace = mMaxRace;
+    else if (mRace > mMaxRace)
+        mRace = mMinRace;
 
     updateLook();
 }

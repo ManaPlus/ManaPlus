@@ -63,6 +63,10 @@ namespace CharDB
 
     unsigned getMaxLook() A_WARN_UNUSED;
 
+    unsigned getMinRace() A_WARN_UNUSED;
+
+    unsigned getMaxRace() A_WARN_UNUSED;
+
     const std::vector<int> &getDefaultItems() A_WARN_UNUSED;
 }  // namespace CharDB
 
