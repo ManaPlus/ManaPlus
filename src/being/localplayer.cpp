@@ -57,6 +57,7 @@
 #include "gui/windows/outfitwindow.h"
 #include "gui/windows/shopwindow.h"
 #include "gui/windows/socialwindow.h"
+#include "gui/windows/statuswindow.h"
 #include "gui/windows/updaterwindow.h"
 
 #include "gui/widgets/tabs/chat/gmtab.h"
@@ -401,6 +402,8 @@ void LocalPlayer::setGMLevel(const int level)
     if (level > 0)
     {
         setGM(true);
+        if (statusWindow)
+            statusWindow->updateLevelLabel();
         if (chatWindow)
         {
             chatWindow->loadGMCommands();

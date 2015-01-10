@@ -93,6 +93,8 @@ class StatusWindow final : public Window,
                          const int oldVal1,
                          const int oldVal2) override final;
 
+        void updateLevelLabel();
+
     private:
         static std::string translateLetter(const char *const letters);
         static std::string translateLetter2(const std::string &letters);

@@ -240,6 +240,11 @@ StatusWindow::StatusWindow() :
         PlayerInfo::getAttribute(Attributes::CHAR_POINTS)));
     mCharacterPointsLabel->adjustSize();
 
+    updateLevelLabel();
+}
+
+void StatusWindow::updateLevelLabel()
+{
     if (localPlayer && localPlayer->isGM())
     {
         // TRANSLATORS: status window label

@@ -112,6 +112,7 @@ BeingHandler::BeingHandler(const bool enableSync) :
         SMSG_BEING_STAT_UPDATE_1,
         SMSG_MOB_INFO,
         SMSG_BEING_MOVE3,
+        SMSG_BEING_ATTRS,
         0
     };
     handledMessages = _messages;
@@ -299,6 +300,10 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_BEING_MOVE3:
             processBeingMove3(msg);
+            break;
+
+        case SMSG_BEING_ATTRS:
+            processBeingAttrs(msg);
             break;
 
         default:
@@ -1544,6 +1549,28 @@ void BeingHandler::processMobInfo(Net::MessageIn &msg)
     const int attackRange = msg.readInt32("range");
     if (dstBeing)
         dstBeing->setAttackRange(attackRange);
+}
+
+void BeingHandler::processBeingAttrs(Net::MessageIn &msg)
+{
+    const int len = msg.readInt16("len");
+    if (len < 12)
+        return;
+    Being *const dstBeing = actorManager->findBeing(
+        msg.readInt32("player id"));
+    const int gmLevel = msg.readInt32("gm level");
+    if (dstBeing && gmLevel)
+    {
+        if (dstBeing == localPlayer)
+            localPlayer->setGMLevel(gmLevel);
+        dstBeing->setGM(true);
+    }
+    else
+    {
+        if (dstBeing == localPlayer)
+            localPlayer->setGMLevel(0);
+        dstBeing->setGM(false);
+    }
 }
 
 }  // namespace EAthena
