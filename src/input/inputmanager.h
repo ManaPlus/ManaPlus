@@ -30,7 +30,6 @@
 
 #include <list>
 #include <string>
-#include <map>
 
 #include <SDL_events.h>
 

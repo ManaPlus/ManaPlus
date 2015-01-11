@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_CHATMSGTYPE_H
-#define GUI_CHATMSGTYPE_H
+#ifndef ENUMS_GUI_CHATMSGTYPE_H
+#define ENUMS_GUI_CHATMSGTYPE_H
 
 namespace ChatMsgType
 {
@@ -39,4 +39,4 @@ namespace ChatMsgType
     };
 }  // namespace ChatMsgType
 
-#endif  // GUI_CHATMSGTYPE_H
+#endif  // ENUMS_GUI_CHATMSGTYPE_H

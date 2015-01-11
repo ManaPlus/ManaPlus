@@ -31,7 +31,7 @@ namespace AuctionSearchType
         Card      = 2,
         Misc      = 3,
         Name      = 4,
-        AuctionId = 5,
+        AuctionId = 5
     };
 }  // namespace AuctionSearchType
 

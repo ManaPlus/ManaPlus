@@ -525,7 +525,7 @@ void CharServerHandler::changeSlot(const int oldSlot A_UNUSED,
 {
 }
 
-void CharServerHandler::processCharDeleteFailed(Net::MessageIn &msg A_UNUSED)
+void CharServerHandler::processCharDeleteFailed(Net::MessageIn &msg)
 {
     BLOCK_START("CharServerHandler::processCharDeleteFailed")
     unlockCharSelectDialog();

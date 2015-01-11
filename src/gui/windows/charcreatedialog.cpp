@@ -35,7 +35,6 @@
 #include "gui/windows/charselectdialog.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/playerbox.h"
-#include "gui/widgets/radiobutton.h"
 #include "gui/widgets/slider.h"
 #include "gui/widgets/tabstrip.h"
 #include "gui/widgets/textfield.h"
@@ -216,7 +215,9 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     if (serverFeatures->haveCreateCharGender())
     {
         const int size = config.getIntValue("fontSize");
-        mGenderStrip = new TabStrip(this, "gender_" + getWindowName(), size + 16);
+        mGenderStrip = new TabStrip(this,
+            "gender_" + getWindowName(),
+            size + 16);
         mGenderStrip->setPressFirst(false);
         mGenderStrip->addActionListener(this);
         mGenderStrip->setActionEventId("gender_");

@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ENUMS_NET_PACKETLIMITER_H
-#define ENUMS_NET_PACKETLIMITER_H
+#ifndef ENUMS_NET_PACKETTYPES_H
+#define ENUMS_NET_PACKETTYPES_H
 
 enum PacketTypes
 {
@@ -39,4 +39,4 @@ enum PacketTypes
     PACKET_SIZE
 };
 
-#endif  // ENUMS_NET_PACKETLIMITER_H
+#endif  // ENUMS_NET_PACKETTYPES_H

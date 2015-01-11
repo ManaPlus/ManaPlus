@@ -127,7 +127,7 @@ void AuctionHandler::processAuctionClose(Net::MessageIn &msg)
 void AuctionHandler::cancelReg() const
 {
     createOutPacket(CMSG_AUCTION_CANCEL_REG);
-    outMsg.writeInt16(0, "type"); // unused
+    outMsg.writeInt16(0, "type");  // unused
 }
 
 void AuctionHandler::setItem(const Item *const item,
@@ -178,7 +178,7 @@ void AuctionHandler::search(const AuctionSearchType::Type type,
     outMsg.writeInt16(static_cast<int16_t>(type), "search type");
     outMsg.writeInt32(auctionId, "auction id");
     outMsg.writeString(text, 24, "search text");
-    outMsg.writeInt16(page, "page");
+    outMsg.writeInt16(static_cast<int16_t>(page), "page");
 }
 
 void AuctionHandler::buy() const

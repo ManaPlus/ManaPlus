@@ -285,7 +285,7 @@ void CharServerHandler::newCharacter(const std::string &name, const int slot,
         outMsg.writeInt16(static_cast<int16_t>(race), "race");
     if (serverFeatures->haveCreateCharGender())
     {
-        int sex = 0;
+        uint8_t sex = 0;
         if (gender == Gender::UNSPECIFIED)
             sex = 99;
         else
@@ -606,7 +606,7 @@ void CharServerHandler::processCharChangeSlot(Net::MessageIn &msg)
     msg.readInt16("unused");
 }
 
-void CharServerHandler::processCharDeleteFailed(Net::MessageIn &msg A_UNUSED)
+void CharServerHandler::processCharDeleteFailed(Net::MessageIn &msg)
 {
     BLOCK_START("CharServerHandler::processCharDeleteFailed")
     unlockCharSelectDialog();

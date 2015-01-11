@@ -20,8 +20,6 @@
 
 #include "net/eathena/searchstorehandler.h"
 
-#include "net/eathena/protocol.h"
-
 #include "debug.h"
 
 extern Net::SearchStoreHandler *searchStoreHandler;

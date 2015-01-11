@@ -35,7 +35,6 @@ class Button;
 class CharSelectDialog;
 class Label;
 class PlayerBox;
-class RadioButton;
 class Slider;
 class TabStrip;
 class TextField;

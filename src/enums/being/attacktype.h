@@ -42,5 +42,6 @@ namespace AttackType
         TOUCH_SKILL   = 12,
         MISS = 0xffff   // pseudo value for miss attacks
     };
-}
+}  // namespace AttackType
+
 #endif  // ENUMS_BEING_ATTACKTYPE_H

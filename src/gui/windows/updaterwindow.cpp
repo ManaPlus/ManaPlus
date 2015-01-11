@@ -1045,7 +1045,8 @@ bool UpdaterWindow::validateFile(const std::string &filePath,
 unsigned long UpdaterWindow::getFileHash(const std::string &filePath)
 {
     int size = 0;
-    const char *const buf = static_cast<const char*>(PhysFs::loadFile(filePath, size));
+    const char *const buf = static_cast<const char*>(
+        PhysFs::loadFile(filePath, size));
     if (!buf)
         return 0;
     return Net::Download::adlerBuffer(buf, size);

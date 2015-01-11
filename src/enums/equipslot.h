@@ -53,7 +53,6 @@ namespace EquipSlot
         SHADOW_ACCESSORY2_SLOT = 21,
         VECTOREND
     };
-}
-
+}  // namespace EquipSlot
 
 #endif  // ENUMS_EQUIPSLOT_H
