@@ -533,6 +533,7 @@ namespace InputAction
         CHAT_LANG_TAB,
         CHAT_GM_TAB,
         CHAT_PARTY_TAB,
+        CHAT_GUILD_TAB,
         TOTAL
     };
 }  // namespace InputAction

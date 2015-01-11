@@ -3959,6 +3959,11 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputCondition::INGAME,
         "partytab|partychattab",
         false},
+    {"keyGuildTab",
+        defaultAction(&Actions::chatGuildTab),
+        InputCondition::INGAME,
+        "guildtab|guildchattab",
+        false},
 };
 
 #undef defaultAction

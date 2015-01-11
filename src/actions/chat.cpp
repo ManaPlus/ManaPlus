@@ -513,4 +513,11 @@ impHandler0(chatPartyTab)
     return true;
 }
 
+impHandler0(chatGuildTab)
+{
+    if (chatWindow)
+        chatWindow->selectTabByType(ChatTabType::GUILD);
+    return true;
+}
+
 }  // namespace Actions
