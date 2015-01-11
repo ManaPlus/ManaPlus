@@ -534,6 +534,7 @@ namespace InputAction
         CHAT_GM_TAB,
         CHAT_PARTY_TAB,
         CHAT_GUILD_TAB,
+        DROP_CLEAR,
         TOTAL
     };
 }  // namespace InputAction

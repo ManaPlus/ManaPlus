@@ -102,6 +102,7 @@ namespace Actions
     decHandler(protectItem);
     decHandler(unprotectItem);
     decHandler(kick);
+    decHandler(clearDrop);
 }  // namespace Actions
 
 #undef decHandler

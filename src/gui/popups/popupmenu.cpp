@@ -1018,11 +1018,6 @@ void PopupMenu::handleLink(const std::string &link,
         mDialog->setActionEventId("ok");
         mDialog->addActionListener(&mRenameListener);
     }
-    else if (link == "clear drops")
-    {
-        if (dropShortcut)
-            dropShortcut->clear();
-    }
     else if (link == "edit spell" && mSpell)
     {
         (new TextCommandEditor(mSpell))->postInit();
@@ -1862,7 +1857,7 @@ void PopupMenu::showDropPopup(const int x, const int y, Item *const item)
     }
     mBrowserBox->addRow("##3---");
     // TRANSLATORS: popup menu item
-    mBrowserBox->addRow("clear drops", _("Clear drop window"));
+    mBrowserBox->addRow("/cleardrops", _("Clear drop window"));
     mBrowserBox->addRow("##3---");
     // TRANSLATORS: popup menu item
     // TRANSLATORS: close menu

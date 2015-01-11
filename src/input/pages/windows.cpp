@@ -236,6 +236,12 @@ SetupActionData setupActionDataWindows[] =
         "",
     },
     {
+        // TRANSLATORS: input action name
+        N_("Clear drops window"),
+        InputAction::DROP_CLEAR,
+        "",
+    },
+    {
         "",
         InputAction::NO_VALUE,
         ""

@@ -3964,6 +3964,11 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputCondition::INGAME,
         "guildtab|guildchattab",
         false},
+    {"keyDropClear",
+        defaultAction(&Actions::clearDrop),
+        InputCondition::INGAME,
+        "cleardrops|cleardrop|cleardropwindow|dropclear|dropsclear",
+        false},
 };
 
 #undef defaultAction

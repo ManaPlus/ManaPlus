@@ -1518,4 +1518,10 @@ impHandler(kick)
     return true;
 }
 
+impHandler0(clearDrop)
+{
+    if (dropShortcut)
+        dropShortcut->clear();
+}
+
 }  // namespace Actions
