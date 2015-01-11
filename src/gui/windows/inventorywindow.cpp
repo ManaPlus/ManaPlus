@@ -164,7 +164,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
     StringVect tags = ItemDB::getTags();
     const size_t sz = tags.size();
     for (size_t f = 0; f < sz; f ++)
-        mFilter->addButton(tags[f]);
+        mFilter->addButton(tags[f], tags[f], false);
 
     if (isMainInventory())
     {

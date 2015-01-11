@@ -35,12 +35,9 @@ class WidgetGroup notfinal : public Container,
     public:
         A_DELETE_COPY(WidgetGroup)
 
-        virtual void addButton(const std::string &tag,
-                               const bool pressed = false);
-
         virtual void addButton(const std::string &restrict text,
                                const std::string &restrict tag,
-                               const bool pressed = false);
+                               const bool pressed);
 
         void action(const ActionEvent &event) override;
 

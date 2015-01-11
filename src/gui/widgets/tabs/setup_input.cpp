@@ -108,7 +108,7 @@ Setup_Input::Setup_Input(const Widget2 *const widget) :
     int k = 0;
     while (pages[k])
     {
-        mTabs->addButton(gettext(pages[k]), pages[k]);
+        mTabs->addButton(gettext(pages[k]), pages[k], false);
         k ++;
     }
 
