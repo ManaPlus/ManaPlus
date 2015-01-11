@@ -464,4 +464,11 @@ impHandler0(clearChat)
     return true;
 }
 
+impHandler0(chatGeneralTab)
+{
+    if (chatWindow)
+        chatWindow->selectGeneralTab();
+    return true;
+}
+
 }  // namespace Actions

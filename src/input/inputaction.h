@@ -526,6 +526,7 @@ namespace InputAction
         PET_DIRECT_RIGHT,
         PET_AI_START,
         PET_AI_STOP,
+        CHAT_GENERAL_TAB,
         TOTAL
     };
 }  // namespace InputAction

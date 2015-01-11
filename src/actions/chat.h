@@ -49,6 +49,7 @@ namespace Actions
     decHandler(kickParty);
     decHandler(addText);
     decHandler(clearChat);
+    decHandler(chatGeneralTab);
 }  // namespace Actions
 
 #undef decHandler

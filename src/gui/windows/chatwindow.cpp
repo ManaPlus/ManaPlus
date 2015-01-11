@@ -374,6 +374,24 @@ void ChatWindow::nextTab()
     mChatTabs->setSelectedTabByIndex(tab);
 }
 
+void ChatWindow::selectGeneralTab()
+{
+    if (!mChatTabs)
+        return;
+
+    int sz = mChatTabs->getNumberOfTabs();
+    for (int f = 0; f < sz; f ++)
+    {
+        ChatTab *const tab = dynamic_cast<ChatTab*>(
+            mChatTabs->getTabByIndex(f));
+        if (tab && tab->getType() == ChatTabType::INPUT)
+        {
+            mChatTabs->setSelectedTab(tab);
+            break;
+        }
+    }
+}
+
 void ChatWindow::closeTab() const
 {
     if (!mChatTabs)

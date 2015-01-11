@@ -285,6 +285,8 @@ class ChatWindow final : public Window,
 
         bool isTabPresent(const ChatTab *const tab) const A_WARN_UNUSED;
 
+        void selectGeneralTab();
+
         void attributeChanged(const int id,
                               const int oldVal,
                               const int newVal) override final;

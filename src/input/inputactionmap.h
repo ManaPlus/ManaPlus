@@ -3924,6 +3924,11 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputCondition::INGAME,
         "petaistop|stoppetai|disablepetai|petaidisable",
         false},
+    {"keyGeneralTab",
+        defaultAction(&Actions::chatGeneralTab),
+        InputCondition::INGAME,
+        "generaltab|generalchattab|general",
+        false},
 };
 
 #undef defaultAction
