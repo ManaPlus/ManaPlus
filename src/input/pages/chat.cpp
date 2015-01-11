@@ -29,9 +29,21 @@
 SetupActionData setupActionDataChat[] =
 {
     {
+        // TRANSLATORS: input action group
+        N_("Main"),
+        InputAction::NO_VALUE,
+        "",
+    },
+    {
         // TRANSLATORS: input action name
         N_("Toggle Chat"),
         InputAction::TOGGLE_CHAT,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        N_("Chat modifier key"),
+        InputAction::CHAT_MOD,
         "",
     },
     {
@@ -44,6 +56,12 @@ SetupActionData setupActionDataChat[] =
         // TRANSLATORS: input action name
         N_("Scroll Chat Down"),
         InputAction::SCROLL_CHAT_DOWN,
+        "",
+    },
+    {
+        // TRANSLATORS: input action group
+        N_("Tabs"),
+        InputAction::NO_VALUE,
         "",
     },
     {
@@ -78,6 +96,60 @@ SetupActionData setupActionDataChat[] =
     },
     {
         // TRANSLATORS: input action name
+        N_("Select general tab"),
+        InputAction::CHAT_GENERAL_TAB,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        N_("Select debug tab"),
+        InputAction::CHAT_DEBUG_TAB,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        N_("Select trade tab"),
+        InputAction::CHAT_TRADE_TAB,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        N_("Select battle tab"),
+        InputAction::CHAT_BATTLE_TAB,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        N_("Select gm tab"),
+        InputAction::CHAT_GM_TAB,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        N_("Select lang tab"),
+        InputAction::CHAT_LANG_TAB,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        N_("Select party tab"),
+        InputAction::CHAT_PARTY_TAB,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        N_("Select guild tab"),
+        InputAction::CHAT_GUILD_TAB,
+        "",
+    },
+    {
+        // TRANSLATORS: input action group
+        N_("Other"),
+        InputAction::NO_VALUE,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
         N_("Ignore all whispers"),
         InputAction::IGNORE_ALL_WHISPERS,
         "",
@@ -107,9 +179,9 @@ SetupActionData setupActionDataChat[] =
         "",
     },
     {
-        // TRANSLATORS: input action name
-        N_("Chat modifier key"),
-        InputAction::CHAT_MOD,
+        // TRANSLATORS: input action group
+        N_("Smiles"),
+        InputAction::NO_VALUE,
         "",
     },
     {
