@@ -478,4 +478,11 @@ impHandler0(chatDebugTab)
     return true;
 }
 
+impHandler0(chatBattleTab)
+{
+    if (chatWindow)
+        chatWindow->selectTabByType(ChatTabType::BATTLE);
+    return true;
+}
+
 }  // namespace Actions

@@ -528,6 +528,7 @@ namespace InputAction
         PET_AI_STOP,
         CHAT_GENERAL_TAB,
         CHAT_DEBUG_TAB,
+        CHAT_BATTLE_TAB,
         TOTAL
     };
 }  // namespace InputAction

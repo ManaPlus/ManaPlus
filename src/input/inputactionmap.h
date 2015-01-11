@@ -3934,6 +3934,11 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputCondition::INGAME,
         "debugtab|debugchattab",
         false},
+    {"keyBattleTab",
+        defaultAction(&Actions::chatBattleTab),
+        InputCondition::INGAME,
+        "battletab|battlechattab",
+        false},
 };
 
 #undef defaultAction
