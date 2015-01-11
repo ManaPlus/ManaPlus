@@ -532,6 +532,7 @@ namespace InputAction
         CHAT_TRADE_TAB,
         CHAT_LANG_TAB,
         CHAT_GM_TAB,
+        CHAT_PARTY_TAB,
         TOTAL
     };
 }  // namespace InputAction
