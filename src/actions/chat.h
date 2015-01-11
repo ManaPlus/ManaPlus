@@ -50,6 +50,7 @@ namespace Actions
     decHandler(addText);
     decHandler(clearChat);
     decHandler(chatGeneralTab);
+    decHandler(chatDebugTab);
 }  // namespace Actions
 
 #undef decHandler

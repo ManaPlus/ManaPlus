@@ -467,7 +467,14 @@ impHandler0(clearChat)
 impHandler0(chatGeneralTab)
 {
     if (chatWindow)
-        chatWindow->selectGeneralTab();
+        chatWindow->selectTabByType(ChatTabType::INPUT);
+    return true;
+}
+
+impHandler0(chatDebugTab)
+{
+    if (chatWindow)
+        chatWindow->selectTabByType(ChatTabType::DEBUG);
     return true;
 }
 

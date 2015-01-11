@@ -29,6 +29,8 @@
 
 #include "gui/widgets/window.h"
 
+#include "gui/widgets/tabs/chat/chattabtype.h"
+
 #include "listeners/actionlistener.h"
 #include "listeners/attributelistener.h"
 #include "listeners/configlistener.h"
@@ -285,7 +287,7 @@ class ChatWindow final : public Window,
 
         bool isTabPresent(const ChatTab *const tab) const A_WARN_UNUSED;
 
-        void selectGeneralTab();
+        void selectTabByType(const ChatTabType::Type &type);
 
         void attributeChanged(const int id,
                               const int oldVal,
