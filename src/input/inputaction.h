@@ -531,6 +531,7 @@ namespace InputAction
         CHAT_BATTLE_TAB,
         CHAT_TRADE_TAB,
         CHAT_LANG_TAB,
+        CHAT_GM_TAB,
         TOTAL
     };
 }  // namespace InputAction

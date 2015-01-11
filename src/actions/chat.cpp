@@ -499,4 +499,11 @@ impHandler0(chatLangTab)
     return true;
 }
 
+impHandler0(chatGmTab)
+{
+    if (chatWindow)
+        chatWindow->selectTabByType(ChatTabType::GM);
+    return true;
+}
+
 }  // namespace Actions
