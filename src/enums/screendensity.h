@@ -21,8 +21,6 @@
 #ifndef ENUMS_SCREENDENSITY_H
 #define ENUMS_SCREENDENSITY_H
 
-#ifdef USE_OPENGL
-
 enum ScreenDensity
 {
     DENSITY_UNKNOWN = -1,
@@ -34,5 +32,4 @@ enum ScreenDensity
     DENSITY_XXHIGH = 5
 };
 
-#endif  // USE_OPENGL
 #endif  // ENUMS_SCREENDENSITY_H
