@@ -3939,6 +3939,11 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputCondition::INGAME,
         "battletab|battlechattab",
         false},
+    {"keyTradeTab",
+        defaultAction(&Actions::chatTradeTab),
+        InputCondition::INGAME,
+        "tradetab|tradechattab",
+        false},
 };
 
 #undef defaultAction

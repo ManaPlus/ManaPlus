@@ -485,4 +485,11 @@ impHandler0(chatBattleTab)
     return true;
 }
 
+impHandler0(chatTradeTab)
+{
+    if (chatWindow)
+        chatWindow->selectTabByType(ChatTabType::TRADE);
+    return true;
+}
+
 }  // namespace Actions
