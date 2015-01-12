@@ -1121,7 +1121,7 @@ SET(SRCS
     gui/models/listmodel.h
     gui/models/magicschoolmodel.h
     events/mouseevent.h
-    events/mousebutton.h
+    enums/events/mousebutton.h
     events/mouseeventtype.h
     listeners/mouselistener.h
     listeners/openurllistener.h

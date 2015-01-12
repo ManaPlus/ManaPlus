@@ -61,8 +61,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef EVENTS_MOUSEBUTTON_H
-#define EVENTS_MOUSEBUTTON_H
+#ifndef ENUMS_EVENTS_MOUSEBUTTON_H
+#define ENUMS_EVENTS_MOUSEBUTTON_H
 
 namespace MouseButton
 {
@@ -79,4 +79,4 @@ namespace MouseButton
     };
 }  // namespace MouseButton
 
-#endif  // EVENTS_MOUSEBUTTON_H
+#endif  // ENUMS_EVENTS_MOUSEBUTTON_H
