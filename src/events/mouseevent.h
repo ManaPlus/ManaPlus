@@ -67,7 +67,7 @@
 #include "events/inputguievent.h"
 
 #include "enums/events/mousebutton.h"
-#include "events/mouseeventtype.h"
+#include "enums/events/mouseeventtype.h"
 
 class Widget;
 

@@ -65,7 +65,7 @@
 #define INPUT_MOUSEINPUT_H
 
 #include "enums/events/mousebutton.h"
-#include "events/mouseeventtype.h"
+#include "enums/events/mouseeventtype.h"
 
 #include "localconsts.h"
 

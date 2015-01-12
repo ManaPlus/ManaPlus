@@ -61,8 +61,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef EVENTS_MOUSEEVENTTYPE_H
-#define EVENTS_MOUSEEVENTTYPE_H
+#ifndef ENUMS_EVENTS_MOUSEEVENTTYPE_H
+#define ENUMS_EVENTS_MOUSEEVENTTYPE_H
 
 namespace MouseEventType
 {
@@ -84,4 +84,4 @@ namespace MouseEventType
     };
 }  // namespace MouseEventType
 
-#endif  // EVENTS_MOUSEEVENTTYPE_H
+#endif  // ENUMS_EVENTS_MOUSEEVENTTYPE_H

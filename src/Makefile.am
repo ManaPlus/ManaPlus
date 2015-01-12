@@ -201,7 +201,7 @@ manaplus_SOURCES += events/actionevent.h \
 	      gui/models/magicschoolmodel.h \
 	      events/mouseevent.h \
 	      enums/events/mousebutton.h \
-	      events/mouseeventtype.h \
+	      enums/events/mouseeventtype.h \
 	      listeners/mouselistener.h \
 	      listeners/openurllistener.h \
 	      listeners/pincodelistener.cpp \
