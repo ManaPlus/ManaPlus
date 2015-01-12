@@ -64,7 +64,7 @@
 #ifndef INPUT_KEYINPUT_H
 #define INPUT_KEYINPUT_H
 
-#include "events/keyeventtype.h"
+#include "enums/events/keyeventtype.h"
 
 #include "input/key.h"
 

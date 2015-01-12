@@ -61,8 +61,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef EVENTS_KEYEVENTTYPE_H
-#define EVENTS_KEYEVENTTYPE_H
+#ifndef ENUMS_EVENTS_KEYEVENTTYPE_H
+#define ENUMS_EVENTS_KEYEVENTTYPE_H
 
 namespace KeyEventType
 {
@@ -76,4 +76,4 @@ namespace KeyEventType
     };
 }  // namespace KeyEventType
 
-#endif  // EVENTS_KEYEVENTTYPE_H
+#endif  // ENUMS_EVENTS_KEYEVENTTYPE_H
