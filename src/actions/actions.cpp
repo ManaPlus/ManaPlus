@@ -1522,6 +1522,7 @@ impHandler0(clearDrop)
 {
     if (dropShortcut)
         dropShortcut->clear();
+    return true;
 }
 
 }  // namespace Actions
