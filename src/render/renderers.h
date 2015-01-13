@@ -21,7 +21,7 @@
 #ifndef RENDER_RENDERERS_H
 #define RENDER_RENDERERS_H
 
-#include "render/rendertype.h"
+#include "enums/render/rendertype.h"
 
 RenderType intToRenderType(const int mode);
 

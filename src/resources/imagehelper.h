@@ -25,7 +25,7 @@
 
 #include "localconsts.h"
 
-#include "render/rendertype.h"
+#include "enums/render/rendertype.h"
 
 #include "resources/resource.h"
 

@@ -68,11 +68,11 @@
 
 #include "sdlshared.h"
 
+#include "enums/render/rendertype.h"
+
 #include "gui/color.h"
 
 #include "gui/cliprect.h"
-
-#include "render/rendertype.h"
 
 #include <SDL_video.h>
 

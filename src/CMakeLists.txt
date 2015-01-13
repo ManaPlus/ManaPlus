@@ -1001,7 +1001,7 @@ SET(SRCS
     render/renderers.h
     render/rendererslistsdl.h
     render/rendererslistsdl2.h
-    render/rendertype.h
+    enums/render/rendertype.h
     particle/particle.cpp
     particle/particle.h
     particle/particlecontainer.cpp

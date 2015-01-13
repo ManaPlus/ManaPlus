@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RENDER_RENDERTYPE_H
-#define RENDER_RENDERTYPE_H
+#ifndef ENUMS_RENDER_RENDERTYPE_H
+#define ENUMS_RENDER_RENDERTYPE_H
 
 enum RenderType
 {
@@ -33,4 +33,4 @@ enum RenderType
     RENDER_LAST
 };
 
-#endif  // RENDER_RENDERTYPE_H
+#endif  // ENUMS_RENDER_RENDERTYPE_H

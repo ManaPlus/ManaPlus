@@ -27,14 +27,14 @@
 
 #include "being/actor.h"
 
+#include "enums/render/rendertype.h"
+
 #include "resources/map/blockmask.h"
 #include "resources/map/blocktype.h"
 #include "resources/map/maptype.h"
 #include "resources/map/properties.h"
 
 #include "listeners/configlistener.h"
-
-#include "render/rendertype.h"
 
 #include <string>
 #include <vector>
