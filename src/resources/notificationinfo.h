@@ -23,7 +23,7 @@
 
 #include "localconsts.h"
 
-#include "resources/notifyflags.h"
+#include "enums/resources/notifyflags.h"
 
 struct NotificationInfo final
 {

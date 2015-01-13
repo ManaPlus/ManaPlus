@@ -663,7 +663,7 @@ SET(SRCS
     resources/modinfo.h
     resources/notificationinfo.h
     resources/notifications.h
-    resources/notifyflags.h
+    enums/resources/notifyflags.h
     resources/notifytypes.h
     resources/db/monsterdb.cpp
     resources/db/monsterdb.h

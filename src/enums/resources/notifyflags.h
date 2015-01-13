@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_NOTIFYFLAGS_H
-#define RESOURCES_NOTIFYFLAGS_H
+#ifndef ENUMS_RESOURCES_NOTIFYFLAGS_H
+#define ENUMS_RESOURCES_NOTIFYFLAGS_H
 
 #include "localconsts.h"
 
@@ -37,4 +37,4 @@ namespace NotifyFlags
         SPEECH
     };
 }  // namespace NotifyFlags
-#endif  // RESOURCES_NOTIFYFLAGS_H
+#endif  // ENUMS_RESOURCES_NOTIFYFLAGS_H
