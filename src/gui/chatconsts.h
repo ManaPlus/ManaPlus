@@ -26,6 +26,6 @@
 #include <string>
 
 const std::string GENERAL_CHANNEL = "";
-const std::string TRADE_CHANNEL = "";
+const std::string TRADE_CHANNEL = "#trade";
 
 #endif  // GUI_CHATCONSTS_H

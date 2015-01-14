@@ -194,7 +194,10 @@ void ChatHandler::privateMessage(const std::string &restrict recipient,
 void ChatHandler::channelMessage(const std::string &restrict channel,
                                  const std::string &restrict text)
 {
-    privateMessage(channel, text);
+    if (channel == TRADE_CHANNEL)
+        talk("\302\202" + text, GENERAL_CHANNEL);
+    else
+        privateMessage(channel, text);
 }
 
 void ChatHandler::who() const

@@ -26,6 +26,8 @@
 
 #include "being/localplayer.h"
 
+#include "gui/chatconsts.h"
+
 #include "gui/widgets/tabs/chat/chattab.h"
 
 #include "gui/windows/chatwindow.h"
@@ -163,9 +165,11 @@ void ChatHandler::privateMessage(const std::string &restrict recipient,
     mSentWhispers.push(recipient);
 }
 
-void ChatHandler::channelMessage(const std::string &restrict channel A_UNUSED,
-                                 const std::string &restrict text A_UNUSED)
+void ChatHandler::channelMessage(const std::string &restrict channel,
+                                 const std::string &restrict text)
 {
+    if (channel == TRADE_CHANNEL)
+        talk("\302\202" + text, GENERAL_CHANNEL);
 }
 
 void ChatHandler::who() const

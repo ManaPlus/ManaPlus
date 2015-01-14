@@ -481,7 +481,7 @@ void ShopWindow::announce(ShopItems *const list, const int mode)
     if (!list)
         return;
 
-    std::string data("\302\202");
+    std::string data;
     if (mode == BUY)
         data.append("Buy ");
     else
@@ -534,7 +534,7 @@ void ShopWindow::announce(ShopItems *const list, const int mode)
         }
     }
 
-    chatHandler->talk(data, GENERAL_CHANNEL);
+    chatHandler->channelMessage(TRADE_CHANNEL, data);
 }
 
 void ShopWindow::giveList(const std::string &nick, const int mode)

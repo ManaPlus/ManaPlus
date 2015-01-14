@@ -24,6 +24,10 @@
 
 #include "gui/chatconsts.h"
 
+#include "gui/windows/chatwindow.h"
+
+#include "net/chathandler.h"
+
 #include "utils/gettext.h"
 
 #include "debug.h"
@@ -42,6 +46,5 @@ TradeTab::~TradeTab()
 
 void TradeTab::handleInput(const std::string &msg)
 {
-    std::string str("\302\202" + msg);
-    ChatTab::handleInput(str);
+    chatHandler->channelMessage(mChannelName, ChatWindow::doReplace(msg));
 }
