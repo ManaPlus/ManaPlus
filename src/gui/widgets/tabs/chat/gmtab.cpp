@@ -20,6 +20,10 @@
 
 #include "gui/widgets/tabs/chat/gmtab.h"
 
+#include "gui/windows/chatwindow.h"
+
+#include "net/chathandler.h"
+
 #include "utils/gettext.h"
 
 #include "debug.h"
@@ -28,7 +32,7 @@ GmTab *gmChatTab = nullptr;
 
 GmTab::GmTab(const Widget2 *const widget) :
     // TRANSLATORS: gb tab name
-    ChatTab(widget, _("GM"), "", "#GM", ChatTabType::GM)
+    ChatTab(widget, _("GM"), "", "#gm", ChatTabType::GM)
 {
     setTabColors(Theme::GM_CHAT_TAB);
 }
@@ -39,7 +43,7 @@ GmTab::~GmTab()
 
 void GmTab::handleInput(const std::string &msg)
 {
-    ChatTab::handleInput("@wgm " + msg);
+    chatHandler->channelMessage(mChannelName, ChatWindow::doReplace(msg));
 }
 
 void GmTab::handleCommand(const std::string &msg A_UNUSED)

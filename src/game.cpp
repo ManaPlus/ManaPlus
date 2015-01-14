@@ -273,7 +273,7 @@ static void createGuiWindows()
     if (localPlayer && !gmChatTab && config.getBoolValue("enableGmTab")
         && localPlayer->getGMLevel() > 0)
     {
-        gmChatTab = new GmTab(chatWindow);
+        chatWindow->addSpecialChannelTab(GM_CHANNEL, false);
     }
 
     if (!isSafeMode && chatWindow)

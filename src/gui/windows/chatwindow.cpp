@@ -61,6 +61,7 @@
 
 #include "gui/widgets/tabs/chat/battletab.h"
 #include "gui/widgets/tabs/chat/channeltab.h"
+#include "gui/widgets/tabs/chat/gmtab.h"
 #include "gui/widgets/tabs/chat/langtab.h"
 #include "gui/widgets/tabs/chat/tradetab.h"
 #include "gui/widgets/tabs/chat/whispertab.h"
@@ -1206,6 +1207,12 @@ ChatTab *ChatWindow::addSpecialChannelTab(const std::string &name,
             tradeChatTab->setAllowHighlight(false);
         }
         ret = tradeChatTab;
+    }
+    else if (name == GM_CHANNEL)
+    {
+        if (!gmChatTab)
+            gmChatTab = new GmTab(chatWindow);
+        ret = gmChatTab;
     }
     if (switchTo)
         mChatTabs->setSelectedTab(ret);

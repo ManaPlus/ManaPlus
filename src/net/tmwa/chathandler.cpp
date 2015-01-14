@@ -170,6 +170,8 @@ void ChatHandler::channelMessage(const std::string &restrict channel,
 {
     if (channel == TRADE_CHANNEL)
         talk("\302\202" + text, GENERAL_CHANNEL);
+    else if (channel == GM_CHANNEL)
+        talk("@wgm " + text, GENERAL_CHANNEL);
 }
 
 void ChatHandler::who() const
