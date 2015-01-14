@@ -1194,11 +1194,34 @@ WhisperTab *ChatWindow::getWhisperTab(const std::string &nick) const
     return ret;
 }
 
-ChannelTab *ChatWindow::addChannelTab(const std::string &name,
-                                      const bool switchTo)
+ChatTab *ChatWindow::addSpecialChannelTab(const std::string &name,
+                                          const bool switchTo)
+{
+    ChatTab *ret = nullptr;
+    if (name == TRADE_CHANNEL)
+    {
+        if (!tradeChatTab)
+        {
+            tradeChatTab = new TradeTab(chatWindow);
+            tradeChatTab->setAllowHighlight(false);
+        }
+        ret = tradeChatTab;
+    }
+    if (switchTo)
+        mChatTabs->setSelectedTab(ret);
+
+    return ret;
+}
+
+ChatTab *ChatWindow::addChannelTab(const std::string &name,
+                                   const bool switchTo)
 {
     std::string tempName = name;
     toLower(tempName);
+
+    ChatTab *const tab = addSpecialChannelTab(name, switchTo);
+    if (tab)
+        return tab;
 
     const ChannelMap::const_iterator i = mChannels.find(tempName);
     ChannelTab *ret = nullptr;
@@ -1656,7 +1679,7 @@ void ChatWindow::channelChatLog(const std::string &channel,
     std::string tempChannel = channel;
     toLower(tempChannel);
 
-    ChannelTab *tab = nullptr;
+    ChatTab *tab = nullptr;
     const ChannelMap::const_iterator i = mChannels.find(tempChannel);
 
     if (i != mChannels.end())

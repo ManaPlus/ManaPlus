@@ -202,8 +202,11 @@ class ChatWindow final : public Window,
 
         WhisperTab *getWhisperTab(const std::string &nick) const A_WARN_UNUSED;
 
-        ChannelTab *addChannelTab(const std::string &name,
-                                  const bool switchTo = false);
+        ChatTab *addChannelTab(const std::string &name,
+                               const bool switchTo = false);
+
+        ChatTab *addSpecialChannelTab(const std::string &name,
+                                      const bool switchTo = false);
 
         ChatTab *addChatTab(const std::string &name,
                             const bool switchTo,

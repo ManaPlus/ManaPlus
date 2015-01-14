@@ -256,14 +256,9 @@ static void createGuiWindows()
     debugChatTab->setAllowHighlight(false);
 
     if (config.getBoolValue("enableTradeTab"))
-    {
-        tradeChatTab = new TradeTab(chatWindow);
-        tradeChatTab->setAllowHighlight(false);
-    }
+        chatWindow->addSpecialChannelTab(TRADE_CHANNEL, false);
     else
-    {
         tradeChatTab = nullptr;
-    }
 
     if (config.getBoolValue("enableBattleTab"))
     {
