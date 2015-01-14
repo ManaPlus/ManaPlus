@@ -1078,8 +1078,6 @@ int Client::gameExec()
 
                 case STATE_PRE_LOGIN:
                     logger->log1("State: PRE_LOGIN");
-//                    if (serverVersion < 5)
-//                        setState(STATE_LOGIN);
                     break;
 
                 case STATE_LOGIN:

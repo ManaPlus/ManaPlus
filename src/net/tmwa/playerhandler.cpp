@@ -273,38 +273,27 @@ void PlayerHandler::processOnlineList(Net::MessageIn &msg)
 
     const char *buf = start;
 
-    int addVal = 1;
-    if (serverVersion >= 4)
-        addVal = 3;
+    int addVal = 3;
 
     while (buf - start + 1 < size
            && *(buf + static_cast<size_t>(addVal)))
     {
-        unsigned char status = 255;
-        unsigned char ver = 0;
-        unsigned char level = 0;
-        if (serverVersion >= 4)
-        {
-            status = *buf;
-            buf ++;
-            level = *buf;
-            buf ++;
-            ver = *buf;
-        }
+        unsigned char status = *buf;
+        buf ++;
+        unsigned char level = *buf;
+        buf ++;
+        unsigned char ver = *buf;
         buf ++;
 
         unsigned char gender = Gender::UNSPECIFIED;
-        if (serverVersion >= 4)
+        if (config.getBoolValue("showgender"))
         {
-            if (config.getBoolValue("showgender"))
-            {
-                if (status & BeingFlag::GENDER_MALE)
-                    gender = Gender::MALE;
-                else if (status & BeingFlag::GENDER_OTHER)
-                    gender = Gender::OTHER;
-                else
-                    gender = Gender::FEMALE;
-            }
+            if (status & BeingFlag::GENDER_MALE)
+                gender = Gender::MALE;
+            else if (status & BeingFlag::GENDER_OTHER)
+                gender = Gender::OTHER;
+            else
+                gender = Gender::FEMALE;
         }
         arr.push_back(new OnlinePlayer(static_cast<const char*>(buf),
             status, level, gender, ver));
