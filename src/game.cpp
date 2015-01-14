@@ -245,7 +245,7 @@ static void createGuiWindows()
         const std::string lang = getLangShort();
         if (lang.size() == 2)
         {
-            langChatTab = new LangTab(chatWindow, lang);
+            langChatTab = new LangTab(chatWindow, lang + " ");
             langChatTab->setAllowHighlight(false);
         }
     }

@@ -121,15 +121,17 @@ Window *DialogsManager::openErrorDialog(const std::string &header,
 
 void DialogsManager::playerDeath()
 {
-    logger->log("DialogsManager::playerDeath");
-    // TRANSLATORS: message header
-    deathNotice = new OkDialog(_("Message"),
-        DeadDB::getRandomString(),
-        // TRANSLATORS: ok dialog button
-        _("Revive"),
-        DialogType::OK,
-        false, true, nullptr, 260);
-    deathNotice->addActionListener(&postDeathListener);
+    if (!deathNotice)
+    {
+        // TRANSLATORS: message header
+        deathNotice = new OkDialog(_("Message"),
+            DeadDB::getRandomString(),
+            // TRANSLATORS: ok dialog button
+            _("Revive"),
+            DialogType::OK,
+            false, true, nullptr, 260);
+        deathNotice->addActionListener(&postDeathListener);
+    }
 }
 
 void DialogsManager::attributeChanged(const int id,
