@@ -414,7 +414,8 @@ void BeingHandler::processBeingChangeLookContinue(Being *const dstBeing,
     switch (type)
     {
         case 0:  // change race
-            dstBeing->setSubtype(static_cast<uint16_t>(id), 0);
+            dstBeing->setSubtype(static_cast<uint16_t>(id),
+                dstBeing->getLook());
             break;
         case 1:  // eAthena LOOK_HAIR
             dstBeing->setSpriteID(SPRITE_HAIR_COLOR, id *-1);
@@ -446,8 +447,8 @@ void BeingHandler::processBeingChangeLookContinue(Being *const dstBeing,
                 ItemDB::get(dstBeing->getSpriteID(
                 SPRITE_HAIR_COLOR)).getDyeColorsString(id));
             break;
-        case 7:  // Clothes color
-            // ignoring it
+        case 7:  // Clothes color. Now used as look
+            dstBeing->setLook(id);
             break;
         case 8:  // eAthena LOOK_SHIELD
             if (!mHideShield)

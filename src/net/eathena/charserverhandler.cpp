@@ -200,7 +200,8 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     data.mAttributes[Attributes::MAX_MP] = msg.readInt16("max mp/sp");
 
     msg.readInt16("speed");
-    tempPlayer->setSubtype(msg.readInt16("class"), 0);
+    const int race = msg.readInt16("class");
+//    tempPlayer->setSubtype(race, 0);
     const int hairStyle = msg.readInt16("hair style");
     const int weapon = msg.readInt32("weapon");
 
@@ -218,7 +219,8 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
         ItemDB::get(-hairStyle).getDyeColorsString(
         msg.readInt16("hair color")));
 
-    const int misc2 = msg.readInt16("clothes color");
+    const int look = msg.readInt16("clothes color");
+    tempPlayer->setSubtype(race, look);
     tempPlayer->setName(msg.readString(24, "name"));
 
     character->dummy = tempPlayer;
@@ -245,7 +247,7 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
 
     tempPlayer->setSprite(SPRITE_CLOTHES_COLOR, hat);
     tempPlayer->setSprite(SPRITE_HEAD_BOTTOM, topClothes);
-    tempPlayer->setSprite(SPRITE_HEAD_MID, misc2);
+//    tempPlayer->setSprite(SPRITE_HEAD_MID, misc2);
     msg.readInt32("slot change");
     tempPlayer->setRename(msg.readInt32("rename (inverse)"));
 
