@@ -294,6 +294,8 @@ void CharServerHandler::newCharacter(const std::string &name, const int slot,
             sex = Being::genderToInt(gender);
         outMsg.writeInt8(sex, "gender");
     }
+    if (serverFeatures->haveLookSelection())
+        outMsg.writeInt16(static_cast<int16_t>(look), "look");
 }
 
 void CharServerHandler::deleteCharacter(Net::Character *const character,

@@ -92,7 +92,7 @@ bool ServerFeatures::haveRaceSelection() const
 
 bool ServerFeatures::haveLookSelection() const
 {
-    return false;
+    return serverVersion >= 4;
 }
 
 bool ServerFeatures::haveSpecialChatChannels() const
