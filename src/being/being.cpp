@@ -3434,6 +3434,7 @@ void Being::setMap(Map *const map)
     {
         mOffsetY = mMap->getHeightOffset(mX, mY);
         mFixedOffsetY = mOffsetY;
+        mOldHeight = 0;
         mNeedPosUpdate = true;
     }
 }
