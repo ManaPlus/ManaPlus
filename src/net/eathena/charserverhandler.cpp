@@ -200,7 +200,7 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     data.mAttributes[Attributes::MAX_MP] = msg.readInt16("max mp/sp");
 
     msg.readInt16("speed");
-    const int race = msg.readInt16("class");
+    const uint16_t race = msg.readInt16("class");
 //    tempPlayer->setSubtype(race, 0);
     const int hairStyle = msg.readInt16("hair style");
     const int weapon = msg.readInt32("weapon");
@@ -219,7 +219,7 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
         ItemDB::get(-hairStyle).getDyeColorsString(
         msg.readInt16("hair color")));
 
-    const int look = msg.readInt16("clothes color");
+    const uint8_t look = msg.readInt16("clothes color");
     tempPlayer->setSubtype(race, look);
     tempPlayer->setName(msg.readString(24, "name"));
 
@@ -272,8 +272,8 @@ void CharServerHandler::chooseCharacter(Net::Character *const character)
 void CharServerHandler::newCharacter(const std::string &name, const int slot,
                                      const Gender::Type gender,
                                      const int hairstyle, const int hairColor,
-                                     const unsigned char race A_UNUSED,
-                                     const unsigned char look A_UNUSED,
+                                     const unsigned char race,
+                                     const unsigned char look,
                                      const std::vector<int> &stats A_UNUSED)
                                      const
 {

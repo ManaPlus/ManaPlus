@@ -448,7 +448,7 @@ void BeingHandler::processBeingChangeLookContinue(Being *const dstBeing,
                 SPRITE_HAIR_COLOR)).getDyeColorsString(id));
             break;
         case 7:  // Clothes color. Now used as look
-            dstBeing->setLook(id);
+            dstBeing->setLook(static_cast<uint8_t>(id));
             break;
         case 8:  // eAthena LOOK_SHIELD
             if (!mHideShield)

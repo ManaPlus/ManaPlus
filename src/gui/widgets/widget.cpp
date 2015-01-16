@@ -69,8 +69,6 @@
 
 #include "events/actionevent.h"
 
-#include "events/event.h"
-
 #include "gui/focushandler.h"
 
 #include "listeners/actionlistener.h"

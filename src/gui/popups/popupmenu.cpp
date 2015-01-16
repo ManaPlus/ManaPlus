@@ -24,7 +24,6 @@
 
 #include "actormanager.h"
 #include "configuration.h"
-#include "dropshortcut.h"
 #include "gamemodifiers.h"
 #include "guild.h"
 #include "guildmanager.h"

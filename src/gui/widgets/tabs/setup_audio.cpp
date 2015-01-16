@@ -38,7 +38,6 @@
 #include "gui/widgets/scrollarea.h"
 
 #include "utils/delete2.h"
-#include "utils/gettext.h"
 
 #include "debug.h"
 

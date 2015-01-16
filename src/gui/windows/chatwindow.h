@@ -31,7 +31,6 @@
 
 #include "listeners/actionlistener.h"
 #include "listeners/attributelistener.h"
-#include "listeners/configlistener.h"
 #include "listeners/keylistener.h"
 #include "listeners/statlistener.h"
 
