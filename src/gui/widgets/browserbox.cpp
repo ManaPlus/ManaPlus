@@ -621,8 +621,6 @@ int BrowserBox::calcHeight()
             // "Tokenize" the string at control sequences
             if (mUseLinksAndUserColors)
                 idx1 = row.find("##", start + 1);
-            if (mUseEmotes)
-                idx2 = row.find("%%", start + 1);
             if (idx1 < idx2)
                 end = idx1;
             else
@@ -737,6 +735,12 @@ int BrowserBox::calcHeight()
                         break;
                 }
             }
+            if (mUseEmotes)
+                idx2 = row.find("%%", start + 1);
+            if (idx1 < idx2)
+                end = idx1;
+            else
+                end = idx2;
             if (mUseEmotes)
             {
                 // check for emote icons
