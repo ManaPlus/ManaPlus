@@ -1,3 +1,21 @@
+2015-01-17 New release 1.5.1.17
+fix: char deletion (hercules)
+fix: char deletion if connect to server with password from command line.
+fix: multiply death dialogs.
+fix: player position after warp if source and destination position heighs different.
+add: allow set gender, race, look in char creation (hercules).
+add: sound effects in emotes.
+add: chat command for select general tab (/generaltab)
+add: chat command for select debug tab (/debugtab)
+add: chat command for select battle tab (/battletab)
+add: chat command for select trade tab (/tradetab)
+add: chat command for select lang tab (/langtab)
+add: chat command for select gm tab (/gmtab)
+add: chat command for select party tab (/partytab)
+add: chat command for select guild tab (/guildtab)
+add: for special tabs use channels (hercules)
+remove: support for very old evol servers.
+
 2015-01-03 New release 1.5.1.3
 fix: chat commands /store, /retreive
 fix: chat commands /buy, /sell

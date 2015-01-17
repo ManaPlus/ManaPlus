@@ -1,7 +1,7 @@
 THE MANA PLUS CLIENT
 ===============
 
- Version: 1.5.1.3        Date: 2015-01-03
+ Version: 1.5.1.17        Date: 2015-01-17
 
  Development team:
   - See AUTHORS file for a list
