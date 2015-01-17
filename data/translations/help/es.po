@@ -3,14 +3,14 @@
 # Maria <mtorres2022@gmail.com>, 2012
 # Maria <mtorres2022@gmail.com>, 2012
 # 0x0Eddine <salahbubuli44@gmail.com>, 2012
-# Nelson Martell <nelson6e65-manaplus@yahoo.es>, 2012-2014
+# Nelson Martell <nelson6e65-manaplus@yahoo.es>, 2012-2015
 # osuka <owen942009@gmail.com>, 2013
 # osuka <owen942009@gmail.com>, 2013-2014
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2014-12-28 22:29+0000\n"
-"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"PO-Revision-Date: 2015-01-14 17:58+0000\n"
+"Last-Translator: Nelson Martell <nelson6e65-manaplus@yahoo.es>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/manaplus/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -56,7 +56,7 @@ msgid "\"Quick drop window\""
 msgstr "\"Ventana de Quick drop\""
 
 msgid "Official site:"
-msgstr ""
+msgstr "Sitio oficial:"
 
 msgid ""
 " You can improve your skills by increasing job level. Each job level\n"
@@ -274,7 +274,7 @@ msgid ""
 msgstr " Clic izquierdo ejecuta la acción predeterminada: caminar, recojer algún artículo\n atacar a un monstruo y hablar con los NPCs (asegúrate de darle clic en sus pies).\n Clic derecho muestra un menú contextual. Si se mantiene presionado [Shift Izq],\n se previente que el personaje camine mientras ataca."
 
 msgid "Search string not found."
-msgstr "Cadena de busqueda no encontrada."
+msgstr "Cadena de búsqueda no encontrada."
 
 msgid "\"Emote shortcut 7\""
 msgstr "\"Atajo para emoticono 7\""
@@ -385,7 +385,7 @@ msgid "Contributors to client development"
 msgstr "Contribuyentes al desarrollo del cliente"
 
 msgid "/gm MESSAGE - send message to all online gms."
-msgstr ""
+msgstr "/gm MENSAJE - Envía un mensaje a todos los GMs conectados."
 
 msgid ""
 "You can do basic searching in help by using command\n"
@@ -760,7 +760,7 @@ msgid "MOUSE:"
 msgstr "RATÓN:"
 
 msgid "Current server support url:"
-msgstr ""
+msgstr "Url de soporte para el servidor actual:"
 
 msgid "Player relations"
 msgstr "Relaciones del jugador"
@@ -982,7 +982,7 @@ msgstr "\"Atajo para objeto 11\""
 
 msgid ""
 "/cleangraphics - remove all cached graphics. Useful for content developers."
-msgstr ""
+msgstr "/cleangraphics - Elimina todos los gráficos en la caché. Útil para desarrolladores de contenido."
 
 msgid "\"Emulate right click from keyboard\""
 msgstr "\"Emular clic derecho desde el teclado\""
@@ -1095,7 +1095,7 @@ msgid "/disconnect - quick disconnect from server."
 msgstr "/disconnect - desconectarse rápidamente del servidor."
 
 msgid "/enemy NICK - add nick to enemies list."
-msgstr ""
+msgstr "/enemy NICK - Agrega el NICK especificado a la lista de enemigos."
 
 msgid "\"Item shortcut 1\""
 msgstr "\"Atajo para objeto 1\""

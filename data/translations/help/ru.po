@@ -3,7 +3,7 @@
 # Alexandr Uspensky <AlexandrUSP@yandex.com>, 2012
 # Alexsl <alexlsh@mail.ru>, 2014
 # Alexsl <alexlsh@mail.ru>, 2014
-# Andrei Karas <akaras@inbox.ru>, 2012-2014
+# Andrei Karas <akaras@inbox.ru>, 2012-2015
 # BoBaH <BoBaH4spam@ukr.net>, 2012
 # BoBaH <BoBaH4spam@ukr.net>, 2012
 # Dan Sagunov <danilka.pro@gmail.com>, 2012-2013
@@ -17,7 +17,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2014-12-28 22:29+0000\n"
+"PO-Revision-Date: 2015-01-17 11:13+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/manaplus/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -64,7 +64,7 @@ msgid "\"Quick drop window\""
 msgstr "\"Окно быстрого сброса предметов\""
 
 msgid "Official site:"
-msgstr ""
+msgstr "Официальный сайт:"
 
 msgid ""
 " You can improve your skills by increasing job level. Each job level\n"
@@ -393,7 +393,7 @@ msgid "Contributors to client development"
 msgstr "В разработке клиентской части принимали участие"
 
 msgid "/gm MESSAGE - send message to all online gms."
-msgstr ""
+msgstr "/gm MESSAGE - посылает сообщение ко всем гм"
 
 msgid ""
 "You can do basic searching in help by using command\n"
@@ -768,7 +768,7 @@ msgid "MOUSE:"
 msgstr "МЫШЬ:"
 
 msgid "Current server support url:"
-msgstr ""
+msgstr "Страница поддержки для текущего сервера:"
 
 msgid "Player relations"
 msgstr "Отношения между игроками"
@@ -990,7 +990,7 @@ msgstr "\"Горячая клавиша предмета 11\""
 
 msgid ""
 "/cleangraphics - remove all cached graphics. Useful for content developers."
-msgstr ""
+msgstr "/cleangraphics - стереть кэш графики. Удобен для разработчиков контента."
 
 msgid "\"Emulate right click from keyboard\""
 msgstr "\"Эмуляция правого клика с клавиатуры\""
@@ -1103,7 +1103,7 @@ msgid "/disconnect - quick disconnect from server."
 msgstr "/disconnect - быстро отключиться от сервера."
 
 msgid "/enemy NICK - add nick to enemies list."
-msgstr ""
+msgstr "/enemy NICK - добавить ник в список врагов."
 
 msgid "\"Item shortcut 1\""
 msgstr "\"Горячая клавиша предмета 1\""
