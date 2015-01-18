@@ -174,9 +174,8 @@ class TradeWindow final : public Window,
          */
         void setStatus(const Status s);
 
-        typedef const std::auto_ptr<Inventory> InventoryPtr;
-        InventoryPtr mMyInventory;
-        InventoryPtr mPartnerInventory;
+        Inventory *mMyInventory;
+        Inventory *mPartnerInventory;
 
         ItemContainer *mMyItemContainer;
         ItemContainer *mPartnerItemContainer;

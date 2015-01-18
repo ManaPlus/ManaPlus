@@ -54,6 +54,7 @@
 
 #include "net/tradehandler.h"
 
+#include "utils/delete2.h"
 #include "utils/gettext.h"
 
 #include "debug.h"
@@ -76,8 +77,8 @@ TradeWindow::TradeWindow() :
     SelectionListener(),
     mMyInventory(new Inventory(Inventory::TRADE)),
     mPartnerInventory(new Inventory(Inventory::TRADE)),
-    mMyItemContainer(new ItemContainer(this, mMyInventory.get())),
-    mPartnerItemContainer(new ItemContainer(this, mPartnerInventory.get())),
+    mMyItemContainer(new ItemContainer(this, mMyInventory)),
+    mPartnerItemContainer(new ItemContainer(this, mPartnerInventory)),
     // TRANSLATORS: trade window money label
     mMoneyLabel(new Label(this, strprintf(_("You get %s"), ""))),
     // TRANSLATORS: trade window button
@@ -158,6 +159,8 @@ TradeWindow::TradeWindow() :
 
 TradeWindow::~TradeWindow()
 {
+    delete2(mMyInventory);
+    delete2(mPartnerInventory);
 }
 
 void TradeWindow::setMoney(const int amount)
@@ -201,7 +204,7 @@ void TradeWindow::addItem(const int id,
                           const bool damaged,
                           const bool favorite) const
 {
-    Inventory *inv = own ? mMyInventory.get() : mPartnerInventory.get();
+    Inventory *inv = own ? mMyInventory : mPartnerInventory;
     inv->addItem(id, type, quantity, refine, color,
         identified, damaged, favorite, false, false);
 }
@@ -219,7 +222,7 @@ void TradeWindow::addItem2(const int id,
                            const bool favorite,
                            const bool equipment) const
 {
-    Inventory *inv = own ? mMyInventory.get() : mPartnerInventory.get();
+    Inventory *inv = own ? mMyInventory : mPartnerInventory;
     const int slot = inv->addItem(id, type, quantity, refine, color,
         identified, damaged, favorite, equipment, false);
     if (slot >= 0)
@@ -363,7 +366,6 @@ void TradeWindow::action(const ActionEvent &event)
 
         if (mMyInventory->getFreeSlot() == -1)
             return;
-
 
         if (!checkItem(item))
             return;
