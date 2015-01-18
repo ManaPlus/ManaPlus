@@ -219,7 +219,7 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
         ItemDB::get(-hairStyle).getDyeColorsString(
         msg.readInt16("hair color")));
 
-    const uint8_t look = msg.readInt16("clothes color");
+    const uint16_t look = msg.readInt16("clothes color");
     tempPlayer->setSubtype(race, look);
     tempPlayer->setName(msg.readString(24, "name"));
 
@@ -273,7 +273,7 @@ void CharServerHandler::newCharacter(const std::string &name, const int slot,
                                      const Gender::Type gender,
                                      const int hairstyle, const int hairColor,
                                      const unsigned char race,
-                                     const unsigned char look,
+                                     const uint16_t look,
                                      const std::vector<int> &stats A_UNUSED)
                                      const
 {

@@ -301,7 +301,7 @@ void Being::createSpeechBubble()
     mSpeechBubble->postInit();
 }
 
-void Being::setSubtype(const uint16_t subtype, const uint8_t look)
+void Being::setSubtype(const uint16_t subtype, const uint16_t look)
 {
     if (!mInfo)
         return;
@@ -3409,7 +3409,7 @@ void Being::playSfx(const SoundInfo &sound, Being *const being,
     BLOCK_END("Being::playSfx")
 }
 
-void Being::setLook(const uint8_t look)
+void Being::setLook(const uint16_t look)
 {
     if (mType == ActorType::Player)
         setSubtype(mSubType, look);

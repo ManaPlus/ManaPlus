@@ -51,7 +51,7 @@ class CharServerHandler final : public MessageHandler,
                           const int hairstyle,
                           const int hairColor,
                           const unsigned char race,
-                          const unsigned char look,
+                          const uint16_t look,
                           const std::vector<int> &stats) const override final;
 
         void renameCharacter(const int id,

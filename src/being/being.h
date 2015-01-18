@@ -379,7 +379,7 @@ class Being notfinal : public ActorSprite,
          /**
           * Set Being's subtype (mostly for view for monsters and NPCs)
           */
-        void setSubtype(const uint16_t subtype, const uint8_t look);
+        void setSubtype(const uint16_t subtype, const uint16_t look);
 
         const BeingInfo *getInfo() const A_WARN_UNUSED
         { return mInfo; }
@@ -849,10 +849,10 @@ class Being notfinal : public ActorSprite,
         void playSfx(const SoundInfo &sound, Being *const being,
                      const bool main, const int x, const int y) const;
 
-        uint8_t getLook() const
+        uint16_t getLook() const
         { return mLook; }
 
-        void setLook(const uint8_t look);
+        void setLook(const uint16_t look);
 
         static uint8_t genderToInt(const Gender::Type sex) A_WARN_UNUSED;
 
@@ -1076,7 +1076,7 @@ class Being notfinal : public ActorSprite,
         int mUsageCounter;
         int mKarma;
         int mManner;
-        uint8_t mLook;
+        uint16_t mLook;
         unsigned char mHairColor;
         bool mErased;
         bool mEnemy;

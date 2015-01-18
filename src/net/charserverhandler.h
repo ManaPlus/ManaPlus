@@ -62,7 +62,7 @@ class CharServerHandler notfinal
                                   const int hairstyle,
                                   const int hairColor,
                                   const unsigned char race,
-                                  const unsigned char look,
+                                  const uint16_t look,
                                   const std::vector<int> &stats) const = 0;
 
         virtual void deleteCharacter(Net::Character *const character,

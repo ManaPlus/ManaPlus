@@ -173,7 +173,7 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     msg.readInt16("speed");
     const uint16_t race = msg.readInt16("class");
     const uint8_t hairStyle = msg.readUInt8("hair style");
-    const uint8_t look = msg.readUInt8("look");
+    const uint16_t look = msg.readUInt8("look");
     tempPlayer->setSubtype(race, look);
     const uint16_t weapon = msg.readInt16("weapon");
     tempPlayer->setSprite(SPRITE_BODY, weapon, "", 1, true);
@@ -272,7 +272,7 @@ void CharServerHandler::newCharacter(const std::string &name, const int slot,
                                      const int hairstyle,
                                      const int hairColor,
                                      const unsigned char race,
-                                     const unsigned char look,
+                                     const uint16_t look,
                                      const std::vector<int> &stats) const
 {
     createOutPacket(CMSG_CHAR_CREATE);
@@ -285,7 +285,7 @@ void CharServerHandler::newCharacter(const std::string &name, const int slot,
     outMsg.writeInt8(0, "unused");
     outMsg.writeInt8(static_cast<int8_t>(hairstyle), "hair style");
     if (serverFeatures->haveLookSelection())
-        outMsg.writeInt8(look, "look");
+        outMsg.writeInt8(static_cast<int8_t>(look), "look");
     else
         outMsg.writeInt8(0, "unused");
     if (serverFeatures->haveRaceSelection())
