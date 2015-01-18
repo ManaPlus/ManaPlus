@@ -115,7 +115,7 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputCondition::GAME | InputCondition::NOFOLLOW
             | InputCondition::VALIDSPEED | InputCondition::ALIVE,
         "targetattack",
-        false},
+        true},
     {"keyMoveToTarget",
         addKey(SDLK_v),
         emptyKey,

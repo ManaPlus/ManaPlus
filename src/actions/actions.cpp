@@ -731,19 +731,31 @@ impHandler0(targetAttack)
     if (localPlayer && actorManager)
     {
         Being *target = nullptr;
-
+        std::string args = event.args;
         const bool newTarget = !inputManager.isActionActive(
             InputAction::STOP_ATTACK);
+
+        if (!args.empty())
+        {
+            if (args[0] != ':')
+            {
+                target = actorManager->findNearestByName(args);
+            }
+            else
+            {
+                target = actorManager->findBeing(atoi(args.substr(1).c_str()));
+                if (target && target->getType() != ActorType::Monster)
+                    target = nullptr;
+            }
+        }
+        if (!target)
+            target = localPlayer->getTarget();
         // A set target has highest priority
-        if (!localPlayer->getTarget())
+        if (!target)
         {
             // Only auto target Monsters
             target = actorManager->findNearestLivingBeing(
                 localPlayer, 90, ActorType::Monster, true);
-        }
-        else
-        {
-            target = localPlayer->getTarget();
         }
 
         localPlayer->attack2(target, newTarget);
