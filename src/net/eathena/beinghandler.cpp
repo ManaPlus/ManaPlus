@@ -798,6 +798,8 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
     msg.readInt8("ys");
     dstBeing->setAction(BeingAction::STAND, 0);
     dstBeing->setTileCoords(srcX, srcY);
+    if (localPlayer)
+        localPlayer->followMoveTo(dstBeing, srcX, srcY, dstX, dstY);
     if (!serverFeatures->haveMove3())
         dstBeing->setDestination(dstX, dstY);
 
@@ -1086,6 +1088,8 @@ void BeingHandler::processBeingMove2(Net::MessageIn &msg)
 
     dstBeing->setAction(BeingAction::STAND, 0);
     dstBeing->setTileCoords(srcX, srcY);
+    if (localPlayer)
+        localPlayer->followMoveTo(dstBeing, srcX, srcY, dstX, dstY);
     if (!serverFeatures->haveMove3())
         dstBeing->setDestination(dstX, dstY);
     if (dstBeing->getType() == ActorType::Player)
