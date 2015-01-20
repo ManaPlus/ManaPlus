@@ -908,6 +908,12 @@ class Being notfinal : public ActorSprite,
         void enablePetAi()
         { mPetAi = true; }
 
+        int getAreaSize() const
+        { return mAreaSize; }
+
+        void setAreaSize(const int areaSize)
+        { mAreaSize = areaSize; }
+
     protected:
         /**
          * Updates name's location.
@@ -1076,6 +1082,7 @@ class Being notfinal : public ActorSprite,
         int mUsageCounter;
         int mKarma;
         int mManner;
+        int mAreaSize;
         uint16_t mLook;
         unsigned char mHairColor;
         bool mErased;

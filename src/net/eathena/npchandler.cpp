@@ -22,6 +22,8 @@
 
 #include "net/eathena/npchandler.h"
 
+#include "actormanager.h"
+
 #include "being/localplayer.h"
 
 #include "gui/windows/npcdialog.h"
@@ -56,6 +58,7 @@ NpcHandler::NpcHandler() :
         SMSG_NPC_CLOSE_TIMEOUT,
         SMSG_NPC_COMMAND,
         SMSG_NPC_CHANGETITLE,
+        SMSG_NPC_AREA,
         0
     };
     handledMessages = _messages;
@@ -112,6 +115,10 @@ void NpcHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_NPC_CHANGETITLE:
             processChangeTitle(msg);
+            break;
+
+        case SMSG_NPC_AREA:
+            processArea(msg);
             break;
 
         default:
@@ -349,6 +356,18 @@ void NpcHandler::processNpcCloseTimeout(Net::MessageIn &msg)
     mRequestLang = false;
     // this packet send after npc closed by timeout.
     msg.readInt32("npc id");
+}
+
+void NpcHandler::processArea(Net::MessageIn &msg)
+{
+    const int len = msg.readInt16("len");
+    if (len < 12)
+        return;
+    Being *const dstBeing = actorManager->findBeing(
+        msg.readInt32("npc id"));
+    const int area = msg.readInt32("area size");
+    if (dstBeing)
+        dstBeing->setAreaSize(area);
 }
 
 }  // namespace EAthena
