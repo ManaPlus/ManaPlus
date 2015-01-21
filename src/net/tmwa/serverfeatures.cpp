@@ -189,4 +189,9 @@ bool ServerFeatures::haveCreateCharGender() const
     return false;
 }
 
+bool ServerFeatures::haveAttackDirections() const
+{
+    return false;
+}
+
 }  // namespace TmwAthena

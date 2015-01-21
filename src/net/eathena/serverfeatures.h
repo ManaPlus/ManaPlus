@@ -95,6 +95,8 @@ class ServerFeatures final : public Net::ServerFeatures
         bool haveNpcWhispers() const override final;
 
         bool haveCreateCharGender() const override final;
+
+        bool haveAttackDirections() const override final;
 };
 
 }  // namespace EAthena

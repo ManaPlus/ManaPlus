@@ -190,4 +190,9 @@ bool ServerFeatures::haveCreateCharGender() const
     return serverVersion >= 4;
 }
 
+bool ServerFeatures::haveAttackDirections() const
+{
+    return true;
+}
+
 }  // namespace EAthena
