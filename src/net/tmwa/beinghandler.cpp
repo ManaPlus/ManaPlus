@@ -1413,8 +1413,8 @@ void BeingHandler::processBeingChangeDirection(Net::MessageIn &msg)
 
     msg.readInt16("unused");
 
-    const uint8_t dir = static_cast<uint8_t>(
-        msg.readUInt8("direction") & 0x0FU);
+    const uint8_t dir = Net::MessageIn::fromServerDirection(
+        static_cast<uint8_t>(msg.readUInt8("direction") & 0x0FU));
     dstBeing->setDirection(dir);
     if (localPlayer)
         localPlayer->imitateDirection(dstBeing, dir);
