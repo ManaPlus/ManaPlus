@@ -813,13 +813,14 @@ void Being::handleAttack(Being *const victim, const int damage,
     reset();
     mActionTime = tick_time;
 
-    if (this != localPlayer)
+    if (!serverFeatures->haveAttackDirections() && this != localPlayer)
     {
         const uint8_t dir = calcDirection(victim->getTileX(),
             victim->getTileY());
         if (dir)
             setDirection(dir);
     }
+
     if (damage && victim->mType == ActorType::Player
         && victim->mAction == BeingAction::SIT)
     {
@@ -868,7 +869,7 @@ void Being::handleSkill(Being *const victim, const int damage,
     reset();
     mActionTime = tick_time;
 
-    if (this != localPlayer)
+    if (!serverFeatures->haveAttackDirections() && this != localPlayer)
     {
         const uint8_t dir = calcDirection(victim->getTileX(),
             victim->getTileY());

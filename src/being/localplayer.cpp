@@ -748,19 +748,22 @@ void LocalPlayer::attack(Being *const target, const bool keep,
     if (mAction != BeingAction::STAND && mAction != BeingAction::SIT)
         return;
 
-    if (abs(dist_y) >= abs(dist_x))
+    if (!serverFeatures->haveAttackDirections())
     {
-        if (dist_y > 0)
-            setDirection(BeingDirection::DOWN);
+        if (abs(dist_y) >= abs(dist_x))
+        {
+            if (dist_y > 0)
+                setDirection(BeingDirection::DOWN);
+            else
+                setDirection(BeingDirection::UP);
+        }
         else
-            setDirection(BeingDirection::UP);
-    }
-    else
-    {
-        if (dist_x > 0)
-            setDirection(BeingDirection::RIGHT);
-        else
-            setDirection(BeingDirection::LEFT);
+        {
+            if (dist_x > 0)
+                setDirection(BeingDirection::RIGHT);
+            else
+                setDirection(BeingDirection::LEFT);
+        }
     }
 
     mActionTime = tick_time;
