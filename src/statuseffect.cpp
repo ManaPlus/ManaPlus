@@ -118,14 +118,20 @@ int StatusEffect::blockEffectIndexToEffectIndex(const int blockIndex)
 StatusEffect *StatusEffect::getStatusEffect(const int index,
                                             const bool enabling)
 {
-    // +++ need check
-    return statusEffects[enabling][index];
+    std::map<int, StatusEffect *> &effects = statusEffects[enabling];
+    const std::map<int, StatusEffect *>::iterator it = effects.find(index);
+    if (it != effects.end())
+        return (*it).second;
+    return nullptr;
 }
 
 StatusEffect *StatusEffect::getStunEffect(const int index, const bool enabling)
 {
-    // +++ need check
-    return stunEffects[enabling][index];
+    std::map<int, StatusEffect *> &effects = stunEffects[enabling];
+    const std::map<int, StatusEffect *>::iterator it = effects.find(index);
+    if (it != effects.end())
+        return (*it).second;
+    return nullptr;
 }
 
 void StatusEffect::load()
