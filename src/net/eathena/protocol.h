@@ -327,6 +327,7 @@
 
 #define SMSG_MAP_MUSIC               0x0b05
 
+#define SMSG_CART_INFO               0x0121
 
 /**********************************
  *  Packets from client to server *

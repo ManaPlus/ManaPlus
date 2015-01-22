@@ -94,6 +94,7 @@ InventoryHandler::InventoryHandler() :
         SMSG_PLAYER_INSERT_CARD,
         SMSG_PLAYER_ITEM_RENTAL_TIME,
         SMSG_PLAYER_ITEM_RENTAL_EXPIRED,
+        SMSG_CART_INFO,
         0
     };
     handledMessages = _messages;
@@ -190,6 +191,10 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_PLAYER_ITEM_RENTAL_EXPIRED:
             processPlayerItemRentalExpired(msg);
+            break;
+
+        case SMSG_CART_INFO:
+            processCartInfo(msg);
             break;
 
         default:
@@ -724,6 +729,14 @@ void InventoryHandler::processPlayerStorageRemove(Net::MessageIn &msg)
         }
     }
     BLOCK_END("InventoryHandler::processPlayerStorageRemove")
+}
+
+void InventoryHandler::processCartInfo(Net::MessageIn &msg)
+{
+    msg.readInt16("cart items used");
+    msg.readInt16("max cart items");
+    msg.readInt32("cart weight");
+    msg.readInt32("max cart weight");
 }
 
 }  // namespace EAthena
