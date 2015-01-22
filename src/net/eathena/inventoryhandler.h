@@ -104,6 +104,8 @@ class InventoryHandler final : public MessageHandler,
         static void processPlayerStorageRemove(Net::MessageIn &msg);
 
         static void processCartInfo(Net::MessageIn &msg);
+
+        static void processCartRemove(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

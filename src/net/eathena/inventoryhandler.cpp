@@ -95,6 +95,7 @@ InventoryHandler::InventoryHandler() :
         SMSG_PLAYER_ITEM_RENTAL_TIME,
         SMSG_PLAYER_ITEM_RENTAL_EXPIRED,
         SMSG_CART_INFO,
+        SMSG_CART_REMOVE,
         0
     };
     handledMessages = _messages;
@@ -195,6 +196,10 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_CART_INFO:
             processCartInfo(msg);
+            break;
+
+        case SMSG_CART_REMOVE:
+            processCartRemove(msg);
             break;
 
         default:
@@ -737,6 +742,11 @@ void InventoryHandler::processCartInfo(Net::MessageIn &msg)
     msg.readInt16("max cart items");
     msg.readInt32("cart weight");
     msg.readInt32("max cart weight");
+}
+
+void InventoryHandler::processCartRemove(Net::MessageIn &msg A_UNUSED)
+{
+    //+++ need close or clear cart?
 }
 
 }  // namespace EAthena
