@@ -1411,10 +1411,15 @@ void BeingHandler::processPlaterStatusChange2(Net::MessageIn &msg)
 
 void BeingHandler::processPlaterStatusChangeNoTick(Net::MessageIn &msg)
 {
-    // +++ probably need show some effect?
-    msg.readInt16("index");
-    msg.readInt32("account id");
-    msg.readUInt8("state");
+    const uint16_t status = msg.readInt16("index");
+    const int id = msg.readInt32("account id");
+    const bool flag = msg.readUInt8("state") ? 1 : 0;
+
+    Being *const dstBeing = actorManager->findBeing(id);
+    if (!dstBeing)
+        return;
+
+    dstBeing->setStatusEffect(status, flag);
 }
 
 void BeingHandler::processBeingResurrect(Net::MessageIn &msg)
