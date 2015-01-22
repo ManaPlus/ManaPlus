@@ -194,4 +194,9 @@ bool ServerFeatures::haveAttackDirections() const
     return false;
 }
 
+bool ServerFeatures::haveVending() const
+{
+    return false;
+}
+
 }  // namespace TmwAthena

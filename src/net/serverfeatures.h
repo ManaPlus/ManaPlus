@@ -94,6 +94,8 @@ class ServerFeatures notfinal
         virtual bool haveCreateCharGender() const = 0;
 
         virtual bool haveAttackDirections() const = 0;
+
+        virtual bool haveVending() const = 0;
 };
 
 }  // namespace Net

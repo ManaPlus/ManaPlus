@@ -195,4 +195,9 @@ bool ServerFeatures::haveAttackDirections() const
     return true;
 }
 
+bool ServerFeatures::haveVending() const
+{
+    return true;
+}
+
 }  // namespace EAthena

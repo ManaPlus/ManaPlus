@@ -97,6 +97,8 @@ class ServerFeatures final : public Net::ServerFeatures
         bool haveCreateCharGender() const override final;
 
         bool haveAttackDirections() const override final;
+
+        bool haveVending() const override final;
 };
 
 }  // namespace TmwAthena
