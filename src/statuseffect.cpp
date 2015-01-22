@@ -122,6 +122,7 @@ StatusEffect *StatusEffect::getStatusEffect(const int index,
     const std::map<int, StatusEffect *>::iterator it = effects.find(index);
     if (it != effects.end())
         return (*it).second;
+    logger->log("Missing status effect: %d", index);
     return nullptr;
 }
 
