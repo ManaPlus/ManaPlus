@@ -237,8 +237,11 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
             break;
 
         case SMSG_BEING_STATUS_CHANGE:
-        case SMSG_BEING_STATUS_CHANGE2:
             processBeingStatusChange(msg);
+            break;
+
+        case SMSG_BEING_STATUS_CHANGE2:
+            processBeingStatusChange2(msg);
             break;
 
         case SMSG_SKILL_CASTING:
@@ -1040,8 +1043,31 @@ void BeingHandler::processBeingStatusChange(Net::MessageIn &msg)
     const uint16_t status = msg.readInt16("status");
     const int id = msg.readInt32("being id");
     const bool flag = msg.readUInt8("flag: 0: stop, 1: start");
-    if (status1)
-        msg.readInt32("total");
+    msg.readInt32("total");
+    msg.readInt32("left");
+    msg.readInt32("val1");
+    msg.readInt32("val2");
+    msg.readInt32("val3");
+
+    Being *const dstBeing = actorManager->findBeing(id);
+    if (dstBeing)
+        dstBeing->setStatusEffect(status, flag);
+    BLOCK_END("BeingHandler::processBeingStatusChange")
+}
+
+void BeingHandler::processBeingStatusChange2(Net::MessageIn &msg)
+{
+    BLOCK_START("BeingHandler::processBeingStatusChange")
+    if (!actorManager)
+    {
+        BLOCK_END("BeingHandler::processBeingStatusChange")
+        return;
+    }
+
+    // Status change
+    const uint16_t status = msg.readInt16("status");
+    const int id = msg.readInt32("being id");
+    const bool flag = msg.readUInt8("flag: 0: stop, 1: start");
     msg.readInt32("left");
     msg.readInt32("val1");
     msg.readInt32("val2");
