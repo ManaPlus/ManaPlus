@@ -199,4 +199,9 @@ bool ServerFeatures::haveVending() const
     return false;
 }
 
+bool ServerFeatures::haveCart() const
+{
+    return false;
+}
+
 }  // namespace TmwAthena

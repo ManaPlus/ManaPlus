@@ -99,6 +99,8 @@ class ServerFeatures final : public Net::ServerFeatures
         bool haveAttackDirections() const override final;
 
         bool haveVending() const override final;
+
+        bool haveCart() const override final;
 };
 
 }  // namespace EAthena
