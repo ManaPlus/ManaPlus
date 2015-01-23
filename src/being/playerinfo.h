@@ -148,6 +148,10 @@ namespace PlayerInfo
 
     Inventory *getStorageInventory() A_WARN_UNUSED;
 
+#ifdef EATHENA_SUPPORT
+    Inventory *getCartInventory() A_WARN_UNUSED;
+#endif
+
     /**
      * Clears the player's inventory and equipment.
      */

@@ -70,6 +70,9 @@
 
 InventoryWindow *inventoryWindow = nullptr;
 InventoryWindow *storageWindow = nullptr;
+#ifdef EATHENA_SUPPORT
+InventoryWindow *cartWindow = nullptr;
+#endif
 InventoryWindow::WindowList InventoryWindow::invInstances;
 
 InventoryWindow::InventoryWindow(Inventory *const inventory) :

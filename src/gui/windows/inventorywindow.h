@@ -201,5 +201,8 @@ class InventoryWindow final : public Window,
 
 extern InventoryWindow *inventoryWindow;
 extern InventoryWindow *storageWindow;
+#ifdef EATHENA_SUPPORT
+extern InventoryWindow *cartWindow;
+#endif  // EATHENA_SUPPORT
 
 #endif  // GUI_WINDOWS_INVENTORYWINDOW_H

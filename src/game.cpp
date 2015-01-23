@@ -185,6 +185,10 @@ static void createGuiWindows()
     miniStatusWindow = new MiniStatusWindow;
     inventoryWindow = new InventoryWindow(PlayerInfo::getInventory());
     inventoryWindow->postInit();
+#ifdef EATHENA_SUPPORT
+    cartWindow = new InventoryWindow(PlayerInfo::getCartInventory());
+    cartWindow->postInit();
+#endif
     shopWindow = new ShopWindow;
     shopWindow->postInit();
     skillDialog = new SkillDialog;

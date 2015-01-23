@@ -56,6 +56,9 @@ PlayerInfoBackend mData;
 int mCharId = 0;
 
 Inventory *mInventory = nullptr;
+#ifdef EATHENA_SUPPORT
+Inventory *mCartInventory = nullptr;
+#endif
 Equipment *mEquipment = nullptr;
 MercenaryInfo *mMercenary = nullptr;
 HomunculusInfo *mHomunculus = nullptr;
@@ -198,6 +201,13 @@ Inventory *getStorageInventory()
 {
     return inventoryHandler->getStorage();
 }
+
+#ifdef EATHENA_SUPPORT
+Inventory *getCartInventory()
+{
+    return mCartInventory;
+}
+#endif
 
 void clearInventory()
 {
@@ -406,6 +416,9 @@ void gameDestroyed()
 {
     delete2(mInventory);
     delete2(mEquipment);
+#ifdef EATHENA_SUPPORT
+    delete2(mCartInventory);
+#endif
 }
 
 void stateChange(const State state)
@@ -416,6 +429,9 @@ void stateChange(const State state)
         {
             mInventory = new Inventory(Inventory::INVENTORY);
             mEquipment = new Equipment();
+#ifdef EATHENA_SUPPORT
+            mCartInventory = new Inventory(Inventory::CART);
+#endif
         }
     }
 }
