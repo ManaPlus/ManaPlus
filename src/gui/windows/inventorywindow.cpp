@@ -47,6 +47,7 @@
 #include "gui/windows/tradewindow.h"
 
 #include "gui/widgets/button.h"
+#include "gui/widgets/containerplacer.h"
 #include "gui/widgets/dropdown.h"
 #include "gui/widgets/itemcontainer.h"
 #include "gui/widgets/layout.h"
@@ -189,31 +190,32 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
         mDropButton = new Button(this, _("Drop..."), "drop", this);
         // TRANSLATORS: inventory button
         mSplitButton = new Button(this, _("Split"), "split", this);
-        // TRANSLATORS: inventory button
-        mOutfitButton = new Button(this, _("Outfits"), "outfit", this);
-        // TRANSLATORS: inventory button
-        mShopButton = new Button(this, _("Shop"), "shop", this);
-        // TRANSLATORS: inventory button
-        mEquipmentButton = new Button(this, _("Equipment"), "equipment", this);
+        // TRANSLATORS: inventory outfits button
+        mOutfitButton = new Button(this, _("O"), "outfit", this);
+        // TRANSLATORS: inventory shop button
+        mShopButton = new Button(this, _("S"), "shop", this);
+        // TRANSLATORS: inventory equipment button
+        mEquipmentButton = new Button(this, _("E"), "equipment", this);
         mWeightBar = new ProgressBar(this, 0.0F, 100, 0, Theme::PROG_WEIGHT,
             "weightprogressbar.xml", "weightprogressbar_fill.xml");
         mWeightBar->setColor(getThemeColor(Theme::WEIGHT_BAR),
             getThemeColor(Theme::WEIGHT_BAR_OUTLINE));
 
         place(0, 0, mWeightBar, 4);
-        mSlotsBarCell = &place(4, 0, mSlotsBar, 5);
-        mSortDropDownCell = &place(9, 0, mSortDropDown, 2);
+        mSlotsBarCell = &place(4, 0, mSlotsBar, 4);
+        mSortDropDownCell = &place(8, 0, mSortDropDown, 3);
 
         mFilterCell = &place(0, 1, mFilter, 10).setPadding(3);
-        mNameFilterCell = &place(9, 1, mNameFilter, 2);
+        mNameFilterCell = &place(8, 1, mNameFilter, 3);
 
         place(0, 2, invenScroll, 11).setPadding(3);
         place(0, 3, mUseButton);
         place(1, 3, mDropButton);
         place(8, 2, mSplitButton);
-        place(8, 3, mShopButton);
-        place(9, 3, mOutfitButton);
-        place(10, 3, mEquipmentButton);
+        ContainerPlacer placer = getPlacer(10, 3);
+        placer(0, 0, mShopButton);
+        placer(1, 0, mOutfitButton);
+        placer(2, 0, mEquipmentButton);
 
         updateWeight();
     }
@@ -789,7 +791,7 @@ void InventoryWindow::widgetResized(const Event &event)
         {
             mNameFilter->setVisible(false);
             mNameFilterCell->setType(LayoutCell::NONE);
-            mFilterCell->setWidth(mFilterCell->getWidth() + 2);
+            mFilterCell->setWidth(mFilterCell->getWidth() + 3);
             mCompactMode = true;
         }
     }
@@ -797,7 +799,7 @@ void InventoryWindow::widgetResized(const Event &event)
     {
         mNameFilter->setVisible(true);
         mNameFilterCell->setType(LayoutCell::WIDGET);
-        mFilterCell->setWidth(mFilterCell->getWidth() - 2);
+        mFilterCell->setWidth(mFilterCell->getWidth() - 3);
         mCompactMode = false;
     }
 }
