@@ -874,7 +874,10 @@ void InventoryWindow::widgetResized(const Event &event)
 {
     Window::widgetResized(event);
 
-    if (!isMainInventory())
+    if (!mInventory)
+        return;
+    const InventoryType::Type type = mInventory->getType();
+    if (type != InventoryType::INVENTORY && type != InventoryType::CART)
         return;
 
     if (getWidth() < 600)
