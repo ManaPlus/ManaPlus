@@ -35,6 +35,7 @@
 
 class Button;
 class DropDown;
+class InventoryWindow;
 class Item;
 class ItemContainer;
 class LayoutCell;
@@ -42,6 +43,12 @@ class ProgressBar;
 class SortListModelInv;
 class TabStrip;
 class TextField;
+
+extern InventoryWindow *inventoryWindow;
+extern InventoryWindow *storageWindow;
+#ifdef EATHENA_SUPPORT
+extern InventoryWindow *cartWindow;
+#endif  // EATHENA_SUPPORT
 
 /**
  * Inventory dialog.
@@ -132,7 +139,7 @@ class InventoryWindow final : public Window,
          * Returns true if any instances exist.
          */
         static bool isStorageActive() A_WARN_UNUSED
-        { return invInstances.size() > 1; }
+        { return storageWindow; }
 
         void updateDropButton();
 
@@ -199,11 +206,5 @@ class InventoryWindow final : public Window,
         bool mSplit;
         bool mCompactMode;
 };
-
-extern InventoryWindow *inventoryWindow;
-extern InventoryWindow *storageWindow;
-#ifdef EATHENA_SUPPORT
-extern InventoryWindow *cartWindow;
-#endif  // EATHENA_SUPPORT
 
 #endif  // GUI_WINDOWS_INVENTORYWINDOW_H
