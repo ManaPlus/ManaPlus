@@ -96,6 +96,7 @@ InventoryHandler::InventoryHandler() :
         SMSG_PLAYER_ITEM_RENTAL_EXPIRED,
         SMSG_CART_INFO,
         SMSG_CART_REMOVE,
+        SMSG_PLAYER_CART_ADD,
         0
     };
     handledMessages = _messages;
@@ -200,6 +201,10 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_CART_REMOVE:
             processCartRemove(msg);
+            break;
+
+        case SMSG_PLAYER_CART_ADD:
+            processPlayerCartAdd(msg);
             break;
 
         default:
@@ -747,6 +752,49 @@ void InventoryHandler::processCartInfo(Net::MessageIn &msg)
 void InventoryHandler::processCartRemove(Net::MessageIn &msg A_UNUSED)
 {
     //+++ need close or clear cart?
+}
+
+void InventoryHandler::processPlayerCartAdd(Net::MessageIn &msg)
+{
+    BLOCK_START("InventoryHandler::processPlayerCartAdd")
+    Inventory *const inventory = localPlayer
+        ? PlayerInfo::getCartInventory() : nullptr;
+
+    const int index = msg.readInt16("index") - INVENTORY_OFFSET;
+    int amount = msg.readInt32("count");
+    const int itemId = msg.readInt16("item id");
+    const int itemType = msg.readUInt8("item type");
+    uint8_t identified = msg.readUInt8("identified");
+    msg.readUInt8("attribute");
+    const uint8_t refine = msg.readUInt8("refine");
+    int cards[4];
+    for (int f = 0; f < 4; f++)
+        cards[f] = msg.readInt16("card");
+
+    const ItemInfo &itemInfo = ItemDB::get(itemId);
+    int floorId;
+    if (mSentPickups.empty())
+    {
+        floorId = 0;
+    }
+    else
+    {
+        floorId = mSentPickups.front();
+        mSentPickups.pop();
+    }
+
+    if (inventory)
+    {
+        const Item *const item = inventory->getItem(index);
+
+        if (item && item->getId() == itemId)
+            amount += item->getQuantity();
+
+        inventory->setItem(index, itemId, itemType, amount, refine,
+            1, identified != 0, false, false, false, false);
+        inventory->setCards(index, cards, 4);
+    }
+    BLOCK_END("InventoryHandler::processPlayerCartAdd")
 }
 
 }  // namespace EAthena
