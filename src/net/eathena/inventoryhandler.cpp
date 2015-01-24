@@ -26,6 +26,8 @@
 
 #include "enums/equipslot.h"
 
+#include "enums/being/attributes.h"
+
 #include "being/localplayer.h"
 
 #include "listeners/arrowslistener.h"
@@ -764,8 +766,10 @@ void InventoryHandler::processCartInfo(Net::MessageIn &msg)
 {
     msg.readInt16("cart items used");
     const int size = msg.readInt16("max cart items");
-    msg.readInt32("cart weight");
-    msg.readInt32("max cart weight");
+    PlayerInfo::setAttribute(Attributes::CART_TOTAL_WEIGHT,
+        msg.readInt32("cart weight"));
+    PlayerInfo::setAttribute(Attributes::CART_MAX_WEIGHT,
+        msg.readInt32("max cart weight"));
     if (mCartItems.empty())
         return;
 

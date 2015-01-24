@@ -61,7 +61,9 @@ namespace Attributes
         MDEF,
         MATK,
         DEF,
-        ATK
+        ATK,
+        CART_TOTAL_WEIGHT = 1000,
+        CART_MAX_WEIGHT
     };
 }  // namespace Attributes
 

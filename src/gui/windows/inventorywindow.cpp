@@ -264,12 +264,18 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
             // TRANSLATORS: storage button
             mInvCloseButton = new Button(this, _("Close"), "close", this);
 
-            mSlotsBarCell = &place(0, 0, mSlotsBar, 6);
+            mWeightBar = new ProgressBar(this, 0.0F, 100, 0, Theme::PROG_WEIGHT,
+                "weightprogressbar.xml", "weightprogressbar_fill.xml");
+            mWeightBar->setColor(getThemeColor(Theme::WEIGHT_BAR),
+                getThemeColor(Theme::WEIGHT_BAR_OUTLINE));
+
+            mSlotsBarCell = &place(3, 0, mSlotsBar, 3);
             mSortDropDownCell = &place(6, 0, mSortDropDown, 1);
 
             mFilterCell = &place(0, 1, mFilter, 7).setPadding(3);
             mNameFilterCell = &place(6, 1, mNameFilter, 1);
 
+            place(0, 0, mWeightBar, 3);
             place(0, 2, invenScroll, 7, 4);
             place(0, 6, mStoreButton);
             place(1, 6, mRetrieveButton);
@@ -755,11 +761,17 @@ void InventoryWindow::close()
 
 void InventoryWindow::updateWeight()
 {
-    if (!isMainInventory() || !mWeightBar)
+    if (!mInventory || !mWeightBar)
+        return;
+    const InventoryType::Type type = mInventory->getType();
+    if (type != InventoryType::INVENTORY && type != InventoryType::CART)
         return;
 
-    const int total = PlayerInfo::getAttribute(Attributes::TOTAL_WEIGHT);
-    const int max = PlayerInfo::getAttribute(Attributes::MAX_WEIGHT);
+    const bool isInv = type != InventoryType::INVENTORY;
+    const int total = PlayerInfo::getAttribute(isInv
+        ? Attributes::TOTAL_WEIGHT : Attributes::CART_TOTAL_WEIGHT);
+    const int max = PlayerInfo::getAttribute(isInv
+        ? Attributes::MAX_WEIGHT : Attributes::CART_MAX_WEIGHT);
 
     if (max <= 0)
         return;
@@ -767,8 +779,9 @@ void InventoryWindow::updateWeight()
     // Adjust progress bar
     mWeightBar->setProgress(static_cast<float>(total)
         / static_cast<float>(max));
-    mWeightBar->setText(strprintf("%s/%s", Units::formatWeight(total).c_str(),
-                        Units::formatWeight(max).c_str()));
+    mWeightBar->setText(strprintf("%s/%s",
+        Units::formatWeight(total).c_str(),
+        Units::formatWeight(max).c_str()));
 }
 
 void InventoryWindow::slotsChanged(Inventory *const inventory)
@@ -905,6 +918,11 @@ void InventoryWindow::attributeChanged(const int id,
                                        const int oldVal A_UNUSED,
                                        const int newVal A_UNUSED)
 {
-    if (id == Attributes::TOTAL_WEIGHT || id == Attributes::MAX_WEIGHT)
+    if (id == Attributes::TOTAL_WEIGHT
+        || id == Attributes::MAX_WEIGHT
+        || id == Attributes::CART_TOTAL_WEIGHT
+        || id == Attributes::CART_MAX_WEIGHT)
+    {
         updateWeight();
+    }
 }
