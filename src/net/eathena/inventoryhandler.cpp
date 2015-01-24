@@ -818,18 +818,6 @@ void InventoryHandler::processPlayerCartAdd(Net::MessageIn &msg)
     for (int f = 0; f < 4; f++)
         cards[f] = msg.readInt16("card");
 
-    const ItemInfo &itemInfo = ItemDB::get(itemId);
-    int floorId;
-    if (mSentPickups.empty())
-    {
-        floorId = 0;
-    }
-    else
-    {
-        floorId = mSentPickups.front();
-        mSentPickups.pop();
-    }
-
     if (inventory)
     {
         const Item *const item = inventory->getItem(index);

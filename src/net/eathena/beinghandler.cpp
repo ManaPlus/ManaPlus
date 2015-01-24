@@ -1037,8 +1037,6 @@ void BeingHandler::processBeingStatusChange(Net::MessageIn &msg)
         return;
     }
 
-    const bool status1 = msg.getId() == SMSG_BEING_STATUS_CHANGE;
-
     // Status change
     const uint16_t status = msg.readInt16("status");
     const int id = msg.readInt32("being id");
