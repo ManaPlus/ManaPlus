@@ -384,7 +384,16 @@ void InventoryWindow::action(const ActionEvent &event)
         if (!item)
             return;
 
-        ItemAmountWindow::showWindow(ItemAmountWindow::StoreAdd, this, item);
+        if (storageWindow)
+        {
+            ItemAmountWindow::showWindow(ItemAmountWindow::StoreAdd,
+                this, item);
+        }
+        else if (cartWindow)
+        {
+            ItemAmountWindow::showWindow(ItemAmountWindow::CartAdd,
+                this, item);
+        }
     }
     else if (eventId == "sort")
     {
@@ -422,8 +431,14 @@ void InventoryWindow::action(const ActionEvent &event)
         if (isStorageActive())
         {
             inventoryHandler->moveItem2(InventoryType::INVENTORY,
-                    item->getInvIndex(), item->getQuantity(),
-                    InventoryType::STORAGE);
+                item->getInvIndex(), item->getQuantity(),
+                InventoryType::STORAGE);
+        }
+        else if (cartWindow)
+        {
+            inventoryHandler->moveItem2(InventoryType::INVENTORY,
+                item->getInvIndex(), item->getQuantity(),
+                InventoryType::CART);
         }
         else
         {
@@ -449,8 +464,16 @@ void InventoryWindow::action(const ActionEvent &event)
     }
     else if (eventId == "retrieve")
     {
-        ItemAmountWindow::showWindow(ItemAmountWindow::StoreRemove,
-            this, item);
+        if (storageWindow)
+        {
+            ItemAmountWindow::showWindow(ItemAmountWindow::StoreRemove,
+                this, item);
+        }
+        else if (cartWindow)
+        {
+            ItemAmountWindow::showWindow(ItemAmountWindow::CartRemove,
+                this, item);
+        }
     }
 }
 
@@ -773,7 +796,7 @@ void InventoryWindow::updateDropButton()
     if (!mDropButton)
         return;
 
-    if (isStorageActive())
+    if (isStorageActive() || cartWindow)
     {
         // TRANSLATORS: inventory button
         mDropButton->setCaption(_("Store"));

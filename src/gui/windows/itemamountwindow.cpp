@@ -72,8 +72,16 @@ void ItemAmountWindow::finish(const Item *const item,
             inventoryHandler->moveItem2(InventoryType::INVENTORY,
                 item->getInvIndex(), amount, InventoryType::STORAGE);
             break;
+        case CartAdd:
+            inventoryHandler->moveItem2(InventoryType::INVENTORY,
+                item->getInvIndex(), amount, InventoryType::CART);
+            break;
         case StoreRemove:
             inventoryHandler->moveItem2(InventoryType::STORAGE,
+                item->getInvIndex(), amount, InventoryType::INVENTORY);
+            break;
+        case CartRemove:
+            inventoryHandler->moveItem2(InventoryType::CART,
                 item->getInvIndex(), amount, InventoryType::INVENTORY);
             break;
         case ShopBuyAdd:
@@ -225,9 +233,17 @@ ItemAmountWindow::ItemAmountWindow(const Usage usage, Window *const parent,
             // TRANSLATORS: amount window message
             setCaption(_("Select amount of items to store."));
             break;
+        case CartAdd:
+            // TRANSLATORS: amount window message
+            setCaption(_("Select amount of items to store to cart."));
+            break;
         case StoreRemove:
             // TRANSLATORS: amount window message
             setCaption(_("Select amount of items to retrieve."));
+            break;
+        case CartRemove:
+            // TRANSLATORS: amount window message
+            setCaption(_("Select amount of items to retrieve from cart."));
             break;
         case ItemSplit:
             // TRANSLATORS: amount window message

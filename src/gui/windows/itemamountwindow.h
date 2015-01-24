@@ -52,6 +52,8 @@ class ItemAmountWindow final : public Window,
             ItemDrop,
             StoreAdd,
             StoreRemove,
+            CartAdd,
+            CartRemove,
             ItemSplit,
             ShopBuyAdd,
             ShopSellAdd
