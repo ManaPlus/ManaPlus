@@ -423,6 +423,9 @@ void ItemContainer::mousePressed(MouseEvent &event)
             case InventoryType::NPC:
                 src = DRAGDROP_SOURCE_NPC;
                 break;
+            case InventoryType::CART:
+                src = DRAGDROP_SOURCE_CART;
+                break;
             default:
                 break;
         }
@@ -518,6 +521,9 @@ void ItemContainer::mouseReleased(MouseEvent &event)
             case InventoryType::NPC:
                 dst = DRAGDROP_SOURCE_NPC;
                 break;
+            case InventoryType::CART:
+                dst = DRAGDROP_SOURCE_CART;
+                break;
             default:
                 break;
         }
@@ -537,6 +543,34 @@ void ItemContainer::mouseReleased(MouseEvent &event)
         {
             srcContainer = InventoryType::STORAGE;
             dstContainer = InventoryType::INVENTORY;
+            inventory = PlayerInfo::getStorageInventory();
+        }
+        if (src == DRAGDROP_SOURCE_INVENTORY
+            && dst == DRAGDROP_SOURCE_CART)
+        {
+            srcContainer = InventoryType::INVENTORY;
+            dstContainer = InventoryType::CART;
+            inventory = PlayerInfo::getInventory();
+        }
+        else if (src == DRAGDROP_SOURCE_CART
+                 && dst == DRAGDROP_SOURCE_INVENTORY)
+        {
+            srcContainer = InventoryType::CART;
+            dstContainer = InventoryType::INVENTORY;
+            inventory = PlayerInfo::getCartInventory();
+        }
+        else if (src == DRAGDROP_SOURCE_CART
+            && dst == DRAGDROP_SOURCE_STORAGE)
+        {
+            srcContainer = InventoryType::CART;
+            dstContainer = InventoryType::STORAGE;
+            inventory = PlayerInfo::getCartInventory();
+        }
+        else if (src == DRAGDROP_SOURCE_STORAGE
+                 && dst == DRAGDROP_SOURCE_CART)
+        {
+            srcContainer = InventoryType::STORAGE;
+            dstContainer = InventoryType::CART;
             inventory = PlayerInfo::getStorageInventory();
         }
         if (src == DRAGDROP_SOURCE_INVENTORY
@@ -575,7 +609,7 @@ void ItemContainer::mouseReleased(MouseEvent &event)
             if (item)
             {
                 if (srcContainer != -1)
-                {   // inventory <--> storage
+                {   // inventory <--> storage, cart
                     inventoryHandler->moveItem2(srcContainer,
                         item->getInvIndex(), item->getQuantity(),
                         dstContainer);
