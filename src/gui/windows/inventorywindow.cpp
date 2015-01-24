@@ -501,7 +501,7 @@ void InventoryWindow::mouseClicked(MouseEvent &event)
         const int my = event.getY() + getY();
 
         if (popupMenu)
-            popupMenu->showPopup(this, mx, my, item, isMainInventory());
+            popupMenu->showPopup(this, mx, my, item, mInventory->getType());
     }
 
     if (!mInventory)

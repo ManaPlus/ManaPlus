@@ -1609,8 +1609,10 @@ void PopupMenu::handleLink(const std::string &link,
     mY = 0;
 }
 
-void PopupMenu::showPopup(Window *const parent, const int x, const int y,
-                          Item *const item, const bool isInventory)
+void PopupMenu::showPopup(Window *const parent,
+                          const int x, const int y,
+                          Item *const item,
+                          const int type)
 {
     if (!item)
         return;
@@ -1627,98 +1629,105 @@ void PopupMenu::showPopup(Window *const parent, const int x, const int y,
     const int cnt = item->getQuantity();
     const bool isProtected = PlayerInfo::isItemProtected(mItemId);
 
-    if (isInventory)
+    switch (type)
     {
-        if (tradeWindow && tradeWindow->isWindowVisible() && !isProtected)
-        {
-            // TRANSLATORS: popup menu item
-            // TRANSLATORS: add item to trade
-            mBrowserBox->addRow("/addtrade 'INVINDEX'", _("Add to trade"));
-            if (cnt > 1)
+        case Inventory::INVENTORY:
+            if (tradeWindow && tradeWindow->isWindowVisible() && !isProtected)
             {
-                if (cnt > 10)
+                // TRANSLATORS: popup menu item
+                // TRANSLATORS: add item to trade
+                mBrowserBox->addRow("/addtrade 'INVINDEX'", _("Add to trade"));
+                if (cnt > 1)
                 {
+                    if (cnt > 10)
+                    {
+                        // TRANSLATORS: popup menu item
+                        // TRANSLATORS: add 10 item amount to trade
+                        mBrowserBox->addRow("/addtrade 'INVINDEX' 10",
+                            _("Add to trade 10"));
+                    }
                     // TRANSLATORS: popup menu item
-                    // TRANSLATORS: add 10 item amount to trade
-                    mBrowserBox->addRow("/addtrade 'INVINDEX' 10",
-                        _("Add to trade 10"));
+                    // TRANSLATORS: add half item amount to trade
+                    mBrowserBox->addRow("/addtrade 'INVINDEX' /",
+                        _("Add to trade half"));
+                    // TRANSLATORS: popup menu item
+                    // TRANSLATORS: add all amount except one item to trade
+                    mBrowserBox->addRow("/addtrade 'INVINDEX' -1",
+                        _("Add to trade all-1"));
+                    // TRANSLATORS: popup menu item
+                    // TRANSLATORS: add all amount item to trade
+                    mBrowserBox->addRow("/addtrade 'INVINDEX' all",
+                        _("Add to trade all"));
                 }
-                // TRANSLATORS: popup menu item
-                // TRANSLATORS: add half item amount to trade
-                mBrowserBox->addRow("/addtrade 'INVINDEX' /",
-                    _("Add to trade half"));
-                // TRANSLATORS: popup menu item
-                // TRANSLATORS: add all amount except one item to trade
-                mBrowserBox->addRow("/addtrade 'INVINDEX' -1",
-                    _("Add to trade all-1"));
-                // TRANSLATORS: popup menu item
-                // TRANSLATORS: add all amount item to trade
-                mBrowserBox->addRow("/addtrade 'INVINDEX' all",
-                    _("Add to trade all"));
+                mBrowserBox->addRow("##3---");
             }
-            mBrowserBox->addRow("##3---");
-        }
-        if (InventoryWindow::isStorageActive())
-        {
-            // TRANSLATORS: popup menu item
-            // TRANSLATORS: add item to storage
-            mBrowserBox->addRow("/invtostorage 'INVINDEX'", _("Store"));
-            if (cnt > 1)
+            if (InventoryWindow::isStorageActive())
             {
-                if (cnt > 10)
+                // TRANSLATORS: popup menu item
+                // TRANSLATORS: add item to storage
+                mBrowserBox->addRow("/invtostorage 'INVINDEX'", _("Store"));
+                if (cnt > 1)
                 {
+                    if (cnt > 10)
+                    {
+                        // TRANSLATORS: popup menu item
+                        // TRANSLATORS: add 10 item amount to storage
+                        mBrowserBox->addRow("/invtostorage 'INVINDEX' 10",
+                            _("Store 10"));
+                    }
                     // TRANSLATORS: popup menu item
-                    // TRANSLATORS: add 10 item amount to storage
-                    mBrowserBox->addRow("/invtostorage 'INVINDEX' 10",
-                        _("Store 10"));
+                    // TRANSLATORS: add half item amount to storage
+                    mBrowserBox->addRow("/invtostorage 'INVINDEX' /",
+                        _("Store half"));
+                    // TRANSLATORS: popup menu item
+                    // TRANSLATORS: add all except one item amount to storage
+                    mBrowserBox->addRow("/invtostorage 'INVINDEX' -1",
+                        _("Store all-1"));
+                    // TRANSLATORS: popup menu item
+                    // TRANSLATORS: add all item amount to storage
+                    mBrowserBox->addRow("/invtostorage 'INVINDEX' all",
+                        _("Store all"));
                 }
-                // TRANSLATORS: popup menu item
-                // TRANSLATORS: add half item amount to storage
-                mBrowserBox->addRow("/invtostorage 'INVINDEX' /",
-                    _("Store half"));
-                // TRANSLATORS: popup menu item
-                // TRANSLATORS: add all except one item amount to storage
-                mBrowserBox->addRow("/invtostorage 'INVINDEX' -1",
-                    _("Store all-1"));
-                // TRANSLATORS: popup menu item
-                // TRANSLATORS: add all item amount to storage
-                mBrowserBox->addRow("/invtostorage 'INVINDEX' all",
-                    _("Store all"));
+                mBrowserBox->addRow("##3---");
             }
-            mBrowserBox->addRow("##3---");
-        }
+            addUseDrop(item, isProtected);
+            break;
 
-        addUseDrop(item, isProtected);
-    }
-    // Assume in storage for now
-    else
-    {
-        // TRANSLATORS: popup menu item
-        // TRANSLATORS: get item from storage
-        mBrowserBox->addRow("/storagetoinv 'INVINDEX'", _("Retrieve"));
-        if (cnt > 1)
-        {
-            if (cnt > 10)
+        case Inventory::STORAGE:
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: get item from storage
+            mBrowserBox->addRow("/storagetoinv 'INVINDEX'", _("Retrieve"));
+            if (cnt > 1)
             {
+                if (cnt > 10)
+                {
+                    // TRANSLATORS: popup menu item
+                    // TRANSLATORS: get 10 item amount from storage
+                    mBrowserBox->addRow("/storagetoinv 'INVINDEX' 10",
+                        _("Retrieve 10"));
+                }
                 // TRANSLATORS: popup menu item
-                // TRANSLATORS: get 10 item amount from storage
-                mBrowserBox->addRow("/storagetoinv 'INVINDEX' 10",
-                    _("Retrieve 10"));
+                // TRANSLATORS: get half item amount from storage
+                mBrowserBox->addRow("/storagetoinv 'INVINDEX' /",
+                    _("Retrieve half"));
+                // TRANSLATORS: popup menu item
+                // TRANSLATORS: get all except one item amount from storage
+                mBrowserBox->addRow("/storagetoinv 'INVINDEX' -1",
+                    _("Retrieve all-1"));
+                // TRANSLATORS: popup menu item
+                // TRANSLATORS: get all item amount from storage
+                mBrowserBox->addRow("/storagetoinv 'INVINDEX' all",
+                    _("Retrieve all"));
             }
-            // TRANSLATORS: popup menu item
-            // TRANSLATORS: get half item amount from storage
-            mBrowserBox->addRow("/storagetoinv 'INVINDEX' /",
-                _("Retrieve half"));
-            // TRANSLATORS: popup menu item
-            // TRANSLATORS: get all except one item amount from storage
-            mBrowserBox->addRow("/storagetoinv 'INVINDEX' -1",
-                _("Retrieve all-1"));
-            // TRANSLATORS: popup menu item
-            // TRANSLATORS: get all item amount from storage
-            mBrowserBox->addRow("/storagetoinv 'INVINDEX' all",
-                _("Retrieve all"));
-        }
+            break;
+
+        case Inventory::CART:
+        case Inventory::TRADE:
+        default:
+            break;
     }
+
+
     addProtection();
     if (config.getBoolValue("enablePickupFilter"))
     {
