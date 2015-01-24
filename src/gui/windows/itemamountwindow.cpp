@@ -69,12 +69,12 @@ void ItemAmountWindow::finish(const Item *const item,
             inventoryHandler->splitItem(item, amount);
             break;
         case StoreAdd:
-            inventoryHandler->moveItem2(Inventory::INVENTORY,
-                item->getInvIndex(), amount, Inventory::STORAGE);
+            inventoryHandler->moveItem2(InventoryType::INVENTORY,
+                item->getInvIndex(), amount, InventoryType::STORAGE);
             break;
         case StoreRemove:
-            inventoryHandler->moveItem2(Inventory::STORAGE,
-                item->getInvIndex(), amount, Inventory::INVENTORY);
+            inventoryHandler->moveItem2(InventoryType::STORAGE,
+                item->getInvIndex(), amount, InventoryType::INVENTORY);
             break;
         case ShopBuyAdd:
             if (shopWindow)

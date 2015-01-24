@@ -48,12 +48,6 @@ typedef std::queue<int> PickupQueue;
 class InventoryHandler notfinal : public Net::InventoryHandler
 {
     public:
-        enum
-        {
-            GUILD_STORAGE = Inventory::TYPE_END,
-            CART
-        };
-
         A_DELETE_COPY(InventoryHandler)
 
         virtual ~InventoryHandler();

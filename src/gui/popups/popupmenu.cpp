@@ -1631,7 +1631,7 @@ void PopupMenu::showPopup(Window *const parent,
 
     switch (type)
     {
-        case Inventory::INVENTORY:
+        case InventoryType::INVENTORY:
             if (tradeWindow && tradeWindow->isWindowVisible() && !isProtected)
             {
                 // TRANSLATORS: popup menu item
@@ -1693,7 +1693,7 @@ void PopupMenu::showPopup(Window *const parent,
             addUseDrop(item, isProtected);
             break;
 
-        case Inventory::STORAGE:
+        case InventoryType::STORAGE:
             // TRANSLATORS: popup menu item
             // TRANSLATORS: get item from storage
             mBrowserBox->addRow("/storagetoinv 'INVINDEX'", _("Retrieve"));
@@ -1721,8 +1721,8 @@ void PopupMenu::showPopup(Window *const parent,
             }
             break;
 
-        case Inventory::CART:
-        case Inventory::TRADE:
+        case InventoryType::CART:
+        case InventoryType::TRADE:
         default:
             break;
     }

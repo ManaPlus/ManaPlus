@@ -130,14 +130,14 @@ size_t InventoryHandler::getSize(const int type) const
 {
     switch (type)
     {
-        case Inventory::INVENTORY:
+        case InventoryType::INVENTORY:
             return 100;
-        case Inventory::STORAGE:
+        case InventoryType::STORAGE:
             return 0;  // Comes from server after items
-        case Inventory::TRADE:
+        case InventoryType::TRADE:
             return 12;
         // GUILD_STORAGE
-        case Inventory::TYPE_END:
+        case InventoryType::TYPE_END:
             return 0;  // Comes from server after items
         default:
             return 0;
@@ -248,7 +248,7 @@ void InventoryHandler::processPlayerStorageStatus(Net::MessageIn &msg)
     const int size = msg.readInt16("max size");
 
     if (!mStorage)
-        mStorage = new Inventory(Inventory::STORAGE, size);
+        mStorage = new Inventory(InventoryType::STORAGE, size);
 
     FOR_EACH (Ea::InventoryItems::const_iterator, it, mInventoryItems)
     {

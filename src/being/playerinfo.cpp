@@ -26,11 +26,12 @@
 #include "inventory.h"
 #include "itemsoundmanager.h"
 
-
 #include "being/homunculusinfo.h"
 #include "being/localplayer.h"
 #include "being/mercenaryinfo.h"
 #include "being/petinfo.h"
+
+#include "enums/inventorytype.h"
 
 #include "enums/being/attributes.h"
 
@@ -427,10 +428,10 @@ void stateChange(const State state)
     {
         if (!mInventory)
         {
-            mInventory = new Inventory(Inventory::INVENTORY);
+            mInventory = new Inventory(InventoryType::INVENTORY);
             mEquipment = new Equipment();
 #ifdef EATHENA_SUPPORT
-            mCartInventory = new Inventory(Inventory::CART);
+            mCartInventory = new Inventory(InventoryType::CART);
 #endif
         }
     }

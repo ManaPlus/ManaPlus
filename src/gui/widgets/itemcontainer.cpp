@@ -411,16 +411,16 @@ void ItemContainer::mousePressed(MouseEvent &event)
         DragDropSource src = DRAGDROP_SOURCE_EMPTY;
         switch (mInventory->getType())
         {
-            case Inventory::INVENTORY:
+            case InventoryType::INVENTORY:
                 src = DRAGDROP_SOURCE_INVENTORY;
                 break;
-            case Inventory::STORAGE:
+            case InventoryType::STORAGE:
                 src = DRAGDROP_SOURCE_STORAGE;
                 break;
-            case Inventory::TRADE:
+            case InventoryType::TRADE:
                 src = DRAGDROP_SOURCE_TRADE;
                 break;
-            case Inventory::NPC:
+            case InventoryType::NPC:
                 src = DRAGDROP_SOURCE_NPC;
                 break;
             default:
@@ -506,16 +506,16 @@ void ItemContainer::mouseReleased(MouseEvent &event)
         DragDropSource dst = DRAGDROP_SOURCE_EMPTY;
         switch (mInventory->getType())
         {
-            case Inventory::INVENTORY:
+            case InventoryType::INVENTORY:
                 dst = DRAGDROP_SOURCE_INVENTORY;
                 break;
-            case Inventory::STORAGE:
+            case InventoryType::STORAGE:
                 dst = DRAGDROP_SOURCE_STORAGE;
                 break;
-            case Inventory::TRADE:
+            case InventoryType::TRADE:
                 dst = DRAGDROP_SOURCE_TRADE;
                 break;
-            case Inventory::NPC:
+            case InventoryType::NPC:
                 dst = DRAGDROP_SOURCE_NPC;
                 break;
             default:
@@ -528,15 +528,15 @@ void ItemContainer::mouseReleased(MouseEvent &event)
         if (src == DRAGDROP_SOURCE_INVENTORY
             && dst == DRAGDROP_SOURCE_STORAGE)
         {
-            srcContainer = Inventory::INVENTORY;
-            dstContainer = Inventory::STORAGE;
+            srcContainer = InventoryType::INVENTORY;
+            dstContainer = InventoryType::STORAGE;
             inventory = PlayerInfo::getInventory();
         }
         else if (src == DRAGDROP_SOURCE_STORAGE
                  && dst == DRAGDROP_SOURCE_INVENTORY)
         {
-            srcContainer = Inventory::STORAGE;
-            dstContainer = Inventory::INVENTORY;
+            srcContainer = InventoryType::STORAGE;
+            dstContainer = InventoryType::INVENTORY;
             inventory = PlayerInfo::getStorageInventory();
         }
         if (src == DRAGDROP_SOURCE_INVENTORY

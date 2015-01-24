@@ -223,15 +223,15 @@ void InventoryHandler::closeStorage(const int type A_UNUSED) const
 void InventoryHandler::moveItem2(const int source, const int slot,
                                  const int amount, const int destination) const
 {
-    if (source == Inventory::INVENTORY && destination == Inventory::STORAGE)
+    if (source == InventoryType::INVENTORY && destination == InventoryType::STORAGE)
     {
         createOutPacket(CMSG_MOVE_TO_STORAGE);
         outMsg.writeInt16(static_cast<int16_t>(slot + INVENTORY_OFFSET),
             "index");
         outMsg.writeInt32(amount, "amount");
     }
-    else if (source == Inventory::STORAGE
-             && destination == Inventory::INVENTORY)
+    else if (source == InventoryType::STORAGE
+             && destination == InventoryType::INVENTORY)
     {
         createOutPacket(CSMG_MOVE_FROM_STORAGE);
         outMsg.writeInt16(static_cast<int16_t>(slot + STORAGE_OFFSET),

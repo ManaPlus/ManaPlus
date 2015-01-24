@@ -892,6 +892,7 @@ SET(SRCS
     enums/dragdropsource.h
     enums/equipslot.h
     enums/guildpositionflags.h
+    enums/inventorytype.h
     particle/imageparticle.cpp
     particle/imageparticle.h
     imagesprite.cpp

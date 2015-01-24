@@ -75,8 +75,8 @@ TradeWindow::TradeWindow() :
     Window(_("Trade: You"), false, nullptr, "trade.xml"),
     ActionListener(),
     SelectionListener(),
-    mMyInventory(new Inventory(Inventory::TRADE)),
-    mPartnerInventory(new Inventory(Inventory::TRADE)),
+    mMyInventory(new Inventory(InventoryType::TRADE)),
+    mPartnerInventory(new Inventory(InventoryType::TRADE)),
     mMyItemContainer(new ItemContainer(this, mMyInventory)),
     mPartnerItemContainer(new ItemContainer(this, mPartnerInventory)),
     // TRANSLATORS: trade window money label

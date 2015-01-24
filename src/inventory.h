@@ -23,6 +23,8 @@
 #ifndef INVENTORY_H
 #define INVENTORY_H
 
+#include "enums/inventorytype.h"
+
 #include "enums/being/gender.h"
 
 #include <list>
@@ -39,17 +41,6 @@ class Inventory final
         A_DELETE_COPY(Inventory)
 
         static const int NO_SLOT_INDEX = -1; /**< Slot has no index. */
-
-        enum
-        {
-            INVENTORY = 0,
-            STORAGE,
-            CART,
-            TRADE,
-            NPC,
-            TYPE_END
-        };
-
 
         /**
          * Constructor.
@@ -161,7 +152,7 @@ class Inventory final
         { return mType; }
 
         bool isMainInventory() const A_WARN_UNUSED
-        { return mType == INVENTORY; }
+        { return mType == InventoryType::INVENTORY; }
 
         const Item *findItemBySprite(std::string spritePath,
                                      const Gender::Type gender,

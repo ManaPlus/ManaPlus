@@ -292,18 +292,18 @@ std::string Inventory::getName() const
 {
     switch (mType)
     {
-        case INVENTORY:
+        case InventoryType::INVENTORY:
         default:
         {
             // TRANSLATORS: inventory type name
             return N_("Inventory");
         }
-        case STORAGE:
+        case InventoryType::STORAGE:
         {
             // TRANSLATORS: inventory type name
             return N_("Storage");
         }
-        case CART:
+        case InventoryType::CART:
         {
             // TRANSLATORS: inventory type name
             return N_("Cart");

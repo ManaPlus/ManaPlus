@@ -264,26 +264,26 @@ void InventoryHandler::moveItem2(const int source,
 {
     int packet = 0;
     int offset = INVENTORY_OFFSET;
-    if (source == Inventory::INVENTORY)
+    if (source == InventoryType::INVENTORY)
     {
-        if (destination == Inventory::STORAGE)
+        if (destination == InventoryType::STORAGE)
             packet = CMSG_MOVE_TO_STORAGE;
-        else if (destination == Inventory::CART)
+        else if (destination == InventoryType::CART)
             packet = CMSG_MOVE_TO_CART;
     }
-    else if (source == Inventory::STORAGE)
+    else if (source == InventoryType::STORAGE)
     {
         offset = STORAGE_OFFSET;
-        if (destination == Inventory::INVENTORY)
+        if (destination == InventoryType::INVENTORY)
             packet = CSMG_MOVE_FROM_STORAGE;
-        else if (destination == Inventory::CART)
+        else if (destination == InventoryType::CART)
             packet = CMSG_MOVE_FROM_STORAGE_TO_CART;
     }
-    else if (source == Inventory::CART)
+    else if (source == InventoryType::CART)
     {
-        if (destination == Inventory::INVENTORY)
+        if (destination == InventoryType::INVENTORY)
             packet = CMSG_MOVE_FROM_CART;
-        else if (destination == Inventory::STORAGE)
+        else if (destination == InventoryType::STORAGE)
             packet = CMSG_MOVE_FROM_CART_TO_STORAGE;
     }
 

@@ -220,12 +220,12 @@ static Item *getItemByInvIndex(const InputEvent &event, const int invType)
     const Inventory *inv = nullptr;
     switch (invType)
     {
-        case Inventory::STORAGE:
+        case InventoryType::STORAGE:
             inv = PlayerInfo::getStorageInventory();
             break;
 
         default:
-        case Inventory::INVENTORY:
+        case InventoryType::INVENTORY:
             inv = PlayerInfo::getInventory();
             break;
     }
@@ -430,7 +430,7 @@ impHandler(dropItemId)
 
 impHandler(dropItemInv)
 {
-    Item *const item = getItemByInvIndex(event, Inventory::INVENTORY);
+    Item *const item = getItemByInvIndex(event, InventoryType::INVENTORY);
     if (item && !PlayerInfo::isItemProtected(item->getId()))
     {
         ItemAmountWindow::showWindow(ItemAmountWindow::ItemDrop,
@@ -455,7 +455,7 @@ impHandler(dropItemIdAll)
 
 impHandler(dropItemInvAll)
 {
-    Item *const item = getItemByInvIndex(event, Inventory::INVENTORY);
+    Item *const item = getItemByInvIndex(event, InventoryType::INVENTORY);
     if (item && !PlayerInfo::isItemProtected(item->getId()))
         PlayerInfo::dropItem(item, item->getQuantity(), true);
     return true;
@@ -1431,7 +1431,7 @@ impHandler(useItem)
 
 impHandler(useItemInv)
 {
-    Item *const item = getItemByInvIndex(event, Inventory::INVENTORY);
+    Item *const item = getItemByInvIndex(event, InventoryType::INVENTORY);
     PlayerInfo::useEquipItem(item, true);
     return true;
 }
@@ -1439,13 +1439,13 @@ impHandler(useItemInv)
 impHandler(invToStorage)
 {
     Item *item = nullptr;
-    const int amount = getAmountFromEvent(event, item, Inventory::INVENTORY);
+    const int amount = getAmountFromEvent(event, item, InventoryType::INVENTORY);
     if (amount)
     {
-        inventoryHandler->moveItem2(Inventory::INVENTORY,
+        inventoryHandler->moveItem2(InventoryType::INVENTORY,
             item->getInvIndex(),
             amount,
-            Inventory::STORAGE);
+            InventoryType::STORAGE);
     }
     else
     {
@@ -1458,7 +1458,7 @@ impHandler(invToStorage)
 impHandler(tradeAdd)
 {
     Item *item = nullptr;
-    const int amount = getAmountFromEvent(event, item, Inventory::INVENTORY);
+    const int amount = getAmountFromEvent(event, item, InventoryType::INVENTORY);
     if (!item || PlayerInfo::isItemProtected(item->getId()))
         return true;
 
@@ -1477,13 +1477,13 @@ impHandler(tradeAdd)
 impHandler(storageToInv)
 {
     Item *item = nullptr;
-    const int amount = getAmountFromEvent(event, item, Inventory::STORAGE);
+    const int amount = getAmountFromEvent(event, item, InventoryType::STORAGE);
     if (amount)
     {
-        inventoryHandler->moveItem2(Inventory::STORAGE,
+        inventoryHandler->moveItem2(InventoryType::STORAGE,
             item->getInvIndex(),
             amount,
-            Inventory::INVENTORY);
+            InventoryType::INVENTORY);
     }
     else
     {

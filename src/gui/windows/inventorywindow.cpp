@@ -117,18 +117,18 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
         setWindowName(inventory->getName());
         switch (inventory->getType())
         {
-            case Inventory::INVENTORY:
-            case Inventory::TRADE:
-            case Inventory::NPC:
+            case InventoryType::INVENTORY:
+            case InventoryType::TRADE:
+            case InventoryType::NPC:
             default:
                 mSortDropDown->setSelected(config.getIntValue(
                     "inventorySortOrder"));
                 break;
-            case Inventory::STORAGE:
+            case InventoryType::STORAGE:
                 mSortDropDown->setSelected(config.getIntValue(
                     "storageSortOrder"));
                 break;
-            case Inventory::CART:
+            case InventoryType::CART:
                 mSortDropDown->setSelected(config.getIntValue(
                     "cartSortOrder"));
                 break;
@@ -176,7 +176,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
 
     switch (mInventory->getType())
     {
-        case Inventory::INVENTORY:
+        case InventoryType::INVENTORY:
         {
             // TRANSLATORS: inventory button
             const std::string equip = _("Equip");
@@ -233,7 +233,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
             break;
         }
 
-        case Inventory::STORAGE:
+        case InventoryType::STORAGE:
         {
             // TRANSLATORS: storage button
             mStoreButton = new Button(this, _("Store"), "store", this);
@@ -255,7 +255,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
             break;
         }
 
-        case Inventory::CART:
+        case InventoryType::CART:
         {
             // TRANSLATORS: storage button
             mStoreButton = new Button(this, _("Store"), "store", this);
@@ -278,8 +278,8 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
         }
 
         default:
-        case Inventory::TRADE:
-        case Inventory::NPC:
+        case InventoryType::TRADE:
+        case InventoryType::NPC:
             break;
     };
 
@@ -310,7 +310,7 @@ void InventoryWindow::postInit()
 
     mItems->setSortType(mSortDropDown->getSelected());
     widgetResized(Event(nullptr));
-    if (mInventory->getType() == Inventory::INVENTORY)
+    if (mInventory->getType() == InventoryType::INVENTORY)
         setVisible(true);
 }
 
@@ -332,18 +332,18 @@ void InventoryWindow::storeSortOrder() const
     {
         switch (mInventory->getType())
         {
-            case Inventory::INVENTORY:
-            case Inventory::TRADE:
-            case Inventory::NPC:
+            case InventoryType::INVENTORY:
+            case InventoryType::TRADE:
+            case InventoryType::NPC:
             default:
                 config.setValue("inventorySortOrder",
                     mSortDropDown->getSelected());
                 break;
-            case Inventory::STORAGE:
+            case InventoryType::STORAGE:
                 config.setValue("storageSortOrder",
                     mSortDropDown->getSelected());
                 break;
-            case Inventory::CART:
+            case InventoryType::CART:
                 config.setValue("cartSortOrder",
                     mSortDropDown->getSelected());
                 break;
@@ -421,9 +421,9 @@ void InventoryWindow::action(const ActionEvent &event)
     {
         if (isStorageActive())
         {
-            inventoryHandler->moveItem2(Inventory::INVENTORY,
+            inventoryHandler->moveItem2(InventoryType::INVENTORY,
                     item->getInvIndex(), item->getQuantity(),
-                    Inventory::STORAGE);
+                    InventoryType::STORAGE);
         }
         else
         {
@@ -526,9 +526,9 @@ void InventoryWindow::mouseClicked(MouseEvent &event)
                 }
                 else
                 {
-                    inventoryHandler->moveItem2(Inventory::INVENTORY,
+                    inventoryHandler->moveItem2(InventoryType::INVENTORY,
                         item->getInvIndex(), item->getQuantity(),
-                        Inventory::STORAGE);
+                        InventoryType::STORAGE);
                 }
             }
             else
@@ -540,9 +540,9 @@ void InventoryWindow::mouseClicked(MouseEvent &event)
                 }
                 else
                 {
-                    inventoryHandler->moveItem2(Inventory::STORAGE,
+                    inventoryHandler->moveItem2(InventoryType::STORAGE,
                         item->getInvIndex(), item->getQuantity(),
-                        Inventory::INVENTORY);
+                        InventoryType::INVENTORY);
                 }
             }
         }
@@ -711,23 +711,23 @@ void InventoryWindow::close()
 {
     switch (mInventory->getType())
     {
-        case Inventory::INVENTORY:
-        case Inventory::CART:
+        case InventoryType::INVENTORY:
+        case InventoryType::CART:
             setVisible(false);
             break;
 
-        case Inventory::STORAGE:
+        case InventoryType::STORAGE:
             if (inventoryHandler)
             {
-                inventoryHandler->closeStorage(Inventory::STORAGE);
+                inventoryHandler->closeStorage(InventoryType::STORAGE);
                 inventoryHandler->forgotStorage();
             }
             scheduleDelete();
             break;
 
         default:
-        case Inventory::TRADE:
-        case Inventory::NPC:
+        case InventoryType::TRADE:
+        case InventoryType::NPC:
             break;
     }
 }
