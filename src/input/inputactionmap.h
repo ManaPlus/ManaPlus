@@ -3969,6 +3969,11 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputCondition::INGAME,
         "cleardrops|cleardrop|cleardropwindow|dropclear|dropsclear",
         false},
+    {"keyWindowCart",
+        defaultAction(&Actions::cartWindowShow),
+        InputCondition::SHORTCUT0,
+        "cart|opencart",
+        false},
 };
 
 #undef defaultAction

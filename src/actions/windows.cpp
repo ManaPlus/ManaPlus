@@ -275,6 +275,15 @@ impHandler0(bankWindowShow)
     return true;
 }
 
+impHandler0(cartWindowShow)
+{
+    if (!serverFeatures->haveCart())
+        return false;
+
+    showHideWindow(cartWindow);
+    return true;
+}
+
 impHandler0(updaterWindowShow)
 {
     if (updaterWindow)

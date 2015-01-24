@@ -89,6 +89,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
     mSplitButton(nullptr),
     mOutfitButton(nullptr),
     mShopButton(nullptr),
+    mCartButton(nullptr),
     mEquipmentButton(nullptr),
     mStoreButton(nullptr),
     mRetrieveButton(nullptr),
@@ -117,7 +118,6 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
         switch (inventory->getType())
         {
             case Inventory::INVENTORY:
-            case Inventory::CART:
             case Inventory::TRADE:
             case Inventory::NPC:
             default:
@@ -127,6 +127,10 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
             case Inventory::STORAGE:
                 mSortDropDown->setSelected(config.getIntValue(
                     "storageSortOrder"));
+                break;
+            case Inventory::CART:
+                mSortDropDown->setSelected(config.getIntValue(
+                    "cartSortOrder"));
                 break;
         };
     }
@@ -170,78 +174,114 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
     for (size_t f = 0; f < sz; f ++)
         mFilter->addButton(tags[f], tags[f], false);
 
-    if (isMainInventory())
+    switch (mInventory->getType())
     {
-        // TRANSLATORS: inventory button
-        const std::string equip = _("Equip");
-        // TRANSLATORS: inventory button
-        const std::string use = _("Use");
-        // TRANSLATORS: inventory button
-        const std::string unequip = _("Unequip");
-
-        std::string longestUseString = getFont()->getWidth(equip) >
-            getFont()->getWidth(use) ? equip : use;
-
-        if (getFont()->getWidth(longestUseString) <
-            getFont()->getWidth(unequip))
+        case Inventory::INVENTORY:
         {
-            longestUseString = unequip;
+            // TRANSLATORS: inventory button
+            const std::string equip = _("Equip");
+            // TRANSLATORS: inventory button
+            const std::string use = _("Use");
+            // TRANSLATORS: inventory button
+            const std::string unequip = _("Unequip");
+
+            std::string longestUseString = getFont()->getWidth(equip) >
+                getFont()->getWidth(use) ? equip : use;
+
+            if (getFont()->getWidth(longestUseString) <
+                getFont()->getWidth(unequip))
+            {
+                longestUseString = unequip;
+            }
+
+            mUseButton = new Button(this, longestUseString, "use", this);
+            // TRANSLATORS: inventory button
+            mDropButton = new Button(this, _("Drop..."), "drop", this);
+            // TRANSLATORS: inventory button
+            mSplitButton = new Button(this, _("Split"), "split", this);
+            // TRANSLATORS: inventory outfits button
+            mOutfitButton = new Button(this, _("O"), "outfit", this);
+            // TRANSLATORS: inventory cart button
+            mCartButton = new Button(this, _("C"), "cart", this);
+            // TRANSLATORS: inventory shop button
+            mShopButton = new Button(this, _("S"), "shop", this);
+            // TRANSLATORS: inventory equipment button
+            mEquipmentButton = new Button(this, _("E"), "equipment", this);
+            mWeightBar = new ProgressBar(this, 0.0F, 100, 0, Theme::PROG_WEIGHT,
+                "weightprogressbar.xml", "weightprogressbar_fill.xml");
+            mWeightBar->setColor(getThemeColor(Theme::WEIGHT_BAR),
+                getThemeColor(Theme::WEIGHT_BAR_OUTLINE));
+
+            place(0, 0, mWeightBar, 4);
+            mSlotsBarCell = &place(4, 0, mSlotsBar, 4);
+            mSortDropDownCell = &place(8, 0, mSortDropDown, 3);
+
+            mFilterCell = &place(0, 1, mFilter, 10).setPadding(3);
+            mNameFilterCell = &place(8, 1, mNameFilter, 3);
+
+            place(0, 2, invenScroll, 11).setPadding(3);
+            place(0, 3, mUseButton);
+            place(1, 3, mDropButton);
+            place(8, 2, mSplitButton);
+            ContainerPlacer placer = getPlacer(10, 3);
+            placer(0, 0, mShopButton);
+            placer(1, 0, mOutfitButton);
+            placer(2, 0, mCartButton);
+            placer(3, 0, mEquipmentButton);
+
+            updateWeight();
+            break;
         }
 
-        mUseButton = new Button(this, longestUseString, "use", this);
-        // TRANSLATORS: inventory button
-        mDropButton = new Button(this, _("Drop..."), "drop", this);
-        // TRANSLATORS: inventory button
-        mSplitButton = new Button(this, _("Split"), "split", this);
-        // TRANSLATORS: inventory outfits button
-        mOutfitButton = new Button(this, _("O"), "outfit", this);
-        // TRANSLATORS: inventory shop button
-        mShopButton = new Button(this, _("S"), "shop", this);
-        // TRANSLATORS: inventory equipment button
-        mEquipmentButton = new Button(this, _("E"), "equipment", this);
-        mWeightBar = new ProgressBar(this, 0.0F, 100, 0, Theme::PROG_WEIGHT,
-            "weightprogressbar.xml", "weightprogressbar_fill.xml");
-        mWeightBar->setColor(getThemeColor(Theme::WEIGHT_BAR),
-            getThemeColor(Theme::WEIGHT_BAR_OUTLINE));
+        case Inventory::STORAGE:
+        {
+            // TRANSLATORS: storage button
+            mStoreButton = new Button(this, _("Store"), "store", this);
+            // TRANSLATORS: storage button
+            mRetrieveButton = new Button(this, _("Retrieve"), "retrieve", this);
+            // TRANSLATORS: storage button
+            mInvCloseButton = new Button(this, _("Close"), "close", this);
 
-        place(0, 0, mWeightBar, 4);
-        mSlotsBarCell = &place(4, 0, mSlotsBar, 4);
-        mSortDropDownCell = &place(8, 0, mSortDropDown, 3);
+            mSlotsBarCell = &place(0, 0, mSlotsBar, 6);
+            mSortDropDownCell = &place(6, 0, mSortDropDown, 1);
 
-        mFilterCell = &place(0, 1, mFilter, 10).setPadding(3);
-        mNameFilterCell = &place(8, 1, mNameFilter, 3);
+            mFilterCell = &place(0, 1, mFilter, 7).setPadding(3);
+            mNameFilterCell = &place(6, 1, mNameFilter, 1);
 
-        place(0, 2, invenScroll, 11).setPadding(3);
-        place(0, 3, mUseButton);
-        place(1, 3, mDropButton);
-        place(8, 2, mSplitButton);
-        ContainerPlacer placer = getPlacer(10, 3);
-        placer(0, 0, mShopButton);
-        placer(1, 0, mOutfitButton);
-        placer(2, 0, mEquipmentButton);
+            place(0, 2, invenScroll, 7, 4);
+            place(0, 6, mStoreButton);
+            place(1, 6, mRetrieveButton);
+            place(6, 6, mInvCloseButton);
+            break;
+        }
 
-        updateWeight();
-    }
-    else
-    {
-        // TRANSLATORS: storage button
-        mStoreButton = new Button(this, _("Store"), "store", this);
-        // TRANSLATORS: storage button
-        mRetrieveButton = new Button(this, _("Retrieve"), "retrieve", this);
-        // TRANSLATORS: storage button
-        mInvCloseButton = new Button(this, _("Close"), "close", this);
+        case Inventory::CART:
+        {
+            // TRANSLATORS: storage button
+            mStoreButton = new Button(this, _("Store"), "store", this);
+            // TRANSLATORS: storage button
+            mRetrieveButton = new Button(this, _("Retrieve"), "retrieve", this);
+            // TRANSLATORS: storage button
+            mInvCloseButton = new Button(this, _("Close"), "close", this);
 
-        mSlotsBarCell = &place(0, 0, mSlotsBar, 6);
-        mSortDropDownCell = &place(6, 0, mSortDropDown, 1);
+            mSlotsBarCell = &place(0, 0, mSlotsBar, 6);
+            mSortDropDownCell = &place(6, 0, mSortDropDown, 1);
 
-        mFilterCell = &place(0, 1, mFilter, 7).setPadding(3);
-        mNameFilterCell = &place(6, 1, mNameFilter, 1);
+            mFilterCell = &place(0, 1, mFilter, 7).setPadding(3);
+            mNameFilterCell = &place(6, 1, mNameFilter, 1);
 
-        place(0, 2, invenScroll, 7, 4);
-        place(0, 6, mStoreButton);
-        place(1, 6, mRetrieveButton);
-        place(6, 6, mInvCloseButton);
-    }
+            place(0, 2, invenScroll, 7, 4);
+            place(0, 6, mStoreButton);
+            place(1, 6, mRetrieveButton);
+            place(6, 6, mInvCloseButton);
+            break;
+        }
+
+        default:
+        case Inventory::TRADE:
+        case Inventory::NPC:
+            break;
+    };
 
     Layout &layout = getLayout();
     layout.setRowHeight(2, LayoutType::SET);
@@ -270,7 +310,7 @@ void InventoryWindow::postInit()
 
     mItems->setSortType(mSortDropDown->getSelected());
     widgetResized(Event(nullptr));
-    if (!isMainInventory())
+    if (mInventory->getType() == Inventory::INVENTORY)
         setVisible(true);
 }
 
@@ -293,7 +333,6 @@ void InventoryWindow::storeSortOrder() const
         switch (mInventory->getType())
         {
             case Inventory::INVENTORY:
-            case Inventory::CART:
             case Inventory::TRADE:
             case Inventory::NPC:
             default:
@@ -302,6 +341,10 @@ void InventoryWindow::storeSortOrder() const
                 break;
             case Inventory::STORAGE:
                 config.setValue("storageSortOrder",
+                    mSortDropDown->getSelected());
+                break;
+            case Inventory::CART:
+                config.setValue("cartSortOrder",
                     mSortDropDown->getSelected());
                 break;
         };
@@ -322,6 +365,10 @@ void InventoryWindow::action(const ActionEvent &event)
     else if (eventId == "equipment")
     {
         inputManager.executeAction(InputAction::WINDOW_EQUIPMENT);
+    }
+    else if (eventId == "cart")
+    {
+        inputManager.executeAction(InputAction::WINDOW_CART);
     }
     else if (eventId == "close")
     {
@@ -662,18 +709,26 @@ void InventoryWindow::setSplitAllowed(const bool allowed)
 
 void InventoryWindow::close()
 {
-    if (this == inventoryWindow)
+    switch (mInventory->getType())
     {
-        setVisible(false);
-    }
-    else
-    {
-        if (inventoryHandler)
-        {
-            inventoryHandler->closeStorage(Inventory::STORAGE);
-            inventoryHandler->forgotStorage();
-        }
-        scheduleDelete();
+        case Inventory::INVENTORY:
+        case Inventory::CART:
+            setVisible(false);
+            break;
+
+        case Inventory::STORAGE:
+            if (inventoryHandler)
+            {
+                inventoryHandler->closeStorage(Inventory::STORAGE);
+                inventoryHandler->forgotStorage();
+            }
+            scheduleDelete();
+            break;
+
+        default:
+        case Inventory::TRADE:
+        case Inventory::NPC:
+            break;
     }
 }
 
