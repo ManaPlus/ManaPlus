@@ -100,6 +100,7 @@ InventoryHandler::InventoryHandler() :
         SMSG_CART_REMOVE,
         SMSG_PLAYER_CART_ADD,
         SMSG_PLAYER_CART_EQUIP,
+        SMSG_PLAYER_CART_ITEMS,
         0
     };
     handledMessages = _messages;
@@ -214,6 +215,10 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_PLAYER_CART_EQUIP:
             processPlayerCartEquip(msg);
+            break;
+
+        case SMSG_PLAYER_CART_ITEMS:
+            processPlayerCartItems(msg);
             break;
 
         default:
@@ -858,6 +863,35 @@ void InventoryHandler::processPlayerCartEquip(Net::MessageIn &msg)
             flags.bits.isDamaged, flags.bits.isFavorite, false));
     }
     BLOCK_END("InventoryHandler::processPlayerCartEquip")
+}
+
+void InventoryHandler::processPlayerCartItems(Net::MessageIn &msg)
+{
+    BLOCK_START("InventoryHandler::processPlayerCartItems")
+    mInventoryItems.clear();
+
+    msg.readInt16("len");
+    const int number = (msg.getLength() - 4) / 23;
+
+    for (int loop = 0; loop < number; loop++)
+    {
+        const int index = msg.readInt16("item index") - STORAGE_OFFSET;
+        const int itemId = msg.readInt16("item id");
+        const int itemType = msg.readUInt8("item type");
+        const int amount = msg.readInt16("count");
+        msg.readInt32("wear state / equip");
+        int cards[4];
+        for (int f = 0; f < 4; f++)
+            cards[f] = msg.readInt16("card");
+        msg.readInt32("hire expire date (?)");
+        ItemFlags flags;
+        flags.byte = msg.readUInt8("flags");
+
+        mCartItems.push_back(Ea::InventoryItem(index, itemId, itemType,
+            cards, amount, 0, 1, flags.bits.isIdentified,
+            flags.bits.isDamaged, flags.bits.isFavorite, false));
+    }
+    BLOCK_END("InventoryHandler::processPlayerCartItems")
 }
 
 }  // namespace EAthena
