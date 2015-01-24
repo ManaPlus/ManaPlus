@@ -67,6 +67,8 @@ const EquipSlot::Type EQUIP_CONVERT[] =
 namespace EAthena
 {
 
+Ea::InventoryItems InventoryHandler::mCartItems;
+
 InventoryHandler::InventoryHandler() :
     MessageHandler(),
     Ea::InventoryHandler()
@@ -97,10 +99,13 @@ InventoryHandler::InventoryHandler() :
         SMSG_CART_INFO,
         SMSG_CART_REMOVE,
         SMSG_PLAYER_CART_ADD,
+        SMSG_PLAYER_CART_EQUIP,
         0
     };
     handledMessages = _messages;
     inventoryHandler = this;
+
+    mCartItems.clear();
 }
 
 InventoryHandler::~InventoryHandler()
@@ -205,6 +210,10 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_PLAYER_CART_ADD:
             processPlayerCartAdd(msg);
+            break;
+
+        case SMSG_PLAYER_CART_EQUIP:
+            processPlayerCartEquip(msg);
             break;
 
         default:
@@ -795,6 +804,36 @@ void InventoryHandler::processPlayerCartAdd(Net::MessageIn &msg)
         inventory->setCards(index, cards, 4);
     }
     BLOCK_END("InventoryHandler::processPlayerCartAdd")
+}
+
+void InventoryHandler::processPlayerCartEquip(Net::MessageIn &msg)
+{
+    BLOCK_START("InventoryHandler::processPlayerCartEquip")
+    msg.readInt16("len");
+    const int number = (msg.getLength() - 4) / 31;
+    for (int loop = 0; loop < number; loop++)
+    {
+        const int index = msg.readInt16("index") - STORAGE_OFFSET;
+        const int itemId = msg.readInt16("item id");
+        const int itemType = msg.readUInt8("item type");
+        const int amount = 1;
+        msg.readInt32("location");
+        msg.readInt32("wear state");
+        const uint8_t refine = msg.readUInt8("refine level");
+        int cards[4];
+        for (int f = 0; f < 4; f++)
+            cards[f] = msg.readInt16("card");
+        msg.readInt32("hire expire date");
+        msg.readInt16("bind on equip");
+        msg.readInt16("sprite");
+        ItemFlags flags;
+        flags.byte = msg.readUInt8("flags");
+
+        mCartItems.push_back(Ea::InventoryItem(index, itemId, itemType,
+            cards, amount, refine, 1, flags.bits.isIdentified,
+            flags.bits.isDamaged, flags.bits.isFavorite, false));
+    }
+    BLOCK_END("InventoryHandler::processPlayerCartEquip")
 }
 
 }  // namespace EAthena
