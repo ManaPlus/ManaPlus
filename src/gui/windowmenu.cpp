@@ -100,6 +100,9 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
     // TRANSLATORS: short button name for inventory window.
     addButton(N_("INV"),
         _("Inventory"), x, h, InputAction::WINDOW_INVENTORY);
+    // TRANSLATORS: short button name for cart window.
+    addButton(N_("CA"),
+        _("Cart"), x, h, InputAction::WINDOW_CART);
     // TRANSLATORS: short button name for map window.
     addButton(N_("MAP"),
         _("Map"), x, h, InputAction::WINDOW_MINIMAP, false);
