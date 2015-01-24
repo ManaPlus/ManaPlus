@@ -753,9 +753,33 @@ void InventoryHandler::processPlayerStorageRemove(Net::MessageIn &msg)
 void InventoryHandler::processCartInfo(Net::MessageIn &msg)
 {
     msg.readInt16("cart items used");
-    msg.readInt16("max cart items");
+    const int size = msg.readInt16("max cart items");
     msg.readInt32("cart weight");
     msg.readInt32("max cart weight");
+    if (mCartItems.empty())
+        return;
+
+    Inventory *const inv = PlayerInfo::getCartInventory();
+    if (!inv)
+        return;
+
+    inv->resize(size);
+
+    FOR_EACH (Ea::InventoryItems::const_iterator, it, mCartItems)
+    {
+        inv->setItem((*it).slot,
+            (*it).id,
+            (*it).type,
+            (*it).quantity,
+            (*it).refine,
+            (*it).color,
+            (*it).identified,
+            (*it).damaged,
+            (*it).favorite,
+            (*it).equip,
+            false);
+    }
+    mCartItems.clear();
 }
 
 void InventoryHandler::processCartRemove(Net::MessageIn &msg A_UNUSED)
