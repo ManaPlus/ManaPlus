@@ -847,7 +847,7 @@ void InventoryHandler::processPlayerCartEquip(Net::MessageIn &msg)
     const int number = (msg.getLength() - 4) / 31;
     for (int loop = 0; loop < number; loop++)
     {
-        const int index = msg.readInt16("index") - STORAGE_OFFSET;
+        const int index = msg.readInt16("index") - INVENTORY_OFFSET;
         const int itemId = msg.readInt16("item id");
         const int itemType = msg.readUInt8("item type");
         const int amount = 1;
@@ -880,7 +880,7 @@ void InventoryHandler::processPlayerCartItems(Net::MessageIn &msg)
 
     for (int loop = 0; loop < number; loop++)
     {
-        const int index = msg.readInt16("item index") - STORAGE_OFFSET;
+        const int index = msg.readInt16("item index") - INVENTORY_OFFSET;
         const int itemId = msg.readInt16("item id");
         const int itemType = msg.readUInt8("item type");
         const int amount = msg.readInt16("count");
