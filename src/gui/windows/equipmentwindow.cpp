@@ -430,9 +430,14 @@ void EquipmentWindow::mousePressed(MouseEvent& event)
             {
                 event.consume();
                 if (mForing)
+                {
                     popupMenu->showUndressPopup(mx, my, mBeing, item);
+                }
                 else
-                    popupMenu->showPopup(this, mx, my, item, true);
+                {
+                    popupMenu->showPopup(this, mx, my, item,
+                        InventoryType::INVENTORY);
+                }
                 return;
             }
         }

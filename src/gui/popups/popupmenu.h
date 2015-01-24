@@ -23,6 +23,8 @@
 #ifndef GUI_POPUPS_POPUPMENU_H
 #define GUI_POPUPS_POPUPMENU_H
 
+#include "enums/inventorytype.h"
+
 #include "gui/widgets/linkhandler.h"
 #include "gui/widgets/popup.h"
 
@@ -89,7 +91,7 @@ class PopupMenu final : public Popup, public LinkHandler
         void showPopup(Window *const parent,
                        const int x, const int y,
                        Item *const item,
-                       const int type);
+                       const InventoryType::Type type);
 
         void showPopup(const int x, const int y, Button *const button);
 

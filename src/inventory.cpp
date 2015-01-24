@@ -53,7 +53,7 @@ namespace
     };
 }  // namespace
 
-Inventory::Inventory(const int type, const int size1) :
+Inventory::Inventory(const InventoryType::Type type, const int size1) :
     mInventoryListeners(),
     mType(type),
     mSize(size1 == -1 ? static_cast<unsigned>(

@@ -47,7 +47,8 @@ class Inventory final
          *
          * @param size the number of items that fit in the inventory
          */
-        explicit Inventory(const int type, const int size = -1);
+        explicit Inventory(const InventoryType::Type type,
+                           const int size = -1);
 
         /**
          * Destructor.
@@ -148,7 +149,7 @@ class Inventory final
 
         void removeInventoyListener(InventoryListener *const listener);
 
-        int getType() const A_WARN_UNUSED
+        InventoryType::Type getType() const A_WARN_UNUSED
         { return mType; }
 
         bool isMainInventory() const A_WARN_UNUSED
@@ -168,7 +169,7 @@ class Inventory final
 
         void distributeSlotsChangedEvent();
 
-        int mType;
+        InventoryType::Type mType;
         unsigned mSize; /**< The max number of inventory items */
         Item **mItems;  /**< The holder of items */
         int mUsed;      /**< THe number of slots in use */

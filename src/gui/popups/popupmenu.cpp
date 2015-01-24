@@ -1612,7 +1612,7 @@ void PopupMenu::handleLink(const std::string &link,
 void PopupMenu::showPopup(Window *const parent,
                           const int x, const int y,
                           Item *const item,
-                          const int type)
+                          const InventoryType::Type type)
 {
     if (!item)
         return;
