@@ -101,6 +101,7 @@ InventoryHandler::InventoryHandler() :
         SMSG_PLAYER_CART_ADD,
         SMSG_PLAYER_CART_EQUIP,
         SMSG_PLAYER_CART_ITEMS,
+        SMSG_PLAYER_CART_REMOVE,
         0
     };
     handledMessages = _messages;
@@ -219,6 +220,10 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_PLAYER_CART_ITEMS:
             processPlayerCartItems(msg);
+            break;
+
+        case SMSG_PLAYER_CART_REMOVE:
+            processPlayerCartRemove(msg);
             break;
 
         default:
@@ -892,6 +897,25 @@ void InventoryHandler::processPlayerCartItems(Net::MessageIn &msg)
             flags.bits.isDamaged, flags.bits.isFavorite, false));
     }
     BLOCK_END("InventoryHandler::processPlayerCartItems")
+}
+
+void InventoryHandler::processPlayerCartRemove(Net::MessageIn &msg)
+{
+    BLOCK_START("InventoryHandler::processPlayerCartRemove")
+    const int index = msg.readInt16("index") - INVENTORY_OFFSET;
+    const int amount = msg.readInt32("amount");
+
+    Inventory *const inv = PlayerInfo::getCartInventory();
+    if (!inv)
+        return;
+
+    if (Item *const item = inv->getItem(index))
+    {
+        item->increaseQuantity(-amount);
+        if (item->getQuantity() == 0)
+            inv->removeItemAt(index);
+    }
+    BLOCK_END("InventoryHandler::processPlayerCartRemove")
 }
 
 }  // namespace EAthena
