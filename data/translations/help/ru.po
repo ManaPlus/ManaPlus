@@ -393,7 +393,7 @@ msgid "Contributors to client development"
 msgstr "В разработке клиентской части принимали участие"
 
 msgid "/gm MESSAGE - send message to all online gms."
-msgstr "/gm MESSAGE - посылает сообщение ко всем гм"
+msgstr "/gm MESSAGE - посылает сообщение ко всем гм."
 
 msgid ""
 "You can do basic searching in help by using command\n"

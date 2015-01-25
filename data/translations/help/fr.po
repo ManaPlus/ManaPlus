@@ -7,11 +7,12 @@
 # Bernard <nard@bh28.net>, 2012,2014
 # Bernard <nard@bh28.net>, 2012
 # Choupom <andycootlapin@hotmail.fr>, 2012
+# Escales Loïc <loic.escales@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2014-12-28 22:29+0000\n"
-"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"PO-Revision-Date: 2015-01-19 20:23+0000\n"
+"Last-Translator: Escales Loïc <loic.escales@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/manaplus/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -57,7 +58,7 @@ msgid "\"Quick drop window\""
 msgstr "\"Fenêtre de jet rapide\""
 
 msgid "Official site:"
-msgstr ""
+msgstr "Site officiel:"
 
 msgid ""
 " You can improve your skills by increasing job level. Each job level\n"
@@ -386,7 +387,7 @@ msgid "Contributors to client development"
 msgstr "Contributeurs au développement du client"
 
 msgid "/gm MESSAGE - send message to all online gms."
-msgstr ""
+msgstr "/gm MESSAGE - avoyer le message à tous les mj en ligne."
 
 msgid ""
 "You can do basic searching in help by using command\n"
