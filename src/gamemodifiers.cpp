@@ -21,6 +21,7 @@
 #include "gamemodifiers.h"
 
 #include "configuration.h"
+#include "game.h"
 #include "settings.h"
 #include "soundmanager.h"
 
@@ -408,6 +409,7 @@ void GameModifiers::changeAwayMode()
     localPlayer->setAfkTime(0);
     localPlayer->setHalfAway(false);
     localPlayer->updateName();
+    Game::instance()->updateFrameRate(0);
     UpdateStatusListener::distributeEvent();
     if (settings.awayMode)
     {
