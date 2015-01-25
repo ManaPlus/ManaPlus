@@ -48,6 +48,7 @@
 
 #include "input/keyboardconfig.h"
 
+#include "gui/chatconsts.h"
 #include "gui/gui.h"
 #include "gui/popupmanager.h"
 
@@ -408,7 +409,7 @@ void LocalPlayer::setGMLevel(const int level)
         {
             chatWindow->loadGMCommands();
             if (!gmChatTab && config.getBoolValue("enableGmTab"))
-                gmChatTab = new GmTab(chatWindow);
+                chatWindow->addSpecialChannelTab(GM_CHANNEL, false);
         }
     }
 }

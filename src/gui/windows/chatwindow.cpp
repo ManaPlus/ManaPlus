@@ -1205,13 +1205,17 @@ ChatTab *ChatWindow::addSpecialChannelTab(const std::string &name,
         {
             tradeChatTab = new TradeTab(chatWindow);
             tradeChatTab->setAllowHighlight(false);
+            chatHandler->joinChannel(tradeChatTab->getChannelName());
         }
         ret = tradeChatTab;
     }
     else if (name == GM_CHANNEL)
     {
         if (!gmChatTab)
+        {
             gmChatTab = new GmTab(chatWindow);
+            chatHandler->joinChannel(gmChatTab->getChannelName());
+        }
         ret = gmChatTab;
     }
     if (switchTo)
@@ -1279,6 +1283,8 @@ void ChatWindow::postConnection()
             return;
         chatHandler->joinChannel(tab->getChannelName());
     }
+    if (langChatTab)
+        chatHandler->joinChannel(langChatTab->getChannelName());
 }
 
 #define changeColor(fun) \
