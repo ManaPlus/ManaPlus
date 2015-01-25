@@ -32,6 +32,12 @@
 SetupActionData setupActionDataWindows[] =
 {
     {
+        // TRANSLATORS: input action label
+        N_("Windows"),
+        InputAction::NO_VALUE,
+        "",
+    },
+    {
         // TRANSLATORS: input action name
         N_("Show Windows Menu"),
         InputAction::SHOW_WINDOWS,
@@ -185,6 +191,18 @@ SetupActionData setupActionDataWindows[] =
         // TRANSLATORS: input action name
         N_("Updates Window"),
         InputAction::WINDOW_UPDATER,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        N_("Cart window"),
+        InputAction::WINDOW_CART,
+        "",
+    },
+    {
+        // TRANSLATORS: input action label
+        N_("Tabs"),
+        InputAction::NO_VALUE,
         "",
     },
     {
