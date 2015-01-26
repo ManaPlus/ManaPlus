@@ -212,6 +212,15 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
             mWeightBar->setColor(getThemeColor(Theme::WEIGHT_BAR),
                 getThemeColor(Theme::WEIGHT_BAR_OUTLINE));
 
+            // TRANSLATORS: outfits button tooltip
+            mOutfitButton->setDescription(_("Outfits"));
+            // TRANSLATORS: cart button tooltip
+            mCartButton->setDescription(_("Cart"));
+            // TRANSLATORS: shop button tooltip
+            mShopButton->setDescription(_("Shop"));
+            // TRANSLATORS: equipment button tooltip
+            mEquipmentButton->setDescription(_("Equipment"));
+
             place(0, 0, mWeightBar, 4);
             mSlotsBarCell = &place(4, 0, mSlotsBar, 4);
             mSortDropDownCell = &place(8, 0, mSortDropDown, 3);
@@ -628,18 +637,29 @@ void InventoryWindow::mouseMoved(MouseEvent &event)
         return;
 
     const Widget *const src = event.getSource();
+    if (!src)
+    {
+        textPopup->hide();
+        return;
+    }
+    const int x = event.getX();
+    const int y = event.getY();
+    const Rect &rect = mDimension;
     if (src == mSlotsBar || src == mWeightBar)
     {
-        const int x = event.getX();
-        const int y = event.getY();
-        const Rect &rect = mDimension;
         textPopup->show(rect.x + x, rect.y + y, strprintf(_("Money: %s"),
             Units::formatCurrency(PlayerInfo::getAttribute(
             Attributes::MONEY)).c_str()));
     }
     else
     {
-        textPopup->hide();
+        const Button *const btn = dynamic_cast<const Button *const>(src);
+        if (!btn)
+        {
+            textPopup->hide();
+            return;
+        }
+        textPopup->show(x + rect.x, y + rect.y, btn->getDescription());
     }
 }
 
