@@ -22,6 +22,8 @@
 
 #include "actions/actiondef.h"
 
+#include "being/localplayer.h"
+
 #include "gui/dialogsmanager.h"
 
 #include "gui/windows/bankwindow.h"
@@ -277,8 +279,12 @@ impHandler0(bankWindowShow)
 
 impHandler0(cartWindowShow)
 {
-    if (!serverFeatures->haveCart())
+    if (!serverFeatures->haveCart()
+        || !localPlayer
+        || !localPlayer->getHaveCart())
+    {
         return false;
+    }
 
     showHideWindow(cartWindow);
     return true;

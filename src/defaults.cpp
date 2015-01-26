@@ -578,6 +578,7 @@ DefaultsData* getPathsDefaults()
     AddDEF("defaultcommandsPatchFile", "defaultcommands_patch.xml");
     AddDEF("defaultcommandsPatchDir", "defaultcommands.d");
     AddDEF("poisonEffectName", "poison");
+    AddDEF("cartEffectName", "cart");
 
     return configData;
 }

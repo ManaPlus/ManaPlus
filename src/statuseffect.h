@@ -124,6 +124,7 @@ class StatusEffect final
         std::string mAction;
         bool mPersistentParticleEffect;
         bool mIsPoison;
+        bool mIsCart;
 };
 
 #endif  // STATUSEFFECT_H

@@ -171,6 +171,12 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
         bool getPoison() const A_WARN_UNUSED
         { return mPoison; }
 
+        void setHaveCart(const bool b)
+        { mHaveCart = b; }
+
+        bool getHaveCart() const A_WARN_UNUSED
+        { return mHaveCart; }
+
     protected:
         /**
          * Notify self that the stun mode has been updated. Invoked by
@@ -232,6 +238,7 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
         /** Reset particle status effects on next redraw? */
         bool mMustResetParticles;
         bool mPoison;
+        bool mHaveCart;
 };
 
 #endif  // BEING_ACTORSPRITE_H
