@@ -4,7 +4,6 @@
 <messages>
     <its:rules xmlns:its="http://www.w3.org/2005/11/its" version="1.0">
         <its:translateRule selector="//message" translate="yes"/>
-        <its:translateRule selector="//*" translate="no"/>
     </its:rules>
 
     <message>You are dead.</message>
@@ -16,17 +15,17 @@
     <message>No, kids. Your character did not really die. It... err... went to a better place.</message>
     <message>Your plan of breaking your enemies weapon by bashing it with your throat failed.</message>
     <message>I guess this did not run too well.</message>
-    // NetHack reference:
+    <!-- NetHack reference: -->
     <message>Do you want your possessions identified?</message>
-    // Secret of Mana reference:
+    <!-- // Secret of Mana reference: -->
     <message>Sadly, no trace of you was ever found...</message>
-    // Final Fantasy VI reference:
+    <!-- // Final Fantasy VI reference: -->
     <message>Annihilated.</message>
-    // Earthbound reference:
+    <!-- // Earthbound reference: -->
     <message>Looks like you got your head handed to you.</message>
-    // Leisure Suit Larry 1 reference:
+    <!-- // Leisure Suit Larry 1 reference: -->
     <message>You screwed up again, dump your body down the tubes and get you another one.</message>
-    // Monty Python references (Dead Parrot sketch mostly):
+    <!-- // Monty Python references (Dead Parrot sketch mostly): -->
     <message>You're not dead yet. You're just resting.</message>
     <message>You are no more.</message>
     <message>You have ceased to be.</message>
