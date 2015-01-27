@@ -42,6 +42,7 @@
 #include "gui/widgets/layouttype.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/shoplistbox.h"
+#include "gui/widgets/tabstrip.h"
 
 #include "actormanager.h"
 #include "configuration.h"
@@ -87,32 +88,18 @@ ShopWindow::ShopWindow() :
     mTradeItem(nullptr),
     mBuyShopItemList(new ShopListBox(this, mBuyShopItems, mBuyShopItems)),
     mSellShopItemList(new ShopListBox(this, mSellShopItems, mSellShopItems)),
-    mBuyScrollArea(new ScrollArea(this, mBuyShopItemList,
+    mScrollArea(new ScrollArea(this, mBuyShopItemList,
         getOptionBool("showbuybackground"), "shop_buy_background.xml")),
-    mSellScrollArea(new ScrollArea(this, mSellShopItemList,
-        getOptionBool("showsellbackground"), "shop_sell_background.xml")),
     // TRANSLATORS: shop window label
-    mBuyLabel(new Label(this, _("Buy items"))),
+    mAddButton(new Button(this, _("Add"), "add", this)),
     // TRANSLATORS: shop window label
-    mSellLabel(new Label(this, _("Sell items"))),
+    mDeleteButton(new Button(this, _("Delete"), "delete", this)),
     // TRANSLATORS: shop window label
-    mBuyAddButton(new Button(this, _("Add"), "add buy", this)),
-    // TRANSLATORS: shop window label
-    mBuyDeleteButton(new Button(this, _("Delete"), "delete buy", this)),
-    // TRANSLATORS: shop window label
-    mBuyAnnounceButton(new Button(this, _("Announce"), "announce buy", this)),
-    mBuyAuctionButton(nullptr),
-    // TRANSLATORS: shop window button
-    mSellAddButton(new Button(this, _("Add"), "add sell", this)),
-    // TRANSLATORS: shop window button
-    mSellDeleteButton(new Button(this, _("Delete"), "delete sell", this)),
-    // TRANSLATORS: shop window button
-    mSellAnnounceButton(new Button(this, _("Announce"),
-        "announce sell", this)),
-    mSellAuctionButton(nullptr),
+    mAnnounceButton(new Button(this, _("Announce"), "announce", this)),
     // TRANSLATORS: shop window checkbox
     mAnnounceLinks(new CheckBox(this, _("Show links in announce"), false,
         this, "link announce")),
+    mTabs(nullptr),
     mAcceptPlayer(""),
     mTradeNick(""),
     mSelectedItem(-1),
@@ -120,7 +107,8 @@ ShopWindow::ShopWindow() :
     mLastRequestTimeList(0),
     mLastRequestTimeItem(0),
     mRandCounter(0),
-    mTradeMoney(0)
+    mTradeMoney(0),
+    isBuySelected(true)
 {
     mBuyShopItemList->postInit();
     mSellShopItemList->postInit();
@@ -139,6 +127,17 @@ ShopWindow::ShopWindow() :
     if (setupWindow)
         setupWindow->registerWindowForReset(this);
 
+
+    const int size = config.getIntValue("fontSize")
+        + getOption("tabHeightAdjust", 16);
+    mTabs = new TabStrip(this, "shop", size);
+    mTabs->addActionListener(this);
+    mTabs->setActionEventId("tab_");
+    // TRANSLATORS: shop window tab name
+    mTabs->addButton(_("Buy"), "buy", true);
+    // TRANSLATORS: shop window tab name
+    mTabs->addButton(_("Sell"), "sell", false);
+
     mAnnounceCounter[BUY] = 0;
     mAnnounceCounter[SELL] = 0;
 
@@ -147,8 +146,7 @@ ShopWindow::ShopWindow() :
     mBuyShopItemList->setPriceCheck(false);
     mSellShopItemList->setPriceCheck(false);
 
-    mBuyScrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
-    mSellScrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
+    mScrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
 
     mBuyShopItemList->addSelectionListener(this);
     mSellShopItemList->addSelectionListener(this);
@@ -156,21 +154,14 @@ ShopWindow::ShopWindow() :
     ContainerPlacer placer;
     placer = getPlacer(0, 0);
 
-    placer(0, 0, mBuyLabel, 8).setPadding(3);
-    placer(8, 0, mSellLabel, 8).setPadding(3);
-    placer(0, 1, mBuyScrollArea, 8, 5).setPadding(3);
-    placer(8, 1, mSellScrollArea, 8, 5).setPadding(3);
-    placer(0, 6, mBuyAddButton);
-    placer(1, 6, mBuyDeleteButton);
-    placer(3, 6, mBuyAnnounceButton);
-    placer(8, 6, mSellAddButton);
-    placer(9, 6, mSellDeleteButton);
-    placer(11, 6, mSellAnnounceButton);
-    placer(0, 7, mAnnounceLinks, 8);
-    placer(15, 7, mCloseButton);
+    placer(0, 0, mTabs, 8).setPadding(3);
 
-    mBuyAuctionButton = nullptr;
-    mSellAuctionButton = nullptr;
+    placer(0, 1, mScrollArea, 8, 5).setPadding(3);
+    placer(0, 6, mAddButton);
+    placer(1, 6, mDeleteButton);
+    placer(2, 6, mAnnounceButton);
+    placer(0, 7, mAnnounceLinks, 7);
+    placer(7, 7, mCloseButton);
 
     Layout &layout = getLayout();
     layout.setRowHeight(0, LayoutType::SET);
@@ -185,7 +176,7 @@ void ShopWindow::postInit()
 {
     setVisible(false);
     enableVisibleSound(true);
-    updateButtonsAndLabels();
+    updateSelection();
 }
 
 ShopWindow::~ShopWindow()
@@ -219,39 +210,46 @@ void ShopWindow::action(const ActionEvent &event)
         player_relations.ignoreTrade(mTradeNick);
         mTradeNick.clear();
     }
-    else if (eventId == "delete buy" && mBuyShopItemList
-             && mBuyShopItemList->getSelected() >= 0)
+    else if (eventId == "delete")
     {
-        mBuyShopItems->del(mBuyShopItemList->getSelected());
-        if (isShopEmpty() && localPlayer)
-            localPlayer->updateStatus();
+        if (isBuySelected)
+        {
+            if (mBuyShopItemList && mBuyShopItemList->getSelected() >= 0)
+            {
+                mBuyShopItems->del(mBuyShopItemList->getSelected());
+                if (isShopEmpty() && localPlayer)
+                    localPlayer->updateStatus();
+            }
+        }
+        else if (mSellShopItemList
+                 && mSellShopItemList->getSelected() >= 0)
+        {
+            mSellShopItems->del(mSellShopItemList->getSelected());
+            if (isShopEmpty() && localPlayer)
+                localPlayer->updateStatus();
+        }
     }
-    else if (eventId == "delete sell" && mSellShopItemList
-             && mSellShopItemList->getSelected() >= 0)
+    else if (eventId == "announce")
     {
-        mSellShopItems->del(mSellShopItemList->getSelected());
-        if (isShopEmpty() && localPlayer)
-            localPlayer->updateStatus();
+        if (isBuySelected)
+        {
+            if (mBuyShopItems && mBuyShopItems->getNumberOfElements() > 0)
+                announce(mBuyShopItems, BUY);
+        }
+        else if (mSellShopItems && mSellShopItems->getNumberOfElements() > 0)
+        {
+            announce(mSellShopItems, SELL);
+        }
     }
-    else if (eventId == "announce buy" && mBuyShopItems
-             && mBuyShopItems->getNumberOfElements() > 0)
+    else if (eventId == "tab_buy")
     {
-        announce(mBuyShopItems, BUY);
+        isBuySelected = true;
+        updateSelection();
     }
-    else if (eventId == "announce sell" && mSellShopItems
-             && mSellShopItems->getNumberOfElements() > 0)
+    else if (eventId == "tab_sell")
     {
-        announce(mSellShopItems, SELL);
-    }
-    else if (eventId == "auction buy" && mBuyShopItems
-             && mBuyShopItems->getNumberOfElements() > 0)
-    {
-        chatHandler->privateMessage("AuctionBot", "!pull4144 seek");
-    }
-    else if (eventId == "auction sell" && mSellShopItems
-             && mSellShopItems->getNumberOfElements() > 0)
-    {
-        chatHandler->privateMessage("AuctionBot", "!pull4144 offer");
+        isBuySelected = false;
+        updateSelection();
     }
 
     if (mSelectedItem < 1)
@@ -265,15 +263,18 @@ void ShopWindow::action(const ActionEvent &event)
     Item *const item = inv->findItem(mSelectedItem, 0);
     if (item)
     {
-        if (eventId == "add buy")
+        if (eventId == "add")
         {
-            ItemAmountWindow::showWindow(ItemAmountWindow::ShopBuyAdd,
-                                         this, item, sumAmount(item));
-        }
-        else if (eventId == "add sell")
-        {
-            ItemAmountWindow::showWindow(ItemAmountWindow::ShopSellAdd,
-                                         this, item, sumAmount(item));
+            if (isBuySelected)
+            {
+                ItemAmountWindow::showWindow(ItemAmountWindow::ShopBuyAdd,
+                    this, item, sumAmount(item));
+            }
+            else
+            {
+                ItemAmountWindow::showWindow(ItemAmountWindow::ShopSellAdd,
+                    this, item, sumAmount(item));
+            }
         }
     }
 }
@@ -307,14 +308,19 @@ void ShopWindow::valueChanged(const SelectionEvent &event A_UNUSED)
 
 void ShopWindow::updateButtonsAndLabels()
 {
-    mBuyAddButton->setEnabled(mSelectedItem != -1);
-    mSellAddButton->setEnabled(mSelectedItem != -1);
-    mBuyDeleteButton->setEnabled(
-            mBuyShopItemList->getSelected() != -1
-            && mBuyShopItems->getNumberOfElements() > 0);
-    mSellDeleteButton->setEnabled(
-            mSellShopItemList->getSelected() != -1
-            && mSellShopItems->getNumberOfElements() > 0);
+    mAddButton->setEnabled(mSelectedItem != -1);
+    bool allowDel(false);
+    if (isBuySelected)
+    {
+        allowDel = mBuyShopItemList->getSelected() != -1
+            && mBuyShopItems->getNumberOfElements() > 0;
+    }
+    else
+    {
+        allowDel = mSellShopItemList->getSelected() != -1
+            && mSellShopItems->getNumberOfElements() > 0;
+    }
+    mDeleteButton->setEnabled(allowDel);
 }
 
 void ShopWindow::setVisible(bool visible)
@@ -494,10 +500,8 @@ void ShopWindow::announce(ShopItems *const list, const int mode)
     }
 
     mAnnonceTime = cur_time;
-    if (mBuyAnnounceButton)
-        mBuyAnnounceButton->setEnabled(false);
-    if (mSellAnnounceButton)
-        mSellAnnounceButton->setEnabled(false);
+    if (mAnnounceButton)
+        mAnnounceButton->setEnabled(false);
 
     std::vector<ShopItem*> items = list->items();
 
@@ -794,8 +798,7 @@ void ShopWindow::updateTimes()
     if (mAnnonceTime + (2 * 60) < cur_time
         || mAnnonceTime > cur_time)
     {
-        mBuyAnnounceButton->setEnabled(true);
-        mSellAnnounceButton->setEnabled(true);
+        mAnnounceButton->setEnabled(true);
     }
     BLOCK_END("ShopWindow::updateTimes")
 }
@@ -873,4 +876,14 @@ bool ShopWindow::isShopEmpty() const
     if (mBuyShopItems->empty() && mSellShopItems->empty())
         return true;
     return false;
+}
+
+void ShopWindow::updateSelection()
+{
+    if (isBuySelected)
+        mCurrentShopItemList = mBuyShopItemList;
+    else
+        mCurrentShopItemList = mSellShopItemList;
+    mScrollArea->setContent(mCurrentShopItemList);
+    updateButtonsAndLabels();
 }

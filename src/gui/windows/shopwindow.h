@@ -36,6 +36,7 @@ class ScrollArea;
 class ShopItem;
 class ShopItems;
 class ShopListBox;
+class TabStrip;
 
 /**
  * The buy dialog.
@@ -140,6 +141,8 @@ class ShopWindow final : public Window,
     private:
         void startTrade();
 
+        void updateSelection();
+
         typedef std::list<ShopWindow*> DialogList;
         static DialogList instances;
 
@@ -151,19 +154,13 @@ class ShopWindow final : public Window,
 
         ShopListBox *mBuyShopItemList;
         ShopListBox *mSellShopItemList;
-        ScrollArea *mBuyScrollArea;
-        ScrollArea *mSellScrollArea;
-        Label *mBuyLabel;
-        Label *mSellLabel;
-        Button *mBuyAddButton;
-        Button *mBuyDeleteButton;
-        Button *mBuyAnnounceButton;
-        Button *mBuyAuctionButton;
-        Button *mSellAddButton;
-        Button *mSellDeleteButton;
-        Button *mSellAnnounceButton;
-        Button *mSellAuctionButton;
+        ShopListBox *mCurrentShopItemList;
+        ScrollArea *mScrollArea;
+        Button *mAddButton;
+        Button *mDeleteButton;
+        Button *mAnnounceButton;
         CheckBox *mAnnounceLinks;
+        TabStrip *mTabs;
         std::string mAcceptPlayer;
         std::string mTradeNick;
         int mSelectedItem;
@@ -173,6 +170,7 @@ class ShopWindow final : public Window,
         int mRandCounter;
         int mTradeMoney;
         int mAnnounceCounter[2];
+        bool isBuySelected;
 };
 
 extern ShopWindow *shopWindow;
