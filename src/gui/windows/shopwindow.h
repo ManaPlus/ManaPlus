@@ -27,6 +27,7 @@
 
 #include "listeners/actionlistener.h"
 #include "listeners/selectionlistener.h"
+#include "listeners/vendingslotslistener.h"
 
 class Button;
 class CheckBox;
@@ -44,7 +45,8 @@ class TabStrip;
  */
 class ShopWindow final : public Window,
                          public ActionListener,
-                         public SelectionListener
+                         public SelectionListener,
+                         public VendingSlotsListener
 {
     public:
         enum ShopMode
@@ -137,6 +139,8 @@ class ShopWindow final : public Window,
 
         bool isShopEmpty() const A_WARN_UNUSED;
 
+        void vendingSlotsChanged(const int slots) override final;
+
     private:
         void startTrade();
 
@@ -158,6 +162,7 @@ class ShopWindow final : public Window,
         Button *mAddButton;
         Button *mDeleteButton;
         Button *mAnnounceButton;
+        Button *mPublishButton;
         CheckBox *mAnnounceLinks;
         TabStrip *mTabs;
         std::string mAcceptPlayer;
@@ -168,8 +173,9 @@ class ShopWindow final : public Window,
         int mLastRequestTimeItem;
         int mRandCounter;
         int mTradeMoney;
-        int mAnnounceCounter[2];
+        int mSellShopSize;
         bool isBuySelected;
+        bool mHaveVending;
 };
 
 extern ShopWindow *shopWindow;

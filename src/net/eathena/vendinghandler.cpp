@@ -24,6 +24,8 @@
 
 #include "being/being.h"
 
+#include "listeners/vendingslotslistener.h"
+
 #include "net/ea/eaprotocol.h"
 
 #include "net/eathena/messageout.h"
@@ -92,7 +94,7 @@ void VendingHandler::handleMessage(Net::MessageIn &msg)
 
 void VendingHandler::processOpenReq(Net::MessageIn &msg)
 {
-    msg.readInt16("slots allowed");
+    VendingSlotsListener::distributeEvent(msg.readInt16("slots allowed"));
 }
 
 void VendingHandler::processShowBoard(Net::MessageIn &msg)

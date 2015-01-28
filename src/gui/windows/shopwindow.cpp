@@ -58,7 +58,9 @@
 #include "enums/being/attributes.h"
 
 #include "net/chathandler.h"
+#include "net/serverfeatures.h"
 #include "net/tradehandler.h"
+#include "net/vendinghandler.h"
 
 #include "resources/iteminfo.h"
 
@@ -80,6 +82,7 @@ ShopWindow::ShopWindow() :
     Window(_("Personal Shop"), false, nullptr, "shop.xml"),
     ActionListener(),
     SelectionListener(),
+    VendingSlotsListener(),
     // TRANSLATORS: shop window button
     mCloseButton(new Button(this, _("Close"), "close", this)),
     mBuyShopItems(new ShopItems),
@@ -94,21 +97,21 @@ ShopWindow::ShopWindow() :
     mAddButton(new Button(this, _("Add"), "add", this)),
     // TRANSLATORS: shop window label
     mDeleteButton(new Button(this, _("Delete"), "delete", this)),
-    // TRANSLATORS: shop window label
-    mAnnounceButton(new Button(this, _("Announce"), "announce", this)),
-    // TRANSLATORS: shop window checkbox
-    mAnnounceLinks(new CheckBox(this, _("Show links in announce"), false,
-        this, "link announce")),
+    mAnnounceButton(nullptr),
+    mPublishButton(nullptr),
+    mAnnounceLinks(nullptr),
     mTabs(nullptr),
-    mAcceptPlayer(""),
-    mTradeNick(""),
+    mAcceptPlayer(),
+    mTradeNick(),
     mSelectedItem(-1),
     mAnnonceTime(0),
     mLastRequestTimeList(0),
     mLastRequestTimeItem(0),
     mRandCounter(0),
     mTradeMoney(0),
-    isBuySelected(true)
+    mSellShopSize(0),
+    isBuySelected(true),
+    mHaveVending(serverFeatures->haveVending())
 {
     mBuyShopItemList->postInit();
     mSellShopItemList->postInit();
@@ -138,8 +141,6 @@ ShopWindow::ShopWindow() :
     // TRANSLATORS: shop window tab name
     mTabs->addButton(_("Sell"), "sell", false);
 
-    mAnnounceCounter[BUY] = 0;
-    mAnnounceCounter[SELL] = 0;
 
     loadList();
 
@@ -156,11 +157,27 @@ ShopWindow::ShopWindow() :
 
     placer(0, 0, mTabs, 8).setPadding(3);
 
+    if (isBuySelected)
+    {
+        // TRANSLATORS: shop window button
+        mPublishButton = new Button(this, _("Publish"), "publish", this);
+        placer(2, 6, mPublishButton);
+    }
+    else
+    {
+        // TRANSLATORS: shop window button
+        mAnnounceButton = new Button(this, _("Announce"), "announce", this);
+        // TRANSLATORS: shop window checkbox
+        mAnnounceLinks = new CheckBox(this, _("Show links in announce"), false,
+            this, "link announce");
+
+        placer(2, 6, mAnnounceButton);
+        placer(0, 7, mAnnounceLinks, 7);
+    }
+
     placer(0, 1, mScrollArea, 8, 5).setPadding(3);
     placer(0, 6, mAddButton);
     placer(1, 6, mDeleteButton);
-    placer(2, 6, mAnnounceButton);
-    placer(0, 7, mAnnounceLinks, 7);
     placer(7, 7, mCloseButton);
 
     Layout &layout = getLayout();
@@ -251,11 +268,42 @@ void ShopWindow::action(const ActionEvent &event)
         isBuySelected = false;
         updateSelection();
     }
+    else if (eventId == "publish")
+    {
+        std::vector<ShopItem*> &oldItems = mSellShopItems->items();
+        std::vector<ShopItem*> items;
+        Inventory *const inv = PlayerInfo::getCartInventory();
+        if (!inv)
+            return;
+        FOR_EACH (std::vector<ShopItem*>::iterator, it, oldItems)
+        {
+            ShopItem *const item = *it;
+            // +++ need add colors
+            Item *const cartItem = inv->findItem(item->getId(), 1);
+            if (!cartItem)
+                continue;
+            item->setInvIndex(cartItem->getInvIndex());
+            const int amount = cartItem->getQuantity();
+            if (!amount)
+                continue;
+            if (item->getQuantity() < amount)
+                item->setQuantity(amount);
+            items.push_back(item);
+            if (static_cast<signed int>(items.size()) >= mSellShopSize)
+                break;
+        }
+        if (!items.empty())
+        {
+            vendingHandler->createShop("test shop", true, items);
+            mSellShopSize = 0;
+        }
+    }
 
     if (mSelectedItem < 1)
         return;
 
-    const Inventory *const inv = PlayerInfo::getInventory();
+    const Inventory *const inv = mHaveVending
+        ? PlayerInfo::getCartInventory() : PlayerInfo::getInventory();
     if (!inv)
         return;
 
@@ -310,6 +358,7 @@ void ShopWindow::updateButtonsAndLabels()
 {
     mAddButton->setEnabled(mSelectedItem != -1);
     bool allowDel(false);
+    const bool sellNotEmpty = mSellShopItems->getNumberOfElements() > 0;
     if (isBuySelected)
     {
         allowDel = mBuyShopItemList->getSelected() != -1
@@ -317,10 +366,22 @@ void ShopWindow::updateButtonsAndLabels()
     }
     else
     {
-        allowDel = mSellShopItemList->getSelected() != -1
-            && mSellShopItems->getNumberOfElements() > 0;
+        allowDel = mSellShopItemList->getSelected() != -1 && sellNotEmpty;
     }
     mDeleteButton->setEnabled(allowDel);
+    if (mPublishButton
+        && !isBuySelected
+        && sellNotEmpty
+        && mSellShopSize > 0
+        && localPlayer
+        && localPlayer->getHaveCart())
+    {
+        mPublishButton->setEnabled(true);
+    }
+    else
+    {
+        mPublishButton->setEnabled(false);
+    }
 }
 
 void ShopWindow::setVisible(bool visible)
@@ -795,6 +856,11 @@ void ShopWindow::processRequest(const std::string &nick, std::string data,
 void ShopWindow::updateTimes()
 {
     BLOCK_START("ShopWindow::updateTimes")
+    if (!mAnnounceButton)
+    {
+        BLOCK_END("ShopWindow::updateTimes")
+        return;
+    }
     if (mAnnonceTime + (2 * 60) < cur_time
         || mAnnonceTime > cur_time)
     {
@@ -886,4 +952,9 @@ void ShopWindow::updateSelection()
         mCurrentShopItemList = mSellShopItemList;
     mScrollArea->setContent(mCurrentShopItemList);
     updateButtonsAndLabels();
+}
+
+void ShopWindow::vendingSlotsChanged(const int slots)
+{
+    mSellShopSize = slots;
 }
