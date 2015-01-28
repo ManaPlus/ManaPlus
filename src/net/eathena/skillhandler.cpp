@@ -116,8 +116,8 @@ void SkillHandler::useBeing(const int id, const int level,
                             const int beingId) const
 {
     createOutPacket(CMSG_SKILL_USE_BEING);
-    outMsg.writeInt16(static_cast<int16_t>(id), "skill id");
     outMsg.writeInt16(static_cast<int16_t>(level), "skill level");
+    outMsg.writeInt16(static_cast<int16_t>(id), "skill id");
     outMsg.writeInt32(beingId, "target id");
 }
 

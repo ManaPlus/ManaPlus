@@ -590,14 +590,14 @@ void SkillDialog::useSkill(const SkillInfo *const info)
                 const Being *const being = localPlayer->getTarget();
                 if (being)
                 {
-                    skillHandler->useBeing(info->level,
-                        info->id, being->getId());
+                    skillHandler->useBeing(info->id,
+                        info->level, being->getId());
                 }
                 break;
             }
             case SkillType::Self:
-                skillHandler->useBeing(info->level,
-                    info->id, localPlayer->getId());
+                skillHandler->useBeing(info->id,
+                    info->level, localPlayer->getId());
                 break;
 
             case SkillType::Ground:
