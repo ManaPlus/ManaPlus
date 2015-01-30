@@ -286,7 +286,9 @@ impHandler0(cartWindowShow)
         return false;
     }
 
+#ifdef EATHENA_SUPPORT
     showHideWindow(cartWindow);
+#endif
     return true;
 }
 

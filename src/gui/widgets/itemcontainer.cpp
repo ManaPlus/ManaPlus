@@ -545,6 +545,7 @@ void ItemContainer::mouseReleased(MouseEvent &event)
             dstContainer = InventoryType::INVENTORY;
             inventory = PlayerInfo::getStorageInventory();
         }
+#ifdef EATHENA_SUPPORT
         if (src == DRAGDROP_SOURCE_INVENTORY
             && dst == DRAGDROP_SOURCE_CART)
         {
@@ -573,6 +574,7 @@ void ItemContainer::mouseReleased(MouseEvent &event)
             dstContainer = InventoryType::CART;
             inventory = PlayerInfo::getStorageInventory();
         }
+#endif
         if (src == DRAGDROP_SOURCE_INVENTORY
             && dst == DRAGDROP_SOURCE_TRADE)
         {

@@ -402,11 +402,13 @@ void InventoryWindow::action(const ActionEvent &event)
             ItemAmountWindow::showWindow(ItemAmountWindow::StoreAdd,
                 this, item);
         }
+#ifdef EATHENA_SUPPORT
         else if (cartWindow)
         {
             ItemAmountWindow::showWindow(ItemAmountWindow::CartAdd,
                 this, item);
         }
+#endif
     }
     else if (eventId == "sort")
     {
@@ -447,6 +449,7 @@ void InventoryWindow::action(const ActionEvent &event)
                 item->getInvIndex(), item->getQuantity(),
                 InventoryType::STORAGE);
         }
+#ifdef EATHENA_SUPPORT
         else if (cartWindow)
         {
             inventoryHandler->moveItem2(InventoryType::INVENTORY,
@@ -454,6 +457,7 @@ void InventoryWindow::action(const ActionEvent &event)
                 InventoryType::CART);
         }
         else
+#endif
         {
             if (PlayerInfo::isItemProtected(item->getId()))
                 return;
@@ -482,11 +486,13 @@ void InventoryWindow::action(const ActionEvent &event)
             ItemAmountWindow::showWindow(ItemAmountWindow::StoreRemove,
                 this, item);
         }
+#ifdef EATHENA_SUPPORT
         else if (cartWindow)
         {
             ItemAmountWindow::showWindow(ItemAmountWindow::CartRemove,
                 this, item);
         }
+#endif
     }
 }
 
@@ -827,7 +833,11 @@ void InventoryWindow::updateDropButton()
     if (!mDropButton)
         return;
 
+#ifdef EATHENA_SUPPORT
     if (isStorageActive() || cartWindow)
+#else
+    if (isStorageActive())
+#endif
     {
         // TRANSLATORS: inventory button
         mDropButton->setCaption(_("Store"));

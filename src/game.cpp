@@ -319,7 +319,9 @@ static void destroyGuiWindows()
     delete2(statusWindow)
     delete2(miniStatusWindow)
     delete2(inventoryWindow)
+#ifdef EATHENA_SUPPORT
     delete2(cartWindow)
+#endif
     delete2(shopWindow)
     delete2(skillDialog)
     delete2(minimap)
