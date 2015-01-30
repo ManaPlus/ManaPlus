@@ -120,6 +120,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
             case InventoryType::INVENTORY:
             case InventoryType::TRADE:
             case InventoryType::NPC:
+            case InventoryType::TYPE_END:
             default:
                 mSortDropDown->setSelected(config.getIntValue(
                     "inventorySortOrder"));
@@ -207,7 +208,8 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
             mShopButton = new Button(this, _("S"), "shop", this);
             // TRANSLATORS: inventory equipment button
             mEquipmentButton = new Button(this, _("E"), "equipment", this);
-            mWeightBar = new ProgressBar(this, 0.0F, 100, 0, Theme::PROG_WEIGHT,
+            mWeightBar = new ProgressBar(this, 0.0F, 100, 0,
+                Theme::PROG_WEIGHT,
                 "weightprogressbar.xml", "weightprogressbar_fill.xml");
             mWeightBar->setColor(getThemeColor(Theme::WEIGHT_BAR),
                 getThemeColor(Theme::WEIGHT_BAR_OUTLINE));
@@ -247,7 +249,8 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
             // TRANSLATORS: storage button
             mStoreButton = new Button(this, _("Store"), "store", this);
             // TRANSLATORS: storage button
-            mRetrieveButton = new Button(this, _("Retrieve"), "retrieve", this);
+            mRetrieveButton = new Button(this, _("Retrieve"),
+                "retrieve", this);
             // TRANSLATORS: storage button
             mInvCloseButton = new Button(this, _("Close"), "close", this);
 
@@ -269,11 +272,13 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
             // TRANSLATORS: storage button
             mStoreButton = new Button(this, _("Store"), "store", this);
             // TRANSLATORS: storage button
-            mRetrieveButton = new Button(this, _("Retrieve"), "retrieve", this);
+            mRetrieveButton = new Button(this, _("Retrieve"),
+                "retrieve", this);
             // TRANSLATORS: storage button
             mInvCloseButton = new Button(this, _("Close"), "close", this);
 
-            mWeightBar = new ProgressBar(this, 0.0F, 100, 0, Theme::PROG_WEIGHT,
+            mWeightBar = new ProgressBar(this, 0.0F, 100, 0,
+                Theme::PROG_WEIGHT,
                 "weightprogressbar.xml", "weightprogressbar_fill.xml");
             mWeightBar->setColor(getThemeColor(Theme::WEIGHT_BAR),
                 getThemeColor(Theme::WEIGHT_BAR_OUTLINE));
@@ -295,6 +300,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
         default:
         case InventoryType::TRADE:
         case InventoryType::NPC:
+        case InventoryType::TYPE_END:
             break;
     };
 
@@ -348,6 +354,7 @@ void InventoryWindow::storeSortOrder() const
             case InventoryType::INVENTORY:
             case InventoryType::TRADE:
             case InventoryType::NPC:
+            case InventoryType::TYPE_END:
             default:
                 config.setValue("inventorySortOrder",
                     mSortDropDown->getSelected());
@@ -781,6 +788,7 @@ void InventoryWindow::close()
         default:
         case InventoryType::TRADE:
         case InventoryType::NPC:
+        case InventoryType::TYPE_END:
             break;
     }
 }

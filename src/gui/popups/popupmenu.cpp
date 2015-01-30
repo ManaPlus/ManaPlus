@@ -1723,6 +1723,8 @@ void PopupMenu::showPopup(Window *const parent,
 
         case InventoryType::CART:
         case InventoryType::TRADE:
+        case InventoryType::NPC:
+        case InventoryType::TYPE_END:
         default:
             break;
     }

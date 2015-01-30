@@ -37,7 +37,6 @@
 #include "gui/widgets/button.h"
 #include "gui/widgets/checkbox.h"
 #include "gui/widgets/containerplacer.h"
-#include "gui/widgets/label.h"
 #include "gui/widgets/layout.h"
 #include "gui/widgets/layouttype.h"
 #include "gui/widgets/scrollarea.h"
@@ -88,6 +87,7 @@ ShopWindow::ShopWindow() :
     mTradeItem(nullptr),
     mBuyShopItemList(new ShopListBox(this, mBuyShopItems, mBuyShopItems)),
     mSellShopItemList(new ShopListBox(this, mSellShopItems, mSellShopItems)),
+    mCurrentShopItemList(nullptr),
     mScrollArea(new ScrollArea(this, mBuyShopItemList,
         getOptionBool("showbuybackground"), "shop_buy_background.xml")),
     // TRANSLATORS: shop window label

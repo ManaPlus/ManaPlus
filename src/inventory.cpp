@@ -293,6 +293,7 @@ std::string Inventory::getName() const
     switch (mType)
     {
         case InventoryType::INVENTORY:
+        case InventoryType::TYPE_END:
         default:
         {
             // TRANSLATORS: inventory type name
@@ -307,6 +308,16 @@ std::string Inventory::getName() const
         {
             // TRANSLATORS: inventory type name
             return N_("Cart");
+        }
+        case InventoryType::NPC:
+        {
+            // TRANSLATORS: inventory type name
+            return N_("Npc");
+        }
+        case InventoryType::TRADE:
+        {
+            // TRANSLATORS: inventory type name
+            return N_("Trade");
         }
     }
 }

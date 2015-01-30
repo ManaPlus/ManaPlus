@@ -31,7 +31,6 @@
 class Button;
 class CheckBox;
 class Item;
-class Label;
 class ScrollArea;
 class ShopItem;
 class ShopItems;

@@ -1575,7 +1575,7 @@ void Being::petLogic()
 
     const int time = tick_time;
     const int thinkTime = mInfo->getThinkTime();
-    if (abs(mMoveTime - time) < thinkTime)
+    if (abs(static_cast<int>(mMoveTime) - time) < thinkTime)
         return;
 
     mMoveTime = time;

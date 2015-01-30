@@ -22,7 +22,6 @@
 
 #include "gui/windows/itemamountwindow.h"
 
-#include "inventory.h"
 #include "item.h"
 
 #include "being/playerinfo.h"

@@ -23,7 +23,6 @@
 #ifndef NET_EA_INVENTORYHANDLER_H
 #define NET_EA_INVENTORYHANDLER_H
 
-#include "inventory.h"
 #include "localconsts.h"
 
 #include "net/inventoryhandler.h"

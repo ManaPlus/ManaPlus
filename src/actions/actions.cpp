@@ -726,7 +726,7 @@ impHandler(attack)
     return true;
 }
 
-impHandler0(targetAttack)
+impHandler(targetAttack)
 {
     if (localPlayer && actorManager)
     {
@@ -1439,7 +1439,8 @@ impHandler(useItemInv)
 impHandler(invToStorage)
 {
     Item *item = nullptr;
-    const int amount = getAmountFromEvent(event, item, InventoryType::INVENTORY);
+    const int amount = getAmountFromEvent(event, item,
+        InventoryType::INVENTORY);
     if (amount)
     {
         inventoryHandler->moveItem2(InventoryType::INVENTORY,
@@ -1458,7 +1459,8 @@ impHandler(invToStorage)
 impHandler(tradeAdd)
 {
     Item *item = nullptr;
-    const int amount = getAmountFromEvent(event, item, InventoryType::INVENTORY);
+    const int amount = getAmountFromEvent(event, item,
+        InventoryType::INVENTORY);
     if (!item || PlayerInfo::isItemProtected(item->getId()))
         return true;
 

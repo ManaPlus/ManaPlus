@@ -427,6 +427,7 @@ void ItemContainer::mousePressed(MouseEvent &event)
                 src = DRAGDROP_SOURCE_CART;
                 break;
             default:
+            case InventoryType::TYPE_END:
                 break;
         }
         if (mSelectedIndex == index && mClicks != 2)
@@ -525,6 +526,7 @@ void ItemContainer::mouseReleased(MouseEvent &event)
                 dst = DRAGDROP_SOURCE_CART;
                 break;
             default:
+            case InventoryType::TYPE_END:
                 break;
         }
         int srcContainer = -1;
@@ -561,7 +563,7 @@ void ItemContainer::mouseReleased(MouseEvent &event)
             inventory = PlayerInfo::getCartInventory();
         }
         else if (src == DRAGDROP_SOURCE_CART
-            && dst == DRAGDROP_SOURCE_STORAGE)
+                 && dst == DRAGDROP_SOURCE_STORAGE)
         {
             srcContainer = InventoryType::CART;
             dstContainer = InventoryType::STORAGE;

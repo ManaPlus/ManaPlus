@@ -798,7 +798,7 @@ void InventoryHandler::processCartInfo(Net::MessageIn &msg)
 
 void InventoryHandler::processCartRemove(Net::MessageIn &msg A_UNUSED)
 {
-    //+++ need close or clear cart?
+    // +++ need close or clear cart?
 }
 
 void InventoryHandler::processPlayerCartAdd(Net::MessageIn &msg)
