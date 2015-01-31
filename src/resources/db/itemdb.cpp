@@ -147,7 +147,11 @@ static std::string useButtonFromItemType(const ItemType::Type &type)
     {
         const ItemTypeMap &item = itemTypeMap[f];
         if (item.type == type)
+        {
+            if (item.useButton.empty())
+                return std::string();
             return gettext(item.useButton.c_str());
+        }
     }
     logger->log("Unknown item type");
     return std::string();
@@ -160,7 +164,11 @@ static std::string useButton2FromItemType(const ItemType::Type &type)
     {
         const ItemTypeMap &item = itemTypeMap[f];
         if (item.type == type)
+        {
+            if (item.useButton2.empty())
+                return std::string();
             return gettext(item.useButton2.c_str());
+        }
     }
     logger->log("Unknown item type");
     return std::string();
