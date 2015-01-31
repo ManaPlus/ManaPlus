@@ -1,3 +1,12 @@
+2015-01-31 New release 1.5.1.31
+fix: mixed chat lines with colors and emotes.
+fix: follow (hercules)
+fix: auto join buildin channels (hercules)
+fix: fps restoring after away mode (SDL2)
+add: extend /tagetattack for support name argument.
+add: cart support (hercules)
+add: changed shop window to tabbed window.
+
 2015-01-17 New release 1.5.1.17
 fix: char deletion (hercules)
 fix: char deletion if connect to server with password from command line.
