@@ -3,6 +3,7 @@
 # Bernard <nard@bh28.net>, 2014
 # Fortunato <fortunato108@googlemail.com>, 2013
 # Fortunato <fortunato108@googlemail.com>, 2013
+# jmf <jm.franz@online.de>, 2015
 # Jürgen, 2013
 # Jürgen, 2013
 # Slimor <madjuca@gmx.de>, 2013
@@ -14,8 +15,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2014-12-28 22:29+0000\n"
-"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"PO-Revision-Date: 2015-01-28 16:57+0000\n"
+"Last-Translator: jmf <jm.franz@online.de>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/manaplus/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,10 +25,10 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "/uploadserverconfig - upload server config into pastebin service."
-msgstr ""
+msgstr "/uploadserverconfig - Serverkonfiguration bei einem pastebin-Dienst hochladen."
 
 msgid "/atkhuman - select and attack nearest player."
-msgstr ""
+msgstr "/atkhuman - Nächstgelegenen Spieler auswählen und angreifen"
 
 msgid "\"Outfit shortcut 12\""
 msgstr "\"Ausstattungkürzel 12\""
@@ -55,13 +56,13 @@ msgid "Back to Index"
 msgstr "Zurück zum Index"
 
 msgid "\"Quests window\""
-msgstr ""
+msgstr "\"Quest-Fenster\""
 
 msgid "\"Quick drop window\""
 msgstr ""
 
 msgid "Official site:"
-msgstr ""
+msgstr "Offizielle Seite:"
 
 msgid ""
 " You can improve your skills by increasing job level. Each job level\n"
@@ -72,16 +73,16 @@ msgid "\"Emote shortcut 10\""
 msgstr "\"Emoticon Kürzel 10\""
 
 msgid "Content devs"
-msgstr ""
+msgstr "Inhalt-Entwickler"
 
 msgid "Guild chat commands"
-msgstr ""
+msgstr "Gildenchat-Kommandos"
 
 msgid "/away, /away MSG - set away mode."
 msgstr "/away, /away MSG - Abwesenheitsmodus setzen."
 
 msgid "GM"
-msgstr ""
+msgstr "GM"
 
 msgid "/addattack NAME - add monster to attack list."
 msgstr "/addattack NAME - Monster zur normalen Angriffsliste hinzufügen."
@@ -102,18 +103,18 @@ msgid "/heal NICK - heal nick."
 msgstr "/heal NICK - Heile NICK."
 
 msgid "\"Select OK\""
-msgstr ""
+msgstr "\"Wähle OK\""
 
 msgid "/dumpe - dump environment variables into chat."
-msgstr ""
+msgstr "/dumpe - Umgebungsvariablenn im Chat ausgeben."
 
 msgid ""
 "If client working very slow, you can improve speed\n"
 "by reading this: @@http://manaplus.org/slowpc|http://manaplus.org/slowpc@@"
-msgstr ""
+msgstr "Wenn der client sehr langsam läuft, kann so die\nGeschwindigkeit erhöht werden: @@http://manaplus.org/slowpc|http://manaplus.org/slowpc@@"
 
 msgid "\"Enable/disable trading\""
-msgstr ""
+msgstr "\"Handel aktivieren/deaktivieren\""
 
 msgid "/wait NAME - wait for nick or moster with name."
 msgstr ""
@@ -122,19 +123,19 @@ msgid "##2Trade:##9 enables the ability to trade with others."
 msgstr ""
 
 msgid "\"Use magic attack\""
-msgstr ""
+msgstr "\"Magischen Angriff benutzen\""
 
 msgid "\"Who is online window\""
-msgstr ""
+msgstr "\"Wer ist online Fenster\""
 
 msgid "\"Switch pvp attack\""
-msgstr ""
+msgstr "\"PvP-Angriff umschalten\""
 
 msgid "\"Deactivate chat input\""
-msgstr ""
+msgstr "\"Chat input deaktivieren\""
 
 msgid "\"Move to navigation point\""
-msgstr ""
+msgstr "\"Zu Navigationspunkt bewegen\""
 
 msgid "ManaPlus Contributors"
 msgstr "ManaPlus Mitarbeiter"
@@ -171,26 +172,26 @@ msgid "\"Change move type\""
 msgstr ""
 
 msgid "Tabs"
-msgstr ""
+msgstr "Tabs"
 
 msgid "\"Outfit shortcut 4\""
 msgstr "\"Ausstattungkürzel 4\""
 
 msgid "\"Did you know window\""
-msgstr ""
+msgstr "\"Wusstest du schon Fenster\""
 
 msgid ""
 "/mail NICK MSG - send offline message to NICK. Working only in tmw server."
 msgstr "/mail NICK MSG - schickt Offline-Nachricht an Nick. Funktioniert nur im TMW-Server."
 
 msgid "Download"
-msgstr ""
+msgstr "Download"
 
 msgid "/dropn - drop N items from any slot."
-msgstr ""
+msgstr "/dropn - Lass N Items von beliebigem Slot fallen"
 
 msgid "/enableaway - enable away messages in current tab."
-msgstr ""
+msgstr "/enableaway - Away-Nachrichten in diesem Tab aktivieren"
 
 msgid "Support"
 msgstr "Unterstützung"
@@ -205,7 +206,7 @@ msgid "\"Outfit shortcut 3\""
 msgstr "\"Ausstattungkürzel 3\""
 
 msgid "\"Quick drop N items\""
-msgstr ""
+msgstr "\"Lass N Items fallen\""
 
 msgid ""
 "/msg NICK text, /whisper NICK text, /w NICK text - send whisper message to "
@@ -213,7 +214,7 @@ msgid ""
 msgstr "/msg NICK text, /whisper NICK text, /w NICK text - Sende Flüstermitteilung to NICK."
 
 msgid "/movetotarget - move to target position."
-msgstr ""
+msgstr "/movetotarget - Zur Zielposition bewegen."
 
 msgid "/outfit prev - wear previous outfit."
 msgstr "/outfit prev - vorige Ausrüstung anziehen."
@@ -234,25 +235,25 @@ msgid "For other server look servers pages for support."
 msgstr "Für andere Server, schau auf der Server-Webseite für Unterstützung."
 
 msgid "\"Toggle chat\""
-msgstr ""
+msgstr "\"Chat ein/aus\""
 
 msgid "/talkpet TEXT - talk from your pet."
-msgstr ""
+msgstr "/talkpet TEXT - Sprich von deinem Haustier"
 
 msgid "\"Change attack type\""
-msgstr ""
+msgstr "\"Wechsle Angriffsart\""
 
 msgid "Manaplus Developers"
 msgstr "Manaplus Entwickler"
 
 msgid "\"On / off audio\""
-msgstr ""
+msgstr "\"An/Aus Audio\""
 
 msgid "You can change any key in keyboard settings."
 msgstr "Sie können die (vor)eingestellte Tastaturbelegung jederzeit\nin den Tastatureinstellungen ändern."
 
 msgid "\"Previous chat tab line\""
-msgstr ""
+msgstr "\"Vorherige Chat-Zeile\""
 
 msgid "\"Emote shortcut 13\""
 msgstr "\"Emoticon Kürzel 13\""
@@ -261,13 +262,13 @@ msgid "/disregard NICK - add nick to disregarded list."
 msgstr "/disregard NICK - NICK zur Vernachlässigungsliste hinzufügen."
 
 msgid "/enablehighlight - enable highlight in current tab."
-msgstr ""
+msgstr "/enablehighlight - Highlighting in diesem Tab aktivieren"
 
 msgid "/disableaway - disable away messages in current tab."
-msgstr ""
+msgstr "/disableaway - Away-Nachrichten in diesem Tab deaktivieren"
 
 msgid "\"Smilie\""
-msgstr ""
+msgstr "\"Lächeln\""
 
 msgid "Main development"
 msgstr "Haupt-Entwicklung (Main development)"
@@ -293,19 +294,19 @@ msgid "/attack - attack target."
 msgstr "/attack - Ziel angreifen."
 
 msgid "\"Set home location/set arrow\""
-msgstr ""
+msgstr "\"Setze Stammplatz/Setze Pfeil\""
 
 msgid "\"Set direction left\""
 msgstr ""
 
 msgid "\"Equipment window\""
-msgstr ""
+msgstr "\"Ausrüstungsfenster\""
 
 msgid "Mana Contributors"
 msgstr "Mana Mitwirkende"
 
 msgid "/dumpt - dump tests info into chat."
-msgstr ""
+msgstr "/dumpt - Testergebnis-Informationen in Chatfenster schreiben."
 
 msgid "Different patches"
 msgstr "Verschiedene Patches"
@@ -314,7 +315,7 @@ msgid "Sound effects"
 msgstr "Soundeffekte"
 
 msgid "\"Talk\""
-msgstr ""
+msgstr "\"Reden\""
 
 msgid "\"Item shortcut 8\""
 msgstr "\"Gegenstandkürzel 8\""
@@ -329,7 +330,7 @@ msgid ""
 msgstr "Die meisten Befehle arbeiten im Flüsterchat.\nZum Beispiel der Befehl '/imitation' im Flüsterchat mit nick1,\nähnlich dem Befehl '/imitation nick1'."
 
 msgid "\"Ignore input 1\""
-msgstr ""
+msgstr "\"Ignoriere Eingabe 1\""
 
 msgid "\"Item shortcut 6\""
 msgstr "\"Gegenstandkürzel 6\""
@@ -341,7 +342,7 @@ msgid ""
 msgstr " Wenn Sie Probleme haben, dann lesen Sie bitte zuerst die FAQ. Wenn Sie\n dort keine Lösung für Ihr Problem finden können, dann zögern Sie nicht,\n den Fehler- / Hilfebereich unseres Forums zu besuchen:"
 
 msgid "/help - show this help."
-msgstr ""
+msgstr "/help - Zeige diese Hilfe."
 
 msgid "\"Outfit shortcut 7\""
 msgstr "\"Ausstattungkürzel 7\""
@@ -350,7 +351,7 @@ msgid "/addpriorityattack NAME - add monster to priority attack list."
 msgstr "/addpriorityattack NAME - Monster zur bevorzugten Angriffsliste hinzufügen."
 
 msgid "For TMW support:"
-msgstr ""
+msgstr "Für TMW-Support:"
 
 msgid "/priceload - load shop price from disc."
 msgstr "/priceload - Lade Preisliste des eigenen Geschäfts von lokaler Datei."
@@ -364,13 +365,13 @@ msgid "\"Item shortcut 13\""
 msgstr "\"Gegenstandkürzel 13\""
 
 msgid "For other servers may exists other copyrights."
-msgstr ""
+msgstr "Für andere Server gelten möglicherweise andere Copyrights."
 
 msgid "\"Outfit shortcut 13\""
 msgstr "\"Ausstattungkürzel 13\""
 
 msgid "/sethome - set home position."
-msgstr ""
+msgstr "/sethome - Stammplatz setzen."
 
 msgid ""
 " - ##2allow whispers##9: Do you wish to allow arbitrary players to send\n"
@@ -381,16 +382,16 @@ msgid "\"Copy outfit\""
 msgstr "\"Ausstattung kopieren\""
 
 msgid "/present - print visible players number to chat."
-msgstr ""
+msgstr "/present - Gebe Anzahl der sichtbaren Spieler im Chat aus."
 
 msgid "/dumpogl - dump all OpenGL variables into log file."
-msgstr ""
+msgstr "/dumpogl - Scheibe alle OpenGL-Variablen in den Logfile."
 
 msgid "Contributors to client development"
 msgstr "Mitwirkende der Client Entwicklung"
 
 msgid "/gm MESSAGE - send message to all online gms."
-msgstr ""
+msgstr "/gm NACHRIGHT - Schicke Nachricht an alle GMs, die online sind."
 
 msgid ""
 "You can do basic searching in help by using command\n"
@@ -420,17 +421,17 @@ msgid "/trade NICK - start trade with nick."
 msgstr "/trade NICK - Startet den Handel mit NICK."
 
 msgid "\"Switch magic attack\""
-msgstr ""
+msgstr "\"Wechsle magische Attacke\""
 
 msgid ""
 "You can hide/show bars and buttons by right click and select menu item."
 msgstr "Sie können die Infofenster und Knöpfe verstecken/anzeigen, indem Sie\n mit der rechten Maustaste daraufklicken und den Menüpunkt auswählen."
 
 msgid "\"Enable / disable away mode\""
-msgstr ""
+msgstr "\"Aktiviere/Deaktiviere abwesend Modus\""
 
 msgid "\"Commands window\""
-msgstr ""
+msgstr "\"Befehlsfenster\""
 
 msgid "Android porting"
 msgstr "Android Portierung"
@@ -450,19 +451,19 @@ msgid "/clear - clear current chat tab."
 msgstr "/clear - Im aktuellen Chatfenster kompletten Text löschen."
 
 msgid "\"Social window\""
-msgstr ""
+msgstr "\"Gesellschaftsfenster\""
 
 msgid "\"Emote shortcut 4\""
 msgstr "\"Emoticon Kürzel 4\""
 
 msgid "\"Close chat tab\""
-msgstr ""
+msgstr "\"Schließe Chat-Tab\""
 
 msgid "\"Target player\""
-msgstr ""
+msgstr "\"Spieler anvisieren\""
 
 msgid "/invite NICK - invite a player to your party."
-msgstr ""
+msgstr "/invite NICK - Lade Spieler in deine Gruppe ein"
 
 msgid ""
 " - ##2disregarded##9:  You wish to disregard this player, meaning that his or\n"
@@ -471,10 +472,10 @@ msgid ""
 msgstr ""
 
 msgid "\"Debug window\""
-msgstr ""
+msgstr "\"Debugfenster\""
 
 msgid "\"Next chat tab\""
-msgstr ""
+msgstr "\"Nächster Chat-Tab\""
 
 msgid "\"Change move to target type\""
 msgstr ""
@@ -1049,7 +1050,7 @@ msgid "/leave - leave the party you are in."
 msgstr ""
 
 msgid "\"Status window\""
-msgstr ""
+msgstr "\"Statusfenster\""
 
 msgid "/notice TEXT - set notice guild text."
 msgstr ""
@@ -1058,7 +1059,7 @@ msgid "/friend NICK, /befriend NICK - add nick to friends list."
 msgstr "/friend NICK, /befriend NICK - Fügt NICK der Freundesliste hinzu."
 
 msgid "ABOUT THE MANA WORLD"
-msgstr ""
+msgstr "ÜBER THE MANA WORLD"
 
 msgid "\"Emote shortcut 14\""
 msgstr "\"Emoticon Kürzel 14\""
@@ -1067,7 +1068,7 @@ msgid "Commands"
 msgstr "Befehle"
 
 msgid "\"Stop Attack\""
-msgstr ""
+msgstr "\"Angriff stoppen\""
 
 msgid "Contributors to client/server development"
 msgstr "Mitwirkenden an der Client/Server-Entwicklung"

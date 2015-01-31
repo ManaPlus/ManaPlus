@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2015-01-07 20:36+0000\n"
+"PO-Revision-Date: 2015-01-29 15:07+0000\n"
 "Last-Translator: Fernanda Monteiro <crie.fernanda@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/manaplus/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -36,7 +36,7 @@ msgstr "/cacheinfo - mostra informações de cache de texto."
 msgid ""
 "You can imitate other players by selecting \"imitation\" in player context menu\n"
 " or type chat command: /imitate playername."
-msgstr "Você pode imitar outros jogadores selecionando a opção \"imitar\" no menu\n ou digitar o comando: /imitate nomedojogador."
+msgstr "Você pode imitar outros jogadores selecionando a opção \"imitar\" no menu\n ou digitando o comando: /imitate nome."
 
 msgid ""
 " - ##2allow trading##9: Do you wish to allow trade requests from arbitrary\n"
@@ -47,7 +47,7 @@ msgid "\"Emote shortcut 9\""
 msgstr "\"Atalho de emoticon 9\""
 
 msgid "/addignoreattack NAME - add monster to ignore attack list."
-msgstr "/addignoreattack NAME - Adicionar um monstro à lista de ignorados."
+msgstr "/addignoreattack NOME - Adicionar um monstro à lista de ignorados."
 
 msgid "Back to Index"
 msgstr "Voltar ao índice"
@@ -70,7 +70,7 @@ msgid "\"Emote shortcut 10\""
 msgstr "\"Atalho de emoticon 10\""
 
 msgid "Content devs"
-msgstr "Conteúdo dos desenvolvedores."
+msgstr "Desenvolvedores de conteúdo"
 
 msgid "Guild chat commands"
 msgstr "Comandos do chat de guilda."
@@ -82,7 +82,7 @@ msgid "GM"
 msgstr "GM"
 
 msgid "/addattack NAME - add monster to attack list."
-msgstr "/addattack NAME - adiciona monstro à lista de ataque."
+msgstr "/addattack NOME - adiciona monstro à lista de ataque."
 
 msgid "\"Emote shortcut 2\""
 msgstr "\"Atalho de emoticon 2\""
@@ -117,7 +117,7 @@ msgid "/wait NAME - wait for nick or moster with name."
 msgstr "/wait NOME - espera pelo jogador ou monstro com este nome."
 
 msgid "##2Trade:##9 enables the ability to trade with others."
-msgstr "##2Trade:##9 Ativa a habilidade de negociar com outros jogadores."
+msgstr "##2Negociar:##9 Ativa a habilidade de negociar com outros jogadores."
 
 msgid "\"Use magic attack\""
 msgstr "\"Usa ataque mágico\""
@@ -160,7 +160,7 @@ msgid ""
 "Communication is often essential to success in this game. You can communicate\n"
 " in several ways:  By chatting and showing emotions (see above), by trading\n"
 " (with the right-click context menu), and by whispering."
-msgstr "A comunicação é frequentemente essencial para o sucesso neste jogo. Você pode se \n comunicar de várias maneiras: Conversando e mostrando emoções (veja acima),\n negociando (com o menu do botão direito), e enviando mensagens privadas (sussurro)."
+msgstr "A comunicação é usualmente essencial para o sucesso neste jogo. Você pode se \n comunicar de várias maneiras: Conversando e mostrando emoções (veja acima),\n negociando (com o menu do botão direito), e enviando mensagens privadas (sussurro)."
 
 msgid "\"Item shortcut 3\""
 msgstr "\"Atalho de item 3\""
@@ -217,7 +217,7 @@ msgid "/outfit prev - wear previous outfit."
 msgstr "/outfit prev - veste a roupa anterior."
 
 msgid "##2Party level2:##9 enables a char to create a party."
-msgstr "##2Nível de grupo 2:##9 Permite a um jogador criar um grupo."
+msgstr "##2Grupo nível 2:##9 Permite a um jogador criar um grupo."
 
 msgid "/target NICK - select nick as target. Can be monster or player nick."
 msgstr "/target NOME - seleciona o nome como alvo. Pode ser um monstro ou um jogador."
@@ -277,7 +277,7 @@ msgid ""
 msgstr " Clique com o botão esquerdo para executar a ação padrão: andar, pegar um item, atacar\n um monstro e falar com NPCs (certifique-se de clicar na altura dos pés). Clique com o\n botão direito para mostrar um menu de contexto. Segurar [Shift esquerdo] previne andar\n enquanto ataca."
 
 msgid "Search string not found."
-msgstr "Texto procurado não localizado."
+msgstr "Texto não encontrado."
 
 msgid "\"Emote shortcut 7\""
 msgstr "\"Atalho de emoticon 7\""
@@ -327,7 +327,7 @@ msgid ""
 msgstr "A maioria dos comandos funciona em mensagens privadas (sussuros).\nPor exemplo o comando /imitation na mensagem com jogador1,\né similar ao comando /imitation jogador1."
 
 msgid "\"Ignore input 1\""
-msgstr "\"Ignorar input 1\""
+msgstr "\"Ignorar digitação 1\""
 
 msgid "\"Item shortcut 6\""
 msgstr "\"Atalho de item 6\""
@@ -345,7 +345,7 @@ msgid "\"Outfit shortcut 7\""
 msgstr "\"Atalho de roupa 7\""
 
 msgid "/addpriorityattack NAME - add monster to priority attack list."
-msgstr "/addpriorityattack NAME - adiciona um monstro à lista de prioridades."
+msgstr "/addpriorityattack NOME - adiciona um monstro à lista de prioridades."
 
 msgid "For TMW support:"
 msgstr "Para suporte do TMW:"
@@ -362,7 +362,7 @@ msgid "\"Item shortcut 13\""
 msgstr "\"Atalho de item 13\""
 
 msgid "For other servers may exists other copyrights."
-msgstr "Para outros servidores podem existir outros copyrights."
+msgstr "Para outros servidores podem existir outras licenças."
 
 msgid "\"Outfit shortcut 13\""
 msgstr "\"Atalho de roupa 13\""
@@ -431,7 +431,7 @@ msgid "\"Commands window\""
 msgstr "\"Janela de comandos\""
 
 msgid "Android porting"
-msgstr "portabilidade para Android"
+msgstr "versão para Android"
 
 msgid ""
 "You can set away mode,\n"
@@ -439,7 +439,7 @@ msgid ""
 msgstr "Você pode colocar o modo ausência digitando o comando /away"
 
 msgid "Magic skills:"
-msgstr "Habilidades de Feitiços:"
+msgstr "Habilidades Mágicas:"
 
 msgid "Server news"
 msgstr "Notícias do servidor"
@@ -914,7 +914,7 @@ msgid "\"Setup window\""
 msgstr "\"Janela de configurações\""
 
 msgid "/removeattack NAME - remove monster from attack list."
-msgstr "/removeattack NAME - remover o monstro da lista de atques."
+msgstr "/removeattack NOME - remover o monstro da lista de atques."
 
 msgid "\"Set direction up\""
 msgstr "\"Definir direção para cima\""
@@ -923,7 +923,7 @@ msgid "or come visit us on our IRC channel:"
 msgstr "ou venha nos visitar em nosso canal IRC:"
 
 msgid "\"Toggle camera mode\""
-msgstr "\"Alterar modo de camera\""
+msgstr "\"Alterar modo de câmera\""
 
 msgid "WINDOWS"
 msgstr "JANELAS"
@@ -991,7 +991,7 @@ msgid "\"Emulate right click from keyboard\""
 msgstr "\"Emular clique direito no teclado\""
 
 msgid "MacOSX porting"
-msgstr "portabilidade para MacOSX"
+msgstr "versão para MacOSX"
 
 msgid ""
 "About yellow bar you can read here:\n"
