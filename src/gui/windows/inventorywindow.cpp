@@ -331,6 +331,8 @@ void InventoryWindow::postInit()
 
     mItems->setSortType(mSortDropDown->getSelected());
     widgetResized(Event(nullptr));
+    if (mInventory && mInventory->getType() == InventoryType::STORAGE)
+        setVisible(true);
 }
 
 InventoryWindow::~InventoryWindow()
