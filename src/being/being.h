@@ -764,9 +764,6 @@ class Being notfinal : public ActorSprite,
         bool isShopEnabled() const A_WARN_UNUSED
         { return mShop; }
 
-        void enableShop(const bool b)
-        { mShop = b; }
-
         /**
          * Sets the attack range.
          */

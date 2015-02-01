@@ -2365,17 +2365,14 @@ void PopupMenu::addBuySell(const Being *const being)
     if (player_relations.getDefault() & PlayerRelation::TRADE)
     {
         mBrowserBox->addRow("##3---");
-        if (being->isAdvanced())
+        if (being->isShopEnabled())
         {
-            if (being->isShopEnabled())
-            {
-                // TRANSLATORS: popup menu item
-                // TRANSLATORS: buy item
-                mBrowserBox->addRow("/buy 'NAME'", _("Buy"));
-                // TRANSLATORS: popup menu item
-                // TRANSLATORS: sell item
-                mBrowserBox->addRow("/sell 'NAME'", _("Sell"));
-            }
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: buy item
+            mBrowserBox->addRow("/buy 'NAME'", _("Buy"));
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: sell item
+            mBrowserBox->addRow("/sell 'NAME'", _("Sell"));
         }
         else
         {

@@ -1891,7 +1891,7 @@ std::string Being::getGenderSign() const
         else if (getGender() == Gender::MALE)
             str = "\u2642";
     }
-    if (mShowPlayersStatus && mAdvanced)
+    if (mShowPlayersStatus)
     {
         if (mShop)
             str.append("$");
@@ -2272,7 +2272,8 @@ bool Being::updateFromCache()
         if (mAdvanced)
         {
             const int flags = entry->getFlags();
-            mShop = ((flags & BeingFlag::SHOP) != 0);
+            if (!serverFeatures->haveVending())
+                mShop = ((flags & BeingFlag::SHOP) != 0);
             mAway = ((flags & BeingFlag::AWAY) != 0);
             mInactive = ((flags & BeingFlag::INACTIVE) != 0);
             if (mShop || mAway || mInactive)
@@ -2280,7 +2281,8 @@ bool Being::updateFromCache()
         }
         else
         {
-            mShop = false;
+            if (!serverFeatures->haveVending())
+                mShop = false;
             mAway = false;
             mInactive = false;
         }
@@ -2324,7 +2326,7 @@ void Being::addToCache() const
     if (isAdvanced())
     {
         int flags = 0;
-        if (mShop)
+        if (!serverFeatures->haveVending() && mShop)
             flags += BeingFlag::SHOP;
         if (mAway)
             flags += BeingFlag::AWAY;
@@ -3039,7 +3041,8 @@ void Being::setState(const uint8_t state)
     const bool needUpdate = (shop != mShop || away != mAway
         || inactive != mInactive);
 
-    mShop = shop;
+    if (!serverFeatures->haveVending())
+        mShop = shop;
     mAway = away;
     mInactive = inactive;
     updateAwayEffect();
@@ -3530,5 +3533,7 @@ void Being::setChat(ChatObject *const obj)
 
 void Being::setBoard(const std::string &text)
 {
+    mShop = !text.empty();
     mBoard = text;
+    updateName();
 }
