@@ -268,6 +268,10 @@ namespace PlayerInfo
     void setGuildPositionFlags(const GuildPositionFlags::Type pos);
 
     GuildPositionFlags::Type getGuildPositionFlags();
+
+    void enableVending(const bool b);
+
+    bool isVending() A_WARN_UNUSED;
 }  // namespace PlayerInfo
 
 #endif  // BEING_PLAYERINFO_H

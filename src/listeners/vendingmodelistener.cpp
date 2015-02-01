@@ -1,8 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2004-2009  The Mana World Development Team
- *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011-2015  The ManaPlus Developers
+ *  Copyright (C) 2014-2015  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -20,21 +18,19 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ENUMS_INVENTORYTYPE_H
-#define ENUMS_INVENTORYTYPE_H
+#include "listeners/vendingmodelistener.h"
 
-namespace InventoryType
+#include "debug.h"
+
+defineListener(VendingModeListener)
+
+void VendingModeListener::distributeEvent(const bool b)
 {
-    enum Type
+    FOR_EACH (std::vector<VendingModeListener*>::iterator,
+              it, mListeners)
     {
-        INVENTORY = 0,
-        STORAGE,
-        CART,
-        TRADE,
-        NPC,
-        VENDING,
-        TYPE_END
-    };
-}  // namespace InventoryType
-
-#endif  // ENUMS_INVENTORYTYPE_H
+        VendingModeListener *const listener = *it;
+        if (listener)
+            listener->vendingEnabled(b);
+    }
+}

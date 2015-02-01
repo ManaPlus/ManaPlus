@@ -223,6 +223,8 @@ manaplus_SOURCES += events/actionevent.h \
 	      listeners/updatestatuslistener.h \
 	      listeners/uploadlistener.cpp \
 	      listeners/uploadlistener.h \
+	      listeners/vendingmodelistener.cpp \
+	      listeners/vendingmodelistener.h \
 	      listeners/vendingslotslistener.cpp \
 	      listeners/vendingslotslistener.h \
 	      utils/sdlpixel.h \

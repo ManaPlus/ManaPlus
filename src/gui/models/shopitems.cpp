@@ -50,32 +50,38 @@ std::string ShopItems::getElementAt(int i)
     return mShopItems.at(i)->getDisplayName();
 }
 
-void ShopItems::addItem(const int id,
-                        const int type,
-                        const unsigned char color,
-                        const int amount,
-                        const int price)
+ShopItem *ShopItems::addItem(const int id,
+                              const int type,
+                              const unsigned char color,
+                              const int amount,
+                              const int price)
 {
-    mShopItems.push_back(new ShopItem(-1, id, type, color, amount, price));
+    ShopItem *const item = new ShopItem(-1, id, type, color, amount, price);
+    mShopItems.push_back(item);
+    return item;
 }
 
-void ShopItems::addItemNoDup(const int id,
-                             const int type,
-                             const unsigned char color,
-                             const int amount,
-                             const int price)
+ShopItem *ShopItems::addItemNoDup(const int id,
+                                  const int type,
+                                  const unsigned char color,
+                                  const int amount,
+                                  const int price)
 {
-    const ShopItem *const item = findItem(id, color);
+    ShopItem *item = findItem(id, color);
     if (!item)
-        mShopItems.push_back(new ShopItem(-1, id, type, color, amount, price));
+    {
+        item = new ShopItem(-1, id, type, color, amount, price);
+        mShopItems.push_back(item);
+    }
+    return item;
 }
 
-void ShopItems::addItem2(const int inventoryIndex,
-                         const int id,
-                         const int type,
-                         const unsigned char color,
-                         const int quantity,
-                         const int price)
+ShopItem *ShopItems::addItem2(const int inventoryIndex,
+                              const int id,
+                              const int type,
+                              const unsigned char color,
+                              const int quantity,
+                              const int price)
 {
     ShopItem *item = nullptr;
     if (mMergeDuplicates)
@@ -90,6 +96,7 @@ void ShopItems::addItem2(const int inventoryIndex,
         item = new ShopItem(inventoryIndex, id, type, color, quantity, price);
         mShopItems.push_back(item);
     }
+    return item;
 }
 
 ShopItem *ShopItems::at(unsigned int i) const

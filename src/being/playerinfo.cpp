@@ -67,6 +67,7 @@ PetInfo *mPet = nullptr;
 GuildPositionFlags::Type mGuildPositionFlags = GuildPositionFlags::None;
 
 bool mTrading = false;
+bool mVending = false;
 int mLevelProgress = 0;
 std::set<int> mProtectedItems;
 
@@ -570,6 +571,16 @@ void setGuildPositionFlags(const GuildPositionFlags::Type pos)
 GuildPositionFlags::Type getGuildPositionFlags()
 {
     return mGuildPositionFlags;
+}
+
+void enableVending(const bool b)
+{
+    mVending = b;
+}
+
+bool isVending()
+{
+    return mVending;
 }
 
 }  // namespace PlayerInfo

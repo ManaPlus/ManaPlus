@@ -22,6 +22,7 @@
 
 #include "gui/windows/buydialog.h"
 
+#include "actormanager.h"
 #include "configuration.h"
 #include "shopitem.h"
 #include "units.h"
@@ -48,6 +49,8 @@
 #include "net/cashshophandler.h"
 #include "net/markethandler.h"
 #include "net/npchandler.h"
+#include "net/serverfeatures.h"
+#include "net/vendinghandler.h"
 
 #include "resources/iteminfo.h"
 
@@ -336,14 +339,15 @@ void BuyDialog::reset()
     setMoney(0);
 }
 
-void BuyDialog::addItem(const int id,
-                        const int type,
-                        const unsigned char color,
-                        const int amount,
-                        const int price)
+ShopItem *BuyDialog::addItem(const int id,
+                             const int type,
+                             const unsigned char color,
+                             const int amount,
+                             const int price)
 {
-    mShopItems->addItem(id, type, color, amount, price);
+    ShopItem *const item = mShopItems->addItem(id, type, color, amount, price);
     mShopItemList->adjustSize();
+    return item;
 }
 
 void BuyDialog::sort()
@@ -478,14 +482,27 @@ void BuyDialog::action(const ActionEvent &event)
             mSlider->setScale(1, mMaxItems);
             mSlider->setValue(1);
         }
-        else if (tradeWindow)
+        else if (mNpcId == Nick)
         {
-            if (item)
+            if (serverFeatures->haveVending())
             {
-                buySellHandler->sendBuyRequest(mNick,
-                    item, mAmountItems);
-                tradeWindow->addAutoMoney(mNick,
-                    item->getPrice() * mAmountItems);
+                Being *const being = actorManager->findBeingByName(mNick);
+                if (being)
+                {
+                    vendingHandler->buy(being,
+                        item->getInvIndex(),
+                        mAmountItems);
+                }
+            }
+            else if (tradeWindow)
+            {
+                if (item)
+                {
+                    buySellHandler->sendBuyRequest(mNick,
+                        item, mAmountItems);
+                    tradeWindow->addAutoMoney(mNick,
+                        item->getPrice() * mAmountItems);
+                }
             }
         }
     }

@@ -30,6 +30,7 @@
 
 class Button;
 class DropDown;
+class ShopItem;
 class ShopItems;
 class ShopListBox;
 class SortListModelBuy;
@@ -99,11 +100,11 @@ class BuyDialog final : public Window,
         /**
          * Adds an item to the shop inventory.
          */
-        void addItem(const int id,
-                     const int type,
-                     const unsigned char color,
-                     const int amount,
-                     const int price);
+        ShopItem *addItem(const int id,
+                          const int type,
+                          const unsigned char color,
+                          const int amount,
+                          const int price);
 
         /**
          * Called when receiving actions from the widgets.

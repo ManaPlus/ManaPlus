@@ -3537,3 +3537,9 @@ void Being::setBoard(const std::string &text)
     mBoard = text;
     updateName();
 }
+
+void Being::enableShop(const bool b)
+{
+    mShop = b;
+    updateName();
+}

@@ -27,6 +27,7 @@
 
 #include "listeners/actionlistener.h"
 #include "listeners/selectionlistener.h"
+#include "listeners/vendingmodelistener.h"
 #include "listeners/vendingslotslistener.h"
 
 class Button;
@@ -46,6 +47,7 @@ class TabStrip;
 class ShopWindow final : public Window,
                          public ActionListener,
                          public SelectionListener,
+                         public VendingModeListener,
                          public VendingSlotsListener
 {
     public:
@@ -141,6 +143,8 @@ class ShopWindow final : public Window,
 
         void vendingSlotsChanged(const int slots) override final;
 
+        void vendingEnabled(const bool b) override final;
+
     private:
         void startTrade();
 
@@ -176,6 +180,7 @@ class ShopWindow final : public Window,
         int mSellShopSize;
         bool isBuySelected;
         bool mHaveVending;
+        bool mEnableVending;
 };
 
 extern ShopWindow *shopWindow;

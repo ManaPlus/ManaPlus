@@ -26,10 +26,12 @@
 #include "enums/being/attributes.h"
 
 #include "being/being.h"
+#include "being/localplayer.h"
 #include "being/playerinfo.h"
 
 #include "gui/windows/buydialog.h"
 
+#include "listeners/vendingmodelistener.h"
 #include "listeners/vendingslotslistener.h"
 
 #include "net/ea/eaprotocol.h"
@@ -121,6 +123,8 @@ void VendingHandler::processHideBoard(Net::MessageIn &msg)
     Being *const dstBeing = actorManager->findBeing(id);
     if (dstBeing)
         dstBeing->setBoard(std::string());
+    if (dstBeing == localPlayer)
+        VendingModeListener::distributeEvent(false);
 }
 
 void VendingHandler::processItemsList(Net::MessageIn &msg)
@@ -138,7 +142,7 @@ void VendingHandler::processItemsList(Net::MessageIn &msg)
     {
         const int value = msg.readInt32("price");
         const int amount = msg.readInt16("amount");
-        msg.readInt16("inv index");
+        const int index = msg.readInt16("inv index");
         const int type = msg.readUInt8("item type");
         const int itemId = msg.readInt16("item id");
         msg.readUInt8("identify");
@@ -148,7 +152,10 @@ void VendingHandler::processItemsList(Net::MessageIn &msg)
             msg.readInt16("card");
 
         const unsigned char color = 1;
-        mBuyDialog->addItem(itemId, type, color, amount, value);
+        ShopItem *const item = mBuyDialog->addItem(itemId, type,
+            color, amount, value);
+        if (item)
+            item->setInvIndex(index);
     }
     mBuyDialog->sort();
 }
@@ -177,6 +184,8 @@ void VendingHandler::processOpen(Net::MessageIn &msg)
         for (int d = 0; d < 4; d ++)
             msg.readInt16("card");
     }
+    PlayerInfo::enableVending(true);
+    VendingModeListener::distributeEvent(true);
 }
 
 void VendingHandler::processReport(Net::MessageIn &msg)

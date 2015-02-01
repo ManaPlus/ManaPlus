@@ -82,6 +82,7 @@ ShopWindow::ShopWindow() :
     Window(_("Personal Shop"), false, nullptr, "shop.xml"),
     ActionListener(),
     SelectionListener(),
+    VendingModeListener(),
     VendingSlotsListener(),
     // TRANSLATORS: shop window button
     mCloseButton(new Button(this, _("Close"), "close", this)),
@@ -111,7 +112,8 @@ ShopWindow::ShopWindow() :
     mTradeMoney(0),
     mSellShopSize(0),
     isBuySelected(true),
-    mHaveVending(serverFeatures->haveVending())
+    mHaveVending(serverFeatures->haveVending()),
+    mEnableVending(false)
 {
     mBuyShopItemList->postInit();
     mSellShopItemList->postInit();
@@ -270,32 +272,37 @@ void ShopWindow::action(const ActionEvent &event)
     }
     else if (eventId == "publish")
     {
-        std::vector<ShopItem*> &oldItems = mSellShopItems->items();
-        std::vector<ShopItem*> items;
-        Inventory *const inv = PlayerInfo::getCartInventory();
-        if (!inv)
-            return;
-        FOR_EACH (std::vector<ShopItem*>::iterator, it, oldItems)
+        if (mEnableVending)
         {
-            ShopItem *const item = *it;
-            // +++ need add colors
-            Item *const cartItem = inv->findItem(item->getId(), 1);
-            if (!cartItem)
-                continue;
-            item->setInvIndex(cartItem->getInvIndex());
-            const int amount = cartItem->getQuantity();
-            if (!amount)
-                continue;
-            if (item->getQuantity() < amount)
-                item->setQuantity(amount);
-            items.push_back(item);
-            if (static_cast<signed int>(items.size()) >= mSellShopSize)
-                break;
+            vendingHandler->close();
+            VendingModeListener::distributeEvent(false);
         }
-        if (!items.empty())
+        else
         {
-            vendingHandler->createShop("test shop", true, items);
-            mSellShopSize = 0;
+            std::vector<ShopItem*> &oldItems = mSellShopItems->items();
+            std::vector<ShopItem*> items;
+            Inventory *const inv = PlayerInfo::getCartInventory();
+            if (!inv)
+                return;
+            FOR_EACH (std::vector<ShopItem*>::iterator, it, oldItems)
+            {
+                ShopItem *const item = *it;
+                // +++ need add colors
+                Item *const cartItem = inv->findItem(item->getId(), 1);
+                if (!cartItem)
+                    continue;
+                item->setInvIndex(cartItem->getInvIndex());
+                const int amount = cartItem->getQuantity();
+                if (!amount)
+                    continue;
+                if (item->getQuantity() < amount)
+                    item->setQuantity(amount);
+                items.push_back(item);
+                if (static_cast<signed int>(items.size()) >= mSellShopSize)
+                    break;
+            }
+            if (!items.empty())
+                vendingHandler->createShop("test shop", true, items);
         }
     }
 
@@ -369,18 +376,25 @@ void ShopWindow::updateButtonsAndLabels()
         allowDel = mSellShopItemList->getSelected() != -1 && sellNotEmpty;
     }
     mDeleteButton->setEnabled(allowDel);
-    if (mPublishButton
-        && !isBuySelected
-        && sellNotEmpty
-        && mSellShopSize > 0
-        && localPlayer
-        && localPlayer->getHaveCart())
+    if (mPublishButton)
     {
-        mPublishButton->setEnabled(true);
-    }
-    else
-    {
-        mPublishButton->setEnabled(false);
+        if (mEnableVending)
+            mPublishButton->setCaption(_("Close shop"));
+        else
+            mPublishButton->setCaption(_("Publish"));
+        mPublishButton->adjustSize();
+        if (!isBuySelected
+            && sellNotEmpty
+            && mSellShopSize > 0
+            && localPlayer
+            && localPlayer->getHaveCart())
+        {
+            mPublishButton->setEnabled(true);
+        }
+        else
+        {
+            mPublishButton->setEnabled(false);
+        }
     }
 }
 
@@ -957,4 +971,11 @@ void ShopWindow::updateSelection()
 void ShopWindow::vendingSlotsChanged(const int slots)
 {
     mSellShopSize = slots;
+}
+
+void ShopWindow::vendingEnabled(const bool b)
+{
+    mEnableVending = b;
+    updateButtonsAndLabels();
+    localPlayer->enableShop(b);
 }
