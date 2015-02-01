@@ -80,7 +80,9 @@
 #include "net/mercenaryhandler.h"
 #include "net/npchandler.h"
 #include "net/playerhandler.h"
+#include "net/serverfeatures.h"
 #include "net/uploadcharinfo.h"
+#include "net/vendinghandler.h"
 #include "net/tradehandler.h"
 
 #include "resources/iteminfo.h"
@@ -605,7 +607,7 @@ impHandler(buy)
 {
     const std::string args = event.args;
     Being *being = findBeing(args);
-    if (!being)
+    if (!being && !serverFeatures->haveVending())
     {
         const std::set<std::string> &players = whoIsOnline->getOnlineNicks();
         if (players.find(args) != players.end())
@@ -623,7 +625,10 @@ impHandler(buy)
     }
     else if (being->getType() == ActorType::Player)
     {
-        buySellHandler->requestSellList(being->getName());
+        if (serverFeatures->haveVending())
+            vendingHandler->open(being);
+        else
+            buySellHandler->requestSellList(being->getName());
         return true;
     }
     return false;

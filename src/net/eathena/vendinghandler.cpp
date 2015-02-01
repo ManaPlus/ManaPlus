@@ -23,7 +23,12 @@
 #include "actormanager.h"
 #include "shopitem.h"
 
+#include "enums/being/attributes.h"
+
 #include "being/being.h"
+#include "being/playerinfo.h"
+
+#include "gui/windows/buydialog.h"
 
 #include "listeners/vendingslotslistener.h"
 
@@ -38,6 +43,8 @@ extern Net::VendingHandler *vendingHandler;
 
 namespace EAthena
 {
+
+BuyDialog *VendingHandler::mBuyDialog = nullptr;
 
 VendingHandler::VendingHandler() :
     MessageHandler()
@@ -54,6 +61,7 @@ VendingHandler::VendingHandler() :
     };
     handledMessages = _messages;
     vendingHandler = this;
+    mBuyDialog = nullptr;
 }
 
 void VendingHandler::handleMessage(Net::MessageIn &msg)
@@ -117,22 +125,32 @@ void VendingHandler::processHideBoard(Net::MessageIn &msg)
 
 void VendingHandler::processItemsList(Net::MessageIn &msg)
 {
+
     const int count = (msg.readInt16("len") - 12) / 22;
-    msg.readInt32("id");
+    const int id = msg.readInt32("id");
+    Being *const being = actorManager->findBeing(id);
+    if (!being)
+        return;
+    mBuyDialog = new BuyDialog(being->getName());
+    mBuyDialog->setMoney(PlayerInfo::getAttribute(Attributes::MONEY));
     msg.readInt32("vender id");
     for (int f = 0; f < count; f ++)
     {
-        msg.readInt32("price");
-        msg.readInt16("amount");
+        const int value = msg.readInt32("price");
+        const int amount = msg.readInt16("amount");
         msg.readInt16("inv index");
-        msg.readUInt8("item type");
-        msg.readInt16("item id");
+        const int type = msg.readUInt8("item type");
+        const int itemId = msg.readInt16("item id");
         msg.readUInt8("identify");
         msg.readUInt8("attribute");
         msg.readUInt8("refine");
         for (int d = 0; d < 4; d ++)
             msg.readInt16("card");
+
+        const unsigned char color = 1;
+        mBuyDialog->addItem(itemId, type, color, amount, value);
     }
+    mBuyDialog->sort();
 }
 
 void VendingHandler::processBuyAck(Net::MessageIn &msg)

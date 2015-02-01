@@ -25,6 +25,8 @@
 
 #include "net/eathena/messagehandler.h"
 
+class BuyDialog;
+
 namespace EAthena
 {
 class VendingHandler final : public MessageHandler,
@@ -68,6 +70,8 @@ class VendingHandler final : public MessageHandler,
         static void processOpen(Net::MessageIn &msg);
 
         static void processReport(Net::MessageIn &msg);
+
+        static BuyDialog *mBuyDialog;
 };
 
 }  // namespace EAthena
