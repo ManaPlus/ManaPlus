@@ -287,6 +287,8 @@ void ShopWindow::action(const ActionEvent &event)
             FOR_EACH (std::vector<ShopItem*>::iterator, it, oldItems)
             {
                 ShopItem *const item = *it;
+                if (!item)
+                    continue;
                 // +++ need add colors
                 Item *const cartItem = inv->findItem(item->getId(), 1);
                 if (!cartItem)
@@ -295,7 +297,7 @@ void ShopWindow::action(const ActionEvent &event)
                 const int amount = cartItem->getQuantity();
                 if (!amount)
                     continue;
-                if (item->getQuantity() < amount)
+                if (item->getQuantity() > amount)
                     item->setQuantity(amount);
                 items.push_back(item);
                 if (static_cast<signed int>(items.size()) >= mSellShopSize)
