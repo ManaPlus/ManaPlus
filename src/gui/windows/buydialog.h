@@ -145,6 +145,8 @@ class BuyDialog final : public Window,
         static void closeAll();
 
     private:
+        void updateSlider(const int selectedItem);
+
         typedef std::list<BuyDialog*> DialogList;
         static DialogList instances;
 

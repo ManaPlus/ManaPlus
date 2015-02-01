@@ -471,16 +471,7 @@ void BuyDialog::action(const ActionEvent &event)
                     mAmountItems);
             }
 
-            // Update money and adjust the max number of items
-            // that can be bought
-            mMaxItems -= mAmountItems;
-            setMoney(mMoney -
-                     mAmountItems * mShopItems->at(selectedItem)->getPrice());
-
-            // Reset selection
-            mAmountItems = 1;
-            mSlider->setScale(1, mMaxItems);
-            mSlider->setValue(1);
+            updateSlider(selectedItem);
         }
         else if (mNpcId == Nick)
         {
@@ -492,6 +483,9 @@ void BuyDialog::action(const ActionEvent &event)
                     vendingHandler->buy(being,
                         item->getInvIndex(),
                         mAmountItems);
+                    item->increaseQuantity(-mAmountItems);
+                    item->update();
+                    updateSlider(selectedItem);
                 }
             }
             else if (tradeWindow)
@@ -506,6 +500,19 @@ void BuyDialog::action(const ActionEvent &event)
             }
         }
     }
+}
+
+void BuyDialog::updateSlider(const int selectedItem)
+{
+    // Update money and adjust the max number of items
+    // that can be bought
+    mMaxItems -= mAmountItems;
+    setMoney(mMoney - mAmountItems * mShopItems->at(selectedItem)->getPrice());
+
+    // Reset selection
+    mAmountItems = 1;
+    mSlider->setScale(1, mMaxItems);
+    mSlider->setValue(1);
 }
 
 void BuyDialog::valueChanged(const SelectionEvent &event A_UNUSED)
