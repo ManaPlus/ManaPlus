@@ -914,6 +914,11 @@ class Being notfinal : public ActorSprite,
         void setAreaSize(const int areaSize)
         { mAreaSize = areaSize; }
 
+        void setBoard(const std::string &text);
+
+        std::string getBoard() const A_WARN_UNUSED
+        { return mBoard; }
+
     protected:
         /**
          * Updates name's location.
@@ -1029,6 +1034,7 @@ class Being notfinal : public ActorSprite,
         int *mSpriteHide;
         int *mSpriteDraw;
         std::string mComment;
+        std::string mBoard;
         std::vector<Being*> mPets;
         Being *mOwner;
         Particle *mSpecialParticle;

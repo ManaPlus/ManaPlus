@@ -20,6 +20,7 @@
 
 #include "net/eathena/vendinghandler.h"
 
+#include "actormanager.h"
 #include "shopitem.h"
 
 #include "being/being.h"
@@ -99,13 +100,19 @@ void VendingHandler::processOpenReq(Net::MessageIn &msg)
 
 void VendingHandler::processShowBoard(Net::MessageIn &msg)
 {
-    msg.readInt32("owner id");
-    msg.readString(80, "shop name");
+    const int id = msg.readInt32("owner id");
+    const std::string shopName = msg.readString(80, "shop name");
+    Being *const dstBeing = actorManager->findBeing(id);
+    if (dstBeing)
+        dstBeing->setBoard(shopName);
 }
 
 void VendingHandler::processHideBoard(Net::MessageIn &msg)
 {
-    msg.readInt32("owner id");
+    const int id = msg.readInt32("owner id");
+    Being *const dstBeing = actorManager->findBeing(id);
+    if (dstBeing)
+        dstBeing->setBoard(std::string());
 }
 
 void VendingHandler::processItemsList(Net::MessageIn &msg)

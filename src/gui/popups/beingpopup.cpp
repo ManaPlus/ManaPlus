@@ -43,7 +43,8 @@ BeingPopup::BeingPopup() :
     mBeingParty(new Label(this, "A")),
     mBeingGuild(new Label(this, "A")),
     mBeingRank(new Label(this, "A")),
-    mBeingComment(new Label(this, "A"))
+    mBeingComment(new Label(this, "A")),
+    mBeingBoard(new Label(this, "A"))
 {
     // Being Name
     mBeingName->setFont(boldFont);
@@ -57,13 +58,16 @@ BeingPopup::BeingPopup() :
     // Being's party
     mBeingGuild->setPosition(0, 2 * fontHeight);
     mBeingRank->setPosition(0, 3 * fontHeight);
-    mBeingComment->setPosition(0, 4 * fontHeight);
+    mBeingBoard->setPosition(0, 4 * fontHeight);
+    mBeingComment->setPosition(0, 5 * fontHeight);
 
     mBeingParty->setForegroundColorAll(getThemeColor(Theme::POPUP),
         getThemeColor(Theme::POPUP_OUTLINE));
     mBeingGuild->setForegroundColorAll(getThemeColor(Theme::POPUP),
         getThemeColor(Theme::POPUP_OUTLINE));
     mBeingRank->setForegroundColorAll(getThemeColor(Theme::POPUP),
+        getThemeColor(Theme::POPUP_OUTLINE));
+    mBeingBoard->setForegroundColorAll(getThemeColor(Theme::POPUP),
         getThemeColor(Theme::POPUP_OUTLINE));
     mBeingComment->setForegroundColorAll(getThemeColor(Theme::POPUP),
         getThemeColor(Theme::POPUP_OUTLINE));
@@ -80,6 +84,7 @@ void BeingPopup::postInit()
     add(mBeingGuild);
     add(mBeingRank);
     add(mBeingComment);
+    add(mBeingBoard);
 }
 
 void BeingPopup::show(const int x, const int y, Being *const b)
@@ -93,7 +98,8 @@ void BeingPopup::show(const int x, const int y, Being *const b)
     Label *label1 = mBeingParty;
     Label *label2 = mBeingGuild;
     Label *label3 = mBeingRank;
-    Label *label4 = mBeingComment;
+    Label *label4 = mBeingBoard;
+    Label *label5 = mBeingComment;
 
     b->updateComment();
 
@@ -128,6 +134,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
     label2->setCaption("");
     label3->setCaption("");
     label4->setCaption("");
+    label5->setCaption("");
 
     if (!(b->getPartyName().empty()))
     {
@@ -138,6 +145,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
     }
     else
     {
+        label5 = label4;
         label4 = label3;
         label3 = label2;
         label2 = label1;
@@ -153,6 +161,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
     }
     else
     {
+        label5 = label4;
         label4 = label3;
         label3 = label2;
         label2 = nullptr;
@@ -166,20 +175,34 @@ void BeingPopup::show(const int x, const int y, Being *const b)
     }
     else
     {
+        label5 = label4;
         label4 = label3;
         label3 = nullptr;
+    }
+
+    if (!b->getBoard().empty())
+    {
+        // TRANSLATORS: being popup label
+        label4->setCaption(strprintf(_("Shop: %s"),
+            b->getBoard().c_str()));
+        label4->adjustSize();
+    }
+    else
+    {
+        label5 = label4;
+        label4 = nullptr;
     }
 
     if (!b->getComment().empty())
     {
         // TRANSLATORS: being popup label
-        label4->setCaption(strprintf(_("Comment: %s"),
+        label5->setCaption(strprintf(_("Comment: %s"),
             b->getComment().c_str()));
-        label4->adjustSize();
+        label5->adjustSize();
     }
     else
     {
-        label4 = nullptr;
+        label5 = nullptr;
     }
 
     int minWidth = mBeingName->getWidth();
@@ -191,6 +214,8 @@ void BeingPopup::show(const int x, const int y, Being *const b)
         minWidth = label3->getWidth();
     if (label4 && label4->getWidth() > minWidth)
         minWidth = label4->getWidth();
+    if (label5 && label5->getWidth() > minWidth)
+        minWidth = label5->getWidth();
 
     const int height1 = getFont()->getHeight();
     int height = height1;
@@ -201,6 +226,8 @@ void BeingPopup::show(const int x, const int y, Being *const b)
     if (label3)
         height += height1;
     if (label4)
+        height += height1;
+    if (label5)
         height += height1;
 
     setContentSize(minWidth, height);
