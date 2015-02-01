@@ -161,6 +161,8 @@ void NpcHandler::processNpcCommand(Net::MessageIn &msg)
             }
             break;
         case 5:  // close dialog
+            if (mDialog)
+                mDialog->restoreCamera();
             npcHandler->closeDialog(npcId);
             break;
         case 6:  // show avatar
