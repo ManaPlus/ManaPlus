@@ -145,10 +145,14 @@ class ShopWindow final : public Window,
 
         void vendingEnabled(const bool b) override final;
 
+        void setShopName(const std::string &name);
+
     private:
         void startTrade();
 
         void updateSelection();
+
+        void updateShopName();
 
         typedef std::list<ShopWindow*> DialogList;
         static DialogList instances;
@@ -167,10 +171,12 @@ class ShopWindow final : public Window,
         Button *mDeleteButton;
         Button *mAnnounceButton;
         Button *mPublishButton;
+        Button *mRenameButton;
         CheckBox *mAnnounceLinks;
         TabStrip *mTabs;
         std::string mAcceptPlayer;
         std::string mTradeNick;
+        std::string mSellShopName;
         int mSelectedItem;
         int mAnnonceTime;
         int mLastRequestTimeList;

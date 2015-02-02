@@ -1136,6 +1136,8 @@ SET(SRCS
     gui/rect.h
     events/selectionevent.h
     listeners/selectionlistener.h
+    listeners/shoprenamelistener.cpp
+    listeners/shoprenamelistener.h
     listeners/statlistener.cpp
     listeners/statlistener.h
     listeners/tablemodellistener.h

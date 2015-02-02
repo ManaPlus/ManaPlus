@@ -27,6 +27,7 @@
 #include "gui/windows/buydialog.h"
 #include "gui/windows/chatwindow.h"
 #include "gui/windows/confirmdialog.h"
+#include "gui/windows/editdialog.h"
 #include "gui/windows/itemamountwindow.h"
 #include "gui/windows/shopselldialog.h"
 #include "gui/windows/setupwindow.h"
@@ -42,6 +43,8 @@
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/shoplistbox.h"
 #include "gui/widgets/tabstrip.h"
+
+#include "listeners/shoprenamelistener.h"
 
 #include "actormanager.h"
 #include "configuration.h"
@@ -100,10 +103,12 @@ ShopWindow::ShopWindow() :
     mDeleteButton(new Button(this, _("Delete"), "delete", this)),
     mAnnounceButton(nullptr),
     mPublishButton(nullptr),
+    mRenameButton(nullptr),
     mAnnounceLinks(nullptr),
     mTabs(nullptr),
     mAcceptPlayer(),
     mTradeNick(),
+    mSellShopName(serverConfig.getStringValue("sellShopName")),
     mSelectedItem(-1),
     mAnnonceTime(0),
     mLastRequestTimeList(0),
@@ -122,7 +127,7 @@ ShopWindow::ShopWindow() :
     setResizable(true);
     setCloseButton(true);
     setStickyButtonLock(true);
-    setMinWidth(260);
+    setMinWidth(300);
     setMinHeight(220);
     if (mainGraphics->mWidth > 600)
         setDefaultSize(500, 300, ImageRect::CENTER);
@@ -131,7 +136,6 @@ ShopWindow::ShopWindow() :
 
     if (setupWindow)
         setupWindow->registerWindowForReset(this);
-
 
     const int size = config.getIntValue("fontSize")
         + getOption("tabHeightAdjust", 16);
@@ -142,7 +146,6 @@ ShopWindow::ShopWindow() :
     mTabs->addButton(_("Buy"), "buy", true);
     // TRANSLATORS: shop window tab name
     mTabs->addButton(_("Sell"), "sell", false);
-
 
     loadList();
 
@@ -159,11 +162,14 @@ ShopWindow::ShopWindow() :
 
     placer(0, 0, mTabs, 8).setPadding(3);
 
-    if (isBuySelected)
+    if (mHaveVending)
     {
         // TRANSLATORS: shop window button
         mPublishButton = new Button(this, _("Publish"), "publish", this);
+        // TRANSLATORS: shop window button
+        mRenameButton = new Button(this, _("Rename"), "rename", this);
         placer(2, 6, mPublishButton);
+        placer(3, 6, mRenameButton);
     }
     else
     {
@@ -180,14 +186,14 @@ ShopWindow::ShopWindow() :
     placer(0, 1, mScrollArea, 8, 5).setPadding(3);
     placer(0, 6, mAddButton);
     placer(1, 6, mDeleteButton);
-    placer(7, 7, mCloseButton);
+    placer(7, 6, mCloseButton);
 
     Layout &layout = getLayout();
     layout.setRowHeight(0, LayoutType::SET);
 
     center();
     loadWindowState();
-
+    updateShopName();
     instances.push_back(this);
 }
 
@@ -304,8 +310,16 @@ void ShopWindow::action(const ActionEvent &event)
                     break;
             }
             if (!items.empty())
-                vendingHandler->createShop("test shop", true, items);
+                vendingHandler->createShop(mSellShopName, true, items);
         }
+    }
+    else if (eventId == "rename")
+    {
+        EditDialog *const dialog = new EditDialog(
+            _("Please enter new shop name"), mSellShopName, "OK");
+            dialog->postInit();
+        shopRenameListener.setDialog(dialog);
+        dialog->addActionListener(&shopRenameListener);
     }
 
     if (mSelectedItem < 1)
@@ -403,6 +417,8 @@ void ShopWindow::updateButtonsAndLabels()
             mPublishButton->setEnabled(false);
         }
     }
+    if (mRenameButton)
+        mRenameButton->setEnabled(!mEnableVending);
 }
 
 void ShopWindow::setVisible(bool visible)
@@ -988,4 +1004,25 @@ void ShopWindow::vendingEnabled(const bool b)
     if (!b)
         mSellShopSize = 0;
     updateButtonsAndLabels();
+}
+
+void ShopWindow::updateShopName()
+{
+    if (mSellShopName.empty())
+    {
+        // TRANSLATORS: shop window name
+        setCaption(_("Personal Shop"));
+    }
+    else
+    {
+        // TRANSLATORS: shop window name
+        setCaption(strprintf(_("Personal Shop - %s"), mSellShopName.c_str()));
+    }
+}
+
+void ShopWindow::setShopName(const std::string &name)
+{
+    mSellShopName = name;
+    serverConfig.setValue("sellShopName", mSellShopName);
+    updateShopName();
 }
