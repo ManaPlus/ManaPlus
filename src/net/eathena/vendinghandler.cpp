@@ -124,7 +124,10 @@ void VendingHandler::processHideBoard(Net::MessageIn &msg)
     if (dstBeing)
         dstBeing->setBoard(std::string());
     if (dstBeing == localPlayer)
+    {
+        PlayerInfo::enableVending(false);
         VendingModeListener::distributeEvent(false);
+    }
 }
 
 void VendingHandler::processItemsList(Net::MessageIn &msg)
@@ -197,6 +200,7 @@ void VendingHandler::processReport(Net::MessageIn &msg)
 void VendingHandler::close() const
 {
     createOutPacket(CMSG_VENDING_CLOSE);
+    PlayerInfo::enableVending(false);
 }
 
 void VendingHandler::open(const Being *const being) const

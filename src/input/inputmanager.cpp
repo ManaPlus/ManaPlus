@@ -25,11 +25,13 @@
 #include "settings.h"
 #include "touchmanager.h"
 
+#include "being/localplayer.h"
+#include "being/playerinfo.h"
+
 #include "input/inputactionmap.h"
 #include "input/inputactionsortfunctor.h"
 #include "input/joystick.h"
 #include "input/keyboardconfig.h"
-#include "being/localplayer.h"
 #ifdef USE_SDL2
 #include "input/multitouchmanager.h"
 #endif
@@ -687,6 +689,9 @@ void InputManager::updateConditionMask()
 
     if (!BuyDialog::isActive() && !SellDialog::isActive())
         mMask |= InputCondition::NOBUYSELL;
+
+    if (!PlayerInfo::isVending())
+        mMask |= InputCondition::NOVENDING;
 
     if (!settings.awayMode)
         mMask |= InputCondition::NOAWAY;
