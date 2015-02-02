@@ -400,7 +400,7 @@ void ShopWindow::updateButtonsAndLabels()
     if (mPublishButton)
     {
         if (mEnableVending)
-            mPublishButton->setCaption(_("Close shop"));
+            mPublishButton->setCaption(_("Unpublish"));
         else
             mPublishButton->setCaption(_("Publish"));
         mPublishButton->adjustSize();
