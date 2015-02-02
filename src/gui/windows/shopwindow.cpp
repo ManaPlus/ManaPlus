@@ -365,18 +365,23 @@ void ShopWindow::valueChanged(const SelectionEvent &event A_UNUSED)
 
 void ShopWindow::updateButtonsAndLabels()
 {
-    mAddButton->setEnabled(mSelectedItem != -1);
     bool allowDel(false);
+    bool allowAdd(false);
     const bool sellNotEmpty = mSellShopItems->getNumberOfElements() > 0;
     if (isBuySelected)
     {
+        allowAdd = !mEnableVending;
         allowDel = mBuyShopItemList->getSelected() != -1
             && mBuyShopItems->getNumberOfElements() > 0;
     }
     else
     {
-        allowDel = mSellShopItemList->getSelected() != -1 && sellNotEmpty;
+        allowAdd = !mEnableVending && mSelectedItem != -1;
+        allowDel = !mEnableVending
+            && mSellShopItemList->getSelected() != -1
+            && sellNotEmpty;
     }
+    mAddButton->setEnabled(allowAdd);
     mDeleteButton->setEnabled(allowDel);
     if (mPublishButton)
     {
@@ -973,11 +978,14 @@ void ShopWindow::updateSelection()
 void ShopWindow::vendingSlotsChanged(const int slots)
 {
     mSellShopSize = slots;
+    updateButtonsAndLabels();
 }
 
 void ShopWindow::vendingEnabled(const bool b)
 {
     mEnableVending = b;
-    updateButtonsAndLabels();
     localPlayer->enableShop(b);
+    if (!b)
+        mSellShopSize = 0;
+    updateButtonsAndLabels();
 }
