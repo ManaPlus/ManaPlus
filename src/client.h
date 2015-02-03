@@ -120,12 +120,6 @@ class Client final : public ConfigListener,
 
         static void logVars();
 
-#ifdef ANDROID
-#ifdef USE_SDL2
-        static void extractAssets();
-#endif
-#endif
-
         ServerInfo mCurrentServer;
 
         Game *mGame;

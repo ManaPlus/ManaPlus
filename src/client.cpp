@@ -161,12 +161,6 @@
 
 #include "debug.h"
 
-#ifdef ANDROID
-#ifdef USE_SDL2
-int loadingProgressCounter = 1;
-#endif
-#endif
-
 std::string errorMessage;
 LoginData loginData;
 
@@ -555,27 +549,6 @@ void Client::initGraphics()
 
     mainGraphics->beginDraw();
 }
-
-#ifdef ANDROID
-#ifdef USE_SDL2
-static void updateProgress(int cnt)
-{
-    const int progress = cnt + loadingProgressCounter;
-    const int h = mainGraphics->mHeight;
-    mainGraphics->setColor(Color(255, 255, 255));
-    const int maxSize = mainGraphics->mWidth - 100;
-    const int width = maxSize * progress / 450;
-    mainGraphics->fillRectangle(Rect(50, h - 100, width, 50));
-    mainGraphics->updateScreen();
-}
-
-static void setProgress(const int val)
-{
-    loadingProgressCounter = val;
-    updateProgress(loadingProgressCounter);
-}
-#endif
-#endif
 
 void Client::setEnv(const char *const name, const char *const value)
 {
@@ -1813,6 +1786,7 @@ void Client::logVars()
 
 #ifdef ANDROID
 #ifdef USE_SDL2
+/*
 void Client::extractAssets()
 {
     if (!getenv("APPDIR"))
@@ -1840,7 +1814,7 @@ void Client::extractAssets()
             logger->log("asset size: %d", size2);
             fwrite(buf, 1, size2, file);
             SDL_RWclose(rw);
-            setProgress(loadingProgressCounter + 1);
+            Dirs::setProgress();
         }
         else
         {
@@ -1859,11 +1833,12 @@ void Client::extractAssets()
         int size2 = SDL_RWread(rw, buf, 1, size);
         fwrite(buf, 1, size2, file2);
         SDL_RWclose(rw);
-        setProgress(loadingProgressCounter + 1);
+        setProgress();
     }
     fclose(file2);
 
     delete [] buf;
 }
+*/
 #endif
 #endif

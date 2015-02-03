@@ -55,6 +55,91 @@
 #define _nacl_dir std::string("/persistent/manaplus")
 #endif
 
+#ifdef ANDROID
+#ifdef USE_SDL2
+#include "render/graphics.h"
+
+int loadingProgressCounter = 1;
+
+static void updateProgress(int cnt)
+{
+    const int progress = cnt + loadingProgressCounter;
+    const int h = mainGraphics->mHeight;
+    mainGraphics->setColor(Color(255, 255, 255));
+    const int maxSize = mainGraphics->mWidth - 100;
+    const int width = maxSize * progress / 450;
+    mainGraphics->fillRectangle(Rect(50, h - 100, width, 50));
+    mainGraphics->updateScreen();
+}
+
+void Dirs::setProgress()
+{
+    loadingProgressCounter++;
+    updateProgress(loadingProgressCounter);
+}
+
+static void resetProgress()
+{
+    loadingProgressCounter = 0;
+    updateProgress(loadingProgressCounter);
+}
+
+void extractAssets()
+{
+    if (!getenv("APPDIR"))
+    {
+        logger->log("error: APPDIR is not set!");
+        return;
+    }
+    const std::string fileName = std::string(getenv(
+        "APPDIR")).append("/data.zip");
+    logger->log("Extracting asset into: " + fileName);
+    uint8_t *buf = new uint8_t[1000000];
+
+    FILE *const file = fopen(fileName.c_str(), "w");
+    for (int f = 0; f < 100; f ++)
+    {
+        std::string part = strprintf("manaplus-data.zip%u%u",
+            static_cast<unsigned int>(f / 10),
+            static_cast<unsigned int>(f % 10));
+        logger->log("testing asset: " + part);
+        SDL_RWops *const rw = SDL_RWFromFile(part.c_str(), "r");
+        if (rw)
+        {
+            const int size = SDL_RWsize(rw);
+            int size2 = SDL_RWread(rw, buf, 1, size);
+            logger->log("asset size: %d", size2);
+            fwrite(buf, 1, size2, file);
+            SDL_RWclose(rw);
+            Dirs::setProgress();
+        }
+        else
+        {
+            break;
+        }
+    }
+    fclose(file);
+
+    const std::string fileName2 = std::string(getenv(
+        "APPDIR")).append("/locale.zip");
+    FILE *const file2 = fopen(fileName2.c_str(), "w");
+    SDL_RWops *const rw = SDL_RWFromFile("manaplus-locale.zip", "r");
+    if (rw)
+    {
+        const int size = SDL_RWsize(rw);
+        int size2 = SDL_RWread(rw, buf, 1, size);
+        fwrite(buf, 1, size2, file2);
+        SDL_RWclose(rw);
+        Dirs::setProgress();
+    }
+    fclose(file2);
+
+    delete [] buf;
+}
+
+#endif
+#endif
+
 void Dirs::updateDataPath()
 {
     if (settings.options.dataPath.empty()
@@ -78,7 +163,7 @@ void Dirs::extractDataDir()
 #ifdef ANDROID
 #ifdef USE_SDL2
     Files::setCopyCallBack(&updateProgress);
-    setProgress(0);
+    resetProgress();
     extractAssets();
 
     const std::string zipName = std::string(getenv(

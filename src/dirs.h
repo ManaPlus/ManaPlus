@@ -49,6 +49,12 @@ class Dirs final
         static void initUpdatesDir();
 
         static void initScreenshotDir();
+
+#ifdef ANDROID
+#ifdef USE_SDL2
+        static void setProgress();
+#endif
+#endif
 };
 
 #endif  // DIRS_H
