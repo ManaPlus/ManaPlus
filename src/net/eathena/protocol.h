@@ -168,6 +168,7 @@
 #define SMSG_WALK_RESPONSE           0x0087
 
 #define SMSG_BUYINGSTORE_OPEN        0x0810
+#define SMSG_BUYINGSTORE_CREATE_FAILED 0x0812
 
 // Receiving a request to trade
 #define SMSG_TRADE_REQUEST           0x01f4

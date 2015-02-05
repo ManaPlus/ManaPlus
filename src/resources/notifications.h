@@ -424,6 +424,18 @@ namespace NotifyManager
             // TRANSLATORS: notification message
             N_("Withdraw failed. You probably don't have this "
                 "amount of money in the bank right now."),
+            NotifyFlags::EMPTY},
+        {"buying store create failed",
+            // TRANSLATORS: notification message
+            N_("Buying store create failed."),
+            NotifyFlags::EMPTY},
+        {"buying store create failed weight",
+            // TRANSLATORS: notification message
+            N_("Buying store create failed. Too many weight."),
+            NotifyFlags::INT},
+        {"buying store create empty",
+            // TRANSLATORS: notification message
+            N_("Buying store create failed. No items in store."),
             NotifyFlags::EMPTY}
     };
 }  // namespace NotifyManager

@@ -20,12 +20,15 @@
 
 #include "net/eathena/buyingstorehandler.h"
 
+#include "notifymanager.h"
 #include "shopitem.h"
 
 #include "net/ea/eaprotocol.h"
 
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h" 
+
+#include "resources/notifytypes.h"
 
 #include "debug.h"
 
@@ -40,6 +43,7 @@ BuyingStoreHandler::BuyingStoreHandler() :
     static const uint16_t _messages[] =
     {
         SMSG_BUYINGSTORE_OPEN,
+        SMSG_BUYINGSTORE_CREATE_FAILED,
         0
     };
     handledMessages = _messages;
@@ -54,6 +58,10 @@ void BuyingStoreHandler::handleMessage(Net::MessageIn &msg)
             processBuyingStoreOpen(msg);
             break;
 
+        case SMSG_BUYINGSTORE_CREATE_FAILED:
+            processBuyingStoreCreateFailed(msg);
+            break;
+
         default:
             break;
     }
@@ -63,6 +71,27 @@ void BuyingStoreHandler::processBuyingStoreOpen(Net::MessageIn &msg)
 {
     // +++ need create store dialog
     msg.readUInt8("slots");
+}
+
+void BuyingStoreHandler::processBuyingStoreCreateFailed(Net::MessageIn &msg)
+{
+    const int16_t result = msg.readInt16("result");
+    const int weight = msg.readInt32("weight");
+    switch (result)
+    {
+        case 0:
+        default:
+            NotifyManager::notify(NotifyTypes::BUYING_STORE_CREATE_FAILED);
+            break;
+        case 1:
+            NotifyManager::notify(
+                NotifyTypes::BUYING_STORE_CREATE_FAILED_WEIGHT,
+                weight);
+            break;
+        case 8:
+            NotifyManager::notify(NotifyTypes::BUYING_STORE_CREATE_EMPTY);
+            break;
+    }
 }
 
 void BuyingStoreHandler::create(const std::string &name,

@@ -44,6 +44,8 @@ class BuyingStoreHandler final : public MessageHandler,
 
     protected:
         static void processBuyingStoreOpen(Net::MessageIn &msg);
+
+        static void processBuyingStoreCreateFailed(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
