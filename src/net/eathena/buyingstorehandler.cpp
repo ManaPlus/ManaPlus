@@ -46,6 +46,7 @@ BuyingStoreHandler::BuyingStoreHandler() :
         SMSG_BUYINGSTORE_CREATE_FAILED,
         SMSG_BUYINGSTORE_OWN_ITEMS,
         SMSG_BUYINGSTORE_SHOW_BOARD,
+        SMSG_BUYINGSTORE_HIDE_BOARD,
         0
     };
     handledMessages = _messages;
@@ -70,6 +71,10 @@ void BuyingStoreHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_BUYINGSTORE_SHOW_BOARD:
             processBuyingStoreShowBoard(msg);
+            break;
+
+        case SMSG_BUYINGSTORE_HIDE_BOARD:
+            processBuyingStoreHideBoard(msg);
             break;
 
         default:
@@ -122,6 +127,11 @@ void BuyingStoreHandler::processBuyingStoreShowBoard(Net::MessageIn &msg)
 {
     msg.readInt32("account id");
     msg.readString(80, "board name");
+}
+
+void BuyingStoreHandler::processBuyingStoreHideBoard(Net::MessageIn &msg)
+{
+    msg.readInt32("account id");
 }
 
 void BuyingStoreHandler::create(const std::string &name,
