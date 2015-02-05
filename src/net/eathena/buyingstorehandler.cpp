@@ -44,6 +44,7 @@ BuyingStoreHandler::BuyingStoreHandler() :
     {
         SMSG_BUYINGSTORE_OPEN,
         SMSG_BUYINGSTORE_CREATE_FAILED,
+        SMSG_BUYINGSTORE_OWN_ITEMS,
         0
     };
     handledMessages = _messages;
@@ -60,6 +61,10 @@ void BuyingStoreHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_BUYINGSTORE_CREATE_FAILED:
             processBuyingStoreCreateFailed(msg);
+            break;
+
+        case SMSG_BUYINGSTORE_OWN_ITEMS:
+            processBuyingStoreOwnItems(msg);
             break;
 
         default:
@@ -91,6 +96,20 @@ void BuyingStoreHandler::processBuyingStoreCreateFailed(Net::MessageIn &msg)
         case 8:
             NotifyManager::notify(NotifyTypes::BUYING_STORE_CREATE_EMPTY);
             break;
+    }
+}
+
+void BuyingStoreHandler::processBuyingStoreOwnItems(Net::MessageIn &msg)
+{
+    const int count = (msg.readInt16("len") - 12) / 9;
+    msg.readInt32("account id");
+    msg.readInt32("money limit");
+    for (int f = 0; f < count; f ++)
+    {
+        msg.readInt32("price");
+        msg.readInt16("amount");
+        msg.readUInt8("item type");
+        msg.readInt16("item id");
     }
 }
 
