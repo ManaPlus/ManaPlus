@@ -49,6 +49,7 @@ BuyingStoreHandler::BuyingStoreHandler() :
         SMSG_BUYINGSTORE_OWN_ITEMS,
         SMSG_BUYINGSTORE_SHOW_BOARD,
         SMSG_BUYINGSTORE_HIDE_BOARD,
+        SMSG_BUYINGSTORE_ITEMS_LIST,
         0
     };
     handledMessages = _messages;
@@ -77,6 +78,10 @@ void BuyingStoreHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_BUYINGSTORE_HIDE_BOARD:
             processBuyingStoreHideBoard(msg);
+            break;
+
+        case SMSG_BUYINGSTORE_ITEMS_LIST:
+            processBuyingStoreItemsList(msg);
             break;
 
         default:
@@ -134,6 +139,21 @@ void BuyingStoreHandler::processBuyingStoreShowBoard(Net::MessageIn &msg)
 void BuyingStoreHandler::processBuyingStoreHideBoard(Net::MessageIn &msg)
 {
     msg.readInt32("account id");
+}
+
+void BuyingStoreHandler::processBuyingStoreItemsList(Net::MessageIn &msg)
+{
+    const int count = (msg.readInt16("len") - 16) / 9;
+    msg.readInt32("account id");
+    msg.readInt32("store id");
+    msg.readInt32("money limit");
+    for (int f = 0; f < count; f ++)
+    {
+        msg.readInt32("price");
+        msg.readInt16("amount");
+        msg.readUInt8("item type");
+        msg.readInt16("item id");
+    }
 }
 
 void BuyingStoreHandler::create(const std::string &name,
