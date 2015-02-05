@@ -20,7 +20,12 @@
 
 #include "net/eathena/buyingstorehandler.h"
 
-#include "net/eathena/protocol.h"
+#include "shopitem.h"
+
+#include "net/ea/eaprotocol.h"
+
+#include "net/eathena/messageout.h"
+#include "net/eathena/protocol.h" 
 
 #include "debug.h"
 
@@ -58,6 +63,24 @@ void BuyingStoreHandler::processBuyingStoreOpen(Net::MessageIn &msg)
 {
     // +++ need create store dialog
     msg.readUInt8("slots");
+}
+
+void BuyingStoreHandler::create(const std::string &name,
+                                const int maxMoney,
+                                const bool flag,
+                                std::vector<ShopItem*> &items) const
+{
+    createOutPacket(CMSG_BUYINGSTORE_CREATE);
+    outMsg.writeInt32(maxMoney, "limit money");
+    outMsg.writeInt8(flag, "flag");
+    outMsg.writeString(name, 80, "store name");
+    FOR_EACH (std::vector<ShopItem*>::const_iterator, it, items)
+    {
+        const ShopItem *const item = *it;
+        outMsg.writeInt16(static_cast<int16_t>(item->getId()), "item id");
+        outMsg.writeInt16(static_cast<int16_t>(item->getQuantity()), "amount");
+        outMsg.writeInt32(item->getPrice(), "price");
+    }
 }
 
 }  // namespace EAthena

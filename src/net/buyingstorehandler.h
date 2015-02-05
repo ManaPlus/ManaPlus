@@ -22,8 +22,11 @@
 #define NET_BUYINGSTOREHANDLER_H
 
 #include <string>
+#include <vector>
 
 #include "localconsts.h"
+
+class ShopItem;
 
 namespace Net
 {
@@ -33,6 +36,11 @@ class BuyingStoreHandler notfinal
     public:
         virtual ~BuyingStoreHandler()
         { }
+
+        virtual void create(const std::string &name,
+                            const int maxMoney,
+                            const bool flag,
+                            std::vector<ShopItem*> &items) const = 0;
 };
 
 }  // namespace Net

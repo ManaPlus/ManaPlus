@@ -37,6 +37,11 @@ class BuyingStoreHandler final : public MessageHandler,
         A_DELETE_COPY(BuyingStoreHandler)
 
         void handleMessage(Net::MessageIn &msg) override final;
+
+        void create(const std::string &name,
+                    const int maxMoney,
+                    const bool flag,
+                    std::vector<ShopItem*> &items) const;
 };
 
 }  // namespace TmwAthena
