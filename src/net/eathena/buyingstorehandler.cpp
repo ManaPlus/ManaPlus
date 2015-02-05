@@ -183,7 +183,7 @@ void BuyingStoreHandler::open(const Being *const being) const
 {
     if (!being)
         return;
-    createOutPacket(SMSG_BUYINGSTORE_OPEN);
+    createOutPacket(CMSG_BUYINGSTORE_OPEN);
     outMsg.writeInt32(being->getId(), "account id");
 }
 

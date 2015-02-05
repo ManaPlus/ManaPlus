@@ -38,6 +38,12 @@
 
 #include "resources/resourcemanager.h"
 
+#ifdef ANDROID
+#ifdef USE_SDL2
+#include "render/graphics.h"
+#endif
+#endif
+
 #ifdef __APPLE__
 #include <CoreFoundation/CFBundle.h>
 #endif
@@ -57,7 +63,6 @@
 
 #ifdef ANDROID
 #ifdef USE_SDL2
-#include "render/graphics.h"
 
 int loadingProgressCounter = 1;
 
