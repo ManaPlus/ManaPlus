@@ -46,6 +46,12 @@ class BuyingStoreHandler final : public MessageHandler,
 
         void open(const Being *const being) const override final;
 
+        void sell(const Being *const being,
+                  const int storeId,
+                  const int index,
+                  const int itemId,
+                  const int amount) const override final;
+
     protected:
         static void processBuyingStoreOpen(Net::MessageIn &msg);
 

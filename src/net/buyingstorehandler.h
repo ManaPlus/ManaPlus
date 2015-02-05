@@ -46,6 +46,12 @@ class BuyingStoreHandler notfinal
                             std::vector<ShopItem*> &items) const = 0;
 
         virtual void close() const = 0;
+
+        virtual void sell(const Being *const being,
+                          const int storeId,
+                          const int index,
+                          const int itemId,
+                          const int amount) const = 0;
 };
 
 }  // namespace Net

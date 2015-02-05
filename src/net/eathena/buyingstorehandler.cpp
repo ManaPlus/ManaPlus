@@ -187,4 +187,22 @@ void BuyingStoreHandler::open(const Being *const being) const
     outMsg.writeInt32(being->getId(), "account id");
 }
 
+void BuyingStoreHandler::sell(const Being *const being,
+                              const int storeId,
+                              const int index,
+                              const int itemId,
+                              const int amount) const
+{
+    if (!being)
+        return;
+
+    createOutPacket(CMSG_BUYINGSTORE_SELL);
+    outMsg.writeInt16(16, "len");
+    outMsg.writeInt32(being->getId(), "account id");
+    outMsg.writeInt32(storeId, "store id");
+    outMsg.writeInt16(static_cast<int16_t>(index), "index");
+    outMsg.writeInt16(static_cast<int16_t>(itemId), "item id");
+    outMsg.writeInt16(static_cast<int16_t>(amount), "amount");
+}
+
 }  // namespace EAthena

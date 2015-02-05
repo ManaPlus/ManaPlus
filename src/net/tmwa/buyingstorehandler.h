@@ -46,6 +46,12 @@ class BuyingStoreHandler final : public MessageHandler,
         void close() const override final;
 
         void open(const Being *const being) const override final;
+
+        void sell(const Being *const being,
+                  const int storeId,
+                  const int index,
+                  const int itemId,
+                  const int amount) const override final;
 };
 
 }  // namespace TmwAthena
