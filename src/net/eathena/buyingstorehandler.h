@@ -44,6 +44,8 @@ class BuyingStoreHandler final : public MessageHandler,
 
         void close() const override final;
 
+        void open(const Being *const being) const override final;
+
     protected:
         static void processBuyingStoreOpen(Net::MessageIn &msg);
 

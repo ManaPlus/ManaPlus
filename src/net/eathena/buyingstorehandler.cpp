@@ -23,6 +23,8 @@
 #include "notifymanager.h"
 #include "shopitem.h"
 
+#include "being/being.h"
+
 #include "net/ea/eaprotocol.h"
 
 #include "net/eathena/messageout.h"
@@ -155,6 +157,14 @@ void BuyingStoreHandler::create(const std::string &name,
 void BuyingStoreHandler::close() const
 {
     createOutPacket(CMSG_BUYINGSTORE_CLOSE);
+}
+
+void BuyingStoreHandler::open(const Being *const being) const
+{
+    if (!being)
+        return;
+    createOutPacket(SMSG_BUYINGSTORE_OPEN);
+    outMsg.writeInt32(being->getId(), "account id");
 }
 
 }  // namespace EAthena

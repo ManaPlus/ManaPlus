@@ -26,6 +26,7 @@
 
 #include "localconsts.h"
 
+class Being;
 class ShopItem;
 
 namespace Net
@@ -37,10 +38,13 @@ class BuyingStoreHandler notfinal
         virtual ~BuyingStoreHandler()
         { }
 
+        virtual void open(const Being *const being) const = 0;
+
         virtual void create(const std::string &name,
                             const int maxMoney,
                             const bool flag,
                             std::vector<ShopItem*> &items) const = 0;
+
         virtual void close() const = 0;
 };
 

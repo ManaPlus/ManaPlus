@@ -53,4 +53,8 @@ void BuyingStoreHandler::close() const
 {
 }
 
+void BuyingStoreHandler::open(const Being *const being A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena
