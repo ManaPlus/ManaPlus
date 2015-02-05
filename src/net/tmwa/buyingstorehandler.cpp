@@ -49,4 +49,8 @@ void BuyingStoreHandler::create(const std::string &name A_UNUSED,
 {
 }
 
+void BuyingStoreHandler::close() const
+{
+}
+
 }  // namespace TmwAthena

@@ -142,4 +142,9 @@ void BuyingStoreHandler::create(const std::string &name,
     }
 }
 
+void BuyingStoreHandler::close() const
+{
+    createOutPacket(CMSG_BUYINGSTORE_CLOSE);
+}
+
 }  // namespace EAthena

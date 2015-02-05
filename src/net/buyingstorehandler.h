@@ -41,6 +41,7 @@ class BuyingStoreHandler notfinal
                             const int maxMoney,
                             const bool flag,
                             std::vector<ShopItem*> &items) const = 0;
+        virtual void close() const = 0;
 };
 
 }  // namespace Net

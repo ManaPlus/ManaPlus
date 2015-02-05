@@ -42,6 +42,8 @@ class BuyingStoreHandler final : public MessageHandler,
                     const int maxMoney,
                     const bool flag,
                     std::vector<ShopItem*> &items) const;
+
+        void close() const override final;
 };
 
 }  // namespace TmwAthena

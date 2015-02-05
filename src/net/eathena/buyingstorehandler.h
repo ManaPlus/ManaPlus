@@ -42,6 +42,8 @@ class BuyingStoreHandler final : public MessageHandler,
                     const bool flag,
                     std::vector<ShopItem*> &items) const override final;
 
+        void close() const override final;
+
     protected:
         static void processBuyingStoreOpen(Net::MessageIn &msg);
 
