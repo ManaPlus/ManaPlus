@@ -52,6 +52,7 @@ BuyingStoreHandler::BuyingStoreHandler() :
         SMSG_BUYINGSTORE_ITEMS_LIST,
         SMSG_BUYINGSTORE_SELL_FAILED,
         SMSG_BUYINGSTORE_REPORT,
+        SMSG_BUYINGSTORE_DELETE_ITEM,
         0
     };
     handledMessages = _messages;
@@ -92,6 +93,10 @@ void BuyingStoreHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_BUYINGSTORE_REPORT:
             processBuyingStoreReport(msg);
+            break;
+
+        case SMSG_BUYINGSTORE_DELETE_ITEM:
+            processBuyingStoreDeleteItem(msg);
             break;
 
         default:
@@ -189,6 +194,13 @@ void BuyingStoreHandler::processBuyingStoreReport(Net::MessageIn &msg)
     msg.readInt16("item id");
     msg.readInt16("amount");
     msg.readInt32("money limit");
+}
+
+void BuyingStoreHandler::processBuyingStoreDeleteItem(Net::MessageIn &msg)
+{
+    msg.readInt16("item index");
+    msg.readInt16("amount");
+    msg.readInt32("price");
 }
 
 void BuyingStoreHandler::create(const std::string &name,
