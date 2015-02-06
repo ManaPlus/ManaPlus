@@ -437,18 +437,35 @@ namespace NotifyManager
             // TRANSLATORS: notification message
             N_("Buying store create failed. No items in store."),
             NotifyFlags::EMPTY},
-        {"buying store sell failed money limit",
+        {"buying store buy failed money limit",
             // TRANSLATORS: notification message
             N_("All items within the buy limit were purchased."),
             NotifyFlags::EMPTY},
-        {"buying store sell failed empty",
+        {"buying store buy failed empty",
             // TRANSLATORS: notification message
             N_("All items were purchased."),
             NotifyFlags::EMPTY},
-        {"buying store sell failed",
+        {"buying store buy failed",
             // TRANSLATORS: notification message
             N_("Buying item failed."),
-            NotifyFlags::EMPTY}
+            NotifyFlags::EMPTY},
+        {"buying store sell failed deal",
+            // TRANSLATORS: notification message
+            N_("The deal has failed."),
+            NotifyFlags::EMPTY},
+        {"buying store sell failed amount",
+            // TRANSLATORS: notification message
+            N_("The trade failed, because the entered amount of item is "
+                "higher, than the buyer is willing to buy."),
+            NotifyFlags::EMPTY},
+        {"buying store sell failed balance",
+            // TRANSLATORS: notification message
+            N_("The trade failed, because the buyer is lacking required balance."),
+            NotifyFlags::EMPTY},
+        {"buying store sell failed",
+            // TRANSLATORS: notification message
+            N_("Selling item failed."),
+            NotifyFlags::EMPTY},
     };
 }  // namespace NotifyManager
 #endif  // RESOURCES_NOTIFICATIONS_H

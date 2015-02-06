@@ -53,6 +53,7 @@ BuyingStoreHandler::BuyingStoreHandler() :
         SMSG_BUYINGSTORE_SELL_FAILED,
         SMSG_BUYINGSTORE_REPORT,
         SMSG_BUYINGSTORE_DELETE_ITEM,
+        SMSG_BUYINGSTORE_SELLER_SELL_FAILED,
         0
     };
     handledMessages = _messages;
@@ -97,6 +98,10 @@ void BuyingStoreHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_BUYINGSTORE_DELETE_ITEM:
             processBuyingStoreDeleteItem(msg);
+            break;
+
+        case SMSG_BUYINGSTORE_SELLER_SELL_FAILED:
+            processBuyingStoreSellerSellFailed(msg);
             break;
 
         default:
@@ -185,6 +190,30 @@ void BuyingStoreHandler::processBuyingStoreSellFailed(Net::MessageIn &msg)
             break;
         default:
             NotifyManager::notify(NotifyTypes::BUYING_STORE_SELL_FAILED);
+            break;
+    }
+}
+
+void BuyingStoreHandler::processBuyingStoreSellerSellFailed(Net::MessageIn &msg)
+{
+    const int16_t result = msg.readInt16("result");
+    msg.readInt16("item id");
+    switch (result)
+    {
+        case 5:
+            NotifyManager::notify(
+                NotifyTypes::BUYING_STORE_SELLER_SELL_FAILED_DEAL);
+            break;
+        case 6:
+            NotifyManager::notify(
+                NotifyTypes::BUYING_STORE_SELLER_SELL_FAILED_AMOUNT);
+            break;
+        case 7:
+            NotifyManager::notify(
+                NotifyTypes::BUYING_STORE_SELLER_SELL_FAILED_BALANCE);
+            break;
+        default:
+            NotifyManager::notify(NotifyTypes::BUYING_STORE_SELLER_SELL_FAILED);
             break;
     }
 }
