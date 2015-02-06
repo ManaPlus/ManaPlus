@@ -64,6 +64,8 @@ class BuyingStoreHandler final : public MessageHandler,
         static void processBuyingStoreHideBoard(Net::MessageIn &msg);
 
         static void processBuyingStoreItemsList(Net::MessageIn &msg);
+
+        static void processBuyingStoreSellFailed(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

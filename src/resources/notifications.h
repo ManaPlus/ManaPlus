@@ -436,6 +436,18 @@ namespace NotifyManager
         {"buying store create empty",
             // TRANSLATORS: notification message
             N_("Buying store create failed. No items in store."),
+            NotifyFlags::EMPTY},
+        {"buying store sell failed money limit",
+            // TRANSLATORS: notification message
+            N_("All items within the buy limit were purchased."),
+            NotifyFlags::EMPTY},
+        {"buying store sell failed empty",
+            // TRANSLATORS: notification message
+            N_("All items were purchased."),
+            NotifyFlags::EMPTY},
+        {"buying store sell failed",
+            // TRANSLATORS: notification message
+            N_("Buying item failed."),
             NotifyFlags::EMPTY}
     };
 }  // namespace NotifyManager
