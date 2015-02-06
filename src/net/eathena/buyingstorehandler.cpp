@@ -51,6 +51,7 @@ BuyingStoreHandler::BuyingStoreHandler() :
         SMSG_BUYINGSTORE_HIDE_BOARD,
         SMSG_BUYINGSTORE_ITEMS_LIST,
         SMSG_BUYINGSTORE_SELL_FAILED,
+        SMSG_BUYINGSTORE_REPORT,
         0
     };
     handledMessages = _messages;
@@ -87,6 +88,10 @@ void BuyingStoreHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_BUYINGSTORE_SELL_FAILED:
             processBuyingStoreSellFailed(msg);
+            break;
+
+        case SMSG_BUYINGSTORE_REPORT:
+            processBuyingStoreReport(msg);
             break;
 
         default:
@@ -177,6 +182,13 @@ void BuyingStoreHandler::processBuyingStoreSellFailed(Net::MessageIn &msg)
             NotifyManager::notify(NotifyTypes::BUYING_STORE_SELL_FAILED);
             break;
     }
+}
+
+void BuyingStoreHandler::processBuyingStoreReport(Net::MessageIn &msg)
+{
+    msg.readInt16("item id");
+    msg.readInt16("amount");
+    msg.readInt32("money limit");
 }
 
 void BuyingStoreHandler::create(const std::string &name,
