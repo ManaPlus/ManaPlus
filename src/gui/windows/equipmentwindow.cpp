@@ -572,7 +572,8 @@ void EquipmentWindow::fillBoxes()
 {
     XML::Document *const doc = new XML::Document(
         paths.getStringValue("equipmentWindowFile"),
-        true);
+        true,
+        false);
     const XmlNodePtr root = doc->rootNode();
     if (!root)
     {

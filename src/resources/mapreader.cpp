@@ -203,7 +203,7 @@ int inflateMemory(unsigned char *restrict const in,
 
 void MapReader::addLayerToList(const std::string &fileName)
 {
-    XML::Document *doc = new XML::Document(fileName, true);
+    XML::Document *doc = new XML::Document(fileName, true, false);
     XmlNodePtrConst node = doc->rootNode();
     if (!node)
     {
@@ -235,7 +235,7 @@ Map *MapReader::readMap(const std::string &restrict filename,
     BLOCK_START("MapReader::readMap str")
     logger->log("Attempting to read map %s", realFilename.c_str());
 
-    XML::Document doc(realFilename, true);
+    XML::Document doc(realFilename, true, false);
     if (!doc.isLoaded())
     {
         BLOCK_END("MapReader::readMap str")
@@ -893,7 +893,7 @@ Tileset *MapReader::readTileset(XmlNodePtr node,
         std::string filename = XML::getProperty(node, "source", "");
         filename = resolveRelativePath(path, filename);
 
-        doc = new XML::Document(filename, true);
+        doc = new XML::Document(filename, true, false);
         node = doc->rootNode();
         if (!node)
         {

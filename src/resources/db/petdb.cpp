@@ -54,7 +54,7 @@ void PETDB::load()
 
 void PETDB::loadXmlFile(const std::string &fileName)
 {
-    XML::Document doc(fileName, true);
+    XML::Document doc(fileName, true, false);
     const XmlNodePtrConst rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "pets"))

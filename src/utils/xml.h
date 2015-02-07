@@ -66,7 +66,8 @@ namespace XML
              * resource manager. Logs errors.
              */
             explicit Document(const std::string &filename,
-                              const bool useResman);
+                              const bool useResman,
+                              const bool skipError);
 
             /**
              * Constructor that attempts to load an XML document from memory.

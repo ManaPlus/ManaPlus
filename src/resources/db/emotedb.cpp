@@ -67,7 +67,7 @@ void EmoteDB::load()
 
 void EmoteDB::loadXmlFile(const std::string &fileName)
 {
-    XML::Document doc(fileName, true);
+    XML::Document doc(fileName, true, false);
     XmlNodePtrConst rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "emotes"))
@@ -143,7 +143,7 @@ void EmoteDB::loadXmlFile(const std::string &fileName)
 
 void EmoteDB::loadSpecialXmlFile(const std::string &fileName)
 {
-    XML::Document doc(fileName, true);
+    XML::Document doc(fileName, true, false);
     XmlNodePtrConst rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "emotes"))

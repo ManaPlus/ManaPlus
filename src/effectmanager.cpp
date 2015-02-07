@@ -47,7 +47,7 @@ EffectManager::EffectManager() :
 
 void EffectManager::loadXmlFile(const std::string &fileName)
 {
-    XML::Document doc(fileName, true);
+    XML::Document doc(fileName, true, false);
     const XmlNodePtrConst root = doc.rootNode();
 
     if (!root || !xmlNameEqual(root, "being-effects"))

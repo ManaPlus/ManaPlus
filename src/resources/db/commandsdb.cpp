@@ -58,7 +58,7 @@ static SpellTarget parseTarget(const std::string &text)
 
 void CommandsDB::loadXmlFile(const std::string &fileName)
 {
-    XML::Document doc(fileName, true);
+    XML::Document doc(fileName, true, false);
     const XmlNodePtrConst rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "commands"))

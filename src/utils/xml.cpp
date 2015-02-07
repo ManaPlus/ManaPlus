@@ -77,7 +77,9 @@ static void xmlErrorLogger(void *ctx A_UNUSED, const char *msg, ...)
 
 namespace XML
 {
-    Document::Document(const std::string &filename, const bool useResman) :
+    Document::Document(const std::string &filename,
+                       const bool useResman,
+                       const bool skipError) :
         mDoc(nullptr),
         mIsValid(false)
     {
@@ -125,7 +127,7 @@ namespace XML
             if (!mDoc)
                 logger->log("Error parsing XML file %s", filename.c_str());
         }
-        else
+        else if (!skipError)
         {
             logger->log("Error loading %s", filename.c_str());
         }
