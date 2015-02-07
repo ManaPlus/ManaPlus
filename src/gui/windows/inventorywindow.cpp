@@ -803,7 +803,7 @@ void InventoryWindow::updateWeight()
     if (type != InventoryType::INVENTORY && type != InventoryType::CART)
         return;
 
-    const bool isInv = type != InventoryType::INVENTORY;
+    const bool isInv = type == InventoryType::INVENTORY;
     const int total = PlayerInfo::getAttribute(isInv
         ? Attributes::TOTAL_WEIGHT : Attributes::CART_TOTAL_WEIGHT);
     const int max = PlayerInfo::getAttribute(isInv
