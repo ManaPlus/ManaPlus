@@ -348,6 +348,7 @@ void PlayerRelationsManager::setRelation(const std::string &player_name,
         r->mRelation = relation;
 
     signalUpdate(player_name);
+    store();
 }
 
 StringVect *PlayerRelationsManager::getPlayers() const
