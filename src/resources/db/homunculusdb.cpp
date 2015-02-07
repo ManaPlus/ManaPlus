@@ -56,7 +56,7 @@ void HomunculusDB::load()
 
 void HomunculusDB::loadXmlFile(const std::string &fileName)
 {
-    XML::Document doc(fileName);
+    XML::Document doc(fileName, true);
     const XmlNodePtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "homunculuses"))

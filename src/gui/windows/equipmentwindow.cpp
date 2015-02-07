@@ -571,7 +571,8 @@ void EquipmentWindow::resetBeing(const Being *const being)
 void EquipmentWindow::fillBoxes()
 {
     XML::Document *const doc = new XML::Document(
-        paths.getStringValue("equipmentWindowFile"));
+        paths.getStringValue("equipmentWindowFile"),
+        true);
     const XmlNodePtr root = doc->rootNode();
     if (!root)
     {

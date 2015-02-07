@@ -166,7 +166,7 @@ QuestsWindow::~QuestsWindow()
 
 void QuestsWindow::loadXmlFile(const std::string &fileName)
 {
-    XML::Document doc(fileName);
+    XML::Document doc(fileName, true);
     const XmlNodePtrConst root = doc.rootNode();
     if (!root)
         return;

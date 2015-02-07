@@ -150,7 +150,7 @@ void StatusEffect::load()
 
 void StatusEffect::loadXmlFile(const std::string &fileName)
 {
-    XML::Document doc(fileName);
+    XML::Document doc(fileName, true);
     const XmlNodePtrConst rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "status-effects"))

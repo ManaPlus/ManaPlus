@@ -34,7 +34,7 @@ void readXmlIntVector(const std::string &fileName,
                       std::vector<int> &arr)
 {
     arr.clear();
-    XML::Document doc(fileName);
+    XML::Document doc(fileName, true);
     const XmlNodePtrConst rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, rootName.c_str()))

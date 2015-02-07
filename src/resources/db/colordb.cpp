@@ -72,7 +72,7 @@ void ColorDB::load()
 void ColorDB::loadHair(const std::string &fileName,
                        std::map<int, ItemColor> &colors)
 {
-    XML::Document *doc = new XML::Document(fileName);
+    XML::Document *doc = new XML::Document(fileName, true);
     const XmlNodePtrConst root = doc->rootNode();
 
     if (!root || !xmlNameEqual(root, "colors"))
@@ -110,7 +110,7 @@ void ColorDB::loadHair(const std::string &fileName,
 
 void ColorDB::loadColorLists(const std::string &fileName)
 {
-    XML::Document *doc = new XML::Document(fileName);
+    XML::Document *doc = new XML::Document(fileName, true);
     const XmlNodePtrConst root = doc->rootNode();
     if (!root)
     {

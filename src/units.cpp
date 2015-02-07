@@ -111,7 +111,7 @@ void Units::loadUnits()
 
 void Units::loadXmlFile(const std::string &fileName)
 {
-    XML::Document doc(fileName);
+    XML::Document doc(fileName, true);
     const XmlNodePtrConst root = doc.rootNode();
 
     if (!root || !xmlNameEqual(root, "units"))

@@ -56,7 +56,7 @@ void MercenaryDB::load()
 
 void MercenaryDB::loadXmlFile(const std::string &fileName)
 {
-    XML::Document doc(fileName);
+    XML::Document doc(fileName, true);
     const XmlNodePtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "mercenaries"))

@@ -234,7 +234,7 @@ void ItemDB::load()
 
 void ItemDB::loadXmlFile(const std::string &fileName, int &tagNum)
 {
-    XML::Document doc(fileName);
+    XML::Document doc(fileName, true);
     const XmlNodePtrConst rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "items"))
