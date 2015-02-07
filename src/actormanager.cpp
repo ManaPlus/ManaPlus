@@ -1534,6 +1534,7 @@ void ActorManager::removeAttackMob(const std::string &name)
     mIgnoreAttackMobsSet.erase(name);
     rebuildAttackMobs();
     rebuildPriorityAttackMobs();
+    storeAttackList();
 }
 
 void ActorManager::removePickupItem(const std::string &name)
@@ -1543,6 +1544,7 @@ void ActorManager::removePickupItem(const std::string &name)
     mIgnorePickupItems.remove(name);
     mIgnorePickupItemsSet.erase(name);
     rebuildPickupItems();
+    storeAttackList();
 }
 
 #define addMobToList(name, mob) \
@@ -1587,11 +1589,13 @@ void ActorManager::addAttackMob(const std::string &name)
 {
     addMobToList(name, AttackMob);
     rebuildPriorityAttackMobs();
+    storeAttackList();
 }
 
 void ActorManager::addPriorityAttackMob(const std::string &name)
 {
     addMobToList(name, PriorityAttackMob);
+    storeAttackList();
 }
 
 void ActorManager::addIgnoreAttackMob(const std::string &name)
@@ -1600,12 +1604,14 @@ void ActorManager::addIgnoreAttackMob(const std::string &name)
     mIgnoreAttackMobsSet.insert(name);
     rebuildAttackMobs();
     rebuildPriorityAttackMobs();
+    storeAttackList();
 }
 
 void ActorManager::addPickupItem(const std::string &name)
 {
     addMobToList(name, PickupItem);
     rebuildPickupItems();
+    storeAttackList();
 }
 
 void ActorManager::addIgnorePickupItem(const std::string &name)
@@ -1613,6 +1619,7 @@ void ActorManager::addIgnorePickupItem(const std::string &name)
     mIgnorePickupItems.push_back(name);
     mIgnorePickupItemsSet.insert(name);
     rebuildPickupItems();
+    storeAttackList();
 }
 
 void ActorManager::rebuildPriorityAttackMobs()
