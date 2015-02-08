@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2015-02-05 23:29+0300\n"
-"PO-Revision-Date: 2015-02-01 09:54+0000\n"
+"POT-Creation-Date: 2015-02-08 12:37+0300\n"
+"PO-Revision-Date: 2015-02-06 09:55+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/manaplus/"
 "language/it/)\n"
@@ -431,28 +431,28 @@ msgstr ""
 #. TRANSLATORS: add player to completle ignore list
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player to ignore list
-#: src/being/playerrelations.cpp:468 src/gui/popups/popupmenu.cpp:2301
+#: src/being/playerrelations.cpp:469 src/gui/popups/popupmenu.cpp:2301
 #: src/gui/popups/popupmenu.cpp:2343
 msgid "Completely ignore"
 msgstr "Ignora completamente."
 
 #. TRANSLATORS: ignore/unignore action
-#: src/being/playerrelations.cpp:485
+#: src/being/playerrelations.cpp:486
 msgid "Print '...'"
 msgstr "Stampa '...'"
 
 #. TRANSLATORS: ignore/unignore action
-#: src/being/playerrelations.cpp:508
+#: src/being/playerrelations.cpp:509
 msgid "Blink name"
 msgstr ""
 
 #. TRANSLATORS: ignore strategi
-#: src/being/playerrelations.cpp:554
+#: src/being/playerrelations.cpp:555
 msgid "Floating '...' bubble"
 msgstr ""
 
 #. TRANSLATORS: ignore strategi
-#: src/being/playerrelations.cpp:558
+#: src/being/playerrelations.cpp:559
 msgid "Floating bubble"
 msgstr ""
 
@@ -1091,7 +1091,7 @@ msgstr ""
 #: src/gui/models/colorlistmodel.h:33 src/gui/models/sortlistmodelinv.h:34
 #: src/gui/widgets/tabs/setup_other.cpp:79
 #: src/gui/widgets/tabs/setup_visual.cpp:81
-#: src/gui/windows/equipmentwindow.cpp:614
+#: src/gui/windows/equipmentwindow.cpp:616
 msgid "default"
 msgstr "Predefinito"
 
@@ -1498,9 +1498,9 @@ msgstr ""
 
 #. TRANSLATORS: being popup label
 #: src/gui/popups/beingpopup.cpp:186
-#, fuzzy, c-format
+#, c-format
 msgid "Shop: %s"
-msgstr "Negozio"
+msgstr ""
 
 #. TRANSLATORS: being popup label
 #: src/gui/popups/beingpopup.cpp:199
@@ -2692,7 +2692,7 @@ msgstr ""
 
 #. TRANSLATORS: Skill type
 #. TRANSLATORS: unknown equipment page name
-#: src/gui/widgets/skillinfo.cpp:109 src/gui/windows/equipmentwindow.cpp:621
+#: src/gui/widgets/skillinfo.cpp:109 src/gui/windows/equipmentwindow.cpp:623
 msgid "Unknown"
 msgstr ""
 
@@ -6042,9 +6042,8 @@ msgstr "Negozio personale"
 
 #. TRANSLATORS: shop window button
 #: src/gui/windows/shopwindow.cpp:168 src/gui/windows/shopwindow.cpp:405
-#, fuzzy
 msgid "Publish"
-msgstr "Polacco"
+msgstr ""
 
 #. TRANSLATORS: shop window button
 #: src/gui/windows/shopwindow.cpp:177
@@ -6061,9 +6060,8 @@ msgid "Please enter new shop name"
 msgstr ""
 
 #: src/gui/windows/shopwindow.cpp:403
-#, fuzzy
 msgid "Unpublish"
-msgstr "Inglese"
+msgstr ""
 
 #. TRANSLATORS: shop window dialog
 #. TRANSLATORS: trade message
@@ -6078,9 +6076,9 @@ msgstr "%s vuole %s %s accetti?"
 
 #. TRANSLATORS: shop window name
 #: src/gui/windows/shopwindow.cpp:1019
-#, fuzzy, c-format
+#, c-format
 msgid "Personal Shop - %s"
-msgstr "Negozio personale"
+msgstr ""
 
 #. TRANSLATORS: skills dialog button
 #: src/gui/windows/skilldialog.cpp:84
@@ -9048,9 +9046,8 @@ msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:430
-#, fuzzy
 msgid "Buying store create failed."
-msgstr "Salvataggio immagine fallito!"
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:434
@@ -9061,6 +9058,46 @@ msgstr ""
 #: src/resources/notifications.h:438
 msgid "Buying store create failed. No items in store."
 msgstr ""
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:442
+msgid "All items within the buy limit were purchased."
+msgstr ""
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:446
+msgid "All items were purchased."
+msgstr ""
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:450
+#, fuzzy
+msgid "Buying item failed."
+msgstr "Non puoi sederti!"
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:454
+#, fuzzy
+msgid "The deal has failed."
+msgstr "Scambio non riuscito!"
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:458
+msgid ""
+"The trade failed, because the entered amount of item is higher, than the "
+"buyer is willing to buy."
+msgstr ""
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:463
+msgid "The trade failed, because the buyer is lacking required balance."
+msgstr ""
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:467
+#, fuzzy
+msgid "Selling item failed."
+msgstr "Non puoi sederti!"
 
 #. TRANSLATORS: chat option changed message
 #: src/utils/booleanoptions.h:27
