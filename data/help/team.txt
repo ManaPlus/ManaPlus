@@ -59,6 +59,7 @@
 ##9matheus23
 ##9Philipp <philipp.krueger1 googlemail com>
 ##9Rosemarie Tauber <horos online de>
+##9Suni <sunlightshadow seelenkampf.de>
 ##9tux9th <mr.x aon at>
 
 ##3Greek
@@ -109,6 +110,9 @@
 ##9Maria <mtorres2022 gmail com>
 ##9Mr Pirate <salahbubuli44 gmail com>
 ##9osuka <owen942009 gmail com>
+
+##3Ukraine
+##9William Lee <v4r trioptimum.com>
 
 ##3Turkish
 ##9HiiroNoHige <hiironohige gmail com>
