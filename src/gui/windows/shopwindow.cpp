@@ -276,6 +276,7 @@ void ShopWindow::action(const ActionEvent &event)
         isBuySelected = false;
         updateSelection();
     }
+#ifdef EATHENA_SUPPORT
     else if (eventId == "publish")
     {
         if (mEnableVending)
@@ -321,12 +322,17 @@ void ShopWindow::action(const ActionEvent &event)
         shopRenameListener.setDialog(dialog);
         dialog->addActionListener(&shopRenameListener);
     }
+#endif
 
     if (mSelectedItem < 1)
         return;
 
+#ifdef EATHENA_SUPPORT
     const Inventory *const inv = mHaveVending
         ? PlayerInfo::getCartInventory() : PlayerInfo::getInventory();
+#else
+    const Inventory *const inv = PlayerInfo::getInventory();
+#endif
     if (!inv)
         return;
 
