@@ -40,6 +40,8 @@ class SearchStoreHandler notfinal
                             const int minPrice,
                             const int maxPrice,
                             const int itemId) const = 0;
+
+        virtual void nextPage() const = 0;
 };
 
 }  // namespace Net

@@ -54,4 +54,8 @@ void SearchStoreHandler::search(const StoreSearchType::Type type A_UNUSED,
 {
 }
 
+void SearchStoreHandler::nextPage() const
+{
+}
+
 }  // namespace TmwAthena

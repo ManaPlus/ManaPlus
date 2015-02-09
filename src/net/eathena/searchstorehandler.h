@@ -42,6 +42,8 @@ class SearchStoreHandler final : public MessageHandler,
                     const int maxPrice,
                     const int itemId) const override final;
 
+        void nextPage() const override final;
+
     protected:
         static void processSearchAck(Net::MessageIn &msg);
 

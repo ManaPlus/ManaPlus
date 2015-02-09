@@ -41,6 +41,8 @@ class SearchStoreHandler final : public MessageHandler,
                     const int minPrice,
                     const int maxPrice,
                     const int itemId) const override final;
+
+        void nextPage() const override final;
 };
 
 }  // namespace TmwAthena

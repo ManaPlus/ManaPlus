@@ -79,6 +79,11 @@ void SearchStoreHandler::search(const StoreSearchType::Type type,
     outMsg.writeInt16(itemId, "item id");
 }
 
+void SearchStoreHandler::nextPage() const
+{
+    createOutPacket(CMSG_SEARCHSTORE_NEXT_PAGE);
+}
+
 void SearchStoreHandler::processSearchAck(Net::MessageIn &msg)
 {
     const int count = (msg.readInt16("len") - 7) / 106;
