@@ -345,6 +345,7 @@
 
 #define SMSG_SEARCHSTORE_SEARCH_ACK  0x0836
 #define SMSG_SEARCHSTORE_SEARCH_FAILED 0x0837
+#define SMSG_SEARCHSTORE_OPEN        0x083a
 
 /**********************************
  *  Packets from client to server *
