@@ -427,6 +427,7 @@ void ItemContainer::mousePressed(MouseEvent &event)
                 src = DRAGDROP_SOURCE_CART;
                 break;
             default:
+            case InventoryType::VENDING:
             case InventoryType::TYPE_END:
                 break;
         }
@@ -526,6 +527,7 @@ void ItemContainer::mouseReleased(MouseEvent &event)
                 dst = DRAGDROP_SOURCE_CART;
                 break;
             default:
+            case InventoryType::VENDING:
             case InventoryType::TYPE_END:
                 break;
         }

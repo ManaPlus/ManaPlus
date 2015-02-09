@@ -293,6 +293,7 @@ std::string Inventory::getName() const
     switch (mType)
     {
         case InventoryType::INVENTORY:
+        case InventoryType::VENDING:
         case InventoryType::TYPE_END:
         default:
         {

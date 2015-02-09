@@ -120,6 +120,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
             case InventoryType::INVENTORY:
             case InventoryType::TRADE:
             case InventoryType::NPC:
+            case InventoryType::VENDING:
             case InventoryType::TYPE_END:
             default:
                 mSortDropDown->setSelected(config.getIntValue(
@@ -300,6 +301,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
         default:
         case InventoryType::TRADE:
         case InventoryType::NPC:
+        case InventoryType::VENDING:
         case InventoryType::TYPE_END:
             break;
     };
@@ -356,6 +358,7 @@ void InventoryWindow::storeSortOrder() const
             case InventoryType::INVENTORY:
             case InventoryType::TRADE:
             case InventoryType::NPC:
+            case InventoryType::VENDING:
             case InventoryType::TYPE_END:
             default:
                 config.setValue("inventorySortOrder",
@@ -790,6 +793,7 @@ void InventoryWindow::close()
         default:
         case InventoryType::TRADE:
         case InventoryType::NPC:
+        case InventoryType::VENDING:
         case InventoryType::TYPE_END:
             break;
     }

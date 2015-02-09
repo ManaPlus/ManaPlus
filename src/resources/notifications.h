@@ -460,7 +460,8 @@ namespace NotifyManager
             NotifyFlags::EMPTY},
         {"buying store sell failed balance",
             // TRANSLATORS: notification message
-            N_("The trade failed, because the buyer is lacking required balance."),
+            N_("The trade failed, because the buyer is "
+                "lacking required balance."),
             NotifyFlags::EMPTY},
         {"buying store sell failed",
             // TRANSLATORS: notification message

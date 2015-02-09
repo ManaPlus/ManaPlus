@@ -51,10 +51,10 @@ std::string ShopItems::getElementAt(int i)
 }
 
 ShopItem *ShopItems::addItem(const int id,
-                              const int type,
-                              const unsigned char color,
-                              const int amount,
-                              const int price)
+                             const int type,
+                             const unsigned char color,
+                             const int amount,
+                             const int price)
 {
     ShopItem *const item = new ShopItem(-1, id, type, color, amount, price);
     mShopItems.push_back(item);

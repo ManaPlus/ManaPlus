@@ -28,7 +28,7 @@
 #include "net/ea/eaprotocol.h"
 
 #include "net/eathena/messageout.h"
-#include "net/eathena/protocol.h" 
+#include "net/eathena/protocol.h"
 
 #include "resources/notifytypes.h"
 
@@ -194,7 +194,8 @@ void BuyingStoreHandler::processBuyingStoreSellFailed(Net::MessageIn &msg)
     }
 }
 
-void BuyingStoreHandler::processBuyingStoreSellerSellFailed(Net::MessageIn &msg)
+void BuyingStoreHandler::processBuyingStoreSellerSellFailed(Net::MessageIn
+                                                            &msg)
 {
     const int16_t result = msg.readInt16("result");
     msg.readInt16("item id");
@@ -213,7 +214,8 @@ void BuyingStoreHandler::processBuyingStoreSellerSellFailed(Net::MessageIn &msg)
                 NotifyTypes::BUYING_STORE_SELLER_SELL_FAILED_BALANCE);
             break;
         default:
-            NotifyManager::notify(NotifyTypes::BUYING_STORE_SELLER_SELL_FAILED);
+            NotifyManager::notify(
+                NotifyTypes::BUYING_STORE_SELLER_SELL_FAILED);
             break;
     }
 }

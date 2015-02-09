@@ -132,7 +132,6 @@ void VendingHandler::processHideBoard(Net::MessageIn &msg)
 
 void VendingHandler::processItemsList(Net::MessageIn &msg)
 {
-
     const int count = (msg.readInt16("len") - 12) / 22;
     const int id = msg.readInt32("id");
     Being *const being = actorManager->findBeing(id);
