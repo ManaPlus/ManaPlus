@@ -20,8 +20,12 @@
 
 #include "net/eathena/searchstorehandler.h"
 
+#include "notifymanager.h"
+
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
+
+#include "resources/notifytypes.h"
 
 #include "debug.h"
 
@@ -36,6 +40,7 @@ SearchStoreHandler::SearchStoreHandler() :
     static const uint16_t _messages[] =
     {
         SMSG_SEARCHSTORE_SEARCH_ACK,
+        SMSG_SEARCHSTORE_SEARCH_FAILED,
         0
     };
     handledMessages = _messages;
@@ -48,6 +53,10 @@ void SearchStoreHandler::handleMessage(Net::MessageIn &msg)
     {
         case SMSG_SEARCHSTORE_SEARCH_ACK:
             processSearchAck(msg);
+            break;
+
+        case SMSG_SEARCHSTORE_SEARCH_FAILED:
+            processSearchFailed(msg);
             break;
 
         default:
@@ -86,8 +95,40 @@ void SearchStoreHandler::processSearchAck(Net::MessageIn &msg)
         msg.readInt32("price");
         msg.readInt16("amount");
         msg.readUInt8("refine");
-        for (int f = 0; f < 4; f++)
+        for (int d = 0; d < 4; d++)
             msg.readInt16("card");
+    }
+}
+
+void SearchStoreHandler::processSearchFailed(Net::MessageIn &msg)
+{
+    const int result = msg.readUInt8("result");
+    switch (result)
+    {
+        case 0:
+            NotifyManager::notify(
+                NotifyTypes::SEARCH_STORE_FAILED_NO_STORES);
+            break;
+        case 1:
+            NotifyManager::notify(
+                NotifyTypes::SEARCH_STORE_FAILED_MANY_RESULTS);
+            break;
+        case 2:
+            NotifyManager::notify(
+                NotifyTypes::SEARCH_STORE_FAILED_CANT_SEARCH_ANYMORE);
+            break;
+        case 3:
+            NotifyManager::notify(
+                NotifyTypes::SEARCH_STORE_FAILED_CANT_SEARCH_YET);
+            break;
+        case 4:
+            NotifyManager::notify(
+                NotifyTypes::SEARCH_STORE_FAILED_NO_INFORMATION);
+            break;
+        default:
+            NotifyManager::notify(
+                NotifyTypes::SEARCH_STORE_FAILED);
+            break;
     }
 }
 

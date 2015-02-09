@@ -467,6 +467,32 @@ namespace NotifyManager
             // TRANSLATORS: notification message
             N_("Selling item failed."),
             NotifyFlags::EMPTY},
+
+        {"search store failed",
+            // TRANSLATORS: notification message
+            N_("Items searching failed."),
+            NotifyFlags::EMPTY},
+        {"search store failed no stores",
+            // TRANSLATORS: notification message
+            N_("No matching stores were found."),
+            NotifyFlags::EMPTY},
+        {"search store failed many results",
+            // TRANSLATORS: notification message
+            N_("There are too many results. Please enter more "
+                "detailed search term."),
+            NotifyFlags::EMPTY},
+        {"search store failed cant search anymore",
+            // TRANSLATORS: notification message
+            N_("You cannot search anymore."),
+            NotifyFlags::EMPTY},
+        {"search store failed cant search yet",
+            // TRANSLATORS: notification message
+            N_("You cannot search yet."),
+            NotifyFlags::EMPTY},
+        {"search store failed no information",
+            // TRANSLATORS: notification message
+            N_("No store information available."),
+            NotifyFlags::EMPTY},
     };
 }  // namespace NotifyManager
 #endif  // RESOURCES_NOTIFICATIONS_H

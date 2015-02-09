@@ -44,6 +44,8 @@ class SearchStoreHandler final : public MessageHandler,
 
     protected:
         static void processSearchAck(Net::MessageIn &msg);
+
+        static void processSearchFailed(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

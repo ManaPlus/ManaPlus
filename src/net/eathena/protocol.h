@@ -344,6 +344,7 @@
 #define SMSG_CART_REMOVE             0x012b
 
 #define SMSG_SEARCHSTORE_SEARCH_ACK  0x0836
+#define SMSG_SEARCHSTORE_SEARCH_FAILED 0x0837
 
 /**********************************
  *  Packets from client to server *
