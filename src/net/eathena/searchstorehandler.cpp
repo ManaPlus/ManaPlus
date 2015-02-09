@@ -42,6 +42,7 @@ SearchStoreHandler::SearchStoreHandler() :
         SMSG_SEARCHSTORE_SEARCH_ACK,
         SMSG_SEARCHSTORE_SEARCH_FAILED,
         SMSG_SEARCHSTORE_OPEN,
+        SMSG_SEARCHSTORE_CLICK_ACK,
         0
     };
     handledMessages = _messages;
@@ -62,6 +63,10 @@ void SearchStoreHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_SEARCHSTORE_OPEN:
             processSearchOpen(msg);
+            break;
+
+        case SMSG_SEARCHSTORE_CLICK_ACK:
+            processSearchClickAck(msg);
             break;
 
         default:
@@ -161,6 +166,12 @@ void SearchStoreHandler::processSearchOpen(Net::MessageIn &msg)
 {
     msg.readInt16("effect");
     msg.readUInt8("uses");
+}
+
+void SearchStoreHandler::processSearchClickAck(Net::MessageIn &msg)
+{
+    msg.readInt16("x");
+    msg.readInt16("y");
 }
 
 }  // namespace EAthena

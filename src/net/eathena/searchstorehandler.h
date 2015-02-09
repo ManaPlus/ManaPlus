@@ -55,7 +55,9 @@ class SearchStoreHandler final : public MessageHandler,
 
         static void processSearchFailed(Net::MessageIn &msg);
 
-        void processSearchOpen(Net::MessageIn &msg);
+        static void processSearchOpen(Net::MessageIn &msg);
+
+        static void processSearchClickAck(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
