@@ -1,6 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2011-2015  The ManaPlus Developers
+ *  Copyright (C) 2015  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -18,32 +18,16 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_SEARCHSTOREHANDLER_H
-#define NET_SEARCHSTOREHANDLER_H
+#ifndef ENUMS_NET_STORESEARCHTYPE_H
+#define ENUMS_NET_STORESEARCHTYPE_H
 
-#include <string>
-
-#include "enums/net/storesearchtype.h"
-
-#include "localconsts.h"
-
-namespace Net
+namespace StoreSearchType
 {
+    enum Type
+    {
+        Vending    = 0,
+        BuingStore = 1
+    };
+}
 
-class SearchStoreHandler notfinal
-{
-    public:
-        virtual ~SearchStoreHandler()
-        { }
-
-        virtual void search(const StoreSearchType::Type type,
-                            const int minPrice,
-                            const int maxPrice,
-                            const int itemId) const = 0;
-};
-
-}  // namespace Net
-
-extern Net::SearchStoreHandler *searchStoreHandler;
-
-#endif  // NET_SEARCHSTOREHANDLER_H
+#endif  // ENUMS_NET_STORESEARCHTYPE_H

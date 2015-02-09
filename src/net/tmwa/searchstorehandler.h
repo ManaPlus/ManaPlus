@@ -36,6 +36,11 @@ class SearchStoreHandler final : public MessageHandler,
         A_DELETE_COPY(SearchStoreHandler)
 
         void handleMessage(Net::MessageIn &msg) override final;
+
+        void search(const StoreSearchType::Type type,
+                    const int minPrice,
+                    const int maxPrice,
+                    const int itemId) const override final;
 };
 
 }  // namespace TmwAthena

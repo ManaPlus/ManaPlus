@@ -566,6 +566,7 @@ SET(SRCS
     net/partyhandler.h
     enums/net/partyshare.h
     enums/net/servertype.h
+    enums/net/storesearchtype.h
     net/pethandler.h
     net/playerhandler.h
     net/registrationoptions.h

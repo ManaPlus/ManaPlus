@@ -20,6 +20,9 @@
 
 #include "net/eathena/searchstorehandler.h"
 
+#include "net/eathena/messageout.h"
+#include "net/eathena/protocol.h"
+
 #include "debug.h"
 
 extern Net::SearchStoreHandler *searchStoreHandler;
@@ -45,6 +48,21 @@ void SearchStoreHandler::handleMessage(Net::MessageIn &msg)
         default:
             break;
     }
+}
+
+void SearchStoreHandler::search(const StoreSearchType::Type type,
+                                const int minPrice,
+                                const int maxPrice,
+                                const int itemId) const
+{
+    createOutPacket(CMSG_SEARCHSTORE_SEARCH);
+    outMsg.writeInt16(23, "len");
+    outMsg.writeInt8(static_cast<uint8_t>(type), "search type");
+    outMsg.writeInt32(maxPrice, "max price");
+    outMsg.writeInt32(minPrice, "min price");
+    outMsg.writeInt32(1, "items count");
+    outMsg.writeInt32(0, "cards count");
+    outMsg.writeInt16(itemId, "item id");
 }
 
 }  // namespace EAthena
