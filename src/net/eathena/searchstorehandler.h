@@ -41,6 +41,9 @@ class SearchStoreHandler final : public MessageHandler,
                     const int minPrice,
                     const int maxPrice,
                     const int itemId) const override final;
+
+    protected:
+        static void processSearchAck(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

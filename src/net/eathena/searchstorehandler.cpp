@@ -35,6 +35,7 @@ SearchStoreHandler::SearchStoreHandler() :
 {
     static const uint16_t _messages[] =
     {
+        SMSG_SEARCHSTORE_SEARCH_ACK,
         0
     };
     handledMessages = _messages;
@@ -45,6 +46,10 @@ void SearchStoreHandler::handleMessage(Net::MessageIn &msg)
 {
     switch (msg.getId())
     {
+        case SMSG_SEARCHSTORE_SEARCH_ACK:
+            processSearchAck(msg);
+            break;
+
         default:
             break;
     }
@@ -63,6 +68,27 @@ void SearchStoreHandler::search(const StoreSearchType::Type type,
     outMsg.writeInt32(1, "items count");
     outMsg.writeInt32(0, "cards count");
     outMsg.writeInt16(itemId, "item id");
+}
+
+void SearchStoreHandler::processSearchAck(Net::MessageIn &msg)
+{
+    const int count = (msg.readInt16("len") - 7) / 106;
+    msg.readUInt8("is first page");
+    msg.readUInt8("is next page");
+    msg.readUInt8("remain uses");
+    for (int f = 0; f < count; f ++)
+    {
+        msg.readInt32("store id");
+        msg.readInt32("aoount id");
+        msg.readString(80, "store name");
+        msg.readInt16("item id");
+        msg.readUInt8("item type");
+        msg.readInt32("price");
+        msg.readInt16("amount");
+        msg.readUInt8("refine");
+        for (int f = 0; f < 4; f++)
+            msg.readInt16("card");
+    }
 }
 
 }  // namespace EAthena

@@ -343,6 +343,8 @@
 #define SMSG_CART_INFO               0x0121
 #define SMSG_CART_REMOVE             0x012b
 
+#define SMSG_SEARCHSTORE_SEARCH_ACK  0x0836
+
 /**********************************
  *  Packets from client to server *
  **********************************/
