@@ -44,6 +44,8 @@ class SearchStoreHandler final : public MessageHandler,
 
         void nextPage() const override final;
 
+        void close() const override final;
+
     protected:
         static void processSearchAck(Net::MessageIn &msg);
 

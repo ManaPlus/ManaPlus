@@ -42,6 +42,8 @@ class SearchStoreHandler notfinal
                             const int itemId) const = 0;
 
         virtual void nextPage() const = 0;
+
+        virtual void close() const = 0;
 };
 
 }  // namespace Net

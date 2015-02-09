@@ -58,4 +58,8 @@ void SearchStoreHandler::nextPage() const
 {
 }
 
+void SearchStoreHandler::close() const
+{
+}
+
 }  // namespace TmwAthena
