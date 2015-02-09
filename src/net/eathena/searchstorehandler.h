@@ -46,6 +46,10 @@ class SearchStoreHandler final : public MessageHandler,
 
         void close() const override final;
 
+        void select(const int accountId,
+                    const int storeId,
+                    const int itemId) const override final;
+
     protected:
         static void processSearchAck(Net::MessageIn &msg);
 

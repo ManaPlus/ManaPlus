@@ -62,4 +62,10 @@ void SearchStoreHandler::close() const
 {
 }
 
+void SearchStoreHandler::select(const int accountId A_UNUSED,
+                                const int storeId A_UNUSED,
+                                const int itemId A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

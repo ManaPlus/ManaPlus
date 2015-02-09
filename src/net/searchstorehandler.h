@@ -44,6 +44,10 @@ class SearchStoreHandler notfinal
         virtual void nextPage() const = 0;
 
         virtual void close() const = 0;
+
+        virtual void select(const int accountId,
+                            const int storeId,
+                            const int itemId) const = 0;
 };
 
 }  // namespace Net

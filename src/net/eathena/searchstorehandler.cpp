@@ -94,6 +94,16 @@ void SearchStoreHandler::close() const
     createOutPacket(CMSG_SEARCHSTORE_CLOSE);
 }
 
+void SearchStoreHandler::select(const int accountId,
+                                const int storeId,
+                                const int itemId) const
+{
+    createOutPacket(CMSG_SEARCHSTORE_CLICK);
+    outMsg.writeInt32(accountId, "account id");
+    outMsg.writeInt32(storeId, "store id");
+    outMsg.writeInt16(itemId, "item id");
+}
+
 void SearchStoreHandler::processSearchAck(Net::MessageIn &msg)
 {
     const int count = (msg.readInt16("len") - 7) / 106;
