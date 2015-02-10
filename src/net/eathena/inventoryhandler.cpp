@@ -702,7 +702,7 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
             mStorage->setItem(index, itemId, itemType, amount,
                 refine, 1,
                 fromBool(identified, Identified),
-                Damaged_False,
+                Damaged_false,
                 false, false, false);
             mStorage->setCards(index, cards, 4);
         }
@@ -844,7 +844,7 @@ void InventoryHandler::processPlayerCartAdd(Net::MessageIn &msg)
         inventory->setItem(index, itemId, itemType, amount, refine,
             1,
             fromBool(identified, Identified),
-            Damaged_False,
+            Damaged_false,
             false, false, false);
         inventory->setCards(index, cards, 4);
     }

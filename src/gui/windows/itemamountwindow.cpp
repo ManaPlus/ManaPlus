@@ -335,8 +335,8 @@ void ItemAmountWindow::action(const ActionEvent &event)
             mItemDropDown->getSelected())).getId();
 
         mItem = new Item(id, 0, 10000, 0, 1,
-            Identified_True,
-            Damaged_True,
+            Identified_true,
+            Damaged_true,
             false, false, false);
 
         if (mUsage == ShopBuyAdd)

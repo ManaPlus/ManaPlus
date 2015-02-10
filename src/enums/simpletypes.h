@@ -31,16 +31,16 @@
         False = false, \
         True = true \
     }; \
-    const name name##_True = name::True; \
-    const name name##_False = name::False
+    const name name##_true = name::True; \
+    const name name##_false = name::False
 #define fromBool(val, name) \
     (val) ? name::True : name::False
 
 #else  // ADVGCC
 
 #define defBoolEnum(name) \
-    const bool name##_True = true; \
-    const bool name##_False = false; \
+    const bool name##_true = true; \
+    const bool name##_false = false; \
     typedef bool name
 #define fromBool(val, name) \
     (val) ? true : false
