@@ -385,7 +385,7 @@ void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
                 1,
                 fromBool(flags.bits.isIdentified, Identified),
                 fromBool(flags.bits.isDamaged, Damaged),
-                flags.bits.isFavorite,
+                fromBool(flags.bits.isFavorite, Favorite),
                 true, false);
             inventory->setCards(index, cards, 4);
         }
@@ -485,7 +485,7 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
                 1,
                 fromBool(identified, Identified),
                 fromBool(damaged, Damaged),
-                false,
+                Favorite_false,
                 equipType != 0, false);
             inventory->setCards(index, cards, 4);
         }
@@ -533,7 +533,7 @@ void InventoryHandler::processPlayerInventory(Net::MessageIn &msg)
                 0, 1,
                 fromBool(flags.bits.isIdentified, Identified),
                 fromBool(flags.bits.isDamaged, Damaged),
-                flags.bits.isFavorite,
+                fromBool(flags.bits.isFavorite, Favorite),
                 false, false);
             inventory->setCards(index, cards, 4);
         }
@@ -569,7 +569,8 @@ void InventoryHandler::processPlayerStorage(Net::MessageIn &msg)
             cards, amount, 0, 1,
             fromBool(flags.bits.isIdentified, Identified),
             fromBool(flags.bits.isDamaged, Damaged),
-            flags.bits.isFavorite, false));
+            fromBool(flags.bits.isFavorite, Favorite),
+            false));
     }
     BLOCK_END("InventoryHandler::processPlayerInventory")
 }
@@ -669,7 +670,7 @@ void InventoryHandler::processPlayerStorageEquip(Net::MessageIn &msg)
             cards, amount, refine, 1,
             fromBool(flags.bits.isIdentified, Identified),
             fromBool(flags.bits.isDamaged, Damaged),
-            flags.bits.isFavorite,
+            fromBool(flags.bits.isFavorite, Favorite),
             false));
     }
     BLOCK_END("InventoryHandler::processPlayerStorageEquip")
@@ -703,7 +704,8 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
                 refine, 1,
                 fromBool(identified, Identified),
                 Damaged_false,
-                false, false, false);
+                Favorite_false,
+                false, false);
             mStorage->setCards(index, cards, 4);
         }
     }
@@ -845,7 +847,8 @@ void InventoryHandler::processPlayerCartAdd(Net::MessageIn &msg)
             1,
             fromBool(identified, Identified),
             Damaged_false,
-            false, false, false);
+            Favorite_false,
+            false, false);
         inventory->setCards(index, cards, 4);
     }
     BLOCK_END("InventoryHandler::processPlayerCartAdd")
@@ -878,7 +881,7 @@ void InventoryHandler::processPlayerCartEquip(Net::MessageIn &msg)
             cards, amount, refine, 1,
             fromBool(flags.bits.isIdentified, Identified),
             fromBool(flags.bits.isDamaged, Damaged),
-            flags.bits.isFavorite,
+            fromBool(flags.bits.isFavorite, Favorite),
             false));
     }
     BLOCK_END("InventoryHandler::processPlayerCartEquip")
@@ -910,7 +913,7 @@ void InventoryHandler::processPlayerCartItems(Net::MessageIn &msg)
             cards, amount, 0, 1,
             fromBool(flags.bits.isIdentified, Identified),
             fromBool(flags.bits.isDamaged, Damaged),
-            flags.bits.isFavorite,
+            fromBool(flags.bits.isFavorite, Favorite),
             false));
     }
     BLOCK_END("InventoryHandler::processPlayerCartItems")

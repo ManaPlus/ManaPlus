@@ -202,7 +202,7 @@ void TradeWindow::addItem(const int id,
                           const unsigned char color,
                           const Identified identified,
                           const Damaged damaged,
-                          const bool favorite) const
+                          const Favorite favorite) const
 {
     Inventory *inv = own ? mMyInventory : mPartnerInventory;
     inv->addItem(id, type, quantity, refine, color,
@@ -219,7 +219,7 @@ void TradeWindow::addItem2(const int id,
                            const unsigned char color,
                            const Identified identified,
                            const Damaged damaged,
-                           const bool favorite,
+                           const Favorite favorite,
                            const bool equipment) const
 {
     Inventory *inv = own ? mMyInventory : mPartnerInventory;

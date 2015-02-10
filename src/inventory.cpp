@@ -112,7 +112,7 @@ int Inventory::addItem(const int id,
                        const uint8_t color,
                        const Identified identified,
                        const Damaged damaged,
-                       const bool favorite,
+                       const Favorite favorite,
                        const bool equipment,
                        const bool equipped)
 {
@@ -130,7 +130,7 @@ void Inventory::setItem(const int index,
                         const unsigned char color,
                         const Identified identified,
                         const Damaged damaged,
-                        const bool favorite,
+                        const Favorite favorite,
                         const bool equipment,
                         const bool equipped)
 {

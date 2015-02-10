@@ -44,7 +44,7 @@ Item::Item(const int id,
            const unsigned char color,
            const Identified identified,
            const Damaged damaged,
-           const bool favorite,
+           const Favorite favorite,
            const bool equipment,
            const bool equipped) :
     mId(0),

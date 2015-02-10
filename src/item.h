@@ -51,7 +51,7 @@ class Item notfinal
              const uint8_t color,
              const Identified identified,
              const Damaged damaged,
-             const bool favorite,
+             const Favorite favorite,
              const bool equipment,
              const bool equipped);
 
@@ -188,10 +188,10 @@ class Item notfinal
         Damaged getDamaged() const A_WARN_UNUSED
         { return mDamaged; }
 
-        void setFavorite(const bool b)
+        void setFavorite(const Favorite b)
         { mFavorite = b; }
 
-        bool getFavorite() const A_WARN_UNUSED
+        Favorite getFavorite() const A_WARN_UNUSED
         { return mFavorite; }
 
         void setCard(const int index, const int id);
@@ -226,7 +226,7 @@ class Item notfinal
         bool mInEquipment;    /**< Item is in equipment */
         Identified mIdentified;
         Damaged mDamaged;
-        bool mFavorite;
+        Favorite mFavorite;
 };
 
 #endif  // ITEM_H

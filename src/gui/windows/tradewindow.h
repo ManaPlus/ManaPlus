@@ -77,7 +77,7 @@ class TradeWindow final : public Window,
                      const unsigned char color,
                      const Identified identified,
                      const Damaged damaged,
-                     const bool favorite) const;
+                     const Favorite favorite) const;
 
         /**
          * Reset both item containers
@@ -97,7 +97,7 @@ class TradeWindow final : public Window,
                       const unsigned char color,
                       const Identified identified,
                       const Damaged damaged,
-                      const bool favorite,
+                      const Favorite favorite,
                       const bool equipment) const;
 
         /**

@@ -49,5 +49,6 @@
 
 defBoolEnum(Identified);
 defBoolEnum(Damaged);
+defBoolEnum(Favorite);
 
 #endif  // ENUMS_SIMPLETYPES_H

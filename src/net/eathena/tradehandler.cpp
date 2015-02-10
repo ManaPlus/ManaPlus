@@ -209,7 +209,8 @@ void TradeHandler::processTradeItemAdd(Net::MessageIn &msg)
                 refine, 1,
                 fromBool(identify, Identified),
                 Damaged_false,
-                false, false);
+                Favorite_false,
+                false);
         }
     }
 }

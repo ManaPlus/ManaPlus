@@ -51,7 +51,7 @@ class InventoryItem final
         unsigned char color;
         Identified identified;
         Damaged damaged;
-        bool favorite;
+        Favorite favorite;
         bool equip;
 
         InventoryItem(const int slot0,
@@ -63,7 +63,7 @@ class InventoryItem final
                       const unsigned char color0,
                       const Identified identified0,
                       const Damaged damaged0,
-                      const bool favorite0,
+                      const Favorite favorite0,
                       const bool equip0) :
             slot(slot0),
             id(id0),

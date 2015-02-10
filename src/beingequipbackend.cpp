@@ -46,7 +46,8 @@ BeingEquipBackend::BeingEquipBackend(Being *const being)
                     being->mSpriteColorsIds[f],
                     Identified_true,
                     Damaged_false,
-                    false, true, true);
+                    Favorite_false,
+                    true, true);
             }
         }
     }
