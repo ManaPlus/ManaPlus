@@ -50,7 +50,7 @@ class InventoryItem final
         uint8_t refine;
         unsigned char color;
         Identified identified;
-        bool damaged;
+        Damaged damaged;
         bool favorite;
         bool equip;
 
@@ -62,7 +62,7 @@ class InventoryItem final
                       const uint8_t refine0,
                       const unsigned char color0,
                       const Identified identified0,
-                      const bool damaged0,
+                      const Damaged damaged0,
                       const bool favorite0,
                       const bool equip0) :
             slot(slot0),

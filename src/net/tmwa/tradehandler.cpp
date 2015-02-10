@@ -196,7 +196,9 @@ void TradeHandler::processTradeItemAdd(Net::MessageIn &msg)
                     false, amount,
                     refine,
                     identify,
-                    Identified_True, false, false, false);
+                    Identified_True,
+                    Damaged_False,
+                    false, false);
             }
             else
             {
@@ -205,7 +207,8 @@ void TradeHandler::processTradeItemAdd(Net::MessageIn &msg)
                     false, amount,
                     refine, 1,
                     fromBool(identify, Identified),
-                    false, false, false);
+                    Damaged_False,
+                    false, false);
             }
         }
     }

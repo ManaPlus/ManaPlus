@@ -76,7 +76,7 @@ class TradeWindow final : public Window,
                      const uint8_t refine,
                      const unsigned char color,
                      const Identified identified,
-                     const bool damaged,
+                     const Damaged damaged,
                      const bool favorite) const;
 
         /**
@@ -96,7 +96,7 @@ class TradeWindow final : public Window,
                       const uint8_t refine,
                       const unsigned char color,
                       const Identified identified,
-                      const bool damaged,
+                      const Damaged damaged,
                       const bool favorite,
                       const bool equipment) const;
 

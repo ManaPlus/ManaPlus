@@ -45,7 +45,8 @@ BeingEquipBackend::BeingEquipBackend(Being *const being)
                 mEquipment[idx] = new Item(id, 0, 1, 0,
                     being->mSpriteColorsIds[f],
                     Identified_True,
-                    false, false, true, true);
+                    Damaged_False,
+                    false, true, true);
             }
         }
     }

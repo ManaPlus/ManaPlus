@@ -201,7 +201,7 @@ void TradeWindow::addItem(const int id,
                           const uint8_t refine,
                           const unsigned char color,
                           const Identified identified,
-                          const bool damaged,
+                          const Damaged damaged,
                           const bool favorite) const
 {
     Inventory *inv = own ? mMyInventory : mPartnerInventory;
@@ -218,7 +218,7 @@ void TradeWindow::addItem2(const int id,
                            const uint8_t refine,
                            const unsigned char color,
                            const Identified identified,
-                           const bool damaged,
+                           const Damaged damaged,
                            const bool favorite,
                            const bool equipment) const
 {

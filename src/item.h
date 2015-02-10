@@ -50,7 +50,7 @@ class Item notfinal
              const uint8_t refine,
              const uint8_t color,
              const Identified identified,
-             const bool damaged,
+             const Damaged damaged,
              const bool favorite,
              const bool equipment,
              const bool equipped);
@@ -182,10 +182,10 @@ class Item notfinal
         Identified getIdentified() const A_WARN_UNUSED
         { return mIdentified; }
 
-        void setDamaged(const bool b)
+        void setDamaged(const Damaged b)
         { mDamaged = b; }
 
-        bool getDamaged() const A_WARN_UNUSED
+        Damaged getDamaged() const A_WARN_UNUSED
         { return mDamaged; }
 
         void setFavorite(const bool b)
@@ -225,7 +225,7 @@ class Item notfinal
         bool mEquipped;       /**< Item is equipped. */
         bool mInEquipment;    /**< Item is in equipment */
         Identified mIdentified;
-        bool mDamaged;
+        Damaged mDamaged;
         bool mFavorite;
 };
 

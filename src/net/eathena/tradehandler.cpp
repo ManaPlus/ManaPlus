@@ -208,7 +208,8 @@ void TradeHandler::processTradeItemAdd(Net::MessageIn &msg)
                 false, amount,
                 refine, 1,
                 fromBool(identify, Identified),
-                false, false, false);
+                Damaged_False,
+                false, false);
         }
     }
 }

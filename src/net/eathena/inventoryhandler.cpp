@@ -384,7 +384,7 @@ void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
             inventory->setItem(index, itemId, itemType, 1, refine,
                 1,
                 fromBool(flags.bits.isIdentified, Identified),
-                flags.bits.isDamaged,
+                fromBool(flags.bits.isDamaged, Damaged),
                 flags.bits.isFavorite,
                 true, false);
             inventory->setCards(index, cards, 4);
@@ -484,7 +484,8 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
             inventory->setItem(index, itemId, itemType, amount, refine,
                 1,
                 fromBool(identified, Identified),
-                damaged != 0, false,
+                fromBool(damaged, Damaged),
+                false,
                 equipType != 0, false);
             inventory->setCards(index, cards, 4);
         }
@@ -531,7 +532,7 @@ void InventoryHandler::processPlayerInventory(Net::MessageIn &msg)
             inventory->setItem(index, itemId, itemType, amount,
                 0, 1,
                 fromBool(flags.bits.isIdentified, Identified),
-                flags.bits.isDamaged,
+                fromBool(flags.bits.isDamaged, Damaged),
                 flags.bits.isFavorite,
                 false, false);
             inventory->setCards(index, cards, 4);
@@ -567,7 +568,8 @@ void InventoryHandler::processPlayerStorage(Net::MessageIn &msg)
         mInventoryItems.push_back(Ea::InventoryItem(index, itemId, itemType,
             cards, amount, 0, 1,
             fromBool(flags.bits.isIdentified, Identified),
-            flags.bits.isDamaged, flags.bits.isFavorite, false));
+            fromBool(flags.bits.isDamaged, Damaged),
+            flags.bits.isFavorite, false));
     }
     BLOCK_END("InventoryHandler::processPlayerInventory")
 }
@@ -666,7 +668,9 @@ void InventoryHandler::processPlayerStorageEquip(Net::MessageIn &msg)
         mInventoryItems.push_back(Ea::InventoryItem(index, itemId, itemType,
             cards, amount, refine, 1,
             fromBool(flags.bits.isIdentified, Identified),
-            flags.bits.isDamaged, flags.bits.isFavorite, false));
+            fromBool(flags.bits.isDamaged, Damaged),
+            flags.bits.isFavorite,
+            false));
     }
     BLOCK_END("InventoryHandler::processPlayerStorageEquip")
 }
@@ -698,7 +702,8 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
             mStorage->setItem(index, itemId, itemType, amount,
                 refine, 1,
                 fromBool(identified, Identified),
-                false, false, false, false);
+                Damaged_False,
+                false, false, false);
             mStorage->setCards(index, cards, 4);
         }
     }
@@ -839,7 +844,8 @@ void InventoryHandler::processPlayerCartAdd(Net::MessageIn &msg)
         inventory->setItem(index, itemId, itemType, amount, refine,
             1,
             fromBool(identified, Identified),
-            false, false, false, false);
+            Damaged_False,
+            false, false, false);
         inventory->setCards(index, cards, 4);
     }
     BLOCK_END("InventoryHandler::processPlayerCartAdd")
@@ -871,7 +877,9 @@ void InventoryHandler::processPlayerCartEquip(Net::MessageIn &msg)
         mCartItems.push_back(Ea::InventoryItem(index, itemId, itemType,
             cards, amount, refine, 1,
             fromBool(flags.bits.isIdentified, Identified),
-            flags.bits.isDamaged, flags.bits.isFavorite, false));
+            fromBool(flags.bits.isDamaged, Damaged),
+            flags.bits.isFavorite,
+            false));
     }
     BLOCK_END("InventoryHandler::processPlayerCartEquip")
 }
@@ -901,7 +909,9 @@ void InventoryHandler::processPlayerCartItems(Net::MessageIn &msg)
         mCartItems.push_back(Ea::InventoryItem(index, itemId, itemType,
             cards, amount, 0, 1,
             fromBool(flags.bits.isIdentified, Identified),
-            flags.bits.isDamaged, flags.bits.isFavorite, false));
+            fromBool(flags.bits.isDamaged, Damaged),
+            flags.bits.isFavorite,
+            false));
     }
     BLOCK_END("InventoryHandler::processPlayerCartItems")
 }

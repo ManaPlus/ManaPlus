@@ -299,14 +299,16 @@ void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
                 inventory->setItem(index, itemId, itemType, 1, refine,
                     identified,
                     Identified_True,
-                    false, false, true, false);
+                    Damaged_False,
+                    false, true, false);
             }
             else
             {
                 inventory->setItem(index, itemId, itemType, 1, refine,
                     1,
                     fromBool(identified, Identified),
-                    false, false, true, false);
+                    Damaged_False,
+                    false, true, false);
             }
             inventory->setCards(index, cards, 4);
         }
@@ -405,14 +407,16 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
                 inventory->setItem(index, itemId, type, amount, refine,
                     identified,
                     Identified_True,
-                    false, false, equipType != 0, false);
+                    Damaged_False,
+                    false, equipType != 0, false);
             }
             else
             {
                 inventory->setItem(index, itemId, type, amount, refine,
                     1,
                     fromBool(identified, Identified),
-                    false, false, equipType != 0, false);
+                    Damaged_False,
+                    false, equipType != 0, false);
             }
             inventory->setCards(index, cards, 4);
         }
@@ -470,14 +474,16 @@ void InventoryHandler::processPlayerInventory(Net::MessageIn &msg)
                 inventory->setItem(index, itemId, itemType, amount,
                     0, identified,
                     Identified_True,
-                    false, false, isEquipment, false);
+                    Damaged_False,
+                    false, isEquipment, false);
             }
             else
             {
                 inventory->setItem(index, itemId, itemType, amount,
                     0, 1,
                     fromBool(identified, Identified),
-                    false, false, isEquipment, false);
+                    Damaged_False,
+                    false, isEquipment, false);
             }
             inventory->setCards(index, cards, 4);
         }
@@ -518,14 +524,16 @@ void InventoryHandler::processPlayerStorage(Net::MessageIn &msg)
             mInventoryItems.push_back(Ea::InventoryItem(index, itemId,
                 itemType, cards, amount, 0, identified,
                 Identified_True,
-                false, false, false));
+                Damaged_False,
+                false, false));
         }
         else
         {
             mInventoryItems.push_back(Ea::InventoryItem(index, itemId,
                 itemType, cards, amount, 0, 1,
                 fromBool(identified, Identified),
-                false, false, false));
+                Damaged_False,
+                false, false));
         }
     }
     BLOCK_END("InventoryHandler::processPlayerInventory")
@@ -595,14 +603,16 @@ void InventoryHandler::processPlayerStorageEquip(Net::MessageIn &msg)
             mInventoryItems.push_back(Ea::InventoryItem(index, itemId,
                 itemType, cards, amount, refine, identified,
                 Identified_True,
-                false, false, false));
+                Damaged_False,
+                false, false));
         }
         else
         {
             mInventoryItems.push_back(Ea::InventoryItem(index, itemId,
                 itemType, cards, amount, refine, 1,
                 fromBool(identified, Identified),
-                false, false, false));
+                Damaged_False,
+                false, false));
         }
     }
     BLOCK_END("InventoryHandler::processPlayerStorageEquip")
@@ -636,14 +646,16 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
                 mStorage->setItem(index, itemId, 0, amount,
                     refine, identified,
                     Identified_True,
-                    false, false, false, false);
+                    Damaged_False,
+                    false, false, false);
             }
             else
             {
                 mStorage->setItem(index, itemId, 0, amount,
                     refine, 1,
                     fromBool(identified, Identified),
-                    false, false, false, false);
+                    Damaged_False,
+                    false, false, false);
             }
             mStorage->setCards(index, cards, 4);
         }

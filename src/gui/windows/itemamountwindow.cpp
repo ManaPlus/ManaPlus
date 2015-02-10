@@ -336,7 +336,8 @@ void ItemAmountWindow::action(const ActionEvent &event)
 
         mItem = new Item(id, 0, 10000, 0, 1,
             Identified_True,
-            false, false, false, false);
+            Damaged_True,
+            false, false, false);
 
         if (mUsage == ShopBuyAdd)
             mMax = 10000;

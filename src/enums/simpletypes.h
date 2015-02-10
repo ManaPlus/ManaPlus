@@ -48,5 +48,6 @@
 #endif  // ADVGCC
 
 defBoolEnum(Identified);
+defBoolEnum(Damaged);
 
 #endif  // ENUMS_SIMPLETYPES_H
