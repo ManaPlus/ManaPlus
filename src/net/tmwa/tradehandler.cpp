@@ -29,6 +29,8 @@
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
 
+#include "enums/simpletypes.h"
+
 #include "gui/windows/confirmdialog.h"
 #include "gui/windows/tradewindow.h"
 
@@ -192,14 +194,18 @@ void TradeHandler::processTradeItemAdd(Net::MessageIn &msg)
                 tradeWindow->addItem2(type, 0,
                     cards, 4,
                     false, amount,
-                    refine, identify, true, false, false, false);
+                    refine,
+                    identify,
+                    Identified_True, false, false, false);
             }
             else
             {
                 tradeWindow->addItem2(type, 0,
                     cards, 4,
                     false, amount,
-                    refine, 1, identify != 0, false, false, false);
+                    refine, 1,
+                    fromBool(identify, Identified),
+                    false, false, false);
             }
         }
     }
@@ -228,11 +234,18 @@ void TradeHandler::processTradeItemAddResponse(Net::MessageIn &msg)
             // Successfully added item
             if (tradeWindow)
             {
-                tradeWindow->addItem2(item->getId(), item->getType(),
-                    item->getCards(), 4,
-                    true, quantity, item->getRefine(), item->getColor(),
-                    item->getIdentified(), item->getDamaged(),
-                    item->getFavorite(), item->isEquipment());
+                tradeWindow->addItem2(item->getId(),
+                    item->getType(),
+                    item->getCards(),
+                    4,
+                    true,
+                    quantity,
+                    item->getRefine(),
+                    item->getColor(),
+                    item->getIdentified(),
+                    item->getDamaged(),
+                    item->getFavorite(),
+                    item->isEquipment());
             }
             item->increaseQuantity(-quantity);
             break;

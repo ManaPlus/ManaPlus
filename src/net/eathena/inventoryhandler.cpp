@@ -25,6 +25,7 @@
 #include "notifymanager.h"
 
 #include "enums/equipslot.h"
+#include "enums/simpletypes.h"
 
 #include "enums/being/attributes.h"
 
@@ -381,7 +382,9 @@ void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
         if (inventory)
         {
             inventory->setItem(index, itemId, itemType, 1, refine,
-                1, flags.bits.isIdentified, flags.bits.isDamaged,
+                1,
+                fromBool(flags.bits.isIdentified, Identified),
+                flags.bits.isDamaged,
                 flags.bits.isFavorite,
                 true, false);
             inventory->setCards(index, cards, 4);
@@ -479,7 +482,9 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
                 amount += item->getQuantity();
 
             inventory->setItem(index, itemId, itemType, amount, refine,
-                1, identified != 0, damaged != 0, false,
+                1,
+                fromBool(identified, Identified),
+                damaged != 0, false,
                 equipType != 0, false);
             inventory->setCards(index, cards, 4);
         }
@@ -524,8 +529,10 @@ void InventoryHandler::processPlayerInventory(Net::MessageIn &msg)
         if (inventory)
         {
             inventory->setItem(index, itemId, itemType, amount,
-                0, 1, flags.bits.isIdentified,
-                flags.bits.isDamaged, flags.bits.isFavorite,
+                0, 1,
+                fromBool(flags.bits.isIdentified, Identified),
+                flags.bits.isDamaged,
+                flags.bits.isFavorite,
                 false, false);
             inventory->setCards(index, cards, 4);
         }
@@ -558,7 +565,8 @@ void InventoryHandler::processPlayerStorage(Net::MessageIn &msg)
         flags.byte = msg.readUInt8("flags");
 
         mInventoryItems.push_back(Ea::InventoryItem(index, itemId, itemType,
-            cards, amount, 0, 1, flags.bits.isIdentified,
+            cards, amount, 0, 1,
+            fromBool(flags.bits.isIdentified, Identified),
             flags.bits.isDamaged, flags.bits.isFavorite, false));
     }
     BLOCK_END("InventoryHandler::processPlayerInventory")
@@ -656,7 +664,8 @@ void InventoryHandler::processPlayerStorageEquip(Net::MessageIn &msg)
         flags.byte = msg.readUInt8("flags");
 
         mInventoryItems.push_back(Ea::InventoryItem(index, itemId, itemType,
-            cards, amount, refine, 1, flags.bits.isIdentified,
+            cards, amount, refine, 1,
+            fromBool(flags.bits.isIdentified, Identified),
             flags.bits.isDamaged, flags.bits.isFavorite, false));
     }
     BLOCK_END("InventoryHandler::processPlayerStorageEquip")
@@ -687,7 +696,9 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
         if (mStorage)
         {
             mStorage->setItem(index, itemId, itemType, amount,
-                refine, 1, identified != 0, false, false, false, false);
+                refine, 1,
+                fromBool(identified, Identified),
+                false, false, false, false);
             mStorage->setCards(index, cards, 4);
         }
     }
@@ -826,7 +837,9 @@ void InventoryHandler::processPlayerCartAdd(Net::MessageIn &msg)
             amount += item->getQuantity();
 
         inventory->setItem(index, itemId, itemType, amount, refine,
-            1, identified != 0, false, false, false, false);
+            1,
+            fromBool(identified, Identified),
+            false, false, false, false);
         inventory->setCards(index, cards, 4);
     }
     BLOCK_END("InventoryHandler::processPlayerCartAdd")
@@ -856,7 +869,8 @@ void InventoryHandler::processPlayerCartEquip(Net::MessageIn &msg)
         flags.byte = msg.readUInt8("flags");
 
         mCartItems.push_back(Ea::InventoryItem(index, itemId, itemType,
-            cards, amount, refine, 1, flags.bits.isIdentified,
+            cards, amount, refine, 1,
+            fromBool(flags.bits.isIdentified, Identified),
             flags.bits.isDamaged, flags.bits.isFavorite, false));
     }
     BLOCK_END("InventoryHandler::processPlayerCartEquip")
@@ -885,7 +899,8 @@ void InventoryHandler::processPlayerCartItems(Net::MessageIn &msg)
         flags.byte = msg.readUInt8("flags");
 
         mCartItems.push_back(Ea::InventoryItem(index, itemId, itemType,
-            cards, amount, 0, 1, flags.bits.isIdentified,
+            cards, amount, 0, 1,
+            fromBool(flags.bits.isIdentified, Identified),
             flags.bits.isDamaged, flags.bits.isFavorite, false));
     }
     BLOCK_END("InventoryHandler::processPlayerCartItems")

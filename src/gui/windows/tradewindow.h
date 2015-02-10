@@ -23,6 +23,8 @@
 #ifndef GUI_WINDOWS_TRADEWINDOW_H
 #define GUI_WINDOWS_TRADEWINDOW_H
 
+#include "enums/simpletypes.h"
+
 #include "gui/widgets/window.h"
 
 #include "listeners/actionlistener.h"
@@ -73,7 +75,7 @@ class TradeWindow final : public Window,
                      const int quantity,
                      const uint8_t refine,
                      const unsigned char color,
-                     const bool identified,
+                     const Identified identified,
                      const bool damaged,
                      const bool favorite) const;
 
@@ -93,7 +95,7 @@ class TradeWindow final : public Window,
                       const int quantity,
                       const uint8_t refine,
                       const unsigned char color,
-                      const bool identified,
+                      const Identified identified,
                       const bool damaged,
                       const bool favorite,
                       const bool equipment) const;

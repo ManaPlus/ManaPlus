@@ -23,6 +23,8 @@
 #ifndef NET_EA_INVENTORYITEM_H
 #define NET_EA_INVENTORYITEM_H
 
+#include "enums/simpletypes.h"
+
 #if defined(__GXX_EXPERIMENTAL_CXX0X__)
 #include <cstdint>
 #else
@@ -47,7 +49,7 @@ class InventoryItem final
         int quantity;
         uint8_t refine;
         unsigned char color;
-        bool identified;
+        Identified identified;
         bool damaged;
         bool favorite;
         bool equip;
@@ -59,7 +61,7 @@ class InventoryItem final
                       const int quantity0,
                       const uint8_t refine0,
                       const unsigned char color0,
-                      const bool identified0,
+                      const Identified identified0,
                       const bool damaged0,
                       const bool favorite0,
                       const bool equip0) :

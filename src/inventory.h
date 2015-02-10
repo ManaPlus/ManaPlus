@@ -24,6 +24,7 @@
 #define INVENTORY_H
 
 #include "enums/inventorytype.h"
+#include "enums/simpletypes.h"
 
 #include "enums/being/gender.h"
 
@@ -84,7 +85,7 @@ class Inventory final
                     const int quantity,
                     const uint8_t refine,
                     const unsigned char color,
-                    const bool identified,
+                    const Identified identified,
                     const bool damaged,
                     const bool favorite,
                     const bool equipment,
@@ -99,7 +100,7 @@ class Inventory final
                      const int quantity,
                      const uint8_t refine,
                      const unsigned char color,
-                     const bool identified,
+                     const Identified identified,
                      const bool damaged,
                      const bool favorite,
                      const bool equipment,

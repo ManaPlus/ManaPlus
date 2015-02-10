@@ -25,6 +25,8 @@
 #include "item.h"
 #include "logger.h"
 
+#include "enums/simpletypes.h"
+
 #include "net/inventoryhandler.h"
 
 #include "resources/iteminfo.h"
@@ -108,7 +110,7 @@ int Inventory::addItem(const int id,
                        const int quantity,
                        const uint8_t refine,
                        const uint8_t color,
-                       const bool identified,
+                       const Identified identified,
                        const bool damaged,
                        const bool favorite,
                        const bool equipment,
@@ -126,7 +128,7 @@ void Inventory::setItem(const int index,
                         const int quantity,
                         const uint8_t refine,
                         const unsigned char color,
-                        const bool identified,
+                        const Identified identified,
                         const bool damaged,
                         const bool favorite,
                         const bool equipment,

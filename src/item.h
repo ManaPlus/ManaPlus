@@ -23,6 +23,8 @@
 #ifndef ITEM_H
 #define ITEM_H
 
+#include "enums/simpletypes.h"
+
 #include "resources/db/itemdb.h"
 
 #include <map>
@@ -47,7 +49,7 @@ class Item notfinal
              const int quantity,
              const uint8_t refine,
              const uint8_t color,
-             const bool identified,
+             const Identified identified,
              const bool damaged,
              const bool favorite,
              const bool equipment,
@@ -174,10 +176,10 @@ class Item notfinal
         const std::string &getDescription() const A_WARN_UNUSED
         { return mDescription; }
 
-        void setIdentified(const bool b)
+        void setIdentified(const Identified b)
         { mIdentified = b; }
 
-        bool getIdentified() const A_WARN_UNUSED
+        Identified getIdentified() const A_WARN_UNUSED
         { return mIdentified; }
 
         void setDamaged(const bool b)
@@ -222,7 +224,7 @@ class Item notfinal
         bool mEquipment;      /**< Item is equipment. */
         bool mEquipped;       /**< Item is equipped. */
         bool mInEquipment;    /**< Item is in equipment */
-        bool mIdentified;
+        Identified mIdentified;
         bool mDamaged;
         bool mFavorite;
 };

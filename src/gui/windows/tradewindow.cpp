@@ -200,7 +200,7 @@ void TradeWindow::addItem(const int id,
                           const int quantity,
                           const uint8_t refine,
                           const unsigned char color,
-                          const bool identified,
+                          const Identified identified,
                           const bool damaged,
                           const bool favorite) const
 {
@@ -217,7 +217,7 @@ void TradeWindow::addItem2(const int id,
                            const int quantity,
                            const uint8_t refine,
                            const unsigned char color,
-                           const bool identified,
+                           const Identified identified,
                            const bool damaged,
                            const bool favorite,
                            const bool equipment) const

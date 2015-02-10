@@ -28,6 +28,8 @@
 
 #include "being/playerinfo.h"
 
+#include "enums/simpletypes.h"
+
 #include "gui/windows/tradewindow.h"
 
 #include "net/eathena/messageout.h"
@@ -204,7 +206,8 @@ void TradeHandler::processTradeItemAdd(Net::MessageIn &msg)
             tradeWindow->addItem2(type, itemType,
                 cards, 4,
                 false, amount,
-                refine, 1, identify != 0,
+                refine, 1,
+                fromBool(identify, Identified),
                 false, false, false);
         }
     }
