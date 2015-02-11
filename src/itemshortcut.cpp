@@ -157,7 +157,7 @@ void ItemShortcut::equipItem(const int index) const
         const Item *const item = inv->findItem(itemId, mItemColors[index]);
         if (item && item->getQuantity())
         {
-            if (item->isEquipment())
+            if (item->isEquipment() == Equipm_true)
             {
                 if (!item->isEquipped())
                     PlayerInfo::equipItem(item, true);
@@ -177,7 +177,7 @@ void ItemShortcut::unequipItem(const int index) const
         const Item *const item = inv->findItem(itemId, mItemColors[index]);
         if (item && item->getQuantity())
         {
-            if (item->isEquipment())
+            if (item->isEquipment() == Equipm_true)
             {
                 if (item->isEquipped())
                     PlayerInfo::unequipItem(item, true);

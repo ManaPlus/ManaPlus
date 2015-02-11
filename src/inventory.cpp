@@ -113,7 +113,7 @@ int Inventory::addItem(const int id,
                        const Identified identified,
                        const Damaged damaged,
                        const Favorite favorite,
-                       const bool equipment,
+                       const Equipm equipment,
                        const bool equipped)
 {
     const int slot = getFreeSlot();
@@ -131,7 +131,7 @@ void Inventory::setItem(const int index,
                         const Identified identified,
                         const Damaged damaged,
                         const Favorite favorite,
-                        const bool equipment,
+                        const Equipm equipment,
                         const bool equipped)
 {
     if (index < 0 || index >= static_cast<int>(mSize))

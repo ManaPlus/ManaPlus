@@ -205,8 +205,16 @@ void TradeWindow::addItem(const int id,
                           const Favorite favorite) const
 {
     Inventory *inv = own ? mMyInventory : mPartnerInventory;
-    inv->addItem(id, type, quantity, refine, color,
-        identified, damaged, favorite, false, false);
+    inv->addItem(id,
+        type,
+        quantity,
+        refine,
+        color,
+        identified,
+        damaged,
+        favorite,
+        Equipm_false,
+        false);
 }
 
 void TradeWindow::addItem2(const int id,
@@ -220,11 +228,19 @@ void TradeWindow::addItem2(const int id,
                            const Identified identified,
                            const Damaged damaged,
                            const Favorite favorite,
-                           const bool equipment) const
+                           const Equipm equipment) const
 {
     Inventory *inv = own ? mMyInventory : mPartnerInventory;
-    const int slot = inv->addItem(id, type, quantity, refine, color,
-        identified, damaged, favorite, equipment, false);
+    const int slot = inv->addItem(id,
+        type,
+        quantity,
+        refine,
+        color,
+        identified,
+        damaged,
+        favorite,
+        equipment,
+        false);
     if (slot >= 0)
         inv->setCards(slot, cards, sz);
 }

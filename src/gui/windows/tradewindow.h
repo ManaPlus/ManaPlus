@@ -98,7 +98,7 @@ class TradeWindow final : public Window,
                       const Identified identified,
                       const Damaged damaged,
                       const Favorite favorite,
-                      const bool equipment) const;
+                      const Equipm equipment) const;
 
         /**
          * Change quantity of an item.

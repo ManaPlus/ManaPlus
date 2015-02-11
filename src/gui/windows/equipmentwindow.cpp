@@ -322,7 +322,7 @@ void EquipmentWindow::action(const ActionEvent &event)
 
         if (dragDrop.getSource() == DRAGDROP_SOURCE_INVENTORY)
         {
-            if (item->isEquipment())
+            if (item->isEquipment() == Equipm_true)
             {
                 if (!item->isEquipped())
                     PlayerInfo::equipItem(item, true);
@@ -466,7 +466,7 @@ void EquipmentWindow::mouseReleased(MouseEvent &event)
 
     if (dragDrop.getSource() == DRAGDROP_SOURCE_INVENTORY)
     {
-        if (item->isEquipment())
+        if (item->isEquipment() == Equipm_true)
         {
             if (!item->isEquipped())
                 PlayerInfo::equipItem(item, true);
@@ -474,7 +474,7 @@ void EquipmentWindow::mouseReleased(MouseEvent &event)
     }
     else if (dragDrop.getSource() == DRAGDROP_SOURCE_EQUIPMENT)
     {
-        if (item->isEquipment())
+        if (item->isEquipment() == Equipm_true)
         {
             const int x = event.getX();
             const int y = event.getY();

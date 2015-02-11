@@ -470,11 +470,16 @@ void NpcDialog::action(const ActionEvent &event)
             const Item *const item = inventoryWindow->getSelectedItem();
             if (item)
             {
-                mInventory->addItem(item->getId(), item->getType(),
-                    1, 1, item->getColor(),
-                    item->getIdentified(), item->getDamaged(),
+                mInventory->addItem(item->getId(),
+                    item->getType(),
+                    1,
+                    1,
+                    item->getColor(),
+                    item->getIdentified(),
+                    item->getDamaged(),
                     item->getFavorite(),
-                    false, false);
+                    Equipm_false,
+                    false);
             }
         }
     }

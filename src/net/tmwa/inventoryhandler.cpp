@@ -301,7 +301,8 @@ void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
                     Identified_true,
                     Damaged_false,
                     Favorite_false,
-                    true, false);
+                    Equipm_true,
+                    false);
             }
             else
             {
@@ -310,7 +311,8 @@ void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
                     fromBool(identified, Identified),
                     Damaged_false,
                     Favorite_false,
-                    true, false);
+                    Equipm_true,
+                    false);
             }
             inventory->setCards(index, cards, 4);
         }
@@ -411,7 +413,8 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
                     Identified_true,
                     Damaged_false,
                     Favorite_false,
-                    equipType != 0, false);
+                    fromBool(equipType, Equipm),
+                    false);
             }
             else
             {
@@ -420,7 +423,8 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
                     fromBool(identified, Identified),
                     Damaged_false,
                     Favorite_false,
-                    equipType != 0, false);
+                    fromBool(equipType, Equipm),
+                    false);
             }
             inventory->setCards(index, cards, 4);
         }
@@ -480,7 +484,8 @@ void InventoryHandler::processPlayerInventory(Net::MessageIn &msg)
                     Identified_true,
                     Damaged_false,
                     Favorite_false,
-                    isEquipment, false);
+                    fromBool(isEquipment, Equipm),
+                    false);
             }
             else
             {
@@ -489,7 +494,8 @@ void InventoryHandler::processPlayerInventory(Net::MessageIn &msg)
                     fromBool(identified, Identified),
                     Damaged_false,
                     Favorite_false,
-                    isEquipment, false);
+                    fromBool(isEquipment, Equipm),
+                    false);
             }
             inventory->setCards(index, cards, 4);
         }
@@ -532,7 +538,7 @@ void InventoryHandler::processPlayerStorage(Net::MessageIn &msg)
                 Identified_true,
                 Damaged_false,
                 Favorite_false,
-                false));
+                Equipm_false));
         }
         else
         {
@@ -541,7 +547,7 @@ void InventoryHandler::processPlayerStorage(Net::MessageIn &msg)
                 fromBool(identified, Identified),
                 Damaged_false,
                 Favorite_false,
-                false));
+                Equipm_false));
         }
     }
     BLOCK_END("InventoryHandler::processPlayerInventory")
@@ -613,7 +619,7 @@ void InventoryHandler::processPlayerStorageEquip(Net::MessageIn &msg)
                 Identified_true,
                 Damaged_false,
                 Favorite_false,
-                false));
+                Equipm_false));
         }
         else
         {
@@ -622,7 +628,7 @@ void InventoryHandler::processPlayerStorageEquip(Net::MessageIn &msg)
                 fromBool(identified, Identified),
                 Damaged_false,
                 Favorite_false,
-                false));
+                Equipm_false));
         }
     }
     BLOCK_END("InventoryHandler::processPlayerStorageEquip")
@@ -658,7 +664,8 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
                     Identified_true,
                     Damaged_false,
                     Favorite_false,
-                    false, false);
+                    Equipm_false,
+                    false);
             }
             else
             {
@@ -667,7 +674,8 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
                     fromBool(identified, Identified),
                     Damaged_false,
                     Favorite_false,
-                    false, false);
+                    Equipm_false,
+                    false);
             }
             mStorage->setCards(index, cards, 4);
         }

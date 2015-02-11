@@ -593,10 +593,14 @@ void ItemContainer::mouseReleased(MouseEvent &event)
             if (item && !PlayerInfo::isItemProtected(item->getId()))
             {
                 mInventory->addItem(item->getId(), item->getType(),
-                    1, 1, item->getColor(),
-                    item->getIdentified(), item->getDamaged(),
+                    1,
+                    1,
+                    item->getColor(),
+                    item->getIdentified(),
+                    item->getDamaged(),
                     item->getFavorite(),
-                    false, false);
+                    Equipm_false,
+                    false);
             }
             return;
         }

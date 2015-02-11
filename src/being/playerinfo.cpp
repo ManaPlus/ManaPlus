@@ -263,7 +263,7 @@ void useEquipItem(const Item *const item, const bool sfx)
 {
     if (item)
     {
-        if (item->isEquipment())
+        if (item->isEquipment() == Equipm_true)
         {
             if (item->isEquipped())
             {
@@ -294,7 +294,7 @@ void useEquipItem2(const Item *const item, const bool sfx)
 {
     if (item)
     {
-        if (!item->isEquipment())
+        if (item->isEquipment() == Equipm_false)
         {
             if (item->isEquipped())
             {

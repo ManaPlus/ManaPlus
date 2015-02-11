@@ -52,7 +52,7 @@ class InventoryItem final
         Identified identified;
         Damaged damaged;
         Favorite favorite;
-        bool equip;
+        Equipm equip;
 
         InventoryItem(const int slot0,
                       const int id0,
@@ -64,7 +64,7 @@ class InventoryItem final
                       const Identified identified0,
                       const Damaged damaged0,
                       const Favorite favorite0,
-                      const bool equip0) :
+                      Equipm equip0) :
             slot(slot0),
             id(id0),
             type(type0),

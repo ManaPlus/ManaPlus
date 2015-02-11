@@ -199,7 +199,7 @@ void TradeHandler::processTradeItemAdd(Net::MessageIn &msg)
                     Identified_true,
                     Damaged_false,
                     Favorite_false,
-                    false);
+                    Equipm_false);
             }
             else
             {
@@ -210,7 +210,7 @@ void TradeHandler::processTradeItemAdd(Net::MessageIn &msg)
                     fromBool(identify, Identified),
                     Damaged_false,
                     Favorite_false,
-                    false);
+                    Equipm_false);
             }
         }
     }

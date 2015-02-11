@@ -45,7 +45,7 @@ Item::Item(const int id,
            const Identified identified,
            const Damaged damaged,
            const Favorite favorite,
-           const bool equipment,
+           const Equipm equipment,
            const bool equipped) :
     mId(0),
     mColor(0),
@@ -85,7 +85,8 @@ void Item::setId(const int id, const unsigned char color)
     mColor = color;
 
     // Types 0 and 1 are not equippable items.
-    mEquipment = id && static_cast<int>(getInfo().getType()) >= 2;
+    mEquipment = fromBool(id && static_cast<int>(getInfo().getType())
+        >= 2, Equipm);
 
     if (mImage)
         mImage->decRef();

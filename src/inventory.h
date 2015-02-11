@@ -88,7 +88,7 @@ class Inventory final
                     const Identified identified,
                     const Damaged damaged,
                     const Favorite favorite,
-                    const bool equipment,
+                    const Equipm equipment,
                     const bool equipped);
 
         /**
@@ -103,7 +103,7 @@ class Inventory final
                      const Identified identified,
                      const Damaged damaged,
                      const Favorite favorite,
-                     const bool equipment,
+                     const Equipm equipment,
                      const bool equipped);
 
         void setCards(const int index,

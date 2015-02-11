@@ -283,7 +283,7 @@ void OutfitWindow::wearOutfit(const int outfit, const bool unwearEmpty,
             mItems[outfit][i], mItemColors[outfit][i]);
         if (item && !item->isEquipped() && item->getQuantity())
         {
-            if (item->isEquipment())
+            if (item->isEquipment() == Equipm_true)
             {
                 PlayerInfo::equipItem(item, false);
                 isEmpty = false;

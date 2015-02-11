@@ -52,7 +52,7 @@ class Item notfinal
              const Identified identified,
              const Damaged damaged,
              const Favorite favorite,
-             const bool equipment,
+             const Equipm equipment,
              const bool equipped);
 
         A_DELETE_COPY(Item)
@@ -100,13 +100,13 @@ class Item notfinal
         /**
          * Sets whether this item is considered equipment.
          */
-        void setEquipment(const bool equipment)
+        void setEquipment(const Equipm equipment)
         { mEquipment = equipment; }
 
         /**
          * Returns whether this item is considered equipment.
          */
-        bool isEquipment() const A_WARN_UNUSED
+        Equipm isEquipment() const A_WARN_UNUSED
         { return mEquipment; }
 
         /**
@@ -221,7 +221,7 @@ class Item notfinal
         uint8_t mRefine;      /**< Item refine level. */
         int mInvIndex;        /**< Inventory index. */
         int mType;            /**< Item type. */
-        bool mEquipment;      /**< Item is equipment. */
+        Equipm mEquipment;    /**< Item is equipment. */
         bool mEquipped;       /**< Item is equipped. */
         bool mInEquipment;    /**< Item is in equipment */
         Identified mIdentified;

@@ -210,7 +210,7 @@ void TradeHandler::processTradeItemAdd(Net::MessageIn &msg)
                 fromBool(identify, Identified),
                 Damaged_false,
                 Favorite_false,
-                false);
+                Equipm_false);
         }
     }
 }
@@ -230,11 +230,18 @@ void TradeHandler::processTradeItemAddResponse(Net::MessageIn &msg)
                 return;
             if (tradeWindow)
             {
-                tradeWindow->addItem2(item->getId(), item->getType(),
-                    item->getCards(), 4,
-                    true, mQuantity, item->getRefine(), item->getColor(),
-                    item->getIdentified(), item->getDamaged(),
-                    item->getFavorite(), item->isEquipment());
+                tradeWindow->addItem2(item->getId(),
+                    item->getType(),
+                    item->getCards(),
+                    4,
+                    true,
+                    mQuantity,
+                    item->getRefine(),
+                    item->getColor(),
+                    item->getIdentified(),
+                    item->getDamaged(),
+                    item->getFavorite(),
+                    item->isEquipment());
             }
             item->increaseQuantity(-mQuantity);
             mItemIndex = -1;
