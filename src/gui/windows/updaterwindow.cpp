@@ -444,14 +444,6 @@ void UpdaterWindow::loadPatch()
                     "##6ManaPlus %s##0", line), true);
             }
         }
-        if (!serverVersion && config.getIntValue("runcount") > 10)
-        {
-            mBrowserBox->addRow("", true);
-            mBrowserBox->addRow("", true);
-            mBrowserBox->addRow("  ##1[@@http://steamcommunity.com/"
-                "sharedfiles/filedetails/?id=232178669|"
-                "Vote for us on Steam Green Light@@]", true);
-        }
         if (version > CHECK_VERSION)
         {
             mBrowserBox->addRow("", true);
