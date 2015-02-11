@@ -46,7 +46,7 @@ Item::Item(const int id,
            const Damaged damaged,
            const Favorite favorite,
            const Equipm equipment,
-           const bool equipped) :
+           const Equipped equipped) :
     mId(0),
     mColor(0),
     mQuantity(quantity),

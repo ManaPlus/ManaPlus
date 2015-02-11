@@ -324,7 +324,7 @@ void EquipmentWindow::action(const ActionEvent &event)
         {
             if (item->isEquipment() == Equipm_true)
             {
-                if (!item->isEquipped())
+                if (item->isEquipped() == Equipped_false)
                     PlayerInfo::equipItem(item, true);
             }
         }
@@ -468,7 +468,7 @@ void EquipmentWindow::mouseReleased(MouseEvent &event)
     {
         if (item->isEquipment() == Equipm_true)
         {
-            if (!item->isEquipped())
+            if (item->isEquipped() == Equipped_false)
                 PlayerInfo::equipItem(item, true);
         }
     }
@@ -492,7 +492,7 @@ void EquipmentWindow::mouseReleased(MouseEvent &event)
                     return;
             }
 
-            if (item->isEquipped())
+            if (item->isEquipped() == Equipped_true)
                 PlayerInfo::unequipItem(item, true);
         }
     }

@@ -2554,8 +2554,8 @@ void PopupMenu::addProtection()
 void PopupMenu::addUseDrop(const Item *const item, const bool isProtected)
 {
     const ItemInfo &info = item->getInfo();
-    const std::string &str
-        = (item->isEquipment() == Equipm_true && item->isEquipped())
+    const std::string &str = (item->isEquipment() == Equipm_true
+        && item->isEquipped() == Equipped_true)
         ? info.getUseButton2() : info.getUseButton();
 
     if (str.empty())

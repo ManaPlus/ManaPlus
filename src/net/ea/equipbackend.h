@@ -67,7 +67,7 @@ class EquipBackend final : public Equipment::Backend
                 {
                     Item* item = inv->getItem(i);
                     if (item)
-                        item->setEquipped(false);
+                        item->setEquipped(Equipped_false);
                 }
 
                 mEquipment[i] = -1;
@@ -87,14 +87,14 @@ class EquipBackend final : public Equipment::Backend
             Item *item = inv->getItem(mEquipment[index]);
 
             if (item)
-                item->setEquipped(false);
+                item->setEquipped(Equipped_false);
 
             // not checking index because it must be safe
             mEquipment[index] = inventoryIndex;
 
             item = inv->getItem(inventoryIndex);
             if (item)
-                item->setEquipped(true);
+                item->setEquipped(Equipped_true);
 
             if (inventoryWindow)
                 inventoryWindow->updateButtons();

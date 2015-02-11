@@ -48,7 +48,7 @@ BeingEquipBackend::BeingEquipBackend(Being *const being)
                     Damaged_false,
                     Favorite_false,
                     Equipm_true,
-                    true);
+                    Equipped_true);
             }
         }
     }

@@ -142,12 +142,12 @@ void ItemShortcutContainer::draw(Graphics *graphics)
                     std::string caption;
                     if (item->getQuantity() > 1)
                         caption = toString(item->getQuantity());
-                    else if (item->isEquipped())
-                    caption = "Eq.";
+                    else if (item->isEquipped() == Equipped_true)
+                        caption = "Eq.";
 
                     image->setAlpha(1.0F);
                     graphics->drawImage(image, itemX, itemY);
-                    if (item->isEquipped())
+                    if (item->isEquipped() == Equipped_true)
                     {
                         graphics->setColorAll(mEquipedColor, mEquipedColor2);
                     }

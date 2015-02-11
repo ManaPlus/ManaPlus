@@ -741,8 +741,8 @@ void InventoryWindow::updateButtons(const Item *item)
     if (mUseButton)
     {
         const ItemInfo &info = item->getInfo();
-        const std::string &str
-            = (item->isEquipment() == Equipm_true && item->isEquipped())
+        const std::string &str = (item->isEquipment() == Equipm_true
+            && item->isEquipped() == Equipped_true)
             ? info.getUseButton2() : info.getUseButton();
         if (str.empty())
         {

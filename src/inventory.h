@@ -89,7 +89,7 @@ class Inventory final
                     const Damaged damaged,
                     const Favorite favorite,
                     const Equipm equipment,
-                    const bool equipped);
+                    const Equipped equipped);
 
         /**
          * Sets the item at the given position.
@@ -104,7 +104,7 @@ class Inventory final
                      const Damaged damaged,
                      const Favorite favorite,
                      const Equipm equipment,
-                     const bool equipped);
+                     const Equipped equipped);
 
         void setCards(const int index,
                       const int *const cards,

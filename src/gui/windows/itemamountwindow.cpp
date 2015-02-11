@@ -339,7 +339,7 @@ void ItemAmountWindow::action(const ActionEvent &event)
             Damaged_true,
             Favorite_false,
             Equipm_false,
-            false);
+            Equipped_false);
 
         if (mUsage == ShopBuyAdd)
             mMax = 10000;

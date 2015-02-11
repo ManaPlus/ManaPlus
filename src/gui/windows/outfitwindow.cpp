@@ -281,7 +281,9 @@ void OutfitWindow::wearOutfit(const int outfit, const bool unwearEmpty,
     {
         const Item *const item = PlayerInfo::getInventory()->findItem(
             mItems[outfit][i], mItemColors[outfit][i]);
-        if (item && !item->isEquipped() && item->getQuantity())
+        if (item
+            && item->isEquipped() == Equipped_false
+            && item->getQuantity())
         {
             if (item->isEquipment() == Equipm_true)
             {
@@ -516,7 +518,7 @@ void OutfitWindow::unequipNotInOutfit(const int outfit) const
     for (unsigned i = 0; i < invSize; i++)
     {
         const Item *const item = inventory->getItem(i);
-        if (item && item->isEquipped())
+        if (item && item->isEquipped() == Equipped_true)
         {
             bool found = false;
             for (unsigned f = 0; f < OUTFIT_ITEM_COUNT; f++)
@@ -632,7 +634,7 @@ void OutfitWindow::copyFromEquiped(const int dst)
     for (unsigned i = 0, sz = inventory->getSize(); i < sz; i++)
     {
         const Item *const item = inventory->getItem(i);
-        if (item && item->isEquipped())
+        if (item && item->isEquipped() == Equipped_true)
         {
             mItems[dst][outfitCell] = item->getId();
             mItemColors[dst][outfitCell++] = item->getColor();

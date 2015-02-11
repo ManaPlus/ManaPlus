@@ -53,7 +53,7 @@ class Item notfinal
              const Damaged damaged,
              const Favorite favorite,
              const Equipm equipment,
-             const bool equipped);
+             const Equipped equipped);
 
         A_DELETE_COPY(Item)
 
@@ -112,13 +112,13 @@ class Item notfinal
         /**
          * Sets whether this item is equipped.
          */
-        void setEquipped(const bool equipped)
+        void setEquipped(const Equipped equipped)
         { mEquipped = equipped; }
 
         /**
          * Returns whether this item is equipped.
          */
-        bool isEquipped() const A_WARN_UNUSED
+        Equipped isEquipped() const A_WARN_UNUSED
         { return mEquipped; }
 
         /**
@@ -222,7 +222,7 @@ class Item notfinal
         int mInvIndex;        /**< Inventory index. */
         int mType;            /**< Item type. */
         Equipm mEquipment;    /**< Item is equipment. */
-        bool mEquipped;       /**< Item is equipped. */
+        Equipped mEquipped;   /**< Item is equipped. */
         bool mInEquipment;    /**< Item is in equipment */
         Identified mIdentified;
         Damaged mDamaged;

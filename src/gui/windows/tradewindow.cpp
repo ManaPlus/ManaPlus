@@ -214,7 +214,7 @@ void TradeWindow::addItem(const int id,
         damaged,
         favorite,
         Equipm_false,
-        false);
+        Equipped_false);
 }
 
 void TradeWindow::addItem2(const int id,
@@ -240,7 +240,7 @@ void TradeWindow::addItem2(const int id,
         damaged,
         favorite,
         equipment,
-        false);
+        Equipped_false);
     if (slot >= 0)
         inv->setCards(slot, cards, sz);
 }

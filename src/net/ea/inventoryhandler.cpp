@@ -262,7 +262,7 @@ void InventoryHandler::processPlayerStorageStatus(Net::MessageIn &msg)
             (*it).damaged,
             (*it).favorite,
             (*it).equip,
-            false);
+            Equipped_false);
     }
     mInventoryItems.clear();
 

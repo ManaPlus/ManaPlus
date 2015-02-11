@@ -1291,7 +1291,7 @@ void LocalPlayer::changeEquipmentBeforeAttack(const Being *const target) const
             return;
 
         // if sword not equiped
-        if (!item->isEquipped())
+        if (item->isEquipped() == Equipped_false)
             PlayerInfo::equipItem(item, true);
 
         // if need equip shield too
@@ -1305,7 +1305,7 @@ void LocalPlayer::changeEquipmentBeforeAttack(const Being *const target) const
                 if (item)
                     break;
             }
-            if (item && !item->isEquipped())
+            if (item && item->isEquipped() == Equipped_false)
                 PlayerInfo::equipItem(item, true);
         }
     }
@@ -1325,7 +1325,7 @@ void LocalPlayer::changeEquipmentBeforeAttack(const Being *const target) const
         if (!item)
             return;
 
-        if (!item->isEquipped())
+        if (item->isEquipped() == Equipped_false)
             PlayerInfo::equipItem(item, true);
     }
 }
@@ -2950,7 +2950,7 @@ void LocalPlayer::imitateOutfit(const Being *const player,
 //            logger->log("idPath: " + path);
             const Item *const item = inv->findItemBySprite(path,
                 player->getGender(), player->getSubType());
-            if (item && !item->isEquipped())
+            if (item && item->isEquipped() == Equipped_false)
                 PlayerInfo::equipItem(item, false);
         }
         else

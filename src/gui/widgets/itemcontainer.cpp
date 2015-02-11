@@ -317,13 +317,13 @@ void ItemContainer::draw(Graphics *graphics)
             {
                 caption = toString(item->getQuantity());
             }
-            else if (item->isEquipped())
+            else if (item->isEquipped() == Equipped_true)
             {
                 // TRANSLATORS: Text under equipped items (should be small)
                 caption = _("Eq.");
             }
 
-            if (item->isEquipped())
+            if (item->isEquipped() == Equipped_true)
                 graphics->setColorAll(mEquipedColor, mEquipedColor2);
             else
                 graphics->setColorAll(mUnEquipedColor, mUnEquipedColor2);
@@ -600,7 +600,7 @@ void ItemContainer::mouseReleased(MouseEvent &event)
                     item->getDamaged(),
                     item->getFavorite(),
                     Equipm_false,
-                    false);
+                    Equipped_false);
             }
             return;
         }

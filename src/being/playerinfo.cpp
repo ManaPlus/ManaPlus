@@ -265,7 +265,7 @@ void useEquipItem(const Item *const item, const bool sfx)
     {
         if (item->isEquipment() == Equipm_true)
         {
-            if (item->isEquipped())
+            if (item->isEquipped() == Equipped_true)
             {
                 if (sfx)
                     ItemSoundManager::playSfx(item, ItemSoundEvent::UNEQUIP);
@@ -296,7 +296,7 @@ void useEquipItem2(const Item *const item, const bool sfx)
     {
         if (item->isEquipment() == Equipm_false)
         {
-            if (item->isEquipped())
+            if (item->isEquipped() == Equipped_true)
             {
                 if (sfx)
                     ItemSoundManager::playSfx(item, ItemSoundEvent::UNEQUIP);

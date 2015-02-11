@@ -479,7 +479,7 @@ void NpcDialog::action(const ActionEvent &event)
                     item->getDamaged(),
                     item->getFavorite(),
                     Equipm_false,
-                    false);
+                    Equipped_false);
             }
         }
     }

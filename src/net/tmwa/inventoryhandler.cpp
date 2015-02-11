@@ -302,7 +302,7 @@ void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
                     Damaged_false,
                     Favorite_false,
                     Equipm_true,
-                    false);
+                    Equipped_false);
             }
             else
             {
@@ -312,7 +312,7 @@ void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
                     Damaged_false,
                     Favorite_false,
                     Equipm_true,
-                    false);
+                    Equipped_false);
             }
             inventory->setCards(index, cards, 4);
         }
@@ -414,7 +414,7 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
                     Damaged_false,
                     Favorite_false,
                     fromBool(equipType, Equipm),
-                    false);
+                    Equipped_false);
             }
             else
             {
@@ -424,7 +424,7 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
                     Damaged_false,
                     Favorite_false,
                     fromBool(equipType, Equipm),
-                    false);
+                    Equipped_false);
             }
             inventory->setCards(index, cards, 4);
         }
@@ -485,7 +485,7 @@ void InventoryHandler::processPlayerInventory(Net::MessageIn &msg)
                     Damaged_false,
                     Favorite_false,
                     fromBool(isEquipment, Equipm),
-                    false);
+                    Equipped_false);
             }
             else
             {
@@ -495,7 +495,7 @@ void InventoryHandler::processPlayerInventory(Net::MessageIn &msg)
                     Damaged_false,
                     Favorite_false,
                     fromBool(isEquipment, Equipm),
-                    false);
+                    Equipped_false);
             }
             inventory->setCards(index, cards, 4);
         }
@@ -665,7 +665,7 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
                     Damaged_false,
                     Favorite_false,
                     Equipm_false,
-                    false);
+                    Equipped_false);
             }
             else
             {
@@ -675,7 +675,7 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
                     Damaged_false,
                     Favorite_false,
                     Equipm_false,
-                    false);
+                    Equipped_false);
             }
             mStorage->setCards(index, cards, 4);
         }

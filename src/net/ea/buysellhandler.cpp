@@ -162,7 +162,7 @@ void BuySellHandler::processNpcSell(Net::MessageIn &msg)
             const Item *const item = PlayerInfo::getInventory()
                 ->getItem(index);
 
-            if (item && !(item->isEquipped()))
+            if (item && item->isEquipped() == Equipped_false)
                 dialog->addItem(item, value);
         }
     }

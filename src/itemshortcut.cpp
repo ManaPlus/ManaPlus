@@ -159,7 +159,7 @@ void ItemShortcut::equipItem(const int index) const
         {
             if (item->isEquipment() == Equipm_true)
             {
-                if (!item->isEquipped())
+                if (item->isEquipped() == Equipped_false)
                     PlayerInfo::equipItem(item, true);
             }
         }
@@ -179,7 +179,7 @@ void ItemShortcut::unequipItem(const int index) const
         {
             if (item->isEquipment() == Equipm_true)
             {
-                if (item->isEquipped())
+                if (item->isEquipped() == Equipped_true)
                     PlayerInfo::unequipItem(item, true);
             }
         }
