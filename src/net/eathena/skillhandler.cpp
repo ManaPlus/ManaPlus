@@ -302,66 +302,62 @@ void SkillHandler::processSkillFailed(Net::MessageIn &msg)
             txt = info->errorText;
         else
             txt = strprintf(_("Unknown skill error: %d"), bskill);
-        txt.append(" ");
-
-        switch (reason)
-        {
-            case RFAIL_SKILLDEP:
-                // TRANSLATORS: error message
-                txt.append(_("You have not yet reached a high enough lvl!"));
-                break;
-            case RFAIL_INSUFHP:
-                // TRANSLATORS: error message
-                txt.append(_("Insufficient HP!"));
-                break;
-            case RFAIL_INSUFSP:
-                // TRANSLATORS: error message
-                txt.append(_("Insufficient SP!"));
-                break;
-            case RFAIL_NOMEMO:
-                // TRANSLATORS: error message
-                txt.append(_("You have no memos!"));
-                break;
-            case RFAIL_SKILLDELAY:
-                // TRANSLATORS: error message
-                txt.append(_("You cannot do that right now!"));
-                break;
-            case RFAIL_ZENY:
-                // TRANSLATORS: error message
-                txt.append(_("Seems you need more money... ;-)"));
-                break;
-            case RFAIL_WEAPON:
-                // TRANSLATORS: error message
-                txt.append(_("You cannot use this skill with that "
-                    "kind of weapon!"));
-                break;
-            case RFAIL_REDGEM:
-                // TRANSLATORS: error message
-                txt.append(_("You need another red gem!"));
-                break;
-            case RFAIL_BLUEGEM:
-                // TRANSLATORS: error message
-                txt.append(_("You need another blue gem!"));
-                break;
-            case RFAIL_OVERWEIGHT:
-                // TRANSLATORS: error message
-                txt.append(_("You're carrying to much to do this!"));
-                break;
-            default:
-                // TRANSLATORS: error message
-                txt.append(_("Huh? What's that?"));
-                logger->log("QQQ SMSG_SKILL_FAILED: reason "
-                            + toString(reason));
-                break;
-        }
     }
     else
     {
         SkillInfo *const info = skillDialog->getSkill(skillId);
         if (info)
-            txt = info->errorText;
+            txt = info->errorText + ".";
         else
-            txt = strprintf(_("Unknown skill error: %d"), skillId);
+            txt = strprintf(_("Unknown skill error: %d."), skillId);
+    }
+
+    txt.append(" ");
+    switch (reason)
+    {
+        case RFAIL_SKILLDEP:
+            // TRANSLATORS: error message
+            txt.append(_("You have not yet reached a high enough lvl!"));
+            break;
+        case RFAIL_INSUFHP:
+            // TRANSLATORS: error message
+            txt.append(_("Insufficient HP!"));
+            break;
+        case RFAIL_INSUFSP:
+            // TRANSLATORS: error message
+            txt.append(_("Insufficient SP!"));
+            break;
+        case RFAIL_NOMEMO:
+            // TRANSLATORS: error message
+            txt.append(_("You have no memos!"));
+            break;
+        case RFAIL_SKILLDELAY:
+            // TRANSLATORS: error message
+            txt.append(_("You cannot do that right now!"));
+            break;
+        case RFAIL_ZENY:
+            // TRANSLATORS: error message
+            txt.append(_("Seems you need more money... ;-)"));
+            break;
+        case RFAIL_WEAPON:
+            // TRANSLATORS: error message
+            txt.append(_("You cannot use this skill with that "
+                "kind of weapon!"));
+            break;
+        case RFAIL_REDGEM:
+            // TRANSLATORS: error message
+            txt.append(_("You need another red gem!"));
+            break;
+        case RFAIL_BLUEGEM:
+            // TRANSLATORS: error message
+            txt.append(_("You need another blue gem!"));
+            break;
+        case RFAIL_OVERWEIGHT:
+                // TRANSLATORS: error message
+            txt.append(_("You're carrying to much to do this!"));
+            break;
+        default:
+            break;
     }
 
     NotifyManager::notify(NotifyTypes::SKILL_FAIL_MESSAGE, txt);
