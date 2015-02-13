@@ -61,6 +61,7 @@
 #include "enums/being/attributes.h"
 
 #include "net/chathandler.h"
+#include "net/buyingstorehandler.h"
 #include "net/serverfeatures.h"
 #include "net/tradehandler.h"
 #include "net/vendinghandler.h"
@@ -279,39 +280,53 @@ void ShopWindow::action(const ActionEvent &event)
 #ifdef EATHENA_SUPPORT
     else if (eventId == "publish")
     {
-        if (mEnableVending)
+        if (isBuySelected)
         {
-            vendingHandler->close();
-            VendingModeListener::distributeEvent(false);
+            std::vector<ShopItem*> &items = mBuyShopItems->items();
+            if (!items.empty())
+            {
+                buyingStoreHandler->create(mSellShopName,
+                    PlayerInfo::getAttribute(Attributes::MONEY),
+                    true,
+                    items);
+            }
         }
         else
         {
-            std::vector<ShopItem*> &oldItems = mSellShopItems->items();
-            std::vector<ShopItem*> items;
-            Inventory *const inv = PlayerInfo::getCartInventory();
-            if (!inv)
-                return;
-            FOR_EACH (std::vector<ShopItem*>::iterator, it, oldItems)
+            if (mEnableVending)
             {
-                ShopItem *const item = *it;
-                if (!item)
-                    continue;
-                // +++ need add colors
-                Item *const cartItem = inv->findItem(item->getId(), 1);
-                if (!cartItem)
-                    continue;
-                item->setInvIndex(cartItem->getInvIndex());
-                const int amount = cartItem->getQuantity();
-                if (!amount)
-                    continue;
-                if (item->getQuantity() > amount)
-                    item->setQuantity(amount);
-                items.push_back(item);
-                if (static_cast<signed int>(items.size()) >= mSellShopSize)
-                    break;
+                vendingHandler->close();
+                VendingModeListener::distributeEvent(false);
             }
-            if (!items.empty())
-                vendingHandler->createShop(mSellShopName, true, items);
+            else
+            {
+                std::vector<ShopItem*> &oldItems = mSellShopItems->items();
+                std::vector<ShopItem*> items;
+                Inventory *const inv = PlayerInfo::getCartInventory();
+                if (!inv)
+                    return;
+                FOR_EACH (std::vector<ShopItem*>::iterator, it, oldItems)
+                {
+                    ShopItem *const item = *it;
+                    if (!item)
+                        continue;
+                    // +++ need add colors
+                    Item *const cartItem = inv->findItem(item->getId(), 1);
+                    if (!cartItem)
+                        continue;
+                    item->setInvIndex(cartItem->getInvIndex());
+                    const int amount = cartItem->getQuantity();
+                    if (!amount)
+                        continue;
+                    if (item->getQuantity() > amount)
+                        item->setQuantity(amount);
+                    items.push_back(item);
+                    if (static_cast<signed int>(items.size()) >= mSellShopSize)
+                        break;
+                }
+                if (!items.empty())
+                    vendingHandler->createShop(mSellShopName, true, items);
+            }
         }
     }
     else if (eventId == "rename")
@@ -393,6 +408,12 @@ void ShopWindow::updateButtonsAndLabels()
         allowAdd = !mEnableVending;
         allowDel = mBuyShopItemList->getSelected() != -1
             && mBuyShopItems->getNumberOfElements() > 0;
+        if (mPublishButton)
+        {
+            mPublishButton->setCaption(_("Publish"));
+            mPublishButton->adjustSize();
+            mPublishButton->setEnabled(true);
+        }
     }
     else
     {
@@ -400,29 +421,29 @@ void ShopWindow::updateButtonsAndLabels()
         allowDel = !mEnableVending
             && mSellShopItemList->getSelected() != -1
             && sellNotEmpty;
+        if (mPublishButton)
+        {
+            if (mEnableVending)
+                mPublishButton->setCaption(_("Unpublish"));
+            else
+                mPublishButton->setCaption(_("Publish"));
+            mPublishButton->adjustSize();
+            if (!isBuySelected
+                && sellNotEmpty
+                && mSellShopSize > 0
+                && localPlayer
+                && localPlayer->getHaveCart())
+            {
+                mPublishButton->setEnabled(true);
+            }
+            else
+            {
+                mPublishButton->setEnabled(false);
+            }
+        }
     }
     mAddButton->setEnabled(allowAdd);
     mDeleteButton->setEnabled(allowDel);
-    if (mPublishButton)
-    {
-        if (mEnableVending)
-            mPublishButton->setCaption(_("Unpublish"));
-        else
-            mPublishButton->setCaption(_("Publish"));
-        mPublishButton->adjustSize();
-        if (!isBuySelected
-            && sellNotEmpty
-            && mSellShopSize > 0
-            && localPlayer
-            && localPlayer->getHaveCart())
-        {
-            mPublishButton->setEnabled(true);
-        }
-        else
-        {
-            mPublishButton->setEnabled(false);
-        }
-    }
     if (mRenameButton)
         mRenameButton->setEnabled(!mEnableVending);
 }
