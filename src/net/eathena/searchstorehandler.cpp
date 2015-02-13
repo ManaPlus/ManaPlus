@@ -86,7 +86,7 @@ void SearchStoreHandler::search(const StoreSearchType::Type type,
     outMsg.writeInt32(minPrice, "min price");
     outMsg.writeInt32(1, "items count");
     outMsg.writeInt32(0, "cards count");
-    outMsg.writeInt16(itemId, "item id");
+    outMsg.writeInt16(static_cast<int16_t>(itemId), "item id");
 }
 
 void SearchStoreHandler::nextPage() const
@@ -106,7 +106,7 @@ void SearchStoreHandler::select(const int accountId,
     createOutPacket(CMSG_SEARCHSTORE_CLICK);
     outMsg.writeInt32(accountId, "account id");
     outMsg.writeInt32(storeId, "store id");
-    outMsg.writeInt16(itemId, "item id");
+    outMsg.writeInt16(static_cast<int16_t>(itemId), "item id");
 }
 
 void SearchStoreHandler::processSearchAck(Net::MessageIn &msg)

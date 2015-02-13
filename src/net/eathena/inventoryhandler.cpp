@@ -25,7 +25,6 @@
 #include "notifymanager.h"
 
 #include "enums/equipslot.h"
-#include "enums/simpletypes.h"
 
 #include "enums/being/attributes.h"
 

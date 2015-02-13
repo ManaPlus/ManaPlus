@@ -25,8 +25,6 @@
 #include "item.h"
 #include "logger.h"
 
-#include "enums/simpletypes.h"
-
 #include "net/inventoryhandler.h"
 
 #include "resources/iteminfo.h"
