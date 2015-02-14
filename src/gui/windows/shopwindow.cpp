@@ -88,6 +88,7 @@ ShopWindow::ShopWindow() :
     SelectionListener(),
     VendingModeListener(),
     VendingSlotsListener(),
+    BuyingStoreModeListener(),
     BuyingStoreSlotsListener(),
     // TRANSLATORS: shop window button
     mCloseButton(new Button(this, _("Close"), "close", this)),
@@ -121,6 +122,7 @@ ShopWindow::ShopWindow() :
     mBuyShopSize(0),
     isBuySelected(true),
     mHaveVending(serverFeatures->haveVending()),
+    mEnableBuyingStore(false),
     mEnableVending(false)
 {
     mBuyShopItemList->postInit();
@@ -1061,5 +1063,14 @@ void ShopWindow::setShopName(const std::string &name)
 void ShopWindow::buyingStoreSlotsChanged(const int slots)
 {
     mBuyShopSize = slots;
+    updateButtonsAndLabels();
+}
+
+void ShopWindow::buyingStoreEnabled(const bool b)
+{
+    mEnableBuyingStore = b;
+    localPlayer->enableShop(b);
+    if (!b)
+        mBuyShopSize = 0;
     updateButtonsAndLabels();
 }

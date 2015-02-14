@@ -26,6 +26,7 @@
 #include "gui/widgets/window.h"
 
 #include "listeners/actionlistener.h"
+#include "listeners/buyingstoremodelistener.h"
 #include "listeners/buyingstoreslotslistener.h"
 #include "listeners/selectionlistener.h"
 #include "listeners/vendingmodelistener.h"
@@ -50,6 +51,7 @@ class ShopWindow final : public Window,
                          public SelectionListener,
                          public VendingModeListener,
                          public VendingSlotsListener,
+                         public BuyingStoreModeListener,
                          public BuyingStoreSlotsListener
 {
     public:
@@ -149,6 +151,8 @@ class ShopWindow final : public Window,
 
         void vendingEnabled(const bool b) override final;
 
+        void buyingStoreEnabled(const bool b) override final;
+
         void setShopName(const std::string &name);
 
     private:
@@ -191,6 +195,7 @@ class ShopWindow final : public Window,
         int mBuyShopSize;
         bool isBuySelected;
         bool mHaveVending;
+        bool mEnableBuyingStore;
         bool mEnableVending;
 };
 

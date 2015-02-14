@@ -951,6 +951,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      listeners/banklistener.cpp \
 	      listeners/banklistener.h \
 	      listeners/baselistener.hpp \
+	      listeners/buyingstoremodelistener.cpp \
+	      listeners/buyingstoremodelistener.h \
 	      listeners/buyingstoreslotslistener.cpp \
 	      listeners/buyingstoreslotslistener.h \
 	      listeners/charrenamelistener.cpp \

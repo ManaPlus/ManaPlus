@@ -24,7 +24,9 @@
 #include "shopitem.h"
 
 #include "being/being.h"
+#include "being/playerinfo.h"
 
+#include "listeners/buyingstoremodelistener.h"
 #include "listeners/buyingstoreslotslistener.h"
 
 #include "net/ea/eaprotocol.h"
@@ -149,6 +151,8 @@ void BuyingStoreHandler::processBuyingStoreOwnItems(Net::MessageIn &msg)
         msg.readUInt8("item type");
         msg.readInt16("item id");
     }
+    PlayerInfo::enableVending(true);
+    BuyingStoreModeListener::distributeEvent(true);
 }
 
 void BuyingStoreHandler::processBuyingStoreShowBoard(Net::MessageIn &msg)
