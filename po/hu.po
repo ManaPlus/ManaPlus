@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2015-02-05 23:29+0300\n"
-"PO-Revision-Date: 2015-02-06 09:55+0000\n"
+"POT-Creation-Date: 2015-02-08 12:37+0300\n"
+"PO-Revision-Date: 2015-02-09 09:54+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Hungarian (http://www.transifex.com/projects/p/manaplus/language/hu/)\n"
 "MIME-Version: 1.0\n"
@@ -421,28 +421,28 @@ msgstr ""
 #. TRANSLATORS: add player to completle ignore list
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player to ignore list
-#: src/being/playerrelations.cpp:468 src/gui/popups/popupmenu.cpp:2301
+#: src/being/playerrelations.cpp:469 src/gui/popups/popupmenu.cpp:2301
 #: src/gui/popups/popupmenu.cpp:2343
 msgid "Completely ignore"
 msgstr ""
 
 #. TRANSLATORS: ignore/unignore action
-#: src/being/playerrelations.cpp:485
+#: src/being/playerrelations.cpp:486
 msgid "Print '...'"
 msgstr ""
 
 #. TRANSLATORS: ignore/unignore action
-#: src/being/playerrelations.cpp:508
+#: src/being/playerrelations.cpp:509
 msgid "Blink name"
 msgstr ""
 
 #. TRANSLATORS: ignore strategi
-#: src/being/playerrelations.cpp:554
+#: src/being/playerrelations.cpp:555
 msgid "Floating '...' bubble"
 msgstr ""
 
 #. TRANSLATORS: ignore strategi
-#: src/being/playerrelations.cpp:558
+#: src/being/playerrelations.cpp:559
 msgid "Floating bubble"
 msgstr ""
 
@@ -1079,7 +1079,7 @@ msgstr ""
 #: src/gui/models/colorlistmodel.h:33 src/gui/models/sortlistmodelinv.h:34
 #: src/gui/widgets/tabs/setup_other.cpp:79
 #: src/gui/widgets/tabs/setup_visual.cpp:81
-#: src/gui/windows/equipmentwindow.cpp:614
+#: src/gui/windows/equipmentwindow.cpp:616
 msgid "default"
 msgstr ""
 
@@ -2680,7 +2680,7 @@ msgstr ""
 
 #. TRANSLATORS: Skill type
 #. TRANSLATORS: unknown equipment page name
-#: src/gui/widgets/skillinfo.cpp:109 src/gui/windows/equipmentwindow.cpp:621
+#: src/gui/widgets/skillinfo.cpp:109 src/gui/windows/equipmentwindow.cpp:623
 msgid "Unknown"
 msgstr ""
 
@@ -9029,6 +9029,43 @@ msgstr ""
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:438
 msgid "Buying store create failed. No items in store."
+msgstr ""
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:442
+msgid "All items within the buy limit were purchased."
+msgstr ""
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:446
+msgid "All items were purchased."
+msgstr ""
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:450
+msgid "Buying item failed."
+msgstr ""
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:454
+msgid "The deal has failed."
+msgstr ""
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:458
+msgid ""
+"The trade failed, because the entered amount of item is higher, than the "
+"buyer is willing to buy."
+msgstr ""
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:463
+msgid "The trade failed, because the buyer is lacking required balance."
+msgstr ""
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:467
+msgid "Selling item failed."
 msgstr ""
 
 #. TRANSLATORS: chat option changed message

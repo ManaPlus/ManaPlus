@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2014-12-30 09:14+0000\n"
+"PO-Revision-Date: 2015-02-08 11:59+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Serbian (http://www.transifex.com/projects/p/manaplus/language/sr/)\n"
 "MIME-Version: 1.0\n"
@@ -15,6 +15,9 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 msgid "/uploadserverconfig - upload server config into pastebin service."
+msgstr ""
+
+msgid "Mercenaries or homunculuses"
 msgstr ""
 
 msgid "/atkhuman - select and attack nearest player."
@@ -46,6 +49,9 @@ msgid "Back to Index"
 msgstr "Povratak na glavnu stranu"
 
 msgid "\"Quests window\""
+msgstr ""
+
+msgid "/firehomunculus - fire homunculus."
 msgstr ""
 
 msgid "\"Quick drop window\""
@@ -206,6 +212,9 @@ msgstr "/msg NADIMAK tekst, /whisper NADIMAK tekst, /w NADIMAK tekst - pošalji 
 msgid "/movetotarget - move to target position."
 msgstr ""
 
+msgid "/catchpet - try to catch pet."
+msgstr ""
+
 msgid "/outfit prev - wear previous outfit."
 msgstr "/outfit prev - obuci se u prethodnu odeću."
 
@@ -292,8 +301,13 @@ msgstr ""
 msgid "\"Equipment window\""
 msgstr ""
 
-msgid "Mana Contributors"
-msgstr "Mana Saradnici"
+msgid ""
+" To add an item to the shortcut bar click on the item in the inventory window,\n"
+" then click on the box in the shortcut-window which should be associated with\n"
+" the item. To reorder items within the shortcut-window simply click and drag\n"
+" them between the boxes. To remove items you simply drag them outside of the\n"
+" window and drop them."
+msgstr " Da bi dodao predmet na tablu za prečice, klikni na predmet u prozoru za\n popis predmeta koje karakter ima, zatim klikni na kućicu u\n prozoru za prečice koji želiš da povežeš sa tim predmetom.\n Za promenu rasporeda predmeta unutar prozora za prečice jednostavno klikni i\n prevuci iz jedne kućice u drugu. Za uklanjanje samo prevuci predmet izvan prozora i pusti ga."
 
 msgid "/dumpt - dump tests info into chat."
 msgstr ""
@@ -357,7 +371,7 @@ msgstr ""
 msgid "For other servers may exists other copyrights."
 msgstr ""
 
-msgid "\"Outfit shortcut 13\""
+msgid "\"Change crazy Move mode\""
 msgstr ""
 
 msgid "/sethome - set home position."
@@ -417,6 +431,9 @@ msgid ""
 "You can hide/show bars and buttons by right click and select menu item."
 msgstr "Možeš skrivati i prikazivati table i dugmadi desnim klikom i odabiranjem opcije sa menija."
 
+msgid "/petmoveleft - move pet one tile left."
+msgstr ""
+
 msgid "\"Enable / disable away mode\""
 msgstr ""
 
@@ -449,6 +466,9 @@ msgstr ""
 msgid "\"Close chat tab\""
 msgstr ""
 
+msgid "/petdirectright - rorate pet right."
+msgstr ""
+
 msgid "\"Target player\""
 msgstr ""
 
@@ -479,11 +499,17 @@ msgstr ""
 msgid "About current server"
 msgstr ""
 
+msgid "/petaistop - disable pet ai."
+msgstr ""
+
 msgid "\"Quick heal target or self\""
 msgstr ""
 
 msgid "Search error"
 msgstr "Greška u pretrazi"
+
+msgid "/targetpet - target pet."
+msgstr ""
 
 msgid "\"Outfit shortcut 9\""
 msgstr ""
@@ -502,8 +528,8 @@ msgstr ""
 msgid "\"Chat window\""
 msgstr ""
 
-msgid "\"Change follow mode\""
-msgstr ""
+msgid "/closeall - close all whispers."
+msgstr "/closeall - zatvori sva šaputanja."
 
 msgid "\"Previous chat tab\""
 msgstr ""
@@ -517,11 +543,8 @@ msgstr ""
 msgid "IGNORING COMMUNICATION"
 msgstr "IGNORISANJE KOMUNIKACIJE"
 
-msgid ""
-" - ##2save player list##9: Should your acquaintance list be saved when you\n"
-"   quit the game?  If you enable this option, your list will survive when you\n"
-"   quit and re-start."
-msgstr ""
+msgid "Powered By"
+msgstr "Podržan od strane"
 
 msgid "Other"
 msgstr ""
@@ -550,15 +573,8 @@ msgstr ""
 msgid "/serverignoreall - ignore all whispers on server side."
 msgstr "/serverignoreall - ignoriši sva šaptanja sa strane servera."
 
-msgid ""
-"##2               SDL, SDL_image, SDL_mixer (Media framework)\n"
-"##2                     SDL_net (Networking framework)\n"
-"##2                        Guichan (GUI framework)\n"
-"##2                   libxml2 (XML parsing and writing)\n"
-"##2                          PhysFS (Data files)\n"
-"##2                        libcurl (HTTP downloads)\n"
-"##2                            zlib (Archives)"
-msgstr "##2 SDL, SDL_image, SDL_mixer (Multimedijalna platforma) ##2 SDL_net (Platforma za komunikaciju u mreži) ##2 Guichan (Platforma korisničkog interfejsa) ##2 libxml2 (XML prevođenje, tumačenje i zapisivanje) ##2 PhysFS (Datoteke podataka) ##2 libcurl (HTTP preuzimanja) ##2 zlib (Arhive)"
+msgid "/notice TEXT - set notice guild text."
+msgstr ""
 
 msgid "\"Sit\""
 msgstr ""
@@ -572,8 +588,8 @@ msgstr "VEŠTINE"
 msgid "Actions"
 msgstr "Akcije"
 
-msgid "/emote N - use emotion number N."
-msgstr "/emote N - koristi emociju pod brojem N."
+msgid "To type chat message, press ###keyChat;"
+msgstr ""
 
 msgid "/item 0 - disable party item sharing options."
 msgstr ""
@@ -606,16 +622,11 @@ msgstr ""
 msgid "\"Screenshot\""
 msgstr ""
 
-msgid "/closeall - close all whispers."
-msgstr "/closeall - zatvori sva šaputanja."
+msgid "\"Change follow mode\""
+msgstr ""
 
-msgid ""
-" To add an item to the shortcut bar click on the item in the inventory window,\n"
-" then click on the box in the shortcut-window which should be associated with\n"
-" the item. To reorder items within the shortcut-window simply click and drag\n"
-" them between the boxes. To remove items you simply drag them outside of the\n"
-" window and drop them."
-msgstr " Da bi dodao predmet na tablu za prečice, klikni na predmet u prozoru za\n popis predmeta koje karakter ima, zatim klikni na kućicu u\n prozoru za prečice koji želiš da povežeš sa tim predmetom.\n Za promenu rasporeda predmeta unutar prozora za prečice jednostavno klikni i\n prevuci iz jedne kućice u drugu. Za uklanjanje samo prevuci predmet izvan prozora i pusti ga."
+msgid "Mana Contributors"
+msgstr "Mana Saradnici"
 
 msgid "/query NICK, /q NICK - open new whisper tab for nick."
 msgstr "/query NADIMAK, /q NADIMAK - otvori novi prozor za šaptanje za nekog igrača."
@@ -638,6 +649,9 @@ msgstr ""
 
 msgid "Visit IRC channel:"
 msgstr "Poseti IRC kanal za ćaskanje:"
+
+msgid "/petdirectup - rotate pet up."
+msgstr ""
 
 msgid "\"Target & attack\""
 msgstr ""
@@ -663,7 +677,10 @@ msgstr ""
 msgid "\"Crazy moves\""
 msgstr ""
 
-msgid "Website: @@http://manaplus.org/|http://manaplus.org/@@"
+msgid ""
+" - ##2save player list##9: Should your acquaintance list be saved when you\n"
+"   quit the game?  If you enable this option, your list will survive when you\n"
+"   quit and re-start."
 msgstr ""
 
 msgid "/uptime - show client uptime."
@@ -690,13 +707,22 @@ msgstr ""
 msgid "/ignore NICK - add nick to ignore list."
 msgstr "/ignore NADIMAK - dodaj ime nekog igrača na listu za ignorisanje."
 
+msgid "/targetmercenary - target closest mercenary."
+msgstr ""
+
 msgid "\"Attack\""
 msgstr ""
 
 msgid "/magicattack - attack target with magic."
 msgstr ""
 
+msgid "/petdirectdown - rotate pet down."
+msgstr ""
+
 msgid "For ManaPlus Online support:"
+msgstr ""
+
+msgid "/petdirectleft - rotate pet left."
 msgstr ""
 
 msgid "\"Set direction right\""
@@ -736,6 +762,9 @@ msgid "move key"
 msgstr ""
 
 msgid "\"Emote shortcut 5\""
+msgstr ""
+
+msgid "/petmoveright - move pet one tile right."
 msgstr ""
 
 msgid "/open URL - open url in browser."
@@ -781,7 +810,7 @@ msgstr ""
 msgid "\"Switch quick drop counter\""
 msgstr ""
 
-msgid "\"Change crazy Move mode\""
+msgid "\"Outfit shortcut 13\""
 msgstr ""
 
 msgid "\"Outfit shortcut 8\""
@@ -809,6 +838,9 @@ msgid ""
 " - ##2neutral##9:  As far as the game is concerned, this is the same as not\n"
 "   having the player listed:  the player may chat with you, but may only trade\n"
 "   or whisper if you have this option allowed for everyone."
+msgstr ""
+
+msgid "/petaistart - enable pet ai."
 msgstr ""
 
 msgid "/url URL - insert url into chat."
@@ -857,6 +889,12 @@ msgid ""
 msgstr ""
 
 msgid "\"Emote shortcut 11\""
+msgstr ""
+
+msgid "/petmoveup - move pet one tile up."
+msgstr ""
+
+msgid "Pets"
 msgstr ""
 
 msgid "\"Set direction down\""
@@ -917,6 +955,11 @@ msgstr ""
 
 msgid "\"Toggle camera mode\""
 msgstr ""
+
+msgid ""
+"You can see other player equiped items,\n"
+"by right click on player and select in context menu \"Show Items\"."
+msgstr "Možeš videti šta drugi igrači imaju od opreme i predmeta, tako što klikneš desnim klikom na igrača i u meniju izabereš \"Prikaži predmete\"."
 
 msgid "WINDOWS"
 msgstr "PROZORI"
@@ -1039,11 +1082,21 @@ msgstr ""
 msgid "/leave - leave the party you are in."
 msgstr ""
 
+msgid "/petmovedown - move pet one tile down."
+msgstr ""
+
 msgid "\"Status window\""
 msgstr ""
 
-msgid "/notice TEXT - set notice guild text."
-msgstr ""
+msgid ""
+"##2               SDL, SDL_image, SDL_mixer (Media framework)\n"
+"##2                     SDL_net (Networking framework)\n"
+"##2                        Guichan (GUI framework)\n"
+"##2                   libxml2 (XML parsing and writing)\n"
+"##2                          PhysFS (Data files)\n"
+"##2                        libcurl (HTTP downloads)\n"
+"##2                            zlib (Archives)"
+msgstr "##2 SDL, SDL_image, SDL_mixer (Multimedijalna platforma) ##2 SDL_net (Platforma za komunikaciju u mreži) ##2 Guichan (Platforma korisničkog interfejsa) ##2 libxml2 (XML prevođenje, tumačenje i zapisivanje) ##2 PhysFS (Datoteke podataka) ##2 libcurl (HTTP preuzimanja) ##2 zlib (Arhive)"
 
 msgid "/friend NICK, /befriend NICK - add nick to friends list."
 msgstr "/friend NADIMAK, /befriend NADIMAK - dodaj ime igrača na listu prijatelja."
@@ -1066,8 +1119,8 @@ msgstr "Saradnici za razvoj klijenta/servera"
 msgid "Sources:"
 msgstr ""
 
-msgid "To type chat message, press ###keyChat;"
-msgstr ""
+msgid "/emote N - use emotion number N."
+msgstr "/emote N - koristi emociju pod brojem N."
 
 msgid "Translators"
 msgstr "Prevodioci"
@@ -1078,8 +1131,11 @@ msgstr ""
 msgid "\"Move to home location\""
 msgstr ""
 
-msgid "Powered By"
-msgstr "Podržan od strane"
+msgid "/sethomunname NAME - set homunculus name."
+msgstr ""
+
+msgid "Website: @@http://manaplus.org/|http://manaplus.org/@@"
+msgstr ""
 
 msgid "\"Skill window\""
 msgstr ""
@@ -1108,6 +1164,9 @@ msgstr "/undress NADIMAK - ukloni svu odeću sa igrača. Samo ćeš ti to moći 
 msgid "\"Quick drop N items from 0 slot\""
 msgstr ""
 
+msgid "/mercenaryfire - fire mercenary."
+msgstr ""
+
 msgid "/disablehighlight - disable highlight in current tab."
 msgstr ""
 
@@ -1117,10 +1176,8 @@ msgstr ""
 msgid "Whispers commands"
 msgstr "Komande za šaputanje"
 
-msgid ""
-"You can see other player equiped items,\n"
-"by right click on player and select in context menu \"Show Items\"."
-msgstr "Možeš videti šta drugi igrači imaju od opreme i predmeta, tako što klikneš desnim klikom na igrača i u meniju izabereš \"Prikaži predmete\"."
+msgid "/setpetname NAME - set new pet name."
+msgstr ""
 
 msgid "Whispers"
 msgstr "Šaputanja"

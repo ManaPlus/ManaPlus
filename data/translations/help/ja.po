@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2014-12-28 22:29+0000\n"
+"PO-Revision-Date: 2015-02-08 11:59+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/manaplus/language/ja/)\n"
 "MIME-Version: 1.0\n"
@@ -13,6 +13,9 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid "/uploadserverconfig - upload server config into pastebin service."
+msgstr ""
+
+msgid "Mercenaries or homunculuses"
 msgstr ""
 
 msgid "/atkhuman - select and attack nearest player."
@@ -44,6 +47,9 @@ msgid "Back to Index"
 msgstr ""
 
 msgid "\"Quests window\""
+msgstr ""
+
+msgid "/firehomunculus - fire homunculus."
 msgstr ""
 
 msgid "\"Quick drop window\""
@@ -204,6 +210,9 @@ msgstr ""
 msgid "/movetotarget - move to target position."
 msgstr ""
 
+msgid "/catchpet - try to catch pet."
+msgstr ""
+
 msgid "/outfit prev - wear previous outfit."
 msgstr ""
 
@@ -290,7 +299,12 @@ msgstr ""
 msgid "\"Equipment window\""
 msgstr ""
 
-msgid "Mana Contributors"
+msgid ""
+" To add an item to the shortcut bar click on the item in the inventory window,\n"
+" then click on the box in the shortcut-window which should be associated with\n"
+" the item. To reorder items within the shortcut-window simply click and drag\n"
+" them between the boxes. To remove items you simply drag them outside of the\n"
+" window and drop them."
 msgstr ""
 
 msgid "/dumpt - dump tests info into chat."
@@ -355,7 +369,7 @@ msgstr ""
 msgid "For other servers may exists other copyrights."
 msgstr ""
 
-msgid "\"Outfit shortcut 13\""
+msgid "\"Change crazy Move mode\""
 msgstr ""
 
 msgid "/sethome - set home position."
@@ -415,6 +429,9 @@ msgid ""
 "You can hide/show bars and buttons by right click and select menu item."
 msgstr ""
 
+msgid "/petmoveleft - move pet one tile left."
+msgstr ""
+
 msgid "\"Enable / disable away mode\""
 msgstr ""
 
@@ -447,6 +464,9 @@ msgstr ""
 msgid "\"Close chat tab\""
 msgstr ""
 
+msgid "/petdirectright - rorate pet right."
+msgstr ""
+
 msgid "\"Target player\""
 msgstr ""
 
@@ -477,10 +497,16 @@ msgstr ""
 msgid "About current server"
 msgstr ""
 
+msgid "/petaistop - disable pet ai."
+msgstr ""
+
 msgid "\"Quick heal target or self\""
 msgstr ""
 
 msgid "Search error"
+msgstr ""
+
+msgid "/targetpet - target pet."
 msgstr ""
 
 msgid "\"Outfit shortcut 9\""
@@ -500,7 +526,7 @@ msgstr ""
 msgid "\"Chat window\""
 msgstr ""
 
-msgid "\"Change follow mode\""
+msgid "/closeall - close all whispers."
 msgstr ""
 
 msgid "\"Previous chat tab\""
@@ -515,10 +541,7 @@ msgstr ""
 msgid "IGNORING COMMUNICATION"
 msgstr ""
 
-msgid ""
-" - ##2save player list##9: Should your acquaintance list be saved when you\n"
-"   quit the game?  If you enable this option, your list will survive when you\n"
-"   quit and re-start."
+msgid "Powered By"
 msgstr ""
 
 msgid "Other"
@@ -548,14 +571,7 @@ msgstr ""
 msgid "/serverignoreall - ignore all whispers on server side."
 msgstr ""
 
-msgid ""
-"##2               SDL, SDL_image, SDL_mixer (Media framework)\n"
-"##2                     SDL_net (Networking framework)\n"
-"##2                        Guichan (GUI framework)\n"
-"##2                   libxml2 (XML parsing and writing)\n"
-"##2                          PhysFS (Data files)\n"
-"##2                        libcurl (HTTP downloads)\n"
-"##2                            zlib (Archives)"
+msgid "/notice TEXT - set notice guild text."
 msgstr ""
 
 msgid "\"Sit\""
@@ -570,7 +586,7 @@ msgstr ""
 msgid "Actions"
 msgstr ""
 
-msgid "/emote N - use emotion number N."
+msgid "To type chat message, press ###keyChat;"
 msgstr ""
 
 msgid "/item 0 - disable party item sharing options."
@@ -604,15 +620,10 @@ msgstr ""
 msgid "\"Screenshot\""
 msgstr ""
 
-msgid "/closeall - close all whispers."
+msgid "\"Change follow mode\""
 msgstr ""
 
-msgid ""
-" To add an item to the shortcut bar click on the item in the inventory window,\n"
-" then click on the box in the shortcut-window which should be associated with\n"
-" the item. To reorder items within the shortcut-window simply click and drag\n"
-" them between the boxes. To remove items you simply drag them outside of the\n"
-" window and drop them."
+msgid "Mana Contributors"
 msgstr ""
 
 msgid "/query NICK, /q NICK - open new whisper tab for nick."
@@ -635,6 +646,9 @@ msgid "\"Outfit shortcut 6\""
 msgstr ""
 
 msgid "Visit IRC channel:"
+msgstr ""
+
+msgid "/petdirectup - rotate pet up."
 msgstr ""
 
 msgid "\"Target & attack\""
@@ -661,7 +675,10 @@ msgstr ""
 msgid "\"Crazy moves\""
 msgstr ""
 
-msgid "Website: @@http://manaplus.org/|http://manaplus.org/@@"
+msgid ""
+" - ##2save player list##9: Should your acquaintance list be saved when you\n"
+"   quit the game?  If you enable this option, your list will survive when you\n"
+"   quit and re-start."
 msgstr ""
 
 msgid "/uptime - show client uptime."
@@ -688,13 +705,22 @@ msgstr ""
 msgid "/ignore NICK - add nick to ignore list."
 msgstr ""
 
+msgid "/targetmercenary - target closest mercenary."
+msgstr ""
+
 msgid "\"Attack\""
 msgstr ""
 
 msgid "/magicattack - attack target with magic."
 msgstr ""
 
+msgid "/petdirectdown - rotate pet down."
+msgstr ""
+
 msgid "For ManaPlus Online support:"
+msgstr ""
+
+msgid "/petdirectleft - rotate pet left."
 msgstr ""
 
 msgid "\"Set direction right\""
@@ -734,6 +760,9 @@ msgid "move key"
 msgstr ""
 
 msgid "\"Emote shortcut 5\""
+msgstr ""
+
+msgid "/petmoveright - move pet one tile right."
 msgstr ""
 
 msgid "/open URL - open url in browser."
@@ -779,7 +808,7 @@ msgstr ""
 msgid "\"Switch quick drop counter\""
 msgstr ""
 
-msgid "\"Change crazy Move mode\""
+msgid "\"Outfit shortcut 13\""
 msgstr ""
 
 msgid "\"Outfit shortcut 8\""
@@ -807,6 +836,9 @@ msgid ""
 " - ##2neutral##9:  As far as the game is concerned, this is the same as not\n"
 "   having the player listed:  the player may chat with you, but may only trade\n"
 "   or whisper if you have this option allowed for everyone."
+msgstr ""
+
+msgid "/petaistart - enable pet ai."
 msgstr ""
 
 msgid "/url URL - insert url into chat."
@@ -855,6 +887,12 @@ msgid ""
 msgstr ""
 
 msgid "\"Emote shortcut 11\""
+msgstr ""
+
+msgid "/petmoveup - move pet one tile up."
+msgstr ""
+
+msgid "Pets"
 msgstr ""
 
 msgid "\"Set direction down\""
@@ -914,6 +952,11 @@ msgid "or come visit us on our IRC channel:"
 msgstr ""
 
 msgid "\"Toggle camera mode\""
+msgstr ""
+
+msgid ""
+"You can see other player equiped items,\n"
+"by right click on player and select in context menu \"Show Items\"."
 msgstr ""
 
 msgid "WINDOWS"
@@ -1037,10 +1080,20 @@ msgstr ""
 msgid "/leave - leave the party you are in."
 msgstr ""
 
+msgid "/petmovedown - move pet one tile down."
+msgstr ""
+
 msgid "\"Status window\""
 msgstr ""
 
-msgid "/notice TEXT - set notice guild text."
+msgid ""
+"##2               SDL, SDL_image, SDL_mixer (Media framework)\n"
+"##2                     SDL_net (Networking framework)\n"
+"##2                        Guichan (GUI framework)\n"
+"##2                   libxml2 (XML parsing and writing)\n"
+"##2                          PhysFS (Data files)\n"
+"##2                        libcurl (HTTP downloads)\n"
+"##2                            zlib (Archives)"
 msgstr ""
 
 msgid "/friend NICK, /befriend NICK - add nick to friends list."
@@ -1064,7 +1117,7 @@ msgstr ""
 msgid "Sources:"
 msgstr ""
 
-msgid "To type chat message, press ###keyChat;"
+msgid "/emote N - use emotion number N."
 msgstr ""
 
 msgid "Translators"
@@ -1076,7 +1129,10 @@ msgstr ""
 msgid "\"Move to home location\""
 msgstr ""
 
-msgid "Powered By"
+msgid "/sethomunname NAME - set homunculus name."
+msgstr ""
+
+msgid "Website: @@http://manaplus.org/|http://manaplus.org/@@"
 msgstr ""
 
 msgid "\"Skill window\""
@@ -1106,6 +1162,9 @@ msgstr ""
 msgid "\"Quick drop N items from 0 slot\""
 msgstr ""
 
+msgid "/mercenaryfire - fire mercenary."
+msgstr ""
+
 msgid "/disablehighlight - disable highlight in current tab."
 msgstr ""
 
@@ -1115,9 +1174,7 @@ msgstr ""
 msgid "Whispers commands"
 msgstr ""
 
-msgid ""
-"You can see other player equiped items,\n"
-"by right click on player and select in context menu \"Show Items\"."
+msgid "/setpetname NAME - set new pet name."
 msgstr ""
 
 msgid "Whispers"

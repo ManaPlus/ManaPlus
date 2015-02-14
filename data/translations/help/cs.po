@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2014-12-28 22:29+0000\n"
+"PO-Revision-Date: 2015-02-08 11:59+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Czech (http://www.transifex.com/projects/p/manaplus/language/cs/)\n"
 "MIME-Version: 1.0\n"
@@ -16,6 +16,9 @@ msgstr ""
 
 msgid "/uploadserverconfig - upload server config into pastebin service."
 msgstr "/uploadserverconfig - nahrát konfiguraci serveru na pastebin."
+
+msgid "Mercenaries or homunculuses"
+msgstr ""
 
 msgid "/atkhuman - select and attack nearest player."
 msgstr "/atkhuman - zaměř a zaútoč na nejbližšího hráče."
@@ -47,6 +50,9 @@ msgstr "Zpět na obsah"
 
 msgid "\"Quests window\""
 msgstr "\"Okno úkolů\""
+
+msgid "/firehomunculus - fire homunculus."
+msgstr ""
 
 msgid "\"Quick drop window\""
 msgstr "\"Okno rychlého upuštění\""
@@ -206,6 +212,9 @@ msgstr "/msg PŘEZDÍVKA text, /whisper PŘEZDÍVKA text, /w PŘEZDÍVKA text - 
 msgid "/movetotarget - move to target position."
 msgstr "/movetotarget - přesune postavu na cílovou pozici."
 
+msgid "/catchpet - try to catch pet."
+msgstr ""
+
 msgid "/outfit prev - wear previous outfit."
 msgstr "/outfit prev - obleče předchozí výbavu."
 
@@ -292,8 +301,13 @@ msgstr "\"Nastavit směr vlevo\""
 msgid "\"Equipment window\""
 msgstr "\"Okno výbavy\""
 
-msgid "Mana Contributors"
-msgstr "Přispěvatelé Mana"
+msgid ""
+" To add an item to the shortcut bar click on the item in the inventory window,\n"
+" then click on the box in the shortcut-window which should be associated with\n"
+" the item. To reorder items within the shortcut-window simply click and drag\n"
+" them between the boxes. To remove items you simply drag them outside of the\n"
+" window and drop them."
+msgstr " Pro přidání předmětu do lišty zkratek klepněte na předmět v inventářovém okně\n a poté klikněte na slot ve zkratkové liště který jste si vybrali.\n Pro přerovnání předmětů v liště zkratek je jednoduše přetáhněte na dané místo.\n Pro odstranění přetáhněte předmět mimo lištu zkratek."
 
 msgid "/dumpt - dump tests info into chat."
 msgstr "/dumpt - vypíše testy do chatu."
@@ -357,8 +371,8 @@ msgstr "\"Zkratka předmětu 13\""
 msgid "For other servers may exists other copyrights."
 msgstr "Pro jiné servery mohou existovat jiná licenční ujednání."
 
-msgid "\"Outfit shortcut 13\""
-msgstr "\"Zkratka výbavy 13\""
+msgid "\"Change crazy Move mode\""
+msgstr "\"Změnit mód šílených pohybů\""
 
 msgid "/sethome - set home position."
 msgstr "/sethome - nastaví domácí pozici."
@@ -417,6 +431,9 @@ msgid ""
 "You can hide/show bars and buttons by right click and select menu item."
 msgstr "Můžete zobrazit či skrýt pruhy a tlačítka pomocí pravého kliknutí a vybráním dané položky menu."
 
+msgid "/petmoveleft - move pet one tile left."
+msgstr ""
+
 msgid "\"Enable / disable away mode\""
 msgstr "\"Zapnout/Vypnout Away mód\""
 
@@ -449,6 +466,9 @@ msgstr "\"Zkratka smajlíka  4\""
 msgid "\"Close chat tab\""
 msgstr "\"Zavřít záložku chatu\""
 
+msgid "/petdirectright - rorate pet right."
+msgstr ""
+
 msgid "\"Target player\""
 msgstr "\"Zaměřit hráče\""
 
@@ -479,11 +499,17 @@ msgstr "\"Zkratka předmětu  2\""
 msgid "About current server"
 msgstr "O aktuálním serveru"
 
+msgid "/petaistop - disable pet ai."
+msgstr ""
+
 msgid "\"Quick heal target or self\""
 msgstr "\"Rychle uzdravit cíl nebo sebe\""
 
 msgid "Search error"
 msgstr "Chyba hledání"
+
+msgid "/targetpet - target pet."
+msgstr ""
 
 msgid "\"Outfit shortcut 9\""
 msgstr "\"Zkratka výbavy  9\""
@@ -502,8 +528,8 @@ msgstr "##9 Tento soubor obsahuje všecky přispěvatele až do současného vyd
 msgid "\"Chat window\""
 msgstr "\"Chatové okno\""
 
-msgid "\"Change follow mode\""
-msgstr "\"Změnti režim sledování\""
+msgid "/closeall - close all whispers."
+msgstr "/closeall - zavře všechna šeptání."
 
 msgid "\"Previous chat tab\""
 msgstr "\"Předchozí záložka chatu\""
@@ -517,11 +543,8 @@ msgstr "\"Zkratka výbavy  2\""
 msgid "IGNORING COMMUNICATION"
 msgstr "IGNOROVANÍ KOMUNIKACE"
 
-msgid ""
-" - ##2save player list##9: Should your acquaintance list be saved when you\n"
-"   quit the game?  If you enable this option, your list will survive when you\n"
-"   quit and re-start."
-msgstr " - ##2uložit seznam vztahů##9: Má být seznam vašich známostí ukládán při ukončení hry? \n                                       Pokud povolíte toto nastavení, váš seznam přežije ukončení hry a restart."
+msgid "Powered By"
+msgstr "Provozováno"
 
 msgid "Other"
 msgstr "Jiné"
@@ -550,15 +573,8 @@ msgstr "O The Mana World"
 msgid "/serverignoreall - ignore all whispers on server side."
 msgstr "/serverignoreall - ignoruje veškeré šeptání na straně serveru."
 
-msgid ""
-"##2               SDL, SDL_image, SDL_mixer (Media framework)\n"
-"##2                     SDL_net (Networking framework)\n"
-"##2                        Guichan (GUI framework)\n"
-"##2                   libxml2 (XML parsing and writing)\n"
-"##2                          PhysFS (Data files)\n"
-"##2                        libcurl (HTTP downloads)\n"
-"##2                            zlib (Archives)"
-msgstr "##2               SDL, SDL_image, SDL_mixer (Rámec pro média)\n##2                     SDL_net (Síťvý rámec)\n##2                        Guichan (Rámec ovládání)\n##2                   libxml2 (XML čtení a zápis)\n##2                          PhysFS (Datová pole)\n##2                        libcurl (HTTP stahování)\n##2                            zlib (Archivy)"
+msgid "/notice TEXT - set notice guild text."
+msgstr "/notice TEXT - nastaví text upozornění gildy."
 
 msgid "\"Sit\""
 msgstr "\"Posadit se\""
@@ -572,8 +588,8 @@ msgstr "DOVEDNOSTI"
 msgid "Actions"
 msgstr "Akce"
 
-msgid "/emote N - use emotion number N."
-msgstr "/emote N - použije smajlíka číslo N."
+msgid "To type chat message, press ###keyChat;"
+msgstr "Pro napsání zprávy do chatu, zmáčkněte ###keyChat;"
 
 msgid "/item 0 - disable party item sharing options."
 msgstr "/item 0 - zakázat sdílení předmětů v partě."
@@ -606,16 +622,11 @@ msgstr "Můžete skrýt žlutou lištu, zmáčknitím ###keyDisableGameModifiers
 msgid "\"Screenshot\""
 msgstr "\"Snímek obrazovky\""
 
-msgid "/closeall - close all whispers."
-msgstr "/closeall - zavře všechna šeptání."
+msgid "\"Change follow mode\""
+msgstr "\"Změnti režim sledování\""
 
-msgid ""
-" To add an item to the shortcut bar click on the item in the inventory window,\n"
-" then click on the box in the shortcut-window which should be associated with\n"
-" the item. To reorder items within the shortcut-window simply click and drag\n"
-" them between the boxes. To remove items you simply drag them outside of the\n"
-" window and drop them."
-msgstr " Pro přidání předmětu do lišty zkratek klepněte na předmět v inventářovém okně\n a poté klikněte na slot ve zkratkové liště který jste si vybrali.\n Pro přerovnání předmětů v liště zkratek je jednoduše přetáhněte na dané místo.\n Pro odstranění přetáhněte předmět mimo lištu zkratek."
+msgid "Mana Contributors"
+msgstr "Přispěvatelé Mana"
 
 msgid "/query NICK, /q NICK - open new whisper tab for nick."
 msgstr "/query PŘEZDÍVKA, /q PŘEZDÍVKA - otevře novou záložku šeptání pro přezdívku."
@@ -638,6 +649,9 @@ msgstr "\"Zkratka výbavy  6\""
 
 msgid "Visit IRC channel:"
 msgstr "Navštívte IRC kanál:"
+
+msgid "/petdirectup - rotate pet up."
+msgstr ""
 
 msgid "\"Target & attack\""
 msgstr "\"Zaměřit a zútočit\""
@@ -663,8 +677,11 @@ msgstr "\"Zkratka výbavy 10\""
 msgid "\"Crazy moves\""
 msgstr "\"Šílené pohyby\""
 
-msgid "Website: @@http://manaplus.org/|http://manaplus.org/@@"
-msgstr "Webová stránka: @@http://manaplus.org/|http://manaplus.org/@@"
+msgid ""
+" - ##2save player list##9: Should your acquaintance list be saved when you\n"
+"   quit the game?  If you enable this option, your list will survive when you\n"
+"   quit and re-start."
+msgstr " - ##2uložit seznam vztahů##9: Má být seznam vašich známostí ukládán při ukončení hry? \n                                       Pokud povolíte toto nastavení, váš seznam přežije ukončení hry a restart."
 
 msgid "/uptime - show client uptime."
 msgstr "/uptime - zobrazí jak dlouho byl klient spuštěn."
@@ -690,14 +707,23 @@ msgstr "\"Autodoplňování v chatu\""
 msgid "/ignore NICK - add nick to ignore list."
 msgstr "/ignore PŘEZDÍVKA - přídá přezdívku do seznamu ignorovaných."
 
+msgid "/targetmercenary - target closest mercenary."
+msgstr ""
+
 msgid "\"Attack\""
 msgstr "\"Útok\""
 
 msgid "/magicattack - attack target with magic."
 msgstr "/magicattack - zaútočí na cíl magií."
 
+msgid "/petdirectdown - rotate pet down."
+msgstr ""
+
 msgid "For ManaPlus Online support:"
 msgstr "Pro online podporu ManaPlus:"
+
+msgid "/petdirectleft - rotate pet left."
+msgstr ""
 
 msgid "\"Set direction right\""
 msgstr "\"Nastavit směr vpravo\""
@@ -737,6 +763,9 @@ msgstr "pohybová klávesa"
 
 msgid "\"Emote shortcut 5\""
 msgstr "\"Zkratka smajlíka  5\""
+
+msgid "/petmoveright - move pet one tile right."
+msgstr ""
 
 msgid "/open URL - open url in browser."
 msgstr "/open URL - otevře URL v prohlížeči."
@@ -781,8 +810,8 @@ msgstr "/movetohome - přesune na domácí pozici."
 msgid "\"Switch quick drop counter\""
 msgstr "\"Přepni počet rychlého upuštění\""
 
-msgid "\"Change crazy Move mode\""
-msgstr "\"Změnit mód šílených pohybů\""
+msgid "\"Outfit shortcut 13\""
+msgstr "\"Zkratka výbavy 13\""
 
 msgid "\"Outfit shortcut 8\""
 msgstr "\"Zkratka výbavy  8\""
@@ -810,6 +839,9 @@ msgid ""
 "   having the player listed:  the player may chat with you, but may only trade\n"
 "   or whisper if you have this option allowed for everyone."
 msgstr " - ##2neutrální##9:  Tak jak je hra nastavena je toto jako by hráč na seznamu nebyl:  \n                      Hráč s vámi může chatovat, ale obchodovat s vámi a šeptat \n                      vám může jen když to máte dovoleno pro všechny."
+
+msgid "/petaistart - enable pet ai."
+msgstr ""
 
 msgid "/url URL - insert url into chat."
 msgstr "/url URL - vloží url do chatu."
@@ -858,6 +890,12 @@ msgstr "Můžete si vybrat jiná témata.\nPro výběr otevřete nastavení a vy
 
 msgid "\"Emote shortcut 11\""
 msgstr "\"Zkratka smajlíka 11\""
+
+msgid "/petmoveup - move pet one tile up."
+msgstr ""
+
+msgid "Pets"
+msgstr ""
 
 msgid "\"Set direction down\""
 msgstr "\"Nastavit směr dolů\""
@@ -917,6 +955,11 @@ msgstr "nebo nás můžete naštívit na našem IRC kanálu:"
 
 msgid "\"Toggle camera mode\""
 msgstr "\"Přepnout režim kamery\""
+
+msgid ""
+"You can see other player equiped items,\n"
+"by right click on player and select in context menu \"Show Items\"."
+msgstr "Můžete vidět předměty oblečené ostatními hráči,\nklepnutím pravým tlačítkem myši a vybráním kontextového menu \"Zobrazit předměty\"."
 
 msgid "WINDOWS"
 msgstr "OKNA"
@@ -1039,11 +1082,21 @@ msgstr "/uploadlog - nahraje záznamy na pastebin."
 msgid "/leave - leave the party you are in."
 msgstr "/leave - opustíte partu ve které jste."
 
+msgid "/petmovedown - move pet one tile down."
+msgstr ""
+
 msgid "\"Status window\""
 msgstr "\"Statusové okno\""
 
-msgid "/notice TEXT - set notice guild text."
-msgstr "/notice TEXT - nastaví text upozornění gildy."
+msgid ""
+"##2               SDL, SDL_image, SDL_mixer (Media framework)\n"
+"##2                     SDL_net (Networking framework)\n"
+"##2                        Guichan (GUI framework)\n"
+"##2                   libxml2 (XML parsing and writing)\n"
+"##2                          PhysFS (Data files)\n"
+"##2                        libcurl (HTTP downloads)\n"
+"##2                            zlib (Archives)"
+msgstr "##2               SDL, SDL_image, SDL_mixer (Rámec pro média)\n##2                     SDL_net (Síťvý rámec)\n##2                        Guichan (Rámec ovládání)\n##2                   libxml2 (XML čtení a zápis)\n##2                          PhysFS (Datová pole)\n##2                        libcurl (HTTP stahování)\n##2                            zlib (Archivy)"
 
 msgid "/friend NICK, /befriend NICK - add nick to friends list."
 msgstr "/friend PŘEZDÍVKA, /befriend PŘEZDÍVKA - přidá přezdívku do seznamu přátel."
@@ -1066,8 +1119,8 @@ msgstr "Přispěvatelé k vývoji klientu a/nebo serveru."
 msgid "Sources:"
 msgstr "Zdrojový kód:"
 
-msgid "To type chat message, press ###keyChat;"
-msgstr "Pro napsání zprávy do chatu, zmáčkněte ###keyChat;"
+msgid "/emote N - use emotion number N."
+msgstr "/emote N - použije smajlíka číslo N."
 
 msgid "Translators"
 msgstr "Překladatelé"
@@ -1078,8 +1131,11 @@ msgstr "\"Řádek další záložky chatu\""
 msgid "\"Move to home location\""
 msgstr "\"Přejít na domácí místo\""
 
-msgid "Powered By"
-msgstr "Provozováno"
+msgid "/sethomunname NAME - set homunculus name."
+msgstr ""
+
+msgid "Website: @@http://manaplus.org/|http://manaplus.org/@@"
+msgstr "Webová stránka: @@http://manaplus.org/|http://manaplus.org/@@"
 
 msgid "\"Skill window\""
 msgstr "\"Okno dovedností\""
@@ -1108,6 +1164,9 @@ msgstr "/undress PŘEZDÍVKA - odstraní veškeré obleční daného hráče. Po
 msgid "\"Quick drop N items from 0 slot\""
 msgstr "\"Rychle zahoď N předmětů ze slotu 0\""
 
+msgid "/mercenaryfire - fire mercenary."
+msgstr ""
+
 msgid "/disablehighlight - disable highlight in current tab."
 msgstr "/disablehighlight - zakáže zvýrazňování v aktuální záložce."
 
@@ -1117,10 +1176,8 @@ msgstr "\"Zkratka předmětu 15\""
 msgid "Whispers commands"
 msgstr "Příkazy šeptání"
 
-msgid ""
-"You can see other player equiped items,\n"
-"by right click on player and select in context menu \"Show Items\"."
-msgstr "Můžete vidět předměty oblečené ostatními hráči,\nklepnutím pravým tlačítkem myši a vybráním kontextového menu \"Zobrazit předměty\"."
+msgid "/setpetname NAME - set new pet name."
+msgstr ""
 
 msgid "Whispers"
 msgstr "Šeptání"

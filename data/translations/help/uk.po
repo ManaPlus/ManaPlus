@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2014-12-29 18:03+0000\n"
-"Last-Translator: William Lee <v4r@trioptimum.com>\n"
+"PO-Revision-Date: 2015-02-08 11:59+0000\n"
+"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Ukrainian (http://www.transifex.com/projects/p/manaplus/language/uk/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -14,6 +14,9 @@ msgstr ""
 
 msgid "/uploadserverconfig - upload server config into pastebin service."
 msgstr "/uploadserverconfig - завантажити серверну конфігурацію до сервісу pastebin."
+
+msgid "Mercenaries or homunculuses"
+msgstr ""
 
 msgid "/atkhuman - select and attack nearest player."
 msgstr "/atkhuman - вибрати та атакувати найближчого гравця."
@@ -45,6 +48,9 @@ msgstr "До змісту"
 
 msgid "\"Quests window\""
 msgstr "\"Вікно завдань\""
+
+msgid "/firehomunculus - fire homunculus."
+msgstr ""
 
 msgid "\"Quick drop window\""
 msgstr "\"Вікно швидкого кидання речей\""
@@ -204,6 +210,9 @@ msgstr "/msg ГРАВЕЦЬ ТЕКСТ, /whisper ГРАВЕЦЬ ТЕКСТ, /w �
 msgid "/movetotarget - move to target position."
 msgstr "/movetotarget - наблизитися до цілі."
 
+msgid "/catchpet - try to catch pet."
+msgstr ""
+
 msgid "/outfit prev - wear previous outfit."
 msgstr "/outfit prev - вдягнути попереднє швидке спорядження."
 
@@ -290,8 +299,13 @@ msgstr "\"Встановити напрямок ліворуч\""
 msgid "\"Equipment window\""
 msgstr "\"Вікно спорядження\""
 
-msgid "Mana Contributors"
-msgstr "В розробці Mana брали участь"
+msgid ""
+" To add an item to the shortcut bar click on the item in the inventory window,\n"
+" then click on the box in the shortcut-window which should be associated with\n"
+" the item. To reorder items within the shortcut-window simply click and drag\n"
+" them between the boxes. To remove items you simply drag them outside of the\n"
+" window and drop them."
+msgstr " Щоб додати предмет до вікна швидких предметів, виберіть лівим кліком\n предмет в сумці та клікніть потрібний комірок в вікні швидких предметів.\n Предмети у вікні можна міняти місцями перетаскуванням лівим кліком. Для видалення\n предмета з швидкого доступу просто перетягніть його за межі вікна."
 
 msgid "/dumpt - dump tests info into chat."
 msgstr "/dumpt - надати інформацію про тести в чаті."
@@ -355,8 +369,8 @@ msgstr "\"Швидка клавіша предмета 13\""
 msgid "For other servers may exists other copyrights."
 msgstr "Інші сервери можуть мати власні авторські права."
 
-msgid "\"Outfit shortcut 13\""
-msgstr "\"Спорядження 13\""
+msgid "\"Change crazy Move mode\""
+msgstr "\"Зміна режиму божевільних рухів\""
 
 msgid "/sethome - set home position."
 msgstr "/sethome - встановити домашні координати."
@@ -415,6 +429,9 @@ msgid ""
 "You can hide/show bars and buttons by right click and select menu item."
 msgstr "Панелі і кнопки можна показати чи заховати здійснивши правий клік \nта вибравши потрібний елемент в контекстному меню."
 
+msgid "/petmoveleft - move pet one tile left."
+msgstr ""
+
 msgid "\"Enable / disable away mode\""
 msgstr "\"Увімкнення / вимкнення режиму відсутності (AFK)\""
 
@@ -447,6 +464,9 @@ msgstr "\"Смайлик 4\""
 msgid "\"Close chat tab\""
 msgstr "\"Закрити вкладку чату\""
 
+msgid "/petdirectright - rorate pet right."
+msgstr ""
+
 msgid "\"Target player\""
 msgstr "\"Вибрати гравця\""
 
@@ -477,11 +497,17 @@ msgstr "\"Швидка клавіша предмета 2\""
 msgid "About current server"
 msgstr "Про поточний сервер"
 
+msgid "/petaistop - disable pet ai."
+msgstr ""
+
 msgid "\"Quick heal target or self\""
 msgstr "\"Швидке лікування себе чи цілі\""
 
 msgid "Search error"
 msgstr "Помилка пошуку"
+
+msgid "/targetpet - target pet."
+msgstr ""
 
 msgid "\"Outfit shortcut 9\""
 msgstr "\"Спорядження 9\""
@@ -500,8 +526,8 @@ msgstr "##9 Цей файл відображає всіх учасників р�
 msgid "\"Chat window\""
 msgstr "\"Вікно балачок\""
 
-msgid "\"Change follow mode\""
-msgstr "\"Змінити режим слідування\""
+msgid "/closeall - close all whispers."
+msgstr "/closeall - закрити всі вкладки приватних повідомлень."
 
 msgid "\"Previous chat tab\""
 msgstr "\"Попередня вкладка балачки\""
@@ -515,11 +541,8 @@ msgstr "\"Спорядження 2\""
 msgid "IGNORING COMMUNICATION"
 msgstr "ІГНОРУВАННЯ"
 
-msgid ""
-" - ##2save player list##9: Should your acquaintance list be saved when you\n"
-"   quit the game?  If you enable this option, your list will survive when you\n"
-"   quit and re-start."
-msgstr " - ##2зберегти список гравців##9: означає чи будуть ваші відносини з гравцями\n   збережені при виході з гри (та застосовані наступного разу)."
+msgid "Powered By"
+msgstr "Зроблено за допомогою"
 
 msgid "Other"
 msgstr "Інше"
@@ -548,15 +571,8 @@ msgstr "Про Світ Мани"
 msgid "/serverignoreall - ignore all whispers on server side."
 msgstr "/serverignoreall - ігнорувати всі приватні повідомлення на боці серверу."
 
-msgid ""
-"##2               SDL, SDL_image, SDL_mixer (Media framework)\n"
-"##2                     SDL_net (Networking framework)\n"
-"##2                        Guichan (GUI framework)\n"
-"##2                   libxml2 (XML parsing and writing)\n"
-"##2                          PhysFS (Data files)\n"
-"##2                        libcurl (HTTP downloads)\n"
-"##2                            zlib (Archives)"
-msgstr "##2 SDL, SDL_image, SDL_mixer (Медіа фреймворк)\n##2 SDL_net (Мережевий фреймворк)\n##2 Guichan (Графичний фреймворк)\n##2 libxml2 (XML розбір і запис)\n##2 PhysFS (Файли даних)\n##2 libcurl (HTTP завантаження)\n##2 zlib (Архіви)"
+msgid "/notice TEXT - set notice guild text."
+msgstr "/notice ТЕКСТ - встановити текст повідомлення гільдії."
 
 msgid "\"Sit\""
 msgstr "\"Присісти й відпочити\""
@@ -570,8 +586,8 @@ msgstr "ВМІННЯ"
 msgid "Actions"
 msgstr "Дії"
 
-msgid "/emote N - use emotion number N."
-msgstr "/emote N - вжити смайлик N."
+msgid "To type chat message, press ###keyChat;"
+msgstr "Для введення повідомлень в чат, натисніть ###keyChat;"
 
 msgid "/item 0 - disable party item sharing options."
 msgstr "/item 0 - зберігати власника дропів для членів групи."
@@ -604,16 +620,11 @@ msgstr "Ви можете відключити жовтий рядок\nнати
 msgid "\"Screenshot\""
 msgstr "\"Знімок екрану\""
 
-msgid "/closeall - close all whispers."
-msgstr "/closeall - закрити всі вкладки приватних повідомлень."
+msgid "\"Change follow mode\""
+msgstr "\"Змінити режим слідування\""
 
-msgid ""
-" To add an item to the shortcut bar click on the item in the inventory window,\n"
-" then click on the box in the shortcut-window which should be associated with\n"
-" the item. To reorder items within the shortcut-window simply click and drag\n"
-" them between the boxes. To remove items you simply drag them outside of the\n"
-" window and drop them."
-msgstr " Щоб додати предмет до вікна швидких предметів, виберіть лівим кліком\n предмет в сумці та клікніть потрібний комірок в вікні швидких предметів.\n Предмети у вікні можна міняти місцями перетаскуванням лівим кліком. Для видалення\n предмета з швидкого доступу просто перетягніть його за межі вікна."
+msgid "Mana Contributors"
+msgstr "В розробці Mana брали участь"
 
 msgid "/query NICK, /q NICK - open new whisper tab for nick."
 msgstr "/query ГРАВЕЦЬ, /q ГРАВЕЦЬ - створює вкладку для приватної розмови з іншим користувачем."
@@ -636,6 +647,9 @@ msgstr "\"Спорядження 6\""
 
 msgid "Visit IRC channel:"
 msgstr "Відвідати IRC канал:"
+
+msgid "/petdirectup - rotate pet up."
+msgstr ""
 
 msgid "\"Target & attack\""
 msgstr "\"Приціл і атака\""
@@ -661,8 +675,11 @@ msgstr "\"Спорядження 10\""
 msgid "\"Crazy moves\""
 msgstr "\"Божевільні рухи\""
 
-msgid "Website: @@http://manaplus.org/|http://manaplus.org/@@"
-msgstr "Інтернет сайт: @@http://manaplus.org/|http://manaplus.org/@@"
+msgid ""
+" - ##2save player list##9: Should your acquaintance list be saved when you\n"
+"   quit the game?  If you enable this option, your list will survive when you\n"
+"   quit and re-start."
+msgstr " - ##2зберегти список гравців##9: означає чи будуть ваші відносини з гравцями\n   збережені при виході з гри (та застосовані наступного разу)."
 
 msgid "/uptime - show client uptime."
 msgstr "/uptime - показати час роботи клієнта."
@@ -688,14 +705,23 @@ msgstr "\"Автодоповнення в чаті\""
 msgid "/ignore NICK - add nick to ignore list."
 msgstr "/ignore ГРАВЕЦЬ - додати гравця в список ігнорування."
 
+msgid "/targetmercenary - target closest mercenary."
+msgstr ""
+
 msgid "\"Attack\""
 msgstr "\"Атака\""
 
 msgid "/magicattack - attack target with magic."
 msgstr "/magicattack - атакувати ціль за допомогою магії."
 
+msgid "/petdirectdown - rotate pet down."
+msgstr ""
+
 msgid "For ManaPlus Online support:"
 msgstr "Підтримка ManaPlus Online:"
+
+msgid "/petdirectleft - rotate pet left."
+msgstr ""
 
 msgid "\"Set direction right\""
 msgstr "\"Встановити напрямок праворуч\""
@@ -735,6 +761,9 @@ msgstr "клавіша руху"
 
 msgid "\"Emote shortcut 5\""
 msgstr "\"Смайлик 5\""
+
+msgid "/petmoveright - move pet one tile right."
+msgstr ""
 
 msgid "/open URL - open url in browser."
 msgstr "/open URL - відкрити URL у браузері."
@@ -779,8 +808,8 @@ msgstr "/movetohome - подорожувати додому :)."
 msgid "\"Switch quick drop counter\""
 msgstr "\"Перемикання лічильника швидкого кидання\""
 
-msgid "\"Change crazy Move mode\""
-msgstr "\"Зміна режиму божевільних рухів\""
+msgid "\"Outfit shortcut 13\""
+msgstr "\"Спорядження 13\""
 
 msgid "\"Outfit shortcut 8\""
 msgstr "\"Спорядження 8\""
@@ -808,6 +837,9 @@ msgid ""
 "   having the player listed:  the player may chat with you, but may only trade\n"
 "   or whisper if you have this option allowed for everyone."
 msgstr " - ##2нейтральний##9: те ж саме, що не мати певних стосунків взагалі. Можливість\n   торгувати та писати приватні повідомлення контролюється загальними дозволами."
+
+msgid "/petaistart - enable pet ai."
+msgstr ""
 
 msgid "/url URL - insert url into chat."
 msgstr "/url URL - додати URL у чат."
@@ -856,6 +888,12 @@ msgstr "Ви можете вибрати іншу тему інтерфейсу.
 
 msgid "\"Emote shortcut 11\""
 msgstr "\"Смайлик 11\""
+
+msgid "/petmoveup - move pet one tile up."
+msgstr ""
+
+msgid "Pets"
+msgstr ""
 
 msgid "\"Set direction down\""
 msgstr "\"Встановити напрямок донизу\""
@@ -915,6 +953,11 @@ msgstr "або завітайте до нашого IRC каналу:"
 
 msgid "\"Toggle camera mode\""
 msgstr "\"Перемикання режиму камери\""
+
+msgid ""
+"You can see other player equiped items,\n"
+"by right click on player and select in context menu \"Show Items\"."
+msgstr "Ви можете бачити обладунки інших гравців; для цього зробіть по гравцю\nправий клік та оберіть \"Показати спорядження\"."
 
 msgid "WINDOWS"
 msgstr "ВІКНА"
@@ -1037,11 +1080,21 @@ msgstr "/uploadlog - завантажити лог в сервіс pastebin."
 msgid "/leave - leave the party you are in."
 msgstr "/leave - залишити групу."
 
+msgid "/petmovedown - move pet one tile down."
+msgstr ""
+
 msgid "\"Status window\""
 msgstr "\"Вікно стану\""
 
-msgid "/notice TEXT - set notice guild text."
-msgstr "/notice ТЕКСТ - встановити текст повідомлення гільдії."
+msgid ""
+"##2               SDL, SDL_image, SDL_mixer (Media framework)\n"
+"##2                     SDL_net (Networking framework)\n"
+"##2                        Guichan (GUI framework)\n"
+"##2                   libxml2 (XML parsing and writing)\n"
+"##2                          PhysFS (Data files)\n"
+"##2                        libcurl (HTTP downloads)\n"
+"##2                            zlib (Archives)"
+msgstr "##2 SDL, SDL_image, SDL_mixer (Медіа фреймворк)\n##2 SDL_net (Мережевий фреймворк)\n##2 Guichan (Графичний фреймворк)\n##2 libxml2 (XML розбір і запис)\n##2 PhysFS (Файли даних)\n##2 libcurl (HTTP завантаження)\n##2 zlib (Архіви)"
 
 msgid "/friend NICK, /befriend NICK - add nick to friends list."
 msgstr "/friend ГРАВЕЦЬ, /befriend ГРАВЕЦЬ - приятелювати з гравцем."
@@ -1064,8 +1117,8 @@ msgstr "В розробці клиєнтської/серверної части
 msgid "Sources:"
 msgstr "Тексти програм:"
 
-msgid "To type chat message, press ###keyChat;"
-msgstr "Для введення повідомлень в чат, натисніть ###keyChat;"
+msgid "/emote N - use emotion number N."
+msgstr "/emote N - вжити смайлик N."
 
 msgid "Translators"
 msgstr "Перекладачі"
@@ -1076,8 +1129,11 @@ msgstr "\"Наступний рядок вкладки чату\""
 msgid "\"Move to home location\""
 msgstr "\"Рухатись до домашньої локації\""
 
-msgid "Powered By"
-msgstr "Зроблено за допомогою"
+msgid "/sethomunname NAME - set homunculus name."
+msgstr ""
+
+msgid "Website: @@http://manaplus.org/|http://manaplus.org/@@"
+msgstr "Інтернет сайт: @@http://manaplus.org/|http://manaplus.org/@@"
 
 msgid "\"Skill window\""
 msgstr "\"Вікно вмінь\""
@@ -1106,6 +1162,9 @@ msgstr "/undress ГРАВЕЦЬ - зняти весь одяг з гравця. 
 msgid "\"Quick drop N items from 0 slot\""
 msgstr "\"Швидке кидання N предметів з 0 комірця\""
 
+msgid "/mercenaryfire - fire mercenary."
+msgstr ""
+
 msgid "/disablehighlight - disable highlight in current tab."
 msgstr "/disablehighlight - вимкнути підсвічування активної вкладки."
 
@@ -1115,10 +1174,8 @@ msgstr "\"Швидка клавіша предмета 15\""
 msgid "Whispers commands"
 msgstr "Команди у вкладках приватних повідомлень"
 
-msgid ""
-"You can see other player equiped items,\n"
-"by right click on player and select in context menu \"Show Items\"."
-msgstr "Ви можете бачити обладунки інших гравців; для цього зробіть по гравцю\nправий клік та оберіть \"Показати спорядження\"."
+msgid "/setpetname NAME - set new pet name."
+msgstr ""
 
 msgid "Whispers"
 msgstr "Приватні повідомлення (шепіт, whisper)"

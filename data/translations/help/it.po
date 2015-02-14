@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2014-12-28 22:29+0000\n"
+"PO-Revision-Date: 2015-02-08 11:59+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/manaplus/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -19,6 +19,9 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "/uploadserverconfig - upload server config into pastebin service."
+msgstr ""
+
+msgid "Mercenaries or homunculuses"
 msgstr ""
 
 msgid "/atkhuman - select and attack nearest player."
@@ -50,6 +53,9 @@ msgid "Back to Index"
 msgstr "Torna all'Indice"
 
 msgid "\"Quests window\""
+msgstr ""
+
+msgid "/firehomunculus - fire homunculus."
 msgstr ""
 
 msgid "\"Quick drop window\""
@@ -210,6 +216,9 @@ msgstr "/msg NICK text, /whisper NICK text, /w NICK text - manda un Whisper al p
 msgid "/movetotarget - move to target position."
 msgstr ""
 
+msgid "/catchpet - try to catch pet."
+msgstr ""
+
 msgid "/outfit prev - wear previous outfit."
 msgstr "/outfit prev - equipaggia combinazione precedente."
 
@@ -296,8 +305,13 @@ msgstr ""
 msgid "\"Equipment window\""
 msgstr ""
 
-msgid "Mana Contributors"
-msgstr "Collaboratori Mana"
+msgid ""
+" To add an item to the shortcut bar click on the item in the inventory window,\n"
+" then click on the box in the shortcut-window which should be associated with\n"
+" the item. To reorder items within the shortcut-window simply click and drag\n"
+" them between the boxes. To remove items you simply drag them outside of the\n"
+" window and drop them."
+msgstr " Per aggiungere un oggetto ad una Barra Veloce clicca su di esso nella finestra dell'Inventario,\n poi clicca sullo slot della finestra delle Scorciatoie.\nPer riordinare gli oggetti della Barra Veloce clicca e tieni premuto\nl'oggetto durante lo spostamento. Per rimuovere gli oggetti spostarli semplicemente fuori dalla\nfinestra."
 
 msgid "/dumpt - dump tests info into chat."
 msgstr ""
@@ -361,7 +375,7 @@ msgstr ""
 msgid "For other servers may exists other copyrights."
 msgstr ""
 
-msgid "\"Outfit shortcut 13\""
+msgid "\"Change crazy Move mode\""
 msgstr ""
 
 msgid "/sethome - set home position."
@@ -421,6 +435,9 @@ msgid ""
 "You can hide/show bars and buttons by right click and select menu item."
 msgstr "Puoi nascondere/mostrare barre e bottoni cliccando col tasto destro su di essi e selezionando l'apposita voce dal menù."
 
+msgid "/petmoveleft - move pet one tile left."
+msgstr ""
+
 msgid "\"Enable / disable away mode\""
 msgstr ""
 
@@ -453,6 +470,9 @@ msgstr ""
 msgid "\"Close chat tab\""
 msgstr ""
 
+msgid "/petdirectright - rorate pet right."
+msgstr ""
+
 msgid "\"Target player\""
 msgstr ""
 
@@ -483,11 +503,17 @@ msgstr ""
 msgid "About current server"
 msgstr ""
 
+msgid "/petaistop - disable pet ai."
+msgstr ""
+
 msgid "\"Quick heal target or self\""
 msgstr ""
 
 msgid "Search error"
 msgstr "Errore di ricerca"
+
+msgid "/targetpet - target pet."
+msgstr ""
 
 msgid "\"Outfit shortcut 9\""
 msgstr ""
@@ -506,8 +532,8 @@ msgstr ""
 msgid "\"Chat window\""
 msgstr ""
 
-msgid "\"Change follow mode\""
-msgstr ""
+msgid "/closeall - close all whispers."
+msgstr "/closeall - chiude tutte le finestre dei Whispers."
 
 msgid "\"Previous chat tab\""
 msgstr ""
@@ -521,11 +547,8 @@ msgstr ""
 msgid "IGNORING COMMUNICATION"
 msgstr "IGNORA COMUNICAZIONI"
 
-msgid ""
-" - ##2save player list##9: Should your acquaintance list be saved when you\n"
-"   quit the game?  If you enable this option, your list will survive when you\n"
-"   quit and re-start."
-msgstr ""
+msgid "Powered By"
+msgstr "Powered by"
 
 msgid "Other"
 msgstr ""
@@ -554,15 +577,8 @@ msgstr ""
 msgid "/serverignoreall - ignore all whispers on server side."
 msgstr "/serverignoreall - ignora tutti i Whispers (server-side)."
 
-msgid ""
-"##2               SDL, SDL_image, SDL_mixer (Media framework)\n"
-"##2                     SDL_net (Networking framework)\n"
-"##2                        Guichan (GUI framework)\n"
-"##2                   libxml2 (XML parsing and writing)\n"
-"##2                          PhysFS (Data files)\n"
-"##2                        libcurl (HTTP downloads)\n"
-"##2                            zlib (Archives)"
-msgstr "##2               SDL, SDL_image, SDL_mixer (Media framework)\n##2                     SDL_net (Networking framework)\n##2                        Guichan (GUI framework)\n##2                   libxml2 (XML parsing and writing)\n##2                          PhysFS (Data files)\n##2                        libcurl (HTTP downloads)\n##2                            zlib (Archives)"
+msgid "/notice TEXT - set notice guild text."
+msgstr ""
 
 msgid "\"Sit\""
 msgstr ""
@@ -576,8 +592,8 @@ msgstr "ABILITA'"
 msgid "Actions"
 msgstr "Azioni"
 
-msgid "/emote N - use emotion number N."
-msgstr "/emote N - usa l'Emote numero N."
+msgid "To type chat message, press ###keyChat;"
+msgstr ""
 
 msgid "/item 0 - disable party item sharing options."
 msgstr ""
@@ -610,16 +626,11 @@ msgstr ""
 msgid "\"Screenshot\""
 msgstr ""
 
-msgid "/closeall - close all whispers."
-msgstr "/closeall - chiude tutte le finestre dei Whispers."
+msgid "\"Change follow mode\""
+msgstr ""
 
-msgid ""
-" To add an item to the shortcut bar click on the item in the inventory window,\n"
-" then click on the box in the shortcut-window which should be associated with\n"
-" the item. To reorder items within the shortcut-window simply click and drag\n"
-" them between the boxes. To remove items you simply drag them outside of the\n"
-" window and drop them."
-msgstr " Per aggiungere un oggetto ad una Barra Veloce clicca su di esso nella finestra dell'Inventario,\n poi clicca sullo slot della finestra delle Scorciatoie.\nPer riordinare gli oggetti della Barra Veloce clicca e tieni premuto\nl'oggetto durante lo spostamento. Per rimuovere gli oggetti spostarli semplicemente fuori dalla\nfinestra."
+msgid "Mana Contributors"
+msgstr "Collaboratori Mana"
 
 msgid "/query NICK, /q NICK - open new whisper tab for nick."
 msgstr "/query NICK, /q NICK - apre un nuovo Whisper Tab."
@@ -642,6 +653,9 @@ msgstr ""
 
 msgid "Visit IRC channel:"
 msgstr "Visita il canale IRC:"
+
+msgid "/petdirectup - rotate pet up."
+msgstr ""
 
 msgid "\"Target & attack\""
 msgstr ""
@@ -667,7 +681,10 @@ msgstr ""
 msgid "\"Crazy moves\""
 msgstr ""
 
-msgid "Website: @@http://manaplus.org/|http://manaplus.org/@@"
+msgid ""
+" - ##2save player list##9: Should your acquaintance list be saved when you\n"
+"   quit the game?  If you enable this option, your list will survive when you\n"
+"   quit and re-start."
 msgstr ""
 
 msgid "/uptime - show client uptime."
@@ -694,13 +711,22 @@ msgstr ""
 msgid "/ignore NICK - add nick to ignore list."
 msgstr "/ignore NICK - aggiungi personaggio alla lista Ignora."
 
+msgid "/targetmercenary - target closest mercenary."
+msgstr ""
+
 msgid "\"Attack\""
 msgstr ""
 
 msgid "/magicattack - attack target with magic."
 msgstr ""
 
+msgid "/petdirectdown - rotate pet down."
+msgstr ""
+
 msgid "For ManaPlus Online support:"
+msgstr ""
+
+msgid "/petdirectleft - rotate pet left."
 msgstr ""
 
 msgid "\"Set direction right\""
@@ -740,6 +766,9 @@ msgid "move key"
 msgstr ""
 
 msgid "\"Emote shortcut 5\""
+msgstr ""
+
+msgid "/petmoveright - move pet one tile right."
 msgstr ""
 
 msgid "/open URL - open url in browser."
@@ -785,7 +814,7 @@ msgstr ""
 msgid "\"Switch quick drop counter\""
 msgstr ""
 
-msgid "\"Change crazy Move mode\""
+msgid "\"Outfit shortcut 13\""
 msgstr ""
 
 msgid "\"Outfit shortcut 8\""
@@ -813,6 +842,9 @@ msgid ""
 " - ##2neutral##9:  As far as the game is concerned, this is the same as not\n"
 "   having the player listed:  the player may chat with you, but may only trade\n"
 "   or whisper if you have this option allowed for everyone."
+msgstr ""
+
+msgid "/petaistart - enable pet ai."
 msgstr ""
 
 msgid "/url URL - insert url into chat."
@@ -861,6 +893,12 @@ msgid ""
 msgstr ""
 
 msgid "\"Emote shortcut 11\""
+msgstr ""
+
+msgid "/petmoveup - move pet one tile up."
+msgstr ""
+
+msgid "Pets"
 msgstr ""
 
 msgid "\"Set direction down\""
@@ -921,6 +959,11 @@ msgstr ""
 
 msgid "\"Toggle camera mode\""
 msgstr ""
+
+msgid ""
+"You can see other player equiped items,\n"
+"by right click on player and select in context menu \"Show Items\"."
+msgstr "Puoi vedere l'equipaggiamento di altri giocatori,\ncliccando col tasto destro sul personaggio e selezionando la voce \"Mostra Oggetti\" dal menù contestuale."
 
 msgid "WINDOWS"
 msgstr "WINDOWS"
@@ -1043,11 +1086,21 @@ msgstr ""
 msgid "/leave - leave the party you are in."
 msgstr ""
 
+msgid "/petmovedown - move pet one tile down."
+msgstr ""
+
 msgid "\"Status window\""
 msgstr ""
 
-msgid "/notice TEXT - set notice guild text."
-msgstr ""
+msgid ""
+"##2               SDL, SDL_image, SDL_mixer (Media framework)\n"
+"##2                     SDL_net (Networking framework)\n"
+"##2                        Guichan (GUI framework)\n"
+"##2                   libxml2 (XML parsing and writing)\n"
+"##2                          PhysFS (Data files)\n"
+"##2                        libcurl (HTTP downloads)\n"
+"##2                            zlib (Archives)"
+msgstr "##2               SDL, SDL_image, SDL_mixer (Media framework)\n##2                     SDL_net (Networking framework)\n##2                        Guichan (GUI framework)\n##2                   libxml2 (XML parsing and writing)\n##2                          PhysFS (Data files)\n##2                        libcurl (HTTP downloads)\n##2                            zlib (Archives)"
 
 msgid "/friend NICK, /befriend NICK - add nick to friends list."
 msgstr "/friend NICK, /befriend NICK - aggiungi personaggio alla lista Amici."
@@ -1070,8 +1123,8 @@ msgstr "Collaboratori Client/Server"
 msgid "Sources:"
 msgstr ""
 
-msgid "To type chat message, press ###keyChat;"
-msgstr ""
+msgid "/emote N - use emotion number N."
+msgstr "/emote N - usa l'Emote numero N."
 
 msgid "Translators"
 msgstr "Traduttori"
@@ -1082,8 +1135,11 @@ msgstr ""
 msgid "\"Move to home location\""
 msgstr ""
 
-msgid "Powered By"
-msgstr "Powered by"
+msgid "/sethomunname NAME - set homunculus name."
+msgstr ""
+
+msgid "Website: @@http://manaplus.org/|http://manaplus.org/@@"
+msgstr ""
 
 msgid "\"Skill window\""
 msgstr ""
@@ -1112,6 +1168,9 @@ msgstr "/undress NICK - rimuove tutti i vestiti dal personaggio scelto. Funziona
 msgid "\"Quick drop N items from 0 slot\""
 msgstr ""
 
+msgid "/mercenaryfire - fire mercenary."
+msgstr ""
+
 msgid "/disablehighlight - disable highlight in current tab."
 msgstr ""
 
@@ -1121,10 +1180,8 @@ msgstr ""
 msgid "Whispers commands"
 msgstr "Comandi Whisper"
 
-msgid ""
-"You can see other player equiped items,\n"
-"by right click on player and select in context menu \"Show Items\"."
-msgstr "Puoi vedere l'equipaggiamento di altri giocatori,\ncliccando col tasto destro sul personaggio e selezionando la voce \"Mostra Oggetti\" dal menù contestuale."
+msgid "/setpetname NAME - set new pet name."
+msgstr ""
 
 msgid "Whispers"
 msgstr "Whispers"
