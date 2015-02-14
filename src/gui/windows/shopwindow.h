@@ -26,6 +26,7 @@
 #include "gui/widgets/window.h"
 
 #include "listeners/actionlistener.h"
+#include "listeners/buyingstoreslotslistener.h"
 #include "listeners/selectionlistener.h"
 #include "listeners/vendingmodelistener.h"
 #include "listeners/vendingslotslistener.h"
@@ -48,7 +49,8 @@ class ShopWindow final : public Window,
                          public ActionListener,
                          public SelectionListener,
                          public VendingModeListener,
-                         public VendingSlotsListener
+                         public VendingSlotsListener,
+                         public BuyingStoreSlotsListener
 {
     public:
         enum ShopMode
@@ -143,6 +145,8 @@ class ShopWindow final : public Window,
 
         void vendingSlotsChanged(const int slots) override final;
 
+        void buyingStoreSlotsChanged(const int slots) override final;
+
         void vendingEnabled(const bool b) override final;
 
         void setShopName(const std::string &name);
@@ -184,6 +188,7 @@ class ShopWindow final : public Window,
         int mRandCounter;
         int mTradeMoney;
         int mSellShopSize;
+        int mBuyShopSize;
         bool isBuySelected;
         bool mHaveVending;
         bool mEnableVending;

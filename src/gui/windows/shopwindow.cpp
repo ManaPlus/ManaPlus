@@ -88,6 +88,7 @@ ShopWindow::ShopWindow() :
     SelectionListener(),
     VendingModeListener(),
     VendingSlotsListener(),
+    BuyingStoreSlotsListener(),
     // TRANSLATORS: shop window button
     mCloseButton(new Button(this, _("Close"), "close", this)),
     mBuyShopItems(new ShopItems),
@@ -117,6 +118,7 @@ ShopWindow::ShopWindow() :
     mRandCounter(0),
     mTradeMoney(0),
     mSellShopSize(0),
+    mBuyShopSize(0),
     isBuySelected(true),
     mHaveVending(serverFeatures->haveVending()),
     mEnableVending(false)
@@ -412,7 +414,10 @@ void ShopWindow::updateButtonsAndLabels()
         {
             mPublishButton->setCaption(_("Publish"));
             mPublishButton->adjustSize();
-            mPublishButton->setEnabled(true);
+            if (mBuyShopSize > 0)
+                mPublishButton->setEnabled(true);
+            else
+                mPublishButton->setEnabled(false);
         }
     }
     else
@@ -428,8 +433,7 @@ void ShopWindow::updateButtonsAndLabels()
             else
                 mPublishButton->setCaption(_("Publish"));
             mPublishButton->adjustSize();
-            if (!isBuySelected
-                && sellNotEmpty
+            if (sellNotEmpty
                 && mSellShopSize > 0
                 && localPlayer
                 && localPlayer->getHaveCart())
@@ -1052,4 +1056,10 @@ void ShopWindow::setShopName(const std::string &name)
     mSellShopName = name;
     serverConfig.setValue("sellShopName", mSellShopName);
     updateShopName();
+}
+
+void ShopWindow::buyingStoreSlotsChanged(const int slots)
+{
+    mBuyShopSize = slots;
+    updateButtonsAndLabels();
 }

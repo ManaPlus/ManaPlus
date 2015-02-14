@@ -25,6 +25,8 @@
 
 #include "being/being.h"
 
+#include "listeners/buyingstoreslotslistener.h"
+
 #include "net/ea/eaprotocol.h"
 
 #include "net/eathena/messageout.h"
@@ -111,8 +113,7 @@ void BuyingStoreHandler::handleMessage(Net::MessageIn &msg)
 
 void BuyingStoreHandler::processBuyingStoreOpen(Net::MessageIn &msg)
 {
-    // +++ need create store dialog
-    msg.readUInt8("slots");
+    BuyingStoreSlotsListener::distributeEvent(msg.readUInt8("slots"));
 }
 
 void BuyingStoreHandler::processBuyingStoreCreateFailed(Net::MessageIn &msg)

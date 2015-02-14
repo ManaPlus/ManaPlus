@@ -822,6 +822,8 @@ SET(SRCS
     listeners/banklistener.cpp
     listeners/banklistener.h
     listeners/baselistener.hpp
+    listeners/buyingstoreslotslistener.cpp
+    listeners/buyingstoreslotslistener.h
     listeners/charrenamelistener.cpp
     listeners/charrenamelistener.h
     actormanager.cpp
