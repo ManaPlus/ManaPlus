@@ -121,11 +121,11 @@ void BuyingStoreHandler::processBuyingStoreCreateFailed(Net::MessageIn &msg)
     const int weight = msg.readInt32("weight");
     switch (result)
     {
-        case 0:
+        case 1:
         default:
             NotifyManager::notify(NotifyTypes::BUYING_STORE_CREATE_FAILED);
             break;
-        case 1:
+        case 2:
             NotifyManager::notify(
                 NotifyTypes::BUYING_STORE_CREATE_FAILED_WEIGHT,
                 weight);
@@ -240,6 +240,7 @@ void BuyingStoreHandler::create(const std::string &name,
                                 std::vector<ShopItem*> &items) const
 {
     createOutPacket(CMSG_BUYINGSTORE_CREATE);
+    outMsg.writeInt16(89 + items.size() * 8, "len");
     outMsg.writeInt32(maxMoney, "limit money");
     outMsg.writeInt8(flag, "flag");
     outMsg.writeString(name, 80, "store name");
