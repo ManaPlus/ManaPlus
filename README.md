@@ -2,7 +2,7 @@
 
 ![The Mana World logo](data/icons/manaplus.png)
 
-Version: 1.5.1.31        Date: 2015-01-31
+Version: 1.5.2.14        Date: 2015-02-14
 
 ###Development team:
  - See [AUTHORS](AUTHORS) file for a list

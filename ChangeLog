@@ -1,3 +1,12 @@
+2015-02-14 New release 1.5.2.14
+fix: camera position if npc dialog was closed by server script command closedialog.
+fix: make file for android.
+fix: storing player relations if switch servers.
+fix: storing attack mobs / pickups filter if switch server.
+fix: weight bar in inventory and cart window.
+add: personal sell shops support (hercules).
+add: improve skill error messages.
+
 2015-01-31 New release 1.5.1.31
 fix: mixed chat lines with colors and emotes.
 fix: follow (hercules)
