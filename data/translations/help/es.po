@@ -1,5 +1,6 @@
 # en#
 # Translators:
+# 0x0Eddine <salahbubuli44@gmail.com>, 2012
 # Maria <mtorres2022@gmail.com>, 2012
 # Maria <mtorres2022@gmail.com>, 2012
 # 0x0Eddine <salahbubuli44@gmail.com>, 2012
@@ -9,8 +10,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2015-02-12 10:50+0000\n"
-"Last-Translator: Nelson Martell <nelson6e65-manaplus@yahoo.es>\n"
+"PO-Revision-Date: 2015-02-14 14:31+0000\n"
+"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/manaplus/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1181,7 +1182,7 @@ msgid "Whispers commands"
 msgstr "Comandos de susurros"
 
 msgid "/setpetname NAME - set new pet name."
-msgstr "/setpetname NOMBRE - establecer el nombre de la mascota"
+msgstr "/setpetname NOMBRE - establecer el nombre de la mascota."
 
 msgid "Whispers"
 msgstr "Susurros"
