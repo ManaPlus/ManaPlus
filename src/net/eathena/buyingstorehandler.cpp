@@ -261,6 +261,7 @@ void BuyingStoreHandler::create(const std::string &name,
 void BuyingStoreHandler::close() const
 {
     createOutPacket(CMSG_BUYINGSTORE_CLOSE);
+    PlayerInfo::enableVending(false);
 }
 
 void BuyingStoreHandler::open(const Being *const being) const

@@ -286,13 +286,21 @@ void ShopWindow::action(const ActionEvent &event)
     {
         if (isBuySelected)
         {
-            std::vector<ShopItem*> &items = mBuyShopItems->items();
-            if (!items.empty())
+            if (mEnableBuyingStore)
             {
-                buyingStoreHandler->create(mSellShopName,
-                    PlayerInfo::getAttribute(Attributes::MONEY),
-                    true,
-                    items);
+                buyingStoreHandler->close();
+                BuyingStoreModeListener::distributeEvent(false);
+            }
+            else
+            {
+                std::vector<ShopItem*> &items = mBuyShopItems->items();
+                if (!items.empty())
+                {
+                    buyingStoreHandler->create(mSellShopName,
+                        PlayerInfo::getAttribute(Attributes::MONEY),
+                        true,
+                        items);
+                }
             }
         }
         else
@@ -414,7 +422,10 @@ void ShopWindow::updateButtonsAndLabels()
             && mBuyShopItems->getNumberOfElements() > 0;
         if (mPublishButton)
         {
-            mPublishButton->setCaption(_("Publish"));
+            if (mEnableBuyingStore)
+                mPublishButton->setCaption(_("Unpublish"));
+            else
+                mPublishButton->setCaption(_("Publish"));
             mPublishButton->adjustSize();
             if (mBuyShopSize > 0)
                 mPublishButton->setEnabled(true);
