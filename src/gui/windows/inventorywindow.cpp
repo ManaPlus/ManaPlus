@@ -677,7 +677,9 @@ void InventoryWindow::mouseMoved(MouseEvent &event)
             textPopup->hide();
             return;
         }
-        textPopup->show(x + rect.x, y + rect.y, btn->getDescription());
+        const std::string text = btn->getDescription();
+        if (!text.empty())
+            textPopup->show(x + rect.x, y + rect.y, text);
     }
 }
 
