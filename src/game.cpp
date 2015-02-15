@@ -186,8 +186,11 @@ static void createGuiWindows()
     inventoryWindow = new InventoryWindow(PlayerInfo::getInventory());
     inventoryWindow->postInit();
 #ifdef EATHENA_SUPPORT
-    cartWindow = new InventoryWindow(PlayerInfo::getCartInventory());
-    cartWindow->postInit();
+    if (serverFeatures->haveCart())
+    {
+        cartWindow = new InventoryWindow(PlayerInfo::getCartInventory());
+        cartWindow->postInit();
+    }
 #endif
     shopWindow = new ShopWindow;
     shopWindow->postInit();

@@ -415,7 +415,7 @@ void InventoryWindow::action(const ActionEvent &event)
                 this, item);
         }
 #ifdef EATHENA_SUPPORT
-        else if (cartWindow)
+        else if (cartWindow && cartWindow->isWindowVisible())
         {
             ItemAmountWindow::showWindow(ItemAmountWindow::CartAdd,
                 this, item);
@@ -462,7 +462,7 @@ void InventoryWindow::action(const ActionEvent &event)
                 InventoryType::STORAGE);
         }
 #ifdef EATHENA_SUPPORT
-        else if (cartWindow)
+        else if (cartWindow && cartWindow->isWindowVisible())
         {
             inventoryHandler->moveItem2(InventoryType::INVENTORY,
                 item->getInvIndex(), item->getQuantity(),
@@ -499,7 +499,7 @@ void InventoryWindow::action(const ActionEvent &event)
                 this, item);
         }
 #ifdef EATHENA_SUPPORT
-        else if (cartWindow)
+        else if (cartWindow && cartWindow->isWindowVisible())
         {
             ItemAmountWindow::showWindow(ItemAmountWindow::CartRemove,
                 this, item);
@@ -851,7 +851,7 @@ void InventoryWindow::updateDropButton()
         return;
 
 #ifdef EATHENA_SUPPORT
-    if (isStorageActive() || cartWindow)
+    if (isStorageActive() || (cartWindow && cartWindow->isWindowVisible()))
 #else
     if (isStorageActive())
 #endif

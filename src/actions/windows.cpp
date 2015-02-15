@@ -279,6 +279,7 @@ impHandler0(bankWindowShow)
 
 impHandler0(cartWindowShow)
 {
+#ifdef EATHENA_SUPPORT
     if (!serverFeatures->haveCart()
         || !localPlayer
         || !localPlayer->getHaveCart())
@@ -286,10 +287,14 @@ impHandler0(cartWindowShow)
         return false;
     }
 
-#ifdef EATHENA_SUPPORT
     showHideWindow(cartWindow);
-#endif
+    if (inventoryWindow)
+        inventoryWindow->updateDropButton();
     return true;
+#else
+    return false;
+#endif
+
 }
 
 impHandler0(updaterWindowShow)
