@@ -21,12 +21,17 @@
 #include "net/eathena/buyingstorehandler.h"
 
 #include "actormanager.h"
+#include "inventory.h"
 #include "notifymanager.h"
 #include "shopitem.h"
 
 #include "being/being.h"
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
+
+#include "enums/being/attributes.h"
+
+#include "gui/windows/buyingstoreselldialog.h"
 
 #include "listeners/buyingstoremodelistener.h"
 #include "listeners/buyingstoreslotslistener.h"
@@ -182,15 +187,33 @@ void BuyingStoreHandler::processBuyingStoreHideBoard(Net::MessageIn &msg)
 void BuyingStoreHandler::processBuyingStoreItemsList(Net::MessageIn &msg)
 {
     const int count = (msg.readInt16("len") - 16) / 9;
-    msg.readInt32("account id");
-    msg.readInt32("store id");
+    const int id = msg.readInt32("account id");
+    const int storeId = msg.readInt32("store id");
+    // +++ in future need use it too
     msg.readInt32("money limit");
+
+    Being *const dstBeing = actorManager->findBeing(id);
+    if (!dstBeing)
+        return;
+
+    SellDialog *const dialog = new BuyingStoreSellDialog(
+        dstBeing->getId(),
+        storeId);
+    dialog->postInit();
+    dialog->setMoney(PlayerInfo::getAttribute(Attributes::MONEY));
+    Inventory *const inv = PlayerInfo::getInventory();
     for (int f = 0; f < count; f ++)
     {
-        msg.readInt32("price");
-        msg.readInt16("amount");
-        msg.readUInt8("item type");
-        msg.readInt16("item id");
+        const int price = msg.readInt32("price");
+        const int amount = msg.readInt16("amount");
+        const int itemType = msg.readUInt8("item type");
+        const int itemId = msg.readInt16("item id");
+
+        const Item *const item = inv->findItem(itemId, 1);
+        if (!item)
+            continue;
+        // +++ need add colors support
+        dialog->addItem(itemId, itemType, 1, amount, price);
     }
 }
 

@@ -332,6 +332,8 @@ SET(SRCS
     gui/popups/createpartypopup.h
     gui/windows/buydialog.cpp
     gui/windows/buydialog.h
+    gui/windows/buyingstoreselldialog.cpp
+    gui/windows/buyingstoreselldialog.h
     gui/windows/buyselldialog.cpp
     gui/windows/buyselldialog.h
     gui/windows/changeemaildialog.cpp

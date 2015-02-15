@@ -71,6 +71,7 @@
 
 #include "net/adminhandler.h"
 #include "net/beinghandler.h"
+#include "net/buyingstorehandler.h"
 #include "net/buysellhandler.h"
 #include "net/chathandler.h"
 #include "net/download.h"
@@ -638,7 +639,7 @@ impHandler(sell)
 {
     const std::string args = event.args;
     Being *being = findBeing(args);
-    if (!being)
+    if (!being && !serverFeatures->haveVending())
     {
         const std::set<std::string> &players = whoIsOnline->getOnlineNicks();
         if (players.find(args) != players.end())
@@ -656,7 +657,10 @@ impHandler(sell)
     }
     else if (being->getType() == ActorType::Player)
     {
-        buySellHandler->requestBuyList(being->getName());
+        if (serverFeatures->haveVending())
+            buyingStoreHandler->open(being);
+        else
+            buySellHandler->requestBuyList(being->getName());
         return true;
     }
     return false;
