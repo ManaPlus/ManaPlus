@@ -33,6 +33,7 @@
 
 #include "gui/windows/buyingstoreselldialog.h"
 
+#include "listeners/arrowslistener.h"
 #include "listeners/buyingstoremodelistener.h"
 #include "listeners/buyingstoreslotslistener.h"
 
@@ -270,9 +271,23 @@ void BuyingStoreHandler::processBuyingStoreReport(Net::MessageIn &msg)
 
 void BuyingStoreHandler::processBuyingStoreDeleteItem(Net::MessageIn &msg)
 {
-    msg.readInt16("item index");
-    msg.readInt16("amount");
+    Inventory *const inventory = localPlayer
+        ? PlayerInfo::getInventory() : nullptr;
+
+    const int index = msg.readInt16("index") - INVENTORY_OFFSET;
+    const int amount = msg.readInt16("amount");
     msg.readInt32("price");
+
+    if (inventory)
+    {
+        if (Item *const item = inventory->getItem(index))
+        {
+            item->increaseQuantity(-amount);
+            if (item->getQuantity() == 0)
+                inventory->removeItemAt(index);
+            ArrowsListener::distributeEvent();
+        }
+    }
 }
 
 void BuyingStoreHandler::create(const std::string &name,
