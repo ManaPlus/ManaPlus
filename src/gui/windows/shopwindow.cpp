@@ -355,7 +355,7 @@ void ShopWindow::action(const ActionEvent &event)
         return;
 
 #ifdef EATHENA_SUPPORT
-    const Inventory *const inv = mHaveVending
+    const Inventory *const inv = mHaveVending && !isBuySelected
         ? PlayerInfo::getCartInventory() : PlayerInfo::getInventory();
 #else
     const Inventory *const inv = PlayerInfo::getInventory();
