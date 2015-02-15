@@ -44,7 +44,7 @@ BeingPopup::BeingPopup() :
     mBeingGuild(new Label(this, "A")),
     mBeingRank(new Label(this, "A")),
     mBeingComment(new Label(this, "A")),
-    mBeingBoard(new Label(this, "A"))
+    mBeingSellBoard(new Label(this, "A"))
 {
     // Being Name
     mBeingName->setFont(boldFont);
@@ -58,7 +58,7 @@ BeingPopup::BeingPopup() :
     // Being's party
     mBeingGuild->setPosition(0, 2 * fontHeight);
     mBeingRank->setPosition(0, 3 * fontHeight);
-    mBeingBoard->setPosition(0, 4 * fontHeight);
+    mBeingSellBoard->setPosition(0, 4 * fontHeight);
     mBeingComment->setPosition(0, 5 * fontHeight);
 
     mBeingParty->setForegroundColorAll(getThemeColor(Theme::POPUP),
@@ -67,7 +67,7 @@ BeingPopup::BeingPopup() :
         getThemeColor(Theme::POPUP_OUTLINE));
     mBeingRank->setForegroundColorAll(getThemeColor(Theme::POPUP),
         getThemeColor(Theme::POPUP_OUTLINE));
-    mBeingBoard->setForegroundColorAll(getThemeColor(Theme::POPUP),
+    mBeingSellBoard->setForegroundColorAll(getThemeColor(Theme::POPUP),
         getThemeColor(Theme::POPUP_OUTLINE));
     mBeingComment->setForegroundColorAll(getThemeColor(Theme::POPUP),
         getThemeColor(Theme::POPUP_OUTLINE));
@@ -84,7 +84,7 @@ void BeingPopup::postInit()
     add(mBeingGuild);
     add(mBeingRank);
     add(mBeingComment);
-    add(mBeingBoard);
+    add(mBeingSellBoard);
 }
 
 void BeingPopup::show(const int x, const int y, Being *const b)
@@ -98,7 +98,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
     Label *label1 = mBeingParty;
     Label *label2 = mBeingGuild;
     Label *label3 = mBeingRank;
-    Label *label4 = mBeingBoard;
+    Label *label4 = mBeingSellBoard;
     Label *label5 = mBeingComment;
 
     b->updateComment();
@@ -180,11 +180,11 @@ void BeingPopup::show(const int x, const int y, Being *const b)
         label3 = nullptr;
     }
 
-    if (!b->getBoard().empty())
+    if (!b->getSellBoard().empty())
     {
         // TRANSLATORS: being popup label
-        label4->setCaption(strprintf(_("Shop: %s"),
-            b->getBoard().c_str()));
+        label4->setCaption(strprintf(_("Sell shop: %s"),
+            b->getSellBoard().c_str()));
         label4->adjustSize();
     }
     else

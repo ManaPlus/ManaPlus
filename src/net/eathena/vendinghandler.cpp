@@ -114,7 +114,7 @@ void VendingHandler::processShowBoard(Net::MessageIn &msg)
     const std::string shopName = msg.readString(80, "shop name");
     Being *const dstBeing = actorManager->findBeing(id);
     if (dstBeing)
-        dstBeing->setBoard(shopName);
+        dstBeing->setSellBoard(shopName);
 }
 
 void VendingHandler::processHideBoard(Net::MessageIn &msg)
@@ -122,7 +122,7 @@ void VendingHandler::processHideBoard(Net::MessageIn &msg)
     const int id = msg.readInt32("owner id");
     Being *const dstBeing = actorManager->findBeing(id);
     if (dstBeing)
-        dstBeing->setBoard(std::string());
+        dstBeing->setSellBoard(std::string());
     if (dstBeing == localPlayer)
     {
         PlayerInfo::enableVending(false);

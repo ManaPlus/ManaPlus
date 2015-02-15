@@ -913,10 +913,10 @@ class Being notfinal : public ActorSprite,
         void setAreaSize(const int areaSize)
         { mAreaSize = areaSize; }
 
-        void setBoard(const std::string &text);
+        void setSellBoard(const std::string &text);
 
-        std::string getBoard() const A_WARN_UNUSED
-        { return mBoard; }
+        std::string getSellBoard() const A_WARN_UNUSED
+        { return mSellBoard; }
 
     protected:
         /**
@@ -1033,7 +1033,7 @@ class Being notfinal : public ActorSprite,
         int *mSpriteHide;
         int *mSpriteDraw;
         std::string mComment;
-        std::string mBoard;
+        std::string mSellBoard;
         std::vector<Being*> mPets;
         Being *mOwner;
         Particle *mSpecialParticle;
