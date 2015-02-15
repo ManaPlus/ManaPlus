@@ -175,6 +175,7 @@ Being::Being(const int id,
     mSpriteHide(new int[20]),
     mSpriteDraw(new int[20]),
     mComment(),
+    mBuyBoard(),
     mSellBoard(),
     mPets(),
     mOwner(nullptr),
@@ -3533,8 +3534,15 @@ void Being::setChat(ChatObject *const obj)
 
 void Being::setSellBoard(const std::string &text)
 {
-    mShop = !text.empty();
+    mShop = !text.empty() || !mBuyBoard.empty();
     mSellBoard = text;
+    updateName();
+}
+
+void Being::setBuyBoard(const std::string &text)
+{
+    mShop = !text.empty() || !mSellBoard.empty();
+    mBuyBoard = text;
     updateName();
 }
 

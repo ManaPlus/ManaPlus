@@ -918,6 +918,11 @@ class Being notfinal : public ActorSprite,
         std::string getSellBoard() const A_WARN_UNUSED
         { return mSellBoard; }
 
+        void setBuyBoard(const std::string &text);
+
+        std::string getBuyBoard() const A_WARN_UNUSED
+        { return mBuyBoard; }
+
     protected:
         /**
          * Updates name's location.
@@ -1033,6 +1038,7 @@ class Being notfinal : public ActorSprite,
         int *mSpriteHide;
         int *mSpriteDraw;
         std::string mComment;
+        std::string mBuyBoard;
         std::string mSellBoard;
         std::vector<Being*> mPets;
         Being *mOwner;

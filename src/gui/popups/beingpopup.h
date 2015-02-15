@@ -62,6 +62,7 @@ class BeingPopup final : public Popup
         Label *mBeingGuild;
         Label *mBeingRank;
         Label *mBeingComment;
+        Label *mBeingBuyBoard;
         Label *mBeingSellBoard;
 };
 
