@@ -310,19 +310,20 @@ void BuyingStoreHandler::open(const Being *const being) const
 
 void BuyingStoreHandler::sell(const Being *const being,
                               const int storeId,
-                              const int index,
-                              const int itemId,
+                              const Item *const item,
                               const int amount) const
 {
     if (!being)
         return;
 
     createOutPacket(CMSG_BUYINGSTORE_SELL);
-    outMsg.writeInt16(16, "len");
+    outMsg.writeInt16(18, "len");
     outMsg.writeInt32(being->getId(), "account id");
     outMsg.writeInt32(storeId, "store id");
-    outMsg.writeInt16(static_cast<int16_t>(index), "index");
-    outMsg.writeInt16(static_cast<int16_t>(itemId), "item id");
+    outMsg.writeInt16(static_cast<int16_t>(
+        item->getInvIndex() + INVENTORY_OFFSET),
+        "index");
+    outMsg.writeInt16(static_cast<int16_t>(item->getId()), "item id");
     outMsg.writeInt16(static_cast<int16_t>(amount), "amount");
 }
 

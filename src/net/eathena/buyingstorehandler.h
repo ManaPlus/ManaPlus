@@ -48,8 +48,7 @@ class BuyingStoreHandler final : public MessageHandler,
 
         void sell(const Being *const being,
                   const int storeId,
-                  const int index,
-                  const int itemId,
+                  const Item *const item,
                   const int amount) const override final;
 
     protected:

@@ -59,8 +59,7 @@ void BuyingStoreHandler::open(const Being *const being A_UNUSED) const
 
 void BuyingStoreHandler::sell(const Being *const being A_UNUSED,
                               const int storeId A_UNUSED,
-                              const int index A_UNUSED,
-                              const int itemId A_UNUSED,
+                              const Item *const item A_UNUSED,
                               const int amount A_UNUSED) const
 {
 }

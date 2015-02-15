@@ -27,6 +27,7 @@
 #include "localconsts.h"
 
 class Being;
+class Item;
 class ShopItem;
 
 namespace Net
@@ -49,8 +50,7 @@ class BuyingStoreHandler notfinal
 
         virtual void sell(const Being *const being,
                           const int storeId,
-                          const int index,
-                          const int itemId,
+                          const Item *const item,
                           const int amount) const = 0;
 };
 

@@ -22,6 +22,8 @@
 
 #include "gui/windows/buyingstoreselldialog.h"
 
+#include "actormanager.h"
+#include "inventory.h"
 #include "shopitem.h"
 
 #include "being/being.h"
@@ -45,4 +47,23 @@ BuyingStoreSellDialog::BuyingStoreSellDialog(const int accountId,
 
 void BuyingStoreSellDialog::sellAction(const ActionEvent &event A_UNUSED)
 {
+    if (mAmountItems <= 0 || mAmountItems > mMaxItems)
+        return;
+
+    const int selectedItem = mShopItemList->getSelected();
+    ShopItem *const item1 = mShopItems->at(selectedItem);
+    if (!item1 || PlayerInfo::isItemProtected(item1->getId()))
+        return;
+    Being *const being = actorManager->findBeing(mAccountId);
+    if (!being)
+        return;
+    // +++ need add colors
+    Item *const item2 = PlayerInfo::getInventory()->findItem(
+        item1->getId(), 1);
+    if (!item2)
+        return;
+
+    mPlayerMoney += mAmountItems * item1->getPrice();
+    mMaxItems -= mAmountItems;
+    buyingStoreHandler->sell(being, mStoreId, item2, mAmountItems);
 }
