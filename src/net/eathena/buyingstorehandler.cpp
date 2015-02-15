@@ -20,10 +20,12 @@
 
 #include "net/eathena/buyingstorehandler.h"
 
+#include "actormanager.h"
 #include "notifymanager.h"
 #include "shopitem.h"
 
 #include "being/being.h"
+#include "being/localplayer.h"
 #include "being/playerinfo.h"
 
 #include "listeners/buyingstoremodelistener.h"
@@ -157,13 +159,24 @@ void BuyingStoreHandler::processBuyingStoreOwnItems(Net::MessageIn &msg)
 
 void BuyingStoreHandler::processBuyingStoreShowBoard(Net::MessageIn &msg)
 {
-    msg.readInt32("account id");
-    msg.readString(80, "board name");
+    const int id = msg.readInt32("owner id");
+    const std::string shopName = msg.readString(80, "shop name");
+    Being *const dstBeing = actorManager->findBeing(id);
+    if (dstBeing)
+        dstBeing->setBuyBoard(shopName);
 }
 
 void BuyingStoreHandler::processBuyingStoreHideBoard(Net::MessageIn &msg)
 {
-    msg.readInt32("account id");
+    const int id = msg.readInt32("owner id");
+    Being *const dstBeing = actorManager->findBeing(id);
+    if (dstBeing)
+        dstBeing->setBuyBoard(std::string());
+    if (dstBeing == localPlayer)
+    {
+        PlayerInfo::enableVending(false);
+        BuyingStoreModeListener::distributeEvent(false);
+    }
 }
 
 void BuyingStoreHandler::processBuyingStoreItemsList(Net::MessageIn &msg)
