@@ -417,8 +417,9 @@ void ShopWindow::updateButtonsAndLabels()
     const bool sellNotEmpty = mSellShopItems->getNumberOfElements() > 0;
     if (isBuySelected)
     {
-        allowAdd = !mEnableVending;
-        allowDel = mBuyShopItemList->getSelected() != -1
+        allowAdd = !mEnableBuyingStore;
+        allowDel = !mEnableBuyingStore
+            && mBuyShopItemList->getSelected() != -1
             && mBuyShopItems->getNumberOfElements() > 0;
         if (mPublishButton)
         {
