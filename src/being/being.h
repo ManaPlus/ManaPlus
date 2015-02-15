@@ -761,8 +761,9 @@ class Being notfinal : public ActorSprite,
         void setAdvanced(const bool n)
         { mAdvanced = n; addToCache(); }
 
-        bool isShopEnabled() const A_WARN_UNUSED
-        { return mShop; }
+        bool isBuyShopEnabled() const A_WARN_UNUSED;
+
+        bool isSellShopEnabled() const A_WARN_UNUSED;
 
         void enableShop(const bool b);
 

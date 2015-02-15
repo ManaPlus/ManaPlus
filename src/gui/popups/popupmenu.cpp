@@ -2366,20 +2366,27 @@ void PopupMenu::addBuySell(const Being *const being)
     if (player_relations.getDefault() & PlayerRelation::TRADE)
     {
         mBrowserBox->addRow("##3---");
-        if (being->isShopEnabled())
+        const bool haveVending = serverFeatures->haveVending();
+        if (being->isSellShopEnabled())
         {
             // TRANSLATORS: popup menu item
             // TRANSLATORS: buy item
             mBrowserBox->addRow("/buy 'NAME'", _("Buy"));
-            // TRANSLATORS: popup menu item
-            // TRANSLATORS: sell item
-            mBrowserBox->addRow("/sell 'NAME'", _("Sell"));
         }
-        else
+        else if (!haveVending)
         {
             // TRANSLATORS: popup menu item
             // TRANSLATORS: buy item
             mBrowserBox->addRow("/buy 'NAME'", _("Buy (?)"));
+        }
+        if (being->isBuyShopEnabled())
+        {
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: sell item
+            mBrowserBox->addRow("/sell 'NAME'", _("Sell"));
+        }
+        else if (!haveVending)
+        {
             // TRANSLATORS: popup menu item
             // TRANSLATORS: sell item
             mBrowserBox->addRow("/sell 'NAME'", _("Sell (?)"));

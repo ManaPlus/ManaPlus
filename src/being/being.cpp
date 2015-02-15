@@ -3551,3 +3551,13 @@ void Being::enableShop(const bool b)
     mShop = b;
     updateName();
 }
+
+bool Being::isBuyShopEnabled() const
+{
+    return mShop && (!serverFeatures->haveVending() || !mBuyBoard.empty());
+}
+
+bool Being::isSellShopEnabled() const
+{
+    return mShop && (!serverFeatures->haveVending() || !mSellBoard.empty());
+}
