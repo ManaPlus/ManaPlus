@@ -601,4 +601,83 @@ void ChatHandler::processWhisperContinue(const std::string &nick,
     BLOCK_END("ChatHandler::processWhisper")
 }
 
+void ChatHandler::processBeingChat(Net::MessageIn &msg)
+{
+    if (!actorManager)
+        return;
+
+    BLOCK_START("ChatHandler::processBeingChat")
+    const bool channels = msg.getId() == SMSG_BEING_CHAT2;
+    int chatMsgLength = msg.readInt16("len") - 8;
+    Being *const being = actorManager->findBeing(msg.readInt32("being id"));
+    if (!being)
+    {
+        BLOCK_END("ChatHandler::processBeingChat")
+        return;
+    }
+
+    std::string channel;
+    if (channels)
+    {
+        chatMsgLength -= 3;
+        channel = msg.readUInt8("channel byte 0");
+        channel += msg.readUInt8("channel byte 1");
+        channel += msg.readUInt8("channel byte 2");
+    }
+
+    if (chatMsgLength <= 0)
+    {
+        BLOCK_END("ChatHandler::processBeingChat")
+        return;
+    }
+
+    std::string chatMsg = msg.readRawString(chatMsgLength, "message");
+
+    if (being->getType() == ActorType::Player)
+        being->setTalkTime();
+
+    const size_t pos = chatMsg.find(" : ", 0);
+    std::string sender_name = ((pos == std::string::npos)
+        ? "" : chatMsg.substr(0, pos));
+
+    if (serverFeatures->haveIncompleteChatMessages())
+    {
+        // work around for "new" tmw server
+        sender_name = being->getName();
+        if (sender_name.empty())
+            sender_name = "?";
+    }
+    else if (sender_name != being->getName()
+             && being->getType() == ActorType::Player)
+    {
+        if (!being->getName().empty())
+            sender_name = being->getName();
+    }
+    else
+    {
+        chatMsg.erase(0, pos + 3);
+    }
+
+    trim(chatMsg);
+
+    bool allow(true);
+    // We use getIgnorePlayer instead of ignoringPlayer here
+    // because ignorePlayer' side effects are triggered
+    // right below for Being::IGNORE_SPEECH_FLOAT.
+    if (player_relations.checkPermissionSilently(sender_name,
+        PlayerRelation::SPEECH_LOG) && chatWindow)
+    {
+        allow = chatWindow->resortChatLog(
+            removeColors(sender_name).append(" : ").append(chatMsg),
+            ChatMsgType::BY_OTHER, channel, false, true);
+    }
+
+    if (allow && player_relations.hasPermission(sender_name,
+        PlayerRelation::SPEECH_FLOAT))
+    {
+        being->setSpeech(chatMsg, channel);
+    }
+    BLOCK_END("ChatHandler::processBeingChat")
+}
+
 }  // namespace TmwAthena
