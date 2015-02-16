@@ -84,14 +84,14 @@ ShopWindow::DialogList ShopWindow::instances;
 ShopWindow::ShopWindow() :
     // TRANSLATORS: shop window name
     Window(_("Personal Shop"), false, nullptr, "shop.xml"),
-    ActionListener(),
-    SelectionListener(),
     VendingModeListener(),
     VendingSlotsListener(),
 #ifdef EATHENA_SUPPORT
     BuyingStoreModeListener(),
-#endif
     BuyingStoreSlotsListener(),
+#endif
+    ActionListener(),
+    SelectionListener(),
     // TRANSLATORS: shop window button
     mCloseButton(new Button(this, _("Close"), "close", this)),
     mBuyShopItems(new ShopItems),
@@ -1074,13 +1074,13 @@ void ShopWindow::setShopName(const std::string &name)
     updateShopName();
 }
 
+#ifdef EATHENA_SUPPORT
 void ShopWindow::buyingStoreSlotsChanged(const int slots)
 {
     mBuyShopSize = slots;
     updateButtonsAndLabels();
 }
 
-#ifdef EATHENA_SUPPORT
 void ShopWindow::buyingStoreEnabled(const bool b)
 {
     mEnableBuyingStore = b;

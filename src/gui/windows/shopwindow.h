@@ -47,14 +47,14 @@ class TabStrip;
  * \ingroup Interface
  */
 class ShopWindow final : public Window,
-                         public ActionListener,
-                         public SelectionListener,
                          public VendingModeListener,
                          public VendingSlotsListener,
 #ifdef EATHENA_SUPPORT
                          public BuyingStoreModeListener,
+                         public BuyingStoreSlotsListener,
 #endif
-                         public BuyingStoreSlotsListener
+                         public ActionListener,
+                         public SelectionListener
 {
     public:
         enum ShopMode
@@ -149,12 +149,12 @@ class ShopWindow final : public Window,
 
         void vendingSlotsChanged(const int slots) override final;
 
-        void buyingStoreSlotsChanged(const int slots) override final;
-
         void vendingEnabled(const bool b) override final;
 
 #ifdef EATHENA_SUPPORT
         void buyingStoreEnabled(const bool b) override final;
+
+        void buyingStoreSlotsChanged(const int slots) override final;
 #endif
 
         void setShopName(const std::string &name);
