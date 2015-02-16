@@ -88,7 +88,9 @@ ShopWindow::ShopWindow() :
     SelectionListener(),
     VendingModeListener(),
     VendingSlotsListener(),
+#ifdef EATHENA_SUPPORT
     BuyingStoreModeListener(),
+#endif
     BuyingStoreSlotsListener(),
     // TRANSLATORS: shop window button
     mCloseButton(new Button(this, _("Close"), "close", this)),
@@ -1078,6 +1080,7 @@ void ShopWindow::buyingStoreSlotsChanged(const int slots)
     updateButtonsAndLabels();
 }
 
+#ifdef EATHENA_SUPPORT
 void ShopWindow::buyingStoreEnabled(const bool b)
 {
     mEnableBuyingStore = b;
@@ -1086,3 +1089,4 @@ void ShopWindow::buyingStoreEnabled(const bool b)
         mBuyShopSize = 0;
     updateButtonsAndLabels();
 }
+#endif

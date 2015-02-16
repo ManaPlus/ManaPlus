@@ -51,7 +51,9 @@ class ShopWindow final : public Window,
                          public SelectionListener,
                          public VendingModeListener,
                          public VendingSlotsListener,
+#ifdef EATHENA_SUPPORT
                          public BuyingStoreModeListener,
+#endif
                          public BuyingStoreSlotsListener
 {
     public:
@@ -151,7 +153,9 @@ class ShopWindow final : public Window,
 
         void vendingEnabled(const bool b) override final;
 
+#ifdef EATHENA_SUPPORT
         void buyingStoreEnabled(const bool b) override final;
+#endif
 
         void setShopName(const std::string &name);
 

@@ -941,8 +941,6 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      listeners/awaylistener.cpp \
 	      listeners/awaylistener.h \
 	      listeners/baselistener.hpp \
-	      listeners/buyingstoremodelistener.cpp \
-	      listeners/buyingstoremodelistener.h \
 	      listeners/buyingstoreslotslistener.cpp \
 	      listeners/buyingstoreslotslistener.h \
 	      listeners/charrenamelistener.cpp \
@@ -1350,6 +1348,8 @@ manaplus_SOURCES += gui/windows/bankwindow.cpp \
 	      gui/windows/eggselectiondialog.h \
 	      listeners/banklistener.cpp \
 	      listeners/banklistener.h \
+	      listeners/buyingstoremodelistener.cpp \
+	      listeners/buyingstoremodelistener.h \
 	      net/eathena/adminhandler.cpp \
 	      net/eathena/adminhandler.h \
 	      net/eathena/auctionhandler.cpp \
