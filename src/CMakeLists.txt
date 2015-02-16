@@ -1116,8 +1116,6 @@ SET(SRCS
     enums/events/mouseeventtype.h
     listeners/mouselistener.h
     listeners/openurllistener.h
-    listeners/pincodelistener.cpp
-    listeners/pincodelistener.h
     listeners/playerdeathlistener.cpp
     listeners/playerdeathlistener.h
     listeners/playerpostdeathlistener.h
@@ -1414,6 +1412,8 @@ SET(SRCS_EATHENA
     listeners/buyingstoremodelistener.h
     listeners/buyingstoreslotslistener.cpp
     listeners/buyingstoreslotslistener.h
+    listeners/pincodelistener.cpp
+    listeners/pincodelistener.h
     net/eathena/adminhandler.cpp
     net/eathena/adminhandler.h
     net/eathena/auctionhandler.cpp

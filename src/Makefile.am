@@ -204,8 +204,6 @@ manaplus_SOURCES += events/actionevent.h \
 	      enums/events/mouseeventtype.h \
 	      listeners/mouselistener.h \
 	      listeners/openurllistener.h \
-	      listeners/pincodelistener.cpp \
-	      listeners/pincodelistener.h \
 	      listeners/playerdeathlistener.cpp \
 	      listeners/playerdeathlistener.h \
 	      listeners/playerpostdeathlistener.h \
@@ -1350,6 +1348,8 @@ manaplus_SOURCES += gui/windows/bankwindow.cpp \
 	      listeners/buyingstoremodelistener.h \
 	      listeners/buyingstoreslotslistener.cpp \
 	      listeners/buyingstoreslotslistener.h \
+	      listeners/pincodelistener.cpp \
+	      listeners/pincodelistener.h \
 	      net/eathena/adminhandler.cpp \
 	      net/eathena/adminhandler.h \
 	      net/eathena/auctionhandler.cpp \

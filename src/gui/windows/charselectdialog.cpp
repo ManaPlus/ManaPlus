@@ -186,6 +186,7 @@ void CharSelectDialog::postInit()
 {
     setVisible(true);
     requestFocus();
+#ifdef EATHENA_SUPPORT
     if (charServerHandler->isNeedCreatePin())
     {
         EditDialog *const dialog = new EditDialog(
@@ -193,6 +194,7 @@ void CharSelectDialog::postInit()
         dialog->postInit();
         dialog->addActionListener(&pincodeListener);
     }
+#endif
 }
 
 void CharSelectDialog::action(const ActionEvent &event)

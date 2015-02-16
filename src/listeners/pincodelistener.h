@@ -21,6 +21,8 @@
 #ifndef LISTENERS_PINCODELISTENER_H
 #define LISTENERS_PINCODELISTENER_H
 
+#ifdef EATHENA_SUPPORT
+
 #include "listeners/actionlistener.h"
 
 #include "localconsts.h"
@@ -33,4 +35,5 @@ class PincodeListener final : public ActionListener
 
 extern PincodeListener pincodeListener;
 
+#endif  // EATHENA_SUPPORT
 #endif  // LISTENERS_PINCODELISTENER_H
