@@ -47,9 +47,9 @@ class TabStrip;
  * \ingroup Interface
  */
 class ShopWindow final : public Window,
-                         public VendingModeListener,
                          public VendingSlotsListener,
 #ifdef EATHENA_SUPPORT
+                         public VendingModeListener,
                          public BuyingStoreModeListener,
                          public BuyingStoreSlotsListener,
 #endif
@@ -149,9 +149,9 @@ class ShopWindow final : public Window,
 
         void vendingSlotsChanged(const int slots) override final;
 
+#ifdef EATHENA_SUPPORT
         void vendingEnabled(const bool b) override final;
 
-#ifdef EATHENA_SUPPORT
         void buyingStoreEnabled(const bool b) override final;
 
         void buyingStoreSlotsChanged(const int slots) override final;

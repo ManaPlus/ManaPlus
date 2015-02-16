@@ -84,9 +84,9 @@ ShopWindow::DialogList ShopWindow::instances;
 ShopWindow::ShopWindow() :
     // TRANSLATORS: shop window name
     Window(_("Personal Shop"), false, nullptr, "shop.xml"),
-    VendingModeListener(),
     VendingSlotsListener(),
 #ifdef EATHENA_SUPPORT
+    VendingModeListener(),
     BuyingStoreModeListener(),
     BuyingStoreSlotsListener(),
 #endif
@@ -1044,15 +1044,6 @@ void ShopWindow::vendingSlotsChanged(const int slots)
     updateButtonsAndLabels();
 }
 
-void ShopWindow::vendingEnabled(const bool b)
-{
-    mEnableVending = b;
-    localPlayer->enableShop(b);
-    if (!b)
-        mSellShopSize = 0;
-    updateButtonsAndLabels();
-}
-
 void ShopWindow::updateShopName()
 {
     if (mSellShopName.empty())
@@ -1075,6 +1066,15 @@ void ShopWindow::setShopName(const std::string &name)
 }
 
 #ifdef EATHENA_SUPPORT
+void ShopWindow::vendingEnabled(const bool b)
+{
+    mEnableVending = b;
+    localPlayer->enableShop(b);
+    if (!b)
+        mSellShopSize = 0;
+    updateButtonsAndLabels();
+}
+
 void ShopWindow::buyingStoreSlotsChanged(const int slots)
 {
     mBuyShopSize = slots;
