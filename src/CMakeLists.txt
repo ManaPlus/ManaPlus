@@ -811,8 +811,6 @@ SET(SRCS
     listeners/attributelistener.h
     listeners/awaylistener.cpp
     listeners/awaylistener.h
-    listeners/banklistener.cpp
-    listeners/banklistener.h
     listeners/baselistener.hpp
     listeners/buyingstoremodelistener.cpp
     listeners/buyingstoremodelistener.h
@@ -1414,6 +1412,8 @@ SET(SRCS_EATHENA
     gui/windows/buyingstoreselldialog.h
     gui/windows/eggselectiondialog.cpp
     gui/windows/eggselectiondialog.h
+    listeners/banklistener.cpp
+    listeners/banklistener.h
     net/eathena/adminhandler.cpp
     net/eathena/adminhandler.h
     net/eathena/auctionhandler.cpp
