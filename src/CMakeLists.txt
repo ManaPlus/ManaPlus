@@ -1124,8 +1124,6 @@ SET(SRCS
     gui/rect.h
     events/selectionevent.h
     listeners/selectionlistener.h
-    listeners/shoprenamelistener.cpp
-    listeners/shoprenamelistener.h
     listeners/statlistener.cpp
     listeners/statlistener.h
     listeners/tablemodellistener.h
@@ -1414,6 +1412,8 @@ SET(SRCS_EATHENA
     listeners/buyingstoreslotslistener.h
     listeners/pincodelistener.cpp
     listeners/pincodelistener.h
+    listeners/shoprenamelistener.cpp
+    listeners/shoprenamelistener.h
     net/eathena/adminhandler.cpp
     net/eathena/adminhandler.h
     net/eathena/auctionhandler.cpp
