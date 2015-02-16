@@ -21,6 +21,8 @@
 #ifndef GUI_WINDOWS_BANKWINDOW_H
 #define GUI_WINDOWS_BANKWINDOW_H
 
+#ifdef EATHENA_SUPPORT
+
 #include "gui/widgets/window.h"
 
 #include "listeners/actionlistener.h"
@@ -61,4 +63,5 @@ class BankWindow final : public Window,
 
 extern BankWindow *bankWindow;
 
+#endif  // EATHENA_SUPPORT
 #endif  // GUI_WINDOWS_BANKWINDOW_H

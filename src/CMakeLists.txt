@@ -399,8 +399,6 @@ SET(SRCS
     gui/windows/okdialog.h
     gui/windows/outfitwindow.cpp
     gui/windows/outfitwindow.h
-    gui/windows/bankwindow.cpp
-    gui/windows/bankwindow.h
     gui/windows/botcheckerwindow.cpp
     gui/windows/botcheckerwindow.h
     gui/windows/textcommandeditor.cpp
@@ -1414,6 +1412,8 @@ SET(SRCS_TMWA
     )
 
 SET(SRCS_EATHENA
+    gui/windows/bankwindow.cpp
+    gui/windows/bankwindow.h
     net/eathena/adminhandler.cpp
     net/eathena/adminhandler.h
     net/eathena/auctionhandler.cpp

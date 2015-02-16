@@ -232,7 +232,9 @@ static void createGuiWindows()
             new SpellShortcutContainer(nullptr, f));
     }
 
+#ifdef EATHENA_SUPPORT
     bankWindow = new BankWindow;
+#endif
     botCheckerWindow = new BotCheckerWindow;
     whoIsOnline = new WhoIsOnline;
     whoIsOnline->postInit();
@@ -341,7 +343,9 @@ static void destroyGuiWindows()
     delete2(socialWindow)
     delete2(dropShortcutWindow);
     delete2(spellShortcutWindow);
+#ifdef EATHENA_SUPPORT
     delete2(bankWindow);
+#endif
     delete2(botCheckerWindow);
     delete2(questsWindow);
     delete2(whoIsOnline);

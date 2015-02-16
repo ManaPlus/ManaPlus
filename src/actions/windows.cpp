@@ -270,11 +270,15 @@ impHandler0(questsWindowShow)
 
 impHandler0(bankWindowShow)
 {
+#ifdef EATHENA_SUPPORT
     if (!serverFeatures->haveBankApi())
         return false;
 
     showHideWindow(bankWindow);
     return true;
+#else
+    return false;
+#endif
 }
 
 impHandler0(cartWindowShow)

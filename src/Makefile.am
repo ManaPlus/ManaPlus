@@ -529,8 +529,6 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/windows/okdialog.h \
 	      gui/windows/outfitwindow.cpp \
 	      gui/windows/outfitwindow.h \
-	      gui/windows/bankwindow.cpp \
-	      gui/windows/bankwindow.h \
 	      gui/windows/botcheckerwindow.cpp \
 	      gui/windows/botcheckerwindow.h \
 	      gui/windows/textcommandeditor.cpp \
@@ -1350,7 +1348,9 @@ endif
 
 if ENABLE_EATHENA
 manaplus_CXXFLAGS += -DEATHENA_SUPPORT
-manaplus_SOURCES += net/eathena/adminhandler.cpp \
+manaplus_SOURCES += gui/windows/bankwindow.cpp \
+	      gui/windows/bankwindow.h \
+	      net/eathena/adminhandler.cpp \
 	      net/eathena/adminhandler.h \
 	      net/eathena/auctionhandler.cpp \
 	      net/eathena/auctionhandler.h \
