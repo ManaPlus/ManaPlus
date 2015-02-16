@@ -304,10 +304,14 @@ void SocialWindow::action(const ActionEvent &event)
                     strprintf(_("Accepted guild invite from %s."),
                     mPartyInviter.c_str()));
             }
+#ifdef TMWA_SUPPORT
             if (!guildManager || !GuildManager::getEnableGuildBot())
                 guildHandler->inviteResponse(mGuildInvited, true);
             else
                 guildManager->inviteResponse(true);
+#else
+            guildHandler->inviteResponse(mGuildInvited, true);
+#endif
         }
         else if (eventId == "no")
         {
@@ -318,10 +322,14 @@ void SocialWindow::action(const ActionEvent &event)
                     strprintf(_("Rejected guild invite from %s."),
                     mPartyInviter.c_str()));
             }
+#ifdef TMWA_SUPPORT
             if (!guildManager || !GuildManager::getEnableGuildBot())
                 guildHandler->inviteResponse(mGuildInvited, false);
             else
                 guildManager->inviteResponse(false);
+#else
+            guildHandler->inviteResponse(mGuildInvited, false);
+#endif
         }
 
         mGuildInvited = 0;

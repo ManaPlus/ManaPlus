@@ -861,7 +861,9 @@ int Client::gameExec()
                 mumbleManager->setServer(mCurrentServer.hostname);
 #endif
 
+#ifdef TMWA_SUPPORT
             GuildManager::init();
+#endif
 
             if (!mConfigAutoSaved)
             {

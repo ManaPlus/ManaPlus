@@ -141,7 +141,9 @@ static void initEngines()
 {
     actorManager = new ActorManager;
     effectManager = new EffectManager;
+#ifdef TMWA_SUPPORT
     GuildManager::init();
+#endif
 
     particleEngine = new Particle();
     particleEngine->setMap(nullptr);
@@ -305,9 +307,10 @@ static void destroyGuiWindows()
     if (whoIsOnline)
         whoIsOnline->setAllowUpdate(false);
 
+#ifdef TMWA_SUPPORT
     if (guildManager)
         guildManager->clear();
-
+#endif
     delete2(windowMenu);
     delete2(localChatTab)  // Need to do this first, so it can remove itself
     delete2(debugChatTab)
@@ -344,8 +347,10 @@ static void destroyGuiWindows()
     delete2(whoIsOnline);
     delete2(killStats);
 
+#ifdef TMWA_SUPPORT
     if (guildManager && GuildManager::getEnableGuildBot())
         guildManager->reload();
+#endif
 }
 
 Game *Game::mInstance = nullptr;
@@ -409,8 +414,10 @@ Game::Game() :
         setupWindow->setInGame(true);
     clearKeysArray();
 
+#ifdef TMWA_SUPPORT
     if (guildManager && GuildManager::getEnableGuildBot())
         guildManager->requestGuildInfo();
+#endif
 
     if (localPlayer)
         localPlayer->updatePets();
@@ -437,7 +444,9 @@ Game::~Game()
     delete2(particleEngine)
     delete2(viewport)
     delete2(mCurrentMap)
+#ifdef TMWA_SUPPORT
     delete2(guildManager)
+#endif
 #ifdef USE_MUMBLE
     delete2(mumbleManager)
 #endif
@@ -616,8 +625,10 @@ void Game::slowLogic()
         shopWindow->updateTimes();
     if (mainGraphics->getOpenGL())
         DelayedManager::delayedLoad();
+#ifdef TMWA_SUPPORT
     if (guildManager)
         guildManager->slowLogic();
+#endif
     if (skillDialog)
         skillDialog->slowLogic();
 

@@ -46,10 +46,14 @@ namespace NotifyManager
         const Guild *const guild = localPlayer->getGuild();
         if (guild)
         {
+#ifdef TMWA_SUPPORT
             if (guild->getServerGuild())
                 return guildHandler->getTab();
             else if (guildManager)
                 return guildManager->getTab();
+#else
+            return guildHandler->getTab();
+#endif
         }
         return nullptr;
     }

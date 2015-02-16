@@ -71,10 +71,12 @@ void outStringNormal(ChatTab *const tab,
                         return;
                     guildHandler->chat(guild->getId(), str);
                 }
+#ifdef TMWA_SUPPORT
                 else if (guildManager)
                 {
                     guildManager->chat(str);
                 }
+#endif
             }
             break;
         }

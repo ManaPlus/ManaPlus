@@ -23,6 +23,8 @@
 #ifndef GUI_WIDGETS_TABS_CHAT_EMULATEGUILDTAB_H
 #define GUI_WIDGETS_TABS_CHAT_EMULATEGUILDTAB_H
 
+#ifdef TMWA_SUPPORT
+
 #include "gui/widgets/tabs/chat/chattab.h"
 
 /**
@@ -53,4 +55,5 @@ class EmulateGuildTab final : public ChatTab,
         void getAutoCompleteCommands(StringVect &names) const override final;
 };
 
+#endif  // TMWA_SUPPORT
 #endif  // GUI_WIDGETS_TABS_CHAT_EMULATEGUILDTAB_H

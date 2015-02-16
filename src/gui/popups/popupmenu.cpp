@@ -214,8 +214,10 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
                 }
                 else
                 {
+#ifdef TMWA_SUPPORT
                     if (guild2->getServerGuild()
                         || (guildManager && guildManager->havePower()))
+#endif
                     {
                         // TRANSLATORS: popup menu item
                         // TRANSLATORS: invite player to guild
@@ -492,8 +494,10 @@ void PopupMenu::showPlayerPopup(const std::string &nick)
     {
         if (guild2->getMember(mNick))
         {
+#ifdef TMWA_SUPPORT
             if (guild2->getServerGuild() || (guildManager
                 && guildManager->havePower()))
+#endif
             {
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: kick player from guild
@@ -509,8 +513,10 @@ void PopupMenu::showPlayerPopup(const std::string &nick)
         }
         else
         {
+#ifdef TMWA_SUPPORT
             if (guild2->getServerGuild() || (guildManager
                 && guildManager->havePower()))
+#endif
             {
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: invite player to guild
@@ -811,8 +817,10 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
                 {
                     if (guild1->getId() == guild2->getId())
                     {
+#ifdef TMWA_SUPPORT
                         if (guild2->getServerGuild() || (guildManager
                             && guildManager->havePower()))
+#endif
                         {
                             // TRANSLATORS: popup menu item
                             // TRANSLATORS: kick player from guild
@@ -830,8 +838,10 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
                 }
                 else
                 {
+#ifdef TMWA_SUPPORT
                     if (guild2->getServerGuild() || (guildManager
                         && guildManager->havePower()))
+#endif
                     {
                         // TRANSLATORS: popup menu item
                         // TRANSLATORS: invite player to guild
@@ -1059,8 +1069,10 @@ void PopupMenu::handleLink(const std::string &link,
             {
                 if (guild->getServerGuild())
                     guildHandler->kick(guild->getMember(mNick), "");
+#ifdef TMWA_SUPPORT
                 else if (guildManager)
                     guildManager->kick(mNick);
+#endif
             }
         }
     }

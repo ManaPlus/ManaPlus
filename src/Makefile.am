@@ -306,8 +306,6 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/models/langlistmodel.h \
 	      gui/widgets/flowcontainer.cpp \
 	      gui/widgets/flowcontainer.h \
-	      gui/widgets/tabs/chat/emulateguildtab.cpp \
-	      gui/widgets/tabs/chat/emulateguildtab.h \
 	      gui/widgets/tabs/chat/gmtab.cpp \
 	      gui/widgets/tabs/chat/gmtab.h \
 	      gui/widgets/guitable.cpp \
@@ -1025,8 +1023,6 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      graphicsvertexes.h \
 	      guild.cpp \
 	      guild.h \
-	      guildmanager.cpp \
-	      guildmanager.h \
 	      enums/dragdropsource.h \
 	      enums/equipslot.h \
 	      enums/guildpositionflags.h \
@@ -1271,6 +1267,10 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 if ENABLE_TMWA
 manaplus_CXXFLAGS += -DTMWA_SUPPORT
 manaplus_SOURCES += \
+	      guildmanager.cpp \
+	      guildmanager.h \
+	      gui/widgets/tabs/chat/emulateguildtab.cpp \
+	      gui/widgets/tabs/chat/emulateguildtab.h \
 	      net/tmwa/adminhandler.cpp \
 	      net/tmwa/adminhandler.h \
 	      net/tmwa/auctionhandler.cpp \

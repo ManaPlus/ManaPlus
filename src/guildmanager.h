@@ -21,6 +21,8 @@
 #ifndef GUILDMANAGER_H
 #define GUILDMANAGER_H
 
+#ifdef TMWA_SUPPORT
+
 #include "utils/stringvector.h"
 
 #include "localconsts.h"
@@ -100,4 +102,5 @@ class GuildManager final
 
 extern GuildManager *guildManager;
 
+#endif  // TMWA_SUPPORT
 #endif  // GUILDMANAGER_H

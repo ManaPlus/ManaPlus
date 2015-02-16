@@ -172,8 +172,6 @@ SET(SRCS
     gui/models/langlistmodel.h
     gui/widgets/flowcontainer.cpp
     gui/widgets/flowcontainer.h
-    gui/widgets/tabs/chat/emulateguildtab.cpp
-    gui/widgets/tabs/chat/emulateguildtab.h
     gui/widgets/tabs/chat/gmtab.cpp
     gui/widgets/tabs/chat/gmtab.h
     gui/widgets/tabs/chat/guildtab.cpp
@@ -894,8 +892,6 @@ SET(SRCS
     graphicsvertexes.h
     guild.cpp
     guild.h
-    guildmanager.cpp
-    guildmanager.h
     enums/dragdropsource.h
     enums/equipslot.h
     enums/guildpositionflags.h
@@ -1336,6 +1332,10 @@ SET(SRCS_EVOL
     )
 
 SET(SRCS_TMWA
+    guildmanager.cpp
+    guildmanager.h
+    gui/widgets/tabs/chat/emulateguildtab.cpp
+    gui/widgets/tabs/chat/emulateguildtab.h
     net/tmwa/adminhandler.cpp
     net/tmwa/adminhandler.h
     net/tmwa/auctionhandler.cpp

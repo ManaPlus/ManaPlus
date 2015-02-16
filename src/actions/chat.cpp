@@ -78,10 +78,12 @@ static void outString(ChatTab *const tab,
                         return;
                     guildHandler->chat(guild->getId(), str);
                 }
+#ifdef TMWA_SUPPORT
                 else if (guildManager)
                 {
                     guildManager->chat(str);
                 }
+#endif
             }
             break;
         }
@@ -369,10 +371,14 @@ impHandler(guild)
         const Guild *const guild = localPlayer->getGuild();
         if (guild)
         {
+#ifdef TMWA_SUPPORT
             if (guild->getServerGuild())
                 guildHandler->invite(guild->getId(), args);
             else if (guildManager)
                 guildManager->invite(args);
+#else
+            guildHandler->invite(guild->getId(), args);
+#endif
         }
     }
     else
