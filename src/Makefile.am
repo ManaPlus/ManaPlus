@@ -460,8 +460,6 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/popups/createpartypopup.h \
 	      gui/windows/buydialog.cpp \
 	      gui/windows/buydialog.h \
-	      gui/windows/buyingstoreselldialog.cpp \
-	      gui/windows/buyingstoreselldialog.h \
 	      gui/windows/buyselldialog.cpp \
 	      gui/windows/buyselldialog.h \
 	      gui/windows/changeemaildialog.cpp \
@@ -1350,6 +1348,8 @@ if ENABLE_EATHENA
 manaplus_CXXFLAGS += -DEATHENA_SUPPORT
 manaplus_SOURCES += gui/windows/bankwindow.cpp \
 	      gui/windows/bankwindow.h \
+	      gui/windows/buyingstoreselldialog.cpp \
+	      gui/windows/buyingstoreselldialog.h \
 	      net/eathena/adminhandler.cpp \
 	      net/eathena/adminhandler.h \
 	      net/eathena/auctionhandler.cpp \

@@ -330,8 +330,6 @@ SET(SRCS
     gui/popups/createpartypopup.h
     gui/windows/buydialog.cpp
     gui/windows/buydialog.h
-    gui/windows/buyingstoreselldialog.cpp
-    gui/windows/buyingstoreselldialog.h
     gui/windows/buyselldialog.cpp
     gui/windows/buyselldialog.h
     gui/windows/changeemaildialog.cpp
@@ -1414,6 +1412,8 @@ SET(SRCS_TMWA
 SET(SRCS_EATHENA
     gui/windows/bankwindow.cpp
     gui/windows/bankwindow.h
+    gui/windows/buyingstoreselldialog.cpp
+    gui/windows/buyingstoreselldialog.h
     net/eathena/adminhandler.cpp
     net/eathena/adminhandler.h
     net/eathena/auctionhandler.cpp

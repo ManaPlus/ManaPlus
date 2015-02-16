@@ -23,6 +23,8 @@
 #ifndef GUI_WINDOWS_BUYINGSTORESELLDIALOG_H
 #define GUI_WINDOWS_BUYINGSTORESELLDIALOG_H
 
+#ifdef EATHENA_SUPPORT
+
 #include "gui/widgets/selldialog.h"
 
 class Being;
@@ -52,4 +54,5 @@ class BuyingStoreSellDialog final : public SellDialog
         int mStoreId;
 };
 
+#endif  // EATHENA_SUPPORT
 #endif  // GUI_WINDOWS_BUYINGSTORESELLDIALOG_H
