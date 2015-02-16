@@ -552,8 +552,6 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/windows/serverdialog.h \
 	      gui/windows/setupwindow.cpp \
 	      gui/windows/setupwindow.h \
-	      gui/windows/shopselldialog.cpp \
-	      gui/windows/shopselldialog.h \
 	      gui/widgets/tabs/setup_audio.cpp \
 	      gui/widgets/tabs/setup_audio.h \
 	      gui/widgets/tabs/setup_colors.cpp \
@@ -1265,6 +1263,8 @@ manaplus_SOURCES += \
 	      guildmanager.h \
 	      gui/widgets/tabs/chat/emulateguildtab.cpp \
 	      gui/widgets/tabs/chat/emulateguildtab.h \
+	      gui/windows/shopselldialog.cpp \
+	      gui/windows/shopselldialog.h \
 	      net/tmwa/adminhandler.cpp \
 	      net/tmwa/adminhandler.h \
 	      net/tmwa/auctionhandler.cpp \

@@ -23,6 +23,8 @@
 #ifndef GUI_WINDOWS_SHOPSELLDIALOG_H
 #define GUI_WINDOWS_SHOPSELLDIALOG_H
 
+#ifdef TMWA_SUPPORT
+
 #include "gui/widgets/selldialog.h"
 
 /**
@@ -48,4 +50,5 @@ class ShopSellDialog final : public SellDialog
         std::string mNick;
 };
 
+#endif  // TMWA_SUPPORT
 #endif  // GUI_WINDOWS_SHOPSELLDIALOG_H
