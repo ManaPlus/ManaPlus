@@ -680,4 +680,12 @@ void ChatHandler::processBeingChat(Net::MessageIn &msg)
     BLOCK_END("ChatHandler::processBeingChat")
 }
 
+void ChatHandler::talkPet(const std::string &restrict text,
+                          const std::string &restrict channel) const
+{
+    // here need string duplication
+    std::string action = strprintf("\302\202\303 %s", text.c_str());
+    talk(action, channel);
+}
+
 }  // namespace TmwAthena
