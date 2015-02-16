@@ -23,14 +23,18 @@
 #include "net/tmwa/chathandler.h"
 
 #include "actormanager.h"
+#include "configuration.h"
+#include "guildmanager.h"
 
 #include "being/localplayer.h"
+#include "being/playerrelations.h"
 
 #include "gui/chatconsts.h"
 
-#include "gui/widgets/tabs/chat/chattab.h"
+#include "gui/widgets/tabs/chat/gmtab.h"
 
 #include "gui/windows/chatwindow.h"
+#include "gui/windows/shopwindow.h"
 
 #include "net/serverfeatures.h"
 
@@ -474,6 +478,127 @@ void ChatHandler::joinChannel(const std::string &channel A_UNUSED)
 
 void ChatHandler::partChannel(const std::string &channel A_UNUSED)
 {
+}
+
+void ChatHandler::processWhisperContinue(const std::string &nick,
+                                         std::string chatMsg)
+{
+    // ignoring future whisper messages
+    if (chatMsg.find("\302\202G") == 0 || chatMsg.find("\302\202A") == 0)
+    {
+        BLOCK_END("ChatHandler::processWhisper")
+        return;
+    }
+    // remove first unicode space if this is may be whisper command.
+    if (chatMsg.find("\302\202!") == 0)
+        chatMsg = chatMsg.substr(2);
+
+    if (nick != "Server")
+    {
+        if (guildManager && GuildManager::getEnableGuildBot()
+            && nick == "guild" && guildManager->processGuildMessage(chatMsg))
+        {
+            BLOCK_END("ChatHandler::processWhisper")
+            return;
+        }
+
+        if (player_relations.hasPermission(nick, PlayerRelation::WHISPER))
+        {
+            const bool tradeBot = config.getBoolValue("tradebot");
+            const bool showMsg = !config.getBoolValue("hideShopMessages");
+            if (player_relations.hasPermission(nick, PlayerRelation::TRADE))
+            {
+                if (shopWindow)
+                {   // commands to shop from player
+                    if (chatMsg.find("!selllist ") == 0)
+                    {
+                        if (tradeBot)
+                        {
+                            if (showMsg && chatWindow)
+                                chatWindow->addWhisper(nick, chatMsg);
+                            shopWindow->giveList(nick, ShopWindow::SELL);
+                        }
+                    }
+                    else if (chatMsg.find("!buylist ") == 0)
+                    {
+                        if (tradeBot)
+                        {
+                            if (showMsg && chatWindow)
+                                chatWindow->addWhisper(nick, chatMsg);
+                            shopWindow->giveList(nick, ShopWindow::BUY);
+                        }
+                    }
+                    else if (chatMsg.find("!buyitem ") == 0)
+                    {
+                        if (showMsg && chatWindow)
+                            chatWindow->addWhisper(nick, chatMsg);
+                        if (tradeBot)
+                        {
+                            shopWindow->processRequest(nick, chatMsg,
+                                ShopWindow::BUY);
+                        }
+                    }
+                    else if (chatMsg.find("!sellitem ") == 0)
+                    {
+                        if (showMsg && chatWindow)
+                            chatWindow->addWhisper(nick, chatMsg);
+                        if (tradeBot)
+                        {
+                            shopWindow->processRequest(nick, chatMsg,
+                                ShopWindow::SELL);
+                        }
+                    }
+                    else if (chatMsg.length() > 3
+                             && chatMsg.find("\302\202") == 0)
+                    {
+                        chatMsg = chatMsg.erase(0, 2);
+                        if (showMsg && chatWindow)
+                            chatWindow->addWhisper(nick, chatMsg);
+                        if (chatMsg.find("B1") == 0 || chatMsg.find("S1") == 0)
+                            shopWindow->showList(nick, chatMsg);
+                    }
+                    else if (chatWindow)
+                    {
+                        chatWindow->addWhisper(nick, chatMsg);
+                    }
+                }
+                else if (chatWindow)
+                {
+                    chatWindow->addWhisper(nick, chatMsg);
+                }
+            }
+            else
+            {
+                if (chatWindow && (showMsg || (chatMsg.find("!selllist") != 0
+                    && chatMsg.find("!buylist") != 0)))
+                {
+                    chatWindow->addWhisper(nick, chatMsg);
+                }
+            }
+        }
+    }
+    else if (localChatTab)
+    {
+        if (gmChatTab && strStartWith(chatMsg, "[GM] "))
+        {
+            chatMsg = chatMsg.substr(5);
+            const size_t pos = chatMsg.find(": ", 0);
+            if (pos == std::string::npos)
+            {
+                gmChatTab->chatLog(chatMsg);
+            }
+            else
+            {
+                gmChatTab->chatLog(chatMsg.substr(0, pos),
+                    chatMsg.substr(pos + 2));
+            }
+        }
+        else
+        {
+            localChatTab->chatLog(chatMsg, ChatMsgType::BY_SERVER);
+        }
+    }
+    BLOCK_END("ChatHandler::processWhisper")
 }
 
 }  // namespace TmwAthena

@@ -95,6 +95,9 @@ class ChatHandler final : public MessageHandler, public Ea::ChatHandler
         static void processWhisper(Net::MessageIn &msg);
 
         static void processWhisperResponse(Net::MessageIn &msg);
+
+        static void processWhisperContinue(const std::string &nick,
+                                           std::string chatMsg);
 };
 
 }  // namespace TmwAthena

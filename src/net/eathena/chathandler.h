@@ -117,6 +117,9 @@ class ChatHandler final : public MessageHandler, public Ea::ChatHandler
         static void processChatLeave(Net::MessageIn &msg);
 
         static void processJoinChannel(Net::MessageIn &msg);
+
+        static void processWhisperContinue(const std::string &nick,
+                                           std::string chatMsg);
 };
 
 }  // namespace EAthena

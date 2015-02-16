@@ -25,10 +25,13 @@
 #include "actormanager.h"
 
 #include "being/localplayer.h"
+#include "being/playerrelations.h"
 
 #include "gui/chatconsts.h"
 
 #include "gui/windows/chatwindow.h"
+
+#include "gui/widgets/tabs/chat/chattab.h"
 
 #include "net/mercenaryhandler.h"
 #include "net/serverfeatures.h"
@@ -653,6 +656,31 @@ void ChatHandler::partChannel(const std::string &channel)
         createOutPacket(CMSG_CHAT_PART_CHANNEL);
         outMsg.writeString(channel, 24, "channel name");
     }
+}
+
+void ChatHandler::processWhisperContinue(const std::string &nick,
+                                         std::string chatMsg)
+{
+    // ignoring future whisper messages
+    if (chatMsg.find("\302\202G") == 0 || chatMsg.find("\302\202A") == 0)
+    {
+        BLOCK_END("ChatHandler::processWhisper")
+        return;
+    }
+    // remove first unicode space if this is may be whisper command.
+    if (chatMsg.find("\302\202!") == 0)
+        chatMsg = chatMsg.substr(2);
+
+    if (nick != "Server")
+    {
+        if (player_relations.hasPermission(nick, PlayerRelation::WHISPER))
+            chatWindow->addWhisper(nick, chatMsg);
+    }
+    else if (localChatTab)
+    {
+        localChatTab->chatLog(chatMsg, ChatMsgType::BY_SERVER);
+    }
+    BLOCK_END("ChatHandler::processWhisper")
 }
 
 }  // namespace EAthena

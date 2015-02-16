@@ -58,9 +58,6 @@ class ChatHandler notfinal : public Net::ChatHandler
 
         void clear() override final;
 
-        static void processWhisperContinue(const std::string &nick,
-                                           std::string chatMsg);
-
         static void processWhisperResponseContinue(const uint8_t type);
 
     protected:
