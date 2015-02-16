@@ -350,6 +350,7 @@ void WhoIsOnline::loadList(const std::vector<OnlinePlayer*> &list)
     mEnemy.clear();
 }
 
+#ifdef TMWA_SUPPORT
 void WhoIsOnline::loadWebList()
 {
     if (!mMemoryBuffer)
@@ -585,6 +586,7 @@ int WhoIsOnline::downloadThread(void *ptr)
         wio->mDownloadStatus = UPDATE_ERROR;
     return 0;
 }
+#endif
 
 void WhoIsOnline::download()
 {
@@ -593,6 +595,7 @@ void WhoIsOnline::download()
         if (PacketLimiter::limitPackets(PACKET_ONLINELIST))
             playerHandler->requestOnlineList();
     }
+#ifdef TMWA_SUPPORT
     else if (mWebList)
     {
         mDownloadComplete = true;
@@ -605,6 +608,7 @@ void WhoIsOnline::download()
         if (mThread == nullptr)
             mDownloadStatus = UPDATE_ERROR;
     }
+#endif
 }
 
 void WhoIsOnline::logic()
@@ -639,6 +643,7 @@ void WhoIsOnline::slowLogic()
         }
     }
 
+#ifdef TMWA_SUPPORT
     switch (mDownloadStatus)
     {
         case UPDATE_ERROR:
@@ -674,6 +679,7 @@ void WhoIsOnline::slowLogic()
         default:
             break;
     }
+#endif
     BLOCK_END("WhoIsOnline::slowLogic")
 }
 
@@ -681,6 +687,7 @@ void WhoIsOnline::action(const ActionEvent &event)
 {
     if (event.getId() == "update")
     {
+#ifdef TMWA_SUPPORT
         if (!mServerSideList)
         {
             if (mDownloadStatus == UPDATE_COMPLETE)
@@ -699,6 +706,7 @@ void WhoIsOnline::action(const ActionEvent &event)
             }
         }
         else
+#endif
         {
             if (PacketLimiter::limitPackets(PACKET_ONLINELIST))
             {

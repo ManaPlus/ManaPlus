@@ -64,10 +64,12 @@ class WhoIsOnline final : public Window,
 
         void postInit() override final;
 
+#ifdef TMWA_SUPPORT
         /**
          * Loads and display online list from the memory buffer.
          */
         void loadWebList();
+#endif
 
         void loadList(const std::vector<OnlinePlayer*> &list);
 
@@ -108,6 +110,8 @@ class WhoIsOnline final : public Window,
 
         void handlerPlayerRelation(const std::string &nick,
                                    OnlinePlayer *const player);
+
+#ifdef TMWA_SUPPORT
         /**
          * The thread function that download the files.
          */
@@ -119,6 +123,7 @@ class WhoIsOnline final : public Window,
         static size_t memoryWrite(void *ptr, size_t size,
                                   size_t nmemb,
                                   FILE *stream);
+#endif
 
         const std::string prepareNick(const std::string &restrict nick,
                                       const int level,
