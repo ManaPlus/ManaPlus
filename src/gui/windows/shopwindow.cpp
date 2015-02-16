@@ -84,9 +84,9 @@ ShopWindow::DialogList ShopWindow::instances;
 ShopWindow::ShopWindow() :
     // TRANSLATORS: shop window name
     Window(_("Personal Shop"), false, nullptr, "shop.xml"),
-    VendingSlotsListener(),
 #ifdef EATHENA_SUPPORT
     VendingModeListener(),
+    VendingSlotsListener(),
     BuyingStoreModeListener(),
     BuyingStoreSlotsListener(),
 #endif
@@ -200,7 +200,9 @@ ShopWindow::ShopWindow() :
 
     center();
     loadWindowState();
+#ifdef EATHENA_SUPPORT
     updateShopName();
+#endif
     instances.push_back(this);
 }
 
@@ -1038,12 +1040,7 @@ void ShopWindow::updateSelection()
     updateButtonsAndLabels();
 }
 
-void ShopWindow::vendingSlotsChanged(const int slots)
-{
-    mSellShopSize = slots;
-    updateButtonsAndLabels();
-}
-
+#ifdef EATHENA_SUPPORT
 void ShopWindow::updateShopName()
 {
     if (mSellShopName.empty())
@@ -1065,7 +1062,12 @@ void ShopWindow::setShopName(const std::string &name)
     updateShopName();
 }
 
-#ifdef EATHENA_SUPPORT
+void ShopWindow::vendingSlotsChanged(const int slots)
+{
+    mSellShopSize = slots;
+    updateButtonsAndLabels();
+}
+
 void ShopWindow::vendingEnabled(const bool b)
 {
     mEnableVending = b;

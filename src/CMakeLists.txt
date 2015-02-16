@@ -1133,8 +1133,6 @@ SET(SRCS
     listeners/updatestatuslistener.h
     listeners/uploadlistener.cpp
     listeners/uploadlistener.h
-    listeners/vendingslotslistener.cpp
-    listeners/vendingslotslistener.h
     utils/sdlpixel.h
     gui/widgets/widget.h
     listeners/weightlistener.h
@@ -1414,6 +1412,8 @@ SET(SRCS_EATHENA
     listeners/shoprenamelistener.h
     listeners/vendingmodelistener.cpp
     listeners/vendingmodelistener.h
+    listeners/vendingslotslistener.cpp
+    listeners/vendingslotslistener.h
     net/eathena/adminhandler.cpp
     net/eathena/adminhandler.h
     net/eathena/auctionhandler.cpp
