@@ -67,17 +67,9 @@ impHandler(talkPet)
         return false;
 
     std::string args = event.args;
-    // in future probably need add channel detection
-    if (!localPlayer->getPets().empty())
-    {
-        if (findCutFirst(args, "/me "))
-            args = textToMe(args);
-        chatHandler->talkPet(args, GENERAL_CHANNEL);
-    }
-    else
-    {
-        chatHandler->talk(args, GENERAL_CHANNEL);
-    }
+    if (findCutFirst(args, "/me "))
+        args = textToMe(args);
+    chatHandler->talkPet(args, GENERAL_CHANNEL);
     return true;
 }
 

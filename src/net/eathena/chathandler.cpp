@@ -746,11 +746,19 @@ void ChatHandler::processBeingChat(Net::MessageIn &msg)
 }
 
 void ChatHandler::talkPet(const std::string &restrict text,
-                          const std::string &restrict channel) const
+                          const std::string &restrict channel A_UNUSED) const
 {
-    // here need string duplication
-    std::string action = strprintf("\302\202\303 %s", text.c_str());
-    talk(action, channel);
+    if (text.empty())
+        return;
+    std::string msg = text;
+    if (msg.size() > 500)
+        msg = msg.substr(0, 500);
+    const size_t sz = msg.size();
+
+    createOutPacket(CMSG_PET_TALK);
+    outMsg.writeInt16(static_cast<int16_t>(sz + 4 + 1), "len");
+    outMsg.writeString(msg, sz, "message");
+    outMsg.writeInt8(0, "zero byte");
 }
 
 }  // namespace EAthena
