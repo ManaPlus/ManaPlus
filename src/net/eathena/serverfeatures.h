@@ -101,6 +101,8 @@ class ServerFeatures final : public Net::ServerFeatures
         bool haveVending() const override final;
 
         bool haveCart() const override final;
+
+        bool haveTalkPet() const override final;
 };
 
 }  // namespace EAthena

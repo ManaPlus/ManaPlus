@@ -205,4 +205,9 @@ bool ServerFeatures::haveCart() const
     return true;
 }
 
+bool ServerFeatures::haveTalkPet() const
+{
+    return serverVersion >= 5;
+}
+
 }  // namespace EAthena

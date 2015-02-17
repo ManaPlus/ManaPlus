@@ -204,4 +204,9 @@ bool ServerFeatures::haveCart() const
     return false;
 }
 
+bool ServerFeatures::haveTalkPet() const
+{
+    return true;
+}
+
 }  // namespace TmwAthena

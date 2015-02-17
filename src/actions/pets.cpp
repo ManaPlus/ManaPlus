@@ -32,6 +32,7 @@
 
 #include "net/chathandler.h"
 #include "net/pethandler.h"
+#include "net/serverfeatures.h"
 
 #include "utils/chatutils.h"
 #include "utils/stringutils.h"
@@ -62,6 +63,9 @@ impHandler(commandEmotePet)
 
 impHandler(talkPet)
 {
+    if (!serverFeatures->haveTalkPet())
+        return false;
+
     std::string args = event.args;
     // in future probably need add channel detection
     if (!localPlayer->getPets().empty())
