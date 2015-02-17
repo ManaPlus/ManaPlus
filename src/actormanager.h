@@ -173,6 +173,11 @@ class ActorManager final: public ConfigListener
                                  = ActorType::Unknown) const A_WARN_UNUSED;
 
        /**
+        * Finds most damaged player, non-enemy and alive
+        */
+        Being *findMostDamagedPlayer() const A_WARN_UNUSED;
+
+       /**
         * Heal all players in distance.
         *
         * \param maxdist maximal distance. If minimal distance is larger,

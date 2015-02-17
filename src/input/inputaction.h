@@ -536,6 +536,7 @@ namespace InputAction
         CHAT_GUILD_TAB,
         DROP_CLEAR,
         WINDOW_CART,
+        HEAL_MOST_DAMAGED,
         TOTAL
     };
 }  // namespace InputAction

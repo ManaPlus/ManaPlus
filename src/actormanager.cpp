@@ -1280,6 +1280,40 @@ void ActorManager::heal(const Being *const target) const
     }
 }
 
+Being* ActorManager::findMostDamagedPlayer() const
+{
+    if (!localPlayer)
+        return nullptr;
+
+    int maxDamageTaken = 0;
+    Being *target = nullptr;
+
+    for_actors
+    {
+        if ((*it)->getType() != ActorType::Player)
+            continue;
+
+        Being *const being = static_cast<Being*>(*it);
+
+        if ((!being) || (!being->isAlive()) ||            // don't heal dead
+            (player_relations.getRelation(being->getName()) ==
+             PlayerRelation::ENEMY2) ||                   // don't heal enemy
+            (localPlayer == being))                       // don't heal self
+        {
+            continue;
+        }
+
+
+        if (being->getDamageTaken() > maxDamageTaken)
+        {
+            maxDamageTaken = being->getDamageTaken();
+            target = being;
+        }
+    }
+
+    return target;
+}
+
 void ActorManager::itenplz() const
 {
     if (!localPlayer || !chatWindow || !localPlayer->isAlive()

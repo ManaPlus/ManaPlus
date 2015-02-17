@@ -3974,6 +3974,11 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputCondition::SHORTCUT0,
         "cart|opencart",
         false},
+    {"keyMagicHealMostDamaged",
+        defaultAction(&Actions::healmd),
+        InputCondition::GAME | InputCondition::VALIDSPEED,
+        "healmd|saveass",
+        false},
 };
 
 #undef defaultAction

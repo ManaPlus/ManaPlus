@@ -147,6 +147,12 @@ SetupActionData setupActionDataOther[] =
     },
     {
         // TRANSLATORS: input action name
+        N_("Heal the most injured player"),
+        InputAction::HEAL_MOST_DAMAGED,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
         N_("Use #itenplz spell"),
         InputAction::MAGIC_ITENPLZ,
         "",

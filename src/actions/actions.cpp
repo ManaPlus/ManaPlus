@@ -512,6 +512,21 @@ impHandler(heal)
     return false;
 }
 
+impHandler0(healmd)
+{
+    if (actorManager)
+    {
+        Being *target = actorManager->findMostDamagedPlayer();
+        if (target)
+            actorManager->heal(target);
+
+        if (Game::instance())
+            Game::instance()->setValidSpeed();
+        return true;
+    }
+    return false;
+}
+
 impHandler0(itenplz)
 {
     if (actorManager)

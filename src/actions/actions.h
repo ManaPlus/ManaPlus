@@ -42,6 +42,7 @@ namespace Actions
     decHandler(dropItemIdAll);
     decHandler(dropItemInvAll);
     decHandler(heal);
+    decHandler(healmd);
     decHandler(itenplz);
     decHandler(setHome);
     decHandler(magicAttack);
