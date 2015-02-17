@@ -121,12 +121,8 @@ void PetHandler::spawn(const Being *const being A_UNUSED,
 
 void PetHandler::emote(const uint8_t emoteId, const int petId A_UNUSED)
 {
-    mRandCounter ++;
-    if (mRandCounter > 10000)
-        mRandCounter = 1000;
-
-    chatHandler->talk(strprintf("\302\202\302e%dz%d",
-        static_cast<int>(emoteId), mRandCounter), GENERAL_CHANNEL);
+    createOutPacket(CMSG_PET_EMOTE);
+    outMsg.writeInt8(emoteId, "emote id");
 }
 
 void PetHandler::catchPet(const Being *const being) const

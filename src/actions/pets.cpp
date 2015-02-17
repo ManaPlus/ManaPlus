@@ -85,6 +85,9 @@ impHandler(setPetName)
 
 impHandler(petEmote)
 {
+    if (!serverFeatures->haveTalkPet())
+        return false;
+
     if (event.action >= InputAction::PET_EMOTE_1
         && event.action <= InputAction::PET_EMOTE_48)
     {

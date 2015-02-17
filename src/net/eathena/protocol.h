@@ -513,6 +513,7 @@
 #define CMSG_PET_SELECT_EGG          0x01a7
 #define CMSG_PET_MENU_ACTION         0x01a1
 #define CMSG_PET_TALK                0x0b0c
+#define CMSG_PET_EMOTE               0x0b0d
 
 #define CMSG_MERCENARY_ACTION        0x029f
 #define CMSG_HOMUNCULUS_SET_NAME     0x0231
