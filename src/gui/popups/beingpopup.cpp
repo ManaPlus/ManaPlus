@@ -213,7 +213,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
     }
     else
     {
-        label6 = label4;
+        label6 = label5;
         label5 = nullptr;
     }
 
