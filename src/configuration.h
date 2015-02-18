@@ -290,7 +290,8 @@ class Configuration final : public ConfigurationObject
                             const unsigned line);
 #endif
 
-        void setValue(const std::string &key, const std::string &value);
+        void setValue(const std::string &key,
+                      const std::string &value) override;
 
         void incValue(const std::string &key);
 

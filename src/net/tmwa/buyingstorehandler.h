@@ -41,7 +41,7 @@ class BuyingStoreHandler final : public MessageHandler,
         void create(const std::string &name,
                     const int maxMoney,
                     const bool flag,
-                    std::vector<ShopItem*> &items) const;
+                    std::vector<ShopItem*> &items) const override final;
 
         void close() const override final;
 

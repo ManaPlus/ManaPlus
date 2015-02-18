@@ -129,9 +129,9 @@ class SocialWindow final : public Window,
 
         void updateGuildCounter(const int online = 0, const int total = 0);
 
-        void updatedPlayer(const std::string &name);
+        void updatedPlayer(const std::string &name) override final;
 
-        void updateAll();
+        void updateAll() override final;
 
 #ifdef USE_PROFILER
         void logicChildren();

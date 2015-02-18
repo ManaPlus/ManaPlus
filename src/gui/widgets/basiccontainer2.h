@@ -140,18 +140,18 @@ class BasicContainer2: public BasicContainer
           *                   container.
           * @see add, clear
           */
-        virtual void remove(Widget* widget);
+        void remove(Widget* widget) override;
 
         /**
           * Clears the container of all widgets.
           *
           * @see add, remove
           */
-        virtual void clear();
+        void clear() override;
 
         // Inherited from Widget
 
-        virtual void draw(Graphics* graphics);
+        void draw(Graphics* graphics) override;
 
     protected:
         /**

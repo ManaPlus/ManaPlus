@@ -155,7 +155,7 @@ class ChatWindow final : public Window,
         void addItemText(const std::string &item);
 
         /** Override to reset mTmpVisible */
-        void setVisible(bool visible);
+        void setVisible(bool visible) override final;
 
         /**
          * Handles mouse when dragged.

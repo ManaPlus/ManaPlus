@@ -50,7 +50,7 @@ class SafeOpenGLGraphics final : public Graphics
 
         ~SafeOpenGLGraphics();
 
-        void testDraw();
+        void testDraw() override final;
 
         #include "render/graphicsdef.hpp"
 

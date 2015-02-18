@@ -127,7 +127,7 @@ class OpenGLImageHelper final : public ImageHelper
 
         void copySurfaceToImage(const Image *const image,
                                 const int x, const int y,
-                                SDL_Surface *surface) const;
+                                SDL_Surface *surface) const override final;
 
     protected:
         /**

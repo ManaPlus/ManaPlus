@@ -37,7 +37,7 @@ class BuySellHandler final : public MessageHandler, public Ea::BuySellHandler
 
         A_DELETE_COPY(BuySellHandler)
 
-        void handleMessage(Net::MessageIn &msg);
+        void handleMessage(Net::MessageIn &msg) override final;
 
         static void processNpcBuy(Net::MessageIn &msg);
 

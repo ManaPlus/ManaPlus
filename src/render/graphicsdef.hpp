@@ -27,11 +27,11 @@ public:
     */
     void drawImageRect(int x, int y,
                        int w, int h,
-                       const ImageRect &imgRect);
+                       const ImageRect &imgRect) override final;
 
-    void beginDraw();
+    void beginDraw() override final;
 
-    void endDraw();
+    void endDraw() override final;
 
     void pushClipArea(const Rect &area) override final;
 

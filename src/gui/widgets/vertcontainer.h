@@ -51,7 +51,7 @@ class VertContainer final : public Container,
 
         void add1(Widget *const widget, const int spacing = -1);
 
-        void clear();
+        void clear() override final;
 
         void widgetResized(const Event &event) override final;
 

@@ -54,7 +54,7 @@ class CreatePartyPopup final : public Popup,
             mBrowserBox->addRow(strprintf("@@cancel|%s@@", _("Cancel")));
         }
 
-        void postInit()
+        void postInit() override final
         {
             add(mBrowserBox);
             setContentSize(mBrowserBox->getWidth() + 8,

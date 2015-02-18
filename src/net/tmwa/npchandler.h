@@ -75,7 +75,7 @@ class NpcHandler final : public MessageHandler, public Ea::NpcHandler
                         const int materialId3) const override final;
 
         void cooking(const CookingType::Type type,
-                     const int nameId) const;
+                     const int nameId) const override final;
 
         void repair(const int index) const override final;
 

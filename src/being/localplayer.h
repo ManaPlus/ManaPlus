@@ -281,7 +281,7 @@ class LocalPlayer final : public Being,
         /**
          * Sets the map the being is on
          */
-        void setMap(Map *const map);
+        void setMap(Map *const map) override final;
 
         void addMessageToQueue(const std::string &message,
                                const int color = UserPalette::EXP_INFO);

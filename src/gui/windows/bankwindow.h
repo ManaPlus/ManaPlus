@@ -52,7 +52,7 @@ class BankWindow final : public Window,
 
         void widgetShown(const Event &event) override final;
 
-        void bankMoneyChanged(const int money);
+        void bankMoneyChanged(const int money) override final;
 
     private:
         Label *mBankMoneyLabel;

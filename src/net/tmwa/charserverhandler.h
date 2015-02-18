@@ -70,7 +70,7 @@ class CharServerHandler final : public MessageHandler,
 
         void processChangeMapServer(Net::MessageIn &msg);
 
-        bool isNeedCreatePin() const
+        bool isNeedCreatePin() const override final
         { return false; }
 
         void setNewPincode(const std::string &pin A_UNUSED) override final

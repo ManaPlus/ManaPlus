@@ -132,7 +132,7 @@ class SurfaceGraphics final : public Graphics
                                 override final
         { }
 
-        void updateScreen()
+        void updateScreen() override final
         { }
 
         SDL_Surface *getScreenshot() override final A_WARN_UNUSED
@@ -203,7 +203,7 @@ class SurfaceGraphics final : public Graphics
          */
         void drawImageRect(const int x A_UNUSED, const int y A_UNUSED,
                            const int w A_UNUSED, const int h A_UNUSED,
-                           const ImageRect &imgRect A_UNUSED)
+                           const ImageRect &imgRect A_UNUSED) override final
         { }
 
     protected:

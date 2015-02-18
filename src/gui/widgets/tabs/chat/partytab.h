@@ -43,7 +43,7 @@ class PartyTab notfinal : public ChatTab,
 
         void playNewMessageSound() const override final;
 
-        void optionChanged(const std::string &value);
+        void optionChanged(const std::string &value) override final;
 
     protected:
         void handleInput(const std::string &msg) override final;

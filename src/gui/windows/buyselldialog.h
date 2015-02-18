@@ -54,7 +54,7 @@ class BuySellDialog final : public Window,
 
         void init();
 
-        void setVisible(bool visible);
+        void setVisible(bool visible) override final;
 
         /**
          * Called when receiving actions from the widgets.

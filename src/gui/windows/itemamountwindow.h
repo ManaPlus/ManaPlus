@@ -81,7 +81,7 @@ class ItemAmountWindow final : public Window,
         /**
          * Schedules the Item Amount window for deletion.
          */
-        void close();
+        void close() override final;
 
         void keyReleased(KeyEvent &event) override final;
 

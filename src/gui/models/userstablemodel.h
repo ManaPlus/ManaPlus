@@ -70,22 +70,22 @@ class UsersTableModel final : public TableModel,
             freeWidgets();
         }
 
-        int getRows() const
+        int getRows() const override final
         {
             return static_cast<int>(mPlayers.size());
         }
 
-        int getColumns() const
+        int getColumns() const override final
         {
             return COLUMNS_NR;
         }
 
-        int getRowHeight() const
+        int getRowHeight() const override final
         {
             return ROW_HEIGHT;
         }
 
-        int getColumnWidth(const int index) const
+        int getColumnWidth(const int index) const override final
         {
             if (index == NAME_COLUMN)
                 return NAME_COLUMN_WIDTH;
@@ -234,7 +234,8 @@ class UsersTableModel final : public TableModel,
         {
         }
 
-        Widget *getElementAt(const int row, const int column) const
+        Widget *getElementAt(const int row,
+                             const int column) const override final
         {
             return mWidgets[WIDGET_AT(row, column)];
         }

@@ -557,7 +557,7 @@ class Window notfinal : public BasicContainer2,
         bool isMovable() const
         { return mMovable; }
 
-        virtual Rect getChildrenArea();
+        Rect getChildrenArea() override;
 
         /**
          * Resizes the window to fit the content.

@@ -108,7 +108,7 @@ class BasicContainer notfinal : public Widget,
           *               itself to be visible.
           * @param rectangle The rectangle to be visible.
           */
-        virtual void showWidgetPart(Widget *const widget, Rect area);
+        void showWidgetPart(Widget *const widget, Rect area) override;
 
         // Inherited from Widget
 

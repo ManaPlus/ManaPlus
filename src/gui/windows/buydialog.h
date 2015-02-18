@@ -129,7 +129,7 @@ class BuyDialog final : public Window,
         /**
          * Sets the visibility of this window.
          */
-        void setVisible(bool visible);
+        void setVisible(bool visible) override final;
 
         void sort();
 

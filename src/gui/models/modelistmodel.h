@@ -48,7 +48,7 @@ class ModeListModel final : public ListModel
         /**
          * Returns element from container.
          */
-        std::string getElementAt(int i)
+        std::string getElementAt(int i) override final
         { return mVideoModes[i]; }
 
         /**

@@ -91,7 +91,7 @@ class SkillListBox final : public ListBox
             return static_cast<SkillModel*>(mListModel)->getSkillAt(selected);
         }
 
-        void draw(Graphics *graphics) override
+        void draw(Graphics *graphics) override final
         {
             if (!mListModel)
                 return;
@@ -164,7 +164,7 @@ class SkillListBox final : public ListBox
             }
         }
 
-        unsigned int getRowHeight() const override
+        unsigned int getRowHeight() const override final
         { return mRowHeight; }
 
         const SkillInfo *getSkillByEvent(const MouseEvent &event) const
@@ -178,7 +178,7 @@ class SkillListBox final : public ListBox
             return skill;
         }
 
-        void mouseMoved(MouseEvent &event) override
+        void mouseMoved(MouseEvent &event) override final
         {
             ListBox::mouseMoved(event);
             if (!viewport || !dragDrop.isEmpty())
@@ -189,7 +189,7 @@ class SkillListBox final : public ListBox
             mPopup->position(viewport->mMouseX, viewport->mMouseY);
         }
 
-        void mouseDragged(MouseEvent &event)
+        void mouseDragged(MouseEvent &event) override final
         {
             if (event.getButton() == MouseButton::LEFT)
             {
@@ -213,7 +213,7 @@ class SkillListBox final : public ListBox
             }
         }
 
-        void mousePressed(MouseEvent &event)
+        void mousePressed(MouseEvent &event) override final
         {
             ListBox::mousePressed(event);
             if (event.getButton() == MouseButton::LEFT)
@@ -226,12 +226,12 @@ class SkillListBox final : public ListBox
             }
         }
 
-        void mouseReleased(MouseEvent &event)
+        void mouseReleased(MouseEvent &event) override final
         {
             ListBox::mouseReleased(event);
         }
 
-        void mouseExited(MouseEvent &event A_UNUSED) override
+        void mouseExited(MouseEvent &event A_UNUSED) override final
         {
             mPopup->hide();
         }

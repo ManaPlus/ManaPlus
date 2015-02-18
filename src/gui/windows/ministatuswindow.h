@@ -67,7 +67,7 @@ class MiniStatusWindow final : public Window,
 
         void drawIcons(Graphics *const graphics);
 
-        void updateStatus();
+        void updateStatus() override final;
 
         void logic() override final;
 
@@ -98,7 +98,7 @@ class MiniStatusWindow final : public Window,
                          const int oldVal1,
                          const int oldVal2) override final;
 
-        void arrowsChanged();
+        void arrowsChanged() override final;
 
 #ifdef USE_PROFILER
         void logicChildren();

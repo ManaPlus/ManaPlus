@@ -63,7 +63,7 @@ class DidYouKnowWindow final : public Window,
 
         void loadData(int num = 0);
 
-        void setVisible(bool visible);
+        void setVisible(bool visible) override final;
 
     private:
         void loadFile(const int num);

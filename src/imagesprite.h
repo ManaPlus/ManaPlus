@@ -55,7 +55,7 @@ class ImageSprite final : public Sprite
         int getHeight() const override final A_WARN_UNUSED
         { return mImage ? mImage->getHeight() : 0; }
 
-        const Image* getImage() const A_WARN_UNUSED
+        const Image* getImage() const override final A_WARN_UNUSED
         { return mImage; }
 
         bool setSpriteDirection(const SpriteDirection::Type

@@ -107,7 +107,7 @@ class SellDialog notfinal : public Window,
          */
         static void closeAll();
 
-        void postInit();
+        void postInit() override;
 
     protected:
         typedef std::list<SellDialog*> DialogList;

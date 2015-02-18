@@ -224,7 +224,7 @@ class TabbedArea final : public ActionListener,
 
         void setDimension(const Rect &dimension);
 
-        void death(const Event &event);
+        void death(const Event &event) override final;
 
         void setResizeHeight(bool b)
         { mResizeHeight = b; }

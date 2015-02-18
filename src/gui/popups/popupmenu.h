@@ -150,7 +150,7 @@ class PopupMenu final : public Popup, public LinkHandler
         void handleLink(const std::string &link,
                         MouseEvent *event A_UNUSED) override final;
 
-        void clear();
+        void clear() override final;
 
         void moveUp();
 

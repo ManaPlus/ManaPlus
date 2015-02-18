@@ -134,7 +134,7 @@ class SocialGuildTab final : public SocialTab,
             mConfirmDialog->addActionListener(this);
         }
 
-        void buildCounter(const int online0, const int total0)
+        void buildCounter(const int online0, const int total0) override final
         {
             if (online0 || total0)
             {

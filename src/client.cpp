@@ -182,7 +182,7 @@ namespace
     class AccountListener final : public ActionListener
     {
         public:
-            void action(const ActionEvent &)
+            void action(const ActionEvent &) override final
             {
                 client->setState(STATE_CHAR_SELECT);
             }
@@ -191,7 +191,7 @@ namespace
     class LoginListener final : public ActionListener
     {
         public:
-            void action(const ActionEvent &)
+            void action(const ActionEvent &) override final
             {
                 client->setState(STATE_PRE_LOGIN);
             }

@@ -56,9 +56,9 @@ class Setup_Relations final : public SetupTab,
 
         void action(const ActionEvent &event) override final;
 
-        void updatedPlayer(const std::string &name);
+        void updatedPlayer(const std::string &name) override final;
 
-        void updateAll();
+        void updateAll() override final;
 
         void externalUpdated() override final;
 

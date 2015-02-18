@@ -44,7 +44,7 @@ class WidgetGroup notfinal : public Container,
         virtual void add(Widget *const widget,
                          const int spacing);
 
-        virtual void clear();
+        void clear() override final;
 
         void widgetResized(const Event &event) override final;
 

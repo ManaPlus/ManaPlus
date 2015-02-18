@@ -55,7 +55,7 @@ class ChatHandler final : public MessageHandler, public Ea::ChatHandler
 
         void who() const override final;
 
-        void sendRaw(const std::string &args) const;
+        void sendRaw(const std::string &args) const override final;
 
         void ignoreAll() const override final;
 

@@ -128,9 +128,9 @@ class InventoryWindow final : public Window,
          * Closes the Storage Window, as well as telling the server that the
          * window has been closed.
          */
-        void close();
+        void close() override final;
 
-        void slotsChanged(Inventory *const inventory);
+        void slotsChanged(Inventory *const inventory) override final;
 
         bool isMainInventory() const A_WARN_UNUSED
         { return mInventory->isMainInventory(); }

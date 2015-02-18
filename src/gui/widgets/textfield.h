@@ -224,7 +224,7 @@ class TextField notfinal : public Widget,
 
         void fixScroll();
 
-        void fontChanged();
+        void fontChanged() override;
 
         bool handleNormalKeys(const int action, bool &consumed);
 

@@ -67,7 +67,7 @@ class SetupTabScroll notfinal : public SetupTab
 
         void reread(const std::string &name);
 
-        void clear();
+        void clear() override final;
 
         const std::set<SetupItem*> &getAllItems() const
         { return mAllItems; }

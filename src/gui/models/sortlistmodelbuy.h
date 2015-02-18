@@ -51,10 +51,10 @@ class SortListModelBuy final : public ListModel
         ~SortListModelBuy()
         { }
 
-        int getNumberOfElements()
+        int getNumberOfElements() override final
         { return 7; }
 
-        std::string getElementAt(int i)
+        std::string getElementAt(int i) override final
         {
             if (i >= getNumberOfElements() || i < 0)
                 return "???";

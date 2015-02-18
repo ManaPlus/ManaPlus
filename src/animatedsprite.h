@@ -72,28 +72,29 @@ class AnimatedSprite final : public Sprite
         void draw(Graphics *const graphics,
                   const int posX, const int posY) const override final;
 
-        int getWidth() const A_WARN_UNUSED;
+        int getWidth() const override final A_WARN_UNUSED;
 
-        int getHeight() const A_WARN_UNUSED;
+        int getHeight() const override final A_WARN_UNUSED;
 
-        const Image* getImage() const A_WARN_UNUSED;
+        const Image* getImage() const override final A_WARN_UNUSED;
 
-        bool setSpriteDirection(const SpriteDirection::Type direction);
+        bool setSpriteDirection(const SpriteDirection::Type direction)
+                                override final;
 
         int getNumberOfLayers() const A_WARN_UNUSED
         { return 1; }
 
         std::string getIdPath() const A_WARN_UNUSED;
 
-        unsigned int getCurrentFrame() const A_WARN_UNUSED;
+        unsigned int getCurrentFrame() const override final A_WARN_UNUSED;
 
-        unsigned int getFrameCount() const A_WARN_UNUSED;
+        unsigned int getFrameCount() const override final A_WARN_UNUSED;
 
         void setAlpha(float alpha) override final;
 
         const void *getHash() const override final A_WARN_UNUSED;
 
-        bool updateNumber(const unsigned num);
+        bool updateNumber(const unsigned num) override final;
 
         void clearDelayLoad();
 

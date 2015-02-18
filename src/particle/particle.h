@@ -271,10 +271,10 @@ class Particle notfinal : public Actor
         { mAutoDelete = false; }
 
         /** We consider particles (at least for now) to be one layer-sprites */
-        virtual int getNumberOfLayers() const
+        int getNumberOfLayers() const override final
         { return 1; }
 
-        virtual float getAlpha() const
+        float getAlpha() const override final
         { return 1.0F; }
 
         virtual void setAlpha(const float alpha A_UNUSED) override

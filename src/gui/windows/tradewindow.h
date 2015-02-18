@@ -143,7 +143,7 @@ class TradeWindow final : public Window,
         /**
          * Clear auto trade items.
          */
-        void clear();
+        void clear() override final;
 
         /**
          * Add item what will be added to trade.

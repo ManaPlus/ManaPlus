@@ -169,13 +169,13 @@ class Being notfinal : public ActorSprite,
         /**
          * Returns the tile x coord
          */
-        int getTileX() const A_WARN_UNUSED
+        int getTileX() const override A_WARN_UNUSED
         { return mX; }
 
         /**
          * Returns the tile y coord
          */
-        int getTileY() const A_WARN_UNUSED
+        int getTileY() const override A_WARN_UNUSED
         { return mY; }
 
         /**
@@ -352,7 +352,7 @@ class Being notfinal : public ActorSprite,
         /**
          * Get the number of layers used to draw the being
          */
-        int getNumberOfLayers() const A_WARN_UNUSED
+        int getNumberOfLayers() const override A_WARN_UNUSED
         { return CompoundSprite::getNumberOfLayers(); }
 
         /**
@@ -387,14 +387,14 @@ class Being notfinal : public ActorSprite,
         TargetCursorSize::Size getTargetCursorSize() const override final
                                                      A_WARN_UNUSED;
 
-        int getTargetOffsetX() const A_WARN_UNUSED
+        int getTargetOffsetX() const override A_WARN_UNUSED
         {
             if (!mInfo)
                 return 0;
             return mInfo->getTargetOffsetX();
         }
 
-        int getTargetOffsetY() const A_WARN_UNUSED
+        int getTargetOffsetY() const override A_WARN_UNUSED
         {
             if (!mInfo)
                 return 0;
@@ -414,7 +414,7 @@ class Being notfinal : public ActorSprite,
         /**
          * Gets the way the monster blocks pathfinding for other objects
          */
-        BlockType::BlockType getBlockType() const A_WARN_UNUSED
+        BlockType::BlockType getBlockType() const override A_WARN_UNUSED
         {
             if (!mInfo)
                 return BlockType::NONE;
@@ -865,11 +865,11 @@ class Being notfinal : public ActorSprite,
          */
         void setPath(const Path &path);
 
-        int getSortPixelY() const A_WARN_UNUSED
+        int getSortPixelY() const override A_WARN_UNUSED
         { return static_cast<int>(mPos.y) - mYDiff - mSortOffsetY; }
 //        { return static_cast<int>(mPos.y) - mYDiff - mSortOffsetY + 16; }
 
-        void setMap(Map *const map);
+        void setMap(Map *const map) override;
 
         void recreateItemParticles();
 

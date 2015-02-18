@@ -65,12 +65,12 @@ class ColorListModel final : public ListModel
         ~ColorListModel()
         { }
 
-        int getNumberOfElements()
+        int getNumberOfElements() override final
         {
             return 14;
         }
 
-        std::string getElementAt(int i)
+        std::string getElementAt(int i) override final
         {
             if (i >= getNumberOfElements() || i < 0)
                 return "???";

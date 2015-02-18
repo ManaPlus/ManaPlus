@@ -142,7 +142,7 @@ class TouchManager final : public ConfigListener
 
         void unloadTouchItem(TouchItem **unloadItem);
 
-        void optionChanged(const std::string &value);
+        void optionChanged(const std::string &value) override final;
 
         void loadPad();
 

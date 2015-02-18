@@ -71,7 +71,7 @@ class Minimap final : public Window, public ConfigListener
 
         void screenToMap(int &x, int &y);
 
-        void optionChanged(const std::string &name);
+        void optionChanged(const std::string &name) override final;
 
     private:
         void deleteMapImage();

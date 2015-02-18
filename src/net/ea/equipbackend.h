@@ -56,7 +56,7 @@ class EquipBackend final : public Equipment::Backend
                 return nullptr;
         }
 
-        void clear()
+        void clear() override final
         {
             Inventory *const inv = PlayerInfo::getInventory();
             if (!inv)

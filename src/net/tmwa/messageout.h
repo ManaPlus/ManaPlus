@@ -50,11 +50,11 @@ class MessageOut final : public Net::MessageOut
 
         /**< Writes a short. */
         void writeInt16(const int16_t value,
-                        const char *const str);
+                        const char *const str) override final;
 
         /**< Writes a long. */
         void writeInt32(const int32_t value,
-                        const char *const str);
+                        const char *const str) override final;
 
         /**
          * Encodes coordinates and direction in 3 bytes.
@@ -68,7 +68,7 @@ class MessageOut final : public Net::MessageOut
         { mPos = 0; }
 
     private:
-        void expand(const size_t size);
+        void expand(const size_t size) override final;
 
         Network *mNetwork;
 };

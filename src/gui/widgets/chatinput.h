@@ -54,7 +54,7 @@ class ChatInput final : public TextField
          * Called if the chat input loses focus. It will set itself to
          * invisible as result.
          */
-        void focusLost(const Event &event)
+        void focusLost(const Event &event) override final
         {
             TextField::focusLost(event);
             if (mFocusGaining || !config.getBoolValue("protectChatFocus"))

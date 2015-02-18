@@ -155,7 +155,7 @@ class GuiTable final : public Widget,
         // Constraints inherited from TableModelListener
         void modelUpdated(const bool completed) override final;
 
-        void requestFocus();
+        void requestFocus() override;
 
         void setSelectable(bool b)
         { mSelectable = b; }

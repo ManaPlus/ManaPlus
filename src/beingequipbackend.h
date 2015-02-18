@@ -36,9 +36,9 @@ class BeingEquipBackend final : public Equipment::Backend
 
         ~BeingEquipBackend();
 
-        Item *getEquipment(const int index) const A_WARN_UNUSED;
+        Item *getEquipment(const int index) const override final A_WARN_UNUSED;
 
-        void clear();
+        void clear() override final;
 
         void setEquipment(const int index, Item *const item);
 

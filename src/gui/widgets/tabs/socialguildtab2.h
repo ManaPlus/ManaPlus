@@ -72,7 +72,7 @@ class SocialGuildTab2 final : public SocialTab,
         }
 
         void buildCounter(const int online0 A_UNUSED,
-                          const int total0 A_UNUSED)
+                          const int total0 A_UNUSED) override final
         {
             if (!localPlayer)
                 return;
