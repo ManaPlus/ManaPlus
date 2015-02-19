@@ -61,7 +61,7 @@ void WhisperTab::handleInput(const std::string &msg)
         chatLog("?", newMsg);
 }
 
-void WhisperTab::handleCommand(const std::string &msg)
+void WhisperTab::handleCommandStr(const std::string &msg)
 {
     if (msg == "close")
     {
@@ -85,7 +85,7 @@ void WhisperTab::handleCommand(const std::string &msg)
     }
     else
     {
-        ChatTab::handleCommand(msg);
+        ChatTab::handleCommandStr(msg);
     }
 }
 

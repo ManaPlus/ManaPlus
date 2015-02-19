@@ -184,7 +184,7 @@ class ChatTab notfinal : public Tab
 
         virtual void handleInput(const std::string &msg);
 
-        virtual void handleCommand(const std::string &msg);
+        virtual void handleCommandStr(const std::string &msg);
 
         virtual void handleHelp(const std::string &msg);
 

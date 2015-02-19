@@ -64,7 +64,7 @@ class WhisperTab final : public ChatTab
 
         void handleInput(const std::string &msg) override final;
 
-        void handleCommand(const std::string &msg) override final;
+        void handleCommandStr(const std::string &msg) override final;
 
     private:
         std::string mNick;

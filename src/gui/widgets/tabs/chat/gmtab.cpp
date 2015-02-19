@@ -47,7 +47,7 @@ void GmTab::handleInput(const std::string &msg)
     chatHandler->channelMessage(mChannelName, ChatWindow::doReplace(msg));
 }
 
-void GmTab::handleCommand(const std::string &msg A_UNUSED)
+void GmTab::handleCommandStr(const std::string &msg A_UNUSED)
 {
 }
 

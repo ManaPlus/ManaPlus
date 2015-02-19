@@ -40,7 +40,7 @@ class GmTab final : public ChatTab
 
         void handleInput(const std::string &msg) override final;
 
-        void handleCommand(const std::string &msg) override final;
+        void handleCommandStr(const std::string &msg) override final;
 };
 
 extern GmTab *gmChatTab;

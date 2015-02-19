@@ -407,7 +407,7 @@ void ChatTab::chatInput(const std::string &message)
     switch (msg[0])
     {
         case '/':
-            handleCommand(std::string(msg, 1));
+            handleCommandStr(std::string(msg, 1));
             break;
         case '?':
             if (msg.size() > 1)
@@ -441,7 +441,7 @@ void ChatTab::handleInput(const std::string &msg)
         mChannelName);
 }
 
-void ChatTab::handleCommand(const std::string &msg)
+void ChatTab::handleCommandStr(const std::string &msg)
 {
     const size_t pos = msg.find(' ');
     const std::string type(msg, 0, pos);
