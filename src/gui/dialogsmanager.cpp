@@ -78,7 +78,7 @@ void DialogsManager::closeDialogs()
     NpcDialog::closeAll();
     SellDialog::closeAll();
     if (inventoryHandler)
-        inventoryHandler->closeStorage();
+        inventoryHandler->destroyStorage();
     if (deathNotice)
     {
         deathNotice->scheduleDelete();

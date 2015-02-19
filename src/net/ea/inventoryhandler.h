@@ -85,7 +85,7 @@ class InventoryHandler notfinal : public Net::InventoryHandler
 
         static void processPlayerArrowEquip(Net::MessageIn &msg);
 
-        void closeStorage() override final;
+        void destroyStorage() override final;
 
         void forgotStorage() override final;
 

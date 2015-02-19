@@ -317,7 +317,7 @@ void InventoryHandler::processPlayerArrowEquip(Net::MessageIn &msg)
     BLOCK_END("InventoryHandler::processPlayerArrowEquip")
 }
 
-void InventoryHandler::closeStorage()
+void InventoryHandler::destroyStorage()
 {
     BLOCK_START("InventoryHandler::closeStorage")
     if (storageWindow)

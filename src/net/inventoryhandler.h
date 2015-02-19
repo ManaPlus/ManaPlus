@@ -69,7 +69,7 @@ class InventoryHandler notfinal
 
         virtual Inventory *getStorage() const = 0;
 
-        virtual void closeStorage() = 0;
+        virtual void destroyStorage() = 0;
 
         virtual void forgotStorage() = 0;
 
