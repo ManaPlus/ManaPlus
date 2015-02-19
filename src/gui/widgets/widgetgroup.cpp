@@ -50,7 +50,7 @@ void WidgetGroup::addButton(const std::string &restrict text,
     {
         widget->setActionEventId(mActionEventId + tag);
         widget->addActionListener(this);
-        add(widget, mSpacing);
+        addWidget(widget, mSpacing);
     }
 }
 
@@ -63,7 +63,8 @@ void WidgetGroup::action(const ActionEvent &event)
     }
 }
 
-void WidgetGroup::add(Widget *const widget, const int spacing)
+void WidgetGroup::addWidget(Widget *const widget,
+                            const int spacing)
 {
     if (!widget)
         return;

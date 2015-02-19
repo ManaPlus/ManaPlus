@@ -93,12 +93,13 @@ void Desktop::postInit()
 {
     if (mSkin)
     {
-        add(mVersionLabel, mSkin->getOption("versionX", 25),
+        addXY(mVersionLabel,
+            mSkin->getOption("versionX", 25),
             mSkin->getOption("versionY", 2));
     }
     else
     {
-        add(mVersionLabel, 25, 2);
+        addXY(mVersionLabel, 25, 2);
     }
 }
 

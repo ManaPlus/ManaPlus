@@ -130,7 +130,7 @@ class BasicContainer2: public BasicContainer
           * @param y The y coordinate for the widget.
           * @see remove, clear
           */
-        virtual void add(Widget* widget, int x, int y);
+        virtual void addXY(Widget* widget, int x, int y);
 
         /**
           * Removes a widget from the Container.

@@ -107,7 +107,7 @@ void BasicContainer2::add(Widget* widget)
     BasicContainer::add(widget);
 }
 
-void BasicContainer2::add(Widget* widget, int x, int y)
+void BasicContainer2::addXY(Widget* widget, int x, int y)
 {
     widget->setPosition(x, y);
     BasicContainer::add(widget);
