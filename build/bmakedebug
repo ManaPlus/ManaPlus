@@ -39,7 +39,7 @@ export CXXFLAGS="-ggdb3 -O2 -pipe -ffast-math \
 -Wunused-but-set-parameter -Wunused-but-set-variable -Wunused-function \
 -Wunused-label -Wunused-parameter -Wunused-value -Wunused-variable -ftrapv \
 -fsched-pressure \
--Wconditionally-supported -Wdate-time \
+-Wconditionally-supported -Wdate-time -Woverloaded-virtual \
 -fno-var-tracking"
 
 autoreconf -i
