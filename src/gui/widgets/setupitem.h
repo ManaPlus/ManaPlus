@@ -78,7 +78,7 @@ class SetupItem notfinal : public ActionListener,
 
         virtual void action(const ActionEvent &event) override;
 
-        virtual void action();
+        virtual void doAction();
 
         virtual void apply(const std::string &eventName);
 

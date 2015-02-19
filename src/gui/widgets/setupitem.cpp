@@ -163,10 +163,10 @@ void SetupItem::action(const ActionEvent &event)
         return;
 
     if (event.getId() == mWidget->getActionEventId())
-        action();
+        doAction();
 }
 
-void SetupItem::action()
+void SetupItem::doAction()
 {
     fromWidget();
 }
