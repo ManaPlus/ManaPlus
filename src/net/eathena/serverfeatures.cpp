@@ -67,7 +67,7 @@ bool ServerFeatures::haveLangTab() const
 
 bool ServerFeatures::havePlayerStatusUpdate() const
 {
-    return false;
+    return serverVersion >= 5;
 }
 
 bool ServerFeatures::haveBrokenPlayerAttackDistance() const

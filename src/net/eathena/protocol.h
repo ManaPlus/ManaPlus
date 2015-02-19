@@ -573,4 +573,6 @@
 #define CMSG_SEARCHSTORE_CLOSE       0x083b
 #define CMSG_SEARCHSTORE_CLICK       0x0835
 
+#define CMSG_SET_STATUS              0x0b0e
+
 #endif  // NET_EATHENA_PROTOCOL_H

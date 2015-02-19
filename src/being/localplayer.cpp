@@ -3260,9 +3260,11 @@ void LocalPlayer::updateStatus() const
     if (serverFeatures->havePlayerStatusUpdate() && mEnableAdvert)
     {
         uint8_t status = 0;
-        if (mTradebot && shopWindow && !shopWindow->isShopEmpty())
-            status |= BeingFlag::SHOP;
-
+        if (!serverFeatures->haveVending())
+        {
+            if (mTradebot && shopWindow && !shopWindow->isShopEmpty())
+                status |= BeingFlag::SHOP;
+        }
         if (settings.awayMode || settings.pseudoAwayMode)
             status |= BeingFlag::AWAY;
 

@@ -251,8 +251,11 @@ void PlayerHandler::requestOnlineList() const
 {
 }
 
-void PlayerHandler::updateStatus(const uint8_t status A_UNUSED) const
+void PlayerHandler::updateStatus(const uint8_t status) const
 {
+    createOutPacket(CMSG_SET_STATUS);
+    outMsg.writeInt8(status, "status");
+    outMsg.writeInt8(0, "unused");
 }
 
 void PlayerHandler::setShortcut(const int idx,
