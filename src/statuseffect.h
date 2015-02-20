@@ -77,6 +77,9 @@ class StatusEffect final
         bool isPoison() const A_WARN_UNUSED
         { return mIsPoison; }
 
+        bool isCart() const A_WARN_UNUSED
+        { return mIsCart; }
+
         /**
          * Retrieves a status effect.
          *

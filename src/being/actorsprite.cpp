@@ -220,7 +220,7 @@ void ActorSprite::updateStatusEffect(const int index, const bool newStatus)
         return;
     if (effect->isPoison() && getType() == ActorType::Player)
         setPoison(newStatus);
-    if (localPlayer == this)
+    if (effect->isCart() && localPlayer == this)
         setHaveCart(newStatus);
     handleStatusEffect(effect, index);
 }
