@@ -22,17 +22,11 @@
 
 #include "net/tmwa/playerhandler.h"
 
-#include "configuration.h"
-
-#include "being/beingflag.h"
 #include "being/localplayer.h"
 
 #include "enums/being/attributes.h"
 
-#include "gui/onlineplayer.h"
-
 #include "gui/windows/statuswindow.h"
-#include "gui/windows/whoisonline.h"
 
 #include "net/tmwa/inventoryhandler.h"
 #include "net/tmwa/messageout.h"
@@ -245,65 +239,6 @@ void PlayerHandler::changeCart(const int type A_UNUSED) const
 
 void PlayerHandler::setMemo() const
 {
-}
-
-void PlayerHandler::processOnlineList(Net::MessageIn &msg)
-{
-    if (!whoIsOnline)
-        return;
-
-    BLOCK_START("PlayerHandler::processOnlineList")
-    const int size = msg.readInt16("len") - 4;
-    std::vector<OnlinePlayer*> arr;
-
-    if (!size)
-    {
-        if (whoIsOnline)
-            whoIsOnline->loadList(arr);
-        BLOCK_END("PlayerHandler::processOnlineList")
-        return;
-    }
-
-    char *const start = reinterpret_cast<char*>(msg.readBytes(size, "nicks"));
-    if (!start)
-    {
-        BLOCK_END("PlayerHandler::processOnlineList")
-        return;
-    }
-
-    const char *buf = start;
-
-    int addVal = 3;
-
-    while (buf - start + 1 < size
-           && *(buf + static_cast<size_t>(addVal)))
-    {
-        unsigned char status = *buf;
-        buf ++;
-        unsigned char level = *buf;
-        buf ++;
-        unsigned char ver = *buf;
-        buf ++;
-
-        unsigned char gender = Gender::UNSPECIFIED;
-        if (config.getBoolValue("showgender"))
-        {
-            if (status & BeingFlag::GENDER_MALE)
-                gender = Gender::MALE;
-            else if (status & BeingFlag::GENDER_OTHER)
-                gender = Gender::OTHER;
-            else
-                gender = Gender::FEMALE;
-        }
-        arr.push_back(new OnlinePlayer(static_cast<const char*>(buf),
-            status, level, gender, ver));
-        buf += strlen(buf) + 1;
-    }
-
-    if (whoIsOnline)
-        whoIsOnline->loadList(arr);
-    delete [] start;
-    BLOCK_END("PlayerHandler::processOnlineList")
 }
 
 void PlayerHandler::updateStatus(const uint8_t status) const

@@ -22,20 +22,24 @@
 
 #include "net/ea/playerhandler.h"
 
+#include "configuration.h"
 #include "game.h"
 #include "party.h"
 #include "notifymanager.h"
 #include "soundmanager.h"
 #include "units.h"
 
+#include "being/beingflag.h"
 #include "being/localplayer.h"
 
 #include "enums/being/attributes.h"
 
+#include "gui/onlineplayer.h"
 #include "gui/viewport.h"
 
 #include "gui/windows/skilldialog.h"
 #include "gui/windows/statuswindow.h"
+#include "gui/windows/whoisonline.h"
 
 #include "resources/notifytypes.h"
 
@@ -469,6 +473,65 @@ void PlayerHandler::processMapMusic(Net::MessageIn &msg)
     Map *const map = viewport->getMap();
     if (map)
         map->setMusicFile(music);
+}
+
+void PlayerHandler::processOnlineList(Net::MessageIn &msg)
+{
+    if (!whoIsOnline)
+        return;
+
+    BLOCK_START("PlayerHandler::processOnlineList")
+    const int size = msg.readInt16("len") - 4;
+    std::vector<OnlinePlayer*> arr;
+
+    if (!size)
+    {
+        if (whoIsOnline)
+            whoIsOnline->loadList(arr);
+        BLOCK_END("PlayerHandler::processOnlineList")
+        return;
+    }
+
+    char *const start = reinterpret_cast<char*>(msg.readBytes(size, "nicks"));
+    if (!start)
+    {
+        BLOCK_END("PlayerHandler::processOnlineList")
+        return;
+    }
+
+    const char *buf = start;
+
+    int addVal = 3;
+
+    while (buf - start + 1 < size
+           && *(buf + static_cast<size_t>(addVal)))
+    {
+        unsigned char status = *buf;
+        buf ++;
+        unsigned char level = *buf;
+        buf ++;
+        unsigned char ver = *buf;
+        buf ++;
+
+        unsigned char gender = Gender::UNSPECIFIED;
+        if (config.getBoolValue("showgender"))
+        {
+            if (status & BeingFlag::GENDER_MALE)
+                gender = Gender::MALE;
+            else if (status & BeingFlag::GENDER_OTHER)
+                gender = Gender::OTHER;
+            else
+                gender = Gender::FEMALE;
+        }
+        arr.push_back(new OnlinePlayer(static_cast<const char*>(buf),
+            status, level, gender, ver));
+        buf += strlen(buf) + 1;
+    }
+
+    if (whoIsOnline)
+        whoIsOnline->loadList(arr);
+    delete [] start;
+    BLOCK_END("PlayerHandler::processOnlineList")
 }
 
 }  // namespace Ea

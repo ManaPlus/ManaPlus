@@ -52,7 +52,6 @@ class PlayerHandler final : public MessageHandler, public Ea::PlayerHandler
                             const int direction) const override final;
         void changeAction(const BeingAction::Action &action)
                           const override final;
-        static void processOnlineList(Net::MessageIn &msg);
         void requestOnlineList() const override final;
         void updateStatus(const uint8_t status) const override final;
 

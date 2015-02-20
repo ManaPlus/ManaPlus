@@ -291,8 +291,7 @@
 #define SMSG_MAP_TYPE_PROPERTY2      0x099b
 #define SMSG_MAP_TYPE                0x01d6
 #define SMSG_IGNORE_ALL_RESPONSE     0x00d2
-// unused for now
-#define SMSG_ONLINE_LIST             0x0211
+
 #define SMSG_NPC_COMMAND             0x0B00
 
 #define SMSG_MAP_ACCOUNT_ID          0x0283
@@ -347,6 +346,8 @@
 #define SMSG_SEARCHSTORE_SEARCH_FAILED 0x0837
 #define SMSG_SEARCHSTORE_OPEN        0x083a
 #define SMSG_SEARCHSTORE_CLICK_ACK   0x083d
+
+#define SMSG_ONLINE_LIST             0x0b10
 
 /**********************************
  *  Packets from client to server *
@@ -574,5 +575,7 @@
 #define CMSG_SEARCHSTORE_CLICK       0x0835
 
 #define CMSG_SET_STATUS              0x0b0e
+
+#define CMSG_ONLINE_LIST             0x0b0f
 
 #endif  // NET_EATHENA_PROTOCOL_H

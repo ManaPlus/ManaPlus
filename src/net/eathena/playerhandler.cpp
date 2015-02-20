@@ -62,6 +62,7 @@ PlayerHandler::PlayerHandler() :
         SMSG_PLAYER_SKILL_MESSAGE,
         SMSG_MAP_MASK,
         SMSG_MAP_MUSIC,
+        SMSG_ONLINE_LIST,
         0
     };
     handledMessages = _messages;
@@ -139,6 +140,10 @@ void PlayerHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_MAP_MUSIC:
             processMapMusic(msg);
+            break;
+
+        case SMSG_ONLINE_LIST:
+            processOnlineList(msg);
             break;
 
         default:
@@ -249,6 +254,7 @@ void PlayerHandler::respawn() const
 
 void PlayerHandler::requestOnlineList() const
 {
+    createOutPacket(CMSG_ONLINE_LIST);
 }
 
 void PlayerHandler::updateStatus(const uint8_t status) const

@@ -37,7 +37,7 @@ ServerFeatures::ServerFeatures()
 
 bool ServerFeatures::haveServerOnlineList() const
 {
-    return false;
+    return serverVersion >= 5;
 }
 
 bool ServerFeatures::haveOnlineList() const
