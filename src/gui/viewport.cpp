@@ -474,6 +474,16 @@ bool Viewport::leftMouseAction()
         validateSpeed();
         localPlayer->pickUp(mHoverItem);
     }
+    else if (inputManager.isActionActive(InputAction::STOP_ATTACK))
+    {
+        const int mouseTileX = (mMouseX + mPixelViewX)
+            / mMap->getTileWidth();
+        const int mouseTileY = (mMouseY + mPixelViewY)
+            / mMap->getTileHeight();
+        inputManager.executeChatCommand(InputAction::PET_MOVE,
+            strprintf("%d %d", mouseTileX, mouseTileY),
+            nullptr);
+    }
     // Just walk around
     else if (!inputManager.isActionActive(static_cast<int>(
              InputAction::ATTACK)))
