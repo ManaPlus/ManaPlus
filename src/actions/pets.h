@@ -42,6 +42,7 @@ namespace Actions
     decHandler(petDirectRight);
     decHandler(petAiStart);
     decHandler(petAiStop);
+    decHandler(petMove);
 }  // namespace Actions
 
 #undef decHandler

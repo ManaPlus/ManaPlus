@@ -537,6 +537,7 @@ namespace InputAction
         DROP_CLEAR,
         WINDOW_CART,
         HEAL_MOST_DAMAGED,
+        PET_MOVE,
         TOTAL
     };
 }  // namespace InputAction

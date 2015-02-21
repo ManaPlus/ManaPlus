@@ -3979,6 +3979,11 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputCondition::GAME | InputCondition::VALIDSPEED,
         "healmd|saveass",
         false},
+    {"keyPetMove",
+        defaultAction(&Actions::petMove),
+        InputCondition::INGAME,
+        "movepet|petmove",
+        true},
 };
 
 #undef defaultAction

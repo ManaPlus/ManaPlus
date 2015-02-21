@@ -191,4 +191,21 @@ impHandler0(petAiStop)
     return true;
 }
 
+impHandler0(petMove)
+{
+    const Being *const pet = getPet();
+    if (!pet)
+        return false;
+
+    int x = 0;
+    int y = 0;
+
+    if (parse2Int(event.args, x, y))
+    {
+        petHandler->move(pet->getId(), x, y);
+        return true;
+    }
+    return false;
+}
+
 }  // namespace Actions
