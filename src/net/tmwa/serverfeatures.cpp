@@ -209,4 +209,9 @@ bool ServerFeatures::haveTalkPet() const
     return true;
 }
 
+bool ServerFeatures::haveMovePet() const
+{
+    return true;
+}
+
 }  // namespace TmwAthena

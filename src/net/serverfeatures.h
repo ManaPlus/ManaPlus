@@ -100,6 +100,8 @@ class ServerFeatures notfinal
         virtual bool haveCart() const = 0;
 
         virtual bool haveTalkPet() const = 0;
+
+        virtual bool haveMovePet() const = 0;
 };
 
 }  // namespace Net

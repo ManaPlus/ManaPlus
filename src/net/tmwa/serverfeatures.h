@@ -103,6 +103,8 @@ class ServerFeatures final : public Net::ServerFeatures
         bool haveCart() const override final;
 
         bool haveTalkPet() const override final;
+
+        bool haveMovePet() const override final;
 };
 
 }  // namespace TmwAthena

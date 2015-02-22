@@ -210,4 +210,9 @@ bool ServerFeatures::haveTalkPet() const
     return serverVersion >= 5;
 }
 
+bool ServerFeatures::haveMovePet() const
+{
+    return serverVersion >= 5;
+}
+
 }  // namespace EAthena
