@@ -124,7 +124,7 @@ impHandler0(petMoveUp)
     const Being *const pet = getPet();
     if (!pet)
         return false;
-    petHandler->move(pet->getId(), pet->getTileX(), pet->getTileY() - 1);
+    petHandler->move(0, pet->getTileX(), pet->getTileY() - 1);
     return true;
 }
 
@@ -133,7 +133,7 @@ impHandler0(petMoveDown)
     const Being *const pet = getPet();
     if (!pet)
         return false;
-    petHandler->move(pet->getId(), pet->getTileX(), pet->getTileY() + 1);
+    petHandler->move(0, pet->getTileX(), pet->getTileY() + 1);
     return true;
 }
 
@@ -142,7 +142,7 @@ impHandler0(petMoveLeft)
     const Being *const pet = getPet();
     if (!pet)
         return false;
-    petHandler->move(pet->getId(), pet->getTileX() - 1, pet->getTileY());
+    petHandler->move(0, pet->getTileX() - 1, pet->getTileY());
     return true;
 }
 
@@ -151,12 +151,15 @@ impHandler0(petMoveRight)
     const Being *const pet = getPet();
     if (!pet)
         return false;
-    petHandler->move(pet->getId(), pet->getTileX() + 1, pet->getTileY());
+    petHandler->move(0, pet->getTileX() + 1, pet->getTileY());
     return true;
 }
 
 impHandler0(petDirectUp)
 {
+    const Being *const pet = getPet();
+    if (!pet)
+        return false;
     petHandler->setDirection(BeingDirection::UP);
     return true;
 }
@@ -193,16 +196,12 @@ impHandler0(petAiStop)
 
 impHandler0(petMove)
 {
-    const Being *const pet = getPet();
-    if (!pet)
-        return false;
-
     int x = 0;
     int y = 0;
 
     if (parse2Int(event.args, x, y))
     {
-        petHandler->move(pet->getId(), x, y);
+        petHandler->move(0, x, y);
         return true;
     }
     return false;

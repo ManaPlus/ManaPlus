@@ -36,6 +36,7 @@
 
 #include "net/chathandler.h"
 #include "net/inventoryhandler.h"
+#include "net/serverfeatures.h"
 
 #include "net/ea/eaprotocol.h"
 
@@ -109,8 +110,14 @@ void PetHandler::handleMessage(Net::MessageIn &msg)
 }
 
 void PetHandler::move(const int petId A_UNUSED,
-                      const int x A_UNUSED, const int y A_UNUSED) const
+                      const int x, const int y) const
 {
+    if (!serverFeatures->haveMovePet())
+        return;
+    createOutPacket(CMSG_PET_MOVE_TO);
+    outMsg.writeInt32(0, "pet id");
+    outMsg.writeInt16(x, "x");
+    outMsg.writeInt16(y, "y");
 }
 
 void PetHandler::spawn(const Being *const being A_UNUSED,
