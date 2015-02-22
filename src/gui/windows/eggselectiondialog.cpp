@@ -63,4 +63,5 @@ void EggSelectionDialog::sellAction(const ActionEvent &event A_UNUSED)
     if (!item)
         return;
     inventoryHandler->selectEgg(item);
+    scheduleDelete();
 }
