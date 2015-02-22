@@ -347,6 +347,10 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
                 mBrowserBox->addRow("pet unequip", _("Unequip"));
                 mBrowserBox->addRow("##3---");
                 // TRANSLATORS: popup menu item
+                // TRANSLATORS: pet rename item
+                mBrowserBox->addRow("/setpetname", _("Rename"));
+                mBrowserBox->addRow("##3---");
+                // TRANSLATORS: popup menu item
                 // TRANSLATORS: pet return to egg
                 mBrowserBox->addRow("pet to egg", _("Return to egg"));
                 mBrowserBox->addRow("##3---");
