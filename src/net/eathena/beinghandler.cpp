@@ -366,6 +366,11 @@ Being *BeingHandler::createBeing2(const int id,
         if (info && info->id == id)
             PlayerInfo::setMercenaryBeing(being);
     }
+    else if (beingType == BeingType::PET)
+    {
+        if (PlayerInfo::getPetBeingId() == id)
+            PlayerInfo::setPetBeing(being);
+    }
     return being;
 }
 

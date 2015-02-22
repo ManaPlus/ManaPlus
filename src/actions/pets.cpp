@@ -61,7 +61,10 @@ static const Being *getPet()
         return *pets.begin();
     }
 #endif
-    return PlayerInfo::getPetBeing();
+    const int id = PlayerInfo::getPetBeingId();
+    if (!id)
+        return nullptr;
+    return actorManager->findBeing(id);
 }
 
 impHandler(commandEmotePet)

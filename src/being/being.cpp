@@ -281,6 +281,7 @@ Being::~Being()
     {
         if (mType == ActorType::LocalPet)
             mOwner->unassignPet(this);
+
         mOwner = nullptr;
     }
     FOR_EACH (std::vector<Being*>::iterator, it, mPets)

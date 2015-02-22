@@ -251,7 +251,7 @@ namespace PlayerInfo
 
     void setPetBeing(Being *const being);
 
-    Being *getPetBeing();
+    int getPetBeingId();
 
     HomunculusInfo *getHomunculus();
 
