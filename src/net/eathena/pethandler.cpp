@@ -328,7 +328,8 @@ void PetHandler::setDirection(const unsigned char type) const
     outMsg.writeInt32(0, "pet id");
     outMsg.writeInt8(0, "head direction");
     outMsg.writeInt8(0, "unused");
-    outMsg.writeInt8(type, "pet direction");
+    outMsg.writeInt8(MessageOut::toServerDirection(type),
+        "pet direction");
 }
 
 void PetHandler::startAi(const bool start A_UNUSED) const

@@ -157,9 +157,6 @@ impHandler0(petMoveRight)
 
 impHandler0(petDirectUp)
 {
-    const Being *const pet = getPet();
-    if (!pet)
-        return false;
     petHandler->setDirection(BeingDirection::UP);
     return true;
 }

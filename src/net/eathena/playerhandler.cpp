@@ -209,7 +209,8 @@ void PlayerHandler::setDirection(const unsigned char direction) const
     createOutPacket(CMSG_PLAYER_CHANGE_DIR);
     outMsg.writeInt8(0, "head direction");
     outMsg.writeInt8(0, "unused");
-    outMsg.writeInt8(direction, "player direction");
+    outMsg.writeInt8(MessageOut::toServerDirection(direction),
+        "player direction");
 }
 
 void PlayerHandler::setDestination(const int x, const int y,
