@@ -324,6 +324,8 @@ void PetHandler::unequip() const
 
 void PetHandler::setDirection(const unsigned char type) const
 {
+    if (!serverFeatures->haveMovePet())
+        return;
     createOutPacket(CMSG_PET_DIRECTION);
     outMsg.writeInt32(0, "pet id");
     outMsg.writeInt8(0, "head direction");
