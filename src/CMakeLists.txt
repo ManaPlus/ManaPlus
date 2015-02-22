@@ -1103,6 +1103,8 @@ SET(SRCS
     listeners/guiconfiglistener.h
     listeners/guitableactionlistener.cpp
     listeners/guitableactionlistener.h
+    listeners/inputactionreplaylistener.cpp
+    listeners/inputactionreplaylistener.h
     listeners/inventorylistener.h
     events/inputguievent.h
     input/key.h

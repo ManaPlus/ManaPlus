@@ -31,12 +31,15 @@
 
 #include "gui/chatconsts.h"
 
+#include "listeners/inputactionreplaylistener.h"
+
 #include "net/chathandler.h"
 #include "net/net.h"
 #include "net/pethandler.h"
 #include "net/serverfeatures.h"
 
 #include "utils/chatutils.h"
+#include "utils/gettext.h"
 #include "utils/stringutils.h"
 
 #include "debug.h"
@@ -85,7 +88,15 @@ impHandler(setPetName)
 {
     const std::string args = event.args;
     if (args.empty())
+    {
+        const Being *const pet = getPet();
+        if (!pet)
+            return false;
+        inputActionReplayListener.openDialog(_("Rename your pet"),
+            pet->getName(),
+            InputAction::PET_SET_NAME);
         return false;
+    }
 
     petHandler->setName(args);
     return true;
