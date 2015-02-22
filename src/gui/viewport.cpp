@@ -413,6 +413,7 @@ bool Viewport::openContextMenu(const MouseEvent &event)
 
 bool Viewport::leftMouseAction()
 {
+    const bool stopAttack = inputManager.isActionActive(InputAction::STOP_ATTACK);
     // Interact with some being
     if (mHoverBeing)
     {
@@ -440,11 +441,11 @@ bool Viewport::leftMouseAction()
                     return true;
                 }
             }
-            else if (type == ActorType::Monster || type == ActorType::Npc)
+            else if (!stopAttack && (type == ActorType::Monster || type == ActorType::Npc))
             {
-                if (localPlayer->withinAttackRange(mHoverBeing) ||
+                if ((localPlayer->withinAttackRange(mHoverBeing) ||
                     inputManager.isActionActive(static_cast<int>(
-                    InputAction::ATTACK)))
+                    InputAction::ATTACK))))
                 {
                     validateSpeed();
                     if (!mStatsReUpdated && localPlayer != mHoverBeing)
@@ -474,7 +475,7 @@ bool Viewport::leftMouseAction()
         validateSpeed();
         localPlayer->pickUp(mHoverItem);
     }
-    else if (inputManager.isActionActive(InputAction::STOP_ATTACK))
+    else if (stopAttack)
     {
         const int mouseTileX = (mMouseX + mPixelViewX)
             / mMap->getTileWidth();
@@ -483,6 +484,7 @@ bool Viewport::leftMouseAction()
         inputManager.executeChatCommand(InputAction::PET_MOVE,
             strprintf("%d %d", mouseTileX, mouseTileY),
             nullptr);
+        return true;
     }
     // Just walk around
     else if (!inputManager.isActionActive(static_cast<int>(
