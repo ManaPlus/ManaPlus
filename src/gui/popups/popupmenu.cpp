@@ -334,20 +334,23 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
             break;
 
         case ActorType::Pet:
-            // TRANSLATORS: popup menu item
-            // TRANSLATORS: feed pet
-            mBrowserBox->addRow("pet feed", _("Feed"));
-            // TRANSLATORS: popup menu item
-            // TRANSLATORS: pet drop loot
-            mBrowserBox->addRow("pet drop loot", _("Drop loot"));
-            // TRANSLATORS: popup menu item
-            // TRANSLATORS: pet unequip item
-            mBrowserBox->addRow("pet unequip", _("Unequip"));
-            mBrowserBox->addRow("##3---");
-            // TRANSLATORS: popup menu item
-            // TRANSLATORS: pet return to egg
-            mBrowserBox->addRow("pet to egg", _("Return to egg"));
-            mBrowserBox->addRow("##3---");
+            if (being->getOwner() == localPlayer)
+            {
+                // TRANSLATORS: popup menu item
+                // TRANSLATORS: feed pet
+                mBrowserBox->addRow("pet feed", _("Feed"));
+                // TRANSLATORS: popup menu item
+                // TRANSLATORS: pet drop loot
+                mBrowserBox->addRow("pet drop loot", _("Drop loot"));
+                // TRANSLATORS: popup menu item
+                // TRANSLATORS: pet unequip item
+                mBrowserBox->addRow("pet unequip", _("Unequip"));
+                mBrowserBox->addRow("##3---");
+                // TRANSLATORS: popup menu item
+                // TRANSLATORS: pet return to egg
+                mBrowserBox->addRow("pet to egg", _("Return to egg"));
+                mBrowserBox->addRow("##3---");
+            }
             break;
 
         case ActorType::Avatar:

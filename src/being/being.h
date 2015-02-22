@@ -840,6 +840,9 @@ class Being notfinal : public ActorSprite,
         void setOwner(Being *const owner)
         { mOwner = owner; }
 
+        Being *getOwner() const
+        { return mOwner; }
+
         void unassignPet(const Being *const pet);
 
         void removeAllPets();
