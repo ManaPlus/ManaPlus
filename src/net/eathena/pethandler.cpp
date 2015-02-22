@@ -322,8 +322,13 @@ void PetHandler::unequip() const
     outMsg.writeInt8(4, "action");
 }
 
-void PetHandler::setDirection(const BeingDirection::Type type A_UNUSED) const
+void PetHandler::setDirection(const unsigned char type) const
 {
+    createOutPacket(CMSG_PET_DIRECTION);
+    outMsg.writeInt32(0, "pet id");
+    outMsg.writeInt8(0, "head direction");
+    outMsg.writeInt8(0, "unused");
+    outMsg.writeInt8(type, "pet direction");
 }
 
 void PetHandler::startAi(const bool start A_UNUSED) const

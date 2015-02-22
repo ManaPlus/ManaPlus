@@ -107,7 +107,7 @@ void PetHandler::unequip() const
 {
 }
 
-void PetHandler::setDirection(const BeingDirection::Type type) const
+void PetHandler::setDirection(const unsigned char type) const
 {
     chatHandler->talk(strprintf("\302\202\302d%dg%d",
         static_cast<int>(type), tick_time), GENERAL_CHANNEL);
