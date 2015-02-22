@@ -136,4 +136,41 @@ unsigned int MessageOut::getDataSize() const
     return mDataSize;
 }
 
+unsigned char MessageOut::toServerDirection(unsigned char direction)
+{
+    // Translate direction to eAthena format
+    switch (direction)
+    {
+        case 1:  // DOWN
+            direction = 0;
+            break;
+        case 3:  // DOWN | LEFT
+            direction = 1;
+            break;
+        case 2:  // LEFT
+            direction = 2;
+            break;
+        case 6:  // LEFT | UP
+            direction = 3;
+            break;
+        case 4:  // UP
+            direction = 4;
+            break;
+        case 12: // UP | RIGHT
+            direction = 5;
+            break;
+        case 8:  // RIGHT
+            direction = 6;
+            break;
+        case 9:  // RIGHT + DOWN
+            direction = 7;
+            break;
+        default:
+            // OOPSIE! Impossible or unknown
+            direction = static_cast<unsigned char>(-1);
+            break;
+    }
+    return direction;
+}
+
 }  // namespace Net
