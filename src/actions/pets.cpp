@@ -27,10 +27,12 @@
 #include "actions/actiondef.h"
 
 #include "being/localplayer.h"
+#include "being/playerinfo.h"
 
 #include "gui/chatconsts.h"
 
 #include "net/chathandler.h"
+#include "net/net.h"
 #include "net/pethandler.h"
 #include "net/serverfeatures.h"
 
@@ -44,13 +46,19 @@ namespace Actions
 
 static const Being *getPet()
 {
+#ifdef TMWA_SUPPORT
     if (!localPlayer)
         return nullptr;
 
-    const std::vector<Being*> &pets = localPlayer->getPets();
-    if (pets.empty())
-        return nullptr;
-    return *pets.begin();
+    if (Net::getNetworkType() == ServerType::TMWATHENA)
+    {
+        const std::vector<Being*> &pets = localPlayer->getPets();
+        if (pets.empty())
+            return nullptr;
+        return *pets.begin();
+    }
+#endif
+    return PlayerInfo::getPetBeing();
 }
 
 impHandler(commandEmotePet)

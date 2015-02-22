@@ -64,6 +64,7 @@ Equipment *mEquipment = nullptr;
 MercenaryInfo *mMercenary = nullptr;
 HomunculusInfo *mHomunculus = nullptr;
 PetInfo *mPet = nullptr;
+Being *mPetBeing = nullptr;
 GuildPositionFlags::Type mGuildPositionFlags = GuildPositionFlags::None;
 
 bool mTrading = false;
@@ -394,6 +395,7 @@ void deinit()
 {
     clearInventory();
     delete2(mMercenary);
+    mPetBeing = nullptr;
 }
 
 void loadData()
@@ -406,6 +408,7 @@ void loadData()
 void clear()
 {
     mData.mSkills.clear();
+    mPetBeing = nullptr;
 }
 
 bool isTalking()
@@ -505,6 +508,7 @@ void setPet(PetInfo *const info)
 
 void setPetBeing(Being *const being)
 {
+    mPetBeing = being;
     if (!being || !mPet)
         return;
     being->setName(mPet->name);
@@ -515,6 +519,11 @@ void setPetBeing(Being *const being)
 PetInfo *getPet()
 {
     return mPet;
+}
+
+Being *getPetBeing()
+{
+    return mPetBeing;
 }
 
 void setHomunculus(HomunculusInfo *const info)
