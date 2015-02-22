@@ -493,6 +493,14 @@ namespace NotifyManager
             // TRANSLATORS: notification message
             N_("No store information available."),
             NotifyFlags::EMPTY},
+        {"pet feed ok",
+            // TRANSLATORS: notification message
+            N_("Pet feeding success."),
+            NotifyFlags::EMPTY},
+        {"pet feed error",
+            // TRANSLATORS: notification message
+            N_("Pet feeding error."),
+            NotifyFlags::EMPTY},
     };
 }  // namespace NotifyManager
 #endif  // RESOURCES_NOTIFICATIONS_H

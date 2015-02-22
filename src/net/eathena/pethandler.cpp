@@ -287,8 +287,12 @@ void PetHandler::processPetStatus(Net::MessageIn &msg)
 void PetHandler::processPetFood(Net::MessageIn &msg)
 {
     // +++ need show notification message about success or fail
-    msg.readUInt8("result");
+    const int result = msg.readUInt8("result");
     msg.readInt16("food id");
+    if (result)
+        NotifyManager::notify(NotifyTypes::PET_FEED_OK);
+    else
+        NotifyManager::notify(NotifyTypes::PET_FEED_ERROR);
 }
 
 void PetHandler::requestStatus() const
