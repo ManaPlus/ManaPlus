@@ -45,6 +45,7 @@
 CrazyMoves *crazyMoves = nullptr;
 
 CrazyMoves::CrazyMoves() :
+    mMoveProgram(),
     mDisableCrazyMove(false)
 {
 }
@@ -456,9 +457,273 @@ void CrazyMoves::crazyMove9()
     }
 }
 
+void CrazyMoves::crazyMoveAm()
+{
+    settings.crazyMoveState ++;
+    if (settings.crazyMoveState < mMoveProgram.length())
+    {
+        int dx = 0;
+        int dy = 0;
+
+        signed char param = mMoveProgram[settings.crazyMoveState++];
+        if (param == '?')
+        {
+            const char cmd[] = {'l', 'r', 'u', 'd', 'L', 'R', 'U', 'D'};
+            srand(tick_time);
+            param = cmd[rand() % 8];
+        }
+        switch (param)
+        {
+            case 'd':
+                localPlayer->move(0, 1);
+                break;
+            case 'u':
+                localPlayer->move(0, -1);
+                break;
+            case 'l':
+                localPlayer->move(-1, 0);
+                break;
+            case 'r':
+                localPlayer->move(1, 0);
+                break;
+            case 'D':
+                localPlayer->move(1, 1);
+                break;
+            case 'U':
+                localPlayer->move(-1, -1);
+                break;
+            case 'L':
+                localPlayer->move(-1, 1);
+                break;
+            case 'R':
+                localPlayer->move(1, -1);
+                break;
+            case 'f':
+            {
+                const uint8_t dir = localPlayer->getDirection();
+                if (dir & BeingDirection::UP)
+                    dy = -1;
+                else if (dir & BeingDirection::DOWN)
+                    dy = 1;
+                if (dir & BeingDirection::LEFT)
+                    dx = -1;
+                else if (dir & BeingDirection::RIGHT)
+                    dx = 1;
+                localPlayer->move(dx, dy);
+                break;
+            }
+            case 'b':
+            {
+                const uint8_t dir = localPlayer->getDirection();
+                if (dir & BeingDirection::UP)
+                    dy = 1;
+                else if (dir & BeingDirection::DOWN)
+                    dy = -1;
+                if (dir & BeingDirection::LEFT)
+                    dx = 1;
+                else if (dir & BeingDirection::RIGHT)
+                    dx = -1;
+                localPlayer->move(dx, dy);
+                break;
+            }
+            default:
+                break;
+        }
+    }
+}
+
+void CrazyMoves::crazyMoveAd()
+{
+    settings.crazyMoveState ++;
+
+    if (settings.crazyMoveState < mMoveProgram.length())
+    {
+        signed char param = mMoveProgram[settings.crazyMoveState++];
+        if (param == '?')
+        {
+            const char cmd[] = {'l', 'r', 'u', 'd'};
+            srand(tick_time);
+            param = cmd[rand() % 4];
+        }
+        switch (param)
+        {
+            case 'd':
+//                    if (PacketLimiter::limitPackets(PACKET_DIRECTION))
+                {
+                    localPlayer->setDirection(BeingDirection::DOWN);
+                    playerHandler->setDirection(
+                        BeingDirection::DOWN);
+                }
+                break;
+            case 'u':
+//                    if (PacketLimiter::limitPackets(PACKET_DIRECTION))
+                {
+                    localPlayer->setDirection(BeingDirection::UP);
+                    playerHandler->setDirection(
+                        BeingDirection::UP);
+                }
+                break;
+            case 'l':
+//                    if (PacketLimiter::limitPackets(PACKET_DIRECTION))
+                {
+                    localPlayer->setDirection(BeingDirection::LEFT);
+                    playerHandler->setDirection(
+                        BeingDirection::LEFT);
+                }
+                break;
+            case 'r':
+//                    if (PacketLimiter::limitPackets(PACKET_DIRECTION))
+                {
+                    localPlayer->setDirection(BeingDirection::RIGHT);
+                    playerHandler->setDirection(
+                        BeingDirection::RIGHT);
+                }
+                break;
+            case 'L':
+//                    if (PacketLimiter::limitPackets(PACKET_DIRECTION))
+                {
+                    uint8_t dir = 0;
+                    switch (localPlayer->getDirection())
+                    {
+                        case BeingDirection::UP:
+                            dir = BeingDirection::LEFT;
+                            break;
+                        case BeingDirection::DOWN:
+                            dir = BeingDirection::RIGHT;
+                            break;
+                        case BeingDirection::LEFT:
+                            dir = BeingDirection::DOWN;
+                            break;
+                        case BeingDirection::RIGHT:
+                            dir = BeingDirection::UP;
+                            break;
+                        default:
+                            break;
+                    }
+                    localPlayer->setDirection(dir);
+                    playerHandler->setDirection(dir);
+                }
+                break;
+            case 'R':
+//                    if (PacketLimiter::limitPackets(PACKET_DIRECTION))
+                {
+                    uint8_t dir = 0;
+                    switch (localPlayer->getDirection())
+                    {
+                        case BeingDirection::UP:
+                            dir = BeingDirection::RIGHT;
+                            break;
+                        case BeingDirection::DOWN:
+                            dir = BeingDirection::LEFT;
+                            break;
+                        case BeingDirection::LEFT:
+                            dir = BeingDirection::UP;
+                            break;
+                        case BeingDirection::RIGHT:
+                            dir = BeingDirection::DOWN;
+                            break;
+                        default:
+                            break;
+                    }
+                    localPlayer->setDirection(dir);
+                    playerHandler->setDirection(dir);
+                }
+                break;
+            case 'b':
+//                    if (PacketLimiter::limitPackets(PACKET_DIRECTION))
+                {
+                    uint8_t dir = 0;
+                    switch (localPlayer->getDirection())
+                    {
+                        case BeingDirection::UP:
+                            dir = BeingDirection::DOWN;
+                            break;
+                        case BeingDirection::DOWN:
+                            dir = BeingDirection::UP;
+                            break;
+                        case BeingDirection::LEFT:
+                            dir = BeingDirection::RIGHT;
+                            break;
+                        case BeingDirection::RIGHT:
+                            dir = BeingDirection::LEFT;
+                            break;
+                        default:
+                            break;
+                    }
+                    localPlayer->setDirection(dir);
+                    playerHandler->setDirection(dir);
+                }
+                break;
+            case '0':
+                dropShortcut->dropFirst();
+                break;
+            case 'a':
+                dropShortcut->dropItems();
+                break;
+            default:
+                break;
+        }
+    }
+}
+
+void CrazyMoves::crazyMoveAs()
+{
+    settings.crazyMoveState ++;
+    if (localPlayer->toggleSit())
+        settings.crazyMoveState ++;
+}
+
+void CrazyMoves::crazyMoveAo()
+{
+    settings.crazyMoveState ++;
+    if (settings.crazyMoveState < mMoveProgram.length())
+    {
+        // wear next outfit
+        if (mMoveProgram[settings.crazyMoveState] == 'n')
+        {
+            settings.crazyMoveState ++;
+            outfitWindow->wearNextOutfit();
+        }
+        // wear previous outfit
+        else if (mMoveProgram[settings.crazyMoveState] == 'p')
+        {
+            settings.crazyMoveState ++;
+            outfitWindow->wearPreviousOutfit();
+        }
+    }
+}
+
+void CrazyMoves::crazyMoveAe()
+{
+    settings.crazyMoveState ++;
+    const signed char emo = mMoveProgram[settings.crazyMoveState];
+    unsigned char emoteId = 0;
+    if (emo == '?')
+    {
+        srand(tick_time);
+        emoteId = static_cast<unsigned char>(
+            1 + (rand() % EmoteDB::size()));
+    }
+    else
+    {
+        if (emo >= '0' && emo <= '9')
+            emoteId = static_cast<unsigned char>(emo - '0' + 1);
+        else if (emo >= 'a' && emo <= 'z')
+            emoteId = static_cast<unsigned char>(emo - 'a' + 11);
+        else if (emo >= 'A' && emo <= 'Z')
+            emoteId = static_cast<unsigned char>(emo - 'A' + 37);
+    }
+    if (mMoveProgram[settings.crazyMoveState - 1] == 'e')
+        localPlayer->emote(emoteId);
+    else if (PacketLimiter::limitPackets(PACKET_CHAT))
+        petHandler->emote(emoteId, 0);
+
+    settings.crazyMoveState ++;
+}
+
 void CrazyMoves::crazyMoveA()
 {
-    const std::string mMoveProgram(config.getStringValue("crazyMoveProgram"));
+    mMoveProgram = config.getStringValue("crazyMoveProgram");
 
     if (localPlayer->getCurrentAction() == BeingAction::MOVE)
         return;
@@ -472,239 +737,22 @@ void CrazyMoves::crazyMoveA()
     // move command
     if (mMoveProgram[settings.crazyMoveState] == 'm')
     {
-        settings.crazyMoveState ++;
-        if (settings.crazyMoveState < mMoveProgram.length())
-        {
-            int dx = 0;
-            int dy = 0;
-
-            signed char param = mMoveProgram[settings.crazyMoveState++];
-            if (param == '?')
-            {
-                const char cmd[] = {'l', 'r', 'u', 'd', 'L', 'R', 'U', 'D'};
-                srand(tick_time);
-                param = cmd[rand() % 8];
-            }
-            switch (param)
-            {
-                case 'd':
-                    localPlayer->move(0, 1);
-                    break;
-                case 'u':
-                    localPlayer->move(0, -1);
-                    break;
-                case 'l':
-                    localPlayer->move(-1, 0);
-                    break;
-                case 'r':
-                    localPlayer->move(1, 0);
-                    break;
-                case 'D':
-                    localPlayer->move(1, 1);
-                    break;
-                case 'U':
-                    localPlayer->move(-1, -1);
-                    break;
-                case 'L':
-                    localPlayer->move(-1, 1);
-                    break;
-                case 'R':
-                    localPlayer->move(1, -1);
-                    break;
-                case 'f':
-                {
-                    const uint8_t dir = localPlayer->getDirection();
-                    if (dir & BeingDirection::UP)
-                        dy = -1;
-                    else if (dir & BeingDirection::DOWN)
-                        dy = 1;
-                    if (dir & BeingDirection::LEFT)
-                        dx = -1;
-                    else if (dir & BeingDirection::RIGHT)
-                        dx = 1;
-                    localPlayer->move(dx, dy);
-                    break;
-                }
-                case 'b':
-                {
-                    const uint8_t dir = localPlayer->getDirection();
-                    if (dir & BeingDirection::UP)
-                        dy = 1;
-                    else if (dir & BeingDirection::DOWN)
-                        dy = -1;
-                    if (dir & BeingDirection::LEFT)
-                        dx = 1;
-                    else if (dir & BeingDirection::RIGHT)
-                        dx = -1;
-                    localPlayer->move(dx, dy);
-                    break;
-                }
-                default:
-                    break;
-            }
-        }
+        crazyMoveAm();
     }
     // direction command
     else if (mMoveProgram[settings.crazyMoveState] == 'd')
     {
-        settings.crazyMoveState ++;
-
-        if (settings.crazyMoveState < mMoveProgram.length())
-        {
-            signed char param = mMoveProgram[settings.crazyMoveState++];
-            if (param == '?')
-            {
-                const char cmd[] = {'l', 'r', 'u', 'd'};
-                srand(tick_time);
-                param = cmd[rand() % 4];
-            }
-            switch (param)
-            {
-                case 'd':
-
-//                    if (PacketLimiter::limitPackets(PACKET_DIRECTION))
-                    {
-                        localPlayer->setDirection(BeingDirection::DOWN);
-                        playerHandler->setDirection(
-                            BeingDirection::DOWN);
-                    }
-                    break;
-                case 'u':
-//                    if (PacketLimiter::limitPackets(PACKET_DIRECTION))
-                    {
-                        localPlayer->setDirection(BeingDirection::UP);
-                        playerHandler->setDirection(
-                            BeingDirection::UP);
-                    }
-                    break;
-                case 'l':
-//                    if (PacketLimiter::limitPackets(PACKET_DIRECTION))
-                    {
-                        localPlayer->setDirection(BeingDirection::LEFT);
-                        playerHandler->setDirection(
-                            BeingDirection::LEFT);
-                    }
-                    break;
-                case 'r':
-//                    if (PacketLimiter::limitPackets(PACKET_DIRECTION))
-                    {
-                        localPlayer->setDirection(BeingDirection::RIGHT);
-                        playerHandler->setDirection(
-                            BeingDirection::RIGHT);
-                    }
-                    break;
-                case 'L':
-//                    if (PacketLimiter::limitPackets(PACKET_DIRECTION))
-                    {
-                        uint8_t dir = 0;
-                        switch (localPlayer->getDirection())
-                        {
-                            case BeingDirection::UP:
-                                dir = BeingDirection::LEFT;
-                                break;
-                            case BeingDirection::DOWN:
-                                dir = BeingDirection::RIGHT;
-                                break;
-                            case BeingDirection::LEFT:
-                                dir = BeingDirection::DOWN;
-                                break;
-                            case BeingDirection::RIGHT:
-                                dir = BeingDirection::UP;
-                                break;
-                            default:
-                                break;
-                        }
-                        localPlayer->setDirection(dir);
-                        playerHandler->setDirection(dir);
-                    }
-                    break;
-                case 'R':
-//                    if (PacketLimiter::limitPackets(PACKET_DIRECTION))
-                    {
-                        uint8_t dir = 0;
-                        switch (localPlayer->getDirection())
-                        {
-                            case BeingDirection::UP:
-                                dir = BeingDirection::RIGHT;
-                                break;
-                            case BeingDirection::DOWN:
-                                dir = BeingDirection::LEFT;
-                                break;
-                            case BeingDirection::LEFT:
-                                dir = BeingDirection::UP;
-                                break;
-                            case BeingDirection::RIGHT:
-                                dir = BeingDirection::DOWN;
-                                break;
-                            default:
-                                break;
-                        }
-                        localPlayer->setDirection(dir);
-                        playerHandler->setDirection(dir);
-                    }
-                    break;
-                case 'b':
-//                    if (PacketLimiter::limitPackets(PACKET_DIRECTION))
-                    {
-                        uint8_t dir = 0;
-                        switch (localPlayer->getDirection())
-                        {
-                            case BeingDirection::UP:
-                                dir = BeingDirection::DOWN;
-                                break;
-                            case BeingDirection::DOWN:
-                                dir = BeingDirection::UP;
-                                break;
-                            case BeingDirection::LEFT:
-                                dir = BeingDirection::RIGHT;
-                                break;
-                            case BeingDirection::RIGHT:
-                                dir = BeingDirection::LEFT;
-                                break;
-                            default:
-                                break;
-                        }
-                        localPlayer->setDirection(dir);
-                        playerHandler->setDirection(dir);
-                    }
-                    break;
-                case '0':
-                    dropShortcut->dropFirst();
-                    break;
-                case 'a':
-                    dropShortcut->dropItems();
-                    break;
-                default:
-                    break;
-            }
-        }
+        crazyMoveAd();
     }
     // sit command
     else if (mMoveProgram[settings.crazyMoveState] == 's')
     {
-        settings.crazyMoveState ++;
-        if (localPlayer->toggleSit())
-            settings.crazyMoveState ++;
+        crazyMoveAs();
     }
     // wear outfits
     else if (mMoveProgram[settings.crazyMoveState] == 'o')
     {
-        settings.crazyMoveState ++;
-        if (settings.crazyMoveState < mMoveProgram.length())
-        {
-            // wear next outfit
-            if (mMoveProgram[settings.crazyMoveState] == 'n')
-            {
-                settings.crazyMoveState ++;
-                outfitWindow->wearNextOutfit();
-            }
-            // wear previous outfit
-            else if (mMoveProgram[settings.crazyMoveState] == 'p')
-            {
-                settings.crazyMoveState ++;
-                outfitWindow->wearPreviousOutfit();
-            }
-        }
+        crazyMoveAo();
     }
     // pause
     else if (mMoveProgram[settings.crazyMoveState] == 'w')
@@ -721,30 +769,7 @@ void CrazyMoves::crazyMoveA()
     else if (mMoveProgram[settings.crazyMoveState] == 'e'
              || mMoveProgram[settings.crazyMoveState] == 'E')
     {
-        settings.crazyMoveState ++;
-        const signed char emo = mMoveProgram[settings.crazyMoveState];
-        unsigned char emoteId = 0;
-        if (emo == '?')
-        {
-            srand(tick_time);
-            emoteId = static_cast<unsigned char>(
-                1 + (rand() % EmoteDB::size()));
-        }
-        else
-        {
-            if (emo >= '0' && emo <= '9')
-                emoteId = static_cast<unsigned char>(emo - '0' + 1);
-            else if (emo >= 'a' && emo <= 'z')
-                emoteId = static_cast<unsigned char>(emo - 'a' + 11);
-            else if (emo >= 'A' && emo <= 'Z')
-                emoteId = static_cast<unsigned char>(emo - 'A' + 37);
-        }
-        if (mMoveProgram[settings.crazyMoveState - 1] == 'e')
-            localPlayer->emote(emoteId);
-        else if (PacketLimiter::limitPackets(PACKET_CHAT))
-            petHandler->emote(emoteId, 0);
-
-        settings.crazyMoveState ++;
+        crazyMoveAe();
     }
     else
     {

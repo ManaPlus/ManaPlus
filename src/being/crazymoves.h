@@ -23,6 +23,8 @@
 #ifndef BEING_CRAZYMOVES_H
 #define BEING_CRAZYMOVES_H
 
+#include <string>
+
 #include "localconsts.h"
 
 class CrazyMoves final
@@ -43,6 +45,13 @@ class CrazyMoves final
         void crazyMove8();
         void crazyMove9();
         void crazyMoveA();
+        void crazyMoveAd();
+        void crazyMoveAe();
+        void crazyMoveAm();
+        void crazyMoveAo();
+        void crazyMoveAs();
+
+        std::string mMoveProgram;
 
         // temporary disable crazy moves in moves
         bool mDisableCrazyMove;
