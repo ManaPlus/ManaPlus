@@ -166,7 +166,7 @@ static const unsigned mCrazyMoveTypeSize = 11;
 
 void GameModifiers::changeCrazyMoveType(const bool forward)
 {
-    localPlayer->setCrazyMoveState(0U);
+    settings.crazyMoveState = 0U;
     changeMode(&settings.crazyMoveType, mCrazyMoveTypeSize, "crazyMoveType",
         &GameModifiers::getCrazyMoveTypeString, 1, true, forward);
 }

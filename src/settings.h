@@ -66,6 +66,7 @@ class Settings final
             pvpAttackType(0U),
             imitationMode(0U),
             cameraMode(0U),
+            crazyMoveState(0),
             mapDrawType(MapType::NORMAL),
             persistentIp(true),
             limitFps(false),
@@ -110,6 +111,7 @@ class Settings final
         unsigned int pvpAttackType;
         unsigned int imitationMode;
         unsigned int cameraMode;
+        int crazyMoveState;
         MapType::MapType mapDrawType;
         bool persistentIp;
         bool limitFps;

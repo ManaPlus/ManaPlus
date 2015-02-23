@@ -118,7 +118,6 @@ LocalPlayer::LocalPlayer(const int id, const uint16_t subtype) :
     PlayerDeathListener(),
     StatListener(),
     mGMLevel(0),
-    mCrazyMoveState(0),
     mMoveState(0),
     mLastTargetX(0),
     mLastTargetY(0),
@@ -1449,23 +1448,23 @@ void LocalPlayer::crazyMove3()
     if (mAction == BeingAction::MOVE)
         return;
 
-    switch (mCrazyMoveState)
+    switch (settings.crazyMoveState)
     {
         case 0:
             move(1, 1);
-            mCrazyMoveState = 1;
+            settings.crazyMoveState = 1;
             break;
         case 1:
             move(1, -1);
-            mCrazyMoveState = 2;
+            settings.crazyMoveState = 2;
             break;
         case 2:
             move(-1, -1);
-            mCrazyMoveState = 3;
+            settings.crazyMoveState = 3;
             break;
         case 3:
             move(-1, 1);
-            mCrazyMoveState = 0;
+            settings.crazyMoveState = 0;
             break;
         default:
             break;
@@ -1483,15 +1482,15 @@ void LocalPlayer::crazyMove4()
     if (mAction == BeingAction::MOVE)
         return;
 
-    switch (mCrazyMoveState)
+    switch (settings.crazyMoveState)
     {
         case 0:
             move(7, 0);
-            mCrazyMoveState = 1;
+            settings.crazyMoveState = 1;
         break;
         case 1:
             move(-7, 0);
-            mCrazyMoveState = 0;
+            settings.crazyMoveState = 0;
         break;
         default:
         break;
@@ -1503,15 +1502,15 @@ void LocalPlayer::crazyMove5()
     if (mAction == BeingAction::MOVE)
         return;
 
-    switch (mCrazyMoveState)
+    switch (settings.crazyMoveState)
     {
         case 0:
             move(0, 7);
-            mCrazyMoveState = 1;
+            settings.crazyMoveState = 1;
             break;
         case 1:
             move(0, -7);
-            mCrazyMoveState = 0;
+            settings.crazyMoveState = 0;
             break;
         default:
             break;
@@ -1523,39 +1522,39 @@ void LocalPlayer::crazyMove6()
     if (mAction == BeingAction::MOVE)
         return;
 
-    switch (mCrazyMoveState)
+    switch (settings.crazyMoveState)
     {
         case 0:
             move(3, 0);
-            mCrazyMoveState = 1;
+            settings.crazyMoveState = 1;
             break;
         case 1:
             move(2, -2);
-            mCrazyMoveState = 2;
+            settings.crazyMoveState = 2;
             break;
         case 2:
             move(0, -3);
-            mCrazyMoveState = 3;
+            settings.crazyMoveState = 3;
             break;
         case 3:
             move(-2, -2);
-            mCrazyMoveState = 4;
+            settings.crazyMoveState = 4;
             break;
         case 4:
             move(-3, 0);
-            mCrazyMoveState = 5;
+            settings.crazyMoveState = 5;
             break;
         case 5:
             move(-2, 2);
-            mCrazyMoveState = 6;
+            settings.crazyMoveState = 6;
             break;
         case 6:
             move(0, 3);
-            mCrazyMoveState = 7;
+            settings.crazyMoveState = 7;
             break;
         case 7:
             move(2, 2);
-            mCrazyMoveState = 0;
+            settings.crazyMoveState = 0;
             break;
         default:
             break;
@@ -1567,23 +1566,23 @@ void LocalPlayer::crazyMove7()
     if (mAction == BeingAction::MOVE)
         return;
 
-    switch (mCrazyMoveState)
+    switch (settings.crazyMoveState)
     {
         case 0:
             move(1, 1);
-            mCrazyMoveState = 1;
+            settings.crazyMoveState = 1;
             break;
         case 1:
             move(-1, 1);
-            mCrazyMoveState = 2;
+            settings.crazyMoveState = 2;
             break;
         case 2:
             move(-1, -1);
-            mCrazyMoveState = 3;
+            settings.crazyMoveState = 3;
             break;
         case 3:
             move(1, -1);
-            mCrazyMoveState = 0;
+            settings.crazyMoveState = 0;
             break;
         default:
             break;
@@ -1683,7 +1682,7 @@ void LocalPlayer::crazyMove9()
     if (mAction == BeingAction::MOVE)
         return;
 
-    switch (mCrazyMoveState)
+    switch (settings.crazyMoveState)
     {
         case 0:
             switch (mDirection)
@@ -1695,19 +1694,19 @@ void LocalPlayer::crazyMove9()
                 default: break;
             }
             move(dx, dy);
-            mCrazyMoveState = 1;
+            settings.crazyMoveState = 1;
             break;
         case 1:
-            mCrazyMoveState = 2;
+            settings.crazyMoveState = 2;
             if (!allowAction())
                 return;
             playerHandler->changeAction(BeingAction::SIT);
             break;
         case 2:
-            mCrazyMoveState = 3;
+            settings.crazyMoveState = 3;
             break;
         case 3:
-            mCrazyMoveState = 0;
+            settings.crazyMoveState = 0;
             break;
         default:
             break;
@@ -1724,19 +1723,19 @@ void LocalPlayer::crazyMoveA()
     if (mMoveProgram.empty())
         return;
 
-    if (mCrazyMoveState >= mMoveProgram.length())
-        mCrazyMoveState = 0;
+    if (settings.crazyMoveState >= mMoveProgram.length())
+        settings.crazyMoveState = 0;
 
     // move command
-    if (mMoveProgram[mCrazyMoveState] == 'm')
+    if (mMoveProgram[settings.crazyMoveState] == 'm')
     {
-        mCrazyMoveState ++;
-        if (mCrazyMoveState < mMoveProgram.length())
+        settings.crazyMoveState ++;
+        if (settings.crazyMoveState < mMoveProgram.length())
         {
             int dx = 0;
             int dy = 0;
 
-            signed char param = mMoveProgram[mCrazyMoveState++];
+            signed char param = mMoveProgram[settings.crazyMoveState++];
             if (param == '?')
             {
                 const char cmd[] = {'l', 'r', 'u', 'd', 'L', 'R', 'U', 'D'};
@@ -1797,13 +1796,13 @@ void LocalPlayer::crazyMoveA()
         }
     }
     // direction command
-    else if (mMoveProgram[mCrazyMoveState] == 'd')
+    else if (mMoveProgram[settings.crazyMoveState] == 'd')
     {
-        mCrazyMoveState ++;
+        settings.crazyMoveState ++;
 
-        if (mCrazyMoveState < mMoveProgram.length())
+        if (settings.crazyMoveState < mMoveProgram.length())
         {
-            signed char param = mMoveProgram[mCrazyMoveState++];
+            signed char param = mMoveProgram[settings.crazyMoveState++];
             if (param == '?')
             {
                 const char cmd[] = {'l', 'r', 'u', 'd'};
@@ -1932,49 +1931,49 @@ void LocalPlayer::crazyMoveA()
         }
     }
     // sit command
-    else if (mMoveProgram[mCrazyMoveState] == 's')
+    else if (mMoveProgram[settings.crazyMoveState] == 's')
     {
-        mCrazyMoveState ++;
+        settings.crazyMoveState ++;
         if (toggleSit())
-            mCrazyMoveState ++;
+            settings.crazyMoveState ++;
     }
     // wear outfits
-    else if (mMoveProgram[mCrazyMoveState] == 'o')
+    else if (mMoveProgram[settings.crazyMoveState] == 'o')
     {
-        mCrazyMoveState ++;
-        if (mCrazyMoveState < mMoveProgram.length())
+        settings.crazyMoveState ++;
+        if (settings.crazyMoveState < mMoveProgram.length())
         {
             // wear next outfit
-            if (mMoveProgram[mCrazyMoveState] == 'n')
+            if (mMoveProgram[settings.crazyMoveState] == 'n')
             {
-                mCrazyMoveState ++;
+                settings.crazyMoveState ++;
                 outfitWindow->wearNextOutfit();
             }
             // wear previous outfit
-            else if (mMoveProgram[mCrazyMoveState] == 'p')
+            else if (mMoveProgram[settings.crazyMoveState] == 'p')
             {
-                mCrazyMoveState ++;
+                settings.crazyMoveState ++;
                 outfitWindow->wearPreviousOutfit();
             }
         }
     }
     // pause
-    else if (mMoveProgram[mCrazyMoveState] == 'w')
+    else if (mMoveProgram[settings.crazyMoveState] == 'w')
     {
-        mCrazyMoveState ++;
+        settings.crazyMoveState ++;
     }
     // pick up
-    else if (mMoveProgram[mCrazyMoveState] == 'p')
+    else if (mMoveProgram[settings.crazyMoveState] == 'p')
     {
-        mCrazyMoveState ++;
+        settings.crazyMoveState ++;
         pickUpItems();
     }
     // emote
-    else if (mMoveProgram[mCrazyMoveState] == 'e'
-             || mMoveProgram[mCrazyMoveState] == 'E')
+    else if (mMoveProgram[settings.crazyMoveState] == 'e'
+             || mMoveProgram[settings.crazyMoveState] == 'E')
     {
-        mCrazyMoveState ++;
-        const signed char emo = mMoveProgram[mCrazyMoveState];
+        settings.crazyMoveState ++;
+        const signed char emo = mMoveProgram[settings.crazyMoveState];
         unsigned char emoteId = 0;
         if (emo == '?')
         {
@@ -1991,20 +1990,20 @@ void LocalPlayer::crazyMoveA()
             else if (emo >= 'A' && emo <= 'Z')
                 emoteId = static_cast<unsigned char>(emo - 'A' + 37);
         }
-        if (mMoveProgram[mCrazyMoveState - 1] == 'e')
+        if (mMoveProgram[settings.crazyMoveState - 1] == 'e')
             emote(emoteId);
         else if (PacketLimiter::limitPackets(PACKET_CHAT))
             petHandler->emote(emoteId, 0);
 
-        mCrazyMoveState ++;
+        settings.crazyMoveState ++;
     }
     else
     {
-        mCrazyMoveState ++;
+        settings.crazyMoveState ++;
     }
 
-    if (mCrazyMoveState >= mMoveProgram.length())
-        mCrazyMoveState = 0;
+    if (settings.crazyMoveState >= mMoveProgram.length())
+        settings.crazyMoveState = 0;
 }
 
 bool LocalPlayer::isReachable(Being *const being,

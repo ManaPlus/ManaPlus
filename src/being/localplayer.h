@@ -196,12 +196,6 @@ class LocalPlayer final : public Being,
         void setMoveState(const unsigned int n)
         { mMoveState = n; }
 
-        unsigned int getCrazyMoveState() const A_WARN_UNUSED
-        { return mCrazyMoveState; }
-
-        void setCrazyMoveState(const unsigned int n)
-        { mCrazyMoveState = n; }
-
         std::string getPingTime() const A_WARN_UNUSED;
 
         void tryPingRequest();
@@ -443,8 +437,6 @@ class LocalPlayer final : public Being,
 
         int mGMLevel;
 
-        // crazy move state
-        unsigned int mCrazyMoveState;
         // move state. used if mMoveType == 2
         unsigned int mMoveState;
 
