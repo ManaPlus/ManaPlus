@@ -208,8 +208,6 @@ class LocalPlayer final : public Being,
 
         bool pickUpItems(int pickUpType = 0);
 
-        void crazyMove();
-
         void move(const int dX, const int dY);
 
         void moveToTarget(int dist = -1);
@@ -422,17 +420,6 @@ class LocalPlayer final : public Being,
         static void tryMagic(const std::string &spell, const int baseMagic,
                              const int schoolMagic, const int mana);
 
-        void crazyMove1();
-        void crazyMove2();
-        void crazyMove3();
-        void crazyMove4();
-        void crazyMove5();
-        void crazyMove6();
-        void crazyMove7();
-        void crazyMove8();
-        void crazyMove9();
-        void crazyMoveA();
-
         void loadHomes();
 
         int mGMLevel;
@@ -506,7 +493,6 @@ class LocalPlayer final : public Being,
         bool mShowServerPos;
         bool mNextStep;
         // temporary disable crazy moves in moves
-        bool mDisableCrazyMove;
         bool mGoingToTarget;
         // Whether or not to continue to attack
         bool mKeepAttacking;

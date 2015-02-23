@@ -844,6 +844,8 @@ SET(SRCS
     being/compounditem.h
     being/compoundsprite.cpp
     being/compoundsprite.h
+    being/crazymoves.cpp
+    being/crazymoves.h
     enums/being/cookingtype.h
     enums/being/gender.h
     being/homunculusinfo.h

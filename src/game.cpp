@@ -40,6 +40,7 @@
 #include "spellshortcut.h"
 #include "touchmanager.h"
 
+#include "being/crazymoves.h"
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
@@ -144,6 +145,7 @@ static void initEngines()
 #ifdef TMWA_SUPPORT
     GuildManager::init();
 #endif
+    crazyMoves = new CrazyMoves;
 
     particleEngine = new Particle();
     particleEngine->setMap(nullptr);
@@ -454,6 +456,7 @@ Game::~Game()
 #ifdef USE_MUMBLE
     delete2(mumbleManager)
 #endif
+    delete2(crazyMoves);
 
     Being::clearCache();
     mInstance = nullptr;

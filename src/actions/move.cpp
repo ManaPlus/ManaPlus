@@ -25,6 +25,7 @@
 #include "actions/actiondef.h"
 #include "actions/pets.h"
 
+#include "being/crazymoves.h"
 #include "being/localplayer.h"
 
 #include "gui/windows/socialwindow.h"
@@ -149,7 +150,7 @@ impHandler0(crazyMoves)
 {
     if (localPlayer)
     {
-        localPlayer->crazyMove();
+        ::crazyMoves->crazyMove();
         return true;
     }
     return false;
