@@ -164,6 +164,7 @@ ServerInfo *LoginHandler::getCharServer() const
 void LoginHandler::processLoginError2(Net::MessageIn &msg)
 {
     const uint32_t code = msg.readInt32("error");
+    msg.readString(20, "error message");
     logger->log("Login::error code: %u", code);
 
     switch (code)
