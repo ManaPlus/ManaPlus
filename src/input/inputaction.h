@@ -538,6 +538,7 @@ namespace InputAction
         WINDOW_CART,
         HEAL_MOST_DAMAGED,
         PET_MOVE,
+        HOMUN_TALK,
         TOTAL
     };
 }  // namespace InputAction

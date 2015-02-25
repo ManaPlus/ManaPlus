@@ -3984,6 +3984,11 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputCondition::INGAME,
         "movepet|petmove",
         true},
+    {"keyHomunTalk",
+        defaultAction(&Actions::homunTalk),
+        InputCondition::INGAME,
+        "homuntalk|merctalk",
+        true},
 };
 
 #undef defaultAction

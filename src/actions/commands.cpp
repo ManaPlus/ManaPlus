@@ -805,4 +805,16 @@ impHandler(warp)
     return true;
 }
 
+impHandler(homunTalk)
+{
+    if (!serverFeatures->haveTalkPet())
+        return false;
+
+    std::string args = event.args;
+    if (findCutFirst(args, "/me "))
+        args = textToMe(args);
+    homunculusHandler->talk(args);
+    return true;
+}
+
 }  // namespace Actions

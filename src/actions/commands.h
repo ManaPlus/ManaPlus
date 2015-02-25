@@ -79,6 +79,7 @@ namespace Actions
     decHandler(fireHomunculus);
     decHandler(leaveParty);
     decHandler(warp);
+    decHandler(homunTalk);
 }  // namespace Actions
 
 #undef decHandler
