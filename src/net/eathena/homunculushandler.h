@@ -51,6 +51,8 @@ class HomunculusHandler final : public MessageHandler,
 
         void talk(const std::string &restrict text) const override final;
 
+        void emote(const uint8_t emoteId) const override final;
+
     protected:
         static void processHomunculusSkills(Net::MessageIn &msg);
 

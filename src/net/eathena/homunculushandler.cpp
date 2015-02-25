@@ -300,4 +300,10 @@ void HomunculusHandler::talk(const std::string &restrict text) const
     outMsg.writeInt8(0, "zero byte");
 }
 
+void HomunculusHandler::emote(const uint8_t emoteId) const
+{
+    createOutPacket(CMSG_HOMMERC_EMOTE);
+    outMsg.writeInt8(emoteId, "emote id");
+}
+
 }  // namespace EAthena

@@ -45,6 +45,8 @@ class MercenaryHandler notfinal
         virtual void attack(const int targetId, const bool keep) const = 0;
 
         virtual void talk(const std::string &restrict text) const = 0;
+
+        virtual void emote(const uint8_t emoteId) const = 0;
 };
 
 }  // namespace Net

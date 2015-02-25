@@ -49,6 +49,8 @@ class MercenaryHandler final : public MessageHandler,
         void attack(const int targetId, const bool keep) const override final;
 
         void talk(const std::string &restrict text) const override final;
+
+        void emote(const uint8_t emoteId) const override final;
 };
 
 }  // namespace TmwAthena

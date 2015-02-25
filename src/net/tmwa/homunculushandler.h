@@ -51,6 +51,8 @@ class HomunculusHandler final : public MessageHandler,
         void fire() const override final;
 
         void talk(const std::string &restrict text) const override final;
+
+        void emote(const uint8_t emoteId) const override final;
 };
 
 }  // namespace TmwAthena

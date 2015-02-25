@@ -71,4 +71,8 @@ void HomunculusHandler::talk(const std::string &restrict text A_UNUSED) const
 {
 }
 
+void HomunculusHandler::emote(const uint8_t emoteId A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

@@ -67,4 +67,8 @@ void MercenaryHandler::talk(const std::string &restrict text A_UNUSED) const
 {
 }
 
+void MercenaryHandler::emote(const uint8_t emoteId A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena
