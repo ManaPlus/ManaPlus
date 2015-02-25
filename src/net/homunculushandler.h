@@ -45,6 +45,8 @@ class HomunculusHandler notfinal
         virtual void feed() const = 0;
 
         virtual void fire() const = 0;
+
+        virtual void talk(const std::string &restrict text) const = 0;
 };
 
 }  // namespace Net

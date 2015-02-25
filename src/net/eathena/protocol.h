@@ -524,6 +524,7 @@
 #define CMSG_HOMMERC_MOVE_TO_MASTER  0x0234
 #define CMSG_HOMMERC_MOVE_TO         0x0232
 #define CMSG_HOMMERC_ATTACK          0x0233
+#define CMSG_HOMMERC_TALK            0x0b13
 
 #define CMSG_DORI_DORI               0x01e7
 #define CMSG_EXPLOSION_SPIRITS       0x01ed

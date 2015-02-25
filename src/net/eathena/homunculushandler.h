@@ -49,6 +49,8 @@ class HomunculusHandler final : public MessageHandler,
 
         void fire() const override final;
 
+        void talk(const std::string &restrict text) const override final;
+
     protected:
         static void processHomunculusSkills(Net::MessageIn &msg);
 

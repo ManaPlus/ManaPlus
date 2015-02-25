@@ -63,4 +63,8 @@ void MercenaryHandler::attack(const int targetId A_UNUSED,
 {
 }
 
+void MercenaryHandler::talk(const std::string &restrict text A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

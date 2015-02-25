@@ -47,6 +47,8 @@ class MercenaryHandler final : public MessageHandler,
 
         void attack(const int targetId, const bool keep) const override final;
 
+        void talk(const std::string &restrict text) const override final;
+
     protected:
         static void processMercenaryUpdate(Net::MessageIn &msg);
 

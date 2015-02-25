@@ -215,4 +215,19 @@ void MercenaryHandler::attack(const int targetId, const bool keep) const
     outMsg.writeInt8(static_cast<int8_t>(keep ? 1 : 0), "keep");
 }
 
+void MercenaryHandler::talk(const std::string &restrict text) const
+{
+    if (text.empty())
+        return;
+    std::string msg = text;
+    if (msg.size() > 500)
+        msg = msg.substr(0, 500);
+    const size_t sz = msg.size();
+
+    createOutPacket(CMSG_HOMMERC_TALK);
+    outMsg.writeInt16(static_cast<int16_t>(sz + 4 + 1), "len");
+    outMsg.writeString(msg, sz, "message");
+    outMsg.writeInt8(0, "zero byte");
+}
+
 }  // namespace EAthena

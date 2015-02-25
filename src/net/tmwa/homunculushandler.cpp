@@ -67,4 +67,8 @@ void HomunculusHandler::fire() const
 {
 }
 
+void HomunculusHandler::talk(const std::string &restrict text A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena
