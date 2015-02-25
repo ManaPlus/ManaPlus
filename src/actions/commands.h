@@ -80,6 +80,8 @@ namespace Actions
     decHandler(leaveParty);
     decHandler(warp);
     decHandler(homunTalk);
+    decHandler(homunEmote);
+    decHandler(commandHomunEmote);
 }  // namespace Actions
 
 #undef decHandler

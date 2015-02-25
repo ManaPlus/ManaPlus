@@ -55,7 +55,8 @@ namespace Input
         GRP_MOVETOPOINT = 32,      // move to point key
         GRP_GUICHAN = 64,          // for guichan based controls
         GRP_REPEAT = 128,          // repeat emulation keys
-        GRP_PET_EMOTION = 256      // pet emotions key
+        GRP_PET_EMOTION = 256,     // pet emotions key
+        GRP_HOMUN_EMOTION = 512    // homunculus/mercenary emotetions key
     };
 
 }  // namespace Input

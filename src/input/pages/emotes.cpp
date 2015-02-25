@@ -52,6 +52,12 @@ SetupActionData setupActionDataEmotes[] =
     },
     {
         // TRANSLATORS: input action name
+        N_("Homunculus / mercenary emote modifier key"),
+        InputAction::HOMUN_EMOTE,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
         N_("Emote shortcuts"),
         InputAction::NO_VALUE,
         ""

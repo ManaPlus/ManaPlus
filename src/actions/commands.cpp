@@ -22,6 +22,7 @@
 
 #include "actormanager.h"
 #include "configuration.h"
+#include "emoteshortcut.h"
 #include "game.h"
 #include "inventory.h"
 #include "item.h"
@@ -814,6 +815,35 @@ impHandler(homunTalk)
     if (findCutFirst(args, "/me "))
         args = textToMe(args);
     homunculusHandler->talk(args);
+    return true;
+}
+
+impHandler(homunEmote)
+{
+    if (!serverFeatures->haveTalkPet())
+        return false;
+
+    if (event.action >= InputAction::HOMUN_EMOTE_1
+        && event.action <= InputAction::HOMUN_EMOTE_48)
+    {
+        const int emotion = event.action - InputAction::HOMUN_EMOTE_1;
+        if (emoteShortcut)
+            homunculusHandler->emote(emoteShortcut->getEmote(emotion));
+        if (Game::instance())
+            Game::instance()->setValidSpeed();
+        return true;
+    }
+
+    return false;
+}
+
+impHandler(commandHomunEmote)
+{
+    if (!serverFeatures->haveTalkPet())
+        return false;
+
+    homunculusHandler->emote(static_cast<uint8_t>(
+        atoi(event.args.c_str())));
     return true;
 }
 
