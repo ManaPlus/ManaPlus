@@ -53,6 +53,8 @@ class HomunculusHandler final : public MessageHandler,
 
         void emote(const uint8_t emoteId) const override final;
 
+        void setDirection(const unsigned char type) const override final;
+
     protected:
         static void processHomunculusSkills(Net::MessageIn &msg);
 

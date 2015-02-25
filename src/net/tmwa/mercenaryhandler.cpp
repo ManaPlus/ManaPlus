@@ -71,4 +71,8 @@ void MercenaryHandler::emote(const uint8_t emoteId A_UNUSED) const
 {
 }
 
+void MercenaryHandler::setDirection(const unsigned char type A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

@@ -49,6 +49,8 @@ class HomunculusHandler notfinal
         virtual void talk(const std::string &restrict text) const = 0;
 
         virtual void emote(const uint8_t emoteId) const = 0;
+
+        virtual void setDirection(const unsigned char type) const = 0;
 };
 
 }  // namespace Net

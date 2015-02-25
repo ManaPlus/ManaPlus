@@ -28,6 +28,8 @@
 
 #include "gui/windows/skilldialog.h"
 
+#include "net/serverfeatures.h"
+
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
@@ -287,6 +289,8 @@ void HomunculusHandler::fire() const
 
 void HomunculusHandler::talk(const std::string &restrict text) const
 {
+    if (!serverFeatures->haveMovePet())
+        return;
     if (text.empty())
         return;
     std::string msg = text;
@@ -302,8 +306,22 @@ void HomunculusHandler::talk(const std::string &restrict text) const
 
 void HomunculusHandler::emote(const uint8_t emoteId) const
 {
+    if (!serverFeatures->haveMovePet())
+        return;
     createOutPacket(CMSG_HOMMERC_EMOTE);
     outMsg.writeInt8(emoteId, "emote id");
+}
+
+void HomunculusHandler::setDirection(const unsigned char type) const
+{
+    if (!serverFeatures->haveMovePet())
+        return;
+    createOutPacket(CMSG_HOMMERC_DIRECTION);
+    outMsg.writeInt32(0, "pet id");
+    outMsg.writeInt8(0, "head direction");
+    outMsg.writeInt8(0, "unused");
+    outMsg.writeInt8(MessageOut::toServerDirection(type),
+        "pet direction");
 }
 
 }  // namespace EAthena

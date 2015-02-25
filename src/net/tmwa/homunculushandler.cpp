@@ -75,4 +75,8 @@ void HomunculusHandler::emote(const uint8_t emoteId A_UNUSED) const
 {
 }
 
+void HomunculusHandler::setDirection(const unsigned char type A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena
