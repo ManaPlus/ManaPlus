@@ -672,9 +672,11 @@ impHandler(sell)
     }
     else if (being->getType() == ActorType::Player)
     {
+#ifdef EATHENA_SUPPORT
         if (serverFeatures->haveVending())
             buyingStoreHandler->open(being);
         else
+#endif
             buySellHandler->requestBuyList(being->getName());
         return true;
     }

@@ -1324,8 +1324,6 @@ SET(SRCS_TMWA
     net/tmwa/cashshophandler.h
     net/tmwa/beinghandler.cpp
     net/tmwa/beinghandler.h
-    net/tmwa/buyingstorehandler.cpp
-    net/tmwa/buyingstorehandler.h
     net/tmwa/buysellhandler.cpp
     net/tmwa/buysellhandler.h
     net/tmwa/charserverhandler.cpp
@@ -1414,10 +1412,13 @@ SET(SRCS_EATHENA
     listeners/vendingslotslistener.h
     net/auctionhandler.h
     net/bankhandler.h
+    net/buyingstorehandler.h
     net/tmwa/auctionhandler.cpp
     net/tmwa/auctionhandler.h
     net/tmwa/bankhandler.cpp
     net/tmwa/bankhandler.h
+    net/tmwa/buyingstorehandler.cpp
+    net/tmwa/buyingstorehandler.h
     net/eathena/adminhandler.cpp
     net/eathena/adminhandler.h
     net/eathena/auctionhandler.cpp

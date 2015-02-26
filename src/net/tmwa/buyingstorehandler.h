@@ -21,6 +21,8 @@
 #ifndef NET_TMWA_BUYINGSTOREHANDLER_H
 #define NET_TMWA_BUYINGSTOREHANDLER_H
 
+#ifdef EATHENA_SUPPORT
+
 #include "net/buyingstorehandler.h"
 
 #include "net/tmwa/messagehandler.h"
@@ -55,4 +57,5 @@ class BuyingStoreHandler final : public MessageHandler,
 
 }  // namespace TmwAthena
 
+#endif  // EATHENA_SUPPORT
 #endif  // NET_TMWA_BUYINGSTOREHANDLER_H
