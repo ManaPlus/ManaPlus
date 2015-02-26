@@ -21,6 +21,8 @@
 #ifndef NET_TMWA_CASHSHOPHANDLER_H
 #define NET_TMWA_CASHSHOPHANDLER_H
 
+#ifdef EATHENA_SUPPORT
+
 #include "net/cashshophandler.h"
 
 #include "net/tmwa/messagehandler.h"
@@ -46,4 +48,5 @@ class CashShopHandler final : public MessageHandler,
 
 }  // namespace TmwAthena
 
+#endif  // EATHENA_SUPPORT
 #endif  // NET_TMWA_CASHSHOPHANDLER_H

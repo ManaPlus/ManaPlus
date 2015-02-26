@@ -108,12 +108,12 @@ GeneralHandler::GeneralHandler() :
     mMailHandler(new MailHandler),
 #ifdef EATHENA_SUPPORT
     mAuctionHandler(new AuctionHandler),
-#endif
-    mCashShopHandler(new CashShopHandler),
-    mFamilyHandler(new FamilyHandler),
     mBankHandler(new BankHandler),
-    mMercenaryHandler(new MercenaryHandler),
     mBuyingStoreHandler(new BuyingStoreHandler),
+    mCashShopHandler(new CashShopHandler),
+#endif
+    mFamilyHandler(new FamilyHandler),
+    mMercenaryHandler(new MercenaryHandler),
     mHomunculusHandler(new HomunculusHandler),
     mFriendsHandler(new FriendsHandler),
     mElementalHandler(new ElementalHandler),

@@ -40,15 +40,15 @@
 
 namespace Net
 {
-    class AdminHandler;
 #ifdef EATHENA_SUPPORT
     class AuctionHandler;
-#endif
     class BankHandler;
-    class BeingHandler;
     class BuyingStoreHandler;
-    class BuySellHandler;
     class CashShopHandler;
+#endif
+    class AdminHandler;
+    class BeingHandler;
+    class BuySellHandler;
     class CharServerHandler;
     class ChatHandler;
     class ElementalHandler;
@@ -95,12 +95,12 @@ Net::MailHandler *mailHandler = nullptr;
 Net::MercenaryHandler *mercenaryHandler = nullptr;
 #ifdef EATHENA_SUPPORT
 Net::AuctionHandler *auctionHandler = nullptr;
-#endif
-Net::CashShopHandler *cashShopHandler = nullptr;
-Net::FamilyHandler *familyHandler = nullptr;
 Net::BankHandler *bankHandler = nullptr;
-Net::QuestHandler *questHandler = nullptr;
 Net::BuyingStoreHandler *buyingStoreHandler = nullptr;
+Net::CashShopHandler *cashShopHandler = nullptr;
+#endif
+Net::FamilyHandler *familyHandler = nullptr;
+Net::QuestHandler *questHandler = nullptr;
 Net::HomunculusHandler *homunculusHandler = nullptr;
 Net::FriendsHandler *friendsHandler = nullptr;
 Net::ElementalHandler *elementalHandler = nullptr;

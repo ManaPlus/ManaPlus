@@ -84,12 +84,12 @@ class GeneralHandler final : public MessageHandler,
         MessageHandlerPtr mMailHandler;
 #ifdef EATHENA_SUPPORT
         MessageHandlerPtr mAuctionHandler;
-#endif
-        MessageHandlerPtr mCashShopHandler;
-        MessageHandlerPtr mFamilyHandler;
         MessageHandlerPtr mBankHandler;
-        MessageHandlerPtr mMercenaryHandler;
         MessageHandlerPtr mBuyingStoreHandler;
+        MessageHandlerPtr mCashShopHandler;
+#endif
+        MessageHandlerPtr mFamilyHandler;
+        MessageHandlerPtr mMercenaryHandler;
         MessageHandlerPtr mHomunculusHandler;
         MessageHandlerPtr mFriendsHandler;
         MessageHandlerPtr mElementalHandler;

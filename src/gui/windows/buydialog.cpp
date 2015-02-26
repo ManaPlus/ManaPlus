@@ -456,6 +456,7 @@ void BuyDialog::action(const ActionEvent &event)
                 item->increaseQuantity(-mAmountItems);
                 item->update();
             }
+#ifdef EATHENA_SUPPORT
             else if (mNpcId == Cash)
             {
                 cashShopHandler->buyItem(item->getPrice(),
@@ -463,6 +464,7 @@ void BuyDialog::action(const ActionEvent &event)
                     item->getColor(),
                     mAmountItems);
             }
+#endif
             else
             {
                 npcHandler->buyItem(mNpcId,

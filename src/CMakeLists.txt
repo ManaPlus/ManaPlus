@@ -1320,8 +1320,6 @@ SET(SRCS_TMWA
     gui/windows/shopselldialog.h
     net/tmwa/adminhandler.cpp
     net/tmwa/adminhandler.h
-    net/tmwa/cashshophandler.cpp
-    net/tmwa/cashshophandler.h
     net/tmwa/beinghandler.cpp
     net/tmwa/beinghandler.h
     net/tmwa/buysellhandler.cpp
@@ -1396,6 +1394,8 @@ SET(SRCS_TMWAEATHENA
     net/tmwa/bankhandler.h
     net/tmwa/buyingstorehandler.cpp
     net/tmwa/buyingstorehandler.h
+    net/tmwa/cashshophandler.cpp
+    net/tmwa/cashshophandler.h
     )
 
 SET(SRCS_EATHENA
@@ -1422,6 +1422,7 @@ SET(SRCS_EATHENA
     net/auctionhandler.h
     net/bankhandler.h
     net/buyingstorehandler.h
+    net/cashshophandler.h
     net/eathena/adminhandler.cpp
     net/eathena/adminhandler.h
     net/eathena/auctionhandler.cpp
