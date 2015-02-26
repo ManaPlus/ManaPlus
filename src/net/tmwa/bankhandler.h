@@ -21,6 +21,8 @@
 #ifndef NET_TMWA_BANKHANDLER_H
 #define NET_TMWA_BANKHANDLER_H
 
+#ifdef EATHENA_SUPPORT
+
 #include "net/bankhandler.h"
 
 #include "net/tmwa/messagehandler.h"
@@ -47,4 +49,5 @@ class BankHandler final : public MessageHandler,
 
 }  // namespace TmwAthena
 
+#endif  // EATHENA_SUPPORT
 #endif  // NET_TMWA_BANKHANDLER_H
