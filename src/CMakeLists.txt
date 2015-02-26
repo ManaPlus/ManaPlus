@@ -521,7 +521,6 @@ SET(SRCS
     gui/windows/worldselectdialog.cpp
     gui/windows/worldselectdialog.h
     net/adminhandler.h
-    net/auctionhandler.h
     net/bankhandler.h
     net/character.h
     net/charserverhandler.cpp
@@ -1322,8 +1321,6 @@ SET(SRCS_TMWA
     gui/windows/shopselldialog.h
     net/tmwa/adminhandler.cpp
     net/tmwa/adminhandler.h
-    net/tmwa/auctionhandler.cpp
-    net/tmwa/auctionhandler.h
     net/tmwa/bankhandler.cpp
     net/tmwa/bankhandler.h
     net/tmwa/cashshophandler.cpp
@@ -1418,6 +1415,9 @@ SET(SRCS_EATHENA
     listeners/vendingmodelistener.h
     listeners/vendingslotslistener.cpp
     listeners/vendingslotslistener.h
+    net/auctionhandler.h
+    net/tmwa/auctionhandler.cpp
+    net/tmwa/auctionhandler.h
     net/eathena/adminhandler.cpp
     net/eathena/adminhandler.h
     net/eathena/auctionhandler.cpp

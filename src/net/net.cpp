@@ -41,7 +41,9 @@
 namespace Net
 {
     class AdminHandler;
+#ifdef EATHENA_SUPPORT
     class AuctionHandler;
+#endif
     class BankHandler;
     class BeingHandler;
     class BuyingStoreHandler;
@@ -91,7 +93,9 @@ Net::BuySellHandler *buySellHandler = nullptr;
 Net::ServerFeatures *serverFeatures = nullptr;
 Net::MailHandler *mailHandler = nullptr;
 Net::MercenaryHandler *mercenaryHandler = nullptr;
+#ifdef EATHENA_SUPPORT
 Net::AuctionHandler *auctionHandler = nullptr;
+#endif
 Net::CashShopHandler *cashShopHandler = nullptr;
 Net::FamilyHandler *familyHandler = nullptr;
 Net::BankHandler *bankHandler = nullptr;

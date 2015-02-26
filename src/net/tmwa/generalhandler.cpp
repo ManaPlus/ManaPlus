@@ -106,7 +106,9 @@ GeneralHandler::GeneralHandler() :
     mQuestHandler(new QuestHandler),
     mServerFeatures(new ServerFeatures),
     mMailHandler(new MailHandler),
+#ifdef EATHENA_SUPPORT
     mAuctionHandler(new AuctionHandler),
+#endif
     mCashShopHandler(new CashShopHandler),
     mFamilyHandler(new FamilyHandler),
     mBankHandler(new BankHandler),

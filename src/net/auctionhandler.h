@@ -21,6 +21,8 @@
 #ifndef NET_AUCTIONHANDLER_H
 #define NET_AUCTIONHANDLER_H
 
+#ifdef EATHENA_SUPPORT
+
 #include "enums/net/auctionsearchtype.h"
 
 #include <string>
@@ -68,4 +70,5 @@ class AuctionHandler notfinal
 
 extern Net::AuctionHandler *auctionHandler;
 
+#endif  // EATHENA_SUPPORT
 #endif  // NET_AUCTIONHANDLER_H

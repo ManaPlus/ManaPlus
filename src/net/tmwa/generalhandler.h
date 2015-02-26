@@ -82,7 +82,9 @@ class GeneralHandler final : public MessageHandler,
         MessageHandlerPtr mQuestHandler;
         ServerFeatures *mServerFeatures;
         MessageHandlerPtr mMailHandler;
+#ifdef EATHENA_SUPPORT
         MessageHandlerPtr mAuctionHandler;
+#endif
         MessageHandlerPtr mCashShopHandler;
         MessageHandlerPtr mFamilyHandler;
         MessageHandlerPtr mBankHandler;
