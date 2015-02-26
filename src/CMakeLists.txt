@@ -1327,8 +1327,6 @@ SET(SRCS_TMWA
     net/tmwa/charserverhandler.h
     net/tmwa/chathandler.cpp
     net/tmwa/chathandler.h
-    net/tmwa/friendshandler.cpp
-    net/tmwa/friendshandler.h
     net/tmwa/gamehandler.cpp
     net/tmwa/gamehandler.h
     net/tmwa/generalhandler.cpp
@@ -1395,6 +1393,8 @@ SET(SRCS_TMWAEATHENA
     net/tmwa/elementalhandler.h
     net/tmwa/familyhandler.cpp
     net/tmwa/familyhandler.h
+    net/tmwa/friendshandler.cpp
+    net/tmwa/friendshandler.h
     )
 
 SET(SRCS_EATHENA
@@ -1424,6 +1424,7 @@ SET(SRCS_EATHENA
     net/cashshophandler.h
     net/elementalhandler.h
     net/familyhandler.h
+    net/friendshandler.h
     net/eathena/adminhandler.cpp
     net/eathena/adminhandler.h
     net/eathena/auctionhandler.cpp

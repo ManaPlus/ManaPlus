@@ -651,7 +651,6 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      net/charserverhandler.cpp \
 	      net/charserverhandler.h \
 	      net/chathandler.h \
-	      net/friendshandler.h \
 	      net/download.cpp \
 	      net/download.h \
 	      enums/net/auctionsearchtype.h \
@@ -1259,8 +1258,6 @@ manaplus_SOURCES += \
 	      net/tmwa/charserverhandler.h \
 	      net/tmwa/chathandler.cpp \
 	      net/tmwa/chathandler.h \
-	      net/tmwa/friendshandler.cpp \
-	      net/tmwa/friendshandler.h \
 	      net/tmwa/gamehandler.cpp \
 	      net/tmwa/gamehandler.h \
 	      net/tmwa/generalhandler.cpp \
@@ -1327,7 +1324,9 @@ manaplus_SOURCES += net/tmwa/auctionhandler.cpp \
 	      net/tmwa/elementalhandler.cpp \
 	      net/tmwa/elementalhandler.h \
 	      net/tmwa/familyhandler.cpp \
-	      net/tmwa/familyhandler.h
+	      net/tmwa/familyhandler.h \
+	      net/tmwa/friendshandler.cpp \
+	      net/tmwa/friendshandler.h
 endif
 
 manaplus_CXXFLAGS += -DEATHENA_SUPPORT
@@ -1357,6 +1356,7 @@ manaplus_SOURCES += gui/windows/bankwindow.cpp \
 	      net/cashshophandler.h \
 	      net/elementalhandler.h \
 	      net/familyhandler.h \
+	      net/friendshandler.h \
 	      net/eathena/adminhandler.cpp \
 	      net/eathena/adminhandler.h \
 	      net/eathena/auctionhandler.cpp \
