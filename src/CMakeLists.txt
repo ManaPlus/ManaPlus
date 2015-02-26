@@ -1389,6 +1389,15 @@ SET(SRCS_TMWA
     net/tmwa/vendinghandler.h
     )
 
+SET(SRCS_TMWAEATHENA
+    net/tmwa/auctionhandler.cpp
+    net/tmwa/auctionhandler.h
+    net/tmwa/bankhandler.cpp
+    net/tmwa/bankhandler.h
+    net/tmwa/buyingstorehandler.cpp
+    net/tmwa/buyingstorehandler.h
+    )
+
 SET(SRCS_EATHENA
     gui/windows/bankwindow.cpp
     gui/windows/bankwindow.h
@@ -1413,12 +1422,6 @@ SET(SRCS_EATHENA
     net/auctionhandler.h
     net/bankhandler.h
     net/buyingstorehandler.h
-    net/tmwa/auctionhandler.cpp
-    net/tmwa/auctionhandler.h
-    net/tmwa/bankhandler.cpp
-    net/tmwa/bankhandler.h
-    net/tmwa/buyingstorehandler.cpp
-    net/tmwa/buyingstorehandler.h
     net/eathena/adminhandler.cpp
     net/eathena/adminhandler.h
     net/eathena/auctionhandler.cpp
@@ -1519,11 +1522,16 @@ ENDIF ()
 SET (PROGRAMS manaplus dyecmd)
 
 IF (ENABLE_EATHENA)
+IF (ENABLE_TMWA)
+    SET(SRCS ${SRCS} ${SRCS_EATHENA} ${SRCS_TMWA} ${SRCS_TMWAEATHENA})
+ELSE
     SET(SRCS ${SRCS} ${SRCS_EATHENA})
-ENDIF(ENABLE_EATHENA)
+ENDIF(ENABLE_TMWA)
+ELSE
 IF (ENABLE_TMWA)
     SET(SRCS ${SRCS} ${SRCS_TMWA})
 ENDIF(ENABLE_TMWA)
+ENDIF(ENABLE_EATHENA)
 
 ADD_EXECUTABLE(manaplus WIN32 ${SRCS} ${SRCS_EVOL})
 ADD_EXECUTABLE(dyecmd WIN32 ${DYE_CMD_SRCS})

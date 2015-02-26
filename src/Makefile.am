@@ -1324,6 +1324,15 @@ manaplus_SOURCES += \
 endif
 
 if ENABLE_EATHENA
+if ENABLE_TMWA
+manaplus_SOURCES += net/tmwa/auctionhandler.cpp \
+	      net/tmwa/auctionhandler.h \
+	      net/tmwa/bankhandler.cpp \
+	      net/tmwa/bankhandler.h \
+	      net/tmwa/buyingstorehandler.cpp \
+	      net/tmwa/buyingstorehandler.h
+endif
+
 manaplus_CXXFLAGS += -DEATHENA_SUPPORT
 manaplus_SOURCES += gui/windows/bankwindow.cpp \
 	      gui/windows/bankwindow.h \
@@ -1348,12 +1357,6 @@ manaplus_SOURCES += gui/windows/bankwindow.cpp \
 	      net/auctionhandler.h \
 	      net/bankhandler.h \
 	      net/buyingstorehandler.h \
-	      net/tmwa/auctionhandler.cpp \
-	      net/tmwa/auctionhandler.h \
-	      net/tmwa/bankhandler.cpp \
-	      net/tmwa/bankhandler.h \
-	      net/tmwa/buyingstorehandler.cpp \
-	      net/tmwa/buyingstorehandler.h \
 	      net/eathena/adminhandler.cpp \
 	      net/eathena/adminhandler.h \
 	      net/eathena/auctionhandler.cpp \
