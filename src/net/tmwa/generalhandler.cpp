@@ -112,8 +112,8 @@ GeneralHandler::GeneralHandler() :
     mBuyingStoreHandler(new BuyingStoreHandler),
     mCashShopHandler(new CashShopHandler),
     mElementalHandler(new ElementalHandler),
-#endif
     mFamilyHandler(new FamilyHandler),
+#endif
     mMercenaryHandler(new MercenaryHandler),
     mHomunculusHandler(new HomunculusHandler),
     mFriendsHandler(new FriendsHandler),
@@ -242,8 +242,8 @@ void GeneralHandler::load()
     mNetwork->registerHandler(mBuyingStoreHandler);
     mNetwork->registerHandler(mCashShopHandler);
     mNetwork->registerHandler(mElementalHandler);
-#endif
     mNetwork->registerHandler(mFamilyHandler);
+#endif
     mNetwork->registerHandler(mMercenaryHandler);
     mNetwork->registerHandler(mHomunculusHandler);
     mNetwork->registerHandler(mFriendsHandler);

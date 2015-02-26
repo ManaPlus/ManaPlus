@@ -21,6 +21,8 @@
 #ifndef NET_FAMILYHANDLER_H
 #define NET_FAMILYHANDLER_H
 
+#ifdef EATHENA_SUPPORT
+
 #include <string>
 
 #include "localconsts.h"
@@ -45,4 +47,5 @@ class FamilyHandler notfinal
 
 extern Net::FamilyHandler *familyHandler;
 
+#endif  // EATHENA_SUPPORT
 #endif  // NET_FAMILYHANDLER_H

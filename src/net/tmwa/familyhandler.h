@@ -21,6 +21,8 @@
 #ifndef NET_TMWA_FAMILYHANDLER_H
 #define NET_TMWA_FAMILYHANDLER_H
 
+#ifdef EATHENA_SUPPORT
+
 #include "net/familyhandler.h"
 
 #include "net/tmwa/messagehandler.h"
@@ -45,4 +47,5 @@ class FamilyHandler final : public MessageHandler,
 
 }  // namespace TmwAthena
 
+#endif  // EATHENA_SUPPORT
 #endif  // NET_TMWA_FAMILYHANDLER_H
