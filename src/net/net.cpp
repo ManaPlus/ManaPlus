@@ -45,13 +45,13 @@ namespace Net
     class BankHandler;
     class BuyingStoreHandler;
     class CashShopHandler;
+    class ElementalHandler;
 #endif
     class AdminHandler;
     class BeingHandler;
     class BuySellHandler;
     class CharServerHandler;
     class ChatHandler;
-    class ElementalHandler;
     class FamilyHandler;
     class FriendsHandler;
     class GameHandler;
@@ -98,12 +98,12 @@ Net::AuctionHandler *auctionHandler = nullptr;
 Net::BankHandler *bankHandler = nullptr;
 Net::BuyingStoreHandler *buyingStoreHandler = nullptr;
 Net::CashShopHandler *cashShopHandler = nullptr;
+Net::ElementalHandler *elementalHandler = nullptr;
 #endif
 Net::FamilyHandler *familyHandler = nullptr;
 Net::QuestHandler *questHandler = nullptr;
 Net::HomunculusHandler *homunculusHandler = nullptr;
 Net::FriendsHandler *friendsHandler = nullptr;
-Net::ElementalHandler *elementalHandler = nullptr;
 Net::MarketHandler *marketHandler = nullptr;
 Net::VendingHandler *vendingHandler = nullptr;
 Net::SearchStoreHandler *searchStoreHandler = nullptr;

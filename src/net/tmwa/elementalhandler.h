@@ -21,6 +21,8 @@
 #ifndef NET_TMWA_ELEMENTALHANDLER_H
 #define NET_TMWA_ELEMENTALHANDLER_H
 
+#ifdef EATHENA_SUPPORT
+
 #include "net/elementalhandler.h"
 
 #include "net/tmwa/messagehandler.h"
@@ -40,4 +42,5 @@ class ElementalHandler final : public MessageHandler,
 
 }  // namespace TmwAthena
 
+#endif  // EATHENA_SUPPORT
 #endif  // NET_TMWA_ELEMENTALHANDLER_H

@@ -525,7 +525,6 @@ SET(SRCS
     net/charserverhandler.cpp
     net/charserverhandler.h
     net/chathandler.h
-    net/elementalhandler.h
     net/download.cpp
     net/download.h
     enums/net/auctionsearchtype.h
@@ -1328,8 +1327,6 @@ SET(SRCS_TMWA
     net/tmwa/charserverhandler.h
     net/tmwa/chathandler.cpp
     net/tmwa/chathandler.h
-    net/tmwa/elementalhandler.cpp
-    net/tmwa/elementalhandler.h
     net/tmwa/familyhandler.cpp
     net/tmwa/familyhandler.h
     net/tmwa/friendshandler.cpp
@@ -1396,6 +1393,8 @@ SET(SRCS_TMWAEATHENA
     net/tmwa/buyingstorehandler.h
     net/tmwa/cashshophandler.cpp
     net/tmwa/cashshophandler.h
+    net/tmwa/elementalhandler.cpp
+    net/tmwa/elementalhandler.h
     )
 
 SET(SRCS_EATHENA
@@ -1423,6 +1422,7 @@ SET(SRCS_EATHENA
     net/bankhandler.h
     net/buyingstorehandler.h
     net/cashshophandler.h
+    net/elementalhandler.h
     net/eathena/adminhandler.cpp
     net/eathena/adminhandler.h
     net/eathena/auctionhandler.cpp

@@ -87,12 +87,12 @@ class GeneralHandler final : public MessageHandler,
         MessageHandlerPtr mBankHandler;
         MessageHandlerPtr mBuyingStoreHandler;
         MessageHandlerPtr mCashShopHandler;
+        MessageHandlerPtr mElementalHandler;
 #endif
         MessageHandlerPtr mFamilyHandler;
         MessageHandlerPtr mMercenaryHandler;
         MessageHandlerPtr mHomunculusHandler;
         MessageHandlerPtr mFriendsHandler;
-        MessageHandlerPtr mElementalHandler;
         MessageHandlerPtr mMarketHandler;
         MessageHandlerPtr mVendingHandler;
         MessageHandlerPtr mSearchStoreHandler;

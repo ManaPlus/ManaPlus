@@ -111,12 +111,12 @@ GeneralHandler::GeneralHandler() :
     mBankHandler(new BankHandler),
     mBuyingStoreHandler(new BuyingStoreHandler),
     mCashShopHandler(new CashShopHandler),
+    mElementalHandler(new ElementalHandler),
 #endif
     mFamilyHandler(new FamilyHandler),
     mMercenaryHandler(new MercenaryHandler),
     mHomunculusHandler(new HomunculusHandler),
     mFriendsHandler(new FriendsHandler),
-    mElementalHandler(new ElementalHandler),
     mMarketHandler(new MarketHandler),
     mVendingHandler(new VendingHandler),
     mSearchStoreHandler(new SearchStoreHandler)
@@ -236,15 +236,17 @@ void GeneralHandler::load()
     mNetwork->registerHandler(mPetHandler);
     mNetwork->registerHandler(mQuestHandler);
     mNetwork->registerHandler(mMailHandler);
+#ifdef EATHENA_SUPPORT
     mNetwork->registerHandler(mAuctionHandler);
-    mNetwork->registerHandler(mCashShopHandler);
-    mNetwork->registerHandler(mFamilyHandler);
     mNetwork->registerHandler(mBankHandler);
-    mNetwork->registerHandler(mMercenaryHandler);
     mNetwork->registerHandler(mBuyingStoreHandler);
+    mNetwork->registerHandler(mCashShopHandler);
+    mNetwork->registerHandler(mElementalHandler);
+#endif
+    mNetwork->registerHandler(mFamilyHandler);
+    mNetwork->registerHandler(mMercenaryHandler);
     mNetwork->registerHandler(mHomunculusHandler);
     mNetwork->registerHandler(mFriendsHandler);
-    mNetwork->registerHandler(mElementalHandler);
     mNetwork->registerHandler(mMarketHandler);
     mNetwork->registerHandler(mVendingHandler);
     mNetwork->registerHandler(mSearchStoreHandler);
