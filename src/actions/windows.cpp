@@ -298,7 +298,6 @@ impHandler0(cartWindowShow)
 #else
     return false;
 #endif
-
 }
 
 impHandler0(updaterWindowShow)

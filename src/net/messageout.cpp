@@ -156,7 +156,7 @@ unsigned char MessageOut::toServerDirection(unsigned char direction)
         case 4:  // UP
             direction = 4;
             break;
-        case 12: // UP | RIGHT
+        case 12:  // UP | RIGHT
             direction = 5;
             break;
         case 8:  // RIGHT

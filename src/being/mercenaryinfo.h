@@ -21,6 +21,8 @@
 #ifndef BEING_MERCENARYINFO_H
 #define BEING_MERCENARYINFO_H
 
+#include <string>
+
 #include "localconsts.h"
 
 struct MercenaryInfo final

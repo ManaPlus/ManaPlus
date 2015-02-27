@@ -21,6 +21,8 @@
 #ifndef NET_EATHENA_FRIENDSHANDLER_H
 #define NET_EATHENA_FRIENDSHANDLER_H
 
+#ifdef EATHENA_SUPPORT
+
 #include "net/friendshandler.h"
 
 #include "net/eathena/messagehandler.h"
@@ -56,4 +58,5 @@ class FriendsHandler final : public MessageHandler,
 
 }  // namespace EAthena
 
+#endif  // EATHENA_SUPPORT
 #endif  // NET_EATHENA_FRIENDSHANDLER_H

@@ -116,8 +116,8 @@ void PetHandler::move(const int petId A_UNUSED,
         return;
     createOutPacket(CMSG_PET_MOVE_TO);
     outMsg.writeInt32(0, "pet id");
-    outMsg.writeInt16(x, "x");
-    outMsg.writeInt16(y, "y");
+    outMsg.writeInt16(static_cast<int16_t>(x), "x");
+    outMsg.writeInt16(static_cast<int16_t>(y), "y");
 }
 
 void PetHandler::spawn(const Being *const being A_UNUSED,

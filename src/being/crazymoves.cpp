@@ -138,28 +138,32 @@ void CrazyMoves::crazyMove2()
     switch (localPlayer->getDirection())
     {
         case BeingDirection::UP:
-            localPlayer->setWalkingDir(BeingDirection::UP | BeingDirection::LEFT);
+            localPlayer->setWalkingDir(BeingDirection::UP |
+                BeingDirection::LEFT);
             localPlayer->setDirection(BeingDirection::RIGHT);
             playerHandler->setDirection(
                 BeingDirection::DOWN | BeingDirection::RIGHT);
             break;
 
         case BeingDirection::RIGHT:
-            localPlayer->setWalkingDir(BeingDirection::UP | BeingDirection::RIGHT);
+            localPlayer->setWalkingDir(BeingDirection::UP |
+                BeingDirection::RIGHT);
             localPlayer->setDirection(BeingDirection::DOWN);
             playerHandler->setDirection(
                 BeingDirection::DOWN | BeingDirection::LEFT);
             break;
 
         case BeingDirection::DOWN:
-            localPlayer->setWalkingDir(BeingDirection::DOWN | BeingDirection::RIGHT);
+            localPlayer->setWalkingDir(BeingDirection::DOWN |
+                BeingDirection::RIGHT);
             localPlayer->setDirection(BeingDirection::LEFT);
             playerHandler->setDirection(
                 BeingDirection::UP | BeingDirection::LEFT);
             break;
 
         case BeingDirection::LEFT:
-            localPlayer->setWalkingDir(BeingDirection::DOWN | BeingDirection::LEFT);
+            localPlayer->setWalkingDir(BeingDirection::DOWN |
+                BeingDirection::LEFT);
             localPlayer->setDirection(BeingDirection::UP);
             playerHandler->setDirection(
                 BeingDirection::UP | BeingDirection::RIGHT);
@@ -381,7 +385,8 @@ void CrazyMoves::crazyMove8()
         {
             mult ++;
         }
-        localPlayer->move(movesX[idx][0] * (mult - 1), movesY[idx][0] * (mult - 1));
+        localPlayer->move(movesX[idx][0] * (mult - 1),
+            movesY[idx][0] * (mult - 1));
     }
     else if (map->getWalk(x + movesX[idx][1],
              y + movesY[idx][1], blockWalkMask))
@@ -392,7 +397,8 @@ void CrazyMoves::crazyMove8()
         {
             mult ++;
         }
-        localPlayer->move(movesX[idx][1] * (mult - 1), movesY[idx][1] * (mult - 1));
+        localPlayer->move(movesX[idx][1] * (mult - 1),
+            movesY[idx][1] * (mult - 1));
     }
     else if (map->getWalk(x + movesX[idx][2],
              y + movesY[idx][2], blockWalkMask))
@@ -403,7 +409,8 @@ void CrazyMoves::crazyMove8()
         {
             mult ++;
         }
-        localPlayer->move(movesX[idx][2] * (mult - 1), movesY[idx][2] * (mult - 1));
+        localPlayer->move(movesX[idx][2] * (mult - 1),
+            movesY[idx][2] * (mult - 1));
     }
     else if (map->getWalk(x + movesX[idx][3],
              y + movesY[idx][3], blockWalkMask))
@@ -414,7 +421,8 @@ void CrazyMoves::crazyMove8()
         {
             mult ++;
         }
-        localPlayer->move(movesX[idx][3] * (mult - 1), movesY[idx][3] * (mult - 1));
+        localPlayer->move(movesX[idx][3] * (mult - 1),
+            movesY[idx][3] * (mult - 1));
     }
 }
 

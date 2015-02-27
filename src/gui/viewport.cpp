@@ -413,7 +413,8 @@ bool Viewport::openContextMenu(const MouseEvent &event)
 
 bool Viewport::leftMouseAction()
 {
-    const bool stopAttack = inputManager.isActionActive(InputAction::STOP_ATTACK);
+    const bool stopAttack = inputManager.isActionActive(
+        InputAction::STOP_ATTACK);
     // Interact with some being
     if (mHoverBeing)
     {
@@ -441,7 +442,9 @@ bool Viewport::leftMouseAction()
                     return true;
                 }
             }
-            else if (!stopAttack && (type == ActorType::Monster || type == ActorType::Npc))
+            else if (!stopAttack &&
+                     (type == ActorType::Monster ||
+                     type == ActorType::Npc))
             {
                 if ((localPlayer->withinAttackRange(mHoverBeing) ||
                     inputManager.isActionActive(static_cast<int>(

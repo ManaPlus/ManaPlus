@@ -21,6 +21,8 @@
 #ifndef NET_EATHENA_CASHSHOPHANDLER_H
 #define NET_EATHENA_CASHSHOPHANDLER_H
 
+#ifdef EATHENA_SUPPORT
+
 #include "net/cashshophandler.h"
 
 #include "net/eathena/messagehandler.h"
@@ -54,4 +56,5 @@ class CashShopHandler final : public MessageHandler,
 
 }  // namespace EAthena
 
+#endif  // EATHENA_SUPPORT
 #endif  // NET_EATHENA_CASHSHOPHANDLER_H

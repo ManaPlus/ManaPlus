@@ -21,6 +21,8 @@
 #ifndef NET_EATHENA_BANKHANDLER_H
 #define NET_EATHENA_BANKHANDLER_H
 
+#ifdef EATHENA_SUPPORT
+
 #include "net/bankhandler.h"
 
 #include "net/eathena/messagehandler.h"
@@ -53,4 +55,5 @@ class BankHandler final : public MessageHandler,
 
 }  // namespace EAthena
 
+#endif  // EATHENA_SUPPORT
 #endif  // NET_EATHENA_BANKHANDLER_H

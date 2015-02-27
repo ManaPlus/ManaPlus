@@ -21,6 +21,8 @@
 #ifndef BEING_PETINFO_H
 #define BEING_PETINFO_H
 
+#include <string>
+
 #include "localconsts.h"
 
 struct PetInfo final

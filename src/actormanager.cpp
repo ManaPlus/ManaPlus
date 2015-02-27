@@ -1297,7 +1297,7 @@ Being* ActorManager::findMostDamagedPlayer() const
 
         if ((!being) || (!being->isAlive()) ||            // don't heal dead
             (player_relations.getRelation(being->getName()) ==
-             PlayerRelation::ENEMY2) ||                   // don't heal enemy
+            PlayerRelation::ENEMY2) ||                    // don't heal enemy
             (localPlayer == being))                       // don't heal self
         {
             continue;

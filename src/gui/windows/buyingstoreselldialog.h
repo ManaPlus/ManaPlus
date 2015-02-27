@@ -42,8 +42,8 @@ class BuyingStoreSellDialog final : public SellDialog
          *
          * @see Window::Window
          */
-        explicit BuyingStoreSellDialog(const int accountId,
-                                       const int storeId);
+        BuyingStoreSellDialog(const int accountId,
+                              const int storeId);
 
         A_DELETE_COPY(BuyingStoreSellDialog)
 

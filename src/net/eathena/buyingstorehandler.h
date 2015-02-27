@@ -21,6 +21,8 @@
 #ifndef NET_EATHENA_BUYINGSTOREHANDLER_H
 #define NET_EATHENA_BUYINGSTOREHANDLER_H
 
+#ifdef EATHENA_SUPPORT
+
 #include "net/buyingstorehandler.h"
 
 #include "net/eathena/messagehandler.h"
@@ -75,4 +77,5 @@ class BuyingStoreHandler final : public MessageHandler,
 
 }  // namespace EAthena
 
+#endif  // EATHENA_SUPPORT
 #endif  // NET_EATHENA_BUYINGSTOREHANDLER_H

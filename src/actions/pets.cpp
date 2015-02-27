@@ -213,7 +213,7 @@ impHandler0(petAiStop)
     return true;
 }
 
-impHandler0(petMove)
+impHandler(petMove)
 {
     int x = 0;
     int y = 0;

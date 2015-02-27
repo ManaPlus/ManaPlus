@@ -21,6 +21,8 @@
 #ifndef NET_EATHENA_FAMILYHANDLER_H
 #define NET_EATHENA_FAMILYHANDLER_H
 
+#ifdef EATHENA_SUPPORT
+
 #include "net/familyhandler.h"
 
 #include "net/eathena/messagehandler.h"
@@ -55,4 +57,5 @@ class FamilyHandler final : public MessageHandler,
 
 }  // namespace EAthena
 
+#endif  // EATHENA_SUPPORT
 #endif  // NET_EATHENA_FAMILYHANDLER_H
