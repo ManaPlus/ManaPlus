@@ -231,6 +231,7 @@ void ShopWindow::action(const ActionEvent &event)
         close();
         return;
     }
+#ifdef TMWA_SUPPORT
     else if (eventId == "yes")
     {
         startTrade();
@@ -244,6 +245,19 @@ void ShopWindow::action(const ActionEvent &event)
         player_relations.ignoreTrade(mTradeNick);
         mTradeNick.clear();
     }
+    else if (eventId == "announce")
+    {
+        if (isBuySelected)
+        {
+            if (mBuyShopItems && mBuyShopItems->getNumberOfElements() > 0)
+                announce(mBuyShopItems, BUY);
+        }
+        else if (mSellShopItems && mSellShopItems->getNumberOfElements() > 0)
+        {
+            announce(mSellShopItems, SELL);
+        }
+    }
+#endif
     else if (eventId == "delete")
     {
         if (isBuySelected)
@@ -261,18 +275,6 @@ void ShopWindow::action(const ActionEvent &event)
             mSellShopItems->del(mSellShopItemList->getSelected());
             if (isShopEmpty() && localPlayer)
                 localPlayer->updateStatus();
-        }
-    }
-    else if (eventId == "announce")
-    {
-        if (isBuySelected)
-        {
-            if (mBuyShopItems && mBuyShopItems->getNumberOfElements() > 0)
-                announce(mBuyShopItems, BUY);
-        }
-        else if (mSellShopItems && mSellShopItems->getNumberOfElements() > 0)
-        {
-            announce(mSellShopItems, SELL);
         }
     }
     else if (eventId == "tab_buy")
@@ -385,28 +387,6 @@ void ShopWindow::action(const ActionEvent &event)
             }
         }
     }
-}
-
-void ShopWindow::startTrade()
-{
-    if (!actorManager || !tradeWindow)
-        return;
-
-    const Being *const being = actorManager->findBeingByName(
-        mTradeNick, ActorType::Player);
-    tradeWindow->clear();
-    if (mTradeMoney)
-    {
-        tradeWindow->addAutoMoney(mTradeNick, mTradeMoney);
-    }
-    else
-    {
-        tradeWindow->addAutoItem(mTradeNick, mTradeItem,
-                                 mTradeItem->getQuantity());
-    }
-    tradeHandler->request(being);
-    tradePartnerName = mTradeNick;
-    mTradeNick.clear();
 }
 
 void ShopWindow::valueChanged(const SelectionEvent &event A_UNUSED)
@@ -629,6 +609,7 @@ void ShopWindow::saveList() const
     shopFile.close();
 }
 
+#ifdef TMWA_SUPPORT
 void ShopWindow::announce(ShopItems *const list, const int mode)
 {
     if (!list)
@@ -686,6 +667,28 @@ void ShopWindow::announce(ShopItems *const list, const int mode)
     }
 
     chatHandler->channelMessage(TRADE_CHANNEL, data);
+}
+
+void ShopWindow::startTrade()
+{
+    if (!actorManager || !tradeWindow)
+        return;
+
+    const Being *const being = actorManager->findBeingByName(
+        mTradeNick, ActorType::Player);
+    tradeWindow->clear();
+    if (mTradeMoney)
+    {
+        tradeWindow->addAutoMoney(mTradeNick, mTradeMoney);
+    }
+    else
+    {
+        tradeWindow->addAutoItem(mTradeNick, mTradeItem,
+                                 mTradeItem->getQuantity());
+    }
+    tradeHandler->request(being);
+    tradePartnerName = mTradeNick;
+    mTradeNick.clear();
 }
 
 void ShopWindow::giveList(const std::string &nick, const int mode)
@@ -1001,6 +1004,7 @@ bool ShopWindow::findShopItem(const ShopItem *const shopItem,
     }
     return false;
 }
+#endif
 
 int ShopWindow::sumAmount(const Item *const shopItem)
 {

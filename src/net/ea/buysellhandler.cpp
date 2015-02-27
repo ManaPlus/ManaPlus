@@ -65,8 +65,10 @@ void BuySellHandler::requestSellList(const std::string &nick) const
         return;
 
     const std::string data("!selllist " + toString(tick_time));
+//  +++ need move to tmwa
+#ifdef TMWA_SUPPORT
     shopWindow->setAcceptPlayer(nick);
-
+#endif
     if (config.getBoolValue("hideShopMessages"))
     {
         chatHandler->privateMessage(nick, data);
@@ -84,7 +86,10 @@ void BuySellHandler::requestBuyList(const std::string &nick) const
         return;
 
     const std::string data("!buylist " + toString(tick_time));
+//  +++ need move to tmwa
+#ifdef TMWA_SUPPORT
     shopWindow->setAcceptPlayer(nick);
+#endif
 
     if (config.getBoolValue("hideShopMessages"))
     {

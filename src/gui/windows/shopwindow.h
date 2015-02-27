@@ -118,15 +118,16 @@ class ShopWindow final : public Window,
 
         void saveList() const;
 
-        void announce(ShopItems *const list, const int mode);
-
-        void giveList(const std::string &nick, const int mode);
-
+#ifdef TMWA_SUPPORT
         void setAcceptPlayer(const std::string &name)
         { mAcceptPlayer = name; }
 
         const std::string &getAcceptPlayer() const A_WARN_UNUSED
         { return mAcceptPlayer; }
+
+        void announce(ShopItems *const list, const int mode);
+
+        void giveList(const std::string &nick, const int mode);
 
         void sendMessage(const std::string &nick, std::string data,
                          const bool random = false);
@@ -135,15 +136,15 @@ class ShopWindow final : public Window,
 
         void processRequest(const std::string &nick, std::string data,
                             const int mode);
+        void updateTimes();
+
+        static bool checkFloodCounter(int &counterTime) A_WARN_UNUSED;
 
         bool findShopItem(const ShopItem *const shopItem,
                           const int mode) const A_WARN_UNUSED;
 
+#endif
         static int sumAmount(const Item *const shopItem) A_WARN_UNUSED;
-
-        void updateTimes();
-
-        static bool checkFloodCounter(int &counterTime) A_WARN_UNUSED;
 
         bool isShopEmpty() const A_WARN_UNUSED;
 
@@ -160,7 +161,9 @@ class ShopWindow final : public Window,
 #endif
 
     private:
+#ifdef TMWA_SUPPORT
         void startTrade();
+#endif
 
         void updateSelection();
 

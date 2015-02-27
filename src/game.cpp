@@ -628,8 +628,10 @@ void Game::slowLogic()
         }
     }
 
+#ifdef TMWA_SUPPORT
     if (shopWindow)
         shopWindow->updateTimes();
+#endif
     if (mainGraphics->getOpenGL())
         DelayedManager::delayedLoad();
 #ifdef TMWA_SUPPORT
