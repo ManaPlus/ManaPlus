@@ -334,7 +334,8 @@ void SkillDialog::loadXmlFile(const std::string &fileName)
                     }
 
                     std::string icon = XML::getProperty(node, "icon", "");
-                    const int level = XML::getProperty(node, "level", 0);
+                    const int level = skill->alwaysVisible
+                        ? 0 : XML::getProperty(node, "level", 0);
                     SkillData *data = skill->getData(level);
                     if (!data)
                         data = new SkillData();
