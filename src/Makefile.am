@@ -666,7 +666,6 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      net/logindata.h \
 	      net/loginhandler.h \
 	      net/mercenaryhandler.h \
-	      net/markethandler.h \
 	      net/messagehandler.h \
 	      net/messagein.cpp \
 	      net/messagein.h \
@@ -1268,8 +1267,6 @@ manaplus_SOURCES += \
 	      net/tmwa/itemhandler.h \
 	      net/tmwa/loginhandler.cpp \
 	      net/tmwa/loginhandler.h \
-	      net/tmwa/markethandler.cpp \
-	      net/tmwa/markethandler.h \
 	      net/tmwa/mercenaryhandler.cpp \
 	      net/tmwa/mercenaryhandler.h \
 	      net/tmwa/messagehandler.cpp \
@@ -1324,7 +1321,9 @@ manaplus_SOURCES += net/tmwa/auctionhandler.cpp \
 	      net/tmwa/homunculushandler.cpp \
 	      net/tmwa/homunculushandler.h \
 	      net/tmwa/mailhandler.cpp \
-	      net/tmwa/mailhandler.h
+	      net/tmwa/mailhandler.h \
+	      net/tmwa/markethandler.cpp \
+	      net/tmwa/markethandler.h
 endif
 
 manaplus_CXXFLAGS += -DEATHENA_SUPPORT
@@ -1357,6 +1356,7 @@ manaplus_SOURCES += gui/windows/bankwindow.cpp \
 	      net/friendshandler.h \
 	      net/homunculushandler.h \
 	      net/mailhandler.h \
+	      net/markethandler.h \
 	      net/eathena/adminhandler.cpp \
 	      net/eathena/adminhandler.h \
 	      net/eathena/auctionhandler.cpp \

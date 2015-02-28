@@ -447,6 +447,7 @@ void BuyDialog::action(const ActionEvent &event)
         }
         else if (mNpcId != Nick)
         {
+#ifdef EATHENA_SUPPORT
             if (mNpcId == Market)
             {
                 marketHandler->buyItem(item->getId(),
@@ -456,7 +457,6 @@ void BuyDialog::action(const ActionEvent &event)
                 item->increaseQuantity(-mAmountItems);
                 item->update();
             }
-#ifdef EATHENA_SUPPORT
             else if (mNpcId == Cash)
             {
                 cashShopHandler->buyItem(item->getPrice(),
@@ -464,8 +464,8 @@ void BuyDialog::action(const ActionEvent &event)
                     item->getColor(),
                     mAmountItems);
             }
-#endif
             else
+#endif
             {
                 npcHandler->buyItem(mNpcId,
                     item->getId(),

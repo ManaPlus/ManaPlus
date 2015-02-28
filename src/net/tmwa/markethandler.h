@@ -21,6 +21,8 @@
 #ifndef NET_TMWA_MARKETHANDLER_H
 #define NET_TMWA_MARKETHANDLER_H
 
+#ifdef EATHENA_SUPPORT
+
 #include "net/markethandler.h"
 
 #include "net/tmwa/messagehandler.h"
@@ -47,4 +49,5 @@ class MarketHandler final : public MessageHandler,
 
 }  // namespace TmwAthena
 
+#endif  // EATHENA_SUPPORT
 #endif  // NET_TMWA_MARKETHANDLER_H
