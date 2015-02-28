@@ -533,7 +533,6 @@ SET(SRCS
     net/gamehandler.h
     net/generalhandler.h
     net/guildhandler.h
-    net/homunculushandler.h
     net/inventoryhandler.h
     net/ipc.cpp
     net/ipc.h
@@ -1333,8 +1332,6 @@ SET(SRCS_TMWA
     net/tmwa/generalhandler.h
     net/tmwa/guildhandler.cpp
     net/tmwa/guildhandler.h
-    net/tmwa/homunculushandler.cpp
-    net/tmwa/homunculushandler.h
     net/tmwa/inventoryhandler.cpp
     net/tmwa/inventoryhandler.h
     net/tmwa/itemhandler.cpp
@@ -1395,6 +1392,8 @@ SET(SRCS_TMWAEATHENA
     net/tmwa/familyhandler.h
     net/tmwa/friendshandler.cpp
     net/tmwa/friendshandler.h
+    net/tmwa/homunculushandler.cpp
+    net/tmwa/homunculushandler.h
     )
 
 SET(SRCS_EATHENA
@@ -1425,6 +1424,7 @@ SET(SRCS_EATHENA
     net/elementalhandler.h
     net/familyhandler.h
     net/friendshandler.h
+    net/homunculushandler.h
     net/eathena/adminhandler.cpp
     net/eathena/adminhandler.h
     net/eathena/auctionhandler.cpp

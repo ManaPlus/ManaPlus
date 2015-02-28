@@ -773,18 +773,26 @@ impHandler(serverUnIgnoreWhisper)
 
 impHandler(setHomunculusName)
 {
+#ifdef EATHENA_SUPPORT
     const std::string args = event.args;
     if (args.empty())
         return false;
 
     homunculusHandler->setName(args);
     return true;
+#else
+    return false;
+#endif
 }
 
 impHandler0(fireHomunculus)
 {
+#ifdef EATHENA_SUPPORT
     homunculusHandler->fire();
     return true;
+#else
+    return false;
+#endif
 }
 
 impHandler0(leaveParty)
@@ -808,6 +816,7 @@ impHandler(warp)
 
 impHandler(homunTalk)
 {
+#ifdef EATHENA_SUPPORT
     if (!serverFeatures->haveTalkPet())
         return false;
 
@@ -816,10 +825,14 @@ impHandler(homunTalk)
         args = textToMe(args);
     homunculusHandler->talk(args);
     return true;
+#else
+    return false;
+#endif
 }
 
 impHandler(homunEmote)
 {
+#ifdef EATHENA_SUPPORT
     if (!serverFeatures->haveTalkPet())
         return false;
 
@@ -833,18 +846,23 @@ impHandler(homunEmote)
             Game::instance()->setValidSpeed();
         return true;
     }
+#endif
 
     return false;
 }
 
 impHandler(commandHomunEmote)
 {
+#ifdef EATHENA_SUPPORT
     if (!serverFeatures->haveTalkPet())
         return false;
 
     homunculusHandler->emote(static_cast<uint8_t>(
         atoi(event.args.c_str())));
     return true;
+#else
+    return false;
+#endif
 }
 
 }  // namespace Actions

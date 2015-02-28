@@ -21,6 +21,8 @@
 #ifndef NET_HOMUNCULUSHANDLER_H
 #define NET_HOMUNCULUSHANDLER_H
 
+#ifdef EATHENA_SUPPORT
+
 #include <string>
 
 #include "localconsts.h"
@@ -57,4 +59,5 @@ class HomunculusHandler notfinal
 
 extern Net::HomunculusHandler *homunculusHandler;
 
+#endif  // EATHENA_SUPPORT
 #endif  // NET_HOMUNCULUSHANDLER_H

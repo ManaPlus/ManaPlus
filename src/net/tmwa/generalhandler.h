@@ -90,9 +90,9 @@ class GeneralHandler final : public MessageHandler,
         MessageHandlerPtr mElementalHandler;
         MessageHandlerPtr mFamilyHandler;
         MessageHandlerPtr mFriendsHandler;
+        MessageHandlerPtr mHomunculusHandler;
 #endif
         MessageHandlerPtr mMercenaryHandler;
-        MessageHandlerPtr mHomunculusHandler;
         MessageHandlerPtr mMarketHandler;
         MessageHandlerPtr mVendingHandler;
         MessageHandlerPtr mSearchStoreHandler;

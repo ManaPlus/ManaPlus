@@ -48,6 +48,7 @@ namespace Net
     class ElementalHandler;
     class FamilyHandler;
     class FriendsHandler;
+    class HomunculusHandler;
 #endif
     class AdminHandler;
     class BeingHandler;
@@ -57,7 +58,6 @@ namespace Net
     class GameHandler;
     class GeneralHandler;
     class GuildHandler;
-    class HomunculusHandler;
     class InventoryHandler;
     class MailHandler;
     class MarketHandler;
@@ -101,9 +101,9 @@ Net::CashShopHandler *cashShopHandler = nullptr;
 Net::ElementalHandler *elementalHandler = nullptr;
 Net::FamilyHandler *familyHandler = nullptr;
 Net::FriendsHandler *friendsHandler = nullptr;
+Net::HomunculusHandler *homunculusHandler = nullptr;
 #endif
 Net::QuestHandler *questHandler = nullptr;
-Net::HomunculusHandler *homunculusHandler = nullptr;
 Net::MarketHandler *marketHandler = nullptr;
 Net::VendingHandler *vendingHandler = nullptr;
 Net::SearchStoreHandler *searchStoreHandler = nullptr;

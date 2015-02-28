@@ -1472,6 +1472,7 @@ void PopupMenu::handleLink(const std::string &link,
     {
         mercenaryHandler->moveToMaster();
     }
+#ifdef EATHENA_SUPPORT
     else if (link == "homunculus to master")
     {
         homunculusHandler->moveToMaster();
@@ -1484,6 +1485,7 @@ void PopupMenu::handleLink(const std::string &link,
     {
         homunculusHandler->fire();
     }
+#endif
     else if (link == "pet feed")
     {
         petHandler->feed();

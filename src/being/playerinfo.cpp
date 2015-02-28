@@ -563,16 +563,20 @@ void updateMoveAI()
 {
     if (mMercenary)
         mercenaryHandler->moveToMaster();
+#ifdef EATHENA_SUPPORT
     if (mHomunculus)
         homunculusHandler->moveToMaster();
+#endif
 }
 
 void updateAttackAi(const int targetId, const bool keep)
 {
     if (mMercenary)
         mercenaryHandler->attack(targetId, keep);
+#ifdef EATHENA_SUPPORT
     if (mHomunculus)
         homunculusHandler->attack(targetId, keep);
+#endif
 }
 
 void setGuildPositionFlags(const GuildPositionFlags::Type pos)
