@@ -1,6 +1,7 @@
 src/actions/actions.cpp
 src/actions/chat.cpp
 src/actions/commands.cpp
+src/actions/pets.cpp
 src/actions/statusbar.cpp
 src/actormanager.cpp
 src/being/being.cpp
