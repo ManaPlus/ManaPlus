@@ -92,10 +92,10 @@ class GeneralHandler final : public MessageHandler,
         MessageHandlerPtr mHomunculusHandler;
         MessageHandlerPtr mMailHandler;
         MessageHandlerPtr mMarketHandler;
+        MessageHandlerPtr mSearchStoreHandler;
 #endif
         MessageHandlerPtr mMercenaryHandler;
         MessageHandlerPtr mVendingHandler;
-        MessageHandlerPtr mSearchStoreHandler;
 };
 
 }  // namespace TmwAthena

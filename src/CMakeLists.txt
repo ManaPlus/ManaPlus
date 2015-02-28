@@ -1355,8 +1355,6 @@ SET(SRCS_TMWA
     net/tmwa/protocol.h
     net/tmwa/questhandler.cpp
     net/tmwa/questhandler.h
-    net/tmwa/searchstorehandler.cpp
-    net/tmwa/searchstorehandler.h
     net/tmwa/serverfeatures.cpp
     net/tmwa/serverfeatures.h
     net/tmwa/skillhandler.cpp
@@ -1391,6 +1389,8 @@ SET(SRCS_TMWAEATHENA
     net/tmwa/markethandler.h
     net/tmwa/mercenaryhandler.cpp
     net/tmwa/mercenaryhandler.h
+    net/tmwa/searchstorehandler.cpp
+    net/tmwa/searchstorehandler.h
     )
 
 SET(SRCS_EATHENA
@@ -1425,6 +1425,7 @@ SET(SRCS_EATHENA
     net/mailhandler.h
     net/markethandler.h
     net/mercenaryhandler.h
+    net/searchstorehandler.h
     net/eathena/adminhandler.cpp
     net/eathena/adminhandler.h
     net/eathena/auctionhandler.cpp

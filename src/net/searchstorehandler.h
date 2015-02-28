@@ -21,6 +21,8 @@
 #ifndef NET_SEARCHSTOREHANDLER_H
 #define NET_SEARCHSTOREHANDLER_H
 
+#ifdef EATHENA_SUPPORT
+
 #include <string>
 
 #include "enums/net/storesearchtype.h"
@@ -54,4 +56,5 @@ class SearchStoreHandler notfinal
 
 extern Net::SearchStoreHandler *searchStoreHandler;
 
+#endif  // EATHENA_SUPPORT
 #endif  // NET_SEARCHSTOREHANDLER_H

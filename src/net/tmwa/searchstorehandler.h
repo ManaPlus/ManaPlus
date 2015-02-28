@@ -21,6 +21,8 @@
 #ifndef NET_TMWA_SEARCHSTOREHANDLER_H
 #define NET_TMWA_SEARCHSTOREHANDLER_H
 
+#ifdef EATHENA_SUPPORT
+
 #include "net/searchstorehandler.h"
 
 #include "net/tmwa/messagehandler.h"
@@ -53,4 +55,5 @@ class SearchStoreHandler final : public MessageHandler,
 
 }  // namespace TmwAthena
 
+#endif  // EATHENA_SUPPORT
 #endif  // NET_TMWA_SEARCHSTOREHANDLER_H

@@ -52,6 +52,7 @@ namespace Net
     class MailHandler;
     class MarketHandler;
     class MercenaryHandler;
+    class SearchStoreHandler;
 #endif
     class AdminHandler;
     class BeingHandler;
@@ -67,7 +68,6 @@ namespace Net
     class PetHandler;
     class PlayerHandler;
     class QuestHandler;
-    class SearchStoreHandler;
     class ServerFeatures;
     class SkillHandler;
     class TradeHandler;
@@ -103,10 +103,10 @@ Net::HomunculusHandler *homunculusHandler = nullptr;
 Net::MailHandler *mailHandler = nullptr;
 Net::MarketHandler *marketHandler = nullptr;
 Net::MercenaryHandler *mercenaryHandler = nullptr;
+Net::SearchStoreHandler *searchStoreHandler = nullptr;
 #endif
 Net::QuestHandler *questHandler = nullptr;
 Net::VendingHandler *vendingHandler = nullptr;
-Net::SearchStoreHandler *searchStoreHandler = nullptr;
 
 namespace Net
 {

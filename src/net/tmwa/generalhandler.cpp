@@ -117,9 +117,9 @@ GeneralHandler::GeneralHandler() :
     mMailHandler(new MailHandler),
     mMarketHandler(new MarketHandler),
     mMercenaryHandler(new MercenaryHandler),
+    mSearchStoreHandler(new SearchStoreHandler),
 #endif
-    mVendingHandler(new VendingHandler),
-    mSearchStoreHandler(new SearchStoreHandler)
+    mVendingHandler(new VendingHandler)
 {
     static const uint16_t _messages[] =
     {
@@ -247,9 +247,9 @@ void GeneralHandler::load()
     mNetwork->registerHandler(mMailHandler);
     mNetwork->registerHandler(mMarketHandler);
     mNetwork->registerHandler(mMercenaryHandler);
+    mNetwork->registerHandler(mSearchStoreHandler);
 #endif
     mNetwork->registerHandler(mVendingHandler);
-    mNetwork->registerHandler(mSearchStoreHandler);
 }
 
 void GeneralHandler::reload()
