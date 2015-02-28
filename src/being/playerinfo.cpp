@@ -559,25 +559,23 @@ int getMercenaryId()
     return mMercenary ? mMercenary->id : 0;
 }
 
+#ifdef EATHENA_SUPPORT
 void updateMoveAI()
 {
     if (mMercenary)
         mercenaryHandler->moveToMaster();
-#ifdef EATHENA_SUPPORT
     if (mHomunculus)
         homunculusHandler->moveToMaster();
-#endif
 }
 
 void updateAttackAi(const int targetId, const bool keep)
 {
     if (mMercenary)
         mercenaryHandler->attack(targetId, keep);
-#ifdef EATHENA_SUPPORT
     if (mHomunculus)
         homunculusHandler->attack(targetId, keep);
-#endif
 }
+#endif
 
 void setGuildPositionFlags(const GuildPositionFlags::Type pos)
 {

@@ -116,8 +116,8 @@ GeneralHandler::GeneralHandler() :
     mHomunculusHandler(new HomunculusHandler),
     mMailHandler(new MailHandler),
     mMarketHandler(new MarketHandler),
-#endif
     mMercenaryHandler(new MercenaryHandler),
+#endif
     mVendingHandler(new VendingHandler),
     mSearchStoreHandler(new SearchStoreHandler)
 {
@@ -246,8 +246,8 @@ void GeneralHandler::load()
     mNetwork->registerHandler(mHomunculusHandler);
     mNetwork->registerHandler(mMailHandler);
     mNetwork->registerHandler(mMarketHandler);
-#endif
     mNetwork->registerHandler(mMercenaryHandler);
+#endif
     mNetwork->registerHandler(mVendingHandler);
     mNetwork->registerHandler(mSearchStoreHandler);
 }

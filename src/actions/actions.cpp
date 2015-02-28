@@ -1426,8 +1426,12 @@ impHandler(uploadLog)
 
 impHandler0(mercenaryFire)
 {
+#ifdef EATHENA_SUPPORT
     mercenaryHandler->fire();
     return true;
+#else
+    return false;
+#endif
 }
 
 impHandler(useItem)

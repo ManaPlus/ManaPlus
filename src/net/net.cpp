@@ -51,6 +51,7 @@ namespace Net
     class HomunculusHandler;
     class MailHandler;
     class MarketHandler;
+    class MercenaryHandler;
 #endif
     class AdminHandler;
     class BeingHandler;
@@ -61,7 +62,6 @@ namespace Net
     class GeneralHandler;
     class GuildHandler;
     class InventoryHandler;
-    class MercenaryHandler;
     class NpcHandler;
     class PartyHandler;
     class PetHandler;
@@ -91,7 +91,6 @@ Net::TradeHandler *tradeHandler = nullptr;
 Net::BeingHandler *beingHandler = nullptr;
 Net::BuySellHandler *buySellHandler = nullptr;
 Net::ServerFeatures *serverFeatures = nullptr;
-Net::MercenaryHandler *mercenaryHandler = nullptr;
 #ifdef EATHENA_SUPPORT
 Net::AuctionHandler *auctionHandler = nullptr;
 Net::BankHandler *bankHandler = nullptr;
@@ -103,6 +102,7 @@ Net::FriendsHandler *friendsHandler = nullptr;
 Net::HomunculusHandler *homunculusHandler = nullptr;
 Net::MailHandler *mailHandler = nullptr;
 Net::MarketHandler *marketHandler = nullptr;
+Net::MercenaryHandler *mercenaryHandler = nullptr;
 #endif
 Net::QuestHandler *questHandler = nullptr;
 Net::VendingHandler *vendingHandler = nullptr;

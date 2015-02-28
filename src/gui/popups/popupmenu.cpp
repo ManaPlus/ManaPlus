@@ -1464,6 +1464,7 @@ void PopupMenu::handleLink(const std::string &link,
         if (chat)
             chatHandler->joinChat(chat, "");
     }
+#ifdef EATHENA_SUPPORT
     else if (link == "fire mercenary")
     {
         mercenaryHandler->fire();
@@ -1472,7 +1473,6 @@ void PopupMenu::handleLink(const std::string &link,
     {
         mercenaryHandler->moveToMaster();
     }
-#ifdef EATHENA_SUPPORT
     else if (link == "homunculus to master")
     {
         homunculusHandler->moveToMaster();

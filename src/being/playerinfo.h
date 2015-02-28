@@ -263,9 +263,11 @@ namespace PlayerInfo
 
     int getMercenaryId();
 
+#ifdef EATHENA_SUPPORT
     void updateMoveAI();
 
     void updateAttackAi(const int targetId, const bool keep);
+#endif
 
     void setGuildPositionFlags(const GuildPositionFlags::Type pos);
 

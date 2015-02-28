@@ -466,7 +466,9 @@ void LocalPlayer::nextTile(unsigned char dir A_UNUSED = 0)
         Being::nextTile();
     }
 
+#ifdef EATHENA_SUPPORT
     PlayerInfo::updateMoveAI();
+#endif
 }
 
 bool LocalPlayer::pickUp(FloorItem *const item)
@@ -781,7 +783,9 @@ void LocalPlayer::attack(Being *const target, const bool keep,
 
         const int targetId = target->getId();
         playerHandler->attack(targetId, mServerAttack);
+#ifdef EATHENA_SUPPORT
         PlayerInfo::updateAttackAi(targetId, mServerAttack);
+#endif
     }
 
     if (!keep)
