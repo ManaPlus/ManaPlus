@@ -563,7 +563,6 @@ SET(SRCS
     net/tradehandler.h
     enums/net/updatetype.h
     net/uploadcharinfo.h
-    net/vendinghandler.h
     net/worldinfo.h
     net/packetcounters.cpp
     net/packetcounters.h
@@ -1362,8 +1361,6 @@ SET(SRCS_TMWA
     net/tmwa/sprite.h
     net/tmwa/tradehandler.cpp
     net/tmwa/tradehandler.h
-    net/tmwa/vendinghandler.cpp
-    net/tmwa/vendinghandler.h
     )
 
 SET(SRCS_TMWAEATHENA
@@ -1391,6 +1388,8 @@ SET(SRCS_TMWAEATHENA
     net/tmwa/mercenaryhandler.h
     net/tmwa/searchstorehandler.cpp
     net/tmwa/searchstorehandler.h
+    net/tmwa/vendinghandler.cpp
+    net/tmwa/vendinghandler.h
     )
 
 SET(SRCS_EATHENA
@@ -1426,6 +1425,7 @@ SET(SRCS_EATHENA
     net/markethandler.h
     net/mercenaryhandler.h
     net/searchstorehandler.h
+    net/vendinghandler.h
     net/eathena/adminhandler.cpp
     net/eathena/adminhandler.h
     net/eathena/auctionhandler.cpp

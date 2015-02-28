@@ -21,6 +21,8 @@
 #ifndef NET_TMWA_VENDINGHANDLER_H
 #define NET_TMWA_VENDINGHANDLER_H
 
+#ifdef EATHENA_SUPPORT
+
 #include "net/vendinghandler.h"
 
 #include "net/tmwa/messagehandler.h"
@@ -58,4 +60,5 @@ class VendingHandler final : public MessageHandler,
 
 }  // namespace TmwAthena
 
+#endif  // EATHENA_SUPPORT
 #endif  // NET_TMWA_VENDINGHANDLER_H

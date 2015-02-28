@@ -21,6 +21,8 @@
 #ifndef NET_VENDINGHANDLER_H
 #define NET_VENDINGHANDLER_H
 
+#ifdef EATHENA_SUPPORT
+
 #include <string>
 #include <vector>
 
@@ -60,4 +62,5 @@ class VendingHandler notfinal
 
 extern Net::VendingHandler *vendingHandler;
 
+#endif  // EATHENA_SUPPORT
 #endif  // NET_VENDINGHANDLER_H

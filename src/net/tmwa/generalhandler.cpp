@@ -104,8 +104,8 @@ GeneralHandler::GeneralHandler() :
     mSkillHandler(new SkillHandler),
     mTradeHandler(new TradeHandler),
     mQuestHandler(new QuestHandler),
-    mServerFeatures(new ServerFeatures),
 #ifdef EATHENA_SUPPORT
+    mServerFeatures(new ServerFeatures),
     mAuctionHandler(new AuctionHandler),
     mBankHandler(new BankHandler),
     mBuyingStoreHandler(new BuyingStoreHandler),
@@ -118,8 +118,10 @@ GeneralHandler::GeneralHandler() :
     mMarketHandler(new MarketHandler),
     mMercenaryHandler(new MercenaryHandler),
     mSearchStoreHandler(new SearchStoreHandler),
-#endif
     mVendingHandler(new VendingHandler)
+#else
+    mServerFeatures(new ServerFeatures)
+#endif
 {
     static const uint16_t _messages[] =
     {
@@ -248,8 +250,8 @@ void GeneralHandler::load()
     mNetwork->registerHandler(mMarketHandler);
     mNetwork->registerHandler(mMercenaryHandler);
     mNetwork->registerHandler(mSearchStoreHandler);
-#endif
     mNetwork->registerHandler(mVendingHandler);
+#endif
 }
 
 void GeneralHandler::reload()

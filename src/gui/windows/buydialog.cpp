@@ -477,6 +477,7 @@ void BuyDialog::action(const ActionEvent &event)
         }
         else if (mNpcId == Nick)
         {
+#ifdef EATHENA_SUPPORT
             if (serverFeatures->haveVending())
             {
                 Being *const being = actorManager->findBeingByName(mNick);
@@ -491,6 +492,9 @@ void BuyDialog::action(const ActionEvent &event)
                 }
             }
             else if (tradeWindow)
+#else
+            if (tradeWindow)
+#endif
             {
                 if (item)
                 {

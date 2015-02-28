@@ -690,7 +690,6 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      net/tradehandler.h \
 	      enums/net/updatetype.h \
 	      net/uploadcharinfo.h \
-	      net/vendinghandler.h \
 	      net/worldinfo.h \
 	      net/packetcounters.cpp \
 	      net/packetcounters.h \
@@ -1291,9 +1290,7 @@ manaplus_SOURCES += \
 	      net/tmwa/skillhandler.h \
 	      net/tmwa/sprite.h \
 	      net/tmwa/tradehandler.cpp \
-	      net/tmwa/tradehandler.h \
-	      net/tmwa/vendinghandler.cpp \
-	      net/tmwa/vendinghandler.h
+	      net/tmwa/tradehandler.h
 endif
 
 if ENABLE_EATHENA
@@ -1321,7 +1318,9 @@ manaplus_SOURCES += net/tmwa/auctionhandler.cpp \
 	      net/tmwa/mercenaryhandler.cpp \
 	      net/tmwa/mercenaryhandler.h \
 	      net/tmwa/searchstorehandler.cpp \
-	      net/tmwa/searchstorehandler.h
+	      net/tmwa/searchstorehandler.h \
+	      net/tmwa/vendinghandler.cpp \
+	      net/tmwa/vendinghandler.h
 endif
 
 manaplus_CXXFLAGS += -DEATHENA_SUPPORT
@@ -1357,6 +1356,7 @@ manaplus_SOURCES += gui/windows/bankwindow.cpp \
 	      net/markethandler.h \
 	      net/mercenaryhandler.h \
 	      net/searchstorehandler.h \
+	      net/vendinghandler.h \
 	      net/eathena/adminhandler.cpp \
 	      net/eathena/adminhandler.h \
 	      net/eathena/auctionhandler.cpp \
