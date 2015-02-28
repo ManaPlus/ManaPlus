@@ -105,7 +105,6 @@ GeneralHandler::GeneralHandler() :
     mTradeHandler(new TradeHandler),
     mQuestHandler(new QuestHandler),
     mServerFeatures(new ServerFeatures),
-    mMailHandler(new MailHandler),
 #ifdef EATHENA_SUPPORT
     mAuctionHandler(new AuctionHandler),
     mBankHandler(new BankHandler),
@@ -115,6 +114,7 @@ GeneralHandler::GeneralHandler() :
     mFamilyHandler(new FamilyHandler),
     mFriendsHandler(new FriendsHandler),
     mHomunculusHandler(new HomunculusHandler),
+    mMailHandler(new MailHandler),
 #endif
     mMercenaryHandler(new MercenaryHandler),
     mMarketHandler(new MarketHandler),
@@ -235,7 +235,6 @@ void GeneralHandler::load()
     mNetwork->registerHandler(mPartyHandler);
     mNetwork->registerHandler(mPetHandler);
     mNetwork->registerHandler(mQuestHandler);
-    mNetwork->registerHandler(mMailHandler);
 #ifdef EATHENA_SUPPORT
     mNetwork->registerHandler(mAuctionHandler);
     mNetwork->registerHandler(mBankHandler);
@@ -245,6 +244,7 @@ void GeneralHandler::load()
     mNetwork->registerHandler(mFamilyHandler);
     mNetwork->registerHandler(mFriendsHandler);
     mNetwork->registerHandler(mHomunculusHandler);
+    mNetwork->registerHandler(mMailHandler);
 #endif
     mNetwork->registerHandler(mMercenaryHandler);
     mNetwork->registerHandler(mMarketHandler);

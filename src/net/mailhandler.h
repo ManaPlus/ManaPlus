@@ -21,6 +21,8 @@
 #ifndef NET_MAILHANDLER_H
 #define NET_MAILHANDLER_H
 
+#ifdef EATHENA_SUPPORT
+
 #include <string>
 
 #include "localconsts.h"
@@ -57,4 +59,5 @@ class MailHandler notfinal
 
 extern Net::MailHandler *mailHandler;
 
+#endif  // EATHENA_SUPPORT
 #endif  // NET_MAILHANDLER_H

@@ -539,7 +539,6 @@ SET(SRCS
     net/ea/inventoryitem.h
     net/logindata.h
     net/loginhandler.h
-    net/mailhandler.h
     net/markethandler.h
     net/mercenaryhandler.h
     net/messagehandler.h
@@ -1338,8 +1337,6 @@ SET(SRCS_TMWA
     net/tmwa/itemhandler.h
     net/tmwa/loginhandler.cpp
     net/tmwa/loginhandler.h
-    net/tmwa/mailhandler.cpp
-    net/tmwa/mailhandler.h
     net/tmwa/markethandler.cpp
     net/tmwa/markethandler.h
     net/tmwa/mercenaryhandler.cpp
@@ -1394,6 +1391,8 @@ SET(SRCS_TMWAEATHENA
     net/tmwa/friendshandler.h
     net/tmwa/homunculushandler.cpp
     net/tmwa/homunculushandler.h
+    net/tmwa/mailhandler.cpp
+    net/tmwa/mailhandler.h
     )
 
 SET(SRCS_EATHENA
@@ -1425,6 +1424,7 @@ SET(SRCS_EATHENA
     net/familyhandler.h
     net/friendshandler.h
     net/homunculushandler.h
+    net/mailhandler.h
     net/eathena/adminhandler.cpp
     net/eathena/adminhandler.h
     net/eathena/auctionhandler.cpp

@@ -21,6 +21,8 @@
 #ifndef NET_TMWA_MAILHANDLER_H
 #define NET_TMWA_MAILHANDLER_H
 
+#ifdef EATHENA_SUPPORT
+
 #include "net/mailhandler.h"
 
 #include "net/tmwa/messagehandler.h"
@@ -58,4 +60,5 @@ class MailHandler final : public MessageHandler, public Net::MailHandler
 
 }  // namespace TmwAthena
 
+#endif  // EATHENA_SUPPORT
 #endif  // NET_TMWA_MAILHANDLER_H
