@@ -1,3 +1,17 @@
+2015-02-28 New release 1.5.2.28
+fix: dont show empty tooltips in inventory.
+fix: drop/store button in inventory.
+fix: dont hide storage window by h key.
+fix: cart status effect (hercules)
+fix: direction issues (hercules)
+add: buying stores support (hercules)
+add: pet talk, change direction, emote, move (hercules)
+add: mercenary, homunculus talk, emote (hercules)
+add: online list support (hercules)
+add: allow rename pet from menu (hercules)
+add: action for heal most damaged player.
+add: fast pet move in distance. left shift + left click.
+
 2015-02-14 New release 1.5.2.14
 fix: camera position if npc dialog was closed by server script command closedialog.
 fix: make file for android.
