@@ -691,11 +691,6 @@ void ChatHandler::processBeingChat(Net::MessageIn &msg)
     BLOCK_START("ChatHandler::processBeingChat")
     int chatMsgLength = msg.readInt16("len") - 8;
     Being *const being = actorManager->findBeing(msg.readInt32("being id"));
-    if (!being)
-    {
-        BLOCK_END("ChatHandler::processBeingChat")
-        return;
-    }
 
     if (chatMsgLength <= 0)
     {
@@ -705,14 +700,14 @@ void ChatHandler::processBeingChat(Net::MessageIn &msg)
 
     std::string chatMsg = msg.readRawString(chatMsgLength, "message");
 
-    if (being->getType() == ActorType::Player)
+    if (being && being->getType() == ActorType::Player)
         being->setTalkTime();
 
     const size_t pos = chatMsg.find(" : ", 0);
     std::string sender_name = ((pos == std::string::npos)
         ? "" : chatMsg.substr(0, pos));
 
-    if (sender_name != being->getName()
+    if (being && sender_name != being->getName()
         && being->getType() == ActorType::Player)
     {
         if (!being->getName().empty())
@@ -737,7 +732,7 @@ void ChatHandler::processBeingChat(Net::MessageIn &msg)
             ChatMsgType::BY_OTHER, GENERAL_CHANNEL, false, true);
     }
 
-    if (allow && player_relations.hasPermission(sender_name,
+    if (allow && being && player_relations.hasPermission(sender_name,
         PlayerRelation::SPEECH_FLOAT))
     {
         being->setSpeech(chatMsg, GENERAL_CHANNEL);
