@@ -36,7 +36,10 @@
 
 #include "resources/image.h"
 #include "resources/imageset.h"
+#include "resources/iteminfo.h"
 #include "resources/resourcemanager.h"
+
+#include "resources/db/itemdb.h"
 
 #include "utils/stringutils.h"
 #include "utils/timer.h"
@@ -243,6 +246,14 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
             bLink.caption = tmp.substr(idx2 + 1, idx3 - (idx2 + 1));
             bLink.y1 = sz * font->getHeight();
             bLink.y2 = bLink.y1 + font->getHeight();
+            if (bLink.caption.empty())
+            {
+                const int id = atoi(bLink.link.c_str());
+                if (id)
+                    bLink.caption = ItemDB::get(id).getName();
+                else
+                    bLink.caption = bLink.link;
+            }
 
             newRow.append(tmp.substr(0, idx1));
 
