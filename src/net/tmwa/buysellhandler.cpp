@@ -180,4 +180,22 @@ void BuySellHandler::requestBuyList(const std::string &nick) const
     }
 }
 
+void BuySellHandler::sendBuyRequest(const std::string &nick,
+                                    const ShopItem *const item,
+                                    const int amount) const
+{
+    if (!chatWindow || nick.empty() || !item ||
+        amount < 1 || amount > item->getQuantity())
+    {
+        return;
+    }
+    const std::string data = strprintf("!buyitem %d %d %d",
+        item->getId(), item->getPrice(), amount);
+
+    if (config.getBoolValue("hideShopMessages"))
+        chatHandler->privateMessage(nick, data);
+    else
+        chatWindow->addWhisper(nick, data, ChatMsgType::BY_PLAYER);
+}
+
 }  // namespace TmwAthena
