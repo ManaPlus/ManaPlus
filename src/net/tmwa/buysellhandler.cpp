@@ -22,6 +22,7 @@
 
 #include "net/tmwa/buysellhandler.h"
 
+#include "configuration.h"
 #include "notifymanager.h"
 
 #include "being/playerinfo.h"
@@ -29,12 +30,18 @@
 #include "enums/being/attributes.h"
 
 #include "gui/windows/buydialog.h"
+#include "gui/windows/chatwindow.h"
+#include "gui/windows/shopwindow.h"
 
+#include "net/chathandler.h"
 #include "net/serverfeatures.h"
 
 #include "net/tmwa/protocol.h"
 
 #include "resources/notifytypes.h"
+
+#include "utils/stringutils.h"
+#include "utils/timer.h"
 
 #include "debug.h"
 
@@ -133,6 +140,24 @@ void BuySellHandler::processNpcSellResponse(Net::MessageIn &msg)
         case 3:
             NotifyManager::notify(NotifyTypes::SELL_UNSELLABLE_FAILED);
             break;
+    }
+}
+
+void BuySellHandler::requestSellList(const std::string &nick) const
+{
+    if (nick.empty() != 0 || !shopWindow)
+        return;
+
+    const std::string data("!selllist " + toString(tick_time));
+    shopWindow->setAcceptPlayer(nick);
+    if (config.getBoolValue("hideShopMessages"))
+    {
+        chatHandler->privateMessage(nick, data);
+    }
+    else
+    {
+        if (chatWindow)
+            chatWindow->addWhisper(nick, data, ChatMsgType::BY_PLAYER);
     }
 }
 

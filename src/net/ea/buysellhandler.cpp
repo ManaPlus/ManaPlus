@@ -59,27 +59,6 @@ BuySellHandler::BuySellHandler()
     mBuyDialog = nullptr;
 }
 
-void BuySellHandler::requestSellList(const std::string &nick) const
-{
-    if (nick.empty() != 0 || !shopWindow)
-        return;
-
-    const std::string data("!selllist " + toString(tick_time));
-//  +++ need move to tmwa
-#ifdef TMWA_SUPPORT
-    shopWindow->setAcceptPlayer(nick);
-#endif
-    if (config.getBoolValue("hideShopMessages"))
-    {
-        chatHandler->privateMessage(nick, data);
-    }
-    else
-    {
-        if (chatWindow)
-            chatWindow->addWhisper(nick, data, ChatMsgType::BY_PLAYER);
-    }
-}
-
 void BuySellHandler::requestBuyList(const std::string &nick) const
 {
     if (nick.empty() || !shopWindow)

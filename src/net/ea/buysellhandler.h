@@ -37,9 +37,6 @@ class BuySellHandler notfinal : public Net::BuySellHandler
 
         A_DELETE_COPY(BuySellHandler)
 
-        virtual void requestSellList(const std::string &nick)
-                                     const override final;
-
         virtual void requestBuyList(const std::string &nick)
                                     const override final;
 

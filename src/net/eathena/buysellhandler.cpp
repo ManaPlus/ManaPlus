@@ -128,4 +128,8 @@ void BuySellHandler::processNpcSellResponse(Net::MessageIn &msg)
     }
 }
 
+void BuySellHandler::requestSellList(const std::string &nick A_UNUSED) const
+{
+}
+
 }  // namespace EAthena
