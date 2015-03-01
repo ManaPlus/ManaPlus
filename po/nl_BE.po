@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
-# Elvano Miok <prd.studio@gmail.com>, 2012
+# Elvano Miok <prd.studio@gmail.com>, 2012,2015
 # Jeroen De Meerleer <jeroen.de.meerleer@telenet.be>, 2011
 # Maarten Vanraes <maarten.vanraes@gmail.com>, 2011,2013
 # Elvano Miok <prd.studio@gmail.com>, 2012
@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2015-02-28 12:11+0300\n"
-"PO-Revision-Date: 2015-02-15 09:53+0000\n"
+"POT-Creation-Date: 2015-03-01 15:15+0300\n"
+"PO-Revision-Date: 2015-03-01 13:06+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Dutch (Belgium) (http://www.transifex.com/projects/p/manaplus/"
 "language/nl_BE/)\n"
@@ -25,7 +25,7 @@ msgstr ""
 #. TRANSLATORS: file uploaded message
 #: src/actions/actions.cpp:144
 msgid "File uploaded"
-msgstr ""
+msgstr "Bestand is opgeladen"
 
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: edit dialog label
@@ -61,101 +61,101 @@ msgstr ""
 #: src/net/eathena/charserverhandler.cpp:621
 #: src/net/tmwa/charserverhandler.cpp:536
 msgid "OK"
-msgstr "OK"
+msgstr "Oké"
 
 #. TRANSLATORS: clear graphics command message
 #. TRANSLATORS: clear fonts cache message
-#: src/actions/actions.cpp:930 src/actions/actions.cpp:942
+#: src/actions/actions.cpp:932 src/actions/actions.cpp:944
 msgid "Cache cleaned"
 msgstr "Cache gewist"
 
 #. TRANSLATORS: uptime command
-#: src/actions/actions.cpp:1070 src/actions/actions.cpp:1126
+#: src/actions/actions.cpp:1072 src/actions/actions.cpp:1128
 #, c-format
 msgid "Client uptime: %s"
 msgstr "Client uptime: %s"
 
 #. TRANSLATORS: uptime command
-#: src/actions/actions.cpp:1081
+#: src/actions/actions.cpp:1083
 #, c-format
 msgid "%d week"
 msgstr "%d weken"
 
-#: src/actions/actions.cpp:1081
+#: src/actions/actions.cpp:1083
 #, c-format
 msgid "%d weeks"
-msgstr ""
+msgstr "%d weken"
 
 #. TRANSLATORS: uptime command
-#: src/actions/actions.cpp:1092
+#: src/actions/actions.cpp:1094
 #, c-format
 msgid "%d day"
 msgstr "%d dagen"
 
-#: src/actions/actions.cpp:1092
+#: src/actions/actions.cpp:1094
 #, c-format
 msgid "%d days"
-msgstr ""
+msgstr "%d dagen"
 
 #. TRANSLATORS: uptime command
-#: src/actions/actions.cpp:1102
+#: src/actions/actions.cpp:1104
 #, c-format
 msgid "%d hour"
 msgstr "%d uren"
 
-#: src/actions/actions.cpp:1102
+#: src/actions/actions.cpp:1104
 #, c-format
 msgid "%d hours"
-msgstr ""
+msgstr "%d uren"
 
 #. TRANSLATORS: uptime command
-#: src/actions/actions.cpp:1112
+#: src/actions/actions.cpp:1114
 #, c-format
 msgid "%d minute"
 msgstr "%d minuten"
 
-#: src/actions/actions.cpp:1112
+#: src/actions/actions.cpp:1114
 #, c-format
 msgid "%d minutes"
-msgstr ""
+msgstr "%d minuten"
 
 #. TRANSLATORS: uptime command
-#: src/actions/actions.cpp:1122
+#: src/actions/actions.cpp:1124
 #, c-format
 msgid "%d second"
 msgstr "%d seconden"
 
-#: src/actions/actions.cpp:1122
+#: src/actions/actions.cpp:1124
 #, c-format
 msgid "%d seconds"
-msgstr ""
+msgstr "%d seconden"
 
 #. TRANSLATORS: dump command
-#: src/actions/actions.cpp:1183 src/actions/actions.cpp:1192
+#: src/actions/actions.cpp:1185 src/actions/actions.cpp:1194
 msgid "Resource images:"
-msgstr ""
+msgstr "Bron afbeeldingen:"
 
 #. TRANSLATORS: dump command
-#: src/actions/actions.cpp:1186 src/actions/actions.cpp:1195
+#: src/actions/actions.cpp:1188 src/actions/actions.cpp:1197
 msgid "Resource orphaned images:"
-msgstr ""
+msgstr "Bron verweesde afbeeldingen:"
 
 #. TRANSLATORS: dump environment command
-#: src/actions/actions.cpp:1283
+#: src/actions/actions.cpp:1285
 msgid "Environment variables dumped"
-msgstr ""
+msgstr "Omgevingsvariabelen gedumpt"
 
-#: src/actions/actions.cpp:1402
+#: src/actions/actions.cpp:1404
 msgid "Uploaded config into:"
-msgstr ""
+msgstr "Configuratie opgeladen in:"
 
-#: src/actions/actions.cpp:1411
+#: src/actions/actions.cpp:1413
 msgid "Uploaded server config into:"
 msgstr ""
 
-#: src/actions/actions.cpp:1420
+#: src/actions/actions.cpp:1422
 msgid "Uploaded log into:"
-msgstr ""
+msgstr "Log opgeladen in:"
 
 #. TRANSLATORS: whisper send
 #: src/actions/chat.cpp:244
@@ -166,7 +166,7 @@ msgstr "Kan geen lege berichten sturen!"
 #: src/actions/chat.cpp:292
 #, c-format
 msgid "Cannot create a whisper tab \"%s\"! It probably already exists."
-msgstr ""
+msgstr "Kan geen fluistertab \"%s\" aanmaken. Deze bestaat waarschijnlijk al."
 
 #. TRANSLATORS: create party message
 #. TRANSLATORS: chat error message
@@ -247,7 +247,7 @@ msgstr "Speler reeds verwijderd!"
 #. TRANSLATORS: erase command
 #: src/actions/commands.cpp:200
 msgid "Player no longer erased!"
-msgstr ""
+msgstr "Speler is niet langer gewist!"
 
 #. TRANSLATORS: erase command
 #: src/actions/commands.cpp:202
@@ -272,7 +272,7 @@ msgstr "neutraal"
 #. TRANSLATORS: blacklist command
 #: src/actions/commands.cpp:230
 msgid "blacklisted"
-msgstr ""
+msgstr "Op de zwarte lijst gezet"
 
 #. TRANSLATORS: enemy command
 #: src/actions/commands.cpp:237
@@ -294,14 +294,14 @@ msgid "Accepting incoming trade requests"
 msgstr "Inkomende handelsaanvragen accepteren"
 
 #. TRANSLATORS: visible beings on map
-#: src/actormanager.cpp:1360
+#: src/actormanager.cpp:1361
 msgid "Visible on map"
 msgstr "Zichtbaar op de map"
 
 #. TRANSLATORS: default race name
 #: src/being/being.cpp:402
 msgid "Human"
-msgstr ""
+msgstr "Mens"
 
 #: src/being/being.cpp:571
 msgid "dodge"
@@ -325,56 +325,56 @@ msgstr "I"
 #: src/being/localplayer.cpp:384
 #, c-format
 msgid "You were killed by %s."
-msgstr ""
+msgstr "U bent gedood door %s."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:834
+#: src/being/localplayer.cpp:838
 msgid "Tried to pick up nonexistent item."
 msgstr "Geprobeerd een nietbestaand voorwerp op te rapen."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:838
+#: src/being/localplayer.cpp:842
 msgid "Item is too heavy."
 msgstr "Voorwerp is te zwaar."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:842
+#: src/being/localplayer.cpp:846
 msgid "Item is too far away."
 msgstr "Voorwerp is te ver weg."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:846
+#: src/being/localplayer.cpp:850
 msgid "Inventory is full."
 msgstr "Inventaris is vol."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:850
+#: src/being/localplayer.cpp:854
 msgid "Stack is too big."
-msgstr ""
+msgstr "Uw opstapeling is de groot."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:854
+#: src/being/localplayer.cpp:858
 msgid "Item belongs to someone else."
 msgstr "Voorwerp behoort bij iemand anders."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:858
-msgid "You can't pickup this amount of items."
-msgstr ""
-
-#. TRANSLATORS: pickup error message
 #: src/being/localplayer.cpp:862
-msgid "Your item stack has max amount."
-msgstr ""
+msgid "You can't pickup this amount of items."
+msgstr "U kan deze hoeveelheid aan items niet oprapen."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:869
+#: src/being/localplayer.cpp:866
+msgid "Your item stack has max amount."
+msgstr "U zit aan het maximum van uw opslagruimte."
+
+#. TRANSLATORS: pickup error message
+#: src/being/localplayer.cpp:873
 msgid "Unknown problem picking up item."
 msgstr "Onbekend probleem bij het oprapen van voorwerp."
 
 #. TRANSLATORS: %d is number,
 #. [@@%d|%s@@] - here player can see link to item
-#: src/being/localplayer.cpp:893
+#: src/being/localplayer.cpp:897
 #, c-format
 msgid "You picked up %d [@@%d|%s@@]."
 msgid_plural "You picked up %d [@@%d|%s@@]."
@@ -383,54 +383,54 @@ msgstr[1] "U raapte op %d [@@%d|%s@@]."
 
 #. TRANSLATORS: this is normal experience
 #. TRANSLATORS: get xp message
-#: src/being/localplayer.cpp:1075 src/being/localplayer.cpp:1076
-#: src/being/localplayer.cpp:1112
+#: src/being/localplayer.cpp:1079 src/being/localplayer.cpp:1080
+#: src/being/localplayer.cpp:1116
 msgid "xp"
-msgstr ""
+msgstr "ep"
 
 #. TRANSLATORS: this is job experience
-#: src/being/localplayer.cpp:1080 src/being/localplayer.cpp:1086
-#: src/being/localplayer.cpp:1092
+#: src/being/localplayer.cpp:1084 src/being/localplayer.cpp:1090
+#: src/being/localplayer.cpp:1096
 msgid "job"
-msgstr ""
+msgstr "job"
 
 #. TRANSLATORS: follow command message
-#: src/being/localplayer.cpp:2145
+#: src/being/localplayer.cpp:2149
 #, c-format
 msgid "Follow: %s"
-msgstr ""
+msgstr "Volg %s"
 
 #. TRANSLATORS: follow command message
 #. TRANSLATORS: cancel follow message
-#: src/being/localplayer.cpp:2151 src/being/localplayer.cpp:2176
+#: src/being/localplayer.cpp:2155 src/being/localplayer.cpp:2180
 msgid "Follow canceled"
 msgstr "Volgen onderbroken"
 
 #. TRANSLATORS: imitate command message
-#: src/being/localplayer.cpp:2161
+#: src/being/localplayer.cpp:2165
 #, c-format
 msgid "Imitation: %s"
-msgstr ""
+msgstr "Imiteer %s"
 
 #. TRANSLATORS: imitate command message
 #. TRANSLATORS: cancel follow message
-#: src/being/localplayer.cpp:2167 src/being/localplayer.cpp:2181
+#: src/being/localplayer.cpp:2171 src/being/localplayer.cpp:2185
 msgid "Imitation canceled"
 msgstr "Imitatie onderbroken"
 
 #. TRANSLATORS: wait player/monster message
-#: src/being/localplayer.cpp:2531
+#: src/being/localplayer.cpp:2535
 #, c-format
 msgid "You see %s"
-msgstr ""
+msgstr "You see %s"
 
 #. TRANSLATORS: ignore/unignore action
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player to completle ignore list
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player to ignore list
-#: src/being/playerrelations.cpp:469 src/gui/popups/popupmenu.cpp:2321
-#: src/gui/popups/popupmenu.cpp:2363
+#: src/being/playerrelations.cpp:469 src/gui/popups/popupmenu.cpp:2323
+#: src/gui/popups/popupmenu.cpp:2365
 msgid "Completely ignore"
 msgstr "Volledig genegeerd"
 
@@ -466,7 +466,7 @@ msgstr "Configureren"
 #. TRANSLATORS: settings tab name
 #: src/client.cpp:906 src/gui/widgets/tabs/setup_perfomance.cpp:54
 msgid "Performance"
-msgstr ""
+msgstr "Performantie"
 
 #. TRANSLATORS: video tab quick button
 #. TRANSLATORS: video settings tab name
@@ -483,7 +483,7 @@ msgstr "Thema"
 #. TRANSLATORS: theme tab quick button
 #: src/client.cpp:915
 msgid "About"
-msgstr ""
+msgstr "Over"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: help window name
@@ -617,7 +617,7 @@ msgstr "%s bestaat niet en kan niet gecreëerd worden! Stoppen."
 #: src/dirs.cpp:460
 #, c-format
 msgid "Invalid update host: %s."
-msgstr ""
+msgstr "Ongeldige opwaarderingshost %s."
 
 #. TRANSLATORS: update server initialisation error
 #: src/dirs.cpp:501 src/dirs.cpp:508
@@ -658,7 +658,7 @@ msgstr "Debug"
 #: src/game.cpp:560
 #, c-format
 msgid "Screenshot saved as %s"
-msgstr ""
+msgstr "Schermafdruk opgeslagen als %s"
 
 #. TRANSLATORS: save file message
 #: src/game.cpp:570
@@ -703,7 +703,7 @@ msgstr "(d) dubbel normaal + raar"
 #. TRANSLATORS: move type in status bar
 #: src/gamemodifiers.cpp:155
 msgid "(?) unknown move"
-msgstr ""
+msgstr "(?) onbekende verplaatsing"
 
 #. TRANSLATORS: crazy move type in status bar
 #: src/gamemodifiers.cpp:180
@@ -1064,7 +1064,7 @@ msgstr "Bericht"
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: revive player
-#: src/gui/dialogsmanager.cpp:130 src/gui/popups/popupmenu.cpp:2647
+#: src/gui/dialogsmanager.cpp:130 src/gui/popups/popupmenu.cpp:2649
 msgid "Revive"
 msgstr ""
 
@@ -1249,8 +1249,8 @@ msgstr ""
 
 #. TRANSLATORS: language
 #. TRANSLATORS: popup menu header
-#: src/gui/models/langlistmodel.h:45 src/gui/popups/popupmenu.cpp:2024
-#: src/gui/popups/popupmenu.cpp:2102 src/gui/widgets/tabs/socialtabbase.h:48
+#: src/gui/models/langlistmodel.h:45 src/gui/popups/popupmenu.cpp:2026
+#: src/gui/popups/popupmenu.cpp:2104 src/gui/widgets/tabs/socialtabbase.h:48
 msgid "(default)"
 msgstr "(standaard)"
 
@@ -1542,14 +1542,14 @@ msgstr "Groep aanmaken"
 #: src/gui/popups/popupmenu.cpp:655 src/gui/popups/popupmenu.cpp:680
 #: src/gui/popups/popupmenu.cpp:705 src/gui/popups/popupmenu.cpp:894
 #: src/gui/popups/popupmenu.cpp:921 src/gui/popups/popupmenu.cpp:954
-#: src/gui/popups/popupmenu.cpp:1766 src/gui/popups/popupmenu.cpp:1802
-#: src/gui/popups/popupmenu.cpp:1852 src/gui/popups/popupmenu.cpp:1894
-#: src/gui/popups/popupmenu.cpp:1935 src/gui/popups/popupmenu.cpp:2003
-#: src/gui/popups/popupmenu.cpp:2081 src/gui/popups/popupmenu.cpp:2115
-#: src/gui/popups/popupmenu.cpp:2141 src/gui/popups/popupmenu.cpp:2162
-#: src/gui/popups/popupmenu.cpp:2183 src/gui/popups/popupmenu.cpp:2208
-#: src/gui/popups/popupmenu.cpp:2225 src/gui/popups/popupmenu.cpp:2539
-#: src/gui/popups/popupmenu.cpp:2659 src/gui/windows/buyselldialog.cpp:75
+#: src/gui/popups/popupmenu.cpp:1768 src/gui/popups/popupmenu.cpp:1804
+#: src/gui/popups/popupmenu.cpp:1854 src/gui/popups/popupmenu.cpp:1896
+#: src/gui/popups/popupmenu.cpp:1937 src/gui/popups/popupmenu.cpp:2005
+#: src/gui/popups/popupmenu.cpp:2083 src/gui/popups/popupmenu.cpp:2117
+#: src/gui/popups/popupmenu.cpp:2143 src/gui/popups/popupmenu.cpp:2164
+#: src/gui/popups/popupmenu.cpp:2185 src/gui/popups/popupmenu.cpp:2210
+#: src/gui/popups/popupmenu.cpp:2227 src/gui/popups/popupmenu.cpp:2541
+#: src/gui/popups/popupmenu.cpp:2661 src/gui/windows/buyselldialog.cpp:75
 #: src/gui/windows/changeemaildialog.cpp:58
 #: src/gui/windows/changepassworddialog.cpp:60
 #: src/gui/windows/charcreatedialog.cpp:124
@@ -1592,7 +1592,7 @@ msgstr "Handel"
 #: src/gui/popups/popupmenu.cpp:160 src/gui/popups/popupmenu.cpp:278
 #: src/gui/popups/popupmenu.cpp:803 src/gui/widgets/skillinfo.cpp:114
 #: src/gui/windows/botcheckerwindow.cpp:89 src/input/pages/basic.cpp:42
-#: src/net/eathena/generalhandler.cpp:384 src/net/tmwa/generalhandler.cpp:339
+#: src/net/eathena/generalhandler.cpp:384 src/net/tmwa/generalhandler.cpp:341
 msgid "Attack"
 msgstr "Aanvallen"
 
@@ -1674,7 +1674,7 @@ msgstr "Spreken"
 #. TRANSLATORS: shop window button
 #. TRANSLATORS: shop window tab name
 #. TRANSLATORS: input action name
-#: src/gui/popups/popupmenu.cpp:257 src/gui/popups/popupmenu.cpp:2393
+#: src/gui/popups/popupmenu.cpp:257 src/gui/popups/popupmenu.cpp:2395
 #: src/gui/windows/buydialog.cpp:188 src/gui/windows/buydialog.cpp:204
 #: src/gui/windows/buydialog.cpp:265 src/gui/windows/buyselldialog.cpp:71
 #: src/gui/windows/shopwindow.cpp:153 src/input/pages/basic.cpp:240
@@ -1691,7 +1691,7 @@ msgstr "Kopen"
 #. TRANSLATORS: shop window button
 #. TRANSLATORS: shop window tab name
 #. TRANSLATORS: input action name
-#: src/gui/popups/popupmenu.cpp:260 src/gui/popups/popupmenu.cpp:2405
+#: src/gui/popups/popupmenu.cpp:260 src/gui/popups/popupmenu.cpp:2407
 #: src/gui/widgets/selldialog.cpp:51 src/gui/widgets/selldialog.cpp:96
 #: src/gui/windows/buyselldialog.cpp:73 src/gui/windows/shopwindow.cpp:155
 #: src/input/pages/basic.cpp:246 src/resources/db/npcdb.cpp:148
@@ -1703,7 +1703,7 @@ msgstr "Verkopen"
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add comment to player
 #: src/gui/popups/popupmenu.cpp:269 src/gui/popups/popupmenu.cpp:473
-#: src/gui/popups/popupmenu.cpp:2501
+#: src/gui/popups/popupmenu.cpp:2503
 msgid "Add comment"
 msgstr ""
 
@@ -1729,7 +1729,7 @@ msgstr "Aan de aanvalslijst toevoegen"
 #. TRANSLATORS: add monster to ignore list
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add item to pickup list
-#: src/gui/popups/popupmenu.cpp:305 src/gui/popups/popupmenu.cpp:2521
+#: src/gui/popups/popupmenu.cpp:305 src/gui/popups/popupmenu.cpp:2523
 msgid "Add to ignore list"
 msgstr "an de negeerlijst toevoegen"
 
@@ -1812,8 +1812,8 @@ msgstr "Spelers"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: kick player from party
-#: src/gui/popups/popupmenu.cpp:485 src/gui/popups/popupmenu.cpp:2446
-#: src/gui/popups/popupmenu.cpp:2470
+#: src/gui/popups/popupmenu.cpp:485 src/gui/popups/popupmenu.cpp:2448
+#: src/gui/popups/popupmenu.cpp:2472
 msgid "Kick from party"
 msgstr "Uit de groep gooien"
 
@@ -1825,8 +1825,8 @@ msgstr "Raap op"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add item name to chat
-#: src/gui/popups/popupmenu.cpp:585 src/gui/popups/popupmenu.cpp:1762
-#: src/gui/popups/popupmenu.cpp:1838 src/gui/popups/popupmenu.cpp:1880
+#: src/gui/popups/popupmenu.cpp:585 src/gui/popups/popupmenu.cpp:1764
+#: src/gui/popups/popupmenu.cpp:1840 src/gui/popups/popupmenu.cpp:1882
 msgid "Add to chat"
 msgstr "Aan chat toevoegen"
 
@@ -1841,8 +1841,8 @@ msgstr "Plaats voorwerp op de kaart"
 #. TRANSLATORS: remove attack target
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: remove item from pickup filter
-#: src/gui/popups/popupmenu.cpp:612 src/gui/popups/popupmenu.cpp:2077
-#: src/gui/popups/popupmenu.cpp:2111
+#: src/gui/popups/popupmenu.cpp:612 src/gui/popups/popupmenu.cpp:2079
+#: src/gui/popups/popupmenu.cpp:2113
 msgid "Remove"
 msgstr "Verwijder"
 
@@ -1943,8 +1943,8 @@ msgstr "Verlaat"
 #. TRANSLATORS: copy link to clipboard
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: copy npc text to clipboard
-#: src/gui/popups/popupmenu.cpp:781 src/gui/popups/popupmenu.cpp:2179
-#: src/gui/popups/popupmenu.cpp:2221
+#: src/gui/popups/popupmenu.cpp:781 src/gui/popups/popupmenu.cpp:2181
+#: src/gui/popups/popupmenu.cpp:2223
 msgid "Copy to clipboard"
 msgstr ""
 
@@ -1991,23 +1991,23 @@ msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add item to trade
-#: src/gui/popups/popupmenu.cpp:1658
+#: src/gui/popups/popupmenu.cpp:1660
 msgid "Add to trade"
 msgstr ""
 
-#: src/gui/popups/popupmenu.cpp:1666
+#: src/gui/popups/popupmenu.cpp:1668
 msgid "Add to trade 10"
 msgstr ""
 
-#: src/gui/popups/popupmenu.cpp:1671
+#: src/gui/popups/popupmenu.cpp:1673
 msgid "Add to trade half"
 msgstr ""
 
-#: src/gui/popups/popupmenu.cpp:1675
+#: src/gui/popups/popupmenu.cpp:1677
 msgid "Add to trade all-1"
 msgstr ""
 
-#: src/gui/popups/popupmenu.cpp:1679
+#: src/gui/popups/popupmenu.cpp:1681
 msgid "Add to trade all"
 msgstr ""
 
@@ -2016,50 +2016,50 @@ msgstr ""
 #. TRANSLATORS: storage button
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: setup button
-#: src/gui/popups/popupmenu.cpp:1687 src/gui/popups/popupmenu.cpp:1834
-#: src/gui/popups/popupmenu.cpp:1875 src/gui/windows/inventorywindow.cpp:251
+#: src/gui/popups/popupmenu.cpp:1689 src/gui/popups/popupmenu.cpp:1836
+#: src/gui/popups/popupmenu.cpp:1877 src/gui/windows/inventorywindow.cpp:251
 #: src/gui/windows/inventorywindow.cpp:274
 #: src/gui/windows/inventorywindow.cpp:860 src/gui/windows/setupwindow.cpp:97
 msgid "Store"
 msgstr "Opslaan"
 
-#: src/gui/popups/popupmenu.cpp:1695
+#: src/gui/popups/popupmenu.cpp:1697
 msgid "Store 10"
 msgstr "Plaats 10"
 
-#: src/gui/popups/popupmenu.cpp:1700
+#: src/gui/popups/popupmenu.cpp:1702
 msgid "Store half"
 msgstr "Plaats de helft"
 
-#: src/gui/popups/popupmenu.cpp:1704
+#: src/gui/popups/popupmenu.cpp:1706
 msgid "Store all-1"
 msgstr ""
 
-#: src/gui/popups/popupmenu.cpp:1708
+#: src/gui/popups/popupmenu.cpp:1710
 msgid "Store all"
 msgstr "Plaats alles"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: get item from storage
 #. TRANSLATORS: storage button
-#: src/gui/popups/popupmenu.cpp:1718 src/gui/windows/inventorywindow.cpp:253
+#: src/gui/popups/popupmenu.cpp:1720 src/gui/windows/inventorywindow.cpp:253
 #: src/gui/windows/inventorywindow.cpp:276
 msgid "Retrieve"
 msgstr "Afhalen"
 
-#: src/gui/popups/popupmenu.cpp:1726
+#: src/gui/popups/popupmenu.cpp:1728
 msgid "Retrieve 10"
 msgstr "Haal 10 op"
 
-#: src/gui/popups/popupmenu.cpp:1731
+#: src/gui/popups/popupmenu.cpp:1733
 msgid "Retrieve half"
 msgstr "Haal de helft op"
 
-#: src/gui/popups/popupmenu.cpp:1735
+#: src/gui/popups/popupmenu.cpp:1737
 msgid "Retrieve all-1"
 msgstr ""
 
-#: src/gui/popups/popupmenu.cpp:1739
+#: src/gui/popups/popupmenu.cpp:1741
 msgid "Retrieve all"
 msgstr "Haal alles op"
 
@@ -2069,51 +2069,51 @@ msgstr "Haal alles op"
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: skills dialog button
 #. TRANSLATORS: inventory button
-#: src/gui/popups/popupmenu.cpp:1796 src/gui/popups/popupmenu.cpp:2590
+#: src/gui/popups/popupmenu.cpp:1798 src/gui/popups/popupmenu.cpp:2592
 #: src/gui/windows/inventorywindow.cpp:186
 #: src/gui/windows/inventorywindow.cpp:752 src/gui/windows/skilldialog.cpp:82
 #: src/gui/windows/skilldialog.cpp:154 src/gui/windows/skilldialog.cpp:324
-#: src/gui/windows/skilldialog.cpp:457 src/gui/windows/skilldialog.cpp:539
+#: src/gui/windows/skilldialog.cpp:458 src/gui/windows/skilldialog.cpp:540
 #: src/resources/itemtypemapdata.h:39 src/resources/itemtypemapdata.h:43
 msgid "Use"
 msgstr "Gebruiken"
 
 #. TRANSLATORS: popup menu item
-#: src/gui/popups/popupmenu.cpp:1890
+#: src/gui/popups/popupmenu.cpp:1892
 msgid "Clear drop window"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
-#: src/gui/popups/popupmenu.cpp:1921 src/gui/popups/popupmenu.cpp:1982
+#: src/gui/popups/popupmenu.cpp:1923 src/gui/popups/popupmenu.cpp:1984
 msgid "Hide"
 msgstr "Verberg"
 
 #. TRANSLATORS: popup menu item
-#: src/gui/popups/popupmenu.cpp:1928 src/gui/popups/popupmenu.cpp:1989
+#: src/gui/popups/popupmenu.cpp:1930 src/gui/popups/popupmenu.cpp:1991
 msgid "Show"
 msgstr "Toon"
 
 #. TRANSLATORS: popup menu item
-#: src/gui/popups/popupmenu.cpp:1996
+#: src/gui/popups/popupmenu.cpp:1998
 msgid "Reset yellow bar"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: copy status to chat
 #. TRANSLATORS: status window button
-#: src/gui/popups/popupmenu.cpp:2000 src/gui/windows/statuswindow.cpp:94
+#: src/gui/popups/popupmenu.cpp:2002 src/gui/windows/statuswindow.cpp:94
 msgid "Copy to chat"
 msgstr "Kopieer naar chat"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: move attack target up
-#: src/gui/popups/popupmenu.cpp:2040 src/gui/popups/popupmenu.cpp:2059
+#: src/gui/popups/popupmenu.cpp:2042 src/gui/popups/popupmenu.cpp:2061
 msgid "Move up"
 msgstr "Beweeg naar boven"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: move attack target down
-#: src/gui/popups/popupmenu.cpp:2046 src/gui/popups/popupmenu.cpp:2065
+#: src/gui/popups/popupmenu.cpp:2048 src/gui/popups/popupmenu.cpp:2067
 msgid "Move down"
 msgstr "Beweeg naar beneden"
 
@@ -2121,155 +2121,155 @@ msgstr "Beweeg naar beneden"
 #. TRANSLATORS: undress item from player
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: undress player
-#: src/gui/popups/popupmenu.cpp:2137 src/gui/popups/popupmenu.cpp:2498
+#: src/gui/popups/popupmenu.cpp:2139 src/gui/popups/popupmenu.cpp:2500
 msgid "Undress"
 msgstr "ontkleed"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: copy text to clipboard
-#: src/gui/popups/popupmenu.cpp:2155
+#: src/gui/popups/popupmenu.cpp:2157
 msgid "Copy"
 msgstr "Kopiëren"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: paste text from clipboard
-#: src/gui/popups/popupmenu.cpp:2158
+#: src/gui/popups/popupmenu.cpp:2160
 msgid "Paste"
 msgstr "Plakken"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: open link in browser
-#: src/gui/popups/popupmenu.cpp:2176
+#: src/gui/popups/popupmenu.cpp:2178
 msgid "Open link"
 msgstr ""
 
 #. TRANSLATORS: popup menu header
-#: src/gui/popups/popupmenu.cpp:2194
+#: src/gui/popups/popupmenu.cpp:2196
 msgid "Show window"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player to disregarded list
-#: src/gui/popups/popupmenu.cpp:2267 src/gui/popups/popupmenu.cpp:2303
-#: src/gui/popups/popupmenu.cpp:2342 src/gui/popups/popupmenu.cpp:2360
+#: src/gui/popups/popupmenu.cpp:2269 src/gui/popups/popupmenu.cpp:2305
+#: src/gui/popups/popupmenu.cpp:2344 src/gui/popups/popupmenu.cpp:2362
 msgid "Disregard"
 msgstr "Geen rekening mee houden"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player to ignore list
 #. TRANSLATORS: confirm dialog button
-#: src/gui/popups/popupmenu.cpp:2270 src/gui/popups/popupmenu.cpp:2306
-#: src/gui/popups/popupmenu.cpp:2345 src/gui/windows/confirmdialog.cpp:60
+#: src/gui/popups/popupmenu.cpp:2272 src/gui/popups/popupmenu.cpp:2308
+#: src/gui/popups/popupmenu.cpp:2347 src/gui/windows/confirmdialog.cpp:60
 msgid "Ignore"
 msgstr "Negeer"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player to black list
-#: src/gui/popups/popupmenu.cpp:2273 src/gui/popups/popupmenu.cpp:2348
+#: src/gui/popups/popupmenu.cpp:2275 src/gui/popups/popupmenu.cpp:2350
 msgid "Black list"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player to enemy list
-#: src/gui/popups/popupmenu.cpp:2276 src/gui/popups/popupmenu.cpp:2309
+#: src/gui/popups/popupmenu.cpp:2278 src/gui/popups/popupmenu.cpp:2311
 msgid "Set as enemy"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player to erased list
-#: src/gui/popups/popupmenu.cpp:2279 src/gui/popups/popupmenu.cpp:2312
-#: src/gui/popups/popupmenu.cpp:2324 src/gui/popups/popupmenu.cpp:2333
-#: src/gui/popups/popupmenu.cpp:2351
+#: src/gui/popups/popupmenu.cpp:2281 src/gui/popups/popupmenu.cpp:2314
+#: src/gui/popups/popupmenu.cpp:2326 src/gui/popups/popupmenu.cpp:2335
+#: src/gui/popups/popupmenu.cpp:2353
 msgid "Erase"
 msgstr "Wis"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player to friends list
-#: src/gui/popups/popupmenu.cpp:2289
+#: src/gui/popups/popupmenu.cpp:2291
 msgid "Be friend"
 msgstr "Word vriend"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: remove player from ignore list
-#: src/gui/popups/popupmenu.cpp:2300 src/gui/popups/popupmenu.cpp:2318
-#: src/gui/popups/popupmenu.cpp:2330 src/gui/popups/popupmenu.cpp:2339
-#: src/gui/popups/popupmenu.cpp:2357
+#: src/gui/popups/popupmenu.cpp:2302 src/gui/popups/popupmenu.cpp:2320
+#: src/gui/popups/popupmenu.cpp:2332 src/gui/popups/popupmenu.cpp:2341
+#: src/gui/popups/popupmenu.cpp:2359
 msgid "Unignore"
 msgstr "Stop Negeren"
 
 #. TRANSLATORS: popup menu item
-#: src/gui/popups/popupmenu.cpp:2376
+#: src/gui/popups/popupmenu.cpp:2378
 msgid "Follow"
 msgstr "Volg"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: imitate player
-#: src/gui/popups/popupmenu.cpp:2380
+#: src/gui/popups/popupmenu.cpp:2382
 msgid "Imitate"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: buy item
-#: src/gui/popups/popupmenu.cpp:2399 src/gui/popups/popupmenu.cpp:2423
+#: src/gui/popups/popupmenu.cpp:2401 src/gui/popups/popupmenu.cpp:2425
 msgid "Buy (?)"
 msgstr "Koop (?)"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: sell item
-#: src/gui/popups/popupmenu.cpp:2411 src/gui/popups/popupmenu.cpp:2426
+#: src/gui/popups/popupmenu.cpp:2413 src/gui/popups/popupmenu.cpp:2428
 msgid "Sell (?)"
 msgstr "Verkoop (?)"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: invite player to party
-#: src/gui/popups/popupmenu.cpp:2440 src/gui/popups/popupmenu.cpp:2464
+#: src/gui/popups/popupmenu.cpp:2442 src/gui/popups/popupmenu.cpp:2466
 msgid "Invite to party"
 msgstr "uitnodigen voor de groep"
 
-#: src/gui/popups/popupmenu.cpp:2487
+#: src/gui/popups/popupmenu.cpp:2489
 #, c-format
 msgid "Join chat %s"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
-#: src/gui/popups/popupmenu.cpp:2495
+#: src/gui/popups/popupmenu.cpp:2497
 msgid "Show Items"
 msgstr "Toon Voorwerpen"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: remove item from pickup list
-#: src/gui/popups/popupmenu.cpp:2512
+#: src/gui/popups/popupmenu.cpp:2514
 msgid "Remove from pickup list"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
-#: src/gui/popups/popupmenu.cpp:2517
+#: src/gui/popups/popupmenu.cpp:2519
 msgid "Add to pickup list"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: remove protection from item
-#: src/gui/popups/popupmenu.cpp:2566
+#: src/gui/popups/popupmenu.cpp:2568
 msgid "Unprotect item"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add protection to item
-#: src/gui/popups/popupmenu.cpp:2575
+#: src/gui/popups/popupmenu.cpp:2577
 msgid "Protect item"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: drop item
 #. TRANSLATORS: inventory button
-#: src/gui/popups/popupmenu.cpp:2605 src/gui/windows/inventorywindow.cpp:201
+#: src/gui/popups/popupmenu.cpp:2607 src/gui/windows/inventorywindow.cpp:201
 #: src/gui/windows/inventorywindow.cpp:868
 msgid "Drop..."
 msgstr "Neerleggen..."
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: drop all item amount
-#: src/gui/popups/popupmenu.cpp:2608
+#: src/gui/popups/popupmenu.cpp:2610
 msgid "Drop all"
 msgstr "Laat alles vallen"
 
@@ -2277,43 +2277,43 @@ msgstr "Laat alles vallen"
 #. TRANSLATORS: drop item
 #. TRANSLATORS: full button name
 #. TRANSLATORS: inventory button
-#: src/gui/popups/popupmenu.cpp:2614 src/gui/windowmenu.cpp:132
+#: src/gui/popups/popupmenu.cpp:2616 src/gui/windowmenu.cpp:132
 #: src/gui/windows/inventorywindow.cpp:873
 msgid "Drop"
 msgstr "Neerleggen"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: gm commands
-#: src/gui/popups/popupmenu.cpp:2625
+#: src/gui/popups/popupmenu.cpp:2627
 msgid "GM..."
 msgstr ""
 
 #. TRANSLATORS: popup menu header
-#: src/gui/popups/popupmenu.cpp:2633
+#: src/gui/popups/popupmenu.cpp:2635
 msgid "GM commands"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: check player ip
-#: src/gui/popups/popupmenu.cpp:2638
+#: src/gui/popups/popupmenu.cpp:2640
 msgid "Check ip"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: go to player position
-#: src/gui/popups/popupmenu.cpp:2641
+#: src/gui/popups/popupmenu.cpp:2643
 msgid "Goto"
 msgstr "Ga naar"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: recall player to current position
-#: src/gui/popups/popupmenu.cpp:2644
+#: src/gui/popups/popupmenu.cpp:2646
 msgid "Recall"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: kick player
-#: src/gui/popups/popupmenu.cpp:2652
+#: src/gui/popups/popupmenu.cpp:2654
 msgid "Kick"
 msgstr "Schop"
 
@@ -2670,7 +2670,7 @@ msgstr "Maximum"
 #. TRANSLATORS: sell dialog label
 #. TRANSLATORS: buy dialog label
 #: src/gui/widgets/selldialog.cpp:127 src/gui/widgets/selldialog.cpp:322
-#: src/gui/windows/buydialog.cpp:245 src/gui/windows/buydialog.cpp:575
+#: src/gui/windows/buydialog.cpp:245 src/gui/windows/buydialog.cpp:579
 #, c-format
 msgid "Price: %s / Total: %s"
 msgstr "Prijs: %s / Totaal: %s"
@@ -2684,7 +2684,7 @@ msgstr "Wijzig"
 
 #. TRANSLATORS: skill level
 #. TRANSLATORS: skills dialog. skill level
-#: src/gui/widgets/skillinfo.cpp:100 src/gui/windows/skilldialog.cpp:453
+#: src/gui/widgets/skillinfo.cpp:100 src/gui/windows/skilldialog.cpp:454
 #, c-format
 msgid "Lvl: %d"
 msgstr "Niv: %d"
@@ -6107,7 +6107,7 @@ msgstr "Vaardigheid Set %d"
 msgid "Skill %d"
 msgstr "Vaardigheid %d"
 
-#: src/gui/windows/skilldialog.cpp:458
+#: src/gui/windows/skilldialog.cpp:459
 #, c-format
 msgid "Failed skill: %s"
 msgstr ""
@@ -8038,63 +8038,63 @@ msgid "Can't open channel. Channel %s is not exists."
 msgstr ""
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:134 src/net/tmwa/generalhandler.cpp:134
+#: src/net/eathena/generalhandler.cpp:134 src/net/tmwa/generalhandler.cpp:136
 #, c-format
 msgid "Strength %s"
 msgstr ""
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:135 src/net/tmwa/generalhandler.cpp:136
+#: src/net/eathena/generalhandler.cpp:135 src/net/tmwa/generalhandler.cpp:138
 #, c-format
 msgid "Agility %s"
 msgstr ""
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:136 src/net/tmwa/generalhandler.cpp:138
+#: src/net/eathena/generalhandler.cpp:136 src/net/tmwa/generalhandler.cpp:140
 #, c-format
 msgid "Vitality %s"
 msgstr ""
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:137 src/net/tmwa/generalhandler.cpp:140
+#: src/net/eathena/generalhandler.cpp:137 src/net/tmwa/generalhandler.cpp:142
 #, c-format
 msgid "Intelligence %s"
 msgstr ""
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:138 src/net/tmwa/generalhandler.cpp:142
+#: src/net/eathena/generalhandler.cpp:138 src/net/tmwa/generalhandler.cpp:144
 #, c-format
 msgid "Dexterity %s"
 msgstr ""
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:139 src/net/tmwa/generalhandler.cpp:144
+#: src/net/eathena/generalhandler.cpp:139 src/net/tmwa/generalhandler.cpp:146
 #, c-format
 msgid "Luck %s"
 msgstr ""
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:174 src/net/tmwa/generalhandler.cpp:179
+#: src/net/eathena/generalhandler.cpp:174 src/net/tmwa/generalhandler.cpp:181
 msgid "Authentication failed."
 msgstr "Authenticatie gefaald."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:177 src/net/tmwa/generalhandler.cpp:183
+#: src/net/eathena/generalhandler.cpp:177 src/net/tmwa/generalhandler.cpp:185
 msgid "No servers available."
 msgstr "Geen servers beschikbaar."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:182 src/net/tmwa/generalhandler.cpp:189
+#: src/net/eathena/generalhandler.cpp:182 src/net/tmwa/generalhandler.cpp:191
 msgid "Someone else is trying to use this account."
 msgstr "Iemand anders is aan het proberen deze account te gebruiken."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:187 src/net/tmwa/generalhandler.cpp:195
+#: src/net/eathena/generalhandler.cpp:187 src/net/tmwa/generalhandler.cpp:197
 msgid "This account is already logged in."
 msgstr "Deze account is al ingelogd."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:191 src/net/tmwa/generalhandler.cpp:200
+#: src/net/eathena/generalhandler.cpp:191 src/net/tmwa/generalhandler.cpp:202
 msgid "Speed hack detected."
 msgstr "Snelheidshack gedetecteerd."
 
@@ -8107,7 +8107,7 @@ msgid "Sorry, you are underaged."
 msgstr ""
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:200 src/net/tmwa/generalhandler.cpp:204
+#: src/net/eathena/generalhandler.cpp:200 src/net/tmwa/generalhandler.cpp:206
 msgid "Duplicated login."
 msgstr "Verdubbelde login."
 
@@ -8188,7 +8188,7 @@ msgid "Not allowed race."
 msgstr ""
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:262 src/net/tmwa/generalhandler.cpp:208
+#: src/net/eathena/generalhandler.cpp:262 src/net/tmwa/generalhandler.cpp:210
 msgid "Unknown connection error."
 msgstr "Onbekende connectiefout."
 
@@ -8197,89 +8197,89 @@ msgid "Map not found"
 msgstr ""
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:351 src/net/tmwa/generalhandler.cpp:298
+#: src/net/eathena/generalhandler.cpp:351 src/net/tmwa/generalhandler.cpp:300
 msgid "Got disconnected from server!"
 msgstr "De verbinding met de server werd verbroken!"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:376 src/net/tmwa/generalhandler.cpp:326
+#: src/net/eathena/generalhandler.cpp:376 src/net/tmwa/generalhandler.cpp:328
 msgid "Strength"
 msgstr "Kracht"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:377 src/net/tmwa/generalhandler.cpp:328
+#: src/net/eathena/generalhandler.cpp:377 src/net/tmwa/generalhandler.cpp:330
 msgid "Agility"
 msgstr "Behendigheid"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:378 src/net/tmwa/generalhandler.cpp:330
+#: src/net/eathena/generalhandler.cpp:378 src/net/tmwa/generalhandler.cpp:332
 msgid "Vitality"
 msgstr "Vitaliteit"
 
-#: src/net/eathena/generalhandler.cpp:380 src/net/tmwa/generalhandler.cpp:333
+#: src/net/eathena/generalhandler.cpp:380 src/net/tmwa/generalhandler.cpp:335
 msgid "Intelligence"
 msgstr "Intelligentie"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:381 src/net/tmwa/generalhandler.cpp:335
+#: src/net/eathena/generalhandler.cpp:381 src/net/tmwa/generalhandler.cpp:337
 msgid "Dexterity"
 msgstr "Handigheid"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:382 src/net/tmwa/generalhandler.cpp:337
+#: src/net/eathena/generalhandler.cpp:382 src/net/tmwa/generalhandler.cpp:339
 msgid "Luck"
 msgstr "Geluk"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:385 src/net/tmwa/generalhandler.cpp:341
+#: src/net/eathena/generalhandler.cpp:385 src/net/tmwa/generalhandler.cpp:343
 msgid "Defense"
 msgstr "Verdediging"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:386 src/net/tmwa/generalhandler.cpp:343
+#: src/net/eathena/generalhandler.cpp:386 src/net/tmwa/generalhandler.cpp:345
 msgid "M.Attack"
 msgstr "M.Aanval"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:387 src/net/tmwa/generalhandler.cpp:345
+#: src/net/eathena/generalhandler.cpp:387 src/net/tmwa/generalhandler.cpp:347
 msgid "M.Defense"
 msgstr "M.Verdediging"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:389 src/net/tmwa/generalhandler.cpp:348
+#: src/net/eathena/generalhandler.cpp:389 src/net/tmwa/generalhandler.cpp:350
 #, no-c-format
 msgid "% Accuracy"
 msgstr "% Nauwkeurigheid"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:391 src/net/tmwa/generalhandler.cpp:351
+#: src/net/eathena/generalhandler.cpp:391 src/net/tmwa/generalhandler.cpp:353
 #, no-c-format
 msgid "% Evade"
 msgstr "% Ontwijking"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:393 src/net/tmwa/generalhandler.cpp:354
+#: src/net/eathena/generalhandler.cpp:393 src/net/tmwa/generalhandler.cpp:356
 #, no-c-format
 msgid "% Critical"
 msgstr ""
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:394 src/net/tmwa/generalhandler.cpp:356
+#: src/net/eathena/generalhandler.cpp:394 src/net/tmwa/generalhandler.cpp:358
 msgid "Attack Delay"
 msgstr "Aanvalsvertraging"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:395 src/net/tmwa/generalhandler.cpp:358
+#: src/net/eathena/generalhandler.cpp:395 src/net/tmwa/generalhandler.cpp:360
 msgid "Walk Delay"
 msgstr "Wandelvertraging"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:396 src/net/tmwa/generalhandler.cpp:360
+#: src/net/eathena/generalhandler.cpp:396 src/net/tmwa/generalhandler.cpp:362
 msgid "Attack Range"
 msgstr "Aanvalsbereik"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:397 src/net/tmwa/generalhandler.cpp:362
+#: src/net/eathena/generalhandler.cpp:397 src/net/tmwa/generalhandler.cpp:364
 msgid "Damage per sec."
 msgstr ""
 
