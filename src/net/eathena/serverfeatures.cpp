@@ -215,4 +215,9 @@ bool ServerFeatures::haveMovePet() const
     return serverVersion >= 5;
 }
 
+bool ServerFeatures::haveServerWarpNames() const
+{
+    return serverVersion == 0;
+}
+
 }  // namespace EAthena

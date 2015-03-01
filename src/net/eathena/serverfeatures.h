@@ -105,6 +105,8 @@ class ServerFeatures final : public Net::ServerFeatures
         bool haveTalkPet() const override final;
 
         bool haveMovePet() const override final;
+
+        bool haveServerWarpNames() const override final;
 };
 
 }  // namespace EAthena

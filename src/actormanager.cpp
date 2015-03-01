@@ -265,7 +265,8 @@ Being *ActorManager::createBeing(const int id,
     }
     else if (type == ActorType::Portal)
     {
-        beingHandler->requestNameById(id);
+        if (serverFeatures->haveServerWarpNames())
+            beingHandler->requestNameById(id);
     }
     if (type == ActorType::Player)
     {
