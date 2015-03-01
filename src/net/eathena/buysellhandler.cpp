@@ -142,4 +142,10 @@ void BuySellHandler::sendBuyRequest(const std::string &nick A_UNUSED,
 {
 }
 
+void BuySellHandler::sendSellRequest(const std::string &nick A_UNUSED,
+                                     const ShopItem *const item A_UNUSED,
+                                     const int amount A_UNUSED) const
+{
+}
+
 }  // namespace EAthena

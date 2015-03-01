@@ -22,7 +22,6 @@
 
 #include "net/ea/buysellhandler.h"
 
-#include "configuration.h"
 #include "inventory.h"
 #include "notifymanager.h"
 
@@ -30,18 +29,11 @@
 
 #include "enums/being/attributes.h"
 
-#include "gui/windows/chatwindow.h"
+#include "gui/windows/buydialog.h"
 #include "gui/windows/buyselldialog.h"
 #include "gui/windows/npcselldialog.h"
 
-#include "gui/windows/buydialog.h"
-#include "gui/windows/shopwindow.h"
-
-#include "net/chathandler.h"
-
 #include "net/ea/eaprotocol.h"
-
-#include "utils/timer.h"
 
 #include "resources/notifytypes.h"
 
@@ -57,25 +49,6 @@ BuySellHandler::BuySellHandler()
 {
     mNpcId = 0;
     mBuyDialog = nullptr;
-}
-
-void BuySellHandler::sendSellRequest(const std::string &nick,
-                                     const ShopItem *const item,
-                                     const int amount) const
-{
-    if (!chatWindow || nick.empty() || !item ||
-        amount < 1 || amount > item->getQuantity())
-    {
-        return;
-    }
-
-    const std::string data = strprintf("!sellitem %d %d %d",
-        item->getId(), item->getPrice(), amount);
-
-    if (config.getBoolValue("hideShopMessages"))
-        chatHandler->privateMessage(nick, data);
-    else
-        chatWindow->addWhisper(nick, data, ChatMsgType::BY_PLAYER);
 }
 
 void BuySellHandler::processNpcBuySellChoice(Net::MessageIn &msg)
