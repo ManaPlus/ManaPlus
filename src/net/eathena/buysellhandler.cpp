@@ -132,4 +132,8 @@ void BuySellHandler::requestSellList(const std::string &nick A_UNUSED) const
 {
 }
 
+void BuySellHandler::requestBuyList(const std::string &nick A_UNUSED) const
+{
+}
+
 }  // namespace EAthena

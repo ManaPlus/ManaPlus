@@ -42,6 +42,9 @@ class BuySellHandler final : public MessageHandler, public Ea::BuySellHandler
         void requestSellList(const std::string &nick)
                              const override final;
 
+        void requestBuyList(const std::string &nick)
+                            const override final;
+
     protected:
         static void processNpcBuy(Net::MessageIn &msg);
 

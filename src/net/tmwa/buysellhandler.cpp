@@ -161,4 +161,23 @@ void BuySellHandler::requestSellList(const std::string &nick) const
     }
 }
 
+void BuySellHandler::requestBuyList(const std::string &nick) const
+{
+    if (nick.empty() || !shopWindow)
+        return;
+
+    const std::string data("!buylist " + toString(tick_time));
+    shopWindow->setAcceptPlayer(nick);
+
+    if (config.getBoolValue("hideShopMessages"))
+    {
+        chatHandler->privateMessage(nick, data);
+    }
+    else
+    {
+        if (chatWindow)
+            chatWindow->addWhisper(nick, data, ChatMsgType::BY_PLAYER);
+    }
+}
+
 }  // namespace TmwAthena
