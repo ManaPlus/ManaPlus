@@ -43,6 +43,7 @@
 
 #include "utils/stringutils.h"
 #include "utils/timer.h"
+#include "utils/translation/podict.h"
 
 #include "gui/cliprect.h"
 
@@ -250,9 +251,14 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
             {
                 const int id = atoi(bLink.link.c_str());
                 if (id)
-                    bLink.caption = ItemDB::get(id).getName();
+                {
+                    bLink.caption = translator->getStr(
+                        ItemDB::get(id).getName());
+                }
                 else
-                    bLink.caption = bLink.link;
+                {
+                    bLink.caption = translator->getStr(bLink.link);
+                }
             }
 
             newRow.append(tmp.substr(0, idx1));
