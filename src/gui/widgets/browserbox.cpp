@@ -251,14 +251,11 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
             {
                 const int id = atoi(bLink.link.c_str());
                 if (id)
-                {
-                    bLink.caption = translator->getStr(
-                        ItemDB::get(id).getName());
-                }
+                    bLink.caption = ItemDB::get(id).getName();
                 else
-                {
-                    bLink.caption = translator->getStr(bLink.link);
-                }
+                    bLink.caption = bLink.link;
+                if (translator)
+                    bLink.caption = translator->getStr(bLink.caption);
             }
 
             newRow.append(tmp.substr(0, idx1));
