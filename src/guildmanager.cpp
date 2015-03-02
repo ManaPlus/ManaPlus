@@ -37,6 +37,7 @@
 
 #include "net/chathandler.h"
 #include "net/packetlimiter.h"
+#include "net/serverfeatures.h"
 
 #include "utils/delete2.h"
 #include "utils/timer.h"
@@ -72,16 +73,23 @@ GuildManager::~GuildManager()
 
 void GuildManager::init()
 {
-    int val = serverConfig.getValue("enableGuildBot", -1);
-    if (val == -1)
+    if (serverFeatures->haveNativeGuilds())
     {
-        if (client->isTmw())
-            val = 1;
-        else
-            val = 0;
-        serverConfig.setValue("enableGuildBot", val);
+        mEnableGuildBot = false;
     }
-    mEnableGuildBot = val;
+    else
+    {
+        int val = serverConfig.getValue("enableGuildBot", -1);
+        if (val == -1)
+        {
+            if (client->isTmw())
+                val = 1;
+            else
+                val = 0;
+            serverConfig.setValue("enableGuildBot", val);
+        }
+        mEnableGuildBot = val;
+    }
     if (mEnableGuildBot)
     {
         if (!guildManager)
