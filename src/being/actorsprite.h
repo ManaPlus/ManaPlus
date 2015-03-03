@@ -177,7 +177,7 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
         bool getHaveCart() const A_WARN_UNUSED
         { return mHaveCart; }
 
-        void setRiding(const bool b)
+        virtual void setRiding(const bool b)
         { mRiding = b; }
 
     protected:

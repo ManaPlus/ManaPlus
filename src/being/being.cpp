@@ -3570,3 +3570,11 @@ bool Being::isSellShopEnabled() const
 {
     return mShop && (!serverFeatures->haveVending() || !mSellBoard.empty());
 }
+
+void Being::setRiding(const bool b)
+{
+    if (b == mRiding)
+        return;
+    mRiding = b;
+    setAction(mAction, 0);
+}

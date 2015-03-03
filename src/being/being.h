@@ -927,6 +927,8 @@ class Being notfinal : public ActorSprite,
         std::string getBuyBoard() const A_WARN_UNUSED
         { return mBuyBoard; }
 
+        void setRiding(const bool b) override final;
+
     protected:
         /**
          * Updates name's location.
