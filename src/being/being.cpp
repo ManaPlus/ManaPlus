@@ -1112,6 +1112,8 @@ void Being::fireMissile(Being *const victim, const std::string &particle) const
 
 std::string Being::getSitAction() const
 {
+    if (mRiding)
+        return SpriteAction::SITRIDE;
     if (mMap)
     {
         const unsigned char mask = mMap->getBlockMask(mX, mY);
@@ -1128,6 +1130,8 @@ std::string Being::getSitAction() const
 
 std::string Being::getMoveAction() const
 {
+    if (mRiding)
+        return SpriteAction::RIDE;
     if (mMap)
     {
         const unsigned char mask = mMap->getBlockMask(mX, mY);
@@ -1144,6 +1148,8 @@ std::string Being::getWeaponAttackAction(const ItemInfo *const weapon) const
     if (!weapon)
         return SpriteAction::ATTACK;
 
+    if (mRiding)
+        return weapon->getRideAttackAction();
     if (mMap)
     {
         const unsigned char mask = mMap->getBlockMask(mX, mY);
@@ -1174,6 +1180,8 @@ std::string Being::getAttackAction(const Attack *const attack1) const
 #define getSpriteAction(func, action) \
     std::string Being::get##func##Action() const \
 { \
+    if (mRiding) \
+        return SpriteAction::action##RIDE; \
     if (mMap) \
     { \
         const unsigned char mask = mMap->getBlockMask(mX, mY); \

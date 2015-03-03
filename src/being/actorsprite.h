@@ -177,7 +177,7 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
         bool getHaveCart() const A_WARN_UNUSED
         { return mHaveCart; }
 
-        virtual void setRiding(const bool b)
+        void setRiding(const bool b)
         { mRiding = b; }
 
     protected:
@@ -207,15 +207,6 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
                                 const int imageType = 0,
                                 const std::string &color = "");
 
-        std::set<int> mStatusEffects;   /**< set of active status effects */
-
-        ParticleList mStunParticleEffects;
-        ParticleVector mStatusParticleEffects;
-        ParticleList mChildParticleEffects;
-        int mId;
-        uint16_t mStunMode;             /**< Stun mode; zero if not stunned */
-
-    private:
         /** Load the target cursors into memory */
         static void initTargetCursor();
 
@@ -227,6 +218,14 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
             [TargetCursorSize::NUM_TC];
 
         static bool loaded;
+
+        std::set<int> mStatusEffects;   /**< set of active status effects */
+
+        ParticleList mStunParticleEffects;
+        ParticleVector mStatusParticleEffects;
+        ParticleList mChildParticleEffects;
+        int mId;
+        uint16_t mStunMode;             /**< Stun mode; zero if not stunned */
 
         /** Target cursor being used */
         AnimatedSprite *mUsedTargetCursor;
