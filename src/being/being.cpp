@@ -68,6 +68,7 @@
 #include "resources/chatobject.h"
 #include "resources/emoteinfo.h"
 #include "resources/emotesprite.h"
+#include "resources/horseinfo.h"
 #include "resources/iteminfo.h"
 #include "resources/spriteaction.h"
 
@@ -182,6 +183,8 @@ Being::Being(const int id,
     mOwner(nullptr),
     mSpecialParticle(nullptr),
     mChat(nullptr),
+    mHorseInfo(nullptr),
+    mHorseSprite(nullptr),
     mX(0),
     mY(0),
     mSortOffsetY(0),
@@ -1312,6 +1315,8 @@ void Being::setAction(const BeingAction::Action &action, const int attackId)
             mEmotionSprite->play(currentAction);
         if (mAnimationEffect)
             mAnimationEffect->play(currentAction);
+        if (mHorseSprite)
+            mHorseSprite->play(currentAction);
         mAction = action;
     }
 
@@ -1371,6 +1376,8 @@ void Being::setDirection(const uint8_t direction)
         mEmotionSprite->setSpriteDirection(dir);
     if (mAnimationEffect)
         mAnimationEffect->setSpriteDirection(dir);
+    if (mHorseSprite)
+        mHorseSprite->setSpriteDirection(dir);
     recalcSpritesOrder();
 }
 
@@ -1459,6 +1466,8 @@ void Being::logic()
     const int time = tick_time * MILLISECONDS_IN_A_TICK;
     if (mEmotionSprite)
         mEmotionSprite->update(time);
+    if (mHorseSprite)
+        mHorseSprite->update(time);
 
     if (mAnimationEffect)
     {
@@ -2408,12 +2417,23 @@ void Being::talkTo() const
 }
 
 void Being::draw(Graphics *const graphics,
-                 const int offsetX, const int offsetY) const
+                 const int offsetX,
+                 const int offsetY) const
 {
     if (!mErased)
     {
         const int px = getActorX() + offsetX;
         const int py = getActorY() + offsetY;
+        if (mHorseInfo)
+        {
+            AnimatedSprite *const sprite = mHorseInfo->sprite;
+            if (sprite)
+            {
+                sprite->draw(graphics,
+                    px + mHorseInfo->offsetX,
+                    py + mHorseInfo->offsetY);
+            }
+        }
         ActorSprite::draw1(graphics, px, py);
         drawSpriteAt(graphics, px, py);
     }
@@ -3578,4 +3598,14 @@ void Being::setRiding(const bool b)
         return;
     mRiding = b;
     setAction(mAction, 0);
+    if (b)
+    {
+        mHorseInfo = HorseDB::get(1);
+        mHorseSprite = mHorseInfo->sprite;
+    }
+    else
+    {
+        mHorseInfo = nullptr;
+        mHorseSprite = nullptr;
+    }
 }

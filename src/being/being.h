@@ -63,6 +63,7 @@ class SpeechBubble;
 class Text;
 
 struct ChatObject;
+struct HorseInfo;
 struct ParticleInfo;
 
 extern volatile int cur_time;
@@ -1050,6 +1051,8 @@ class Being notfinal : public ActorSprite,
         Being *mOwner;
         Particle *mSpecialParticle;
         ChatObject *mChat;
+        HorseInfo *mHorseInfo;
+        AnimatedSprite *mHorseSprite;
 
         int mX;             // position in tiles
         int mY;             // position in tiles

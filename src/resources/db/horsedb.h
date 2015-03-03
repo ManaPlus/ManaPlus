@@ -46,8 +46,8 @@ namespace HorseDB
 
     void unload();
 
-    const HorseInfo *get(const int id,
-                         const bool allowNull = false) A_WARN_UNUSED;
+    HorseInfo *get(const int id,
+                   const bool allowNull = false) A_WARN_UNUSED;
 
     int size();
 

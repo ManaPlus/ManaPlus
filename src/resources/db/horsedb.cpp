@@ -98,8 +98,8 @@ void HorseDB::loadXmlFile(const std::string &fileName)
         else
             currentInfo = new HorseInfo;
 
-        currentInfo->offsetX = XML::getProperty(horseNode, "x", 0);
-        currentInfo->offsetY = XML::getProperty(horseNode, "y", 0);
+        currentInfo->offsetX = XML::getProperty(horseNode, "offsetX", 0);
+        currentInfo->offsetY = XML::getProperty(horseNode, "offsetY", 0);
 
         for_each_xml_child_node(spriteNode, horseNode)
         {
@@ -134,7 +134,7 @@ void HorseDB::unload()
     mLoaded = false;
 }
 
-const HorseInfo *HorseDB::get(const int id, const bool allowNull)
+HorseInfo *HorseDB::get(const int id, const bool allowNull)
 {
     const HorseInfos::const_iterator i = mHorseInfos.find(id);
 
