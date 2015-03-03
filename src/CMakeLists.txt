@@ -613,8 +613,11 @@ SET(SRCS
     resources/db/emotedb.h
     resources/db/homunculusdb.cpp
     resources/db/homunculusdb.h
+    resources/db/horsedb.cpp
+    resources/db/horsedb.h
     resources/fboinfo.h
     resources/frame.h
+    resources/horseinfo.h
     resources/image.cpp
     resources/image.h
     resources/imagehelper.cpp

@@ -104,6 +104,7 @@
 #include "resources/db/deaddb.h"
 #include "resources/db/emotedb.h"
 #include "resources/db/homunculusdb.h"
+#include "resources/db/horsedb.h"
 #include "resources/db/sounddb.h"
 #include "resources/db/itemdb.h"
 #include "resources/db/mapdb.h"
@@ -590,6 +591,7 @@ void Client::gameClear()
     ColorDB::unload();
     SoundDB::unload();
     EmoteDB::unload();
+    HorseDB::unload();
     ItemDB::unload();
     MercenaryDB::unload();
     HomunculusDB::unload();
@@ -1244,6 +1246,7 @@ int Client::gameExec()
                     WeaponsDB::load();
                     NPCDB::load();
                     PETDB::load();
+                    HorseDB::load();
                     EmoteDB::load();
 //                    ModDB::load();
                     StatusEffect::load();

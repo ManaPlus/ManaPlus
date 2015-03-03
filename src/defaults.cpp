@@ -535,6 +535,9 @@ DefaultsData* getPathsDefaults()
     AddDEF("hairColorFile", "hair.xml");
     AddDEF("hairColorPatchFile", "hair_patch.xml");
     AddDEF("hairColorPatchDir", "hair.d");
+    AddDEF("horsesFile", "horses.xml");
+    AddDEF("horsesPatchFile", "horses_patch.xml");
+    AddDEF("horsesPatchDir", "horses.d");
     AddDEF("itemColorsFile", "itemcolors.xml");
     AddDEF("itemColorsPatchFile", "itemcolors_patch.xml");
     AddDEF("itemColorsPatchDir", "itemcolors.d");
