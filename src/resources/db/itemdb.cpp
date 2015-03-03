@@ -286,6 +286,8 @@ void ItemDB::loadXmlFile(const std::string &fileName, int &tagNum)
             node, "skyattack-action", "");
         std::string waterAttackAction = XML::getProperty(
             node, "waterattack-action", "");
+        std::string rideAttackAction = XML::getProperty(
+            node, "rideattack-action", "");
         std::string drawBefore = XML::getProperty(node, "drawBefore", "");
         std::string drawAfter = XML::getProperty(node, "drawAfter", "");
         const int pet = XML::getProperty(node, "pet", 0);
@@ -386,6 +388,7 @@ void ItemDB::loadXmlFile(const std::string &fileName, int &tagNum)
         itemInfo->setAttackAction(attackAction);
         itemInfo->setSkyAttackAction(skyAttackAction);
         itemInfo->setWaterAttackAction(waterAttackAction);
+        itemInfo->setRideAttackAction(rideAttackAction);
         itemInfo->setAttackRange(attackRange);
         itemInfo->setMissileParticleFile(missileParticle);
         itemInfo->setHitEffectId(hitEffectId);

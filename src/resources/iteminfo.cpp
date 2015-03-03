@@ -55,6 +55,7 @@ ItemInfo::ItemInfo() :
     mAttackAction(SpriteAction::INVALID),
     mSkyAttackAction(SpriteAction::INVALID),
     mWaterAttackAction(SpriteAction::INVALID),
+    mRideAttackAction(SpriteAction::INVALID),
     mAttackRange(0),
     mMissileParticle(),
     mAnimationFiles(),
@@ -132,6 +133,14 @@ void ItemInfo::setWaterAttackAction(const std::string &attackAction)
         mWaterAttackAction = SpriteAction::ATTACKWATER;
     else
         mWaterAttackAction = attackAction;
+}
+
+void ItemInfo::setRideAttackAction(const std::string &attackAction)
+{
+    if (attackAction.empty())
+        mRideAttackAction = SpriteAction::ATTACKRIDE;
+    else
+        mRideAttackAction = attackAction;
 }
 
 void ItemInfo::addSound(const ItemSoundEvent::Type event,

@@ -135,6 +135,8 @@ class ItemInfo final
 
         void setWaterAttackAction(const std::string &attackAction);
 
+        void setRideAttackAction(const std::string &attackAction);
+
         // Handlers for seting and getting the string
         // used for particles when attacking
         void setMissileParticleFile(const std::string &s)
@@ -169,6 +171,9 @@ class ItemInfo final
 
         const std::string &getWaterAttackAction() const
         { return mWaterAttackAction; }
+
+        const std::string &getRideAttackAction() const
+        { return mRideAttackAction; }
 
         int getAttackRange() const A_WARN_UNUSED
         { return mAttackRange; }
@@ -299,6 +304,7 @@ class ItemInfo final
         std::string mAttackAction;
         std::string mSkyAttackAction;
         std::string mWaterAttackAction;
+        std::string mRideAttackAction;
         int mAttackRange;     /**< Attack range, will be zero if non weapon. */
 
         // Particle to be shown when weapon attacks
