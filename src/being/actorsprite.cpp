@@ -73,7 +73,8 @@ ActorSprite::ActorSprite(const int id) :
     mCursorPaddingY(0),
     mMustResetParticles(false),
     mPoison(false),
-    mHaveCart(false)
+    mHaveCart(false),
+    mRiding(false)
 {
 }
 
@@ -220,8 +221,10 @@ void ActorSprite::updateStatusEffect(const int index, const bool newStatus)
         return;
     if (effect->isPoison() && getType() == ActorType::Player)
         setPoison(newStatus);
-    if (effect->isCart() && localPlayer == this)
+    else if (effect->isCart() && localPlayer == this)
         setHaveCart(newStatus);
+    else if (effect->isRiding())
+        setRiding(newStatus);
     handleStatusEffect(effect, index);
 }
 

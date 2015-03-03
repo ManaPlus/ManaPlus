@@ -177,6 +177,9 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
         bool getHaveCart() const A_WARN_UNUSED
         { return mHaveCart; }
 
+        virtual void setRiding(const bool b)
+        { mRiding = b; }
+
     protected:
         /**
          * Notify self that the stun mode has been updated. Invoked by
@@ -239,6 +242,7 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
         bool mMustResetParticles;
         bool mPoison;
         bool mHaveCart;
+        bool mRiding;
 };
 
 #endif  // BEING_ACTORSPRITE_H

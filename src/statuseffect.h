@@ -80,6 +80,9 @@ class StatusEffect final
         bool isCart() const A_WARN_UNUSED
         { return mIsCart; }
 
+        bool isRiding() const A_WARN_UNUSED
+        { return mIsRiding; }
+
         /**
          * Retrieves a status effect.
          *
@@ -128,6 +131,7 @@ class StatusEffect final
         bool mPersistentParticleEffect;
         bool mIsPoison;
         bool mIsCart;
+        bool mIsRiding;
 };
 
 #endif  // STATUSEFFECT_H

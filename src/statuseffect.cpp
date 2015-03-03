@@ -50,7 +50,8 @@ StatusEffect::StatusEffect() :
     mAction(),
     mPersistentParticleEffect(false),
     mIsPoison(false),
-    mIsCart(false)
+    mIsCart(false),
+    mIsRiding(false)
 {
 }
 
@@ -201,6 +202,8 @@ void StatusEffect::loadXmlFile(const std::string &fileName)
                 (name == paths.getStringValue("poisonEffectName"));
             startEffect->mIsCart =
                 (name == paths.getStringValue("cartEffectName"));
+            startEffect->mIsRiding =
+                (name == paths.getStringValue("ridingEffectName"));
             startEffect->mMessage = XML::getProperty(
                 node, "start-message", "");
             startEffect->mSFXEffect = XML::getProperty(
