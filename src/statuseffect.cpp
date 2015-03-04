@@ -217,6 +217,8 @@ void StatusEffect::loadXmlFile(const std::string &fileName)
                 node, "persistent-particle-effect", "no")) != "no";
 
             endEffect->mIsPoison = startEffect->mIsPoison;
+            endEffect->mIsCart = startEffect->mIsCart;
+            endEffect->mIsRiding = startEffect->mIsRiding;
             endEffect->mMessage = XML::getProperty(node, "end-message", "");
             endEffect->mSFXEffect = XML::getProperty(node, "end-audio", "");
             endEffect->mParticleEffect = XML::getProperty(
