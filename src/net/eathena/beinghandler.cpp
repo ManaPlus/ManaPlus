@@ -426,7 +426,8 @@ void BeingHandler::processBeingChangeLookContinue(Being *const dstBeing,
                 dstBeing->getLook());
             break;
         case 1:  // eAthena LOOK_HAIR
-            dstBeing->setSpriteID(SPRITE_HAIR_COLOR, id *-1);
+            dstBeing->setHairColor(id);
+            dstBeing->setSpriteID(SPRITE_HAIR_COLOR, id * -1);
             break;
         case 2:  // LOOK_WEAPON Weapon ID in id, Shield ID in id2
             dstBeing->setSprite(SPRITE_BODY, id, "", 1, true);
@@ -451,6 +452,7 @@ void BeingHandler::processBeingChangeLookContinue(Being *const dstBeing,
             localPlayer->imitateOutfit(dstBeing, SPRITE_HEAD_BOTTOM);
             break;
         case 6:  // eAthena LOOK_HAIR_COLOR
+            dstBeing->setHairColor(id);
             dstBeing->setSpriteColor(SPRITE_HAIR_COLOR,
                 ItemDB::get(dstBeing->getSpriteID(
                 SPRITE_HAIR_COLOR)).getDyeColorsString(id));
@@ -619,6 +621,7 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
     if (dstBeing->getType() == ActorType::Player)
     {
         dstBeing->setGender(Being::intToGender(gender));
+        dstBeing->setHairColor(hairColor);
         // Set these after the gender, as the sprites may be gender-specific
         setSprite(dstBeing, SPRITE_HAIR_COLOR, hairStyle * -1,
             ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
@@ -781,6 +784,7 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
     if (dstBeing->getType() == ActorType::Player)
     {
         dstBeing->setGender(Being::intToGender(gender));
+        dstBeing->setHairColor(hairColor);
         // Set these after the gender, as the sprites may be gender-specific
         setSprite(dstBeing, SPRITE_HAIR_COLOR, hairStyle * -1,
             ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
@@ -948,6 +952,7 @@ void BeingHandler::processBeingSpawn(Net::MessageIn &msg)
     if (dstBeing->getType() == ActorType::Player)
     {
         dstBeing->setGender(Being::intToGender(gender));
+        dstBeing->setHairColor(hairColor);
         // Set these after the gender, as the sprites may be gender-specific
         setSprite(dstBeing, SPRITE_HAIR_COLOR, hairStyle * -1,
             ItemDB::get(-hairStyle).getDyeColorsString(hairColor));

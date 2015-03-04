@@ -215,9 +215,11 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     const int hat = msg.readInt16("head top");
     const int topClothes = msg.readInt16("head mid");
 
+    const uint16_t color = msg.readInt16("hair color");
+    tempPlayer->setHairColor(static_cast<unsigned char>(color));
     tempPlayer->setSprite(SPRITE_HAIR_COLOR, hairStyle * -1,
         ItemDB::get(-hairStyle).getDyeColorsString(
-        msg.readInt16("hair color")));
+        color));
 
     const uint16_t look = msg.readInt16("clothes color");
     tempPlayer->setSubtype(race, look);
