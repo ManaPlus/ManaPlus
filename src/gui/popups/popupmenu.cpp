@@ -284,7 +284,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
                     || actorManager->isInIgnoreAttackList(name)
                     || actorManager->isInPriorityAttackList(name))
                 {
-                    mBrowserBox->addRow("remove attack",
+                    mBrowserBox->addRow("/removeattack 'NAME'",
                         // TRANSLATORS: remove monster from attack list
                         // TRANSLATORS: popup menu item
                         _("Remove from attack list"));
@@ -1106,15 +1106,6 @@ void PopupMenu::handleLink(const std::string &link,
     else if (link == "npc clipboard" && mBeingId)
     {
         NpcDialog::copyToClipboard(mBeingId, mX, mY);
-    }
-    else if (link == "remove attack" && being)
-    {
-        if (actorManager && being->getType() == ActorType::Monster)
-        {
-            actorManager->removeAttackMob(being->getName());
-            if (socialWindow)
-                socialWindow->updateAttackFilter();
-        }
     }
     else if (link == "add attack" && being)
     {
