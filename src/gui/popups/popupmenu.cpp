@@ -299,7 +299,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
                         // TRANSLATORS: popup menu item
                         // TRANSLATORS: add monster to attack list
                         _("Add to attack list"));
-                    mBrowserBox->addRow("add attack ignore",
+                    mBrowserBox->addRow("/addignoreattack 'NAME'",
                         // TRANSLATORS: popup menu item
                         // TRANSLATORS: add monster to ignore list
                         _("Add to ignore list"));
@@ -1106,15 +1106,6 @@ void PopupMenu::handleLink(const std::string &link,
     else if (link == "npc clipboard" && mBeingId)
     {
         NpcDialog::copyToClipboard(mBeingId, mX, mY);
-    }
-    else if (link == "add attack ignore" && being)
-    {
-        if (actorManager && being->getType() == ActorType::Monster)
-        {
-            actorManager->addIgnoreAttackMob(being->getName());
-            if (socialWindow)
-                socialWindow->updateAttackFilter();
-        }
     }
     else if (link == "remove pickup" && !mNick.empty())
     {
