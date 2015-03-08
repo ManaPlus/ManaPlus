@@ -291,7 +291,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
                 }
                 else
                 {
-                    mBrowserBox->addRow("add attack priority",
+                    mBrowserBox->addRow("/addpriorityattack 'NAME'",
                         // TRANSLATORS: popup menu item
                         // TRANSLATORS: add monster to priotiry attack list
                         _("Add to priority attack list"));
@@ -1106,15 +1106,6 @@ void PopupMenu::handleLink(const std::string &link,
     else if (link == "npc clipboard" && mBeingId)
     {
         NpcDialog::copyToClipboard(mBeingId, mX, mY);
-    }
-    else if (link == "add attack priority" && being)
-    {
-        if (actorManager && being->getType() == ActorType::Monster)
-        {
-            actorManager->addPriorityAttackMob(being->getName());
-            if (socialWindow)
-                socialWindow->updateAttackFilter();
-        }
     }
     else if (link == "add attack ignore" && being)
     {
