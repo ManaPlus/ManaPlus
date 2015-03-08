@@ -456,6 +456,36 @@ impHandler(kickParty)
     return true;
 }
 
+impHandler(kickGuild)
+{
+    if (!event.args.empty())
+    {
+        if (localPlayer)
+        {
+            const Guild *const guild = localPlayer->getGuild();
+            if (guild)
+            {
+                if (guild->getServerGuild())
+                    guildHandler->kick(guild->getMember(event.args), "");
+#ifdef TMWA_SUPPORT
+                else if (guildManager)
+                    guildManager->kick(event.args);
+#endif
+            }
+        }
+    }
+    else
+    {
+        if (event.tab)
+        {
+            // TRANSLATORS: party kick message
+            event.tab->chatLog(_("Please specify a name."),
+                ChatMsgType::BY_SERVER);
+        }
+    }
+    return true;
+}
+
 impHandler(addText)
 {
     if (chatWindow)

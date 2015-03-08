@@ -183,7 +183,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
                 {
                     if (guild1->getId() == guild2->getId())
                     {
-                        mBrowserBox->addRow("guild-kick",
+                        mBrowserBox->addRow("/kickguild 'NAME'",
                             // TRANSLATORS: popup menu item
                             // TRANSLATORS: kick player from guild
                             _("Kick from guild"));
@@ -199,7 +199,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
                 }
                 else if (guild2->getMember(mNick))
                 {
-                    mBrowserBox->addRow("guild-kick",
+                    mBrowserBox->addRow("/kickguild 'NAME'",
                         // TRANSLATORS: popup menu item
                         // TRANSLATORS: kick player from guild
                         _("Kick from guild"));
@@ -506,9 +506,10 @@ void PopupMenu::showPlayerPopup(const std::string &nick)
                 && guildManager->havePower()))
 #endif
             {
-                // TRANSLATORS: popup menu item
-                // TRANSLATORS: kick player from guild
-                mBrowserBox->addRow("guild-kick", _("Kick from guild"));
+                mBrowserBox->addRow("/kickguild 'NAME'",
+                    // TRANSLATORS: popup menu item
+                    // TRANSLATORS: kick player from guild
+                    _("Kick from guild"));
             }
             if (guild2->getServerGuild())
             {
@@ -829,10 +830,10 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
                             && guildManager->havePower()))
 #endif
                         {
-                            // TRANSLATORS: popup menu item
-                            // TRANSLATORS: kick player from guild
-                            mBrowserBox->addRow(strprintf(
-                                "@@guild-kick|%s@@", _("Kick from guild")));
+                            mBrowserBox->addRow("/kickguild 'NAME'",
+                                // TRANSLATORS: popup menu item
+                                // TRANSLATORS: kick player from guild
+                                _("Kick from guild"));
                         }
                         if (guild2->getServerGuild())
                         {
@@ -1066,22 +1067,6 @@ void PopupMenu::handleLink(const std::string &link,
         }
         dialog->setActionEventId("ok");
         dialog->addActionListener(&mPlayerListener);
-    }
-    else if (link == "guild-kick" && !mNick.empty())
-    {
-        if (localPlayer)
-        {
-            const Guild *const guild = localPlayer->getGuild();
-            if (guild)
-            {
-                if (guild->getServerGuild())
-                    guildHandler->kick(guild->getMember(mNick), "");
-#ifdef TMWA_SUPPORT
-                else if (guildManager)
-                    guildManager->kick(mNick);
-#endif
-            }
-        }
     }
     else if (link == "enable highlight" && mTab)
     {
