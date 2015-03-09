@@ -31,6 +31,7 @@
 
 #include "listeners/actionlistener.h"
 #include "listeners/attributelistener.h"
+#include "listeners/debugmessagelistener.h"
 #include "listeners/keylistener.h"
 #include "listeners/statlistener.h"
 
@@ -60,7 +61,8 @@ class ChatWindow final : public Window,
                          public KeyListener,
                          public ConfigListener,
                          public AttributeListener,
-                         public StatListener
+                         public StatListener,
+                         public DebugMessageListener
 {
     public:
         /**
@@ -360,6 +362,8 @@ class ChatWindow final : public Window,
         void initTradeFilter();
 
         int mRainbowColor;
+
+        void debugMessage(const std::string &msg) override final;
 
     private:
         void fillCommands();
