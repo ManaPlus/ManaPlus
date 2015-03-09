@@ -2128,7 +2128,6 @@ bool ChatWindow::isTabPresent(const ChatTab *const tab) const
 
 void ChatWindow::debugMessage(const std::string &msg)
 {
-    logger->log(msg);
     if (debugChatTab)
         debugChatTab->chatLog(msg, ChatMsgType::BY_SERVER);
 }

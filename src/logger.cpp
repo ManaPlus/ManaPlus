@@ -24,6 +24,10 @@
 
 #include "settings.h"
 
+#include "listeners/debugmessagelistener.h"
+
+#include "utils/stringutils.h"
+
 #include <iostream>
 #include <sstream>
 
@@ -350,4 +354,11 @@ void Logger::error(const std::string &error_text)
     std::cerr << "Error: " << error_text << std::endl;
 #endif
     exit(1);
+}
+
+void Logger::unimplimented(const int id)
+{
+    const std::string str = strprintf("Unimplimented packet: %d", id);
+    DebugMessageListener::distributeEvent(str);
+    log(str);
 }

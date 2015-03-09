@@ -46,6 +46,9 @@
 #define IGNOREDEBUGLOG {}
 #endif
 
+#define UNIMPLIMENTEDPACKET \
+    logger->unimplimented(msg.getId())
+
 /**
  * The Log Class : Useful to write debug or info messages
  */
@@ -139,6 +142,8 @@ class Logger final
          */
         void safeError(const std::string &error_text)
             __attribute__ ((noreturn));
+
+        void unimplimented(const int id);
 
     private:
         std::ofstream mLogFile;
