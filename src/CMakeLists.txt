@@ -845,6 +845,8 @@ SET(SRCS
     enums/being/gender.h
     being/homunculusinfo.h
     listeners/configlistener.h
+    listeners/debugmessagelistener.cpp
+    listeners/debugmessagelistener.h
     configuration.cpp
     configuration.h
     debug.h

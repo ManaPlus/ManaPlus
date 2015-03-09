@@ -188,6 +188,8 @@ manaplus_SOURCES += events/actionevent.h \
 	      events/event.h \
 	      listeners/focuslistener.h \
 	      listeners/guiconfiglistener.h \
+	      listeners/debugmessagelistener.cpp \
+	      listeners/debugmessagelistener.h \
 	      listeners/guitableactionlistener.cpp \
 	      listeners/guitableactionlistener.h \
 	      listeners/inputactionreplaylistener.cpp \
