@@ -435,9 +435,6 @@ void ServerDialog::downloadServerList()
     // Try to load the configuration value for the onlineServerList
     std::string listFile = branding.getStringValue("onlineServerList");
 
-    if (listFile.empty())
-        listFile = config.getStringValue("onlineServerList");
-
     // Fall back to manaplus.org when neither branding
     // nor config set it
     if (listFile.empty())

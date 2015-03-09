@@ -180,7 +180,6 @@ DefaultsData* getConfigDefaults()
     AddDEF("ScrollRadius", 0);
     AddDEF("ScrollCenterOffsetX", 0);
     AddDEF("ScrollCenterOffsetY", 0);
-    AddDEF("onlineServerList", "");
     AddDEF("enableMumble", false);
     AddDEF("playBattleSound", true);
     AddDEF("playGuiSound", true);
