@@ -79,6 +79,7 @@ ChatHandler::ChatHandler() :
         SMSG_IGNORE_NICK_ACK,
         SMSG_CHAT_CREATE_ACK,
         SMSG_CHAT_DESTROY,
+        SMSG_CHAT_JOIN_FAILED,
         0
     };
     handledMessages = _messages;
@@ -169,6 +170,10 @@ void ChatHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_CHAT_DESTROY:
             processChatDestroy(msg);
+            break;
+
+        case SMSG_CHAT_JOIN_FAILED:
+            processChatJoinFailed(msg);
             break;
 
         default:
@@ -791,6 +796,12 @@ void ChatHandler::processChatDestroy(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
     msg.readInt32("chat id");
+}
+
+void ChatHandler::processChatJoinFailed(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+    msg.readUInt8("flag");
 }
 
 }  // namespace EAthena

@@ -261,6 +261,7 @@
 #define SMSG_CHAT_CREATE_ACK         0x00d6
 #define SMSG_CHAT_DISPLAY            0x00d7
 #define SMSG_CHAT_DESTROY            0x00d8
+#define SMSG_CHAT_JOIN_FAILED        0x00da
 #define SMSG_CHAT_JOIN_ACK           0x00db
 #define SMSG_CHAT_LEAVE              0x00dd
 #define SMSG_CHAT_JOIN_CHANNEL       0x0b08
