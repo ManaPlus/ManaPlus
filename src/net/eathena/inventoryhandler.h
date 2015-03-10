@@ -117,6 +117,8 @@ class InventoryHandler final : public MessageHandler,
 
         static void processPlayerIdentifyList(Net::MessageIn &msg);
 
+        static void processPlayerIdentified(Net::MessageIn &msg);
+
         static Ea::InventoryItems mCartItems;
 };
 
