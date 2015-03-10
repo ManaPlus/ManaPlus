@@ -62,6 +62,7 @@ SkillHandler::SkillHandler() :
         SMSG_PLAYER_DELETE_SKILL,
         SMSG_PLAYER_UPDATE_SKILL,
         SMSG_SKILL_WARP_POINT,
+        SMSG_SKILL_MEMO_MESSAGE,
         0
     };
     handledMessages = _messages;
@@ -110,6 +111,10 @@ void SkillHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_SKILL_WARP_POINT:
             processSkillWarpPoint(msg);
+            break;
+
+        case SMSG_SKILL_MEMO_MESSAGE:
+            processSkillMemoMessage(msg);
             break;
 
         default:
@@ -385,6 +390,12 @@ void SkillHandler::processSkillWarpPoint(Net::MessageIn &msg)
     msg.readString(16, "map name 2");
     msg.readString(16, "map name 3");
     msg.readString(16, "map name 4");
+}
+
+void SkillHandler::processSkillMemoMessage(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+    msg.readUInt8("type");
 }
 
 }  // namespace EAthena
