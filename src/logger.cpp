@@ -74,7 +74,8 @@ Logger::Logger() :
     mMutex(SDL_CreateMutex()),
     mThreadLocked(false),
     mLogToStandardOut(true),
-    mDebugLog(false)
+    mDebugLog(false),
+    mReportUnimplimented(false)
 {
 }
 
@@ -358,6 +359,9 @@ void Logger::error(const std::string &error_text)
 
 void Logger::unimplimented(const int id)
 {
+    if (!mReportUnimplimented)
+        return;
+
     const std::string str = strprintf("Unimplimented packet: %d", id);
     DebugMessageListener::distributeEvent(str);
     log(str);

@@ -130,6 +130,9 @@ class Logger final
         void setDebugLog(const bool n)
         { mDebugLog = n; }
 
+        void setReportUnimplimented(const bool n)
+        { mReportUnimplimented = n; }
+
         /**
          * Log an error and quit. The error will pop-up on Windows and Mac, and
          * will be printed to standard error everywhere else.
@@ -152,6 +155,7 @@ class Logger final
         volatile bool mThreadLocked;
         bool mLogToStandardOut;
         bool mDebugLog;
+        bool mReportUnimplimented;
 };
 
 extern Logger *logger;

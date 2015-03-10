@@ -366,6 +366,10 @@ Setup_Other::Setup_Other(const Widget2 *const widget) :
         "ignorelogpackets", this, "ignorelogpacketsEvent");
 
     // TRANSLATORS: settings option
+    new SetupItemCheckBox(_("Log unimplimented packets"), "",
+        "unimplimentedLog", this, "unimplimentedLogEvent");
+
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable OpenGL log"), "",
         "debugOpenGL", this, "debugOpenGLEvent");
 
@@ -425,6 +429,7 @@ void Setup_Other::apply()
     SetupTabScroll::apply();
 
     logger->setDebugLog(config.getBoolValue("debugLog"));
+    logger->setReportUnimplimented(config.getBoolValue("unimplimentedLog"));
     Net::loadIgnorePackets();
 }
 

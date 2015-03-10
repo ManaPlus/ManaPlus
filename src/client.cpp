@@ -268,6 +268,7 @@ void Client::gameInit()
     initFeatures();
     logger->log("init 4");
     logger->setDebugLog(config.getBoolValue("debugLog"));
+    logger->setReportUnimplimented(config.getBoolValue("unimplimentedLog"));
 
     config.incValue("runcount");
 

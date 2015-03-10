@@ -216,6 +216,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("errorsInDebug", true);
     AddDEF("tradebot", true);
     AddDEF("debugLog", false);
+    AddDEF("unimplimentedLog", false);
     AddDEF("drawHotKeys", true);
     AddDEF("serverAttack", true);
     AddDEF("autofixPos", false);
