@@ -47,7 +47,7 @@ class ChatHandler notfinal : public Net::ChatHandler
         void me(const std::string &restrict text,
                 const std::string &restrict channel) const override final;
 
-        static void processMVP(Net::MessageIn &msg);
+        static void processMVPEffect(Net::MessageIn &msg);
 
         static void processIgnoreAllResponse(Net::MessageIn &msg);
 

@@ -251,7 +251,7 @@
 #define SMSG_QUEST_ACTIVATE          0x02b7
 #define SMSG_QUEST_NPC_EFFECT        0x0446
 
-#define SMSG_MVP                     0x010c
+#define SMSG_MVP_EFFECT              0x010c
 #define SMSG_RANKS_LIST              0x097d
 #define SMSG_MONSTER_HP              0x0977
 #define SMSG_PLAYER_HP               0x080e

@@ -65,7 +65,7 @@ ChatHandler::ChatHandler() :
         SMSG_WHISPER,
         SMSG_WHISPER_RESPONSE,
         SMSG_GM_CHAT,
-        SMSG_MVP,  // MVP
+        SMSG_MVP_EFFECT,
         SMSG_IGNORE_ALL_RESPONSE,
         0
     };
@@ -109,8 +109,8 @@ void ChatHandler::handleMessage(Net::MessageIn &msg)
             processGmChat(msg);
             break;
 
-        case SMSG_MVP:
-            processMVP(msg);
+        case SMSG_MVP_EFFECT:
+            processMVPEffect(msg);
             break;
 
         case SMSG_IGNORE_ALL_RESPONSE:

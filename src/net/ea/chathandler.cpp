@@ -153,9 +153,9 @@ void ChatHandler::processWhisperResponseContinue(const uint8_t type)
     BLOCK_END("ChatHandler::processWhisperResponse")
 }
 
-void ChatHandler::processMVP(Net::MessageIn &msg)
+void ChatHandler::processMVPEffect(Net::MessageIn &msg)
 {
-    BLOCK_START("ChatHandler::processMVP")
+    BLOCK_START("ChatHandler::processMVPEffect")
     // Display MVP player
     const int id = msg.readInt32("being id");
     if (localChatTab && actorManager && config.getBoolValue("showMVP"))
@@ -166,7 +166,7 @@ void ChatHandler::processMVP(Net::MessageIn &msg)
         else
             NotifyManager::notify(NotifyTypes::MVP_PLAYER, being->getName());
     }
-    BLOCK_END("ChatHandler::processMVP")
+    BLOCK_END("ChatHandler::processMVPEffect")
 }
 
 void ChatHandler::processIgnoreAllResponse(Net::MessageIn &msg)
