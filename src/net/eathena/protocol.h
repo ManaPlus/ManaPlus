@@ -263,6 +263,7 @@
 #define SMSG_CHAT_DESTROY            0x00d8
 #define SMSG_CHAT_JOIN_FAILED        0x00da
 #define SMSG_CHAT_JOIN_ACK           0x00db
+#define SMSG_CHAT_ADD_MEMBER         0x00dc
 #define SMSG_CHAT_LEAVE              0x00dd
 #define SMSG_CHAT_JOIN_CHANNEL       0x0b08
 
