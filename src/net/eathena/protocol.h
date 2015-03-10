@@ -363,6 +363,7 @@
 #define SMSG_ONLINE_LIST             0x0b10
 
 #define SMSG_MANNER_MESSAGE          0x014a
+#define SMSG_CHAT_SILENCE            0x014b
 
 /**********************************
  *  Packets from client to server *
