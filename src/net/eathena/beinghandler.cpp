@@ -24,6 +24,7 @@
 
 #include "actormanager.h"
 #include "effectmanager.h"
+#include "game.h"
 #include "guildmanager.h"
 
 #include "being/localplayer.h"
@@ -42,6 +43,7 @@
 
 #include "net/ea/eaprotocol.h"
 
+#include "net/eathena/maptypeproperty2.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 #include "net/eathena/sprite.h"
@@ -49,6 +51,8 @@
 #include "resources/iteminfo.h"
 
 #include "resources/db/itemdb.h"
+
+#include "resources/map/map.h"
 
 #include "utils/stringutils.h"
 #include "utils/timer.h"
@@ -1015,10 +1019,19 @@ void BeingHandler::processBeingSpawn(Net::MessageIn &msg)
 
 void BeingHandler::processMapTypeProperty(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
-    msg.readInt16("type");
-    // +++ need get pvp and other flags from here
-    msg.readInt32("flags");
+    const int16_t type = msg.readInt16("type");
+    const int flags = msg.readInt32("flags");
+    if (type == 0x28)
+    {
+        // +++ need get other flags from here
+        MapTypeProperty2 props;
+        props.data = static_cast<uint32_t>(flags);
+        Game *const game = Game::instance();
+        Map *const map = game->getCurrentMap();
+        if (!map)
+            return;
+        map->setPvpMode(props.bits.party | (props.bits.guild * 2));
+    }
 }
 
 void BeingHandler::processMapType(Net::MessageIn &msg)

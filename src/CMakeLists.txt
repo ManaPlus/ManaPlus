@@ -1473,11 +1473,12 @@ SET(SRCS_EATHENA
     net/eathena/loginhandler.h
     net/eathena/mailhandler.cpp
     net/eathena/mailhandler.h
+    net/eathena/maptypeproperty2.h
+    net/eathena/markethandler.cpp
+    net/eathena/markethandler.h
     net/eathena/menu.cpp
     net/eathena/menu.h
     net/eathena/menutype.h
-    net/eathena/markethandler.cpp
-    net/eathena/markethandler.h
     net/eathena/mercenaryhandler.cpp
     net/eathena/mercenaryhandler.h
     net/eathena/messagehandler.cpp
