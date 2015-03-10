@@ -362,6 +362,8 @@
 
 #define SMSG_ONLINE_LIST             0x0b10
 
+#define SMSG_MANNER_MESSAGE          0x014a
+
 /**********************************
  *  Packets from client to server *
  **********************************/
