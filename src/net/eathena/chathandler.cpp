@@ -82,6 +82,7 @@ ChatHandler::ChatHandler() :
         SMSG_CHAT_JOIN_FAILED,
         SMSG_CHAT_ADD_MEMBER,
         SMSG_CHAT_SETTINGS,
+        SMSG_CHAT_ROLE_CHANGE,
         0
     };
     handledMessages = _messages;
@@ -184,6 +185,10 @@ void ChatHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_CHAT_SETTINGS:
             processChatSettings(msg);
+            break;
+
+        case SMSG_CHAT_ROLE_CHANGE:
+            processChatRoleChange(msg);
             break;
 
         default:
@@ -831,6 +836,13 @@ void ChatHandler::processChatSettings(Net::MessageIn &msg)
     msg.readInt16("users");
     msg.readUInt8("type");
     msg.readString(sz, "title");
+}
+
+void ChatHandler::processChatRoleChange(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+    msg.readInt32("role");
+    msg.readString(24, "name");
 }
 
 }  // namespace EAthena
