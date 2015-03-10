@@ -65,7 +65,7 @@ ChatHandler::ChatHandler() :
         SMSG_WHISPER_RESPONSE,
         SMSG_GM_CHAT,
         SMSG_GM_CHAT2,
-        SMSG_MVP,  // MVP
+        SMSG_MVP,
         SMSG_IGNORE_ALL_RESPONSE,
         SMSG_COLOR_MESSAGE,
         SMSG_CHAT_IGNORE_LIST,
@@ -76,6 +76,7 @@ ChatHandler::ChatHandler() :
         SMSG_CHAT_JOIN_ACK,
         SMSG_CHAT_LEAVE,
         SMSG_CHAT_JOIN_CHANNEL,
+        SMSG_IGNORE_NICK_ACK,
         0
     };
     handledMessages = _messages;
@@ -154,6 +155,10 @@ void ChatHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_CHAT_JOIN_CHANNEL:
             processJoinChannel(msg);
+            break;
+
+        case SMSG_IGNORE_NICK_ACK:
+            processIgnoreNickAck(msg);
             break;
 
         default:
@@ -295,6 +300,13 @@ void ChatHandler::unIgnore(const std::string &nick) const
     createOutPacket(CMSG_IGNORE_NICK);
     outMsg.writeString(nick, 24, "nick");
     outMsg.writeInt8(1, "flag");
+}
+
+void ChatHandler::processIgnoreNickAck(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+    msg.readUInt8("type");
+    msg.readUInt8("flag");
 }
 
 void ChatHandler::requestIgnoreList() const
