@@ -143,6 +143,8 @@ class ChatHandler final : public MessageHandler, public Ea::ChatHandler
         static void processMVPItem(Net::MessageIn &msg);
 
         static void processMVPExp(Net::MessageIn &msg);
+
+        static void processMVPNoItem(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
