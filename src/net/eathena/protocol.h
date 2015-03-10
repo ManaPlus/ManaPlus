@@ -99,6 +99,7 @@
 #define SMSG_SKILL_DAMAGE            0x01de
 #define SMSG_SKILL_AUTO_CAST         0x0147
 #define SMSG_SKILL_SNAP              0x08d2
+#define SMSG_SKILL_WARP_POINT        0x011c
 #define SMSG_ITEM_USE_RESPONSE       0x00a8
 #define SMSG_ITEM_VISIBLE            0x009d /**< An item is on the floor */
 #define SMSG_GRAFFITI_VISIBLE        0x01c9

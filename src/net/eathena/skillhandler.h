@@ -67,6 +67,8 @@ class SkillHandler final : public MessageHandler, public Ea::SkillHandler
         static void processSkillUpdate(Net::MessageIn &msg);
 
         static void processSkillDelete(Net::MessageIn &msg);
+
+        static void processSkillWarpPoint(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

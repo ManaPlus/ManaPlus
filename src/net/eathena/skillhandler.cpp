@@ -61,6 +61,7 @@ SkillHandler::SkillHandler() :
         SMSG_PLAYER_ADD_SKILL,
         SMSG_PLAYER_DELETE_SKILL,
         SMSG_PLAYER_UPDATE_SKILL,
+        SMSG_SKILL_WARP_POINT,
         0
     };
     handledMessages = _messages;
@@ -105,6 +106,10 @@ void SkillHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_PLAYER_DELETE_SKILL:
             processSkillDelete(msg);
+            break;
+
+        case SMSG_SKILL_WARP_POINT:
+            processSkillWarpPoint(msg);
             break;
 
         default:
@@ -370,6 +375,16 @@ void SkillHandler::processSkillSnap(Net::MessageIn &msg)
     msg.readInt32("being id");
     msg.readInt16("x");
     msg.readInt16("y");
+}
+
+void SkillHandler::processSkillWarpPoint(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+    msg.readInt16("skill id");
+    msg.readString(16, "map name 1");
+    msg.readString(16, "map name 2");
+    msg.readString(16, "map name 3");
+    msg.readString(16, "map name 4");
 }
 
 }  // namespace EAthena
