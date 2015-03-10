@@ -265,6 +265,7 @@
 #define SMSG_CHAT_JOIN_ACK           0x00db
 #define SMSG_CHAT_ADD_MEMBER         0x00dc
 #define SMSG_CHAT_LEAVE              0x00dd
+#define SMSG_CHAT_SETTINGS           0x00df
 #define SMSG_CHAT_JOIN_CHANNEL       0x0b08
 
 #define SMSG_MAIL_OPEN_WINDOW        0x0260
