@@ -104,6 +104,7 @@ InventoryHandler::InventoryHandler() :
         SMSG_PLAYER_CART_EQUIP,
         SMSG_PLAYER_CART_ITEMS,
         SMSG_PLAYER_CART_REMOVE,
+        SMSG_PLAYER_IDENTIFY_LIST,
         0
     };
     handledMessages = _messages;
@@ -226,6 +227,10 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_PLAYER_CART_REMOVE:
             processPlayerCartRemove(msg);
+            break;
+
+        case SMSG_PLAYER_IDENTIFY_LIST:
+            processPlayerIdentifyList(msg);
             break;
 
         default:
@@ -942,6 +947,16 @@ void InventoryHandler::processPlayerCartRemove(Net::MessageIn &msg)
             inv->removeItemAt(index);
     }
     BLOCK_END("InventoryHandler::processPlayerCartRemove")
+}
+
+void InventoryHandler::processPlayerIdentifyList(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+
+    menu = MenuType::Identify;
+    const int count = msg.readInt16("len") - 4;
+    for (int f = 0; f < count; f ++)
+        msg.readInt16("inv index");
 }
 
 }  // namespace EAthena
