@@ -1178,6 +1178,8 @@ SET(DYE_CMD_SRCS
     navigationmanager.h
     settings.cpp
     settings.h
+    listeners/debugmessagelistener.cpp
+    listeners/debugmessagelistener.h
     resources/map/walklayer.cpp
     resources/map/walklayer.h
     render/graphics.cpp
