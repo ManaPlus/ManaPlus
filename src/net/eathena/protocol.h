@@ -252,6 +252,7 @@
 #define SMSG_QUEST_NPC_EFFECT        0x0446
 
 #define SMSG_MVP_ITEM                0x010a
+#define SMSG_MVP_EXP                 0x010b
 #define SMSG_MVP_EFFECT              0x010c
 
 #define SMSG_RANKS_LIST              0x097d

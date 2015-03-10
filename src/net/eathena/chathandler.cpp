@@ -67,6 +67,7 @@ ChatHandler::ChatHandler() :
         SMSG_GM_CHAT2,
         SMSG_MVP_EFFECT,
         SMSG_MVP_ITEM,
+        SMSG_MVP_EXP,
         SMSG_IGNORE_ALL_RESPONSE,
         SMSG_COLOR_MESSAGE,
         SMSG_CHAT_IGNORE_LIST,
@@ -142,6 +143,10 @@ void ChatHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_MVP_ITEM:
             processMVPItem(msg);
+            break;
+
+        case SMSG_MVP_EXP:
+            processMVPExp(msg);
             break;
 
         case SMSG_IGNORE_ALL_RESPONSE:
@@ -854,6 +859,12 @@ void ChatHandler::processMVPItem(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
     msg.readInt16("item id");
+}
+
+void ChatHandler::processMVPExp(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+    msg.readInt32("exo");
 }
 
 }  // namespace EAthena
