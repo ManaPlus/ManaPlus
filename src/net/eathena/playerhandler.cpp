@@ -295,7 +295,8 @@ void PlayerHandler::setMemo() const
 
 void PlayerHandler::processPlayerShortcuts(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    // +++ player shortcuts ignored. It also disabled on server side.
+    // may be in future better use it?
     msg.readUInt8("unused?");
     for (int f = 0; f < 27; f ++)
     {
@@ -308,7 +309,7 @@ void PlayerHandler::processPlayerShortcuts(Net::MessageIn &msg)
 
 void PlayerHandler::processPlayerShowEquip(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    // +++ for now server allow only switch this option but not using it.
     msg.readUInt8("show equip");  // 1 mean need open "equipment" window
 }
 

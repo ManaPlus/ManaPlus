@@ -222,7 +222,7 @@ void PartyHandler::setShareItems(const Net::PartyShare::Type share) const
 
 void PartyHandler::processPartyInvitationStats(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    // +++ for now server allow only switch this option but not using it.
     msg.readUInt8("allow party");
 }
 
