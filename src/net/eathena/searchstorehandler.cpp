@@ -20,6 +20,7 @@
 
 #include "net/eathena/searchstorehandler.h"
 
+#include "logger.h"
 #include "notifymanager.h"
 
 #include "net/eathena/messageout.h"
@@ -111,6 +112,7 @@ void SearchStoreHandler::select(const int accountId,
 
 void SearchStoreHandler::processSearchAck(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     const int count = (msg.readInt16("len") - 7) / 106;
     msg.readUInt8("is first page");
     msg.readUInt8("is next page");
@@ -132,6 +134,7 @@ void SearchStoreHandler::processSearchAck(Net::MessageIn &msg)
 
 void SearchStoreHandler::processSearchFailed(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     const int result = msg.readUInt8("result");
     switch (result)
     {
@@ -164,12 +167,14 @@ void SearchStoreHandler::processSearchFailed(Net::MessageIn &msg)
 
 void SearchStoreHandler::processSearchOpen(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     msg.readInt16("effect");
     msg.readUInt8("uses");
 }
 
 void SearchStoreHandler::processSearchClickAck(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     msg.readInt16("x");
     msg.readInt16("y");
 }

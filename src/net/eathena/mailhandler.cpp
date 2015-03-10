@@ -61,6 +61,7 @@ void MailHandler::handleMessage(Net::MessageIn &msg)
 
 void MailHandler::processMailOpen(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     const int flag = msg.readInt32("flag");
     switch (flag)
     {

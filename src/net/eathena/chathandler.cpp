@@ -556,6 +556,7 @@ void ChatHandler::processWhisperResponse(Net::MessageIn &msg)
 
 void ChatHandler::processChatIgnoreList(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     // +++ need put it in some object or window
     const int count = (msg.readInt16("len") - 4) / 24;
     for (int f = 0; f < count; f ++)
@@ -591,6 +592,7 @@ void ChatHandler::joinChat(const ChatObject *const chat,
 
 void ChatHandler::processChatJoinAck(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     const int count = msg.readInt16("len") - 8;
     msg.readInt32("chat id");
     for (int f = 0; f < count; f ++)
@@ -602,6 +604,7 @@ void ChatHandler::processChatJoinAck(Net::MessageIn &msg)
 
 void ChatHandler::processChatLeave(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     msg.readInt16("users");
     msg.readString(24, "name");
     msg.readUInt8("flag");  // 0 - left, 1 - kicked

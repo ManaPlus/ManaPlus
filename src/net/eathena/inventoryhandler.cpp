@@ -717,12 +717,11 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
 
 void InventoryHandler::processPlayerUseCard(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     // +++ here need show dialog with item selection for card.
     const int count = (msg.readInt16("len") - 4) / 2;
     for (int f = 0; f < count; f ++)
-    {
         msg.readInt16("item id");
-    }
 }
 
 void InventoryHandler::processPlayerInsertCard(Net::MessageIn &msg)
@@ -745,6 +744,7 @@ void InventoryHandler::selectEgg(const Item *const item) const
 
 void InventoryHandler::processPlayerItemRentalTime(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     // +++ need update item rental time
     msg.readInt16("item id");
     msg.readInt32("seconds");
@@ -752,6 +752,7 @@ void InventoryHandler::processPlayerItemRentalTime(Net::MessageIn &msg)
 
 void InventoryHandler::processPlayerItemRentalExpired(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     // ++ need remove item from inventory
     msg.readInt16("index");
     msg.readInt16("item id");
@@ -819,6 +820,7 @@ void InventoryHandler::processCartInfo(Net::MessageIn &msg)
 
 void InventoryHandler::processCartRemove(Net::MessageIn &msg A_UNUSED)
 {
+    UNIMPLIMENTEDPACKET;
     // +++ need close or clear cart?
 }
 

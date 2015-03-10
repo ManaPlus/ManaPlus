@@ -295,6 +295,7 @@ void PlayerHandler::setMemo() const
 
 void PlayerHandler::processPlayerShortcuts(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     msg.readUInt8("unused?");
     for (int f = 0; f < 27; f ++)
     {
@@ -307,6 +308,7 @@ void PlayerHandler::processPlayerShortcuts(Net::MessageIn &msg)
 
 void PlayerHandler::processPlayerShowEquip(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     msg.readUInt8("show equip");  // 1 mean need open "equipment" window
 }
 
@@ -421,6 +423,7 @@ void PlayerHandler::processPlayerStatUpdate5(Net::MessageIn &msg)
 
 void PlayerHandler::processPlayerGetExp(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     msg.readInt32("player id");
     msg.readInt32("exp amount");
     msg.readInt16("exp type");
@@ -465,6 +468,7 @@ void PlayerHandler::requestPvpInfo() const
 
 void PlayerHandler::processPvpInfo(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     msg.readInt32("char id");
     msg.readInt32("account id");
     msg.readInt32("pvp won");
@@ -486,6 +490,7 @@ void PlayerHandler::setViewEquipment(const bool allow) const
 
 void PlayerHandler::processPlayerHeal(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     // +++ probably need show effect or adjust hp/sp?
     // 5 - hp
     // 7 - sp
@@ -495,6 +500,7 @@ void PlayerHandler::processPlayerHeal(Net::MessageIn &msg)
 
 void PlayerHandler::processPlayerSkillMessage(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     // +++ need show this message
     msg.readInt32("type");
 }

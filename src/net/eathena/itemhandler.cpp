@@ -23,6 +23,7 @@
 #include "net/eathena/itemhandler.h"
 
 #include "actormanager.h"
+#include "logger.h"
 
 #include "net/eathena/protocol.h"
 
@@ -92,6 +93,7 @@ void ItemHandler::processItemDropped(Net::MessageIn &msg)
 
 void ItemHandler::processGraffiti(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     msg.readInt32("graffiti id");
     msg.readInt32("creator id");
     msg.readInt16("x");

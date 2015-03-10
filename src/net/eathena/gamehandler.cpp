@@ -174,6 +174,7 @@ void GameHandler::disconnect2() const
 
 void GameHandler::processMapAccountId(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     msg.readInt32("account id");
 }
 
@@ -209,6 +210,7 @@ void GameHandler::processMapLogin(Net::MessageIn &msg)
 
 void GameHandler::processServerTick(Net::MessageIn &msg)
 {
+    //ignoring
     msg.readInt32("tick");
 }
 

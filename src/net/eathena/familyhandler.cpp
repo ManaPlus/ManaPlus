@@ -20,6 +20,8 @@
 
 #include "net/eathena/familyhandler.h"
 
+#include "logger.h"
+
 #include "being/being.h"
 
 #include "net/eathena/messageout.h"
@@ -84,6 +86,7 @@ void FamilyHandler::askForChild(const Being *const being)
 
 void FamilyHandler::processAskForChild(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     msg.readInt32("account id who ask");
     msg.readInt32("acoount id for other parent");
     msg.readString(24, "name who ask");
@@ -91,6 +94,7 @@ void FamilyHandler::processAskForChild(Net::MessageIn &msg)
 
 void FamilyHandler::processCallPartner(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     msg.readString(24, "name");
 }
 
@@ -104,6 +108,7 @@ void FamilyHandler::askForChildReply(const bool accept)
 
 void FamilyHandler::processDivorced(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     msg.readString(24, "name");
 }
 

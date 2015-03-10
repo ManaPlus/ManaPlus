@@ -238,6 +238,7 @@ void LoginHandler::processLoginError2(Net::MessageIn &msg)
 
 void LoginHandler::processUpdateHost2(Net::MessageIn &msg A_UNUSED)
 {
+    UNIMPLIMENTEDPACKET;
 }
 
 void LoginHandler::sendVersion() const

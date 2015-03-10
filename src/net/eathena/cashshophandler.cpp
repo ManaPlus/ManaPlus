@@ -20,6 +20,8 @@
 
 #include "net/eathena/cashshophandler.h"
 
+#include "logger.h"
+
 #include "being/playerinfo.h"
 
 #include "enums/being/attributes.h"
@@ -92,6 +94,7 @@ void CashShopHandler::processCashShopOpen(Net::MessageIn &msg)
 
 void CashShopHandler::processCashShopBuyAck(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     msg.readInt32("cash points");
     msg.readInt32("kafra points");
     msg.readInt16("error");

@@ -164,6 +164,7 @@ void VendingHandler::processItemsList(Net::MessageIn &msg)
 
 void VendingHandler::processBuyAck(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     msg.readInt16("inv index");
     msg.readInt16("amount");
     msg.readUInt8("flag");
@@ -192,6 +193,7 @@ void VendingHandler::processOpen(Net::MessageIn &msg)
 
 void VendingHandler::processReport(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     msg.readInt16("inv index");
     msg.readInt16("amount");
 }

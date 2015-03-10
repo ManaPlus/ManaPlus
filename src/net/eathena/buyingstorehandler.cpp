@@ -264,6 +264,7 @@ void BuyingStoreHandler::processBuyingStoreSellerSellFailed(Net::MessageIn
 
 void BuyingStoreHandler::processBuyingStoreReport(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     msg.readInt16("item id");
     msg.readInt16("amount");
     msg.readInt32("money limit");

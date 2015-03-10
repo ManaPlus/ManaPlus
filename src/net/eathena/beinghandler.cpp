@@ -1015,6 +1015,7 @@ void BeingHandler::processBeingSpawn(Net::MessageIn &msg)
 
 void BeingHandler::processMapTypeProperty(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     msg.readInt16("type");
     // +++ need get pvp and other flags from here
     msg.readInt32("flags");
@@ -1022,12 +1023,14 @@ void BeingHandler::processMapTypeProperty(Net::MessageIn &msg)
 
 void BeingHandler::processMapType(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     // battle ground map or not
     msg.readInt16("type");
 }
 
 void BeingHandler::processSkillCasting(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     msg.readInt32("src id");
     msg.readInt32("dst id");
     msg.readInt16("dst x");
@@ -1241,6 +1244,7 @@ void BeingHandler::processMonsterHp(Net::MessageIn &msg)
 
 void BeingHandler::processSkillAutoCast(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     msg.readInt16("skill id");
     msg.readInt16("inf");
     msg.readInt16("unused");
@@ -1253,6 +1257,7 @@ void BeingHandler::processSkillAutoCast(Net::MessageIn &msg)
 
 void BeingHandler::processRanksList(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     // +++ here need window with rank tables.
     msg.readInt16("rank type");
     for (int f = 0; f < 10; f ++)
@@ -1316,6 +1321,7 @@ void BeingHandler::processBeingSpecialEffect(Net::MessageIn &msg)
 
 void BeingHandler::processBeingSpecialEffectNum(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     // +++ need somhow show this effects.
     // type is not same with self/misc effect.
     msg.readInt32("account id");
@@ -1325,6 +1331,7 @@ void BeingHandler::processBeingSpecialEffectNum(Net::MessageIn &msg)
 
 void BeingHandler::processBeingSoundEffect(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     // +++ need play this effect.
     msg.readString(24, "sound effect name");
     msg.readUInt8("type");
@@ -1374,6 +1381,7 @@ void BeingHandler::viewPlayerEquipment(const Being *const being)
 
 void BeingHandler::processSkillGroundNoDamage(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     msg.readInt16("skill id");
     msg.readInt32("src id");
     msg.readInt16("val");
@@ -1384,6 +1392,7 @@ void BeingHandler::processSkillGroundNoDamage(Net::MessageIn &msg)
 
 void BeingHandler::processSkillEntry(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     msg.readInt16("len");
     msg.readInt32("accound id");
     msg.readInt32("creator accound id");
@@ -1508,6 +1517,7 @@ void BeingHandler::processPlayerGuilPartyInfo(Net::MessageIn &msg)
 
 void BeingHandler::processBeingRemoveSkil(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     // +++ if skill unit was added, here need remove it from actors
     msg.readInt32("skill unit id");
 }

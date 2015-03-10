@@ -164,11 +164,11 @@ void QuestHandler::processAddQuestsObjectives(Net::MessageIn &msg)
 
 void QuestHandler::processUpdateQuestsObjectives(Net::MessageIn &msg)
 {
+    // ignored
     msg.readInt16("len");
     const int num = msg.readInt16("objectives count");
     for (int f = 0; f < num; f ++)
     {
-        // need use in quests kills list
         msg.readInt32("quest id");
         msg.readInt32("monster id");
         msg.readInt16("count old");
@@ -197,6 +197,7 @@ void QuestHandler::processRemoveQuest(Net::MessageIn &msg)
 
 void QuestHandler::processActivateQuest(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     // +++ need enable/disable quests depend on this packet
     msg.readInt32("quest id");
     msg.readUInt8("activate");
@@ -204,6 +205,7 @@ void QuestHandler::processActivateQuest(Net::MessageIn &msg)
 
 void QuestHandler::processNpcQuestEffect(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     // this packed mostly useless, because manaplus can show any
     // kind of effects based on quest states.
     msg.readInt32("npc id");

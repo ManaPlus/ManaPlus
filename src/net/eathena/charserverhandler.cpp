@@ -24,6 +24,7 @@
 
 #include "client.h"
 #include "configuration.h"
+#include "logger.h"
 #include "settings.h"
 
 #include "enums/being/attributes.h"
@@ -393,6 +394,7 @@ void CharServerHandler::processCharLogin(Net::MessageIn &msg)
 
 void CharServerHandler::processCharLogin2(Net::MessageIn &msg)
 {
+    // ignored
     msg.readInt16("len");
     msg.readUInt8("char slots");
     msg.readUInt8("left slots");
@@ -607,6 +609,7 @@ void CharServerHandler::changeSlot(const int oldSlot, const int newSlot)
 
 void CharServerHandler::processCharChangeSlot(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     msg.readInt16("len");
     msg.readInt16("flag");  // 0 - ok, 1 - error
     msg.readInt16("unused");

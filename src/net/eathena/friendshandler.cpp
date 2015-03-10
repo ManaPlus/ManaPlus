@@ -20,6 +20,8 @@
 
 #include "net/eathena/friendshandler.h"
 
+#include "logger.h"
+
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
@@ -67,6 +69,7 @@ void FriendsHandler::handleMessage(Net::MessageIn &msg)
 
 void FriendsHandler::processPlayerOnline(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     msg.readInt32("account id");
     msg.readInt32("char id");
     msg.readUInt8("flag");  // 0 - online, 1 - offline
@@ -74,6 +77,7 @@ void FriendsHandler::processPlayerOnline(Net::MessageIn &msg)
 
 void FriendsHandler::processFriendsList(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     const int count = (msg.readInt16("size") - 4) / 32;
     for (int f = 0; f < count; f ++)
     {
@@ -85,6 +89,7 @@ void FriendsHandler::processFriendsList(Net::MessageIn &msg)
 
 void FriendsHandler::processRequestAck(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     msg.readInt16("type");
     msg.readInt32("account id");
     msg.readInt32("char id");

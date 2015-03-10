@@ -246,6 +246,7 @@ void SkillHandler::processSkillUpdate(Net::MessageIn &msg)
 
 void SkillHandler::processSkillDelete(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     // ignored, because after this packet server will send all skills.
     msg.readInt32("skill id");
 }
@@ -365,6 +366,7 @@ void SkillHandler::processSkillFailed(Net::MessageIn &msg)
 
 void SkillHandler::processSkillSnap(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     msg.readInt32("being id");
     msg.readInt16("x");
     msg.readInt16("y");

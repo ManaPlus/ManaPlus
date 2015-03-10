@@ -20,6 +20,8 @@
 
 #include "net/eathena/elementalhandler.h"
 
+#include "logger.h"
+
 #include "net/eathena/protocol.h"
 
 #include "debug.h"
@@ -61,12 +63,14 @@ void ElementalHandler::handleMessage(Net::MessageIn &msg)
 
 void ElementalHandler::processElementalUpdateStatus(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     msg.readInt16("type");
     msg.readInt32("value");
 }
 
 void ElementalHandler::processElementalInfo(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     msg.readInt32("elemental id");
     msg.readInt32("hp");
     msg.readInt32("max hp");

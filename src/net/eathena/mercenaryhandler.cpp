@@ -81,6 +81,7 @@ void MercenaryHandler::handleMessage(Net::MessageIn &msg)
 
 void MercenaryHandler::processMercenaryUpdate(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     // +++ need create if need mercenary being and update stats
     msg.readInt16("type");
     msg.readInt32("value");

@@ -222,6 +222,7 @@ void PartyHandler::setShareItems(const Net::PartyShare::Type share) const
 
 void PartyHandler::processPartyInvitationStats(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     msg.readUInt8("allow party");
 }
 
@@ -465,6 +466,7 @@ void PartyHandler::allowInvite(const bool allow) const
 
 void PartyHandler::processPartyItemPickup(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     // +++ probably need add option to show pickup notifications
     // in party tab
     msg.readInt32("account id");

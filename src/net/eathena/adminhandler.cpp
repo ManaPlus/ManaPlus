@@ -22,6 +22,8 @@
 
 #include "net/eathena/adminhandler.h"
 
+#include "logger.h"
+
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
@@ -184,12 +186,14 @@ void AdminHandler::unequipAll(const Being *const being) const
 
 void AdminHandler::processAdminGetLoginAck(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     msg.readInt32("account id");
     msg.readString(24, "login");
 }
 
 void AdminHandler::processSetTileType(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     // +++ here need set collision tile for map
     msg.readInt16("x");
     msg.readInt16("y");
@@ -206,6 +210,7 @@ void AdminHandler::requestStats(const std::string &name)
 
 void AdminHandler::processAccountStats(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     // +++ need show in other players stats window, nick in mStatsName
     msg.readUInt8("str");
     msg.readUInt8("need str");

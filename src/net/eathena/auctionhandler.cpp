@@ -21,6 +21,7 @@
 #include "net/eathena/auctionhandler.h"
 
 #include "item.h"
+#include "logger.h"
 
 #include "net/ea/eaprotocol.h"
 
@@ -81,11 +82,13 @@ void AuctionHandler::handleMessage(Net::MessageIn &msg)
 
 void AuctionHandler::processOpenWindow(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     msg.readInt32("flag");  // 0 - open, 1 - close
 }
 
 void AuctionHandler::processAuctionResults(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     msg.readInt16("len");
     msg.readInt32("pages");
     const int itemCount = msg.readInt32("items count");
@@ -110,17 +113,20 @@ void AuctionHandler::processAuctionResults(Net::MessageIn &msg)
 
 void AuctionHandler::processAuctionSetItem(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     msg.readInt16("index");
     msg.readUInt8("flag");
 }
 
 void AuctionHandler::processAuctionMessage(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     msg.readUInt8("message");
 }
 
 void AuctionHandler::processAuctionClose(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     msg.readInt16("flag");
 }
 
