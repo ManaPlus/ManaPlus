@@ -174,7 +174,7 @@ void GameHandler::disconnect2() const
 
 void GameHandler::processMapAccountId(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    // ignored, because we already know local player account id.
     msg.readInt32("account id");
 }
 
