@@ -77,6 +77,7 @@ ChatHandler::ChatHandler() :
         SMSG_CHAT_LEAVE,
         SMSG_CHAT_JOIN_CHANNEL,
         SMSG_IGNORE_NICK_ACK,
+        SMSG_CHAT_CREATE_ACK,
         0
     };
     handledMessages = _messages;
@@ -159,6 +160,10 @@ void ChatHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_IGNORE_NICK_ACK:
             processIgnoreNickAck(msg);
+            break;
+
+        case SMSG_CHAT_CREATE_ACK:
+            processChatCreateAck(msg);
             break;
 
         default:
@@ -769,6 +774,12 @@ void ChatHandler::talkPet(const std::string &restrict text,
     outMsg.writeInt16(static_cast<int16_t>(sz + 4 + 1), "len");
     outMsg.writeString(msg, static_cast<int>(sz), "message");
     outMsg.writeInt8(0, "zero byte");
+}
+
+void ChatHandler::processChatCreateAck(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+    msg.readUInt8("flag");
 }
 
 }  // namespace EAthena
