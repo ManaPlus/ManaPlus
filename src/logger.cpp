@@ -362,7 +362,8 @@ void Logger::unimplimented(const int id)
     if (!mReportUnimplimented)
         return;
 
-    const std::string str = strprintf("Unimplimented packet: %d", id);
+    const std::string str = strprintf("Unimplimented packet: %d (0x%x)",
+        id, id);
     DebugMessageListener::distributeEvent(str);
     log(str);
 }
