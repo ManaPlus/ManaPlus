@@ -66,6 +66,7 @@ SkillHandler::SkillHandler() :
         SMSG_PLAYER_SKILL_PRODUCE_MIX_LIST,
         SMSG_PLAYER_SKILL_PRODUCE_EFFECT,
         SMSG_SKILL_UNIT_UPDATE,
+        SMSG_SKILL_ARROW_CREATE_LIST,
         0
     };
     handledMessages = _messages;
@@ -130,6 +131,10 @@ void SkillHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_SKILL_UNIT_UPDATE:
             processSkillUnitUpdate(msg);
+            break;
+
+        case SMSG_SKILL_ARROW_CREATE_LIST:
+            processSkillArrowCreateList(msg);
             break;
 
         default:
@@ -439,6 +444,15 @@ void SkillHandler::processSkillUnitUpdate(Net::MessageIn &msg)
     UNIMPLIMENTEDPACKET;
 
     msg.readInt32("being id");
+}
+
+void SkillHandler::processSkillArrowCreateList(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+
+    const int count = (msg.readInt16("len") - 4) / 2;
+    for (int f = 0; f < count; f ++)
+        msg.readInt16("item id");
 }
 
 }  // namespace EAthena
