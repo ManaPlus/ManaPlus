@@ -55,6 +55,7 @@ LoginHandler::LoginHandler() :
         SMSG_LOGIN_ERROR2,
         SMSG_SERVER_VERSION_RESPONSE,
         SMSG_UPDATE_HOST,
+        SMSG_LOGIN_CODING_KEY,
         0
     };
     handledMessages = _messages;
@@ -87,6 +88,10 @@ void LoginHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_UPDATE_HOST:
             processUpdateHost(msg);
+            break;
+
+        case SMSG_LOGIN_CODING_KEY:
+            processCondingKey(msg);
             break;
 
         default:
@@ -261,6 +266,13 @@ void LoginHandler::processServerVersion(Net::MessageIn &msg)
     else
         logger->log("Hercules without version");
     client->setState(STATE_LOGIN);
+}
+
+void LoginHandler::processCondingKey(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+    const int sz = msg.readInt16("len") - 4;
+    msg.readString(sz, "coding key");
 }
 
 int LoginHandler::supportedOptionalActions() const

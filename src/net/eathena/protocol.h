@@ -35,6 +35,7 @@
 #define SMSG_LOGIN_DATA              0x0069
 #define SMSG_LOGIN_ERROR             0x006a
 #define SMSG_LOGIN_ERROR2            0x083e
+#define SMSG_LOGIN_CODING_KEY        0x01dc
 
 // unused
 #define SMSG_CHAR_LOGIN              0x006b
