@@ -118,6 +118,7 @@ BeingHandler::BeingHandler(const bool enableSync) :
         SMSG_BEING_MOVE3,
         SMSG_BEING_ATTRS,
         SMSG_MONSTER_INFO,
+        SMSG_CLASS_CHANGE,
         0
     };
     handledMessages = _messages;
@@ -316,6 +317,10 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_MONSTER_INFO:
             processMonsterInfo(msg);
+            break;
+
+        case SMSG_CLASS_CHANGE:
+            processClassChange(msg);
             break;
 
         default:
@@ -1649,6 +1654,15 @@ void BeingHandler::processMonsterInfo(Net::MessageIn &msg)
     msg.readInt16("race");
     msg.readInt16("mdef");
     msg.readInt16("ele");
+}
+
+void BeingHandler::processClassChange(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+
+    msg.readInt32("being id");
+    msg.readUInt8("type");
+    msg.readInt32("class");
 }
 
 }  // namespace EAthena

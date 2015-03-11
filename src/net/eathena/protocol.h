@@ -376,6 +376,8 @@
 #define SMSG_MANNER_MESSAGE          0x014a
 #define SMSG_CHAT_SILENCE            0x014b
 
+#define SMSG_CLASS_CHANGE            0x01b0
+
 /**********************************
  *  Packets from client to server *
  **********************************/
