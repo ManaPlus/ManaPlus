@@ -1000,7 +1000,7 @@ void InventoryHandler::processPlayerRepairList(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
 
-    const int count = (msg.readInt16("len" - 4)) / 13;
+    const int count = (msg.readInt16("len") - 4) / 13;
     for (int f = 0; f < count; f ++)
     {
         msg.readInt16("index");
