@@ -565,6 +565,7 @@
 #define CMSG_EXPLOSION_SPIRITS       0x01ed
 #define CMSG_SPIRIT_BALLS            0x01d0
 #define CMSG_BLADE_STOP              0x01d1
+#define CMSG_COMBO_DELAY             0x01d2
 #define CMSG_PVP_INFO                0x020f
 #define CMSG_PLAYER_AUTO_REVIVE      0x0292
 #define CMSG_QUEST_ACTIVATE          0x02b6

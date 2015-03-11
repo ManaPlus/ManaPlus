@@ -121,6 +121,7 @@ BeingHandler::BeingHandler(const bool enableSync) :
         SMSG_CLASS_CHANGE,
         CMSG_SPIRIT_BALLS,
         CMSG_BLADE_STOP,
+        CMSG_COMBO_DELAY,
         0
     };
     handledMessages = _messages;
@@ -331,6 +332,10 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
 
         case CMSG_BLADE_STOP:
             processBladeStop(msg);
+            break;
+
+        case CMSG_COMBO_DELAY:
+            processComboDelay(msg);
             break;
 
         default:
@@ -1690,6 +1695,14 @@ void BeingHandler::processBladeStop(Net::MessageIn &msg)
     msg.readInt32("src being id");
     msg.readInt32("dst being id");
     msg.readInt32("flag");
+}
+
+void BeingHandler::processComboDelay(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+
+    msg.readInt32("being id");
+    msg.readInt32("wait");
 }
 
 }  // namespace EAthena
