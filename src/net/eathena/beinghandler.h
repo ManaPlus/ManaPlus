@@ -136,6 +136,8 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
         static void processComboDelay(Net::MessageIn &msg);
 
         static void processWddingEffect(Net::MessageIn &msg);
+
+        static void processBeingSlide(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
