@@ -119,6 +119,7 @@ BeingHandler::BeingHandler(const bool enableSync) :
         SMSG_BEING_ATTRS,
         SMSG_MONSTER_INFO,
         SMSG_CLASS_CHANGE,
+        CMSG_SPIRIT_BALLS,
         0
     };
     handledMessages = _messages;
@@ -321,6 +322,10 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_CLASS_CHANGE:
             processClassChange(msg);
+            break;
+
+        case CMSG_SPIRIT_BALLS:
+            processSpiritBalls(msg);
             break;
 
         default:
@@ -1663,6 +1668,14 @@ void BeingHandler::processClassChange(Net::MessageIn &msg)
     msg.readInt32("being id");
     msg.readUInt8("type");
     msg.readInt32("class");
+}
+
+void BeingHandler::processSpiritBalls(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+
+    msg.readInt32("being id");
+    msg.readInt16("spirits amount");
 }
 
 }  // namespace EAthena
