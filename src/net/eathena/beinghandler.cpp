@@ -125,6 +125,7 @@ BeingHandler::BeingHandler(const bool enableSync) :
         CMSG_COMBO_DELAY,
         CMSG_WEDDING_EFFECT,
         SMSG_BEING_SLIDE,
+        SMSG_STARS_KILL,
         0
     };
     handledMessages = _messages;
@@ -351,6 +352,10 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_BEING_SLIDE:
             processBeingSlide(msg);
+            break;
+
+        case SMSG_STARS_KILL:
+            processStarsKill(msg);
             break;
 
         default:
@@ -1742,6 +1747,16 @@ void BeingHandler::processBeingSlide(Net::MessageIn &msg)
     msg.readInt32("being id");
     msg.readInt16("x");
     msg.readInt16("y");
+}
+
+void BeingHandler::processStarsKill(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+
+    msg.readString(24, "map name");
+    msg.readInt32("monster id");
+    msg.readUInt8("start");
+    msg.readUInt8("result");
 }
 
 }  // namespace EAthena
