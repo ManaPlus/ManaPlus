@@ -40,6 +40,7 @@ FriendsHandler::FriendsHandler() :
         SMSG_FRIENDS_PLAYER_ONLINE,
         SMSG_FRIENDS_LIST,
         SMSG_FRIENDS_REQUEST_ACK,
+        SMSG_FRIENDS_REQUEST,
         0
     };
     handledMessages = _messages;
@@ -60,6 +61,10 @@ void FriendsHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_FRIENDS_REQUEST_ACK:
             processRequestAck(msg);
+            break;
+
+        case SMSG_FRIENDS_REQUEST:
+            processRequest(msg);
             break;
 
         default:
@@ -91,6 +96,14 @@ void FriendsHandler::processRequestAck(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
     msg.readInt16("type");
+    msg.readInt32("account id");
+    msg.readInt32("char id");
+    msg.readString(24, "name");
+}
+
+void FriendsHandler::processRequest(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
     msg.readInt32("account id");
     msg.readInt32("char id");
     msg.readString(24, "name");
