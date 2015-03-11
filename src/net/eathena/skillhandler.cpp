@@ -31,6 +31,7 @@
 
 #include "gui/windows/skilldialog.h"
 
+#include "net/eathena/menu.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
@@ -67,6 +68,7 @@ SkillHandler::SkillHandler() :
         SMSG_PLAYER_SKILL_PRODUCE_EFFECT,
         SMSG_SKILL_UNIT_UPDATE,
         SMSG_SKILL_ARROW_CREATE_LIST,
+        SMSG_PLAYER_SKILL_AUTO_SPELLS,
         0
     };
     handledMessages = _messages;
@@ -135,6 +137,10 @@ void SkillHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_SKILL_ARROW_CREATE_LIST:
             processSkillArrowCreateList(msg);
+            break;
+
+        case SMSG_PLAYER_SKILL_AUTO_SPELLS:
+            processSkillAutoSpells(msg);
             break;
 
         default:
@@ -453,6 +459,16 @@ void SkillHandler::processSkillArrowCreateList(Net::MessageIn &msg)
     const int count = (msg.readInt16("len") - 4) / 2;
     for (int f = 0; f < count; f ++)
         msg.readInt16("item id");
+}
+
+void SkillHandler::processSkillAutoSpells(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+
+    for (int f = 0; f < 7; f ++)
+        msg.readInt32("skill id");
+
+    menu = MenuType::AutoSpell;;
 }
 
 }  // namespace EAthena
