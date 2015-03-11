@@ -63,6 +63,7 @@ SkillHandler::SkillHandler() :
         SMSG_PLAYER_UPDATE_SKILL,
         SMSG_SKILL_WARP_POINT,
         SMSG_SKILL_MEMO_MESSAGE,
+        SMSG_PLAYER_SKILL_PRODUCE_MIX_LIST,
         0
     };
     handledMessages = _messages;
@@ -115,6 +116,10 @@ void SkillHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_SKILL_MEMO_MESSAGE:
             processSkillMemoMessage(msg);
+            break;
+
+        case SMSG_PLAYER_SKILL_PRODUCE_MIX_LIST:
+            processSkillProduceMixList(msg);
             break;
 
         default:
@@ -396,6 +401,19 @@ void SkillHandler::processSkillMemoMessage(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
     msg.readUInt8("type");
+}
+
+void SkillHandler::processSkillProduceMixList(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+
+    const int count = (msg.readInt16("len") - 8) / 8;
+    for (int f = 0; f < count; f ++)
+    {
+        msg.readInt16("item id");
+        for (int d = 0; d < 3; d ++)
+            msg.readInt16("material id");
+    }
 }
 
 }  // namespace EAthena

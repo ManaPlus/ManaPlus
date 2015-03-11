@@ -71,6 +71,8 @@ class SkillHandler final : public MessageHandler, public Ea::SkillHandler
         static void processSkillWarpPoint(Net::MessageIn &msg);
 
         static void processSkillMemoMessage(Net::MessageIn &msg);
+
+        static void processSkillProduceMixList(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
