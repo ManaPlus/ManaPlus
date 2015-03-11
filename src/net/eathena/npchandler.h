@@ -97,6 +97,8 @@ class NpcHandler final : public MessageHandler, public Ea::NpcHandler
         static void processNpcCloseTimeout(Net::MessageIn &msg);
 
         static void processArea(Net::MessageIn &msg);
+
+        static void processShowDigit(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

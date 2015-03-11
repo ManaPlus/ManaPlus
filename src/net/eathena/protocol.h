@@ -170,6 +170,7 @@
 #define SMSG_NPC_CASH_SHOP_OPEN      0x0287
 #define SMSG_NPC_CASH_BUY_ACK        0x0289
 #define SMSG_NPC_AREA                0x0b0b
+#define SMSG_NPC_SHOW_DIGIT          0x01b1
 
 #define SMSG_PLAYER_CHAT             0x008e /**< Player talks */
 #define SMSG_WHISPER                 0x0097 /**< Whisper Recieved */

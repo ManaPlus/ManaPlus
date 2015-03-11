@@ -23,6 +23,7 @@
 #include "net/eathena/npchandler.h"
 
 #include "actormanager.h"
+#include "logger.h"
 
 #include "being/localplayer.h"
 
@@ -59,6 +60,7 @@ NpcHandler::NpcHandler() :
         SMSG_NPC_COMMAND,
         SMSG_NPC_CHANGETITLE,
         SMSG_NPC_AREA,
+        SMSG_NPC_SHOW_DIGIT,
         0
     };
     handledMessages = _messages;
@@ -119,6 +121,10 @@ void NpcHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_NPC_AREA:
             processArea(msg);
+            break;
+
+        case SMSG_NPC_SHOW_DIGIT:
+            processShowDigit(msg);
             break;
 
         default:
@@ -372,6 +378,14 @@ void NpcHandler::processArea(Net::MessageIn &msg)
     const int area = msg.readInt32("area size");
     if (dstBeing)
         dstBeing->setAreaSize(area);
+}
+
+void NpcHandler::processShowDigit(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+
+    msg.readUInt8("type");
+    msg.readInt32("value");
 }
 
 }  // namespace EAthena
