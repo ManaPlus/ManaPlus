@@ -41,6 +41,7 @@ FriendsHandler::FriendsHandler() :
         SMSG_FRIENDS_LIST,
         SMSG_FRIENDS_REQUEST_ACK,
         SMSG_FRIENDS_REQUEST,
+        SMSG_FRIENDS_DELETE_PLAYER,
         0
     };
     handledMessages = _messages;
@@ -65,6 +66,10 @@ void FriendsHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_FRIENDS_REQUEST:
             processRequest(msg);
+            break;
+
+        case SMSG_FRIENDS_DELETE_PLAYER:
+            processDeletePlayer(msg);
             break;
 
         default:
@@ -130,6 +135,13 @@ void FriendsHandler::remove(const int accountId, const int charId) const
     createOutPacket(CMSG_FRIENDS_DELETE_PLAYER);
     outMsg.writeInt32(accountId, "account id");
     outMsg.writeInt32(charId, "char id");
+}
+
+void FriendsHandler::processDeletePlayer(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+    msg.readInt32("account id");
+    msg.readInt32("char id");
 }
 
 }  // namespace EAthena
