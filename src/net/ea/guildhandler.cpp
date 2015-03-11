@@ -316,7 +316,7 @@ void GuildHandler::processGuildMemberPosChange(Net::MessageIn &msg)
     }
 }
 
-void GuildHandler::processGuildEmblem(Net::MessageIn &msg)
+void GuildHandler::processGuildEmblemData(Net::MessageIn &msg)
 {
     const int length = msg.readInt16("len");
 

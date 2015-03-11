@@ -69,7 +69,7 @@ class GuildHandler notfinal : public Net::GuildHandler
 
         static void processGuildMemberPosChange(Net::MessageIn &msg);
 
-        static void processGuildEmblem(Net::MessageIn &msg);
+        static void processGuildEmblemData(Net::MessageIn &msg);
 
         static void processGuildSkillInfo(Net::MessageIn &msg);
 

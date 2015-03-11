@@ -59,7 +59,7 @@ GuildHandler::GuildHandler() :
         SMSG_GUILD_POS_INFO_LIST,
         SMSG_GUILD_POSITION_CHANGED,
         SMSG_GUILD_MEMBER_POS_CHANGE,
-        SMSG_GUILD_EMBLEM,
+        SMSG_GUILD_EMBLEM_DATA,
         SMSG_GUILD_SKILL_INFO,
         SMSG_GUILD_NOTICE,
         SMSG_GUILD_INVITE,
@@ -134,8 +134,8 @@ void GuildHandler::handleMessage(Net::MessageIn &msg)
             processGuildMemberPosChange(msg);
             break;
 
-        case SMSG_GUILD_EMBLEM:
-            processGuildEmblem(msg);
+        case SMSG_GUILD_EMBLEM_DATA:
+            processGuildEmblemData(msg);
             break;
 
         case SMSG_GUILD_SKILL_INFO:
