@@ -88,6 +88,7 @@ ChatHandler::ChatHandler() :
         SMSG_CHAT_ROLE_CHANGE,
         SMSG_MANNER_MESSAGE,
         SMSG_CHAT_SILENCE,
+        SMSG_CHAT_TALKIE_BOX,
         0
     };
     handledMessages = _messages;
@@ -214,6 +215,10 @@ void ChatHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_CHAT_SILENCE:
             processChatSilence(msg);
+            break;
+
+        case SMSG_CHAT_TALKIE_BOX:
+            processChatTalkieBox(msg);
             break;
 
         default:
@@ -898,6 +903,13 @@ void ChatHandler::processChatSilence(Net::MessageIn &msg)
     UNIMPLIMENTEDPACKET;
     msg.readUInt8("type");
     msg.readString(24, "gm name");
+}
+
+void ChatHandler::processChatTalkieBox(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+    msg.readInt32("being id");
+    msg.readString(80, "message");
 }
 
 }  // namespace EAthena

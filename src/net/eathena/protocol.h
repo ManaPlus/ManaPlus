@@ -281,6 +281,7 @@
 #define SMSG_CHAT_SETTINGS           0x00df
 #define SMSG_CHAT_ROLE_CHANGE        0x00e1
 #define SMSG_CHAT_JOIN_CHANNEL       0x0b08
+#define SMSG_CHAT_TALKIE_BOX         0x0191
 
 #define SMSG_MAIL_OPEN_WINDOW        0x0260
 
