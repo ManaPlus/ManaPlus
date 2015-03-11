@@ -120,6 +120,7 @@ BeingHandler::BeingHandler(const bool enableSync) :
         SMSG_MONSTER_INFO,
         SMSG_CLASS_CHANGE,
         CMSG_SPIRIT_BALLS,
+        CMSG_SPIRIT_BALL_SINGLE,
         CMSG_BLADE_STOP,
         CMSG_COMBO_DELAY,
         0
@@ -328,6 +329,10 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
 
         case CMSG_SPIRIT_BALLS:
             processSpiritBalls(msg);
+            break;
+
+        case CMSG_SPIRIT_BALL_SINGLE:
+            processSpiritBallSingle(msg);
             break;
 
         case CMSG_BLADE_STOP:
@@ -1681,6 +1686,14 @@ void BeingHandler::processClassChange(Net::MessageIn &msg)
 }
 
 void BeingHandler::processSpiritBalls(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+
+    msg.readInt32("being id");
+    msg.readInt16("spirits amount");
+}
+
+void BeingHandler::processSpiritBallSingle(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
 

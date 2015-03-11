@@ -129,6 +129,8 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
 
         static void processSpiritBalls(Net::MessageIn &msg);
 
+        static void processSpiritBallSingle(Net::MessageIn &msg);
+
         static void processBladeStop(Net::MessageIn &msg);
 
         static void processComboDelay(Net::MessageIn &msg);
