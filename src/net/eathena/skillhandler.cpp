@@ -69,6 +69,7 @@ SkillHandler::SkillHandler() :
         SMSG_SKILL_UNIT_UPDATE,
         SMSG_SKILL_ARROW_CREATE_LIST,
         SMSG_PLAYER_SKILL_AUTO_SPELLS,
+        SMSG_SKILL_DEVOTION_EFFECT,
         0
     };
     handledMessages = _messages;
@@ -141,6 +142,10 @@ void SkillHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_PLAYER_SKILL_AUTO_SPELLS:
             processSkillAutoSpells(msg);
+            break;
+
+        case SMSG_SKILL_DEVOTION_EFFECT:
+            processSkillDevotionEffect(msg);
             break;
 
         default:
@@ -469,6 +474,16 @@ void SkillHandler::processSkillAutoSpells(Net::MessageIn &msg)
         msg.readInt32("skill id");
 
     menu = MenuType::AutoSpell;;
+}
+
+void SkillHandler::processSkillDevotionEffect(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+
+    msg.readInt32("being id");
+    for (int f = 0; f < 5; f ++)
+        msg.readInt32("devotee id");
+    msg.readInt16("range");
 }
 
 }  // namespace EAthena
