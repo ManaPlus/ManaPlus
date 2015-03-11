@@ -122,6 +122,8 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
         static void processMobInfo(Net::MessageIn &msg);
 
         static void processBeingAttrs(Net::MessageIn &msg);
+
+        static void processMonsterInfo(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

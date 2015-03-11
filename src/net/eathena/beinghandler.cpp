@@ -117,6 +117,7 @@ BeingHandler::BeingHandler(const bool enableSync) :
         SMSG_MOB_INFO,
         SMSG_BEING_MOVE3,
         SMSG_BEING_ATTRS,
+        SMSG_MONSTER_INFO,
         0
     };
     handledMessages = _messages;
@@ -311,6 +312,10 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_BEING_ATTRS:
             processBeingAttrs(msg);
+            break;
+
+        case SMSG_MONSTER_INFO:
+            processMonsterInfo(msg);
             break;
 
         default:
@@ -1630,6 +1635,20 @@ void BeingHandler::processBeingAttrs(Net::MessageIn &msg)
             localPlayer->setGMLevel(0);
         dstBeing->setGM(false);
     }
+}
+
+void BeingHandler::processMonsterInfo(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+
+    msg.readInt16("class");
+    msg.readInt16("level");
+    msg.readInt16("size");
+    msg.readInt32("hp");
+    msg.readInt16("def");
+    msg.readInt16("race");
+    msg.readInt16("mdef");
+    msg.readInt16("ele");
 }
 
 }  // namespace EAthena

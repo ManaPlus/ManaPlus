@@ -264,6 +264,7 @@
 
 #define SMSG_RANKS_LIST              0x097d
 #define SMSG_MONSTER_HP              0x0977
+#define SMSG_MONSTER_INFO            0x018c
 #define SMSG_PLAYER_HP               0x080e
 #define SMSG_PVP_INFO                0x0210
 
