@@ -65,6 +65,7 @@ SkillHandler::SkillHandler() :
         SMSG_SKILL_MEMO_MESSAGE,
         SMSG_PLAYER_SKILL_PRODUCE_MIX_LIST,
         SMSG_PLAYER_SKILL_PRODUCE_EFFECT,
+        SMSG_SKILL_UNIT_UPDATE,
         0
     };
     handledMessages = _messages;
@@ -125,6 +126,10 @@ void SkillHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_PLAYER_SKILL_PRODUCE_EFFECT:
             processSkillProduceEffect(msg);
+            break;
+
+        case SMSG_SKILL_UNIT_UPDATE:
+            processSkillUnitUpdate(msg);
             break;
 
         default:
@@ -427,6 +432,13 @@ void SkillHandler::processSkillProduceEffect(Net::MessageIn &msg)
 
     msg.readInt16("flag");
     msg.readInt16("item id");
+}
+
+void SkillHandler::processSkillUnitUpdate(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+
+    msg.readInt32("being id");
 }
 
 }  // namespace EAthena

@@ -107,6 +107,7 @@
 #define SMSG_SKILL_SNAP              0x08d2
 #define SMSG_SKILL_WARP_POINT        0x011c
 #define SMSG_SKILL_MEMO_MESSAGE      0x011e
+#define SMSG_SKILL_UNIT_UPDATE       0x01ac
 #define SMSG_ITEM_USE_RESPONSE       0x00a8
 #define SMSG_ITEM_VISIBLE            0x009d /**< An item is on the floor */
 #define SMSG_GRAFFITI_VISIBLE        0x01c9
