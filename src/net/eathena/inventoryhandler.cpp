@@ -106,6 +106,7 @@ InventoryHandler::InventoryHandler() :
         SMSG_PLAYER_CART_REMOVE,
         SMSG_PLAYER_IDENTIFY_LIST,
         SMSG_PLAYER_IDENTIFIED,
+        SMSG_PLAYER_REFINE,
         0
     };
     handledMessages = _messages;
@@ -236,6 +237,10 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_PLAYER_IDENTIFIED:
             processPlayerIdentified(msg);
+            break;
+
+        case SMSG_PLAYER_REFINE:
+            processPlayerRefine(msg);
             break;
 
         default:
@@ -970,6 +975,15 @@ void InventoryHandler::processPlayerIdentified(Net::MessageIn &msg)
 
     msg.readInt16("inv index");
     msg.readUInt8("flag");
+}
+
+void InventoryHandler::processPlayerRefine(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+
+    msg.readInt16("flag");
+    msg.readInt16("inv index");
+    msg.readInt16("val");
 }
 
 }  // namespace EAthena
