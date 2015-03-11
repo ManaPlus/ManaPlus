@@ -68,6 +68,7 @@ PetHandler::PetHandler() :
         SMSG_PET_DATA,
         SMSG_PET_STATUS,
         SMSG_PET_FOOD,
+        SMSG_PET_CATCH_PROCESS,
         0
     };
     handledMessages = _messages;
@@ -101,6 +102,10 @@ void PetHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_PET_FOOD:
             processPetFood(msg);
+            break;
+
+        case SMSG_PET_CATCH_PROCESS:
+            processPetCatchProcess(msg);
             break;
 
         default:
@@ -340,6 +345,11 @@ void PetHandler::setDirection(const unsigned char type) const
 
 void PetHandler::startAi(const bool start A_UNUSED) const
 {
+}
+
+void PetHandler::processPetCatchProcess(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
 }
 
 }  // namespace EAthena

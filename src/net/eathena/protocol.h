@@ -295,6 +295,7 @@
 #define SMSG_PET_DATA                0x01a4
 #define SMSG_PET_STATUS              0x01a2
 #define SMSG_PET_FOOD                0x01a3
+#define SMSG_PET_CATCH_PROCESS       0x019e
 
 #define SMSG_BANK_STATUS             0x09a6
 #define SMSG_BANK_DEPOSIT            0x09a8

@@ -80,6 +80,8 @@ class PetHandler final :  public MessageHandler, public Net::PetHandler
 
         static void processPetFood(Net::MessageIn &msg);
 
+        static void processPetCatchProcess(Net::MessageIn &msg);
+
         int mRandCounter;
 };
 
