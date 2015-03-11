@@ -64,6 +64,7 @@ SkillHandler::SkillHandler() :
         SMSG_SKILL_WARP_POINT,
         SMSG_SKILL_MEMO_MESSAGE,
         SMSG_PLAYER_SKILL_PRODUCE_MIX_LIST,
+        SMSG_PLAYER_SKILL_PRODUCE_EFFECT,
         0
     };
     handledMessages = _messages;
@@ -120,6 +121,10 @@ void SkillHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_PLAYER_SKILL_PRODUCE_MIX_LIST:
             processSkillProduceMixList(msg);
+            break;
+
+        case SMSG_PLAYER_SKILL_PRODUCE_EFFECT:
+            processSkillProduceEffect(msg);
             break;
 
         default:
@@ -414,6 +419,14 @@ void SkillHandler::processSkillProduceMixList(Net::MessageIn &msg)
         for (int d = 0; d < 3; d ++)
             msg.readInt16("material id");
     }
+}
+
+void SkillHandler::processSkillProduceEffect(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+
+    msg.readInt16("flag");
+    msg.readInt16("item id");
 }
 
 }  // namespace EAthena
