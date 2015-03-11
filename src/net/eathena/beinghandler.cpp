@@ -123,6 +123,7 @@ BeingHandler::BeingHandler(const bool enableSync) :
         CMSG_SPIRIT_BALL_SINGLE,
         CMSG_BLADE_STOP,
         CMSG_COMBO_DELAY,
+        CMSG_WEDDING_EFFECT,
         0
     };
     handledMessages = _messages;
@@ -341,6 +342,10 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
 
         case CMSG_COMBO_DELAY:
             processComboDelay(msg);
+            break;
+
+        case CMSG_WEDDING_EFFECT:
+            processWddingEffect(msg);
             break;
 
         default:
@@ -1716,6 +1721,13 @@ void BeingHandler::processComboDelay(Net::MessageIn &msg)
 
     msg.readInt32("being id");
     msg.readInt32("wait");
+}
+
+void BeingHandler::processWddingEffect(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+
+    msg.readInt32("being id");
 }
 
 }  // namespace EAthena

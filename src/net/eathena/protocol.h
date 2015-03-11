@@ -568,6 +568,7 @@
 #define CMSG_SPIRIT_BALL_SINGLE      0x01e1
 #define CMSG_BLADE_STOP              0x01d1
 #define CMSG_COMBO_DELAY             0x01d2
+#define CMSG_WEDDING_EFFECT          0x01ea
 #define CMSG_PVP_INFO                0x020f
 #define CMSG_PLAYER_AUTO_REVIVE      0x0292
 #define CMSG_QUEST_ACTIVATE          0x02b6
