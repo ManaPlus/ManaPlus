@@ -121,6 +121,8 @@ class InventoryHandler final : public MessageHandler,
 
         static void processPlayerRefine(Net::MessageIn &msg);
 
+        static void processPlayerRepairList(Net::MessageIn &msg);
+
         static Ea::InventoryItems mCartItems;
 };
 

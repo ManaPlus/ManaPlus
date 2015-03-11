@@ -107,6 +107,7 @@ InventoryHandler::InventoryHandler() :
         SMSG_PLAYER_IDENTIFY_LIST,
         SMSG_PLAYER_IDENTIFIED,
         SMSG_PLAYER_REFINE,
+        SMSG_PLAYER_REPAIR_LIST,
         0
     };
     handledMessages = _messages;
@@ -241,6 +242,10 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_PLAYER_REFINE:
             processPlayerRefine(msg);
+            break;
+
+        case SMSG_PLAYER_REPAIR_LIST:
+            processPlayerRepairList(msg);
             break;
 
         default:
@@ -984,6 +989,22 @@ void InventoryHandler::processPlayerRefine(Net::MessageIn &msg)
     msg.readInt16("flag");
     msg.readInt16("inv index");
     msg.readInt16("val");
+}
+
+void InventoryHandler::processPlayerRepairList(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+
+    const int count = (msg.readInt16("len" - 4)) / 13;
+    for (int f = 0; f < count; f ++)
+    {
+        msg.readInt16("index");
+        msg.readInt16("item id");
+        msg.readUInt8("refine");
+        for (int d = 0; d < 4; d ++)
+            msg.readInt16("card");
+    }
+    menu = MenuType::RepairWespon;
 }
 
 }  // namespace EAthena
