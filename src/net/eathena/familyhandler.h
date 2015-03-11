@@ -50,6 +50,8 @@ class FamilyHandler final : public MessageHandler,
 
         static void processDivorced(Net::MessageIn &msg);
 
+        static void processAskForChildReply(Net::MessageIn &msg);
+
     private:
         static int mParent1;
         static int mParent2;

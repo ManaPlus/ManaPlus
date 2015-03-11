@@ -48,6 +48,7 @@ FamilyHandler::FamilyHandler() :
         SMSG_FAMILY_ASK_FOR_CHILD,
         SMSG_FAMILY_CALL_PARTNER,
         SMSG_FAMILY_DIVORCED,
+        SMSG_FAMILY_ASK_FOR_CHILD_REPLY,
         0
     };
     handledMessages = _messages;
@@ -68,6 +69,10 @@ void FamilyHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_FAMILY_DIVORCED:
             processDivorced(msg);
+            break;
+
+        case SMSG_FAMILY_ASK_FOR_CHILD_REPLY:
+            processAskForChildReply(msg);
             break;
 
         default:
@@ -110,6 +115,12 @@ void FamilyHandler::processDivorced(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
     msg.readString(24, "name");
+}
+
+void FamilyHandler::processAskForChildReply(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+    msg.readInt32("type");
 }
 
 }  // namespace EAthena
