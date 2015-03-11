@@ -83,6 +83,8 @@ class GuildHandler final : public Ea::GuildHandler, public MessageHandler
         static void processGuildExpulsion(Net::MessageIn &msg);
 
         static void processGuildExpulsionList(Net::MessageIn &msg);
+
+        static void processGuildEmblem(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

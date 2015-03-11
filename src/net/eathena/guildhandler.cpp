@@ -75,6 +75,7 @@ GuildHandler::GuildHandler() :
         SMSG_GUILD_OPPOSITION_ACK,
         SMSG_GUILD_BROKEN,
         SMSG_GUILD_UPDATE_COORDS,
+        SMSG_GUILD_EMBLEM,
         0
     };
     handledMessages = _messages;
@@ -196,6 +197,10 @@ void GuildHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_GUILD_UPDATE_COORDS:
             processGuildUpdateCoords(msg);
+            break;
+
+        case SMSG_GUILD_EMBLEM:
+            processGuildEmblem(msg);
             break;
 
         default:
@@ -438,6 +443,14 @@ void GuildHandler::processGuildExpulsionList(Net::MessageIn &msg)
         msg.readString(24, "name");
         msg.readString(40, "message");
     }
+}
+
+void GuildHandler::processGuildEmblem(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+    msg.readInt32("being id");
+    msg.readInt32("guild id");
+    msg.readInt16("emblem id");
 }
 
 }  // namespace EAthena
