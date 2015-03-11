@@ -63,6 +63,7 @@ PlayerHandler::PlayerHandler() :
         SMSG_MAP_MASK,
         SMSG_MAP_MUSIC,
         SMSG_ONLINE_LIST,
+        SMSG_PLAYER_NOTIFY_MAPINFO,
         0
     };
     handledMessages = _messages;
@@ -144,6 +145,10 @@ void PlayerHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_ONLINE_LIST:
             processOnlineList(msg);
+            break;
+
+        case SMSG_PLAYER_NOTIFY_MAPINFO:
+            processNotifyMapInfo(msg);
             break;
 
         default:
@@ -512,6 +517,12 @@ void PlayerHandler::setStat(const int type,
                             const bool notify) const
 {
     Ea::PlayerHandler::setStat(type, base, mod, notify);
+}
+
+void PlayerHandler::processNotifyMapInfo(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+    msg.readInt16("type");
 }
 
 }  // namespace EAthena
