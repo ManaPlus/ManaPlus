@@ -414,6 +414,8 @@
 
 #define SMSG_CLASS_CHANGE            0x01b0
 
+#define SMSG_INSTANCE_START          0x02cb
+
 /**********************************
  *  Packets from client to server *
  **********************************/
