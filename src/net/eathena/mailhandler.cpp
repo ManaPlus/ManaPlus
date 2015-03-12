@@ -42,6 +42,7 @@ MailHandler::MailHandler() :
         SMSG_MAIL_OPEN_WINDOW,
         SMSG_MAIL_MAILS_LIST,
         SMSG_MAIL_READ_MAIL,
+        SMSG_MAIL_GET_ATTACHMENT,
         0
     };
     handledMessages = _messages;
@@ -62,6 +63,10 @@ void MailHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_MAIL_READ_MAIL:
             processReadMail(msg);
+            break;
+
+        case SMSG_MAIL_GET_ATTACHMENT:
+            processGetAttachment(msg);
             break;
 
         default:
@@ -128,6 +133,13 @@ void MailHandler::processReadMail(Net::MessageIn &msg)
     if (msgLen != sz)
         logger->log("error: wrong message size");
     msg.readString(sz, "message");
+}
+
+void MailHandler::processGetAttachment(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+
+    msg.readUInt8("flag");
 }
 
 void MailHandler::refresh()
