@@ -417,6 +417,7 @@
 #define SMSG_INSTANCE_START          0x02cb
 #define SMSG_INSTANCE_CREATE         0x02cc
 #define SMSG_INSTANCE_INFO           0x02cd
+#define SMSG_INSTANCE_DELETE         0x02ce
 
 /**********************************
  *  Packets from client to server *

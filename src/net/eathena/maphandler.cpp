@@ -42,6 +42,7 @@ MapHandler::MapHandler() :
         SMSG_INSTANCE_START,
         SMSG_INSTANCE_CREATE,
         SMSG_INSTANCE_INFO,
+        SMSG_INSTANCE_DELETE,
         0
     };
     handledMessages = _messages;
@@ -62,6 +63,10 @@ void MapHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_INSTANCE_INFO:
             processInstanceInfo(msg);
+            break;
+
+        case SMSG_INSTANCE_DELETE:
+            processInstanceDelete(msg);
             break;
 
         default:
@@ -88,6 +93,13 @@ void MapHandler::processInstanceInfo(Net::MessageIn &msg)
     msg.readString(61, "instance name");
     msg.readInt32("remaining time");
     msg.readInt32("no players close time");
+}
+
+void MapHandler::processInstanceDelete(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+    msg.readInt32("flag");
+    msg.readInt32("unused");
 }
 
 }  // namespace EAthena
