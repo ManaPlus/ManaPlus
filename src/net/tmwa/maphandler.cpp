@@ -42,7 +42,7 @@ MapHandler::MapHandler() :
         0
     };
     handledMessages = _messages;
-    mailHandler = this;
+    mapHandler = this;
 }
 
 void MapHandler::handleMessage(Net::MessageIn &msg)

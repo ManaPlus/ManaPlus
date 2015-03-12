@@ -1320,6 +1320,8 @@ manaplus_SOURCES += net/tmwa/auctionhandler.cpp \
 	      net/tmwa/homunculushandler.h \
 	      net/tmwa/mailhandler.cpp \
 	      net/tmwa/mailhandler.h \
+	      net/tmwa/maphandler.cpp \
+	      net/tmwa/maphandler.h \
 	      net/tmwa/markethandler.cpp \
 	      net/tmwa/markethandler.h \
 	      net/tmwa/mercenaryhandler.cpp \
@@ -1360,6 +1362,7 @@ manaplus_SOURCES += gui/windows/bankwindow.cpp \
 	      net/friendshandler.h \
 	      net/homunculushandler.h \
 	      net/mailhandler.h \
+	      net/maphandler.h \
 	      net/markethandler.h \
 	      net/mercenaryhandler.h \
 	      net/searchstorehandler.h \
@@ -1406,6 +1409,8 @@ manaplus_SOURCES += gui/windows/bankwindow.cpp \
 	      net/eathena/loginhandler.h \
 	      net/eathena/mailhandler.cpp \
 	      net/eathena/mailhandler.h \
+	      net/eathena/maphandler.cpp \
+	      net/eathena/maphandler.h \
 	      net/eathena/maptypeproperty2.h \
 	      net/eathena/markethandler.cpp \
 	      net/eathena/markethandler.h \

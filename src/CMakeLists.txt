@@ -1389,6 +1389,8 @@ SET(SRCS_TMWAEATHENA
     net/tmwa/homunculushandler.h
     net/tmwa/mailhandler.cpp
     net/tmwa/mailhandler.h
+    net/tmwa/maphandler.cpp
+    net/tmwa/maphandler.h
     net/tmwa/markethandler.cpp
     net/tmwa/markethandler.h
     net/tmwa/mercenaryhandler.cpp
@@ -1429,6 +1431,7 @@ SET(SRCS_EATHENA
     net/friendshandler.h
     net/homunculushandler.h
     net/mailhandler.h
+    net/maphandler.h
     net/markethandler.h
     net/mercenaryhandler.h
     net/searchstorehandler.h
@@ -1475,6 +1478,8 @@ SET(SRCS_EATHENA
     net/eathena/loginhandler.h
     net/eathena/mailhandler.cpp
     net/eathena/mailhandler.h
+    net/eathena/maphandler.cpp
+    net/eathena/maphandler.h
     net/eathena/maptypeproperty2.h
     net/eathena/markethandler.cpp
     net/eathena/markethandler.h
