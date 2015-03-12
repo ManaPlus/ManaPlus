@@ -1324,10 +1324,9 @@ void BeingHandler::processRanksList(Net::MessageIn &msg)
     // +++ here need window with rank tables.
     msg.readInt16("rank type");
     for (int f = 0; f < 10; f ++)
-    {
         msg.readString(24, "name");
+    for (int f = 0; f < 10; f ++)
         msg.readInt32("points");
-    }
     msg.readInt32("my points");
 }
 
