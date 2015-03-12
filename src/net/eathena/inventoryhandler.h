@@ -129,6 +129,8 @@ class InventoryHandler final : public MessageHandler,
 
         static void processPlayerStoragePassword(Net::MessageIn &msg);
 
+        static void processPlayerStoragePasswordResult(Net::MessageIn &msg);
+
         static Ea::InventoryItems mCartItems;
 };
 

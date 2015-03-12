@@ -111,6 +111,7 @@ InventoryHandler::InventoryHandler() :
         SMSG_PLAYER_REPAIR_EFFECT,
         SMSG_PLAYER_REFINE_LIST,
         SMSG_PLAYER_STORAGE_PASSWORD,
+        SMSG_PLAYER_STORAGE_PASSWORD_RESULT,
         0
     };
     handledMessages = _messages;
@@ -261,6 +262,10 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_PLAYER_STORAGE_PASSWORD:
             processPlayerStoragePassword(msg);
+            break;
+
+        case SMSG_PLAYER_STORAGE_PASSWORD_RESULT:
+            processPlayerStoragePasswordResult(msg);
             break;
 
         default:
@@ -1052,6 +1057,14 @@ void InventoryHandler::processPlayerStoragePassword(Net::MessageIn &msg)
     UNIMPLIMENTEDPACKET;
 
     msg.readInt16("info");
+}
+
+void InventoryHandler::processPlayerStoragePasswordResult(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+
+    msg.readInt16("result");
+    msg.readInt16("error count");
 }
 
 }  // namespace EAthena
