@@ -306,6 +306,7 @@
 #define SMSG_CHAT_TALKIE_BOX         0x0191
 
 #define SMSG_MAIL_MAILS_LIST         0x0240
+#define SMSG_MAIL_READ_MAIL          0x0242
 #define SMSG_MAIL_OPEN_WINDOW        0x0260
 
 #define SMSG_FAMILY_ASK_FOR_CHILD    0x01f6

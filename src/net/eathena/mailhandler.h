@@ -60,6 +60,8 @@ class MailHandler final : public MessageHandler, public Net::MailHandler
         static void processMailOpen(Net::MessageIn &msg);
 
         static void processMailList(Net::MessageIn &msg);
+
+        static void processReadMail(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

@@ -41,6 +41,7 @@ MailHandler::MailHandler() :
     {
         SMSG_MAIL_OPEN_WINDOW,
         SMSG_MAIL_MAILS_LIST,
+        SMSG_MAIL_READ_MAIL,
         0
     };
     handledMessages = _messages;
@@ -57,6 +58,10 @@ void MailHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_MAIL_MAILS_LIST:
             processMailList(msg);
+            break;
+
+        case SMSG_MAIL_READ_MAIL:
+            processReadMail(msg);
             break;
 
         default:
@@ -98,6 +103,31 @@ void MailHandler::processMailList(Net::MessageIn &msg)
         msg.readString(24, "sender name");
         msg.readInt32("time stamp");
     }
+}
+
+void MailHandler::processReadMail(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+
+    const int sz = msg.readInt16("len") - 101;
+    msg.readInt32("message id");
+    msg.readString(40, "title");
+    msg.readString(24, "sender name");
+    msg.readInt16("unused?");
+    msg.readInt32("unused");
+    msg.readInt32("money");
+    msg.readInt32("item amount");
+    msg.readInt16("item id");
+    msg.readInt16("item type");
+    msg.readUInt8("identify");
+    msg.readUInt8("attribute");
+    msg.readUInt8("refine");
+    for (int f = 0; f < 4; f ++)
+        msg.readInt16("card");
+    const int msgLen = msg.readUInt8("msg len");
+    if (msgLen != sz)
+        logger->log("error: wrong message size");
+    msg.readString(sz, "message");
 }
 
 void MailHandler::refresh()
