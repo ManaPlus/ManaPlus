@@ -42,6 +42,8 @@ class MapHandler final : public MessageHandler, public Net::MapHandler
         void processInstanceStart(Net::MessageIn &msg);
 
         void processInstanceCreate(Net::MessageIn &msg);
+
+        void processInstanceInfo(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
