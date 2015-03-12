@@ -66,6 +66,7 @@ PlayerHandler::PlayerHandler() :
         SMSG_PLAYER_NOTIFY_MAPINFO,
         SMSG_PLAYER_FAME_BLACKSMITH,
         SMSG_PLAYER_FAME_ALCHEMIST,
+        SMSG_PLAYER_UPGRADE_MESSAGE,
         0
     };
     handledMessages = _messages;
@@ -159,6 +160,10 @@ void PlayerHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_PLAYER_FAME_ALCHEMIST:
             processPlayerFameAlchemist(msg);
+            break;
+
+        case SMSG_PLAYER_UPGRADE_MESSAGE:
+            processPlayerUpgradeMessage(msg);
             break;
 
         default:
@@ -547,6 +552,13 @@ void PlayerHandler::processPlayerFameAlchemist(Net::MessageIn &msg)
     UNIMPLIMENTEDPACKET;
     msg.readInt32("points");
     msg.readInt32("total points");
+}
+
+void PlayerHandler::processPlayerUpgradeMessage(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+    msg.readInt32("result");
+    msg.readInt16("item id");
 }
 
 }  // namespace EAthena
