@@ -159,6 +159,7 @@
 #define SMSG_STARS_KILL              0x020e
 #define SMSG_GLADIATOR_FEEL_REQUEST  0x0253
 #define SMSG_BOSS_MAP_INFO           0x0293
+#define SMSG_ITEM_DAMAGED            0x02bb
 
 #define SMSG_PLAYER_STATUS_CHANGE    0x0229
 #define SMSG_PLAYER_STATUS_CHANGE2   0x028a

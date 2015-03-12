@@ -113,6 +113,7 @@ InventoryHandler::InventoryHandler() :
         SMSG_PLAYER_STORAGE_PASSWORD,
         SMSG_PLAYER_STORAGE_PASSWORD_RESULT,
         SMSG_PLAYER_COOKING_LIST,
+        SMSG_ITEM_DAMAGED,
         0
     };
     handledMessages = _messages;
@@ -271,6 +272,10 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_PLAYER_COOKING_LIST:
             processPlayerCookingList(msg);
+            break;
+
+        case SMSG_ITEM_DAMAGED:
+            processItemDamaged(msg);
             break;
 
         default:
@@ -1080,6 +1085,14 @@ void InventoryHandler::processPlayerCookingList(Net::MessageIn &msg)
     msg.readInt16("list type");
     for (int f = 0; f < count; f ++)
         msg.readInt16("item id");
+}
+
+void InventoryHandler::processItemDamaged(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+
+    msg.readInt16("position");
+    msg.readInt32("account id");
 }
 
 }  // namespace EAthena

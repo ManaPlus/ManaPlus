@@ -133,6 +133,8 @@ class InventoryHandler final : public MessageHandler,
 
         static void processPlayerCookingList(Net::MessageIn &msg);
 
+        static void processItemDamaged(Net::MessageIn &msg);
+
         static Ea::InventoryItems mCartItems;
 };
 
