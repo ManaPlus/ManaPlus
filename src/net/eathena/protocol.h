@@ -277,6 +277,7 @@
 
 #define SMSG_RANKS_LIST              0x097d
 #define SMSG_BLACKSMITH_RANKS_LIST   0x0219
+#define SMSG_ALCHEMIST_RANKS_LIST    0x021a
 #define SMSG_MONSTER_HP              0x0977
 #define SMSG_MONSTER_INFO            0x018c
 #define SMSG_PLAYER_HP               0x080e
