@@ -68,6 +68,7 @@ PlayerHandler::PlayerHandler() :
         SMSG_PLAYER_FAME_ALCHEMIST,
         SMSG_PLAYER_UPGRADE_MESSAGE,
         SMSG_PLAYER_FAME_TAEKWON,
+        SMSG_PLAYER_READ_BOOK,
         0
     };
     handledMessages = _messages;
@@ -169,6 +170,10 @@ void PlayerHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_PLAYER_FAME_TAEKWON:
             processPlayerFameTaekwon(msg);
+            break;
+
+        case SMSG_PLAYER_READ_BOOK:
+            processPlayerReadBook(msg);
             break;
 
         default:
@@ -571,6 +576,13 @@ void PlayerHandler::processPlayerFameTaekwon(Net::MessageIn &msg)
     UNIMPLIMENTEDPACKET;
     msg.readInt32("points");
     msg.readInt32("total points");
+}
+
+void PlayerHandler::processPlayerReadBook(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+    msg.readInt32("book id");
+    msg.readInt32("page");
 }
 
 }  // namespace EAthena

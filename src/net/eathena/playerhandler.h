@@ -100,6 +100,8 @@ class PlayerHandler final : public MessageHandler, public Ea::PlayerHandler
         static void processPlayerUpgradeMessage(Net::MessageIn &msg);
 
         static void processPlayerFameTaekwon(Net::MessageIn &msg);
+
+        static void processPlayerReadBook(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
