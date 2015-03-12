@@ -140,6 +140,8 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
         static void processBeingSlide(Net::MessageIn &msg);
 
         static void processStarsKill(Net::MessageIn &msg);
+
+        static void processBlacksmithRanksList(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
