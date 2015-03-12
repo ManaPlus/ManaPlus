@@ -46,6 +46,7 @@ MailHandler::MailHandler() :
         SMSG_MAIL_SEND_MAIL_ACK,
         SMSG_MAIL_NEW_MAIL,
         SMSG_MAIL_SET_ATTACHMENT_ACK,
+        SMSG_MAIL_DELETE_MAIL_ACK,
         0
     };
     handledMessages = _messages;
@@ -82,6 +83,10 @@ void MailHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_MAIL_SET_ATTACHMENT_ACK:
             processSetAttachmentAck(msg);
+            break;
+
+        case SMSG_MAIL_DELETE_MAIL_ACK:
+            processDeleteAck(msg);
             break;
 
         default:
@@ -179,6 +184,14 @@ void MailHandler::processSetAttachmentAck(Net::MessageIn &msg)
 
     msg.readInt16("index");
     msg.readUInt8("flag");
+}
+
+void MailHandler::processDeleteAck(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+
+    msg.readInt32("message id");
+    msg.readInt16("fail flag");
 }
 
 void MailHandler::refresh()
