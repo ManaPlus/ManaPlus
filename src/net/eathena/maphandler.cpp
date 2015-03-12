@@ -40,6 +40,7 @@ MapHandler::MapHandler() :
     static const uint16_t _messages[] =
     {
         SMSG_INSTANCE_START,
+        SMSG_INSTANCE_CREATE,
         0
     };
     handledMessages = _messages;
@@ -54,6 +55,10 @@ void MapHandler::handleMessage(Net::MessageIn &msg)
             processInstanceStart(msg);
             break;
 
+        case SMSG_INSTANCE_CREATE:
+            processInstanceCreate(msg);
+            break;
+
         default:
             break;
     }
@@ -61,7 +66,14 @@ void MapHandler::handleMessage(Net::MessageIn &msg)
 
 void MapHandler::processInstanceStart(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     msg.readString(61, "instance name");
+    msg.readInt16("flag");
+}
+
+void MapHandler::processInstanceCreate(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
     msg.readInt16("flag");
 }
 
