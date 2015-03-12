@@ -148,6 +148,8 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
         static void processTaekwonRanksList(Net::MessageIn &msg);
 
         static void processPkRanksList(Net::MessageIn &msg);
+
+        static void processGladiatorFeelRequest(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

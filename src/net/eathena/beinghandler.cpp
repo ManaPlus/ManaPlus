@@ -130,6 +130,7 @@ BeingHandler::BeingHandler(const bool enableSync) :
         SMSG_ALCHEMIST_RANKS_LIST,
         SMSG_TAEKWON_RANKS_LIST,
         SMSG_PK_RANKS_LIST,
+        SMSG_GLADIATOR_FEEL_REQUEST,
         0
     };
     handledMessages = _messages;
@@ -376,6 +377,10 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_PK_RANKS_LIST:
             processPkRanksList(msg);
+            break;
+
+        case SMSG_GLADIATOR_FEEL_REQUEST:
+            processGladiatorFeelRequest(msg);
             break;
 
         default:
@@ -1816,6 +1821,13 @@ void BeingHandler::processStarsKill(Net::MessageIn &msg)
     msg.readInt32("monster id");
     msg.readUInt8("start");
     msg.readUInt8("result");
+}
+
+void BeingHandler::processGladiatorFeelRequest(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+
+    msg.readUInt8("which");
 }
 
 }  // namespace EAthena
