@@ -94,6 +94,8 @@ class PlayerHandler final : public MessageHandler, public Ea::PlayerHandler
         static void processNotifyMapInfo(Net::MessageIn &msg);
 
         static void processPlayerFameBlacksmith(Net::MessageIn &msg);
+
+        static void processPlayerFameAlchemist(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

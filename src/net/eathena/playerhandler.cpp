@@ -65,6 +65,7 @@ PlayerHandler::PlayerHandler() :
         SMSG_ONLINE_LIST,
         SMSG_PLAYER_NOTIFY_MAPINFO,
         SMSG_PLAYER_FAME_BLACKSMITH,
+        SMSG_PLAYER_FAME_ALCHEMIST,
         0
     };
     handledMessages = _messages;
@@ -154,6 +155,10 @@ void PlayerHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_PLAYER_FAME_BLACKSMITH:
             processPlayerFameBlacksmith(msg);
+            break;
+
+        case SMSG_PLAYER_FAME_ALCHEMIST:
+            processPlayerFameAlchemist(msg);
             break;
 
         default:
@@ -531,6 +536,13 @@ void PlayerHandler::processNotifyMapInfo(Net::MessageIn &msg)
 }
 
 void PlayerHandler::processPlayerFameBlacksmith(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+    msg.readInt32("points");
+    msg.readInt32("total points");
+}
+
+void PlayerHandler::processPlayerFameAlchemist(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
     msg.readInt32("points");
