@@ -232,6 +232,7 @@
 // Remove item/equip from storage
 #define SMSG_PLAYER_STORAGE_REMOVE   0x00f6
 #define SMSG_PLAYER_STORAGE_CLOSE    0x00f8 /**< Storage access closed */
+#define SMSG_PLAYER_STORAGE_PASSWORD 0x023a
 
 #define SMSG_ADMIN_KICK_ACK          0x00cd
 #define SMSG_ADMIN_GET_LOGIN_ACK     0x01e0
