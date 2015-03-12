@@ -129,6 +129,7 @@ BeingHandler::BeingHandler(const bool enableSync) :
         SMSG_BLACKSMITH_RANKS_LIST,
         SMSG_ALCHEMIST_RANKS_LIST,
         SMSG_TAEKWON_RANKS_LIST,
+        SMSG_PK_RANKS_LIST,
         0
     };
     handledMessages = _messages;
@@ -371,6 +372,10 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_TAEKWON_RANKS_LIST:
             processTaekwonRanksList(msg);
+            break;
+
+        case SMSG_PK_RANKS_LIST:
+            processPkRanksList(msg);
             break;
 
         default:
@@ -1361,6 +1366,16 @@ void BeingHandler::processAlchemistRanksList(Net::MessageIn &msg)
 }
 
 void BeingHandler::processTaekwonRanksList(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+    // +++ here need window with rank tables.
+    for (int f = 0; f < 10; f ++)
+        msg.readString(24, "name");
+    for (int f = 0; f < 10; f ++)
+        msg.readInt32("points");
+}
+
+void BeingHandler::processPkRanksList(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
     // +++ here need window with rank tables.
