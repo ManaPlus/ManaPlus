@@ -131,6 +131,7 @@ BeingHandler::BeingHandler(const bool enableSync) :
         SMSG_TAEKWON_RANKS_LIST,
         SMSG_PK_RANKS_LIST,
         SMSG_GLADIATOR_FEEL_REQUEST,
+        SMSG_BOSS_MAP_INFO,
         0
     };
     handledMessages = _messages;
@@ -381,6 +382,10 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_GLADIATOR_FEEL_REQUEST:
             processGladiatorFeelRequest(msg);
+            break;
+
+        case SMSG_BOSS_MAP_INFO:
+            processBossMapInfo(msg);
             break;
 
         default:
@@ -1828,6 +1833,20 @@ void BeingHandler::processGladiatorFeelRequest(Net::MessageIn &msg)
     UNIMPLIMENTEDPACKET;
 
     msg.readUInt8("which");
+}
+
+void BeingHandler::processBossMapInfo(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+
+    msg.readUInt8("info type");
+    msg.readInt32("x");
+    msg.readInt32("y");
+    msg.readInt16("min hours");
+    msg.readInt16("min minutes");
+    msg.readInt16("max hours");
+    msg.readInt16("max minutes");
+    msg.readString(24, "monster name");  // really can be used 51 byte?
 }
 
 }  // namespace EAthena
