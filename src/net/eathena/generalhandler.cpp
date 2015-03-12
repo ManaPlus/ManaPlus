@@ -57,6 +57,7 @@
 #include "net/eathena/itemhandler.h"
 #include "net/eathena/loginhandler.h"
 #include "net/eathena/mailhandler.h"
+#include "net/eathena/maphandler.h"
 #include "net/eathena/markethandler.h"
 #include "net/eathena/mercenaryhandler.h"
 #include "net/eathena/network.h"
@@ -117,6 +118,7 @@ GeneralHandler::GeneralHandler() :
     mHomunculusHandler(new HomunculusHandler),
     mFriendsHandler(new FriendsHandler),
     mElementalHandler(new ElementalHandler),
+    mMapHandler(new MarketHandler),
     mMarketHandler(new MarketHandler),
     mVendingHandler(new VendingHandler),
     mSearchStoreHandler(new SearchStoreHandler)
@@ -307,6 +309,7 @@ void GeneralHandler::load()
     mNetwork->registerHandler(mHomunculusHandler);
     mNetwork->registerHandler(mFriendsHandler);
     mNetwork->registerHandler(mElementalHandler);
+    mNetwork->registerHandler(mMapHandler);
     mNetwork->registerHandler(mMarketHandler);
     mNetwork->registerHandler(mVendingHandler);
     mNetwork->registerHandler(mSearchStoreHandler);

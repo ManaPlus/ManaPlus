@@ -50,6 +50,7 @@ namespace Net
     class FriendsHandler;
     class HomunculusHandler;
     class MailHandler;
+    class MapHandler;
     class MarketHandler;
     class MercenaryHandler;
     class SearchStoreHandler;
@@ -101,6 +102,7 @@ Net::FamilyHandler *familyHandler = nullptr;
 Net::FriendsHandler *friendsHandler = nullptr;
 Net::HomunculusHandler *homunculusHandler = nullptr;
 Net::MailHandler *mailHandler = nullptr;
+Net::MapHandler *mapHandler = nullptr;
 Net::MarketHandler *marketHandler = nullptr;
 Net::MercenaryHandler *mercenaryHandler = nullptr;
 Net::SearchStoreHandler *searchStoreHandler = nullptr;

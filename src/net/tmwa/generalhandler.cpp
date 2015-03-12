@@ -55,6 +55,7 @@
 #include "net/tmwa/itemhandler.h"
 #include "net/tmwa/loginhandler.h"
 #include "net/tmwa/mailhandler.h"
+#include "net/tmwa/maphandler.h"
 #include "net/tmwa/markethandler.h"
 #include "net/tmwa/mercenaryhandler.h"
 #include "net/tmwa/network.h"
@@ -115,6 +116,7 @@ GeneralHandler::GeneralHandler() :
     mFriendsHandler(new FriendsHandler),
     mHomunculusHandler(new HomunculusHandler),
     mMailHandler(new MailHandler),
+    mMapHandler(new MarketHandler),
     mMarketHandler(new MarketHandler),
     mMercenaryHandler(new MercenaryHandler),
     mSearchStoreHandler(new SearchStoreHandler),
@@ -247,6 +249,7 @@ void GeneralHandler::load()
     mNetwork->registerHandler(mFriendsHandler);
     mNetwork->registerHandler(mHomunculusHandler);
     mNetwork->registerHandler(mMailHandler);
+    mNetwork->registerHandler(mMapHandler);
     mNetwork->registerHandler(mMarketHandler);
     mNetwork->registerHandler(mMercenaryHandler);
     mNetwork->registerHandler(mSearchStoreHandler);

@@ -91,6 +91,7 @@ class GeneralHandler final : public MessageHandler,
         MessageHandlerPtr mFriendsHandler;
         MessageHandlerPtr mHomunculusHandler;
         MessageHandlerPtr mMailHandler;
+        MessageHandlerPtr mMapHandler;
         MessageHandlerPtr mMarketHandler;
         MessageHandlerPtr mMercenaryHandler;
         MessageHandlerPtr mSearchStoreHandler;
