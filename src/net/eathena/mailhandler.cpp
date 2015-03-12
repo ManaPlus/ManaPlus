@@ -40,6 +40,7 @@ MailHandler::MailHandler() :
     static const uint16_t _messages[] =
     {
         SMSG_MAIL_OPEN_WINDOW,
+        SMSG_MAIL_MAILS_LIST,
         0
     };
     handledMessages = _messages;
@@ -52,6 +53,10 @@ void MailHandler::handleMessage(Net::MessageIn &msg)
     {
         case SMSG_MAIL_OPEN_WINDOW:
             processMailOpen(msg);
+            break;
+
+        case SMSG_MAIL_MAILS_LIST:
+            processMailList(msg);
             break;
 
         default:
@@ -74,6 +79,24 @@ void MailHandler::processMailOpen(Net::MessageIn &msg)
         default:
             logger->log("unknown mail window open flag: %d", flag);
             break;
+    }
+}
+
+void MailHandler::processMailList(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+
+    const int count = (msg.readInt16("len") - 8) / 73;
+    const int amount = msg.readInt32("amount");
+    if (count != amount)
+        logger->log("error: wrong mails count");
+    for (int f = 0; f < count; f ++)
+    {
+        msg.readInt32("message id");
+        msg.readString(40, "title");
+        msg.readUInt8("unread flag");
+        msg.readString(24, "sender name");
+        msg.readInt32("time stamp");
     }
 }
 
