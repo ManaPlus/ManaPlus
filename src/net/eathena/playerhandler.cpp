@@ -69,6 +69,7 @@ PlayerHandler::PlayerHandler() :
         SMSG_PLAYER_UPGRADE_MESSAGE,
         SMSG_PLAYER_FAME_TAEKWON,
         SMSG_PLAYER_READ_BOOK,
+        SMSG_PLAYER_EQUIP_TICK_ACK,
         0
     };
     handledMessages = _messages;
@@ -174,6 +175,10 @@ void PlayerHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_PLAYER_READ_BOOK:
             processPlayerReadBook(msg);
+            break;
+
+        case SMSG_PLAYER_EQUIP_TICK_ACK:
+            processPlayerEquipTickAck(msg);
             break;
 
         default:
@@ -583,6 +588,13 @@ void PlayerHandler::processPlayerReadBook(Net::MessageIn &msg)
     UNIMPLIMENTEDPACKET;
     msg.readInt32("book id");
     msg.readInt32("page");
+}
+
+void PlayerHandler::processPlayerEquipTickAck(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+    msg.readInt32("unused");
+    msg.readInt32("flag");
 }
 
 }  // namespace EAthena
