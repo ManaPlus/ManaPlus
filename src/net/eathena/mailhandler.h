@@ -66,6 +66,8 @@ class MailHandler final : public MessageHandler, public Net::MailHandler
         static void processGetAttachment(Net::MessageIn &msg);
 
         static void processSendMailAck(Net::MessageIn &msg);
+
+        static void processNewMail(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
