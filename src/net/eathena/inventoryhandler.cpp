@@ -109,6 +109,7 @@ InventoryHandler::InventoryHandler() :
         SMSG_PLAYER_REFINE,
         SMSG_PLAYER_REPAIR_LIST,
         SMSG_PLAYER_REPAIR_EFFECT,
+        SMSG_PLAYER_REFINE_LIST,
         0
     };
     handledMessages = _messages;
@@ -251,6 +252,10 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_PLAYER_REPAIR_EFFECT:
             processPlayerRepairEffect(msg);
+            break;
+
+        case SMSG_PLAYER_REFINE_LIST:
+            processPlayerRefineList(msg);
             break;
 
         default:
@@ -1018,6 +1023,23 @@ void InventoryHandler::processPlayerRepairEffect(Net::MessageIn &msg)
 
     msg.readInt16("item index");
     msg.readUInt8("flag");
+}
+
+void InventoryHandler::processPlayerRefineList(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+
+    const int count = (msg.readInt16("len") - 4) / 13;
+
+    for (int f = 0; f < count; f ++)
+    {
+        msg.readInt16("item index");
+        msg.readInt16("item id");
+        msg.readUInt8("refine");
+        for (int d = 0; d < 4; d ++)
+            msg.readInt16("card");
+    }
+    menu = MenuType::WeaponeRefine;
 }
 
 }  // namespace EAthena
