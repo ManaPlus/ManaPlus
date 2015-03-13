@@ -38,7 +38,7 @@ MapHandler::MapHandler() :
     mapHandler = this;
 }
 
-void MapHandler::handleMessage(Net::MessageIn &msg)
+void MapHandler::handleMessage(Net::MessageIn &msg A_UNUSED)
 {
 }
 
