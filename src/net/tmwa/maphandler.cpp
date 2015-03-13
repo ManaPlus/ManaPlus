@@ -20,13 +20,6 @@
 
 #include "net/tmwa/maphandler.h"
 
-#include "logger.h"
-
-#include "net/ea/eaprotocol.h"
-
-#include "net/tmwa/messageout.h"
-#include "net/tmwa/protocol.h"
-
 #include "debug.h"
 
 extern Net::MapHandler *mapHandler;
@@ -47,11 +40,6 @@ MapHandler::MapHandler() :
 
 void MapHandler::handleMessage(Net::MessageIn &msg)
 {
-    switch (msg.getId())
-    {
-        default:
-            break;
-    }
 }
 
 }  // namespace TmwAthena

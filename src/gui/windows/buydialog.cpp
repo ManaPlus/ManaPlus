@@ -22,7 +22,9 @@
 
 #include "gui/windows/buydialog.h"
 
+#ifdef EATHENA_SUPPORT
 #include "actormanager.h"
+#endif
 #include "configuration.h"
 #include "shopitem.h"
 #include "units.h"
@@ -46,11 +48,13 @@
 
 #include "net/adminhandler.h"
 #include "net/buysellhandler.h"
+#ifdef EATHENA_SUPPORT
 #include "net/cashshophandler.h"
 #include "net/markethandler.h"
-#include "net/npchandler.h"
 #include "net/serverfeatures.h"
 #include "net/vendinghandler.h"
+#endif
+#include "net/npchandler.h"
 
 #include "resources/iteminfo.h"
 

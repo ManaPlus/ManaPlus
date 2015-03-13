@@ -473,7 +473,7 @@ void SkillHandler::processSkillAutoSpells(Net::MessageIn &msg)
     for (int f = 0; f < 7; f ++)
         msg.readInt32("skill id");
 
-    menu = MenuType::AutoSpell;;
+    menu = MenuType::AutoSpell;
 }
 
 void SkillHandler::processSkillDevotionEffect(Net::MessageIn &msg)

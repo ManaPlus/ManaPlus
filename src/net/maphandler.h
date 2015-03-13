@@ -42,4 +42,4 @@ class MapHandler notfinal
 extern Net::MapHandler *mapHandler;
 
 #endif  // EATHENA_SUPPORT
-#endif  // NET_MAPTHANDLER_H
+#endif  // NET_MAPHANDLER_H

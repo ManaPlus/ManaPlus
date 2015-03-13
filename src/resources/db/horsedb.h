@@ -27,8 +27,6 @@
 
 #include "localconsts.h"
 
-class AnimatedSprite;
-
 struct HorseInfo;
 
 typedef std::map<int, HorseInfo*> HorseInfos;

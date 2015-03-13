@@ -22,7 +22,9 @@
 
 #include "actormanager.h"
 #include "configuration.h"
+#ifdef EATHENA_SUPPORT
 #include "emoteshortcut.h"
+#endif
 #include "game.h"
 #include "inventory.h"
 #include "item.h"
@@ -46,7 +48,9 @@
 #include "net/adminhandler.h"
 #include "net/chathandler.h"
 #include "net/guildhandler.h"
+#ifdef EATHENA_SUPPORT
 #include "net/homunculushandler.h"
+#endif
 #include "net/partyhandler.h"
 #include "net/serverfeatures.h"
 

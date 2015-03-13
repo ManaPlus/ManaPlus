@@ -29,7 +29,6 @@
 
 namespace TmwAthena
 {
-class MessageOut;
 
 class MapHandler final : public MessageHandler, public Net::MapHandler
 {

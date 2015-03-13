@@ -868,7 +868,7 @@ void InventoryHandler::processCartInfo(Net::MessageIn &msg)
     mCartItems.clear();
 }
 
-void InventoryHandler::processCartRemove(Net::MessageIn &msg A_UNUSED)
+void InventoryHandler::processCartRemove(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
     // +++ need close or clear cart?

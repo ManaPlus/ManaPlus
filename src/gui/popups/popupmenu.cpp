@@ -66,8 +66,10 @@
 #include "net/beinghandler.h"
 #include "net/chathandler.h"
 #include "net/guildhandler.h"
+#ifdef EATHENA_SUPPORT
 #include "net/homunculushandler.h"
 #include "net/mercenaryhandler.h"
+#endif
 #include "net/pethandler.h"
 #include "net/serverfeatures.h"
 

@@ -25,7 +25,6 @@
 #include "actormanager.h"
 #include "effectmanager.h"
 #include "game.h"
-#include "guildmanager.h"
 
 #include "being/localplayer.h"
 #include "being/mercenaryinfo.h"

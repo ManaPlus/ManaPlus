@@ -363,7 +363,7 @@ void Logger::unimplimented(const int id)
         return;
 
     const std::string str = strprintf("Unimplimented packet: %d (0x%x)",
-        id, id);
+        id, static_cast<unsigned int>(id));
     DebugMessageListener::distributeEvent(str);
     log(str);
 }

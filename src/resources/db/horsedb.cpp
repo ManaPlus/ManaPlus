@@ -22,7 +22,6 @@
 #include "resources/db/horsedb.h"
 
 #include "animatedsprite.h"
-#include "client.h"
 #include "configuration.h"
 #include "logger.h"
 

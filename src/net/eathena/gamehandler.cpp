@@ -210,7 +210,7 @@ void GameHandler::processMapLogin(Net::MessageIn &msg)
 
 void GameHandler::processServerTick(Net::MessageIn &msg)
 {
-    //ignoring
+    // ignoring
     msg.readInt32("tick");
 }
 

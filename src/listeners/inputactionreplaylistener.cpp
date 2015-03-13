@@ -31,7 +31,7 @@ InputActionReplayListener inputActionReplayListener;
 InputActionReplayListener::InputActionReplayListener() :
     ActionListener(),
     mDialog(nullptr),
-    mAction()
+    mAction(InputAction::NO_VALUE)
 {
 }
 

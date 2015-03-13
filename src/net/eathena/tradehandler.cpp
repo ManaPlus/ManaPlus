@@ -264,7 +264,7 @@ void TradeHandler::processTradeItemAddResponse(Net::MessageIn &msg)
     }
 }
 
-void TradeHandler::processTradeUndo(Net::MessageIn &msg A_UNUSED)
+void TradeHandler::processTradeUndo(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
     // +++ here need clear trade window from partner side?

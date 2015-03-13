@@ -78,12 +78,14 @@
 #include "net/gamehandler.h"
 #include "net/inventoryhandler.h"
 #include "net/ipc.h"
+#ifdef EATHENA_SUPPORT
 #include "net/mercenaryhandler.h"
+#include "net/vendinghandler.h"
+#endif
 #include "net/npchandler.h"
 #include "net/playerhandler.h"
 #include "net/serverfeatures.h"
 #include "net/uploadcharinfo.h"
-#include "net/vendinghandler.h"
 #include "net/tradehandler.h"
 
 #include "resources/iteminfo.h"

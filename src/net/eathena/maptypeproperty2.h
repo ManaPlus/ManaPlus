@@ -21,22 +21,29 @@
 #ifndef NET_EATHENA_MAPTYPEPROPERTY2_H
 #define NET_EATHENA_MAPTYPEPROPERTY2_H
 
+#if defined(__GXX_EXPERIMENTAL_CXX0X__)
+#include <cstdint>
+#else
+#include <stdint.h>
+#endif
+
 namespace EAthena
 {
     struct MapTypeProperty2Bits final
     {
-        unsigned int party             : 1;  // allow attack party members (PvP)
-        unsigned int guild             : 1;  // allow attack guild members (GvG)
-        unsigned int siege             : 1;  // show emblem in GvG (WoE castle)
-        unsigned int mineffect         : 1;  // mine effect?
-        unsigned int nolockon          : 1;  // unknown
-        unsigned int countpk           : 1;  // show PvP counter
-        unsigned int nopartyformation  : 1;  // prevent party creation/modification
-        unsigned int bg                : 1;  // is on battle ground
-        unsigned int noitemconsumption : 1;  // unused
-        unsigned int usecart           : 1;  // unused
-        unsigned int summonstarmiracle : 1;  // unused
-        unsigned int SpareBits         : 15; // unused bits
+        uint32_t party             : 1;   // allow attack party members (PvP)
+        uint32_t guild             : 1;   // allow attack guild members (GvG)
+        uint32_t siege             : 1;   // show emblem in GvG (WoE castle)
+        uint32_t mineffect         : 1;   // mine effect?
+        uint32_t nolockon          : 1;   // unknown
+        uint32_t countpk           : 1;   // show PvP counter
+        uint32_t nopartyformation  : 1;   // prevent party creation/
+                                          // modification
+        uint32_t bg                : 1;   // is on battle ground
+        uint32_t noitemconsumption : 1;   // unused
+        uint32_t usecart           : 1;   // unused
+        uint32_t summonstarmiracle : 1;   // unused
+        uint32_t SpareBits         : 15;  // unused bits
     }  __attribute__((packed));
 
     union MapTypeProperty2 final

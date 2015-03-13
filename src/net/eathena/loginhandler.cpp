@@ -241,7 +241,7 @@ void LoginHandler::processLoginError2(Net::MessageIn &msg)
     client->setState(STATE_ERROR);
 }
 
-void LoginHandler::processUpdateHost2(Net::MessageIn &msg A_UNUSED)
+void LoginHandler::processUpdateHost2(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
 }
