@@ -1,3 +1,15 @@
+2015-03-14 New release 1.5.3.14
+fix: skills display is some cases.
+fix: donw request warp names (hercules).
+fix: show chat message from hidden player (hercules).
+fix: dont try enable guild bot on servers with native guilds.
+fix: hair color after reordering sprites (hercules).
+fix: dont read servers list url from configuration.
+fix: show pvp/gvg map modes (hercules).
+add: item links with empty item name.
+add: ride support (hercules).
+add: logging unimplimented packets.
+
 2015-02-28 New release 1.5.2.28
 fix: dont show empty tooltips in inventory.
 fix: drop/store button in inventory.
