@@ -1,6 +1,6 @@
 # en#
 # Translators:
-# 0x0Eddine <salahbubuli44@gmail.com>, 2012
+# 0x0Eddine <salahbubuli44@gmail.com>, 2012,2015
 # Maria <mtorres2022@gmail.com>, 2012
 # Maria <mtorres2022@gmail.com>, 2012
 # 0x0Eddine <salahbubuli44@gmail.com>, 2012
@@ -10,8 +10,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2015-02-14 14:31+0000\n"
-"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"PO-Revision-Date: 2015-03-12 16:49+0000\n"
+"Last-Translator: 0x0Eddine <salahbubuli44@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/manaplus/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -57,7 +57,7 @@ msgid "\"Quests window\""
 msgstr "\"Ventana de Misiones\""
 
 msgid "/firehomunculus - fire homunculus."
-msgstr ""
+msgstr "/firehomunculus - quemar homúnculo"
 
 msgid "\"Quick drop window\""
 msgstr "\"Ventana de Quick drop\""
@@ -437,7 +437,7 @@ msgid ""
 msgstr "Puedes ocultar/mostrar barras y botones haciéndole clic derecho y seleccionarlo \nen el menú."
 
 msgid "/petmoveleft - move pet one tile left."
-msgstr ""
+msgstr "/petmoveleft - mover tu mascota hacia la izquierda."
 
 msgid "\"Enable / disable away mode\""
 msgstr "\"Habilitar / deshabilitar modo AFK (lejos del teclado)\""
@@ -472,7 +472,7 @@ msgid "\"Close chat tab\""
 msgstr "\"Cerrar pestaña del chat\""
 
 msgid "/petdirectright - rorate pet right."
-msgstr ""
+msgstr "/petdirectright - girar tu mascota hacia la derecha."
 
 msgid "\"Target player\""
 msgstr "\"Seleccionar jugador\""
@@ -505,7 +505,7 @@ msgid "About current server"
 msgstr "Acerca del servidor actual"
 
 msgid "/petaistop - disable pet ai."
-msgstr ""
+msgstr "/petaistop - desactivar inteligencia artificial de la mascota."
 
 msgid "\"Quick heal target or self\""
 msgstr "\"Curar rápidamente al objetivo o a sí mismo\""
@@ -514,7 +514,7 @@ msgid "Search error"
 msgstr "Error en la búsqueda"
 
 msgid "/targetpet - target pet."
-msgstr ""
+msgstr "/targetpet - seleccionar como objetivo la mascota."
 
 msgid "\"Outfit shortcut 9\""
 msgstr "\"Atajo para vestimenta 9\""
@@ -656,7 +656,7 @@ msgid "Visit IRC channel:"
 msgstr "Visita el canal IRC:"
 
 msgid "/petdirectup - rotate pet up."
-msgstr ""
+msgstr "/petdirectup - girar tu mascota hacia arriba."
 
 msgid "\"Target & attack\""
 msgstr "\"Seleccionar y Atacar\""
@@ -713,7 +713,7 @@ msgid "/ignore NICK - add nick to ignore list."
 msgstr "/ignore NICK - agregar a NICK a la lista de ignorados."
 
 msgid "/targetmercenary - target closest mercenary."
-msgstr ""
+msgstr "/targetmercenary - seleccionar como objetivo al mercenario más cercano."
 
 msgid "\"Attack\""
 msgstr "\"Atacar\""
@@ -722,13 +722,13 @@ msgid "/magicattack - attack target with magic."
 msgstr "/magicattack - Ataca al objetivo con magia."
 
 msgid "/petdirectdown - rotate pet down."
-msgstr ""
+msgstr "/petdirectdown - girar tu mascota hacia abajo."
 
 msgid "For ManaPlus Online support:"
 msgstr "Para ayuda de ManaPlus Online:"
 
 msgid "/petdirectleft - rotate pet left."
-msgstr ""
+msgstr "/petdirectleft - girar mascota hacia la izquierda."
 
 msgid "\"Set direction right\""
 msgstr "\"Voltear a la derecha\""
@@ -770,7 +770,7 @@ msgid "\"Emote shortcut 5\""
 msgstr "\"Atajo para emoticono 5\""
 
 msgid "/petmoveright - move pet one tile right."
-msgstr ""
+msgstr "/petmoveright - mover tu mascota hacia la derecha."
 
 msgid "/open URL - open url in browser."
 msgstr "/open URL - Abre la url en un explorador."
@@ -846,7 +846,7 @@ msgid ""
 msgstr " - ##2neutral##9:  En lo que concierne al juego, esto es lo mismo que no tener\n   al jugador en la lista: éste podrá conversar contigo, pero sólo podrá realizar\n   intercambios o susurrar si tienes esta opción habilitada para todos."
 
 msgid "/petaistart - enable pet ai."
-msgstr ""
+msgstr "/petaistart - activar la inteligencia artificial de la mascota."
 
 msgid "/url URL - insert url into chat."
 msgstr "/url URL - Insertar la URL en el chat."
@@ -897,7 +897,7 @@ msgid "\"Emote shortcut 11\""
 msgstr "\"Atajo para emoticono 11\""
 
 msgid "/petmoveup - move pet one tile up."
-msgstr ""
+msgstr "/petmoveup - mover tu mascota hacia arriba."
 
 msgid "Pets"
 msgstr "Mascotas"
@@ -1088,7 +1088,7 @@ msgid "/leave - leave the party you are in."
 msgstr "/leave - Dejar el grupo en el que estás."
 
 msgid "/petmovedown - move pet one tile down."
-msgstr ""
+msgstr "/petmovedown - mover tu mascota hacia abajo."
 
 msgid "\"Status window\""
 msgstr "\"Ventana de estado\""
@@ -1170,7 +1170,7 @@ msgid "\"Quick drop N items from 0 slot\""
 msgstr "\"Dejar caer rápidamente N artículos del la ranura 0\""
 
 msgid "/mercenaryfire - fire mercenary."
-msgstr ""
+msgstr "/mercenaryfire - quemar el mercenario."
 
 msgid "/disablehighlight - disable highlight in current tab."
 msgstr "/disablehighlight - Deshabilitar resaltado en la estaña actual."
