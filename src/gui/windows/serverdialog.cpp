@@ -25,18 +25,11 @@
 #include "chatlogger.h"
 #include "client.h"
 #include "configuration.h"
-#include "main.h"
 #include "settings.h"
 
 #include "input/inputaction.h"
 
 #include "net/download.h"
-
-#include "gui/gui.h"
-
-#include "gui/fonts/font.h"
-
-#include "gui/models/serverslistmodel.h"
 
 #include "gui/widgets/checkbox.h"
 #include "gui/widgets/desktop.h"
@@ -46,15 +39,12 @@
 #include "gui/widgets/button.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layout.h"
-#include "gui/widgets/listbox.h"
 #include "gui/widgets/serverslistbox.h"
 #include "gui/widgets/scrollarea.h"
 
 #include "utils/delete2.h"
 #include "utils/gettext.h"
 #include "utils/langs.h"
-
-#include <string>
 
 #include "debug.h"
 

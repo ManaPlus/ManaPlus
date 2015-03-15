@@ -29,7 +29,6 @@
 #include "utils/stringutils.h"
 
 #include <iostream>
-#include <sstream>
 
 #ifdef WIN32
 #include <windows.h>

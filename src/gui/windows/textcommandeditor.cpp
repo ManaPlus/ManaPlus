@@ -22,7 +22,6 @@
 
 #include "gui/windows/textcommandeditor.h"
 
-#include "main.h"
 #include "spellmanager.h"
 
 #include "input/keyboardconfig.h"

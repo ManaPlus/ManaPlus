@@ -23,7 +23,6 @@
 #include "listeners/guitableactionlistener.h"
 
 #include "gui/widgets/guitable.h"
-#include "gui/widgets/widget.h"
 
 #include "debug.h"
 

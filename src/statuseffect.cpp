@@ -24,7 +24,6 @@
 
 #include "animatedsprite.h"
 #include "configuration.h"
-#include "logger.h"
 #include "soundmanager.h"
 
 #include "gui/widgets/tabs/chat/chattab.h"
@@ -33,8 +32,6 @@
 
 #include "resources/beingcommon.h"
 #include "resources/spriteaction.h"
-
-#include <map>
 
 #include "debug.h"
 

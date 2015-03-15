@@ -22,11 +22,15 @@
 
 #include "actions/actiondef.h"
 
+#ifdef EATHENA_SUPPORT
 #include "being/localplayer.h"
+#endif
 
 #include "gui/dialogsmanager.h"
 
+#ifdef EATHENA_SUPPORT
 #include "gui/windows/bankwindow.h"
+#endif
 #include "gui/windows/skilldialog.h"
 #include "gui/windows/socialwindow.h"
 #include "gui/windows/statuswindow.h"
@@ -48,9 +52,10 @@
 #include "gui/windows/updaterwindow.h"
 
 #include "gui/widgets/tabs/chat/chattab.h"
-#include "gui/widgets/tabs/chat/chattabtype.h"
 
+#ifdef EATHENA_SUPPORT
 #include "net/serverfeatures.h"
+#endif
 
 #include "debug.h"
 

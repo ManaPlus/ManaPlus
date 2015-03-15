@@ -23,7 +23,6 @@
 #include "resources/map/maplayer.h"
 
 #include "configuration.h"
-#include "graphicsvertexes.h"
 
 #ifndef USE_OPENGL
 #include "render/graphics.h"
@@ -33,15 +32,12 @@
 
 #include "render/graphics.h"
 
-#include "resources/image.h"
 #include "resources/mapitemtype.h"
 
 #include "resources/map/mapitem.h"
 #include "resources/map/maprowvertexes.h"
 #include "resources/map/maptype.h"
 #include "resources/map/speciallayer.h"
-
-#include "utils/dtor.h"
 
 #include "debug.h"
 

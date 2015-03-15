@@ -30,9 +30,6 @@
 
 #include <SDL_endian.h>
 
-#include <cstring>
-#include <string>
-
 #include "debug.h"
 
 namespace EAthena

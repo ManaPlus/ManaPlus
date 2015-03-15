@@ -22,8 +22,6 @@
 
 #include "particle/textparticle.h"
 
-#include "render/graphics.h"
-
 #include "gui/theme.h"
 
 #include "gui/fonts/font.h"

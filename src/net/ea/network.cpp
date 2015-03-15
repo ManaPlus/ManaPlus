@@ -28,8 +28,6 @@
 #include "utils/gettext.h"
 #include "utils/sdlhelper.h"
 
-#include <sstream>
-
 #include "debug.h"
 
 extern unsigned int mLastHost;

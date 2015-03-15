@@ -76,7 +76,6 @@
 
 #include "gui/gui.h"
 #include "gui/skin.h"
-#include "gui/rect.h"
 
 #include "gui/fonts/font.h"
 

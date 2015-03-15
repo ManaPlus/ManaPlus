@@ -42,7 +42,6 @@
 
 #include "enums/net/packettypes.h"
 
-#include "particle/particle.h"
 #include "particle/particleinfo.h"
 
 #include "gui/gui.h"

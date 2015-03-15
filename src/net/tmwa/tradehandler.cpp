@@ -29,8 +29,6 @@
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
 
-#include "enums/simpletypes.h"
-
 #include "gui/windows/confirmdialog.h"
 #include "gui/windows/tradewindow.h"
 

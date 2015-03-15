@@ -34,8 +34,6 @@
 #include "resources/imageset.h"
 #include "resources/resourcemanager.h"
 
-#include <cmath>
-
 #include "debug.h"
 
 static const float SIN45 = 0.707106781F;

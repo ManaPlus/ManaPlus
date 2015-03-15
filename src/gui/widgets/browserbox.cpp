@@ -45,10 +45,6 @@
 #include "utils/timer.h"
 #include "utils/translation/podict.h"
 
-#include "gui/cliprect.h"
-
-#include "render/graphics.h"
-
 #include <algorithm>
 
 #include "debug.h"

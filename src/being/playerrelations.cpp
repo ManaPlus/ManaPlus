@@ -33,8 +33,6 @@
 
 #include "listeners/playerrelationslistener.h"
 
-#include <algorithm>
-
 #include "debug.h"
 
 typedef std::map<std::string, PlayerRelation *> PlayerRelations;

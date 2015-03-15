@@ -25,15 +25,15 @@
 #include "dropshortcut.h"
 #include "emoteshortcut.h"
 #include "game.h"
+#ifdef USE_OPENGL
 #include "graphicsmanager.h"
-#include "inventory.h"
+#endif
 #include "itemshortcut.h"
 #include "spellmanager.h"
 
 #include "actions/actiondef.h"
 
 #include "being/localplayer.h"
-#include "being/playerinfo.h"
 
 #include "enums/being/attributes.h"
 
@@ -64,14 +64,15 @@
 
 #include "gui/widgets/tabs/chat/chattab.h"
 
-#include "render/graphics.h"
 #if defined USE_OPENGL
 #include "render/normalopenglgraphics.h"
 #endif
 
 #include "net/adminhandler.h"
 #include "net/beinghandler.h"
+#ifdef EATHENA_SUPPORT
 #include "net/buyingstorehandler.h"
+#endif
 #include "net/buysellhandler.h"
 #include "net/chathandler.h"
 #include "net/download.h"
@@ -91,8 +92,6 @@
 #include "resources/iteminfo.h"
 #include "resources/resourcemanager.h"
 #include "resources/skillconsts.h"
-
-#include "resources/db/itemdb.h"
 
 #include "utils/chatutils.h"
 #include "utils/delete2.h"

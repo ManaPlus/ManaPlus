@@ -21,8 +21,9 @@
 #include "utils/chatutils.h"
 
 #include "actormanager.h"
-#include "guild.h"
+#ifdef TMWA_SUPPORT
 #include "guildmanager.h"
+#endif
 #include "party.h"
 
 #include "being/localplayer.h"

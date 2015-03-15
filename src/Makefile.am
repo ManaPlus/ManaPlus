@@ -5,6 +5,9 @@ bin_PROGRAMS = manaplus dyecmd
 manaplus_CXXFLAGS = -DPKG_DATADIR=\""$(pkgdatadir)/"\"      \
 		-DLOCALEDIR=\""$(localedir)"\"           \
 		-Wall
+dyecmd_CXXFLAGS = -DPKG_DATADIR=\""$(pkgdatadir)/"\"      \
+		-DLOCALEDIR=\""$(localedir)"\"           \
+		-Wall
 
 if ENABLE_PORTABLE
 manaplus_CXXFLAGS += -DENABLE_PORTABLE
@@ -25,7 +28,7 @@ else
 manaplus_SOURCES =
 endif
 
-dyecmd_CXXFLAGS = -DDYECMD
+dyecmd_CXXFLAGS += -DDYECMD
 dyecmd_SOURCES = gui/cliprect.cpp \
 	      gui/color.cpp \
 	      gui/rect.cpp \

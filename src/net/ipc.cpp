@@ -20,8 +20,6 @@
 
 #include "net/ipc.h"
 
-#include "logger.h"
-
 #include "gui/windows/chatwindow.h"
 
 #include "utils/delete2.h"

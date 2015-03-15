@@ -31,7 +31,9 @@
 #include "input/inputaction.h"
 
 #include "listeners/charrenamelistener.h"
+#ifdef EATHENA_SUPPORT
 #include "listeners/pincodelistener.h"
+#endif
 
 #include "enums/gui/dialogtype.h"
 
@@ -49,7 +51,6 @@
 #include "gui/widgets/containerplacer.h"
 
 #include "net/character.h"
-#include "net/logindata.h"
 #include "net/loginhandler.h"
 #include "net/registrationoptions.h"
 #include "net/serverfeatures.h"

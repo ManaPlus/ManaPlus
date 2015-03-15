@@ -36,8 +36,6 @@
 #include "utils/dtor.h"
 #include "utils/mathutils.h"
 
-#include <cmath>
-
 #include "debug.h"
 
 Particle *particleEngine = nullptr;

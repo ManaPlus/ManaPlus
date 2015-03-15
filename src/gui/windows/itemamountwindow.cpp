@@ -22,8 +22,6 @@
 
 #include "gui/windows/itemamountwindow.h"
 
-#include "item.h"
-
 #include "being/playerinfo.h"
 
 #include "input/keyboardconfig.h"

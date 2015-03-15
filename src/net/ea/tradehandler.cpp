@@ -25,9 +25,7 @@
 #include "notifymanager.h"
 
 #include "being/playerinfo.h"
-#include "being/playerrelations.h"
 
-#include "gui/windows/confirmdialog.h"
 #include "gui/windows/tradewindow.h"
 
 #include "net/messagein.h"

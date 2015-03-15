@@ -24,10 +24,8 @@
 
 #include "logger.h"
 
-#include <cstdlib>
 #include <png.h>
 #include <SDL_video.h>
-#include <string>
 
 #include "debug.h"
 

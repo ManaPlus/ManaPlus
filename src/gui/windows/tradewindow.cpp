@@ -23,7 +23,6 @@
 #include "gui/windows/tradewindow.h"
 
 #include "configuration.h"
-#include "inventory.h"
 #include "item.h"
 #include "units.h"
 

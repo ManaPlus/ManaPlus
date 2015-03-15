@@ -26,7 +26,6 @@
 #include "actormanager.h"
 #endif
 #include "configuration.h"
-#include "shopitem.h"
 #include "units.h"
 
 #include "gui/windows/setupwindow.h"

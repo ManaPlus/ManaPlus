@@ -23,7 +23,6 @@
 #include "net/eathena/loginhandler.h"
 
 #include "client.h"
-#include "logger.h"
 
 #include "gui/windows/logindialog.h"
 

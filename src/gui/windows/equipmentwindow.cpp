@@ -25,10 +25,7 @@
 #include "configuration.h"
 #include "dragdrop.h"
 #include "graphicsvertexes.h"
-#include "inventory.h"
-#include "item.h"
 
-#include "being/being.h"
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 

@@ -36,8 +36,6 @@
 
 #include "gui/windows/shortcutwindow.h"
 
-#include "resources/image.h"
-
 #include "debug.h"
 
 SpellShortcutContainer::SpellShortcutContainer(Widget2 *const widget,

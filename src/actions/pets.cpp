@@ -34,7 +34,9 @@
 #include "listeners/inputactionreplaylistener.h"
 
 #include "net/chathandler.h"
+#ifdef TMWA_SUPPORT
 #include "net/net.h"
+#endif
 #include "net/pethandler.h"
 #include "net/serverfeatures.h"
 
@@ -61,10 +63,14 @@ static const Being *getPet()
         return *pets.begin();
     }
 #endif
+#ifdef EATHENA_SUPPORT
     const int id = PlayerInfo::getPetBeingId();
     if (!id)
         return nullptr;
     return actorManager->findBeing(id);
+#else
+    return nullptr;
+#endif
 }
 
 impHandler(commandEmotePet)

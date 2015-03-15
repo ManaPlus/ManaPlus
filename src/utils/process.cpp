@@ -20,9 +20,6 @@
 
 #include "utils/process.h"
 
-#include <cstdarg>
-#include <cstdio>
-
 #include <unistd.h>
 
 #include "localconsts.h"

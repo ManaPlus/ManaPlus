@@ -28,8 +28,6 @@
 
 #include "being/playerinfo.h"
 
-#include "enums/simpletypes.h"
-
 #include "gui/windows/tradewindow.h"
 
 #include "net/eathena/messageout.h"

@@ -24,15 +24,12 @@
 
 #include "configuration.h"
 #include "gamemodifiers.h"
-#include "inventory.h"
-#include "item.h"
 #include "settings.h"
 #include "units.h"
 
 #include "gui/windows/chatwindow.h"
 
 #include "being/localplayer.h"
-#include "being/playerinfo.h"
 
 #include "enums/being/attributes.h"
 
@@ -41,7 +38,6 @@
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/containerplacer.h"
-#include "gui/widgets/label.h"
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/layouttype.h"
 #include "gui/widgets/progressbar.h"

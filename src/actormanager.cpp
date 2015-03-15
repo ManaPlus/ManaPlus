@@ -24,10 +24,7 @@
 
 #include "configuration.h"
 #include "settings.h"
-#include "main.h"
 
-#include "being/localplayer.h"
-#include "being/playerinfo.h"
 #include "being/playerrelations.h"
 
 #include "enums/being/attributes.h"
@@ -60,7 +57,6 @@
 #include "resources/db/itemdb.h"
 
 #include <algorithm>
-#include <list>
 
 #include "debug.h"
 

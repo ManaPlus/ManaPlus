@@ -24,7 +24,6 @@
 
 #include "actormanager.h"
 #include "configuration.h"
-#include "inventory.h"
 #include "item.h"
 #include "settings.h"
 #include "soundconsts.h"

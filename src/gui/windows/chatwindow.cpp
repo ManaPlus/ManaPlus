@@ -23,7 +23,6 @@
 #include "gui/windows/chatwindow.h"
 
 #include "actormanager.h"
-#include "configuration.h"
 #include "game.h"
 #include "guild.h"
 #include "party.h"
@@ -48,7 +47,6 @@
 
 #include "gui/popups/popupmenu.h"
 
-#include "gui/windows/emotewindow.h"
 #include "gui/windows/setupwindow.h"
 #include "gui/windows/whoisonline.h"
 
@@ -74,9 +72,6 @@
 #include "utils/copynpaste.h"
 #include "utils/delete2.h"
 #include "utils/files.h"
-#include "utils/gettext.h"
-
-#include <sstream>
 
 #include <sys/stat.h>
 

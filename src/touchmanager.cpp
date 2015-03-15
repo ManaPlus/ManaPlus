@@ -33,7 +33,6 @@
 
 #include "input/inputmanager.h"
 
-#include "render/graphics.h"
 #include "render/renderers.h"
 
 #include "gui/theme.h"

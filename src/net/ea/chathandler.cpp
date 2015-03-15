@@ -27,22 +27,16 @@
 #include "notifymanager.h"
 
 #include "being/being.h"
-#include "being/playerrelations.h"
 
 #include "gui/windows/chatwindow.h"
 
 #include "gui/widgets/tabs/chat/gmtab.h"
 
 #include "net/messagein.h"
-#include "net/serverfeatures.h"
-
-#include "net/ea/eaprotocol.h"
 
 #include "resources/notifytypes.h"
 
 #include "utils/gettext.h"
-
-#include <string>
 
 #include "debug.h"
 

@@ -21,7 +21,9 @@
 #include "actions/chat.h"
 
 #include "configuration.h"
+#ifdef TMWA_SUPPORT
 #include "guildmanager.h"
+#endif
 
 #include "actions/actiondef.h"
 
@@ -31,9 +33,6 @@
 
 #include "gui/windows/chatwindow.h"
 
-#include "gui/widgets/tabs/chat/chattab.h"
-#include "gui/widgets/tabs/chat/chattabtype.h"
-
 #include "net/chathandler.h"
 #include "net/guildhandler.h"
 #include "net/partyhandler.h"
@@ -41,7 +40,6 @@
 
 #include "utils/booleanoptions.h"
 #include "utils/chatutils.h"
-#include "utils/stringutils.h"
 
 #include "debug.h"
 

@@ -24,8 +24,6 @@
 
 #include "gui/widgets/skilldata.h"
 
-#include <string>
-
 #include "debug.h"
 
 SkillModel::SkillModel() :

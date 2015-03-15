@@ -24,7 +24,6 @@
 
 #include "client.h"
 #include "configuration.h"
-#include "logger.h"
 #include "settings.h"
 
 #include "enums/being/attributes.h"
@@ -36,7 +35,6 @@
 #include "gui/windows/okdialog.h"
 
 #include "net/character.h"
-#include "net/logindata.h"
 #include "net/serverfeatures.h"
 
 #include "net/eathena/gamehandler.h"

@@ -20,12 +20,12 @@
 
 #include "notifymanager.h"
 
+#ifdef TMWA_SUPPORT
 #include "guildmanager.h"
+#endif
 #include "soundmanager.h"
 
 #include "being/localplayer.h"
-
-#include "gui/widgets/tabs/chat/chattab.h"
 
 #include "net/guildhandler.h"
 #include "net/partyhandler.h"

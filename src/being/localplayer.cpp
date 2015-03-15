@@ -25,10 +25,8 @@
 #include "actormanager.h"
 #include "animatedsprite.h"
 #include "configuration.h"
-#include "dropshortcut.h"
 #include "gamemodifiers.h"
 #include "guild.h"
-#include "item.h"
 #include "party.h"
 #include "settings.h"
 #include "soundconsts.h"
@@ -38,7 +36,6 @@
 
 #include "being/beingflag.h"
 #include "being/crazymoves.h"
-#include "being/playerinfo.h"
 #include "being/playerrelations.h"
 
 #include "enums/being/attributes.h"
@@ -69,7 +66,6 @@
 #include "net/chathandler.h"
 #include "net/inventoryhandler.h"
 #include "net/packetlimiter.h"
-#include "net/pethandler.h"
 #include "net/playerhandler.h"
 #include "net/serverfeatures.h"
 
@@ -77,7 +73,6 @@
 #include "resources/itemslot.h"
 #include "resources/mapitemtype.h"
 
-#include "resources/db/emotedb.h"
 #include "resources/db/weaponsdb.h"
 
 #include "resources/map/map.h"
@@ -93,8 +88,6 @@
 #ifdef USE_MUMBLE
 #include "mumblemanager.h"
 #endif
-
-#include <climits>
 
 #include "debug.h"
 

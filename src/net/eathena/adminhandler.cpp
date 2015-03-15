@@ -27,8 +27,6 @@
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
-#include <string>
-
 #include "debug.h"
 
 extern Net::AdminHandler *adminHandler;

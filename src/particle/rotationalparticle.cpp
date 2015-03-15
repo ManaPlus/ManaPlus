@@ -26,8 +26,6 @@
 
 #include "utils/delete2.h"
 
-#include <cmath>
-
 #include "debug.h"
 
 static const double PI = M_PI;

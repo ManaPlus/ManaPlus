@@ -27,7 +27,6 @@
 #include "emoteshortcutconsts.h"
 #include "game.h"
 #include "inventory.h"
-#include "item.h"
 
 #include "being/playerinfo.h"
 
@@ -45,11 +44,7 @@
 #include "gui/widgets/layout.h"
 #include "gui/widgets/layouttype.h"
 
-#include "resources/image.h"
-
 #include "utils/gettext.h"
-
-#include <vector>
 
 #include "debug.h"
 

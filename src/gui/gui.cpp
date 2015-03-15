@@ -66,16 +66,13 @@
 #include "gui/gui.h"
 
 #include "gui/focushandler.h"
-#include "gui/palette.h"
 #include "gui/sdlinput.h"
-#include "gui/theme.h"
 #include "gui/viewport.h"
 
 #include "gui/fonts/font.h"
 
 #include "gui/widgets/window.h"
 
-#include "configuration.h"
 #include "dragdrop.h"
 #include "settings.h"
 #include "touchmanager.h"
@@ -83,14 +80,9 @@
 #include "listeners/focuslistener.h"
 #include "listeners/guiconfiglistener.h"
 #include "listeners/keylistener.h"
-#include "listeners/mouselistener.h"
 
 #include "input/inputmanager.h"
-#include "input/keyinput.h"
-#include "input/mouseinput.h"
 
-#include "resources/cursor.h"
-#include "resources/image.h"
 #include "resources/imageset.h"
 #include "resources/resourcemanager.h"
 

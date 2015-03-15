@@ -34,7 +34,6 @@
 #include "gui/windows/okdialog.h"
 
 #include "net/character.h"
-#include "net/logindata.h"
 #include "net/serverfeatures.h"
 
 #include "net/tmwa/gamehandler.h"

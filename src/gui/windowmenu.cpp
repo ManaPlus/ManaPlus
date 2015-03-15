@@ -41,8 +41,6 @@
 #include "utils/dtor.h"
 #include "utils/gettext.h"
 
-#include <string>
-
 #include "debug.h"
 
 WindowMenu *windowMenu = nullptr;

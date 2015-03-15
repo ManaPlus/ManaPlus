@@ -23,7 +23,6 @@
 #include "configuration.h"
 #include "client.h"
 #include "game.h"
-#include "logger.h"
 #ifdef USE_MUMBLE
 #include "mumblemanager.h"
 #endif

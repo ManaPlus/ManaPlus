@@ -67,8 +67,6 @@
 
 #include "gui/widgets/widget.h"
 
-#include "events/actionevent.h"
-
 #include "gui/focushandler.h"
 
 #include "listeners/actionlistener.h"

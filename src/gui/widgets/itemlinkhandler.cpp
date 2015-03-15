@@ -37,8 +37,6 @@
 
 #include "listeners/openurllistener.h"
 
-#include <string>
-
 #include "debug.h"
 
 namespace

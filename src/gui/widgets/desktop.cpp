@@ -22,7 +22,6 @@
 #include "gui/widgets/desktop.h"
 
 #include "configuration.h"
-#include "main.h"
 
 #include "gui/skin.h"
 

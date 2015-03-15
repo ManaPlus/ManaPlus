@@ -22,16 +22,24 @@
 
 #include "gui/windows/shopwindow.h"
 
-#include "gui/chatconsts.h"
+#include "enums/being/attributes.h"
 
+#ifdef TMWA_SUPPORT
 #include "gui/windows/buydialog.h"
 #include "gui/windows/chatwindow.h"
 #include "gui/windows/confirmdialog.h"
-#include "gui/windows/editdialog.h"
-#include "gui/windows/itemamountwindow.h"
 #include "gui/windows/shopselldialog.h"
-#include "gui/windows/setupwindow.h"
 #include "gui/windows/tradewindow.h"
+
+#include "gui/chatconsts.h"
+#endif
+
+#ifdef EATHENA_SUPPORT
+#include "gui/windows/editdialog.h"
+#endif
+
+#include "gui/windows/itemamountwindow.h"
+#include "gui/windows/setupwindow.h"
 
 #include "gui/models/shopitems.h"
 
@@ -44,34 +52,41 @@
 #include "gui/widgets/shoplistbox.h"
 #include "gui/widgets/tabstrip.h"
 
+#ifdef EATHENA_SUPPORT
 #include "listeners/shoprenamelistener.h"
+#endif
 
+#ifdef TMWA_SUPPORT
 #include "actormanager.h"
+#include "soundmanager.h"
+#endif
 #include "configuration.h"
 #include "inventory.h"
-#include "item.h"
 #include "settings.h"
 #include "shopitem.h"
-#include "soundmanager.h"
 
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
+
+#ifdef TMWA_SUPPORT
 #include "being/playerrelations.h"
-
-#include "enums/being/attributes.h"
-
 #include "net/chathandler.h"
+#endif
+#ifdef EATHENA_SUPPORT
 #include "net/buyingstorehandler.h"
-#include "net/serverfeatures.h"
-#include "net/tradehandler.h"
 #include "net/vendinghandler.h"
-
-#include "resources/iteminfo.h"
+#endif
+#include "net/serverfeatures.h"
+#ifdef TMWA_SUPPORT
+#include "net/tradehandler.h"
+#endif
 
 #include "utils/delete2.h"
 #include "utils/gettext.h"
 
-#include <sstream>
+#ifdef TMWA_SUPPORT
+#include "resources/iteminfo.h"
+#endif
 
 #include <sys/stat.h>
 

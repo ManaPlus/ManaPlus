@@ -38,8 +38,6 @@
 
 #include "resources/image.h"
 
-#include "gui/models/listmodel.h"
-
 #include "debug.h"
 
 const int ITEM_ICON_SIZE = 32;

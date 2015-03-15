@@ -22,8 +22,6 @@
 
 #include "game.h"
 
-#include "main.h"
-
 #include "actormanager.h"
 #include "animatedsprite.h"
 #include "client.h"
@@ -33,7 +31,9 @@
 #include "emoteshortcut.h"
 #include "eventsmanager.h"
 #include "gamemodifiers.h"
+#ifdef TMWA_SUPPORT
 #include "guildmanager.h"
+#endif
 #include "itemshortcut.h"
 #include "soundmanager.h"
 #include "settings.h"
@@ -62,7 +62,9 @@
 
 #include "gui/popups/popupmenu.h"
 
+#ifdef EATHENA_SUPPORT
 #include "gui/windows/bankwindow.h"
+#endif
 #include "gui/windows/botcheckerwindow.h"
 #include "gui/windows/chatwindow.h"
 #include "gui/windows/debugwindow.h"
@@ -119,9 +121,6 @@
 #include "utils/timer.h"
 
 #include "listeners/errorlistener.h"
-
-#include <sstream>
-#include <string>
 
 #ifdef USE_MUMBLE
 #include "mumblemanager.h"

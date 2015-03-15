@@ -40,7 +40,6 @@
 #include "particle/particle.h"
 
 #include "resources/ambientlayer.h"
-#include "resources/image.h"
 #include "resources/mapitemtype.h"
 #include "resources/notifytypes.h"
 #include "resources/resourcemanager.h"
@@ -50,7 +49,9 @@
 #include "resources/map/mapobjectlist.h"
 #include "resources/map/tileanimation.h"
 
+#ifdef USE_OPENGL
 #include "render/renderers.h"
+#endif
 
 #include "utils/delete2.h"
 #include "utils/dtor.h"
@@ -58,7 +59,6 @@
 #include "utils/physfstools.h"
 #include "utils/timer.h"
 
-#include <climits>
 #include <queue>
 
 #include <sys/stat.h>

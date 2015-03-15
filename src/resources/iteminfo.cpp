@@ -34,8 +34,6 @@
 
 #include "utils/dtor.h"
 
-#include <map>
-
 #include "debug.h"
 
 ItemInfo::ItemInfo() :

@@ -33,7 +33,6 @@
 #endif
 #include "utils/paths.h"
 #include "utils/physfscheckutils.h"
-#include "utils/physfstools.h"
 #include "utils/physfsrwops.h"
 #include "utils/process.h"
 #include "utils/xml.h"

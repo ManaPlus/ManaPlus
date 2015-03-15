@@ -28,8 +28,10 @@
 
 #include "resources/map/walklayer.h"
 
+#ifdef USE_OPENGL
 #include "resources/atlasmanager.h"
 #include "resources/atlasresource.h"
+#endif
 #include "resources/dye.h"
 #include "resources/image.h"
 #include "resources/imagehelper.h"
@@ -43,9 +45,11 @@
 #include "utils/physfsrwops.h"
 #include "utils/sdlcheckutils.h"
 
+#ifdef USE_OPENGL
 #include "render/shaders/shader.h"
 #include "render/shaders/shaderprogram.h"
 #include "render/shaders/shadersmanager.h"
+#endif
 
 #include <SDL_image.h>
 

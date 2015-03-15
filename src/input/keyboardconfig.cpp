@@ -29,8 +29,6 @@
 
 #include "utils/gettext.h"
 
-#include <SDL_events.h>
-
 #include "debug.h"
 
 extern volatile int tick_time;

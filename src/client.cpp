@@ -20,20 +20,20 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "main.h"
-
 #include "client.h"
 
 #include "chatlogger.h"
-#include "configmanager.h"
 #include "configuration.h"
+#include "configmanager.h"
+#include "defaults.h"
 #include "dirs.h"
 #include "dropshortcut.h"
 #include "emoteshortcut.h"
 #include "eventsmanager.h"
 #include "game.h"
-#include "guild.h"
+#ifdef TMWA_SUPPORT
 #include "guildmanager.h"
+#endif
 #include "graphicsmanager.h"
 #include "itemshortcut.h"
 #include "party.h"
@@ -57,7 +57,6 @@
 #include "gui/gui.h"
 #include "gui/skin.h"
 #include "gui/popupmanager.h"
-#include "gui/theme.h"
 #include "gui/windowmanager.h"
 
 #include "gui/windows/changeemaildialog.h"
@@ -106,7 +105,6 @@
 #include "resources/db/homunculusdb.h"
 #include "resources/db/horsedb.h"
 #include "resources/db/sounddb.h"
-#include "resources/db/itemdb.h"
 #include "resources/db/mapdb.h"
 #include "resources/db/mercenarydb.h"
 #include "resources/db/moddb.h"
@@ -132,8 +130,10 @@
 
 #include "listeners/errorlistener.h"
 
+#ifdef USE_OPENGL
 #include "test/testlauncher.h"
 #include "test/testmain.h"
+#endif
 
 #ifdef __APPLE__
 #include <CoreFoundation/CFBundle.h>
@@ -148,13 +148,11 @@
 #ifdef ANDROID
 #ifndef USE_SDL2
 #include <SDL_screenkeyboard.h>
+#include <fstream>
 #endif
 #endif
 
 #include <sys/stat.h>
-
-#include <climits>
-#include <fstream>
 
 #ifdef USE_MUMBLE
 #include "mumblemanager.h"

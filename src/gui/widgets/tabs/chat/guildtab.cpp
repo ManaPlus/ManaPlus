@@ -23,7 +23,6 @@
 #include "gui/widgets/tabs/chat/guildtab.h"
 
 #include "configuration.h"
-#include "guild.h"
 #include "soundconsts.h"
 #include "soundmanager.h"
 

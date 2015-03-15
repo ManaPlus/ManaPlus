@@ -20,7 +20,9 @@
 
 #include "graphicsvertexes.h"
 
+#ifdef USE_OPENGL
 #include "render/graphics.h"
+#endif
 
 #include "utils/dtor.h"
 

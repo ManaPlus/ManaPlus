@@ -21,17 +21,16 @@
 
 #include "being/playerinfo.h"
 
-#include "client.h"
 #include "configuration.h"
-#include "inventory.h"
 #include "itemsoundmanager.h"
 
-#include "being/homunculusinfo.h"
 #include "being/localplayer.h"
+
+#ifdef EATHENA_SUPPORT
+#include "being/homunculusinfo.h"
 #include "being/mercenaryinfo.h"
 #include "being/petinfo.h"
-
-#include "enums/inventorytype.h"
+#endif
 
 #include "enums/being/attributes.h"
 
@@ -46,8 +45,6 @@
 
 #include "utils/delete2.h"
 
-#include "listeners/statlistener.h"
-
 #include "debug.h"
 
 namespace PlayerInfo
@@ -59,11 +56,11 @@ int mCharId = 0;
 Inventory *mInventory = nullptr;
 #ifdef EATHENA_SUPPORT
 Inventory *mCartInventory = nullptr;
-#endif
-Equipment *mEquipment = nullptr;
 MercenaryInfo *mMercenary = nullptr;
 HomunculusInfo *mHomunculus = nullptr;
 PetInfo *mPet = nullptr;
+#endif
+Equipment *mEquipment = nullptr;
 int mPetBeingId = 0;
 GuildPositionFlags::Type mGuildPositionFlags = GuildPositionFlags::None;
 
@@ -394,7 +391,9 @@ void init()
 void deinit()
 {
     clearInventory();
+#ifdef EATHENA_SUPPORT
     delete2(mMercenary);
+#endif
     mPetBeingId = 0;
 }
 
@@ -477,6 +476,7 @@ bool isItemProtected(const int id)
     return mProtectedItems.find(id) != mProtectedItems.end();
 }
 
+#ifdef EATHENA_SUPPORT
 void setMercenary(MercenaryInfo *const info)
 {
     if (mMercenary)
@@ -559,7 +559,6 @@ int getMercenaryId()
     return mMercenary ? mMercenary->id : 0;
 }
 
-#ifdef EATHENA_SUPPORT
 void updateMoveAI()
 {
     if (mMercenary)

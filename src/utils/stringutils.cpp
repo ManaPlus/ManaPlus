@@ -22,13 +22,7 @@
 
 #include "utils/stringutils.h"
 
-#include <string>
 #include <algorithm>
-#include <cstdarg>
-#include <cstdio>
-#include <cctype>
-#include <list>
-#include <ctime>
 
 #include "debug.h"
 

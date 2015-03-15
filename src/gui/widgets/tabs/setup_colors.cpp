@@ -40,7 +40,6 @@
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
-#include <string>
 #include <cmath>
 
 #include "debug.h"

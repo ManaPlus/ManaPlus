@@ -21,44 +21,51 @@
 #include "graphicsmanager.h"
 
 #ifdef USE_OPENGL
-
 #ifndef WIN32
 
 #ifdef ANDROID
 #include <GLES2/gl2.h>
 #include <GLES/glext.h>
 #include <EGL/egl.h>
+
 #ifndef USE_SDL2
 #include <SDL_android.h>
 #endif  // USE_SDL2
 #else  // ANDROID
 #include <GL/glx.h>
 #endif  // ANDROID
-#else  // WIN32
-#endif
+#endif  // WIN32
 #endif  // USE_OPENGL
 
 #include "configuration.h"
 #include "logger.h"
+
+#ifdef DYECMD
+#include "configuration.h"
+#endif
+
 #include "settings.h"
 
-#include "render/graphics.h"
+#ifdef USE_OPENGL
 #include "render/mglcheck.h"
 #include "render/mgl.h"
 #include "render/mglemu.h"
 #include "render/mobileopenglgraphics.h"
 #include "render/modernopenglgraphics.h"
 #include "render/normalopenglgraphics.h"
-#include "render/renderers.h"
 #include "render/safeopenglgraphics.h"
+#endif
+#include "render/renderers.h"
 #include "render/sdlgraphics.h"
 
+#ifdef USE_OPENGL
 #include "resources/fboinfo.h"
-#include "resources/imagehelper.h"
 #include "resources/openglimagehelper.h"
-#include "resources/sdlimagehelper.h"
 
 #include "render/mglfunctions.h"
+#endif
+
+#include "resources/sdlimagehelper.h"
 
 #ifdef USE_SDL2
 #include "render/sdl2softwaregraphics.h"
@@ -69,9 +76,10 @@
 
 #include "utils/delete2.h"
 #include "utils/sdlhelper.h"
-#include "utils/stringutils.h"
 
+#ifdef USE_OPENGL
 #include "test/testmain.h"
+#endif
 
 #include <SDL_syswm.h>
 

@@ -26,7 +26,9 @@
 #include "configuration.h"
 #include "guild.h"
 #include "party.h"
+#ifdef TMWA_SUPPORT
 #include "settings.h"
+#endif
 
 #include "gui/onlineplayer.h"
 #include "gui/popupmanager.h"
@@ -48,17 +50,15 @@
 
 #include "enums/net/packettypes.h"
 
+#ifdef TMWA_SUPPORT
 #include "net/download.h"
+#endif
 #include "net/packetlimiter.h"
 #include "net/playerhandler.h"
 #include "net/serverfeatures.h"
 
 #include "utils/gettext.h"
 #include "utils/sdlhelper.h"
-
-#include <SDL_thread.h>
-#include <vector>
-#include <algorithm>
 
 // Curl should be included after Guichan to avoid Windows redefinitions
 #include <curl/curl.h>

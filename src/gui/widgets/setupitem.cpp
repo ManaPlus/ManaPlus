@@ -21,7 +21,6 @@
 #include "gui/widgets/setupitem.h"
 
 #include "configuration.h"
-#include "main.h"
 #include "soundmanager.h"
 
 #include "gui/gui.h"

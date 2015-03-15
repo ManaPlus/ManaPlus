@@ -23,7 +23,6 @@
 #include "resources/imagehelper.h"
 
 #include "logger.h"
-#include "main.h"
 
 #include "resources/dye.h"
 #include "resources/dyepalette.h"

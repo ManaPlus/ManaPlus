@@ -23,8 +23,6 @@
 #include "gui/widgets/itemcontainer.h"
 
 #include "dragdrop.h"
-#include "inventory.h"
-#include "item.h"
 #include "itemshortcut.h"
 
 #include "being/playerinfo.h"
@@ -47,10 +45,7 @@
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
-#include "resources/image.h"
 #include "resources/iteminfo.h"
-
-#include "listeners/selectionlistener.h"
 
 #include <algorithm>
 

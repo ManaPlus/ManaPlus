@@ -26,7 +26,6 @@
 
 #include "gui/theme.h"
 
-#include "resources/image.h"
 #include "resources/iteminfo.h"
 #include "resources/resourcemanager.h"
 #include "configuration.h"

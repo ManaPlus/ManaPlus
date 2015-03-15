@@ -29,8 +29,6 @@
 
 #include "utils/base64.h"
 
-#include <string>
-
 #include "debug.h"
 
 static char base64_table[] =

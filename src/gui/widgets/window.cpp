@@ -87,9 +87,6 @@
 #include "gui/widgets/containerplacer.h"
 #include "gui/widgets/layout.h"
 
-#include "resources/cursor.h"
-#include "resources/image.h"
-
 #include "utils/delete2.h"
 
 #include "debug.h"

@@ -35,10 +35,7 @@
 
 #include "gui/widgets/popuplist.h"
 
-#include "resources/image.h"
 #include "resources/imagerect.h"
-
-#include <algorithm>
 
 #include "debug.h"
 

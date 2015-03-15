@@ -25,13 +25,7 @@
 #include "configuration.h"
 #include "logger.h"
 
-#include "utils/stringutils.h"
-#include "utils/xml.h"
-
 #include "resources/beingcommon.h"
-
-#include <climits>
-#include <vector>
 
 #include "debug.h"
 

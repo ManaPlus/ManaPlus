@@ -34,14 +34,10 @@
 
 #include "listeners/wrongdatanoticelistener.h"
 
-#include "net/logindata.h"
 #include "net/loginhandler.h"
 
 #include "utils/delete2.h"
 #include "utils/gettext.h"
-
-#include <string>
-#include <sstream>
 
 #include "debug.h"
 

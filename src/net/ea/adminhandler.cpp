@@ -34,8 +34,6 @@
 
 #include "resources/notifytypes.h"
 
-#include <string>
-
 #include "debug.h"
 
 namespace Ea

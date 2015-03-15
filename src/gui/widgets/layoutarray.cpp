@@ -22,8 +22,6 @@
 
 #include "gui/widgets/layoutarray.h"
 
-#include "logger.h"
-
 #include "gui/widgets/layoutcell.h"
 #include "gui/widgets/layouttype.h"
 #include "gui/widgets/widget.h"

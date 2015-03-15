@@ -53,8 +53,6 @@
 #include "utils/paths.h"
 #include "utils/process.h"
 
-#include <fstream>
-
 #include <sys/stat.h>
 
 #include "debug.h"

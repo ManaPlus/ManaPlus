@@ -24,7 +24,6 @@
 
 #include "configuration.h"
 #include "game.h"
-#include "main.h"
 #include "touchmanager.h"
 
 #include "gui/windows/chatwindow.h"

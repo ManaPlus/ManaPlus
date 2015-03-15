@@ -24,7 +24,6 @@
 #include "sdlshared.h"
 
 #include "resources/image.h"
-#include "resources/imagehelper.h"
 #include "resources/imagewriter.h"
 #include "resources/resourcemanager.h"
 #include "resources/sdlimagehelper.h"

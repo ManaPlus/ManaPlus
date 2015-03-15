@@ -23,11 +23,11 @@
 #include "resources/mapreader.h"
 
 #include "configuration.h"
+#ifdef USE_OPENGL
 #include "graphicsmanager.h"
+#endif
 #include "logger.h"
-#include "main.h"
 
-#include "resources/map/blocktype.h"
 #include "resources/map/map.h"
 #include "resources/map/mapconsts.h"
 #include "resources/map/mapheights.h"
@@ -39,7 +39,9 @@
 #include "resources/mapitemtype.h"
 #include "resources/resourcemanager.h"
 
+#ifdef USE_OPENGL
 #include "resources/db/mapdb.h"
+#endif
 
 #include "resources/map/tileanimation.h"
 
@@ -47,7 +49,6 @@
 #include "utils/delete2.h"
 #include "utils/stringmap.h"
 
-#include <iostream>
 #include <zlib.h>
 
 #include "debug.h"

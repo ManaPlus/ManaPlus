@@ -31,13 +31,10 @@
 
 #include "enums/being/attributes.h"
 
-#include "gui/models/skillmodel.h"
-
 #include "gui/windows/setupwindow.h"
 #include "gui/windows/shortcutwindow.h"
 
 #include "gui/widgets/button.h"
-#include "gui/widgets/skilllistbox.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/tabbedarea.h"
@@ -52,7 +49,6 @@
 #include "utils/timer.h"
 
 #include "resources/beingcommon.h"
-#include "resources/skillconsts.h"
 
 #include "debug.h"
 

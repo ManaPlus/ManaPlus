@@ -65,16 +65,20 @@
 
 #include "render/graphics.h"
 
-#include "main.h"
-
+#ifdef USE_OPENGL
 #include "configuration.h"
 #include "graphicsmanager.h"
+#endif
 #include "logger.h"
 
+#if defined(USE_OPENGL) && defined(USE_X11)
 #include "render/mglxinit.h"
+#endif
 
 #include "resources/imagehelper.h"
+#ifdef USE_OPENGL
 #include "resources/openglimagehelper.h"
+#endif
 
 #ifdef USE_OPENGL
 #ifdef __APPLE__
@@ -261,7 +265,7 @@ bool Graphics::setOpenGLMode()
         return false;
     }
 
-#if defined(USE_OPENGL) && defined(USE_X11)
+#if defined(USE_X11)
     Glx::initFunctions();
 #endif
 #ifdef USE_SDL2

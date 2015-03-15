@@ -23,7 +23,6 @@
 #include "net/eathena/npchandler.h"
 
 #include "actormanager.h"
-#include "logger.h"
 
 #include "being/localplayer.h"
 

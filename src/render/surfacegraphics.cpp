@@ -22,8 +22,6 @@
 
 #include "render/surfacegraphics.h"
 
-#include "main.h"
-
 #include "resources/image.h"
 #include "resources/surfaceimagehelper.h"
 

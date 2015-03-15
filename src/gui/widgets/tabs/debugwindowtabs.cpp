@@ -32,10 +32,11 @@
 
 #include "gui/widgets/containerplacer.h"
 #include "gui/widgets/label.h"
-#include "gui/widgets/layoutcell.h"
 #include "gui/widgets/layouthelper.h"
 
+#ifdef USE_OPENGL
 #include "resources/imagehelper.h"
+#endif
 
 #include "resources/map/map.h"
 

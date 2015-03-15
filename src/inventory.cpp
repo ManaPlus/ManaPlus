@@ -22,7 +22,6 @@
 
 #include "inventory.h"
 
-#include "item.h"
 #include "logger.h"
 
 #include "net/inventoryhandler.h"
@@ -36,8 +35,6 @@
 #include "utils/stringutils.h"
 
 #include <algorithm>
-#include <functional>
-#include <string>
 
 #include "debug.h"
 

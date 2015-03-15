@@ -25,7 +25,6 @@
 #include "configuration.h"
 #include "inventory.h"
 #include "item.h"
-#include "logger.h"
 #include "spellmanager.h"
 
 #include "being/playerinfo.h"

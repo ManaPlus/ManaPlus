@@ -23,8 +23,6 @@
 #include "gui/widgets/itemshortcutcontainer.h"
 
 #include "dragdrop.h"
-#include "inventory.h"
-#include "item.h"
 #include "itemshortcut.h"
 #include "settings.h"
 #include "spellshortcut.h"
@@ -44,9 +42,6 @@
 #include "gui/windows/inventorywindow.h"
 #include "gui/windows/skilldialog.h"
 
-#include "gui/widgets/skillinfo.h"
-
-#include "resources/image.h"
 #include "resources/skillconsts.h"
 
 #include "utils/stringutils.h"

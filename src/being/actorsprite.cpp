@@ -30,8 +30,6 @@
 
 #include "gui/theme.h"
 
-#include "listeners/actorspritelistener.h"
-
 #include "particle/particle.h"
 
 #include "resources/resourcemanager.h"

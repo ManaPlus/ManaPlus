@@ -20,8 +20,6 @@
 
 #include "utils/translation/podict.h"
 
-#include "localconsts.h"
-
 #include "debug.h"
 
 std::string empty;

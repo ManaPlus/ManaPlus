@@ -37,7 +37,6 @@
 
 #include "gui/windows/setupwindow.h"
 
-#include "resources/image.h"
 #include "resources/imagehelper.h"
 #include "resources/resourcemanager.h"
 

@@ -25,8 +25,9 @@
 #include "actormanager.h"
 #include "configuration.h"
 #include "gamemodifiers.h"
-#include "guild.h"
+#ifdef TMWA_SUPPORT
 #include "guildmanager.h"
+#endif
 #include "item.h"
 #include "party.h"
 #include "spellmanager.h"
@@ -54,12 +55,10 @@
 #include "gui/windowmenu.h"
 
 #include "gui/widgets/button.h"
-#include "gui/widgets/browserbox.h"
 #include "gui/widgets/progressbar.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/textfield.h"
 
-#include "gui/widgets/tabs/chat/chattab.h"
 #include "gui/widgets/tabs/chat/whispertab.h"
 
 #include "net/adminhandler.h"
@@ -86,8 +85,6 @@
 #include "utils/copynpaste.h"
 #include "utils/gettext.h"
 #include "utils/process.h"
-
-#include "gui/models/listmodel.h"
 
 #include "debug.h"
 

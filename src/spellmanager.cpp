@@ -25,7 +25,6 @@
 #include "configuration.h"
 
 #include "being/localplayer.h"
-#include "being/playerinfo.h"
 
 #include "enums/being/attributes.h"
 

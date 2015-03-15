@@ -29,8 +29,6 @@
 #include "utils/physfstools.h"
 
 #include <algorithm>
-#include <cstring>
-#include <ctime>
 
 #include "debug.h"
 

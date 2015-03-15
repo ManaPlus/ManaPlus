@@ -34,8 +34,6 @@
 #include "gui/windows/confirmdialog.h"
 #include "gui/windows/buyselldialog.h"
 #include "gui/windows/buydialog.h"
-#include "gui/windows/npcdialog.h"
-#include "gui/windows/okdialog.h"
 #include "gui/windows/updaterwindow.h"
 
 #include "listeners/playerpostdeathlistener.h"

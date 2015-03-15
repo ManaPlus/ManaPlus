@@ -37,8 +37,6 @@
 
 #include "gui/windows/inventorywindow.h"
 
-#include "resources/image.h"
-
 #include "utils/stringutils.h"
 
 #include "debug.h"

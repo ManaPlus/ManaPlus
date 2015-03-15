@@ -239,6 +239,7 @@ namespace PlayerInfo
 
     bool isItemProtected(const int id);
 
+#ifdef EATHENA_SUPPORT
     MercenaryInfo *getMercenary();
 
     void setMercenary(MercenaryInfo *const info);
@@ -263,7 +264,6 @@ namespace PlayerInfo
 
     int getMercenaryId();
 
-#ifdef EATHENA_SUPPORT
     void updateMoveAI();
 
     void updateAttackAi(const int targetId, const bool keep);

@@ -21,23 +21,17 @@
 
 #include "gui/windows/socialwindow.h"
 
-#include "configuration.h"
-#include "guild.h"
+#ifdef TMWA_SUPPORT
 #include "guildmanager.h"
-
-#include "being/localplayer.h"
-#include "being/playerrelations.h"
+#endif
 
 #include "enums/gui/dialogtype.h"
 
-#include "gui/windows/confirmdialog.h"
 #include "gui/windows/okdialog.h"
 #include "gui/windows/setupwindow.h"
-#include "gui/windows/textdialog.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/label.h"
-#include "gui/widgets/scrollarea.h"
 #include "gui/widgets/tabbedarea.h"
 
 #include "gui/widgets/tabs/socialattacktab.h"

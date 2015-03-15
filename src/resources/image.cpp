@@ -26,8 +26,9 @@
 
 #include "logger.h"
 
-#include "resources/imagehelper.h"
+#ifdef USE_OPENGL
 #include "resources/openglimagehelper.h"
+#endif
 #include "resources/sdlimagehelper.h"
 #include "resources/subimage.h"
 
