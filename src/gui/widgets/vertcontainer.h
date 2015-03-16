@@ -26,8 +26,6 @@
 
 #include "listeners/widgetlistener.h"
 
-#include <vector>
-
 #include "localconsts.h"
 
 /**

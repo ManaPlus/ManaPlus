@@ -22,6 +22,7 @@
 #include "being/playerinfo.h"
 
 #include "configuration.h"
+#include "item.h"
 #include "itemsoundmanager.h"
 
 #include "being/localplayer.h"

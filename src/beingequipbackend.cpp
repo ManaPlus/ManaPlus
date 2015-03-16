@@ -20,6 +20,8 @@
 
 #include "beingequipbackend.h"
 
+#include "item.h"
+
 #include "being/being.h"
 
 #include "net/inventoryhandler.h"

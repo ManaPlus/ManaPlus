@@ -22,6 +22,7 @@
 
 #include "inventory.h"
 
+#include "item.h"
 #include "logger.h"
 
 #include "net/inventoryhandler.h"

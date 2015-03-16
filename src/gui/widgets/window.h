@@ -66,8 +66,6 @@
 #ifndef GUI_WIDGETS_WINDOW_H
 #define GUI_WIDGETS_WINDOW_H
 
-#include "render/graphics.h"
-
 #include "listeners/mouselistener.h"
 #include "listeners/widgetlistener.h"
 

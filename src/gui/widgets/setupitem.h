@@ -26,7 +26,6 @@
 #include "listeners/actionlistener.h"
 
 #include <list>
-#include <vector>
 
 class Button;
 class CheckBox;

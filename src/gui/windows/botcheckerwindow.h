@@ -23,8 +23,6 @@
 #ifndef GUI_WINDOWS_BOTCHECKERWINDOW_H
 #define GUI_WINDOWS_BOTCHECKERWINDOW_H
 
-#include "listeners/configlistener.h"
-
 #include "gui/widgets/window.h"
 
 #include "listeners/actionlistener.h"

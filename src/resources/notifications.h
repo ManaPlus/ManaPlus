@@ -23,8 +23,6 @@
 
 #include "localconsts.h"
 
-#include "enums/resources/notifyflags.h"
-
 #include "resources/notificationinfo.h"
 
 #include "utils/gettext.h"

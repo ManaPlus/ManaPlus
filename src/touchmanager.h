@@ -27,7 +27,6 @@
 
 #include "gui/rect.h"
 
-#include <string>
 #include <vector>
 
 #include "localconsts.h"

@@ -25,7 +25,6 @@
 
 #include <algorithm>
 #include <functional>
-#include <utility>
 
 #include "localconsts.h"
 

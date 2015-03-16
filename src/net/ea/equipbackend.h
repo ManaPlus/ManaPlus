@@ -23,8 +23,6 @@
 #ifndef NET_EA_EQUIPBACKEND_H
 #define NET_EA_EQUIPBACKEND_H
 
-#include "equipment.h"
-#include "inventory.h"
 #include "item.h"
 
 #include "being/playerinfo.h"

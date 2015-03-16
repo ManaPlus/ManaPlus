@@ -29,9 +29,6 @@
 #include "gui/widgets/linepart.h"
 #include "gui/widgets/widget.h"
 
-#include <list>
-#include <vector>
-
 #include "localconsts.h"
 
 class LinkHandler;

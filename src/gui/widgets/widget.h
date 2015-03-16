@@ -65,11 +65,6 @@
 #define GUI_WIDGETS_WIDGET_H
 
 #include <list>
-#include <set>
-#include <string>
-
-#include "gui/color.h"
-#include "gui/rect.h"
 
 #include "gui/widgets/widget2.h"
 

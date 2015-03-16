@@ -23,10 +23,6 @@
 #ifndef GUI_WIDGETS_SERVERSLISTBOX_H
 #define GUI_WIDGETS_SERVERSLISTBOX_H
 
-#include "gui/fonts/font.h"
-
-#include "gui/theme.h"
-
 #include "gui/widgets/listbox.h"
 
 #include "gui/models/serverslistmodel.h"

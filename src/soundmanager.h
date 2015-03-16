@@ -27,8 +27,6 @@
 
 #include "listeners/configlistener.h"
 
-#include <string>
-
 #include "localconsts.h"
 
 class SDLMusic;

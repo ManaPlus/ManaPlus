@@ -28,9 +28,9 @@
 #include "resources/skillowner.h"
 #include "resources/skilltype.h"
 
+#include <string>
 #include <vector>
 #include <map>
-#include <string>
 
 #include "localconsts.h"
 

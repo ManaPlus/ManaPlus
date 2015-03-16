@@ -28,10 +28,8 @@
 #include "gui/dialogsmanager.h"
 #include "gui/popupmanager.h"
 
-#include "gui/windows/okdialog.h"
 #include "gui/windows/npcdialog.h"
 
-#include "net/net.h"
 #include "net/playerhandler.h"
 
 #include "localconsts.h"

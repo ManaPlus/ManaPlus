@@ -51,6 +51,7 @@
 #include "gui/widgets/containerplacer.h"
 
 #include "net/character.h"
+#include "net/logindata.h"
 #include "net/loginhandler.h"
 #include "net/registrationoptions.h"
 #include "net/serverfeatures.h"

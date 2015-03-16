@@ -21,8 +21,8 @@
 #ifndef RESOURCES_MODINFO_H
 #define RESOURCES_MODINFO_H
 
-#include <string>
 #include <map>
+#include <string>
 
 #include "localconsts.h"
 

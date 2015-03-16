@@ -25,8 +25,7 @@
 
 #include "flooritem.h"
 
-#include "being/being.h"
-#include "being/playerinfo.h"
+#include "enums/being/beingaction.h"
 
 namespace Net
 {

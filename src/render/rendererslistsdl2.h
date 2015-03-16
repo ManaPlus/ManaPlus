@@ -21,11 +21,9 @@
 #ifndef RENDER_RENDERERSLISTSDL2_H
 #define RENDER_RENDERERSLISTSDL2_H
 
-#include "utils/gettext.h"
-
-#include "render/renderers.h"
-
 #ifdef USE_SDL2
+
+#include "utils/gettext.h"
 
 #ifdef USE_OPENGL
 #ifdef ANDROID

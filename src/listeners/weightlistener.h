@@ -25,8 +25,6 @@
 
 #include "gui/windows/okdialog.h"
 
-#include "listeners/actionlistener.h"
-
 #include "localconsts.h"
 
 extern OkDialog *weightNotice;

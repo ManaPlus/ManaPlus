@@ -25,8 +25,6 @@
 
 #include "gui/widgets/container.h"
 
-#include <vector>
-
 /**
  * A window container. This container adds functionality for more convenient
  * widget (windows in particular) destruction.

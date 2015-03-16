@@ -23,12 +23,10 @@
 #ifndef NET_LOGINHANDLER_H
 #define NET_LOGINHANDLER_H
 
-#include "net/logindata.h"
 #include "net/serverinfo.h"
 #include "net/worldinfo.h"
 
-#include <iosfwd>
-#include <vector>
+class LoginData;
 
 namespace Net
 {

@@ -23,9 +23,6 @@
 #ifndef RESOURCES_RESOURCE_H
 #define RESOURCES_RESOURCE_H
 
-#include "main.h"
-
-#include <ctime>
 #include <string>
 
 #include "localconsts.h"

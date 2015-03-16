@@ -72,6 +72,8 @@
 
 #include "gui/gui.h"
 
+#include "render/renderers.h"
+
 #include "resources/image.h"
 #include "resources/imagerect.h"
 

@@ -29,8 +29,6 @@
 
 #include "gui/widgets/tabs/chat/chattab.h"
 
-#include <string>
-
 class Being;
 
 namespace Net

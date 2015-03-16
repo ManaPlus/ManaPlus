@@ -27,9 +27,6 @@
 
 #include "utils/stringmap.h"
 
-#include <map>
-#include <string>
-
 #include "localconsts.h"
 
 class Image;

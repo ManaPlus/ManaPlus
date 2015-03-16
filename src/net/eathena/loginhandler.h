@@ -27,8 +27,6 @@
 
 #include "net/eathena/messagehandler.h"
 
-#include <string>
-
 namespace EAthena
 {
 

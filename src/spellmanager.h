@@ -23,9 +23,6 @@
 #ifndef SPELLMANAGER_H
 #define SPELLMANAGER_H
 
-#include <string>
-#include <vector>
-
 #include "textcommand.h"
 
 #include "being/being.h"

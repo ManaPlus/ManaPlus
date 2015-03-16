@@ -74,6 +74,8 @@
 #include "gui/widgets/label.h"
 #include "gui/widgets/tabbedarea.h"
 
+#include "render/renderers.h"
+
 #include "resources/image.h"
 #include "resources/imagerect.h"
 

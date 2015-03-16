@@ -68,8 +68,6 @@
 
 #include "input/key.h"
 
-#include <string>
-
 #include "localconsts.h"
 
 class KeyInput final

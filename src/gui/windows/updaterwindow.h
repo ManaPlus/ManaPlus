@@ -35,9 +35,6 @@
 #include "listeners/actionlistener.h"
 #include "listeners/keylistener.h"
 
-#include <string>
-#include <vector>
-
 class BrowserBox;
 class Button;
 class Label;

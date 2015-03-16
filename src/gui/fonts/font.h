@@ -71,8 +71,6 @@
 
 #include <SDL_ttf.h>
 
-#include <string>
-
 #include "localconsts.h"
 
 class Graphics;

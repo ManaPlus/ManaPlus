@@ -24,8 +24,6 @@
 
 #include "gui/widgets/shortcutcontainer.h"
 
-#include <vector>
-
 struct EmoteSprite;
 
 /**

@@ -25,8 +25,6 @@
 
 #include "net/messagehandler.h"
 
-#include <memory>
-
 namespace TmwAthena
 {
 

@@ -23,11 +23,7 @@
 #ifndef NET_INVENTORYHANDLER_H
 #define NET_INVENTORYHANDLER_H
 
-#include "item.h"
-
 #include "inventory.h"
-
-#include <iosfwd>
 
 namespace Net
 {

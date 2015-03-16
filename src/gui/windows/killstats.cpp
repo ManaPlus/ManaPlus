@@ -41,6 +41,10 @@
 
 #include "utils/gettext.h"
 
+#ifdef WIN32
+#include <sys/time.h>
+#endif
+
 #include "debug.h"
 
 KillStats *killStats = nullptr;

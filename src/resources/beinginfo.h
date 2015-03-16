@@ -32,8 +32,6 @@
 
 #include "resources/map/blocktype.h"
 
-#include <map>
-
 struct Attack;
 
 namespace ColorDB

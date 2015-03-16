@@ -31,8 +31,6 @@
 
 #include "gui/widgets/window.h"
 
-#include <vector>
-
 class AnimatedSprite;
 class Graphics;
 class Inventory;

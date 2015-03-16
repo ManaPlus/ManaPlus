@@ -25,8 +25,6 @@
 
 #include "being/being.h"
 
-#include <iosfwd>
-
 #include "localconsts.h"
 
 class Item;

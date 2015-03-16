@@ -29,6 +29,8 @@
 
 #include "enums/gui/dialogtype.h"
 
+#include "being/playerinfo.h"
+
 #include "gui/widgets/selldialog.h"
 
 #include "gui/windows/confirmdialog.h"

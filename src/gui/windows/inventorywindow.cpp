@@ -23,6 +23,7 @@
 #include "gui/windows/inventorywindow.h"
 
 #include "configuration.h"
+#include "item.h"
 #include "units.h"
 
 #include "being/playerinfo.h"

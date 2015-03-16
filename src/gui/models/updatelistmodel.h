@@ -27,8 +27,6 @@
 
 #include "net/logindata.h"
 
-#include "utils/gettext.h"
-
 #include "localconsts.h"
 
 class UpdateListModel final : public ListModel

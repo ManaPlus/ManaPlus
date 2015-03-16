@@ -25,6 +25,8 @@
 
 #include "resources/soundinfo.h"
 
+#include <string>
+
 class Image;
 
 struct SkillData final

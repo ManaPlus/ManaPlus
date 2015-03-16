@@ -35,15 +35,10 @@
 #include "actions/target.h"
 #include "actions/windows.h"
 
-#include "input/inputaction.h"
 #include "input/inputactiondata.h"
 #include "input/inputcondition.h"
 #include "input/inputmanager.h"
 #include "input/inputtype.h"
-
-#include "utils/gettext.h"
-
-#include <string>
 
 #include "localconsts.h"
 

@@ -66,8 +66,6 @@
 #ifndef GUI_WIDGETS_LISTBOX_H
 #define GUI_WIDGETS_LISTBOX_H
 
-#include "gui/color.h"
-
 #include "gui/widgets/widget.h"
 
 #include "listeners/keylistener.h"

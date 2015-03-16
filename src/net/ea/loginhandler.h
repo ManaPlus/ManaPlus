@@ -29,8 +29,6 @@
 
 #include "net/ea/token.h"
 
-#include <string>
-
 class LoginData;
 
 namespace Net

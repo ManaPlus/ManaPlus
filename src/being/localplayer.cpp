@@ -27,6 +27,7 @@
 #include "configuration.h"
 #include "gamemodifiers.h"
 #include "guild.h"
+#include "item.h"
 #include "party.h"
 #include "settings.h"
 #include "soundconsts.h"
@@ -36,6 +37,7 @@
 
 #include "being/beingflag.h"
 #include "being/crazymoves.h"
+#include "being/playerinfo.h"
 #include "being/playerrelations.h"
 
 #include "enums/being/attributes.h"

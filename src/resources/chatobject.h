@@ -23,8 +23,6 @@
 
 #include "resources/image.h"
 
-#include <string>
-
 struct ChatObject final
 {
     ChatObject() :

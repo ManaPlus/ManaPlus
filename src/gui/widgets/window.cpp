@@ -87,6 +87,8 @@
 #include "gui/widgets/containerplacer.h"
 #include "gui/widgets/layout.h"
 
+#include "render/renderers.h"
+
 #include "utils/delete2.h"
 
 #include "debug.h"

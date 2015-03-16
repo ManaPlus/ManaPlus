@@ -24,6 +24,7 @@
 
 #include "gui/windows/setupwindow.h"
 
+#include "gui/widgets/button.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/guitable.h"
 

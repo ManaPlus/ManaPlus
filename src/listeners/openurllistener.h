@@ -27,8 +27,6 @@
 
 #include "utils/process.h"
 
-#include <string>
-
 #include "localconsts.h"
 
 struct OpenUrlListener final : public ActionListener

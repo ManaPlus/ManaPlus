@@ -24,6 +24,8 @@
 
 #include "actormanager.h"
 
+#include "net/messagein.h"
+
 #include "debug.h"
 
 namespace Ea

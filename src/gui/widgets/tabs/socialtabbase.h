@@ -25,8 +25,6 @@
 
 #include "resources/mapitemtype.h"
 
-#include "resources/map/mapitem.h"
-
 #define addAvatars(mob, str, type) \
 {\
     ava = new Avatar(str);\

@@ -22,6 +22,7 @@
 #define RENDER_MGLXTYPES_H
 
 #include "main.h"
+
 #if defined(USE_OPENGL) && defined(USE_X11)
 
 #include <X11/Xlib.h>

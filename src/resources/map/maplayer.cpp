@@ -32,6 +32,7 @@
 
 #include "render/graphics.h"
 
+#include "resources/image.h"
 #include "resources/mapitemtype.h"
 
 #include "resources/map/mapitem.h"

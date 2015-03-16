@@ -25,8 +25,6 @@
 
 #include "gui/widgets/container.h"
 
-#include "listeners/actionlistener.h"
-
 #include "localconsts.h"
 
 class CharacterViewBase notfinal : public Container,

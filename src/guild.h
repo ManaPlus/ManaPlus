@@ -23,8 +23,6 @@
 #ifndef GUILD_H
 #define GUILD_H
 
-#include "avatar.h"
-
 #include "gui/models/avatarlistmodel.h"
 
 #include "utils/dtor.h"

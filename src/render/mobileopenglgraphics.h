@@ -23,7 +23,6 @@
 #ifndef RENDER_MOBILEOPENGLGRAPHICS_H
 #define RENDER_MOBILEOPENGLGRAPHICS_H
 
-#include "main.h"
 #ifdef USE_OPENGL
 
 #include "localconsts.h"
@@ -42,8 +41,6 @@
 #include <SDL_opengl.h>
 #include <GL/glext.h>
 #endif
-
-#include <set>
 
 class OpenGLGraphicsVertexes;
 

@@ -25,8 +25,6 @@
 
 #include "resources/itemtypemap.h"
 
-#include <string>
-
 #include "localconsts.h"
 
 ItemTypeMap itemTypeMap[] =

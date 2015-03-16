@@ -28,8 +28,6 @@
 #include "listeners/actionlistener.h"
 #include "listeners/widgetlistener.h"
 
-#include <string>
-
 #include "localconsts.h"
 
 /**

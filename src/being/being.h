@@ -36,8 +36,6 @@
 
 #include "listeners/configlistener.h"
 
-#include <map>
-
 #include "localconsts.h"
 
 static const unsigned int FIRST_IGNORE_EMOTE = 14;

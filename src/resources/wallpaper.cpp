@@ -30,6 +30,10 @@
 
 #include <algorithm>
 
+#ifdef WIN32
+#include <sys/time.h>
+#endif
+
 #include "debug.h"
 
 static bool wallpaperCompare(const WallpaperData &a, const WallpaperData &b);

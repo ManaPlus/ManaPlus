@@ -67,6 +67,7 @@
 #define RENDER_GRAPHICS_H
 
 #include "sdlshared.h"
+#include "main.h"
 
 #include "enums/render/rendertype.h"
 

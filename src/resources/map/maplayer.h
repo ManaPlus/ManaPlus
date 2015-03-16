@@ -23,13 +23,10 @@
 #ifndef RESOURCES_MAP_MAPLAYER_H
 #define RESOURCES_MAP_MAPLAYER_H
 
-#include "main.h"
-
 #include "listeners/configlistener.h"
 
 #include "being/actor.h"
 
-#include <string>
 #include <vector>
 
 class Image;

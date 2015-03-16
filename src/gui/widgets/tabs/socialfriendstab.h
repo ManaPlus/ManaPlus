@@ -36,8 +36,6 @@
 #include "utils/delete2.h"
 #include "utils/gettext.h"
 
-#include <algorithm>
-
 #include "localconsts.h"
 
 class SocialFriendsTab final : public SocialTab

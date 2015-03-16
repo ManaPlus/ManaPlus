@@ -23,9 +23,6 @@
 
 #include "gui/widgets/tabs/setuptab.h"
 
-#include <map>
-#include <set>
-
 #include "localconsts.h"
 
 class SetupItem;

@@ -27,9 +27,6 @@
 
 #include "localconsts.h"
 
-#include <list>
-#include <string>
-
 class Color;
 class Font;
 class Particle;

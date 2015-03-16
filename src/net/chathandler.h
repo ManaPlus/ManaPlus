@@ -23,8 +23,6 @@
 #ifndef NET_CHATHANDLER_H
 #define NET_CHATHANDLER_H
 
-
-#include <iosfwd>
 #include <string>
 
 #include "localconsts.h"

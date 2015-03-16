@@ -26,8 +26,6 @@
 #include <string>
 #include <vector>
 
-#include <SDL_thread.h>
-
 class IPC final
 {
     public:

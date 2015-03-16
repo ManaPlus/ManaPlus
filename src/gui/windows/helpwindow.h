@@ -30,9 +30,6 @@
 
 #include "localconsts.h"
 
-#include <map>
-#include <set>
-
 class Button;
 class BrowserBox;
 class ScrollArea;

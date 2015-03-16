@@ -35,8 +35,6 @@
 #include "listeners/keylistener.h"
 #include "listeners/selectionlistener.h"
 
-#include <string>
-
 class Button;
 class CheckBox;
 class Label;

@@ -24,7 +24,6 @@
 #define RESOURCES_IMAGE_H
 
 #include "localconsts.h"
-#include "main.h"
 
 #include "resources/resource.h"
 

@@ -26,8 +26,6 @@
 
 #include "gui/widgets/tabs/setuptab.h"
 
-#include <string>
-
 class Button;
 class ListBox;
 class KeyListModel;

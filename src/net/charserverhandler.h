@@ -25,9 +25,6 @@
 
 #include "being/localplayer.h"
 
-#include <string>
-#include <vector>
-
 class CharCreateDialog;
 class CharSelectDialog;
 

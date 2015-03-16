@@ -25,8 +25,6 @@
 
 #include "graphicsvertexes.h"
 
-#include <vector>
-
 #include "localconsts.h"
 
 typedef std::vector<ImageVertexes*> MapRowImages;

@@ -25,8 +25,6 @@
 
 #include "net/logindata.h"
 
-#include <iosfwd>
-
 namespace Net
 {
 

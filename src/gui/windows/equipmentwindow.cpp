@@ -42,6 +42,8 @@
 #include "gui/widgets/playerbox.h"
 #include "gui/widgets/tabstrip.h"
 
+#include "render/renderers.h"
+
 #include "resources/equipmentslots.h"
 #include "resources/imageset.h"
 

@@ -25,8 +25,6 @@
 
 #include "actions/actionfuncptr.h"
 
-#include <string>
-
 struct InputActionData final
 {
     const char *const configField;

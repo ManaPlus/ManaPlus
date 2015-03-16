@@ -27,8 +27,6 @@
 
 #include "resources/db/itemdb.h"
 
-#include <map>
-
 #include "localconsts.h"
 
 class Image;

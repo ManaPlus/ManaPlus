@@ -36,7 +36,6 @@
 
 #include "listeners/configlistener.h"
 
-#include <string>
 #include <vector>
 
 class AmbientLayer;

@@ -25,8 +25,6 @@
 
 #include "logger.h"
 
-#include <SDL_thread.h>
-
 /**
  * A mutex provides mutual exclusion of access to certain data that is
  * accessed by multiple threads.

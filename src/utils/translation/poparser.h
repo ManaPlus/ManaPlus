@@ -24,7 +24,6 @@
 #include "localconsts.h"
 
 #include <sstream>
-#include <string>
 
 class PoDict;
 

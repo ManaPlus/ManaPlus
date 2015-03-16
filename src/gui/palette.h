@@ -35,9 +35,7 @@
 #endif
 
 #include <map>
-#include <string>
 #include <set>
-#include <vector>
 
 // Default Gradient Delay
 #define GRADIENT_DELAY 40

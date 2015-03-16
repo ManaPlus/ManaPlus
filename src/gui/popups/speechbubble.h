@@ -24,8 +24,6 @@
 #ifndef GUI_POPUPS_SPEECHBUBBLE_H
 #define GUI_POPUPS_SPEECHBUBBLE_H
 
-#include "gui/theme.h"
-
 #include "gui/widgets/popup.h"
 
 class Label;

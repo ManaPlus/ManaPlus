@@ -29,8 +29,6 @@
 
 #include "gui/widgets/tabs/tab.h"
 
-#include "utils/delete2.h"
-
 #include "localconsts.h"
 
 class SkillTab final : public Tab

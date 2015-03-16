@@ -27,8 +27,6 @@
 
 #include "enums/render/rendertype.h"
 
-#include "resources/resource.h"
-
 #include <SDL_video.h>
 
 class Dye;

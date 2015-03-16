@@ -26,10 +26,6 @@
 #include "net/serverinfo.h"
 #include "net/sdltcpnet.h"
 
-#include <SDL_thread.h>
-
-#include <string>
-
 namespace Ea
 {
 

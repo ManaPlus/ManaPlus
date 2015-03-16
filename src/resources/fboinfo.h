@@ -21,7 +21,6 @@
 #ifndef RESOURCES_FBOINFO_H
 #define RESOURCES_FBOINFO_H
 
-#include "main.h"
 #ifdef USE_OPENGL
 
 #include "render/graphics.h"

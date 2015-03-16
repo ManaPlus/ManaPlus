@@ -31,8 +31,6 @@
 
 #include "gui/widgets/widget.h"
 
-#include <vector>
-
 class GuiTableActionListener;
 class TableModel;
 

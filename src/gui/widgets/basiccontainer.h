@@ -64,9 +64,6 @@
 #ifndef GUI_WIDGETS_BASICCONTAINER_H
 #define GUI_WIDGETS_BASICCONTAINER_H
 
-#include <set>
-#include <vector>
-
 #include "gui/widgets/widget.h"
 
 #include "listeners/widgetdeathlistener.h"

@@ -53,6 +53,10 @@
 #include "utils/delete2.h"
 #include "utils/gettext.h"
 
+#ifdef WIN32
+#include <sys/time.h>
+#endif
+
 #include "debug.h"
 
 ChatTab *localChatTab = nullptr;

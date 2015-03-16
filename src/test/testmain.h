@@ -23,7 +23,6 @@
 
 #include "configuration.h"
 #include "logger.h"
-#include "main.h"
 
 #include "render/renderers.h"
 

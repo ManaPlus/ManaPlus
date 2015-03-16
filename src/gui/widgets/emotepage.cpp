@@ -25,6 +25,8 @@
 #include "resources/imageset.h"
 #include "resources/resourcemanager.h"
 
+#include "render/renderers.h"
+
 #include "utils/delete2.h"
 
 #include "debug.h"

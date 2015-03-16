@@ -27,9 +27,6 @@
 
 #include <SDL_events.h>
 
-#include <string>
-#include <vector>
-
 class Joystick final
 {
     public:

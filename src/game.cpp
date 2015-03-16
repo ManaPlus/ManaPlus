@@ -126,6 +126,10 @@
 #include "mumblemanager.h"
 #endif
 
+#ifdef WIN32
+#include <sys/time.h>
+#endif
+
 #include "debug.h"
 
 QuitDialog *quitDialog = nullptr;

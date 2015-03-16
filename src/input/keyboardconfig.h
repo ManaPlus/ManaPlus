@@ -29,8 +29,6 @@
 
 #include "events/inputevent.h"
 
-#include <string>
-
 union SDL_Event;
 
 class KeyboardConfig final

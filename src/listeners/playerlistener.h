@@ -23,8 +23,6 @@
 
 #include "listeners/actionlistener.h"
 
-#include <string>
-
 #include "localconsts.h"
 
 class TextDialog;

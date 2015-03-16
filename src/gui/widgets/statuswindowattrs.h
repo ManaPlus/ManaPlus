@@ -27,8 +27,6 @@
 
 #include "gui/widgets/label.h"
 
-#include "events/actionevent.h"
-
 #include "listeners/actionlistener.h"
 
 #include "localconsts.h"

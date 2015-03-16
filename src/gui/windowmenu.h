@@ -23,8 +23,6 @@
 #ifndef GUI_WINDOWMENU_H
 #define GUI_WINDOWMENU_H
 
-#include "listeners/configlistener.h"
-
 #include "gui/widgets/container.h"
 
 #include "listeners/actionlistener.h"
@@ -32,9 +30,6 @@
 #include "listeners/selectionlistener.h"
 
 #include "localconsts.h"
-
-#include <map>
-#include <vector>
 
 class Button;
 

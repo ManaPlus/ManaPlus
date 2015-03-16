@@ -30,7 +30,6 @@
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
-#include "net/net.h"
 #include "net/guildhandler.h"
 
 #include "localconsts.h"

@@ -27,8 +27,6 @@
 
 #include "listeners/actionlistener.h"
 
-#include <list>
-
 class Button;
 class Label;
 class SetupTab;

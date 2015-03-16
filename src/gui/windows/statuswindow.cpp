@@ -24,12 +24,14 @@
 
 #include "configuration.h"
 #include "gamemodifiers.h"
+#include "item.h"
 #include "settings.h"
 #include "units.h"
 
 #include "gui/windows/chatwindow.h"
 
 #include "being/localplayer.h"
+#include "being/playerinfo.h"
 
 #include "enums/being/attributes.h"
 

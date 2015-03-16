@@ -30,8 +30,6 @@
 #include "listeners/actionlistener.h"
 #include "listeners/selectionlistener.h"
 
-#include <memory>
-
 class Button;
 class Inventory;
 class Item;

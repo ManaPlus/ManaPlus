@@ -30,7 +30,6 @@
 #include "net/ea/equipbackend.h"
 #include "net/ea/inventoryitem.h"
 
-#include <vector>
 #include <queue>
 
 namespace Net

@@ -35,9 +35,6 @@
 #include "particle/particlelist.h"
 #include "particle/particlevector.h"
 
-#include <set>
-#include <list>
-
 #include "localconsts.h"
 
 class AnimatedSprite;

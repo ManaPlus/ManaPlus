@@ -27,8 +27,6 @@
 
 #include "resources/map/maplayer.h"
 
-#include <string>
-
 class Map;
 class MapHeights;
 class MapLayer;

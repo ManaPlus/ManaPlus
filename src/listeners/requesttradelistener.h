@@ -27,12 +27,7 @@
 
 #include "gui/windows/confirmdialog.h"
 
-#include "net/net.h"
 #include "net/tradehandler.h"
-
-#include "listeners/actionlistener.h"
-
-#include <string>
 
 #include "localconsts.h"
 

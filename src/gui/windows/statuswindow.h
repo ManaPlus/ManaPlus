@@ -29,8 +29,6 @@
 #include "listeners/attributelistener.h"
 #include "listeners/statlistener.h"
 
-#include <map>
-
 class AttrDisplay;
 class Button;
 class Label;

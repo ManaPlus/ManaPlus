@@ -64,8 +64,6 @@
 #ifndef LISTENERS_WIDGETDEATHLISTENER_H
 #define LISTENERS_WIDGETDEATHLISTENER_H
 
-#include <string>
-
 #include "events/event.h"
 
 /**

@@ -23,17 +23,11 @@
 #ifndef GUI_WINDOWS_NPCDIALOG_H
 #define GUI_WINDOWS_NPCDIALOG_H
 
-#include "listeners/configlistener.h"
-
 #include "gui/models/extendedlistmodel.h"
 
 #include "gui/widgets/window.h"
 
-#include "utils/stringvector.h"
-
 #include "listeners/actionlistener.h"
-
-#include <list>
 
 class Being;
 class Button;

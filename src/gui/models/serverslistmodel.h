@@ -23,8 +23,6 @@
 #ifndef GUI_MODELS_SERVERSLISTMODEL_H
 #define GUI_MODELS_SERVERSLISTMODEL_H
 
-#include "net/serverinfo.h"
-
 #include "gui/gui.h"
 
 #include "gui/fonts/font.h"
@@ -32,9 +30,6 @@
 #include "gui/windows/serverdialog.h"
 
 #include "gui/models/listmodel.h"
-
-#include <string>
-#include <vector>
 
 /**
  * Server and Port List Model

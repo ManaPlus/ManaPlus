@@ -30,17 +30,11 @@
 
 #include "net/serverinfo.h"
 
-#include <SDL.h>
-
 #ifdef USE_SDL2
 #include <SDL2_framerate.h>
 #else
 #include <SDL_framerate.h>
 #endif
-
-#include <string>
-
-#include <sys/time.h>
 
 #include "localconsts.h"
 

@@ -21,8 +21,6 @@
 #ifndef NET_QUESTHANDLER_H
 #define NET_QUESTHANDLER_H
 
-#include <string>
-
 #include "localconsts.h"
 
 namespace Net

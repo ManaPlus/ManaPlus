@@ -21,8 +21,8 @@
 #ifndef UTILS_TRANSLATION_PODICT_H
 #define UTILS_TRANSLATION_PODICT_H
 
-#include <string>
 #include <map>
+#include <string>
 
 #include "localconsts.h"
 

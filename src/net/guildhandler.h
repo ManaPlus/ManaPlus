@@ -27,8 +27,6 @@
 
 #include "gui/widgets/tabs/chat/chattab.h"
 
-#include <iosfwd>
-
 class Being;
 
 namespace Net

@@ -29,6 +29,8 @@
 #include "gui/gui.h"
 #include "gui/skin.h"
 
+#include "resources/image.h"
+
 #include "debug.h"
 
 PlayerBox::PlayerBox(Widget2 *const widget,

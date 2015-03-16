@@ -24,7 +24,6 @@
 #define PARTICLE_PARTICLEEMITTERPROP_H
 
 #include <cmath>
-#include <cstdlib>
 
 #include "localconsts.h"
 

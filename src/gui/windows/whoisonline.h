@@ -23,12 +23,8 @@
 #ifndef GUI_WINDOWS_WHOISONLINE_H
 #define GUI_WINDOWS_WHOISONLINE_H
 
-#include "listeners/configlistener.h"
-
 #include "gui/widgets/linkhandler.h"
 #include "gui/widgets/window.h"
-
-#include <set>
 
 #include "listeners/actionlistener.h"
 

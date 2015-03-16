@@ -10,8 +10,6 @@
 #ifndef MUMBLEMANAGER_H
 #define MUMBLEMANAGER_H
 
-#include "main.h"
-
 #ifdef USE_MUMBLE
 
 #include <string>

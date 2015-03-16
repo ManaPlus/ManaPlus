@@ -26,8 +26,6 @@
 #include "gui/widgets/skillinfo.h"
 #include "gui/models/listmodel.h"
 
-#include <string>
-
 #include "localconsts.h"
 
 class SkillModel final : public ListModel

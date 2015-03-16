@@ -64,8 +64,6 @@
 #ifndef LISTENERS_WIDGETLISTENER_H
 #define LISTENERS_WIDGETLISTENER_H
 
-#include <string>
-
 #include "events/event.h"
 
 #include "localconsts.h"

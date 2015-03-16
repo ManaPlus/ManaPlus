@@ -21,9 +21,9 @@
 #ifndef RESOURCES_BEINGMENUITEM_H
 #define RESOURCES_BEINGMENUITEM_H
 
-#include "resources/image.h"
-
 #include <string>
+
+#include "localconsts.h"
 
 struct BeingMenuItem final
 {

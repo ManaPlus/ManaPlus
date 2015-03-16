@@ -64,8 +64,6 @@
 #ifndef LISTENERS_FOCUSLISTENER_H
 #define LISTENERS_FOCUSLISTENER_H
 
-#include <string>
-
 #include "events/event.h"
 
 #include "localconsts.h"

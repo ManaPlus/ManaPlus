@@ -34,6 +34,7 @@
 
 #include "listeners/wrongdatanoticelistener.h"
 
+#include "net/logindata.h"
 #include "net/loginhandler.h"
 
 #include "utils/delete2.h"

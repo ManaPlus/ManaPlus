@@ -24,7 +24,6 @@
 
 #include "gui/windows/botcheckerwindow.h"
 
-#include "gui/widgets/button.h"
 #include "gui/widgets/label.h"
 
 #include "gui/models/tablemodel.h"

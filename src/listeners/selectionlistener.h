@@ -64,8 +64,6 @@
 #ifndef LISTENERS_SELECTIONLISTENER_H
 #define LISTENERS_SELECTIONLISTENER_H
 
-#include <string>
-
 #include "events/selectionevent.h"
 
 #include "localconsts.h"

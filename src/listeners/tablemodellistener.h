@@ -23,9 +23,6 @@
 #ifndef LISTENERS_TABLEMODELLISTENER_H
 #define LISTENERS_TABLEMODELLISTENER_H
 
-#include <set>
-#include <vector>
-
 #include "localconsts.h"
 
 class Widget;

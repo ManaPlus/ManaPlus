@@ -26,8 +26,6 @@
 
 #include "gui/models/listmodel.h"
 
-#include <string>
-
 class AvatarListModel notfinal : public ListModel
 {
     public:

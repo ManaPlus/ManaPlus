@@ -27,11 +27,6 @@
 
 #include "utils/stringutils.h"
 
-#include <SDL_stdinc.h>
-
-#include <string>
-#include <vector>
-
 #include "localconsts.h"
 
 class ServerInfo final

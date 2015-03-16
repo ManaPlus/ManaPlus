@@ -22,8 +22,6 @@
 #ifndef RESOURCES_DB_MAPDB_H
 #define RESOURCES_DB_MAPDB_H
 
-#include "utils/stringvector.h"
-
 #include "resources/mapinfo.h"
 
 #include <map>

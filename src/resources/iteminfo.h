@@ -30,8 +30,6 @@
 #include "resources/soundinfo.h"
 #include "resources/spritedisplay.h"
 
-#include <map>
-
 namespace ColorDB
 {
     class ItemColor;

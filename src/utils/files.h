@@ -23,8 +23,6 @@
 
 #include "utils/stringvector.h"
 
-#include <string>
-
 #include "localconsts.h"
 
 namespace Files

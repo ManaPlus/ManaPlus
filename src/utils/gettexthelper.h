@@ -21,6 +21,10 @@
 #ifndef UTILS_GETTEXTHELPER_H
 #define UTILS_GETTEXTHELPER_H
 
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+#endif
+
 #include "localconsts.h"
 
 class GettextHelper final

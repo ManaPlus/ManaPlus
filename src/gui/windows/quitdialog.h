@@ -28,8 +28,6 @@
 #include "listeners/actionlistener.h"
 #include "listeners/keylistener.h"
 
-#include <vector>
-
 class Button;
 class RadioButton;
 

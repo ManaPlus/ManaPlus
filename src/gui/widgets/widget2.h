@@ -23,8 +23,6 @@
 
 #include "gui/theme.h"
 
-#include "render/renderers.h"
-
 class Widget2 notfinal
 {
     public:

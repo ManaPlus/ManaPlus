@@ -53,6 +53,7 @@
 #include "gui/windows/textdialog.h"
 #include "gui/windows/tradewindow.h"
 
+#include "utils/gettext.h"
 #include "utils/timer.h"
 
 #include "gui/focushandler.h"

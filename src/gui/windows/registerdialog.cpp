@@ -39,6 +39,7 @@
 #include "gui/widgets/passwordfield.h"
 #include "gui/widgets/radiobutton.h"
 
+#include "net/logindata.h"
 #include "net/loginhandler.h"
 #include "net/registrationoptions.h"
 #include "net/serverfeatures.h"

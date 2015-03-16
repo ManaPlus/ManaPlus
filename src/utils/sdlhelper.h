@@ -21,6 +21,8 @@
 #ifndef UTILS_SDLHELPER_H
 #define UTILS_SDLHELPER_H
 
+#include "main.h"
+
 #ifdef USE_SDL2
 #include "utils/sdl2helper.h"
 

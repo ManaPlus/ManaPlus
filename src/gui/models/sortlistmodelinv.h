@@ -26,8 +26,6 @@
 
 #include "utils/gettext.h"
 
-#include <string>
-
 static const char *const SORT_NAME_INVENTORY[6] =
 {
     // TRANSLATORS: inventory sort mode

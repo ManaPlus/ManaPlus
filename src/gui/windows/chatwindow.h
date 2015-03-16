@@ -35,10 +35,6 @@
 #include "listeners/keylistener.h"
 #include "listeners/statlistener.h"
 
-#include <list>
-#include <map>
-#include <set>
-
 class Button;
 class ChannelTab;
 class ChatTab;

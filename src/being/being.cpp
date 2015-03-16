@@ -36,6 +36,7 @@
 #include "being/beingcacheentry.h"
 #include "being/beingflag.h"
 #include "being/beingspeech.h"
+#include "being/playerinfo.h"
 #include "being/playerrelations.h"
 
 #include "enums/being/attributes.h"

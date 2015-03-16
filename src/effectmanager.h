@@ -25,7 +25,6 @@
 
 #include "resources/effectdescription.h"
 
-#include <string>
 #include <vector>
 
 #include "localconsts.h"

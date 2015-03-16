@@ -34,8 +34,6 @@
 #include "listeners/playerdeathlistener.h"
 #include "listeners/statlistener.h"
 
-#include <vector>
-
 #include "localconsts.h"
 
 class AwayListener;

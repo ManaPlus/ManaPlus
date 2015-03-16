@@ -23,8 +23,6 @@
 #ifndef GUI_WINDOWS_CHARSELECTDIALOG_H
 #define GUI_WINDOWS_CHARSELECTDIALOG_H
 
-#include "main.h"
-
 #include "gui/widgets/window.h"
 
 #include "net/charserverhandler.h"

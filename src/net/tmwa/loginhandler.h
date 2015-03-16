@@ -27,8 +27,6 @@
 
 #include "net/tmwa/messagehandler.h"
 
-#include <string>
-
 namespace TmwAthena
 {
 

@@ -23,11 +23,8 @@
 #ifndef RESOURCES_RESOURCEMANAGER_H
 #define RESOURCES_RESOURCEMANAGER_H
 
-#include "main.h"
-
 #include "utils/stringvector.h"
 
-#include <ctime>
 #include <map>
 #include <set>
 

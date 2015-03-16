@@ -29,8 +29,6 @@
 
 #include "resources/db/itemdb.h"
 
-#include "utils/gettext.h"
-
 #include <list>
 
 #include "localconsts.h"

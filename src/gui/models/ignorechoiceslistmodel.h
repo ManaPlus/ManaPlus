@@ -23,8 +23,6 @@
 #ifndef GUI_MODELS_IGNORECHOICESLISTMODEL_H
 #define GUI_MODELS_IGNORECHOICESLISTMODEL_H
 
-#include "being/playerrelations.h"
-
 #include "gui/models/playerrelationlistmodel.h"
 
 #include "being/playerignorestrategy.h"

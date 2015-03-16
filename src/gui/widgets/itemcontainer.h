@@ -29,8 +29,6 @@
 
 #include "gui/widgets/widget.h"
 
-#include <list>
-
 #include "localconsts.h"
 
 class Image;

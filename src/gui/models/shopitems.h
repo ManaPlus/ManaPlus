@@ -25,7 +25,6 @@
 
 #include "gui/models/listmodel.h"
 
-#include <string>
 #include <vector>
 
 #include "localconsts.h"

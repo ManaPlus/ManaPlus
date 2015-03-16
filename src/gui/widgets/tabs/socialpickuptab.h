@@ -23,8 +23,6 @@
 
 #include "gui/widgets/tabs/socialtab.h"
 
-#include "actormanager.h"
-
 #include "being/localplayer.h"
 
 #include "gui/models/beingslistmodel.h"

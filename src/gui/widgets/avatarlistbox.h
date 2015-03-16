@@ -22,11 +22,7 @@
 #ifndef GUI_WIDGETS_AVATARLISTBOX_H
 #define GUI_WIDGETS_AVATARLISTBOX_H
 
-#include "listeners/configlistener.h"
-
 #include "gui/widgets/listbox.h"
-
-#include <string>
 
 class AvatarListModel;
 class Image;

@@ -22,6 +22,7 @@
 #define RENDER_MGL_H
 
 #include "main.h"
+
 #ifdef USE_OPENGL
 
 #include "render/mgldefines.h"

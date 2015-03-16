@@ -23,8 +23,6 @@
 #ifndef GUI_WIDGETS_TABS_SETUP_RELATIONS_H
 #define GUI_WIDGETS_TABS_SETUP_RELATIONS_H
 
-#include "being/playerrelations.h"
-
 #include "gui/widgets/tabs/setuptab.h"
 
 #include "listeners/playerrelationslistener.h"

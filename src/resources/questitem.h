@@ -24,7 +24,6 @@
 #include "resources/questitemtext.h"
 
 #include <set>
-#include <string>
 #include <vector>
 
 #include "localconsts.h"

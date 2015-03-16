@@ -23,8 +23,6 @@
 
 #include "listeners/configlistener.h"
 
-#include <string>
-
 #include <SDL_events.h>
 
 #include "localconsts.h"

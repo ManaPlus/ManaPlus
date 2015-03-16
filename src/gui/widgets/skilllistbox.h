@@ -23,16 +23,15 @@
 #ifndef GUI_WIDGETS_SKILLLISTBOX_H
 #define GUI_WIDGETS_SKILLLISTBOX_H
 
-#include "gui/widgets/listbox.h"
-
 #include "dragdrop.h"
 
 #include "gui/skin.h"
 #include "gui/viewport.h"
 
-#include "gui/fonts/font.h"
-
+#include "gui/widgets/listbox.h"
 #include "gui/widgets/skilldata.h"
+
+#include "gui/fonts/font.h"
 
 #include "gui/models/skillmodel.h"
 

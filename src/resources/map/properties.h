@@ -27,7 +27,6 @@
 
 #include <map>
 #include <sstream>
-#include <string>
 
 /**
  * A class holding a set of properties.

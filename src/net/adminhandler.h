@@ -23,11 +23,11 @@
 #ifndef NET_ADMINHANDLER_H
 #define NET_ADMINHANDLER_H
 
-#include "being/being.h"
-#include <iosfwd>
+#include "localconsts.h"
+
 #include <string>
 
-#include "localconsts.h"
+class Being;
 
 namespace Net
 {

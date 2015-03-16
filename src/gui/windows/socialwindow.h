@@ -27,9 +27,6 @@
 #include "listeners/actionlistener.h"
 #include "listeners/playerrelationslistener.h"
 
-#include <string>
-#include <map>
-
 class Button;
 class ConfirmDialog;
 class CreatePartyPopup;

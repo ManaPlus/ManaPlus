@@ -33,8 +33,6 @@
 
 #include "listeners/actionlistener.h"
 
-#include <vector>
-
 class Being;
 class Button;
 class Image;

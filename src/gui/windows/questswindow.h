@@ -29,9 +29,6 @@
 
 #include "listeners/actionlistener.h"
 
-#include <map>
-#include <vector>
-
 class Being;
 class Button;
 class BrowserBox;

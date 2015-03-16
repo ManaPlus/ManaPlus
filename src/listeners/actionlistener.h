@@ -64,8 +64,6 @@
 #ifndef LISTENERS_ACTIONLISTENER_H
 #define LISTENERS_ACTIONLISTENER_H
 
-#include <string>
-
 #include "events/actionevent.h"
 
 /**

@@ -29,7 +29,6 @@
 #include "utils/stringmap.h"
 
 #include <list>
-#include <string>
 
 #include <SDL_events.h>
 

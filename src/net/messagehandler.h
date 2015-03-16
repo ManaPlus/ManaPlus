@@ -25,10 +25,6 @@
 
 #include "net/messagein.h"
 
-#include <SDL_types.h>
-
-#include <memory>
-
 namespace Net
 {
 

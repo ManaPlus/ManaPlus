@@ -41,6 +41,8 @@
 #include "gui/widgets/slider.h"
 #include "gui/widgets/dropdown.h"
 
+#include "render/renderers.h"
+
 #include "utils/delete2.h"
 
 #if defined(USE_OPENGL) && !defined(ANDROID) && !defined(__APPLE__)

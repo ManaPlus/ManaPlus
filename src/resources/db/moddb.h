@@ -25,8 +25,6 @@
 
 #include "resources/modinfo.h"
 
-#include <string>
-
 #include "localconsts.h"
 
 class ModInfo;

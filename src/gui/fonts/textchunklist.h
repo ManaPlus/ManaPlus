@@ -24,7 +24,6 @@
 #include "gui/fonts/textchunksmall.h"
 
 #include <map>
-#include <string>
 
 #include "localconsts.h"
 

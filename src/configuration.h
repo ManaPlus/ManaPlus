@@ -29,10 +29,6 @@
 #include "defaults.h"
 #include "localconsts.h"
 
-#include <list>
-#include <map>
-#include <string>
-
 class ConfigListener;
 class ConfigurationObject;
 

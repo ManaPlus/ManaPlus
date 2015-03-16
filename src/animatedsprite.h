@@ -25,8 +25,6 @@
 
 #include "sprite.h"
 
-#include <string>
-
 class Animation;
 class AnimationDelayLoad;
 struct Frame;

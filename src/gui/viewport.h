@@ -25,8 +25,6 @@
 
 #include "position.h"
 
-#include "listeners/configlistener.h"
-
 #include "gui/widgets/windowcontainer.h"
 
 #include "listeners/mouselistener.h"

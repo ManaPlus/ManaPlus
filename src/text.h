@@ -26,8 +26,6 @@
 
 #include "render/graphics.h"
 
-#include "gui/color.h"
-
 #include "localconsts.h"
 
 class Font;
