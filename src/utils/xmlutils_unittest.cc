@@ -30,9 +30,6 @@
 
 #include "resources/resourcemanager.h"
 
-#include <string>
-#include <vector>
-
 #include "debug.h"
 
 static void init()

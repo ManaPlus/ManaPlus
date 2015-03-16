@@ -22,8 +22,6 @@
 
 #include "client.h"
 
-#include "gui/theme.h"
-
 #include "gui/fonts/font.h"
 
 #include "gui/widgets/browserbox.h"
@@ -33,10 +31,6 @@
 #include "gtest/gtest.h"
 
 #include <physfs.h>
-
-#include <list>
-#include <string>
-#include <vector>
 
 #include "debug.h"
 
