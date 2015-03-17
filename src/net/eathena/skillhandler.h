@@ -83,6 +83,8 @@ class SkillHandler final : public MessageHandler, public Ea::SkillHandler
         static void processSkillAutoSpells(Net::MessageIn &msg);
 
         static void processSkillDevotionEffect(Net::MessageIn &msg);
+
+        static void processSkillItemListWindow(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
