@@ -157,6 +157,7 @@
 #define SMSG_BEING_STAT_UPDATE_1     0x01ab
 #define SMSG_BEING_ATTRS             0x0b0a
 #define SMSG_BEING_FONT              0x02ef
+#define SMSG_BEING_MILLENIUM_SHIELD  0x0440
 #define SMSG_IGNORE_NICK_ACK         0x00d1
 #define SMSG_STARS_KILL              0x020e
 #define SMSG_GLADIATOR_FEEL_REQUEST  0x0253

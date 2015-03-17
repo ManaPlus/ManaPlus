@@ -132,6 +132,7 @@ BeingHandler::BeingHandler(const bool enableSync) :
         SMSG_GLADIATOR_FEEL_REQUEST,
         SMSG_BOSS_MAP_INFO,
         SMSG_BEING_FONT,
+        SMSG_BEING_MILLENIUM_SHIELD,
         0
     };
     handledMessages = _messages;
@@ -390,6 +391,10 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_BEING_FONT:
             processBeingFont(msg);
+            break;
+
+        case SMSG_BEING_MILLENIUM_SHIELD:
+            processBeingMilleniumShield(msg);
             break;
 
         default:
@@ -1859,6 +1864,15 @@ void BeingHandler::processBeingFont(Net::MessageIn &msg)
 
     msg.readInt32("account id");
     msg.readInt16("font");
+}
+
+void BeingHandler::processBeingMilleniumShield(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+
+    msg.readInt32("account id");
+    msg.readInt16("shields");
+    msg.readInt16("unused");
 }
 
 }  // namespace EAthena
