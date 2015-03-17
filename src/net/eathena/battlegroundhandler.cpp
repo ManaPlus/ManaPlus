@@ -39,6 +39,7 @@ BattleGroundHandler::BattleGroundHandler() :
     {
         SMSG_BATTLE_EMBLEM,
         SMSG_BATTLE_UPDATE_SCORE,
+        SMSG_BATTLE_UPDATE_COORDS,
         0
     };
     handledMessages = _messages;
@@ -55,6 +56,10 @@ void BattleGroundHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_BATTLE_UPDATE_SCORE:
             processBattleUpdateScore(msg);
+            break;
+
+        case SMSG_BATTLE_UPDATE_COORDS:
+            processBattleUpdateCoords(msg);
             break;
 
         default:
@@ -75,6 +80,16 @@ void BattleGroundHandler::processBattleUpdateScore(Net::MessageIn &msg)
     UNIMPLIMENTEDPACKET;
     msg.readInt16("camp a points");
     msg.readInt16("camp b points");
+}
+
+void BattleGroundHandler::processBattleUpdateCoords(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+    msg.readInt32("account id");
+    msg.readString(24, "name");
+    msg.readInt16("class");
+    msg.readInt16("x");
+    msg.readInt16("y");
 }
 
 }  // namespace EAthena
