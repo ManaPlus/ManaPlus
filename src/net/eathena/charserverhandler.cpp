@@ -93,6 +93,7 @@ CharServerHandler::CharServerHandler() :
         SMSG_CHAR_RENAME,
         SMSG_CHAR_CHANGE_SLOT,
         SMSG_CHAR_CAPTCHA_NOT_SUPPORTED,
+        SMSG_CHAR_DELETE2_ACK,
         0
     };
     handledMessages = _messages;
@@ -157,6 +158,10 @@ void CharServerHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_CHAR_CAPTCHA_NOT_SUPPORTED:
             processCharCaptchaNotSupported(msg);
+            break;
+
+        case SMSG_CHAR_DELETE2_ACK:
+            processCharDelete2Ack(msg);
             break;
 
         default:
@@ -637,6 +642,14 @@ void CharServerHandler::processCharCaptchaNotSupported(Net::MessageIn &msg)
     UNIMPLIMENTEDPACKET;
     msg.readInt16("5");
     msg.readUInt8("1");
+}
+
+void CharServerHandler::processCharDelete2Ack(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+    msg.readInt32("char id");
+    msg.readInt32("result");
+    msg.readInt32("time");
 }
 
 }  // namespace EAthena
