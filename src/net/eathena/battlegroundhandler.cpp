@@ -40,6 +40,7 @@ BattleGroundHandler::BattleGroundHandler() :
         SMSG_BATTLE_EMBLEM,
         SMSG_BATTLE_UPDATE_SCORE,
         SMSG_BATTLE_UPDATE_COORDS,
+        SMSG_BATTLE_PLAY,
         0
     };
     handledMessages = _messages;
@@ -60,6 +61,10 @@ void BattleGroundHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_BATTLE_UPDATE_COORDS:
             processBattleUpdateCoords(msg);
+            break;
+
+        case SMSG_BATTLE_PLAY:
+            processBattlePlay(msg);
             break;
 
         default:
@@ -90,6 +95,12 @@ void BattleGroundHandler::processBattleUpdateCoords(Net::MessageIn &msg)
     msg.readInt16("class");
     msg.readInt16("x");
     msg.readInt16("y");
+}
+
+void BattleGroundHandler::processBattlePlay(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+    msg.readString(24, "battle ground name");
 }
 
 }  // namespace EAthena

@@ -430,6 +430,7 @@
 #define SMSG_BATTLE_EMBLEM           0x02dd
 #define SMSG_BATTLE_UPDATE_SCORE     0x02de
 #define SMSG_BATTLE_UPDATE_COORDS    0x02df
+#define SMSG_BATTLE_PLAY             0x07fe
 
 /**********************************
  *  Packets from client to server *
