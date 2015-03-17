@@ -58,6 +58,7 @@
 #ifdef EATHENA_SUPPORT
 #include "net/tmwa/auctionhandler.h"
 #include "net/tmwa/bankhandler.h"
+#include "net/tmwa/battlegroundhandler.h"
 #include "net/tmwa/buyingstorehandler.h"
 #include "net/tmwa/cashshophandler.h"
 #include "net/tmwa/elementalhandler.h"
@@ -110,6 +111,7 @@ GeneralHandler::GeneralHandler() :
     mServerFeatures(new ServerFeatures),
     mAuctionHandler(new AuctionHandler),
     mBankHandler(new BankHandler),
+    mBattleGroundHandler(new BattleGroundHandler),
     mBuyingStoreHandler(new BuyingStoreHandler),
     mCashShopHandler(new CashShopHandler),
     mElementalHandler(new ElementalHandler),
@@ -243,6 +245,7 @@ void GeneralHandler::load()
 #ifdef EATHENA_SUPPORT
     mNetwork->registerHandler(mAuctionHandler);
     mNetwork->registerHandler(mBankHandler);
+    mNetwork->registerHandler(mBattleGroundHandler);
     mNetwork->registerHandler(mBuyingStoreHandler);
     mNetwork->registerHandler(mCashShopHandler);
     mNetwork->registerHandler(mElementalHandler);

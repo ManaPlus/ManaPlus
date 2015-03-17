@@ -41,6 +41,7 @@
 #include "net/eathena/adminhandler.h"
 #include "net/eathena/auctionhandler.h"
 #include "net/eathena/bankhandler.h"
+#include "net/eathena/battlegroundhandler.h"
 #include "net/eathena/beinghandler.h"
 #include "net/eathena/buyingstorehandler.h"
 #include "net/eathena/buysellhandler.h"
@@ -113,6 +114,7 @@ GeneralHandler::GeneralHandler() :
     mCashShopHandler(new CashShopHandler),
     mFamilyHandler(new FamilyHandler),
     mBankHandler(new BankHandler),
+    mBattleGroundHandler(new BankHandler),
     mMercenaryHandler(new MercenaryHandler),
     mBuyingStoreHandler(new BuyingStoreHandler),
     mHomunculusHandler(new HomunculusHandler),
@@ -304,6 +306,7 @@ void GeneralHandler::load()
     mNetwork->registerHandler(mCashShopHandler);
     mNetwork->registerHandler(mFamilyHandler);
     mNetwork->registerHandler(mBankHandler);
+    mNetwork->registerHandler(mBattleGroundHandler);
     mNetwork->registerHandler(mMercenaryHandler);
     mNetwork->registerHandler(mBuyingStoreHandler);
     mNetwork->registerHandler(mHomunculusHandler);

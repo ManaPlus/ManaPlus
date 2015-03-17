@@ -1375,6 +1375,8 @@ SET(SRCS_TMWAEATHENA
     net/tmwa/auctionhandler.h
     net/tmwa/bankhandler.cpp
     net/tmwa/bankhandler.h
+    net/tmwa/battlegroundhandler.cpp
+    net/tmwa/battlegroundhandler.h
     net/tmwa/buyingstorehandler.cpp
     net/tmwa/buyingstorehandler.h
     net/tmwa/cashshophandler.cpp
@@ -1424,6 +1426,7 @@ SET(SRCS_EATHENA
     listeners/vendingslotslistener.h
     net/auctionhandler.h
     net/bankhandler.h
+    net/battlegroundhandler.h
     net/buyingstorehandler.h
     net/cashshophandler.h
     net/elementalhandler.h
@@ -1442,6 +1445,8 @@ SET(SRCS_EATHENA
     net/eathena/auctionhandler.h
     net/eathena/bankhandler.cpp
     net/eathena/bankhandler.h
+    net/eathena/battlegroundhandler.cpp
+    net/eathena/battlegroundhandler.h
     net/eathena/cashshophandler.cpp
     net/eathena/cashshophandler.h
     net/eathena/beinghandler.cpp

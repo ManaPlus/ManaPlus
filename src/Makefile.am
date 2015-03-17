@@ -1309,6 +1309,8 @@ manaplus_SOURCES += net/tmwa/auctionhandler.cpp \
 	      net/tmwa/auctionhandler.h \
 	      net/tmwa/bankhandler.cpp \
 	      net/tmwa/bankhandler.h \
+	      net/tmwa/battlegroundhandler.cpp \
+	      net/tmwa/battlegroundhandler.h \
 	      net/tmwa/buyingstorehandler.cpp \
 	      net/tmwa/buyingstorehandler.h \
 	      net/tmwa/cashshophandler.cpp \
@@ -1358,6 +1360,7 @@ manaplus_SOURCES += gui/windows/bankwindow.cpp \
 	      listeners/vendingslotslistener.h \
 	      net/auctionhandler.h \
 	      net/bankhandler.h \
+	      net/battlegroundhandler.h \
 	      net/buyingstorehandler.h \
 	      net/cashshophandler.h \
 	      net/elementalhandler.h \
@@ -1376,6 +1379,8 @@ manaplus_SOURCES += gui/windows/bankwindow.cpp \
 	      net/eathena/auctionhandler.h \
 	      net/eathena/bankhandler.cpp \
 	      net/eathena/bankhandler.h \
+	      net/eathena/battlegroundhandler.cpp \
+	      net/eathena/battlegroundhandler.h \
 	      net/eathena/cashshophandler.cpp \
 	      net/eathena/cashshophandler.h \
 	      net/eathena/beinghandler.cpp \

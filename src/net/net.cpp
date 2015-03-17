@@ -43,6 +43,7 @@ namespace Net
 #ifdef EATHENA_SUPPORT
     class AuctionHandler;
     class BankHandler;
+    class BattleGroundHandler;
     class BuyingStoreHandler;
     class CashShopHandler;
     class ElementalHandler;
@@ -95,6 +96,7 @@ Net::ServerFeatures *serverFeatures = nullptr;
 #ifdef EATHENA_SUPPORT
 Net::AuctionHandler *auctionHandler = nullptr;
 Net::BankHandler *bankHandler = nullptr;
+Net::BattleGroundHandler *battleGroundHandler = nullptr;
 Net::BuyingStoreHandler *buyingStoreHandler = nullptr;
 Net::CashShopHandler *cashShopHandler = nullptr;
 Net::ElementalHandler *elementalHandler = nullptr;

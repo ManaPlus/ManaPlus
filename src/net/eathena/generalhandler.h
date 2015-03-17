@@ -88,6 +88,7 @@ class GeneralHandler final : public MessageHandler,
         MessageHandlerPtr mCashShopHandler;
         MessageHandlerPtr mFamilyHandler;
         MessageHandlerPtr mBankHandler;
+        MessageHandlerPtr mBattleGroundHandler;
         MessageHandlerPtr mMercenaryHandler;
         MessageHandlerPtr mBuyingStoreHandler;
         MessageHandlerPtr mHomunculusHandler;
