@@ -38,6 +38,7 @@ BattleGroundHandler::BattleGroundHandler() :
     static const uint16_t _messages[] =
     {
         SMSG_BATTLE_EMBLEM,
+        SMSG_BATTLE_UPDATE_SCORE,
         0
     };
     handledMessages = _messages;
@@ -52,6 +53,10 @@ void BattleGroundHandler::handleMessage(Net::MessageIn &msg)
             processBattleEmblem(msg);
             break;
 
+        case SMSG_BATTLE_UPDATE_SCORE:
+            processBattleUpdateScore(msg);
+            break;
+
         default:
             break;
     }
@@ -63,6 +68,13 @@ void BattleGroundHandler::processBattleEmblem(Net::MessageIn &msg)
     msg.readInt32("account id");
     msg.readString(24, "name");
     msg.readInt16("camp");
+}
+
+void BattleGroundHandler::processBattleUpdateScore(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+    msg.readInt16("camp a points");
+    msg.readInt16("camp b points");
 }
 
 }  // namespace EAthena

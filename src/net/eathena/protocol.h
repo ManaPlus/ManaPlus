@@ -422,6 +422,7 @@
 
 #define SMSG_BATTLE_CHAT_MESSAGE     0x02dc
 #define SMSG_BATTLE_EMBLEM           0x02dd
+#define SMSG_BATTLE_UPDATE_SCORE     0x02de
 
 /**********************************
  *  Packets from client to server *

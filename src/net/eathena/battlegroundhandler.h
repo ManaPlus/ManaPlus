@@ -41,6 +41,8 @@ class BattleGroundHandler final : public MessageHandler,
 
     protected:
         void processBattleEmblem(Net::MessageIn &msg);
+
+        void processBattleUpdateScore(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
