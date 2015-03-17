@@ -70,6 +70,7 @@ PlayerHandler::PlayerHandler() :
         SMSG_PLAYER_FAME_TAEKWON,
         SMSG_PLAYER_READ_BOOK,
         SMSG_PLAYER_EQUIP_TICK_ACK,
+        SMSG_AUTOSHADOW_SPELL_LIST,
         0
     };
     handledMessages = _messages;
@@ -179,6 +180,10 @@ void PlayerHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_PLAYER_EQUIP_TICK_ACK:
             processPlayerEquipTickAck(msg);
+            break;
+
+        case SMSG_AUTOSHADOW_SPELL_LIST:
+            processPlayerAutoShadowSpellList(msg);
             break;
 
         default:
@@ -595,6 +600,14 @@ void PlayerHandler::processPlayerEquipTickAck(Net::MessageIn &msg)
     UNIMPLIMENTEDPACKET;
     msg.readInt32("unused");
     msg.readInt32("flag");
+}
+
+void PlayerHandler::processPlayerAutoShadowSpellList(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+    const int count = (msg.readInt16("len") - 8) / 2;
+    for (int f = 0; f < count; f ++)
+        msg.readInt16("skill id");
 }
 
 }  // namespace EAthena

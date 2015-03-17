@@ -104,6 +104,8 @@ class PlayerHandler final : public MessageHandler, public Ea::PlayerHandler
         static void processPlayerReadBook(Net::MessageIn &msg);
 
         static void processPlayerEquipTickAck(Net::MessageIn &msg);
+
+        static void processPlayerAutoShadowSpellList(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
