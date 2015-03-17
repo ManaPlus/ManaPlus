@@ -131,6 +131,7 @@ BeingHandler::BeingHandler(const bool enableSync) :
         SMSG_PK_RANKS_LIST,
         SMSG_GLADIATOR_FEEL_REQUEST,
         SMSG_BOSS_MAP_INFO,
+        SMSG_BEING_FONT,
         0
     };
     handledMessages = _messages;
@@ -385,6 +386,10 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_BOSS_MAP_INFO:
             processBossMapInfo(msg);
+            break;
+
+        case SMSG_BEING_FONT:
+            processBeingFont(msg);
             break;
 
         default:
@@ -1846,6 +1851,14 @@ void BeingHandler::processBossMapInfo(Net::MessageIn &msg)
     msg.readInt16("max hours");
     msg.readInt16("max minutes");
     msg.readString(24, "monster name");  // really can be used 51 byte?
+}
+
+void BeingHandler::processBeingFont(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+
+    msg.readInt32("account id");
+    msg.readInt16("font");
 }
 
 }  // namespace EAthena

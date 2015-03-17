@@ -152,6 +152,8 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
         static void processGladiatorFeelRequest(Net::MessageIn &msg);
 
         static void processBossMapInfo(Net::MessageIn &msg);
+
+        static void processBeingFont(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
