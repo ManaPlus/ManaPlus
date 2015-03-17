@@ -104,6 +104,8 @@ class CharServerHandler final : public MessageHandler,
 
         static void processCharDeleteFailed(Net::MessageIn &msg);
 
+        static void processCharCaptchaNotSupported(Net::MessageIn &msg);
+
     private:
         static std::string mNewName;
         static uint32_t mPinSeed;
