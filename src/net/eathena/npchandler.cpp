@@ -60,6 +60,7 @@ NpcHandler::NpcHandler() :
         SMSG_NPC_CHANGETITLE,
         SMSG_NPC_AREA,
         SMSG_NPC_SHOW_DIGIT,
+        SMSG_NPC_PROGRESS_BAR_ABORT,
         0
     };
     handledMessages = _messages;
@@ -124,6 +125,10 @@ void NpcHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_NPC_SHOW_DIGIT:
             processShowDigit(msg);
+            break;
+
+        case SMSG_NPC_PROGRESS_BAR_ABORT:
+            processProgressBarAbort(msg);
             break;
 
         default:
@@ -385,6 +390,11 @@ void NpcHandler::processShowDigit(Net::MessageIn &msg)
 
     msg.readUInt8("type");
     msg.readInt32("value");
+}
+
+void NpcHandler::processProgressBarAbort(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
 }
 
 }  // namespace EAthena

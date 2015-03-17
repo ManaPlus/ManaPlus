@@ -183,6 +183,7 @@
 #define SMSG_NPC_INT_INPUT           0x0142 /**< Integer input */
 #define SMSG_NPC_STR_INPUT           0x01d4 /**< String input */
 #define SMSG_NPC_SHOW_PROGRESS_BAR   0x02f0
+#define SMSG_NPC_PROGRESS_BAR_ABORT  0x02f2
 #define SMSG_NPC_CHANGETITLE         0x0b06
 #define SMSG_NPC_MARKET_OPEN         0x09d5
 #define SMSG_NPC_MARKET_BUY_ACK      0x09d7
