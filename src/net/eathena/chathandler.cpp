@@ -89,6 +89,7 @@ ChatHandler::ChatHandler() :
         SMSG_MANNER_MESSAGE,
         SMSG_CHAT_SILENCE,
         SMSG_CHAT_TALKIE_BOX,
+        SMSG_BATTLE_CHAT_MESSAGE,
         0
     };
     handledMessages = _messages;
@@ -219,6 +220,10 @@ void ChatHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_CHAT_TALKIE_BOX:
             processChatTalkieBox(msg);
+            break;
+
+        case SMSG_BATTLE_CHAT_MESSAGE:
+            processBattleChatMessage(msg);
             break;
 
         default:
@@ -911,5 +916,15 @@ void ChatHandler::processChatTalkieBox(Net::MessageIn &msg)
     msg.readInt32("being id");
     msg.readString(80, "message");
 }
+
+void ChatHandler::processBattleChatMessage(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+    const int sz = msg.readInt16("len") - 24 - 8;
+    msg.readInt32("account id");
+    msg.readString(24, "nick");
+    msg.readString(sz, "message");
+}
+
 
 }  // namespace EAthena

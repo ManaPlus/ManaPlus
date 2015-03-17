@@ -420,6 +420,8 @@
 #define SMSG_INSTANCE_INFO           0x02cd
 #define SMSG_INSTANCE_DELETE         0x02ce
 
+#define SMSG_BATTLE_CHAT_MESSAGE     0x02dc
+
 /**********************************
  *  Packets from client to server *
  **********************************/

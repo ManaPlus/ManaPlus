@@ -151,6 +151,8 @@ class ChatHandler final : public MessageHandler, public Ea::ChatHandler
         static void processChatSilence(Net::MessageIn &msg);
 
         static void processChatTalkieBox(Net::MessageIn &msg);
+
+        static void processBattleChatMessage(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
