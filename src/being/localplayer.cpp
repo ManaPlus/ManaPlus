@@ -91,6 +91,8 @@
 #include "mumblemanager.h"
 #endif
 
+#include <climits>
+
 #include "debug.h"
 
 static const int16_t awayLimitTimer = 60;

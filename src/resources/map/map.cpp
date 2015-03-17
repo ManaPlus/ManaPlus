@@ -63,6 +63,8 @@
 
 #include <sys/stat.h>
 
+#include <climits>
+
 #include "debug.h"
 
 class ActorFunctuator final
