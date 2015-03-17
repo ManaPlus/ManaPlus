@@ -421,6 +421,7 @@
 #define SMSG_INSTANCE_DELETE         0x02ce
 
 #define SMSG_BATTLE_CHAT_MESSAGE     0x02dc
+#define SMSG_BATTLE_EMBLEM           0x02dd
 
 /**********************************
  *  Packets from client to server *

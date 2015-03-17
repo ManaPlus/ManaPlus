@@ -38,6 +38,9 @@ class BattleGroundHandler final : public MessageHandler,
         A_DELETE_COPY(BattleGroundHandler)
 
         void handleMessage(Net::MessageIn &msg) override final;
+
+    protected:
+        void processBattleEmblem(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
