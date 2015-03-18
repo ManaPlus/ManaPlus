@@ -150,6 +150,7 @@
 #define SMSG_BEING_ACTION2           0x02e1
 #define SMSG_BEING_CHAT              0x008d /**< A being talks */
 #define SMSG_BEING_SLIDE             0x01ff
+#define SMSG_BEING_CHARM             0x08cf
 #define SMSG_COLOR_MESSAGE           0x02c1
 #define SMSG_FORMAT_MESSAGE          0x0291
 #define SMSG_FORMAT_MESSAGE_NUMBER   0x07e2

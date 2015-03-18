@@ -156,6 +156,8 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
         static void processBeingFont(Net::MessageIn &msg);
 
         static void processBeingMilleniumShield(Net::MessageIn &msg);
+
+        static void processBeingCharm(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

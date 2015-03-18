@@ -133,6 +133,7 @@ BeingHandler::BeingHandler(const bool enableSync) :
         SMSG_BOSS_MAP_INFO,
         SMSG_BEING_FONT,
         SMSG_BEING_MILLENIUM_SHIELD,
+        SMSG_BEING_CHARM,
         0
     };
     handledMessages = _messages;
@@ -395,6 +396,10 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_BEING_MILLENIUM_SHIELD:
             processBeingMilleniumShield(msg);
+            break;
+
+        case SMSG_BEING_CHARM:
+            processBeingCharm(msg);
             break;
 
         default:
@@ -1873,6 +1878,15 @@ void BeingHandler::processBeingMilleniumShield(Net::MessageIn &msg)
     msg.readInt32("account id");
     msg.readInt16("shields");
     msg.readInt16("unused");
+}
+
+void BeingHandler::processBeingCharm(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+
+    msg.readInt32("account id");
+    msg.readInt16("charm type");
+    msg.readInt16("charm count");
 }
 
 }  // namespace EAthena
