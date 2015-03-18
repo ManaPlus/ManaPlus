@@ -97,6 +97,7 @@ class GeneralHandler final : public MessageHandler,
         MessageHandlerPtr mMapHandler;
         MessageHandlerPtr mMarketHandler;
         MessageHandlerPtr mVendingHandler;
+        MessageHandlerPtr mRouletteHandler;
         MessageHandlerPtr mSearchStoreHandler;
 };
 

@@ -55,6 +55,7 @@ namespace Net
     class MarketHandler;
     class MercenaryHandler;
     class SearchStoreHandler;
+    class RouletteHandler;
     class VendingHandler;
 #endif
     class AdminHandler;
@@ -107,6 +108,7 @@ Net::MailHandler *mailHandler = nullptr;
 Net::MapHandler *mapHandler = nullptr;
 Net::MarketHandler *marketHandler = nullptr;
 Net::MercenaryHandler *mercenaryHandler = nullptr;
+Net::RouletteHandler *rouletteHandler = nullptr;
 Net::SearchStoreHandler *searchStoreHandler = nullptr;
 Net::VendingHandler *vendingHandler = nullptr;
 #endif
