@@ -71,6 +71,7 @@ PlayerHandler::PlayerHandler() :
         SMSG_PLAYER_READ_BOOK,
         SMSG_PLAYER_EQUIP_TICK_ACK,
         SMSG_AUTOSHADOW_SPELL_LIST,
+        SMSG_PLAYER_RANK_POINTS,
         0
     };
     handledMessages = _messages;
@@ -184,6 +185,10 @@ void PlayerHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_AUTOSHADOW_SPELL_LIST:
             processPlayerAutoShadowSpellList(msg);
+            break;
+
+        case SMSG_PLAYER_RANK_POINTS:
+            processPlayerRankPoints(msg);
             break;
 
         default:
@@ -608,6 +613,14 @@ void PlayerHandler::processPlayerAutoShadowSpellList(Net::MessageIn &msg)
     const int count = (msg.readInt16("len") - 8) / 2;
     for (int f = 0; f < count; f ++)
         msg.readInt16("skill id");
+}
+
+void PlayerHandler::processPlayerRankPoints(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+    msg.readInt16("type");
+    msg.readInt32("points");
+    msg.readInt32("fame");
 }
 
 }  // namespace EAthena
