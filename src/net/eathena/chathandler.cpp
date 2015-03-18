@@ -90,6 +90,7 @@ ChatHandler::ChatHandler() :
         SMSG_CHAT_SILENCE,
         SMSG_CHAT_TALKIE_BOX,
         SMSG_BATTLE_CHAT_MESSAGE,
+        SMSG_SCRIPT_MESSAGE,
         0
     };
     handledMessages = _messages;
@@ -224,6 +225,10 @@ void ChatHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_BATTLE_CHAT_MESSAGE:
             processBattleChatMessage(msg);
+            break;
+
+        case SMSG_SCRIPT_MESSAGE:
+            processScriptMessage(msg);
             break;
 
         default:
@@ -926,5 +931,12 @@ void ChatHandler::processBattleChatMessage(Net::MessageIn &msg)
     msg.readString(sz, "message");
 }
 
+void ChatHandler::processScriptMessage(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+    const int sz = msg.readInt16("len") - 8;
+    msg.readInt32("being id");
+    msg.readString(sz, "message");
+}
 
 }  // namespace EAthena

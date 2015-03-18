@@ -307,6 +307,7 @@
 #define SMSG_MONSTER_INFO            0x018c
 #define SMSG_PLAYER_HP               0x080e
 #define SMSG_PVP_INFO                0x0210
+#define SMSG_SCRIPT_MESSAGE          0x08b3
 
 #define SMSG_CHAT_IGNORE_LIST        0x00d4
 #define SMSG_CHAT_CREATE_ACK         0x00d6
