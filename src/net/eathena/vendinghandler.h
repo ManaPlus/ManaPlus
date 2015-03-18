@@ -71,6 +71,8 @@ class VendingHandler final : public MessageHandler,
 
         static void processReport(Net::MessageIn &msg);
 
+        static void processOpenStatus(Net::MessageIn &msg);
+
         static BuyDialog *mBuyDialog;
 };
 

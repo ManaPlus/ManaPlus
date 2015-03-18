@@ -59,6 +59,8 @@ VendingHandler::VendingHandler() :
         SMSG_VENDING_ITEMS_LIST,
         SMSG_VENDING_BUY_ACK,
         SMSG_VENDING_OPEN,
+        SMSG_VENDING_REPORT,
+        SMSG_VENDING_OPEN_STATUS,
         0
     };
     handledMessages = _messages;
@@ -96,6 +98,10 @@ void VendingHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_VENDING_REPORT:
             processReport(msg);
+            break;
+
+        case SMSG_VENDING_OPEN_STATUS:
+            processOpenStatus(msg);
             break;
 
         default:
@@ -196,6 +202,12 @@ void VendingHandler::processReport(Net::MessageIn &msg)
     UNIMPLIMENTEDPACKET;
     msg.readInt16("inv index");
     msg.readInt16("amount");
+}
+
+void VendingHandler::processOpenStatus(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+    msg.readUInt8("result");
 }
 
 void VendingHandler::close() const
