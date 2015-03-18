@@ -452,6 +452,7 @@
 #define SMSG_BATTLE_JOINED           0x08d9
 
 #define SMSG_ROULETTE_INFO_ACK_TYPE  0x0a1c
+#define SMSG_ROULETTE_RECV_ITEM_ACK  0x0a22
 
 /**********************************
  *  Packets from client to server *

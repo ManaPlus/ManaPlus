@@ -38,6 +38,7 @@ RouletteHandler::RouletteHandler() :
     static const uint16_t _messages[] =
     {
         SMSG_ROULETTE_INFO_ACK_TYPE,
+        SMSG_ROULETTE_RECV_ITEM_ACK,
         0
     };
     handledMessages = _messages;
@@ -50,6 +51,10 @@ void RouletteHandler::handleMessage(Net::MessageIn &msg)
     {
         case SMSG_ROULETTE_INFO_ACK_TYPE:
             processRouletteInfoAckType(msg);
+            break;
+
+        case SMSG_ROULETTE_RECV_ITEM_ACK:
+            processRouletteItemAck(msg);
             break;
 
         default:
@@ -70,6 +75,13 @@ void RouletteHandler::processRouletteInfoAckType(Net::MessageIn &msg)
         msg.readInt16("item id");
         msg.readInt16("count");
     }
+}
+
+void RouletteHandler::processRouletteItemAck(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+    msg.readUInt8("result");
+    msg.readInt16("item id");
 }
 
 }  // namespace EAthena

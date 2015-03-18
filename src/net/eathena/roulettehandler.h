@@ -39,6 +39,8 @@ class RouletteHandler final : public MessageHandler,
 
     protected:
         static void processRouletteInfoAckType(Net::MessageIn &msg);
+
+        static void processRouletteItemAck(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
