@@ -43,6 +43,8 @@ class ItemHandler final : public MessageHandler, public Ea::ItemHandler
         static void processItemDropped(Net::MessageIn &msg);
 
         static void processGraffiti(Net::MessageIn &msg);
+
+        static void processItemMvpDropped(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

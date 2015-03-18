@@ -42,6 +42,7 @@ ItemHandler::ItemHandler() :
         SMSG_ITEM_DROPPED,
         SMSG_ITEM_REMOVE,
         SMSG_GRAFFITI_VISIBLE,
+        SMSG_ITEM_MVP_DROPPED,
         0
     };
     handledMessages = _messages;
@@ -65,6 +66,10 @@ void ItemHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_GRAFFITI_VISIBLE:
             processGraffiti(msg);
+            break;
+
+        case SMSG_ITEM_MVP_DROPPED:
+            processItemMvpDropped(msg);
             break;
 
         default:
@@ -102,6 +107,18 @@ void ItemHandler::processGraffiti(Net::MessageIn &msg)
     msg.readUInt8("visible");
     msg.readUInt8("is content");
     msg.readString(80, "text");
+}
+
+void ItemHandler::processItemMvpDropped(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+    msg.readInt16("len");
+    msg.readUInt8("type");
+    msg.readInt16("item id");
+    msg.readUInt8("len");
+    msg.readString(24, "name");
+    msg.readUInt8("monster name len");
+    msg.readString(24, "monster name");
 }
 
 }  // namespace EAthena
