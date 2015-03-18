@@ -112,6 +112,8 @@ class CharServerHandler final : public MessageHandler,
 
         static void processCharDelete2CancelAck(Net::MessageIn &msg);
 
+        static void processCharCharacters(Net::MessageIn &msg);
+
     private:
         static std::string mNewName;
         static uint32_t mPinSeed;

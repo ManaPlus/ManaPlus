@@ -96,6 +96,7 @@ CharServerHandler::CharServerHandler() :
         SMSG_CHAR_DELETE2_ACK,
         SMSG_CHAR_DELETE2_ACCEPT_ACTUAL_ACK,
         SMSG_CHAR_DELETE2_CANCEL_ACK,
+        SMSG_CHAR_CHARACTERS,
         0
     };
     handledMessages = _messages;
@@ -172,6 +173,10 @@ void CharServerHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_CHAR_DELETE2_CANCEL_ACK:
             processCharDelete2CancelAck(msg);
+            break;
+
+        case SMSG_CHAR_CHARACTERS:
+            processCharCharacters(msg);
             break;
 
         default:
@@ -674,6 +679,32 @@ void CharServerHandler::processCharDelete2CancelAck(Net::MessageIn &msg)
     UNIMPLIMENTEDPACKET;
     msg.readInt32("char id");
     msg.readInt32("result");
+}
+
+void CharServerHandler::processCharCharacters(Net::MessageIn &msg)
+{
+    msg.skip(2, "packet len");
+
+    delete_all(mCharacters);
+    mCharacters.clear();
+
+    // Derive number of characters from message length
+    const int count = (msg.getLength() - 4)
+        / (106 + 4 + 2 + 16 + 4 + 4 + 4 + 4);
+
+    for (int i = 0; i < count; ++i)
+    {
+        Net::Character *const character = new Net::Character;
+        charServerHandler->readPlayerData(msg, character, false);
+        mCharacters.push_back(character);
+        if (character->dummy)
+        {
+            logger->log("CharServer: Player: %s (%d)",
+                character->dummy->getName().c_str(), character->slot);
+        }
+    }
+
+    client->setState(STATE_CHAR_SELECT);
 }
 
 }  // namespace EAthena
