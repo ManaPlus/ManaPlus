@@ -447,6 +447,7 @@
 #define SMSG_BATTLE_QUEUE_ACK        0x08d8
 #define SMSG_BATTLE_BEGINS           0x08df
 #define SMSG_BATTLE_NOTICE_DELETE    0x08db
+#define SMSG_BATTLE_JOINED           0x08d9
 
 /**********************************
  *  Packets from client to server *
