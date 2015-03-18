@@ -95,6 +95,7 @@ CharServerHandler::CharServerHandler() :
         SMSG_CHAR_CAPTCHA_NOT_SUPPORTED,
         SMSG_CHAR_DELETE2_ACK,
         SMSG_CHAR_DELETE2_ACCEPT_ACTUAL_ACK,
+        SMSG_CHAR_DELETE2_CANCEL_ACK,
         0
     };
     handledMessages = _messages;
@@ -167,6 +168,10 @@ void CharServerHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_CHAR_DELETE2_ACCEPT_ACTUAL_ACK:
             processCharDelete2AcceptActual(msg);
+            break;
+
+        case SMSG_CHAR_DELETE2_CANCEL_ACK:
+            processCharDelete2CancelAck(msg);
             break;
 
         default:
@@ -658,6 +663,13 @@ void CharServerHandler::processCharDelete2Ack(Net::MessageIn &msg)
 }
 
 void CharServerHandler::processCharDelete2AcceptActual(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+    msg.readInt32("char id");
+    msg.readInt32("result");
+}
+
+void CharServerHandler::processCharDelete2CancelAck(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
     msg.readInt32("char id");
