@@ -23,7 +23,7 @@
 
 #ifdef EATHENA_SUPPORT
 
-#include "net/battleground.h"
+#include "net/battlegroundhandler.h"
 
 #include "net/eathena/messagehandler.h"
 
