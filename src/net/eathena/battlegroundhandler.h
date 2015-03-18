@@ -51,6 +51,8 @@ class BattleGroundHandler final : public MessageHandler,
         void processBattleQueueAck(Net::MessageIn &msg);
 
         void processBattleBegins(Net::MessageIn &msg);
+
+        void processBattleNoticeDelete(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
