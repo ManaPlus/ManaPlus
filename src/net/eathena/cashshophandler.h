@@ -51,6 +51,8 @@ class CashShopHandler final : public MessageHandler,
 
         static void processCashShopBuyAck(Net::MessageIn &msg);
 
+        static void processCashShopPoints(Net::MessageIn &msg);
+
         static BuyDialog *mBuyDialog;
 };
 

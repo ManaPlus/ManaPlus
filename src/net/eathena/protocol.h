@@ -195,6 +195,7 @@
 #define SMSG_NPC_MARKET_BUY_ACK      0x09d7
 #define SMSG_NPC_CASH_SHOP_OPEN      0x0287
 #define SMSG_NPC_CASH_BUY_ACK        0x0289
+#define SMSG_NPC_CASH_POINTS         0x0845
 #define SMSG_NPC_AREA                0x0b0b
 #define SMSG_NPC_SHOW_DIGIT          0x01b1
 
