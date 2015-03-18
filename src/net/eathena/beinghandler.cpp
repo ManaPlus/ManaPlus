@@ -133,6 +133,7 @@ BeingHandler::BeingHandler(const bool enableSync) :
         SMSG_BEING_FONT,
         SMSG_BEING_MILLENIUM_SHIELD,
         SMSG_BEING_CHARM,
+        SMSG_BEING_VIEW_EQUIPMENT,
         0
     };
     handledMessages = _messages;
@@ -395,6 +396,10 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_BEING_CHARM:
             processBeingCharm(msg);
+            break;
+
+        case SMSG_BEING_VIEW_EQUIPMENT:
+            processBeingViewEquipment(msg);
             break;
 
         default:
@@ -1882,6 +1887,38 @@ void BeingHandler::processBeingCharm(Net::MessageIn &msg)
     msg.readInt32("account id");
     msg.readInt16("charm type");
     msg.readInt16("charm count");
+}
+
+void BeingHandler::processBeingViewEquipment(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+
+    const int count = (msg.readInt16("len") - 45) / 31;
+    msg.readString(24, "name");
+    msg.readInt16("job");
+    msg.readInt16("head");
+    msg.readInt16("accessory");
+    msg.readInt16("accessory2");
+    msg.readInt16("accessory3");
+    msg.readInt16("robe");
+    msg.readInt16("hair color");
+    msg.readInt16("body color");
+    msg.readUInt8("gender");
+    for (int f = 0; f < count; f ++)
+    {
+        msg.readInt16("index");
+        msg.readInt16("item id");
+        msg.readUInt8("item type");
+        msg.readInt32("location");
+        msg.readInt32("wear state");
+        msg.readInt8("refine");
+        for (int d = 0; d < 4; d ++)
+            msg.readInt16("card");
+        msg.readInt32("hire expire date (?)");
+        msg.readInt16("equip type");
+        msg.readInt16("item sprite number");
+        msg.readUInt8("flags");
+    }
 }
 
 }  // namespace EAthena
