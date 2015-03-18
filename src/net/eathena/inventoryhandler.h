@@ -139,6 +139,8 @@ class InventoryHandler final : public MessageHandler,
 
         static void processCartAddError(Net::MessageIn &msg);
 
+        static void processBindItem(Net::MessageIn &msg);
+
         static Ea::InventoryItems mCartItems;
 };
 

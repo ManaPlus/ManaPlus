@@ -116,6 +116,7 @@ InventoryHandler::InventoryHandler() :
         SMSG_ITEM_DAMAGED,
         SMSG_PLAYER_FAVORITE_ITEM,
         SMSG_PLAYER_CART_ADD_ERROR,
+        SMSG_BIND_ITEM,
         0
     };
     handledMessages = _messages;
@@ -286,6 +287,10 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_PLAYER_CART_ADD_ERROR:
             processCartAddError(msg);
+            break;
+
+        case SMSG_BIND_ITEM:
+            processBindItem(msg);
             break;
 
         default:
@@ -1118,6 +1123,13 @@ void InventoryHandler::processCartAddError(Net::MessageIn &msg)
     UNIMPLIMENTEDPACKET;
 
     msg.readUInt8("flag");
+}
+
+void InventoryHandler::processBindItem(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+
+    msg.readInt16("item index");
 }
 
 }  // namespace EAthena

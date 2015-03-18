@@ -173,6 +173,7 @@
 #define SMSG_BOSS_MAP_INFO           0x0293
 #define SMSG_ITEM_DAMAGED            0x02bb
 #define SMSG_AUTOSHADOW_SPELL_LIST   0x0442
+#define SMSG_BIND_ITEM               0x02d3
 
 #define SMSG_PLAYER_STATUS_CHANGE    0x0229
 #define SMSG_PLAYER_STATUS_CHANGE2   0x028a
