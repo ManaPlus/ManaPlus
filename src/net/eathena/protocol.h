@@ -150,8 +150,7 @@
 #define SMSG_BEING_SPECIAL_EFFECT_NUM 0x0284
 #define SMSG_BEING_SOUND_EFFECT      0x01d3
 #define SMSG_BEING_EMOTION           0x00c0
-#define SMSG_BEING_ACTION            0x008a /**< Attack, sit, stand up, ... */
-#define SMSG_BEING_ACTION2           0x02e1
+#define SMSG_BEING_ACTION            0x02e1
 #define SMSG_BEING_CHAT              0x008d /**< A being talks */
 #define SMSG_BEING_SLIDE             0x01ff
 #define SMSG_BEING_CHARM             0x08cf

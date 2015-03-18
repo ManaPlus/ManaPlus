@@ -50,8 +50,6 @@ class BeingHandler notfinal : public Net::BeingHandler
 
         static void processSkillDamage(Net::MessageIn &msg);
 
-        static void processBeingAction(Net::MessageIn &msg);
-
         static void processBeingEmotion(Net::MessageIn &msg);
 
         static void processNameResponse(Net::MessageIn &msg);

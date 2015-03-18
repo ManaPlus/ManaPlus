@@ -71,7 +71,7 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
 
         static void processBeingMove2(Net::MessageIn &msg);
 
-        static void processBeingAction2(Net::MessageIn &msg);
+        static void processBeingAction(Net::MessageIn &msg);
 
         static void processMonsterHp(Net::MessageIn &msg);
 
