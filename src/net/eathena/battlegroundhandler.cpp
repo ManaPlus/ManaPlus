@@ -42,6 +42,7 @@ BattleGroundHandler::BattleGroundHandler() :
         SMSG_BATTLE_UPDATE_COORDS,
         SMSG_BATTLE_PLAY,
         SMSG_BATTLE_QUEUE_ACK,
+        SMSG_BATTLE_BEGINS,
         0
     };
     handledMessages = _messages;
@@ -70,6 +71,10 @@ void BattleGroundHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_BATTLE_QUEUE_ACK:
             processBattleQueueAck(msg);
+            break;
+
+        case SMSG_BATTLE_BEGINS:
+            processBattleBegins(msg);
             break;
 
         default:
@@ -113,6 +118,13 @@ void BattleGroundHandler::processBattleQueueAck(Net::MessageIn &msg)
     UNIMPLIMENTEDPACKET;
     msg.readUInt8("type");
     msg.readString(24, "bg name");
+}
+
+void BattleGroundHandler::processBattleBegins(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+    msg.readString(24, "bg name");
+    msg.readString(24, "game name");
 }
 
 }  // namespace EAthena
