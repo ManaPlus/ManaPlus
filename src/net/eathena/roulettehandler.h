@@ -36,6 +36,9 @@ class RouletteHandler final : public MessageHandler,
         A_DELETE_COPY(RouletteHandler)
 
         void handleMessage(Net::MessageIn &msg) override final;
+
+    protected:
+        static void processRouletteInfoAckType(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

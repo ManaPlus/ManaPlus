@@ -451,6 +451,8 @@
 #define SMSG_BATTLE_NOTICE_DELETE    0x08db
 #define SMSG_BATTLE_JOINED           0x08d9
 
+#define SMSG_ROULETTE_INFO_ACK_TYPE  0x0a1c
+
 /**********************************
  *  Packets from client to server *
  **********************************/

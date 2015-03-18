@@ -37,6 +37,7 @@ RouletteHandler::RouletteHandler() :
 {
     static const uint16_t _messages[] =
     {
+        SMSG_ROULETTE_INFO_ACK_TYPE,
         0
     };
     handledMessages = _messages;
@@ -47,8 +48,27 @@ void RouletteHandler::handleMessage(Net::MessageIn &msg)
 {
     switch (msg.getId())
     {
+        case SMSG_ROULETTE_INFO_ACK_TYPE:
+            processRouletteInfoAckType(msg);
+            break;
+
         default:
             break;
+    }
+}
+
+void RouletteHandler::processRouletteInfoAckType(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+    const int count = (msg.readInt16("len") - 8) / 8;
+    msg.readInt32("serial");
+
+    for (int f = 0; f < count; f ++)
+    {
+        msg.readInt16("row");
+        msg.readInt16("position");
+        msg.readInt16("item id");
+        msg.readInt16("count");
     }
 }
 
