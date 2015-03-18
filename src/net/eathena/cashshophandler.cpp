@@ -50,6 +50,7 @@ CashShopHandler::CashShopHandler() :
         SMSG_NPC_CASH_POINTS,
         SMSG_NPC_CASH_BUY,
         SMSG_NPC_CASH_TAB_PRICE_LIST,
+        SMSG_NPC_CASH_SCHEDULE,
         0
     };
     handledMessages = _messages;
@@ -79,6 +80,10 @@ void CashShopHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_NPC_CASH_TAB_PRICE_LIST:
             processCashShopTabPriceList(msg);
+            break;
+
+        case SMSG_NPC_CASH_SCHEDULE:
+            processCashShopSchedule(msg);
             break;
 
         default:
@@ -137,6 +142,22 @@ void CashShopHandler::processCashShopTabPriceList(Net::MessageIn &msg)
     const int count = (msg.readInt16("len") - 10) / 6;
     msg.readInt32("tab");
     const int itemsCount = msg.readInt16("count");
+    if (count != itemsCount)
+        logger->log("error: wrong list count");
+
+    for (int f = 0; f < count; f ++)
+    {
+        msg.readInt16("item id");
+        msg.readInt32("price");
+    }
+}
+
+void CashShopHandler::processCashShopSchedule(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+    const int count = (msg.readInt16("len") - 8) / 6;
+    const int itemsCount = msg.readInt16("count");
+    msg.readInt16("tab");
     if (count != itemsCount)
         logger->log("error: wrong list count");
 
