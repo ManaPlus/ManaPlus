@@ -444,6 +444,7 @@
 #define SMSG_BATTLE_UPDATE_SCORE     0x02de
 #define SMSG_BATTLE_UPDATE_COORDS    0x02df
 #define SMSG_BATTLE_PLAY             0x07fe
+#define SMSG_BATTLE_QUEUE_ACK        0x08d8
 
 /**********************************
  *  Packets from client to server *

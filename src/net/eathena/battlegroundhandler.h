@@ -47,6 +47,8 @@ class BattleGroundHandler final : public MessageHandler,
         void processBattleUpdateCoords(Net::MessageIn &msg);
 
         void processBattlePlay(Net::MessageIn &msg);
+
+        void processBattleQueueAck(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
