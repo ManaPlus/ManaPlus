@@ -1761,7 +1761,8 @@ void BeingHandler::processBeingAttrs(Net::MessageIn &msg)
     {
         if (dstBeing == localPlayer)
             localPlayer->setGMLevel(0);
-        dstBeing->setGM(false);
+        if (dstBeing)
+            dstBeing->setGM(false);
     }
 }
 
