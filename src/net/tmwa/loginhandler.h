@@ -61,6 +61,8 @@ class LoginHandler final : public MessageHandler, public Ea::LoginHandler
 
         void sendVersion() const override final;
 
+        void ping() const override final;
+
         static void requestUpdateHosts();
 
     private:

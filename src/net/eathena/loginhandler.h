@@ -61,6 +61,8 @@ class LoginHandler final : public MessageHandler, public Ea::LoginHandler
 
         int supportedOptionalActions() const override final A_WARN_UNUSED;
 
+        void ping() const override final;
+
     protected:
         static void processLoginError2(Net::MessageIn &msg);
 

@@ -95,6 +95,8 @@ class LoginHandler notfinal
 
         virtual void sendVersion() const = 0;
 
+        virtual void ping() const = 0;
+
         virtual ~LoginHandler()
         { }
 

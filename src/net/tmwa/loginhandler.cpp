@@ -290,4 +290,8 @@ void LoginHandler::processCharPasswordResponse(Net::MessageIn &msg)
     }
 }
 
+void LoginHandler::ping() const
+{
+}
+
 }  // namespace TmwAthena

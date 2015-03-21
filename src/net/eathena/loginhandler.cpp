@@ -284,4 +284,15 @@ int LoginHandler::supportedOptionalActions() const
         : Net::RegistrationOptions::SetGenderOnRegister;
 }
 
+void LoginHandler::ping() const
+{
+    createOutPacket(CMSG_LOGIN_PING);
+    outMsg.writeInt32(0, "unused");
+    outMsg.writeInt32(0, "unused");
+    outMsg.writeInt32(0, "unused");
+    outMsg.writeInt32(0, "unused");
+    outMsg.writeInt32(0, "unused");
+    outMsg.writeInt32(0, "unused");
+}
+
 }  // namespace EAthena
