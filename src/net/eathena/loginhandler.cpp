@@ -26,6 +26,7 @@
 
 #include "gui/windows/logindialog.h"
 
+#include "net/generalhandler.h"
 #include "net/serverfeatures.h"
 
 #include "net/eathena/messageout.h"
@@ -253,6 +254,7 @@ void LoginHandler::sendVersion() const
     outMsg.writeInt32(0, "unused");
     outMsg.writeInt32(0, "unused");
     outMsg.writeInt32(0, "unused");
+    generalHandler->flushSend();
 }
 
 void LoginHandler::processServerVersion(Net::MessageIn &msg)

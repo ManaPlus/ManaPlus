@@ -52,6 +52,8 @@ class GeneralHandler final : public MessageHandler,
 
         void flushNetwork() override final;
 
+        void flushSend() override final;
+
         void clearHandlers() override final;
 
         void reloadPartially() const override final;

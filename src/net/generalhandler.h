@@ -42,6 +42,8 @@ class GeneralHandler notfinal
 
         virtual void flushNetwork() = 0;
 
+        virtual void flushSend() = 0;
+
         virtual void clearHandlers() = 0;
 
         virtual void reloadPartially() const = 0;

@@ -286,6 +286,14 @@ void GeneralHandler::unload()
     clearHandlers();
 }
 
+void GeneralHandler::flushSend()
+{
+    if (!mNetwork)
+        return;
+
+    mNetwork->flush();
+}
+
 void GeneralHandler::flushNetwork()
 {
     if (!mNetwork)
