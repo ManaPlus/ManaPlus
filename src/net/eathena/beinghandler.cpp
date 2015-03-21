@@ -77,6 +77,7 @@ BeingHandler::BeingHandler(const bool enableSync) :
         SMSG_BEING_REMOVE_SKILL,
         SMSG_SKILL_DAMAGE,
         SMSG_BEING_ACTION,
+        SMSG_BEING_ACTION2,
         SMSG_BEING_SELFEFFECT,
         SMSG_BEING_SPECIAL_EFFECT,
         SMSG_BEING_SPECIAL_EFFECT_NUM,
@@ -188,6 +189,10 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_BEING_ACTION:
             processBeingAction(msg);
+            break;
+
+        case SMSG_BEING_ACTION2:
+            processBeingAction2(msg);
             break;
 
         case SMSG_BEING_SELFEFFECT:
@@ -1236,12 +1241,12 @@ void BeingHandler::processBeingMove2(Net::MessageIn &msg)
     BLOCK_END("BeingHandler::processBeingMove2")
 }
 
-void BeingHandler::processBeingAction(Net::MessageIn &msg)
+void BeingHandler::processBeingAction2(Net::MessageIn &msg)
 {
-    BLOCK_START("BeingHandler::processBeingAction")
+    BLOCK_START("BeingHandler::processBeingAction2")
     if (!actorManager)
     {
-        BLOCK_END("BeingHandler::processBeingAction")
+        BLOCK_END("BeingHandler::processBeingAction2")
         return;
     }
 
@@ -1328,7 +1333,7 @@ void BeingHandler::processBeingAction(Net::MessageIn &msg)
             logger->log("type: " + toString(type));
             break;
     }
-    BLOCK_END("BeingHandler::processBeingAction")
+    BLOCK_END("BeingHandler::processBeingAction2")
 }
 
 void BeingHandler::processMonsterHp(Net::MessageIn &msg)
