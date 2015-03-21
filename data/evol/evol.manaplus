@@ -9,7 +9,7 @@
     <option name="onlineServerFile" value="evol.xml"/>
     <option name="defaultServer" value="world.evolonline.org"/>
     <option name="defaultPort" value="6901"/>
-    <option name="defaultServerType" value="evol"/>
+    <option name="defaultServerType" value="evol2"/>
     <option name="font" value="fonts/dejavusans.ttf" />
     <option name="boldFont" value="fonts/dejavusans-bold.ttf" />
     <option name="theme" value="jewelry" />
