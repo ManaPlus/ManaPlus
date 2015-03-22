@@ -542,4 +542,9 @@ void CharServerHandler::ping() const
 {
 }
 
+unsigned int CharServerHandler::hatSprite() const
+{
+    return 7;
+}
+
 }  // namespace TmwAthena

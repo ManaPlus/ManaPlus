@@ -713,4 +713,9 @@ void CharServerHandler::ping() const
     outMsg.writeInt32(0, "unused");
 }
 
+unsigned int CharServerHandler::hatSprite() const
+{
+    return 7;
+}
+
 }  // namespace EAthena

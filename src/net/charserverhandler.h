@@ -74,6 +74,8 @@ class CharServerHandler notfinal
 
         virtual unsigned int hairSprite() const A_WARN_UNUSED = 0;
 
+        virtual unsigned int hatSprite() const A_WARN_UNUSED = 0;
+
         virtual unsigned int maxSprite() const A_WARN_UNUSED = 0;
 
         virtual void clear() = 0;

@@ -91,6 +91,8 @@ class CharServerHandler final : public MessageHandler,
 
         void ping() const override final;
 
+        unsigned int hatSprite() const override final A_WARN_UNUSED;
+
     protected:
         static void processPincodeStatus(Net::MessageIn &msg);
 
