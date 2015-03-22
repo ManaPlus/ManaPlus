@@ -95,6 +95,8 @@ class Client final : public ConfigListener,
 
         void windowRemoved(const Window *const window);
 
+        void slowLogic();
+
         static void setEnv(const char *const name, const char *const value);
 
     private:
@@ -135,6 +137,7 @@ class Client final : public ConfigListener,
         Skin *mSkin;
         int mButtonPadding;
         int mButtonSpacing;
+        int mPing;
         bool mConfigAutoSaved;
 };
 

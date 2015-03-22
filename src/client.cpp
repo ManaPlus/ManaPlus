@@ -218,6 +218,7 @@ Client::Client() :
     mSkin(nullptr),
     mButtonPadding(1),
     mButtonSpacing(3),
+    mPing(0),
     mConfigAutoSaved(false)
 {
     WindowManager::init();
@@ -780,6 +781,7 @@ int Client::gameExec()
             gui->slowLogic();
         if (mGame)
             mGame->slowLogic();
+        slowLogic();
         BLOCK_END("Client::gameExec 4")
 
         // This is done because at some point tick_time will wrap.
@@ -1144,6 +1146,7 @@ int Client::gameExec()
                 case STATE_UPDATE:
                     BLOCK_START("Client::gameExec STATE_UPDATE")
                     logger->log1("State: UPDATE");
+
                     // Determine which source to use for the update host
                     if (!settings.options.updateHost.empty())
                         settings.updateHost = settings.options.updateHost;
@@ -1787,6 +1790,27 @@ void Client::logVars()
     logger->log("APPDIR: %s", getenv("APPDIR"));
     logger->log("DATADIR2: %s", getSdStoragePath().c_str());
 #endif
+}
+
+void Client::slowLogic()
+{
+    if (!gameHandler || !gameHandler->mustPing())
+        return;
+
+    if (get_elapsed_time1(mPing) > 1500)
+    {
+        mPing = tick_time;
+        if (mState != STATE_UPDATE &&
+            mState != STATE_LOGIN &&
+            mState != STATE_LOGIN_ATTEMPT)
+        {
+            return;
+        }
+        if (loginHandler)
+            loginHandler->ping();
+        if (generalHandler)
+            generalHandler->flushSend();
+    }
 }
 
 #ifdef ANDROID
