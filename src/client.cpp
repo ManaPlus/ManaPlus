@@ -1800,16 +1800,22 @@ void Client::slowLogic()
     if (get_elapsed_time1(mPing) > 1500)
     {
         mPing = tick_time;
-        if (mState != STATE_UPDATE &&
-            mState != STATE_LOGIN &&
-            mState != STATE_LOGIN_ATTEMPT)
+        if (mState == STATE_UPDATE ||
+            mState == STATE_LOGIN ||
+            mState == STATE_LOGIN_ATTEMPT)
         {
-            return;
+            if (loginHandler)
+                loginHandler->ping();
+            if (generalHandler)
+                generalHandler->flushSend();
         }
-        if (loginHandler)
-            loginHandler->ping();
-        if (generalHandler)
-            generalHandler->flushSend();
+        else if (mState == STATE_CHAR_SELECT)
+        {
+            if (charServerHandler)
+                charServerHandler->ping();
+            if (generalHandler)
+                generalHandler->flushSend();
+        }
     }
 }
 
