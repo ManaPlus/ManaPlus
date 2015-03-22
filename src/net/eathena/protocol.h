@@ -480,6 +480,7 @@
 #define CMSG_MAP_SERVER_CONNECT      0x089c
 #define CMSG_MAP_PING                0x035f /**< Send to server with tick */
 #define CMSG_LOGIN_PING              0x0200
+#define CMSG_CHAR_PING               0x0187
 #define CMSG_MAP_LOADED              0x007d
 #define CMSG_CLIENT_QUIT             0x018A
 

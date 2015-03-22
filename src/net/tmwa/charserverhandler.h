@@ -90,6 +90,8 @@ class CharServerHandler final : public MessageHandler,
                             Net::Character *const character,
                             const bool withColors) const override final;
 
+        void ping() const override final;
+
     protected:
         static void processCharCreate(Net::MessageIn &msg);
 

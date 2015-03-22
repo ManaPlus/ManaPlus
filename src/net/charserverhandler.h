@@ -88,6 +88,8 @@ class CharServerHandler notfinal
                                     Net::Character *const character,
                                     const bool withColors) const = 0;
 
+        virtual void ping() const = 0;
+
     protected:
         CharServerHandler()
         {

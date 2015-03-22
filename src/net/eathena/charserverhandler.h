@@ -89,6 +89,8 @@ class CharServerHandler final : public MessageHandler,
                             Net::Character *const character,
                             const bool) const override final;
 
+        void ping() const override final;
+
     protected:
         static void processPincodeStatus(Net::MessageIn &msg);
 

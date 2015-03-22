@@ -538,4 +538,8 @@ void CharServerHandler::processCharDeleteFailed(Net::MessageIn &msg)
     BLOCK_END("CharServerHandler::processCharDeleteFailed")
 }
 
+void CharServerHandler::ping() const
+{
+}
+
 }  // namespace TmwAthena

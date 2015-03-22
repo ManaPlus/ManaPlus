@@ -707,4 +707,10 @@ void CharServerHandler::processCharCharacters(Net::MessageIn &msg)
     client->setState(STATE_CHAR_SELECT);
 }
 
+void CharServerHandler::ping() const
+{
+    createOutPacket(CMSG_CHAR_PING);
+    outMsg.writeInt32(0, "unused");
+}
+
 }  // namespace EAthena
