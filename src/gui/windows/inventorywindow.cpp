@@ -775,6 +775,12 @@ void InventoryWindow::setSplitAllowed(const bool allowed)
 
 void InventoryWindow::close()
 {
+    if (!mInventory)
+    {
+        Window::close();
+        return;
+    }
+
     switch (mInventory->getType())
     {
         case InventoryType::INVENTORY:
