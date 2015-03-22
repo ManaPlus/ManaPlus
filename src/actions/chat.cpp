@@ -33,10 +33,15 @@
 
 #include "gui/windows/chatwindow.h"
 
+#include "net/charserverhandler.h"
 #include "net/chathandler.h"
 #include "net/guildhandler.h"
 #include "net/partyhandler.h"
 #include "net/serverfeatures.h"
+
+#include "resources/iteminfo.h"
+
+#include "resources/db/itemdb.h"
 
 #include "utils/booleanoptions.h"
 #include "utils/chatutils.h"
@@ -52,7 +57,7 @@ static void outString(ChatTab *const tab,
 {
     if (!tab)
     {
-        chatHandler->me(def, GENERAL_CHANNEL);
+        chatHandler->talk(def, GENERAL_CHANNEL);
         return;
     }
 
@@ -97,7 +102,7 @@ static void outString(ChatTab *const tab,
         case ChatTabType::DEBUG:
         case ChatTabType::BATTLE:
         case ChatTabType::LANG:
-            chatHandler->me(def, GENERAL_CHANNEL);
+            chatHandler->talk(def, GENERAL_CHANNEL);
             break;
     }
 }
@@ -551,6 +556,20 @@ impHandler0(chatGuildTab)
 {
     if (chatWindow)
         chatWindow->selectTabByType(ChatTabType::GUILD);
+    return true;
+}
+
+impHandler0(hat)
+{
+    if (!localPlayer)
+        return false;
+
+    const int sprite = localPlayer->getSpriteID(
+        charServerHandler->hatSprite());
+    const ItemInfo &info = ItemDB::get(sprite);
+    const std::string str = strprintf(_("equipped hat %s."),
+        info.getName().c_str());
+    outString(event.tab, str, str);
     return true;
 }
 

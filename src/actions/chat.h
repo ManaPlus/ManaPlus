@@ -58,6 +58,7 @@ namespace Actions
     decHandler(chatGmTab);
     decHandler(chatPartyTab);
     decHandler(chatGuildTab);
+    decHandler(hat);
 }  // namespace Actions
 
 #undef decHandler

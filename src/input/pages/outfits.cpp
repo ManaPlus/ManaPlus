@@ -58,6 +58,12 @@ SetupActionData setupActionDataOutfits[] =
     },
     {
         // TRANSLATORS: input action name
+        N_("Show hat in chat"),
+        InputAction::HAT,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
         N_("Outfits shortcuts"),
         InputAction::NO_VALUE,
         ""

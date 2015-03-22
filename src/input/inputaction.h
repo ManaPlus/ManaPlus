@@ -590,6 +590,7 @@ namespace InputAction
         HOMUN_EMOTE_47,
         HOMUN_EMOTE_48,
         KICK_GUILD,
+        HAT,
         TOTAL
     };
 }  // namespace InputAction

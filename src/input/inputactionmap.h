@@ -4431,6 +4431,11 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputCondition::INGAME,
         "kickguild|guildkick",
         true},
+    {"keyHat",
+        defaultAction(&Actions::hat),
+        InputCondition::INGAME,
+        "hat|hats|showhat",
+        false},
 };
 
 #undef defaultAction
