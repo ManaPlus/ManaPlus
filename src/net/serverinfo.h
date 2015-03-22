@@ -116,13 +116,13 @@ class ServerInfo final
 
         bool operator==(const ServerInfo &other) const
         {
-            return (type == other.type && hostname == other.hostname &&
+            return (name == other.name && hostname == other.hostname &&
                     port == other.port);
         }
 
         bool operator!=(const ServerInfo &other) const
         {
-            return (type != other.type || hostname != other.hostname ||
+            return (name != other.name || hostname != other.hostname ||
                     port != other.port);
         }
 

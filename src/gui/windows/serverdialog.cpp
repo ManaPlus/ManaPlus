@@ -578,6 +578,7 @@ void ServerDialog::loadServers(const bool addNew)
             {
                 // Use the name listed in the server list
                 mServers[i].name = server.name;
+                mServers[i].type = server.type;
                 mServers[i].version = server.version;
                 mServers[i].description = server.description;
                 mServers[i].registerUrl = server.registerUrl;
