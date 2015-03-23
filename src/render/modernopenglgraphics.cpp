@@ -38,6 +38,7 @@
 #include "resources/imagerect.h"
 #include "resources/openglimagehelper.h"
 
+#include "utils/delete2.h"
 #include "utils/sdlcheckutils.h"
 #include "utils/sdlhelper.h"
 
@@ -120,8 +121,7 @@ ModernOpenGLGraphics::~ModernOpenGLGraphics()
 
 void ModernOpenGLGraphics::deleteGLObjects()
 {
-    if (mProgram)
-        mProgram->decRef();
+    delete2(mProgram);
     if (mVbo)
     {
 //        logger->log("delete buffer vbo: %u", mVbo);
