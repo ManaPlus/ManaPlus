@@ -52,6 +52,7 @@ NavigationManager::~NavigationManager()
 {
 }
 
+#ifndef DYECMD
 Resource *NavigationManager::loadWalkLayer(const Map *const map)
 {
     if (!map)
@@ -77,6 +78,7 @@ Resource *NavigationManager::loadWalkLayer(const Map *const map)
 
     return walkLayer;
 }
+#endif
 
 bool NavigationManager::findWalkableTile(int &x1, int &y1,
                                          const int width, const int height,

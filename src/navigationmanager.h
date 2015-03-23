@@ -37,7 +37,9 @@ class NavigationManager final
 
         ~NavigationManager();
 
+#ifndef DYECMD
         static Resource *loadWalkLayer(const Map *const map);
+#endif
 
     private:
         static bool findWalkableTile(int &x1, int &y1,

@@ -784,10 +784,14 @@ struct WalkLayerLoader final
         if (!v)
             return nullptr;
 
+#ifdef DYECMD
+        return nullptr;
+#else
         const WalkLayerLoader *const rl = static_cast<const
             WalkLayerLoader *const>(v);
         Resource *const resource = NavigationManager::loadWalkLayer(rl->map);
         return resource;
+#endif
     }
 };
 
