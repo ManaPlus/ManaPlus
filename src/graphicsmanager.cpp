@@ -701,9 +701,9 @@ void GraphicsManager::updateTextureFormat() const
                         break;
                 }
             }
-            delete []formats;
             if (compressionFormat == 3)
             {
+                delete []formats;
                 useCompression(GL_COMPRESSED_RGBA_ARB);
                 return;
             }
@@ -712,10 +712,12 @@ void GraphicsManager::updateTextureFormat() const
             if (compressionFormat == 4
                 && supportExtension("GL_ARB_texture_compression_bptc"))
             {
+                delete []formats;
                 useCompression(GL_COMPRESSED_RGBA_BPTC_UNORM_ARB);
                 return;
             }
         }
+        delete []formats;
     }
     else
     {
