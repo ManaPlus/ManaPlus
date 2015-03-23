@@ -232,6 +232,8 @@ ShopWindow::~ShopWindow()
 {
     saveList();
 
+    delete2(mBuyShopItemList);
+    delete2(mSellShopItemList);
     delete2(mBuyShopItems);
     delete2(mSellShopItems);
 
