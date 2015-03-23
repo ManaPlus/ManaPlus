@@ -1487,3 +1487,14 @@ void Map::setMusicFile(const std::string &file)
 {
     setProperty("music", file);
 }
+
+void Map::addAnimation(const int gid, TileAnimation *const animation)
+{
+    std::map<int, TileAnimation*>::iterator it = mTileAnimations.find(gid);
+    if (it != mTileAnimations.end())
+    {
+        logger->log("duplicate map animation with gid = %d", gid);
+        delete (*it).second;
+    }
+    mTileAnimations[gid] = animation;
+}

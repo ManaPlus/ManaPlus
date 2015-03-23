@@ -214,8 +214,7 @@ class Map final : public Properties, public ConfigListener
         /**
          * Adds a tile animation to the map
          */
-        void addAnimation(const int gid, TileAnimation *const animation)
-        { mTileAnimations[gid] = animation; }
+        void addAnimation(const int gid, TileAnimation *const animation);
 
         void setDrawLayersFlags(const MapType::MapType &n)
         { mDrawLayersFlags = n; }
