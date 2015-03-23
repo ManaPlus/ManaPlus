@@ -161,6 +161,7 @@ EquipmentWindow::~EquipmentWindow()
         std::vector<EquipmentBox*> &boxes = (*it)->boxes;
         delete_all(boxes);
         boxes.clear();
+        delete *it;
     }
     if (mImageSet)
     {
