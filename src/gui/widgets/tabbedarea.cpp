@@ -349,7 +349,7 @@ void TabbedArea::removeTab(Tab *const tab)
 
     adjustSize();
     updateTabsWidth();
-    adjustTabPositions();
+    widgetResized(Event(nullptr));
 }
 
 void TabbedArea::logic()
