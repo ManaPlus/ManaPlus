@@ -252,7 +252,7 @@ void KillStats::gainXp(int xp)
     mLine2->setCaption(strprintf(_("Exp: %d/%d Left: %d"), exp,
         xpNextLevel, xpNextLevel - exp));
 
-    if (AvgExp >= 0.001F && AvgExp <= 0.001F)
+    if (AvgExp >= -0.001F && AvgExp <= 0.001F)
     {
         // TRANSLATORS: kill stats window label
         mLine3->setCaption(strprintf(_("1%% = %d exp, avg mob for 1%%: %s"),
