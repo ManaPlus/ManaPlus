@@ -469,12 +469,21 @@ void PlayerHandler::processPlayerStatUpdate5(Net::MessageIn &msg)
 
 void PlayerHandler::processPlayerGetExp(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
-    msg.readInt32("player id");
-    msg.readInt32("exp amount");
-    msg.readInt16("exp type");
-    msg.readInt16("is from quest");
-//    Being *dstBeing = actorManager->findBeing(id);
+    if (!localPlayer)
+        return;
+    const int id = msg.readInt32("player id");
+    const int exp = msg.readInt32("exp amount");
+    const int stat = msg.readInt16("exp type");
+    const bool fromQuest = msg.readInt16("is from quest");
+    if (!fromQuest && id == localPlayer->getId())
+    {
+        if (stat == 1)
+            localPlayer->addXpMessage(exp);
+        else if (stat == 2)
+            localPlayer->addJobMessage(exp);
+        else
+            logger->log("unknown exp type");
+    }
     // need show particle depend on isQuest flag, for now ignored
 }
 

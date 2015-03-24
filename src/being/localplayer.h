@@ -366,6 +366,10 @@ class LocalPlayer final : public Being,
 
         void stopAdvert();
 
+        void addXpMessage(const int change);
+
+        void addJobMessage(const int change);
+
         static bool checAttackPermissions(const Being *const target)
                                           A_WARN_UNUSED;
 

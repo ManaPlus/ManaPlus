@@ -1055,18 +1055,8 @@ void LocalPlayer::optionChanged(const std::string &value)
         mShowServerPos = config.getBoolValue("showserverpos");
 }
 
-void LocalPlayer::statChanged(const int id,
-                              const int oldVal1,
-                              const int oldVal2)
+void LocalPlayer::addJobMessage(const int change)
 {
-    if (!mShowJobExp || id != Attributes::JOB)
-        return;
-
-    const std::pair<int, int> exp = PlayerInfo::getStatExperience(id);
-    if (oldVal1 > exp.first || !oldVal2)
-        return;
-
-    const int change = exp.first - oldVal1;
     if (change != 0 && mMessages.size() < 20)
     {
         if (!mMessages.empty())
@@ -1095,6 +1085,34 @@ void LocalPlayer::statChanged(const int id,
     }
 }
 
+void LocalPlayer::addXpMessage(const int change)
+{
+    if (change != 0 && mMessages.size() < 20)
+    {
+        // TRANSLATORS: get xp message
+        addMessageToQueue(strprintf("%d %s", change, _("xp")));
+    }
+}
+
+void LocalPlayer::statChanged(const int id,
+                              const int oldVal1,
+                              const int oldVal2)
+{
+    if (!mShowJobExp ||
+        id != Attributes::JOB ||
+        serverFeatures->haveExpPacket())
+    {
+        return;
+    }
+
+    const std::pair<int, int> exp = PlayerInfo::getStatExperience(id);
+    if (oldVal1 > exp.first || !oldVal2)
+        return;
+
+    const int change = exp.first - oldVal1;
+    addJobMessage(change);
+}
+
 void LocalPlayer::attributeChanged(const int id,
                                    const int oldVal,
                                    const int newVal)
@@ -1103,15 +1121,13 @@ void LocalPlayer::attributeChanged(const int id,
     {
         case Attributes::EXP:
         {
+            if (serverFeatures->haveExpPacket())
+                break;
             if (oldVal > newVal)
                 break;
 
             const int change = newVal - oldVal;
-            if (change != 0)
-            {
-                // TRANSLATORS: get xp message
-                addMessageToQueue(strprintf("%d %s", change, _("xp")));
-            }
+            addXpMessage(change);
             break;
         }
         case Attributes::LEVEL:
