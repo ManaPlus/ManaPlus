@@ -146,6 +146,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
     label5->setCaption("");
     label6->setCaption("");
 
+#ifdef EATHENA_SUPPORT
     if (b->getType() == ActorType::Pet)
     {
         PetInfo *const info = PlayerInfo::getPet();
@@ -166,6 +167,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
         }
     }
     else
+#endif
     {
         if (!(b->getPartyName().empty()))
         {
