@@ -777,7 +777,8 @@ void Viewport::mouseMoved(MouseEvent &event)
     if (mHoverBeing
         && (type == ActorType::Player
         || type == ActorType::Npc
-        || type == ActorType::LocalPet))
+        || type == ActorType::LocalPet
+        || type == ActorType::Pet))
     {
         popupManager->hideTextPopup();
         if (mShowBeingPopup && beingPopup)

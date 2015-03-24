@@ -22,6 +22,8 @@
 #include "gui/popups/beingpopup.h"
 
 #include "being/being.h"
+#include "being/petinfo.h"
+#include "being/playerinfo.h"
 #include "being/playerrelations.h"
 
 #include "gui/gui.h"
@@ -116,6 +118,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
     }
 
     mBeingName->setCaption(b->getName() + b->getGenderSignWithSpace());
+    logger->log("being name: " + b->getName());
     if (gui)
     {
         if (player_relations.isGoodName(b))
@@ -143,90 +146,113 @@ void BeingPopup::show(const int x, const int y, Being *const b)
     label5->setCaption("");
     label6->setCaption("");
 
-    if (!(b->getPartyName().empty()))
+    if (b->getType() == ActorType::Pet)
     {
-        // TRANSLATORS: being popup label
-        label1->setCaption(strprintf(_("Party: %s"),
-                           b->getPartyName().c_str()));
-        label1->adjustSize();
+        PetInfo *const info = PlayerInfo::getPet();
+        if (info)
+        {
+            // TRANSLATORS: being popup label
+            label1->setCaption(strprintf(_("Hungry: %d"),
+                info->hungry));
+            label1->adjustSize();
+            // TRANSLATORS: being popup label
+            label2->setCaption(strprintf(_("Intimacy: %d"),
+                info->intimacy));
+            label2->adjustSize();
+            label3 = nullptr;
+            label4 = nullptr;
+            label5 = nullptr;
+            label6 = nullptr;
+        }
     }
     else
     {
-        label6 = label4;
-        label5 = label4;
-        label4 = label3;
-        label3 = label2;
-        label2 = label1;
-        label1 = nullptr;
-    }
+        if (!(b->getPartyName().empty()))
+        {
+            // TRANSLATORS: being popup label
+            label1->setCaption(strprintf(_("Party: %s"),
+                b->getPartyName().c_str()));
+            label1->adjustSize();
+        }
+        else
+        {
+            label6 = label4;
+            label5 = label4;
+            label4 = label3;
+            label3 = label2;
+            label2 = label1;
+            label1 = nullptr;
+        }
 
-    if (!(b->getGuildName().empty()))
-    {
-        // TRANSLATORS: being popup label
-        label2->setCaption(strprintf(_("Guild: %s"),
-                           b->getGuildName().c_str()));
-        label2->adjustSize();
-    }
-    else
-    {
-        label6 = label4;
-        label5 = label4;
-        label4 = label3;
-        label3 = label2;
-        label2 = nullptr;
-    }
+        if (!(b->getGuildName().empty()))
+        {
+            // TRANSLATORS: being popup label
+            label2->setCaption(strprintf(_("Guild: %s"),
+                b->getGuildName().c_str()));
+            label2->adjustSize();
+        }
+        else
+        {
+            label6 = label4;
+            label5 = label4;
+            label4 = label3;
+            label3 = label2;
+            label2 = nullptr;
+        }
 
-    if (b->getPvpRank() > 0)
-    {
-        // TRANSLATORS: being popup label
-        label3->setCaption(strprintf(_("Pvp rank: %u"), b->getPvpRank()));
-        label3->adjustSize();
-    }
-    else
-    {
-        label6 = label4;
-        label5 = label4;
-        label4 = label3;
-        label3 = nullptr;
-    }
+        if (b->getPvpRank() > 0)
+        {
+            // TRANSLATORS: being popup label
+            label3->setCaption(strprintf(_("Pvp rank: %u"),
+                b->getPvpRank()));
+            label3->adjustSize();
+        }
+        else
+        {
+            label6 = label4;
+            label5 = label4;
+            label4 = label3;
+            label3 = nullptr;
+        }
 
-    if (!b->getBuyBoard().empty())
-    {
-        // TRANSLATORS: being popup label
-        label4->setCaption(strprintf(_("Buy shop: %s"),
-            b->getBuyBoard().c_str()));
-        label4->adjustSize();
-    }
-    else
-    {
-        label6 = label4;
-        label5 = label4;
-        label4 = nullptr;
-    }
+        if (!b->getBuyBoard().empty())
+        {
+            // TRANSLATORS: being popup label
+            label4->setCaption(strprintf(_("Buy shop: %s"),
+                b->getBuyBoard().c_str()));
+            label4->adjustSize();
+        }
+        else
+        {
+            label6 = label4;
+            label5 = label4;
+            label4 = nullptr;
+        }
 
-    if (!b->getSellBoard().empty())
-    {
-        // TRANSLATORS: being popup label
-        label5->setCaption(strprintf(_("Sell shop: %s"),
-            b->getSellBoard().c_str()));
-        label5->adjustSize();
-    }
-    else
-    {
-        label6 = label5;
-        label5 = nullptr;
-    }
+        if (!b->getSellBoard().empty())
+        {
+            // TRANSLATORS: being popup label
+            label5->setCaption(strprintf(_("Sell shop: %s"),
+                b->getSellBoard().c_str()));
+            label5->adjustSize();
+        }
+        else
+        {
+            label6 = label5;
+            label5 = nullptr;
+        }
 
-    if (!b->getComment().empty())
-    {
-        // TRANSLATORS: being popup label
-        label6->setCaption(strprintf(_("Comment: %s"),
-            b->getComment().c_str()));
-        label6->adjustSize();
-    }
-    else
-    {
-        label6 = nullptr;
+        if (!b->getComment().empty())
+        {
+            // TRANSLATORS: being popup label
+            label6->setCaption(strprintf(_("Comment: %s"),
+                b->getComment().c_str()));
+            label6->adjustSize();
+        }
+        else
+        {
+            label6 = nullptr;
+        }
     }
 
     int minWidth = mBeingName->getWidth();
