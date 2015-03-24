@@ -107,6 +107,8 @@ class ServerFeatures final : public Net::ServerFeatures
         bool haveMovePet() const override final;
 
         bool haveServerWarpNames() const override final;
+
+        bool haveExpPacket() const override final;
 };
 
 }  // namespace TmwAthena

@@ -104,6 +104,8 @@ class ServerFeatures notfinal
         virtual bool haveMovePet() const = 0;
 
         virtual bool haveServerWarpNames() const = 0;
+
+        virtual bool haveExpPacket() const = 0;
 };
 
 }  // namespace Net

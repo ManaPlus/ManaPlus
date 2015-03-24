@@ -220,4 +220,9 @@ bool ServerFeatures::haveServerWarpNames() const
     return serverVersion == 0;
 }
 
+bool ServerFeatures::haveExpPacket() const
+{
+    return true;
+}
+
 }  // namespace EAthena
