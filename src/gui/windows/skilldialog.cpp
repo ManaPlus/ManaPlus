@@ -368,6 +368,8 @@ void SkillDialog::loadXmlFile(const std::string &fileName)
                         node, "invokeCmd", "");
                     data->updateEffectId = XML::getProperty(
                         node, "levelUpEffectId", -1);
+                    data->removeEffectId = XML::getProperty(
+                        node, "removeEffectId", -1);
 
                     skill->addData(level, data);
                 }
@@ -576,27 +578,46 @@ void SkillDialog::updateQuest(const int var, const int val)
     }
 }
 
-void SkillDialog::playUpdateEffect(const int id) const
+SkillData *SkillDialog::getSkillData(const int id) const
 {
-    if (!effectManager)
-        return;
     const SkillMap::const_iterator it = mSkills.find(id);
     if (it != mSkills.end())
     {
         SkillInfo *const info = it->second;
         if (info)
-        {
-            const SkillData *const data = info->data;
-            if (!data)
-                return;
-            int effectId = data->updateEffectId;
-            if (effectId == -1)
-                effectId = paths.getIntValue("skillLevelUpEffectId");
-            if (effectId == -1)
-                return;
-            effectManager->trigger(effectId, localPlayer);
-        }
+            return info->data;
     }
+    return nullptr;
+}
+
+void SkillDialog::triggerEffect(int effectId,
+                                const int defaultEffectId) const
+{
+    if (!effectManager)
+        return;
+    if (effectId == -1)
+        effectId = defaultEffectId;
+    if (effectId == -1)
+        return;
+    effectManager->trigger(effectId, localPlayer);
+}
+
+void SkillDialog::playUpdateEffect(const int id) const
+{
+    const SkillData *const data = getSkillData(id);
+    if (!data)
+        return;
+    triggerEffect(data->updateEffectId,
+        paths.getIntValue("skillLevelUpEffectId"));
+}
+
+void SkillDialog::playRemoveEffect(const int id) const
+{
+    const SkillData *const data = getSkillData(id);
+    if (!data)
+        return;
+    triggerEffect(data->removeEffectId,
+        paths.getIntValue("skillRemoveEffectId"));
 }
 
 void SkillDialog::useSkill(const SkillInfo *const info)

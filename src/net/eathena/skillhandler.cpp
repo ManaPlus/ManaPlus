@@ -303,7 +303,7 @@ void SkillHandler::processSkillDelete(Net::MessageIn &msg)
         skillDialog->removeSkill(skillId);
         skillDialog->update();
         if (updateSkill)
-            skillDialog->playUpdateEffect(updateSkill);
+            skillDialog->playRemoveEffect(updateSkill);
     }
 }
 

@@ -40,7 +40,9 @@ SkillData::SkillData() :
     particle(),
     invokeCmd(),
     soundHit(std::string(), 0),
-    soundMiss(std::string(), 0)
+    soundMiss(std::string(), 0),
+    updateEffectId(-1),
+    removeEffectId(-1)
 {
 }
 

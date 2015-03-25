@@ -44,6 +44,7 @@ struct SkillData final
     SoundInfo soundMiss;
 
     int updateEffectId;
+    int removeEffectId;
 
     SkillData();
     A_DELETE_COPY(SkillData)

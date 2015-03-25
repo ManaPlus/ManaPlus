@@ -36,6 +36,7 @@ class SkillModel;
 class Tab;
 class TabbedArea;
 
+struct SkillData;
 struct SkillInfo;
 
 /**
@@ -116,14 +117,21 @@ class SkillDialog final : public Window,
 
         void playUpdateEffect(const int id) const;
 
+        void playRemoveEffect(const int id) const;
+
         void slowLogic();
 
         void removeSkill(const int id);
 
         static void useSkill(const SkillInfo *const info);
 
+        SkillData *getSkillData(const int id) const;
+
     private:
         void addSkillDuration(SkillInfo *const skill);
+
+        void triggerEffect(int effectId,
+                           const int defaultEffectId) const;
 
         typedef std::map<int, SkillInfo*> SkillMap;
         SkillMap mSkills;
