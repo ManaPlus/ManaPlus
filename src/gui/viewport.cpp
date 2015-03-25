@@ -777,6 +777,7 @@ void Viewport::mouseMoved(MouseEvent &event)
     if (mHoverBeing
         && (type == ActorType::Player
         || type == ActorType::Npc
+        || type == ActorType::Homunculus
         || type == ActorType::LocalPet
         || type == ActorType::Pet))
     {

@@ -22,6 +22,7 @@
 #include "gui/popups/beingpopup.h"
 
 #include "being/being.h"
+#include "being/homunculusinfo.h"
 #include "being/petinfo.h"
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
@@ -147,9 +148,29 @@ void BeingPopup::show(const int x, const int y, Being *const b)
     label6->setCaption("");
 
 #ifdef EATHENA_SUPPORT
-    if (b->getType() == ActorType::Pet)
+    const ActorType::Type type = b->getType();
+    if (type == ActorType::Pet)
     {
         PetInfo *const info = PlayerInfo::getPet();
+        if (info)
+        {
+            // TRANSLATORS: being popup label
+            label1->setCaption(strprintf(_("Hungry: %d"),
+                info->hungry));
+            label1->adjustSize();
+            // TRANSLATORS: being popup label
+            label2->setCaption(strprintf(_("Intimacy: %d"),
+                info->intimacy));
+            label2->adjustSize();
+            label3 = nullptr;
+            label4 = nullptr;
+            label5 = nullptr;
+            label6 = nullptr;
+        }
+    }
+    else if (type == ActorType::Homunculus)
+    {
+        HomunculusInfo *const info = PlayerInfo::getHomunculus();
         if (info)
         {
             // TRANSLATORS: being popup label
