@@ -4,20 +4,26 @@ cd ..
 
 dir=`pwd`
 
-export CC=gcc-4.9
-export CXX=g++-4.9
+export CC=gcc-5
+export CXX=g++-5
 
 export LANG=C
 
 # -Wdisabled-optimization look like gcc issue
 
 export CXXFLAGS="-ggdb3 -O2 -pipe -ffast-math \
--fsanitize=address \
+-fsanitize=address -fsanitize=undefined \
+-fsanitize=shift -fsanitize=integer-divide-by-zero -fsanitize=unreachable \
+-fsanitize=vla-bound -fsanitize=null -fsanitize=return \
+-fsanitize=signed-integer-overflow -fsanitize=bounds -fsanitize=alignment \
+-fsanitize=object-size -fsanitize=float-divide-by-zero -fsanitize=float-cast-overflow \
+-fsanitize=nonnull-attribute -fsanitize=returns-nonnull-attribute -fsanitize=bool \
+-fsanitize=enum -fsanitize=vptr \
 -fno-omit-frame-pointer -funswitch-loops \
 -Wvariadic-macros -Wvla -Wredundant-decls \
 -Wpacked-bitfield-compat -Wtrampolines \
 -Wsuggest-attribute=noreturn -Wunused -Wstrict-aliasing=2 \
--fstrict-aliasing -Wunreachable-code -Wabi \
+-fstrict-aliasing -Wunreachable-code \
 -Wvolatile-register-var -Winvalid-pch -Wredundant-decls \
 -Wnormalized=nfkc -Wmissing-format-attribute -Wmissing-noreturn \
 -Wswitch-default -Wsign-promo -Waddress -Wmissing-declarations \
@@ -28,7 +34,7 @@ export CXXFLAGS="-ggdb3 -O2 -pipe -ffast-math \
 -Wwrite-strings -Wstack-protector -Wshadow -Wunused-macros -Wsynth \
 -Wbuiltin-macro-redefined -Wctor-dtor-privacy -Wdeprecated \
 -Wendif-labels -Wformat=1 -Wimport -Wnon-virtual-dtor -Wpsabi \
--Wsign-promo -Wwrite-strings -D_FORTIFY_SOURCE=2 -Wc++11-compat -std=c++0x \
+-Wsign-promo -Wwrite-strings -D_FORTIFY_SOURCE=2 -std=gnu++1y \
 -Wdelete-non-virtual-dtor -Wmaybe-uninitialized -Wunused-local-typedefs \
 -Wvector-operation-performance -Wfree-nonheap-object -Winvalid-memory-model \
 -Wnarrowing -Wzero-as-null-pointer-constant -funsafe-loop-optimizations \
@@ -39,8 +45,11 @@ export CXXFLAGS="-ggdb3 -O2 -pipe -ffast-math \
 -Wunused-but-set-parameter -Wunused-but-set-variable -Wunused-function \
 -Wunused-label -Wunused-parameter -Wunused-value -Wunused-variable -ftrapv \
 -fsched-pressure \
--Wconditionally-supported -Wdate-time -Woverloaded-virtual \
--fno-var-tracking"
+-Wconditionally-supported -Wdate-time \
+-fno-var-tracking \
+-Wopenmp-simd -Wformat-signedness \
+-Wswitch-bool -Wmemset-transposed-args -Wchkp -Wc++14-compat -Wsized-deallocation \
+-Wlogical-not-parentheses -Woverloaded-virtual"
 
 autoreconf -i
 ./configure --prefix=$dir/run \
