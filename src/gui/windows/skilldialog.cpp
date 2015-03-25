@@ -366,6 +366,8 @@ void SkillDialog::loadXmlFile(const std::string &fileName)
                         node, "soundMissDelay", 0);
                     data->invokeCmd = XML::getProperty(
                         node, "invokeCmd", "");
+                    data->updateEffectId = XML::getProperty(
+                        node, "levelUpEffectId", -1);
 
                     skill->addData(level, data);
                 }
@@ -576,14 +578,24 @@ void SkillDialog::updateQuest(const int var, const int val)
 
 void SkillDialog::playUpdateEffect(const int id) const
 {
-    const int effectId = paths.getIntValue("skillLevelUpEffectId");
-    if (!effectManager || effectId == -1)
+    if (!effectManager)
         return;
     const SkillMap::const_iterator it = mSkills.find(id);
     if (it != mSkills.end())
     {
-        if (it->second)
+        SkillInfo *const info = it->second;
+        if (info)
+        {
+            const SkillData *const data = info->data;
+            if (!data)
+                return;
+            int effectId = data->updateEffectId;
+            if (effectId == -1)
+                effectId = paths.getIntValue("skillLevelUpEffectId");
+            if (effectId == -1)
+                return;
             effectManager->trigger(effectId, localPlayer);
+        }
     }
 }
 

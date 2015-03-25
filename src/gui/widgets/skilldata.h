@@ -39,8 +39,11 @@ struct SkillData final
 
     std::string particle;
     std::string invokeCmd;
+
     SoundInfo soundHit;
     SoundInfo soundMiss;
+
+    int updateEffectId;
 
     SkillData();
     A_DELETE_COPY(SkillData)
