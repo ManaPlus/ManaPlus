@@ -778,6 +778,7 @@ void Viewport::mouseMoved(MouseEvent &event)
         && (type == ActorType::Player
         || type == ActorType::Npc
         || type == ActorType::Homunculus
+        || type == ActorType::Mercenary
         || type == ActorType::LocalPet
         || type == ActorType::Pet))
     {
