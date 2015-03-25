@@ -118,6 +118,8 @@ class SkillDialog final : public Window,
 
         void slowLogic();
 
+        void removeSkill(const int id);
+
         static void useSkill(const SkillInfo *const info);
 
     private:

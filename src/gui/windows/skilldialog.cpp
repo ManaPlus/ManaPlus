@@ -389,6 +389,24 @@ void SkillDialog::loadXmlFile(const std::string &fileName)
     }
 }
 
+void SkillDialog::removeSkill(const int id)
+{
+    const SkillMap::const_iterator it = mSkills.find(id);
+
+    if (it != mSkills.end())
+    {
+        SkillInfo *const info = it->second;
+        if (info)
+        {
+            info->level = 0;
+            info->update();
+            PlayerInfo::setSkillLevel(id, 0);
+            if (!info->alwaysVisible)
+                info->visible = false;
+        }
+    }
+}
+
 bool SkillDialog::updateSkill(const int id,
                               const int range,
                               const bool modifiable,

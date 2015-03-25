@@ -292,9 +292,19 @@ void SkillHandler::processSkillUpdate(Net::MessageIn &msg)
 
 void SkillHandler::processSkillDelete(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
-    // ignored, because after this packet server will send all skills.
-    msg.readInt32("skill id");
+    int updateSkill = 0;
+    const int skillId = msg.readInt16("skill id");
+    const int oldLevel = PlayerInfo::getSkillLevel(skillId);
+    if (oldLevel && oldLevel != 0)
+        updateSkill = skillId;
+    PlayerInfo::setSkillLevel(skillId, 0);
+    if (skillDialog)
+    {
+        skillDialog->removeSkill(skillId);
+        skillDialog->update();
+        if (updateSkill)
+            skillDialog->playUpdateEffect(updateSkill);
+    }
 }
 
 void SkillHandler::processSkillCoolDown(Net::MessageIn &msg)
