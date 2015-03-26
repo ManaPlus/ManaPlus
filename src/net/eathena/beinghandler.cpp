@@ -118,11 +118,11 @@ BeingHandler::BeingHandler(const bool enableSync) :
         SMSG_BEING_ATTRS,
         SMSG_MONSTER_INFO,
         SMSG_CLASS_CHANGE,
-        CMSG_SPIRIT_BALLS,
-        CMSG_SPIRIT_BALL_SINGLE,
-        CMSG_BLADE_STOP,
-        CMSG_COMBO_DELAY,
-        CMSG_WEDDING_EFFECT,
+        SMSG_SPIRIT_BALLS,
+        SMSG_SPIRIT_BALL_SINGLE,
+        SMSG_BLADE_STOP,
+        SMSG_COMBO_DELAY,
+        SMSG_WEDDING_EFFECT,
         SMSG_BEING_SLIDE,
         SMSG_STARS_KILL,
         SMSG_BLACKSMITH_RANKS_LIST,
@@ -339,23 +339,23 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
             processClassChange(msg);
             break;
 
-        case CMSG_SPIRIT_BALLS:
+        case SMSG_SPIRIT_BALLS:
             processSpiritBalls(msg);
             break;
 
-        case CMSG_SPIRIT_BALL_SINGLE:
+        case SMSG_SPIRIT_BALL_SINGLE:
             processSpiritBallSingle(msg);
             break;
 
-        case CMSG_BLADE_STOP:
+        case SMSG_BLADE_STOP:
             processBladeStop(msg);
             break;
 
-        case CMSG_COMBO_DELAY:
+        case SMSG_COMBO_DELAY:
             processComboDelay(msg);
             break;
 
-        case CMSG_WEDDING_EFFECT:
+        case SMSG_WEDDING_EFFECT:
             processWddingEffect(msg);
             break;
 

@@ -640,11 +640,11 @@
 
 #define CMSG_DORI_DORI               0x01e7
 #define CMSG_EXPLOSION_SPIRITS       0x01ed
-#define CMSG_SPIRIT_BALLS            0x01d0
-#define CMSG_SPIRIT_BALL_SINGLE      0x01e1
-#define CMSG_BLADE_STOP              0x01d1
-#define CMSG_COMBO_DELAY             0x01d2
-#define CMSG_WEDDING_EFFECT          0x01ea
+#define SMSG_SPIRIT_BALLS            0x01d0
+#define SMSG_SPIRIT_BALL_SINGLE      0x01e1
+#define SMSG_BLADE_STOP              0x01d1
+#define SMSG_COMBO_DELAY             0x01d2
+#define SMSG_WEDDING_EFFECT          0x01ea
 #define CMSG_PVP_INFO                0x020f
 #define CMSG_PLAYER_AUTO_REVIVE      0x0292
 #define CMSG_QUEST_ACTIVATE          0x02b6
