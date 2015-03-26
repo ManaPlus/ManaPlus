@@ -49,6 +49,8 @@ class BuySellHandler notfinal
         virtual void sendSellRequest(const std::string &nick,
                                      const ShopItem *const item,
                                      const int amount) const = 0;
+
+        virtual void close() const = 0;
 };
 
 }  // namespace Net

@@ -53,6 +53,8 @@ class BuySellHandler final : public MessageHandler, public Ea::BuySellHandler
                              const ShopItem *const item,
                              const int amount) const override final;
 
+        void close() const override final;
+
     protected:
         static void processNpcBuy(Net::MessageIn &msg);
 

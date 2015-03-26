@@ -30,6 +30,7 @@
 
 #include "gui/windows/buydialog.h"
 
+#include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
 #include "resources/notifytypes.h"
@@ -146,6 +147,11 @@ void BuySellHandler::sendSellRequest(const std::string &nick A_UNUSED,
                                      const ShopItem *const item A_UNUSED,
                                      const int amount A_UNUSED) const
 {
+}
+
+void BuySellHandler::close() const
+{
+    createOutPacket(CMSG_NPC_SHOP_CLOSE);
 }
 
 }  // namespace EAthena

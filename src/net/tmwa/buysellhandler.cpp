@@ -217,4 +217,8 @@ void BuySellHandler::sendSellRequest(const std::string &nick,
         chatWindow->addWhisper(nick, data, ChatMsgType::BY_PLAYER);
 }
 
+void BuySellHandler::close() const
+{
+}
+
 }  // namespace TmwAthena
