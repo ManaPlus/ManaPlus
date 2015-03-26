@@ -181,4 +181,9 @@ void CashShopHandler::buyItem(const int points,
     outMsg.writeInt16(static_cast<int16_t>(itemId), "item id");
 }
 
+void CashShopHandler::close() const
+{
+    createOutPacket(CMSG_NPC_CASH_SHOP_CLOSE);
+}
+
 }  // namespace EAthena

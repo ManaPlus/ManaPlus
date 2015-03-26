@@ -49,4 +49,8 @@ void CashShopHandler::buyItem(const int points A_UNUSED,
 {
 }
 
+void CashShopHandler::close() const
+{
+}
+
 }  // namespace TmwAthena

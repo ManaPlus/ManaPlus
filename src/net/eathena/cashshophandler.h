@@ -46,6 +46,8 @@ class CashShopHandler final : public MessageHandler,
                      const unsigned char color,
                      const int amount) const override final;
 
+        void close() const override final;
+
     protected:
         static void processCashShopOpen(Net::MessageIn &msg);
 
