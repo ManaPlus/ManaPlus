@@ -1094,6 +1094,24 @@ void LocalPlayer::addXpMessage(const int change)
     }
 }
 
+void LocalPlayer::addHpMessage(const int change)
+{
+    if (change != 0 && mMessages.size() < 20)
+    {
+        // TRANSLATORS: get hp message
+        addMessageToQueue(strprintf("%d %s", change, _("hp")));
+    }
+}
+
+void LocalPlayer::addSpMessage(const int change)
+{
+    if (change != 0 && mMessages.size() < 20)
+    {
+        // TRANSLATORS: get hp message
+        addMessageToQueue(strprintf("%d %s", change, _("mana")));
+    }
+}
+
 void LocalPlayer::statChanged(const int id,
                               const int oldVal1,
                               const int oldVal2)

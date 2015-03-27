@@ -545,12 +545,15 @@ void PlayerHandler::setViewEquipment(const bool allow) const
 
 void PlayerHandler::processPlayerHeal(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
-    // +++ probably need show effect or adjust hp/sp?
-    // 5 - hp
-    // 7 - sp
-    msg.readInt16("var id");
-    msg.readInt16("value");
+    if (!localPlayer)
+        return;
+
+    const int type = msg.readInt16("var id");
+    const int amount = msg.readInt16("value");
+    if (type == 5)
+        localPlayer->addHpMessage(amount);
+    else if (type == 7)
+        localPlayer->addSpMessage(amount);
 }
 
 void PlayerHandler::processPlayerSkillMessage(Net::MessageIn &msg)
