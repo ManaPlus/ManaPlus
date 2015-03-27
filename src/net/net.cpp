@@ -64,7 +64,6 @@ namespace Net
     class CharServerHandler;
     class ChatHandler;
     class GameHandler;
-    class GeneralHandler;
     class GuildHandler;
     class InventoryHandler;
     class NpcHandler;
