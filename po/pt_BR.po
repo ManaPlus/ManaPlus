@@ -22,7 +22,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2015-03-18 14:25+0300\n"
+"POT-Creation-Date: 2015-03-28 13:21+0300\n"
 "PO-Revision-Date: 2015-03-15 09:56+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/"
@@ -47,7 +47,7 @@ msgstr "Arquivo enviado"
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: text dialog button
 #. TRANSLATORS: ok dialog button
-#: src/actions/actions.cpp:148 src/client.cpp:1451 src/client.cpp:1478
+#: src/actions/actions.cpp:148 src/client.cpp:1454 src/client.cpp:1481
 #: src/gamemodifiers.cpp:427 src/gui/dialogsmanager.cpp:158
 #: src/gui/dialogsmanager.cpp:174 src/gui/widgets/tabs/setup_input.cpp:164
 #: src/gui/widgets/tabs/setup_theme.cpp:312
@@ -67,9 +67,9 @@ msgstr "Arquivo enviado"
 #: src/gui/windows/registerdialog.cpp:243 src/gui/windows/socialwindow.cpp:507
 #: src/gui/windows/textdialog.cpp:48 src/gui/windows/unregisterdialog.cpp:146
 #: src/net/ea/charserverhandler.cpp:143 src/net/ea/charserverhandler.cpp:162
-#: src/net/ea/gamehandler.cpp:83 src/net/eathena/charserverhandler.cpp:584
-#: src/net/eathena/charserverhandler.cpp:614
-#: src/net/eathena/charserverhandler.cpp:644
+#: src/net/ea/gamehandler.cpp:83 src/net/eathena/charserverhandler.cpp:589
+#: src/net/eathena/charserverhandler.cpp:619
+#: src/net/eathena/charserverhandler.cpp:649
 #: src/net/tmwa/charserverhandler.cpp:535
 msgid "OK"
 msgstr "OK"
@@ -169,12 +169,12 @@ msgid "Uploaded log into:"
 msgstr "Registro enviado em:"
 
 #. TRANSLATORS: whisper send
-#: src/actions/chat.cpp:242
+#: src/actions/chat.cpp:247
 msgid "Cannot send empty whispers!"
 msgstr "Não é possível enviar mensagens privadas vazias!"
 
 #. TRANSLATORS: new whisper or channel query
-#: src/actions/chat.cpp:290
+#: src/actions/chat.cpp:295
 #, c-format
 msgid "Cannot create a whisper tab \"%s\"! It probably already exists."
 msgstr ""
@@ -183,12 +183,12 @@ msgstr ""
 
 #. TRANSLATORS: create party message
 #. TRANSLATORS: chat error message
-#: src/actions/chat.cpp:315 src/gui/widgets/tabs/chat/partytab.cpp:71
+#: src/actions/chat.cpp:320 src/gui/widgets/tabs/chat/partytab.cpp:71
 msgid "Party name is missing."
 msgstr "Falta o nome do grupo."
 
 #. TRANSLATORS: create guild message
-#: src/actions/chat.cpp:333
+#: src/actions/chat.cpp:338
 msgid "Guild name is missing."
 msgstr "Falta o nome da guilda."
 
@@ -196,28 +196,33 @@ msgstr "Falta o nome da guilda."
 #. TRANSLATORS: guild invite message
 #. TRANSLATORS: party kick message
 #. TRANSLATORS: change relation
-#: src/actions/chat.cpp:354 src/actions/chat.cpp:385 src/actions/chat.cpp:450
-#: src/actions/chat.cpp:480 src/actions/commands.cpp:77
+#: src/actions/chat.cpp:359 src/actions/chat.cpp:390 src/actions/chat.cpp:455
+#: src/actions/chat.cpp:485 src/actions/commands.cpp:77
 msgid "Please specify a name."
 msgstr "Por favor, especifique um nome."
 
-#: src/actions/chat.cpp:405
+#: src/actions/chat.cpp:410
 msgid "Return toggles chat."
 msgstr "Enter alterna para o chat."
 
-#: src/actions/chat.cpp:405
+#: src/actions/chat.cpp:410
 msgid "Message closes chat."
 msgstr "A mensagem fecha o chat."
 
 #. TRANSLATORS: message from toggle chat command
-#: src/actions/chat.cpp:416
+#: src/actions/chat.cpp:421
 msgid "Return now toggles chat."
 msgstr "Agora Enter alterna para o chat."
 
 #. TRANSLATORS: message from toggle chat command
-#: src/actions/chat.cpp:425
+#: src/actions/chat.cpp:430
 msgid "Message now closes chat."
 msgstr "Agora a mensagem fecha o chat."
+
+#: src/actions/chat.cpp:570
+#, c-format
+msgid "equipped hat %s."
+msgstr ""
 
 #. TRANSLATORS: change relation
 #: src/actions/commands.cpp:119
@@ -396,43 +401,43 @@ msgstr[1] "Você pegou %d [@@%d|%s@@]."
 
 #. TRANSLATORS: this is normal experience
 #. TRANSLATORS: get xp message
-#: src/being/localplayer.cpp:1076 src/being/localplayer.cpp:1077
-#: src/being/localplayer.cpp:1113
+#: src/being/localplayer.cpp:1066 src/being/localplayer.cpp:1067
+#: src/being/localplayer.cpp:1093
 msgid "xp"
 msgstr "exp"
 
 #. TRANSLATORS: this is job experience
-#: src/being/localplayer.cpp:1081 src/being/localplayer.cpp:1087
-#: src/being/localplayer.cpp:1093
+#: src/being/localplayer.cpp:1071 src/being/localplayer.cpp:1077
+#: src/being/localplayer.cpp:1083
 msgid "job"
 msgstr "profissão"
 
 #. TRANSLATORS: follow command message
-#: src/being/localplayer.cpp:2146
+#: src/being/localplayer.cpp:2162
 #, c-format
 msgid "Follow: %s"
 msgstr "Seguindo: %s"
 
 #. TRANSLATORS: follow command message
 #. TRANSLATORS: cancel follow message
-#: src/being/localplayer.cpp:2152 src/being/localplayer.cpp:2177
+#: src/being/localplayer.cpp:2168 src/being/localplayer.cpp:2193
 msgid "Follow canceled"
 msgstr "Seguindo cancelado"
 
 #. TRANSLATORS: imitate command message
-#: src/being/localplayer.cpp:2162
+#: src/being/localplayer.cpp:2178
 #, c-format
 msgid "Imitation: %s"
 msgstr "Imitando: %s"
 
 #. TRANSLATORS: imitate command message
 #. TRANSLATORS: cancel follow message
-#: src/being/localplayer.cpp:2168 src/being/localplayer.cpp:2182
+#: src/being/localplayer.cpp:2184 src/being/localplayer.cpp:2198
 msgid "Imitation canceled"
 msgstr "Imitação cancelada"
 
 #. TRANSLATORS: wait player/monster message
-#: src/being/localplayer.cpp:2532
+#: src/being/localplayer.cpp:2548
 #, c-format
 msgid "You see %s"
 msgstr "Você vê %s"
@@ -470,37 +475,37 @@ msgstr "Bolha Flutuante"
 #. TRANSLATORS: setup tab quick button
 #. TRANSLATORS: full button name
 #. TRANSLATORS: setup window name
-#: src/client.cpp:905 src/gui/windowmenu.cpp:167
+#: src/client.cpp:907 src/gui/windowmenu.cpp:167
 #: src/gui/windows/setupwindow.cpp:61
 msgid "Setup"
 msgstr "Configurar"
 
 #. TRANSLATORS: perfoamance tab quick button
 #. TRANSLATORS: settings tab name
-#: src/client.cpp:908 src/gui/widgets/tabs/setup_perfomance.cpp:54
+#: src/client.cpp:910 src/gui/widgets/tabs/setup_perfomance.cpp:54
 msgid "Performance"
 msgstr "Desempenho"
 
 #. TRANSLATORS: video tab quick button
 #. TRANSLATORS: video settings tab name
-#: src/client.cpp:911 src/gui/widgets/tabs/setup_video.cpp:107
+#: src/client.cpp:913 src/gui/widgets/tabs/setup_video.cpp:107
 msgid "Video"
 msgstr "Vídeo"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: theme settings tab name
-#: src/client.cpp:914 src/gui/widgets/tabs/setup_theme.cpp:122
+#: src/client.cpp:916 src/gui/widgets/tabs/setup_theme.cpp:122
 msgid "Theme"
 msgstr "Tema"
 
 #. TRANSLATORS: theme tab quick button
-#: src/client.cpp:917
+#: src/client.cpp:919
 msgid "About"
 msgstr "Sobre"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: help window name
-#: src/client.cpp:920 src/gui/windowmenu.cpp:72
+#: src/client.cpp:922 src/gui/windowmenu.cpp:72
 #: src/gui/windows/helpwindow.cpp:53
 msgid "Help"
 msgstr "Ajuda"
@@ -516,7 +521,7 @@ msgstr "Ajuda"
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: quests window button
 #. TRANSLATORS: shop window button
-#: src/client.cpp:924 src/client.cpp:1379 src/client.cpp:1393
+#: src/client.cpp:926 src/client.cpp:1382 src/client.cpp:1396
 #: src/gui/dialogsmanager.cpp:106 src/gui/popups/popupmenu.cpp:727
 #: src/gui/popups/popupmenu.cpp:965 src/gui/windows/didyouknowwindow.cpp:81
 #: src/gui/windows/inventorywindow.cpp:254
@@ -527,32 +532,32 @@ msgid "Close"
 msgstr "Fechar"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1050
+#: src/client.cpp:1052
 msgid "Connecting to server"
 msgstr "Conectando-se ao servidor"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1096
+#: src/client.cpp:1098
 msgid "Logging in"
 msgstr "Fazendo login"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1139
+#: src/client.cpp:1141
 msgid "Entering game world"
 msgstr "Entrando no mundo do jogo"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1270
+#: src/client.cpp:1273
 msgid "Requesting characters"
 msgstr "Requerindo personagens"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1310
+#: src/client.cpp:1313
 msgid "Connecting to the game server"
 msgstr "Conectando ao servidor do jogo"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1322
+#: src/client.cpp:1325
 msgid "Changing game servers"
 msgstr "Mudando de servidor do jogo"
 
@@ -568,7 +573,7 @@ msgstr "Mudando de servidor do jogo"
 #. TRANSLATORS: info message
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: error message
-#: src/client.cpp:1377 src/client.cpp:1391 src/client.cpp:1586
+#: src/client.cpp:1380 src/client.cpp:1394 src/client.cpp:1589
 #: src/gui/windows/changeemaildialog.cpp:164
 #: src/gui/windows/changepassworddialog.cpp:154
 #: src/gui/windows/charcreatedialog.cpp:376
@@ -577,45 +582,45 @@ msgstr "Mudando de servidor do jogo"
 #: src/gui/windows/registerdialog.cpp:243
 #: src/gui/windows/unregisterdialog.cpp:143
 #: src/net/ea/charserverhandler.cpp:141
-#: src/net/eathena/charserverhandler.cpp:567
-#: src/net/eathena/charserverhandler.cpp:569
-#: src/net/eathena/charserverhandler.cpp:642
+#: src/net/eathena/charserverhandler.cpp:572
+#: src/net/eathena/charserverhandler.cpp:574
+#: src/net/eathena/charserverhandler.cpp:647
 #: src/net/tmwa/charserverhandler.cpp:533
 msgid "Error"
 msgstr "Erro"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1406
+#: src/client.cpp:1409
 msgid "Requesting registration details"
 msgstr "Requisitando detalhes do registro"
 
 #. TRANSLATORS: password change message header
-#: src/client.cpp:1447
+#: src/client.cpp:1450
 msgid "Password Change"
 msgstr "Mudar senha"
 
 #. TRANSLATORS: password change message text
-#: src/client.cpp:1449
+#: src/client.cpp:1452
 msgid "Password changed successfully!"
 msgstr "Senha modificada com sucesso!"
 
 #. TRANSLATORS: email change message header
-#: src/client.cpp:1474
+#: src/client.cpp:1477
 msgid "Email Change"
 msgstr "Mudar email"
 
 #. TRANSLATORS: email change message text
-#: src/client.cpp:1476
+#: src/client.cpp:1479
 msgid "Email changed successfully!"
 msgstr "Email modificado com sucesso!"
 
 #. TRANSLATORS: unregister message header
-#: src/client.cpp:1503
+#: src/client.cpp:1506
 msgid "Unregister Successful"
 msgstr "Registro cancelado com sucesso"
 
 #. TRANSLATORS: unregister message text
-#: src/client.cpp:1505
+#: src/client.cpp:1508
 msgid "Farewell, come back any time..."
 msgstr "Adeus, volte sempre..."
 
@@ -1103,7 +1108,7 @@ msgstr ""
 #: src/gui/models/colorlistmodel.h:33 src/gui/models/sortlistmodelinv.h:32
 #: src/gui/widgets/tabs/setup_other.cpp:79
 #: src/gui/widgets/tabs/setup_visual.cpp:81
-#: src/gui/windows/equipmentwindow.cpp:615
+#: src/gui/windows/equipmentwindow.cpp:616
 msgid "default"
 msgstr "padrão"
 
@@ -1491,37 +1496,49 @@ msgid "Skip"
 msgstr "Passar"
 
 #. TRANSLATORS: being popup label
-#: src/gui/popups/beingpopup.cpp:149
+#: src/gui/popups/beingpopup.cpp:158 src/gui/popups/beingpopup.cpp:177
+#, fuzzy, c-format
+msgid "Hungry: %d"
+msgstr "Alcance: %d"
+
+#. TRANSLATORS: being popup label
+#: src/gui/popups/beingpopup.cpp:162 src/gui/popups/beingpopup.cpp:181
+#, c-format
+msgid "Intimacy: %d"
+msgstr ""
+
+#. TRANSLATORS: being popup label
+#: src/gui/popups/beingpopup.cpp:196
 #, c-format
 msgid "Party: %s"
 msgstr "Grupo: %s"
 
 #. TRANSLATORS: being popup label
-#: src/gui/popups/beingpopup.cpp:166
+#: src/gui/popups/beingpopup.cpp:213
 #, c-format
 msgid "Guild: %s"
 msgstr "Guilda: %s"
 
 #. TRANSLATORS: being popup label
-#: src/gui/popups/beingpopup.cpp:182
+#: src/gui/popups/beingpopup.cpp:229
 #, c-format
 msgid "Pvp rank: %u"
 msgstr "Posição no PVP: %u"
 
 #. TRANSLATORS: being popup label
-#: src/gui/popups/beingpopup.cpp:196
+#: src/gui/popups/beingpopup.cpp:244
 #, c-format
 msgid "Buy shop: %s"
 msgstr ""
 
 #. TRANSLATORS: being popup label
-#: src/gui/popups/beingpopup.cpp:210
+#: src/gui/popups/beingpopup.cpp:258
 #, c-format
 msgid "Sell shop: %s"
 msgstr ""
 
 #. TRANSLATORS: being popup label
-#: src/gui/popups/beingpopup.cpp:223
+#: src/gui/popups/beingpopup.cpp:271
 #, c-format
 msgid "Comment: %s"
 msgstr "Comentário: %s"
@@ -1607,7 +1624,7 @@ msgstr "Negociação"
 #: src/gui/popups/popupmenu.cpp:159 src/gui/popups/popupmenu.cpp:277
 #: src/gui/popups/popupmenu.cpp:803 src/gui/widgets/skillinfo.cpp:114
 #: src/gui/windows/botcheckerwindow.cpp:88 src/input/pages/basic.cpp:42
-#: src/net/eathena/generalhandler.cpp:390 src/net/tmwa/generalhandler.cpp:348
+#: src/net/eathena/generalhandler.cpp:401 src/net/tmwa/generalhandler.cpp:358
 msgid "Attack"
 msgstr "Atacar"
 
@@ -2034,7 +2051,7 @@ msgstr "Adicionar todos na negociação"
 #: src/gui/popups/popupmenu.cpp:1637 src/gui/popups/popupmenu.cpp:1784
 #: src/gui/popups/popupmenu.cpp:1825 src/gui/windows/inventorywindow.cpp:249
 #: src/gui/windows/inventorywindow.cpp:272
-#: src/gui/windows/inventorywindow.cpp:858 src/gui/windows/setupwindow.cpp:96
+#: src/gui/windows/inventorywindow.cpp:864 src/gui/windows/setupwindow.cpp:96
 msgid "Store"
 msgstr "Armazenar"
 
@@ -2088,7 +2105,7 @@ msgstr "Retirar tudo"
 #: src/gui/windows/inventorywindow.cpp:184
 #: src/gui/windows/inventorywindow.cpp:750 src/gui/windows/skilldialog.cpp:79
 #: src/gui/windows/skilldialog.cpp:151 src/gui/windows/skilldialog.cpp:321
-#: src/gui/windows/skilldialog.cpp:455 src/gui/windows/skilldialog.cpp:537
+#: src/gui/windows/skilldialog.cpp:477 src/gui/windows/skilldialog.cpp:559
 #: src/resources/itemtypemapdata.h:37 src/resources/itemtypemapdata.h:41
 msgid "Use"
 msgstr "Usar"
@@ -2278,7 +2295,7 @@ msgstr "Proteger item"
 #. TRANSLATORS: drop item
 #. TRANSLATORS: inventory button
 #: src/gui/popups/popupmenu.cpp:2555 src/gui/windows/inventorywindow.cpp:199
-#: src/gui/windows/inventorywindow.cpp:866
+#: src/gui/windows/inventorywindow.cpp:872
 msgid "Drop..."
 msgstr "Descartar..."
 
@@ -2293,7 +2310,7 @@ msgstr "Descartar tudo"
 #. TRANSLATORS: full button name
 #. TRANSLATORS: inventory button
 #: src/gui/popups/popupmenu.cpp:2564 src/gui/windowmenu.cpp:130
-#: src/gui/windows/inventorywindow.cpp:871
+#: src/gui/windows/inventorywindow.cpp:877
 msgid "Drop"
 msgstr "Descartar"
 
@@ -2699,7 +2716,7 @@ msgstr "Editar"
 
 #. TRANSLATORS: skill level
 #. TRANSLATORS: skills dialog. skill level
-#: src/gui/widgets/skillinfo.cpp:100 src/gui/windows/skilldialog.cpp:451
+#: src/gui/widgets/skillinfo.cpp:100 src/gui/windows/skilldialog.cpp:473
 #, c-format
 msgid "Lvl: %d"
 msgstr "Nível: %d"
@@ -2712,7 +2729,7 @@ msgstr "Tipo: %s"
 
 #. TRANSLATORS: Skill type
 #. TRANSLATORS: unknown equipment page name
-#: src/gui/widgets/skillinfo.cpp:109 src/gui/windows/equipmentwindow.cpp:622
+#: src/gui/widgets/skillinfo.cpp:109 src/gui/windows/equipmentwindow.cpp:623
 msgid "Unknown"
 msgstr "Desconhecido"
 
@@ -5356,8 +5373,8 @@ msgstr "Jogar"
 #. TRANSLATORS: info message
 #: src/gui/windows/charselectdialog.cpp:82
 #: src/net/ea/charserverhandler.cpp:160
-#: src/net/eathena/charserverhandler.cpp:582
-#: src/net/eathena/charserverhandler.cpp:612
+#: src/net/eathena/charserverhandler.cpp:587
+#: src/net/eathena/charserverhandler.cpp:617
 msgid "Info"
 msgstr "Informações"
 
@@ -6068,13 +6085,13 @@ msgid "Reset Windows"
 msgstr "Restaurar janelas"
 
 #. TRANSLATORS: shop window name
-#: src/gui/windows/shopwindow.cpp:101 src/gui/windows/shopwindow.cpp:1068
+#: src/gui/windows/shopwindow.cpp:101 src/gui/windows/shopwindow.cpp:1070
 msgid "Personal Shop"
 msgstr "Loja pessoal"
 
 #. TRANSLATORS: shop window button
-#: src/gui/windows/shopwindow.cpp:190 src/gui/windows/shopwindow.cpp:428
-#: src/gui/windows/shopwindow.cpp:447
+#: src/gui/windows/shopwindow.cpp:190 src/gui/windows/shopwindow.cpp:430
+#: src/gui/windows/shopwindow.cpp:449
 msgid "Publish"
 msgstr "Publicar"
 
@@ -6088,27 +6105,27 @@ msgstr "Anúncio"
 msgid "Show links in announce"
 msgstr "Mostrar links em anúncio"
 
-#: src/gui/windows/shopwindow.cpp:368
+#: src/gui/windows/shopwindow.cpp:370
 msgid "Please enter new shop name"
 msgstr "Por favor digite o nome da nova loja"
 
-#: src/gui/windows/shopwindow.cpp:426 src/gui/windows/shopwindow.cpp:445
+#: src/gui/windows/shopwindow.cpp:428 src/gui/windows/shopwindow.cpp:447
 msgid "Unpublish"
 msgstr "Despublicar"
 
 #. TRANSLATORS: shop window dialog
 #. TRANSLATORS: trade message
-#: src/gui/windows/shopwindow.cpp:952 src/net/ea/tradehandler.cpp:172
+#: src/gui/windows/shopwindow.cpp:954 src/net/ea/tradehandler.cpp:172
 msgid "Request for Trade"
 msgstr "Proposta de negociação"
 
-#: src/gui/windows/shopwindow.cpp:952
+#: src/gui/windows/shopwindow.cpp:954
 #, c-format
 msgid "%s wants to %s %s do you accept?"
 msgstr "%s quer %s %s você aceita?"
 
 #. TRANSLATORS: shop window name
-#: src/gui/windows/shopwindow.cpp:1073
+#: src/gui/windows/shopwindow.cpp:1075
 #, c-format
 msgid "Personal Shop - %s"
 msgstr "Loja Pessoal - %s"
@@ -6136,7 +6153,7 @@ msgstr "Habilidade %d"
 msgid "Skill %d"
 msgstr "Habilidade %d"
 
-#: src/gui/windows/skilldialog.cpp:456
+#: src/gui/windows/skilldialog.cpp:478
 #, c-format
 msgid "Failed skill: %s"
 msgstr "Habilidade falhou: %s"
@@ -7402,34 +7419,40 @@ msgstr "Copiar roupa equipada"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/outfits.cpp:61
+#, fuzzy
+msgid "Show hat in chat"
+msgstr "Mostrar botão de emoticon no chat"
+
+#. TRANSLATORS: input action name
+#: src/input/pages/outfits.cpp:67
 msgid "Outfits shortcuts"
 msgstr "Atalhos de Roupas"
 
 #. TRANSLATORS: input action name
-#: src/input/pages/outfits.cpp:67 src/input/pages/outfits.cpp:73
-#: src/input/pages/outfits.cpp:79 src/input/pages/outfits.cpp:85
-#: src/input/pages/outfits.cpp:91 src/input/pages/outfits.cpp:97
-#: src/input/pages/outfits.cpp:103 src/input/pages/outfits.cpp:109
-#: src/input/pages/outfits.cpp:115 src/input/pages/outfits.cpp:121
-#: src/input/pages/outfits.cpp:127 src/input/pages/outfits.cpp:133
-#: src/input/pages/outfits.cpp:139 src/input/pages/outfits.cpp:145
-#: src/input/pages/outfits.cpp:151 src/input/pages/outfits.cpp:157
-#: src/input/pages/outfits.cpp:163 src/input/pages/outfits.cpp:169
-#: src/input/pages/outfits.cpp:175 src/input/pages/outfits.cpp:181
-#: src/input/pages/outfits.cpp:187 src/input/pages/outfits.cpp:193
-#: src/input/pages/outfits.cpp:199 src/input/pages/outfits.cpp:205
-#: src/input/pages/outfits.cpp:211 src/input/pages/outfits.cpp:217
-#: src/input/pages/outfits.cpp:223 src/input/pages/outfits.cpp:229
-#: src/input/pages/outfits.cpp:235 src/input/pages/outfits.cpp:241
-#: src/input/pages/outfits.cpp:247 src/input/pages/outfits.cpp:253
-#: src/input/pages/outfits.cpp:259 src/input/pages/outfits.cpp:265
-#: src/input/pages/outfits.cpp:271 src/input/pages/outfits.cpp:277
-#: src/input/pages/outfits.cpp:283 src/input/pages/outfits.cpp:289
-#: src/input/pages/outfits.cpp:295 src/input/pages/outfits.cpp:301
-#: src/input/pages/outfits.cpp:307 src/input/pages/outfits.cpp:313
-#: src/input/pages/outfits.cpp:319 src/input/pages/outfits.cpp:325
-#: src/input/pages/outfits.cpp:331 src/input/pages/outfits.cpp:337
-#: src/input/pages/outfits.cpp:343 src/input/pages/outfits.cpp:349
+#: src/input/pages/outfits.cpp:73 src/input/pages/outfits.cpp:79
+#: src/input/pages/outfits.cpp:85 src/input/pages/outfits.cpp:91
+#: src/input/pages/outfits.cpp:97 src/input/pages/outfits.cpp:103
+#: src/input/pages/outfits.cpp:109 src/input/pages/outfits.cpp:115
+#: src/input/pages/outfits.cpp:121 src/input/pages/outfits.cpp:127
+#: src/input/pages/outfits.cpp:133 src/input/pages/outfits.cpp:139
+#: src/input/pages/outfits.cpp:145 src/input/pages/outfits.cpp:151
+#: src/input/pages/outfits.cpp:157 src/input/pages/outfits.cpp:163
+#: src/input/pages/outfits.cpp:169 src/input/pages/outfits.cpp:175
+#: src/input/pages/outfits.cpp:181 src/input/pages/outfits.cpp:187
+#: src/input/pages/outfits.cpp:193 src/input/pages/outfits.cpp:199
+#: src/input/pages/outfits.cpp:205 src/input/pages/outfits.cpp:211
+#: src/input/pages/outfits.cpp:217 src/input/pages/outfits.cpp:223
+#: src/input/pages/outfits.cpp:229 src/input/pages/outfits.cpp:235
+#: src/input/pages/outfits.cpp:241 src/input/pages/outfits.cpp:247
+#: src/input/pages/outfits.cpp:253 src/input/pages/outfits.cpp:259
+#: src/input/pages/outfits.cpp:265 src/input/pages/outfits.cpp:271
+#: src/input/pages/outfits.cpp:277 src/input/pages/outfits.cpp:283
+#: src/input/pages/outfits.cpp:289 src/input/pages/outfits.cpp:295
+#: src/input/pages/outfits.cpp:301 src/input/pages/outfits.cpp:307
+#: src/input/pages/outfits.cpp:313 src/input/pages/outfits.cpp:319
+#: src/input/pages/outfits.cpp:325 src/input/pages/outfits.cpp:331
+#: src/input/pages/outfits.cpp:337 src/input/pages/outfits.cpp:343
+#: src/input/pages/outfits.cpp:349 src/input/pages/outfits.cpp:355
 #, c-format
 msgid "Outfit Shortcut %d"
 msgstr "Atalho de Roupa %d"
@@ -7810,7 +7833,7 @@ msgstr "Erro ao criar personagem. Provavelmente o nome já está sendo usado."
 
 #. TRANSLATORS: error message
 #: src/net/ea/charserverhandler.cpp:117 src/net/ea/loginhandler.cpp:247
-#: src/net/eathena/loginhandler.cpp:223
+#: src/net/eathena/loginhandler.cpp:224
 msgid "Wrong name."
 msgstr "Nome errado."
 
@@ -7925,27 +7948,27 @@ msgid "Guild castle: %s"
 msgstr "Castelo Guilda : %s"
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:207 src/net/eathena/loginhandler.cpp:178
+#: src/net/ea/loginhandler.cpp:207 src/net/eathena/loginhandler.cpp:179
 msgid "Unregistered ID."
 msgstr "ID não registrado."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:211 src/net/eathena/loginhandler.cpp:182
+#: src/net/ea/loginhandler.cpp:211 src/net/eathena/loginhandler.cpp:183
 msgid "Wrong password."
 msgstr "Senha incorreta."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:216 src/net/eathena/loginhandler.cpp:187
+#: src/net/ea/loginhandler.cpp:216 src/net/eathena/loginhandler.cpp:188
 msgid "Account expired."
 msgstr "A conta expirou."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:220 src/net/eathena/loginhandler.cpp:191
+#: src/net/ea/loginhandler.cpp:220 src/net/eathena/loginhandler.cpp:192
 msgid "Rejected from server."
 msgstr "Rejeitado pelo servidor."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:224 src/net/eathena/loginhandler.cpp:195
+#: src/net/ea/loginhandler.cpp:224 src/net/eathena/loginhandler.cpp:196
 msgid ""
 "You have been permanently banned from the game. Please contact the GM team."
 msgstr ""
@@ -7953,12 +7976,12 @@ msgstr ""
 "algum GM."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:229 src/net/eathena/loginhandler.cpp:200
+#: src/net/ea/loginhandler.cpp:229 src/net/eathena/loginhandler.cpp:201
 msgid "Client too old."
 msgstr "Cliente muito antigo."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:233 src/net/eathena/loginhandler.cpp:204
+#: src/net/ea/loginhandler.cpp:233 src/net/eathena/loginhandler.cpp:205
 #, c-format
 msgid ""
 "You have been temporarily banned from the game until %s.\n"
@@ -7968,27 +7991,27 @@ msgstr ""
 "Por favor entre em contato com algum GM através do fórum."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:239 src/net/eathena/loginhandler.cpp:213
+#: src/net/ea/loginhandler.cpp:239 src/net/eathena/loginhandler.cpp:214
 msgid "Server overpopulated."
 msgstr "Servidor lotado."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:243 src/net/eathena/loginhandler.cpp:218
+#: src/net/ea/loginhandler.cpp:243 src/net/eathena/loginhandler.cpp:219
 msgid "This user name is already taken."
 msgstr "Este nome de usuário já está em uso."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:251 src/net/eathena/loginhandler.cpp:228
+#: src/net/ea/loginhandler.cpp:251 src/net/eathena/loginhandler.cpp:229
 msgid "Incorrect email."
 msgstr "Email incorreto."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:255 src/net/eathena/loginhandler.cpp:233
+#: src/net/ea/loginhandler.cpp:255 src/net/eathena/loginhandler.cpp:234
 msgid "Username permanently erased."
 msgstr "Usuário apagado permanentemente."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:259 src/net/eathena/loginhandler.cpp:237
+#: src/net/ea/loginhandler.cpp:259 src/net/eathena/loginhandler.cpp:238
 #: src/net/tmwa/loginhandler.cpp:286
 msgid "Unknown error."
 msgstr "Erro desconhecido."
@@ -8009,31 +8032,31 @@ msgid "Connection to server terminated. "
 msgstr "Conexão com o servidor interrompida. "
 
 #. TRANSLATORS: char rename error
-#: src/net/eathena/charserverhandler.cpp:567
-#: src/net/eathena/charserverhandler.cpp:604
+#: src/net/eathena/charserverhandler.cpp:572
+#: src/net/eathena/charserverhandler.cpp:609
 msgid "Character rename error."
 msgstr "Erro ao renomear personagem."
 
-#: src/net/eathena/charserverhandler.cpp:582
+#: src/net/eathena/charserverhandler.cpp:587
 msgid "Character renamed."
 msgstr "Personagem renomeado."
 
 #. TRANSLATORS: char rename error
-#: src/net/eathena/charserverhandler.cpp:595
+#: src/net/eathena/charserverhandler.cpp:600
 msgid "Rename not allowed."
 msgstr "Não é permitido renomear."
 
 #. TRANSLATORS: char rename error
-#: src/net/eathena/charserverhandler.cpp:599
+#: src/net/eathena/charserverhandler.cpp:604
 msgid "New name is not set."
 msgstr "Novo nome não definido."
 
 #. TRANSLATORS: char rename error
-#: src/net/eathena/charserverhandler.cpp:608
+#: src/net/eathena/charserverhandler.cpp:613
 msgid "Character not found."
 msgstr "Personagem não encontrado."
 
-#: src/net/eathena/charserverhandler.cpp:642
+#: src/net/eathena/charserverhandler.cpp:647
 #: src/net/tmwa/charserverhandler.cpp:533
 msgid "Failed to delete character."
 msgstr "Falha ao deletar personagem."
@@ -8071,316 +8094,316 @@ msgid "Can't open channel. Channel %s is not exists."
 msgstr "Não pode abrir canal. Canal %s não existe."
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:138 src/net/tmwa/generalhandler.cpp:141
+#: src/net/eathena/generalhandler.cpp:140 src/net/tmwa/generalhandler.cpp:143
 #, c-format
 msgid "Strength %s"
 msgstr "Força %s"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:139 src/net/tmwa/generalhandler.cpp:143
+#: src/net/eathena/generalhandler.cpp:141 src/net/tmwa/generalhandler.cpp:145
 #, c-format
 msgid "Agility %s"
 msgstr "Agilidade %s"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:140 src/net/tmwa/generalhandler.cpp:145
+#: src/net/eathena/generalhandler.cpp:142 src/net/tmwa/generalhandler.cpp:147
 #, c-format
 msgid "Vitality %s"
 msgstr "Vitalidade %s"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:141 src/net/tmwa/generalhandler.cpp:147
+#: src/net/eathena/generalhandler.cpp:143 src/net/tmwa/generalhandler.cpp:149
 #, c-format
 msgid "Intelligence %s"
 msgstr "Inteligência %s"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:142 src/net/tmwa/generalhandler.cpp:149
+#: src/net/eathena/generalhandler.cpp:144 src/net/tmwa/generalhandler.cpp:151
 #, c-format
 msgid "Dexterity %s"
 msgstr "Destreza %s"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:143 src/net/tmwa/generalhandler.cpp:151
+#: src/net/eathena/generalhandler.cpp:145 src/net/tmwa/generalhandler.cpp:153
 #, c-format
 msgid "Luck %s"
 msgstr "Sorte %s"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:178 src/net/tmwa/generalhandler.cpp:186
+#: src/net/eathena/generalhandler.cpp:180 src/net/tmwa/generalhandler.cpp:188
 msgid "Authentication failed."
 msgstr "Falha de autenticação."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:181 src/net/tmwa/generalhandler.cpp:190
+#: src/net/eathena/generalhandler.cpp:183 src/net/tmwa/generalhandler.cpp:192
 msgid "No servers available."
 msgstr "Servidores indisponíveis."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:186 src/net/tmwa/generalhandler.cpp:196
+#: src/net/eathena/generalhandler.cpp:188 src/net/tmwa/generalhandler.cpp:198
 msgid "Someone else is trying to use this account."
 msgstr "Outra pessoa está tentando utilizar esta conta."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:191 src/net/tmwa/generalhandler.cpp:202
+#: src/net/eathena/generalhandler.cpp:193 src/net/tmwa/generalhandler.cpp:204
 msgid "This account is already logged in."
 msgstr "Existe alguém conectado a esta conta."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:195 src/net/tmwa/generalhandler.cpp:207
+#: src/net/eathena/generalhandler.cpp:197 src/net/tmwa/generalhandler.cpp:209
 msgid "Speed hack detected."
 msgstr "Hack de velocidade detectado."
 
-#: src/net/eathena/generalhandler.cpp:198
+#: src/net/eathena/generalhandler.cpp:200
 msgid "Server full."
 msgstr "Servidor lotado."
 
-#: src/net/eathena/generalhandler.cpp:201
+#: src/net/eathena/generalhandler.cpp:203
 msgid "Sorry, you are underaged."
 msgstr "Desculpe, você está abaixo da idade permitida."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:204 src/net/tmwa/generalhandler.cpp:211
+#: src/net/eathena/generalhandler.cpp:206 src/net/tmwa/generalhandler.cpp:213
 msgid "Duplicated login."
 msgstr "Login duplicado."
 
-#: src/net/eathena/generalhandler.cpp:207
+#: src/net/eathena/generalhandler.cpp:209
 msgid "To many connections from same ip."
 msgstr "Muitas conexões do mesmo IP."
 
-#: src/net/eathena/generalhandler.cpp:210
+#: src/net/eathena/generalhandler.cpp:212
 msgid "Not paid for this time."
 msgstr "Não pago no momento."
 
-#: src/net/eathena/generalhandler.cpp:213
+#: src/net/eathena/generalhandler.cpp:215
 msgid "Pay suspended."
 msgstr "Pagamento suspenso."
 
-#: src/net/eathena/generalhandler.cpp:216
+#: src/net/eathena/generalhandler.cpp:218
 msgid "Pay changed."
 msgstr "Pagamento modificado."
 
-#: src/net/eathena/generalhandler.cpp:219
+#: src/net/eathena/generalhandler.cpp:221
 msgid "Pay wrong ip."
 msgstr "IP de pagamento errado."
 
-#: src/net/eathena/generalhandler.cpp:222
+#: src/net/eathena/generalhandler.cpp:224
 msgid "Pay game room."
 msgstr "Pagar sala de jogo."
 
-#: src/net/eathena/generalhandler.cpp:225
+#: src/net/eathena/generalhandler.cpp:227
 msgid "Disconnect forced by GM."
 msgstr "Desconexão forçada pelo GM."
 
-#: src/net/eathena/generalhandler.cpp:229
+#: src/net/eathena/generalhandler.cpp:231
 msgid "Ban japan refuse."
 msgstr "Ban Japan refuse."
 
-#: src/net/eathena/generalhandler.cpp:232
+#: src/net/eathena/generalhandler.cpp:234
 msgid "Remained other account."
 msgstr "Manteve-se outra conta."
 
-#: src/net/eathena/generalhandler.cpp:235
+#: src/net/eathena/generalhandler.cpp:237
 msgid "Ip unfair."
 msgstr "IP hostil."
 
-#: src/net/eathena/generalhandler.cpp:238
+#: src/net/eathena/generalhandler.cpp:240
 msgid "Ip count all."
 msgstr "Contagem geral de IP."
 
-#: src/net/eathena/generalhandler.cpp:241
+#: src/net/eathena/generalhandler.cpp:243
 msgid "Ip count."
 msgstr "Contagem de IP."
 
-#: src/net/eathena/generalhandler.cpp:245
+#: src/net/eathena/generalhandler.cpp:247
 msgid "Memory."
 msgstr "Memória."
 
-#: src/net/eathena/generalhandler.cpp:248
+#: src/net/eathena/generalhandler.cpp:250
 msgid "Han valid."
 msgstr "HAN válido."
 
-#: src/net/eathena/generalhandler.cpp:251
+#: src/net/eathena/generalhandler.cpp:253
 msgid "Ip limited access."
 msgstr "Acesso limitado de IP."
 
-#: src/net/eathena/generalhandler.cpp:254
+#: src/net/eathena/generalhandler.cpp:256
 msgid "Over characters list."
 msgstr "Acima da lista de personagens."
 
-#: src/net/eathena/generalhandler.cpp:257
+#: src/net/eathena/generalhandler.cpp:259
 msgid "Ip blocked."
 msgstr "IP bloqueado."
 
-#: src/net/eathena/generalhandler.cpp:260
+#: src/net/eathena/generalhandler.cpp:262
 msgid "Invalid password count."
 msgstr "Contagem de senha inválida."
 
-#: src/net/eathena/generalhandler.cpp:263
+#: src/net/eathena/generalhandler.cpp:265
 msgid "Not allowed race."
 msgstr "Raça não permitida."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:266 src/net/tmwa/generalhandler.cpp:215
+#: src/net/eathena/generalhandler.cpp:268 src/net/tmwa/generalhandler.cpp:217
 msgid "Unknown connection error."
 msgstr "Erro de conexão desconhecido."
 
-#: src/net/eathena/generalhandler.cpp:276
+#: src/net/eathena/generalhandler.cpp:278
 msgid "Map not found"
 msgstr "Mapa não encontrado."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:357 src/net/tmwa/generalhandler.cpp:307
+#: src/net/eathena/generalhandler.cpp:368 src/net/tmwa/generalhandler.cpp:317
 msgid "Got disconnected from server!"
 msgstr "Você foi desconectado(a) do servidor!"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:382 src/net/tmwa/generalhandler.cpp:335
+#: src/net/eathena/generalhandler.cpp:393 src/net/tmwa/generalhandler.cpp:345
 msgid "Strength"
 msgstr "Força"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:383 src/net/tmwa/generalhandler.cpp:337
+#: src/net/eathena/generalhandler.cpp:394 src/net/tmwa/generalhandler.cpp:347
 msgid "Agility"
 msgstr "Agilidade"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:384 src/net/tmwa/generalhandler.cpp:339
+#: src/net/eathena/generalhandler.cpp:395 src/net/tmwa/generalhandler.cpp:349
 msgid "Vitality"
 msgstr "Vitalidade"
 
-#: src/net/eathena/generalhandler.cpp:386 src/net/tmwa/generalhandler.cpp:342
+#: src/net/eathena/generalhandler.cpp:397 src/net/tmwa/generalhandler.cpp:352
 msgid "Intelligence"
 msgstr "Inteligência"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:387 src/net/tmwa/generalhandler.cpp:344
+#: src/net/eathena/generalhandler.cpp:398 src/net/tmwa/generalhandler.cpp:354
 msgid "Dexterity"
 msgstr "Destreza"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:388 src/net/tmwa/generalhandler.cpp:346
+#: src/net/eathena/generalhandler.cpp:399 src/net/tmwa/generalhandler.cpp:356
 msgid "Luck"
 msgstr "Sorte"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:391 src/net/tmwa/generalhandler.cpp:350
+#: src/net/eathena/generalhandler.cpp:402 src/net/tmwa/generalhandler.cpp:360
 msgid "Defense"
 msgstr "Defesa"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:392 src/net/tmwa/generalhandler.cpp:352
+#: src/net/eathena/generalhandler.cpp:403 src/net/tmwa/generalhandler.cpp:362
 msgid "M.Attack"
 msgstr "Ataque M."
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:393 src/net/tmwa/generalhandler.cpp:354
+#: src/net/eathena/generalhandler.cpp:404 src/net/tmwa/generalhandler.cpp:364
 msgid "M.Defense"
 msgstr "Defesa M."
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:395 src/net/tmwa/generalhandler.cpp:357
+#: src/net/eathena/generalhandler.cpp:406 src/net/tmwa/generalhandler.cpp:367
 #, no-c-format
 msgid "% Accuracy"
 msgstr "% Precisão"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:397 src/net/tmwa/generalhandler.cpp:360
+#: src/net/eathena/generalhandler.cpp:408 src/net/tmwa/generalhandler.cpp:370
 #, no-c-format
 msgid "% Evade"
 msgstr "% Evasão"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:399 src/net/tmwa/generalhandler.cpp:363
+#: src/net/eathena/generalhandler.cpp:410 src/net/tmwa/generalhandler.cpp:373
 #, no-c-format
 msgid "% Critical"
 msgstr "% Críticos"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:400 src/net/tmwa/generalhandler.cpp:365
+#: src/net/eathena/generalhandler.cpp:411 src/net/tmwa/generalhandler.cpp:375
 msgid "Attack Delay"
 msgstr "Atraso de ataque"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:401 src/net/tmwa/generalhandler.cpp:367
+#: src/net/eathena/generalhandler.cpp:412 src/net/tmwa/generalhandler.cpp:377
 msgid "Walk Delay"
 msgstr "Atraso de movimento"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:402 src/net/tmwa/generalhandler.cpp:369
+#: src/net/eathena/generalhandler.cpp:413 src/net/tmwa/generalhandler.cpp:379
 msgid "Attack Range"
 msgstr "Distância de ataque"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:403 src/net/tmwa/generalhandler.cpp:371
+#: src/net/eathena/generalhandler.cpp:414 src/net/tmwa/generalhandler.cpp:381
 msgid "Damage per sec."
 msgstr "Dano por seg."
 
-#: src/net/eathena/generalhandler.cpp:404
+#: src/net/eathena/generalhandler.cpp:415
 msgid "Karma"
 msgstr "Carma"
 
-#: src/net/eathena/generalhandler.cpp:405
+#: src/net/eathena/generalhandler.cpp:416
 msgid "Manner"
 msgstr "Etiqueta"
 
-#: src/net/eathena/skillhandler.cpp:351
+#: src/net/eathena/skillhandler.cpp:361
 #, c-format
 msgid "Unknown skill error: %d"
 msgstr "Erro desconhecido de habilidade: %d"
 
-#: src/net/eathena/skillhandler.cpp:359
+#: src/net/eathena/skillhandler.cpp:369
 #, c-format
 msgid "Unknown skill error: %d."
 msgstr ""
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillhandler.cpp:367 src/net/tmwa/skillhandler.cpp:224
+#: src/net/eathena/skillhandler.cpp:377 src/net/tmwa/skillhandler.cpp:224
 msgid "You have not yet reached a high enough lvl!"
 msgstr "Você ainda não tem o nivel necessário!"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillhandler.cpp:371 src/net/tmwa/skillhandler.cpp:228
+#: src/net/eathena/skillhandler.cpp:381 src/net/tmwa/skillhandler.cpp:228
 msgid "Insufficient HP!"
 msgstr "HP insuficiente!"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillhandler.cpp:375 src/net/tmwa/skillhandler.cpp:232
+#: src/net/eathena/skillhandler.cpp:385 src/net/tmwa/skillhandler.cpp:232
 msgid "Insufficient SP!"
 msgstr "SP insuficiente!"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillhandler.cpp:379 src/net/tmwa/skillhandler.cpp:236
+#: src/net/eathena/skillhandler.cpp:389 src/net/tmwa/skillhandler.cpp:236
 msgid "You have no memos!"
 msgstr "Você não tem nenhuma nota armazenada!"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillhandler.cpp:383 src/net/tmwa/skillhandler.cpp:240
+#: src/net/eathena/skillhandler.cpp:393 src/net/tmwa/skillhandler.cpp:240
 msgid "You cannot do that right now!"
 msgstr "Você não pode fazer isso agora!"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillhandler.cpp:387 src/net/tmwa/skillhandler.cpp:244
+#: src/net/eathena/skillhandler.cpp:397 src/net/tmwa/skillhandler.cpp:244
 msgid "Seems you need more money... ;-)"
 msgstr "Parece que você precisa de mais dinheiro... ;-)"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillhandler.cpp:391 src/net/tmwa/skillhandler.cpp:248
+#: src/net/eathena/skillhandler.cpp:401 src/net/tmwa/skillhandler.cpp:248
 msgid "You cannot use this skill with that kind of weapon!"
 msgstr "Você não pode usar essa habilidade com esse tipo de arma!"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillhandler.cpp:396 src/net/tmwa/skillhandler.cpp:253
+#: src/net/eathena/skillhandler.cpp:406 src/net/tmwa/skillhandler.cpp:253
 msgid "You need another red gem!"
 msgstr "Você precisa de outra gema vermelha!"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillhandler.cpp:400 src/net/tmwa/skillhandler.cpp:257
+#: src/net/eathena/skillhandler.cpp:410 src/net/tmwa/skillhandler.cpp:257
 msgid "You need another blue gem!"
 msgstr "Você precisa de outra jóia azul!"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillhandler.cpp:404 src/net/tmwa/skillhandler.cpp:261
+#: src/net/eathena/skillhandler.cpp:414 src/net/tmwa/skillhandler.cpp:261
 msgid "You're carrying to much to do this!"
 msgstr "Você está com muita carga para fazer isso!"
 
