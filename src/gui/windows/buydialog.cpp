@@ -385,6 +385,26 @@ void BuyDialog::sort()
     }
 }
 
+void BuyDialog::close()
+{
+    switch (mNpcId)
+    {
+        case Nick:
+        case Items:
+            break;
+        case Market:
+            marketHandler->close();
+            break;
+        case Cash:
+            cashShopHandler->close();
+            break;
+        default:
+            buySellHandler->close();
+            break;
+    }
+    Window::close();
+}
+
 void BuyDialog::action(const ActionEvent &event)
 {
     const std::string &eventId = event.getId();

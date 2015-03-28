@@ -133,6 +133,8 @@ class BuyDialog final : public Window,
 
         void sort();
 
+        void close() override final;
+
         /**
          * Returns true if any instances exist.
          */
