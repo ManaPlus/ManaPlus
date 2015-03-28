@@ -939,4 +939,9 @@ void ChatHandler::processScriptMessage(Net::MessageIn &msg)
     msg.readString(sz, "message");
 }
 
+void ChatHandler::leaveChatRoom() const
+{
+    createOutPacket(CMSG_LEAVE_CHAT_ROOM);
+}
+
 }  // namespace EAthena

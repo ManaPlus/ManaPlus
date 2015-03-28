@@ -85,6 +85,8 @@ class ChatHandler final : public MessageHandler, public Ea::ChatHandler
         void talkPet(const std::string &restrict text,
                      const std::string &restrict channel) const override final;
 
+        void leaveChatRoom() const override final;
+
     protected:
         static void processChat(Net::MessageIn &msg);
 

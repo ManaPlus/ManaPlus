@@ -79,6 +79,8 @@ class ChatHandler notfinal
                                     const int limit,
                                     const bool isPublic) = 0;
 
+        virtual void leaveChatRoom() const = 0;
+
         virtual void battleTalk(const std::string &text) const = 0;
 
         virtual void joinChat(const ChatObject *const chat,

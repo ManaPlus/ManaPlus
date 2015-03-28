@@ -688,4 +688,8 @@ void ChatHandler::talkPet(const std::string &restrict text,
     talk(action, channel);
 }
 
+void ChatHandler::leaveChatRoom() const
+{
+}
+
 }  // namespace TmwAthena
