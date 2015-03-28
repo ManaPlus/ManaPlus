@@ -1,3 +1,17 @@
+2015-03-28 New release 1.5.3.28
+fix: crash in setting gm flag (hercules).
+fix: timeout disconnect from login server (hercules).
+fix: crash if switch character with opened storage window.
+fix: same servers update in servers list with different server type.
+fix: monster context menu item "remove from attack list".
+fix: chat tabs visibility in some cases.
+fix: memory leak in map loading.
+add: chat command to show equpped hat in chat. Command /hat.
+add: show exp and job based on special packet (hercules).
+add: show in pet and homunculus popup intimacy and hungry numbers (hercules)
+add: impliment skill deletetion (hercules).
+add: for each skill own levelup and deletion particle effect.
+
 2015-03-14 New release 1.5.3.14
 fix: skills display is some cases.
 fix: donw request warp names (hercules).
