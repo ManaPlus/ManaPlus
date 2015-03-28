@@ -124,4 +124,10 @@ void BankHandler::open() const
     outMsg.writeInt32(0, "unused");
 }
 
+void BankHandler::close() const
+{
+    createOutPacket(CMSG_BANK_CLOSE);
+    outMsg.writeInt32(0, "unused");
+}
+
 }  // namespace EAthena

@@ -668,6 +668,7 @@
 #define CMSG_BANK_WITHDRAW           0x09a9
 #define CMSG_BANK_CHECK              0x09ab
 #define CMSG_BANK_OPEN               0x09b6
+#define CMSG_BANK_CLOSE              0x09b8
 
 #define CMSG_FRIENDS_ADD_PLAYER      0x091a
 #define CMSG_FRIENDS_REQUEST_ACK     0x0208

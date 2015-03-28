@@ -47,6 +47,8 @@ class BankHandler final : public MessageHandler,
 
         void open() const override final;
 
+        void close() const override final;
+
     protected:
         static void processBankStatus(Net::MessageIn &msg);
 

@@ -58,4 +58,8 @@ void BankHandler::open() const
 {
 }
 
+void BankHandler::close() const
+{
+}
+
 }  // namespace TmwAthena

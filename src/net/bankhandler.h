@@ -43,6 +43,8 @@ class BankHandler notfinal
         virtual void check() const = 0;
 
         virtual void open() const = 0;
+
+        virtual void close() const = 0;
 };
 
 }  // namespace Net
