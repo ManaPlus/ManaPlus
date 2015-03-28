@@ -118,4 +118,10 @@ void BankHandler::processBankWithdraw(Net::MessageIn &msg)
         NotifyManager::notify(NotifyTypes::BANK_WITHDRAW_FAILED);
 }
 
+void BankHandler::open() const
+{
+    createOutPacket(CMSG_BANK_OPEN);
+    outMsg.writeInt32(0, "unused");
+}
+
 }  // namespace EAthena
