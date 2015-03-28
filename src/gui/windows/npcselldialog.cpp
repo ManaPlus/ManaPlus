@@ -33,6 +33,7 @@
 #include "gui/widgets/shoplistbox.h"
 #include "gui/widgets/slider.h"
 
+#include "net/buysellhandler.h"
 #include "net/npchandler.h"
 
 #include "resources/iteminfo.h"
@@ -107,4 +108,10 @@ void NpcSellDialog::sellAction(const ActionEvent &event)
         scroll.height = mShopItemList->getRowHeight();
         mShopItemList->showPart(scroll);
     }
+}
+
+void NpcSellDialog::close()
+{
+    buySellHandler->close();
+    Window::close();
 }
