@@ -493,6 +493,7 @@
 #define CMSG_BATTLE_CHAT_MESSAGE     0x02db
 
 #define CMSG_BATTLE_REGISTER         0x08d7
+#define CMSG_BATTLE_REVOKE           0x08da
 
 #define CMSG_CREAYE_CHAT_ROOM        0x00d5
 #define CMSG_LEAVE_CHAT_ROOM         0x00e3

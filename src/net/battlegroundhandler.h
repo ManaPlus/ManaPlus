@@ -40,6 +40,8 @@ class BattleGroundHandler notfinal
 
         virtual void registerBg(const BattleGroundType::Type &type,
                                 const std::string &name) const = 0;
+
+        virtual void rekoveRequest(const std::string &name) const = 0;
 };
 
 }  // namespace Net

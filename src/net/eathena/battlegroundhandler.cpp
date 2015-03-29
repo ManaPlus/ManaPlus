@@ -159,4 +159,10 @@ void BattleGroundHandler::registerBg(const BattleGroundType::Type &type,
     outMsg.writeString(name, 24, "bg name");
 }
 
+void BattleGroundHandler::rekoveRequest(const std::string &name) const
+{
+    createOutPacket(CMSG_BATTLE_REVOKE);
+    outMsg.writeString(name, 24, "bg name");
+}
+
 }  // namespace EAthena

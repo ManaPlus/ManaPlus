@@ -48,4 +48,8 @@ void BattleGroundHandler::registerBg(const BattleGroundType::Type &type
 {
 }
 
+void BattleGroundHandler::rekoveRequest(const std::string &name A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena
