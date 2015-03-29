@@ -661,6 +661,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      net/download.cpp \
 	      net/download.h \
 	      enums/net/auctionsearchtype.h \
+	      enums/net/battlegroundtype.h \
 	      enums/net/downloadstatus.h \
 	      enums/net/packettypes.h \
 	      net/gamehandler.h \
