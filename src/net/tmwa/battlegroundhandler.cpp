@@ -52,4 +52,10 @@ void BattleGroundHandler::rekoveRequest(const std::string &name A_UNUSED) const
 {
 }
 
+void BattleGroundHandler::beginAck(const bool result A_UNUSED,
+                                   const std::string &bgName A_UNUSED,
+                                   const std::string &gameName A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

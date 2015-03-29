@@ -165,4 +165,14 @@ void BattleGroundHandler::rekoveRequest(const std::string &name) const
     outMsg.writeString(name, 24, "bg name");
 }
 
+void BattleGroundHandler::beginAck(const bool result,
+                                   const std::string &bgName,
+                                   const std::string &gameName) const
+{
+    createOutPacket(CMSG_BATTLE_BEGIN_ACK);
+    outMsg.writeInt8(static_cast<int8_t>(result ? 1 : 0), "result");
+    outMsg.writeString(bgName, 24, "bg name");
+    outMsg.writeString(gameName, 24, "game name");
+}
+
 }  // namespace EAthena

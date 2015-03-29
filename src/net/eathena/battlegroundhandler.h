@@ -44,6 +44,10 @@ class BattleGroundHandler final : public MessageHandler,
 
         void rekoveRequest(const std::string &name) const override final;
 
+        void beginAck(const bool result,
+                      const std::string &bgName,
+                      const std::string &gameName) const override final;
+
     protected:
         void processBattleEmblem(Net::MessageIn &msg);
 

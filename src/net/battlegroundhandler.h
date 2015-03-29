@@ -42,6 +42,10 @@ class BattleGroundHandler notfinal
                                 const std::string &name) const = 0;
 
         virtual void rekoveRequest(const std::string &name) const = 0;
+
+        virtual void beginAck(const bool result,
+                              const std::string &bgName,
+                              const std::string &gameName) const = 0;
 };
 
 }  // namespace Net

@@ -44,6 +44,11 @@ class BattleGroundHandler final : public MessageHandler,
                         const std::string &name) const override final;
 
         void rekoveRequest(const std::string &name) const override final;
+
+        void beginAck(const bool result,
+                      const std::string &bgName,
+                      const std::string &gameName) const override final;
+
 };
 
 }  // namespace TmwAthena
