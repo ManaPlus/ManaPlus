@@ -50,6 +50,8 @@ class CashShopHandler final : public MessageHandler,
         void requestPoints() const override final;
 
         void requestTab(const int tab) const override final;
+
+        void schedule() const override final;
 };
 
 }  // namespace TmwAthena

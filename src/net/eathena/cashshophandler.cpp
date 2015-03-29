@@ -197,4 +197,9 @@ void CashShopHandler::requestTab(const int tab) const
     outMsg.writeInt16(static_cast<int16_t>(tab), "tab");
 }
 
+void CashShopHandler::schedule() const
+{
+    createOutPacket(CMSG_NPC_CASH_SHOP_SCHEDULE);
+}
+
 }  // namespace EAthena

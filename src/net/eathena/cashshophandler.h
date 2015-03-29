@@ -52,6 +52,8 @@ class CashShopHandler final : public MessageHandler,
 
         void requestTab(const int tab) const override final;
 
+        void schedule() const override final;
+
     protected:
         static void processCashShopOpen(Net::MessageIn &msg);
 
