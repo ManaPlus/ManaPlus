@@ -22,6 +22,7 @@
 
 #include "logger.h"
 
+#include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
 #include "debug.h"
@@ -148,6 +149,14 @@ void BattleGroundHandler::processBattleJoined(Net::MessageIn &msg)
     UNIMPLIMENTEDPACKET;
     msg.readString(24, "name");
     msg.readInt32("position");
+}
+
+void BattleGroundHandler::registerBg(const BattleGroundType::Type &type,
+                                     const std::string &name) const
+{
+    createOutPacket(CMSG_BATTLE_REGISTER);
+    outMsg.writeInt16(static_cast<int16_t>(type), "type");
+    outMsg.writeString(name, 24, "bg name");
 }
 
 }  // namespace EAthena

@@ -39,6 +39,9 @@ class BattleGroundHandler final : public MessageHandler,
 
         void handleMessage(Net::MessageIn &msg) override final;
 
+        void registerBg(const BattleGroundType::Type &type,
+                        const std::string &name) const override final;
+
     protected:
         void processBattleEmblem(Net::MessageIn &msg);
 

@@ -42,4 +42,10 @@ void BattleGroundHandler::handleMessage(Net::MessageIn &msg A_UNUSED)
 {
 }
 
+void BattleGroundHandler::registerBg(const BattleGroundType::Type &type
+                                     A_UNUSED,
+                                     const std::string &name A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

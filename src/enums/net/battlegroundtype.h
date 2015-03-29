@@ -1,6 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2011-2015  The ManaPlus Developers
+ *  Copyright (C) 2014-2015  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -18,33 +18,18 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_BATTLEGROUNDHANDLER_H
-#define NET_BATTLEGROUNDHANDLER_H
+#ifndef ENUMS_NET_BATTLEGROUNDTYPE_H
+#define ENUMS_NET_BATTLEGROUNDTYPE_H
 
-#ifdef EATHENA_SUPPORT
-
-#include "enums/net/battlegroundtype.h"
-
-#include <string>
-
-#include "localconsts.h"
-
-namespace Net
+namespace BattleGroundType
 {
+    enum Type
+    {
+        Invalid    = 0,
+        Individual = 1,
+        Party      = 2,
+        Guild      = 4
+    };
+}  // namespace BattleGroundType
 
-class BattleGroundHandler notfinal
-{
-    public:
-        virtual ~BattleGroundHandler()
-        { }
-
-        virtual void registerBg(const BattleGroundType::Type &type,
-                                const std::string &name) const = 0;
-};
-
-}  // namespace Net
-
-extern Net::BattleGroundHandler *battleGroundHandler;
-
-#endif  // EATHENA_SUPPORT
-#endif  // NET_BATTLEGROUNDHANDLER_H
+#endif  // ENUMS_NET_BATTLEGROUNDTYPE_H

@@ -492,6 +492,8 @@
 #define CMSG_CHAT_PART_CHANNEL       0x0b09
 #define CMSG_BATTLE_CHAT_MESSAGE     0x02db
 
+#define CMSG_BATTLE_REGISTER         0x08d7
+
 #define CMSG_CREAYE_CHAT_ROOM        0x00d5
 #define CMSG_LEAVE_CHAT_ROOM         0x00e3
 #define CMSG_SET_CHAT_ROOM_OPTIONS   0x00de
