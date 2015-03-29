@@ -94,6 +94,8 @@ class ChatHandler final : public MessageHandler, public Ea::ChatHandler
 
         void setChatRoomOwner(const std::string &nick) const override final;
 
+        void kickFromChatRoom(const std::string &nick) const override final;
+
     protected:
         static void processChat(Net::MessageIn &msg);
 

@@ -703,4 +703,8 @@ void ChatHandler::setChatRoomOwner(const std::string &nick A_UNUSED) const
 {
 }
 
+void ChatHandler::kickFromChatRoom(const std::string &nick A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

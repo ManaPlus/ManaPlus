@@ -965,4 +965,10 @@ void ChatHandler::setChatRoomOwner(const std::string &nick) const
     outMsg.writeString(nick, 24, "nick");
 }
 
+void ChatHandler::kickFromChatRoom(const std::string &nick) const
+{
+    createOutPacket(CMSG_KICK_FROM_CHAT_ROOM);
+    outMsg.writeString(nick, 24, "nick");
+}
+
 }  // namespace EAthena
