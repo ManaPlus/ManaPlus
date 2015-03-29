@@ -692,4 +692,11 @@ void ChatHandler::leaveChatRoom() const
 {
 }
 
+void ChatHandler::setChatRoomOptions(const int limit A_UNUSED,
+                                     const bool isPublict A_UNUSED,
+                                     const std::string &passwordt A_UNUSED,
+                                     const std::string &titlet A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

@@ -87,6 +87,11 @@ class ChatHandler final : public MessageHandler, public Ea::ChatHandler
 
         void leaveChatRoom() const override final;
 
+        void setChatRoomOptions(const int limit,
+                                const bool isPublic,
+                                const std::string &password,
+                                const std::string &title) const override final;
+
     protected:
         static void processChat(Net::MessageIn &msg);
 

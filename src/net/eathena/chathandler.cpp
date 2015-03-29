@@ -944,4 +944,18 @@ void ChatHandler::leaveChatRoom() const
     createOutPacket(CMSG_LEAVE_CHAT_ROOM);
 }
 
+void ChatHandler::setChatRoomOptions(const int limit,
+                                     const bool isPublic,
+                                     const std::string &password,
+                                     const std::string &title) const
+{
+    createOutPacket(CMSG_SET_CHAT_ROOM_OPTIONS);
+    const int sz = title.size();
+    outMsg.writeInt16(15 + sz, "len");
+    outMsg.writeInt16(static_cast<int16_t>(limit), "limit");
+    outMsg.writeInt8(static_cast<int8_t>(isPublic ? 1 : 0), "type");
+    outMsg.writeString(password, 8, "password");
+    outMsg.writeString(title, sz, "title");
+}
+
 }  // namespace EAthena

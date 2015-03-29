@@ -85,6 +85,11 @@ class ChatHandler notfinal
 
         virtual void joinChat(const ChatObject *const chat,
                               const std::string &password) const = 0;
+
+        virtual void setChatRoomOptions(const int limit,
+                                        const bool isPublic,
+                                        const std::string &password,
+                                        const std::string &title) const = 0;
 };
 
 }  // namespace Net
