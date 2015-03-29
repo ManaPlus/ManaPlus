@@ -62,12 +62,58 @@
 #define PACKAGE_OS "Android"
 #elif defined __FreeBSD__ || defined __DragonFly__
 #define PACKAGE_OS "FreeBSD"
-#elif defined __NetBSD__
+#elif defined(__NetBSD__) || defined(__NetBSD)
 #define PACKAGE_OS "NetBSD"
-#elif defined __OpenBSD__
+#elif defined(__OpenBSD__) || defined(__OPENBSD)
 #define PACKAGE_OS "OpenBSD"
 #elif defined __linux__ || defined __linux
 #define PACKAGE_OS "Linux"
+#elif defined __CYGWIN__
+#define PACKAGE_OS "Cygwin"
+#elif defined(__sun) || defined(sun)
+#define PACKAGE_OS "SunOS"
+#elif defined(_AIX) || defined(__AIX) || defined(__AIX__) || defined(__aix) || defined(__aix__)
+#define PACKAGE_OS "AIX"
+#elif defined(__sgi) || defined(__sgi__) || defined(_SGI)
+#define PACKAGE_OS "IRIX"
+#elif defined(__hpux) || defined(__hpux__)
+#define PACKAGE_OS "HP-UX"
+#elif defined(__BeOS) || defined(__BEOS__) || defined(_BEOS)
+#define PACKAGE_OS "BeOS"
+#elif defined(__QNX__) || defined(__QNXNTO__)
+#define PACKAGE_OS "QNX"
+#elif defined(__tru64) || defined(_tru64) || defined(__TRU64__)
+#define PACKAGE_OS "Tru64"
+#elif defined(__riscos) || defined(__riscos__)
+#define PACKAGE_OS "RISCos"
+#elif defined(__sinix) || defined(__sinix__) || defined(__SINIX__)
+#define PACKAGE_OS "SINIX"
+#elif defined(__UNIX_SV__)
+#define PACKAGE_OS "UNIX_SV"
+#elif defined(__bsdos__)
+#define PACKAGE_OS "BSDOS"
+#elif defined(_MPRAS) || defined(MPRAS)
+#define PACKAGE_OS "MP-RAS"
+#elif defined(__osf) || defined(__osf__)
+#define PACKAGE_OS "OSF1"
+#elif defined(_SCO_SV) || defined(SCO_SV) || defined(sco_sv)
+#define PACKAGE_OS "SCO_SV"
+#elif defined(__ultrix) || defined(__ultrix__) || defined(_ULTRIX)
+#define PACKAGE_OS "ULTRIX"
+#elif defined(__XENIX__) || defined(_XENIX) || defined(XENIX)
+#define PACKAGE_OS "Xenix"
+#elif defined(bsdi) || defined(__bsdi) || defined(__bsdi__)
+#define PACKAGE_OS "BSDI"
+#elif defined(_arch_dreamcast)
+#define PACKAGE_OS "Dreamcast"
+#elif defined(__OS2__)
+#define PACKAGE_OS "OS/2"
+#elif defined(osf) || defined(__osf) || defined(__osf__)
+#define PACKAGE_OS "OSF"
+#elif defined(riscos) || defined(__riscos) || defined(__riscos__)
+#define PACKAGE_OS "RISC OS"
+#elif defined(__SVR4)
+#define PACKAGE_OS "Solaris"
 #elif defined __GNU__
 #define PACKAGE_OS "GNU Hurd"
 #elif defined __HAIKU__
