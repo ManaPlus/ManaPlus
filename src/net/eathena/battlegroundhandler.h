@@ -48,6 +48,8 @@ class BattleGroundHandler final : public MessageHandler,
                       const std::string &bgName,
                       const std::string &gameName) const override final;
 
+        void checkState(const std::string &name) const override final;
+
     protected:
         void processBattleEmblem(Net::MessageIn &msg);
 

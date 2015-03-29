@@ -46,6 +46,8 @@ class BattleGroundHandler notfinal
         virtual void beginAck(const bool result,
                               const std::string &bgName,
                               const std::string &gameName) const = 0;
+
+        virtual void checkState(const std::string &name) const = 0;
 };
 
 }  // namespace Net

@@ -58,4 +58,8 @@ void BattleGroundHandler::beginAck(const bool result A_UNUSED,
 {
 }
 
+void BattleGroundHandler::checkState(const std::string &name A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

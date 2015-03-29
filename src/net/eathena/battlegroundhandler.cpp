@@ -175,4 +175,10 @@ void BattleGroundHandler::beginAck(const bool result,
     outMsg.writeString(gameName, 24, "game name");
 }
 
+void BattleGroundHandler::checkState(const std::string &name) const
+{
+    createOutPacket(CMSG_BATTLE_CHECK_STATE);
+    outMsg.writeString(name, 24, "bg name");
+}
+
 }  // namespace EAthena
