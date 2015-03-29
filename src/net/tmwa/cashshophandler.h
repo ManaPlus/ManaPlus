@@ -46,6 +46,8 @@ class CashShopHandler final : public MessageHandler,
                      const int amount) const override final;
 
         void close() const override final;
+
+        void requestPoints() const override final;
 };
 
 }  // namespace TmwAthena

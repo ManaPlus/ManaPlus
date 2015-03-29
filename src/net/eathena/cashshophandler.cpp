@@ -186,4 +186,9 @@ void CashShopHandler::close() const
     createOutPacket(CMSG_NPC_CASH_SHOP_CLOSE);
 }
 
+void CashShopHandler::requestPoints() const
+{
+    createOutPacket(CMSG_NPC_CASH_SHOP_OPEN);
+}
+
 }  // namespace EAthena

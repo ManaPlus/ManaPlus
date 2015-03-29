@@ -53,4 +53,8 @@ void CashShopHandler::close() const
 {
 }
 
+void CashShopHandler::requestPoints() const
+{
+}
+
 }  // namespace TmwAthena
