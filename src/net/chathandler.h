@@ -90,6 +90,8 @@ class ChatHandler notfinal
                                         const bool isPublic,
                                         const std::string &password,
                                         const std::string &title) const = 0;
+
+        virtual void setChatRoomOwner(const std::string &nick) const = 0;
 };
 
 }  // namespace Net

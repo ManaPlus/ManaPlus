@@ -958,4 +958,11 @@ void ChatHandler::setChatRoomOptions(const int limit,
     outMsg.writeString(title, sz, "title");
 }
 
+void ChatHandler::setChatRoomOwner(const std::string &nick) const
+{
+    createOutPacket(CMSG_SET_CHAT_ROOM_OWNER);
+    outMsg.writeInt32(0, "role (unused)");
+    outMsg.writeString(nick, 24, "nick");
+}
+
 }  // namespace EAthena

@@ -699,4 +699,8 @@ void ChatHandler::setChatRoomOptions(const int limit A_UNUSED,
 {
 }
 
+void ChatHandler::setChatRoomOwner(const std::string &nick A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena
