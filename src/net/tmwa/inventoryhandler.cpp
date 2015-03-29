@@ -234,7 +234,7 @@ void InventoryHandler::moveItem2(const int source, const int slot,
     else if (source == InventoryType::STORAGE
              && destination == InventoryType::INVENTORY)
     {
-        createOutPacket(CSMG_MOVE_FROM_STORAGE);
+        createOutPacket(CMSG_MOVE_FROM_STORAGE);
         outMsg.writeInt16(static_cast<int16_t>(slot + STORAGE_OFFSET),
             "index");
         outMsg.writeInt32(amount, "amount");

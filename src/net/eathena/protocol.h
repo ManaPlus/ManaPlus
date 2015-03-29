@@ -557,7 +557,7 @@
 #define CMSG_PARTY_ALLOW_INVITES     0x02c8
 
 #define CMSG_MOVE_TO_STORAGE         0x07ec /** Move item to storage */
-#define CSMG_MOVE_FROM_STORAGE       0x085b /** Remove item from storage */
+#define CMSG_MOVE_FROM_STORAGE       0x085b /** Remove item from storage */
 #define CMSG_CLOSE_STORAGE           0x0193 /** Request storage close */
 
 #define CMSG_MOVE_TO_CART            0x0126

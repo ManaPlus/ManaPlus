@@ -257,7 +257,7 @@
 #define CMSG_PARTY_MESSAGE           0x0108
 
 #define CMSG_MOVE_TO_STORAGE         0x00f3 /** Move item to storage */
-#define CSMG_MOVE_FROM_STORAGE       0x00f5 /** Remove item from storage */
+#define CMSG_MOVE_FROM_STORAGE       0x00f5 /** Remove item from storage */
 #define CMSG_CLOSE_STORAGE           0x00f7 /** Request storage close */
 
 #define CMSG_ADMIN_ANNOUNCE          0x0099

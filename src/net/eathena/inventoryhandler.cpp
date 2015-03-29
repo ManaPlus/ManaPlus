@@ -366,7 +366,7 @@ void InventoryHandler::moveItem2(const int source,
     {
         offset = STORAGE_OFFSET;
         if (destination == InventoryType::INVENTORY)
-            packet = CSMG_MOVE_FROM_STORAGE;
+            packet = CMSG_MOVE_FROM_STORAGE;
         else if (destination == InventoryType::CART)
             packet = CMSG_MOVE_FROM_STORAGE_TO_CART;
     }
