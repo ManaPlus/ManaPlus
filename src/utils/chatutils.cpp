@@ -70,7 +70,7 @@ void outStringNormal(ChatTab *const tab,
                 {
                     if (!serverFeatures->haveNativeGuilds())
                         return;
-                    guildHandler->chat(guild->getId(), str);
+                    guildHandler->chat(str);
                 }
 #ifdef TMWA_SUPPORT
                 else if (guildManager)

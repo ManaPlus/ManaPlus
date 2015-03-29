@@ -68,7 +68,7 @@ bool GuildTab::handleCommand(const std::string &restrict type,
 */
     if (type == "invite" && Ea::taGuild)
     {
-        guildHandler->invite(Ea::taGuild->getId(), args);
+        guildHandler->invite(args);
     }
     else if (type == "leave" && Ea::taGuild)
     {
@@ -99,8 +99,7 @@ void GuildTab::handleInput(const std::string &msg)
     if (!Ea::taGuild)
         return;
 
-    guildHandler->chat(Ea::taGuild->getId(),
-        ChatWindow::doReplace(msg));
+    guildHandler->chat(ChatWindow::doReplace(msg));
 }
 
 void GuildTab::getAutoCompleteList(StringVect &names) const

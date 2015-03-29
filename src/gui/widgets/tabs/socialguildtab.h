@@ -74,7 +74,7 @@ class SocialGuildTab final : public SocialTab,
             if (eventId == "do invite")
             {
                 const std::string name = mInviteDialog->getText();
-                guildHandler->invite(mGuild->getId(), name);
+                guildHandler->invite(name);
 
                 if (localChatTab)
                 {

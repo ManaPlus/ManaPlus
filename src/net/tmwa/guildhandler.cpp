@@ -212,8 +212,7 @@ void GuildHandler::create(const std::string &name) const
     outMsg.writeString(name, 24, "guild name");
 }
 
-void GuildHandler::invite(const int guildId A_UNUSED,
-                          const std::string &name) const
+void GuildHandler::invite(const std::string &name) const
 {
     if (!actorManager)
         return;
@@ -229,8 +228,7 @@ void GuildHandler::invite(const int guildId A_UNUSED,
     }
 }
 
-void GuildHandler::invite(const int guildId A_UNUSED,
-                          const Being *const being) const
+void GuildHandler::invite(const Being *const being) const
 {
     if (!being)
         return;
@@ -275,8 +273,7 @@ void GuildHandler::kick(const GuildMember *restrict const member,
     outMsg.writeString(reason, 40, "message");
 }
 
-void GuildHandler::chat(const int guildId A_UNUSED,
-                        const std::string &text) const
+void GuildHandler::chat(const std::string &text) const
 {
     if (!localPlayer)
         return;
@@ -288,7 +285,7 @@ void GuildHandler::chat(const int guildId A_UNUSED,
     outMsg.writeString(str, static_cast<int>(str.length()), "message");
 }
 
-void GuildHandler::memberList(const int guildId A_UNUSED) const
+void GuildHandler::memberList() const
 {
     // 0 = basic info + alliance info
     // 1 = position name list + member list
@@ -300,7 +297,7 @@ void GuildHandler::memberList(const int guildId A_UNUSED) const
     outMsg.writeInt32(1, "action");  // Request member list
 }
 
-void GuildHandler::info(const int guildId A_UNUSED)
+void GuildHandler::info()
 {
     // 0 = basic info + alliance info
     // 1 = position name list + member list
@@ -367,7 +364,7 @@ void GuildHandler::processGuildPositionInfo(Net::MessageIn &msg)
             guildTab->loadFromLogFile("#Guild");
         if (localPlayer)
             localPlayer->addGuild(Ea::taGuild);
-        guildHandler->memberList(guildId);
+        guildHandler->memberList();
     }
 
     if (localPlayer)

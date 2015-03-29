@@ -521,7 +521,7 @@ impHandler(info)
     {
         const Guild *const guild = localPlayer->getGuild();
         if (guild)
-            guildHandler->info(guild->getId());
+            guildHandler->info();
     }
     return true;
 }

@@ -79,7 +79,7 @@ static void outString(ChatTab *const tab,
                 {
                     if (!serverFeatures->haveNativeGuilds())
                         return;
-                    guildHandler->chat(guild->getId(), str);
+                    guildHandler->chat(str);
                 }
 #ifdef TMWA_SUPPORT
                 else if (guildManager)
@@ -376,7 +376,7 @@ impHandler(guild)
         {
 #ifdef TMWA_SUPPORT
             if (guild->getServerGuild())
-                guildHandler->invite(guild->getId(), args);
+                guildHandler->invite(args);
             else if (guildManager)
                 guildManager->invite(args);
 #else

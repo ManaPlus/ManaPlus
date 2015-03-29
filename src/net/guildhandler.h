@@ -40,11 +40,9 @@ class GuildHandler notfinal
 
         virtual void create(const std::string &name) const = 0;
 
-        virtual void invite(const int guildId,
-                            const std::string &name) const = 0;
+        virtual void invite(const std::string &name) const = 0;
 
-        virtual void invite(const int guildId,
-                            const Being *const being) const = 0;
+        virtual void invite(const Being *const being) const = 0;
 
         virtual void inviteResponse(const int guildId,
                                     const bool response) const = 0;
@@ -54,12 +52,11 @@ class GuildHandler notfinal
         virtual void kick(const GuildMember *restrict const member,
                           const std::string &restrict reason) const = 0;
 
-        virtual void chat(const int guildId,
-                          const std::string &text) const = 0;
+        virtual void chat(const std::string &text) const = 0;
 
-        virtual void memberList(const int guildId) const = 0;
+        virtual void memberList() const = 0;
 
-        virtual void info(const int guildId) = 0;
+        virtual void info() = 0;
 
         virtual void changeMemberPostion(const GuildMember *const member,
                                          const int level) const = 0;

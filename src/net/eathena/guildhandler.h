@@ -42,11 +42,9 @@ class GuildHandler final : public Ea::GuildHandler, public MessageHandler
 
         void create(const std::string &name) const override final;
 
-        void invite(const int guildId,
-                    const std::string &name) const override final;
+        void invite(const std::string &name) const override final;
 
-        void invite(const int guildId,
-                    const Being *const being) const override final;
+        void invite(const Being *const being) const override final;
 
         void inviteResponse(const int guildId,
                             const bool response) const override final;
@@ -56,12 +54,11 @@ class GuildHandler final : public Ea::GuildHandler, public MessageHandler
         void kick(const GuildMember *restrict const member,
                   const std::string &restrict reason) const override final;
 
-        void chat(const int guildId,
-                  const std::string &text) const override final;
+        void chat(const std::string &text) const override final;
 
-        void memberList(const int guildId) const override final;
+        void memberList() const override final;
 
-        void info(const int guildId) override final;
+        void info() override final;
 
         void changeMemberPostion(const GuildMember *const member,
                                  const int level) const override final;
