@@ -236,6 +236,7 @@ ShopWindow::~ShopWindow()
     delete2(mSellShopItemList);
     delete2(mBuyShopItems);
     delete2(mSellShopItems);
+    delete2(mTradeItem);
 
     instances.remove(this);
 }
