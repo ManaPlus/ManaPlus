@@ -44,6 +44,8 @@ class CashShopHandler notfinal
         virtual void close() const = 0;
 
         virtual void requestPoints() const = 0;
+
+        virtual void requestTab(const int tab) const = 0;
 };
 
 }  // namespace Net

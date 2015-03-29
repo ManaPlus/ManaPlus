@@ -191,4 +191,10 @@ void CashShopHandler::requestPoints() const
     createOutPacket(CMSG_NPC_CASH_SHOP_OPEN);
 }
 
+void CashShopHandler::requestTab(const int tab) const
+{
+    createOutPacket(CMSG_NPC_CASH_SHOP_REQUEST_TAB);
+    outMsg.writeInt16(static_cast<int16_t>(tab), "tab");
+}
+
 }  // namespace EAthena

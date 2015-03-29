@@ -57,4 +57,8 @@ void CashShopHandler::requestPoints() const
 {
 }
 
+void CashShopHandler::requestTab(const int tab A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena
