@@ -19,6 +19,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <ctime>
+
 #include "gui/windows/socialwindow.h"
 
 #ifdef TMWA_SUPPORT
@@ -527,15 +529,16 @@ void SocialWindow::updateActiveList()
 void SocialWindow::slowLogic()
 {
     BLOCK_START("SocialWindow::slowLogic")
-    const unsigned int nowTime = cur_time;
-    if (mNeedUpdate && nowTime - mLastUpdateTime > 1)
+    const clock_t nowTime = clock();
+    const double elapsedTime = double(mLastUpdateTime - nowTime) / CLOCKS_PER_SEC;
+    if (mNeedUpdate && elapsedTime > 0.5)
     {
         mPlayers->updateList();
         mFriends->updateList();
         mNeedUpdate = false;
         mLastUpdateTime = nowTime;
     }
-    else if (nowTime - mLastUpdateTime > 5)
+    else if (elapsedTime > 2)
     {
         mPlayers->updateList();
         mNeedUpdate = false;
