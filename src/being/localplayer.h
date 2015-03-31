@@ -507,6 +507,8 @@ class LocalPlayer final : public Being,
         bool mWaitPing;
         bool mShowNavigePath;
         bool mAllowRename;
+        
+        int mXpToNextLevel;
 };
 
 extern LocalPlayer *localPlayer;
