@@ -389,9 +389,9 @@ Section /o "Evol Online music" SecEvolMusic
   AddSize 9787
   CreateDirectory "$INSTDIR\data\music"
   SetOutPath "$INSTDIR\data\music"
-  NSISdl::download "http://downloads.sourceforge.net/project/evolonline/music/evolmusic-beta1-1.tar.gz" "$TEMP\evolmusic-beta1-1.tar.gz"
-  untgz::extract -j -d "$INSTDIR\data\music" "$TEMP\evolmusic-beta1-1.tar.gz"
-  Delete "$TEMP\evolmusic-beta1-1.tar.gz"
+  NSISdl::download "http://downloads.sourceforge.net/project/evolonline/music/evolmusic-beta2-1.tar.gz" "$TEMP\evolmusic-beta2-1.tar.gz"
+  untgz::extract -j -d "$INSTDIR\data\music" "$TEMP\evolmusic-beta2-1.tar.gz"
+  Delete "$TEMP\evolmusic-beta2-1.tar.gz"
 SectionEnd
 
 Section "Evol Online shortcuts" SecEvol
