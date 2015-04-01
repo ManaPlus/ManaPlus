@@ -62,6 +62,8 @@ class GameHandler final : public MessageHandler, public Ea::GameHandler
         static void processMapLogin(Net::MessageIn &msg);
 
         static void processServerTick(Net::MessageIn &msg);
+
+        static void processMapAuthRefuse(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

@@ -54,6 +54,7 @@ GameHandler::GameHandler() :
         SMSG_CHAR_SWITCH_RESPONSE,
         SMSG_MAP_QUIT_RESPONSE,
         SMSG_MAP_ACCOUNT_ID,
+        SMSG_MAP_AUTH_REFUSE,
         0
     };
     handledMessages = _messages;
@@ -88,6 +89,10 @@ void GameHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_MAP_ACCOUNT_ID:
             processMapAccountId(msg);
+            break;
+
+        case SMSG_MAP_AUTH_REFUSE:
+            processMapAuthRefuse(msg);
             break;
 
         default:
@@ -214,4 +219,9 @@ void GameHandler::processServerTick(Net::MessageIn &msg)
     msg.readInt32("tick");
 }
 
+void GameHandler::processMapAuthRefuse(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+    msg.readUInt8("error");
+}
 }  // namespace EAthena
