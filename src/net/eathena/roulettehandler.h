@@ -43,6 +43,8 @@ class RouletteHandler final : public MessageHandler,
         static void processRouletteItemAck(Net::MessageIn &msg);
 
         static void processRouletteGenerateAckType(Net::MessageIn &msg);
+
+        static void processRouletteOpenAck(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
