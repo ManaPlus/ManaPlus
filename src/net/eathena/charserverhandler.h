@@ -118,6 +118,8 @@ class CharServerHandler final : public MessageHandler,
 
         static void processCharCharacters(Net::MessageIn &msg);
 
+        static void processCharBanCharList(Net::MessageIn &msg);
+
     private:
         static std::string mNewName;
         static uint32_t mPinSeed;

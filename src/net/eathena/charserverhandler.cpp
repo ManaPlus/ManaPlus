@@ -97,6 +97,7 @@ CharServerHandler::CharServerHandler() :
         SMSG_CHAR_DELETE2_ACCEPT_ACTUAL_ACK,
         SMSG_CHAR_DELETE2_CANCEL_ACK,
         SMSG_CHAR_CHARACTERS,
+        SMSG_CHAR_BAN_CHAR_LIST,
         0
     };
     handledMessages = _messages;
@@ -177,6 +178,10 @@ void CharServerHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_CHAR_CHARACTERS:
             processCharCharacters(msg);
+            break;
+
+        case SMSG_CHAR_BAN_CHAR_LIST:
+            processCharBanCharList(msg);
             break;
 
         default:
@@ -716,6 +721,17 @@ void CharServerHandler::ping() const
 unsigned int CharServerHandler::hatSprite() const
 {
     return 7;
+}
+
+void CharServerHandler::processCharBanCharList(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+    const int count = (msg.readInt16("len") - 4) / 24;
+    for (int f = 0; f < count; f ++)
+    {
+        msg.readInt32("char id");
+        msg.readString(20, "unbun time");
+    }
 }
 
 }  // namespace EAthena
