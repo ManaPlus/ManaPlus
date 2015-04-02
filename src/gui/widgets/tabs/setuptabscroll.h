@@ -45,16 +45,15 @@ class SetupTabScroll notfinal : public SetupTab
         VertContainer *getContainer() const A_WARN_UNUSED
         { return mContainer; }
 
-        virtual void apply() override;
+        void apply() override;
 
-        virtual void cancel() override final;
+        void cancel() override final;
 
-        virtual void externalUpdated() override;
+        void externalUpdated() override;
 
-        virtual void externalUnloaded() override;
+        void externalUnloaded() override;
 
-        virtual void action(const ActionEvent &event A_UNUSED)
-                            override final
+        void action(const ActionEvent &event A_UNUSED) override final
         { }
 
         int getPreferredFirstItemSize() const A_WARN_UNUSED

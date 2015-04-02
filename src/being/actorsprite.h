@@ -130,16 +130,16 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
          */
         void setStatusEffectBlock(const int offset, const uint16_t flags);
 
-        virtual void setAlpha(const float alpha) override final
+        void setAlpha(const float alpha) override final
         { CompoundSprite::setAlpha(alpha); }
 
-        virtual float getAlpha() const override final A_WARN_UNUSED
+        float getAlpha() const override final A_WARN_UNUSED
         { return CompoundSprite::getAlpha(); }
 
-        virtual int getWidth() const override A_WARN_UNUSED
+        int getWidth() const override A_WARN_UNUSED
         { return CompoundSprite::getWidth(); }
 
-        virtual int getHeight() const override A_WARN_UNUSED
+        int getHeight() const override A_WARN_UNUSED
         { return CompoundSprite::getHeight(); }
 
         static void load();

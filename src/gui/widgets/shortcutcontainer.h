@@ -51,34 +51,34 @@ class ShortcutContainer notfinal : public Widget,
         /**
          * Draws the shortcuts
          */
-        virtual void draw(Graphics *graphics) override = 0;
+        void draw(Graphics *graphics) override = 0;
 
         /**
          * Invoked when a widget changes its size. This is used to determine
          * the new height of the container.
          */
-        virtual void widgetResized(const Event &event) override final;
+        void widgetResized(const Event &event) override final;
 
-        virtual void widgetMoved(const Event& event) override final;
+        void widgetMoved(const Event& event) override final;
 
         /**
          * Handles mouse when dragged.
          */
-        virtual void mouseDragged(MouseEvent &event A_UNUSED) override
+        void mouseDragged(MouseEvent &event A_UNUSED) override
         {
         }
 
         /**
          * Handles mouse when pressed.
          */
-        virtual void mousePressed(MouseEvent &event A_UNUSED) override
+        void mousePressed(MouseEvent &event A_UNUSED) override
         {
         }
 
         /**
          * Handles mouse release.
          */
-        virtual void mouseReleased(MouseEvent &event A_UNUSED) override
+        void mouseReleased(MouseEvent &event A_UNUSED) override
         {
         }
 

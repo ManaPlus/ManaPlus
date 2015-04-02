@@ -100,13 +100,13 @@ class Particle notfinal : public Actor
         /**
          * Necessary for sorting with the other sprites.
          */
-        virtual int getPixelY() const override A_WARN_UNUSED
+        int getPixelY() const override A_WARN_UNUSED
         { return static_cast<int>(mPos.y) - 16; }
 
         /**
          * Necessary for sorting with the other sprites for sorting only.
          */
-        virtual int getSortPixelY() const override A_WARN_UNUSED
+        int getSortPixelY() const override A_WARN_UNUSED
         { return static_cast<int>(mPos.y) - 16; }
 
         /**
@@ -274,7 +274,7 @@ class Particle notfinal : public Actor
         float getAlpha() const override final
         { return 1.0F; }
 
-        virtual void setAlpha(const float alpha A_UNUSED) override
+        void setAlpha(const float alpha A_UNUSED) override
         { }
 
         virtual void setDeathEffect(const std::string &effectFile,

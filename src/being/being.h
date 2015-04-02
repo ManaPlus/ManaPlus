@@ -357,7 +357,7 @@ class Being notfinal : public ActorSprite,
         /**
          * Performs being logic.
          */
-        virtual void logic() override;
+        void logic() override;
 
         void petLogic();
 
@@ -501,13 +501,13 @@ class Being notfinal : public ActorSprite,
         /**
          * Returns the horizontal size of the current base sprite of the being.
          */
-        virtual int getWidth() const override final A_WARN_UNUSED
+        int getWidth() const override final A_WARN_UNUSED
         { return std::max(CompoundSprite::getWidth(), DEFAULT_BEING_WIDTH); }
 
         /**
          * Returns the vertical size of the current base sprite of the being.
          */
-        virtual int getHeight() const override final A_WARN_UNUSED
+        int getHeight() const override final A_WARN_UNUSED
         { return std::max(CompoundSprite::getHeight(), DEFAULT_BEING_HEIGHT); }
 
         /**
@@ -556,7 +556,7 @@ class Being notfinal : public ActorSprite,
 
         static void load();
 
-        virtual void optionChanged(const std::string &value) override;
+        void optionChanged(const std::string &value) override;
 
         void flashName(const int time);
 

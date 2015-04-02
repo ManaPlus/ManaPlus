@@ -46,15 +46,15 @@ class AdminHandler notfinal : public Net::AdminHandler
         virtual ~AdminHandler()
         { }
 
-        virtual void kickName(const std::string &name) const override final;
+        void kickName(const std::string &name) const override final;
 
-        virtual void ban(const int playerId) const override final;
+        void ban(const int playerId) const override final;
 
-        virtual void banName(const std::string &name) const override final;
+        void banName(const std::string &name) const override final;
 
-        virtual void unban(const int playerId) const override final;
+        void unban(const int playerId) const override final;
 
-        virtual void unbanName(const std::string &name) const override final;
+        void unbanName(const std::string &name) const override final;
 
         void reviveName(const std::string &name) const override final;
 

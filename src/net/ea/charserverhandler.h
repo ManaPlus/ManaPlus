@@ -41,16 +41,16 @@ class CharServerHandler notfinal : public Net::CharServerHandler
     public:
         A_DELETE_COPY(CharServerHandler)
 
-        virtual void setCharSelectDialog(CharSelectDialog *const window)
-                                         override final;
+        void setCharSelectDialog(CharSelectDialog *const window)
+                                 override final;
 
-        virtual void requestCharacters() override final;
+        void requestCharacters() override final;
 
-        virtual unsigned int baseSprite() const override final A_WARN_UNUSED;
+        unsigned int baseSprite() const override final A_WARN_UNUSED;
 
-        virtual unsigned int hairSprite() const override final A_WARN_UNUSED;
+        unsigned int hairSprite() const override final A_WARN_UNUSED;
 
-        virtual unsigned int maxSprite() const override final A_WARN_UNUSED;
+        unsigned int maxSprite() const override final A_WARN_UNUSED;
 
         virtual void connect() = 0;
 
@@ -60,7 +60,7 @@ class CharServerHandler notfinal : public Net::CharServerHandler
 
         static void processCharDelete(Net::MessageIn &msg);
 
-        virtual void clear() override final;
+        void clear() override final;
 
     protected:
         CharServerHandler();

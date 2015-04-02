@@ -158,14 +158,14 @@ class Window notfinal : public BasicContainer2,
         /**
          * Called whenever the widget changes size.
          */
-        virtual void widgetResized(const Event &event) override;
+        void widgetResized(const Event &event) override;
 
-        virtual void widgetMoved(const Event& event) override;
+        void widgetMoved(const Event& event) override;
 
         /**
          * Called whenever the widget is hidden.
          */
-        virtual void widgetHidden(const Event &event) override;
+        void widgetHidden(const Event &event) override;
 
         /**
          * Sets whether or not the window has a close button.

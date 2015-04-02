@@ -152,7 +152,7 @@ class Popup notfinal : public Container,
 
         // Inherited from BasicContainer
 
-        virtual Rect getChildrenArea() override;
+        Rect getChildrenArea() override;
 
         /**
          * Sets the location to display the popup. Tries to horizontally center

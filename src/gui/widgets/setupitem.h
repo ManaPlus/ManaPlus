@@ -75,7 +75,7 @@ class SetupItem notfinal : public ActionListener,
 
         virtual std::string getActionEventId() const A_WARN_UNUSED;
 
-        virtual void action(const ActionEvent &event) override;
+        void action(const ActionEvent &event) override;
 
         virtual void doAction();
 
@@ -474,7 +474,7 @@ class SetupItemSliderList notfinal : public SetupItem
 
         void toWidget() override;
 
-        virtual void action(const ActionEvent &event) override;
+        void action(const ActionEvent &event) override;
 
         void apply(const std::string &eventName) override final;
 

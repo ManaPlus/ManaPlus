@@ -109,28 +109,27 @@ class BasicContainer notfinal : public Widget,
 
         // Inherited from Widget
 
-        virtual void moveToTop(Widget* widget) override;
+        void moveToTop(Widget* widget) override;
 
-        virtual void moveToBottom(Widget* widget) override;
+        void moveToBottom(Widget* widget) override;
 
-        virtual Rect getChildrenArea() override A_WARN_UNUSED;
+        Rect getChildrenArea() override A_WARN_UNUSED;
 
-        virtual void focusNext() override;
+        void focusNext() override;
 
-        virtual void focusPrevious() override;
+        void focusPrevious() override;
 
-        virtual void logic() override;
+        void logic() override;
 
-        virtual void setFocusHandler(FocusHandler *const focusHandler)
-                                     override;
+        void setFocusHandler(FocusHandler *const focusHandler) override;
 
         void setInternalFocusHandler(FocusHandler* focusHandler);
 
-        virtual Widget *getWidgetAt(int x, int y) override A_WARN_UNUSED;
+        Widget *getWidgetAt(int x, int y) override A_WARN_UNUSED;
 
         // Inherited from WidgetDeathListener
 
-        virtual void death(const Event& event) override;
+        void death(const Event& event) override;
 
         Widget *findFirstWidget(const std::set<Widget*> &list);
 

@@ -103,7 +103,7 @@ class TextField notfinal : public Widget,
         /**
          * Draws the text field.
          */
-        virtual void draw(Graphics *graphics) override;
+        void draw(Graphics *graphics) override;
 
         /**
          * Update the alpha value to the graphic components.

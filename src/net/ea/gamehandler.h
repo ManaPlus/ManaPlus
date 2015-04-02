@@ -40,14 +40,14 @@ class GameHandler notfinal : public Net::GameHandler
 
         A_DELETE_COPY(GameHandler)
 
-        virtual void who() const override final;
+        void who() const override final;
 
-        virtual bool removeDeadBeings() const override final A_WARN_UNUSED
+        bool removeDeadBeings() const override final A_WARN_UNUSED
         { return true; }
 
         virtual void setMap(const std::string &map);
 
-        virtual bool canUseMagicBar() const override final A_WARN_UNUSED
+        bool canUseMagicBar() const override final A_WARN_UNUSED
         { return true; }
 
         static void processWhoAnswer(Net::MessageIn &msg);
@@ -56,9 +56,9 @@ class GameHandler notfinal : public Net::GameHandler
 
         static void processMapQuitResponse(Net::MessageIn &msg);
 
-        virtual void clear() override final;
+        void clear() override final;
 
-        virtual void initEngines() const override final;
+        void initEngines() const override final;
 
     protected:
         static std::string mMap;

@@ -49,41 +49,37 @@ class LoginHandler notfinal : public Net::LoginHandler
         int supportedOptionalActions() const override A_WARN_UNUSED
         { return Net::RegistrationOptions::SetGenderOnRegister; }
 
-        virtual bool isRegistrationEnabled() const
-                                           override final A_WARN_UNUSED;
+        bool isRegistrationEnabled() const override final A_WARN_UNUSED;
 
-        virtual void getRegistrationDetails() const override final;
+        void getRegistrationDetails() const override final;
 
-        virtual unsigned int getMaxPasswordLength() const
-                                                  override A_WARN_UNUSED
+        unsigned int getMaxPasswordLength() const override A_WARN_UNUSED
         { return 24; }
 
-        virtual void loginAccount(LoginData *const loginData)
-                                  const override final;
+        void loginAccount(LoginData *const loginData) const override final;
 
-        virtual void chooseServer(const unsigned int server,
-                                  const bool persistentIp) const override;
+        void chooseServer(const unsigned int server,
+                          const bool persistentIp) const override;
 
-        virtual void registerAccount(const LoginData *const loginData)
-                                     const override final;
+        void registerAccount(const LoginData *const loginData)
+                             const override final;
 
-        virtual const Worlds &getWorlds() const override final A_WARN_UNUSED;
+        const Worlds &getWorlds() const override final A_WARN_UNUSED;
 
-        virtual void clearWorlds() override final;
+        void clearWorlds() override final;
 
         virtual ServerInfo *getCharServer() const A_WARN_UNUSED = 0;
 
         const Token &getToken() const A_WARN_UNUSED
         { return mToken; }
 
-        virtual void logout() const override final;
+        void logout() const override final;
 
-        virtual void changeEmail(const std::string &email)
-                                 const override final;
+        void changeEmail(const std::string &email) const override final;
 
-        virtual void unregisterAccount(const std::string &username,
-                                       const std::string &password)
-                                       const override final;
+        void unregisterAccount(const std::string &username,
+                               const std::string &password)
+                               const override final;
 
         static void processUpdateHost(Net::MessageIn &msg);
 

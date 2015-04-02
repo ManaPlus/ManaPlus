@@ -57,7 +57,7 @@ class ImageParticle notfinal : public Particle
                           const int offsetX,
                           const int offsetY) const override final;
 
-        virtual void setAlpha(const float alpha) override final
+        void setAlpha(const float alpha) override final
         { mAlpha = alpha; }
 
         static StringIntMap imageParticleCountByName;

@@ -44,29 +44,30 @@ class CompoundSprite notfinal : public Sprite
 
         virtual ~CompoundSprite();
 
-        virtual bool reset() override final;
+        bool reset() override final;
 
-        virtual bool play(const std::string &action) override final;
+        bool play(const std::string &action) override final;
 
-        virtual bool update(const int time) override final;
+        bool update(const int time) override final;
 
-        virtual void draw(Graphics *const graphics,
-                          const int posX, const int posY) const override;
+        void draw(Graphics *const graphics,
+                  const int posX,
+                  const int posY) const override;
 
         /**
          * Gets the width in pixels of the first sprite in the list.
          */
-        virtual int getWidth() const override A_WARN_UNUSED;
+        int getWidth() const override A_WARN_UNUSED;
 
         /**
          * Gets the height in pixels of the first sprite in the list.
          */
-        virtual int getHeight() const override A_WARN_UNUSED;
+        int getHeight() const override A_WARN_UNUSED;
 
-        virtual const Image *getImage() const override final A_WARN_UNUSED;
+        const Image *getImage() const override final A_WARN_UNUSED;
 
-        virtual bool setSpriteDirection(const SpriteDirection::Type direction)
-                                        override final;
+        bool setSpriteDirection(const SpriteDirection::Type direction)
+                                override final;
 
         int getNumberOfLayers() const A_WARN_UNUSED;
 
@@ -111,7 +112,7 @@ class CompoundSprite notfinal : public Sprite
          */
         virtual unsigned int getFrameCount(unsigned int layer) A_WARN_UNUSED;
 
-        virtual void setAlpha(float alpha) override;
+        void setAlpha(float alpha) override;
 
         bool updateNumber(const unsigned num) override final;
 
