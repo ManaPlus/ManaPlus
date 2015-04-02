@@ -102,7 +102,7 @@ static void outString(ChatTab *const tab,
         case ChatTabType::DEBUG:
         case ChatTabType::BATTLE:
         case ChatTabType::LANG:
-            chatHandler->talk(def, GENERAL_CHANNEL);
+            chatHandler->talk(str, GENERAL_CHANNEL);
             break;
     }
 }
