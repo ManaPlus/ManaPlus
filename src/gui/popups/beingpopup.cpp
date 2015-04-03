@@ -119,7 +119,6 @@ void BeingPopup::show(const int x, const int y, Being *const b)
     }
 
     mBeingName->setCaption(b->getName() + b->getGenderSignWithSpace());
-    logger->log("being name: " + b->getName());
     if (gui)
     {
         if (player_relations.isGoodName(b))
