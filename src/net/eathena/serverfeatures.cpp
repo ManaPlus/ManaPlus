@@ -225,4 +225,9 @@ bool ServerFeatures::haveExpPacket() const
     return true;
 }
 
+bool ServerFeatures::haveMute() const
+{
+    return true;
+}
+
 }  // namespace EAthena

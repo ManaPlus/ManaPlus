@@ -224,4 +224,9 @@ bool ServerFeatures::haveExpPacket() const
     return false;
 }
 
+bool ServerFeatures::haveMute() const
+{
+    return false;
+}
+
 }  // namespace TmwAthena
