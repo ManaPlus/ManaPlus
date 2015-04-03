@@ -76,16 +76,16 @@ ChatHandler::ChatHandler() :
         SMSG_FORMAT_MESSAGE_NUMBER,
         SMSG_FORMAT_MESSAGE_SKILL,
         SMSG_CHAT_DISPLAY,
-        SMSG_CHAT_JOIN_ACK,
-        SMSG_CHAT_LEAVE,
+        SMSG_CHAT_ROOM_JOIN_ACK,
+        SMSG_CHAT_ROOM_LEAVE,
         SMSG_CHAT_JOIN_CHANNEL,
         SMSG_IGNORE_NICK_ACK,
-        SMSG_CHAT_CREATE_ACK,
-        SMSG_CHAT_DESTROY,
-        SMSG_CHAT_JOIN_FAILED,
-        SMSG_CHAT_ADD_MEMBER,
-        SMSG_CHAT_SETTINGS,
-        SMSG_CHAT_ROLE_CHANGE,
+        SMSG_CHAT_ROOM_CREATE_ACK,
+        SMSG_CHAT_ROOM_DESTROY,
+        SMSG_CHAT_ROOM_JOIN_FAILED,
+        SMSG_CHAT_ROOM_ADD_MEMBER,
+        SMSG_CHAT_ROOM_SETTINGS,
+        SMSG_CHAT_ROOM_ROLE_CHANGE,
         SMSG_MANNER_MESSAGE,
         SMSG_CHAT_SILENCE,
         SMSG_CHAT_TALKIE_BOX,
@@ -171,12 +171,12 @@ void ChatHandler::handleMessage(Net::MessageIn &msg)
             processChatDisplay(msg);
             break;
 
-        case SMSG_CHAT_JOIN_ACK:
-            processChatJoinAck(msg);
+        case SMSG_CHAT_ROOM_JOIN_ACK:
+            processChatRoomJoinAck(msg);
             break;
 
-        case SMSG_CHAT_LEAVE:
-            processChatLeave(msg);
+        case SMSG_CHAT_ROOM_LEAVE:
+            processChatRoomLeave(msg);
             break;
 
         case SMSG_CHAT_JOIN_CHANNEL:
@@ -187,28 +187,28 @@ void ChatHandler::handleMessage(Net::MessageIn &msg)
             processIgnoreNickAck(msg);
             break;
 
-        case SMSG_CHAT_CREATE_ACK:
-            processChatCreateAck(msg);
+        case SMSG_CHAT_ROOM_CREATE_ACK:
+            processChatRoomCreateAck(msg);
             break;
 
-        case SMSG_CHAT_DESTROY:
-            processChatDestroy(msg);
+        case SMSG_CHAT_ROOM_DESTROY:
+            processChatRoomDestroy(msg);
             break;
 
-        case SMSG_CHAT_JOIN_FAILED:
-            processChatJoinFailed(msg);
+        case SMSG_CHAT_ROOM_JOIN_FAILED:
+            processChatRoomJoinFailed(msg);
             break;
 
-        case SMSG_CHAT_ADD_MEMBER:
-            processChatAddMember(msg);
+        case SMSG_CHAT_ROOM_ADD_MEMBER:
+            processChatRoomAddMember(msg);
             break;
 
-        case SMSG_CHAT_SETTINGS:
-            processChatSettings(msg);
+        case SMSG_CHAT_ROOM_SETTINGS:
+            processChatRoomSettings(msg);
             break;
 
-        case SMSG_CHAT_ROLE_CHANGE:
-            processChatRoleChange(msg);
+        case SMSG_CHAT_ROOM_ROLE_CHANGE:
+            processChatRoomRoleChange(msg);
             break;
 
         case SMSG_MANNER_MESSAGE:
@@ -667,12 +667,12 @@ void ChatHandler::joinChat(const ChatObject *const chat,
     if (!chat)
         return;
 
-    createOutPacket(CMSG_CHAT_JOIN);
+    createOutPacket(CMSG_CHAT_ROOM_JOIN);
     outMsg.writeInt32(chat->chatId, "chat id");
     outMsg.writeString(password, 8, "password");
 }
 
-void ChatHandler::processChatJoinAck(Net::MessageIn &msg)
+void ChatHandler::processChatRoomJoinAck(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
     const int count = msg.readInt16("len") - 8;
@@ -684,7 +684,7 @@ void ChatHandler::processChatJoinAck(Net::MessageIn &msg)
     }
 }
 
-void ChatHandler::processChatLeave(Net::MessageIn &msg)
+void ChatHandler::processChatRoomLeave(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
     msg.readInt16("users");
@@ -841,32 +841,32 @@ void ChatHandler::talkPet(const std::string &restrict text,
     outMsg.writeInt8(0, "zero byte");
 }
 
-void ChatHandler::processChatCreateAck(Net::MessageIn &msg)
+void ChatHandler::processChatRoomCreateAck(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
     msg.readUInt8("flag");
 }
 
-void ChatHandler::processChatDestroy(Net::MessageIn &msg)
+void ChatHandler::processChatRoomDestroy(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
     msg.readInt32("chat id");
 }
 
-void ChatHandler::processChatJoinFailed(Net::MessageIn &msg)
+void ChatHandler::processChatRoomJoinFailed(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
     msg.readUInt8("flag");
 }
 
-void ChatHandler::processChatAddMember(Net::MessageIn &msg)
+void ChatHandler::processChatRoomAddMember(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
     msg.readInt16("users");
     msg.readString(24, "name");
 }
 
-void ChatHandler::processChatSettings(Net::MessageIn &msg)
+void ChatHandler::processChatRoomSettings(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
     const int sz = msg.readInt16("len") - 17;
@@ -878,7 +878,7 @@ void ChatHandler::processChatSettings(Net::MessageIn &msg)
     msg.readString(sz, "title");
 }
 
-void ChatHandler::processChatRoleChange(Net::MessageIn &msg)
+void ChatHandler::processChatRoomRoleChange(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
     msg.readInt32("role");

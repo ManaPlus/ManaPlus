@@ -126,9 +126,9 @@ class ChatHandler final : public MessageHandler, public Ea::ChatHandler
 
         static void processChatDisplay(Net::MessageIn &msg);
 
-        static void processChatJoinAck(Net::MessageIn &msg);
+        static void processChatRoomJoinAck(Net::MessageIn &msg);
 
-        static void processChatLeave(Net::MessageIn &msg);
+        static void processChatRoomLeave(Net::MessageIn &msg);
 
         static void processJoinChannel(Net::MessageIn &msg);
 
@@ -139,17 +139,17 @@ class ChatHandler final : public MessageHandler, public Ea::ChatHandler
 
         static void processIgnoreNickAck(Net::MessageIn &msg);
 
-        static void processChatCreateAck(Net::MessageIn &msg);
+        static void processChatRoomCreateAck(Net::MessageIn &msg);
 
-        static void processChatDestroy(Net::MessageIn &msg);
+        static void processChatRoomDestroy(Net::MessageIn &msg);
 
-        static void processChatJoinFailed(Net::MessageIn &msg);
+        static void processChatRoomJoinFailed(Net::MessageIn &msg);
 
-        static void processChatAddMember(Net::MessageIn &msg);
+        static void processChatRoomAddMember(Net::MessageIn &msg);
 
-        static void processChatSettings(Net::MessageIn &msg);
+        static void processChatRoomSettings(Net::MessageIn &msg);
 
-        static void processChatRoleChange(Net::MessageIn &msg);
+        static void processChatRoomRoleChange(Net::MessageIn &msg);
 
         static void processMVPItem(Net::MessageIn &msg);
 

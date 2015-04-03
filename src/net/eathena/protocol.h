@@ -332,15 +332,15 @@
 #define SMSG_SCRIPT_MESSAGE          0x08b3
 
 #define SMSG_CHAT_IGNORE_LIST        0x00d4
-#define SMSG_CHAT_CREATE_ACK         0x00d6
+#define SMSG_CHAT_ROOM_CREATE_ACK    0x00d6
 #define SMSG_CHAT_DISPLAY            0x00d7
-#define SMSG_CHAT_DESTROY            0x00d8
-#define SMSG_CHAT_JOIN_FAILED        0x00da
-#define SMSG_CHAT_JOIN_ACK           0x00db
-#define SMSG_CHAT_ADD_MEMBER         0x00dc
-#define SMSG_CHAT_LEAVE              0x00dd
-#define SMSG_CHAT_SETTINGS           0x00df
-#define SMSG_CHAT_ROLE_CHANGE        0x00e1
+#define SMSG_CHAT_ROOM_DESTROY       0x00d8
+#define SMSG_CHAT_ROOM_JOIN_FAILED   0x00da
+#define SMSG_CHAT_ROOM_JOIN_ACK      0x00db
+#define SMSG_CHAT_ROOM_ADD_MEMBER    0x00dc
+#define SMSG_CHAT_ROOM_LEAVE         0x00dd
+#define SMSG_CHAT_ROOM_SETTINGS      0x00df
+#define SMSG_CHAT_ROOM_ROLE_CHANGE   0x00e1
 #define SMSG_CHAT_JOIN_CHANNEL       0x0b08
 #define SMSG_CHAT_TALKIE_BOX         0x0191
 
@@ -504,7 +504,7 @@
 #define CMSG_CHAT_MESSAGE            0x00f3
 #define CMSG_CHAT_WHISPER            0x0096
 #define CMSG_CHAT_WHO                0x00c1
-#define CMSG_CHAT_JOIN               0x00d9
+#define CMSG_CHAT_ROOM_JOIN          0x00d9
 #define CMSG_CHAT_JOIN_CHANNEL       0x0b07
 #define CMSG_CHAT_PART_CHANNEL       0x0b09
 #define CMSG_BATTLE_CHAT_MESSAGE     0x02db
