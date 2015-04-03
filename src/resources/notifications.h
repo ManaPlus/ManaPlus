@@ -499,6 +499,18 @@ namespace NotifyManager
             // TRANSLATORS: notification message
             N_("Pet feeding error."),
             NotifyFlags::EMPTY},
+        {"manner changed",
+            // TRANSLATORS: notification message
+            N_("A manner point has been successfully aligned."),
+            NotifyFlags::EMPTY},
+        {"manner positive points",
+            // TRANSLATORS: notification message
+            N_("You got positive manner points from %s."),
+            NotifyFlags::STRING},
+        {"manner negative points",
+            // TRANSLATORS: notification message
+            N_("You got negative manner points from %s."),
+            NotifyFlags::STRING},
     };
 }  // namespace NotifyManager
 #endif  // RESOURCES_NOTIFICATIONS_H

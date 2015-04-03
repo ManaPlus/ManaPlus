@@ -143,6 +143,9 @@ namespace NotifyTypes
         SEARCH_STORE_FAILED_NO_INFORMATION,
         PET_FEED_OK,
         PET_FEED_ERROR,
+        MANNER_CHANGED,
+        MANNER_POSITIVE_POINTS,
+        MANNER_NEGATIVE_POINTS,
 
         TYPE_END
     };

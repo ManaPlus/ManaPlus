@@ -23,6 +23,7 @@
 #include "net/eathena/chathandler.h"
 
 #include "actormanager.h"
+#include "notifymanager.h"
 
 #include "being/localplayer.h"
 #include "being/playerrelations.h"
@@ -40,6 +41,7 @@
 #include "net/eathena/protocol.h"
 
 #include "resources/chatobject.h"
+#include "resources/notifytypes.h"
 
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
@@ -904,15 +906,37 @@ void ChatHandler::processMVPNoItem(Net::MessageIn &msg)
 
 void ChatHandler::processMannerMessage(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
-    msg.readInt32("type");
+    const int result = msg.readInt32("type");
+    switch(result)
+    {
+        case 0:
+            NotifyManager::notify(NotifyTypes::MANNER_CHANGED);
+            break;
+        case 5:
+            break;
+        default:
+            UNIMPLIMENTEDPACKET;
+            break;
+    }
 }
 
 void ChatHandler::processChatSilence(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
-    msg.readUInt8("type");
-    msg.readString(24, "gm name");
+    const int result = msg.readUInt8("type");
+    const std::string name = msg.readString(24, "gm name");
+
+    switch (result)
+    {
+        case 0:
+            NotifyManager::notify(NotifyTypes::MANNER_POSITIVE_POINTS, name);
+            break;
+        case 1:
+            NotifyManager::notify(NotifyTypes::MANNER_NEGATIVE_POINTS, name);
+            break;
+        default:
+            UNIMPLIMENTEDPACKET;
+            break;
+    }
 }
 
 void ChatHandler::processChatTalkieBox(Net::MessageIn &msg)
