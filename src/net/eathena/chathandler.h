@@ -166,6 +166,9 @@ class ChatHandler final : public MessageHandler, public Ea::ChatHandler
         static void processBattleChatMessage(Net::MessageIn &msg);
 
         static void processScriptMessage(Net::MessageIn &msg);
+
+    private:
+        static std::string mChatRoom;
 };
 
 }  // namespace EAthena

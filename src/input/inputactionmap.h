@@ -4436,6 +4436,11 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputCondition::INGAME,
         "hat|hats|showhat",
         false},
+    {"keyCreatePublicRoom",
+        defaultAction(&Actions::createPublicChatRoom),
+        InputCondition::INGAME,
+        "createroom|createpublicroom",
+        true},
 };
 
 #undef defaultAction

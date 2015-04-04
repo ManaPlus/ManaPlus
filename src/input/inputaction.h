@@ -591,6 +591,7 @@ namespace InputAction
         HOMUN_EMOTE_48,
         KICK_GUILD,
         HAT,
+        CREATE_PUBLIC_ROOM,
         TOTAL
     };
 }  // namespace InputAction

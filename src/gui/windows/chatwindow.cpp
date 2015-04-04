@@ -1219,6 +1219,12 @@ ChatTab *ChatWindow::addSpecialChannelTab(const std::string &name,
     return ret;
 }
 
+ChatTab *ChatWindow::addChatRoomTab(const std::string &name,
+                                    const bool switchTo)
+{
+    return nullptr;
+}
+
 ChatTab *ChatWindow::addChannelTab(const std::string &name,
                                    const bool switchTo)
 {

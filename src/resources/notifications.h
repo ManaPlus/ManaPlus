@@ -511,6 +511,14 @@ namespace NotifyManager
             // TRANSLATORS: notification message
             N_("You got negative manner points from %s."),
             NotifyFlags::STRING},
+        {"chat room limit exceed",
+            // TRANSLATORS: notification message
+            N_("Chat room limit exceeded"),
+            NotifyFlags::EMPTY},
+        {"chat room already exists",
+            // TRANSLATORS: notification message
+            N_("Chat room already exists"),
+            NotifyFlags::EMPTY},
     };
 }  // namespace NotifyManager
 #endif  // RESOURCES_NOTIFICATIONS_H

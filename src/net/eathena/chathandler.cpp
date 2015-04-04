@@ -55,6 +55,8 @@ extern Net::ChatHandler *chatHandler;
 namespace EAthena
 {
 
+std::string ChatHandler::mChatRoom;
+
 ChatHandler::ChatHandler() :
     MessageHandler(),
     Ea::ChatHandler()
@@ -393,11 +395,12 @@ void ChatHandler::createChatRoom(const std::string &title,
 {
     createOutPacket(CMSG_CREAYE_CHAT_ROOM);
     outMsg.writeInt16(static_cast<int16_t>(
-        password.size() + title.size() + 5), "len");
+        7 + 8 + 36), "len");
     outMsg.writeInt16(static_cast<int16_t>(limit), "limit");
     outMsg.writeInt8(static_cast<int8_t>(isPublic ? 1 : 0), "public");
     outMsg.writeString(password, 8, "password");
     outMsg.writeString(title, 36, "title");
+    mChatRoom = title;
 }
 
 void ChatHandler::battleTalk(const std::string &text) const
@@ -845,8 +848,22 @@ void ChatHandler::talkPet(const std::string &restrict text,
 
 void ChatHandler::processChatRoomCreateAck(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
-    msg.readUInt8("flag");
+    const int result = msg.readUInt8("flag");
+    switch(result)
+    {
+        case 0:
+            chatWindow->addChatRoomTab(mChatRoom, true);
+            break;
+        case 1:
+            NotifyManager::notify(NotifyTypes::ROOM_LIMIT_EXCEEDED);
+            break;
+        case 2:
+            NotifyManager::notify(NotifyTypes::ROOM_ALREADY_EXISTS);
+            break;
+        default:
+            UNIMPLIMENTEDPACKET;
+            break;
+    }
 }
 
 void ChatHandler::processChatRoomDestroy(Net::MessageIn &msg)

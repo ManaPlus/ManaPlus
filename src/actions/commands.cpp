@@ -869,4 +869,16 @@ impHandler(commandHomunEmote)
 #endif
 }
 
+impHandler(createPublicChatRoom)
+{
+#ifdef EATHENA_SUPPORT
+    if (event.args.empty())
+        return false;
+    chatHandler->createChatRoom(event.args, "", 100, true);
+    return true;
+#else
+    return false;
+#endif
+}
+
 }  // namespace Actions
