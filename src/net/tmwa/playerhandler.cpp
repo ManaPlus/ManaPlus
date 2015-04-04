@@ -398,7 +398,8 @@ void PlayerHandler::setViewEquipment(const bool allow A_UNUSED) const
 {
 }
 
-void PlayerHandler::setStat(const int type,
+void PlayerHandler::setStat(Net::MessageIn &msg,
+                            const int type,
                             const int base,
                             const int mod,
                             const bool notify) const
@@ -408,7 +409,7 @@ void PlayerHandler::setStat(const int type,
         localPlayer->setGMLevel(base);
         return;
     }
-    Ea::PlayerHandler::setStat(type, base, mod, notify);
+    Ea::PlayerHandler::setStat(msg, type, base, mod, notify);
 }
 
 }  // namespace TmwAthena

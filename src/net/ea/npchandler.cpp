@@ -194,7 +194,7 @@ void NpcHandler::processNpcCommand(Net::MessageIn &msg)
             break;
         }
         default:
-            logger->log("unknown npc command: %d", cmd);
+            UNIMPLIMENTEDPACKET;
             break;
     }
 }

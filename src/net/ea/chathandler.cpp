@@ -98,7 +98,8 @@ std::string ChatHandler::getLastWhisperNick()
     return nick;
 }
 
-void ChatHandler::processWhisperResponseContinue(const uint8_t type)
+void ChatHandler::processWhisperResponseContinue(Net::MessageIn &msg,
+                                                 const uint8_t type)
 {
     const std::string nick = getPopLastWhisperNick();
     switch (type)
@@ -137,11 +138,7 @@ void ChatHandler::processWhisperResponseContinue(const uint8_t type)
             }
             break;
         default:
-            if (logger)
-            {
-                logger->log("QQQ SMSG_WHISPER_RESPONSE:"
-                            + toString(type));
-            }
+            UNIMPLIMENTEDPACKET;
             break;
     }
     BLOCK_END("ChatHandler::processWhisperResponse")

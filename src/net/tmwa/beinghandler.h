@@ -72,7 +72,8 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
 
         static void processBeingChangeDirection(Net::MessageIn &msg);
 
-        static void processBeingChangeLookContinue(Being *const dstBeing,
+        static void processBeingChangeLookContinue(Net::MessageIn &msg,
+                                                   Being *const dstBeing,
                                                    const uint8_t type,
                                                    const int id,
                                                    const int id2);
@@ -86,7 +87,8 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
         static void setServerGender(Being *const being,
                                     const uint8_t gender);
 
-        static void applyPlayerAction(Being *const being,
+        static void applyPlayerAction(Net::MessageIn &msg,
+                                      Being *const being,
                                       const uint8_t type);
 
         static void processBeingSelfEffect(Net::MessageIn &msg);

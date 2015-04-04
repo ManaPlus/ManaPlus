@@ -277,7 +277,7 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg)
         BLOCK_END("BeingHandler::processBeingChangeLook")
         return;
     }
-    processBeingChangeLookContinue(dstBeing, type, id, id2);
+    processBeingChangeLookContinue(msg, dstBeing, type, id, id2);
     BLOCK_END("BeingHandler::processBeingChangeLook")
 }
 
@@ -312,11 +312,12 @@ void BeingHandler::processBeingChangeLook2(Net::MessageIn &msg)
         BLOCK_END("BeingHandler::processBeingChangeLook")
         return;
     }
-    processBeingChangeLookContinue(dstBeing, type, id, id2);
+    processBeingChangeLookContinue(msg, dstBeing, type, id, id2);
     BLOCK_END("BeingHandler::processBeingChangeLook")
 }
 
-void BeingHandler::processBeingChangeLookContinue(Being *const dstBeing,
+void BeingHandler::processBeingChangeLookContinue(Net::MessageIn &msg,
+                                                  Being *const dstBeing,
                                                   const uint8_t type,
                                                   const int id,
                                                   const int id2)
@@ -413,10 +414,7 @@ void BeingHandler::processBeingChangeLookContinue(Being *const dstBeing,
             dstBeing->setLook(static_cast<uint16_t>(id));
             break;
         default:
-            logger->log("QQQ3 CHANGE_LOOKS: unsupported type: "
-                    "%d, id: %d", type, id);
-            logger->log("ID: " + toString(dstBeing->getId()));
-            logger->log("name: " + toString(dstBeing->getName()));
+            UNIMPLIMENTEDPACKET;
             break;
     }
 }
@@ -556,7 +554,7 @@ void BeingHandler::processPlayerUpdate1(Net::MessageIn &msg)
     if (gmstatus & 0x80)
         dstBeing->setGM(true);
 
-    applyPlayerAction(dstBeing, msg.readUInt8("action type"));
+    applyPlayerAction(msg, dstBeing, msg.readUInt8("action type"));
     const int level = static_cast<int>(msg.readUInt8("level"));
     if (level)
         dstBeing->setLevel(level);
@@ -708,7 +706,7 @@ void BeingHandler::processPlayerUpdate2(Net::MessageIn &msg)
     if (gmstatus & 0x80)
         dstBeing->setGM(true);
 
-    applyPlayerAction(dstBeing, msg.readUInt8("action type"));
+    applyPlayerAction(msg, dstBeing, msg.readUInt8("action type"));
     const int level = static_cast<int>(msg.readUInt8("level"));
     if (level)
         dstBeing->setLevel(level);
@@ -1440,7 +1438,9 @@ void BeingHandler::setServerGender(Being *const being, const uint8_t gender)
     }
 }
 
-void BeingHandler::applyPlayerAction(Being *const being, const uint8_t type)
+void BeingHandler::applyPlayerAction(Net::MessageIn &msg,
+                                     Being *const being,
+                                     const uint8_t type)
 {
     switch (type)
     {
@@ -1463,10 +1463,7 @@ void BeingHandler::applyPlayerAction(Being *const being, const uint8_t type)
             break;
 
         default:
-            // need set stand state?
-            logger->log("QQQ2 SMSG_PLAYER_UPDATE_1:" + toString(type));
-            logger->log("being id:" + toString(being->getId()));
-            logger->log("being name:" + being->getName());
+            UNIMPLIMENTEDPACKET;
             break;
     }
 }

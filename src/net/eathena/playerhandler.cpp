@@ -482,7 +482,7 @@ void PlayerHandler::processPlayerGetExp(Net::MessageIn &msg)
         else if (stat == 2)
             localPlayer->addJobMessage(exp);
         else
-            logger->log("unknown exp type");
+            UNIMPLIMENTEDPACKET;
     }
     // need show particle depend on isQuest flag, for now ignored
 }
@@ -563,12 +563,13 @@ void PlayerHandler::processPlayerSkillMessage(Net::MessageIn &msg)
     msg.readInt32("type");
 }
 
-void PlayerHandler::setStat(const int type,
+void PlayerHandler::setStat(Net::MessageIn &msg,
+                            const int type,
                             const int base,
                             const int mod,
                             const bool notify) const
 {
-    Ea::PlayerHandler::setStat(type, base, mod, notify);
+    Ea::PlayerHandler::setStat(msg, type, base, mod, notify);
 }
 
 void PlayerHandler::processNotifyMapInfo(Net::MessageIn &msg)

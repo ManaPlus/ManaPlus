@@ -525,7 +525,7 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
                 break;
             default:
                 pickup = Pickup::UNKNOWN;
-                logger->log("unknown pickup type: %d", err);
+                UNIMPLIMENTEDPACKET;
                 break;
         }
         if (localPlayer)

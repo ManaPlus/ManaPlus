@@ -236,6 +236,7 @@ void LoginHandler::processLoginError2(Net::MessageIn &msg)
         default:
             // TRANSLATORS: error message
             errorMessage = _("Unknown error.");
+            UNIMPLIMENTEDPACKET;
             break;
     }
     client->setState(STATE_ERROR);

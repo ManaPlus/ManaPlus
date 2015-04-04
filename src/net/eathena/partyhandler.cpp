@@ -268,7 +268,7 @@ void PartyHandler::processPartySettings(Net::MessageIn &msg)
     msg.readInt32("party exp");
     const int16_t exp = msg.readInt8("exp");
     const int16_t item = msg.readInt8("item");
-    processPartySettingsContinue(exp, item);
+    processPartySettingsContinue(msg, exp, item);
 }
 
 void PartyHandler::processPartyInfo(Net::MessageIn &msg)

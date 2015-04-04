@@ -464,7 +464,7 @@ void ChatHandler::processWhisperResponse(Net::MessageIn &msg)
     BLOCK_START("ChatHandler::processWhisperResponse")
 
     const uint8_t type = msg.readUInt8("response");
-    processWhisperResponseContinue(type);
+    processWhisperResponseContinue(msg, type);
 }
 
 void ChatHandler::joinChat(const ChatObject *const chat A_UNUSED,

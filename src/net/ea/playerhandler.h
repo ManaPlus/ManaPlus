@@ -53,7 +53,8 @@ class PlayerHandler notfinal : public Net::PlayerHandler
 
         Vector getDefaultWalkSpeed() const override final A_WARN_UNUSED;
 
-        void setStat(const int type,
+        void setStat(Net::MessageIn &msg,
+                     const int type,
                      const int base,
                      const int mod,
                      const bool notify) const override;

@@ -414,6 +414,7 @@ void SkillHandler::processSkillFailed(Net::MessageIn &msg)
             txt.append(_("You're carrying to much to do this!"));
             break;
         default:
+            UNIMPLIMENTEDPACKET;
             break;
     }
 

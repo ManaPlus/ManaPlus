@@ -67,7 +67,8 @@ class PartyHandler notfinal : public Net::PartyHandler
 
         static void processPartyUpdateCoords(Net::MessageIn &msg);
 
-        static void processPartySettingsContinue(const int16_t exp,
+        static void processPartySettingsContinue(Net::MessageIn &msg,
+                                                 const int16_t exp,
                                                  const int16_t item);
 
         static Net::PartyShare::Type mShareExp;

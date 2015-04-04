@@ -173,7 +173,7 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
         return;
     }
 
-    playerHandler->setStat(type, value, -1, true);
+    playerHandler->setStat(msg, type, value, -1, true);
     BLOCK_END("PlayerHandler::processPlayerStatUpdate1")
 }
 
@@ -182,7 +182,7 @@ void PlayerHandler::processPlayerStatUpdate2(Net::MessageIn &msg)
     BLOCK_START("PlayerHandler::processPlayerStatUpdate2")
     const int type = msg.readInt16("type");
     const int value = msg.readInt32("value");
-    playerHandler->setStat(type, value, -1, true);
+    playerHandler->setStat(msg, type, value, -1, true);
     BLOCK_END("PlayerHandler::processPlayerStatUpdate2")
 }
 
@@ -193,7 +193,7 @@ void PlayerHandler::processPlayerStatUpdate3(Net::MessageIn &msg)
     const int base = msg.readInt32("base");
     const int bonus = msg.readInt32("bonus");
 
-    playerHandler->setStat(type, base, bonus, false);
+    playerHandler->setStat(msg, type, base, bonus, false);
     BLOCK_END("PlayerHandler::processPlayerStatUpdate3")
 }
 
@@ -213,7 +213,7 @@ void PlayerHandler::processPlayerStatUpdate4(Net::MessageIn &msg)
         NotifyManager::notify(NotifyTypes::SKILL_RAISE_ERROR);
     }
 
-    playerHandler->setStat(type, value, -1, true);
+    playerHandler->setStat(msg, type, value, -1, true);
     BLOCK_END("PlayerHandler::processPlayerStatUpdate4")
 }
 
@@ -223,7 +223,7 @@ void PlayerHandler::processPlayerStatUpdate6(Net::MessageIn &msg)
     const int type = msg.readInt16("type");
     const int value = msg.readUInt8("value");
     if (statusWindow)
-        playerHandler->setStat(type, value, -1, true);
+        playerHandler->setStat(msg, type, value, -1, true);
     BLOCK_END("PlayerHandler::processPlayerStatUpdate6")
 }
 
@@ -240,7 +240,7 @@ void PlayerHandler::processPlayerArrowMessage(Net::MessageIn &msg)
             // arrows equiped
             break;
         default:
-            logger->log("QQQQ 0x013b: Unhandled message %i", type);
+            UNIMPLIMENTEDPACKET;
             break;
     }
     BLOCK_END("PlayerHandler::processPlayerArrowMessage")
@@ -256,7 +256,8 @@ bool PlayerHandler::canUseMagic() const
     if (mod != -1) \
         PlayerInfo::setStatMod(stat, mod)
 
-void PlayerHandler::setStat(const int type,
+void PlayerHandler::setStat(Net::MessageIn &msg,
+                            const int type,
                             const int base,
                             const int mod,
                             const bool notify) const
@@ -450,8 +451,7 @@ void PlayerHandler::setStat(const int type,
             break;
 
         default:
-            logger->log("Error: Unknown stat set: %d, values: %d, %d",
-                type, base, mod);
+            UNIMPLIMENTEDPACKET;
             break;
     }
 }

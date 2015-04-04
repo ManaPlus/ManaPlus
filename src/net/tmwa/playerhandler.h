@@ -79,7 +79,8 @@ class PlayerHandler final : public MessageHandler, public Ea::PlayerHandler
         void setViewEquipment(const bool allow) const override final;
 
     protected:
-        void setStat(const int type,
+        void setStat(Net::MessageIn &msg,
+                     const int type,
                      const int base,
                      const int mod,
                      const bool notify) const override final;

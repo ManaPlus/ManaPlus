@@ -83,7 +83,8 @@ void PartyHandler::processPartyCreate(Net::MessageIn &msg)
         NotifyManager::notify(NotifyTypes::PARTY_CREATED);
 }
 
-void PartyHandler::processPartySettingsContinue(const int16_t exp,
+void PartyHandler::processPartySettingsContinue(Net::MessageIn &msg,
+                                                const int16_t exp,
                                                 const int16_t item)
 {
     switch (exp)
@@ -107,7 +108,7 @@ void PartyHandler::processPartySettingsContinue(const int16_t exp,
             NotifyManager::notify(NotifyTypes::PARTY_EXP_SHARE_ERROR);
             break;
         default:
-            logger->log("QQQ Unknown party exp option: %d\n", exp);
+            UNIMPLIMENTEDPACKET;
             break;
     }
 
@@ -132,7 +133,7 @@ void PartyHandler::processPartySettingsContinue(const int16_t exp,
             NotifyManager::notify(NotifyTypes::PARTY_ITEM_SHARE_ERROR);
             break;
         default:
-            logger->log("QQQ Unknown party item option: %d\n", exp);
+            UNIMPLIMENTEDPACKET;
             break;
     }
 }

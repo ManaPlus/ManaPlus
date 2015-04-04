@@ -27,6 +27,8 @@
 
 #include "enums/being/beingaction.h"
 
+#include "net/messagein.h"
+
 namespace Net
 {
 
@@ -95,7 +97,8 @@ class PlayerHandler notfinal
 
         virtual void setViewEquipment(const bool allow) const = 0;
 
-        virtual void setStat(const int type,
+        virtual void setStat(Net::MessageIn &msg,
+                             const int type,
                              const int base,
                              const int mod,
                              const bool notify) const = 0;

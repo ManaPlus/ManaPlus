@@ -246,12 +246,7 @@ void BeingHandler::processBeingAction(Net::MessageIn &msg)
             }
             break;
         default:
-            logger->log("QQQ1 SMSG_BEING_ACTION:");
-            if (srcBeing)
-                logger->log("srcBeing:" + toString(srcBeing->getId()));
-            if (dstBeing)
-                logger->log("dstBeing:" + toString(dstBeing->getId()));
-            logger->log("type: " + toString(type));
+            UNIMPLIMENTEDPACKET;
             break;
     }
     BLOCK_END("BeingHandler::processBeingAction")

@@ -638,7 +638,7 @@ void ChatHandler::processWhisperResponse(Net::MessageIn &msg)
             return;
         }
     }
-    processWhisperResponseContinue(type);
+    processWhisperResponseContinue(msg, type);
 }
 
 void ChatHandler::processChatIgnoreList(Net::MessageIn &msg)

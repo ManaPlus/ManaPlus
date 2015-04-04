@@ -412,7 +412,8 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
     }
 }
 
-Being *BeingHandler::createBeing2(const int id,
+Being *BeingHandler::createBeing2(Net::MessageIn &msg,
+                                  const int id,
                                   const int16_t job,
                                   const BeingType::BeingType beingType)
 {
@@ -449,6 +450,7 @@ Being *BeingHandler::createBeing2(const int id,
             break;
         case BeingType::CHAT:
         default:
+            UNIMPLIMENTEDPACKET;
             type = ActorType::Monster;
             logger->log("not supported object type: %d, job: %d",
                 static_cast<int>(beingType), static_cast<int>(job));
@@ -505,10 +507,11 @@ void BeingHandler::processBeingChangeLook2(Net::MessageIn &msg)
     if (!localPlayer || !dstBeing)
         return;
 
-    processBeingChangeLookContinue(dstBeing, type, id, id2);
+    processBeingChangeLookContinue(msg, dstBeing, type, id, id2);
 }
 
-void BeingHandler::processBeingChangeLookContinue(Being *const dstBeing,
+void BeingHandler::processBeingChangeLookContinue(Net::MessageIn &msg,
+                                                  Being *const dstBeing,
                                                   const uint8_t type,
                                                   const int id,
                                                   const int id2)
@@ -612,10 +615,7 @@ void BeingHandler::processBeingChangeLookContinue(Being *const dstBeing,
             localPlayer->imitateOutfit(dstBeing, SPRITE_EVOL4);
             break;
         default:
-            logger->log("QQQ3 CHANGE_LOOKS: unsupported type: "
-                    "%d, id: %d", type, id);
-            logger->log("ID: " + toString(dstBeing->getId()));
-            logger->log("name: " + toString(dstBeing->getName()));
+            UNIMPLIMENTEDPACKET;
             break;
     }
 }
@@ -661,7 +661,7 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
         if (actorManager->isBlocked(id) == true)
             return;
 
-        dstBeing = createBeing2(id, job, type);
+        dstBeing = createBeing2(msg, id, job, type);
 
         if (!dstBeing)
             return;
@@ -830,7 +830,7 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
         if (actorManager->isBlocked(id) == true)
             return;
 
-        dstBeing = createBeing2(id, job, type);
+        dstBeing = createBeing2(msg, id, job, type);
 
         if (!dstBeing)
             return;
@@ -998,7 +998,7 @@ void BeingHandler::processBeingSpawn(Net::MessageIn &msg)
         if (actorManager->isBlocked(id) == true)
             return;
 
-        dstBeing = createBeing2(id, job, type);
+        dstBeing = createBeing2(msg, id, job, type);
 
         if (!dstBeing)
             return;
@@ -1325,12 +1325,7 @@ void BeingHandler::processBeingAction2(Net::MessageIn &msg)
             }
             break;
         default:
-            logger->log("QQQ1 SMSG_BEING_ACTION:");
-            if (srcBeing)
-                logger->log("srcBeing:" + toString(srcBeing->getId()));
-            if (dstBeing)
-                logger->log("dstBeing:" + toString(dstBeing->getId()));
-            logger->log("type: " + toString(type));
+            UNIMPLIMENTEDPACKET;
             break;
     }
     BLOCK_END("BeingHandler::processBeingAction2")
@@ -1485,7 +1480,9 @@ void BeingHandler::processBeingSoundEffect(Net::MessageIn &msg)
     msg.readInt32("source being id");
 }
 
-void BeingHandler::applyPlayerAction(Being *const being, const uint8_t type)
+void BeingHandler::applyPlayerAction(Net::MessageIn &msg,
+                                     Being *const being,
+                                     const uint8_t type)
 {
     switch (type)
     {
@@ -1509,9 +1506,7 @@ void BeingHandler::applyPlayerAction(Being *const being, const uint8_t type)
 
         default:
             // need set stand state?
-            logger->log("QQQ2 SMSG_PLAYER_UPDATE_1:" + toString(type));
-            logger->log("being id:" + toString(being->getId()));
-            logger->log("being name:" + being->getName());
+            UNIMPLIMENTEDPACKET;
             break;
     }
 }
@@ -1683,7 +1678,7 @@ void BeingHandler::processBeingFakeName(Net::MessageIn &msg)
     msg.readUInt8("sy");
     msg.skip(4, "unsued");
 
-    Being *const dstBeing = createBeing2(id, job, type);
+    Being *const dstBeing = createBeing2(msg, id, job, type);
     dstBeing->setSubtype(job, 0);
     dstBeing->setTileCoords(x, y);
     dstBeing->setDirection(dir);
@@ -1701,7 +1696,7 @@ void BeingHandler::processBeingStatUpdate1(Net::MessageIn &msg)
 
     if (type != Ea::MANNER)
     {
-        logger->log("Error: unknown being stat type: %d", type);
+        UNIMPLIMENTEDPACKET;
         return;
     }
     dstBeing->setManner(value);

@@ -47,7 +47,8 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
         void requestRanks(const Rank::Rank rank) const override final;
 
     protected:
-        static Being *createBeing2(const int id,
+        static Being *createBeing2(Net::MessageIn &msg,
+                                   const int id,
                                    const int16_t job,
                                    const BeingType::BeingType beingType);
 
@@ -81,7 +82,8 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
 
         static void processBeingChangeDirection(Net::MessageIn &msg);
 
-        static void processBeingChangeLookContinue(Being *const dstBeing,
+        static void processBeingChangeLookContinue(Net::MessageIn &msg,
+                                                   Being *const dstBeing,
                                                    const uint8_t type,
                                                    const int id,
                                                    const int id2);
@@ -92,7 +94,8 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
 
         static void processBeingSoundEffect(Net::MessageIn &msg);
 
-        static void applyPlayerAction(Being *const being,
+        static void applyPlayerAction(Net::MessageIn &msg,
+                                      Being *const being,
                                       const uint8_t type);
 
         void viewPlayerEquipment(const Being *const being);

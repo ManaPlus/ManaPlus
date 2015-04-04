@@ -267,6 +267,7 @@ void TradeHandler::processTradeItemAddResponse(Net::MessageIn &msg)
             break;
         default:
             NotifyManager::notify(NotifyTypes::TRADE_ADD_ERROR);
+            UNIMPLIMENTEDPACKET;
             logger->log("QQQ SMSG_TRADE_ITEM_ADD_RESPONSE: "
                         + toString(res));
             break;

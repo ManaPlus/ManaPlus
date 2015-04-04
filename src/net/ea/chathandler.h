@@ -53,7 +53,8 @@ class ChatHandler notfinal : public Net::ChatHandler
 
         void clear() override final;
 
-        static void processWhisperResponseContinue(const uint8_t type);
+        static void processWhisperResponseContinue(Net::MessageIn &msg,
+                                                   const uint8_t type);
 
     protected:
         static std::string getPopLastWhisperNick();

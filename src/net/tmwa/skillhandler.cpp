@@ -210,8 +210,7 @@ void SkillHandler::processSkillFailed(Net::MessageIn &msg)
                 txt = _("Cannot shout!");
                 break;
             default:
-                logger->log("QQQ SMSG_SKILL_FAILED: bskill "
-                            + toString(bskill));
+                UNIMPLIMENTEDPACKET;
                 break;
         }
 
@@ -263,8 +262,7 @@ void SkillHandler::processSkillFailed(Net::MessageIn &msg)
             default:
                 // TRANSLATORS: error message
                 txt.append(_("Huh? What's that?"));
-                logger->log("QQQ SMSG_SKILL_FAILED: reason "
-                            + toString(reason));
+                UNIMPLIMENTEDPACKET;
                 break;
         }
     }
@@ -285,8 +283,7 @@ void SkillHandler::processSkillFailed(Net::MessageIn &msg)
                 txt = _("Poison had no effect...");
                 break;
             default:
-                logger->log("QQQ SMSG_SKILL_FAILED: skillId "
-                            + toString(skillId));
+                UNIMPLIMENTEDPACKET;
                 break;
         }
     }

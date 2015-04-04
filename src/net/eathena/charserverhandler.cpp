@@ -521,8 +521,7 @@ void CharServerHandler::processPincodeStatus(Net::MessageIn &msg)
         case 8:  // pincode was incorrect
             break;
         default:
-            logger->log("processPincodeStatus: unknown pin state: %d",
-                static_cast<int>(state));
+            UNIMPLIMENTEDPACKET;
             break;
     }
 }

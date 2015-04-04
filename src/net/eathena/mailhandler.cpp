@@ -112,7 +112,7 @@ void MailHandler::processMailOpen(Net::MessageIn &msg)
             break;
 
         default:
-            logger->log("unknown mail window open flag: %d", flag);
+            UNIMPLIMENTEDPACKET;
             break;
     }
 }
