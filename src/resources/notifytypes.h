@@ -151,6 +151,7 @@ namespace NotifyTypes
         ROOM_JOINED,
         ROOM_LEAVE,
         ROOM_KICKED,
+        ROOM_ROLE_OWNER,
 
         TYPE_END
     };

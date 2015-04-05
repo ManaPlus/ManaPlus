@@ -959,9 +959,20 @@ void ChatHandler::processChatRoomSettings(Net::MessageIn &msg)
 
 void ChatHandler::processChatRoomRoleChange(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
-    msg.readInt32("role");
-    msg.readString(24, "name");
+    const int role = msg.readInt32("role");
+    const std::string name = msg.readString(24, "name");
+    switch(role)
+    {
+        case 0:
+            NotifyManager::notify(NotifyTypes::ROOM_ROLE_OWNER, name);
+            break;
+        case 1:
+            // dont show normal role
+            break;
+        default:
+            UNIMPLIMENTEDPACKET;
+            break;
+    }
 }
 
 void ChatHandler::processMVPItem(Net::MessageIn &msg)

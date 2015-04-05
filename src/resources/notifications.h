@@ -531,6 +531,10 @@ namespace NotifyManager
             // TRANSLATORS: notification message
             N_("%s kicked from room."),
             NotifyFlags::STRING},
+        {"chat room role owner",
+            // TRANSLATORS: notification message
+            N_("%s role changed to room owner."),
+            NotifyFlags::STRING},
     };
 }  // namespace NotifyManager
 #endif  // RESOURCES_NOTIFICATIONS_H
