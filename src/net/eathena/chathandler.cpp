@@ -704,7 +704,7 @@ void ChatHandler::processChatRoomJoinAck(Net::MessageIn &msg)
     obj->currentUsers = oldChat->currentUsers;
     obj->type = oldChat->type;
     obj->title = oldChat->title;
-    obj->update();
+//    obj->update();
     localPlayer->setChat(obj);
 }
 
@@ -926,8 +926,8 @@ void ChatHandler::processChatRoomCreateAck(Net::MessageIn &msg)
 
 void ChatHandler::processChatRoomDestroy(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
-    msg.readInt32("chat id");
+    const int chatId = msg.readInt32("chat id");
+    actorManager->removeRoom(chatId);
 }
 
 void ChatHandler::processChatRoomJoinFailed(Net::MessageIn &msg)

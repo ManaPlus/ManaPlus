@@ -317,6 +317,8 @@ class ActorManager final: public ConfigListener
         void updateEffects(const std::map<int, int> &addEffects,
                            const std::set<int> &removeEffects) const;
 
+        void removeRoom(const int chatId);
+
     protected:
         bool validateBeing(const Being *const aroundBeing,
                            Being *const being,

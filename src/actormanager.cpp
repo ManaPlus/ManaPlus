@@ -53,6 +53,7 @@
 #include "net/playerhandler.h"
 #include "net/serverfeatures.h"
 
+#include "resources/chatobject.h"
 #include "resources/iteminfo.h"
 
 #include "resources/db/itemdb.h"
@@ -1807,10 +1808,27 @@ Being *ActorManager::cloneBeing(const Being *const srcBeing,
         dstBeing->setSprite(slot, spriteId, "", color, false);
     }
     const int hairSlot = charServerHandler->hairSprite();
-    const int hairStyle =  -srcBeing->getSpriteID(hairSlot);
+    const int hairStyle = -srcBeing->getSpriteID(hairSlot);
     const unsigned char hairColor = srcBeing->getHairColor();
     dstBeing->setSprite(hairSlot, hairStyle * -1,
         ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
     dstBeing->setHairColor(hairColor);
     return dstBeing;
+}
+
+void ActorManager::removeRoom(const int chatId)
+{
+    for_actors
+    {
+        ActorSprite *const actor = *it;
+        if (actor && actor->getType() != ActorType::Player)
+        {
+            Being *const being = static_cast<Being*>(actor);
+            const ChatObject *const chat = being->getChat();
+            if (chat && chat->chatId == chatId)
+            {
+                being->setChat(nullptr);
+            }
+        }
+    }
 }

@@ -898,7 +898,7 @@ impHandler(joinChatRoom)
 #endif
 }
 
-impHandler(leaveChatRoom)
+impHandler0(leaveChatRoom)
 {
 #ifdef EATHENA_SUPPORT
     chatHandler->leaveChatRoom();
