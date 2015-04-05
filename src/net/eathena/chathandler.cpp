@@ -710,10 +710,36 @@ void ChatHandler::processChatRoomJoinAck(Net::MessageIn &msg)
 
 void ChatHandler::processChatRoomLeave(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
     msg.readInt16("users");
-    msg.readString(24, "name");
-    msg.readUInt8("flag");  // 0 - left, 1 - kicked
+    const std::string name = msg.readString(24, "name");
+    const int status = msg.readUInt8("flag");  // 0 - left, 1 - kicked
+    switch(status)
+    {
+        case 0:
+            NotifyManager::notify(NotifyTypes::ROOM_LEAVE, name);
+            break;
+        case 1:
+            NotifyManager::notify(NotifyTypes::ROOM_KICKED, name);
+            break;
+        default:
+            UNIMPLIMENTEDPACKET;
+            break;
+    }
+    if (name == localPlayer->getName())
+    {
+        if (chatWindow)
+            chatWindow->joinRoom(false);
+        PlayerInfo::setRoomName(std::string());
+        if (localPlayer)
+            localPlayer->setChat(nullptr);
+    }
+    else
+    {
+        Being *const being = actorManager->findBeingByName(
+            name, ActorType::Player);
+        if (being)
+            being->setChat(nullptr);
+    }
 }
 
 void ChatHandler::joinChannel(const std::string &channel)

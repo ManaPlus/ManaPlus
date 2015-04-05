@@ -523,6 +523,14 @@ namespace NotifyManager
             // TRANSLATORS: notification message
             N_("%s joined room."),
             NotifyFlags::STRING},
+        {"chat room leave",
+            // TRANSLATORS: notification message
+            N_("%s left room."),
+            NotifyFlags::STRING},
+        {"chat room kick",
+            // TRANSLATORS: notification message
+            N_("%s kicked from room."),
+            NotifyFlags::STRING},
     };
 }  // namespace NotifyManager
 #endif  // RESOURCES_NOTIFICATIONS_H

@@ -149,6 +149,8 @@ namespace NotifyTypes
         ROOM_LIMIT_EXCEEDED,
         ROOM_ALREADY_EXISTS,
         ROOM_JOINED,
+        ROOM_LEAVE,
+        ROOM_KICKED,
 
         TYPE_END
     };
