@@ -33,6 +33,8 @@
 
 #include "gui/widgets/label.h"
 
+#include "resources/chatobject.h"
+
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
@@ -48,7 +50,8 @@ BeingPopup::BeingPopup() :
     mBeingRank(new Label(this, "A")),
     mBeingComment(new Label(this, "A")),
     mBeingBuyBoard(new Label(this, "A")),
-    mBeingSellBoard(new Label(this, "A"))
+    mBeingSellBoard(new Label(this, "A")),
+    mBeingRoom(new Label(this, "A"))
 {
     // Being Name
     mBeingName->setFont(boldFont);
@@ -65,6 +68,7 @@ BeingPopup::BeingPopup() :
     mBeingBuyBoard->setPosition(0, 4 * fontHeight);
     mBeingSellBoard->setPosition(0, 4 * fontHeight);
     mBeingComment->setPosition(0, 5 * fontHeight);
+    mBeingRoom->setPosition(0, 6 * fontHeight);
 
     mBeingParty->setForegroundColorAll(getThemeColor(Theme::POPUP),
         getThemeColor(Theme::POPUP_OUTLINE));
@@ -77,6 +81,8 @@ BeingPopup::BeingPopup() :
     mBeingSellBoard->setForegroundColorAll(getThemeColor(Theme::POPUP),
         getThemeColor(Theme::POPUP_OUTLINE));
     mBeingComment->setForegroundColorAll(getThemeColor(Theme::POPUP),
+        getThemeColor(Theme::POPUP_OUTLINE));
+    mBeingRoom->setForegroundColorAll(getThemeColor(Theme::POPUP),
         getThemeColor(Theme::POPUP_OUTLINE));
 }
 
@@ -93,6 +99,7 @@ void BeingPopup::postInit()
     add(mBeingComment);
     add(mBeingBuyBoard);
     add(mBeingSellBoard);
+    add(mBeingRoom);
 }
 
 void BeingPopup::show(const int x, const int y, Being *const b)
@@ -109,6 +116,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
     Label *label4 = mBeingBuyBoard;
     Label *label5 = mBeingSellBoard;
     Label *label6 = mBeingComment;
+    Label *label7 = mBeingRoom;
 
     b->updateComment();
 
@@ -145,6 +153,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
     label4->setCaption("");
     label5->setCaption("");
     label6->setCaption("");
+    label7->setCaption("");
 
 #ifdef EATHENA_SUPPORT
     const ActorType::Type type = b->getType();
@@ -165,6 +174,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
             label4 = nullptr;
             label5 = nullptr;
             label6 = nullptr;
+            label7 = nullptr;
         }
     }
     else if (type == ActorType::Homunculus)
@@ -184,6 +194,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
             label4 = nullptr;
             label5 = nullptr;
             label6 = nullptr;
+            label7 = nullptr;
         }
     }
     else
@@ -198,7 +209,8 @@ void BeingPopup::show(const int x, const int y, Being *const b)
         }
         else
         {
-            label6 = label4;
+            label7 = label6;
+            label6 = label5;
             label5 = label4;
             label4 = label3;
             label3 = label2;
@@ -215,7 +227,8 @@ void BeingPopup::show(const int x, const int y, Being *const b)
         }
         else
         {
-            label6 = label4;
+            label7 = label6;
+            label6 = label5;
             label5 = label4;
             label4 = label3;
             label3 = label2;
@@ -231,7 +244,8 @@ void BeingPopup::show(const int x, const int y, Being *const b)
         }
         else
         {
-            label6 = label4;
+            label7 = label6;
+            label6 = label5;
             label5 = label4;
             label4 = label3;
             label3 = nullptr;
@@ -246,7 +260,8 @@ void BeingPopup::show(const int x, const int y, Being *const b)
         }
         else
         {
-            label6 = label4;
+            label7 = label6;
+            label6 = label5;
             label5 = label4;
             label4 = nullptr;
         }
@@ -260,6 +275,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
         }
         else
         {
+            label7 = label6;
             label6 = label5;
             label5 = nullptr;
         }
@@ -273,8 +289,23 @@ void BeingPopup::show(const int x, const int y, Being *const b)
         }
         else
         {
+            label7 = label6;
             label6 = nullptr;
         }
+#ifdef EATHENA_SUPPORT
+        const ChatObject *const chat = b->getChat();
+        if (chat)
+        {
+            // TRANSLATORS: being popup label
+            label7->setCaption(strprintf(_("Chat room: %s"),
+                chat->title.c_str()));
+            label7->adjustSize();
+        }
+        else
+        {
+            label7 = nullptr;
+        }
+#endif
     }
 
     int minWidth = mBeingName->getWidth();
@@ -290,6 +321,8 @@ void BeingPopup::show(const int x, const int y, Being *const b)
         minWidth = label5->getWidth();
     if (label6 && label6->getWidth() > minWidth)
         minWidth = label6->getWidth();
+    if (label7 && label7->getWidth() > minWidth)
+        minWidth = label7->getWidth();
 
     const int height1 = getFont()->getHeight();
     int height = height1;
@@ -304,6 +337,8 @@ void BeingPopup::show(const int x, const int y, Being *const b)
     if (label5)
         height += height1;
     if (label6)
+        height += height1;
+    if (label7)
         height += height1;
 
     setContentSize(minWidth, height);

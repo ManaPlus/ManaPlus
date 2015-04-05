@@ -64,6 +64,7 @@ class BeingPopup final : public Popup
         Label *mBeingComment;
         Label *mBeingBuyBoard;
         Label *mBeingSellBoard;
+        Label *mBeingRoom;
 };
 
 extern BeingPopup *beingPopup;
