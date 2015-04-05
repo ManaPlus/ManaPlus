@@ -25,17 +25,17 @@
 
 struct ChatObject final
 {
-    ChatObject() :
-        ownerId(0),
-        chatId(0),
-        maxUsers(0),
-        currentUsers(0),
-        type(0),
-        title()
-    {
-    }
+    ChatObject();
+
+    ~ChatObject();
 
     A_DELETE_COPY(ChatObject)
+
+    void update();
+
+    static ChatObject *findByName(const std::string &name);
+
+    static ChatObject *findById(const int id);
 
     int ownerId;
     int chatId;
@@ -43,6 +43,9 @@ struct ChatObject final
     uint16_t currentUsers;
     uint8_t type;
     std::string title;
+
+    static std::map<std::string, ChatObject*> chatNameMap;
+    static std::map<int, ChatObject*> chatIdMap;
 };
 
 #endif  // RESOURCES_CHATOBJECT_H

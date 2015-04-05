@@ -55,6 +55,7 @@
 #include "net/serverfeatures.h"
 
 #include "resources/iteminfo.h"
+#include "resources/chatobject.h"
 
 #include "utils/chatutils.h"
 #include "utils/gettext.h"
@@ -875,6 +876,22 @@ impHandler(createPublicChatRoom)
     if (event.args.empty())
         return false;
     chatHandler->createChatRoom(event.args, "", 100, true);
+    return true;
+#else
+    return false;
+#endif
+}
+
+impHandler(joinChatRoom)
+{
+#ifdef EATHENA_SUPPORT
+    const std::string args = event.args;
+    if (args.empty())
+        return false;
+    ChatObject *const chat = ChatObject::findByName(args);
+    if (!chat)
+        return false;
+    chatHandler->joinChat(chat, "");
     return true;
 #else
     return false;

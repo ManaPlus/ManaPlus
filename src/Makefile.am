@@ -722,6 +722,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      resources/beinginfo.cpp \
 	      resources/beinginfo.h \
 	      resources/beingmenuitem.h \
+	      resources/chatobject.cpp \
 	      resources/chatobject.h \
 	      resources/db/chardb.cpp \
 	      resources/db/chardb.h \

@@ -592,6 +592,7 @@ namespace InputAction
         KICK_GUILD,
         HAT,
         CREATE_PUBLIC_ROOM,
+        JOIN_ROOM,
         TOTAL
     };
 }  // namespace InputAction

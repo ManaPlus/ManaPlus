@@ -83,6 +83,7 @@ namespace Actions
     decHandler(homunEmote);
     decHandler(commandHomunEmote);
     decHandler(createPublicChatRoom);
+    decHandler(joinChatRoom);
 }  // namespace Actions
 
 #undef decHandler

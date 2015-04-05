@@ -661,6 +661,7 @@ void ChatHandler::processChatDisplay(Net::MessageIn &msg)
     obj->currentUsers = msg.readInt16("current users");
     obj->type = msg.readUInt8("type");
     obj->title = msg.readString(len, "title");
+    obj->update();
 
     Being *const dstBeing = actorManager->findBeing(obj->ownerId);
     if (dstBeing)
@@ -680,14 +681,31 @@ void ChatHandler::joinChat(const ChatObject *const chat,
 
 void ChatHandler::processChatRoomJoinAck(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
-    const int count = msg.readInt16("len") - 8;
-    msg.readInt32("chat id");
+    const int count = (msg.readInt16("len") - 8) / 28;
+    const int id = msg.readInt32("chat id");
+
+    // +++ ignore chat members for now
     for (int f = 0; f < count; f ++)
     {
         msg.readInt32("role");
         msg.readString(24, "name");
     }
+
+    ChatObject *oldChat = ChatObject::findById(id);
+    if (!oldChat)
+        oldChat = new ChatObject;
+
+    PlayerInfo::setRoomName(oldChat->title);
+    chatWindow->joinRoom(true);
+    ChatObject *const obj = new ChatObject;
+    obj->ownerId = oldChat->ownerId;
+    obj->chatId = oldChat->chatId;
+    obj->maxUsers = oldChat->maxUsers;
+    obj->currentUsers = oldChat->currentUsers;
+    obj->type = oldChat->type;
+    obj->title = oldChat->title;
+    obj->update();
+    localPlayer->setChat(obj);
 }
 
 void ChatHandler::processChatRoomLeave(Net::MessageIn &msg)
@@ -863,6 +881,7 @@ void ChatHandler::processChatRoomCreateAck(Net::MessageIn &msg)
             obj->currentUsers = 1;
             obj->type = 1;
             obj->title = mChatRoom;
+            obj->update();
             localPlayer->setChat(obj);
             break;
         }
