@@ -593,6 +593,7 @@ namespace InputAction
         HAT,
         CREATE_PUBLIC_ROOM,
         JOIN_ROOM,
+        LEAVE_ROOM,
         TOTAL
     };
 }  // namespace InputAction

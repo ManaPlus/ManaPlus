@@ -898,4 +898,14 @@ impHandler(joinChatRoom)
 #endif
 }
 
+impHandler(leaveChatRoom)
+{
+#ifdef EATHENA_SUPPORT
+    chatHandler->leaveChatRoom();
+    return true;
+#else
+    return false;
+#endif
+}
+
 }  // namespace Actions

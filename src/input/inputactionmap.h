@@ -4446,6 +4446,11 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputCondition::INGAME,
         "joinroom",
         true},
+    {"keyLeaveRoom",
+        defaultAction(&Actions::leaveChatRoom),
+        InputCondition::INGAME,
+        "leaveroom",
+        false},
 };
 
 #undef defaultAction
