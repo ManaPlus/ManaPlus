@@ -28,6 +28,7 @@
 #include "enums/state.h"
 
 #include <map>
+#include <string>
 
 /**
  * Stat information storage structure.
