@@ -932,8 +932,35 @@ void ChatHandler::processChatRoomDestroy(Net::MessageIn &msg)
 
 void ChatHandler::processChatRoomJoinFailed(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
-    msg.readUInt8("flag");
+    const int result = msg.readUInt8("flag");
+    switch(result)
+    {
+        case 0:
+            NotifyManager::notify(NotifyTypes::ROOM_ERROR_FULL);
+            break;
+        case 1:
+            NotifyManager::notify(NotifyTypes::ROOM_ERROR_WRONG_PASSWORD);
+            break;
+        case 2:
+            NotifyManager::notify(NotifyTypes::ROOM_ERROR_KICKED);
+            break;
+        case 3:
+            break;
+        case 4:
+            NotifyManager::notify(NotifyTypes::ROOM_ERROR_ZENY);
+            break;
+        case 5:
+            NotifyManager::notify(NotifyTypes::ROOM_ERROR_LOW_LEVEL);
+            break;
+        case 6:
+            NotifyManager::notify(NotifyTypes::ROOM_ERROR_HIGH_LEVEL);
+            break;
+        case 7:
+            NotifyManager::notify(NotifyTypes::ROOM_ERROR_RACE);
+            break;
+        default:
+            UNIMPLIMENTEDPACKET;
+    }
 }
 
 void ChatHandler::processChatRoomAddMember(Net::MessageIn &msg)

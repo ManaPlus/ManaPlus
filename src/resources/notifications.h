@@ -535,6 +535,34 @@ namespace NotifyManager
             // TRANSLATORS: notification message
             N_("%s role changed to room owner."),
             NotifyFlags::STRING},
+        {"chat room error full",
+            // TRANSLATORS: notification message
+            N_("Room join failed. Room full."),
+            NotifyFlags::EMPTY},
+        {"chat room error password",
+            // TRANSLATORS: notification message
+            N_("Room join failed. Wrong password."),
+            NotifyFlags::EMPTY},
+        {"chat room error kicked",
+            // TRANSLATORS: notification message
+            N_("Room join failed. Kicked from room."),
+            NotifyFlags::EMPTY},
+        {"chat room error zeny",
+            // TRANSLATORS: notification message
+            N_("Room join failed. Not enought money."),
+            NotifyFlags::EMPTY},
+        {"chat room error low level",
+            // TRANSLATORS: notification message
+            N_("Room join failed. Too low level."),
+            NotifyFlags::EMPTY},
+        {"chat room error high level",
+            // TRANSLATORS: notification message
+            N_("Room join failed. Too high level."),
+            NotifyFlags::EMPTY},
+        {"chat room error race",
+            // TRANSLATORS: notification message
+            N_("Room join failed. Wrong race."),
+            NotifyFlags::EMPTY},
     };
 }  // namespace NotifyManager
 #endif  // RESOURCES_NOTIFICATIONS_H

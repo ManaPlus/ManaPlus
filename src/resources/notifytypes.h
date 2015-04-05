@@ -152,6 +152,13 @@ namespace NotifyTypes
         ROOM_LEAVE,
         ROOM_KICKED,
         ROOM_ROLE_OWNER,
+        ROOM_ERROR_FULL,
+        ROOM_ERROR_WRONG_PASSWORD,
+        ROOM_ERROR_KICKED,
+        ROOM_ERROR_ZENY,
+        ROOM_ERROR_LOW_LEVEL,
+        ROOM_ERROR_HIGH_LEVEL,
+        ROOM_ERROR_RACE,
 
         TYPE_END
     };
