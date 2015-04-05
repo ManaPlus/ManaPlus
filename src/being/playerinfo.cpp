@@ -60,6 +60,7 @@ Inventory *mCartInventory = nullptr;
 MercenaryInfo *mMercenary = nullptr;
 HomunculusInfo *mHomunculus = nullptr;
 PetInfo *mPet = nullptr;
+std::string mRoomName;
 #endif
 Equipment *mEquipment = nullptr;
 int mPetBeingId = 0;
@@ -574,6 +575,21 @@ void updateAttackAi(const int targetId, const bool keep)
         mercenaryHandler->attack(targetId, keep);
     if (mHomunculus)
         homunculusHandler->attack(targetId, keep);
+}
+
+std::string getRoomName()
+{
+    return mRoomName;
+}
+
+void setRoomName(const std::string &name)
+{
+    mRoomName = name;
+}
+
+bool isInRoom()
+{
+    return !mRoomName.empty();
 }
 #endif
 

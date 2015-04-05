@@ -26,6 +26,7 @@
 #include "notifymanager.h"
 
 #include "being/localplayer.h"
+#include "being/playerinfo.h"
 #include "being/playerrelations.h"
 
 #include "gui/chatconsts.h"
@@ -852,8 +853,19 @@ void ChatHandler::processChatRoomCreateAck(Net::MessageIn &msg)
     switch(result)
     {
         case 0:
-            chatWindow->addChatRoomTab(mChatRoom, true);
+        {
+            PlayerInfo::setRoomName(mChatRoom);
+            chatWindow->joinRoom(true);
+            ChatObject *const obj = new ChatObject;
+            obj->ownerId = localPlayer->getId();
+            obj->chatId = 0;
+            obj->maxUsers = 1000;
+            obj->currentUsers = 1;
+            obj->type = 1;
+            obj->title = mChatRoom;
+            localPlayer->setChat(obj);
             break;
+        }
         case 1:
             NotifyManager::notify(NotifyTypes::ROOM_LIMIT_EXCEEDED);
             break;
@@ -864,6 +876,7 @@ void ChatHandler::processChatRoomCreateAck(Net::MessageIn &msg)
             UNIMPLIMENTEDPACKET;
             break;
     }
+    mChatRoom.clear();
 }
 
 void ChatHandler::processChatRoomDestroy(Net::MessageIn &msg)

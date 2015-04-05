@@ -1219,12 +1219,6 @@ ChatTab *ChatWindow::addSpecialChannelTab(const std::string &name,
     return ret;
 }
 
-ChatTab *ChatWindow::addChatRoomTab(const std::string &name,
-                                    const bool switchTo)
-{
-    return nullptr;
-}
-
 ChatTab *ChatWindow::addChannelTab(const std::string &name,
                                    const bool switchTo)
 {
@@ -2131,4 +2125,15 @@ void ChatWindow::debugMessage(const std::string &msg)
 {
     if (debugChatTab)
         debugChatTab->chatLog(msg, ChatMsgType::BY_SERVER);
+}
+
+void ChatWindow::joinRoom(const bool isJoin)
+{
+    Tab *const tab = mChatTabs->getTabByIndex(0);
+    std::string name;
+    if (isJoin)
+        name = PlayerInfo::getRoomName();
+    else
+        name = _("General");
+    tab->setCaption(name);
 }

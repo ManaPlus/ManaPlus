@@ -267,6 +267,12 @@ namespace PlayerInfo
     void updateMoveAI();
 
     void updateAttackAi(const int targetId, const bool keep);
+
+    std::string getRoomName();
+
+    void setRoomName(const std::string &name);
+
+    bool isInRoom();
 #endif
 
     void setGuildPositionFlags(const GuildPositionFlags::Type pos);

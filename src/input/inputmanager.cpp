@@ -693,6 +693,8 @@ void InputManager::updateConditionMask()
 
     if (!PlayerInfo::isVending())
         mMask |= InputCondition::NOVENDING;
+    if (!PlayerInfo::isInRoom())
+        mMask |= InputCondition::NOROOM;
 
     if (!settings.awayMode)
         mMask |= InputCondition::NOAWAY;
