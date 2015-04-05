@@ -889,7 +889,7 @@ class Being notfinal : public ActorSprite,
 
         void setChat(ChatObject *const obj);
 
-        const ChatObject *getChat() const
+        ChatObject *getChat() const
         { return mChat; }
 
         void setKarma(const int karma)

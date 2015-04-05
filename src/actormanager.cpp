@@ -1832,3 +1832,26 @@ void ActorManager::removeRoom(const int chatId)
         }
     }
 }
+
+void ActorManager::updateRoom(const ChatObject *const newChat)
+{
+    if (!newChat)
+        return;
+
+    for_actors
+    {
+        ActorSprite *const actor = *it;
+        if (actor && actor->getType() != ActorType::Player)
+        {
+            Being *const being = static_cast<Being*>(actor);
+            ChatObject *const chat = being->getChat();
+            if (chat && chat->chatId == newChat->chatId)
+            {
+                chat->ownerId = newChat->ownerId;
+                chat->maxUsers = newChat->maxUsers;
+                chat->type = newChat->type;
+                chat->title = newChat->title;
+            }
+        }
+    }
+}

@@ -974,14 +974,26 @@ void ChatHandler::processChatRoomAddMember(Net::MessageIn &msg)
 
 void ChatHandler::processChatRoomSettings(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
     const int sz = msg.readInt16("len") - 17;
-    msg.readInt32("owner id");
-    msg.readInt32("chat id");
-    msg.readInt16("limit");
+    const int ownerId = msg.readInt32("owner id");
+    const int chatId = msg.readInt32("chat id");
+    const int limit = msg.readInt16("limit");
     msg.readInt16("users");
-    msg.readUInt8("type");
-    msg.readString(sz, "title");
+    const int type = msg.readUInt8("type");
+    const std::string &title = msg.readString(sz, "title");
+    ChatObject *const chat = localPlayer->getChat();
+    if (chat && chat->chatId == chatId)
+    {
+        chat->ownerId = ownerId;
+        chat->maxUsers = limit;
+        chat->type = type;
+        if (chat->title != title)
+        {
+            chat->title = title;
+            actorManager->updateRoom(chat);
+            chatWindow->joinRoom(true);
+        }
+    }
 }
 
 void ChatHandler::processChatRoomRoleChange(Net::MessageIn &msg)

@@ -36,6 +36,8 @@ class Being;
 class LocalPlayer;
 class Map;
 
+struct ChatObject;
+
 typedef std::set<ActorSprite*> ActorSprites;
 typedef ActorSprites::iterator ActorSpritesIterator;
 typedef ActorSprites::const_iterator ActorSpritesConstIterator;
@@ -318,6 +320,8 @@ class ActorManager final: public ConfigListener
                            const std::set<int> &removeEffects) const;
 
         void removeRoom(const int chatId);
+
+        void updateRoom(const ChatObject *const newChat);
 
     protected:
         bool validateBeing(const Being *const aroundBeing,
