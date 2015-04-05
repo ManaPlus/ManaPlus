@@ -912,9 +912,11 @@ void ChatHandler::processChatRoomJoinFailed(Net::MessageIn &msg)
 
 void ChatHandler::processChatRoomAddMember(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
     msg.readInt16("users");
-    msg.readString(24, "name");
+    const std::string name = msg.readString(24, "name");
+    if (!localChatTab)
+        return;
+    NotifyManager::notify(NotifyTypes::ROOM_JOINED, name);
 }
 
 void ChatHandler::processChatRoomSettings(Net::MessageIn &msg)

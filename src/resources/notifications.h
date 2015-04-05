@@ -519,6 +519,10 @@ namespace NotifyManager
             // TRANSLATORS: notification message
             N_("Chat room already exists"),
             NotifyFlags::EMPTY},
+        {"chat room joined",
+            // TRANSLATORS: notification message
+            N_("%s joined room."),
+            NotifyFlags::STRING},
     };
 }  // namespace NotifyManager
 #endif  // RESOURCES_NOTIFICATIONS_H

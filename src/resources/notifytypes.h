@@ -148,6 +148,7 @@ namespace NotifyTypes
         MANNER_NEGATIVE_POINTS,
         ROOM_LIMIT_EXCEEDED,
         ROOM_ALREADY_EXISTS,
+        ROOM_JOINED,
 
         TYPE_END
     };
