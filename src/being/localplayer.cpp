@@ -1891,8 +1891,11 @@ void LocalPlayer::afkRespond(ChatTab *const tab, const std::string &nick)
         if (mAfkTime == 0 || time < mAfkTime
             || time - mAfkTime > awayLimitTimer)
         {
-            std::string msg("*AFK*: "
-                + config.getStringValue("afkMessage"));
+            std::string str(config.getStringValue("afkMessage"));
+            if (str.find("'NAME'") != std::string::npos)
+                replaceAll(str, "'NAME'", nick);
+
+            std::string msg("*AFK*: " + str);
 
             if (config.getIntValue("afkFormat") == 1)
                 msg = "*" + msg + "*";
