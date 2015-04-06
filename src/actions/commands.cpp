@@ -568,8 +568,9 @@ impHandler(addAttack)
 
 impHandler(removeAttack)
 {
-    if (!actorManager || event.args.empty()
-        || !actorManager->isInIgnoreAttackList(event.args))
+    if (!actorManager || event.args.empty() || (
+        !actorManager->isInIgnoreAttackList(event.args) &&
+        !actorManager->isInPriorityAttackList(event.args)))
     {
         return false;
     }
