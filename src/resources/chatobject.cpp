@@ -20,6 +20,8 @@
 
 #include "resources/chatobject.h"
 
+#include "debug.h"
+
 std::map<std::string, ChatObject*> ChatObject::chatNameMap;
 std::map<int, ChatObject*> ChatObject::chatIdMap;
 
