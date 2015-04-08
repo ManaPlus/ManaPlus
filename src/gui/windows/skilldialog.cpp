@@ -590,33 +590,27 @@ SkillData *SkillDialog::getSkillData(const int id) const
     return nullptr;
 }
 
-void SkillDialog::triggerEffect(int effectId,
-                                const int defaultEffectId) const
+void SkillDialog::playUpdateEffect(const int id) const
 {
     if (!effectManager)
         return;
-    if (effectId == -1)
-        effectId = defaultEffectId;
-    if (effectId == -1)
-        return;
-    effectManager->trigger(effectId, localPlayer);
-}
-
-void SkillDialog::playUpdateEffect(const int id) const
-{
     const SkillData *const data = getSkillData(id);
     if (!data)
         return;
-    triggerEffect(data->updateEffectId,
+    effectManager->triggerDefault(data->updateEffectId,
+        localPlayer,
         paths.getIntValue("skillLevelUpEffectId"));
 }
 
 void SkillDialog::playRemoveEffect(const int id) const
 {
+    if (!effectManager)
+        return;
     const SkillData *const data = getSkillData(id);
     if (!data)
         return;
-    triggerEffect(data->removeEffectId,
+    effectManager->triggerDefault(data->removeEffectId,
+        localPlayer,
         paths.getIntValue("skillRemoveEffectId"));
 }
 

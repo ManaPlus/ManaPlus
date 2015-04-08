@@ -80,6 +80,30 @@ EffectManager::~EffectManager()
 {
 }
 
+bool EffectManager::triggerDirection(const int id, Being *const being,
+                                     const SpriteDirection::Type &direction)
+{
+    int rotation;
+    switch (direction)
+    {
+        case SpriteDirection::DOWN:
+        default:
+            rotation = 0;
+            break;
+        case SpriteDirection::LEFT:
+            rotation = 90;
+            break;
+        case SpriteDirection::UP:
+            rotation = 180;
+            break;
+        case SpriteDirection::RIGHT:
+            rotation = 270;
+            break;
+    }
+
+    return trigger(id, being, rotation);
+}
+
 bool EffectManager::trigger(const int id, Being *const being,
                             const int rotation)
 {
@@ -161,4 +185,15 @@ bool EffectManager::trigger(const int id, const int x, const int y,
         }
     }
     return rValue;
+}
+
+void EffectManager::triggerDefault(int effectId,
+                                   Being *const being,
+                                   const int defaultEffectId)
+{
+    if (effectId == -1)
+        effectId = defaultEffectId;
+    if (effectId == -1)
+        return;
+    trigger(effectId, being);
 }

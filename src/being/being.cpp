@@ -1245,29 +1245,15 @@ void Being::setAction(const BeingAction::Action &action, const int attackId)
                 reset();
 
                 // attack particle effect
-                if (Particle::enabled)
+                if (Particle::enabled && effectManager)
                 {
                     const int effectId = mInfo->getAttack(attackId)->mEffectId;
-
-                    int rotation;
-                    switch (mSpriteDirection)
+                    if (effectId >= 0)
                     {
-                        case SpriteDirection::DOWN:
-                        default:
-                            rotation = 0;
-                            break;
-                        case SpriteDirection::LEFT:
-                            rotation = 90;
-                            break;
-                        case SpriteDirection::UP:
-                            rotation = 180;
-                            break;
-                        case SpriteDirection::RIGHT:
-                            rotation = 270;
-                            break;
+                        effectManager->triggerDirection(effectId,
+                            this,
+                            mSpriteDirection);
                     }
-                    if (effectManager && effectId >= 0)
-                        effectManager->trigger(effectId, this, rotation);
                 }
             }
             break;

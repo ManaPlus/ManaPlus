@@ -24,6 +24,7 @@
 #define EFFECTMANAGER_H
 
 #include "resources/effectdescription.h"
+#include "resources/spritedirection.h"
 
 #include <vector>
 
@@ -49,6 +50,9 @@ class EffectManager final
          */
         bool trigger(const int id, Being *const being, const int rotation = 0);
 
+        bool triggerDirection(const int id, Being *const being,
+                              const SpriteDirection::Type &direction);
+
         Particle *triggerReturn(const int id, Being *const being,
                                 const int rotation = 0);
 
@@ -58,6 +62,10 @@ class EffectManager final
          */
         bool trigger(const int id, const int x, const int y,
                      const int rotation = 0);
+
+        void triggerDefault(int effectId,
+                            Being *const being,
+                            const int defaultEffectId);
 
     private:
         std::vector<EffectDescription> mEffects;

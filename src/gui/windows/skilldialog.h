@@ -30,6 +30,7 @@
 #include "resources/skillowner.h"
 #include "resources/skilltype.h"
 
+class Being;
 class Button;
 class Label;
 class SkillModel;
@@ -129,9 +130,6 @@ class SkillDialog final : public Window,
 
     private:
         void addSkillDuration(SkillInfo *const skill);
-
-        void triggerEffect(int effectId,
-                           const int defaultEffectId) const;
 
         typedef std::map<int, SkillInfo*> SkillMap;
         SkillMap mSkills;
