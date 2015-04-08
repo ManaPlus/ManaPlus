@@ -1355,7 +1355,7 @@ void Being::setDirection(const uint8_t direction)
     {
         dir = SpriteDirection::LEFT;
     }
-    mSpriteDirection = static_cast<uint8_t>(dir);
+    mSpriteDirection = dir;
 
     CompoundSprite::setSpriteDirection(dir);
     if (mEmotionSprite)
@@ -3109,8 +3109,7 @@ void Being::setEmote(const uint8_t emotion, const int emote_time)
         if (mEmotionSprite)
         {
             mEmotionSprite->play(mSpriteAction);
-            mEmotionSprite->setSpriteDirection(
-                static_cast<SpriteDirection::Type>(mSpriteDirection));
+            mEmotionSprite->setSpriteDirection(mSpriteDirection);
         }
         else
         {

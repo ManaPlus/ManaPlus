@@ -485,7 +485,7 @@ class Being notfinal : public ActorSprite,
          * Returns the direction the being is facing.
          */
         SpriteDirection::Type getSpriteDirection() const A_WARN_UNUSED
-        { return static_cast<SpriteDirection::Type>(mSpriteDirection); }
+        { return mSpriteDirection; }
 
         void setPosition(const Vector &pos) override;
 
@@ -1003,7 +1003,7 @@ class Being notfinal : public ActorSprite,
         uint16_t mSubType;      /**< Subtype (graphical view, basically) */
         uint8_t mDirection;               /**< Facing direction */
         uint8_t mDirectionDelayed;        /**< Facing direction */
-        uint8_t mSpriteDirection;         /**< Facing direction */
+        SpriteDirection::Type mSpriteDirection;  /**< Facing direction */
         bool mShowName;
         bool mIsGM;
 
