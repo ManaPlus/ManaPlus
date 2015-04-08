@@ -390,6 +390,7 @@ void BeingHandler::processPlayerMoveToAttack(Net::MessageIn &msg)
 
 void BeingHandler::processSkillNoDamage(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     msg.readInt16("skill id");
     msg.readInt16("heal");
     msg.readInt32("dst id");
