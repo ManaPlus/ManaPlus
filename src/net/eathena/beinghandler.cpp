@@ -1306,8 +1306,9 @@ void BeingHandler::processBeingAction2(Net::MessageIn &msg)
             }
             if (dstBeing)
             {
+                // level not present, using 1
                 dstBeing->takeDamage(srcBeing, param1,
-                    static_cast<AttackType::Type>(type));
+                    static_cast<AttackType::Type>(type), 1);
             }
             break;
 

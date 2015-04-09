@@ -561,8 +561,11 @@ void Being::setSpeech(const std::string &text, const std::string &channel,
     }
 }
 
-void Being::takeDamage(Being *const attacker, const int amount,
-                       const AttackType::Type type, const int attackId)
+void Being::takeDamage(Being *const attacker,
+                       const int amount,
+                       const AttackType::Type type,
+                       const int attackId,
+                       const int level)
 {
     if (!userPalette || !attacker)
         return;
@@ -705,7 +708,10 @@ void Being::takeDamage(Being *const attacker, const int amount,
 
         if (effectManager)
         {
-            const int hitEffectId = getHitEffect(attacker, type, attackId);
+            const int hitEffectId = getHitEffect(attacker,
+                type,
+                attackId,
+                level);
             if (hitEffectId >= 0)
                 effectManager->trigger(hitEffectId, this);
         }
@@ -715,7 +721,9 @@ void Being::takeDamage(Being *const attacker, const int amount,
         if (effectManager)
         {
             const int hitEffectId = getHitEffect(attacker,
-                AttackType::MISS, attackId);
+                AttackType::MISS,
+                attackId,
+                level);
             if (hitEffectId >= 0)
                 effectManager->trigger(hitEffectId, this);
         }
@@ -724,7 +732,9 @@ void Being::takeDamage(Being *const attacker, const int amount,
 }
 
 int Being::getHitEffect(const Being *const attacker,
-                        const AttackType::Type type, const int attackId) const
+                        const AttackType::Type type,
+                        const int attackId,
+                        const int level) const
 {
     if (!effectManager)
         return 0;
@@ -781,8 +791,14 @@ int Being::getHitEffect(const Being *const attacker,
     }
     else
     {
-        // move skills effects to +100000 in effects list
         hitEffectId = attackId + 100000;
+        SkillData *const data = skillDialog->getSkillDataByLevel(
+            attackId, level);
+        if (!data)
+            return -1;
+        hitEffectId = data->hitEffectId;
+        if (hitEffectId == -1)
+            hitEffectId = paths.getIntValue("skillHitEffectId");
     }
     BLOCK_END("Being::getHitEffect")
     return hitEffectId;

@@ -162,7 +162,7 @@ void BeingHandler::processSkillDamage(Net::MessageIn &msg)
     if (srcBeing)
         srcBeing->handleSkill(dstBeing, param1, id, level);
     if (dstBeing)
-        dstBeing->takeDamage(srcBeing, param1, AttackType::SKILL, id);
+        dstBeing->takeDamage(srcBeing, param1, AttackType::SKILL, id, level);
     BLOCK_END("BeingHandler::processSkillDamage")
 }
 
@@ -206,8 +206,9 @@ void BeingHandler::processBeingAction(Net::MessageIn &msg)
             }
             if (dstBeing)
             {
+                // level not present, using 1
                 dstBeing->takeDamage(srcBeing, param1,
-                    static_cast<AttackType::Type>(type));
+                    static_cast<AttackType::Type>(type), 1);
             }
             break;
 

@@ -596,6 +596,19 @@ SkillData *SkillDialog::getSkillData(const int id) const
     return nullptr;
 }
 
+SkillData *SkillDialog::getSkillDataByLevel(const int id,
+                                            const int level) const
+{
+    const SkillMap::const_iterator it = mSkills.find(id);
+    if (it != mSkills.end())
+    {
+        SkillInfo *const info = it->second;
+        if (info)
+            return info->getData1(level);
+    }
+    return nullptr;
+}
+
 void SkillDialog::playUpdateEffect(const int id) const
 {
     if (!effectManager)

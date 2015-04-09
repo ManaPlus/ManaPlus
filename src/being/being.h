@@ -201,8 +201,11 @@ class Being notfinal : public ActorSprite,
          * @param type the attack type
          * @param id skill id
          */
-        void takeDamage(Being *const attacker, const int damage,
-                        const AttackType::Type type, const int attackId = 1);
+        void takeDamage(Being *const attacker,
+                        const int damage,
+                        const AttackType::Type type,
+                        const int attackId = 1,
+                        const int level = 1);
 
         /**
          * Handles an attack of another being by this being.
@@ -805,7 +808,8 @@ class Being notfinal : public ActorSprite,
 
         int getHitEffect(const Being *const attacker,
                          const AttackType::Type type,
-                         const int attackId) const A_WARN_UNUSED;
+                         const int attackId,
+                         const int level) const A_WARN_UNUSED;
 
         Cursor::Cursor getHoverCursor() const A_WARN_UNUSED
         { return mInfo ? mInfo->getHoverCursor() : Cursor::CURSOR_POINTER; }
