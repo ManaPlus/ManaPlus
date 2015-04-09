@@ -42,7 +42,8 @@ SkillData::SkillData() :
     soundHit(std::string(), 0),
     soundMiss(std::string(), 0),
     updateEffectId(-1),
-    removeEffectId(-1)
+    removeEffectId(-1),
+    hitEffectId(-1)
 {
 }
 
