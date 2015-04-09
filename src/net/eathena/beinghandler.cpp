@@ -34,8 +34,8 @@
 
 #include "input/keyboardconfig.h"
 
+#include "gui/windows/skilldialog.h"
 #include "gui/windows/socialwindow.h"
-
 #include "gui/windows/outfitwindow.h"
 
 #include "net/serverfeatures.h"
@@ -1137,15 +1137,36 @@ void BeingHandler::processMapType(Net::MessageIn &msg)
 
 void BeingHandler::processSkillCasting(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
-    msg.readInt32("src id");
-    msg.readInt32("dst id");
-    msg.readInt16("dst x");
-    msg.readInt16("dst y");
-    msg.readInt16("skill id");
+    // +++ need use other parameters
+
+    const int srcId = msg.readInt32("src id");
+    const int dstId = msg.readInt32("dst id");
+    const int dstX = msg.readInt16("dst x");
+    const int dstY = msg.readInt16("dst y");
+    const int skillId = msg.readInt16("skill id");
     msg.readInt32("property");  // can be used to trigger effect
     msg.readInt32("cast time");
     msg.readInt8("dispossable");
+
+    if (!effectManager)
+        return;
+
+    if (srcId == 0)
+    {
+        UNIMPLIMENTEDPACKET;
+        return;
+    }
+    else if (dstId != 0)
+    {   // being to being
+        Being *const srcBeing = actorManager->findBeing(srcId);
+        Being *const dstBeing = actorManager->findBeing(dstId);
+        skillDialog->playCastingSrcEffect(skillId, srcBeing);
+        skillDialog->playCastingDstEffect(skillId, dstBeing);
+    }
+    else if (dstX != 0 || dstY != 0)
+    {   // being to position
+        UNIMPLIMENTEDPACKET;
+    }
 }
 
 void BeingHandler::processBeingStatusChange(Net::MessageIn &msg)

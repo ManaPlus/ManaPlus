@@ -503,6 +503,8 @@ DefaultsData* getPathsDefaults()
     AddDEF("completeQuestEffectId", -1);
     AddDEF("skillLevelUpEffectId", -1);
     AddDEF("skillRemoveEffectId", -1);
+    AddDEF("skillCastingSrcEffectId", -1);
+    AddDEF("skillCastingDstEffectId", -1);
 
     AddDEF("minimaps", "graphics/minimaps/");
     AddDEF("maps", "maps/");

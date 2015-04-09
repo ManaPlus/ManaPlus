@@ -62,6 +62,8 @@ struct SkillInfo final
     int duration;
     int durationTime;
     int cooldown;
+    int castingSrcEffectId;
+    int castingDstEffectId;
     SkillType::SkillType type;
     SkillOwner::Type owner;
     bool modifiable;

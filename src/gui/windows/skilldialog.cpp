@@ -325,6 +325,10 @@ void SkillDialog::loadXmlFile(const std::string &fileName)
                             node, "errorText", name);
                         skill->alwaysVisible = XML::getBoolProperty(
                             node, "alwaysVisible", false);
+                        skill->castingSrcEffectId = XML::getProperty(
+                            node, "castingSrcEffectId", -1);
+                        skill->castingDstEffectId = XML::getProperty(
+                            node, "castingDstEffectId", -1);
                         skill->visible = skill->alwaysVisible;
                         model->addSkill(skill);
                         mSkills[id] = skill;
@@ -612,6 +616,30 @@ void SkillDialog::playRemoveEffect(const int id) const
     effectManager->triggerDefault(data->removeEffectId,
         localPlayer,
         paths.getIntValue("skillRemoveEffectId"));
+}
+
+void SkillDialog::playCastingSrcEffect(const int id, Being *const being) const
+{
+    if (!effectManager)
+        return;
+    SkillInfo *const info = getSkill(id);
+    if (!info)
+        return;
+    effectManager->triggerDefault(info->castingSrcEffectId,
+        being,
+        paths.getIntValue("skillCastingSrcEffectId"));
+}
+
+void SkillDialog::playCastingDstEffect(const int id, Being *const being) const
+{
+    if (!effectManager)
+        return;
+    SkillInfo *const info = getSkill(id);
+    if (!info)
+        return;
+    effectManager->triggerDefault(info->castingDstEffectId,
+        being,
+        paths.getIntValue("skillCastingDstEffectId"));
 }
 
 void SkillDialog::useSkill(const SkillInfo *const info)
