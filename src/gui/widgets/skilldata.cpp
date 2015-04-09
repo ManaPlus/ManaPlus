@@ -43,7 +43,8 @@ SkillData::SkillData() :
     soundMiss(std::string(), 0),
     updateEffectId(-1),
     removeEffectId(-1),
-    hitEffectId(-1)
+    hitEffectId(-1),
+    missEffectId(-1)
 {
 }
 

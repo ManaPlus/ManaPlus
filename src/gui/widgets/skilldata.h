@@ -46,6 +46,7 @@ struct SkillData final
     int updateEffectId;
     int removeEffectId;
     int hitEffectId;
+    int missEffectId;
 
     SkillData();
     A_DELETE_COPY(SkillData)

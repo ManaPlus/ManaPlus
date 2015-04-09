@@ -506,6 +506,7 @@ DefaultsData* getPathsDefaults()
     AddDEF("skillCastingSrcEffectId", -1);
     AddDEF("skillCastingDstEffectId", -1);
     AddDEF("skillHitEffectId", -1);
+    AddDEF("skillMissEffectId", -1);
 
     AddDEF("minimaps", "graphics/minimaps/");
     AddDEF("maps", "maps/");

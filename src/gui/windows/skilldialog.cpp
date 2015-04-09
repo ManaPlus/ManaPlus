@@ -376,6 +376,8 @@ void SkillDialog::loadXmlFile(const std::string &fileName)
                         node, "removeEffectId", -1);
                     data->hitEffectId = XML::getProperty(
                         node, "hitEffectId", -1);
+                    data->missEffectId = XML::getProperty(
+                        node, "missEffectId", -1);
 
                     skill->addData(level, data);
                 }

@@ -720,10 +720,21 @@ void Being::takeDamage(Being *const attacker,
     {
         if (effectManager)
         {
-            const int hitEffectId = getHitEffect(attacker,
-                AttackType::MISS,
-                attackId,
-                level);
+            int hitEffectId = -1;
+            if (type == AttackType::SKILL)
+            {
+                hitEffectId = getHitEffect(attacker,
+                    AttackType::SKILLMISS,
+                    attackId,
+                    level);
+            }
+            else
+            {
+                hitEffectId = getHitEffect(attacker,
+                    AttackType::MISS,
+                    attackId,
+                    level);
+            }
             if (hitEffectId >= 0)
                 effectManager->trigger(hitEffectId, this);
         }
@@ -743,7 +754,26 @@ int Being::getHitEffect(const Being *const attacker,
     // Init the particle effect path based on current
     // weapon or default.
     int hitEffectId = 0;
-    if (type != AttackType::SKILL)
+    if (type == AttackType::SKILL || type == AttackType::SKILLMISS)
+    {
+        SkillData *const data = skillDialog->getSkillDataByLevel(
+            attackId, level);
+        if (!data)
+            return -1;
+        if (type == AttackType::SKILL)
+        {
+            hitEffectId = data->hitEffectId;
+            if (hitEffectId == -1)
+                hitEffectId = paths.getIntValue("skillHitEffectId");
+        }
+        else
+        {
+            hitEffectId = data->missEffectId;
+            if (hitEffectId == -1)
+                hitEffectId = paths.getIntValue("skillMissEffectId");
+        }
+    }
+    else
     {
         if (attacker)
         {
@@ -788,17 +818,6 @@ int Being::getHitEffect(const Being *const attacker,
         {
             hitEffectId = getDefaultEffectId(type);
         }
-    }
-    else
-    {
-        hitEffectId = attackId + 100000;
-        SkillData *const data = skillDialog->getSkillDataByLevel(
-            attackId, level);
-        if (!data)
-            return -1;
-        hitEffectId = data->hitEffectId;
-        if (hitEffectId == -1)
-            hitEffectId = paths.getIntValue("skillHitEffectId");
     }
     BLOCK_END("Being::getHitEffect")
     return hitEffectId;
