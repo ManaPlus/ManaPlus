@@ -28,7 +28,9 @@
 #include "enums/state.h"
 
 #include <map>
+#ifdef EATHENA_SUPPORT
 #include <string>
+#endif
 
 /**
  * Stat information storage structure.

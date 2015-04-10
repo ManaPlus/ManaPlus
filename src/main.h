@@ -72,7 +72,8 @@
 #define PACKAGE_OS "Cygwin"
 #elif defined(__sun) || defined(sun)
 #define PACKAGE_OS "SunOS"
-#elif defined(_AIX) || defined(__AIX) || defined(__AIX__) || defined(__aix) || defined(__aix__)
+#elif defined(_AIX) || defined(__AIX) || defined(__AIX__) \
+    || defined(__aix) || defined(__aix__)
 #define PACKAGE_OS "AIX"
 #elif defined(__sgi) || defined(__sgi__) || defined(_SGI)
 #define PACKAGE_OS "IRIX"

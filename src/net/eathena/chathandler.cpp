@@ -713,7 +713,7 @@ void ChatHandler::processChatRoomLeave(Net::MessageIn &msg)
     msg.readInt16("users");
     const std::string name = msg.readString(24, "name");
     const int status = msg.readUInt8("flag");  // 0 - left, 1 - kicked
-    switch(status)
+    switch (status)
     {
         case 0:
             NotifyManager::notify(NotifyTypes::ROOM_LEAVE, name);
@@ -894,7 +894,7 @@ void ChatHandler::talkPet(const std::string &restrict text,
 void ChatHandler::processChatRoomCreateAck(Net::MessageIn &msg)
 {
     const int result = msg.readUInt8("flag");
-    switch(result)
+    switch (result)
     {
         case 0:
         {
@@ -933,7 +933,7 @@ void ChatHandler::processChatRoomDestroy(Net::MessageIn &msg)
 void ChatHandler::processChatRoomJoinFailed(Net::MessageIn &msg)
 {
     const int result = msg.readUInt8("flag");
-    switch(result)
+    switch (result)
     {
         case 0:
             NotifyManager::notify(NotifyTypes::ROOM_ERROR_FULL);
@@ -977,9 +977,9 @@ void ChatHandler::processChatRoomSettings(Net::MessageIn &msg)
     const int sz = msg.readInt16("len") - 17;
     const int ownerId = msg.readInt32("owner id");
     const int chatId = msg.readInt32("chat id");
-    const int limit = msg.readInt16("limit");
+    const uint16_t limit = msg.readInt16("limit");
     msg.readInt16("users");
-    const int type = msg.readUInt8("type");
+    const uint16_t type = msg.readUInt8("type");
     const std::string &title = msg.readString(sz, "title");
     ChatObject *const chat = localPlayer->getChat();
     if (chat && chat->chatId == chatId)
@@ -1000,7 +1000,7 @@ void ChatHandler::processChatRoomRoleChange(Net::MessageIn &msg)
 {
     const int role = msg.readInt32("role");
     const std::string name = msg.readString(24, "name");
-    switch(role)
+    switch (role)
     {
         case 0:
             NotifyManager::notify(NotifyTypes::ROOM_ROLE_OWNER, name);
@@ -1034,7 +1034,7 @@ void ChatHandler::processMVPNoItem(Net::MessageIn &msg)
 void ChatHandler::processMannerMessage(Net::MessageIn &msg)
 {
     const int result = msg.readInt32("type");
-    switch(result)
+    switch (result)
     {
         case 0:
             NotifyManager::notify(NotifyTypes::MANNER_CHANGED);
@@ -1101,8 +1101,8 @@ void ChatHandler::setChatRoomOptions(const int limit,
                                      const std::string &title) const
 {
     createOutPacket(CMSG_SET_CHAT_ROOM_OPTIONS);
-    const int sz = title.size();
-    outMsg.writeInt16(15 + sz, "len");
+    const int sz = static_cast<int>(title.size());
+    outMsg.writeInt16(static_cast<int16_t>(15 + sz), "len");
     outMsg.writeInt16(static_cast<int16_t>(limit), "limit");
     outMsg.writeInt8(static_cast<int8_t>(isPublic ? 1 : 0), "type");
     outMsg.writeString(password, 8, "password");

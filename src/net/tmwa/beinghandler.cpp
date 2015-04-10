@@ -362,7 +362,8 @@ void BeingHandler::processBeingChangeLookContinue(Net::MessageIn &msg,
             localPlayer->imitateOutfit(dstBeing, SPRITE_HEAD_BOTTOM);
             break;
         case 6:     // eAthena LOOK_HAIR_COLOR
-            dstBeing->setHairColor(SPRITE_HAIR_COLOR, static_cast<uint8_t>(id));
+            dstBeing->setHairColor(SPRITE_HAIR_COLOR,
+                static_cast<uint8_t>(id));
             break;
         case 7:     // Clothes color
             // ignoring it

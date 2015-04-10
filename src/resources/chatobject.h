@@ -21,7 +21,10 @@
 #ifndef RESOURCES_CHATOBJECT_H
 #define RESOURCES_CHATOBJECT_H
 
-#include "resources/image.h"
+#include <map>
+#include <string>
+
+#include "localconsts.h"
 
 struct ChatObject final
 {

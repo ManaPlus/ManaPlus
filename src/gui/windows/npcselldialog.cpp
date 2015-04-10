@@ -22,8 +22,6 @@
 
 #include "gui/windows/npcselldialog.h"
 
-#include "shopitem.h"
-
 #include "being/playerinfo.h"
 
 #include "gui/windows/confirmdialog.h"

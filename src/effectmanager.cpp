@@ -87,6 +87,10 @@ bool EffectManager::triggerDirection(const int id, Being *const being,
     switch (direction)
     {
         case SpriteDirection::DOWN:
+        case SpriteDirection::DOWNRIGHT:
+        case SpriteDirection::DOWNLEFT:
+        case SpriteDirection::DEFAULT:
+        case SpriteDirection::INVALID:
         default:
             rotation = 0;
             break;
@@ -94,6 +98,8 @@ bool EffectManager::triggerDirection(const int id, Being *const being,
             rotation = 90;
             break;
         case SpriteDirection::UP:
+        case SpriteDirection::UPRIGHT:
+        case SpriteDirection::UPLEFT:
             rotation = 180;
             break;
         case SpriteDirection::RIGHT:

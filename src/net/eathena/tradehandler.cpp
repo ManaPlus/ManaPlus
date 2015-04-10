@@ -37,8 +37,6 @@
 
 #include "resources/notifytypes.h"
 
-#include "utils/stringutils.h"
-
 #include "debug.h"
 
 extern Net::TradeHandler *tradeHandler;

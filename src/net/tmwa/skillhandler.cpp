@@ -35,7 +35,6 @@
 #include "resources/notifytypes.h"
 
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include "debug.h"
 
