@@ -443,7 +443,6 @@
 		<Unit filename="src/dirs.cpp" />
 		<Unit filename="src/eventsmanager.cpp" />
 		<Unit filename="src/effectmanager.cpp" />
-		<Unit filename="src/dyetool/dyemain.cpp" />
 		<Unit filename="src/animationdelayload.cpp" />
 		<Unit filename="src/chatlogger.cpp" />
 		<Unit filename="src/main.cpp" />
