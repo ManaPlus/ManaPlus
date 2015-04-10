@@ -693,7 +693,9 @@ void InputManager::updateConditionMask()
 
     if (!PlayerInfo::isVending())
         mMask |= InputCondition::NOVENDING;
+#ifdef EATHENA_SUPPORT
     if (!PlayerInfo::isInRoom())
+#endif
         mMask |= InputCondition::NOROOM;
 
     if (!settings.awayMode)

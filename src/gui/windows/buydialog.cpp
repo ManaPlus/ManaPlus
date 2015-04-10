@@ -392,12 +392,14 @@ void BuyDialog::close()
         case Nick:
         case Items:
             break;
+#ifdef EATHENA_SUPPORT
         case Market:
             marketHandler->close();
             break;
         case Cash:
             cashShopHandler->close();
             break;
+#endif
         default:
             buySellHandler->close();
             break;

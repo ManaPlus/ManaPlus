@@ -2127,6 +2127,7 @@ void ChatWindow::debugMessage(const std::string &msg)
         debugChatTab->chatLog(msg, ChatMsgType::BY_SERVER);
 }
 
+#ifdef EATHENA_SUPPORT
 void ChatWindow::joinRoom(const bool isJoin)
 {
     Tab *const tab = mChatTabs->getTabByIndex(0);
@@ -2137,3 +2138,4 @@ void ChatWindow::joinRoom(const bool isJoin)
         name = _("General");
     tab->setCaption(name);
 }
+#endif

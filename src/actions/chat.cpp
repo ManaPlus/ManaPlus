@@ -380,7 +380,7 @@ impHandler(guild)
             else if (guildManager)
                 guildManager->invite(args);
 #else
-            guildHandler->invite(guild->getId(), args);
+            guildHandler->invite(args);
 #endif
         }
     }
