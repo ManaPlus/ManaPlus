@@ -18,8 +18,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2015-04-06 02:00+0300\n"
-"PO-Revision-Date: 2015-03-28 11:07+0000\n"
+"POT-Creation-Date: 2015-04-11 12:51+0300\n"
+"PO-Revision-Date: 2015-04-06 11:05+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/manaplus/"
 "language/it/)\n"
@@ -316,21 +316,21 @@ msgstr "Visibile nella mappa"
 msgid "Human"
 msgstr "Umano"
 
-#: src/being/being.cpp:575
+#: src/being/being.cpp:578
 msgid "dodge"
 msgstr "Schivato"
 
-#: src/being/being.cpp:575
+#: src/being/being.cpp:578
 msgid "miss"
 msgstr "Mancato"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being/being.cpp:1921 src/gui/windows/whoisonline.cpp:865
+#: src/being/being.cpp:1942 src/gui/windows/whoisonline.cpp:865
 msgid "A"
 msgstr "A"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being/being.cpp:1926 src/gui/windows/whoisonline.cpp:870
+#: src/being/being.cpp:1947 src/gui/windows/whoisonline.cpp:870
 msgid "I"
 msgstr "I"
 
@@ -409,42 +409,40 @@ msgstr "Job"
 
 #. TRANSLATORS: get hp message
 #: src/being/localplayer.cpp:1102
-#, fuzzy
 msgid "hp"
-msgstr "Negozio"
+msgstr ""
 
 #. TRANSLATORS: get hp message
 #: src/being/localplayer.cpp:1111
-#, fuzzy
 msgid "mana"
-msgstr "Barra Mana"
+msgstr ""
 
 #. TRANSLATORS: follow command message
-#: src/being/localplayer.cpp:2180
+#: src/being/localplayer.cpp:2183
 #, c-format
 msgid "Follow: %s"
 msgstr ""
 
 #. TRANSLATORS: follow command message
 #. TRANSLATORS: cancel follow message
-#: src/being/localplayer.cpp:2186 src/being/localplayer.cpp:2211
+#: src/being/localplayer.cpp:2189 src/being/localplayer.cpp:2214
 msgid "Follow canceled"
 msgstr "Modalità Segui cancellata"
 
 #. TRANSLATORS: imitate command message
-#: src/being/localplayer.cpp:2196
+#: src/being/localplayer.cpp:2199
 #, c-format
 msgid "Imitation: %s"
 msgstr ""
 
 #. TRANSLATORS: imitate command message
 #. TRANSLATORS: cancel follow message
-#: src/being/localplayer.cpp:2202 src/being/localplayer.cpp:2216
+#: src/being/localplayer.cpp:2205 src/being/localplayer.cpp:2219
 msgid "Imitation canceled"
 msgstr "Modalità Imitazione cancellata"
 
 #. TRANSLATORS: wait player/monster message
-#: src/being/localplayer.cpp:2566
+#: src/being/localplayer.cpp:2569
 #, c-format
 msgid "You see %s"
 msgstr ""
@@ -667,7 +665,7 @@ msgid "dyecmd srcdyestring dstfile"
 msgstr ""
 
 #. TRANSLATORS: chat tab header
-#: src/game.cpp:252 src/gui/windows/chatwindow.cpp:2137
+#: src/game.cpp:252 src/gui/windows/chatwindow.cpp:2138
 msgid "General"
 msgstr "Generale"
 
@@ -1634,7 +1632,7 @@ msgstr "Commercia"
 #. TRANSLATORS: input action name
 #. TRANSLATORS: player stat
 #: src/gui/popups/popupmenu.cpp:159 src/gui/popups/popupmenu.cpp:277
-#: src/gui/popups/popupmenu.cpp:803 src/gui/widgets/skillinfo.cpp:114
+#: src/gui/popups/popupmenu.cpp:803 src/gui/widgets/skillinfo.cpp:116
 #: src/gui/windows/botcheckerwindow.cpp:88 src/input/pages/basic.cpp:42
 #: src/net/eathena/generalhandler.cpp:401 src/net/tmwa/generalhandler.cpp:358
 msgid "Attack"
@@ -2117,7 +2115,7 @@ msgstr "Ritira tutto"
 #: src/gui/windows/inventorywindow.cpp:184
 #: src/gui/windows/inventorywindow.cpp:750 src/gui/windows/skilldialog.cpp:79
 #: src/gui/windows/skilldialog.cpp:151 src/gui/windows/skilldialog.cpp:321
-#: src/gui/windows/skilldialog.cpp:477 src/gui/windows/skilldialog.cpp:559
+#: src/gui/windows/skilldialog.cpp:485 src/gui/windows/skilldialog.cpp:567
 #: src/resources/itemtypemapdata.h:37 src/resources/itemtypemapdata.h:41
 msgid "Use"
 msgstr "Usa"
@@ -2732,7 +2730,7 @@ msgstr "Massimo"
 #. TRANSLATORS: sell dialog label
 #. TRANSLATORS: buy dialog label
 #: src/gui/widgets/selldialog.cpp:127 src/gui/widgets/selldialog.cpp:322
-#: src/gui/windows/buydialog.cpp:248 src/gui/windows/buydialog.cpp:602
+#: src/gui/windows/buydialog.cpp:248 src/gui/windows/buydialog.cpp:604
 #, c-format
 msgid "Price: %s / Total: %s"
 msgstr "Prezzo: %s / Totale: %s"
@@ -2746,59 +2744,59 @@ msgstr "Modifica"
 
 #. TRANSLATORS: skill level
 #. TRANSLATORS: skills dialog. skill level
-#: src/gui/widgets/skillinfo.cpp:100 src/gui/windows/skilldialog.cpp:473
+#: src/gui/widgets/skillinfo.cpp:102 src/gui/windows/skilldialog.cpp:481
 #, c-format
 msgid "Lvl: %d"
 msgstr "Lvl: %d"
 
 #. TRANSLATORS: skill type
-#: src/gui/widgets/skillinfo.cpp:104
+#: src/gui/widgets/skillinfo.cpp:106
 #, c-format
 msgid "Type: %s"
 msgstr ""
 
 #. TRANSLATORS: Skill type
 #. TRANSLATORS: unknown equipment page name
-#: src/gui/widgets/skillinfo.cpp:109 src/gui/windows/equipmentwindow.cpp:623
+#: src/gui/widgets/skillinfo.cpp:111 src/gui/windows/equipmentwindow.cpp:623
 msgid "Unknown"
 msgstr ""
 
 #. TRANSLATORS: Skill type
-#: src/gui/widgets/skillinfo.cpp:119
+#: src/gui/widgets/skillinfo.cpp:121
 msgid "Ground"
 msgstr ""
 
 #. TRANSLATORS: Skill type
-#: src/gui/widgets/skillinfo.cpp:124
+#: src/gui/widgets/skillinfo.cpp:126
 msgid "Self"
 msgstr ""
 
 #. TRANSLATORS: Skill type
-#: src/gui/widgets/skillinfo.cpp:129
+#: src/gui/widgets/skillinfo.cpp:131
 msgid "Unused"
 msgstr ""
 
 #. TRANSLATORS: Skill type
-#: src/gui/widgets/skillinfo.cpp:134
+#: src/gui/widgets/skillinfo.cpp:136
 msgid "Support"
 msgstr ""
 
 #. TRANSLATORS: Skill type
-#: src/gui/widgets/skillinfo.cpp:139
+#: src/gui/widgets/skillinfo.cpp:141
 msgid "Target trap"
 msgstr ""
 
 #. TRANSLATORS: Skill type
-#: src/gui/widgets/skillinfo.cpp:143
+#: src/gui/widgets/skillinfo.cpp:145
 msgid "Unknown:"
 msgstr ""
 
-#: src/gui/widgets/skillinfo.cpp:149
+#: src/gui/widgets/skillinfo.cpp:151
 #, c-format
 msgid " / Mana: -%d"
 msgstr ""
 
-#: src/gui/widgets/skillinfo.cpp:155
+#: src/gui/widgets/skillinfo.cpp:157
 #, c-format
 msgid "Range: %d"
 msgstr ""
@@ -5956,12 +5954,12 @@ msgid "Failed to send as sender or letter invalid."
 msgstr "La lettera non è valida oppure non è stato possibile inviarla."
 
 #. TRANSLATORS: sell confirmation header
-#: src/gui/windows/npcselldialog.cpp:69
+#: src/gui/windows/npcselldialog.cpp:67
 msgid "sell item"
 msgstr ""
 
 #. TRANSLATORS: sell confirmation message
-#: src/gui/windows/npcselldialog.cpp:71
+#: src/gui/windows/npcselldialog.cpp:69
 #, c-format
 msgid "Do you really want to sell %s?"
 msgstr ""
@@ -6176,7 +6174,7 @@ msgstr "Abilità impostata %d"
 msgid "Skill %d"
 msgstr "Abilità %d"
 
-#: src/gui/windows/skilldialog.cpp:478
+#: src/gui/windows/skilldialog.cpp:486
 #, c-format
 msgid "Failed skill: %s"
 msgstr ""
@@ -8379,52 +8377,52 @@ msgid "Unknown skill error: %d."
 msgstr ""
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillhandler.cpp:377 src/net/tmwa/skillhandler.cpp:223
+#: src/net/eathena/skillhandler.cpp:377 src/net/tmwa/skillhandler.cpp:222
 msgid "You have not yet reached a high enough lvl!"
 msgstr "Non hai raggiunto un Livello sufficientemente alto!"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillhandler.cpp:381 src/net/tmwa/skillhandler.cpp:227
+#: src/net/eathena/skillhandler.cpp:381 src/net/tmwa/skillhandler.cpp:226
 msgid "Insufficient HP!"
 msgstr "HP insufficienti!"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillhandler.cpp:385 src/net/tmwa/skillhandler.cpp:231
+#: src/net/eathena/skillhandler.cpp:385 src/net/tmwa/skillhandler.cpp:230
 msgid "Insufficient SP!"
 msgstr "SP Insufficienti!"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillhandler.cpp:389 src/net/tmwa/skillhandler.cpp:235
+#: src/net/eathena/skillhandler.cpp:389 src/net/tmwa/skillhandler.cpp:234
 msgid "You have no memos!"
 msgstr "Non hai nessun promemoria!"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillhandler.cpp:393 src/net/tmwa/skillhandler.cpp:239
+#: src/net/eathena/skillhandler.cpp:393 src/net/tmwa/skillhandler.cpp:238
 msgid "You cannot do that right now!"
 msgstr "Al momento non puoi farlo!"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillhandler.cpp:397 src/net/tmwa/skillhandler.cpp:243
+#: src/net/eathena/skillhandler.cpp:397 src/net/tmwa/skillhandler.cpp:242
 msgid "Seems you need more money... ;-)"
 msgstr "Sembra tu abbia bisogno di più soldi... ;-)"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillhandler.cpp:401 src/net/tmwa/skillhandler.cpp:247
+#: src/net/eathena/skillhandler.cpp:401 src/net/tmwa/skillhandler.cpp:246
 msgid "You cannot use this skill with that kind of weapon!"
 msgstr "Non puoi usare questa Abilità con questa arma!"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillhandler.cpp:406 src/net/tmwa/skillhandler.cpp:252
+#: src/net/eathena/skillhandler.cpp:406 src/net/tmwa/skillhandler.cpp:251
 msgid "You need another red gem!"
 msgstr "Hai bisogno un'altra Gemma Rossa!"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillhandler.cpp:410 src/net/tmwa/skillhandler.cpp:256
+#: src/net/eathena/skillhandler.cpp:410 src/net/tmwa/skillhandler.cpp:255
 msgid "You need another blue gem!"
 msgstr "Hai bisogno un'altra Gemma Blu!"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillhandler.cpp:414 src/net/tmwa/skillhandler.cpp:260
+#: src/net/eathena/skillhandler.cpp:414 src/net/tmwa/skillhandler.cpp:259
 msgid "You're carrying to much to do this!"
 msgstr "Stai trasportando troppo carico per compiere quest'azione!"
 
@@ -8486,52 +8484,52 @@ msgid "New password too short."
 msgstr "La nuova password è troppo corta."
 
 #. TRANSLATORS: error message
-#: src/net/tmwa/skillhandler.cpp:190
+#: src/net/tmwa/skillhandler.cpp:189
 msgid "Trade failed!"
 msgstr "Scambio non riuscito!"
 
 #. TRANSLATORS: error message
-#: src/net/tmwa/skillhandler.cpp:194
+#: src/net/tmwa/skillhandler.cpp:193
 msgid "Emote failed!"
 msgstr "Emote fallito!"
 
 #. TRANSLATORS: error message
-#: src/net/tmwa/skillhandler.cpp:198
+#: src/net/tmwa/skillhandler.cpp:197
 msgid "Sit failed!"
 msgstr "Non puoi sederti!"
 
 #. TRANSLATORS: error message
-#: src/net/tmwa/skillhandler.cpp:202
+#: src/net/tmwa/skillhandler.cpp:201
 msgid "Chat creating failed!"
 msgstr "Creazione Chat fallita!"
 
 #. TRANSLATORS: error message
-#: src/net/tmwa/skillhandler.cpp:206
+#: src/net/tmwa/skillhandler.cpp:205
 msgid "Could not join party!"
 msgstr "Non puoi aggiungerti al Party!"
 
 #. TRANSLATORS: error message
-#: src/net/tmwa/skillhandler.cpp:210
+#: src/net/tmwa/skillhandler.cpp:209
 msgid "Cannot shout!"
 msgstr "Non puoi urlare!"
 
 #. TRANSLATORS: error message
-#: src/net/tmwa/skillhandler.cpp:264
+#: src/net/tmwa/skillhandler.cpp:263
 msgid "Huh? What's that?"
 msgstr "Huh? Cos'è?"
 
 #. TRANSLATORS: error message
-#: src/net/tmwa/skillhandler.cpp:275
+#: src/net/tmwa/skillhandler.cpp:274
 msgid "Warp failed..."
 msgstr "Teletrasporto fallito..."
 
 #. TRANSLATORS: error message
-#: src/net/tmwa/skillhandler.cpp:279
+#: src/net/tmwa/skillhandler.cpp:278
 msgid "Could not steal anything..."
 msgstr "Non riesci a rubare niente..."
 
 #. TRANSLATORS: error message
-#: src/net/tmwa/skillhandler.cpp:283
+#: src/net/tmwa/skillhandler.cpp:282
 msgid "Poison had no effect..."
 msgstr "Il veleno non ha effetto..."
 
@@ -9258,9 +9256,9 @@ msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:524
-#, fuzzy, c-format
+#, c-format
 msgid "%s joined room."
-msgstr "%s e' entrato nel Party."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:528
@@ -9270,9 +9268,9 @@ msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:532
-#, fuzzy, c-format
+#, c-format
 msgid "%s kicked from room."
-msgstr "%s e' stato espulso dalla Gilda."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:536
@@ -9287,9 +9285,8 @@ msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:544
-#, fuzzy
 msgid "Room join failed. Wrong password."
-msgstr "Password errata."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:548
@@ -9298,9 +9295,8 @@ msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:552
-#, fuzzy
 msgid "Room join failed. Not enought money."
-msgstr "Non hai abbastanza denaro."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:556
