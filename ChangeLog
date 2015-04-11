@@ -1,3 +1,14 @@
+2015-04-11 New release 1.5.4.11
+fix: chat command /me.
+fix: remove from priority attack list.
+fix: compilation with code blocks.
+add: heal popup message if used heal skill (hercules).
+add: char rooms support (hercules).
+add: mute/unmute support (hercules).
+add: different skill related particle effects (hercules).
+add: variable with player name in away message.
+Variable name: 'NAME'.
+
 2015-03-28 New release 1.5.3.28
 fix: crash in setting gm flag (hercules).
 fix: timeout disconnect from login server (hercules).
