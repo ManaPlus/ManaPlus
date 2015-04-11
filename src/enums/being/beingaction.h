@@ -38,7 +38,8 @@ namespace BeingAction
         SIT,
         DEAD,
         HURT,
-        SPAWN
+        SPAWN,
+        PRESTAND
     };
 }  // namespace BeingAction
 

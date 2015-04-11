@@ -1002,6 +1002,9 @@ class Being notfinal : public ActorSprite,
         int mAttackRange;
         int mLastAttackX;
         int mLastAttackY;
+
+        int mPreStandTime;
+
         Gender::Type mGender;
         BeingAction::Action mAction;
         uint16_t mSubType;      /**< Subtype (graphical view, basically) */

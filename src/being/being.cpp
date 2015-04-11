@@ -160,6 +160,7 @@ Being::Being(const int id,
     mAttackRange(1),
     mLastAttackX(0),
     mLastAttackY(0),
+    mPreStandTime(0),
     mGender(Gender::UNSPECIFIED),
     mAction(BeingAction::STAND),
     mSubType(0xFFFF),
@@ -1434,7 +1435,8 @@ void Being::nextTile()
 {
     if (mPath.empty())
     {
-        setAction(BeingAction::STAND, 0);
+        mAction = BeingAction::PRESTAND;
+        mPreStandTime = tick_time;
         return;
     }
 
@@ -1534,6 +1536,13 @@ void Being::logic()
             if (this == localPlayer && curFrame >= frameCount)
                 nextTile();
 
+            break;
+        }
+
+        case BeingAction::PRESTAND:
+        {
+            if (get_elapsed_time(mPreStandTime) > 100)
+                setAction(BeingAction::STAND, 0);
             break;
         }
     }
