@@ -1541,7 +1541,7 @@ void Being::logic()
 
         case BeingAction::PRESTAND:
         {
-            if (get_elapsed_time(mPreStandTime) > 100)
+            if (get_elapsed_time1(mPreStandTime) > 10)
                 setAction(BeingAction::STAND, 0);
             break;
         }
