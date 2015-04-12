@@ -885,12 +885,15 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
         // Set these after the gender, as the sprites may be gender-specific
         setSprite(dstBeing, SPRITE_HAIR_COLOR, hairStyle * -1,
             ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
-        setSprite(dstBeing, SPRITE_WEAPON, headBottom);
-        setSprite(dstBeing, SPRITE_HEAD_BOTTOM, headMid);
-        setSprite(dstBeing, SPRITE_CLOTHES_COLOR, headTop);
-        setSprite(dstBeing, SPRITE_HAIR, shoes);
-        setSprite(dstBeing, SPRITE_SHOES, gloves);
-        setSprite(dstBeing, SPRITE_BODY, weapon, "", 1, true);
+        if (!serverFeatures->haveMove3())
+        {
+            setSprite(dstBeing, SPRITE_WEAPON, headBottom);
+            setSprite(dstBeing, SPRITE_HEAD_BOTTOM, headMid);
+            setSprite(dstBeing, SPRITE_CLOTHES_COLOR, headTop);
+            setSprite(dstBeing, SPRITE_HAIR, shoes);
+            setSprite(dstBeing, SPRITE_SHOES, gloves);
+            setSprite(dstBeing, SPRITE_BODY, weapon, "", 1, true);
+        }
 //        if (!mHideShield)
 //            setSprite(dstBeing, SPRITE_FLOOR, shield);
     }
