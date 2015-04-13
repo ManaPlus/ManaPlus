@@ -470,6 +470,11 @@ void ChatHandler::processFormatMessageNumber(Net::MessageIn &msg)
 {
     int msgId = msg.readInt16("msg id");
     int value = msg.readInt32("value");
+    if (msgId == 1862)
+    {
+        NotifyManager::notify(NotifyTypes::USE_ITEM_WAIT, value);
+        return;
+    }
     // +++ here need load message from configuration file
     const std::string chatMsg = strprintf(
         "Message #%d, value: %d", msgId, value);

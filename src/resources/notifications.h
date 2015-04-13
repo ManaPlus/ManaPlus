@@ -563,6 +563,10 @@ namespace NotifyManager
             // TRANSLATORS: notification message
             N_("Room join failed. Wrong race."),
             NotifyFlags::EMPTY},
+        {"chat room error race",
+            // TRANSLATORS: notification message
+            N_("Left %d seconds until you can use item."),
+            NotifyFlags::INT},
     };
 }  // namespace NotifyManager
 #endif  // RESOURCES_NOTIFICATIONS_H

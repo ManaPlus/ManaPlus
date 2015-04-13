@@ -159,6 +159,7 @@ namespace NotifyTypes
         ROOM_ERROR_LOW_LEVEL,
         ROOM_ERROR_HIGH_LEVEL,
         ROOM_ERROR_RACE,
+        USE_ITEM_WAIT,
 
         TYPE_END
     };
