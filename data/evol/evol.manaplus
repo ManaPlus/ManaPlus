@@ -6,6 +6,7 @@
     <option name="screenshots" value="EvolOnline"/>
     <option name="loginMusic" value="Artis - The Adventure Begins.ogg"/>
     <option name="onlineServerList" value="http://www.evolonline.org/serverlist.xml"/>
+    <option name="onlineServerList2" value="http://evolonline.org/serverlist.xml"/>
     <option name="onlineServerFile" value="evol.xml"/>
     <option name="defaultServer" value="world.evolonline.org"/>
     <option name="defaultPort" value="6901"/>
