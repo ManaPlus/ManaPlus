@@ -1253,7 +1253,6 @@ void BeingHandler::processBeingMove2(Net::MessageIn &msg)
         return;
     }
 
-    dstBeing->setAction(BeingAction::STAND, 0);
     dstBeing->setTileCoords(srcX, srcY);
     if (localPlayer)
         localPlayer->followMoveTo(dstBeing, srcX, srcY, dstX, dstY);
