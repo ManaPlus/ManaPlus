@@ -1437,8 +1437,8 @@ int Client::gameExec()
                     BLOCK_START("Client::gameExec "
                         "STATE_CHANGEPASSWORD_ATTEMPT")
                     logger->log1("State: CHANGE PASSWORD ATTEMPT");
-                    loginHandler->changePassword(loginData.username,
-                        loginData.password, loginData.newPassword);
+                    loginHandler->changePassword(loginData.password,
+                        loginData.newPassword);
                     BLOCK_END("Client::gameExec STATE_CHANGEPASSWORD_ATTEMPT")
                     break;
 

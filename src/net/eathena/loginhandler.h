@@ -50,8 +50,7 @@ class LoginHandler final : public MessageHandler, public Ea::LoginHandler
         unsigned int getMaxPasswordLength() const override final A_WARN_UNUSED
         { return 24; }
 
-        void changePassword(const std::string &restrict username,
-                            const std::string &restrict oldPassword,
+        void changePassword(const std::string &restrict oldPassword,
                             const std::string &restrict newPassword)
                             const override final;
 
@@ -71,6 +70,8 @@ class LoginHandler final : public MessageHandler, public Ea::LoginHandler
         static void processServerVersion(Net::MessageIn &msg);
 
         static void processCondingKey(Net::MessageIn &msg);
+
+        static void processCharPasswordResponse(Net::MessageIn &msg);
 
     private:
         void sendLoginRegister(const std::string &restrict username,

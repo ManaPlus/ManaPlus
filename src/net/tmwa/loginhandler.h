@@ -52,8 +52,7 @@ class LoginHandler final : public MessageHandler, public Ea::LoginHandler
         unsigned int getMaxPasswordLength() const override final A_WARN_UNUSED
         { return 24; }
 
-        void changePassword(const std::string &restrict username,
-                            const std::string &restrict oldPassword,
+        void changePassword(const std::string &restrict oldPassword,
                             const std::string &restrict newPassword)
                             const override final;
 

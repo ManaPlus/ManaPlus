@@ -47,6 +47,7 @@
 #define SMSG_CHAR_RENAME             0x0290
 #define SMSG_CHAR_CHANGE_SLOT        0x08d5
 #define SMSG_CHAR_CAPTCHA_NOT_SUPPORTED 0x07e9
+#define SMSG_CHAR_PASSWORD_RESPONSE  0x0062
 
 #define SMSG_CHAR_CREATE_FAILED      0x006e
 #define SMSG_CHAR_DELETE_SUCCEEDED   0x006f
@@ -484,7 +485,7 @@
 #define CMSG_LOGIN_REGISTER2         0x027c
 #define CMSG_NAME_REQUEST            0x088a
 
-// Custom change password packet
+#define CMSG_CHAR_PASSWORD_CHANGE    0x0061
 #define CMSG_CHAR_SERVER_CONNECT     0x0065
 #define CMSG_CHAR_SELECT             0x0066
 #define CMSG_CHAR_CREATE             0x0970

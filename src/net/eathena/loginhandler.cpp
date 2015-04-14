@@ -56,6 +56,7 @@ LoginHandler::LoginHandler() :
         SMSG_SERVER_VERSION_RESPONSE,
         SMSG_UPDATE_HOST,
         SMSG_LOGIN_CODING_KEY,
+        SMSG_CHAR_PASSWORD_RESPONSE,
         0
     };
     handledMessages = _messages;
@@ -94,6 +95,10 @@ void LoginHandler::handleMessage(Net::MessageIn &msg)
             processCondingKey(msg);
             break;
 
+        case SMSG_CHAR_PASSWORD_RESPONSE:
+            processCharPasswordResponse(msg);
+            break;
+
         default:
             break;
     }
@@ -130,13 +135,12 @@ void LoginHandler::disconnect()
         mNetwork->disconnect();
 }
 
-void LoginHandler::changePassword(const std::string &restrict username
-                                  A_UNUSED,
-                                  const std::string &restrict
-                                  oldPassword A_UNUSED,
-                                  const std::string &restrict
-                                  newPassword A_UNUSED) const
+void LoginHandler::changePassword(const std::string &restrict oldPassword,
+                                  const std::string &restrict newPassword) const
 {
+    createOutPacket(CMSG_CHAR_PASSWORD_CHANGE);
+    outMsg.writeStringNoLog(oldPassword, 24, "old password");
+    outMsg.writeStringNoLog(newPassword, 24, "new password");
 }
 
 void LoginHandler::sendLoginRegister(const std::string &restrict username,
@@ -294,6 +298,42 @@ void LoginHandler::ping() const
     outMsg.writeInt32(0, "unused");
     outMsg.writeInt32(0, "unused");
     outMsg.writeInt32(0, "unused");
+}
+
+void LoginHandler::processCharPasswordResponse(Net::MessageIn &msg)
+{
+    // 0: acc not found, 1: success, 2: password mismatch, 3: pass too short
+    const uint8_t errMsg = msg.readUInt8("result code");
+    // Successful pass change
+    if (errMsg == 1)
+    {
+        client->setState(STATE_CHANGEPASSWORD_SUCCESS);
+    }
+    // pass change failed
+    else
+    {
+        switch (errMsg)
+        {
+            case 0:
+                errorMessage =
+                    // TRANSLATORS: error message
+                    _("Account was not found. Please re-login.");
+                break;
+            case 2:
+                // TRANSLATORS: error message
+                errorMessage = _("Old password incorrect.");
+                break;
+            case 3:
+                // TRANSLATORS: error message
+                errorMessage = _("New password too short.");
+                break;
+            default:
+                // TRANSLATORS: error message
+                errorMessage = _("Unknown error.");
+                break;
+        }
+        client->setState(STATE_ACCOUNTCHANGE_ERROR);
+    }
 }
 
 }  // namespace EAthena

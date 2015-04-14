@@ -73,8 +73,7 @@ class LoginHandler notfinal
 
         virtual void changeEmail(const std::string &email) const = 0;
 
-        virtual void changePassword(const std::string &restrict username,
-                                    const std::string &restrict oldPassword,
+        virtual void changePassword(const std::string &restrict oldPassword,
                                     const std::string &restrict newPassword)
                                     const = 0;
 

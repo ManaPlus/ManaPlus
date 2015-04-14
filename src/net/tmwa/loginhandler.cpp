@@ -128,9 +128,7 @@ void LoginHandler::disconnect()
         mNetwork->disconnect();
 }
 
-void LoginHandler::changePassword(const std::string &restrict username
-                                  A_UNUSED,
-                                  const std::string &restrict oldPassword,
+void LoginHandler::changePassword(const std::string &restrict oldPassword,
                                   const std::string &restrict newPassword)
                                   const
 {
