@@ -66,15 +66,6 @@ class KillStats final : public Window,
          */
         void update();
 
-        /**
-         * Updates jacko info
-         */
-        void updateJackoLabel();
-
-        void jackoDead(const int id);
-
-        void jackoAlive(const int id);
-
         void resetTimes();
 
         void attributeChanged(const int id,
@@ -82,8 +73,6 @@ class KillStats final : public Window,
                               const int newVal) override final;
 
     private:
-        void validateJacko();
-
         int mKillTimer;  /**< Timer for kill stats. */
         Button *mResetButton;
         Button *mTimerButton;
@@ -103,7 +92,6 @@ class KillStats final : public Window,
         Label *mExpTime15Label;
 
         Label *mLastKillExpLabel;
-        Label *mTimeBeforeJackoLabel;
 
         int mKillCounter;   /**< Session Kill counter. */
         int mExpCounter;    /**< Session Exp counter. */
@@ -121,12 +109,6 @@ class KillStats final : public Window,
         int m15minExpTime;
         int m15minExpNum;
         int m15minSpeed;
-
-        int mJackoSpawnTime;
-        int mJackoId;
-        bool mIsJackoAlive;
-        bool mIsJackoMustSpawn;
-        bool mIsJackoSpawnTimeUnknown;
 };
 
 extern KillStats *killStats;

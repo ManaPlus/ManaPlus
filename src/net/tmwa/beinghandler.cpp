@@ -954,9 +954,6 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
             BLOCK_END("BeingHandler::processBeingVisibleOrMove")
             return;
         }
-
-        if (job == 1022 && killStats)
-            killStats->jackoAlive(dstBeing->getId());
     }
     else
     {
@@ -1164,9 +1161,6 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
             BLOCK_END("BeingHandler::processBeingVisibleOrMove")
             return;
         }
-
-        if (job == 1022 && killStats)
-            killStats->jackoAlive(dstBeing->getId());
     }
     else
     {

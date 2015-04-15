@@ -92,9 +92,6 @@ KillStats::KillStats() :
         "Time for next level per %d min: %s", 15), 15, "?"))),
     // TRANSLATORS: kill stats window label
     mLastKillExpLabel(new Label(this, strprintf("%s ?", _("Last kill exp:")))),
-    mTimeBeforeJackoLabel(new Label(this, strprintf(
-        // TRANSLATORS: kill stats window label
-        "%s ?", _("Time before jacko spawn:")))),
     mKillCounter(0),
     mExpCounter(0),
     mKillTCounter(0),
@@ -107,12 +104,7 @@ KillStats::KillStats() :
     m5minSpeed(0),
     m15minExpTime(0),
     m15minExpNum(0),
-    m15minSpeed(0),
-    mJackoSpawnTime(0),
-    mJackoId(0),
-    mIsJackoAlive(false),
-    mIsJackoMustSpawn(true),
-    mIsJackoSpawnTimeUnknown(true)
+    m15minSpeed(0)
 {
     setWindowName("Kill stats");
     setCloseButton(true);
@@ -152,16 +144,15 @@ KillStats::KillStats() :
     place(0, 6, mLine7, 6).setPadding(0);
 
     place(0, 7, mLastKillExpLabel, 6).setPadding(0);
-    place(0, 8, mTimeBeforeJackoLabel, 6).setPadding(0);
-    place(0, 9, mExpSpeed1Label, 6).setPadding(0);
-    place(0, 10, mExpTime1Label, 6).setPadding(0);
-    place(0, 11, mExpSpeed5Label, 6).setPadding(0);
-    place(0, 12, mExpTime5Label, 6).setPadding(0);
-    place(0, 13, mExpSpeed15Label, 6).setPadding(0);
-    place(0, 14, mExpTime15Label, 6).setPadding(0);
+    place(0, 8, mExpSpeed1Label, 6).setPadding(0);
+    place(0, 9, mExpTime1Label, 6).setPadding(0);
+    place(0, 10, mExpSpeed5Label, 6).setPadding(0);
+    place(0, 11, mExpTime5Label, 6).setPadding(0);
+    place(0, 12, mExpSpeed15Label, 6).setPadding(0);
+    place(0, 13, mExpTime15Label, 6).setPadding(0);
 
-    place(5, 13, mTimerButton).setPadding(0);
-    place(5, 14, mResetButton).setPadding(0);
+    place(5, 12, mTimerButton).setPadding(0);
+    place(5, 13, mResetButton).setPadding(0);
 
     loadWindowState();
     enableVisibleSound(true);
@@ -344,7 +335,6 @@ void KillStats::recalcStats()
         m15minExpTime = curTime;
         m15minExpNum = newExp;
     }
-    validateJacko();
     BLOCK_END("KillStats::recalcStats")
 }
 
@@ -412,96 +402,7 @@ void KillStats::update()
             _("  Time for next level: %s"), "?"));
     }
 
-    validateJacko();
-    updateJackoLabel();
     BLOCK_END("KillStats::update")
-}
-
-void KillStats::updateJackoLabel()
-{
-    if (mIsJackoAlive)
-    {
-        mTimeBeforeJackoLabel->setCaption(strprintf("%s jacko alive",
-            // TRANSLATORS: kill stats window label
-            _("Time before jacko spawn:")));
-    }
-    else if (mIsJackoSpawnTimeUnknown && mJackoSpawnTime != 0)
-    {
-        // TRANSLATORS: kill stats window label
-        mTimeBeforeJackoLabel->setCaption(strprintf(
-            // TRANSLATORS: kill stats window label
-            _("%s %d?"), _("Time before jacko spawn:"),
-            mJackoSpawnTime - cur_time));
-    }
-    else if (mIsJackoMustSpawn)
-    {
-        mTimeBeforeJackoLabel->setCaption(strprintf("%s %s",
-            // TRANSLATORS: kill stats window label
-            _("Time before jacko spawn:"), _("jacko spawning")));
-    }
-    else
-    {
-        mTimeBeforeJackoLabel->setCaption(strprintf("%s %d",
-            // TRANSLATORS: kill stats window label
-            _("Time before jacko spawn:"), mJackoSpawnTime - cur_time));
-    }
-}
-
-void KillStats::jackoDead(const int id)
-{
-    if (id == mJackoId && mIsJackoAlive)
-    {
-        mIsJackoAlive = false;
-        mJackoSpawnTime =  cur_time + 60*4;
-        mIsJackoSpawnTimeUnknown = false;
-        updateJackoLabel();
-    }
-}
-
-void KillStats::jackoAlive(const int id)
-{
-    if (!mIsJackoAlive)
-    {
-        mJackoId = id;
-        mIsJackoAlive = true;
-        mIsJackoMustSpawn = false;
-        mJackoSpawnTime = 0;
-        mIsJackoSpawnTimeUnknown = false;
-        updateJackoLabel();
-    }
-}
-
-void KillStats::validateJacko()
-{
-    if (!actorManager || !localPlayer)
-        return;
-
-    const Map *const currentMap = Game::instance()->getCurrentMap();
-    if (currentMap)
-    {
-        if (currentMap->getProperty("_realfilename") == "018-1"
-            || currentMap->getProperty("_realfilename") == "maps/018-1.tmx")
-        {
-            if (localPlayer->getTileX() >= 167
-                && localPlayer->getTileX() <= 175
-                && localPlayer->getTileY() >= 21
-                && localPlayer->getTileY() <= 46)
-            {
-                const Being *const dstBeing
-                    = actorManager->findBeingByName(
-                    "Jack O", ActorType::Monster);
-                if (mIsJackoAlive && !dstBeing)
-                {
-                    mIsJackoAlive = false;
-                    mJackoSpawnTime =  cur_time + 60*4;
-                    mIsJackoSpawnTimeUnknown = true;
-                }
-            }
-        }
-
-        if (!mIsJackoAlive && cur_time > mJackoSpawnTime + 15)
-            mIsJackoMustSpawn = true;
-    }
 }
 
 void KillStats::attributeChanged(const int id,

@@ -119,8 +119,6 @@ void BeingHandler::processBeingRemove(Net::MessageIn &msg)
             dstBeing->setAction(BeingAction::DEAD, 0);
             dstBeing->recalcSpritesOrder();
         }
-        if (dstBeing->getName() == "Jack O" && killStats)
-            killStats->jackoDead(id);
     }
     else
     {
