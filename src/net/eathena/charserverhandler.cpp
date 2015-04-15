@@ -41,6 +41,7 @@
 #include "net/eathena/loginhandler.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/network.h"
+#include "net/eathena/playerhandler.h"
 #include "net/eathena/protocol.h"
 #include "net/eathena/sprite.h"
 
@@ -452,6 +453,8 @@ void CharServerHandler::processCharMapInfo(Net::MessageIn &restrict msg)
     // Prevent the selected local player from being deleted
     localPlayer = mSelectedCharacter->dummy;
     PlayerInfo::setBackend(mSelectedCharacter->data);
+    PlayerInfo::setStatBase(Attributes::WALK_SPEED,
+        playerHandler->getDefaultWalkSpeed().x);
 
     mSelectedCharacter->dummy = nullptr;
 
