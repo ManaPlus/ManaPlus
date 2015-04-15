@@ -230,4 +230,9 @@ bool ServerFeatures::haveMute() const
     return true;
 }
 
+bool ServerFeatures::haveChangePassword() const
+{
+    return serverVersion >= 6;
+}
+
 }  // namespace EAthena

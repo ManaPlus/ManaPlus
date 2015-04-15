@@ -229,4 +229,9 @@ bool ServerFeatures::haveMute() const
     return false;
 }
 
+bool ServerFeatures::haveChangePassword() const
+{
+    return true;
+}
+
 }  // namespace TmwAthena

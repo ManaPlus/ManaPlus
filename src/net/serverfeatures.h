@@ -108,6 +108,8 @@ class ServerFeatures notfinal
         virtual bool haveExpPacket() const = 0;
 
         virtual bool haveMute() const = 0;
+
+        virtual bool haveChangePassword() const = 0;
 };
 
 }  // namespace Net
