@@ -534,6 +534,7 @@ void KillStats::attributeChanged(const int id,
                 _("Kills/Min: %s, Exp/Min: %s"), "?", "?"));
 
             resetTimes();
+            update();
             break;
         default:
             break;
