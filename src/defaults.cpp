@@ -209,7 +209,6 @@ DefaultsData* getConfigDefaults()
     AddDEF("showChatHistory", true);
     AddDEF("chatMaxLinesLimit", 40);
     AddDEF("chatColor", 0);
-    AddDEF("hideShield", true);
     AddDEF("showJob", true);
     AddDEF("updateOnlineList", true);
     AddDEF("targetOnlyReachable", true);

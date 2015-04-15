@@ -73,7 +73,6 @@ class BeingHandler notfinal : public Net::BeingHandler
         // Should we honor server "Stop Walking" packets
         static int mSpawnId;
         static bool mSync;
-        static bool mHideShield;
 };
 
 }  // namespace Ea

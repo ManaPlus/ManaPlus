@@ -215,17 +215,8 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
             msg.readUInt8("misc1 color"));
         tempPlayer->setSprite(SPRITE_WEAPON, bottomClothes,
             "", msg.readUInt8("bottom clothes color"));
-        // to avoid show error (error.xml) need remove this sprite
-        if (!config.getBoolValue("hideShield"))
-        {
-            tempPlayer->setSprite(SPRITE_FLOOR, shield, "",
-                msg.readUInt8("shield color"));
-        }
-        else
-        {
-            msg.readUInt8("shield color");
-        }
-
+        tempPlayer->setSprite(SPRITE_FLOOR, shield, "",
+            msg.readUInt8("shield color"));
         tempPlayer->setSprite(SPRITE_CLOTHES_COLOR, hat, "",
             msg.readUInt8("head option top color"));
         tempPlayer->setSprite(SPRITE_HEAD_BOTTOM, topClothes, "",
@@ -241,10 +232,7 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
         tempPlayer->setSprite(SPRITE_SHIELD, cape);
         tempPlayer->setSprite(SPRITE_HEAD_TOP, misc1);
         tempPlayer->setSprite(SPRITE_WEAPON, bottomClothes);
-        // to avoid show error (error.xml) need remove this sprite
-        if (!config.getBoolValue("hideShield"))
-            tempPlayer->setSprite(SPRITE_FLOOR, shield);
-
+        tempPlayer->setSprite(SPRITE_FLOOR, shield);
         tempPlayer->setSprite(SPRITE_CLOTHES_COLOR, hat);  // head option top
         tempPlayer->setSprite(SPRITE_HEAD_BOTTOM, topClothes);
         tempPlayer->setSprite(SPRITE_HEAD_MID, misc2);

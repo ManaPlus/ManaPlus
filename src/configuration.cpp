@@ -48,6 +48,7 @@ Configuration paths;               // XML default paths information reader
 
 const std::string unusedKeys[] =
 {
+    "hideShield",
     "AttackRange",
     "emoteshortcut0",
     "screenshotDirectory2",

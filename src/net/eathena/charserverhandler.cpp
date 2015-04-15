@@ -272,9 +272,7 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     tempPlayer->setSprite(SPRITE_SHIELD, cape);
     tempPlayer->setSprite(SPRITE_HEAD_TOP, misc1);
     tempPlayer->setSprite(SPRITE_WEAPON, bottomClothes);
-    // to avoid show error (error.xml) need remove this sprite
-    if (!config.getBoolValue("hideShield"))
-        tempPlayer->setSprite(SPRITE_FLOOR, shield);
+    tempPlayer->setSprite(SPRITE_FLOOR, shield);
 
     tempPlayer->setSprite(SPRITE_CLOTHES_COLOR, hat);
     tempPlayer->setSprite(SPRITE_HEAD_BOTTOM, topClothes);

@@ -385,10 +385,6 @@ Setup_Other::Setup_Other(const Widget2 *const widget) :
     new SetupItemCheckBox(_("Low traffic mode"), "", "lowTraffic",
         this, "lowTrafficEvent");
 
-    // TRANSLATORS: settings option
-    new SetupItemCheckBox(_("Hide shield sprite"), "", "hideShield",
-        this, "hideShieldEvent");
-
 #ifndef ANDROID
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Use FBO for screenshots (only for opengl)"),

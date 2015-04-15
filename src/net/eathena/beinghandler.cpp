@@ -531,8 +531,7 @@ void BeingHandler::processBeingChangeLookContinue(Net::MessageIn &msg,
             break;
         case 2:  // LOOK_WEAPON Weapon ID in id, Shield ID in id2
             dstBeing->setSprite(SPRITE_BODY, id, "", 1, true);
-            if (!mHideShield)
-                dstBeing->setSprite(SPRITE_FLOOR, id2);
+            dstBeing->setSprite(SPRITE_FLOOR, id2);
             localPlayer->imitateOutfit(dstBeing, SPRITE_FLOOR);
             break;
         case 3:  // LOOK_HEAD_BOTTOM
@@ -561,11 +560,8 @@ void BeingHandler::processBeingChangeLookContinue(Net::MessageIn &msg,
             dstBeing->setLook(static_cast<uint8_t>(id));
             break;
         case 8:  // eAthena LOOK_SHIELD
-            if (!mHideShield)
-            {
-                dstBeing->setSprite(SPRITE_FLOOR, id, color,
-                    static_cast<unsigned char>(id2));
-            }
+            dstBeing->setSprite(SPRITE_FLOOR, id, color,
+                static_cast<unsigned char>(id2));
             localPlayer->imitateOutfit(dstBeing, SPRITE_FLOOR);
             break;
         case 9:  // eAthena LOOK_SHOES
@@ -728,8 +724,7 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
         setSprite(dstBeing, SPRITE_HAIR, shoes);
         setSprite(dstBeing, SPRITE_SHOES, gloves);
         setSprite(dstBeing, SPRITE_BODY, weapon, "", 1, true);
-//        if (!mHideShield)
-//            setSprite(dstBeing, SPRITE_FLOOR, shield);
+//        setSprite(dstBeing, SPRITE_FLOOR, shield);
     }
     else if (dstBeing->getType() == ActorType::Npc
              && serverFeatures->haveNpcGender())
@@ -894,8 +889,7 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
             setSprite(dstBeing, SPRITE_SHOES, gloves);
             setSprite(dstBeing, SPRITE_BODY, weapon, "", 1, true);
         }
-//        if (!mHideShield)
-//            setSprite(dstBeing, SPRITE_FLOOR, shield);
+//        setSprite(dstBeing, SPRITE_FLOOR, shield);
     }
     else if (dstBeing->getType() == ActorType::Npc
              && serverFeatures->haveNpcGender())
@@ -1062,8 +1056,7 @@ void BeingHandler::processBeingSpawn(Net::MessageIn &msg)
         setSprite(dstBeing, SPRITE_HAIR, shoes);
         setSprite(dstBeing, SPRITE_SHOES, gloves);
         setSprite(dstBeing, SPRITE_BODY, weapon, "", 1, true);
-//        if (!mHideShield)
-//            setSprite(dstBeing, SPRITE_FLOOR, shield);
+//        setSprite(dstBeing, SPRITE_FLOOR, shield);
     }
     else if (dstBeing->getType() == ActorType::Npc
              && serverFeatures->haveNpcGender())

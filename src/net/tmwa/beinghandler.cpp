@@ -342,8 +342,7 @@ void BeingHandler::processBeingChangeLookContinue(Net::MessageIn &msg,
         }
         case 2:     // Weapon ID in id, Shield ID in id2
             dstBeing->setSprite(SPRITE_BODY, id, "", 1, true);
-            if (!mHideShield)
-                dstBeing->setSprite(SPRITE_FLOOR, id2);
+            dstBeing->setSprite(SPRITE_FLOOR, id2);
             localPlayer->imitateOutfit(dstBeing, SPRITE_FLOOR);
             break;
         case 3:     // Change lower headgear for eAthena, pants for us
@@ -369,11 +368,8 @@ void BeingHandler::processBeingChangeLookContinue(Net::MessageIn &msg,
             // ignoring it
             break;
         case 8:     // eAthena LOOK_SHIELD
-            if (!mHideShield)
-            {
-                dstBeing->setSprite(SPRITE_FLOOR, id, color,
-                    static_cast<unsigned char>(id2));
-            }
+            dstBeing->setSprite(SPRITE_FLOOR, id, color,
+                static_cast<unsigned char>(id2));
             localPlayer->imitateOutfit(dstBeing, SPRITE_FLOOR);
             break;
         case 9:     // eAthena LOOK_SHOES
@@ -521,8 +517,7 @@ void BeingHandler::processPlayerUpdate1(Net::MessageIn &msg)
     {
         // Set these after the gender, as the sprites may be gender-specific
         dstBeing->updateSprite(SPRITE_BODY, weapon, "", 1, true);
-        if (!mHideShield)
-            dstBeing->updateSprite(SPRITE_FLOOR, shield);
+        dstBeing->updateSprite(SPRITE_FLOOR, shield);
         if (serverFeatures->haveItemColors())
         {
             dstBeing->updateSprite(SPRITE_WEAPON, headBottom,
@@ -673,8 +668,7 @@ void BeingHandler::processPlayerUpdate2(Net::MessageIn &msg)
     {
         // Set these after the gender, as the sprites may be gender-specific
         dstBeing->updateSprite(SPRITE_BODY, weapon, "", 1, true);
-        if (!mHideShield)
-            dstBeing->updateSprite(SPRITE_FLOOR, shield);
+        dstBeing->updateSprite(SPRITE_FLOOR, shield);
         if (serverFeatures->haveItemColors())
         {
             dstBeing->updateSprite(SPRITE_WEAPON, headBottom,
@@ -825,8 +819,7 @@ void BeingHandler::processPlayerMove(Net::MessageIn &msg)
     {
         // Set these after the gender, as the sprites may be gender-specific
         dstBeing->updateSprite(SPRITE_BODY, weapon, "", 1, true);
-        if (!mHideShield)
-            dstBeing->updateSprite(SPRITE_FLOOR, shield);
+        dstBeing->updateSprite(SPRITE_FLOOR, shield);
         if (serverFeatures->haveItemColors())
         {
             dstBeing->updateSprite(SPRITE_WEAPON, headBottom,
@@ -1068,8 +1061,7 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
         setSprite(dstBeing, SPRITE_HAIR, shoes);
         setSprite(dstBeing, SPRITE_SHOES, gloves);
         setSprite(dstBeing, SPRITE_BODY, weapon, "", 1, true);
-        if (!mHideShield)
-            setSprite(dstBeing, SPRITE_FLOOR, shield);
+        setSprite(dstBeing, SPRITE_FLOOR, shield);
     }
     else if (dstBeing->getType() == ActorType::Npc
              && serverFeatures->haveNpcGender())
@@ -1273,8 +1265,7 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
         setSprite(dstBeing, SPRITE_HAIR, shoes);
         setSprite(dstBeing, SPRITE_SHOES, gloves);
         setSprite(dstBeing, SPRITE_BODY, weapon, "", 1, true);
-        if (!mHideShield)
-            setSprite(dstBeing, SPRITE_FLOOR, shield);
+        setSprite(dstBeing, SPRITE_FLOOR, shield);
     }
     else if (dstBeing->getType() == ActorType::Npc
              && serverFeatures->haveNpcGender())

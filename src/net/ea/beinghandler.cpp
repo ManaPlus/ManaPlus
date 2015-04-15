@@ -48,13 +48,11 @@ namespace Ea
 {
 int BeingHandler::mSpawnId = 0;
 bool BeingHandler::mSync = false;
-bool BeingHandler::mHideShield = false;
 
 BeingHandler::BeingHandler(const bool enableSync)
 {
     mSync = enableSync;
     mSpawnId = 0;
-    mHideShield = config.getBoolValue("hideShield");
 }
 
 Being *BeingHandler::createBeing(const int id, const int16_t job)
