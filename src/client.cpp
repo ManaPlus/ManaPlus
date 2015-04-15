@@ -611,6 +611,9 @@ void Client::gameClear()
     if (chatHandler)
         chatHandler->clear();
 
+    if (charServerHandler)
+        charServerHandler->clear();
+
     delete2(ipc);
 
 #ifdef USE_MUMBLE
@@ -958,6 +961,11 @@ int Client::gameExec()
                     UpdaterWindow::unloadMods(settings.oldUpdates);
                 if (!settings.options.skipUpdate)
                     UpdaterWindow::unloadMods(settings.oldUpdates + "/fix/");
+            }
+            else if (mOldState == STATE_CHAR_SELECT)
+            {
+                if (mState != STATE_CHANGEPASSWORD)
+                    charServerHandler->clear();
             }
 
             mOldState = mState;

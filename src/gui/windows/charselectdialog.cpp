@@ -181,7 +181,7 @@ CharSelectDialog::CharSelectDialog(LoginData *const data) :
 
 CharSelectDialog::~CharSelectDialog()
 {
-    charServerHandler->clear();
+    //charServerHandler->clear();
 }
 
 void CharSelectDialog::postInit()
