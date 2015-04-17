@@ -21,6 +21,8 @@
 #ifndef LISTENERS_PLAYERLISTENER_H
 #define LISTENERS_PLAYERLISTENER_H
 
+#include "enums/being/actortype.h"
+
 #include "listeners/actionlistener.h"
 
 #include "localconsts.h"
@@ -42,13 +44,13 @@ class PlayerListener final : public ActionListener
         void setDialog(TextDialog *const dialog)
         { mDialog = dialog; }
 
-        void setType(const int type)
+        void setType(const ActorType::Type type)
         { mType = type; }
 
     private:
         std::string mNick;
         TextDialog *mDialog;
-        int mType;
+        ActorType::Type  mType;
 };
 
 #endif  // LISTENERS_PLAYERLISTENER_H

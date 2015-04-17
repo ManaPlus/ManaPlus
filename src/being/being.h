@@ -755,7 +755,7 @@ class Being notfinal : public ActorSprite,
 
         static void saveComment(const std::string &restrict name,
                                 const std::string &restrict comment,
-                                const int type);
+                                const ActorType::Type &restrict type);
 
         bool isAdvanced() const A_WARN_UNUSED
         { return mAdvanced; }

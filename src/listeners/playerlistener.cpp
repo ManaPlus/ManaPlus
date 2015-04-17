@@ -32,7 +32,7 @@ PlayerListener::PlayerListener() :
     ActionListener(),
     mNick(),
     mDialog(nullptr),
-    mType(static_cast<int>(ActorType::Unknown))
+    mType(ActorType::Unknown)
 {
 }
 

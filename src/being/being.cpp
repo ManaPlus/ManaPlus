@@ -3084,7 +3084,8 @@ std::string Being::loadComment(const std::string &name,
 }
 
 void Being::saveComment(const std::string &restrict name,
-                        const std::string &restrict comment, const int type)
+                        const std::string &restrict comment,
+                        const ActorType::Type &restrict type)
 {
     std::string dir;
     switch (type)

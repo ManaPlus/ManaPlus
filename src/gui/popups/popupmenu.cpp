@@ -112,7 +112,7 @@ PopupMenu::PopupMenu() :
     mButton(nullptr),
     mNick(),
     mTextField(nullptr),
-    mType(static_cast<int>(ActorType::Unknown)),
+    mType(ActorType::Unknown),
     mX(0),
     mY(0)
 {
@@ -122,7 +122,7 @@ PopupMenu::PopupMenu() :
     mRenameListener.setDialog(nullptr);
     mPlayerListener.setNick("");
     mPlayerListener.setDialog(nullptr);
-    mPlayerListener.setType(static_cast<int>(ActorType::Unknown));
+    mPlayerListener.setType(ActorType::Unknown);
     mScrollArea = new ScrollArea(this, mBrowserBox, false);
     mScrollArea->setVerticalScrollPolicy(ScrollArea::SHOW_AUTO);
 }
@@ -139,7 +139,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
 
     mBeingId = being->getId();
     mNick = being->getName();
-    mType = static_cast<int>(being->getType());
+    mType = being->getType();
     mBrowserBox->clearRows();
     mX = x;
     mY = y;
@@ -451,7 +451,7 @@ void PopupMenu::showPlayerPopup(const std::string &nick)
     setMousePos();
     mNick = nick;
     mBeingId = 0;
-    mType = static_cast<int>(ActorType::Player);
+    mType = ActorType::Player;
     mBrowserBox->clearRows();
 
     const std::string &name = mNick;
@@ -554,7 +554,7 @@ void PopupMenu::showPopup(const int x, const int y,
     mX = x;
     mY = y;
     mFloorItemId = floorItem->getId();
-    mType = static_cast<int>(ActorType::FloorItem);
+    mType = ActorType::FloorItem;
     mBrowserBox->clearRows();
     const std::string name = floorItem->getName();
     mNick = name;
@@ -794,7 +794,7 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
         {
             mBeingId = being->getId();
             mNick = being->getName();
-            mType = static_cast<int>(being->getType());
+            mType = being->getType();
 
             // TRANSLATORS: popup menu item
             // TRANSLATORS: trade with player
@@ -862,7 +862,7 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
         else
         {
             mNick = name;
-            mType = static_cast<int>(ActorType::Player);
+            mType = ActorType::Player;
             addPlayerRelation(name);
             mBrowserBox->addRow("##3---");
             addFollow();
@@ -930,7 +930,7 @@ void PopupMenu::showChangePos(const int x, const int y)
         mItem = nullptr;
         mMapItem = nullptr;
         mNick.clear();
-        mType = static_cast<int>(ActorType::Unknown);
+        mType = ActorType::Unknown;
         mX = 0;
         mY = 0;
         setVisible(false);
@@ -1546,7 +1546,7 @@ void PopupMenu::handleLink(const std::string &link,
         replaceAll(cmd, "'FLOORID'", toString(mFloorItemId));
         replaceAll(cmd, "'ITEMID'", toString(mItemId));
         replaceAll(cmd, "'ITEMCOLOR'", toString(mItemColor));
-        replaceAll(cmd, "'BEINGTYPEID'", toString(mType));
+        replaceAll(cmd, "'BEINGTYPEID'", toString(static_cast<int>(mType)));
         replaceAll(cmd, "'PLAYER'", localPlayer->getName());
         if (mItem)
             replaceAll(cmd, "'INVINDEX'", toString(mItem->getInvIndex()));
@@ -1590,7 +1590,7 @@ void PopupMenu::handleLink(const std::string &link,
     mButton = nullptr;
     mNick.clear();
     mTextField = nullptr;
-    mType = static_cast<int>(ActorType::Unknown);
+    mType = ActorType::Unknown;
     mX = 0;
     mY = 0;
 }
@@ -1981,7 +1981,7 @@ void PopupMenu::showAttackMonsterPopup(const int x, const int y,
         return;
 
     mNick = name;
-    mType = static_cast<int>(ActorType::Monster);
+    mType = ActorType::Monster;
     mX = x;
     mY = y;
 
@@ -2059,7 +2059,7 @@ void PopupMenu::showPickupItemPopup(const int x, const int y,
         return;
 
     mNick = name;
-    mType = static_cast<int>(ActorType::FloorItem);
+    mType = ActorType::FloorItem;
     mX = x;
     mY = y;
 
