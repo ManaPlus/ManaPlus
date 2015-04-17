@@ -178,14 +178,18 @@ Being::Being(const int id,
     mSpriteHide(new int[20]),
     mSpriteDraw(new int[20]),
     mComment(),
+#ifdef EATHENA_SUPPORT
     mBuyBoard(),
     mSellBoard(),
+#endif
     mPets(),
     mOwner(nullptr),
     mSpecialParticle(nullptr),
+#ifdef EATHENA_SUPPORT
     mChat(nullptr),
     mHorseInfo(nullptr),
     mHorseSprite(nullptr),
+#endif
     mX(0),
     mY(0),
     mSortOffsetY(0),
@@ -283,7 +287,9 @@ Being::~Being()
     delete2(mText);
     delete2(mEmotionSprite);
     delete2(mAnimationEffect);
+#ifdef EATHENA_SUPPORT
     delete2(mChat);
+#endif
 
     if (mOwner)
     {
@@ -1345,8 +1351,10 @@ void Being::setAction(const BeingAction::Action &action, const int attackId)
             mEmotionSprite->play(currentAction);
         if (mAnimationEffect)
             mAnimationEffect->play(currentAction);
+#ifdef EATHENA_SUPPORT
         if (mHorseSprite)
             mHorseSprite->play(currentAction);
+#endif
         mAction = action;
     }
 
@@ -1406,8 +1414,10 @@ void Being::setDirection(const uint8_t direction)
         mEmotionSprite->setSpriteDirection(dir);
     if (mAnimationEffect)
         mAnimationEffect->setSpriteDirection(dir);
+#ifdef EATHENA_SUPPORT
     if (mHorseSprite)
         mHorseSprite->setSpriteDirection(dir);
+#endif
     recalcSpritesOrder();
 }
 
@@ -1497,8 +1507,10 @@ void Being::logic()
     const int time = tick_time * MILLISECONDS_IN_A_TICK;
     if (mEmotionSprite)
         mEmotionSprite->update(time);
+#ifdef EATHENA_SUPPORT
     if (mHorseSprite)
         mHorseSprite->update(time);
+#endif
 
     if (mAnimationEffect)
     {
@@ -2462,6 +2474,7 @@ void Being::draw(Graphics *const graphics,
     {
         const int px = getActorX() + offsetX;
         const int py = getActorY() + offsetY;
+#ifdef EATHENA_SUPPORT
         if (mHorseInfo)
         {
             AnimatedSprite *const sprite = mHorseInfo->sprite;
@@ -2472,6 +2485,7 @@ void Being::draw(Graphics *const graphics,
                     py + mHorseInfo->offsetY);
             }
         }
+#endif
         ActorSprite::draw1(graphics, px, py);
         drawSpriteAt(graphics, px, py);
     }
@@ -3596,6 +3610,7 @@ void Being::recreateItemParticles()
     }
 }
 
+#ifdef EATHENA_SUPPORT
 void Being::setChat(ChatObject *const obj)
 {
     delete mChat;
@@ -3615,6 +3630,7 @@ void Being::setBuyBoard(const std::string &text)
     mBuyBoard = text;
     updateName();
 }
+#endif
 
 void Being::enableShop(const bool b)
 {
@@ -3624,14 +3640,23 @@ void Being::enableShop(const bool b)
 
 bool Being::isBuyShopEnabled() const
 {
+#ifdef EATHENA_SUPPORT
     return mShop && (!serverFeatures->haveVending() || !mBuyBoard.empty());
+#else
+    return mShop;
+#endif
 }
 
 bool Being::isSellShopEnabled() const
 {
+#ifdef EATHENA_SUPPORT
     return mShop && (!serverFeatures->haveVending() || !mSellBoard.empty());
+#else
+    return mShop;
+#endif
 }
 
+#ifdef EATHENA_SUPPORT
 void Being::setRiding(const bool b)
 {
     if (b == mRiding)
@@ -3649,3 +3674,4 @@ void Being::setRiding(const bool b)
         mHorseSprite = nullptr;
     }
 }
+#endif

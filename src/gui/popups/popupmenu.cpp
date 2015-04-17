@@ -234,7 +234,9 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
             mBrowserBox->addRow("/navigateto 'NAME'", _("Move"));
             addPlayerMisc();
             addBuySell(being);
+#ifdef EATHENA_SUPPORT
             addChat(being);
+#endif
             break;
         }
 
@@ -266,7 +268,9 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
             // TRANSLATORS: popup menu item
             // TRANSLATORS: add comment to npc
             mBrowserBox->addRow("addcomment", _("Add comment"));
+#ifdef EATHENA_SUPPORT
             addChat(being);
+#endif
             break;
 
         case ActorType::Monster:
@@ -1407,13 +1411,13 @@ void PopupMenu::handleLink(const std::string &link,
         if (Widget::widgetExists(mWindow))
             mWindow->setSticky(true);
     }
+#ifdef EATHENA_SUPPORT
     else if (link == "join chat" && being)
     {
         const ChatObject *const chat = being->getChat();
         if (chat)
             chatHandler->joinChat(chat, "");
     }
-#ifdef EATHENA_SUPPORT
     else if (link == "fire mercenary")
     {
         mercenaryHandler->fire();
@@ -2443,6 +2447,7 @@ void PopupMenu::addParty(const std::string &nick)
     }
 }
 
+#ifdef EATHENA_SUPPORT
 void PopupMenu::addChat(const Being *const being)
 {
     if (!being)
@@ -2457,6 +2462,7 @@ void PopupMenu::addChat(const Being *const being)
         mBrowserBox->addRow("##3---");
     }
 }
+#endif
 
 void PopupMenu::addPlayerMisc()
 {

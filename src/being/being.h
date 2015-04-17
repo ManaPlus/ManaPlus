@@ -891,10 +891,24 @@ class Being notfinal : public ActorSprite,
         virtual int getLastAttackY() const
         { return mLastAttackY; }
 
+#ifdef EATHENA_SUPPORT
         void setChat(ChatObject *const obj);
 
         ChatObject *getChat() const
         { return mChat; }
+
+        void setRiding(const bool b) override final;
+
+        void setSellBoard(const std::string &text);
+
+        std::string getSellBoard() const A_WARN_UNUSED
+        { return mSellBoard; }
+
+        void setBuyBoard(const std::string &text);
+
+        std::string getBuyBoard() const A_WARN_UNUSED
+        { return mBuyBoard; }
+#endif
 
         void setKarma(const int karma)
         { mKarma = karma; }
@@ -919,18 +933,6 @@ class Being notfinal : public ActorSprite,
 
         void setAreaSize(const int areaSize)
         { mAreaSize = areaSize; }
-
-        void setSellBoard(const std::string &text);
-
-        std::string getSellBoard() const A_WARN_UNUSED
-        { return mSellBoard; }
-
-        void setBuyBoard(const std::string &text);
-
-        std::string getBuyBoard() const A_WARN_UNUSED
-        { return mBuyBoard; }
-
-        void setRiding(const bool b) override final;
 
     protected:
         /**
@@ -1050,13 +1052,17 @@ class Being notfinal : public ActorSprite,
         int *mSpriteHide;
         int *mSpriteDraw;
         std::string mComment;
+#ifdef EATHENA_SUPPORT
         std::string mBuyBoard;
         std::string mSellBoard;
+#endif
         std::vector<Being*> mPets;
         Being *mOwner;
         Particle *mSpecialParticle;
+#ifdef EATHENA_SUPPORT
         ChatObject *mChat;
         HorseInfo *mHorseInfo;
+#endif
         AnimatedSprite *mHorseSprite;
 
         int mX;             // position in tiles

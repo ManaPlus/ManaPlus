@@ -251,6 +251,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
             label3 = nullptr;
         }
 
+#ifdef EATHENA_SUPPORT
         if (!b->getBuyBoard().empty())
         {
             // TRANSLATORS: being popup label
@@ -259,6 +260,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
             label4->adjustSize();
         }
         else
+#endif
         {
             label7 = label6;
             label6 = label5;
@@ -266,6 +268,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
             label4 = nullptr;
         }
 
+#ifdef EATHENA_SUPPORT
         if (!b->getSellBoard().empty())
         {
             // TRANSLATORS: being popup label
@@ -274,6 +277,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
             label5->adjustSize();
         }
         else
+#endif
         {
             label7 = label6;
             label6 = label5;

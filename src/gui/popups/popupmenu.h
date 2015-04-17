@@ -187,7 +187,9 @@ class PopupMenu final : public Popup, public LinkHandler
 
         void addWindowMenu(Window *const window);
 
+#ifdef EATHENA_SUPPORT
         void addChat(const Being *const being);
+#endif
 
         void showGMPopup();
 
