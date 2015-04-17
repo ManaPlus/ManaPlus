@@ -247,9 +247,11 @@ Being *ActorManager::createBeing(const int id,
 
     mActors.insert(being);
     if (type == ActorType::Player
-        || type == ActorType::Npc
+#ifdef EATHENA_SUPPORT
         || type == ActorType::Mercenary
-        || type == ActorType::Pet)
+        || type == ActorType::Pet
+#endif
+        || type == ActorType::Npc)
     {
         being->updateFromCache();
         beingHandler->requestNameById(id);

@@ -236,9 +236,12 @@ Being::Being(const int id,
     setSubtype(subtype, 0);
 
     if (mType == ActorType::Player
+#ifdef EATHENA_SUPPORT
         || mType == ActorType::Mercenary
         || mType == ActorType::Pet
-        || mType == ActorType::Homunculus)
+        || mType == ActorType::Homunculus
+#endif
+    )
     {
         mShowName = config.getBoolValue("visiblenames");
     }
@@ -332,6 +335,7 @@ void Being::setSubtype(const uint16_t subtype, const uint16_t look)
             mYDiff = mInfo->getSortOffsetY();
         }
     }
+#ifdef EATHENA_SUPPORT
     if (mType == ActorType::Pet)
     {
         mInfo = PETDB::get(mSubType);
@@ -365,6 +369,7 @@ void Being::setSubtype(const uint16_t subtype, const uint16_t look)
             mYDiff = mInfo->getSortOffsetY();
         }
     }
+#endif
     else if (mType == ActorType::Npc)
     {
         mInfo = NPCDB::get(mSubType);
@@ -612,9 +617,12 @@ void Being::takeDamage(Being *const attacker,
         }
     }
     else if (mType == ActorType::Monster
+#ifdef EATHENA_SUPPORT
              || mType == ActorType::Mercenary
              || mType == ActorType::Pet
-             || mType == ActorType::Homunculus)
+             || mType == ActorType::Homunculus
+#endif
+    )
     {
         if (attacker == localPlayer)
         {
@@ -3055,9 +3063,11 @@ std::string Being::loadComment(const std::string &name,
         case ActorType::Portal:
         case ActorType::LocalPet:
         case ActorType::Avatar:
+#ifdef EATHENA_SUPPORT
         case ActorType::Mercenary:
         case ActorType::Homunculus:
         case ActorType::Pet:
+#endif
         default:
             return "";
     }

@@ -307,6 +307,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
             break;
         }
 
+#ifdef EATHENA_SUPPORT
         case ActorType::Mercenary:
             // TRANSLATORS: popup menu item
             // TRANSLATORS: Mercenary move to master
@@ -355,7 +356,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
                 mBrowserBox->addRow("##3---");
             }
             break;
-
+#endif
         case ActorType::Avatar:
         case ActorType::Unknown:
         case ActorType::FloorItem:

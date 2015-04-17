@@ -777,10 +777,12 @@ void Viewport::mouseMoved(MouseEvent &event)
     if (mHoverBeing
         && (type == ActorType::Player
         || type == ActorType::Npc
+#ifdef EATHENA_SUPPORT
         || type == ActorType::Homunculus
         || type == ActorType::Mercenary
-        || type == ActorType::LocalPet
-        || type == ActorType::Pet))
+        || type == ActorType::Pet
+#endif
+        || type == ActorType::LocalPet))
     {
         popupManager->hideTextPopup();
         if (mShowBeingPopup && beingPopup)
@@ -837,9 +839,11 @@ void Viewport::mouseMoved(MouseEvent &event)
             case ActorType::Monster:
             case ActorType::Portal:
             case ActorType::LocalPet:
+#ifdef EATHENA_SUPPORT
             case ActorType::Pet:
             case ActorType::Mercenary:
             case ActorType::Homunculus:
+#endif
                 gui->setCursorType(mHoverBeing->getHoverCursor());
                 break;
 

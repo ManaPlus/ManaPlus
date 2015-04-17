@@ -33,10 +33,12 @@ namespace ActorType
         FloorItem,
         Portal,
         LocalPet,
-        Pet,
         Avatar,
+#ifdef EATHENA_SUPPORT
+        Pet,
         Mercenary,
         Homunculus
+#endif
     };
 }  // namespace ActorType
 

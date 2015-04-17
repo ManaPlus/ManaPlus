@@ -70,12 +70,16 @@ impHandler0(targetNPC)
 
 impHandler0(targetMercenary)
 {
+#ifdef EATHENA_SUPPORT
     return setTarget(ActorType::Mercenary, true);
+#endif
 }
 
 impHandler0(targetPet)
 {
+#ifdef EATHENA_SUPPORT
     return setTarget(ActorType::Pet, true);
+#endif
 }
 
 impHandler0(contextMenu)

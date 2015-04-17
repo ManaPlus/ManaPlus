@@ -332,10 +332,12 @@ void Minimap::draw(Graphics *graphics)
                     break;
 
                 case ActorType::LocalPet:
+#ifdef EATHENA_SUPPORT
                 case ActorType::Pet:
+#endif
                     type = UserPalette::PET;
                     break;
-
+#ifdef EATHENA_SUPPORT
                 case ActorType::Mercenary:
                     type = UserPalette::MERCENARY;
                     break;
@@ -343,7 +345,7 @@ void Minimap::draw(Graphics *graphics)
                 case ActorType::Homunculus:
                     type = UserPalette::HOMUNCULUS;
                     break;
-
+#endif
                 case ActorType::Avatar:
                 case ActorType::Unknown:
                 case ActorType::Player:
