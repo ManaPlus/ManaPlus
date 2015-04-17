@@ -21,6 +21,7 @@
 
 #ifndef ENUMS_NET_AUCTIONSEARCHTYPE_H
 #define ENUMS_NET_AUCTIONSEARCHTYPE_H
+#ifdef EATHENA_SUPPORT
 
 namespace AuctionSearchType
 {
@@ -35,4 +36,5 @@ namespace AuctionSearchType
     };
 }  // namespace AuctionSearchType
 
+#endif  // EATHENA_SUPPORT
 #endif  // ENUMS_NET_AUCTIONSEARCHTYPE_H
