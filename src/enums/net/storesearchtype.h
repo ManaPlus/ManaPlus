@@ -20,6 +20,7 @@
 
 #ifndef ENUMS_NET_STORESEARCHTYPE_H
 #define ENUMS_NET_STORESEARCHTYPE_H
+#ifdef EATHENA_SUPPORT
 
 namespace StoreSearchType
 {
@@ -30,4 +31,5 @@ namespace StoreSearchType
     };
 }
 
+#endif  // EATHENA_SUPPORT
 #endif  // ENUMS_NET_STORESEARCHTYPE_H
