@@ -20,6 +20,7 @@
 
 #ifndef ENUMS_NET_BATTLEGROUNDTYPE_H
 #define ENUMS_NET_BATTLEGROUNDTYPE_H
+#ifdef EATHENA_SUPPORT
 
 namespace BattleGroundType
 {
@@ -32,4 +33,5 @@ namespace BattleGroundType
     };
 }  // namespace BattleGroundType
 
+#endif  // EATHENA_SUPPORT
 #endif  // ENUMS_NET_BATTLEGROUNDTYPE_H
