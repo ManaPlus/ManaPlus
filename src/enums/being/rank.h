@@ -20,6 +20,7 @@
 
 #ifndef ENUMS_BEING_RANK_H
 #define ENUMS_BEING_RANK_H
+#ifdef EATHENA_SUPPORT
 
 namespace Rank
 {
@@ -32,4 +33,5 @@ namespace Rank
     };
 }  // namespace Rank
 
+#endif  // EATHENA_SUPPORT
 #endif  // ENUMS_BEING_RANK_H

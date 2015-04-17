@@ -252,9 +252,11 @@ void BeingHandler::undress(Being *const being) const
 //    being->setSprite(SPRITE_BODY, 0, "", true);
 }
 
+#ifdef EATHENA_SUPPORT
 void BeingHandler::requestRanks(const Rank::Rank rank A_UNUSED) const
 {
 }
+#endif
 
 void BeingHandler::processBeingChangeLook(Net::MessageIn &msg)
 {
