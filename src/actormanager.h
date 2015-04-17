@@ -244,7 +244,9 @@ class ActorManager final: public ConfigListener
 
         void updatePlayerGuild() const;
 
+#ifdef TMWA_SUPPORT
         void parseLevels(std::string levels) const;
+#endif
 
         bool pickUpAll(const int x1, const int y1, const int x2, const int y2,
                        const bool serverBuggy = false);
@@ -319,9 +321,11 @@ class ActorManager final: public ConfigListener
         void updateEffects(const std::map<int, int> &addEffects,
                            const std::set<int> &removeEffects) const;
 
+#ifdef EATHENA_SUPPORT
         void removeRoom(const int chatId);
 
         void updateRoom(const ChatObject *const newChat);
+#endif
 
     protected:
         bool validateBeing(const Being *const aroundBeing,

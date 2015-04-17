@@ -1512,6 +1512,7 @@ void ActorManager::updatePlayerGuild() const
     }
 }
 
+#ifdef TMWA_SUPPORT
 void ActorManager::parseLevels(std::string levels) const
 {
     levels.append(", ");
@@ -1540,6 +1541,7 @@ void ActorManager::parseLevels(std::string levels) const
     }
     updatePlayerNames();
 }
+#endif
 
 void ActorManager::optionChanged(const std::string &name)
 {
@@ -1816,6 +1818,7 @@ Being *ActorManager::cloneBeing(const Being *const srcBeing,
     return dstBeing;
 }
 
+#ifdef EATHENA_SUPPORT
 void ActorManager::removeRoom(const int chatId)
 {
     for_actors
@@ -1855,3 +1858,4 @@ void ActorManager::updateRoom(const ChatObject *const newChat)
         }
     }
 }
+#endif
