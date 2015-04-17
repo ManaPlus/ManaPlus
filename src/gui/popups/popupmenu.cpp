@@ -1710,7 +1710,9 @@ void PopupMenu::showPopup(Window *const parent,
         case InventoryType::CART:
         case InventoryType::TRADE:
         case InventoryType::NPC:
+#ifdef EATHENA_SUPPORT
         case InventoryType::VENDING:
+#endif
         case InventoryType::TYPE_END:
         default:
             break;

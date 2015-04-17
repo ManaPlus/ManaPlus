@@ -32,7 +32,9 @@ namespace InventoryType
         CART,
         TRADE,
         NPC,
+#ifdef EATHENA_SUPPORT
         VENDING,
+#endif
         TYPE_END
     };
 }  // namespace InventoryType

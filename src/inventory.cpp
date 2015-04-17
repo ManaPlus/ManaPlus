@@ -291,7 +291,9 @@ std::string Inventory::getName() const
     switch (mType)
     {
         case InventoryType::INVENTORY:
+#ifdef EATHENA_SUPPORT
         case InventoryType::VENDING:
+#endif
         case InventoryType::TYPE_END:
         default:
         {

@@ -422,7 +422,9 @@ void ItemContainer::mousePressed(MouseEvent &event)
                 src = DRAGDROP_SOURCE_CART;
                 break;
             default:
+#ifdef EATHENA_SUPPORT
             case InventoryType::VENDING:
+#endif
             case InventoryType::TYPE_END:
                 break;
         }
@@ -522,7 +524,9 @@ void ItemContainer::mouseReleased(MouseEvent &event)
                 dst = DRAGDROP_SOURCE_CART;
                 break;
             default:
+#ifdef EATHENA_SUPPORT
             case InventoryType::VENDING:
+#endif
             case InventoryType::TYPE_END:
                 break;
         }
