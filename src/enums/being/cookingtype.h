@@ -20,6 +20,7 @@
 
 #ifndef ENUMS_BEING_COOKINGTYPE_H
 #define ENUMS_BEING_COOKINGTYPE_H
+#ifdef EATHENA_SUPPORT
 
 namespace CookingType
 {
@@ -34,4 +35,5 @@ namespace CookingType
     };
 }  // namespace CookingType
 
+#endif  // EATHENA_SUPPORT
 #endif  // ENUMS_BEING_COOKINGTYPE_H

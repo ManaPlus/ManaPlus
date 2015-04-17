@@ -74,8 +74,10 @@ class NpcHandler notfinal
                                 const int materialId2,
                                 const int materialId3) const  = 0;
 
+#ifdef EATHENA_SUPPORT
         virtual void cooking(const CookingType::Type type,
                              const int nameId) const = 0;
+#endif
 
         virtual void repair(const int index) const = 0;
 
