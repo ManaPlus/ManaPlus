@@ -25,6 +25,17 @@
 
 #include "localconsts.h"
 
+#define declModifier(name1) \
+    static std::string get##name1##String(); \
+    static const unsigned m##name1##Size; \
+    static const char *const m##name1##Strings[];
+
+#define declModifier2(name1) \
+    static void change##name1(const bool forward); \
+    static std::string get##name1##String(); \
+    static const unsigned m##name1##Size; \
+    static const char *const m##name1##Strings[];
+
 class GameModifiers final
 {
     public:
@@ -40,63 +51,31 @@ class GameModifiers final
                                const bool save,
                                const bool forward);
 
-        static void changeMoveType(const bool forward);
-
-        static void changeCrazyMoveType(const bool forward);
-
-        static void changeMoveToTargetType(const bool forward);
-
-        static void changeFollowMode(const bool forward);
-
-        static void changeAttackWeaponType(const bool forward);
-
-        static void changeAttackType(const bool forward);
-
-        static void changeQuickDropCounter(const bool forward);
-
-        static void changePickUpType(const bool forward);
-
-        static void changeMagicAttackType(const bool forward);
-
-        static void changePvpAttackType(const bool forward);
-
-        static void changeImitationMode(const bool forward);
-
-        static void changeGameModifiers();
+        declModifier(MoveType)
+        declModifier2(CrazyMoveType)
+        declModifier2(MoveToTargetType)
+        declModifier2(FollowMode)
+        declModifier2(AttackWeaponType)
+        declModifier2(AttackType)
+        declModifier2(QuickDropCounter)
+        declModifier2(PickUpType)
+        declModifier2(MagicAttackType)
+        declModifier2(PvpAttackType)
+        declModifier2(ImitationMode)
+        declModifier(MapDrawType)
+        declModifier(CameraMode)
+        declModifier(AwayMode);
 
         static void changeAwayMode();
 
-        static void setQuickDropCounter(const int n);
-
-        static std::string getMoveTypeString();
-
-        static std::string getCrazyMoveTypeString();
-
-        static std::string getMoveToTargetTypeString();
-
-        static std::string getFollowModeString();
-
-        static std::string getAttackWeaponTypeString();
-
-        static std::string getAttackTypeString();
-
-        static std::string getQuickDropCounterString();
-
-        static std::string getPickUpTypeString();
-
-        static std::string getMagicAttackTypeString();
-
-        static std::string getPvpAttackTypeString();
-
-        static std::string getImitationModeString();
+        static void changeMoveType(const bool forward);
 
         static std::string getGameModifiersString();
+        static void changeGameModifiers();
+        static const unsigned mGameModifiersSize;
+        static const char *const mGameModifiersStrings[];
 
-        static std::string getMapDrawTypeString();
-
-        static std::string getAwayModeString();
-
-        static std::string getCameraModeString();
+        static void setQuickDropCounter(const int n);
 
         static void resetModifiers();
 
@@ -105,5 +84,8 @@ class GameModifiers final
                                       const unsigned index,
                                       const unsigned sz) A_WARN_UNUSED;
 };
+
+#undef declModifier
+#undef declModifier2
 
 #endif  // GAMEMODIFIERS_H

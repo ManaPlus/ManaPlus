@@ -47,8 +47,8 @@
 #include "debug.h"
 
 #define addModifier(name1, name2, sz, ...) \
-    static const unsigned m##name1##Size = sz; \
-    static const char *const m##name1##Strings[] = \
+    const unsigned GameModifiers::m##name1##Size = sz; \
+    const char *const GameModifiers::m##name1##Strings[] = \
     __VA_ARGS__; \
     std::string GameModifiers::get##name1##String() \
     { \
@@ -57,8 +57,8 @@
     }
 
 #define addModifier2(name1, name2, str, sz, ...) \
-    static const unsigned m##name1##Size = sz; \
-    static const char *const m##name1##Strings[] = \
+    const unsigned GameModifiers::m##name1##Size = sz; \
+    const char *const GameModifiers::m##name1##Strings[] = \
     __VA_ARGS__; \
     void GameModifiers::change##name1(const bool forward) \
     { \
@@ -162,7 +162,7 @@ void GameModifiers::changeMoveType(const bool forward)
         &GameModifiers::getMoveTypeString, 0, false, forward);
 }
 
-static const unsigned mCrazyMoveTypeSize = 11;
+const unsigned GameModifiers::mCrazyMoveTypeSize = 11;
 
 void GameModifiers::changeCrazyMoveType(const bool forward)
 {
@@ -266,7 +266,7 @@ addModifier2(AttackType, attackType, "attackType", 4,
     N_("(?) attack")
 })
 
-const unsigned mQuickDropCounterSize = 31;
+const unsigned GameModifiers::mQuickDropCounterSize = 31;
 
 changeMethod(QuickDropCounter, quickDropCounter, "quickDropCounter")
 
