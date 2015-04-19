@@ -37,6 +37,8 @@
 
 #include "gui/widgets/tabs/chat/chattab.h"
 
+#include "listeners/gamemodifierlistener.h"
+
 #include "resources/map/map.h"
 
 #include "listeners/awaylistener.h"
@@ -125,6 +127,7 @@ void GameModifiers::changeMode(unsigned *restrict const var,
     if (save)
         config.setValue(conf, *var);
     UpdateStatusListener::distributeEvent();
+    GameModifierListener::distributeEvent();
     const std::string str = (*func)();
     if (str.size() > 4)
         debugMsg(str.substr(4));
@@ -291,6 +294,7 @@ void GameModifiers::setQuickDropCounter(const int n)
     settings.quickDropCounter = n;
     config.setValue("quickDropCounter", n);
     UpdateStatusListener::distributeEvent();
+    GameModifierListener::distributeEvent();
 }
 
 addModifier2(PickUpType, pickUpType, "pickUpType", 7,
@@ -363,11 +367,12 @@ addModifier(GameModifiers, disableGameModifiers, 2,
     N_("Game modifiers are unknown")
 })
 
-void GameModifiers::changeGameModifiers()
+void GameModifiers::changeGameModifiers(const bool forward A_UNUSED)
 {
     settings.disableGameModifiers = !settings.disableGameModifiers;
     config.setValue("disableGameModifiers", settings.disableGameModifiers);
     UpdateStatusListener::distributeEvent();
+    GameModifierListener::distributeEvent();
 }
 
 addModifier(MapDrawType, mapDrawType, 7,
@@ -390,6 +395,12 @@ addModifier(MapDrawType, mapDrawType, 7,
     N_("(?) map view")
 })
 
+void GameModifiers::changeMapDrawType(const bool forward A_UNUSED)
+{
+    if (viewport)
+        viewport->toggleMapDrawType();
+}
+
 addModifier(AwayMode, awayMode, 2,
 {
     // TRANSLATORS: away type in status bar
@@ -400,7 +411,7 @@ addModifier(AwayMode, awayMode, 2,
     N_("(?) away")
 })
 
-void GameModifiers::changeAwayMode()
+void GameModifiers::changeAwayMode(const bool forward A_UNUSED)
 {
     if (!localPlayer)
         return;
@@ -411,6 +422,7 @@ void GameModifiers::changeAwayMode()
     localPlayer->updateName();
     Game::instance()->updateFrameRate(0);
     UpdateStatusListener::distributeEvent();
+    GameModifierListener::distributeEvent();
     if (settings.awayMode)
     {
         if (chatWindow)
@@ -454,6 +466,13 @@ addModifier(CameraMode, cameraMode, 2,
     N_("(?) away")
 })
 
+
+void GameModifiers::changeCameraMode(const bool forward A_UNUSED)
+{
+    if (viewport)
+        viewport->toggleCameraMode();
+}
+
 void GameModifiers::resetModifiers()
 {
     settings.moveType = 0;
@@ -480,4 +499,5 @@ void GameModifiers::resetModifiers()
         "disableGameModifiers");
 
     UpdateStatusListener::distributeEvent();
+    GameModifierListener::distributeEvent();
 }

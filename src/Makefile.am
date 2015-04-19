@@ -192,6 +192,8 @@ manaplus_SOURCES += events/actionevent.h \
 	      listeners/widgetdeathlistener.h \
 	      events/event.h \
 	      listeners/focuslistener.h \
+	      listeners/gamemodifierlistener.cpp \
+	      listeners/gamemodifierlistener.h \
 	      listeners/guiconfiglistener.h \
 	      listeners/debugmessagelistener.cpp \
 	      listeners/debugmessagelistener.h \
@@ -381,6 +383,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/setupbuttonitem.h \
 	      gui/widgets/setupitem.cpp \
 	      gui/widgets/setupitem.h \
+	      gui/widgets/setupquickitem.cpp \
+	      gui/widgets/setupquickitem.h \
 	      gui/widgets/tabs/setuptab.cpp \
 	      gui/widgets/tabs/setuptab.h \
 	      gui/widgets/tabs/setuptabscroll.cpp \
@@ -575,6 +579,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/tabs/setup_perfomance.h \
 	      gui/widgets/tabs/setup_players.cpp \
 	      gui/widgets/tabs/setup_players.h \
+	      gui/widgets/tabs/setup_quick.cpp \
+	      gui/widgets/tabs/setup_quick.h \
 	      gui/widgets/tabs/setup_relations.cpp \
 	      gui/widgets/tabs/setup_relations.h \
 	      gui/widgets/tabs/setup_video.cpp \

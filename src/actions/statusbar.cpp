@@ -108,7 +108,7 @@ impHandler0(changeGameModifier)
 {
     if (localPlayer)
     {
-        GameModifiers::changeGameModifiers();
+        GameModifiers::changeGameModifiers(false);
         return true;
     }
     return false;
@@ -124,7 +124,7 @@ impHandler0(changeAudio)
 
 impHandler0(away)
 {
-    GameModifiers::changeAwayMode();
+    GameModifiers::changeAwayMode(true);
     if (localPlayer)
     {
         localPlayer->updateStatus();

@@ -76,12 +76,15 @@ class SetupWindow final : public Window,
         void widgetResized(const Event &event) override final;
 
     private:
-        void unloadModTab();
+        void unloadAdditionalTabs();
+
+        void unloadTab(SetupTab *page);
 
         std::list<SetupTab*> mTabs;
         std::list<Window*> mWindowsToReset;
         std::vector<Button*> mButtons;
         SetupTab *mModsTab;
+        SetupTab *mQuickTab;
         Button *mResetWindows;
         TabbedArea *mPanel;
         Label *mVersion;

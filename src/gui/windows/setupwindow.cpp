@@ -37,6 +37,7 @@
 #include "gui/widgets/tabs/setup_other.h"
 #include "gui/widgets/tabs/setup_perfomance.h"
 #include "gui/widgets/tabs/setup_players.h"
+#include "gui/widgets/tabs/setup_quick.h"
 #include "gui/widgets/tabs/setup_relations.h"
 #include "gui/widgets/tabs/setup_theme.h"
 #include "gui/widgets/tabs/setup_touch.h"
@@ -64,6 +65,7 @@ SetupWindow::SetupWindow() :
     mWindowsToReset(),
     mButtons(),
     mModsTab(nullptr),
+    mQuickTab(nullptr),
     mResetWindows(nullptr),
     mPanel(new TabbedArea(this)),
     mVersion(new Label(this, FULL_VERSION))
@@ -206,10 +208,13 @@ void SetupWindow::setInGame(const bool inGame)
 
 void SetupWindow::externalUpdate()
 {
-    unloadModTab();
+    unloadAdditionalTabs();
     mModsTab = new Setup_Mods(this);
     mTabs.push_back(mModsTab);
     mPanel->addTab(mModsTab->getName(), mModsTab);
+    mQuickTab = new Setup_Quick(this);
+    mTabs.push_back(mQuickTab);
+    mPanel->addTab(mQuickTab->getName(), mQuickTab);
     FOR_EACH (std::list<SetupTab*>::const_iterator, it, mTabs)
     {
         if (*it)
@@ -217,15 +222,21 @@ void SetupWindow::externalUpdate()
     }
 }
 
-void SetupWindow::unloadModTab()
+void SetupWindow::unloadTab(SetupTab *page)
 {
-    if (mModsTab)
+    if (page)
     {
-        mTabs.remove(mModsTab);
-        Tab *const tab = mPanel->getTab(mModsTab->getName());
-        mPanel->removeTab(tab);
-        delete2(mModsTab)
+        mTabs.remove(page);
+        mPanel->removeTab(mPanel->getTab(page->getName()));
     }
+}
+
+void SetupWindow::unloadAdditionalTabs()
+{
+    unloadTab(mModsTab);
+    unloadTab(mQuickTab);
+    delete2(mModsTab);
+    delete2(mQuickTab);
 }
 
 void SetupWindow::externalUnload()
@@ -235,7 +246,7 @@ void SetupWindow::externalUnload()
         if (*it)
             (*it)->externalUnloaded();
     }
-    unloadModTab();
+    unloadAdditionalTabs();
 }
 
 void SetupWindow::registerWindowForReset(Window *const window)

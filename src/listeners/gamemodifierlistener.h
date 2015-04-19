@@ -1,8 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2004-2009  The Mana World Development Team
- *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011-2015  The ManaPlus Developers
+ *  Copyright (C) 2014-2015  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -20,27 +18,21 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "listeners/awaylistener.h"
+#ifndef LISTENERS_GAMEMODIFIERLISTENER_H
+#define LISTENERS_GAMEMODIFIERLISTENER_H
 
-#include "gamemodifiers.h"
-#include "settings.h"
+#include "listeners/baselistener.hpp"
 
-#include "being/localplayer.h"
+#include "localconsts.h"
 
-#include "gui/windows/outfitwindow.h"
-
-#include "listeners/updatestatuslistener.h"
-
-#include "debug.h"
-
-void AwayListener::action(const ActionEvent &event)
+class GameModifierListener notfinal
 {
-    if (event.getId() == "ok" && localPlayer && settings.awayMode)
-    {
-        GameModifiers::changeAwayMode(true);
-        localPlayer->updateStatus();
-        if (outfitWindow)
-            outfitWindow->unwearAwayOutfit();
-        UpdateStatusListener::distributeEvent();
-    }
-}
+    public:
+        virtual void gameModifiersChanged() = 0;
+
+        static void distributeEvent();
+
+    defineListenerHeader(GameModifierListener)
+};
+
+#endif  // LISTENERS_GAMEMODIFIERLISTENER_H

@@ -161,7 +161,6 @@ static void initEngines()
     if (joystick)
         joystick->update();
 
-    GameModifiers::init();
     UpdateStatusListener::distributeEvent();
 }
 
@@ -175,6 +174,8 @@ static void createGuiWindows()
 
     if (emoteShortcut)
         emoteShortcut->load();
+
+    GameModifiers::init();
 
     // Create dialogs
     emoteWindow = new EmoteWindow;

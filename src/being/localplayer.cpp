@@ -1856,7 +1856,7 @@ void LocalPlayer::tryPingRequest()
 void LocalPlayer::setAway(const std::string &message) const
 {
     setAfkMessage(message);
-    GameModifiers::changeAwayMode();
+    GameModifiers::changeAwayMode(true);
     updateStatus();
 }
 

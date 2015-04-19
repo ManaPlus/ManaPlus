@@ -686,7 +686,8 @@ void SetupItemDropDown::createControls()
     mDropDown->setSelected(atoi(mValue.c_str()));
 
     mWidget = mDropDown;
-    fixFirstItemSize(mLabel);
+    if (!mText.empty())
+        fixFirstItemSize(mLabel);
     mHorizont->add(mLabel);
     mHorizont->add(mDropDown);
 
