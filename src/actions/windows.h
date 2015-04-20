@@ -53,6 +53,7 @@ namespace Actions
     decHandler(updaterWindowShow);
     decHandler(bankWindowShow);
     decHandler(cartWindowShow);
+    decHandler(quickWindowShow);
 }  // namespace Actions
 
 #undef decHandler

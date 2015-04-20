@@ -200,6 +200,12 @@ SetupActionData setupActionDataWindows[] =
         "",
     },
     {
+        // TRANSLATORS: input action name
+        N_("Quick settings window"),
+        InputAction::WINDOW_QUICK_SETTINGS,
+        "",
+    },
+    {
         // TRANSLATORS: input action label
         N_("Tabs"),
         InputAction::NO_VALUE,

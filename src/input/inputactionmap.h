@@ -4451,6 +4451,15 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputCondition::INGAME,
         "leaveroom",
         false},
+    {"keyWindowStatusBar",
+        emptyKey,
+        emptyKey,
+        Input::GRP_DEFAULT | Input::GRP_GUI,
+        &Actions::quickWindowShow,
+        InputAction::NO_VALUE, 50,
+        InputCondition::GAME | InputCondition::NOTARGET,
+        "yellowbar|quickoptions",
+        false},
 };
 
 #undef defaultAction

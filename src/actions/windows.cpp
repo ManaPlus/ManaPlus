@@ -53,6 +53,8 @@
 
 #include "gui/widgets/tabs/chat/chattab.h"
 
+#include "utils/gettext.h"
+
 #ifdef EATHENA_SUPPORT
 #include "net/serverfeatures.h"
 #endif
@@ -312,6 +314,22 @@ impHandler0(updaterWindowShow)
     else
         DialogsManager::createUpdaterWindow();
     return true;
+}
+
+impHandler0(quickWindowShow)
+{
+    if (setupWindow)
+    {
+        if (setupWindow->isWindowVisible())
+        {
+            setupWindow->doCancel();
+        }
+        setupWindow->setVisible(true);
+        setupWindow->activateTab(_("Quick"));
+        setupWindow->requestMoveToTop();
+        return true;
+    }
+    return false;
 }
 
 }  // namespace Actions

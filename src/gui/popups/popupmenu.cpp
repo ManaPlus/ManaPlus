@@ -1966,6 +1966,8 @@ void PopupMenu::showPopup(const int x, const int y, const ProgressBar *const b)
 
     mBrowserBox->addRow("##3---");
     // TRANSLATORS: popup menu item
+    mBrowserBox->addRow("/yellowbar", _("Open yellow bar settings"));
+    // TRANSLATORS: popup menu item
     mBrowserBox->addRow("reset yellow", _("Reset yellow bar"));
     mBrowserBox->addRow("##3---");
     // TRANSLATORS: popup menu item

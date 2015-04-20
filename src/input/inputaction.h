@@ -594,6 +594,7 @@ namespace InputAction
         CREATE_PUBLIC_ROOM,
         JOIN_ROOM,
         LEAVE_ROOM,
+        WINDOW_QUICK_SETTINGS,
         TOTAL
     };
 }  // namespace InputAction
