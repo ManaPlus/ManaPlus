@@ -59,6 +59,8 @@ class PlayerHandler notfinal : public Net::PlayerHandler
                      const int mod,
                      const bool notify) const override;
 
+        static const int NoStat = INT_MAX;
+
     protected:
         static void processPlayerWarp(Net::MessageIn &msg);
 

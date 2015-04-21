@@ -171,7 +171,7 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
         return;
     }
 
-    playerHandler->setStat(msg, type, value, -1, true);
+    playerHandler->setStat(msg, type, value, NoStat, true);
     BLOCK_END("PlayerHandler::processPlayerStatUpdate1")
 }
 
@@ -180,7 +180,7 @@ void PlayerHandler::processPlayerStatUpdate2(Net::MessageIn &msg)
     BLOCK_START("PlayerHandler::processPlayerStatUpdate2")
     const int type = msg.readInt16("type");
     const int value = msg.readInt32("value");
-    playerHandler->setStat(msg, type, value, -1, true);
+    playerHandler->setStat(msg, type, value, NoStat, true);
     BLOCK_END("PlayerHandler::processPlayerStatUpdate2")
 }
 
@@ -211,7 +211,7 @@ void PlayerHandler::processPlayerStatUpdate4(Net::MessageIn &msg)
         NotifyManager::notify(NotifyTypes::SKILL_RAISE_ERROR);
     }
 
-    playerHandler->setStat(msg, type, value, -1, true);
+    playerHandler->setStat(msg, type, value, NoStat, true);
     BLOCK_END("PlayerHandler::processPlayerStatUpdate4")
 }
 
@@ -221,7 +221,7 @@ void PlayerHandler::processPlayerStatUpdate6(Net::MessageIn &msg)
     const int type = msg.readInt16("type");
     const int value = msg.readUInt8("value");
     if (statusWindow)
-        playerHandler->setStat(msg, type, value, -1, true);
+        playerHandler->setStat(msg, type, value, NoStat, true);
     BLOCK_END("PlayerHandler::processPlayerStatUpdate6")
 }
 
@@ -251,7 +251,7 @@ bool PlayerHandler::canUseMagic() const
 
 #define setStatComplex(stat) \
     PlayerInfo::setStatBase(stat, base, notify); \
-    if (mod != -1) \
+    if (mod != NoStat) \
         PlayerInfo::setStatMod(stat, mod)
 
 void PlayerHandler::setStat(Net::MessageIn &msg,
