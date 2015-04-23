@@ -49,6 +49,9 @@ class ExtendedNamesModel notfinal : public ExtendedListModel
         size_t size() A_WARN_UNUSED
         { return mNames.size(); }
 
+        void add(const std::string &str)
+        { mNames.push_back(str); }
+
         void clear();
 
     protected:

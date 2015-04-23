@@ -595,6 +595,7 @@ namespace InputAction
         JOIN_ROOM,
         LEAVE_ROOM,
         WINDOW_QUICK_SETTINGS,
+        WINDOW_MAIL,
         TOTAL
     };
 }  // namespace InputAction

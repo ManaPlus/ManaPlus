@@ -44,6 +44,7 @@
 #include "gui/windows/helpwindow.h"
 #include "gui/windows/inventorywindow.h"
 #include "gui/windows/killstats.h"
+#include "gui/windows/mailwindow.h"
 #include "gui/windows/minimap.h"
 #include "gui/windows/outfitwindow.h"
 #include "gui/windows/setupwindow.h"
@@ -330,6 +331,12 @@ impHandler0(quickWindowShow)
         return true;
     }
     return false;
+}
+
+impHandler0(mailWindowShow)
+{
+    showHideWindow(mailWindow);
+    return true;
 }
 
 }  // namespace Actions

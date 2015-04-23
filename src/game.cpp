@@ -64,6 +64,7 @@
 
 #ifdef EATHENA_SUPPORT
 #include "gui/windows/bankwindow.h"
+#include "gui/windows/mailwindow.h"
 #endif
 #include "gui/windows/botcheckerwindow.h"
 #include "gui/windows/chatwindow.h"
@@ -240,6 +241,7 @@ static void createGuiWindows()
 
 #ifdef EATHENA_SUPPORT
     bankWindow = new BankWindow;
+    mailWindow = new MailWindow;
 #endif
     botCheckerWindow = new BotCheckerWindow;
     whoIsOnline = new WhoIsOnline;
@@ -351,6 +353,7 @@ static void destroyGuiWindows()
     delete2(spellShortcutWindow);
 #ifdef EATHENA_SUPPORT
     delete2(bankWindow);
+    delete2(mailWindow);
 #endif
     delete2(botCheckerWindow);
     delete2(questsWindow);

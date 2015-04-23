@@ -521,6 +521,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/windows/killstats.h \
 	      gui/windows/logindialog.cpp \
 	      gui/windows/logindialog.h \
+	      gui/windows/mailwindow.cpp \
+	      gui/windows/mailwindow.h \
 	      gui/windows/minimap.cpp \
 	      gui/windows/minimap.h \
 	      gui/windows/ministatuswindow.cpp \

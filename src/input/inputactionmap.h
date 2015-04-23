@@ -4460,6 +4460,15 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputCondition::GAME | InputCondition::NOTARGET,
         "yellowbar|quickoptions",
         false},
+    {"keyWindowMail",
+        emptyKey,
+        emptyKey,
+        Input::GRP_DEFAULT | Input::GRP_GUI,
+        &Actions::mailWindowShow,
+        InputAction::NO_VALUE, 50,
+        InputCondition::GAME | InputCondition::NOTARGET,
+        "mailwindow|mail",
+        false},
 };
 
 #undef defaultAction

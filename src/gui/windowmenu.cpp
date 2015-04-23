@@ -148,6 +148,10 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
     addButton(N_("BA"),
         // TRANSLATORS: full button name
         _("Bank"), x, h, InputAction::WINDOW_BANK, false);
+    // TRANSLATORS: short button name for mail window.
+    addButton(N_("MA"),
+        // TRANSLATORS: full button name
+        _("Mail"), x, h, InputAction::WINDOW_MAIL, false),
     // TRANSLATORS: short button name for debug window.
     addButton(N_("DBG"),
         // TRANSLATORS: full button name
