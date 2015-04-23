@@ -72,9 +72,6 @@ class TestLauncher final
 
         int testDyeSpeed();
 
-        float calcTime(const timeval *const start,
-                       const timeval *const end) const;
-
     private:
         std::string mTest;
 

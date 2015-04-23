@@ -460,22 +460,25 @@ int TestLauncher::testDye()
 
 int TestLauncher::testDyeSpeed()
 {
-    timeval start;
-    timeval end;
-    const int sz = 10000;
+    const int sz = 100000;
     uint32_t buf[sz];
+    timespec time1;
+    timespec time2;
 
     DyePalette pal("#0000ff,000000,000020,706050", 6);
 
     for (int f = 0; f < sz; f ++)
         buf[f] = f;
 
-    gettimeofday(&start, nullptr);
+    clock_gettime(CLOCK_MONOTONIC, &time1);
 
-    pal.replaceSColor(buf, sz);
+    for (int f = 0; f < 1000; f ++)
+        pal.replaceSColor(buf, sz);
 
-    gettimeofday(&end, nullptr);
-    printf("time: %f\n", calcTime(&start, &end));
+    clock_gettime(CLOCK_MONOTONIC, &time2);
+    long diff = ((static_cast<long long int>(time2.tv_sec) * 1000000000LL + static_cast<long long int>(time2.tv_nsec)) / 1) - 
+        ((static_cast<long long int>(time1.tv_sec) * 1000000000LL + static_cast<long long int>(time1.tv_nsec)) / 1);
+    printf("time: %ld\n", diff);
     return 0;
 }
 
@@ -576,12 +579,4 @@ int TestLauncher::calcFps(const timeval *const start, const timeval *const end,
     return static_cast<int>(static_cast<long>(calls) * 10000 / mtime);
 }
 
-float TestLauncher::calcTime(const timeval *const start,
-                            const timeval *const end) const
-{
-    const long seconds = end->tv_sec  - start->tv_sec;
-    const long useconds = end->tv_usec - start->tv_usec;
-
-    return (seconds * 1000 + useconds / 1000.0);
-}
 #endif
