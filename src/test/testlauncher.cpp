@@ -36,6 +36,7 @@
 #include "utils/physfsrwops.h"
 
 #include "resources/dye.h"
+#include "resources/dyepalette.h"
 #include "resources/image.h"
 #include "resources/imagewriter.h"
 #include "resources/openglimagehelper.h"
@@ -94,6 +95,8 @@ int TestLauncher::exec()
         return testFps2();
     else if (mTest == "104")
         return testFps3();
+    else if (mTest == "105")
+        return testDyeSpeed();
 
     return -1;
 }
@@ -455,6 +458,27 @@ int TestLauncher::testDye()
     return 0;
 }
 
+int TestLauncher::testDyeSpeed()
+{
+    timeval start;
+    timeval end;
+    const int sz = 10000;
+    uint32_t buf[sz];
+
+    DyePalette pal("#0000ff,000000,000020,706050", 6);
+
+    for (int f = 0; f < sz; f ++)
+        buf[f] = f;
+
+    gettimeofday(&start, nullptr);
+
+    pal.replaceSColor(buf, sz);
+
+    gettimeofday(&end, nullptr);
+    printf("time: %f\n", calcTime(&start, &end));
+    return 0;
+}
+
 int TestLauncher::testDraw()
 {
     Image *img[3];
@@ -550,5 +574,14 @@ int TestLauncher::calcFps(const timeval *const start, const timeval *const end,
         return 100000;
 
     return static_cast<int>(static_cast<long>(calls) * 10000 / mtime);
+}
+
+float TestLauncher::calcTime(const timeval *const start,
+                            const timeval *const end) const
+{
+    const long seconds = end->tv_sec  - start->tv_sec;
+    const long useconds = end->tv_usec - start->tv_usec;
+
+    return (seconds * 1000 + useconds / 1000.0);
 }
 #endif
