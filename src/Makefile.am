@@ -28,6 +28,11 @@ else
 manaplus_SOURCES =
 endif
 
+if ENABLE_CILKPLUS
+manaplus_CXXFLAGS += -DENABLE_CILKPLUS -fcilkplus -lcilkrts
+dyecmd_CXXFLAGS += -DENABLE_CILKPLUS -fcilkplus -lcilkrts
+endif
+
 dyecmd_CXXFLAGS += -DDYECMD
 dyecmd_SOURCES = gui/cliprect.cpp \
 	      gui/color.cpp \

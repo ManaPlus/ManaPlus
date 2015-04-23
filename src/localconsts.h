@@ -33,6 +33,10 @@
 #endif
 #endif
 
+#define GCC_VERSION (__GNUC__ * 10000 \
+    + __GNUC_MINOR__ * 100 \
+    + __GNUC_PATCHLEVEL__)
+
 #if !defined(__GXX_EXPERIMENTAL_CXX0X__)
 #undef nullptr
 #define nullptr 0
@@ -43,9 +47,6 @@
 #define A_DELETE(func)
 #define A_DELETE_COPY(func)
 #else
-#define GCC_VERSION (__GNUC__ * 10000 \
-    + __GNUC_MINOR__ * 100 \
-    + __GNUC_PATCHLEVEL__)
 #if GCC_VERSION < 40700
 #define final
 #define override
@@ -79,6 +80,20 @@
 #ifdef __clang__
 #define gnu_printf printf
 #endif
+
+#ifdef __GNUC__
+#ifdef ENABLE_CILKPLUS
+#if GCC_VERSION < 50000
+#define cilk_for for
+#elif GCC_VERSION < 49000
+#define cilk_for for
+#define cilk_spawn
+#endif  // GCC_VERSION < 50000
+#else  // ENABLE_CILKPLUS
+#define cilk_for for
+#define cilk_spawn
+#endif  // ENABLE_CILKPLUS
+#endif  // __GNUC__
 
 #define notfinal
 
@@ -141,4 +156,8 @@
 
 #ifdef HAVE_CONFIG_H
 #include "config.h"
+#endif
+
+#ifdef ENABLE_CILKPLUS
+#include <cilk/cilk.h>
 #endif

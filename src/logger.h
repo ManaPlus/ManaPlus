@@ -84,11 +84,19 @@ class Logger final
         void log(const char *const log_text, ...)
 #ifdef __GNUC__
 #ifdef __OpenBSD__
+
             __attribute__((__format__(printf, 2, 3)))
-#else
+#else  // __OpenBSD__
+
+#ifdef ENABLE_CILKPLUS
+            __attribute__((__format__(gnu_printf, 1, 2)))
+#else  // ENABLE_CILKPLUS
+
             __attribute__((__format__(gnu_printf, 2, 3)))
-#endif
-#endif
+#endif  // ENABLE_CILKPLUS
+
+#endif  // __OpenBSD__
+#endif  // __GNUC__
             ;
 
         /**
@@ -98,10 +106,17 @@ class Logger final
 #ifdef __GNUC__
 #ifdef __OpenBSD__
             __attribute__((__format__(printf, 2, 3)))
-#else
+#else  // __OpenBSD__
+
+#ifdef ENABLE_CILKPLUS
+            __attribute__((__format__(gnu_printf, 1, 2)))
+#else  // ENABLE_CILKPLUS
+
             __attribute__((__format__(gnu_printf, 2, 3)))
-#endif
-#endif
+#endif  // ENABLE_CILKPLUS
+
+#endif  // __OpenBSD__
+#endif  // __GNUC__
             ;
 
         /**
