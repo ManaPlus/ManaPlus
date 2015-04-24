@@ -331,7 +331,7 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
     // Make sure actors are sorted ascending by Y-coordinate
     // so that they overlap correctly
     BLOCK_START("Map::draw sort")
-        mActors.sort(actorCompare);
+    cilk_spawn mActors.sort(actorCompare);
     BLOCK_END("Map::draw sort")
 
     // update scrolling of all ambient layers
@@ -378,6 +378,8 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
         }
     }
 #endif
+
+    cilk_sync;
 
     if (mDrawLayersFlags == MapType::SPECIAL3
         || mDrawLayersFlags == MapType::SPECIAL4
