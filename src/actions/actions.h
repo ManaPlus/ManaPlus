@@ -80,7 +80,11 @@ namespace Actions
     decHandler(dump);
     decHandler(serverIgnoreAll);
     decHandler(serverUnIgnoreAll);
-    decHandler(error) __attribute__ ((noreturn));
+    decHandler(error)
+#ifndef ENABLE_CILKPLUS
+    __attribute__ ((noreturn))
+#endif
+    ;
     decHandler(dumpGraphics);
     decHandler(dumpEnvironment);
     decHandler(dumpTests);

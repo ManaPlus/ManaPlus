@@ -81,17 +81,26 @@
 #define gnu_printf printf
 #endif
 
+#ifdef ENABLE_CILKPLUS
+#include <cilk/cilk.h>
+#endif
+
 #ifdef __GNUC__
 #ifdef ENABLE_CILKPLUS
-#if GCC_VERSION < 50000
-#define cilk_for for
-#elif GCC_VERSION < 49000
+#if GCC_VERSION < 40900
 #define cilk_for for
 #define cilk_spawn
-#endif  // GCC_VERSION < 50000
+#define cilk_sync
+#elif GCC_VERSION < 50000
+#ifdef cilk_for
+#undef cilk_for
+#endif  // cilk_for
+#define cilk_for for
+#endif  // GCC_VERSION < 40900
 #else  // ENABLE_CILKPLUS
 #define cilk_for for
 #define cilk_spawn
+#define cilk_sync
 #endif  // ENABLE_CILKPLUS
 #endif  // __GNUC__
 
@@ -156,8 +165,4 @@
 
 #ifdef HAVE_CONFIG_H
 #include "config.h"
-#endif
-
-#ifdef ENABLE_CILKPLUS
-#include <cilk/cilk.h>
 #endif

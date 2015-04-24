@@ -72,6 +72,8 @@ impHandler0(targetMercenary)
 {
 #ifdef EATHENA_SUPPORT
     return setTarget(ActorType::Mercenary, true);
+#else
+    return false;
 #endif
 }
 
@@ -79,6 +81,8 @@ impHandler0(targetPet)
 {
 #ifdef EATHENA_SUPPORT
     return setTarget(ActorType::Pet, true);
+#else
+    return false;
 #endif
 }
 

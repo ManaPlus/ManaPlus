@@ -152,14 +152,21 @@ class Logger final
          * Log an error and quit. The error will pop-up on Windows and Mac, and
          * will be printed to standard error everywhere else.
          */
-        void error(const std::string &error_text) __attribute__ ((noreturn));
+        void error(const std::string &error_text)
+#ifndef ENABLE_CILKPLUS
+        __attribute__ ((noreturn))
+#endif
+        ;
 
         /**
          * Log an error and quit. The error will pop-up on Windows and Mac, and
          * will be printed to standard error everywhere else.
          */
         void safeError(const std::string &error_text)
-            __attribute__ ((noreturn));
+#ifndef ENABLE_CILKPLUS
+        __attribute__ ((noreturn))
+#endif
+        ;
 
         void unimplimented(const int id);
 
