@@ -434,7 +434,7 @@ DefaultsData* getBrandingDefaults()
     AddDEF("defaultPort", DEFAULT_PORT);
     AddDEF("defaultServerType", "tmwathena");
     AddDEF("onlineServerList",
-           "http://manaplus.org/serverlist1.xml");
+           "http://manaplus.org/serverlist.xml");
     AddDEF("onlineServerList2",
            "http://www.manaplus.org/serverlist.xml");
     AddDEF("onlineServerFile", "serverlistplus.xml");
