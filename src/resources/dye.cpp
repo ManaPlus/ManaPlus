@@ -150,6 +150,63 @@ int Dye::getType() const
 
 void Dye::normalDye(uint32_t *restrict pixels, const int bufSize) const
 {
+#ifdef ENABLE_CILKPLUS
+    cilk_for (int ptr = 0; ptr < bufSize; ptr ++)
+    {
+        const uint32_t p = pixels[ptr];
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+        const int alpha = p & 0xff000000;
+#else
+        const int alpha = p & 0xff;
+#endif
+        if (alpha)
+        {
+            unsigned int color[3];
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+            color[0] = (p) & 255U;
+            color[1] = (p >> 8U) & 255U;
+            color[2] = (p >> 16U) & 255U;
+#else
+            color[0] = (p >> 24U) & 255U;
+            color[1] = (p >> 16U) & 255U;
+            color[2] = (p >> 8U) & 255U;
+#endif
+            const unsigned int cmax = std::max(
+                color[0], std::max(color[1], color[2]));
+            if (cmax == 0)
+                goto endlabel;
+
+            const unsigned int cmin = std::min(
+                color[0], std::min(color[1], color[2]));
+            const unsigned int intensity = color[0] + color[1] + color[2];
+            unsigned int i;
+
+            if (cmin != cmax && (cmin != 0 || (intensity != cmax
+                && intensity != 2 * cmax)))
+            {
+                // not pure
+                goto endlabel;
+            }
+
+            i = (color[0] != 0) | ((color[1] != 0) << 1)
+                | ((color[2] != 0) << 2);
+
+            if (mDyePalettes[i - 1])
+                mDyePalettes[i - 1]->getColor(cmax, color);
+
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+            pixels[ptr] = (color[0]) | (color[1] << 8)
+                | (color[2] << 16) | alpha;
+#else
+            pixels[ptr] = (color[0] << 24) | (color[1] << 16)
+                | (color[2] << 8) | alpha;
+#endif
+        }
+endlabel:;
+    }
+
+#else  // ENABLE_CILKPLUS
+
     for (uint32_t *p_end = pixels + static_cast<size_t>(bufSize);
          pixels != p_end;
          ++ pixels)
@@ -203,10 +260,68 @@ void Dye::normalDye(uint32_t *restrict pixels, const int bufSize) const
             | (color[2] << 8) | alpha;
 #endif
     }
+#endif  // ENABLE_CILKPLUS
 }
 
 void Dye::normalOGLDye(uint32_t *restrict pixels, const int bufSize) const
 {
+#ifdef ENABLE_CILKPLUS
+    cilk_for (int ptr = 0; ptr < bufSize; ptr ++)
+    {
+        const uint32_t p = pixels[ptr];
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+        const int alpha = p & 255;
+#else
+        const int alpha = p & 0xff000000;
+#endif
+        if (alpha)
+        {
+            unsigned int color[3];
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+            color[0] = (p >> 24U) & 255U;
+            color[1] = (p >> 16U) & 255U;
+            color[2] = (p >> 8U) & 255U;
+#else
+            color[0] = (p) & 255U;
+            color[1] = (p >> 8U) & 255U;
+            color[2] = (p >> 16U) & 255U;
+#endif
+
+            const unsigned int cmax = std::max(
+                color[0], std::max(color[1], color[2]));
+            if (cmax == 0)
+                goto endlabel;
+
+            const unsigned int cmin = std::min(
+                color[0], std::min(color[1], color[2]));
+            const unsigned int intensity = color[0] + color[1] + color[2];
+
+            if (cmin != cmax && (cmin != 0 || (intensity != cmax
+                && intensity != 2 * cmax)))
+            {
+                // not pure
+                goto endlabel;
+            }
+
+            const unsigned int i = (color[0] != 0) | ((color[1] != 0) << 1)
+                | ((color[2] != 0) << 2);
+
+            if (mDyePalettes[i - 1])
+                mDyePalettes[i - 1]->getColor(cmax, color);
+
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+            pixels[ptr] = (color[0] << 24) | (color[1] << 16)
+                | (color[2] << 8) | alpha;
+#else
+            pixels[ptr] = (color[0]) | (color[1] << 8)
+                | (color[2] << 16) | alpha;
+#endif
+        }
+endlabel:;
+    }
+
+#else  // ENABLE_CILKPLUS
+
     for (uint32_t *p_end = pixels + static_cast<size_t>(bufSize);
          pixels != p_end;
          ++ pixels)
@@ -260,4 +375,5 @@ void Dye::normalOGLDye(uint32_t *restrict pixels, const int bufSize) const
             | (color[2] << 16) | alpha;
 #endif
     }
+#endif  // ENABLE_CILKPLUS
 }
