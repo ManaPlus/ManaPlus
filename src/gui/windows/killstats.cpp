@@ -28,7 +28,6 @@
 
 #include "gui/windows/setupwindow.h"
 
-#include "actormanager.h"
 #include "client.h"
 #include "game.h"
 
@@ -36,8 +35,6 @@
 #include "being/playerinfo.h"
 
 #include "enums/being/attributes.h"
-
-#include "resources/map/map.h"
 
 #include "utils/gettext.h"
 

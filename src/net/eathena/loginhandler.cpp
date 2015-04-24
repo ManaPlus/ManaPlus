@@ -136,7 +136,8 @@ void LoginHandler::disconnect()
 }
 
 void LoginHandler::changePassword(const std::string &restrict oldPassword,
-                                  const std::string &restrict newPassword) const
+                                  const std::string &restrict newPassword)
+                                  const
 {
     if (!serverFeatures->haveChangePassword())
         return;

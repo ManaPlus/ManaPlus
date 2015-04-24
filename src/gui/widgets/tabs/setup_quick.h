@@ -36,10 +36,6 @@ class Setup_Quick final : public SetupTabScroll
 
         ~Setup_Quick();
 
-        void apply() override final;
-
-        void externalUpdated() override final;
-
     protected:
         NamesModel *mMoveTypeList;
 

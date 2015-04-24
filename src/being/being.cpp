@@ -1337,6 +1337,7 @@ void Being::setAction(const BeingAction::Action &action, const int attackId)
             }
             currentAction = getSpawnAction();
             break;
+        case BeingAction::PRESTAND:
         default:
             logger->log("Being::setAction unknown action: "
                 + toString(static_cast<unsigned>(action)));
@@ -1748,6 +1749,7 @@ void Being::petLogic()
             case BeingAction::MOVE:
             case BeingAction::HURT:
             case BeingAction::SPAWN:
+            case BeingAction::PRESTAND:
             default:
                 directionType = mInfo->getDirectionType();
                 break;
@@ -3110,6 +3112,17 @@ void Being::saveComment(const std::string &restrict name,
         case ActorType::Npc:
             dir = settings.npcsDir;
             break;
+        case ActorType::Monster:
+        case ActorType::FloorItem:
+        case ActorType::Portal:
+        case ActorType::LocalPet:
+        case ActorType::Avatar:
+        case ActorType::Unknown:
+#ifdef EATHENA_SUPPORT
+        case ActorType::Pet:
+        case ActorType::Mercenary:
+        case ActorType::Homunculus:
+#endif
         default:
             return;
     }
@@ -3427,6 +3440,7 @@ void Being::fixPetSpawnPos(int &dstX, int &dstY) const
         case BeingAction::SPAWN:
         case BeingAction::HURT:
         case BeingAction::STAND:
+        case BeingAction::PRESTAND:
         default:
             offsetX1 = mInfo->getTargetOffsetX();
             offsetY1 = mInfo->getTargetOffsetY();

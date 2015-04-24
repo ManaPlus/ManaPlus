@@ -30,10 +30,10 @@
 #include "debug.h"
 
 SetupQuickItem::SetupQuickItem(const std::string &restrict description,
-                                 SetupTabScroll *restrict const parent,
-                                 const std::string &restrict eventName,
-                                 ModifierGetFuncPtr getFunc,
-                                 ModifierChangeFuncPtr changeFunc) :
+                               SetupTabScroll *restrict const parent,
+                               const std::string &restrict eventName,
+                               ModifierGetFuncPtr getFunc,
+                               ModifierChangeFuncPtr changeFunc) :
     SetupItem("", description, "", parent, eventName, false),
     mHorizont(nullptr),
     mButton(nullptr),

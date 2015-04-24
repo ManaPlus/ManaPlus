@@ -984,7 +984,7 @@ void ChatHandler::processChatRoomSettings(Net::MessageIn &msg)
     const int chatId = msg.readInt32("chat id");
     const uint16_t limit = msg.readInt16("limit");
     msg.readInt16("users");
-    const uint16_t type = msg.readUInt8("type");
+    const uint8_t type = msg.readUInt8("type");
     const std::string &title = msg.readString(sz, "title");
     ChatObject *const chat = localPlayer->getChat();
     if (chat && chat->chatId == chatId)

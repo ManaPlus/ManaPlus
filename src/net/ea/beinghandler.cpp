@@ -23,7 +23,6 @@
 #include "net/ea/beinghandler.h"
 
 #include "actormanager.h"
-#include "configuration.h"
 #include "game.h"
 #include "party.h"
 
@@ -34,7 +33,6 @@
 
 #include "gui/windows/botcheckerwindow.h"
 #include "gui/windows/socialwindow.h"
-#include "gui/windows/killstats.h"
 
 #include "resources/mapitemtype.h"
 

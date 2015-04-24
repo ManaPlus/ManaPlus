@@ -31,14 +31,6 @@
 #include "gui/widgets/setupquickitem.h"
 #include "gui/widgets/scrollarea.h"
 
-#include "listeners/uploadlistener.h"
-
-#include "configuration.h"
-
-#include "resources/map/mapconsts.h"
-
-#include "net/net.h"
-
 #include "utils/delete2.h"
 #include "utils/gettext.h"
 
@@ -119,14 +111,4 @@ Setup_Quick::~Setup_Quick()
 {
     delete2(mMoveTypeList);
     delete2(mCrazyMoveTypeList);
-}
-
-void Setup_Quick::apply()
-{
-    SetupTabScroll::apply();
-
-}
-
-void Setup_Quick::externalUpdated()
-{
 }

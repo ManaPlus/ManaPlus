@@ -202,6 +202,7 @@ void PlayerHandler::changeAction(const BeingAction::Action &action) const
             type = 2;
             break;
         case BeingAction::STAND:
+        case BeingAction::PRESTAND:
             type = 3;
             break;
         default:

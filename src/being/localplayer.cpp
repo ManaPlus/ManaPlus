@@ -693,6 +693,7 @@ bool LocalPlayer::toggleSit() const
     switch (mAction)
     {
         case BeingAction::STAND:
+        case BeingAction::PRESTAND:
         case BeingAction::SPAWN:
             newAction = BeingAction::SIT;
             break;

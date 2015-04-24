@@ -470,15 +470,19 @@ int TestLauncher::testDyeSpeed()
     for (int f = 0; f < sz; f ++)
         buf[f] = f;
 
+#if defined __linux__ || defined __linux
     clock_gettime(CLOCK_MONOTONIC, &time1);
 
     for (int f = 0; f < 1000; f ++)
         pal.replaceSColor(buf, sz);
 
     clock_gettime(CLOCK_MONOTONIC, &time2);
-    long diff = ((static_cast<long long int>(time2.tv_sec) * 1000000000LL + static_cast<long long int>(time2.tv_nsec)) / 1) - 
-        ((static_cast<long long int>(time1.tv_sec) * 1000000000LL + static_cast<long long int>(time1.tv_nsec)) / 1);
+    long diff = ((static_cast<long int>(time2.tv_sec) * 1000000000L
+        + static_cast<long int>(time2.tv_nsec)) / 1) - 
+        ((static_cast<long int>(time1.tv_sec) * 1000000000L
+        + static_cast<long int>(time1.tv_nsec)) / 1);
     printf("time: %ld\n", diff);
+#endif
     return 0;
 }
 

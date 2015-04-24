@@ -223,7 +223,6 @@ void DyePalette::replaceSColor(uint32_t *restrict pixels,
         if (!alpha)
         {
 //            logger->log("skip:    %08x", *pixels);
-            //continue;
         }
         else
         {

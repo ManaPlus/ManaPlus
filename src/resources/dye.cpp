@@ -202,7 +202,7 @@ void Dye::normalDye(uint32_t *restrict pixels, const int bufSize) const
                 | (color[2] << 8) | alpha;
 #endif
         }
-endlabel:;
+endlabel:{}
     }
 
 #else  // ENABLE_CILKPLUS
@@ -317,7 +317,7 @@ void Dye::normalOGLDye(uint32_t *restrict pixels, const int bufSize) const
                 | (color[2] << 16) | alpha;
 #endif
         }
-endlabel:;
+endlabel:{}
     }
 
 #else  // ENABLE_CILKPLUS
