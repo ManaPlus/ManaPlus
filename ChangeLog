@@ -1,3 +1,18 @@
+2015-04-25 New release 1.5.4.25
+fix: move animation.
+fix: wrong slots update (hercules)
+fix: error message with delayed items (hercules)
+fix: characters list after password change.
+fix: default walk speed in stats (hercules)
+fix: kill stats window on levelup.
+fix: displaying mod stat with value -1.
+add: mirror support for servers list.
+add: change password support (hercules)
+add: quick settings page (yellow bar in settings)
+add: help messages for chat settings page.
+add: experimental support for CilkPlus (disabled by default).
+remove: hide shield setting.
+
 2015-04-11 New release 1.5.4.11
 fix: chat command /me.
 fix: remove from priority attack list.
