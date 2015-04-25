@@ -3,6 +3,7 @@ src/actions/chat.cpp
 src/actions/commands.cpp
 src/actions/pets.cpp
 src/actions/statusbar.cpp
+src/actions/windows.cpp
 src/actormanager.cpp
 src/being/being.cpp
 src/being/localplayer.cpp
@@ -56,6 +57,7 @@ src/gui/widgets/tabs/setup_mods.cpp
 src/gui/widgets/tabs/setup_other.cpp
 src/gui/widgets/tabs/setup_perfomance.cpp
 src/gui/widgets/tabs/setup_players.cpp
+src/gui/widgets/tabs/setup_quick.cpp
 src/gui/widgets/tabs/setup_relations.cpp
 src/gui/widgets/tabs/setup_theme.cpp
 src/gui/widgets/tabs/setup_touch.cpp
