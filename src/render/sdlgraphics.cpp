@@ -922,7 +922,6 @@ void SDLGraphics::fillRectangle(const Rect& rectangle)
             area.x + area.width : top.x + top.width;
         const int y2 = area.y + area.height < top.y + top.height ?
             area.y + area.height : top.y + top.height;
-        int x, y;
 
         SDL_LockSurface(mWindow);
 
@@ -934,11 +933,11 @@ void SDLGraphics::fillRectangle(const Rect& rectangle)
         switch (bpp)
         {
             case 1:
-                for (y = y1; y < y2; y++)
+                cilk_for (int y = y1; y < y2; y++)
                 {
                     uint8_t *const p = static_cast<uint8_t *>(mWindow->pixels)
                         + static_cast<size_t>(y * mWindow->pitch);
-                    for (x = x1; x < x2; x++)
+                    for (int x = x1; x < x2; x++)
                     {
                         *(p + static_cast<size_t>(x))
                             = static_cast<uint8_t>(pixel);
@@ -946,11 +945,11 @@ void SDLGraphics::fillRectangle(const Rect& rectangle)
                 }
                 break;
             case 2:
-                for (y = y1; y < y2; y++)
+                cilk_for (int y = y1; y < y2; y++)
                 {
                     uint8_t *const p0 = static_cast<uint8_t *>(mWindow->pixels)
                         + static_cast<size_t>(y * mWindow->pitch);
-                    for (x = x1; x < x2; x++)
+                    for (int x = x1; x < x2; x++)
                     {
                         uint8_t *const p = p0 + static_cast<size_t>(x * 2);
                         *reinterpret_cast<uint16_t *>(p) = SDLAlpha16(
@@ -967,11 +966,11 @@ void SDLGraphics::fillRectangle(const Rect& rectangle)
                 const int cg = mColor.g * mColor.a;
                 const int cb = mColor.b * mColor.a;
 
-                for (y = y1; y < y2; y++)
+                cilk_for (int y = y1; y < y2; y++)
                 {
                     uint8_t *const p0 = static_cast<uint8_t *>(mWindow->pixels)
                         + static_cast<size_t>(y * mWindow->pitch);
-                    for (x = x1; x < x2; x++)
+                    for (int x = x1; x < x2; x++)
                     {
                         uint8_t *const p = p0 + static_cast<size_t>(x * 3);
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
@@ -995,11 +994,11 @@ void SDLGraphics::fillRectangle(const Rect& rectangle)
                 const unsigned pr = (pixel & 0xff0000) * mColor.a;
                 const unsigned a1 = (255 - mColor.a);
 
-                for (y = y1; y < y2; y++)
+                cilk_for (int y = y1; y < y2; y++)
                 {
                     uint8_t *const p0 = static_cast<uint8_t *>(mWindow->pixels)
                         + y * mWindow->pitch;
-                    for (x = x1; x < x2; x++)
+                    for (int x = x1; x < x2; x++)
                     {
                         uint8_t *p = p0 + x * 4;
                         uint32_t dst = *reinterpret_cast<uint32_t *>(p);
@@ -1058,12 +1057,12 @@ void SDLGraphics::fillRectangle(const Rect& rectangle)
                     mOldAlpha = mColor.a;
                 }
 
-                for (y = y1; y < y2; y++)
+                cilk_for (int y = y1; y < y2; y++)
                 {
                     uint32_t *const p0 = reinterpret_cast<uint32_t*>(
                         static_cast<uint8_t*>(mWindow->pixels)
                         + static_cast<size_t>(y * mWindow->pitch));
-                    for (x = x1; x < x2; x++)
+                    for (int x = x1; x < x2; x++)
                     {
                         uint32_t *const p = p0 + static_cast<size_t>(x);
                         const uint32_t dst = *p;
