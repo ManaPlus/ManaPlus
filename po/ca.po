@@ -165,8 +165,7 @@ msgstr "No es poden enviar xiuxiueigs  buits!"
 #, c-format
 msgid "Cannot create a whisper tab \"%s\"! It probably already exists."
 msgstr ""
-"No s'ha pogut crear una taula de xiuxiueig  \"%s\"! Probablement ja "
-"existeix."
+"No s'ha pogut crear una taula de xiuxiueig  \"%s\"! Probablement ja existeix."
 
 #. TRANSLATORS: create party message
 #. TRANSLATORS: chat error message
