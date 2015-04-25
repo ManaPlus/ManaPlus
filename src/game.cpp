@@ -587,7 +587,6 @@ void Game::logic()
     handleInput();
 
     // Handle all necessary game logic
-    ActorSprite::actorLogic();
     if (actorManager)
         actorManager->logic();
     if (particleEngine)
@@ -622,7 +621,7 @@ void Game::slowLogic()
             whoIsOnline->slowLogic();
         Being::reReadConfig();
         if (killStats)
-            killStats->recalcStats();
+            cilk_spawn killStats->recalcStats();
 
         if (time > mTime2 || mTime2 - time > 10)
         {
@@ -632,20 +631,21 @@ void Game::slowLogic()
         }
     }
 
-#ifdef TMWA_SUPPORT
-    if (shopWindow)
-        shopWindow->updateTimes();
-#endif
     if (mainGraphics->getOpenGL())
         DelayedManager::delayedLoad();
+
+#ifdef TMWA_SUPPORT
+    if (shopWindow)
+        cilk_spawn shopWindow->updateTimes();
+#endif
 #ifdef TMWA_SUPPORT
     if (guildManager)
         guildManager->slowLogic();
 #endif
     if (skillDialog)
-        skillDialog->slowLogic();
+        cilk_spawn skillDialog->slowLogic();
 
-    PacketCounters::update();
+    cilk_spawn PacketCounters::update();
 
     // Handle network stuff
     if (!gameHandler->isConnected())

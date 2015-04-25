@@ -131,10 +131,6 @@ void ActorSprite::logic()
     BLOCK_END("ActorSprite::logic")
 }
 
-void ActorSprite::actorLogic()
-{
-}
-
 void ActorSprite::setMap(Map *const map)
 {
     Actor::setMap(map);

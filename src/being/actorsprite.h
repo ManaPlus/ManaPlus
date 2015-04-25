@@ -70,8 +70,6 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
 
         virtual void logic();
 
-        static void actorLogic();
-
         void setMap(Map *const map) override;
 
         /**
