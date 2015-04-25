@@ -25,6 +25,8 @@
 
 #include "net/playerhandler.h"
 
+#include <climits>
+
 namespace Net
 {
     class MessageIn;
