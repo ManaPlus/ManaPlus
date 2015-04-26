@@ -74,8 +74,8 @@ Setup_Chat::Setup_Chat(const Widget2 *const widget) :
     new SetupItemCheckBox(_("Show chat colors list"),
         _("Enable this setting to show color selection drop-down in chat "
         "window. Chat window will display color selection drop-down.\n\n"
-        "It allows to select default color of outgoing chat messages easily, "
-        "but also occupies some space in chat window."),
+        "It allows one to select default color of outgoing chat messages "
+        "easily, but also occupies some space in chat window."),
         "showChatColorsList", this, "showChatColorsListEvent");
 
 
@@ -134,14 +134,14 @@ Setup_Chat::Setup_Chat(const Widget2 *const widget) :
     new SetupItemCheckBox(_("Show party online messages"),
         _("If this setting is enabled, online status changes of party members"
         " will be shown in party tab of chat.\n\nThis adds some extra noise "
-        "to chat, but allows to see when your buddies are coming online."),
+        "to chat, but allows one to see when your buddies are coming online."),
         "showPartyOnline", this, "showPartyOnlineEvent");
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show guild online messages"),
         _("If this setting is enabled, online status changes of guild members"
         " will be shown in guild tab of chat.\n\nThis adds some extra noise "
-        "to chat, but allows to see when your buddies are coming online."),
+        "to chat, but allows one to see when your buddies are coming online."),
         "showGuildOnline", this, "showGuildOnlineEvent");
 
 
@@ -280,8 +280,8 @@ Setup_Chat::Setup_Chat(const Widget2 *const widget) :
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show emotes button in chat"),
         _("If this setting enabled, button will appear near text input "
-        "field. This button allows to invoke composing window, which allows "
-        "to insert smiles and text formatting easily.\n\n"
+        "field. This button allows one to invoke composing window, which "
+        "allows one to insert smiles and text formatting easily.\n\n"
         "Note: same window can also be invoked by hotkey when typing, usually "
         "F1 by default."),
         "showEmotesButton", this, "showEmotesButtonEvent");
