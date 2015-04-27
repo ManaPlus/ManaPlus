@@ -503,6 +503,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/focushandler.h \
 	      gui/gui.cpp \
 	      gui/gui.h \
+	      gui/mailmessage.h \
 	      gui/windows/helpwindow.cpp \
 	      gui/windows/helpwindow.h \
 	      gui/windows/inventorywindow.cpp \
