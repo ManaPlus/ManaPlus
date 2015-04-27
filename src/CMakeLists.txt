@@ -386,6 +386,8 @@ SET(SRCS
     gui/windows/logindialog.h
     gui/windows/mailedit.cpp
     gui/windows/mailedit.h
+    gui/windows/mailview.cpp
+    gui/windows/mailview.h
     gui/windows/mailwindow.cpp
     gui/windows/mailwindow.h
     gui/windows/minimap.cpp
