@@ -24,6 +24,7 @@
 
 #include "gui/models/extendednamesmodel.h"
 
+#include "gui/windows/mailedit.h"
 #include "gui/windows/setupwindow.h"
 
 #include "gui/widgets/button.h"
@@ -97,5 +98,9 @@ void MailWindow::action(const ActionEvent &event)
     if (eventId == "refresh")
     {
         mailHandler->refresh();
+    }
+    else if (eventId == "new")
+    {
+        new MailEdit();
     }
 }
