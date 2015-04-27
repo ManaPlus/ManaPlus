@@ -93,5 +93,13 @@ void MailEdit::action(const ActionEvent &event)
 {
     const std::string &eventId = event.getId();
     if (eventId == "close")
+    {
         scheduleDelete();
+    }
+    else if (eventId == "send")
+    {
+        mailHandler->send(mToField->getText(),
+            mSubjectField->getText(),
+            mMessageField->getText());
+    }
 }
