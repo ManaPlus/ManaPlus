@@ -54,6 +54,8 @@ class MailWindow final : public Window,
 
         void clear();
 
+        void showMessage(const MailMessage *const mail);
+
     private:
         std::vector<MailMessage*> mMessages;
         ExtendedNamesModel *mMailModel;

@@ -27,6 +27,7 @@
 #include "gui/mailmessage.h"
 
 #include "gui/windows/mailedit.h"
+#include "gui/windows/mailview.h"
 #include "gui/windows/setupwindow.h"
 
 #include "gui/widgets/button.h"
@@ -110,6 +111,14 @@ void MailWindow::action(const ActionEvent &event)
     {
         new MailEdit();
     }
+    else if (eventId == "open")
+    {
+        const int sel = mListBox->getSelected();
+        if (sel < 0)
+            return;
+        const MailMessage *const mail = mMessages[sel];
+        mailHandler->readMessage(mail->id);
+    }
 }
 
 void MailWindow::clear()
@@ -122,5 +131,12 @@ void MailWindow::clear()
 void MailWindow::addMail(MailMessage *const message)
 {
     mMessages.push_back(message);
-    mMailModel->add(message->title);
+    mMailModel->add(strprintf("%s %s",
+        message->unread ? " " : "U",
+        message->title.c_str()));
+}
+
+void MailWindow::showMessage(const MailMessage *const mail)
+{
+    new MailView(mail);
 }
