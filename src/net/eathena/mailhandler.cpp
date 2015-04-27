@@ -148,27 +148,28 @@ void MailHandler::processMailList(Net::MessageIn &msg)
 
 void MailHandler::processReadMail(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
-
     const int sz = msg.readInt16("len") - 101;
-    msg.readInt32("message id");
-    msg.readString(40, "title");
-    msg.readString(24, "sender name");
-    msg.readInt16("unused?");
+    MailMessage *mail = new MailMessage;
+    mail->id = msg.readInt32("message id");
+    mail->title = msg.readString(40, "title");
+    mail->sender = msg.readString(24, "sender name");
     msg.readInt32("unused");
-    msg.readInt32("money");
-    msg.readInt32("item amount");
-    msg.readInt16("item id");
-    msg.readInt16("item type");
-    msg.readUInt8("identify");
-    msg.readUInt8("attribute");
-    msg.readUInt8("refine");
+    mail->money = msg.readInt32("money");
+    mail->itemAmount = msg.readInt32("item amount");
+    mail->itemId = msg.readInt16("item id");
+    mail->itemType = msg.readInt16("item type");
+    mail->itemIdentify = msg.readUInt8("identify");
+    mail->itemAttribute = msg.readUInt8("attribute");
+    mail->itemRefine = msg.readUInt8("refine");
     for (int f = 0; f < 4; f ++)
-        msg.readInt16("card");
+        mail->card[f] = msg.readInt16("card");
     const int msgLen = msg.readUInt8("msg len");
     if (msgLen != sz)
         logger->log("error: wrong message size");
-    msg.readString(sz, "message");
+    mail->text = msg.readString(sz, "message");
+    msg.readUInt8("zero");
+    mail->strTime = timeToStr(mail->time);
+    mailWindow->showMessage(mail);
 }
 
 void MailHandler::processGetAttachment(Net::MessageIn &msg)

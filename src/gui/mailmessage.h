@@ -29,10 +29,20 @@ struct MailMessage final
         title(),
         sender(),
         strTime(),
+        text(),
         id(0),
         time(0),
-        unread(false)
+        money(0),
+        itemAmount(0),
+        itemId(0),
+        itemType(0),
+        itemAttribute(0U),
+        itemRefine(0U),
+        unread(false),
+        itemIdentify(false)
     {
+        for (int f = 0; f < 4; f ++)
+            card[f] = 0;
     }
 
     A_DELETE_COPY(MailMessage)
@@ -40,8 +50,17 @@ struct MailMessage final
     std::string title;
     std::string sender;
     std::string strTime;
+    std::string text;
+    uint16_t card[4];
     int id;
     int time;
+    int money;
+    int itemAmount;
+    int itemId;
+    int itemType;
+    uint8_t itemAttribute;
+    uint8_t itemRefine;
     bool unread;
+    bool itemIdentify;
 };
 #endif  // GUI_MAILMESSAGE_H
