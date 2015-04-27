@@ -22,6 +22,10 @@
 
 #include "logger.h"
 
+#include "gui/mailmessage.h"
+
+#include "gui/windows/mailwindow.h"
+
 #include "net/ea/eaprotocol.h"
 
 #include "net/eathena/messageout.h"
@@ -119,19 +123,20 @@ void MailHandler::processMailOpen(Net::MessageIn &msg)
 
 void MailHandler::processMailList(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
-
     const int count = (msg.readInt16("len") - 8) / 73;
     const int amount = msg.readInt32("amount");
     if (count != amount)
         logger->log("error: wrong mails count");
+    mailWindow->clear();
     for (int f = 0; f < count; f ++)
     {
-        msg.readInt32("message id");
-        msg.readString(40, "title");
-        msg.readUInt8("unread flag");
-        msg.readString(24, "sender name");
-        msg.readInt32("time stamp");
+        MailMessage *const mail = new MailMessage;
+        mail->id = msg.readInt32("message id");
+        mail->title = msg.readString(40, "title");
+        mail->unread = msg.readUInt8("unread flag") ? true : false;
+        mail->sender = msg.readString(24, "sender name");
+        mail->time = msg.readInt32("time stamp");
+        mailWindow->addMail(mail);
     }
 }
 

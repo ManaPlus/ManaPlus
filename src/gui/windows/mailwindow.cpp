@@ -24,6 +24,8 @@
 
 #include "gui/models/extendednamesmodel.h"
 
+#include "gui/mailmessage.h"
+
 #include "gui/windows/mailedit.h"
 #include "gui/windows/setupwindow.h"
 
@@ -34,6 +36,8 @@
 #include "gui/widgets/layout.h"
 #include "gui/widgets/layouttype.h"
 
+#include "utils/delete2.h"
+#include "utils/dtor.h"
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
@@ -45,6 +49,7 @@ MailWindow::MailWindow() :
     // TRANSLATORS: mail window name
     Window(_("Mail"), false, nullptr, "mail.xml"),
     ActionListener(),
+    mMessages(),
     mMailModel(new ExtendedNamesModel),
     mListBox(new ExtendedListBox(this, mMailModel, "extendedlistbox.xml")),
     // TRANSLATORS: mail window button
@@ -90,6 +95,8 @@ MailWindow::MailWindow() :
 
 MailWindow::~MailWindow()
 {
+    delete_all(mMessages);
+    delete2(mMailModel);
 }
 
 void MailWindow::action(const ActionEvent &event)
@@ -103,4 +110,17 @@ void MailWindow::action(const ActionEvent &event)
     {
         new MailEdit();
     }
+}
+
+void MailWindow::clear()
+{
+    delete_all(mMessages);
+    mMailModel->clear();
+    mListBox->setSelected(-1);
+}
+
+void MailWindow::addMail(MailMessage *const message)
+{
+    mMessages.push_back(message);
+    mMailModel->add(message->title);
 }

@@ -31,6 +31,8 @@ class Button;
 class ExtendedListBox;
 class ExtendedNamesModel;
 
+struct MailMessage;
+
 /**
  * A dialog to choose between buying or selling at a shop.
  *
@@ -48,7 +50,12 @@ class MailWindow final : public Window,
 
         void action(const ActionEvent &event) override final;
 
+        void addMail(MailMessage *const message);
+
+        void clear();
+
     private:
+        std::vector<MailMessage*> mMessages;
         ExtendedNamesModel *mMailModel;
         ExtendedListBox *mListBox;
         Button *mRefreshButton;
