@@ -567,6 +567,14 @@ namespace NotifyManager
             // TRANSLATORS: notification message
             N_("Left %d seconds until you can use item."),
             NotifyFlags::INT},
+        {"mail send ok",
+            // TRANSLATORS: notification message
+            N_("Message succesfully sent."),
+            NotifyFlags::EMPTY},
+        {"mail send error",
+            // TRANSLATORS: notification message
+            N_("Message send failed."),
+            NotifyFlags::EMPTY},
     };
 }  // namespace NotifyManager
 #endif  // RESOURCES_NOTIFICATIONS_H

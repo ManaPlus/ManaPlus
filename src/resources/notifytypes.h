@@ -160,6 +160,8 @@ namespace NotifyTypes
         ROOM_ERROR_HIGH_LEVEL,
         ROOM_ERROR_RACE,
         USE_ITEM_WAIT,
+        MAIL_SEND_OK,
+        MAIL_SEND_ERROR,
 
         TYPE_END
     };

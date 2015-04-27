@@ -21,6 +21,7 @@
 #include "net/eathena/mailhandler.h"
 
 #include "logger.h"
+#include "notifymanager.h"
 
 #include "gui/mailmessage.h"
 
@@ -30,6 +31,8 @@
 
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
+
+#include "resources/notifytypes.h"
 
 #include "debug.h"
 
@@ -174,9 +177,18 @@ void MailHandler::processGetAttachment(Net::MessageIn &msg)
 
 void MailHandler::processSendMailAck(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
-
-    msg.readUInt8("fail flag");
+    switch (msg.readUInt8("fail flag"))
+    {
+        case 0:
+            NotifyManager::notify(NotifyTypes::MAIL_SEND_OK);
+            break;
+        case 1:
+            NotifyManager::notify(NotifyTypes::MAIL_SEND_ERROR);
+            break;
+        default:
+            UNIMPLIMENTEDPACKET;
+            break;
+    }
 }
 
 void MailHandler::processNewMail(Net::MessageIn &msg)
