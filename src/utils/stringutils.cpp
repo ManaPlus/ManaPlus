@@ -771,3 +771,14 @@ std::string removeToken(std::string &str, const std::string &token)
         str.clear();
     return str;
 }
+
+std::string timeToStr(const int time)
+{
+    char buf[101];
+    const long tempTime = static_cast<long>(time);
+    tm *const timeInfo = localtime(&tempTime);
+    if (strftime(&buf[0], 100, "%Y-%m-%d_%H-%M-%S", timeInfo))
+        return std::string(buf);
+    else
+        return "unknown";
+}

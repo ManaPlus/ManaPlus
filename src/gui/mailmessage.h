@@ -28,6 +28,7 @@ struct MailMessage final
     MailMessage() :
         title(),
         sender(),
+        strTime(),
         id(0),
         time(0),
         unread(false)
@@ -38,6 +39,7 @@ struct MailMessage final
 
     std::string title;
     std::string sender;
+    std::string strTime;
     int id;
     int time;
     bool unread;

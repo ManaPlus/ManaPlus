@@ -244,4 +244,6 @@ uint32_t parseNumber(const std::string &str);
 
 std::string removeToken(std::string &str, const std::string &token);
 
+std::string timeToStr(const int time);
+
 #endif  // UTILS_STRINGUTILS_H

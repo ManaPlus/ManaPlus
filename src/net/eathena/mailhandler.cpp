@@ -34,6 +34,8 @@
 
 #include "resources/notifytypes.h"
 
+#include "utils/stringutils.h"
+
 #include "debug.h"
 
 extern Net::MailHandler *mailHandler;
@@ -139,6 +141,7 @@ void MailHandler::processMailList(Net::MessageIn &msg)
         mail->unread = msg.readUInt8("unread flag") ? true : false;
         mail->sender = msg.readString(24, "sender name");
         mail->time = msg.readInt32("time stamp");
+        mail->strTime = timeToStr(mail->time);
         mailWindow->addMail(mail);
     }
 }
