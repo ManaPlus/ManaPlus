@@ -48,6 +48,8 @@ class MailHandler notfinal
 
         virtual void setAttach(const int index, const int amount) = 0;
 
+        virtual void setAttachMoney(const int money) = 0;
+
         virtual void resetAttach(const int flag) = 0;
 
         virtual void send(const std::string &name,

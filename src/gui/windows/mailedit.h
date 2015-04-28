@@ -28,6 +28,7 @@
 #include "listeners/actionlistener.h"
 
 class Button;
+class IntTextField;
 class Label;
 class TextField;
 
@@ -48,9 +49,11 @@ class MailEdit final : public Window,
         Button *mCloseButton;
         Label *mToLabel;
         Label *mSubjectLabel;
+        Label *mMoneyLabel;
         Label *mMessageLabel;
         TextField *mToField;
         TextField *mSubjectField;
+        IntTextField *mMoneyField;
         TextField *mMessageField;
 };
 

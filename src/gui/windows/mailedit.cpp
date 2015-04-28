@@ -26,6 +26,7 @@
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/containerplacer.h"
+#include "gui/widgets/inttextfield.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layout.h"
 #include "gui/widgets/layouttype.h"
@@ -46,10 +47,15 @@ MailEdit::MailEdit() :
     mCloseButton(new Button(this, _("Close"), "close", this)),
     // TRANSLATORS: mail edit window label
     mToLabel(new Label(this, _("To:"))),
+    // TRANSLATORS: mail edit window label
     mSubjectLabel(new Label(this, _("Subject:"))),
+    // TRANSLATORS: mail edit window label
+    mMoneyLabel(new Label(this, _("Money:"))),
+    // TRANSLATORS: mail edit window label
     mMessageLabel(new Label(this, _("Message:"))),
     mToField(new TextField(this)),
     mSubjectField(new TextField(this)),
+    mMoneyField(new IntTextField(this, 0, 0, 10000000)),
     mMessageField(new TextField(this))
 {
     setWindowName("MailEdit");
@@ -76,10 +82,12 @@ MailEdit::MailEdit() :
     placer(1, 0, mToField, 2);
     placer(0, 1, mSubjectLabel);
     placer(1, 1, mSubjectField, 2);
-    placer(0, 2, mMessageLabel);
-    placer(1, 2, mMessageField, 2);
-    placer(0, 3, mSendButton);
-    placer(2, 3, mCloseButton);
+    placer(0, 2, mMoneyLabel);
+    placer(1, 2, mMoneyField, 2);
+    placer(0, 3, mMessageLabel);
+    placer(1, 3, mMessageField, 2);
+    placer(0, 4, mSendButton);
+    placer(2, 4, mCloseButton);
 
     loadWindowState();
     enableVisibleSound(true);
@@ -98,6 +106,9 @@ void MailEdit::action(const ActionEvent &event)
     }
     else if (eventId == "send")
     {
+        const int money = mMoneyField->getValue();
+        if (money)
+            mailHandler->setAttachMoney(money);
         mailHandler->send(mToField->getText(),
             mSubjectField->getText(),
             mMessageField->getText());

@@ -265,6 +265,13 @@ void MailHandler::setAttach(const int index, const int amount)
     outMsg.writeInt32(amount, "amount");
 }
 
+void MailHandler::setAttachMoney(const int money)
+{
+    createOutPacket(CMSG_MAIL_SET_ATTACH);
+    outMsg.writeInt16(static_cast<int16_t>(0), "index");
+    outMsg.writeInt32(money, "money");
+}
+
 void MailHandler::resetAttach(const int flag)
 {
     createOutPacket(CMSG_MAIL_RESET_ATTACH);
