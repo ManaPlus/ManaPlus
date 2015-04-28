@@ -206,10 +206,15 @@ void MailHandler::processNewMail(Net::MessageIn &msg)
 
 void MailHandler::processSetAttachmentAck(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
-
-    msg.readInt16("index");
-    msg.readUInt8("flag");
+    const int index = msg.readInt16("index");
+    const int flag = msg.readUInt8("flag");
+    if (flag)
+    {
+        if (index)
+            NotifyManager::notify(NotifyTypes::MAIL_ATTACH_ITEM_ERROR);
+        else
+            NotifyManager::notify(NotifyTypes::MAIL_ATTACH_MONEY_ERROR);
+    }
 }
 
 void MailHandler::processDeleteAck(Net::MessageIn &msg)

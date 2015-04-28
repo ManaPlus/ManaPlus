@@ -575,6 +575,14 @@ namespace NotifyManager
             // TRANSLATORS: notification message
             N_("Message send failed."),
             NotifyFlags::EMPTY},
+        {"mail attach item error",
+            // TRANSLATORS: notification message
+            N_("Item attach failed."),
+            NotifyFlags::EMPTY},
+        {"mail attach money error",
+            // TRANSLATORS: notification message
+            N_("Money attach failed."),
+            NotifyFlags::EMPTY},
     };
 }  // namespace NotifyManager
 #endif  // RESOURCES_NOTIFICATIONS_H

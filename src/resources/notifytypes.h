@@ -162,6 +162,8 @@ namespace NotifyTypes
         USE_ITEM_WAIT,
         MAIL_SEND_OK,
         MAIL_SEND_ERROR,
+        MAIL_ATTACH_ITEM_ERROR,
+        MAIL_ATTACH_MONEY_ERROR,
 
         TYPE_END
     };
