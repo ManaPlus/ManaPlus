@@ -109,7 +109,8 @@ void MailWindow::action(const ActionEvent &event)
     }
     else if (eventId == "new")
     {
-        new MailEdit();
+        if (!mailEditWindow)
+            mailEditWindow = new MailEdit();
     }
     else if (eventId == "open")
     {
@@ -124,6 +125,7 @@ void MailWindow::action(const ActionEvent &event)
 void MailWindow::clear()
 {
     delete_all(mMessages);
+    mMessages.clear();
     mMailModel->clear();
     mListBox->setSelected(-1);
 }

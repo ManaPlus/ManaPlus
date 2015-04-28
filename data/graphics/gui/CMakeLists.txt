@@ -39,6 +39,7 @@ SET (FILES
     label.xml
     listbox.xml
     lock.png
+    mailedit.xml
     ministatus.xml
     mouse.png
     npc.xml

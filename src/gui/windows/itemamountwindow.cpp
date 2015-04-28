@@ -35,6 +35,7 @@
 
 #include "gui/popups/itempopup.h"
 
+#include "gui/windows/mailedit.h"
 #include "gui/windows/shopwindow.h"
 #include "gui/windows/tradewindow.h"
 
@@ -92,6 +93,10 @@ void ItemAmountWindow::finish(const Item *const item,
         case ShopSellAdd:
             if (shopWindow)
                 shopWindow->addSellItem(item, amount, price);
+            break;
+        case MailAdd:
+            if (mailEditWindow)
+                mailEditWindow->addItem(item, amount);
             break;
         default:
             break;
@@ -233,6 +238,10 @@ ItemAmountWindow::ItemAmountWindow(const Usage usage, Window *const parent,
         case StoreAdd:
             // TRANSLATORS: amount window message
             setCaption(_("Select amount of items to store."));
+            break;
+        case MailAdd:
+            // TRANSLATORS: amount window message
+            setCaption(_("Select amount of items to send."));
             break;
         case CartAdd:
             // TRANSLATORS: amount window message

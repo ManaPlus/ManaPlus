@@ -20,16 +20,24 @@
 
 #include "gui/windows/mailedit.h"
 
+#include "inventory.h"
+#include "item.h"
+
+#include "being/playerinfo.h"
 #include "net/mailhandler.h"
 
+#include "gui/windows/inventorywindow.h"
+#include "gui/windows/itemamountwindow.h"
 #include "gui/windows/setupwindow.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/containerplacer.h"
 #include "gui/widgets/inttextfield.h"
+#include "gui/widgets/itemcontainer.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layout.h"
 #include "gui/widgets/layouttype.h"
+#include "gui/widgets/scrollarea.h"
 #include "gui/widgets/textfield.h"
 
 #include "utils/gettext.h"
@@ -37,14 +45,18 @@
 
 #include "debug.h"
 
+MailEdit *mailEditWindow = nullptr;
+
 MailEdit::MailEdit() :
     // TRANSLATORS: mail edit window name
-    Window(_("Edit mail"), true, nullptr, "mailedit.xml"),
+    Window(_("Edit mail"), false, nullptr, "mailedit.xml"),
     ActionListener(),
     // TRANSLATORS: mail edit window button
     mSendButton(new Button(this, _("Send"), "send", this)),
     // TRANSLATORS: mail edit window button
     mCloseButton(new Button(this, _("Close"), "close", this)),
+    // TRANSLATORS: mail edit window button
+    mAddButton(new Button(this, _("Add"), "add", this)),
     // TRANSLATORS: mail edit window label
     mToLabel(new Label(this, _("To:"))),
     // TRANSLATORS: mail edit window label
@@ -52,11 +64,17 @@ MailEdit::MailEdit() :
     // TRANSLATORS: mail edit window label
     mMoneyLabel(new Label(this, _("Money:"))),
     // TRANSLATORS: mail edit window label
+    mItemLabel(new Label(this, _("Item:"))),
+    // TRANSLATORS: mail edit window label
     mMessageLabel(new Label(this, _("Message:"))),
     mToField(new TextField(this)),
     mSubjectField(new TextField(this)),
     mMoneyField(new IntTextField(this, 0, 0, 10000000)),
-    mMessageField(new TextField(this))
+    mMessageField(new TextField(this)),
+    mInventory(new Inventory(InventoryType::MAIL, 1)),
+    mItemContainer(new ItemContainer(this, mInventory)),
+    mItemScrollArea(new ScrollArea(this, mItemContainer,
+        getOptionBool("showitemsbackground"), "mailedit_listbackground.xml"))
 {
     setWindowName("MailEdit");
     setCloseButton(true);
@@ -77,17 +95,26 @@ MailEdit::MailEdit() :
     mToField->setWidth(100);
     mSubjectField->setWidth(100);
     mMessageField->setWidth(100);
+    mItemScrollArea->setHeight(70);
+
+    mItemScrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
+    mItemScrollArea->setVerticalScrollPolicy(ScrollArea::SHOW_NEVER);
 
     placer(0, 0, mToLabel);
-    placer(1, 0, mToField, 2);
+    placer(1, 0, mToField, 3);
     placer(0, 1, mSubjectLabel);
-    placer(1, 1, mSubjectField, 2);
+    placer(1, 1, mSubjectField, 3);
     placer(0, 2, mMoneyLabel);
-    placer(1, 2, mMoneyField, 2);
-    placer(0, 3, mMessageLabel);
-    placer(1, 3, mMessageField, 2);
-    placer(0, 4, mSendButton);
-    placer(2, 4, mCloseButton);
+    placer(1, 2, mMoneyField, 3);
+//    placer(0, 3, mItemScrollArea, 3);
+    placer(0, 3, mItemLabel);
+    placer(1, 3, mItemScrollArea, 2, 2);
+    placer(3, 4, mAddButton, 1);
+
+    placer(0, 5, mMessageLabel);
+    placer(1, 5, mMessageField, 3);
+    placer(0, 6, mSendButton);
+    placer(3, 6, mCloseButton);
 
     loadWindowState();
     enableVisibleSound(true);
@@ -95,6 +122,7 @@ MailEdit::MailEdit() :
 
 MailEdit::~MailEdit()
 {
+    mailEditWindow = nullptr;
 }
 
 void MailEdit::action(const ActionEvent &event)
@@ -109,8 +137,44 @@ void MailEdit::action(const ActionEvent &event)
         const int money = mMoneyField->getValue();
         if (money)
             mailHandler->setAttachMoney(money);
+        const Item *const tempItem = mInventory->getItem(0);
+        if (tempItem)
+        {
+            const Inventory *const inv = PlayerInfo::getInventory();
+            const Item *const item = inv->findItem(tempItem->getId(), 1);
+            if (item)
+            {
+                mailHandler->setAttach(item->getInvIndex(),
+                    tempItem->getQuantity());
+            }
+        }
+
         mailHandler->send(mToField->getText(),
             mSubjectField->getText(),
             mMessageField->getText());
     }
+    else if (eventId == "add")
+    {
+        Item *const item = inventoryWindow->getSelectedItem();
+
+        if (!item)
+            return;
+
+        ItemAmountWindow::showWindow(ItemAmountWindow::MailAdd,
+            this, item);
+    }
+}
+
+void MailEdit::addItem(const Item *const item, const int amount)
+{
+    mInventory->addItem(item->getId(),
+        item->getType(),
+        amount,
+        item->getRefine(),
+        item->getColor(),
+        item->getIdentified(),
+        item->getDamaged(),
+        item->getFavorite(),
+        Equipm_false,
+        Equipped_false);
 }

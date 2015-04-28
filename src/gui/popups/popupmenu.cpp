@@ -1716,6 +1716,7 @@ void PopupMenu::showPopup(Window *const parent,
         case InventoryType::NPC:
 #ifdef EATHENA_SUPPORT
         case InventoryType::VENDING:
+        case InventoryType::MAIL:
 #endif
         case InventoryType::TYPE_END:
         default:

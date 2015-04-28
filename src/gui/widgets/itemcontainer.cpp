@@ -421,6 +421,11 @@ void ItemContainer::mousePressed(MouseEvent &event)
             case InventoryType::CART:
                 src = DRAGDROP_SOURCE_CART;
                 break;
+#ifdef EATHENA_SUPPORT
+            case InventoryType::MAIL:
+                src = DRAGDROP_SOURCE_MAIL;
+                break;
+#endif
             default:
 #ifdef EATHENA_SUPPORT
             case InventoryType::VENDING:
@@ -520,6 +525,11 @@ void ItemContainer::mouseReleased(MouseEvent &event)
             case InventoryType::NPC:
                 dst = DRAGDROP_SOURCE_NPC;
                 break;
+#ifdef EATHENA_SUPPORT
+            case InventoryType::MAIL:
+                dst = DRAGDROP_SOURCE_MAIL;
+                break;
+#endif
             case InventoryType::CART:
                 dst = DRAGDROP_SOURCE_CART;
                 break;
@@ -585,7 +595,8 @@ void ItemContainer::mouseReleased(MouseEvent &event)
             inventory = PlayerInfo::getInventory();
         }
         else if (src == DRAGDROP_SOURCE_INVENTORY
-                 && dst == DRAGDROP_SOURCE_NPC)
+                 && (dst == DRAGDROP_SOURCE_NPC
+                 || dst == DRAGDROP_SOURCE_MAIL))
         {
             inventory = PlayerInfo::getInventory();
             const Item *const item = inventory->getItem(dragDrop.getTag());
@@ -603,7 +614,7 @@ void ItemContainer::mouseReleased(MouseEvent &event)
             }
             return;
         }
-        else if (src == DRAGDROP_SOURCE_NPC)
+        else if (src == DRAGDROP_SOURCE_NPC || src == DRAGDROP_SOURCE_MAIL)
         {
             inventory = PlayerInfo::getInventory();
             const Item *const item = inventory->getItem(dragDrop.getTag());

@@ -29,7 +29,11 @@
 
 class Button;
 class IntTextField;
+class Inventory;
+class Item;
+class ItemContainer;
 class Label;
+class ScrollArea;
 class TextField;
 
 class MailEdit final : public Window,
@@ -44,18 +48,27 @@ class MailEdit final : public Window,
 
         void action(const ActionEvent &event) override final;
 
+        void addItem(const Item *const item, const int amount);
+
     private:
         Button *mSendButton;
         Button *mCloseButton;
+        Button *mAddButton;
         Label *mToLabel;
         Label *mSubjectLabel;
         Label *mMoneyLabel;
+        Label *mItemLabel;
         Label *mMessageLabel;
         TextField *mToField;
         TextField *mSubjectField;
         IntTextField *mMoneyField;
         TextField *mMessageField;
+        Inventory *mInventory;
+        ItemContainer *mItemContainer;
+        ScrollArea *mItemScrollArea;
 };
+
+extern MailEdit *mailEditWindow;
 
 #endif  // EATHENA_SUPPORT
 #endif  // GUI_WINDOWS_MAILEDIT_H

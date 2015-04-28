@@ -34,6 +34,7 @@ namespace InventoryType
         NPC,
 #ifdef EATHENA_SUPPORT
         VENDING,
+        MAIL,
 #endif
         TYPE_END
     };

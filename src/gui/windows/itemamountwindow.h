@@ -56,7 +56,8 @@ class ItemAmountWindow final : public Window,
             CartRemove,
             ItemSplit,
             ShopBuyAdd,
-            ShopSellAdd
+            ShopSellAdd,
+            MailAdd
         };
 
         A_DELETE_COPY(ItemAmountWindow)
