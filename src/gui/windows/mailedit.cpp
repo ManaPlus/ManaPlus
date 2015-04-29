@@ -40,6 +40,7 @@
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/textfield.h"
 
+#include "utils/delete2.h"
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
@@ -106,7 +107,6 @@ MailEdit::MailEdit() :
     placer(1, 1, mSubjectField, 3);
     placer(0, 2, mMoneyLabel);
     placer(1, 2, mMoneyField, 3);
-//    placer(0, 3, mItemScrollArea, 3);
     placer(0, 3, mItemLabel);
     placer(1, 3, mItemScrollArea, 2, 2);
     placer(3, 4, mAddButton, 1);
@@ -123,6 +123,7 @@ MailEdit::MailEdit() :
 MailEdit::~MailEdit()
 {
     mailEditWindow = nullptr;
+    delete2(mInventory);
 }
 
 void MailEdit::action(const ActionEvent &event)

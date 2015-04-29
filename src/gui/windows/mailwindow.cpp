@@ -51,6 +51,7 @@ MailWindow::MailWindow() :
     Window(_("Mail"), false, nullptr, "mail.xml"),
     ActionListener(),
     mMessages(),
+    mMessagesMap(),
     mMailModel(new ExtendedNamesModel),
     mListBox(new ExtendedListBox(this, mMailModel, "extendedlistbox.xml")),
     // TRANSLATORS: mail window button
@@ -98,6 +99,8 @@ MailWindow::~MailWindow()
 {
     delete_all(mMessages);
     delete2(mMailModel);
+    delete2(mailViewWindow);
+    delete2(mailEditWindow);
 }
 
 void MailWindow::action(const ActionEvent &event)
@@ -126,19 +129,34 @@ void MailWindow::clear()
 {
     delete_all(mMessages);
     mMessages.clear();
+    mMessagesMap.clear();
     mMailModel->clear();
     mListBox->setSelected(-1);
 }
 
 void MailWindow::addMail(MailMessage *const message)
 {
+    if (!message)
+        return;
     mMessages.push_back(message);
     mMailModel->add(strprintf("%s %s",
         message->unread ? " " : "U",
         message->title.c_str()));
+    mMessagesMap[message->id] = message;
 }
 
-void MailWindow::showMessage(const MailMessage *const mail)
+void MailWindow::showMessage(MailMessage *const mail)
 {
-    new MailView(mail);
+    if (!mail)
+        return;
+    const std::map<int, MailMessage*>::const_iterator
+        it = mMessagesMap.find(mail->id);
+    if (it != mMessagesMap.end())
+    {
+        const MailMessage *const mail2 = (*it).second;
+        mail->time = mail2->time;
+        mail->strTime = mail2->strTime;
+    }
+    delete mailViewWindow;
+    mailViewWindow = new MailView(mail);
 }

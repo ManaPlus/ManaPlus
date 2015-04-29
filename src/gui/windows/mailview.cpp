@@ -36,6 +36,7 @@
 #include "gui/widgets/layouttype.h"
 #include "gui/widgets/textfield.h"
 
+#include "utils/delete2.h"
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
@@ -47,9 +48,11 @@
 
 #include "debug.h"
 
+MailView *mailViewWindow = nullptr;
+
 MailView::MailView(const MailMessage *const message) :
     // TRANSLATORS: mail view window name
-    Window(_("View mail"), true, nullptr, "mailview.xml"),
+    Window(_("View mail"), false, nullptr, "mailview.xml"),
     ActionListener(),
     mMessage(message),
     // TRANSLATORS: mail view window button
@@ -70,9 +73,8 @@ MailView::MailView(const MailMessage *const message) :
     mMessageLabel(new Label(this, strprintf("%s %s", _("Message:"),
         message->text.c_str()))),
     // TRANSLATORS: mail view window label
-    mItemLabel(new Label(this, std::string(_("Item:")).append(" "))),
-    mMessageField(new TextField(this)),
-    mIcon(new Icon(this, nullptr))
+    mItemLabel(nullptr),
+    mIcon(nullptr)
 {
     setWindowName("MailView");
     setCloseButton(true);
@@ -88,8 +90,6 @@ MailView::MailView(const MailMessage *const message) :
 
     ContainerPlacer placer;
     placer = getPlacer(0, 0);
-
-    mMessageField->setWidth(100);
 
     int n = 0;
     placer(0, n++, mTimeLabel);
@@ -111,7 +111,8 @@ MailView::MailView(const MailMessage *const message) :
             paths.getStringValue("itemIcons").append(
             item.getDisplay().image), item.getDyeColorsString(1)));
 
-        mIcon->setImage(image);
+        mIcon = new Icon(this, image);
+        mItemLabel = new Label(this, std::string(_("Item:")).append(" "));
         placer(0, n, mItemLabel);
         placer(1, n++, mIcon);
     }
@@ -125,6 +126,14 @@ MailView::MailView(const MailMessage *const message) :
 
 MailView::~MailView()
 {
+    if (mIcon)
+    {
+        Image *const image = mIcon->getImage();
+        if (image)
+            image->decRef();
+    }
+    delete2(mMessage);
+    mailViewWindow = nullptr;
 }
 
 void MailView::action(const ActionEvent &event)

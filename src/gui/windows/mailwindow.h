@@ -54,10 +54,11 @@ class MailWindow final : public Window,
 
         void clear();
 
-        void showMessage(const MailMessage *const mail);
+        void showMessage(MailMessage *const mail);
 
     private:
         std::vector<MailMessage*> mMessages;
+        std::map<int, MailMessage*> mMessagesMap;
         ExtendedNamesModel *mMailModel;
         ExtendedListBox *mListBox;
         Button *mRefreshButton;

@@ -56,9 +56,10 @@ class MailView final : public Window,
         Label *mSubjectLabel;
         Label *mMessageLabel;
         Label *mItemLabel;
-        TextField *mMessageField;
         Icon *mIcon;
 };
+
+extern MailView *mailViewWindow;
 
 #endif  // EATHENA_SUPPORT
 #endif  // GUI_WINDOWS_MAILVIEW_H
