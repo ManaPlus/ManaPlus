@@ -599,6 +599,18 @@ namespace NotifyManager
             // TRANSLATORS: notification message
             N_("Message successfully deleted."),
             NotifyFlags::EMPTY},
+        {"mail get attach ok",
+            // TRANSLATORS: notification message
+            N_("You got attach successfully."),
+            NotifyFlags::EMPTY},
+        {"mail get attach error",
+            // TRANSLATORS: notification message
+            N_("Error on getting attach successfully."),
+            NotifyFlags::EMPTY},
+        {"mail get attach too many items",
+            // TRANSLATORS: notification message
+            N_("Can't get attach. Too many items."),
+            NotifyFlags::EMPTY},
     };
 }  // namespace NotifyManager
 #endif  // RESOURCES_NOTIFICATIONS_H

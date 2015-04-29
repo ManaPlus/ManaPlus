@@ -174,9 +174,21 @@ void MailHandler::processReadMail(Net::MessageIn &msg)
 
 void MailHandler::processGetAttachment(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
-
-    msg.readUInt8("flag");
+    switch(msg.readUInt8("flag"))
+    {
+        case 0:
+            NotifyManager::notify(NotifyTypes::MAIL_GET_ATTACH_OK);
+            break;
+        case 1:
+            NotifyManager::notify(NotifyTypes::MAIL_GET_ATTACH_ERROR);
+            break;
+        case 2:
+            NotifyManager::notify(NotifyTypes::MAIL_GET_ATTACH_TOO_MANY_ITEMS);
+            break;
+        default:
+            UNIMPLIMENTEDPACKET;
+            break;
+    }
 }
 
 void MailHandler::processSendMailAck(Net::MessageIn &msg)

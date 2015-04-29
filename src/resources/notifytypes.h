@@ -168,6 +168,9 @@ namespace NotifyTypes
         MAIL_RETURN_OK,
         MAIL_DELETE_ERROR,
         MAIL_DELETE_OK,
+        MAIL_GET_ATTACH_OK,
+        MAIL_GET_ATTACH_ERROR,
+        MAIL_GET_ATTACH_TOO_MANY_ITEMS,
 
         TYPE_END
     };
