@@ -27,7 +27,7 @@
 #include "gui/mailmessage.h"
 
 #include "gui/windows/maileditwindow.h"
-#include "gui/windows/mailview.h"
+#include "gui/windows/mailviewwindow.h"
 #include "gui/windows/setupwindow.h"
 
 #include "gui/widgets/button.h"
@@ -158,5 +158,5 @@ void MailWindow::showMessage(MailMessage *const mail)
         mail->strTime = mail2->strTime;
     }
     delete mailViewWindow;
-    mailViewWindow = new MailView(mail);
+    mailViewWindow = new MailViewWindow(mail);
 }

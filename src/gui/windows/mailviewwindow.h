@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_WINDOWS_MAILVIEW_H
-#define GUI_WINDOWS_MAILVIEW_H
+#ifndef GUI_WINDOWS_MAILVIEWWINDOW_H
+#define GUI_WINDOWS_MAILVIEWWINDOW_H
 
 #ifdef EATHENA_SUPPORT
 
@@ -34,15 +34,15 @@ class TextField;
 
 struct MailMessage;
 
-class MailView final : public Window,
-                       public ActionListener
+class MailViewWindow final : public Window,
+                             public ActionListener
 {
     public:
-        MailView(const MailMessage *const message);
+        MailViewWindow(const MailMessage *const message);
 
-        A_DELETE_COPY(MailView)
+        A_DELETE_COPY(MailViewWindow)
 
-        ~MailView();
+        ~MailViewWindow();
 
         void action(const ActionEvent &event) override final;
 
@@ -59,7 +59,7 @@ class MailView final : public Window,
         Icon *mIcon;
 };
 
-extern MailView *mailViewWindow;
+extern MailViewWindow *mailViewWindow;
 
 #endif  // EATHENA_SUPPORT
-#endif  // GUI_WINDOWS_MAILVIEW_H
+#endif  // GUI_WINDOWS_MAILVIEWWINDOW_H

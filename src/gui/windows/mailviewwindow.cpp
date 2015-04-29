@@ -18,7 +18,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gui/windows/mailview.h"
+#include "gui/windows/mailviewwindow.h"
 
 #include "configuration.h"
 
@@ -48,9 +48,9 @@
 
 #include "debug.h"
 
-MailView *mailViewWindow = nullptr;
+MailViewWindow *mailViewWindow = nullptr;
 
-MailView::MailView(const MailMessage *const message) :
+MailViewWindow::MailViewWindow(const MailMessage *const message) :
     // TRANSLATORS: mail view window name
     Window(_("View mail"), false, nullptr, "mailview.xml"),
     ActionListener(),
@@ -124,7 +124,7 @@ MailView::MailView(const MailMessage *const message) :
     enableVisibleSound(true);
 }
 
-MailView::~MailView()
+MailViewWindow::~MailViewWindow()
 {
     if (mIcon)
     {
@@ -136,7 +136,7 @@ MailView::~MailView()
     mailViewWindow = nullptr;
 }
 
-void MailView::action(const ActionEvent &event)
+void MailViewWindow::action(const ActionEvent &event)
 {
     const std::string &eventId = event.getId();
     if (eventId == "close")
