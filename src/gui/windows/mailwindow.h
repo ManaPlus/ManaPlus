@@ -56,6 +56,8 @@ class MailWindow final : public Window,
 
         void showMessage(MailMessage *const mail);
 
+        void removeMail(const int id);
+
     private:
         std::vector<MailMessage*> mMessages;
         std::map<int, MailMessage*> mMessagesMap;

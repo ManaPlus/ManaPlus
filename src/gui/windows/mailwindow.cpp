@@ -164,6 +164,37 @@ void MailWindow::addMail(MailMessage *const message)
     mMessagesMap[message->id] = message;
 }
 
+void MailWindow::removeMail(const int id)
+{
+    std::map<int, MailMessage*>::iterator it1 = mMessagesMap.find(id);
+    if (it1 != mMessagesMap.end())
+        mMessagesMap.erase(it1);
+
+    mMailModel->clear();
+
+    FOR_EACH (std::vector<MailMessage*>::iterator, it, mMessages)
+    {
+        MailMessage *message = *it;
+        if (message && message->id == id)
+        {
+            mMessages.erase(it);
+            delete message;
+            break;
+        }
+    }
+
+    FOR_EACH (std::vector<MailMessage*>::iterator, it, mMessages)
+    {
+        MailMessage *message = *it;
+        if (message)
+        {
+            mMailModel->add(strprintf("%s %s",
+                message->unread ? " " : "U",
+                message->title.c_str()));
+        }
+    }
+}
+
 void MailWindow::showMessage(MailMessage *const mail)
 {
     if (!mail)

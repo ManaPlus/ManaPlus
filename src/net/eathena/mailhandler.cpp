@@ -227,10 +227,17 @@ void MailHandler::processDeleteAck(Net::MessageIn &msg)
 
 void MailHandler::processMailReturn(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
-
-    msg.readInt32("message id");
-    msg.readInt16("fail flag");
+    const int mail = msg.readInt32("message id");
+    const int flag = msg.readInt16("fail flag");
+    if (flag)
+    {
+        NotifyManager::notify(NotifyTypes::MAIL_RETURN_ERROR);
+    }
+    else
+    {
+        NotifyManager::notify(NotifyTypes::MAIL_RETURN_OK);
+        mailWindow->removeMail(mail);
+    }
 }
 
 void MailHandler::refresh()

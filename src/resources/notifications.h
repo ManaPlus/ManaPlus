@@ -583,6 +583,14 @@ namespace NotifyManager
             // TRANSLATORS: notification message
             N_("Money attach failed."),
             NotifyFlags::EMPTY},
+        {"mail return error",
+            // TRANSLATORS: notification message
+            N_("Message return failed."),
+            NotifyFlags::EMPTY},
+        {"mail return ok",
+            // TRANSLATORS: notification message
+            N_("Message return success."),
+            NotifyFlags::EMPTY},
     };
 }  // namespace NotifyManager
 #endif  // RESOURCES_NOTIFICATIONS_H
