@@ -210,3 +210,51 @@ void MailWindow::showMessage(MailMessage *const mail)
     delete mailViewWindow;
     mailViewWindow = new MailViewWindow(mail);
 }
+
+void MailWindow::viewNext(const int id)
+{
+    FOR_EACH (std::vector<MailMessage*>::iterator, it, mMessages)
+    {
+        MailMessage *message = *it;
+        if (message && message->id == id)
+        {
+            ++ it;
+            if (it == mMessages.end())
+            {
+                it = mMessages.begin();
+                mListBox->setSelected(0);
+            }
+            else
+            {
+                mListBox->setSelected(mListBox->getSelected() + 1);
+            }
+            message = *it;
+            mailHandler->readMessage(message->id);
+            return;
+        }
+    }
+}
+
+void MailWindow::viewPrev(const int id)
+{
+    FOR_EACH (std::vector<MailMessage*>::iterator, it, mMessages)
+    {
+        MailMessage *message = *it;
+        if (message && message->id == id)
+        {
+            if (it == mMessages.begin())
+            {
+                it = mMessages.end();
+                mListBox->setSelected(mMessages.size() - 1);
+            }
+            else
+            {
+                mListBox->setSelected(mListBox->getSelected() - 1);
+            }
+            -- it;
+            message = *it;
+            mailHandler->readMessage(message->id);
+            return;
+        }
+    }
+}

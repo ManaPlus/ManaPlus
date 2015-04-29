@@ -26,7 +26,7 @@
 
 #include "gui/mailmessage.h"
 
-#include "gui/windows/setupwindow.h"
+#include "gui/windows/mailwindow.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/containerplacer.h"
@@ -59,6 +59,8 @@ MailViewWindow::MailViewWindow(const MailMessage *const message) :
     mGetAttachButton(nullptr),
     // TRANSLATORS: mail view window button
     mCloseButton(new Button(this, _("Close"), "close", this)),
+    mPrevButton(new Button(this, "<", "prev", this)),
+    mNextButton(new Button(this, ">", "next", this)),
     // TRANSLATORS: mail view window label
     mTimeLabel(new Label(this, strprintf("%s %s", _("Time:"),
         message->strTime.c_str()))),
@@ -119,9 +121,14 @@ MailViewWindow::MailViewWindow(const MailMessage *const message) :
     if (message->money || message->itemId)
     {
         mGetAttachButton = new Button(this, _("Get attach"), "attach", this);
-        placer(0, n, mGetAttachButton);
+        placer(0, n++, mGetAttachButton);
     }
-    placer(2, n, mCloseButton);
+    ContainerPlacer placer2;
+    placer2 = getPlacer(0, n);
+
+    placer2(0, 0, mPrevButton);
+    placer2(1, 0, mNextButton);
+    placer2(2, 0, mCloseButton);
 
     loadWindowState();
     enableVisibleSound(true);
@@ -150,5 +157,15 @@ void MailViewWindow::action(const ActionEvent &event)
     {
         if (mGetAttachButton)
             mailHandler->getAttach(mMessage->id);
+    }
+    else if (eventId == "next")
+    {
+        if (mMessage)
+            mailWindow->viewNext(mMessage->id);
+    }
+    else if (eventId == "prev")
+    {
+        if (mMessage)
+            mailWindow->viewPrev(mMessage->id);
     }
 }

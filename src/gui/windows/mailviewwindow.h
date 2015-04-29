@@ -50,6 +50,8 @@ class MailViewWindow final : public Window,
         const MailMessage *mMessage;
         Button *mGetAttachButton;
         Button *mCloseButton;
+        Button *mPrevButton;
+        Button *mNextButton;
         Label *mTimeLabel;
         Label *mMoneyLabel;
         Label *mFromLabel;
