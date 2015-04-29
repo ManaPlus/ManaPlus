@@ -166,6 +166,8 @@ namespace NotifyTypes
         MAIL_ATTACH_MONEY_ERROR,
         MAIL_RETURN_ERROR,
         MAIL_RETURN_OK,
+        MAIL_DELETE_ERROR,
+        MAIL_DELETE_OK,
 
         TYPE_END
     };

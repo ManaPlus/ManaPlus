@@ -591,6 +591,14 @@ namespace NotifyManager
             // TRANSLATORS: notification message
             N_("Message return success."),
             NotifyFlags::EMPTY},
+        {"mail delete error",
+            // TRANSLATORS: notification message
+            N_("Message deletion failed."),
+            NotifyFlags::EMPTY},
+        {"mail delete ok",
+            // TRANSLATORS: notification message
+            N_("Message successfully deleted."),
+            NotifyFlags::EMPTY},
     };
 }  // namespace NotifyManager
 #endif  // RESOURCES_NOTIFICATIONS_H

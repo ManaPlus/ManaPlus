@@ -219,10 +219,17 @@ void MailHandler::processSetAttachmentAck(Net::MessageIn &msg)
 
 void MailHandler::processDeleteAck(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
-
-    msg.readInt32("message id");
-    msg.readInt16("fail flag");
+    const int mail = msg.readInt32("message id");
+    const int flag = msg.readInt16("fail flag");
+    if (flag)
+    {
+        NotifyManager::notify(NotifyTypes::MAIL_DELETE_ERROR);
+    }
+    else
+    {
+        NotifyManager::notify(NotifyTypes::MAIL_DELETE_OK);
+        mailWindow->removeMail(mail);
+    }
 }
 
 void MailHandler::processMailReturn(Net::MessageIn &msg)
