@@ -56,7 +56,7 @@ MailViewWindow::MailViewWindow(const MailMessage *const message) :
     ActionListener(),
     mMessage(message),
     // TRANSLATORS: mail view window button
-    mGetAttachButton(new Button(this, _("Get attach"), "attach", this)),
+    mGetAttachButton(nullptr),
     // TRANSLATORS: mail view window button
     mCloseButton(new Button(this, _("Close"), "close", this)),
     // TRANSLATORS: mail view window label
@@ -116,8 +116,11 @@ MailViewWindow::MailViewWindow(const MailMessage *const message) :
         placer(0, n, mItemLabel);
         placer(1, n++, mIcon);
     }
-
-    placer(0, n, mGetAttachButton);
+    if (message->money || message->itemId)
+    {
+        mGetAttachButton = new Button(this, _("Get attach"), "attach", this);
+        placer(0, n, mGetAttachButton);
+    }
     placer(2, n, mCloseButton);
 
     loadWindowState();
@@ -142,5 +145,10 @@ void MailViewWindow::action(const ActionEvent &event)
     if (eventId == "close")
     {
         scheduleDelete();
+    }
+    else if (eventId == "attach")
+    {
+        if (mGetAttachButton)
+            mailHandler->getAttach(mMessage->id);
     }
 }
