@@ -123,6 +123,14 @@ void MailWindow::action(const ActionEvent &event)
         const MailMessage *const mail = mMessages[sel];
         mailHandler->readMessage(mail->id);
     }
+    else if (eventId == "delete")
+    {
+        const int sel = mListBox->getSelected();
+        if (sel < 0)
+            return;
+        const MailMessage *const mail = mMessages[sel];
+        mailHandler->deleteMessage(mail->id);
+    }
 }
 
 void MailWindow::clear()
