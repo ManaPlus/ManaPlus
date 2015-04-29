@@ -26,7 +26,7 @@
 
 #include "gui/mailmessage.h"
 
-#include "gui/windows/mailedit.h"
+#include "gui/windows/maileditwindow.h"
 #include "gui/windows/mailview.h"
 #include "gui/windows/setupwindow.h"
 
@@ -113,7 +113,7 @@ void MailWindow::action(const ActionEvent &event)
     else if (eventId == "new")
     {
         if (!mailEditWindow)
-            mailEditWindow = new MailEdit();
+            mailEditWindow = new MailEditWindow();
     }
     else if (eventId == "open")
     {

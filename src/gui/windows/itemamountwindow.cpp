@@ -35,7 +35,7 @@
 
 #include "gui/popups/itempopup.h"
 
-#include "gui/windows/mailedit.h"
+#include "gui/windows/maileditwindow.h"
 #include "gui/windows/shopwindow.h"
 #include "gui/windows/tradewindow.h"
 

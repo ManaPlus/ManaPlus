@@ -18,7 +18,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gui/windows/mailedit.h"
+#include "gui/windows/maileditwindow.h"
 
 #include "inventory.h"
 #include "item.h"
@@ -46,9 +46,9 @@
 
 #include "debug.h"
 
-MailEdit *mailEditWindow = nullptr;
+MailEditWindow *mailEditWindow = nullptr;
 
-MailEdit::MailEdit() :
+MailEditWindow::MailEditWindow() :
     // TRANSLATORS: mail edit window name
     Window(_("Edit mail"), false, nullptr, "mailedit.xml"),
     ActionListener(),
@@ -120,13 +120,13 @@ MailEdit::MailEdit() :
     enableVisibleSound(true);
 }
 
-MailEdit::~MailEdit()
+MailEditWindow::~MailEditWindow()
 {
     mailEditWindow = nullptr;
     delete2(mInventory);
 }
 
-void MailEdit::action(const ActionEvent &event)
+void MailEditWindow::action(const ActionEvent &event)
 {
     const std::string &eventId = event.getId();
     if (eventId == "close")
@@ -166,7 +166,7 @@ void MailEdit::action(const ActionEvent &event)
     }
 }
 
-void MailEdit::addItem(const Item *const item, const int amount)
+void MailEditWindow::addItem(const Item *const item, const int amount)
 {
     mInventory->addItem(item->getId(),
         item->getType(),

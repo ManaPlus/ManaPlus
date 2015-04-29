@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_WINDOWS_MAILEDIT_H
-#define GUI_WINDOWS_MAILEDIT_H
+#ifndef GUI_WINDOWS_MAILEDITWINDOW_H
+#define GUI_WINDOWS_MAILEDITWINDOW_H
 
 #ifdef EATHENA_SUPPORT
 
@@ -36,15 +36,15 @@ class Label;
 class ScrollArea;
 class TextField;
 
-class MailEdit final : public Window,
-                       public ActionListener
+class MailEditWindow final : public Window,
+                             public ActionListener
 {
     public:
-        MailEdit();
+        MailEditWindow();
 
-        A_DELETE_COPY(MailEdit)
+        A_DELETE_COPY(MailEditWindow)
 
-        ~MailEdit();
+        ~MailEditWindow();
 
         void action(const ActionEvent &event) override final;
 
@@ -68,7 +68,7 @@ class MailEdit final : public Window,
         ScrollArea *mItemScrollArea;
 };
 
-extern MailEdit *mailEditWindow;
+extern MailEditWindow *mailEditWindow;
 
 #endif  // EATHENA_SUPPORT
-#endif  // GUI_WINDOWS_MAILEDIT_H
+#endif  // GUI_WINDOWS_MAILEDITWINDOW_H
