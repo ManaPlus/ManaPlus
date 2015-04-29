@@ -64,6 +64,7 @@ class MailWindow final : public Window,
         Button *mRefreshButton;
         Button *mNewButton;
         Button *mDeleteButton;
+        Button *mReturnButton;
         Button *mOpenButton;
 };
 

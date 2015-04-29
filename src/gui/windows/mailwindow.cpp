@@ -61,6 +61,8 @@ MailWindow::MailWindow() :
     // TRANSLATORS: mail window button
     mDeleteButton(new Button(this, _("Delete"), "delete", this)),
     // TRANSLATORS: mail window button
+    mReturnButton(new Button(this, _("Return"), "return", this)),
+    // TRANSLATORS: mail window button
     mOpenButton(new Button(this, _("Open"), "open", this))
 {
     mListBox->postInit();
@@ -87,6 +89,7 @@ MailWindow::MailWindow() :
     placer(4, 1, mOpenButton);
     placer(4, 2, mNewButton);
     placer(4, 3, mDeleteButton);
+    placer(4, 4, mReturnButton);
 
     Layout &layout = getLayout();
     layout.setRowHeight(0, LayoutType::SET);
@@ -130,6 +133,14 @@ void MailWindow::action(const ActionEvent &event)
             return;
         const MailMessage *const mail = mMessages[sel];
         mailHandler->deleteMessage(mail->id);
+    }
+    else if (eventId == "return")
+    {
+        const int sel = mListBox->getSelected();
+        if (sel < 0)
+            return;
+        const MailMessage *const mail = mMessages[sel];
+        mailHandler->returnMessage(mail->id);
     }
 }
 
