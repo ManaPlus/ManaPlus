@@ -616,7 +616,7 @@ void InventoryHandler::processPlayerStorage(Net::MessageIn &msg)
     msg.readInt16("len");
     msg.readString(24, "storage name");
 
-    const int number = (msg.getLength() - 4 - 24) / 23;
+    const int number = (msg.getLength() - 4 - 24) / 24;
 
     for (int loop = 0; loop < number; loop++)
     {
