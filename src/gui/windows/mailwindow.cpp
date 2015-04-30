@@ -79,9 +79,9 @@ MailWindow::MailWindow() :
     if (setupWindow)
         setupWindow->registerWindowForReset(this);
 
-    setDefaultSize(387, 307, ImageRect::CENTER);
+    setDefaultSize(310, 180, ImageRect::CENTER);
     setMinWidth(310);
-    setMinHeight(179);
+    setMinHeight(250);
     center();
 
     mListScrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);

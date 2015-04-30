@@ -85,9 +85,9 @@ MailEditWindow::MailEditWindow() :
     setStickyButtonLock(true);
     setVisible(true);
 
-    setDefaultSize(380, 150, ImageRect::CENTER);
+    setDefaultSize(380, 200, ImageRect::CENTER);
     setMinWidth(200);
-    setMinHeight(100);
+    setMinHeight(200);
     center();
 
     ContainerPlacer placer;
