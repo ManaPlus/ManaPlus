@@ -322,9 +322,9 @@ void InventoryHandler::destroyStorage()
     BLOCK_START("InventoryHandler::closeStorage")
     if (storageWindow)
     {
-        storageWindow->unsetInventory();
+        InventoryWindow *const inv = storageWindow;
         storageWindow->close();
-        storageWindow = nullptr;
+        inv->unsetInventory();
     }
     BLOCK_END("InventoryHandler::closeStorage")
 }

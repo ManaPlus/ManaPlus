@@ -77,6 +77,7 @@
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/desktop.h"
+#include "gui/widgets/windowcontainer.h"
 
 #include "net/chathandler.h"
 #include "net/download.h"
@@ -583,6 +584,8 @@ void Client::gameClear()
 
     eventsManager.shutdown();
     WindowManager::deleteWindows();
+    if (windowContainer)
+        windowContainer->slowLogic();
 
     stopTimers();
 

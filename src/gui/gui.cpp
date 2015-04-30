@@ -271,6 +271,8 @@ Gui::~Gui()
     delete2(mSecureFont);
     delete2(mInfoParticleFont);
     delete2(mNpcFont);
+    if (windowContainer)
+        windowContainer->slowLogic();
     delete getTop();
 
     delete2(guiInput);
