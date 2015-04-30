@@ -114,7 +114,15 @@ MailViewWindow::MailViewWindow(const MailMessage *const message) :
             item.getDisplay().image), item.getDyeColorsString(1)));
 
         mIcon = new Icon(this, image);
-        mItemLabel = new Label(this, std::string(_("Item:")).append(" "));
+        if (message->itemAmount != 1)
+        {
+            mItemLabel = new Label(this, std::string(_("Item:")).append(
+                " (").append(toString(message->itemAmount)).append(") "));
+        }
+        else
+        {
+            mItemLabel = new Label(this, std::string(_("Item:")).append(" "));
+        }
         placer(0, n, mItemLabel);
         placer(1, n++, mIcon);
     }
