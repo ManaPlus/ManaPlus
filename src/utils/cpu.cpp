@@ -30,7 +30,8 @@ int mCpuFlags = 0;
 
 void Cpu::detect()
 {
-#if defined(__GNUC__) && (GCC_VERSION >= 40800) && !defined(ANDROID)
+#if (defined(__amd64__) || defined(__i386__)) && defined(__GNUC__) \
+    && (GCC_VERSION >= 40800) && !defined(ANDROID)
     __builtin_cpu_init();
     if (__builtin_cpu_supports ("mmx"))
         mCpuFlags |= FEATURE_MMX;
@@ -85,6 +86,8 @@ void Cpu::detect()
     }
     fclose(file);
     logger->log("cpu features was not detected");
+#else
+    logger->log("cpu features not supported");
 #endif
 }
 
