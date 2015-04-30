@@ -53,6 +53,7 @@ SET (FILES
     listbox.xml
     listbox_xxhigh.xml
     login.xml
+    mailedit.xml
     map.xml
     ministatus.xml
     mouse.png

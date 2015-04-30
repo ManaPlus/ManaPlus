@@ -5,6 +5,7 @@ SET (FILES
     equipment.xml
     info.xml
     inventory.xml
+    mailedit.xml
     npc.xml
     ok.xml
     outfits.xml

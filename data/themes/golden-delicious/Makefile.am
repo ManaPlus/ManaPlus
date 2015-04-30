@@ -56,6 +56,7 @@ gui_DATA =				\
 	listbox_xhigh.xml		\
 	listbox_xxhigh.xml		\
 	login.xml		\
+	mailedit.xml		\
 	map.xml		\
 	ministatus.xml		\
 	mouse.png		\

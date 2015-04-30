@@ -5,6 +5,7 @@ SET (FILES
     info.xml
     inventory.xml
     item_shortcut_bgr.png
+    mailedit.xml
     mouse.png
     npc.xml
     ok.xml
