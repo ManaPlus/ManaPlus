@@ -611,6 +611,10 @@ namespace NotifyManager
             // TRANSLATORS: notification message
             N_("Can't get attach. Too many items."),
             NotifyFlags::EMPTY},
+        {"new mail",
+            // TRANSLATORS: notification message
+            "%s",
+            NotifyFlags::STRING},
     };
 }  // namespace NotifyManager
 #endif  // RESOURCES_NOTIFICATIONS_H

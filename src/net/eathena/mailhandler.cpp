@@ -34,6 +34,7 @@
 
 #include "resources/notifytypes.h"
 
+#include "utils/gettext.h"
 #include "utils/stringutils.h"
 
 #include "debug.h"
@@ -209,11 +210,12 @@ void MailHandler::processSendMailAck(Net::MessageIn &msg)
 
 void MailHandler::processNewMail(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
-
     msg.readInt32("message id");
-    msg.readString(40, "title");
-    msg.readString(24, "sender name");
+    const std::string subj = msg.readString(40, "title");
+    const std::string sender = msg.readString(24, "sender name");
+    NotifyManager::notify(NotifyTypes::NEW_MAIL,
+        strprintf(_("You have new mail from %s with subject %s"),
+        sender.c_str(), subj.c_str()));
 }
 
 void MailHandler::processSetAttachmentAck(Net::MessageIn &msg)

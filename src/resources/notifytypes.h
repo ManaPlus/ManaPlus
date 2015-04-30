@@ -171,6 +171,7 @@ namespace NotifyTypes
         MAIL_GET_ATTACH_OK,
         MAIL_GET_ATTACH_ERROR,
         MAIL_GET_ATTACH_TOO_MANY_ITEMS,
+        NEW_MAIL,
 
         TYPE_END
     };
