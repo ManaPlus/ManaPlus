@@ -216,7 +216,7 @@ void MailHandler::processNewMail(Net::MessageIn &msg)
     NotifyManager::notify(NotifyTypes::NEW_MAIL,
         strprintf(_("You have new mail from %s with subject %s"),
         sender.c_str(), subj.c_str()));
-    refresh();
+    mailHandler->refresh();
 }
 
 void MailHandler::processSetAttachmentAck(Net::MessageIn &msg)
