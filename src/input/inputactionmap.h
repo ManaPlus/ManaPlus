@@ -4474,6 +4474,11 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputCondition::INGAME,
         "confset|setconf",
         true},
+    {"keyServerConfSet",
+        defaultAction(&Actions::serverConfSet),
+        InputCondition::INGAME,
+        "servconfset|setservconf",
+        true},
 };
 
 #undef defaultAction

@@ -922,4 +922,17 @@ impHandler(confSet)
     return false;
 }
 
+impHandler(serverConfSet)
+{
+    std::string name;
+    std::string val;
+
+    if (parse2Str(event.args, name, val))
+    {
+        serverConfig.setValue(name, val);
+        return true;
+    }
+    return false;
+}
+
 }  // namespace Actions
