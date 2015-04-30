@@ -747,6 +747,24 @@ bool parse2Int(const std::string &args, int &x, int &y)
     return isValid;
 }
 
+bool parse2Str(const std::string &args, std::string &str1, std::string &str2)
+{
+    bool isValid = false;
+    size_t pos = args.find(" ");
+    if (pos == std::string::npos)
+        pos = args.find(",");
+    if (pos != std::string::npos)
+    {
+        if (pos + 1 < args.length())
+        {
+            str1 = args.substr(0, pos).c_str();
+            str2 = args.substr(pos + 1, args.length()).c_str();
+            isValid = true;
+        }
+    }
+    return isValid;
+}
+
 uint32_t parseNumber(const std::string &str)
 {
     uint32_t i = 0;

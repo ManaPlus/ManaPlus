@@ -240,6 +240,8 @@ void secureChatCommand(std::string &str);
 
 bool parse2Int(const std::string &args, int &x, int &y);
 
+bool parse2Str(const std::string &args, std::string &str1, std::string &str2);
+
 uint32_t parseNumber(const std::string &str);
 
 std::string removeToken(std::string &str, const std::string &token);
