@@ -63,6 +63,8 @@ class MailWindow final : public Window,
 
         void viewPrev(const int id);
 
+        void mouseClicked(MouseEvent &event) override final;
+
     private:
         std::vector<MailMessage*> mMessages;
         std::map<int, MailMessage*> mMessagesMap;

@@ -263,3 +263,16 @@ void MailWindow::viewPrev(const int id)
         }
     }
 }
+
+void MailWindow::mouseClicked(MouseEvent &event)
+{
+    if (event.getButton() == MouseButton::LEFT)
+    {
+        event.consume();
+        if (event.getClickCount() == 2 &&
+            event.getSource() == mListBox)
+        {
+            action(ActionEvent(mListBox, "open"));
+        }
+    }
+}
