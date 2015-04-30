@@ -276,3 +276,8 @@ void MailWindow::mouseClicked(MouseEvent &event)
         }
     }
 }
+
+void MailWindow::postConnection()
+{
+    mailHandler->refresh();
+}

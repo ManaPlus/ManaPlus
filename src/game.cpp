@@ -416,6 +416,9 @@ Game::Game() :
     initEngines();
 
     chatWindow->postConnection();
+#ifdef EATHENA_SUPPORT
+    mailWindow->postConnection();
+#endif
 
     // Initialize beings
     if (actorManager)

@@ -65,6 +65,8 @@ class MailWindow final : public Window,
 
         void mouseClicked(MouseEvent &event) override final;
 
+        void postConnection();
+
     private:
         std::vector<MailMessage*> mMessages;
         std::map<int, MailMessage*> mMessagesMap;
