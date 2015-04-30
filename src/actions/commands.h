@@ -88,6 +88,7 @@ namespace Actions
     decHandler(confSet);
     decHandler(serverConfSet);
     decHandler(confGet);
+    decHandler(serverConfGet);
 }  // namespace Actions
 
 #undef decHandler

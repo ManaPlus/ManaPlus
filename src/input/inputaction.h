@@ -599,6 +599,7 @@ namespace InputAction
         CONF_SET,
         SERVER_CONF_SET,
         CONG_GET,
+        SERVER_CONG_GET,
         TOTAL
     };
 }  // namespace InputAction
