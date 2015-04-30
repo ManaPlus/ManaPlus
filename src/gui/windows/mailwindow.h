@@ -30,6 +30,7 @@
 class Button;
 class ExtendedListBox;
 class ExtendedNamesModel;
+class ScrollArea;
 
 struct MailMessage;
 
@@ -67,6 +68,7 @@ class MailWindow final : public Window,
         std::map<int, MailMessage*> mMessagesMap;
         ExtendedNamesModel *mMailModel;
         ExtendedListBox *mListBox;
+        ScrollArea *mListScrollArea;
         Button *mRefreshButton;
         Button *mNewButton;
         Button *mDeleteButton;

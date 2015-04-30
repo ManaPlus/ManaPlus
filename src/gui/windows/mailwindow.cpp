@@ -36,6 +36,7 @@
 #include "gui/widgets/label.h"
 #include "gui/widgets/layout.h"
 #include "gui/widgets/layouttype.h"
+#include "gui/widgets/scrollarea.h"
 
 #include "utils/delete2.h"
 #include "utils/dtor.h"
@@ -54,6 +55,8 @@ MailWindow::MailWindow() :
     mMessagesMap(),
     mMailModel(new ExtendedNamesModel),
     mListBox(new ExtendedListBox(this, mMailModel, "extendedlistbox.xml")),
+    mListScrollArea(new ScrollArea(this, mListBox,
+        getOptionBool("showlistbackground"), "mail_listbackground.xml")),
     // TRANSLATORS: mail window button
     mRefreshButton(new Button(this, _("Refresh"), "refresh", this)),
     // TRANSLATORS: mail window button
@@ -81,10 +84,12 @@ MailWindow::MailWindow() :
     setMinHeight(179);
     center();
 
+    mListScrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
+
     ContainerPlacer placer;
     placer = getPlacer(0, 0);
 
-    placer(0, 0, mListBox, 4, 4).setPadding(3);
+    placer(0, 0, mListScrollArea, 4, 5).setPadding(3);
     placer(4, 0, mRefreshButton);
     placer(4, 1, mOpenButton);
     placer(4, 2, mNewButton);
