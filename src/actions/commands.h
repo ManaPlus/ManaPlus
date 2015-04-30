@@ -87,6 +87,7 @@ namespace Actions
     decHandler(leaveChatRoom);
     decHandler(confSet);
     decHandler(serverConfSet);
+    decHandler(confGet);
 }  // namespace Actions
 
 #undef decHandler

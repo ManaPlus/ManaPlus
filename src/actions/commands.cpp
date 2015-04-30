@@ -935,4 +935,16 @@ impHandler(serverConfSet)
     return false;
 }
 
+impHandler(confGet)
+{
+    const std::string args = event.args;
+    if (args.empty())
+        return false;
+
+    const std::string str = strprintf(_("Config value: %s"),
+        config.getStringValue(args).c_str());
+    outStringNormal(event.tab, str, str);
+    return true;
+}
+
 }  // namespace Actions

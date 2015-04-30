@@ -598,6 +598,7 @@ namespace InputAction
         WINDOW_MAIL,
         CONF_SET,
         SERVER_CONF_SET,
+        CONG_GET,
         TOTAL
     };
 }  // namespace InputAction
