@@ -909,4 +909,17 @@ impHandler0(leaveChatRoom)
 #endif
 }
 
+impHandler(confSet)
+{
+    std::string name;
+    std::string val;
+
+    if (parse2Str(event.args, name, val))
+    {
+        config.setValue(name, val);
+        return true;
+    }
+    return false;
+}
+
 }  // namespace Actions

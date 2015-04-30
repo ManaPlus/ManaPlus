@@ -596,6 +596,7 @@ namespace InputAction
         LEAVE_ROOM,
         WINDOW_QUICK_SETTINGS,
         WINDOW_MAIL,
+        CONF_SET,
         TOTAL
     };
 }  // namespace InputAction

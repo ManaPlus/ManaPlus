@@ -4469,6 +4469,11 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputCondition::GAME | InputCondition::NOTARGET,
         "mailwindow|mail",
         false},
+    {"keyConfSet",
+        defaultAction(&Actions::confSet),
+        InputCondition::INGAME,
+        "confset|setconf",
+        true},
 };
 
 #undef defaultAction
