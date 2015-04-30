@@ -26,6 +26,7 @@
 
 #include "gui/mailmessage.h"
 
+#include "gui/windows/maileditwindow.h"
 #include "gui/windows/mailwindow.h"
 
 #include "gui/widgets/button.h"
@@ -61,6 +62,8 @@ MailViewWindow::MailViewWindow(const MailMessage *const message) :
     mCloseButton(new Button(this, _("Close"), "close", this)),
     mPrevButton(new Button(this, "<", "prev", this)),
     mNextButton(new Button(this, ">", "next", this)),
+    // TRANSLATORS: mail view window button
+    mReplyButton(new Button(this, _("Reply"), "reply", this)),
     // TRANSLATORS: mail view window label
     mTimeLabel(new Label(this, strprintf("%s %s", _("Time:"),
         message->strTime.c_str()))),
@@ -136,7 +139,8 @@ MailViewWindow::MailViewWindow(const MailMessage *const message) :
 
     placer2(0, 0, mPrevButton);
     placer2(1, 0, mNextButton);
-    placer2(2, 0, mCloseButton);
+    placer2(3, 0, mReplyButton);
+    placer2(4, 0, mCloseButton);
 
     loadWindowState();
     enableVisibleSound(true);
@@ -175,5 +179,17 @@ void MailViewWindow::action(const ActionEvent &event)
     {
         if (mMessage)
             mailWindow->viewPrev(mMessage->id);
+    }
+    else if (eventId == "reply")
+    {
+        if (!mMessage)
+            return;
+        if (mailEditWindow)
+            mailEditWindow->scheduleDelete();
+        mailEditWindow = new MailEditWindow;
+        mailEditWindow->setTo(mMessage->sender);
+        mailEditWindow->setSubject("Re:" + mMessage->title);
+        mailEditWindow->setMessage(">" + mMessage->text);
+        scheduleDelete();
     }
 }

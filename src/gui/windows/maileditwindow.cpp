@@ -179,3 +179,18 @@ void MailEditWindow::addItem(const Item *const item, const int amount)
         Equipm_false,
         Equipped_false);
 }
+
+void MailEditWindow::setSubject(const std::string &str)
+{
+    mSubjectField->setText(str);
+}
+
+void MailEditWindow::setTo(const std::string &str)
+{
+    mToField->setText(str);
+}
+
+void MailEditWindow::setMessage(const std::string &str)
+{
+    mMessageField->setText(str);
+}

@@ -52,6 +52,7 @@ class MailViewWindow final : public Window,
         Button *mCloseButton;
         Button *mPrevButton;
         Button *mNextButton;
+        Button *mReplyButton;
         Label *mTimeLabel;
         Label *mMoneyLabel;
         Label *mFromLabel;

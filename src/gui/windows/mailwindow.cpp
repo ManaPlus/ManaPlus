@@ -121,7 +121,7 @@ void MailWindow::action(const ActionEvent &event)
     else if (eventId == "new")
     {
         if (!mailEditWindow)
-            mailEditWindow = new MailEditWindow();
+            mailEditWindow = new MailEditWindow;
     }
     else if (eventId == "open")
     {

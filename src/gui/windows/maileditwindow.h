@@ -50,6 +50,12 @@ class MailEditWindow final : public Window,
 
         void addItem(const Item *const item, const int amount);
 
+        void setSubject(const std::string &str);
+
+        void setTo(const std::string &str);
+
+        void setMessage(const std::string &str);
+
     private:
         Button *mSendButton;
         Button *mCloseButton;
