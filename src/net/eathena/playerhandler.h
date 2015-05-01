@@ -109,6 +109,8 @@ class PlayerHandler final : public MessageHandler, public Ea::PlayerHandler
         static void processPlayerAutoShadowSpellList(Net::MessageIn &msg);
 
         static void processPlayerRankPoints(Net::MessageIn &msg);
+
+        static void processPlayerClientCommand(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

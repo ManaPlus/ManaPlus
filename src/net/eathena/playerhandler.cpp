@@ -28,9 +28,13 @@
 
 #include "gui/windows/statuswindow.h"
 
+#include "input/inputmanager.h"
+
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 #include "net/eathena/inventoryhandler.h"
+
+#include "utils/stringutils.h"
 
 #include "debug.h"
 
@@ -72,6 +76,7 @@ PlayerHandler::PlayerHandler() :
         SMSG_PLAYER_EQUIP_TICK_ACK,
         SMSG_AUTOSHADOW_SPELL_LIST,
         SMSG_PLAYER_RANK_POINTS,
+        SMSG_PLAYER_CLIENT_COMMAND,
         0
     };
     handledMessages = _messages;
@@ -189,6 +194,10 @@ void PlayerHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_PLAYER_RANK_POINTS:
             processPlayerRankPoints(msg);
+            break;
+
+        case SMSG_PLAYER_CLIENT_COMMAND:
+            processPlayerClientCommand(msg);
             break;
 
         default:
@@ -635,6 +644,21 @@ void PlayerHandler::processPlayerRankPoints(Net::MessageIn &msg)
     msg.readInt16("type");
     msg.readInt32("points");
     msg.readInt32("fame");
+}
+
+void PlayerHandler::processPlayerClientCommand(Net::MessageIn &msg)
+{
+    const int sz = msg.readInt16("len") - 4;
+    std::string command = msg.readString(sz, "command");
+    std::string cmd;
+    std::string args;
+
+    if (!parse2Str(command, cmd, args))
+    {
+        cmd = command;
+        args.clear();
+    }
+    inputManager.executeChatCommand(cmd, args, nullptr);
 }
 
 }  // namespace EAthena

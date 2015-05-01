@@ -437,6 +437,8 @@
 
 #define SMSG_MAP_MUSIC               0x0b05
 
+#define SMSG_PLAYER_CLIENT_COMMAND   0x0b16
+
 #define SMSG_CART_INFO               0x0121
 #define SMSG_CART_REMOVE             0x012b
 
