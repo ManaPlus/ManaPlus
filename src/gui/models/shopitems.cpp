@@ -29,6 +29,7 @@
 #include "debug.h"
 
 ShopItems::ShopItems(const bool mergeDuplicates) :
+    mAllShopItems(),
     mShopItems(),
     mMergeDuplicates(mergeDuplicates)
 {
@@ -58,6 +59,7 @@ ShopItem *ShopItems::addItem(const int id,
 {
     ShopItem *const item = new ShopItem(-1, id, type, color, amount, price);
     mShopItems.push_back(item);
+    mAllShopItems.push_back(item);
     return item;
 }
 
@@ -72,6 +74,7 @@ ShopItem *ShopItems::addItemNoDup(const int id,
     {
         item = new ShopItem(-1, id, type, color, amount, price);
         mShopItems.push_back(item);
+        mAllShopItems.push_back(item);
     }
     return item;
 }
@@ -95,6 +98,7 @@ ShopItem *ShopItems::addItem2(const int inventoryIndex,
     {
         item = new ShopItem(inventoryIndex, id, type, color, quantity, price);
         mShopItems.push_back(item);
+        mAllShopItems.push_back(item);
     }
     return item;
 }
@@ -127,7 +131,8 @@ void ShopItems::del(const unsigned int i)
 
 void ShopItems::clear()
 {
-    delete_all(mShopItems);
+    delete_all(mAllShopItems);
+    mAllShopItems.clear();
     mShopItems.clear();
 }
 
@@ -145,4 +150,15 @@ ShopItem *ShopItems::findItem(const int id, const unsigned char color) const
     }
 
     return nullptr;
+}
+
+void ShopItems::updateList()
+{
+    mShopItems.clear();
+    FOR_EACH (std::vector<ShopItem*>::iterator, it, mAllShopItems)
+    {
+        ShopItem *const item = *it;
+        if (item && item->isVisible())
+            mShopItems.push_back(item);
+    }
 }

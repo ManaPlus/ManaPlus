@@ -38,6 +38,7 @@ class IntTextField;
 class Label;
 class ScrollArea;
 class Slider;
+class TextField;
 
 /**
  * The buy dialog.
@@ -149,6 +150,8 @@ class BuyDialog final : public Window,
     private:
         void updateSlider(const int selectedItem);
 
+        void applyNameFilter(const std::string &filter);
+
         typedef std::list<BuyDialog*> DialogList;
         static DialogList instances;
 
@@ -167,6 +170,8 @@ class BuyDialog final : public Window,
         ShopItems *mShopItems;
         SortListModelBuy *mSortModel;
         DropDown *mSortDropDown;
+        TextField *mFilterTextField;
+        Label *mFilterLabel;
 
         int mNpcId;
         int mMoney;

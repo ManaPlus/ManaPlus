@@ -129,8 +129,13 @@ class ShopItems final : public ListModel
         std::vector<ShopItem*> &items() A_WARN_UNUSED
         { return mShopItems; }
 
+        std::vector<ShopItem*> &allItems() A_WARN_UNUSED
+        { return mAllShopItems; }
+
         void setMergeDuplicates(const bool b)
         { mMergeDuplicates = b; }
+
+        void updateList();
 
     private:
         /**
@@ -143,6 +148,8 @@ class ShopItems final : public ListModel
                            const unsigned char color) const A_WARN_UNUSED;
 
         /** The list of items in the shop. */
+        std::vector<ShopItem*> mAllShopItems;
+
         std::vector<ShopItem*> mShopItems;
 
         /** Look for duplicate entries on addition. */

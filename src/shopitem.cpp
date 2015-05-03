@@ -47,7 +47,8 @@ ShopItem::ShopItem(const int inventoryIndex,
     mDisplayName(),
     mDuplicates(),
     mPrice(price),
-    mShowQuantity(true)
+    mShowQuantity(true),
+    mVisible(true)
 {
     updateDisplayName(quantity);
     setInvIndex(inventoryIndex);
@@ -67,7 +68,8 @@ ShopItem::ShopItem(const int id,
     mDisplayName(),
     mDuplicates(),
     mPrice(price),
-    mShowQuantity(false)
+    mShowQuantity(false),
+    mVisible(true)
 {
     updateDisplayName(0);
     setInvIndex(-1);

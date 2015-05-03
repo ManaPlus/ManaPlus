@@ -44,6 +44,7 @@
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/shoplistbox.h"
 #include "gui/widgets/slider.h"
+#include "gui/widgets/textfield.h"
 
 #include "net/adminhandler.h"
 #include "net/buysellhandler.h"
@@ -177,6 +178,8 @@ BuyDialog::BuyDialog() :
     SelectionListener(),
     mSortModel(nullptr),
     mSortDropDown(nullptr),
+    mFilterTextField(new TextField(this, "", true, this, "namefilter", true)),
+    mFilterLabel(nullptr),
     mNpcId(Items),
     mMoney(0),
     mAmountItems(0),
@@ -193,6 +196,8 @@ BuyDialog::BuyDialog(const int npcId) :
     SelectionListener(),
     mSortModel(nullptr),
     mSortDropDown(nullptr),
+    mFilterTextField(new TextField(this, "", true, this, "namefilter", true)),
+    mFilterLabel(nullptr),
     mNpcId(npcId),
     mMoney(0),
     mAmountItems(0),
@@ -209,6 +214,8 @@ BuyDialog::BuyDialog(std::string nick) :
     SelectionListener(),
     mSortModel(new SortListModelBuy),
     mSortDropDown(new DropDown(this, mSortModel, false, false, this, "sort")),
+    mFilterTextField(new TextField(this, "", true, this, "namefilter", true)),
+    mFilterLabel(nullptr),
     mNpcId(Nick),
     mMoney(0),
     mAmountItems(0),
@@ -287,6 +294,8 @@ void BuyDialog::init()
     mShopItemList->addActionListener(this);
     mShopItemList->addSelectionListener(this);
 
+    mFilterTextField->setWidth(100);
+
     ContainerPlacer placer = getPlacer(0, 0);
     placer(0, 0, mScrollArea, 9, 5).setPadding(3);
     placer(0, 5, mDecreaseButton);
@@ -298,7 +307,17 @@ void BuyDialog::init()
     placer(2, 6, mAmountField, 2);
     placer(0, 7, mMoneyLabel, 8);
     if (mSortDropDown)
+    {
         placer(0, 8, mSortDropDown, 2);
+    }
+    else
+    {
+        // TRANSLATORS: buy dialog label
+        mFilterLabel = new Label(this, _("Filter:"));
+        mFilterLabel->adjustSize();
+        placer(0, 8, mFilterLabel, 2);
+    }
+    placer(2, 8, mFilterTextField, 2);
     placer(7, 8, mBuyButton);
     placer(8, 8, mQuitButton);
 
@@ -421,6 +440,10 @@ void BuyDialog::action(const ActionEvent &event)
         if (mSortDropDown)
             config.setValue("buySortOrder", mSortDropDown->getSelected());
         return;
+    }
+    else if (eventId == "namefilter")
+    {
+        applyNameFilter(mFilterTextField->getText());
     }
 
     const int selectedItem = mShopItemList->getSelected();
@@ -623,4 +646,24 @@ void BuyDialog::closeAll()
         if (*it)
             (*it)->close();
     }
+}
+
+void BuyDialog::applyNameFilter(const std::string &filter)
+{
+    std::vector<ShopItem*> &items = mShopItems->allItems();
+    std::string filterStr = filter;
+    toLower(filterStr);
+    FOR_EACH (std::vector<ShopItem*>::iterator, it, items)
+    {
+        ShopItem *const item = *it;
+        if (!item)
+            continue;
+        std::string name = item->getName();
+        toLower(name);
+        if (name.find(filterStr) != std::string::npos)
+            item->setVisible(true);
+        else
+            item->setVisible(false);
+    }
+    mShopItems->updateList();
 }
