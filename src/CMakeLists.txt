@@ -384,12 +384,6 @@ SET(SRCS
     gui/windows/killstats.h
     gui/windows/logindialog.cpp
     gui/windows/logindialog.h
-    gui/windows/maileditwindow.cpp
-    gui/windows/maileditwindow.h
-    gui/windows/mailviewwindow.cpp
-    gui/windows/mailviewwindow.h
-    gui/windows/mailwindow.cpp
-    gui/windows/mailwindow.h
     gui/windows/minimap.cpp
     gui/windows/minimap.h
     gui/windows/ministatuswindow.cpp
@@ -1427,6 +1421,12 @@ SET(SRCS_EATHENA
     gui/windows/buyingstoreselldialog.h
     gui/windows/eggselectiondialog.cpp
     gui/windows/eggselectiondialog.h
+    gui/windows/maileditwindow.cpp
+    gui/windows/maileditwindow.h
+    gui/windows/mailviewwindow.cpp
+    gui/windows/mailviewwindow.h
+    gui/windows/mailwindow.cpp
+    gui/windows/mailwindow.h
     listeners/banklistener.cpp
     listeners/banklistener.h
     listeners/buyingstoremodelistener.cpp

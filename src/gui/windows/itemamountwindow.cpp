@@ -94,10 +94,12 @@ void ItemAmountWindow::finish(const Item *const item,
             if (shopWindow)
                 shopWindow->addSellItem(item, amount, price);
             break;
+#ifdef EATHENA_SUPPORT
         case MailAdd:
             if (mailEditWindow)
                 mailEditWindow->addItem(item, amount);
             break;
+#endif
         default:
             break;
     }
@@ -239,10 +241,12 @@ ItemAmountWindow::ItemAmountWindow(const Usage usage, Window *const parent,
             // TRANSLATORS: amount window message
             setCaption(_("Select amount of items to store."));
             break;
+#ifdef EATHENA_SUPPORT
         case MailAdd:
             // TRANSLATORS: amount window message
             setCaption(_("Select amount of items to send."));
             break;
+#endif
         case CartAdd:
             // TRANSLATORS: amount window message
             setCaption(_("Select amount of items to store to cart."));

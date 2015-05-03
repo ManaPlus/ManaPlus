@@ -315,11 +315,13 @@ std::string Inventory::getName() const
             // TRANSLATORS: inventory type name
             return N_("Npc");
         }
+#ifdef EATHENA_SUPPORT
         case InventoryType::MAIL:
         {
             // TRANSLATORS: inventory type name
             return N_("Mail");
         }
+#endif
         case InventoryType::TRADE:
         {
             // TRANSLATORS: inventory type name

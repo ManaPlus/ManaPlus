@@ -335,8 +335,12 @@ impHandler0(quickWindowShow)
 
 impHandler0(mailWindowShow)
 {
+#ifdef EATHENA_SUPPORT
     showHideWindow(mailWindow);
     return true;
+#else
+    return false;
+#endif
 }
 
 }  // namespace Actions

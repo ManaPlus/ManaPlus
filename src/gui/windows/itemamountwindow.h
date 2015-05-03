@@ -57,7 +57,9 @@ class ItemAmountWindow final : public Window,
             ItemSplit,
             ShopBuyAdd,
             ShopSellAdd,
+#ifdef EATHENA_SUPPORT
             MailAdd
+#endif
         };
 
         A_DELETE_COPY(ItemAmountWindow)
