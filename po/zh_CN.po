@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2015-04-25 14:28+0300\n"
+"POT-Creation-Date: 2015-05-04 02:30+0300\n"
 "PO-Revision-Date: 2015-04-06 11:05+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/manaplus/"
@@ -40,7 +40,7 @@ msgstr ""
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: text dialog button
 #. TRANSLATORS: ok dialog button
-#: src/actions/actions.cpp:148 src/client.cpp:1462 src/client.cpp:1489
+#: src/actions/actions.cpp:148 src/client.cpp:1465 src/client.cpp:1492
 #: src/gamemodifiers.cpp:439 src/gui/dialogsmanager.cpp:158
 #: src/gui/dialogsmanager.cpp:174 src/gui/widgets/tabs/setup_input.cpp:164
 #: src/gui/widgets/tabs/setup_theme.cpp:312
@@ -56,7 +56,7 @@ msgstr ""
 #: src/gui/windows/charselectdialog.cpp:320 src/gui/windows/editdialog.cpp:49
 #: src/gui/windows/editserverdialog.cpp:59
 #: src/gui/windows/editserverdialog.cpp:217
-#: src/gui/windows/itemamountwindow.cpp:167 src/gui/windows/quitdialog.cpp:68
+#: src/gui/windows/itemamountwindow.cpp:174 src/gui/windows/quitdialog.cpp:68
 #: src/gui/windows/registerdialog.cpp:243 src/gui/windows/socialwindow.cpp:507
 #: src/gui/windows/textdialog.cpp:48 src/gui/windows/unregisterdialog.cpp:146
 #: src/net/ea/charserverhandler.cpp:143 src/net/ea/charserverhandler.cpp:162
@@ -288,6 +288,16 @@ msgstr ""
 msgid "enemy"
 msgstr ""
 
+#: src/actions/commands.cpp:944
+#, c-format
+msgid "Config value: %s"
+msgstr ""
+
+#: src/actions/commands.cpp:956
+#, c-format
+msgid "Server config value: %s"
+msgstr ""
+
 #: src/actions/pets.cpp:104
 msgid "Rename your pet"
 msgstr ""
@@ -303,7 +313,7 @@ msgid "Accepting incoming trade requests"
 msgstr "接受传入的交易请求"
 
 #. TRANSLATORS: quick tab in settings
-#: src/actions/windows.cpp:328 src/gui/widgets/tabs/setup_quick.cpp:45
+#: src/actions/windows.cpp:329 src/gui/widgets/tabs/setup_quick.cpp:45
 msgid "Quick"
 msgstr ""
 
@@ -452,8 +462,8 @@ msgstr ""
 #. TRANSLATORS: add player to completle ignore list
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player to ignore list
-#: src/being/playerrelations.cpp:467 src/gui/popups/popupmenu.cpp:2296
-#: src/gui/popups/popupmenu.cpp:2338
+#: src/being/playerrelations.cpp:467 src/gui/popups/popupmenu.cpp:2297
+#: src/gui/popups/popupmenu.cpp:2339
 msgid "Completely ignore"
 msgstr "完全忽略"
 
@@ -480,37 +490,37 @@ msgstr "流动的泡沫"
 #. TRANSLATORS: setup tab quick button
 #. TRANSLATORS: full button name
 #. TRANSLATORS: setup window name
-#: src/client.cpp:910 src/gui/windowmenu.cpp:167
+#: src/client.cpp:913 src/gui/windowmenu.cpp:171
 #: src/gui/windows/setupwindow.cpp:62
 msgid "Setup"
 msgstr "设置"
 
 #. TRANSLATORS: perfoamance tab quick button
 #. TRANSLATORS: settings tab name
-#: src/client.cpp:913 src/gui/widgets/tabs/setup_perfomance.cpp:54
+#: src/client.cpp:916 src/gui/widgets/tabs/setup_perfomance.cpp:54
 msgid "Performance"
 msgstr ""
 
 #. TRANSLATORS: video tab quick button
 #. TRANSLATORS: video settings tab name
-#: src/client.cpp:916 src/gui/widgets/tabs/setup_video.cpp:107
+#: src/client.cpp:919 src/gui/widgets/tabs/setup_video.cpp:107
 msgid "Video"
 msgstr "视频"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: theme settings tab name
-#: src/client.cpp:919 src/gui/widgets/tabs/setup_theme.cpp:122
+#: src/client.cpp:922 src/gui/widgets/tabs/setup_theme.cpp:122
 msgid "Theme"
 msgstr "主题"
 
 #. TRANSLATORS: theme tab quick button
-#: src/client.cpp:922
+#: src/client.cpp:925
 msgid "About"
 msgstr ""
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: help window name
-#: src/client.cpp:925 src/gui/windowmenu.cpp:72
+#: src/client.cpp:928 src/gui/windowmenu.cpp:72
 #: src/gui/windows/helpwindow.cpp:53
 msgid "Help"
 msgstr "帮助"
@@ -523,46 +533,49 @@ msgstr "帮助"
 #. TRANSLATORS: close window
 #. TRANSLATORS: did you know window button
 #. TRANSLATORS: storage button
+#. TRANSLATORS: mail edit window button
+#. TRANSLATORS: mail view window button
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: quests window button
 #. TRANSLATORS: shop window button
-#: src/client.cpp:929 src/client.cpp:1390 src/client.cpp:1404
+#: src/client.cpp:932 src/client.cpp:1393 src/client.cpp:1407
 #: src/gui/dialogsmanager.cpp:106 src/gui/popups/popupmenu.cpp:732
 #: src/gui/popups/popupmenu.cpp:970 src/gui/windows/didyouknowwindow.cpp:81
-#: src/gui/windows/inventorywindow.cpp:256
-#: src/gui/windows/inventorywindow.cpp:279 src/gui/windows/npcdialog.cpp:75
-#: src/gui/windows/npcdialog.cpp:113 src/gui/windows/questswindow.cpp:77
-#: src/gui/windows/shopwindow.cpp:111
+#: src/gui/windows/inventorywindow.cpp:257
+#: src/gui/windows/inventorywindow.cpp:280
+#: src/gui/windows/maileditwindow.cpp:58 src/gui/windows/mailviewwindow.cpp:62
+#: src/gui/windows/npcdialog.cpp:75 src/gui/windows/npcdialog.cpp:113
+#: src/gui/windows/questswindow.cpp:77 src/gui/windows/shopwindow.cpp:111
 msgid "Close"
 msgstr "关闭"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1060
+#: src/client.cpp:1063
 msgid "Connecting to server"
 msgstr "正在连接服务器"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1106
+#: src/client.cpp:1109
 msgid "Logging in"
 msgstr "登录中"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1149
+#: src/client.cpp:1152
 msgid "Entering game world"
 msgstr "进入游戏世界"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1281
+#: src/client.cpp:1284
 msgid "Requesting characters"
 msgstr "请求角色"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1321
+#: src/client.cpp:1324
 msgid "Connecting to the game server"
 msgstr "正在连接游戏服务器"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1333
+#: src/client.cpp:1336
 msgid "Changing game servers"
 msgstr "正在更改游戏服务器"
 
@@ -578,7 +591,7 @@ msgstr "正在更改游戏服务器"
 #. TRANSLATORS: info message
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: error message
-#: src/client.cpp:1388 src/client.cpp:1402 src/client.cpp:1597
+#: src/client.cpp:1391 src/client.cpp:1405 src/client.cpp:1600
 #: src/gui/windows/changeemaildialog.cpp:164
 #: src/gui/windows/changepassworddialog.cpp:154
 #: src/gui/windows/charcreatedialog.cpp:376
@@ -595,37 +608,37 @@ msgid "Error"
 msgstr "错误"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1417
+#: src/client.cpp:1420
 msgid "Requesting registration details"
 msgstr "正在请求详细注册信息"
 
 #. TRANSLATORS: password change message header
-#: src/client.cpp:1458
+#: src/client.cpp:1461
 msgid "Password Change"
 msgstr "更改密码"
 
 #. TRANSLATORS: password change message text
-#: src/client.cpp:1460
+#: src/client.cpp:1463
 msgid "Password changed successfully!"
 msgstr "密码更改成功!"
 
 #. TRANSLATORS: email change message header
-#: src/client.cpp:1485
+#: src/client.cpp:1488
 msgid "Email Change"
 msgstr "更改电子邮箱地址"
 
 #. TRANSLATORS: email change message text
-#: src/client.cpp:1487
+#: src/client.cpp:1490
 msgid "Email changed successfully!"
 msgstr "电子邮箱地址更改成功!"
 
 #. TRANSLATORS: unregister message header
-#: src/client.cpp:1514
+#: src/client.cpp:1517
 msgid "Unregister Successful"
 msgstr "取消注册成功"
 
 #. TRANSLATORS: unregister message text
-#: src/client.cpp:1516
+#: src/client.cpp:1519
 msgid "Farewell, come back any time..."
 msgstr "再见，欢迎随时回来..."
 
@@ -665,36 +678,36 @@ msgid "dyecmd srcdyestring dstfile"
 msgstr ""
 
 #. TRANSLATORS: chat tab header
-#: src/game.cpp:253 src/gui/windows/chatwindow.cpp:2138
+#: src/game.cpp:256 src/gui/windows/chatwindow.cpp:2137
 msgid "General"
 msgstr "常规"
 
 #. TRANSLATORS: chat tab header
 #. TRANSLATORS: full button name
 #. TRANSLATORS: debug window name
-#: src/game.cpp:271 src/gui/windowmenu.cpp:154
+#: src/game.cpp:274 src/gui/windowmenu.cpp:158
 #: src/gui/windows/debugwindow.cpp:42
 msgid "Debug"
 msgstr "调试"
 
 #. TRANSLATORS: save file message
-#: src/game.cpp:564
+#: src/game.cpp:571
 #, c-format
 msgid "Screenshot saved as %s"
 msgstr ""
 
 #. TRANSLATORS: save file message
-#: src/game.cpp:574
+#: src/game.cpp:581
 msgid "Saving screenshot failed!"
 msgstr "保存屏幕快照失败!"
 
 #. TRANSLATORS: error message text
-#: src/game.cpp:661
+#: src/game.cpp:668
 msgid "The connection to the server was lost."
 msgstr "服务器的连接丢失."
 
 #. TRANSLATORS: error message header
-#: src/game.cpp:664
+#: src/game.cpp:671
 msgid "Network Error"
 msgstr "网络错误"
 
@@ -1087,7 +1100,7 @@ msgstr "讯息"
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: revive player
-#: src/gui/dialogsmanager.cpp:130 src/gui/popups/popupmenu.cpp:2624
+#: src/gui/dialogsmanager.cpp:130 src/gui/popups/popupmenu.cpp:2625
 msgid "Revive"
 msgstr ""
 
@@ -1270,8 +1283,8 @@ msgstr ""
 
 #. TRANSLATORS: language
 #. TRANSLATORS: popup menu header
-#: src/gui/models/langlistmodel.h:45 src/gui/popups/popupmenu.cpp:1999
-#: src/gui/popups/popupmenu.cpp:2077 src/gui/widgets/tabs/socialtabbase.h:46
+#: src/gui/models/langlistmodel.h:45 src/gui/popups/popupmenu.cpp:2000
+#: src/gui/popups/popupmenu.cpp:2078 src/gui/widgets/tabs/socialtabbase.h:46
 msgid "(default)"
 msgstr "(默认)"
 
@@ -1581,20 +1594,20 @@ msgstr "建立"
 #: src/gui/popups/popupmenu.cpp:660 src/gui/popups/popupmenu.cpp:685
 #: src/gui/popups/popupmenu.cpp:710 src/gui/popups/popupmenu.cpp:899
 #: src/gui/popups/popupmenu.cpp:926 src/gui/popups/popupmenu.cpp:959
-#: src/gui/popups/popupmenu.cpp:1739 src/gui/popups/popupmenu.cpp:1775
-#: src/gui/popups/popupmenu.cpp:1825 src/gui/popups/popupmenu.cpp:1867
-#: src/gui/popups/popupmenu.cpp:1908 src/gui/popups/popupmenu.cpp:1978
-#: src/gui/popups/popupmenu.cpp:2056 src/gui/popups/popupmenu.cpp:2090
-#: src/gui/popups/popupmenu.cpp:2116 src/gui/popups/popupmenu.cpp:2137
-#: src/gui/popups/popupmenu.cpp:2158 src/gui/popups/popupmenu.cpp:2183
-#: src/gui/popups/popupmenu.cpp:2200 src/gui/popups/popupmenu.cpp:2516
-#: src/gui/popups/popupmenu.cpp:2681 src/gui/windows/buyselldialog.cpp:75
+#: src/gui/popups/popupmenu.cpp:1740 src/gui/popups/popupmenu.cpp:1776
+#: src/gui/popups/popupmenu.cpp:1826 src/gui/popups/popupmenu.cpp:1868
+#: src/gui/popups/popupmenu.cpp:1909 src/gui/popups/popupmenu.cpp:1979
+#: src/gui/popups/popupmenu.cpp:2057 src/gui/popups/popupmenu.cpp:2091
+#: src/gui/popups/popupmenu.cpp:2117 src/gui/popups/popupmenu.cpp:2138
+#: src/gui/popups/popupmenu.cpp:2159 src/gui/popups/popupmenu.cpp:2184
+#: src/gui/popups/popupmenu.cpp:2201 src/gui/popups/popupmenu.cpp:2517
+#: src/gui/popups/popupmenu.cpp:2682 src/gui/windows/buyselldialog.cpp:75
 #: src/gui/windows/changeemaildialog.cpp:55
 #: src/gui/windows/changepassworddialog.cpp:57
 #: src/gui/windows/charcreatedialog.cpp:122
 #: src/gui/windows/connectiondialog.cpp:52
 #: src/gui/windows/editserverdialog.cpp:61
-#: src/gui/windows/itemamountwindow.cpp:169
+#: src/gui/windows/itemamountwindow.cpp:176
 #: src/gui/windows/npcpostdialog.cpp:70 src/gui/windows/quitdialog.cpp:70
 #: src/gui/windows/registerdialog.cpp:65 src/gui/windows/setupwindow.cpp:96
 #: src/gui/windows/textcommandeditor.cpp:86 src/gui/windows/textdialog.cpp:55
@@ -1614,7 +1627,7 @@ msgstr "重量：%s"
 #. TRANSLATORS: trade chat tab name
 #. TRANSLATORS: inventory type name
 #: src/gui/popups/popupmenu.cpp:156 src/gui/popups/popupmenu.cpp:805
-#: src/gui/widgets/tabs/chat/tradetab.cpp:39 src/inventory.cpp:321
+#: src/gui/widgets/tabs/chat/tradetab.cpp:39 src/inventory.cpp:328
 msgid "Trade"
 msgstr "交易"
 
@@ -1713,9 +1726,9 @@ msgstr "说话"
 #. TRANSLATORS: shop window button
 #. TRANSLATORS: shop window tab name
 #. TRANSLATORS: input action name
-#: src/gui/popups/popupmenu.cpp:258 src/gui/popups/popupmenu.cpp:2368
-#: src/gui/windows/buydialog.cpp:191 src/gui/windows/buydialog.cpp:207
-#: src/gui/windows/buydialog.cpp:268 src/gui/windows/buyselldialog.cpp:71
+#: src/gui/popups/popupmenu.cpp:258 src/gui/popups/popupmenu.cpp:2369
+#: src/gui/windows/buydialog.cpp:194 src/gui/windows/buydialog.cpp:212
+#: src/gui/windows/buydialog.cpp:275 src/gui/windows/buyselldialog.cpp:71
 #: src/gui/windows/shopwindow.cpp:168 src/input/pages/basic.cpp:240
 #: src/resources/db/npcdb.cpp:147
 msgid "Buy"
@@ -1730,7 +1743,7 @@ msgstr "购买"
 #. TRANSLATORS: shop window button
 #. TRANSLATORS: shop window tab name
 #. TRANSLATORS: input action name
-#: src/gui/popups/popupmenu.cpp:261 src/gui/popups/popupmenu.cpp:2380
+#: src/gui/popups/popupmenu.cpp:261 src/gui/popups/popupmenu.cpp:2381
 #: src/gui/widgets/selldialog.cpp:51 src/gui/widgets/selldialog.cpp:96
 #: src/gui/windows/buyselldialog.cpp:73 src/gui/windows/shopwindow.cpp:170
 #: src/input/pages/basic.cpp:246 src/resources/db/npcdb.cpp:148
@@ -1742,7 +1755,7 @@ msgstr "出售"
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add comment to player
 #: src/gui/popups/popupmenu.cpp:270 src/gui/popups/popupmenu.cpp:477
-#: src/gui/popups/popupmenu.cpp:2478
+#: src/gui/popups/popupmenu.cpp:2479
 msgid "Add comment"
 msgstr "发表评论"
 
@@ -1768,7 +1781,7 @@ msgstr "加入攻击清单"
 #. TRANSLATORS: add monster to ignore list
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add item to pickup list
-#: src/gui/popups/popupmenu.cpp:308 src/gui/popups/popupmenu.cpp:2498
+#: src/gui/popups/popupmenu.cpp:308 src/gui/popups/popupmenu.cpp:2499
 msgid "Add to ignore list"
 msgstr ""
 
@@ -1809,7 +1822,7 @@ msgstr ""
 #. TRANSLATORS: equipment window button
 #. TRANSLATORS: inventory button
 #: src/gui/popups/popupmenu.cpp:351 src/gui/windows/equipmentwindow.cpp:74
-#: src/gui/windows/inventorywindow.cpp:188 src/resources/itemtypemapdata.h:45
+#: src/gui/windows/inventorywindow.cpp:189 src/resources/itemtypemapdata.h:45
 #: src/resources/itemtypemapdata.h:49 src/resources/itemtypemapdata.h:53
 #: src/resources/itemtypemapdata.h:57 src/resources/itemtypemapdata.h:61
 #: src/resources/itemtypemapdata.h:65 src/resources/itemtypemapdata.h:69
@@ -1851,8 +1864,8 @@ msgstr "玩家"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: kick player from party
-#: src/gui/popups/popupmenu.cpp:489 src/gui/popups/popupmenu.cpp:2421
-#: src/gui/popups/popupmenu.cpp:2445
+#: src/gui/popups/popupmenu.cpp:489 src/gui/popups/popupmenu.cpp:2422
+#: src/gui/popups/popupmenu.cpp:2446
 msgid "Kick from party"
 msgstr "踢从党"
 
@@ -1864,8 +1877,8 @@ msgstr "拾取"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add item name to chat
-#: src/gui/popups/popupmenu.cpp:590 src/gui/popups/popupmenu.cpp:1735
-#: src/gui/popups/popupmenu.cpp:1811 src/gui/popups/popupmenu.cpp:1853
+#: src/gui/popups/popupmenu.cpp:590 src/gui/popups/popupmenu.cpp:1736
+#: src/gui/popups/popupmenu.cpp:1812 src/gui/popups/popupmenu.cpp:1854
 msgid "Add to chat"
 msgstr "加入聊天"
 
@@ -1880,8 +1893,8 @@ msgstr "地图项"
 #. TRANSLATORS: remove attack target
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: remove item from pickup filter
-#: src/gui/popups/popupmenu.cpp:617 src/gui/popups/popupmenu.cpp:2052
-#: src/gui/popups/popupmenu.cpp:2086
+#: src/gui/popups/popupmenu.cpp:617 src/gui/popups/popupmenu.cpp:2053
+#: src/gui/popups/popupmenu.cpp:2087
 msgid "Remove"
 msgstr ""
 
@@ -1903,7 +1916,7 @@ msgstr ""
 #. TRANSLATORS: outfits button tooltip
 #. TRANSLATORS: outfits window name
 #: src/gui/popups/popupmenu.cpp:674 src/gui/setupinputpages.cpp:53
-#: src/gui/windowmenu.cpp:142 src/gui/windows/inventorywindow.cpp:219
+#: src/gui/windowmenu.cpp:142 src/gui/windows/inventorywindow.cpp:220
 #: src/gui/windows/outfitwindow.cpp:55
 msgid "Outfits"
 msgstr "套装"
@@ -1982,8 +1995,8 @@ msgstr "留下"
 #. TRANSLATORS: copy link to clipboard
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: copy npc text to clipboard
-#: src/gui/popups/popupmenu.cpp:786 src/gui/popups/popupmenu.cpp:2154
-#: src/gui/popups/popupmenu.cpp:2196
+#: src/gui/popups/popupmenu.cpp:786 src/gui/popups/popupmenu.cpp:2155
+#: src/gui/popups/popupmenu.cpp:2197
 msgid "Copy to clipboard"
 msgstr ""
 
@@ -2055,10 +2068,10 @@ msgstr ""
 #. TRANSLATORS: storage button
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: setup button
-#: src/gui/popups/popupmenu.cpp:1658 src/gui/popups/popupmenu.cpp:1807
-#: src/gui/popups/popupmenu.cpp:1848 src/gui/windows/inventorywindow.cpp:251
-#: src/gui/windows/inventorywindow.cpp:274
-#: src/gui/windows/inventorywindow.cpp:872 src/gui/windows/setupwindow.cpp:98
+#: src/gui/popups/popupmenu.cpp:1658 src/gui/popups/popupmenu.cpp:1808
+#: src/gui/popups/popupmenu.cpp:1849 src/gui/windows/inventorywindow.cpp:252
+#: src/gui/windows/inventorywindow.cpp:275
+#: src/gui/windows/inventorywindow.cpp:876 src/gui/windows/setupwindow.cpp:98
 msgid "Store"
 msgstr "存储"
 
@@ -2081,8 +2094,8 @@ msgstr "商店所有"
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: get item from storage
 #. TRANSLATORS: storage button
-#: src/gui/popups/popupmenu.cpp:1689 src/gui/windows/inventorywindow.cpp:253
-#: src/gui/windows/inventorywindow.cpp:276
+#: src/gui/popups/popupmenu.cpp:1689 src/gui/windows/inventorywindow.cpp:254
+#: src/gui/windows/inventorywindow.cpp:277
 msgid "Retrieve"
 msgstr "取回"
 
@@ -2108,9 +2121,9 @@ msgstr "检索所有"
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: skills dialog button
 #. TRANSLATORS: inventory button
-#: src/gui/popups/popupmenu.cpp:1769 src/gui/popups/popupmenu.cpp:2567
-#: src/gui/windows/inventorywindow.cpp:186
-#: src/gui/windows/inventorywindow.cpp:756 src/gui/windows/skilldialog.cpp:79
+#: src/gui/popups/popupmenu.cpp:1770 src/gui/popups/popupmenu.cpp:2568
+#: src/gui/windows/inventorywindow.cpp:187
+#: src/gui/windows/inventorywindow.cpp:759 src/gui/windows/skilldialog.cpp:79
 #: src/gui/windows/skilldialog.cpp:151 src/gui/windows/skilldialog.cpp:321
 #: src/gui/windows/skilldialog.cpp:485 src/gui/windows/skilldialog.cpp:567
 #: src/resources/itemtypemapdata.h:37 src/resources/itemtypemapdata.h:41
@@ -2118,46 +2131,46 @@ msgid "Use"
 msgstr "使用"
 
 #. TRANSLATORS: popup menu item
-#: src/gui/popups/popupmenu.cpp:1863
+#: src/gui/popups/popupmenu.cpp:1864
 msgid "Clear drop window"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
-#: src/gui/popups/popupmenu.cpp:1894 src/gui/popups/popupmenu.cpp:1955
+#: src/gui/popups/popupmenu.cpp:1895 src/gui/popups/popupmenu.cpp:1956
 msgid "Hide"
 msgstr "隐藏"
 
 #. TRANSLATORS: popup menu item
-#: src/gui/popups/popupmenu.cpp:1901 src/gui/popups/popupmenu.cpp:1962
+#: src/gui/popups/popupmenu.cpp:1902 src/gui/popups/popupmenu.cpp:1963
 msgid "Show"
 msgstr "显示"
 
 #. TRANSLATORS: popup menu item
-#: src/gui/popups/popupmenu.cpp:1969
+#: src/gui/popups/popupmenu.cpp:1970
 msgid "Open yellow bar settings"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
-#: src/gui/popups/popupmenu.cpp:1971
+#: src/gui/popups/popupmenu.cpp:1972
 msgid "Reset yellow bar"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: copy status to chat
 #. TRANSLATORS: status window button
-#: src/gui/popups/popupmenu.cpp:1975 src/gui/windows/statuswindow.cpp:92
+#: src/gui/popups/popupmenu.cpp:1976 src/gui/windows/statuswindow.cpp:92
 msgid "Copy to chat"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: move attack target up
-#: src/gui/popups/popupmenu.cpp:2015 src/gui/popups/popupmenu.cpp:2034
+#: src/gui/popups/popupmenu.cpp:2016 src/gui/popups/popupmenu.cpp:2035
 msgid "Move up"
 msgstr "x"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: move attack target down
-#: src/gui/popups/popupmenu.cpp:2021 src/gui/popups/popupmenu.cpp:2040
+#: src/gui/popups/popupmenu.cpp:2022 src/gui/popups/popupmenu.cpp:2041
 msgid "Move down"
 msgstr ""
 
@@ -2165,155 +2178,155 @@ msgstr ""
 #. TRANSLATORS: undress item from player
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: undress player
-#: src/gui/popups/popupmenu.cpp:2112 src/gui/popups/popupmenu.cpp:2475
+#: src/gui/popups/popupmenu.cpp:2113 src/gui/popups/popupmenu.cpp:2476
 msgid "Undress"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: copy text to clipboard
-#: src/gui/popups/popupmenu.cpp:2130
+#: src/gui/popups/popupmenu.cpp:2131
 msgid "Copy"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: paste text from clipboard
-#: src/gui/popups/popupmenu.cpp:2133
+#: src/gui/popups/popupmenu.cpp:2134
 msgid "Paste"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: open link in browser
-#: src/gui/popups/popupmenu.cpp:2151
+#: src/gui/popups/popupmenu.cpp:2152
 msgid "Open link"
 msgstr ""
 
 #. TRANSLATORS: popup menu header
-#: src/gui/popups/popupmenu.cpp:2169
+#: src/gui/popups/popupmenu.cpp:2170
 msgid "Show window"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player to disregarded list
-#: src/gui/popups/popupmenu.cpp:2242 src/gui/popups/popupmenu.cpp:2278
-#: src/gui/popups/popupmenu.cpp:2317 src/gui/popups/popupmenu.cpp:2335
+#: src/gui/popups/popupmenu.cpp:2243 src/gui/popups/popupmenu.cpp:2279
+#: src/gui/popups/popupmenu.cpp:2318 src/gui/popups/popupmenu.cpp:2336
 msgid "Disregard"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player to ignore list
 #. TRANSLATORS: confirm dialog button
-#: src/gui/popups/popupmenu.cpp:2245 src/gui/popups/popupmenu.cpp:2281
-#: src/gui/popups/popupmenu.cpp:2320 src/gui/windows/confirmdialog.cpp:60
+#: src/gui/popups/popupmenu.cpp:2246 src/gui/popups/popupmenu.cpp:2282
+#: src/gui/popups/popupmenu.cpp:2321 src/gui/windows/confirmdialog.cpp:60
 msgid "Ignore"
 msgstr "忽略"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player to black list
-#: src/gui/popups/popupmenu.cpp:2248 src/gui/popups/popupmenu.cpp:2323
+#: src/gui/popups/popupmenu.cpp:2249 src/gui/popups/popupmenu.cpp:2324
 msgid "Black list"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player to enemy list
-#: src/gui/popups/popupmenu.cpp:2251 src/gui/popups/popupmenu.cpp:2284
+#: src/gui/popups/popupmenu.cpp:2252 src/gui/popups/popupmenu.cpp:2285
 msgid "Set as enemy"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player to erased list
-#: src/gui/popups/popupmenu.cpp:2254 src/gui/popups/popupmenu.cpp:2287
-#: src/gui/popups/popupmenu.cpp:2299 src/gui/popups/popupmenu.cpp:2308
-#: src/gui/popups/popupmenu.cpp:2326
+#: src/gui/popups/popupmenu.cpp:2255 src/gui/popups/popupmenu.cpp:2288
+#: src/gui/popups/popupmenu.cpp:2300 src/gui/popups/popupmenu.cpp:2309
+#: src/gui/popups/popupmenu.cpp:2327
 msgid "Erase"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player to friends list
-#: src/gui/popups/popupmenu.cpp:2264
+#: src/gui/popups/popupmenu.cpp:2265
 msgid "Be friend"
 msgstr "是朋友"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: remove player from ignore list
-#: src/gui/popups/popupmenu.cpp:2275 src/gui/popups/popupmenu.cpp:2293
-#: src/gui/popups/popupmenu.cpp:2305 src/gui/popups/popupmenu.cpp:2314
-#: src/gui/popups/popupmenu.cpp:2332
+#: src/gui/popups/popupmenu.cpp:2276 src/gui/popups/popupmenu.cpp:2294
+#: src/gui/popups/popupmenu.cpp:2306 src/gui/popups/popupmenu.cpp:2315
+#: src/gui/popups/popupmenu.cpp:2333
 msgid "Unignore"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
-#: src/gui/popups/popupmenu.cpp:2351
+#: src/gui/popups/popupmenu.cpp:2352
 msgid "Follow"
 msgstr "按照"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: imitate player
-#: src/gui/popups/popupmenu.cpp:2355
+#: src/gui/popups/popupmenu.cpp:2356
 msgid "Imitate"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: buy item
-#: src/gui/popups/popupmenu.cpp:2374 src/gui/popups/popupmenu.cpp:2398
+#: src/gui/popups/popupmenu.cpp:2375 src/gui/popups/popupmenu.cpp:2399
 msgid "Buy (?)"
 msgstr "购买(?)"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: sell item
-#: src/gui/popups/popupmenu.cpp:2386 src/gui/popups/popupmenu.cpp:2401
+#: src/gui/popups/popupmenu.cpp:2387 src/gui/popups/popupmenu.cpp:2402
 msgid "Sell (?)"
 msgstr "出售(?)"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: invite player to party
-#: src/gui/popups/popupmenu.cpp:2415 src/gui/popups/popupmenu.cpp:2439
+#: src/gui/popups/popupmenu.cpp:2416 src/gui/popups/popupmenu.cpp:2440
 msgid "Invite to party"
 msgstr ""
 
-#: src/gui/popups/popupmenu.cpp:2463
+#: src/gui/popups/popupmenu.cpp:2464
 #, c-format
 msgid "Join chat %s"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
-#: src/gui/popups/popupmenu.cpp:2472
+#: src/gui/popups/popupmenu.cpp:2473
 msgid "Show Items"
 msgstr "显示项目"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: remove item from pickup list
-#: src/gui/popups/popupmenu.cpp:2489
+#: src/gui/popups/popupmenu.cpp:2490
 msgid "Remove from pickup list"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
-#: src/gui/popups/popupmenu.cpp:2494
+#: src/gui/popups/popupmenu.cpp:2495
 msgid "Add to pickup list"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: remove protection from item
-#: src/gui/popups/popupmenu.cpp:2543
+#: src/gui/popups/popupmenu.cpp:2544
 msgid "Unprotect item"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add protection to item
-#: src/gui/popups/popupmenu.cpp:2552
+#: src/gui/popups/popupmenu.cpp:2553
 msgid "Protect item"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: drop item
 #. TRANSLATORS: inventory button
-#: src/gui/popups/popupmenu.cpp:2582 src/gui/windows/inventorywindow.cpp:201
-#: src/gui/windows/inventorywindow.cpp:880
+#: src/gui/popups/popupmenu.cpp:2583 src/gui/windows/inventorywindow.cpp:202
+#: src/gui/windows/inventorywindow.cpp:884
 msgid "Drop..."
 msgstr "掉落..."
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: drop all item amount
-#: src/gui/popups/popupmenu.cpp:2585
+#: src/gui/popups/popupmenu.cpp:2586
 msgid "Drop all"
 msgstr "所有"
 
@@ -2321,60 +2334,60 @@ msgstr "所有"
 #. TRANSLATORS: drop item
 #. TRANSLATORS: full button name
 #. TRANSLATORS: inventory button
-#: src/gui/popups/popupmenu.cpp:2591 src/gui/windowmenu.cpp:130
-#: src/gui/windows/inventorywindow.cpp:885
+#: src/gui/popups/popupmenu.cpp:2592 src/gui/windowmenu.cpp:130
+#: src/gui/windows/inventorywindow.cpp:889
 msgid "Drop"
 msgstr "丢弃"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: gm commands
-#: src/gui/popups/popupmenu.cpp:2602
+#: src/gui/popups/popupmenu.cpp:2603
 msgid "GM..."
 msgstr ""
 
 #. TRANSLATORS: popup menu header
-#: src/gui/popups/popupmenu.cpp:2610
+#: src/gui/popups/popupmenu.cpp:2611
 msgid "GM commands"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: check player ip
-#: src/gui/popups/popupmenu.cpp:2615
+#: src/gui/popups/popupmenu.cpp:2616
 msgid "Check ip"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: go to player position
-#: src/gui/popups/popupmenu.cpp:2618
+#: src/gui/popups/popupmenu.cpp:2619
 msgid "Goto"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: recall player to current position
-#: src/gui/popups/popupmenu.cpp:2621
+#: src/gui/popups/popupmenu.cpp:2622
 msgid "Recall"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: kick player
-#: src/gui/popups/popupmenu.cpp:2629
+#: src/gui/popups/popupmenu.cpp:2630
 msgid "Kick"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: mute player
-#: src/gui/popups/popupmenu.cpp:2637 src/gui/popups/popupmenu.cpp:2641
-#: src/gui/popups/popupmenu.cpp:2645 src/gui/popups/popupmenu.cpp:2649
-#: src/gui/popups/popupmenu.cpp:2653
+#: src/gui/popups/popupmenu.cpp:2638 src/gui/popups/popupmenu.cpp:2642
+#: src/gui/popups/popupmenu.cpp:2646 src/gui/popups/popupmenu.cpp:2650
+#: src/gui/popups/popupmenu.cpp:2654
 #, c-format
 msgid "Mute %d"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: mute player
-#: src/gui/popups/popupmenu.cpp:2658 src/gui/popups/popupmenu.cpp:2662
-#: src/gui/popups/popupmenu.cpp:2666 src/gui/popups/popupmenu.cpp:2670
-#: src/gui/popups/popupmenu.cpp:2674
+#: src/gui/popups/popupmenu.cpp:2659 src/gui/popups/popupmenu.cpp:2663
+#: src/gui/popups/popupmenu.cpp:2667 src/gui/popups/popupmenu.cpp:2671
+#: src/gui/popups/popupmenu.cpp:2675
 #, c-format
 msgid "Unmute %d"
 msgstr ""
@@ -2395,7 +2408,7 @@ msgstr "快捷键"
 #. TRANSLATORS: full button name
 #. TRANSLATORS: input action label
 #: src/gui/setupinputpages.cpp:49 src/gui/widgets/tabs/setup_other.cpp:315
-#: src/gui/windowmenu.cpp:163 src/input/pages/windows.cpp:36
+#: src/gui/windowmenu.cpp:167 src/input/pages/windows.cpp:36
 msgid "Windows"
 msgstr ""
 
@@ -2663,7 +2676,7 @@ msgstr ""
 
 #. TRANSLATORS: status window label
 #: src/gui/widgets/characterdisplay.cpp:138
-#: src/gui/windows/inventorywindow.cpp:672 src/gui/windows/statuswindow.cpp:73
+#: src/gui/windows/inventorywindow.cpp:675 src/gui/windows/statuswindow.cpp:73
 #: src/gui/windows/statuswindow.cpp:233 src/gui/windows/statuswindow.cpp:345
 #, c-format
 msgid "Money: %s"
@@ -2685,7 +2698,7 @@ msgstr ""
 #. TRANSLATORS: quit dialog button
 #. TRANSLATORS: servers dialog button
 #. TRANSLATORS: input action name
-#: src/gui/widgets/selldialog.cpp:98 src/gui/windows/buydialog.cpp:270
+#: src/gui/widgets/selldialog.cpp:98 src/gui/windows/buydialog.cpp:277
 #: src/gui/windows/quitdialog.cpp:52 src/gui/windows/quitdialog.cpp:57
 #: src/gui/windows/quitdialog.cpp:59 src/gui/windows/serverdialog.cpp:114
 #: src/input/pages/basic.cpp:216
@@ -2698,9 +2711,9 @@ msgstr "退出"
 #. TRANSLATORS: item amount window button
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: status window label (plus sign)
-#: src/gui/widgets/selldialog.cpp:116 src/gui/windows/buydialog.cpp:262
-#: src/gui/windows/itemamountwindow.cpp:165
-#: src/gui/windows/itemamountwindow.cpp:200 src/gui/windows/npcdialog.cpp:106
+#: src/gui/widgets/selldialog.cpp:116 src/gui/windows/buydialog.cpp:269
+#: src/gui/windows/itemamountwindow.cpp:172
+#: src/gui/windows/itemamountwindow.cpp:207 src/gui/windows/npcdialog.cpp:106
 #: src/gui/windows/statuswindow.cpp:749
 msgid "+"
 msgstr "+"
@@ -2711,9 +2724,9 @@ msgstr "+"
 #. TRANSLATORS: item amount window button
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: status window label (minus sign)
-#: src/gui/widgets/selldialog.cpp:118 src/gui/windows/buydialog.cpp:265
-#: src/gui/windows/itemamountwindow.cpp:163
-#: src/gui/windows/itemamountwindow.cpp:197 src/gui/windows/npcdialog.cpp:108
+#: src/gui/widgets/selldialog.cpp:118 src/gui/windows/buydialog.cpp:272
+#: src/gui/windows/itemamountwindow.cpp:170
+#: src/gui/windows/itemamountwindow.cpp:204 src/gui/windows/npcdialog.cpp:108
 #: src/gui/windows/statuswindow.cpp:762
 msgid "-"
 msgstr "-"
@@ -2723,7 +2736,7 @@ msgstr "-"
 #. TRANSLATORS: status bar label
 #. TRANSLATORS: status window label
 #. TRANSLATORS: status bar label
-#: src/gui/widgets/selldialog.cpp:120 src/gui/windows/buydialog.cpp:272
+#: src/gui/widgets/selldialog.cpp:120 src/gui/windows/buydialog.cpp:279
 #: src/gui/windows/statuswindow.cpp:492 src/gui/windows/statuswindow.cpp:547
 #: src/gui/windows/statuswindow.cpp:746 src/gui/windows/statuswindow.cpp:778
 msgid "Max"
@@ -2732,7 +2745,7 @@ msgstr "最大"
 #. TRANSLATORS: sell dialog label
 #. TRANSLATORS: buy dialog label
 #: src/gui/widgets/selldialog.cpp:127 src/gui/widgets/selldialog.cpp:322
-#: src/gui/windows/buydialog.cpp:248 src/gui/windows/buydialog.cpp:604
+#: src/gui/windows/buydialog.cpp:255 src/gui/windows/buydialog.cpp:627
 #, c-format
 msgid "Price: %s / Total: %s"
 msgstr "价格：%s / 总价：%s"
@@ -3358,8 +3371,8 @@ msgid ""
 "Enable this setting to show color selection drop-down in chat window. Chat "
 "window will display color selection drop-down.\n"
 "\n"
-"It allows to select default color of outgoing chat messages easily, but also "
-"occupies some space in chat window."
+"It allows one to select default color of outgoing chat messages easily, but "
+"also occupies some space in chat window."
 msgstr ""
 
 #. TRANSLATORS: settings option
@@ -3457,8 +3470,8 @@ msgid ""
 "If this setting is enabled, online status changes of party members will be "
 "shown in party tab of chat.\n"
 "\n"
-"This adds some extra noise to chat, but allows to see when your buddies are "
-"coming online."
+"This adds some extra noise to chat, but allows one to see when your buddies "
+"are coming online."
 msgstr ""
 
 #. TRANSLATORS: settings option
@@ -3471,8 +3484,8 @@ msgid ""
 "If this setting is enabled, online status changes of guild members will be "
 "shown in guild tab of chat.\n"
 "\n"
-"This adds some extra noise to chat, but allows to see when your buddies are "
-"coming online."
+"This adds some extra noise to chat, but allows one to see when your buddies "
+"are coming online."
 msgstr ""
 
 #. TRANSLATORS: settings group
@@ -3704,8 +3717,8 @@ msgstr ""
 #: src/gui/widgets/tabs/setup_chat.cpp:282
 msgid ""
 "If this setting enabled, button will appear near text input field. This "
-"button allows to invoke composing window, which allows to insert smiles and "
-"text formatting easily.\n"
+"button allows one to invoke composing window, which allows one to insert "
+"smiles and text formatting easily.\n"
 "\n"
 "Note: same window can also be invoked by hotkey when typing, usually F1 by "
 "default."
@@ -4159,7 +4172,7 @@ msgstr ""
 #. TRANSLATORS: shop button tooltip
 #: src/gui/widgets/tabs/setup_other.cpp:267 src/gui/windowmenu.cpp:138
 #: src/gui/windows/buyselldialog.cpp:40 src/gui/windows/buyselldialog.cpp:51
-#: src/gui/windows/inventorywindow.cpp:223
+#: src/gui/windows/inventorywindow.cpp:224
 msgid "Shop"
 msgstr "商店"
 
@@ -4558,12 +4571,13 @@ msgid "Allow whispers"
 msgstr "允许密语"
 
 #. TRANSLATORS: char select dialog. button.
+#. TRANSLATORS: mail window button
 #. TRANSLATORS: servers dialog button
 #. TRANSLATORS: shop window label
 #. TRANSLATORS: command editor button
 #. TRANSLATORS: input action name
 #: src/gui/widgets/tabs/setup_relations.cpp:77
-#: src/gui/windows/charselectdialog.cpp:84
+#: src/gui/windows/charselectdialog.cpp:84 src/gui/windows/mailwindow.cpp:65
 #: src/gui/windows/serverdialog.cpp:122 src/gui/windows/shopwindow.cpp:123
 #: src/gui/windows/textcommandeditor.cpp:90 src/input/pages/gui.cpp:111
 msgid "Delete"
@@ -5213,7 +5227,7 @@ msgstr ""
 #. TRANSLATORS: equipment window name
 #. TRANSLATORS: equipment button tooltip
 #: src/gui/windowmenu.cpp:97 src/gui/windows/equipmentwindow.cpp:67
-#: src/gui/windows/inventorywindow.cpp:225
+#: src/gui/windows/inventorywindow.cpp:226
 msgid "Equipment"
 msgstr "装备"
 
@@ -5224,7 +5238,7 @@ msgstr ""
 
 #. TRANSLATORS: inventory window name
 #. TRANSLATORS: inventory type name
-#: src/gui/windowmenu.cpp:100 src/gui/windows/inventorywindow.cpp:142
+#: src/gui/windowmenu.cpp:100 src/gui/windows/inventorywindow.cpp:143
 #: src/inventory.cpp:301
 msgid "Inventory"
 msgstr "物品栏"
@@ -5236,7 +5250,7 @@ msgstr ""
 
 #. TRANSLATORS: cart button tooltip
 #. TRANSLATORS: inventory type name
-#: src/gui/windowmenu.cpp:103 src/gui/windows/inventorywindow.cpp:221
+#: src/gui/windowmenu.cpp:103 src/gui/windows/inventorywindow.cpp:222
 #: src/inventory.cpp:311
 msgid "Cart"
 msgstr ""
@@ -5323,24 +5337,38 @@ msgstr ""
 msgid "Bank"
 msgstr ""
 
-#. TRANSLATORS: short button name for debug window.
+#. TRANSLATORS: short button name for mail window.
 #: src/gui/windowmenu.cpp:152
+#, fuzzy
+msgid "MA"
+msgstr "A"
+
+#. TRANSLATORS: full button name
+#. TRANSLATORS: mail window name
+#. TRANSLATORS: inventory type name
+#: src/gui/windowmenu.cpp:154 src/gui/windows/mailwindow.cpp:52
+#: src/inventory.cpp:322
+msgid "Mail"
+msgstr ""
+
+#. TRANSLATORS: short button name for debug window.
+#: src/gui/windowmenu.cpp:156
 msgid "DBG"
 msgstr ""
 
 #. TRANSLATORS: short button name for windows list menu.
-#: src/gui/windowmenu.cpp:161
+#: src/gui/windowmenu.cpp:165
 msgid "WIN"
 msgstr ""
 
 #. TRANSLATORS: short button name for setup window.
-#: src/gui/windowmenu.cpp:165
+#: src/gui/windowmenu.cpp:169
 msgid "SET"
 msgstr "SET"
 
 #. TRANSLATORS: short key name
 #. TRANSLATORS: outfits window label
-#: src/gui/windowmenu.cpp:300 src/gui/windows/outfitwindow.cpp:72
+#: src/gui/windowmenu.cpp:304 src/gui/windows/outfitwindow.cpp:72
 #: src/gui/windows/outfitwindow.cpp:568
 #, c-format
 msgid "Key: %s"
@@ -5378,23 +5406,28 @@ msgid "Result"
 msgstr "结果"
 
 #. TRANSLATORS: buy dialog name
-#: src/gui/windows/buydialog.cpp:175
+#: src/gui/windows/buydialog.cpp:176
 msgid "Create items"
 msgstr ""
 
 #. TRANSLATORS: buy dialog label
-#: src/gui/windows/buydialog.cpp:257
+#: src/gui/windows/buydialog.cpp:264
 msgid "Amount:"
 msgstr ""
 
 #. TRANSLATORS: char create dialog button
 #. TRANSLATORS: char select dialog. button.
 #. TRANSLATORS: social window button
-#: src/gui/windows/buydialog.cpp:268 src/gui/windows/charcreatedialog.cpp:120
+#: src/gui/windows/buydialog.cpp:275 src/gui/windows/charcreatedialog.cpp:120
 #: src/gui/windows/charselectdialog.cpp:623
 #: src/gui/windows/socialwindow.cpp:79
 msgid "Create"
 msgstr "建立"
+
+#. TRANSLATORS: buy dialog label
+#: src/gui/windows/buydialog.cpp:316
+msgid "Filter:"
+msgstr ""
 
 #. TRANSLATORS: change email dialog header
 #. TRANSLATORS: button in change email dialog
@@ -5687,19 +5720,19 @@ msgid "Enter password:"
 msgstr "输入密码:"
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/chatwindow.cpp:675
+#: src/gui/windows/chatwindow.cpp:674
 #, c-format
 msgid "Present: %s; %d players are present."
 msgstr ""
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/chatwindow.cpp:1118
+#: src/gui/windows/chatwindow.cpp:1117
 #, c-format
 msgid "Whispering to %s: %s"
 msgstr "对%s密语到：%s"
 
 #. TRANSLATORS: owners pet name. For example: 4144's pet
-#: src/gui/windows/chatwindow.cpp:1728 src/net/eathena/pethandler.cpp:174
+#: src/gui/windows/chatwindow.cpp:1727 src/net/eathena/pethandler.cpp:174
 #, c-format
 msgid "%s's pet"
 msgstr ""
@@ -5816,7 +5849,7 @@ msgstr ""
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: outfits window button
 #. TRANSLATORS: inventory button
-#: src/gui/windows/inventorywindow.cpp:184 src/gui/windows/outfitwindow.cpp:62
+#: src/gui/windows/inventorywindow.cpp:185 src/gui/windows/outfitwindow.cpp:62
 #: src/resources/itemtypemapdata.h:45 src/resources/itemtypemapdata.h:49
 #: src/resources/itemtypemapdata.h:53 src/resources/itemtypemapdata.h:57
 #: src/resources/itemtypemapdata.h:61 src/resources/itemtypemapdata.h:65
@@ -5828,82 +5861,88 @@ msgid "Equip"
 msgstr "装备"
 
 #. TRANSLATORS: inventory button
-#: src/gui/windows/inventorywindow.cpp:203
+#: src/gui/windows/inventorywindow.cpp:204
 msgid "Split"
 msgstr "分离"
 
 #. TRANSLATORS: inventory outfits button
-#: src/gui/windows/inventorywindow.cpp:205
+#: src/gui/windows/inventorywindow.cpp:206
 msgid "O"
 msgstr ""
 
 #. TRANSLATORS: inventory cart button
-#: src/gui/windows/inventorywindow.cpp:207
+#: src/gui/windows/inventorywindow.cpp:208
 msgid "C"
 msgstr ""
 
 #. TRANSLATORS: inventory shop button
-#: src/gui/windows/inventorywindow.cpp:209
+#: src/gui/windows/inventorywindow.cpp:210
 msgid "S"
 msgstr ""
 
 #. TRANSLATORS: inventory equipment button
-#: src/gui/windows/inventorywindow.cpp:211
+#: src/gui/windows/inventorywindow.cpp:212
 msgid "E"
 msgstr ""
 
 #. TRANSLATORS: item amount window button
-#: src/gui/windows/itemamountwindow.cpp:171
+#: src/gui/windows/itemamountwindow.cpp:178
 msgid "All"
 msgstr "全部"
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:227
+#: src/gui/windows/itemamountwindow.cpp:234
 msgid "Select amount of items to trade."
 msgstr "请选择交易的物品数量."
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:231
+#: src/gui/windows/itemamountwindow.cpp:238
 msgid "Select amount of items to drop."
 msgstr "请选择丢弃的物品数量."
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:235
+#: src/gui/windows/itemamountwindow.cpp:242
 msgid "Select amount of items to store."
 msgstr "请选择存储的物品数量."
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:239
+#: src/gui/windows/itemamountwindow.cpp:247
+#, fuzzy
+msgid "Select amount of items to send."
+msgstr "请选择存储的物品数量."
+
+#. TRANSLATORS: amount window message
+#: src/gui/windows/itemamountwindow.cpp:252
 msgid "Select amount of items to store to cart."
 msgstr ""
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:243
+#: src/gui/windows/itemamountwindow.cpp:256
 msgid "Select amount of items to retrieve."
 msgstr "请选择取回的物品数量."
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:247
+#: src/gui/windows/itemamountwindow.cpp:260
 msgid "Select amount of items to retrieve from cart."
 msgstr ""
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:251
+#: src/gui/windows/itemamountwindow.cpp:264
 msgid "Select amount of items to split."
 msgstr "请选择你分离的物品的数量."
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:255
+#: src/gui/windows/itemamountwindow.cpp:268
 msgid "Add to buy shop."
 msgstr "添加到购买商店."
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:259
+#: src/gui/windows/itemamountwindow.cpp:272
 msgid "Add to sell shop."
 msgstr "添加到出售商店."
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:263
+#: src/gui/windows/itemamountwindow.cpp:276
 msgid "Unknown."
 msgstr "未知."
 
@@ -6044,6 +6083,110 @@ msgstr ""
 msgid "Open register url"
 msgstr ""
 
+#. TRANSLATORS: mail edit window name
+#: src/gui/windows/maileditwindow.cpp:53
+#, fuzzy
+msgid "Edit mail"
+msgstr "电子邮件:"
+
+#. TRANSLATORS: mail edit window button
+#. TRANSLATORS: button in npc post dialog
+#: src/gui/windows/maileditwindow.cpp:56 src/gui/windows/npcpostdialog.cpp:66
+msgid "Send"
+msgstr "发送"
+
+#. TRANSLATORS: mail edit window button
+#. TRANSLATORS: npc dialog button
+#. TRANSLATORS: servers dialog button
+#. TRANSLATORS: shop window label
+#. TRANSLATORS: trade window button
+#: src/gui/windows/maileditwindow.cpp:60 src/gui/windows/npcdialog.cpp:115
+#: src/gui/windows/serverdialog.cpp:118 src/gui/windows/shopwindow.cpp:121
+#: src/gui/windows/tradewindow.cpp:84
+msgid "Add"
+msgstr "添加"
+
+#. TRANSLATORS: mail edit window label
+#. TRANSLATORS: label in npc post dialog
+#: src/gui/windows/maileditwindow.cpp:62 src/gui/windows/npcpostdialog.cpp:59
+msgid "To:"
+msgstr "至:"
+
+#. TRANSLATORS: mail edit window label
+#. TRANSLATORS: mail view window label
+#: src/gui/windows/maileditwindow.cpp:64 src/gui/windows/mailviewwindow.cpp:75
+msgid "Subject:"
+msgstr ""
+
+#. TRANSLATORS: mail edit window label
+#. TRANSLATORS: mail view window label
+#: src/gui/windows/maileditwindow.cpp:66
+#: src/gui/windows/mailviewwindow.cpp:106
+#, fuzzy
+msgid "Money:"
+msgstr "金币: %s"
+
+#. TRANSLATORS: mail edit window label
+#: src/gui/windows/maileditwindow.cpp:68
+#: src/gui/windows/mailviewwindow.cpp:122
+#: src/gui/windows/mailviewwindow.cpp:127
+#, fuzzy
+msgid "Item:"
+msgstr "地图项"
+
+#. TRANSLATORS: mail edit window label
+#. TRANSLATORS: mail view window label
+#: src/gui/windows/maileditwindow.cpp:70 src/gui/windows/mailviewwindow.cpp:78
+#, fuzzy
+msgid "Message:"
+msgstr "讯息"
+
+#. TRANSLATORS: mail view window name
+#: src/gui/windows/mailviewwindow.cpp:56
+msgid "View mail"
+msgstr ""
+
+#. TRANSLATORS: mail view window button
+#: src/gui/windows/mailviewwindow.cpp:66
+msgid "Reply"
+msgstr ""
+
+#. TRANSLATORS: mail view window label
+#: src/gui/windows/mailviewwindow.cpp:68
+#, fuzzy
+msgid "Time:"
+msgstr "时间"
+
+#. TRANSLATORS: mail view window label
+#: src/gui/windows/mailviewwindow.cpp:72
+msgid "From:"
+msgstr ""
+
+#: src/gui/windows/mailviewwindow.cpp:134
+#, fuzzy
+msgid "Get attach"
+msgstr "(?) 攻击"
+
+#. TRANSLATORS: mail window button
+#: src/gui/windows/mailwindow.cpp:61
+msgid "Refresh"
+msgstr ""
+
+#. TRANSLATORS: mail window button
+#: src/gui/windows/mailwindow.cpp:63
+msgid "New"
+msgstr ""
+
+#. TRANSLATORS: mail window button
+#: src/gui/windows/mailwindow.cpp:67
+msgid "Return"
+msgstr ""
+
+#. TRANSLATORS: mail window button
+#: src/gui/windows/mailwindow.cpp:69
+msgid "Open"
+msgstr ""
+
 #: src/gui/windows/ministatuswindow.cpp:72
 msgid "health bar"
 msgstr ""
@@ -6130,25 +6273,6 @@ msgstr "下一个"
 #: src/gui/windows/npcdialog.cpp:77
 msgid "Submit"
 msgstr "提交"
-
-#. TRANSLATORS: npc dialog button
-#. TRANSLATORS: servers dialog button
-#. TRANSLATORS: shop window label
-#. TRANSLATORS: trade window button
-#: src/gui/windows/npcdialog.cpp:115 src/gui/windows/serverdialog.cpp:118
-#: src/gui/windows/shopwindow.cpp:121 src/gui/windows/tradewindow.cpp:84
-msgid "Add"
-msgstr "添加"
-
-#. TRANSLATORS: label in npc post dialog
-#: src/gui/windows/npcpostdialog.cpp:59
-msgid "To:"
-msgstr "至:"
-
-#. TRANSLATORS: button in npc post dialog
-#: src/gui/windows/npcpostdialog.cpp:66
-msgid "Send"
-msgstr "发送"
 
 #. TRANSLATORS: npc post message error
 #: src/gui/windows/npcpostdialog.cpp:113
@@ -8582,6 +8706,11 @@ msgstr "旧密码不正确."
 msgid "New password too short."
 msgstr "新密码太短."
 
+#: src/net/eathena/mailhandler.cpp:217
+#, c-format
+msgid "You have new mail from %s with subject %s"
+msgstr ""
+
 #: src/net/eathena/skillhandler.cpp:361
 #, c-format
 msgid "Unknown skill error: %d"
@@ -9518,6 +9647,68 @@ msgstr ""
 #: src/resources/notifications.h:568
 #, c-format
 msgid "Left %d seconds until you can use item."
+msgstr ""
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:572
+#, fuzzy
+msgid "Message succesfully sent."
+msgstr "玩家成功%s!"
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:576
+#, fuzzy
+msgid "Message send failed."
+msgstr "讯息关闭聊天."
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:580
+#, fuzzy
+msgid "Item attach failed."
+msgstr "启用攻击过滤器"
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:584
+#, fuzzy
+msgid "Money attach failed."
+msgstr "启用攻击过滤器"
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:588
+#, fuzzy
+msgid "Message return failed."
+msgstr "聊天创建失败!"
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:592
+msgid "Message return success."
+msgstr ""
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:596
+#, fuzzy
+msgid "Message deletion failed."
+msgstr "身份验证失败."
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:600
+#, fuzzy
+msgid "Message successfully deleted."
+msgstr "帮会创建成功."
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:604
+msgid "You got attach successfully."
+msgstr ""
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:608
+msgid "Error on getting attach successfully."
+msgstr ""
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:612
+msgid "Can't get attach. Too many items."
 msgstr ""
 
 #. TRANSLATORS: chat option changed message

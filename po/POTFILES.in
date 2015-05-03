@@ -97,6 +97,9 @@ src/gui/windows/inventorywindow.cpp
 src/gui/windows/itemamountwindow.cpp
 src/gui/windows/killstats.cpp
 src/gui/windows/logindialog.cpp
+src/gui/windows/maileditwindow.cpp
+src/gui/windows/mailviewwindow.cpp
+src/gui/windows/mailwindow.cpp
 src/gui/windows/minimap.cpp
 src/gui/windows/ministatuswindow.cpp
 src/gui/windows/npcdialog.cpp
@@ -144,6 +147,7 @@ src/net/eathena/chathandler.cpp
 src/net/eathena/generalhandler.cpp
 src/net/eathena/itemflags.h
 src/net/eathena/loginhandler.cpp
+src/net/eathena/mailhandler.cpp
 src/net/eathena/maptypeproperty2.h
 src/net/eathena/pethandler.cpp
 src/net/eathena/skillhandler.cpp
