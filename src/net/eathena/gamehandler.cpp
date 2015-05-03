@@ -199,7 +199,7 @@ void GameHandler::processMapLogin(Net::MessageIn &msg)
 
     mLastHost &= 0xffffff;
 
-    GameHandler *const g = dynamic_cast<GameHandler*>(gameHandler);
+    GameHandler *const g = static_cast<GameHandler*>(gameHandler);
     if (g)
     {
         Network *const network = g->mNetwork;

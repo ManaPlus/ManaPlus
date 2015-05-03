@@ -197,7 +197,7 @@ WindowMenu::~WindowMenu()
     mButtonNames.clear();
     FOR_EACH (std::vector <Button*>::iterator, it, mButtons)
     {
-        Button *const btn = dynamic_cast<Button*>(*it);
+        Button *const btn = *it;
         if (!btn)
             continue;
         if (!btn->isVisibleLocal())
@@ -321,8 +321,7 @@ void WindowMenu::mouseExited(MouseEvent& event A_UNUSED)
 
 void WindowMenu::showButton(const std::string &name, const bool visible)
 {
-    const ButtonInfo *const info = dynamic_cast<ButtonInfo *const>(
-        mButtonNames[name]);
+    const ButtonInfo *const info = mButtonNames[name];
     if (!info || !info->button)
         return;
 
@@ -340,7 +339,7 @@ void WindowMenu::updateButtons()
     const int pad2 = 2 * mPadding;
     FOR_EACH (std::vector <Button*>::iterator, it, mButtons)
     {
-        Button *const btn = dynamic_cast<Button *const>(*it);
+        Button *const btn = *it;
         if (!btn)
             continue;
         if (btn->isVisibleLocal())
@@ -381,8 +380,7 @@ void WindowMenu::loadButtons()
                 "windowmenu" + toString(f), "");
             if (str.empty() || str == "SET")
                 continue;
-            const ButtonInfo *const info = dynamic_cast<ButtonInfo *const>(
-                mButtonNames[str]);
+            const ButtonInfo *const info = mButtonNames[str];
             if (!info || !info->button)
                 continue;
             info->button->setVisible(false);
@@ -410,7 +408,7 @@ void WindowMenu::saveButtons() const
     int i = 0;
     FOR_EACH (std::vector <Button*>::const_iterator, it, mButtons)
     {
-        const Button *const btn = dynamic_cast<const Button *const>(*it);
+        const Button *const btn = *it;
         if (btn && !btn->isVisibleLocal())
         {
             config.setValue("windowmenu" + toString(i),

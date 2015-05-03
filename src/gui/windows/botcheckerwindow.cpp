@@ -190,12 +190,11 @@ void BotCheckerWindow::reset()
         std::set<ActorSprite*> beings = actorManager->getAll();
         FOR_EACH (ActorSprites::iterator, i, beings)
         {
-            Being *const being = dynamic_cast<Being*>(*i);
-
-            if (being && being->getType() == ActorType::Player
-                && being != localPlayer && being->getName() != "")
+            if ((*i)->getType() == ActorType::Player)
             {
-                being->resetCounters();
+                Being *const being = static_cast<Being*>(*i);
+                if (being != localPlayer && !being->getName().empty())
+                    being->resetCounters();
             }
         }
     }

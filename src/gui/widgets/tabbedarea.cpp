@@ -396,7 +396,7 @@ void TabbedArea::setSelectedTab(Tab *const tab)
         }
     }
 
-    Tab *const newTab = dynamic_cast<Tab *const>(tab);
+    Tab *const newTab = tab;
 
     if (newTab)
         newTab->setCurrent();

@@ -605,8 +605,7 @@ void ChatWindow::ignoreAllWhispers()
          iter != mWhispers.end();
          ++ iter)
     {
-        WhisperTab *const tab = dynamic_cast<WhisperTab* const>(
-            iter->second);
+        WhisperTab *const tab = iter->second;
         if (tab)
         {
             if (player_relations.getRelation(tab->getNick())

@@ -213,12 +213,8 @@ void Font::drawString(Graphics *const graphics,
         return;
     }
 
-    Graphics *const g = dynamic_cast<Graphics *const>(graphics);
-    if (!g)
-        return;
-
-    Color col = g->getColor();
-    const Color &col2 = g->getColor2();
+    Color col = graphics->getColor();
+    const Color &col2 = graphics->getColor2();
     const float alpha = static_cast<float>(col.a) / 255.0F;
 
     /* The alpha value is ignored at string generation so avoid caching the
@@ -240,7 +236,7 @@ void Font::drawString(Graphics *const graphics,
         if (image)
         {
             image->setAlpha(alpha);
-            g->drawImage(image, x, y);
+            graphics->drawImage(image, x, y);
         }
     }
     else
@@ -262,7 +258,7 @@ void Font::drawString(Graphics *const graphics,
 
         const Image *const image = chunk2->img;
         if (image)
-            g->drawImage(image, x, y);
+            graphics->drawImage(image, x, y);
     }
     BLOCK_END("Font::drawString")
 }

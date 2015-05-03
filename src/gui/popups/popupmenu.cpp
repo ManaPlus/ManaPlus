@@ -1884,7 +1884,7 @@ void PopupMenu::showPopup(const int x, const int y, Button *const button)
     for (std::vector<Button *>::const_iterator it = names.begin(),
          it_end = names.end(); it != it_end; ++ it)
     {
-        const Button *const btn = dynamic_cast<const Button*>(*it);
+        const Button *const btn = *it;
         if (!btn || btn->getActionEventId() == "SET")
             continue;
 
