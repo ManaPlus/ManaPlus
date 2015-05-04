@@ -21,6 +21,8 @@
 #ifndef GUI_MAILMESSAGE_H
 #define GUI_MAILMESSAGE_H
 
+#include <string>
+
 #include "localconsts.h"
 
 struct MailMessage final

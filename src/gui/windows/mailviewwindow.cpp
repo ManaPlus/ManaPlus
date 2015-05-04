@@ -33,13 +33,9 @@
 #include "gui/widgets/containerplacer.h"
 #include "gui/widgets/icon.h"
 #include "gui/widgets/label.h"
-#include "gui/widgets/layout.h"
-#include "gui/widgets/layouttype.h"
-#include "gui/widgets/textfield.h"
 
 #include "utils/delete2.h"
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include "resources/image.h"
 #include "resources/iteminfo.h"

@@ -20,7 +20,6 @@
 
 #include "gui/windows/maileditwindow.h"
 
-#include "inventory.h"
 #include "item.h"
 
 #include "being/playerinfo.h"
@@ -28,21 +27,16 @@
 
 #include "gui/windows/inventorywindow.h"
 #include "gui/windows/itemamountwindow.h"
-#include "gui/windows/setupwindow.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/containerplacer.h"
 #include "gui/widgets/inttextfield.h"
 #include "gui/widgets/itemcontainer.h"
 #include "gui/widgets/label.h"
-#include "gui/widgets/layout.h"
-#include "gui/widgets/layouttype.h"
 #include "gui/widgets/scrollarea.h"
-#include "gui/widgets/textfield.h"
 
 #include "utils/delete2.h"
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include "debug.h"
 

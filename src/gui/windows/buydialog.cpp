@@ -44,7 +44,6 @@
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/shoplistbox.h"
 #include "gui/widgets/slider.h"
-#include "gui/widgets/textfield.h"
 
 #include "net/adminhandler.h"
 #include "net/buysellhandler.h"

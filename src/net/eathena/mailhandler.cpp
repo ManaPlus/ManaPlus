@@ -20,7 +20,6 @@
 
 #include "net/eathena/mailhandler.h"
 
-#include "logger.h"
 #include "notifymanager.h"
 
 #include "gui/mailmessage.h"
@@ -175,7 +174,7 @@ void MailHandler::processReadMail(Net::MessageIn &msg)
 
 void MailHandler::processGetAttachment(Net::MessageIn &msg)
 {
-    switch(msg.readUInt8("flag"))
+    switch (msg.readUInt8("flag"))
     {
         case 0:
             NotifyManager::notify(NotifyTypes::MAIL_GET_ATTACH_OK);

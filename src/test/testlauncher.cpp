@@ -478,7 +478,7 @@ int TestLauncher::testDyeSpeed()
 
     clock_gettime(CLOCK_MONOTONIC, &time2);
     long diff = ((static_cast<long int>(time2.tv_sec) * 1000000000L
-        + static_cast<long int>(time2.tv_nsec)) / 1) - 
+        + static_cast<long int>(time2.tv_nsec)) / 1) -
         ((static_cast<long int>(time1.tv_sec) * 1000000000L
         + static_cast<long int>(time1.tv_nsec)) / 1);
     printf("time: %ld\n", diff);

@@ -30,7 +30,6 @@
 class Button;
 class Icon;
 class Label;
-class TextField;
 
 struct MailMessage;
 
@@ -38,7 +37,7 @@ class MailViewWindow final : public Window,
                              public ActionListener
 {
     public:
-        MailViewWindow(const MailMessage *const message);
+        explicit MailViewWindow(const MailMessage *const message);
 
         A_DELETE_COPY(MailViewWindow)
 

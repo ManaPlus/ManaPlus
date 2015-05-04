@@ -101,7 +101,6 @@
 
 #include "net/generalhandler.h"
 #include "net/gamehandler.h"
-#include "net/inventoryhandler.h"
 #include "net/packetcounters.h"
 #include "net/serverfeatures.h"
 

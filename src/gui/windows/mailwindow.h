@@ -53,7 +53,7 @@ class MailWindow final : public Window,
 
         void addMail(MailMessage *const message);
 
-        void clear();
+        void clear() override final;
 
         void showMessage(MailMessage *const mail);
 
