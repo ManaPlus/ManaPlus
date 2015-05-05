@@ -225,7 +225,9 @@ class DragDrop final
         {
             return mSource == DRAGDROP_SOURCE_INVENTORY
                 || mSource == DRAGDROP_SOURCE_STORAGE
+#ifdef EATHENA_SUPPORT
                 || mSource == DRAGDROP_SOURCE_CART
+#endif
                 || mSource == DRAGDROP_SOURCE_TRADE
                 || mSource == DRAGDROP_SOURCE_OUTFIT
                 || mSource == DRAGDROP_SOURCE_GROUND
