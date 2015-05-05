@@ -195,7 +195,7 @@ void SkillDialog::update()
     FOR_EACH (SkillMap::const_iterator, it, mSkills)
     {
         SkillInfo *const info = (*it).second;
-        if (info && info->modifiable)
+        if (info && info->modifiable == Modifiable_true)
             info->update();
     }
 }
@@ -314,7 +314,7 @@ void SkillDialog::loadXmlFile(const std::string &fileName)
                     {
                         skill = new SkillInfo;
                         skill->id = static_cast<unsigned int>(id);
-                        skill->modifiable = false;
+                        skill->modifiable = Modifiable_false;
                         skill->model = model;
                         skill->update();
                         skill->useButton = XML::getProperty(
@@ -421,7 +421,7 @@ void SkillDialog::removeSkill(const int id)
 
 bool SkillDialog::updateSkill(const int id,
                               const int range,
-                              const bool modifiable,
+                              const Modifiable modifiable,
                               const SkillType::SkillType type,
                               const int sp)
 {
@@ -448,7 +448,7 @@ void SkillDialog::addSkill(const SkillOwner::Type owner,
                            const std::string &name,
                            const int level,
                            const int range,
-                           const bool modifiable,
+                           const Modifiable modifiable,
                            const SkillType::SkillType type,
                            const int sp)
 {
@@ -515,7 +515,7 @@ void SkillDialog::setSkillDuration(const SkillOwner::Type owner,
     SkillInfo *info = nullptr;
     if (it == mSkills.end())
     {
-        addSkill(owner, id, "", 0, 0, false, SkillType::Unknown, 0);
+        addSkill(owner, id, "", 0, 0, Modifiable_false, SkillType::Unknown, 0);
         it = mSkills.find(id);
     }
     if (it != mSkills.end())

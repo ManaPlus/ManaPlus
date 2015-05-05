@@ -58,7 +58,7 @@ SkillInfo::SkillInfo() :
     castingDstEffectId(-1),
     type(SkillType::Unknown),
     owner(SkillOwner::Player),
-    modifiable(false),
+    modifiable(Modifiable_false),
     visible(false),
     alwaysVisible(false)
 {
@@ -78,7 +78,7 @@ void SkillInfo::update()
     const int baseLevel = PlayerInfo::getSkillLevel(id);
     const std::pair<int, int> exp = PlayerInfo::getStatExperience(id);
 
-    if (!modifiable && baseLevel == 0 && exp.second == 0)
+    if (modifiable == Modifiable_false && baseLevel == 0 && exp.second == 0)
     {
         if (visible)
         {

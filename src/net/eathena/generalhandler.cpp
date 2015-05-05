@@ -390,13 +390,18 @@ void GeneralHandler::gameStarted() const
     // protection against double addition attributes.
     statusWindow->clearAttributes();
 
-    statusWindow->addAttribute(Attributes::STR, _("Strength"), "str", true);
-    statusWindow->addAttribute(Attributes::AGI, _("Agility"), "agi", true);
-    statusWindow->addAttribute(Attributes::VIT, _("Vitality"), "vit", true);
+    statusWindow->addAttribute(Attributes::STR,
+        _("Strength"), "str", Modifiable_true);
+    statusWindow->addAttribute(Attributes::AGI,
+        _("Agility"), "agi", Modifiable_true);
+    statusWindow->addAttribute(Attributes::VIT,
+        _("Vitality"), "vit", Modifiable_true);
     statusWindow->addAttribute(Attributes::INT,
-        _("Intelligence"), "int", true);
-    statusWindow->addAttribute(Attributes::DEX, _("Dexterity"), "dex", true);
-    statusWindow->addAttribute(Attributes::LUK, _("Luck"), "luk", true);
+        _("Intelligence"), "int", Modifiable_true);
+    statusWindow->addAttribute(Attributes::DEX,
+        _("Dexterity"), "dex", Modifiable_true);
+    statusWindow->addAttribute(Attributes::LUK,
+        _("Luck"), "luk", Modifiable_true);
 
     statusWindow->addAttribute(Attributes::ATK, _("Attack"));
     statusWindow->addAttribute(Attributes::DEF, _("Defense"));

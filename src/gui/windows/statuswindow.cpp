@@ -401,11 +401,11 @@ void StatusWindow::setPointsNeeded(const int id, const int needed)
 
 void StatusWindow::addAttribute(const int id, const std::string &restrict name,
                                 const std::string &restrict shortName,
-                                const bool modifiable)
+                                const Modifiable modifiable)
 {
     AttrDisplay *disp;
 
-    if (modifiable)
+    if (modifiable == Modifiable_true)
     {
         disp = new ChangeDisplay(this, id, name, shortName);
         disp->update();

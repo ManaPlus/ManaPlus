@@ -135,7 +135,7 @@ void SkillHandler::processPlayerSkills(Net::MessageIn &msg)
         const int sp = msg.readInt16("sp");
         const int range = msg.readInt16("range");
         msg.skip(24, "unused");
-        const int up = msg.readUInt8("up flag");
+        const Modifiable up = fromBool(msg.readUInt8("up flag"), Modifiable);
         const int oldLevel = PlayerInfo::getSkillLevel(skillId);
         if (oldLevel && oldLevel != level)
             updateSkill = skillId;

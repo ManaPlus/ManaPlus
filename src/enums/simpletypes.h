@@ -58,5 +58,6 @@ defBoolEnum(Notify);
 defBoolEnum(Trading);
 defBoolEnum(Sfx);
 defBoolEnum(Keep);
+defBoolEnum(Modifiable);
 
 #endif  // ENUMS_SIMPLETYPES_H

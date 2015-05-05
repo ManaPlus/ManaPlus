@@ -84,7 +84,7 @@ class SkillDialog final : public Window,
 
         bool updateSkill(const int id,
                          const int range,
-                         const bool modifiable,
+                         const Modifiable modifiable,
                          const SkillType::SkillType type,
                          const int sp);
 
@@ -93,7 +93,7 @@ class SkillDialog final : public Window,
                       const std::string &name,
                       const int level,
                       const int range,
-                      const bool modifiable,
+                      const Modifiable modifiable,
                       const SkillType::SkillType type,
                       const int sp);
 

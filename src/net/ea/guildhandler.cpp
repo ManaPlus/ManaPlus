@@ -343,7 +343,7 @@ void GuildHandler::processGuildSkillInfo(Net::MessageIn &msg)
         const int sp = msg.readInt16("sp");
         const int range = msg.readInt16("range");
         const std::string name = msg.readString(24, "skill name");
-        const int up = msg.readUInt8("up flag");
+        const Modifiable up = fromBool(msg.readUInt8("up flag"), Modifiable);
         PlayerInfo::setSkillLevel(skillId, level);
         if (skillDialog)
         {

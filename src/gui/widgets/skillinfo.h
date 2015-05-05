@@ -23,6 +23,8 @@
 #ifndef GUI_WIDGETS_SKILLINFO_H
 #define GUI_WIDGETS_SKILLINFO_H
 
+#include "enums/simpletypes.h"
+
 #include "gui/color.h"
 
 #include "resources/skillowner.h"
@@ -66,7 +68,7 @@ struct SkillInfo final
     int castingDstEffectId;
     SkillType::SkillType type;
     SkillOwner::Type owner;
-    bool modifiable;
+    Modifiable modifiable;
     bool visible;
     bool alwaysVisible;
 

@@ -108,7 +108,7 @@ void HomunculusHandler::processHomunculusSkills(Net::MessageIn &msg)
         const int sp = msg.readInt16("sp");
         const int range = msg.readInt16("range");
         const std::string name = msg.readString(24, "skill name");
-        const int up = msg.readUInt8("up flag");
+        const Modifiable up = fromBool(msg.readUInt8("up flag"), Modifiable);
         PlayerInfo::setSkillLevel(skillId, level);
         if (skillDialog)
         {
@@ -202,7 +202,7 @@ void HomunculusHandler::processHomunculusSkillUp(Net::MessageIn &msg)
     const int level = msg.readInt16("level");
     const int sp = msg.readInt16("sp");
     const int range = msg.readInt16("range");
-    const int up = msg.readUInt8("up flag");
+    const Modifiable up = fromBool(msg.readUInt8("up flag"), Modifiable);
 
     if (skillDialog && PlayerInfo::getSkillLevel(skillId) != level)
         skillDialog->playUpdateEffect(skillId);

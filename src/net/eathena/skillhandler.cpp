@@ -213,7 +213,7 @@ void SkillHandler::processPlayerSkills(Net::MessageIn &msg)
         const int sp = msg.readInt16("sp");
         const int range = msg.readInt16("range");
         const std::string name = msg.readString(24, "skill name");
-        const int up = msg.readUInt8("up flag");
+        const Modifiable up = fromBool(msg.readUInt8("up flag"), Modifiable);
         const int oldLevel = PlayerInfo::getSkillLevel(skillId);
         if (oldLevel && oldLevel != level)
             updateSkill = skillId;
@@ -245,7 +245,7 @@ void SkillHandler::processSkillAdd(Net::MessageIn &msg)
     const int sp = msg.readInt16("sp");
     const int range = msg.readInt16("range");
     const std::string name = msg.readString(24, "skill name");
-    const int up = msg.readUInt8("up flag");
+    const Modifiable up = fromBool(msg.readUInt8("up flag"), Modifiable);
     const int oldLevel = PlayerInfo::getSkillLevel(skillId);
     if (oldLevel && oldLevel != level)
         updateSkill = skillId;
@@ -272,7 +272,7 @@ void SkillHandler::processSkillUpdate(Net::MessageIn &msg)
     const int level = msg.readInt16("skill level");
     const int sp = msg.readInt16("sp");
     const int range = msg.readInt16("range");
-    const int up = msg.readUInt8("up flag");
+    const Modifiable up = fromBool(msg.readUInt8("up flag"), Modifiable);
     const int oldLevel = PlayerInfo::getSkillLevel(skillId);
     if (oldLevel && oldLevel != level)
         updateSkill = skillId;
