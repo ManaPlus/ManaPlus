@@ -30,7 +30,8 @@
 
 PopupList::PopupList(DropDown *const widget,
                      ListModel *const listModel,
-                     bool extended, bool modal) :
+                     const bool extended,
+                     const Modal modal) :
     Popup("PopupList", "popuplist.xml"),
     FocusListener(),
     mListModel(listModel),
@@ -88,7 +89,7 @@ void PopupList::show(int x, int y)
     setPosition(x, y);
     setVisible(true);
     requestMoveToTop();
-    if (mModal)
+    if (mModal == Modal_true)
         requestModalFocus();
 }
 
@@ -153,7 +154,7 @@ void PopupList::mouseReleased(MouseEvent& event)
     if (mDropDown)
         mDropDown->updateSelection();
     setVisible(false);
-    if (mModal)
+    if (mModal == Modal_true)
         releaseModalFocus();
 }
 
@@ -169,7 +170,7 @@ void PopupList::focusGained(const Event& event)
     if (mDropDown)
         mDropDown->updateSelection();
     setVisible(false);
-    if (mModal)
+    if (mModal == Modal_true)
         releaseModalFocus();
 }
 

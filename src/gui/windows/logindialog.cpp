@@ -111,7 +111,7 @@ LoginDialog::LoginDialog(LoginData *const data,
             mLoginData->updateHost.c_str()));
         mUpdateListModel = new UpdateListModel(mLoginData);
         mUpdateHostDropDown = new DropDown(this, mUpdateListModel,
-            false, false, this, "updateselect");
+            false, Modal_false, this, "updateselect");
         const std::string str = serverConfig.getValue("updateHost2", "");
         if (!str.empty())
             mUpdateHostDropDown->setSelectedString(str);

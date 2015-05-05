@@ -23,6 +23,8 @@
 #ifndef GUI_WIDGETS_DROPDOWN_H
 #define GUI_WIDGETS_DROPDOWN_H
 
+#include "enums/simpletypes.h"
+
 #include "gui/widgets/basiccontainer.h"
 
 #include "listeners/actionlistener.h"
@@ -64,7 +66,7 @@ class DropDown final : public ActionListener,
         DropDown(const Widget2 *const widget,
                  ListModel *const listModel,
                  const bool extended = false,
-                 const bool modal = false,
+                 const Modal modal = Modal_false,
                  ActionListener *const listener = nullptr,
                  const std::string &eventId = "");
 

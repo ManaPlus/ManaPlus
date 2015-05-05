@@ -21,6 +21,8 @@
 #ifndef GUI_WIDGETS_POPUPLIST_H
 #define GUI_WIDGETS_POPUPLIST_H
 
+#include "enums/simpletypes.h"
+
 #include "gui/widgets/popup.h"
 
 #include "listeners/focuslistener.h"
@@ -37,8 +39,9 @@ class PopupList final : public Popup,
 {
     public:
         PopupList(DropDown *const widget,
-                  ListModel *const listModel, bool extended,
-                  bool modal = false);
+                  ListModel *const listModel,
+                  const bool extended,
+                  const Modal modal = Modal_false);
 
         ~PopupList();
 
@@ -75,7 +78,7 @@ class PopupList final : public Popup,
         ScrollArea *mScrollArea;
         DropDown *mDropDown;
         int mPressedIndex;
-        bool mModal;
+        Modal mModal;
 };
 
 #endif  // GUI_WIDGETS_POPUPLIST_H

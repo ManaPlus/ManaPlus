@@ -63,7 +63,7 @@ EditServerDialog::EditServerDialog(ServerDialog *const parent,
     mPersistentIp(new CheckBox(this, _("Use same ip"),
                   true, this, "persistentIp")),
     mTypeListModel(new TypeListModel),
-    mTypeField(new DropDown(this, mTypeListModel, false, true)),
+    mTypeField(new DropDown(this, mTypeListModel, false, Modal_true)),
     mServerDialog(parent),
     mServer(server),
     mIndex(index)
