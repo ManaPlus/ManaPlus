@@ -83,7 +83,7 @@ void GameHandler::processMapQuitResponse(Net::MessageIn &msg)
             _("OK"),
             DialogType::ERROR,
             Modal_true,
-            true,
+            ShowCenter_true,
             nullptr,
             260);
     }

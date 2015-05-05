@@ -148,7 +148,7 @@ static int uploadUpdate(void *ptr,
                     _("OK"),
                     DialogType::OK,
                     Modal_true,
-                    false,
+                    ShowCenter_false,
                     nullptr,
                     260);
             }

@@ -164,7 +164,7 @@ void Setup_Input::apply()
             _("OK"),
             DialogType::ERROR,
             Modal_true,
-            true,
+            ShowCenter_true,
             nullptr,
             260);
     }

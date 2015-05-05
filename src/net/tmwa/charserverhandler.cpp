@@ -523,7 +523,7 @@ void CharServerHandler::processCharDeleteFailed(Net::MessageIn &msg)
         _("OK"),
         DialogType::ERROR,
         Modal_true,
-        true,
+        ShowCenter_true,
         nullptr,
         260);
     BLOCK_END("CharServerHandler::processCharDeleteFailed")

@@ -280,7 +280,7 @@ void CharSelectDialog::action(const ActionEvent &event)
                 _("OK"),
                 DialogType::SILENCE,
                 Modal_true,
-                true,
+                ShowCenter_true,
                 nullptr,
                 260);
         }
@@ -325,7 +325,7 @@ void CharSelectDialog::action(const ActionEvent &event)
                     _("OK"),
                     DialogType::ERROR,
                     Modal_true,
-                    true,
+                    ShowCenter_true,
                     nullptr,
                     260);
             }

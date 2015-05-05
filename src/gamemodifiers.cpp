@@ -439,7 +439,7 @@ void GameModifiers::changeAwayMode(const bool forward A_UNUSED)
             _("OK"),
             DialogType::SILENCE,
             Modal_true,
-            false,
+            ShowCenter_false,
             nullptr,
             260);
         localPlayer->setAwayDialog(dialog);

@@ -105,7 +105,10 @@ Window *DialogsManager::openErrorDialog(const std::string &header,
             // TRANSLATORS: ok dialog button
             _("Close"),
             DialogType::ERROR,
-            modal, true, nullptr, 260);
+            modal,
+            ShowCenter_true,
+            nullptr,
+            260);
     }
     else
     {
@@ -129,7 +132,10 @@ void DialogsManager::playerDeath()
             // TRANSLATORS: ok dialog button
             _("Revive"),
             DialogType::OK,
-            Modal_false, true, nullptr, 260);
+            Modal_false,
+            ShowCenter_true,
+            nullptr,
+            260);
         deathNotice->addActionListener(&postDeathListener);
     }
 }
@@ -158,7 +164,7 @@ void DialogsManager::attributeChanged(const int id,
                     _("OK"),
                     DialogType::OK,
                     Modal_false,
-                    true,
+                    ShowCenter_true,
                     nullptr,
                     260);
                 weightNotice->addActionListener(
@@ -177,7 +183,7 @@ void DialogsManager::attributeChanged(const int id,
                     _("OK"),
                     DialogType::OK,
                     Modal_false,
-                    true,
+                    ShowCenter_true,
                     nullptr,
                     260);
                 weightNotice->addActionListener(

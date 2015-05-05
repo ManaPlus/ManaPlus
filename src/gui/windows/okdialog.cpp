@@ -39,7 +39,7 @@ OkDialog::OkDialog(const std::string &restrict title,
                    const std::string &restrict button,
                    const int soundEvent,
                    const Modal modal,
-                   const bool showCenter,
+                   const ShowCenter showCenter,
                    Window *const parent,
                    const int minWidth) :
     Window(title, modal, parent, "ok.xml"),
@@ -73,7 +73,7 @@ OkDialog::OkDialog(const std::string &restrict title,
     add(mTextBox);
     add(okButton);
 
-    if (showCenter)
+    if (showCenter == ShowCenter_true)
         center();
     else
         centerHorisontally();

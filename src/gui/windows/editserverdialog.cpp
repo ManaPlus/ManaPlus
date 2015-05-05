@@ -217,7 +217,7 @@ void EditServerDialog::action(const ActionEvent &event)
                 _("OK"),
                 DialogType::ERROR,
                 Modal_true,
-                true,
+                ShowCenter_true,
                 nullptr,
                 260);
             dlg->addActionListener(this);

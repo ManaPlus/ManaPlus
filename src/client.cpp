@@ -1394,7 +1394,7 @@ int Client::gameExec()
                         _("Close"),
                         DialogType::ERROR,
                         Modal_true,
-                        true,
+                        ShowCenter_true,
                         nullptr,
                         260);
                     mCurrentDialog->addActionListener(&loginListener);
@@ -1412,7 +1412,7 @@ int Client::gameExec()
                         _("Close"),
                         DialogType::ERROR,
                         Modal_true,
-                        true,
+                        ShowCenter_true,
                         nullptr,
                         260);
                     mCurrentDialog->addActionListener(&accountListener);
@@ -1473,7 +1473,7 @@ int Client::gameExec()
                         _("OK"),
                         DialogType::ERROR,
                         Modal_true,
-                        true,
+                        ShowCenter_true,
                         nullptr,
                         260);
                     mCurrentDialog->addActionListener(&accountListener);
@@ -1504,7 +1504,7 @@ int Client::gameExec()
                         _("OK"),
                         DialogType::ERROR,
                         Modal_true,
-                        true,
+                        ShowCenter_true,
                         nullptr,
                         260);
                     mCurrentDialog->addActionListener(&accountListener);

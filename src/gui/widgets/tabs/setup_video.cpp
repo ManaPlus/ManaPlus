@@ -250,7 +250,7 @@ void Setup_Video::apply()
                 _("OK"),
                 DialogType::OK,
                 Modal_true,
-                true,
+                ShowCenter_true,
                 nullptr,
                 260);
         }
@@ -277,7 +277,7 @@ void Setup_Video::apply()
             _("OK"),
             DialogType::OK,
             Modal_true,
-            true,
+            ShowCenter_true,
             nullptr,
             260);
     }
@@ -395,7 +395,7 @@ void Setup_Video::action(const ActionEvent &event)
                         _("OK"),
                         DialogType::OK,
                         Modal_true,
-                        true,
+                        ShowCenter_true,
                         nullptr,
                         260);
                 }
@@ -410,7 +410,7 @@ void Setup_Video::action(const ActionEvent &event)
                         _("OK"),
                         DialogType::OK,
                         Modal_true,
-                        true,
+                        ShowCenter_true,
                         nullptr,
                         260);
                 }

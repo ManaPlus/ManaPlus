@@ -53,5 +53,6 @@ defBoolEnum(Favorite);
 defBoolEnum(Equipm);
 defBoolEnum(Equipped);
 defBoolEnum(Modal);
+defBoolEnum(ShowCenter);
 
 #endif  // ENUMS_SIMPLETYPES_H

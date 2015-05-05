@@ -380,7 +380,7 @@ void CharCreateDialog::action(const ActionEvent &event)
                 _("OK"),
                 DialogType::ERROR,
                 Modal_true,
-                this,
+                ShowCenter_true,
                 nullptr,
                 260);
         }

@@ -143,7 +143,7 @@ void CharServerHandler::processCharCreateFailed(Net::MessageIn &msg)
         _("OK"),
         DialogType::ERROR,
         Modal_true,
-        true,
+        ShowCenter_true,
         nullptr,
         260);
     if (mCharCreateDialog)
@@ -165,7 +165,7 @@ void CharServerHandler::processCharDelete(Net::MessageIn &msg A_UNUSED)
         _("OK"),
         DialogType::OK,
         Modal_true,
-        true,
+        ShowCenter_true,
         nullptr,
         260);
     BLOCK_END("CharServerHandler::processCharDelete")

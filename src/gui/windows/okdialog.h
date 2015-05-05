@@ -50,7 +50,7 @@ class OkDialog final : public Window,
                  const std::string &restrict button,
                  const int soundEvent,
                  const Modal modal,
-                 const bool showCenter,
+                 const ShowCenter showCenter,
                  Window *const parent,
                  const int minWidth);
 

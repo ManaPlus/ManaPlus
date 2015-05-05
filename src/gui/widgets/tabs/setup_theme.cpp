@@ -312,7 +312,7 @@ void Setup_Theme::action(const ActionEvent &event)
             _("OK"),
             DialogType::OK,
             Modal_false,
-            true,
+            ShowCenter_true,
             nullptr,
             600);
     }
@@ -340,13 +340,14 @@ void Setup_Theme::apply()
     if (config.getStringValue("theme") != mTheme)
     {
         // TRANSLATORS: theme message dialog
-        new OkDialog(_("Theme Changed"), _("Restart your client for "
-            "the change to take effect."),
+        new OkDialog(_("Theme Changed"),
+            // TRANSLATORS: ok dialog message
+            _("Restart your client for the change to take effect."),
             // TRANSLATORS: ok dialog button
             _("OK"),
             DialogType::OK,
             Modal_true,
-            true,
+            ShowCenter_true,
             nullptr,
             260);
     }

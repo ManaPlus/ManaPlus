@@ -579,7 +579,7 @@ void CharServerHandler::processCharCheckRename(Net::MessageIn &msg)
             _("Error"),
             DialogType::ERROR,
             Modal_true,
-            true,
+            ShowCenter_true,
             nullptr,
             260);
     }
@@ -597,7 +597,7 @@ void CharServerHandler::processCharRename(Net::MessageIn &msg)
             _("OK"),
             DialogType::OK,
             Modal_true,
-            true,
+            ShowCenter_true,
             nullptr,
             260);
     }
@@ -630,7 +630,7 @@ void CharServerHandler::processCharRename(Net::MessageIn &msg)
             _("OK"),
             DialogType::OK,
             Modal_true,
-            true,
+            ShowCenter_true,
             nullptr,
             260);
     }
@@ -663,7 +663,7 @@ void CharServerHandler::processCharDeleteFailed(Net::MessageIn &msg)
         _("OK"),
         DialogType::ERROR,
         Modal_true,
-        true,
+        ShowCenter_true,
         nullptr,
         260);
     BLOCK_END("CharServerHandler::processCharDeleteFailed")

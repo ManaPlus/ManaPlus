@@ -507,7 +507,7 @@ void SocialWindow::showPartyCreate()
             _("OK"),
             DialogType::ERROR,
             Modal_true,
-            true,
+            ShowCenter_true,
             this,
             260);
         return;
