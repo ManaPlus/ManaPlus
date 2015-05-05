@@ -282,7 +282,7 @@ void OutfitWindow::wearOutfit(const int outfit, const bool unwearEmpty,
         {
             if (item->isEquipment() == Equipm_true)
             {
-                PlayerInfo::equipItem(item, false);
+                PlayerInfo::equipItem(item, Sfx_false);
                 isEmpty = false;
             }
         }
@@ -525,7 +525,7 @@ void OutfitWindow::unequipNotInOutfit(const int outfit) const
                 }
             }
             if (!found)
-                PlayerInfo::unequipItem(item, false);
+                PlayerInfo::unequipItem(item, Sfx_false);
         }
     }
 }

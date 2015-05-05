@@ -457,7 +457,7 @@ impHandler(dropItemIdAll)
     Item *const item = inv->findItem(atoi(event.args.c_str()), 1);
 
     if (item && !PlayerInfo::isItemProtected(item->getId()))
-        PlayerInfo::dropItem(item, item->getQuantity(), true);
+        PlayerInfo::dropItem(item, item->getQuantity(), Sfx_true);
     return true;
 }
 
@@ -465,7 +465,7 @@ impHandler(dropItemInvAll)
 {
     Item *const item = getItemByInvIndex(event, InventoryType::INVENTORY);
     if (item && !PlayerInfo::isItemProtected(item->getId()))
-        PlayerInfo::dropItem(item, item->getQuantity(), true);
+        PlayerInfo::dropItem(item, item->getQuantity(), Sfx_true);
     return true;
 }
 
@@ -1452,7 +1452,7 @@ impHandler(useItem)
         {
             // +++ ignoring item color for now
             const Item *const item = inv->findItem(itemId, 1);
-            PlayerInfo::useEquipItem(item, true);
+            PlayerInfo::useEquipItem(item, Sfx_true);
         }
     }
     else if (itemId < SKILL_MIN_ID && spellManager)
@@ -1469,7 +1469,7 @@ impHandler(useItem)
 impHandler(useItemInv)
 {
     Item *const item = getItemByInvIndex(event, InventoryType::INVENTORY);
-    PlayerInfo::useEquipItem(item, true);
+    PlayerInfo::useEquipItem(item, Sfx_true);
     return true;
 }
 

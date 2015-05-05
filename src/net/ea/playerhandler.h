@@ -59,7 +59,7 @@ class PlayerHandler notfinal : public Net::PlayerHandler
                      const int type,
                      const int base,
                      const int mod,
-                     const bool notify) const override;
+                     const Notify notify) const override;
 
         static const int NoStat = INT_MAX;
 

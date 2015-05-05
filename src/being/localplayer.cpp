@@ -157,7 +157,7 @@ LocalPlayer::LocalPlayer(const int id, const uint16_t subtype) :
     mUpdateName(true),
     mBlockAdvert(false),
     mTargetDeadPlayers(config.getBoolValue("targetDeadPlayers")),
-    mServerAttack(config.getBoolValue("serverAttack")),
+    mServerAttack(fromBool(config.getBoolValue("serverAttack"), Keep)),
     mEnableAdvert(config.getBoolValue("enableAdvert")),
     mTradebot(config.getBoolValue("tradebot")),
     mTargetOnlyReachable(config.getBoolValue("targetOnlyReachable")),
@@ -488,7 +488,7 @@ bool LocalPlayer::pickUp(FloorItem *const item)
     {
         if (actorManager && actorManager->checkForPickup(item))
         {
-            PlayerInfo::pickUpItem(item, true);
+            PlayerInfo::pickUpItem(item, Sfx_true);
             mPickUpTarget = nullptr;
         }
     }
@@ -795,7 +795,7 @@ void LocalPlayer::stopAttack(const bool keepAttack)
     if (!PacketLimiter::limitPackets(PACKET_STOPATTACK))
         return;
 
-    if (mServerAttack && mAction == BeingAction::ATTACK)
+    if (mServerAttack == Keep_true && mAction == BeingAction::ATTACK)
         playerHandler->stopAttack();
 
     untarget();
@@ -1039,7 +1039,7 @@ void LocalPlayer::optionChanged(const std::string &value)
     else if (value == "drawPath")
         mDrawPath = config.getBoolValue("drawPath");
     else if (value == "serverAttack")
-        mServerAttack = config.getBoolValue("serverAttack");
+        mServerAttack = fromBool(config.getBoolValue("serverAttack"), Keep);
     else if (value == "attackMoving")
         mAttackMoving = config.getBoolValue("attackMoving");
     else if (value == "attackNext")
@@ -1327,7 +1327,7 @@ void LocalPlayer::changeEquipmentBeforeAttack(const Being *const target) const
 
         // if sword not equiped
         if (item->isEquipped() == Equipped_false)
-            PlayerInfo::equipItem(item, true);
+            PlayerInfo::equipItem(item, Sfx_true);
 
         // if need equip shield too
         if (settings.attackWeaponType == 3)
@@ -1341,7 +1341,7 @@ void LocalPlayer::changeEquipmentBeforeAttack(const Being *const target) const
                     break;
             }
             if (item && item->isEquipped() == Equipped_false)
-                PlayerInfo::equipItem(item, true);
+                PlayerInfo::equipItem(item, Sfx_true);
         }
     }
     // big distance. allowed only bow
@@ -1361,7 +1361,7 @@ void LocalPlayer::changeEquipmentBeforeAttack(const Being *const target) const
             return;
 
         if (item->isEquipped() == Equipped_false)
-            PlayerInfo::equipItem(item, true);
+            PlayerInfo::equipItem(item, Sfx_true);
     }
 }
 
@@ -2076,7 +2076,7 @@ void LocalPlayer::targetMoved() const
 /*
     if (mKeepAttacking)
     {
-        if (mTarget && mServerAttack)
+        if (mTarget && mServerAttack == Keep_true)
         {
             logger->log("LocalPlayer::targetMoved0");
             if (!PacketLimiter::limitPackets(PACKET_ATTACK))
@@ -2312,7 +2312,7 @@ void LocalPlayer::imitateOutfit(const Being *const player,
             const Item *const item = inv->findItemBySprite(path,
                 player->getGender(), player->getSubType());
             if (item && item->isEquipped() == Equipped_false)
-                PlayerInfo::equipItem(item, false);
+                PlayerInfo::equipItem(item, Sfx_false);
         }
         else
         {
@@ -2327,7 +2327,7 @@ void LocalPlayer::imitateOutfit(const Being *const player,
             if (item)
             {
 //                logger->log("unequiping");
-                PlayerInfo::unequipItem(item, false);
+                PlayerInfo::unequipItem(item, Sfx_false);
             }
         }
     }

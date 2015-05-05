@@ -394,7 +394,7 @@ void TradeWindow::action(const ActionEvent &event)
     {
         setVisible(false);
         reset();
-        PlayerInfo::setTrading(false);
+        PlayerInfo::setTrading(Trading_false);
         tradeHandler->cancel();
     }
     else if (eventId == "ok")

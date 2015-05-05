@@ -25,6 +25,8 @@
 
 #include "flooritem.h"
 
+#include "enums/simpletypes.h"
+
 #include "enums/being/beingaction.h"
 
 #include "net/messagein.h"
@@ -38,7 +40,7 @@ class PlayerHandler notfinal
         virtual ~PlayerHandler()
         { }
 
-        virtual void attack(const int id, const bool keep) const = 0;
+        virtual void attack(const int id, const Keep keep) const = 0;
 
         virtual void stopAttack() const = 0;
 
@@ -101,7 +103,7 @@ class PlayerHandler notfinal
                              const int type,
                              const int base,
                              const int mod,
-                             const bool notify) const = 0;
+                             const Notify notify) const = 0;
 };
 
 }  // namespace Net

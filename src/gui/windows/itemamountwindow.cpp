@@ -65,7 +65,7 @@ void ItemAmountWindow::finish(const Item *const item,
                 tradeWindow->tradeItem(item, amount);
             break;
         case ItemDrop:
-            PlayerInfo::dropItem(item, amount, true);
+            PlayerInfo::dropItem(item, amount, Sfx_true);
             break;
         case ItemSplit:
             inventoryHandler->splitItem(item, amount);

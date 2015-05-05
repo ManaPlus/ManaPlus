@@ -124,7 +124,7 @@ void TradeHandler::request(const Being *const being) const
 void TradeHandler::respond(const bool accept) const
 {
     if (!accept)
-        PlayerInfo::setTrading(false);
+        PlayerInfo::setTrading(Trading_false);
 
     createOutPacket(CMSG_TRADE_RESPONSE);
     outMsg.writeInt8(static_cast<int8_t>(accept ? 3 : 4), "accept");

@@ -25,6 +25,8 @@
 
 #include "being/being.h"
 
+#include "enums/simpletypes.h"
+
 #include "enums/being/pickup.h"
 
 #include "gui/userpalette.h"
@@ -486,7 +488,7 @@ class LocalPlayer final : public Being,
         bool mUpdateName;
         bool mBlockAdvert;
         bool mTargetDeadPlayers;
-        bool mServerAttack;
+        Keep mServerAttack;
         bool mEnableAdvert;
         bool mTradebot;
         bool mTargetOnlyReachable;

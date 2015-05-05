@@ -39,7 +39,7 @@ class PlayerHandler final : public MessageHandler, public Ea::PlayerHandler
 
         void handleMessage(Net::MessageIn &msg) override final;
 
-        void attack(const int id, const bool keep) const override final;
+        void attack(const int id, const Keep keep) const override final;
         void stopAttack() const override final;
         void emote(const uint8_t emoteId) const override final;
 
@@ -83,7 +83,7 @@ class PlayerHandler final : public MessageHandler, public Ea::PlayerHandler
                      const int type,
                      const int base,
                      const int mod,
-                     const bool notify) const override final;
+                     const Notify notify) const override final;
 
         static void processPlayerStatUpdate5(Net::MessageIn &msg);
 

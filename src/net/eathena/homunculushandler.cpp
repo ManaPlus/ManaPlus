@@ -262,7 +262,7 @@ void HomunculusHandler::move(const int x, const int y) const
         0U, "position");
 }
 
-void HomunculusHandler::attack(const int targetId, const bool keep) const
+void HomunculusHandler::attack(const int targetId, const Keep keep) const
 {
     const int id = PlayerInfo::getHomunculusId();
     if (!id)
@@ -270,7 +270,7 @@ void HomunculusHandler::attack(const int targetId, const bool keep) const
     createOutPacket(CMSG_HOMMERC_ATTACK);
     outMsg.writeInt32(id, "homunculus id");
     outMsg.writeInt32(targetId, "target id");
-    outMsg.writeInt8(static_cast<int8_t>(keep ? 1 : 0), "keep");
+    outMsg.writeInt8(static_cast<int8_t>(keep == Keep_true ? 1 : 0), "keep");
 }
 
 void HomunculusHandler::feed() const

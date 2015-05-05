@@ -66,7 +66,7 @@ Equipment *mEquipment = nullptr;
 int mPetBeingId = 0;
 GuildPositionFlags::Type mGuildPositionFlags = GuildPositionFlags::None;
 
-bool mTrading = false;
+Trading mTrading = Trading_false;
 bool mVending = false;
 int mLevelProgress = 0;
 std::set<int> mProtectedItems;
@@ -95,11 +95,13 @@ int getAttribute(const int id)
         return 0;
 }
 
-void setAttribute(const int id, const int value, const bool notify)
+void setAttribute(const int id,
+                  const int value,
+                  const Notify notify)
 {
     const int old = mData.mAttributes[id];
     mData.mAttributes[id] = value;
-    if (notify)
+    if (notify == Notify_true)
         triggerAttr(id, old);
 }
 
@@ -128,11 +130,11 @@ int getStatBase(const int id)
         return 0;
 }
 
-void setStatBase(const int id, const int value, const bool notify)
+void setStatBase(const int id, const int value, const Notify notify)
 {
     const int old = mData.mStats[id].base;
     mData.mStats[id].base = value;
-    if (notify)
+    if (notify == Notify_true)
         triggerStat(id, old, 0);
 }
 
@@ -145,11 +147,11 @@ int getStatMod(const int id)
         return 0;
 }
 
-void setStatMod(const int id, const int value, const bool notify)
+void setStatMod(const int id, const int value, const Notify notify)
 {
     const int old = mData.mStats[id].mod;
     mData.mStats[id].mod = value;
-    if (notify)
+    if (notify == Notify_true)
         triggerStat(id, old, 0);
 }
 
@@ -179,8 +181,10 @@ const std::pair<int, int> getStatExperience(const int id)
     return std::pair<int, int>(a, b);
 }
 
-void setStatExperience(const int id, const int have,
-                       const int need, const bool notify)
+void setStatExperience(const int id,
+                       const int have,
+                       const int need,
+                       const Notify notify)
 {
     Stat &stat = mData.mStats[id];
 
@@ -188,7 +192,7 @@ void setStatExperience(const int id, const int have,
     const int oldExpNeed = stat.expNeed;
     stat.exp = have;
     stat.expNeed = need;
-    if (notify)
+    if (notify == Notify_true)
         triggerStat(id, oldExp, oldExpNeed);
 }
 
@@ -238,28 +242,28 @@ void setEquipmentBackend(Equipment::Backend *const backend)
         mEquipment->setBackend(backend);
 }
 
-void equipItem(const Item *const item, const bool sfx)
+void equipItem(const Item *const item, const Sfx sfx)
 {
-    if (sfx)
+    if (sfx == Sfx_true)
         ItemSoundManager::playSfx(item, ItemSoundEvent::EQUIP);
     inventoryHandler->equipItem(item);
 }
 
-void unequipItem(const Item *const item, const bool sfx)
+void unequipItem(const Item *const item, const Sfx sfx)
 {
-    if (sfx)
+    if (sfx == Sfx_true)
         ItemSoundManager::playSfx(item, ItemSoundEvent::UNEQUIP);
     inventoryHandler->unequipItem(item);
 }
 
-void useItem(const Item *const item, const bool sfx)
+void useItem(const Item *const item, const Sfx sfx)
 {
-    if (sfx)
+    if (sfx == Sfx_true)
         ItemSoundManager::playSfx(item, ItemSoundEvent::USE);
     inventoryHandler->useItem(item);
 }
 
-void useEquipItem(const Item *const item, const bool sfx)
+void useEquipItem(const Item *const item, const Sfx sfx)
 {
     if (item)
     {
@@ -267,13 +271,13 @@ void useEquipItem(const Item *const item, const bool sfx)
         {
             if (item->isEquipped() == Equipped_true)
             {
-                if (sfx)
+                if (sfx == Sfx_true)
                     ItemSoundManager::playSfx(item, ItemSoundEvent::UNEQUIP);
                 inventoryHandler->unequipItem(item);
             }
             else
             {
-                if (sfx)
+                if (sfx == Sfx_true)
                     ItemSoundManager::playSfx(item, ItemSoundEvent::EQUIP);
                 inventoryHandler->equipItem(item);
             }
@@ -283,14 +287,14 @@ void useEquipItem(const Item *const item, const bool sfx)
             if (mProtectedItems.find(item->getId()) == mProtectedItems.end())
             {
                 inventoryHandler->useItem(item);
-                if (sfx)
+                if (sfx == Sfx_true)
                     ItemSoundManager::playSfx(item, ItemSoundEvent::USE);
             }
         }
     }
 }
 
-void useEquipItem2(const Item *const item, const bool sfx)
+void useEquipItem2(const Item *const item, const Sfx sfx)
 {
     if (item)
     {
@@ -298,13 +302,13 @@ void useEquipItem2(const Item *const item, const bool sfx)
         {
             if (item->isEquipped() == Equipped_true)
             {
-                if (sfx)
+                if (sfx == Sfx_true)
                     ItemSoundManager::playSfx(item, ItemSoundEvent::UNEQUIP);
                 inventoryHandler->unequipItem(item);
             }
             else
             {
-                if (sfx)
+                if (sfx == Sfx_true)
                     ItemSoundManager::playSfx(item, ItemSoundEvent::EQUIP);
                 inventoryHandler->equipItem(item);
             }
@@ -313,7 +317,7 @@ void useEquipItem2(const Item *const item, const bool sfx)
         {
             if (mProtectedItems.find(item->getId()) == mProtectedItems.end())
             {
-                if (sfx)
+                if (sfx == Sfx_true)
                     ItemSoundManager::playSfx(item, ItemSoundEvent::USE);
                 inventoryHandler->useItem(item);
             }
@@ -321,19 +325,19 @@ void useEquipItem2(const Item *const item, const bool sfx)
     }
 }
 
-void dropItem(const Item *const item, const int amount, const bool sfx)
+void dropItem(const Item *const item, const int amount, const Sfx sfx)
 {
     if (item && mProtectedItems.find(item->getId()) == mProtectedItems.end())
     {
-        if (sfx)
+        if (sfx == Sfx_true)
             ItemSoundManager::playSfx(item, ItemSoundEvent::DROP);
         inventoryHandler->dropItem(item, amount);
     }
 }
 
-void pickUpItem(const FloorItem *const item, const bool sfx)
+void pickUpItem(const FloorItem *const item, const Sfx sfx)
 {
-    if (sfx)
+    if (sfx == Sfx_true)
         ItemSoundManager::playSfx(item, ItemSoundEvent::PICKUP);
     playerHandler->pickUp(item);
 }
@@ -359,12 +363,12 @@ void logic()
 {
 }
 
-bool isTrading()
+Trading isTrading()
 {
     return mTrading;
 }
 
-void setTrading(const bool trading)
+void setTrading(const Trading trading)
 {
     mTrading = trading;
 }
@@ -375,14 +379,14 @@ void updateAttrs()
     if (attackDelay)
     {
         setStatBase(Attributes::ATTACK_SPEED,
-            getStatBase(Attributes::ATK) * 1000 / attackDelay, false);
+            getStatBase(Attributes::ATK) * 1000 / attackDelay, Notify_false);
         setStatMod(Attributes::ATTACK_SPEED,
-            getStatMod(Attributes::ATK) * 1000 / attackDelay, true);
+            getStatMod(Attributes::ATK) * 1000 / attackDelay, Notify_true);
     }
     else
     {
-        setStatBase(Attributes::ATTACK_SPEED, 0, false);
-        setStatMod(Attributes::ATTACK_SPEED, 0, true);
+        setStatBase(Attributes::ATTACK_SPEED, 0, Notify_false);
+        setStatMod(Attributes::ATTACK_SPEED, 0, Notify_true);
     }
 }
 
@@ -569,7 +573,7 @@ void updateMoveAI()
         homunculusHandler->moveToMaster();
 }
 
-void updateAttackAi(const int targetId, const bool keep)
+void updateAttackAi(const int targetId, const Keep keep)
 {
     if (mMercenary)
         mercenaryHandler->attack(targetId, keep);

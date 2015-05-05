@@ -292,7 +292,7 @@ void EquipmentWindow::action(const ActionEvent &event)
             return;
 
         const Item *const item = mEquipment->getEquipment(mSelected);
-        PlayerInfo::unequipItem(item, true);
+        PlayerInfo::unequipItem(item, Sfx_true);
         setSelected(-1);
     }
     else if (!eventId.find("tab_"))
@@ -325,7 +325,7 @@ void EquipmentWindow::action(const ActionEvent &event)
             if (item->isEquipment() == Equipm_true)
             {
                 if (item->isEquipped() == Equipped_false)
-                    PlayerInfo::equipItem(item, true);
+                    PlayerInfo::equipItem(item, Sfx_true);
             }
         }
     }
@@ -469,7 +469,7 @@ void EquipmentWindow::mouseReleased(MouseEvent &event)
         if (item->isEquipment() == Equipm_true)
         {
             if (item->isEquipped() == Equipped_false)
-                PlayerInfo::equipItem(item, true);
+                PlayerInfo::equipItem(item, Sfx_true);
         }
     }
     else if (dragDrop.getSource() == DRAGDROP_SOURCE_EQUIPMENT)
@@ -493,7 +493,7 @@ void EquipmentWindow::mouseReleased(MouseEvent &event)
             }
 
             if (item->isEquipped() == Equipped_true)
-                PlayerInfo::unequipItem(item, true);
+                PlayerInfo::unequipItem(item, Sfx_true);
         }
     }
     dragDrop.clear();

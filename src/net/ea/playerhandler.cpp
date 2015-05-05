@@ -171,7 +171,7 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
         return;
     }
 
-    playerHandler->setStat(msg, type, value, NoStat, true);
+    playerHandler->setStat(msg, type, value, NoStat, Notify_true);
     BLOCK_END("PlayerHandler::processPlayerStatUpdate1")
 }
 
@@ -180,7 +180,7 @@ void PlayerHandler::processPlayerStatUpdate2(Net::MessageIn &msg)
     BLOCK_START("PlayerHandler::processPlayerStatUpdate2")
     const int type = msg.readInt16("type");
     const int value = msg.readInt32("value");
-    playerHandler->setStat(msg, type, value, NoStat, true);
+    playerHandler->setStat(msg, type, value, NoStat, Notify_true);
     BLOCK_END("PlayerHandler::processPlayerStatUpdate2")
 }
 
@@ -191,7 +191,7 @@ void PlayerHandler::processPlayerStatUpdate3(Net::MessageIn &msg)
     const int base = msg.readInt32("base");
     const int bonus = msg.readInt32("bonus");
 
-    playerHandler->setStat(msg, type, base, bonus, false);
+    playerHandler->setStat(msg, type, base, bonus, Notify_false);
     BLOCK_END("PlayerHandler::processPlayerStatUpdate3")
 }
 
@@ -211,7 +211,7 @@ void PlayerHandler::processPlayerStatUpdate4(Net::MessageIn &msg)
         NotifyManager::notify(NotifyTypes::SKILL_RAISE_ERROR);
     }
 
-    playerHandler->setStat(msg, type, value, NoStat, true);
+    playerHandler->setStat(msg, type, value, NoStat, Notify_true);
     BLOCK_END("PlayerHandler::processPlayerStatUpdate4")
 }
 
@@ -221,7 +221,7 @@ void PlayerHandler::processPlayerStatUpdate6(Net::MessageIn &msg)
     const int type = msg.readInt16("type");
     const int value = msg.readUInt8("value");
     if (statusWindow)
-        playerHandler->setStat(msg, type, value, NoStat, true);
+        playerHandler->setStat(msg, type, value, NoStat, Notify_true);
     BLOCK_END("PlayerHandler::processPlayerStatUpdate6")
 }
 
@@ -258,7 +258,7 @@ void PlayerHandler::setStat(Net::MessageIn &msg,
                             const int type,
                             const int base,
                             const int mod,
-                            const bool notify) const
+                            const Notify notify) const
 {
     switch (type)
     {

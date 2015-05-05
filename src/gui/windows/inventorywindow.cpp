@@ -461,11 +461,11 @@ void InventoryWindow::action(const ActionEvent &event)
 
     if (eventId == "use")
     {
-        PlayerInfo::useEquipItem(item, true);
+        PlayerInfo::useEquipItem(item, Sfx_true);
     }
     if (eventId == "equip")
     {
-        PlayerInfo::useEquipItem2(item, true);
+        PlayerInfo::useEquipItem2(item, Sfx_true);
     }
     else if (eventId == "drop")
     {
@@ -491,7 +491,7 @@ void InventoryWindow::action(const ActionEvent &event)
             if (inputManager.isActionActive(static_cast<int>(
                 InputAction::STOP_ATTACK)))
             {
-                PlayerInfo::dropItem(item, item->getQuantity(), true);
+                PlayerInfo::dropItem(item, item->getQuantity(), Sfx_true);
             }
             else
             {
@@ -647,7 +647,7 @@ void InventoryWindow::mouseClicked(MouseEvent &event)
                 }
                 else
                 {
-                    PlayerInfo::useEquipItem(item, true);
+                    PlayerInfo::useEquipItem(item, Sfx_true);
                 }
             }
             else

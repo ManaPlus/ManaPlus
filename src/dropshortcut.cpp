@@ -73,12 +73,12 @@ void DropShortcut::dropFirst() const
             const int cnt = settings.quickDropCounter;
             if (localPlayer->isServerBuggy())
             {
-                PlayerInfo::dropItem(item, cnt, true);
+                PlayerInfo::dropItem(item, cnt, Sfx_true);
             }
             else
             {
                 for (int i = 0; i < cnt; i++)
-                    PlayerInfo::dropItem(item, 1, false);
+                    PlayerInfo::dropItem(item, 1, Sfx_false);
             }
         }
     }
@@ -134,7 +134,7 @@ bool DropShortcut::dropItem(const int cnt)
         const Item *const item = inv->findItem(itemId, itemColor);
         if (item && item->getQuantity() > 0)
         {
-            PlayerInfo::dropItem(item, cnt, true);
+            PlayerInfo::dropItem(item, cnt, Sfx_true);
             return true;
         }
     }
@@ -157,7 +157,7 @@ bool DropShortcut::dropItem(const int cnt)
             const Item *const item = inv->findItem(itemId, itemColor);
             if (item && item->getQuantity() > 0)
             {
-                PlayerInfo::dropItem(item, cnt, true);
+                PlayerInfo::dropItem(item, cnt, Sfx_true);
                 return true;
             }
         }

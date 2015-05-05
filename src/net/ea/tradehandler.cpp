@@ -103,7 +103,7 @@ void TradeHandler::processTradeResponseContinue(const uint8_t type)
                 tradeWindow->setVisible(false);
 //                        tradeWindow->clear();
             }
-            PlayerInfo::setTrading(false);
+            PlayerInfo::setTrading(Trading_false);
             break;
         case 5:
             NotifyManager::notify(NotifyTypes::TRADE_CANCELLED_BUSY,
@@ -135,7 +135,7 @@ void TradeHandler::processTradeCancel(Net::MessageIn &msg A_UNUSED)
         tradeWindow->setVisible(false);
         tradeWindow->reset();
     }
-    PlayerInfo::setTrading(false);
+    PlayerInfo::setTrading(Trading_false);
 }
 
 void TradeHandler::processTradeComplete(Net::MessageIn &msg A_UNUSED)
@@ -146,7 +146,7 @@ void TradeHandler::processTradeComplete(Net::MessageIn &msg A_UNUSED)
         tradeWindow->setVisible(false);
         tradeWindow->reset();
     }
-    PlayerInfo::setTrading(false);
+    PlayerInfo::setTrading(Trading_false);
 }
 
 void TradeHandler::processTradeRequestContinue(const std::string &partner)
@@ -154,14 +154,14 @@ void TradeHandler::processTradeRequestContinue(const std::string &partner)
     if (player_relations.hasPermission(partner,
         PlayerRelation::TRADE))
     {
-        if (PlayerInfo::isTrading() || confirmDlg)
+        if (PlayerInfo::isTrading() == Trading_true || confirmDlg)
         {
             tradeHandler->respond(false);
             return;
         }
 
         tradePartnerName = partner;
-        PlayerInfo::setTrading(true);
+        PlayerInfo::setTrading(Trading_true);
         if (tradeWindow)
         {
             if (tradePartnerName.empty() || tradeWindow->getAutoTradeNick()

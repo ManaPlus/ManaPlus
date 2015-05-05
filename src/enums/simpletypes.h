@@ -54,5 +54,9 @@ defBoolEnum(Equipm);
 defBoolEnum(Equipped);
 defBoolEnum(Modal);
 defBoolEnum(ShowCenter);
+defBoolEnum(Notify);
+defBoolEnum(Trading);
+defBoolEnum(Sfx);
+defBoolEnum(Keep);
 
 #endif  // ENUMS_SIMPLETYPES_H

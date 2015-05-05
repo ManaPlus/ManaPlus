@@ -865,9 +865,11 @@ void ShopWindow::showList(const std::string &nick, std::string data)
 void ShopWindow::processRequest(const std::string &nick, std::string data,
                                 const int mode)
 {
-    if (!localPlayer || !mTradeNick.empty() || PlayerInfo::isTrading()
-        || !actorManager
-        || !actorManager->findBeingByName(nick, ActorType::Player))
+    if (!localPlayer ||
+        !mTradeNick.empty() ||
+        PlayerInfo::isTrading() == Trading_true ||
+        !actorManager ||
+        !actorManager->findBeingByName(nick, ActorType::Player))
     {
         return;
     }

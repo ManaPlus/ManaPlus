@@ -207,7 +207,7 @@ void MercenaryHandler::move(const int x, const int y) const
         0U, "position");
 }
 
-void MercenaryHandler::attack(const int targetId, const bool keep) const
+void MercenaryHandler::attack(const int targetId, const Keep keep) const
 {
     const int id = PlayerInfo::getMercenaryId();
     if (!id)
@@ -215,7 +215,7 @@ void MercenaryHandler::attack(const int targetId, const bool keep) const
     createOutPacket(CMSG_HOMMERC_ATTACK);
     outMsg.writeInt32(id, "mercenary id");
     outMsg.writeInt32(targetId, "target id");
-    outMsg.writeInt8(static_cast<int8_t>(keep ? 1 : 0), "keep");
+    outMsg.writeInt8(static_cast<int8_t>(keep == Keep_true ? 1 : 0), "keep");
 }
 
 void MercenaryHandler::talk(const std::string &restrict text) const

@@ -25,6 +25,7 @@
 #include "equipment.h"
 
 #include "enums/guildpositionflags.h"
+#include "enums/simpletypes.h"
 #include "enums/state.h"
 
 #include <map>
@@ -75,7 +76,6 @@ struct PetInfo;
 /**
  * A database like namespace which holds global info about the localplayer
  *
- * NOTE: 'bool notify' is used to determine if a event is to be triggered.
  */
 namespace PlayerInfo
 {
@@ -90,7 +90,7 @@ namespace PlayerInfo
      * Changes the value of the given attribute.
      */
     void setAttribute(const int id, const int value,
-                      const bool notify = true);
+                      const Notify notify = Notify_true);
 
     int getSkillLevel(const int id) A_WARN_UNUSED;
 
@@ -107,7 +107,7 @@ namespace PlayerInfo
      * Changes the base value of the given stat.
      */
     void setStatBase(const int id, const int value,
-                     const bool notify = true);
+                     const Notify notify = Notify_true);
 
     /**
      * Returns the modifier for the given stat.
@@ -118,7 +118,7 @@ namespace PlayerInfo
      * Changes the modifier for the given stat.
      */
     void setStatMod(const int id, const int value,
-                    const bool notify = true);
+                    const Notify notify = Notify_true);
 
     /**
      * Returns the current effective value of the given stat. Effective is base
@@ -129,7 +129,7 @@ namespace PlayerInfo
     /**
      * Changes the level of the given stat.
      */
-    void setStatLevel(int id, int value, bool notify = true);
+    void setStatLevel(int id, int value, Notify notify = Notify_true);
 
     /**
      * Returns the experience of the given stat.
@@ -139,8 +139,10 @@ namespace PlayerInfo
     /**
      * Changes the experience of the given stat.
      */
-    void setStatExperience(const int id, const int have,
-                           const int need, const bool notify = true);
+    void setStatExperience(const int id,
+                           const int have,
+                           const int need,
+                           const Notify notify = Notify_true);
 
 // --- Inventory / Equipment --------------------------------------------------
 
@@ -192,12 +194,12 @@ namespace PlayerInfo
      * Returns true if the player is involved in a trade at the moment, false
      * otherwise.
      */
-    bool isTrading();
+    Trading isTrading();
 
     /**
      * Sets whether the player is currently involved in trade or not.
      */
-    void setTrading(const bool trading);
+    void setTrading(const Trading trading);
 
     void updateAttrs();
 
@@ -222,19 +224,19 @@ namespace PlayerInfo
 
     void setEquipmentBackend(Equipment::Backend *const backend);
 
-    void equipItem(const Item *const item, const bool sfx);
+    void equipItem(const Item *const item, const Sfx sfx);
 
-    void unequipItem(const Item *const item, const bool sfx);
+    void unequipItem(const Item *const item, const Sfx sfx);
 
-    void useItem(const Item *const item, const bool sfx);
+    void useItem(const Item *const item, const Sfx sfx);
 
-    void useEquipItem(const Item *const item, const bool sfx);
+    void useEquipItem(const Item *const item, const Sfx sfx);
 
-    void useEquipItem2(const Item *const item, const bool sfx);
+    void useEquipItem2(const Item *const item, const Sfx sfx);
 
-    void dropItem(const Item *const item, const int amount, const bool sfx);
+    void dropItem(const Item *const item, const int amount, const Sfx sfx);
 
-    void pickUpItem(const FloorItem *const item, const bool sfx);
+    void pickUpItem(const FloorItem *const item, const Sfx sfx);
 
     void protectItem(const int id);
 
@@ -269,7 +271,7 @@ namespace PlayerInfo
 
     void updateMoveAI();
 
-    void updateAttackAi(const int targetId, const bool keep);
+    void updateAttackAi(const int targetId, const Keep keep);
 
     std::string getRoomName();
 

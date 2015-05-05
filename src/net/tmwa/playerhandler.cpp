@@ -124,11 +124,11 @@ void PlayerHandler::handleMessage(Net::MessageIn &msg)
     BLOCK_END("PlayerHandler::handleMessage")
 }
 
-void PlayerHandler::attack(const int id, const bool keep) const
+void PlayerHandler::attack(const int id, const Keep keep) const
 {
     createOutPacket(CMSG_PLAYER_CHANGE_ACT);
     outMsg.writeInt32(id, "target id");
-    if (keep)
+    if (keep == Keep_true)
         outMsg.writeInt8(7, "action");
     else
         outMsg.writeInt8(0, "action");
@@ -327,25 +327,29 @@ void PlayerHandler::processPlayerStatUpdate5(Net::MessageIn &msg)
         msg.readUInt8("luk cost");
     }
 
-    PlayerInfo::setStatBase(Attributes::ATK, msg.readInt16("atk"), false);
+    PlayerInfo::setStatBase(Attributes::ATK,
+        msg.readInt16("atk"), Notify_false);
     PlayerInfo::setStatMod(Attributes::ATK, msg.readInt16("atk+"));
     PlayerInfo::updateAttrs();
 
     val = msg.readInt16("matk");
-    PlayerInfo::setStatBase(Attributes::MATK, val, false);
+    PlayerInfo::setStatBase(Attributes::MATK, val, Notify_false);
 
     val = msg.readInt16("matk+");
     PlayerInfo::setStatMod(Attributes::MATK, val);
 
-    PlayerInfo::setStatBase(Attributes::DEF, msg.readInt16("def"), false);
+    PlayerInfo::setStatBase(Attributes::DEF,
+        msg.readInt16("def"), Notify_false);
     PlayerInfo::setStatMod(Attributes::DEF, msg.readInt16("def+"));
 
-    PlayerInfo::setStatBase(Attributes::MDEF, msg.readInt16("mdef"), false);
+    PlayerInfo::setStatBase(Attributes::MDEF,
+        msg.readInt16("mdef"), Notify_false);
     PlayerInfo::setStatMod(Attributes::MDEF, msg.readInt16("mdef+"));
 
     PlayerInfo::setStatBase(Attributes::HIT, msg.readInt16("hit"));
 
-    PlayerInfo::setStatBase(Attributes::FLEE, msg.readInt16("flee"), false);
+    PlayerInfo::setStatBase(Attributes::FLEE,
+        msg.readInt16("flee"), Notify_false);
     PlayerInfo::setStatMod(Attributes::FLEE, msg.readInt16("flee+"));
 
     PlayerInfo::setStatBase(Attributes::CRIT, msg.readInt16("crit"));
@@ -403,7 +407,7 @@ void PlayerHandler::setStat(Net::MessageIn &msg,
                             const int type,
                             const int base,
                             const int mod,
-                            const bool notify) const
+                            const Notify notify) const
 {
     if (type == 500)
     {
