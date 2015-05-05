@@ -522,7 +522,10 @@ void CharServerHandler::processCharDeleteFailed(Net::MessageIn &msg)
         // TRANSLATORS: ok dialog button
         _("OK"),
         DialogType::ERROR,
-        true, true, nullptr, 260);
+        Modal_true,
+        true,
+        nullptr,
+        260);
     BLOCK_END("CharServerHandler::processCharDeleteFailed")
 }
 

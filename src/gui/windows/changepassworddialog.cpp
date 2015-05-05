@@ -45,7 +45,7 @@
 
 ChangePasswordDialog::ChangePasswordDialog(LoginData *const data) :
     // TRANSLATORS: change password window name
-    Window(_("Change Password"), true, nullptr, "changepassword.xml"),
+    Window(_("Change Password"), Modal_true, nullptr, "changepassword.xml"),
     ActionListener(),
     mOldPassField(new PasswordField(this)),
     mFirstPassField(new PasswordField(this)),
@@ -156,7 +156,10 @@ void ChangePasswordDialog::action(const ActionEvent &event)
                 // TRANSLATORS: ok dialog button
                 _("OK"),
                 DialogType::ERROR,
-                true, true, nullptr, 260);
+                Modal_true,
+                true,
+                nullptr,
+                260);
             dlg->addActionListener(mWrongDataNoticeListener);
         }
         else

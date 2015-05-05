@@ -44,7 +44,7 @@
 
 ChangeEmailDialog::ChangeEmailDialog(LoginData *const data) :
     // TRANSLATORS: change email dialog header
-    Window(_("Change Email Address"), true, nullptr, "changeemail.xml"),
+    Window(_("Change Email Address"), Modal_true, nullptr, "changeemail.xml"),
     ActionListener(),
     mFirstEmailField(new TextField(this)),
     mSecondEmailField(new TextField(this)),
@@ -166,7 +166,10 @@ void ChangeEmailDialog::action(const ActionEvent &event)
                 // TRANSLATORS: ok dialog button
                 _("OK"),
                 DialogType::ERROR,
-                true, true, nullptr, 260);
+                Modal_true,
+                true,
+                nullptr,
+                260);
             dlg->addActionListener(mWrongDataNoticeListener);
         }
         else

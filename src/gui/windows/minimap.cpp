@@ -55,7 +55,7 @@ bool Minimap::mShow = true;
 
 Minimap::Minimap() :
     // TRANSLATORS: mini map window name
-    Window(_("Map"), false, nullptr, "map.xml"),
+    Window(_("Map"), Modal_false, nullptr, "map.xml"),
     mWidthProportion(0.5),
     mHeightProportion(0.5),
     mMapImage(nullptr),

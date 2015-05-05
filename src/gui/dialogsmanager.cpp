@@ -97,7 +97,7 @@ void DialogsManager::createUpdaterWindow()
 
 Window *DialogsManager::openErrorDialog(const std::string &header,
                                         const std::string &message,
-                                        const bool modal)
+                                        const Modal modal)
 {
     if (settings.supportUrl.empty() || config.getBoolValue("hidesupport"))
     {
@@ -129,7 +129,7 @@ void DialogsManager::playerDeath()
             // TRANSLATORS: ok dialog button
             _("Revive"),
             DialogType::OK,
-            false, true, nullptr, 260);
+            Modal_false, true, nullptr, 260);
         deathNotice->addActionListener(&postDeathListener);
     }
 }
@@ -157,7 +157,10 @@ void DialogsManager::attributeChanged(const int id,
                     // TRANSLATORS: ok dialog button
                     _("OK"),
                     DialogType::OK,
-                    false, true, nullptr, 260);
+                    Modal_false,
+                    true,
+                    nullptr,
+                    260);
                 weightNotice->addActionListener(
                     &weightListener);
             }
@@ -173,7 +176,10 @@ void DialogsManager::attributeChanged(const int id,
                     // TRANSLATORS: ok dialog button
                     _("OK"),
                     DialogType::OK,
-                    false, true, nullptr, 260);
+                    Modal_false,
+                    true,
+                    nullptr,
+                    260);
                 weightNotice->addActionListener(
                     &weightListener);
             }

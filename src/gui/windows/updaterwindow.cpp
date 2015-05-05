@@ -168,7 +168,7 @@ UpdaterWindow::UpdaterWindow(const std::string &restrict updateHost,
                              const bool applyUpdates,
                              const int updateType) :
     // TRANSLATORS: updater window name
-    Window(_("Updating..."), false, nullptr, "update.xml"),
+    Window(_("Updating..."), Modal_false, nullptr, "update.xml"),
     ActionListener(),
     KeyListener(),
     mDownloadProgress(0.0F),

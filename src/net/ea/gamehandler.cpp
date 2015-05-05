@@ -82,7 +82,10 @@ void GameHandler::processMapQuitResponse(Net::MessageIn &msg)
             // TRANSLATORS: ok dialog button
             _("OK"),
             DialogType::ERROR,
-            true, true, nullptr, 260);
+            Modal_true,
+            true,
+            nullptr,
+            260);
     }
 }
 

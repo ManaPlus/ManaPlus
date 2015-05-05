@@ -48,7 +48,7 @@ SellDialog::DialogList SellDialog::instances;
 
 SellDialog::SellDialog(const bool isSell) :
     // TRANSLATORS: sell dialog name
-    Window(_("Sell"), false, nullptr, "sell.xml"),
+    Window(_("Sell"), Modal_false, nullptr, "sell.xml"),
     ActionListener(),
     SelectionListener(),
     mSellButton(nullptr),

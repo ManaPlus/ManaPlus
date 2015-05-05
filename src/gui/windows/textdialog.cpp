@@ -40,7 +40,7 @@ TextDialog::TextDialog(const std::string &restrict title,
                        const std::string &restrict msg,
                        Window *const parent,
                        const bool isPassword) :
-    Window(title, true, parent, "textdialog.xml"),
+    Window(title, Modal_true, parent, "textdialog.xml"),
     ActionListener(),
     mTextField(nullptr),
     mPasswordField(nullptr),

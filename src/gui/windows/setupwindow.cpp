@@ -59,7 +59,7 @@ SetupWindow *setupWindow = nullptr;
 
 SetupWindow::SetupWindow() :
     // TRANSLATORS: setup window name
-    Window(_("Setup"), false, nullptr, "setup.xml"),
+    Window(_("Setup"), Modal_false, nullptr, "setup.xml"),
     ActionListener(),
     mTabs(),
     mWindowsToReset(),

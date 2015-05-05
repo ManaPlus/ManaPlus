@@ -73,7 +73,7 @@ static const uint8_t directions[] =
 CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
                                    const int slot) :
     // TRANSLATORS: char create dialog name
-    Window(_("New Character"), true, parent, "charcreate.xml"),
+    Window(_("New Character"), Modal_true, parent, "charcreate.xml"),
     ActionListener(),
     KeyListener(),
     mCharSelectDialog(parent),
@@ -379,7 +379,10 @@ void CharCreateDialog::action(const ActionEvent &event)
                 // TRANSLATORS: ok dialog button
                 _("OK"),
                 DialogType::ERROR,
-                true, this, nullptr, 260);
+                Modal_true,
+                this,
+                nullptr,
+                260);
         }
     }
     else if (id == "cancel")

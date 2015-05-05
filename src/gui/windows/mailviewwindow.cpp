@@ -49,7 +49,7 @@ MailViewWindow *mailViewWindow = nullptr;
 
 MailViewWindow::MailViewWindow(const MailMessage *const message) :
     // TRANSLATORS: mail view window name
-    Window(_("View mail"), false, nullptr, "mailview.xml"),
+    Window(_("View mail"), Modal_false, nullptr, "mailview.xml"),
     ActionListener(),
     mMessage(message),
     // TRANSLATORS: mail view window button

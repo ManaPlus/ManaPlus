@@ -51,7 +51,7 @@ static const char *const fontSizeList[] =
 
 EmoteWindow::EmoteWindow() :
     // TRANSLATORS: emotes window name
-    Window(_("Emotes"), false, nullptr, "emotes.xml"),
+    Window(_("Emotes"), Modal_false, nullptr, "emotes.xml"),
     mTabs(new TabbedArea(this)),
     mEmotePage(new EmotePage(this)),
     mColorModel(ColorModel::createDefault(this)),

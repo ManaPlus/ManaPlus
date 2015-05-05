@@ -39,7 +39,7 @@ DebugWindow *debugWindow = nullptr;
 
 DebugWindow::DebugWindow() :
     // TRANSLATORS: debug window name
-    Window(_("Debug"), false, nullptr, "debug.xml"),
+    Window(_("Debug"), Modal_false, nullptr, "debug.xml"),
     mTabs(new TabbedArea(this)),
     mMapWidget(new MapDebugTab(this)),
     mTargetWidget(new TargetDebugTab(this)),

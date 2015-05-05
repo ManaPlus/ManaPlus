@@ -107,7 +107,7 @@ void ItemAmountWindow::finish(const Item *const item,
 
 ItemAmountWindow::ItemAmountWindow(const Usage usage, Window *const parent,
                                    Item *const item, const int maxRange) :
-    Window("", false, parent, "amount.xml"),
+    Window("", Modal_false, parent, "amount.xml"),
     ActionListener(),
     KeyListener(),
     mItemAmountTextField(new IntTextField(this, 1)),

@@ -50,7 +50,7 @@ class EditDialog final : public Window,
                    const std::string &restrict msg,
                    const std::string &restrict eventOk = ACTION_EDIT_OK,
                    const int width = 300, Window *const parent = nullptr,
-                   const bool modal = true);
+                   const Modal modal = Modal_true);
 
         A_DELETE_COPY(EditDialog)
 

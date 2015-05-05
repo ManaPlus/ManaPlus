@@ -98,7 +98,7 @@ ShopWindow::DialogList ShopWindow::instances;
 
 ShopWindow::ShopWindow() :
     // TRANSLATORS: shop window name
-    Window(_("Personal Shop"), false, nullptr, "shop.xml"),
+    Window(_("Personal Shop"), Modal_false, nullptr, "shop.xml"),
 #ifdef EATHENA_SUPPORT
     VendingModeListener(),
     VendingSlotsListener(),
@@ -952,9 +952,12 @@ void ShopWindow::processRequest(const std::string &nick, std::string data,
     {
         ConfirmDialog *const confirmDlg = new ConfirmDialog
             // TRANSLATORS: shop window dialog
-            (_("Request for Trade"), strprintf(_("%s wants to %s %s do you "
-            "accept?"), nick.c_str(), msg.c_str(),
-            mTradeItem->getInfo().getName().c_str()), SOUND_REQUEST, true);
+            (_("Request for Trade"),
+            strprintf(_("%s wants to %s %s do you accept?"),
+            nick.c_str(), msg.c_str(),
+            mTradeItem->getInfo().getName().c_str()),
+            SOUND_REQUEST,
+            true);
         confirmDlg->postInit();
         confirmDlg->addActionListener(this);
     }

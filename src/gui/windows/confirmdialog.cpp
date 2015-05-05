@@ -37,7 +37,8 @@ ConfirmDialog::ConfirmDialog(const std::string &restrict title,
                              const std::string &restrict msg,
                              const std::string &restrict soundEvent,
                              const bool ignore,
-                             const bool modal, Window *const parent) :
+                             const Modal modal,
+                             Window *const parent) :
     Window(title, modal, parent, "confirm.xml"),
     ActionListener(),
     mTextBox(new TextBox(this)),

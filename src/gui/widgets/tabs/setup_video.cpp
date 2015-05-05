@@ -249,7 +249,10 @@ void Setup_Video::apply()
                 // TRANSLATORS: ok dialog button
                 _("OK"),
                 DialogType::OK,
-                true, true, nullptr, 260);
+                Modal_true,
+                true,
+                nullptr,
+                260);
         }
 #endif
         config.setValue("screen", fullscreen);
@@ -273,7 +276,10 @@ void Setup_Video::apply()
             // TRANSLATORS: ok dialog button
             _("OK"),
             DialogType::OK,
-            true, true, nullptr, 260);
+            Modal_true,
+            true,
+            nullptr,
+            260);
     }
 
     mFps = mFpsCheckBox->isSelected() ?
@@ -388,7 +394,10 @@ void Setup_Video::action(const ActionEvent &event)
                         // TRANSLATORS: ok dialog button
                         _("OK"),
                         DialogType::OK,
-                        true, true, nullptr, 260);
+                        Modal_true,
+                        true,
+                        nullptr,
+                        260);
                 }
                 else
                 {
@@ -400,7 +409,10 @@ void Setup_Video::action(const ActionEvent &event)
                         // TRANSLATORS: ok dialog button
                         _("OK"),
                         DialogType::OK,
-                        true, true, nullptr, 260);
+                        Modal_true,
+                        true,
+                        nullptr,
+                        260);
                 }
             }
 #else

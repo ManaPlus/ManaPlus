@@ -40,7 +40,7 @@ NpcPostDialog::DialogList NpcPostDialog::instances;
 
 NpcPostDialog::NpcPostDialog(const int npcId A_UNUSED) :
     // TRANSLATORS: npc post dialog caption
-    Window(_("NPC"), false, nullptr, "npcpost.xml"),
+    Window(_("NPC"), Modal_false, nullptr, "npcpost.xml"),
     ActionListener(),
     mText(new TextBox(this)),
     mSender(new TextField(this))

@@ -44,7 +44,7 @@
 
 UnRegisterDialog::UnRegisterDialog(LoginData *const data) :
     // TRANSLATORS: unregister dialog name
-    Window(_("Unregister"), true, nullptr, "unregister.xml"),
+    Window(_("Unregister"), Modal_true, nullptr, "unregister.xml"),
     ActionListener(),
     mLoginData(data),
     mPasswordField(new PasswordField(this, mLoginData->password)),
@@ -145,7 +145,10 @@ void UnRegisterDialog::action(const ActionEvent &event)
                 // TRANSLATORS: ok dialog button
                 _("OK"),
                 DialogType::ERROR,
-                true, true, nullptr, 260);
+                Modal_true,
+                true,
+                nullptr,
+                260);
             dlg->addActionListener(mWrongDataNoticeListener);
         }
         else

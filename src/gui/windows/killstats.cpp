@@ -48,7 +48,7 @@ KillStats *killStats = nullptr;
 
 KillStats::KillStats() :
     // TRANSLATORS: kill stats window name
-    Window(_("Kill stats"), false, nullptr, "killstats.xml"),
+    Window(_("Kill stats"), Modal_false, nullptr, "killstats.xml"),
     ActionListener(),
     AttributeListener(),
     mKillTimer(0),

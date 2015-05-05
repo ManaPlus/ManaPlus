@@ -40,7 +40,7 @@ BankWindow *bankWindow = nullptr;
 
 BankWindow::BankWindow() :
     // TRANSLATORS: bank window name
-    Window(_("Bank"), false, nullptr, "bank.xml"),
+    Window(_("Bank"), Modal_false, nullptr, "bank.xml"),
     ActionListener(),
     BankListener(),
     // TRANSLATORS: bank window money label

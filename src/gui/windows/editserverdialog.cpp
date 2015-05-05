@@ -45,7 +45,7 @@ EditServerDialog::EditServerDialog(ServerDialog *const parent,
                                    ServerInfo server,
                                    const int index) :
     // TRANSLATORS: edit server dialog name
-    Window(_("Edit Server"), true, parent),
+    Window(_("Edit Server"), Modal_true, parent),
     ActionListener(),
     KeyListener(),
     mServerAddressField(new TextField(this, std::string())),
@@ -216,7 +216,10 @@ void EditServerDialog::action(const ActionEvent &event)
                 // TRANSLATORS: ok dialog button
                 _("OK"),
                 DialogType::ERROR,
-                true, true, nullptr, 260);
+                Modal_true,
+                true,
+                nullptr,
+                260);
             dlg->addActionListener(this);
         }
         else

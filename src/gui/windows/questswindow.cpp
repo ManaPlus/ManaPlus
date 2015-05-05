@@ -62,7 +62,7 @@ QuestsWindow *questsWindow = nullptr;
 
 QuestsWindow::QuestsWindow() :
     // TRANSLATORS: quests window name
-    Window(_("Quests"), false, nullptr, "quests.xml"),
+    Window(_("Quests"), Modal_false, nullptr, "quests.xml"),
     ActionListener(),
     mQuestsModel(new QuestsModel),
     mQuestsListBox(new ExtendedListBox(this,

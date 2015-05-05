@@ -1388,11 +1388,15 @@ int Client::gameExec()
                     BLOCK_START("Client::gameExec STATE_LOGIN_ERROR")
                     logger->log1("State: LOGIN ERROR");
                     // TRANSLATORS: error dialog header
-                    mCurrentDialog = new OkDialog(_("Error"), errorMessage,
+                    mCurrentDialog = new OkDialog(_("Error"),
+                        errorMessage,
                         // TRANSLATORS: ok dialog button
                         _("Close"),
                         DialogType::ERROR,
-                        true, true, nullptr, 260);
+                        Modal_true,
+                        true,
+                        nullptr,
+                        260);
                     mCurrentDialog->addActionListener(&loginListener);
                     mCurrentDialog = nullptr;  // OkDialog deletes itself
                     BLOCK_END("Client::gameExec STATE_LOGIN_ERROR")
@@ -1402,11 +1406,15 @@ int Client::gameExec()
                     BLOCK_START("Client::gameExec STATE_ACCOUNTCHANGE_ERROR")
                     logger->log1("State: ACCOUNT CHANGE ERROR");
                     // TRANSLATORS: error dialog header
-                    mCurrentDialog = new OkDialog(_("Error"), errorMessage,
+                    mCurrentDialog = new OkDialog(_("Error"),
+                        errorMessage,
                         // TRANSLATORS: ok dialog button
                         _("Close"),
                         DialogType::ERROR,
-                        true, true, nullptr, 260);
+                        Modal_true,
+                        true,
+                        nullptr,
+                        260);
                     mCurrentDialog->addActionListener(&accountListener);
                     mCurrentDialog = nullptr;  // OkDialog deletes itself
                     BLOCK_END("Client::gameExec STATE_ACCOUNTCHANGE_ERROR")
@@ -1463,7 +1471,11 @@ int Client::gameExec()
                         _("Password changed successfully!"),
                         // TRANSLATORS: ok dialog button
                         _("OK"),
-                        DialogType::ERROR, true, true, nullptr, 260);
+                        DialogType::ERROR,
+                        Modal_true,
+                        true,
+                        nullptr,
+                        260);
                     mCurrentDialog->addActionListener(&accountListener);
                     mCurrentDialog = nullptr;  // OkDialog deletes itself
                     loginData.password = loginData.newPassword;
@@ -1491,7 +1503,10 @@ int Client::gameExec()
                         // TRANSLATORS: ok dialog button
                         _("OK"),
                         DialogType::ERROR,
-                        true, true, nullptr, 260);
+                        Modal_true,
+                        true,
+                        nullptr,
+                        260);
                     mCurrentDialog->addActionListener(&accountListener);
                     mCurrentDialog = nullptr;  // OkDialog deletes itself
                     break;
@@ -1516,7 +1531,8 @@ int Client::gameExec()
                         // TRANSLATORS: unregister message header
                         _("Unregister Successful"),
                         // TRANSLATORS: unregister message text
-                        _("Farewell, come back any time..."), true);
+                        _("Farewell, come back any time..."),
+                        Modal_true);
                     loginData.clear();
                     // The errorlistener sets the state to STATE_CHOOSE_SERVER
                     mCurrentDialog->addActionListener(&errorListener);
@@ -1599,7 +1615,7 @@ int Client::gameExec()
                     mCurrentDialog = DialogsManager::openErrorDialog(
                         _("Error"),
                         errorMessage,
-                        true);
+                        Modal_true);
                     mCurrentDialog->addActionListener(&errorListener);
                     mCurrentDialog = nullptr;  // OkDialog deletes itself
                     gameHandler->disconnect();

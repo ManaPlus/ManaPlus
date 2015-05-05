@@ -437,7 +437,11 @@ void GameModifiers::changeAwayMode(const bool forward A_UNUSED)
             config.getStringValue("afkMessage"),
             // TRANSLATORS: ok dialog button
             _("OK"),
-            DialogType::SILENCE, true, false, nullptr, 260);
+            DialogType::SILENCE,
+            Modal_true,
+            false,
+            nullptr,
+            260);
         localPlayer->setAwayDialog(dialog);
         dialog->addActionListener(localPlayer->getAwayListener());
         soundManager.volumeOff();

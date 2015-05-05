@@ -48,7 +48,7 @@ MailWindow *mailWindow = nullptr;
 
 MailWindow::MailWindow() :
     // TRANSLATORS: mail window name
-    Window(_("Mail"), false, nullptr, "mail.xml"),
+    Window(_("Mail"), Modal_false, nullptr, "mail.xml"),
     ActionListener(),
     mMessages(),
     mMessagesMap(),

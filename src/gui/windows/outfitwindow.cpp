@@ -52,7 +52,7 @@ OutfitWindow *outfitWindow = nullptr;
 
 OutfitWindow::OutfitWindow() :
     // TRANSLATORS: outfits window name
-    Window(_("Outfits"), false, nullptr, "outfits.xml"),
+    Window(_("Outfits"), Modal_false, nullptr, "outfits.xml"),
     ActionListener(),
     // TRANSLATORS: outfits window button
     mPreviousButton(new Button(this, _("<"), "previous", this)),

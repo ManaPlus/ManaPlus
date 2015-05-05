@@ -44,7 +44,7 @@ MailEditWindow *mailEditWindow = nullptr;
 
 MailEditWindow::MailEditWindow() :
     // TRANSLATORS: mail edit window name
-    Window(_("Edit mail"), false, nullptr, "mailedit.xml"),
+    Window(_("Edit mail"), Modal_false, nullptr, "mailedit.xml"),
     ActionListener(),
     // TRANSLATORS: mail edit window button
     mSendButton(new Button(this, _("Send"), "send", this)),

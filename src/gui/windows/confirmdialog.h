@@ -50,7 +50,8 @@ class ConfirmDialog notfinal : public Window,
         ConfirmDialog(const std::string &restrict title,
                       const std::string &restrict msg,
                       const std::string &restrict soundEvent = SOUND_REQUEST,
-                      const bool ignore = false, const bool modal = false,
+                      const bool ignore = false,
+                      const Modal modal = Modal_false,
                       Window *const parent = nullptr);
 
         A_DELETE_COPY(ConfirmDialog)

@@ -83,7 +83,7 @@ typedef std::vector<Image *>::iterator ImageVectorIter;
 
 NpcDialog::NpcDialog(const int npcId) :
     // TRANSLATORS: npc dialog name
-    Window(_("NPC"), false, nullptr, "npc.xml"),
+    Window(_("NPC"), Modal_false, nullptr, "npc.xml"),
     ActionListener(),
     mNpcId(npcId),
     mDefaultInt(0),

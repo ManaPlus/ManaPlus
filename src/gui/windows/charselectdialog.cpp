@@ -65,7 +65,9 @@ CharSelectDialog::CharSelectDialog(LoginData *const data) :
     // TRANSLATORS: char select dialog name
     Window(strprintf(_("Account %s (last login time %s)"),
         data->username.c_str(), data->lastLogin.c_str()),
-        false, nullptr, "char.xml"),
+        Modal_false,
+        nullptr,
+        "char.xml"),
     ActionListener(),
     KeyListener(),
     mLoginData(data),
@@ -277,7 +279,10 @@ void CharSelectDialog::action(const ActionEvent &event)
                 // TRANSLATORS: ok dialog button
                 _("OK"),
                 DialogType::SILENCE,
-                true, true, nullptr, 260);
+                Modal_true,
+                true,
+                nullptr,
+                260);
         }
     }
     if (eventId == "switch")
@@ -319,7 +324,10 @@ void CharSelectDialog::action(const ActionEvent &event)
                     // TRANSLATORS: ok dialog button
                     _("OK"),
                     DialogType::ERROR,
-                    true, true, nullptr, 260);
+                    Modal_true,
+                    true,
+                    nullptr,
+                    260);
             }
         }
         mDeleteIndex = -1;

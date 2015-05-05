@@ -64,7 +64,7 @@ EquipmentWindow::EquipmentWindow(Equipment *const equipment,
                                  Being *const being,
                                  const bool foring) :
     // TRANSLATORS: equipment window name
-    Window(_("Equipment"), false, nullptr, "equipment.xml"),
+    Window(_("Equipment"), Modal_false, nullptr, "equipment.xml"),
     ActionListener(),
     mEquipment(equipment),
     mPlayerBox(new PlayerBox(this,

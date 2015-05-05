@@ -147,7 +147,10 @@ static int uploadUpdate(void *ptr,
                     // TRANSLATORS: ok dialog button
                     _("OK"),
                     DialogType::OK,
-                    true, false, nullptr, 260);
+                    Modal_true,
+                    false,
+                    nullptr,
+                    260);
             }
         }
     }

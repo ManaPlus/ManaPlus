@@ -172,7 +172,7 @@ BuyDialog::DialogList BuyDialog::instances;
 
 BuyDialog::BuyDialog() :
     // TRANSLATORS: buy dialog name
-    Window(_("Create items"), false, nullptr, "buy.xml"),
+    Window(_("Create items"), Modal_false, nullptr, "buy.xml"),
     ActionListener(),
     SelectionListener(),
     mSortModel(nullptr),
@@ -190,7 +190,7 @@ BuyDialog::BuyDialog() :
 
 BuyDialog::BuyDialog(const int npcId) :
     // TRANSLATORS: buy dialog name
-    Window(_("Buy"), false, nullptr, "buy.xml"),
+    Window(_("Buy"), Modal_false, nullptr, "buy.xml"),
     ActionListener(),
     SelectionListener(),
     mSortModel(nullptr),
@@ -208,7 +208,7 @@ BuyDialog::BuyDialog(const int npcId) :
 
 BuyDialog::BuyDialog(std::string nick) :
     // TRANSLATORS: buy dialog name
-    Window(_("Buy"), false, nullptr, "buy.xml"),
+    Window(_("Buy"), Modal_false, nullptr, "buy.xml"),
     ActionListener(),
     SelectionListener(),
     mSortModel(new SortListModelBuy),

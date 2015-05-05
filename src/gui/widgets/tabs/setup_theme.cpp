@@ -311,7 +311,10 @@ void Setup_Theme::action(const ActionEvent &event)
             // TRANSLATORS: ok dialog button
             _("OK"),
             DialogType::OK,
-            false, true, nullptr, 600);
+            Modal_false,
+            true,
+            nullptr,
+            600);
     }
 }
 
@@ -342,7 +345,10 @@ void Setup_Theme::apply()
             // TRANSLATORS: ok dialog button
             _("OK"),
             DialogType::OK,
-            true, true, nullptr, 260);
+            Modal_true,
+            true,
+            nullptr,
+            260);
     }
 
     config.setValue("selectedSkin", "");

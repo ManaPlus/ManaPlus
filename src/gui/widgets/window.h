@@ -66,6 +66,8 @@
 #ifndef GUI_WIDGETS_WINDOW_H
 #define GUI_WIDGETS_WINDOW_H
 
+#include "enums/simpletypes.h"
+
 #include "listeners/mouselistener.h"
 #include "listeners/widgetlistener.h"
 
@@ -105,7 +107,7 @@ class Window notfinal : public BasicContainer2,
          * @param skin    The location where the window's skin XML can be found.
          */
         explicit Window(const std::string &caption = "Window",
-                        const bool modal = false,
+                        const Modal modal = Modal_false,
                         Window *const parent = nullptr,
                         std::string skin = "");
 
@@ -448,7 +450,7 @@ class Window notfinal : public BasicContainer2,
          /**
          * Allows the windows modal status to change
          */
-        void setModal(const bool modal);
+        void setModal(const Modal modal);
 
         Rect getWindowArea() const A_WARN_UNUSED;
 
@@ -691,8 +693,8 @@ class Window notfinal : public BasicContainer2,
         int mResizeHandles;
         int mOldResizeHandles;
         Font *mCaptionFont;
+        Modal mModal;                 /**< Window is modal */
         bool mShowTitle;              /**< Window has a title bar */
-        bool mModal;                  /**< Window is modal */
         bool mCloseWindowButton;      /**< Window has a close button */
         bool mDefaultVisible;         /**< Window's default visibility */
         bool mSaveVisible;            /**< Window will save visibility */

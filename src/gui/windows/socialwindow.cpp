@@ -53,7 +53,7 @@ SocialWindow *socialWindow = nullptr;
 
 SocialWindow::SocialWindow() :
     // TRANSLATORS: social window name
-    Window(_("Social"), false, nullptr, "social.xml"),
+    Window(_("Social"), Modal_false, nullptr, "social.xml"),
     ActionListener(),
     PlayerRelationsListener(),
     mGuildInvited(0),
@@ -427,7 +427,7 @@ void SocialWindow::showGuildInvite(const std::string &restrict guildName,
 
     // TRANSLATORS: guild invite message
     mGuildAcceptDialog = new ConfirmDialog(_("Accept Guild Invite"),
-        msg, SOUND_REQUEST, false, false, this);
+        msg, SOUND_REQUEST, false, Modal_false, this);
     mGuildAcceptDialog->postInit();
     mGuildAcceptDialog->addActionListener(this);
     mGuildInvited = guildId;
@@ -486,7 +486,7 @@ void SocialWindow::showPartyInvite(const std::string &restrict partyName,
     // show invite
     // TRANSLATORS: party invite message
     mPartyAcceptDialog = new ConfirmDialog(_("Accept Party Invite"),
-        msg, SOUND_REQUEST, false, false, this);
+        msg, SOUND_REQUEST, false, Modal_false, this);
     mPartyAcceptDialog->postInit();
     mPartyAcceptDialog->addActionListener(this);
     mPartyInviter = inviter;
@@ -506,7 +506,10 @@ void SocialWindow::showPartyCreate()
             // TRANSLATORS: ok dialog button
             _("OK"),
             DialogType::ERROR,
-            true, true, this, 260);
+            Modal_true,
+            true,
+            this,
+            260);
         return;
     }
 

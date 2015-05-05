@@ -37,8 +37,10 @@
 OkDialog::OkDialog(const std::string &restrict title,
                    const std::string &restrict msg,
                    const std::string &restrict button,
-                   const int soundEvent, const bool modal,
-                   const bool showCenter, Window *const parent,
+                   const int soundEvent,
+                   const Modal modal,
+                   const bool showCenter,
+                   Window *const parent,
                    const int minWidth) :
     Window(title, modal, parent, "ok.xml"),
     ActionListener(),

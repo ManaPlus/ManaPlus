@@ -71,7 +71,7 @@ TradeWindow *tradeWindow = nullptr;
 
 TradeWindow::TradeWindow() :
     // TRANSLATORS: trade window caption
-    Window(_("Trade: You"), false, nullptr, "trade.xml"),
+    Window(_("Trade: You"), Modal_false, nullptr, "trade.xml"),
     ActionListener(),
     SelectionListener(),
     mMyInventory(new Inventory(InventoryType::TRADE)),

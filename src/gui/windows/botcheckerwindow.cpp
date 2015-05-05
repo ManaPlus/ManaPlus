@@ -41,7 +41,7 @@ BotCheckerWindow *botCheckerWindow = nullptr;
 
 BotCheckerWindow::BotCheckerWindow() :
     // TRANSLATORS: bot checker window header
-    Window(_("Bot Checker"), false, nullptr, "botchecker.xml"),
+    Window(_("Bot Checker"), Modal_false, nullptr, "botchecker.xml"),
     ActionListener(),
     mTableModel(new UsersTableModel(this)),
     mTable(new GuiTable(this, mTableModel)),

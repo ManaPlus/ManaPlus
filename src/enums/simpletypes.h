@@ -52,5 +52,6 @@ defBoolEnum(Damaged);
 defBoolEnum(Favorite);
 defBoolEnum(Equipm);
 defBoolEnum(Equipped);
+defBoolEnum(Modal);
 
 #endif  // ENUMS_SIMPLETYPES_H

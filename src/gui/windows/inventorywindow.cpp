@@ -74,7 +74,7 @@ InventoryWindow *cartWindow = nullptr;
 InventoryWindow::WindowList InventoryWindow::invInstances;
 
 InventoryWindow::InventoryWindow(Inventory *const inventory) :
-    Window("Inventory", false, nullptr, "inventory.xml"),
+    Window("Inventory", Modal_false, nullptr, "inventory.xml"),
     ActionListener(),
     KeyListener(),
     SelectionListener(),

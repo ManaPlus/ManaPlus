@@ -142,7 +142,10 @@ void CharServerHandler::processCharCreateFailed(Net::MessageIn &msg)
         // TRANSLATORS: ok dialog button
         _("OK"),
         DialogType::ERROR,
-        true, true, nullptr, 260);
+        Modal_true,
+        true,
+        nullptr,
+        260);
     if (mCharCreateDialog)
         mCharCreateDialog->unlock();
     BLOCK_END("CharServerHandler::processCharCreateFailed")
@@ -161,7 +164,10 @@ void CharServerHandler::processCharDelete(Net::MessageIn &msg A_UNUSED)
         // TRANSLATORS: ok dialog button
         _("OK"),
         DialogType::OK,
-        true, true, nullptr, 260);
+        Modal_true,
+        true,
+        nullptr,
+        260);
     BLOCK_END("CharServerHandler::processCharDelete")
 }
 

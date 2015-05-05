@@ -61,7 +61,7 @@ LoginDialog::LoginDialog(LoginData *const data,
                          std::string serverName,
                          std::string *const updateHost) :
     // TRANSLATORS: login dialog name
-    Window(_("Login"), false, nullptr, "login.xml"),
+    Window(_("Login"), Modal_false, nullptr, "login.xml"),
     ActionListener(),
     KeyListener(),
     mLoginData(data),
@@ -226,7 +226,7 @@ void LoginDialog::action(const ActionEvent &event)
             urlListener.url = url;
             // TRANSLATORS: question dialog
             ConfirmDialog *const confirmDlg = new ConfirmDialog(
-                _("Open register url"), url, SOUND_REQUEST, false, true);
+                _("Open register url"), url, SOUND_REQUEST, false, Modal_true);
             confirmDlg->postInit();
             confirmDlg->addActionListener(&urlListener);
         }

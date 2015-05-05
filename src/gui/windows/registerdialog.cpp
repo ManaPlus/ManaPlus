@@ -51,7 +51,7 @@
 
 RegisterDialog::RegisterDialog(LoginData *const data) :
     // TRANSLATORS: register dialog name
-    Window(_("Register"), false, nullptr, "register.xml"),
+    Window(_("Register"), Modal_false, nullptr, "register.xml"),
     ActionListener(),
     KeyListener(),
     mLoginData(data),
@@ -242,7 +242,10 @@ void RegisterDialog::action(const ActionEvent &event)
                 // TRANSLATORS: error message
                 _("Error"), errorMsg, _("OK"),
                 DialogType::ERROR,
-                true, true, nullptr, 260);
+                Modal_true,
+                true,
+                nullptr,
+                260);
             dlg->addActionListener(mWrongDataNoticeListener);
         }
         else

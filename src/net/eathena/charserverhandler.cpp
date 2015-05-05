@@ -578,7 +578,10 @@ void CharServerHandler::processCharCheckRename(Net::MessageIn &msg)
             // TRANSLATORS: ok dialog button
             _("Error"),
             DialogType::ERROR,
-            true, true, nullptr, 260);
+            Modal_true,
+            true,
+            nullptr,
+            260);
     }
 }
 
@@ -593,7 +596,10 @@ void CharServerHandler::processCharRename(Net::MessageIn &msg)
             // TRANSLATORS: ok dialog button
             _("OK"),
             DialogType::OK,
-            true, true, nullptr, 260);
+            Modal_true,
+            true,
+            nullptr,
+            260);
     }
     else
     {
@@ -623,7 +629,10 @@ void CharServerHandler::processCharRename(Net::MessageIn &msg)
             // TRANSLATORS: ok dialog button
             _("OK"),
             DialogType::OK,
-            true, true, nullptr, 260);
+            Modal_true,
+            true,
+            nullptr,
+            260);
     }
 }
 
@@ -653,7 +662,10 @@ void CharServerHandler::processCharDeleteFailed(Net::MessageIn &msg)
         // TRANSLATORS: ok dialog button
         _("OK"),
         DialogType::ERROR,
-        true, true, nullptr, 260);
+        Modal_true,
+        true,
+        nullptr,
+        260);
     BLOCK_END("CharServerHandler::processCharDeleteFailed")
 }
 

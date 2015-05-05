@@ -23,6 +23,8 @@
 #ifndef GUI_DIALOGSMANAGER_H
 #define GUI_DIALOGSMANAGER_H
 
+#include "enums/simpletypes.h"
+
 #include "listeners/attributelistener.h"
 #include "listeners/playerdeathlistener.h"
 
@@ -44,7 +46,7 @@ class DialogsManager final : public AttributeListener,
 
         static Window *openErrorDialog(const std::string &header,
                                        const std::string &message,
-                                       const bool modal);
+                                       const Modal modal);
 
         void playerDeath() override final;
 

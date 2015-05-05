@@ -68,7 +68,7 @@ static SkillOwner::Type parseOwner(const std::string &str)
 
 SkillDialog::SkillDialog() :
     // TRANSLATORS: skills dialog name
-    Window(_("Skills"), false, nullptr, "skills.xml"),
+    Window(_("Skills"), Modal_false, nullptr, "skills.xml"),
     ActionListener(),
     mSkills(),
     mDurations(),

@@ -37,7 +37,7 @@ extern bool mStatsReUpdated;
 
 ConnectionDialog::ConnectionDialog(const std::string &text,
                                    const State cancelState) :
-    Window("", false, nullptr, "connection.xml"),
+    Window("", Modal_false, nullptr, "connection.xml"),
     ActionListener(),
     mCancelState(cancelState)
 {

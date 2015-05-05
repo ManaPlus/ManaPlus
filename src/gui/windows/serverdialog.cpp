@@ -102,7 +102,7 @@ static uint16_t defaultPortForServerType(const ServerType::Type type)
 ServerDialog::ServerDialog(ServerInfo *const serverInfo,
                            const std::string &dir) :
     // TRANSLATORS: servers dialog name
-    Window(_("Choose Your Server"), false, nullptr, "server.xml"),
+    Window(_("Choose Your Server"), Modal_false, nullptr, "server.xml"),
     ActionListener(),
     KeyListener(),
     SelectionListener(),

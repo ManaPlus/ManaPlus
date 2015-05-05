@@ -98,8 +98,10 @@ const int resizeMask = 8 + 4 + 2 + 1;
 int Window::windowInstances = 0;
 int Window::mouseResize = 0;
 
-Window::Window(const std::string &caption, const bool modal,
-               Window *const parent, std::string skin) :
+Window::Window(const std::string &caption,
+               const Modal modal,
+               Window *const parent,
+               std::string skin) :
     BasicContainer2(nullptr),
     MouseListener(),
     WidgetListener(),
@@ -137,8 +139,8 @@ Window::Window(const std::string &caption, const bool modal,
     mResizeHandles(-1),
     mOldResizeHandles(-1),
     mCaptionFont(getFont()),
-    mShowTitle(true),
     mModal(modal),
+    mShowTitle(true),
     mCloseWindowButton(false),
     mDefaultVisible(false),
     mSaveVisible(false),
@@ -201,7 +203,7 @@ Window::Window(const std::string &caption, const bool modal,
     if (windowContainer)
         windowContainer->add(this);
 
-    if (mModal)
+    if (mModal == Modal_true)
     {
         gui->setCursorType(Cursor::CURSOR_POINTER);
         requestModalFocus();
@@ -938,12 +940,12 @@ void Window::mouseDragged(MouseEvent &event)
     }
 }
 
-void Window::setModal(const bool modal)
+void Window::setModal(const Modal modal)
 {
     if (mModal != modal)
     {
         mModal = modal;
-        if (mModal)
+        if (mModal == Modal_true)
         {
             if (gui)
                 gui->setCursorType(Cursor::CURSOR_POINTER);

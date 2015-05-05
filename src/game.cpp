@@ -667,7 +667,9 @@ void Game::slowLogic()
                 errorMessage = _("The connection to the server was lost.");
                 disconnectedDialog = DialogsManager::openErrorDialog(
                     // TRANSLATORS: error message header
-                    _("Network Error"), errorMessage, false);
+                    _("Network Error"),
+                    errorMessage,
+                    Modal_false);
                 disconnectedDialog->addActionListener(&errorListener);
                 disconnectedDialog->requestMoveToTop();
             }

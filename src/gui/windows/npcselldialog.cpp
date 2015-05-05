@@ -67,7 +67,10 @@ void NpcSellDialog::sellAction(const ActionEvent &event)
                 _("sell item"),
                 // TRANSLATORS: sell confirmation message
                 strprintf(_("Do you really want to sell %s?"),
-                    info.getName().c_str()), SOUND_REQUEST, false, true);
+                    info.getName().c_str()),
+                SOUND_REQUEST,
+                false,
+                Modal_true);
             dialog->postInit();
             dialog->addActionListener(this);
             return;

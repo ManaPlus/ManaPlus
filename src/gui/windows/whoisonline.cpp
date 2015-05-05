@@ -90,7 +90,10 @@ namespace
 
 WhoIsOnline::WhoIsOnline() :
     // TRANSLATORS: who is online window name
-    Window(_("Who Is Online - Updating"), false, nullptr, "whoisonline.xml"),
+    Window(_("Who Is Online - Updating"),
+        Modal_false,
+        nullptr,
+        "whoisonline.xml"),
     mUpdateTimer(0),
     mThread(nullptr),
     mMemoryBuffer(nullptr),

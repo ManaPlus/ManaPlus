@@ -67,7 +67,7 @@ void ItemLinkHandler::handleLink(const std::string &link, MouseEvent *event)
         {
             ConfirmDialog *const confirmDlg = new ConfirmDialog(
                 // TRANSLATORS: dialog message
-                _("Open url"), url, SOUND_REQUEST, false, true);
+                _("Open url"), url, SOUND_REQUEST, false, Modal_true);
             confirmDlg->postInit();
             confirmDlg->addActionListener(&listener);
         }

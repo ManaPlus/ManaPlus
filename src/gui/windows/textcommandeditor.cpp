@@ -44,7 +44,7 @@
 
 TextCommandEditor::TextCommandEditor(TextCommand *const command) :
     // TRANSLATORS: command editor name
-    Window(_("Command Editor"), false, nullptr, "commandeditor.xml"),
+    Window(_("Command Editor"), Modal_false, nullptr, "commandeditor.xml"),
     ActionListener(),
     mIsMagicCommand(command->getCommandType() == TEXT_COMMAND_MAGIC),
     mCommand(command),

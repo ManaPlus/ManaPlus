@@ -63,7 +63,7 @@ StatusWindow *statusWindow = nullptr;
 
 StatusWindow::StatusWindow() :
     Window(localPlayer ? localPlayer->getName() :
-        "?", false, nullptr, "status.xml"),
+        "?", Modal_false, nullptr, "status.xml"),
     ActionListener(),
     AttributeListener(),
     StatListener(),
