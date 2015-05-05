@@ -305,17 +305,17 @@ std::string Inventory::getName() const
             // TRANSLATORS: inventory type name
             return N_("Storage");
         }
-        case InventoryType::CART:
-        {
-            // TRANSLATORS: inventory type name
-            return N_("Cart");
-        }
         case InventoryType::NPC:
         {
             // TRANSLATORS: inventory type name
             return N_("Npc");
         }
 #ifdef EATHENA_SUPPORT
+        case InventoryType::CART:
+        {
+            // TRANSLATORS: inventory type name
+            return N_("Cart");
+        }
         case InventoryType::MAIL:
         {
             // TRANSLATORS: inventory type name

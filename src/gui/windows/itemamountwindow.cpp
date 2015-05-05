@@ -74,16 +74,8 @@ void ItemAmountWindow::finish(const Item *const item,
             inventoryHandler->moveItem2(InventoryType::INVENTORY,
                 item->getInvIndex(), amount, InventoryType::STORAGE);
             break;
-        case CartAdd:
-            inventoryHandler->moveItem2(InventoryType::INVENTORY,
-                item->getInvIndex(), amount, InventoryType::CART);
-            break;
         case StoreRemove:
             inventoryHandler->moveItem2(InventoryType::STORAGE,
-                item->getInvIndex(), amount, InventoryType::INVENTORY);
-            break;
-        case CartRemove:
-            inventoryHandler->moveItem2(InventoryType::CART,
                 item->getInvIndex(), amount, InventoryType::INVENTORY);
             break;
         case ShopBuyAdd:
@@ -95,6 +87,14 @@ void ItemAmountWindow::finish(const Item *const item,
                 shopWindow->addSellItem(item, amount, price);
             break;
 #ifdef EATHENA_SUPPORT
+        case CartAdd:
+            inventoryHandler->moveItem2(InventoryType::INVENTORY,
+                item->getInvIndex(), amount, InventoryType::CART);
+            break;
+        case CartRemove:
+            inventoryHandler->moveItem2(InventoryType::CART,
+                item->getInvIndex(), amount, InventoryType::INVENTORY);
+            break;
         case MailAdd:
             if (mailEditWindow)
                 mailEditWindow->addItem(item, amount);

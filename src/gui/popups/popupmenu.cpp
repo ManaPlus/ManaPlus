@@ -1711,10 +1711,10 @@ void PopupMenu::showPopup(Window *const parent,
             }
             break;
 
-        case InventoryType::CART:
         case InventoryType::TRADE:
         case InventoryType::NPC:
 #ifdef EATHENA_SUPPORT
+        case InventoryType::CART:
         case InventoryType::VENDING:
         case InventoryType::MAIL:
 #endif

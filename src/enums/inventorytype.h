@@ -29,10 +29,10 @@ namespace InventoryType
     {
         INVENTORY = 0,
         STORAGE,
-        CART,
         TRADE,
         NPC,
 #ifdef EATHENA_SUPPORT
+        CART,
         VENDING,
         MAIL,
 #endif

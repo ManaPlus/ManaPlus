@@ -131,10 +131,12 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
                 mSortDropDown->setSelected(config.getIntValue(
                     "storageSortOrder"));
                 break;
+#ifdef EATHENA_SUPPORT
             case InventoryType::CART:
                 mSortDropDown->setSelected(config.getIntValue(
                     "cartSortOrder"));
                 break;
+#endif
         };
     }
     else
@@ -269,6 +271,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
             break;
         }
 
+#ifdef EATHENA_SUPPORT
         case InventoryType::CART:
         {
             // TRANSLATORS: storage button
@@ -298,6 +301,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
             place(6, 6, mInvCloseButton);
             break;
         }
+#endif
 
         default:
         case InventoryType::TRADE:
@@ -375,10 +379,12 @@ void InventoryWindow::storeSortOrder() const
                 config.setValue("storageSortOrder",
                     mSortDropDown->getSelected());
                 break;
+#ifdef EATHENA_SUPPORT
             case InventoryType::CART:
                 config.setValue("cartSortOrder",
                     mSortDropDown->getSelected());
                 break;
+#endif
         };
     }
 }
@@ -793,7 +799,9 @@ void InventoryWindow::close()
     switch (mInventory->getType())
     {
         case InventoryType::INVENTORY:
+#ifdef EATHENA_SUPPORT
         case InventoryType::CART:
+#endif
             setVisible(false);
             break;
 
@@ -823,8 +831,14 @@ void InventoryWindow::updateWeight()
     if (!mInventory || !mWeightBar)
         return;
     const InventoryType::Type type = mInventory->getType();
+#ifdef EATHENA_SUPPORT
     if (type != InventoryType::INVENTORY && type != InventoryType::CART)
+#else
+    if (type != InventoryType::INVENTORY)
+#endif
+    {
         return;
+    }
 
     const bool isInv = type == InventoryType::INVENTORY;
     const int total = PlayerInfo::getAttribute(isInv
@@ -940,8 +954,14 @@ void InventoryWindow::widgetResized(const Event &event)
     if (!mInventory)
         return;
     const InventoryType::Type type = mInventory->getType();
+#ifdef EATHENA_SUPPORT
     if (type != InventoryType::INVENTORY && type != InventoryType::CART)
+#else
+    if (type != InventoryType::INVENTORY)
+#endif
+    {
         return;
+    }
 
     if (getWidth() < 600)
     {
