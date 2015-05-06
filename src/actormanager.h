@@ -25,6 +25,8 @@
 
 #include "flooritem.h"
 
+#include "enums/simpletypes.h"
+
 #include "listeners/configlistener.h"
 
 #include "utils/stringmap.h"
@@ -105,7 +107,7 @@ class ActorManager final: public ConfigListener
          * Returns a being at the specific pixel.
          */
         Being *findBeingByPixel(const int x, const int y,
-                                const bool allPlayers = false)
+                                const AllPlayers allPlayers = AllPlayers_false)
                                 const A_WARN_UNUSED;
 
         /**
@@ -113,7 +115,7 @@ class ActorManager final: public ConfigListener
          */
         void findBeingsByPixel(std::vector<ActorSprite*> &beings,
                                const int x, const int y,
-                               const bool allPlayers) const;
+                               const AllPlayers allPlayers) const;
 
         /**
          * Returns a portal at the specific tile.

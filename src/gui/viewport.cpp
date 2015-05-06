@@ -379,7 +379,7 @@ bool Viewport::openContextMenu(const MouseEvent &event)
             std::vector<ActorSprite*> beings;
             const int x = mMouseX + mPixelViewX;
             const int y = mMouseY + mPixelViewY;
-            actorManager->findBeingsByPixel(beings, x, y, true);
+            actorManager->findBeingsByPixel(beings, x, y, AllPlayers_true);
             if (beings.size() > 1)
                 popupMenu->showPopup(eventX, eventY, beings);
             else
@@ -771,7 +771,7 @@ void Viewport::mouseMoved(MouseEvent &event)
     const int y = mMouseY + mPixelViewY;
 
     ActorType::Type type = ActorType::Unknown;
-    mHoverBeing = actorManager->findBeingByPixel(x, y, true);
+    mHoverBeing = actorManager->findBeingByPixel(x, y, AllPlayers_true);
     if (mHoverBeing)
         type = mHoverBeing->getType();
     if (mHoverBeing

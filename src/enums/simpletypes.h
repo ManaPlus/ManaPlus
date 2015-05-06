@@ -59,5 +59,6 @@ defBoolEnum(Trading);
 defBoolEnum(Sfx);
 defBoolEnum(Keep);
 defBoolEnum(Modifiable);
+defBoolEnum(AllPlayers);
 
 #endif  // ENUMS_SIMPLETYPES_H

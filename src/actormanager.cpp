@@ -359,7 +359,7 @@ Being *ActorManager::findBeing(const int x, const int y,
 }
 
 Being *ActorManager::findBeingByPixel(const int x, const int y,
-                                      const bool allPlayers) const
+                                      const AllPlayers allPlayers) const
 {
     if (!mMap)
         return nullptr;
@@ -410,7 +410,7 @@ Being *ActorManager::findBeingByPixel(const int x, const int y,
 
             if ((being->mAction != BeingAction::DEAD
                 || (targetDead && being->getType() == ActorType::Player))
-                && (allPlayers || being != localPlayer))
+                && (allPlayers == AllPlayers_true || being != localPlayer))
             {
                 const int px = being->getPixelX();
                 const int py = being->getPixelY();
@@ -476,7 +476,7 @@ Being *ActorManager::findBeingByPixel(const int x, const int y,
 
 void ActorManager::findBeingsByPixel(std::vector<ActorSprite*> &beings,
                                      const int x, const int y,
-                                     const bool allPlayers) const
+                                     const AllPlayers allPlayers) const
 {
     if (!mMap)
         return;
@@ -506,7 +506,7 @@ void ActorManager::findBeingsByPixel(std::vector<ActorSprite*> &beings,
 
         if ((being && (being->isAlive()
             || (mTargetDeadPlayers && being->getType() == ActorType::Player))
-            && (allPlayers ||  being != localPlayer))
+            && (allPlayers == AllPlayers_true ||  being != localPlayer))
             || actor->getType() == ActorType::FloorItem)
         {
             if ((actor->getPixelX() - xtol <= x) &&
