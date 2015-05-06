@@ -115,9 +115,10 @@ int StatusEffect::blockEffectIndexToEffectIndex(const int blockIndex)
 }
 
 StatusEffect *StatusEffect::getStatusEffect(const int index,
-                                            const bool enabling)
+                                            const Enable enabling)
 {
-    std::map<int, StatusEffect *> &effects = statusEffects[enabling];
+    std::map<int, StatusEffect *> &effects
+        = statusEffects[enabling == Enable_true];
     const std::map<int, StatusEffect *>::iterator it = effects.find(index);
     if (it != effects.end())
         return (*it).second;
@@ -125,9 +126,11 @@ StatusEffect *StatusEffect::getStatusEffect(const int index,
     return nullptr;
 }
 
-StatusEffect *StatusEffect::getStunEffect(const int index, const bool enabling)
+StatusEffect *StatusEffect::getStunEffect(const int index,
+                                          const Enable enabling)
 {
-    std::map<int, StatusEffect *> &effects = stunEffects[enabling];
+    std::map<int, StatusEffect *> &effects
+        = stunEffects[enabling == Enable_true];
     const std::map<int, StatusEffect *>::iterator it = effects.find(index);
     if (it != effects.end())
         return (*it).second;

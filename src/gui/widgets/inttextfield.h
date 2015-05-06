@@ -23,6 +23,8 @@
 #ifndef GUI_WIDGETS_INTTEXTFIELD_H
 #define GUI_WIDGETS_INTTEXTFIELD_H
 
+#include "enums/simpletypes.h"
+
 #include "gui/widgets/textfield.h"
 
 /**
@@ -38,7 +40,7 @@ class IntTextField final : public TextField
                               const int def = 0,
                               const int min = 0,
                               const int max = 0,
-                              const bool enabled = true,
+                              const Enable enabled = Enable_true,
                               const int width = 0);
 
         A_DELETE_COPY(IntTextField)

@@ -35,7 +35,7 @@ IntTextField::IntTextField(const Widget2 *const widget,
                            const int def,
                            const int min,
                            const int max,
-                           const bool enabled,
+                           const Enable enabled,
                            const int width) :
     TextField(widget, toString(def)),
     mMin(0),
@@ -46,7 +46,7 @@ IntTextField::IntTextField(const Widget2 *const widget,
     if (min != 0 || max != 0)
         setRange(min, max);
 
-    setEnabled(enabled);
+    setEnabled(enabled == Enable_true);
     if (width != 0)
         setWidth(width);
 }

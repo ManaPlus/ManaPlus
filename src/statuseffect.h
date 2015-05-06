@@ -23,6 +23,8 @@
 #ifndef STATUSEFFECT_H
 #define STATUSEFFECT_H
 
+#include "enums/simpletypes.h"
+
 #include <string>
 
 #include "localconsts.h"
@@ -91,7 +93,7 @@ class StatusEffect final
          *    the deactivating effect (false).
          */
         static StatusEffect *getStatusEffect(const int index,
-                                             const bool enabling)
+                                             const Enable enabling)
                                              A_WARN_UNUSED;
 
         /**
@@ -102,7 +104,7 @@ class StatusEffect final
          *    the deactivating effect (false).
          */
         static StatusEffect *getStunEffect(const int index,
-                                           const bool enabling) A_WARN_UNUSED;
+                                           const Enable enabling) A_WARN_UNUSED;
 
         /**
          * Maps a block effect index to its corresponding effect index.  Block

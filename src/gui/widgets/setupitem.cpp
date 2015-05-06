@@ -496,7 +496,7 @@ void SetupItemIntTextField::createControls()
     mLabel = new Label(this, mText);
     mLabel->setToolTip(mDescription);
     mTextField = new IntTextField(this, atoi(mValue.c_str()),
-        mMin, mMax, true, 30);
+        mMin, mMax, Enable_true, 30);
     mTextField->setActionEventId(mEventName);
     mTextField->addActionListener(mParent);
 

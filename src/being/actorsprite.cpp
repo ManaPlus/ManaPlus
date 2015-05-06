@@ -120,9 +120,9 @@ void ActorSprite::logic()
         FOR_EACH (std::set<int>::const_iterator, it, mStatusEffects)
         {
             const StatusEffect *const effect
-                = StatusEffect::getStatusEffect(*it, true);
+                = StatusEffect::getStatusEffect(*it, Enable_true);
             if (effect && effect->particleEffectIsPersistent())
-                updateStatusEffect(*it, true);
+                updateStatusEffect(*it, Enable_true);
         }
     }
 
@@ -174,14 +174,15 @@ struct EffectDescription final
     std::string mSFXEffect;
 };
 
-void ActorSprite::setStatusEffect(const int index, const bool active)
+void ActorSprite::setStatusEffect(const int index, const Enable active)
 {
-    const bool wasActive = mStatusEffects.find(index) != mStatusEffects.end();
+    const Enable wasActive = fromBool(
+        mStatusEffects.find(index) != mStatusEffects.end(), Enable);
 
     if (active != wasActive)
     {
         updateStatusEffect(index, active);
-        if (active)
+        if (active == Enable_true)
             mStatusEffects.insert(index);
         else
             mStatusEffects.erase(index);
@@ -197,28 +198,33 @@ void ActorSprite::setStatusEffectBlock(const int offset,
             offset + i);
 
         if (index != -1)
-            setStatusEffect(index, (newEffects & (1 << i)) > 0);
+        {
+            setStatusEffect(index,
+                fromBool((newEffects & (1 << i)) > 0, Enable));
+        }
     }
 }
 
 void ActorSprite::updateStunMode(const int oldMode, const int newMode)
 {
-    handleStatusEffect(StatusEffect::getStatusEffect(oldMode, false), -1);
-    handleStatusEffect(StatusEffect::getStatusEffect(newMode, true), -1);
+    handleStatusEffect(StatusEffect::getStatusEffect(
+        oldMode, Enable_false), -1);
+    handleStatusEffect(StatusEffect::getStatusEffect(
+        newMode, Enable_true), -1);
 }
 
-void ActorSprite::updateStatusEffect(const int index, const bool newStatus)
+void ActorSprite::updateStatusEffect(const int index, const Enable newStatus)
 {
     StatusEffect *const effect = StatusEffect::getStatusEffect(
         index, newStatus);
     if (!effect)
         return;
     if (effect->isPoison() && getType() == ActorType::Player)
-        setPoison(newStatus);
+        setPoison(newStatus == Enable_true);
     else if (effect->isCart() && localPlayer == this)
-        setHaveCart(newStatus);
+        setHaveCart(newStatus == Enable_true);
     else if (effect->isRiding())
-        setRiding(newStatus);
+        setRiding(newStatus == Enable_true);
     handleStatusEffect(effect, index);
 }
 

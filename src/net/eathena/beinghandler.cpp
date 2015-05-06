@@ -1176,7 +1176,8 @@ void BeingHandler::processBeingStatusChange(Net::MessageIn &msg)
     // Status change
     const uint16_t status = msg.readInt16("status");
     const int id = msg.readInt32("being id");
-    const bool flag = msg.readUInt8("flag: 0: stop, 1: start");
+    const Enable flag = fromBool(
+        msg.readUInt8("flag: 0: stop, 1: start"), Enable);
     msg.readInt32("total");
     msg.readInt32("left");
     msg.readInt32("val1");
@@ -1201,7 +1202,8 @@ void BeingHandler::processBeingStatusChange2(Net::MessageIn &msg)
     // Status change
     const uint16_t status = msg.readInt16("status");
     const int id = msg.readInt32("being id");
-    const bool flag = msg.readUInt8("flag: 0: stop, 1: start");
+    const Enable flag = fromBool(
+        msg.readUInt8("flag: 0: stop, 1: start"), Enable);
     msg.readInt32("left");
     msg.readInt32("val1");
     msg.readInt32("val2");
@@ -1613,7 +1615,7 @@ void BeingHandler::processPlaterStatusChangeNoTick(Net::MessageIn &msg)
 {
     const uint16_t status = msg.readInt16("index");
     const int id = msg.readInt32("account id");
-    const bool flag = msg.readUInt8("state") ? 1 : 0;
+    const Enable flag = fromBool(msg.readUInt8("state") ? true : false, Enable);
 
     Being *const dstBeing = actorManager->findBeing(id);
     if (!dstBeing)
