@@ -572,7 +572,7 @@ void EquipmentWindow::fillBoxes()
 {
     XML::Document *const doc = new XML::Document(
         paths.getStringValue("equipmentWindowFile"),
-        true,
+        UseResman_true,
         false);
     const XmlNodePtr root = doc->rootNode();
     if (!root)

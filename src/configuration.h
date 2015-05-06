@@ -244,7 +244,7 @@ class Configuration final : public ConfigurationObject
          * @param useResManager Make use of the resource manager.
          */
         void init(const std::string &filename,
-                  const bool useResManager = false);
+                  const UseResman useResManager = UseResman_false);
 
         void reInit();
 
@@ -365,7 +365,7 @@ class Configuration final : public ConfigurationObject
         DefaultsData *mDefaultsData;
         std::string mDirectory;
         std::string mFilename;
-        bool mUseResManager;
+        UseResman mUseResManager;
         bool mUpdated;
 };
 

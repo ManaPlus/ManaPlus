@@ -28,13 +28,13 @@
 #define defBoolEnum(name) \
     enum class name : bool \
     { \
-        False = false, \
-        True = true \
+        MFalse = false, \
+        MTrue = true \
     }; \
-    const name name##_true = name::True; \
-    const name name##_false = name::False
+    const name name##_true = name::MTrue; \
+    const name name##_false = name::MFalse
 #define fromBool(val, name) \
-    (val) ? name::True : name::False
+    (val) ? name::MTrue : name::MFalse
 
 #else  // ADVGCC
 
@@ -46,6 +46,7 @@
     (val) ? true : false
 
 #endif  // ADVGCC
+
 
 defBoolEnum(Identified);
 defBoolEnum(Damaged);
@@ -64,5 +65,6 @@ defBoolEnum(AllowSort);
 defBoolEnum(NpcNames);
 defBoolEnum(Enable);
 defBoolEnum(ForceDisplay);
+defBoolEnum(UseResman);
 
 #endif  // ENUMS_SIMPLETYPES_H

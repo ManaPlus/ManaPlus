@@ -70,7 +70,7 @@ void ColorDB::load()
 void ColorDB::loadHair(const std::string &fileName,
                        std::map<int, ItemColor> &colors)
 {
-    XML::Document *doc = new XML::Document(fileName, true, false);
+    XML::Document *doc = new XML::Document(fileName, UseResman_true, false);
     const XmlNodePtrConst root = doc->rootNode();
 
     if (!root || !xmlNameEqual(root, "colors"))
@@ -108,7 +108,7 @@ void ColorDB::loadHair(const std::string &fileName,
 
 void ColorDB::loadColorLists(const std::string &fileName)
 {
-    XML::Document *doc = new XML::Document(fileName, true, false);
+    XML::Document *doc = new XML::Document(fileName, UseResman_true, false);
     const XmlNodePtrConst root = doc->rootNode();
     if (!root)
     {

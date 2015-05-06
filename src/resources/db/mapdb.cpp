@@ -59,7 +59,9 @@ void MapDB::load()
 
 void MapDB::loadRemapXmlFile(const std::string &fileName)
 {
-    XML::Document *const doc = new XML::Document(fileName, true, false);
+    XML::Document *const doc = new XML::Document(fileName,
+        UseResman_true,
+        false);
 
     const XmlNodePtrConst root = doc->rootNode();
     if (!root)
@@ -140,7 +142,9 @@ void MapDB::readAtlas(XmlNodePtrConst node)
 
 void MapDB::loadInfo(const std::string &fileName)
 {
-    XML::Document *doc = new XML::Document(fileName, true, false);
+    XML::Document *doc = new XML::Document(fileName,
+        UseResman_true,
+        false);
     const XmlNodePtrConst root = doc->rootNode();
     if (!root)
     {

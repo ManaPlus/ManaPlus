@@ -87,7 +87,7 @@ SpriteDef *SpriteDef::load(const std::string &animationFile,
     if (pos != std::string::npos)
         palettes = animationFile.substr(pos + 1);
 
-    XML::Document doc(animationFile.substr(0, pos), true, false);
+    XML::Document doc(animationFile.substr(0, pos), UseResman_true, false);
     XmlNodePtrConst rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "sprite"))
@@ -434,7 +434,7 @@ void SpriteDef::includeSprite(const XmlNodePtr includeNode, const int variant)
     }
     mProcessedFiles.insert(filename);
 
-    XML::Document doc(filename, true, false);
+    XML::Document doc(filename, UseResman_true, false);
     const XmlNodePtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "sprite"))

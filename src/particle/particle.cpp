@@ -290,7 +290,7 @@ Particle *Particle::addEffect(const std::string &particleEffectFile,
     const size_t pos = particleEffectFile.find('|');
     const std::string dyePalettes = (pos != std::string::npos)
         ? particleEffectFile.substr(pos + 1) : "";
-    XML::Document doc(particleEffectFile.substr(0, pos), true, false);
+    XML::Document doc(particleEffectFile.substr(0, pos), UseResman_true, false);
     const XmlNodePtrConst rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "effect"))

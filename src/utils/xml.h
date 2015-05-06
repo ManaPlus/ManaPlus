@@ -23,6 +23,8 @@
 #ifndef UTILS_XML_H
 #define UTILS_XML_H
 
+#include "enums/simpletypes.h"
+
 #include <libxml/tree.h>
 #include <libxml/xmlwriter.h>
 
@@ -66,7 +68,7 @@ namespace XML
              * resource manager. Logs errors.
              */
             Document(const std::string &filename,
-                     const bool useResman,
+                     const UseResman useResman,
                      const bool skipError);
 
             /**

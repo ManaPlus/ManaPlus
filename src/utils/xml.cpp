@@ -76,7 +76,7 @@ static void xmlErrorLogger(void *ctx A_UNUSED, const char *msg, ...)
 namespace XML
 {
     Document::Document(const std::string &filename,
-                       const bool useResman,
+                       const UseResman useResman,
                        const bool skipError) :
         mDoc(nullptr),
         mIsValid(false)
@@ -89,7 +89,7 @@ namespace XML
         int size = 0;
         char *data = nullptr;
         valid = true;
-        if (useResman)
+        if (useResman == UseResman_true)
         {
             data = static_cast<char*>(PhysFs::loadFile(
                 filename.c_str(), size));

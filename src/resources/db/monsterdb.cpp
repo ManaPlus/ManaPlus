@@ -59,7 +59,7 @@ void MonsterDB::load()
 
 void MonsterDB::loadXmlFile(const std::string &fileName)
 {
-    XML::Document doc(fileName, true, false);
+    XML::Document doc(fileName, UseResman_true, false);
     const XmlNodePtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "monsters"))
