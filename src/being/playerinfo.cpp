@@ -37,7 +37,6 @@
 
 #include "gui/windows/inventorywindow.h"
 #include "gui/windows/npcdialog.h"
-#include "gui/windows/npcpostdialog.h"
 
 #include "net/homunculushandler.h"
 #include "net/inventoryhandler.h"
@@ -418,8 +417,7 @@ void clear()
 
 bool isTalking()
 {
-    return NpcDialog::isActive() || NpcPostDialog::isActive()
-        || InventoryWindow::isStorageActive();
+    return NpcDialog::isActive() || InventoryWindow::isStorageActive();
 }
 
 void gameDestroyed()

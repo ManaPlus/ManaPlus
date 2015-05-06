@@ -48,7 +48,6 @@
 #include "gui/windows/chatwindow.h"
 #include "gui/windows/inventorywindow.h"
 #include "gui/windows/npcdialog.h"
-#include "gui/windows/npcpostdialog.h"
 #include "gui/windows/setupwindow.h"
 #include "gui/windows/textdialog.h"
 #include "gui/windows/tradewindow.h"
@@ -548,8 +547,7 @@ bool InputManager::handleEvent(const SDL_Event &event)
 
             keyboard.handleActicateKey(event);
             // send straight to gui for certain windows
-            if (quitDialog || TextDialog::isActive() ||
-                NpcPostDialog::isActive())
+            if (quitDialog || TextDialog::isActive())
             {
                 if (guiInput)
                     guiInput->pushInput(event);

@@ -390,8 +390,6 @@ SET(SRCS
     gui/windows/ministatuswindow.h
     gui/windows/npcdialog.cpp
     gui/windows/npcdialog.h
-    gui/windows/npcpostdialog.cpp
-    gui/windows/npcpostdialog.h
     gui/windows/npcselldialog.cpp
     gui/windows/npcselldialog.h
     gui/windows/okdialog.cpp
