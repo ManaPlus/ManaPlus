@@ -249,7 +249,7 @@ void ActorSprite::handleStatusEffect(const StatusEffect *const effect,
 }
 
 void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
-                                     const bool forceDisplay,
+                                     const ForceDisplay forceDisplay,
                                      const int imageType,
                                      const std::string &color)
 {
@@ -267,7 +267,7 @@ void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
     }
 
     // Ensure that something is shown, if desired
-    if (empty() && forceDisplay)
+    if (empty() && forceDisplay == ForceDisplay_true)
     {
         if (display.image.empty())
         {

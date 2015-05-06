@@ -63,5 +63,6 @@ defBoolEnum(AllPlayers);
 defBoolEnum(AllowSort);
 defBoolEnum(NpcNames);
 defBoolEnum(Enable);
+defBoolEnum(ForceDisplay);
 
 #endif  // ENUMS_SIMPLETYPES_H

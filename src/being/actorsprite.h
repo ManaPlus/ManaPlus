@@ -200,7 +200,8 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
                                         const int effectId);
 
         void setupSpriteDisplay(const SpriteDisplay &display,
-                                const bool forceDisplay = true,
+                                const ForceDisplay forceDisplay
+                                = ForceDisplay_true,
                                 const int imageType = 0,
                                 const std::string &color = "");
 

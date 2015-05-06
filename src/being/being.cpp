@@ -336,7 +336,9 @@ void Being::setSubtype(const uint16_t subtype, const uint16_t look)
         if (mInfo)
         {
             setName(mInfo->getName());
-            setupSpriteDisplay(mInfo->getDisplay(), true, 0,
+            setupSpriteDisplay(mInfo->getDisplay(),
+                ForceDisplay_true,
+                0,
                 mInfo->getColor(mLook));
             mYDiff = mInfo->getSortOffsetY();
         }
@@ -348,7 +350,9 @@ void Being::setSubtype(const uint16_t subtype, const uint16_t look)
         if (mInfo)
         {
             setName(mInfo->getName());
-            setupSpriteDisplay(mInfo->getDisplay(), true, 0,
+            setupSpriteDisplay(mInfo->getDisplay(),
+                ForceDisplay_true,
+                0,
                 mInfo->getColor(mLook));
             mYDiff = mInfo->getSortOffsetY();
         }
@@ -359,7 +363,9 @@ void Being::setSubtype(const uint16_t subtype, const uint16_t look)
         if (mInfo)
         {
             setName(mInfo->getName());
-            setupSpriteDisplay(mInfo->getDisplay(), true, 0,
+            setupSpriteDisplay(mInfo->getDisplay(),
+                ForceDisplay_true,
+                0,
                 mInfo->getColor(mLook));
             mYDiff = mInfo->getSortOffsetY();
         }
@@ -370,7 +376,9 @@ void Being::setSubtype(const uint16_t subtype, const uint16_t look)
         if (mInfo)
         {
             setName(mInfo->getName());
-            setupSpriteDisplay(mInfo->getDisplay(), true, 0,
+            setupSpriteDisplay(mInfo->getDisplay(),
+                ForceDisplay_true,
+                0,
                 mInfo->getColor(mLook));
             mYDiff = mInfo->getSortOffsetY();
         }
@@ -381,7 +389,7 @@ void Being::setSubtype(const uint16_t subtype, const uint16_t look)
         mInfo = NPCDB::get(mSubType);
         if (mInfo)
         {
-            setupSpriteDisplay(mInfo->getDisplay(), false);
+            setupSpriteDisplay(mInfo->getDisplay(), ForceDisplay_false);
             mYDiff = mInfo->getSortOffsetY();
         }
     }
@@ -389,7 +397,7 @@ void Being::setSubtype(const uint16_t subtype, const uint16_t look)
     {
         mInfo = AvatarDB::get(mSubType);
         if (mInfo)
-            setupSpriteDisplay(mInfo->getDisplay(), false);
+            setupSpriteDisplay(mInfo->getDisplay(), ForceDisplay_false);
     }
     else if (mType == ActorType::LocalPet)
     {
@@ -397,7 +405,7 @@ void Being::setSubtype(const uint16_t subtype, const uint16_t look)
         if (mInfo)
         {
             setName(mInfo->getName());
-            setupSpriteDisplay(mInfo->getDisplay(), false);
+            setupSpriteDisplay(mInfo->getDisplay(), ForceDisplay_false);
             mYDiff = mInfo->getSortOffsetY();
             const int speed = mInfo->getWalkSpeed();
             if (!speed)
