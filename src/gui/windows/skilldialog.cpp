@@ -261,7 +261,7 @@ void SkillDialog::loadSkills()
 
 void SkillDialog::loadXmlFile(const std::string &fileName)
 {
-    XML::Document doc(fileName, UseResman_true, false);
+    XML::Document doc(fileName, UseResman_true, SkipError_false);
     XmlNodePtrConst root = doc.rootNode();
 
     int setCount = 0;

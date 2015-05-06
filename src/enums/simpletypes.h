@@ -66,5 +66,6 @@ defBoolEnum(NpcNames);
 defBoolEnum(Enable);
 defBoolEnum(ForceDisplay);
 defBoolEnum(UseResman);
+defBoolEnum(SkipError);
 
 #endif  // ENUMS_SIMPLETYPES_H

@@ -61,7 +61,7 @@ void MapDB::loadRemapXmlFile(const std::string &fileName)
 {
     XML::Document *const doc = new XML::Document(fileName,
         UseResman_true,
-        false);
+        SkipError_false);
 
     const XmlNodePtrConst root = doc->rootNode();
     if (!root)
@@ -144,7 +144,7 @@ void MapDB::loadInfo(const std::string &fileName)
 {
     XML::Document *doc = new XML::Document(fileName,
         UseResman_true,
-        false);
+        SkipError_false);
     const XmlNodePtrConst root = doc->rootNode();
     if (!root)
     {

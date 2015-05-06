@@ -77,7 +77,7 @@ namespace XML
 {
     Document::Document(const std::string &filename,
                        const UseResman useResman,
-                       const bool skipError) :
+                       const SkipError skipError) :
         mDoc(nullptr),
         mIsValid(false)
     {
@@ -125,7 +125,7 @@ namespace XML
             if (!mDoc)
                 logger->log("Error parsing XML file %s", filename.c_str());
         }
-        else if (!skipError)
+        else if (skipError == SkipError_false)
         {
             logger->log("Error loading %s", filename.c_str());
         }

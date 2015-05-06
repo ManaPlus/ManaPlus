@@ -373,7 +373,9 @@ Skin *Theme::readSkin(const std::string &filename, const bool full)
 
 //    logger->log("Loading skin '%s'.", filename.c_str());
 
-    XML::Document doc(resolveThemePath(filename), UseResman_true, true);
+    XML::Document doc(resolveThemePath(filename),
+        UseResman_true,
+        SkipError_true);
     const XmlNodePtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "skinset"))
@@ -967,7 +969,7 @@ void Theme::loadColors(std::string file)
     else
         file.append("/colors.xml");
 
-    XML::Document doc(resolveThemePath(file), UseResman_true, false);
+    XML::Document doc(resolveThemePath(file), UseResman_true, SkipError_false);
     const XmlNodePtrConst root = doc.rootNode();
 
     if (!root || !xmlNameEqual(root, "colors"))
@@ -1156,7 +1158,7 @@ ThemeInfo *Theme::loadInfo(const std::string &themeName)
             themeName).append("/info.xml");
     }
     logger->log("loading: " + path);
-    XML::Document doc(path, UseResman_true, false);
+    XML::Document doc(path, UseResman_true, SkipError_false);
     const XmlNodePtrConst rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "info"))

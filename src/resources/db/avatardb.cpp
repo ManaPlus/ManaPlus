@@ -52,7 +52,7 @@ void AvatarDB::load()
 
 void AvatarDB::loadXmlFile(const std::string &fileName)
 {
-    XML::Document doc(fileName, UseResman_true, false);
+    XML::Document doc(fileName, UseResman_true, SkipError_false);
     const XmlNodePtrConst rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "avatars"))

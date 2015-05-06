@@ -714,7 +714,7 @@ void Configuration::init(const std::string &filename,
                          const UseResman useResManager)
 {
     cleanDefaults();
-    XML::Document doc(filename, useResManager, false);
+    XML::Document doc(filename, useResManager, SkipError_false);
     mFilename = filename;
     mUseResManager = useResManager;
 
@@ -750,7 +750,7 @@ void Configuration::init(const std::string &filename,
 
 void Configuration::reInit()
 {
-    XML::Document doc(mFilename, mUseResManager, false);
+    XML::Document doc(mFilename, mUseResManager, SkipError_false);
     if (!doc.rootNode())
     {
         logger->log("Couldn't open configuration file: %s", mFilename.c_str());

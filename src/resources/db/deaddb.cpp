@@ -48,7 +48,9 @@ void DeadDB::load()
 
 void DeadDB::loadXmlFile(const std::string &fileName)
 {
-    XML::Document *doc = new XML::Document(fileName, UseResman_true, false);
+    XML::Document *doc = new XML::Document(fileName,
+        UseResman_true,
+        SkipError_false);
     const XmlNodePtrConst root = doc->rootNode();
 
     if (!root || !xmlNameEqual(root, "messages"))

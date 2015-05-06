@@ -69,7 +69,7 @@ namespace XML
              */
             Document(const std::string &filename,
                      const UseResman useResman,
-                     const bool skipError);
+                     const SkipError skipError);
 
             /**
              * Constructor that attempts to load an XML document from memory.
