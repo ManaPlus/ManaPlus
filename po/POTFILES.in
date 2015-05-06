@@ -103,7 +103,6 @@ src/gui/windows/mailwindow.cpp
 src/gui/windows/minimap.cpp
 src/gui/windows/ministatuswindow.cpp
 src/gui/windows/npcdialog.cpp
-src/gui/windows/npcpostdialog.cpp
 src/gui/windows/npcselldialog.cpp
 src/gui/windows/outfitwindow.cpp
 src/gui/windows/questswindow.cpp
