@@ -1385,7 +1385,7 @@ void ChatWindow::autoComplete()
 
     if (newName.empty() && actorManager)
     {
-        actorManager->getPlayerNames(nameList, true);
+        actorManager->getPlayerNames(nameList, NpcNames_true);
         newName = autoComplete(nameList, name);
         if (!newName.empty() && !startName)
             secureChatCommand(newName);

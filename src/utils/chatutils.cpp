@@ -139,7 +139,7 @@ void replaceVars(std::string &str)
     {
         StringVect names;
         std::string newStr;
-        actorManager->getPlayerNames(names, false);
+        actorManager->getPlayerNames(names, NpcNames_false);
         FOR_EACH (StringVectCIter, it, names)
         {
             if (*it != localPlayer->getName())

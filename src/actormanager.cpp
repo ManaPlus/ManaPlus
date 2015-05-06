@@ -1410,7 +1410,7 @@ void ActorManager::printBeingsToChat(const std::vector<Being*> &beings,
 }
 
 void ActorManager::getPlayerNames(StringVect &names,
-                                  const bool npcNames) const
+                                  const NpcNames npcNames) const
 {
     names.clear();
 
@@ -1426,9 +1426,10 @@ void ActorManager::getPlayerNames(StringVect &names,
         }
 
         const Being *const being = static_cast<const Being*>(*it);
-        if ((being->getType() == ActorType::Player
-            || (being->getType() == ActorType::Npc && npcNames))
-            && being->getName() != "")
+        if ((being->getType() == ActorType::Player ||
+            (being->getType() == ActorType::Npc &&
+            npcNames == NpcNames_true)) &&
+            being->getName() != "")
         {
             names.push_back(being->getName());
         }

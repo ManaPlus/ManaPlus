@@ -28,6 +28,8 @@
 
 #include "being/being.h"
 
+#include "enums/simpletypes.h"
+
 #include "gui/models/beingslistmodel.h"
 
 #include "utils/gettext.h"
@@ -147,7 +149,7 @@ class SocialPlayersTab final : public SocialTab
             if (actorManager)
             {
                 StringVect names;
-                actorManager->getPlayerNames(names, false);
+                actorManager->getPlayerNames(names, NpcNames_false);
 
                 std::vector<Avatar*>::iterator ai = avatars->begin();
                 while (ai != avatars->end())

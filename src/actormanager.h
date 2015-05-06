@@ -236,7 +236,7 @@ class ActorManager final: public ConfigListener
                                       const std::string &header);
 
         void getPlayerNames(StringVect &names,
-                            const bool npcNames) const;
+                            const NpcNames npcNames) const;
 
         void getMobNames(StringVect &names) const;
 
