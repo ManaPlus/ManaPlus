@@ -60,5 +60,6 @@ defBoolEnum(Sfx);
 defBoolEnum(Keep);
 defBoolEnum(Modifiable);
 defBoolEnum(AllPlayers);
+defBoolEnum(AllowSort);
 
 #endif  // ENUMS_SIMPLETYPES_H

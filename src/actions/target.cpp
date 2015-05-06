@@ -33,7 +33,7 @@
 namespace Actions
 {
 
-static bool setTarget(const ActorType::Type type, const bool allowSort)
+static bool setTarget(const ActorType::Type type, const AllowSort allowSort)
 {
     if (actorManager && localPlayer)
     {
@@ -50,28 +50,28 @@ static bool setTarget(const ActorType::Type type, const bool allowSort)
 
 impHandler0(targetPlayer)
 {
-    return setTarget(ActorType::Player, true);
+    return setTarget(ActorType::Player, AllowSort_true);
 }
 
 impHandler0(targetMonster)
 {
-    return setTarget(ActorType::Monster, true);
+    return setTarget(ActorType::Monster, AllowSort_true);
 }
 
 impHandler0(targetClosestMonster)
 {
-    return setTarget(ActorType::Monster, false);
+    return setTarget(ActorType::Monster, AllowSort_false);
 }
 
 impHandler0(targetNPC)
 {
-    return setTarget(ActorType::Npc, true);
+    return setTarget(ActorType::Npc, AllowSort_true);
 }
 
 impHandler0(targetMercenary)
 {
 #ifdef EATHENA_SUPPORT
-    return setTarget(ActorType::Mercenary, true);
+    return setTarget(ActorType::Mercenary, AllowSort_true);
 #else
     return false;
 #endif
@@ -80,7 +80,7 @@ impHandler0(targetMercenary)
 impHandler0(targetPet)
 {
 #ifdef EATHENA_SUPPORT
-    return setTarget(ActorType::Pet, true);
+    return setTarget(ActorType::Pet, AllowSort_true);
 #else
     return false;
 #endif

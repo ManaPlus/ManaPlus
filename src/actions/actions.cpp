@@ -196,7 +196,7 @@ static Being *findBeing(const std::string &name)
     if (!being)
     {
         being = actorManager->findNearestLivingBeing(
-            localPlayer, 1, ActorType::Npc, true);
+            localPlayer, 1, ActorType::Npc, AllowSort_true);
         if (being)
         {
             if (abs(being->getTileX() - localPlayer->getTileX()) > 1
@@ -209,7 +209,7 @@ static Being *findBeing(const std::string &name)
     if (!being)
     {
         being = actorManager->findNearestLivingBeing(
-            localPlayer, 1, ActorType::Player, true);
+            localPlayer, 1, ActorType::Player, AllowSort_true);
         if (being)
         {
             if (abs(being->getTileX() - localPlayer->getTileX()) > 1
@@ -499,7 +499,7 @@ impHandler(heal)
                 if (!target || target->getType() != ActorType::Player)
                 {
                     target = actorManager->findNearestLivingBeing(
-                        localPlayer, 10, ActorType::Player, true);
+                        localPlayer, 10, ActorType::Player, AllowSort_true);
                 }
             }
             else
@@ -788,7 +788,7 @@ impHandler(targetAttack)
         {
             // Only auto target Monsters
             target = actorManager->findNearestLivingBeing(
-                localPlayer, 90, ActorType::Monster, true);
+                localPlayer, 90, ActorType::Monster, AllowSort_true);
         }
 
         localPlayer->attack2(target, newTarget);
@@ -803,7 +803,7 @@ impHandler0(attackHuman)
         return false;
 
     Being *const target = actorManager->findNearestLivingBeing(
-        localPlayer, 10, ActorType::Player, true);
+        localPlayer, 10, ActorType::Player, AllowSort_true);
     if (target)
     {
         if (localPlayer->checAttackPermissions(target))

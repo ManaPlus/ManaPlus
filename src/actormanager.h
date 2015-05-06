@@ -158,7 +158,7 @@ class ActorManager final: public ConfigListener
         Being *findNearestLivingBeing(const Being *const aroundBeing,
                                       const int maxTileDist,
                                       const ActorType::Type type,
-                                      const bool allowSort)
+                                      const AllowSort allowSort)
                                       const A_WARN_UNUSED;
 
         /**
@@ -341,7 +341,7 @@ class ActorManager final: public ConfigListener
                                       const ActorType::Type &type,
                                       const int x, const int y,
                                       const Being *const excluded,
-                                      const bool allowSort)
+                                      const AllowSort allowSort)
                                       const A_WARN_UNUSED;
 
         void loadAttackList();

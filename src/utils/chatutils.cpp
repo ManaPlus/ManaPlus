@@ -115,7 +115,7 @@ void replaceVars(std::string &str)
         if (!target || target->getType() != ActorType::Player)
         {
             target = actorManager->findNearestLivingBeing(
-                localPlayer, 20, ActorType::Player, true);
+                localPlayer, 20, ActorType::Player, AllowSort_true);
         }
         if (target)
             replaceAll(str, "<PLAYER>", target->getName());
@@ -128,7 +128,7 @@ void replaceVars(std::string &str)
         if (!target || target->getType() != ActorType::Monster)
         {
             target = actorManager->findNearestLivingBeing(
-                localPlayer, 20, ActorType::Monster, true);
+                localPlayer, 20, ActorType::Monster, AllowSort_true);
         }
         if (target)
             replaceAll(str, "<MONSTER>", target->getName());

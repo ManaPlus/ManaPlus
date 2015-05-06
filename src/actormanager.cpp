@@ -891,13 +891,13 @@ Being *ActorManager::findNearestLivingBeing(const int x, const int y,
         type,
         x, y,
         excluded,
-        true);
+        AllowSort_true);
 }
 
 Being *ActorManager::findNearestLivingBeing(const Being *const aroundBeing,
                                             const int maxDist,
                                             const ActorType::Type type,
-                                            const bool allowSort) const
+                                            const AllowSort allowSort) const
 {
     if (!aroundBeing)
         return nullptr;
@@ -916,7 +916,7 @@ Being *ActorManager::findNearestLivingBeing(const Being *const aroundBeing,
                                             const ActorType::Type &type,
                                             const int x, const int y,
                                             const Being *const excluded,
-                                            const bool allowSort) const
+                                            const AllowSort allowSort) const
 {
     if (!aroundBeing || !localPlayer)
         return nullptr;
@@ -939,12 +939,12 @@ Being *ActorManager::findNearestLivingBeing(const Being *const aroundBeing,
 
     maxDist = maxDist * maxDist;
 
-    const bool cycleSelect = allowSort
+    const bool cycleSelect = allowSort == AllowSort_true
         && ((mCyclePlayers && type == ActorType::Player)
         || (mCycleMonsters && type == ActorType::Monster)
         || (mCycleNPC && type == ActorType::Npc));
 
-    const bool filtered = allowSort
+    const bool filtered = allowSort == AllowSort_true
         && config.getBoolValue("enableAttackFilter")
         && type == ActorType::Monster;
     const bool modActive = inputManager.isActionActive(
