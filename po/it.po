@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2015-05-07 01:20+0300\n"
+"POT-Creation-Date: 2015-05-07 23:50+0300\n"
 "PO-Revision-Date: 2015-04-06 11:05+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/manaplus/"
@@ -317,12 +317,12 @@ msgid "Accepting incoming trade requests"
 msgstr "Le richieste di scambio in arrivo saranno accettate"
 
 #. TRANSLATORS: quick tab in settings
-#: src/actions/windows.cpp:329 src/gui/widgets/tabs/setup_quick.cpp:45
+#: src/actions/windows.cpp:322 src/gui/widgets/tabs/setup_quick.cpp:45
 msgid "Quick"
 msgstr ""
 
 #. TRANSLATORS: visible beings on map
-#: src/actormanager.cpp:1361
+#: src/actormanager.cpp:1358
 msgid "Visible on map"
 msgstr "Visibile nella mappa"
 
@@ -495,7 +495,7 @@ msgstr ""
 #. TRANSLATORS: setup tab quick button
 #. TRANSLATORS: full button name
 #. TRANSLATORS: setup window name
-#: src/client.cpp:913 src/gui/windowmenu.cpp:171
+#: src/client.cpp:913 src/gui/windowmenu.cpp:168
 #: src/gui/windows/setupwindow.cpp:62
 msgid "Setup"
 msgstr "Impostazioni"
@@ -683,36 +683,36 @@ msgid "dyecmd srcdyestring dstfile"
 msgstr ""
 
 #. TRANSLATORS: chat tab header
-#: src/game.cpp:255 src/gui/windows/chatwindow.cpp:2137
+#: src/game.cpp:253 src/gui/windows/chatwindow.cpp:2137
 msgid "General"
 msgstr "Generale"
 
 #. TRANSLATORS: chat tab header
 #. TRANSLATORS: full button name
 #. TRANSLATORS: debug window name
-#: src/game.cpp:273 src/gui/windowmenu.cpp:158
+#: src/game.cpp:271 src/gui/windowmenu.cpp:155
 #: src/gui/windows/debugwindow.cpp:42
 msgid "Debug"
 msgstr "Debug"
 
 #. TRANSLATORS: save file message
-#: src/game.cpp:570
+#: src/game.cpp:567
 #, c-format
 msgid "Screenshot saved as %s"
 msgstr ""
 
 #. TRANSLATORS: save file message
-#: src/game.cpp:580
+#: src/game.cpp:577
 msgid "Saving screenshot failed!"
 msgstr "Salvataggio immagine fallito!"
 
 #. TRANSLATORS: error message text
-#: src/game.cpp:667
+#: src/game.cpp:662
 msgid "The connection to the server was lost."
 msgstr "La connessione al server è caduta."
 
 #. TRANSLATORS: error message header
-#: src/game.cpp:670
+#: src/game.cpp:665
 msgid "Network Error"
 msgstr "Errore di rete"
 
@@ -1644,13 +1644,12 @@ msgstr "Commercia"
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: attack player
 #. TRANSLATORS: Skill type
-#. TRANSLATORS: bot checker window table header
 #. TRANSLATORS: input action name
 #. TRANSLATORS: player stat
 #: src/gui/popups/popupmenu.cpp:159 src/gui/popups/popupmenu.cpp:281
 #: src/gui/popups/popupmenu.cpp:808 src/gui/widgets/skillinfo.cpp:116
-#: src/gui/windows/botcheckerwindow.cpp:88 src/input/pages/basic.cpp:42
-#: src/net/eathena/generalhandler.cpp:406 src/net/tmwa/generalhandler.cpp:363
+#: src/input/pages/basic.cpp:42 src/net/eathena/generalhandler.cpp:406
+#: src/net/tmwa/generalhandler.cpp:363
 msgid "Attack"
 msgstr "Attacco"
 
@@ -1707,20 +1706,18 @@ msgstr "Nascondi"
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: move to player location
 #. TRANSLATORS: input tab sub tab name
-#. TRANSLATORS: bot checker window table header
 #: src/gui/popups/popupmenu.cpp:234 src/gui/popups/popupmenu.cpp:267
 #: src/gui/popups/popupmenu.cpp:497 src/gui/popups/popupmenu.cpp:653
 #: src/gui/popups/popupmenu.cpp:819 src/gui/popups/popupmenu.cpp:884
-#: src/gui/setupinputpages.cpp:45 src/gui/windows/botcheckerwindow.cpp:92
+#: src/gui/setupinputpages.cpp:45
 msgid "Move"
 msgstr "Movimento"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: talk with npc
-#. TRANSLATORS: bot checker window table header
 #. TRANSLATORS: input action name
-#: src/gui/popups/popupmenu.cpp:248 src/gui/windows/botcheckerwindow.cpp:90
-#: src/input/pages/basic.cpp:90 src/resources/db/npcdb.cpp:146
+#: src/gui/popups/popupmenu.cpp:248 src/input/pages/basic.cpp:90
+#: src/resources/db/npcdb.cpp:146
 msgid "Talk"
 msgstr "Parla"
 
@@ -1922,7 +1919,7 @@ msgstr "Muovi telecamera"
 #. TRANSLATORS: outfits button tooltip
 #. TRANSLATORS: outfits window name
 #: src/gui/popups/popupmenu.cpp:674 src/gui/setupinputpages.cpp:53
-#: src/gui/windowmenu.cpp:142 src/gui/windows/inventorywindow.cpp:223
+#: src/gui/windowmenu.cpp:139 src/gui/windows/inventorywindow.cpp:223
 #: src/gui/windows/outfitwindow.cpp:55
 msgid "Outfits"
 msgstr "Attrezzatura"
@@ -1935,7 +1932,7 @@ msgstr ""
 
 #. TRANSLATORS: popup menu header
 #. TRANSLATORS: full button name
-#: src/gui/popups/popupmenu.cpp:703 src/gui/windowmenu.cpp:126
+#: src/gui/popups/popupmenu.cpp:703 src/gui/windowmenu.cpp:123
 msgid "Spells"
 msgstr "Spells"
 
@@ -2341,7 +2338,7 @@ msgstr "Lascia tutto"
 #. TRANSLATORS: drop item
 #. TRANSLATORS: full button name
 #. TRANSLATORS: inventory button
-#: src/gui/popups/popupmenu.cpp:2592 src/gui/windowmenu.cpp:130
+#: src/gui/popups/popupmenu.cpp:2592 src/gui/windowmenu.cpp:127
 #: src/gui/windows/inventorywindow.cpp:904
 msgid "Drop"
 msgstr "Lascia"
@@ -2406,7 +2403,7 @@ msgstr "Base"
 
 #. TRANSLATORS: input tab sub tab name
 #. TRANSLATORS: full button name
-#: src/gui/setupinputpages.cpp:47 src/gui/windowmenu.cpp:122
+#: src/gui/setupinputpages.cpp:47 src/gui/windowmenu.cpp:119
 msgid "Shortcuts"
 msgstr "Shortcuts"
 
@@ -2415,7 +2412,7 @@ msgstr "Shortcuts"
 #. TRANSLATORS: full button name
 #. TRANSLATORS: input action label
 #: src/gui/setupinputpages.cpp:49 src/gui/widgets/tabs/setup_other.cpp:315
-#: src/gui/windowmenu.cpp:167 src/input/pages/windows.cpp:36
+#: src/gui/windowmenu.cpp:164 src/input/pages/windows.cpp:36
 msgid "Windows"
 msgstr "Finestre"
 
@@ -2431,7 +2428,7 @@ msgstr "Faccine"
 #. TRANSLATORS: settings tab name
 #. TRANSLATORS: chat window name
 #: src/gui/setupinputpages.cpp:55 src/gui/widgets/tabs/setup_chat.cpp:40
-#: src/gui/windowmenu.cpp:86 src/gui/windows/chatwindow.cpp:86
+#: src/gui/windowmenu.cpp:83 src/gui/windows/chatwindow.cpp:86
 msgid "Chat"
 msgstr "Chat"
 
@@ -3533,7 +3530,7 @@ msgstr ""
 #. TRANSLATORS: input action group
 #. TRANSLATORS: input action label
 #: src/gui/widgets/tabs/setup_chat.cpp:170 src/input/pages/chat.cpp:63
-#: src/input/pages/windows.cpp:210
+#: src/input/pages/windows.cpp:204
 msgid "Tabs"
 msgstr "Tabs"
 
@@ -4006,7 +4003,7 @@ msgstr "Ciclo di target sui nemici"
 #. TRANSLATORS: settings group
 #. TRANSLATORS: debug window tab
 #. TRANSLATORS: mini map window name
-#: src/gui/widgets/tabs/setup_other.cpp:133 src/gui/windowmenu.cpp:106
+#: src/gui/widgets/tabs/setup_other.cpp:133 src/gui/windowmenu.cpp:103
 #: src/gui/windows/debugwindow.cpp:61 src/gui/windows/minimap.cpp:58
 #: src/gui/windows/minimap.cpp:121
 msgid "Map"
@@ -4179,7 +4176,7 @@ msgstr ""
 #. TRANSLATORS: full button name
 #. TRANSLATORS: shop window name
 #. TRANSLATORS: shop button tooltip
-#: src/gui/widgets/tabs/setup_other.cpp:267 src/gui/windowmenu.cpp:138
+#: src/gui/widgets/tabs/setup_other.cpp:267 src/gui/windowmenu.cpp:135
 #: src/gui/windows/buyselldialog.cpp:40 src/gui/windows/buyselldialog.cpp:51
 #: src/gui/windows/inventorywindow.cpp:227
 msgid "Shop"
@@ -4556,9 +4553,7 @@ msgid ""
 msgstr ""
 
 #. TRANSLATORS: relations table header
-#. TRANSLATORS: bot checker window table header
 #: src/gui/widgets/tabs/setup_relations.cpp:58
-#: src/gui/windows/botcheckerwindow.cpp:86
 msgid "Name"
 msgstr "Nome"
 
@@ -5196,163 +5191,154 @@ msgstr ""
 msgid "Quests"
 msgstr "Missioni"
 
-#. TRANSLATORS: short button name for bot checker window.
-#: src/gui/windowmenu.cpp:77
-msgid "BC"
-msgstr "BC"
-
-#: src/gui/windowmenu.cpp:78
-msgid "Bot checker"
-msgstr "Bot checker"
-
 #. TRANSLATORS: short button name for kill stats window.
-#: src/gui/windowmenu.cpp:80
+#: src/gui/windowmenu.cpp:77
 msgid "KS"
 msgstr "KS"
 
 #. TRANSLATORS: kill stats window name
-#: src/gui/windowmenu.cpp:81 src/gui/windows/killstats.cpp:51
+#: src/gui/windowmenu.cpp:78 src/gui/windows/killstats.cpp:51
 msgid "Kill stats"
 msgstr "Statistiche uccisioni"
 
-#: src/gui/windowmenu.cpp:83
+#: src/gui/windowmenu.cpp:80
 msgid "Smilies"
 msgstr "Faccine"
 
 #. TRANSLATORS: short button name for chat window.
-#: src/gui/windowmenu.cpp:85
+#: src/gui/windowmenu.cpp:82
 msgid "CH"
 msgstr ""
 
 #. TRANSLATORS: short button name for status window.
-#: src/gui/windowmenu.cpp:93
+#: src/gui/windowmenu.cpp:90
 msgid "STA"
 msgstr "STA"
 
-#: src/gui/windowmenu.cpp:94
+#: src/gui/windowmenu.cpp:91
 msgid "Status"
 msgstr "Stato"
 
 #. TRANSLATORS: short button name for equipment window.
-#: src/gui/windowmenu.cpp:96
+#: src/gui/windowmenu.cpp:93
 msgid "EQU"
 msgstr "EQU"
 
 #. TRANSLATORS: equipment window name
 #. TRANSLATORS: equipment button tooltip
-#: src/gui/windowmenu.cpp:97 src/gui/windows/equipmentwindow.cpp:67
+#: src/gui/windowmenu.cpp:94 src/gui/windows/equipmentwindow.cpp:67
 #: src/gui/windows/inventorywindow.cpp:229
 msgid "Equipment"
 msgstr "Equipaggiamento"
 
 #. TRANSLATORS: short button name for inventory window.
-#: src/gui/windowmenu.cpp:99
+#: src/gui/windowmenu.cpp:96
 msgid "INV"
 msgstr "INV"
 
 #. TRANSLATORS: inventory window name
 #. TRANSLATORS: inventory type name
-#: src/gui/windowmenu.cpp:100 src/gui/windows/inventorywindow.cpp:146
+#: src/gui/windowmenu.cpp:97 src/gui/windows/inventorywindow.cpp:146
 #: src/inventory.cpp:301
 msgid "Inventory"
 msgstr "Inventario"
 
 #. TRANSLATORS: short button name for cart window.
-#: src/gui/windowmenu.cpp:102
+#: src/gui/windowmenu.cpp:99
 msgid "CA"
 msgstr ""
 
 #. TRANSLATORS: cart button tooltip
 #. TRANSLATORS: inventory type name
-#: src/gui/windowmenu.cpp:103 src/gui/windows/inventorywindow.cpp:225
+#: src/gui/windowmenu.cpp:100 src/gui/windows/inventorywindow.cpp:225
 #: src/inventory.cpp:317
 msgid "Cart"
 msgstr "Carrello"
 
 #. TRANSLATORS: short button name for map window.
-#: src/gui/windowmenu.cpp:105
+#: src/gui/windowmenu.cpp:102
 msgid "MAP"
 msgstr ""
 
 #. TRANSLATORS: short button name for skills window.
-#: src/gui/windowmenu.cpp:111
+#: src/gui/windowmenu.cpp:108
 msgid "SKI"
 msgstr "SKI"
 
 #. TRANSLATORS: skills dialog name
-#: src/gui/windowmenu.cpp:112 src/gui/windows/skilldialog.cpp:71
+#: src/gui/windowmenu.cpp:109 src/gui/windows/skilldialog.cpp:71
 msgid "Skills"
 msgstr "Abilità"
 
 #. TRANSLATORS: short button name for social window.
-#: src/gui/windowmenu.cpp:116
+#: src/gui/windowmenu.cpp:113
 msgid "SOC"
 msgstr "SOC"
 
 #. TRANSLATORS: full button name
 #. TRANSLATORS: social window name
-#: src/gui/windowmenu.cpp:118 src/gui/windows/socialwindow.cpp:56
+#: src/gui/windowmenu.cpp:115 src/gui/windows/socialwindow.cpp:56
 msgid "Social"
 msgstr "Sociale"
 
 #. TRANSLATORS: short button name for shortcuts window.
-#: src/gui/windowmenu.cpp:120
+#: src/gui/windowmenu.cpp:117
 msgid "SH"
 msgstr "SH"
 
 #. TRANSLATORS: short button name for spells window.
-#: src/gui/windowmenu.cpp:124
+#: src/gui/windowmenu.cpp:121
 msgid "SP"
 msgstr "SP"
 
 #. TRANSLATORS: short button name for drops window.
-#: src/gui/windowmenu.cpp:128
+#: src/gui/windowmenu.cpp:125
 msgid "DR"
 msgstr "DR"
 
 #. TRANSLATORS: short button name for did you know window.
-#: src/gui/windowmenu.cpp:132
+#: src/gui/windowmenu.cpp:129
 msgid "YK"
 msgstr ""
 
 #. TRANSLATORS: full button name
-#: src/gui/windowmenu.cpp:134
+#: src/gui/windowmenu.cpp:131
 msgid "Did you know"
 msgstr "Suggerimenti"
 
 #. TRANSLATORS: short button name for shop window.
-#: src/gui/windowmenu.cpp:136
+#: src/gui/windowmenu.cpp:133
 msgid "SHP"
 msgstr ""
 
 #. TRANSLATORS: short button name for outfits window.
-#: src/gui/windowmenu.cpp:140
+#: src/gui/windowmenu.cpp:137
 msgid "OU"
 msgstr ""
 
 #. TRANSLATORS: short button name for updates window.
-#: src/gui/windowmenu.cpp:144
+#: src/gui/windowmenu.cpp:141
 msgid "UP"
 msgstr ""
 
 #. TRANSLATORS: full button name
-#: src/gui/windowmenu.cpp:146
+#: src/gui/windowmenu.cpp:143
 msgid "Updates"
 msgstr ""
 
 #. TRANSLATORS: short button name for bank window.
-#: src/gui/windowmenu.cpp:148
+#: src/gui/windowmenu.cpp:145
 msgid "BA"
 msgstr ""
 
 #. TRANSLATORS: full button name
 #. TRANSLATORS: bank window name
-#: src/gui/windowmenu.cpp:150 src/gui/windows/bankwindow.cpp:43
+#: src/gui/windowmenu.cpp:147 src/gui/windows/bankwindow.cpp:43
 msgid "Bank"
 msgstr ""
 
 #. TRANSLATORS: short button name for mail window.
-#: src/gui/windowmenu.cpp:152
+#: src/gui/windowmenu.cpp:149
 #, fuzzy
 msgid "MA"
 msgstr "A"
@@ -5360,29 +5346,29 @@ msgstr "A"
 #. TRANSLATORS: full button name
 #. TRANSLATORS: mail window name
 #. TRANSLATORS: inventory type name
-#: src/gui/windowmenu.cpp:154 src/gui/windows/mailwindow.cpp:51
+#: src/gui/windowmenu.cpp:151 src/gui/windows/mailwindow.cpp:51
 #: src/inventory.cpp:322
 msgid "Mail"
 msgstr ""
 
 #. TRANSLATORS: short button name for debug window.
-#: src/gui/windowmenu.cpp:156
+#: src/gui/windowmenu.cpp:153
 msgid "DBG"
 msgstr ""
 
 #. TRANSLATORS: short button name for windows list menu.
-#: src/gui/windowmenu.cpp:165
+#: src/gui/windowmenu.cpp:162
 msgid "WIN"
 msgstr ""
 
 #. TRANSLATORS: short button name for setup window.
-#: src/gui/windowmenu.cpp:169
+#: src/gui/windowmenu.cpp:166
 msgid "SET"
 msgstr "SET"
 
 #. TRANSLATORS: short key name
 #. TRANSLATORS: outfits window label
-#: src/gui/windowmenu.cpp:304 src/gui/windows/outfitwindow.cpp:72
+#: src/gui/windowmenu.cpp:301 src/gui/windows/outfitwindow.cpp:72
 #: src/gui/windows/outfitwindow.cpp:568
 #, c-format
 msgid "Key: %s"
@@ -5402,22 +5388,6 @@ msgstr ""
 #: src/gui/windows/bankwindow.cpp:53
 msgid "Deposit"
 msgstr ""
-
-#. TRANSLATORS: bot checker window header
-#: src/gui/windows/botcheckerwindow.cpp:44
-msgid "Bot Checker"
-msgstr "Bot Checker"
-
-#. TRANSLATORS: bot checker window button
-#. TRANSLATORS: npc dialog button
-#: src/gui/windows/botcheckerwindow.cpp:53 src/gui/windows/npcdialog.cpp:117
-msgid "Reset"
-msgstr "Reimposta"
-
-#. TRANSLATORS: bot checker window table header
-#: src/gui/windows/botcheckerwindow.cpp:94
-msgid "Result"
-msgstr "Risultato"
 
 #. TRANSLATORS: buy dialog name
 #: src/gui/windows/buydialog.cpp:175
@@ -6289,6 +6259,11 @@ msgstr "Prossimo"
 #: src/gui/windows/npcdialog.cpp:77
 msgid "Submit"
 msgstr "Invia"
+
+#. TRANSLATORS: npc dialog button
+#: src/gui/windows/npcdialog.cpp:117
+msgid "Reset"
+msgstr "Reimposta"
 
 #. TRANSLATORS: sell confirmation header
 #: src/gui/windows/npcselldialog.cpp:67
@@ -7952,82 +7927,77 @@ msgstr "Finestra Comandi"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/windows.cpp:168
-msgid "Bot Checker Window"
-msgstr "Finestra Bot Checker"
-
-#. TRANSLATORS: input action name
-#: src/input/pages/windows.cpp:174
 msgid "Who Is Online Window"
 msgstr "Finestra Giocatori Online"
 
 #. TRANSLATORS: input action name
-#: src/input/pages/windows.cpp:180
+#: src/input/pages/windows.cpp:174
 msgid "Did you know Window"
 msgstr "Finestra Suggerimenti"
 
 #. TRANSLATORS: input action name
-#: src/input/pages/windows.cpp:186
+#: src/input/pages/windows.cpp:180
 msgid "Quests Window"
 msgstr "Finestra delle missioni"
 
 #. TRANSLATORS: input action name
-#: src/input/pages/windows.cpp:192
+#: src/input/pages/windows.cpp:186
 msgid "Updates Window"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/input/pages/windows.cpp:198
+#: src/input/pages/windows.cpp:192
 msgid "Cart window"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/input/pages/windows.cpp:204
+#: src/input/pages/windows.cpp:198
 #, fuzzy
 msgid "Quick settings window"
 msgstr "Finestra delle missioni"
 
 #. TRANSLATORS: input action name
-#: src/input/pages/windows.cpp:216
+#: src/input/pages/windows.cpp:210
 msgid "Previous Social Tab"
 msgstr "Social Tab precedente"
 
 #. TRANSLATORS: input action name
-#: src/input/pages/windows.cpp:222
+#: src/input/pages/windows.cpp:216
 msgid "Next Social Tab"
 msgstr "Social Tab successivo"
 
 #. TRANSLATORS: input action name
-#: src/input/pages/windows.cpp:228
+#: src/input/pages/windows.cpp:222
 msgid "Previous Shortcuts tab"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/input/pages/windows.cpp:234
+#: src/input/pages/windows.cpp:228
 msgid "Next Shortcuts tab"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/input/pages/windows.cpp:240
+#: src/input/pages/windows.cpp:234
 msgid "Previous Commands tab"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/input/pages/windows.cpp:246
+#: src/input/pages/windows.cpp:240
 msgid "Next Commands tab"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/input/pages/windows.cpp:252
+#: src/input/pages/windows.cpp:246
 msgid "Previous inventory tab"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/input/pages/windows.cpp:258
+#: src/input/pages/windows.cpp:252
 msgid "Next inventory tab"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/input/pages/windows.cpp:264
+#: src/input/pages/windows.cpp:258
 msgid "Clear drops window"
 msgstr ""
 
@@ -9735,6 +9705,18 @@ msgstr ""
 #~ msgid "Hide shield sprite"
 #~ msgstr "Nascondi lo scudo"
 
+#~ msgid "BC"
+#~ msgstr "BC"
+
+#~ msgid "Bot checker"
+#~ msgstr "Bot checker"
+
+#~ msgid "Bot Checker"
+#~ msgstr "Bot Checker"
+
+#~ msgid "Result"
+#~ msgstr "Risultato"
+
 #~ msgid "Time before jacko spawn:"
 #~ msgstr "Tempo rimanente prima della comparsa del jacko:"
 
@@ -9746,3 +9728,6 @@ msgstr ""
 
 #~ msgid "Failed to send as sender or letter invalid."
 #~ msgstr "La lettera non è valida oppure non è stato possibile inviarla."
+
+#~ msgid "Bot Checker Window"
+#~ msgstr "Finestra Bot Checker"

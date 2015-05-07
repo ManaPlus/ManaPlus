@@ -74,7 +74,6 @@ src/gui/widgets/tabs/socialplayerstab.h
 src/gui/widgets/tabs/socialtabbase.h
 src/gui/windowmenu.cpp
 src/gui/windows/bankwindow.cpp
-src/gui/windows/botcheckerwindow.cpp
 src/gui/windows/buydialog.cpp
 src/gui/windows/buyselldialog.cpp
 src/gui/windows/changeemaildialog.cpp
