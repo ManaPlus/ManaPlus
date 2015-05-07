@@ -353,7 +353,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("uselonglivesprites", false);
     AddDEF("uselonglivesounds", true);
     AddDEF("screenDensity", 0);
-    AddDEF("cfgver", 12);
+    AddDEF("cfgver", 13);
     AddDEF("enableDebugLog", false);
     AddDEF("doubleClick", true);
     AddDEF("useDiagonalSpeed", true);

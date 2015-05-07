@@ -73,9 +73,6 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
     // TRANSLATORS: short button name for quests window.
     addButton(N_("QE"),
         _("Quests"), x, h, InputAction::WINDOW_QUESTS);
-    // TRANSLATORS: short button name for bot checker window.
-    addButton(N_("BC"),
-        _("Bot checker"), x, h, InputAction::WINDOW_BOT_CHECKER, false);
     // TRANSLATORS: short button name for kill stats window.
     addButton(N_("KS"),
         _("Kill stats"), x, h, InputAction::WINDOW_KILLS);

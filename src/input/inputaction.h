@@ -103,7 +103,7 @@ namespace InputAction
         WINDOW_DROP,
         WINDOW_KILLS,
         WINDOW_SPELLS,
-        WINDOW_BOT_CHECKER,
+        UNUSED1,
         WINDOW_ONLINE,
         WINDOW_DIDYOUKNOW,
         WINDOW_QUESTS,

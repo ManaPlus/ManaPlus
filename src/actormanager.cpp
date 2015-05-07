@@ -36,7 +36,6 @@
 
 #include "gui/widgets/tabs/chat/chattab.h"
 
-#include "gui/windows/botcheckerwindow.h"
 #include "gui/windows/chatwindow.h"
 #include "gui/windows/equipmentwindow.h"
 #include "gui/windows/socialwindow.h"
@@ -270,8 +269,6 @@ Being *ActorManager::createBeing(const int id,
     }
     if (type == ActorType::Player)
     {
-        if (botCheckerWindow)
-            botCheckerWindow->updateList();
         if (socialWindow)
             socialWindow->updateActiveList();
     }

@@ -302,7 +302,6 @@ SET(SRCS
     gui/models/touchactionmodel.h
     gui/models/typelistmodel.h
     gui/models/updatetypemodel.h
-    gui/models/userstablemodel.h
     gui/models/updatelistmodel.h
     gui/models/worldlistmodel.h
     gui/models/themesmodel.h
@@ -396,8 +395,6 @@ SET(SRCS
     gui/windows/okdialog.h
     gui/windows/outfitwindow.cpp
     gui/windows/outfitwindow.h
-    gui/windows/botcheckerwindow.cpp
-    gui/windows/botcheckerwindow.h
     gui/windows/textcommandeditor.cpp
     gui/windows/textcommandeditor.h
     gui/onlineplayer.h

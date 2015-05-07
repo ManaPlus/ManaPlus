@@ -46,7 +46,6 @@ namespace Actions
     decHandler(dropShortcutWindowShow);
     decHandler(killStatsWindowShow);
     decHandler(spellShortcutWindowShow);
-    decHandler(botcheckerWindowShow);
     decHandler(whoIsOnlineWindowShow);
     decHandler(didYouKnowWindowShow);
     decHandler(questsWindowShow);

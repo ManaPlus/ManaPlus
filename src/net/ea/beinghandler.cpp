@@ -31,7 +31,6 @@
 
 #include "gui/viewport.h"
 
-#include "gui/windows/botcheckerwindow.h"
 #include "gui/windows/socialwindow.h"
 
 #include "resources/mapitemtype.h"
@@ -122,8 +121,6 @@ void BeingHandler::processBeingRemove(Net::MessageIn &msg)
     {
         if (dstBeing->getType() == ActorType::Player)
         {
-            if (botCheckerWindow)
-                botCheckerWindow->updateList();
             if (socialWindow)
                 socialWindow->updateActiveList();
         }

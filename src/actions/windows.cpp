@@ -36,7 +36,6 @@
 #include "gui/windows/statuswindow.h"
 #include "gui/windows/questswindow.h"
 #include "gui/windows/whoisonline.h"
-#include "gui/windows/botcheckerwindow.h"
 #include "gui/windows/chatwindow.h"
 #include "gui/windows/debugwindow.h"
 #include "gui/windows/didyouknowwindow.h"
@@ -249,12 +248,6 @@ impHandler0(killStatsWindowShow)
 impHandler0(spellShortcutWindowShow)
 {
     showHideWindow(spellShortcutWindow);
-    return true;
-}
-
-impHandler0(botcheckerWindowShow)
-{
-    showHideWindow(botCheckerWindow);
     return true;
 }
 

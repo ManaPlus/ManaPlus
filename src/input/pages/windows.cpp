@@ -165,12 +165,6 @@ SetupActionData setupActionDataWindows[] =
     },
     {
         // TRANSLATORS: input action name
-        N_("Bot Checker Window"),
-        InputAction::WINDOW_BOT_CHECKER,
-        "",
-    },
-    {
-        // TRANSLATORS: input action name
         N_("Who Is Online Window"),
         InputAction::WINDOW_ONLINE,
         "",

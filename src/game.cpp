@@ -66,7 +66,6 @@
 #include "gui/windows/bankwindow.h"
 #include "gui/windows/mailwindow.h"
 #endif
-#include "gui/windows/botcheckerwindow.h"
 #include "gui/windows/chatwindow.h"
 #include "gui/windows/debugwindow.h"
 #include "gui/windows/didyouknowwindow.h"
@@ -243,7 +242,6 @@ static void createGuiWindows()
     bankWindow = new BankWindow;
     mailWindow = new MailWindow;
 #endif
-    botCheckerWindow = new BotCheckerWindow;
     whoIsOnline = new WhoIsOnline;
     whoIsOnline->postInit();
     killStats = new KillStats;
@@ -355,7 +353,6 @@ static void destroyGuiWindows()
     delete2(bankWindow);
     delete2(mailWindow);
 #endif
-    delete2(botCheckerWindow);
     delete2(questsWindow);
     delete2(whoIsOnline);
     delete2(killStats);
@@ -615,8 +612,6 @@ void Game::slowLogic()
             mValidSpeed = false;
 
         mTime = time + 1;
-        if (botCheckerWindow)
-            botCheckerWindow->slowLogic();
         if (debugWindow)
             debugWindow->slowLogic();
         if (killStats)

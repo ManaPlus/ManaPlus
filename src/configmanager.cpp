@@ -347,7 +347,11 @@ void ConfigManager::checkConfigVersion()
 #endif
         unassignKey("keyAttack", "k120");
     }
-    config.setValue("cfgver", 12);
+
+    if (version < 13)
+        config.setValue("keyWindowBotChecker", -1);
+
+    config.setValue("cfgver", 13);
 }
 
 #undef unassignKey
