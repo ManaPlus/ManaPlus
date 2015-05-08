@@ -794,7 +794,7 @@ std::string timeToStr(const int time)
 {
     char buf[101];
     const long tempTime = static_cast<long>(time);
-    tm *const timeInfo = localtime(&tempTime);
+    tm *const timeInfo = localtime(reinterpret_cast<const time_t*>(&tempTime));
     if (strftime(&buf[0], 100, "%Y-%m-%d_%H-%M-%S", timeInfo))
         return std::string(buf);
     else
