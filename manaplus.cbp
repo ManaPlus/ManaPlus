@@ -144,6 +144,7 @@
 		<Unit filename="src/gui/widgets/tabs/setup_joystick.cpp" />
 		<Unit filename="src/gui/widgets/tabs/setup_touch.cpp" />
 		<Unit filename="src/gui/widgets/tabs/setup_video.cpp" />
+		<Unit filename="src/gui/widgets/tabs/setup_quick.cpp" />
 		<Unit filename="src/gui/widgets/tabs/setup_other.cpp" />
 		<Unit filename="src/gui/widgets/tabs/debugwindowtabs.cpp" />
 		<Unit filename="src/gui/widgets/tabs/setup_audio.cpp" />
@@ -198,6 +199,7 @@
 		<Unit filename="src/gui/widgets/skilldata.cpp" />
 		<Unit filename="src/gui/widgets/dropdown.cpp" />
 		<Unit filename="src/gui/widgets/shoplistbox.cpp" />
+		<Unit filename="src/gui/widgets/setupquickitem.cpp" />
 		<Unit filename="src/gui/widgets/shortcutcontainer.cpp" />
 		<Unit filename="src/gui/widgets/sliderlist.cpp" />
 		<Unit filename="src/gui/widgets/colorpage.cpp" />
@@ -214,11 +216,9 @@
 		<Unit filename="src/gui/widgets/browserbox.cpp" />
 		<Unit filename="src/gui/windows/tradewindow.cpp" />
 		<Unit filename="src/gui/windows/changeemaildialog.cpp" />
-		<Unit filename="src/gui/windows/botcheckerwindow.cpp" />
 		<Unit filename="src/gui/windows/bankwindow.cpp" />
 		<Unit filename="src/gui/windows/shopselldialog.cpp" />
 		<Unit filename="src/gui/windows/emotewindow.cpp" />
-		<Unit filename="src/gui/windows/npcpostdialog.cpp" />
 		<Unit filename="src/gui/windows/inventorywindow.cpp" />
 		<Unit filename="src/gui/windows/changepassworddialog.cpp" />
 		<Unit filename="src/gui/windows/ministatuswindow.cpp" />
@@ -236,7 +236,9 @@
 		<Unit filename="src/gui/windows/setupwindow.cpp" />
 		<Unit filename="src/gui/windows/didyouknowwindow.cpp" />
 		<Unit filename="src/gui/windows/outfitwindow.cpp" />
+		<Unit filename="src/gui/windows/mailwindow.cpp" />
 		<Unit filename="src/gui/windows/questswindow.cpp" />
+		<Unit filename="src/gui/windows/maileditwindow.cpp" />
 		<Unit filename="src/gui/windows/skilldialog.cpp" />
 		<Unit filename="src/gui/windows/confirmdialog.cpp" />
 		<Unit filename="src/gui/windows/serverdialog.cpp" />
@@ -256,6 +258,7 @@
 		<Unit filename="src/gui/windows/helpwindow.cpp" />
 		<Unit filename="src/gui/windows/npcselldialog.cpp" />
 		<Unit filename="src/gui/windows/buydialog.cpp" />
+		<Unit filename="src/gui/windows/mailviewwindow.cpp" />
 		<Unit filename="src/gui/windows/connectiondialog.cpp" />
 		<Unit filename="src/gui/windows/textdialog.cpp" />
 		<Unit filename="src/gui/windows/shopwindow.cpp" />
@@ -498,6 +501,7 @@
 		<Unit filename="src/listeners/tooltiplistener.cpp" />
 		<Unit filename="src/listeners/shoprenamelistener.cpp" />
 		<Unit filename="src/listeners/charrenamelistener.cpp" />
+		<Unit filename="src/listeners/gamemodifierlistener.cpp" />
 		<Unit filename="src/listeners/renamelistener.cpp" />
 		<Unit filename="src/listeners/buyingstoreslotslistener.cpp" />
 		<Unit filename="src/listeners/uploadlistener.cpp" />
@@ -618,7 +622,6 @@
 		<Unit filename="src/gui/models/tablemodel.h" />
 		<Unit filename="src/gui/models/colormodel.h" />
 		<Unit filename="src/gui/models/fontsizechoicelistmodel.h" />
-		<Unit filename="src/gui/models/userstablemodel.h" />
 		<Unit filename="src/gui/models/namesmodel.h" />
 		<Unit filename="src/gui/models/beingslistmodel.h" />
 		<Unit filename="src/gui/models/typelistmodel.h" />
@@ -702,8 +705,10 @@
 		<Unit filename="src/gui/widgets/tabs/setuptab.h" />
 		<Unit filename="src/gui/widgets/tabs/setuptabscroll.h" />
 		<Unit filename="src/gui/widgets/tabs/setup_players.h" />
+		<Unit filename="src/gui/widgets/tabs/setup_quick.h" />
 		<Unit filename="src/gui/widgets/tabbedarea.h" />
 		<Unit filename="src/gui/widgets/passwordfield.h" />
+		<Unit filename="src/gui/widgets/setupquickitem.h" />
 		<Unit filename="src/gui/widgets/equipmentpage.h" />
 		<Unit filename="src/gui/widgets/progressindicator.h" />
 		<Unit filename="src/gui/widgets/sliderlist.h" />
@@ -780,6 +785,7 @@
 		<Unit filename="src/gui/windows/shopwindow.h" />
 		<Unit filename="src/gui/windows/buyselldialog.h" />
 		<Unit filename="src/gui/windows/buyingstoreselldialog.h" />
+		<Unit filename="src/gui/windows/mailviewwindow.h" />
 		<Unit filename="src/gui/windows/killstats.h" />
 		<Unit filename="src/gui/windows/eggselectiondialog.h" />
 		<Unit filename="src/gui/windows/worldselectdialog.h" />
@@ -787,13 +793,13 @@
 		<Unit filename="src/gui/windows/changepassworddialog.h" />
 		<Unit filename="src/gui/windows/debugwindow.h" />
 		<Unit filename="src/gui/windows/editdialog.h" />
+		<Unit filename="src/gui/windows/maileditwindow.h" />
 		<Unit filename="src/gui/windows/bankwindow.h" />
 		<Unit filename="src/gui/windows/charcreatedialog.h" />
 		<Unit filename="src/gui/windows/minimap.h" />
 		<Unit filename="src/gui/windows/logindialog.h" />
 		<Unit filename="src/gui/windows/inventorywindow.h" />
 		<Unit filename="src/gui/windows/helpwindow.h" />
-		<Unit filename="src/gui/windows/npcpostdialog.h" />
 		<Unit filename="src/gui/windows/equipmentwindow.h" />
 		<Unit filename="src/gui/windows/quitdialog.h" />
 		<Unit filename="src/gui/windows/whoisonline.h" />
@@ -809,7 +815,6 @@
 		<Unit filename="src/gui/windows/skilldialog.h" />
 		<Unit filename="src/gui/windows/connectiondialog.h" />
 		<Unit filename="src/gui/windows/shortcutwindow.h" />
-		<Unit filename="src/gui/windows/botcheckerwindow.h" />
 		<Unit filename="src/gui/windows/chardeleteconfirm.h" />
 		<Unit filename="src/gui/windows/itemamountwindow.h" />
 		<Unit filename="src/gui/windows/textcommandeditor.h" />
@@ -821,12 +826,14 @@
 		<Unit filename="src/gui/windows/ministatuswindow.h" />
 		<Unit filename="src/gui/windows/updaterwindow.h" />
 		<Unit filename="src/gui/windows/tradewindow.h" />
+		<Unit filename="src/gui/windows/mailwindow.h" />
 		<Unit filename="src/gui/windows/npcselldialog.h" />
 		<Unit filename="src/gui/windows/charselectdialog.h" />
 		<Unit filename="src/gui/windows/shopselldialog.h" />
 		<Unit filename="src/gui/windows/textdialog.h" />
 		<Unit filename="src/gui/windows/didyouknowwindow.h" />
 		<Unit filename="src/gui/touchactiondata.h" />
+		<Unit filename="src/gui/mailmessage.h" />
 		<Unit filename="src/gui/onlineplayer.h" />
 		<Unit filename="src/gui/setupactiondata.h" />
 		<Unit filename="src/net/ea/guildhandler.h" />
@@ -1243,6 +1250,7 @@
 		<Unit filename="src/listeners/actionlistener.h" />
 		<Unit filename="src/listeners/charrenamelistener.h" />
 		<Unit filename="src/listeners/tablemodellistener.h" />
+		<Unit filename="src/listeners/gamemodifierlistener.h" />
 		<Unit filename="src/listeners/arrowslistener.h" />
 		<Unit filename="src/listeners/openurllistener.h" />
 		<Unit filename="src/listeners/playerrelationslistener.h" />
