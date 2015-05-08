@@ -25,8 +25,6 @@
 
 #include "being/being.h"
 
-#include "enums/simpletypes.h"
-
 #include "enums/being/pickup.h"
 
 #include "gui/userpalette.h"

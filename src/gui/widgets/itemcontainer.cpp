@@ -595,11 +595,12 @@ void ItemContainer::mouseReleased(MouseEvent &event)
             inventory = PlayerInfo::getInventory();
         }
         else if (src == DRAGDROP_SOURCE_INVENTORY
-                 && (dst == DRAGDROP_SOURCE_NPC
 #ifdef EATHENA_SUPPORT
-                 || dst == DRAGDROP_SOURCE_MAIL
+                 && (dst == DRAGDROP_SOURCE_NPC
+                 || dst == DRAGDROP_SOURCE_MAIL))
+#else
+                 && dst == DRAGDROP_SOURCE_NPC)
 #endif
-                 ))
         {
             inventory = PlayerInfo::getInventory();
             const Item *const item = inventory->getItem(dragDrop.getTag());

@@ -104,7 +104,8 @@ class StatusEffect final
          *    the deactivating effect (false).
          */
         static StatusEffect *getStunEffect(const int index,
-                                           const Enable enabling) A_WARN_UNUSED;
+                                           const Enable enabling)
+                                           A_WARN_UNUSED;
 
         /**
          * Maps a block effect index to its corresponding effect index.  Block

@@ -42,42 +42,42 @@ void MailHandler::handleMessage(Net::MessageIn &msg A_UNUSED)
 {
 }
 
-void MailHandler::refresh()
+void MailHandler::refresh() const
 {
 }
 
-void MailHandler::readMessage(const int msgId A_UNUSED)
+void MailHandler::readMessage(const int msgId A_UNUSED) const
 {
 }
 
-void MailHandler::getAttach(const int msgId A_UNUSED)
+void MailHandler::getAttach(const int msgId A_UNUSED) const
 {
 }
 
-void MailHandler::deleteMessage(const int msgId A_UNUSED)
+void MailHandler::deleteMessage(const int msgId A_UNUSED) const
 {
 }
 
-void MailHandler::returnMessage(const int msgId A_UNUSED)
+void MailHandler::returnMessage(const int msgId A_UNUSED) const
 {
 }
 
 void MailHandler::setAttach(const int index A_UNUSED,
-                            const int amount A_UNUSED)
+                            const int amount A_UNUSED) const
 {
 }
 
-void MailHandler::setAttachMoney(const int money A_UNUSED)
+void MailHandler::setAttachMoney(const int money A_UNUSED) const
 {
 }
 
-void MailHandler::resetAttach(const int flag A_UNUSED)
+void MailHandler::resetAttach(const int flag A_UNUSED) const
 {
 }
 
 void MailHandler::send(const std::string &name A_UNUSED,
                        const std::string &title A_UNUSED,
-                       std::string message A_UNUSED)
+                       std::string message A_UNUSED) const
 {
 }
 

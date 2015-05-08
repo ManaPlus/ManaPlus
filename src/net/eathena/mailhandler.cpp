@@ -261,51 +261,51 @@ void MailHandler::processMailReturn(Net::MessageIn &msg)
     }
 }
 
-void MailHandler::refresh()
+void MailHandler::refresh() const
 {
     createOutPacket(CMSG_MAIL_REFRESH_INBOX);
 }
 
-void MailHandler::readMessage(const int msgId)
+void MailHandler::readMessage(const int msgId) const
 {
     createOutPacket(CMSG_MAIL_READ_MESSAGE);
     outMsg.writeInt32(msgId, "message id");
 }
 
-void MailHandler::getAttach(const int msgId)
+void MailHandler::getAttach(const int msgId) const
 {
     createOutPacket(CMSG_MAIL_GET_ATTACH);
     outMsg.writeInt32(msgId, "message id");
 }
 
-void MailHandler::deleteMessage(const int msgId)
+void MailHandler::deleteMessage(const int msgId) const
 {
     createOutPacket(CMSG_MAIL_DELETE_MESSAGE);
     outMsg.writeInt32(msgId, "message id");
 }
 
-void MailHandler::returnMessage(const int msgId)
+void MailHandler::returnMessage(const int msgId) const
 {
     createOutPacket(CMSG_MAIL_RETURN_MESSAGE);
     outMsg.writeInt32(msgId, "message id");
     outMsg.writeString("", 24, "unused");
 }
 
-void MailHandler::setAttach(const int index, const int amount)
+void MailHandler::setAttach(const int index, const int amount) const
 {
     createOutPacket(CMSG_MAIL_SET_ATTACH);
     outMsg.writeInt16(static_cast<int16_t>(index + INVENTORY_OFFSET), "index");
     outMsg.writeInt32(amount, "amount");
 }
 
-void MailHandler::setAttachMoney(const int money)
+void MailHandler::setAttachMoney(const int money) const
 {
     createOutPacket(CMSG_MAIL_SET_ATTACH);
     outMsg.writeInt16(static_cast<int16_t>(0), "index");
     outMsg.writeInt32(money, "money");
 }
 
-void MailHandler::resetAttach(const int flag)
+void MailHandler::resetAttach(const int flag) const
 {
     createOutPacket(CMSG_MAIL_RESET_ATTACH);
     outMsg.writeInt16(static_cast<int16_t>(flag), "flag");
@@ -313,7 +313,7 @@ void MailHandler::resetAttach(const int flag)
 
 void MailHandler::send(const std::string &name,
                        const std::string &title,
-                       std::string message)
+                       std::string message) const
 {
     if (message.size() > 255)
         message = message.substr(0, 255);

@@ -25,8 +25,6 @@
 
 #include "flooritem.h"
 
-#include "enums/simpletypes.h"
-
 #include "enums/being/beingaction.h"
 
 #include "net/messagein.h"

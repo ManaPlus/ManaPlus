@@ -36,25 +36,25 @@ class MailHandler notfinal
         virtual ~MailHandler()
         { }
 
-        virtual void refresh() = 0;
+        virtual void refresh() const = 0;
 
-        virtual void readMessage(const int msgId) = 0;
+        virtual void readMessage(const int msgId) const = 0;
 
-        virtual void getAttach(const int msgId) = 0;
+        virtual void getAttach(const int msgId) const = 0;
 
-        virtual void deleteMessage(const int msgId) = 0;
+        virtual void deleteMessage(const int msgId) const = 0;
 
-        virtual void returnMessage(const int msgId) = 0;
+        virtual void returnMessage(const int msgId) const = 0;
 
-        virtual void setAttach(const int index, const int amount) = 0;
+        virtual void setAttach(const int index, const int amount) const = 0;
 
-        virtual void setAttachMoney(const int money) = 0;
+        virtual void setAttachMoney(const int money) const = 0;
 
-        virtual void resetAttach(const int flag) = 0;
+        virtual void resetAttach(const int flag) const = 0;
 
         virtual void send(const std::string &name,
                           const std::string &title,
-                          std::string message) = 0;
+                          std::string message) const = 0;
 };
 
 }  // namespace Net

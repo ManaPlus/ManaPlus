@@ -1615,7 +1615,8 @@ void BeingHandler::processPlaterStatusChangeNoTick(Net::MessageIn &msg)
 {
     const uint16_t status = msg.readInt16("index");
     const int id = msg.readInt32("account id");
-    const Enable flag = fromBool(msg.readUInt8("state") ? true : false, Enable);
+    const Enable flag = fromBool(msg.readUInt8("state")
+        ? true : false, Enable);
 
     Being *const dstBeing = actorManager->findBeing(id);
     if (!dstBeing)

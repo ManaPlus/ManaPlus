@@ -25,8 +25,6 @@
 
 #include "flooritem.h"
 
-#include "enums/simpletypes.h"
-
 #include "listeners/configlistener.h"
 
 #include "utils/stringmap.h"

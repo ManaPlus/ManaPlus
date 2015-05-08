@@ -22,8 +22,6 @@
 #ifndef BEING_ACTORSPRITE_H
 #define BEING_ACTORSPRITE_H
 
-#include "enums/simpletypes.h"
-
 #include "resources/map/blocktype.h"
 #include "resources/map/mapconsts.h"
 
@@ -188,7 +186,8 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
          * Notify self that a status effect has flipped.
          * The new flag is passed.
          */
-        virtual void updateStatusEffect(const int index, const Enable newStatus);
+        virtual void updateStatusEffect(const int index,
+                                        const Enable newStatus);
 
         /**
          * Handle an update to a status or stun effect

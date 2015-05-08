@@ -28,8 +28,6 @@
 
 #include "being/being.h"
 
-#include "enums/simpletypes.h"
-
 #include "gui/models/beingslistmodel.h"
 
 #include "utils/gettext.h"
