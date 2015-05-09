@@ -1,3 +1,12 @@
+2015-05-09 New release 1.5.5.9
+fix: compilation on non x86/amd64.
+fix: possible crash on exit with opened storage window.
+add: experimental support for CilkPlus.
+add: mail system (hercules).
+add: chat commands to get/set config variables.
+add: item name filter in buy dialogs.
+remove: bot checker window.
+
 2015-04-25 New release 1.5.4.25
 fix: move animation.
 fix: wrong slots update (hercules)
