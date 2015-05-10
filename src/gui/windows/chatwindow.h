@@ -399,6 +399,8 @@ class ChatWindow final : public Window,
         StringVect mHighlights;
         StringVect mGlobalsFilter;
         int mChatColor;
+        int mEmoteButtonSpacing;
+        int mEmoteButtonY;
         unsigned int mChatHistoryIndex;
         bool mReturnToggles;  // Marks whether <Return> toggles the chat log
                               // or not

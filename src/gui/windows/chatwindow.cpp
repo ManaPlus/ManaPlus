@@ -105,6 +105,8 @@ ChatWindow::ChatWindow() :
     mHighlights(),
     mGlobalsFilter(),
     mChatColor(config.getIntValue("chatColor")),
+    mEmoteButtonSpacing(mSkin ? mSkin->getOption("emoteButtonSpacing", 2) : 2),
+    mEmoteButtonY(mSkin ? mSkin->getOption("emoteButtonY", -2) : -2),
     mChatHistoryIndex(0),
     mReturnToggles(config.getBoolValue("ReturnToggles")),
     mGMLoaded(false),
@@ -279,17 +281,8 @@ void ChatWindow::adjustTabSize()
         const int chatButtonSize = 20;
         int w = awFrame2 - chatButtonSize;
         const int x = aw - frame - chatButtonSize;
-        if (mSkin)
-        {
-            const int ipad = mSkin->getOption("emoteButtonSpacing", 2);
-            w -= ipad;
-            y += mSkin->getOption("emoteButtonY", -2);
-        }
-        else
-        {
-            w -= 2;
-            y -= 2;
-        }
+        w -= mEmoteButtonSpacing;
+        y += mEmoteButtonY;
         mChatInput->setWidth(w);
         mChatButton->setVisible(mChatInput->isVisibleLocal());
         mChatButton->setPosition(x, y);
