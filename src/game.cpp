@@ -31,9 +31,6 @@
 #include "emoteshortcut.h"
 #include "eventsmanager.h"
 #include "gamemodifiers.h"
-#ifdef TMWA_SUPPORT
-#include "guildmanager.h"
-#endif
 #include "itemshortcut.h"
 #include "soundmanager.h"
 #include "settings.h"
@@ -121,6 +118,10 @@
 #include "utils/timer.h"
 
 #include "listeners/errorlistener.h"
+
+#ifdef TMWA_SUPPORT
+#include "net/tmwa/guildmanager.h"
+#endif
 
 #ifdef USE_MUMBLE
 #include "mumblemanager.h"

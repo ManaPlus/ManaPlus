@@ -1317,8 +1317,6 @@ SET(SRCS_EVOL
     )
 
 SET(SRCS_TMWA
-    guildmanager.cpp
-    guildmanager.h
     gui/widgets/tabs/chat/emulateguildtab.cpp
     gui/widgets/tabs/chat/emulateguildtab.h
     gui/windows/shopselldialog.cpp
@@ -1339,6 +1337,8 @@ SET(SRCS_TMWA
     net/tmwa/generalhandler.h
     net/tmwa/guildhandler.cpp
     net/tmwa/guildhandler.h
+    net/tmwa/guildmanager.cpp
+    net/tmwa/guildmanager.h
     net/tmwa/inventoryhandler.cpp
     net/tmwa/inventoryhandler.h
     net/tmwa/itemhandler.cpp

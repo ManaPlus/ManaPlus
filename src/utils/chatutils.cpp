@@ -21,9 +21,6 @@
 #include "utils/chatutils.h"
 
 #include "actormanager.h"
-#ifdef TMWA_SUPPORT
-#include "guildmanager.h"
-#endif
 #include "party.h"
 
 #include "being/localplayer.h"
@@ -36,6 +33,10 @@
 #include "net/guildhandler.h"
 #include "net/partyhandler.h"
 #include "net/serverfeatures.h"
+
+#ifdef TMWA_SUPPORT
+#include "net/tmwa/guildmanager.h"
+#endif
 
 #include "utils/stringutils.h"
 

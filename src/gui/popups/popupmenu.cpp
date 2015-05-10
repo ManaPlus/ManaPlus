@@ -25,9 +25,6 @@
 #include "actormanager.h"
 #include "configuration.h"
 #include "gamemodifiers.h"
-#ifdef TMWA_SUPPORT
-#include "guildmanager.h"
-#endif
 #include "item.h"
 #include "party.h"
 #include "spellmanager.h"
@@ -71,6 +68,10 @@
 #endif
 #include "net/pethandler.h"
 #include "net/serverfeatures.h"
+
+#ifdef TMWA_SUPPORT
+#include "net/tmwa/guildmanager.h"
+#endif
 
 #include "resources/chatobject.h"
 #include "resources/iteminfo.h"

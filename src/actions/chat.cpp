@@ -21,9 +21,6 @@
 #include "actions/chat.h"
 
 #include "configuration.h"
-#ifdef TMWA_SUPPORT
-#include "guildmanager.h"
-#endif
 
 #include "actions/actiondef.h"
 
@@ -38,6 +35,10 @@
 #include "net/guildhandler.h"
 #include "net/partyhandler.h"
 #include "net/serverfeatures.h"
+
+#ifdef TMWA_SUPPORT
+#include "net/tmwa/guildmanager.h"
+#endif
 
 #include "resources/iteminfo.h"
 

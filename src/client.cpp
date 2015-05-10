@@ -31,9 +31,6 @@
 #include "emoteshortcut.h"
 #include "eventsmanager.h"
 #include "game.h"
-#ifdef TMWA_SUPPORT
-#include "guildmanager.h"
-#endif
 #include "graphicsmanager.h"
 #include "itemshortcut.h"
 #include "party.h"
@@ -91,6 +88,10 @@
 #include "net/netconsts.h"
 #include "net/packetlimiter.h"
 #include "net/partyhandler.h"
+
+#ifdef TMWA_SUPPORT
+#include "net/tmwa/guildmanager.h"
+#endif
 
 #include "particle/particle.h"
 

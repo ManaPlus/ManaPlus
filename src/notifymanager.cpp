@@ -20,15 +20,16 @@
 
 #include "notifymanager.h"
 
-#ifdef TMWA_SUPPORT
-#include "guildmanager.h"
-#endif
 #include "soundmanager.h"
 
 #include "being/localplayer.h"
 
 #include "net/guildhandler.h"
 #include "net/partyhandler.h"
+
+#ifdef TMWA_SUPPORT
+#include "net/tmwa/guildmanager.h"
+#endif
 
 #include "resources/notifications.h"
 #include "resources/notifytypes.h"

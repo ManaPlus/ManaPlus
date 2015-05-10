@@ -21,10 +21,6 @@
 
 #include "gui/windows/socialwindow.h"
 
-#ifdef TMWA_SUPPORT
-#include "guildmanager.h"
-#endif
-
 #include "enums/gui/dialogtype.h"
 
 #include "gui/windows/okdialog.h"
@@ -46,6 +42,10 @@
 #include "gui/popups/createpartypopup.h"
 
 #include "net/serverfeatures.h"
+
+#ifdef TMWA_SUPPORT
+#include "net/tmwa/guildmanager.h"
+#endif
 
 #include "debug.h"
 

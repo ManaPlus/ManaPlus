@@ -24,7 +24,6 @@
 
 #include "actormanager.h"
 #include "configuration.h"
-#include "guildmanager.h"
 
 #include "being/localplayer.h"
 #include "being/playerrelations.h"
@@ -38,6 +37,7 @@
 
 #include "net/serverfeatures.h"
 
+#include "net/tmwa/guildmanager.h"
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
 

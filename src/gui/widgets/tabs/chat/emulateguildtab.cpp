@@ -23,13 +23,14 @@
 #include "gui/widgets/tabs/chat/emulateguildtab.h"
 
 #include "configuration.h"
-#include "guildmanager.h"
 #include "soundconsts.h"
 #include "soundmanager.h"
 
 #include "gui/windows/chatwindow.h"
 
 #include "utils/gettext.h"
+
+#include "net/tmwa/guildmanager.h"
 
 #include "debug.h"
 

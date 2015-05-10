@@ -1255,8 +1255,6 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 if ENABLE_TMWA
 manaplus_CXXFLAGS += -DTMWA_SUPPORT
 manaplus_SOURCES += \
-	      guildmanager.cpp \
-	      guildmanager.h \
 	      gui/widgets/tabs/chat/emulateguildtab.cpp \
 	      gui/widgets/tabs/chat/emulateguildtab.h \
 	      gui/windows/shopselldialog.cpp \
@@ -1277,6 +1275,8 @@ manaplus_SOURCES += \
 	      net/tmwa/generalhandler.h \
 	      net/tmwa/guildhandler.cpp \
 	      net/tmwa/guildhandler.h \
+	      net/tmwa/guildmanager.cpp \
+	      net/tmwa/guildmanager.h \
 	      net/tmwa/inventoryhandler.cpp \
 	      net/tmwa/inventoryhandler.h \
 	      net/tmwa/itemhandler.cpp \

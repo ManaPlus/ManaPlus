@@ -25,7 +25,6 @@
 #include "actormanager.h"
 #include "effectmanager.h"
 #include "guild.h"
-#include "guildmanager.h"
 #include "party.h"
 
 #include "being/localplayer.h"
@@ -39,6 +38,7 @@
 
 #include "net/serverfeatures.h"
 
+#include "net/tmwa/guildmanager.h"
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
 #include "net/tmwa/sprite.h"
