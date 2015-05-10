@@ -920,7 +920,7 @@ void InputManager::addChatCommands(std::list<std::string> &arr)
             FOR_EACH (StringVectCIter, it, tokens)
             {
                 cmd = std::string("/").append(*it);
-                if (ad.useArgs)
+                if (ad.useArgs == UseArgs_true)
                     cmd.append(" ");
                 arr.push_back(cmd);
             }

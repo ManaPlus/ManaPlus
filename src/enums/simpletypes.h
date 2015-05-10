@@ -67,5 +67,6 @@ defBoolEnum(Enable);
 defBoolEnum(ForceDisplay);
 defBoolEnum(UseResman);
 defBoolEnum(SkipError);
+defBoolEnum(UseArgs);
 
 #endif  // ENUMS_SIMPLETYPES_H

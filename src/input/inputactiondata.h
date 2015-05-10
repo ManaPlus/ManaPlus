@@ -25,6 +25,8 @@
 
 #include "actions/actionfuncptr.h"
 
+#include "enums/simpletypes.h"
+
 struct InputActionData final
 {
     const char *const configField;
@@ -38,7 +40,7 @@ struct InputActionData final
     const int priority;
     const int condition;
     const std::string chatCommand;
-    const bool useArgs;
+    const UseArgs useArgs;
 };
 
 namespace Input
