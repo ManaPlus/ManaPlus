@@ -172,6 +172,7 @@ namespace NotifyTypes
         MAIL_GET_ATTACH_ERROR,
         MAIL_GET_ATTACH_TOO_MANY_ITEMS,
         NEW_MAIL,
+        MAP_TYPE_BATTLEFIELD,
 
         TYPE_END
     };

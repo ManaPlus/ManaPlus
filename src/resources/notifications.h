@@ -615,6 +615,10 @@ namespace NotifyManager
             // TRANSLATORS: notification message
             "%s",
             NotifyFlags::STRING},
+        {"mail type battle field",
+            // TRANSLATORS: notification message
+            N_("You enter battle field."),
+            NotifyFlags::EMPTY},
     };
 }  // namespace NotifyManager
 #endif  // RESOURCES_NOTIFICATIONS_H

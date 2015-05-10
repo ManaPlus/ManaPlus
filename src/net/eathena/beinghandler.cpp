@@ -25,6 +25,7 @@
 #include "actormanager.h"
 #include "effectmanager.h"
 #include "game.h"
+#include "notifymanager.h"
 
 #include "being/localplayer.h"
 #include "being/mercenaryinfo.h"
@@ -48,6 +49,7 @@
 #include "net/eathena/sprite.h"
 
 #include "resources/iteminfo.h"
+#include "resources/notifytypes.h"
 
 #include "resources/db/itemdb.h"
 
@@ -1125,9 +1127,11 @@ void BeingHandler::processMapTypeProperty(Net::MessageIn &msg)
 
 void BeingHandler::processMapType(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
-    // battle ground map or not
-    msg.readInt16("type");
+    const int16_t type = msg.readInt16("type");
+    if (type == 19)
+        NotifyManager::notify(NotifyTypes::MAP_TYPE_BATTLEFIELD);
+    else
+        UNIMPLIMENTEDPACKET;
 }
 
 void BeingHandler::processSkillCasting(Net::MessageIn &msg)
