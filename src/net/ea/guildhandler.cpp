@@ -294,6 +294,7 @@ void GuildHandler::processGuildPosInfoList(Net::MessageIn &msg)
 
 void GuildHandler::processGuildPositionChanged(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     msg.readInt16("len");
     msg.readInt32("id");
     msg.readInt32("mode");
@@ -318,6 +319,7 @@ void GuildHandler::processGuildMemberPosChange(Net::MessageIn &msg)
 
 void GuildHandler::processGuildEmblemData(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     const int length = msg.readInt16("len");
 
     msg.readInt32("guild id");
@@ -476,6 +478,7 @@ void GuildHandler::processGuildMessage(Net::MessageIn &msg)
 
 void GuildHandler::processGuildSkillUp(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     msg.readInt16("skill id");
     msg.readInt16("level");
     msg.readInt16("sp");
@@ -485,28 +488,33 @@ void GuildHandler::processGuildSkillUp(Net::MessageIn &msg)
 
 void GuildHandler::processGuildReqAlliance(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     msg.readInt32("id");
     msg.readString(24, "name");
 }
 
 void GuildHandler::processGuildReqAllianceAck(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     msg.readInt32("flag");
 }
 
 void GuildHandler::processGuildDelAlliance(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     msg.readInt32("guild id");
     msg.readInt32("flag");
 }
 
 void GuildHandler::processGuildOppositionAck(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     msg.readUInt8("flag");
 }
 
 void GuildHandler::processGuildBroken(Net::MessageIn &msg)
 {
+    UNIMPLIMENTEDPACKET;
     msg.readInt32("flag");
 }
 
