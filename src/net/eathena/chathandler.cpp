@@ -730,7 +730,7 @@ void ChatHandler::processChatRoomLeave(Net::MessageIn &msg)
             UNIMPLIMENTEDPACKET;
             break;
     }
-    if (name == localPlayer->getName())
+    if (localPlayer && name == localPlayer->getName())
     {
         if (chatWindow)
             chatWindow->joinRoom(false);
