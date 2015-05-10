@@ -111,11 +111,27 @@ ShopItem *ShopItems::at(unsigned int i) const
     return mShopItems.at(i);
 }
 
+bool ShopItems::findInAllItems(std::vector<ShopItem*>::iterator &it,
+                               const ShopItem *const item)
+{
+    const std::vector<ShopItem*>::iterator it_end = mAllShopItems.end();
+    for (it = mAllShopItems.begin(); it != it_end; ++ it)
+    {
+        if (*it == item)
+            return true;
+    }
+    return false;
+}
+
 void ShopItems::erase(const unsigned int i)
 {
     if (i >= static_cast<unsigned int>(mShopItems.size()))
         return;
 
+    ShopItem *item = *(mShopItems.begin() + i);
+    std::vector<ShopItem*>::iterator it;
+    if (findInAllItems(it, item))
+        mAllShopItems.erase(it);
     mShopItems.erase(mShopItems.begin() + i);
 }
 
@@ -125,6 +141,9 @@ void ShopItems::del(const unsigned int i)
         return;
 
     ShopItem *item = *(mShopItems.begin() + i);
+    std::vector<ShopItem*>::iterator it;
+    if (findInAllItems(it, item))
+        mAllShopItems.erase(it);
     mShopItems.erase(mShopItems.begin() + i);
     delete item;
 }

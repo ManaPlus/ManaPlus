@@ -147,6 +147,9 @@ class ShopItems final : public ListModel
         ShopItem *findItem(const int id,
                            const unsigned char color) const A_WARN_UNUSED;
 
+        bool findInAllItems(std::vector<ShopItem*>::iterator &it,
+                            const ShopItem *const item);
+
         /** The list of items in the shop. */
         std::vector<ShopItem*> mAllShopItems;
 

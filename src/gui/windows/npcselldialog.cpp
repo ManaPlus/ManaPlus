@@ -101,8 +101,7 @@ void NpcSellDialog::sellAction(const ActionEvent &event)
     {
         // All were sold
         mShopItemList->setSelected(-1);
-        delete mShopItems->at(selectedItem);
-        mShopItems->erase(selectedItem);
+        mShopItems->del(selectedItem);
 
         Rect scroll;
         scroll.y = mShopItemList->getRowHeight() * (selectedItem + 1);
