@@ -692,6 +692,9 @@ class Window notfinal : public BasicContainer2,
         int mGripPadding;
         int mResizeHandles;
         int mOldResizeHandles;
+        int mClosePadding;
+        int mStickySpacing;
+        int mStickyPadding;
         Font *mCaptionFont;
         Modal mModal;                 /**< Window is modal */
         bool mShowTitle;              /**< Window has a title bar */

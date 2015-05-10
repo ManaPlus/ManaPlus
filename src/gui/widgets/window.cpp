@@ -138,6 +138,9 @@ Window::Window(const std::string &caption,
     mGripPadding(2),
     mResizeHandles(-1),
     mOldResizeHandles(-1),
+    mClosePadding(0),
+    mStickySpacing(0),
+    mStickyPadding(0),
     mCaptionFont(getFont()),
     mModal(modal),
     mShowTitle(true),
@@ -196,6 +199,9 @@ Window::Window(const std::string &caption,
             setPalette(getOption("palette"));
             childPalette = getOption("childPalette");
             mShowTitle = getOptionBool("showTitle", true);
+            mClosePadding = getOption("closePadding");
+            mStickySpacing = getOption("stickySpacing");
+            mStickyPadding = getOption("stickyPadding");
         }
     }
 
@@ -570,13 +576,12 @@ void Window::widgetResized(const Event &event A_UNUSED)
     {
         const bool showClose = mCloseWindowButton
             && mSkin->getCloseImage(false);
-        const int closePadding = getOption("closePadding");
         if (showClose)
         {
             const Image *const button = mSkin->getCloseImage(false);
             const int buttonWidth = button->getWidth();
-            mCloseRect.x = mDimension.width - buttonWidth - closePadding;
-            mCloseRect.y = closePadding;
+            mCloseRect.x = mDimension.width - buttonWidth - mClosePadding;
+            mCloseRect.y = mClosePadding;
             mCloseRect.width = buttonWidth;
             mCloseRect.height = button->getHeight();
         }
@@ -587,13 +592,13 @@ void Window::widgetResized(const Event &event A_UNUSED)
             {
                 const int buttonWidth = button->getWidth();
                 int x = mDimension.width - buttonWidth
-                    - getOption("stickySpacing") - closePadding;
+                    - mStickySpacing - mClosePadding;
 
                 if (showClose)
                     x -= mSkin->getCloseImage(false)->getWidth();
 
                 mStickyRect.x = x;
-                mStickyRect.y = getOption("stickyPadding");
+                mStickyRect.y = mStickyPadding;
                 mStickyRect.width = buttonWidth;
                 mStickyRect.height = button->getHeight();
             }
