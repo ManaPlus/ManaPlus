@@ -233,25 +233,6 @@ class Button final : public Widget,
         Graphics::Alignment getAlignment() const
         { return mAlignment; }
 
-        /**
-         * Sets the spacing between the border of the button and its caption.
-         *
-         * @param spacing The default value for spacing is 4 and can be changed 
-         *                using this method.
-         * @see getSpacing
-         */
-        void setSpacing(unsigned int spacing)
-        { mSpacing = spacing; }
-
-        /**
-         * Gets the spacing between the border of the button and its caption.
-         *
-         * @return spacing.
-         * @see setSpacing
-         */
-        unsigned int getSpacing() const
-        { return mSpacing; }
-
         void focusLost(const Event& event) override final;
 
         void mousePressed(MouseEvent& event) override final;
@@ -291,6 +272,37 @@ class Button final : public Widget,
          */
         std::string mCaption;
 
+        std::string mDescription;
+        ImageCollection *mVertexes2;
+        Color mEnabledColor;
+        Color mEnabledColor2;
+        Color mDisabledColor;
+        Color mDisabledColor2;
+        Color mHighlightedColor;
+        Color mHighlightedColor2;
+        Color mPressedColor;
+        Color mPressedColor2;
+        Image **mImages;
+        ImageSet *mImageSet;
+
+        /**
+         * Holds the alignment of the caption.
+         */
+        Graphics::Alignment mAlignment;
+
+        unsigned mClickCount;
+
+        /**
+         * Holds the spacing between the border and the caption.
+         */
+        unsigned int mSpacing;
+
+        int mTag;
+        int mMode;
+        int mXOffset;
+        int mYOffset;
+        int mImageWidth;
+        int mImageHeight;
         /**
          * True if the mouse is ontop of the button, false otherwise.
          */
@@ -306,35 +318,6 @@ class Button final : public Widget,
          */
         bool mMousePressed;
 
-        /**
-         * Holds the alignment of the caption.
-         */
-        Graphics::Alignment mAlignment;
-
-        /**
-         * Holds the spacing between the border and the caption.
-         */
-        unsigned int mSpacing;
-
-        std::string mDescription;
-        ImageCollection *mVertexes2;
-        Color mEnabledColor;
-        Color mEnabledColor2;
-        Color mDisabledColor;
-        Color mDisabledColor2;
-        Color mHighlightedColor;
-        Color mHighlightedColor2;
-        Color mPressedColor;
-        Color mPressedColor2;
-        Image **mImages;
-        ImageSet *mImageSet;
-        unsigned mClickCount;
-        int mTag;
-        int mMode;
-        int mXOffset;
-        int mYOffset;
-        int mImageWidth;
-        int mImageHeight;
         bool mStick;
         bool mPressed;
 };
