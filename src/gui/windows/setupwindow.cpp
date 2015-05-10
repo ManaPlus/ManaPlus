@@ -68,7 +68,8 @@ SetupWindow::SetupWindow() :
     mQuickTab(nullptr),
     mResetWindows(nullptr),
     mPanel(new TabbedArea(this)),
-    mVersion(new Label(this, FULL_VERSION))
+    mVersion(new Label(this, FULL_VERSION)),
+    mButtonPadding(5)
 {
     mPanel->postInit();
     setCloseButton(true);
@@ -101,13 +102,13 @@ void SetupWindow::postInit()
         nullptr
     };
     int x = width;
-    const int buttonPadding = getOption("buttonPadding", 5);
+    mButtonPadding = getOption("buttonPadding", 5);
     for (const char ** curBtn = buttonNames; *curBtn; ++ curBtn)
     {
         Button *const btn = new Button(this, gettext(*curBtn), *curBtn, this);
         mButtons.push_back(btn);
-        x -= btn->getWidth() + buttonPadding;
-        btn->setPosition(x, height - btn->getHeight() - buttonPadding);
+        x -= btn->getWidth() + mButtonPadding;
+        btn->setPosition(x, height - btn->getHeight() - mButtonPadding);
         add(btn);
 
         // Store this button, as it needs to be enabled/disabled
@@ -303,13 +304,12 @@ void SetupWindow::widgetResized(const Event &event)
     int x = area.width;
     const int height = area.height;
     const int width = area.width;
-    const int buttonPadding = getOption("buttonPadding", 5);
     mPanel->setDimension(Rect(5, 5, width - 10, height - 40));
     FOR_EACH (std::vector<Button*>::iterator, it, mButtons)
     {
         Button *const btn = *it;
-        x -= btn->getWidth() + buttonPadding;
-        btn->setPosition(x, height - btn->getHeight() - buttonPadding);
+        x -= btn->getWidth() + mButtonPadding;
+        btn->setPosition(x, height - btn->getHeight() - mButtonPadding);
     }
     if (mResetWindows)
     {

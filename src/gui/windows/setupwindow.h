@@ -88,6 +88,7 @@ class SetupWindow final : public Window,
         Button *mResetWindows;
         TabbedArea *mPanel;
         Label *mVersion;
+        int mButtonPadding;
 };
 
 extern SetupWindow* setupWindow;
