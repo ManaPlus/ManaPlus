@@ -295,7 +295,7 @@ class Button final : public Widget,
         /**
          * Holds the spacing between the border and the caption.
          */
-        unsigned int mSpacing;
+        int mSpacing[BUTTON_COUNT];
 
         int mTag;
         int mMode;

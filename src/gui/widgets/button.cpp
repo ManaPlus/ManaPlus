@@ -119,7 +119,7 @@ Button::Button(const Widget2 *const widget) :
     mImageSet(nullptr),
     mAlignment(Graphics::CENTER),
     mClickCount(0),
-    mSpacing(4),
+    mSpacing(),
     mTag(0),
     mMode(0),
     mXOffset(0),
@@ -160,7 +160,7 @@ Button::Button(const Widget2 *const widget,
     mImageSet(nullptr),
     mAlignment(Graphics::CENTER),
     mClickCount(0),
-    mSpacing(4),
+    mSpacing(),
     mTag(0),
     mMode(0),
     mXOffset(0),
@@ -207,7 +207,7 @@ Button::Button(const Widget2 *const widget,
     mImageSet(nullptr),
     mAlignment(Graphics::CENTER),
     mClickCount(0),
-    mSpacing(4),
+    mSpacing(),
     mTag(0),
     mMode(0),
     mXOffset(0),
@@ -254,7 +254,7 @@ Button::Button(const Widget2 *const widget,
     mImageSet(nullptr),
     mAlignment(Graphics::CENTER),
     mClickCount(0),
-    mSpacing(4),
+    mSpacing(),
     mTag(0),
     mMode(0),
     mXOffset(0),
@@ -301,7 +301,7 @@ Button::Button(const Widget2 *const widget,
     mImageSet(nullptr),
     mAlignment(Graphics::CENTER),
     mClickCount(0),
-    mSpacing(4),
+    mSpacing(),
     mTag(0),
     mMode(0),
     mXOffset(0),
@@ -339,7 +339,14 @@ void Button::init()
         if (theme)
         {
             for (int mode = 0; mode < BUTTON_COUNT; mode ++)
-                button[mode] = theme->load(data[mode], "button.xml");
+            {
+                Skin *const skin = theme->load(data[mode], "button.xml");
+                if (skin)
+                {
+                    button[mode] = skin;
+                    mSpacing[mode] = skin->getOption("spacing");
+                }
+            }
         }
 
         updateAlpha();
@@ -487,7 +494,7 @@ void Button::draw(Graphics *graphics)
     }
 
     const int padding = skin->getPadding();
-    const int spacing = skin->getOption("spacing");
+    const int spacing = mSpacing[mode];
 
     switch (mode)
     {
@@ -653,7 +660,7 @@ void Button::adjustSize()
 
     if (mImages)
     {
-        const int spacing = skin->getOption("spacing");
+        const int spacing = mSpacing[BUTTON_STANDARD];
         const int width = font->getWidth(mCaption);
         if (width)
             setWidth(width + mImageWidth + spacing + 2 * padding);
