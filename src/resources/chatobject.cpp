@@ -38,10 +38,10 @@ ChatObject::ChatObject() :
 ChatObject::~ChatObject()
 {
     std::map<std::string, ChatObject*>::iterator it = chatNameMap.find(title);
-    if (it != chatNameMap.end())
+    if (it != chatNameMap.end() && (*it).second == this)
         chatNameMap.erase(it);
     std::map<int, ChatObject*>::iterator it2 = chatIdMap.find(chatId);
-    if (it2 != chatIdMap.end())
+    if (it2 != chatIdMap.end() && (*it2).second == this)
         chatIdMap.erase(it2);
 }
 
