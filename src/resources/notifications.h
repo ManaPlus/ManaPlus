@@ -569,7 +569,7 @@ namespace NotifyManager
             NotifyFlags::INT},
         {"mail send ok",
             // TRANSLATORS: notification message
-            N_("Message succesfully sent."),
+            N_("Message successfully sent."),
             NotifyFlags::EMPTY},
         {"mail send error",
             // TRANSLATORS: notification message

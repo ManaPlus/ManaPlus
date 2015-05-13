@@ -78,7 +78,7 @@ class CharServerHandler final : public MessageHandler,
 
         /**
          * Sets the character create dialog. The handler will clean up this
-         * dialog when a new character is succesfully created, and will unlock
+         * dialog when a new character is successfully created, and will unlock
          * the dialog when a new character failed to be created.
          */
         void setCharCreateDialog(CharCreateDialog *const window)
