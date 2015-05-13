@@ -54,28 +54,19 @@ struct MStack final
 
     T &getPop()
     {
-        if (mPointer == mStartPointer)
-            logger->log("error: minimal stack size reached");
-        else
-            mPointer --;
+        mPointer --;
         return *mPointer;
     }
 
     const T &getPopConst()
     {
-        if (mPointer == mStartPointer)
-            logger->log("error: minimal stack size reached");
-        else
-            mPointer --;
+        mPointer --;
         return *mPointer;
     }
 
     void pop()
     {
-        if (mPointer == mStartPointer)
-            logger->log("error: minimal stack size reached");
-        else
-            mPointer --;
+        mPointer --;
     }
 
     T &top() const
