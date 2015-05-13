@@ -72,8 +72,9 @@
 #include "enums/render/rendertype.h"
 
 #include "gui/color.h"
-
 #include "gui/cliprect.h"
+
+#include "resources/mstack.h"
 
 #include <SDL_video.h>
 
@@ -514,7 +515,7 @@ class Graphics notfinal
         /**
          * Holds the clip area stack.
          */
-        std::stack<ClipRect> mClipStack;
+        MStack<ClipRect> mClipStack;
 
         SDL_Window *mWindow;
 

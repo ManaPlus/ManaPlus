@@ -78,7 +78,7 @@ struct MStack final
             mPointer --;
     }
 
-    T &top()
+    T &top() const
     {
         return *mPointer;
     }
@@ -91,6 +91,11 @@ struct MStack final
     void clear()
     {
         mPointer = mStack - 1;
+    }
+
+    bool empty() const
+    {
+        return mPointer == mStartPointer;
     }
 
     T *mStack;

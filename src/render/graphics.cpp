@@ -102,7 +102,7 @@ Graphics::Graphics() :
     mHeight(0),
     mActualWidth(0),
     mActualHeight(0),
-    mClipStack(),
+    mClipStack(1000),
     mWindow(nullptr),
 #ifdef USE_SDL2
     mRenderer(nullptr),
@@ -576,31 +576,36 @@ void Graphics::pushClipArea(const Rect &area)
     // to the stack.
     if (area.width < 0 || area.height < 0)
     {
-        ClipRect carea;
-        mClipStack.push(carea);
+        ClipRect &carea = mClipStack.push();
+        carea.x = 0;
+        carea.y = 0;
+        carea.width = 0;
+        carea.height = 0;
+        carea.xOffset = 0;
+        carea.yOffset = 0;
         return;
     }
 
     if (mClipStack.empty())
     {
-        ClipRect carea;
+        ClipRect &carea = mClipStack.push();
         carea.x = area.x;
         carea.y = area.y;
         carea.width = area.width;
         carea.height = area.height;
         carea.xOffset = area.x;
         carea.yOffset = area.y;
-        mClipStack.push(carea);
         return;
     }
 
     const ClipRect &top = mClipStack.top();
-    ClipRect carea;
-    carea = area;
-    carea.xOffset = top.xOffset + carea.x;
-    carea.yOffset = top.yOffset + carea.y;
-    carea.x += top.xOffset;
-    carea.y += top.yOffset;
+    ClipRect &carea = mClipStack.push();
+    carea.x = area.x + top.xOffset;
+    carea.y = area.y + top.yOffset;
+    carea.width = area.width;
+    carea.height = area.height;
+    carea.xOffset = top.xOffset + area.x;
+    carea.yOffset = top.yOffset + area.y;
 
     // Clamp the pushed clip rectangle.
     if (carea.x < top.x)
@@ -624,8 +629,6 @@ void Graphics::pushClipArea(const Rect &area)
         if (carea.height < 0)
             carea.height = 0;
     }
-
-    mClipStack.push(carea);
 }
 
 void Graphics::popClipArea()
@@ -641,7 +644,7 @@ const ClipRect *Graphics::getCurrentClipArea() const
     if (mClipStack.empty())
         return nullptr;
 
-    return &mClipStack.top();
+    return &mClipStack.topConst();
 }
 
 #ifdef USE_OPENGL
