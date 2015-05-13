@@ -634,12 +634,10 @@ void TextField::handleCopy() const
 
 void TextField::drawCaret(Graphics* graphics, int x)
 {
-    const Rect *const clipArea = graphics->getCurrentClipArea();
-    if (!clipArea)
-        return;
+    const ClipRect &clipArea = graphics->getTopClip();
 
     graphics->setColor(*mCaretColor);
-    graphics->drawLine(x + mPadding, clipArea->height - mPadding,
+    graphics->drawLine(x + mPadding, clipArea.height - mPadding,
         x + mPadding, mPadding);
 }
 

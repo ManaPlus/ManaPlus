@@ -639,14 +639,6 @@ void Graphics::popClipArea()
     mClipStack.pop();
 }
 
-const ClipRect *Graphics::getCurrentClipArea() const
-{
-    if (mClipStack.empty())
-        return nullptr;
-
-    return &mClipStack.topConst();
-}
-
 #ifdef USE_OPENGL
 void Graphics::setOpenGLFlags()
 {

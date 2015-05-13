@@ -473,11 +473,9 @@ void BrowserBox::mouseExited(MouseEvent &event A_UNUSED)
 void BrowserBox::draw(Graphics *graphics)
 {
     BLOCK_START("BrowserBox::draw")
-    const ClipRect *const cr = graphics->getCurrentClipArea();
-    if (!cr)
-        return;
-    mYStart = cr->y - cr->yOffset;
-    const int yEnd = mYStart + cr->height;
+    const ClipRect &cr = graphics->getTopClip();
+    mYStart = cr.y - cr.yOffset;
+    const int yEnd = mYStart + cr.height;
     if (mYStart < 0)
         mYStart = 0;
 

@@ -409,14 +409,6 @@ class Graphics notfinal
          */
         virtual void drawRectangle(const Rect &rectangle) = 0;
 
-        /**
-         * Gets the current clip area. Usefull if you want to do drawing
-         * bypassing Graphics.
-         *
-         * @return The current clip area.
-         */
-        virtual const ClipRect *getCurrentClipArea() const;
-
 #ifdef USE_OPENGL
         virtual void createGLContext();
 #endif
