@@ -1,0 +1,104 @@
+/*
+ *  The ManaPlus Client
+ *  Copyright (C) 2015  The ManaPlus Developers
+ *
+ *  This file is part of The ManaPlus Client.
+ *
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#ifndef RESOURCES_MSTACK_H
+#define RESOURCES_MSTACK_H
+
+#include "logger.h"
+
+#include "localconsts.h"
+
+template<typename T>
+struct MStack final
+{
+    MStack(const size_t maxSize) :
+        mStack(new T[maxSize]),
+        mMaxSize(maxSize),
+        mPointer(mStack - 1),
+        mStartPointer(mStack - 1),
+        mEndPointer(mStack + maxSize - 1)
+    {
+    }
+
+    ~MStack()
+    {
+        delete [] mStack;
+    }
+
+    T &push()
+    {
+        if (mPointer == mEndPointer)
+        {
+            logger->log("error: max stack size reached");
+            return *mPointer;
+        }
+        return *(++mPointer);
+    }
+
+    T &getPop()
+    {
+        if (mPointer == mStartPointer)
+            logger->log("error: minimal stack size reached");
+        else
+            mPointer --;
+        return *mPointer;
+    }
+
+    const T &getPopConst()
+    {
+        if (mPointer == mStartPointer)
+            logger->log("error: minimal stack size reached");
+        else
+            mPointer --;
+        return *mPointer;
+    }
+
+    void pop()
+    {
+        if (mPointer == mStartPointer)
+            logger->log("error: minimal stack size reached");
+        else
+            mPointer --;
+    }
+
+    T &top()
+    {
+        return *mPointer;
+    }
+
+    const T &topConst() const
+    {
+        return *mPointer;
+    }
+
+    void clear()
+    {
+        mPointer = mStack - 1;
+    }
+
+    T *mStack;
+
+    size_t mMaxSize;
+    T *mPointer;
+    const T *const mStartPointer;
+    const T *const mEndPointer;
+};
+
+#endif  // RESOURCES_MSTACK_H

@@ -30,6 +30,8 @@
 #include "gui/skin.h"
 #include "gui/theme.h"
 
+#include "gui/cliprect.h"
+
 #include "gui/fonts/font.h"
 
 #include "utils/physfscheckutils.h"
@@ -39,6 +41,7 @@
 #include "resources/dyepalette.h"
 #include "resources/image.h"
 #include "resources/imagewriter.h"
+#include "resources/mstack.h"
 #include "resources/openglimagehelper.h"
 #include "resources/surfaceimagehelper.h"
 #include "resources/wallpaper.h"
@@ -97,6 +100,8 @@ int TestLauncher::exec()
         return testFps3();
     else if (mTest == "105")
         return testDyeSpeed();
+    else if (mTest == "106")
+        return testStackSpeed();
 
     return -1;
 }
@@ -482,6 +487,90 @@ int TestLauncher::testDyeSpeed()
         ((static_cast<long int>(time1.tv_sec) * 1000000000L
         + static_cast<long int>(time1.tv_nsec)) / 1);
     printf("time: %ld\n", diff);
+#endif
+    return 0;
+}
+
+int TestLauncher::testStackSpeed()
+{
+    const int sz = 100000;
+    const int k = 100;
+    const int sz2 = sz * k;
+
+    std::stack<ClipRect> stack1;
+    MStack<ClipRect> stack2(sz2);
+    timespec time1;
+    timespec time2;
+
+#if defined __linux__ || defined __linux
+
+    for (int d = 0; d < 100; d ++)
+    {
+        for (int f = 0; f < sz; f ++)
+        {
+            ClipRect rect;
+            rect.xOffset = f;
+            rect.yOffset = f;
+            stack1.push(rect);
+        }
+    }
+    while (!stack1.empty())
+        stack1.pop();
+
+    clock_gettime(CLOCK_MONOTONIC, &time1);
+
+    for (int d = 0; d < 100; d ++)
+    {
+        for (int f = 0; f < sz; f ++)
+        {
+            ClipRect rect;
+            rect.xOffset = f;
+            rect.yOffset = f;
+            stack1.push(rect);
+        }
+    }
+
+    clock_gettime(CLOCK_MONOTONIC, &time2);
+    long diff = ((static_cast<long int>(time2.tv_sec) * 1000000000L
+        + static_cast<long int>(time2.tv_nsec)) / 1) -
+        ((static_cast<long int>(time1.tv_sec) * 1000000000L
+        + static_cast<long int>(time1.tv_nsec)) / 1);
+    printf("debug: %d\n", stack1.top().xOffset);
+    printf("stl time: %ld\n", diff);
+
+
+
+    for (int d = 0; d < 100; d ++)
+    {
+        for (int f = 0; f < sz; f ++)
+        {
+            ClipRect &rect = stack2.push();
+            rect.xOffset = f;
+            rect.yOffset = f;
+        }
+    }
+    stack2.clear();
+
+    clock_gettime(CLOCK_MONOTONIC, &time1);
+
+    for (int d = 0; d < 100; d ++)
+    {
+        for (int f = 0; f < sz; f ++)
+        {
+            ClipRect &rect = stack2.push();
+            rect.xOffset = f;
+            rect.yOffset = f;
+        }
+    }
+
+    clock_gettime(CLOCK_MONOTONIC, &time2);
+    diff = ((static_cast<long int>(time2.tv_sec) * 1000000000L
+        + static_cast<long int>(time2.tv_nsec)) / 1) -
+        ((static_cast<long int>(time1.tv_sec) * 1000000000L
+        + static_cast<long int>(time1.tv_nsec)) / 1);
+    printf("debug: %d\n", stack2.top().xOffset);
+    printf("my time:  %ld\n", diff);
+
 #endif
     return 0;
 }

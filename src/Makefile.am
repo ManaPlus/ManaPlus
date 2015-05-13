@@ -787,6 +787,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      resources/mapreader.h \
 	      resources/modinfo.cpp \
 	      resources/modinfo.h \
+	      resources/mstack.h \
 	      resources/notificationinfo.h \
 	      resources/notifications.h \
 	      enums/resources/notifyflags.h \
@@ -1493,7 +1494,8 @@ manaplus_SOURCES += \
 	      utils/files_unittest.cc \
 	      utils/stringutils_unittest.cc \
 	      utils/xmlutils_unittest.cc \
-	      resources/dye_unittest.cc
+	      resources/dye_unittest.cc \
+	      resources/mstack_unittest.cc
 endif
 
 EXTRA_DIST = CMakeLists.txt \

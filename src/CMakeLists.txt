@@ -651,6 +651,7 @@ SET(SRCS
     resources/mapreader.h
     resources/modinfo.cpp
     resources/modinfo.h
+    resources/mstack.h
     resources/notificationinfo.h
     resources/notifications.h
     enums/resources/notifyflags.h

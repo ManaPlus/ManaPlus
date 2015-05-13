@@ -72,6 +72,8 @@ class TestLauncher final
 
         int testDyeSpeed();
 
+        int testStackSpeed();
+
     private:
         std::string mTest;
 
