@@ -84,12 +84,3 @@ ClipRect::ClipRect(const int x0, const int y0,
     yOffset(yOffset0)
 {
 }
-
-const ClipRect& ClipRect::operator=(const Rect& other)
-{
-    x = other.x;
-    y = other.y;
-    width = other.width;
-    height = other.height;
-    return *this;
-}

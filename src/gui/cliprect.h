@@ -103,14 +103,7 @@ class ClipRect final : public Rect
                  const int xOffset0,
                  const int yOffset0);
 
-        /**
-          * Copy constructor. Copies x, y, width and height 
-          * field from a rectangle to a clip rectangle.
-          *
-          * @param other The rectangle to copy data from.
-          * @returns A clip rectangle with data copyied from a rectangle.
-          */
-        const ClipRect& operator=(const Rect& other);
+        A_DELETE_COPY(ClipRect)
 
         /**
           * Holds the x offset of the x coordinate.

@@ -504,6 +504,7 @@ int TestLauncher::testStackSpeed()
 
 #if defined __linux__ || defined __linux
 
+/*
     for (int d = 0; d < 100; d ++)
     {
         for (int f = 0; f < sz; f ++)
@@ -571,6 +572,7 @@ int TestLauncher::testStackSpeed()
     printf("debug: %d\n", stack2.top().xOffset);
     printf("my time:  %ld\n", diff);
 
+*/
 #endif
     return 0;
 }
