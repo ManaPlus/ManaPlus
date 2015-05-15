@@ -85,6 +85,12 @@
 #include <cilk/cilk.h>
 #endif
 
+#ifdef ADVGCC
+#define const2 const
+#else  // ADVGCC
+#define const2
+#endif  // ADVGCC
+
 #ifdef __GNUC__
 #ifdef ENABLE_CILKPLUS
 #if GCC_VERSION < 40900

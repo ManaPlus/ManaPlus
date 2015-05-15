@@ -411,10 +411,10 @@ class Map final : public Properties, public ConfigListener
             }
 
             const std::string file;
-            const int x;
-            const int y;
-            const int w;
-            const int h;
+            const2 int x;
+            const2 int y;
+            const2 int w;
+            const2 int h;
         };
         std::vector<ParticleEffectData> mParticleEffects;
 
