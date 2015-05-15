@@ -216,8 +216,7 @@ class Map final : public Properties, public ConfigListener
          */
         void addAnimation(const int gid, TileAnimation *const animation);
 
-        void setDrawLayersFlags(const MapType::MapType &n)
-        { mDrawLayersFlags = n; }
+        void setDrawLayersFlags(const MapType::MapType &n);
 
         MapType::MapType getDrawLayersFlags() const A_WARN_UNUSED
         { return mDrawLayersFlags; }
@@ -327,6 +326,8 @@ class Map final : public Properties, public ConfigListener
 
         void setMask(const int mask);
 
+        void updateDrawLayersList();
+
     protected:
         friend class Actor;
         friend class Minimap;
@@ -377,6 +378,8 @@ class Map final : public Properties, public ConfigListener
         MetaTile *const mMetaTiles;
         WalkLayer *mWalkLayer;
         Layers mLayers;
+        Layers mDrawUnderLayers;
+        Layers mDrawOverLayers;
         Tilesets mTilesets;
         Actors mActors;
         bool mHasWarps;
@@ -452,7 +455,9 @@ class Map final : public Properties, public ConfigListener
         const MapHeights *mHeights;
         bool mRedrawMap;
         bool mBeingOpacity;
+        bool mCachedDraw;
         bool mCustom;
+        bool mDrawOnlyFringe;
 };
 
 #endif  // RESOURCES_MAP_MAP_H

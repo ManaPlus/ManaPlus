@@ -462,6 +462,7 @@ Map *MapReader::readMap(XmlNodePtrConst node, const std::string &path)
     map->setWalkLayer(resman->getWalkLayer(fileName, map));
     unloadTempLayers();
     BLOCK_END("MapReader::readMap xml")
+    map->updateDrawLayersList();
     return map;
 }
 
@@ -1064,6 +1065,7 @@ Map *MapReader::createEmptyMap(const std::string &restrict filename,
     map->addLayer(layer);
     layer = new MapLayer(0, 0, 300, 300, true, 1);
     map->addLayer(layer);
+    map->updateDrawLayersList();
 
     return map;
 }

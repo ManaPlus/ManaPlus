@@ -87,6 +87,8 @@ Map::Map(const int width, const int height,
     mMetaTiles(new MetaTile[mWidth * mHeight]),
     mWalkLayer(nullptr),
     mLayers(),
+    mDrawUnderLayers(),
+    mDrawOverLayers(),
     mTilesets(),
     mActors(),
     mHasWarps(false),
@@ -131,7 +133,15 @@ Map::Map(const int width, const int height,
     mHeights(nullptr),
     mRedrawMap(true),
     mBeingOpacity(false),
-    mCustom(false)
+#ifdef USE_OPENGL
+    mCachedDraw(mOpenGL == RENDER_NORMAL_OPENGL
+        || mOpenGL == RENDER_GLES_OPENGL
+        || mOpenGL == RENDER_MODERN_OPENGL),
+#else
+    mCachedDraw(false),
+#endif
+    mCustom(false),
+    mDrawOnlyFringe(false)
 {
     const int size = mWidth * mHeight;
     for (int i = 0; i < BlockType::NB_BLOCKTYPES; i++)
@@ -353,9 +363,7 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
 #ifdef USE_OPENGL
     int updateFlag = 0;
 
-    if (mOpenGL == RENDER_NORMAL_OPENGL
-        || mOpenGL == RENDER_GLES_OPENGL
-        || mOpenGL == RENDER_MODERN_OPENGL)
+    if (mCachedDraw)
     {
         if (mLastX != startX || mLastY != startY || mLastScrollX != scrollX
             || mLastScrollY != scrollY)
@@ -379,9 +387,7 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
     }
 #endif
 
-    if (mDrawLayersFlags == MapType::SPECIAL3
-        || mDrawLayersFlags == MapType::SPECIAL4
-        || mDrawLayersFlags == MapType::BLACKWHITE)
+    if (mDrawOnlyFringe)
     {
         if (mFringeLayer)
         {
@@ -393,62 +399,77 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
     }
     else
     {
-        bool overFringe = false;
-
-        for (LayersCIter layeri = mLayers.begin(), layeri_end = mLayers.end();
-             layeri != layeri_end && !overFringe; ++ layeri)
+        if (mCachedDraw)
         {
-            MapLayer *const layer = *layeri;
-            if (!(layer->mMask & mMask))
-                continue;
-
-            if (layer->isFringeLayer())
+            FOR_EACH (Layers::iterator, it, mDrawUnderLayers)
             {
-                layer->setSpecialLayer(mSpecialLayer);
-                layer->setTempLayer(mTempLayer);
-                if (mDrawLayersFlags == MapType::SPECIAL2)
-                    overFringe = true;
+                MapLayer *const layer = *it;
+                if (updateFlag)
+                {
+                    layer->updateOGL(graphics, startX, startY,
+                        endX, endY, scrollX, scrollY, mDrawLayersFlags);
+                }
 
-                layer->drawFringe(graphics, startX, startY, endX, endY,
+                layer->drawOGL(graphics);
+            }
+
+            if (mFringeLayer)
+            {
+                mFringeLayer->setSpecialLayer(mSpecialLayer);
+                mFringeLayer->setTempLayer(mTempLayer);
+                mFringeLayer->drawFringe(graphics, startX, startY, endX, endY,
                     scrollX, scrollY, &mActors, mDrawLayersFlags, mActorFixY);
             }
-            else
-            {
-#ifdef USE_OPENGL
-                if (mOpenGL == RENDER_NORMAL_OPENGL
-                    || mOpenGL == RENDER_GLES_OPENGL
-                    || mOpenGL == RENDER_MODERN_OPENGL)
-                {
-                    if (updateFlag)
-                    {
-                        layer->updateOGL(graphics, startX, startY,
-                            endX, endY, scrollX, scrollY, mDrawLayersFlags);
-                    }
 
-                    layer->drawOGL(graphics);
-                }
-                else
-#endif
+            FOR_EACH (Layers::iterator, it, mDrawOverLayers)
+            {
+                MapLayer *const layer = *it;
+                if (updateFlag)
                 {
-                    layer->draw(graphics, startX, startY, endX, endY,
-                        scrollX, scrollY, mDrawLayersFlags);
+                    layer->updateOGL(graphics, startX, startY,
+                        endX, endY, scrollX, scrollY, mDrawLayersFlags);
                 }
+
+                layer->drawOGL(graphics);
+            }
+        }
+        else
+        {
+            FOR_EACH (Layers::iterator, it, mDrawUnderLayers)
+            {
+                (*it)->draw(graphics, startX, startY, endX, endY,
+                    scrollX, scrollY, mDrawLayersFlags);
+            }
+
+            if (mFringeLayer)
+            {
+                mFringeLayer->setSpecialLayer(mSpecialLayer);
+                mFringeLayer->setTempLayer(mTempLayer);
+                mFringeLayer->drawFringe(graphics, startX, startY, endX, endY,
+                    scrollX, scrollY, &mActors, mDrawLayersFlags, mActorFixY);
+            }
+
+            FOR_EACH (Layers::iterator, it, mDrawOverLayers)
+            {
+                (*it)->draw(graphics, startX, startY, endX, endY,
+                    scrollX, scrollY, mDrawLayersFlags);
             }
         }
     }
 
     // Don't draw if gui opacity == 1
-    if (mBeingOpacity && mOpacity != 1.0F)
+    if (mBeingOpacity)
     {
         // Draws beings with a lower opacity to make them visible
         // even when covered by a wall or some other elements...
         ActorsCIter ai = mActors.begin();
         const ActorsCIter ai_end = mActors.end();
-        while (ai != ai_end)
+
+        if (mOpenGL == RENDER_SOFTWARE)
         {
-            if (Actor *const actor = *ai)
+            while (ai != ai_end)
             {
-                if (mOpenGL == RENDER_SOFTWARE)
+                if (Actor *const actor = *ai)
                 {
                     const int x = actor->getTileX();
                     const int y = actor->getTileY();
@@ -457,16 +478,33 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
                         ++ai;
                         continue;
                     }
+                    // For now, just draw actors with only one layer.
+                    if (actor->getNumberOfLayers() == 1)
+                    {
+                        actor->setAlpha(0.3F);
+                        actor->draw(graphics, -scrollX, -scrollY);
+                        actor->setAlpha(1.0F);
+                    }
                 }
-                // For now, just draw actors with only one layer.
-                if (actor->getNumberOfLayers() == 1)
-                {
-                    actor->setAlpha(0.3F);
-                    actor->draw(graphics, -scrollX, -scrollY);
-                    actor->setAlpha(1.0F);
-                }
+                ++ai;
             }
-            ++ai;
+        }
+        else
+        {
+            while (ai != ai_end)
+            {
+                if (Actor *const actor = *ai)
+                {
+                    // For now, just draw actors with only one layer.
+                    if (actor->getNumberOfLayers() == 1)
+                    {
+                        actor->setAlpha(0.3F);
+                        actor->draw(graphics, -scrollX, -scrollY);
+                        actor->setAlpha(1.0F);
+                    }
+                }
+                ++ai;
+            }
         }
     }
 
@@ -1207,7 +1245,7 @@ const TileAnimation *Map::getAnimationForGid(const int gid) const
     if (mTileAnimations.empty())
         return nullptr;
 
-    TileAnimationMapCIter i = mTileAnimations.find(gid);
+    const TileAnimationMapCIter i = mTileAnimations.find(gid);
     return (i == mTileAnimations.end()) ? nullptr : i->second;
 }
 
@@ -1475,6 +1513,41 @@ uint8_t Map::getHeightOffset(const int x, const int y) const
     return mHeights->getHeight(x, y);
 }
 
+void Map::updateDrawLayersList()
+{
+    mDrawUnderLayers.clear();
+    mDrawOverLayers.clear();
+
+    if (mDrawOnlyFringe)
+        return;
+
+    LayersCIter layers = mLayers.begin();
+    const LayersCIter layers_end = mLayers.end();
+    for (; layers != layers_end; ++ layers)
+    {
+        MapLayer *const layer = *layers;
+        if (!(layer->mMask & mMask))
+            continue;
+
+        if (layer->isFringeLayer())
+        {
+            ++ layers;
+            break;
+        }
+
+        mDrawUnderLayers.push_back(layer);
+    }
+
+    for (; layers != layers_end; ++ layers)
+    {
+        MapLayer *const layer = *layers;
+        if (!(layer->mMask & mMask))
+            continue;
+
+        mDrawOverLayers.push_back(layer);
+    }
+}
+
 void Map::setMask(const int mask)
 {
     if (mask != mMask)
@@ -1496,4 +1569,20 @@ void Map::addAnimation(const int gid, TileAnimation *const animation)
         delete (*it).second;
     }
     mTileAnimations[gid] = animation;
+}
+
+void Map::setDrawLayersFlags(const MapType::MapType &n)
+{
+    mDrawLayersFlags = n;
+    if (mDrawLayersFlags == MapType::SPECIAL3
+        || mDrawLayersFlags == MapType::SPECIAL4
+        || mDrawLayersFlags == MapType::BLACKWHITE)
+    {
+        mDrawOnlyFringe = true;
+    }
+    else
+    {
+        mDrawOnlyFringe = false;
+    }
+    updateDrawLayersList();
 }
