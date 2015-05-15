@@ -1551,8 +1551,11 @@ void Map::updateDrawLayersList()
 void Map::setMask(const int mask)
 {
     if (mask != mMask)
+    {
         mRedrawMap = true;
-    mMask = mask;
+        mMask = mask;
+        updateDrawLayersList();
+    }
 }
 
 void Map::setMusicFile(const std::string &file)
