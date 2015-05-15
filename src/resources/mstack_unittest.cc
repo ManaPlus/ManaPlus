@@ -63,8 +63,8 @@ TEST(mstack, push3)
     MStack<ClipRect> stack(10);
     ClipRect &val1 = stack.push();
     val1.xOffset = 10;
-    val1 = stack.top();
-    EXPECT_EQ(10, val1.xOffset);
+    ClipRect &val2 = stack.top();
+    EXPECT_EQ(10, val2.xOffset);
     EXPECT_EQ(10, stack.mStack[0].xOffset);
 }
 
