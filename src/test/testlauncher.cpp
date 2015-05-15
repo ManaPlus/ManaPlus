@@ -493,6 +493,7 @@ int TestLauncher::testDyeSpeed()
 
 int TestLauncher::testStackSpeed()
 {
+/*
     const int sz = 100000;
     const int k = 100;
     const int sz2 = sz * k;
@@ -503,8 +504,6 @@ int TestLauncher::testStackSpeed()
     timespec time2;
 
 #if defined __linux__ || defined __linux
-
-/*
     for (int d = 0; d < 100; d ++)
     {
         for (int f = 0; f < sz; f ++)
@@ -572,8 +571,8 @@ int TestLauncher::testStackSpeed()
     printf("debug: %d\n", stack2.top().xOffset);
     printf("my time:  %ld\n", diff);
 
-*/
 #endif
+*/
     return 0;
 }
 
