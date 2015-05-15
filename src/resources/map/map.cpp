@@ -583,8 +583,9 @@ void Map::updateAmbientLayers(const float scrollX, const float scrollY)
     BLOCK_END("Map::updateAmbientLayers")
 }
 
-void Map::drawAmbientLayers(Graphics *const graphics, const LayerType type,
-                            const int detail)
+void Map::drawAmbientLayers(Graphics *const graphics,
+                            const LayerType type,
+                            const int detail) const
 {
     BLOCK_START("Map::drawAmbientLayers")
     // Detail 0 = no ambient effects except background image
@@ -595,7 +596,7 @@ void Map::drawAmbientLayers(Graphics *const graphics, const LayerType type,
     }
 
     // find out which layer list to draw
-    AmbientLayerVector *layers = nullptr;
+    const AmbientLayerVector *layers = nullptr;
     switch (type)
     {
         case FOREGROUND_LAYERS:
@@ -980,18 +981,14 @@ Path Map::findPath(const int startX, const int startY,
 }
 
 void Map::addParticleEffect(const std::string &effectFile,
-                            const int x, const int y, const int w, const int h)
+                            const int x, const int y,
+                            const int w, const int h)
 {
-    ParticleEffectData newEffect;
-    newEffect.file = effectFile;
-    newEffect.x = x;
-    newEffect.y = y;
-    newEffect.w = w;
-    newEffect.h = h;
+    ParticleEffectData newEffect(effectFile, x, y, w, h);
     mParticleEffects.push_back(newEffect);
 }
 
-void Map::initializeParticleEffects(Particle *const engine)
+void Map::initializeParticleEffects(Particle *const engine) const
 {
     BLOCK_START("Map::initializeParticleEffects")
     if (!engine)
@@ -1142,7 +1139,8 @@ std::string Map::getUserMapDirectory() const
 }
 
 void Map::addRange(const std::string &name, const int type,
-                   const int x, const int y, const int dx, const int dy)
+                   const int x, const int y,
+                   const int dx, const int dy)
 {
     if (!mObjects)
         return;
@@ -1152,7 +1150,8 @@ void Map::addRange(const std::string &name, const int type,
 }
 
 void Map::addPortal(const std::string &name, const int type,
-                    const int x, const int y, const int dx, const int dy)
+                    const int x, const int y,
+                    const int dx, const int dy)
 {
     addPortalTile(name, type, (x / mapTileSize) + (dx / mapTileSize / 2),
         (y / mapTileSize) + (dy / mapTileSize / 2));

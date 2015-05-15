@@ -54,7 +54,8 @@ class MapLayer final: public ConfigListener
          * fringe layer. The fringe layer is the layer that draws the actors.
          * There can be only one fringe layer per map.
          */
-        MapLayer(const int x, const int y, const int width, const int height,
+        MapLayer(const int x, const int y,
+                 const int width, const int height,
                  const bool isFringeLayer, const int mask);
 
         A_DELETE_COPY(MapLayer)
@@ -88,10 +89,10 @@ class MapLayer final: public ConfigListener
                   const int scrollX, const int scrollY,
                   const int layerDrawFlags) const;
 
-        void drawSDL(Graphics *const graphics);
+        void drawSDL(Graphics *const graphics) const;
 
 #ifdef USE_OPENGL
-        void drawOGL(Graphics *const graphics);
+        void drawOGL(Graphics *const graphics) const;
 
         void updateOGL(Graphics *const graphics,
                        int startX, int startY,
@@ -130,22 +131,23 @@ class MapLayer final: public ConfigListener
 
         void optionChanged(const std::string &value) override final;
 
+    protected:
         static int getTileDrawWidth(const Image *img,
                                     const int endX,
                                     int &width) A_WARN_UNUSED;
 
     private:
-        int mX;
-        int mY;
-        int mWidth;
-        int mHeight;
-        Image **mTiles;
-        SpecialLayer *mSpecialLayer;
-        SpecialLayer *mTempLayer;
+        const int mX;
+        const int mY;
+        const int mWidth;
+        const int mHeight;
+        Image **const mTiles;
+        const SpecialLayer *mSpecialLayer;
+        const SpecialLayer *mTempLayer;
         typedef std::vector<MapRowVertexes*> MapRows;
         MapRows mTempRows;
         int mMask;
-        bool mIsFringeLayer;    /**< Whether the actors are drawn. */
+        const bool mIsFringeLayer;    /**< Whether the actors are drawn. */
         bool mHighlightAttackRange;
 };
 

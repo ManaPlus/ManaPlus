@@ -209,7 +209,7 @@ class Map final : public Properties, public ConfigListener
         /**
          * Initializes all added particle effects
          */
-        void initializeParticleEffects(Particle *const particleEngine);
+        void initializeParticleEffects(Particle *const particleEngine) const;
 
         /**
          * Adds a tile animation to the map
@@ -241,10 +241,12 @@ class Map final : public Properties, public ConfigListener
         std::string getUserMapDirectory() const A_WARN_UNUSED;
 
         void addPortal(const std::string &name, const int type,
-                       const int x, const int y, const int dx, const int dy);
+                       const int x, const int y,
+                       const int dx, const int dy);
 
         void addRange(const std::string &name, const int type,
-                      const int x, const int y, const int dx, const int dy);
+                      const int x, const int y,
+                      const int dx, const int dy);
 
         void addPortalTile(const std::string &name, const int type,
                            const int x, const int y);
@@ -313,7 +315,7 @@ class Map final : public Properties, public ConfigListener
         const MetaTile *getMetaTiles() const
         { return mMetaTiles; }
 
-        WalkLayer *getWalkLayer()
+        const WalkLayer *getWalkLayer() const
         { return mWalkLayer; }
 
         void setWalkLayer(WalkLayer *const layer)
@@ -355,7 +357,7 @@ class Map final : public Properties, public ConfigListener
          * Draws the foreground or background layers to the given graphics output.
          */
         void drawAmbientLayers(Graphics *const graphics, const LayerType type,
-                               const int detail);
+                               const int detail) const;
 
         /**
          * Tells whether the given coordinates fall within the map boundaries.
@@ -367,11 +369,12 @@ class Map final : public Properties, public ConfigListener
          */
         unsigned *mOccupation[BlockType::NB_BLOCKTYPES];
 
-        int mWidth;
-        int mHeight;
-        int mTileWidth, mTileHeight;
+        const int mWidth;
+        const int mHeight;
+        const int mTileWidth;
+        const int mTileHeight;
         int mMaxTileHeight;
-        MetaTile *mMetaTiles;
+        MetaTile *const mMetaTiles;
         WalkLayer *mWalkLayer;
         Layers mLayers;
         Tilesets mTilesets;
@@ -394,20 +397,24 @@ class Map final : public Properties, public ConfigListener
         // Particle effect data
         struct ParticleEffectData final
         {
-            ParticleEffectData() :
-                file(),
-                x(0),
-                y(0),
-                w(0),
-                h(0)
+            ParticleEffectData(const std::string &file0,
+                               const int x0,
+                               const int y0,
+                               const int w0,
+                               const int h0) :
+                file(file0),
+                x(x0),
+                y(y0),
+                w(w0),
+                h(h0)
             {
             }
 
-            std::string file;
-            int x;
-            int y;
-            int w;
-            int h;
+            const std::string file;
+            const int x;
+            const int y;
+            const int w;
+            const int h;
         };
         std::vector<ParticleEffectData> mParticleEffects;
 
@@ -417,7 +424,7 @@ class Map final : public Properties, public ConfigListener
 
         int mOverlayDetail;
         float mOpacity;
-        RenderType mOpenGL;
+        const RenderType mOpenGL;
         int mPvp;
         bool mTilesetsIndexed;
         Tileset** mIndexedTilesets;
@@ -442,7 +449,7 @@ class Map final : public Properties, public ConfigListener
         int mDrawScrollY;
         int mMask;
         Resource *mAtlas;
-        MapHeights *mHeights;
+        const MapHeights *mHeights;
         bool mRedrawMap;
         bool mBeingOpacity;
         bool mCustom;

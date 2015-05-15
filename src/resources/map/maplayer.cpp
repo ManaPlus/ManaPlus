@@ -158,7 +158,7 @@ void MapLayer::draw(Graphics *const graphics,
     BLOCK_END("MapLayer::draw")
 }
 
-void MapLayer::drawSDL(Graphics *const graphics)
+void MapLayer::drawSDL(Graphics *const graphics) const
 {
     BLOCK_START("MapLayer::drawSDL")
     MapRows::const_iterator rit = mTempRows.begin();
@@ -337,7 +337,7 @@ void MapLayer::updateOGL(Graphics *const graphics,
     BLOCK_END("MapLayer::updateOGL")
 }
 
-void MapLayer::drawOGL(Graphics *const graphics)
+void MapLayer::drawOGL(Graphics *const graphics) const
 {
     BLOCK_START("MapLayer::drawOGL")
     MapRows::const_iterator rit = mTempRows.begin();
