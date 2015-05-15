@@ -410,7 +410,7 @@ class Map final : public Properties, public ConfigListener
             {
             }
 
-            const std::string file;
+            const2 std::string file;
             const2 int x;
             const2 int y;
             const2 int w;
