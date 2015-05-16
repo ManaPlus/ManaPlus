@@ -341,7 +341,7 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
     // Make sure actors are sorted ascending by Y-coordinate
     // so that they overlap correctly
     BLOCK_START("Map::draw sort")
-        mActors.sort(actorCompare);
+    mActors.sort(actorCompare);
     BLOCK_END("Map::draw sort")
 
     // update scrolling of all ambient layers
@@ -404,19 +404,26 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
     {
         if (mCachedDraw)
         {
-            FOR_EACH (Layers::iterator, it, mDrawUnderLayers)
+            if (updateFlag)
             {
-                MapLayer *const layer = *it;
-                if (updateFlag)
+                FOR_EACH (Layers::iterator, it, mDrawUnderLayers)
                 {
-                    layer->updateOGL(graphics,
+                    (*it)->updateOGL(graphics,
                         startX, startY,
                         endX, endY,
                         scrollX, scrollY);
                 }
-
-                layer->drawOGL(graphics);
+                FOR_EACH (Layers::iterator, it, mDrawOverLayers)
+                {
+                    (*it)->updateOGL(graphics,
+                        startX, startY,
+                        endX, endY,
+                        scrollX, scrollY);
+                }
             }
+
+            FOR_EACH (Layers::iterator, it, mDrawUnderLayers)
+                (*it)->drawOGL(graphics);
 
             if (mFringeLayer)
             {
@@ -430,18 +437,7 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
             }
 
             FOR_EACH (Layers::iterator, it, mDrawOverLayers)
-            {
-                MapLayer *const layer = *it;
-                if (updateFlag)
-                {
-                    layer->updateOGL(graphics,
-                        startX, startY,
-                        endX, endY,
-                        scrollX, scrollY);
-                }
-
-                layer->drawOGL(graphics);
-            }
+                (*it)->drawOGL(graphics);
         }
         else
         {
