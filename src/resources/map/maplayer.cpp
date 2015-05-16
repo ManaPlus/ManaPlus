@@ -56,6 +56,7 @@ MapLayer::MapLayer(const int x, const int y,
     mTempLayer(nullptr),
     mTempRows(),
     mMask(mask),
+    mActorsFix(0),
     mIsFringeLayer(fringeLayer),
     mHighlightAttackRange(config.getBoolValue("highlightAttackRange")),
     mSpecialFlag(true)
@@ -354,8 +355,7 @@ void MapLayer::drawOGL(Graphics *const graphics) const
 void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
                           int endX, int endY,
                           const int scrollX, const int scrollY,
-                          const Actors *const actors,
-                          const int yFix) const
+                          const Actors *const actors) const
 {
     BLOCK_START("MapLayer::drawFringe")
     if (!localPlayer || !mSpecialLayer || !mTempLayer)
@@ -398,7 +398,7 @@ void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
         for (int y = startY; y < minEndY; y ++)
         {
             const int y32 = y * mapTileSize;
-            const int y32s = (y + yFix) * mapTileSize;
+            const int y32s = (y + mActorsFix) * mapTileSize;
 
             BLOCK_START("MapLayer::drawFringe drawmobs")
             // If drawing the fringe layer, make sure all actors above this row of
@@ -443,7 +443,7 @@ void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
 
         for (int y = minEndY; y < endY; y++)
         {
-            const int y32s = (y + yFix) * mapTileSize;
+            const int y32s = (y + mActorsFix) * mapTileSize;
 
             BLOCK_START("MapLayer::drawFringe drawmobs")
             // If drawing the fringe layer, make sure all actors above this row of
@@ -461,7 +461,7 @@ void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
         for (int y = startY; y < minEndY; y ++)
         {
             const int y32 = y * mapTileSize;
-            const int y32s = (y + yFix) * mapTileSize;
+            const int y32s = (y + mActorsFix) * mapTileSize;
             const int yWidth = y * mWidth;
 
             BLOCK_START("MapLayer::drawFringe drawmobs")
@@ -547,7 +547,7 @@ void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
         for (int y = minEndY; y < endY; y++)
         {
             const int y32 = y * mapTileSize;
-            const int y32s = (y + yFix) * mapTileSize;
+            const int y32s = (y + mActorsFix) * mapTileSize;
             const int yWidth = y * mWidth;
 
             BLOCK_START("MapLayer::drawFringe drawmobs")

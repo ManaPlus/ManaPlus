@@ -110,8 +110,7 @@ class MapLayer final: public ConfigListener
                         int startX, int startY,
                         int endX, int endY,
                         const int scrollX, const int scrollY,
-                        const Actors *const actors,
-                        const int yFix) const;
+                        const Actors *const actors) const;
 
         bool isFringeLayer() const A_WARN_UNUSED
         { return mIsFringeLayer; }
@@ -132,6 +131,9 @@ class MapLayer final: public ConfigListener
 
         void setDrawLayerFlags(const MapType::MapType &n);
 
+        void setActorsFix(const int y)
+        { mActorsFix = y; }
+
     protected:
         static int getTileDrawWidth(const Image *img,
                                     const int endX,
@@ -149,6 +151,7 @@ class MapLayer final: public ConfigListener
         typedef std::vector<MapRowVertexes*> MapRows;
         MapRows mTempRows;
         int mMask;
+        int mActorsFix;
         const bool mIsFringeLayer;    /**< Whether the actors are drawn. */
         bool mHighlightAttackRange;
         bool mSpecialFlag;

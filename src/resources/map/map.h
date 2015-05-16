@@ -282,8 +282,7 @@ class Map final : public Properties, public ConfigListener
 
         void clearIndexedTilesets();
 
-        void setActorsFix(const int x, const int y)
-        { mActorFixX = x; mActorFixY = y; }
+        void setActorsFix(const int x, const int y);
 
         int getVersion() const A_WARN_UNUSED
         { return mVersion; }

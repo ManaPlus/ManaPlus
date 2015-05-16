@@ -393,8 +393,11 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
         {
             mFringeLayer->setSpecialLayer(mSpecialLayer);
             mFringeLayer->setTempLayer(mTempLayer);
-            mFringeLayer->drawFringe(graphics, startX, startY, endX, endY,
-                scrollX, scrollY, &mActors, mActorFixY);
+            mFringeLayer->drawFringe(graphics,
+                startX, startY,
+                endX, endY,
+                scrollX, scrollY,
+                &mActors);
         }
     }
     else
@@ -423,8 +426,7 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
                     startX, startY,
                     endX, endY,
                     scrollX, scrollY,
-                    &mActors,
-                    mActorFixY);
+                    &mActors);
             }
 
             FOR_EACH (Layers::iterator, it, mDrawOverLayers)
@@ -459,7 +461,7 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
                     startX, startY,
                     endX, endY,
                     scrollX, scrollY,
-                    &mActors, mActorFixY);
+                    &mActors);
             }
 
             FOR_EACH (Layers::iterator, it, mDrawOverLayers)
@@ -1610,4 +1612,12 @@ void Map::setDrawLayersFlags(const MapType::MapType &n)
         MapLayer *const layer = *it;
         layer->setDrawLayerFlags(mDrawLayersFlags);
     }
+}
+
+void Map::setActorsFix(const int x, const int y)
+{
+    mActorFixX = x;
+    mActorFixY = y;
+    if (mFringeLayer)
+        mFringeLayer->setActorsFix(y);
 }
