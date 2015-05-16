@@ -394,7 +394,7 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
             mFringeLayer->setSpecialLayer(mSpecialLayer);
             mFringeLayer->setTempLayer(mTempLayer);
             mFringeLayer->drawFringe(graphics, startX, startY, endX, endY,
-                scrollX, scrollY, &mActors, mDrawLayersFlags, mActorFixY);
+                scrollX, scrollY, &mActors, mActorFixY);
         }
     }
     else
@@ -406,8 +406,10 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
                 MapLayer *const layer = *it;
                 if (updateFlag)
                 {
-                    layer->updateOGL(graphics, startX, startY,
-                        endX, endY, scrollX, scrollY, mDrawLayersFlags);
+                    layer->updateOGL(graphics,
+                        startX, startY,
+                        endX, endY,
+                        scrollX, scrollY);
                 }
 
                 layer->drawOGL(graphics);
@@ -417,8 +419,12 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
             {
                 mFringeLayer->setSpecialLayer(mSpecialLayer);
                 mFringeLayer->setTempLayer(mTempLayer);
-                mFringeLayer->drawFringe(graphics, startX, startY, endX, endY,
-                    scrollX, scrollY, &mActors, mDrawLayersFlags, mActorFixY);
+                mFringeLayer->drawFringe(graphics,
+                    startX, startY,
+                    endX, endY,
+                    scrollX, scrollY,
+                    &mActors,
+                    mActorFixY);
             }
 
             FOR_EACH (Layers::iterator, it, mDrawOverLayers)
@@ -426,8 +432,10 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
                 MapLayer *const layer = *it;
                 if (updateFlag)
                 {
-                    layer->updateOGL(graphics, startX, startY,
-                        endX, endY, scrollX, scrollY, mDrawLayersFlags);
+                    layer->updateOGL(graphics,
+                        startX, startY,
+                        endX, endY,
+                        scrollX, scrollY);
                 }
 
                 layer->drawOGL(graphics);
@@ -437,22 +445,28 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
         {
             FOR_EACH (Layers::iterator, it, mDrawUnderLayers)
             {
-                (*it)->draw(graphics, startX, startY, endX, endY,
-                    scrollX, scrollY, mDrawLayersFlags);
+                (*it)->draw(graphics,
+                    startX, startY,
+                    endX, endY,
+                    scrollX, scrollY);
             }
 
             if (mFringeLayer)
             {
                 mFringeLayer->setSpecialLayer(mSpecialLayer);
                 mFringeLayer->setTempLayer(mTempLayer);
-                mFringeLayer->drawFringe(graphics, startX, startY, endX, endY,
-                    scrollX, scrollY, &mActors, mDrawLayersFlags, mActorFixY);
+                mFringeLayer->drawFringe(graphics,
+                    startX, startY,
+                    endX, endY,
+                    scrollX, scrollY,
+                    &mActors, mActorFixY);
             }
 
             FOR_EACH (Layers::iterator, it, mDrawOverLayers)
             {
-                (*it)->draw(graphics, startX, startY, endX, endY,
-                    scrollX, scrollY, mDrawLayersFlags);
+                (*it)->draw(graphics, startX, startY,
+                    endX, endY,
+                    scrollX, scrollY);
             }
         }
     }
@@ -1538,6 +1552,9 @@ void Map::updateDrawLayersList()
         mDrawUnderLayers.push_back(layer);
     }
 
+    if (mDrawLayersFlags == MapType::SPECIAL2)
+        return;
+
     for (; layers != layers_end; ++ layers)
     {
         MapLayer *const layer = *layers;
@@ -1588,4 +1605,9 @@ void Map::setDrawLayersFlags(const MapType::MapType &n)
         mDrawOnlyFringe = false;
     }
     updateDrawLayersList();
+    FOR_EACH (Layers::iterator, it, mLayers)
+    {
+        MapLayer *const layer = *it;
+        layer->setDrawLayerFlags(mDrawLayersFlags);
+    }
 }

@@ -51,12 +51,14 @@ MapLayer::MapLayer(const int x, const int y,
     mWidth(width),
     mHeight(height),
     mTiles(new Image*[mWidth * mHeight]),
+    mDrawLayerFlags(MapType::NORMAL),
     mSpecialLayer(nullptr),
     mTempLayer(nullptr),
     mTempRows(),
     mMask(mask),
     mIsFringeLayer(fringeLayer),
-    mHighlightAttackRange(config.getBoolValue("highlightAttackRange"))
+    mHighlightAttackRange(config.getBoolValue("highlightAttackRange")),
+    mSpecialFlag(true)
 {
     std::fill_n(mTiles, mWidth * mHeight, static_cast<Image*>(nullptr));
 
@@ -88,8 +90,7 @@ void MapLayer::setTile(const int x, const int y, Image *const img)
 
 void MapLayer::draw(Graphics *const graphics,
                     int startX, int startY, int endX, int endY,
-                    const int scrollX, const int scrollY,
-                    const int layerDrawFlags) const
+                    const int scrollX, const int scrollY) const
 {
     if (!localPlayer)
         return;
@@ -111,9 +112,6 @@ void MapLayer::draw(Graphics *const graphics,
 
     const int dx = (mX * mapTileSize) - scrollX;
     const int dy = (mY * mapTileSize) - scrollY + mapTileSize;
-    const bool flag = (layerDrawFlags != MapType::SPECIAL
-        && layerDrawFlags != MapType::SPECIAL2
-        && layerDrawFlags != MapType::SPECIAL4);
 
     for (int y = startY; y < endY; y++)
     {
@@ -134,7 +132,7 @@ void MapLayer::draw(Graphics *const graphics,
             {
                 const int px = x32 + dx;
                 const int py = py0 - img->mBounds.h;
-                if (flag || img->mBounds.h <= mapTileSize)
+                if (mSpecialFlag || img->mBounds.h <= mapTileSize)
                 {
                     int width = 0;
                     // here need not draw over player position
@@ -182,8 +180,7 @@ void MapLayer::drawSDL(Graphics *const graphics) const
 void MapLayer::updateSDL(const Graphics *const graphics,
                          int startX, int startY,
                          int endX, int endY,
-                         const int scrollX, const int scrollY,
-                         const int layerDrawFlags)
+                         const int scrollX, const int scrollY)
 {
     BLOCK_START("MapLayer::updateSDL")
     delete_all(mTempRows);
@@ -205,9 +202,6 @@ void MapLayer::updateSDL(const Graphics *const graphics,
 
     const int dx = (mX * mapTileSize) - scrollX;
     const int dy = (mY * mapTileSize) - scrollY + mapTileSize;
-    const bool flag = (layerDrawFlags != MapType::SPECIAL
-        && layerDrawFlags != MapType::SPECIAL2
-        && layerDrawFlags != MapType::SPECIAL4);
 
     for (int y = startY; y < endY; y++)
     {
@@ -228,7 +222,7 @@ void MapLayer::updateSDL(const Graphics *const graphics,
             {
                 const int px = x * mapTileSize + dx;
                 const int py = py0 - img->mBounds.h;
-                if (flag || img->mBounds.h <= mapTileSize)
+                if (mSpecialFlag || img->mBounds.h <= mapTileSize)
                 {
                     if (lastImage != img)
                     {
@@ -248,8 +242,7 @@ void MapLayer::updateSDL(const Graphics *const graphics,
 void MapLayer::updateOGL(Graphics *const graphics,
                          int startX, int startY,
                          int endX, int endY,
-                         const int scrollX, const int scrollY,
-                         const int layerDrawFlags)
+                         const int scrollX, const int scrollY)
 {
     BLOCK_START("MapLayer::updateOGL")
     delete_all(mTempRows);
@@ -271,9 +264,6 @@ void MapLayer::updateOGL(Graphics *const graphics,
 
     const int dx = (mX * mapTileSize) - scrollX;
     const int dy = (mY * mapTileSize) - scrollY + mapTileSize;
-    const bool flag = (layerDrawFlags != MapType::SPECIAL
-        && layerDrawFlags != MapType::SPECIAL2
-        && layerDrawFlags != MapType::SPECIAL4);
 
     MapRowVertexes *const row = new MapRowVertexes();
     mTempRows.push_back(row);
@@ -295,7 +285,7 @@ void MapLayer::updateOGL(Graphics *const graphics,
                 const int px = x * mapTileSize + dx;
                 const int py = py0 - img->mBounds.h;
                 const GLuint imgGlImage = img->mGLImage;
-                if (flag || img->mBounds.h <= mapTileSize)
+                if (mSpecialFlag || img->mBounds.h <= mapTileSize)
                 {
                     if (!lastImage || lastImage->mGLImage != imgGlImage)
                     {
@@ -365,7 +355,7 @@ void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
                           int endX, int endY,
                           const int scrollX, const int scrollY,
                           const Actors *const actors,
-                          const int layerDrawFlags, const int yFix) const
+                          const int yFix) const
 {
     BLOCK_START("MapLayer::drawFringe")
     if (!localPlayer || !mSpecialLayer || !mTempLayer)
@@ -397,6 +387,10 @@ void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
     const int specialWidth = mSpecialLayer->mWidth;
     const int specialHeight = mSpecialLayer->mHeight;
 
+    const bool flag = mDrawLayerFlags == MapType::SPECIAL3
+        || mDrawLayerFlags == MapType::SPECIAL4
+        || mDrawLayerFlags == MapType::BLACKWHITE;
+
     for (int y = startY; y < endY; y++)
     {
         const int y32 = y * mapTileSize;
@@ -413,9 +407,7 @@ void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
         }
         BLOCK_END("MapLayer::drawFringe drawmobs")
 
-        if (layerDrawFlags == MapType::SPECIAL3
-            || layerDrawFlags == MapType::SPECIAL4
-            || layerDrawFlags == MapType::BLACKWHITE)
+        if (flag)
         {
             if (y < specialHeight)
             {
@@ -464,10 +456,7 @@ void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
                 {
                     const int px = x32 + dx;
                     const int py = py0 - img->mBounds.h;
-                    if ((layerDrawFlags != MapType::SPECIAL
-                        && layerDrawFlags != MapType::SPECIAL2
-                        && layerDrawFlags != MapType::SPECIAL4)
-                        || img->mBounds.h <= mapTileSize)
+                    if (mSpecialFlag || img->mBounds.h <= mapTileSize)
                     {
                         int width = 0;
                         // here need not draw over player position
@@ -524,8 +513,8 @@ void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
     }
 
     // Draw any remaining actors
-    if (layerDrawFlags != MapType::SPECIAL3
-        && layerDrawFlags != MapType::SPECIAL4)
+    if (mDrawLayerFlags != MapType::SPECIAL3
+        && mDrawLayerFlags != MapType::SPECIAL4)
     {
         BLOCK_START("MapLayer::drawFringe drawmobs")
         while (ai != ai_end)
@@ -593,4 +582,12 @@ int MapLayer::getTileDrawWidth(const Image *img,
     }
     BLOCK_END("MapLayer::getTileDrawWidth")
     return c;
+}
+
+void MapLayer::setDrawLayerFlags(const MapType::MapType &n)
+{
+    mDrawLayerFlags = n;
+    mSpecialFlag = (mDrawLayerFlags != MapType::SPECIAL
+        && mDrawLayerFlags != MapType::SPECIAL2
+        && mDrawLayerFlags != MapType::SPECIAL4);
 }

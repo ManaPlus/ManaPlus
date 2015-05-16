@@ -27,6 +27,8 @@
 
 #include "being/actor.h"
 
+#include "resources/map/maptype.h"
+
 #include <vector>
 
 class Image;
@@ -86,8 +88,7 @@ class MapLayer final: public ConfigListener
          */
         void draw(Graphics *const graphics,
                   int startX, int startY, int endX, int endY,
-                  const int scrollX, const int scrollY,
-                  const int layerDrawFlags) const;
+                  const int scrollX, const int scrollY) const;
 
         void drawSDL(Graphics *const graphics) const;
 
@@ -97,22 +98,20 @@ class MapLayer final: public ConfigListener
         void updateOGL(Graphics *const graphics,
                        int startX, int startY,
                        int endX, int endY,
-                       const int scrollX, const int scrollY,
-                       const int layerDrawFlags);
+                       const int scrollX, const int scrollY);
 #endif
 
         void updateSDL(const Graphics *const graphics,
                        int startX, int startY,
                        int endX, int endY,
-                       const int scrollX, const int scrollY,
-                       const int layerDrawFlags);
+                       const int scrollX, const int scrollY);
 
         void drawFringe(Graphics *const graphics,
                         int startX, int startY,
                         int endX, int endY,
                         const int scrollX, const int scrollY,
                         const Actors *const actors,
-                        const int layerDrawFlags, const int yFix) const;
+                        const int yFix) const;
 
         bool isFringeLayer() const A_WARN_UNUSED
         { return mIsFringeLayer; }
@@ -131,6 +130,8 @@ class MapLayer final: public ConfigListener
 
         void optionChanged(const std::string &value) override final;
 
+        void setDrawLayerFlags(const MapType::MapType &n);
+
     protected:
         static int getTileDrawWidth(const Image *img,
                                     const int endX,
@@ -142,6 +143,7 @@ class MapLayer final: public ConfigListener
         const int mWidth;
         const int mHeight;
         Image **const mTiles;
+        MapType::MapType mDrawLayerFlags;
         const SpecialLayer *mSpecialLayer;
         const SpecialLayer *mTempLayer;
         typedef std::vector<MapRowVertexes*> MapRows;
@@ -149,6 +151,7 @@ class MapLayer final: public ConfigListener
         int mMask;
         const bool mIsFringeLayer;    /**< Whether the actors are drawn. */
         bool mHighlightAttackRange;
+        bool mSpecialFlag;
 };
 
 #endif  // RESOURCES_MAP_MAPLAYER_H
