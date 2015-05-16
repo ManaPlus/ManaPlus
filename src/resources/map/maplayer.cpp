@@ -391,24 +391,25 @@ void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
         || mDrawLayerFlags == MapType::SPECIAL4
         || mDrawLayerFlags == MapType::BLACKWHITE;
 
-    for (int y = startY; y < endY; y++)
-    {
-        const int y32 = y * mapTileSize;
-        const int y32s = (y + yFix) * mapTileSize;
-        const int yWidth = y * mWidth;
+    const int minEndY = std::min(specialHeight, endY);
 
-        BLOCK_START("MapLayer::drawFringe drawmobs")
-        // If drawing the fringe layer, make sure all actors above this row of
-        // tiles have been drawn
-        while (ai != ai_end && (*ai)->getSortPixelY() <= y32s)
+    if (flag)
+    {   // flag
+        for (int y = startY; y < minEndY; y ++)
         {
-            (*ai)->draw(graphics, -scrollX, -scrollY);
-            ++ ai;
-        }
-        BLOCK_END("MapLayer::drawFringe drawmobs")
+            const int y32 = y * mapTileSize;
+            const int y32s = (y + yFix) * mapTileSize;
 
-        if (flag)
-        {
+            BLOCK_START("MapLayer::drawFringe drawmobs")
+            // If drawing the fringe layer, make sure all actors above this row of
+            // tiles have been drawn
+            while (ai != ai_end && (*ai)->getSortPixelY() <= y32s)
+            {
+                (*ai)->draw(graphics, -scrollX, -scrollY);
+                ++ ai;
+            }
+            BLOCK_END("MapLayer::drawFringe drawmobs")
+
             if (y < specialHeight)
             {
                 const int ptr = y * specialWidth;
@@ -439,8 +440,40 @@ void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
                 }
             }
         }
-        else
+
+        for (int y = minEndY; y < endY; y++)
         {
+            const int y32s = (y + yFix) * mapTileSize;
+
+            BLOCK_START("MapLayer::drawFringe drawmobs")
+            // If drawing the fringe layer, make sure all actors above this row of
+            // tiles have been drawn
+            while (ai != ai_end && (*ai)->getSortPixelY() <= y32s)
+            {
+                (*ai)->draw(graphics, -scrollX, -scrollY);
+                ++ ai;
+            }
+            BLOCK_END("MapLayer::drawFringe drawmobs")
+        }
+    }
+    else
+    {   // !flag
+        for (int y = startY; y < minEndY; y ++)
+        {
+            const int y32 = y * mapTileSize;
+            const int y32s = (y + yFix) * mapTileSize;
+            const int yWidth = y * mWidth;
+
+            BLOCK_START("MapLayer::drawFringe drawmobs")
+            // If drawing the fringe layer, make sure all actors above this row of
+            // tiles have been drawn
+            while (ai != ai_end && (*ai)->getSortPixelY() <= y32s)
+            {
+                (*ai)->draw(graphics, -scrollX, -scrollY);
+                ++ ai;
+            }
+            BLOCK_END("MapLayer::drawFringe drawmobs")
+
             const int py0 = y32 + dy;
             const int py1 = y32 - scrollY;
 
@@ -454,10 +487,10 @@ void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
                 const Image *const img = *tilePtr;
                 if (img)
                 {
-                    const int px = x32 + dx;
-                    const int py = py0 - img->mBounds.h;
                     if (mSpecialFlag || img->mBounds.h <= mapTileSize)
                     {
+                        const int px = x32 + dx;
+                        const int py = py0 - img->mBounds.h;
                         int width = 0;
                         // here need not draw over player position
                         c = getTileDrawWidth(img, endX - x, width);
@@ -510,7 +543,56 @@ void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
                 x += c;
             }
         }
-    }
+
+        for (int y = minEndY; y < endY; y++)
+        {
+            const int y32 = y * mapTileSize;
+            const int y32s = (y + yFix) * mapTileSize;
+            const int yWidth = y * mWidth;
+
+            BLOCK_START("MapLayer::drawFringe drawmobs")
+            // If drawing the fringe layer, make sure all actors above this row of
+            // tiles have been drawn
+            while (ai != ai_end && (*ai)->getSortPixelY() <= y32s)
+            {
+                (*ai)->draw(graphics, -scrollX, -scrollY);
+                ++ ai;
+            }
+            BLOCK_END("MapLayer::drawFringe drawmobs")
+
+            const int py0 = y32 + dy;
+
+            Image **tilePtr = mTiles + static_cast<size_t>(startX + yWidth);
+            for (int x = startX; x < endX; x++, tilePtr++)
+            {
+                const int x32 = x * mapTileSize;
+                int c = 0;
+                const Image *const img = *tilePtr;
+                if (img)
+                {
+                    const int px = x32 + dx;
+                    const int py = py0 - img->mBounds.h;
+                    if (mSpecialFlag || img->mBounds.h <= mapTileSize)
+                    {
+                        int width = 0;
+                        // here need not draw over player position
+                        c = getTileDrawWidth(img, endX - x, width);
+
+                        if (!c)
+                        {
+                            graphics->drawImage(img, px, py);
+                        }
+                        else
+                        {
+                            graphics->drawPattern(img, px, py,
+                                width, img->mBounds.h);
+                            x += c;
+                        }
+                    }
+                }
+            }
+        }
+    }  // !flag
 
     // Draw any remaining actors
     if (mDrawLayerFlags != MapType::SPECIAL3
