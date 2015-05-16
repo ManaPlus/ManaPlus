@@ -402,6 +402,7 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
     }
     else
     {
+#ifdef USE_OPENGL
         if (mCachedDraw)
         {
             if (updateFlag)
@@ -440,6 +441,7 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
                 (*it)->drawOGL(graphics);
         }
         else
+#endif
         {
             FOR_EACH (Layers::iterator, it, mDrawUnderLayers)
             {
