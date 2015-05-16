@@ -75,7 +75,6 @@
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "logger.h"
 #include "sdlshared.h"
 
 #include "input/inputmanager.h"

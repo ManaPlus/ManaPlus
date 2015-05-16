@@ -28,7 +28,7 @@
 template<typename T>
 struct MStack final
 {
-    MStack(const size_t maxSize) :
+    explicit MStack(const size_t maxSize) :
         mStack(new T[maxSize]),
         mMaxSize(maxSize),
         mPointer(mStack - 1),
@@ -41,6 +41,8 @@ struct MStack final
     {
         delete [] mStack;
     }
+
+    A_DELETE_COPY(MStack)
 
     T &push()
     {

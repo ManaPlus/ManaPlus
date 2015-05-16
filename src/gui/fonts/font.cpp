@@ -66,8 +66,6 @@
 
 #include "gui/fonts/font.h"
 
-#include "logger.h"
-
 #include "gui/fonts/textchunk.h"
 
 #include "render/graphics.h"

@@ -560,7 +560,7 @@ impHandler0(chatGuildTab)
     return true;
 }
 
-impHandler0(hat)
+impHandler(hat)
 {
     if (!localPlayer)
         return false;

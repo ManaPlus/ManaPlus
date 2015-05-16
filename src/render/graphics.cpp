@@ -69,7 +69,6 @@
 #include "configuration.h"
 #include "graphicsmanager.h"
 #endif
-#include "logger.h"
 
 #if defined(USE_OPENGL) && defined(USE_X11)
 #include "render/mglxinit.h"

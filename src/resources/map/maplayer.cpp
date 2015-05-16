@@ -37,7 +37,6 @@
 
 #include "resources/map/mapitem.h"
 #include "resources/map/maprowvertexes.h"
-#include "resources/map/maptype.h"
 #include "resources/map/speciallayer.h"
 
 #include "debug.h"
@@ -401,8 +400,8 @@ void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
             const int y32s = (y + mActorsFix) * mapTileSize;
 
             BLOCK_START("MapLayer::drawFringe drawmobs")
-            // If drawing the fringe layer, make sure all actors above this row of
-            // tiles have been drawn
+            // If drawing the fringe layer, make sure all actors above this
+            // row of tiles have been drawn
             while (ai != ai_end && (*ai)->getSortPixelY() <= y32s)
             {
                 (*ai)->draw(graphics, -scrollX, -scrollY);
@@ -446,8 +445,8 @@ void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
             const int y32s = (y + mActorsFix) * mapTileSize;
 
             BLOCK_START("MapLayer::drawFringe drawmobs")
-            // If drawing the fringe layer, make sure all actors above this row of
-            // tiles have been drawn
+            // If drawing the fringe layer, make sure all actors above this
+            // row of tiles have been drawn
             while (ai != ai_end && (*ai)->getSortPixelY() <= y32s)
             {
                 (*ai)->draw(graphics, -scrollX, -scrollY);
@@ -465,8 +464,8 @@ void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
             const int yWidth = y * mWidth;
 
             BLOCK_START("MapLayer::drawFringe drawmobs")
-            // If drawing the fringe layer, make sure all actors above this row of
-            // tiles have been drawn
+            // If drawing the fringe layer, make sure all actors above this
+            // row of tiles have been drawn
             while (ai != ai_end && (*ai)->getSortPixelY() <= y32s)
             {
                 (*ai)->draw(graphics, -scrollX, -scrollY);
@@ -551,8 +550,8 @@ void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
             const int yWidth = y * mWidth;
 
             BLOCK_START("MapLayer::drawFringe drawmobs")
-            // If drawing the fringe layer, make sure all actors above this row of
-            // tiles have been drawn
+            // If drawing the fringe layer, make sure all actors above this
+            // row of tiles have been drawn
             while (ai != ai_end && (*ai)->getSortPixelY() <= y32s)
             {
                 (*ai)->draw(graphics, -scrollX, -scrollY);
@@ -566,12 +565,12 @@ void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
             for (int x = startX; x < endX; x++, tilePtr++)
             {
                 const int x32 = x * mapTileSize;
-                int c = 0;
                 const Image *const img = *tilePtr;
                 if (img)
                 {
                     const int px = x32 + dx;
                     const int py = py0 - img->mBounds.h;
+                    int c = 0;
                     if (mSpecialFlag || img->mBounds.h <= mapTileSize)
                     {
                         int width = 0;

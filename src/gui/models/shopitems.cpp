@@ -128,7 +128,7 @@ void ShopItems::erase(const unsigned int i)
     if (i >= static_cast<unsigned int>(mShopItems.size()))
         return;
 
-    ShopItem *item = *(mShopItems.begin() + i);
+    const ShopItem *const item = *(mShopItems.begin() + i);
     std::vector<ShopItem*>::iterator it;
     if (findInAllItems(it, item))
         mAllShopItems.erase(it);

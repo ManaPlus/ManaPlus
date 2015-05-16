@@ -82,9 +82,6 @@
 #include <SDL_render.h>
 #endif
 
-#include <stack>
-#include <string>
-
 #include "localconsts.h"
 
 #ifdef USE_SDL2

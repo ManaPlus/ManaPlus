@@ -22,8 +22,6 @@
 
 #include "simpleanimation.h"
 
-#include "logger.h"
-
 #include "resources/map/mapconsts.h"
 
 #include "render/graphics.h"
