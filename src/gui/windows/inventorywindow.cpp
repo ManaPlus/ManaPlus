@@ -148,8 +148,12 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
         mSortDropDown->setSelected(0);
     }
 
-    if (setupWindow && inventory->getType() != InventoryType::STORAGE)
+    if (setupWindow &&
+        inventory &&
+        inventory->getType() != InventoryType::STORAGE)
+    {
         setupWindow->registerWindowForReset(this);
+    }
 
     setResizable(true);
     setCloseButton(true);

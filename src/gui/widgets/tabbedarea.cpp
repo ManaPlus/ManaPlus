@@ -777,6 +777,8 @@ void TabbedArea::selectPrevTab()
 
     if (tab == 0)
         tab = static_cast<int>(mTabs.size());
+    if (tab < 0)
+        return;
     tab--;
     setSelectedTab(mTabs[tab].first);
 }

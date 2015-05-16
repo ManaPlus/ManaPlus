@@ -216,7 +216,8 @@ void KillStats::gainXp(int xp)
     if (!mKillCounter)
         mKillCounter = 1;
 
-    const float AvgExp = static_cast<float>(mExpCounter / mKillCounter);
+    const float AvgExp = static_cast<float>(mExpCounter)
+        / static_cast<float>(mKillCounter);
     int xpNextLevel(expNeed);
 
     if (mKillTimer == 0)
@@ -348,7 +349,7 @@ void KillStats::update()
         mExpTime1Label->setCaption(strprintf(_("  Time for next level: %s"),
             toString(static_cast<float>((PlayerInfo::getAttribute(
             Attributes::EXP_NEEDED) - PlayerInfo::getAttribute(
-            Attributes::EXP)) / m1minSpeed)).c_str()));
+            Attributes::EXP)) / static_cast<float>(m1minSpeed))).c_str()));
     }
     else
     {

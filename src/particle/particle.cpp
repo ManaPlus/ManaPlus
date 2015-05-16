@@ -330,7 +330,7 @@ Particle *Particle::addEffect(const std::string &particleEffectFile,
         else if ((node = XML::findFirstChildByName(effectChildNode, "image")))
         {
             std::string imageSrc;
-            if (node->xmlChildrenNode)
+            if (node && node->xmlChildrenNode)
             {
                 imageSrc = reinterpret_cast<const char*>(
                     node->xmlChildrenNode->content);
@@ -380,7 +380,7 @@ Particle *Particle::addEffect(const std::string &particleEffectFile,
             else if (xmlNameEqual(emitterNode, "deatheffect"))
             {
                 std::string deathEffect;
-                if (node->xmlChildrenNode)
+                if (node && node->xmlChildrenNode)
                 {
                     deathEffect = reinterpret_cast<const char*>(
                         emitterNode->xmlChildrenNode->content);

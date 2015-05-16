@@ -661,6 +661,8 @@ void SkillDialog::playCastingDstEffect(const int id, Being *const being) const
 
 void SkillDialog::useSkill(const SkillInfo *const info)
 {
+    if (!info)
+        return;
     const SkillData *const data = info->data;
     if (data)
     {
@@ -668,7 +670,7 @@ void SkillDialog::useSkill(const SkillInfo *const info)
         if (!cmd.empty())
             SpellManager::invokeCommand(cmd, localPlayer->getTarget());
     }
-    if (info && localPlayer)
+    if (localPlayer)
     {
         switch (info->type)
         {

@@ -1236,7 +1236,7 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "priority movedown")
     {
-        if (localPlayer)
+        if (localPlayer && actorManager)
         {
             const int idx = actorManager
                 ->getPriorityAttackMobIndex(mNick);

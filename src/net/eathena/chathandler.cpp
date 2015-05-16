@@ -697,19 +697,20 @@ void ChatHandler::processChatRoomJoinAck(Net::MessageIn &msg)
     }
 
     ChatObject *oldChat = ChatObject::findById(id);
-    if (!oldChat)
-        oldChat = new ChatObject;
 
     PlayerInfo::setRoomName(oldChat->title);
     chatWindow->joinRoom(true);
     ChatObject *const obj = new ChatObject;
-    obj->ownerId = oldChat->ownerId;
-    obj->chatId = oldChat->chatId;
-    obj->maxUsers = oldChat->maxUsers;
-    obj->currentUsers = oldChat->currentUsers;
-    obj->type = oldChat->type;
-    obj->title = oldChat->title;
-//    obj->update();
+    if (oldChat)
+    {
+        obj->ownerId = oldChat->ownerId;
+        obj->chatId = oldChat->chatId;
+        obj->maxUsers = oldChat->maxUsers;
+        obj->currentUsers = oldChat->currentUsers;
+        obj->type = oldChat->type;
+        obj->title = oldChat->title;
+//        obj->update();
+    }
     localPlayer->setChat(obj);
 }
 

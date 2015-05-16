@@ -216,9 +216,11 @@ void Setup_Relations::action(const ActionEvent &event)
     }
     else if (eventId == ACTION_STRATEGY)
     {
+        const int sel = mIgnoreActionChoicesBox->getSelected();
+        if (sel < 0)
+            return;
         PlayerIgnoreStrategy *const s =
-            (*player_relations.getPlayerIgnoreStrategies())[
-            mIgnoreActionChoicesBox->getSelected()];
+            (*player_relations.getPlayerIgnoreStrategies())[sel];
 
         player_relations.setPlayerIgnoreStrategy(s);
     }

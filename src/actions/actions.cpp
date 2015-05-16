@@ -639,6 +639,9 @@ impHandler(buy)
         return false;
     }
 
+    if (!being)
+        return false;
+
     if (being->getType() == ActorType::Npc)
     {
         npcHandler->buy(being->getId());
@@ -672,6 +675,9 @@ impHandler(sell)
         return false;
     }
 
+    if (!being)
+        return false;
+
     if (being->getType() == ActorType::Npc)
     {
         npcHandler->sell(being->getId());
@@ -696,15 +702,11 @@ impHandler(talk)
     if (!being)
         return false;
 
-    if (being)
-    {
-        if (being->canTalk())
-            being->talkTo();
-        else if (being->getType() == ActorType::Player)
-            new BuySellDialog(being->getName());
-        return true;
-    }
-    return false;
+    if (being->canTalk())
+        being->talkTo();
+    else if (being->getType() == ActorType::Player)
+        new BuySellDialog(being->getName());
+    return true;
 }
 
 impHandler0(stopAttack)
