@@ -135,6 +135,9 @@ class OpenGLImageHelper final : public ImageHelper
          */
         static int powerOfTwo(const int input) A_WARN_UNUSED;
 
+        static SDL_Surface *convertSurfaceNormalize(SDL_Surface *tmpImage,
+                                                    int width, int height);
+
         static SDL_Surface *convertSurface(SDL_Surface *tmpImage,
                                            int width, int height);
 

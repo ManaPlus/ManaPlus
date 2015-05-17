@@ -134,8 +134,8 @@ int OpenGLImageHelper::powerOfTwo(const int input)
     return value >= mTextureSize ? mTextureSize : value;
 }
 
-SDL_Surface *OpenGLImageHelper::convertSurface(SDL_Surface *tmpImage,
-                                               int width, int height)
+SDL_Surface *OpenGLImageHelper::convertSurfaceNormalize(SDL_Surface *tmpImage,
+                                                        int width, int height)
 {
     if (!tmpImage)
         return nullptr;
@@ -181,6 +181,55 @@ SDL_Surface *OpenGLImageHelper::convertSurface(SDL_Surface *tmpImage,
         SDL_SetSurfaceBlendMode(oldImage, SDL_BLENDMODE_NONE);
 #endif
         tmpImage = MSDL_CreateRGBSurface(SDL_SWSURFACE, realWidth, realHeight,
+            32, rmask, gmask, bmask, amask);
+
+        if (!tmpImage)
+        {
+            logger->log("Error, image convert failed: out of memory");
+            return nullptr;
+        }
+        SDL_BlitSurface(oldImage, nullptr, tmpImage, nullptr);
+    }
+    return tmpImage;
+}
+
+SDL_Surface *OpenGLImageHelper::convertSurface(SDL_Surface *tmpImage,
+                                               int width, int height)
+{
+    if (!tmpImage)
+        return nullptr;
+
+#ifdef USE_SDL2
+    SDL_SetSurfaceAlphaMod(tmpImage, SDL_ALPHA_OPAQUE);
+#else
+    // Make sure the alpha channel is not used, but copied to destination
+    SDL_SetAlpha(tmpImage, 0, SDL_ALPHA_OPAQUE);
+#endif
+
+    // Determine 32-bit masks based on byte order
+    uint32_t rmask, gmask, bmask, amask;
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+    rmask = 0xff000000;
+    gmask = 0x00ff0000;
+    bmask = 0x0000ff00;
+    amask = 0x000000ff;
+#else
+    rmask = 0x000000ff;
+    gmask = 0x0000ff00;
+    bmask = 0x00ff0000;
+    amask = 0xff000000;
+#endif
+
+    if (tmpImage->format->BitsPerPixel != 32
+        || rmask != tmpImage->format->Rmask
+        || gmask != tmpImage->format->Gmask
+        || amask != tmpImage->format->Amask)
+    {
+        SDL_Surface *oldImage = tmpImage;
+#ifdef USE_SDL2
+        SDL_SetSurfaceBlendMode(oldImage, SDL_BLENDMODE_NONE);
+#endif
+        tmpImage = MSDL_CreateRGBSurface(SDL_SWSURFACE, width, height,
             32, rmask, gmask, bmask, amask);
 
         if (!tmpImage)
@@ -241,7 +290,7 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
         height = tmpImage->h;
 
     SDL_Surface *oldImage = tmpImage;
-    tmpImage = convertSurface(tmpImage, width, height);
+    tmpImage = convertSurfaceNormalize(tmpImage, width, height);
 
     const int realWidth = tmpImage->w;
     const int realHeight = tmpImage->h;
