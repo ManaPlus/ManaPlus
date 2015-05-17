@@ -136,23 +136,8 @@ class Being notfinal : public ActorSprite,
 
         /**
          * Makes this being take the next tile of its path.
-         * TODO: Used by eAthena only?
          */
         virtual void nextTile();
-
-        /**
-         * Get the current X pixel offset.
-         * TODO: Used by eAthena only?
-         */
-        int getXOffset() const A_WARN_UNUSED
-        { return getOffset(BeingDirection::LEFT, BeingDirection::RIGHT); }
-
-        /**
-         * Get the current Y pixel offset.
-         * TODO: Used by eAthena only?
-         */
-        int getYOffset() const A_WARN_UNUSED
-        { return getOffset(BeingDirection::UP, BeingDirection::DOWN); }
 
         /**
          * Creates a path for the being from current position to ex and ey

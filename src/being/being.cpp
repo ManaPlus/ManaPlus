@@ -1578,8 +1578,10 @@ void Being::logic()
 
     if (mAction == BeingAction::MOVE || mNeedPosUpdate)
     {
-        const int xOffset = getXOffset();
-        const int yOffset = getYOffset();
+        const int xOffset = getOffset(
+            BeingDirection::LEFT, BeingDirection::RIGHT);
+        const int yOffset = getOffset(
+            BeingDirection::UP, BeingDirection::DOWN);
         int offset = xOffset;
         if (!offset)
             offset = yOffset;
