@@ -295,7 +295,7 @@ void SkillHandler::processSkillDelete(Net::MessageIn &msg)
     int updateSkill = 0;
     const int skillId = msg.readInt16("skill id");
     const int oldLevel = PlayerInfo::getSkillLevel(skillId);
-    if (oldLevel && oldLevel != 0)
+    if (oldLevel != 0)
         updateSkill = skillId;
     PlayerInfo::setSkillLevel(skillId, 0);
     if (skillDialog)
