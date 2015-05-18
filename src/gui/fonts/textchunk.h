@@ -32,6 +32,7 @@
 
 #include "localconsts.h"
 
+class Font;
 class Image;
 
 class TextChunk final
@@ -39,7 +40,8 @@ class TextChunk final
     public:
         TextChunk(const std::string &text0,
                   const Color &color0,
-                  const Color &color1);
+                  const Color &color1,
+                  const Font *const font);
 
         A_DELETE_COPY(TextChunk)
 
@@ -50,6 +52,7 @@ class TextChunk final
         void generate(TTF_Font *const font, const float alpha);
 
         Image *img;
+        const Font *textFont;
         std::string text;
         Color color;
         Color color2;

@@ -249,7 +249,7 @@ void Font::drawString(Graphics *const graphics,
 #ifdef DEBUG_FONT_COUNTERS
         mCreateCounter ++;
 #endif
-        TextChunk *chunk2 = new TextChunk(text, col, col2);
+        TextChunk *chunk2 = new TextChunk(text, col, col2, this);
 
         chunk2->generate(mFont, alpha);
         cache->insertFirst(chunk2);

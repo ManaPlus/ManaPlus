@@ -45,9 +45,12 @@ char *strBuf = nullptr;
 int textChunkCnt = 0;
 #endif
 
-TextChunk::TextChunk(const std::string &text0, const Color &color0,
-                     const Color &color1) :
+TextChunk::TextChunk(const std::string &text0,
+                     const Color &color0,
+                     const Color &color1,
+                     const Font *const font) :
     img(nullptr),
+    textFont(font),
     text(text0),
     color(color0),
     color2(color1),

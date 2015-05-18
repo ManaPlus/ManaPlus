@@ -46,7 +46,7 @@ TEST(TextChunkList, add1)
     TextChunkList list;
 
     TextChunk *chunk = new TextChunk("test",
-        Color(1, 2, 3), Color(2, 3, 4));
+        Color(1, 2, 3), Color(2, 3, 4), nullptr);
 
     list.insertFirst(chunk);
 
@@ -69,9 +69,9 @@ TEST(TextChunkList, add2)
     TextChunkList list;
 
     TextChunk *chunk1 = new TextChunk("test",
-        Color(1, 2, 3), Color(3, 4, 5));
+        Color(1, 2, 3), Color(3, 4, 5), nullptr);
     TextChunk *chunk2 = new TextChunk("test",
-        Color(2, 3, 4), Color(4, 5, 6));
+        Color(2, 3, 4), Color(4, 5, 6), nullptr);
 
     list.insertFirst(chunk2);
     list.insertFirst(chunk1);
@@ -99,7 +99,7 @@ TEST(TextChunkList, addRemoveBack1)
     TextChunkList list;
 
     TextChunk *chunk = new TextChunk("test",
-        Color(1, 2, 3), Color(1, 2, 3));
+        Color(1, 2, 3), Color(1, 2, 3), nullptr);
 
     list.insertFirst(chunk);
     list.removeBack();
@@ -116,9 +116,9 @@ TEST(TextChunkList, addRemoveBack2)
     TextChunkList list;
 
     TextChunk *chunk1 = new TextChunk("test",
-        Color(1, 2, 3), Color(1, 2, 3));
+        Color(1, 2, 3), Color(1, 2, 3), nullptr);
     TextChunk *chunk2 = new TextChunk("test2",
-        Color(1, 2, 4), Color(1, 2, 5));
+        Color(1, 2, 4), Color(1, 2, 5), nullptr);
 
     list.insertFirst(chunk2);
     list.insertFirst(chunk1);
@@ -143,9 +143,9 @@ TEST(TextChunkList, addRemoveBack3)
     TextChunkList list;
 
     TextChunk *chunk1 = new TextChunk("test",
-        Color(1, 2, 3), Color(1, 2, 3));
+        Color(1, 2, 3), Color(1, 2, 3), nullptr);
     TextChunk *chunk2 = new TextChunk("test2",
-        Color(2, 3, 4), Color(2, 3, 4));
+        Color(2, 3, 4), Color(2, 3, 4), nullptr);
 
     list.insertFirst(chunk2);
     list.insertFirst(chunk1);
@@ -164,11 +164,11 @@ TEST(TextChunkList, addRemoveBack4)
     TextChunkList list;
 
     TextChunk *chunk1 = new TextChunk("test",
-        Color(1, 2, 3), Color(1, 2, 3));
+        Color(1, 2, 3), Color(1, 2, 3), nullptr);
     TextChunk *chunk2 = new TextChunk("test2",
-        Color(2, 3, 4), Color(2, 3, 4));
+        Color(2, 3, 4), Color(2, 3, 4), nullptr);
     TextChunk *chunk3 = new TextChunk("test",
-        Color(3, 4, 5), Color(3, 4, 5));
+        Color(3, 4, 5), Color(3, 4, 5), nullptr);
 
     list.insertFirst(chunk3);
     list.insertFirst(chunk2);
@@ -194,7 +194,7 @@ TEST(TextChunkList, moveToFirst1)
     TextChunkList list;
 
     TextChunk *chunk = new TextChunk("test",
-        Color(1, 2, 3), Color(2, 3, 4));
+        Color(1, 2, 3), Color(2, 3, 4), nullptr);
 
     list.insertFirst(chunk);
     list.moveToFirst(chunk);
@@ -211,9 +211,9 @@ TEST(TextChunkList, moveToFirst2)
     TextChunkList list;
 
     TextChunk *chunk1 = new TextChunk("test",
-        Color(1, 2, 3), Color(1, 2, 3));
+        Color(1, 2, 3), Color(1, 2, 3), nullptr);
     TextChunk *chunk2 = new TextChunk("test",
-        Color(2, 3, 4), Color(1, 2, 3));
+        Color(2, 3, 4), Color(1, 2, 3), nullptr);
 
     list.insertFirst(chunk1);
     list.insertFirst(chunk2);
@@ -233,11 +233,11 @@ TEST(TextChunkList, moveToFirst3)
     TextChunkList list;
 
     TextChunk *chunk1 = new TextChunk("test",
-        Color(1, 2, 3), Color(1, 2, 3));
+        Color(1, 2, 3), Color(1, 2, 3), nullptr);
     TextChunk *chunk2 = new TextChunk("test",
-        Color(1, 2, 4), Color(1, 2, 3));
+        Color(1, 2, 4), Color(1, 2, 3), nullptr);
     TextChunk *chunk3 = new TextChunk("test",
-        Color(1, 2, 5), Color(1, 2, 3));
+        Color(1, 2, 5), Color(1, 2, 3), nullptr);
 
     list.insertFirst(chunk3);
     list.insertFirst(chunk1);
@@ -260,11 +260,11 @@ TEST(TextChunkList, moveToFirst4)
     TextChunkList list;
 
     TextChunk *chunk1 = new TextChunk("test",
-        Color(), Color());
+        Color(), Color(), nullptr);
     TextChunk *chunk2 = new TextChunk("test2",
-        Color(), Color());
+        Color(), Color(), nullptr);
     TextChunk *chunk3 = new TextChunk("test3",
-        Color(), Color());
+        Color(), Color(), nullptr);
 
     list.insertFirst(chunk1);
     list.insertFirst(chunk3);
@@ -287,7 +287,8 @@ TEST(TextChunkList, clear1)
     TextChunkList list;
     int chunksLeft = textChunkCnt;
 
-    TextChunk *chunk = new TextChunk("test", Color(), Color());
+    TextChunk *chunk = new TextChunk("test",
+        Color(), Color(), nullptr);
 
     list.insertFirst(chunk);
     list.clear();
@@ -306,11 +307,11 @@ TEST(TextChunkList, clear2)
     int chunksLeft = textChunkCnt;
 
     TextChunk *chunk1 = new TextChunk("test",
-        Color(1, 2, 3), Color(2, 0, 0));
+        Color(1, 2, 3), Color(2, 0, 0), nullptr);
     TextChunk *chunk2 = new TextChunk("test",
-        Color(1, 2, 3), Color(2, 0, 1));
+        Color(1, 2, 3), Color(2, 0, 1), nullptr);
     TextChunk *chunk3 = new TextChunk("test",
-        Color(1, 2, 3), Color(2, 0, 2));
+        Color(1, 2, 3), Color(2, 0, 2), nullptr);
 
     list.insertFirst(chunk1);
     list.insertFirst(chunk2);
@@ -331,11 +332,11 @@ TEST(TextChunkList, clear3)
     int chunksLeft = textChunkCnt;
 
     TextChunk *chunk1 = new TextChunk("test",
-        Color(1, 2, 3), Color(2, 0, 0));
+        Color(1, 2, 3), Color(2, 0, 0), nullptr);
     TextChunk *chunk2 = new TextChunk("test",
-        Color(1, 2, 3), Color(2, 0, 1));
+        Color(1, 2, 3), Color(2, 0, 1), nullptr);
     TextChunk *chunk3 = new TextChunk("test",
-        Color(1, 2, 3), Color(2, 0, 2));
+        Color(1, 2, 3), Color(2, 0, 2), nullptr);
 
     list.insertFirst(chunk1);
     list.insertFirst(chunk2);
@@ -356,18 +357,19 @@ TEST(TextChunkList, clear3)
     EXPECT_EQ(0, list.searchWidth.size());
 }
 
-TEST(TextChunkList, clear4)
+TEST(TextChunkList, clear5)
 {
     TextChunkList list;
     int chunksLeft = textChunkCnt;
 
     TextChunk *chunk1 = new TextChunk("test",
-        Color(1, 2, 3), Color(2, 0, 0));
+        Color(1, 2, 3), Color(2, 0, 0), nullptr);
     TextChunk *chunk2 = new TextChunk("test",
-        Color(1, 2, 3), Color(2, 0, 1));
+        Color(1, 2, 3), Color(2, 0, 1), nullptr);
     TextChunk *chunk3 = new TextChunk("test3",
-        Color(1, 2, 3), Color(2, 0, 2));
+        Color(1, 2, 3), Color(2, 0, 2), nullptr);
 
+    chunk1->refCount = 1;
     list.insertFirst(chunk1);
     list.insertFirst(chunk2);
     list.insertFirst(chunk3);
