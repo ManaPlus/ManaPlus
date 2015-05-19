@@ -111,7 +111,7 @@ bool ServerFeatures::haveServerIgnore() const
 
 bool ServerFeatures::haveMove3() const
 {
-    return serverVersion >= 10 || tmwServerVersion >= 0x0f0518;
+    return serverVersion >= 10 || tmwServerVersion >= 0x0f0512;
 }
 
 bool ServerFeatures::haveItemColors() const
