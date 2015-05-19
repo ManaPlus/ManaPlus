@@ -144,7 +144,17 @@ void LoginHandler::sendLoginRegister(const std::string &restrict username,
     if (email.empty())
     {
         createOutPacket(CMSG_LOGIN_REGISTER);
-        outMsg.writeInt32(0, "client version");
+        if (serverVersion > 0)
+        {
+            outMsg.writeInt32(CLIENT_PROTOCOL_VERSION,
+                "client protocol version");
+        }
+        else
+        {
+            outMsg.writeInt32(CLIENT_TMW_PROTOCOL_VERSION,
+                "client protocol version");
+        }
+
         outMsg.writeString(username, 24, "login");
         outMsg.writeStringNoLog(password, 24, "password");
 
