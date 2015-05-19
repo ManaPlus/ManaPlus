@@ -66,6 +66,8 @@
 #ifndef GUI_WIDGETS_BUTTON_H
 #define GUI_WIDGETS_BUTTON_H
 
+#include "gui/fonts/textchunk.h"
+
 #include "gui/widgets/widget.h"
 
 #include "listeners/focuslistener.h"
@@ -204,7 +206,7 @@ class Button final : public Widget,
          * @see getCaption, adjustSize
          */
         void setCaption(const std::string& caption)
-        { mCaption = caption; }
+        { mCaption = caption; mTextChanged = true;}
 
         /**
          * Gets the caption of the button.
@@ -273,6 +275,9 @@ class Button final : public Widget,
         std::string mCaption;
 
         std::string mDescription;
+
+        TextChunk mTextChunk;
+
         ImageCollection *mVertexes2;
         Color mEnabledColor;
         Color mEnabledColor2;
@@ -320,6 +325,7 @@ class Button final : public Widget,
 
         bool mStick;
         bool mPressed;
+        bool mTextChanged;
 };
 
 #endif  // GUI_WIDGETS_BUTTON_H

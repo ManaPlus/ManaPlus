@@ -106,6 +106,7 @@ Button::Button(const Widget2 *const widget) :
     WidgetListener(),
     mCaption(),
     mDescription(),
+    mTextChunk(),
     mVertexes2(new ImageCollection),
     mEnabledColor(getThemeColor(Theme::BUTTON)),
     mEnabledColor2(getThemeColor(Theme::BUTTON_OUTLINE)),
@@ -130,7 +131,8 @@ Button::Button(const Widget2 *const widget) :
     mKeyPressed(false),
     mMousePressed(false),
     mStick(false),
-    mPressed(false)
+    mPressed(false),
+    mTextChanged(true)
 {
     init();
     adjustSize();
@@ -147,6 +149,7 @@ Button::Button(const Widget2 *const widget,
     WidgetListener(),
     mCaption(caption),
     mDescription(),
+    mTextChunk(),
     mVertexes2(new ImageCollection),
     mEnabledColor(getThemeColor(Theme::BUTTON)),
     mEnabledColor2(getThemeColor(Theme::BUTTON_OUTLINE)),
@@ -171,7 +174,8 @@ Button::Button(const Widget2 *const widget,
     mKeyPressed(false),
     mMousePressed(false),
     mStick(false),
-    mPressed(false)
+    mPressed(false),
+    mTextChanged(true)
 {
     init();
     adjustSize();
@@ -194,6 +198,7 @@ Button::Button(const Widget2 *const widget,
     WidgetListener(),
     mCaption(caption),
     mDescription(),
+    mTextChunk(),
     mVertexes2(new ImageCollection),
     mEnabledColor(getThemeColor(Theme::BUTTON)),
     mEnabledColor2(getThemeColor(Theme::BUTTON_OUTLINE)),
@@ -218,7 +223,8 @@ Button::Button(const Widget2 *const widget,
     mKeyPressed(false),
     mMousePressed(false),
     mStick(false),
-    mPressed(false)
+    mPressed(false),
+    mTextChanged(true)
 {
     init();
     loadImageSet(imageName);
@@ -241,6 +247,7 @@ Button::Button(const Widget2 *const widget,
     WidgetListener(),
     mCaption(),
     mDescription(),
+    mTextChunk(),
     mVertexes2(new ImageCollection),
     mEnabledColor(getThemeColor(Theme::BUTTON)),
     mEnabledColor2(getThemeColor(Theme::BUTTON_OUTLINE)),
@@ -265,7 +272,8 @@ Button::Button(const Widget2 *const widget,
     mKeyPressed(false),
     mMousePressed(false),
     mStick(false),
-    mPressed(false)
+    mPressed(false),
+    mTextChanged(true)
 {
     init();
     loadImageSet(imageName);
@@ -288,6 +296,7 @@ Button::Button(const Widget2 *const widget,
     WidgetListener(),
     mCaption(caption),
     mDescription(),
+    mTextChunk(),
     mVertexes2(new ImageCollection),
     mEnabledColor(getThemeColor(Theme::BUTTON)),
     mEnabledColor2(getThemeColor(Theme::BUTTON_OUTLINE)),
@@ -312,7 +321,8 @@ Button::Button(const Widget2 *const widget,
     mKeyPressed(false),
     mMousePressed(false),
     mStick(false),
-    mPressed(false)
+    mPressed(false),
+    mTextChanged(true)
 {
     init();
     loadImage(imageName);
@@ -380,6 +390,7 @@ Button::~Button()
         delete [] mImages;
         mImages = nullptr;
     }
+    mTextChunk.deleteImage();
 }
 
 void Button::loadImage(const std::string &imageName)
@@ -511,6 +522,8 @@ void Button::draw(Graphics *graphics)
             graphics->setColorAll(mEnabledColor, mEnabledColor2);
             break;
     }
+    if (recalc)
+        mTextChanged = true;
 
     int imageX = 0;
     int imageY = 0;
@@ -614,7 +627,23 @@ void Button::draw(Graphics *graphics)
         textX ++;
         textY ++;
     }
-    font->drawString(graphics, mCaption, textX, textY);
+
+    if (mTextChanged)
+    {
+        mTextChunk.textFont = font;
+        mTextChunk.deleteImage();
+        mTextChunk.text = mCaption;
+        mTextChunk.color = graphics->getColor();
+        mTextChunk.color2 = graphics->getColor2();
+        font->generate(mTextChunk);
+        mTextChanged = false;
+    }
+
+    const Image *const image = mTextChunk.img;
+    if (image)
+        graphics->drawImage(image, textX, textY);
+
+    //font->drawString(graphics, mCaption, textX, textY);
     BLOCK_END("Button::draw")
 }
 
