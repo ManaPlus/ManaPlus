@@ -70,6 +70,28 @@ void TextChunkList::moveToFirst(TextChunk *const item)
     start = item;
 }
 
+void TextChunkList::remove(TextChunk *const item)
+{
+    if (!item)
+        return;
+
+    TextChunk *const oldPrev = item->prev;
+    TextChunk *const oldNext = item->next;
+    if (oldPrev)
+        oldPrev->next = item->next;
+    else
+        start = oldNext;
+    if (oldNext)
+        oldNext->prev = item->prev;
+    else
+        end = oldPrev;
+
+    search.erase(TextChunkSmall(item->text,
+        item->color, item->color2));
+    searchWidth.erase(item->text);
+    size --;
+}
+
 void TextChunkList::removeBack()
 {
     TextChunk *oldEnd = end;

@@ -65,6 +65,8 @@
 #ifndef GUI_WIDGETS_LABEL_H
 #define GUI_WIDGETS_LABEL_H
 
+#include "gui/fonts/textchunk.h"
+
 #include "gui/widgets/widget.h"
 
 #include "listeners/tooltiplistener.h"
@@ -132,8 +134,7 @@ class Label final : public Widget,
          * @param caption The caption of the label.
          * @see getCaption, adjustSize
          */
-        void setCaption(const std::string& caption)
-        { mCaption = caption; }
+        void setCaption(const std::string& caption);
 
         /**
          * Sets the alignment of the caption. The alignment is relative
@@ -165,12 +166,16 @@ class Label final : public Widget,
          */
         std::string mCaption;
 
+        TextChunk mTextChunk;
+
         /**
          * Holds the alignment of the caption.
          */
         Graphics::Alignment mAlignment;
 
         int mPadding;
+
+        bool mTextChanged;
 };
 
 #endif  // GUI_WIDGETS_LABEL_H

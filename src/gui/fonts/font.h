@@ -125,6 +125,10 @@ class Font final
         int getStringIndexAt(const std::string& text,
                              const int x) const A_WARN_UNUSED;
 
+        void generate(TextChunk &chunk);
+
+        void insertChunk(TextChunk *const chunk);
+
         static bool mSoftMode;
 
     private:

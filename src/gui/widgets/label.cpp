@@ -78,8 +78,10 @@ Label::Label(const Widget2 *const widget) :
     Widget(widget),
     ToolTipListener(),
     mCaption(),
+    mTextChunk(),
     mAlignment(Graphics::LEFT),
-    mPadding(0)
+    mPadding(0),
+    mTextChanged(true)
 {
     init();
 }
@@ -89,8 +91,10 @@ Label::Label(const Widget2 *const widget,
     Widget(widget),
     ToolTipListener(),
     mCaption(caption),
+    mTextChunk(),
     mAlignment(Graphics::LEFT),
-    mPadding(0)
+    mPadding(0),
+    mTextChanged(true)
 {
     const Font *const font = getFont();
     if (font)
@@ -113,6 +117,7 @@ Label::~Label()
             theme->unload(mSkin);
     }
     removeMouseListener(this);
+    mTextChunk.deleteImage();
 }
 
 void Label::init()
@@ -160,7 +165,21 @@ void Label::draw(Graphics* graphics)
     }
 
     graphics->setColorAll(mForegroundColor, mForegroundColor2);
-    font->drawString(graphics, mCaption, textX, textY);
+    if (mTextChanged)
+    {
+        mTextChunk.textFont = font;
+        mTextChunk.deleteImage();
+        mTextChunk.text = mCaption;
+        mTextChunk.color = mForegroundColor;
+        mTextChunk.color2 = mForegroundColor2;
+        font->generate(mTextChunk);
+        mTextChanged = false;
+    }
+
+    const Image *const image = mTextChunk.img;
+    if (image)
+        graphics->drawImage(image, textX, textY);
+//    font->drawString(graphics, mCaption, textX, textY);
     BLOCK_END("Label::draw")
 }
 
@@ -174,6 +193,9 @@ void Label::adjustSize()
 
 void Label::setForegroundColor(const Color &color)
 {
+    if (mForegroundColor != color || mForegroundColor2 != color)
+        mTextChanged = true;
+//    logger->log("Label::setForegroundColor: " + mCaption);
     mForegroundColor = color;
     mForegroundColor2 = color;
 }
@@ -181,6 +203,9 @@ void Label::setForegroundColor(const Color &color)
 void Label::setForegroundColorAll(const Color &color1,
                                   const Color &color2)
 {
+    if (mForegroundColor != color1 || mForegroundColor2 != color2)
+        mTextChanged = true;
+//    logger->log("Label::setForegroundColorAll: " + mCaption);
     mForegroundColor = color1;
     mForegroundColor2 = color2;
 }
@@ -220,4 +245,11 @@ void Label::resizeTo(const int maxSize, const int minSize)
             sz = minSize;
         setWidth(sz);
     }
+}
+
+void Label::setCaption(const std::string& caption)
+{
+    if (caption != mCaption)
+        mTextChanged = true;
+    mCaption = caption;
 }

@@ -369,7 +369,6 @@ TEST(TextChunkList, clear5)
     TextChunk *chunk3 = new TextChunk("test3",
         Color(1, 2, 3), Color(2, 0, 2), nullptr);
 
-    chunk1->refCount = 1;
     list.insertFirst(chunk1);
     list.insertFirst(chunk2);
     list.insertFirst(chunk3);
@@ -387,6 +386,78 @@ TEST(TextChunkList, clear5)
     EXPECT_EQ(chunksLeft, textChunkCnt);
     EXPECT_EQ(0, list.search.size());
     EXPECT_EQ(0, list.searchWidth.size());
+}
+
+TEST(TextChunkList, remove1)
+{
+    TextChunkList list;
+    int chunksLeft = textChunkCnt;
+
+    TextChunk *chunk = new TextChunk("test",
+        Color(), Color(), nullptr);
+
+    list.insertFirst(chunk);
+    list.remove(chunk);
+    delete chunk;
+
+    EXPECT_EQ(0, list.size);
+    EXPECT_EQ(nullptr, list.start);
+    EXPECT_EQ(nullptr, list.end);
+    EXPECT_EQ(chunksLeft, textChunkCnt);
+    EXPECT_EQ(0, list.search.size());
+    EXPECT_EQ(0, list.searchWidth.size());
+}
+
+TEST(TextChunkList, remove2)
+{
+    TextChunkList list;
+    int chunksLeft = textChunkCnt;
+
+    TextChunk *chunk1 = new TextChunk("test1",
+        Color(1, 2, 3), Color(2, 0, 0), nullptr);
+    TextChunk *chunk2 = new TextChunk("test2",
+        Color(1, 2, 3), Color(2, 0, 1), nullptr);
+    TextChunk *chunk3 = new TextChunk("test3",
+        Color(1, 2, 3), Color(2, 0, 2), nullptr);
+
+    list.insertFirst(chunk1);
+    list.insertFirst(chunk2);
+    list.insertFirst(chunk3);
+    list.remove(chunk1);
+    delete chunk1;
+
+    EXPECT_EQ(2, list.size);
+    EXPECT_EQ(chunk3, list.start);
+    EXPECT_EQ(chunk2, list.end);
+    EXPECT_EQ(chunksLeft + 2, textChunkCnt);
+    EXPECT_EQ(2, list.search.size());
+    EXPECT_EQ(2, list.searchWidth.size());
+}
+
+TEST(TextChunkList, remove3)
+{
+    TextChunkList list;
+    int chunksLeft = textChunkCnt;
+
+    TextChunk *chunk1 = new TextChunk("test1",
+        Color(1, 2, 3), Color(2, 0, 0), nullptr);
+    TextChunk *chunk2 = new TextChunk("test2",
+        Color(1, 2, 3), Color(2, 0, 1), nullptr);
+    TextChunk *chunk3 = new TextChunk("test3",
+        Color(1, 2, 3), Color(2, 0, 2), nullptr);
+
+    list.insertFirst(chunk1);
+    list.insertFirst(chunk2);
+    list.insertFirst(chunk3);
+    list.remove(chunk2);
+    delete chunk2;
+
+    EXPECT_EQ(2, list.size);
+    EXPECT_EQ(chunk3, list.start);
+    EXPECT_EQ(chunk1, list.end);
+    EXPECT_EQ(chunksLeft + 2, textChunkCnt);
+    EXPECT_EQ(2, list.search.size());
+    EXPECT_EQ(2, list.searchWidth.size());
 }
 
 TEST(TextChunkList, sort1)

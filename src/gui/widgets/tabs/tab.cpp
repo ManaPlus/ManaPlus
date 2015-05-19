@@ -120,6 +120,7 @@ Tab::Tab(const Widget2 *const widget) :
     mVertexes(new ImageCollection),
     mImage(nullptr),
     mMode(0),
+    mLabelMode(-1),
     mHasMouse(false)
 {
     init();
@@ -211,37 +212,55 @@ void Tab::draw(Graphics *graphics)
     // check which type of tab to draw
     if (mTabbedArea)
     {
+        int labelMode = mFlash;
+
         if (mTabbedArea->isTabSelected(this))
         {
-            mLabel->setForegroundColorAll(*mTabSelectedColor,
-                *mTabSelectedOutlineColor);
+            labelMode = 3;
             mode = TAB_SELECTED;
             // if tab is selected, it doesnt need to highlight activity
             mFlash = 0;
         }
+        else if (!labelMode)
+        {
+            if (mHasMouse)
+            {
+                labelMode = 4;
+                mode = TAB_HIGHLIGHTED;
+            }
+        }
         else if (mHasMouse)
         {
-            mLabel->setForegroundColorAll(*mTabHighlightedColor,
-                *mTabHighlightedOutlineColor);
             mode = TAB_HIGHLIGHTED;
         }
-        else
-        {
-            mLabel->setForegroundColorAll(*mTabColor, *mTabOutlineColor);
-        }
 
-        switch (mFlash)
+        if (labelMode != mLabelMode)
         {
-            case 1:
-                mLabel->setForegroundColorAll(*mFlashColor,
-                    *mFlashOutlineColor);
-                break;
-            case 2:
-                mLabel->setForegroundColorAll(*mPlayerFlashColor,
-                    *mPlayerFlashOutlineColor);
-                break;
-            default:
-                break;
+            mLabelMode = labelMode;
+            switch (labelMode)
+            {
+                case 0:  // default state
+                default:
+                    mLabel->setForegroundColorAll(*mTabColor,
+                        *mTabOutlineColor);
+                    break;
+                case 1:  // mFlash == 1
+                    mLabel->setForegroundColorAll(*mFlashColor,
+                        *mFlashOutlineColor);
+                    break;
+                case 2:  // mFlash == 2
+                    mLabel->setForegroundColorAll(*mPlayerFlashColor,
+                        *mPlayerFlashOutlineColor);
+                    break;
+                case 3:  //mTabbedArea->isTabSelected(this)
+                    mLabel->setForegroundColorAll(*mTabSelectedColor,
+                        *mTabSelectedOutlineColor);
+                    break;
+                case 4:  // mHasMouse
+                    mLabel->setForegroundColorAll(*mTabHighlightedColor,
+                        *mTabHighlightedOutlineColor);
+                    break;
+            }
         }
     }
 

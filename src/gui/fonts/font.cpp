@@ -73,6 +73,7 @@
 #include "resources/image.h"
 #include "resources/imagehelper.h"
 
+#include "utils/delete2.h"
 #include "utils/files.h"
 #include "utils/paths.h"
 #include "utils/sdlcheckutils.h"
@@ -316,7 +317,7 @@ void Font::doClean()
         TextChunkList *const cache = &mCache[f];
         const size_t size = static_cast<size_t>(cache->size);
 #ifdef DEBUG_FONT_COUNTERS
-        logger->log("ptr: %d, size: %d", f, size);
+        logger->log("ptr: %u, size: %ld", f, size);
 #endif
         if (size > CACHE_SIZE_SMALL3)
         {
@@ -366,4 +367,73 @@ int Font::getStringIndexAt(const std::string& text, const int x) const
 const TextChunkList *Font::getCache() const
 {
     return mCache;
+}
+
+void Font::generate(TextChunk &chunk)
+{
+    const std::string &text = chunk.text;
+    if (text.empty())
+        return;
+
+    const unsigned char chr = text[0];
+    TextChunkList *const cache = &mCache[chr];
+    Color &col = chunk.color;
+    Color &col2 = chunk.color2;
+    const int oldAlpha = col.a;
+    col.a = 255;
+
+    TextChunkSmall key(text, col, col2);
+    std::map<TextChunkSmall, TextChunk*> &search = cache->search;
+    std::map<TextChunkSmall, TextChunk*>::iterator i = search.find(key);
+    if (i != search.end())
+    {
+        TextChunk *const chunk2 = (*i).second;
+        cache->moveToFirst(chunk2);
+        //search.erase(key);
+        cache->remove(chunk2);
+        chunk.img = chunk2->img;
+//        logger->log("cached image: " + chunk.text);
+    }
+    else
+    {
+        if (cache->size >= CACHE_SIZE)
+        {
+#ifdef DEBUG_FONT_COUNTERS
+            mDeleteCounter ++;
+#endif
+            cache->removeBack();
+        }
+#ifdef DEBUG_FONT_COUNTERS
+        mCreateCounter ++;
+#endif
+        const float alpha = static_cast<float>(chunk.color.a) / 255.0F;
+        chunk.generate(mFont, alpha);
+//        logger->log("generate image: " + chunk.text);
+    }
+    col.a = oldAlpha;
+}
+
+void Font::insertChunk(TextChunk *const chunk)
+{
+    if (!chunk || chunk->text.empty() || !chunk->img)
+        return;
+//    logger->log("insert chunk: text=%s, color: %d,%d,%d",
+//        chunk->text.c_str(), chunk->color.r, chunk->color.g, chunk->color.b);
+    const unsigned char chr = chunk->text[0];
+    TextChunkList *const cache = &mCache[chr];
+
+    std::map<TextChunkSmall, TextChunk*> &search = cache->search;
+    std::map<TextChunkSmall, TextChunk*>::iterator i
+        = search.find(TextChunkSmall(chunk->text,
+        chunk->color, chunk->color2));
+    if (i != search.end())
+    {
+        delete2(chunk->img);
+        return;
+    }
+
+    TextChunk *const chunk2 = new TextChunk(chunk->text,
+        chunk->color, chunk->color2, chunk->textFont);
+    chunk2->img = chunk->img;
+    cache->insertFirst(chunk2);
 }

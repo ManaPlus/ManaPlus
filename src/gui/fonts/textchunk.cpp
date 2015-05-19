@@ -25,6 +25,8 @@
 
 #include "sdlshared.h"
 
+#include "gui/fonts/font.h"
+
 #include "resources/image.h"
 #include "resources/surfaceimagehelper.h"
 
@@ -45,10 +47,24 @@ char *strBuf = nullptr;
 int textChunkCnt = 0;
 #endif
 
+TextChunk::TextChunk() :
+    img(nullptr),
+    textFont(nullptr),
+    text(),
+    color(),
+    color2(),
+    prev(nullptr),
+    next(nullptr)
+{
+#ifdef UNITTESTS
+    textChunkCnt ++;
+#endif
+}
+
 TextChunk::TextChunk(const std::string &text0,
                      const Color &color0,
                      const Color &color1,
-                     const Font *const font) :
+                     Font *const font) :
     img(nullptr),
     textFont(font),
     text(text0),
@@ -166,4 +182,17 @@ void TextChunk::generate(TTF_Font *const font, const float alpha)
     MSDL_FreeSurface(surface);
 
     BLOCK_END("TextChunk::generate")
+}
+
+void TextChunk::deleteImage()
+{
+    if (textFont)
+    {
+        textFont->insertChunk(this);
+        img = nullptr;
+    }
+    else
+    {
+        delete2(img);
+    }
 }

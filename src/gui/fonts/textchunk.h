@@ -38,10 +38,12 @@ class Image;
 class TextChunk final
 {
     public:
+        TextChunk();
+
         TextChunk(const std::string &text0,
                   const Color &color0,
                   const Color &color1,
-                  const Font *const font);
+                  Font *const font);
 
         A_DELETE_COPY(TextChunk)
 
@@ -51,8 +53,10 @@ class TextChunk final
 
         void generate(TTF_Font *const font, const float alpha);
 
+        void deleteImage();
+
         Image *img;
-        const Font *textFont;
+        Font *textFont;
         std::string text;
         Color color;
         Color color2;

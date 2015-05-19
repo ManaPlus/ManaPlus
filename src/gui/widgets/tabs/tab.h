@@ -228,6 +228,7 @@ class Tab notfinal : public BasicContainer,
         ImageCollection *mVertexes;
         Image *mImage;
         int mMode;
+        int mLabelMode;
 
     protected:
         bool mHasMouse;
