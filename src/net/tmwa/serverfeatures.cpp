@@ -56,7 +56,7 @@ bool ServerFeatures::haveChangePartyLeader() const
 
 bool ServerFeatures::haveServerHp() const
 {
-    return serverVersion > 0;
+    return serverVersion > 0 || tmwServerVersion >= 0x0f0513;
 }
 
 bool ServerFeatures::haveLangTab() const
@@ -111,7 +111,7 @@ bool ServerFeatures::haveServerIgnore() const
 
 bool ServerFeatures::haveMove3() const
 {
-    return serverVersion >= 10 || tmwServerVersion >= 0x0f0518;
+    return serverVersion >= 10 || tmwServerVersion >= 0x0f0512;
 }
 
 bool ServerFeatures::haveItemColors() const
@@ -126,7 +126,7 @@ bool ServerFeatures::haveOtherGender() const
 
 bool ServerFeatures::haveMonsterAttackRange() const
 {
-    return serverVersion > 0;
+    return serverVersion > 0 || tmwServerVersion >= 0x0f0513;
 }
 
 bool ServerFeatures::haveEmailOnRegister() const
@@ -171,7 +171,7 @@ bool ServerFeatures::haveMapServerVersion() const
 
 bool ServerFeatures::haveNpcGender() const
 {
-    return serverVersion > 0;
+    return serverVersion > 0 || tmwServerVersion >= 0x0f0513;
 }
 
 bool ServerFeatures::haveJoinChannel() const
