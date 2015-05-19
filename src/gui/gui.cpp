@@ -265,15 +265,16 @@ Gui::~Gui()
         mMouseCursors = nullptr;
     }
 
+    if (windowContainer)
+        windowContainer->slowLogic();
+    delete getTop();
+
     delete2(mGuiFont);
     delete2(boldFont);
     delete2(mHelpFont);
     delete2(mSecureFont);
     delete2(mInfoParticleFont);
     delete2(mNpcFont);
-    if (windowContainer)
-        windowContainer->slowLogic();
-    delete getTop();
 
     delete2(guiInput);
 

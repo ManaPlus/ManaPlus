@@ -392,6 +392,8 @@ void Font::generate(TextChunk &chunk)
         //search.erase(key);
         cache->remove(chunk2);
         chunk.img = chunk2->img;
+        chunk2->img = nullptr;
+        delete chunk2;
 //        logger->log("cached image: " + chunk.text);
     }
     else
