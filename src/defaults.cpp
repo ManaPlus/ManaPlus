@@ -103,7 +103,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("drawPath", false);
     AddDEF("moveToTargetType", 10);
     AddDEF("crazyMoveProgram", "mumrsonmdmlon");
-    AddDEF("disableGameModifiers", false);
+    AddDEF("disableGameModifiers", true);
     AddDEF("targetDeadPlayers", false);
     AddDEF("afkMessage", "I am away from keyboard.");
     AddDEF("afkFormat", 0);
