@@ -221,10 +221,12 @@ void LoginHandler::processServerVersion(Net::MessageIn &msg)
     }
     else if (b1 >= 0x0d)
     {   // new TMWA
-        const unsigned int options = msg.readInt32("options");
+        const unsigned int options = msg.readInt8("options");
         mRegistrationEnabled = options & FLAG_REGISTRATION;
         serverVersion = 0;
         tmwServerVersion = (b1 << 16) | (b2 << 8) | b3;
+        msg.readInt8("protocol version");
+        msg.readInt16("vendor");
     }
     else
     {   // eAthena
