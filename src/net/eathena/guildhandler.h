@@ -70,6 +70,8 @@ class GuildHandler final : public Ea::GuildHandler, public MessageHandler
 
         void checkMaster() const override final;
 
+        void requestAlliance(const Being *const being) const override final;
+
     protected:
         static void processGuildUpdateCoords(Net::MessageIn &msg);
 

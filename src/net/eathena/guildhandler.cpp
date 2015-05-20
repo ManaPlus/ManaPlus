@@ -450,4 +450,15 @@ void GuildHandler::processGuildEmblem(Net::MessageIn &msg)
     msg.readInt16("emblem id");
 }
 
+void GuildHandler::requestAlliance(const Being *const being) const
+{
+    if (!being)
+        return;
+
+    createOutPacket(CMSG_GUILD_ALLIANCE_REQUEST);
+    outMsg.writeInt32(being->getId(), "account id");
+    outMsg.writeInt32(0, "inviter account id");
+    outMsg.writeInt32(0, "inviter char id");
+}
+
 }  // namespace EAthena

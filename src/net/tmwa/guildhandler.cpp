@@ -421,4 +421,8 @@ void GuildHandler::processGuildExpulsionList(Net::MessageIn &msg)
     }
 }
 
+void GuildHandler::requestAlliance(const Being *const being A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

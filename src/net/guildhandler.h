@@ -61,8 +61,7 @@ class GuildHandler notfinal
         virtual void changeMemberPostion(const GuildMember *const member,
                                          const int level) const = 0;
 
-        virtual void requestAlliance(const int guildId,
-                                     const int otherGuildId) const = 0;
+        virtual void requestAlliance(const Being *const being) const = 0;
 
         virtual void requestAllianceResponse(const int guildId,
                                              int const otherGuildId,

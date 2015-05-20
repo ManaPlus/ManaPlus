@@ -60,11 +60,6 @@ GuildHandler::~GuildHandler()
     delete2(guildTab);
 }
 
-void GuildHandler::requestAlliance(const int guildId A_UNUSED,
-                                   const int otherGuildId A_UNUSED) const
-{
-}
-
 void GuildHandler::requestAllianceResponse(const int guildId A_UNUSED,
                                            const int otherGuildId A_UNUSED,
                                            const bool response A_UNUSED) const
