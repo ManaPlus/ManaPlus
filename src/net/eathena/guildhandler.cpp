@@ -461,4 +461,12 @@ void GuildHandler::requestAlliance(const Being *const being) const
     outMsg.writeInt32(0, "inviter char id");
 }
 
+void GuildHandler::requestAllianceResponse(const int beingId,
+                                           const bool accept) const
+{
+    createOutPacket(CMSG_GUILD_ALLIANCE_REPLY);
+    outMsg.writeInt32(beingId, "account id");
+    outMsg.writeInt32(accept, "accept flag");
+}
+
 }  // namespace EAthena

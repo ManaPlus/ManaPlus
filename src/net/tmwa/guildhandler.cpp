@@ -425,4 +425,9 @@ void GuildHandler::requestAlliance(const Being *const being A_UNUSED) const
 {
 }
 
+void GuildHandler::requestAllianceResponse(const int beingId A_UNUSED,
+                                           const bool accept A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

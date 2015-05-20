@@ -63,9 +63,8 @@ class GuildHandler notfinal
 
         virtual void requestAlliance(const Being *const being) const = 0;
 
-        virtual void requestAllianceResponse(const int guildId,
-                                             int const otherGuildId,
-                                             const bool response) const = 0;
+        virtual void requestAllianceResponse(const int beingId,
+                                             const bool accept) const = 0;
 
         virtual void endAlliance(const int guildId,
                                  const int otherGuildId) const = 0;
