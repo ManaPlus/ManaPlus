@@ -517,4 +517,10 @@ void GuildHandler::changeEmblem(std::string emblem) const
     outMsg.writeString(emblem, sz, "emblem");
 }
 
+void GuildHandler::requestEmblem(const int guildId) const
+{
+    createOutPacket(CMSG_GUILD_REQUEST_EMBLEM);
+    outMsg.writeInt32(guildId, "guild id");
+}
+
 }  // namespace EAthena

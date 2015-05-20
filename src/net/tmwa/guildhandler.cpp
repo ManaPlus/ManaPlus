@@ -455,4 +455,8 @@ void GuildHandler::changeEmblem(std::string emblem A_UNUSED) const
 {
 }
 
+void GuildHandler::requestEmblem(const int guildId A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

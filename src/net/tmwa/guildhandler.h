@@ -90,6 +90,8 @@ class GuildHandler final : public Ea::GuildHandler, public MessageHandler
 
         void changeEmblem(std::string emblem) const override final;
 
+        void requestEmblem(const int guildId) const override final;
+
     protected:
         static void processGuildPositionInfo(Net::MessageIn &msg);
 
