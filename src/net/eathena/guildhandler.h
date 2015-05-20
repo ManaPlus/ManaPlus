@@ -88,6 +88,8 @@ class GuildHandler final : public Ea::GuildHandler, public MessageHandler
 
         void breakGuild(const std::string &name) const override final;
 
+        void changeEmblem(std::string emblem) const override final;
+
     protected:
         static void processGuildUpdateCoords(Net::MessageIn &msg);
 

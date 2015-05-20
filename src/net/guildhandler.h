@@ -85,6 +85,8 @@ class GuildHandler notfinal
 
         virtual void breakGuild(const std::string &name) const = 0;
 
+        virtual void changeEmblem(std::string emblem) const = 0;
+
         virtual void clear() const = 0;
 
         virtual ChatTab *getTab() const = 0;

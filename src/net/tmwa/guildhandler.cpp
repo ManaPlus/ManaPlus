@@ -451,4 +451,8 @@ void GuildHandler::breakGuild(const std::string &name A_UNUSED) const
 {
 }
 
+void GuildHandler::changeEmblem(std::string emblem A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena
