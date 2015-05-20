@@ -75,6 +75,9 @@ class GuildHandler final : public Ea::GuildHandler, public MessageHandler
         void requestAllianceResponse(const int beingId,
                                      const bool accept) const override final;
 
+        void endAlliance(const int guildId,
+                         const int flag) const override final;
+
     protected:
         static void processGuildUpdateCoords(Net::MessageIn &msg);
 

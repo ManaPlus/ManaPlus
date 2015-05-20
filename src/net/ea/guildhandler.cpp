@@ -60,11 +60,6 @@ GuildHandler::~GuildHandler()
     delete2(guildTab);
 }
 
-void GuildHandler::endAlliance(const int guildId A_UNUSED,
-                               const int otherGuildId A_UNUSED) const
-{
-}
-
 void GuildHandler::processGuildCreateResponse(Net::MessageIn &msg)
 {
     const uint8_t flag = msg.readUInt8("flag");

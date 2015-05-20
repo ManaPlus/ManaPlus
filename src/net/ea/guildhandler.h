@@ -42,9 +42,6 @@ class GuildHandler notfinal : public Net::GuildHandler
 
         virtual ~GuildHandler();
 
-        void endAlliance(const int guildId,
-                         const int otherGuildId) const override final;
-
         static void processGuildCreateResponse(Net::MessageIn &msg);
 
         static void processGuildMasterOrMember(Net::MessageIn &msg);

@@ -430,4 +430,9 @@ void GuildHandler::requestAllianceResponse(const int beingId A_UNUSED,
 {
 }
 
+void GuildHandler::endAlliance(const int guildId A_UNUSED,
+                               const int flag A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

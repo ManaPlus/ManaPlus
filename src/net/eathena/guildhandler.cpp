@@ -469,4 +469,12 @@ void GuildHandler::requestAllianceResponse(const int beingId,
     outMsg.writeInt32(accept, "accept flag");
 }
 
+void GuildHandler::endAlliance(const int guildId,
+                               const int flag) const
+{
+    createOutPacket(CMSG_GUILD_ALLIANCE_DELETE);
+    outMsg.writeInt32(guildId, "guild id");
+    outMsg.writeInt32(flag, "flag");
+}
+
 }  // namespace EAthena

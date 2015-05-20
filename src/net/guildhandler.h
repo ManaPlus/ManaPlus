@@ -67,7 +67,7 @@ class GuildHandler notfinal
                                              const bool accept) const = 0;
 
         virtual void endAlliance(const int guildId,
-                                 const int otherGuildId) const = 0;
+                                 const int flag) const = 0;
 
         virtual void changeNotice(const int guildId,
                                   const std::string &restrict msg1,
