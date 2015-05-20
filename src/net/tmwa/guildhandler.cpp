@@ -435,4 +435,12 @@ void GuildHandler::endAlliance(const int guildId A_UNUSED,
 {
 }
 
+void GuildHandler::changePostionInfo(const int posId A_UNUSED,
+                                     const int mode A_UNUSED,
+                                     const int ranking A_UNUSED,
+                                     const int payRate A_UNUSED,
+                                     const std::string &name A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

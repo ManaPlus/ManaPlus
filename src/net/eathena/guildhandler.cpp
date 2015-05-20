@@ -477,4 +477,19 @@ void GuildHandler::endAlliance(const int guildId,
     outMsg.writeInt32(flag, "flag");
 }
 
+void GuildHandler::changePostionInfo(const int posId,
+                                     const int mode,
+                                     const int ranking,
+                                     const int payRate,
+                                     const std::string &name) const
+{
+    createOutPacket(CMSG_GUILD_CHANGE_POS_INFO);
+    outMsg.writeInt16(44, "len");
+    outMsg.writeInt32(posId, "position id");
+    outMsg.writeInt32(mode, "mode");
+    outMsg.writeInt32(ranking, "ranking");
+    outMsg.writeInt32(payRate, "pay rate");
+    outMsg.writeString(name, 24, "name");
+}
+
 }  // namespace EAthena

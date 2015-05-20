@@ -78,6 +78,12 @@ class GuildHandler final : public Ea::GuildHandler, public MessageHandler
         void endAlliance(const int guildId,
                          const int flag) const override final;
 
+        void changePostionInfo(const int posId,
+                               const int mode,
+                               const int ranking,
+                               const int payRate,
+                               const std::string &name) const override final;
+
     protected:
         static void processGuildPositionInfo(Net::MessageIn &msg);
 

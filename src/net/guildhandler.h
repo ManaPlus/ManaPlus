@@ -61,6 +61,12 @@ class GuildHandler notfinal
         virtual void changeMemberPostion(const GuildMember *const member,
                                          const int level) const = 0;
 
+        virtual void changePostionInfo(const int posId,
+                                       const int mode,
+                                       const int ranking,
+                                       const int payRate,
+                                       const std::string &name) const = 0;
+
         virtual void requestAlliance(const Being *const being) const = 0;
 
         virtual void requestAllianceResponse(const int beingId,
