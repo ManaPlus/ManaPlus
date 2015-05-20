@@ -501,4 +501,10 @@ void GuildHandler::requestOpposition(const Being *const being) const
     outMsg.writeInt32(being->getId(), "account id");
 }
 
+void GuildHandler::breakGuild(const std::string &name) const
+{
+    createOutPacket(CMSG_GUILD_BREAK);
+    outMsg.writeString(name, 40, "name");
+}
+
 }  // namespace EAthena

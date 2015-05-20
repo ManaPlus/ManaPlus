@@ -86,6 +86,8 @@ class GuildHandler final : public Ea::GuildHandler, public MessageHandler
 
         void requestOpposition(const Being *const being) const override final;
 
+        void breakGuild(const std::string &name) const override final;
+
     protected:
         static void processGuildUpdateCoords(Net::MessageIn &msg);
 

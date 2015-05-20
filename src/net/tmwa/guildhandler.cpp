@@ -447,4 +447,8 @@ void GuildHandler::requestOpposition(const Being *const being A_UNUSED) const
 {
 }
 
+void GuildHandler::breakGuild(const std::string &name A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena
