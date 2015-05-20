@@ -492,4 +492,13 @@ void GuildHandler::changePostionInfo(const int posId,
     outMsg.writeString(name, 24, "name");
 }
 
+void GuildHandler::requestOpposition(const Being *const being) const
+{
+    if (!being)
+        return;
+
+    createOutPacket(CMSG_GUILD_OPPOSITION);
+    outMsg.writeInt32(being->getId(), "account id");
+}
+
 }  // namespace EAthena

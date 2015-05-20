@@ -443,4 +443,8 @@ void GuildHandler::changePostionInfo(const int posId A_UNUSED,
 {
 }
 
+void GuildHandler::requestOpposition(const Being *const being A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

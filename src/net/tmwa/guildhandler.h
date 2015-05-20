@@ -84,6 +84,8 @@ class GuildHandler final : public Ea::GuildHandler, public MessageHandler
                                const int payRate,
                                const std::string &name) const override final;
 
+        void requestOpposition(const Being *const being) const override final;
+
     protected:
         static void processGuildPositionInfo(Net::MessageIn &msg);
 

@@ -69,6 +69,8 @@ class GuildHandler notfinal
 
         virtual void requestAlliance(const Being *const being) const = 0;
 
+        virtual void requestOpposition(const Being *const being) const = 0;
+
         virtual void requestAllianceResponse(const int beingId,
                                              const bool accept) const = 0;
 
