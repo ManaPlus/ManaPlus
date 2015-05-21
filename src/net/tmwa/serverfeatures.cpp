@@ -56,7 +56,7 @@ bool ServerFeatures::haveChangePartyLeader() const
 
 bool ServerFeatures::haveServerHp() const
 {
-    return serverVersion > 0 || tmwServerVersion >= 0x0f0513;
+    return serverVersion > 0 || tmwServerVersion > 0x0f0513;
 }
 
 bool ServerFeatures::haveLangTab() const
