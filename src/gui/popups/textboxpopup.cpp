@@ -39,6 +39,7 @@ TextBoxPopup::TextBoxPopup() :
 
 void TextBoxPopup::postInit()
 {
+    Popup::postInit();
     const int fontHeight = getFont()->getHeight();
     setMinHeight(fontHeight);
     mTextBox->setEditable(false);

@@ -54,6 +54,7 @@ SpeechBubble::SpeechBubble() :
 
 void SpeechBubble::postInit()
 {
+    Popup::postInit();
     add(mCaption);
     add(mSpeechBox);
 }

@@ -86,6 +86,7 @@ ItemPopup::ItemPopup() :
 
 void ItemPopup::postInit()
 {
+    Popup::postInit();
     add(mItemName);
     add(mItemDesc);
     add(mItemEffect);

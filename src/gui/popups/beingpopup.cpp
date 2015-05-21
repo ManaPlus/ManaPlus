@@ -92,6 +92,7 @@ BeingPopup::~BeingPopup()
 
 void BeingPopup::postInit()
 {
+    Popup::postInit();
     add(mBeingName);
     add(mBeingParty);
     add(mBeingGuild);

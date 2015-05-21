@@ -61,6 +61,7 @@ SkillPopup::SkillPopup() :
 
 void SkillPopup::postInit()
 {
+    Popup::postInit();
     add(mSkillName);
     add(mSkillDesc);
     add(mSkillEffect);

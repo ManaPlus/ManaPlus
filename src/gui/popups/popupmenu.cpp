@@ -130,6 +130,7 @@ PopupMenu::PopupMenu() :
 
 void PopupMenu::postInit()
 {
+    Popup::postInit();
     add(mScrollArea);
 }
 

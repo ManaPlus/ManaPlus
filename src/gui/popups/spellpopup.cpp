@@ -47,6 +47,7 @@ SpellPopup::SpellPopup() :
 
 void SpellPopup::postInit()
 {
+    Popup::postInit();
     add(mItemName);
     add(mItemComment);
 

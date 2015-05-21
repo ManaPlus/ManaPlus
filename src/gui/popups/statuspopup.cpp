@@ -54,6 +54,7 @@ StatusPopup::StatusPopup() :
 
 void StatusPopup::postInit()
 {
+    Popup::postInit();
     const int fontHeight = getFont()->getHeight();
     int y = 0;
     addLabel(0);
