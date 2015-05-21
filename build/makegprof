@@ -2,5 +2,6 @@
 
 mv ../run/gmon.out .
 gprof ../run/bin/manaplus >gprof.txt
+gprof --inline-file-names ../run/bin/manaplus >gprofi.txt
 cat gprof.txt | gprof2dot.py >gprof.dot
 cat gprof.dot | dot -Tpng -o gprof.png
