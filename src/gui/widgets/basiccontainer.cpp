@@ -250,6 +250,7 @@ void BasicContainer::add(Widget *const widget)
         widget->setFocusHandler(mInternalFocusHandler);
 
     widget->setParent(this);
+    widget->setWindow(getWindow());
     widget->addDeathListener(this);
 }
 
@@ -261,6 +262,7 @@ void BasicContainer::remove(Widget* widget)
         {
             mWidgets.erase(iter);
             widget->setFocusHandler(nullptr);
+            widget->setWindow(nullptr);
             widget->setParent(nullptr);
             widget->removeDeathListener(this);
             break;
@@ -282,6 +284,7 @@ void BasicContainer::clear()
     {
         Widget *const widget = *iter;
         widget->setFocusHandler(nullptr);
+        widget->setWindow(nullptr);
         widget->setParent(nullptr);
         widget->removeDeathListener(this);
     }

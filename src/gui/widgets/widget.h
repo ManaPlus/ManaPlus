@@ -199,6 +199,9 @@ class Widget notfinal : public Widget2
         Widget* getParent() const A_WARN_UNUSED
         { return mParent; }
 
+        Widget* getWindow() const A_WARN_UNUSED
+        { return mWindow; }
+
         /**
           * Sets the width of the widget.
           *
@@ -665,6 +668,9 @@ class Widget notfinal : public Widget2
           */
         virtual void setParent(Widget* parent)
         { mParent = parent; }
+
+        virtual void setWindow(Widget* window)
+        { mWindow = window; }
 
         /**
           * Gets the font set for the widget. If no font has been set, 
@@ -1192,6 +1198,8 @@ class Widget notfinal : public Widget2
           * has no parent.
           */
         Widget* mParent;
+
+        Widget* mWindow;
 
         /**
           * Holds the font used by the widget.

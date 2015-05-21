@@ -39,6 +39,7 @@ GuiTableActionListener::GuiTableActionListener(GuiTable *restrict table,
     {
         widget->addActionListener(this);
         widget->setParent(table);
+        widget->setWindow(table->getWindow());
     }
 }
 
@@ -47,6 +48,7 @@ GuiTableActionListener::~GuiTableActionListener()
     if (mWidget)
     {
         mWidget->removeActionListener(this);
+        mWidget->setWindow(nullptr);
         mWidget->setParent(nullptr);
     }
 }
