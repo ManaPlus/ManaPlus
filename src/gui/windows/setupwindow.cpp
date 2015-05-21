@@ -79,6 +79,7 @@ SetupWindow::SetupWindow() :
 
 void SetupWindow::postInit()
 {
+    Window::postInit();
     int width = 620;
     const int height = 450;
 

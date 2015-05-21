@@ -120,6 +120,7 @@ QuitDialog::QuitDialog(QuitDialog **const pointerToMe) :
 
 void QuitDialog::postInit()
 {
+    Window::postInit();
     setLocationRelativeTo(getParent());
     setVisible(true);
     soundManager.playGuiSound(SOUND_SHOW_WINDOW);

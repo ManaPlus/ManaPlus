@@ -131,6 +131,7 @@ EquipmentWindow::EquipmentWindow(Equipment *const equipment,
 
 void EquipmentWindow::postInit()
 {
+    Window::postInit();
     const Rect &area = getChildrenArea();
     mUnequip->setPosition(area.width  - mUnequip->getWidth() - mButtonPadding,
         area.height - mUnequip->getHeight() - mButtonPadding);

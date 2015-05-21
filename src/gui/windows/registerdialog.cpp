@@ -147,6 +147,7 @@ RegisterDialog::RegisterDialog(LoginData *const data) :
 
 void RegisterDialog::postInit()
 {
+    Window::postInit();
     setVisible(true);
     mUserField->requestFocus();
     mUserField->setCaretPosition(static_cast<unsigned>(

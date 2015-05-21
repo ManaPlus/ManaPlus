@@ -45,6 +45,7 @@ EditDialog::EditDialog(const std::string &restrict title,
 
 void EditDialog::postInit()
 {
+    Window::postInit();
     // TRANSLATORS: edit dialog label
     Button *const okButton = new Button(this, _("OK"), mEventOk, this);
 

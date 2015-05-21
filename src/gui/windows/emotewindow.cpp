@@ -76,6 +76,7 @@ EmoteWindow::EmoteWindow() :
 
 void EmoteWindow::postInit()
 {
+    Window::postInit();
     const int pad2 = mPadding * 2;
     const int width = 200;
     const int height = 150;

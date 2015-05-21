@@ -103,6 +103,7 @@ DidYouKnowWindow::DidYouKnowWindow() :
 
 void DidYouKnowWindow::postInit()
 {
+    Window::postInit();
     widgetResized(Event(nullptr));
 }
 

@@ -189,6 +189,7 @@ EditServerDialog::~EditServerDialog()
 
 void EditServerDialog::postInit()
 {
+    Window::postInit();
     setVisible(true);
     mNameField->requestFocus();
 }

@@ -223,6 +223,7 @@ ShopWindow::ShopWindow() :
 
 void ShopWindow::postInit()
 {
+    Window::postInit();
     setVisible(false);
     enableVisibleSound(true);
     updateSelection();

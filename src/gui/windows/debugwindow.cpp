@@ -84,6 +84,7 @@ DebugWindow::~DebugWindow()
 
 void DebugWindow::postInit()
 {
+    Window::postInit();
     add(mTabs);
 }
 

@@ -187,6 +187,7 @@ CharSelectDialog::~CharSelectDialog()
 
 void CharSelectDialog::postInit()
 {
+    Window::postInit();
     setVisible(true);
     requestFocus();
 #ifdef EATHENA_SUPPORT

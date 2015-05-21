@@ -209,6 +209,7 @@ ChatWindow::~ChatWindow()
 
 void ChatWindow::postInit()
 {
+    Window::postInit();
     add(mChatTabs);
     add(mChatInput);
     add(mColorPicker);

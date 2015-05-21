@@ -63,6 +63,7 @@ ConnectionDialog::ConnectionDialog(const std::string &text,
 
 void ConnectionDialog::postInit()
 {
+    Window::postInit();
     setVisible(true);
 }
 

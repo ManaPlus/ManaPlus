@@ -169,6 +169,7 @@ LoginDialog::LoginDialog(LoginData *const data,
 
 void LoginDialog::postInit()
 {
+    Window::postInit();
     setVisible(true);
 
     const int h = 200;

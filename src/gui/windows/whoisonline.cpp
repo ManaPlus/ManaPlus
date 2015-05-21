@@ -125,6 +125,7 @@ WhoIsOnline::WhoIsOnline() :
 
 void WhoIsOnline::postInit()
 {
+    Window::postInit();
     const int h = 350;
     const int w = 200;
     setDefaultSize(w, h, ImageRect::CENTER);

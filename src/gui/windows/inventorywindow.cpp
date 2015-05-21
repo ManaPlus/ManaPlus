@@ -342,6 +342,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
 
 void InventoryWindow::postInit()
 {
+    Window::postInit();
     slotsChanged(mInventory);
 
     mItems->setSortType(mSortDropDown->getSelected());

@@ -52,6 +52,7 @@ ConfirmDialog::ConfirmDialog(const std::string &restrict title,
 
 void ConfirmDialog::postInit()
 {
+    Window::postInit();
     // TRANSLATORS: confirm dialog button
     Button *const yesButton = new Button(this, _("Yes"), "yes", this);
     // TRANSLATORS: confirm dialog button

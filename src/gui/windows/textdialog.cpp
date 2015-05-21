@@ -84,6 +84,7 @@ TextDialog::TextDialog(const std::string &restrict title,
 
 void TextDialog::postInit()
 {
+    Window::postInit();
     if (getParent())
     {
         setLocationRelativeTo(getParent());

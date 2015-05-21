@@ -58,6 +58,7 @@ UnRegisterDialog::UnRegisterDialog(LoginData *const data) :
 
 void UnRegisterDialog::postInit()
 {
+    Window::postInit();
     // TRANSLATORS: unregister dialog. label.
     Label *const userLabel = new Label(this, strprintf(_("Name: %s"),
         mLoginData->username.c_str()));

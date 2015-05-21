@@ -193,6 +193,7 @@ NpcDialog::NpcDialog(const int npcId) :
 
 void NpcDialog::postInit()
 {
+    Window::postInit();
     setVisible(true);
     requestFocus();
     enableVisibleSound(true);

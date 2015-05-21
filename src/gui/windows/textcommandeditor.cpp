@@ -186,6 +186,7 @@ TextCommandEditor::TextCommandEditor(TextCommand *const command) :
 
 void TextCommandEditor::postInit()
 {
+    Window::postInit();
     enableVisibleSound(true);
     setVisible(true);
 }

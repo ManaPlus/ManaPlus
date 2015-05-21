@@ -284,6 +284,7 @@ ItemAmountWindow::ItemAmountWindow(const Usage usage, Window *const parent,
 
 void ItemAmountWindow::postInit()
 {
+    Window::postInit();
     setVisible(mItem);
 }
 

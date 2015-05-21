@@ -102,6 +102,7 @@ SkillDialog::SkillDialog() :
 
 void SkillDialog::postInit()
 {
+    Window::postInit();
     setLocationRelativeTo(getParent());
     loadWindowState();
     enableVisibleSound(true);
