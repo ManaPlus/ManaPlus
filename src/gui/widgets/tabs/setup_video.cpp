@@ -243,7 +243,7 @@ void Setup_Video::apply()
         else
         {
             // TRANSLATORS: video settings warning
-            new OkDialog(_("Switching to Full Screen"),
+            (new OkDialog(_("Switching to Full Screen"),
                 // TRANSLATORS: video settings warning
                 _("Restart needed for changes to take effect."),
                 // TRANSLATORS: ok dialog button
@@ -252,7 +252,7 @@ void Setup_Video::apply()
                 Modal_true,
                 ShowCenter_true,
                 nullptr,
-                260);
+                260))->postInit();
         }
 #endif
         config.setValue("screen", fullscreen);
@@ -270,7 +270,7 @@ void Setup_Video::apply()
 
         // OpenGL can currently only be changed by restarting, notify user.
         // TRANSLATORS: video settings warning
-        new OkDialog(_("Changing to OpenGL"),
+        (new OkDialog(_("Changing to OpenGL"),
             // TRANSLATORS: video settings warning
             _("Applying change to OpenGL requires restart."),
             // TRANSLATORS: ok dialog button
@@ -279,7 +279,7 @@ void Setup_Video::apply()
             Modal_true,
             ShowCenter_true,
             nullptr,
-            260);
+            260))->postInit();
     }
 
     mFps = mFpsCheckBox->isSelected() ?
@@ -386,7 +386,7 @@ void Setup_Video::action(const ActionEvent &event)
                     || height < mainGraphics->mActualHeight)
                 {
                     // TRANSLATORS: video settings warning
-                    new OkDialog(_("Screen Resolution Changed"),
+                    (new OkDialog(_("Screen Resolution Changed"),
                         // TRANSLATORS: video settings warning
                        _("Restart your client for the change to take effect.")
                        + std::string("\n") + _("Some windows may be moved to "
@@ -397,12 +397,12 @@ void Setup_Video::action(const ActionEvent &event)
                         Modal_true,
                         ShowCenter_true,
                         nullptr,
-                        260);
+                        260))->postInit();
                 }
                 else
                 {
                     // TRANSLATORS: video settings warning
-                    new OkDialog(_("Screen Resolution Changed"),
+                    (new OkDialog(_("Screen Resolution Changed"),
                         // TRANSLATORS: video settings warning
                         _("Restart your client for the change"
                         " to take effect."),
@@ -412,7 +412,7 @@ void Setup_Video::action(const ActionEvent &event)
                         Modal_true,
                         ShowCenter_true,
                         nullptr,
-                        260);
+                        260))->postInit();
                 }
             }
 #else

@@ -183,6 +183,7 @@ void MailViewWindow::action(const ActionEvent &event)
         if (mailEditWindow)
             mailEditWindow->scheduleDelete();
         mailEditWindow = new MailEditWindow;
+        mailEditWindow->postInit();
         mailEditWindow->setTo(mMessage->sender);
         mailEditWindow->setSubject("Re:" + mMessage->title);
         mailEditWindow->setMessage(">" + mMessage->text);

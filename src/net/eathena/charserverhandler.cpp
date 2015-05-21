@@ -574,14 +574,14 @@ void CharServerHandler::processCharCheckRename(Net::MessageIn &msg)
     else
     {
         // TRANSLATORS: info message
-        new OkDialog(_("Error"), _("Character rename error."),
+        (new OkDialog(_("Error"), _("Character rename error."),
             // TRANSLATORS: ok dialog button
             _("Error"),
             DialogType::ERROR,
             Modal_true,
             ShowCenter_true,
             nullptr,
-            260);
+            260))->postInit();
     }
 }
 
@@ -592,14 +592,14 @@ void CharServerHandler::processCharRename(Net::MessageIn &msg)
     {
         mCharSelectDialog->setName(mRenameId, mNewName);
         // TRANSLATORS: info message
-        new OkDialog(_("Info"), _("Character renamed."),
+        (new OkDialog(_("Info"), _("Character renamed."),
             // TRANSLATORS: ok dialog button
             _("OK"),
             DialogType::OK,
             Modal_true,
             ShowCenter_true,
             nullptr,
-            260);
+            260))->postInit();
     }
     else
     {
@@ -625,14 +625,14 @@ void CharServerHandler::processCharRename(Net::MessageIn &msg)
                 break;
         }
         // TRANSLATORS: info message
-        new OkDialog(_("Info"), message,
+        (new OkDialog(_("Info"), message,
             // TRANSLATORS: ok dialog button
             _("OK"),
             DialogType::OK,
             Modal_true,
             ShowCenter_true,
             nullptr,
-            260);
+            260))->postInit();
     }
 }
 
@@ -658,14 +658,14 @@ void CharServerHandler::processCharDeleteFailed(Net::MessageIn &msg)
     unlockCharSelectDialog();
     msg.readUInt8("error");
     // TRANSLATORS: error message
-    new OkDialog(_("Error"), _("Failed to delete character."),
+    (new OkDialog(_("Error"), _("Failed to delete character."),
         // TRANSLATORS: ok dialog button
         _("OK"),
         DialogType::ERROR,
         Modal_true,
         ShowCenter_true,
         nullptr,
-        260);
+        260))->postInit();
     BLOCK_END("CharServerHandler::processCharDeleteFailed")
 }
 

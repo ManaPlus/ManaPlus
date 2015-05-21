@@ -502,7 +502,7 @@ void SocialWindow::showPartyCreate()
     if (localPlayer->getParty())
     {
         // TRANSLATORS: party creation message
-        new OkDialog(_("Create Party"),
+        (new OkDialog(_("Create Party"),
             _("Cannot create party. You are already in a party"),
             // TRANSLATORS: ok dialog button
             _("OK"),
@@ -510,7 +510,7 @@ void SocialWindow::showPartyCreate()
             Modal_true,
             ShowCenter_true,
             this,
-            260);
+            260))->postInit();
         return;
     }
 

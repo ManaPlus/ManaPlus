@@ -56,7 +56,8 @@ void BuySellHandler::processNpcBuySellChoice(Net::MessageIn &msg)
     if (!BuySellDialog::isActive())
     {
         mNpcId = msg.readInt32("npc id");
-        new BuySellDialog(mNpcId);
+        BuySellDialog *const dialog = new BuySellDialog(mNpcId);
+        dialog->postInit();
     }
 }
 

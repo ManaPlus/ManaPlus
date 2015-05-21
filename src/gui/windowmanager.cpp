@@ -97,6 +97,7 @@ void WindowManager::createWindows()
     setupWindow = new SetupWindow;
     setupWindow->postInit();
     helpWindow = new HelpWindow;
+    helpWindow->postInit();
     didYouKnowWindow = new DidYouKnowWindow;
     didYouKnowWindow->postInit();
     popupMenu = new PopupMenu;

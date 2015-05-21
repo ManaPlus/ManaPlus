@@ -1398,6 +1398,7 @@ int Client::gameExec()
                         ShowCenter_true,
                         nullptr,
                         260);
+                    mCurrentDialog->postInit();
                     mCurrentDialog->addActionListener(&loginListener);
                     mCurrentDialog = nullptr;  // OkDialog deletes itself
                     BLOCK_END("Client::gameExec STATE_LOGIN_ERROR")
@@ -1416,6 +1417,7 @@ int Client::gameExec()
                         ShowCenter_true,
                         nullptr,
                         260);
+                    mCurrentDialog->postInit();
                     mCurrentDialog->addActionListener(&accountListener);
                     mCurrentDialog = nullptr;  // OkDialog deletes itself
                     BLOCK_END("Client::gameExec STATE_ACCOUNTCHANGE_ERROR")
@@ -1449,6 +1451,7 @@ int Client::gameExec()
                     BLOCK_START("Client::gameExec STATE_CHANGEPASSWORD")
                     logger->log1("State: CHANGE PASSWORD");
                     mCurrentDialog = new ChangePasswordDialog(&loginData);
+                    mCurrentDialog->postInit();
                     mCurrentDialog->setVisible(true);
                     BLOCK_END("Client::gameExec STATE_CHANGEPASSWORD")
                     break;
@@ -1477,6 +1480,7 @@ int Client::gameExec()
                         ShowCenter_true,
                         nullptr,
                         260);
+                    mCurrentDialog->postInit();
                     mCurrentDialog->addActionListener(&accountListener);
                     mCurrentDialog = nullptr;  // OkDialog deletes itself
                     loginData.password = loginData.newPassword;
@@ -1487,6 +1491,7 @@ int Client::gameExec()
                 case STATE_CHANGEEMAIL:
                     logger->log1("State: CHANGE EMAIL");
                     mCurrentDialog = new ChangeEmailDialog(&loginData);
+                    mCurrentDialog->postInit();
                     mCurrentDialog->setVisible(true);
                     break;
 
@@ -1508,6 +1513,7 @@ int Client::gameExec()
                         ShowCenter_true,
                         nullptr,
                         260);
+                    mCurrentDialog->postInit();
                     mCurrentDialog->addActionListener(&accountListener);
                     mCurrentDialog = nullptr;  // OkDialog deletes itself
                     break;

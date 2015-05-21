@@ -143,14 +143,14 @@ static int uploadUpdate(void *ptr,
             else
             {
                 // TRANSLATORS: file uploaded message
-                new OkDialog(_("File uploaded"), str,
+                (new OkDialog(_("File uploaded"), str,
                     // TRANSLATORS: ok dialog button
                     _("OK"),
                     DialogType::OK,
                     Modal_true,
                     ShowCenter_false,
                     nullptr,
-                    260);
+                    260))->postInit();;
             }
         }
     }
@@ -703,9 +703,14 @@ impHandler(talk)
         return false;
 
     if (being->canTalk())
+    {
         being->talkTo();
+    }
     else if (being->getType() == ActorType::Player)
-        new BuySellDialog(being->getName());
+    {
+        BuySellDialog *const dialog = new BuySellDialog(being->getName());
+        dialog->postInit();
+    }
     return true;
 }
 
@@ -1377,6 +1382,7 @@ impHandler0(testSdlFont)
 impHandler0(createItems)
 {
     BuyDialog *const dialog = new BuyDialog();
+    dialog->postInit();
     const ItemDB::ItemInfos &items = ItemDB::getItemInfos();
     FOR_EACH (ItemDB::ItemInfos::const_iterator, it, items)
     {

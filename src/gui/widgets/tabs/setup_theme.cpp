@@ -307,14 +307,14 @@ void Setup_Theme::action(const ActionEvent &event)
     else if (eventId == ACTION_INFO)
     {
         // TRANSLATORS: theme info dialog header
-        new OkDialog(_("Theme info"), mThemeInfo,
+        (new OkDialog(_("Theme info"), mThemeInfo,
             // TRANSLATORS: ok dialog button
             _("OK"),
             DialogType::OK,
             Modal_false,
             ShowCenter_true,
             nullptr,
-            600);
+            600))->postInit();
     }
 }
 
@@ -340,7 +340,7 @@ void Setup_Theme::apply()
     if (config.getStringValue("theme") != mTheme)
     {
         // TRANSLATORS: theme message dialog
-        new OkDialog(_("Theme Changed"),
+        (new OkDialog(_("Theme Changed"),
             // TRANSLATORS: ok dialog message
             _("Restart your client for the change to take effect."),
             // TRANSLATORS: ok dialog button
@@ -349,7 +349,7 @@ void Setup_Theme::apply()
             Modal_true,
             ShowCenter_true,
             nullptr,
-            260);
+            260))->postInit();
     }
 
     config.setValue("selectedSkin", "");

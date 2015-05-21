@@ -442,6 +442,7 @@ void GameModifiers::changeAwayMode(const bool forward A_UNUSED)
             ShowCenter_false,
             nullptr,
             260);
+        dialog->postInit();
         localPlayer->setAwayDialog(dialog);
         dialog->addActionListener(localPlayer->getAwayListener());
         soundManager.volumeOff();

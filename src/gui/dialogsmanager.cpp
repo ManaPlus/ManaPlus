@@ -101,7 +101,7 @@ Window *DialogsManager::openErrorDialog(const std::string &header,
 {
     if (settings.supportUrl.empty() || config.getBoolValue("hidesupport"))
     {
-        return new OkDialog(header, message,
+        OkDialog *const dialog = new OkDialog(header, message,
             // TRANSLATORS: ok dialog button
             _("Close"),
             DialogType::ERROR,
@@ -109,6 +109,8 @@ Window *DialogsManager::openErrorDialog(const std::string &header,
             ShowCenter_true,
             nullptr,
             260);
+        dialog->postInit();
+        return dialog;
     }
     else
     {
@@ -136,6 +138,7 @@ void DialogsManager::playerDeath()
             ShowCenter_true,
             nullptr,
             260);
+        deathNotice->postInit();
         deathNotice->addActionListener(&postDeathListener);
     }
 }
@@ -167,6 +170,7 @@ void DialogsManager::attributeChanged(const int id,
                     ShowCenter_true,
                     nullptr,
                     260);
+                weightNotice->postInit();
                 weightNotice->addActionListener(
                     &weightListener);
             }
@@ -186,6 +190,7 @@ void DialogsManager::attributeChanged(const int id,
                     ShowCenter_true,
                     nullptr,
                     260);
+                weightNotice->postInit();
                 weightNotice->addActionListener(
                     &weightListener);
             }

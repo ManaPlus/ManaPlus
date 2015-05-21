@@ -95,6 +95,7 @@ void BuySellHandler::processNpcBuy(Net::MessageIn &msg)
     const int sz = 11;
     const int n_items = (msg.getLength() - 4) / sz;
     mBuyDialog = new BuyDialog(mNpcId);
+    mBuyDialog->postInit();
     mBuyDialog->setMoney(PlayerInfo::getAttribute(Attributes::MONEY));
 
     for (int k = 0; k < n_items; k++)

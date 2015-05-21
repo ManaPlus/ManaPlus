@@ -120,7 +120,10 @@ void MailWindow::action(const ActionEvent &event)
     else if (eventId == "new")
     {
         if (!mailEditWindow)
+        {
             mailEditWindow = new MailEditWindow;
+            mailEditWindow->postInit();
+        }
     }
     else if (eventId == "open")
     {
@@ -213,6 +216,7 @@ void MailWindow::showMessage(MailMessage *const mail)
     }
     delete mailViewWindow;
     mailViewWindow = new MailViewWindow(mail);
+    mailViewWindow->postInit();
 }
 
 void MailWindow::viewNext(const int id)

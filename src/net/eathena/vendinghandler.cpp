@@ -144,6 +144,7 @@ void VendingHandler::processItemsList(Net::MessageIn &msg)
     if (!being)
         return;
     mBuyDialog = new BuyDialog(being->getName());
+    mBuyDialog->postInit();
     mBuyDialog->setMoney(PlayerInfo::getAttribute(Attributes::MONEY));
     msg.readInt32("vender id");
     for (int f = 0; f < count; f ++)

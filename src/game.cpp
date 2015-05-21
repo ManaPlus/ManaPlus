@@ -184,6 +184,7 @@ static void createGuiWindows()
     chatWindow = new ChatWindow;
     chatWindow->postInit();
     tradeWindow = new TradeWindow;
+    tradeWindow->postInit();
     equipmentWindow = new EquipmentWindow(PlayerInfo::getEquipment(),
         localPlayer);
     equipmentWindow->postInit();
@@ -191,7 +192,9 @@ static void createGuiWindows()
     beingEquipmentWindow->postInit();
     beingEquipmentWindow->setVisible(false);
     statusWindow = new StatusWindow;
+    statusWindow->postInit();
     miniStatusWindow = new MiniStatusWindow;
+    miniStatusWindow->postInit();
     inventoryWindow = new InventoryWindow(PlayerInfo::getInventory());
     inventoryWindow->postInit();
 #ifdef EATHENA_SUPPORT
@@ -206,10 +209,12 @@ static void createGuiWindows()
     skillDialog = new SkillDialog;
     skillDialog->postInit();
     minimap = new Minimap;
+    minimap->postInit();
     debugWindow = new DebugWindow;
     debugWindow->postInit();
     itemShortcutWindow = new ShortcutWindow(
         "ItemShortcut", "items.xml", 83, 460);
+    itemShortcutWindow->postInit();
 
     for (unsigned f = 0; f < SHORTCUT_TABS; f ++)
     {
@@ -227,6 +232,7 @@ static void createGuiWindows()
         "emotes.xml",
         130, 480);
     outfitWindow = new OutfitWindow();
+    outfitWindow->postInit();
     dropShortcutWindow = new ShortcutWindow("DropShortcut",
         new VirtShortcutContainer(nullptr, dropShortcut),
         "drops.xml");
@@ -241,14 +247,18 @@ static void createGuiWindows()
 
 #ifdef EATHENA_SUPPORT
     bankWindow = new BankWindow;
+    bankWindow->postInit();
     mailWindow = new MailWindow;
+    mailWindow->postInit();
 #endif
     whoIsOnline = new WhoIsOnline;
     whoIsOnline->postInit();
     killStats = new KillStats;
+    killStats->postInit();
     socialWindow = new SocialWindow;
     socialWindow->postInit();
     questsWindow = new QuestsWindow;
+    questsWindow->postInit();
 
     // TRANSLATORS: chat tab header
     localChatTab = new ChatTab(chatWindow, _("General"),

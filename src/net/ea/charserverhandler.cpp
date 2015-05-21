@@ -138,14 +138,14 @@ void CharServerHandler::processCharCreateFailed(Net::MessageIn &msg)
             break;
     }
     // TRANSLATORS: error message header
-    new OkDialog(_("Error"), errorMessage,
+    (new OkDialog(_("Error"), errorMessage,
         // TRANSLATORS: ok dialog button
         _("OK"),
         DialogType::ERROR,
         Modal_true,
         ShowCenter_true,
         nullptr,
-        260);
+        260))->postInit();
     if (mCharCreateDialog)
         mCharCreateDialog->unlock();
     BLOCK_END("CharServerHandler::processCharCreateFailed")
@@ -160,14 +160,14 @@ void CharServerHandler::processCharDelete(Net::MessageIn &msg A_UNUSED)
     updateCharSelectDialog();
     unlockCharSelectDialog();
     // TRANSLATORS: info message
-    new OkDialog(_("Info"), _("Character deleted."),
+    (new OkDialog(_("Info"), _("Character deleted."),
         // TRANSLATORS: ok dialog button
         _("OK"),
         DialogType::OK,
         Modal_true,
         ShowCenter_true,
         nullptr,
-        260);
+        260))->postInit();
     BLOCK_END("CharServerHandler::processCharDelete")
 }
 

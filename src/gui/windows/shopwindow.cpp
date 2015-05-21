@@ -370,7 +370,7 @@ void ShopWindow::action(const ActionEvent &event)
     {
         EditDialog *const dialog = new EditDialog(
             _("Please enter new shop name"), mSellShopName, "OK");
-            dialog->postInit();
+        dialog->postInit();
         shopRenameListener.setDialog(dialog);
         dialog->addActionListener(&shopRenameListener);
     }
@@ -812,6 +812,7 @@ void ShopWindow::showList(const std::string &nick, std::string data)
     {
         data = data.substr(2);
         buyDialog = new BuyDialog(nick);
+        buyDialog->postInit();
     }
     else if (data.find("S1") == 0)
     {

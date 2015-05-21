@@ -155,7 +155,7 @@ void Setup_Input::apply()
         const std::string str2 = keyToString(key2);
 
         // TRANSLATORS: input settings error header
-        new OkDialog(_("Key Conflict(s) Detected."),
+        (new OkDialog(_("Key Conflict(s) Detected."),
             // TRANSLATORS: input settings error
             strprintf(_("Conflict \"%s\" and \"%s\" keys. "
             "Resolve them, or gameplay may result in strange behaviour."),
@@ -166,7 +166,7 @@ void Setup_Input::apply()
             Modal_true,
             ShowCenter_true,
             nullptr,
-            260);
+            260))->postInit();
     }
     keyboard.setEnabled(true);
     inputManager.store();

@@ -150,6 +150,7 @@ void UnRegisterDialog::action(const ActionEvent &event)
                 ShowCenter_true,
                 nullptr,
                 260);
+            dlg->postInit();
             dlg->addActionListener(mWrongDataNoticeListener);
         }
         else

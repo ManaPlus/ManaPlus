@@ -518,14 +518,14 @@ void CharServerHandler::processCharDeleteFailed(Net::MessageIn &msg)
     unlockCharSelectDialog();
     msg.readUInt8("error");
     // TRANSLATORS: error message
-    new OkDialog(_("Error"), _("Failed to delete character."),
+    (new OkDialog(_("Error"), _("Failed to delete character."),
         // TRANSLATORS: ok dialog button
         _("OK"),
         DialogType::ERROR,
         Modal_true,
         ShowCenter_true,
         nullptr,
-        260);
+        260))->postInit();
     BLOCK_END("CharServerHandler::processCharDeleteFailed")
 }
 

@@ -276,14 +276,14 @@ void CharSelectDialog::action(const ActionEvent &event)
                 character->data.mAttributes[Attributes::EXP]),
                 Units::formatCurrency(
                 character->data.mAttributes[Attributes::MONEY]).c_str());
-            new OkDialog(data->getName(), msg,
+            (new OkDialog(data->getName(), msg,
                 // TRANSLATORS: ok dialog button
                 _("OK"),
                 DialogType::SILENCE,
                 Modal_true,
                 ShowCenter_true,
                 nullptr,
-                260);
+                260))->postInit();
         }
     }
     if (eventId == "switch")
@@ -321,14 +321,14 @@ void CharSelectDialog::action(const ActionEvent &event)
             else
             {
                 // TRANSLATORS: error message
-                new OkDialog(_("Error"), _("Incorrect password"),
+                (new OkDialog(_("Error"), _("Incorrect password"),
                     // TRANSLATORS: ok dialog button
                     _("OK"),
                     DialogType::ERROR,
                     Modal_true,
                     ShowCenter_true,
                     nullptr,
-                    260);
+                    260))->postInit();
             }
         }
         mDeleteIndex = -1;
@@ -346,6 +346,7 @@ void CharSelectDialog::use(const int selected)
     {
         CharCreateDialog *const charCreateDialog =
             new CharCreateDialog(this, selected);
+        charCreateDialog->postInit();
         mCharServerHandler->setCharCreateDialog(charCreateDialog);
     }
 }

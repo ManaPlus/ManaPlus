@@ -221,6 +221,7 @@ void EditServerDialog::action(const ActionEvent &event)
                 ShowCenter_true,
                 nullptr,
                 260);
+            dlg->postInit();
             dlg->addActionListener(this);
         }
         else
