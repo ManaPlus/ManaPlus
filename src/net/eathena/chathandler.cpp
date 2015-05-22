@@ -698,7 +698,10 @@ void ChatHandler::processChatRoomJoinAck(Net::MessageIn &msg)
 
     ChatObject *oldChat = ChatObject::findById(id);
 
-    PlayerInfo::setRoomName(oldChat->title);
+    if (oldChat)
+        PlayerInfo::setRoomName(oldChat->title);
+    else
+        PlayerInfo::setRoomName(std::string());
     chatWindow->joinRoom(true);
     ChatObject *const obj = new ChatObject;
     if (oldChat)

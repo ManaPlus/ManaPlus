@@ -41,6 +41,7 @@
 #include "being/playerrelations.h"
 
 #include "enums/being/attributes.h"
+#include "enums/being/beingdirection.h"
 
 #include "enums/net/packettypes.h"
 

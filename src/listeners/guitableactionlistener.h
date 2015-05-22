@@ -32,9 +32,10 @@ class GuiTable;
 class GuiTableActionListener final : public ActionListener
 {
     public:
-        GuiTableActionListener(GuiTable *restrict _table,
-                               Widget *restrict _widget,
-                               int _row, int _column);
+        GuiTableActionListener(GuiTable *const restrict table,
+                               Widget *const restrict widget,
+                               const int row,
+                               const int column);
 
         A_DELETE_COPY(GuiTableActionListener)
 

@@ -26,6 +26,8 @@
 
 #include "being/localplayer.h"
 
+#include "enums/being/beingdirection.h"
+
 #include "enums/net/packettypes.h"
 
 #include "gui/windows/outfitwindow.h"

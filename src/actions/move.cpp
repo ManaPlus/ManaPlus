@@ -28,6 +28,8 @@
 #include "being/crazymoves.h"
 #include "being/localplayer.h"
 
+#include "enums/being/beingdirection.h"
+
 #include "gui/windows/socialwindow.h"
 #include "gui/windows/npcdialog.h"
 #include "gui/windows/outfitwindow.h"

@@ -187,7 +187,7 @@ bool Widget::isFocused() const
 
 void Widget::setFocusable(const bool focusable)
 {
-    if (!focusable && isFocused())
+    if (!focusable && isFocused() && mFocusHandler)
         mFocusHandler->focusNone();
     mFocusable = focusable;
 }
@@ -220,7 +220,7 @@ void Widget::requestMoveToBottom()
 
 void Widget::setVisible(bool visible)
 {
-    if (!visible && isFocused())
+    if (!visible && isFocused() && mFocusHandler)
         mFocusHandler->focusNone();
 
     if (visible)

@@ -29,6 +29,8 @@
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
+#include "enums/being/beingdirection.h"
+
 #include "gui/chatconsts.h"
 
 #include "listeners/inputactionreplaylistener.h"

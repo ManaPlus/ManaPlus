@@ -150,7 +150,7 @@ static int uploadUpdate(void *ptr,
                     Modal_true,
                     ShowCenter_false,
                     nullptr,
-                    260))->postInit();;
+                    260))->postInit();
             }
         }
     }

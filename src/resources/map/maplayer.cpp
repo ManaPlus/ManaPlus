@@ -570,12 +570,11 @@ void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
                 {
                     const int px = x32 + dx;
                     const int py = py0 - img->mBounds.h;
-                    int c = 0;
                     if (mSpecialFlag || img->mBounds.h <= mapTileSize)
                     {
                         int width = 0;
                         // here need not draw over player position
-                        c = getTileDrawWidth(img, endX - x, width);
+                        const int c = getTileDrawWidth(img, endX - x, width);
 
                         if (!c)
                         {

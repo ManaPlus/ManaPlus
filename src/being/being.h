@@ -31,7 +31,6 @@
 
 #include "enums/being/attacktype.h"
 #include "enums/being/beingaction.h"
-#include "enums/being/beingdirection.h"
 #include "enums/being/gender.h"
 
 #include "listeners/configlistener.h"

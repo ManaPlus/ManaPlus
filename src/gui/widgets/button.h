@@ -206,7 +206,7 @@ class Button final : public Widget,
          * @see getCaption, adjustSize
          */
         void setCaption(const std::string& caption)
-        { mCaption = caption; mTextChanged = true;}
+        { mCaption = caption; mTextChanged = true; }
 
         /**
          * Gets the caption of the button.

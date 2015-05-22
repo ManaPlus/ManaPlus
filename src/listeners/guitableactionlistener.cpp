@@ -26,9 +26,10 @@
 
 #include "debug.h"
 
-GuiTableActionListener::GuiTableActionListener(GuiTable *restrict table,
-                                               Widget *restrict widget,
-                                               int row, int column) :
+GuiTableActionListener::GuiTableActionListener(GuiTable *const restrict table,
+                                               Widget *const restrict widget,
+                                               const int row,
+                                               const int column) :
     ActionListener(),
     mTable(table),
     mRow(row),

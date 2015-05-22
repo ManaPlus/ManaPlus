@@ -40,7 +40,7 @@ class TextChunkList final
 
         void moveToFirst(TextChunk *const item);
 
-        void remove(TextChunk *const item);
+        void remove(const TextChunk *const item);
 
         void removeBack();
 

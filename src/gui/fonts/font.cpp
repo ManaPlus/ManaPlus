@@ -389,7 +389,7 @@ void Font::generate(TextChunk &chunk)
     {
         TextChunk *const chunk2 = (*i).second;
         cache->moveToFirst(chunk2);
-        //search.erase(key);
+//        search.erase(key);
         cache->remove(chunk2);
         chunk.img = chunk2->img;
         chunk2->img = nullptr;

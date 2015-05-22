@@ -70,7 +70,7 @@ void TextChunkList::moveToFirst(TextChunk *const item)
     start = item;
 }
 
-void TextChunkList::remove(TextChunk *const item)
+void TextChunkList::remove(const TextChunk *const item)
 {
     if (!item)
         return;

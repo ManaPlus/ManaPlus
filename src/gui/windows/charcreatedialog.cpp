@@ -26,6 +26,8 @@
 
 #include "input/inputaction.h"
 
+#include "enums/being/beingdirection.h"
+
 #include "enums/gui/dialogtype.h"
 
 #include "gui/windows/okdialog.h"
@@ -382,7 +384,7 @@ void CharCreateDialog::action(const ActionEvent &event)
                 Modal_true,
                 ShowCenter_true,
                 nullptr,
-                260))->postInit();;
+                260))->postInit();
         }
     }
     else if (id == "cancel")

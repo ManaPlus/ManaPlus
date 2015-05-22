@@ -252,7 +252,7 @@ void Tab::draw(Graphics *graphics)
                     mLabel->setForegroundColorAll(*mPlayerFlashColor,
                         *mPlayerFlashOutlineColor);
                     break;
-                case 3:  //mTabbedArea->isTabSelected(this)
+                case 3:  // mTabbedArea->isTabSelected(this)
                     mLabel->setForegroundColorAll(*mTabSelectedColor,
                         *mTabSelectedOutlineColor);
                     break;

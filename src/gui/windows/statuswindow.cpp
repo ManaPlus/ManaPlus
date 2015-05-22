@@ -55,8 +55,6 @@
 #include "utils/delete2.h"
 #include "utils/gettext.h"
 
-#include <SDL_timer.h>
-
 #include "debug.h"
 
 StatusWindow *statusWindow = nullptr;
