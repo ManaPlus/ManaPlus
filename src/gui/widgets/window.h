@@ -286,8 +286,7 @@ class Window notfinal : public BasicContainer2,
         { mSaveVisible = save; }
 
         virtual void postInit()
-        {
-        }
+        { mInit = true; }
 
         /**
          * Returns the parent window.
@@ -705,6 +704,7 @@ class Window notfinal : public BasicContainer2,
         bool mSticky;                 /**< Window resists hiding*/
         bool mStickyButtonLock;       /**< Window locked if sticky enabled*/
         bool mPlayVisibleSound;
+        bool mInit;
 };
 
 #endif  // GUI_WIDGETS_WINDOW_H

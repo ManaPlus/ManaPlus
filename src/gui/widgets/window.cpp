@@ -150,7 +150,8 @@ Window::Window(const std::string &caption,
     mStickyButton(false),
     mSticky(false),
     mStickyButtonLock(false),
-    mPlayVisibleSound(false)
+    mPlayVisibleSound(false),
+    mInit(false)
 {
     logger->log("Window::Window(\"%s\")", caption.c_str());
 
@@ -260,6 +261,11 @@ Window::~Window()
     {
         mGrip->decRef();
         mGrip = nullptr;
+    }
+    if (!mInit)
+    {
+        logger->log("error: Window created without calling postInit(): "
+            + mWindowName);
     }
 }
 
