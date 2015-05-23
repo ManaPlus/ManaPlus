@@ -172,7 +172,7 @@ class Popup notfinal : public Container,
         { return mVisible; }
 
         virtual void postInit()
-        { mInit = true; mWindow = this; }
+        { mInit = true; }
 
     protected:
         int mPadding;                 /**< Holds the padding of the popup. */

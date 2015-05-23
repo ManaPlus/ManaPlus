@@ -250,7 +250,6 @@ void BasicContainer::add(Widget *const widget)
         widget->setFocusHandler(mInternalFocusHandler);
 
     widget->setParent(this);
-    widget->setWindow(getWindow());
     widget->addDeathListener(this);
 }
 

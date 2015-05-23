@@ -155,6 +155,8 @@ Window::Window(const std::string &caption,
 {
     logger->log("Window::Window(\"%s\")", caption.c_str());
 
+    mWindow = this;
+
     windowInstances++;
 
 //    mFrameSize = 1;

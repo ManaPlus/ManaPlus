@@ -53,6 +53,8 @@ Popup::Popup(const std::string &name,
 {
     logger->log("Popup::Popup(\"%s\")", name.c_str());
 
+    mWindow = this;
+
     addWidgetListener(this);
 
     if (skin == "")

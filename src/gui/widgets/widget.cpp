@@ -96,7 +96,6 @@ Widget::Widget(const Widget2 *const widget) :
     mFocusHandler(nullptr),
     mInternalFocusHandler(nullptr),
     mParent(nullptr),
-    mWindow(nullptr),
     mCurrentFont(nullptr),
     mFrameSize(0),
     mFocusable(false),

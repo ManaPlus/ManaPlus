@@ -23,6 +23,8 @@
 
 #include "gui/theme.h"
 
+class Widget;
+
 class Widget2 notfinal
 {
     public:
@@ -76,15 +78,27 @@ class Widget2 notfinal
             mForegroundColor2 = color;
         }
 
+        Widget* getWindow() const A_WARN_UNUSED
+        {
+            return mWindow;
+        }
+
+        virtual void setWindow(Widget *const window)
+        {
+            mWindow = window;
+        }
+
     protected:
         explicit Widget2(const Widget2 *const widget) :
             mPaletteOffset(widget ? widget->mPaletteOffset : 0),
+            mWindow(widget ? widget->getWindow() : nullptr),
             mForegroundColor2()
         {
             checkPalette();
         }
 
         int mPaletteOffset;
+        Widget *mWindow;
         Color mForegroundColor2;
 };
 
