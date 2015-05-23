@@ -1,3 +1,14 @@
+2015-05-23 New release 1.5.5.23
+fix: possible crash in sell dialog.
+fix: possible issue in texture atlases.
+fix: crash on exit with joined room (hercules)
+fix: chat room on rejoining (hercules)
+fix: cmake build with new libs/compiler.
+add: improve performance.
+add: enable some server features (tmwa)
+add: updated fonts.
+add: impliment missing client to server guild packets (hercules)
+
 2015-05-09 New release 1.5.5.9
 fix: compilation on non x86/amd64.
 fix: possible crash on exit with opened storage window.
