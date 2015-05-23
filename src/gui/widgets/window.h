@@ -286,7 +286,7 @@ class Window notfinal : public BasicContainer2,
         { mSaveVisible = save; }
 
         virtual void postInit()
-        { mInit = true; }
+        { mInit = true; mWindow = this; }
 
         /**
          * Returns the parent window.
