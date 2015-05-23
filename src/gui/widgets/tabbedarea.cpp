@@ -101,6 +101,10 @@ TabbedArea::TabbedArea(const Widget2 *const widget) :
     setFocusable(true);
     addKeyListener(this);
     addMouseListener(this);
+}
+
+void TabbedArea::postInit()
+{
     mTabContainer->setOpaque(false);
 
     add(mTabContainer);
@@ -111,10 +115,7 @@ TabbedArea::TabbedArea(const Widget2 *const widget) :
 
     mArrowButton[0] = new Button(this, "<", "shift_left", this);
     mArrowButton[1] = new Button(this, ">", "shift_right", this);
-}
 
-void TabbedArea::postInit()
-{
     widgetResized(Event(nullptr));
 }
 
