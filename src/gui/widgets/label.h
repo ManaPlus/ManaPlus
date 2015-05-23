@@ -70,6 +70,7 @@
 #include "gui/widgets/widget.h"
 
 #include "listeners/tooltiplistener.h"
+#include "listeners/widgetlistener.h"
 
 #include "localconsts.h"
 
@@ -82,6 +83,7 @@ class Skin;
  * \ingroup GUI
  */
 class Label final : public Widget,
+                    public WidgetListener,
                     public ToolTipListener
 {
     public:
@@ -155,6 +157,10 @@ class Label final : public Widget,
          */
         Graphics::Alignment getAlignment() const
         { return mAlignment; }
+
+        void setParent(Widget *widget) override final;
+
+        void widgetHidden(const Event &event) override final;
 
         static Skin *mSkin;
 

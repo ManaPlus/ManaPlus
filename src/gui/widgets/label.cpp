@@ -76,6 +76,7 @@ int Label::mInstances = 0;
 
 Label::Label(const Widget2 *const widget) :
     Widget(widget),
+    WidgetListener(),
     ToolTipListener(),
     mCaption(),
     mTextChunk(),
@@ -89,6 +90,7 @@ Label::Label(const Widget2 *const widget) :
 Label::Label(const Widget2 *const widget,
              const std::string &caption) :
     Widget(widget),
+    WidgetListener(),
     ToolTipListener(),
     mCaption(caption),
     mTextChunk(),
@@ -107,6 +109,9 @@ Label::Label(const Widget2 *const widget,
 
 Label::~Label()
 {
+    if (mWindow)
+        mWindow->removeWidgetListener(this);
+
     if (gui)
         gui->removeDragged(this);
 
@@ -252,4 +257,17 @@ void Label::setCaption(const std::string& caption)
     if (caption != mCaption)
         mTextChanged = true;
     mCaption = caption;
+}
+
+void Label::setParent(Widget *widget)
+{
+    if (mWindow)
+        mWindow->addWidgetListener(this);
+    Widget::setParent(widget);
+}
+
+void Label::widgetHidden(const Event &event)
+{
+    mTextChanged = true;
+    mTextChunk.deleteImage();
 }
