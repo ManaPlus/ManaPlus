@@ -44,11 +44,12 @@ Popup::Popup(const std::string &name,
     mPadding(3),
     mSkin(nullptr),
     mPopupName(name),
+    mVertexes(new ImageCollection),
     mMinWidth(100),
     mMinHeight(40),
     mMaxWidth(mainGraphics->mWidth),
     mMaxHeight(mainGraphics->mHeight),
-    mVertexes(new ImageCollection)
+    mInit(false)
 {
     logger->log("Popup::Popup(\"%s\")", name.c_str());
 
@@ -85,6 +86,12 @@ Popup::~Popup()
         if (theme)
             theme->unload(mSkin);
         mSkin = nullptr;
+    }
+
+    if (!mInit)
+    {
+        logger->log("error: Popup created without calling postInit(): "
+            + mPopupName);
     }
 }
 

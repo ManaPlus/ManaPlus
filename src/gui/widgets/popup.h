@@ -172,8 +172,7 @@ class Popup notfinal : public Container,
         { return mVisible; }
 
         virtual void postInit()
-        {
-        }
+        { mInit = true; }
 
     protected:
         int mPadding;                 /**< Holds the padding of the popup. */
@@ -181,12 +180,12 @@ class Popup notfinal : public Container,
 
     private:
         std::string mPopupName;       /**< Name of the popup */
+        ImageCollection *mVertexes;
         int mMinWidth;                /**< Minimum popup width */
         int mMinHeight;               /**< Minimum popup height */
         int mMaxWidth;                /**< Maximum popup width */
         int mMaxHeight;               /**< Maximum popup height */
-
-        ImageCollection *mVertexes;
+        bool mInit;
 };
 
 #endif  // GUI_WIDGETS_POPUP_H
