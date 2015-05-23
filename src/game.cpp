@@ -233,14 +233,18 @@ static void createGuiWindows()
         new EmoteShortcutContainer(nullptr),
         "emotes.xml",
         130, 480);
+    emoteShortcutWindow->postInit();
     outfitWindow = new OutfitWindow();
     outfitWindow->postInit();
     dropShortcutWindow = new ShortcutWindow("DropShortcut",
         new VirtShortcutContainer(nullptr, dropShortcut),
         "drops.xml");
-
-    spellShortcutWindow = new ShortcutWindow("SpellShortcut", "spells.xml",
-                                             265, 328);
+    dropShortcutWindow->postInit();
+    spellShortcutWindow = new ShortcutWindow(
+        "SpellShortcut",
+        "spells.xml",
+        265, 328);
+    spellShortcutWindow->postInit();
     for (unsigned f = 0; f < SPELL_SHORTCUT_TABS; f ++)
     {
         spellShortcutWindow->addTab(toString(f + 1),

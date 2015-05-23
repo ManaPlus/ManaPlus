@@ -55,6 +55,7 @@ class CreatePartyPopup final : public Popup,
 
         void postInit() override final
         {
+            Popup::postInit();
             add(mBrowserBox);
             setContentSize(mBrowserBox->getWidth() + 8,
                 mBrowserBox->getHeight() + 8);

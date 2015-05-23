@@ -55,6 +55,7 @@ PopupList::PopupList(DropDown *const widget,
 
 void PopupList::postInit()
 {
+    Popup::postInit();
     add(mScrollArea);
 
     if (gui)
