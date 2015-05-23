@@ -266,7 +266,7 @@ void Label::setParent(Widget *widget)
     Widget::setParent(widget);
 }
 
-void Label::widgetHidden(const Event &event)
+void Label::widgetHidden(const Event &event A_UNUSED)
 {
     mTextChanged = true;
     mTextChunk.deleteImage();
