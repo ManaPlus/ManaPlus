@@ -367,6 +367,9 @@ void Button::init()
 
 Button::~Button()
 {
+    if (mWindow)
+        mWindow->removeWidgetListener(this);
+
     if (gui)
         gui->removeDragged(this);
 
@@ -679,6 +682,15 @@ void Button::widgetMoved(const Event &event A_UNUSED)
     mRedraw = true;
 }
 
+void Button::widgetHidden(const Event &event A_UNUSED)
+{
+    if (isBatchDrawRenders(openGLMode))
+        mVertexes2->clear();
+    mTextChunk.deleteImage();
+    mRedraw = true;
+    mTextChanged = true;
+}
+
 void Button::adjustSize()
 {
     const Font *const font = getFont();
@@ -773,4 +785,11 @@ void Button::mouseExited(MouseEvent& event A_UNUSED)
 void Button::mouseDragged(MouseEvent& event)
 {
     event.consume();
+}
+
+void Button::setParent(Widget *widget)
+{
+    if (mWindow)
+        mWindow->addWidgetListener(this);
+    Widget::setParent(widget);
 }

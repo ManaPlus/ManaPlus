@@ -185,6 +185,8 @@ class Button final : public Widget,
 
         void widgetMoved(const Event &event) override final;
 
+        void widgetHidden(const Event &event) override final;
+
         void loadImage(const std::string &imageName);
 
         void loadImageSet(const std::string &imageName);
@@ -244,6 +246,8 @@ class Button final : public Widget,
         void mouseExited(MouseEvent& event) override final;
 
         void mouseDragged(MouseEvent& event) override final;
+
+        void setParent(Widget *widget) override final;
 
         enum
         {
