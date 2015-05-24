@@ -27,6 +27,7 @@
 
 #include "enums/simpletypes/ignorerecord.h"
 #include "enums/simpletypes/online.h"
+#include "enums/simpletypes/tryremovecolors.h"
 
 #include "gui/widgets/browserbox.h"
 
@@ -81,7 +82,8 @@ class ChatTab notfinal : public Tab
         void chatLog(std::string line,
                      ChatMsgType::Type own = ChatMsgType::BY_SERVER,
                      const IgnoreRecord ignoreRecord = IgnoreRecord_false,
-                     const bool tryRemoveColors = true);
+                     const TryRemoveColors tryRemoveColors
+                     = TryRemoveColors_true);
 
         /**
          * Adds the text to the message list

@@ -1509,7 +1509,7 @@ bool ChatWindow::resortChatLog(std::string line,
                                ChatMsgType::Type own,
                                const std::string &channel,
                                const IgnoreRecord ignoreRecord,
-                               const bool tryRemoveColors)
+                               const TryRemoveColors tryRemoveColors)
 {
     if (own == ChatMsgType::BY_UNKNOWN)
     {
@@ -1537,8 +1537,10 @@ bool ChatWindow::resortChatLog(std::string line,
     {
         if (tradeChatTab)
         {
-            tradeChatTab->chatLog(prefix + line, own,
-                ignoreRecord, tryRemoveColors);
+            tradeChatTab->chatLog(prefix + line,
+                own,
+                ignoreRecord,
+                tryRemoveColors);
         }
         return false;
     }
@@ -1600,7 +1602,9 @@ bool ChatWindow::resortChatLog(std::string line,
             if (tradeChatTab)
             {
                 line = line.erase(idx + 2, 2);
-                tradeChatTab->chatLog(prefix + line, own, ignoreRecord,
+                tradeChatTab->chatLog(prefix + line,
+                    own,
+                    ignoreRecord,
                     tryRemoveColors);
             }
             return false;
@@ -1620,8 +1624,10 @@ bool ChatWindow::resortChatLog(std::string line,
                 {
                     if (line.find("http", idx1) != idx1 + 2)
                     {
-                        tradeChatTab->chatLog(prefix + line, own,
-                            ignoreRecord, tryRemoveColors);
+                        tradeChatTab->chatLog(prefix + line,
+                            own,
+                            ignoreRecord,
+                            tryRemoveColors);
                         return false;
                     }
                 }
@@ -1639,8 +1645,10 @@ bool ChatWindow::resortChatLog(std::string line,
             }
             else if (mShowAllLang)
             {
-                langChatTab->chatLog(prefix + line, own,
-                    ignoreRecord, tryRemoveColors);
+                langChatTab->chatLog(prefix + line,
+                    own,
+                    ignoreRecord,
+                    tryRemoveColors);
             }
         }
         else if (serverFeatures->haveChatChannels())
@@ -1650,8 +1658,10 @@ bool ChatWindow::resortChatLog(std::string line,
         }
         else if (mShowAllLang)
         {
-            localChatTab->chatLog(prefix + line, own,
-                ignoreRecord, tryRemoveColors);
+            localChatTab->chatLog(prefix + line,
+                own,
+                ignoreRecord,
+                tryRemoveColors);
         }
     }
     else if (localChatTab && channel.empty())
@@ -1663,7 +1673,7 @@ bool ChatWindow::resortChatLog(std::string line,
 
 void ChatWindow::battleChatLog(const std::string &line, ChatMsgType::Type own,
                                const IgnoreRecord ignoreRecord,
-                               const bool tryRemoveColors)
+                               const TryRemoveColors tryRemoveColors)
 {
     if (own == ChatMsgType::BY_UNKNOWN)
         own = ChatMsgType::BY_SERVER;
@@ -1677,7 +1687,7 @@ void ChatWindow::channelChatLog(const std::string &channel,
                                 const std::string &line,
                                 ChatMsgType::Type own,
                                 const IgnoreRecord ignoreRecord,
-                                const bool tryRemoveColors)
+                                const TryRemoveColors tryRemoveColors)
 {
     std::string tempChannel = channel;
     toLower(tempChannel);

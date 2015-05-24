@@ -109,7 +109,7 @@ ChatTab::~ChatTab()
 void ChatTab::chatLog(std::string line,
                       ChatMsgType::Type own,
                       const IgnoreRecord ignoreRecord,
-                      const bool tryRemoveColors)
+                      const TryRemoveColors tryRemoveColors)
 {
     // Trim whitespace
     trim(line);
@@ -117,7 +117,8 @@ void ChatTab::chatLog(std::string line,
     if (line.empty())
         return;
 
-    if (tryRemoveColors && own == ChatMsgType::BY_OTHER &&
+    if (tryRemoveColors == TryRemoveColors_true &&
+        own == ChatMsgType::BY_OTHER &&
         config.getBoolValue("removeColors"))
     {
         line = removeColors(line);
@@ -364,7 +365,7 @@ void ChatTab::chatLog(const std::string &nick, std::string msg)
     chatLog(std::string(nick).append(" : ").append(msg),
         byWho,
         IgnoreRecord_false,
-        false);
+        TryRemoveColors_false);
 }
 
 void ChatTab::chatInput(const std::string &message)

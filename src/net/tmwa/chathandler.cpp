@@ -335,7 +335,7 @@ void ChatHandler::processChatContinue(std::string chatMsg,
             ChatMsgType::BY_PLAYER,
             channel,
             IgnoreRecord_false,
-            true);
+            TryRemoveColors_true);
     }
 
     if (channel.empty())
@@ -406,7 +406,7 @@ void ChatHandler::processGmChat(Net::MessageIn &msg)
                 ChatMsgType::BY_PLAYER,
                 channel,
                 IgnoreRecord_false,
-                true);
+                TryRemoveColors_true);
         }
 
         if (channel.empty())
@@ -678,7 +678,7 @@ void ChatHandler::processBeingChat(Net::MessageIn &msg)
             ChatMsgType::BY_OTHER,
             channel,
             IgnoreRecord_false,
-            true);
+            TryRemoveColors_true);
     }
 
     if (allow && player_relations.hasPermission(sender_name,

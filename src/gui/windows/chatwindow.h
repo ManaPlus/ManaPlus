@@ -26,6 +26,7 @@
 #include "enums/gui/chatmsgtype.h"
 
 #include "enums/simpletypes/ignorerecord.h"
+#include "enums/simpletypes/tryremovecolors.h"
 
 #include "gui/widgets/window.h"
 
@@ -224,20 +225,21 @@ class ChatWindow final : public Window,
         bool resortChatLog(std::string line, ChatMsgType::Type own,
                            const std::string &channel,
                            const IgnoreRecord ignoreRecord,
-                           const bool tryRemoveColors);
+                           const TryRemoveColors tryRemoveColors);
 
         static void battleChatLog(const std::string &line,
                                   ChatMsgType::Type own
                                   = ChatMsgType::BY_UNKNOWN,
                                   const IgnoreRecord ignoreRecord
                                   = IgnoreRecord_false,
-                                  const bool tryRemoveColors = true);
+                                  const TryRemoveColors tryRemoveColors
+                                  = TryRemoveColors_true);
 
         void channelChatLog(const std::string &channel,
                             const std::string &line,
                             ChatMsgType::Type own,
                             const IgnoreRecord ignoreRecord,
-                            const bool tryRemoveColors);
+                            const TryRemoveColors tryRemoveColors);
 
         void updateOnline(const std::set<std::string> &onlinePlayers) const;
 

@@ -558,7 +558,7 @@ void ChatHandler::processChatContinue(std::string chatMsg,
             own,
             channel,
             IgnoreRecord_false,
-            true);
+            TryRemoveColors_true);
     }
 
     const size_t pos = chatMsg.find(" : ", 0);
@@ -641,7 +641,7 @@ void ChatHandler::processWhisperResponse(Net::MessageIn &msg)
                 "%s is not exists."), nick.c_str()),
                 ChatMsgType::BY_SERVER,
                 IgnoreRecord_false,
-                false);
+                TryRemoveColors_false);
             if (!mSentWhispers.empty())
                 mSentWhispers.pop();
             return;
@@ -787,7 +787,7 @@ void ChatHandler::processJoinChannel(Net::MessageIn &msg)
                 "%s is not exists."), channel.c_str()),
                 ChatMsgType::BY_SERVER,
                 IgnoreRecord_false,
-                false);
+                TryRemoveColors_false);
             break;
 
         case 1:
@@ -881,7 +881,7 @@ void ChatHandler::processBeingChat(Net::MessageIn &msg)
             ChatMsgType::BY_OTHER,
             GENERAL_CHANNEL,
             IgnoreRecord_false,
-            true);
+            TryRemoveColors_true);
     }
 
     if (allow && being && player_relations.hasPermission(sender_name,
