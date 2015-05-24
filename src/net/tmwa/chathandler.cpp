@@ -331,8 +331,11 @@ void ChatHandler::processChatContinue(std::string chatMsg,
     bool allow(true);
     if (chatWindow)
     {
-        allow = chatWindow->resortChatLog(chatMsg, ChatMsgType::BY_PLAYER,
-            channel, false, true);
+        allow = chatWindow->resortChatLog(chatMsg,
+            ChatMsgType::BY_PLAYER,
+            channel,
+            IgnoreRecord_false,
+            true);
     }
 
     if (channel.empty())
@@ -399,8 +402,11 @@ void ChatHandler::processGmChat(Net::MessageIn &msg)
         bool allow(true);
         if (chatWindow)
         {
-            allow = chatWindow->resortChatLog(chatMsg, ChatMsgType::BY_PLAYER,
-                channel, false, true);
+            allow = chatWindow->resortChatLog(chatMsg,
+                ChatMsgType::BY_PLAYER,
+                channel,
+                IgnoreRecord_false,
+                true);
         }
 
         if (channel.empty())
@@ -669,7 +675,10 @@ void ChatHandler::processBeingChat(Net::MessageIn &msg)
     {
         allow = chatWindow->resortChatLog(
             removeColors(sender_name).append(" : ").append(chatMsg),
-            ChatMsgType::BY_OTHER, channel, false, true);
+            ChatMsgType::BY_OTHER,
+            channel,
+            IgnoreRecord_false,
+            true);
     }
 
     if (allow && player_relations.hasPermission(sender_name,

@@ -25,6 +25,8 @@
 
 #include "enums/gui/chatmsgtype.h"
 
+#include "enums/simpletypes/ignorerecord.h"
+
 #include "gui/widgets/window.h"
 
 #include "gui/widgets/tabs/chat/chattabtype.h"
@@ -221,19 +223,20 @@ class ChatWindow final : public Window,
 
         bool resortChatLog(std::string line, ChatMsgType::Type own,
                            const std::string &channel,
-                           const bool ignoreRecord,
+                           const IgnoreRecord ignoreRecord,
                            const bool tryRemoveColors);
 
         static void battleChatLog(const std::string &line,
                                   ChatMsgType::Type own
                                   = ChatMsgType::BY_UNKNOWN,
-                                  const bool ignoreRecord = false,
+                                  const IgnoreRecord ignoreRecord
+                                  = IgnoreRecord_false,
                                   const bool tryRemoveColors = true);
 
         void channelChatLog(const std::string &channel,
                             const std::string &line,
                             ChatMsgType::Type own,
-                            const bool ignoreRecord,
+                            const IgnoreRecord ignoreRecord,
                             const bool tryRemoveColors);
 
         void updateOnline(const std::set<std::string> &onlinePlayers) const;

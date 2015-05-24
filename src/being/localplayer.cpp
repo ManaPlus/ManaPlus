@@ -1908,7 +1908,9 @@ void LocalPlayer::afkRespond(ChatTab *const tab, const std::string &nick)
                 if (localChatTab)
                 {
                     localChatTab->chatLog(std::string(getName()).append(
-                        " : ").append(msg), ChatMsgType::ACT_WHISPER, false);
+                        " : ").append(msg),
+                        ChatMsgType::ACT_WHISPER,
+                        IgnoreRecord_false);
                 }
             }
             else

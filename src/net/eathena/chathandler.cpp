@@ -557,7 +557,8 @@ void ChatHandler::processChatContinue(std::string chatMsg,
         allow = chatWindow->resortChatLog(chatMsg,
             own,
             channel,
-            false, true);
+            IgnoreRecord_false,
+            true);
     }
 
     const size_t pos = chatMsg.find(" : ", 0);
@@ -638,7 +639,9 @@ void ChatHandler::processWhisperResponse(Net::MessageIn &msg)
                 // TRANSLATORS: chat message
                 strprintf(_("Message could not be sent, channel "
                 "%s is not exists."), nick.c_str()),
-                ChatMsgType::BY_SERVER, false, false);
+                ChatMsgType::BY_SERVER,
+                IgnoreRecord_false,
+                false);
             if (!mSentWhispers.empty())
                 mSentWhispers.pop();
             return;
@@ -782,7 +785,9 @@ void ChatHandler::processJoinChannel(Net::MessageIn &msg)
                 // TRANSLATORS: chat message
                 strprintf(_("Can't open channel. Channel "
                 "%s is not exists."), channel.c_str()),
-                ChatMsgType::BY_SERVER, false, false);
+                ChatMsgType::BY_SERVER,
+                IgnoreRecord_false,
+                false);
             break;
 
         case 1:
@@ -873,7 +878,10 @@ void ChatHandler::processBeingChat(Net::MessageIn &msg)
     {
         allow = chatWindow->resortChatLog(
             removeColors(sender_name).append(" : ").append(chatMsg),
-            ChatMsgType::BY_OTHER, GENERAL_CHANNEL, false, true);
+            ChatMsgType::BY_OTHER,
+            GENERAL_CHANNEL,
+            IgnoreRecord_false,
+            true);
     }
 
     if (allow && being && player_relations.hasPermission(sender_name,

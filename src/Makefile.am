@@ -1192,6 +1192,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      enums/simpletypes/favorite.h \
 	      enums/simpletypes/forcedisplay.h \
 	      enums/simpletypes/identified.h \
+	      enums/simpletypes/ignorerecord.h \
 	      enums/simpletypes/keep.h \
 	      enums/simpletypes/modal.h \
 	      enums/simpletypes/modifiable.h \

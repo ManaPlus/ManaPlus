@@ -1114,7 +1114,9 @@ void ChatWindow::addWhisper(const std::string &restrict nick,
         else
         {
             localChatTab->chatLog(std::string(nick).append(
-                " : ").append(mes), ChatMsgType::ACT_WHISPER, false);
+                " : ").append(mes),
+                ChatMsgType::ACT_WHISPER,
+                IgnoreRecord_false);
             if (localPlayer)
                 localPlayer->afkRespond(nullptr, nick);
         }
@@ -1506,7 +1508,7 @@ std::string ChatWindow::autoCompleteHistory(const std::string &partName) const
 bool ChatWindow::resortChatLog(std::string line,
                                ChatMsgType::Type own,
                                const std::string &channel,
-                               const bool ignoreRecord,
+                               const IgnoreRecord ignoreRecord,
                                const bool tryRemoveColors)
 {
     if (own == ChatMsgType::BY_UNKNOWN)
@@ -1660,7 +1662,7 @@ bool ChatWindow::resortChatLog(std::string line,
 }
 
 void ChatWindow::battleChatLog(const std::string &line, ChatMsgType::Type own,
-                               const bool ignoreRecord,
+                               const IgnoreRecord ignoreRecord,
                                const bool tryRemoveColors)
 {
     if (own == ChatMsgType::BY_UNKNOWN)
@@ -1674,7 +1676,7 @@ void ChatWindow::battleChatLog(const std::string &line, ChatMsgType::Type own,
 void ChatWindow::channelChatLog(const std::string &channel,
                                 const std::string &line,
                                 ChatMsgType::Type own,
-                                const bool ignoreRecord,
+                                const IgnoreRecord ignoreRecord,
                                 const bool tryRemoveColors)
 {
     std::string tempChannel = channel;

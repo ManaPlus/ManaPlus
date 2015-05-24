@@ -106,8 +106,10 @@ ChatTab::~ChatTab()
     delete2(mScrollArea);
 }
 
-void ChatTab::chatLog(std::string line, ChatMsgType::Type own,
-                      const bool ignoreRecord, const bool tryRemoveColors)
+void ChatTab::chatLog(std::string line,
+                      ChatMsgType::Type own,
+                      const IgnoreRecord ignoreRecord,
+                      const bool tryRemoveColors)
 {
     // Trim whitespace
     trim(line);
@@ -359,7 +361,10 @@ void ChatTab::chatLog(const std::string &nick, std::string msg)
         ? ChatMsgType::BY_PLAYER : ChatMsgType::BY_OTHER);
     if (byWho == ChatMsgType::BY_OTHER && config.getBoolValue("removeColors"))
         msg = removeColors(msg);
-    chatLog(std::string(nick).append(" : ").append(msg), byWho, false, false);
+    chatLog(std::string(nick).append(" : ").append(msg),
+        byWho,
+        IgnoreRecord_false,
+        false);
 }
 
 void ChatTab::chatInput(const std::string &message)
