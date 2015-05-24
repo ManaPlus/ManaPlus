@@ -32,6 +32,8 @@
 #include "enums/being/targetcursorsize.h"
 #include "enums/being/targetcursortype.h"
 
+#include "enums/simpletypes/enable.h"
+
 #include "particle/particlelist.h"
 #include "particle/particlevector.h"
 
