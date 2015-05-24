@@ -1056,6 +1056,7 @@ SET(SRCS
     enums/screendensity.h
     enums/state.h
     enums/simpletypes/damaged.h
+    enums/simpletypes/equipm.h
     enums/simpletypes/favorite.h
     enums/simpletypes/identified.h
     enums/simpletypes/simpledefines.h
