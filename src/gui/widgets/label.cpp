@@ -169,7 +169,6 @@ void Label::draw(Graphics* graphics)
             break;
     }
 
-    graphics->setColorAll(mForegroundColor, mForegroundColor2);
     if (mTextChanged)
     {
         mTextChunk.textFont = font;

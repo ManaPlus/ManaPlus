@@ -24,14 +24,5 @@ public:
     void setColor(const Color &color) override final
     {
         mColor = color;
-        mColor2 = color;
-        mColorAlpha = (color.a != 255);
-    }
-
-    void setColorAll(const Color &color,
-                     const Color &color2) override final
-    {
-        mColor = color;
-        mColor2 = color2;
         mColorAlpha = (color.a != 255);
     }

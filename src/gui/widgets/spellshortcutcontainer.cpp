@@ -77,7 +77,7 @@ void SpellShortcutContainer::draw(Graphics *graphics)
     Font *const font = getFont();
 
     const int selectedId = spellShortcut->getSelectedItem();
-    graphics->setColorAll(mForegroundColor, mForegroundColor2);
+    graphics->setColor(mForegroundColor);
     drawBackground(graphics);
 
     // +++ in future need reorder images and string drawing.

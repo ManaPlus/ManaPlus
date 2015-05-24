@@ -121,7 +121,6 @@ void AvatarListBox::draw(Graphics *graphics)
     const std::string &name = localPlayer->getName();
 
     // Draw the list elements
-    graphics->setColorAll(mForegroundColor, mForegroundColor2);
     ImageCollection vertexes;
     const bool useCaching = isBatchDrawRenders(openGLMode);
 
@@ -160,8 +159,6 @@ void AvatarListBox::draw(Graphics *graphics)
         graphics->finalize(&vertexes);
         graphics->drawTileCollection(&vertexes);
     }
-
-    graphics->setColorAll(mForegroundColor, mForegroundColor2);
 
     for (int i = 0, y = 0;
          i < model->getNumberOfElements();

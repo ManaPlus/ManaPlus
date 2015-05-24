@@ -124,8 +124,7 @@ Graphics::Graphics() :
     mStartFreeMem(0),
     mSync(false),
     mScale(1),
-    mColor(),
-    mColor2()
+    mColor()
 {
     mRect.x = 0;
     mRect.y = 0;

@@ -303,26 +303,11 @@ class Graphics notfinal
         virtual void setColor(const Color &color)
         {
             mColor = color;
-            mColor2 = color;
-            mAlpha = (color.a != 255);
-        }
-
-        void setColor2(const Color &color)
-        { mColor2 = color; }
-
-        virtual void setColorAll(const Color &color,
-                                 const Color &color2)
-        {
-            mColor = color;
-            mColor2 = color2;
             mAlpha = (color.a != 255);
         }
 
         const Color &getColor() const
         { return mColor; }
-
-        const Color &getColor2() const
-        { return mColor2; }
 
 #ifdef DEBUG_DRAW_CALLS
         virtual unsigned int getDrawCalls() const
@@ -536,7 +521,6 @@ class Graphics notfinal
         bool mSync;
         int mScale;
         Color mColor;
-        Color mColor2;
 };
 
 extern Graphics *mainGraphics;

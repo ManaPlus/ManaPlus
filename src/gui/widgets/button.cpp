@@ -510,21 +510,6 @@ void Button::draw(Graphics *graphics)
     const int padding = skin->getPadding();
     const int spacing = mSpacing[mode];
 
-    switch (mode)
-    {
-        case BUTTON_DISABLED:
-            graphics->setColorAll(mDisabledColor, mDisabledColor2);
-            break;
-        case BUTTON_PRESSED:
-            graphics->setColorAll(mPressedColor, mPressedColor2);
-            break;
-        case BUTTON_HIGHLIGHTED:
-            graphics->setColorAll(mHighlightedColor, mHighlightedColor2);
-            break;
-        default:
-            graphics->setColorAll(mEnabledColor, mEnabledColor2);
-            break;
-    }
     if (recalc)
         mTextChanged = true;
 
@@ -636,8 +621,25 @@ void Button::draw(Graphics *graphics)
         mTextChunk.textFont = font;
         mTextChunk.deleteImage();
         mTextChunk.text = mCaption;
-        mTextChunk.color = graphics->getColor();
-        mTextChunk.color2 = graphics->getColor2();
+        switch (mode)
+        {
+            case BUTTON_DISABLED:
+                mTextChunk.color = mDisabledColor;
+                mTextChunk.color2 = mDisabledColor2;
+                break;
+            case BUTTON_PRESSED:
+                mTextChunk.color = mPressedColor;
+                mTextChunk.color2 = mPressedColor2;
+                break;
+            case BUTTON_HIGHLIGHTED:
+                mTextChunk.color = mHighlightedColor;
+                mTextChunk.color2 = mHighlightedColor2;
+                break;
+            default:
+                mTextChunk.color = mEnabledColor;
+                mTextChunk.color2 = mEnabledColor2;
+                break;
+        }
         font->generate(mTextChunk);
         mTextChanged = false;
     }
