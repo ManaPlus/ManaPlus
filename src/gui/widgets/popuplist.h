@@ -21,7 +21,7 @@
 #ifndef GUI_WIDGETS_POPUPLIST_H
 #define GUI_WIDGETS_POPUPLIST_H
 
-#include "enums/simpletypes.h"
+#include "enums/simpletypes/simpletypes.h"
 
 #include "gui/widgets/popup.h"
 

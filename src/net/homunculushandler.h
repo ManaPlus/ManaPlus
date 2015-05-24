@@ -23,7 +23,7 @@
 
 #ifdef EATHENA_SUPPORT
 
-#include "enums/simpletypes.h"
+#include "enums/simpletypes/simpletypes.h"
 
 #include <string>
 

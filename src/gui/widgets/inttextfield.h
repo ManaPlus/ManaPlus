@@ -23,7 +23,7 @@
 #ifndef GUI_WIDGETS_INTTEXTFIELD_H
 #define GUI_WIDGETS_INTTEXTFIELD_H
 
-#include "enums/simpletypes.h"
+#include "enums/simpletypes/simpletypes.h"
 
 #include "gui/widgets/textfield.h"
 

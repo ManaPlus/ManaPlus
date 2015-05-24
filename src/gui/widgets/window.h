@@ -66,7 +66,7 @@
 #ifndef GUI_WIDGETS_WINDOW_H
 #define GUI_WIDGETS_WINDOW_H
 
-#include "enums/simpletypes.h"
+#include "enums/simpletypes/simpletypes.h"
 
 #include "listeners/mouselistener.h"
 #include "listeners/widgetlistener.h"

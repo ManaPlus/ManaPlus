@@ -23,7 +23,7 @@
 #ifndef GUI_DIALOGSMANAGER_H
 #define GUI_DIALOGSMANAGER_H
 
-#include "enums/simpletypes.h"
+#include "enums/simpletypes/simpletypes.h"
 
 #include "listeners/attributelistener.h"
 #include "listeners/playerdeathlistener.h"

@@ -25,7 +25,7 @@
 
 #include "actions/actionfuncptr.h"
 
-#include "enums/simpletypes.h"
+#include "enums/simpletypes/simpletypes.h"
 
 struct InputActionData final
 {

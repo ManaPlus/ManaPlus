@@ -25,8 +25,9 @@
 #include "equipment.h"
 
 #include "enums/guildpositionflags.h"
-#include "enums/simpletypes.h"
 #include "enums/state.h"
+
+#include "enums/simpletypes/simpletypes.h"
 
 #include <map>
 #ifdef EATHENA_SUPPORT

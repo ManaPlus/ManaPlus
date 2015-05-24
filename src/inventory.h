@@ -24,7 +24,8 @@
 #define INVENTORY_H
 
 #include "enums/inventorytype.h"
-#include "enums/simpletypes.h"
+
+#include "enums/simpletypes/simpletypes.h"
 
 #include "enums/being/gender.h"
 
