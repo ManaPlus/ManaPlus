@@ -23,6 +23,7 @@
 #ifndef ITEM_H
 #define ITEM_H
 
+#include "enums/simpletypes/identified.h"
 #include "enums/simpletypes/simpletypes.h"
 
 #include "resources/db/itemdb.h"
