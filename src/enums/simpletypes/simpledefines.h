@@ -18,32 +18,33 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ENUMS_SIMPLETYPES_SIMPLETYPES_H
-#define ENUMS_SIMPLETYPES_SIMPLETYPES_H
-
-#include "enums/simpletypes/simpledefines.h"
+#ifndef ENUMS_SIMPLETYPES_SIMPLDEFINES_H
+#define ENUMS_SIMPLETYPES_SIMPLDEFINES_H
 
 #include "localconsts.h"
 
-defBoolEnum(Identified);
-defBoolEnum(Damaged);
-defBoolEnum(Favorite);
-defBoolEnum(Equipm);
-defBoolEnum(Equipped);
-defBoolEnum(Modal);
-defBoolEnum(ShowCenter);
-defBoolEnum(Notify);
-defBoolEnum(Trading);
-defBoolEnum(Sfx);
-defBoolEnum(Keep);
-defBoolEnum(Modifiable);
-defBoolEnum(AllPlayers);
-defBoolEnum(AllowSort);
-defBoolEnum(NpcNames);
-defBoolEnum(Enable);
-defBoolEnum(ForceDisplay);
-defBoolEnum(UseResman);
-defBoolEnum(SkipError);
-defBoolEnum(UseArgs);
+#ifdef ADVGCC
 
-#endif  // ENUMS_SIMPLETYPES_SIMPLETYPES_H
+#define defBoolEnum(name) \
+    enum class name : bool \
+    { \
+        MFalse = false, \
+        MTrue = true \
+    }; \
+    const name name##_true = name::MTrue; \
+    const name name##_false = name::MFalse
+#define fromBool(val, name) \
+    (val) ? name::MTrue : name::MFalse
+
+#else  // ADVGCC
+
+#define defBoolEnum(name) \
+    const bool name##_true = true; \
+    const bool name##_false = false; \
+    typedef bool name
+#define fromBool(val, name) \
+    (val) ? true : false
+
+#endif  // ADVGCC
+
+#endif  // ENUMS_SIMPLETYPES_SIMPLDEFINES_H

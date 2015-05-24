@@ -1055,6 +1055,7 @@ SET(SRCS
     sprite.h
     enums/screendensity.h
     enums/state.h
+    enums/simpletypes/simpledefines.h
     enums/simpletypes/simpletypes.h
     statuseffect.cpp
     statuseffect.h
