@@ -69,6 +69,10 @@
 #include "listeners/keylistener.h"
 #include "listeners/tooltiplistener.h"
 
+#include "listeners/widgetlistener.h"
+
+#include "gui/fonts/textchunk.h"
+
 #include "gui/widgets/widget.h"
 
 #include "localconsts.h"
@@ -82,7 +86,8 @@ class Skin;
  */
 class CheckBox final : public Widget,
                        public ToolTipListener,
-                       public KeyListener
+                       public KeyListener,
+                       public WidgetListener
 {
     public:
         /**
@@ -165,12 +170,15 @@ class CheckBox final : public Widget,
          * @param caption The caption of the check box.
          * @see getCaption, adjustSize
          */
-        void setCaption(const std::string& caption)
-        { mCaption = caption; }
+        void setCaption(const std::string& caption);
 
         void mouseClicked(MouseEvent& event) override final;
 
         void mouseDragged(MouseEvent& event) override final;
+
+        void setParent(Widget *widget) override final;
+
+        void widgetHidden(const Event &event) override final;
 
     private:
         void toggleSelected();
@@ -185,12 +193,16 @@ class CheckBox final : public Widget,
          */
         std::string mCaption;
 
+        TextChunk mTextChunk;
+
         int mPadding;
         int mImagePadding;
         int mImageSize;
         int mSpacing;
+        int mTextX;
         bool mHasMouse;
         bool mDrawBox;
+        bool mTextChanged;
 
         static int instances;
         static Skin *mSkin;

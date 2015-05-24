@@ -91,14 +91,18 @@ CheckBox::CheckBox(const Widget2 *const widget,
     Widget(widget),
     ToolTipListener(),
     KeyListener(),
+    WidgetListener(),
     mSelected(selected),
     mCaption(),
+    mTextChunk(),
     mPadding(0),
     mImagePadding(0),
     mImageSize(9),
     mSpacing(2),
+    mTextX(0 + 9 + 2),
     mHasMouse(false),
-    mDrawBox(true)
+    mDrawBox(true),
+    mTextChanged(true)
 {
     setCaption(caption);
     mAllowLogic = false;
@@ -133,12 +137,16 @@ CheckBox::CheckBox(const Widget2 *const widget,
         mImageSize = mSkin->getOption("imageSize");
         mSpacing = mSkin->getOption("spacing");
         mDrawBox = mSkin->getOption("drawBox", 1);
+        mTextX = mPadding + mImageSize + mSpacing;
     }
     adjustSize();
 }
 
 CheckBox::~CheckBox()
 {
+    if (mWindow)
+        mWindow->removeWidgetListener(this);
+
     if (gui)
         gui->removeDragged(this);
 
@@ -157,9 +165,22 @@ void CheckBox::draw(Graphics *const graphics)
     drawBox(graphics);
 
     Font *const font = getFont();
-    graphics->setColorAll(mForegroundColor, mForegroundColor2);
-    font->drawString(graphics, mCaption, mPadding + mImageSize + mSpacing,
-        mPadding);
+
+    if (mTextChanged)
+    {
+        mTextChunk.textFont = font;
+        mTextChunk.deleteImage();
+        mTextChunk.text = mCaption;
+        mTextChunk.color = mForegroundColor;
+        mTextChunk.color2 = mForegroundColor2;
+        font->generate(mTextChunk);
+        mTextChanged = false;
+    }
+
+    const Image *const image = mTextChunk.img;
+    if (image)
+        graphics->drawImage(image, mTextX, mPadding);
+
     BLOCK_END("CheckBox::draw")
 }
 
@@ -275,4 +296,24 @@ void CheckBox::toggleSelected()
 {
     mSelected = !mSelected;
     distributeActionEvent();
+}
+
+void CheckBox::setCaption(const std::string& caption)
+{
+    if (caption != mCaption)
+        mTextChanged = true;
+    mCaption = caption;
+}
+
+void CheckBox::setParent(Widget *widget)
+{
+    if (mWindow)
+        mWindow->addWidgetListener(this);
+    Widget::setParent(widget);
+}
+
+void CheckBox::widgetHidden(const Event &event A_UNUSED)
+{
+    mTextChanged = true;
+    mTextChunk.deleteImage();
 }
