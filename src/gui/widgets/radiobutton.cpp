@@ -92,14 +92,18 @@ RadioButton::RadioButton(const Widget2 *const widget,
     Widget(widget),
     MouseListener(),
     KeyListener(),
+    WidgetListener(),
     mSelected(false),
     mCaption(),
     mGroup(),
+    mTextChunk(),
     mPadding(0),
     mImagePadding(0),
     mImageSize(9),
     mSpacing(2),
-    mHasMouse(false)
+    mTextX(0 + 9 + 2),
+    mHasMouse(false),
+    mTextChanged(true)
 {
     mAllowLogic = false;
     setCaption(caption);
@@ -129,6 +133,7 @@ RadioButton::RadioButton(const Widget2 *const widget,
         mImagePadding = mSkin->getOption("imagePadding");
         mImageSize = mSkin->getOption("imageSize");
         mSpacing = mSkin->getOption("spacing");
+        mTextX = mPadding + mImageSize + mSpacing;
     }
 
     adjustSize();
@@ -136,7 +141,10 @@ RadioButton::RadioButton(const Widget2 *const widget,
 
 RadioButton::~RadioButton()
 {
-    setGroup("");
+    if (mWindow)
+        mWindow->removeWidgetListener(this);
+
+    setGroup(std::string());
 
     if (gui)
         gui->removeDragged(this);
@@ -222,9 +230,22 @@ void RadioButton::draw(Graphics* graphics)
     drawBox(graphics);
 
     Font *const font = getFont();
-    graphics->setColorAll(mForegroundColor, mForegroundColor2);
-    font->drawString(graphics, mCaption, mPadding + mImageSize + mSpacing,
-        mPadding);
+
+    if (mTextChanged)
+    {
+        mTextChunk.textFont = font;
+        mTextChunk.deleteImage();
+        mTextChunk.text = mCaption;
+        mTextChunk.color = mForegroundColor;
+        mTextChunk.color2 = mForegroundColor2;
+        font->generate(mTextChunk);
+        mTextChanged = false;
+    }
+
+    const Image *const image = mTextChunk.img;
+    if (image)
+        graphics->drawImage(image, mTextX, mPadding);
+
     BLOCK_END("RadioButton::draw")
 }
 
@@ -310,4 +331,24 @@ void RadioButton::setGroup(const std::string &group)
         mGroupMap.insert(std::pair<std::string, RadioButton *>(group, this));
 
     mGroup = group;
+}
+
+void RadioButton::setCaption(const std::string& caption)
+{
+    if (caption != mCaption)
+        mTextChanged = true;
+    mCaption = caption;
+}
+
+void RadioButton::setParent(Widget *widget)
+{
+    if (mWindow)
+        mWindow->addWidgetListener(this);
+    Widget::setParent(widget);
+}
+
+void RadioButton::widgetHidden(const Event &event A_UNUSED)
+{
+    mTextChanged = true;
+    mTextChunk.deleteImage();
 }

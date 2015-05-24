@@ -68,6 +68,9 @@
 
 #include "listeners/keylistener.h"
 #include "listeners/mouselistener.h"
+#include "listeners/widgetlistener.h"
+
+#include "gui/fonts/textchunk.h"
 
 #include "gui/widgets/widget.h"
 
@@ -80,7 +83,8 @@ class Skin;
  */
 class RadioButton final : public Widget,
                           public MouseListener,
-                          public KeyListener
+                          public KeyListener,
+                          public WidgetListener
 
 {
     public:
@@ -161,8 +165,7 @@ class RadioButton final : public Widget,
          * @param caption The caption of the radio button.
          * @see getCaption, adjustSize
          */
-        void setCaption(const std::string &caption)
-        { mCaption = caption; }
+        void setCaption(const std::string &caption);
 
         void mouseClicked(MouseEvent& event) override final;
 
@@ -187,6 +190,10 @@ class RadioButton final : public Widget,
         const std::string &getGroup() const
         { return mGroup; }
 
+        void setParent(Widget *widget) override final;
+
+        void widgetHidden(const Event &event) override final;
+
     private:
         static int instances;
         static Skin *mSkin;
@@ -207,6 +214,8 @@ class RadioButton final : public Widget,
          */
         std::string mGroup;
 
+        TextChunk mTextChunk;
+
         /**
          * Typdef.
          */
@@ -226,7 +235,9 @@ class RadioButton final : public Widget,
         int mImagePadding;
         int mImageSize;
         int mSpacing;
+        int mTextX;
         bool mHasMouse;
+        bool mTextChanged;
 };
 
 #endif  // GUI_WIDGETS_RADIOBUTTON_H
