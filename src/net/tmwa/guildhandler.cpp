@@ -389,7 +389,7 @@ void GuildHandler::processGuildMemberLogin(Net::MessageIn &msg)
         {
             m->setOnline(online);
             if (guildTab)
-                guildTab->showOnline(m->getName(), online);
+                guildTab->showOnline(m->getName(), fromBool(online, Online));
             if (socialWindow)
                 socialWindow->updateGuildCounter();
         }

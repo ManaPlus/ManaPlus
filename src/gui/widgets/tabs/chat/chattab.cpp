@@ -548,12 +548,12 @@ void ChatTab::playNewMessageSound() const
 }
 
 void ChatTab::showOnline(const std::string &nick,
-                         const bool isOnline)
+                         const Online online)
 {
     if (!mShowOnline)
         return;
 
-    if (isOnline)
+    if (online == Online_true)
     {
         // TRANSLATORS: chat message
         chatLog(strprintf(_("%s is now Online."), nick.c_str()));

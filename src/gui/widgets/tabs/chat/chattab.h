@@ -25,6 +25,8 @@
 
 #include "enums/gui/chatmsgtype.h"
 
+#include "enums/simpletypes/online.h"
+
 #include "gui/widgets/browserbox.h"
 
 #include "gui/widgets/tabs/tab.h"
@@ -168,7 +170,7 @@ class ChatTab notfinal : public Tab
         void addNewRow(std::string &line);
 
         void showOnline(const std::string &nick,
-                        const bool isOnline);
+                        const Online online);
 
         virtual void playNewMessageSound() const;
 

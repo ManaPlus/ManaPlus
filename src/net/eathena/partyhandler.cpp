@@ -246,7 +246,7 @@ void PartyHandler::processPartyMemberInfo(Net::MessageIn &msg)
     if (member)
     {
         if (partyTab && member->getOnline() != online)
-            partyTab->showOnline(nick, online);
+            partyTab->showOnline(nick, fromBool(online, Online));
         member->setLeader(leader);
         member->setOnline(online);
         member->setMap(map);
@@ -349,7 +349,7 @@ void PartyHandler::processPartyInfo(Net::MessageIn &msg)
                         || (onlineNames.find(nick) != onlineNames.end()
                         && !online)))
                     {
-                        partyTab->showOnline(nick, online);
+                        partyTab->showOnline(nick, fromBool(online, Online));
                     }
 
                     member->setLeader(leader);

@@ -412,7 +412,7 @@ void GuildHandler::processGuildMemberLogin(Net::MessageIn &msg)
             if (online)
                 m->setGender(gender);
             if (guildTab)
-                guildTab->showOnline(m->getName(), online);
+                guildTab->showOnline(m->getName(), fromBool(online, Online));
             if (socialWindow)
                 socialWindow->updateGuildCounter();
         }

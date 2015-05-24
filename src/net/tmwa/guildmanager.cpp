@@ -290,7 +290,7 @@ bool GuildManager::process(std::string msg)
         guild->sort();
         mRequest = false;
         if (mTab)
-            mTab->showOnline(msg, false);
+            mTab->showOnline(msg, Online_false);
         if (socialWindow)
             socialWindow->updateGuildCounter();
         return true;
@@ -310,7 +310,7 @@ bool GuildManager::process(std::string msg)
         guild->sort();
         mRequest = false;
         if (mTab)
-            mTab->showOnline(msg, true);
+            mTab->showOnline(msg, Online_true);
         if (socialWindow)
             socialWindow->updateGuildCounter();
         return true;

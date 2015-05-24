@@ -294,7 +294,7 @@ void PartyHandler::processPartyInfo(Net::MessageIn &msg)
                         || (onlineNames.find(nick) != onlineNames.end()
                         && !online)))
                     {
-                        partyTab->showOnline(nick, online);
+                        partyTab->showOnline(nick, fromBool(online, Online));
                     }
 
                     member->setLeader(leader);
@@ -417,7 +417,7 @@ void PartyHandler::processPartyMove(Net::MessageIn &msg)
         m->setY(msg.readInt16("y"));
         const bool online = msg.readUInt8("online") != 0;
         if (m->getOnline() != online)
-            partyTab->showOnline(m->getName(), online);
+            partyTab->showOnline(m->getName(), fromBool(online, Online));
         m->setOnline(online);
         msg.readString(24, "party");
         msg.readString(24, "nick");
