@@ -1183,6 +1183,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      sprite.h \
 	      enums/screendensity.h \
 	      enums/state.h \
+	      enums/simpletypes/allowsort.h \
 	      enums/simpletypes/allplayers.h \
 	      enums/simpletypes/damaged.h \
 	      enums/simpletypes/equipm.h \

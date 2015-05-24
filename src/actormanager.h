@@ -25,6 +25,7 @@
 
 #include "flooritem.h"
 
+#include "enums/simpletypes/allowsort.h"
 #include "enums/simpletypes/allplayers.h"
 
 #include "listeners/configlistener.h"
