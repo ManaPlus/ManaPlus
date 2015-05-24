@@ -152,8 +152,6 @@ void ExtendedListBox::draw(Graphics *graphics)
         }
     }
 
-    graphics->setColorAll(mForegroundColor, mForegroundColor2);
-
     for (size_t f = 0; f < itemsSz; ++f)
     {
         const ExtendedListBoxItem &item = mListItems[f];
@@ -162,16 +160,19 @@ void ExtendedListBox::draw(Graphics *graphics)
         const Image *const image = model->getImageAt(row1);
         if (!image || !item.image)
         {
-            font->drawString(graphics, item.text, mPadding, y1 + textPos);
+            font->drawString(graphics,
+                mForegroundColor, mForegroundColor2,
+                item.text,
+                mPadding, y1 + textPos);
         }
         else
         {
-            font->drawString(graphics, item.text,
+            font->drawString(graphics,
+                mForegroundColor, mForegroundColor2,
+                item.text,
                 image->getWidth() + mImagePadding + mSpacing, y1 + textPos);
         }
     }
-
-    graphics->setColorAll(mForegroundSelectedColor, mForegroundSelectedColor2);
 
     for (size_t f = 0; f < selSz; ++f)
     {
@@ -181,11 +182,16 @@ void ExtendedListBox::draw(Graphics *graphics)
         const Image *const image = model->getImageAt(row1);
         if (!image || !item.image)
         {
-            font->drawString(graphics, item.text, mPadding, y1 + textPos);
+            font->drawString(graphics,
+                mForegroundSelectedColor, mForegroundSelectedColor2,
+                item.text,
+                mPadding, y1 + textPos);
         }
         else
         {
-            font->drawString(graphics, item.text,
+            font->drawString(graphics,
+                mForegroundSelectedColor, mForegroundSelectedColor2,
+                item.text,
                 image->getWidth() + mImagePadding + mSpacing, y1 + textPos);
         }
     }

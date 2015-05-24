@@ -155,16 +155,22 @@ void ShopListBox::draw(Graphics *graphics)
         }
         if (mSelected == i)
         {
-            graphics->setColorAll(mForegroundSelectedColor,
-                mForegroundSelectedColor2);
+            font->drawString(graphics,
+                mForegroundSelectedColor,
+                mForegroundSelectedColor2,
+                mListModel->getElementAt(i),
+                ITEM_ICON_SIZE + mPadding,
+                y + (ITEM_ICON_SIZE - fontHeigh) / 2 + mPadding);
         }
         else
         {
-            graphics->setColorAll(mForegroundColor, mForegroundColor2);
+            font->drawString(graphics,
+                mForegroundColor,
+                mForegroundColor2,
+                mListModel->getElementAt(i),
+                ITEM_ICON_SIZE + mPadding,
+                y + (ITEM_ICON_SIZE - fontHeigh) / 2 + mPadding);
         }
-        font->drawString(graphics, mListModel->getElementAt(i),
-            ITEM_ICON_SIZE + mPadding,
-            y + (ITEM_ICON_SIZE - fontHeigh) / 2 + mPadding);
     }
     BLOCK_END("ShopListBox::draw")
 }

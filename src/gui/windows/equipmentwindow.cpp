@@ -265,9 +265,10 @@ void EquipmentWindow::draw(Graphics *graphics)
                     box->y + mItemPadding);
                 if (i == projSlot)
                 {
-                    graphics->setColorAll(mLabelsColor, mLabelsColor2);
                     const std::string str = toString(item->getQuantity());
                     font->drawString(graphics,
+                        mLabelsColor,
+                        mLabelsColor2,
                         str,
                         box->x + (mBoxSize - font->getWidth(str)) / 2,
                         box->y - fontHeight);

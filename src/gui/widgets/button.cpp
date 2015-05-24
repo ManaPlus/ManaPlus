@@ -646,7 +646,6 @@ void Button::draw(Graphics *graphics)
     if (image)
         graphics->drawImage(image, textX, textY);
 
-//    font->drawString(graphics, mCaption, textX, textY);
     BLOCK_END("Button::draw")
 }
 

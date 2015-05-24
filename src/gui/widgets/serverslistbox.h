@@ -80,14 +80,17 @@ class ServersListBox final : public ListBox
             {
                 const ServerInfo &info = model->getServer(i);
 
+                const Color *color1;
+                const Color *color2;
                 if (mSelected == i)
                 {
-                    graphics->setColorAll(mForegroundSelectedColor,
-                        mForegroundSelectedColor2);
+                    color1 = &mForegroundSelectedColor;
+                    color2 = &mForegroundSelectedColor2;
                 }
                 else
                 {
-                    graphics->setColorAll(mForegroundColor, mForegroundColor2);
+                    color1 = &mForegroundColor;
+                    color2 = &mForegroundColor2;
                 }
 
                 int top;
@@ -97,6 +100,8 @@ class ServersListBox final : public ListBox
                 {
                     x += font1->getWidth(info.name) + 15;
                     font1->drawString(graphics,
+                        *color1,
+                        *color2,
                         info.name,
                         mPadding,
                         y + mPadding);
@@ -110,21 +115,27 @@ class ServersListBox final : public ListBox
                 if (!info.description.empty())
                 {
                     font2->drawString(graphics,
+                        *color1,
+                        *color2,
                         info.description,
                         x,
                         y + mPadding);
                 }
                 font2->drawString(graphics,
+                    *color1,
+                    *color2,
                     model->getElementAt(i),
                     mPadding,
                     top);
 
                 if (info.version.first > 0)
                 {
-                    graphics->setColorAll(mNotSupportedColor,
-                        mNotSupportedColor2);
-                    font2->drawString(graphics, info.version.second,
-                        width - info.version.first - mPadding, top);
+                    font2->drawString(graphics,
+                        mNotSupportedColor,
+                        mNotSupportedColor2,
+                        info.version.second,
+                        width - info.version.first - mPadding,
+                        top);
                 }
             }
         }

@@ -121,12 +121,23 @@ void VirtShortcutContainer::draw(Graphics *graphics)
                 image->setAlpha(1.0F);
                 graphics->drawImage(image, itemX, itemY);
                 if (item->isEquipped() == Equipped_true)
-                    graphics->setColorAll(mEquipedColor, mEquipedColor2);
+                {
+                    font->drawString(graphics,
+                        mEquipedColor,
+                        mEquipedColor2,
+                        caption,
+                        itemX + (mBoxWidth - font->getWidth(caption)) / 2,
+                        itemY + mBoxHeight - 14);
+                }
                 else
-                    graphics->setColorAll(mUnEquipedColor, mUnEquipedColor2);
-                font->drawString(graphics, caption,
-                    itemX + (mBoxWidth - font->getWidth(caption)) / 2,
-                    itemY + mBoxHeight - 14);
+                {
+                    font->drawString(graphics,
+                        mUnEquipedColor,
+                        mUnEquipedColor2,
+                        caption,
+                        itemX + (mBoxWidth - font->getWidth(caption)) / 2,
+                        itemY + mBoxHeight - 14);
+                }
             }
         }
     }

@@ -247,8 +247,9 @@ void TouchManager::draw()
         return;
 
     Font *const font = boldFont;
-    mainGraphics->setColorAll(theme->getColor(Theme::TEXT, 255),
-        theme->getColor(Theme::TEXT_OUTLINE, 255));
+    const Color &color1 = theme->getColor(Theme::TEXT, 255);
+    const Color &color2 = theme->getColor(Theme::TEXT_OUTLINE, 255);
+
     FOR_EACH (TouchItemVectorCIter, it, mObjects)
     {
         const TouchItem *const item = *it;
@@ -259,7 +260,10 @@ void TouchManager::draw()
                 / 2 + item->x;
             const int textY = (item->rect.height - font->getHeight())
                 / 2 + item->y;
-            font->drawString(mainGraphics, str, textX, textY);
+            font->drawString(mainGraphics,
+                color1,
+                color2,
+                str, textX, textY);
         }
     }
 }

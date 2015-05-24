@@ -319,13 +319,21 @@ void ItemContainer::draw(Graphics *graphics)
             }
 
             if (item->isEquipped() == Equipped_true)
-                graphics->setColorAll(mEquipedColor, mEquipedColor2);
+            {
+                font->drawString(graphics,
+                    mEquipedColor, mEquipedColor2,
+                    caption,
+                    itemX + (mBoxWidth - font->getWidth(caption)) / 2,
+                    itemY + mEquippedTextPadding);
+            }
             else
-                graphics->setColorAll(mUnEquipedColor, mUnEquipedColor2);
-
-            font->drawString(graphics, caption,
-                itemX + (mBoxWidth - font->getWidth(caption)) / 2,
-                itemY + mEquippedTextPadding);
+            {
+                font->drawString(graphics,
+                    mUnEquipedColor, mUnEquipedColor2,
+                    caption,
+                    itemX + (mBoxWidth - font->getWidth(caption)) / 2,
+                    itemY + mEquippedTextPadding);
+            }
         }
     }
     BLOCK_END("ItemContainer::draw")

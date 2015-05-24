@@ -456,13 +456,15 @@ void TextBox::draw(Graphics* graphics)
             mCaretRow * font->getHeight());
     }
 
-    graphics->setColorAll(mForegroundColor, mForegroundColor2);
     const int fontHeight = font->getHeight();
 
     for (size_t i = 0, sz = mTextRows.size(); i < sz; i++)
     {
         // Move the text one pixel so we can have a caret before a letter.
-        font->drawString(graphics, mTextRows[i], 1,
+        font->drawString(graphics,
+            mForegroundColor,
+            mForegroundColor2,
+            mTextRows[i], 1,
             static_cast<int>(i * static_cast<size_t>(fontHeight)));
     }
     BLOCK_END("TextBox::draw")

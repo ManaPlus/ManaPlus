@@ -471,8 +471,10 @@ void Gui::draw()
             {
                 const int posX = mouseX - mGuiFont->getWidth(str) / 2;
                 const int posY = mouseY + (image ? image->mBounds.h / 2 : 0);
-                mGraphics->setColorAll(mForegroundColor, mForegroundColor2);
-                mGuiFont->drawString(mGraphics, str, posX, posY);
+                mGuiFont->drawString(mGraphics,
+                    mForegroundColor, mForegroundColor2,
+                    str,
+                    posX, posY);
             }
         }
         if (image)

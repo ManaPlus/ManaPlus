@@ -57,7 +57,6 @@ void ColorPage::draw(Graphics *graphics)
         mListModel);
 
     mHighlightColor.a = static_cast<int>(mAlpha * 255.0F);
-    graphics->setColor(mHighlightColor);
     updateAlpha();
     Font *const font = getFont();
 
@@ -66,27 +65,33 @@ void ColorPage::draw(Graphics *graphics)
 
     if (mSelected >= 0)
     {
+        graphics->setColor(mHighlightColor);
         graphics->fillRectangle(Rect(mPadding,
             rowHeight * mSelected + mPadding,
             mDimension.width - 2 * mPadding, rowHeight));
 
         const ColorPair *const colors = model->getColorAt(mSelected);
-        graphics->setColorAll(*colors->color1, *colors->color2);
         const std::string str = mListModel->getElementAt(mSelected);
-        font->drawString(graphics, str, (width - font->getWidth(str)) / 2,
+        font->drawString(graphics,
+            *colors->color1,
+            *colors->color2,
+            str,
+            (width - font->getWidth(str)) / 2,
             mSelected * rowHeight + mPadding);
     }
 
-    graphics->setColorAll(mForegroundColor, mForegroundColor2);
     const int sz = mListModel->getNumberOfElements();
     for (int i = 0, y = mPadding; i < sz; ++i, y += rowHeight)
     {
         if (i != mSelected)
         {
             const ColorPair *const colors = model->getColorAt(i);
-            graphics->setColorAll(*colors->color1, *colors->color2);
             const std::string str = mListModel->getElementAt(i);
-            font->drawString(graphics, str, (width - font->getWidth(str)) / 2,
+            font->drawString(graphics,
+                *colors->color1,
+                *colors->color2,
+                str,
+                (width - font->getWidth(str)) / 2,
                 y);
         }
     }

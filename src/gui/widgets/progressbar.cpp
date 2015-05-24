@@ -278,9 +278,12 @@ void ProgressBar::render(Graphics *graphics)
         const int textX = mDimension.width / 2;
         const int textY = (mDimension.height - font->getHeight()) / 2;
 
-        graphics->setColorAll(mForegroundColor, mForegroundColor2);
-        font->drawString(graphics, mText, textX
-            - font->getWidth(mText) / 2, textY);
+        font->drawString(graphics,
+            mForegroundColor,
+            mForegroundColor2,
+            mText,
+            textX - font->getWidth(mText) / 2,
+            textY);
 
         graphics->setColor(oldColor);
     }

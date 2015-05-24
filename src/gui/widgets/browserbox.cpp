@@ -523,11 +523,22 @@ void BrowserBox::draw(Graphics *graphics)
             break;
         if (!part.mType)
         {
-            graphics->setColorAll(part.mColor, part.mColor2);
             if (part.mBold)
-                boldFont->drawString(graphics, part.mText, part.mX, part.mY);
+            {
+                boldFont->drawString(graphics,
+                    part.mColor,
+                    part.mColor2,
+                    part.mText,
+                    part.mX, part.mY);
+            }
             else
-                font->drawString(graphics, part.mText, part.mX, part.mY);
+            {
+                font->drawString(graphics,
+                    part.mColor,
+                    part.mColor2,
+                    part.mText,
+                    part.mX, part.mY);
+            }
         }
         else if (part.mImage)
         {

@@ -374,7 +374,6 @@ void Window::draw(Graphics *graphics)
     // Draw title
     if (mShowTitle)
     {
-        graphics->setColorAll(mForegroundColor, mForegroundColor2);
         int x;
         switch (mCaptionAlign)
         {
@@ -389,7 +388,11 @@ void Window::draw(Graphics *graphics)
                 x = mCaptionOffsetX - mCaptionFont->getWidth(mCaption);
                 break;
         }
-        mCaptionFont->drawString(graphics, mCaption, x, mCaptionOffsetY);
+        mCaptionFont->drawString(graphics,
+            mForegroundColor,
+            mForegroundColor2,
+            mCaption,
+            x, mCaptionOffsetY);
     }
 
     if (update)

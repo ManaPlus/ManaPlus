@@ -114,14 +114,27 @@ void TextPreview::draw(Graphics* graphics)
         graphics->fillRectangle(Rect(mPadding, mPadding, x, y));
     }
 
-    graphics->setColorAll(Color(mTextColor->r,
-        mTextColor->g, mTextColor->b, alpha),
-        Color(mTextColor2->r, mTextColor2->g, mTextColor2->b, alpha));
+    Color color1(mTextColor->r, mTextColor->g, mTextColor->b, alpha);
 
     if (mOutline && mTextColor != mTextColor2)
-        graphics->setColor2(getThemeColor(Theme::OUTLINE, 255));
+    {
+        const Color &color2 = getThemeColor(Theme::OUTLINE, 255);
+        mFont->drawString(graphics,
+            color1,
+            color2,
+            mText,
+            mPadding + 1, mPadding + 1);
+    }
+    else
+    {
+        Color color2(mTextColor2->r, mTextColor2->g, mTextColor2->b, alpha);
+        mFont->drawString(graphics,
+            color1,
+            color2,
+            mText,
+            mPadding + 1, mPadding + 1);
+    }
 
-    mFont->drawString(graphics, mText, mPadding + 1, mPadding + 1);
     BLOCK_END("TextPreview::draw")
 }
 

@@ -184,7 +184,6 @@ void Label::draw(Graphics* graphics)
     const Image *const image = mTextChunk.img;
     if (image)
         graphics->drawImage(image, textX, textY);
-//    font->drawString(graphics, mCaption, textX, textY);
     BLOCK_END("Label::draw")
 }
 

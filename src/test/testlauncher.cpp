@@ -611,9 +611,10 @@ int TestLauncher::testDraw()
     mainGraphics->fillRectangle(Rect(200, 100, 300, 300));
     mainGraphics->popClipArea();
 
-    mainGraphics->setColorAll(Color(0xFFU, 0x00U, 0x00U, 0xB0U),
-        Color(0x00U, 0xFFU, 0x00U, 0xB0U));
+    Color color(0xFFU, 0x00U, 0x00U, 0xB0U);
+    Color color2(0x00U, 0xFFU, 0x00U, 0xB0U);
     boldFont->drawString(mainGraphics,
+        color, color2,
         "test test test test test test test test ", 300, 100);
 
     mainGraphics->drawTileCollection(col2);

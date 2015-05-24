@@ -202,6 +202,8 @@ void Font::clear()
 }
 
 void Font::drawString(Graphics *const graphics,
+                      Color col,
+                      const Color &col2,
                       const std::string &text,
                       const int x, const int y)
 {
@@ -212,8 +214,8 @@ void Font::drawString(Graphics *const graphics,
         return;
     }
 
-    Color col = graphics->getColor();
-    const Color &col2 = graphics->getColor2();
+//    Color col = graphics->getColor();
+//    const Color &col2 = graphics->getColor2();
     const float alpha = static_cast<float>(col.a) / 255.0F;
 
     /* The alpha value is ignored at string generation so avoid caching the

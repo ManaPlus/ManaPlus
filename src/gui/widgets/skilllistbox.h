@@ -133,7 +133,6 @@ class SkillListBox final : public ListBox
                 }
             }
 
-            graphics->setColorAll(mTextColor, mTextColor2);
             for (int i = 0, y = 1 + mPadding;
                  i < model->getNumberOfElements();
                  ++i, y += getRowHeight())
@@ -144,11 +143,19 @@ class SkillListBox final : public ListBox
                     const SkillData *const data = e->data;
                     const std::string &description = data->description;
                     graphics->drawImage(data->icon, mPadding, y);
-                    font->drawString(graphics, data->name, mTextPadding, y);
+                    font->drawString(graphics,
+                        mTextColor,
+                        mTextColor2,
+                        data->name,
+                        mTextPadding, y);
                     if (!description.empty())
                     {
-                        font->drawString(graphics, description,
-                            mTextPadding, y + space);
+                        font->drawString(graphics,
+                            mTextColor,
+                            mTextColor2,
+                            description,
+                            mTextPadding,
+                            y + space);
                     }
 
                     if (e->skillLevelWidth < 0)
@@ -157,8 +164,12 @@ class SkillListBox final : public ListBox
                         e->skillLevelWidth = font->getWidth(e->skillLevel) + 1;
                     }
 
-                    font->drawString(graphics, e->skillLevel, width2
-                        - e->skillLevelWidth, y);
+                    font->drawString(graphics,
+                        mTextColor,
+                        mTextColor2,
+                        e->skillLevel,
+                        width2 - e->skillLevelWidth,
+                        y);
                 }
             }
         }

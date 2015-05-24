@@ -107,6 +107,8 @@ class Font final
          * @see Font::drawString
          */
         void drawString(Graphics *const graphics,
+                        Color col,
+                        const Color &col2,
                         const std::string &text,
                         const int x, const int y);
 

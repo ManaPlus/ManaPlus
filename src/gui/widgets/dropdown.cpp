@@ -231,7 +231,6 @@ void DropDown::draw(Graphics* graphics)
     if (model && mPopup->getSelected() >= 0)
     {
         Font *const font = getFont();
-        graphics->setColorAll(mForegroundColor, mForegroundColor2);
         if (mExtended)
         {
             const int sel = mPopup->getSelected();
@@ -240,7 +239,10 @@ void DropDown::draw(Graphics* graphics)
             const Image *const image = model2->getImageAt(sel);
             if (!image)
             {
-                font->drawString(graphics, model->getElementAt(sel),
+                font->drawString(graphics,
+                    mForegroundColor,
+                    mForegroundColor2,
+                    model->getElementAt(sel),
                     mPadding, mPadding);
             }
             else
@@ -248,14 +250,20 @@ void DropDown::draw(Graphics* graphics)
                 graphics->drawImage(image,
                     mImagePadding,
                     (mDimension.height - image->getHeight()) / 2 + mPadding);
-                font->drawString(graphics, model->getElementAt(sel),
+                font->drawString(graphics,
+                    mForegroundColor,
+                    mForegroundColor2,
+                    model->getElementAt(sel),
                     image->getWidth() + mImagePadding + mSpacing, mPadding);
             }
         }
         else
         {
-            font->drawString(graphics, model->getElementAt(
-                mPopup->getSelected()), mPadding, mPadding);
+            font->drawString(graphics,
+                mForegroundColor,
+                mForegroundColor2,
+                model->getElementAt(mPopup->getSelected()),
+                mPadding, mPadding);
         }
     }
 

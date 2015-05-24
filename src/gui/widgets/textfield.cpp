@@ -198,8 +198,11 @@ void TextField::draw(Graphics *graphics)
             font->getWidth(mText.substr(0, mCaretPosition)) - mXScroll);
     }
 
-    graphics->setColorAll(mForegroundColor, mForegroundColor2);
-    font->drawString(graphics, mText, mPadding - mXScroll, mPadding);
+    font->drawString(graphics,
+        mForegroundColor,
+        mForegroundColor2,
+        mText,
+        mPadding - mXScroll, mPadding);
     BLOCK_END("TextField::draw")
 }
 

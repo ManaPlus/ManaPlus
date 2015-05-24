@@ -2560,8 +2560,8 @@ void Being::drawSpriteAt(Graphics *const graphics,
             Font *const font = gui->getFont();
             if (font)
             {
-                graphics->setColor(userPalette->getColor(UserPalette::BEING));
-                font->drawString(graphics, mName, x, y);
+                const Color &color = userPalette->getColor(UserPalette::BEING);
+                font->drawString(graphics, color, color, mName, x, y);
             }
         }
     }

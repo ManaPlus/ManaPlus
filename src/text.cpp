@@ -145,11 +145,18 @@ void Text::draw(Graphics *const graphics, const int xOff, const int yOff)
             mBubble);
     }
 
-    graphics->setColor(*mColor);
     if (!mIsSpeech)
-        graphics->setColor2(mOutlineColor);
-
-    mFont->drawString(graphics, mText, mX - xOff, mY - yOff);
+    {
+        mFont->drawString(graphics,
+            *mColor, mOutlineColor,
+            mText, mX - xOff, mY - yOff);
+    }
+    else
+    {
+        mFont->drawString(graphics,
+            *mColor, *mColor,
+            mText, mX - xOff, mY - yOff);
+    }
     BLOCK_END("Text::draw")
 }
 

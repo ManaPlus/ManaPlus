@@ -162,10 +162,12 @@ void FloorItem::draw(Graphics *const graphics,
     {
         if (font && mAmount > 1)
         {
-//            graphics->setColor(Color(255, 255, 255, 100));
-            graphics->setColor(userPalette->getColor(
-                UserPalette::FLOOR_ITEM_TEXT));
-            font->drawString(graphics, toString(mAmount), x, y);
+            const Color &color = userPalette->getColor(
+                UserPalette::FLOOR_ITEM_TEXT);
+            font->drawString(graphics,
+                color, color,
+                toString(mAmount),
+                x, y);
         }
     }
     BLOCK_END("FloorItem::draw")

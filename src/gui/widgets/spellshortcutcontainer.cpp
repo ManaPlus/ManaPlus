@@ -110,7 +110,10 @@ void SpellShortcutContainer::draw(Graphics *graphics)
                 }
             }
 
-            font->drawString(graphics, spell->getSymbol(),
+            font->drawString(graphics,
+                mForegroundColor,
+                mForegroundColor2,
+                spell->getSymbol(),
                 itemX + 2, itemY + mBoxHeight / 2);
         }
     }

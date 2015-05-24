@@ -1372,15 +1372,17 @@ impHandler0(testSdlFont)
     nullGraphics->beginDraw();
 
     clock_gettime(CLOCK_MONOTONIC, &time1);
+    Color color(0, 0, 0, 255);
+
     for (int f = 0; f < 500; f ++)
     {
         FOR_EACH (std::vector<std::string>::const_iterator, it, data)
         {
             width += font->getWidth(*it);
-            font->drawString(nullGraphics, *it, 10, 10);
+            font->drawString(nullGraphics, color, color, *it, 10, 10);
         }
         FOR_EACH (std::vector<std::string>::const_iterator, it, data)
-            font->drawString(nullGraphics, *it, 10, 10);
+            font->drawString(nullGraphics, color, color, *it, 10, 10);
 
         font->doClean();
     }

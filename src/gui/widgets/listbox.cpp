@@ -175,15 +175,15 @@ void ListBox::draw(Graphics *graphics)
                 rowHeight * mSelected + mPadding,
                 mDimension.width - 2 * mPadding, rowHeight));
 
-            graphics->setColorAll(mForegroundSelectedColor,
-                mForegroundSelectedColor2);
             const std::string str = mListModel->getElementAt(mSelected);
-            font->drawString(graphics, str,
+            font->drawString(graphics,
+                mForegroundSelectedColor,
+                mForegroundSelectedColor2,
+                str,
                 (width - font->getWidth(str)) / 2,
                 mSelected * rowHeight + mPadding + mItemPadding);
         }
         // Draw the list elements
-        graphics->setColorAll(mForegroundColor, mForegroundColor2);
         const int sz = mListModel->getNumberOfElements();
         for (int i = 0, y = mPadding + mItemPadding;
              i < sz; ++i, y += rowHeight)
@@ -191,7 +191,10 @@ void ListBox::draw(Graphics *graphics)
             if (i != mSelected)
             {
                 const std::string str = mListModel->getElementAt(i);
-                font->drawString(graphics, str,
+                font->drawString(graphics,
+                    mForegroundColor,
+                    mForegroundColor2,
+                    str,
                     (width - font->getWidth(str)) / 2, y);
             }
         }
@@ -205,14 +208,15 @@ void ListBox::draw(Graphics *graphics)
                 rowHeight * mSelected + mPadding,
                 mDimension.width - 2 * mPadding, rowHeight));
 
-            graphics->setColorAll(mForegroundSelectedColor,
-                mForegroundSelectedColor2);
             const std::string str = mListModel->getElementAt(mSelected);
-            font->drawString(graphics, str, mPadding,
+            font->drawString(graphics,
+                mForegroundSelectedColor,
+                mForegroundSelectedColor2,
+                str,
+                mPadding,
                 mSelected * rowHeight + mPadding + mItemPadding);
         }
         // Draw the list elements
-        graphics->setColorAll(mForegroundColor, mForegroundColor2);
         const int sz = mListModel->getNumberOfElements();
         for (int i = 0, y = mPadding + mItemPadding; i < sz;
              ++i, y += rowHeight)
@@ -220,7 +224,11 @@ void ListBox::draw(Graphics *graphics)
             if (i != mSelected)
             {
                 const std::string str = mListModel->getElementAt(i);
-                font->drawString(graphics, str, mPadding, y);
+                font->drawString(graphics,
+                    mForegroundColor,
+                    mForegroundColor2,
+                    str,
+                    mPadding, y);
             }
         }
     }

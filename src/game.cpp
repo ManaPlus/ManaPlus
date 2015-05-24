@@ -491,9 +491,15 @@ void Game::addWatermark()
 {
     if (!boldFont || !config.getBoolValue("addwatermark"))
         return;
-    mainGraphics->setColorAll(theme->getColor(Theme::TEXT, 255),
-        theme->getColor(Theme::TEXT_OUTLINE, 255));
-    boldFont->drawString(mainGraphics, settings.serverName, 100, 50);
+
+    const Color &color1 = theme->getColor(Theme::TEXT, 255);
+    const Color &color2 = theme->getColor(Theme::TEXT_OUTLINE, 255);
+
+    boldFont->drawString(mainGraphics,
+        color1,
+        color2,
+        settings.serverName,
+        100, 50);
 }
 
 bool Game::createScreenshot()

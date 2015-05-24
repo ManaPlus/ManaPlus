@@ -77,10 +77,19 @@ void TextParticle::draw(Graphics *const graphics,
     graphics->setColor(color);
     if (mOutline)
     {
-        graphics->setColor2(theme->getColor(
-            Theme::OUTLINE, static_cast<int>(alpha)));
+        const Color &color2 = theme->getColor(Theme::OUTLINE,
+            static_cast<int>(alpha));
+        mTextFont->drawString(graphics,
+            color, color2,
+            mText,
+            screenX - mTextWidth, screenY);
     }
-    mTextFont->drawString(graphics, mText, screenX - mTextWidth, screenY);
+    else
+    {
+        mTextFont->drawString(graphics,
+            color, color,
+            mText, screenX - mTextWidth, screenY);
+    }
     BLOCK_END("TextParticle::draw")
     return;
 }

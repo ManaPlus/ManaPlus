@@ -307,32 +307,46 @@ void AvatarListBox::draw(Graphics *graphics)
             }
         }
 
-        graphics->setColor(mForegroundColor);
-
         // Draw Name
         if (a->getDisplayBold())
         {
             if (type == MapItemType::SEPARATOR)
             {
-                boldFont->drawString(graphics, text,
-                    mImagePadding + mPadding, y + mPadding);
+                boldFont->drawString(graphics,
+                    mForegroundColor,
+                    mForegroundColor,
+                    text,
+                    mImagePadding + mPadding,
+                    y + mPadding);
             }
             else
             {
-                boldFont->drawString(graphics, text,
-                    15 + mImagePadding + mPadding, y + mPadding);
+                boldFont->drawString(graphics,
+                    mForegroundColor,
+                    mForegroundColor,
+                    text,
+                    15 + mImagePadding + mPadding,
+                    y + mPadding);
             }
         }
         else
         {
             if (type == MapItemType::SEPARATOR)
             {
-                font->drawString(graphics, text, mImagePadding + mPadding,
+                font->drawString(graphics,
+                    mForegroundColor,
+                    mForegroundColor,
+                    text,
+                    mImagePadding + mPadding,
                     y + mPadding);
             }
             else
             {
-                font->drawString(graphics, text, 15 + mImagePadding + mPadding,
+                font->drawString(graphics,
+                    mForegroundColor,
+                    mForegroundColor,
+                    text,
+                    15 + mImagePadding + mPadding,
                     y + mPadding);
             }
         }

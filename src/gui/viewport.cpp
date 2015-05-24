@@ -357,8 +357,11 @@ void Viewport::drawPath(Graphics *const graphics,
         if (mMap)
         {
             const std::string str = toString(cnt);
-            font->drawString(graphics, str, squareX + 4
-                - font->getWidth(str) / 2, squareY + 12);
+            font->drawString(graphics,
+                color, color,
+                str,
+                squareX + 4 - font->getWidth(str) / 2,
+                squareY + 12);
         }
         cnt ++;
     }
