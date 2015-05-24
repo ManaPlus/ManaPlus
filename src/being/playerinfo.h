@@ -28,6 +28,7 @@
 #include "enums/state.h"
 
 #include "enums/simpletypes/notify.h"
+#include "enums/simpletypes/sfx.h"
 #include "enums/simpletypes/simpletypes.h"
 #include "enums/simpletypes/trading.h"
 
