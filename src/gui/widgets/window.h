@@ -67,7 +67,6 @@
 #define GUI_WIDGETS_WINDOW_H
 
 #include "enums/simpletypes/modal.h"
-#include "enums/simpletypes/simpletypes.h"
 
 #include "listeners/mouselistener.h"
 #include "listeners/widgetlistener.h"

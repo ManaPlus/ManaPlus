@@ -28,7 +28,6 @@
 #include "enums/simpletypes/equipped.h"
 #include "enums/simpletypes/favorite.h"
 #include "enums/simpletypes/identified.h"
-#include "enums/simpletypes/simpletypes.h"
 
 #include "resources/db/itemdb.h"
 

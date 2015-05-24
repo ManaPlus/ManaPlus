@@ -24,7 +24,6 @@
 #define STATUSEFFECT_H
 
 #include "enums/simpletypes/enable.h"
-#include "enums/simpletypes/simpletypes.h"
 
 #include <string>
 

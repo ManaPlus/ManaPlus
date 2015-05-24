@@ -24,7 +24,6 @@
 #define GUI_WIDGETS_SKILLINFO_H
 
 #include "enums/simpletypes/modifiable.h"
-#include "enums/simpletypes/simpletypes.h"
 
 #include "gui/color.h"
 

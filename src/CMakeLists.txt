@@ -1072,7 +1072,6 @@ SET(SRCS
     enums/simpletypes/sfx.h
     enums/simpletypes/showcenter.h
     enums/simpletypes/simpledefines.h
-    enums/simpletypes/simpletypes.h
     enums/simpletypes/skiperror.h
     enums/simpletypes/trading.h
     enums/simpletypes/useargs.h

@@ -30,7 +30,6 @@
 #include "enums/simpletypes/keep.h"
 #include "enums/simpletypes/notify.h"
 #include "enums/simpletypes/sfx.h"
-#include "enums/simpletypes/simpletypes.h"
 #include "enums/simpletypes/trading.h"
 
 #include <map>

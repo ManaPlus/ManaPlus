@@ -23,7 +23,6 @@
 #ifndef NET_EA_INVENTORYITEM_H
 #define NET_EA_INVENTORYITEM_H
 
-#include "enums/simpletypes/simpletypes.h"
 
 #if defined(__GXX_EXPERIMENTAL_CXX0X__)
 #include <cstdint>

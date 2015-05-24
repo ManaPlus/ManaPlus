@@ -24,7 +24,6 @@
 #ifdef EATHENA_SUPPORT
 
 #include "enums/simpletypes/keep.h"
-#include "enums/simpletypes/simpletypes.h"
 
 #include <string>
 
