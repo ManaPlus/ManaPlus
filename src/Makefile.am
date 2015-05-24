@@ -1193,6 +1193,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      enums/simpletypes/showcenter.h \
 	      enums/simpletypes/simpledefines.h \
 	      enums/simpletypes/simpletypes.h \
+	      enums/simpletypes/trading.h \
 	      statuseffect.cpp \
 	      statuseffect.h \
 	      render/surfacegraphics.cpp \
