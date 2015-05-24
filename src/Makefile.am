@@ -1201,6 +1201,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      enums/simpletypes/showcenter.h \
 	      enums/simpletypes/simpledefines.h \
 	      enums/simpletypes/simpletypes.h \
+	      enums/simpletypes/skiperror.h \
 	      enums/simpletypes/trading.h \
 	      enums/simpletypes/useresman.h \
 	      statuseffect.cpp \

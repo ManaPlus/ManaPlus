@@ -24,6 +24,7 @@
 #define UTILS_XML_H
 
 #include "enums/simpletypes/simpletypes.h"
+#include "enums/simpletypes/skiperror.h"
 #include "enums/simpletypes/useresman.h"
 
 #include <libxml/tree.h>
