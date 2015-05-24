@@ -26,6 +26,7 @@
 #include "gui/widgets/window.h"
 
 #include "enums/simpletypes/damaged.h"
+#include "enums/simpletypes/favorite.h"
 #include "enums/simpletypes/identified.h"
 
 #include "listeners/actionlistener.h"

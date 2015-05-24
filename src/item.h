@@ -24,6 +24,7 @@
 #define ITEM_H
 
 #include "enums/simpletypes/damaged.h"
+#include "enums/simpletypes/favorite.h"
 #include "enums/simpletypes/identified.h"
 #include "enums/simpletypes/simpletypes.h"
 
