@@ -23,6 +23,10 @@
 #ifndef NET_EA_INVENTORYITEM_H
 #define NET_EA_INVENTORYITEM_H
 
+#include "enums/simpletypes/damaged.h"
+#include "enums/simpletypes/equipm.h"
+#include "enums/simpletypes/favorite.h"
+#include "enums/simpletypes/identified.h"
 
 #if defined(__GXX_EXPERIMENTAL_CXX0X__)
 #include <cstdint>
