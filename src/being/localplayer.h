@@ -27,6 +27,8 @@
 
 #include "enums/being/pickup.h"
 
+#include "enums/simpletypes/keep.h"
+
 #include "gui/userpalette.h"
 
 #include "listeners/actorspritelistener.h"

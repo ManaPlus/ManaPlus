@@ -1060,6 +1060,7 @@ SET(SRCS
     enums/simpletypes/equipped.h
     enums/simpletypes/favorite.h
     enums/simpletypes/identified.h
+    enums/simpletypes/keep.h
     enums/simpletypes/modal.h
     enums/simpletypes/notify.h
     enums/simpletypes/sfx.h

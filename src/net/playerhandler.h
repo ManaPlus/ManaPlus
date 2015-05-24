@@ -27,6 +27,7 @@
 
 #include "enums/being/beingaction.h"
 
+#include "enums/simpletypes/keep.h"
 #include "enums/simpletypes/notify.h"
 
 #include "net/messagein.h"
