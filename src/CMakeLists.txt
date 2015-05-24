@@ -1075,6 +1075,7 @@ SET(SRCS
     enums/simpletypes/simpletypes.h
     enums/simpletypes/skiperror.h
     enums/simpletypes/trading.h
+    enums/simpletypes/useargs.h
     enums/simpletypes/useresman.h
     statuseffect.cpp
     statuseffect.h
