@@ -23,6 +23,7 @@
 #ifndef GUI_WIDGETS_DROPDOWN_H
 #define GUI_WIDGETS_DROPDOWN_H
 
+#include "enums/simpletypes/modal.h"
 #include "enums/simpletypes/simpletypes.h"
 
 #include "gui/widgets/basiccontainer.h"
