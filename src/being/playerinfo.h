@@ -27,6 +27,7 @@
 #include "enums/guildpositionflags.h"
 #include "enums/state.h"
 
+#include "enums/simpletypes/notify.h"
 #include "enums/simpletypes/simpletypes.h"
 
 #include <map>
