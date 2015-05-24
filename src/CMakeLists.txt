@@ -1061,6 +1061,7 @@ SET(SRCS
     enums/simpletypes/favorite.h
     enums/simpletypes/identified.h
     enums/simpletypes/modal.h
+    enums/simpletypes/showcenter.h
     enums/simpletypes/simpledefines.h
     enums/simpletypes/simpletypes.h
     statuseffect.cpp

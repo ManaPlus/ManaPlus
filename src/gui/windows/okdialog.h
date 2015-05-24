@@ -25,6 +25,8 @@
 
 #include "gui/widgets/window.h"
 
+#include "enums/simpletypes/showcenter.h"
+
 #include "listeners/actionlistener.h"
 
 #include "localconsts.h"
