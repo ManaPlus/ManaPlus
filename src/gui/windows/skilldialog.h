@@ -25,6 +25,8 @@
 
 #include "gui/widgets/window.h"
 
+#include "enums/simpletypes/modifiable.h"
+
 #include "listeners/actionlistener.h"
 
 #include "resources/skillowner.h"
