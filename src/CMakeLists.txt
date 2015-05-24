@@ -1055,6 +1055,7 @@ SET(SRCS
     sprite.h
     enums/screendensity.h
     enums/state.h
+    enums/simpletypes/allplayers.h
     enums/simpletypes/damaged.h
     enums/simpletypes/equipm.h
     enums/simpletypes/equipped.h
