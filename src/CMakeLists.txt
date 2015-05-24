@@ -1066,6 +1066,7 @@ SET(SRCS
     enums/simpletypes/modal.h
     enums/simpletypes/modifiable.h
     enums/simpletypes/notify.h
+    enums/simpletypes/npcnames.h
     enums/simpletypes/sfx.h
     enums/simpletypes/showcenter.h
     enums/simpletypes/simpledefines.h
