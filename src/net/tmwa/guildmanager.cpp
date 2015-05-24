@@ -457,7 +457,7 @@ bool GuildManager::process(std::string msg)
                 const std::string sender_name = msg.substr(0, pos);
                 if (!guild->getMember(sender_name))
                 {
-                    mTab->chatLog(msg);
+                    mTab->chatLog(msg, ChatMsgType::BY_SERVER);
                     return true;
                 }
 
@@ -470,7 +470,7 @@ bool GuildManager::process(std::string msg)
             }
             else
             {
-                mTab->chatLog(msg);
+                mTab->chatLog(msg, ChatMsgType::BY_SERVER);
             }
             return true;
         }

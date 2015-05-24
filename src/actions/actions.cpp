@@ -895,21 +895,29 @@ impHandler0(ipcToggle)
     {
         IPC::stop();
         if (!ipc)
-            debugChatTab->chatLog("IPC service stopped.");
+        {
+            debugChatTab->chatLog("IPC service stopped.",
+                ChatMsgType::BY_SERVER);
+        }
         else
-            debugChatTab->chatLog("Unable to stop IPC service.");
+        {
+            debugChatTab->chatLog("Unable to stop IPC service.",
+                ChatMsgType::BY_SERVER);
+        }
     }
     else
     {
         IPC::start();
         if (ipc)
         {
-            debugChatTab->chatLog(strprintf("IPC service available on port %d",
-                ipc->getPort()));
+            debugChatTab->chatLog(
+                strprintf("IPC service available on port %d", ipc->getPort()),
+                ChatMsgType::BY_SERVER);
         }
         else
         {
-            debugChatTab->chatLog("Unable to start IPC service");
+            debugChatTab->chatLog("Unable to start IPC service",
+                ChatMsgType::BY_SERVER);
         }
     }
     return true;
@@ -941,7 +949,8 @@ impHandler0(cleanGraphics)
     if (debugChatTab)
     {
         // TRANSLATORS: clear graphics command message
-        debugChatTab->chatLog(_("Cache cleaned"));
+        debugChatTab->chatLog(_("Cache cleaned"),
+            ChatMsgType::BY_SERVER);
     }
     return true;
 }
@@ -953,7 +962,8 @@ impHandler0(cleanFonts)
     if (debugChatTab)
     {
         // TRANSLATORS: clear fonts cache message
-        debugChatTab->chatLog(_("Cache cleaned"));
+        debugChatTab->chatLog(_("Cache cleaned"),
+            ChatMsgType::BY_SERVER);
     }
     return true;
 }
@@ -1012,7 +1022,7 @@ impHandler0(cacheInfo)
         return;
 
     unsigned int all = 0;
-    debugChatTab->chatLog(_("font cache size"));
+    debugChatTab->chatLog(_("font cache size"), ChatMsgType::BY_SERVER);
     std::string str;
     for (int f = 0; f < 256; f ++)
     {
@@ -1023,14 +1033,17 @@ impHandler0(cacheInfo)
             str.append(strprintf("%d: %u, ", f, sz));
         }
     }
-    debugChatTab->chatLog(str);
-    debugChatTab->chatLog(strprintf("%s %d", _("Cache size:"), all));
+    debugChatTab->chatLog(str, ChatMsgType::BY_SERVER);
+    debugChatTab->chatLog(strprintf("%s %d", _("Cache size:"), all),
+        ChatMsgType::BY_SERVER);
 #ifdef DEBUG_FONT_COUNTERS
-    debugChatTab->chatLog("");
+    debugChatTab->chatLog("", ChatMsgType::BY_SERVER);
     debugChatTab->chatLog(strprintf("%s %d",
-        _("Created:"), font->getCreateCounter()));
+        _("Created:"), font->getCreateCounter()),
+        ChatMsgType::BY_SERVER);
     debugChatTab->chatLog(strprintf("%s %d",
-        _("Deleted:"), font->getDeleteCounter()));
+        _("Deleted:"), font->getDeleteCounter()),
+        ChatMsgType::BY_SERVER);
 #endif
 */
     return true;
@@ -1063,13 +1076,17 @@ impHandler0(dirs)
         return false;
 
     debugChatTab->chatLog("config directory: "
-        + settings.configDir);
+        + settings.configDir,
+        ChatMsgType::BY_SERVER);
     debugChatTab->chatLog("logs directory: "
-        + settings.localDataDir);
+        + settings.localDataDir,
+        ChatMsgType::BY_SERVER);
     debugChatTab->chatLog("screenshots directory: "
-        + settings.screenshotDir);
+        + settings.screenshotDir,
+        ChatMsgType::BY_SERVER);
     debugChatTab->chatLog("temp directory: "
-        + settings.tempDir);
+        + settings.tempDir,
+        ChatMsgType::BY_SERVER);
     return true;
 }
 
@@ -1081,7 +1098,8 @@ impHandler0(uptime)
     if (cur_time < start_time)
     {
         // TRANSLATORS: uptime command
-        debugChatTab->chatLog(strprintf(_("Client uptime: %s"), "unknown"));
+        debugChatTab->chatLog(strprintf(_("Client uptime: %s"), "unknown"),
+            ChatMsgType::BY_SERVER);
     }
     else
     {
@@ -1137,7 +1155,8 @@ impHandler0(uptime)
                 timeDiff), timeDiff));
         }
         // TRANSLATORS: uptime command
-        debugChatTab->chatLog(strprintf(_("Client uptime: %s"), str.c_str()));
+        debugChatTab->chatLog(strprintf(_("Client uptime: %s"), str.c_str()),
+            ChatMsgType::BY_SERVER);
     }
     return true;
 }
@@ -1150,7 +1169,7 @@ static void showRes(std::string str, ResourceManager::Resources *res)
 
     str.append(toString(res->size()));
     if (debugChatTab)
-        debugChatTab->chatLog(str);
+        debugChatTab->chatLog(str, ChatMsgType::BY_SERVER);
     logger->log(str);
     ResourceManager::ResourceIterator iter = res->begin();
     const ResourceManager::ResourceIterator iter_end = res->end();
@@ -1203,11 +1222,13 @@ impHandler(dump)
     {
         ResourceManager::Resources *res = resman->getResources();
         // TRANSLATORS: dump command
-        debugChatTab->chatLog(_("Resource images:") + toString(res->size()));
+        debugChatTab->chatLog(_("Resource images:") + toString(res->size()),
+            ChatMsgType::BY_SERVER);
         res = resman->getOrphanedResources();
         // TRANSLATORS: dump command
         debugChatTab->chatLog(_("Resource orphaned images:")
-            + toString(res->size()));
+            + toString(res->size()),
+            ChatMsgType::BY_SERVER);
     }
     return true;
 }
@@ -1294,7 +1315,8 @@ impHandler0(dumpEnvironment)
     if (debugChatTab)
     {
         // TRANSLATORS: dump environment command
-        debugChatTab->chatLog(_("Environment variables dumped"));
+        debugChatTab->chatLog(_("Environment variables dumped"),
+            ChatMsgType::BY_SERVER);
     }
     return true;
 }
@@ -1374,7 +1396,10 @@ impHandler0(testSdlFont)
         time1.tv_sec) * 1000000000LL + static_cast<long long int>(
         time1.tv_nsec)) / 100000;
     if (debugChatTab)
-        debugChatTab->chatLog("sdlfont time: " + toString(diff));
+    {
+        debugChatTab->chatLog("sdlfont time: " + toString(diff),
+            ChatMsgType::BY_SERVER);
+    }
     return true;
 }
 #endif

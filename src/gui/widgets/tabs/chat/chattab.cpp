@@ -562,11 +562,13 @@ void ChatTab::showOnline(const std::string &nick,
     if (online == Online_true)
     {
         // TRANSLATORS: chat message
-        chatLog(strprintf(_("%s is now Online."), nick.c_str()));
+        chatLog(strprintf(_("%s is now Online."), nick.c_str()),
+            ChatMsgType::BY_SERVER);
     }
     else
     {
         // TRANSLATORS: chat message
-        chatLog(strprintf(_("%s is now Offline."), nick.c_str()));
+        chatLog(strprintf(_("%s is now Offline."), nick.c_str()),
+            ChatMsgType::BY_SERVER);
     }
 }

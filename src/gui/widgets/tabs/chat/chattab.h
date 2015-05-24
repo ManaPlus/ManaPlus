@@ -41,7 +41,7 @@ class ScrollArea;
 
 #define debugMsg(str) \
     if (debugChatTab) \
-        debugChatTab->chatLog(str);
+        debugChatTab->chatLog(str, ChatMsgType::BY_SERVER);
 
 #define setTabColors(name) \
     setTabColor(&getThemeColor(name), \
@@ -80,7 +80,7 @@ class ChatTab notfinal : public Tab
          * @param removeColors try remove color if configured
          */
         void chatLog(std::string line,
-                     ChatMsgType::Type own = ChatMsgType::BY_SERVER,
+                     ChatMsgType::Type own,
                      const IgnoreRecord ignoreRecord = IgnoreRecord_false,
                      const TryRemoveColors tryRemoveColors
                      = TryRemoveColors_true);

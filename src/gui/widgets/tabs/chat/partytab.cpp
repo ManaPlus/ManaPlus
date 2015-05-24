@@ -131,7 +131,8 @@ bool PartyTab::handleCommand(const std::string &restrict type,
                     Net::PartyShare::NO);
                 break;
             case -1:
-                chatLog(strprintf(BOOLEAN_OPTIONS, "item"));
+                chatLog(strprintf(BOOLEAN_OPTIONS, "item"),
+                    ChatMsgType::BY_SERVER);
                 break;
             default:
                 break;
@@ -181,7 +182,8 @@ bool PartyTab::handleCommand(const std::string &restrict type,
                     Net::PartyShare::NO);
                 break;
             case -1:
-                chatLog(strprintf(BOOLEAN_OPTIONS, "exp"));
+                chatLog(strprintf(BOOLEAN_OPTIONS, "exp"),
+                    ChatMsgType::BY_SERVER);
                 break;
             default:
                 break;

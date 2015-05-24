@@ -455,7 +455,7 @@ void GuildHandler::processGuildMessage(Net::MessageIn &msg)
         }
         else
         {
-            guildTab->chatLog(chatMsg);
+            guildTab->chatLog(chatMsg, ChatMsgType::BY_SERVER);
         }
     }
 }

@@ -591,7 +591,7 @@ void ChatHandler::processWhisperContinue(const std::string &nick,
             const size_t pos = chatMsg.find(": ", 0);
             if (pos == std::string::npos)
             {
-                gmChatTab->chatLog(chatMsg);
+                gmChatTab->chatLog(chatMsg, ChatMsgType::BY_SERVER);
             }
             else
             {

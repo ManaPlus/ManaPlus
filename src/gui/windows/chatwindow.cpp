@@ -963,7 +963,8 @@ void ChatWindow::statChanged(const int id,
     if (change != 0)
     {
         battleChatLog(std::string("+").append(toString(
-            change)).append(" job"));
+            change)).append(" job"),
+            ChatMsgType::BY_SERVER);
     }
 }
 
@@ -983,12 +984,14 @@ void ChatWindow::attributeChanged(const int id,
             if (change != 0)
             {
                 battleChatLog(std::string("+").append(toString(
-                    change)).append(" xp"));
+                    change)).append(" xp"),
+                    ChatMsgType::BY_SERVER);
             }
             break;
         }
         case Attributes::LEVEL:
-            battleChatLog(std::string("Level: ").append(toString(newVal)));
+            battleChatLog(std::string("Level: ").append(toString(newVal)),
+                ChatMsgType::BY_SERVER);
             break;
         default:
             break;
@@ -1068,7 +1071,7 @@ void ChatWindow::addWhisper(const std::string &restrict nick,
         }
         else if (own == ChatMsgType::BY_SERVER)
         {
-            tab->chatLog(mes);
+            tab->chatLog(mes, ChatMsgType::BY_SERVER);
         }
         else
         {
@@ -1109,7 +1112,8 @@ void ChatWindow::addWhisper(const std::string &restrict nick,
 
             // TRANSLATORS: chat message
             localChatTab->chatLog(strprintf(_("Whispering to %s: %s"),
-                nick.c_str(), mes.c_str()), ChatMsgType::BY_PLAYER);
+                nick.c_str(), mes.c_str()),
+                ChatMsgType::BY_PLAYER);
         }
         else
         {

@@ -1364,8 +1364,9 @@ void ActorManager::printBeingsToChat(const ActorSprites &beings,
     if (!debugChatTab)
         return;
 
-    debugChatTab->chatLog("---------------------------------------");
-    debugChatTab->chatLog(header);
+    debugChatTab->chatLog("---------------------------------------",
+        ChatMsgType::BY_SERVER);
+    debugChatTab->chatLog(header, ChatMsgType::BY_SERVER);
     FOR_EACH (std::set<ActorSprite*>::const_iterator, it, beings)
     {
         if (!*it)
@@ -1380,7 +1381,8 @@ void ActorManager::printBeingsToChat(const ActorSprites &beings,
             being->getName().c_str(), being->getTileX(), being->getTileY(),
             being->getSubType()), ChatMsgType::BY_SERVER);
     }
-    debugChatTab->chatLog("---------------------------------------");
+    debugChatTab->chatLog("---------------------------------------",
+        ChatMsgType::BY_SERVER);
 }
 
 void ActorManager::printBeingsToChat(const std::vector<Being*> &beings,
@@ -1389,8 +1391,9 @@ void ActorManager::printBeingsToChat(const std::vector<Being*> &beings,
     if (!debugChatTab)
         return;
 
-    debugChatTab->chatLog("---------------------------------------");
-    debugChatTab->chatLog(header);
+    debugChatTab->chatLog("---------------------------------------",
+        ChatMsgType::BY_SERVER);
+    debugChatTab->chatLog(header, ChatMsgType::BY_SERVER);
 
     FOR_EACH (std::vector<Being*>::const_iterator, i, beings)
     {
@@ -1403,7 +1406,8 @@ void ActorManager::printBeingsToChat(const std::vector<Being*> &beings,
             being->getName().c_str(), being->getTileX(), being->getTileY(),
             being->getSubType()), ChatMsgType::BY_SERVER);
     }
-    debugChatTab->chatLog("---------------------------------------");
+    debugChatTab->chatLog("---------------------------------------",
+        ChatMsgType::BY_SERVER);
 }
 
 void ActorManager::getPlayerNames(StringVect &names,

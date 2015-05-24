@@ -408,7 +408,8 @@ impHandler(toggle)
         {
             // TRANSLATORS: message from toggle chat command
             event.tab->chatLog(chatWindow->getReturnTogglesChat() ?
-                _("Return toggles chat.") : _("Message closes chat."));
+                _("Return toggles chat.") : _("Message closes chat."),
+                ChatMsgType::BY_SERVER);
         }
         return true;
     }
@@ -419,7 +420,8 @@ impHandler(toggle)
             if (event.tab)
             {
                 // TRANSLATORS: message from toggle chat command
-                event.tab->chatLog(_("Return now toggles chat."));
+                event.tab->chatLog(_("Return now toggles chat."),
+                    ChatMsgType::BY_SERVER);
             }
             if (chatWindow)
                 chatWindow->setReturnTogglesChat(true);
@@ -428,14 +430,18 @@ impHandler(toggle)
             if (event.tab)
             {
                 // TRANSLATORS: message from toggle chat command
-                event.tab->chatLog(_("Message now closes chat."));
+                event.tab->chatLog(_("Message now closes chat."),
+                    ChatMsgType::BY_SERVER);
             }
             if (chatWindow)
                 chatWindow->setReturnTogglesChat(false);
             return true;
         case -1:
             if (event.tab)
-                event.tab->chatLog(strprintf(BOOLEAN_OPTIONS, "toggle"));
+            {
+                event.tab->chatLog(strprintf(BOOLEAN_OPTIONS, "toggle"),
+                    ChatMsgType::BY_SERVER);
+            }
             return true;
         default:
             return true;
