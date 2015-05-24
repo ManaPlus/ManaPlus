@@ -18,15 +18,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ENUMS_SIMPLETYPES_SIMPLETYPES_H
-#define ENUMS_SIMPLETYPES_SIMPLETYPES_H
+#ifndef ENUMS_SIMPLETYPES_FORCEDISPLAY_H
+#define ENUMS_SIMPLETYPES_FORCEDISPLAY_H
 
 #include "enums/simpletypes/simpledefines.h"
 
-#include "localconsts.h"
+defBoolEnum(ForceDisplay);
 
-defBoolEnum(UseResman);
-defBoolEnum(SkipError);
-defBoolEnum(UseArgs);
-
-#endif  // ENUMS_SIMPLETYPES_SIMPLETYPES_H
+#endif  // ENUMS_SIMPLETYPES_FORCEDISPLAY_H

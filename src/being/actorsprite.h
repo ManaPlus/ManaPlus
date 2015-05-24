@@ -33,6 +33,7 @@
 #include "enums/being/targetcursortype.h"
 
 #include "enums/simpletypes/enable.h"
+#include "enums/simpletypes/forcedisplay.h"
 
 #include "particle/particlelist.h"
 #include "particle/particlevector.h"
