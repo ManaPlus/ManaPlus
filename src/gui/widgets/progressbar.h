@@ -73,6 +73,8 @@ class ProgressBar final : public Widget,
          */
         void draw(Graphics *graphics) override final;
 
+        void safeDraw(Graphics *graphics) override final;
+
         /**
          * Sets the current progress.
          */
@@ -126,11 +128,6 @@ class ProgressBar final : public Widget,
          */
         void setSmoothColorChange(bool smoothColorChange)
         { mSmoothColorChange = smoothColorChange; }
-
-        /**
-         * Renders a progressbar with the given properties.
-         */
-        void render(Graphics *graphics);
 
         void widgetResized(const Event &event) override final;
 

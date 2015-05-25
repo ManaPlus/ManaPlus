@@ -151,10 +151,141 @@ void ProgressBar::updateAlpha()
 void ProgressBar::draw(Graphics *graphics)
 {
     BLOCK_START("ProgressBar::draw")
+    if (!mSkin)
+    {
+        BLOCK_END("ProgressBar::draw")
+        return;
+    }
+
     updateAlpha();
     mBackgroundColor.a = static_cast<int>(mAlpha * 255);
-    render(graphics);
+
+    if (mRedraw || graphics->getRedraw())
+    {
+        mRedraw = false;
+        mVertexes->clear();
+        graphics->calcWindow(mVertexes, 0, 0,
+            mDimension.width, mDimension.height, mSkin->getBorder());
+        if (mFillImage)
+        {
+            const unsigned int pad = 2 * mFillPadding;
+            const int maxWidth = mDimension.width - pad;
+            int width = static_cast<int>(mProgress
+                * static_cast<float>(maxWidth));
+            if (width > 0)
+            {
+                if (width > maxWidth)
+                    width = maxWidth;
+                graphics->calcWindow(mVertexes, mFillPadding, mFillPadding,
+                    width, mDimension.height - pad, mFillRect);
+            }
+        }
+        graphics->finalize(mVertexes);
+    }
+
+    graphics->drawTileCollection(mVertexes);
+
+    // The bar
+    if (!mFillImage && mProgress > 0)
+    {
+        graphics->setColor(mBackgroundColor);
+        const unsigned int pad = 2 * mFillPadding;
+        const int maxWidth = mDimension.width - pad;
+        int width = static_cast<int>(mProgress * static_cast<float>(maxWidth));
+        if (width > 0)
+        {
+            if (width > maxWidth)
+                width = maxWidth;
+            graphics->fillRectangle(Rect(mFillPadding, mFillPadding,
+                width, mDimension.height - pad));
+        }
+    }
+
+    // The label
+    if (!mText.empty())
+    {
+        const Color oldColor = graphics->getColor();
+
+        Font *const font = gui->getFont();
+        const int textX = mDimension.width / 2;
+        const int textY = (mDimension.height - font->getHeight()) / 2;
+
+        font->drawString(graphics,
+            mForegroundColor,
+            mForegroundColor2,
+            mText,
+            textX - font->getWidth(mText) / 2,
+            textY);
+
+        graphics->setColor(oldColor);
+    }
     BLOCK_END("ProgressBar::draw")
+}
+
+void ProgressBar::safeDraw(Graphics *graphics)
+{
+    BLOCK_START("ProgressBar::safeDraw")
+    if (!mSkin)
+    {
+        BLOCK_END("ProgressBar::safeDraw")
+        return;
+    }
+
+    updateAlpha();
+    mBackgroundColor.a = static_cast<int>(mAlpha * 255);
+
+    graphics->drawImageRect(0, 0, mDimension.width, mDimension.height,
+        mSkin->getBorder());
+    if (mFillImage)
+    {
+        const unsigned int pad = 2 * mFillPadding;
+        const int maxWidth = mDimension.width - pad;
+        int width = static_cast<int>(mProgress
+            * static_cast<float>(maxWidth));
+        if (width > 0)
+        {
+            if (width > maxWidth)
+                width = maxWidth;
+            graphics->drawImageRect(mFillPadding, mFillPadding,
+                width, mDimension.height - pad, mFillRect);
+        }
+    }
+
+    // The bar
+    if (!mFillImage && mProgress > 0)
+    {
+        graphics->setColor(mBackgroundColor);
+        const unsigned int pad = 2 * mFillPadding;
+        const int maxWidth = mDimension.width - pad;
+        int width = static_cast<int>(mProgress * static_cast<float>(maxWidth));
+        if (width > 0)
+        {
+            if (width > maxWidth)
+                width = maxWidth;
+            graphics->fillRectangle(Rect(mFillPadding, mFillPadding,
+                width, mDimension.height - pad));
+        }
+    }
+
+    // The label
+    if (!mText.empty())
+    {
+        const Color oldColor = graphics->getColor();
+
+        Font *const font = gui->getFont();
+        const int textX = mDimension.width / 2;
+        const int textY = (mDimension.height - font->getHeight()) / 2;
+
+        font->drawString(graphics,
+            mForegroundColor,
+            mForegroundColor2,
+            mText,
+            textX - font->getWidth(mText) / 2,
+            textY);
+
+        graphics->setColor(oldColor);
+    }
+    BLOCK_END("ProgressBar::safeDraw")
 }
 
 void ProgressBar::setProgress(const float progress)
@@ -199,94 +330,6 @@ void ProgressBar::setColor(const Color &color1, const Color &color2)
 {
     mForegroundColor = color1;
     mForegroundColor2 = color2;
-}
-
-void ProgressBar::render(Graphics *graphics)
-{
-    if (!mSkin)
-        return;
-
-    if (isBatchDrawRenders(openGLMode))
-    {
-        if (mRedraw || graphics->getRedraw())
-        {
-            mRedraw = false;
-            mVertexes->clear();
-            graphics->calcWindow(mVertexes, 0, 0,
-                mDimension.width, mDimension.height, mSkin->getBorder());
-            if (mFillImage)
-            {
-                const unsigned int pad = 2 * mFillPadding;
-                const int maxWidth = mDimension.width - pad;
-                int width = static_cast<int>(mProgress
-                    * static_cast<float>(maxWidth));
-                if (width > 0)
-                {
-                    if (width > maxWidth)
-                        width = maxWidth;
-                    graphics->calcWindow(mVertexes, mFillPadding, mFillPadding,
-                        width, mDimension.height - pad, mFillRect);
-                }
-            }
-            graphics->finalize(mVertexes);
-        }
-
-        graphics->drawTileCollection(mVertexes);
-    }
-    else
-    {
-        graphics->drawImageRect(0, 0, mDimension.width, mDimension.height,
-            mSkin->getBorder());
-        if (mFillImage)
-        {
-            const unsigned int pad = 2 * mFillPadding;
-            const int maxWidth = mDimension.width - pad;
-            int width = static_cast<int>(mProgress
-                * static_cast<float>(maxWidth));
-            if (width > 0)
-            {
-                if (width > maxWidth)
-                    width = maxWidth;
-                graphics->drawImageRect(mFillPadding, mFillPadding,
-                    width, mDimension.height - pad, mFillRect);
-            }
-        }
-    }
-
-    // The bar
-    if (!mFillImage && mProgress > 0)
-    {
-        graphics->setColor(mBackgroundColor);
-        const unsigned int pad = 2 * mFillPadding;
-        const int maxWidth = mDimension.width - pad;
-        int width = static_cast<int>(mProgress * static_cast<float>(maxWidth));
-        if (width > 0)
-        {
-            if (width > maxWidth)
-                width = maxWidth;
-            graphics->fillRectangle(Rect(mFillPadding, mFillPadding,
-                width, mDimension.height - pad));
-        }
-    }
-
-    // The label
-    if (!mText.empty())
-    {
-        const Color oldColor = graphics->getColor();
-
-        Font *const font = gui->getFont();
-        const int textX = mDimension.width / 2;
-        const int textY = (mDimension.height - font->getHeight()) / 2;
-
-        font->drawString(graphics,
-            mForegroundColor,
-            mForegroundColor2,
-            mText,
-            textX - font->getWidth(mText) / 2,
-            textY);
-
-        graphics->setColor(oldColor);
-    }
 }
 
 void ProgressBar::widgetResized(const Event &event A_UNUSED)
