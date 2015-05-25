@@ -120,6 +120,19 @@ void SliderList::draw(Graphics *graphics)
     BLOCK_END("SliderList::draw")
 }
 
+void SliderList::safeDraw(Graphics *graphics)
+{
+    BLOCK_START("SliderList::draw")
+    const int width = mDimension.width;
+    if (mOldWidth != width)
+    {
+        resize();
+        mOldWidth = width;
+    }
+    Container::draw(graphics);
+    BLOCK_END("SliderList::draw")
+}
+
 void SliderList::updateLabel()
 {
     if (!mListModel || mSelectedIndex < 0

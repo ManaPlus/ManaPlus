@@ -67,6 +67,8 @@ class Desktop final : public Container,
 
         void draw(Graphics *graphics) override final;
 
+        void safeDraw(Graphics *graphics) override final;
+
         void postInit();
 
         void handleLink(const std::string &link,

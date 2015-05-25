@@ -99,6 +99,11 @@ void ColorPage::draw(Graphics *graphics)
     BLOCK_END("ColorPage::draw")
 }
 
+void ColorPage::safeDraw(Graphics *graphics)
+{
+    ColorPage::draw(graphics);
+}
+
 void ColorPage::resetAction()
 {
     setSelected(-1);

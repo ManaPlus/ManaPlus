@@ -175,6 +175,11 @@ void ShopListBox::draw(Graphics *graphics)
     BLOCK_END("ShopListBox::draw")
 }
 
+void ShopListBox::safeDraw(Graphics *graphics)
+{
+    ShopListBox::draw(graphics);
+}
+
 void ShopListBox::adjustSize()
 {
     BLOCK_START("ShopListBox::adjustSize")

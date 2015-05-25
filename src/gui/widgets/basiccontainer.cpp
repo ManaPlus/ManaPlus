@@ -63,6 +63,8 @@
 
 #include "gui/widgets/basiccontainer.h"
 
+#include "render/renderers.h"
+
 #include <algorithm>
 
 #include "debug.h"
@@ -322,7 +324,10 @@ void BasicContainer::drawChildren(Graphics* graphics)
 
             graphics->pushClipArea(widget->mDimension);
             BLOCK_START("BasicContainer::drawChildren 2")
-            widget->draw(graphics);
+            if (isBatchDrawRenders(openGLMode))
+                widget->draw(graphics);
+            else
+                widget->safeDraw(graphics);
             BLOCK_END("BasicContainer::drawChildren 2")
             graphics->popClipArea();
         }

@@ -155,6 +155,11 @@ void Desktop::draw(Graphics *graphics)
     BLOCK_END("Desktop::draw")
 }
 
+void Desktop::safeDraw(Graphics *graphics)
+{
+    Desktop::draw(graphics);
+}
+
 void Desktop::setBestFittingWallpaper()
 {
     if (!mShowBackground || !config.getBoolValue("showBackground"))

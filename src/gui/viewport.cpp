@@ -269,6 +269,11 @@ void Viewport::draw(Graphics *graphics)
     BLOCK_END("Viewport::draw 1")
 }
 
+void Viewport::safeDraw(Graphics *graphics)
+{
+    Viewport::draw(graphics);
+}
+
 void Viewport::logic()
 {
     BLOCK_START("Viewport::logic")

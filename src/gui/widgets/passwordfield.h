@@ -46,6 +46,8 @@ class PasswordField final : public TextField
          */
         void draw(Graphics *graphics) override final;
 
+        void safeDraw(Graphics *graphics) override final;
+
     protected:
         unsigned char mPasswordChar;
 };

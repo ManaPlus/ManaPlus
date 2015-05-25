@@ -38,6 +38,8 @@ class ColorPage final : public ListBox
 
         void draw(Graphics *graphics) override final;
 
+        void safeDraw(Graphics *graphics) override final;
+
         void resetAction();
 
         void adjustSize() override final;

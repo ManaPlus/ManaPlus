@@ -57,6 +57,8 @@ class SliderList final : public Container,
 
         void draw(Graphics *graphics) override final;
 
+        void safeDraw(Graphics *graphics) override final;
+
         void action(const ActionEvent &event) override final;
 
         void setSelectedString(const std::string &str);

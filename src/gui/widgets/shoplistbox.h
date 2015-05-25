@@ -57,6 +57,8 @@ class ShopListBox final : public ListBox
          */
         void draw(Graphics *graphics) override final;
 
+        void safeDraw(Graphics *graphics) override final;
+
         /**
          * gives information about the current player's money
          */

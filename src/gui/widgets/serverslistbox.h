@@ -140,6 +140,11 @@ class ServersListBox final : public ListBox
             }
         }
 
+        void safeDraw(Graphics *graphics) override final
+        {
+            ServersListBox::draw(graphics);
+        }
+
         unsigned int getRowHeight() const override final
         {
             return 2 * getFont()->getHeight() + 5;

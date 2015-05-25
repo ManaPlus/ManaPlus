@@ -74,6 +74,8 @@ class Viewport final : public WindowContainer,
          */
         void draw(Graphics *graphics) override final;
 
+        void safeDraw(Graphics *graphics) override final;
+
         /**
          * Implements player to keep following mouse.
          */

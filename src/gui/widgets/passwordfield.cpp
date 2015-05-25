@@ -48,3 +48,8 @@ void PasswordField::draw(Graphics *graphics)
     mText = original;
     BLOCK_END("PasswordField::draw")
 }
+
+void PasswordField::safeDraw(Graphics *graphics)
+{
+    PasswordField::draw(graphics);
+}

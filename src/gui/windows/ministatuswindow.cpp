@@ -319,6 +319,13 @@ void MiniStatusWindow::draw(Graphics *graphics)
     BLOCK_END("MiniStatusWindow::draw")
 }
 
+void MiniStatusWindow::safeDraw(Graphics *graphics)
+{
+    BLOCK_START("MiniStatusWindow::draw")
+    drawChildren(graphics);
+    BLOCK_END("MiniStatusWindow::draw")
+}
+
 void MiniStatusWindow::mouseMoved(MouseEvent &event)
 {
     Window::mouseMoved(event);

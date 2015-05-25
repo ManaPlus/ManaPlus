@@ -71,6 +71,8 @@ class MiniStatusWindow final : public Window,
 
         void draw(Graphics *graphics) override final;
 
+        void safeDraw(Graphics *graphics) override final;
+
         void mouseMoved(MouseEvent &event) override final;
 
         void mousePressed(MouseEvent &event) override final;

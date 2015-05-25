@@ -349,7 +349,108 @@ void GuiTable::draw(Graphics* graphics)
 
 void GuiTable::safeDraw(Graphics* graphics)
 {
-    GuiTable::draw(graphics);
+    if (!mModel || !getRowHeight())
+        return;
+
+    BLOCK_START("GuiTable::draw")
+    if (settings.guiAlpha != mAlpha)
+        mAlpha = settings.guiAlpha;
+
+    const Rect &rect = mDimension;
+    const int width = rect.width;
+    const int height = rect.height;
+    const int y = rect.y;
+    if (mOpaque)
+    {
+        mBackgroundColor.a = static_cast<int>(mAlpha * 255.0F);
+        graphics->setColor(mBackgroundColor);
+        graphics->fillRectangle(Rect(0, 0, width, height));
+    }
+
+    // First, determine how many rows we need to draw,
+    // and where we should start.
+    int rHeight = getRowHeight();
+    if (!rHeight)
+        rHeight = 1;
+    int first_row = -(y / rHeight);
+
+    if (first_row < 0)
+        first_row = 0;
+
+    unsigned rows_nr = 1 + (height / rHeight);  // May overestimate by one.
+    unsigned max_rows_nr;
+    if (mModel->getRows() < first_row)
+        max_rows_nr = 0;
+    else
+        max_rows_nr = mModel->getRows() - first_row;  // clip if neccessary:
+    if (max_rows_nr < rows_nr)
+        rows_nr = max_rows_nr;
+
+    // Now determine the first and last column
+    // Take the easy way out; these are usually bounded and all visible.
+    const unsigned first_column = 0;
+    const unsigned last_column1 = mModel->getColumns();
+
+    int y_offset = first_row * rHeight;
+
+    for (unsigned r = first_row; r < first_row + rows_nr; ++r)
+    {
+        int x_offset = 0;
+
+        for (unsigned c = first_column; c + 1 <= last_column1; ++c)
+        {
+            Widget *const widget = mModel->getElementAt(r, c);
+            const int cWidth = getColumnWidth(c);
+            if (widget)
+            {
+                Rect bounds(x_offset, y_offset, cWidth, rHeight);
+
+                if (widget == mTopWidget)
+                {
+                    bounds.height = widget->getHeight();
+                    bounds.width = widget->getWidth();
+                }
+
+                widget->setDimension(bounds);
+
+                if (mSelectedRow > -1)
+                {
+                    mHighlightColor.a = static_cast<int>(mAlpha * 255.0F);
+                    graphics->setColor(mHighlightColor);
+
+                    if (mLinewiseMode && r == static_cast<unsigned>(
+                        mSelectedRow) && c == 0)
+                    {
+                        graphics->fillRectangle(Rect(0, y_offset,
+                            width, rHeight));
+                    }
+                    else if (!mLinewiseMode && mSelectedColumn > 0
+                             && c == static_cast<unsigned>(mSelectedColumn)
+                             && r == static_cast<unsigned>(mSelectedRow))
+                    {
+                        graphics->fillRectangle(Rect(
+                            x_offset, y_offset, cWidth, rHeight));
+                    }
+                }
+                graphics->pushClipArea(bounds);
+                widget->safeDraw(graphics);
+                graphics->popClipArea();
+            }
+
+            x_offset += cWidth;
+        }
+
+        y_offset += rHeight;
+    }
+
+    if (mTopWidget)
+    {
+        const Rect &bounds = mTopWidget->getDimension();
+        graphics->pushClipArea(bounds);
+        mTopWidget->safeDraw(graphics);
+        graphics->popClipArea();
+    }
+    BLOCK_END("GuiTable::draw")
 }
 
 void GuiTable::moveToTop(Widget *widget)

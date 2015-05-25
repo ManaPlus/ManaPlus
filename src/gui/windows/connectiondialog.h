@@ -60,6 +60,8 @@ class ConnectionDialog final : public Window,
 
         void draw(Graphics *graphics) override final;
 
+        void safeDraw(Graphics *graphics) override final;
+
     private:
         State mCancelState;
 };

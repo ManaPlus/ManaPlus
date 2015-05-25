@@ -174,6 +174,11 @@ class SkillListBox final : public ListBox
             }
         }
 
+        void safeDraw(Graphics *graphics) override final
+        {
+            SkillListBox::draw(graphics);
+        }
+
         unsigned int getRowHeight() const override final
         { return mRowHeight; }
 
