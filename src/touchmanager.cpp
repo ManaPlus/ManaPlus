@@ -196,53 +196,57 @@ void TouchManager::clear()
 
 void TouchManager::draw()
 {
-    if (isBatchDrawRenders(openGLMode))
+    if (mRedraw)
     {
-        if (mRedraw)
-        {
-            mRedraw = false;
-            mVertexes->clear();
-            FOR_EACH (TouchItemVectorCIter, it, mObjects)
-            {
-                const TouchItem *const item = *it;
-                if (item && item->images && (mShow ||
-                    (item == mKeyboard && mShowKeyboard)))
-                {
-                    mainGraphics->calcWindow(mVertexes, item->x, item->y,
-                        item->width, item->height, *item->images);
-                    const Image *const icon = item->icon;
-                    if (icon)
-                    {
-                        mainGraphics->calcTileCollection(mVertexes, icon,
-                            item->x + (item->width - icon->mBounds.w) / 2,
-                            item->y + (item->height - icon->mBounds.h) / 2);
-                    }
-                }
-            }
-            mainGraphics->finalize(mVertexes);
-        }
-        mainGraphics->drawTileCollection(mVertexes);
-    }
-    else
-    {
+        mRedraw = false;
+        mVertexes->clear();
         FOR_EACH (TouchItemVectorCIter, it, mObjects)
         {
             const TouchItem *const item = *it;
             if (item && item->images && (mShow ||
                 (item == mKeyboard && mShowKeyboard)))
             {
-                mainGraphics->drawImageRect(item->x, item->y,
+                mainGraphics->calcWindow(mVertexes, item->x, item->y,
                     item->width, item->height, *item->images);
                 const Image *const icon = item->icon;
                 if (icon)
                 {
-                    mainGraphics->drawImage(icon,
+                    mainGraphics->calcTileCollection(mVertexes, icon,
                         item->x + (item->width - icon->mBounds.w) / 2,
                         item->y + (item->height - icon->mBounds.h) / 2);
                 }
             }
         }
+        mainGraphics->finalize(mVertexes);
     }
+    mainGraphics->drawTileCollection(mVertexes);
+    drawText();
+}
+
+void TouchManager::safeDraw()
+{
+    FOR_EACH (TouchItemVectorCIter, it, mObjects)
+    {
+        const TouchItem *const item = *it;
+        if (item && item->images && (mShow ||
+            (item == mKeyboard && mShowKeyboard)))
+        {
+            mainGraphics->drawImageRect(item->x, item->y,
+                item->width, item->height, *item->images);
+            const Image *const icon = item->icon;
+            if (icon)
+            {
+                mainGraphics->drawImage(icon,
+                    item->x + (item->width - icon->mBounds.w) / 2,
+                    item->y + (item->height - icon->mBounds.h) / 2);
+            }
+        }
+    }
+    drawText();
+}
+
+void TouchManager::drawText()
+{
     if (!gui)
         return;
 
@@ -266,11 +270,6 @@ void TouchManager::draw()
                 str, textX, textY);
         }
     }
-}
-
-void TouchManager::safeDraw()
-{
-    draw();
 }
 
 bool TouchManager::processEvent(const MouseInput &mouseInput)

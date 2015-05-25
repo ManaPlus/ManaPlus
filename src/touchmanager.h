@@ -127,6 +127,8 @@ class TouchManager final : public ConfigListener
 
         void safeDraw();
 
+        void drawText();
+
         bool processEvent(const MouseInput &mouseInput);
 
         bool isActionActive(const int index) const;
