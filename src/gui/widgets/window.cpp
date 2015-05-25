@@ -284,69 +284,19 @@ void Window::draw(Graphics *graphics)
     BLOCK_START("Window::draw")
     bool update = false;
 
-    if (isBatchDrawRenders(openGLMode))
+    if (mResizeHandles != mOldResizeHandles)
     {
-        if (mResizeHandles != mOldResizeHandles)
-        {
-            mRedraw = true;
-            mOldResizeHandles = mResizeHandles;
-        }
-        if (mRedraw)
-        {
-            mLastRedraw = true;
-            mRedraw = false;
-            update = true;
-            mVertexes->clear();
-            graphics->calcWindow(mVertexes,
-                0, 0,
-                mDimension.width,
-                mDimension.height,
-                mSkin->getBorder());
-
-            // Draw Close Button
-            if (mCloseWindowButton)
-            {
-                const Image *const button = mSkin->getCloseImage(
-                    mResizeHandles == CLOSE);
-                if (button)
-                {
-                    graphics->calcTileCollection(mVertexes,
-                        button,
-                        mCloseRect.x,
-                        mCloseRect.y);
-                }
-            }
-            // Draw Sticky Button
-            if (mStickyButton)
-            {
-                const Image *const button = mSkin->getStickyImage(mSticky);
-                if (button)
-                {
-                    graphics->calcTileCollection(mVertexes,
-                        button,
-                        mStickyRect.x,
-                        mStickyRect.y);
-                }
-            }
-
-            if (mGrip)
-            {
-                graphics->calcTileCollection(mVertexes,
-                    mGrip,
-                    mGripRect.x,
-                    mGripRect.y);
-            }
-            graphics->finalize(mVertexes);
-        }
-        else
-        {
-            mLastRedraw = false;
-        }
-        graphics->drawTileCollection(mVertexes);
+        mRedraw = true;
+        mOldResizeHandles = mResizeHandles;
     }
-    else
+    if (mRedraw)
     {
-        graphics->drawImageRect(0, 0,
+        mLastRedraw = true;
+        mRedraw = false;
+        update = true;
+        mVertexes->clear();
+        graphics->calcWindow(mVertexes,
+            0, 0,
             mDimension.width,
             mDimension.height,
             mSkin->getBorder());
@@ -357,19 +307,40 @@ void Window::draw(Graphics *graphics)
             const Image *const button = mSkin->getCloseImage(
                 mResizeHandles == CLOSE);
             if (button)
-                graphics->drawImage(button, mCloseRect.x, mCloseRect.y);
+            {
+                graphics->calcTileCollection(mVertexes,
+                    button,
+                    mCloseRect.x,
+                    mCloseRect.y);
+            }
         }
         // Draw Sticky Button
         if (mStickyButton)
         {
             const Image *const button = mSkin->getStickyImage(mSticky);
             if (button)
-                graphics->drawImage(button, mStickyRect.x, mStickyRect.y);
+            {
+                graphics->calcTileCollection(mVertexes,
+                    button,
+                    mStickyRect.x,
+                    mStickyRect.y);
+            }
         }
 
         if (mGrip)
-            graphics->drawImage(mGrip, mGripRect.x, mGripRect.y);
+        {
+            graphics->calcTileCollection(mVertexes,
+                mGrip,
+                mGripRect.x,
+                mGripRect.y);
+        }
+        graphics->finalize(mVertexes);
     }
+    else
+    {
+        mLastRedraw = false;
+    }
+    graphics->drawTileCollection(mVertexes);
 
     // Draw title
     if (mShowTitle)
@@ -406,6 +377,66 @@ void Window::draw(Graphics *graphics)
         drawChildren(graphics);
     }
     BLOCK_END("Window::draw")
+}
+
+void Window::safeDraw(Graphics *graphics)
+{
+    if (!mSkin)
+        return;
+
+    BLOCK_START("Window::safeDraw")
+
+    graphics->drawImageRect(0, 0,
+        mDimension.width,
+        mDimension.height,
+        mSkin->getBorder());
+
+    // Draw Close Button
+    if (mCloseWindowButton)
+    {
+        const Image *const button = mSkin->getCloseImage(
+            mResizeHandles == CLOSE);
+        if (button)
+            graphics->drawImage(button, mCloseRect.x, mCloseRect.y);
+    }
+    // Draw Sticky Button
+    if (mStickyButton)
+    {
+        const Image *const button = mSkin->getStickyImage(mSticky);
+        if (button)
+            graphics->drawImage(button, mStickyRect.x, mStickyRect.y);
+    }
+
+    if (mGrip)
+        graphics->drawImage(mGrip, mGripRect.x, mGripRect.y);
+
+    // Draw title
+    if (mShowTitle)
+    {
+        int x;
+        switch (mCaptionAlign)
+        {
+            case Graphics::LEFT:
+            default:
+                x = mCaptionOffsetX;
+                break;
+            case Graphics::CENTER:
+                x = mCaptionOffsetX - mCaptionFont->getWidth(mCaption) / 2;
+                break;
+            case Graphics::RIGHT:
+                x = mCaptionOffsetX - mCaptionFont->getWidth(mCaption);
+                break;
+        }
+        mCaptionFont->drawString(graphics,
+            mForegroundColor,
+            mForegroundColor2,
+            mCaption,
+            x, mCaptionOffsetY);
+    }
+
+    drawChildren(graphics);
+
+    BLOCK_END("Window::safeDraw")
 }
 
 void Window::setContentSize(int width, int height)

@@ -128,6 +128,8 @@ class Window notfinal : public BasicContainer2,
          */
         void draw(Graphics *graphics) override;
 
+        void safeDraw(Graphics *graphics) override;
+
         /**
          * Sets the size of this window.
          */
