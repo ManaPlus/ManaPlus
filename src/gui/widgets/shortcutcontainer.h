@@ -49,11 +49,6 @@ class ShortcutContainer notfinal : public Widget,
         virtual ~ShortcutContainer();
 
         /**
-         * Draws the shortcuts
-         */
-        void draw(Graphics *graphics) override = 0;
-
-        /**
          * Invoked when a widget changes its size. This is used to determine
          * the new height of the container.
          */
