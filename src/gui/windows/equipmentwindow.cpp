@@ -267,7 +267,7 @@ void EquipmentWindow::safeDraw(Graphics *graphics)
 {
     BLOCK_START("EquipmentWindow::draw")
     // Draw window graphics
-    Window::draw(graphics);
+    Window::safeDraw(graphics);
 
     int i = 0;
     Font *const font = getFont();

@@ -134,6 +134,24 @@ void DebugWindow::draw(Graphics *g)
     BLOCK_END("DebugWindow::draw")
 }
 
+void DebugWindow::safeDraw(Graphics *g)
+{
+    BLOCK_START("DebugWindow::draw")
+    Window::safeDraw(g);
+
+    if (localPlayer)
+    {
+        const Being *const target = localPlayer->getTarget();
+        if (target)
+        {
+            target->draw(g, -target->getPixelX() + mapTileSize / 2
+                + mDimension.width / 2, -target->getPixelY() + mapTileSize
+                + mDimension.height / 2);
+        }
+    }
+    BLOCK_END("DebugWindow::draw")
+}
+
 void DebugWindow::widgetResized(const Event &event)
 {
     Window::widgetResized(event);

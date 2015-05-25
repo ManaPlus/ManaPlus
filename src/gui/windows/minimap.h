@@ -61,6 +61,10 @@ class Minimap final : public Window, public ConfigListener
          */
         void draw(Graphics *graphics) override final;
 
+        void safeDraw(Graphics *graphics) override final;
+
+        void draw2(Graphics *const graphics);
+
         void mouseMoved(MouseEvent &event) override final;
 
         void mouseReleased(MouseEvent &event) override final;

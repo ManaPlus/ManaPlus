@@ -374,6 +374,62 @@ void OutfitWindow::draw(Graphics *graphics)
     BLOCK_END("OutfitWindow::draw")
 }
 
+void OutfitWindow::safeDraw(Graphics *graphics)
+{
+    BLOCK_START("OutfitWindow::draw")
+    Window::safeDraw(graphics);
+
+    if (mCurrentOutfit < 0 || mCurrentOutfit
+        >= static_cast<signed int>(OUTFITS_COUNT))
+    {
+        return;
+    }
+
+    for (unsigned int i = 0; i < OUTFIT_ITEM_COUNT; i++)
+    {
+        const int itemX = mPadding + ((i % mGridWidth) * mBoxWidth);
+        const int itemY = mPadding + mTitleBarHeight
+            + ((i / static_cast<unsigned int>(mGridWidth)) * mBoxHeight);
+
+        graphics->setColor(mBorderColor);
+        graphics->drawRectangle(Rect(itemX, itemY, 32, 32));
+        graphics->setColor(mBackgroundColor);
+        graphics->fillRectangle(Rect(itemX, itemY, 32, 32));
+
+        if (mItems[mCurrentOutfit][i] < 0)
+            continue;
+
+        bool foundItem = false;
+        const Inventory *const inv = PlayerInfo::getInventory();
+        if (inv)
+        {
+            const Item *const item = inv->findItem(mItems[mCurrentOutfit][i],
+                mItemColors[mCurrentOutfit][i]);
+            if (item)
+            {
+                // Draw item icon.
+                const Image *const image = item->getImage();
+                if (image)
+                {
+                    graphics->drawImage(image, itemX, itemY);
+                    foundItem = true;
+                }
+            }
+        }
+        if (!foundItem)
+        {
+            Image *const image = Item::getImage(mItems[mCurrentOutfit][i],
+                mItemColors[mCurrentOutfit][i]);
+            if (image)
+            {
+                graphics->drawImage(image, itemX, itemY);
+                image->decRef();
+            }
+        }
+    }
+    BLOCK_END("OutfitWindow::draw")
+}
+
 void OutfitWindow::mouseDragged(MouseEvent &event)
 {
     if (event.getButton() == MouseButton::LEFT)

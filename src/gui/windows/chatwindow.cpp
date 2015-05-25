@@ -2081,6 +2081,18 @@ void ChatWindow::draw(Graphics* graphics)
     BLOCK_END("ChatWindow::draw")
 }
 
+void ChatWindow::safeDraw(Graphics* graphics)
+{
+    BLOCK_START("ChatWindow::draw")
+    if (!mAutoHide || mHaveMouse)
+    {
+        GLDEBUG_START("ChatWindow::draw");
+        Window::safeDraw(graphics);
+        GLDEBUG_END();
+    }
+    BLOCK_END("ChatWindow::draw")
+}
+
 void ChatWindow::updateVisibility()
 {
     if (!gui)

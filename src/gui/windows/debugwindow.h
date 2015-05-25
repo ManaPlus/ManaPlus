@@ -56,6 +56,8 @@ class DebugWindow final : public Window
 
         void draw(Graphics *g) override final;
 
+        void safeDraw(Graphics *g) override final;
+
         void setPing(int pingTime);
 
         void widgetResized(const Event &event) override final;

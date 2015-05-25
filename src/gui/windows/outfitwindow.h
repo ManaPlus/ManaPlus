@@ -54,6 +54,8 @@ class OutfitWindow final : public Window,
 
         void draw(Graphics *graphics) override final;
 
+        void safeDraw(Graphics *graphics) override final;
+
         void mousePressed(MouseEvent &event) override final;
 
         void mouseDragged(MouseEvent &event) override final;

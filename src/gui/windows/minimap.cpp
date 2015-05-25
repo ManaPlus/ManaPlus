@@ -237,8 +237,21 @@ void Minimap::toggle()
 void Minimap::draw(Graphics *graphics)
 {
     BLOCK_START("Minimap::draw")
-    Window::draw(graphics);
 
+    Window::draw(graphics);
+    draw2(graphics);
+}
+
+void Minimap::safeDraw(Graphics *graphics)
+{
+    BLOCK_START("Minimap::draw")
+
+    Window::safeDraw(graphics);
+    draw2(graphics);
+}
+
+void Minimap::draw2(Graphics *const graphics)
+{
     if (!userPalette || !localPlayer || !viewport)
     {
         BLOCK_END("Minimap::draw")
