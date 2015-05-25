@@ -387,7 +387,7 @@ void Tab::safeDraw(Graphics *graphics)
         }
     }
 
-    drawChildren(graphics);
+    safeDrawChildren(graphics);
     BLOCK_END("Tab::draw")
 }
 

@@ -85,6 +85,6 @@ void ConnectionDialog::safeDraw(Graphics *graphics)
 {
     BLOCK_START("ConnectionDialog::draw")
     // Don't draw the window background, only draw the children
-    drawChildren(graphics);
+    safeDrawChildren(graphics);
     BLOCK_END("ConnectionDialog::draw")
 }

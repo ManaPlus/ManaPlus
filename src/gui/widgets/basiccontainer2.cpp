@@ -94,7 +94,15 @@ void BasicContainer2::draw(Graphics* graphics)
 
 void BasicContainer2::safeDraw(Graphics* graphics)
 {
-    BasicContainer2::draw(graphics);
+    BLOCK_START("BasicContainer2::draw")
+    if (isOpaque())
+    {
+        graphics->setColor(getBaseColor());
+        graphics->fillRectangle(Rect(0, 0, getWidth(), getHeight()));
+    }
+
+    safeDrawChildren(graphics);
+    BLOCK_END("BasicContainer2::draw")
 }
 
 void BasicContainer2::setOpaque(bool opaque)

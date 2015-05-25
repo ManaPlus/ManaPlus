@@ -434,7 +434,7 @@ void Window::safeDraw(Graphics *graphics)
             x, mCaptionOffsetY);
     }
 
-    drawChildren(graphics);
+    safeDrawChildren(graphics);
 
     BLOCK_END("Window::safeDraw")
 }

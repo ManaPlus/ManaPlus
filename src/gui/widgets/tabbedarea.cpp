@@ -198,7 +198,7 @@ void TabbedArea::safeDraw(Graphics *graphics)
         return;
     }
 
-    drawChildren(graphics);
+    safeDrawChildren(graphics);
     BLOCK_END("TabbedArea::draw")
 }
 

@@ -137,7 +137,7 @@ void Popup::safeDraw(Graphics *graphics)
             mSkin->getBorder());
     }
 
-    drawChildren(graphics);
+    safeDrawChildren(graphics);
     BLOCK_END("Popup::safeDraw")
 }
 

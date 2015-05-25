@@ -322,7 +322,7 @@ void MiniStatusWindow::draw(Graphics *graphics)
 void MiniStatusWindow::safeDraw(Graphics *graphics)
 {
     BLOCK_START("MiniStatusWindow::draw")
-    drawChildren(graphics);
+    safeDrawChildren(graphics);
     BLOCK_END("MiniStatusWindow::draw")
 }
 

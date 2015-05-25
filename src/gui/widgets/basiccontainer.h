@@ -164,6 +164,8 @@ class BasicContainer notfinal : public Widget,
           */
         virtual void drawChildren(Graphics* graphics);
 
+        virtual void safeDrawChildren(Graphics* graphics);
+
         /**
           * Calls logic for the children widgets of the basic
           * container.

@@ -394,17 +394,7 @@ void ScrollArea::safeDraw(Graphics *graphics)
 
     updateAlpha();
 
-    if (mRedraw)
-    {
-        const bool redraw = graphics->getRedraw();
-        graphics->setRedraw(true);
-        drawChildren(graphics);
-        graphics->setRedraw(redraw);
-    }
-    else
-    {
-        drawChildren(graphics);
-    }
+    safeDrawChildren(graphics);
     mRedraw = false;
     BLOCK_END("ScrollArea::draw")
 }

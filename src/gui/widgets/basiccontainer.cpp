@@ -324,10 +324,47 @@ void BasicContainer::drawChildren(Graphics* graphics)
 
             graphics->pushClipArea(widget->mDimension);
             BLOCK_START("BasicContainer::drawChildren 2")
-            if (isBatchDrawRenders(openGLMode))
-                widget->draw(graphics);
-            else
-                widget->safeDraw(graphics);
+            widget->draw(graphics);
+            BLOCK_END("BasicContainer::drawChildren 2")
+            graphics->popClipArea();
+        }
+    }
+
+    graphics->popClipArea();
+    BLOCK_END("BasicContainer::drawChildren")
+}
+
+void BasicContainer::safeDrawChildren(Graphics* graphics)
+{
+    BLOCK_START("BasicContainer::drawChildren")
+    graphics->pushClipArea(getChildrenArea());
+
+    FOR_EACH (WidgetListConstIterator, iter, mWidgets)
+    {
+        Widget *const widget = *iter;
+        if (widget->isVisibleLocal())
+        {
+            // If the widget has a frame,
+            // draw it before drawing the widget
+            if (widget->mFrameSize > 0)
+            {
+                Rect rec = widget->mDimension;
+                const int frame = widget->mFrameSize;
+                const int frame2 = frame * 2;
+                rec.x -= frame;
+                rec.y -= frame;
+                rec.width += frame2;
+                rec.height += frame2;
+                graphics->pushClipArea(rec);
+                BLOCK_START("BasicContainer::drawChildren 1")
+                widget->drawFrame(graphics);
+                BLOCK_END("BasicContainer::drawChildren 1")
+                graphics->popClipArea();
+            }
+
+            graphics->pushClipArea(widget->mDimension);
+            BLOCK_START("BasicContainer::drawChildren 2")
+            widget->safeDraw(graphics);
             BLOCK_END("BasicContainer::drawChildren 2")
             graphics->popClipArea();
         }

@@ -426,6 +426,15 @@ void WindowMenu::drawChildren(Graphics* graphics)
     }
 }
 
+void WindowMenu::safeDrawChildren(Graphics* graphics)
+{
+    if (mHaveMouse || !mAutoHide || (mAutoHide == 1
+        && mainGraphics && (mSmallWindow || mainGraphics->mWidth > 800)))
+    {
+        Container::safeDrawChildren(graphics);
+    }
+}
+
 void WindowMenu::optionChanged(const std::string &name)
 {
     if (name == "autohideButtons")
