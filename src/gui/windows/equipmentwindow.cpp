@@ -187,54 +187,107 @@ void EquipmentWindow::draw(Graphics *graphics)
     const int fontHeight = font->getHeight();
     const std::vector<EquipmentBox*> &boxes = mPages[mSelectedTab]->boxes;
 
-    if (isBatchDrawRenders(openGLMode))
+    if (mLastRedraw)
     {
-        if (mLastRedraw)
-        {
-            mVertexes->clear();
-            FOR_EACH (std::vector<EquipmentBox*>::const_iterator, it, boxes)
-            {
-                const EquipmentBox *const box = *it;
-                if (!box)
-                {
-                    i ++;
-                    continue;
-                }
-                if (i == mSelected)
-                {
-                    graphics->calcTileCollection(mVertexes,
-                        mSlotHighlightedBackground,
-                        box->x, box->y);
-                }
-                else
-                {
-                    graphics->calcTileCollection(mVertexes,
-                        mSlotBackground,
-                        box->x, box->y);
-                }
-                i ++;
-            }
-            graphics->finalize(mVertexes);
-        }
-        graphics->drawTileCollection(mVertexes);
-    }
-    else
-    {
-        for (std::vector<EquipmentBox*>::const_iterator it = boxes.begin(),
-             it_end = boxes.end(); it != it_end; ++ it, ++ i)
+        mVertexes->clear();
+        FOR_EACH (std::vector<EquipmentBox*>::const_iterator, it, boxes)
         {
             const EquipmentBox *const box = *it;
             if (!box)
+            {
+                i ++;
                 continue;
+            }
             if (i == mSelected)
             {
-                graphics->drawImage(mSlotHighlightedBackground,
+                graphics->calcTileCollection(mVertexes,
+                    mSlotHighlightedBackground,
                     box->x, box->y);
             }
             else
             {
-                graphics->drawImage(mSlotBackground, box->x, box->y);
+                graphics->calcTileCollection(mVertexes,
+                    mSlotBackground,
+                    box->x, box->y);
             }
+            i ++;
+        }
+        graphics->finalize(mVertexes);
+    }
+    graphics->drawTileCollection(mVertexes);
+
+    if (!mEquipment)
+    {
+        BLOCK_END("EquipmentWindow::draw")
+        return;
+    }
+
+    i = 0;
+    const int projSlot = inventoryHandler->getProjectileSlot();
+    for (std::vector<EquipmentBox*>::const_iterator it = boxes.begin(),
+         it_end = boxes.end(); it != it_end; ++ it, ++ i)
+    {
+        const EquipmentBox *const box = *it;
+        if (!box)
+            continue;
+        const Item *const item = mEquipment->getEquipment(i);
+        if (item)
+        {
+            // Draw Item.
+            Image *const image = item->getImage();
+            if (image)
+            {
+                image->setAlpha(1.0F);  // Ensure the image is drawn
+                                        // with maximum opacity
+                graphics->drawImage(image, box->x + mItemPadding,
+                    box->y + mItemPadding);
+                if (i == projSlot)
+                {
+                    const std::string str = toString(item->getQuantity());
+                    font->drawString(graphics,
+                        mLabelsColor,
+                        mLabelsColor2,
+                        str,
+                        box->x + (mBoxSize - font->getWidth(str)) / 2,
+                        box->y - fontHeight);
+                }
+            }
+        }
+        else if (box->image)
+        {
+            graphics->drawImage(box->image,
+                box->x + mItemPadding,
+                box->y + mItemPadding);
+        }
+    }
+    BLOCK_END("EquipmentWindow::draw")
+}
+
+void EquipmentWindow::safeDraw(Graphics *graphics)
+{
+    BLOCK_START("EquipmentWindow::draw")
+    // Draw window graphics
+    Window::draw(graphics);
+
+    int i = 0;
+    Font *const font = getFont();
+    const int fontHeight = font->getHeight();
+    const std::vector<EquipmentBox*> &boxes = mPages[mSelectedTab]->boxes;
+
+    for (std::vector<EquipmentBox*>::const_iterator it = boxes.begin(),
+         it_end = boxes.end(); it != it_end; ++ it, ++ i)
+    {
+        const EquipmentBox *const box = *it;
+        if (!box)
+            continue;
+        if (i == mSelected)
+        {
+            graphics->drawImage(mSlotHighlightedBackground,
+                box->x, box->y);
+        }
+        else
+        {
+            graphics->drawImage(mSlotBackground, box->x, box->y);
         }
     }
 

@@ -72,6 +72,8 @@ class EquipmentWindow final : public Window,
          */
         void draw(Graphics *graphics) override final;
 
+        void safeDraw(Graphics *graphics) override final;
+
         void action(const ActionEvent &event) override final;
 
         void mousePressed(MouseEvent& event) override final;
