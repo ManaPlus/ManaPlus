@@ -273,50 +273,117 @@ void Tab::draw(Graphics *graphics)
 
     updateAlpha();
 
-    // draw tab
-    if (isBatchDrawRenders(openGLMode))
+    const ImageRect &rect = skin->getBorder();
+    if (mRedraw || mode != mMode || graphics->getRedraw())
     {
-        const ImageRect &rect = skin->getBorder();
-        if (mRedraw || mode != mMode || graphics->getRedraw())
-        {
-            mMode = mode;
-            mRedraw = false;
-            mVertexes->clear();
-            graphics->calcWindow(mVertexes,
-                0, 0,
-                mDimension.width, mDimension.height,
-                rect);
-
-            if (mImage)
-            {
-                const Skin *const skin1 = tabImg[TAB_STANDARD];
-                if (skin1)
-                {
-                    const int padding = skin1->getPadding();
-                    graphics->calcTileCollection(mVertexes,
-                        mImage,
-                        padding,
-                        padding);
-                }
-            }
-            graphics->finalize(mVertexes);
-        }
-
-        graphics->drawTileCollection(mVertexes);
-    }
-    else
-    {
-        graphics->drawImageRect(0, 0,
+        mMode = mode;
+        mRedraw = false;
+        mVertexes->clear();
+        graphics->calcWindow(mVertexes,
+            0, 0,
             mDimension.width, mDimension.height,
-            skin->getBorder());
+            rect);
+
         if (mImage)
         {
             const Skin *const skin1 = tabImg[TAB_STANDARD];
             if (skin1)
             {
                 const int padding = skin1->getPadding();
-                graphics->drawImage(mImage, padding, padding);
+                graphics->calcTileCollection(mVertexes,
+                    mImage,
+                    padding,
+                    padding);
             }
+        }
+        graphics->finalize(mVertexes);
+    }
+
+    graphics->drawTileCollection(mVertexes);
+
+    drawChildren(graphics);
+    BLOCK_END("Tab::draw")
+}
+
+void Tab::safeDraw(Graphics *graphics)
+{
+    BLOCK_START("Tab::draw")
+    int mode = TAB_STANDARD;
+
+    // check which type of tab to draw
+    if (mTabbedArea)
+    {
+        int labelMode = mFlash;
+
+        if (mTabbedArea->isTabSelected(this))
+        {
+            labelMode = 3;
+            mode = TAB_SELECTED;
+            // if tab is selected, it doesnt need to highlight activity
+            mFlash = 0;
+        }
+        else if (!labelMode)
+        {
+            if (mHasMouse)
+            {
+                labelMode = 4;
+                mode = TAB_HIGHLIGHTED;
+            }
+        }
+        else if (mHasMouse)
+        {
+            mode = TAB_HIGHLIGHTED;
+        }
+
+        if (labelMode != mLabelMode)
+        {
+            mLabelMode = labelMode;
+            switch (labelMode)
+            {
+                case 0:  // default state
+                default:
+                    mLabel->setForegroundColorAll(*mTabColor,
+                        *mTabOutlineColor);
+                    break;
+                case 1:  // mFlash == 1
+                    mLabel->setForegroundColorAll(*mFlashColor,
+                        *mFlashOutlineColor);
+                    break;
+                case 2:  // mFlash == 2
+                    mLabel->setForegroundColorAll(*mPlayerFlashColor,
+                        *mPlayerFlashOutlineColor);
+                    break;
+                case 3:  // mTabbedArea->isTabSelected(this)
+                    mLabel->setForegroundColorAll(*mTabSelectedColor,
+                        *mTabSelectedOutlineColor);
+                    break;
+                case 4:  // mHasMouse
+                    mLabel->setForegroundColorAll(*mTabHighlightedColor,
+                        *mTabHighlightedOutlineColor);
+                    break;
+            }
+        }
+    }
+
+    const Skin *const skin = tabImg[mode];
+    if (!skin)
+    {
+        BLOCK_END("Tab::draw")
+        return;
+    }
+
+    updateAlpha();
+
+    graphics->drawImageRect(0, 0,
+        mDimension.width, mDimension.height,
+        skin->getBorder());
+    if (mImage)
+    {
+        const Skin *const skin1 = tabImg[TAB_STANDARD];
+        if (skin1)
+        {
+            const int padding = skin1->getPadding();
+            graphics->drawImage(mImage, padding, padding);
         }
     }
 

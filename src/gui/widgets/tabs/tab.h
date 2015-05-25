@@ -111,6 +111,8 @@ class Tab notfinal : public BasicContainer,
          */
         void draw(Graphics *graphics) override final;
 
+        void safeDraw(Graphics *graphics) override final;
+
         /**
          * Set the normal color for the tab's text.
          */
