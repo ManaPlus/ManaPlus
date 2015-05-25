@@ -177,7 +177,7 @@ static void uploadFile(const std::string &str,
     upload->start();
 }
 
-static Being *findBeing(const std::string &name)
+static Being *findBeing(const std::string &name, const bool npc)
 {
     if (!localPlayer || !actorManager)
         return nullptr;
@@ -193,7 +193,7 @@ static Being *findBeing(const std::string &name)
         being = actorManager->findBeingByName(
             name, ActorType::Unknown);
     }
-    if (!being)
+    if (!being && npc)
     {
         being = actorManager->findNearestLivingBeing(
             localPlayer, 1, ActorType::Npc, AllowSort_true);
@@ -206,7 +206,7 @@ static Being *findBeing(const std::string &name)
             }
         }
     }
-    if (!being)
+    if (!being && npc)
     {
         being = actorManager->findNearestLivingBeing(
             localPlayer, 1, ActorType::Player, AllowSort_true);
@@ -627,7 +627,7 @@ impHandler0(ignoreInput)
 impHandler(buy)
 {
     const std::string args = event.args;
-    Being *being = findBeing(args);
+    Being *being = findBeing(args, false);
     if (!being && !serverFeatures->haveVending())
     {
         const std::set<std::string> &players = whoIsOnline->getOnlineNicks();
@@ -638,6 +638,9 @@ impHandler(buy)
         }
         return false;
     }
+
+    if (!being)
+        being = findBeing(args, true);
 
     if (!being)
         return false;
@@ -663,7 +666,7 @@ impHandler(buy)
 impHandler(sell)
 {
     const std::string args = event.args;
-    Being *being = findBeing(args);
+    Being *being = findBeing(args, false);
     if (!being && !serverFeatures->haveVending())
     {
         const std::set<std::string> &players = whoIsOnline->getOnlineNicks();
@@ -674,6 +677,9 @@ impHandler(sell)
         }
         return false;
     }
+
+    if (!being)
+        being = findBeing(args, true);
 
     if (!being)
         return false;
@@ -698,7 +704,7 @@ impHandler(sell)
 
 impHandler(talk)
 {
-    Being *being = findBeing(event.args);
+    Being *being = findBeing(event.args, true);
     if (!being)
         return false;
 
