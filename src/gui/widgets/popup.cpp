@@ -108,31 +108,37 @@ void Popup::draw(Graphics *graphics)
 
     if (mSkin)
     {
-        if (isBatchDrawRenders(openGLMode))
+        if (mRedraw)
         {
-            if (mRedraw)
-            {
-                mRedraw = false;
-                mVertexes->clear();
-                graphics->calcWindow(mVertexes,
-                    0, 0,
-                    mDimension.width, mDimension.height,
-                    mSkin->getBorder());
-            }
-            // need cache or remove calc call.
-            graphics->finalize(mVertexes);
-            graphics->drawTileCollection(mVertexes);
-        }
-        else
-        {
-            graphics->drawImageRect(0, 0,
+            mRedraw = false;
+            mVertexes->clear();
+            graphics->calcWindow(mVertexes,
+                0, 0,
                 mDimension.width, mDimension.height,
                 mSkin->getBorder());
         }
+        // need cache or remove calc call.
+        graphics->finalize(mVertexes);
+        graphics->drawTileCollection(mVertexes);
     }
 
     drawChildren(graphics);
     BLOCK_END("Popup::draw")
+}
+
+void Popup::safeDraw(Graphics *graphics)
+{
+    BLOCK_START("Popup::safeDraw")
+
+    if (mSkin)
+    {
+        graphics->drawImageRect(0, 0,
+            mDimension.width, mDimension.height,
+            mSkin->getBorder());
+    }
+
+    drawChildren(graphics);
+    BLOCK_END("Popup::safeDraw")
 }
 
 Rect Popup::getChildrenArea()

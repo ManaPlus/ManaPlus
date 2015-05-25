@@ -78,6 +78,8 @@ class Popup notfinal : public Container,
          */
         void draw(Graphics *graphics) override;
 
+        void safeDraw(Graphics *graphics) override;
+
         /**
          * Sets the size of this popup.
          */
