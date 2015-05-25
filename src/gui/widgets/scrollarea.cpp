@@ -318,63 +318,78 @@ void ScrollArea::draw(Graphics *graphics)
     BLOCK_START("ScrollArea::draw")
     if (mVBarVisible || mHBarVisible)
     {
-        if (isBatchDrawRenders(openGLMode))
+        if (!mOpaque)
+            updateCalcFlag(graphics);
+        // need add caching or remove calc calls.
+//        if (mRedraw)
         {
-            if (!mOpaque)
-                updateCalcFlag(graphics);
-            // need add caching or remove calc calls.
-//            if (mRedraw)
-            {
-                mVertexes->clear();
-                if (mVBarVisible)
-                {
-                    if (mShowButtons)
-                    {
-                        calcButton(graphics, UP);
-                        calcButton(graphics, DOWN);
-                    }
-                    calcVBar(graphics);
-                    calcVMarker(graphics);
-                }
-
-                if (mHBarVisible)
-                {
-                    if (mShowButtons)
-                    {
-                        calcButton(graphics, LEFT);
-                        calcButton(graphics, RIGHT);
-                    }
-                    calcHBar(graphics);
-                    calcHMarker(graphics);
-                }
-                graphics->finalize(mVertexes);
-            }
-            graphics->drawTileCollection(mVertexes);
-        }
-        else
-        {
+            mVertexes->clear();
             if (mVBarVisible)
             {
                 if (mShowButtons)
                 {
-                    drawButton(graphics, UP);
-                    drawButton(graphics, DOWN);
+                    calcButton(graphics, UP);
+                    calcButton(graphics, DOWN);
                 }
-                drawVBar(graphics);
-                drawVMarker(graphics);
+                calcVBar(graphics);
+                calcVMarker(graphics);
             }
 
             if (mHBarVisible)
             {
                 if (mShowButtons)
                 {
-                    drawButton(graphics, LEFT);
-                    drawButton(graphics, RIGHT);
+                    calcButton(graphics, LEFT);
+                    calcButton(graphics, RIGHT);
                 }
-                drawHBar(graphics);
-                drawHMarker(graphics);
+                calcHBar(graphics);
+                calcHMarker(graphics);
             }
+            graphics->finalize(mVertexes);
         }
+        graphics->drawTileCollection(mVertexes);
+    }
+
+    updateAlpha();
+
+    if (mRedraw)
+    {
+        const bool redraw = graphics->getRedraw();
+        graphics->setRedraw(true);
+        drawChildren(graphics);
+        graphics->setRedraw(redraw);
+    }
+    else
+    {
+        drawChildren(graphics);
+    }
+    mRedraw = false;
+    BLOCK_END("ScrollArea::draw")
+}
+
+void ScrollArea::safeDraw(Graphics *graphics)
+{
+    BLOCK_START("ScrollArea::draw")
+    if (mVBarVisible)
+    {
+        if (mShowButtons)
+        {
+            drawButton(graphics, UP);
+            drawButton(graphics, DOWN);
+        }
+        drawVBar(graphics);
+        drawVMarker(graphics);
+    }
+
+    if (mHBarVisible)
+    {
+        if (mShowButtons)
+        {
+            drawButton(graphics, LEFT);
+            drawButton(graphics, RIGHT);
+        }
+        drawHBar(graphics);
+        drawHMarker(graphics);
     }
 
     updateAlpha();

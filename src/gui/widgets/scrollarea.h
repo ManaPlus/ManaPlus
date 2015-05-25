@@ -139,6 +139,8 @@ class ScrollArea final : public BasicContainer,
          */
         void draw(Graphics *graphics) override final;
 
+        void safeDraw(Graphics *graphics) override final;
+
         /**
          * Draws the background and border of the scroll area.
          */
