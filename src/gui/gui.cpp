@@ -83,6 +83,8 @@
 
 #include "input/inputmanager.h"
 
+#include "render/renderers.h"
+
 #include "resources/imageset.h"
 #include "resources/resourcemanager.h"
 
@@ -452,9 +454,19 @@ bool Gui::handleKeyInput()
 void Gui::draw()
 {
     BLOCK_START("Gui::draw 1")
-    mGraphics->pushClipArea(getTop()->getDimension());
-    getTop()->draw(mGraphics);
-    touchManager.draw();
+    Widget *const top = getTop();
+    mGraphics->pushClipArea(top->getDimension());
+
+    if (isBatchDrawRenders(openGLMode))
+    {
+        top->draw(mGraphics);
+        touchManager.draw();
+    }
+    else
+    {
+        top->safeDraw(mGraphics);
+        touchManager.safeDraw();
+    }
 
     int mouseX;
     int mouseY;

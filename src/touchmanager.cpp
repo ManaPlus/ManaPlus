@@ -268,6 +268,11 @@ void TouchManager::draw()
     }
 }
 
+void TouchManager::safeDraw()
+{
+    draw();
+}
+
 bool TouchManager::processEvent(const MouseInput &mouseInput)
 {
     const int x = mouseInput.getTouchX();

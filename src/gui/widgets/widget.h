@@ -122,6 +122,9 @@ class Widget notfinal : public Widget2
           */
         virtual void draw(Graphics* graphics) = 0;
 
+        virtual void safeDraw(Graphics* graphics)
+        { draw(graphics); }
+
         /**
           * Called when a widget is given a chance to draw a frame around itself.
           * The frame is not considered a part of the widget, it only allows a frame
