@@ -122,7 +122,6 @@ void AvatarListBox::draw(Graphics *graphics)
 
     // Draw the list elements
     ImageCollection vertexes;
-    const bool useCaching = isBatchDrawRenders(openGLMode);
 
     for (int i = 0, y = 0;
          i < model->getNumberOfElements();
@@ -141,23 +140,250 @@ void AvatarListBox::draw(Graphics *graphics)
                 ? onlineIcon : offlineIcon;
             if (icon)
             {
-                if (useCaching)
-                {
-                    graphics->calcTileCollection(&vertexes, icon,
-                        mImagePadding, y + mPadding);
-                }
-                else
-                {
-                    graphics->drawImage(icon, mImagePadding, y + mPadding);
-                }
+                graphics->calcTileCollection(&vertexes, icon,
+                    mImagePadding, y + mPadding);
             }
         }
     }
 
-    if (useCaching)
+    graphics->finalize(&vertexes);
+    graphics->drawTileCollection(&vertexes);
+
+    for (int i = 0, y = 0;
+         i < model->getNumberOfElements();
+         ++i, y += fontHeight)
     {
-        graphics->finalize(&vertexes);
-        graphics->drawTileCollection(&vertexes);
+        const Avatar *const a = model->getAvatarAt(i);
+        if (!a)
+            continue;
+
+        const MapItemType::Type type = static_cast<MapItemType::Type>(
+            a->getType());
+        std::string text;
+
+        if (a->getMaxHp() > 0)
+        {
+            if (mShowLevel && a->getLevel() > 1)
+            {
+                text = strprintf("%s %d/%d (%d)", a->getComplexName().c_str(),
+                                 a->getHp(), a->getMaxHp(), a->getLevel());
+            }
+            else
+            {
+                text = strprintf("%s %d/%d", a->getComplexName().c_str(),
+                                 a->getHp(), a->getMaxHp());
+            }
+            const bool isPoison = a->getPoison();
+            if (a->getMaxHp())
+            {
+                const int themeColor = (isPoison
+                    ? Theme::PROG_HP_POISON : Theme::PROG_HP);
+                Color color = Theme::getProgressColor(
+                    themeColor, static_cast<float>(a->getHp())
+                    / static_cast<float>(a->getMaxHp()));
+                color.a = 80;
+                graphics->setColor(color);
+                graphics->fillRectangle(Rect(mPadding, y + mPadding,
+                    parent->getWidth() * a->getHp() / a->getMaxHp()
+                    - 2 * mPadding, fontHeight));
+            }
+        }
+        else if (a->getDamageHp() != 0 && a->getName() != name)
+        {
+            if (mShowLevel && a->getLevel() > 1)
+            {
+                text = strprintf("%s -%d (%d)", a->getComplexName().c_str(),
+                                 a->getDamageHp(), a->getLevel());
+            }
+            else
+            {
+                text = strprintf("%s -%d", a->getComplexName().c_str(),
+                                 a->getDamageHp());
+            }
+
+            const int themeColor = (a->getPoison()
+                ? Theme::PROG_HP_POISON : Theme::PROG_HP);
+            Color color = Theme::getProgressColor(themeColor, 1);
+            color.a = 80;
+            graphics->setColor(color);
+            graphics->fillRectangle(Rect(mPadding, y + mPadding,
+                parent->getWidth() * a->getDamageHp() / 1024
+                - 2 * mPadding, fontHeight));
+
+            if (a->getLevel() > 1)
+            {
+                graphics->setColor(mForegroundColor);
+                int minHp = 40 + ((a->getLevel() - 1) * 5);
+                if (minHp < 0)
+                    minHp = 40;
+
+                graphics->drawLine(parent->getWidth()*minHp / 1024
+                    + mPadding, y + mPadding,
+                    parent->getWidth() * minHp / 1024, y + fontHeight);
+            }
+        }
+        else
+        {
+            if (mShowLevel && a->getLevel() > 1)
+            {
+                text = strprintf("%s (%d)", a->getComplexName().c_str(),
+                                 a->getLevel());
+            }
+            else
+            {
+                text = a->getComplexName();
+            }
+        }
+
+        if (!a->getMap().empty())
+        {
+            if (a->getX() != -1)
+            {
+                text.append(strprintf(" [%d,%d %s]", a->getX(), a->getY(),
+                    a->getMap().c_str()));
+            }
+            else
+            {
+                text.append(strprintf(" [%s]", a->getMap().c_str()));
+            }
+        }
+
+        if (graphics->getSecure())
+        {
+            if (mShowGender)
+            {
+                switch (a->getGender())
+                {
+                    case Gender::FEMALE:
+                        text.append(" \u2640 ");
+                        break;
+                    case Gender::MALE:
+                        text.append(" \u2642 ");
+                        break;
+                    default:
+                    case Gender::UNSPECIFIED:
+                    case Gender::OTHER:
+                        break;
+                }
+            }
+        }
+        else
+        {
+            if (mShowGender)
+            {
+                switch (a->getGender())
+                {
+                    case Gender::FEMALE:
+                        text.append(strprintf(" \u2640 %s",
+                            a->getAdditionString().c_str()));
+                        break;
+                    case Gender::MALE:
+                        text.append(strprintf(" \u2642 %s",
+                            a->getAdditionString().c_str()));
+                        break;
+                    default:
+                    case Gender::UNSPECIFIED:
+                    case Gender::OTHER:
+                        break;
+                }
+            }
+            else
+            {
+                text.append(a->getAdditionString());
+            }
+        }
+
+        // Draw Name
+        if (a->getDisplayBold())
+        {
+            if (type == MapItemType::SEPARATOR)
+            {
+                boldFont->drawString(graphics,
+                    mForegroundColor,
+                    mForegroundColor,
+                    text,
+                    mImagePadding + mPadding,
+                    y + mPadding);
+            }
+            else
+            {
+                boldFont->drawString(graphics,
+                    mForegroundColor,
+                    mForegroundColor,
+                    text,
+                    15 + mImagePadding + mPadding,
+                    y + mPadding);
+            }
+        }
+        else
+        {
+            if (type == MapItemType::SEPARATOR)
+            {
+                font->drawString(graphics,
+                    mForegroundColor,
+                    mForegroundColor,
+                    text,
+                    mImagePadding + mPadding,
+                    y + mPadding);
+            }
+            else
+            {
+                font->drawString(graphics,
+                    mForegroundColor,
+                    mForegroundColor,
+                    text,
+                    15 + mImagePadding + mPadding,
+                    y + mPadding);
+            }
+        }
+    }
+
+    setWidth(parent->getWidth() - 10);
+    BLOCK_END("AvatarListBox::draw")
+}
+
+void AvatarListBox::safeDraw(Graphics *graphics)
+{
+    BLOCK_START("AvatarListBox::draw")
+    if (!mListModel || !localPlayer)
+    {
+        BLOCK_END("AvatarListBox::draw")
+        return;
+    }
+
+    const Widget *const parent = mParent;
+    if (!parent)
+        return;
+
+    AvatarListModel *const model = static_cast<AvatarListModel *const>(
+        mListModel);
+    updateAlpha();
+
+    Font *const font = getFont();
+    const int fontHeight = getFont()->getHeight();
+    const std::string &name = localPlayer->getName();
+
+    // Draw the list elements
+    ImageCollection vertexes;
+
+    for (int i = 0, y = 0;
+         i < model->getNumberOfElements();
+         ++i, y += fontHeight)
+    {
+        const Avatar *const a = model->getAvatarAt(i);
+        if (!a)
+            continue;
+
+        const MapItemType::Type type = static_cast<MapItemType::Type>(
+            a->getType());
+        if (type != MapItemType::SEPARATOR)
+        {
+            // Draw online status
+            const Image *const icon = a->getOnline()
+                ? onlineIcon : offlineIcon;
+            if (icon)
+                graphics->drawImage(icon, mImagePadding, y + mPadding);
+        }
     }
 
     for (int i = 0, y = 0;

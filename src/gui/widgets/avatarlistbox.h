@@ -43,6 +43,8 @@ class AvatarListBox final : public ListBox,
          */
         void draw(Graphics *gcnGraphics) override final;
 
+        void safeDraw(Graphics *gcnGraphics) override final;
+
         void mousePressed(MouseEvent &event) override final;
 
         void mouseReleased(MouseEvent &event A_UNUSED) override final;
