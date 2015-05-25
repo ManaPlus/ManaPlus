@@ -127,6 +127,58 @@ void EmoteShortcutContainer::draw(Graphics *graphics)
     BLOCK_END("EmoteShortcutContainer::draw")
 }
 
+void EmoteShortcutContainer::safeDraw(Graphics *graphics)
+{
+    if (!emoteShortcut)
+        return;
+
+    BLOCK_START("EmoteShortcutContainer::draw")
+    if (settings.guiAlpha != mAlpha)
+    {
+        if (mBackgroundImg)
+            mBackgroundImg->setAlpha(mAlpha);
+        mAlpha = settings.guiAlpha;
+    }
+
+    Font *const font = getFont();
+    safeDrawBackground(graphics);
+
+    unsigned sz = static_cast<unsigned>(mEmoteImg.size());
+    if (sz > mMaxItems)
+        sz = mMaxItems;
+    for (unsigned i = 0; i < sz; i++)
+    {
+        const EmoteSprite *const emoteImg = mEmoteImg[i];
+        if (emoteImg)
+        {
+            const AnimatedSprite *const sprite = emoteImg->sprite;
+            if (sprite)
+            {
+                sprite->draw(graphics,
+                    (i % mGridWidth) * mBoxWidth + 2,
+                    (i / mGridWidth) * mBoxHeight + 10);
+            }
+        }
+    }
+    for (unsigned i = 0; i < mMaxItems; i++)
+    {
+        const int emoteX = (i % mGridWidth) * mBoxWidth;
+        const int emoteY = (i / mGridWidth) * mBoxHeight;
+
+        // Draw emote keyboard shortcut.
+        const std::string key = inputManager.getKeyValueString(
+            InputAction::EMOTE_1 + i);
+
+        font->drawString(graphics,
+            mForegroundColor,
+            mForegroundColor2,
+            key,
+            emoteX + 2, emoteY + 2);
+    }
+
+    BLOCK_END("EmoteShortcutContainer::draw")
+}
+
 void EmoteShortcutContainer::mouseDragged(MouseEvent &event A_UNUSED)
 {
 }

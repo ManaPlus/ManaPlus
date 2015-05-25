@@ -121,6 +121,66 @@ void SpellShortcutContainer::draw(Graphics *graphics)
     BLOCK_END("SpellShortcutContainer::draw")
 }
 
+void SpellShortcutContainer::safeDraw(Graphics *graphics)
+{
+    if (!spellShortcut)
+        return;
+
+    BLOCK_START("SpellShortcutContainer::draw")
+    if (settings.guiAlpha != mAlpha)
+    {
+        mAlpha = settings.guiAlpha;
+        if (mBackgroundImg)
+            mBackgroundImg->setAlpha(mAlpha);
+    }
+
+    Font *const font = getFont();
+
+    const int selectedId = spellShortcut->getSelectedItem();
+    graphics->setColor(mForegroundColor);
+    safeDrawBackground(graphics);
+
+    // +++ in future need reorder images and string drawing.
+    for (unsigned i = 0; i < mMaxItems; i++)
+    {
+        const int itemX = (i % mGridWidth) * mBoxWidth;
+        const int itemY = (i / mGridWidth) * mBoxHeight;
+
+        const int itemId = getItemByIndex(i);
+        if (selectedId >= 0 && itemId == selectedId)
+        {
+            graphics->drawRectangle(Rect(itemX + 1, itemY + 1,
+                mBoxWidth - 1, mBoxHeight - 1));
+        }
+
+        if (!spellManager)
+            continue;
+
+        const TextCommand *const spell = spellManager->getSpell(itemId);
+        if (spell)
+        {
+            if (!spell->isEmpty())
+            {
+                Image *const image = spell->getImage();
+
+                if (image)
+                {
+                    image->setAlpha(1.0F);
+                    graphics->drawImage(image, itemX, itemY);
+                }
+            }
+
+            font->drawString(graphics,
+                mForegroundColor,
+                mForegroundColor2,
+                spell->getSymbol(),
+                itemX + 2, itemY + mBoxHeight / 2);
+        }
+    }
+
+    BLOCK_END("SpellShortcutContainer::draw")
+}
+
 void SpellShortcutContainer::mouseDragged(MouseEvent &event)
 {
     if (event.getButton() == MouseButton::LEFT)

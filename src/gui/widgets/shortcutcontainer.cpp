@@ -124,29 +124,30 @@ void ShortcutContainer::drawBackground(Graphics *g)
 {
     if (mBackgroundImg)
     {
-        if (isBatchDrawRenders(openGLMode))
+        if (mRedraw)
         {
-            if (mRedraw)
-            {
-                mRedraw = false;
-                mVertexes->clear();
-                for (unsigned i = 0; i < mMaxItems; i ++)
-                {
-                    g->calcTileCollection(mVertexes, mBackgroundImg,
-                        (i % mGridWidth) * mBoxWidth,
-                        (i / mGridWidth) * mBoxHeight);
-                }
-                g->finalize(mVertexes);
-            }
-            g->drawTileCollection(mVertexes);
-        }
-        else
-        {
+            mRedraw = false;
+            mVertexes->clear();
             for (unsigned i = 0; i < mMaxItems; i ++)
             {
-                g->drawImage(mBackgroundImg, (i % mGridWidth) * mBoxWidth,
+                g->calcTileCollection(mVertexes, mBackgroundImg,
+                    (i % mGridWidth) * mBoxWidth,
                     (i / mGridWidth) * mBoxHeight);
             }
+            g->finalize(mVertexes);
+        }
+        g->drawTileCollection(mVertexes);
+    }
+}
+
+void ShortcutContainer::safeDrawBackground(Graphics *g)
+{
+    if (mBackgroundImg)
+    {
+        for (unsigned i = 0; i < mMaxItems; i ++)
+        {
+            g->drawImage(mBackgroundImg, (i % mGridWidth) * mBoxWidth,
+                (i / mGridWidth) * mBoxHeight);
         }
     }
 }

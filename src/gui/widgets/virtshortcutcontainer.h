@@ -53,6 +53,8 @@ class VirtShortcutContainer final : public ShortcutContainer
          */
         void draw(Graphics *graphics) override final;
 
+        void safeDraw(Graphics *graphics) override final;
+
         /**
          * Handles mouse when dragged.
          */

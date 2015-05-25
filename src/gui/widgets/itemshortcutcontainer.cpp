@@ -216,6 +216,143 @@ void ItemShortcutContainer::draw(Graphics *graphics)
     BLOCK_END("ItemShortcutContainer::draw")
 }
 
+void ItemShortcutContainer::safeDraw(Graphics *graphics)
+{
+    BLOCK_START("ItemShortcutContainer::draw")
+    const ItemShortcut *const selShortcut = itemShortcut[mNumber];
+    if (!selShortcut)
+    {
+        BLOCK_END("ItemShortcutContainer::draw")
+        return;
+    }
+
+    if (settings.guiAlpha != mAlpha)
+    {
+        if (mBackgroundImg)
+            mBackgroundImg->setAlpha(mAlpha);
+        mAlpha = settings.guiAlpha;
+    }
+
+    Font *const font = getFont();
+    safeDrawBackground(graphics);
+
+    const Inventory *const inv = PlayerInfo::getInventory();
+    if (!inv)
+    {
+        BLOCK_END("ItemShortcutContainer::draw")
+        return;
+    }
+
+    // +++ for future usage need reorder drawing images before text or back
+    for (unsigned i = 0; i < mMaxItems; i++)
+    {
+        const int itemX = (i % mGridWidth) * mBoxWidth;
+        const int itemY = (i / mGridWidth) * mBoxHeight;
+
+        // Draw item keyboard shortcut.
+        const std::string key = inputManager.getKeyValueString(
+            InputAction::SHORTCUT_1 + i);
+        font->drawString(graphics,
+            mForegroundColor,
+            mForegroundColor,
+            key,
+            itemX + 2, itemY + 2);
+
+        const int itemId = selShortcut->getItem(i);
+        const unsigned char itemColor = selShortcut->getItemColor(i);
+
+        if (itemId < 0)
+            continue;
+
+        // this is item
+        if (itemId < SPELL_MIN_ID)
+        {
+            const Item *const item = inv->findItem(itemId, itemColor);
+            if (item)
+            {
+                // Draw item icon.
+                Image *const image = item->getImage();
+                if (image)
+                {
+                    std::string caption;
+                    if (item->getQuantity() > 1)
+                        caption = toString(item->getQuantity());
+                    else if (item->isEquipped() == Equipped_true)
+                        caption = "Eq.";
+
+                    image->setAlpha(1.0F);
+                    graphics->drawImage(image, itemX, itemY);
+                    if (item->isEquipped() == Equipped_true)
+                    {
+                        font->drawString(graphics,
+                            mEquipedColor,
+                            mEquipedColor2,
+                            caption,
+                            itemX + (mBoxWidth - font->getWidth(caption)) / 2,
+                            itemY + mBoxHeight - 14);
+                    }
+                    else
+                    {
+                        font->drawString(graphics,
+                            mUnEquipedColor,
+                            mUnEquipedColor2,
+                            caption,
+                            itemX + (mBoxWidth - font->getWidth(caption)) / 2,
+                            itemY + mBoxHeight - 14);
+                    }
+                }
+            }
+        }
+        else if (itemId < SKILL_MIN_ID && spellManager)
+        {   // this is magic shortcut
+            const TextCommand *const spell = spellManager
+                ->getSpellByItem(itemId);
+            if (spell)
+            {
+                if (!spell->isEmpty())
+                {
+                    Image *const image = spell->getImage();
+
+                    if (image)
+                    {
+                        image->setAlpha(1.0F);
+                        graphics->drawImage(image, itemX, itemY);
+                    }
+                }
+
+                font->drawString(graphics,
+                    mForegroundColor,
+                    mForegroundColor,
+                    spell->getSymbol(),
+                    itemX + 2, itemY + mBoxHeight / 2);
+            }
+        }
+        else if (skillDialog)
+        {
+            const SkillInfo *const skill = skillDialog->getSkill(
+                itemId - SKILL_MIN_ID);
+            if (skill)
+            {
+                Image *const image = skill->data->icon;
+
+                if (image)
+                {
+                    image->setAlpha(1.0F);
+                    graphics->drawImage(image, itemX, itemY);
+                }
+
+                font->drawString(graphics,
+                    mForegroundColor,
+                    mForegroundColor,
+                    skill->data->shortName,
+                    itemX + 2,
+                    itemY + mBoxHeight / 2);
+            }
+        }
+    }
+    BLOCK_END("ItemShortcutContainer::draw")
+}
+
 void ItemShortcutContainer::mouseDragged(MouseEvent &event)
 {
     ItemShortcut *const selShortcut = itemShortcut[mNumber];

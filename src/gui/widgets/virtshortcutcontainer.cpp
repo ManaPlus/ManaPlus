@@ -144,6 +144,80 @@ void VirtShortcutContainer::draw(Graphics *graphics)
     BLOCK_END("VirtShortcutContainer::draw")
 }
 
+void VirtShortcutContainer::safeDraw(Graphics *graphics)
+{
+    if (!mShortcut)
+        return;
+
+    BLOCK_START("VirtShortcutContainer::safeDraw")
+    if (settings.guiAlpha != mAlpha)
+    {
+        mAlpha = settings.guiAlpha;
+        if (mBackgroundImg)
+            mBackgroundImg->setAlpha(mAlpha);
+    }
+
+    safeDrawBackground(graphics);
+
+    const Inventory *const inv = PlayerInfo::getInventory();
+    if (!inv)
+    {
+        BLOCK_END("VirtShortcutContainer::safeDraw")
+        return;
+    }
+
+    Font *const font = getFont();
+
+    for (unsigned i = 0; i < mMaxItems; i++)
+    {
+        const int itemX = (i % mGridWidth) * mBoxWidth;
+        const int itemY = (i / mGridWidth) * mBoxHeight;
+
+        if (mShortcut->getItem(i) < 0)
+            continue;
+
+        const Item *const item = inv->findItem(mShortcut->getItem(i),
+            mShortcut->getItemColor(i));
+
+        if (item)
+        {
+            // Draw item icon.
+            Image *const image = item->getImage();
+
+            if (image)
+            {
+                std::string caption;
+                if (item->getQuantity() > 1)
+                    caption = toString(item->getQuantity());
+                else if (item->isEquipped() == Equipped_true)
+                    caption = "Eq.";
+
+                image->setAlpha(1.0F);
+                graphics->drawImage(image, itemX, itemY);
+                if (item->isEquipped() == Equipped_true)
+                {
+                    font->drawString(graphics,
+                        mEquipedColor,
+                        mEquipedColor2,
+                        caption,
+                        itemX + (mBoxWidth - font->getWidth(caption)) / 2,
+                        itemY + mBoxHeight - 14);
+                }
+                else
+                {
+                    font->drawString(graphics,
+                        mUnEquipedColor,
+                        mUnEquipedColor2,
+                        caption,
+                        itemX + (mBoxWidth - font->getWidth(caption)) / 2,
+                        itemY + mBoxHeight - 14);
+                }
+            }
+        }
+    }
+    BLOCK_END("VirtShortcutContainer::safeDraw")
+}
+
 void VirtShortcutContainer::mouseDragged(MouseEvent &event)
 {
     if (!mShortcut)

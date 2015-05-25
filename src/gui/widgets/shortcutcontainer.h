@@ -88,6 +88,8 @@ class ShortcutContainer notfinal : public Widget,
 
         void drawBackground(Graphics *g);
 
+        void safeDrawBackground(Graphics *g);
+
     protected:
         /**
          * Constructor. Initializes the shortcut container.
