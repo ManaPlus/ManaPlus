@@ -436,25 +436,33 @@ void ScrollArea::drawFrame(Graphics *graphics)
 
         updateCalcFlag(graphics);
 
-        if (isBatchDrawRenders(openGLMode))
+        if (mRedraw)
         {
-            if (mRedraw)
-            {
-                mVertexes2->clear();
-                graphics->calcWindow(mVertexes2,
-                    0, 0,
-                    w, h,
-                    background);
-                graphics->finalize(mVertexes2);
-            }
-            graphics->drawTileCollection(mVertexes2);
-        }
-        else
-        {
-            graphics->drawImageRect(0, 0,
+            mVertexes2->clear();
+            graphics->calcWindow(mVertexes2,
+                0, 0,
                 w, h,
                 background);
+            graphics->finalize(mVertexes2);
         }
+        graphics->drawTileCollection(mVertexes2);
+    }
+    BLOCK_END("ScrollArea::drawFrame")
+}
+
+void ScrollArea::safeDrawFrame(Graphics *graphics)
+{
+    BLOCK_START("ScrollArea::drawFrame")
+    if (mOpaque)
+    {
+        const int bs = mFrameSize * 2;
+        const int w = mDimension.width + bs;
+        const int h = mDimension.height + bs;
+
+        updateCalcFlag(graphics);
+        graphics->drawImageRect(0, 0,
+            w, h,
+            background);
     }
     BLOCK_END("ScrollArea::drawFrame")
 }

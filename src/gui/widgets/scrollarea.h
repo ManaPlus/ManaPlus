@@ -146,6 +146,8 @@ class ScrollArea final : public BasicContainer,
          */
         void drawFrame(Graphics *graphics) override final;
 
+        void safeDrawFrame(Graphics *graphics) override final;
+
         /**
          * Sets whether the widget should draw its background or not.
          */

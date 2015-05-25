@@ -223,6 +223,18 @@ void TextField::drawFrame(Graphics *graphics)
     BLOCK_END("TextField::drawFrame")
 }
 
+void TextField::safeDrawFrame(Graphics *graphics)
+{
+    BLOCK_START("TextField::drawFrame")
+    const int bs = 2 * mFrameSize;
+    graphics->drawImageRect(0,
+        0,
+        mDimension.width + bs,
+        mDimension.height + bs,
+        skin);
+    BLOCK_END("TextField::drawFrame")
+}
+
 void TextField::setNumeric(const bool numeric)
 {
     mNumeric = numeric;

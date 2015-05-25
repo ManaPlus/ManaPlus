@@ -85,6 +85,8 @@ class PlayerBox final : public Widget,
          */
         void drawFrame(Graphics *graphics) override final;
 
+        void safeDrawFrame(Graphics *graphics) override final;
+
         Being *getBeing() A_WARN_UNUSED
         { return mBeing; }
 

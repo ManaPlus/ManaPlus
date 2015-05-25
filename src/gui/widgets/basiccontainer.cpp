@@ -357,7 +357,7 @@ void BasicContainer::safeDrawChildren(Graphics* graphics)
                 rec.height += frame2;
                 graphics->pushClipArea(rec);
                 BLOCK_START("BasicContainer::drawChildren 1")
-                widget->drawFrame(graphics);
+                widget->safeDrawFrame(graphics);
                 BLOCK_END("BasicContainer::drawChildren 1")
                 graphics->popClipArea();
             }

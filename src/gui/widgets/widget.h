@@ -147,6 +147,9 @@ class Widget notfinal : public Widget2
         virtual void drawFrame(Graphics* graphics A_UNUSED)
         { }
 
+        virtual void safeDrawFrame(Graphics* graphics A_UNUSED)
+        { }
+
         /**
           * Sets the size of the widget's frame. The frame is not considered a part of 
           * the widget, it only allows a frame to be drawn around the widget, thus a frame 

@@ -117,6 +117,8 @@ class TextField notfinal : public Widget,
          */
         void drawFrame(Graphics *graphics) override final;
 
+        void safeDrawFrame(Graphics *graphics) override final;
+
         /**
          * Determine whether the field should be numeric or not
          */

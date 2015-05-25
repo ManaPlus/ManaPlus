@@ -160,6 +160,23 @@ void PlayerBox::drawFrame(Graphics *graphics)
     BLOCK_END("PlayerBox::drawFrame")
 }
 
+void PlayerBox::safeDrawFrame(Graphics *graphics)
+{
+    BLOCK_START("PlayerBox::drawFrame")
+    if (mDrawBackground)
+    {
+        const int bs = mFrameSize * 2;
+        const int w = mDimension.width + bs;
+        const int h = mDimension.height + bs;
+
+        if (!mSelected)
+            graphics->drawImageRect(0, 0, w, h, mBackground);
+        else
+            graphics->drawImageRect(0, 0, w, h, mSelectedBackground);
+    }
+    BLOCK_END("PlayerBox::drawFrame")
+}
+
 void PlayerBox::mouseReleased(MouseEvent& event)
 {
     if (event.getButton() == MouseButton::LEFT)

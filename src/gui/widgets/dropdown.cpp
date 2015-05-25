@@ -305,6 +305,17 @@ void DropDown::drawFrame(Graphics *graphics)
     BLOCK_END("DropDown::drawFrame")
 }
 
+void DropDown::safeDrawFrame(Graphics *graphics)
+{
+    BLOCK_START("DropDown::drawFrame")
+    const int bs2 = getFrameSize();
+    const Rect &rect = mDimension;
+    graphics->drawImageRect(0, 0,
+        rect.width + bs2, rect.height + bs2,
+        skinRect);
+    BLOCK_END("DropDown::drawFrame")
+}
+
 void DropDown::drawButton(Graphics *graphics)
 {
     const int height = mDroppedDown ? mFoldedUpHeight : mDimension.height;

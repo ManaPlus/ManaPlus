@@ -85,6 +85,8 @@ class DropDown final : public ActionListener,
 
         void drawFrame(Graphics *graphics) override final;
 
+        void safeDrawFrame(Graphics *graphics) override final;
+
         // Inherited from KeyListener
 
         void keyPressed(KeyEvent& event) override final;
