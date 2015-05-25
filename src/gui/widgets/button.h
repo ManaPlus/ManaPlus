@@ -153,6 +153,8 @@ class Button final : public Widget,
          */
         void draw(Graphics *graphics) override final;
 
+        void safeDraw(Graphics *graphics) override final;
+
         /**
          * Update the alpha value to the button components.
          */

@@ -566,49 +566,34 @@ void Button::draw(Graphics *graphics)
         }
     }
 
-    if (isBatchDrawRenders(openGLMode))
+    if (recalc)
     {
-        if (recalc)
-        {
-            mRedraw = false;
-            mMode = mode;
-            mVertexes2->clear();
-            graphics->calcWindow(mVertexes2,
-                0, 0,
-                width, height,
-                skin->getBorder());
-
-            if (mImages)
-            {
-                if (isPressed())
-                {
-                    graphics->calcTileCollection(mVertexes2,
-                        mImages[mode],
-                        imageX + 1, imageY + 1);
-                }
-                else
-                {
-                    graphics->calcTileCollection(mVertexes2,
-                        mImages[mode],
-                        imageX, imageY);
-                }
-            }
-            graphics->finalize(mVertexes2);
-        }
-        graphics->drawTileCollection(mVertexes2);
-    }
-    else
-    {
-        graphics->drawImageRect(0, 0, width, height, skin->getBorder());
+        mRedraw = false;
+        mMode = mode;
+        mVertexes2->clear();
+        graphics->calcWindow(mVertexes2,
+            0, 0,
+            width, height,
+            skin->getBorder());
 
         if (mImages)
         {
             if (isPressed())
-                graphics->drawImage(mImages[mode], imageX + 1, imageY + 1);
+            {
+                graphics->calcTileCollection(mVertexes2,
+                    mImages[mode],
+                    imageX + 1, imageY + 1);
+            }
             else
-                graphics->drawImage(mImages[mode], imageX, imageY);
+            {
+                graphics->calcTileCollection(mVertexes2,
+                    mImages[mode],
+                    imageX, imageY);
+            }
         }
+        graphics->finalize(mVertexes2);
     }
+    graphics->drawTileCollection(mVertexes2);
 
     if (isPressed())
     {
@@ -649,6 +634,142 @@ void Button::draw(Graphics *graphics)
         graphics->drawImage(image, textX, textY);
 
     BLOCK_END("Button::draw")
+}
+
+void Button::safeDraw(Graphics *graphics)
+{
+    BLOCK_START("Button::safeDraw")
+    int mode;
+
+    if (!isEnabled())
+        mode = BUTTON_DISABLED;
+    else if (isPressed2())
+        mode = BUTTON_PRESSED;
+    else if (mHasMouse || isFocused())
+        mode = BUTTON_HIGHLIGHTED;
+    else
+        mode = BUTTON_STANDARD;
+
+    const Skin *const skin = button[mode];
+    if (!skin)
+    {
+        BLOCK_END("Button::safeDraw")
+        return;
+    }
+
+    updateAlpha();
+
+    if (mMode != mode)
+    {
+        mTextChanged = true;
+        mMode = mode;
+    }
+
+    const int padding = skin->getPadding();
+    const int spacing = mSpacing[mode];
+
+    int imageX = 0;
+    int imageY = 0;
+    int textX = 0;
+    const Rect &rect = mDimension;
+    const int width = rect.width;
+    const int height = rect.height;
+    Font *const font = getFont();
+    int textY = height / 2 - font->getHeight() / 2;
+    if (mImages)
+        imageY = height / 2 - mImageHeight / 2;
+
+// need move calculation from draw!!!
+
+    switch (mAlignment)
+    {
+        default:
+        case Graphics::LEFT:
+        {
+            if (mImages)
+            {
+                imageX = padding;
+                textX = padding + mImageWidth + spacing;
+            }
+            else
+            {
+                textX = padding;
+            }
+            break;
+        }
+        case Graphics::CENTER:
+        {
+            const int width1 = font->getWidth(mCaption);
+            if (mImages)
+            {
+                const int w = width1 + mImageWidth + spacing;
+                imageX = (width - w) / 2;
+                textX = imageX + mImageWidth + spacing - width1 / 2;
+            }
+            else
+            {
+                textX = (width - width1) / 2;
+            }
+            break;
+        }
+        case Graphics::RIGHT:
+        {
+            const int width1 = font->getWidth(mCaption);
+            textX = width - width1 - padding;
+            imageX = textX - width1 - spacing;
+            break;
+        }
+    }
+
+    graphics->drawImageRect(0, 0, width, height, skin->getBorder());
+
+    if (mImages)
+    {
+        if (isPressed())
+            graphics->drawImage(mImages[mode], imageX + 1, imageY + 1);
+        else
+            graphics->drawImage(mImages[mode], imageX, imageY);
+    }
+
+    if (isPressed())
+    {
+        textX ++;
+        textY ++;
+    }
+
+    if (mTextChanged)
+    {
+        mTextChunk.textFont = font;
+        mTextChunk.deleteImage();
+        mTextChunk.text = mCaption;
+        switch (mode)
+        {
+            case BUTTON_DISABLED:
+                mTextChunk.color = mDisabledColor;
+                mTextChunk.color2 = mDisabledColor2;
+                break;
+            case BUTTON_PRESSED:
+                mTextChunk.color = mPressedColor;
+                mTextChunk.color2 = mPressedColor2;
+                break;
+            case BUTTON_HIGHLIGHTED:
+                mTextChunk.color = mHighlightedColor;
+                mTextChunk.color2 = mHighlightedColor2;
+                break;
+            default:
+                mTextChunk.color = mEnabledColor;
+                mTextChunk.color2 = mEnabledColor2;
+                break;
+        }
+        font->generate(mTextChunk);
+        mTextChanged = false;
+    }
+
+    const Image *const image = mTextChunk.img;
+    if (image)
+        graphics->drawImage(image, textX, textY);
+
+    BLOCK_END("Button::safeDraw")
 }
 
 void Button::mouseReleased(MouseEvent& event)
