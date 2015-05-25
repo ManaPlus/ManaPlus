@@ -111,6 +111,8 @@ class CheckBox final : public Widget,
          */
         void draw(Graphics *const graphics) override final;
 
+        void safeDraw(Graphics *const graphics) override final;
+
         /**
          * Update the alpha value to the checkbox components.
          */

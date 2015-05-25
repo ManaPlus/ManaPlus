@@ -347,6 +347,11 @@ void GuiTable::draw(Graphics* graphics)
     BLOCK_END("GuiTable::draw")
 }
 
+void GuiTable::safeDraw(Graphics* graphics)
+{
+    GuiTable::draw(graphics);
+}
+
 void GuiTable::moveToTop(Widget *widget)
 {
     Widget::moveToTop(widget);

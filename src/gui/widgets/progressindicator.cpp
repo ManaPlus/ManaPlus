@@ -79,3 +79,8 @@ void ProgressIndicator::draw(Graphics *graphics)
     }
     BLOCK_END("ProgressIndicator::draw")
 }
+
+void ProgressIndicator::safeDraw(Graphics *graphics)
+{
+    ProgressIndicator::draw(graphics);
+}

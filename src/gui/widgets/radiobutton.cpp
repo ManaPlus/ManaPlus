@@ -249,6 +249,11 @@ void RadioButton::draw(Graphics* graphics)
     BLOCK_END("RadioButton::draw")
 }
 
+void RadioButton::safeDraw(Graphics* graphics)
+{
+    RadioButton::draw(graphics);
+}
+
 void RadioButton::mouseEntered(MouseEvent& event A_UNUSED)
 {
     mHasMouse = true;

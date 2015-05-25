@@ -339,6 +339,11 @@ void ItemContainer::draw(Graphics *graphics)
     BLOCK_END("ItemContainer::draw")
 }
 
+void ItemContainer::safeDraw(Graphics *graphics)
+{
+    ItemContainer::draw(graphics);
+}
+
 void ItemContainer::selectNone()
 {
     dragDrop.clear();

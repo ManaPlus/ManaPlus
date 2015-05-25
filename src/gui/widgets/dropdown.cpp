@@ -289,6 +289,11 @@ void DropDown::draw(Graphics* graphics)
     BLOCK_END("DropDown::draw")
 }
 
+void DropDown::safeDraw(Graphics* graphics)
+{
+    DropDown::draw(graphics);
+}
+
 void DropDown::drawFrame(Graphics *graphics)
 {
     BLOCK_START("DropDown::drawFrame")

@@ -102,6 +102,8 @@ class TextPreview final : public Widget
          */
         void draw(Graphics *graphics) override final;
 
+        void safeDraw(Graphics *graphics) override final;
+
         /**
          * Set opacity for this widget (whether or not to show the background
          * color)

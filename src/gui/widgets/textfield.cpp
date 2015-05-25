@@ -206,6 +206,11 @@ void TextField::draw(Graphics *graphics)
     BLOCK_END("TextField::draw")
 }
 
+void TextField::safeDraw(Graphics *graphics)
+{
+    TextField::draw(graphics);
+}
+
 void TextField::drawFrame(Graphics *graphics)
 {
     BLOCK_START("TextField::drawFrame")

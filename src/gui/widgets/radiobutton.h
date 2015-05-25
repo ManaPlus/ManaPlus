@@ -114,6 +114,8 @@ class RadioButton final : public Widget,
          */
         void draw(Graphics* graphics) override final;
 
+        void safeDraw(Graphics* graphics) override final;
+
         /**
          * Called when the mouse enteres the widget area.
          */

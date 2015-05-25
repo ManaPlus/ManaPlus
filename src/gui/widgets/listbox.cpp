@@ -272,6 +272,11 @@ void ListBox::keyPressed(KeyEvent &event)
     }
 }
 
+void ListBox::safeDraw(Graphics *graphics)
+{
+    ListBox::draw(graphics);
+}
+
 // Don't do anything on scrollwheel. ScrollArea will deal with that.
 
 void ListBox::mouseWheelMovedUp(MouseEvent &event A_UNUSED)

@@ -138,6 +138,11 @@ void TextPreview::draw(Graphics* graphics)
     BLOCK_END("TextPreview::draw")
 }
 
+void TextPreview::safeDraw(Graphics* graphics)
+{
+    TextPreview::draw(graphics);
+}
+
 void TextPreview::adjustSize()
 {
     setHeight(getFont()->getHeight() + 2 * mPadding);

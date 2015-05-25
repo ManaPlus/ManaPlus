@@ -153,6 +153,8 @@ class BasicContainer2: public BasicContainer
 
         void draw(Graphics* graphics) override;
 
+        void safeDraw(Graphics* graphics) override;
+
     protected:
         /**
           * True if the container is opaque, false otherwise.

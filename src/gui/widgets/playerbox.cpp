@@ -138,6 +138,11 @@ void PlayerBox::draw(Graphics *graphics)
     BLOCK_END("PlayerBox::draw")
 }
 
+void PlayerBox::safeDraw(Graphics *graphics)
+{
+    PlayerBox::draw(graphics);
+}
+
 void PlayerBox::drawFrame(Graphics *graphics)
 {
     BLOCK_START("PlayerBox::drawFrame")

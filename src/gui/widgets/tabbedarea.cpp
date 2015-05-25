@@ -189,6 +189,19 @@ void TabbedArea::draw(Graphics *graphics)
     BLOCK_END("TabbedArea::draw")
 }
 
+void TabbedArea::safeDraw(Graphics *graphics)
+{
+    BLOCK_START("TabbedArea::draw")
+    if (mTabs.empty())
+    {
+        BLOCK_END("TabbedArea::draw")
+        return;
+    }
+
+    drawChildren(graphics);
+    BLOCK_END("TabbedArea::draw")
+}
+
 Widget *TabbedArea::getWidget(const std::string &name) const
 {
     TabContainer::const_iterator itr = mTabs.begin();

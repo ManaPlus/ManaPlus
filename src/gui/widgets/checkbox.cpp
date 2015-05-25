@@ -184,6 +184,11 @@ void CheckBox::draw(Graphics *const graphics)
     BLOCK_END("CheckBox::draw")
 }
 
+void CheckBox::safeDraw(Graphics *const graphics)
+{
+    CheckBox::draw(graphics);
+}
+
 void CheckBox::updateAlpha()
 {
     const float alpha = std::max(settings.guiAlpha,

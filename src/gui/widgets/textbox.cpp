@@ -470,6 +470,11 @@ void TextBox::draw(Graphics* graphics)
     BLOCK_END("TextBox::draw")
 }
 
+void TextBox::safeDraw(Graphics* graphics)
+{
+    TextBox::draw(graphics);
+}
+
 void TextBox::setForegroundColor(const Color &color)
 {
     mForegroundColor = color;

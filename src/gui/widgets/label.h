@@ -110,6 +110,8 @@ class Label final : public Widget,
          */
         void draw(Graphics *graphics) override final;
 
+        void safeDraw(Graphics *graphics) override final;
+
         void adjustSize();
 
         void setForegroundColor(const Color &color);

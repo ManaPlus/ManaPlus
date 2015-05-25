@@ -44,6 +44,8 @@ class ExtendedListBox final : public ListBox
          */
         void draw(Graphics *graphics) override final;
 
+        void safeDraw(Graphics *graphics) override final;
+
         void adjustSize() override;
 
         int getSelectionByMouse(const int y) const override final;

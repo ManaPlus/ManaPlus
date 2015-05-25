@@ -92,6 +92,11 @@ void BasicContainer2::draw(Graphics* graphics)
     BLOCK_END("BasicContainer2::draw")
 }
 
+void BasicContainer2::safeDraw(Graphics* graphics)
+{
+    BasicContainer2::draw(graphics);
+}
+
 void BasicContainer2::setOpaque(bool opaque)
 {
     mOpaque = opaque;

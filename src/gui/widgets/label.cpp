@@ -186,6 +186,11 @@ void Label::draw(Graphics* graphics)
     BLOCK_END("Label::draw")
 }
 
+void Label::safeDraw(Graphics* graphics)
+{
+    Label::draw(graphics);
+}
+
 void Label::adjustSize()
 {
     const Font *const font = getFont();

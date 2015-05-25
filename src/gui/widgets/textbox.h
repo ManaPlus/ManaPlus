@@ -109,6 +109,8 @@ class TextBox final : public Widget,
 
         void draw(Graphics* graphics) override final;
 
+        void safeDraw(Graphics* graphics) override final;
+
         void setForegroundColor(const Color &color);
 
         void setForegroundColorAll(const Color &color1,

@@ -112,6 +112,8 @@ class GuiTable final : public Widget,
         // Inherited from Widget
         void draw(Graphics* graphics) override final;
 
+        void safeDraw(Graphics* graphics) override final;
+
         Widget *getWidgetAt(int x, int y) override final A_WARN_UNUSED;
 
         void moveToTop(Widget *child) override final;

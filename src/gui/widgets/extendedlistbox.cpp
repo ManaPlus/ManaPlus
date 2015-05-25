@@ -215,6 +215,11 @@ void ExtendedListBox::draw(Graphics *graphics)
     BLOCK_END("ExtendedListBox::draw")
 }
 
+void ExtendedListBox::safeDraw(Graphics *graphics)
+{
+    ExtendedListBox::draw(graphics);
+}
+
 void ExtendedListBox::adjustSize()
 {
     if (mHeight)

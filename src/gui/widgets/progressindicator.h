@@ -45,6 +45,8 @@ class ProgressIndicator final : public Widget
 
         void draw(Graphics *graphics) override final;
 
+        void safeDraw(Graphics *graphics) override final;
+
     private:
         SimpleAnimation *mIndicator;
 };

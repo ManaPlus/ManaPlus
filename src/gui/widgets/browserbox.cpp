@@ -549,6 +549,11 @@ void BrowserBox::draw(Graphics *graphics)
     BLOCK_END("BrowserBox::draw")
 }
 
+void BrowserBox::safeDraw(Graphics *graphics)
+{
+    BrowserBox::draw(graphics);
+}
+
 int BrowserBox::calcHeight()
 {
     unsigned int y = mPadding;

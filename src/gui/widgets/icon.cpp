@@ -82,3 +82,15 @@ void Icon::draw(Graphics *graphics)
     }
     BLOCK_END("Icon::draw")
 }
+
+void Icon::safeDraw(Graphics *graphics)
+{
+    BLOCK_START("Icon::draw")
+    if (mImage)
+    {
+        graphics->drawImage(mImage,
+            (mDimension.width - mImage->mBounds.w) / 2,
+            (mDimension.height - mImage->mBounds.h) / 2);
+    }
+    BLOCK_END("Icon::draw")
+}

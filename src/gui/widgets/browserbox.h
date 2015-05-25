@@ -123,6 +123,8 @@ class BrowserBox final : public Widget,
          */
         void draw(Graphics *graphics) override final;
 
+        void safeDraw(Graphics *graphics) override final;
+
         void updateHeight();
 
         /**
