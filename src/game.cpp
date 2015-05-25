@@ -343,6 +343,10 @@ static void destroyGuiWindows()
     delete2(battleChatTab)
     delete2(langChatTab)
     delete2(gmChatTab);
+#ifdef TMWA_SUPPORT
+    if (guildManager && GuildManager::getEnableGuildBot())
+        guildManager->reload();
+#endif
     logger->log("start deleting");
     delete2(emoteWindow);
     delete2(chatWindow)
@@ -373,11 +377,6 @@ static void destroyGuiWindows()
     delete2(questsWindow);
     delete2(whoIsOnline);
     delete2(killStats);
-
-#ifdef TMWA_SUPPORT
-    if (guildManager && GuildManager::getEnableGuildBot())
-        guildManager->reload();
-#endif
 }
 
 Game *Game::mInstance = nullptr;
