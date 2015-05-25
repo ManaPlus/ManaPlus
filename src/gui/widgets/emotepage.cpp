@@ -65,6 +65,44 @@ void EmotePage::draw(Graphics *graphics)
 {
     BLOCK_START("EmotePage::draw")
 
+    if (mRedraw)
+    {
+        if (!mEmotes)
+            return;
+
+        const std::vector<Image*> &images = mEmotes->getImages();
+
+        const unsigned int width = mDimension.width;
+        unsigned int x = 0;
+        unsigned int y = 0;
+
+        mRedraw = false;
+        mVertexes->clear();
+        FOR_EACH (std::vector<Image*>::const_iterator, it, images)
+        {
+            const Image *const image = *it;
+            if (image)
+            {
+                graphics->calcTileCollection(mVertexes, image, x, y);
+                x += emoteWidth;
+                if (x + emoteWidth > width)
+                {
+                    x = 0;
+                    y += emoteHeight;
+                }
+            }
+        }
+        graphics->finalize(mVertexes);
+    }
+    graphics->drawTileCollection(mVertexes);
+
+    BLOCK_END("EmotePage::draw")
+}
+
+void EmotePage::safeDraw(Graphics *graphics)
+{
+    BLOCK_START("EmotePage::safeDraw")
+
     if (!mEmotes)
         return;
 
@@ -74,49 +112,22 @@ void EmotePage::draw(Graphics *graphics)
     unsigned int x = 0;
     unsigned int y = 0;
 
-    if (isBatchDrawRenders(openGLMode))
+    FOR_EACH (std::vector<Image*>::const_iterator, it, images)
     {
-        if (mRedraw)
+        const Image *const image = *it;
+        if (image)
         {
-            mRedraw = false;
-            mVertexes->clear();
-            FOR_EACH (std::vector<Image*>::const_iterator, it, images)
+            graphics->drawImage(image, x, y);
+            x += emoteWidth;
+            if (x + emoteWidth > width)
             {
-                const Image *const image = *it;
-                if (image)
-                {
-                    graphics->calcTileCollection(mVertexes, image, x, y);
-                    x += emoteWidth;
-                    if (x + emoteWidth > width)
-                    {
-                        x = 0;
-                        y += emoteHeight;
-                    }
-                }
-            }
-            graphics->finalize(mVertexes);
-        }
-        graphics->drawTileCollection(mVertexes);
-    }
-    else
-    {
-        FOR_EACH (std::vector<Image*>::const_iterator, it, images)
-        {
-            const Image *const image = *it;
-            if (image)
-            {
-                graphics->drawImage(image, x, y);
-                x += emoteWidth;
-                if (x + emoteWidth > width)
-                {
-                    x = 0;
-                    y += emoteHeight;
-                }
+                x = 0;
+                y += emoteHeight;
             }
         }
     }
 
-    BLOCK_END("EmotePage::draw")
+    BLOCK_END("EmotePage::safeDraw")
 }
 
 void EmotePage::mousePressed(MouseEvent &event)
