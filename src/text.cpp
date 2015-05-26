@@ -53,7 +53,7 @@ Text::Text(const std::string &text, const int x, const int y,
     mXOffset(0),
     mText(text),
     mColor(color),
-    mOutlineColor(theme->getColor(Theme::OUTLINE, 255)),
+    mOutlineColor(isSpeech ? color : theme->getColor(Theme::OUTLINE, 255)),
     mIsSpeech(isSpeech)
 {
     if (!textManager)
@@ -117,7 +117,15 @@ Text::~Text()
 
 void Text::setColor(const Color *const color)
 {
-    mColor = color;
+    if (mIsSpeech)
+    {
+        mColor = color;
+        mOutlineColor = color;
+    }
+    else
+    {
+        mColor = color;
+    }
 }
 
 void Text::adviseXY(const int x, const int y, const bool move)
@@ -145,24 +153,17 @@ void Text::draw(Graphics *const graphics, const int xOff, const int yOff)
             mBubble);
     }
 
-    if (!mIsSpeech)
-    {
-        mFont->drawString(graphics,
-            *mColor, mOutlineColor,
-            mText, mX - xOff, mY - yOff);
-    }
-    else
-    {
-        mFont->drawString(graphics,
-            *mColor, *mColor,
-            mText, mX - xOff, mY - yOff);
-    }
+    mFont->drawString(graphics,
+        *mColor, mOutlineColor,
+        mText, mX - xOff, mY - yOff);
     BLOCK_END("Text::draw")
 }
 
-FlashText::FlashText(const std::string &text, const int x, const int y,
+FlashText::FlashText(const std::string &text,
+                     const int x, const int y,
                      const Graphics::Alignment alignment,
-                     const Color *const color, Font *const font) :
+                     const Color *const color,
+                     Font *const font) :
     Text(text, x, y, alignment, color, false, font),
     mTime(0)
 {
