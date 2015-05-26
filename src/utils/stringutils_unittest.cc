@@ -18,6 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "catch.hpp"
+
 #include "utils/stringutils.h"
 
 #include "gtest/gtest.h"
@@ -28,73 +30,73 @@
 
 #include "debug.h"
 
-TEST(stringuntils, trim1)
+TEST_CASE("stringuntils  trim 1")
 {
     std::string str = "str";
-    EXPECT_EQ("str", trim(str));
+    REQUIRE("str" == trim(str));
 
     str = " str";
-    EXPECT_EQ("str", trim(str));
-    EXPECT_EQ("str", trim(str));
+    REQUIRE("str" == trim(str));
+    REQUIRE("str" == trim(str));
 
     str = " str   this IS Long Стринг "
         "~!@#$%^&*()_+`-=[]\\{}|;':\",./<>?   ";
-    EXPECT_EQ("str   this IS Long Стринг ~!@#$%^&*()_+`-=[]\\{}|;':\",./<>?",
+    REQUIRE("str   this IS Long Стринг ~!@#$%^&*()_+`-=[]\\{}|;':\",./<>?" ==
         trim(str));
 
     str = "";
-    EXPECT_EQ("", trim(str));
+    REQUIRE("" == trim(str));
 }
 
-TEST(stringuntils, toLower1)
+TEST_CASE("stringuntils toLower 1")
 {
     std::string str = "str";
-    EXPECT_EQ("str", toLower(str));
+    REQUIRE("str" == toLower(str));
 
     str = " StR";
-    EXPECT_EQ(" str", toLower(str));
+    REQUIRE(" str" == toLower(str));
 
     str = " str   this IS Long  "
         "~!@#$%^&*()_+`-=[]\\{}|;':\",./<>?   ";
 
-    EXPECT_EQ(" str   this is long  ~!@#$%^&*()_+`-=[]\\{}|;':\",./<>?   ",
+    REQUIRE(" str   this is long  ~!@#$%^&*()_+`-=[]\\{}|;':\",./<>?   " ==
         toLower(str));
 
     str = "";
-    EXPECT_EQ("", toLower(str));
+    REQUIRE("" == toLower(str));
 }
 
-TEST(stringuntils, toUpper1)
+TEST_CASE("stringuntils toUpper 1")
 {
     std::string str = "str";
-    EXPECT_EQ("STR", toUpper(str));
+    REQUIRE("STR" == toUpper(str));
 
     str = " StR";
-    EXPECT_EQ(" STR", toUpper(str));
+    REQUIRE(" STR" == toUpper(str));
 
     str = " str   this IS Long  "
         "~!@#$%^&*()_+`-=[]\\{}|;':,./<>?   ";
 
-    EXPECT_EQ(" STR   THIS IS LONG  ~!@#$%^&*()_+`-=[]\\{}|;':,./<>?   ",
+    REQUIRE(" STR   THIS IS LONG  ~!@#$%^&*()_+`-=[]\\{}|;':,./<>?   " ==
         toUpper(str));
 
     str = "";
-    EXPECT_EQ("", toUpper(str));
+    REQUIRE("" == toUpper(str));
 }
 
-TEST(stringuntils, atox1)
+TEST_CASE("stringuntils atox 1")
 {
     std::string str = "0x10";
-    EXPECT_EQ(16, atox(str));
+    REQUIRE(16 == atox(str));
 
     str = "0x0";
-    EXPECT_EQ(0, atox(str));
+    REQUIRE(0 == atox(str));
 
     str = "0x1";
-    EXPECT_EQ(1, atox(str));
+    REQUIRE(1 == atox(str));
 
     str = "0x0x0x0x0x0x0x0";
-    EXPECT_EQ(0, atox(str));
+    REQUIRE(0 == atox(str));
 
     str = "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
     atox(str);
@@ -109,462 +111,462 @@ TEST(stringuntils, atox1)
     k = atox(str);
 }
 
-TEST(stringuntils, ipToString1)
+TEST_CASE("stringuntils ipToString 1")
 {
-    EXPECT_EQ("0.0.0.0", std::string(ipToString(0)));
-    EXPECT_EQ("219.255.210.73", std::string(ipToString(1238564827)));
+    REQUIRE("0.0.0.0" == std::string(ipToString(0)));
+    REQUIRE("219.255.210.73" == std::string(ipToString(1238564827)));
 }
 
-TEST(stringuntils, removeColors1)
+TEST_CASE("stringuntils removeColors 1")
 {
-    EXPECT_EQ("", removeColors(""));
-    EXPECT_EQ("#", removeColors("#"));
-    EXPECT_EQ("##", removeColors("##"));
-    EXPECT_EQ("", removeColors("##1"));
-    EXPECT_EQ("2", removeColors("##12"));
-    EXPECT_EQ("1##", removeColors("1##"));
-    EXPECT_EQ("1", removeColors("1##2"));
-    EXPECT_EQ("13", removeColors("1##23"));
-    EXPECT_EQ("#1#2", removeColors("#1#2"));
-    EXPECT_EQ("#1", removeColors("#1##2"));
+    REQUIRE("" == removeColors(""));
+    REQUIRE("#" == removeColors("#"));
+    REQUIRE("##" == removeColors("##"));
+    REQUIRE("" == removeColors("##1"));
+    REQUIRE("2" == removeColors("##12"));
+    REQUIRE("1##" == removeColors("1##"));
+    REQUIRE("1" == removeColors("1##2"));
+    REQUIRE("13" == removeColors("1##23"));
+    REQUIRE("#1#2" == removeColors("#1#2"));
+    REQUIRE("#1" == removeColors("#1##2"));
 }
 
-TEST(stringuntils, compareStrI1)
+TEST_CASE("stringuntils compareStrI 1")
 {
     std::string str1 = "";
     std::string str2 = "";
-    EXPECT_EQ(0, compareStrI(str1, str2));
+    REQUIRE(0 == compareStrI(str1, str2));
 
     str1 = "test";
     str2 = "test";
-    EXPECT_EQ(0, compareStrI(str1, str2));
+    REQUIRE(0 == compareStrI(str1, str2));
 
     str1 = "test";
     str2 = "test1";
-    EXPECT_GT(0, compareStrI(str1, str2));
+    REQUIRE(0 > compareStrI(str1, str2));
 
     str1 = "test";
     str2 = "aest1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
-    EXPECT_LT(0, compareStrI(str1, str2));
+    REQUIRE(0 < compareStrI(str1, str2));
 
     str1 = "testaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
     str2 = "testaa";
-    EXPECT_LT(0, compareStrI(str1, str2));
+    REQUIRE(0 < compareStrI(str1, str2));
 }
 
-TEST(stringuntils, isWordSeparator1)
+TEST_CASE("stringuntils isWordSeparator 1")
 {
-    EXPECT_TRUE(isWordSeparator(' '));
-    EXPECT_TRUE(isWordSeparator(','));
-    EXPECT_TRUE(isWordSeparator('.'));
-    EXPECT_TRUE(isWordSeparator('\"'));
-    EXPECT_TRUE(!isWordSeparator(0));
-    EXPECT_TRUE(!isWordSeparator('a'));
-    EXPECT_TRUE(!isWordSeparator('-'));
+    REQUIRE(isWordSeparator(' '));
+    REQUIRE(isWordSeparator(','));
+    REQUIRE(isWordSeparator('.'));
+    REQUIRE(isWordSeparator('\"'));
+    REQUIRE(!isWordSeparator(0));
+    REQUIRE(!isWordSeparator('a'));
+    REQUIRE(!isWordSeparator('-'));
 }
 
-TEST(stringuntils, findSameSubstring)
+TEST_CASE("stringuntils findSameSubstring")
 {
     std::string str1 = "";
     std::string str2 = "";
 
-    EXPECT_EQ("", findSameSubstring("", ""));
+    REQUIRE("" == findSameSubstring("", ""));
 
     str1 = "test line";
     str2 = "test line";
-    EXPECT_EQ("test line", findSameSubstring(str1, str2));
+    REQUIRE("test line" == findSameSubstring(str1, str2));
 
     str1 = "test li";
     str2 = "test line";
-    EXPECT_EQ("test li", findSameSubstring(str1, str2));
+    REQUIRE("test li" == findSameSubstring(str1, str2));
 
     str1 = "test li";
     str2 = "est li";
-    EXPECT_EQ("", findSameSubstring(str1, str2));
+    REQUIRE("" == findSameSubstring(str1, str2));
 }
 
-TEST(stringuntils, findSameSubstringI)
+TEST_CASE("stringuntils findSameSubstringI")
 {
     std::string str1 = "";
     std::string str2 = "";
 
-    EXPECT_EQ("", findSameSubstringI("", ""));
+    REQUIRE("" == findSameSubstringI("", ""));
 
     str1 = "tEst line";
     str2 = "tesT line";
-    EXPECT_EQ("tEst line", findSameSubstringI(str1, str2));
+    REQUIRE("tEst line" == findSameSubstringI(str1, str2));
 
     str1 = "test Li";
     str2 = "test lINe";
-    EXPECT_EQ("test Li", findSameSubstringI(str1, str2));
+    REQUIRE("test Li" == findSameSubstringI(str1, str2));
 
     str1 = "teSt li";
     str2 = "est li";
-    EXPECT_EQ("", findSameSubstringI(str1, str2));
+    REQUIRE("" == findSameSubstringI(str1, str2));
 }
 
-TEST(stringuntils, findI1)
+TEST_CASE("stringuntils findI 1")
 {
-    EXPECT_EQ(0, findI("", ""));
-    EXPECT_EQ(std::string::npos, findI("test", "line"));
-    EXPECT_EQ(0, findI("test line", "t"));
-    EXPECT_EQ(0, findI("test line", "te"));
-    EXPECT_EQ(3, findI("test line", "t l"));
+    REQUIRE(0 == findI("", ""));
+    REQUIRE(std::string::npos == findI("test", "line"));
+    REQUIRE(0 == findI("test line", "t"));
+    REQUIRE(0 == findI("test line", "te"));
+    REQUIRE(3 == findI("test line", "t l"));
 }
 
-TEST(stringuntils, findI2)
+TEST_CASE("stringuntils findI 2")
 {
     std::vector <std::string> vect1;
     vect1.push_back("test");
     vect1.push_back("line");
     vect1.push_back("qwe");
 
-    EXPECT_EQ(std::string::npos, findI("", vect1));
-    EXPECT_EQ(0, findI("test", vect1));
-    EXPECT_EQ(0, findI("tesT lIne", vect1));
-    EXPECT_EQ(5, findI("teoT line", vect1));
-    EXPECT_EQ(std::string::npos, findI("zzz", vect1));
+    REQUIRE(std::string::npos == findI("", vect1));
+    REQUIRE(0 == findI("test", vect1));
+    REQUIRE(0 == findI("tesT lIne", vect1));
+    REQUIRE(5 == findI("teoT line", vect1));
+    REQUIRE(std::string::npos == findI("zzz", vect1));
 }
 
-TEST(stringuntils, encodeStr1)
+TEST_CASE("stringuntils encodeStr 1")
 {
     std::string str = encodeStr(10, 1);
-    EXPECT_EQ(10, decodeStr(str));
+    REQUIRE(10 == decodeStr(str));
 
     str = encodeStr(10, 2);
-    EXPECT_EQ(10, decodeStr(str));
+    REQUIRE(10 == decodeStr(str));
 
     str = encodeStr(100, 3);
-    EXPECT_EQ(100, decodeStr(str));
+    REQUIRE(100 == decodeStr(str));
 
     str = encodeStr(1000, 4);
-    EXPECT_EQ(1000, decodeStr(str));
+    REQUIRE(1000 == decodeStr(str));
 }
 
-TEST(stringuntils, extractNameFromSprite1)
+TEST_CASE("stringuntils extractNameFromSprite 1")
 {
-    EXPECT_EQ("", extractNameFromSprite(""));
-    EXPECT_EQ("test", extractNameFromSprite("test"));
-    EXPECT_EQ("test", extractNameFromSprite("test.qwe"));
-    EXPECT_EQ("line", extractNameFromSprite("test/line.zzz"));
+    REQUIRE("" == extractNameFromSprite(""));
+    REQUIRE("test" == extractNameFromSprite("test"));
+    REQUIRE("test" == extractNameFromSprite("test.qwe"));
+    REQUIRE("line" == extractNameFromSprite("test/line.zzz"));
 }
 
-TEST(stringuntils, removeSpriteIndex1)
+TEST_CASE("stringuntils removeSpriteIndex 1")
 {
-    EXPECT_EQ("", removeSpriteIndex(""));
-    EXPECT_EQ("test", removeSpriteIndex("test"));
-    EXPECT_EQ("test", removeSpriteIndex("test[1]"));
-    EXPECT_EQ("line", removeSpriteIndex("test/line[12]"));
+    REQUIRE("" == removeSpriteIndex(""));
+    REQUIRE("test" == removeSpriteIndex("test"));
+    REQUIRE("test" == removeSpriteIndex("test[1]"));
+    REQUIRE("line" == removeSpriteIndex("test/line[12]"));
 }
 
-TEST(stringuntils, getFileName1)
+TEST_CASE("stringuntils getFileName 1")
 {
-    EXPECT_EQ("", getFileName(""));
-    EXPECT_EQ("file", getFileName("file"));
-    EXPECT_EQ("file", getFileName("test/file1\\file"));
-    EXPECT_EQ("file", getFileName("test\\file1/file"));
-    EXPECT_EQ("", getFileName("file/"));
-    EXPECT_EQ("file", getFileName("/file"));
+    REQUIRE("" == getFileName(""));
+    REQUIRE("file" == getFileName("file"));
+    REQUIRE("file" == getFileName("test/file1\\file"));
+    REQUIRE("file" == getFileName("test\\file1/file"));
+    REQUIRE("" == getFileName("file/"));
+    REQUIRE("file" == getFileName("/file"));
 }
 
-TEST(stringuntils, getFileDir1)
+TEST_CASE("stringuntils getFileDir 1")
 {
-    EXPECT_EQ("", getFileDir(""));
-    EXPECT_EQ("file", getFileDir("file"));
-    EXPECT_EQ("test/file1", getFileDir("test/file1\\file"));
-    EXPECT_EQ("test\\file1", getFileDir("test\\file1/file"));
-    EXPECT_EQ("file", getFileDir("file/"));
-    EXPECT_EQ("", getFileDir("/file"));
+    REQUIRE("" == getFileDir(""));
+    REQUIRE("file" == getFileDir("file"));
+    REQUIRE("test/file1" == getFileDir("test/file1\\file"));
+    REQUIRE("test\\file1" == getFileDir("test\\file1/file"));
+    REQUIRE("file" == getFileDir("file/"));
+    REQUIRE("" == getFileDir("/file"));
 }
 
-TEST(stringuntils, replaceAll1)
+TEST_CASE("stringuntils replaceAll 1")
 {
     std::string str1 = "";
     std::string str2 = "";
     std::string str3 = "";
 
-    EXPECT_EQ("", replaceAll(str1, str2, str3));
+    REQUIRE("" == replaceAll(str1, str2, str3));
 
     str1 = "this is test line";
     str2 = "";
     str3 = "";
-    EXPECT_EQ("this is test line", replaceAll(str1, str2, str3));
+    REQUIRE("this is test line" == replaceAll(str1, str2, str3));
 
     str1 = "this is test line";
     str2 = "is ";
     str3 = "";
-    EXPECT_EQ("thtest line", replaceAll(str1, str2, str3));
+    REQUIRE("thtest line" == replaceAll(str1, str2, str3));
 
     str1 = "this is test line";
     str2 = "";
     str3 = "1";
-    EXPECT_EQ("this is test line", replaceAll(str1, str2, str3));
+    REQUIRE("this is test line" == replaceAll(str1, str2, str3));
 }
 
-TEST(stringuntils, getBoolFromString1)
+TEST_CASE("stringuntils getBoolFromString 1")
 {
-    EXPECT_TRUE(getBoolFromString("true"));
-    EXPECT_TRUE(!getBoolFromString("false"));
-    EXPECT_TRUE(getBoolFromString("1"));
-    EXPECT_TRUE(!getBoolFromString("0"));
+    REQUIRE(getBoolFromString("true"));
+    REQUIRE(!getBoolFromString("false"));
+    REQUIRE(getBoolFromString("1"));
+    REQUIRE(!getBoolFromString("0"));
 }
 
-TEST(stringuntils, replaceSpecialChars1)
+TEST_CASE("stringuntils replaceSpecialChars 1")
 {
     std::string str;
 
     str = "";
     replaceSpecialChars(str);
-    EXPECT_EQ("", str);
+    REQUIRE("" == str);
 
     str = "test";
     replaceSpecialChars(str);
-    EXPECT_EQ("test", str);
+    REQUIRE("test" == str);
 
     str = "&";
     replaceSpecialChars(str);
-    EXPECT_EQ("&", str);
+    REQUIRE("&" == str);
 
     str = "&1";
     replaceSpecialChars(str);
-    EXPECT_EQ("&1", str);
+    REQUIRE("&1" == str);
 
     str = "&33";
     replaceSpecialChars(str);
-    EXPECT_EQ("&33", str);
+    REQUIRE("&33" == str);
 
     str = "&33;";
     replaceSpecialChars(str);
-    EXPECT_EQ("!", str);
+    REQUIRE("!" == str);
 
     str = "1&33;";
     replaceSpecialChars(str);
-    EXPECT_EQ("1!", str);
+    REQUIRE("1!" == str);
 
     str = "&33;2";
     replaceSpecialChars(str);
-    EXPECT_EQ("!2", str);
+    REQUIRE("!2" == str);
 
     str = "&33;&";
     replaceSpecialChars(str);
-    EXPECT_EQ("!&", str);
+    REQUIRE("!&" == str);
 
     str = "test line&33;";
     replaceSpecialChars(str);
-    EXPECT_EQ("test line!", str);
+    REQUIRE("test line!" == str);
 }
 
-TEST(stringuntils, combineDye1)
+TEST_CASE("stringuntils combineDye 1")
 {
-    EXPECT_EQ("", combineDye("", ""));
-    EXPECT_EQ("test", combineDye("test", ""));
-    EXPECT_EQ("|line", combineDye("", "line"));
-    EXPECT_EQ("test|line", combineDye("test", "line"));
+    REQUIRE("" == combineDye("", ""));
+    REQUIRE("test" == combineDye("test", ""));
+    REQUIRE("|line" == combineDye("", "line"));
+    REQUIRE("test|line" == combineDye("test", "line"));
 }
 
-TEST(stringuntils, combineDye2)
+TEST_CASE("stringuntils combineDye 2")
 {
-    EXPECT_EQ("", combineDye2("", ""));
-    EXPECT_EQ("test", combineDye2("test", ""));
-    EXPECT_EQ("", combineDye2("", "line"));
-    EXPECT_EQ("test.xml", combineDye2("test.xml", "123"));
-    EXPECT_EQ("test.xml|#43413d,59544f,7a706c",
+    REQUIRE("" == combineDye2("", ""));
+    REQUIRE("test" == combineDye2("test", ""));
+    REQUIRE("" == combineDye2("", "line"));
+    REQUIRE("test.xml" == combineDye2("test.xml", "123"));
+    REQUIRE("test.xml|#43413d,59544f,7a706c" ==
         combineDye2("test.xml|#43413d,59544f,7a706c", ""));
-    EXPECT_EQ("test.xml|#43413d,59544f,7a706c:W;",
+    REQUIRE("test.xml|#43413d,59544f,7a706c:W;" ==
         combineDye2("test.xml|#43413d,59544f,7a706c", "W"));
-    EXPECT_EQ("test.xml|#43413d,59544f,7a706c:W;#123456:B;",
+    REQUIRE("test.xml|#43413d,59544f,7a706c:W;#123456:B;" ==
         combineDye2("test.xml|#43413d,59544f,7a706c;#123456", "W;B"));
 }
 
-TEST(stringuntils, combineDye3)
+TEST_CASE("stringuntils combineDye 3")
 {
-    EXPECT_EQ("", combineDye3("", ""));
-    EXPECT_EQ("test", combineDye3("test", ""));
-    EXPECT_EQ("", combineDye3("", "line"));
-    EXPECT_EQ("test.xml|123", combineDye3("test.xml", "123"));
-    EXPECT_EQ("test.xml|#43413d,59544f,7a706c",
+    REQUIRE("" == combineDye3("", ""));
+    REQUIRE("test" == combineDye3("test", ""));
+    REQUIRE("" == combineDye3("", "line"));
+    REQUIRE("test.xml|123" == combineDye3("test.xml", "123"));
+    REQUIRE("test.xml|#43413d,59544f,7a706c" ==
         combineDye3("test.xml|#43413d,59544f,7a706c", ""));
-    EXPECT_EQ("test.xml|#43413d,59544f,7a706c:W;",
+    REQUIRE("test.xml|#43413d,59544f,7a706c:W;" ==
         combineDye3("test.xml|#43413d,59544f,7a706c", "W"));
-    EXPECT_EQ("test.xml|#43413d,59544f,7a706c:W;#123456:B;",
+    REQUIRE("test.xml|#43413d,59544f,7a706c:W;#123456:B;" ==
         combineDye3("test.xml|#43413d,59544f,7a706c;#123456", "W;B"));
 }
 
-TEST(stringuntils, packList1)
+TEST_CASE("stringuntils packList 1")
 {
     std::list <std::string> list;
-    EXPECT_EQ("", packList(list));
+    REQUIRE("" == packList(list));
 
     list.push_back("");
-    EXPECT_EQ("|", packList(list));
+    REQUIRE("|" == packList(list));
 
     list.clear();
     list.push_back("test");
-    EXPECT_EQ("test", packList(list));
+    REQUIRE("test" == packList(list));
 
     list.push_back("line");
-    EXPECT_EQ("test|line", packList(list));
+    REQUIRE("test|line" == packList(list));
 
     list.push_back("2");
-    EXPECT_EQ("test|line|2", packList(list));
+    REQUIRE("test|line|2" == packList(list));
 }
 
-TEST(stringuntils, stringToHexPath1)
+TEST_CASE("stringuntils stringToHexPath 1")
 {
     std::string str;
 
     str = "";
-    EXPECT_EQ("", stringToHexPath(str));
+    REQUIRE("" == stringToHexPath(str));
 
     str = "a";
-    EXPECT_EQ("%61/", stringToHexPath(str));
+    REQUIRE("%61/" == stringToHexPath(str));
 
     str = "ab";
-    EXPECT_EQ("%61/%62", stringToHexPath(str));
+    REQUIRE("%61/%62" == stringToHexPath(str));
 
     str = "abc";
-    EXPECT_EQ("%61/%62%63", stringToHexPath(str));
+    REQUIRE("%61/%62%63" == stringToHexPath(str));
 
     str = "abcd";
-    EXPECT_EQ("%61/%62%63%64", stringToHexPath(str));
+    REQUIRE("%61/%62%63%64" == stringToHexPath(str));
 }
 
-TEST(stringuntils, deleteCharLeft1)
+TEST_CASE("stringuntils deleteCharLeft 1")
 {
     std::string str;
     unsigned int pos = 0;
 
     str = "";
     deleteCharLeft(str, nullptr);
-    EXPECT_EQ("", str);
+    REQUIRE("" == str);
 
     str = "test line";
     pos = 4;
     deleteCharLeft(str, &pos);
-    EXPECT_EQ("tes line", str);
+    REQUIRE("tes line" == str);
 
     str = "тест line";
     pos = 8;
     deleteCharLeft(str, &pos);
-    EXPECT_EQ("тес line", str);
+    REQUIRE("тес line" == str);
 }
 
-TEST(stringuntils, findLast1)
+TEST_CASE("stringuntils findLast 1")
 {
     std::string str;
 
     str = "";
-    EXPECT_TRUE(findLast(str, ""));
+    REQUIRE(findLast(str, ""));
 
     str = "test line";
-    EXPECT_TRUE(findLast(str, "line"));
+    REQUIRE(findLast(str, "line"));
 
     str = "test line";
-    EXPECT_TRUE(!findLast(str, "lin"));
+    REQUIRE(!findLast(str, "lin"));
 }
 
-TEST(stringuntils, findFirst1)
+TEST_CASE("stringuntils findFirst 1")
 {
     std::string str;
 
     str = "";
-    EXPECT_TRUE(findFirst(str, ""));
+    REQUIRE(findFirst(str, ""));
 
     str = "test line";
-    EXPECT_TRUE(findFirst(str, "test"));
+    REQUIRE(findFirst(str, "test"));
 
     str = "test line";
-    EXPECT_TRUE(!findFirst(str, "est"));
+    REQUIRE(!findFirst(str, "est"));
 }
 
-TEST(stringuntils, findCutLast1)
+TEST_CASE("stringuntils findCutLast 1")
 {
     std::string str;
 
     str = "";
-    EXPECT_TRUE(findCutLast(str, ""));
-    EXPECT_EQ("", str);
+    REQUIRE(findCutLast(str, ""));
+    REQUIRE("" == str);
 
     str = "test line";
-    EXPECT_TRUE(findCutLast(str, "line"));
-    EXPECT_EQ("test ", str);
+    REQUIRE(findCutLast(str, "line"));
+    REQUIRE("test " == str);
 
     str = "test line";
-    EXPECT_TRUE(!findCutLast(str, "lin"));
-    EXPECT_EQ("test line", str);
+    REQUIRE(!findCutLast(str, "lin"));
+    REQUIRE("test line" == str);
 }
 
-TEST(stringuntils, findCutFirst1)
+TEST_CASE("stringuntils findCutFirst 1")
 {
     std::string str;
 
     str = "";
-    EXPECT_TRUE(findCutFirst(str, ""));
-    EXPECT_EQ("", str);
+    REQUIRE(findCutFirst(str, ""));
+    REQUIRE("" == str);
 
     str = "test line";
-    EXPECT_TRUE(findCutFirst(str, "test"));
-    EXPECT_EQ(" line", str);
+    REQUIRE(findCutFirst(str, "test"));
+    REQUIRE(" line" == str);
 
     str = "test line";
-    EXPECT_TRUE(!findCutFirst(str, "est"));
-    EXPECT_EQ("test line", str);
+    REQUIRE(!findCutFirst(str, "est"));
+    REQUIRE("test line" == str);
 }
 
-TEST(stringuntils, removeProtocol1)
+TEST_CASE("stringuntils removeProtocol 1")
 {
     std::string str;
 
     str = "";
-    EXPECT_EQ("", removeProtocol(str));
+    REQUIRE("" == removeProtocol(str));
 
     str = "http://";
-    EXPECT_EQ("", removeProtocol(str));
+    REQUIRE("" == removeProtocol(str));
 
     str = "http://test";
-    EXPECT_EQ("test", removeProtocol(str));
+    REQUIRE("test" == removeProtocol(str));
 }
 
-TEST(stringuntils, strStartWith1)
+TEST_CASE("stringuntils strStartWith 1")
 {
-    EXPECT_TRUE(strStartWith("", ""));
-    EXPECT_TRUE(!strStartWith("", "1"));
-    EXPECT_TRUE(strStartWith("test line", "test"));
-    EXPECT_TRUE(strStartWith("test line", "test line"));
-    EXPECT_TRUE(!strStartWith("test line", "est"));
+    REQUIRE(strStartWith("", ""));
+    REQUIRE(!strStartWith("", "1"));
+    REQUIRE(strStartWith("test line", "test"));
+    REQUIRE(strStartWith("test line", "test line"));
+    REQUIRE(!strStartWith("test line", "est"));
 }
 
-TEST(stringuntils, encodeLinkText)
+TEST_CASE("stringuntils encodeLinkText")
 {
     std::string str;
 
     str = encodeLinkText("test line");
-    EXPECT_EQ(str, "test line");
+    REQUIRE(str == "test line");
     str = encodeLinkText("test|line");
-    EXPECT_EQ(str, "test\342\235\230line");
+    REQUIRE(str == "test\342\235\230line");
     str = encodeLinkText("test||line");
-    EXPECT_EQ(str, "test\342\235\230\342\235\230line");
+    REQUIRE(str == "test\342\235\230\342\235\230line");
 }
 
-TEST(stringuntils, decodeLinkText)
+TEST_CASE("stringuntils decodeLinkText")
 {
     std::string str;
 
     str = encodeLinkText("test|line");
-    EXPECT_EQ(str, "test\342\235\230line");
+    REQUIRE(str == "test\342\235\230line");
     str = decodeLinkText(str);
-    EXPECT_EQ(str, "test|line");
+    REQUIRE(str == "test|line");
 }
 
-TEST(stringuntils, isDigit)
+TEST_CASE("stringuntils isDigit")
 {
     std::string str;
 
-    EXPECT_FALSE(isDigit(""));
-    EXPECT_TRUE(isDigit("1"));
-    EXPECT_TRUE(isDigit("123"));
-    EXPECT_FALSE(isDigit("+123"));
-    EXPECT_FALSE(isDigit("-123"));
-    EXPECT_FALSE(isDigit("1.23"));
-    EXPECT_FALSE(isDigit("12-34"));
+    REQUIRE_FALSE(isDigit(""));
+    REQUIRE(isDigit("1"));
+    REQUIRE(isDigit("123"));
+    REQUIRE_FALSE(isDigit("+123"));
+    REQUIRE_FALSE(isDigit("-123"));
+    REQUIRE_FALSE(isDigit("1.23"));
+    REQUIRE_FALSE(isDigit("12-34"));
 }
