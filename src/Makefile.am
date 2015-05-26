@@ -965,6 +965,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      beingequipbackend.h \
 	      spellmanager.cpp \
 	      spellmanager.h \
+	      catch.hpp \
 	      chatlogger.cpp \
 	      chatlogger.h \
 	      client.cpp \
@@ -1509,16 +1510,20 @@ manaplus_SOURCES += \
 	      mumblemanager.h
 
 if ENABLE_UNITTESTS
-manaplus_CXXFLAGS += -DUNITTESTS
-manaplus_SOURCES += \
-	      animatedsprite_unittest.cc \
-	      gui/fonts/font_unittest.cc \
-	      gui/widgets/browserbox_unittest.cc \
-	      utils/files_unittest.cc \
-	      utils/stringutils_unittest.cc \
-	      utils/xmlutils_unittest.cc \
-	      resources/dye_unittest.cc \
-	      resources/mstack_unittest.cc
+TESTS = manaplustests
+check_PROGRAMS = manaplustests
+manaplustests_CXXFLAGS = ${manaplus_CXXFLAGS} \
+	      -DUNITTESTS
+manaplustests_SOURCES = ${manaplus_SOURCES}
+#manaplustests_SOURCES = ${manaplus_SOURCES} \
+#	      animatedsprite_unittest.cc \
+#	      gui/fonts/font_unittest.cc \
+#	      gui/widgets/browserbox_unittest.cc \
+#	      utils/files_unittest.cc \
+#	      utils/stringutils_unittest.cc \
+#	      utils/xmlutils_unittest.cc \
+#	      resources/dye_unittest.cc \
+#	      resources/mstack_unittest.cc
 endif
 
 EXTRA_DIST = CMakeLists.txt \

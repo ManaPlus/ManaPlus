@@ -336,7 +336,6 @@ AC_ARG_ENABLE(unittests,
 [  --enable-unittests    Turn on unit tests],
 [case "${enableval}" in
   yes) unittests_enabled=true
-LIBS="$LIBS -lgtest"
  ;;
   no)  unittests_enabled=false ;;
   *) AC_MSG_ERROR(bad value ${enableval} for --enable-tests) ;;

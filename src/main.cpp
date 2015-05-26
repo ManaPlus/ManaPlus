@@ -67,6 +67,10 @@
 #define SDL_MIXER_VERSION_ATLEAST(X, Y, Z) \
     (SDL_MIXER_COMPILEDVERSION >= SDL_VERSIONNUM(X, Y, Z))
 
+#ifdef UNITTESTS
+#define CATCH_CONFIG_MAIN
+#include "catch.hpp"
+#endif
 #include "debug.h"
 
 char *selfName = nullptr;
@@ -351,14 +355,4 @@ int main(int argc, char *argv[])
 #endif
     return ret;
 }
-
-#else
-
-// main for unit testing
-int main(int argc, char **argv)
-{
-    ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
-}
-
 #endif

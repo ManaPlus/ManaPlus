@@ -15,6 +15,7 @@ m4/
 intl/
 missing
 compile
+/test-driver
 po/Makefile.in.in
 po/Makevars.template
 po/Rules-quot
@@ -58,7 +59,11 @@ install_manifest.txt
 .dirstamp
 po/stamp-po
 src/manaplus
+src/manaplustests
+src/manaplustests.log
+src/manaplustests.trs
 src/dyecmd
+/src/test-suite.log
 
 # files created during Windows build
 .objs
