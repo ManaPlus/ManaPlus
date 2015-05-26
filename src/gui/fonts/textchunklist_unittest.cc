@@ -18,7 +18,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "logger.h"
+#include "catch.hpp"
 
 #include "gui/theme.h"
 
@@ -26,22 +26,20 @@
 #include "gui/fonts/textchunk.h"
 #include "gui/fonts/textchunksmall.h"
 
-#include "gtest/gtest.h"
-
 #include "debug.h"
 
-TEST(TextChunkList, empty)
+TEST_CASE("TextChunkList empty", "TextChunkList")
 {
     TextChunkList list;
 
-    EXPECT_EQ(0, list.size);
-    EXPECT_EQ(nullptr, list.start);
-    EXPECT_EQ(nullptr, list.end);
-    EXPECT_EQ(0, list.search.size());
-    EXPECT_EQ(0, list.searchWidth.size());
+    REQUIRE(0 == list.size);
+    REQUIRE(nullptr == list.start);
+    REQUIRE(nullptr == list.end);
+    REQUIRE(0 == list.search.size());
+    REQUIRE(0 == list.searchWidth.size());
 }
 
-TEST(TextChunkList, add1)
+TEST_CASE("TextChunkList add 1", "TextChunkList")
 {
     TextChunkList list;
 
@@ -50,21 +48,21 @@ TEST(TextChunkList, add1)
 
     list.insertFirst(chunk);
 
-    EXPECT_EQ(1, list.size);
-    EXPECT_EQ(chunk, list.start);
-    EXPECT_EQ(chunk, list.end);
-    EXPECT_EQ(nullptr, chunk->prev);
-    EXPECT_EQ(nullptr, chunk->next);
+    REQUIRE(1 == list.size);
+    REQUIRE(chunk == list.start);
+    REQUIRE(chunk == list.end);
+    REQUIRE(nullptr == chunk->prev);
+    REQUIRE(nullptr == chunk->next);
 
-    EXPECT_EQ(1, list.search.size());
-    EXPECT_EQ(chunk, (*list.search.find(TextChunkSmall(
+    REQUIRE(1 == list.search.size());
+    REQUIRE(chunk == (*list.search.find(TextChunkSmall(
         chunk->text, chunk->color, chunk->color2))).second);
 
-    EXPECT_EQ(1, list.searchWidth.size());
-    EXPECT_EQ(chunk, (*list.searchWidth.find(chunk->text)).second);
+    REQUIRE(1 == list.searchWidth.size());
+    REQUIRE(chunk == (*list.searchWidth.find(chunk->text)).second);
 }
 
-TEST(TextChunkList, add2)
+TEST_CASE("TextChunkList add 2", "TextChunkList")
 {
     TextChunkList list;
 
@@ -76,25 +74,25 @@ TEST(TextChunkList, add2)
     list.insertFirst(chunk2);
     list.insertFirst(chunk1);
 
-    EXPECT_EQ(2, list.size);
-    EXPECT_EQ(chunk1, list.start);
-    EXPECT_EQ(chunk2, list.end);
-    EXPECT_EQ(nullptr, chunk1->prev);
-    EXPECT_EQ(chunk2, chunk1->next);
-    EXPECT_EQ(chunk1, chunk2->prev);
-    EXPECT_EQ(nullptr, chunk2->next);
+    REQUIRE(2 == list.size);
+    REQUIRE(chunk1 == list.start);
+    REQUIRE(chunk2 == list.end);
+    REQUIRE(nullptr == chunk1->prev);
+    REQUIRE(chunk2 == chunk1->next);
+    REQUIRE(chunk1 == chunk2->prev);
+    REQUIRE(nullptr == chunk2->next);
 
-    EXPECT_EQ(2, list.search.size());
-    EXPECT_EQ(chunk1, (*list.search.find(TextChunkSmall(
+    REQUIRE(2 == list.search.size());
+    REQUIRE(chunk1 == (*list.search.find(TextChunkSmall(
         chunk1->text, chunk1->color, chunk1->color2))).second);
-    EXPECT_EQ(chunk2, (*list.search.find(TextChunkSmall(
+    REQUIRE(chunk2 == (*list.search.find(TextChunkSmall(
         chunk2->text, chunk2->color, chunk2->color2))).second);
 
-    EXPECT_EQ(1, list.searchWidth.size());
-    EXPECT_EQ(chunk1, (*list.searchWidth.find(chunk1->text)).second);
+    REQUIRE(1 == list.searchWidth.size());
+    REQUIRE(chunk1 == (*list.searchWidth.find(chunk1->text)).second);
 }
 
-TEST(TextChunkList, addRemoveBack1)
+TEST_CASE("TextChunkList addRemoveBack 1", "TextChunkList")
 {
     TextChunkList list;
 
@@ -104,14 +102,14 @@ TEST(TextChunkList, addRemoveBack1)
     list.insertFirst(chunk);
     list.removeBack();
 
-    EXPECT_EQ(0, list.size);
-    EXPECT_EQ(nullptr, list.start);
-    EXPECT_EQ(nullptr, list.end);
-    EXPECT_EQ(0, list.search.size());
-    EXPECT_EQ(0, list.searchWidth.size());
+    REQUIRE(0 == list.size);
+    REQUIRE(nullptr == list.start);
+    REQUIRE(nullptr == list.end);
+    REQUIRE(0 == list.search.size());
+    REQUIRE(0 == list.searchWidth.size());
 }
 
-TEST(TextChunkList, addRemoveBack2)
+TEST_CASE("TextChunkList addRemoveBack 2", "TextChunkList")
 {
     TextChunkList list;
 
@@ -124,21 +122,21 @@ TEST(TextChunkList, addRemoveBack2)
     list.insertFirst(chunk1);
     list.removeBack();
 
-    EXPECT_EQ(1, list.size);
-    EXPECT_EQ(chunk1, list.start);
-    EXPECT_EQ(chunk1, list.end);
-    EXPECT_EQ(nullptr, chunk1->prev);
-    EXPECT_EQ(nullptr, chunk1->next);
+    REQUIRE(1 == list.size);
+    REQUIRE(chunk1 == list.start);
+    REQUIRE(chunk1 == list.end);
+    REQUIRE(nullptr == chunk1->prev);
+    REQUIRE(nullptr == chunk1->next);
 
-    EXPECT_EQ(1, list.search.size());
-    EXPECT_EQ(chunk1, (*list.search.find(TextChunkSmall(
+    REQUIRE(1 == list.search.size());
+    REQUIRE(chunk1 == (*list.search.find(TextChunkSmall(
         chunk1->text, chunk1->color, chunk1->color2))).second);
 
-    EXPECT_EQ(1, list.searchWidth.size());
-    EXPECT_EQ(chunk1, (*list.searchWidth.find(chunk1->text)).second);
+    REQUIRE(1 == list.searchWidth.size());
+    REQUIRE(chunk1 == (*list.searchWidth.find(chunk1->text)).second);
 }
 
-TEST(TextChunkList, addRemoveBack3)
+TEST_CASE("TextChunkList addRemoveBack 3", "TextChunkList")
 {
     TextChunkList list;
 
@@ -151,15 +149,15 @@ TEST(TextChunkList, addRemoveBack3)
     list.insertFirst(chunk1);
     list.removeBack(2);
 
-    EXPECT_EQ(0, list.size);
-    EXPECT_EQ(nullptr, list.start);
-    EXPECT_EQ(nullptr, list.end);
+    REQUIRE(0 == list.size);
+    REQUIRE(nullptr == list.start);
+    REQUIRE(nullptr == list.end);
 
-    EXPECT_EQ(0, list.search.size());
-    EXPECT_EQ(0, list.searchWidth.size());
+    REQUIRE(0 == list.search.size());
+    REQUIRE(0 == list.searchWidth.size());
 }
 
-TEST(TextChunkList, addRemoveBack4)
+TEST_CASE("TextChunkList addRemoveBack 4", "TextChunkList")
 {
     TextChunkList list;
 
@@ -176,20 +174,20 @@ TEST(TextChunkList, addRemoveBack4)
     list.removeBack();
     list.removeBack();
 
-    EXPECT_EQ(1, list.size);
-    EXPECT_EQ(chunk1, list.start);
-    EXPECT_EQ(chunk1, list.end);
-    EXPECT_EQ(nullptr, chunk1->prev);
-    EXPECT_EQ(nullptr, chunk1->next);
+    REQUIRE(1 == list.size);
+    REQUIRE(chunk1 == list.start);
+    REQUIRE(chunk1 == list.end);
+    REQUIRE(nullptr == chunk1->prev);
+    REQUIRE(nullptr == chunk1->next);
 
-    EXPECT_EQ(1, list.search.size());
-    EXPECT_EQ(chunk1, (*list.search.find(TextChunkSmall(
+    REQUIRE(1 == list.search.size());
+    REQUIRE(chunk1 == (*list.search.find(TextChunkSmall(
         chunk1->text, chunk1->color, chunk1->color2))).second);
 
-    EXPECT_EQ(0, list.searchWidth.size());
+    REQUIRE(0 == list.searchWidth.size());
 }
 
-TEST(TextChunkList, moveToFirst1)
+TEST_CASE("TextChunkList moveToFirst 1", "TextChunkList")
 {
     TextChunkList list;
 
@@ -199,14 +197,14 @@ TEST(TextChunkList, moveToFirst1)
     list.insertFirst(chunk);
     list.moveToFirst(chunk);
 
-    EXPECT_EQ(1, list.size);
-    EXPECT_EQ(chunk, list.start);
-    EXPECT_EQ(chunk, list.end);
-    EXPECT_EQ(nullptr, chunk->prev);
-    EXPECT_EQ(nullptr, chunk->next);
+    REQUIRE(1 == list.size);
+    REQUIRE(chunk == list.start);
+    REQUIRE(chunk == list.end);
+    REQUIRE(nullptr == chunk->prev);
+    REQUIRE(nullptr == chunk->next);
 }
 
-TEST(TextChunkList, moveToFirst2)
+TEST_CASE("TextChunkList moveToFirst 2", "TextChunkList")
 {
     TextChunkList list;
 
@@ -219,16 +217,16 @@ TEST(TextChunkList, moveToFirst2)
     list.insertFirst(chunk2);
     list.moveToFirst(chunk1);
 
-    EXPECT_EQ(2, list.size);
-    EXPECT_EQ(chunk1, list.start);
-    EXPECT_EQ(chunk2, list.end);
-    EXPECT_EQ(nullptr, chunk1->prev);
-    EXPECT_EQ(chunk2, chunk1->next);
-    EXPECT_EQ(chunk1, chunk2->prev);
-    EXPECT_EQ(nullptr, chunk2->next);
+    REQUIRE(2 == list.size);
+    REQUIRE(chunk1 == list.start);
+    REQUIRE(chunk2 == list.end);
+    REQUIRE(nullptr == chunk1->prev);
+    REQUIRE(chunk2 == chunk1->next);
+    REQUIRE(chunk1 == chunk2->prev);
+    REQUIRE(nullptr == chunk2->next);
 }
 
-TEST(TextChunkList, moveToFirst3)
+TEST_CASE("TextChunkList moveToFirst 3", "TextChunkList")
 {
     TextChunkList list;
 
@@ -244,18 +242,18 @@ TEST(TextChunkList, moveToFirst3)
     list.insertFirst(chunk2);
     list.moveToFirst(chunk1);
 
-    EXPECT_EQ(3, list.size);
-    EXPECT_EQ(chunk1, list.start);
-    EXPECT_EQ(chunk3, list.end);
-    EXPECT_EQ(nullptr, chunk1->prev);
-    EXPECT_EQ(chunk2, chunk1->next);
-    EXPECT_EQ(chunk1, chunk2->prev);
-    EXPECT_EQ(chunk3, chunk2->next);
-    EXPECT_EQ(chunk2, chunk3->prev);
-    EXPECT_EQ(nullptr, chunk3->next);
+    REQUIRE(3 == list.size);
+    REQUIRE(chunk1 == list.start);
+    REQUIRE(chunk3 == list.end);
+    REQUIRE(nullptr == chunk1->prev);
+    REQUIRE(chunk2 == chunk1->next);
+    REQUIRE(chunk1 == chunk2->prev);
+    REQUIRE(chunk3 == chunk2->next);
+    REQUIRE(chunk2 == chunk3->prev);
+    REQUIRE(nullptr == chunk3->next);
 }
 
-TEST(TextChunkList, moveToFirst4)
+TEST_CASE("TextChunkList moveToFirst 4", "TextChunkList")
 {
     TextChunkList list;
 
@@ -271,18 +269,18 @@ TEST(TextChunkList, moveToFirst4)
     list.insertFirst(chunk2);
     list.moveToFirst(chunk1);
 
-    EXPECT_EQ(3, list.size);
-    EXPECT_EQ(chunk1, list.start);
-    EXPECT_EQ(chunk3, list.end);
-    EXPECT_EQ(nullptr, chunk1->prev);
-    EXPECT_EQ(chunk2, chunk1->next);
-    EXPECT_EQ(chunk1, chunk2->prev);
-    EXPECT_EQ(chunk3, chunk2->next);
-    EXPECT_EQ(chunk2, chunk3->prev);
-    EXPECT_EQ(nullptr, chunk3->next);
+    REQUIRE(3 == list.size);
+    REQUIRE(chunk1 == list.start);
+    REQUIRE(chunk3 == list.end);
+    REQUIRE(nullptr == chunk1->prev);
+    REQUIRE(chunk2 == chunk1->next);
+    REQUIRE(chunk1 == chunk2->prev);
+    REQUIRE(chunk3 == chunk2->next);
+    REQUIRE(chunk2 == chunk3->prev);
+    REQUIRE(nullptr == chunk3->next);
 }
 
-TEST(TextChunkList, clear1)
+TEST_CASE("TextChunkList clear 1", "TextChunkList")
 {
     TextChunkList list;
     int chunksLeft = textChunkCnt;
@@ -293,15 +291,15 @@ TEST(TextChunkList, clear1)
     list.insertFirst(chunk);
     list.clear();
 
-    EXPECT_EQ(0, list.size);
-    EXPECT_EQ(nullptr, list.start);
-    EXPECT_EQ(nullptr, list.end);
-    EXPECT_EQ(chunksLeft, textChunkCnt);
-    EXPECT_EQ(0, list.search.size());
-    EXPECT_EQ(0, list.searchWidth.size());
+    REQUIRE(0 == list.size);
+    REQUIRE(nullptr == list.start);
+    REQUIRE(nullptr == list.end);
+    REQUIRE(chunksLeft == textChunkCnt);
+    REQUIRE(0 == list.search.size());
+    REQUIRE(0 == list.searchWidth.size());
 }
 
-TEST(TextChunkList, clear2)
+TEST_CASE("TextChunkList clear 2", "TextChunkList")
 {
     TextChunkList list;
     int chunksLeft = textChunkCnt;
@@ -318,15 +316,15 @@ TEST(TextChunkList, clear2)
     list.insertFirst(chunk3);
     list.clear();
 
-    EXPECT_EQ(0, list.size);
-    EXPECT_EQ(nullptr, list.start);
-    EXPECT_EQ(nullptr, list.end);
-    EXPECT_EQ(chunksLeft, textChunkCnt);
-    EXPECT_EQ(0, list.search.size());
-    EXPECT_EQ(0, list.searchWidth.size());
+    REQUIRE(0 == list.size);
+    REQUIRE(nullptr == list.start);
+    REQUIRE(nullptr == list.end);
+    REQUIRE(chunksLeft == textChunkCnt);
+    REQUIRE(0 == list.search.size());
+    REQUIRE(0 == list.searchWidth.size());
 }
 
-TEST(TextChunkList, clear3)
+TEST_CASE("TextChunkList clear 3", "TextChunkList")
 {
     TextChunkList list;
     int chunksLeft = textChunkCnt;
@@ -342,22 +340,22 @@ TEST(TextChunkList, clear3)
     list.insertFirst(chunk2);
     list.insertFirst(chunk3);
     list.moveToFirst(chunk1);
-    EXPECT_EQ(chunksLeft + 3, textChunkCnt);
-    EXPECT_EQ(3, list.search.size());
-    EXPECT_EQ(1, list.searchWidth.size());
+    REQUIRE((chunksLeft + 3) == textChunkCnt);
+    REQUIRE(3 == list.search.size());
+    REQUIRE(1 == list.searchWidth.size());
 
     list.removeBack();
-    EXPECT_EQ(chunksLeft + 2, textChunkCnt);
-    EXPECT_EQ(2, list.search.size());
-    EXPECT_EQ(0, list.searchWidth.size());
+    REQUIRE((chunksLeft + 2) == textChunkCnt);
+    REQUIRE(2 == list.search.size());
+    REQUIRE(0 == list.searchWidth.size());
 
     list.clear();
-    EXPECT_EQ(chunksLeft, textChunkCnt);
-    EXPECT_EQ(0, list.search.size());
-    EXPECT_EQ(0, list.searchWidth.size());
+    REQUIRE(chunksLeft == textChunkCnt);
+    REQUIRE(0 == list.search.size());
+    REQUIRE(0 == list.searchWidth.size());
 }
 
-TEST(TextChunkList, clear5)
+TEST_CASE("TextChunkList clear 4", "TextChunkList")
 {
     TextChunkList list;
     int chunksLeft = textChunkCnt;
@@ -373,22 +371,22 @@ TEST(TextChunkList, clear5)
     list.insertFirst(chunk2);
     list.insertFirst(chunk3);
     list.moveToFirst(chunk2);
-    EXPECT_EQ(chunksLeft + 3, textChunkCnt);
-    EXPECT_EQ(3, list.search.size());
-    EXPECT_EQ(2, list.searchWidth.size());
+    REQUIRE((chunksLeft + 3) == textChunkCnt);
+    REQUIRE(3 == list.search.size());
+    REQUIRE(2 == list.searchWidth.size());
 
     list.removeBack(2);
-    EXPECT_EQ(chunksLeft + 1, textChunkCnt);
-    EXPECT_EQ(1, list.search.size());
-    EXPECT_EQ(0, list.searchWidth.size());
+    REQUIRE((chunksLeft + 1) == textChunkCnt);
+    REQUIRE(1 == list.search.size());
+    REQUIRE(0 == list.searchWidth.size());
 
     list.clear();
-    EXPECT_EQ(chunksLeft, textChunkCnt);
-    EXPECT_EQ(0, list.search.size());
-    EXPECT_EQ(0, list.searchWidth.size());
+    REQUIRE(chunksLeft == textChunkCnt);
+    REQUIRE(0 == list.search.size());
+    REQUIRE(0 == list.searchWidth.size());
 }
 
-TEST(TextChunkList, remove1)
+TEST_CASE("TextChunkList remove 1", "TextChunkList")
 {
     TextChunkList list;
     int chunksLeft = textChunkCnt;
@@ -400,15 +398,15 @@ TEST(TextChunkList, remove1)
     list.remove(chunk);
     delete chunk;
 
-    EXPECT_EQ(0, list.size);
-    EXPECT_EQ(nullptr, list.start);
-    EXPECT_EQ(nullptr, list.end);
-    EXPECT_EQ(chunksLeft, textChunkCnt);
-    EXPECT_EQ(0, list.search.size());
-    EXPECT_EQ(0, list.searchWidth.size());
+    REQUIRE(0 == list.size);
+    REQUIRE(nullptr == list.start);
+    REQUIRE(nullptr == list.end);
+    REQUIRE(chunksLeft == textChunkCnt);
+    REQUIRE(0 == list.search.size());
+    REQUIRE(0 == list.searchWidth.size());
 }
 
-TEST(TextChunkList, remove2)
+TEST_CASE("TextChunkList remove 2", "TextChunkList")
 {
     TextChunkList list;
     int chunksLeft = textChunkCnt;
@@ -426,15 +424,15 @@ TEST(TextChunkList, remove2)
     list.remove(chunk1);
     delete chunk1;
 
-    EXPECT_EQ(2, list.size);
-    EXPECT_EQ(chunk3, list.start);
-    EXPECT_EQ(chunk2, list.end);
-    EXPECT_EQ(chunksLeft + 2, textChunkCnt);
-    EXPECT_EQ(2, list.search.size());
-    EXPECT_EQ(2, list.searchWidth.size());
+    REQUIRE(2 == list.size);
+    REQUIRE(chunk3 == list.start);
+    REQUIRE(chunk2 == list.end);
+    REQUIRE((chunksLeft + 2) == textChunkCnt);
+    REQUIRE(2 == list.search.size());
+    REQUIRE(2 == list.searchWidth.size());
 }
 
-TEST(TextChunkList, remove3)
+TEST_CASE("TextChunkList remove 3", "TextChunkList")
 {
     TextChunkList list;
     int chunksLeft = textChunkCnt;
@@ -452,15 +450,15 @@ TEST(TextChunkList, remove3)
     list.remove(chunk2);
     delete chunk2;
 
-    EXPECT_EQ(2, list.size);
-    EXPECT_EQ(chunk3, list.start);
-    EXPECT_EQ(chunk1, list.end);
-    EXPECT_EQ(chunksLeft + 2, textChunkCnt);
-    EXPECT_EQ(2, list.search.size());
-    EXPECT_EQ(2, list.searchWidth.size());
+    REQUIRE(2 == list.size);
+    REQUIRE(chunk3 == list.start);
+    REQUIRE(chunk1 == list.end);
+    REQUIRE((chunksLeft + 2) == textChunkCnt);
+    REQUIRE(2 == list.search.size());
+    REQUIRE(2 == list.searchWidth.size());
 }
 
-TEST(TextChunkList, sort1)
+TEST_CASE("TextChunkList sort 1", "TextChunkList")
 {
     TextChunkSmall item1("test line1",
         Color(1, 2, 3), Color(1, 2, 3));
@@ -468,68 +466,68 @@ TEST(TextChunkList, sort1)
         Color(1, 2, 3), Color(1, 2, 3));
     TextChunkSmall item3("test line2",
         Color(1, 2, 3), Color(1, 2, 3));
-    EXPECT_EQ(false, item1 < item2);
-    EXPECT_EQ(false, item2 < item1);
-    EXPECT_EQ(true, item1 < item3);
-    EXPECT_EQ(false, item3 < item1);
+    REQUIRE(false == item1 < item2);
+    REQUIRE(false == item2 < item1);
+    REQUIRE(true == item1 < item3);
+    REQUIRE(false == item3 < item1);
 }
 
-TEST(TextChunkList, sort2)
+TEST_CASE("TextChunkList sort 2", "TextChunkList")
 {
     TextChunkSmall item1("test line1",
         Color(1, 2, 3), Color(1, 2, 3));
     TextChunkSmall item2("test line1",
         Color(2, 3, 4), Color(1, 2, 3));
-    EXPECT_EQ(true, item1 < item2);
-    EXPECT_EQ(false, item2 < item1);
+    REQUIRE(true == item1 < item2);
+    REQUIRE(false == item2 < item1);
 }
 
-TEST(TextChunkList, sort3)
+TEST_CASE("TextChunkList sort 3", "TextChunkList")
 {
     TextChunkSmall item1("test line1",
         Color(1, 2, 3), Color(1, 2, 3));
     TextChunkSmall item2("test line1",
         Color(1, 3, 4), Color(1, 2, 3));
-    EXPECT_EQ(true, item1 < item2);
-    EXPECT_EQ(false, item2 < item1);
+    REQUIRE(true == item1 < item2);
+    REQUIRE(false == item2 < item1);
 }
 
-TEST(TextChunkList, sort4)
+TEST_CASE("TextChunkList sort 4", "TextChunkList")
 {
     TextChunkSmall item1("test line1",
         Color(1, 2, 3), Color(1, 2, 3));
     TextChunkSmall item2("test line1",
         Color(1, 2, 4), Color(1, 2, 3));
-    EXPECT_EQ(true, item1 < item2);
-    EXPECT_EQ(false, item2 < item1);
+    REQUIRE(true == item1 < item2);
+    REQUIRE(false == item2 < item1);
 }
 
-TEST(TextChunkList, sort5)
+TEST_CASE("TextChunkList sort 5", "TextChunkList")
 {
     TextChunkSmall item1("test line1",
         Color(1, 2, 3), Color(1, 2, 3));
     TextChunkSmall item2("test line1",
         Color(1, 2, 3), Color(2, 2, 3));
-    EXPECT_EQ(true, item1 < item2);
-    EXPECT_EQ(false, item2 < item1);
+    REQUIRE(true == item1 < item2);
+    REQUIRE(false == item2 < item1);
 }
 
-TEST(TextChunkList, sort6)
+TEST_CASE("TextChunkList sort 6", "TextChunkList")
 {
     TextChunkSmall item1("test line1",
         Color(1, 2, 3), Color(1, 2, 3));
     TextChunkSmall item2("test line1",
         Color(1, 2, 3), Color(1, 3, 3));
-    EXPECT_EQ(true, item1 < item2);
-    EXPECT_EQ(false, item2 < item1);
+    REQUIRE(true == item1 < item2);
+    REQUIRE(false == item2 < item1);
 }
 
-TEST(TextChunkList, sort7)
+TEST_CASE("TextChunkList sort 7", "TextChunkList")
 {
     TextChunkSmall item1("test line1",
         Color(1, 2, 3), Color(1, 2, 3));
     TextChunkSmall item2("test line1",
         Color(1, 2, 3), Color(1, 2, 4));
-    EXPECT_EQ(true, item1 < item2);
-    EXPECT_EQ(false, item2 < item1);
+    REQUIRE(true == item1 < item2);
+    REQUIRE(false == item2 < item1);
 }
