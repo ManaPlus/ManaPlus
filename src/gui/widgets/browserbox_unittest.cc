@@ -20,6 +20,7 @@
 
 #include "logger.h"
 
+#include "catch.hpp"
 #include "client.h"
 
 #include "gui/fonts/font.h"
@@ -28,15 +29,13 @@
 
 #include "resources/sdlimagehelper.h"
 
-#include "gtest/gtest.h"
-
 #include <physfs.h>
 
 #include "debug.h"
 
 extern const char *dirSeparator;
 
-TEST(browserbox, test1)
+TEST_CASE("BrowserBox tests", "browserbox")
 {
     PHYSFS_init("manaplus");
     dirSeparator = "/";
@@ -50,7 +49,7 @@ TEST(browserbox, test1)
     box->setWidth(100);
     std::string row = "test";
     box->addRow(row);
-    EXPECT_TRUE(box->hasRows());
+    REQUIRE(box->hasRows() == true);
     box->clearRows();
     row = "@@";
     box->addRow(row);
