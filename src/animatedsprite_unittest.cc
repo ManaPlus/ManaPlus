@@ -20,6 +20,7 @@
 
 #include "animatedsprite.h"
 
+#include "catch.hpp"
 #include "client.h"
 
 #include "gui/theme.h"
@@ -29,14 +30,13 @@
 #include "resources/sdlimagehelper.h"
 #include "resources/spriteaction.h"
 
-#include "gtest/gtest.h"
-
 #include "utils/physfstools.h"
 
 #include "debug.h"
 
-static void init()
+TEST_CASE("AnimatedSprite tests", "animatedsprite")
 {
+    client = new Client;
     PHYSFS_init("manaplus");
     dirSeparator = "/";
     XML::initXML();
@@ -48,106 +48,102 @@ static void init()
 
     imageHelper = new SDLImageHelper();
     SDL_SetVideoMode(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
-}
 
-TEST(AnimatedSprite, basic)
-{
-    client = new Client;
+    SECTION("basic test 1")
+    {
+        AnimatedSprite *sprite = AnimatedSprite::load(
+            "graphics/sprites/error.xml", 0);
+        sprite->play(SpriteAction::DEFAULT);
 
-    init();
-    AnimatedSprite *sprite = AnimatedSprite::load(
-        "graphics/sprites/error.xml", 0);
-    sprite->play(SpriteAction::DEFAULT);
+        REQUIRE_FALSE(sprite == nullptr);
+        REQUIRE_FALSE(sprite->getSprite() == nullptr);
+        REQUIRE_FALSE(sprite->getAnimation() == nullptr);
+        REQUIRE_FALSE(sprite->getFrame() == nullptr);
+        REQUIRE(0 == sprite->getFrameIndex());
+        REQUIRE(0 == sprite->getFrameTime());
+        REQUIRE(false == sprite->update(1));
+        REQUIRE(0 == sprite->getFrameTime());
+        REQUIRE(false == sprite->update(11));
+        REQUIRE(10 == sprite->getFrameTime());
+        REQUIRE(0 == sprite->getFrameIndex());
+    }
 
-    EXPECT_NE(nullptr, sprite);
-    EXPECT_NE(nullptr, sprite->getSprite());
-    EXPECT_NE(nullptr, sprite->getAnimation());
-    EXPECT_NE(nullptr, sprite->getFrame());
-    EXPECT_EQ(0, sprite->getFrameIndex());
-    EXPECT_EQ(0, sprite->getFrameTime());
-    EXPECT_EQ(false, sprite->update(1));
-    EXPECT_EQ(0, sprite->getFrameTime());
-    EXPECT_EQ(false, sprite->update(11));
-    EXPECT_EQ(10, sprite->getFrameTime());
-    EXPECT_EQ(0, sprite->getFrameIndex());
-    delete client;
-    client = nullptr;
-}
+    SECTION("basic test 2")
+    {
+        AnimatedSprite *sprite = AnimatedSprite::load(
+            "graphics/sprites/test.xml", 0);
+        sprite->play(SpriteAction::STAND);
 
-TEST(AnimatedSprite, basic2)
-{
-    client = new Client;
-    init();
-    AnimatedSprite *sprite = AnimatedSprite::load(
-        "graphics/sprites/test.xml", 0);
-    sprite->play(SpriteAction::STAND);
+        REQUIRE(10 == const_cast<Animation*>(sprite->getAnimation())
+            ->getFrames().size());
 
-    EXPECT_EQ(10, const_cast<Animation*>(sprite->getAnimation())
-        ->getFrames().size());
+        REQUIRE_FALSE(nullptr == sprite);
 
-    EXPECT_NE(nullptr, sprite);
+        REQUIRE(false == sprite->update(1));
+        REQUIRE(0 == sprite->getFrameTime());
+        REQUIRE(10 == sprite->getFrame()->delay);
 
-    EXPECT_EQ(false, sprite->update(1));
-    EXPECT_EQ(0, sprite->getFrameTime());
-    EXPECT_EQ(10, sprite->getFrame()->delay);
+        REQUIRE(false == sprite->update(1 + 10));
+        REQUIRE(0 == sprite->getFrameIndex());
+        REQUIRE(10 == sprite->getFrameTime());
 
-    EXPECT_EQ(false, sprite->update(1 + 10));
-    EXPECT_EQ(0, sprite->getFrameIndex());
-    EXPECT_EQ(10, sprite->getFrameTime());
+        REQUIRE(true == sprite->update(1 + 10 + 5));
+        REQUIRE(1 == sprite->getFrameIndex());
+        REQUIRE(5 == sprite->getFrameTime());
 
-    EXPECT_EQ(true, sprite->update(1 + 10 + 5));
-    EXPECT_EQ(1, sprite->getFrameIndex());
-    EXPECT_EQ(5, sprite->getFrameTime());
+        REQUIRE(false == sprite->update(1 + 10 + 5));
+        REQUIRE(1 == sprite->getFrameIndex());
+        REQUIRE(5 == sprite->getFrameTime());
 
-    EXPECT_EQ(false, sprite->update(1 + 10 + 5));
-    EXPECT_EQ(1, sprite->getFrameIndex());
-    EXPECT_EQ(5, sprite->getFrameTime());
+        REQUIRE(false == sprite->update(1 + 10 + 20));
+        REQUIRE(1 == sprite->getFrameIndex());
+        REQUIRE(20 == sprite->getFrameTime());
 
-    EXPECT_EQ(false, sprite->update(1 + 10 + 20));
-    EXPECT_EQ(1, sprite->getFrameIndex());
-    EXPECT_EQ(20, sprite->getFrameTime());
+        REQUIRE(true == sprite->update(1 + 10 + 20 + 1));
+        REQUIRE(2 == sprite->getFrameIndex());
+        REQUIRE(1 == sprite->getFrameTime());
 
-    EXPECT_EQ(true, sprite->update(1 + 10 + 20 + 1));
-    EXPECT_EQ(2, sprite->getFrameIndex());
-    EXPECT_EQ(1, sprite->getFrameTime());
+        REQUIRE(false == sprite->update(1 + 10 + 20 + 10));
+        REQUIRE(2 == sprite->getFrameIndex());
+        REQUIRE(10 == sprite->getFrameTime());
 
-    EXPECT_EQ(false, sprite->update(1 + 10 + 20 + 10));
-    EXPECT_EQ(2, sprite->getFrameIndex());
-    EXPECT_EQ(10, sprite->getFrameTime());
+        REQUIRE(true == sprite->update(1 + 10 + 20 + 10 + 1));
+        REQUIRE(4 == sprite->getFrameIndex());
+        REQUIRE(1 == sprite->getFrameTime());
 
-    EXPECT_EQ(true, sprite->update(1 + 10 + 20 + 10 + 1));
-    EXPECT_EQ(4, sprite->getFrameIndex());
-    EXPECT_EQ(1, sprite->getFrameTime());
+        REQUIRE(false == sprite->update(1 + 10 + 20 + 10 + 25));
+        REQUIRE(4 == sprite->getFrameIndex());
+        REQUIRE(25 == sprite->getFrameTime());
 
-    EXPECT_EQ(false, sprite->update(1 + 10 + 20 + 10 + 25));
-    EXPECT_EQ(4, sprite->getFrameIndex());
-    EXPECT_EQ(25, sprite->getFrameTime());
+        REQUIRE(true == sprite->update(1 + 10 + 20 + 10 + 25 + 1));
+        REQUIRE(6 == sprite->getFrameIndex());
+        REQUIRE(1 == sprite->getFrameTime());
 
-    EXPECT_EQ(true, sprite->update(1 + 10 + 20 + 10 + 25 + 1));
-    EXPECT_EQ(6, sprite->getFrameIndex());
-    EXPECT_EQ(1, sprite->getFrameTime());
+        REQUIRE(true == sprite->update(1 + 10 + 20 + 10 + 25 + 10 + 1));
+        REQUIRE(8 == sprite->getFrameIndex());
+        REQUIRE(1 == sprite->getFrameTime());
 
-    EXPECT_EQ(true, sprite->update(1 + 10 + 20 + 10 + 25 + 10 + 1));
-    EXPECT_EQ(8, sprite->getFrameIndex());
-    EXPECT_EQ(1, sprite->getFrameTime());
+        REQUIRE(true == sprite->update(1 + 10 + 20 + 10 + 25 + 10 + 10 + 1));
+        REQUIRE(4 == sprite->getFrameIndex());
+        REQUIRE(1 == sprite->getFrameTime());
+    }
 
-    EXPECT_EQ(true, sprite->update(1 + 10 + 20 + 10 + 25 + 10 + 10 + 1));
-    EXPECT_EQ(4, sprite->getFrameIndex());
-    EXPECT_EQ(1, sprite->getFrameTime());
+    SECTION("basic test 3")
+    {
+        AnimatedSprite *sprite2 = AnimatedSprite::load(
+            "graphics/sprites/test.xml", 0);
+        sprite2->play(SpriteAction::SIT);
 
-    AnimatedSprite *sprite2 = AnimatedSprite::load(
-        "graphics/sprites/test.xml", 0);
-    sprite2->play(SpriteAction::SIT);
+        REQUIRE(false == sprite2->update(1));
+        REQUIRE(2 == const_cast<Animation*>(sprite2->getAnimation())
+            ->getFrames().size());
+        REQUIRE(0 == sprite2->getFrameTime());
+        REQUIRE(85 == sprite2->getFrame()->delay);
 
-    EXPECT_EQ(false, sprite2->update(1));
-    EXPECT_EQ(2, const_cast<Animation*>(sprite2->getAnimation())
-        ->getFrames().size());
-    EXPECT_EQ(0, sprite2->getFrameTime());
-    EXPECT_EQ(85, sprite2->getFrame()->delay);
-
-    EXPECT_EQ(true, sprite2->update(1 + 10 + 20 + 10 + 25 + 10 + 10 + 1));
-    EXPECT_EQ(1, sprite2->getFrameIndex());
-    EXPECT_EQ(1, sprite2->getFrameTime());
+        REQUIRE(true == sprite2->update(1 + 10 + 20 + 10 + 25 + 10 + 10 + 1));
+        REQUIRE(1 == sprite2->getFrameIndex());
+        REQUIRE(1 == sprite2->getFrameTime());
+    }
 
     delete client;
     client = nullptr;
