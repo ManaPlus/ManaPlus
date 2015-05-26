@@ -1520,8 +1520,8 @@ manaplustests_SOURCES = ${manaplus_SOURCES} \
 	      gui/widgets/browserbox_unittest.cc \
 	      utils/files_unittest.cc \
 	      utils/stringutils_unittest.cc \
-	      utils/xmlutils_unittest.cc
-#	      resources/dye_unittest.cc \
+	      utils/xmlutils_unittest.cc \
+	      resources/dye_unittest.cc
 #	      resources/mstack_unittest.cc
 endif
 
