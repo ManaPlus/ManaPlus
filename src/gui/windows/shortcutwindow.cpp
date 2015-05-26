@@ -179,6 +179,7 @@ int ShortcutWindow::getTabIndex() const
 
 void ShortcutWindow::widgetHidden(const Event &event)
 {
+    Window::widgetHidden(event);
     if (mItems)
         mItems->widgetHidden(event);
     if (mTabs)

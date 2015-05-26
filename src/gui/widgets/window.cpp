@@ -125,6 +125,7 @@ Window::Window(const std::string &caption,
     mCloseRect(),
     mStickyRect(),
     mGripRect(),
+    mTextChunk(),
     mWindowName("window"),
     mMinWinWidth(100),
     mMinWinHeight(40),
@@ -151,7 +152,8 @@ Window::Window(const std::string &caption,
     mSticky(false),
     mStickyButtonLock(false),
     mPlayVisibleSound(false),
-    mInit(false)
+    mInit(false),
+    mTextChanged(true)
 {
     logger->log("Window::Window(\"%s\")", caption.c_str());
 
@@ -359,11 +361,20 @@ void Window::draw(Graphics *graphics)
                 x = mCaptionOffsetX - mCaptionFont->getWidth(mCaption);
                 break;
         }
-        mCaptionFont->drawString(graphics,
-            mForegroundColor,
-            mForegroundColor2,
-            mCaption,
-            x, mCaptionOffsetY);
+        if (mTextChanged)
+        {
+            mTextChunk.textFont = mCaptionFont;
+            mTextChunk.deleteImage();
+            mTextChunk.text = mCaption;
+            mTextChunk.color = mForegroundColor;
+            mTextChunk.color2 = mForegroundColor2;
+            mCaptionFont->generate(mTextChunk);
+            mTextChanged = false;
+        }
+
+        const Image *const image = mTextChunk.img;
+        if (image)
+            graphics->drawImage(image, x, mCaptionOffsetY);
     }
 
     if (update)
@@ -427,11 +438,20 @@ void Window::safeDraw(Graphics *graphics)
                 x = mCaptionOffsetX - mCaptionFont->getWidth(mCaption);
                 break;
         }
-        mCaptionFont->drawString(graphics,
-            mForegroundColor,
-            mForegroundColor2,
-            mCaption,
-            x, mCaptionOffsetY);
+        if (mTextChanged)
+        {
+            mTextChunk.textFont = mCaptionFont;
+            mTextChunk.deleteImage();
+            mTextChunk.text = mCaption;
+            mTextChunk.color = mForegroundColor;
+            mTextChunk.color2 = mForegroundColor2;
+            mCaptionFont->generate(mTextChunk);
+            mTextChanged = false;
+        }
+
+        const Image *const image = mTextChunk.img;
+        if (image)
+            graphics->drawImage(image, x, mCaptionOffsetY);
     }
 
     safeDrawChildren(graphics);
@@ -668,6 +688,9 @@ void Window::widgetMoved(const Event& event A_UNUSED)
 
 void Window::widgetHidden(const Event &event A_UNUSED)
 {
+    mTextChanged = true;
+    mTextChunk.deleteImage();
+
     if (gui)
         gui->setCursorType(Cursor::CURSOR_POINTER);
 

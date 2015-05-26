@@ -71,6 +71,8 @@
 #include "listeners/mouselistener.h"
 #include "listeners/widgetlistener.h"
 
+#include "gui/fonts/textchunk.h"
+
 #include "gui/widgets/basiccontainer2.h"
 
 #include "resources/imagerect.h"
@@ -511,7 +513,7 @@ class Window notfinal : public BasicContainer2,
          * @see getCaption
          */
         void setCaption(const std::string& caption)
-        { mCaption = caption; }
+        { mCaption = caption; mTextChanged = true; }
 
         /**
          * Gets the caption of the window.
@@ -669,6 +671,7 @@ class Window notfinal : public BasicContainer2,
         Rect mCloseRect;    /**< Close button rectangle */
         Rect mStickyRect;   /**< Sticky button rectangle */
         Rect mGripRect;     /**< Resize grip rectangle */
+        TextChunk mTextChunk;
         std::string mWindowName;      /**< Name of the window */
         int mMinWinWidth;             /**< Minimum window width */
         int mMinWinHeight;            /**< Minimum window height */
@@ -707,6 +710,7 @@ class Window notfinal : public BasicContainer2,
         bool mStickyButtonLock;       /**< Window locked if sticky enabled*/
         bool mPlayVisibleSound;
         bool mInit;
+        bool mTextChanged;
 };
 
 #endif  // GUI_WIDGETS_WINDOW_H
