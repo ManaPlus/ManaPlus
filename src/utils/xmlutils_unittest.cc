@@ -20,10 +20,9 @@
 
 #include "utils/xmlutils.h"
 
+#include "catch.hpp"
 #include "client.h"
 #include "logger.h"
-
-#include "gtest/gtest.h"
 
 #include "utils/physfstools.h"
 #include "utils/xml.h"
@@ -32,8 +31,9 @@
 
 #include "debug.h"
 
-static void init()
+TEST_CASE("xmlutils readXmlIntVector 1")
 {
+    client = new Client;
     PHYSFS_init("manaplus");
     dirSeparator = "/";
     XML::initXML();
@@ -41,12 +41,6 @@ static void init()
     ResourceManager *resman = ResourceManager::getInstance();
     resman->addToSearchPath("data", false);
     resman->addToSearchPath("../data", false);
-}
-
-TEST(xmlutils, readXmlIntVector1)
-{
-    client = new Client;
-    init();
 
     std::vector<int> arr;
 
@@ -57,10 +51,10 @@ TEST(xmlutils, readXmlIntVector1)
         "value",
         arr);
 
-    EXPECT_EQ(5, arr.size());
-    EXPECT_EQ(1, arr[0]);
-    EXPECT_EQ(15, arr[1]);
-    EXPECT_EQ(0, arr[2]);
-    EXPECT_EQ(1, arr[3]);
-    EXPECT_EQ(1, arr[4]);
+    REQUIRE(5 == arr.size());
+    REQUIRE(1 == arr[0]);
+    REQUIRE(15 == arr[1]);
+    REQUIRE(0 == arr[2]);
+    REQUIRE(1 == arr[3]);
+    REQUIRE(1 == arr[4]);
 }
