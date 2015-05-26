@@ -105,7 +105,9 @@ TextField::TextField(const Widget2 *restrict const widget,
     FocusListener(),
     KeyListener(),
     MouseListener(),
+    WidgetListener(),
     mText(text),
+    mTextChunk(),
     mCaretPosition(0),
     mXScroll(0),
     mCaretColor(&getThemeColor(Theme::CARET)),
@@ -116,7 +118,8 @@ TextField::TextField(const Widget2 *restrict const widget,
     mNumeric(false),
     mLoseFocusOnTab(loseFocusOnTab),
     mAllowSpecialActions(true),
-    mSendAlwaysEvents(sendAlwaysEvents)
+    mSendAlwaysEvents(sendAlwaysEvents),
+    mTextChanged(true)
 {
     mAllowLogic = false;
     setFocusable(true);
@@ -156,6 +159,9 @@ TextField::TextField(const Widget2 *restrict const widget,
 
 TextField::~TextField()
 {
+    if (mWindow)
+        mWindow->removeWidgetListener(this);
+
     if (gui)
         gui->removeDragged(this);
 
@@ -168,6 +174,7 @@ TextField::~TextField()
             Theme::unloadRect(skin);
         }
     }
+    mTextChunk.deleteImage();
 }
 
 void TextField::updateAlpha()
@@ -198,11 +205,21 @@ void TextField::draw(Graphics *graphics)
             font->getWidth(mText.substr(0, mCaretPosition)) - mXScroll);
     }
 
-    font->drawString(graphics,
-        mForegroundColor,
-        mForegroundColor2,
-        mText,
-        mPadding - mXScroll, mPadding);
+    if (mTextChanged)
+    {
+        mTextChunk.textFont = font;
+        mTextChunk.deleteImage();
+        mTextChunk.text = mText;
+        mTextChunk.color = mForegroundColor;
+        mTextChunk.color2 = mForegroundColor2;
+        font->generate(mTextChunk);
+        mTextChanged = false;
+    }
+
+    const Image *const image = mTextChunk.img;
+    if (image)
+        graphics->drawImage(image, mPadding - mXScroll, mPadding);
+
     BLOCK_END("TextField::draw")
 }
 
@@ -275,6 +292,7 @@ void TextField::keyPressed(KeyEvent &event)
     {
         std::string str = event.getText();
         mText.insert(mCaretPosition, str);
+        mTextChanged = true;
         mCaretPosition += static_cast<unsigned int>(str.size());
         event.consume();
         fixScroll();
@@ -294,6 +312,7 @@ void TextField::keyPressed(KeyEvent &event)
                 buf[0] = static_cast<char>(val);
                 buf[1] = 0;
                 mText.insert(mCaretPosition, std::string(buf));
+                mTextChanged = true;
                 mCaretPosition += 1;
                 event.consume();
                 fixScroll();
@@ -327,6 +346,7 @@ void TextField::keyPressed(KeyEvent &event)
 
             mText.insert(mCaretPosition, std::string(buf, buf + len));
             mCaretPosition += len;
+            mTextChanged = true;
             event.consume();
             fixScroll();
             if (mSendAlwaysEvents)
@@ -409,6 +429,7 @@ bool TextField::handleNormalKeys(const int action, bool &consumed)
             {
                 --sz;
                 mText.erase(mCaretPosition, 1);
+                mTextChanged = true;
                 if (mCaretPosition == sz ||
                     (mText[mCaretPosition] & 192) != 128)
                 {
@@ -421,6 +442,7 @@ bool TextField::handleNormalKeys(const int action, bool &consumed)
         case InputAction::GUI_BACKSPACE:
             consumed = true;
             deleteCharLeft(mText, &mCaretPosition);
+            mTextChanged = true;
             break;
 
         case InputAction::GUI_SELECT2:
@@ -497,12 +519,14 @@ void TextField::handleCtrlKeys(const int action, bool &consumed)
         case InputAction::GUI_H:
         {
             deleteCharLeft(mText, &mCaretPosition);
+            mTextChanged = true;
             consumed = true;
             break;
         }
         case InputAction::GUI_K:
         {
             mText = mText.substr(0, mCaretPosition);
+            mTextChanged = true;
             consumed = true;
             break;
         }
@@ -574,6 +598,7 @@ void TextField::caretDelete()
         if (mCaretPosition == sz || (mText[mCaretPosition] & 192) != 128)
             break;
     }
+    mTextChanged = true;
 }
 
 void TextField::handlePaste()
@@ -595,6 +620,7 @@ void TextField::caretDeleteToStart()
         mText = mText.substr(mCaretPosition);
         mCaretPosition = 0;
     }
+    mTextChanged = true;
 }
 
 void TextField::moveCaretWordBack()
@@ -644,6 +670,7 @@ void TextField::caretDeleteWord()
         if (mCaretPosition > 0 && isWordSeparator(mText[mCaretPosition - 1]))
             break;
     }
+    mTextChanged = true;
 }
 
 void TextField::handleCopy() const
@@ -751,9 +778,23 @@ void TextField::setText(const std::string& text)
     if (sz < mCaretPosition)
         mCaretPosition = sz;
     mText = text;
+    mTextChanged = true;
 }
 
 void TextField::mouseDragged(MouseEvent& event)
 {
     event.consume();
+}
+
+void TextField::widgetHidden(const Event &event A_UNUSED)
+{
+    mTextChanged = true;
+    mTextChunk.deleteImage();
+}
+
+void TextField::setParent(Widget *widget)
+{
+    if (mWindow)
+        mWindow->addWidgetListener(this);
+    Widget::setParent(widget);
 }

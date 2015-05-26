@@ -69,6 +69,9 @@
 #include "listeners/focuslistener.h"
 #include "listeners/keylistener.h"
 #include "listeners/mouselistener.h"
+#include "listeners/widgetlistener.h"
+
+#include "gui/fonts/textchunk.h"
 
 #include "gui/widgets/widget.h"
 
@@ -82,7 +85,8 @@
 class TextField notfinal : public Widget,
                            public FocusListener,
                            public KeyListener,
-                           public MouseListener
+                           public MouseListener,
+                           public WidgetListener
 {
     public:
         /**
@@ -223,6 +227,10 @@ class TextField notfinal : public Widget,
 
         void mouseDragged(MouseEvent& event) override final;
 
+        void widgetHidden(const Event &event) override final;
+
+        void setParent(Widget *widget) override final;
+
     protected:
         void drawCaret(Graphics* graphics, int x);
 
@@ -240,6 +248,8 @@ class TextField notfinal : public Widget,
          * Holds the text of the text box.
          */
         std::string mText;
+
+        TextChunk mTextChunk;
 
         /**
          * Holds the caret position.
@@ -265,6 +275,7 @@ class TextField notfinal : public Widget,
         bool mLoseFocusOnTab;
         bool mAllowSpecialActions;
         bool mSendAlwaysEvents;
+        bool mTextChanged;
 };
 
 #endif  // GUI_WIDGETS_TEXTFIELD_H
