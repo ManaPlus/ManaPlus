@@ -1,2 +1,2 @@
 version=3
-http://download.evolonline.org/manaplus/download/([\d\.]+)/manaplus-([\d\.]+)\.tar\.bz2
+opts=pgpsigurlmangle=s/$/.sig/ http://download.evolonline.org/manaplus/download/latest/manaplus-([\d+.]+)\.tar\.xz

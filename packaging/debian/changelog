@@ -1,0 +1,367 @@
+manaplus (1.5.5.23-1) UNRELEASED; urgency=low
+
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Mon, 25 May 2015 19:38:53 +0200
+
+manaplus (1.5.5.9-1) unstable; urgency=low
+
+  * New upstream release.
+    - Adjust debian/copyright.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Tue, 12 May 2015 20:07:43 +0200
+
+manaplus (1.5.4.25-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Sun, 26 Apr 2015 13:46:44 +0200
+
+manaplus (1.5.4.11-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Mon, 13 Apr 2015 18:42:23 +0200
+
+manaplus (1.5.3.14-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Tue, 17 Mar 2015 15:42:44 +0100
+
+manaplus (1.5.2.28-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Mon, 02 Mar 2015 08:40:07 +0100
+
+manaplus (1.5.2.14-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Sat, 14 Feb 2015 16:30:45 +0100
+
+manaplus (1.5.1.31-1) unstable; urgency=low
+
+  * New upstream release.
+  * Fix some wildcard-matches-nothing-in-dep5-copyright warnings.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Thu, 05 Feb 2015 10:52:57 +0100
+
+manaplus (1.5.1.17-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Mon, 19 Jan 2015 19:32:00 +0100
+
+manaplus (1.5.1.3-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Wed, 07 Jan 2015 11:00:54 +0100
+
+manaplus (1.4.12.20-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Tue, 30 Dec 2014 19:26:33 +0100
+
+manaplus (1.4.12.6-1) unstable; urgency=low
+
+  [ Andrei Karas ]
+  * Updated debian/copyright.
+
+  [ Patrick Matthäi ]
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Fri, 12 Dec 2014 18:24:32 +0100
+
+manaplus (1.4.11.8-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Sun, 09 Nov 2014 21:20:57 +0100
+
+manaplus (1.4.10.25-1) unstable; urgency=low
+
+  [ Andrei Karas ]
+  * Updated debian/copyright.
+
+  [ Patrick Matthäi ]
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Mon, 27 Oct 2014 18:15:40 +0100
+
+manaplus (1.4.10.11-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Sun, 12 Oct 2014 12:23:57 +0200
+
+manaplus (1.4.9.27-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Bump Standards-Version to 3.9.6 (no changes required).
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Tue, 30 Sep 2014 18:10:18 +0200
+
+manaplus (1.4.9.14-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Wed, 17 Sep 2014 10:40:04 +0200
+
+manaplus (1.4.8.30-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Wed, 03 Sep 2014 10:15:37 +0200
+
+manaplus (1.4.8.16-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Wed, 20 Aug 2014 09:15:48 +0200
+
+manaplus (1.4.8.2-1) unstable; urgency=medium
+
+  [ Andrei Karas ]
+  * Enable parallel building (Closes: #755944)
+
+  [ Patrick Matthäi ]
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Thu, 07 Aug 2014 10:14:44 +0200
+
+manaplus (1.4.7.19-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Thu, 24 Jul 2014 19:07:38 +0200
+
+manaplus (1.4.7.5-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Switch away from hardening-wrapper.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Mon, 07 Jul 2014 13:21:59 +0200
+
+manaplus (1.4.6.7-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Tue, 10 Jun 2014 10:47:30 +0200
+
+manaplus (1.4.5.24-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Tue, 27 May 2014 10:43:52 +0200
+
+manaplus (1.4.5.10-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Sat, 10 May 2014 22:13:42 +0200
+
+manaplus (1.4.4.26-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Mon, 28 Apr 2014 09:57:12 +0200
+
+manaplus (1.4.4.12-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Mon, 14 Apr 2014 21:15:45 +0200
+
+manaplus (1.4.3.29-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Mon, 31 Mar 2014 11:43:54 +0200
+
+manaplus (1.4.3.15-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Mon, 17 Mar 2014 10:03:57 +0100
+
+manaplus (1.4.3.1.1-1) unstable; urgency=low
+
+  [ Andrei Karas ]
+  * Remove guichan from dependency.
+
+  [ Patrick Matthäi ]
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Thu, 06 Mar 2014 09:57:20 +0100
+
+manaplus (1.4.2.15-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Thu, 20 Feb 2014 11:25:50 +0100
+
+manaplus (1.4.2.1-1) unstable; urgency=low
+
+  [ Andrei Karas ]
+  * Add missing directories into package
+  * Add fonts-wqy-microhei into recommends
+
+  [ Patrick Matthäi ]
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Wed, 12 Feb 2014 09:14:45 +0100
+
+manaplus (1.4.1.18-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Mon, 20 Jan 2014 10:44:16 +0100
+
+manaplus (1.4.1.4-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Fri, 10 Jan 2014 11:00:12 +0100
+
+manaplus (1.3.12.22-1) unstable; urgency=low
+
+  [ Andrei Karas ]
+  * Update copyright file.
+
+  [ Patrick Matthäi ]
+  * New upstream release.
+  * Remove another extra license file.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Fri, 03 Jan 2014 11:32:13 +0100
+
+manaplus (1.3.11.24-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Mon, 02 Dec 2013 13:52:14 +0100
+
+manaplus (1.3.11.10-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Mon, 18 Nov 2013 15:19:44 +0100
+
+manaplus (1.3.10.27.2-1) unstable; urgency=low
+
+  * New upstream release.
+  * Bump Standards-Version to 3.9.5 (no changes needed).
+  * Don't explicitly request xz compression - dpkg 1.17 does this by default.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Fri, 08 Nov 2013 11:57:04 +0100
+
+manaplus (1.3.10.12-1) unstable; urgency=low
+
+  * New upstream release.
+  * Overwrite false positive lintian warning about a spelling error.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Tue, 15 Oct 2013 10:30:56 +0200
+
+manaplus (1.3.9.29-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Mon, 07 Oct 2013 10:26:14 +0200
+
+manaplus (1.3.9.15-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Tue, 17 Sep 2013 10:35:51 +0200
+
+manaplus (1.3.9.1-1) unstable; urgency=low
+
+  [ Andrei Karas ]
+  * Add new files to copyright file.
+
+  [ Patrick Matthäi ]
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Mon, 02 Sep 2013 10:54:55 +0200
+
+manaplus (1.3.8.18-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Wed, 21 Aug 2013 08:50:08 +0200
+
+manaplus (1.3.8.4-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Tue, 13 Aug 2013 10:18:49 +0200
+
+manaplus (1.3.7.21-1) unstable; urgency=low
+
+  [ Andrei Karas ]
+  * Add new files to copyright file.
+
+  [ Patrick Matthäi ]
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Tue, 23 Jul 2013 12:48:43 +0200
+
+manaplus (1.3.7.7.1-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Thu, 11 Jul 2013 10:09:41 +0200
+
+manaplus (1.3.6.9-1) unstable; urgency=low
+
+  [ Andrei Karas ]
+  * Add new files to copyright file.
+
+  [ Patrick Matthäi ]
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Mon, 10 Jun 2013 10:53:26 +0200
+
+manaplus (1.3.5.26-1) unstable; urgency=low
+
+  [ Andrei Karas ]
+  * Add new files to copyright file.
+  * Update homepage URL.
+
+  [ Patrick Matthäi ]
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Mon, 27 May 2013 09:14:03 +0200
+
+manaplus (1.3.5.12-1) unstable; urgency=low
+
+  [ Andrei Karas ]
+  * Add new files to copyright file.
+
+  [ Patrick Matthäi ]
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Sat, 18 May 2013 21:06:29 +0200
+
+manaplus (1.3.4.28-1) unstable; urgency=low
+
+  [ Andrei Karas ]
+  * Add new files to copyright file.
+
+  [ Patrick Matthäi ]
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Sun, 05 May 2013 21:01:43 +0200
+
+manaplus (1.3.4.14-1) unstable; urgency=low
+
+  [ Andrei Karas ]
+  * Initial release (Closes: #627141)
+
+  [ Patrick Matthäi ]
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Thu, 18 Apr 2013 12:49:18 +0200
