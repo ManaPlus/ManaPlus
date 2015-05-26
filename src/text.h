@@ -24,6 +24,8 @@
 #ifndef TEXT_H
 #define TEXT_H
 
+#include "gui/fonts/textchunk.h"
+
 #include "render/graphics.h"
 
 #include "localconsts.h"
@@ -70,7 +72,8 @@ class Text notfinal
                           const int xOff, const int yOff);
 
     private:
-        Font *mFont;      /**< The font of the text */
+        Font *mFont;           /**< The font of the text */
+        TextChunk mTextChunk;
         int mX;                /**< Actual x-value of left of text written. */
         int mY;                /**< Actual y-value of top of text written. */
         int mWidth;            /**< The width of the text. */
@@ -78,9 +81,10 @@ class Text notfinal
         int mXOffset;          /**< The offset of mX from the desired x. */
         static int mInstances; /**< Instances of text. */
         std::string mText;     /**< The text to display. */
-        const Color *mColor;     /**< The color of the text. */
-        const Color mOutlineColor;
+        const Color *mColor;   /**< The color of the text. */
+        Color mOutlineColor;
         bool mIsSpeech;        /**< Is this text a speech bubble? */
+        bool mTextChanged;
 
     protected:
         static ImageRect mBubble;   /**< Speech bubble graphic */

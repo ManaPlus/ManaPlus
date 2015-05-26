@@ -46,6 +46,7 @@ Text::Text(const std::string &text, const int x, const int y,
            const Color *const color, const bool isSpeech,
            Font *const font) :
     mFont(font ? font : (gui ? gui->getFont() : nullptr)),
+    mTextChunk(),
     mX(x),
     mY(y),
     mWidth(mFont ? mFont->getWidth(text) : 1),
@@ -53,8 +54,9 @@ Text::Text(const std::string &text, const int x, const int y,
     mXOffset(0),
     mText(text),
     mColor(color),
-    mOutlineColor(isSpeech ? color : theme->getColor(Theme::OUTLINE, 255)),
-    mIsSpeech(isSpeech)
+    mOutlineColor(isSpeech ? *color : theme->getColor(Theme::OUTLINE, 255)),
+    mIsSpeech(isSpeech),
+    mTextChanged(true)
 {
     if (!textManager)
     {
@@ -117,10 +119,11 @@ Text::~Text()
 
 void Text::setColor(const Color *const color)
 {
+    mTextChanged = true;
     if (mIsSpeech)
     {
         mColor = color;
-        mOutlineColor = color;
+        mOutlineColor = *color;
     }
     else
     {
@@ -153,9 +156,21 @@ void Text::draw(Graphics *const graphics, const int xOff, const int yOff)
             mBubble);
     }
 
-    mFont->drawString(graphics,
-        *mColor, mOutlineColor,
-        mText, mX - xOff, mY - yOff);
+    if (mTextChanged)
+    {
+        mTextChunk.textFont = mFont;
+        mTextChunk.deleteImage();
+        mTextChunk.text = mText;
+        mTextChunk.color = *mColor;
+        mTextChunk.color2 = mOutlineColor;
+        mFont->generate(mTextChunk);
+        mTextChanged = false;
+    }
+
+    const Image *const image = mTextChunk.img;
+    if (image)
+        graphics->drawImage(image, mX - xOff, mY - yOff);
+
     BLOCK_END("Text::draw")
 }
 
