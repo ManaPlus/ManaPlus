@@ -470,7 +470,7 @@ void BeingHandler::processNameResponse2(Net::MessageIn &msg)
 void BeingHandler::processBeingMove3(Net::MessageIn &msg)
 {
     BLOCK_START("BeingHandler::processBeingMove3")
-    if (!serverFeatures->haveMove3())
+    if (!actorManager || !serverFeatures->haveMove3())
     {
         BLOCK_END("BeingHandler::processBeingMove3")
         return;
