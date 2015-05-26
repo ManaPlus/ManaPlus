@@ -1521,8 +1521,8 @@ manaplustests_SOURCES = ${manaplus_SOURCES} \
 	      utils/files_unittest.cc \
 	      utils/stringutils_unittest.cc \
 	      utils/xmlutils_unittest.cc \
-	      resources/dye_unittest.cc
-#	      resources/mstack_unittest.cc
+	      resources/dye_unittest.cc \
+	      resources/mstack_unittest.cc
 endif
 
 EXTRA_DIST = CMakeLists.txt \

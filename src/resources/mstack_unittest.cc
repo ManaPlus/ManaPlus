@@ -18,148 +18,148 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "catch.hpp"
+
 #include "gui/cliprect.h"
 
 #include "resources/mstack.h"
 
-#include "gtest/gtest.h"
-
 #include "debug.h"
 
-TEST(mstack, push1)
+TEST_CASE("mstack push 1")
 {
     MStack<ClipRect> stack(10);
-    EXPECT_EQ(-1, stack.mPointer - stack.mStack);
-    EXPECT_EQ(0, stack.mStack[0].xOffset);
+    REQUIRE(-1 == (stack.mPointer - stack.mStack));
+    REQUIRE(0 == stack.mStack[0].xOffset);
 
     ClipRect &val1 = stack.push();
     val1.xOffset = 10;
     ClipRect &val2 = stack.top();
-    EXPECT_EQ(0, stack.mPointer - stack.mStack);
-    EXPECT_EQ(10, val2.xOffset);
-    EXPECT_EQ(10, stack.mStack[0].xOffset);
-    EXPECT_EQ(0, stack.mStack[1].xOffset);
+    REQUIRE(0 == stack.mPointer - stack.mStack);
+    REQUIRE(10 == val2.xOffset);
+    REQUIRE(10 == stack.mStack[0].xOffset);
+    REQUIRE(0 == stack.mStack[1].xOffset);
 
     val2.yOffset = 2;
-    EXPECT_EQ(2, val1.yOffset);
+    REQUIRE(2 == val1.yOffset);
 }
 
-TEST(mstack, push2)
+TEST_CASE("mstack push 2")
 {
     MStack<ClipRect> stack(10);
     ClipRect &val1 = stack.push();
     val1.xOffset = 10;
     const ClipRect &val2 = stack.top();
-    EXPECT_EQ(10, val2.xOffset);
-    EXPECT_EQ(10, stack.mStack[0].xOffset);
+    REQUIRE(10 == val2.xOffset);
+    REQUIRE(10 == stack.mStack[0].xOffset);
 
     val1.yOffset = 2;
-    EXPECT_EQ(2, val2.yOffset);
-    EXPECT_EQ(2, stack.mStack[0].yOffset);
+    REQUIRE(2 == val2.yOffset);
+    REQUIRE(2 == stack.mStack[0].yOffset);
 }
 
-TEST(mstack, push3)
+TEST_CASE("mstack push 3")
 {
     MStack<ClipRect> stack(10);
     ClipRect &val1 = stack.push();
     val1.xOffset = 10;
     ClipRect &val2 = stack.top();
-    EXPECT_EQ(10, val2.xOffset);
-    EXPECT_EQ(10, stack.mStack[0].xOffset);
+    REQUIRE(10 == val2.xOffset);
+    REQUIRE(10 == stack.mStack[0].xOffset);
 }
 
-TEST(mstack, push4)
+TEST_CASE("mstack push 4")
 {
     MStack<ClipRect> stack(10);
     ClipRect &val1 = stack.push();
     val1.xOffset = 10;
-    EXPECT_EQ(10, val1.xOffset);
-    EXPECT_EQ(10, stack.mStack[0].xOffset);
-    EXPECT_EQ(0, stack.mStack[1].xOffset);
-    EXPECT_EQ(0, stack.mStack[2].xOffset);
+    REQUIRE(10 == val1.xOffset);
+    REQUIRE(10 == stack.mStack[0].xOffset);
+    REQUIRE(0 == stack.mStack[1].xOffset);
+    REQUIRE(0 == stack.mStack[2].xOffset);
 
     ClipRect &val2 = stack.push();
     val2.xOffset = 20;
-    EXPECT_EQ(20, val2.xOffset);
-    EXPECT_EQ(10, stack.mStack[0].xOffset);
-    EXPECT_EQ(20, stack.mStack[1].xOffset);
-    EXPECT_EQ(0, stack.mStack[2].xOffset);
+    REQUIRE(20 == val2.xOffset);
+    REQUIRE(10 == stack.mStack[0].xOffset);
+    REQUIRE(20 == stack.mStack[1].xOffset);
+    REQUIRE(0 == stack.mStack[2].xOffset);
 
     ClipRect &val3 = stack.push();
     val3.xOffset = 30;
-    EXPECT_EQ(30, val3.xOffset);
-    EXPECT_EQ(10, stack.mStack[0].xOffset);
-    EXPECT_EQ(20, stack.mStack[1].xOffset);
-    EXPECT_EQ(30, stack.mStack[2].xOffset);
+    REQUIRE(30 == val3.xOffset);
+    REQUIRE(10 == stack.mStack[0].xOffset);
+    REQUIRE(20 == stack.mStack[1].xOffset);
+    REQUIRE(30 == stack.mStack[2].xOffset);
 }
 
-TEST(mstack, pop1)
+TEST_CASE("mstack pop 1")
 {
     MStack<ClipRect> stack(10);
     ClipRect &val1 = stack.push();
     val1.xOffset = 10;
-    EXPECT_EQ(10, stack.mStack[0].xOffset);
+    REQUIRE(10 == stack.mStack[0].xOffset);
 
     stack.pop();
-    EXPECT_EQ(-1, stack.mPointer - stack.mStack);
+    REQUIRE(-1 == stack.mPointer - stack.mStack);
 }
 
-TEST(mstack, pop2)
+TEST_CASE("mstack pop 2")
 {
     MStack<ClipRect> stack(10);
     ClipRect &val1 = stack.push();
-    EXPECT_EQ(0, stack.mPointer - stack.mStack);
+    REQUIRE(0 == stack.mPointer - stack.mStack);
 
     val1.xOffset = 10;
-    EXPECT_EQ(10, stack.mStack[0].xOffset);
+    REQUIRE(10 == stack.mStack[0].xOffset);
 
     ClipRect &val2 = stack.push();
-    EXPECT_EQ(1, stack.mPointer - stack.mStack);
+    REQUIRE(1 == stack.mPointer - stack.mStack);
 
     val2.xOffset = 20;
-    EXPECT_EQ(10, stack.mStack[0].xOffset);
-    EXPECT_EQ(20, stack.mStack[1].xOffset);
+    REQUIRE(10 == stack.mStack[0].xOffset);
+    REQUIRE(20 == stack.mStack[1].xOffset);
 
     stack.pop();
-    EXPECT_EQ(0, stack.mPointer - stack.mStack);
-    EXPECT_EQ(10, stack.mStack[0].xOffset);
-    EXPECT_EQ(20, stack.mStack[1].xOffset);
+    REQUIRE(0 == stack.mPointer - stack.mStack);
+    REQUIRE(10 == stack.mStack[0].xOffset);
+    REQUIRE(20 == stack.mStack[1].xOffset);
 
     ClipRect &val3 = stack.top();
-    EXPECT_EQ(0, stack.mPointer - stack.mStack);
-    EXPECT_EQ(10, val1.xOffset);
-    EXPECT_EQ(20, val2.xOffset);
-    EXPECT_EQ(10, val3.xOffset);
-    EXPECT_EQ(10, stack.mStack[0].xOffset);
-    EXPECT_EQ(20, stack.mStack[1].xOffset);
-    EXPECT_EQ(0, stack.mStack[2].xOffset);
+    REQUIRE(0 == stack.mPointer - stack.mStack);
+    REQUIRE(10 == val1.xOffset);
+    REQUIRE(20 == val2.xOffset);
+    REQUIRE(10 == val3.xOffset);
+    REQUIRE(10 == stack.mStack[0].xOffset);
+    REQUIRE(20 == stack.mStack[1].xOffset);
+    REQUIRE(0 == stack.mStack[2].xOffset);
 }
 
-TEST(mstack, clear1)
+TEST_CASE("mstack clear 1")
 {
     MStack<ClipRect> stack(10);
-    EXPECT_EQ(-1, stack.mPointer - stack.mStack);
-    EXPECT_EQ(0, stack.mStack[0].xOffset);
+    REQUIRE(-1 == stack.mPointer - stack.mStack);
+    REQUIRE(0 == stack.mStack[0].xOffset);
 
     ClipRect &val1 = stack.push();
     val1.xOffset = 10;
 
     stack.clear();
-    EXPECT_EQ(-1, stack.mPointer - stack.mStack);
-    EXPECT_EQ(10, stack.mStack[0].xOffset);
-    EXPECT_EQ(0, stack.mStack[1].xOffset);
+    REQUIRE(-1 == stack.mPointer - stack.mStack);
+    REQUIRE(10 == stack.mStack[0].xOffset);
+    REQUIRE(0 == stack.mStack[1].xOffset);
 }
 
-TEST(mstack, getpop1)
+TEST_CASE("mstack getpop 1")
 {
     MStack<ClipRect> stack(10);
     ClipRect &val1 = stack.push();
     val1.xOffset = 10;
-    EXPECT_EQ(10, stack.mStack[0].xOffset);
-    EXPECT_EQ(10, val1.xOffset);
+    REQUIRE(10 == stack.mStack[0].xOffset);
+    REQUIRE(10 == val1.xOffset);
 
     ClipRect &val2 = stack.getPop();
-    EXPECT_EQ(-1, stack.mPointer - stack.mStack);
-    EXPECT_EQ(10, stack.mStack[0].xOffset);
-    EXPECT_EQ(10, val2.xOffset);
+    REQUIRE(-1 == stack.mPointer - stack.mStack);
+    REQUIRE(10 == stack.mStack[0].xOffset);
+    REQUIRE(10 == val2.xOffset);
 }
