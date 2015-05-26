@@ -1517,8 +1517,8 @@ manaplustests_CXXFLAGS = ${manaplus_CXXFLAGS} \
 manaplustests_SOURCES = ${manaplus_SOURCES} \
 	      animatedsprite_unittest.cc \
 	      gui/fonts/textchunklist_unittest.cc \
-	      gui/widgets/browserbox_unittest.cc
-#	      utils/files_unittest.cc \
+	      gui/widgets/browserbox_unittest.cc \
+	      utils/files_unittest.cc
 #	      utils/stringutils_unittest.cc \
 #	      utils/xmlutils_unittest.cc \
 #	      resources/dye_unittest.cc \

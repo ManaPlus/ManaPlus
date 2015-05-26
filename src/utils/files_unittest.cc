@@ -20,17 +20,16 @@
 
 #include "utils/files.h"
 
+#include "catch.hpp"
 #include "logger.h"
 
 #include "utils/physfstools.h"
-
-#include "gtest/gtest.h"
 
 #include "resources/resourcemanager.h"
 
 #include "debug.h"
 
-static void init()
+TEST_CASE("Files renameFile", "files")
 {
     PHYSFS_init("manaplus");
     dirSeparator = "/";
@@ -38,11 +37,7 @@ static void init()
     ResourceManager *resman = ResourceManager::getInstance();
     resman->addToSearchPath("data", false);
     resman->addToSearchPath("../data", false);
-}
 
-TEST(Files, renameFile)
-{
-    init();
     const int sz = 1234567;
     char *buf = new char[sz];
     for (int f = 0; f < sz; f ++)
@@ -54,17 +49,17 @@ TEST(Files, renameFile)
     fwrite(buf, 1, sz, file);
     fclose(file);
 
-    EXPECT_EQ(0, Files::renameFile(name1, name2));
+    REQUIRE(0 == Files::renameFile(name1, name2));
     char *buf2 = new char[sz];
     FILE *file2 = fopen(name2.c_str(), "rb");
-    EXPECT_NE(nullptr, file2);
+    REQUIRE_FALSE(nullptr == file2);
     fread(buf2, 1, sz, file2);
     fclose(file2);
     ::remove(name1.c_str());
     ::remove(name2.c_str());
 
     for (int f = 0; f < sz; f ++)
-        EXPECT_EQ(buf[f], buf2[f]);
+        REQUIRE(buf[f] == buf2[f]);
 
     delete [] buf;
     delete [] buf2;
