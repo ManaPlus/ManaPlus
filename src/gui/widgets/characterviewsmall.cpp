@@ -101,17 +101,19 @@ void CharacterViewSmall::resize()
     if (sz <= 0)
         return;
     const CharacterDisplay *const firtChar = (*mCharacterEntries)[0];
-    const int x = (getWidth() - firtChar->getWidth()) / 2;
-    const int y = (getHeight() - firtChar->getHeight()) / 2;
+    const int w = mDimension.width;
+    const int h = mDimension.height;
+    const int x = (w - firtChar->getWidth()) / 2;
+    const int y = (h - firtChar->getHeight()) / 2;
     FOR_EACHP (std::vector<CharacterDisplay*>::iterator,
                 it, mCharacterEntries)
     {
         (*it)->setPosition(x, y);
     }
-    const int y2 = (getHeight() - mPrevious->getHeight()) / 2;
+    const int y2 = (h - mPrevious->getHeight()) / 2;
     const int y3 = y2 - 55;
     mPrevious->setPosition(x - mPrevious->getWidth() - 10, y3);
-    mNext->setPosition(getWidth() - x + 10, y3);
+    mNext->setPosition(w - x + 10, y3);
     mNumber->setPosition(10, y2);
 }
 
