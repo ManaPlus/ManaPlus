@@ -84,7 +84,8 @@ class BrowserBox final : public Widget,
         /**
          * Sets the BrowserBox opacity.
          */
-        void setOpaque(bool opaque);
+        void setOpaque(bool opaque)
+        { mOpaque = opaque; }
 
         /**
          * Sets the maximum numbers of rows in the browser box. 0 = no limit.
@@ -169,19 +170,19 @@ class BrowserBox final : public Widget,
         bool hasRows() const A_WARN_UNUSED
         { return !mTextRows.empty(); }
 
-        void setAlwaysUpdate(bool n)
+        void setAlwaysUpdate(const bool n)
         { mAlwaysUpdate = n; }
 
-        void setProcessVars(bool n)
+        void setProcessVars(const bool n)
         { mProcessVars = n; }
 
-        void setEnableImages(bool n)
+        void setEnableImages(const bool n)
         { mEnableImages = n; }
 
-        void setEnableKeys(bool n)
+        void setEnableKeys(const bool n)
         { mEnableKeys = n; }
 
-        void setEnableTabs(bool n)
+        void setEnableTabs(const bool n)
         { mEnableTabs = n; }
 
         std::string getTextAtPos(const int x, const int y) const A_WARN_UNUSED;
@@ -192,7 +193,7 @@ class BrowserBox final : public Widget,
         void setForegroundColorAll(const Color &color1,
                                    const Color &color2);
 
-        int getDataWidth() const
+        int getDataWidth() const A_WARN_UNUSED
         { return mDataWidth; }
 
         void moveSelectionUp();

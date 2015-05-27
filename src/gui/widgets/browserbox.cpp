@@ -54,7 +54,8 @@ namespace
     struct MouseOverLink final
     {
         MouseOverLink(const int x, const int y) :
-            mX(x), mY(y)
+            mX(x),
+            mY(y)
         { }
 
         bool operator() (const BrowserLink &link) const
@@ -62,12 +63,17 @@ namespace
             return (mX >= link.x1 && mX < link.x2 &&
                     mY >= link.y1 && mY < link.y2);
         }
-        int mX, mY;
+        const int mX;
+        const int mY;
     };
 }  // namespace
 
 ImageSet *BrowserBox::mEmotes = nullptr;
 int BrowserBox::mInstances = 0;
+
+#define readColor(color) \
+    mColors[0][color] = getThemeColor(Theme::color); \
+    mColors[1][color] = getThemeColor(Theme::color##_OUTLINE)
 
 BrowserBox::BrowserBox(const Widget2 *const widget,
                        const unsigned int mode,
@@ -131,27 +137,16 @@ BrowserBox::BrowserBox(const Widget2 *const widget,
             mHighMode |= UNDERLINE;
     }
 
-    mColors[0][BLACK] = getThemeColor(Theme::BLACK);
-    mColors[0][RED] = getThemeColor(Theme::RED);
-    mColors[0][GREEN] = getThemeColor(Theme::GREEN);
-    mColors[0][BLUE] = getThemeColor(Theme::BLUE);
-    mColors[0][ORANGE] = getThemeColor(Theme::ORANGE);
-    mColors[0][YELLOW] = getThemeColor(Theme::YELLOW);
-    mColors[0][PINK] = getThemeColor(Theme::PINK);
-    mColors[0][PURPLE] = getThemeColor(Theme::PURPLE);
-    mColors[0][GRAY] = getThemeColor(Theme::GRAY);
-    mColors[0][BROWN] = getThemeColor(Theme::BROWN);
-
-    mColors[1][BLACK] = getThemeColor(Theme::BLACK_OUTLINE);
-    mColors[1][RED] = getThemeColor(Theme::RED_OUTLINE);
-    mColors[1][GREEN] = getThemeColor(Theme::GREEN_OUTLINE);
-    mColors[1][BLUE] = getThemeColor(Theme::BLUE_OUTLINE);
-    mColors[1][ORANGE] = getThemeColor(Theme::ORANGE_OUTLINE);
-    mColors[1][YELLOW] = getThemeColor(Theme::YELLOW_OUTLINE);
-    mColors[1][PINK] = getThemeColor(Theme::PINK_OUTLINE);
-    mColors[1][PURPLE] = getThemeColor(Theme::PURPLE_OUTLINE);
-    mColors[1][GRAY] = getThemeColor(Theme::GRAY_OUTLINE);
-    mColors[1][BROWN] = getThemeColor(Theme::BROWN_OUTLINE);
+    readColor(BLACK);
+    readColor(RED);
+    readColor(GREEN);
+    readColor(BLUE);
+    readColor(ORANGE);
+    readColor(YELLOW);
+    readColor(PINK);
+    readColor(PURPLE);
+    readColor(GRAY);
+    readColor(BROWN);
 
     mForegroundColor = getThemeColor(Theme::BROWSERBOX);
     mForegroundColor2 = getThemeColor(Theme::BROWSERBOX_OUTLINE);
@@ -182,11 +177,6 @@ BrowserBox::~BrowserBox()
 void BrowserBox::setLinkHandler(LinkHandler* linkHandler)
 {
     mLinkHandler = linkHandler;
-}
-
-void BrowserBox::setOpaque(bool opaque)
-{
-    mOpaque = opaque;
 }
 
 void BrowserBox::addRow(const std::string &row, const bool atTop)
@@ -479,13 +469,14 @@ void BrowserBox::draw(Graphics *graphics)
     if (mYStart < 0)
         mYStart = 0;
 
-    if (getWidth() != mWidth)
+    if (mDimension.width != mWidth)
         updateHeight();
 
     if (mOpaque)
     {
         graphics->setColor(mBackgroundColor);
-        graphics->fillRectangle(Rect(0, 0, getWidth(), getHeight()));
+        graphics->fillRectangle(Rect(0, 0,
+            mDimension.width, mDimension.height));
     }
 
     if (mSelectedLink >= 0 && mSelectedLink
@@ -493,22 +484,24 @@ void BrowserBox::draw(Graphics *graphics)
     {
         if ((mHighMode & BACKGROUND))
         {
+            BrowserLink &link = mLinks[mSelectedLink];
             graphics->setColor(mHighlightColor);
             graphics->fillRectangle(Rect(
-                mLinks[mSelectedLink].x1,
-                mLinks[mSelectedLink].y1,
-                mLinks[mSelectedLink].x2 - mLinks[mSelectedLink].x1,
-                mLinks[mSelectedLink].y2 - mLinks[mSelectedLink].y1));
+                link.x1,
+                link.y1,
+                link.x2 - link.x1,
+                link.y2 - link.y1));
         }
 
         if ((mHighMode & UNDERLINE))
         {
+            BrowserLink &link = mLinks[mSelectedLink];
             graphics->setColor(mHyperLinkColor);
             graphics->drawLine(
-                mLinks[mSelectedLink].x1,
-                mLinks[mSelectedLink].y2,
-                mLinks[mSelectedLink].x2,
-                mLinks[mSelectedLink].y2);
+                link.x1,
+                link.y2,
+                link.x2,
+                link.y2);
         }
     }
 
@@ -559,7 +552,7 @@ int BrowserBox::calcHeight()
     unsigned int y = mPadding;
     int wrappedLines = 0;
     int moreHeight = 0;
-    int maxWidth = getWidth() - mPadding;
+    int maxWidth = mDimension.width - mPadding;
     int link = 0;
     bool bold = false;
     unsigned int wWidth = maxWidth;
@@ -625,6 +618,8 @@ int BrowserBox::calcHeight()
         prevColor[1] = selColor[1];
         bold = false;
 
+        const int xPadding = mNewLinePadding + mPadding;
+
         for (size_t start = 0, end = std::string::npos;
              start != std::string::npos;
              start = end, end = std::string::npos)
@@ -635,7 +630,7 @@ int BrowserBox::calcHeight()
             if (wrapped)
             {
                 y += fontHeight;
-                x = mNewLinePadding + mPadding;
+                x = xPadding;
                 wrapped = false;
             }
 
@@ -746,10 +741,11 @@ int BrowserBox::calcHeight()
                         const int size =
                             font->getWidth(mLinks[link].caption) + 1;
 
-                        mLinks[link].x1 = x;
-                        mLinks[link].y1 = y;
-                        mLinks[link].x2 = mLinks[link].x1 + size;
-                        mLinks[link].y2 = y + fontHeight - 1;
+                        BrowserLink &linkRef = mLinks[link];
+                        linkRef.x1 = x;
+                        linkRef.y1 = y;
+                        linkRef.x2 = linkRef.x1 + size;
+                        linkRef.y2 = y + fontHeight - 1;
                         link++;
                     }
 
@@ -899,8 +895,8 @@ void BrowserBox::updateHeight()
     if (mAlwaysUpdate || mUpdateTime != cur_time
         || mTextRows.size() < 3 || !mUpdateTime)
     {
-        mWidth = getWidth();
-        mHeight = calcHeight();
+        mWidth = mDimension.width;
+        mHeight = mDimension.height;
         setHeight(mHeight);
         mUpdateTime = cur_time;
     }
