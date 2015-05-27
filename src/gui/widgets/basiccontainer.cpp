@@ -382,38 +382,35 @@ void BasicContainer::logicChildren()
     BLOCK_END("BasicContainer::logicChildren")
 }
 
-void BasicContainer::showWidgetPart(Widget *const widget, Rect area)
+void BasicContainer::showWidgetPart(Widget *const widget, const Rect &area)
 {
     const Rect widgetArea = getChildrenArea();
 
     const int x = widget->mDimension.x;
     const int y = widget->mDimension.y;
-    area.x += x;
-    area.y += y;
+    const int ax = area.x + x;
+    const int ay = area.y + y;
 
-    if (area.x + area.width > widgetArea.width)
-        widget->setX(x - area.x - area.width + widgetArea.width);
+    if (ax < 0)
+        widget->setX(-area.x);
+    else if (ax + area.width > widgetArea.width)
+        widget->setX(widgetArea.width - area.x - area.width);
 
-    if (area.y + area.height > widgetArea.height)
-        widget->setY(y - area.y - area.height + widgetArea.height);
-
-    if (area.x < 0)
-        widget->setX(x - area.x);
-
-    if (area.y < 0)
-        widget->setY(y - area.y);
+    if (ay < 0)
+        widget->setY(-area.y);
+    else if (ay + area.height > widgetArea.height)
+        widget->setY(widgetArea.height - area.y - area.height);
 }
 
 void BasicContainer::setInternalFocusHandler(FocusHandler* focusHandler)
 {
     Widget::setInternalFocusHandler(focusHandler);
 
+    FocusHandler *handler = mInternalFocusHandler ?
+        mInternalFocusHandler : getFocusHandler();
     FOR_EACH (WidgetListConstIterator, iter, mWidgets)
     {
-        if (!mInternalFocusHandler)
-            (*iter)->setFocusHandler(getFocusHandler());
-        else
-            (*iter)->setFocusHandler(mInternalFocusHandler);
+        (*iter)->setFocusHandler(handler);
     }
 }
 

@@ -968,7 +968,7 @@ class Widget notfinal : public Widget2
           * @since 0.1.0
           */
         virtual void showWidgetPart(Widget *const widget A_UNUSED,
-                                    Rect area A_UNUSED)
+                                    const Rect &area A_UNUSED)
         { }
 
         /**

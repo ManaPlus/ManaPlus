@@ -412,7 +412,8 @@ class ScrollArea final : public BasicContainer,
         int getDownButtonScrollAmount() const
         { return mDownButtonScrollAmount; }
 
-        void showWidgetPart(Widget *const widget, Rect area) override final;
+        void showWidgetPart(Widget *const widget,
+                            const Rect &area) override final;
 
         Rect getChildrenArea() override final;
 
