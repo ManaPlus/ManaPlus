@@ -41,9 +41,11 @@
 int Text::mInstances = 0;
 ImageRect Text::mBubble;
 
-Text::Text(const std::string &text, const int x, const int y,
+Text::Text(const std::string &text,
+           const int x, const int y,
            const Graphics::Alignment alignment,
-           const Color *const color, const bool isSpeech,
+           const Color *const color,
+           const Speech isSpeech,
            Font *const font) :
     mFont(font ? font : (gui ? gui->getFont() : nullptr)),
     mTextChunk(),
@@ -54,7 +56,8 @@ Text::Text(const std::string &text, const int x, const int y,
     mXOffset(0),
     mText(text),
     mColor(color),
-    mOutlineColor(isSpeech ? *color : theme->getColor(Theme::OUTLINE, 255)),
+    mOutlineColor(isSpeech == Speech_true ?
+        *color : theme->getColor(Theme::OUTLINE, 255)),
     mIsSpeech(isSpeech),
     mTextChanged(true)
 {
@@ -120,7 +123,7 @@ Text::~Text()
 void Text::setColor(const Color *const color)
 {
     mTextChanged = true;
-    if (mIsSpeech)
+    if (mIsSpeech == Speech_true)
     {
         mColor = color;
         mOutlineColor = *color;
@@ -147,7 +150,7 @@ void Text::adviseXY(const int x, const int y, const bool move)
 void Text::draw(Graphics *const graphics, const int xOff, const int yOff)
 {
     BLOCK_START("Text::draw")
-    if (mIsSpeech)
+    if (mIsSpeech == Speech_true)
     {
         graphics->drawImageRect(mX - xOff - 5,
             mY - yOff - 5,
@@ -179,7 +182,7 @@ FlashText::FlashText(const std::string &text,
                      const Graphics::Alignment alignment,
                      const Color *const color,
                      Font *const font) :
-    Text(text, x, y, alignment, color, false, font),
+    Text(text, x, y, alignment, color, Speech_false, font),
     mTime(0)
 {
 }

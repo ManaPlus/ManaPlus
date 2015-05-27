@@ -24,6 +24,8 @@
 #ifndef TEXT_H
 #define TEXT_H
 
+#include "enums/simpletypes/speech.h"
+
 #include "gui/fonts/textchunk.h"
 
 #include "render/graphics.h"
@@ -40,9 +42,11 @@ class Text notfinal
         /**
          * Constructor creates a text object to display on the screen.
          */
-        Text(const std::string &text, const int x, const int y,
+        Text(const std::string &text,
+             const int x, const int y,
              const Graphics::Alignment alignment,
-             const Color *const color, const bool isSpeech = false,
+             const Color *const color,
+             const Speech isSpeech = Speech_false,
              Font *const font = nullptr);
 
         A_DELETE_COPY(Text)
@@ -83,7 +87,7 @@ class Text notfinal
         std::string mText;     /**< The text to display. */
         const Color *mColor;   /**< The color of the text. */
         Color mOutlineColor;
-        bool mIsSpeech;        /**< Is this text a speech bubble? */
+        Speech mIsSpeech;      /**< Is this text a speech bubble? */
         bool mTextChanged;
 
     protected:

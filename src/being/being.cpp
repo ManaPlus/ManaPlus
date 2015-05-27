@@ -567,10 +567,11 @@ void Being::setSpeech(const std::string &text, const std::string &channel,
     {
         delete mText;
         mText = new Text(mSpeech,
-                         getPixelX(), getPixelY() - getHeight(),
-                         Graphics::CENTER,
-                         &userPalette->getColor(UserPalette::PARTICLE),
-                         true);
+            getPixelX(),
+            getPixelY() - getHeight(),
+            Graphics::CENTER,
+            &userPalette->getColor(UserPalette::PARTICLE),
+            Speech_true);
     }
     else
     {
@@ -1875,9 +1876,12 @@ void Being::drawSpeech(const int offsetX, const int offsetY)
 
         if (!mText && userPalette)
         {
-            mText = new Text(mSpeech, getPixelX(), getPixelY() - getHeight(),
-                Graphics::CENTER, &theme->getColor(
-                Theme::BUBBLE_TEXT, 255), true);
+            mText = new Text(mSpeech,
+                getPixelX(),
+                getPixelY() - getHeight(),
+                Graphics::CENTER,
+                &theme->getColor(Theme::BUBBLE_TEXT, 255),
+                Speech_true);
         }
     }
     else if (speech == BeingSpeech::NO_SPEECH)

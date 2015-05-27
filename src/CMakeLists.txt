@@ -1075,6 +1075,7 @@ SET(SRCS
     enums/simpletypes/showcenter.h
     enums/simpletypes/simpledefines.h
     enums/simpletypes/skiperror.h
+    enums/simpletypes/speech.h
     enums/simpletypes/trading.h
     enums/simpletypes/tryremovecolors.h
     enums/simpletypes/useargs.h
