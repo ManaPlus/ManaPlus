@@ -129,9 +129,9 @@ TextCommandEditor::TextCommandEditor(TextCommand *const command) :
     mDeleteButton->adjustSize();
 
     if (command->getCommandType() == TEXT_COMMAND_MAGIC)
-        showControls(true);
+        showControls(Visible_true);
     else
-        showControls(false);
+        showControls(Visible_false);
 
     mSymbolTextField->setText(command->getSymbol());
     mCommandTextField->setText(command->getCommand());
@@ -188,7 +188,7 @@ void TextCommandEditor::postInit()
 {
     Window::postInit();
     enableVisibleSound(true);
-    setVisible(true);
+    setVisible(Visible_true);
 }
 
 TextCommandEditor::~TextCommandEditor()
@@ -204,12 +204,12 @@ void TextCommandEditor::action(const ActionEvent &event)
     if (eventId == "magic")
     {
         mIsMagicCommand = true;
-        showControls(true);
+        showControls(Visible_true);
     }
     else if (eventId == "other")
     {
         mIsMagicCommand = false;
-        showControls(false);
+        showControls(Visible_false);
     }
     else if (eventId == "save")
     {
@@ -227,7 +227,7 @@ void TextCommandEditor::action(const ActionEvent &event)
     }
 }
 
-void TextCommandEditor::showControls(const bool show)
+void TextCommandEditor::showControls(const Visible show)
 {
     mManaField->setVisible(show);
     mManaLabel->setVisible(show);

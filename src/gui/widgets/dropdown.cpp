@@ -373,7 +373,7 @@ void DropDown::hideDrop(bool event)
 {
     if (event)
         distributeActionEvent();
-    mPopup->setVisible(false);
+    mPopup->setVisible(Visible_false);
 }
 
 void DropDown::mousePressed(MouseEvent& event)

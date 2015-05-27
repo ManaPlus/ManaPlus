@@ -49,19 +49,19 @@ void PopupManager::closePopupMenu()
 void PopupManager::hideBeingPopup()
 {
     if (beingPopup)
-        beingPopup->setVisible(false);
+        beingPopup->setVisible(Visible_false);
 }
 
 void PopupManager::hideTextPopup()
 {
     if (textPopup)
-        textPopup->setVisible(false);
+        textPopup->setVisible(Visible_false);
 }
 
 void PopupManager::hidePopupMenu()
 {
     if (popupMenu)
-        popupMenu->setVisible(false);
+        popupMenu->setVisible(Visible_false);
 }
 
 bool PopupManager::isPopupMenuVisible()

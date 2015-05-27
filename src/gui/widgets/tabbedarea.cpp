@@ -646,13 +646,13 @@ void TabbedArea::updateArrowEnableState()
         - mArrowButton[0]->getWidth()
         - mArrowButton[1]->getWidth() - mRightMargin)
     {
-        mArrowButton[0]->setVisible(true);
-        mArrowButton[1]->setVisible(true);
+        mArrowButton[0]->setVisible(Visible_true);
+        mArrowButton[1]->setVisible(Visible_true);
     }
     else
     {
-        mArrowButton[0]->setVisible(false);
-        mArrowButton[1]->setVisible(false);
+        mArrowButton[0]->setVisible(Visible_false);
+        mArrowButton[1]->setVisible(Visible_false);
         mTabScrollIndex = 0;
     }
 

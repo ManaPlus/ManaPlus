@@ -99,7 +99,7 @@ void TextPopup::show(const int x, const int y, const std::string &str1,
         posY = y - rect.height - distance;
 
     setPosition(posX, posY);
-    setVisible(true);
+    setVisible(Visible_true);
     requestMoveToTop();
 }
 
@@ -108,5 +108,5 @@ void TextPopup::mouseMoved(MouseEvent &event)
     Popup::mouseMoved(event);
 
     // When the mouse moved on top of the popup, hide it
-    setVisible(false);
+    setVisible(Visible_false);
 }

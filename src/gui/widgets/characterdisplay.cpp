@@ -113,12 +113,12 @@ void CharacterDisplay::update()
 
 void CharacterDisplay::widgetHidden(const Event &event A_UNUSED)
 {
-    textPopup->setVisible(false);
+    textPopup->setVisible(Visible_false);
 }
 
 void CharacterDisplay::mouseExited(MouseEvent &event A_UNUSED)
 {
-    textPopup->setVisible(false);
+    textPopup->setVisible(Visible_false);
 }
 
 void CharacterDisplay::mouseMoved(MouseEvent &event A_UNUSED)
@@ -140,7 +140,7 @@ void CharacterDisplay::mouseMoved(MouseEvent &event A_UNUSED)
     }
     else
     {
-        textPopup->setVisible(false);
+        textPopup->setVisible(Visible_false);
     }
 }
 

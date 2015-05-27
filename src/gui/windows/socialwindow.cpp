@@ -97,7 +97,7 @@ void SocialWindow::postInit()
 {
     Window::postInit();
     setWindowName("Social");
-    setVisible(false);
+    setVisible(Visible_false);
     setSaveVisible(true);
     setResizable(true);
     setSaveVisible(true);

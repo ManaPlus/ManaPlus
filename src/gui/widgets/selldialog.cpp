@@ -159,7 +159,7 @@ void SellDialog::postInit()
     loadWindowState();
 
     instances.push_back(this);
-    setVisible(true);
+    setVisible(Visible_true);
     enableVisibleSound(true);
 }
 
@@ -327,11 +327,11 @@ void SellDialog::updateButtonsAndLabels()
         item->update();
 }
 
-void SellDialog::setVisible(bool visible)
+void SellDialog::setVisible(Visible visible)
 {
     Window::setVisible(visible);
 
-    if (visible)
+    if (visible == Visible_true)
     {
         if (mShopItemList)
             mShopItemList->requestFocus();

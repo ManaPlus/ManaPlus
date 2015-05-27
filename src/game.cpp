@@ -192,7 +192,7 @@ static void createGuiWindows()
     equipmentWindow->postInit();
     beingEquipmentWindow = new EquipmentWindow(nullptr, nullptr, true);
     beingEquipmentWindow->postInit();
-    beingEquipmentWindow->setVisible(false);
+    beingEquipmentWindow->setVisible(Visible_false);
     statusWindow = new StatusWindow;
     statusWindow->postInit();
     miniStatusWindow = new MiniStatusWindow;
@@ -225,7 +225,7 @@ static void createGuiWindows()
     }
     if (config.getBoolValue("showDidYouKnow"))
     {
-        didYouKnowWindow->setVisible(true);
+        didYouKnowWindow->setVisible(Visible_true);
         didYouKnowWindow->loadData();
     }
 

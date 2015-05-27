@@ -176,7 +176,8 @@ ChatWindow::ChatWindow() :
     // Add key listener to chat input to be able to respond to up/down
     mChatInput->addKeyListener(this);
     mCurHist = mHistory.end();
-    mColorPicker->setVisible(config.getBoolValue("showChatColorsList"));
+    mColorPicker->setVisible(fromBool(config.getBoolValue(
+        "showChatColorsList"), Visible));
     updateTabsMargin();
 
     fillCommands();
@@ -285,13 +286,14 @@ void ChatWindow::adjustTabSize()
         w -= mEmoteButtonSpacing;
         y += mEmoteButtonY;
         mChatInput->setWidth(w);
-        mChatButton->setVisible(mChatInput->isVisibleLocal());
+        mChatButton->setVisible(fromBool(mChatInput->isVisibleLocal(),
+            Visible));
         mChatButton->setPosition(x, y);
     }
     else
     {
         mChatInput->setWidth(awFrame2);
-        mChatButton->setVisible(false);
+        mChatButton->setVisible(Visible_false);
     }
 
     const ChatTab *const tab = getFocused();
@@ -435,7 +437,7 @@ void ChatWindow::action(const ActionEvent &event)
             // If the chatWindow is shown up because you want to send a message
             // It should hide now
             if (mTmpVisible)
-                setVisible(false);
+                setVisible(Visible_false);
         }
     }
     else if (eventId == "emote")
@@ -496,8 +498,8 @@ void ChatWindow::action(const ActionEvent &event)
     if (mColorPicker && mColorPicker->isVisibleLocal()
         != config.getBoolValue("showChatColorsList"))
     {
-        mColorPicker->setVisible(config.getBoolValue(
-            "showChatColorsList"));
+        mColorPicker->setVisible(fromBool(config.getBoolValue(
+            "showChatColorsList"), Visible));
     }
 }
 
@@ -506,7 +508,7 @@ bool ChatWindow::requestChatFocus()
     // Make sure chatWindow is visible
     if (!isWindowVisible())
     {
-        setVisible(true);
+        setVisible(Visible_true);
 
         /*
          * This is used to hide chatWindow after sending the message. There is
@@ -521,7 +523,7 @@ bool ChatWindow::requestChatFocus()
         return false;
 
     // Give focus to the chat input
-    mChatInput->processVisible(true);
+    mChatInput->processVisible(Visible_true);
     unHideWindow();
     mChatInput->requestFocus();
     return true;
@@ -814,7 +816,7 @@ void ChatWindow::keyPressed(KeyEvent &event)
     else if (actionId == static_cast<int>(InputAction::GUI_CANCEL) &&
              mChatInput->isVisibleLocal())
     {
-        mChatInput->processVisible(false);
+        mChatInput->processVisible(Visible_false);
     }
     else if (actionId == static_cast<int>(InputAction::CHAT_PREV_HISTORY) &&
              mChatInput->isVisibleLocal())
@@ -1022,7 +1024,7 @@ void ChatWindow::addItemText(const std::string &item)
     addInputText(text.str());
 }
 
-void ChatWindow::setVisible(bool visible)
+void ChatWindow::setVisible(Visible visible)
 {
     Window::setVisible(visible);
 

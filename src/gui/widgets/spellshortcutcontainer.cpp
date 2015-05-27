@@ -336,7 +336,7 @@ void SpellShortcutContainer::mouseMoved(MouseEvent &event)
         return;
 
     const int itemId = getItemByIndex(index);
-    spellPopup->setVisible(false);
+    spellPopup->setVisible(Visible_false);
     const TextCommand *const spell = spellManager->getSpell(itemId);
     if (spell && !spell->isEmpty())
     {
@@ -345,20 +345,20 @@ void SpellShortcutContainer::mouseMoved(MouseEvent &event)
     }
     else
     {
-        spellPopup->setVisible(false);
+        spellPopup->setVisible(Visible_false);
     }
 }
 
 void SpellShortcutContainer::mouseExited(MouseEvent &event A_UNUSED)
 {
     if (spellPopup)
-        spellPopup->setVisible(false);
+        spellPopup->setVisible(Visible_false);
 }
 
 void SpellShortcutContainer::widgetHidden(const Event &event A_UNUSED)
 {
     if (spellPopup)
-        spellPopup->setVisible(false);
+        spellPopup->setVisible(Visible_false);
 }
 
 int SpellShortcutContainer::getItemByIndex(const int index) const

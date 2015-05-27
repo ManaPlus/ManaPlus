@@ -100,7 +100,7 @@ void BuySellDialog::init()
     enableVisibleSound(true);
 
     dialogInstances.push_back(this);
-    setVisible(true);
+    setVisible(Visible_true);
 }
 
 BuySellDialog::~BuySellDialog()
@@ -108,11 +108,11 @@ BuySellDialog::~BuySellDialog()
     dialogInstances.remove(this);
 }
 
-void BuySellDialog::setVisible(bool visible)
+void BuySellDialog::setVisible(Visible visible)
 {
     Window::setVisible(visible);
 
-    if (visible)
+    if (visible == Visible_true)
     {
         if (mBuyButton)
             mBuyButton->requestFocus();

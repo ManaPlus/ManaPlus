@@ -23,6 +23,8 @@
 #ifndef GUI_WIDGETS_SELLDIALOG_H
 #define GUI_WIDGETS_SELLDIALOG_H
 
+#include "enums/simpletypes/visible.h"
+
 #include "gui/widgets/window.h"
 
 #include "listeners/actionlistener.h"
@@ -88,7 +90,7 @@ class SellDialog notfinal : public Window,
         /**
          * Sets the visibility of this window.
          */
-        void setVisible(bool visible) override final;
+        void setVisible(Visible visible) override final;
 
         void addItem(const int id,
                      const int type,

@@ -99,7 +99,7 @@ Widget::Widget(const Widget2 *const widget) :
     mCurrentFont(nullptr),
     mFrameSize(0),
     mFocusable(false),
-    mVisible(true),
+    mVisible(Visible_true),
     mTabIn(true),
     mTabOut(true),
     mEnabled(true),
@@ -217,12 +217,12 @@ void Widget::requestMoveToBottom()
         mParent->moveToBottom(this);
 }
 
-void Widget::setVisible(bool visible)
+void Widget::setVisible(Visible visible)
 {
-    if (!visible && isFocused() && mFocusHandler)
+    if (visible == Visible_false && isFocused() && mFocusHandler)
         mFocusHandler->focusNone();
 
-    if (visible)
+    if (visible == Visible_true)
         distributeShownEvent();
     else
         distributeHiddenEvent();

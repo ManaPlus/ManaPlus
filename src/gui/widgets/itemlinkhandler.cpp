@@ -116,7 +116,7 @@ void ItemLinkHandler::handleLink(const std::string &link, MouseEvent *event)
             itemPopup->setItem(itemInfo, color, true);
             if (itemPopup->isPopupVisible())
             {
-                itemPopup->setVisible(false);
+                itemPopup->setVisible(Visible_false);
             }
             else if (viewport)
             {

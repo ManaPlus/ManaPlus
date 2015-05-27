@@ -23,6 +23,8 @@
 #ifndef GUI_WINDOWS_NPCDIALOG_H
 #define GUI_WINDOWS_NPCDIALOG_H
 
+#include "enums/simpletypes/visible.h"
+
 #include "gui/models/extendedlistmodel.h"
 
 #include "gui/widgets/window.h"
@@ -162,7 +164,7 @@ class NpcDialog final : public Window,
 
         void move(const int amount);
 
-        void setVisible(bool visible) override final;
+        void setVisible(Visible visible) override final;
 
         void optionChanged(const std::string &name) override final;
 

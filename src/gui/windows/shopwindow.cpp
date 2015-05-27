@@ -224,7 +224,7 @@ ShopWindow::ShopWindow() :
 void ShopWindow::postInit()
 {
     Window::postInit();
-    setVisible(false);
+    setVisible(Visible_false);
     enableVisibleSound(true);
     updateSelection();
 }
@@ -469,7 +469,7 @@ void ShopWindow::updateButtonsAndLabels()
         mRenameButton->setEnabled(!mEnableVending);
 }
 
-void ShopWindow::setVisible(bool visible)
+void ShopWindow::setVisible(Visible visible)
 {
     Window::setVisible(visible);
 }

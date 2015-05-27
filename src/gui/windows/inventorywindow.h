@@ -25,6 +25,8 @@
 
 #include "inventory.h"
 
+#include "enums/simpletypes/visible.h"
+
 #include "gui/widgets/window.h"
 
 #include "listeners/actionlistener.h"
@@ -122,7 +124,7 @@ class InventoryWindow final : public Window,
         /**
          * Sets whether the split button should be shown.
          */
-        void setSplitAllowed(const bool allowed);
+        void setSplitAllowed(const Visible allowed);
 
         /**
          * Closes the Storage Window, as well as telling the server that the
@@ -153,7 +155,7 @@ class InventoryWindow final : public Window,
 
         void mouseExited(MouseEvent &event) override final;
 
-        void setVisible(bool visible) override final;
+        void setVisible(Visible visible) override final;
 
         void unsetInventory();
 

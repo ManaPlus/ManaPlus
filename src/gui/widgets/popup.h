@@ -171,7 +171,7 @@ class Popup notfinal : public Container,
         void widgetMoved(const Event &event) override final;
 
         bool isPopupVisible() const
-        { return mVisible; }
+        { return mVisible == Visible_true; }
 
         virtual void postInit()
         { mInit = true; }

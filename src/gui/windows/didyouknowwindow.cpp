@@ -112,7 +112,7 @@ void DidYouKnowWindow::action(const ActionEvent &event)
     const std::string &eventId = event.getId();
     if (eventId == "close")
     {
-        setVisible(false);
+        setVisible(Visible_false);
     }
     else
     {
@@ -177,10 +177,10 @@ void DidYouKnowWindow::loadFile(const int num)
         mBrowserBox->addRow(lines[i]);
 }
 
-void DidYouKnowWindow::setVisible(bool visible)
+void DidYouKnowWindow::setVisible(Visible visible)
 {
     Window::setVisible(visible);
 
-    if (visible || isWindowVisible())
+    if (visible == Visible_true || isWindowVisible())
         loadData();
 }

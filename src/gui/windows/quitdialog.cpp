@@ -122,7 +122,7 @@ void QuitDialog::postInit()
 {
     Window::postInit();
     setLocationRelativeTo(getParent());
-    setVisible(true);
+    setVisible(Visible_true);
     soundManager.playGuiSound(SOUND_SHOW_WINDOW);
     requestModalFocus();
     mOkButton->requestFocus();

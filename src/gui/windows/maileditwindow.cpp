@@ -77,7 +77,7 @@ MailEditWindow::MailEditWindow() :
     setCloseButton(true);
     setSaveVisible(false);
     setStickyButtonLock(true);
-    setVisible(true);
+    setVisible(Visible_true);
 
     setDefaultSize(380, 200, ImageRect::CENTER);
     setMinWidth(200);

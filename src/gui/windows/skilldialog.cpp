@@ -165,7 +165,7 @@ void SkillDialog::action(const ActionEvent &event)
     }
     else if (eventId == "close")
     {
-        setVisible(false);
+        setVisible(Visible_false);
     }
 }
 
@@ -242,8 +242,8 @@ void SkillDialog::hideSkills(const SkillOwner::Type owner)
         if (info && info->owner == owner)
         {
             PlayerInfo::setSkillLevel(info->id, 0);
-            if (!info->alwaysVisible)
-                info->visible = false;
+            if (info->alwaysVisible == Visible_false)
+                info->visible = Visible_false;
         }
     }
 }
@@ -324,8 +324,8 @@ void SkillDialog::loadXmlFile(const std::string &fileName)
                             node, "owner", "player"));
                         skill->errorText = XML::getProperty(
                             node, "errorText", name);
-                        skill->alwaysVisible = XML::getBoolProperty(
-                            node, "alwaysVisible", false);
+                        skill->alwaysVisible = fromBool(XML::getBoolProperty(
+                            node, "alwaysVisible", false), Visible);
                         skill->castingSrcEffectId = XML::getProperty(
                             node, "castingSrcEffectId", -1);
                         skill->castingDstEffectId = XML::getProperty(
@@ -336,7 +336,7 @@ void SkillDialog::loadXmlFile(const std::string &fileName)
                     }
 
                     std::string icon = XML::getProperty(node, "icon", "");
-                    const int level = skill->alwaysVisible
+                    const int level = (skill->alwaysVisible == Visible_true)
                         ? 0 : XML::getProperty(node, "level", 0);
                     SkillData *data = skill->getData(level);
                     if (!data)
@@ -414,8 +414,8 @@ void SkillDialog::removeSkill(const int id)
             info->level = 0;
             info->update();
             PlayerInfo::setSkillLevel(id, 0);
-            if (!info->alwaysVisible)
-                info->visible = false;
+            if (info->alwaysVisible == Visible_false)
+                info->visible = Visible_false;
         }
     }
 }
@@ -474,8 +474,8 @@ void SkillDialog::addSkill(const SkillOwner::Type owner,
         data->setIcon("");
         data->shortName = toString(skill->id);
         skill->modifiable = modifiable;
-        skill->visible = false;
-        skill->alwaysVisible = false;
+        skill->visible = Visible_false;
+        skill->alwaysVisible = Visible_false;
         skill->model = mDefaultModel;
         skill->level = level;
         // TRANSLATORS: skills dialog. skill level

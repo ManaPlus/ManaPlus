@@ -64,7 +64,7 @@ ConnectionDialog::ConnectionDialog(const std::string &text,
 void ConnectionDialog::postInit()
 {
     Window::postInit();
-    setVisible(true);
+    setVisible(Visible_true);
 }
 
 void ConnectionDialog::action(const ActionEvent &)

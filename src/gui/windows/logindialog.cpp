@@ -132,7 +132,7 @@ LoginDialog::LoginDialog(LoginData *const data,
         | UpdateType::Custom) ^ UpdateType::Custom);
 
     if (!mCustomUpdateHost->isSelected())
-        mUpdateHostText->setVisible(false);
+        mUpdateHostText->setVisible(Visible_false);
 
     mUserField->setActionEventId("login");
     mPassField->setActionEventId("login");
@@ -170,7 +170,7 @@ LoginDialog::LoginDialog(LoginData *const data,
 void LoginDialog::postInit()
 {
     Window::postInit();
-    setVisible(true);
+    setVisible(Visible_true);
 
     const int h = 200;
     if (mUpdateHostLabel)
@@ -234,12 +234,13 @@ void LoginDialog::action(const ActionEvent &event)
     }
     else if (eventId == "customhost")
     {
-        mUpdateHostText->setVisible(mCustomUpdateHost->isSelected());
+        mUpdateHostText->setVisible(fromBool(
+            mCustomUpdateHost->isSelected(), Visible));
     }
     else if (eventId == "updateselect")
     {
         mCustomUpdateHost->setSelected(false);
-        mUpdateHostText->setVisible(false);
+        mUpdateHostText->setVisible(Visible_false);
     }
 }
 

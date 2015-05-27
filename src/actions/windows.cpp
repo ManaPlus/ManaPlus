@@ -76,7 +76,7 @@ impHandler0(setupWindowShow)
         }
         else
         {
-            setupWindow->setVisible(true);
+            setupWindow->setVisible(Visible_true);
             setupWindow->requestMoveToTop();
         }
         return true;
@@ -97,7 +97,7 @@ static bool showHelpPage(const std::string &page, const bool showHide)
     {
         if (showHide && helpWindow->isWindowVisible())
         {
-            helpWindow->setVisible(false);
+            helpWindow->setVisible(Visible_false);
         }
         else
         {
@@ -151,7 +151,8 @@ static void showHideWindow(Window *const window)
 {
     if (window)
     {
-        window->setVisible(!window->isWindowVisible());
+        window->setVisible(fromBool(
+            !window->isWindowVisible(), Visible));
         if (window->isWindowVisible())
             window->requestMoveToTop();
     }
@@ -318,7 +319,7 @@ impHandler0(quickWindowShow)
         {
             setupWindow->doCancel();
         }
-        setupWindow->setVisible(true);
+        setupWindow->setVisible(Visible_true);
         setupWindow->activateTab(_("Quick"));
         setupWindow->requestMoveToTop();
         return true;

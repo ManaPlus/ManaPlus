@@ -171,9 +171,9 @@ NpcDialog::NpcDialog(const int npcId) :
     setContentSize(260, 175);
     mListScrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
     mItemScrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
-    mItemList->setVisible(true);
-    mTextField->setVisible(true);
-    mIntField->setVisible(true);
+    mItemList->setVisible(Visible_true);
+    mTextField->setVisible(Visible_true);
+    mIntField->setVisible(Visible_true);
 
     const Font *const fnt = mButton->getFont();
     int width = std::max(fnt->getWidth(CAPTION_WAITING),
@@ -194,7 +194,7 @@ NpcDialog::NpcDialog(const int npcId) :
 void NpcDialog::postInit()
 {
     Window::postInit();
-    setVisible(true);
+    setVisible(Visible_true);
     requestFocus();
     enableVisibleSound(true);
     soundManager.playGuiSound(SOUND_SHOW_WINDOW);
@@ -646,11 +646,11 @@ void NpcDialog::move(const int amount)
     }
 }
 
-void NpcDialog::setVisible(bool visible)
+void NpcDialog::setVisible(Visible visible)
 {
     Window::setVisible(visible);
 
-    if (!visible)
+    if (visible == Visible_false)
         scheduleDelete();
 }
 

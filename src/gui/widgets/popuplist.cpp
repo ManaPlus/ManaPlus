@@ -88,7 +88,7 @@ void PopupList::show(int x, int y)
     if (mainGraphics->mHeight < (y + height + 5))
         y = mainGraphics->mHeight - height;
     setPosition(x, y);
-    setVisible(true);
+    setVisible(Visible_true);
     requestMoveToTop();
     if (mModal == Modal_true)
         requestModalFocus();
@@ -154,7 +154,7 @@ void PopupList::mouseReleased(MouseEvent& event)
         return;
     if (mDropDown)
         mDropDown->updateSelection();
-    setVisible(false);
+    setVisible(Visible_false);
     if (mModal == Modal_true)
         releaseModalFocus();
 }
@@ -162,15 +162,18 @@ void PopupList::mouseReleased(MouseEvent& event)
 void PopupList::focusGained(const Event& event)
 {
     const Widget *const source = event.getSource();
-    if (!mVisible || source == this || source == mListBox
-        || source == mScrollArea || source == mDropDown)
+    if (mVisible == Visible_false ||
+        source == this ||
+        source == mListBox ||
+        source == mScrollArea ||
+        source == mDropDown)
     {
         return;
     }
 
     if (mDropDown)
         mDropDown->updateSelection();
-    setVisible(false);
+    setVisible(Visible_false);
     if (mModal == Modal_true)
         releaseModalFocus();
 }

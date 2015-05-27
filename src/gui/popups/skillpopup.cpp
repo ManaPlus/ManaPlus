@@ -125,6 +125,6 @@ void SkillPopup::mouseMoved(MouseEvent &event)
     Popup::mouseMoved(event);
 
     // When the mouse moved on top of the popup, hide it
-    setVisible(false);
+    setVisible(Visible_false);
     mLastId = 0;
 }

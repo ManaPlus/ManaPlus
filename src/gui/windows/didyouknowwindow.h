@@ -23,6 +23,8 @@
 #ifndef GUI_WINDOWS_DIDYOUKNOWWINDOW_H
 #define GUI_WINDOWS_DIDYOUKNOWWINDOW_H
 
+#include "enums/simpletypes/visible.h"
+
 #include "gui/widgets/linkhandler.h"
 #include "gui/widgets/window.h"
 
@@ -63,7 +65,7 @@ class DidYouKnowWindow final : public Window,
 
         void loadData(int num = 0);
 
-        void setVisible(bool visible) override final;
+        void setVisible(Visible visible) override final;
 
     private:
         void loadFile(const int num);

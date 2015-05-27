@@ -91,7 +91,7 @@ void UnRegisterDialog::postInit()
     add(mCancelButton);
 
     center();
-    setVisible(true);
+    setVisible(Visible_true);
     mPasswordField->requestFocus();
     mPasswordField->setActionEventId("cancel");
 }

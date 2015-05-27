@@ -285,7 +285,7 @@ ItemAmountWindow::ItemAmountWindow(const Usage usage, Window *const parent,
 void ItemAmountWindow::postInit()
 {
     Window::postInit();
-    setVisible(mItem);
+    setVisible(fromBool(mItem, Visible));
 }
 
 ItemAmountWindow::~ItemAmountWindow()
@@ -311,7 +311,7 @@ void ItemAmountWindow::mouseMoved(MouseEvent &event)
 void ItemAmountWindow::mouseExited(MouseEvent &event A_UNUSED)
 {
     if (itemPopup)
-        itemPopup->setVisible(false);
+        itemPopup->setVisible(Visible_false);
 }
 
 void ItemAmountWindow::resetAmount()

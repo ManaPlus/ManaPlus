@@ -545,7 +545,7 @@ void ItemShortcutContainer::mouseMoved(MouseEvent &event)
 
     if (itemId < SPELL_MIN_ID)
     {
-        spellPopup->setVisible(false);
+        spellPopup->setVisible(Visible_false);
 
         Inventory *const inv = PlayerInfo::getInventory();
         if (!inv)
@@ -559,12 +559,12 @@ void ItemShortcutContainer::mouseMoved(MouseEvent &event)
         }
         else
         {
-            itemPopup->setVisible(false);
+            itemPopup->setVisible(Visible_false);
         }
     }
     else if (itemId < SKILL_MIN_ID && spellManager)
     {
-        itemPopup->setVisible(false);
+        itemPopup->setVisible(Visible_false);
         const TextCommand *const spell = spellManager->getSpellByItem(itemId);
         if (spell && viewport)
         {
@@ -573,12 +573,12 @@ void ItemShortcutContainer::mouseMoved(MouseEvent &event)
         }
         else
         {
-            spellPopup->setVisible(false);
+            spellPopup->setVisible(Visible_false);
         }
     }
     else if (skillDialog)
     {
-        itemPopup->setVisible(false);
+        itemPopup->setVisible(Visible_false);
     }
 }
 
@@ -586,15 +586,15 @@ void ItemShortcutContainer::mouseMoved(MouseEvent &event)
 void ItemShortcutContainer::mouseExited(MouseEvent &event A_UNUSED)
 {
     if (itemPopup)
-        itemPopup->setVisible(false);
+        itemPopup->setVisible(Visible_false);
     if (spellPopup)
-        spellPopup->setVisible(false);
+        spellPopup->setVisible(Visible_false);
 }
 
 void ItemShortcutContainer::widgetHidden(const Event &event A_UNUSED)
 {
     if (itemPopup)
-        itemPopup->setVisible(false);
+        itemPopup->setVisible(Visible_false);
     if (spellPopup)
-        spellPopup->setVisible(false);
+        spellPopup->setVisible(Visible_false);
 }

@@ -1210,6 +1210,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      enums/simpletypes/tryremovecolors.h \
 	      enums/simpletypes/useargs.h \
 	      enums/simpletypes/useresman.h \
+	      enums/simpletypes/visible.h \
 	      statuseffect.cpp \
 	      statuseffect.h \
 	      render/surfacegraphics.cpp \

@@ -83,7 +83,7 @@ Minimap::Minimap() :
     setSticky(false);
 
     loadWindowState();
-    setVisible(mShow, isSticky());
+    setVisible(fromBool(mShow, Visible), isSticky());
     enableVisibleSound(true);
 }
 
@@ -134,7 +134,7 @@ void Minimap::setMap(const Map *const map)
             if (!surface)
             {
                 if (!isSticky())
-                    setVisible(false);
+                    setVisible(Visible_false);
                 BLOCK_END("Minimap::setMap")
                 return;
             }
@@ -145,7 +145,7 @@ void Minimap::setMap(const Map *const map)
             if (!data)
             {
                 if (!isSticky())
-                    setVisible(false);
+                    setVisible(Visible_false);
                 BLOCK_END("Minimap::setMap")
                 return;
             }
@@ -218,19 +218,19 @@ void Minimap::setMap(const Map *const map)
         resetToDefaultSize();
 
         if (mShow)
-            setVisible(true);
+            setVisible(Visible_true);
     }
     else
     {
         if (!isSticky())
-            setVisible(false);
+            setVisible(Visible_false);
     }
     BLOCK_END("Minimap::setMap")
 }
 
 void Minimap::toggle()
 {
-    setVisible(!isWindowVisible(), isSticky());
+    setVisible(fromBool(!isWindowVisible(), Visible), isSticky());
     mShow = isWindowVisible();
 }
 

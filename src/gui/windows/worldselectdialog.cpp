@@ -89,7 +89,7 @@ WorldSelectDialog::WorldSelectDialog(Worlds worlds) :
 void WorldSelectDialog::postInit()
 {
     Window::postInit();
-    setVisible(true);
+    setVisible(Visible_true);
     mChooseWorld->requestFocus();
 }
 

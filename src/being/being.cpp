@@ -1854,7 +1854,7 @@ void Being::drawSpeech(const int offsetX, const int offsetY)
     if (mSpeechTime == 0)
     {
         if (mSpeechBubble && mSpeechBubble->isVisibleLocal())
-            mSpeechBubble->setVisible(false);
+            mSpeechBubble->setVisible(Visible_false);
         mSpeech.clear();
     }
     else if (mSpeechTime > 0 && (speech == BeingSpeech::NAME_IN_BUBBLE ||
@@ -1866,14 +1866,14 @@ void Being::drawSpeech(const int offsetX, const int offsetY)
         {
             mSpeechBubble->setPosition(px - (mSpeechBubble->getWidth() / 2),
                 py - getHeight() - (mSpeechBubble->getHeight()));
-            mSpeechBubble->setVisible(true);
+            mSpeechBubble->setVisible(Visible_true);
             mSpeechBubble->requestMoveToBackground();
         }
     }
     else if (mSpeechTime > 0 && speech == BeingSpeech::TEXT_OVERHEAD)
     {
         if (mSpeechBubble)
-            mSpeechBubble->setVisible(false);
+            mSpeechBubble->setVisible(Visible_false);
 
         if (!mText && userPalette)
         {
@@ -1888,7 +1888,7 @@ void Being::drawSpeech(const int offsetX, const int offsetY)
     else if (speech == BeingSpeech::NO_SPEECH)
     {
         if (mSpeechBubble)
-            mSpeechBubble->setVisible(false);
+            mSpeechBubble->setVisible(Visible_false);
         delete2(mText)
     }
 }

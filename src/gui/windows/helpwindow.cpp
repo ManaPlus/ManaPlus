@@ -124,7 +124,7 @@ void HelpWindow::loadHelp(const std::string &helpFile)
     loadFile(helpFile);
     loadFile("footer");
     mScrollArea->setVerticalScrollAmount(0);
-    setVisible(true);
+    setVisible(Visible_true);
 }
 
 void HelpWindow::loadFile(std::string file)
@@ -189,7 +189,7 @@ void HelpWindow::search(const std::string &text0)
             }
             loadFile("footer");
             mScrollArea->setVerticalScrollAmount(0);
-            setVisible(true);
+            setVisible(Visible_true);
         }
     }
 }

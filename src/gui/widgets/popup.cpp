@@ -74,7 +74,7 @@ Popup::Popup(const std::string &name,
         windowContainer->add(this);
 
     // Popups are invisible by default
-    setVisible(false);
+    setVisible(Visible_false);
 }
 
 Popup::~Popup()
@@ -241,7 +241,7 @@ void Popup::position(const int x, const int y)
         posY = y - height - distance;
 
     setPosition(posX, posY);
-    setVisible(true);
+    setVisible(Visible_true);
     requestMoveToTop();
     mRedraw = true;
 }
@@ -258,7 +258,7 @@ void Popup::mouseMoved(MouseEvent &event A_UNUSED)
 
 void Popup::hide()
 {
-    setVisible(false);
+    setVisible(Visible_false);
     mRedraw = true;
 }
 

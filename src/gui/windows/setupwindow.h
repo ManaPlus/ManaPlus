@@ -23,6 +23,8 @@
 #ifndef GUI_WINDOWS_SETUPWINDOW_H
 #define GUI_WINDOWS_SETUPWINDOW_H
 
+#include "enums/simpletypes/visible.h"
+
 #include "gui/widgets/window.h"
 
 #include "listeners/actionlistener.h"
@@ -71,7 +73,7 @@ class SetupWindow final : public Window,
 
         void activateTab(const std::string &name);
 
-        void setVisible(bool visible) override final;
+        void setVisible(Visible visible) override final;
 
         void widgetResized(const Event &event) override final;
 

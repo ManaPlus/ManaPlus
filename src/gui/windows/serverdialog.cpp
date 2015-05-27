@@ -193,7 +193,7 @@ ServerDialog::ServerDialog(ServerInfo *const serverInfo,
 void ServerDialog::postInit()
 {
     Window::postInit();
-    setVisible(true);
+    setVisible(Visible_true);
 
     mConnectButton->requestFocus();
 

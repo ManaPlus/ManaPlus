@@ -82,9 +82,9 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
     addButton(N_("CH"),
         _("Chat"), x, h, InputAction::WINDOW_CHAT,
 #ifdef ANDROID
-        true);
+        Visible_true);
 #else
-        false);
+        Visible_false);
 #endif
     // TRANSLATORS: short button name for status window.
     addButton(N_("STA"),
@@ -100,7 +100,8 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
         _("Cart"), x, h, InputAction::WINDOW_CART);
     // TRANSLATORS: short button name for map window.
     addButton(N_("MAP"),
-        _("Map"), x, h, InputAction::WINDOW_MINIMAP, false);
+        _("Map"), x, h, InputAction::WINDOW_MINIMAP,
+        Visible_false);
 
     if (skillDialog->hasSkills())
     {
@@ -124,44 +125,52 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
     // TRANSLATORS: short button name for drops window.
     addButton(N_("DR"),
         // TRANSLATORS: full button name
-        _("Drop"), x, h, InputAction::WINDOW_DROP, false);
+        _("Drop"), x, h, InputAction::WINDOW_DROP,
+        Visible_false);
     // TRANSLATORS: short button name for did you know window.
     addButton(N_("YK"),
         // TRANSLATORS: full button name
-        _("Did you know"), x, h, InputAction::WINDOW_DIDYOUKNOW, false);
+        _("Did you know"), x, h, InputAction::WINDOW_DIDYOUKNOW,
+        Visible_false);
     // TRANSLATORS: short button name for shop window.
     addButton(N_("SHP"),
         // TRANSLATORS: full button name
-        _("Shop"), x, h, InputAction::WINDOW_SHOP, false);
+        _("Shop"), x, h, InputAction::WINDOW_SHOP,
+        Visible_false);
     // TRANSLATORS: short button name for outfits window.
     addButton(N_("OU"),
         // TRANSLATORS: full button name
-        _("Outfits"), x, h, InputAction::WINDOW_OUTFIT, false);
+        _("Outfits"), x, h, InputAction::WINDOW_OUTFIT,
+        Visible_false);
     // TRANSLATORS: short button name for updates window.
     addButton(N_("UP"),
         // TRANSLATORS: full button name
-        _("Updates"), x, h, InputAction::WINDOW_UPDATER, false);
+        _("Updates"), x, h, InputAction::WINDOW_UPDATER,
+        Visible_false);
     // TRANSLATORS: short button name for bank window.
     addButton(N_("BA"),
         // TRANSLATORS: full button name
-        _("Bank"), x, h, InputAction::WINDOW_BANK, false);
+        _("Bank"), x, h, InputAction::WINDOW_BANK,
+        Visible_false);
     // TRANSLATORS: short button name for mail window.
     addButton(N_("MA"),
         // TRANSLATORS: full button name
-        _("Mail"), x, h, InputAction::WINDOW_MAIL, false),
+        _("Mail"), x, h, InputAction::WINDOW_MAIL,
+        Visible_false),
     // TRANSLATORS: short button name for debug window.
     addButton(N_("DBG"),
         // TRANSLATORS: full button name
         _("Debug"), x, h, InputAction::WINDOW_DEBUG,
 #ifdef ANDROID
-        true);
+        Visible_true);
 #else
-        false);
+        Visible_false);
 #endif
     // TRANSLATORS: short button name for windows list menu.
     addButton(N_("WIN"),
         // TRANSLATORS: full button name
-        _("Windows"), x, h, InputAction::SHOW_WINDOWS, false);
+        _("Windows"), x, h, InputAction::SHOW_WINDOWS,
+        Visible_false);
     // TRANSLATORS: short button name for setup window.
     addButton(N_("SET"),
         // TRANSLATORS: full button name
@@ -174,7 +183,7 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
     loadButtons();
 
     addMouseListener(this);
-    setVisible(true);
+    setVisible(Visible_true);
 
     config.addListener("autohideButtons", this);
     mAutoHide = config.getIntValue("autohideButtons");
@@ -230,7 +239,7 @@ void WindowMenu::addButton(const char *const text,
                            int &restrict x,
                            int &restrict h,
                            const int key,
-                           const bool visible)
+                           const Visible visible)
 {
     Button *const btn = new Button(this, gettext(text), text, this);
     btn->setPosition(x, mPadding);
@@ -316,7 +325,8 @@ void WindowMenu::mouseExited(MouseEvent& event A_UNUSED)
     textPopup->hide();
 }
 
-void WindowMenu::showButton(const std::string &name, const bool visible)
+void WindowMenu::showButton(const std::string &name,
+                            const Visible visible)
 {
     const ButtonInfo *const info = mButtonNames[name];
     if (!info || !info->button)
@@ -363,9 +373,9 @@ void WindowMenu::loadButtons()
                  it_end = mButtonNames.end(); it != it_end; ++it)
             {
                 const ButtonInfo *const info = (*it).second;
-                if (!info || !info->button || info->visible)
+                if (!info || !info->button || info->visible == Visible_true)
                     continue;
-                info->button->setVisible(false);
+                info->button->setVisible(Visible_false);
             }
             updateButtons();
             return;
@@ -380,7 +390,7 @@ void WindowMenu::loadButtons()
             const ButtonInfo *const info = mButtonNames[str];
             if (!info || !info->button)
                 continue;
-            info->button->setVisible(false);
+            info->button->setVisible(Visible_false);
         }
     }
     else
@@ -394,7 +404,8 @@ void WindowMenu::loadButtons()
                 continue;
             Button *const button = info->button;
             const std::string &str = button->getActionEventId();
-            button->setVisible(str == "SET" || str == "WIN");
+            button->setVisible(fromBool(
+                str == "SET" || str == "WIN", Visible));
         }
     }
     updateButtons();

@@ -110,7 +110,7 @@ void SpellPopup::view(const int x, const int y)
     }
 
     setPosition(posX, posY);
-    setVisible(true);
+    setVisible(Visible_true);
     requestMoveToTop();
 }
 
@@ -119,5 +119,5 @@ void SpellPopup::mouseMoved(MouseEvent &event)
     Popup::mouseMoved(event);
 
     // When the mouse moved on top of the popup, hide it
-    setVisible(false);
+    setVisible(Visible_false);
 }

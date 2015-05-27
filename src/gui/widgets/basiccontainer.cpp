@@ -220,7 +220,7 @@ Widget *BasicContainer::getWidgetAt(int x, int y)
 void BasicContainer::logic()
 {
     BLOCK_START("BasicContainer::logic")
-    if (!mVisible)
+    if (mVisible == Visible_false)
     {
         BLOCK_END("BasicContainer::logic")
         return;

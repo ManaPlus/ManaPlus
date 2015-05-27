@@ -105,7 +105,7 @@ void ConfirmDialog::postInit()
         center();
         getParent()->moveToTop(this);
     }
-    setVisible(true);
+    setVisible(Visible_true);
     yesButton->requestFocus();
 }
 

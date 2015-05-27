@@ -41,7 +41,7 @@ CharacterViewNormal::CharacterViewNormal(CharSelectDialog *const widget,
         {
             CharacterDisplay *const character = *it;
             add(character);
-            character->setVisible(true);
+            character->setVisible(Visible_true);
         }
         const size_t sz = mCharacterEntries->size();
         if (mSelected >= 0 && mSelected < static_cast<signed>(sz))

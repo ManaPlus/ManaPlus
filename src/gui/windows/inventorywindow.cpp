@@ -348,7 +348,7 @@ void InventoryWindow::postInit()
     mItems->setSortType(mSortDropDown->getSelected());
     widgetResized(Event(nullptr));
     if (mInventory && mInventory->getType() == InventoryType::STORAGE)
-        setVisible(true);
+        setVisible(Visible_true);
 }
 
 InventoryWindow::~InventoryWindow()
@@ -541,7 +541,7 @@ void InventoryWindow::widgetHidden(const Event &event)
 {
     Window::widgetHidden(event);
     if (itemPopup)
-        itemPopup->setVisible(false);
+        itemPopup->setVisible(Visible_false);
 }
 
 void InventoryWindow::mouseClicked(MouseEvent &event)
@@ -788,7 +788,7 @@ void InventoryWindow::updateButtons(const Item *item)
     }
 }
 
-void InventoryWindow::setSplitAllowed(const bool allowed)
+void InventoryWindow::setSplitAllowed(const Visible allowed)
 {
     if (mSplitButton)
         mSplitButton->setVisible(allowed);
@@ -808,7 +808,7 @@ void InventoryWindow::close()
 #ifdef EATHENA_SUPPORT
         case InventoryType::CART:
 #endif
-            setVisible(false);
+            setVisible(Visible_false);
             break;
 
         case InventoryType::STORAGE:
@@ -973,7 +973,7 @@ void InventoryWindow::widgetResized(const Event &event)
     {
         if (!mCompactMode)
         {
-            mNameFilter->setVisible(false);
+            mNameFilter->setVisible(Visible_false);
             mNameFilterCell->setType(LayoutCell::NONE);
             mFilterCell->setWidth(mFilterCell->getWidth() + 3);
             mCompactMode = true;
@@ -981,16 +981,16 @@ void InventoryWindow::widgetResized(const Event &event)
     }
     else if (mCompactMode)
     {
-        mNameFilter->setVisible(true);
+        mNameFilter->setVisible(Visible_true);
         mNameFilterCell->setType(LayoutCell::WIDGET);
         mFilterCell->setWidth(mFilterCell->getWidth() - 3);
         mCompactMode = false;
     }
 }
 
-void InventoryWindow::setVisible(bool visible)
+void InventoryWindow::setVisible(Visible visible)
 {
-    if (!visible)
+    if (visible == Visible_false)
         mSortDropDown->hideDrop();
     Window::setVisible(visible);
 }

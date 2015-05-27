@@ -145,12 +145,12 @@ EmoteWindow::~EmoteWindow()
 
 void EmoteWindow::show()
 {
-    setVisible(true);
+    setVisible(Visible_true);
 }
 
 void EmoteWindow::hide()
 {
-    setVisible(false);
+    setVisible(Visible_false);
 }
 
 std::string EmoteWindow::getSelectedEmote() const
@@ -170,7 +170,7 @@ void EmoteWindow::clearEmote()
     const int index = mEmotePage->getSelectedIndex();
     mEmotePage->resetAction();
     if (index >= 0)
-        setVisible(false);
+        setVisible(Visible_false);
 }
 
 std::string EmoteWindow::getSelectedColor() const
@@ -188,7 +188,7 @@ std::string EmoteWindow::getSelectedColor() const
 void EmoteWindow::clearColor()
 {
     mColorPage->resetAction();
-    setVisible(false);
+    setVisible(Visible_false);
 }
 
 std::string EmoteWindow::getSelectedFont() const
@@ -206,7 +206,7 @@ std::string EmoteWindow::getSelectedFont() const
 void EmoteWindow::clearFont()
 {
     mFontPage->setSelected(-1);
-    setVisible(false);
+    setVisible(Visible_false);
 }
 
 void EmoteWindow::addListeners(ActionListener *const listener)

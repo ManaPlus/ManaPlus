@@ -64,7 +64,7 @@ void EditDialog::postInit()
     add(okButton);
 
     center();
-    setVisible(true);
+    setVisible(Visible_true);
     okButton->requestFocus();
 }
 

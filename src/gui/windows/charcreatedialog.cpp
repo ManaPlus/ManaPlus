@@ -227,7 +227,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
         mGenderStrip->addButton(_("M"), "m", false);
         // TRANSLATORS: one char size unknown character gender
         mGenderStrip->addButton(_("U"), "u", true);
-        mGenderStrip->setVisible(true);
+        mGenderStrip->setVisible(Visible_true);
         add(mGenderStrip);
 
         mGenderStrip->setPosition(385, 130);
@@ -323,7 +323,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     add(mCancelButton);
 
     center();
-    setVisible(true);
+    setVisible(Visible_true);
     mNameField->requestFocus();
 
     updateHair();
@@ -572,7 +572,7 @@ void CharCreateDialog::setAttributes(const StringVect &labels,
     updateSliders();
     if (!available)
     {
-        mAttributesLeft->setVisible(false);
+        mAttributesLeft->setVisible(Visible_false);
         h = y;
         setContentSize(w, h);
     }

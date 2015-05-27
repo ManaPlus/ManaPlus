@@ -78,7 +78,7 @@ OkDialog::OkDialog(const std::string &restrict title,
     else
         centerHorisontally();
     // +++ virtual method call
-    setVisible(true);
+    setVisible(Visible_true);
     okButton->requestFocus();
 
     if (soundEvent == DialogType::OK)

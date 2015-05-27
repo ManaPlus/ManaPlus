@@ -59,8 +59,8 @@ SkillInfo::SkillInfo() :
     type(SkillType::Unknown),
     owner(SkillOwner::Player),
     modifiable(Modifiable_false),
-    visible(false),
-    alwaysVisible(false)
+    visible(Visible_false),
+    alwaysVisible(Visible_false)
 {
     dataMap[0] = new SkillData();
     data = dataMap[0];
@@ -80,17 +80,17 @@ void SkillInfo::update()
 
     if (modifiable == Modifiable_false && baseLevel == 0 && exp.second == 0)
     {
-        if (visible)
+        if (visible == Visible_true)
         {
-            visible = false;
+            visible = Visible_false;
             if (model)
                 model->updateVisibilities();
         }
         return;
     }
 
-    const bool updateVisibility = !visible;
-    visible = true;
+    const bool updateVisibility = (visible == Visible_false);
+    visible = Visible_true;
 
     if (baseLevel == 0)
     {

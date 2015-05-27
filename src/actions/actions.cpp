@@ -341,7 +341,7 @@ impHandler0(ok)
     // Close the Browser if opened
     if (helpWindow && helpWindow->isWindowVisible())
     {
-        helpWindow->setVisible(false);
+        helpWindow->setVisible(Visible_false);
         return true;
     }
     // Close the config window, cancelling changes if opened

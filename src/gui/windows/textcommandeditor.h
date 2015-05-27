@@ -61,7 +61,7 @@ class TextCommandEditor final : public Window,
         void scheduleDelete() override final;
 
     private:
-        void showControls(const bool show);
+        void showControls(const Visible show);
 
         void save();
 

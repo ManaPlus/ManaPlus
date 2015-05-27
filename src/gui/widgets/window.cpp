@@ -221,7 +221,7 @@ Window::Window(const std::string &caption,
     }
 
     // Windows are invisible by default
-    setVisible(false);
+    setVisible(Visible_false);
 
     addWidgetListener(this);
     mForegroundColor = getThemeColor(Theme::WINDOW);
@@ -737,27 +737,32 @@ void Window::setStickyButtonLock(const bool lock)
     mStickyButton = lock;
 }
 
-void Window::setVisible(bool visible)
+void Window::setVisible(Visible visible)
 {
     setVisible(visible, false);
 }
 
-void Window::setVisible(const bool visible, const bool forceSticky)
+void Window::setVisible(const Visible visible, const bool forceSticky)
 {
     if (visible == mVisible)
         return;
 
     // Check if the window is off screen...
-    if (visible)
+    if (visible == Visible_true)
         ensureOnScreen();
     else
         mResizeHandles = 0;
 
     if (mStickyButtonLock)
+    {
         BasicContainer2::setVisible(visible);
+    }
     else
-        BasicContainer2::setVisible((!forceSticky && mSticky) || visible);
-    if (visible)
+    {
+        BasicContainer2::setVisible(fromBool((!forceSticky && mSticky) ||
+            visible == Visible_true, Visible));
+    }
+    if (visible == Visible_true)
     {
         if (mPlayVisibleSound)
             soundManager.playGuiSound(SOUND_SHOW_WINDOW);
@@ -852,7 +857,7 @@ void Window::mousePressed(MouseEvent &event)
 
 void Window::close()
 {
-    setVisible(false);
+    setVisible(Visible_false);
 }
 
 void Window::mouseReleased(MouseEvent &event A_UNUSED)
@@ -1044,8 +1049,8 @@ void Window::loadWindowState()
 
     if (mSaveVisible)
     {
-        setVisible(config.getValueBool(name
-            + "Visible", mDefaultVisible));
+        setVisible(fromBool(config.getValueBool(name
+            + "Visible", mDefaultVisible), Visible));
     }
 
     if (mStickyButton)

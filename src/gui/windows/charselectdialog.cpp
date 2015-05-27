@@ -141,7 +141,7 @@ CharSelectDialog::CharSelectDialog(LoginData *const data) :
     for (int i = 0; i < static_cast<int>(mLoginData->characterSlots); i++)
     {
         CharacterDisplay *const character = new CharacterDisplay(this, this);
-        character->setVisible(false);
+        character->setVisible(Visible_false);
         mCharacterEntries.push_back(character);
     }
 
@@ -188,7 +188,7 @@ CharSelectDialog::~CharSelectDialog()
 void CharSelectDialog::postInit()
 {
     Window::postInit();
-    setVisible(true);
+    setVisible(Visible_true);
     requestFocus();
 #ifdef EATHENA_SUPPORT
     if (charServerHandler->isNeedCreatePin())
@@ -493,7 +493,7 @@ void CharSelectDialog::attemptCharacterSelect(const int index)
     if (mLocked || !mCharacterEntries[index])
         return;
 
-    setVisible(false);
+    setVisible(Visible_false);
     if (mCharServerHandler)
     {
         mCharServerHandler->chooseCharacter(

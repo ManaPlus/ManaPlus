@@ -21,13 +21,15 @@
 #ifndef GUI_BUTTONINFO_H
 #define GUI_BUTTONINFO_H
 
+#include "enums/simpletypes/visible.h"
+
 #include "localconsts.h"
 
 class Button;
 
 struct ButtonInfo final
 {
-    ButtonInfo(Button *const button0, const int key0, const bool visible0) :
+    ButtonInfo(Button *const button0, const int key0, const Visible visible0) :
         button(button0),
         key(key0),
         visible(visible0)
@@ -38,6 +40,6 @@ struct ButtonInfo final
 
     Button *button;
     int key;
-    bool visible;
+    Visible visible;
 };
 #endif  // GUI_BUTTONINFO_H

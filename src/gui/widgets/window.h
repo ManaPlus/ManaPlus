@@ -67,6 +67,7 @@
 #define GUI_WIDGETS_WINDOW_H
 
 #include "enums/simpletypes/modal.h"
+#include "enums/simpletypes/visible.h"
 
 #include "listeners/mouselistener.h"
 #include "listeners/widgetlistener.h"
@@ -257,13 +258,13 @@ class Window notfinal : public BasicContainer2,
          * Overloads window setVisible by Guichan to allow sticky window
          * handling.
          */
-        virtual void setVisible(bool visible);
+        virtual void setVisible(Visible visible);
 
         /**
          * Overloads window setVisible by Guichan to allow sticky window
          * handling, or not, if you force the sticky state.
          */
-        void setVisible(const bool visible, const bool forceSticky);
+        void setVisible(const Visible visible, const bool forceSticky);
 
         /**
          * Returns whether the window is visible by default.
@@ -466,7 +467,7 @@ class Window notfinal : public BasicContainer2,
         { mPlayVisibleSound = b; }
 
         bool isWindowVisible() const A_WARN_UNUSED
-        { return mVisible; }
+        { return mVisible == Visible_true; }
 
         /**
          * Sets the padding of the window. The padding is the distance between the

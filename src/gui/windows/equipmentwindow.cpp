@@ -389,9 +389,9 @@ void EquipmentWindow::action(const ActionEvent &event)
 void EquipmentWindow::updatePage()
 {
     EquipmentPage *const page = mPages[mSelectedTab];
-    const bool visible = page->showPlayerBox;
+    const Visible visible = fromBool(page->showPlayerBox, Visible);
     mPlayerBox->setVisible(visible);
-    if (visible)
+    if (visible == Visible_true)
     {
         mPlayerBox->setDimension(Rect(page->x, page->y,
             page->width, page->height));
@@ -474,7 +474,7 @@ void EquipmentWindow::mousePressed(MouseEvent& event)
         if (Item *const item = getItem(x, y))
         {
             if (itemPopup)
-                itemPopup->setVisible(false);
+                itemPopup->setVisible(Visible_false);
 
             /* Convert relative to the window coordinates to absolute screen
              * coordinates.
@@ -575,7 +575,7 @@ void EquipmentWindow::mouseMoved(MouseEvent &event)
     }
     else
     {
-        itemPopup->setVisible(false);
+        itemPopup->setVisible(Visible_false);
     }
 }
 
@@ -583,7 +583,7 @@ void EquipmentWindow::mouseMoved(MouseEvent &event)
 void EquipmentWindow::mouseExited(MouseEvent &event A_UNUSED)
 {
     if (itemPopup)
-        itemPopup->setVisible(false);
+        itemPopup->setVisible(Visible_false);
 }
 
 void EquipmentWindow::setSelected(const int index)
@@ -593,7 +593,7 @@ void EquipmentWindow::setSelected(const int index)
     if (mUnequip)
         mUnequip->setEnabled(mSelected != -1);
     if (itemPopup)
-        itemPopup->setVisible(false);
+        itemPopup->setVisible(Visible_false);
 }
 
 void EquipmentWindow::setBeing(Being *const being)

@@ -272,7 +272,7 @@ void QuestsWindow::action(const ActionEvent &event)
     }
     else if (eventId == "close")
     {
-        setVisible(false);
+        setVisible(Visible_false);
     }
 }
 

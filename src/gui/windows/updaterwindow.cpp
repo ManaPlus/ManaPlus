@@ -250,7 +250,7 @@ UpdaterWindow::UpdaterWindow(const std::string &restrict updateHost,
 void UpdaterWindow::postInit()
 {
     Window::postInit();
-    setVisible(true);
+    setVisible(Visible_true);
     mCancelButton->requestFocus();
     removeProtocol(mUpdateServerPath);
 

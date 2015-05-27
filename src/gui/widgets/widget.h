@@ -64,10 +64,11 @@
 #ifndef GUI_WIDGETS_WIDGET_H
 #define GUI_WIDGETS_WIDGET_H
 
-#include <list>
+#include "enums/simpletypes/visible.h"
 
 #include "gui/widgets/widget2.h"
 
+#include <list>
 #include "localconsts.h"
 
 class ActionListener;
@@ -387,7 +388,7 @@ class Widget notfinal : public Widget2
           * @see isVisible
           * @since 0.1.0
           */
-        void setVisible(bool visible);
+        void setVisible(Visible visible);
 
         /**
           * Checks if the widget is visible.
@@ -397,10 +398,12 @@ class Widget notfinal : public Widget2
           * @since 0.1.0
           */
         bool isVisible() const A_WARN_UNUSED
-        { return mVisible && (!mParent || mParent->isVisible()); }
+        { return mVisible == Visible_true &&
+            (!mParent || mParent->isVisible());
+        }
 
         bool isVisibleLocal() const A_WARN_UNUSED
-        { return mVisible; }
+        { return mVisible == Visible_true; }
 
         /**
           * Sets the base color of the widget.
@@ -1216,7 +1219,7 @@ class Widget notfinal : public Widget2
         /**
           * True if the widget visible, false otherwise.
           */
-        bool mVisible;
+        Visible mVisible;
 
         /**
           * True if the widget has tab in enabled, false otherwise.

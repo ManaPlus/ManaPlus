@@ -23,6 +23,8 @@
 #ifndef GUI_WINDOWMENU_H
 #define GUI_WINDOWMENU_H
 
+#include "enums/simpletypes/visible.h"
+
 #include "gui/widgets/container.h"
 
 #include "listeners/actionlistener.h"
@@ -72,7 +74,7 @@ class WindowMenu final : public Container,
         std::vector <ButtonText*> &getButtonTexts() A_WARN_UNUSED
         { return mButtonTexts; }
 
-        void showButton(const std::string &name, const bool visible);
+        void showButton(const std::string &name, const Visible visible);
 
         void loadButtons();
 
@@ -92,8 +94,9 @@ class WindowMenu final : public Container,
     private:
         inline void addButton(const char *const text,
                               const std::string &description,
-                              int &restrict x, int &restrict h, const int key,
-                              const bool visible = true);
+                              int &restrict x, int &restrict h,
+                              const int key,
+                              const Visible visible = Visible_true);
 
         void updateButtons();
 

@@ -90,7 +90,7 @@ void TextDialog::postInit()
         setLocationRelativeTo(getParent());
         getParent()->moveToTop(this);
     }
-    setVisible(true);
+    setVisible(Visible_true);
     requestModalFocus();
     if (mPasswordField)
         mPasswordField->requestFocus();

@@ -107,7 +107,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
 {
     if (!b)
     {
-        setVisible(false);
+        setVisible(Visible_false);
         return;
     }
 
@@ -123,7 +123,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
 
     if (b->getType() == ActorType::Npc && b->getComment().empty())
     {
-        setVisible(false);
+        setVisible(Visible_false);
         return;
     }
 

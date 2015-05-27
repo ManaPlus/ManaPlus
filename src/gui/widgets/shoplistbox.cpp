@@ -223,7 +223,7 @@ void ShopListBox::mouseMoved(MouseEvent &event)
         }
         else
         {
-            itemPopup->setVisible(false);
+            itemPopup->setVisible(Visible_false);
         }
     }
 }

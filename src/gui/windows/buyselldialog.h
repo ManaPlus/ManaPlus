@@ -23,6 +23,8 @@
 #ifndef GUI_WINDOWS_BUYSELLDIALOG_H
 #define GUI_WINDOWS_BUYSELLDIALOG_H
 
+#include "enums/simpletypes/visible.h"
+
 #include "gui/widgets/window.h"
 
 #include "listeners/actionlistener.h"
@@ -54,7 +56,7 @@ class BuySellDialog final : public Window,
 
         void init();
 
-        void setVisible(bool visible) override final;
+        void setVisible(Visible visible) override final;
 
         /**
          * Called when receiving actions from the widgets.

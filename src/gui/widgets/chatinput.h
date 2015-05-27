@@ -23,6 +23,8 @@
 #ifndef GUI_WIDGETS_CHATINPUT_H
 #define GUI_WIDGETS_CHATINPUT_H
 
+#include "enums/simpletypes/visible.h"
+
 #include "gui/windows/chatwindow.h"
 
 #include "configuration.h"
@@ -44,7 +46,7 @@ class ChatInput final : public TextField
             mWindow(window),
             mFocusGaining(false)
         {
-            setVisible(false);
+            setVisible(Visible_false);
             addFocusListener(this);
         }
 
@@ -59,7 +61,7 @@ class ChatInput final : public TextField
             TextField::focusLost(event);
             if (mFocusGaining || !config.getBoolValue("protectChatFocus"))
             {
-                processVisible(false);
+                processVisible(Visible_false);
                 if (chatWindow)
                     chatWindow->updateVisibility();
                 mFocusGaining = false;
@@ -70,12 +72,12 @@ class ChatInput final : public TextField
             mFocusGaining = false;
         }
 
-        void processVisible(const bool n)
+        void processVisible(const Visible n)
         {
-            if (!mWindow || isVisible() == n)
+            if (!mWindow || isVisible() == (n == Visible_true))
                 return;
 
-            if (!n)
+            if (n == Visible_false)
                 mFocusGaining = true;
             setVisible(n);
             if (config.getBoolValue("hideChatInput")
@@ -92,7 +94,7 @@ class ChatInput final : public TextField
         void unprotectFocus()
         { mFocusGaining = true; }
 
-        void setVisible(bool visible)
+        void setVisible(Visible visible)
         {
             TextField::setVisible(visible);
         }

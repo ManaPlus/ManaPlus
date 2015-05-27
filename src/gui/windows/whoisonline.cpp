@@ -130,7 +130,7 @@ void WhoIsOnline::postInit()
     const int w = 200;
     setDefaultSize(w, h, ImageRect::CENTER);
 
-    setVisible(false);
+    setVisible(Visible_false);
     setCloseButton(true);
     setResizable(true);
     setStickyButtonLock(true);

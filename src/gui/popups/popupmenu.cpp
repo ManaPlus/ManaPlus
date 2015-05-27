@@ -939,7 +939,7 @@ void PopupMenu::showChangePos(const int x, const int y)
         mType = ActorType::Unknown;
         mX = 0;
         mY = 0;
-        setVisible(false);
+        setVisible(Visible_false);
     }
 }
 
@@ -1334,14 +1334,14 @@ void PopupMenu::handleLink(const std::string &link,
         if (being == localPlayer)
         {
             if (equipmentWindow && !equipmentWindow->isWindowVisible())
-                equipmentWindow->setVisible(true);
+                equipmentWindow->setVisible(Visible_true);
         }
         else
         {
             if (beingEquipmentWindow)
             {
                 beingEquipmentWindow->setBeing(being);
-                beingEquipmentWindow->setVisible(true);
+                beingEquipmentWindow->setVisible(Visible_true);
             }
         }
     }
@@ -1503,22 +1503,22 @@ void PopupMenu::handleLink(const std::string &link,
     else if (!link.compare(0, 12, "hide button_"))
     {
         if (windowMenu)
-            windowMenu->showButton(link.substr(12), false);
+            windowMenu->showButton(link.substr(12), Visible_false);
     }
     else if (!link.compare(0, 12, "show button_"))
     {
         if (windowMenu)
-            windowMenu->showButton(link.substr(12), true);
+            windowMenu->showButton(link.substr(12), Visible_true);
     }
     else if (!link.compare(0, 9, "hide bar_"))
     {
         if (miniStatusWindow)
-            miniStatusWindow->showBar(link.substr(9), false);
+            miniStatusWindow->showBar(link.substr(9), Visible_false);
     }
     else if (!link.compare(0, 9, "show bar_"))
     {
         if (miniStatusWindow)
-            miniStatusWindow->showBar(link.substr(9), true);
+            miniStatusWindow->showBar(link.substr(9), Visible_false);
     }
     else if (!link.compare(0, 12, "show window_"))
     {
@@ -1581,7 +1581,7 @@ void PopupMenu::handleLink(const std::string &link,
         logger->log("PopupMenu: Warning, unknown action '%s'", link.c_str());
     }
 
-    setVisible(false);
+    setVisible(Visible_false);
 
     mBeingId = 0;
     mFloorItemId = 0;
@@ -2234,7 +2234,7 @@ void PopupMenu::showPopup(int x, int y)
         y = mainGraphics->mHeight - getHeight();
     mScrollArea->setHeight(height);
     setPosition(x, y);
-    setVisible(true);
+    setVisible(Visible_true);
     requestMoveToTop();
 }
 

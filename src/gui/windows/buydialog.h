@@ -23,6 +23,8 @@
 #ifndef GUI_WINDOWS_BUYDIALOG_H
 #define GUI_WINDOWS_BUYDIALOG_H
 
+#include "enums/simpletypes/visible.h"
+
 #include "gui/widgets/window.h"
 
 #include "listeners/actionlistener.h"
@@ -130,7 +132,7 @@ class BuyDialog final : public Window,
         /**
          * Sets the visibility of this window.
          */
-        void setVisible(bool visible) override final;
+        void setVisible(Visible visible) override final;
 
         void sort();
 

@@ -138,7 +138,7 @@ MiniStatusWindow::MiniStatusWindow() :
     loadBars();
     updateBars();
 
-    setVisible(true);
+    setVisible(Visible_true);
     addMouseListener(this);
     Inventory *const inv = PlayerInfo::getInventory();
     if (inv)
@@ -468,7 +468,8 @@ void MiniStatusWindow::mouseExited(MouseEvent &event)
     mStatusPopup->hide();
 }
 
-void MiniStatusWindow::showBar(const std::string &name, const bool visible)
+void MiniStatusWindow::showBar(const std::string &name,
+                               const Visible visible)
 {
     ProgressBar *const bar = mBarNames[name];
     if (!bar)
@@ -483,17 +484,17 @@ void MiniStatusWindow::loadBars()
     if (!config.getIntValue("ministatussaved"))
     {
         if (mWeightBar)
-            mWeightBar->setVisible(false);
+            mWeightBar->setVisible(Visible_false);
         if (mInvSlotsBar)
-            mInvSlotsBar->setVisible(false);
+            mInvSlotsBar->setVisible(Visible_false);
         if (mMoneyBar)
-            mMoneyBar->setVisible(false);
+            mMoneyBar->setVisible(Visible_false);
         if (mArrowsBar)
-            mArrowsBar->setVisible(false);
+            mArrowsBar->setVisible(Visible_false);
         if (mStatusBar)
-            mStatusBar->setVisible(false);
+            mStatusBar->setVisible(Visible_false);
         if (mJobBar)
-            mJobBar->setVisible(true);
+            mJobBar->setVisible(Visible_true);
         return;
     }
 
@@ -506,7 +507,7 @@ void MiniStatusWindow::loadBars()
         ProgressBar *const bar = mBarNames[str];
         if (!bar)
             continue;
-        bar->setVisible(false);
+        bar->setVisible(Visible_false);
     }
 }
 

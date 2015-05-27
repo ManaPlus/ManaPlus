@@ -23,6 +23,8 @@
 #ifndef GUI_WINDOWS_MINISTATUSWINDOW_H
 #define GUI_WINDOWS_MINISTATUSWINDOW_H
 
+#include "enums/simpletypes/visible.h"
+
 #include "listeners/arrowslistener.h"
 #include "listeners/attributelistener.h"
 #include "listeners/inventorylistener.h"
@@ -79,7 +81,7 @@ class MiniStatusWindow final : public Window,
 
         void mouseExited(MouseEvent &event) override final;
 
-        void showBar(const std::string &name, const bool visible);
+        void showBar(const std::string &name, const Visible visible);
 
         void updateBars();
 

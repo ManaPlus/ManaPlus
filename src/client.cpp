@@ -1452,7 +1452,7 @@ int Client::gameExec()
                     logger->log1("State: CHANGE PASSWORD");
                     mCurrentDialog = new ChangePasswordDialog(&loginData);
                     mCurrentDialog->postInit();
-                    mCurrentDialog->setVisible(true);
+                    mCurrentDialog->setVisible(Visible_true);
                     BLOCK_END("Client::gameExec STATE_CHANGEPASSWORD")
                     break;
 
@@ -1492,7 +1492,7 @@ int Client::gameExec()
                     logger->log1("State: CHANGE EMAIL");
                     mCurrentDialog = new ChangeEmailDialog(&loginData);
                     mCurrentDialog->postInit();
-                    mCurrentDialog->setVisible(true);
+                    mCurrentDialog->setVisible(Visible_true);
                     break;
 
                 case STATE_CHANGEEMAIL_ATTEMPT:
@@ -1721,7 +1721,8 @@ void Client::action(const ActionEvent &event)
 
     if (setupWindow)
     {
-        setupWindow->setVisible(!setupWindow->isWindowVisible());
+        setupWindow->setVisible(fromBool(
+            !setupWindow->isWindowVisible(), Visible));
         if (setupWindow->isWindowVisible())
         {
             if (!tab.empty())

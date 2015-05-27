@@ -52,7 +52,7 @@ CharacterViewSmall::CharacterViewSmall(CharSelectDialog *const widget,
         {
             mSelected = 0;
             mSelectedEntry = (*mCharacterEntries)[mSelected];
-            mSelectedEntry->setVisible(true);
+            mSelectedEntry->setVisible(Visible_true);
             mNumber->setCaption(strprintf("%d / %d", mSelected + 1, sz));
             mNumber->adjustSize();
         }
@@ -82,7 +82,7 @@ void CharacterViewSmall::show(const int i)
     if (sz <= 0)
         return;
     if (mSelectedEntry)
-        mSelectedEntry->setVisible(false);
+        mSelectedEntry->setVisible(Visible_false);
     if (i >= sz)
         mSelected = 0;
     else if (i < 0)
@@ -90,7 +90,7 @@ void CharacterViewSmall::show(const int i)
     else
         mSelected = i;
     mSelectedEntry = (*mCharacterEntries)[mSelected];
-    mSelectedEntry->setVisible(true);
+    mSelectedEntry->setVisible(Visible_true);
     mNumber->setCaption(strprintf("%d / %d", mSelected + 1, sz));
     mNumber->adjustSize();
 }

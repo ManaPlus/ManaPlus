@@ -174,7 +174,7 @@ void SetupWindow::action(const ActionEvent &event)
 
     if (eventId == "Apply")
     {
-        setVisible(false);
+        setVisible(Visible_false);
         for_each(mTabs.begin(), mTabs.end(), std::mem_fun(&SetupTab::apply));
     }
     else if (eventId == "Cancel")
@@ -274,14 +274,14 @@ void SetupWindow::hideWindows()
     {
         Window *const window = *it;
         if (window && !window->isSticky())
-            window->setVisible(false);
+            window->setVisible(Visible_false);
     }
-    setVisible(false);
+    setVisible(Visible_false);
 }
 
 void SetupWindow::doCancel()
 {
-    setVisible(false);
+    setVisible(Visible_false);
     for_each(mTabs.begin(), mTabs.end(), std::mem_fun(&SetupTab::cancel));
 }
 
@@ -291,9 +291,9 @@ void SetupWindow::activateTab(const std::string &name)
     mPanel->setSelectedTabByName(tmp);
 }
 
-void SetupWindow::setVisible(bool visible)
+void SetupWindow::setVisible(Visible visible)
 {
-    touchManager.setTempHide(visible);
+    touchManager.setTempHide(visible == Visible_true);
     Window::setVisible(visible);
 }
 

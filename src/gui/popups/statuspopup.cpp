@@ -118,7 +118,7 @@ void StatusPopup::view(const int x, const int y)
     update();
 
     setPosition(posX, posY);
-    setVisible(true);
+    setVisible(Visible_true);
     requestMoveToTop();
 }
 

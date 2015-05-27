@@ -24,6 +24,7 @@
 #define GUI_WIDGETS_SKILLINFO_H
 
 #include "enums/simpletypes/modifiable.h"
+#include "enums/simpletypes/visible.h"
 
 #include "gui/color.h"
 
@@ -69,8 +70,8 @@ struct SkillInfo final
     SkillType::SkillType type;
     SkillOwner::Type owner;
     Modifiable modifiable;
-    bool visible;
-    bool alwaysVisible;
+    Visible visible;
+    Visible alwaysVisible;
 
     SkillInfo();
     A_DELETE_COPY(SkillInfo)

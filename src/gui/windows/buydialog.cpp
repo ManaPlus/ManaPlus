@@ -329,7 +329,7 @@ void BuyDialog::init()
     enableVisibleSound(true);
 
     instances.push_back(this);
-    setVisible(true);
+    setVisible(Visible_true);
 
     if (mSortDropDown)
         mSortDropDown->setSelected(config.getIntValue("buySortOrder"));
@@ -629,11 +629,11 @@ void BuyDialog::updateButtonsAndLabels()
         Units::formatCurrency(mMoney - price).c_str()));
 }
 
-void BuyDialog::setVisible(bool visible)
+void BuyDialog::setVisible(Visible visible)
 {
     Window::setVisible(visible);
 
-    if (visible && mShopItemList)
+    if (visible == Visible_true && mShopItemList)
         mShopItemList->requestFocus();
     else
         scheduleDelete();

@@ -248,7 +248,7 @@ void EmoteShortcutContainer::mouseMoved(MouseEvent &event)
     if (index == -1)
         return;
 
-    textPopup->setVisible(false);
+    textPopup->setVisible(Visible_false);
 
     if (static_cast<size_t>(index) < mEmoteImg.size() && mEmoteImg[index])
     {
@@ -261,11 +261,11 @@ void EmoteShortcutContainer::mouseMoved(MouseEvent &event)
 void EmoteShortcutContainer::mouseExited(MouseEvent &event A_UNUSED)
 {
     if (textPopup)
-        textPopup->setVisible(false);
+        textPopup->setVisible(Visible_false);
 }
 
 void EmoteShortcutContainer::widgetHidden(const Event &event A_UNUSED)
 {
     if (textPopup)
-        textPopup->setVisible(false);
+        textPopup->setVisible(Visible_false);
 }

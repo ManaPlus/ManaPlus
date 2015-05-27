@@ -75,7 +75,7 @@ class CreatePartyPopup final : public Popup,
                 socialWindow->showPartyCreate();
             }
 
-            setVisible(false);
+            setVisible(Visible_false);
         }
 
         void show(Widget *parent)
@@ -87,7 +87,7 @@ class CreatePartyPopup final : public Popup,
             parent->getAbsolutePosition(x, y);
             y += parent->getHeight();
             setPosition(x, y);
-            setVisible(true);
+            setVisible(Visible_true);
             requestMoveToTop();
         }
 

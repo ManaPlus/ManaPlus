@@ -365,18 +365,18 @@ void VirtShortcutContainer::mouseMoved(MouseEvent &event)
     }
     else
     {
-        itemPopup->setVisible(false);
+        itemPopup->setVisible(Visible_false);
     }
 }
 
 void VirtShortcutContainer::mouseExited(MouseEvent &event A_UNUSED)
 {
     if (itemPopup)
-        itemPopup->setVisible(false);
+        itemPopup->setVisible(Visible_false);
 }
 
 void VirtShortcutContainer::widgetHidden(const Event &event A_UNUSED)
 {
     if (itemPopup)
-        itemPopup->setVisible(false);
+        itemPopup->setVisible(Visible_false);
 }

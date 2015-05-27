@@ -372,7 +372,7 @@ void TradeWindow::action(const ActionEvent &event)
 
         if (!inventoryWindow->isWindowVisible())
         {
-            inventoryWindow->setVisible(true);
+            inventoryWindow->setVisible(Visible_true);
             return;
         }
 
@@ -392,7 +392,7 @@ void TradeWindow::action(const ActionEvent &event)
     }
     else if (eventId == "cancel")
     {
-        setVisible(false);
+        setVisible(Visible_false);
         reset();
         PlayerInfo::setTrading(Trading_false);
         tradeHandler->cancel();

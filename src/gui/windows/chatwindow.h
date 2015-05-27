@@ -26,6 +26,7 @@
 #include "enums/gui/chatmsgtype.h"
 
 #include "enums/simpletypes/ignorerecord.h"
+#include "enums/simpletypes/visible.h"
 #include "enums/simpletypes/tryremovecolors.h"
 
 #include "gui/widgets/window.h"
@@ -156,7 +157,7 @@ class ChatWindow final : public Window,
         void addItemText(const std::string &item);
 
         /** Override to reset mTmpVisible */
-        void setVisible(bool visible) override final;
+        void setVisible(Visible visible) override final;
 
         /**
          * Handles mouse when dragged.

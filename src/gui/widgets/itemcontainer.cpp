@@ -683,13 +683,13 @@ void ItemContainer::mouseMoved(MouseEvent &event)
     }
     else
     {
-        itemPopup->setVisible(false);
+        itemPopup->setVisible(Visible_false);
     }
 }
 
 void ItemContainer::mouseExited(MouseEvent &event A_UNUSED)
 {
-    itemPopup->setVisible(false);
+    itemPopup->setVisible(Visible_false);
 }
 
 void ItemContainer::widgetResized(const Event &event A_UNUSED)

@@ -86,7 +86,7 @@ void TradeHandler::processTradeResponseContinue(const uint8_t type)
                 tradeWindow->setCaption(strprintf(_("Trade: You and %s"),
                     tradePartnerName.c_str()));
                 tradeWindow->initTrade(tradePartnerName);
-                tradeWindow->setVisible(true);
+                tradeWindow->setVisible(Visible_true);
             }
             break;
         case 4:  // Trade cancelled
@@ -100,7 +100,7 @@ void TradeHandler::processTradeResponseContinue(const uint8_t type)
 
             if (tradeWindow)
             {
-                tradeWindow->setVisible(false);
+                tradeWindow->setVisible(Visible_false);
 //                        tradeWindow->clear();
             }
             PlayerInfo::setTrading(Trading_false);
@@ -132,7 +132,7 @@ void TradeHandler::processTradeCancel(Net::MessageIn &msg A_UNUSED)
     NotifyManager::notify(NotifyTypes::TRADE_CANCELLED);
     if (tradeWindow)
     {
-        tradeWindow->setVisible(false);
+        tradeWindow->setVisible(Visible_false);
         tradeWindow->reset();
     }
     PlayerInfo::setTrading(Trading_false);
@@ -143,7 +143,7 @@ void TradeHandler::processTradeComplete(Net::MessageIn &msg A_UNUSED)
     NotifyManager::notify(NotifyTypes::TRADE_COMPLETE);
     if (tradeWindow)
     {
-        tradeWindow->setVisible(false);
+        tradeWindow->setVisible(Visible_false);
         tradeWindow->reset();
     }
     PlayerInfo::setTrading(Trading_false);
