@@ -399,8 +399,7 @@ class Widget notfinal : public Widget2
           */
         bool isVisible() const A_WARN_UNUSED
         { return mVisible == Visible_true &&
-            (!mParent || mParent->isVisible());
-        }
+            (!mParent || mParent->isVisible()); }
 
         bool isVisibleLocal() const A_WARN_UNUSED
         { return mVisible == Visible_true; }
