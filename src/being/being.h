@@ -23,6 +23,8 @@
 #ifndef BEING_BEING_H
 #define BEING_BEING_H
 
+#include "enums/simpletypes/move.h"
+
 #include "resources/beinginfo.h"
 
 #include "position.h"
@@ -1079,7 +1081,7 @@ class Being notfinal : public ActorSprite,
         static bool mShowPlayersStatus;
         static bool mEnableReorderSprites;
         static bool mHideErased;
-        static bool mMoveNames;
+        static Move mMoveNames;
         static bool mUseDiagonal;
         static int mAwayEffect;
 

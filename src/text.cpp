@@ -134,9 +134,10 @@ void Text::setColor(const Color *const color)
     }
 }
 
-void Text::adviseXY(const int x, const int y, const bool move)
+void Text::adviseXY(const int x, const int y,
+                    const Move move)
 {
-    if (textManager && move)
+    if (textManager && move == Move_true)
     {
         textManager->moveText(this, x - mXOffset, y);
     }

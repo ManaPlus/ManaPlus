@@ -24,6 +24,7 @@
 #ifndef TEXT_H
 #define TEXT_H
 
+#include "enums/simpletypes/move.h"
 #include "enums/simpletypes/speech.h"
 
 #include "gui/fonts/textchunk.h"
@@ -67,7 +68,7 @@ class Text notfinal
         /**
          * Allows the originator of the text to specify the ideal coordinates.
          */
-        void adviseXY(const int x, const int y, const bool move);
+        void adviseXY(const int x, const int y, const Move move);
 
         /**
          * Draws the text.

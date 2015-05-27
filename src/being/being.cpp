@@ -117,7 +117,7 @@ bool Being::mShowLevel = false;
 bool Being::mShowPlayersStatus = false;
 bool Being::mEnableReorderSprites = true;
 bool Being::mHideErased = false;
-bool Being::mMoveNames = false;
+Move Being::mMoveNames = Move_false;
 bool Being::mUseDiagonal = true;
 int Being::mAwayEffect = -1;
 
@@ -457,8 +457,9 @@ void Being::setPosition(const Vector &pos)
 
     if (mText)
     {
-        mText->adviseXY(static_cast<int>(pos.x), static_cast<int>(pos.y)
-            - getHeight() - mText->getHeight() - 6, mMoveNames);
+        mText->adviseXY(static_cast<int>(pos.x),
+            static_cast<int>(pos.y) - getHeight() - mText->getHeight() - 6,
+            mMoveNames);
     }
 }
 
@@ -2333,7 +2334,7 @@ void Being::reReadConfig()
         mShowPlayersStatus = config.getBoolValue("showPlayersStatus");
         mEnableReorderSprites = config.getBoolValue("enableReorderSprites");
         mHideErased = config.getBoolValue("hideErased");
-        mMoveNames = config.getBoolValue("moveNames");
+        mMoveNames = fromBool(config.getBoolValue("moveNames"), Move);
         mUseDiagonal = config.getBoolValue("useDiagonalSpeed");
 
         mUpdateConfigTime = cur_time;
