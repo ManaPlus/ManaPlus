@@ -82,10 +82,11 @@ BasicContainer2::~BasicContainer2()
 void BasicContainer2::draw(Graphics* graphics)
 {
     BLOCK_START("BasicContainer2::draw")
-    if (isOpaque())
+    if (mOpaque)
     {
-        graphics->setColor(getBaseColor());
-        graphics->fillRectangle(Rect(0, 0, getWidth(), getHeight()));
+        graphics->setColor(mBaseColor);
+        graphics->fillRectangle(Rect(0, 0,
+            mDimension.width, mDimension.height));
     }
 
     drawChildren(graphics);
@@ -97,41 +98,26 @@ void BasicContainer2::safeDraw(Graphics* graphics)
     BLOCK_START("BasicContainer2::draw")
     if (isOpaque())
     {
-        graphics->setColor(getBaseColor());
-        graphics->fillRectangle(Rect(0, 0, getWidth(), getHeight()));
+        graphics->setColor(mBaseColor);
+        graphics->fillRectangle(Rect(0, 0,
+            mDimension.width, mDimension.height));
     }
 
     safeDrawChildren(graphics);
     BLOCK_END("BasicContainer2::draw")
 }
 
-void BasicContainer2::setOpaque(bool opaque)
-{
-    mOpaque = opaque;
-}
-
-bool BasicContainer2::isOpaque() const
-{
-    return mOpaque;
-}
-
 void BasicContainer2::add(Widget* widget)
 {
+    // +++ need move all add() calls from constructors
+    // and after this method can be deleted
+    // and virtual moved to basiccontainer
     BasicContainer::add(widget);
 }
 
-void BasicContainer2::addXY(Widget* widget, int x, int y)
+void BasicContainer2::addXY(Widget* widget,
+                            const int x, const int y)
 {
     widget->setPosition(x, y);
     BasicContainer::add(widget);
-}
-
-void BasicContainer2::remove(Widget* widget)
-{
-    BasicContainer::remove(widget);
-}
-
-void BasicContainer2::clear()
-{
-    BasicContainer::clear();
 }

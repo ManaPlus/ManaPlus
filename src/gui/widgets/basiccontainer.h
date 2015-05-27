@@ -134,7 +134,6 @@ class BasicContainer notfinal : public Widget,
 
         Widget *findFirstWidget(const std::set<Widget*> &list);
 
-    protected:
         /**
           * Adds a widget to the basic container.
           *
@@ -158,6 +157,7 @@ class BasicContainer notfinal : public Widget,
           */
         virtual void clear();
 
+    protected:
         /**
           * Draws the children widgets of the basic container.
           *

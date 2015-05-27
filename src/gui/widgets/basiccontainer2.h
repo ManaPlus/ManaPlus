@@ -102,7 +102,8 @@ class BasicContainer2: public BasicContainer
           * @param opaque True if the container should be opaque, false otherwise.
           * @see isOpaque
           */
-        void setOpaque(bool opaque);
+        void setOpaque(bool opaque)
+        { mOpaque = opaque; }
 
         /**
           * Checks if the container is opaque or not.
@@ -110,7 +111,8 @@ class BasicContainer2: public BasicContainer
           * @return True if the container is opaque, false otherwise.
           * @see setOpaque
           */
-        bool isOpaque() const;
+        bool isOpaque() const
+        { return mOpaque; }
 
         /**
           * Adds a widget to the container.
@@ -130,24 +132,8 @@ class BasicContainer2: public BasicContainer
           * @param y The y coordinate for the widget.
           * @see remove, clear
           */
-        virtual void addXY(Widget* widget, int x, int y);
-
-        /**
-          * Removes a widget from the Container.
-          *
-          * @param widget The widget to remove.
-          * @throws Exception when the widget has not been added to the
-          *                   container.
-          * @see add, clear
-          */
-        void remove(Widget* widget) override;
-
-        /**
-          * Clears the container of all widgets.
-          *
-          * @see add, remove
-          */
-        void clear() override;
+        void addXY(Widget* widget,
+                   const int x, const int y);
 
         // Inherited from Widget
 
