@@ -84,7 +84,6 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
     mItems(new ItemContainer(this, mInventory)),
     mUseButton(nullptr),
     mDropButton(nullptr),
-    mSplitButton(nullptr),
     mOutfitButton(nullptr),
     mShopButton(nullptr),
     mCartButton(nullptr),
@@ -207,8 +206,6 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
             mUseButton = new Button(this, longestUseString, "use", this);
             // TRANSLATORS: inventory button
             mDropButton = new Button(this, _("Drop..."), "drop", this);
-            // TRANSLATORS: inventory button
-            mSplitButton = new Button(this, _("Split"), "split", this);
             // TRANSLATORS: inventory outfits button
             mOutfitButton = new Button(this, _("O"), "outfit", this);
             // TRANSLATORS: inventory cart button
@@ -242,7 +239,6 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
             place(0, 2, invenScroll, 11).setPadding(3);
             place(0, 3, mUseButton);
             place(1, 3, mDropButton);
-            place(8, 2, mSplitButton);
             ContainerPlacer placer = getPlacer(10, 3);
             placer(0, 0, mShopButton);
             placer(1, 0, mOutfitButton);
@@ -778,20 +774,6 @@ void InventoryWindow::updateButtons(const Item *item)
     }
 
     updateDropButton();
-
-    if (mSplitButton)
-    {
-        if (inventoryHandler->canSplit(item))
-            mSplitButton->setEnabled(true);
-        else
-            mSplitButton->setEnabled(false);
-    }
-}
-
-void InventoryWindow::setSplitAllowed(const Visible allowed)
-{
-    if (mSplitButton)
-        mSplitButton->setVisible(allowed);
 }
 
 void InventoryWindow::close()

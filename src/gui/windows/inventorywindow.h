@@ -122,11 +122,6 @@ class InventoryWindow final : public Window,
         void valueChanged(const SelectionEvent &event) override final;
 
         /**
-         * Sets whether the split button should be shown.
-         */
-        void setSplitAllowed(const Visible allowed);
-
-        /**
          * Closes the Storage Window, as well as telling the server that the
          * window has been closed.
          */
@@ -185,7 +180,6 @@ class InventoryWindow final : public Window,
 
         Button *mUseButton;
         Button *mDropButton;
-        Button *mSplitButton;
         Button *mOutfitButton;
         Button *mShopButton;
         Button *mCartButton;

@@ -379,8 +379,6 @@ void GeneralHandler::clearHandlers()
 
 void GeneralHandler::gameStarted() const
 {
-    if (inventoryWindow)
-        inventoryWindow->setSplitAllowed(Visible_false);
     if (skillDialog)
         skillDialog->loadSkills();
 
