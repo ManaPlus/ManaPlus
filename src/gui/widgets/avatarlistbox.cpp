@@ -117,14 +117,15 @@ void AvatarListBox::draw(Graphics *graphics)
     updateAlpha();
 
     Font *const font = getFont();
-    const int fontHeight = getFont()->getHeight();
+    const int fontHeight = font->getHeight();
+    const int parentWidth = parent->getWidth();
     const std::string &name = localPlayer->getName();
 
     // Draw the list elements
     ImageCollection vertexes;
-
+    const int num = model->getNumberOfElements();
     for (int i = 0, y = 0;
-         i < model->getNumberOfElements();
+         i < num;
          ++i, y += fontHeight)
     {
         const Avatar *const a = model->getAvatarAt(i);
@@ -150,7 +151,7 @@ void AvatarListBox::draw(Graphics *graphics)
     graphics->drawTileCollection(&vertexes);
 
     for (int i = 0, y = 0;
-         i < model->getNumberOfElements();
+         i < num;
          ++i, y += fontHeight)
     {
         const Avatar *const a = model->getAvatarAt(i);
@@ -184,7 +185,7 @@ void AvatarListBox::draw(Graphics *graphics)
                 color.a = 80;
                 graphics->setColor(color);
                 graphics->fillRectangle(Rect(mPadding, y + mPadding,
-                    parent->getWidth() * a->getHp() / a->getMaxHp()
+                    parentWidth * a->getHp() / a->getMaxHp()
                     - 2 * mPadding, fontHeight));
             }
         }
@@ -207,7 +208,7 @@ void AvatarListBox::draw(Graphics *graphics)
             color.a = 80;
             graphics->setColor(color);
             graphics->fillRectangle(Rect(mPadding, y + mPadding,
-                parent->getWidth() * a->getDamageHp() / 1024
+                parentWidth * a->getDamageHp() / 1024
                 - 2 * mPadding, fontHeight));
 
             if (a->getLevel() > 1)
@@ -217,9 +218,9 @@ void AvatarListBox::draw(Graphics *graphics)
                 if (minHp < 0)
                     minHp = 40;
 
-                graphics->drawLine(parent->getWidth()*minHp / 1024
+                graphics->drawLine(parentWidth * minHp / 1024
                     + mPadding, y + mPadding,
-                    parent->getWidth() * minHp / 1024, y + fontHeight);
+                    parentWidth * minHp / 1024, y + fontHeight);
             }
         }
         else
@@ -338,7 +339,7 @@ void AvatarListBox::draw(Graphics *graphics)
         }
     }
 
-    setWidth(parent->getWidth() - 10);
+    setWidth(parentWidth - 10);
     BLOCK_END("AvatarListBox::draw")
 }
 
@@ -360,14 +361,14 @@ void AvatarListBox::safeDraw(Graphics *graphics)
     updateAlpha();
 
     Font *const font = getFont();
-    const int fontHeight = getFont()->getHeight();
+    const int fontHeight = font->getHeight();
+    const int parentWidth = parent->getWidth();
     const std::string &name = localPlayer->getName();
 
     // Draw the list elements
-    ImageCollection vertexes;
-
+    const int num = model->getNumberOfElements();
     for (int i = 0, y = 0;
-         i < model->getNumberOfElements();
+         i < num;
          ++i, y += fontHeight)
     {
         const Avatar *const a = model->getAvatarAt(i);
@@ -421,7 +422,7 @@ void AvatarListBox::safeDraw(Graphics *graphics)
                 color.a = 80;
                 graphics->setColor(color);
                 graphics->fillRectangle(Rect(mPadding, y + mPadding,
-                    parent->getWidth() * a->getHp() / a->getMaxHp()
+                    parentWidth * a->getHp() / a->getMaxHp()
                     - 2 * mPadding, fontHeight));
             }
         }
@@ -444,7 +445,7 @@ void AvatarListBox::safeDraw(Graphics *graphics)
             color.a = 80;
             graphics->setColor(color);
             graphics->fillRectangle(Rect(mPadding, y + mPadding,
-                parent->getWidth() * a->getDamageHp() / 1024
+                parentWidth * a->getDamageHp() / 1024
                 - 2 * mPadding, fontHeight));
 
             if (a->getLevel() > 1)
@@ -454,9 +455,9 @@ void AvatarListBox::safeDraw(Graphics *graphics)
                 if (minHp < 0)
                     minHp = 40;
 
-                graphics->drawLine(parent->getWidth()*minHp / 1024
+                graphics->drawLine(parentWidth * minHp / 1024
                     + mPadding, y + mPadding,
-                    parent->getWidth() * minHp / 1024, y + fontHeight);
+                    parentWidth * minHp / 1024, y + fontHeight);
             }
         }
         else
@@ -575,19 +576,20 @@ void AvatarListBox::safeDraw(Graphics *graphics)
         }
     }
 
-    setWidth(parent->getWidth() - 10);
+    setWidth(parentWidth - 10);
     BLOCK_END("AvatarListBox::draw")
 }
 
 void AvatarListBox::mousePressed(MouseEvent &event)
 {
-    if (!actorManager || !localPlayer || !popupManager
-        || !getFont()->getHeight())
-    {
+    if (!actorManager || !localPlayer || !popupManager)
         return;
-    }
 
-    const int y = (event.getY() - mPadding) / getFont()->getHeight();
+    const int height = getFont()->getHeight();
+    if (!height)
+        return;
+
+    const int y = (event.getY() - mPadding) / height;
     if (!mListModel || y > mListModel->getNumberOfElements())
         return;
 
