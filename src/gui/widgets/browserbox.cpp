@@ -896,7 +896,7 @@ void BrowserBox::updateHeight()
         || mTextRows.size() < 3 || !mUpdateTime)
     {
         mWidth = mDimension.width;
-        mHeight = mDimension.height;
+        mHeight = calcHeight();
         setHeight(mHeight);
         mUpdateTime = cur_time;
     }
