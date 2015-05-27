@@ -688,8 +688,13 @@ void Window::widgetMoved(const Event& event A_UNUSED)
 
 void Window::widgetHidden(const Event &event A_UNUSED)
 {
-    mTextChanged = true;
+    if (isBatchDrawRenders(openGLMode))
+        mVertexes->clear();
+
     mTextChunk.deleteImage();
+
+    mTextChanged = true;
+    mRedraw = true;
 
     if (gui)
         gui->setCursorType(Cursor::CURSOR_POINTER);
