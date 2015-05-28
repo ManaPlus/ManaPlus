@@ -1186,6 +1186,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      enums/state.h \
 	      enums/simpletypes/allowsort.h \
 	      enums/simpletypes/allplayers.h \
+	      enums/simpletypes/booldefines.h \
 	      enums/simpletypes/damaged.h \
 	      enums/simpletypes/enable.h \
 	      enums/simpletypes/equipm.h \
@@ -1203,7 +1204,6 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      enums/simpletypes/online.h \
 	      enums/simpletypes/sfx.h \
 	      enums/simpletypes/showcenter.h \
-	      enums/simpletypes/simpledefines.h \
 	      enums/simpletypes/skiperror.h \
 	      enums/simpletypes/speech.h \
 	      enums/simpletypes/trading.h \

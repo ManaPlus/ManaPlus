@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ENUMS_SIMPLETYPES_SIMPLDEFINES_H
-#define ENUMS_SIMPLETYPES_SIMPLDEFINES_H
+#ifndef ENUMS_SIMPLETYPES_BOOLDEFINES_H
+#define ENUMS_SIMPLETYPES_BOOLDEFINES_H
 
 #include "localconsts.h"
 
@@ -47,4 +47,4 @@
 
 #endif  // ADVGCC
 
-#endif  // ENUMS_SIMPLETYPES_SIMPLDEFINES_H
+#endif  // ENUMS_SIMPLETYPES_BOOLDEFINES_H

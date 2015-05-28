@@ -21,7 +21,7 @@
 #ifndef ENUMS_SIMPLETYPES_TRADING_H
 #define ENUMS_SIMPLETYPES_TRADING_H
 
-#include "enums/simpletypes/simpledefines.h"
+#include "enums/simpletypes/booldefines.h"
 
 defBoolEnum(Trading);
 

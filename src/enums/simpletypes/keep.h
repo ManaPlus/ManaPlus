@@ -21,7 +21,7 @@
 #ifndef ENUMS_SIMPLETYPES_KEEP_H
 #define ENUMS_SIMPLETYPES_KEEP_H
 
-#include "enums/simpletypes/simpledefines.h"
+#include "enums/simpletypes/booldefines.h"
 
 defBoolEnum(Keep);
 

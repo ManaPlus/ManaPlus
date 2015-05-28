@@ -21,7 +21,7 @@
 #ifndef ENUMS_SIMPLETYPES_MODAL_H
 #define ENUMS_SIMPLETYPES_MODAL_H
 
-#include "enums/simpletypes/simpledefines.h"
+#include "enums/simpletypes/booldefines.h"
 
 defBoolEnum(Modal);
 

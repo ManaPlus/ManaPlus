@@ -21,7 +21,7 @@
 #ifndef ENUMS_SIMPLETYPES_MOVE_H
 #define ENUMS_SIMPLETYPES_MOVE_H
 
-#include "enums/simpletypes/simpledefines.h"
+#include "enums/simpletypes/booldefines.h"
 
 defBoolEnum(Move);
 

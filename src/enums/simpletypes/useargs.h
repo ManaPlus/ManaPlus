@@ -21,7 +21,7 @@
 #ifndef ENUMS_SIMPLETYPES_USEARGS_H
 #define ENUMS_SIMPLETYPES_USEARGS_H
 
-#include "enums/simpletypes/simpledefines.h"
+#include "enums/simpletypes/booldefines.h"
 
 #include "localconsts.h"
 
