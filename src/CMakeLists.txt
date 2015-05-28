@@ -1066,6 +1066,7 @@ SET(SRCS
     enums/simpletypes/forcedisplay.h
     enums/simpletypes/identified.h
     enums/simpletypes/ignorerecord.h
+    enums/simpletypes/intdefines.h
     enums/simpletypes/keep.h
     enums/simpletypes/modal.h
     enums/simpletypes/modifiable.h
