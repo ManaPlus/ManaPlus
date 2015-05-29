@@ -82,7 +82,7 @@ class OnlinePlayer final
 
         signed char mVersion;
 
-        Gender mGender;
+        GenderT mGender;
 
         bool mIsGM;
 };
