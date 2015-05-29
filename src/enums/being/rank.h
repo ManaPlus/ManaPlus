@@ -22,16 +22,16 @@
 #define ENUMS_BEING_RANK_H
 #ifdef EATHENA_SUPPORT
 
-namespace Rank
+#include "enums/simpletypes/enumdefines.h"
+
+enumStart(Rank)
 {
-    enum Rank
-    {
-        Blacksmith = 0,
-        Alchemist  = 1,
-        Taekwon    = 2,
-        Pk         = 3
-    };
-}  // namespace Rank
+    Blacksmith = 0,
+    Alchemist  = 1,
+    Taekwon    = 2,
+    Pk         = 3
+}
+enumEnd(Rank);
 
 #endif  // EATHENA_SUPPORT
 #endif  // ENUMS_BEING_RANK_H

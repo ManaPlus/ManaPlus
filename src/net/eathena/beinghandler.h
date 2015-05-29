@@ -44,7 +44,7 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
 
         void undress(Being *const being) const override final;
 
-        void requestRanks(const Rank::Rank rank) const override final;
+        void requestRanks(const RankT rank) const override final;
 
     protected:
         static Being *createBeing2(Net::MessageIn &msg,

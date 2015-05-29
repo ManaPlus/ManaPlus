@@ -252,7 +252,7 @@ void BeingHandler::undress(Being *const being) const
 }
 
 #ifdef EATHENA_SUPPORT
-void BeingHandler::requestRanks(const Rank::Rank rank A_UNUSED) const
+void BeingHandler::requestRanks(const RankT rank A_UNUSED) const
 {
 }
 #endif

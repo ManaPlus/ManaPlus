@@ -486,7 +486,7 @@ void BeingHandler::undress(Being *const being) const
 //    being->setSprite(SPRITE_BODY, 0, "", true);
 }
 
-void BeingHandler::requestRanks(const Rank::Rank rank) const
+void BeingHandler::requestRanks(const RankT rank) const
 {
     createOutPacket(CMSG_REQUEST_RANKS);
     outMsg.writeInt16(static_cast<int16_t>(rank), "type");

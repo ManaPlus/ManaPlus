@@ -46,7 +46,7 @@ class BeingHandler notfinal
         virtual void undress(Being *const being) const = 0;
 
 #ifdef EATHENA_SUPPORT
-        virtual void requestRanks(const Rank::Rank rank) const = 0;
+        virtual void requestRanks(const RankT rank) const = 0;
 #endif
 };
 
