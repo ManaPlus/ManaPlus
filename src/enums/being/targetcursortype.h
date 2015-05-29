@@ -22,15 +22,15 @@
 #ifndef ENUMS_BEING_TARGETCURSORTYPE_H
 #define ENUMS_BEING_TARGETCURSORTYPE_H
 
-namespace TargetCursorType
+#include "enums/simpletypes/enumdefines.h"
+
+enumStart(TargetCursorType)
 {
-    enum Type
-    {
-        NONE = -1,
-        NORMAL = 0,
-        IN_RANGE,
-        NUM_TCT
-    };
+    NONE = -1,
+    NORMAL = 0,
+    IN_RANGE,
+    NUM_TCT
 }
+enumEnd(TargetCursorType);
 
 #endif  // ENUMS_BEING_TARGETCURSORTYPE_H

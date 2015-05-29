@@ -102,7 +102,7 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
         /**
          * Sets the target animation for this actor.
          */
-        void setTargetType(const TargetCursorType::Type type);
+        void setTargetType(const TargetCursorTypeT type);
 
         /**
          * Untargets the actor.
@@ -214,7 +214,8 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
         static void cleanupTargetCursors();
 
         /** Animated target cursors. */
-        static AnimatedSprite *targetCursor[TargetCursorType::NUM_TCT]
+        static AnimatedSprite *targetCursor
+            [static_cast<size_t>(TargetCursorType::NUM_TCT)]
             [static_cast<size_t>(TargetCursorSize::NUM_TC)];
 
         static bool loaded;

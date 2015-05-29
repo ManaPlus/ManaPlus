@@ -52,7 +52,8 @@
 
 #define end_foreach }
 
-AnimatedSprite *ActorSprite::targetCursor[TargetCursorType::NUM_TCT]
+AnimatedSprite *ActorSprite::targetCursor
+    [static_cast<size_t>(TargetCursorType::NUM_TCT)]
     [static_cast<size_t>(TargetCursorSize::NUM_TC)];
 bool ActorSprite::loaded = false;
 
@@ -145,7 +146,7 @@ void ActorSprite::controlParticle(Particle *const particle)
     mChildParticleEffects.addLocally(particle);
 }
 
-void ActorSprite::setTargetType(const TargetCursorType::Type type)
+void ActorSprite::setTargetType(const TargetCursorTypeT type)
 {
     if (type == TargetCursorType::NONE)
     {
@@ -351,7 +352,7 @@ void ActorSprite::removeActorSpriteListener(ActorSpriteListener *const
     mActorSpriteListeners.remove(listener);
 }
 
-static const char *cursorType(const int type)
+static const char *cursorType(const TargetCursorTypeT type)
 {
     switch (type)
     {
@@ -387,7 +388,7 @@ void ActorSprite::initTargetCursor()
         targetCursor[type][size] = AnimatedSprite::load(
             Theme::resolveThemePath(strprintf(
             targetCursorFile.c_str(),
-            cursorType(type),
+            cursorType(static_cast<TargetCursorTypeT>(type)),
             cursorSize(static_cast<TargetCursorSizeT>(size)))));
     }
     end_foreach

@@ -305,7 +305,7 @@ void LocalPlayer::logic()
             const int rangeY = static_cast<int>(
                 abs(mTarget->getTileY() - getTileY()));
             const int attackRange = getAttackRange();
-            const TargetCursorType::Type targetType
+            const TargetCursorTypeT targetType
                 = rangeX > attackRange || rangeY > attackRange
                 ? TargetCursorType::NORMAL : TargetCursorType::IN_RANGE;
             mTarget->setTargetType(targetType);
