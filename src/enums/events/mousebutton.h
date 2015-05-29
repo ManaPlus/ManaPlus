@@ -64,19 +64,16 @@
 #ifndef ENUMS_EVENTS_MOUSEBUTTON_H
 #define ENUMS_EVENTS_MOUSEBUTTON_H
 
-namespace MouseButton
+#include "enums/simpletypes/enumdefines.h"
+
+enumStart(MouseButton)
 {
-    /**
-      * Mouse button types.
-      */
-    enum Type
-    {
-        WHEEL = -1,
-        EMPTY = 0,
-        LEFT,
-        RIGHT,
-        MIDDLE
-    };
-}  // namespace MouseButton
+    WHEEL = -1,
+    EMPTY = 0,
+    LEFT,
+    RIGHT,
+    MIDDLE
+}
+enumEnd(MouseButton);
 
 #endif  // ENUMS_EVENTS_MOUSEBUTTON_H

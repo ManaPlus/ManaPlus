@@ -93,7 +93,7 @@ class MouseEvent: public InputGuiEvent
           */
         MouseEvent(Widget *const source,
                    const MouseEventType::Type type,
-                   const MouseButton::Type button,
+                   const MouseButtonT button,
                    const int x,
                    const int y,
                    const int clickCount) :
@@ -111,7 +111,7 @@ class MouseEvent: public InputGuiEvent
           *
           * @return The button of the mouse event.
           */
-        MouseButton::Type getButton() const A_WARN_UNUSED
+        MouseButtonT getButton() const A_WARN_UNUSED
         { return mButton; }
 
         /**
@@ -168,7 +168,7 @@ class MouseEvent: public InputGuiEvent
         /**
           * Holds the button of the mouse event.
           */
-        MouseButton::Type mButton;
+        MouseButtonT mButton;
 
         /**
           * Holds the x-coordinate of the mouse event.

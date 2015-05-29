@@ -329,7 +329,7 @@ class Gui final
 
         void distributeMouseEvent(Widget *const source,
                                   const MouseEventType::Type type,
-                                  const MouseButton::Type button,
+                                  const MouseButtonT button,
                                   const int x, const int y,
                                   const bool force = false,
                                   const bool toSourceOnly = false);
@@ -468,7 +468,7 @@ class Gui final
         /**
          * Holds the last mouse button pressed.
          */
-        MouseButton::Type mLastMousePressButton;
+        MouseButtonT mLastMousePressButton;
 
         /**
          * Holds the last mouse press time stamp.
@@ -496,7 +496,7 @@ class Gui final
          * was initiated. Used to be able to release a drag
          * when the same button is released.
          */
-        MouseButton::Type mLastMouseDragButton;
+        MouseButtonT mLastMouseDragButton;
 
         /**
          * Holds a stack with all the widgets with the mouse.

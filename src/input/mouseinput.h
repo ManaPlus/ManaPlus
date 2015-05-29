@@ -95,12 +95,12 @@ class MouseInput final
             return mType;
         }
 
-        void setButton(MouseButton::Type button)
+        void setButton(MouseButtonT button)
         {
             mButton = button;
         }
 
-        MouseButton::Type getButton() const
+        MouseButtonT getButton() const
         {
             return mButton;
         }
@@ -167,7 +167,7 @@ class MouseInput final
         /**
          * Holds the button of the mouse input.
          */
-        MouseButton::Type mButton;
+        MouseButtonT mButton;
 
         /** 
          * Holds the timestamp of the mouse input. Used to 

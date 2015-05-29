@@ -118,7 +118,7 @@ class SDLInput final
         MouseInput dequeueMouseInput() A_WARN_UNUSED;
 
         void simulateMouseClick(const int x, const int y,
-                                const MouseButton::Type button);
+                                const MouseButtonT button);
 
     protected:
         /**
@@ -128,8 +128,7 @@ class SDLInput final
          * @param button an SDL mouse button.
          * @return a Guichan mouse button.
          */
-        static MouseButton::Type convertMouseButton(const int button)
-                                                    A_WARN_UNUSED;
+        static MouseButtonT convertMouseButton(const int button) A_WARN_UNUSED;
 
         /**
          * Converts an SDL event key to a key value.

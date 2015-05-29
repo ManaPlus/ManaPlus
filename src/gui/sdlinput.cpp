@@ -297,7 +297,7 @@ void SDLInput::convertKeyEventToKey(const SDL_Event &event, KeyInput &keyInput)
         keyInput.setActionId(actionId);
 }
 
-MouseButton::Type SDLInput::convertMouseButton(const int button)
+MouseButtonT SDLInput::convertMouseButton(const int button)
 {
     switch (button)
     {
@@ -532,7 +532,7 @@ int SDLInput::convertKeyCharacter(const SDL_Event &event)
 }
 
 void SDLInput::simulateMouseClick(const int x, const int y,
-                                  const MouseButton::Type button)
+                                  const MouseButtonT button)
 {
     MouseInput mouseInput;
     mouseInput.setX(x);

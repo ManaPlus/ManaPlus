@@ -399,7 +399,7 @@ void DropDown::mouseReleased(MouseEvent &event)
     if (mIsDragged)
         mPushed = false;
 
-    const MouseButton::Type button = event.getButton();
+    const MouseButtonT button = event.getButton();
     const int x = event.getX();
     const int y = event.getY();
     // Released outside of widget. Can happen when we have modal

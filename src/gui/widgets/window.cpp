@@ -810,7 +810,7 @@ void Window::mousePressed(MouseEvent &event)
         mMoved = event.getY() <= static_cast<int>(mTitleBarHeight);
     }
 
-    const MouseButton::Type button = event.getButton();
+    const MouseButtonT button = event.getButton();
     if (button == MouseButton::LEFT)
     {
         const int x = event.getX();

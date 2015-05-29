@@ -591,7 +591,7 @@ void Gui::handleMouseMoved(const MouseInput &mouseInput)
 
     const int mouseX = mouseInput.getX();
     const int mouseY = mouseInput.getY();
-    const MouseButton::Type button = mouseInput.getButton();
+    const MouseButtonT button = mouseInput.getButton();
 
     // Check if there is a need to send mouse exited events by
     // traversing the "widget with mouse" queue.
@@ -734,7 +734,7 @@ void Gui::handleMousePressed(const MouseInput &mouseInput)
 {
     const int x = mouseInput.getX();
     const int y = mouseInput.getY();
-    const MouseButton::Type button = mouseInput.getButton();
+    const MouseButtonT button = mouseInput.getButton();
     const int timeStamp = mouseInput.getTimeStamp();
 
     Widget *sourceWidget = getMouseEventSource(x, y);
@@ -803,7 +803,7 @@ void Gui::updateFonts()
 
 void Gui::distributeMouseEvent(Widget *const source,
                                const MouseEventType::Type type,
-                               const MouseButton::Type button,
+                               const MouseButtonT button,
                                const int x, const int y,
                                const bool force,
                                const bool toSourceOnly)

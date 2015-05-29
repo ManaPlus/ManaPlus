@@ -608,7 +608,7 @@ void AvatarListBox::mousePressed(MouseEvent &event)
         ava->getType());
 
     event.consume();
-    const unsigned int eventButton = event.getButton();
+    const MouseButtonT eventButton = event.getButton();
     if (eventButton == MouseButton::LEFT)
     {
         if (type == MapItemType::EMPTY)

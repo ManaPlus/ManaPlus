@@ -400,7 +400,7 @@ void ItemContainer::mousePressed(MouseEvent &event)
     if (!mInventory)
         return;
 
-    const MouseButton::Type button = event.getButton();
+    const MouseButtonT button = event.getButton();
     mClicks = event.getClickCount();
 
     if (button == MouseButton::LEFT || button == MouseButton::RIGHT)

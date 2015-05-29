@@ -269,7 +269,7 @@ void VirtShortcutContainer::mousePressed(MouseEvent &event)
 
     event.consume();
 
-    const MouseButton::Type eventButton = event.getButton();
+    const MouseButtonT eventButton = event.getButton();
     if (eventButton == MouseButton::LEFT)
     {
         if (mShortcut->getItem(index) > 0)
