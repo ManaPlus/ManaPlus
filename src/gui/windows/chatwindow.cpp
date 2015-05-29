@@ -1037,7 +1037,7 @@ void ChatWindow::setVisible(Visible visible)
 
 void ChatWindow::addWhisper(const std::string &restrict nick,
                             const std::string &restrict mes,
-                            const ChatMsgType::Type own)
+                            const ChatMsgTypeT own)
 {
     if (mes.empty() || !localPlayer)
         return;
@@ -1512,7 +1512,7 @@ std::string ChatWindow::autoCompleteHistory(const std::string &partName) const
 }
 
 bool ChatWindow::resortChatLog(std::string line,
-                               ChatMsgType::Type own,
+                               ChatMsgTypeT own,
                                const std::string &channel,
                                const IgnoreRecord ignoreRecord,
                                const TryRemoveColors tryRemoveColors)
@@ -1677,7 +1677,7 @@ bool ChatWindow::resortChatLog(std::string line,
     return true;
 }
 
-void ChatWindow::battleChatLog(const std::string &line, ChatMsgType::Type own,
+void ChatWindow::battleChatLog(const std::string &line, ChatMsgTypeT own,
                                const IgnoreRecord ignoreRecord,
                                const TryRemoveColors tryRemoveColors)
 {
@@ -1691,7 +1691,7 @@ void ChatWindow::battleChatLog(const std::string &line, ChatMsgType::Type own,
 
 void ChatWindow::channelChatLog(const std::string &channel,
                                 const std::string &line,
-                                ChatMsgType::Type own,
+                                ChatMsgTypeT own,
                                 const IgnoreRecord ignoreRecord,
                                 const TryRemoveColors tryRemoveColors)
 {

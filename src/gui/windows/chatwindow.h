@@ -195,7 +195,7 @@ class ChatWindow final : public Window,
 
         void addWhisper(const std::string &restrict nick,
                         const std::string &restrict mes,
-                        const ChatMsgType::Type own = ChatMsgType::BY_OTHER);
+                        const ChatMsgTypeT own = ChatMsgType::BY_OTHER);
 
         WhisperTab *addWhisperTab(const std::string &caption,
                                   const std::string &nick,
@@ -223,13 +223,13 @@ class ChatWindow final : public Window,
 
         void ignoreAllWhispers();
 
-        bool resortChatLog(std::string line, ChatMsgType::Type own,
+        bool resortChatLog(std::string line, ChatMsgTypeT own,
                            const std::string &channel,
                            const IgnoreRecord ignoreRecord,
                            const TryRemoveColors tryRemoveColors);
 
         static void battleChatLog(const std::string &line,
-                                  ChatMsgType::Type own
+                                  ChatMsgTypeT own
                                   = ChatMsgType::BY_UNKNOWN,
                                   const IgnoreRecord ignoreRecord
                                   = IgnoreRecord_false,
@@ -238,7 +238,7 @@ class ChatWindow final : public Window,
 
         void channelChatLog(const std::string &channel,
                             const std::string &line,
-                            ChatMsgType::Type own,
+                            ChatMsgTypeT own,
                             const IgnoreRecord ignoreRecord,
                             const TryRemoveColors tryRemoveColors);
 

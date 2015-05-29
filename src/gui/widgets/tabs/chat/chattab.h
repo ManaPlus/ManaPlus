@@ -80,7 +80,7 @@ class ChatTab notfinal : public Tab
          * @param removeColors try remove color if configured
          */
         void chatLog(std::string line,
-                     ChatMsgType::Type own,
+                     ChatMsgTypeT own,
                      const IgnoreRecord ignoreRecord = IgnoreRecord_false,
                      const TryRemoveColors tryRemoveColors
                      = TryRemoveColors_true);

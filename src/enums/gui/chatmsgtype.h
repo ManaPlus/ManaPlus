@@ -23,20 +23,20 @@
 #ifndef ENUMS_GUI_CHATMSGTYPE_H
 #define ENUMS_GUI_CHATMSGTYPE_H
 
-namespace ChatMsgType
+#include "enums/simpletypes/enumdefines.h"
+
+enumStart(ChatMsgType)
 {
-    enum Type
-    {
-        BY_GM = 0,
-        BY_PLAYER,
-        BY_OTHER,
-        BY_SERVER,
-        BY_CHANNEL,
-        ACT_WHISPER,      // getting whispered at
-        ACT_IS,           // equivalent to "/me" on IRC
-        BY_LOGGER,
-        BY_UNKNOWN = -1
-    };
-}  // namespace ChatMsgType
+    BY_GM = 0,
+    BY_PLAYER,
+    BY_OTHER,
+    BY_SERVER,
+    BY_CHANNEL,
+    ACT_WHISPER,      // getting whispered at
+    ACT_IS,           // equivalent to "/me" on IRC
+    BY_LOGGER,
+    BY_UNKNOWN = -1
+}
+enumEnd(ChatMsgType);
 
 #endif  // ENUMS_GUI_CHATMSGTYPE_H

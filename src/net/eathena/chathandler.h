@@ -106,7 +106,7 @@ class ChatHandler final : public MessageHandler, public Ea::ChatHandler
         static void processColorChat(Net::MessageIn &msg);
 
         static void processChatContinue(std::string chatMsg,
-                                        ChatMsgType::Type own);
+                                        ChatMsgTypeT own);
 
         static void processWhisper(Net::MessageIn &msg);
 

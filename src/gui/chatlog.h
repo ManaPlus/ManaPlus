@@ -43,6 +43,6 @@ struct CHATLOG final
 
     std::string nick;
     std::string text;
-    ChatMsgType::Type own;
+    ChatMsgTypeT own;
 };
 #endif  // GUI_CHATLOG_H
