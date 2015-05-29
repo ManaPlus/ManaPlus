@@ -372,7 +372,7 @@ void LocalPlayer::slowLogic()
     BLOCK_END("LocalPlayer::slowLogic")
 }
 
-void LocalPlayer::setAction(const BeingAction::Action &action,
+void LocalPlayer::setAction(const BeingActionT &action,
                             const int attackType)
 {
     if (action == BeingAction::DEAD)
@@ -691,7 +691,7 @@ bool LocalPlayer::toggleSit() const
     if (!PacketLimiter::limitPackets(PACKET_SIT))
         return false;
 
-    BeingAction::Action newAction;
+    BeingActionT newAction;
     switch (mAction)
     {
         case BeingAction::STAND:
@@ -2241,7 +2241,7 @@ void LocalPlayer::imitateEmote(const Being *const being,
 }
 
 void LocalPlayer::imitateAction(const Being *const being,
-                                const BeingAction::Action &action)
+                                const BeingActionT &action)
 {
     if (!being)
         return;

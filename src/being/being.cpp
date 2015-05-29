@@ -1263,7 +1263,7 @@ getSpriteAction(Dead, DEAD)
 getSpriteAction(Stand, STAND)
 getSpriteAction(Spawn, SPAWN)
 
-void Being::setAction(const BeingAction::Action &action, const int attackId)
+void Being::setAction(const BeingActionT &action, const int attackId)
 {
     std::string currentAction = SpriteAction::INVALID;
 

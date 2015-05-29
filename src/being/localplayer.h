@@ -71,7 +71,7 @@ class LocalPlayer final : public Being,
 
         void slowLogic();
 
-        void setAction(const BeingAction::Action &action,
+        void setAction(const BeingActionT &action,
                        const int attackType = 0) override final;
 
         /**
@@ -250,7 +250,7 @@ class LocalPlayer final : public Being,
                           const unsigned char emote) const;
 
         void imitateAction(const Being *const being,
-                           const BeingAction::Action &action);
+                           const BeingActionT &action);
 
         void imitateDirection(const Being *const being,
                               const unsigned char dir);

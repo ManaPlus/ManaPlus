@@ -23,24 +23,19 @@
 #ifndef ENUMS_BEING_BEINGACTION_H
 #define ENUMS_BEING_BEINGACTION_H
 
-namespace BeingAction
+#include "enums/simpletypes/enumdefines.h"
+
+enumStart(BeingAction)
 {
-    /**
-     * Action the being is currently performing
-     * WARNING: Has to be in sync with the same enum in the Being class
-     * of the server!
-     */
-    enum Action
-    {
-        STAND = 0,
-        MOVE,
-        ATTACK,
-        SIT,
-        DEAD,
-        HURT,
-        SPAWN,
-        PRESTAND
-    };
-}  // namespace BeingAction
+    STAND = 0,
+    MOVE,
+    ATTACK,
+    SIT,
+    DEAD,
+    HURT,
+    SPAWN,
+    PRESTAND
+}
+enumEnd(BeingAction);
 
 #endif  // ENUMS_BEING_BEINGACTION_H

@@ -55,7 +55,7 @@
 
 #undef ERROR
 
-static const BeingAction::Action actions[] =
+static const BeingActionT actions[] =
 {
     BeingAction::STAND,
     BeingAction::SIT,

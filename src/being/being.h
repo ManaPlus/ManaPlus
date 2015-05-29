@@ -438,13 +438,13 @@ class Being notfinal : public ActorSprite,
         /**
          * Sets the current action.
          */
-        virtual void setAction(const BeingAction::Action &action,
+        virtual void setAction(const BeingActionT &action,
                                const int attackType);
 
         /**
          * Get the being's action currently performed.
          */
-        BeingAction::Action getCurrentAction() const A_WARN_UNUSED
+        BeingActionT getCurrentAction() const A_WARN_UNUSED
         { return mAction; }
 
         /**
@@ -996,7 +996,7 @@ class Being notfinal : public ActorSprite,
         int mPreStandTime;
 
         Gender::Type mGender;
-        BeingAction::Action mAction;
+        BeingActionT mAction;
         BeingTypeId mSubType;       /**< Subtype (graphical view, basically) */
         uint8_t mDirection;         /**< Facing direction */
         uint8_t mDirectionDelayed;  /**< Facing direction */

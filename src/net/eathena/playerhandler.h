@@ -51,7 +51,7 @@ class PlayerHandler final : public MessageHandler, public Ea::PlayerHandler
         void setDirection(const unsigned char direction) const override final;
         void setDestination(const int x, const int y,
                             const int direction) const override final;
-        void changeAction(const BeingAction::Action &action)
+        void changeAction(const BeingActionT &action)
                           const override final;
         void updateStatus(const uint8_t status) const override final;
 
