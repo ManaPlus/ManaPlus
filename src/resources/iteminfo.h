@@ -25,6 +25,8 @@
 
 #include "enums/being/gender.h"
 
+#include "enums/simpletypes/beingtypeid.h"
+
 #include "resources/cursor.h"
 #include "resources/itemtype.h"
 #include "resources/soundinfo.h"
@@ -125,7 +127,8 @@ class ItemInfo final
                        const Gender::Type gender, const int race);
 
         const std::string &getSprite(const Gender::Type gender,
-                                     const int race) const A_WARN_UNUSED;
+                                     const BeingTypeId race)
+                                     const A_WARN_UNUSED;
 
         void setAttackAction(const std::string &attackAction);
 

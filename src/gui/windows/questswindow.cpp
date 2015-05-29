@@ -245,12 +245,12 @@ void QuestsWindow::loadEffect(const int var, const XmlNodePtr node)
 {
     QuestEffect *const effect = new QuestEffect;
     effect->map = XML::getProperty(node, "map", "");
-    effect->id = XML::getProperty(node, "npc", -1);
+    effect->id = fromInt(XML::getProperty(node, "npc", -1), BeingTypeId);
     effect->effectId = XML::getProperty(node, "effect", -1);
     const std::string values = XML::getProperty(node, "value", "");
     splitToIntSet(effect->values, values, ',');
 
-    if (effect->map.empty() || effect->id == -1
+    if (effect->map.empty() || effect->id == BeingTypeId_negOne
         || effect->effectId == -1 || values.empty())
     {
         delete effect;
@@ -465,13 +465,13 @@ void QuestsWindow::updateEffects()
     if (!actorManager)
         return;
 
-    std::set<int> removeEffects;
-    std::map<int, int> addEffects;
+    std::set<BeingTypeId> removeEffects;
+    std::map<BeingTypeId, int> addEffects;
 
     // for old effects
     FOR_EACH (NpcQuestEffectMapCIter, it, oldNpc)
     {
-        const int id = (*it).first;
+        const BeingTypeId id = (*it).first;
         const QuestEffect *const effect = (*it).second;
 
         const NpcQuestEffectMapCIter itNew = mNpcEffects.find(id);
@@ -493,7 +493,7 @@ void QuestsWindow::updateEffects()
     // for new effects
     FOR_EACH (NpcQuestEffectMapCIter, it, mNpcEffects)
     {
-        const int id = (*it).first;
+        const BeingTypeId id = (*it).first;
         const QuestEffect *const effect = (*it).second;
 
         const NpcQuestEffectMapCIter itNew = oldNpc.find(id);
@@ -509,8 +509,8 @@ void QuestsWindow::addEffect(Being *const being)
 {
     if (!being)
         return;
-    const int id = being->getSubType();
-    const std::map<int, const QuestEffect*>::const_iterator
+    const BeingTypeId id = being->getSubType();
+    const std::map<BeingTypeId, const QuestEffect*>::const_iterator
         it = mNpcEffects.find(id);
     if (it != mNpcEffects.end())
     {

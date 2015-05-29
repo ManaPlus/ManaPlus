@@ -87,7 +87,7 @@ ItemInfo::~ItemInfo()
 }
 
 const std::string &ItemInfo::getSprite(const Gender::Type gender,
-                                       const int race) const
+                                       const BeingTypeId race) const
 {
     if (mView)
     {
@@ -98,7 +98,8 @@ const std::string &ItemInfo::getSprite(const Gender::Type gender,
     {
         static const std::string empty;
         std::map<int, std::string>::const_iterator i =
-            mAnimationFiles.find(static_cast<int>(gender) + race * 4);
+            mAnimationFiles.find(static_cast<int>(gender) +
+            toInt(race, int) * 4);
 
         if (i != mAnimationFiles.end())
             return i->second;

@@ -21,6 +21,8 @@
 #ifndef RESOURCES_QUESTEFFECT_H
 #define RESOURCES_QUESTEFFECT_H
 
+#include "enums/simpletypes/beingtypeid.h"
+
 #include <set>
 #include <string>
 
@@ -31,7 +33,7 @@ struct QuestEffect final
     QuestEffect() :
         map(),
         var(0),
-        id(0),
+        id(BeingTypeId_zero),
         effectId(0),
         values()
     {
@@ -39,7 +41,7 @@ struct QuestEffect final
 
     std::string map;
     int var;
-    int id;
+    BeingTypeId id;
     int effectId;
     std::set<int> values;
 };

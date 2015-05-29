@@ -326,7 +326,7 @@ void TargetDebugTab::logic()
             _("Target Id:"), toInt(target->getId(), int)));
         mTargetTypeLabel->setCaption(strprintf("%s %d",
             // TRANSLATORS: debug window label
-            _("Target type:"), target->getSubType()));
+            _("Target type:"), toInt(target->getSubType(), int)));
         if (target->getLevel())
         {
             mTargetLevelLabel->setCaption(strprintf("%s %d",

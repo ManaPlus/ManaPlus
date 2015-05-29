@@ -59,7 +59,7 @@ void ItemSoundManager::playSfx(const ItemInfo &info,
     if (sfx.empty())
     {
         // fallback to player race sound if no item sound.
-        const int id = -100 - localPlayer->getSubType();
+        const int id = -100 - toInt(localPlayer->getSubType(), int);
         const ItemInfo &info2 = ItemDB::get(id);
         sfx = info2.getSound(sound).sound;
     }

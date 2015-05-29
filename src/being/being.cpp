@@ -127,7 +127,7 @@ typedef std::map<int, int>::const_iterator IntMapCIter;
 
 Being::Being(const BeingId id,
              const ActorType::Type type,
-             const uint16_t subtype,
+             const BeingTypeId subtype,
              Map *const map) :
     ActorSprite(id),
     mNextSound(),
@@ -164,7 +164,7 @@ Being::Being(const BeingId id,
     mPreStandTime(0),
     mGender(Gender::UNSPECIFIED),
     mAction(BeingAction::STAND),
-    mSubType(0xFFFF),
+    mSubType(fromInt(0xFFFF, BeingTypeId)),
     mDirection(BeingDirection::DOWN),
     mDirectionDelayed(0),
     mSpriteDirection(SpriteDirection::DOWN),
@@ -320,7 +320,8 @@ void Being::createSpeechBubble()
     mSpeechBubble->postInit();
 }
 
-void Being::setSubtype(const uint16_t subtype, const uint16_t look)
+void Being::setSubtype(const BeingTypeId subtype,
+                       const uint16_t look)
 {
     if (!mInfo)
         return;
@@ -333,7 +334,7 @@ void Being::setSubtype(const uint16_t subtype, const uint16_t look)
 
     if (mType == ActorType::Monster)
     {
-        mInfo = MonsterDB::get(fromInt(mSubType, BeingTypeId));
+        mInfo = MonsterDB::get(mSubType);
         if (mInfo)
         {
             setName(mInfo->getName());
@@ -347,7 +348,7 @@ void Being::setSubtype(const uint16_t subtype, const uint16_t look)
 #ifdef EATHENA_SUPPORT
     if (mType == ActorType::Pet)
     {
-        mInfo = PETDB::get(fromInt(mSubType, BeingTypeId));
+        mInfo = PETDB::get(mSubType);
         if (mInfo)
         {
             setName(mInfo->getName());
@@ -360,7 +361,7 @@ void Being::setSubtype(const uint16_t subtype, const uint16_t look)
     }
     else if (mType == ActorType::Mercenary)
     {
-        mInfo = MercenaryDB::get(fromInt(mSubType, BeingTypeId));
+        mInfo = MercenaryDB::get(mSubType);
         if (mInfo)
         {
             setName(mInfo->getName());
@@ -373,7 +374,7 @@ void Being::setSubtype(const uint16_t subtype, const uint16_t look)
     }
     if (mType == ActorType::Homunculus)
     {
-        mInfo = HomunculusDB::get(fromInt(mSubType, BeingTypeId));
+        mInfo = HomunculusDB::get(mSubType);
         if (mInfo)
         {
             setName(mInfo->getName());
@@ -387,7 +388,7 @@ void Being::setSubtype(const uint16_t subtype, const uint16_t look)
 #endif
     else if (mType == ActorType::Npc)
     {
-        mInfo = NPCDB::get(fromInt(mSubType, BeingTypeId));
+        mInfo = NPCDB::get(mSubType);
         if (mInfo)
         {
             setupSpriteDisplay(mInfo->getDisplay(), ForceDisplay_false);
@@ -396,7 +397,7 @@ void Being::setSubtype(const uint16_t subtype, const uint16_t look)
     }
     else if (mType == ActorType::Avatar)
     {
-        mInfo = AvatarDB::get(fromInt(mSubType, BeingTypeId));
+        mInfo = AvatarDB::get(mSubType);
         if (mInfo)
             setupSpriteDisplay(mInfo->getDisplay(), ForceDisplay_false);
     }
@@ -417,7 +418,7 @@ void Being::setSubtype(const uint16_t subtype, const uint16_t look)
     }
     else if (mType == ActorType::Player)
     {
-        int id = -100 - subtype;
+        int id = -100 - toInt(subtype, int);
 
         // Prevent showing errors when sprite doesn't exist
         if (!ItemDB::exists(id))
@@ -902,7 +903,7 @@ void Being::handleAttack(Being *const victim, const int damage,
             // here 10 is weapon slot
             int weaponId = mSpriteIDs[10];
             if (!weaponId)
-                weaponId = -100 - mSubType;
+                weaponId = -100 - toInt(mSubType, int);
             const ItemInfo &info = ItemDB::get(weaponId);
             playSfx(info.getSound(
                 (damage > 0) ? ItemSoundEvent::HIT : ItemSoundEvent::MISS),
@@ -2199,7 +2200,8 @@ void Being::setSprite(const unsigned int slot, const int id,
     else
     {
         const ItemInfo &info = ItemDB::get(id);
-        const std::string &filename = info.getSprite(mGender, mSubType);
+        const std::string &filename = info.getSprite(
+            mGender, mSubType);
         AnimatedSprite *equipmentSprite = nullptr;
 
         if (!isTempSprite && mType == ActorType::Player)
@@ -2291,15 +2293,15 @@ void Being::load()
     // Hairstyles are encoded as negative numbers. Count how far negative
     // we can go.
     int hairstyles = 1;
-    while (ItemDB::get(-hairstyles).getSprite(Gender::MALE, 0) !=
-           paths.getStringValue("spriteErrorFile"))
+    while (ItemDB::get(-hairstyles).getSprite(Gender::MALE,
+           BeingTypeId_zero) != paths.getStringValue("spriteErrorFile"))
     {
         hairstyles ++;
     }
     mNumberOfHairstyles = hairstyles;
 
     int races = 100;
-    while (ItemDB::get(-races).getSprite(Gender::MALE, 0) !=
+    while (ItemDB::get(-races).getSprite(Gender::MALE, BeingTypeId_zero) !=
            paths.getStringValue("spriteErrorFile"))
     {
         races ++;
@@ -2552,7 +2554,10 @@ void Being::drawSpriteAt(Graphics *const graphics,
     if (!userPalette)
         return;
 
-    if (mHighlightMapPortals && mMap && mSubType == 45 && !mMap->getHasWarps())
+    if (mHighlightMapPortals &&
+        mMap &&
+        mSubType == fromInt(45, BeingTypeId) &&
+        !mMap->getHasWarps())
     {
         graphics->setColor(userPalette->
                 getColorWithAlpha(UserPalette::PORTAL_HIGHLIGHT));
@@ -3336,7 +3341,7 @@ void Being::addPet(const BeingId id)
     }
 
     Being *const being = actorManager->createBeing(
-        id, ActorType::LocalPet, 0);
+        id, ActorType::LocalPet, BeingTypeId_zero);
     if (being)
     {
         being->setOwner(this);

@@ -141,7 +141,7 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
         static_cast<LoginHandler*>(loginHandler)->getToken();
 
     LocalPlayer *const tempPlayer = new LocalPlayer(
-        msg.readBeingId("account id"), 0);
+        msg.readBeingId("account id"), BeingTypeId_zero);
     tempPlayer->setGender(token.sex);
 
     PlayerInfoBackend &data = character->data;
@@ -173,7 +173,7 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     const uint16_t race = msg.readInt16("class");
     const uint8_t hairStyle = msg.readUInt8("hair style");
     const uint16_t look = msg.readUInt8("look");
-    tempPlayer->setSubtype(race, look);
+    tempPlayer->setSubtype(fromInt(race, BeingTypeId), look);
     const uint16_t weapon = msg.readInt16("weapon");
     tempPlayer->setSprite(SPRITE_BODY, weapon, "", 1, true);
 

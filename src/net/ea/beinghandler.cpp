@@ -53,7 +53,7 @@ BeingHandler::BeingHandler(const bool enableSync)
 }
 
 Being *BeingHandler::createBeing(const BeingId id,
-                                 const int16_t job)
+                                 const int job)
 {
     if (!actorManager)
         return nullptr;
@@ -68,7 +68,8 @@ Being *BeingHandler::createBeing(const BeingId id,
     else if (job == 45)
         type = ActorType::Portal;
 
-    Being *const being = actorManager->createBeing(id, type, job);
+    Being *const being = actorManager->createBeing(
+        id, type, fromInt(job, BeingTypeId));
     return being;
 }
 

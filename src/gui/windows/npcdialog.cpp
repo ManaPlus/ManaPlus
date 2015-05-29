@@ -870,7 +870,7 @@ void NpcDialog::showAvatar(const BeingTypeId avatarId)
         delete mAvatarBeing;
         mAvatarBeing = new Being(BeingId_zero,
             ActorType::Avatar,
-            toInt(avatarId, uint16_t),
+            avatarId,
             nullptr);
         mPlayerBox->setPlayer(mAvatarBeing);
         if (!mAvatarBeing->empty())

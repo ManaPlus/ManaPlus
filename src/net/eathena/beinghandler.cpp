@@ -460,7 +460,8 @@ Being *BeingHandler::createBeing2(Net::MessageIn &msg,
     if (job == 45 && beingType == BeingType::NPC_EVENT)
         type = ActorType::Portal;
 
-    Being *const being = actorManager->createBeing(id, type, job);
+    Being *const being = actorManager->createBeing(
+        id, type, fromInt(job, BeingTypeId));
     if (beingType == BeingType::MERSOL)
     {
         MercenaryInfo *const info = PlayerInfo::getMercenary();
@@ -524,7 +525,7 @@ void BeingHandler::processBeingChangeLookContinue(Net::MessageIn &msg,
     switch (type)
     {
         case 0:  // change race
-            dstBeing->setSubtype(static_cast<uint16_t>(id),
+            dstBeing->setSubtype(fromInt(id, BeingTypeId),
                 dstBeing->getLook());
             break;
         case 1:  // eAthena LOOK_HAIR
@@ -689,7 +690,7 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
         speed = 150;
 
     dstBeing->setWalkSpeed(Vector(speed, speed, 0));
-    dstBeing->setSubtype(job, 0);
+    dstBeing->setSubtype(fromInt(job, BeingTypeId), 0);
     if (dstBeing->getType() == ActorType::Monster && localPlayer)
         localPlayer->checkNewName(dstBeing);
 
@@ -849,7 +850,7 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
         speed = 150;
 
     dstBeing->setWalkSpeed(Vector(speed, speed, 0));
-    dstBeing->setSubtype(job, 0);
+    dstBeing->setSubtype(fromInt(job, BeingTypeId), 0);
     if (dstBeing->getType() == ActorType::Monster && localPlayer)
         localPlayer->checkNewName(dstBeing);
 
@@ -1019,7 +1020,7 @@ void BeingHandler::processBeingSpawn(Net::MessageIn &msg)
         speed = 150;
 
     dstBeing->setWalkSpeed(Vector(speed, speed, 0));
-    dstBeing->setSubtype(job, 0);
+    dstBeing->setSubtype(fromInt(job, BeingTypeId), 0);
     if (dstBeing->getType() == ActorType::Monster && localPlayer)
         localPlayer->checkNewName(dstBeing);
 
@@ -1700,7 +1701,7 @@ void BeingHandler::processBeingFakeName(Net::MessageIn &msg)
     msg.skip(4, "unsued");
 
     Being *const dstBeing = createBeing2(msg, id, job, type);
-    dstBeing->setSubtype(job, 0);
+    dstBeing->setSubtype(fromInt(job, BeingTypeId), 0);
     dstBeing->setTileCoords(x, y);
     dstBeing->setDirection(dir);
 }

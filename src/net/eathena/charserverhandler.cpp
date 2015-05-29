@@ -201,7 +201,7 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
         static_cast<LoginHandler*>(loginHandler)->getToken();
 
     LocalPlayer *const tempPlayer = new LocalPlayer(
-        msg.readBeingId("player id"), 0);
+        msg.readBeingId("player id"), BeingTypeId_zero);
     tempPlayer->setGender(token.sex);
 
     PlayerInfoBackend &data = character->data;
@@ -252,7 +252,7 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
         color));
 
     const uint16_t look = msg.readInt16("clothes color");
-    tempPlayer->setSubtype(race, look);
+    tempPlayer->setSubtype(fromInt(race, BeingTypeId), look);
     tempPlayer->setName(msg.readString(24, "name"));
 
     character->dummy = tempPlayer;

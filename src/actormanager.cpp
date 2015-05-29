@@ -240,7 +240,7 @@ void ActorManager::setPlayer(LocalPlayer *const player)
 
 Being *ActorManager::createBeing(const BeingId id,
                                  const ActorType::Type type,
-                                 const uint16_t subtype)
+                                 const BeingTypeId subtype)
 {
     Being *const being = new Being(id, type, subtype, mMap);
 
@@ -1380,7 +1380,7 @@ void ActorManager::printBeingsToChat(const ActorSprites &beings,
 
         debugChatTab->chatLog(strprintf("%s (%d,%d) %d",
             being->getName().c_str(), being->getTileX(), being->getTileY(),
-            being->getSubType()), ChatMsgType::BY_SERVER);
+            toInt(being->getSubType(), int)), ChatMsgType::BY_SERVER);
     }
     debugChatTab->chatLog("---------------------------------------",
         ChatMsgType::BY_SERVER);
@@ -1405,7 +1405,7 @@ void ActorManager::printBeingsToChat(const std::vector<Being*> &beings,
 
         debugChatTab->chatLog(strprintf("%s (%d,%d) %d",
             being->getName().c_str(), being->getTileX(), being->getTileY(),
-            being->getSubType()), ChatMsgType::BY_SERVER);
+            toInt(being->getSubType(), int)), ChatMsgType::BY_SERVER);
     }
     debugChatTab->chatLog("---------------------------------------",
         ChatMsgType::BY_SERVER);
@@ -1775,18 +1775,19 @@ bool ActorManager::checkForPickup(const FloorItem *const item) const
     return false;
 }
 
-void ActorManager::updateEffects(const std::map<int, int> &addEffects,
-                                 const std::set<int> &removeEffects) const
+void ActorManager::updateEffects(const std::map<BeingTypeId, int> &addEffects,
+                                 const std::set<BeingTypeId> &removeEffects)
+                                 const
 {
     for_actorsm
     {
         if (!*it || (*it)->getType() != ActorType::Npc)
             continue;
         Being *const being = static_cast<Being*>(*it);
-        const int type = being->getSubType();
+        const BeingTypeId type = being->getSubType();
         if (removeEffects.find(type) != removeEffects.end())
             being->removeSpecialEffect();
-        const std::map<int, int>::const_iterator idAdd = addEffects.find(type);
+        const std::map<BeingTypeId, int>::const_iterator idAdd = addEffects.find(type);
         if (idAdd != addEffects.end())
             being->addSpecialEffect((*idAdd).second);
     }

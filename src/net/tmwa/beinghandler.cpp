@@ -330,7 +330,7 @@ void BeingHandler::processBeingChangeLookContinue(Net::MessageIn &msg,
     switch (type)
     {
         case 0:     // change race
-            dstBeing->setSubtype(static_cast<uint16_t>(id),
+            dstBeing->setSubtype(fromInt(id, BeingTypeId),
                 dstBeing->getLook());
             break;
         case 1:     // eAthena LOOK_HAIR
@@ -479,7 +479,7 @@ void BeingHandler::processPlayerUpdate1(Net::MessageIn &msg)
 
     const uint8_t hairStyle = msg.readUInt8("hair style");
     const uint16_t look = msg.readUInt8("look");
-    dstBeing->setSubtype(job, look);
+    dstBeing->setSubtype(fromInt(job, BeingTypeId), look);
     const uint16_t weapon = msg.readInt16("weapon");
     const uint16_t shield = msg.readInt16("shield");
     const uint16_t headBottom = msg.readInt16("head bottom");
@@ -631,7 +631,7 @@ void BeingHandler::processPlayerUpdate2(Net::MessageIn &msg)
 
     const uint8_t hairStyle = msg.readUInt8("hair style");
     const uint16_t look = msg.readUInt8("look");
-    dstBeing->setSubtype(job, look);
+    dstBeing->setSubtype(fromInt(job, BeingTypeId), look);
     const uint16_t weapon = msg.readInt16("weapon");
     const uint16_t shield = msg.readInt16("shield");
     const uint16_t headBottom = msg.readInt16("head bottom");
@@ -779,7 +779,7 @@ void BeingHandler::processPlayerMove(Net::MessageIn &msg)
 
     const uint8_t hairStyle = msg.readUInt8("hair style");
     const uint16_t look = msg.readUInt8("look");
-    dstBeing->setSubtype(job, look);
+    dstBeing->setSubtype(fromInt(job, BeingTypeId), look);
     const uint16_t weapon = msg.readInt16("weapon");
     const uint16_t shield = msg.readInt16("shield");
     const uint16_t headBottom = msg.readInt16("head bottom");
@@ -986,7 +986,7 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
 
     const uint8_t hairStyle = msg.readUInt8("hair style");
     const uint16_t look = msg.readUInt8("look");
-    dstBeing->setSubtype(job, look);
+    dstBeing->setSubtype(fromInt(job, BeingTypeId), look);
     if (dstBeing->getType() == ActorType::Monster && localPlayer)
         localPlayer->checkNewName(dstBeing);
     dstBeing->setWalkSpeed(Vector(speed, speed, 0));
@@ -1185,7 +1185,7 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
 
     const uint8_t hairStyle = msg.readUInt8("hair style");
     const uint16_t look = msg.readUInt8("look");
-    dstBeing->setSubtype(job, look);
+    dstBeing->setSubtype(fromInt(job, BeingTypeId), look);
     if (dstBeing->getType() == ActorType::Monster && localPlayer)
         localPlayer->checkNewName(dstBeing);
     dstBeing->setWalkSpeed(Vector(speed, speed, 0));

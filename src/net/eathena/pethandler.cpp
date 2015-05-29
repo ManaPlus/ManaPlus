@@ -166,7 +166,8 @@ void PetHandler::processPetMessage(Net::MessageIn &msg)
     if (!dstBeing)
         return;
 
-    const int hungry = data - (dstBeing->getSubType() - 100) * 100 - 50;
+    const int hungry = data - (toInt(dstBeing->getSubType(), int)
+        - 100) * 100 - 50;
     if (hungry >= 0 && hungry <= 4)
     {
         if (localChatTab && localPlayer)

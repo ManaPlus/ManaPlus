@@ -112,7 +112,7 @@ extern MiniStatusWindow *miniStatusWindow;
 extern SkillDialog *skillDialog;
 
 LocalPlayer::LocalPlayer(const BeingId id,
-                         const uint16_t subtype) :
+                         const BeingTypeId subtype) :
     Being(id, ActorType::Player, subtype, nullptr),
     AttributeListener(),
     PlayerDeathListener(),

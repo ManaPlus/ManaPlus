@@ -25,6 +25,7 @@
 
 #include "enums/inventorytype.h"
 
+#include "enums/simpletypes/beingtypeid.h"
 #include "enums/simpletypes/damaged.h"
 #include "enums/simpletypes/equipm.h"
 #include "enums/simpletypes/equipped.h"
@@ -163,7 +164,8 @@ class Inventory final
 
         const Item *findItemBySprite(std::string spritePath,
                                      const Gender::Type gender,
-                                     const int race) const A_WARN_UNUSED;
+                                     const BeingTypeId race)
+                                     const A_WARN_UNUSED;
 
         std::string getName() const A_WARN_UNUSED;
 

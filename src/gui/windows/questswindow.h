@@ -23,6 +23,8 @@
 
 #include "localconsts.h"
 
+#include "enums/simpletypes/beingtypeid.h"
+
 #include "gui/widgets/window.h"
 
 #include "utils/xml.h"
@@ -41,7 +43,7 @@ class QuestsModel;
 struct QuestEffect;
 struct QuestItem;
 
-typedef std::map<int, const QuestEffect*> NpcQuestEffectMap;
+typedef std::map<BeingTypeId, const QuestEffect*> NpcQuestEffectMap;
 typedef NpcQuestEffectMap::const_iterator NpcQuestEffectMapCIter;
 
 class QuestsWindow final : public Window,

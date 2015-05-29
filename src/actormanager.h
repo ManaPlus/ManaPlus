@@ -28,6 +28,7 @@
 #include "enums/simpletypes/allowsort.h"
 #include "enums/simpletypes/allplayers.h"
 #include "enums/simpletypes/beingid.h"
+#include "enums/simpletypes/beingtypeid.h"
 #include "enums/simpletypes/npcnames.h"
 
 #include "listeners/configlistener.h"
@@ -71,7 +72,7 @@ class ActorManager final: public ConfigListener
          */
         Being *createBeing(const BeingId id,
                            const ActorType::Type type,
-                           const uint16_t subtype) A_WARN_UNUSED;
+                           const BeingTypeId subtype) A_WARN_UNUSED;
 
         static Being *cloneBeing(const Being *const srcBeing,
                                  const int dx, const int dy,
@@ -325,8 +326,8 @@ class ActorManager final: public ConfigListener
 
         bool checkForPickup(const FloorItem *const item) const A_WARN_UNUSED;
 
-        void updateEffects(const std::map<int, int> &addEffects,
-                           const std::set<int> &removeEffects) const;
+        void updateEffects(const std::map<BeingTypeId, int> &addEffects,
+                           const std::set<BeingTypeId> &removeEffects) const;
 
 #ifdef EATHENA_SUPPORT
         void removeRoom(const int chatId);

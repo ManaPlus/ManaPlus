@@ -107,7 +107,7 @@ class Being notfinal : public ActorSprite,
          */
         Being(const BeingId id,
               const ActorType::Type type,
-              const uint16_t subtype,
+              const BeingTypeId subtype,
               Map *const map);
 
         A_DELETE_COPY(Being)
@@ -361,13 +361,13 @@ class Being notfinal : public ActorSprite,
         void drawEmotion(Graphics *const graphics, const int offsetX,
                          const int offsetY) const;
 
-        uint16_t getSubType() const
+        BeingTypeId getSubType() const
         { return mSubType; }
 
          /**
           * Set Being's subtype (mostly for view for monsters and NPCs)
           */
-        void setSubtype(const uint16_t subtype, const uint16_t look);
+        void setSubtype(const BeingTypeId subtype, const uint16_t look);
 
         const BeingInfo *getInfo() const A_WARN_UNUSED
         { return mInfo; }
@@ -997,9 +997,9 @@ class Being notfinal : public ActorSprite,
 
         Gender::Type mGender;
         BeingAction::Action mAction;
-        uint16_t mSubType;      /**< Subtype (graphical view, basically) */
-        uint8_t mDirection;               /**< Facing direction */
-        uint8_t mDirectionDelayed;        /**< Facing direction */
+        BeingTypeId mSubType;       /**< Subtype (graphical view, basically) */
+        uint8_t mDirection;         /**< Facing direction */
+        uint8_t mDirectionDelayed;  /**< Facing direction */
         SpriteDirection::Type mSpriteDirection;  /**< Facing direction */
         bool mShowName;
         bool mIsGM;

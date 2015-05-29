@@ -124,7 +124,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     mCancelButton(new Button(this, _("Cancel"), "cancel", this)),
     mPlayer(new Being(BeingId_zero,
             ActorType::Player,
-            static_cast<uint16_t>(0U),
+            BeingTypeId_zero,
             nullptr)),
     mPlayerBox(new PlayerBox(this, mPlayer, "charcreate_playerbox.xml",
         "charcreate_selectedplayerbox.xml")),
@@ -652,7 +652,7 @@ void CharCreateDialog::updateLook()
     {
         mLook = 0;
     }
-    mPlayer->setSubtype(static_cast<uint16_t>(mRace),
+    mPlayer->setSubtype(fromInt(mRace, BeingTypeId),
         static_cast<uint8_t>(mLook));
     if (mRaceNameLabel)
     {

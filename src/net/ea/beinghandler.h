@@ -37,7 +37,7 @@ class BeingHandler notfinal : public Net::BeingHandler
         explicit BeingHandler(const bool enableSync);
 
         static Being *createBeing(const BeingId id,
-                                  const int16_t job) A_WARN_UNUSED;
+                                  const int job) A_WARN_UNUSED;
 
         static void setSprite(Being *const being, const unsigned int slot,
                               const int id,
