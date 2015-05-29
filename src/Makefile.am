@@ -1191,6 +1191,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      enums/simpletypes/booldefines.h \
 	      enums/simpletypes/damaged.h \
 	      enums/simpletypes/enable.h \
+	      enums/simpletypes/enumdefines.h \
 	      enums/simpletypes/equipm.h \
 	      enums/simpletypes/equipped.h \
 	      enums/simpletypes/favorite.h \
