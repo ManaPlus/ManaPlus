@@ -147,7 +147,7 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     PlayerInfoBackend &data = character->data;
     data.mAttributes[Attributes::EXP] = msg.readInt32("exp");
     data.mAttributes[Attributes::MONEY] = msg.readInt32("money");
-    Stat &jobStat = data.mStats[static_cast<size_t>(Attributes::JOB)];
+    Stat &jobStat = data.mStats[Attributes::JOB];
     jobStat.exp = msg.readInt32("job");
 
     const int temp = msg.readInt32("job level");
@@ -197,11 +197,12 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
 
     character->dummy = tempPlayer;
 
-    for (int i = 0; i < 6; i++)
-    {
-        character->data.mStats[i + Attributes::STR].base
-            = msg.readUInt8("stat");
-    }
+    character->data.mStats[Attributes::STR].base = msg.readUInt8("str");
+    character->data.mStats[Attributes::AGI].base = msg.readUInt8("agi");
+    character->data.mStats[Attributes::VIT].base = msg.readUInt8("vit");
+    character->data.mStats[Attributes::INT].base = msg.readUInt8("int");
+    character->data.mStats[Attributes::DEX].base = msg.readUInt8("dex");
+    character->data.mStats[Attributes::LUK].base = msg.readUInt8("luk");
 
     if (withColors)
     {

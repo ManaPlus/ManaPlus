@@ -947,7 +947,7 @@ bool ChatWindow::addCurrentToHistory()
     return true;
 }
 
-void ChatWindow::statChanged(const int id,
+void ChatWindow::statChanged(const AttributesT id,
                              const int oldVal1,
                              const int oldVal2)
 {
@@ -970,7 +970,7 @@ void ChatWindow::statChanged(const int id,
     }
 }
 
-void ChatWindow::attributeChanged(const int id,
+void ChatWindow::attributeChanged(const AttributesT id,
                                   const int oldVal,
                                   const int newVal)
 {

@@ -252,7 +252,7 @@ void MiniStatusWindow::drawIcons(Graphics *const graphics)
     }
 }
 
-void MiniStatusWindow::statChanged(const int id A_UNUSED,
+void MiniStatusWindow::statChanged(const AttributesT id A_UNUSED,
                                    const int oldVal1 A_UNUSED,
                                    const int oldVal2 A_UNUSED)
 {
@@ -261,7 +261,7 @@ void MiniStatusWindow::statChanged(const int id A_UNUSED,
     StatusWindow::updateJobBar(mJobBar);
 }
 
-void MiniStatusWindow::attributeChanged(const int id,
+void MiniStatusWindow::attributeChanged(const AttributesT id,
                                         const int oldVal A_UNUSED,
                                         const int newVal A_UNUSED)
 {

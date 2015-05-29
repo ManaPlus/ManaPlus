@@ -33,8 +33,6 @@
 #include "being/petinfo.h"
 #endif
 
-#include "enums/being/attributes.h"
-
 #include "gui/windows/inventorywindow.h"
 #include "gui/windows/npcdialog.h"
 
@@ -72,29 +70,32 @@ std::set<int> mProtectedItems;
 
 // --- Triggers ---------------------------------------------------------------
 
-void triggerAttr(const int id, const int old)
+void triggerAttr(const AttributesT id,
+                 const int old)
 {
     AttributeListener::distributeEvent(id, old,
         mData.mAttributes.find(id)->second);
 }
 
-void triggerStat(const int id, const int old1, const int old2)
+void triggerStat(const AttributesT id,
+                 const int old1,
+                 const int old2)
 {
     StatListener::distributeEvent(id, old1, old2);
 }
 
 // --- Attributes -------------------------------------------------------------
 
-int getAttribute(const int id)
+int getAttribute(const AttributesT id)
 {
-    const IntMap::const_iterator it = mData.mAttributes.find(id);
+    const AtrIntMap::const_iterator it = mData.mAttributes.find(id);
     if (it != mData.mAttributes.end())
         return it->second;
     else
         return 0;
 }
 
-void setAttribute(const int id,
+void setAttribute(const AttributesT id,
                   const int value,
                   const Notify notify)
 {
@@ -120,7 +121,7 @@ void setSkillLevel(const int id, const int value)
 
 // --- Stats ------------------------------------------------------------------
 
-int getStatBase(const int id)
+int getStatBase(const AttributesT id)
 {
     const StatMap::const_iterator it = mData.mStats.find(id);
     if (it != mData.mStats.end())
@@ -129,7 +130,7 @@ int getStatBase(const int id)
         return 0;
 }
 
-void setStatBase(const int id, const int value, const Notify notify)
+void setStatBase(const AttributesT id, const int value, const Notify notify)
 {
     const int old = mData.mStats[id].base;
     mData.mStats[id].base = value;
@@ -137,7 +138,7 @@ void setStatBase(const int id, const int value, const Notify notify)
         triggerStat(id, old, 0);
 }
 
-int getStatMod(const int id)
+int getStatMod(const AttributesT id)
 {
     const StatMap::const_iterator it = mData.mStats.find(id);
     if (it != mData.mStats.end())
@@ -146,7 +147,7 @@ int getStatMod(const int id)
         return 0;
 }
 
-void setStatMod(const int id, const int value, const Notify notify)
+void setStatMod(const AttributesT id, const int value, const Notify notify)
 {
     const int old = mData.mStats[id].mod;
     mData.mStats[id].mod = value;
@@ -154,7 +155,7 @@ void setStatMod(const int id, const int value, const Notify notify)
         triggerStat(id, old, 0);
 }
 
-int getStatEffective(const int id)
+int getStatEffective(const AttributesT id)
 {
     const StatMap::const_iterator it = mData.mStats.find(id);
     if (it != mData.mStats.end())
@@ -163,7 +164,7 @@ int getStatEffective(const int id)
         return 0;
 }
 
-const std::pair<int, int> getStatExperience(const int id)
+const std::pair<int, int> getStatExperience(const AttributesT id)
 {
     const StatMap::const_iterator it = mData.mStats.find(id);
     int a, b;
@@ -180,7 +181,7 @@ const std::pair<int, int> getStatExperience(const int id)
     return std::pair<int, int>(a, b);
 }
 
-void setStatExperience(const int id,
+void setStatExperience(const AttributesT id,
                        const int have,
                        const int need,
                        const Notify notify)

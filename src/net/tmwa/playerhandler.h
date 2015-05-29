@@ -44,7 +44,7 @@ class PlayerHandler final : public MessageHandler, public Ea::PlayerHandler
         void stopAttack() const override final;
         void emote(const uint8_t emoteId) const override final;
 
-        void increaseAttribute(const int attr) const override final;
+        void increaseAttribute(const AttributesT attr) const override final;
         void increaseSkill(const uint16_t skillId) const override final;
 
         void pickUp(const FloorItem *const floorItem) const override final;

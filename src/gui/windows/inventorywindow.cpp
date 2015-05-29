@@ -988,7 +988,7 @@ void InventoryWindow::unsetInventory()
     mInventory = nullptr;
 }
 
-void InventoryWindow::attributeChanged(const int id,
+void InventoryWindow::attributeChanged(const AttributesT id,
                                        const int oldVal A_UNUSED,
                                        const int newVal A_UNUSED)
 {

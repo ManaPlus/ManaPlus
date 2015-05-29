@@ -68,7 +68,7 @@ class KillStats final : public Window,
 
         void resetTimes();
 
-        void attributeChanged(const int id,
+        void attributeChanged(const AttributesT id,
                               const int oldVal,
                               const int newVal) override final;
 

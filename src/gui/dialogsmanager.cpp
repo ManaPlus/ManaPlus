@@ -143,7 +143,7 @@ void DialogsManager::playerDeath()
     }
 }
 
-void DialogsManager::attributeChanged(const int id,
+void DialogsManager::attributeChanged(const AttributesT id,
                                       const int oldVal,
                                       const int newVal)
 {

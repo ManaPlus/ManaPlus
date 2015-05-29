@@ -25,6 +25,7 @@
 
 #include "flooritem.h"
 
+#include "enums/being/attributes.h"
 #include "enums/being/beingaction.h"
 
 #include "enums/simpletypes/beingid.h"
@@ -49,9 +50,9 @@ class PlayerHandler notfinal
 
         virtual void emote(const uint8_t emoteId) const = 0;
 
-        virtual void increaseAttribute(const int attr) const = 0;
+        virtual void increaseAttribute(const AttributesT attr) const = 0;
 
-        virtual void decreaseAttribute(const int attr) const = 0;
+        virtual void decreaseAttribute(const AttributesT attr) const = 0;
 
         virtual void increaseSkill(const uint16_t skillId) const = 0;
 

@@ -27,6 +27,8 @@
 #include "enums/guildpositionflags.h"
 #include "enums/state.h"
 
+#include "enums/being/attributes.h"
+
 #include "enums/simpletypes/beingid.h"
 #include "enums/simpletypes/keep.h"
 #include "enums/simpletypes/notify.h"
@@ -50,7 +52,8 @@ struct Stat final
 };
 
 typedef std::map<int, int> IntMap;
-typedef std::map<int, Stat> StatMap;
+typedef std::map<Attributes, int> AtrIntMap;
+typedef std::map<Attributes, Stat> StatMap;
 
 /**
  * Backend for core player information.
@@ -64,7 +67,7 @@ struct PlayerInfoBackend final
     {
     }
 
-    IntMap mAttributes;
+    AtrIntMap mAttributes;
     StatMap mStats;
     IntMap mSkills;
 };
@@ -89,12 +92,12 @@ namespace PlayerInfo
     /**
      * Returns the value of the given attribute.
      */
-    int getAttribute(const int id) A_WARN_UNUSED;
+    int getAttribute(const AttributesT id) A_WARN_UNUSED;
 
     /**
      * Changes the value of the given attribute.
      */
-    void setAttribute(const int id, const int value,
+    void setAttribute(const AttributesT id, const int value,
                       const Notify notify = Notify_true);
 
     int getSkillLevel(const int id) A_WARN_UNUSED;
@@ -106,45 +109,48 @@ namespace PlayerInfo
     /**
      * Returns the base value of the given stat.
      */
-    int getStatBase(const int id) A_WARN_UNUSED;
+    int getStatBase(const AttributesT id) A_WARN_UNUSED;
 
     /**
      * Changes the base value of the given stat.
      */
-    void setStatBase(const int id, const int value,
+    void setStatBase(const AttributesT id,
+                     const int value,
                      const Notify notify = Notify_true);
 
     /**
      * Returns the modifier for the given stat.
      */
-    int getStatMod(const int id) A_WARN_UNUSED;
+    int getStatMod(const AttributesT id) A_WARN_UNUSED;
 
     /**
      * Changes the modifier for the given stat.
      */
-    void setStatMod(const int id, const int value,
+    void setStatMod(const AttributesT id,
+                    const int value,
                     const Notify notify = Notify_true);
 
     /**
      * Returns the current effective value of the given stat. Effective is base
      * + mod
      */
-    int getStatEffective(const int id) A_WARN_UNUSED;
+    int getStatEffective(const AttributesT id) A_WARN_UNUSED;
 
     /**
      * Changes the level of the given stat.
      */
-    void setStatLevel(int id, int value, Notify notify = Notify_true);
+    void setStatLevel(AttributesT id, int value, Notify notify = Notify_true);
 
     /**
      * Returns the experience of the given stat.
      */
-    const std::pair<int, int> getStatExperience(const int id) A_WARN_UNUSED;
+    const std::pair<int, int> getStatExperience(const AttributesT id)
+                                                A_WARN_UNUSED;
 
     /**
      * Changes the experience of the given stat.
      */
-    void setStatExperience(const int id,
+    void setStatExperience(const AttributesT id,
                            const int have,
                            const int need,
                            const Notify notify = Notify_true);
@@ -223,9 +229,12 @@ namespace PlayerInfo
 
     void stateChange(const State state);
 
-    void triggerAttr(const int id, const int old);
+    void triggerAttr(const AttributesT id,
+                     const int old);
 
-    void triggerStat(const int id, const int old1, const int old2);
+    void triggerStat(const AttributesT id,
+                     const int old1,
+                     const int old2);
 
     void setEquipmentBackend(Equipment::Backend *const backend);
 

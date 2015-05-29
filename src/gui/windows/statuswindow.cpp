@@ -257,7 +257,7 @@ void StatusWindow::updateLevelLabel()
     mLvlLabel->adjustSize();
 }
 
-void StatusWindow::statChanged(const int id,
+void StatusWindow::statChanged(const AttributesT id,
                                const int oldVal1,
                                const int oldVal2 A_UNUSED)
 {
@@ -305,7 +305,7 @@ void StatusWindow::statChanged(const int id,
             mJobLvlLabel->setCaption(strprintf(_("Job: %d"), lvl));
             mJobLvlLabel->adjustSize();
 
-            updateProgressBar(mJobBar, id, false);
+            updateJobBar(mJobBar, false);
         }
     }
     else
@@ -317,7 +317,7 @@ void StatusWindow::statChanged(const int id,
     }
 }
 
-void StatusWindow::attributeChanged(const int id,
+void StatusWindow::attributeChanged(const AttributesT id,
                                     const int oldVal A_UNUSED,
                                     const int newVal)
 {
@@ -385,7 +385,8 @@ void StatusWindow::attributeChanged(const int id,
     }
 }
 
-void StatusWindow::setPointsNeeded(const int id, const int needed)
+void StatusWindow::setPointsNeeded(const AttributesT id,
+                                   const int needed)
 {
     const Attrs::const_iterator it = mAttrs.find(id);
 
@@ -397,7 +398,8 @@ void StatusWindow::setPointsNeeded(const int id, const int needed)
     }
 }
 
-void StatusWindow::addAttribute(const int id, const std::string &restrict name,
+void StatusWindow::addAttribute(const AttributesT id,
+                                const std::string &restrict name,
                                 const std::string &restrict shortName,
                                 const Modifiable modifiable)
 {
@@ -478,8 +480,10 @@ void StatusWindow::updateMPBar(ProgressBar *const bar,
     bar->setProgress(prog);
 }
 
-void StatusWindow::updateProgressBar(ProgressBar *const bar, const int value,
-                                     const int max, const bool percent)
+void StatusWindow::updateProgressBar(ProgressBar *const bar,
+                                     const int value,
+                                     const int max,
+                                     const bool percent)
 {
     if (!bar)
         return;
@@ -527,7 +531,8 @@ void StatusWindow::updateJobBar(ProgressBar *const bar, const bool percent)
     updateProgressBar(bar, exp.first, exp.second, percent);
 }
 
-void StatusWindow::updateProgressBar(ProgressBar *const bar, const int id,
+void StatusWindow::updateProgressBar(ProgressBar *const bar,
+                                     const AttributesT id,
                                      const bool percent)
 {
     const std::pair<int, int> exp =  PlayerInfo::getStatExperience(id);
@@ -691,7 +696,8 @@ void StatusWindow::action(const ActionEvent &event)
 }
 
 AttrDisplay::AttrDisplay(const Widget2 *const widget,
-                         const int id, const std::string &restrict name,
+                         const AttributesT id,
+                         const std::string &restrict name,
                          const std::string &restrict shortName) :
     Container(widget),
     mId(id),
@@ -724,7 +730,8 @@ std::string AttrDisplay::update()
 }
 
 DerDisplay::DerDisplay(const Widget2 *const widget,
-                       const int id, const std::string &restrict name,
+                       const AttributesT id,
+                       const std::string &restrict name,
                        const std::string &restrict shortName) :
     AttrDisplay(widget, id, name, shortName)
 {
@@ -735,7 +742,8 @@ DerDisplay::DerDisplay(const Widget2 *const widget,
 }
 
 ChangeDisplay::ChangeDisplay(const Widget2 *const widget,
-                             const int id, const std::string &restrict name,
+                             const AttributesT id,
+                             const std::string &restrict name,
                              const std::string &restrict shortName) :
     AttrDisplay(widget, id, name, shortName),
     ActionListener(),

@@ -21,6 +21,8 @@
 #ifndef LISTENERS_STATLISTENER_H
 #define LISTENERS_STATLISTENER_H
 
+#include "enums/being/attributes.h"
+
 #include "listeners/baselistener.hpp"
 
 #include "localconsts.h"
@@ -28,11 +30,11 @@
 class StatListener notfinal
 {
     public:
-        virtual void statChanged(const int id,
+        virtual void statChanged(const AttributesT id,
                                  const int oldVal1,
                                  const int oldVal2) = 0;
 
-        static void distributeEvent(const int id,
+        static void distributeEvent(const AttributesT id,
                                     const int oldVal1,
                                     const int oldVal2);
 

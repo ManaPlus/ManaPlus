@@ -257,11 +257,12 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
 
     character->dummy = tempPlayer;
 
-    for (int i = 0; i < 6; i++)
-    {
-        character->data.mStats[i + Attributes::STR].base
-            = msg.readUInt8("stat");
-    }
+    character->data.mStats[Attributes::STR].base = msg.readUInt8("str");
+    character->data.mStats[Attributes::AGI].base = msg.readUInt8("agi");
+    character->data.mStats[Attributes::VIT].base = msg.readUInt8("vit");
+    character->data.mStats[Attributes::INT].base = msg.readUInt8("int");
+    character->data.mStats[Attributes::DEX].base = msg.readUInt8("dex");
+    character->data.mStats[Attributes::LUK].base = msg.readUInt8("luk");
 
     character->slot = msg.readInt16("character slot id");
     msg.readInt16("rename");

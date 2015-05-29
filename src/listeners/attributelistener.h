@@ -21,6 +21,8 @@
 #ifndef LISTENERS_ATTRIBUTELISTENER_H
 #define LISTENERS_ATTRIBUTELISTENER_H
 
+#include "enums/being/attributes.h"
+
 #include "listeners/baselistener.hpp"
 
 #include "localconsts.h"
@@ -28,11 +30,11 @@
 class AttributeListener notfinal
 {
     public:
-        virtual void attributeChanged(const int id,
+        virtual void attributeChanged(const AttributesT id,
                                       const int oldVal,
                                       const int newVal) = 0;
 
-        static void distributeEvent(const int id,
+        static void distributeEvent(const AttributesT id,
                                     const int oldVal,
                                     const int newVal);
 

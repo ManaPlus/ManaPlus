@@ -154,7 +154,7 @@ class InventoryWindow final : public Window,
 
         void unsetInventory();
 
-        void attributeChanged(const int id,
+        void attributeChanged(const AttributesT id,
                               const int oldVal,
                               const int newVal) override final;
 

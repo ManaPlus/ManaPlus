@@ -48,12 +48,9 @@ typedef SkillDataMap::const_iterator SkillDataMapCIter;
 struct SkillInfo final
 {
     std::string skillLevel;
-    std::string skillExp;
     std::string skillEffect;
     std::string useButton;
     std::string errorText;
-    float progress;
-    Color color;
     SkillDataMap dataMap;
     SkillModel *model;
     SkillData *data;

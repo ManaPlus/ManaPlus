@@ -403,7 +403,7 @@ void KillStats::update()
     BLOCK_END("KillStats::update")
 }
 
-void KillStats::attributeChanged(const int id,
+void KillStats::attributeChanged(const AttributesT id,
                                  const int oldVal,
                                  const int newVal)
 {

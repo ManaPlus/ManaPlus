@@ -24,7 +24,7 @@
 
 defineListener(StatListener)
 
-void StatListener::distributeEvent(const int id,
+void StatListener::distributeEvent(const AttributesT id,
                                    const int oldVal1,
                                    const int oldVal2)
 {

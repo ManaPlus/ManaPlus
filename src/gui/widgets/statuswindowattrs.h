@@ -23,6 +23,8 @@
 #ifndef GUI_WIDGETS_STATUSWINDOWATTRS_H
 #define GUI_WIDGETS_STATUSWINDOWATTRS_H
 
+#include "enums/being/attributes.h"
+
 #include "gui/widgets/container.h"
 
 #include "gui/widgets/label.h"
@@ -66,11 +68,11 @@ class AttrDisplay notfinal : public Container
 
     protected:
         AttrDisplay(const Widget2 *const widget,
-                    const int id,
+                    const AttributesT id,
                     const std::string &restrict name,
                     const std::string &restrict shortName);
 
-        const int mId;
+        const AttributesT mId;
         const std::string mName;
         const std::string mShortName;
 
@@ -83,7 +85,8 @@ class DerDisplay final : public AttrDisplay
 {
     public:
         DerDisplay(const Widget2 *const widget,
-                   const int id, const std::string &restrict name,
+                   const AttributesT id,
+                   const std::string &restrict name,
                    const std::string &restrict shortName);
 
         A_DELETE_COPY(DerDisplay)
@@ -97,7 +100,8 @@ class ChangeDisplay final : public AttrDisplay,
 {
     public:
         ChangeDisplay(const Widget2 *const widget,
-                      const int id, const std::string &restrict name,
+                      const AttributesT id,
+                      const std::string &restrict name,
                       const std::string &restrict shortName);
 
         A_DELETE_COPY(ChangeDisplay)

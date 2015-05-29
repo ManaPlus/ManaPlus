@@ -37,12 +37,9 @@
 
 SkillInfo::SkillInfo() :
     skillLevel(),
-    skillExp(),
     skillEffect(),
     useButton(),
     errorText(),
-    progress(0.0F),
-    color(),
     dataMap(),
     model(nullptr),
     data(nullptr),
@@ -76,9 +73,7 @@ SkillInfo::~SkillInfo()
 void SkillInfo::update()
 {
     const int baseLevel = PlayerInfo::getSkillLevel(id);
-    const std::pair<int, int> exp = PlayerInfo::getStatExperience(id);
-
-    if (modifiable == Modifiable_false && baseLevel == 0 && exp.second == 0)
+    if (modifiable == Modifiable_false && baseLevel == 0)
     {
         if (visible == Visible_true)
         {
@@ -159,20 +154,6 @@ void SkillInfo::update()
 
     level = baseLevel;
     skillLevelWidth = -1;
-
-    if (exp.second)
-    {
-        skillExp = strprintf("%d / %d", exp.first, exp.second);
-        progress = static_cast<float>(exp.first)
-                   / static_cast<float>(exp.second);
-    }
-    else
-    {
-        skillExp.clear();
-        progress = 0.0F;
-    }
-
-    color = Theme::getProgressColor(Theme::PROG_EXP, progress);
 
     if (updateVisibility && model)
         model->updateVisibilities();

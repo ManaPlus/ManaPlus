@@ -56,9 +56,11 @@ class StatusWindow final : public Window,
 
         A_DELETE_COPY(StatusWindow)
 
-        void setPointsNeeded(const int id, const int needed);
+        void setPointsNeeded(const AttributesT id,
+                             const int needed);
 
-        void addAttribute(const int id, const std::string &restrict name,
+        void addAttribute(const AttributesT id,
+                          const std::string &restrict name,
                           const std::string &restrict shortName = "",
                           const Modifiable modifiable = Modifiable_false);
 
@@ -75,21 +77,23 @@ class StatusWindow final : public Window,
         static void updateArrowsBar(ProgressBar *const bar);
         void updateStatusBar(ProgressBar *const bar,
                              const bool percent = true) const;
-        static void updateProgressBar(ProgressBar *const bar, const int value,
-                                      const int max, const bool percent);
         static void updateProgressBar(ProgressBar *const bar,
-                                      const int id,
+                                      const int value,
+                                      const int max,
+                                      const bool percent);
+        static void updateProgressBar(ProgressBar *const bar,
+                                      const AttributesT id,
                                       const bool percent = true);
 
         void action(const ActionEvent &event) override;
 
         void clearAttributes();
 
-        void attributeChanged(const int id,
+        void attributeChanged(const AttributesT id,
                               const int oldVal,
                               const int newVal) override final;
 
-        void statChanged(const int id,
+        void statChanged(const AttributesT id,
                          const int oldVal1,
                          const int oldVal2) override final;
 
@@ -124,7 +128,7 @@ class StatusWindow final : public Window,
         Label *mCorrectionPointsLabel;
         Button *mCopyButton;
 
-        typedef std::map<int, AttrDisplay*> Attrs;
+        typedef std::map<Attributes, AttrDisplay*> Attrs;
         Attrs mAttrs;
 };
 

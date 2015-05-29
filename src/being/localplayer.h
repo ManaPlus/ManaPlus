@@ -392,11 +392,11 @@ class LocalPlayer final : public Being,
         int getLastAttackY() const override final
         { return mTarget ? mTarget->getTileY() : mLastAttackY; }
 
-        void attributeChanged(const int id,
+        void attributeChanged(const AttributesT id,
                               const int oldVal,
                               const int newVal) override final;
 
-        void statChanged(const int id,
+        void statChanged(const AttributesT id,
                          const int oldVal1,
                          const int oldVal2) override final;
 

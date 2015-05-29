@@ -61,7 +61,7 @@ PlayerHandler::PlayerHandler()
 {
 }
 
-void PlayerHandler::decreaseAttribute(const int attr A_UNUSED) const
+void PlayerHandler::decreaseAttribute(const AttributesT attr A_UNUSED) const
 {
 }
 
@@ -198,13 +198,14 @@ void PlayerHandler::processPlayerStatUpdate3(Net::MessageIn &msg)
 void PlayerHandler::processPlayerStatUpdate4(Net::MessageIn &msg)
 {
     BLOCK_START("PlayerHandler::processPlayerStatUpdate4")
-    const int type = msg.readInt16("type");
+    const uint16_t type = msg.readInt16("type");
     const uint8_t ok = msg.readUInt8("flag");
     const int value = msg.readUInt8("value");
 
     if (ok != 1)
     {
-        const int oldValue = PlayerInfo::getStatBase(type);
+        const int oldValue = PlayerInfo::getStatBase(
+            static_cast<AttributesT>(type));
         const int points = PlayerInfo::getAttribute(Attributes::CHAR_POINTS)
             + oldValue - value;
         PlayerInfo::setAttribute(Attributes::CHAR_POINTS, points);

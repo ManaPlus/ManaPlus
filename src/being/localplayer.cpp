@@ -1117,7 +1117,7 @@ void LocalPlayer::addSpMessage(const int change)
     }
 }
 
-void LocalPlayer::statChanged(const int id,
+void LocalPlayer::statChanged(const AttributesT id,
                               const int oldVal1,
                               const int oldVal2)
 {
@@ -1136,7 +1136,7 @@ void LocalPlayer::statChanged(const int id,
     addJobMessage(change);
 }
 
-void LocalPlayer::attributeChanged(const int id,
+void LocalPlayer::attributeChanged(const AttributesT id,
                                    const int oldVal,
                                    const int newVal)
 {

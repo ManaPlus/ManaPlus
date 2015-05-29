@@ -22,49 +22,46 @@
 #ifndef ENUMS_BEING_ATTRIBUTES_H
 #define ENUMS_BEING_ATTRIBUTES_H
 
-namespace Attributes
+#include "enums/simpletypes/enumdefines.h"
+
+enumStart(Attributes)
 {
-    /**
-     * Standard attributes for players.
-     */
-    enum Attributes
-    {
-        LEVEL        = 0,
-        HP,
-        MAX_HP,
-        MP,
-        MAX_MP,
-        EXP,
-        EXP_NEEDED,
-        MONEY,
-        TOTAL_WEIGHT,
-        MAX_WEIGHT,
-        JOB          = 10,
-        STR          = 13,
-        AGI          = 14,
-        VIT          = 15,
-        INT          = 16,
-        DEX          = 17,
-        LUK          = 18,
-        SKILL_POINTS,
-        CHAR_POINTS,
-        CORR_POINTS,
-        ATTACK_DELAY = 100,
-        ATTACK_RANGE = 101,
-        WALK_SPEED   = 102,
-        ATTACK_SPEED = 103,
-        KARMA,
-        MANNER,
-        CRIT,
-        FLEE,
-        HIT,
-        MDEF,
-        MATK,
-        DEF,
-        ATK,
-        CART_TOTAL_WEIGHT = 1000,
-        CART_MAX_WEIGHT
-    };
-}  // namespace Attributes
+    LEVEL        = 0,
+    HP,
+    MAX_HP,
+    MP,
+    MAX_MP,
+    EXP,
+    EXP_NEEDED,
+    MONEY,
+    TOTAL_WEIGHT,
+    MAX_WEIGHT,
+    JOB          = 10,
+    STR          = 13,
+    AGI          = 14,
+    VIT          = 15,
+    INT          = 16,
+    DEX          = 17,
+    LUK          = 18,
+    SKILL_POINTS,
+    CHAR_POINTS,
+    CORR_POINTS,
+    ATTACK_DELAY = 100,
+    ATTACK_RANGE = 101,
+    WALK_SPEED   = 102,
+    ATTACK_SPEED = 103,
+    KARMA,
+    MANNER,
+    CRIT,
+    FLEE,
+    HIT,
+    MDEF,
+    MATK,
+    DEF,
+    ATK,
+    CART_TOTAL_WEIGHT = 1000,
+    CART_MAX_WEIGHT
+}
+enumEnd(Attributes);
 
 #endif  // ENUMS_BEING_ATTRIBUTES_H

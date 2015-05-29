@@ -24,7 +24,7 @@
 
 defineListener(AttributeListener)
 
-void AttributeListener::distributeEvent(const int id,
+void AttributeListener::distributeEvent(const AttributesT id,
                                         const int oldVal,
                                         const int newVal)
 {
