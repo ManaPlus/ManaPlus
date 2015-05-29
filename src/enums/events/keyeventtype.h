@@ -64,16 +64,13 @@
 #ifndef ENUMS_EVENTS_KEYEVENTTYPE_H
 #define ENUMS_EVENTS_KEYEVENTTYPE_H
 
-namespace KeyEventType
+#include "enums/simpletypes/enumdefines.h"
+
+enumStart(KeyEventType)
 {
-    /**
-      * Key event types.
-      */
-    enum Type
-    {
-        PRESSED = 0,
-        RELEASED
-    };
-}  // namespace KeyEventType
+    PRESSED = 0,
+    RELEASED
+}
+enumEnd(KeyEventType);
 
 #endif  // ENUMS_EVENTS_KEYEVENTTYPE_H

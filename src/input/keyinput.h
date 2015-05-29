@@ -85,12 +85,12 @@ class KeyInput final
         ~KeyInput()
         { }
 
-        void setType(KeyEventType::Type type)
+        void setType(KeyEventTypeT type)
         {
             mType = type;
         }
 
-        KeyEventType::Type getType() const
+        KeyEventTypeT getType() const
         {
             return mType;
         }
@@ -136,7 +136,7 @@ class KeyInput final
         /**
          * Holds the type of the key input.
          */
-        KeyEventType::Type mType;
+        KeyEventTypeT mType;
 
 #ifdef USE_SDL2
         std::string mText;

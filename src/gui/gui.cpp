@@ -1263,7 +1263,7 @@ void Gui::distributeKeyEvent(KeyEvent &event) const
             std::list<KeyListener*> keyListeners
                 = widget->getKeyListeners();
 
-            const KeyEventType::Type eventType = event.getType();
+            const KeyEventTypeT eventType = event.getType();
             // Send the event to all key listeners of the source widget.
             FOR_EACH (std::list<KeyListener*>::const_iterator,
                  it, keyListeners)
@@ -1296,7 +1296,7 @@ void Gui::distributeKeyEvent(KeyEvent &event) const
 void Gui::distributeKeyEventToGlobalKeyListeners(KeyEvent& event)
 {
     BLOCK_START("Gui::distributeKeyEventToGlobalKeyListeners")
-    const KeyEventType::Type eventType = event.getType();
+    const KeyEventTypeT eventType = event.getType();
     FOR_EACH (KeyListenerListIterator, it, mKeyListeners)
     {
         switch (eventType)

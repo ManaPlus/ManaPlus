@@ -88,7 +88,7 @@ class KeyEvent: public InputGuiEvent
           * @param key The key of the event.
           */
         KeyEvent(Widget *const source,
-                 KeyEventType::Type type,
+                 KeyEventTypeT type,
                  const int actionId,
                  const Key &key) :
             InputGuiEvent(source),
@@ -111,7 +111,7 @@ class KeyEvent: public InputGuiEvent
           *
           * @return The type of the event.
           */
-        KeyEventType::Type getType() const A_WARN_UNUSED
+        KeyEventTypeT getType() const A_WARN_UNUSED
         { return mType; }
 
         /**
@@ -146,7 +146,7 @@ class KeyEvent: public InputGuiEvent
         /**
           * Holds the type of the key event.
           */
-        KeyEventType::Type mType;
+        KeyEventTypeT mType;
 
         int mActionId;
 };
