@@ -587,7 +587,7 @@ void Being::setSpeech(const std::string &text, const std::string &channel,
 
 void Being::takeDamage(Being *const attacker,
                        const int amount,
-                       const AttackType::Type type,
+                       const AttackTypeT type,
                        const int attackId,
                        const int level)
 {
@@ -770,7 +770,7 @@ void Being::takeDamage(Being *const attacker,
 }
 
 int Being::getHitEffect(const Being *const attacker,
-                        const AttackType::Type type,
+                        const AttackTypeT type,
                         const int attackId,
                         const int level) const
 {
@@ -850,7 +850,7 @@ int Being::getHitEffect(const Being *const attacker,
     return hitEffectId;
 }
 
-int Being::getDefaultEffectId(const AttackType::Type &type)
+int Being::getDefaultEffectId(const AttackTypeT &type)
 {
     if (type == AttackType::MISS)
         return paths.getIntValue("missEffectId");

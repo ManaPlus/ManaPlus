@@ -178,7 +178,8 @@ void BeingHandler::processBeingAction(Net::MessageIn &msg)
     msg.readInt32("dst speed");
     const int param1 = msg.readInt16("param1");
     msg.readInt16("param 2");
-    const uint8_t type = msg.readUInt8("type");
+    const AttackTypeT type = static_cast<AttackTypeT>(
+        msg.readUInt8("type"));
     msg.readInt16("param 3");
 
     switch (type)
@@ -201,17 +202,17 @@ void BeingHandler::processBeingAction(Net::MessageIn &msg)
             {
                 // level not present, using 1
                 dstBeing->takeDamage(srcBeing, param1,
-                    static_cast<AttackType::Type>(type), 1);
+                    static_cast<AttackTypeT>(type), 1);
             }
             break;
 
-        case 0x01:  // dead or pickup?
+        case AttackType::PICKUP:
             break;
             // tmw server can send here garbage?
 //            if (srcBeing)
 //                srcBeing->setAction(BeingAction::DEAD, 0);
 
-        case 0x02:  // Sit
+        case AttackType::SIT:
             if (srcBeing)
             {
                 srcBeing->setAction(BeingAction::SIT, 0);
@@ -224,7 +225,7 @@ void BeingHandler::processBeingAction(Net::MessageIn &msg)
             }
             break;
 
-        case 0x03:  // Stand up
+        case AttackType::STAND:
             if (srcBeing)
             {
                 srcBeing->setAction(BeingAction::STAND, 0);

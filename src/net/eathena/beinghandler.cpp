@@ -1280,7 +1280,8 @@ void BeingHandler::processBeingAction2(Net::MessageIn &msg)
     msg.readInt32("dst speed");
     const int param1 = msg.readInt32("damage");
     msg.readInt16("count");
-    const uint8_t type = msg.readUInt8("action");
+    const AttackTypeT type = static_cast<AttackTypeT>(
+        msg.readUInt8("action"));
     msg.readInt32("left damage");
 
     switch (type)
@@ -1307,7 +1308,7 @@ void BeingHandler::processBeingAction2(Net::MessageIn &msg)
             {
                 // level not present, using 1
                 dstBeing->takeDamage(srcBeing, param1,
-                    static_cast<AttackType::Type>(type), 1);
+                    static_cast<AttackTypeT>(type), 1);
             }
             break;
 

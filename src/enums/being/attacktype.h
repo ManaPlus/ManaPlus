@@ -23,26 +23,26 @@
 #ifndef ENUMS_BEING_ATTACKTYPE_H
 #define ENUMS_BEING_ATTACKTYPE_H
 
-namespace AttackType
+#include "enums/simpletypes/enumdefines.h"
+
+enumStart(AttackType)
 {
-    enum Type
-    {
-        HIT           = 0,
-        PICKUP        = 1,
-        SIT           = 2,
-        STAND         = 3,
-        REFLECT       = 4,
-        SPLASH        = 5,
-        SKILL         = 6,
-        REPEATE       = 7,
-        MULTI         = 8,
-        MULTI_REFLECT = 9,
-        CRITICAL      = 10,
-        FLEE          = 11,
-        TOUCH_SKILL   = 12,
-        MISS = 0xffff,  // pseudo value for miss attacks
-        SKILLMISS       // pseudo value for skill miss attacks
-    };
-}  // namespace AttackType
+    HIT           = 0,
+    PICKUP        = 1,
+    SIT           = 2,
+    STAND         = 3,
+    REFLECT       = 4,
+    SPLASH        = 5,
+    SKILL         = 6,
+    REPEATE       = 7,
+    MULTI         = 8,
+    MULTI_REFLECT = 9,
+    CRITICAL      = 10,
+    FLEE          = 11,
+    TOUCH_SKILL   = 12,
+    MISS = 0xffff,  // pseudo value for miss attacks
+    SKILLMISS       // pseudo value for skill miss attacks
+}
+enumEnd(AttackType);
 
 #endif  // ENUMS_BEING_ATTACKTYPE_H

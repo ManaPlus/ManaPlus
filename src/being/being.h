@@ -189,7 +189,7 @@ class Being notfinal : public ActorSprite,
          */
         void takeDamage(Being *const attacker,
                         const int damage,
-                        const AttackType::Type type,
+                        const AttackTypeT type,
                         const int attackId = 1,
                         const int level = 1);
 
@@ -793,7 +793,7 @@ class Being notfinal : public ActorSprite,
         void recalcSpritesOrder();
 
         int getHitEffect(const Being *const attacker,
-                         const AttackType::Type type,
+                         const AttackTypeT type,
                          const int attackId,
                          const int level) const A_WARN_UNUSED;
 
@@ -938,7 +938,7 @@ class Being notfinal : public ActorSprite,
 
         void createSpeechBubble();
 
-        static int getDefaultEffectId(const AttackType::Type &type);
+        static int getDefaultEffectId(const AttackTypeT &type);
 
         BeingInfo *mInfo;
         AnimatedSprite *mEmotionSprite;
