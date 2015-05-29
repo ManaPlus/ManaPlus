@@ -52,8 +52,8 @@ struct Stat final
 };
 
 typedef std::map<int, int> IntMap;
-typedef std::map<Attributes, int> AtrIntMap;
-typedef std::map<Attributes, Stat> StatMap;
+typedef std::map<AttributesT, int> AtrIntMap;
+typedef std::map<AttributesT, Stat> StatMap;
 
 /**
  * Backend for core player information.

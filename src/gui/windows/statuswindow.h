@@ -128,7 +128,7 @@ class StatusWindow final : public Window,
         Label *mCorrectionPointsLabel;
         Button *mCopyButton;
 
-        typedef std::map<Attributes, AttrDisplay*> Attrs;
+        typedef std::map<AttributesT, AttrDisplay*> Attrs;
         Attrs mAttrs;
 };
 
