@@ -660,8 +660,7 @@ void AvatarListBox::mousePressed(MouseEvent &event)
                 popupMenu->showAttackMonsterPopup(viewport->mMouseX,
                     viewport->mMouseY,
                     name,
-                    static_cast<ActorType::Type>(model->getAvatarAt(
-                    selected)->getType()));
+                    model->getAvatarAt(selected)->getType());
                 break;
             }
             case MapItemType::PICKUP:

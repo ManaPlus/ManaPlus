@@ -421,7 +421,7 @@ Being *BeingHandler::createBeing2(Net::MessageIn &msg,
     if (!actorManager)
         return nullptr;
 
-    ActorType::Type type = ActorType::Unknown;
+    ActorTypeT type = ActorType::Unknown;
     switch (beingType)
     {
         case BeingType::PC:

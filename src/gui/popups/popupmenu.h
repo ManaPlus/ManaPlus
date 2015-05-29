@@ -216,7 +216,7 @@ class PopupMenu final : public Popup, public LinkHandler
         Button *mButton;
         std::string mNick;
         TextField *mTextField;
-        ActorType::Type mType;
+        ActorTypeT mType;
         int mX;
         int mY;
 

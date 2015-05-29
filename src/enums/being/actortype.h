@@ -22,24 +22,24 @@
 #ifndef ENUMS_BEING_ACTORTYPE_H
 #define ENUMS_BEING_ACTORTYPE_H
 
-namespace ActorType
+#include "enums/simpletypes/enumdefines.h"
+
+enumStart(ActorType)
 {
-    enum Type
-    {
-        Unknown = 0,
-        Player,
-        Npc,
-        Monster,
-        FloorItem,
-        Portal,
-        LocalPet,
-        Avatar,
+    Unknown = 0,
+    Player,
+    Npc,
+    Monster,
+    FloorItem,
+    Portal,
+    LocalPet,
+    Avatar,
 #ifdef EATHENA_SUPPORT
-        Pet,
-        Mercenary,
-        Homunculus
+    Pet,
+    Mercenary,
+    Homunculus
 #endif
-    };
-}  // namespace ActorType
+}
+enumEnd(ActorType);
 
 #endif  // ENUMS_BEING_ACTORTYPE_H

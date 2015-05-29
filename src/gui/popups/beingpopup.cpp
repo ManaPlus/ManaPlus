@@ -157,7 +157,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
     label7->setCaption("");
 
 #ifdef EATHENA_SUPPORT
-    const ActorType::Type type = b->getType();
+    const ActorTypeT type = b->getType();
     if (type == ActorType::Pet)
     {
         PetInfo *const info = PlayerInfo::getPet();

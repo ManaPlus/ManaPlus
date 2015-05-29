@@ -71,7 +71,7 @@ class ActorManager final: public ConfigListener
          * Create a Being and add it to the list of ActorSprites.
          */
         Being *createBeing(const BeingId id,
-                           const ActorType::Type type,
+                           const ActorTypeT type,
                            const BeingTypeId subtype) A_WARN_UNUSED;
 
         static Being *cloneBeing(const Being *const srcBeing,
@@ -106,7 +106,7 @@ class ActorManager final: public ConfigListener
         /**
          * Returns a being at specific coordinates.
          */
-        Being *findBeing(const int x, const int y, const ActorType::Type
+        Being *findBeing(const int x, const int y, const ActorTypeT
                          type = ActorType::Unknown) const A_WARN_UNUSED;
 
         /**
@@ -149,7 +149,7 @@ class ActorManager final: public ConfigListener
          */
         Being *findNearestLivingBeing(const int x, const int y,
                                       int maxTileDist,
-                                      const ActorType::Type type,
+                                      const ActorTypeT type,
                                       const Being *const excluded)
                                       const A_WARN_UNUSED;
 
@@ -163,7 +163,7 @@ class ActorManager final: public ConfigListener
          */
         Being *findNearestLivingBeing(const Being *const aroundBeing,
                                       const int maxTileDist,
-                                      const ActorType::Type type,
+                                      const ActorTypeT type,
                                       const AllowSort allowSort)
                                       const A_WARN_UNUSED;
 
@@ -171,7 +171,7 @@ class ActorManager final: public ConfigListener
          * Finds a being by name and (optionally) by type.
          */
         Being *findBeingByName(const std::string &name,
-                               const ActorType::Type
+                               const ActorTypeT
                                type = ActorType::Unknown)
                                const A_WARN_UNUSED;
 
@@ -179,7 +179,7 @@ class ActorManager final: public ConfigListener
         * Finds a nearest being by name and (optionally) by type.
         */
         Being *findNearestByName(const std::string &name,
-                                 const ActorType::Type &type
+                                 const ActorTypeT &type
                                  = ActorType::Unknown) const A_WARN_UNUSED;
 
        /**
@@ -194,7 +194,7 @@ class ActorManager final: public ConfigListener
         *                no being is returned
         */
 //        void HealAllTargets(Being *aroundBeing, int maxdist,
-//                                            ActorType::Type type) const;
+//                                            ActorTypeT type) const;
 
         void healTarget() const;
 
@@ -338,13 +338,13 @@ class ActorManager final: public ConfigListener
     protected:
         bool validateBeing(const Being *const aroundBeing,
                            Being *const being,
-                           const ActorType::Type &type,
+                           const ActorTypeT &type,
                            const Being *const excluded = nullptr,
                            const int maxCost = 20) const A_WARN_UNUSED;
 
         Being *findNearestLivingBeing(const Being *const aroundBeing,
                                       const int maxdist,
-                                      const ActorType::Type &type,
+                                      const ActorTypeT &type,
                                       const int x, const int y,
                                       const Being *const excluded,
                                       const AllowSort allowSort)

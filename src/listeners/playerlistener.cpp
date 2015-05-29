@@ -42,7 +42,7 @@ void PlayerListener::action(const ActionEvent &event)
     {
         std::string comment = mDialog->getText();
         Being *const being  = actorManager->findBeingByName(
-            mNick, static_cast<ActorType::Type>(mType));
+            mNick, static_cast<ActorTypeT>(mType));
         if (being)
             being->setComment(comment);
         Being::saveComment(mNick, comment, mType);

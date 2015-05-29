@@ -44,13 +44,13 @@ class PlayerListener final : public ActionListener
         void setDialog(TextDialog *const dialog)
         { mDialog = dialog; }
 
-        void setType(const ActorType::Type type)
+        void setType(const ActorTypeT type)
         { mType = type; }
 
     private:
         std::string mNick;
         TextDialog *mDialog;
-        ActorType::Type  mType;
+        ActorTypeT  mType;
 };
 
 #endif  // LISTENERS_PLAYERLISTENER_H

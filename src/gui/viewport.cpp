@@ -437,7 +437,7 @@ bool Viewport::leftMouseAction()
         }
         else
         {
-            const ActorType::Type type = mHoverBeing->getType();
+            const ActorTypeT type = mHoverBeing->getType();
             if (type == ActorType::Player)
             {
                 validateSpeed();
@@ -778,7 +778,7 @@ void Viewport::mouseMoved(MouseEvent &event)
     const int x = mMouseX + mPixelViewX;
     const int y = mMouseY + mPixelViewY;
 
-    ActorType::Type type = ActorType::Unknown;
+    ActorTypeT type = ActorType::Unknown;
     mHoverBeing = actorManager->findBeingByPixel(x, y, AllPlayers_true);
     if (mHoverBeing)
         type = mHoverBeing->getType();

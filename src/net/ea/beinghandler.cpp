@@ -58,7 +58,7 @@ Being *BeingHandler::createBeing(const BeingId id,
     if (!actorManager)
         return nullptr;
 
-    ActorType::Type type = ActorType::Unknown;
+    ActorTypeT type = ActorType::Unknown;
     if (job <= 25 || (job >= 4001 && job <= 4049))
         type = ActorType::Player;
     else if (job >= 46 && job <= 1000)

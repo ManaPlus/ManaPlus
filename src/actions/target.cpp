@@ -33,7 +33,7 @@
 namespace Actions
 {
 
-static bool setTarget(const ActorType::Type type, const AllowSort allowSort)
+static bool setTarget(const ActorTypeT type, const AllowSort allowSort)
 {
     if (actorManager && localPlayer)
     {

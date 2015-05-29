@@ -126,7 +126,7 @@ typedef std::map<int, Guild*>::const_iterator GuildsMapCIter;
 typedef std::map<int, int>::const_iterator IntMapCIter;
 
 Being::Being(const BeingId id,
-             const ActorType::Type type,
+             const ActorTypeT type,
              const BeingTypeId subtype,
              Map *const map) :
     ActorSprite(id),
@@ -3083,7 +3083,7 @@ void Being::updateComment()
 }
 
 std::string Being::loadComment(const std::string &name,
-                               const ActorType::Type &type)
+                               const ActorTypeT &type)
 {
     std::string str;
     switch (type)
@@ -3122,7 +3122,7 @@ std::string Being::loadComment(const std::string &name,
 
 void Being::saveComment(const std::string &restrict name,
                         const std::string &restrict comment,
-                        const ActorType::Type &restrict type)
+                        const ActorTypeT &restrict type)
 {
     std::string dir;
     switch (type)

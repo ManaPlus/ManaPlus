@@ -93,7 +93,7 @@ class FindBeingFunctor final
         }
 
         uint16_t x, y;
-        ActorType::Type type;
+        ActorTypeT type;
 } beingActorFinder;
 
 class FindBeingEqualFunctor final
@@ -239,7 +239,7 @@ void ActorManager::setPlayer(LocalPlayer *const player)
 }
 
 Being *ActorManager::createBeing(const BeingId id,
-                                 const ActorType::Type type,
+                                 const ActorTypeT type,
                                  const BeingTypeId subtype)
 {
     Being *const being = new Being(id, type, subtype, mMap);
@@ -344,7 +344,7 @@ Being *ActorManager::findBeing(const BeingId id) const
 }
 
 Being *ActorManager::findBeing(const int x, const int y,
-                               const ActorType::Type type) const
+                               const ActorTypeT type) const
 {
     beingActorFinder.x = static_cast<uint16_t>(x);
     beingActorFinder.y = static_cast<uint16_t>(y);
@@ -726,7 +726,7 @@ bool ActorManager::pickUpNearest(const int x, const int y,
 }
 
 Being *ActorManager::findBeingByName(const std::string &name,
-                                     const ActorType::Type type) const
+                                     const ActorTypeT type) const
 {
     for_actorsm
     {
@@ -750,7 +750,7 @@ Being *ActorManager::findBeingByName(const std::string &name,
 }
 
 Being *ActorManager::findNearestByName(const std::string &name,
-                                       const ActorType::Type &type) const
+                                       const ActorTypeT &type) const
 {
     if (!localPlayer)
         return nullptr;
@@ -826,7 +826,7 @@ void ActorManager::logic()
         if (!actor)
             continue;
 
-        const ActorType::Type &type = actor->getType();
+        const ActorTypeT &type = actor->getType();
         if (type == ActorType::Player)
         {
             const Being *const being = static_cast<const Being*>(actor);
@@ -880,7 +880,7 @@ void ActorManager::clear()
 
 Being *ActorManager::findNearestLivingBeing(const int x, const int y,
                                             const int maxTileDist,
-                                            const ActorType::Type type,
+                                            const ActorTypeT type,
                                             const Being *const excluded) const
 {
     const int maxDist = maxTileDist * mapTileSize;
@@ -894,7 +894,7 @@ Being *ActorManager::findNearestLivingBeing(const int x, const int y,
 
 Being *ActorManager::findNearestLivingBeing(const Being *const aroundBeing,
                                             const int maxDist,
-                                            const ActorType::Type type,
+                                            const ActorTypeT type,
                                             const AllowSort allowSort) const
 {
     if (!aroundBeing)
@@ -911,7 +911,7 @@ Being *ActorManager::findNearestLivingBeing(const Being *const aroundBeing,
 
 Being *ActorManager::findNearestLivingBeing(const Being *const aroundBeing,
                                             int maxDist,
-                                            const ActorType::Type &type,
+                                            const ActorTypeT &type,
                                             const int x, const int y,
                                             const Being *const excluded,
                                             const AllowSort allowSort) const
@@ -1178,7 +1178,7 @@ Being *ActorManager::findNearestLivingBeing(const Being *const aroundBeing,
 
 bool ActorManager::validateBeing(const Being *const aroundBeing,
                                  Being *const being,
-                                 const ActorType::Type &type,
+                                 const ActorTypeT &type,
                                  const Being* const excluded,
                                  const int maxCost) const
 {

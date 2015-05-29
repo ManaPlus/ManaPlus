@@ -106,7 +106,7 @@ class Being notfinal : public ActorSprite,
          * @param map     the map the being is on
          */
         Being(const BeingId id,
-              const ActorType::Type type,
+              const ActorTypeT type,
               const BeingTypeId subtype,
               Map *const map);
 
@@ -114,7 +114,7 @@ class Being notfinal : public ActorSprite,
 
         virtual ~Being();
 
-        ActorType::Type getType() const override final A_WARN_UNUSED
+        ActorTypeT getType() const override final A_WARN_UNUSED
         { return mType; }
 
         /**
@@ -736,12 +736,12 @@ class Being notfinal : public ActorSprite,
         static void clearCache();
 
         static std::string loadComment(const std::string &name,
-                                       const ActorType::Type &type)
+                                       const ActorTypeT &type)
                                        A_WARN_UNUSED;
 
         static void saveComment(const std::string &restrict name,
                                 const std::string &restrict comment,
-                                const ActorType::Type &restrict type);
+                                const ActorTypeT &restrict type);
 
         bool isAdvanced() const A_WARN_UNUSED
         { return mAdvanced; }
@@ -1023,7 +1023,7 @@ class Being notfinal : public ActorSprite,
 
         void dumpSprites() const;
 
-        const ActorType::Type mType;
+        const ActorTypeT mType;
 
         /** Speech Bubble components */
         SpeechBubble *mSpeechBubble;
