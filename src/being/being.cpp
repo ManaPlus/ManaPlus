@@ -442,7 +442,7 @@ void Being::setSubtype(const BeingTypeId subtype,
     }
 }
 
-TargetCursorSize::Size Being::getTargetCursorSize() const
+TargetCursorSizeT Being::getTargetCursorSize() const
 {
     if (!mInfo)
         return TargetCursorSize::SMALL;

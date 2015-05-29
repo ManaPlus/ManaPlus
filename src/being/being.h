@@ -372,8 +372,8 @@ class Being notfinal : public ActorSprite,
         const BeingInfo *getInfo() const A_WARN_UNUSED
         { return mInfo; }
 
-        TargetCursorSize::Size getTargetCursorSize() const override final
-                                                     A_WARN_UNUSED;
+        TargetCursorSizeT getTargetCursorSize() const override final
+                                                A_WARN_UNUSED;
 
         int getTargetOffsetX() const override A_WARN_UNUSED
         {

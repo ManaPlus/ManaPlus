@@ -42,18 +42,18 @@
 #include "debug.h"
 
 #define for_each_cursors() \
-    for (int size = TargetCursorSize::SMALL; \
-         size < TargetCursorSize::NUM_TC; \
+    for (int size = static_cast<int>(TargetCursorSize::SMALL); \
+         size < static_cast<int>(TargetCursorSize::NUM_TC); \
          size ++) \
     { \
-        for (int type = TargetCursorType::NORMAL; \
-             type < TargetCursorType::NUM_TCT; \
+        for (int type = static_cast<int>(TargetCursorType::NORMAL); \
+             type < static_cast<int>(TargetCursorType::NUM_TCT); \
              type ++) \
 
 #define end_foreach }
 
 AnimatedSprite *ActorSprite::targetCursor[TargetCursorType::NUM_TCT]
-    [TargetCursorSize::NUM_TC];
+    [static_cast<size_t>(TargetCursorSize::NUM_TC)];
 bool ActorSprite::loaded = false;
 
 ActorSprite::ActorSprite(const BeingId id) :
@@ -157,9 +157,11 @@ void ActorSprite::setTargetType(const TargetCursorType::Type type)
         mUsedTargetCursor = targetCursor[static_cast<int>(type)][sz];
         if (mUsedTargetCursor)
         {
-            static const int targetWidths[TargetCursorSize::NUM_TC]
+            static const int targetWidths[static_cast<size_t>(
+                TargetCursorSize::NUM_TC)]
                 = {0, 0, 0};
-            static const int targetHeights[TargetCursorSize::NUM_TC]
+            static const int targetHeights[static_cast<size_t>(
+                TargetCursorSize::NUM_TC)]
                 = {-mapTileSize / 2, -mapTileSize / 2, -mapTileSize};
 
             mCursorPaddingX = static_cast<int>(targetWidths[sz]);
@@ -361,7 +363,7 @@ static const char *cursorType(const int type)
     }
 }
 
-static const char *cursorSize(const int size)
+static const char *cursorSize(const TargetCursorSizeT size)
 {
     switch (size)
     {
@@ -386,7 +388,7 @@ void ActorSprite::initTargetCursor()
             Theme::resolveThemePath(strprintf(
             targetCursorFile.c_str(),
             cursorType(type),
-            cursorSize(size))));
+            cursorSize(static_cast<TargetCursorSizeT>(size)))));
     }
     end_foreach
 }

@@ -22,15 +22,15 @@
 #ifndef ENUMS_BEING_TARGETCURSORSIZE_H
 #define ENUMS_BEING_TARGETCURSORSIZE_H
 
-namespace TargetCursorSize
+#include "enums/simpletypes/enumdefines.h"
+
+enumStart(TargetCursorSize)
 {
-    enum Size
-    {
-        SMALL = 0,
-        MEDIUM,
-        LARGE,
-        NUM_TC
-    };
-}  // TargetCursorSize
+    SMALL = 0,
+    MEDIUM,
+    LARGE,
+    NUM_TC
+}
+enumEnd(TargetCursorSize);
 
 #endif  // ENUMS_BEING_TARGETCURSORSIZE_H

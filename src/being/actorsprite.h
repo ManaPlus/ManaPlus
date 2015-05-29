@@ -90,8 +90,7 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
         /**
          * Returns the required size of a target cursor for this being.
          */
-        virtual TargetCursorSize::Size getTargetCursorSize() const
-                                                             A_WARN_UNUSED
+        virtual TargetCursorSizeT getTargetCursorSize() const A_WARN_UNUSED
         { return TargetCursorSize::MEDIUM; }
 
         virtual int getTargetOffsetX() const A_WARN_UNUSED
@@ -216,7 +215,7 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
 
         /** Animated target cursors. */
         static AnimatedSprite *targetCursor[TargetCursorType::NUM_TCT]
-            [TargetCursorSize::NUM_TC];
+            [static_cast<size_t>(TargetCursorSize::NUM_TC)];
 
         static bool loaded;
 

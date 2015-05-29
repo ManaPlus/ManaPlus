@@ -75,8 +75,7 @@ class BeingInfo final
 
         void setTargetCursorSize(const std::string &size);
 
-        void setTargetCursorSize(const TargetCursorSize::Size
-                                 &targetSize)
+        void setTargetCursorSize(const TargetCursorSizeT &targetSize)
         { mTargetCursorSize = targetSize; }
 
         void setHoverCursor(const std::string &name)
@@ -88,7 +87,7 @@ class BeingInfo final
         Cursor::Cursor getHoverCursor() const A_WARN_UNUSED
         { return mHoverCursor; }
 
-        TargetCursorSize::Size getTargetCursorSize() const A_WARN_UNUSED
+        TargetCursorSizeT getTargetCursorSize() const A_WARN_UNUSED
         { return mTargetCursorSize; }
 
         void addSound(const ItemSoundEvent::Type event,
@@ -326,7 +325,7 @@ class BeingInfo final
     private:
         SpriteDisplay mDisplay;
         std::string mName;
-        TargetCursorSize::Size mTargetCursorSize;
+        TargetCursorSizeT mTargetCursorSize;
         Cursor::Cursor mHoverCursor;
         ItemSoundEvents mSounds;
         Attacks mAttacks;
