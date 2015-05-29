@@ -23,16 +23,16 @@
 #ifndef ENUMS_GUI_DIALOGTYPE_H
 #define ENUMS_GUI_DIALOGTYPE_H
 
+#include "enums/simpletypes/enumdefines.h"
+
 #undef ERROR
 
-namespace DialogType
+enumStart(DialogType)
 {
-    enum Type
-    {
-        OK = 0,
-        ERROR,
-        SILENCE
-    };
+    OK = 0,
+    ERROR,
+    SILENCE
 }
+enumEnd(DialogType);
 
 #endif  // ENUMS_GUI_DIALOGTYPE_H

@@ -25,8 +25,6 @@
 #include "soundconsts.h"
 #include "soundmanager.h"
 
-#include "enums/gui/dialogtype.h"
-
 #include "gui/widgets/button.h"
 #include "gui/widgets/textbox.h"
 
@@ -37,7 +35,7 @@
 OkDialog::OkDialog(const std::string &restrict title,
                    const std::string &restrict msg,
                    const std::string &restrict button,
-                   const int soundEvent,
+                   const DialogTypeT soundEvent,
                    const Modal modal,
                    const ShowCenter showCenter,
                    Window *const parent,

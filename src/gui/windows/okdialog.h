@@ -25,6 +25,8 @@
 
 #include "gui/widgets/window.h"
 
+#include "enums/gui/dialogtype.h"
+
 #include "enums/simpletypes/showcenter.h"
 
 #include "listeners/actionlistener.h"
@@ -50,7 +52,7 @@ class OkDialog final : public Window,
         OkDialog(const std::string &restrict title,
                  const std::string &restrict msg,
                  const std::string &restrict button,
-                 const int soundEvent,
+                 const DialogTypeT soundEvent,
                  const Modal modal,
                  const ShowCenter showCenter,
                  Window *const parent,
