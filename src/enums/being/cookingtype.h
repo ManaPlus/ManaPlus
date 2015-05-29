@@ -22,18 +22,18 @@
 #define ENUMS_BEING_COOKINGTYPE_H
 #ifdef EATHENA_SUPPORT
 
-namespace CookingType
+#include "enums/simpletypes/enumdefines.h"
+
+enumStart(CookingType)
 {
-    enum Type
-    {
-        Cooking    = 1,
-        Arrow      = 2,
-        Elemental  = 3,
-        MixCooking = 4,
-        MakeBomb   = 5,
-        Pharmacy   = 6
-    };
-}  // namespace CookingType
+    Cooking    = 1,
+    Arrow      = 2,
+    Elemental  = 3,
+    MixCooking = 4,
+    MakeBomb   = 5,
+    Pharmacy   = 6
+}
+enumEnd(CookingType);
 
 #endif  // EATHENA_SUPPORT
 #endif  // ENUMS_BEING_COOKINGTYPE_H

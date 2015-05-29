@@ -77,7 +77,7 @@ class NpcHandler final : public MessageHandler, public Ea::NpcHandler
                         const int materialId3) const override final;
 
 #ifdef EATHENA_SUPPORT
-        void cooking(const CookingType::Type type,
+        void cooking(const CookingTypeT type,
                      const int nameId) const override final;
 #endif
 

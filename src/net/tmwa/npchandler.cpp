@@ -221,7 +221,7 @@ void NpcHandler::produceMix(const int nameId A_UNUSED,
 }
 
 #ifdef EATHENA_SUPPORT
-void NpcHandler::cooking(const CookingType::Type type A_UNUSED,
+void NpcHandler::cooking(const CookingTypeT type A_UNUSED,
                          const int nameId A_UNUSED) const
 {
 }

@@ -246,7 +246,7 @@ void NpcHandler::produceMix(const int nameId,
     outMsg.writeInt16(static_cast<int16_t>(materialId3), "material 3");
 }
 
-void NpcHandler::cooking(const CookingType::Type type,
+void NpcHandler::cooking(const CookingTypeT type,
                          const int nameId) const
 {
     createOutPacket(CMSG_NPC_COOKING);
