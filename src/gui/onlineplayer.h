@@ -22,6 +22,8 @@
 #ifndef GUI_ONLINEPLAYER_H
 #define GUI_ONLINEPLAYER_H
 
+#include "enums/being/gender.h"
+
 #include <string>
 
 #include "localconsts.h"
@@ -29,8 +31,10 @@
 class OnlinePlayer final
 {
     public:
-        OnlinePlayer(const std::string &nick, const unsigned char status,
-                     const signed char level, const unsigned char gender,
+        OnlinePlayer(const std::string &nick,
+                     const unsigned char status,
+                     const signed char level,
+                     const Gender gender,
                      const signed char version) :
             mNick(nick),
             mText(""),
@@ -78,7 +82,7 @@ class OnlinePlayer final
 
         signed char mVersion;
 
-        unsigned char mGender;
+        Gender mGender;
 
         bool mIsGM;
 };

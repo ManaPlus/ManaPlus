@@ -580,9 +580,9 @@ class Being notfinal : public ActorSprite,
         /**
          * Sets the gender of this being.
          */
-        virtual void setGender(const Gender::Type gender);
+        virtual void setGender(const GenderT gender);
 
-        Gender::Type getGender() const A_WARN_UNUSED
+        GenderT getGender() const A_WARN_UNUSED
         { return mGender; }
 
         /**
@@ -848,9 +848,9 @@ class Being notfinal : public ActorSprite,
 
         void setLook(const uint16_t look);
 
-        static uint8_t genderToInt(const Gender::Type sex) A_WARN_UNUSED;
+        static uint8_t genderToInt(const GenderT sex) A_WARN_UNUSED;
 
-        static Gender::Type intToGender(const uint8_t sex) A_WARN_UNUSED;
+        static GenderT intToGender(const uint8_t sex) A_WARN_UNUSED;
 
         NextSoundInfo mNextSound;
 
@@ -995,7 +995,7 @@ class Being notfinal : public ActorSprite,
 
         int mPreStandTime;
 
-        Gender::Type mGender;
+        GenderT mGender;
         BeingActionT mAction;
         BeingTypeId mSubType;       /**< Subtype (graphical view, basically) */
         uint8_t mDirection;         /**< Facing direction */

@@ -31,7 +31,7 @@ struct Token final
     BeingId account_ID;
     int session_ID1;
     int session_ID2;
-    Gender::Type sex;
+    GenderT sex;
 
     void clear()
     {

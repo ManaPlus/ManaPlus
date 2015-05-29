@@ -399,7 +399,7 @@ void GuildHandler::processGuildMemberLogin(Net::MessageIn &msg)
     const BeingId accountId = msg.readBeingId("account id");
     const int charId = msg.readInt32("char id");
     const int online = msg.readInt32("flag");
-    const Gender::Type gender = Being::intToGender(static_cast<uint8_t>(
+    const GenderT gender = Being::intToGender(static_cast<uint8_t>(
         msg.readInt16("sex")));
     msg.readInt16("hair");
     msg.readInt16("hair color");

@@ -513,7 +513,7 @@ void PlayerHandler::processOnlineList(Net::MessageIn &msg)
         unsigned char ver = *buf;
         buf ++;
 
-        unsigned char gender = Gender::UNSPECIFIED;
+        GenderT gender = Gender::UNSPECIFIED;
         if (config.getBoolValue("showgender"))
         {
             if (status & BeingFlag::GENDER_MALE)

@@ -158,10 +158,10 @@ class Avatar notfinal
         void setCharId(const int id)
         { mCharId = id; }
 
-        Gender::Type getGender() const A_WARN_UNUSED
+        GenderT getGender() const A_WARN_UNUSED
         { return mGender; }
 
-        void setGender(const Gender::Type g)
+        void setGender(const GenderT g)
         { mGender = g; }
 
         int getRace() const A_WARN_UNUSED
@@ -196,7 +196,7 @@ class Avatar notfinal
         int mY;
         int mType;
         int mExp;
-        Gender::Type mGender;
+        GenderT mGender;
         int mRace;
         std::string mIp;
         bool mOnline;

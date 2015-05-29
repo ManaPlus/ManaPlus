@@ -586,7 +586,7 @@ void CharCreateDialog::setAttributes(const StringVect &labels,
     setButtonsPosition(w, h);
 }
 
-void CharCreateDialog::setDefaultGender(const Gender::Type gender)
+void CharCreateDialog::setDefaultGender(const GenderT gender)
 {
     mDefaultGender = gender;
     mPlayer->setGender(gender);

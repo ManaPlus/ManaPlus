@@ -23,15 +23,15 @@
 #ifndef ENUMS_BEING_GENDER_H
 #define ENUMS_BEING_GENDER_H
 
-namespace Gender
+#include "enums/simpletypes/enumdefines.h"
+
+enumStart(Gender)
 {
-    enum Type
-    {
-        MALE = 0,
-        FEMALE = 1,
-        UNSPECIFIED = 2,
-        OTHER = 3
-    };
-}  // nemespace Gender
+    MALE = 0,
+    FEMALE = 1,
+    UNSPECIFIED = 2,
+    OTHER = 3
+}
+enumEnd(Gender);
 
 #endif  // ENUMS_BEING_GENDER_H

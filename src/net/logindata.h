@@ -66,7 +66,7 @@ class LoginData final
         std::string captchaResponse;
         std::string registerUrl;
 
-        Gender::Type gender;
+        GenderT gender;
 
         bool remember;       // Whether to store the username.
         bool registerLogin;  // Whether an account is being registered.

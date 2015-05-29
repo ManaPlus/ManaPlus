@@ -2452,7 +2452,7 @@ BeingCacheEntry* Being::getCacheEntry(const BeingId id)
 }
 
 
-void Being::setGender(const Gender::Type gender)
+void Being::setGender(const GenderT gender)
 {
     if (gender != mGender)
     {
@@ -3239,7 +3239,7 @@ void Being::updatePercentHP()
     BLOCK_END("Being::updatePercentHP")
 }
 
-uint8_t Being::genderToInt(const Gender::Type sex)
+uint8_t Being::genderToInt(const GenderT sex)
 {
     switch (sex)
     {
@@ -3254,7 +3254,7 @@ uint8_t Being::genderToInt(const Gender::Type sex)
     }
 }
 
-Gender::Type Being::intToGender(const uint8_t sex)
+GenderT Being::intToGender(const uint8_t sex)
 {
     switch (sex)
     {

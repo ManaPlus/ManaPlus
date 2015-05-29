@@ -55,7 +55,7 @@ class CharServerHandler notfinal
 
         virtual void newCharacter(const std::string &name,
                                   const int slot,
-                                  const Gender::Type gender,
+                                  const GenderT gender,
                                   const int hairstyle,
                                   const int hairColor,
                                   const unsigned char race,

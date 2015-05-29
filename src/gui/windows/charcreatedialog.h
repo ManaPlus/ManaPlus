@@ -72,7 +72,7 @@ class CharCreateDialog final : public Window,
                            const int available,
                            const int min, const int max);
 
-        void setDefaultGender(const Gender::Type gender = Gender::FEMALE);
+        void setDefaultGender(const GenderT gender = Gender::FEMALE);
 
         void logic() override final;
 
@@ -155,8 +155,8 @@ class CharCreateDialog final : public Window,
 
         int mSlot;
 
-        Gender::Type mDefaultGender;
-        Gender::Type mGender;
+        GenderT mDefaultGender;
+        GenderT mGender;
 
         unsigned int maxHairColor;
         unsigned int minHairColor;
