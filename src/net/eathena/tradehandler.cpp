@@ -116,7 +116,7 @@ void TradeHandler::request(const Being *const being) const
         return;
 
     createOutPacket(CMSG_TRADE_REQUEST);
-    outMsg.writeInt32(being->getId(), "player id");
+    outMsg.writeBeingId(being->getId(), "player id");
 }
 
 void TradeHandler::respond(const bool accept) const

@@ -83,6 +83,11 @@ void MessageOut::writeInt32(const int32_t value, const char *const str)
     PacketCounters::incOutBytes(4);
 }
 
+void MessageOut::writeBeingId(const BeingId value, const char *const str)
+{
+    writeInt32(toInt(value, int32_t), str);
+}
+
 #define LOBYTE(w)  (static_cast<unsigned char>(w))
 #define HIBYTE(w)  (static_cast<unsigned char>(( \
 static_cast<uint16_t>(w)) >> 8U))

@@ -58,7 +58,7 @@ void MercenaryHandler::move(const int x A_UNUSED, const int y A_UNUSED) const
 {
 }
 
-void MercenaryHandler::attack(const int targetId A_UNUSED,
+void MercenaryHandler::attack(const BeingId targetId A_UNUSED,
                               const Keep keep A_UNUSED) const
 {
 }

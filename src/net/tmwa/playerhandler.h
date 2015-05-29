@@ -39,7 +39,8 @@ class PlayerHandler final : public MessageHandler, public Ea::PlayerHandler
 
         void handleMessage(Net::MessageIn &msg) override final;
 
-        void attack(const int id, const Keep keep) const override final;
+        void attack(const BeingId id,
+                    const Keep keep) const override final;
         void stopAttack() const override final;
         void emote(const uint8_t emoteId) const override final;
 

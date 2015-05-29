@@ -45,7 +45,8 @@ class HomunculusHandler final : public MessageHandler,
 
         void move(const int x, const int y) const override final;
 
-        void attack(const int targetId, const Keep keep) const override final;
+        void attack(const BeingId targetId,
+                    const Keep keep) const override final;
 
         void feed() const override final;
 

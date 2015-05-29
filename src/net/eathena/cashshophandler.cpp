@@ -95,7 +95,7 @@ void CashShopHandler::processCashShopOpen(Net::MessageIn &msg)
 {
     const int count = (msg.readInt16("len") - 12) / 11;
 
-    mBuyDialog = new BuyDialog(BuyDialog::Cash);
+    mBuyDialog = new BuyDialog(fromInt(BuyDialog::Cash, BeingId));
     mBuyDialog->postInit();
     mBuyDialog->setMoney(PlayerInfo::getAttribute(Attributes::MONEY));
 

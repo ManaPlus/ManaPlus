@@ -106,23 +106,23 @@ void NpcHandler::handleMessage(Net::MessageIn &msg)
     BLOCK_END("NpcHandler::handleMessage")
 }
 
-void NpcHandler::talk(const int npcId) const
+void NpcHandler::talk(const BeingId npcId) const
 {
     createOutPacket(CMSG_NPC_TALK);
-    outMsg.writeInt32(npcId, "npc id");
+    outMsg.writeBeingId(npcId, "npc id");
     outMsg.writeInt8(0, "unused");
 }
 
-void NpcHandler::nextDialog(const int npcId) const
+void NpcHandler::nextDialog(const BeingId npcId) const
 {
     createOutPacket(CMSG_NPC_NEXT_REQUEST);
-    outMsg.writeInt32(npcId, "npc id");
+    outMsg.writeBeingId(npcId, "npc id");
 }
 
-void NpcHandler::closeDialog(const int npcId)
+void NpcHandler::closeDialog(const BeingId npcId)
 {
     createOutPacket(CMSG_NPC_CLOSE);
-    outMsg.writeInt32(npcId, "npc id");
+    outMsg.writeBeingId(npcId, "npc id");
 
     const NpcDialogs::iterator it = NpcDialog::mNpcDialogs.find(npcId);
     if (it != NpcDialog::mNpcDialogs.end())
@@ -136,45 +136,50 @@ void NpcHandler::closeDialog(const int npcId)
     }
 }
 
-void NpcHandler::listInput(const int npcId, const unsigned char value) const
+void NpcHandler::listInput(const BeingId npcId,
+                           const unsigned char value) const
 {
     createOutPacket(CMSG_NPC_LIST_CHOICE);
-    outMsg.writeInt32(npcId, "npc id");
+    outMsg.writeBeingId(npcId, "npc id");
     outMsg.writeInt8(value, "value");
 }
 
-void NpcHandler::integerInput(const int npcId, const int value) const
+void NpcHandler::integerInput(const BeingId npcId,
+                              const int value) const
 {
     createOutPacket(CMSG_NPC_INT_RESPONSE);
-    outMsg.writeInt32(npcId, "npc id");
+    outMsg.writeBeingId(npcId, "npc id");
     outMsg.writeInt32(value, "value");
 }
 
-void NpcHandler::stringInput(const int npcId, const std::string &value) const
+void NpcHandler::stringInput(const BeingId npcId,
+                             const std::string &value) const
 {
     createOutPacket(CMSG_NPC_STR_RESPONSE);
     outMsg.writeInt16(static_cast<int16_t>(value.length() + 9), "len");
-    outMsg.writeInt32(npcId, "npc id");
+    outMsg.writeBeingId(npcId, "npc id");
     outMsg.writeString(value, static_cast<int>(value.length()), "value");
     outMsg.writeInt8(0, "null byte");
 }
 
-void NpcHandler::buy(const int beingId) const
+void NpcHandler::buy(const BeingId beingId) const
 {
     createOutPacket(CMSG_NPC_BUY_SELL_REQUEST);
-    outMsg.writeInt32(beingId, "npc id");
+    outMsg.writeBeingId(beingId, "npc id");
     outMsg.writeInt8(0, "action");
 }
 
-void NpcHandler::sell(const int beingId) const
+void NpcHandler::sell(const BeingId beingId) const
 {
     createOutPacket(CMSG_NPC_BUY_SELL_REQUEST);
-    outMsg.writeInt32(beingId, "npc id");
+    outMsg.writeBeingId(beingId, "npc id");
     outMsg.writeInt8(1, "action");
 }
 
-void NpcHandler::buyItem(const int beingId A_UNUSED, const int itemId,
-                         const unsigned char color, const int amount) const
+void NpcHandler::buyItem(const BeingId beingId A_UNUSED,
+                         const int itemId,
+                         const unsigned char color,
+                         const int amount) const
 {
     createOutPacket(CMSG_NPC_BUY_REQUEST);
     if (serverFeatures->haveItemColors())
@@ -193,7 +198,7 @@ void NpcHandler::buyItem(const int beingId A_UNUSED, const int itemId,
     }
 }
 
-void NpcHandler::sellItem(const int beingId A_UNUSED,
+void NpcHandler::sellItem(const BeingId beingId A_UNUSED,
                           const int itemId,
                           const int amount) const
 {
@@ -242,7 +247,7 @@ void NpcHandler::selectAutoSpell(const int skillId A_UNUSED) const
 {
 }
 
-int NpcHandler::getNpc(Net::MessageIn &msg)
+BeingId NpcHandler::getNpc(Net::MessageIn &msg)
 {
     if (msg.getId() == SMSG_NPC_CHOICE
         || msg.getId() == SMSG_NPC_MESSAGE
@@ -251,7 +256,7 @@ int NpcHandler::getNpc(Net::MessageIn &msg)
         msg.readInt16("len");
     }
 
-    const int npcId = msg.readInt32("npc id");
+    const BeingId npcId = msg.readBeingId("npc id");
 
     const NpcDialogs::const_iterator diag = NpcDialog::mNpcDialogs.find(npcId);
     mDialog = nullptr;

@@ -205,10 +205,11 @@ void PlayerHandler::handleMessage(Net::MessageIn &msg)
     }
 }
 
-void PlayerHandler::attack(const int id, const Keep keep) const
+void PlayerHandler::attack(const BeingId id,
+                           const Keep keep) const
 {
     createOutPacket(CMSG_PLAYER_CHANGE_ACT);
-    outMsg.writeInt32(id, "target id");
+    outMsg.writeBeingId(id, "target id");
     if (keep == Keep_true)
         outMsg.writeInt8(7, "action");
     else
@@ -251,7 +252,7 @@ void PlayerHandler::pickUp(const FloorItem *const floorItem) const
         return;
 
     createOutPacket(CMSG_ITEM_PICKUP);
-    outMsg.writeInt32(floorItem->getId(), "object id");
+    outMsg.writeBeingId(floorItem->getId(), "object id");
     EAthena::InventoryHandler *const handler =
         static_cast<EAthena::InventoryHandler*>(inventoryHandler);
     if (handler)
@@ -484,7 +485,7 @@ void PlayerHandler::processPlayerGetExp(Net::MessageIn &msg)
 {
     if (!localPlayer)
         return;
-    const int id = msg.readInt32("player id");
+    const BeingId id = msg.readBeingId("player id");
     const int exp = msg.readInt32("exp amount");
     const int stat = msg.readInt16("exp type");
     const bool fromQuest = msg.readInt16("is from quest");
@@ -538,7 +539,7 @@ void PlayerHandler::processPvpInfo(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
     msg.readInt32("char id");
-    msg.readInt32("account id");
+    msg.readBeingId("account id");
     msg.readInt32("pvp won");
     msg.readInt32("pvp lost");
     msg.readInt32("pvp point");

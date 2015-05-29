@@ -39,30 +39,32 @@ class NpcHandler final : public MessageHandler, public Ea::NpcHandler
 
         void handleMessage(Net::MessageIn &msg) override final;
 
-        void talk(const int npcId) const override final;
+        void talk(const BeingId npcId) const override final;
 
-        void nextDialog(const int npcId) const override final;
+        void nextDialog(const BeingId npcId) const override final;
 
-        void closeDialog(const int npcId) override final;
+        void closeDialog(const BeingId npcId) override final;
 
-        void listInput(const int npcId,
+        void listInput(const BeingId npcId,
                        const unsigned char value) const override final;
 
-        void integerInput(const int npcId,
+        void integerInput(const BeingId npcId,
                           const int value) const override final;
 
-        void stringInput(const int npcId,
+        void stringInput(const BeingId npcId,
                          const std::string &value) const override final;
 
-        void buy(const int beingId) const override final;
+        void buy(const BeingId beingId) const override final;
 
-        void sell(const int beingId) const override final;
+        void sell(const BeingId beingId) const override final;
 
-        void buyItem(const int beingId, const int itemId,
+        void buyItem(const BeingId beingId,
+                     const int itemId,
                      const unsigned char color,
                      const int amount) const override final;
 
-        void sellItem(const int beingId, const int itemId,
+        void sellItem(const BeingId beingId,
+                      const int itemId,
                       const int amount) const override final;
 
         void completeProgressBar() const override final;
@@ -79,7 +81,7 @@ class NpcHandler final : public MessageHandler, public Ea::NpcHandler
 
         void refine(const int index) const override final;
 
-        int getNpc(Net::MessageIn &msg) override final;
+        BeingId getNpc(Net::MessageIn &msg) override final;
 
         void identify(const int index) const override final;
 

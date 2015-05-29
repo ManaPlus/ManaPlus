@@ -31,7 +31,7 @@ CharRenameListener charRenameListener;
 CharRenameListener::CharRenameListener() :
     ActionListener(),
     mDialog(nullptr),
-    mId(0)
+    mId(BeingId_zero)
 {
 }
 

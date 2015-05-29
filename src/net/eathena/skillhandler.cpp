@@ -159,12 +159,12 @@ void SkillHandler::handleMessage(Net::MessageIn &msg)
 }
 
 void SkillHandler::useBeing(const int id, const int level,
-                            const int beingId) const
+                            const BeingId beingId) const
 {
     createOutPacket(CMSG_SKILL_USE_BEING);
     outMsg.writeInt16(static_cast<int16_t>(level), "skill level");
     outMsg.writeInt16(static_cast<int16_t>(id), "skill id");
-    outMsg.writeInt32(beingId, "target id");
+    outMsg.writeInt32(toInt(beingId, int), "target id");
 }
 
 void SkillHandler::usePos(const int id, const int level,
@@ -424,7 +424,7 @@ void SkillHandler::processSkillFailed(Net::MessageIn &msg)
 void SkillHandler::processSkillSnap(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
-    msg.readInt32("being id");
+    msg.readBeingId("being id");
     msg.readInt16("x");
     msg.readInt16("y");
 }
@@ -470,7 +470,7 @@ void SkillHandler::processSkillUnitUpdate(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
 
-    msg.readInt32("being id");
+    msg.readBeingId("being id");
 }
 
 void SkillHandler::processSkillArrowCreateList(Net::MessageIn &msg)
@@ -496,7 +496,7 @@ void SkillHandler::processSkillDevotionEffect(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
 
-    msg.readInt32("being id");
+    msg.readBeingId("being id");
     for (int f = 0; f < 5; f ++)
         msg.readInt32("devotee id");
     msg.readInt16("range");

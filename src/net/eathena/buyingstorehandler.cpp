@@ -150,7 +150,7 @@ void BuyingStoreHandler::processBuyingStoreCreateFailed(Net::MessageIn &msg)
 void BuyingStoreHandler::processBuyingStoreOwnItems(Net::MessageIn &msg)
 {
     const int count = (msg.readInt16("len") - 12) / 9;
-    msg.readInt32("account id");
+    msg.readBeingId("account id");
     msg.readInt32("money limit");
     for (int f = 0; f < count; f ++)
     {
@@ -165,7 +165,7 @@ void BuyingStoreHandler::processBuyingStoreOwnItems(Net::MessageIn &msg)
 
 void BuyingStoreHandler::processBuyingStoreShowBoard(Net::MessageIn &msg)
 {
-    const int id = msg.readInt32("owner id");
+    const BeingId id = msg.readBeingId("owner id");
     const std::string shopName = msg.readString(80, "shop name");
     Being *const dstBeing = actorManager->findBeing(id);
     if (dstBeing)
@@ -174,7 +174,7 @@ void BuyingStoreHandler::processBuyingStoreShowBoard(Net::MessageIn &msg)
 
 void BuyingStoreHandler::processBuyingStoreHideBoard(Net::MessageIn &msg)
 {
-    const int id = msg.readInt32("owner id");
+    const BeingId id = msg.readBeingId("owner id");
     Being *const dstBeing = actorManager->findBeing(id);
     if (dstBeing)
         dstBeing->setBuyBoard(std::string());
@@ -188,7 +188,7 @@ void BuyingStoreHandler::processBuyingStoreHideBoard(Net::MessageIn &msg)
 void BuyingStoreHandler::processBuyingStoreItemsList(Net::MessageIn &msg)
 {
     const int count = (msg.readInt16("len") - 16) / 9;
-    const int id = msg.readInt32("account id");
+    const BeingId id = msg.readBeingId("account id");
     const int storeId = msg.readInt32("store id");
     // +++ in future need use it too
     msg.readInt32("money limit");
@@ -321,7 +321,7 @@ void BuyingStoreHandler::open(const Being *const being) const
     if (!being)
         return;
     createOutPacket(CMSG_BUYINGSTORE_OPEN);
-    outMsg.writeInt32(being->getId(), "account id");
+    outMsg.writeBeingId(being->getId(), "account id");
 }
 
 void BuyingStoreHandler::sell(const Being *const being,
@@ -334,7 +334,7 @@ void BuyingStoreHandler::sell(const Being *const being,
 
     createOutPacket(CMSG_BUYINGSTORE_SELL);
     outMsg.writeInt16(18, "len");
-    outMsg.writeInt32(being->getId(), "account id");
+    outMsg.writeBeingId(being->getId(), "account id");
     outMsg.writeInt32(storeId, "store id");
     outMsg.writeInt16(static_cast<int16_t>(
         item->getInvIndex() + INVENTORY_OFFSET),

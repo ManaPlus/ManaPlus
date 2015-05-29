@@ -23,6 +23,7 @@
 #ifndef GUI_WINDOWS_NPCDIALOG_H
 #define GUI_WINDOWS_NPCDIALOG_H
 
+#include "enums/simpletypes/beingid.h"
 #include "enums/simpletypes/visible.h"
 
 #include "gui/models/extendedlistmodel.h"
@@ -44,7 +45,7 @@ class PlayerBox;
 class ScrollArea;
 class TextField;
 
-typedef std::map<int, NpcDialog*> NpcDialogs;
+typedef std::map<BeingId, NpcDialog*> NpcDialogs;
 
 /**
  * The npc dialog.
@@ -62,7 +63,7 @@ class NpcDialog final : public Window,
          *
          * @see Window::Window
          */
-        explicit NpcDialog(const int npcId);
+        explicit NpcDialog(const BeingId npcId);
 
         A_DELETE_COPY(NpcDialog)
 
@@ -196,7 +197,7 @@ class NpcDialog final : public Window,
 
         void refocus();
 
-        void showAvatar(const uint16_t avatarId);
+        void showAvatar(const BeingId avatarId);
 
         void setAvatarDirection(const uint8_t direction);
 
@@ -211,7 +212,8 @@ class NpcDialog final : public Window,
         int isCloseState() const
         { return mActionState == NPC_ACTION_CLOSE; }
 
-        static void copyToClipboard(const int npcId, const int x, const int y);
+        static void copyToClipboard(const BeingId npcId,
+                                    const int x, const int y);
 
         static NpcDialogs mNpcDialogs;
 
@@ -233,7 +235,7 @@ class NpcDialog final : public Window,
 
         void placeItemInputControls();
 
-        int mNpcId;
+        BeingId mNpcId;
 
         int mDefaultInt;
         std::string mDefaultString;

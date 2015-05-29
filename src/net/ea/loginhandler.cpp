@@ -163,7 +163,7 @@ void LoginHandler::processLoginData(Net::MessageIn &msg)
     const int worldCount = (msg.getLength() - 47) / 32;
 
     mToken.session_ID1 = msg.readInt32("session id1");
-    mToken.account_ID = msg.readInt32("accound id");
+    mToken.account_ID = msg.readBeingId("accound id");
     mToken.session_ID2 = msg.readInt32("session id2");
     msg.readInt32("old ip");
     loginData.lastLogin = msg.readString(24, "last login");

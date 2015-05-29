@@ -140,7 +140,7 @@ void PartyHandler::processPartySettingsContinue(Net::MessageIn &msg,
 
 void PartyHandler::processPartyLeave(Net::MessageIn &msg)
 {
-    const int id = msg.readInt32("account id");
+    const BeingId id = msg.readBeingId("account id");
     const std::string nick = msg.readString(24, "nick");
     const int reason = msg.readUInt8("flag");
     if (!localPlayer)
@@ -224,7 +224,7 @@ void PartyHandler::processPartyLeave(Net::MessageIn &msg)
 
 void PartyHandler::processPartyUpdateCoords(Net::MessageIn &msg)
 {
-    const int id = msg.readInt32("id");
+    const BeingId id = msg.readBeingId("account id");
     PartyMember *m = nullptr;
     if (Ea::taParty)
         m = Ea::taParty->getMember(id);

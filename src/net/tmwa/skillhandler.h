@@ -39,13 +39,16 @@ class SkillHandler final : public MessageHandler, public Ea::SkillHandler
 
         void handleMessage(Net::MessageIn &msg) override final;
 
-        void useBeing(const int id, const int level,
-                      const int beingId) const override final;
+        void useBeing(const int id,
+                      const int level,
+                      const BeingId beingId) const override final;
 
-        void usePos(const int id, const int level,
+        void usePos(const int id,
+                    const int level,
                     const int x, const int y) const override final;
 
-        void usePos(const int id, const int level,
+        void usePos(const int id,
+                    const int level,
                     const int x, const int y,
                     const std::string &text) const override final;
 

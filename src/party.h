@@ -49,7 +49,9 @@ class PartyMember final : public Avatar
     protected:
         friend class Party;
 
-        PartyMember(Party *const party, const int id, const std::string &name);
+        PartyMember(Party *const party,
+                    const BeingId id,
+                    const std::string &name);
 
         Party *mParty;
         bool mLeader;
@@ -69,14 +71,15 @@ class Party final : public AvatarListModel
         /**
          * Adds member to the list.
          */
-        PartyMember *addMember(const int id, const std::string &name);
+        PartyMember *addMember(const BeingId id,
+                               const std::string &name);
 
         /**
          * Find a member by ID.
          *
          * @return the member with the given ID, or NULL if they don't exist.
          */
-        PartyMember *getMember(const int id) const A_WARN_UNUSED;
+        PartyMember *getMember(const BeingId id) const A_WARN_UNUSED;
 
         /**
          * Find a member by name.
@@ -107,7 +110,7 @@ class Party final : public AvatarListModel
         /**
          * Removes a member from the party.
          */
-        void removeMember(const int id);
+        void removeMember(const BeingId id);
 
         /**
          * Removes a member from the party.
@@ -139,7 +142,7 @@ class Party final : public AvatarListModel
 
         bool isMember(const PartyMember *const member) const A_WARN_UNUSED;
 
-        bool isMember(const int id) const A_WARN_UNUSED;
+        bool isMember(const BeingId id) const A_WARN_UNUSED;
 
         bool isMember(const std::string &name) const A_WARN_UNUSED;
 

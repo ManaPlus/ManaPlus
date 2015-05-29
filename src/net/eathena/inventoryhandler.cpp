@@ -489,10 +489,10 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
     msg.readInt16("bind on equip");
 
     const ItemInfo &itemInfo = ItemDB::get(itemId);
-    int floorId;
+    BeingId floorId;
     if (mSentPickups.empty())
     {
-        floorId = 0;
+        floorId = BeingId_zero;
     }
     else
     {
@@ -1107,7 +1107,7 @@ void InventoryHandler::processItemDamaged(Net::MessageIn &msg)
     UNIMPLIMENTEDPACKET;
 
     msg.readInt16("position");
-    msg.readInt32("account id");
+    msg.readBeingId("account id");
 }
 
 void InventoryHandler::processFavoriteItem(Net::MessageIn &msg)

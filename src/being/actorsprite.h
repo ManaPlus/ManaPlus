@@ -32,6 +32,7 @@
 #include "enums/being/targetcursorsize.h"
 #include "enums/being/targetcursortype.h"
 
+#include "enums/simpletypes/beingid.h"
 #include "enums/simpletypes/enable.h"
 #include "enums/simpletypes/forcedisplay.h"
 
@@ -49,16 +50,16 @@ struct SpriteDisplay;
 class ActorSprite notfinal : public CompoundSprite, public Actor
 {
     public:
-        explicit ActorSprite(const int id);
+        explicit ActorSprite(const BeingId id);
 
         A_DELETE_COPY(ActorSprite)
 
         virtual ~ActorSprite();
 
-        int getId() const A_WARN_UNUSED
+        BeingId getId() const A_WARN_UNUSED
         { return mId; }
 
-        void setId(const int id)
+        void setId(const BeingId id)
         { mId = id; }
 
         /**
@@ -224,7 +225,7 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
         ParticleList mStunParticleEffects;
         ParticleVector mStatusParticleEffects;
         ParticleList mChildParticleEffects;
-        int mId;
+        BeingId mId;
         uint16_t mStunMode;             /**< Stun mode; zero if not stunned */
 
         /** Target cursor being used */

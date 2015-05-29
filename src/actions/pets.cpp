@@ -66,8 +66,8 @@ static const Being *getPet()
     }
 #endif
 #ifdef EATHENA_SUPPORT
-    const int id = PlayerInfo::getPetBeingId();
-    if (!id)
+    const BeingId id = PlayerInfo::getPetBeingId();
+    if (id == BeingId_zero)
         return nullptr;
     return actorManager->findBeing(id);
 #else

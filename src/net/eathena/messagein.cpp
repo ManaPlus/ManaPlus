@@ -105,6 +105,11 @@ int32_t MessageIn::readInt32(const char *const str)
     return value;
 }
 
+BeingId MessageIn::readBeingId(const char *const str)
+{
+    return fromInt(readInt32(str), BeingId);
+}
+
 int64_t MessageIn::readInt64(const char *const str)
 {
     int64_t value = -1;

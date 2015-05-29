@@ -124,10 +124,11 @@ void PlayerHandler::handleMessage(Net::MessageIn &msg)
     BLOCK_END("PlayerHandler::handleMessage")
 }
 
-void PlayerHandler::attack(const int id, const Keep keep) const
+void PlayerHandler::attack(const BeingId id,
+                           const Keep keep) const
 {
     createOutPacket(CMSG_PLAYER_CHANGE_ACT);
-    outMsg.writeInt32(id, "target id");
+    outMsg.writeBeingId(id, "target id");
     if (keep == Keep_true)
         outMsg.writeInt8(7, "action");
     else
@@ -170,7 +171,7 @@ void PlayerHandler::pickUp(const FloorItem *const floorItem) const
         return;
 
     createOutPacket(CMSG_ITEM_PICKUP);
-    outMsg.writeInt32(floorItem->getId(), "object id");
+    outMsg.writeBeingId(floorItem->getId(), "object id");
     TmwAthena::InventoryHandler *const handler =
         static_cast<TmwAthena::InventoryHandler*>(inventoryHandler);
     if (handler)

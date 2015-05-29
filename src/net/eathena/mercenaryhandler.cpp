@@ -90,7 +90,7 @@ void MercenaryHandler::processMercenaryUpdate(Net::MessageIn &msg)
 void MercenaryHandler::processMercenaryInfo(Net::MessageIn &msg)
 {
     // +++ need create if need mercenary being and update stats
-    Being *const dstBeing = actorManager->findBeing(msg.readInt32("being id"));
+    Being *const dstBeing = actorManager->findBeing(msg.readBeingId("being id"));
     msg.readInt16("atk");
     msg.readInt16("matk");
     msg.readInt16("hit");
@@ -188,33 +188,34 @@ void MercenaryHandler::fire()
 
 void MercenaryHandler::moveToMaster() const
 {
-    const int id = PlayerInfo::getMercenaryId();
-    if (!id)
+    const BeingId id = PlayerInfo::getMercenaryId();
+    if (id == BeingId_zero)
         return;
     createOutPacket(CMSG_HOMMERC_MOVE_TO_MASTER);
-    outMsg.writeInt32(id, "mercenary id");
+    outMsg.writeBeingId(id, "mercenary id");
 }
 
 void MercenaryHandler::move(const int x, const int y) const
 {
-    const int id = PlayerInfo::getMercenaryId();
-    if (!id)
+    const BeingId id = PlayerInfo::getMercenaryId();
+    if (id == BeingId_zero)
         return;
     createOutPacket(CMSG_HOMMERC_MOVE_TO);
-    outMsg.writeInt32(id, "mercenary id");
+    outMsg.writeBeingId(id, "mercenary id");
     outMsg.writeCoordinates(static_cast<uint16_t>(x),
         static_cast<uint16_t>(y),
         0U, "position");
 }
 
-void MercenaryHandler::attack(const int targetId, const Keep keep) const
+void MercenaryHandler::attack(const BeingId targetId,
+                              const Keep keep) const
 {
-    const int id = PlayerInfo::getMercenaryId();
-    if (!id)
+    const BeingId id = PlayerInfo::getMercenaryId();
+    if (id == BeingId_zero)
         return;
     createOutPacket(CMSG_HOMMERC_ATTACK);
-    outMsg.writeInt32(id, "mercenary id");
-    outMsg.writeInt32(targetId, "target id");
+    outMsg.writeBeingId(id, "mercenary id");
+    outMsg.writeBeingId(targetId, "target id");
     outMsg.writeInt8(static_cast<int8_t>(keep == Keep_true ? 1 : 0), "keep");
 }
 

@@ -25,7 +25,7 @@
 #include "debug.h"
 
 Avatar::Avatar(const std::string &name) :
-    mId(0),
+    mId(BeingId_zero),
     mCharId(0),
     mName(name),
     mOriginalName(name),

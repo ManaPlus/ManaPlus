@@ -101,10 +101,10 @@ BeingHandler::BeingHandler(const bool enableSync) :
     beingHandler = this;
 }
 
-void BeingHandler::requestNameById(const int id) const
+void BeingHandler::requestNameById(const BeingId id) const
 {
     createOutPacket(CMSG_NAME_REQUEST);
-    outMsg.writeInt32(id, "being id");
+    outMsg.writeBeingId(id, "being id");
 }
 
 void BeingHandler::handleMessage(Net::MessageIn &msg)
@@ -267,7 +267,7 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg)
     }
 
     Being *const dstBeing = actorManager->findBeing(
-        msg.readInt32("being id"));
+        msg.readBeingId("being id"));
 
     const uint8_t type = msg.readUInt8("type");
     const int16_t id = static_cast<int16_t>(msg.readUInt8("id"));
@@ -292,7 +292,7 @@ void BeingHandler::processBeingChangeLook2(Net::MessageIn &msg)
     }
 
     Being *const dstBeing = actorManager->findBeing(
-        msg.readInt32("being id"));
+        msg.readBeingId("being id"));
 
     const uint8_t type = msg.readUInt8("type");
     int id2 = 0;
@@ -427,7 +427,7 @@ void BeingHandler::processPlayerUpdate1(Net::MessageIn &msg)
     }
 
     // An update about a player, potentially including movement.
-    const int id = msg.readInt32("account id");
+    const BeingId id = msg.readBeingId("account id");
     const int16_t speed = msg.readInt16("speed");
     const uint16_t stunMode = msg.readInt16("opt1");
     uint32_t statusEffects = msg.readInt16("opt2");
@@ -435,7 +435,7 @@ void BeingHandler::processPlayerUpdate1(Net::MessageIn &msg)
         << 16;
     const int16_t job = msg.readInt16("job");
     int disguiseId = 0;
-    if (id < 110000000 && job >= 1000)
+    if (toInt(id, int) < 110000000 && job >= 1000)
         disguiseId = job;
 
     Being *dstBeing = actorManager->findBeing(id);
@@ -579,7 +579,7 @@ void BeingHandler::processPlayerUpdate2(Net::MessageIn &msg)
     }
 
     // An update about a player, potentially including movement.
-    const int id = msg.readInt32("account id");
+    const BeingId id = msg.readBeingId("account id");
     const int16_t speed = msg.readInt16("speed");
     const uint16_t stunMode = msg.readInt16("opt1");
     uint32_t statusEffects = msg.readInt16("opt2");
@@ -587,7 +587,7 @@ void BeingHandler::processPlayerUpdate2(Net::MessageIn &msg)
         << 16;
     const int16_t job = msg.readInt16("job");
     int disguiseId = 0;
-    if (id < 110000000 && job >= 1000)
+    if (toInt(id, int) < 110000000 && job >= 1000)
         disguiseId = job;
 
     Being *dstBeing = actorManager->findBeing(id);
@@ -727,7 +727,7 @@ void BeingHandler::processPlayerMove(Net::MessageIn &msg)
     }
 
     // An update about a player, potentially including movement.
-    const int id = msg.readInt32("account id");
+    const BeingId id = msg.readBeingId("account id");
     const int16_t speed = msg.readInt16("speed");
     const uint16_t stunMode = msg.readInt16("opt1");
     uint32_t statusEffects = msg.readInt16("opt2");
@@ -735,7 +735,7 @@ void BeingHandler::processPlayerMove(Net::MessageIn &msg)
         << 16;
     const int16_t job = msg.readInt16("job");
     int disguiseId = 0;
-    if (id < 110000000 && job >= 1000)
+    if (toInt(id, int) < 110000000 && job >= 1000)
         disguiseId = job;
 
     Being *dstBeing = actorManager->findBeing(id);
@@ -904,15 +904,15 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
         return;
     }
 
-    int spawnId;
+    BeingId spawnId;
 
     // Information about a being in range
-    const int id = msg.readInt32("being id");
+    const BeingId id = msg.readBeingId("being id");
     if (id == mSpawnId)
         spawnId = mSpawnId;
     else
-        spawnId = 0;
-    mSpawnId = 0;
+        spawnId = BeingId_zero;
+    mSpawnId = BeingId_zero;
     int16_t speed = msg.readInt16("speed");
     const uint16_t stunMode = msg.readInt16("opt1");
     uint32_t statusEffects = msg.readInt16("opt2");
@@ -936,7 +936,7 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
     {
         // Being with id >= 110000000 and job 0 are better
         // known as ghosts, so don't create those.
-        if (job == 0 && id >= 110000000)
+        if (job == 0 && toInt(id, int) >= 110000000)
         {
             BLOCK_END("BeingHandler::processBeingVisibleOrMove")
             return;
@@ -969,7 +969,7 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
     if (dstBeing->getType() == ActorType::Player)
         dstBeing->setMoveTime();
 
-    if (spawnId)
+    if (spawnId != BeingId_zero)
     {
         dstBeing->setAction(BeingAction::SPAWN, 0);
     }
@@ -1111,15 +1111,15 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
         return;
     }
 
-    int spawnId;
+    BeingId spawnId;
 
     // Information about a being in range
-    const int id = msg.readInt32("being id");
+    const BeingId id = msg.readBeingId("being id");
     if (id == mSpawnId)
         spawnId = mSpawnId;
     else
-        spawnId = 0;
-    mSpawnId = 0;
+        spawnId = BeingId_zero;
+    mSpawnId = BeingId_zero;
     int16_t speed = msg.readInt16("speed");
     const uint16_t stunMode = msg.readInt16("opt1");
     uint32_t statusEffects = msg.readInt16("opt2");
@@ -1143,7 +1143,7 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
     {
         // Being with id >= 110000000 and job 0 are better
         // known as ghosts, so don't create those.
-        if (job == 0 && id >= 110000000)
+        if (job == 0 && toInt(id, int) >= 110000000)
         {
             BLOCK_END("BeingHandler::processBeingVisibleOrMove")
             return;
@@ -1176,7 +1176,7 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
     if (dstBeing->getType() == ActorType::Player)
         dstBeing->setMoveTime();
 
-    if (spawnId)
+    if (spawnId != BeingId_zero)
         dstBeing->setAction(BeingAction::SPAWN, 0);
 
     // Prevent division by 0 when calculating frame
@@ -1296,7 +1296,7 @@ void BeingHandler::processBeingSpawn(Net::MessageIn &msg)
 {
     BLOCK_START("BeingHandler::processBeingSpawn")
     // skipping this packet
-    mSpawnId = msg.readInt32("being id");
+    mSpawnId = msg.readBeingId("being id");
     msg.readInt16("speed");
     msg.readInt16("opt1");
     msg.readInt16("opt2");
@@ -1328,7 +1328,7 @@ void BeingHandler::processBeingStatusChange(Net::MessageIn &msg)
 
     // Status change
     const uint16_t status = msg.readInt16("status");
-    const int id = msg.readInt32("being id");
+    const BeingId id = msg.readBeingId("being id");
     const Enable flag = fromBool(
         msg.readUInt8("flag: 0: stop, 1: start"), Enable);
 
@@ -1352,7 +1352,7 @@ void BeingHandler::processBeingMove2(Net::MessageIn &msg)
       * later versions of eAthena for both mobs and
       * players
       */
-    Being *const dstBeing = actorManager->findBeing(msg.readInt32("being id"));
+    Being *const dstBeing = actorManager->findBeing(msg.readBeingId("being id"));
 
     /*
       * This packet doesn't have enough info to actually
@@ -1387,7 +1387,7 @@ void BeingHandler::processBeingChangeDirection(Net::MessageIn &msg)
         return;
     }
 
-    Being *const dstBeing = actorManager->findBeing(msg.readInt32("being id"));
+    Being *const dstBeing = actorManager->findBeing(msg.readBeingId("being id"));
 
     if (!dstBeing)
     {
@@ -1470,7 +1470,7 @@ void BeingHandler::processPlaterStatusChange(Net::MessageIn &msg)
     }
 
     // Change in players' flags
-    const int id = msg.readInt32("account id");
+    const BeingId id = msg.readBeingId("account id");
     Being *const dstBeing = actorManager->findBeing(id);
     if (!dstBeing)
         return;
@@ -1499,7 +1499,7 @@ void BeingHandler::processBeingResurrect(Net::MessageIn &msg)
 
     // A being changed mortality status
 
-    const int id = msg.readInt32("being id");
+    const BeingId id = msg.readBeingId("being id");
     Being *const dstBeing = actorManager->findBeing(id);
     if (!dstBeing)
     {
@@ -1525,7 +1525,7 @@ void BeingHandler::processPlayerGuilPartyInfo(Net::MessageIn &msg)
         return;
     }
 
-    Being *const dstBeing = actorManager->findBeing(msg.readInt32("being id"));
+    Being *const dstBeing = actorManager->findBeing(msg.readBeingId("being id"));
 
     if (dstBeing)
     {
@@ -1562,7 +1562,7 @@ void BeingHandler::processBeingSelfEffect(Net::MessageIn &msg)
         return;
     }
 
-    const int id = static_cast<uint32_t>(msg.readInt32("being id"));
+    const BeingId id = msg.readBeingId("being id");
     Being *const being = actorManager->findBeing(id);
     if (!being)
     {
@@ -1598,7 +1598,7 @@ void BeingHandler::processIpResponse(Net::MessageIn &msg)
         return;
     }
 
-    Being *const dstBeing = actorManager->findBeing(msg.readInt32("being id"));
+    Being *const dstBeing = actorManager->findBeing(msg.readBeingId("being id"));
     if (dstBeing)
         dstBeing->setIp(ipToString(msg.readInt32("ip address")));
     BLOCK_END("BeingHandler::processIpResponse")

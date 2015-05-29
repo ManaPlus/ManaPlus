@@ -23,6 +23,8 @@
 #ifndef NET_EA_BUYSELLHANDLER_H
 #define NET_EA_BUYSELLHANDLER_H
 
+#include "enums/simpletypes/beingid.h"
+
 #include "net/buysellhandler.h"
 
 class BuyDialog;
@@ -44,7 +46,7 @@ class BuySellHandler notfinal : public Net::BuySellHandler
 
         static void processNpcBuyResponse(Net::MessageIn &msg);
 
-        static int mNpcId;
+        static BeingId mNpcId;
         static BuyDialog *mBuyDialog;
 };
 

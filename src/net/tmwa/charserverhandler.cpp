@@ -141,7 +141,7 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
         static_cast<LoginHandler*>(loginHandler)->getToken();
 
     LocalPlayer *const tempPlayer = new LocalPlayer(
-        msg.readInt32("account id"), 0);
+        msg.readBeingId("account id"), 0);
     tempPlayer->setGender(token.sex);
 
     PlayerInfoBackend &data = character->data;
@@ -288,7 +288,7 @@ void CharServerHandler::deleteCharacter(Net::Character *const character,
     mSelectedCharacter = character;
 
     createOutPacket(CMSG_CHAR_DELETE);
-    outMsg.writeInt32(mSelectedCharacter->dummy->getId(), "id?");
+    outMsg.writeBeingId(mSelectedCharacter->dummy->getId(), "id?");
     outMsg.writeString("a@a.com", 40, "email");
 }
 
@@ -310,7 +310,7 @@ void CharServerHandler::connect()
     mNetwork->disconnect();
     mNetwork->connect(charServer);
     createOutPacket(CMSG_CHAR_SERVER_CONNECT);
-    outMsg.writeInt32(token.account_ID, "account id");
+    outMsg.writeBeingId(token.account_ID, "account id");
     outMsg.writeInt32(token.session_ID1, "session id1");
     outMsg.writeInt32(token.session_ID2, "session id2");
     // [Fate] The next word is unused by the old char server, so we squeeze in
@@ -502,7 +502,7 @@ void CharServerHandler::processCharCreate2(Net::MessageIn &msg)
     BLOCK_END("CharServerHandler::processCharCreate2")
 }
 
-void CharServerHandler::renameCharacter(const int id A_UNUSED,
+void CharServerHandler::renameCharacter(const BeingId id A_UNUSED,
                                         const std::string &newName A_UNUSED)
 {
 }

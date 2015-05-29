@@ -37,7 +37,7 @@
 
 #include "debug.h"
 
-BuyingStoreSellDialog::BuyingStoreSellDialog(const int accountId,
+BuyingStoreSellDialog::BuyingStoreSellDialog(const BeingId accountId,
                                              const int storeId) :
     SellDialog(true),
     mAccountId(accountId),

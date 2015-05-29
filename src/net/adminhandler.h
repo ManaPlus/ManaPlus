@@ -23,9 +23,11 @@
 #ifndef NET_ADMINHANDLER_H
 #define NET_ADMINHANDLER_H
 
-#include "localconsts.h"
+#include "enums/simpletypes/beingid.h"
 
 #include <string>
+
+#include "localconsts.h"
 
 class Being;
 
@@ -44,7 +46,7 @@ class AdminHandler notfinal
 
         virtual void hide(const bool hide) const = 0;
 
-        virtual void kick(const int playerId) const = 0;
+        virtual void kick(const BeingId playerId) const = 0;
 
         virtual void kickName(const std::string &name) const = 0;
 

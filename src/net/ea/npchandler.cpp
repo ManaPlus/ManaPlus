@@ -104,7 +104,7 @@ void NpcHandler::processNpcIntInput(Net::MessageIn &msg)
 void NpcHandler::processNpcStrInput(Net::MessageIn &msg)
 {
     // Request for a string
-    int npcId = npcHandler->getNpc(msg);
+    BeingId npcId = npcHandler->getNpc(msg);
     if (mRequestLang)
     {
         mRequestLang = false;
@@ -118,11 +118,11 @@ void NpcHandler::processNpcStrInput(Net::MessageIn &msg)
 
 void NpcHandler::processNpcCommand(Net::MessageIn &msg)
 {
-    const int npcId = npcHandler->getNpc(msg);
+    const BeingId npcId = npcHandler->getNpc(msg);
     mRequestLang = false;
 
     const int cmd = msg.readInt16("cmd");
-    const int id = msg.readInt32("id");
+    const BeingId id = msg.readBeingId("id");
     const int x = msg.readInt16("x");
     const int y = msg.readInt16("y");
     switch (cmd)
@@ -139,7 +139,7 @@ void NpcHandler::processNpcCommand(Net::MessageIn &msg)
         case 2:
             if (viewport)
             {
-                if (!id)
+                if (id == BeingId_zero)
                     viewport->moveCameraToPosition(x, y);
                 else
                     viewport->moveCameraToActor(id, x, y);
@@ -165,7 +165,7 @@ void NpcHandler::processNpcCommand(Net::MessageIn &msg)
         case 6:  // show avatar
             if (mDialog)
             {
-                mDialog->showAvatar(static_cast<uint16_t>(id));
+                mDialog->showAvatar(id);
             }
             break;
         case 7:  // set avatar direction
@@ -178,7 +178,7 @@ void NpcHandler::processNpcCommand(Net::MessageIn &msg)
             break;
         case 8:  // set avatar action
             if (mDialog)
-                mDialog->setAvatarAction(id);
+                mDialog->setAvatarAction(toInt(id, int));
             break;
         case 9:  // clear npc dialog
             if (mDialog)
@@ -186,7 +186,7 @@ void NpcHandler::processNpcCommand(Net::MessageIn &msg)
             break;
         case 10:  // send selected item id
         {
-            int invSize = id;
+            int invSize = toInt(id, int);
             if (!invSize)
                 invSize = 1;
             if (mDialog)

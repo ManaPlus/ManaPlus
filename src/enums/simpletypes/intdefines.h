@@ -29,13 +29,18 @@
     enum class name : type \
     { \
     }; \
+    const name name##_zero = static_cast<name>(0)
+
 #define fromInt(val, name) static_cast<name>(val)
+#define toInt(val, name) static_cast<name>(val)
 
 #else  // ADVGCC
 
 #define defIntEnum(name, type) \
-    typedef type name
+    typedef type name; \
+    const name name##_zero = 0
 #define fromInt(val, name) (val)
+#define toInt(val, name) (val)
 
 #endif  // ADVGCC
 

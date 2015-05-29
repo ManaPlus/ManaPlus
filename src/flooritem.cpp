@@ -43,8 +43,11 @@
 
 extern volatile int cur_time;
 
-FloorItem::FloorItem(const int id, const int itemId, const int x, const int y,
-                     const int amount, const unsigned char color) :
+FloorItem::FloorItem(const BeingId id,
+                     const int itemId,
+                     const int x, const int y,
+                     const int amount,
+                     const unsigned char color) :
     ActorSprite(id),
     mItemId(itemId),
     mX(x),

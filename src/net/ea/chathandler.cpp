@@ -148,7 +148,7 @@ void ChatHandler::processMVPEffect(Net::MessageIn &msg)
 {
     BLOCK_START("ChatHandler::processMVPEffect")
     // Display MVP player
-    const int id = msg.readInt32("being id");
+    const BeingId id = msg.readBeingId("being id");
     if (localChatTab && actorManager && config.getBoolValue("showMVP"))
     {
         const Being *const being = actorManager->findBeing(id);

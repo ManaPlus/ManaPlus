@@ -86,10 +86,10 @@ void AdminHandler::hide(const bool h A_UNUSED) const
     outMsg.writeInt32(0, "unused");
 }
 
-void AdminHandler::kick(const int playerId) const
+void AdminHandler::kick(const BeingId playerId) const
 {
     createOutPacket(CMSG_ADMIN_KICK);
-    outMsg.writeInt32(playerId, "account id");
+    outMsg.writeBeingId(playerId, "account id");
 }
 
 void AdminHandler::kickAll() const

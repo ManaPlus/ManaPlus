@@ -53,7 +53,9 @@ class GuildMember final : public Avatar
     protected:
         friend class Guild;
 
-        GuildMember(Guild *const guild, const int id, const int accountId,
+        GuildMember(Guild *const guild,
+                    const BeingId accountId,
+                    const int charId,
                     const std::string &name);
 
         GuildMember(Guild *const guild, const std::string &name);
@@ -78,7 +80,8 @@ class Guild final : public AvatarListModel
         /**
          * Adds member to the list.
          */
-        GuildMember *addMember(const int accountId, const int charId,
+        GuildMember *addMember(const BeingId accountId,
+                               const int charId,
                                const std::string &name);
 
         /**
@@ -91,14 +94,15 @@ class Guild final : public AvatarListModel
          *
          * @return the member with the given ID, or NULL if they don't exist.
          */
-        GuildMember *getMember(const int id) const;
+        GuildMember *getMember(const BeingId id) const;
 
         /**
          * Find a member by account ID and char ID.
          *
          * @return the member with the given ID, or NULL if they don't exist.
          */
-        GuildMember *getMember(const int accountId, const int charId)
+        GuildMember *getMember(const BeingId accountId,
+                               const int charId)
                                const A_WARN_UNUSED;
 
         /**
@@ -130,7 +134,7 @@ class Guild final : public AvatarListModel
         /**
          * Removes a member from the guild.
          */
-        void removeMember(const int id);
+        void removeMember(const BeingId id);
 
         /**
          * Removes a member from the guild.
@@ -162,7 +166,7 @@ class Guild final : public AvatarListModel
 
         bool isMember(const GuildMember *const member) const A_WARN_UNUSED;
 
-        bool isMember(const int id) const A_WARN_UNUSED;
+        bool isMember(const BeingId id) const A_WARN_UNUSED;
 
         bool isMember(const std::string &name) const A_WARN_UNUSED;
 

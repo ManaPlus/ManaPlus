@@ -40,7 +40,7 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
 
         void handleMessage(Net::MessageIn &msg) override final;
 
-        void requestNameById(const int id) const override final;
+        void requestNameById(const BeingId id) const override final;
 
         void undress(Being *const being) const override final;
 
@@ -48,7 +48,7 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
 
     protected:
         static Being *createBeing2(Net::MessageIn &msg,
-                                   const int id,
+                                   const BeingId id,
                                    const int16_t job,
                                    const BeingType::BeingType beingType);
 

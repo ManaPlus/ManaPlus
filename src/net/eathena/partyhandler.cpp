@@ -134,7 +134,7 @@ void PartyHandler::invite(const std::string &name) const
     if (being)
     {
         createOutPacket(CMSG_PARTY_INVITE);
-        outMsg.writeInt32(being->getId(), "account id");
+        outMsg.writeBeingId(being->getId(), "account id");
     }
     else
     {
@@ -165,7 +165,7 @@ void PartyHandler::kick(const Being *const being) const
     if (being)
     {
         createOutPacket(CMSG_PARTY_KICK);
-        outMsg.writeInt32(being->getId(), "account id");
+        outMsg.writeBeingId(being->getId(), "account id");
         outMsg.writeString(being->getName(), 24, "player name");
     }
 }
@@ -183,7 +183,7 @@ void PartyHandler::kick(const std::string &name) const
     }
 
     createOutPacket(CMSG_PARTY_KICK);
-    outMsg.writeInt32(m->getID(), "account id");
+    outMsg.writeBeingId(m->getID(), "account id");
     outMsg.writeString(name, 24, "player name");
 }
 
@@ -228,7 +228,7 @@ void PartyHandler::processPartyInvitationStats(Net::MessageIn &msg)
 
 void PartyHandler::processPartyMemberInfo(Net::MessageIn &msg)
 {
-    const int id = msg.readInt32("account id");
+    const BeingId id = msg.readBeingId("account id");
     const bool leader = msg.readInt32("leader") == 0U;
     const int x = msg.readInt16("x");
     const int y = msg.readInt16("y");
@@ -320,7 +320,7 @@ void PartyHandler::processPartyInfo(Net::MessageIn &msg)
 
     for (int i = 0; i < count; i++)
     {
-        const int id = msg.readInt32("account id");
+        const BeingId id = msg.readBeingId("account id");
         std::string nick = msg.readString(24, "nick");
         std::string map = msg.readString(16, "map name");
         const bool leader = msg.readUInt8("leader") == 0U;
@@ -384,7 +384,7 @@ void PartyHandler::processPartyMessage(Net::MessageIn &msg)
     if (msgLength <= 0)
         return;
 
-    const int id = msg.readInt32("id");
+    const BeingId id = msg.readBeingId("id");
     std::string chatMsg = msg.readString(msgLength, "message");
 
     const size_t pos = chatMsg.find(" : ", 0);
@@ -455,7 +455,7 @@ void PartyHandler::changeLeader(const std::string &name) const
     if (!being)
         return;
     createOutPacket(CMSG_PARTY_CHANGE_LEADER);
-    outMsg.writeInt32(being->getId(), "account id");
+    outMsg.writeBeingId(being->getId(), "account id");
 }
 
 void PartyHandler::allowInvite(const bool allow) const
@@ -469,7 +469,7 @@ void PartyHandler::processPartyItemPickup(Net::MessageIn &msg)
     UNIMPLIMENTEDPACKET;
     // +++ probably need add option to show pickup notifications
     // in party tab
-    msg.readInt32("account id");
+    msg.readBeingId("account id");
     msg.readInt16("item id");
     msg.readUInt8("identify");
     msg.readUInt8("attribute");
@@ -483,9 +483,9 @@ void PartyHandler::processPartyItemPickup(Net::MessageIn &msg)
 void PartyHandler::processPartyLeader(Net::MessageIn &msg)
 {
     PartyMember *const oldMember = Ea::taParty->getMember(
-        msg.readInt32("old leder id"));
+        msg.readBeingId("old leder id"));
     PartyMember *const newMember = Ea::taParty->getMember(
-        msg.readInt32("new leder id"));
+        msg.readBeingId("new leder id"));
     if (oldMember)
         oldMember->setLeader(false);
     if (newMember)
@@ -494,11 +494,23 @@ void PartyHandler::processPartyLeader(Net::MessageIn &msg)
 
 void PartyHandler::processPartyInvited(Net::MessageIn &msg)
 {
-    const int id = msg.readInt32("account id");
+    const BeingId id = msg.readBeingId("account id");
     const std::string partyName = msg.readString(24, "party name");
 
+    std::string nick;
+
+    if (actorManager)
+    {
+        const Being *const being = actorManager->findBeing(id);
+        if (being)
+        {
+            if (being->getType() == ActorType::Player)
+                nick = being->getName();
+        }
+    }
+
     if (socialWindow)
-        socialWindow->showPartyInvite(partyName, "", id);
+        socialWindow->showPartyInvite(partyName, nick, 0);
 }
 
 }  // namespace EAthena

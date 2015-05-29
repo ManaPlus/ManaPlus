@@ -143,7 +143,7 @@ void PetHandler::catchPet(const Being *const being) const
         return;
 
     createOutPacket(CMSG_PET_CATCH);
-    outMsg.writeInt32(being->getId(), "monster id");
+    outMsg.writeBeingId(being->getId(), "monster id");
 }
 
 void PetHandler::sendPetMessage(const int data) const
@@ -160,7 +160,7 @@ void PetHandler::setName(const std::string &name) const
 
 void PetHandler::processPetMessage(Net::MessageIn &msg)
 {
-    const int id = msg.readInt32("pet id");
+    const BeingId id = msg.readBeingId("pet id");
     const int data = msg.readInt32("param");
     Being *const dstBeing = actorManager->findBeing(id);
     if (!dstBeing)
@@ -228,7 +228,7 @@ void PetHandler::processEggsList(Net::MessageIn &msg)
 void PetHandler::processPetData(Net::MessageIn &msg)
 {
     const int cmd = msg.readUInt8("type");
-    const int id = msg.readInt32("pet id");
+    const BeingId id = msg.readBeingId("pet id");
     Being *const dstBeing = actorManager->findBeing(id);
     const int data = msg.readInt32("data");
     if (!cmd)  // pre init

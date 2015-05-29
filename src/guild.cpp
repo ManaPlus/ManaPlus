@@ -60,8 +60,10 @@ namespace
     } guildSorter;
 }  // namespace
 
-GuildMember::GuildMember(Guild *const guild, const int accountId,
-                         const int charId, const std::string &name) :
+GuildMember::GuildMember(Guild *const guild,
+                         const BeingId accountId,
+                         const int charId,
+                         const std::string &name) :
     Avatar(name),
     mGuild(guild),
     mPos(0)
@@ -104,7 +106,8 @@ Guild::~Guild()
     clearMembers();
 }
 
-GuildMember *Guild::addMember(const int accountId, const int charId,
+GuildMember *Guild::addMember(const BeingId accountId,
+                              const int charId,
                               const std::string &name)
 {
     GuildMember *m = getMember(accountId, charId);
@@ -131,7 +134,7 @@ GuildMember *Guild::addMember(const std::string &name)
     return m;
 }
 
-GuildMember *Guild::getMember(const int id) const
+GuildMember *Guild::getMember(const BeingId id) const
 {
     MemberList::const_iterator itr = mMembers.begin();
     const MemberList::const_iterator itr_end = mMembers.end();
@@ -145,7 +148,8 @@ GuildMember *Guild::getMember(const int id) const
     return nullptr;
 }
 
-GuildMember *Guild::getMember(const int accountId, const int charId) const
+GuildMember *Guild::getMember(const BeingId accountId,
+                              const int charId) const
 {
     MemberList::const_iterator itr = mMembers.begin();
     const MemberList::const_iterator itr_end = mMembers.end();
@@ -194,7 +198,7 @@ void Guild::removeMember(const GuildMember *const member)
     }
 }
 
-void Guild::removeMember(const int id)
+void Guild::removeMember(const BeingId id)
 {
     bool deleted = true;
     while (deleted)
@@ -294,7 +298,7 @@ bool Guild::isMember(const GuildMember *const member) const
     return false;
 }
 
-bool Guild::isMember(const int id) const
+bool Guild::isMember(const BeingId id) const
 {
     MemberList::const_iterator itr = mMembers.begin();
     const MemberList::const_iterator itr_end = mMembers.end();

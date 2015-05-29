@@ -56,7 +56,7 @@ AnimatedSprite *ActorSprite::targetCursor[TargetCursorType::NUM_TCT]
     [TargetCursorSize::NUM_TC];
 bool ActorSprite::loaded = false;
 
-ActorSprite::ActorSprite(const int id) :
+ActorSprite::ActorSprite(const BeingId id) :
     CompoundSprite(),
     Actor(),
     mStatusEffects(),

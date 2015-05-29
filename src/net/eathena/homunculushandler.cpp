@@ -127,7 +127,7 @@ void HomunculusHandler::processHomunculusData(Net::MessageIn &msg)
 {
     msg.readUInt8("unused");
     const int cmd = msg.readUInt8("state");
-    const int id = msg.readInt32("homunculus id");
+    const BeingId id = msg.readBeingId("homunculus id");
     Being *const dstBeing = actorManager->findBeing(id);
     const int data = msg.readInt32("data");
     if (!cmd)  // pre init
@@ -243,33 +243,34 @@ void HomunculusHandler::setName(const std::string &name) const
 
 void HomunculusHandler::moveToMaster() const
 {
-    const int id = PlayerInfo::getHomunculusId();
-    if (!id)
+    const BeingId id = PlayerInfo::getHomunculusId();
+    if (id == BeingId_zero)
         return;
     createOutPacket(CMSG_HOMMERC_MOVE_TO_MASTER);
-    outMsg.writeInt32(id, "homunculus id");
+    outMsg.writeBeingId(id, "homunculus id");
 }
 
 void HomunculusHandler::move(const int x, const int y) const
 {
-    const int id = PlayerInfo::getHomunculusId();
-    if (!id)
+    const BeingId id = PlayerInfo::getHomunculusId();
+    if (id == BeingId_zero)
         return;
     createOutPacket(CMSG_HOMMERC_MOVE_TO);
-    outMsg.writeInt32(id, "homunculus id");
+    outMsg.writeBeingId(id, "homunculus id");
     outMsg.writeCoordinates(static_cast<uint16_t>(x),
         static_cast<uint16_t>(y),
         0U, "position");
 }
 
-void HomunculusHandler::attack(const int targetId, const Keep keep) const
+void HomunculusHandler::attack(const BeingId targetId,
+                               const Keep keep) const
 {
-    const int id = PlayerInfo::getHomunculusId();
-    if (!id)
+    const BeingId id = PlayerInfo::getHomunculusId();
+    if (id == BeingId_zero)
         return;
     createOutPacket(CMSG_HOMMERC_ATTACK);
-    outMsg.writeInt32(id, "homunculus id");
-    outMsg.writeInt32(targetId, "target id");
+    outMsg.writeBeingId(id, "homunculus id");
+    outMsg.writeBeingId(targetId, "target id");
     outMsg.writeInt8(static_cast<int8_t>(keep == Keep_true ? 1 : 0), "keep");
 }
 

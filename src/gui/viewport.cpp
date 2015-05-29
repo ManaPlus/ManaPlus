@@ -920,7 +920,7 @@ void Viewport::moveCamera(const int dx, const int dy)
     mCameraRelativeY += dy;
 }
 
-void Viewport::moveCameraToActor(const int actorId,
+void Viewport::moveCameraToActor(const BeingId actorId,
                                  const int x, const int y)
 {
     if (!localPlayer || !actorManager)

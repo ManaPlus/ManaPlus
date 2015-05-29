@@ -57,7 +57,7 @@ class CharServerHandler final : public MessageHandler,
         void deleteCharacter(Net::Character *const character,
                              const std::string &email) override final;
 
-        void renameCharacter(const int id,
+        void renameCharacter(const BeingId id,
                              const std::string &newName) override final;
 
         void switchCharacter() const override final;

@@ -81,7 +81,7 @@ NpcDialogs NpcDialog::mNpcDialogs;
 
 typedef std::vector<Image *>::iterator ImageVectorIter;
 
-NpcDialog::NpcDialog(const int npcId) :
+NpcDialog::NpcDialog(const BeingId npcId) :
     // TRANSLATORS: npc dialog name
     Window(_("NPC"), Modal_false, nullptr, "npc.xml"),
     ActionListener(),
@@ -204,7 +204,8 @@ void NpcDialog::postInit()
         const Being *const being = actorManager->findBeing(mNpcId);
         if (being)
         {
-            showAvatar(NPCDB::getAvatarFor(being->getSubType()));
+            showAvatar(NPCDB::getAvatarFor(fromInt(
+                being->getSubType(), BeingId)));
             setCaption(being->getName());
         }
     }
@@ -861,13 +862,16 @@ void NpcDialog::restoreCamera()
     mCameraMode = -1;
 }
 
-void NpcDialog::showAvatar(const uint16_t avatarId)
+void NpcDialog::showAvatar(const BeingId avatarId)
 {
-    const bool needShow = (avatarId != 0);
+    const bool needShow = (avatarId != BeingId_zero);
     if (needShow)
     {
         delete mAvatarBeing;
-        mAvatarBeing = new Being(0, ActorType::Avatar, avatarId, nullptr);
+        mAvatarBeing = new Being(BeingId_zero,
+            ActorType::Avatar,
+            toInt(avatarId, uint16_t),
+            nullptr);
         mPlayerBox->setPlayer(mAvatarBeing);
         if (!mAvatarBeing->empty())
         {
@@ -973,7 +977,8 @@ void NpcDialog::mousePressed(MouseEvent &event)
     }
 }
 
-void NpcDialog::copyToClipboard(const int npcId, const int x, const int y)
+void NpcDialog::copyToClipboard(const BeingId npcId,
+                                const int x, const int y)
 {
     NpcDialogs::iterator it = mNpcDialogs.find(npcId);
     if (it != mNpcDialogs.end())

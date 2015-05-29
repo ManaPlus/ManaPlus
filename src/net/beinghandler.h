@@ -26,6 +26,8 @@
 
 #include "enums/being/rank.h"
 
+#include "enums/simpletypes/beingid.h"
+
 #include "net/messagein.h"
 
 namespace Net
@@ -39,7 +41,7 @@ class BeingHandler notfinal
 
         virtual void handleMessage(Net::MessageIn &msg) = 0;
 
-        virtual void requestNameById(const int id) const = 0;
+        virtual void requestNameById(const BeingId id) const = 0;
 
         virtual void undress(Being *const being) const = 0;
 

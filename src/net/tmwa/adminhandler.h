@@ -45,7 +45,7 @@ class AdminHandler final : public MessageHandler, public Ea::AdminHandler
 
         void hide(const bool h) const override final;
 
-        void kick(const int playerId) const override final;
+        void kick(const BeingId playerId) const override final;
 
         void kickAll() const override final;
 

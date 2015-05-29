@@ -23,6 +23,7 @@
 #ifndef GUI_WINDOWS_BUYSELLDIALOG_H
 #define GUI_WINDOWS_BUYSELLDIALOG_H
 
+#include "enums/simpletypes/beingid.h"
 #include "enums/simpletypes/visible.h"
 
 #include "gui/widgets/window.h"
@@ -46,7 +47,7 @@ class BuySellDialog final : public Window,
          *
          * @see Window::Window
          */
-        explicit BuySellDialog(const int npcId);
+        explicit BuySellDialog(const BeingId npcId);
 
         explicit BuySellDialog(const std::string &nick);
 
@@ -78,7 +79,7 @@ class BuySellDialog final : public Window,
         typedef std::list<BuySellDialog*> DialogList;
         static DialogList dialogInstances;
 
-        int mNpcId;
+        BeingId mNpcId;
         std::string mNick;
         Button *mBuyButton;
 };

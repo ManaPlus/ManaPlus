@@ -39,7 +39,7 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
 
         void handleMessage(Net::MessageIn &msg) override final;
 
-        void requestNameById(const int id) const override final;
+        void requestNameById(const BeingId id) const override final;
 
         void undress(Being *const being) const override final;
 

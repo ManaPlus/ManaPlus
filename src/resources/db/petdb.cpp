@@ -79,8 +79,9 @@ void PETDB::loadXmlFile(const std::string &fileName)
             continue;
         }
 
-        const int id = XML::getProperty(petNode, "id", -1);
-        if (id == -1)
+        const BeingId id = fromInt(XML::getProperty(
+            petNode, "id", -1), BeingId);
+        if (id == BeingId_negOne)
         {
             logger->log("PET Database: PET with missing ID in %s!",
                 paths.getStringValue("petsFile").c_str());
@@ -185,13 +186,14 @@ void PETDB::unload()
     mLoaded = false;
 }
 
-BeingInfo *PETDB::get(const int id)
+BeingInfo *PETDB::get(const BeingId id)
 {
     const BeingInfoIterator i = mPETInfos.find(id);
 
     if (i == mPETInfos.end())
     {
-        logger->log("PETDB: Warning, unknown PET ID %d requested", id);
+        logger->log("PETDB: Warning, unknown PET ID %d requested",
+            toInt(id, int));
         return BeingInfo::unknown;
     }
     else

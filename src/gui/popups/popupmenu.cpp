@@ -98,8 +98,8 @@ PopupMenu::PopupMenu() :
     mBrowserBox(new BrowserBox(this, BrowserBox::AUTO_SIZE, true,
         "popupbrowserbox.xml")),
     mScrollArea(nullptr),
-    mBeingId(0),
-    mFloorItemId(0),
+    mBeingId(BeingId_zero),
+    mFloorItemId(BeingId_zero),
     mItem(nullptr),
     mItemId(0),
     mItemColor(1),
@@ -389,7 +389,7 @@ bool PopupMenu::addBeingMenu()
     if (!being)
         return false;
 
-    BeingInfo *const info = NPCDB::get(being->getSubType());
+    BeingInfo *const info = NPCDB::get(fromInt(being->getSubType(), BeingId));
     if (!info)
         return false;
 
@@ -456,7 +456,7 @@ void PopupMenu::showPlayerPopup(const std::string &nick)
 
     setMousePos();
     mNick = nick;
-    mBeingId = 0;
+    mBeingId = BeingId_zero;
     mType = ActorType::Player;
     mBrowserBox->clearRows();
 
@@ -931,8 +931,8 @@ void PopupMenu::showChangePos(const int x, const int y)
     }
     else
     {
-        mBeingId = 0;
-        mFloorItemId = 0;
+        mBeingId = BeingId_zero;
+        mFloorItemId = BeingId_zero;
         mItem = nullptr;
         mMapItem = nullptr;
         mNick.clear();
@@ -1109,7 +1109,7 @@ void PopupMenu::handleLink(const std::string &link,
         if (chatWindow)
             chatWindow->copyToClipboard(mX, mY);
     }
-    else if (link == "npc clipboard" && mBeingId)
+    else if (link == "npc clipboard" && mBeingId != BeingId_zero)
     {
         NpcDialog::copyToClipboard(mBeingId, mX, mY);
     }
@@ -1474,7 +1474,7 @@ void PopupMenu::handleLink(const std::string &link,
     {
         if (actorManager)
         {
-            mBeingId = atoi(link.substr(7).c_str());
+            mBeingId = fromInt(atoi(link.substr(7).c_str()), BeingId);
             being = actorManager->findBeing(mBeingId);
             if (being)
             {
@@ -1487,8 +1487,9 @@ void PopupMenu::handleLink(const std::string &link,
     {
         if (actorManager)
         {
-            const int id = atoi(link.substr(10).c_str());
-            if (id)
+            const BeingId id = fromInt(atoi(
+                link.substr(10).c_str()), BeingId);
+            if (id != BeingId_zero)
             {
                 const FloorItem *const item = actorManager->findItem(id);
                 if (item)
@@ -1548,8 +1549,8 @@ void PopupMenu::handleLink(const std::string &link,
         replaceAll(cmd, "'NAME'", mNick);
         replaceAll(cmd, "'X'", toString(mX));
         replaceAll(cmd, "'Y'", toString(mY));
-        replaceAll(cmd, "'BEINGID'", toString(mBeingId));
-        replaceAll(cmd, "'FLOORID'", toString(mFloorItemId));
+        replaceAll(cmd, "'BEINGID'", toString(toInt(mBeingId, int)));
+        replaceAll(cmd, "'FLOORID'", toString(toInt(mFloorItemId, int)));
         replaceAll(cmd, "'ITEMID'", toString(mItemId));
         replaceAll(cmd, "'ITEMCOLOR'", toString(mItemColor));
         replaceAll(cmd, "'BEINGTYPEID'", toString(static_cast<int>(mType)));
@@ -1583,8 +1584,8 @@ void PopupMenu::handleLink(const std::string &link,
 
     setVisible(Visible_false);
 
-    mBeingId = 0;
-    mFloorItemId = 0;
+    mBeingId = BeingId_zero;
+    mFloorItemId = BeingId_zero;
     mItem = nullptr;
     mItemId = 0;
     mItemColor = 1;
@@ -2188,7 +2189,8 @@ void PopupMenu::showWindowsPopup()
     showPopup(mX, mY);
 }
 
-void PopupMenu::showNpcDialogPopup(const int npcId, const int x, const int y)
+void PopupMenu::showNpcDialogPopup(const BeingId npcId,
+                                   const int x, const int y)
 {
     mBeingId = npcId;
     mX = x;
@@ -2625,7 +2627,7 @@ void PopupMenu::showGMPopup()
         // TRANSLATORS: popup menu item
         // TRANSLATORS: revive player
         mBrowserBox->addRow("revive", _("Revive"));
-        if (mBeingId)
+        if (mBeingId != BeingId_zero)
         {
             // TRANSLATORS: popup menu item
             // TRANSLATORS: kick player

@@ -89,7 +89,7 @@ class CharSelectDialog final : public Window,
 
         void postInit() override final;
 
-        void setName(const int id, const std::string &newName);
+        void setName(const BeingId id, const std::string &newName);
 
     private:
         void attemptCharacterDelete(const int index,

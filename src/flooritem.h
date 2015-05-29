@@ -23,6 +23,8 @@
 #ifndef FLOORITEM_H
 #define FLOORITEM_H
 
+#include "enums/simpletypes/beingid.h"
+
 #include "being/actorsprite.h"
 
 #include "resources/cursor.h"
@@ -45,8 +47,11 @@ class FloorItem final : public ActorSprite
          * @param amount the item amount
          * @param color  the item color
          */
-        FloorItem(const int id, const int itemId, const int x, const int y,
-                  const int amount, const unsigned char color);
+        FloorItem(const BeingId id,
+                  const int itemId,
+                  const int x, const int y,
+                  const int amount,
+                  const unsigned char color);
 
         A_DELETE_COPY(FloorItem)
 

@@ -348,10 +348,10 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
 
     const ItemInfo &itemInfo = ItemDB::get(itemId);
     const unsigned char err = msg.readUInt8("status");
-    int floorId;
+    BeingId floorId;
     if (mSentPickups.empty())
     {
-        floorId = 0;
+        floorId = BeingId_zero;
     }
     else
     {

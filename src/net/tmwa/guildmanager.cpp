@@ -201,7 +201,8 @@ void GuildManager::updateList()
                 const int status = atoi(name.substr(sz - 1).c_str());
 
                 name = name.substr(0, sz - 1);
-                GuildMember *const m = guild->addMember(i, 0, name);
+                GuildMember *const m = guild->addMember(
+                    fromInt(i, BeingId), 0, name);
                 if (m)
                 {
                     m->setOnline(status & 1);

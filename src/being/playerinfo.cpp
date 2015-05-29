@@ -62,7 +62,7 @@ PetInfo *mPet = nullptr;
 std::string mRoomName;
 #endif
 Equipment *mEquipment = nullptr;
-int mPetBeingId = 0;
+BeingId mPetBeingId = BeingId_zero;
 GuildPositionFlags::Type mGuildPositionFlags = GuildPositionFlags::None;
 
 Trading mTrading = Trading_false;
@@ -399,7 +399,7 @@ void deinit()
 #ifdef EATHENA_SUPPORT
     delete2(mMercenary);
 #endif
-    mPetBeingId = 0;
+    mPetBeingId = BeingId_zero;
 }
 
 void loadData()
@@ -412,7 +412,7 @@ void loadData()
 void clear()
 {
     mData.mSkills.clear();
-    mPetBeingId = 0;
+    mPetBeingId = BeingId_zero;
 }
 
 bool isTalking()
@@ -515,7 +515,7 @@ void setPetBeing(Being *const being)
     if (being)
         mPetBeingId = being->getId();
     else
-        mPetBeingId = 0;
+        mPetBeingId = BeingId_zero;
     if (!being || !mPet)
         return;
     being->setName(mPet->name);
@@ -528,7 +528,7 @@ PetInfo *getPet()
     return mPet;
 }
 
-int getPetBeingId()
+BeingId getPetBeingId()
 {
     return mPetBeingId;
 }
@@ -553,14 +553,14 @@ HomunculusInfo *getHomunculus()
     return mHomunculus;
 }
 
-int getHomunculusId()
+BeingId getHomunculusId()
 {
-    return mHomunculus ? mHomunculus->id : 0;
+    return mHomunculus ? mHomunculus->id : BeingId_zero;
 }
 
-int getMercenaryId()
+BeingId getMercenaryId()
 {
-    return mMercenary ? mMercenary->id : 0;
+    return mMercenary ? mMercenary->id : BeingId_zero;
 }
 
 void updateMoveAI()
@@ -571,7 +571,8 @@ void updateMoveAI()
         homunculusHandler->moveToMaster();
 }
 
-void updateAttackAi(const int targetId, const Keep keep)
+void updateAttackAi(const BeingId targetId,
+                    const Keep keep)
 {
     if (mMercenary)
         mercenaryHandler->attack(targetId, keep);

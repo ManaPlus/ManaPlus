@@ -95,7 +95,7 @@ void BattleGroundHandler::handleMessage(Net::MessageIn &msg)
 void BattleGroundHandler::processBattleEmblem(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
-    msg.readInt32("account id");
+    msg.readBeingId("account id");
     msg.readString(24, "name");
     msg.readInt16("camp");
 }
@@ -110,7 +110,7 @@ void BattleGroundHandler::processBattleUpdateScore(Net::MessageIn &msg)
 void BattleGroundHandler::processBattleUpdateCoords(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
-    msg.readInt32("account id");
+    msg.readBeingId("account id");
     msg.readString(24, "name");
     msg.readInt16("class");
     msg.readInt16("x");

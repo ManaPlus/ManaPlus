@@ -480,7 +480,8 @@ impHandler(heal)
             const Being *being = nullptr;
             if (args[0] == ':')
             {
-                being = actorManager->findBeing(atoi(args.substr(1).c_str()));
+                being = actorManager->findBeing(fromInt(atoi(
+                    args.substr(1).c_str()), BeingId));
                 if (being && being->getType() == ActorType::Monster)
                     being = nullptr;
             }
@@ -588,7 +589,8 @@ impHandler(pickup)
     }
     else
     {
-        FloorItem *const item = actorManager->findItem(atoi(args.c_str()));
+        FloorItem *const item = actorManager->findItem(fromInt(
+            atoi(args.c_str()), BeingId));
         if (item)
             localPlayer->pickUp(item);
     }
@@ -758,7 +760,8 @@ impHandler(attack)
         }
         else
         {
-            target = actorManager->findBeing(atoi(args.substr(1).c_str()));
+            target = actorManager->findBeing(fromInt(atoi(
+                args.substr(1).c_str()), BeingId));
             if (target && target->getType() != ActorType::Monster)
                 target = nullptr;
         }
@@ -789,7 +792,8 @@ impHandler(targetAttack)
             }
             else
             {
-                target = actorManager->findBeing(atoi(args.substr(1).c_str()));
+                target = actorManager->findBeing(fromInt(atoi(
+                    args.substr(1).c_str()), BeingId));
                 if (target && target->getType() != ActorType::Monster)
                     target = nullptr;
             }
@@ -1599,9 +1603,14 @@ impHandler(kick)
     if (!args.empty())
     {
         if (args[0] != ':')
+        {
             target = actorManager->findNearestByName(args);
+        }
         else
-            target = actorManager->findBeing(atoi(args.substr(1).c_str()));
+        {
+            target = actorManager->findBeing(fromInt(atoi(
+                args.substr(1).c_str()), BeingId));
+        }
     }
     if (!target)
         target = localPlayer->getTarget();

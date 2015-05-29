@@ -25,6 +25,8 @@
 
 #include "enums/being/gender.h"
 
+#include "enums/simpletypes/beingid.h"
+
 #include <string>
 
 #include "localconsts.h"
@@ -144,10 +146,10 @@ class Avatar notfinal
         void setExp(const int n)
         { mExp = n; }
 
-        int getID() const A_WARN_UNUSED
+        BeingId getID() const A_WARN_UNUSED
         { return mId; }
 
-        void setID(const int id)
+        void setID(const BeingId id)
         { mId = id; }
 
         int getCharId() const A_WARN_UNUSED
@@ -181,7 +183,7 @@ class Avatar notfinal
         { mPoison = b; }
 
     protected:
-        int mId;
+        BeingId mId;
         int mCharId;
         std::string mName;
         std::string mOriginalName;

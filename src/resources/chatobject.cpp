@@ -26,7 +26,7 @@ std::map<std::string, ChatObject*> ChatObject::chatNameMap;
 std::map<int, ChatObject*> ChatObject::chatIdMap;
 
 ChatObject::ChatObject() :
-    ownerId(0),
+    ownerId(BeingId_zero),
     chatId(0),
     maxUsers(0),
     currentUsers(0),

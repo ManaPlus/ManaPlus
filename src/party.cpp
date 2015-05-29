@@ -57,7 +57,8 @@ namespace
     } partySorter;
 }  // namespace
 
-PartyMember::PartyMember(Party *const party, const int id,
+PartyMember::PartyMember(Party *const party,
+                         const BeingId id,
                          const std::string &name) :
     Avatar(name),
     mParty(party),
@@ -82,7 +83,8 @@ Party::~Party()
     clearMembers();
 }
 
-PartyMember *Party::addMember(const int id, const std::string &name)
+PartyMember *Party::addMember(const BeingId id,
+                              const std::string &name)
 {
     PartyMember *m = getMember(id);
     if (m)
@@ -95,7 +97,7 @@ PartyMember *Party::addMember(const int id, const std::string &name)
     return m;
 }
 
-PartyMember *Party::getMember(const int id) const
+PartyMember *Party::getMember(const BeingId id) const
 {
     MemberList::const_iterator itr = mMembers.begin();
     const MemberList::const_iterator itr_end = mMembers.end();
@@ -151,7 +153,7 @@ void Party::removeMember(const PartyMember *const member)
     }
 }
 
-void Party::removeMember(const int id)
+void Party::removeMember(const BeingId id)
 {
     bool deleted = true;
     while (deleted)
@@ -247,7 +249,7 @@ bool Party::isMember(const PartyMember *const member) const
     return false;
 }
 
-bool Party::isMember(const int id) const
+bool Party::isMember(const BeingId id) const
 {
     MemberList::const_iterator itr = mMembers.begin();
     const MemberList::const_iterator itr_end = mMembers.end();

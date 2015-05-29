@@ -663,7 +663,7 @@ void ChatHandler::processChatDisplay(Net::MessageIn &msg)
 {
     const int len = msg.readInt16("len") - 17;
     ChatObject *const obj = new ChatObject;
-    obj->ownerId = msg.readInt32("owner account id");
+    obj->ownerId = msg.readBeingId("owner account id");
     obj->chatId = msg.readInt32("chat id");
     obj->maxUsers = msg.readInt16("max users");
     obj->currentUsers = msg.readInt16("current users");
@@ -839,7 +839,7 @@ void ChatHandler::processBeingChat(Net::MessageIn &msg)
 
     BLOCK_START("ChatHandler::processBeingChat")
     int chatMsgLength = msg.readInt16("len") - 8;
-    Being *const being = actorManager->findBeing(msg.readInt32("being id"));
+    Being *const being = actorManager->findBeing(msg.readBeingId("being id"));
 
     if (chatMsgLength <= 0)
     {
@@ -992,7 +992,7 @@ void ChatHandler::processChatRoomAddMember(Net::MessageIn &msg)
 void ChatHandler::processChatRoomSettings(Net::MessageIn &msg)
 {
     const int sz = msg.readInt16("len") - 17;
-    const int ownerId = msg.readInt32("owner id");
+    const BeingId ownerId = msg.readBeingId("owner id");
     const int chatId = msg.readInt32("chat id");
     const uint16_t limit = msg.readInt16("limit");
     msg.readInt16("users");
@@ -1086,7 +1086,7 @@ void ChatHandler::processChatSilence(Net::MessageIn &msg)
 void ChatHandler::processChatTalkieBox(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
-    msg.readInt32("being id");
+    msg.readBeingId("being id");
     msg.readString(80, "message");
 }
 
@@ -1094,7 +1094,7 @@ void ChatHandler::processBattleChatMessage(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
     const int sz = msg.readInt16("len") - 24 - 8;
-    msg.readInt32("account id");
+    msg.readBeingId("account id");
     msg.readString(24, "nick");
     msg.readString(sz, "message");
 }
@@ -1103,7 +1103,7 @@ void ChatHandler::processScriptMessage(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
     const int sz = msg.readInt16("len") - 8;
-    msg.readInt32("being id");
+    msg.readBeingId("being id");
     msg.readString(sz, "message");
 }
 

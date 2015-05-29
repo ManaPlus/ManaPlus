@@ -25,6 +25,8 @@
 
 #ifdef EATHENA_SUPPORT
 
+#include "enums/simpletypes/beingid.h"
+
 #include "gui/widgets/selldialog.h"
 
 class Being;
@@ -42,7 +44,7 @@ class BuyingStoreSellDialog final : public SellDialog
          *
          * @see Window::Window
          */
-        BuyingStoreSellDialog(const int accountId,
+        BuyingStoreSellDialog(const BeingId accountId,
                               const int storeId);
 
         A_DELETE_COPY(BuyingStoreSellDialog)
@@ -50,7 +52,7 @@ class BuyingStoreSellDialog final : public SellDialog
     protected:
         void sellAction(const ActionEvent &event) override final;
 
-        int mAccountId;
+        BeingId mAccountId;
         int mStoreId;
 };
 

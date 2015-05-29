@@ -27,6 +27,7 @@
 
 #include "enums/being/beingaction.h"
 
+#include "enums/simpletypes/beingid.h"
 #include "enums/simpletypes/keep.h"
 #include "enums/simpletypes/notify.h"
 
@@ -41,7 +42,8 @@ class PlayerHandler notfinal
         virtual ~PlayerHandler()
         { }
 
-        virtual void attack(const int id, const Keep keep) const = 0;
+        virtual void attack(const BeingId id,
+                            const Keep keep) const = 0;
 
         virtual void stopAttack() const = 0;
 

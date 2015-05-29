@@ -21,6 +21,8 @@
 #ifndef BEING_BEINGCACHEENTRY_H
 #define BEING_BEINGCACHEENTRY_H
 
+#include "enums/simpletypes/beingid.h"
+
 #include "localconsts.h"
 
 #include <string>
@@ -28,7 +30,7 @@
 class BeingCacheEntry final
 {
     public:
-        explicit BeingCacheEntry(const int id) :
+        explicit BeingCacheEntry(const BeingId id) :
             mName(),
             mPartyName(),
             mGuildName(),
@@ -44,7 +46,7 @@ class BeingCacheEntry final
 
         A_DELETE_COPY(BeingCacheEntry)
 
-        int getId() const
+        BeingId getId() const
         { return mId; }
 
         /**
@@ -113,11 +115,11 @@ class BeingCacheEntry final
         { mFlags = flags; }
 
     protected:
-        std::string mName;              /**< Name of character */
+        std::string mName;        /**< Name of character */
         std::string mPartyName;
         std::string mGuildName;
         std::string mIp;
-        int mId;                        /**< Unique sprite id */
+        BeingId mId;              /**< Unique sprite id */
         int mLevel;
         unsigned int mPvpRank;
         int mTime;

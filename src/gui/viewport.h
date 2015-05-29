@@ -25,6 +25,8 @@
 
 #include "position.h"
 
+#include "enums/simpletypes/beingid.h"
+
 #include "gui/widgets/windowcontainer.h"
 
 #include "listeners/mouselistener.h"
@@ -155,7 +157,7 @@ class Viewport final : public WindowContainer,
         void setCameraRelativeY(const int n)
         { mCameraRelativeY = n; }
 
-        void moveCameraToActor(const int actorId,
+        void moveCameraToActor(const BeingId actorId,
                                const int x = 0,
                                const int y = 0);
 

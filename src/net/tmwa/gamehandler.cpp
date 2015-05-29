@@ -113,14 +113,14 @@ void GameHandler::connect()
         }
         else
         {
-            mCharID = 0;
+            mCharID = BeingId_zero;
         }
     }
 
     // Send login infos
     createOutPacket(CMSG_MAP_SERVER_CONNECT);
-    outMsg.writeInt32(token.account_ID, "account id");
-    outMsg.writeInt32(mCharID, "char id");
+    outMsg.writeBeingId(token.account_ID, "account id");
+    outMsg.writeBeingId(mCharID, "char id");
     outMsg.writeInt32(token.session_ID1, "session id1");
     outMsg.writeInt32(token.session_ID2, "session id2");
     outMsg.writeInt8(Being::genderToInt(token.sex), "gender");

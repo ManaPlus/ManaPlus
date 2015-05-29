@@ -54,7 +54,7 @@ class CharServerHandler final : public MessageHandler,
                           const uint16_t look,
                           const std::vector<int> &stats) const override final;
 
-        void renameCharacter(const int id,
+        void renameCharacter(const BeingId id,
                              const std::string &newName) override final;
 
         void deleteCharacter(Net::Character *const character,
@@ -123,8 +123,8 @@ class CharServerHandler final : public MessageHandler,
     private:
         static std::string mNewName;
         static uint32_t mPinSeed;
-        static uint32_t mPinAccountId;
-        static uint32_t mRenameId;
+        static BeingId mPinAccountId;
+        static BeingId mRenameId;
         static bool mNeedCreatePin;
 };
 

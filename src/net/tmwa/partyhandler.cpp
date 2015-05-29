@@ -128,7 +128,7 @@ void PartyHandler::invite(const std::string &name) const
     if (being)
     {
         createOutPacket(CMSG_PARTY_INVITE);
-        outMsg.writeInt32(being->getId(), "account id");
+        outMsg.writeBeingId(being->getId(), "account id");
     }
 }
 
@@ -139,7 +139,7 @@ void PartyHandler::inviteResponse(const std::string &inviter A_UNUSED,
     if (localPlayer)
     {
         createOutPacket(CMSG_PARTY_INVITED);
-        outMsg.writeInt32(localPlayer->getId(), "account id");
+        outMsg.writeBeingId(localPlayer->getId(), "account id");
         outMsg.writeInt32(accept ? 1 : 0, "accept");
     }
 }
@@ -154,7 +154,7 @@ void PartyHandler::kick(const Being *const being) const
     if (being)
     {
         createOutPacket(CMSG_PARTY_KICK);
-        outMsg.writeInt32(being->getId(), "account id");
+        outMsg.writeBeingId(being->getId(), "account id");
         outMsg.writeString("", 24, "unused");
     }
 }
@@ -172,7 +172,7 @@ void PartyHandler::kick(const std::string &name) const
     }
 
     createOutPacket(CMSG_PARTY_KICK);
-    outMsg.writeInt32(m->getID(), "member id");
+    outMsg.writeBeingId(m->getID(), "member id");
     outMsg.writeString(name, 24, "unused");
 }
 
@@ -265,7 +265,7 @@ void PartyHandler::processPartyInfo(Net::MessageIn &msg)
 
     for (int i = 0; i < count; i++)
     {
-        const int id = msg.readInt32("id");
+        const BeingId id = msg.readBeingId("id");
         std::string nick = msg.readString(24, "nick");
         std::string map = msg.readString(16, "map");
         const bool leader = msg.readUInt8("leader") == 0U;
@@ -329,7 +329,7 @@ void PartyHandler::processPartyMessage(Net::MessageIn &msg)
     if (msgLength <= 0)
         return;
 
-    const int id = msg.readInt32("id");
+    const BeingId id = msg.readBeingId("id");
     const std::string chatMsg = msg.readString(msgLength, "message");
 
     if (Ea::taParty && partyTab)
@@ -386,7 +386,7 @@ void PartyHandler::allowInvite(const bool allow A_UNUSED) const
 
 void PartyHandler::processPartyInvited(Net::MessageIn &msg)
 {
-    const int id = msg.readInt32("account id");
+    const BeingId id = msg.readBeingId("account id");
     const std::string partyName = msg.readString(24, "party name");
     std::string nick;
 
@@ -406,7 +406,7 @@ void PartyHandler::processPartyInvited(Net::MessageIn &msg)
 
 void PartyHandler::processPartyMove(Net::MessageIn &msg)
 {
-    const int id = msg.readInt32("id");
+    const BeingId id = msg.readBeingId("id");
     PartyMember *m = nullptr;
     if (Ea::taParty)
         m = Ea::taParty->getMember(id);
@@ -437,7 +437,7 @@ void PartyHandler::processPartyMove(Net::MessageIn &msg)
 
 void PartyHandler::processPartyUpdateHp(Net::MessageIn &msg)
 {
-    const int id = msg.readInt32("id");
+    const BeingId id = msg.readBeingId("id");
     const int hp = msg.readInt16("hp");
     const int maxhp = msg.readInt16("max hp");
     PartyMember *m = nullptr;

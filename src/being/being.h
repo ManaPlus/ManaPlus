@@ -105,7 +105,7 @@ class Being notfinal : public ActorSprite,
          * @param subtype partly determines the type of the being
          * @param map     the map the being is on
          */
-        Being(const int id,
+        Being(const BeingId id,
               const ActorType::Type type,
               const uint16_t subtype,
               Map *const map);
@@ -571,7 +571,7 @@ class Being notfinal : public ActorSprite,
 
         static void reReadConfig();
 
-        static BeingCacheEntry* getCacheEntry(const int id) A_WARN_UNUSED;
+        static BeingCacheEntry* getCacheEntry(const BeingId id) A_WARN_UNUSED;
 
         void addToCache() const;
 
@@ -812,9 +812,9 @@ class Being notfinal : public ActorSprite,
 
         void addEffect(const std::string &name);
 
-        void addPet(const int id);
+        void addPet(const BeingId id);
 
-        void removePet(const int id);
+        void removePet(const BeingId id);
 
         void updatePets();
 
@@ -836,10 +836,12 @@ class Being notfinal : public ActorSprite,
 
         void removeAllPets();
 
-        Being *findChildPet(const int id);
+        Being *findChildPet(const BeingId id);
 
-        void playSfx(const SoundInfo &sound, Being *const being,
-                     const bool main, const int x, const int y) const;
+        void playSfx(const SoundInfo &sound,
+                     Being *const being,
+                     const bool main,
+                     const int x, const int y) const;
 
         uint16_t getLook() const
         { return mLook; }

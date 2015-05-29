@@ -615,7 +615,7 @@ void ChatHandler::processBeingChat(Net::MessageIn &msg)
     BLOCK_START("ChatHandler::processBeingChat")
     const bool channels = msg.getId() == SMSG_BEING_CHAT2;
     int chatMsgLength = msg.readInt16("len") - 8;
-    Being *const being = actorManager->findBeing(msg.readInt32("being id"));
+    Being *const being = actorManager->findBeing(msg.readBeingId("being id"));
     if (!being)
     {
         BLOCK_END("ChatHandler::processBeingChat")

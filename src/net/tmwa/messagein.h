@@ -54,6 +54,8 @@ class MessageIn final : public Net::MessageIn
 
         int64_t readInt64(const char *const str) override final;
 
+        BeingId readBeingId(const char *const str) override final;
+
         uint16_t readId();
 };
 

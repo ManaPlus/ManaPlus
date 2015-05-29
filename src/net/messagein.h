@@ -23,6 +23,8 @@
 #ifndef NET_MESSAGEIN_H
 #define NET_MESSAGEIN_H
 
+#include "enums/simpletypes/beingid.h"
+
 #include <string>
 
 #include "localconsts.h"
@@ -73,6 +75,8 @@ class MessageIn notfinal
         virtual int32_t readInt32(const char *const str) = 0;
 
         virtual int64_t readInt64(const char *const str) = 0;
+
+        virtual BeingId readBeingId(const char *const str) = 0;
 
         /**
          * Reads a special 3 byte block used by eAthena, containing x and y

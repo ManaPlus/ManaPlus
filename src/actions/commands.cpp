@@ -254,7 +254,7 @@ impHandler(chatNuke)
     if (!being)
         return true;
 
-    actorManager->addBlock(static_cast<uint32_t>(being->getId()));
+    actorManager->addBlock(being->getId());
     actorManager->destroy(being);
     return true;
 }
@@ -268,7 +268,7 @@ impHandler(chatAdd)
         return true;
 
     const int id = atoi(event.args.c_str());
-    if (!id)
+    if (id == 0)
         return true;
 
     Inventory *const inv = PlayerInfo::getInventory();
@@ -286,7 +286,8 @@ impHandler(chatAdd)
         return true;
     }
 
-    const FloorItem *const floorItem = actorManager->findItem(id);
+    const FloorItem *const floorItem = actorManager->findItem(
+        fromInt(id, BeingId));
 
     if (floorItem)
     {

@@ -43,16 +43,17 @@
 
 namespace Ea
 {
-int BeingHandler::mSpawnId = 0;
+BeingId BeingHandler::mSpawnId = BeingId_zero;
 bool BeingHandler::mSync = false;
 
 BeingHandler::BeingHandler(const bool enableSync)
 {
     mSync = enableSync;
-    mSpawnId = 0;
+    mSpawnId = BeingId_zero;
 }
 
-Being *BeingHandler::createBeing(const int id, const int16_t job)
+Being *BeingHandler::createBeing(const BeingId id,
+                                 const int16_t job)
 {
     if (!actorManager)
         return nullptr;
@@ -93,7 +94,7 @@ void BeingHandler::processBeingRemove(Net::MessageIn &msg)
 
     // A being should be removed or has died
 
-    const int id = msg.readInt32("being id");
+    const BeingId id = msg.readBeingId("being id");
     Being *const dstBeing = actorManager->findBeing(id);
     if (!dstBeing)
     {
@@ -140,9 +141,9 @@ void BeingHandler::processSkillDamage(Net::MessageIn &msg)
 
     const int id = msg.readInt16("skill id");
     Being *const srcBeing = actorManager->findBeing(
-        msg.readInt32("src being id"));
+        msg.readBeingId("src being id"));
     Being *const dstBeing = actorManager->findBeing(
-        msg.readInt32("dst being id"));
+        msg.readBeingId("dst being id"));
     msg.readInt32("tick");
     msg.readInt32("src speed");
     msg.readInt32("dst speed");
@@ -167,9 +168,9 @@ void BeingHandler::processBeingAction(Net::MessageIn &msg)
     }
 
     Being *const srcBeing = actorManager->findBeing(
-        msg.readInt32("src being id"));
+        msg.readBeingId("src being id"));
     Being *const dstBeing = actorManager->findBeing(
-        msg.readInt32("dst being id"));
+        msg.readBeingId("dst being id"));
 
     msg.readInt32("tick");
     const int srcSpeed = msg.readInt32("src speed");
@@ -253,7 +254,8 @@ void BeingHandler::processBeingEmotion(Net::MessageIn &msg)
         return;
     }
 
-    Being *const dstBeing = actorManager->findBeing(msg.readInt32("being id"));
+    Being *const dstBeing = actorManager->findBeing(
+        msg.readBeingId("being id"));
     if (!dstBeing)
     {
         BLOCK_END("BeingHandler::processBeingEmotion")
@@ -283,7 +285,7 @@ void BeingHandler::processNameResponse(Net::MessageIn &msg)
         return;
     }
 
-    const int beingId = msg.readInt32("being id");
+    const BeingId beingId = msg.readBeingId("being id");
     Being *const dstBeing = actorManager->findBeing(beingId);
 
     if (dstBeing)
@@ -344,7 +346,7 @@ void BeingHandler::processPlayerStop(Net::MessageIn &msg)
         return;
     }
 
-    const int id = msg.readInt32("account id");
+    const BeingId id = msg.readBeingId("account id");
 
     if (mSync || id != localPlayer->getId())
     {
@@ -409,7 +411,7 @@ void BeingHandler::processPvpMapMode(Net::MessageIn &msg)
 void BeingHandler::processPvpSet(Net::MessageIn &msg)
 {
     BLOCK_START("BeingHandler::processPvpSet")
-    const int id = msg.readInt32("being id");
+    const BeingId id = msg.readBeingId("being id");
     const int rank = msg.readInt32("rank");
     msg.readInt32("num");
     if (actorManager)
@@ -431,7 +433,7 @@ void BeingHandler::processNameResponse2(Net::MessageIn &msg)
     }
 
     const int len = msg.readInt16("len");
-    const int beingId = msg.readInt32("account ic");
+    const BeingId beingId = msg.readBeingId("account ic");
     const std::string str = msg.readString(len - 8, "name");
     Being *const dstBeing = actorManager->findBeing(beingId);
     if (dstBeing)
@@ -481,7 +483,7 @@ void BeingHandler::processBeingMove3(Net::MessageIn &msg)
 
     const int len = msg.readInt16("len") - 14;
     Being *const dstBeing = actorManager->findBeing(
-        msg.readInt32("being id"));
+        msg.readBeingId("being id"));
     if (!dstBeing)
     {
         BLOCK_END("BeingHandler::processBeingMove3")

@@ -21,6 +21,8 @@
 #ifndef BEING_PETINFO_H
 #define BEING_PETINFO_H
 
+#include "enums/simpletypes/beingid.h"
+
 #include <string>
 
 #include "localconsts.h"
@@ -29,7 +31,7 @@ struct PetInfo final
 {
     PetInfo() :
         name(),
-        id(0),
+        id(BeingId_zero),
         level(0),
         hungry(0),
         intimacy(0),
@@ -42,7 +44,7 @@ struct PetInfo final
     A_DELETE_COPY(PetInfo)
 
     std::string name;
-    int id;
+    BeingId id;
     int level;
     int hungry;
     int intimacy;

@@ -81,9 +81,10 @@ void NPCDB::loadXmlFile(const std::string &fileName)
         if (!xmlNameEqual(npcNode, "npc"))
             continue;
 
-        const int id = XML::getProperty(npcNode, "id", 0);
+        const BeingId id = fromInt(XML::getProperty(
+            npcNode, "id", 0), BeingId);
         BeingInfo *currentInfo = nullptr;
-        if (id == 0)
+        if (id == BeingId_zero)
         {
             logger->log("NPC Database: NPC with missing ID in %s!",
                 paths.getStringValue("npcsFile").c_str());
@@ -91,7 +92,7 @@ void NPCDB::loadXmlFile(const std::string &fileName)
         }
         else if (mNPCInfos.find(id) != mNPCInfos.end())
         {
-            logger->log("NpcDB: Redefinition of npc ID %d", id);
+            logger->log("NpcDB: Redefinition of npc ID %d", toInt(id, int));
             currentInfo = mNPCInfos[id];
         }
         if (!currentInfo)
@@ -105,8 +106,8 @@ void NPCDB::loadXmlFile(const std::string &fileName)
         currentInfo->setDeadSortOffsetY(XML::getProperty(npcNode,
             "deadSortOffsetY", 31));
 
-        currentInfo->setAvatarId(static_cast<uint16_t>(XML::getProperty(
-            npcNode, "avatar", 0)));
+        currentInfo->setAvatarId(fromInt(XML::getProperty(
+            npcNode, "avatar", 0), BeingId));
 
         SpriteDisplay display;
         for_each_xml_child_node(spriteNode, npcNode)
@@ -159,13 +160,14 @@ void NPCDB::unload()
     mLoaded = false;
 }
 
-BeingInfo *NPCDB::get(const int id)
+BeingInfo *NPCDB::get(const BeingId id)
 {
     const BeingInfoIterator i = mNPCInfos.find(id);
 
     if (i == mNPCInfos.end())
     {
-        logger->log("NPCDB: Warning, unknown NPC ID %d requested", id);
+        logger->log("NPCDB: Warning, unknown NPC ID %d requested",
+            toInt(id, int));
         return BeingInfo::unknown;
     }
     else
@@ -174,10 +176,10 @@ BeingInfo *NPCDB::get(const int id)
     }
 }
 
-uint16_t NPCDB::getAvatarFor(const int id)
+BeingId NPCDB::getAvatarFor(const BeingId id)
 {
     const BeingInfo *const info = get(id);
     if (!info)
-        return 0;
+        return BeingId_zero;
     return info->getAvatarId();
 }

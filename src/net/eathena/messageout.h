@@ -56,6 +56,9 @@ class MessageOut final : public Net::MessageOut
         void writeInt32(const int32_t value,
                         const char *const str) override final;
 
+        void writeBeingId(const BeingId value,
+                          const char *const str) override final;
+
         /**
          * Encodes coordinates and direction in 3 bytes.
          */

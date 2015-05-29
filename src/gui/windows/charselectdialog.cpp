@@ -634,7 +634,7 @@ void CharSelectDialog::updateState()
     }
 }
 
-void CharSelectDialog::setName(const int id, const std::string &newName)
+void CharSelectDialog::setName(const BeingId id, const std::string &newName)
 {
     for (unsigned int i = 0, sz = static_cast<unsigned int>(
          mCharacterEntries.size()); i < sz; ++i)

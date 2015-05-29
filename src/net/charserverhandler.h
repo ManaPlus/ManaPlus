@@ -65,7 +65,7 @@ class CharServerHandler notfinal
         virtual void deleteCharacter(Net::Character *const character,
                                      const std::string &email) = 0;
 
-        virtual void renameCharacter(const int id,
+        virtual void renameCharacter(const BeingId id,
                                      const std::string &newName) = 0;
 
         virtual void switchCharacter() const = 0;

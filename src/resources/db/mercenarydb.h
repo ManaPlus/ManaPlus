@@ -23,6 +23,8 @@
 #ifndef RESOURCES_DB_MERCENARYDB_H
 #define RESOURCES_DB_MERCENARYDB_H
 
+#include "enums/simpletypes/beingid.h"
+
 #include "localconsts.h"
 
 #include <string>
@@ -40,7 +42,7 @@ namespace MercenaryDB
 
     void loadXmlFile(const std::string &fileName);
 
-    BeingInfo *get(const int id) A_WARN_UNUSED;
+    BeingInfo *get(const BeingId id) A_WARN_UNUSED;
 }  // namespace MercenaryDB
 
 #endif  // RESOURCES_DB_MERCENARYDB_H

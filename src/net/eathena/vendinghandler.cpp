@@ -116,7 +116,7 @@ void VendingHandler::processOpenReq(Net::MessageIn &msg)
 
 void VendingHandler::processShowBoard(Net::MessageIn &msg)
 {
-    const int id = msg.readInt32("owner id");
+    const BeingId id = msg.readBeingId("owner id");
     const std::string shopName = msg.readString(80, "shop name");
     Being *const dstBeing = actorManager->findBeing(id);
     if (dstBeing)
@@ -125,7 +125,7 @@ void VendingHandler::processShowBoard(Net::MessageIn &msg)
 
 void VendingHandler::processHideBoard(Net::MessageIn &msg)
 {
-    const int id = msg.readInt32("owner id");
+    const BeingId id = msg.readBeingId("owner id");
     Being *const dstBeing = actorManager->findBeing(id);
     if (dstBeing)
         dstBeing->setSellBoard(std::string());
@@ -139,7 +139,7 @@ void VendingHandler::processHideBoard(Net::MessageIn &msg)
 void VendingHandler::processItemsList(Net::MessageIn &msg)
 {
     const int count = (msg.readInt16("len") - 12) / 22;
-    const int id = msg.readInt32("id");
+    const BeingId id = msg.readBeingId("id");
     Being *const being = actorManager->findBeing(id);
     if (!being)
         return;
@@ -223,7 +223,7 @@ void VendingHandler::open(const Being *const being) const
         return;
 
     createOutPacket(CMSG_VENDING_LIST_REQ);
-    outMsg.writeInt32(being->getId(), "account id");
+    outMsg.writeBeingId(being->getId(), "account id");
 }
 
 void VendingHandler::buy(const Being *const being,
@@ -235,7 +235,7 @@ void VendingHandler::buy(const Being *const being,
 
     createOutPacket(CMSG_VENDING_BUY);
     outMsg.writeInt16(12, "len");
-    outMsg.writeInt32(being->getId(), "account id");
+    outMsg.writeBeingId(being->getId(), "account id");
     outMsg.writeInt16(static_cast<int16_t>(amount), "amount");
     outMsg.writeInt16(static_cast<int16_t>(index), "index");
 }
@@ -250,7 +250,7 @@ void VendingHandler::buy2(const Being *const being,
 
     createOutPacket(CMSG_VENDING_BUY2);
     outMsg.writeInt16(16, "len");
-    outMsg.writeInt32(being->getId(), "account id");
+    outMsg.writeBeingId(being->getId(), "account id");
     outMsg.writeInt32(vendId, "vend id");
     outMsg.writeInt16(static_cast<int16_t>(amount), "amount");
     outMsg.writeInt16(static_cast<int16_t>(index), "index");

@@ -64,8 +64,8 @@ extern ServerInfo mapServer;
 
 std::string CharServerHandler::mNewName;
 uint32_t CharServerHandler::mPinSeed = 0;
-uint32_t CharServerHandler::mPinAccountId = 0;
-uint32_t CharServerHandler::mRenameId = 0;
+BeingId CharServerHandler::mPinAccountId = BeingId_zero;
+BeingId CharServerHandler::mRenameId = BeingId_zero;
 bool CharServerHandler::mNeedCreatePin = false;
 
 CharServerHandler::CharServerHandler() :
@@ -74,8 +74,8 @@ CharServerHandler::CharServerHandler() :
 {
     mNewName.clear();
     mPinSeed = 0;
-    mPinAccountId = 0;
-    mRenameId = 0;
+    mPinAccountId = BeingId_zero;
+    mRenameId = BeingId_zero;
     mNeedCreatePin = false;
 
     static const uint16_t _messages[] =
@@ -201,7 +201,7 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
         static_cast<LoginHandler*>(loginHandler)->getToken();
 
     LocalPlayer *const tempPlayer = new LocalPlayer(
-        msg.readInt32("player id"), 0);
+        msg.readBeingId("player id"), 0);
     tempPlayer->setGender(token.sex);
 
     PlayerInfoBackend &data = character->data;
@@ -337,7 +337,7 @@ void CharServerHandler::deleteCharacter(Net::Character *const character,
     mSelectedCharacter = character;
 
     createOutPacket(CMSG_CHAR_DELETE);
-    outMsg.writeInt32(mSelectedCharacter->dummy->getId(), "id?");
+    outMsg.writeBeingId(mSelectedCharacter->dummy->getId(), "id?");
     if (email.empty())
         outMsg.writeString("a@a.com", 40, "email");
     else
@@ -362,7 +362,7 @@ void CharServerHandler::connect()
     mNetwork->disconnect();
     mNetwork->connect(charServer);
     createOutPacket(CMSG_CHAR_SERVER_CONNECT);
-    outMsg.writeInt32(token.account_ID, "account id");
+    outMsg.writeBeingId(token.account_ID, "account id");
     outMsg.writeInt32(token.session_ID1, "session id1");
     outMsg.writeInt32(token.session_ID2, "session id2");
     outMsg.writeInt16(CLIENT_PROTOCOL_VERSION, "client protocol version");
@@ -497,7 +497,7 @@ void CharServerHandler::processChangeMapServer(Net::MessageIn &msg)
 void CharServerHandler::processPincodeStatus(Net::MessageIn &msg)
 {
     mPinSeed = msg.readInt32("pincode seed");
-    mPinAccountId = msg.readInt32("account id");
+    mPinAccountId = msg.readBeingId("account id");
     const uint16_t state = static_cast<uint16_t>(msg.readInt16("state"));
     switch (state)
     {
@@ -532,7 +532,7 @@ void CharServerHandler::setNewPincode(const std::string &pin A_UNUSED)
 //  here need ecript pin with mPinSeed and pin values.
 
 //    createOutPacket(CMSG_CHAR_CREATE_PIN);
-//    outMsg.writeInt32(mPinAccountId, "account id");
+//    outMsg.writeBeingId(mPinAccountId, "account id");
 //    outMsg.writeString(pin, 4, "encrypted pin");
 }
 
@@ -554,13 +554,13 @@ void CharServerHandler::processCharCreate(Net::MessageIn &msg)
     BLOCK_END("CharServerHandler::processCharCreate")
 }
 
-void CharServerHandler::renameCharacter(const int id,
+void CharServerHandler::renameCharacter(const BeingId id,
                                         const std::string &newName)
 {
     createOutPacket(CMSG_CHAR_CHECK_RENAME);
     mRenameId = id;
     mNewName = newName;
-    outMsg.writeInt32(id, "char id");
+    outMsg.writeBeingId(id, "char id");
     outMsg.writeString(newName, 24, "name");
 }
 
@@ -569,7 +569,7 @@ void CharServerHandler::processCharCheckRename(Net::MessageIn &msg)
     if (msg.readInt16("flag"))
     {
         createOutPacket(CMSG_CHAR_RENAME);
-        outMsg.writeInt32(mRenameId, "char id");
+        outMsg.writeBeingId(mRenameId, "char id");
     }
     else
     {

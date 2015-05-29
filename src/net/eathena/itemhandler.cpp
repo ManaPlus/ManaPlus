@@ -79,7 +79,7 @@ void ItemHandler::handleMessage(Net::MessageIn &msg)
 
 void ItemHandler::processItemDropped(Net::MessageIn &msg)
 {
-    const int id = msg.readInt32("id");
+    const BeingId id = msg.readBeingId("id");
     const int itemId = msg.readInt16("item id");
     msg.readInt16("type");
     const uint8_t identify = msg.readUInt8("identify");

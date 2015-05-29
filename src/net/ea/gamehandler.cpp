@@ -42,13 +42,13 @@ namespace Ea
 {
 
 std::string GameHandler::mMap;
-int GameHandler::mCharID = 0;
+BeingId GameHandler::mCharID = BeingId_zero;
 
 GameHandler::GameHandler() :
     Net::GameHandler()
 {
     mMap.clear();
-    mCharID = 0;
+    mCharID = BeingId_zero;
 }
 
 void GameHandler::who() const
@@ -92,7 +92,7 @@ void GameHandler::processMapQuitResponse(Net::MessageIn &msg)
 void GameHandler::clear()
 {
     mMap.clear();
-    mCharID = 0;
+    mCharID = BeingId_zero;
 }
 
 void GameHandler::initEngines() const

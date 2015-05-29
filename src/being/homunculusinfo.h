@@ -21,6 +21,8 @@
 #ifndef BEING_HOMUNCULUSINFO_H
 #define BEING_HOMUNCULUSINFO_H
 
+#include "enums/simpletypes/beingid.h"
+
 #include <string>
 
 #include "localconsts.h"
@@ -29,7 +31,7 @@ struct HomunculusInfo final
 {
     HomunculusInfo() :
         name(),
-        id(0),
+        id(BeingId_zero),
         level(0),
         range(0),
         hungry(0),
@@ -40,7 +42,7 @@ struct HomunculusInfo final
     A_DELETE_COPY(HomunculusInfo)
 
     std::string name;
-    int id;
+    BeingId id;
     int level;
     int range;
     int hungry;

@@ -21,6 +21,7 @@
 #ifndef BEING_MERCENARYINFO_H
 #define BEING_MERCENARYINFO_H
 
+#include "enums/simpletypes/beingid.h"
 #include <string>
 
 #include "localconsts.h"
@@ -29,7 +30,7 @@ struct MercenaryInfo final
 {
     MercenaryInfo() :
         name(),
-        id(0),
+        id(BeingId_zero),
         level(0),
         range(0)
     { }
@@ -37,7 +38,7 @@ struct MercenaryInfo final
     A_DELETE_COPY(MercenaryInfo)
 
     std::string name;
-    int id;
+    BeingId id;
     int level;
     int range;
 };

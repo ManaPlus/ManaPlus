@@ -125,7 +125,7 @@ std::list<BeingCacheEntry*> beingInfoCache;
 typedef std::map<int, Guild*>::const_iterator GuildsMapCIter;
 typedef std::map<int, int>::const_iterator IntMapCIter;
 
-Being::Being(const int id,
+Being::Being(const BeingId id,
              const ActorType::Type type,
              const uint16_t subtype,
              Map *const map) :
@@ -333,7 +333,7 @@ void Being::setSubtype(const uint16_t subtype, const uint16_t look)
 
     if (mType == ActorType::Monster)
     {
-        mInfo = MonsterDB::get(mSubType);
+        mInfo = MonsterDB::get(fromInt(mSubType, BeingId));
         if (mInfo)
         {
             setName(mInfo->getName());
@@ -347,7 +347,7 @@ void Being::setSubtype(const uint16_t subtype, const uint16_t look)
 #ifdef EATHENA_SUPPORT
     if (mType == ActorType::Pet)
     {
-        mInfo = PETDB::get(mSubType);
+        mInfo = PETDB::get(fromInt(mSubType, BeingId));
         if (mInfo)
         {
             setName(mInfo->getName());
@@ -360,7 +360,7 @@ void Being::setSubtype(const uint16_t subtype, const uint16_t look)
     }
     else if (mType == ActorType::Mercenary)
     {
-        mInfo = MercenaryDB::get(mSubType);
+        mInfo = MercenaryDB::get(fromInt(mSubType, BeingId));
         if (mInfo)
         {
             setName(mInfo->getName());
@@ -373,7 +373,7 @@ void Being::setSubtype(const uint16_t subtype, const uint16_t look)
     }
     if (mType == ActorType::Homunculus)
     {
-        mInfo = HomunculusDB::get(mSubType);
+        mInfo = HomunculusDB::get(fromInt(mSubType, BeingId));
         if (mInfo)
         {
             setName(mInfo->getName());
@@ -387,7 +387,7 @@ void Being::setSubtype(const uint16_t subtype, const uint16_t look)
 #endif
     else if (mType == ActorType::Npc)
     {
-        mInfo = NPCDB::get(mSubType);
+        mInfo = NPCDB::get(fromInt(mSubType, BeingId));
         if (mInfo)
         {
             setupSpriteDisplay(mInfo->getDisplay(), ForceDisplay_false);
@@ -396,7 +396,7 @@ void Being::setSubtype(const uint16_t subtype, const uint16_t look)
     }
     else if (mType == ActorType::Avatar)
     {
-        mInfo = AvatarDB::get(mSubType);
+        mInfo = AvatarDB::get(fromInt(mSubType, BeingId));
         if (mInfo)
             setupSpriteDisplay(mInfo->getDisplay(), ForceDisplay_false);
     }
@@ -1680,7 +1680,7 @@ void Being::petLogic()
         setAction(BeingAction::STAND, 0);
         fixPetSpawnPos(dstX, dstY);
         setTileCoords(dstX, dstY);
-        petHandler->spawn(mOwner, mId, dstX, dstY);
+        //petHandler->spawn(mOwner, mId, dstX, dstY);
         mPetAi = true;
     }
     else if (!followDist || divX > followDist || divY > followDist)
@@ -2189,8 +2189,8 @@ void Being::setSprite(const unsigned int slot, const int id,
             const ItemInfo &info = ItemDB::get(id1);
             if (!isTempSprite && mMap && mType == ActorType::Player)
             {
-                const int pet = info.getPet();
-                if (pet)
+                const BeingId pet = fromInt(info.getPet(), BeingId);
+                if (pet != BeingId_zero)
                     removePet(pet);
             }
             removeItemParticles(id1);
@@ -2204,8 +2204,8 @@ void Being::setSprite(const unsigned int slot, const int id,
 
         if (!isTempSprite && mType == ActorType::Player)
         {
-            const int pet = info.getPet();
-            if (pet)
+            const BeingId pet = fromInt(info.getPet(), BeingId);
+            if (pet != BeingId_zero)
                 addPet(pet);
         }
 
@@ -2428,7 +2428,7 @@ void Being::addToCache() const
     }
 }
 
-BeingCacheEntry* Being::getCacheEntry(const int id)
+BeingCacheEntry* Being::getCacheEntry(const BeingId id)
 {
     FOR_EACH (std::list<BeingCacheEntry*>::iterator, i, beingInfoCache)
     {
@@ -3323,7 +3323,7 @@ void Being::addEffect(const std::string &name)
         paths.getStringValue("sprites") + name);
 }
 
-void Being::addPet(const int id)
+void Being::addPet(const BeingId id)
 {
     if (!actorManager || !config.getBoolValue("usepets"))
         return;
@@ -3345,11 +3345,11 @@ void Being::addPet(const int id)
         int dstY = mY;
         being->fixPetSpawnPos(dstX, dstY);
         being->setTileCoords(dstX, dstY);
-        petHandler->spawn(this, being->mId, dstX, dstY);
+        //petHandler->spawn(this, being->mId, dstX, dstY);
     }
 }
 
-Being *Being::findChildPet(const int id)
+Being *Being::findChildPet(const BeingId id)
 {
     FOR_EACH (std::vector<Being*>::iterator, it, mPets)
     {
@@ -3360,7 +3360,7 @@ Being *Being::findChildPet(const int id)
     return nullptr;
 }
 
-void Being::removePet(const int id)
+void Being::removePet(const BeingId id)
 {
     if (!actorManager)
         return;
@@ -3406,8 +3406,8 @@ void Being::updatePets()
         if (!id)
             continue;
         const ItemInfo &info = ItemDB::get(id);
-        const int pet = info.getPet();
-        if (pet)
+        const BeingId pet = fromInt(info.getPet(), BeingId);
+        if (pet != BeingId_zero)
             addPet(pet);
     }
 }
@@ -3495,8 +3495,10 @@ void Being::fixPetSpawnPos(int &dstX, int &dstY) const
     }
 }
 
-void Being::playSfx(const SoundInfo &sound, Being *const being,
-                    const bool main, const int x, const int y) const
+void Being::playSfx(const SoundInfo &sound,
+                    Being *const being,
+                    const bool main,
+                    const int x, const int y) const
 {
     BLOCK_START("Being::playSfx")
 

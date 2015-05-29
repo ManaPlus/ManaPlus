@@ -186,7 +186,7 @@ void GuildHandler::processGuildMemberList(Net::MessageIn &msg)
     int totalNum = 0;
     for (int i = 0; i < count; i++)
     {
-        const int id = msg.readInt32("account id");
+        const BeingId id = msg.readBeingId("account id");
         const int charId = msg.readInt32("char id");
         msg.readInt16("hair");
         msg.readInt16("hair color");
@@ -290,7 +290,7 @@ void GuildHandler::processGuildPositionChanged(Net::MessageIn &msg)
 void GuildHandler::processGuildMemberPosChange(Net::MessageIn &msg)
 {
     msg.readInt16("len");
-    const int accountId = msg.readInt32("account id");
+    const BeingId accountId = msg.readBeingId("account id");
     const int charId = msg.readInt32("char id");
     const int pos = msg.readInt32("position");
     if (taGuild)

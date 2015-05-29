@@ -27,6 +27,8 @@
 
 #include "enums/being/cookingtype.h"
 
+#include "enums/simpletypes/beingid.h"
+
 #include "localconsts.h"
 
 namespace Net
@@ -40,31 +42,34 @@ class NpcHandler notfinal
         virtual ~NpcHandler()
         { }
 
-        virtual int getNpc(Net::MessageIn &msg) = 0;
+        virtual BeingId getNpc(Net::MessageIn &msg) = 0;
 
-        virtual void talk(const int npcId) const = 0;
+        virtual void talk(const BeingId npcId) const = 0;
 
-        virtual void nextDialog(const int npcId) const = 0;
+        virtual void nextDialog(const BeingId npcId) const = 0;
 
-        virtual void closeDialog(const int npcId) = 0;
+        virtual void closeDialog(const BeingId npcId) = 0;
 
-        virtual void listInput(const int npcId,
+        virtual void listInput(const BeingId npcId,
                                const unsigned char value) const = 0;
 
-        virtual void integerInput(const int npcId, const int value) const = 0;
+        virtual void integerInput(const BeingId npcId,
+                                  const int value) const = 0;
 
-        virtual void stringInput(const int npcId,
+        virtual void stringInput(const BeingId npcId,
                                  const std::string &value) const = 0;
 
-        virtual void buy(const int beingId) const = 0;
+        virtual void buy(const BeingId beingId) const = 0;
 
-        virtual void sell(const int beingId) const = 0;
+        virtual void sell(const BeingId beingId) const = 0;
 
-        virtual void buyItem(const int beingId, const int itemId,
+        virtual void buyItem(const BeingId beingId,
+                             const int itemId,
                              const unsigned char color,
                              const int amount) const = 0;
 
-        virtual void sellItem(const int beingId, const int itemId,
+        virtual void sellItem(const BeingId beingId,
+                              const int itemId,
                               const int amount) const = 0;
 
         virtual void completeProgressBar() const = 0;

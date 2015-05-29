@@ -142,10 +142,10 @@ BeingHandler::BeingHandler(const bool enableSync) :
     beingHandler = this;
 }
 
-void BeingHandler::requestNameById(const int id) const
+void BeingHandler::requestNameById(const BeingId id) const
 {
     createOutPacket(CMSG_NAME_REQUEST);
-    outMsg.writeInt32(id, "being id");
+    outMsg.writeBeingId(id, "being id");
 }
 
 void BeingHandler::handleMessage(Net::MessageIn &msg)
@@ -414,7 +414,7 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
 }
 
 Being *BeingHandler::createBeing2(Net::MessageIn &msg,
-                                  const int id,
+                                  const BeingId id,
                                   const int16_t job,
                                   const BeingType::BeingType beingType)
 {
@@ -497,7 +497,7 @@ void BeingHandler::processBeingChangeLook2(Net::MessageIn &msg)
         return;
 
     Being *const dstBeing = actorManager->findBeing(
-        msg.readInt32("being id"));
+        msg.readBeingId("being id"));
     const uint8_t type = msg.readUInt8("type");
 
     const int id = msg.readInt16("id1");
@@ -627,13 +627,13 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
         msg.readUInt8("object type"));
 
     // Information about a being in range
-    const int id = msg.readInt32("being id");
-    int spawnId;
+    const BeingId id = msg.readBeingId("being id");
+    BeingId spawnId;
     if (id == mSpawnId)
         spawnId = mSpawnId;
     else
-        spawnId = 0;
-    mSpawnId = 0;
+        spawnId = BeingId_zero;
+    mSpawnId = BeingId_zero;
 
     int16_t speed = msg.readInt16("speed");
     const uint16_t stunMode = msg.readInt16("opt1");
@@ -673,7 +673,7 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
     if (dstBeing->getType() == ActorType::Player)
         dstBeing->setMoveTime();
 
-    if (spawnId)
+    if (spawnId != BeingId_zero)
     {
         dstBeing->setAction(BeingAction::SPAWN, 0);
     }
@@ -787,13 +787,13 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
         msg.readUInt8("object type"));
 
     // Information about a being in range
-    const int id = msg.readInt32("being id");
-    int spawnId;
+    const BeingId id = msg.readBeingId("being id");
+    BeingId spawnId;
     if (id == mSpawnId)
         spawnId = mSpawnId;
     else
-        spawnId = 0;
-    mSpawnId = 0;
+        spawnId = BeingId_zero;
+    mSpawnId = BeingId_zero;
     int16_t speed = msg.readInt16("speed");
 //    if (visible)
 //    {
@@ -841,7 +841,7 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
     if (dstBeing->getType() == ActorType::Player)
         dstBeing->setMoveTime();
 
-    if (spawnId)
+    if (spawnId != BeingId_zero)
         dstBeing->setAction(BeingAction::SPAWN, 0);
 
     // Prevent division by 0 when calculating frame
@@ -961,9 +961,9 @@ void BeingHandler::processBeingSpawn(Net::MessageIn &msg)
         msg.readUInt8("object type"));
 
     // Information about a being in range
-    const int id = msg.readInt32("being id");
+    const BeingId id = msg.readBeingId("being id");
     mSpawnId = id;
-    const int spawnId = id;
+    const BeingId spawnId = id;
     int16_t speed = msg.readInt16("speed");
 //    if (visible)
 //    {
@@ -1011,10 +1011,8 @@ void BeingHandler::processBeingSpawn(Net::MessageIn &msg)
     if (dstBeing->getType() == ActorType::Player)
         dstBeing->setMoveTime();
 
-    if (spawnId)
-    {
+    if (spawnId != BeingId_zero)
         dstBeing->setAction(BeingAction::SPAWN, 0);
-    }
 
     // Prevent division by 0 when calculating frame
     if (speed == 0)
@@ -1138,8 +1136,8 @@ void BeingHandler::processSkillCasting(Net::MessageIn &msg)
 {
     // +++ need use other parameters
 
-    const int srcId = msg.readInt32("src id");
-    const int dstId = msg.readInt32("dst id");
+    const BeingId srcId = msg.readBeingId("src id");
+    const BeingId dstId = msg.readBeingId("dst id");
     const int dstX = msg.readInt16("dst x");
     const int dstY = msg.readInt16("dst y");
     const int skillId = msg.readInt16("skill id");
@@ -1150,12 +1148,12 @@ void BeingHandler::processSkillCasting(Net::MessageIn &msg)
     if (!effectManager)
         return;
 
-    if (srcId == 0)
+    if (srcId == BeingId_zero)
     {
         UNIMPLIMENTEDPACKET;
         return;
     }
-    else if (dstId != 0)
+    else if (dstId != BeingId_zero)
     {   // being to being
         Being *const srcBeing = actorManager->findBeing(srcId);
         Being *const dstBeing = actorManager->findBeing(dstId);
@@ -1179,7 +1177,7 @@ void BeingHandler::processBeingStatusChange(Net::MessageIn &msg)
 
     // Status change
     const uint16_t status = msg.readInt16("status");
-    const int id = msg.readInt32("being id");
+    const BeingId id = msg.readBeingId("being id");
     const Enable flag = fromBool(
         msg.readUInt8("flag: 0: stop, 1: start"), Enable);
     msg.readInt32("total");
@@ -1205,7 +1203,7 @@ void BeingHandler::processBeingStatusChange2(Net::MessageIn &msg)
 
     // Status change
     const uint16_t status = msg.readInt16("status");
-    const int id = msg.readInt32("being id");
+    const BeingId id = msg.readBeingId("being id");
     const Enable flag = fromBool(
         msg.readUInt8("flag: 0: stop, 1: start"), Enable);
     msg.readInt32("left");
@@ -1233,7 +1231,7 @@ void BeingHandler::processBeingMove2(Net::MessageIn &msg)
       * later versions of eAthena for both mobs and
       * players
       */
-    Being *const dstBeing = actorManager->findBeing(msg.readInt32("being id"));
+    Being *const dstBeing = actorManager->findBeing(msg.readBeingId("being id"));
 
     uint16_t srcX, srcY, dstX, dstY;
     msg.readCoordinatePair(srcX, srcY, dstX, dstY, "move path");
@@ -1272,9 +1270,9 @@ void BeingHandler::processBeingAction2(Net::MessageIn &msg)
     }
 
     Being *const srcBeing = actorManager->findBeing(
-        msg.readInt32("src being id"));
+        msg.readBeingId("src being id"));
     Being *const dstBeing = actorManager->findBeing(
-        msg.readInt32("dst being id"));
+        msg.readBeingId("dst being id"));
 
     msg.readInt32("tick");
     const int srcSpeed = msg.readInt32("src speed");
@@ -1356,7 +1354,7 @@ void BeingHandler::processBeingAction2(Net::MessageIn &msg)
 void BeingHandler::processMonsterHp(Net::MessageIn &msg)
 {
     Being *const dstBeing = actorManager->findBeing(
-        msg.readInt32("monster id"));
+        msg.readBeingId("monster id"));
     const int hp = msg.readInt32("hp");
     const int maxHP = msg.readInt32("max hp");
     if (dstBeing)
@@ -1440,7 +1438,7 @@ void BeingHandler::processBeingChangeDirection(Net::MessageIn &msg)
         return;
     }
 
-    Being *const dstBeing = actorManager->findBeing(msg.readInt32("being id"));
+    Being *const dstBeing = actorManager->findBeing(msg.readBeingId("being id"));
 
     msg.readInt16("head direction");
 
@@ -1464,7 +1462,7 @@ void BeingHandler::processBeingSpecialEffect(Net::MessageIn &msg)
     if (!effectManager || !actorManager)
         return;
 
-    const int id = static_cast<uint32_t>(msg.readInt32("being id"));
+    const BeingId id = msg.readBeingId("being id");
     Being *const being = actorManager->findBeing(id);
     if (!being)
         return;
@@ -1487,7 +1485,7 @@ void BeingHandler::processBeingSpecialEffectNum(Net::MessageIn &msg)
     UNIMPLIMENTEDPACKET;
     // +++ need somhow show this effects.
     // type is not same with self/misc effect.
-    msg.readInt32("account id");
+    msg.readBeingId("account id");
     msg.readInt32("effect type");
     msg.readInt32("num");  // effect variable
 }
@@ -1539,7 +1537,7 @@ void BeingHandler::viewPlayerEquipment(const Being *const being)
         return;
 
     createOutPacket(CMSG_PLAYER_VIEW_EQUIPMENT);
-    outMsg.writeInt32(being->getId(), "account id");
+    outMsg.writeBeingId(being->getId(), "account id");
 }
 
 void BeingHandler::processSkillGroundNoDamage(Net::MessageIn &msg)
@@ -1577,7 +1575,7 @@ void BeingHandler::processPlaterStatusChange(Net::MessageIn &msg)
     }
 
     // Change in players' flags
-    const int id = msg.readInt32("account id");
+    const BeingId id = msg.readBeingId("account id");
     Being *const dstBeing = actorManager->findBeing(id);
     if (!dstBeing)
         return;
@@ -1600,7 +1598,7 @@ void BeingHandler::processPlaterStatusChange2(Net::MessageIn &msg)
     if (!actorManager)
         return;
 
-    const int id = msg.readInt32("account id");
+    const BeingId id = msg.readBeingId("account id");
     Being *const dstBeing = actorManager->findBeing(id);
     if (!dstBeing)
         return;
@@ -1618,7 +1616,7 @@ void BeingHandler::processPlaterStatusChange2(Net::MessageIn &msg)
 void BeingHandler::processPlaterStatusChangeNoTick(Net::MessageIn &msg)
 {
     const uint16_t status = msg.readInt16("index");
-    const int id = msg.readInt32("account id");
+    const BeingId id = msg.readBeingId("account id");
     const Enable flag = fromBool(msg.readUInt8("state")
         ? true : false, Enable);
 
@@ -1640,7 +1638,7 @@ void BeingHandler::processBeingResurrect(Net::MessageIn &msg)
 
     // A being changed mortality status
 
-    const int id = msg.readInt32("being id");
+    const BeingId id = msg.readBeingId("being id");
     msg.readInt16("unused");
     Being *const dstBeing = actorManager->findBeing(id);
     if (!dstBeing)
@@ -1666,7 +1664,7 @@ void BeingHandler::processPlayerGuilPartyInfo(Net::MessageIn &msg)
         return;
     }
 
-    Being *const dstBeing = actorManager->findBeing(msg.readInt32("being id"));
+    Being *const dstBeing = actorManager->findBeing(msg.readBeingId("being id"));
 
     if (dstBeing)
     {
@@ -1690,7 +1688,7 @@ void BeingHandler::processBeingFakeName(Net::MessageIn &msg)
 {
     const BeingType::BeingType type = static_cast<BeingType::BeingType>(
         msg.readUInt8("object type"));
-    const int id = msg.readInt32("npc id");
+    const BeingId id = msg.readBeingId("npc id");
     msg.skip(8, "unused");
     const uint16_t job = msg.readInt16("class?");  // 111
     msg.skip(30, "unused");
@@ -1709,7 +1707,7 @@ void BeingHandler::processBeingFakeName(Net::MessageIn &msg)
 
 void BeingHandler::processBeingStatUpdate1(Net::MessageIn &msg)
 {
-    const int id = msg.readInt32("account id");
+    const BeingId id = msg.readBeingId("account id");
     const int type = msg.readInt16("type");
     const int value = msg.readInt32("value");
 
@@ -1734,7 +1732,7 @@ void BeingHandler::processBeingSelfEffect(Net::MessageIn &msg)
         return;
     }
 
-    const int id = static_cast<uint32_t>(msg.readInt32("being id"));
+    const BeingId id = msg.readBeingId("being id");
     Being *const being = actorManager->findBeing(id);
     if (!being)
     {
@@ -1755,7 +1753,7 @@ void BeingHandler::processMobInfo(Net::MessageIn &msg)
     if (len < 12)
         return;
     Being *const dstBeing = actorManager->findBeing(
-        msg.readInt32("monster id"));
+        msg.readBeingId("monster id"));
     const int attackRange = msg.readInt32("range");
     if (dstBeing)
         dstBeing->setAttackRange(attackRange);
@@ -1767,7 +1765,7 @@ void BeingHandler::processBeingAttrs(Net::MessageIn &msg)
     if (len < 12)
         return;
     Being *const dstBeing = actorManager->findBeing(
-        msg.readInt32("player id"));
+        msg.readBeingId("player id"));
     const int gmLevel = msg.readInt32("gm level");
     if (dstBeing && gmLevel)
     {
@@ -1802,7 +1800,7 @@ void BeingHandler::processClassChange(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
 
-    msg.readInt32("being id");
+    msg.readBeingId("being id");
     msg.readUInt8("type");
     msg.readInt32("class");
 }
@@ -1811,7 +1809,7 @@ void BeingHandler::processSpiritBalls(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
 
-    msg.readInt32("being id");
+    msg.readBeingId("being id");
     msg.readInt16("spirits amount");
 }
 
@@ -1819,7 +1817,7 @@ void BeingHandler::processSpiritBallSingle(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
 
-    msg.readInt32("being id");
+    msg.readBeingId("being id");
     msg.readInt16("spirits amount");
 }
 
@@ -1836,7 +1834,7 @@ void BeingHandler::processComboDelay(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
 
-    msg.readInt32("being id");
+    msg.readBeingId("being id");
     msg.readInt32("wait");
 }
 
@@ -1844,14 +1842,14 @@ void BeingHandler::processWddingEffect(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
 
-    msg.readInt32("being id");
+    msg.readBeingId("being id");
 }
 
 void BeingHandler::processBeingSlide(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
 
-    msg.readInt32("being id");
+    msg.readBeingId("being id");
     msg.readInt16("x");
     msg.readInt16("y");
 }
@@ -1891,7 +1889,7 @@ void BeingHandler::processBeingFont(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
 
-    msg.readInt32("account id");
+    msg.readBeingId("account id");
     msg.readInt16("font");
 }
 
@@ -1899,7 +1897,7 @@ void BeingHandler::processBeingMilleniumShield(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
 
-    msg.readInt32("account id");
+    msg.readBeingId("account id");
     msg.readInt16("shields");
     msg.readInt16("unused");
 }
@@ -1908,7 +1906,7 @@ void BeingHandler::processBeingCharm(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
 
-    msg.readInt32("account id");
+    msg.readBeingId("account id");
     msg.readInt16("charm type");
     msg.readInt16("charm count");
 }

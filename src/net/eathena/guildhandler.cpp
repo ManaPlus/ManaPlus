@@ -210,7 +210,7 @@ void GuildHandler::handleMessage(Net::MessageIn &msg)
 
 void GuildHandler::processGuildUpdateCoords(Net::MessageIn &msg)
 {
-    const int id = msg.readInt32("account id");
+    const BeingId id = msg.readBeingId("account id");
     const int x = msg.readInt16("x");
     const int y = msg.readInt16("y");
     if (Ea::taGuild)
@@ -241,7 +241,7 @@ void GuildHandler::invite(const std::string &name) const
     if (being)
     {
         createOutPacket(CMSG_GUILD_INVITE);
-        outMsg.writeInt32(being->getId(), "account id");
+        outMsg.writeBeingId(being->getId(), "account id");
         outMsg.writeInt32(0, "unused");
         outMsg.writeInt32(0, "unused");
     }
@@ -253,7 +253,7 @@ void GuildHandler::invite(const Being *const being) const
         return;
 
     createOutPacket(CMSG_GUILD_INVITE);
-    outMsg.writeInt32(being->getId(), "account id");
+    outMsg.writeBeingId(being->getId(), "account id");
     outMsg.writeInt32(0, "unused");
     outMsg.writeInt32(0, "unused");
 }
@@ -275,7 +275,7 @@ void GuildHandler::leave(const int guildId) const
 
     createOutPacket(CMSG_GUILD_LEAVE);
     outMsg.writeInt32(guildId, "guild id");
-    outMsg.writeInt32(localPlayer->getId(), "account id");
+    outMsg.writeBeingId(localPlayer->getId(), "account id");
     outMsg.writeInt32(PlayerInfo::getCharId(), "char id");
     outMsg.writeString("", 40, "message");
 }
@@ -288,7 +288,7 @@ void GuildHandler::kick(const GuildMember *restrict const member,
 
     createOutPacket(CMSG_GUILD_EXPULSION);
     outMsg.writeInt32(member->getGuild()->getId(), "guild id");
-    outMsg.writeInt32(member->getID(), "account id");
+    outMsg.writeBeingId(member->getID(), "account id");
     outMsg.writeInt32(member->getCharId(), "char id");
     outMsg.writeString(reason, 40, "message");
 }
@@ -339,7 +339,7 @@ void GuildHandler::changeMemberPostion(const GuildMember *const member,
 
     createOutPacket(CMSG_GUILD_CHANGE_MEMBER_POS);
     outMsg.writeInt16(16, "len");
-    outMsg.writeInt32(member->getID(), "account id");
+    outMsg.writeBeingId(member->getID(), "account id");
     outMsg.writeInt32(member->getCharId(), "char id");
     outMsg.writeInt32(level, "pos");
 }
@@ -396,7 +396,7 @@ void GuildHandler::processGuildPositionInfo(Net::MessageIn &msg)
 
 void GuildHandler::processGuildMemberLogin(Net::MessageIn &msg)
 {
-    const int accountId = msg.readInt32("account id");
+    const BeingId accountId = msg.readBeingId("account id");
     const int charId = msg.readInt32("char id");
     const int online = msg.readInt32("flag");
     const Gender::Type gender = Being::intToGender(static_cast<uint8_t>(
@@ -445,7 +445,7 @@ void GuildHandler::processGuildExpulsionList(Net::MessageIn &msg)
 void GuildHandler::processGuildEmblem(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
-    msg.readInt32("being id");
+    msg.readBeingId("being id");
     msg.readInt32("guild id");
     msg.readInt16("emblem id");
 }
@@ -456,7 +456,7 @@ void GuildHandler::requestAlliance(const Being *const being) const
         return;
 
     createOutPacket(CMSG_GUILD_ALLIANCE_REQUEST);
-    outMsg.writeInt32(being->getId(), "account id");
+    outMsg.writeBeingId(being->getId(), "account id");
     outMsg.writeInt32(0, "inviter account id");
     outMsg.writeInt32(0, "inviter char id");
 }
@@ -498,7 +498,7 @@ void GuildHandler::requestOpposition(const Being *const being) const
         return;
 
     createOutPacket(CMSG_GUILD_OPPOSITION);
-    outMsg.writeInt32(being->getId(), "account id");
+    outMsg.writeBeingId(being->getId(), "account id");
 }
 
 void GuildHandler::breakGuild(const std::string &name) const

@@ -111,7 +111,8 @@ extern int weightNoticeTime;
 extern MiniStatusWindow *miniStatusWindow;
 extern SkillDialog *skillDialog;
 
-LocalPlayer::LocalPlayer(const int id, const uint16_t subtype) :
+LocalPlayer::LocalPlayer(const BeingId id,
+                         const uint16_t subtype) :
     Being(id, ActorType::Player, subtype, nullptr),
     AttributeListener(),
     PlayerDeathListener(),
@@ -139,7 +140,7 @@ LocalPlayer::LocalPlayer(const int id, const uint16_t subtype) :
     mActivityTime(0),
     mNavigateX(0),
     mNavigateY(0),
-    mNavigateId(0),
+    mNavigateId(BeingId_zero),
     mCrossX(0),
     mCrossY(0),
     mOldX(0),
@@ -780,7 +781,7 @@ void LocalPlayer::attack(Being *const target, const bool keep,
         if (!dontChangeEquipment)
             changeEquipmentBeforeAttack(target);
 
-        const int targetId = target->getId();
+        const BeingId targetId = target->getId();
         playerHandler->attack(targetId, mServerAttack);
 #ifdef EATHENA_SUPPORT
         PlayerInfo::updateAttackAi(targetId, mServerAttack);
@@ -813,13 +814,15 @@ void LocalPlayer::untarget()
         setTarget(nullptr);
 }
 
-void LocalPlayer::pickedUp(const ItemInfo &itemInfo, const int amount,
-                           const unsigned char color, const int floorItemId,
+void LocalPlayer::pickedUp(const ItemInfo &itemInfo,
+                           const int amount,
+                           const unsigned char color,
+                           const BeingId floorItemId,
                            const Pickup::Type fail)
 {
     if (fail != Pickup::OKAY)
     {
-        if (actorManager && floorItemId)
+        if (actorManager && floorItemId != BeingId_zero)
         {
             FloorItem *const item = actorManager->findItem(floorItemId);
             if (item)
@@ -1942,7 +1945,7 @@ bool LocalPlayer::navigateTo(const int x, const int y)
     mOldTileY = mY;
     mNavigateX = x;
     mNavigateY = y;
-    mNavigateId = 0;
+    mNavigateId = BeingId_zero;
 
     mNavigatePath = mMap->findPath(
         static_cast<int>(playerPos.x - mapTileSize / 2) / mapTileSize,
@@ -1966,7 +1969,7 @@ void LocalPlayer::navigateClean()
     mOldTileY = 0;
     mNavigateX = 0;
     mNavigateY = 0;
-    mNavigateId = 0;
+    mNavigateId = BeingId_zero;
 
     mNavigatePath.clear();
 
@@ -2024,7 +2027,7 @@ void LocalPlayer::updateCoords()
                 / mapTileSize;
             const int y = static_cast<int>(playerPos.y - mapTileSize)
                 / mapTileSize;
-            if (mNavigateId)
+            if (mNavigateId != BeingId_zero)
             {
                 if (!actorManager)
                 {

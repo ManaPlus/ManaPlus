@@ -41,7 +41,7 @@
 
 #include "debug.h"
 
-NpcSellDialog::NpcSellDialog(const int npcId) :
+NpcSellDialog::NpcSellDialog(const BeingId npcId) :
     SellDialog(true),
     mNpcId(npcId)
 {

@@ -23,6 +23,8 @@
 #ifndef NET_EA_GAMEHANDLER_H
 #define NET_EA_GAMEHANDLER_H
 
+#include "enums/simpletypes/beingid.h"
+
 #include "net/gamehandler.h"
 
 namespace Net
@@ -62,7 +64,7 @@ class GameHandler notfinal : public Net::GameHandler
 
     protected:
         static std::string mMap;
-        static int mCharID;  // < Saved for map-server switching
+        static BeingId mCharID;  // < Saved for map-server switching
 };
 
 }  // namespace Ea

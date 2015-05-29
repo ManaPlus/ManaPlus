@@ -238,7 +238,7 @@ void ActorManager::setPlayer(LocalPlayer *const player)
         socialWindow->updatePickupFilter();
 }
 
-Being *ActorManager::createBeing(const int id,
+Being *ActorManager::createBeing(const BeingId id,
                                  const ActorType::Type type,
                                  const uint16_t subtype)
 {
@@ -280,7 +280,8 @@ Being *ActorManager::createBeing(const int id,
     return being;
 }
 
-FloorItem *ActorManager::createItem(const int id, const int itemId,
+FloorItem *ActorManager::createItem(const BeingId id,
+                                    const int itemId,
                                     const int x, const int y,
                                     const int amount,
                                     const unsigned char color,
@@ -327,7 +328,7 @@ void ActorManager::undelete(const ActorSprite *const actor)
     }
 }
 
-Being *ActorManager::findBeing(const int id) const
+Being *ActorManager::findBeing(const BeingId id) const
 {
     for_actors
     {
@@ -539,7 +540,7 @@ Being *ActorManager::findPortalByTile(const int x, const int y) const
     return nullptr;
 }
 
-FloorItem *ActorManager::findItem(const int id) const
+FloorItem *ActorManager::findItem(const BeingId id) const
 {
     for_actorsm
     {
@@ -1337,17 +1338,17 @@ bool ActorManager::hasActorSprite(const ActorSprite *const actor) const
     return false;
 }
 
-void ActorManager::addBlock(const uint32_t id)
+void ActorManager::addBlock(const BeingId id)
 {
     mBlockedBeings.insert(id);
 }
 
-void ActorManager::deleteBlock(const uint32_t id)
+void ActorManager::deleteBlock(const BeingId id)
 {
     mBlockedBeings.erase(id);
 }
 
-bool ActorManager::isBlocked(const uint32_t id) const
+bool ActorManager::isBlocked(const BeingId id) const
 {
     return mBlockedBeings.find(id) != mBlockedBeings.end();
 }
@@ -1795,7 +1796,8 @@ Being *ActorManager::cloneBeing(const Being *const srcBeing,
                                 const int dx, const int dy,
                                 const int id)
 {
-    Being *const dstBeing = actorManager->createBeing(srcBeing->getId() + id,
+    Being *const dstBeing = actorManager->createBeing(fromInt(
+        toInt(srcBeing->getId(), int) + id, BeingId),
         ActorType::Player,
         srcBeing->getSubType());
     if (!dstBeing)

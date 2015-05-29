@@ -21,6 +21,8 @@
 #ifndef LISTENERS_CHARRENAMELISTENER_H
 #define LISTENERS_CHARRENAMELISTENER_H
 
+#include "enums/simpletypes/beingid.h"
+
 #include "listeners/actionlistener.h"
 
 #include "localconsts.h"
@@ -36,7 +38,7 @@ class CharRenameListener final : public ActionListener
 
         void action(const ActionEvent &event) override final;
 
-        void setId(const int id)
+        void setId(const BeingId id)
         { mId = id; }
 
         void setDialog(EditDialog *const dialog)
@@ -44,7 +46,7 @@ class CharRenameListener final : public ActionListener
 
     protected:
         EditDialog *mDialog;
-        int mId;
+        BeingId mId;
 };
 
 extern CharRenameListener charRenameListener;

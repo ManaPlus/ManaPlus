@@ -23,6 +23,8 @@
 #ifndef NET_MESSAGEOUT_H
 #define NET_MESSAGEOUT_H
 
+#include "enums/simpletypes/beingid.h"
+
 #include <string>
 
 #include "localconsts.h"
@@ -47,12 +49,15 @@ class MessageOut notfinal
                                const char *const str);
 
         /**< Writes a short. */
-        virtual void writeInt16(int16_t value,
+        virtual void writeInt16(const int16_t value,
                                 const char *const str) = 0;
 
         /**< Writes a long. */
-        virtual void writeInt32(int32_t value,
+        virtual void writeInt32(const int32_t value,
                                 const char *const str) = 0;
+
+        virtual void writeBeingId(const BeingId value,
+                                  const char *const str) = 0;
 
         /**
          * Writes a string. If a fixed length is not given (-1), it is stored

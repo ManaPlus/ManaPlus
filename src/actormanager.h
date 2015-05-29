@@ -27,6 +27,7 @@
 
 #include "enums/simpletypes/allowsort.h"
 #include "enums/simpletypes/allplayers.h"
+#include "enums/simpletypes/beingid.h"
 #include "enums/simpletypes/npcnames.h"
 
 #include "listeners/configlistener.h"
@@ -68,7 +69,7 @@ class ActorManager final: public ConfigListener
         /**
          * Create a Being and add it to the list of ActorSprites.
          */
-        Being *createBeing(const int id,
+        Being *createBeing(const BeingId id,
                            const ActorType::Type type,
                            const uint16_t subtype) A_WARN_UNUSED;
 
@@ -79,9 +80,11 @@ class ActorManager final: public ConfigListener
         /**
          * Create a FloorItem and add it to the list of ActorSprites.
          */
-        FloorItem *createItem(const int id, const int itemId,
+        FloorItem *createItem(const BeingId id,
+                              const int itemId,
                               const int x, const int y,
-                              const int amount, const unsigned char color,
+                              const int amount,
+                              const unsigned char color,
                               const int subX, const int subY);
 
         /**
@@ -97,7 +100,7 @@ class ActorManager final: public ConfigListener
         /**
          * Returns a specific Being, by id;
          */
-        Being *findBeing(const int id) const A_WARN_UNUSED;
+        Being *findBeing(const BeingId id) const A_WARN_UNUSED;
 
         /**
          * Returns a being at specific coordinates.
@@ -127,7 +130,7 @@ class ActorManager final: public ConfigListener
         /**
          * Returns a specific FloorItem, by id.
          */
-        FloorItem *findItem(const int id) const A_WARN_UNUSED;
+        FloorItem *findItem(const BeingId id) const A_WARN_UNUSED;
 
         /**
          * Returns a FloorItem at specific coordinates.
@@ -223,11 +226,11 @@ class ActorManager final: public ConfigListener
          */
         void clear();
 
-        void addBlock(const uint32_t id);
+        void addBlock(const BeingId id);
 
-        void deleteBlock(const uint32_t id);
+        void deleteBlock(const BeingId id);
 
-        bool isBlocked(const uint32_t id) const;
+        bool isBlocked(const BeingId id) const;
 
         void printAllToChat() const;
 
@@ -352,7 +355,7 @@ class ActorManager final: public ConfigListener
 
         ActorSprites mActors;
         ActorSprites mDeleteActors;
-        std::set<uint32_t> mBlockedBeings;
+        std::set<BeingId> mBlockedBeings;
         Map *mMap;
         std::string mSpellHeal1;
         std::string mSpellHeal2;

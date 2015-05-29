@@ -20,6 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "enums/simpletypes/beingid.h"
 #include "enums/being/gender.h"
 
 #ifndef NET_EA_TOKEN_H
@@ -27,14 +28,14 @@
 
 struct Token final
 {
-    int account_ID;
+    BeingId account_ID;
     int session_ID1;
     int session_ID2;
     Gender::Type sex;
 
     void clear()
     {
-        account_ID = 0;
+        account_ID = BeingId_zero;
         session_ID1 = 0;
         session_ID2 = 0;
         sex = Gender::UNSPECIFIED;

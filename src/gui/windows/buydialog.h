@@ -23,6 +23,7 @@
 #ifndef GUI_WINDOWS_BUYDIALOG_H
 #define GUI_WINDOWS_BUYDIALOG_H
 
+#include "enums/simpletypes/beingid.h"
 #include "enums/simpletypes/visible.h"
 
 #include "gui/widgets/window.h"
@@ -64,7 +65,7 @@ class BuyDialog final : public Window,
          *
          * @see Window::Window
          */
-        explicit BuyDialog(const int npcId);
+        explicit BuyDialog(const BeingId npcId);
 
         /**
          * Constructor.
@@ -175,7 +176,7 @@ class BuyDialog final : public Window,
         TextField *mFilterTextField;
         Label *mFilterLabel;
 
-        int mNpcId;
+        BeingId mNpcId;
         int mMoney;
         int mAmountItems;
         int mMaxItems;

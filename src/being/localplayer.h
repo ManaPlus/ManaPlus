@@ -57,7 +57,7 @@ class LocalPlayer final : public Being,
         /**
          * Constructor.
          */
-        explicit LocalPlayer(const int id = 65535,
+        explicit LocalPlayer(const BeingId id,
                              const uint16_t subtype = 0U);
 
         A_DELETE_COPY(LocalPlayer)
@@ -176,8 +176,10 @@ class LocalPlayer final : public Being,
         /**
          * Shows item pickup notifications.
          */
-        void pickedUp(const ItemInfo &itemInfo, const int amount,
-                      const unsigned char color, const int floorItemId,
+        void pickedUp(const ItemInfo &itemInfo,
+                      const int amount,
+                      const unsigned char color,
+                      const BeingId floorItemId,
                       const Pickup::Type fail);
 
         int getLevel() const override final A_WARN_UNUSED;
@@ -467,7 +469,7 @@ class LocalPlayer final : public Being,
         int mActivityTime;
         int mNavigateX;
         int mNavigateY;
-        int mNavigateId;
+        BeingId mNavigateId;
         int mCrossX;
         int mCrossY;
         int mOldX;

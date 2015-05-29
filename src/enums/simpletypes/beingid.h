@@ -1,8 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2004-2009  The Mana World Development Team
- *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011-2015  The ManaPlus Developers
+ *  Copyright (C) 2015  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -20,29 +18,17 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_DB_HOMUNCULUSDB_H
-#define RESOURCES_DB_HOMUNCULUSDB_H
+#ifndef ENUMS_SIMPLETYPES_BEINGID_H
+#define ENUMS_SIMPLETYPES_BEINGID_H
 
-#include "enums/simpletypes/beingid.h"
+#include "enums/simpletypes/intdefines.h"
 
-#include "localconsts.h"
+defIntEnum(BeingId, int);
 
-#include <string>
+#ifdef ADVGCC
+const BeingId BeingId_negOne = static_cast<BeingId>(-1);
+#else
+const BeingId BeingId_negOne = -1;
+#endif
 
-class BeingInfo;
-
-/**
- * Homunculus information database.
- */
-namespace HomunculusDB
-{
-    void load();
-
-    void unload();
-
-    void loadXmlFile(const std::string &fileName);
-
-    BeingInfo *get(const BeingId id) A_WARN_UNUSED;
-}  // namespace HomunculusDB
-
-#endif  // RESOURCES_DB_HOMUNCULUSDB_H
+#endif  // ENUMS_SIMPLETYPES_BEINGID_H

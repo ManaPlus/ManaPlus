@@ -35,7 +35,7 @@
 
 BuySellDialog::DialogList BuySellDialog::dialogInstances;
 
-BuySellDialog::BuySellDialog(const int npcId) :
+BuySellDialog::BuySellDialog(const BeingId npcId) :
     // TRANSLATORS: shop window name
     Window(_("Shop"), Modal_false, nullptr, "buysell.xml"),
     ActionListener(),
@@ -50,7 +50,7 @@ BuySellDialog::BuySellDialog(const std::string &nick) :
     // TRANSLATORS: shop window name
     Window(_("Shop"), Modal_false, nullptr, "buysell.xml"),
     ActionListener(),
-    mNpcId(-1),
+    mNpcId(BeingId_negOne),
     mNick(nick),
     mBuyButton(nullptr)
 {
@@ -128,14 +128,14 @@ void BuySellDialog::action(const ActionEvent &event)
     const std::string &eventId = event.getId();
     if (eventId == "Buy")
     {
-        if (mNpcId != -1)
+        if (mNpcId != BeingId_negOne)
             npcHandler->buy(mNpcId);
         else
             buySellHandler->requestSellList(mNick);
     }
     else if (eventId == "Sell")
     {
-        if (mNpcId != -1)
+        if (mNpcId != BeingId_negOne)
             npcHandler->sell(mNpcId);
         else
             buySellHandler->requestBuyList(mNick);

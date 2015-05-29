@@ -25,6 +25,8 @@
 
 #include "enums/inventorytype.h"
 
+#include "enums/simpletypes/beingid.h"
+
 #include "gui/widgets/linkhandler.h"
 #include "gui/widgets/popup.h"
 
@@ -140,7 +142,8 @@ class PopupMenu final : public Popup, public LinkHandler
 
         void showWindowsPopup();
 
-        void showNpcDialogPopup(const int npcId, const int x, const int y);
+        void showNpcDialogPopup(const BeingId npcId,
+                                const int x, const int y);
 
         void showWindowPopup(Window *const window);
 
@@ -198,8 +201,8 @@ class PopupMenu final : public Popup, public LinkHandler
         BrowserBox *mBrowserBox;
         ScrollArea *mScrollArea;
 
-        int mBeingId;
-        int mFloorItemId;
+        BeingId mBeingId;
+        BeingId mFloorItemId;
         Item *mItem;
         int mItemId;
         unsigned char mItemColor;

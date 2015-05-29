@@ -36,7 +36,7 @@ class BeingHandler notfinal : public Net::BeingHandler
     protected:
         explicit BeingHandler(const bool enableSync);
 
-        static Being *createBeing(const int id,
+        static Being *createBeing(const BeingId id,
                                   const int16_t job) A_WARN_UNUSED;
 
         static void setSprite(Being *const being, const unsigned int slot,
@@ -71,7 +71,7 @@ class BeingHandler notfinal : public Net::BeingHandler
         static void processBeingMove3(Net::MessageIn &msg);
 
         // Should we honor server "Stop Walking" packets
-        static int mSpawnId;
+        static BeingId mSpawnId;
         static bool mSync;
 };
 

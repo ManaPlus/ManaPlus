@@ -41,7 +41,7 @@ namespace Ea
 {
 
 typedef std::vector<InventoryItem> InventoryItems;
-typedef std::queue<int> PickupQueue;
+typedef std::queue<BeingId> PickupQueue;
 
 class InventoryHandler notfinal : public Net::InventoryHandler
 {
@@ -65,7 +65,7 @@ class InventoryHandler notfinal : public Net::InventoryHandler
 
         size_t getSize(const int type) const override final A_WARN_UNUSED;
 
-        void pushPickup(const int floorId)
+        void pushPickup(const BeingId floorId)
         { mSentPickups.push(floorId); }
 
         static int getSlot(const int eAthenaSlot) A_WARN_UNUSED;

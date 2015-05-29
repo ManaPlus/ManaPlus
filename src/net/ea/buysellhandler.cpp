@@ -42,12 +42,12 @@
 namespace Ea
 {
 
-int BuySellHandler::mNpcId = 0;
+BeingId BuySellHandler::mNpcId = BeingId_zero;
 BuyDialog *BuySellHandler::mBuyDialog = nullptr;
 
 BuySellHandler::BuySellHandler()
 {
-    mNpcId = 0;
+    mNpcId = BeingId_zero;
     mBuyDialog = nullptr;
 }
 
@@ -55,7 +55,7 @@ void BuySellHandler::processNpcBuySellChoice(Net::MessageIn &msg)
 {
     if (!BuySellDialog::isActive())
     {
-        mNpcId = msg.readInt32("npc id");
+        mNpcId = msg.readBeingId("npc id");
         BuySellDialog *const dialog = new BuySellDialog(mNpcId);
         dialog->postInit();
     }

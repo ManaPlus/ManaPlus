@@ -80,7 +80,7 @@ void FriendsHandler::handleMessage(Net::MessageIn &msg)
 void FriendsHandler::processPlayerOnline(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
-    msg.readInt32("account id");
+    msg.readBeingId("account id");
     msg.readInt32("char id");
     msg.readUInt8("flag");  // 0 - online, 1 - offline
 }
@@ -91,7 +91,7 @@ void FriendsHandler::processFriendsList(Net::MessageIn &msg)
     const int count = (msg.readInt16("size") - 4) / 32;
     for (int f = 0; f < count; f ++)
     {
-        msg.readInt32("account id");
+        msg.readBeingId("account id");
         msg.readInt32("char id");
         msg.readString(24, "name");
     }
@@ -101,7 +101,7 @@ void FriendsHandler::processRequestAck(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
     msg.readInt16("type");
-    msg.readInt32("account id");
+    msg.readBeingId("account id");
     msg.readInt32("char id");
     msg.readString(24, "name");
 }
@@ -109,7 +109,7 @@ void FriendsHandler::processRequestAck(Net::MessageIn &msg)
 void FriendsHandler::processRequest(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
-    msg.readInt32("account id");
+    msg.readBeingId("account id");
     msg.readInt32("char id");
     msg.readString(24, "name");
 }
@@ -140,7 +140,7 @@ void FriendsHandler::remove(const int accountId, const int charId) const
 void FriendsHandler::processDeletePlayer(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
-    msg.readInt32("account id");
+    msg.readBeingId("account id");
     msg.readInt32("char id");
 }
 

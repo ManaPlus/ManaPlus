@@ -27,6 +27,7 @@
 #include "enums/guildpositionflags.h"
 #include "enums/state.h"
 
+#include "enums/simpletypes/beingid.h"
 #include "enums/simpletypes/keep.h"
 #include "enums/simpletypes/notify.h"
 #include "enums/simpletypes/sfx.h"
@@ -261,7 +262,7 @@ namespace PlayerInfo
 
     void setPetBeing(Being *const being);
 
-    int getPetBeingId();
+    BeingId getPetBeingId();
 
     HomunculusInfo *getHomunculus();
 
@@ -269,13 +270,14 @@ namespace PlayerInfo
 
     void setHomunculusBeing(Being *const being);
 
-    int getHomunculusId();
+    BeingId getHomunculusId();
 
-    int getMercenaryId();
+    BeingId getMercenaryId();
 
     void updateMoveAI();
 
-    void updateAttackAi(const int targetId, const Keep keep);
+    void updateAttackAi(const BeingId targetId,
+                        const Keep keep);
 
     std::string getRoomName();
 

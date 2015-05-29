@@ -23,6 +23,8 @@
 #ifndef GUI_WINDOWS_NPCSELLDIALOG_H
 #define GUI_WINDOWS_NPCSELLDIALOG_H
 
+#include "enums/simpletypes/beingid.h"
+
 #include "gui/widgets/selldialog.h"
 
 /**
@@ -38,7 +40,7 @@ class NpcSellDialog final : public SellDialog
          *
          * @see Window::Window
          */
-        explicit NpcSellDialog(const int npcId);
+        explicit NpcSellDialog(const BeingId npcId);
 
         A_DELETE_COPY(NpcSellDialog)
 
@@ -47,7 +49,7 @@ class NpcSellDialog final : public SellDialog
     protected:
         void sellAction(const ActionEvent &event) override final;
 
-        int mNpcId;
+        BeingId mNpcId;
 };
 
 #endif  // GUI_WINDOWS_NPCSELLDIALOG_H

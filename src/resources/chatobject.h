@@ -21,6 +21,8 @@
 #ifndef RESOURCES_CHATOBJECT_H
 #define RESOURCES_CHATOBJECT_H
 
+#include "enums/simpletypes/beingid.h"
+
 #include <map>
 #include <string>
 
@@ -40,7 +42,7 @@ struct ChatObject final
 
     static ChatObject *findById(const int id);
 
-    int ownerId;
+    BeingId ownerId;
     int chatId;
     uint16_t maxUsers;
     uint16_t currentUsers;

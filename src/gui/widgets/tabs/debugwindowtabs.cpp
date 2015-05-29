@@ -323,7 +323,7 @@ void TargetDebugTab::logic()
 
         mTargetIdLabel->setCaption(strprintf("%s %d",
             // TRANSLATORS: debug window label
-            _("Target Id:"), target->getId()));
+            _("Target Id:"), toInt(target->getId(), int)));
         mTargetTypeLabel->setCaption(strprintf("%s %d",
             // TRANSLATORS: debug window label
             _("Target type:"), target->getSubType()));

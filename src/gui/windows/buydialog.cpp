@@ -179,7 +179,7 @@ BuyDialog::BuyDialog() :
     mSortDropDown(nullptr),
     mFilterTextField(new TextField(this, "", true, this, "namefilter", true)),
     mFilterLabel(nullptr),
-    mNpcId(Items),
+    mNpcId(fromInt(Items, BeingId)),
     mMoney(0),
     mAmountItems(0),
     mMaxItems(0),
@@ -188,7 +188,7 @@ BuyDialog::BuyDialog() :
     init();
 }
 
-BuyDialog::BuyDialog(const int npcId) :
+BuyDialog::BuyDialog(const BeingId npcId) :
     // TRANSLATORS: buy dialog name
     Window(_("Buy"), Modal_false, nullptr, "buy.xml"),
     ActionListener(),
@@ -216,7 +216,7 @@ BuyDialog::BuyDialog(std::string nick) :
         Modal_false, this, "sort")),
     mFilterTextField(new TextField(this, "", true, this, "namefilter", true)),
     mFilterLabel(nullptr),
-    mNpcId(Nick),
+    mNpcId(fromInt(Nick, BeingId)),
     mMoney(0),
     mAmountItems(0),
     mMaxItems(0),
@@ -271,7 +271,7 @@ void BuyDialog::init()
     // You may change this symbol if your language uses another.
     mDecreaseButton = new Button(this, _("-"), "dec", this);
     // TRANSLATORS: buy dialog button
-    mBuyButton = new Button(this, mNpcId == Items
+    mBuyButton = new Button(this, mNpcId == fromInt(Items, BeingId)
         ? _("Create") :_("Buy"), "buy", this);
     // TRANSLATORS: buy dialog button
     mQuitButton = new Button(this, _("Quit"), "quit", this);
@@ -406,7 +406,7 @@ void BuyDialog::sort()
 
 void BuyDialog::close()
 {
-    switch (mNpcId)
+    switch (toInt(mNpcId, int))
     {
         case Nick:
         case Items:
@@ -488,15 +488,15 @@ void BuyDialog::action(const ActionEvent &event)
     else if (eventId == "buy" && mAmountItems > 0 && mAmountItems <= mMaxItems)
     {
         ShopItem *const item = mShopItems->at(selectedItem);
-        if (mNpcId == Items)
+        if (mNpcId == fromInt(Items, BeingId))
         {
             adminHandler->createItems(item->getId(),
                 mAmountItems, item->getColor());
         }
-        else if (mNpcId != Nick)
+        else if (mNpcId != fromInt(Nick, BeingId))
         {
 #ifdef EATHENA_SUPPORT
-            if (mNpcId == Market)
+            if (mNpcId == fromInt(Market, BeingId))
             {
                 marketHandler->buyItem(item->getId(),
                     item->getType(),
@@ -505,7 +505,7 @@ void BuyDialog::action(const ActionEvent &event)
                 item->increaseQuantity(-mAmountItems);
                 item->update();
             }
-            else if (mNpcId == Cash)
+            else if (mNpcId == fromInt(Cash, BeingId))
             {
                 cashShopHandler->buyItem(item->getPrice(),
                     item->getId(),
@@ -523,7 +523,7 @@ void BuyDialog::action(const ActionEvent &event)
 
             updateSlider(selectedItem);
         }
-        else if (mNpcId == Nick)
+        else if (mNpcId == fromInt(Nick, BeingId))
         {
 #ifdef EATHENA_SUPPORT
             if (serverFeatures->haveVending())
@@ -594,7 +594,7 @@ void BuyDialog::updateButtonsAndLabels()
             const int itemPrice = item->getPrice();
 
             // Calculate how many the player can afford
-            if (mNpcId == Items)
+            if (mNpcId == fromInt(Items, BeingId))
                 mMaxItems = 100;
             else if (itemPrice)
                 mMaxItems = mMoney / itemPrice;

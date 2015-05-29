@@ -82,12 +82,12 @@ void SkillHandler::handleMessage(Net::MessageIn &msg)
 }
 
 void SkillHandler::useBeing(const int id, const int level,
-                            const int beingId) const
+                            const BeingId beingId) const
 {
     createOutPacket(CMSG_SKILL_USE_BEING);
     outMsg.writeInt16(static_cast<int16_t>(id), "skill id");
     outMsg.writeInt16(static_cast<int16_t>(level), "level");
-    outMsg.writeInt32(beingId, "target id");
+    outMsg.writeBeingId(beingId, "target id");
 }
 
 void SkillHandler::usePos(const int id, const int level,

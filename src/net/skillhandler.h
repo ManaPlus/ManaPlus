@@ -23,6 +23,8 @@
 #ifndef NET_SKILLHANDLER_H
 #define NET_SKILLHANDLER_H
 
+#include "enums/simpletypes/beingid.h"
+
 #include <iosfwd>
 
 #include "localconsts.h"
@@ -35,13 +37,16 @@ class SkillHandler notfinal
         virtual ~SkillHandler()
         { }
 
-        virtual void useBeing(const int id, const int level,
-                              const int beingId) const = 0;
+        virtual void useBeing(const int id,
+                              const int level,
+                              const BeingId beingId) const = 0;
 
-        virtual void usePos(const int id, const int level,
+        virtual void usePos(const int id,
+                            const int level,
                             const int x, const int y) const = 0;
 
-        virtual void usePos(const int id, const int level,
+        virtual void usePos(const int id,
+                            const int level,
                             const int x, const int y,
                             const std::string &text) const = 0;
 

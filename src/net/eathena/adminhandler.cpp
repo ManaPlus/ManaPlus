@@ -95,10 +95,10 @@ void AdminHandler::hide(const bool h A_UNUSED) const
     outMsg.writeInt32(0, "unused");
 }
 
-void AdminHandler::kick(const int playerId) const
+void AdminHandler::kick(const BeingId playerId) const
 {
     createOutPacket(CMSG_ADMIN_KICK);
-    outMsg.writeInt32(playerId, "account id");
+    outMsg.writeBeingId(playerId, "account id");
 }
 
 void AdminHandler::kickAll() const
@@ -146,7 +146,7 @@ void AdminHandler::mute(const Being *const being,
         return;
 
     createOutPacket(CMSG_ADMIN_MUTE);
-    outMsg.writeInt32(being->getId(), "account id");
+    outMsg.writeBeingId(being->getId(), "account id");
     outMsg.writeInt8(static_cast<int8_t>(type), "type");
     outMsg.writeInt16(static_cast<int16_t>(limit), "value");
 }
@@ -163,7 +163,7 @@ void AdminHandler::requestLogin(const Being *const being) const
         return;
 
     createOutPacket(CMSG_ADMIN_ID_TO_LOGIN);
-    outMsg.writeInt32(being->getId(), "account id");
+    outMsg.writeBeingId(being->getId(), "account id");
 }
 
 void AdminHandler::setTileType(const int x, const int y,
@@ -181,13 +181,13 @@ void AdminHandler::unequipAll(const Being *const being) const
         return;
 
     createOutPacket(CMSG_ADMIN_UNEQUIP_ALL);
-    outMsg.writeInt32(being->getId(), "account id");
+    outMsg.writeBeingId(being->getId(), "account id");
 }
 
 void AdminHandler::processAdminGetLoginAck(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
-    msg.readInt32("account id");
+    msg.readBeingId("account id");
     msg.readString(24, "login");
 }
 
