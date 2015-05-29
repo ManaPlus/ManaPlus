@@ -180,7 +180,7 @@ class LocalPlayer final : public Being,
                       const int amount,
                       const unsigned char color,
                       const BeingId floorItemId,
-                      const Pickup::Type fail);
+                      const PickupT fail);
 
         int getLevel() const override final A_WARN_UNUSED;
 

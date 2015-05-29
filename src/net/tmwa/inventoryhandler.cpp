@@ -361,7 +361,7 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
 
     if (err)
     {
-        Pickup::Type pickup;
+        PickupT pickup;
         switch (err)
         {
             case 1:

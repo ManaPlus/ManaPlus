@@ -23,26 +23,23 @@
 #ifndef ENUMS_BEING_PICKUP_H
 #define ENUMS_BEING_PICKUP_H
 
+#include "enums/simpletypes/enumdefines.h"
+
 #include "localconsts.h"
 
-namespace Pickup
+enumStart(Pickup)
 {
-    /**
-     * Reasons an item can fail to be picked up.
-     */
-    enum Type
-    {
-        OKAY = 0,
-        UNKNOWN,
-        BAD_ITEM,
-        TOO_HEAVY,
-        TOO_FAR,
-        INV_FULL,
-        STACK_FULL,
-        DROP_STEAL,
-        MAX_AMOUNT,
-        STACK_AMOUNT
-    };
-}  // namespace Pickup
+    OKAY = 0,
+    UNKNOWN,
+    BAD_ITEM,
+    TOO_HEAVY,
+    TOO_FAR,
+    INV_FULL,
+    STACK_FULL,
+    DROP_STEAL,
+    MAX_AMOUNT,
+    STACK_AMOUNT
+}
+enumEnd(Pickup);
 
 #endif  // ENUMS_BEING_PICKUP_H

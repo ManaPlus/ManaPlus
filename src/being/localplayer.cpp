@@ -818,7 +818,7 @@ void LocalPlayer::pickedUp(const ItemInfo &itemInfo,
                            const int amount,
                            const unsigned char color,
                            const BeingId floorItemId,
-                           const Pickup::Type fail)
+                           const PickupT fail)
 {
     if (fail != Pickup::OKAY)
     {
