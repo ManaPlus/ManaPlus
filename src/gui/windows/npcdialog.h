@@ -24,6 +24,7 @@
 #define GUI_WINDOWS_NPCDIALOG_H
 
 #include "enums/simpletypes/beingid.h"
+#include "enums/simpletypes/beingtypeid.h"
 #include "enums/simpletypes/visible.h"
 
 #include "gui/models/extendedlistmodel.h"
@@ -197,7 +198,7 @@ class NpcDialog final : public Window,
 
         void refocus();
 
-        void showAvatar(const BeingId avatarId);
+        void showAvatar(const BeingTypeId avatarId);
 
         void setAvatarDirection(const uint8_t direction);
 

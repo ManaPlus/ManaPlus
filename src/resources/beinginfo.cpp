@@ -69,7 +69,7 @@ BeingInfo::BeingInfo() :
     mMaxHP(0),
     mSortOffsetY(0),
     mDeadSortOffsetY(31),
-    mAvatarId(BeingId_zero),
+    mAvatarId(BeingTypeId_zero),
     mWidth(0),
     mHeight(0),
     mStartFollowDist(3),

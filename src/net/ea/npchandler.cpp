@@ -165,7 +165,7 @@ void NpcHandler::processNpcCommand(Net::MessageIn &msg)
         case 6:  // show avatar
             if (mDialog)
             {
-                mDialog->showAvatar(id);
+                mDialog->showAvatar(fromInt(id, BeingTypeId));
             }
             break;
         case 7:  // set avatar direction

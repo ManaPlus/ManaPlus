@@ -79,9 +79,9 @@ void PETDB::loadXmlFile(const std::string &fileName)
             continue;
         }
 
-        const BeingId id = fromInt(XML::getProperty(
-            petNode, "id", -1), BeingId);
-        if (id == BeingId_negOne)
+        const BeingTypeId id = fromInt(XML::getProperty(
+            petNode, "id", -1), BeingTypeId);
+        if (id == BeingTypeId_negOne)
         {
             logger->log("PET Database: PET with missing ID in %s!",
                 paths.getStringValue("petsFile").c_str());
@@ -186,7 +186,7 @@ void PETDB::unload()
     mLoaded = false;
 }
 
-BeingInfo *PETDB::get(const BeingId id)
+BeingInfo *PETDB::get(const BeingTypeId id)
 {
     const BeingInfoIterator i = mPETInfos.find(id);
 

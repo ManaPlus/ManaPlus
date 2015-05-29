@@ -25,7 +25,7 @@
 
 #include "enums/being/targetcursorsize.h"
 
-#include "enums/simpletypes/beingid.h"
+#include "enums/simpletypes/beingtypeid.h"
 
 #include "resources/beingmenuitem.h"
 #include "resources/cursor.h"
@@ -191,10 +191,10 @@ class BeingInfo final
         void setDeadSortOffsetY(const int n)
         { mDeadSortOffsetY = n; }
 
-        BeingId getAvatarId() const A_WARN_UNUSED
+        BeingTypeId getAvatarId() const A_WARN_UNUSED
         { return mAvatarId; }
 
-        void setAvatarId(const BeingId id)
+        void setAvatarId(const BeingTypeId id)
         { mAvatarId = id; }
 
         int getWidth() const A_WARN_UNUSED
@@ -343,7 +343,7 @@ class BeingInfo final
         int mMaxHP;
         int mSortOffsetY;
         int mDeadSortOffsetY;
-        BeingId mAvatarId;
+        BeingTypeId mAvatarId;
         int mWidth;
         int mHeight;
         int mStartFollowDist;
@@ -367,7 +367,7 @@ class BeingInfo final
         bool mTargetSelection;
 };
 
-typedef std::map<BeingId, BeingInfo*> BeingInfos;
+typedef std::map<BeingTypeId, BeingInfo*> BeingInfos;
 typedef BeingInfos::iterator BeingInfoIterator;
 
 #endif  // RESOURCES_BEINGINFO_H

@@ -33,6 +33,7 @@
 
 #define fromInt(val, name) static_cast<name>(val)
 #define toInt(val, name) static_cast<name>(val)
+#define defIntEnumNeg(name) const name name##_negOne = static_cast<name>(-1)
 
 #else  // ADVGCC
 
@@ -41,6 +42,7 @@
     const name name##_zero = 0
 #define fromInt(val, name) (val)
 #define toInt(val, name) (val)
+#define defIntEnumNeg(name) const name name##_negOne = -1
 
 #endif  // ADVGCC
 

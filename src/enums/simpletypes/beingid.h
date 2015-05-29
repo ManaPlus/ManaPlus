@@ -24,11 +24,6 @@
 #include "enums/simpletypes/intdefines.h"
 
 defIntEnum(BeingId, int);
-
-#ifdef ADVGCC
-const BeingId BeingId_negOne = static_cast<BeingId>(-1);
-#else
-const BeingId BeingId_negOne = -1;
-#endif
+defIntEnumNeg(BeingId);
 
 #endif  // ENUMS_SIMPLETYPES_BEINGID_H

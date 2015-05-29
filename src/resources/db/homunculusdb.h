@@ -23,7 +23,7 @@
 #ifndef RESOURCES_DB_HOMUNCULUSDB_H
 #define RESOURCES_DB_HOMUNCULUSDB_H
 
-#include "enums/simpletypes/beingid.h"
+#include "enums/simpletypes/beingtypeid.h"
 
 #include "localconsts.h"
 
@@ -42,7 +42,7 @@ namespace HomunculusDB
 
     void loadXmlFile(const std::string &fileName);
 
-    BeingInfo *get(const BeingId id) A_WARN_UNUSED;
+    BeingInfo *get(const BeingTypeId id) A_WARN_UNUSED;
 }  // namespace HomunculusDB
 
 #endif  // RESOURCES_DB_HOMUNCULUSDB_H

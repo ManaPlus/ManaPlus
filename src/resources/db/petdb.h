@@ -23,7 +23,7 @@
 #ifndef RESOURCES_DB_PETDB_H
 #define RESOURCES_DB_PETDB_H
 
-#include "enums/simpletypes/beingid.h"
+#include "enums/simpletypes/beingtypeid.h"
 
 #include <string>
 
@@ -39,7 +39,7 @@ namespace PETDB
 
     void unload();
 
-    BeingInfo *get(const BeingId id) A_WARN_UNUSED;
+    BeingInfo *get(const BeingTypeId id) A_WARN_UNUSED;
 }  // namespace PETDB
 
 #endif  // RESOURCES_DB_PETDB_H

@@ -333,7 +333,7 @@ void Being::setSubtype(const uint16_t subtype, const uint16_t look)
 
     if (mType == ActorType::Monster)
     {
-        mInfo = MonsterDB::get(fromInt(mSubType, BeingId));
+        mInfo = MonsterDB::get(fromInt(mSubType, BeingTypeId));
         if (mInfo)
         {
             setName(mInfo->getName());
@@ -347,7 +347,7 @@ void Being::setSubtype(const uint16_t subtype, const uint16_t look)
 #ifdef EATHENA_SUPPORT
     if (mType == ActorType::Pet)
     {
-        mInfo = PETDB::get(fromInt(mSubType, BeingId));
+        mInfo = PETDB::get(fromInt(mSubType, BeingTypeId));
         if (mInfo)
         {
             setName(mInfo->getName());
@@ -360,7 +360,7 @@ void Being::setSubtype(const uint16_t subtype, const uint16_t look)
     }
     else if (mType == ActorType::Mercenary)
     {
-        mInfo = MercenaryDB::get(fromInt(mSubType, BeingId));
+        mInfo = MercenaryDB::get(fromInt(mSubType, BeingTypeId));
         if (mInfo)
         {
             setName(mInfo->getName());
@@ -373,7 +373,7 @@ void Being::setSubtype(const uint16_t subtype, const uint16_t look)
     }
     if (mType == ActorType::Homunculus)
     {
-        mInfo = HomunculusDB::get(fromInt(mSubType, BeingId));
+        mInfo = HomunculusDB::get(fromInt(mSubType, BeingTypeId));
         if (mInfo)
         {
             setName(mInfo->getName());
@@ -387,7 +387,7 @@ void Being::setSubtype(const uint16_t subtype, const uint16_t look)
 #endif
     else if (mType == ActorType::Npc)
     {
-        mInfo = NPCDB::get(fromInt(mSubType, BeingId));
+        mInfo = NPCDB::get(fromInt(mSubType, BeingTypeId));
         if (mInfo)
         {
             setupSpriteDisplay(mInfo->getDisplay(), ForceDisplay_false);
@@ -396,13 +396,13 @@ void Being::setSubtype(const uint16_t subtype, const uint16_t look)
     }
     else if (mType == ActorType::Avatar)
     {
-        mInfo = AvatarDB::get(fromInt(mSubType, BeingId));
+        mInfo = AvatarDB::get(fromInt(mSubType, BeingTypeId));
         if (mInfo)
             setupSpriteDisplay(mInfo->getDisplay(), ForceDisplay_false);
     }
     else if (mType == ActorType::LocalPet)
     {
-        mInfo = PETDB::get(mId);
+        mInfo = PETDB::get(fromInt(mId, BeingTypeId));
         if (mInfo)
         {
             setName(mInfo->getName());

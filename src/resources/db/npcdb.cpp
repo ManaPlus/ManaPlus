@@ -81,10 +81,10 @@ void NPCDB::loadXmlFile(const std::string &fileName)
         if (!xmlNameEqual(npcNode, "npc"))
             continue;
 
-        const BeingId id = fromInt(XML::getProperty(
-            npcNode, "id", 0), BeingId);
+        const BeingTypeId id = fromInt(XML::getProperty(
+            npcNode, "id", 0), BeingTypeId);
         BeingInfo *currentInfo = nullptr;
-        if (id == BeingId_zero)
+        if (id == BeingTypeId_zero)
         {
             logger->log("NPC Database: NPC with missing ID in %s!",
                 paths.getStringValue("npcsFile").c_str());
@@ -107,7 +107,7 @@ void NPCDB::loadXmlFile(const std::string &fileName)
             "deadSortOffsetY", 31));
 
         currentInfo->setAvatarId(fromInt(XML::getProperty(
-            npcNode, "avatar", 0), BeingId));
+            npcNode, "avatar", 0), BeingTypeId));
 
         SpriteDisplay display;
         for_each_xml_child_node(spriteNode, npcNode)
@@ -160,7 +160,7 @@ void NPCDB::unload()
     mLoaded = false;
 }
 
-BeingInfo *NPCDB::get(const BeingId id)
+BeingInfo *NPCDB::get(const BeingTypeId id)
 {
     const BeingInfoIterator i = mNPCInfos.find(id);
 
@@ -176,10 +176,10 @@ BeingInfo *NPCDB::get(const BeingId id)
     }
 }
 
-BeingId NPCDB::getAvatarFor(const BeingId id)
+BeingTypeId NPCDB::getAvatarFor(const BeingTypeId id)
 {
     const BeingInfo *const info = get(id);
     if (!info)
-        return BeingId_zero;
+        return BeingTypeId_zero;
     return info->getAvatarId();
 }

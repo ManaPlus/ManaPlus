@@ -205,7 +205,7 @@ void NpcDialog::postInit()
         if (being)
         {
             showAvatar(NPCDB::getAvatarFor(fromInt(
-                being->getSubType(), BeingId)));
+                being->getSubType(), BeingTypeId)));
             setCaption(being->getName());
         }
     }
@@ -862,9 +862,9 @@ void NpcDialog::restoreCamera()
     mCameraMode = -1;
 }
 
-void NpcDialog::showAvatar(const BeingId avatarId)
+void NpcDialog::showAvatar(const BeingTypeId avatarId)
 {
-    const bool needShow = (avatarId != BeingId_zero);
+    const bool needShow = (avatarId != BeingTypeId_zero);
     if (needShow)
     {
         delete mAvatarBeing;

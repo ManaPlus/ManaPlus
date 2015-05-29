@@ -76,8 +76,8 @@ void AvatarDB::loadXmlFile(const std::string &fileName)
         if (!xmlNameEqual(avatarNode, "avatar"))
             continue;
 
-        const BeingId id = fromInt(XML::getProperty(
-            avatarNode, "id", 0), BeingId);
+        const BeingTypeId id = fromInt(XML::getProperty(
+            avatarNode, "id", 0), BeingTypeId);
         BeingInfo *currentInfo = nullptr;
         if (mAvatarInfos.find(id) != mAvatarInfos.end())
             currentInfo = mAvatarInfos[id];
@@ -132,7 +132,7 @@ void AvatarDB::unload()
     mLoaded = false;
 }
 
-BeingInfo *AvatarDB::get(const BeingId id)
+BeingInfo *AvatarDB::get(const BeingTypeId id)
 {
     BeingInfoIterator i = mAvatarInfos.find(id);
     if (i == mAvatarInfos.end())

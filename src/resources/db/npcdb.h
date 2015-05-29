@@ -23,7 +23,7 @@
 #ifndef RESOURCES_DB_NPCDB_H
 #define RESOURCES_DB_NPCDB_H
 
-#include "enums/simpletypes/beingid.h"
+#include "enums/simpletypes/beingtypeid.h"
 
 #include <string>
 
@@ -40,9 +40,9 @@ namespace NPCDB
 
     void unload();
 
-    BeingInfo *get(const BeingId id) A_WARN_UNUSED;
+    BeingInfo *get(const BeingTypeId id) A_WARN_UNUSED;
 
-    BeingId getAvatarFor(const BeingId id);
+    BeingTypeId getAvatarFor(const BeingTypeId id);
 
     void loadXmlFile(const std::string &fileName);
 }  // namespace NPCDB

@@ -1058,6 +1058,7 @@ SET(SRCS
     enums/simpletypes/allowsort.h
     enums/simpletypes/allplayers.h
     enums/simpletypes/beingid.h
+    enums/simpletypes/beingtypeid.h
     enums/simpletypes/booldefines.h
     enums/simpletypes/damaged.h
     enums/simpletypes/enable.h

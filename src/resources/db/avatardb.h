@@ -23,7 +23,7 @@
 #ifndef RESOURCES_DB_AVATARDB_H
 #define RESOURCES_DB_AVATARDB_H
 
-#include "enums/simpletypes/beingid.h"
+#include "enums/simpletypes/beingtypeid.h"
 
 #include <string>
 
@@ -37,7 +37,7 @@ namespace AvatarDB
 
     void unload();
 
-    BeingInfo *get(const BeingId id) A_WARN_UNUSED;
+    BeingInfo *get(const BeingTypeId id) A_WARN_UNUSED;
 
     void loadXmlFile(const std::string &fileName);
 }  // namespace AvatarDB

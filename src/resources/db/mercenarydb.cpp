@@ -85,11 +85,11 @@ void MercenaryDB::loadXmlFile(const std::string &fileName)
 
         const int id = XML::getProperty(mercenaryNode, "id", 0);
         BeingInfo *currentInfo = nullptr;
-        if (mMercenaryInfos.find(fromInt(id + offset, BeingId))
+        if (mMercenaryInfos.find(fromInt(id + offset, BeingTypeId))
             != mMercenaryInfos.end())
         {
             logger->log("MercenaryDB: Redefinition of mercenary ID %d", id);
-            currentInfo = mMercenaryInfos[fromInt(id + offset, BeingId)];
+            currentInfo = mMercenaryInfos[fromInt(id + offset, BeingTypeId)];
         }
         if (!currentInfo)
             currentInfo = new BeingInfo;
@@ -133,7 +133,7 @@ void MercenaryDB::loadXmlFile(const std::string &fileName)
         }
         currentInfo->setDisplay(display);
 
-        mMercenaryInfos[fromInt(id + offset, BeingId)] = currentInfo;
+        mMercenaryInfos[fromInt(id + offset, BeingTypeId)] = currentInfo;
     }
 }
 
@@ -146,7 +146,7 @@ void MercenaryDB::unload()
 }
 
 
-BeingInfo *MercenaryDB::get(const BeingId id)
+BeingInfo *MercenaryDB::get(const BeingTypeId id)
 {
     BeingInfoIterator i = mMercenaryInfos.find(id);
 

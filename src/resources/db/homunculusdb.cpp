@@ -85,11 +85,11 @@ void HomunculusDB::loadXmlFile(const std::string &fileName)
 
         const int id = XML::getProperty(homunculusNode, "id", 0);
         BeingInfo *currentInfo = nullptr;
-        if (mHomunculusInfos.find(fromInt(id + offset, BeingId))
+        if (mHomunculusInfos.find(fromInt(id + offset, BeingTypeId))
             != mHomunculusInfos.end())
         {
             logger->log("HomunculusDB: Redefinition of homunculus ID %d", id);
-            currentInfo = mHomunculusInfos[fromInt(id + offset, BeingId)];
+            currentInfo = mHomunculusInfos[fromInt(id + offset, BeingTypeId)];
         }
         if (!currentInfo)
             currentInfo = new BeingInfo;
@@ -134,7 +134,7 @@ void HomunculusDB::loadXmlFile(const std::string &fileName)
         }
         currentInfo->setDisplay(display);
 
-        mHomunculusInfos[fromInt(id + offset, BeingId)] = currentInfo;
+        mHomunculusInfos[fromInt(id + offset, BeingTypeId)] = currentInfo;
     }
 }
 
@@ -147,7 +147,7 @@ void HomunculusDB::unload()
 }
 
 
-BeingInfo *HomunculusDB::get(const BeingId id)
+BeingInfo *HomunculusDB::get(const BeingTypeId id)
 {
     BeingInfoIterator i = mHomunculusInfos.find(id);
 

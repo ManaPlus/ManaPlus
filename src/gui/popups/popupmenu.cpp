@@ -389,7 +389,8 @@ bool PopupMenu::addBeingMenu()
     if (!being)
         return false;
 
-    BeingInfo *const info = NPCDB::get(fromInt(being->getSubType(), BeingId));
+    BeingInfo *const info = NPCDB::get(fromInt(
+        being->getSubType(), BeingTypeId));
     if (!info)
         return false;
 

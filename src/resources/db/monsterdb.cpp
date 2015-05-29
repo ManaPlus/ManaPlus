@@ -88,11 +88,11 @@ void MonsterDB::loadXmlFile(const std::string &fileName)
 
         const int id = XML::getProperty(monsterNode, "id", 0);
         BeingInfo *currentInfo = nullptr;
-        if (mMonsterInfos.find(fromInt(id + offset, BeingId))
+        if (mMonsterInfos.find(fromInt(id + offset, BeingTypeId))
             != mMonsterInfos.end())
         {
             logger->log("MonsterDB: Redefinition of monster ID %d", id);
-            currentInfo = mMonsterInfos[fromInt(id + offset, BeingId)];
+            currentInfo = mMonsterInfos[fromInt(id + offset, BeingTypeId)];
         }
         if (!currentInfo)
             currentInfo = new BeingInfo;
@@ -140,7 +140,7 @@ void MonsterDB::loadXmlFile(const std::string &fileName)
         }
         currentInfo->setDisplay(display);
 
-        mMonsterInfos[fromInt(id + offset, BeingId)] = currentInfo;
+        mMonsterInfos[fromInt(id + offset, BeingTypeId)] = currentInfo;
     }
 }
 
@@ -153,14 +153,14 @@ void MonsterDB::unload()
 }
 
 
-BeingInfo *MonsterDB::get(const BeingId id)
+BeingInfo *MonsterDB::get(const BeingTypeId id)
 {
     BeingInfoIterator i = mMonsterInfos.find(id);
 
     if (i == mMonsterInfos.end())
     {
         i = mMonsterInfos.find(fromInt(toInt(
-            id, int) + OLD_TMWATHENA_OFFSET, BeingId));
+            id, int) + OLD_TMWATHENA_OFFSET, BeingTypeId));
         if (i == mMonsterInfos.end())
         {
             logger->log("MonsterDB: Warning, unknown monster ID %d requested",
