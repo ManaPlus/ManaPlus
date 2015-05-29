@@ -85,12 +85,12 @@ class MouseInput final
         ~MouseInput()
         { }
 
-        void setType(MouseEventType::Type type)
+        void setType(MouseEventTypeT type)
         {
             mType = type;
         }
 
-        MouseEventType::Type getType() const
+        MouseEventTypeT getType() const
         {
             return mType;
         }
@@ -162,7 +162,7 @@ class MouseInput final
         /**
          * Holds the type of the mouse input.
          */
-        MouseEventType::Type mType;
+        MouseEventTypeT mType;
 
         /**
          * Holds the button of the mouse input.

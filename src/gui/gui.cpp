@@ -802,7 +802,7 @@ void Gui::updateFonts()
 }
 
 void Gui::distributeMouseEvent(Widget *const source,
-                               const MouseEventType::Type type,
+                               const MouseEventTypeT type,
                                const MouseButtonT button,
                                const int x, const int y,
                                const bool force,
@@ -853,7 +853,7 @@ void Gui::distributeMouseEvent(Widget *const source,
             std::list<MouseListener*> mouseListeners
                 = widget->getMouseListeners();
 
-            const MouseEventType::Type mouseType = event.getType();
+            const MouseEventTypeT mouseType = event.getType();
             // Send the event to all mouse listeners of the widget.
             FOR_EACH (std::list<MouseListener*>::const_iterator,
                  it, mouseListeners)

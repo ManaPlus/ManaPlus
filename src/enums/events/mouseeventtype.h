@@ -64,24 +64,21 @@
 #ifndef ENUMS_EVENTS_MOUSEEVENTTYPE_H
 #define ENUMS_EVENTS_MOUSEEVENTTYPE_H
 
-namespace MouseEventType
+#include "enums/simpletypes/enumdefines.h"
+
+enumStart(MouseEventType)
 {
-    /**
-     * Mouse event types.
-     */
-    enum Type
-    {
-        MOVED = 0,
-        PRESSED,
-        RELEASED,
-        WHEEL_MOVED_DOWN,
-        WHEEL_MOVED_UP,
-        CLICKED,
-        ENTERED,
-        EXITED,
-        DRAGGED,
-        RELEASED2 = 100
-    };
-}  // namespace MouseEventType
+    MOVED = 0,
+    PRESSED,
+    RELEASED,
+    WHEEL_MOVED_DOWN,
+    WHEEL_MOVED_UP,
+    CLICKED,
+    ENTERED,
+    EXITED,
+    DRAGGED,
+    RELEASED2 = 100
+}
+enumEnd(MouseEventType);
 
 #endif  // ENUMS_EVENTS_MOUSEEVENTTYPE_H

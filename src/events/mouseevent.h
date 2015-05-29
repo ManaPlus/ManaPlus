@@ -92,7 +92,7 @@ class MouseEvent: public InputGuiEvent
           *                   It's set to zero if another button is used.
           */
         MouseEvent(Widget *const source,
-                   const MouseEventType::Type type,
+                   const MouseEventTypeT type,
                    const MouseButtonT button,
                    const int x,
                    const int y,
@@ -150,7 +150,7 @@ class MouseEvent: public InputGuiEvent
           *
           * @return The type of the event.
           */
-        MouseEventType::Type getType() const A_WARN_UNUSED
+        MouseEventTypeT getType() const A_WARN_UNUSED
         { return mType; }
 
         void setX(int n)
@@ -163,7 +163,7 @@ class MouseEvent: public InputGuiEvent
         /**
           * Holds the type of the mouse event.
           */
-        MouseEventType::Type mType;
+        MouseEventTypeT mType;
 
         /**
           * Holds the button of the mouse event.

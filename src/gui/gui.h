@@ -328,7 +328,7 @@ class Gui final
         void handleMouseInput();
 
         void distributeMouseEvent(Widget *const source,
-                                  const MouseEventType::Type type,
+                                  const MouseEventTypeT type,
                                   const MouseButtonT button,
                                   const int x, const int y,
                                   const bool force = false,
