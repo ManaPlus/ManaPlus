@@ -47,14 +47,14 @@ class SocialGuildTab2 final : public SocialTab,
             // TRANSLATORS: tab in social window
             setCaption(_("Guild"));
 
-            setTabColor(&getThemeColor(Theme::GUILD_SOCIAL_TAB),
-                &getThemeColor(Theme::GUILD_SOCIAL_TAB_OUTLINE));
+            setTabColor(&getThemeColor(ThemeColorId::GUILD_SOCIAL_TAB),
+                &getThemeColor(ThemeColorId::GUILD_SOCIAL_TAB_OUTLINE));
             setHighlightedTabColor(&getThemeColor(
-                Theme::GUILD_SOCIAL_TAB_HIGHLIGHTED), &getThemeColor(
-                Theme::GUILD_SOCIAL_TAB_HIGHLIGHTED_OUTLINE));
+                ThemeColorId::GUILD_SOCIAL_TAB_HIGHLIGHTED), &getThemeColor(
+                ThemeColorId::GUILD_SOCIAL_TAB_HIGHLIGHTED_OUTLINE));
             setSelectedTabColor(&getThemeColor(
-                Theme::GUILD_SOCIAL_TAB_SELECTED),
-                &getThemeColor(Theme::GUILD_SOCIAL_TAB_SELECTED_OUTLINE));
+                ThemeColorId::GUILD_SOCIAL_TAB_SELECTED),
+                &getThemeColor(ThemeColorId::GUILD_SOCIAL_TAB_SELECTED_OUTLINE));
 
             createControls(guild, showBackground);
         }

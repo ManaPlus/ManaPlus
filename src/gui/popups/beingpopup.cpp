@@ -70,20 +70,20 @@ BeingPopup::BeingPopup() :
     mBeingComment->setPosition(0, 5 * fontHeight);
     mBeingRoom->setPosition(0, 6 * fontHeight);
 
-    mBeingParty->setForegroundColorAll(getThemeColor(Theme::POPUP),
-        getThemeColor(Theme::POPUP_OUTLINE));
-    mBeingGuild->setForegroundColorAll(getThemeColor(Theme::POPUP),
-        getThemeColor(Theme::POPUP_OUTLINE));
-    mBeingRank->setForegroundColorAll(getThemeColor(Theme::POPUP),
-        getThemeColor(Theme::POPUP_OUTLINE));
-    mBeingBuyBoard->setForegroundColorAll(getThemeColor(Theme::POPUP),
-        getThemeColor(Theme::POPUP_OUTLINE));
-    mBeingSellBoard->setForegroundColorAll(getThemeColor(Theme::POPUP),
-        getThemeColor(Theme::POPUP_OUTLINE));
-    mBeingComment->setForegroundColorAll(getThemeColor(Theme::POPUP),
-        getThemeColor(Theme::POPUP_OUTLINE));
-    mBeingRoom->setForegroundColorAll(getThemeColor(Theme::POPUP),
-        getThemeColor(Theme::POPUP_OUTLINE));
+    mBeingParty->setForegroundColorAll(getThemeColor(ThemeColorId::POPUP),
+        getThemeColor(ThemeColorId::POPUP_OUTLINE));
+    mBeingGuild->setForegroundColorAll(getThemeColor(ThemeColorId::POPUP),
+        getThemeColor(ThemeColorId::POPUP_OUTLINE));
+    mBeingRank->setForegroundColorAll(getThemeColor(ThemeColorId::POPUP),
+        getThemeColor(ThemeColorId::POPUP_OUTLINE));
+    mBeingBuyBoard->setForegroundColorAll(getThemeColor(ThemeColorId::POPUP),
+        getThemeColor(ThemeColorId::POPUP_OUTLINE));
+    mBeingSellBoard->setForegroundColorAll(getThemeColor(ThemeColorId::POPUP),
+        getThemeColor(ThemeColorId::POPUP_OUTLINE));
+    mBeingComment->setForegroundColorAll(getThemeColor(ThemeColorId::POPUP),
+        getThemeColor(ThemeColorId::POPUP_OUTLINE));
+    mBeingRoom->setForegroundColorAll(getThemeColor(ThemeColorId::POPUP),
+        getThemeColor(ThemeColorId::POPUP_OUTLINE));
 }
 
 BeingPopup::~BeingPopup()
@@ -138,13 +138,13 @@ void BeingPopup::show(const int x, const int y, Being *const b)
     if (b->isAdvanced())
     {
         mBeingName->setForegroundColorAll(getThemeColor(
-            Theme::PLAYER_ADVANCED), getThemeColor(
-            Theme::PLAYER_ADVANCED_OUTLINE));
+            ThemeColorId::PLAYER_ADVANCED), getThemeColor(
+            ThemeColorId::PLAYER_ADVANCED_OUTLINE));
     }
     else
     {
-        mBeingName->setForegroundColorAll(getThemeColor(Theme::POPUP),
-            getThemeColor(Theme::POPUP_OUTLINE));
+        mBeingName->setForegroundColorAll(getThemeColor(ThemeColorId::POPUP),
+            getThemeColor(ThemeColorId::POPUP_OUTLINE));
     }
 
     mBeingName->adjustSize();

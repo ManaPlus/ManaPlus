@@ -22,6 +22,8 @@
 
 #include "particle/textparticle.h"
 
+#include "enums/gui/themecolorid.h"
+
 #include "gui/theme.h"
 
 #include "gui/fonts/font.h"
@@ -77,7 +79,7 @@ void TextParticle::draw(Graphics *const graphics,
     graphics->setColor(color);
     if (mOutline)
     {
-        const Color &color2 = theme->getColor(Theme::OUTLINE,
+        const Color &color2 = theme->getColor(ThemeColorId::OUTLINE,
             static_cast<int>(alpha));
         mTextFont->drawString(graphics,
             color, color2,

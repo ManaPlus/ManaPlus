@@ -26,6 +26,8 @@
 #include "configuration.h"
 #include "textmanager.h"
 
+#include "enums/gui/themecolorid.h"
+
 #include "gui/gui.h"
 #include "gui/theme.h"
 
@@ -57,7 +59,7 @@ Text::Text(const std::string &text,
     mText(text),
     mColor(color),
     mOutlineColor(isSpeech == Speech_true ?
-        *color : theme->getColor(Theme::OUTLINE, 255)),
+        *color : theme->getColor(ThemeColorId::OUTLINE, 255)),
     mIsSpeech(isSpeech),
     mTextChanged(true)
 {

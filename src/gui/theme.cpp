@@ -27,6 +27,8 @@
 #include "configuration.h"
 #include "graphicsmanager.h"
 
+#include "enums/gui/themecolorid.h"
+
 #include "gui/skin.h"
 #include "gui/themeinfo.h"
 
@@ -67,7 +69,7 @@ static void initDefaultThemePath()
 }
 
 Theme::Theme() :
-    Palette(THEME_COLORS_END * THEME_PALETTES),
+    Palette(ThemeColorId::THEME_COLORS_END * THEME_PALETTES),
     mSkins(),
     mMinimumOpacity(-1.0F),
     mProgressColors(ProgressColors(THEME_PROG_END))
@@ -76,56 +78,56 @@ Theme::Theme() :
 
     config.addListener("guialpha", this);
 
-    mColors[HIGHLIGHT].ch = 'H';
-    mColors[CHAT].ch = 'C';
-    mColors[GM].ch = 'G';
-    mColors[GLOBAL].ch = 'g';
-    mColors[PLAYER].ch = 'Y';
-    mColors[WHISPER_TAB].ch = 'W';
-    mColors[WHISPER_TAB_OFFLINE].ch = 'w';
-    mColors[IS].ch = 'I';
-    mColors[PARTY_CHAT_TAB].ch = 'P';
-    mColors[GUILD_CHAT_TAB].ch = 'U';
-    mColors[SERVER].ch = 'S';
-    mColors[LOGGER].ch = 'L';
-    mColors[HYPERLINK].ch = '<';
-    mColors[SELFNICK].ch = 's';
-    mColors[OLDCHAT].ch = 'o';
-    mColors[AWAYCHAT].ch = 'a';
-    mCharColors['H'] = HIGHLIGHT;
-    mCharColors['C'] = CHAT;
-    mCharColors['G'] = GM;
-    mCharColors['g'] = GLOBAL;
-    mCharColors['Y'] = PLAYER;
-    mCharColors['W'] = WHISPER_TAB;
-    mCharColors['w'] = WHISPER_TAB_OFFLINE;
-    mCharColors['I'] = IS;
-    mCharColors['P'] = PARTY_CHAT_TAB;
-    mCharColors['U'] = GUILD_CHAT_TAB;
-    mCharColors['S'] = SERVER;
-    mCharColors['L'] = LOGGER;
-    mCharColors['<'] = HYPERLINK;
-    mCharColors['s'] = SELFNICK;
-    mCharColors['o'] = OLDCHAT;
-    mCharColors['a'] = AWAYCHAT;
+    mColors[ThemeColorId::HIGHLIGHT].ch = 'H';
+    mColors[ThemeColorId::CHAT].ch = 'C';
+    mColors[ThemeColorId::GM].ch = 'G';
+    mColors[ThemeColorId::GLOBAL].ch = 'g';
+    mColors[ThemeColorId::PLAYER].ch = 'Y';
+    mColors[ThemeColorId::WHISPER_TAB].ch = 'W';
+    mColors[ThemeColorId::WHISPER_TAB_OFFLINE].ch = 'w';
+    mColors[ThemeColorId::IS].ch = 'I';
+    mColors[ThemeColorId::PARTY_CHAT_TAB].ch = 'P';
+    mColors[ThemeColorId::GUILD_CHAT_TAB].ch = 'U';
+    mColors[ThemeColorId::SERVER].ch = 'S';
+    mColors[ThemeColorId::LOGGER].ch = 'L';
+    mColors[ThemeColorId::HYPERLINK].ch = '<';
+    mColors[ThemeColorId::SELFNICK].ch = 's';
+    mColors[ThemeColorId::OLDCHAT].ch = 'o';
+    mColors[ThemeColorId::AWAYCHAT].ch = 'a';
+    mCharColors['H'] = ThemeColorId::HIGHLIGHT;
+    mCharColors['C'] = ThemeColorId::CHAT;
+    mCharColors['G'] = ThemeColorId::GM;
+    mCharColors['g'] = ThemeColorId::GLOBAL;
+    mCharColors['Y'] = ThemeColorId::PLAYER;
+    mCharColors['W'] = ThemeColorId::WHISPER_TAB;
+    mCharColors['w'] = ThemeColorId::WHISPER_TAB_OFFLINE;
+    mCharColors['I'] = ThemeColorId::IS;
+    mCharColors['P'] = ThemeColorId::PARTY_CHAT_TAB;
+    mCharColors['U'] = ThemeColorId::GUILD_CHAT_TAB;
+    mCharColors['S'] = ThemeColorId::SERVER;
+    mCharColors['L'] = ThemeColorId::LOGGER;
+    mCharColors['<'] = ThemeColorId::HYPERLINK;
+    mCharColors['s'] = ThemeColorId::SELFNICK;
+    mCharColors['o'] = ThemeColorId::OLDCHAT;
+    mCharColors['a'] = ThemeColorId::AWAYCHAT;
 
     // here need use outlined colors
-    mCharColors['H' | 0x80] = HIGHLIGHT_OUTLINE;
-    mCharColors['C' | 0x80] = CHAT_OUTLINE;
-    mCharColors['G' | 0x80] = GM_OUTLINE;
-    mCharColors['g' | 0x80] = GLOBAL_OUTLINE;
-    mCharColors['Y' | 0x80] = PLAYER_OUTLINE;
-    mCharColors['W' | 0x80] = WHISPER_TAB_OUTLINE;
-    mCharColors['w' | 0x80] = WHISPER_TAB_OFFLINE_OUTLINE;
-    mCharColors['I' | 0x80] = IS_OUTLINE;
-    mCharColors['P' | 0x80] = PARTY_CHAT_TAB_OUTLINE;
-    mCharColors['U' | 0x80] = GUILD_CHAT_TAB_OUTLINE;
-    mCharColors['S' | 0x80] = SERVER_OUTLINE;
-    mCharColors['L' | 0x80] = LOGGER_OUTLINE;
-    mCharColors['<' | 0x80] = HYPERLINK_OUTLINE;
-    mCharColors['s' | 0x80] = SELFNICK_OUTLINE;
-    mCharColors['o' | 0x80] = OLDCHAT_OUTLINE;
-    mCharColors['a' | 0x80] = AWAYCHAT_OUTLINE;
+    mCharColors['H' | 0x80] = ThemeColorId::HIGHLIGHT_OUTLINE;
+    mCharColors['C' | 0x80] = ThemeColorId::CHAT_OUTLINE;
+    mCharColors['G' | 0x80] = ThemeColorId::GM_OUTLINE;
+    mCharColors['g' | 0x80] = ThemeColorId::GLOBAL_OUTLINE;
+    mCharColors['Y' | 0x80] = ThemeColorId::PLAYER_OUTLINE;
+    mCharColors['W' | 0x80] = ThemeColorId::WHISPER_TAB_OUTLINE;
+    mCharColors['w' | 0x80] = ThemeColorId::WHISPER_TAB_OFFLINE_OUTLINE;
+    mCharColors['I' | 0x80] = ThemeColorId::IS_OUTLINE;
+    mCharColors['P' | 0x80] = ThemeColorId::PARTY_CHAT_TAB_OUTLINE;
+    mCharColors['U' | 0x80] = ThemeColorId::GUILD_CHAT_TAB_OUTLINE;
+    mCharColors['S' | 0x80] = ThemeColorId::SERVER_OUTLINE;
+    mCharColors['L' | 0x80] = ThemeColorId::LOGGER_OUTLINE;
+    mCharColors['<' | 0x80] = ThemeColorId::HYPERLINK_OUTLINE;
+    mCharColors['s' | 0x80] = ThemeColorId::SELFNICK_OUTLINE;
+    mCharColors['o' | 0x80] = ThemeColorId::OLDCHAT_OUTLINE;
+    mCharColors['a' | 0x80] = ThemeColorId::AWAYCHAT_OUTLINE;
 }
 
 Theme::~Theme()
@@ -633,7 +635,7 @@ ImageSet *Theme::getImageSetFromTheme(const std::string &path,
 
 static int readColorType(const std::string &type)
 {
-    static const std::string colors[Theme::THEME_COLORS_END] =
+    static const std::string colors[ThemeColorId::THEME_COLORS_END] =
     {
         "BROWSERBOX",
         "BROWSERBOX_OUTLINE",
@@ -860,7 +862,7 @@ static int readColorType(const std::string &type)
     if (type.empty())
         return -1;
 
-    for (int i = 0; i < Theme::THEME_COLORS_END; i++)
+    for (int i = 0; i < ThemeColorId::THEME_COLORS_END; i++)
     {
         if (compareStrI(type, colors[i]) == 0)
             return i;
@@ -1017,7 +1019,7 @@ void Theme::loadColors(std::string file)
                 const Color color = readColor(temp);
                 const GradientType grad = readColorGradient(
                     XML::getProperty(node, "effect", ""));
-                mColors[paletteId * THEME_COLORS_END + type].set(
+                mColors[paletteId * ThemeColorId::THEME_COLORS_END + type].set(
                     type, color, grad, 10);
 
                 if (!findLast(id, "_OUTLINE"))
@@ -1025,7 +1027,7 @@ void Theme::loadColors(std::string file)
                     const int type2 = readColorType(id + "_OUTLINE");
                     if (type2 < 0)
                         continue;
-                    const int idx = paletteId * THEME_COLORS_END;
+                    const int idx = paletteId * ThemeColorId::THEME_COLORS_END;
                     mColors[idx + type2] = mColors[idx + type];
                 }
             }

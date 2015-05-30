@@ -36,11 +36,11 @@ class ServersListBox final : public ListBox
                        ServersListModel *const model) :
             ListBox(widget, model, "serverslistbox.xml"),
             mNotSupportedColor(getThemeColor(
-                Theme::SERVER_VERSION_NOT_SUPPORTED)),
+                ThemeColorId::SERVER_VERSION_NOT_SUPPORTED)),
             mNotSupportedColor2(getThemeColor(
-                Theme::SERVER_VERSION_NOT_SUPPORTED_OUTLINE))
+                ThemeColorId::SERVER_VERSION_NOT_SUPPORTED_OUTLINE))
         {
-            mHighlightColor = getThemeColor(Theme::HIGHLIGHT);
+            mHighlightColor = getThemeColor(ThemeColorId::HIGHLIGHT);
         }
 
         void draw(Graphics *graphics) override final

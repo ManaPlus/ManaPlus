@@ -53,10 +53,10 @@ ItemShortcutContainer::ItemShortcutContainer(Widget2 *const widget,
     ShortcutContainer(widget),
     mItemClicked(false),
     mNumber(number),
-    mEquipedColor(getThemeColor(Theme::ITEM_EQUIPPED)),
-    mEquipedColor2(getThemeColor(Theme::ITEM_EQUIPPED_OUTLINE)),
-    mUnEquipedColor(getThemeColor(Theme::ITEM_NOT_EQUIPPED)),
-    mUnEquipedColor2(getThemeColor(Theme::ITEM_NOT_EQUIPPED_OUTLINE))
+    mEquipedColor(getThemeColor(ThemeColorId::ITEM_EQUIPPED)),
+    mEquipedColor2(getThemeColor(ThemeColorId::ITEM_EQUIPPED_OUTLINE)),
+    mUnEquipedColor(getThemeColor(ThemeColorId::ITEM_NOT_EQUIPPED)),
+    mUnEquipedColor2(getThemeColor(ThemeColorId::ITEM_NOT_EQUIPPED_OUTLINE))
 {
     if (itemShortcut[mNumber])
         mMaxItems = itemShortcut[mNumber]->getItemCount();
@@ -71,12 +71,12 @@ ItemShortcutContainer::~ItemShortcutContainer()
 void ItemShortcutContainer::setWidget2(const Widget2 *const widget)
 {
     Widget2::setWidget2(widget);
-    mEquipedColor = getThemeColor(Theme::ITEM_EQUIPPED);
-    mEquipedColor2 = getThemeColor(Theme::ITEM_EQUIPPED_OUTLINE);
-    mUnEquipedColor = getThemeColor(Theme::ITEM_NOT_EQUIPPED);
-    mUnEquipedColor2 = getThemeColor(Theme::ITEM_NOT_EQUIPPED_OUTLINE);
-    mForegroundColor = getThemeColor(Theme::TEXT);
-    mForegroundColor2 = getThemeColor(Theme::TEXT_OUTLINE);
+    mEquipedColor = getThemeColor(ThemeColorId::ITEM_EQUIPPED);
+    mEquipedColor2 = getThemeColor(ThemeColorId::ITEM_EQUIPPED_OUTLINE);
+    mUnEquipedColor = getThemeColor(ThemeColorId::ITEM_NOT_EQUIPPED);
+    mUnEquipedColor2 = getThemeColor(ThemeColorId::ITEM_NOT_EQUIPPED_OUTLINE);
+    mForegroundColor = getThemeColor(ThemeColorId::TEXT);
+    mForegroundColor2 = getThemeColor(ThemeColorId::TEXT_OUTLINE);
 }
 
 void ItemShortcutContainer::draw(Graphics *graphics)

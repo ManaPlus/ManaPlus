@@ -55,15 +55,15 @@ class SkillListBox final : public ListBox
             ListBox(widget, model, "skilllistbox.xml"),
             mModel(model),
             mPopup(new SkillPopup),
-            mTextColor(getThemeColor(Theme::TEXT)),
-            mTextColor2(getThemeColor(Theme::TEXT_OUTLINE)),
-            mCooldownColor(getThemeColor(Theme::SKILL_COOLDOWN)),
+            mTextColor(getThemeColor(ThemeColorId::TEXT)),
+            mTextColor2(getThemeColor(ThemeColorId::TEXT_OUTLINE)),
+            mCooldownColor(getThemeColor(ThemeColorId::SKILL_COOLDOWN)),
             mTextPadding(mSkin ? mSkin->getOption("textPadding", 34) : 34),
             mSpacing(mSkin ? mSkin->getOption("spacing", 0) : 0),
             mSkillClicked(false)
         {
             mRowHeight = getFont()->getHeight() * 2 + mSpacing + 2 * mPadding;
-            mHighlightColor = getThemeColor(Theme::HIGHLIGHT);
+            mHighlightColor = getThemeColor(ThemeColorId::HIGHLIGHT);
             mPopup->postInit();
 
             if (mRowHeight < 34)

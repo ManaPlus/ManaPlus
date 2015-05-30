@@ -48,8 +48,8 @@ Desktop::Desktop(const Widget2 *const widget) :
     mVersionLabel(new BrowserBox(this, BrowserBox::AUTO_WRAP, false,
         "browserbox.xml")),
     mSkin(nullptr),
-    mBackgroundColor(getThemeColor(Theme::BACKGROUND, 128)),
-    mBackgroundGrayColor(getThemeColor(Theme::BACKGROUND_GRAY)),
+    mBackgroundColor(getThemeColor(ThemeColorId::BACKGROUND, 128)),
+    mBackgroundGrayColor(getThemeColor(ThemeColorId::BACKGROUND_GRAY)),
     mShowBackground(true)
 {
     addWidgetListener(this);

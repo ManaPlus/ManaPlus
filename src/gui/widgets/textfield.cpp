@@ -110,7 +110,7 @@ TextField::TextField(const Widget2 *restrict const widget,
     mTextChunk(),
     mCaretPosition(0),
     mXScroll(0),
-    mCaretColor(&getThemeColor(Theme::CARET)),
+    mCaretColor(&getThemeColor(ThemeColorId::CARET)),
     mMinimum(0),
     mMaximum(0),
     mLastEventPaste(false),
@@ -127,8 +127,8 @@ TextField::TextField(const Widget2 *restrict const widget,
     addKeyListener(this);
 
     setFrameSize(2);
-    mForegroundColor = getThemeColor(Theme::TEXTFIELD);
-    mForegroundColor2 = getThemeColor(Theme::TEXTFIELD_OUTLINE);
+    mForegroundColor = getThemeColor(ThemeColorId::TEXTFIELD);
+    mForegroundColor2 = getThemeColor(ThemeColorId::TEXTFIELD_OUTLINE);
 
     addFocusListener(this);
 

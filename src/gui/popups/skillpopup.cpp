@@ -50,13 +50,13 @@ SkillPopup::SkillPopup() :
 
     mSkillDesc->setEditable(false);
     mSkillDesc->setPosition(0, fontHeight);
-    mSkillDesc->setForegroundColorAll(getThemeColor(Theme::POPUP),
-        getThemeColor(Theme::POPUP_OUTLINE));
+    mSkillDesc->setForegroundColorAll(getThemeColor(ThemeColorId::POPUP),
+        getThemeColor(ThemeColorId::POPUP_OUTLINE));
 
     mSkillEffect->setEditable(false);
     mSkillEffect->setPosition(0, 2 * fontHeight);
-    mSkillEffect->setForegroundColorAll(getThemeColor(Theme::POPUP),
-        getThemeColor(Theme::POPUP_OUTLINE));
+    mSkillEffect->setForegroundColorAll(getThemeColor(ThemeColorId::POPUP),
+        getThemeColor(ThemeColorId::POPUP_OUTLINE));
 }
 
 void SkillPopup::postInit()

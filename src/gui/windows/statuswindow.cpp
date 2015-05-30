@@ -113,16 +113,16 @@ StatusWindow::StatusWindow() :
     mHpBar = new ProgressBar(this, static_cast<float>(PlayerInfo::getAttribute(
         Attributes::HP)) / static_cast<float>(max), 80, 0, Theme::PROG_HP,
         "hpprogressbar.xml", "hpprogressbar_fill.xml");
-    mHpBar->setColor(getThemeColor(Theme::HP_BAR),
-        getThemeColor(Theme::HP_BAR_OUTLINE));
+    mHpBar->setColor(getThemeColor(ThemeColorId::HP_BAR),
+        getThemeColor(ThemeColorId::HP_BAR_OUTLINE));
 
     max = PlayerInfo::getAttribute(Attributes::EXP_NEEDED);
     mXpBar = new ProgressBar(this, max ?
             static_cast<float>(PlayerInfo::getAttribute(Attributes::EXP))
             / static_cast<float>(max) : static_cast<float>(0), 80, 0,
             Theme::PROG_EXP, "xpprogressbar.xml", "xpprogressbar_fill.xml");
-    mXpBar->setColor(getThemeColor(Theme::XP_BAR),
-        getThemeColor(Theme::XP_BAR_OUTLINE));
+    mXpBar->setColor(getThemeColor(ThemeColorId::XP_BAR),
+        getThemeColor(ThemeColorId::XP_BAR_OUTLINE));
 
     const bool magicBar = gameHandler->canUseMagicBar();
     const bool job = serverConfig.getValueBool("showJob", true);
@@ -141,13 +141,13 @@ StatusWindow::StatusWindow() :
             useMagic ? "mpprogressbar_fill.xml" : "nompprogressbar_fill.xml");
         if (useMagic)
         {
-            mMpBar->setColor(getThemeColor(Theme::MP_BAR),
-                getThemeColor(Theme::MP_BAR_OUTLINE));
+            mMpBar->setColor(getThemeColor(ThemeColorId::MP_BAR),
+                getThemeColor(ThemeColorId::MP_BAR_OUTLINE));
         }
         else
         {
-            mMpBar->setColor(getThemeColor(Theme::NO_MP_BAR),
-                getThemeColor(Theme::NO_MP_BAR_OUTLINE));
+            mMpBar->setColor(getThemeColor(ThemeColorId::NO_MP_BAR),
+                getThemeColor(ThemeColorId::NO_MP_BAR_OUTLINE));
         }
     }
     else
@@ -179,8 +179,8 @@ StatusWindow::StatusWindow() :
         mJobLabel = new Label(this, _("Job:"));
         mJobBar = new ProgressBar(this, 0.0F, 80, 0, Theme::PROG_JOB,
             "jobprogressbar.xml", "jobprogressbar_fill.xml");
-        mJobBar->setColor(getThemeColor(Theme::JOB_BAR),
-            getThemeColor(Theme::JOB_BAR_OUTLINE));
+        mJobBar->setColor(getThemeColor(ThemeColorId::JOB_BAR),
+            getThemeColor(ThemeColorId::JOB_BAR_OUTLINE));
 
         place(3, 0, mJobLvlLabel, 3);
         place(5, 2, mJobLabel).setPadding(3);
@@ -466,14 +466,14 @@ void StatusWindow::updateMPBar(ProgressBar *const bar,
 
     if (playerHandler->canUseMagic())
     {
-        bar->setColor(getThemeColor(Theme::MP_BAR),
-            getThemeColor(Theme::MP_BAR_OUTLINE));
+        bar->setColor(getThemeColor(ThemeColorId::MP_BAR),
+            getThemeColor(ThemeColorId::MP_BAR_OUTLINE));
         bar->setProgressPalette(Theme::PROG_MP);
     }
     else
     {
-        bar->setColor(getThemeColor(Theme::NO_MP_BAR),
-            getThemeColor(Theme::NO_MP_BAR_OUTLINE));
+        bar->setColor(getThemeColor(ThemeColorId::NO_MP_BAR),
+            getThemeColor(ThemeColorId::NO_MP_BAR_OUTLINE));
         bar->setProgressPalette(Theme::PROG_NO_MP);
     }
 
@@ -665,9 +665,9 @@ void StatusWindow::updateStatusBar(ProgressBar *const bar,
 
     bar->setProgress(50);
     if (settings.disableGameModifiers)
-        bar->setBackgroundColor(getThemeColor(Theme::STATUSBAR_ON));
+        bar->setBackgroundColor(getThemeColor(ThemeColorId::STATUSBAR_ON));
     else
-        bar->setBackgroundColor(getThemeColor(Theme::STATUSBAR_OFF));
+        bar->setBackgroundColor(getThemeColor(ThemeColorId::STATUSBAR_OFF));
 }
 
 void StatusWindow::action(const ActionEvent &event)

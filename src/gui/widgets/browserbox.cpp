@@ -72,8 +72,8 @@ ImageSet *BrowserBox::mEmotes = nullptr;
 int BrowserBox::mInstances = 0;
 
 #define readColor(color) \
-    mColors[0][color] = getThemeColor(Theme::color); \
-    mColors[1][color] = getThemeColor(Theme::color##_OUTLINE)
+    mColors[0][color] = getThemeColor(ThemeColorId::color); \
+    mColors[1][color] = getThemeColor(ThemeColorId::color##_OUTLINE)
 
 BrowserBox::BrowserBox(const Widget2 *const widget,
                        const unsigned int mode,
@@ -99,8 +99,8 @@ BrowserBox::BrowserBox(const Widget2 *const widget,
     mNewLinePadding(15),
     mItemPadding(0),
     mDataWidth(0),
-    mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
-    mHyperLinkColor(getThemeColor(Theme::HYPERLINK)),
+    mHighlightColor(getThemeColor(ThemeColorId::HIGHLIGHT)),
+    mHyperLinkColor(getThemeColor(ThemeColorId::HYPERLINK)),
     mOpaque(opaque),
     mUseLinksAndUserColors(true),
     mUseEmotes(true),
@@ -115,7 +115,7 @@ BrowserBox::BrowserBox(const Widget2 *const widget,
     setFocusable(true);
     addMouseListener(this);
 
-    mBackgroundColor = getThemeColor(Theme::BACKGROUND);
+    mBackgroundColor = getThemeColor(ThemeColorId::BACKGROUND);
 
     if (theme)
         mSkin = theme->load(skin, "browserbox.xml");
@@ -148,8 +148,8 @@ BrowserBox::BrowserBox(const Widget2 *const widget,
     readColor(GRAY);
     readColor(BROWN);
 
-    mForegroundColor = getThemeColor(Theme::BROWSERBOX);
-    mForegroundColor2 = getThemeColor(Theme::BROWSERBOX_OUTLINE);
+    mForegroundColor = getThemeColor(ThemeColorId::BROWSERBOX);
+    mForegroundColor2 = getThemeColor(ThemeColorId::BROWSERBOX_OUTLINE);
 }
 
 BrowserBox::~BrowserBox()

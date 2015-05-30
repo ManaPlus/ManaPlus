@@ -71,7 +71,7 @@ OutfitWindow::OutfitWindow() :
     // TRANSLATORS: outfits window label
     mKeyLabel(new Label(this, strprintf(_("Key: %s"),
         keyName(0).c_str()))),
-    mBorderColor(getThemeColor(Theme::BORDER, 64)),
+    mBorderColor(getThemeColor(ThemeColorId::BORDER, 64)),
     mCurrentOutfit(0),
     mBoxWidth(33),
     mBoxHeight(33),
@@ -88,7 +88,7 @@ OutfitWindow::OutfitWindow() :
     setCloseButton(true);
     setStickyButtonLock(true);
 
-    mBackgroundColor = getThemeColor(Theme::BACKGROUND, 32);
+    mBackgroundColor = getThemeColor(ThemeColorId::BACKGROUND, 32);
 
     setDefaultSize(250, 400, 150, 290);
     setMinWidth(145);

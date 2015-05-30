@@ -491,8 +491,8 @@ void Game::addWatermark()
     if (!boldFont || !config.getBoolValue("addwatermark"))
         return;
 
-    const Color &color1 = theme->getColor(Theme::TEXT, 255);
-    const Color &color2 = theme->getColor(Theme::TEXT_OUTLINE, 255);
+    const Color &color1 = theme->getColor(ThemeColorId::TEXT, 255);
+    const Color &color2 = theme->getColor(ThemeColorId::TEXT_OUTLINE, 255);
 
     boldFont->drawString(mainGraphics,
         color1,

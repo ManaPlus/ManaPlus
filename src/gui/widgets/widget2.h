@@ -21,6 +21,8 @@
 #ifndef GUI_WIDGETS_WIDGET2_H
 #define GUI_WIDGETS_WIDGET2_H
 
+#include "enums/gui/themecolorid.h"
+
 #include "gui/theme.h"
 
 class Widget;
@@ -59,7 +61,7 @@ class Widget2 notfinal
 
         void setPalette(int palette)
         {
-            mPaletteOffset = palette * Theme::THEME_COLORS_END;
+            mPaletteOffset = palette * ThemeColorId::THEME_COLORS_END;
             checkPalette();
             setWidget2(this);
         }
@@ -67,7 +69,7 @@ class Widget2 notfinal
         void checkPalette()
         {
             if (mPaletteOffset < 0 || mPaletteOffset
-                >= THEME_PALETTES * Theme::THEME_COLORS_END)
+                >= THEME_PALETTES * ThemeColorId::THEME_COLORS_END)
             {
                 mPaletteOffset = 0;
             }

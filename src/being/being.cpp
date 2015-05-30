@@ -1882,7 +1882,7 @@ void Being::drawSpeech(const int offsetX, const int offsetY)
                 getPixelX(),
                 getPixelY() - getHeight(),
                 Graphics::CENTER,
-                &theme->getColor(Theme::BUBBLE_TEXT, 255),
+                &theme->getColor(ThemeColorId::BUBBLE_TEXT, 255),
                 Speech_true);
         }
     }
@@ -2073,11 +2073,11 @@ void Being::updateColors()
         else if (this == localPlayer)
         {
             mNameColor = &userPalette->getColor(UserPalette::SELF);
-            mTextColor = &theme->getColor(Theme::PLAYER, 255);
+            mTextColor = &theme->getColor(ThemeColorId::PLAYER, 255);
         }
         else
         {
-            mTextColor = &theme->getColor(Theme::PLAYER, 255);
+            mTextColor = &theme->getColor(ThemeColorId::PLAYER, 255);
 
             if (player_relations.getRelation(mName) != PlayerRelation::ERASED)
                 mErased = false;

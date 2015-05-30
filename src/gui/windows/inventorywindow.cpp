@@ -106,8 +106,8 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
     mSplit(false),
     mCompactMode(false)
 {
-    mSlotsBar->setColor(getThemeColor(Theme::SLOTS_BAR),
-        getThemeColor(Theme::SLOTS_BAR_OUTLINE));
+    mSlotsBar->setColor(getThemeColor(ThemeColorId::SLOTS_BAR),
+        getThemeColor(ThemeColorId::SLOTS_BAR_OUTLINE));
 
     if (inventory)
     {
@@ -217,8 +217,8 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
             mWeightBar = new ProgressBar(this, 0.0F, 100, 0,
                 Theme::PROG_WEIGHT,
                 "weightprogressbar.xml", "weightprogressbar_fill.xml");
-            mWeightBar->setColor(getThemeColor(Theme::WEIGHT_BAR),
-                getThemeColor(Theme::WEIGHT_BAR_OUTLINE));
+            mWeightBar->setColor(getThemeColor(ThemeColorId::WEIGHT_BAR),
+                getThemeColor(ThemeColorId::WEIGHT_BAR_OUTLINE));
 
             // TRANSLATORS: outfits button tooltip
             mOutfitButton->setDescription(_("Outfits"));
@@ -286,8 +286,8 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
             mWeightBar = new ProgressBar(this, 0.0F, 100, 0,
                 Theme::PROG_WEIGHT,
                 "weightprogressbar.xml", "weightprogressbar_fill.xml");
-            mWeightBar->setColor(getThemeColor(Theme::WEIGHT_BAR),
-                getThemeColor(Theme::WEIGHT_BAR_OUTLINE));
+            mWeightBar->setColor(getThemeColor(ThemeColorId::WEIGHT_BAR),
+                getThemeColor(ThemeColorId::WEIGHT_BAR_OUTLINE));
 
             mSlotsBarCell = &place(3, 0, mSlotsBar, 3);
             mSortDropDownCell = &place(6, 0, mSortDropDown, 1);

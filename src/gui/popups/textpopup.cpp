@@ -47,8 +47,8 @@ void TextPopup::postInit()
         Label *const label = new Label(this);
         mText[f] = label;
         label->setPosition(0, y);
-        label->setForegroundColorAll(getThemeColor(Theme::POPUP),
-        getThemeColor(Theme::POPUP_OUTLINE));
+        label->setForegroundColorAll(getThemeColor(ThemeColorId::POPUP),
+        getThemeColor(ThemeColorId::POPUP_OUTLINE));
         add(label);
         y += fontHeight;
     }

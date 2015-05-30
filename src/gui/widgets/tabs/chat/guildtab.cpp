@@ -43,7 +43,7 @@ GuildTab::GuildTab(const Widget2 *const widget) :
     // TRANSLATORS: guild chat tab name
     ChatTab(widget, _("Guild"), "", "#Guild", ChatTabType::GUILD)
 {
-    setTabColors(Theme::GUILD_CHAT_TAB);
+    setTabColors(ThemeColorId::GUILD_CHAT_TAB);
     mShowOnline = config.getBoolValue("showGuildOnline");
     config.addListener("showGuildOnline", this);
 }

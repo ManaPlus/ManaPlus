@@ -94,7 +94,7 @@ TextBox::TextBox(const Widget2 *const widget) :
     addKeyListener(this);
     adjustSize();
 
-    mForegroundColor = getThemeColor(Theme::TEXTBOX);
+    mForegroundColor = getThemeColor(ThemeColorId::TEXTBOX);
     setOpaque(false);
     setFrameSize(0);
 }

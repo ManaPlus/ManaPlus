@@ -64,8 +64,8 @@ DropDown::DropDown(const Widget2 *const widget,
     FocusListener(),
     SelectionListener(),
     mPopup(new PopupList(this, listModel, extended, modal)),
-    mShadowColor(getThemeColor(Theme::DROPDOWN_SHADOW)),
-    mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
+    mShadowColor(getThemeColor(ThemeColorId::DROPDOWN_SHADOW)),
+    mHighlightColor(getThemeColor(ThemeColorId::HIGHLIGHT)),
     mPadding(1),
     mImagePadding(2),
     mSpacing(0),
@@ -79,7 +79,7 @@ DropDown::DropDown(const Widget2 *const widget,
     mAllowLogic = false;
     mPopup->postInit();
     mFrameSize = 2;
-    mForegroundColor2 = getThemeColor(Theme::DROPDOWN_OUTLINE);
+    mForegroundColor2 = getThemeColor(ThemeColorId::DROPDOWN_OUTLINE);
 
     mPopup->setHeight(100);
 
@@ -137,10 +137,10 @@ DropDown::DropDown(const Widget2 *const widget,
     addFocusListener(this);
 
     adjustHeight();
-//    mPopup->setForegroundColorAll(getThemeColor(Theme::DROPDOWN),
-//        getThemeColor(Theme::DROPDOWN_OUTLINE));
-    mForegroundColor = getThemeColor(Theme::DROPDOWN);
-    mForegroundColor2 = getThemeColor(Theme::DROPDOWN_OUTLINE);
+//    mPopup->setForegroundColorAll(getThemeColor(ThemeColorId::DROPDOWN),
+//        getThemeColor(ThemeColorId::DROPDOWN_OUTLINE));
+    mForegroundColor = getThemeColor(ThemeColorId::DROPDOWN);
+    mForegroundColor2 = getThemeColor(ThemeColorId::DROPDOWN_OUTLINE);
 
     if (!eventId.empty())
         setActionEventId(eventId);

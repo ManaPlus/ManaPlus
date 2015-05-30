@@ -67,12 +67,12 @@ MiniStatusWindow::MiniStatusWindow() :
     mBarNames(),
     mIcons(),
     // TRANSLATORS: status bar name
-    mHpBar(createBar(0, 100, 0, Theme::HP_BAR, Theme::PROG_HP,
+    mHpBar(createBar(0, 100, 0, ThemeColorId::HP_BAR, Theme::PROG_HP,
         "hpprogressbar.xml", "hpprogressbar_fill.xml",
         "hp bar", _("health bar"))),
     mMpBar(gameHandler->canUseMagicBar()
         ? createBar(0, 100, 0, playerHandler->canUseMagic()
-        ? Theme::MP_BAR : Theme::NO_MP_BAR,
+        ? ThemeColorId::MP_BAR : ThemeColorId::NO_MP_BAR,
         playerHandler->canUseMagic()
         ? Theme::PROG_MP : Theme::PROG_NO_MP,
         playerHandler->canUseMagic()
@@ -81,31 +81,31 @@ MiniStatusWindow::MiniStatusWindow() :
         ? "mpprogressbar_fill.xml" : "nompprogressbar_fill.xml",
         // TRANSLATORS: status bar name
         "mp bar", _("mana bar")) : nullptr),
-    mXpBar(createBar(0, 100, 0, Theme::XP_BAR, Theme::PROG_EXP,
+    mXpBar(createBar(0, 100, 0, ThemeColorId::XP_BAR, Theme::PROG_EXP,
         "xpprogressbar.xml", "xpprogressbar_fill.xml",
         // TRANSLATORS: status bar name
         "xp bar", _("experience bar"))),
     mJobBar(nullptr),
-    mWeightBar(createBar(0, 140, 0, Theme::WEIGHT_BAR, Theme::PROG_WEIGHT,
+    mWeightBar(createBar(0, 140, 0, ThemeColorId::WEIGHT_BAR, Theme::PROG_WEIGHT,
         "weightprogressbar.xml", "weightprogressbar_fill.xml",
         // TRANSLATORS: status bar name
         "weight bar", _("weight bar"))),
     mInvSlotsBar(createBar(0, 45, 0,
-        Theme::SLOTS_BAR, Theme::PROG_INVY_SLOTS,
+        ThemeColorId::SLOTS_BAR, Theme::PROG_INVY_SLOTS,
         "slotsprogressbar.xml", "slotsprogressbar_fill.xml",
         "inventory slots bar",
         // TRANSLATORS: status bar name
         _("inventory slots bar"))),
-    mMoneyBar(createBar(0, 130, 0, Theme::MONEY_BAR, Theme::PROG_MONEY,
+    mMoneyBar(createBar(0, 130, 0, ThemeColorId::MONEY_BAR, Theme::PROG_MONEY,
         "moneyprogressbar.xml", "moneyprogressbar_fill.xml",
         // TRANSLATORS: status bar name
         "money bar", _("money bar"))),
-    mArrowsBar(createBar(0, 50, 0, Theme::ARROWS_BAR, Theme::PROG_ARROWS,
+    mArrowsBar(createBar(0, 50, 0, ThemeColorId::ARROWS_BAR, Theme::PROG_ARROWS,
         "arrowsprogressbar.xml", "arrowsprogressbar_fill.xml",
         // TRANSLATORS: status bar name
         "arrows bar", _("arrows bar"))),
     mStatusBar(createBar(100, (config.getIntValue("fontSize") > 16
-        ? 250 : 165), 0, Theme::STATUS_BAR, Theme::PROG_STATUS,
+        ? 250 : 165), 0, ThemeColorId::STATUS_BAR, Theme::PROG_STATUS,
         "statusprogressbar.xml", "statusprogressbar_fill.xml",
         // TRANSLATORS: status bar name
         "status bar", _("status bar"))),
@@ -128,7 +128,7 @@ MiniStatusWindow::MiniStatusWindow() :
 
     if (job)
     {
-        mJobBar = createBar(0, 100, 0, Theme::JOB_BAR, Theme::PROG_JOB,
+        mJobBar = createBar(0, 100, 0, ThemeColorId::JOB_BAR, Theme::PROG_JOB,
             // TRANSLATORS: status bar name
             "jobprogressbar.xml", "jobprogressbar_fill.xml",
             "job bar", _("job bar"));

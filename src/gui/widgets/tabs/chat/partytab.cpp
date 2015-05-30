@@ -44,7 +44,7 @@ PartyTab::PartyTab(const Widget2 *const widget) :
     // TRANSLATORS: party chat tab name
     ChatTab(widget, _("Party"), "", "#Party", ChatTabType::PARTY)
 {
-    setTabColors(Theme::PARTY_CHAT_TAB);
+    setTabColors(ThemeColorId::PARTY_CHAT_TAB);
     mShowOnline = config.getBoolValue("showPartyOnline");
     config.addListener("showPartyOnline", this);
 }

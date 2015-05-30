@@ -192,6 +192,7 @@ manaplus_SOURCES += events/actionevent.h \
 	      gui/cliprect.h \
 	      gui/color.h \
 	      enums/gui/dialogtype.h \
+	      enums/gui/themecolorid.h \
 	      listeners/errorlistener.cpp \
 	      listeners/errorlistener.h \
 	      listeners/widgetdeathlistener.h \

@@ -34,7 +34,7 @@ ChannelTab::ChannelTab(const Widget2 *const widget,
                        const std::string &channel) :
     ChatTab(widget, channel, channel, channel, ChatTabType::CHANNEL)
 {
-    setTabColors(Theme::CHANNEL_CHAT_TAB);
+    setTabColors(ThemeColorId::CHANNEL_CHAT_TAB);
 }
 
 ChannelTab::~ChannelTab()

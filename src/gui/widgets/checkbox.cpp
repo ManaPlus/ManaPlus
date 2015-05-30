@@ -111,7 +111,7 @@ CheckBox::CheckBox(const Widget2 *const widget,
     addMouseListener(this);
     addKeyListener(this);
 
-    mForegroundColor2 = getThemeColor(Theme::CHECKBOX_OUTLINE);
+    mForegroundColor2 = getThemeColor(ThemeColorId::CHECKBOX_OUTLINE);
     if (instances == 0)
     {
         if (theme)
@@ -129,7 +129,7 @@ CheckBox::CheckBox(const Widget2 *const widget,
     if (listener)
         addActionListener(listener);
 
-    mForegroundColor = getThemeColor(Theme::CHECKBOX);
+    mForegroundColor = getThemeColor(ThemeColorId::CHECKBOX);
     if (mSkin)
     {
         mPadding = mSkin->getPadding();

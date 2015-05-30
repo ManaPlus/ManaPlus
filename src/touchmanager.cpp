@@ -24,6 +24,8 @@
 #include "graphicsvertexes.h"
 #include "touchactions.h"
 
+#include "enums/gui/themecolorid.h"
+
 #include "input/mouseinput.h"
 
 #include "gui/gui.h"
@@ -251,8 +253,8 @@ void TouchManager::drawText()
         return;
 
     Font *const font = boldFont;
-    const Color &color1 = theme->getColor(Theme::TEXT, 255);
-    const Color &color2 = theme->getColor(Theme::TEXT_OUTLINE, 255);
+    const Color &color1 = theme->getColor(ThemeColorId::TEXT, 255);
+    const Color &color2 = theme->getColor(ThemeColorId::TEXT_OUTLINE, 255);
 
     FOR_EACH (TouchItemVectorCIter, it, mObjects)
     {

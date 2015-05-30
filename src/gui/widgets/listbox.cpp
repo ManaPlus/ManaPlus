@@ -93,9 +93,9 @@ ListBox::ListBox(const Widget2 *const widget,
     mListModel(listModel),
     mWrappingEnabled(false),
     mSelectionListeners(),
-    mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
-    mForegroundSelectedColor(getThemeColor(Theme::LISTBOX_SELECTED)),
-    mForegroundSelectedColor2(getThemeColor(Theme::LISTBOX_SELECTED_OUTLINE)),
+    mHighlightColor(getThemeColor(ThemeColorId::HIGHLIGHT)),
+    mForegroundSelectedColor(getThemeColor(ThemeColorId::LISTBOX_SELECTED)),
+    mForegroundSelectedColor2(getThemeColor(ThemeColorId::LISTBOX_SELECTED_OUTLINE)),
     mOldSelected(-1),
     mPadding(0),
     mPressedIndex(-2),
@@ -110,8 +110,8 @@ ListBox::ListBox(const Widget2 *const widget,
     addMouseListener(this);
     addKeyListener(this);
 
-    mForegroundColor = getThemeColor(Theme::LISTBOX);
-    mForegroundColor2 = getThemeColor(Theme::LISTBOX_OUTLINE);
+    mForegroundColor = getThemeColor(ThemeColorId::LISTBOX);
+    mForegroundColor2 = getThemeColor(ThemeColorId::LISTBOX_OUTLINE);
 
     if (theme)
         mSkin = theme->load(skin, "listbox.xml");

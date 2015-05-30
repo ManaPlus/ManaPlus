@@ -114,8 +114,8 @@ RadioButton::RadioButton(const Widget2 *const widget,
     addMouseListener(this);
     addKeyListener(this);
 
-    mForegroundColor = getThemeColor(Theme::RADIOBUTTON);
-    mForegroundColor2 = getThemeColor(Theme::RADIOBUTTON_OUTLINE);
+    mForegroundColor = getThemeColor(ThemeColorId::RADIOBUTTON);
+    mForegroundColor2 = getThemeColor(ThemeColorId::RADIOBUTTON_OUTLINE);
     if (instances == 0)
     {
         if (theme)

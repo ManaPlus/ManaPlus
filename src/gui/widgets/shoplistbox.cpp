@@ -47,14 +47,14 @@ ShopListBox::ShopListBox(const Widget2 *const widget,
     ListBox(widget, listModel, "shoplistbox.xml"),
     mPlayerMoney(0),
     mShopItems(nullptr),
-    mBackgroundColor(getThemeColor(Theme::BACKGROUND)),
-    mWarningColor(getThemeColor(Theme::SHOP_WARNING)),
+    mBackgroundColor(getThemeColor(ThemeColorId::BACKGROUND)),
+    mWarningColor(getThemeColor(ThemeColorId::SHOP_WARNING)),
     mPriceCheck(true),
     mProtectItems(false)
 {
     mRowHeight = getFont()->getHeight();
-    mHighlightColor = getThemeColor(Theme::HIGHLIGHT);
-    mForegroundColor = getThemeColor(Theme::LISTBOX);
+    mHighlightColor = getThemeColor(ThemeColorId::HIGHLIGHT);
+    mForegroundColor = getThemeColor(ThemeColorId::LISTBOX);
 }
 
 ShopListBox::ShopListBox(const Widget2 *const widget,
@@ -63,14 +63,14 @@ ShopListBox::ShopListBox(const Widget2 *const widget,
     ListBox(widget, listModel, "shoplistbox.xml"),
     mPlayerMoney(0),
     mShopItems(shopListModel),
-    mBackgroundColor(getThemeColor(Theme::BACKGROUND)),
-    mWarningColor(getThemeColor(Theme::SHOP_WARNING)),
+    mBackgroundColor(getThemeColor(ThemeColorId::BACKGROUND)),
+    mWarningColor(getThemeColor(ThemeColorId::SHOP_WARNING)),
     mPriceCheck(true),
     mProtectItems(false)
 {
     mRowHeight = std::max(getFont()->getHeight(), ITEM_ICON_SIZE);
-    mHighlightColor = getThemeColor(Theme::HIGHLIGHT);
-    mForegroundColor = getThemeColor(Theme::LISTBOX);
+    mHighlightColor = getThemeColor(ThemeColorId::HIGHLIGHT);
+    mForegroundColor = getThemeColor(ThemeColorId::LISTBOX);
 }
 
 void ShopListBox::setPlayersMoney(const int money)

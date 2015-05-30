@@ -183,7 +183,7 @@ LocalPlayer::LocalPlayer(const BeingId id,
     mAttackRange = 0;
     mLevel = 1;
     mAdvanced = true;
-    mTextColor = &theme->getColor(Theme::PLAYER, 255);
+    mTextColor = &theme->getColor(ThemeColorId::PLAYER, 255);
     if (userPalette)
         mNameColor = &userPalette->getColor(UserPalette::SELF);
     else

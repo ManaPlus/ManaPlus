@@ -121,10 +121,10 @@ void WhisperTab::getAutoCompleteCommands(StringVect& commands) const
 
 void WhisperTab::setWhisperTabColors()
 {
-    setTabColors(Theme::WHISPER_TAB);
+    setTabColors(ThemeColorId::WHISPER_TAB);
 }
 
 void WhisperTab::setWhisperTabOfflineColors()
 {
-    setTabColors(Theme::WHISPER_TAB_OFFLINE);
+    setTabColors(ThemeColorId::WHISPER_TAB_OFFLINE);
 }
