@@ -20,6 +20,8 @@
 
 #include "input/inputactionoperators.h"
 
+#include "debug.h"
+
 InputActionT operator+(InputActionT action, const int& i)
 {
     action = static_cast<InputActionT>(static_cast<int>(action) + i);
