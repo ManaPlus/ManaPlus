@@ -26,6 +26,7 @@
 #include "enums/input/inputaction.h"
 
 InputActionT operator+(InputActionT action, const int& i);
+InputActionT operator+(InputActionT action, const unsigned int& i);
 int operator-(const InputActionT &action1, const InputActionT &action2);
 
 #endif  // INPUT_INPUTACTIONOPERATORS_H

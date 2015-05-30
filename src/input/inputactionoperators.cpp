@@ -26,6 +26,12 @@ InputActionT operator+(InputActionT action, const int& i)
     return action;
 }
 
+InputActionT operator+(InputActionT action, const unsigned int& i)
+{
+    action = static_cast<InputActionT>(static_cast<unsigned int>(action) + i);
+    return action;
+}
+
 int operator-(const InputActionT &action1, const InputActionT &action2)
 {
     return static_cast<int>(action1) - static_cast<int>(action2);
