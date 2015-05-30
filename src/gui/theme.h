@@ -91,23 +91,6 @@ class Theme final : public Palette,
                                           const int w,
                                           const int h)A_WARN_UNUSED;
 
-        enum ProgressPalette
-        {
-            PROG_HP = 0,
-            PROG_HP_POISON,
-            PROG_MP,
-            PROG_NO_MP,
-            PROG_EXP,
-            PROG_INVY_SLOTS,
-            PROG_WEIGHT,
-            PROG_JOB,
-            PROG_UPDATE,
-            PROG_MONEY,
-            PROG_ARROWS,
-            PROG_STATUS,
-            THEME_PROG_END
-        };
-
         static Color getProgressColor(const int type,
                                       const float progress) A_WARN_UNUSED;
 

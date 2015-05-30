@@ -28,12 +28,14 @@
 #include "settings.h"
 #include "units.h"
 
-#include "gui/windows/chatwindow.h"
+#include "enums/being/attributes.h"
+
+#include "enums/gui/progresscolorid.h"
 
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
-#include "enums/being/attributes.h"
+#include "gui/windows/chatwindow.h"
 
 #include "gui/windows/equipmentwindow.h"
 #include "gui/windows/setupwindow.h"
@@ -111,7 +113,7 @@ StatusWindow::StatusWindow() :
         max = 1;
 
     mHpBar = new ProgressBar(this, static_cast<float>(PlayerInfo::getAttribute(
-        Attributes::HP)) / static_cast<float>(max), 80, 0, Theme::PROG_HP,
+        Attributes::HP)) / static_cast<float>(max), 80, 0, ProgressColorId::PROG_HP,
         "hpprogressbar.xml", "hpprogressbar_fill.xml");
     mHpBar->setColor(getThemeColor(ThemeColorId::HP_BAR),
         getThemeColor(ThemeColorId::HP_BAR_OUTLINE));
@@ -120,7 +122,7 @@ StatusWindow::StatusWindow() :
     mXpBar = new ProgressBar(this, max ?
             static_cast<float>(PlayerInfo::getAttribute(Attributes::EXP))
             / static_cast<float>(max) : static_cast<float>(0), 80, 0,
-            Theme::PROG_EXP, "xpprogressbar.xml", "xpprogressbar_fill.xml");
+            ProgressColorId::PROG_EXP, "xpprogressbar.xml", "xpprogressbar_fill.xml");
     mXpBar->setColor(getThemeColor(ThemeColorId::XP_BAR),
         getThemeColor(ThemeColorId::XP_BAR_OUTLINE));
 
@@ -136,7 +138,7 @@ StatusWindow::StatusWindow() :
         mMpBar = new ProgressBar(this, max ? static_cast<float>(
             PlayerInfo::getAttribute(Attributes::MAX_MP))
             / static_cast<float>(max) : static_cast<float>(0),
-            80, 0, useMagic ? Theme::PROG_MP : Theme::PROG_NO_MP,
+            80, 0, useMagic ? ProgressColorId::PROG_MP : ProgressColorId::PROG_NO_MP,
             useMagic ? "mpprogressbar.xml" : "nompprogressbar.xml",
             useMagic ? "mpprogressbar_fill.xml" : "nompprogressbar_fill.xml");
         if (useMagic)
@@ -177,7 +179,7 @@ StatusWindow::StatusWindow() :
         mJobLvlLabel = new Label(this, strprintf(_("Job: %d"), 0));
         // TRANSLATORS: status window label
         mJobLabel = new Label(this, _("Job:"));
-        mJobBar = new ProgressBar(this, 0.0F, 80, 0, Theme::PROG_JOB,
+        mJobBar = new ProgressBar(this, 0.0F, 80, 0, ProgressColorId::PROG_JOB,
             "jobprogressbar.xml", "jobprogressbar_fill.xml");
         mJobBar->setColor(getThemeColor(ThemeColorId::JOB_BAR),
             getThemeColor(ThemeColorId::JOB_BAR_OUTLINE));
@@ -468,13 +470,13 @@ void StatusWindow::updateMPBar(ProgressBar *const bar,
     {
         bar->setColor(getThemeColor(ThemeColorId::MP_BAR),
             getThemeColor(ThemeColorId::MP_BAR_OUTLINE));
-        bar->setProgressPalette(Theme::PROG_MP);
+        bar->setProgressPalette(ProgressColorId::PROG_MP);
     }
     else
     {
         bar->setColor(getThemeColor(ThemeColorId::NO_MP_BAR),
             getThemeColor(ThemeColorId::NO_MP_BAR_OUTLINE));
-        bar->setProgressPalette(Theme::PROG_NO_MP);
+        bar->setProgressPalette(ProgressColorId::PROG_NO_MP);
     }
 
     bar->setProgress(prog);

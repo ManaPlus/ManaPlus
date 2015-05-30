@@ -27,6 +27,7 @@
 #include "configuration.h"
 #include "graphicsmanager.h"
 
+#include "enums/gui/progresscolorid.h"
 #include "enums/gui/themecolorid.h"
 
 #include "gui/skin.h"
@@ -72,7 +73,7 @@ Theme::Theme() :
     Palette(ThemeColorId::THEME_COLORS_END * THEME_PALETTES),
     mSkins(),
     mMinimumOpacity(-1.0F),
-    mProgressColors(ProgressColors(THEME_PROG_END))
+    mProgressColors(ProgressColors(ProgressColorId::THEME_PROG_END))
 {
     initDefaultThemePath();
 
@@ -936,7 +937,7 @@ static Palette::GradientType readColorGradient(const std::string &grad)
 
 static int readProgressType(const std::string &type)
 {
-    static const std::string colors[Theme::THEME_PROG_END] =
+    static const std::string colors[ProgressColorId::THEME_PROG_END] =
     {
         "HP",
         "HP_POISON",
@@ -955,7 +956,7 @@ static int readProgressType(const std::string &type)
     if (type.empty())
         return -1;
 
-    for (int i = 0; i < Theme::THEME_PROG_END; i++)
+    for (int i = 0; i < ProgressColorId::THEME_PROG_END; i++)
     {
         if (compareStrI(type, colors[i]) == 0)
             return i;

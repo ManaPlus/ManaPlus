@@ -26,10 +26,12 @@
 #include "configuration.h"
 #include "inventory.h"
 
+#include "enums/being/attributes.h"
+
+#include "enums/gui/progresscolorid.h"
+
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
-
-#include "enums/being/attributes.h"
 
 #include "gui/popupmanager.h"
 #include "gui/skin.h"
@@ -67,45 +69,45 @@ MiniStatusWindow::MiniStatusWindow() :
     mBarNames(),
     mIcons(),
     // TRANSLATORS: status bar name
-    mHpBar(createBar(0, 100, 0, ThemeColorId::HP_BAR, Theme::PROG_HP,
+    mHpBar(createBar(0, 100, 0, ThemeColorId::HP_BAR, ProgressColorId::PROG_HP,
         "hpprogressbar.xml", "hpprogressbar_fill.xml",
         "hp bar", _("health bar"))),
     mMpBar(gameHandler->canUseMagicBar()
         ? createBar(0, 100, 0, playerHandler->canUseMagic()
         ? ThemeColorId::MP_BAR : ThemeColorId::NO_MP_BAR,
         playerHandler->canUseMagic()
-        ? Theme::PROG_MP : Theme::PROG_NO_MP,
+        ? ProgressColorId::PROG_MP : ProgressColorId::PROG_NO_MP,
         playerHandler->canUseMagic()
         ? "mpprogressbar.xml" : "nompprogressbar.xml",
         playerHandler->canUseMagic()
         ? "mpprogressbar_fill.xml" : "nompprogressbar_fill.xml",
         // TRANSLATORS: status bar name
         "mp bar", _("mana bar")) : nullptr),
-    mXpBar(createBar(0, 100, 0, ThemeColorId::XP_BAR, Theme::PROG_EXP,
+    mXpBar(createBar(0, 100, 0, ThemeColorId::XP_BAR, ProgressColorId::PROG_EXP,
         "xpprogressbar.xml", "xpprogressbar_fill.xml",
         // TRANSLATORS: status bar name
         "xp bar", _("experience bar"))),
     mJobBar(nullptr),
-    mWeightBar(createBar(0, 140, 0, ThemeColorId::WEIGHT_BAR, Theme::PROG_WEIGHT,
+    mWeightBar(createBar(0, 140, 0, ThemeColorId::WEIGHT_BAR, ProgressColorId::PROG_WEIGHT,
         "weightprogressbar.xml", "weightprogressbar_fill.xml",
         // TRANSLATORS: status bar name
         "weight bar", _("weight bar"))),
     mInvSlotsBar(createBar(0, 45, 0,
-        ThemeColorId::SLOTS_BAR, Theme::PROG_INVY_SLOTS,
+        ThemeColorId::SLOTS_BAR, ProgressColorId::PROG_INVY_SLOTS,
         "slotsprogressbar.xml", "slotsprogressbar_fill.xml",
         "inventory slots bar",
         // TRANSLATORS: status bar name
         _("inventory slots bar"))),
-    mMoneyBar(createBar(0, 130, 0, ThemeColorId::MONEY_BAR, Theme::PROG_MONEY,
+    mMoneyBar(createBar(0, 130, 0, ThemeColorId::MONEY_BAR, ProgressColorId::PROG_MONEY,
         "moneyprogressbar.xml", "moneyprogressbar_fill.xml",
         // TRANSLATORS: status bar name
         "money bar", _("money bar"))),
-    mArrowsBar(createBar(0, 50, 0, ThemeColorId::ARROWS_BAR, Theme::PROG_ARROWS,
+    mArrowsBar(createBar(0, 50, 0, ThemeColorId::ARROWS_BAR, ProgressColorId::PROG_ARROWS,
         "arrowsprogressbar.xml", "arrowsprogressbar_fill.xml",
         // TRANSLATORS: status bar name
         "arrows bar", _("arrows bar"))),
     mStatusBar(createBar(100, (config.getIntValue("fontSize") > 16
-        ? 250 : 165), 0, ThemeColorId::STATUS_BAR, Theme::PROG_STATUS,
+        ? 250 : 165), 0, ThemeColorId::STATUS_BAR, ProgressColorId::PROG_STATUS,
         "statusprogressbar.xml", "statusprogressbar_fill.xml",
         // TRANSLATORS: status bar name
         "status bar", _("status bar"))),
@@ -128,7 +130,7 @@ MiniStatusWindow::MiniStatusWindow() :
 
     if (job)
     {
-        mJobBar = createBar(0, 100, 0, ThemeColorId::JOB_BAR, Theme::PROG_JOB,
+        mJobBar = createBar(0, 100, 0, ThemeColorId::JOB_BAR, ProgressColorId::PROG_JOB,
             // TRANSLATORS: status bar name
             "jobprogressbar.xml", "jobprogressbar_fill.xml",
             "job bar", _("job bar"));

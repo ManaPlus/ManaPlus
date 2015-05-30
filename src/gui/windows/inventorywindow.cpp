@@ -26,9 +26,11 @@
 #include "item.h"
 #include "units.h"
 
-#include "being/playerinfo.h"
-
 #include "enums/being/attributes.h"
+
+#include "enums/gui/progresscolorid.h"
+
+#include "being/playerinfo.h"
 
 #include "input/inputmanager.h"
 
@@ -92,7 +94,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
     mRetrieveButton(nullptr),
     mInvCloseButton(nullptr),
     mWeightBar(nullptr),
-    mSlotsBar(new ProgressBar(this, 0.0F, 100, 0, Theme::PROG_INVY_SLOTS,
+    mSlotsBar(new ProgressBar(this, 0.0F, 100, 0, ProgressColorId::PROG_INVY_SLOTS,
               "slotsprogressbar.xml", "slotsprogressbar_fill.xml")),
     mFilter(nullptr),
     mSortModel(new SortListModelInv),
@@ -215,7 +217,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
             // TRANSLATORS: inventory equipment button
             mEquipmentButton = new Button(this, _("E"), "equipment", this);
             mWeightBar = new ProgressBar(this, 0.0F, 100, 0,
-                Theme::PROG_WEIGHT,
+                ProgressColorId::PROG_WEIGHT,
                 "weightprogressbar.xml", "weightprogressbar_fill.xml");
             mWeightBar->setColor(getThemeColor(ThemeColorId::WEIGHT_BAR),
                 getThemeColor(ThemeColorId::WEIGHT_BAR_OUTLINE));
@@ -284,7 +286,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
             mInvCloseButton = new Button(this, _("Close"), "close", this);
 
             mWeightBar = new ProgressBar(this, 0.0F, 100, 0,
-                Theme::PROG_WEIGHT,
+                ProgressColorId::PROG_WEIGHT,
                 "weightprogressbar.xml", "weightprogressbar_fill.xml");
             mWeightBar->setColor(getThemeColor(ThemeColorId::WEIGHT_BAR),
                 getThemeColor(ThemeColorId::WEIGHT_BAR_OUTLINE));
