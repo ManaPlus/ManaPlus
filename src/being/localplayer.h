@@ -27,6 +27,8 @@
 
 #include "enums/being/pickup.h"
 
+#include "enums/gui/usercolorid.h"
+
 #include "enums/simpletypes/keep.h"
 
 #include "gui/userpalette.h"
@@ -278,7 +280,7 @@ class LocalPlayer final : public Being,
         void setMap(Map *const map) override final;
 
         void addMessageToQueue(const std::string &message,
-                               const int color = UserPalette::EXP_INFO);
+                               const int color = UserColorId::EXP_INFO);
 
         /**
          * Called when a option (set with config.addListener()) is changed

@@ -1130,6 +1130,7 @@ SET(SRCS
     enums/gui/gradienttype.h
     enums/gui/progresscolorid.h
     enums/gui/themecolorid.h
+    enums/gui/usercolorid.h
     listeners/errorlistener.cpp
     listeners/errorlistener.h
     listeners/widgetdeathlistener.h

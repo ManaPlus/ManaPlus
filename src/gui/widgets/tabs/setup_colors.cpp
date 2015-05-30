@@ -21,6 +21,8 @@
 
 #include "gui/widgets/tabs/setup_colors.h"
 
+#include "enums/gui/usercolorid.h"
+
 #include "gui/gui.h"
 #include "gui/userpalette.h"
 
@@ -265,40 +267,40 @@ void Setup_Colors::valueChanged(const SelectionEvent &event A_UNUSED)
 
     switch (type)
     {
-        case UserPalette::AIR_COLLISION_HIGHLIGHT:
-        case UserPalette::WATER_COLLISION_HIGHLIGHT:
-        case UserPalette::GROUNDTOP_COLLISION_HIGHLIGHT:
-        case UserPalette::COLLISION_HIGHLIGHT:
-        case UserPalette::PORTAL_HIGHLIGHT:
-        case UserPalette::HOME_PLACE:
-        case UserPalette::ROAD_POINT:
-        case UserPalette::NET:
+        case UserColorId::AIR_COLLISION_HIGHLIGHT:
+        case UserColorId::WATER_COLLISION_HIGHLIGHT:
+        case UserColorId::GROUNDTOP_COLLISION_HIGHLIGHT:
+        case UserColorId::COLLISION_HIGHLIGHT:
+        case UserColorId::PORTAL_HIGHLIGHT:
+        case UserColorId::HOME_PLACE:
+        case UserColorId::ROAD_POINT:
+        case UserColorId::NET:
             mTextPreview->setBGColor(col);
             mTextPreview->setOpaque(true);
             mTextPreview->setOutline(false);
             mTextPreview->setShadow(false);
             break;
-        case UserPalette::ATTACK_RANGE_BORDER:
-        case UserPalette::HOME_PLACE_BORDER:
+        case UserColorId::ATTACK_RANGE_BORDER:
+        case UserColorId::HOME_PLACE_BORDER:
             if (gui)
                 mTextPreview->setFont(gui->getFont());
             mTextPreview->setTextColor(col);
             mTextPreview->setOutline(false);
             mTextPreview->setShadow(false);
             break;
-        case UserPalette::PARTICLE:
-        case UserPalette::EXP_INFO:
-        case UserPalette::PICKUP_INFO:
-        case UserPalette::HIT_PLAYER_MONSTER:
-        case UserPalette::HIT_MONSTER_PLAYER:
-        case UserPalette::HIT_CRITICAL:
-        case UserPalette::MISS:
-        case UserPalette::HIT_LOCAL_PLAYER_MONSTER:
-        case UserPalette::HIT_LOCAL_PLAYER_CRITICAL:
-        case UserPalette::HIT_LOCAL_PLAYER_MISS:
-        case UserPalette::ATTACK_RANGE:
-        case UserPalette::MONSTER_ATTACK_RANGE:
-        case UserPalette::FLOOR_ITEM_TEXT:
+        case UserColorId::PARTICLE:
+        case UserColorId::EXP_INFO:
+        case UserColorId::PICKUP_INFO:
+        case UserColorId::HIT_PLAYER_MONSTER:
+        case UserColorId::HIT_MONSTER_PLAYER:
+        case UserColorId::HIT_CRITICAL:
+        case UserColorId::MISS:
+        case UserColorId::HIT_LOCAL_PLAYER_MONSTER:
+        case UserColorId::HIT_LOCAL_PLAYER_CRITICAL:
+        case UserColorId::HIT_LOCAL_PLAYER_MISS:
+        case UserColorId::ATTACK_RANGE:
+        case UserColorId::MONSTER_ATTACK_RANGE:
+        case UserColorId::FLOOR_ITEM_TEXT:
             mTextPreview->setShadow(false);
             break;
         default:
@@ -307,24 +309,24 @@ void Setup_Colors::valueChanged(const SelectionEvent &event A_UNUSED)
 
     switch (type)
     {
-        case UserPalette::PORTAL_HIGHLIGHT:
-        case UserPalette::ATTACK_RANGE:
-        case UserPalette::ATTACK_RANGE_BORDER:
-        case UserPalette::MONSTER_ATTACK_RANGE:
-        case UserPalette::HOME_PLACE:
-        case UserPalette::HOME_PLACE_BORDER:
-        case UserPalette::AIR_COLLISION_HIGHLIGHT:
-        case UserPalette::WATER_COLLISION_HIGHLIGHT:
-        case UserPalette::GROUNDTOP_COLLISION_HIGHLIGHT:
-        case UserPalette::COLLISION_HIGHLIGHT:
-        case UserPalette::WALKABLE_HIGHLIGHT:
-        case UserPalette::ROAD_POINT:
-        case UserPalette::MONSTER_HP:
-        case UserPalette::MONSTER_HP2:
-        case UserPalette::PLAYER_HP:
-        case UserPalette::PLAYER_HP2:
-        case UserPalette::FLOOR_ITEM_TEXT:
-        case UserPalette::NET:
+        case UserColorId::PORTAL_HIGHLIGHT:
+        case UserColorId::ATTACK_RANGE:
+        case UserColorId::ATTACK_RANGE_BORDER:
+        case UserColorId::MONSTER_ATTACK_RANGE:
+        case UserColorId::HOME_PLACE:
+        case UserColorId::HOME_PLACE_BORDER:
+        case UserColorId::AIR_COLLISION_HIGHLIGHT:
+        case UserColorId::WATER_COLLISION_HIGHLIGHT:
+        case UserColorId::GROUNDTOP_COLLISION_HIGHLIGHT:
+        case UserColorId::COLLISION_HIGHLIGHT:
+        case UserColorId::WALKABLE_HIGHLIGHT:
+        case UserColorId::ROAD_POINT:
+        case UserColorId::MONSTER_HP:
+        case UserColorId::MONSTER_HP2:
+        case UserColorId::PLAYER_HP:
+        case UserColorId::PLAYER_HP2:
+        case UserColorId::FLOOR_ITEM_TEXT:
+        case UserColorId::NET:
             // TRANSLATORS: colors tab. label.
             mGradDelayLabel->setCaption(_("Alpha:"));
             mGradDelayText->setRange(0, 255);

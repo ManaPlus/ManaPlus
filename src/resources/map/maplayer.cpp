@@ -626,10 +626,10 @@ void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
             if (userPalette)
             {
                 graphics->setColor(userPalette->getColorWithAlpha(
-                    UserPalette::ATTACK_RANGE));
+                    UserColorId::ATTACK_RANGE));
                 graphics->fillRectangle(Rect(x, y, w, h));
                 graphics->setColor(userPalette->getColorWithAlpha(
-                    UserPalette::ATTACK_RANGE_BORDER));
+                    UserColorId::ATTACK_RANGE_BORDER));
                 graphics->drawRectangle(Rect(x, y, w, h));
             }
         }

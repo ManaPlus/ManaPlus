@@ -24,6 +24,8 @@
 
 #include "configuration.h"
 
+#include "enums/gui/usercolorid.h"
+
 #include "render/graphics.h"
 
 #include "gui/gui.h"
@@ -166,7 +168,7 @@ void FloorItem::draw(Graphics *const graphics,
         if (font && mAmount > 1)
         {
             const Color &color = userPalette->getColor(
-                UserPalette::FLOOR_ITEM_TEXT);
+                UserColorId::FLOOR_ITEM_TEXT);
             font->drawString(graphics,
                 color, color,
                 toString(mAmount),

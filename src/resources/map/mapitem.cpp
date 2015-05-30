@@ -20,6 +20,8 @@
 
 #include "resources/map/mapitem.h"
 
+#include "enums/gui/usercolorid.h"
+
 #include "gui/gui.h"
 #include "gui/userpalette.h"
 
@@ -141,17 +143,17 @@ void MapItem::draw(Graphics *const graphics, const int x, const int y,
         case MapItemType::ROAD:
         case MapItemType::CROSS:
             graphics->setColor(userPalette->getColorWithAlpha(
-                               UserPalette::ROAD_POINT));
+                               UserColorId::ROAD_POINT));
             graphics->fillRectangle(Rect(x + dx / 3, y + dy / 3,
                                     dx / 3, dy / 3));
             break;
         case MapItemType::HOME:
         {
             graphics->setColor(userPalette->getColorWithAlpha(
-                               UserPalette::HOME_PLACE));
+                               UserColorId::HOME_PLACE));
             graphics->fillRectangle(Rect(x, y, dx, dy));
             graphics->setColor(userPalette->getColorWithAlpha(
-                               UserPalette::HOME_PLACE_BORDER));
+                               UserColorId::HOME_PLACE_BORDER));
             graphics->drawRectangle(Rect(x, y, dx, dy));
             break;
         }
@@ -165,7 +167,7 @@ void MapItem::draw(Graphics *const graphics, const int x, const int y,
         Font *const font = gui->getFont();
         if (font)
         {
-            const Color &color = userPalette->getColor(UserPalette::BEING);
+            const Color &color = userPalette->getColor(UserColorId::BEING);
             font->drawString(graphics,
                 color,
                 color,

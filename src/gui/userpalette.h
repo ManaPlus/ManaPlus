@@ -34,56 +34,6 @@
 class UserPalette final : public Palette, public ListModel
 {
     public:
-        /** List of all colors that are configurable. */
-        enum
-        {
-            BEING = 0,
-            FRIEND,
-            DISREGARDED,
-            IGNORED,
-            ERASED,
-            PC,
-            SELF,
-            GM,
-            NPC,
-            MONSTER,
-            MONSTER_HP,
-            MONSTER_HP2,
-            PARTY,
-            GUILD,
-            PARTICLE,
-            PICKUP_INFO,
-            EXP_INFO,
-            PLAYER_HP,
-            PLAYER_HP2,
-            HIT_PLAYER_MONSTER,
-            HIT_MONSTER_PLAYER,
-            HIT_PLAYER_PLAYER,
-            HIT_CRITICAL,
-            HIT_LOCAL_PLAYER_MONSTER,
-            HIT_LOCAL_PLAYER_CRITICAL,
-            HIT_LOCAL_PLAYER_MISS,
-            MISS,
-            PORTAL_HIGHLIGHT,
-            COLLISION_HIGHLIGHT,
-            AIR_COLLISION_HIGHLIGHT,
-            WATER_COLLISION_HIGHLIGHT,
-            GROUNDTOP_COLLISION_HIGHLIGHT,
-            WALKABLE_HIGHLIGHT,
-            ATTACK_RANGE,
-            ATTACK_RANGE_BORDER,
-            MONSTER_ATTACK_RANGE,
-            FLOOR_ITEM_TEXT,
-            HOME_PLACE,
-            HOME_PLACE_BORDER,
-            ROAD_POINT,
-            NET,
-            PET,
-            MERCENARY,
-            HOMUNCULUS,
-            USER_COLOR_LAST
-        };
-
         /**
          * Constructor
          */

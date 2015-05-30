@@ -312,51 +312,51 @@ void Minimap::draw2(Graphics *const graphics)
             continue;
 
         int dotSize = 2;
-        int type = UserPalette::PC;
+        int type = UserColorId::PC;
 
         if (being == localPlayer)
         {
-            type = UserPalette::SELF;
+            type = UserColorId::SELF;
             dotSize = 3;
         }
         else if (being->isGM())
         {
-            type = UserPalette::GM;
+            type = UserColorId::GM;
         }
         else if (being->getGuild() == localPlayer->getGuild()
                  || being->getGuildName() == localPlayer->getGuildName())
         {
-            type = UserPalette::GUILD;
+            type = UserColorId::GUILD;
         }
         else
         {
             switch (being->getType())
             {
                 case ActorType::Monster:
-                    type = UserPalette::MONSTER;
+                    type = UserColorId::MONSTER;
                     break;
 
                 case ActorType::Npc:
-                    type = UserPalette::NPC;
+                    type = UserColorId::NPC;
                     break;
 
                 case ActorType::Portal:
-                    type = UserPalette::PORTAL_HIGHLIGHT;
+                    type = UserColorId::PORTAL_HIGHLIGHT;
                     break;
 
                 case ActorType::LocalPet:
 #ifdef EATHENA_SUPPORT
                 case ActorType::Pet:
 #endif
-                    type = UserPalette::PET;
+                    type = UserColorId::PET;
                     break;
 #ifdef EATHENA_SUPPORT
                 case ActorType::Mercenary:
-                    type = UserPalette::MERCENARY;
+                    type = UserColorId::MERCENARY;
                     break;
 
                 case ActorType::Homunculus:
-                    type = UserPalette::HOMUNCULUS;
+                    type = UserColorId::HOMUNCULUS;
                     break;
 #endif
                 case ActorType::Avatar:
@@ -407,7 +407,7 @@ void Minimap::draw2(Graphics *const graphics)
                         if (userPalette)
                         {
                             graphics->setColor(userPalette->getColor(
-                                UserPalette::PARTY));
+                                UserColorId::PARTY));
                         }
 
                         const int offsetHeight = static_cast<int>(
@@ -459,7 +459,7 @@ void Minimap::draw2(Graphics *const graphics)
             y = a.height - h;
     }
 
-    graphics->setColor(userPalette->getColor(UserPalette::PC));
+    graphics->setColor(userPalette->getColor(UserColorId::PC));
     graphics->drawRectangle(Rect(x, y, w, h));
     graphics->popClipArea();
     BLOCK_END("Minimap::draw")

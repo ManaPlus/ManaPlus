@@ -572,7 +572,7 @@ void Being::setSpeech(const std::string &text, const std::string &channel,
             getPixelX(),
             getPixelY() - getHeight(),
             Graphics::CENTER,
-            &userPalette->getColor(UserPalette::PARTICLE),
+            &userPalette->getColor(UserColorId::PARTICLE),
             Speech_true);
     }
     else
@@ -614,11 +614,11 @@ void Being::takeDamage(Being *const attacker,
         if (attacker == localPlayer)
         {
             color = &userPalette->getColor(
-                UserPalette::HIT_LOCAL_PLAYER_CRITICAL);
+                UserColorId::HIT_LOCAL_PLAYER_CRITICAL);
         }
         else
         {
-            color = &userPalette->getColor(UserPalette::HIT_CRITICAL);
+            color = &userPalette->getColor(UserColorId::HIT_CRITICAL);
         }
     }
     else if (!amount)
@@ -627,11 +627,11 @@ void Being::takeDamage(Being *const attacker,
         {
             // This is intended to be the wrong direction to visually
             // differentiate between hits and misses
-            color = &userPalette->getColor(UserPalette::HIT_LOCAL_PLAYER_MISS);
+            color = &userPalette->getColor(UserColorId::HIT_LOCAL_PLAYER_MISS);
         }
         else
         {
-            color = &userPalette->getColor(UserPalette::MISS);
+            color = &userPalette->getColor(UserColorId::MISS);
         }
     }
     else if (mType == ActorType::Monster
@@ -645,25 +645,25 @@ void Being::takeDamage(Being *const attacker,
         if (attacker == localPlayer)
         {
             color = &userPalette->getColor(
-                UserPalette::HIT_LOCAL_PLAYER_MONSTER);
+                UserColorId::HIT_LOCAL_PLAYER_MONSTER);
         }
         else
         {
             color = &userPalette->getColor(
-                UserPalette::HIT_PLAYER_MONSTER);
+                UserColorId::HIT_PLAYER_MONSTER);
         }
     }
     else if (mType == ActorType::Player && attacker != localPlayer
              && this == localPlayer)
     {
         // here player was attacked by other player. mark him as enemy.
-        color = &userPalette->getColor(UserPalette::HIT_PLAYER_PLAYER);
+        color = &userPalette->getColor(UserColorId::HIT_PLAYER_PLAYER);
         attacker->setEnemy(true);
         attacker->updateColors();
     }
     else
     {
-        color = &userPalette->getColor(UserPalette::HIT_MONSTER_PLAYER);
+        color = &userPalette->getColor(UserColorId::HIT_MONSTER_PLAYER);
     }
 
     if (chatWindow && mShowBattleEvents)
@@ -2062,17 +2062,17 @@ void Being::updateColors()
     {
         if (mType == ActorType::Monster)
         {
-            mNameColor = &userPalette->getColor(UserPalette::MONSTER);
-            mTextColor = &userPalette->getColor(UserPalette::MONSTER);
+            mNameColor = &userPalette->getColor(UserColorId::MONSTER);
+            mTextColor = &userPalette->getColor(UserColorId::MONSTER);
         }
         else if (mType == ActorType::Npc)
         {
-            mNameColor = &userPalette->getColor(UserPalette::NPC);
-            mTextColor = &userPalette->getColor(UserPalette::NPC);
+            mNameColor = &userPalette->getColor(UserColorId::NPC);
+            mTextColor = &userPalette->getColor(UserColorId::NPC);
         }
         else if (this == localPlayer)
         {
-            mNameColor = &userPalette->getColor(UserPalette::SELF);
+            mNameColor = &userPalette->getColor(UserColorId::SELF);
             mTextColor = &theme->getColor(ThemeColorId::PLAYER, 255);
         }
         else
@@ -2086,50 +2086,50 @@ void Being::updateColors()
 
             if (mIsGM)
             {
-                mTextColor = &userPalette->getColor(UserPalette::GM);
-                mNameColor = &userPalette->getColor(UserPalette::GM);
+                mTextColor = &userPalette->getColor(UserColorId::GM);
+                mNameColor = &userPalette->getColor(UserColorId::GM);
             }
             else if (mEnemy)
             {
-                mNameColor = &userPalette->getColor(UserPalette::MONSTER);
+                mNameColor = &userPalette->getColor(UserColorId::MONSTER);
             }
             else if (mParty && localPlayer
                      && mParty == localPlayer->getParty())
             {
-                mNameColor = &userPalette->getColor(UserPalette::PARTY);
+                mNameColor = &userPalette->getColor(UserColorId::PARTY);
             }
             else if (localPlayer && getGuild()
                      && getGuild() == localPlayer->getGuild())
             {
-                mNameColor = &userPalette->getColor(UserPalette::GUILD);
+                mNameColor = &userPalette->getColor(UserColorId::GUILD);
             }
             else if (player_relations.getRelation(mName) ==
                      PlayerRelation::FRIEND)
             {
-                mNameColor = &userPalette->getColor(UserPalette::FRIEND);
+                mNameColor = &userPalette->getColor(UserColorId::FRIEND);
             }
             else if (player_relations.getRelation(mName) ==
                      PlayerRelation::DISREGARDED
                      || player_relations.getRelation(mName) ==
                      PlayerRelation::BLACKLISTED)
             {
-                mNameColor = &userPalette->getColor(UserPalette::DISREGARDED);
+                mNameColor = &userPalette->getColor(UserColorId::DISREGARDED);
             }
             else if (player_relations.getRelation(mName) ==
                      PlayerRelation::IGNORED
                      || player_relations.getRelation(mName) ==
                      PlayerRelation::ENEMY2)
             {
-                mNameColor = &userPalette->getColor(UserPalette::IGNORED);
+                mNameColor = &userPalette->getColor(UserColorId::IGNORED);
             }
             else if (player_relations.getRelation(mName) ==
                      PlayerRelation::ERASED)
             {
-                mNameColor = &userPalette->getColor(UserPalette::ERASED);
+                mNameColor = &userPalette->getColor(UserColorId::ERASED);
             }
             else
             {
-                mNameColor = &userPalette->getColor(UserPalette::PC);
+                mNameColor = &userPalette->getColor(UserColorId::PC);
             }
         }
 
@@ -2560,7 +2560,7 @@ void Being::drawSpriteAt(Graphics *const graphics,
         !mMap->getHasWarps())
     {
         graphics->setColor(userPalette->
-                getColorWithAlpha(UserPalette::PORTAL_HIGHLIGHT));
+                getColorWithAlpha(UserColorId::PORTAL_HIGHLIGHT));
 
         graphics->fillRectangle(Rect(x, y,
             mapTileSize, mapTileSize));
@@ -2570,7 +2570,7 @@ void Being::drawSpriteAt(Graphics *const graphics,
             Font *const font = gui->getFont();
             if (font)
             {
-                const Color &color = userPalette->getColor(UserPalette::BEING);
+                const Color &color = userPalette->getColor(UserColorId::BEING);
                 font->drawString(graphics, color, color, mName, x, y);
             }
         }
@@ -2586,7 +2586,7 @@ void Being::drawSpriteAt(Graphics *const graphics,
             attackRange = mapTileSize;
 
         graphics->setColor(userPalette->getColorWithAlpha(
-            UserPalette::MONSTER_ATTACK_RANGE));
+            UserColorId::MONSTER_ATTACK_RANGE));
 
         graphics->fillRectangle(Rect(
             x - attackRange, y - attackRange,
@@ -2602,7 +2602,7 @@ void Being::drawSpriteAt(Graphics *const graphics,
             maxHP = mInfo->getMaxHP();
 
         drawHpBar(graphics, maxHP, mHP, mDamageTaken,
-                  UserPalette::MONSTER_HP, UserPalette::MONSTER_HP2,
+                  UserColorId::MONSTER_HP, UserColorId::MONSTER_HP2,
                   x - 50 + mapTileSize / 2 + mInfo->getHpBarOffsetX(),
                   y + mapTileSize - 6 + mInfo->getHpBarOffsetY(),
                   2 * 50, 4);
@@ -2614,7 +2614,7 @@ void Being::drawSpriteAt(Graphics *const graphics,
     {
         drawHpBar(graphics, PlayerInfo::getAttribute(Attributes::MAX_HP),
                   PlayerInfo::getAttribute(Attributes::HP), 0,
-                  UserPalette::PLAYER_HP, UserPalette::PLAYER_HP2,
+                  UserColorId::PLAYER_HP, UserColorId::PLAYER_HP2,
                   x - 50 + mapTileSize / 2 + mInfo->getHpBarOffsetX(),
                   y + mapTileSize - 6 + mInfo->getHpBarOffsetY(),
                   2 * 50, 4);

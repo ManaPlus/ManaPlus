@@ -354,7 +354,7 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
     if (mDrawLayersFlags == MapType::BLACKWHITE && userPalette)
     {
         graphics->setColor(userPalette->getColorWithAlpha(
-            UserPalette::WALKABLE_HIGHLIGHT));
+            UserColorId::WALKABLE_HIGHLIGHT));
 
         graphics->fillRectangle(Rect(0, 0,
             graphics->mWidth, graphics->mHeight));
@@ -541,7 +541,7 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
         if (width && userPalette)\
         {\
             graphics->setColor(userPalette->getColorWithAlpha(\
-                UserPalette::color));\
+                UserColorId::color));\
             graphics->fillRectangle(Rect(\
                 x0 * mTileWidth - scrollX, \
                 y * mTileHeight - scrollY, \
@@ -570,7 +570,7 @@ void Map::drawCollision(Graphics *const graphics,
 
     if (drawFlags < MapType::SPECIAL)
     {
-        graphics->setColor(userPalette->getColorWithAlpha(UserPalette::NET));
+        graphics->setColor(userPalette->getColorWithAlpha(UserColorId::NET));
         graphics->drawNet(
             startX * mTileWidth - scrollX,
             startY * mTileHeight - scrollY,

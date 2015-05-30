@@ -185,7 +185,7 @@ LocalPlayer::LocalPlayer(const BeingId id,
     mAdvanced = true;
     mTextColor = &theme->getColor(ThemeColorId::PLAYER, 255);
     if (userPalette)
-        mNameColor = &userPalette->getColor(UserPalette::SELF);
+        mNameColor = &userPalette->getColor(UserColorId::SELF);
     else
         mNameColor = nullptr;
 
@@ -881,7 +881,7 @@ void LocalPlayer::pickedUp(const ItemInfo &itemInfo,
         if (mMap && config.getBoolValue("showpickupparticle"))
         {
             // Show pickup notification
-            addMessageToQueue(gettext(msg), UserPalette::PICKUP_INFO);
+            addMessageToQueue(gettext(msg), UserColorId::PICKUP_INFO);
         }
     }
     else
@@ -908,11 +908,11 @@ void LocalPlayer::pickedUp(const ItemInfo &itemInfo,
             if (amount > 1)
             {
                 addMessageToQueue(strprintf("%d x %s", amount,
-                    str.c_str()), UserPalette::PICKUP_INFO);
+                    str.c_str()), UserColorId::PICKUP_INFO);
             }
             else
             {
-                addMessageToQueue(str, UserPalette::PICKUP_INFO);
+                addMessageToQueue(str, UserColorId::PICKUP_INFO);
             }
         }
     }

@@ -23,6 +23,8 @@
 
 #include "gui/userpalette.h"
 
+#include "enums/gui/usercolorid.h"
+
 #include "configuration.h"
 
 #include "utils/gettext.h"
@@ -103,126 +105,126 @@ std::string UserPalette::getConfigName(const std::string &typeName)
 }
 
 UserPalette::UserPalette() :
-    Palette(USER_COLOR_LAST)
+    Palette(UserColorId::USER_COLOR_LAST)
 {
-    mColors[BEING] = ColorElem();
-    mColors[PC] = ColorElem();
-    mColors[SELF] = ColorElem();
-    mColors[GM] = ColorElem();
-    mColors[NPC] = ColorElem();
-    mColors[MONSTER] = ColorElem();
+    mColors[UserColorId::BEING] = ColorElem();
+    mColors[UserColorId::PC] = ColorElem();
+    mColors[UserColorId::SELF] = ColorElem();
+    mColors[UserColorId::GM] = ColorElem();
+    mColors[UserColorId::NPC] = ColorElem();
+    mColors[UserColorId::MONSTER] = ColorElem();
 
     // TRANSLATORS: palette color
-    addColor(BEING, 0xffffff, GradientType::STATIC, _("Being"));
+    addColor(UserColorId::BEING, 0xffffff, GradientType::STATIC, _("Being"));
     // TRANSLATORS: palette color
-    addColor(FRIEND, 0xb0ffb0, GradientType::STATIC, _("Friend names"));
+    addColor(UserColorId::FRIEND, 0xb0ffb0, GradientType::STATIC, _("Friend names"));
     // TRANSLATORS: palette color
-    addColor(DISREGARDED, 0xa00000, GradientType::STATIC, _("Disregarded names"));
+    addColor(UserColorId::DISREGARDED, 0xa00000, GradientType::STATIC, _("Disregarded names"));
     // TRANSLATORS: palette color
-    addColor(IGNORED, 0xff0000, GradientType::STATIC, _("Ignored names"));
+    addColor(UserColorId::IGNORED, 0xff0000, GradientType::STATIC, _("Ignored names"));
     // TRANSLATORS: palette color
-    addColor(ERASED, 0xff0000, GradientType::STATIC, _("Erased names"));
+    addColor(UserColorId::ERASED, 0xff0000, GradientType::STATIC, _("Erased names"));
     // TRANSLATORS: palette color
-    addColor(PC, 0xffffff, GradientType::STATIC, _("Other players names"));
+    addColor(UserColorId::PC, 0xffffff, GradientType::STATIC, _("Other players names"));
     // TRANSLATORS: palette color
-    addColor(SELF, 0xff8040, GradientType::STATIC, _("Own name"));
+    addColor(UserColorId::SELF, 0xff8040, GradientType::STATIC, _("Own name"));
     // TRANSLATORS: palette color
-    addColor(GM, 0x00ff00, GradientType::STATIC, _("GM names"));
+    addColor(UserColorId::GM, 0x00ff00, GradientType::STATIC, _("GM names"));
     // TRANSLATORS: palette color
-    addColor(NPC, 0xc8c8ff, GradientType::STATIC, _("NPCs"));
+    addColor(UserColorId::NPC, 0xc8c8ff, GradientType::STATIC, _("NPCs"));
     // TRANSLATORS: palette color
-    addColor(MONSTER, 0xff4040, GradientType::STATIC, _("Monsters"));
+    addColor(UserColorId::MONSTER, 0xff4040, GradientType::STATIC, _("Monsters"));
     // TRANSLATORS: palette color
-    addColor(MONSTER_HP, 0x00ff00, GradientType::STATIC, _("Monster HP bar"), 50);
-    addColor(MONSTER_HP2, 0xff0000, GradientType::STATIC,
+    addColor(UserColorId::MONSTER_HP, 0x00ff00, GradientType::STATIC, _("Monster HP bar"), 50);
+    addColor(UserColorId::MONSTER_HP2, 0xff0000, GradientType::STATIC,
         // TRANSLATORS: palette color
         _("Monster HP bar (second color)"), 50);
     // TRANSLATORS: palette color
-    addColor(PARTY, 0xff00d8, GradientType::STATIC, _("Party members"));
+    addColor(UserColorId::PARTY, 0xff00d8, GradientType::STATIC, _("Party members"));
     // TRANSLATORS: palette color
-    addColor(GUILD, 0xff00d8, GradientType::STATIC, _("Guild members"));
+    addColor(UserColorId::GUILD, 0xff00d8, GradientType::STATIC, _("Guild members"));
     // TRANSLATORS: palette color
-    addColor(PARTICLE, 0xffffff, GradientType::STATIC, _("Particle effects"));
+    addColor(UserColorId::PARTICLE, 0xffffff, GradientType::STATIC, _("Particle effects"));
     // TRANSLATORS: palette color
-    addColor(PICKUP_INFO, 0x28dc28, GradientType::STATIC, _("Pickup notification"));
+    addColor(UserColorId::PICKUP_INFO, 0x28dc28, GradientType::STATIC, _("Pickup notification"));
     // TRANSLATORS: palette color
-    addColor(EXP_INFO, 0xffff00, GradientType::STATIC, _("Exp notification"));
+    addColor(UserColorId::EXP_INFO, 0xffff00, GradientType::STATIC, _("Exp notification"));
     // TRANSLATORS: palette color
-    addColor(PLAYER_HP, 0x00ff00, GradientType::STATIC, _("Player HP bar"), 50);
+    addColor(UserColorId::PLAYER_HP, 0x00ff00, GradientType::STATIC, _("Player HP bar"), 50);
     // TRANSLATORS: palette color
-    addColor(PLAYER_HP2, 0xff0000, GradientType::STATIC,
+    addColor(UserColorId::PLAYER_HP2, 0xff0000, GradientType::STATIC,
         // TRANSLATORS: palette color
         _("Player HP bar (second color)"), 50);
     // TRANSLATORS: palette color
-    addColor(HIT_PLAYER_MONSTER, 0x0064ff, GradientType::STATIC, _("Player hits monster"));
+    addColor(UserColorId::HIT_PLAYER_MONSTER, 0x0064ff, GradientType::STATIC, _("Player hits monster"));
     // TRANSLATORS: palette color
-    addColor(HIT_MONSTER_PLAYER, 0xff3232, GradientType::STATIC, _("Monster hits player"));
+    addColor(UserColorId::HIT_MONSTER_PLAYER, 0xff3232, GradientType::STATIC, _("Monster hits player"));
     // TRANSLATORS: palette color
-    addColor(HIT_PLAYER_PLAYER, 0xff5050, GradientType::STATIC,
+    addColor(UserColorId::HIT_PLAYER_PLAYER, 0xff5050, GradientType::STATIC,
        // TRANSLATORS: palette color
        _("Other player hits local player"));
     // TRANSLATORS: palette color
-    addColor(HIT_CRITICAL, 0xff0000, GradientType::RAINBOW, _("Critical Hit"));
+    addColor(UserColorId::HIT_CRITICAL, 0xff0000, GradientType::RAINBOW, _("Critical Hit"));
     // TRANSLATORS: palette color
-    addColor(HIT_LOCAL_PLAYER_MONSTER, 0x00ff00, GradientType::STATIC,
+    addColor(UserColorId::HIT_LOCAL_PLAYER_MONSTER, 0x00ff00, GradientType::STATIC,
         // TRANSLATORS: palette color
         _("Local player hits monster"));
-    addColor(HIT_LOCAL_PLAYER_CRITICAL, 0xff0000, GradientType::RAINBOW,
+    addColor(UserColorId::HIT_LOCAL_PLAYER_CRITICAL, 0xff0000, GradientType::RAINBOW,
         // TRANSLATORS: palette color
         _("Local player critical hit"));
-    addColor(HIT_LOCAL_PLAYER_MISS, 0x00ffa6, GradientType::STATIC,
+    addColor(UserColorId::HIT_LOCAL_PLAYER_MISS, 0x00ffa6, GradientType::STATIC,
     // TRANSLATORS: palette color
         _("Local player miss"));
     // TRANSLATORS: palette color
-    addColor(MISS, 0xffff00, GradientType::STATIC, _("Misses"));
+    addColor(UserColorId::MISS, 0xffff00, GradientType::STATIC, _("Misses"));
     // TRANSLATORS: palette color
-    addColor(PORTAL_HIGHLIGHT, 0xC80000, GradientType::STATIC, _("Portal highlight"));
-    addColor(COLLISION_HIGHLIGHT, 0x0000C8, GradientType::STATIC,
+    addColor(UserColorId::PORTAL_HIGHLIGHT, 0xC80000, GradientType::STATIC, _("Portal highlight"));
+    addColor(UserColorId::COLLISION_HIGHLIGHT, 0x0000C8, GradientType::STATIC,
         // TRANSLATORS: palette color
         _("Default collision highlight"), 64);
-    addColor(AIR_COLLISION_HIGHLIGHT, 0xe0e0ff, GradientType::STATIC,
+    addColor(UserColorId::AIR_COLLISION_HIGHLIGHT, 0xe0e0ff, GradientType::STATIC,
         // TRANSLATORS: palette color
         _("Air collision highlight"), 64);
-    addColor(WATER_COLLISION_HIGHLIGHT, 0x2050e0, GradientType::STATIC,
+    addColor(UserColorId::WATER_COLLISION_HIGHLIGHT, 0x2050e0, GradientType::STATIC,
         // TRANSLATORS: palette color
         _("Water collision highlight"), 64);
-    addColor(GROUNDTOP_COLLISION_HIGHLIGHT, 0xffff00, GradientType::STATIC,
+    addColor(UserColorId::GROUNDTOP_COLLISION_HIGHLIGHT, 0xffff00, GradientType::STATIC,
         // TRANSLATORS: palette color
         _("Special ground collision highlight"), 20);
-    addColor(WALKABLE_HIGHLIGHT, 0x00D000, GradientType::STATIC,
+    addColor(UserColorId::WALKABLE_HIGHLIGHT, 0x00D000, GradientType::STATIC,
         // TRANSLATORS: palette color
         _("Walkable highlight"), 255);
-    addColor(ATTACK_RANGE, 0xffffff, GradientType::STATIC,
+    addColor(UserColorId::ATTACK_RANGE, 0xffffff, GradientType::STATIC,
         // TRANSLATORS: palette color
         _("Local player attack range"), 5);
-    addColor(ATTACK_RANGE_BORDER, 0x0, GradientType::STATIC,
+    addColor(UserColorId::ATTACK_RANGE_BORDER, 0x0, GradientType::STATIC,
         // TRANSLATORS: palette color
         _("Local player attack range border"), 76);
-    addColor(MONSTER_ATTACK_RANGE, 0xff0000, GradientType::STATIC,
+    addColor(UserColorId::MONSTER_ATTACK_RANGE, 0xff0000, GradientType::STATIC,
         // TRANSLATORS: palette color
         _("Monster attack range"), 20);
 
-    addColor(FLOOR_ITEM_TEXT, 0xffffff, GradientType::STATIC,
+    addColor(UserColorId::FLOOR_ITEM_TEXT, 0xffffff, GradientType::STATIC,
         // TRANSLATORS: palette color
         _("Floor item amount color"), 100);
-    addColor(HOME_PLACE, 0xffffff, GradientType::STATIC,
+    addColor(UserColorId::HOME_PLACE, 0xffffff, GradientType::STATIC,
         // TRANSLATORS: palette color
         _("Home place"), 20);
-    addColor(HOME_PLACE_BORDER, 0xffff00, GradientType::STATIC,
+    addColor(UserColorId::HOME_PLACE_BORDER, 0xffff00, GradientType::STATIC,
         // TRANSLATORS: palette color
         _("Home place border"), 200);
-    addColor(ROAD_POINT, 0x000000, GradientType::STATIC,
+    addColor(UserColorId::ROAD_POINT, 0x000000, GradientType::STATIC,
         // TRANSLATORS: palette color
         _("Road point"), 100);
-    addColor(NET, 0x000000, GradientType::STATIC,
+    addColor(UserColorId::NET, 0x000000, GradientType::STATIC,
         // TRANSLATORS: palette color
         _("Tiles border"), 64);
     // TRANSLATORS: palette color
-    addColor(PET, 0xffffff, GradientType::STATIC, _("Pets"));
+    addColor(UserColorId::PET, 0xffffff, GradientType::STATIC, _("Pets"));
     // TRANSLATORS: palette color
-    addColor(MERCENARY, 0xffffff, GradientType::STATIC, _("Mercenary"));
+    addColor(UserColorId::MERCENARY, 0xffffff, GradientType::STATIC, _("Mercenary"));
     // TRANSLATORS: palette color
-    addColor(HOMUNCULUS, 0xffffff, GradientType::STATIC, _("Homunculus"));
+    addColor(UserColorId::HOMUNCULUS, 0xffffff, GradientType::STATIC, _("Homunculus"));
     commit(true);
 }
 
@@ -329,7 +331,7 @@ void UserPalette::rollback()
 int UserPalette::getColorTypeAt(const int i)
 {
     if (i < 0 || i >= getNumberOfElements())
-        return BEING;
+        return UserColorId::BEING;
 
     return mColors[i].type;
 }

@@ -330,7 +330,7 @@ void Viewport::drawDebugPath(Graphics *const graphics)
         lastMouseDestination = mouseDestination;
     }
     drawPath(graphics, debugPath, userPalette->getColorWithAlpha(
-        UserPalette::ROAD_POINT));
+        UserColorId::ROAD_POINT));
 
     const ActorSprites &actors = actorManager->getAll();
     FOR_EACH (ActorSpritesConstIterator, it, actors)
@@ -340,7 +340,7 @@ void Viewport::drawDebugPath(Graphics *const graphics)
         {
             const Path &beingPath = being->getPath();
             drawPath(graphics, beingPath, userPalette->getColorWithAlpha(
-                UserPalette::ROAD_POINT));
+                UserColorId::ROAD_POINT));
         }
     }
 }
