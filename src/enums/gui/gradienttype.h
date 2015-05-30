@@ -24,17 +24,15 @@
 #ifndef ENUMS_GUI_GRADIENTTYPE_H
 #define ENUMS_GUI_GRADIENTTYPE_H
 
-namespace GradientType
-{
-    enum T
-    {
-        STATIC = 0,
-        PULSE,
-        SPECTRUM,
-        RAINBOW
-    };
-}  // namespace GradientType
+#include "enums/simpletypes/enumdefines.h"
 
-typedef GradientType::T GradientTypeT;
+enumStart(GradientType)
+{
+    STATIC = 0,
+    PULSE,
+    SPECTRUM,
+    RAINBOW
+}
+enumEnd(GradientType);
 
 #endif  // ENUMS_GUI_GRADIENTTYPE_H
