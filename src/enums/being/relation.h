@@ -23,20 +23,18 @@
 #ifndef ENUMS_BEING_RELATION_H
 #define ENUMS_BEING_RELATION_H
 
-namespace Relation
-{
-    enum T
-    {
-        NEUTRAL     = 0,
-        FRIEND      = 1,
-        DISREGARDED = 2,
-        IGNORED     = 3,
-        ERASED      = 4,
-        BLACKLISTED = 5,
-        ENEMY2      = 6
-    };
-}  // namespace Relation
+#include "enums/simpletypes/enumdefines.h"
 
-typedef Relation::T RelationT;
+enumStart(Relation)
+{
+    NEUTRAL     = 0,
+    FRIEND      = 1,
+    DISREGARDED = 2,
+    IGNORED     = 3,
+    ERASED      = 4,
+    BLACKLISTED = 5,
+    ENEMY2      = 6
+}
+enumEnd(Relation);
 
 #endif  // ENUMS_BEING_RELATION_H
