@@ -29,7 +29,7 @@
 
 SurfaceGraphics::SurfaceGraphics() :
     Graphics(),
-    mBlitMode(BLIT_NORMAL),
+    mBlitMode(BlitMode::BLIT_NORMAL),
     mTarget(nullptr)
 {
     mOpenGL = RENDER_SOFTWARE;
@@ -61,7 +61,7 @@ void SurfaceGraphics::drawImage(const Image *const image,
 #ifdef USE_SDL2
     SDL_BlitSurface(image->mSDLSurface, &srcRect, mTarget, &dstRect);
 #else
-    if (mBlitMode == BLIT_NORMAL)
+    if (mBlitMode == BlitMode::BLIT_NORMAL)
     {
         SDL_BlitSurface(image->mSDLSurface, &srcRect, mTarget, &dstRect);
     }
@@ -121,7 +121,7 @@ void SurfaceGraphics::drawImageCached(const Image *const image,
 #ifdef USE_SDL2
     SDL_BlitSurface(image->mSDLSurface, &srcRect, mTarget, &dstRect);
 #else
-    if (mBlitMode == BLIT_NORMAL)
+    if (mBlitMode == BlitMode::BLIT_NORMAL)
     {
         SDL_BlitSurface(image->mSDLSurface, &srcRect, mTarget, &dstRect);
     }

@@ -340,7 +340,7 @@ void CompoundSprite::redraw() const
         return;
 
     SurfaceGraphics *graphics = new SurfaceGraphics();
-    graphics->setBlitMode(SurfaceGraphics::BLIT_GFX);
+    graphics->setBlitMode(BlitMode::BLIT_GFX);
     graphics->setTarget(surface);
     graphics->beginDraw();
 

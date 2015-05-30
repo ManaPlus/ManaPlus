@@ -23,6 +23,8 @@
 #ifndef RENDER_SURFACEGRAPHICS_H
 #define RENDER_SURFACEGRAPHICS_H
 
+#include "enums/render/blitmode.h"
+
 #include "render/graphics.h"
 
 #include "localconsts.h"
@@ -39,12 +41,6 @@ struct SDL_Surface;
 class SurfaceGraphics final : public Graphics
 {
     public:
-        enum BlitMode
-        {
-            BLIT_NORMAL = 0,
-            BLIT_GFX
-        };
-
         SurfaceGraphics();
 
         A_DELETE_COPY(SurfaceGraphics)
@@ -152,10 +148,10 @@ class SurfaceGraphics final : public Graphics
                         const ImageRect &imgRect A_UNUSED) override final
         { }
 
-        void setBlitMode(const BlitMode mode)
+        void setBlitMode(const BlitModeT mode)
         { mBlitMode = mode; }
 
-        BlitMode getBlitMode() const A_WARN_UNUSED
+        BlitModeT getBlitMode() const A_WARN_UNUSED
         { return mBlitMode; }
 
         void fillRectangle(const Rect &rect A_UNUSED) override final
@@ -207,7 +203,7 @@ class SurfaceGraphics final : public Graphics
         { }
 
     protected:
-        BlitMode mBlitMode;
+        BlitModeT mBlitMode;
         SDL_Surface *mTarget;
 };
 
