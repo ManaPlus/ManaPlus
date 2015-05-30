@@ -2264,18 +2264,18 @@ void PopupMenu::addPlayerRelation(const std::string &name)
 {
     switch (player_relations.getRelation(name))
     {
-        case PlayerRelation::NEUTRAL:
+        case Relation::NEUTRAL:
             // TRANSLATORS: popup menu item
             // TRANSLATORS: add player to friends list
             mBrowserBox->addRow("/friend 'NAME'", _("Be friend"));
             addNormalRelations();
             break;
 
-        case PlayerRelation::FRIEND:
+        case Relation::FRIEND:
             addNormalRelations();
             break;
 
-        case PlayerRelation::BLACKLISTED:
+        case Relation::BLACKLISTED:
             // TRANSLATORS: popup menu item
             // TRANSLATORS: remove player from ignore list
             mBrowserBox->addRow("/unignore 'NAME'", _("Unignore"));
@@ -2293,7 +2293,7 @@ void PopupMenu::addPlayerRelation(const std::string &name)
             mBrowserBox->addRow("/erase 'NAME'", _("Erase"));
             break;
 
-        case PlayerRelation::DISREGARDED:
+        case Relation::DISREGARDED:
             // TRANSLATORS: popup menu item
             // TRANSLATORS: remove player from ignore list
             mBrowserBox->addRow("/unignore 'NAME'", _("Unignore"));
@@ -2305,7 +2305,7 @@ void PopupMenu::addPlayerRelation(const std::string &name)
             mBrowserBox->addRow("/erase 'NAME'", _("Erase"));
             break;
 
-        case PlayerRelation::IGNORED:
+        case Relation::IGNORED:
             // TRANSLATORS: popup menu item
             // TRANSLATORS: remove player from ignore list
             mBrowserBox->addRow("/unignore 'NAME'", _("Unignore"));
@@ -2314,7 +2314,7 @@ void PopupMenu::addPlayerRelation(const std::string &name)
             mBrowserBox->addRow("/erase 'NAME'", _("Erase"));
             break;
 
-        case PlayerRelation::ENEMY2:
+        case Relation::ENEMY2:
             // TRANSLATORS: popup menu item
             // TRANSLATORS: remove player from ignore list
             mBrowserBox->addRow("/unignore 'NAME'", _("Unignore"));
@@ -2332,7 +2332,7 @@ void PopupMenu::addPlayerRelation(const std::string &name)
             mBrowserBox->addRow("/erase 'NAME'", _("Erase"));
             break;
 
-        case PlayerRelation::ERASED:
+        case Relation::ERASED:
             // TRANSLATORS: popup menu item
             // TRANSLATORS: remove player from ignore list
             mBrowserBox->addRow("/unignore 'NAME'", _("Unignore"));

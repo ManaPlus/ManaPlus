@@ -23,6 +23,8 @@
 #ifndef BEING_PLAYERRELATION_H
 #define BEING_PLAYERRELATION_H
 
+#include "enums/being/relation.h"
+
 #include "localconsts.h"
 
 struct PlayerRelation final
@@ -44,22 +46,12 @@ struct PlayerRelation final
                                       | SPEECH_LOG
                                       | WHISPER
                                       | TRADE;
-    enum Relation
-    {
-        NEUTRAL     = 0,
-        FRIEND      = 1,
-        DISREGARDED = 2,
-        IGNORED     = 3,
-        ERASED      = 4,
-        BLACKLISTED = 5,
-        ENEMY2      = 6
-    };
 
-    explicit PlayerRelation(const Relation relation);
+    explicit PlayerRelation(const RelationT relation);
 
     A_DELETE_COPY(PlayerRelation)
 
-    Relation mRelation;  // bitmask for all of the above
+    RelationT mRelation;  // bitmask for all of the above
 };
 
 #endif  // BEING_PLAYERRELATION_H

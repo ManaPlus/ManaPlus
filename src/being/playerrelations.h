@@ -23,6 +23,8 @@
 #ifndef BEING_PLAYERRELATIONS_H
 #define BEING_PLAYERRELATIONS_H
 
+#include "enums/being/relation.h"
+
 #include "utils/stringvector.h"
 
 #include "being/playerrelation.h"
@@ -88,13 +90,12 @@ class PlayerRelationsManager final
          * Updates the relationship with this player.
          */
         void setRelation(const std::string &name,
-                         const PlayerRelation::Relation relation);
+                         const RelationT relation);
 
         /**
          * Updates the relationship with this player.
          */
-        PlayerRelation::Relation getRelation(const std::string &name)
-                                             const A_WARN_UNUSED;
+        RelationT getRelation(const std::string &name) const A_WARN_UNUSED;
 
         /**
          * Deletes the information recorded for a player.
@@ -151,7 +152,7 @@ class PlayerRelationsManager final
          */
         StringVect *getPlayers() const A_WARN_UNUSED;
 
-        StringVect *getPlayersByRelation(const PlayerRelation::Relation rel)
+        StringVect *getPlayersByRelation(const RelationT rel)
                                          const A_WARN_UNUSED;
 
         /**

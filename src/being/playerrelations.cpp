@@ -101,10 +101,10 @@ namespace
                 if (!(*container)[name])
                 {
                     const int v = cobj->getValueInt(RELATION,
-                        static_cast<int>(PlayerRelation::NEUTRAL));
+                        static_cast<int>(Relation::NEUTRAL));
 
                     (*container)[name] = new PlayerRelation(
-                        static_cast<PlayerRelation::Relation>(v));
+                        static_cast<RelationT>(v));
                 }
                 // otherwise ignore the duplicate entry
 
@@ -271,19 +271,19 @@ unsigned int PlayerRelationsManager::checkPermissionSilently(
 
         switch (r->mRelation)
         {
-            case PlayerRelation::NEUTRAL:
+            case Relation::NEUTRAL:
                 permissions = mDefaultPermissions;
                 break;
 
-            case PlayerRelation::FRIEND:
+            case Relation::FRIEND:
                 permissions |= mDefaultPermissions;  // widen
                 break;
 
-            case PlayerRelation::DISREGARDED:
-            case PlayerRelation::IGNORED:
-            case PlayerRelation::ERASED:
-            case PlayerRelation::BLACKLISTED:
-            case PlayerRelation::ENEMY2:
+            case Relation::DISREGARDED:
+            case Relation::IGNORED:
+            case Relation::ERASED:
+            case Relation::BLACKLISTED:
+            case Relation::ENEMY2:
             default:
                 permissions &= mDefaultPermissions;  // narrow
         }
@@ -330,10 +330,10 @@ bool PlayerRelationsManager::hasPermission(const std::string &name,
 }
 
 void PlayerRelationsManager::setRelation(const std::string &player_name,
-                                         const PlayerRelation::Relation
+                                         const RelationT
                                          relation)
 {
-    if (!localPlayer || (relation != PlayerRelation::NEUTRAL
+    if (!localPlayer || (relation != Relation::NEUTRAL
         && localPlayer->getName() == player_name))
     {
         return;
@@ -365,7 +365,7 @@ StringVect *PlayerRelationsManager::getPlayers() const
 }
 
 StringVect *PlayerRelationsManager::getPlayersByRelation(
-    const PlayerRelation::Relation rel) const
+    const RelationT rel) const
 {
     StringVect *const retval = new StringVect();
 
@@ -388,7 +388,7 @@ void PlayerRelationsManager::removePlayer(const std::string &name)
 }
 
 
-PlayerRelation::Relation PlayerRelationsManager::getRelation(
+RelationT PlayerRelationsManager::getRelation(
     const std::string &name) const
 {
     const std::map<std::string, PlayerRelation *>::const_iterator
@@ -396,7 +396,7 @@ PlayerRelation::Relation PlayerRelationsManager::getRelation(
     if (it != mRelations.end())
         return (*it).second->mRelation;
 
-    return PlayerRelation::NEUTRAL;
+    return Relation::NEUTRAL;
 }
 
 ////////////////////////////////////////
@@ -420,18 +420,18 @@ void PlayerRelationsManager::ignoreTrade(const std::string &name) const
     if (name.empty())
         return;
 
-    const PlayerRelation::Relation relation = getRelation(name);
+    const RelationT relation = getRelation(name);
 
-    if (relation == PlayerRelation::IGNORED
-        || relation == PlayerRelation::DISREGARDED
-        || relation == PlayerRelation::BLACKLISTED
-        || relation == PlayerRelation::ERASED)
+    if (relation == Relation::IGNORED
+        || relation == Relation::DISREGARDED
+        || relation == Relation::BLACKLISTED
+        || relation == Relation::ERASED)
     {
         return;
     }
     else
     {
-        player_relations.setRelation(name, PlayerRelation::BLACKLISTED);
+        player_relations.setRelation(name, Relation::BLACKLISTED);
     }
 }
 
@@ -440,13 +440,13 @@ bool PlayerRelationsManager::checkBadRelation(const std::string &name) const
     if (name.empty())
         return true;
 
-    const PlayerRelation::Relation relation = getRelation(name);
+    const RelationT relation = getRelation(name);
 
-    if (relation == PlayerRelation::IGNORED
-        || relation == PlayerRelation::DISREGARDED
-        || relation == PlayerRelation::BLACKLISTED
-        || relation == PlayerRelation::ERASED
-        || relation == PlayerRelation::ENEMY2)
+    if (relation == Relation::IGNORED
+        || relation == Relation::DISREGARDED
+        || relation == Relation::BLACKLISTED
+        || relation == Relation::ERASED
+        || relation == Relation::ENEMY2)
     {
         return true;
     }

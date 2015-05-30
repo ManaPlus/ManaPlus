@@ -20,11 +20,23 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "being/playerrelation.h"
+#ifndef ENUMS_BEING_RELATION_H
+#define ENUMS_BEING_RELATION_H
 
-#include "debug.h"
-
-PlayerRelation::PlayerRelation(const RelationT relation) :
-    mRelation(relation)
+namespace Relation
 {
-}
+    enum T
+    {
+        NEUTRAL     = 0,
+        FRIEND      = 1,
+        DISREGARDED = 2,
+        IGNORED     = 3,
+        ERASED      = 4,
+        BLACKLISTED = 5,
+        ENEMY2      = 6
+    };
+}  // namespace Relation
+
+typedef Relation::T RelationT;
+
+#endif  // ENUMS_BEING_RELATION_H

@@ -605,10 +605,10 @@ void ChatWindow::ignoreAllWhispers()
         if (tab)
         {
             if (player_relations.getRelation(tab->getNick())
-                != PlayerRelation::IGNORED)
+                != Relation::IGNORED)
             {
                 player_relations.setRelation(tab->getNick(),
-                    PlayerRelation::IGNORED);
+                    Relation::IGNORED);
             }
             tab->handleCommand("close", "");
         }

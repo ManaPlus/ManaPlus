@@ -282,13 +282,13 @@ void WhoIsOnline::handlerPlayerRelation(const std::string &nick,
 {
     switch (player_relations.getRelation(nick))
     {
-        case PlayerRelation::NEUTRAL:
+        case Relation::NEUTRAL:
         default:
             setNeutralColor(player);
             mNeutral.push_back(player);
             break;
 
-        case PlayerRelation::FRIEND:
+        case Relation::FRIEND:
             player->setText("2");
             if (mGroupFriends)
                 mFriends.push_back(player);
@@ -296,19 +296,19 @@ void WhoIsOnline::handlerPlayerRelation(const std::string &nick,
                 mNeutral.push_back(player);
             break;
 
-        case PlayerRelation::DISREGARDED:
-        case PlayerRelation::BLACKLISTED:
+        case Relation::DISREGARDED:
+        case Relation::BLACKLISTED:
             player->setText("8");
             mDisregard.push_back(player);
             break;
 
-        case PlayerRelation::ENEMY2:
+        case Relation::ENEMY2:
             player->setText("1");
             mEnemy.push_back(player);
             break;
 
-        case PlayerRelation::IGNORED:
-        case PlayerRelation::ERASED:
+        case Relation::IGNORED:
+        case Relation::ERASED:
             // Ignore the ignored.
             break;
     }

@@ -2614,7 +2614,7 @@ bool LocalPlayer::checAttackPermissions(const Being *const target)
             return true;
         case 1:
             return !(player_relations.getRelation(target->getName())
-                == PlayerRelation::FRIEND);
+                 == Relation::FRIEND);
         case 2:
             return player_relations.checkBadRelation(target->getName());
         default:

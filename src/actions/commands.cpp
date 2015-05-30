@@ -85,7 +85,7 @@ static std::string getNick(const InputEvent &event)
 }
 
 static void reportRelation(const InputEvent &event,
-                           const PlayerRelation::Relation &rel,
+                           const RelationT &rel,
                            const std::string &str1,
                            const std::string &str2)
 {
@@ -105,7 +105,7 @@ static void reportRelation(const InputEvent &event,
 }
 
 static void changeRelation(const InputEvent &event,
-                           const PlayerRelation::Relation relation,
+                           const RelationT relation,
                            const std::string &relationText)
 {
     std::string args = getNick(event);
@@ -143,7 +143,7 @@ impHandler(chatAnnounce)
 
 impHandler(chatIgnore)
 {
-    changeRelation(event, PlayerRelation::IGNORED, "ignored");
+    changeRelation(event, Relation::IGNORED, "ignored");
     return true;
 }
 
@@ -153,10 +153,10 @@ impHandler(chatUnignore)
     if (args.empty())
         return false;
 
-    const PlayerRelation::Relation rel = player_relations.getRelation(args);
-    if (rel != PlayerRelation::NEUTRAL && rel != PlayerRelation::FRIEND)
+    const RelationT rel = player_relations.getRelation(args);
+    if (rel != Relation::NEUTRAL && rel != Relation::FRIEND)
     {
-        player_relations.setRelation(args, PlayerRelation::NEUTRAL);
+        player_relations.setRelation(args, Relation::NEUTRAL);
     }
     else
     {
@@ -170,7 +170,7 @@ impHandler(chatUnignore)
     }
 
     reportRelation(event,
-        PlayerRelation::NEUTRAL,
+        Relation::NEUTRAL,
         // TRANSLATORS: unignore command
         _("Player no longer ignored!"),
         // TRANSLATORS: unignore command
@@ -184,7 +184,7 @@ impHandler(chatErase)
     if (args.empty())
         return false;
 
-    if (player_relations.getRelation(args) == PlayerRelation::ERASED)
+    if (player_relations.getRelation(args) == Relation::ERASED)
     {
         if (event.tab)
         {
@@ -196,11 +196,11 @@ impHandler(chatErase)
     }
     else
     {
-        player_relations.setRelation(args, PlayerRelation::ERASED);
+        player_relations.setRelation(args, Relation::ERASED);
     }
 
     reportRelation(event,
-        PlayerRelation::ERASED,
+        Relation::ERASED,
         // TRANSLATORS: erase command
         _("Player no longer erased!"),
         // TRANSLATORS: erase command
@@ -211,35 +211,35 @@ impHandler(chatErase)
 impHandler(chatFriend)
 {
     // TRANSLATORS: adding friend command
-    changeRelation(event, PlayerRelation::FRIEND, _("friend"));
+    changeRelation(event, Relation::FRIEND, _("friend"));
     return true;
 }
 
 impHandler(chatDisregard)
 {
     // TRANSLATORS: disregard command
-    changeRelation(event, PlayerRelation::DISREGARDED, _("disregarded"));
+    changeRelation(event, Relation::DISREGARDED, _("disregarded"));
     return true;
 }
 
 impHandler(chatNeutral)
 {
     // TRANSLATORS: neutral command
-    changeRelation(event, PlayerRelation::NEUTRAL, _("neutral"));
+    changeRelation(event, Relation::NEUTRAL, _("neutral"));
     return true;
 }
 
 impHandler(chatBlackList)
 {
     // TRANSLATORS: blacklist command
-    changeRelation(event, PlayerRelation::BLACKLISTED, _("blacklisted"));
+    changeRelation(event, Relation::BLACKLISTED, _("blacklisted"));
     return true;
 }
 
 impHandler(chatEnemy)
 {
     // TRANSLATORS: enemy command
-    changeRelation(event, PlayerRelation::ENEMY2, _("enemy"));
+    changeRelation(event, Relation::ENEMY2, _("enemy"));
     return true;
 }
 
