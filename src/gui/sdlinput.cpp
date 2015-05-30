@@ -293,7 +293,7 @@ void SDLInput::convertKeyEventToKey(const SDL_Event &event, KeyInput &keyInput)
 {
     keyInput.setKey(Key(convertKeyCharacter(event)));
     const InputActionT actionId = inputManager.getActionByKey(event);
-    if (actionId > InputActionT::NO_VALUE)
+    if (actionId > InputAction::NO_VALUE)
         keyInput.setActionId(actionId);
 }
 
