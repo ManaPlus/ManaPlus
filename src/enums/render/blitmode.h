@@ -23,15 +23,13 @@
 #ifndef ENUMS_RENDER_BLITMODE_H
 #define ENUMS_RENDER_BLITMODE_H
 
-namespace BlitMode
-{
-    enum T
-    {
-        BLIT_NORMAL = 0,
-        BLIT_GFX
-    };
-}  // namespace BlitMode
+#include "enums/simpletypes/enumdefines.h"
 
-typedef BlitMode::T BlitModeT;
+enumStart(BlitMode)
+{
+    BLIT_NORMAL = 0,
+    BLIT_GFX
+}
+enumEnd(BlitMode);
 
 #endif  // ENUMS_RENDER_BLITMODE_H
