@@ -26,6 +26,8 @@
 
 #include "logger.h"
 
+#include "enums/gui/gradienttype.h"
+
 #include "gui/color.h"
 
 #if defined __native_client__
@@ -48,15 +50,6 @@ class Palette notfinal
     public:
         /** Black Color Constant */
         static const Color BLACK;
-
-        /** Colors can be static or can alter over time. */
-        enum GradientType
-        {
-            STATIC = 0,
-            PULSE,
-            SPECTRUM,
-            RAINBOW
-        };
 
         A_DELETE_COPY(Palette)
 
@@ -111,7 +104,7 @@ class Palette notfinal
          *
          * @return the gradient type of the color with the given index
          */
-        inline GradientType getGradientType(const int type) const A_WARN_UNUSED
+        inline GradientTypeT getGradientType(const int type) const A_WARN_UNUSED
         { return mColors[type].grad; }
 
         /**
@@ -171,8 +164,8 @@ class Palette notfinal
                 committedColor(0),
                 text(),
                 ch(0),
-                grad(STATIC),
-                committedGrad(STATIC),
+                grad(GradientType::STATIC),
+                committedGrad(GradientType::STATIC),
                 gradientIndex(0),
                 delay(0),
                 committedDelay(0)
@@ -185,14 +178,14 @@ class Palette notfinal
             Color committedColor;
             std::string text;
             signed char ch;
-            GradientType grad;
-            GradientType committedGrad;
+            GradientTypeT grad;
+            GradientTypeT committedGrad;
             int gradientIndex;
             int delay;
             int committedDelay;
 
             void set(const int type0, const Color &color0,
-                     const GradientType grad0, const int delay0)
+                     const GradientTypeT grad0, const int delay0)
             {
                 type = type0;
                 color = color0;

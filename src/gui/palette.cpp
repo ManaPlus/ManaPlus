@@ -108,13 +108,13 @@ void Palette::advanceGradient()
                 continue;
 
             int delay = elem->delay;
-            const GradientType &grad = elem->grad;
+            const GradientTypeT &grad = elem->grad;
 
-            if (grad == PULSE)
+            if (grad == GradientType::PULSE)
                 delay = delay / 20;
 
-            const int numOfColors = (elem->grad == SPECTRUM ? 6 :
-                grad == PULSE ? 127 :
+            const int numOfColors = (elem->grad == GradientType::SPECTRUM ? 6 :
+                grad == GradientType::PULSE ? 127 :
                 RAINBOW_COLOR_COUNT);
 
             elem->gradientIndex = (elem->gradientIndex + advance)
@@ -131,7 +131,7 @@ void Palette::advanceGradient()
             Color &color = elem->color;
             int colVal;
 
-            if (grad == PULSE)
+            if (grad == GradientType::PULSE)
             {
                 colVal = static_cast<int>(255.0 *
                         sin(M_PI * colIndex / numOfColors));
@@ -142,7 +142,7 @@ void Palette::advanceGradient()
                 color.g = ((colVal * col.g) / 255) % (col.g + 1);
                 color.b = ((colVal * col.b) / 255) % (col.b + 1);
             }
-            else if (grad == SPECTRUM)
+            else if (grad == GradientType::SPECTRUM)
             {
                 if (colIndex % 2)
                 { // falling curve
@@ -178,7 +178,7 @@ void Palette::advanceGradient()
                 color.b = (colIndex == 3 || colIndex == 4) ? 255 :
                     (colIndex == 2 || colIndex == 5) ? colVal : 0;
             }
-            else if (elem->grad == RAINBOW)
+            else if (elem->grad == GradientType::RAINBOW)
             {
                 const Color &startCol = RAINBOW_COLORS[colIndex];
                 const Color &destCol

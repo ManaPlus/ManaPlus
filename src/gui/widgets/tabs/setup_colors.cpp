@@ -250,7 +250,7 @@ void Setup_Colors::valueChanged(const SelectionEvent &event A_UNUSED)
     mSelected = mColorBox->getSelected();
     const int type = userPalette->getColorTypeAt(mSelected);
     const Color *col = &userPalette->getColor(type);
-    const Palette::GradientType grad = userPalette->getGradientType(type);
+    const GradientTypeT grad = userPalette->getGradientType(type);
     const int delay = userPalette->getGradientDelay(type);
 
     mPreview->clearRows();
@@ -337,12 +337,12 @@ void Setup_Colors::valueChanged(const SelectionEvent &event A_UNUSED)
             mGradDelaySlider->setScale(20, 100);
             break;
     }
-    if (grad != Palette::STATIC && grad != Palette::PULSE)
+    if (grad != GradientType::STATIC && grad != GradientType::PULSE)
     { // If nonstatic color, don't display the current, but the committed
       // color at the sliders
         col = &userPalette->getCommittedColor(type);
     }
-    else if (grad == Palette::PULSE)
+    else if (grad == GradientType::PULSE)
     {
         col = &userPalette->getTestColor(type);
     }
@@ -395,17 +395,17 @@ void Setup_Colors::updateGradType()
 
     mSelected = mColorBox->getSelected();
     const int type = userPalette->getColorTypeAt(mSelected);
-    const Palette::GradientType grad = userPalette->getGradientType(type);
+    const GradientTypeT grad = userPalette->getGradientType(type);
 
     mGradTypeText->setCaption(
         // TRANSLATORS: color type
-        (grad == Palette::STATIC) ? _("Static") :
+        (grad == GradientType::STATIC) ? _("Static") :
         // TRANSLATORS: color type
-        (grad == Palette::PULSE) ? _("Pulse") :
+        (grad == GradientType::PULSE) ? _("Pulse") :
         // TRANSLATORS: color type
-        (grad == Palette::RAINBOW) ? _("Rainbow") : _("Spectrum"));
+        (grad == GradientType::RAINBOW) ? _("Rainbow") : _("Spectrum"));
 
-    const bool enable = (grad == Palette::STATIC || grad == Palette::PULSE);
+    const bool enable = (grad == GradientType::STATIC || grad == GradientType::PULSE);
     const bool delayEnable = true;
 
     mGradDelayText->setEnabled(delayEnable);
@@ -425,20 +425,20 @@ void Setup_Colors::updateColor()
         return;
 
     const int type = userPalette->getColorTypeAt(mSelected);
-    const Palette::GradientType grad = static_cast<Palette::GradientType>(
-            static_cast<int>(mGradTypeSlider->getValue()));
+    const GradientTypeT grad = static_cast<GradientTypeT>(
+        static_cast<int>(mGradTypeSlider->getValue()));
     const int delay = static_cast<int>(mGradDelaySlider->getValue());
     userPalette->setGradient(type, grad);
     userPalette->setGradientDelay(type, delay);
 
-    if (grad == Palette::STATIC)
+    if (grad == GradientType::STATIC)
     {
         userPalette->setColor(type,
                 static_cast<int>(mRedSlider->getValue()),
                 static_cast<int>(mGreenSlider->getValue()),
                 static_cast<int>(mBlueSlider->getValue()));
     }
-    else if (grad == Palette::PULSE)
+    else if (grad == GradientType::PULSE)
     {
         userPalette->setTestColor(type, Color(
                 static_cast<int>(mRedSlider->getValue()),

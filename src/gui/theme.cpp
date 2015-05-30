@@ -913,7 +913,7 @@ static Color readColor(const std::string &description)
     return Color(v);
 }
 
-static Palette::GradientType readColorGradient(const std::string &grad)
+static GradientTypeT readColorGradient(const std::string &grad)
 {
     static const std::string grads[] =
     {
@@ -924,15 +924,15 @@ static Palette::GradientType readColorGradient(const std::string &grad)
     };
 
     if (grad.empty())
-        return Palette::STATIC;
+        return GradientType::STATIC;
 
     for (int i = 0; i < 4; i++)
     {
         if (compareStrI(grad, grads[i]))
-            return static_cast<Palette::GradientType>(i);
+            return static_cast<GradientTypeT>(i);
     }
 
-    return Palette::STATIC;
+    return GradientType::STATIC;
 }
 
 static int readProgressType(const std::string &type)
@@ -1018,7 +1018,7 @@ void Theme::loadColors(std::string file)
                     continue;
 
                 const Color color = readColor(temp);
-                const GradientType grad = readColorGradient(
+                const GradientTypeT grad = readColorGradient(
                     XML::getProperty(node, "effect", ""));
                 mColors[paletteId * ThemeColorId::THEME_COLORS_END + type].set(
                     type, color, grad, 10);

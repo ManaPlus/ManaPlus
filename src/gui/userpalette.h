@@ -143,7 +143,7 @@ class UserPalette final : public Palette, public ListModel
          *
          * @param grad gradient type to set
          */
-        void setGradient(const int type, const Palette::GradientType grad);
+        void setGradient(const int type, const GradientTypeT grad);
 
         /**
          * Sets the gradient delay for the specified color.
@@ -229,7 +229,7 @@ class UserPalette final : public Palette, public ListModel
          * @param text identifier of color
          */
         void addColor(const unsigned type, const unsigned rgb,
-                      GradientType grad, const std::string &text,
+                      GradientTypeT grad, const std::string &text,
                       int delay = GRADIENT_DELAY);
 };
 
