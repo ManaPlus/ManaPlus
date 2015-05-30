@@ -1,7 +1,6 @@
 /*
  *  The ManaPlus Client
  *  Copyright (C) 2007  Joshua Langley <joshlangley@optusnet.com.au>
- *  Copyright (C) 2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
  *  Copyright (C) 2011-2015  The ManaPlus Developers
  *
@@ -21,32 +20,12 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_SETUPACTIONDATA_H
-#define GUI_SETUPACTIONDATA_H
+#ifndef INPUT_INPUTACTIONOPERATORS_H
+#define INPUT_INPUTACTIONOPERATORS_H
 
 #include "enums/input/inputaction.h"
 
-#include <string>
+InputActionT operator+(InputActionT action, const int& i);
+int operator-(const InputActionT &action1, const InputActionT &action2);
 
-#include "localconsts.h"
-
-struct SetupActionData final
-{
-#ifdef ADVGCC
-    SetupActionData(const std::string &name0,
-                    const InputActionT actionId0,
-                    const std::string &text0) :
-        name(name0),
-        actionId(actionId0),
-        text(text0)
-    { }
-
-    A_DELETE_COPY(SetupActionData)
-#endif
-
-    std::string name;
-    const InputActionT actionId;
-    std::string text;
-};
-
-#endif  // GUI_SETUPACTIONDATA_H
+#endif  // INPUT_INPUTACTIONOPERATORS_H

@@ -25,6 +25,8 @@
 
 #include "actions/actionfuncptr.h"
 
+#include "enums/input/inputaction.h"
+
 #include "enums/simpletypes/useargs.h"
 
 struct InputActionData final
@@ -36,7 +38,7 @@ struct InputActionData final
     const int defaultValue2;
     const int grp;
     const ActionFuncPtr action;
-    const int modKeyIndex;
+    const InputActionT modKeyIndex;
     const int priority;
     const int condition;
     const std::string chatCommand;

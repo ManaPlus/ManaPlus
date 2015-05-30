@@ -423,7 +423,7 @@ void Slider::mouseWheelMovedDown(MouseEvent &event)
 
 void Slider::keyPressed(KeyEvent& event)
 {
-    const int action = event.getActionId();
+    const InputActionT action = event.getActionId();
 
     if (mOrientation == HORIZONTAL)
     {

@@ -202,7 +202,7 @@ void QuitDialog::action(const ActionEvent &event)
 
 void QuitDialog::keyPressed(KeyEvent &event)
 {
-    const int actionId = event.getActionId();
+    const InputActionT actionId = event.getActionId();
     int dir = 0;
 
     switch (actionId)

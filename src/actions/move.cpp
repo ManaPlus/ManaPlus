@@ -36,6 +36,8 @@
 
 #include "gui/popups/popupmenu.h"
 
+#include "input/inputactionoperators.h"
+
 #include "net/playerhandler.h"
 
 #include "debug.h"

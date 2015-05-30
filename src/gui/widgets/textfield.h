@@ -238,9 +238,9 @@ class TextField notfinal : public Widget,
 
         void fontChanged() override;
 
-        bool handleNormalKeys(const int action, bool &consumed);
+        bool handleNormalKeys(const InputActionT action, bool &consumed);
 
-        void handleCtrlKeys(const int action, bool &consumed);
+        void handleCtrlKeys(const InputActionT action, bool &consumed);
 
         static Skin *mSkin;
 

@@ -83,7 +83,9 @@ InputManager::InputManager() :
 
 void InputManager::init()
 {
-    for (unsigned int i = 0; i < InputAction::TOTAL; i++)
+    for (unsigned int i = 0;
+         i < static_cast<unsigned int>(InputAction::TOTAL);
+         i ++)
     {
         InputFunction &kf = mKey[i];
         for (unsigned int f = 0; f < inputFunctionSize; f ++)
@@ -110,7 +112,7 @@ void InputManager::update()
 
 void InputManager::retrieve()
 {
-    for (int i = 0; i < InputAction::TOTAL; i++)
+    for (int i = 0; i < static_cast<int>(InputAction::TOTAL); i ++)
     {
         const std::string &cmd = inputActionData[i].chatCommand;
         if (!cmd.empty())
@@ -128,7 +130,7 @@ void InputManager::retrieve()
 #endif
         if (!cf.empty())
         {
-            mNameMap[cf] = i;
+            mNameMap[cf] = static_cast<InputActionT>(i);
             InputFunction &kf = mKey[i];
             const std::string keyStr = config.getValue(cf, "");
             const size_t keyStrSize = keyStr.size();
@@ -174,7 +176,7 @@ void InputManager::retrieve()
 
 void InputManager::store() const
 {
-    for (int i = 0; i < InputAction::TOTAL; i++)
+    for (int i = 0; i < static_cast<int>(InputAction::TOTAL); i ++)
     {
 #ifdef USE_SDL2
         const std::string cf = std::string("sdl2")
@@ -226,16 +228,16 @@ void InputManager::store() const
     }
 }
 
-void InputManager::resetKey(const int i)
+void InputManager::resetKey(const InputActionT i)
 {
-    InputFunction &key = mKey[i];
+    InputFunction &key = mKey[static_cast<size_t>(i)];
     for (size_t i2 = 1; i2 < inputFunctionSize; i2 ++)
     {
         InputItem &ki2 = key.values[i2];
         ki2.type = InputType::UNKNOWN;
         ki2.value = -1;
     }
-    const InputActionData &kd = inputActionData[i];
+    const InputActionData &kd = inputActionData[static_cast<size_t>(i)];
     InputItem &val0 = key.values[0];
     val0.type = kd.defaultType1;
     InputItem &val1 = key.values[1];
@@ -257,26 +259,27 @@ void InputManager::resetKey(const int i)
 
 void InputManager::resetKeys()
 {
-    for (int i = 0; i < InputAction::TOTAL; i++)
-        resetKey(i);
+    for (int i = 0; i < static_cast<int>(InputAction::TOTAL); i++)
+        resetKey(static_cast<InputActionT>(i));
 }
 
-void InputManager::makeDefault(const int i)
+void InputManager::makeDefault(const InputActionT i)
 {
-    if (i >= 0 && i < InputAction::TOTAL)
+    if (i > InputAction::NO_VALUE && i < InputAction::TOTAL)
     {
         resetKey(i);
         update();
     }
 }
 
-bool InputManager::hasConflicts(int &restrict key1, int &restrict key2) const
+bool InputManager::hasConflicts(InputActionT &restrict key1,
+                                InputActionT &restrict key2) const
 {
     /**
      * No need to parse the square matrix: only check one triangle
      * that's enough to detect conflicts
      */
-    for (int i = 0; i < InputAction::TOTAL; i++)
+    for (int i = 0; i < static_cast<int>(InputAction::TOTAL); i++)
     {
         const InputActionData &kdi = inputActionData[i];
         if (!*kdi.configField)
@@ -286,11 +289,11 @@ bool InputManager::hasConflicts(int &restrict key1, int &restrict key2) const
         for (size_t i2 = 0; i2 < inputFunctionSize; i2 ++)
         {
             const InputItem &vali2 = ki.values[i2];
-            if (vali2.value == InputAction::NO_VALUE)
+            if (vali2.value == -1)
                 continue;
 
             size_t j;
-            for (j = i, j++; j < InputAction::TOTAL; j++)
+            for (j = i, j++; j < static_cast<int>(InputAction::TOTAL); j++)
             {
                 if ((kdi.grp & inputActionData[j].grp) == 0
                     || !*kdi.configField)
@@ -307,8 +310,8 @@ bool InputManager::hasConflicts(int &restrict key1, int &restrict key2) const
                         && vali2.value == valj2.value
                         && vali2.type == valj2.type)
                     {
-                        key1 = static_cast<int>(i);
-                        key2 = static_cast<int>(j);
+                        key1 = static_cast<InputActionT>(i);
+                        key2 = static_cast<InputActionT>(j);
                         return true;
                     }
                 }
@@ -323,12 +326,12 @@ void InputManager::callbackNewKey()
     mSetupInput->newKeyCallback(mNewKeyIndex);
 }
 
-bool InputManager::isActionActive(const int index) const
+bool InputManager::isActionActive(const InputActionT index) const
 {
     if (!isActionActive0(index))
         return false;
 
-    const InputActionData &key = inputActionData[index];
+    const InputActionData &key = inputActionData[static_cast<size_t>(index)];
 //    logger->log("isActionActive mask=%d, condition=%d, index=%d",
 //        mMask, key.condition, index);
     if ((key.condition & mMask) != key.condition)
@@ -336,7 +339,7 @@ bool InputManager::isActionActive(const int index) const
     return true;
 }
 
-bool InputManager::isActionActive0(const int index)
+bool InputManager::isActionActive0(const InputActionT index)
 {
     if (keyboard.isActionActive(index))
         return true;
@@ -345,17 +348,17 @@ bool InputManager::isActionActive0(const int index)
     return touchManager.isActionActive(index);
 }
 
-InputFunction &InputManager::getKey(int index)
+InputFunction &InputManager::getKey(InputActionT index)
 {
-    if (index < 0 || index >= InputAction::TOTAL)
-        index = 0;
-    return mKey[index];
+    if (static_cast<int>(index) < 0 || index >= InputAction::TOTAL)
+        index = InputAction::MOVE_UP;
+    return mKey[static_cast<size_t>(index)];
 }
 
-std::string InputManager::getKeyStringLong(const int index) const
+std::string InputManager::getKeyStringLong(const InputActionT index) const
 {
     std::string keyStr;
-    const InputFunction &ki = mKey[index];
+    const InputFunction &ki = mKey[static_cast<size_t>(index)];
 
     for (size_t i = 0; i < inputFunctionSize; i ++)
     {
@@ -395,10 +398,10 @@ std::string InputManager::getKeyStringLong(const int index) const
     return keyStr;
 }
 
-std::string InputManager::getKeyValueString(const int index) const
+std::string InputManager::getKeyValueString(const InputActionT index) const
 {
     std::string keyStr;
-    const InputFunction &ki = mKey[index];
+    const InputFunction &ki = mKey[static_cast<size_t>(index)];
 
     for (size_t i = 0; i < inputFunctionSize; i ++)
     {
@@ -441,7 +444,7 @@ std::string InputManager::getKeyValueString(const int index) const
 
 std::string InputManager::getKeyValueByName(const std::string &keyName)
 {
-    const StringIntMapCIter it = mNameMap.find(keyName);
+    const StringInpActionMapCIter it = mNameMap.find(keyName);
 
     if (it == mNameMap.end())
         return std::string();
@@ -450,21 +453,22 @@ std::string InputManager::getKeyValueByName(const std::string &keyName)
 
 std::string InputManager::getKeyValueByNameLong(const std::string &keyName)
 {
-    const StringIntMapCIter it = mNameMap.find(keyName);
+    const StringInpActionMapCIter it = mNameMap.find(keyName);
 
     if (it == mNameMap.end())
         return std::string();
     return getKeyStringLong((*it).second);
 }
 
-void InputManager::addActionKey(const int action, const int type,
+void InputManager::addActionKey(const InputActionT action,
+                                const int type,
                                 const int val)
 {
-    if (action < 0 || action >= InputAction::TOTAL)
+    if (static_cast<int>(action) < 0 || action >= InputAction::TOTAL)
         return;
 
     int idx = -1;
-    InputFunction &key = mKey[action];
+    InputFunction &key = mKey[static_cast<size_t>(action)];
     for (size_t i = 0; i < inputFunctionSize; i ++)
     {
         const InputItem &val2 = key.values[i];
@@ -507,7 +511,7 @@ void InputManager::setNewKey(const SDL_Event &event, const int type)
 
 void InputManager::unassignKey()
 {
-    InputFunction &key = mKey[mNewKeyIndex];
+    InputFunction &key = mKey[static_cast<size_t>(mNewKeyIndex)];
     for (size_t i = 0; i < inputFunctionSize; i ++)
     {
         InputItem &val = key.values[i];
@@ -747,27 +751,29 @@ bool InputManager::checkKey(const InputActionData *const key) const
 }
 
 bool InputManager::invokeKey(const InputActionData *const key,
-                             const int keyNum)
+                             const InputActionT keyNum)
 {
     // no validation to keyNum because it validated in caller
 
     if (checkKey(key))
     {
         InputEvent evt(keyNum, mMask);
-        ActionFuncPtr func = *(inputActionData[keyNum].action);
+        ActionFuncPtr func = *(inputActionData[
+            static_cast<size_t>(keyNum)].action);
         if (func && func(evt))
             return true;
     }
     return false;
 }
 
-void InputManager::executeAction(const int keyNum)
+void InputManager::executeAction(const InputActionT keyNum)
 {
-    if (keyNum < 0 || keyNum >= InputAction::TOTAL)
+    if (keyNum < InputAction::MOVE_UP || keyNum >= InputAction::TOTAL)
         return;
 
     InputEvent evt(keyNum, mMask);
-    ActionFuncPtr func = *(inputActionData[keyNum].action);
+    ActionFuncPtr func = *(inputActionData[static_cast<size_t>(
+        keyNum)].action);
     if (func)
         func(evt);
 }
@@ -790,13 +796,14 @@ bool InputManager::executeChatCommand(const std::string &cmd,
     return false;
 }
 
-bool InputManager::executeChatCommand(const int keyNum,
+bool InputManager::executeChatCommand(const InputActionT keyNum,
                                       const std::string &args,
                                       ChatTab *const tab)
 {
-    if (keyNum < 0 || keyNum >= InputAction::TOTAL)
+    if (static_cast<int>(keyNum) < 0 || keyNum >= InputAction::TOTAL)
         return false;
-    ActionFuncPtr func = *(inputActionData[keyNum].action);
+    ActionFuncPtr func = *(inputActionData[static_cast<size_t>(
+        keyNum)].action);
     if (func)
     {
         InputEvent evt(args, tab, mMask);
@@ -814,7 +821,7 @@ void InputManager::updateKeyActionMap(KeyToActionMap &actionMap,
     actionMap.clear();
     keyTimeMap.clear();
 
-    for (size_t i = 0; i < InputAction::TOTAL; i ++)
+    for (size_t i = 0; i < static_cast<size_t>(InputAction::TOTAL); i ++)
     {
         const InputFunction &key = mKey[i];
         const InputActionData &kd = inputActionData[i];
@@ -824,7 +831,10 @@ void InputManager::updateKeyActionMap(KeyToActionMap &actionMap,
             {
                 const InputItem &ki = key.values[i2];
                 if (ki.type == type && ki.value != -1)
-                    actionMap[ki.value].push_back(static_cast<int>(i));
+                {
+                    actionMap[ki.value].push_back(
+                        static_cast<InputActionT>(i));
+                }
             }
         }
         if (kd.configField && (kd.grp & Input::GRP_GUICHAN))
@@ -833,7 +843,7 @@ void InputManager::updateKeyActionMap(KeyToActionMap &actionMap,
             {
                 const InputItem &ki = key.values[i2];
                 if (ki.type == type && ki.value != -1)
-                    idMap[ki.value] = static_cast<int>(i);
+                    idMap[ki.value] = static_cast<InputActionT>(i);
             }
         }
         if (kd.configField && (kd.grp & Input::GRP_REPEAT))
@@ -865,20 +875,21 @@ bool InputManager::triggerAction(const KeysVector *const ptrs)
 
     FOR_EACHP (KeysVectorCIter, it, ptrs)
     {
-        const int keyNum = *it;
-        if (keyNum < 0 || keyNum >= InputAction::TOTAL)
+        const InputActionT keyNum = *it;
+        if (static_cast<int>(keyNum) < 0 || keyNum >= InputAction::TOTAL)
             continue;
 
-        if (invokeKey(&inputActionData[keyNum], keyNum))
+        if (invokeKey(&inputActionData[static_cast<size_t>(keyNum)], keyNum))
             return true;
     }
     return false;
 }
 
-int InputManager::getKeyIndex(const int value, const int grp,
-                              const int type) const
+InputActionT InputManager::getKeyIndex(const int value,
+                                       const int grp,
+                                       const int type) const
 {
-    for (size_t i = 0; i < InputAction::TOTAL; i++)
+    for (size_t i = 0; i < static_cast<size_t>(InputAction::TOTAL); i++)
     {
         const InputFunction &key = mKey[i];
         const InputActionData &kd = inputActionData[i];
@@ -888,28 +899,31 @@ int InputManager::getKeyIndex(const int value, const int grp,
             if (value == vali2.value && (grp & kd.grp) != 0
                 && vali2.type == type)
             {
-                return static_cast<int>(i);
+                return static_cast<InputActionT>(i);
             }
         }
     }
     return InputAction::NO_VALUE;
 }
 
-int InputManager::getActionByKey(const SDL_Event &event) const
+InputActionT InputManager::getActionByKey(const SDL_Event &event) const
 {
     // for now support only keyboard events
     if (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP)
     {
-        const int idx = keyboard.getActionId(event);
-        if (idx >= 0 && checkKey(&inputActionData[idx]))
+        const InputActionT idx = keyboard.getActionId(event);
+        if (static_cast<int>(idx) >= 0 &&
+            checkKey(&inputActionData[static_cast<size_t>(idx)]))
+        {
             return idx;
+        }
     }
     return InputAction::NO_VALUE;
 }
 
 void InputManager::addChatCommands(std::list<std::string> &arr)
 {
-    for (int i = 0; i < InputAction::TOTAL; i++)
+    for (int i = 0; i < static_cast<int>(InputAction::TOTAL); i++)
     {
         const InputActionData &ad = inputActionData[i];
         std::string cmd = ad.chatCommand;

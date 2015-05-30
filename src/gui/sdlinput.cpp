@@ -292,8 +292,8 @@ void SDLInput::pushInput(const SDL_Event &event)
 void SDLInput::convertKeyEventToKey(const SDL_Event &event, KeyInput &keyInput)
 {
     keyInput.setKey(Key(convertKeyCharacter(event)));
-    const int actionId = inputManager.getActionByKey(event);
-    if (actionId >= 0)
+    const InputActionT actionId = inputManager.getActionByKey(event);
+    if (actionId > InputActionT::NO_VALUE)
         keyInput.setActionId(actionId);
 }
 

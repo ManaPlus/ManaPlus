@@ -474,7 +474,7 @@ Rect GuiTable::getChildrenArea()
 // -- KeyListener notifications
 void GuiTable::keyPressed(KeyEvent& event)
 {
-    const int action = event.getActionId();
+    const InputActionT action = event.getActionId();
 
     if (action == InputAction::GUI_SELECT)
     {

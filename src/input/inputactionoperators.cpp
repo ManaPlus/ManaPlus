@@ -1,6 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2012-2015  The ManaPlus Developers
+ *  Copyright (C) 2015  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -18,32 +18,15 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_MODELS_TOUCHACTIONMODEL_H
-#define GUI_MODELS_TOUCHACTIONMODEL_H
+#include "input/inputactionoperators.h"
 
-#include "enums/input/inputaction.h"
-
-#include "gui/models/namesmodel.h"
-
-#include "gui/widgets/setupitem.h"
-
-class TouchActionsModel final : public NamesModel
+InputActionT operator+(InputActionT action, const int& i)
 {
-    public:
-        TouchActionsModel();
+    action = static_cast<InputActionT>(static_cast<int>(action) + i);
+    return action;
+}
 
-        A_DELETE_COPY(TouchActionsModel)
-
-        ~TouchActionsModel()
-        { }
-
-        InputActionT getActionFromSelection(const int sel) const;
-
-        int getSelectionFromAction(const InputActionT action) const;
-
-    private:
-        std::vector<InputActionT> mActionId;
-        std::map<InputActionT, int> mActionToSelection;
-};
-
-#endif  // GUI_MODELS_TOUCHACTIONMODEL_H
+int operator-(const InputActionT &action1, const InputActionT &action2)
+{
+    return static_cast<int>(action1) - static_cast<int>(action2);
+}

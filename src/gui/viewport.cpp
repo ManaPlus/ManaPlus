@@ -455,20 +455,18 @@ bool Viewport::leftMouseAction()
                      type == ActorType::Npc))
             {
                 if ((localPlayer->withinAttackRange(mHoverBeing) ||
-                    inputManager.isActionActive(static_cast<int>(
-                    InputAction::ATTACK))))
+                    inputManager.isActionActive(InputAction::ATTACK)))
                 {
                     validateSpeed();
                     if (!mStatsReUpdated && localPlayer != mHoverBeing)
                     {
                         localPlayer->attack(mHoverBeing,
                             !inputManager.isActionActive(
-                            static_cast<int>(InputAction::STOP_ATTACK)));
+                            InputAction::STOP_ATTACK));
                         return true;
                     }
                 }
-                else if (!inputManager.isActionActive(static_cast<int>(
-                         InputAction::ATTACK)))
+                else if (!inputManager.isActionActive(InputAction::ATTACK))
                 {
                     validateSpeed();
                     if (!mStatsReUpdated && localPlayer != mHoverBeing)
@@ -498,8 +496,7 @@ bool Viewport::leftMouseAction()
         return true;
     }
     // Just walk around
-    else if (!inputManager.isActionActive(static_cast<int>(
-             InputAction::ATTACK)))
+    else if (!inputManager.isActionActive(InputAction::ATTACK))
     {
         validateSpeed();
         localPlayer->stopAttack();
@@ -964,9 +961,8 @@ void Viewport::returnCamera()
 
 void Viewport::validateSpeed()
 {
-    if (!inputManager.isActionActive(static_cast<int>(
-        InputAction::TARGET_ATTACK)) && !inputManager.isActionActive(
-        static_cast<int>(InputAction::ATTACK)))
+    if (!inputManager.isActionActive(InputAction::TARGET_ATTACK) &&
+        !inputManager.isActionActive(InputAction::ATTACK))
     {
         if (Game::instance())
             Game::instance()->setValidSpeed();

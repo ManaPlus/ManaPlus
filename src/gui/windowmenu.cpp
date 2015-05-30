@@ -238,13 +238,13 @@ void WindowMenu::addButton(const char *const text,
                            const std::string &description,
                            int &restrict x,
                            int &restrict h,
-                           const int key,
+                           const InputActionT key,
                            const Visible visible)
 {
     Button *const btn = new Button(this, gettext(text), text, this);
     btn->setPosition(x, mPadding);
     btn->setDescription(description);
-    btn->setTag(key);
+    btn->setTag(static_cast<int>(key));
     add(btn);
     btn->setFocusable(false);
     x += btn->getWidth() + mSpacing;
@@ -301,7 +301,7 @@ void WindowMenu::mouseMoved(MouseEvent &event)
 
     const int x = event.getX();
     const int y = event.getY();
-    const int key = btn->getTag();
+    const InputActionT key = static_cast<InputActionT>(btn->getTag());
     const Rect &rect = mDimension;
     if (key != InputAction::NO_VALUE)
     {

@@ -328,11 +328,14 @@ bool TouchManager::processEvent(const MouseInput &mouseInput)
     return false;
 }
 
-bool TouchManager::isActionActive(const int index) const
+bool TouchManager::isActionActive(const InputActionT index) const
 {
-    if (index < 0 || index >= actionsSize)
+    if (static_cast<int>(index) < 0 ||
+        static_cast<int>(index) >= actionsSize)
+    {
         return false;
-    return mActions[index];
+    }
+    return mActions[static_cast<size_t>(index)];
 }
 
 void TouchManager::resize(const int width, const int height)
@@ -670,5 +673,6 @@ void TouchManager::setTempHide(const bool b)
 
 void TouchManager::executeAction(const std::string &event)
 {
-    inputManager.executeAction(config.getIntValue(event));
+    inputManager.executeAction(static_cast<InputActionT>(
+        config.getIntValue(event)));
 }

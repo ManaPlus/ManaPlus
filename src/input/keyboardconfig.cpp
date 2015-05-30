@@ -73,7 +73,7 @@ int KeyboardConfig::getKeyValueFromEvent(const SDL_Event &event)
 #endif
 }
 
-int KeyboardConfig::getKeyIndex(const SDL_Event &event, const int grp)
+InputActionT KeyboardConfig::getKeyIndex(const SDL_Event &event, const int grp)
 {
     const int keyValue = getKeyValueFromEvent(event);
     return inputManager.getKeyIndex(keyValue, grp, InputType::KEYBOARD);
@@ -86,9 +86,9 @@ void KeyboardConfig::refreshActiveKeys()
 
 std::string KeyboardConfig::getKeyName(const int key)
 {
-    if (key == InputAction::NO_VALUE)
+    if (key == -1)
         return "";
-    if (key >= 0)
+    if (key > -1)
     {
 #ifdef USE_SDL2
         return SDL_GetKeyName(SDL_GetKeyFromScancode(
@@ -99,7 +99,7 @@ std::string KeyboardConfig::getKeyName(const int key)
     }
 
     // TRANSLATORS: long key name, should be short
-    return strprintf(_("key_%d"), key);
+    return strprintf(_("key_%d"), static_cast<int>(key));
 }
 
 std::string KeyboardConfig::getKeyShortString(const std::string &key)
@@ -174,16 +174,16 @@ KeysVector *KeyboardConfig::getActionVectorByKey(const int i)
     return nullptr;
 }
 
-int KeyboardConfig::getActionId(const SDL_Event &event)
+InputActionT KeyboardConfig::getActionId(const SDL_Event &event)
 {
     const int i = getKeyValueFromEvent(event);
 //    logger->log("getActionId: %d", i);
     if (i != 0 && i < SDLK_LAST && mKeyToId.find(i) != mKeyToId.end())
         return mKeyToId[i];
-    return -1;
+    return InputAction::NO_VALUE;
 }
 
-bool KeyboardConfig::isActionActive(const int index) const
+bool KeyboardConfig::isActionActive(const InputActionT index) const
 {
     if (!mActiveKeys)
         return false;

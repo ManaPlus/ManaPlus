@@ -266,7 +266,7 @@ void RadioButton::mouseExited(MouseEvent& event A_UNUSED)
 
 void RadioButton::keyPressed(KeyEvent& event)
 {
-    const int action = event.getActionId();
+    const InputActionT action = event.getActionId();
     if (action == InputAction::GUI_SELECT)
     {
         setSelected(true);

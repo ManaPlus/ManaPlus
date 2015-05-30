@@ -257,7 +257,7 @@ void TextBox::setText(const std::string& text)
 void TextBox::keyPressed(KeyEvent& event)
 {
     const Key &key = event.getKey();
-    const int action = event.getActionId();
+    const InputActionT action = event.getActionId();
 
     switch (action)
     {

@@ -843,7 +843,7 @@ void Button::adjustSize()
 
 void Button::keyPressed(KeyEvent& event)
 {
-    const int action = event.getActionId();
+    const InputActionT action = event.getActionId();
 
     if (action == InputAction::GUI_SELECT)
     {
@@ -854,7 +854,7 @@ void Button::keyPressed(KeyEvent& event)
 
 void Button::keyReleased(KeyEvent& event)
 {
-    const int action = event.getActionId();
+    const InputActionT action = event.getActionId();
 
     if (action == InputAction::GUI_SELECT && mKeyPressed)
     {

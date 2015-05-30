@@ -100,7 +100,7 @@ void SetupActionDropDown::createControls()
     mDropDown->addActionListener(mParent);
     mDropDown->setWidth(mWidth);
     mDropDown->setSelected(mModel->getSelectionFromAction(
-        atoi(mValue.c_str())));
+        static_cast<InputActionT>(atoi(mValue.c_str()))));
 
     mWidget = mDropDown;
     fixFirstItemSize(mLabel);
@@ -118,8 +118,8 @@ void SetupActionDropDown::fromWidget()
     if (!mDropDown || !mModel)
         return;
 
-    mValue = toString(mModel->getActionFromSelection(
-        mDropDown->getSelected()));
+    mValue = toString(static_cast<int>(mModel->getActionFromSelection(
+        mDropDown->getSelected())));
 }
 
 void SetupActionDropDown::toWidget()
@@ -128,5 +128,5 @@ void SetupActionDropDown::toWidget()
         return;
 
     mDropDown->setSelected(mModel->getSelectionFromAction(
-        atoi(mValue.c_str())));
+        static_cast<InputActionT>(atoi(mValue.c_str()))));
 }

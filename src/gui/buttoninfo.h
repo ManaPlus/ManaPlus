@@ -21,6 +21,8 @@
 #ifndef GUI_BUTTONINFO_H
 #define GUI_BUTTONINFO_H
 
+#include "enums/input/inputaction.h"
+
 #include "enums/simpletypes/visible.h"
 
 #include "localconsts.h"
@@ -29,7 +31,9 @@ class Button;
 
 struct ButtonInfo final
 {
-    ButtonInfo(Button *const button0, const int key0, const Visible visible0) :
+    ButtonInfo(Button *const button0,
+               const InputActionT key0,
+               const Visible visible0) :
         button(button0),
         key(key0),
         visible(visible0)
@@ -39,7 +43,7 @@ struct ButtonInfo final
     A_DELETE_COPY(ButtonInfo)
 
     Button *button;
-    int key;
+    InputActionT key;
     Visible visible;
 };
 #endif  // GUI_BUTTONINFO_H

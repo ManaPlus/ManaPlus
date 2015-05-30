@@ -33,6 +33,8 @@
 
 #include "gui/chatconsts.h"
 
+#include "input/inputactionoperators.h"
+
 #include "listeners/inputactionreplaylistener.h"
 
 #include "net/chathandler.h"

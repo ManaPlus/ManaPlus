@@ -21,6 +21,8 @@
 #ifndef EVENTS_INPUTEVENT_H
 #define EVENTS_INPUTEVENT_H
 
+#include "enums/input/inputaction.h"
+
 #include <map>
 #include <string>
 #include <vector>
@@ -29,14 +31,14 @@
 
 class ChatTab;
 
-typedef std::vector<int> KeysVector;
+typedef std::vector<InputActionT> KeysVector;
 typedef KeysVector::iterator KeysVectorIter;
 typedef KeysVector::const_iterator KeysVectorCIter;
 
 typedef std::map<int, KeysVector> KeyToActionMap;
 typedef KeyToActionMap::iterator KeyToActionMapIter;
 
-typedef std::map<int, int> KeyToIdMap;
+typedef std::map<int, InputActionT> KeyToIdMap;
 typedef KeyToIdMap::iterator KeyToIdMapIter;
 
 typedef std::map<int, int> KeyTimeMap;
@@ -44,7 +46,8 @@ typedef KeyTimeMap::iterator KeyTimeMapIter;
 
 struct InputEvent final
 {
-    InputEvent(const int action0, const int mask0) :
+    InputEvent(const InputActionT action0,
+               const int mask0) :
         args(),
         tab(nullptr),
         action(action0),
@@ -56,7 +59,7 @@ struct InputEvent final
                const int mask0) :
         args(args0),
         tab(tab0),
-        action(-1),
+        action(InputAction::NO_VALUE),
         mask(mask0)
     { }
 
@@ -64,7 +67,7 @@ struct InputEvent final
 
     const std::string args;
     ChatTab *const tab;
-    const int action;
+    const InputActionT action;
     const int mask;
 };
 

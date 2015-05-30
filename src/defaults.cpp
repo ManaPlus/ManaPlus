@@ -326,19 +326,25 @@ DefaultsData* getConfigDefaults()
     AddDEF("selfMouseHeal", true);
     AddDEF("serverslistupdate", "");
     AddDEF("fadeoutmusic", true);
-    AddDEF("screenActionKeyboard", InputAction::SHOW_KEYBOARD);
-    AddDEF("screenActionButton0", InputAction::TALK);
-    AddDEF("screenActionButton1", InputAction::TARGET_ATTACK);
-    AddDEF("screenActionButton2", InputAction::PICKUP);
-    AddDEF("screenActionButton3", InputAction::STOP_SIT);
-    AddDEF("screenActionButton4", InputAction::TARGET_NPC);
-    AddDEF("screenActionButton5", InputAction::WINDOW_STATUS);
-    AddDEF("screenActionButton6", InputAction::WINDOW_INVENTORY);
-    AddDEF("screenActionButton7", InputAction::WINDOW_SKILL);
-    AddDEF("screenActionButton8", InputAction::WINDOW_SOCIAL);
-    AddDEF("screenActionButton9", InputAction::WINDOW_DEBUG);
-    AddDEF("screenActionButton10", InputAction::CHANGE_TRADE);
-    AddDEF("screenActionButton11", InputAction::DIRECT_DOWN);
+    AddDEF("screenActionKeyboard", static_cast<int>(
+        InputAction::SHOW_KEYBOARD));
+    AddDEF("screenActionButton0", static_cast<int>(InputAction::TALK));
+    AddDEF("screenActionButton1", static_cast<int>(
+        InputAction::TARGET_ATTACK));
+    AddDEF("screenActionButton2", static_cast<int>(InputAction::PICKUP));
+    AddDEF("screenActionButton3", static_cast<int>(InputAction::STOP_SIT));
+    AddDEF("screenActionButton4", static_cast<int>(InputAction::TARGET_NPC));
+    AddDEF("screenActionButton5", static_cast<int>(
+        InputAction::WINDOW_STATUS));
+    AddDEF("screenActionButton6", static_cast<int>(
+        InputAction::WINDOW_INVENTORY));
+    AddDEF("screenActionButton7", static_cast<int>(InputAction::WINDOW_SKILL));
+    AddDEF("screenActionButton8", static_cast<int>(
+        InputAction::WINDOW_SOCIAL));
+    AddDEF("screenActionButton9", static_cast<int>(InputAction::WINDOW_DEBUG));
+    AddDEF("screenActionButton10", static_cast<int>(
+        InputAction::CHANGE_TRADE));
+    AddDEF("screenActionButton11", static_cast<int>(InputAction::DIRECT_DOWN));
     AddDEF("screenButtonsFormat", 0);
     AddDEF("autoresizeminimaps", false);
     AddDEF("showGuildOnline", false);

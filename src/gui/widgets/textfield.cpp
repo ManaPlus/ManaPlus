@@ -365,9 +365,8 @@ void TextField::keyPressed(KeyEvent &event)
     bool consumed(false);
 #endif
 
-    const int action = event.getActionId();
-    if (!inputManager.isActionActive(static_cast<int>(
-        InputAction::GUI_CTRL)))
+    const InputActionT action = event.getActionId();
+    if (!inputManager.isActionActive(InputAction::GUI_CTRL))
     {
         if (!handleNormalKeys(action, consumed))
         {
@@ -389,7 +388,7 @@ void TextField::keyPressed(KeyEvent &event)
     fixScroll();
 }
 
-bool TextField::handleNormalKeys(const int action, bool &consumed)
+bool TextField::handleNormalKeys(const InputActionT action, bool &consumed)
 {
     switch (action)
     {
@@ -473,7 +472,7 @@ bool TextField::handleNormalKeys(const int action, bool &consumed)
     return true;
 }
 
-void TextField::handleCtrlKeys(const int action, bool &consumed)
+void TextField::handleCtrlKeys(const InputActionT action, bool &consumed)
 {
     switch (action)
     {

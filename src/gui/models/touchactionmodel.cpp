@@ -68,16 +68,16 @@ TouchActionsModel::TouchActionsModel() :
     }
 }
 
-int TouchActionsModel::getActionFromSelection(const int sel) const
+InputActionT TouchActionsModel::getActionFromSelection(const int sel) const
 {
     if (sel < 0 || sel > static_cast<signed int>(mActionId.size()))
-        return -1;
+        return InputAction::NO_VALUE;
     return mActionId[sel];
 }
 
-int TouchActionsModel::getSelectionFromAction(const int action) const
+int TouchActionsModel::getSelectionFromAction(const InputActionT action) const
 {
-    const std::map<int, int>::const_iterator it
+    const std::map<InputActionT, int>::const_iterator it
         = mActionToSelection.find(action);
     if (it == mActionToSelection.end())
         return 0;

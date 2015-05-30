@@ -1129,7 +1129,7 @@ void Game::updateHistory(const SDL_Event &event)
     {
         bool old = false;
 
-        const int key = keyboard.getKeyIndex(event);
+        const InputActionT key = keyboard.getKeyIndex(event);
         const int time = cur_time;
         int idx = -1;
         for (int f = 0; f < MAX_LASTKEYS; f ++)
@@ -1152,8 +1152,11 @@ void Game::updateHistory(const SDL_Event &event)
             for (int f = 0; f < MAX_LASTKEYS; f ++)
             {
                 LastKey &lastKey = mLastKeys[f];
-                if (lastKey.key == -1 ||  lastKey.time < mLastKeys[idx].time)
+                if (lastKey.key == InputAction::NO_VALUE ||
+                    lastKey.time < mLastKeys[idx].time)
+                {
                     idx = f;
+                }
             }
         }
 
@@ -1186,13 +1189,13 @@ void Game::checkKeys()
     for (int f = 0; f < MAX_LASTKEYS; f ++)
     {
         LastKey &lastKey = mLastKeys[f];
-        if (lastKey.key != -1)
+        if (lastKey.key != InputAction::NO_VALUE)
         {
             if (lastKey.time + timeRange < time)
             {
                 if (lastKey.cnt > cntInTime)
                     mValidSpeed = false;
-                lastKey.key = -1;
+                lastKey.key = InputAction::NO_VALUE;
             }
         }
     }
@@ -1209,7 +1212,7 @@ void Game::clearKeysArray()
     for (int f = 0; f < MAX_LASTKEYS; f ++)
     {
         mLastKeys[f].time = 0;
-        mLastKeys[f].key = -1;
+        mLastKeys[f].key = InputAction::NO_VALUE;
         mLastKeys[f].cnt = 0;
     }
 }

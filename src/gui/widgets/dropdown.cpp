@@ -334,7 +334,7 @@ void DropDown::keyPressed(KeyEvent& event)
     if (event.isConsumed())
         return;
 
-    const int actionId = event.getActionId();
+    const InputActionT actionId = event.getActionId();
     switch (actionId)
     {
         case InputAction::GUI_SELECT:

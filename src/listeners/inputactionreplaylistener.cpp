@@ -37,7 +37,7 @@ InputActionReplayListener::InputActionReplayListener() :
 
 void InputActionReplayListener::openDialog(const std::string &caption,
                                            const std::string &text,
-                                           const InputAction::Type action0)
+                                           const InputActionT action0)
 {
     mDialog = new EditDialog(caption, text, "OK");
     mDialog->postInit();

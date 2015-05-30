@@ -24,6 +24,8 @@
 #ifndef GUI_WIDGETS_TABS_SETUP_INPUT_H
 #define GUI_WIDGETS_TABS_SETUP_INPUT_H
 
+#include "enums/input/inputaction.h"
+
 #include "gui/widgets/tabs/setuptab.h"
 
 class Button;
@@ -63,7 +65,7 @@ class Setup_Input final : public SetupTab
         /**
          * The callback function when a new key has been pressed.
          */
-        void newKeyCallback(const int index);
+        void newKeyCallback(const InputActionT index);
 
         /**
          * Shorthand method to update all the keys.
@@ -75,16 +77,16 @@ class Setup_Input final : public SetupTab
          */
         void keyUnresolved();
 
-        int keyToSetupData(const int index) const A_WARN_UNUSED;
+        int keyToSetupData(const InputActionT index) const A_WARN_UNUSED;
 
-        std::string keyToString(const int index) const A_WARN_UNUSED;
+        std::string keyToString(const InputActionT index) const A_WARN_UNUSED;
 
     private:
         static void fixTranslations();
 
         static void fixTranslation(SetupActionData *const actionDatas,
-                                   const int actionStart,
-                                   const int actionEnd,
+                                   const InputActionT actionStart,
+                                   const InputActionT actionEnd,
                                    const std::string &text);
 
         KeyListModel *mKeyListModel;

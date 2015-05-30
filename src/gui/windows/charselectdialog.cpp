@@ -353,7 +353,7 @@ void CharSelectDialog::use(const int selected)
 
 void CharSelectDialog::keyPressed(KeyEvent &event)
 {
-    const int actionId = event.getActionId();
+    const InputActionT actionId = event.getActionId();
     switch (actionId)
     {
         case InputAction::GUI_CANCEL:

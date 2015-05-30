@@ -237,7 +237,7 @@ void ListBox::draw(Graphics *graphics)
 
 void ListBox::keyPressed(KeyEvent &event)
 {
-    const int action = event.getActionId();
+    const InputActionT action = event.getActionId();
     if (action == InputAction::GUI_SELECT)
     {
         distributeActionEvent();

@@ -33,6 +33,8 @@
 
 #include "gui/popups/textpopup.h"
 
+#include "input/inputactionoperators.h"
+
 #include "resources/emotesprite.h"
 #include "resources/image.h"
 

@@ -42,6 +42,8 @@
 #include "gui/windows/inventorywindow.h"
 #include "gui/windows/skilldialog.h"
 
+#include "input/inputactionoperators.h"
+
 #include "resources/skillconsts.h"
 
 #include "utils/stringutils.h"

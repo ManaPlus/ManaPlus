@@ -267,7 +267,7 @@ void CheckBox::mouseExited(MouseEvent& event)
 
 void CheckBox::keyPressed(KeyEvent& event)
 {
-    const int action = event.getActionId();
+    const InputActionT action = event.getActionId();
 
     if (action == InputAction::GUI_SELECT)
     {

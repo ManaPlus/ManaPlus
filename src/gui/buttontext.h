@@ -21,13 +21,16 @@
 #ifndef GUI_BUTTONTEXT_H
 #define GUI_BUTTONTEXT_H
 
+#include "enums/input/inputaction.h"
+
 #include "localconsts.h"
 
 #include <string>
 
 struct ButtonText final
 {
-    ButtonText(const std::string &text0, const int key0) :
+    ButtonText(const std::string &text0,
+               const InputActionT key0) :
         text(text0),
         key(key0)
     {
@@ -36,7 +39,7 @@ struct ButtonText final
     A_DELETE_COPY(ButtonText)
 
     std::string text;
-    int key;
+    InputActionT key;
 };
 
 #endif  // GUI_BUTTONTEXT_H

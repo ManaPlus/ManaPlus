@@ -320,7 +320,7 @@ int Joystick::getButtonFromEvent(const SDL_Event &event) const
     return event.jbutton.button;
 }
 
-bool Joystick::isActionActive(const int index) const
+bool Joystick::isActionActive(const InputActionT index) const
 {
     if (!validate())
         return false;

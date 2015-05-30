@@ -43,18 +43,19 @@
 #include "localconsts.h"
 
 #define defaultAction(name) \
-        InputType::UNKNOWN, InputAction::NO_VALUE, \
-        InputType::UNKNOWN, InputAction::NO_VALUE, \
+        InputType::UNKNOWN, -1, \
+        InputType::UNKNOWN, -1, \
         Input::GRP_DEFAULT, \
         name, \
         InputAction::NO_VALUE, 50
 
 #define addKey(name) InputType::KEYBOARD, name
-#define emptyKey InputType::UNKNOWN, InputAction::NO_VALUE
+#define emptyKey InputType::UNKNOWN, -1
 #define joystickButton(num) InputType::JOYSTICK, num
 
 // keyData must be in same order as enum keyAction.
-static const InputActionData inputActionData[InputAction::TOTAL] = {
+static const InputActionData inputActionData
+    [static_cast<size_t>(InputAction::TOTAL)] = {
     {"keyMoveUp",
         addKey(SDLK_UP),
         emptyKey,

@@ -66,6 +66,8 @@
 
 #include "enums/events/keyeventtype.h"
 
+#include "enums/input/inputaction.h"
+
 #include "input/key.h"
 
 #include "localconsts.h"
@@ -79,7 +81,7 @@ class KeyInput final
 #ifdef USE_SDL2
             mText(),
 #endif
-            mActionId(-2)
+            mActionId(InputAction::UNDEFINED_VALUE)
         { }
 
         ~KeyInput()
@@ -105,12 +107,12 @@ class KeyInput final
             return mKey;
         }
 
-        void setActionId(const int n)
+        void setActionId(const InputActionT n)
         {
             mActionId = n;
         }
 
-        int getActionId() const A_WARN_UNUSED
+        InputActionT getActionId() const A_WARN_UNUSED
         {
             return mActionId;
         }
@@ -142,7 +144,7 @@ class KeyInput final
         std::string mText;
 #endif
 
-        int mActionId;
+        InputActionT mActionId;
 };
 
 #endif  // INPUT_KEYINPUT_H

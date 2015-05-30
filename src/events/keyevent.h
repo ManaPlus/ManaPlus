@@ -65,6 +65,9 @@
 #define EVENTS_KEYEVENT_H
 
 #include "enums/events/keyeventtype.h"
+
+#include "enums/input/inputaction.h"
+
 #include "events/inputguievent.h"
 
 #include "input/key.h"
@@ -89,7 +92,7 @@ class KeyEvent: public InputGuiEvent
           */
         KeyEvent(Widget *const source,
                  KeyEventTypeT type,
-                 const int actionId,
+                 const InputActionT actionId,
                  const Key &key) :
             InputGuiEvent(source),
             mKey(key),
@@ -122,7 +125,7 @@ class KeyEvent: public InputGuiEvent
         const Key &getKey() const A_WARN_UNUSED
         { return mKey; }
 
-        int getActionId() const A_WARN_UNUSED
+        InputActionT getActionId() const A_WARN_UNUSED
         { return mActionId; }
 
 #ifdef USE_SDL2
@@ -148,7 +151,7 @@ class KeyEvent: public InputGuiEvent
           */
         KeyEventTypeT mType;
 
-        int mActionId;
+        InputActionT mActionId;
 };
 
 #endif  // EVENTS_KEYEVENT_H

@@ -124,7 +124,7 @@ class Joystick final
 
         int getButtonFromEvent(const SDL_Event &event) const A_WARN_UNUSED;
 
-        bool isActionActive(const int index) const A_WARN_UNUSED;
+        bool isActionActive(const InputActionT index) const A_WARN_UNUSED;
 
         bool validate() const A_WARN_UNUSED;
 

@@ -23,6 +23,8 @@
 #ifndef GUI_WINDOWMENU_H
 #define GUI_WINDOWMENU_H
 
+#include "enums/input/inputaction.h"
+
 #include "enums/simpletypes/visible.h"
 
 #include "gui/widgets/container.h"
@@ -95,7 +97,7 @@ class WindowMenu final : public Container,
         inline void addButton(const char *const text,
                               const std::string &description,
                               int &restrict x, int &restrict h,
-                              const int key,
+                              const InputActionT key,
                               const Visible visible = Visible_true);
 
         void updateButtons();

@@ -329,8 +329,8 @@ void UpdaterWindow::action(const ActionEvent &event)
 
 void UpdaterWindow::keyPressed(KeyEvent &event)
 {
-    const int actionId = event.getActionId();
-    if (actionId == static_cast<int>(InputAction::GUI_CANCEL))
+    const InputActionT actionId = event.getActionId();
+    if (actionId == InputAction::GUI_CANCEL)
     {
         action(ActionEvent(nullptr, mCancelButton->getActionEventId()));
         if (client->getState() != STATE_GAME)
@@ -338,8 +338,8 @@ void UpdaterWindow::keyPressed(KeyEvent &event)
         else
             deleteSelf();
     }
-    else if (actionId == static_cast<int>(InputAction::GUI_SELECT)
-             || actionId == static_cast<int>(InputAction::GUI_SELECT2))
+    else if (actionId == InputAction::GUI_SELECT ||
+             actionId == InputAction::GUI_SELECT2)
     {
         if (mDownloadStatus == UPDATE_COMPLETE ||
             mDownloadStatus == UPDATE_ERROR)

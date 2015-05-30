@@ -299,14 +299,14 @@ void EditServerDialog::keyPressed(KeyEvent &event)
     if (event.isConsumed())
         return;
 
-    const int actionId = event.getActionId();
+    const InputActionT actionId = event.getActionId();
 
-    if (actionId == static_cast<int>(InputAction::GUI_CANCEL))
+    if (actionId == InputAction::GUI_CANCEL)
     {
         scheduleDelete();
     }
-    else if (actionId == static_cast<int>(InputAction::GUI_SELECT)
-             || actionId == static_cast<int>(InputAction::GUI_SELECT2))
+    else if (actionId == InputAction::GUI_SELECT ||
+             actionId == InputAction::GUI_SELECT2)
     {
         action(ActionEvent(nullptr, mOkButton->getActionEventId()));
     }

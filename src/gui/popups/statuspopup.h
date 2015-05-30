@@ -62,8 +62,9 @@ class StatusPopup final : public Popup
     private:
         void updateLabels() const;
 
-        void setLabelText(const int num, const std::string &text,
-                          const InputAction::Type key) const;
+        void setLabelText(const int num,
+                          const std::string &text,
+                          const InputActionT key) const;
 
         Label *mLabels[STATUSPOPUP_NUM_LABELS];
 };

@@ -37,6 +37,9 @@ class Setup_Input;
 
 struct InputActionData;
 
+typedef std::map<std::string, InputActionT> StringInpActionMap;
+typedef StringInpActionMap::const_iterator StringInpActionMapCIter;
+
 class InputManager final
 {
     public:
@@ -56,35 +59,37 @@ class InputManager final
 
         void resetKeys();
 
-        void makeDefault(const int i);
+        void makeDefault(const InputActionT i);
 
-        bool hasConflicts(int &restrict key1,
-                          int &restrict key2) const A_WARN_UNUSED;
+        bool hasConflicts(InputActionT &restrict key1,
+                          InputActionT &restrict key2) const A_WARN_UNUSED;
 
         void callbackNewKey();
 
-        InputFunction &getKey(int index) A_WARN_UNUSED;
+        InputFunction &getKey(InputActionT index) A_WARN_UNUSED;
 
-        std::string getKeyValueString(const int index) const A_WARN_UNUSED;
+        std::string getKeyValueString(const InputActionT index) const A_WARN_UNUSED;
 
-        std::string getKeyStringLong(const int index) const A_WARN_UNUSED;
+        std::string getKeyStringLong(const InputActionT index) const A_WARN_UNUSED;
 
         std::string getKeyValueByName(const std::string &keyName);
 
         std::string getKeyValueByNameLong(const std::string &keyName);
 
-        void addActionKey(const int action, const int type, const int val);
+        void addActionKey(const InputActionT action,
+                          const int type,
+                          const int val);
 
         void setNewKey(const SDL_Event &event, const int type);
 
         void unassignKey();
 
-        bool isActionActive(const int index) const A_WARN_UNUSED;
+        bool isActionActive(const InputActionT index) const A_WARN_UNUSED;
 
         /**
          * Set the index of the new key to be assigned.
          */
-        void setNewKeyIndex(const int value)
+        void setNewKeyIndex(const InputActionT value)
         { mNewKeyIndex = value; }
 
         /**
@@ -96,14 +101,15 @@ class InputManager final
         /**
          * Get the index of the new key to be assigned.
          */
-        int getNewKeyIndex() const A_WARN_UNUSED
+        InputActionT getNewKeyIndex() const A_WARN_UNUSED
         { return mNewKeyIndex; }
 
         void updateKeyActionMap(KeyToActionMap &actionMap,
                                 KeyToIdMap &idMap, KeyTimeMap &keyTimeMap,
                                 const int type) const;
 
-        bool invokeKey(const InputActionData *const key, const int keyNum);
+        bool invokeKey(const InputActionData *const key,
+                       const InputActionT keyNum);
 
         bool handleAssignKey(const SDL_Event &event, const int type);
 
@@ -111,42 +117,44 @@ class InputManager final
 
         bool triggerAction(const KeysVector *const ptrs);
 
-        int getKeyIndex(const int value, const int grp,
-                        const int type) const A_WARN_UNUSED;
+        InputActionT getKeyIndex(const int value,
+                                 const int grp,
+                                 const int type) const A_WARN_UNUSED;
 
         static void update();
 
         void updateConditionMask();
 
-        int getActionByKey(const SDL_Event &event) const A_WARN_UNUSED;
+        InputActionT getActionByKey(const SDL_Event &event)
+                                    const A_WARN_UNUSED;
 
-        void executeAction(const int keyNum);
+        void executeAction(const InputActionT keyNum);
 
         bool executeChatCommand(const std::string &cmd,
                                 const std::string &args,
                                 ChatTab *const tab);
 
-        bool executeChatCommand(const int keyNum,
+        bool executeChatCommand(const InputActionT keyNum,
                                 const std::string &args,
                                 ChatTab *const tab);
 
         void addChatCommands(std::list<std::string> &arr);
 
     protected:
-        void resetKey(const int i);
+        void resetKey(const InputActionT i);
 
-        static bool isActionActive0(const int index) A_WARN_UNUSED;
+        static bool isActionActive0(const InputActionT index) A_WARN_UNUSED;
 
-        Setup_Input *mSetupInput;      /**< Reference to setup window */
+        Setup_Input *mSetupInput;    /**< Reference to setup window */
 
-        int mNewKeyIndex;              /**< Index of new key to be assigned */
+        InputActionT mNewKeyIndex;   /**< Index of new key to be assigned */
 
         int mMask;
 
-        StringIntMap mNameMap;
+        StringInpActionMap mNameMap;
         StringIntMap mChatMap;
 
-        InputFunction mKey[InputAction::TOTAL];
+        InputFunction mKey[static_cast<size_t>(InputAction::TOTAL)];
 };
 
 extern InputManager inputManager;

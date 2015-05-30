@@ -1526,7 +1526,7 @@ void PopupMenu::handleLink(const std::string &link,
     {
         const int id = atoi(link.substr(12).c_str());
         if (id >= 0)
-            inputManager.executeAction(id);
+            inputManager.executeAction(static_cast<InputActionT>(id));
     }
     else if (!link.compare(0, 6, "mute_+"))
     {
@@ -2179,7 +2179,8 @@ void PopupMenu::showWindowsPopup()
         if (!btn)
             continue;
 
-        mBrowserBox->addRow(strprintf("show window_%d", btn->key),
+        mBrowserBox->addRow(strprintf("show window_%d",
+            static_cast<int>(btn->key)),
             btn->text.c_str());
     }
     mBrowserBox->addRow("##3---");

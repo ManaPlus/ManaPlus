@@ -43,11 +43,11 @@ class InputActionReplayListener final : public ActionListener
 
         void openDialog(const std::string &caption,
                         const std::string &text,
-                        const InputAction::Type action0);
+                        const InputActionT action0);
 
     protected:
         EditDialog *mDialog;
-        InputAction::Type mAction;
+        InputActionT mAction;
 };
 
 extern InputActionReplayListener inputActionReplayListener;

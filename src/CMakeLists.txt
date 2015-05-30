@@ -905,6 +905,8 @@ SET(SRCS
     enums/input/inputaction.h
     input/inputactiondata.h
     input/inputactionmap.h
+    input/inputactionoperators.cpp
+    input/inputactionoperators.h
     input/inputactionsortfunctor.h
     input/inputcondition.h
     input/inputfunction.h

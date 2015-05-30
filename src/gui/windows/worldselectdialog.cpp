@@ -120,15 +120,15 @@ void WorldSelectDialog::action(const ActionEvent &event)
 
 void WorldSelectDialog::keyPressed(KeyEvent &event)
 {
-    const int actionId = event.getActionId();
+    const InputActionT actionId = event.getActionId();
 
-    if (actionId == static_cast<int>(InputAction::GUI_CANCEL))
+    if (actionId == InputAction::GUI_CANCEL)
     {
         action(ActionEvent(nullptr,
             mChangeLoginButton->getActionEventId()));
     }
-    else if (actionId == static_cast<int>(InputAction::GUI_SELECT)
-             || actionId == static_cast<int>(InputAction::GUI_SELECT2))
+    else if (actionId == InputAction::GUI_SELECT ||
+             actionId == InputAction::GUI_SELECT2)
     {
         action(ActionEvent(nullptr, mChooseWorld->getActionEventId()));
     }

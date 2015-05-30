@@ -23,6 +23,8 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include "enums/input/inputaction.h"
+
 #include <string>
 
 #include "localconsts.h"
@@ -37,7 +39,7 @@ class Map;
 
 struct LastKey final
 {
-    int key;
+    InputActionT key;
     int time;
     int cnt;
 };

@@ -124,11 +124,11 @@ void StatusPopup::view(const int x, const int y)
 
 void StatusPopup::setLabelText(const int num,
                                const std::string &text,
-                               const InputAction::Type key) const
+                               const InputActionT key) const
 {
     Label *const label = mLabels[num];
     label->setCaption(strprintf("%s  %s", text.c_str(),
-        inputManager.getKeyValueString(static_cast<int>(key)).c_str()));
+        inputManager.getKeyValueString(key).c_str()));
     label->adjustSize();
 }
 

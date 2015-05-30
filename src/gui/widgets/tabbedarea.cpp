@@ -738,7 +738,7 @@ void TabbedArea::keyPressed(KeyEvent& event)
     if (mBlockSwitching || event.isConsumed() || !isFocused())
         return;
 
-    const int actionId = event.getActionId();
+    const InputActionT actionId = event.getActionId();
 
     if (actionId == InputAction::GUI_LEFT)
     {

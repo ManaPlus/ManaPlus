@@ -30,6 +30,7 @@
 
 #include "being/playerinfo.h"
 
+#include "input/inputactionoperators.h"
 #include "input/inputmanager.h"
 
 #include "gui/viewport.h"
@@ -590,8 +591,7 @@ std::string OutfitWindow::keyName(const int number)
 {
     if (number < 0 || number >= SHORTCUT_EMOTES)
         return "";
-    return inputManager.getKeyStringLong(static_cast<int>(
-        InputAction::EMOTE_1) + number);
+    return inputManager.getKeyStringLong(InputAction::EMOTE_1 + number);
 }
 
 void OutfitWindow::next()

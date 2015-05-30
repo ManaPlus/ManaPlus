@@ -53,7 +53,7 @@ IntTextField::IntTextField(const Widget2 *const widget,
 
 void IntTextField::keyPressed(KeyEvent &event)
 {
-    const int action = event.getActionId();
+    const InputActionT action = event.getActionId();
 
     if (action == InputAction::GUI_DELETE
         || action == InputAction::GUI_BACKSPACE)

@@ -252,13 +252,13 @@ void LoginDialog::keyPressed(KeyEvent &event)
         return;
     }
 
-    const int actionId = event.getActionId();
-    if (actionId == static_cast<int>(InputAction::GUI_CANCEL))
+    const InputActionT actionId = event.getActionId();
+    if (actionId == InputAction::GUI_CANCEL)
     {
         action(ActionEvent(nullptr, mServerButton->getActionEventId()));
     }
-    else if (actionId == static_cast<int>(InputAction::GUI_SELECT)
-             || actionId == static_cast<int>(InputAction::GUI_SELECT2))
+    else if (actionId == InputAction::GUI_SELECT ||
+             actionId == InputAction::GUI_SELECT2)
     {
         action(ActionEvent(nullptr, mLoginButton->getActionEventId()));
     }

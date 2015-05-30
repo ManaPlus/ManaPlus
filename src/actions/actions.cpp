@@ -65,6 +65,8 @@
 
 #include "gui/widgets/tabs/chat/chattab.h"
 
+#include "input/inputactionoperators.h"
+
 #if defined USE_OPENGL
 #include "render/normalopenglgraphics.h"
 #endif
@@ -284,7 +286,7 @@ static int getAmountFromEvent(const InputEvent &event,
 
 impHandler(emote)
 {
-    const int emotion = 1 + event.action - InputAction::EMOTE_1;
+    const int emotion = 1 + (event.action - InputAction::EMOTE_1);
     if (emotion > 0)
     {
         if (emoteShortcut)

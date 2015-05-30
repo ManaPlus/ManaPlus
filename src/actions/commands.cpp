@@ -45,6 +45,8 @@
 
 #include "gui/widgets/tabs/chat/whispertab.h"
 
+#include "input/inputactionoperators.h"
+
 #include "net/adminhandler.h"
 #include "net/chathandler.h"
 #include "net/guildhandler.h"

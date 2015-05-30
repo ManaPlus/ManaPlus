@@ -54,8 +54,8 @@ class KeyboardConfig final
         /**
          * Get the key function index by providing the keys value.
          */
-        static int getKeyIndex(const SDL_Event &event,
-                               const int grp = 1) A_WARN_UNUSED;
+        static InputActionT getKeyIndex(const SDL_Event &event,
+                                        const int grp = 1) A_WARN_UNUSED;
 
         /**
          * Set the enable flag, which will stop the user from doing actions.
@@ -79,9 +79,9 @@ class KeyboardConfig final
 
         KeysVector *getActionVectorByKey(const int i) A_WARN_UNUSED;
 
-        static std::string getKeyName(const int key)A_WARN_UNUSED;
+        static std::string getKeyName(const int key) A_WARN_UNUSED;
 
-        bool isActionActive(const int index) const A_WARN_UNUSED;
+        bool isActionActive(const InputActionT index) const A_WARN_UNUSED;
 
         void update();
 
@@ -93,7 +93,7 @@ class KeyboardConfig final
 
         void handleDeActicateKey(const int key);
 
-        int getActionId(const SDL_Event &event) A_WARN_UNUSED;
+        InputActionT getActionId(const SDL_Event &event) A_WARN_UNUSED;
 
         void handleRepeat(const int time);
 
