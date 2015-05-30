@@ -24,11 +24,11 @@
 #include "graphicsmanager.h"
 #include "variabledata.h"
 
-#include "enums/screendensity.h"
-
 #include "being/beingspeech.h"
 
-#include "input/inputaction.h"
+#include "enums/screendensity.h"
+
+#include "enums/input/inputaction.h"
 
 #include "render/graphics.h"
 

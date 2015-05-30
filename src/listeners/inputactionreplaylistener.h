@@ -21,9 +21,9 @@
 #ifndef LISTENERS_INPUTACTIONREPLAYLISTENER_H
 #define LISTENERS_INPUTACTIONREPLAYLISTENER_H
 
-#include "listeners/actionlistener.h"
+#include "enums/input/inputaction.h"
 
-#include "input/inputaction.h"
+#include "listeners/actionlistener.h"
 
 #include "localconsts.h"
 

@@ -26,7 +26,7 @@
 #include "gui/sdlinput.h"
 #endif
 
-#include "input/inputaction.h"
+#include "enums/input/inputaction.h"
 
 #include "utils/stringutils.h"
 #include "debug.h"

@@ -1038,7 +1038,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      textcommand.cpp \
 	      textcommand.h \
 	      events/inputevent.h \
-	      input/inputaction.h \
+	      enums/input/inputaction.h \
 	      input/inputactiondata.h \
 	      input/inputactionmap.h \
 	      input/inputactionsortfunctor.h \

@@ -68,7 +68,7 @@
 #include "graphicsvertexes.h"
 #include "settings.h"
 
-#include "input/inputaction.h"
+#include "enums/input/inputaction.h"
 
 #include "resources/image.h"
 #include "resources/imageset.h"

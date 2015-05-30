@@ -27,7 +27,7 @@
 #include "configuration.h"
 #include "settings.h"
 
-#include "input/inputaction.h"
+#include "enums/input/inputaction.h"
 
 #include "net/download.h"
 

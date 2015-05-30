@@ -28,9 +28,9 @@
 
 #include "enums/gui/progresscolorid.h"
 
-#include "enums/net/updatetype.h"
+#include "enums/input/inputaction.h"
 
-#include "input/inputaction.h"
+#include "enums/net/updatetype.h"
 
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/button.h"

@@ -21,7 +21,8 @@
 #ifndef INPUT_INPUTMANAGER_H
 #define INPUT_INPUTMANAGER_H
 
-#include "input/inputaction.h"
+#include "enums/input/inputaction.h"
+
 #include "input/inputfunction.h"
 
 #include "events/inputevent.h"

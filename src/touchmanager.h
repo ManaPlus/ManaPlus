@@ -23,7 +23,7 @@
 
 #include "listeners/configlistener.h"
 
-#include "input/inputaction.h"
+#include "enums/input/inputaction.h"
 
 #include "gui/rect.h"
 

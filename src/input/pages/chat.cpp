@@ -20,7 +20,7 @@
 
 #include "gui/setupactiondata.h"
 
-#include "input/inputaction.h"
+#include "enums/input/inputaction.h"
 
 #include "utils/gettext.h"
 

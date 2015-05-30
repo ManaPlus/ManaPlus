@@ -902,7 +902,7 @@ SET(SRCS
     spellshortcut.h
     textcommand.cpp
     textcommand.h
-    input/inputaction.h
+    enums/input/inputaction.h
     input/inputactiondata.h
     input/inputactionmap.h
     input/inputactionsortfunctor.h

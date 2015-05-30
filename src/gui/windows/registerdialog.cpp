@@ -24,11 +24,9 @@
 
 #include "client.h"
 
-#include "input/inputaction.h"
-
-#include "listeners/wrongdatanoticelistener.h"
-
 #include "enums/gui/dialogtype.h"
+
+#include "enums/input/inputaction.h"
 
 #include "gui/windows/okdialog.h"
 
@@ -38,6 +36,8 @@
 #include "gui/widgets/layoutcell.h"
 #include "gui/widgets/passwordfield.h"
 #include "gui/widgets/radiobutton.h"
+
+#include "listeners/wrongdatanoticelistener.h"
 
 #include "net/logindata.h"
 #include "net/loginhandler.h"

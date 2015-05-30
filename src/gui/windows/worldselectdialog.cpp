@@ -25,7 +25,7 @@
 #include "client.h"
 #include "settings.h"
 
-#include "input/inputaction.h"
+#include "enums/input/inputaction.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/layout.h"

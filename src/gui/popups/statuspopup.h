@@ -24,7 +24,7 @@
 #ifndef GUI_POPUPS_STATUSPOPUP_H
 #define GUI_POPUPS_STATUSPOPUP_H
 
-#include "input/inputaction.h"
+#include "enums/input/inputaction.h"
 
 #include "gui/widgets/popup.h"
 

@@ -28,7 +28,7 @@
 
 #include "enums/being/attributes.h"
 
-#include "input/inputaction.h"
+#include "enums/input/inputaction.h"
 
 #include "listeners/charrenamelistener.h"
 #ifdef EATHENA_SUPPORT
