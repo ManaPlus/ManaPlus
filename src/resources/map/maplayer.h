@@ -27,7 +27,7 @@
 
 #include "being/actor.h"
 
-#include "resources/map/maptype.h"
+#include "enums/resources/map/maptype.h"
 
 #include <vector>
 

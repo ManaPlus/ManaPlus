@@ -947,7 +947,7 @@ SET(SRCS
     resources/map/mapobject.h
     resources/map/mapobjectlist.h
     resources/map/maprowvertexes.h
-    resources/map/maptype.h
+    enums/resources/map/maptype.h
     resources/map/metatile.h
     resources/map/objectslayer.cpp
     resources/map/objectslayer.h
