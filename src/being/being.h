@@ -91,13 +91,6 @@ class Being notfinal : public ActorSprite,
         friend class BeingEquipBackend;
         friend class LocalPlayer;
 
-        enum Reachable
-        {
-            REACH_UNKNOWN = 0,
-            REACH_YES = 1,
-            REACH_NO = 2
-        };
-
         /**
          * Constructor.
          *

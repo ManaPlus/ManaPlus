@@ -41,6 +41,7 @@
 
 #include "enums/being/attributes.h"
 #include "enums/being/beingdirection.h"
+#include "enums/being/reachable.h"
 
 #include "enums/net/packettypes.h"
 
@@ -201,7 +202,7 @@ Being::Being(const BeingId id,
     mHP(0),
     mMaxHP(0),
     mDistance(0),
-    mIsReachable(REACH_UNKNOWN),
+    mIsReachable(Reachable::REACH_UNKNOWN),
     mGoodStatus(-1),
     mMoveTime(0),
     mAttackTime(0),

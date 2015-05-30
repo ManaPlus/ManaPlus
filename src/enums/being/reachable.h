@@ -1,0 +1,36 @@
+/*
+ *  The ManaPlus Client
+ *  Copyright (C) 2004-2009  The Mana World Development Team
+ *  Copyright (C) 2009-2010  The Mana Developers
+ *  Copyright (C) 2011-2015  The ManaPlus Developers
+ *
+ *  This file is part of The ManaPlus Client.
+ *
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#ifndef ENUMS_BEING_REACHABLE_H
+#define ENUMS_BEING_REACHABLE_H
+
+namespace Reachable
+{
+    enum T
+    {
+        REACH_UNKNOWN = 0,
+        REACH_YES = 1,
+        REACH_NO = 2
+    };
+}  // namespace Reachable
+
+#endif  // ENUMS_BEING_REACHABLE_H

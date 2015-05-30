@@ -1016,6 +1016,7 @@ SET(SRCS
     being/playerrelations.cpp
     being/playerrelations.h
     enums/being/rank.h
+    enums/being/reachable.h
     enums/being/targetcursorsize.h
     enums/being/targetcursortype.h
     listeners/playerrelationslistener.h
