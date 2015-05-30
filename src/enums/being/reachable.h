@@ -23,14 +23,14 @@
 #ifndef ENUMS_BEING_REACHABLE_H
 #define ENUMS_BEING_REACHABLE_H
 
-namespace Reachable
+#include "enums/simpletypes/enumdefines.h"
+
+enumStart(Reachable)
 {
-    enum T
-    {
-        REACH_UNKNOWN = 0,
-        REACH_YES = 1,
-        REACH_NO = 2
-    };
-}  // namespace Reachable
+    REACH_UNKNOWN = 0,
+    REACH_YES = 1,
+    REACH_NO = 2
+}
+enumEnd(Reachable);
 
 #endif  // ENUMS_BEING_REACHABLE_H

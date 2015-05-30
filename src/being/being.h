@@ -23,6 +23,8 @@
 #ifndef BEING_BEING_H
 #define BEING_BEING_H
 
+#include "enums/being/reachable.h"
+
 #include "enums/simpletypes/move.h"
 
 #include "resources/beinginfo.h"
@@ -556,11 +558,11 @@ class Being notfinal : public ActorSprite,
         virtual int getLevel() const A_WARN_UNUSED
         { return mLevel; }
 
-        void setIsReachable(const int n)
-        { mIsReachable = n; }
+        void setReachable(const ReachableT n)
+        { mReachable = n; }
 
-        int isReachable() const A_WARN_UNUSED
-        { return mIsReachable; }
+        ReachableT getReachable() const A_WARN_UNUSED
+        { return mReachable; }
 
         static void reReadConfig();
 
@@ -1058,7 +1060,7 @@ class Being notfinal : public ActorSprite,
         int mHP;
         int mMaxHP;
         int mDistance;
-        int mIsReachable; /**< 0 - unknown, 1 - reachable, 2 - not reachable*/
+        ReachableT mReachable; /**< 0 - unknown, 1 - reachable, 2 - not reachable*/
         int mGoodStatus;
 
         static int mUpdateConfigTime;

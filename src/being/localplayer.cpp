@@ -1376,14 +1376,14 @@ bool LocalPlayer::isReachable(Being *const being,
     if (!being || !mMap)
         return false;
 
-    if (being->isReachable() == Reachable::REACH_NO)
+    if (being->getReachable() == Reachable::REACH_NO)
         return false;
 
     if (being->getTileX() == mX
         && being->getTileY() == mY)
     {
         being->setDistance(0);
-        being->setIsReachable(Reachable::REACH_YES);
+        being->setReachable(Reachable::REACH_YES);
         return true;
     }
     else if (being->getTileX() - 1 <= mX
@@ -1392,7 +1392,7 @@ bool LocalPlayer::isReachable(Being *const being,
              && being->getTileY() + 1 >= mY)
     {
         being->setDistance(1);
-        being->setIsReachable(Reachable::REACH_YES);
+        being->setReachable(Reachable::REACH_YES);
         return true;
     }
 
@@ -1406,12 +1406,12 @@ bool LocalPlayer::isReachable(Being *const being,
     being->setDistance(static_cast<int>(debugPath.size()));
     if (!debugPath.empty())
     {
-        being->setIsReachable(Reachable::REACH_YES);
+        being->setReachable(Reachable::REACH_YES);
         return true;
     }
     else
     {
-        being->setIsReachable(Reachable::REACH_NO);
+        being->setReachable(Reachable::REACH_NO);
         return false;
     }
 }
