@@ -910,18 +910,19 @@ void GraphicsManager::initOpenGLFunctions()
     if (is45)
     {
         logger->log1("found GL_EXT_direct_state_access");
-        assignFunctionEmu2(glTextureSubImage2D, "glTextureSubImage2D");
+//        assignFunctionEmu2(glTextureSubImage2D, "glTextureSubImage2D");
     }
     else if (supportExtension("GL_EXT_direct_state_access"))
     {
         logger->log1("found GL_EXT_direct_state_access");
-        assignFunctionEmu2(glTextureSubImage2D, "glTextureSubImage2DEXT");
+//        assignFunctionEmu2(glTextureSubImage2D, "glTextureSubImage2DEXT");
     }
     else
     {
         logger->log1("GL_EXT_direct_state_access not found");
-        emulateFunction(glTextureSubImage2D);
+//        emulateFunction(glTextureSubImage2D);
     }
+    emulateFunction(glTextureSubImage2D);
 
     if (is12 && (is42 || supportExtension("GL_ARB_texture_storage")))
     {
