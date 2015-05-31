@@ -141,6 +141,31 @@ class UserPalette final : public Palette, public ListModel
          */
         int getColorTypeAt(const int i) A_WARN_UNUSED;
 
+        /**
+         * Gets the color associated with the type. Sets the alpha channel
+         * before returning.
+         *
+         * @param type the color type requested
+         * @param alpha alpha channel to use
+         *
+         * @return the requested color
+         */
+        inline const Color &getColor(int type,
+                                     const int alpha = 255) A_WARN_UNUSED
+        {
+            if (type >= static_cast<signed>(mColors.size()) || type < 0)
+            {
+                logger->log("incorrect color request type: %d from %u",
+                    type, static_cast<unsigned int>(mColors.size()));
+                type = 0;
+            }
+            Color* col = &mColors[type].color;
+            col->a = alpha;
+            return *col;
+        }
+
+        int getIdByChar(const signed char c, bool &valid) const A_WARN_UNUSED;
+
     private:
         /**
          * Define a color replacement.

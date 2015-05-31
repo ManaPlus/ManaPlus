@@ -65,31 +65,6 @@ class Palette notfinal
         const Color &getCharColor(const signed char c,
                                   bool &valid) const A_WARN_UNUSED;
 
-        int getIdByChar(const signed char c, bool &valid) const A_WARN_UNUSED;
-
-        /**
-         * Gets the color associated with the type. Sets the alpha channel
-         * before returning.
-         *
-         * @param type the color type requested
-         * @param alpha alpha channel to use
-         *
-         * @return the requested color
-         */
-        inline const Color &getColor(int type,
-                                     const int alpha = 255) A_WARN_UNUSED
-        {
-            if (type >= static_cast<signed>(mColors.size()) || type < 0)
-            {
-                logger->log("incorrect color request type: %d from %u",
-                    type, static_cast<unsigned int>(mColors.size()));
-                type = 0;
-            }
-            Color* col = &mColors[type].color;
-            col->a = alpha;
-            return *col;
-        }
-
         inline const Color &getColorWithAlpha(const int type) A_WARN_UNUSED
         {
             Color *const col = &mColors[type].color;

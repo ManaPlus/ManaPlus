@@ -371,3 +371,16 @@ void UserPalette::addColor(const unsigned type,
     if (grad != GradientType::STATIC)
         mGradVector.push_back(&mColors[type]);
 }
+
+int UserPalette::getIdByChar(const signed char c, bool &valid) const
+{
+    const CharColors::const_iterator it = mCharColors.find(c);
+    if (it != mCharColors.end())
+    {
+        valid = true;
+        return (*it).second;
+    }
+
+    valid = false;
+    return 0;
+}

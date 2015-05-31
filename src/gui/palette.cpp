@@ -72,19 +72,6 @@ const Color& Palette::getCharColor(const signed char c, bool &valid) const
     return BLACK;
 }
 
-int Palette::getIdByChar(const signed char c, bool &valid) const
-{
-    const CharColors::const_iterator it = mCharColors.find(c);
-    if (it != mCharColors.end())
-    {
-        valid = true;
-        return (*it).second;
-    }
-
-    valid = false;
-    return 0;
-}
-
 void Palette::advanceGradients()
 {
     FOR_EACH (Palettes::const_iterator, it, mInstances)

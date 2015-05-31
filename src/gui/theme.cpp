@@ -1215,3 +1215,16 @@ ThemeInfo *Theme::loadInfo(const std::string &themeName)
     }
     return info;
 }
+
+int Theme::getIdByChar(const signed char c, bool &valid) const
+{
+    const CharColors::const_iterator it = mCharColors.find(c);
+    if (it != mCharColors.end())
+    {
+        valid = true;
+        return (*it).second;
+    }
+
+    valid = false;
+    return 0;
+}
