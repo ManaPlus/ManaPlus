@@ -166,6 +166,33 @@ class UserPalette final : public Palette, public ListModel
 
         int getIdByChar(const signed char c, bool &valid) const A_WARN_UNUSED;
 
+        /**
+         * Gets the GradientType associated with the specified type.
+         *
+         * @param type the color type of the color
+         *
+         * @return the gradient type of the color with the given index
+         */
+        inline GradientTypeT getGradientType(const int type) const A_WARN_UNUSED
+        { return mColors[type].grad; }
+
+        /**
+         * Gets the gradient delay for the specified type.
+         *
+         * @param type the color type of the color
+         *
+         * @return the gradient delay of the color with the given index
+         */
+        inline int getGradientDelay(const int type) const A_WARN_UNUSED
+        { return mColors[type].delay; }
+
+        inline const Color &getColorWithAlpha(const int type) A_WARN_UNUSED
+        {
+            Color *const col = &mColors[type].color;
+            col->a = mColors[type].delay;
+            return *col;
+        }
+
     private:
         /**
          * Define a color replacement.
