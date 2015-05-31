@@ -312,7 +312,7 @@ void Minimap::draw2(Graphics *const graphics)
             continue;
 
         int dotSize = 2;
-        int type = UserColorId::PC;
+        UserColorIdT type = UserColorId::PC;
 
         if (being == localPlayer)
         {

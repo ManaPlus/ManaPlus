@@ -105,14 +105,14 @@ std::string UserPalette::getConfigName(const std::string &typeName)
 }
 
 UserPalette::UserPalette() :
-    Palette(UserColorId::USER_COLOR_LAST)
+    Palette(static_cast<int>(UserColorId::USER_COLOR_LAST))
 {
-    mColors[UserColorId::BEING] = ColorElem();
-    mColors[UserColorId::PC] = ColorElem();
-    mColors[UserColorId::SELF] = ColorElem();
-    mColors[UserColorId::GM] = ColorElem();
-    mColors[UserColorId::NPC] = ColorElem();
-    mColors[UserColorId::MONSTER] = ColorElem();
+    mColors[static_cast<size_t>(UserColorId::BEING)] = ColorElem();
+    mColors[static_cast<size_t>(UserColorId::PC)] = ColorElem();
+    mColors[static_cast<size_t>(UserColorId::SELF)] = ColorElem();
+    mColors[static_cast<size_t>(UserColorId::GM)] = ColorElem();
+    mColors[static_cast<size_t>(UserColorId::NPC)] = ColorElem();
+    mColors[static_cast<size_t>(UserColorId::MONSTER)] = ColorElem();
 
     // TRANSLATORS: palette color
     addColor(UserColorId::BEING, 0xffffff, GradientType::STATIC, _("Being"));
@@ -248,20 +248,21 @@ UserPalette::~UserPalette()
     }
 }
 
-void UserPalette::setColor(const int type,
+void UserPalette::setColor(const UserColorIdT type,
                            const int r,
                            const int g,
                            const int b)
 {
-    Color &color = mColors[type].color;
+    Color &color = mColors[static_cast<size_t>(type)].color;
     color.r = r;
     color.g = g;
     color.b = b;
 }
 
-void UserPalette::setGradient(const int type, const GradientTypeT grad)
+void UserPalette::setGradient(const UserColorIdT type,
+                              const GradientTypeT grad)
 {
-    ColorElem *const elem = &mColors[type];
+    ColorElem *const elem = &mColors[static_cast<size_t>(type)];
 
     if (elem->grad != GradientType::STATIC && grad == GradientType::STATIC)
     {
@@ -311,12 +312,15 @@ void UserPalette::rollback()
     FOR_EACH (Colors::iterator, i, mColors)
     {
         if (i->grad != i->committedGrad)
-            setGradient(i->type, i->committedGrad);
+            setGradient(static_cast<UserColorIdT>(i->type), i->committedGrad);
 
         const Color &committedColor = i->committedColor;
-        setGradientDelay(i->type, i->committedDelay);
-        setColor(i->type, committedColor.r,
-                 committedColor.g, committedColor.b);
+        setGradientDelay(static_cast<UserColorIdT>(i->type),
+            i->committedDelay);
+        setColor(static_cast<UserColorIdT>(i->type),
+            committedColor.r,
+            committedColor.g,
+            committedColor.b);
 
         if (i->grad == GradientType::PULSE)
         {
@@ -331,12 +335,12 @@ void UserPalette::rollback()
 int UserPalette::getColorTypeAt(const int i)
 {
     if (i < 0 || i >= getNumberOfElements())
-        return UserColorId::BEING;
+        return 0;
 
     return mColors[i].type;
 }
 
-void UserPalette::addColor(const unsigned type,
+void UserPalette::addColor(const UserColorIdT type,
                            const unsigned rgb,
                            GradientTypeT grad,
                            const std::string &text,
@@ -345,10 +349,10 @@ void UserPalette::addColor(const unsigned type,
     const unsigned maxType = sizeof(ColorTypeNames)
         / sizeof(ColorTypeNames[0]);
 
-    if (type >= maxType)
+    if (static_cast<unsigned>(type) >= maxType)
         return;
 
-    const std::string &configName = ColorTypeNames[type];
+    const std::string &configName = ColorTypeNames[static_cast<size_t>(type)];
     char buffer[20];
     snprintf(buffer, sizeof(buffer), "0x%06x", rgb);
     buffer[19] = 0;
@@ -365,11 +369,12 @@ void UserPalette::addColor(const unsigned type,
         configName + "Gradient",
         static_cast<int>(grad)));
     delay = config.getValueInt(configName + "Delay", delay);
-    mColors[type].set(type, trueCol, grad, delay);
-    mColors[type].text = text;
+    mColors[static_cast<size_t>(type)].set(static_cast<int>(type),
+        trueCol, grad, delay);
+    mColors[static_cast<size_t>(type)].text = text;
 
     if (grad != GradientType::STATIC)
-        mGradVector.push_back(&mColors[type]);
+        mGradVector.push_back(&mColors[static_cast<size_t>(type)]);
 }
 
 int UserPalette::getIdByChar(const signed char c, bool &valid) const

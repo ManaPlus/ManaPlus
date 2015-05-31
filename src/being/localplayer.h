@@ -280,7 +280,8 @@ class LocalPlayer final : public Being,
         void setMap(Map *const map) override final;
 
         void addMessageToQueue(const std::string &message,
-                               const int color = UserColorId::EXP_INFO);
+                               const UserColorIdT color
+                               = UserColorId::EXP_INFO);
 
         /**
          * Called when a option (set with config.addListener()) is changed
@@ -458,7 +459,7 @@ class LocalPlayer final : public Being,
 
         std::vector<int> mStatusEffectIcons;
 
-        typedef std::pair<std::string, int> MessagePair;
+        typedef std::pair<std::string, UserColorIdT> MessagePair;
         /** Queued messages*/
         std::list<MessagePair> mMessages;
         int mMessageTime;

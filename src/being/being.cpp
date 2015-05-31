@@ -2594,11 +2594,16 @@ void Being::drawSpriteAt(Graphics *const graphics,
         if (!maxHP)
             maxHP = mInfo->getMaxHP();
 
-        drawHpBar(graphics, maxHP, mHP, mDamageTaken,
-                  UserColorId::MONSTER_HP, UserColorId::MONSTER_HP2,
+        drawHpBar(graphics,
+                  maxHP,
+                  mHP,
+                  mDamageTaken,
+                  UserColorId::MONSTER_HP,
+                  UserColorId::MONSTER_HP2,
                   x - 50 + mapTileSize / 2 + mInfo->getHpBarOffsetX(),
                   y + mapTileSize - 6 + mInfo->getHpBarOffsetY(),
-                  2 * 50, 4);
+                  2 * 50,
+                  4);
     }
     if (mShowOwnHP
         && mInfo
@@ -2614,9 +2619,15 @@ void Being::drawSpriteAt(Graphics *const graphics,
     }
 }
 
-void Being::drawHpBar(Graphics *const graphics, const int maxHP, const int hp,
-                      const int damage, const int color1, const int color2,
-                      const int x, const int y, const int width,
+void Being::drawHpBar(Graphics *const graphics,
+                      const int maxHP,
+                      const int hp,
+                      const int damage,
+                      const UserColorIdT color1,
+                      const UserColorIdT color2,
+                      const int x,
+                      const int y,
+                      const int width,
                       const int height) const
 {
     if (maxHP <= 0 || !userPalette)

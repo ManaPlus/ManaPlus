@@ -27,6 +27,7 @@
 #include "logger.h"
 
 #include "enums/gui/gradienttype.h"
+#include "enums/gui/usercolorid.h"
 
 #include "gui/color.h"
 
@@ -132,8 +133,10 @@ class Palette notfinal
             int delay;
             int committedDelay;
 
-            void set(const int type0, const Color &color0,
-                     const GradientTypeT grad0, const int delay0)
+            void set(const int type0,
+                     const Color &color0,
+                     const GradientTypeT grad0,
+                     const int delay0)
             {
                 type = type0;
                 color = color0;

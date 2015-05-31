@@ -25,6 +25,8 @@
 
 #include "enums/being/reachable.h"
 
+#include "enums/gui/usercolorid.h"
+
 #include "enums/simpletypes/move.h"
 
 #include "resources/beinginfo.h"
@@ -533,9 +535,15 @@ class Being notfinal : public ActorSprite,
         virtual void drawSpritesSDL(Graphics *const graphics,
                                     int posX, int posY) const override final;
 
-        void drawHpBar(Graphics *const graphics, const int x, const int y,
-                       const int maxHP, const int hp, const int damage,
-                       const int color1, const int color2, const int width,
+        void drawHpBar(Graphics *const graphics,
+                       const int maxHP,
+                       const int hp,
+                       const int damage,
+                       const UserColorIdT color1,
+                       const UserColorIdT color2,
+                       const int x,
+                       const int y,
+                       const int width,
                        const int height) const;
 
         static void load();

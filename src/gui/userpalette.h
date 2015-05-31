@@ -24,6 +24,8 @@
 #ifndef GUI_USERPALETTE_H
 #define GUI_USERPALETTE_H
 
+#include "enums/gui/usercolorid.h"
+
 #include "gui/palette.h"
 
 #include "gui/models/listmodel.h"
@@ -53,10 +55,10 @@ class UserPalette final : public Palette, public ListModel
          *
          * @return the requested committed color
          */
-        inline const Color &getCommittedColor(const int type)
+        inline const Color &getCommittedColor(const UserColorIdT type)
                                               const A_WARN_UNUSED
         {
-            return mColors[type].committedColor;
+            return mColors[static_cast<size_t>(type)].committedColor;
         }
 
         /**
@@ -66,8 +68,9 @@ class UserPalette final : public Palette, public ListModel
          *
          * @return the requested test color
          */
-        inline const Color &getTestColor(const int type) const A_WARN_UNUSED
-        { return mColors[type].testColor; }
+        inline const Color &getTestColor(const UserColorIdT type)
+                                         const A_WARN_UNUSED
+        { return mColors[static_cast<size_t>(type)].testColor; }
 
         /**
          * Sets the test color associated with the specified type.
@@ -75,8 +78,9 @@ class UserPalette final : public Palette, public ListModel
          * @param type the color type requested
          * @param color the color that should be tested
          */
-        inline void setTestColor(const int type, const Color &color)
-        { mColors[type].testColor = color; }
+        inline void setTestColor(const UserColorIdT type,
+                                 const Color &color)
+        { mColors[static_cast<size_t>(type)].testColor = color; }
 
         /**
          * Sets the color for the specified type.
@@ -86,22 +90,27 @@ class UserPalette final : public Palette, public ListModel
          * @param g green component
          * @param b blue component
          */
-        void setColor(const int type, const int r, const int g, const int b);
+        void setColor(const UserColorIdT type,
+                      const int r,
+                      const int g,
+                      const int b);
 
         /**
          * Sets the gradient type for the specified color.
          *
          * @param grad gradient type to set
          */
-        void setGradient(const int type, const GradientTypeT grad);
+        void setGradient(const UserColorIdT type,
+                         const GradientTypeT grad);
 
         /**
          * Sets the gradient delay for the specified color.
          *
          * @param grad gradient type to set
          */
-        void setGradientDelay(const int type, const int delay)
-        { mColors[type].delay = delay; }
+        void setGradientDelay(const UserColorIdT type,
+                              const int delay)
+        { mColors[static_cast<size_t>(type)].delay = delay; }
 
         /**
          * Returns the number of colors known.
@@ -150,16 +159,17 @@ class UserPalette final : public Palette, public ListModel
          *
          * @return the requested color
          */
-        inline const Color &getColor(int type,
+        inline const Color &getColor(UserColorIdT type,
                                      const int alpha = 255) A_WARN_UNUSED
         {
-            if (type >= static_cast<signed>(mColors.size()) || type < 0)
+            if (static_cast<size_t>(type) >= mColors.size())
             {
                 logger->log("incorrect color request type: %d from %u",
-                    type, static_cast<unsigned int>(mColors.size()));
-                type = 0;
+                    static_cast<int>(type),
+                    static_cast<unsigned int>(mColors.size()));
+                type = UserColorId::BEING;
             }
-            Color* col = &mColors[type].color;
+            Color* col = &mColors[static_cast<size_t>(type)].color;
             col->a = alpha;
             return *col;
         }
@@ -173,8 +183,9 @@ class UserPalette final : public Palette, public ListModel
          *
          * @return the gradient type of the color with the given index
          */
-        inline GradientTypeT getGradientType(const int type) const A_WARN_UNUSED
-        { return mColors[type].grad; }
+        inline GradientTypeT getGradientType(const UserColorId type)
+                                             const A_WARN_UNUSED
+        { return mColors[static_cast<size_t>(type)].grad; }
 
         /**
          * Gets the gradient delay for the specified type.
@@ -183,13 +194,15 @@ class UserPalette final : public Palette, public ListModel
          *
          * @return the gradient delay of the color with the given index
          */
-        inline int getGradientDelay(const int type) const A_WARN_UNUSED
-        { return mColors[type].delay; }
+        inline int getGradientDelay(const UserColorIdT type)
+                                    const A_WARN_UNUSED
+        { return mColors[static_cast<size_t>(type)].delay; }
 
-        inline const Color &getColorWithAlpha(const int type) A_WARN_UNUSED
+        inline const Color &getColorWithAlpha(const UserColorIdT type)
+                                              A_WARN_UNUSED
         {
-            Color *const col = &mColors[type].color;
-            col->a = mColors[type].delay;
+            Color *const col = &mColors[static_cast<size_t>(type)].color;
+            col->a = mColors[static_cast<size_t>(type)].delay;
             return *col;
         }
 
@@ -230,8 +243,10 @@ class UserPalette final : public Palette, public ListModel
          * @param rgb default color if not found in config
          * @param text identifier of color
          */
-        void addColor(const unsigned type, const unsigned rgb,
-                      GradientTypeT grad, const std::string &text,
+        void addColor(const UserColorIdT type,
+                      const unsigned rgb,
+                      GradientTypeT grad,
+                      const std::string &text,
                       int delay = GRADIENT_DELAY);
 };
 

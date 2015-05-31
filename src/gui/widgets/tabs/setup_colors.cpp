@@ -250,7 +250,8 @@ void Setup_Colors::valueChanged(const SelectionEvent &event A_UNUSED)
         return;
 
     mSelected = mColorBox->getSelected();
-    const int type = userPalette->getColorTypeAt(mSelected);
+    const UserColorIdT type = static_cast<UserColorIdT>(
+        userPalette->getColorTypeAt(mSelected));
     const Color *col = &userPalette->getColor(type);
     const GradientTypeT grad = userPalette->getGradientType(type);
     const int delay = userPalette->getGradientDelay(type);
@@ -380,7 +381,8 @@ void Setup_Colors::cancel()
         return;
 
     userPalette->rollback();
-    const int type = userPalette->getColorTypeAt(mSelected);
+    const UserColorIdT type = static_cast<UserColorIdT>(
+        userPalette->getColorTypeAt(mSelected));
     const Color *const col = &userPalette->getColor(type);
     mGradTypeSlider->setValue(static_cast<int>(
         userPalette->getGradientType(type)));
@@ -397,7 +399,8 @@ void Setup_Colors::updateGradType()
         return;
 
     mSelected = mColorBox->getSelected();
-    const int type = userPalette->getColorTypeAt(mSelected);
+    const UserColorIdT type = static_cast<UserColorIdT>(
+        userPalette->getColorTypeAt(mSelected));
     const GradientTypeT grad = userPalette->getGradientType(type);
 
     mGradTypeText->setCaption(
@@ -427,7 +430,8 @@ void Setup_Colors::updateColor()
     if (mSelected == -1 || !userPalette)
         return;
 
-    const int type = userPalette->getColorTypeAt(mSelected);
+    const UserColorIdT type = static_cast<UserColorIdT>(
+        userPalette->getColorTypeAt(mSelected));
     const GradientTypeT grad = static_cast<GradientTypeT>(
         static_cast<int>(mGradTypeSlider->getValue()));
     const int delay = static_cast<int>(mGradDelaySlider->getValue());

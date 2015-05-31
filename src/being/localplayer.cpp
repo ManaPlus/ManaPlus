@@ -1025,7 +1025,7 @@ void LocalPlayer::handleStatusEffect(const StatusEffect *const effect,
 }
 
 void LocalPlayer::addMessageToQueue(const std::string &message,
-                                    const int color)
+                                    const UserColorIdT color)
 {
     if (mMessages.size() < 20)
         mMessages.push_back(MessagePair(message, color));
