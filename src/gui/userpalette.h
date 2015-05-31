@@ -183,7 +183,7 @@ class UserPalette final : public Palette, public ListModel
          *
          * @return the gradient type of the color with the given index
          */
-        inline GradientTypeT getGradientType(const UserColorId type)
+        inline GradientTypeT getGradientType(const UserColorIdT type)
                                              const A_WARN_UNUSED
         { return mColors[static_cast<size_t>(type)].grad; }
 
