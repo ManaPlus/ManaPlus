@@ -43,7 +43,7 @@ ProgressBar::ProgressBar(const Widget2 *const widget,
                          float progress,
                          const int width,
                          const int height,
-                         const int backColor,
+                         const ProgressColorIdT backColor,
                          const std::string &skin,
                          const std::string &skinFill) :
     Widget(widget),
@@ -62,8 +62,10 @@ ProgressBar::ProgressBar(const Widget2 *const widget,
     mSmoothProgress(true),
     mSmoothColorChange(true)
 {
-    mBackgroundColor = Theme::getProgressColor(backColor >= 0
-        ? backColor : 0, mProgress);
+    mBackgroundColor = Theme::getProgressColor(
+        backColor >= ProgressColorId::PROG_HP
+        ? backColor : ProgressColorId::PROG_HP,
+        mProgress);
     mBackgroundColorToGo = mBackgroundColor;
     mForegroundColor2 = getThemeColor(ThemeColorId::PROGRESS_BAR_OUTLINE);
 
@@ -297,20 +299,21 @@ void ProgressBar::setProgress(const float progress)
     if (!mSmoothProgress)
         mProgress = p;
 
-    if (mProgressPalette >= 0)
+    if (mProgressPalette >= ProgressColorId::PROG_HP)
     {
         mBackgroundColorToGo = Theme::getProgressColor(
             mProgressPalette, progress);
     }
 }
 
-void ProgressBar::setProgressPalette(const int progressPalette)
+void ProgressBar::setProgressPalette(const ProgressColorIdT progressPalette)
 {
-    const int oldPalette = mProgressPalette;
+    const ProgressColorIdT oldPalette = mProgressPalette;
     mProgressPalette = progressPalette;
     mRedraw = true;
 
-    if (mProgressPalette != oldPalette && mProgressPalette >= 0)
+    if (mProgressPalette != oldPalette &&
+        mProgressPalette >= ProgressColorId::PROG_HP)
     {
         mBackgroundColorToGo = Theme::getProgressColor(
             mProgressPalette, mProgressToGo);

@@ -173,9 +173,10 @@ MiniStatusWindow::~MiniStatusWindow()
 }
 
 ProgressBar *MiniStatusWindow::createBar(const float progress,
-                                         const int width, const int height,
+                                         const int width,
+                                         const int height,
                                          const int textColor,
-                                         const int backColor,
+                                         const ProgressColorIdT backColor,
                                          const std::string &restrict skin,
                                          const std::string &restrict skinFill,
                                          const std::string &restrict name,

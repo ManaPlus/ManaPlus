@@ -25,24 +25,24 @@
 #ifndef ENUMS_GUI_PROGRESSCOLORID_H
 #define ENUMS_GUI_PROGRESSCOLORID_H
 
-namespace ProgressColorId
+#include "enums/simpletypes/enumdefines.h"
+
+enumStart(ProgressColorId)
 {
-    enum T
-    {
-        PROG_HP = 0,
-        PROG_HP_POISON,
-        PROG_MP,
-        PROG_NO_MP,
-        PROG_EXP,
-        PROG_INVY_SLOTS,
-        PROG_WEIGHT,
-        PROG_JOB,
-        PROG_UPDATE,
-        PROG_MONEY,
-        PROG_ARROWS,
-        PROG_STATUS,
-        THEME_PROG_END
-    };
-}  // namespace ProgressColorId
+    PROG_HP = 0,
+    PROG_HP_POISON,
+    PROG_MP,
+    PROG_NO_MP,
+    PROG_EXP,
+    PROG_INVY_SLOTS,
+    PROG_WEIGHT,
+    PROG_JOB,
+    PROG_UPDATE,
+    PROG_MONEY,
+    PROG_ARROWS,
+    PROG_STATUS,
+    THEME_PROG_END
+}
+enumEnd(ProgressColorId);
 
 #endif  // ENUMS_GUI_PROGRESSCOLORID_H

@@ -110,8 +110,10 @@ class MiniStatusWindow final : public Window,
         bool isInBar(ProgressBar *bar, int x, int y) const;
 
         ProgressBar *createBar(const float progress,
-                               const int width, const int height,
-                               const int textColor, const int backColor,
+                               const int width,
+                               const int height,
+                               const int textColor,
+                               const ProgressColorIdT backColor,
                                const std::string &restrict skin,
                                const std::string &restrict skinFill,
                                const std::string &restrict name,

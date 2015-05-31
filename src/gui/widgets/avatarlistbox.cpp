@@ -179,7 +179,7 @@ void AvatarListBox::draw(Graphics *graphics)
             const bool isPoison = a->getPoison();
             if (a->getMaxHp())
             {
-                const int themeColor = (isPoison
+                const ProgressColorIdT themeColor = (isPoison
                     ? ProgressColorId::PROG_HP_POISON : ProgressColorId::PROG_HP);
                 Color color = Theme::getProgressColor(
                     themeColor, static_cast<float>(a->getHp())
@@ -204,7 +204,7 @@ void AvatarListBox::draw(Graphics *graphics)
                                  a->getDamageHp());
             }
 
-            const int themeColor = (a->getPoison()
+            const ProgressColorIdT themeColor = (a->getPoison()
                 ? ProgressColorId::PROG_HP_POISON : ProgressColorId::PROG_HP);
             Color color = Theme::getProgressColor(themeColor, 1);
             color.a = 80;
@@ -416,7 +416,7 @@ void AvatarListBox::safeDraw(Graphics *graphics)
             const bool isPoison = a->getPoison();
             if (a->getMaxHp())
             {
-                const int themeColor = (isPoison
+                const ProgressColorIdT themeColor = (isPoison
                     ? ProgressColorId::PROG_HP_POISON : ProgressColorId::PROG_HP);
                 Color color = Theme::getProgressColor(
                     themeColor, static_cast<float>(a->getHp())
@@ -441,7 +441,7 @@ void AvatarListBox::safeDraw(Graphics *graphics)
                                  a->getDamageHp());
             }
 
-            const int themeColor = (a->getPoison()
+            const ProgressColorIdT themeColor = (a->getPoison()
                 ? ProgressColorId::PROG_HP_POISON : ProgressColorId::PROG_HP);
             Color color = Theme::getProgressColor(themeColor, 1);
             color.a = 80;

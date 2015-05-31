@@ -23,6 +23,8 @@
 #ifndef GUI_WIDGETS_PROGRESSBAR_H
 #define GUI_WIDGETS_PROGRESSBAR_H
 
+#include "enums/gui/progresscolorid.h"
+
 #include "gui/widgets/widget.h"
 
 #include "listeners/widgetlistener.h"
@@ -50,7 +52,7 @@ class ProgressBar final : public Widget,
                     float progress,
                     const int width,
                     const int height,
-                    const int backColor,
+                    const ProgressColorIdT backColor,
                     const std::string &skin,
                     const std::string &skinFill);
 
@@ -90,7 +92,7 @@ class ProgressBar final : public Widget,
          * Change the ProgressPalette for this ProgressBar to follow or -1 to
          * disable this and manage color manually.
          */
-        void setProgressPalette(const int progressPalette);
+        void setProgressPalette(const ProgressColorIdT progressPalette);
 
         /**
          * Change the color of the progress bar.
@@ -146,7 +148,7 @@ class ProgressBar final : public Widget,
 
         std::string mText;
         ImageCollection *mVertexes;
-        int mProgressPalette; /** < Entry in ProgressPalette or -1 for none. */
+        ProgressColorIdT mProgressPalette;
         unsigned int mPadding;
         unsigned int mFillPadding;
 

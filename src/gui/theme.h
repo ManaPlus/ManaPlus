@@ -25,6 +25,8 @@
 #ifndef GUI_THEME_H
 #define GUI_THEME_H
 
+#include "enums/gui/progresscolorid.h"
+
 #include "listeners/configlistener.h"
 
 #include "render/graphics.h"
@@ -91,7 +93,7 @@ class Theme final : public Palette,
                                           const int w,
                                           const int h)A_WARN_UNUSED;
 
-        static Color getProgressColor(const int type,
+        static Color getProgressColor(const ProgressColorIdT type,
                                       const float progress) A_WARN_UNUSED;
 
         /**

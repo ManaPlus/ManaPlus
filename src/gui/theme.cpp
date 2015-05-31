@@ -73,7 +73,8 @@ Theme::Theme() :
     Palette(ThemeColorId::THEME_COLORS_END * THEME_PALETTES),
     mSkins(),
     mMinimumOpacity(-1.0F),
-    mProgressColors(ProgressColors(ProgressColorId::THEME_PROG_END))
+    mProgressColors(ProgressColors(static_cast<size_t>(
+                    ProgressColorId::THEME_PROG_END)))
 {
     initDefaultThemePath();
 
@@ -139,18 +140,25 @@ Theme::~Theme()
     delete_all(mProgressColors);
 }
 
-Color Theme::getProgressColor(const int type, const float progress)
+Color Theme::getProgressColor(const ProgressColorIdT type,
+                              const float progress)
 {
     int color[3] = {0, 0, 0};
 
     if (theme)
     {
-        const DyePalette *const dye = theme->mProgressColors[type];
+        const DyePalette *const dye
+            = theme->mProgressColors[static_cast<size_t>(type)];
 
         if (dye)
+        {
             dye->getColor(progress, color);
+        }
         else
-            logger->log("color not found: " + toString(type));
+        {
+            logger->log("color not found: "
+                + toString(static_cast<int>(type)));
+        }
     }
 
     return Color(color[0], color[1], color[2]);
@@ -937,7 +945,8 @@ static GradientTypeT readColorGradient(const std::string &grad)
 
 static int readProgressType(const std::string &type)
 {
-    static const std::string colors[ProgressColorId::THEME_PROG_END] =
+    static const std::string colors[static_cast<size_t>(
+        ProgressColorId::THEME_PROG_END)] =
     {
         "HP",
         "HP_POISON",
@@ -956,7 +965,7 @@ static int readProgressType(const std::string &type)
     if (type.empty())
         return -1;
 
-    for (int i = 0; i < ProgressColorId::THEME_PROG_END; i++)
+    for (int i = 0; i < static_cast<int>(ProgressColorId::THEME_PROG_END); i++)
     {
         if (compareStrI(type, colors[i]) == 0)
             return i;
