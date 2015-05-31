@@ -18,13 +18,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef INPUT_INPUTACTIONOPERATORS_H
-#define INPUT_INPUTACTIONOPERATORS_H
+#ifndef GUI_THEMECOLORIDOPERATOR_H
+#define GUI_THEMECOLORIDOPERATOR_H
 
-#include "enums/input/inputaction.h"
+#include "enums/gui/themecolorid.h"
 
-InputActionT operator+(InputActionT action, const int& i);
-InputActionT operator+(InputActionT action, const unsigned int& i);
-int operator-(const InputActionT &action1, const InputActionT &action2);
+ThemeColorIdT operator+(const ThemeColorIdT &id, const int& i);
 
-#endif  // INPUT_INPUTACTIONOPERATORS_H
+#endif  // GUI_THEMECOLORIDOPERATOR_H

@@ -641,6 +641,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/skin.h \
 	      gui/theme.cpp \
 	      gui/theme.h \
+	      gui/themecolorsidoperators.cpp \
+	      gui/themecolorsidoperators.h \
 	      gui/themeinfo.h \
 	      gui/touchactiondata.cpp \
 	      gui/touchactiondata.h \

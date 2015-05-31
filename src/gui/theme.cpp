@@ -70,7 +70,7 @@ static void initDefaultThemePath()
 }
 
 Theme::Theme() :
-    Palette(ThemeColorId::THEME_COLORS_END * THEME_PALETTES),
+    Palette(static_cast<int>(ThemeColorId::THEME_COLORS_END) * THEME_PALETTES),
     mSkins(),
     mMinimumOpacity(-1.0F),
     mProgressColors(ProgressColors(static_cast<size_t>(
@@ -80,56 +80,62 @@ Theme::Theme() :
 
     config.addListener("guialpha", this);
 
-    mColors[ThemeColorId::HIGHLIGHT].ch = 'H';
-    mColors[ThemeColorId::CHAT].ch = 'C';
-    mColors[ThemeColorId::GM].ch = 'G';
-    mColors[ThemeColorId::GLOBAL].ch = 'g';
-    mColors[ThemeColorId::PLAYER].ch = 'Y';
-    mColors[ThemeColorId::WHISPER_TAB].ch = 'W';
-    mColors[ThemeColorId::WHISPER_TAB_OFFLINE].ch = 'w';
-    mColors[ThemeColorId::IS].ch = 'I';
-    mColors[ThemeColorId::PARTY_CHAT_TAB].ch = 'P';
-    mColors[ThemeColorId::GUILD_CHAT_TAB].ch = 'U';
-    mColors[ThemeColorId::SERVER].ch = 'S';
-    mColors[ThemeColorId::LOGGER].ch = 'L';
-    mColors[ThemeColorId::HYPERLINK].ch = '<';
-    mColors[ThemeColorId::SELFNICK].ch = 's';
-    mColors[ThemeColorId::OLDCHAT].ch = 'o';
-    mColors[ThemeColorId::AWAYCHAT].ch = 'a';
-    mCharColors['H'] = ThemeColorId::HIGHLIGHT;
-    mCharColors['C'] = ThemeColorId::CHAT;
-    mCharColors['G'] = ThemeColorId::GM;
-    mCharColors['g'] = ThemeColorId::GLOBAL;
-    mCharColors['Y'] = ThemeColorId::PLAYER;
-    mCharColors['W'] = ThemeColorId::WHISPER_TAB;
-    mCharColors['w'] = ThemeColorId::WHISPER_TAB_OFFLINE;
-    mCharColors['I'] = ThemeColorId::IS;
-    mCharColors['P'] = ThemeColorId::PARTY_CHAT_TAB;
-    mCharColors['U'] = ThemeColorId::GUILD_CHAT_TAB;
-    mCharColors['S'] = ThemeColorId::SERVER;
-    mCharColors['L'] = ThemeColorId::LOGGER;
-    mCharColors['<'] = ThemeColorId::HYPERLINK;
-    mCharColors['s'] = ThemeColorId::SELFNICK;
-    mCharColors['o'] = ThemeColorId::OLDCHAT;
-    mCharColors['a'] = ThemeColorId::AWAYCHAT;
+    mColors[static_cast<size_t>(ThemeColorId::HIGHLIGHT)].ch = 'H';
+    mColors[static_cast<size_t>(ThemeColorId::CHAT)].ch = 'C';
+    mColors[static_cast<size_t>(ThemeColorId::GM)].ch = 'G';
+    mColors[static_cast<size_t>(ThemeColorId::GLOBAL)].ch = 'g';
+    mColors[static_cast<size_t>(ThemeColorId::PLAYER)].ch = 'Y';
+    mColors[static_cast<size_t>(ThemeColorId::WHISPER_TAB)].ch = 'W';
+    mColors[static_cast<size_t>(ThemeColorId::WHISPER_TAB_OFFLINE)].ch = 'w';
+    mColors[static_cast<size_t>(ThemeColorId::IS)].ch = 'I';
+    mColors[static_cast<size_t>(ThemeColorId::PARTY_CHAT_TAB)].ch = 'P';
+    mColors[static_cast<size_t>(ThemeColorId::GUILD_CHAT_TAB)].ch = 'U';
+    mColors[static_cast<size_t>(ThemeColorId::SERVER)].ch = 'S';
+    mColors[static_cast<size_t>(ThemeColorId::LOGGER)].ch = 'L';
+    mColors[static_cast<size_t>(ThemeColorId::HYPERLINK)].ch = '<';
+    mColors[static_cast<size_t>(ThemeColorId::SELFNICK)].ch = 's';
+    mColors[static_cast<size_t>(ThemeColorId::OLDCHAT)].ch = 'o';
+    mColors[static_cast<size_t>(ThemeColorId::AWAYCHAT)].ch = 'a';
+    mCharColors['H'] = static_cast<int>(ThemeColorId::HIGHLIGHT);
+    mCharColors['C'] = static_cast<int>(ThemeColorId::CHAT);
+    mCharColors['G'] = static_cast<int>(ThemeColorId::GM);
+    mCharColors['g'] = static_cast<int>(ThemeColorId::GLOBAL);
+    mCharColors['Y'] = static_cast<int>(ThemeColorId::PLAYER);
+    mCharColors['W'] = static_cast<int>(ThemeColorId::WHISPER_TAB);
+    mCharColors['w'] = static_cast<int>(ThemeColorId::WHISPER_TAB_OFFLINE);
+    mCharColors['I'] = static_cast<int>(ThemeColorId::IS);
+    mCharColors['P'] = static_cast<int>(ThemeColorId::PARTY_CHAT_TAB);
+    mCharColors['U'] = static_cast<int>(ThemeColorId::GUILD_CHAT_TAB);
+    mCharColors['S'] = static_cast<int>(ThemeColorId::SERVER);
+    mCharColors['L'] = static_cast<int>(ThemeColorId::LOGGER);
+    mCharColors['<'] = static_cast<int>(ThemeColorId::HYPERLINK);
+    mCharColors['s'] = static_cast<int>(ThemeColorId::SELFNICK);
+    mCharColors['o'] = static_cast<int>(ThemeColorId::OLDCHAT);
+    mCharColors['a'] = static_cast<int>(ThemeColorId::AWAYCHAT);
 
     // here need use outlined colors
-    mCharColors['H' | 0x80] = ThemeColorId::HIGHLIGHT_OUTLINE;
-    mCharColors['C' | 0x80] = ThemeColorId::CHAT_OUTLINE;
-    mCharColors['G' | 0x80] = ThemeColorId::GM_OUTLINE;
-    mCharColors['g' | 0x80] = ThemeColorId::GLOBAL_OUTLINE;
-    mCharColors['Y' | 0x80] = ThemeColorId::PLAYER_OUTLINE;
-    mCharColors['W' | 0x80] = ThemeColorId::WHISPER_TAB_OUTLINE;
-    mCharColors['w' | 0x80] = ThemeColorId::WHISPER_TAB_OFFLINE_OUTLINE;
-    mCharColors['I' | 0x80] = ThemeColorId::IS_OUTLINE;
-    mCharColors['P' | 0x80] = ThemeColorId::PARTY_CHAT_TAB_OUTLINE;
-    mCharColors['U' | 0x80] = ThemeColorId::GUILD_CHAT_TAB_OUTLINE;
-    mCharColors['S' | 0x80] = ThemeColorId::SERVER_OUTLINE;
-    mCharColors['L' | 0x80] = ThemeColorId::LOGGER_OUTLINE;
-    mCharColors['<' | 0x80] = ThemeColorId::HYPERLINK_OUTLINE;
-    mCharColors['s' | 0x80] = ThemeColorId::SELFNICK_OUTLINE;
-    mCharColors['o' | 0x80] = ThemeColorId::OLDCHAT_OUTLINE;
-    mCharColors['a' | 0x80] = ThemeColorId::AWAYCHAT_OUTLINE;
+    mCharColors['H' | 0x80]
+        = static_cast<int>(ThemeColorId::HIGHLIGHT_OUTLINE);
+    mCharColors['C' | 0x80] = static_cast<int>(ThemeColorId::CHAT_OUTLINE);
+    mCharColors['G' | 0x80] = static_cast<int>(ThemeColorId::GM_OUTLINE);
+    mCharColors['g' | 0x80] = static_cast<int>(ThemeColorId::GLOBAL_OUTLINE);
+    mCharColors['Y' | 0x80] = static_cast<int>(ThemeColorId::PLAYER_OUTLINE);
+    mCharColors['W' | 0x80]
+        = static_cast<int>(ThemeColorId::WHISPER_TAB_OUTLINE);
+    mCharColors['w' | 0x80]
+        = static_cast<int>(ThemeColorId::WHISPER_TAB_OFFLINE_OUTLINE);
+    mCharColors['I' | 0x80] = static_cast<int>(ThemeColorId::IS_OUTLINE);
+    mCharColors['P' | 0x80]
+        = static_cast<int>(ThemeColorId::PARTY_CHAT_TAB_OUTLINE);
+    mCharColors['U' | 0x80]
+        = static_cast<int>(ThemeColorId::GUILD_CHAT_TAB_OUTLINE);
+    mCharColors['S' | 0x80] = static_cast<int>(ThemeColorId::SERVER_OUTLINE);
+    mCharColors['L' | 0x80] = static_cast<int>(ThemeColorId::LOGGER_OUTLINE);
+    mCharColors['<' | 0x80]
+        = static_cast<int>(ThemeColorId::HYPERLINK_OUTLINE);
+    mCharColors['s' | 0x80] = static_cast<int>(ThemeColorId::SELFNICK_OUTLINE);
+    mCharColors['o' | 0x80] = static_cast<int>(ThemeColorId::OLDCHAT_OUTLINE);
+    mCharColors['a' | 0x80] = static_cast<int>(ThemeColorId::AWAYCHAT_OUTLINE);
 }
 
 Theme::~Theme()
@@ -644,7 +650,8 @@ ImageSet *Theme::getImageSetFromTheme(const std::string &path,
 
 static int readColorType(const std::string &type)
 {
-    static const std::string colors[ThemeColorId::THEME_COLORS_END] =
+    static const std::string colors[static_cast<size_t>(
+        ThemeColorId::THEME_COLORS_END)] =
     {
         "BROWSERBOX",
         "BROWSERBOX_OUTLINE",
@@ -871,7 +878,7 @@ static int readColorType(const std::string &type)
     if (type.empty())
         return -1;
 
-    for (int i = 0; i < ThemeColorId::THEME_COLORS_END; i++)
+    for (int i = 0; i < static_cast<int>(ThemeColorId::THEME_COLORS_END); i++)
     {
         if (compareStrI(type, colors[i]) == 0)
             return i;
@@ -1029,7 +1036,8 @@ void Theme::loadColors(std::string file)
                 const Color color = readColor(temp);
                 const GradientTypeT grad = readColorGradient(
                     XML::getProperty(node, "effect", ""));
-                mColors[paletteId * ThemeColorId::THEME_COLORS_END + type].set(
+                mColors[paletteId * static_cast<size_t>(
+                    ThemeColorId::THEME_COLORS_END) + type].set(
                     type, color, grad, 10);
 
                 if (!findLast(id, "_OUTLINE"))
@@ -1037,7 +1045,8 @@ void Theme::loadColors(std::string file)
                     const int type2 = readColorType(id + "_OUTLINE");
                     if (type2 < 0)
                         continue;
-                    const int idx = paletteId * ThemeColorId::THEME_COLORS_END;
+                    const int idx = paletteId
+                        * static_cast<int>(ThemeColorId::THEME_COLORS_END);
                     mColors[idx + type2] = mColors[idx + type];
                 }
             }
@@ -1216,15 +1225,15 @@ ThemeInfo *Theme::loadInfo(const std::string &themeName)
     return info;
 }
 
-int Theme::getIdByChar(const signed char c, bool &valid) const
+ThemeColorIdT Theme::getIdByChar(const signed char c, bool &valid) const
 {
     const CharColors::const_iterator it = mCharColors.find(c);
     if (it != mCharColors.end())
     {
         valid = true;
-        return (*it).second;
+        return static_cast<ThemeColorIdT>((*it).second);
     }
 
     valid = false;
-    return 0;
+    return ThemeColorId::BROWSERBOX;
 }

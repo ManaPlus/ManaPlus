@@ -21,7 +21,7 @@
 #ifndef GUI_WIDGETS_WIDGET2_H
 #define GUI_WIDGETS_WIDGET2_H
 
-#include "enums/gui/themecolorid.h"
+#include "gui/themecolorsidoperators.h"
 
 #include "gui/theme.h"
 
@@ -34,11 +34,11 @@ class Widget2 notfinal
         {
         }
 
-        inline const Color &getThemeColor(const int type,
+        inline const Color &getThemeColor(const ThemeColorIdT type,
                                           const int alpha = 255)
                                           const A_WARN_UNUSED
         {
-            return theme->getColor(mPaletteOffset + type, alpha);
+            return theme->getColor(type + mPaletteOffset, alpha);
         }
 
         inline const Color &getThemeCharColor(const signed char c,
@@ -47,9 +47,9 @@ class Widget2 notfinal
         {
             if (!theme)
                 return Palette::BLACK;
-            const int colorId = theme->getIdByChar(c, valid);
+            const ThemeColorIdT colorId = theme->getIdByChar(c, valid);
             if (valid)
-                return theme->getColor(mPaletteOffset + colorId, 255);
+                return theme->getColor(colorId + mPaletteOffset, 255);
             else
                 return Palette::BLACK;
         }
@@ -61,15 +61,17 @@ class Widget2 notfinal
 
         void setPalette(int palette)
         {
-            mPaletteOffset = palette * ThemeColorId::THEME_COLORS_END;
+            mPaletteOffset = palette * static_cast<int>(
+                ThemeColorId::THEME_COLORS_END);
             checkPalette();
             setWidget2(this);
         }
 
         void checkPalette()
         {
-            if (mPaletteOffset < 0 || mPaletteOffset
-                >= THEME_PALETTES * ThemeColorId::THEME_COLORS_END)
+            if (mPaletteOffset < 0 ||
+                mPaletteOffset >= THEME_PALETTES * static_cast<int>(
+                ThemeColorId::THEME_COLORS_END))
             {
                 mPaletteOffset = 0;
             }

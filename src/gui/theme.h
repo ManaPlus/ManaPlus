@@ -26,6 +26,7 @@
 #define GUI_THEME_H
 
 #include "enums/gui/progresscolorid.h"
+#include "enums/gui/themecolorid.h"
 
 #include "listeners/configlistener.h"
 
@@ -133,21 +134,23 @@ class Theme final : public Palette,
          *
          * @return the requested color
          */
-        inline const Color &getColor(int type,
+        inline const Color &getColor(ThemeColorIdT type,
                                      const int alpha = 255) A_WARN_UNUSED
         {
-            if (type >= static_cast<signed>(mColors.size()) || type < 0)
+            if (static_cast<size_t>(type) >= mColors.size())
             {
                 logger->log("incorrect color request type: %d from %u",
-                    type, static_cast<unsigned int>(mColors.size()));
-                type = 0;
+                    static_cast<int>(type),
+                    static_cast<unsigned int>(mColors.size()));
+                type = ThemeColorIdT::BROWSERBOX;
             }
-            Color* col = &mColors[type].color;
+            Color* col = &mColors[static_cast<size_t>(type)].color;
             col->a = alpha;
             return *col;
         }
 
-        int getIdByChar(const signed char c, bool &valid) const A_WARN_UNUSED;
+        ThemeColorIdT getIdByChar(const signed char c,
+                                  bool &valid) const A_WARN_UNUSED;
 
         /**
          * Set the minimum opacity allowed to skins.
