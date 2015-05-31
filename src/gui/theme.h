@@ -142,7 +142,7 @@ class Theme final : public Palette,
                 logger->log("incorrect color request type: %d from %u",
                     static_cast<int>(type),
                     static_cast<unsigned int>(mColors.size()));
-                type = ThemeColorIdT::BROWSERBOX;
+                type = ThemeColorId::BROWSERBOX;
             }
             Color* col = &mColors[static_cast<size_t>(type)].color;
             col->a = alpha;
