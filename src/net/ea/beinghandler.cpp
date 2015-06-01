@@ -415,12 +415,32 @@ void BeingHandler::processPvpSet(Net::MessageIn &msg)
     BLOCK_START("BeingHandler::processPvpSet")
     const BeingId id = msg.readBeingId("being id");
     const int rank = msg.readInt32("rank");
-    msg.readInt32("num");
+    const int channel = msg.readInt32("channel");
     if (actorManager)
     {
         Being *const dstBeing = actorManager->findBeing(id);
         if (dstBeing)
+        {
             dstBeing->setPvpRank(rank);
+            dstBeing->setPvpChannel(channel);
+            if (id != localPlayer->getId())
+            {
+                if(channel == 0 ||
+                    dstBeing->getPvpChannel() != localPlayer->getPvpChannel())
+                {
+                    dstBeing->setEnemy(false);
+                    dstBeing->addToCache();
+                    dstBeing->updateColors();
+                }
+                else if (dstBeing->getPvpChannel() == localPlayer->getPvpChannel()
+                            && channel > 0)
+                {
+                    dstBeing->setEnemy(true);
+                    dstBeing->addToCache();
+                    dstBeing->updateColors();
+                }
+            }
+        }
     }
     BLOCK_END("BeingHandler::processPvpSet")
 }

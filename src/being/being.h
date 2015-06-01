@@ -676,6 +676,12 @@ class Being notfinal : public ActorSprite,
         void setPvpRank(const unsigned int rank)
         { mPvpRank = rank; }
 
+        unsigned int getPvpChannel() const A_WARN_UNUSED
+        { return mPvpChannel; }
+
+        void setPvpChannel(const unsigned int channel)
+        { mPvpChannel = channel; }
+
         void setHP(const int n);
 
         void setMaxHP(const int hp);
@@ -1100,6 +1106,7 @@ class Being notfinal : public ActorSprite,
         int mMaxHit;
         int mCriticalHit;
         unsigned int mPvpRank;
+        unsigned int mPvpChannel;
         unsigned int mNumber;
         int mUsageCounter;
         int mKarma;

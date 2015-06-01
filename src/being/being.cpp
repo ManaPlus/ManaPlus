@@ -213,6 +213,7 @@ Being::Being(const BeingId id,
     mMaxHit(0),
     mCriticalHit(0),
     mPvpRank(0),
+    mPvpChannel(0),
     mNumber(100),
     mUsageCounter(1),
     mKarma(0),
@@ -2349,6 +2350,7 @@ bool Being::updateFromCache()
         setGuildName(entry->getGuildName());
         setLevel(entry->getLevel());
         setPvpRank(entry->getPvpRank());
+        setPvpChannel(entry->getPvpChannel());
         setIp(entry->getIp());
 
         mAdvanced = entry->isAdvanced();
@@ -2404,6 +2406,7 @@ void Being::addToCache() const
     entry->setGuildName(getGuildName());
     entry->setTime(cur_time);
     entry->setPvpRank(getPvpRank());
+    entry->setPvpChannel(getPvpChannel());
     entry->setIp(getIp());
     entry->setAdvanced(isAdvanced());
     if (isAdvanced())
