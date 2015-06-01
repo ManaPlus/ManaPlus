@@ -175,7 +175,7 @@ void AuctionHandler::bid(const int auctionId,
     outMsg.writeInt32(money, "money");
 }
 
-void AuctionHandler::search(const AuctionSearchType::Type type,
+void AuctionHandler::search(const AuctionSearchTypeT type,
                             const int auctionId,
                             const std::string &text,
                             const int page) const

@@ -23,18 +23,18 @@
 #define ENUMS_NET_AUCTIONSEARCHTYPE_H
 #ifdef EATHENA_SUPPORT
 
-namespace AuctionSearchType
+#include "enums/simpletypes/enumdefines.h"
+
+enumStart(AuctionSearchType)
 {
-    enum Type
-    {
-        Armor     = 0,
-        Weapon    = 1,
-        Card      = 2,
-        Misc      = 3,
-        Name      = 4,
-        AuctionId = 5
-    };
-}  // namespace AuctionSearchType
+    Armor     = 0,
+    Weapon    = 1,
+    Card      = 2,
+    Misc      = 3,
+    Name      = 4,
+    AuctionId = 5
+}
+enumEnd(AuctionSearchType);
 
 #endif  // EATHENA_SUPPORT
 #endif  // ENUMS_NET_AUCTIONSEARCHTYPE_H

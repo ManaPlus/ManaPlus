@@ -70,7 +70,7 @@ void AuctionHandler::bid(const int auctionId A_UNUSED,
 {
 }
 
-void AuctionHandler::search(const AuctionSearchType::Type type A_UNUSED,
+void AuctionHandler::search(const AuctionSearchTypeT type A_UNUSED,
                             const int auctionId A_UNUSED,
                             const std::string &text A_UNUSED,
                             const int page A_UNUSED) const

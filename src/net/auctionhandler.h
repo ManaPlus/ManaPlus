@@ -56,7 +56,7 @@ class AuctionHandler notfinal
         virtual void bid(const int auctionId,
                          const int money) const = 0;
 
-        virtual void search(const AuctionSearchType::Type type,
+        virtual void search(const AuctionSearchTypeT type,
                             const int auctionId,
                             const std::string &text,
                             const int page) const = 0;
