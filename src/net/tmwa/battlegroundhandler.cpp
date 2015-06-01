@@ -42,7 +42,7 @@ void BattleGroundHandler::handleMessage(Net::MessageIn &msg A_UNUSED)
 {
 }
 
-void BattleGroundHandler::registerBg(const BattleGroundType::Type &type
+void BattleGroundHandler::registerBg(const BattleGroundTypeT &type
                                      A_UNUSED,
                                      const std::string &name A_UNUSED) const
 {

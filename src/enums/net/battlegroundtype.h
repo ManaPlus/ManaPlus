@@ -22,16 +22,16 @@
 #define ENUMS_NET_BATTLEGROUNDTYPE_H
 #ifdef EATHENA_SUPPORT
 
-namespace BattleGroundType
+#include "enums/simpletypes/enumdefines.h"
+
+enumStart(BattleGroundType)
 {
-    enum Type
-    {
-        Invalid    = 0,
-        Individual = 1,
-        Party      = 2,
-        Guild      = 4
-    };
-}  // namespace BattleGroundType
+    Invalid    = 0,
+    Individual = 1,
+    Party      = 2,
+    Guild      = 4
+}
+enumEnd(BattleGroundType);
 
 #endif  // EATHENA_SUPPORT
 #endif  // ENUMS_NET_BATTLEGROUNDTYPE_H

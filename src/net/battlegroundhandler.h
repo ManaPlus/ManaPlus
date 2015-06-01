@@ -38,7 +38,7 @@ class BattleGroundHandler notfinal
         virtual ~BattleGroundHandler()
         { }
 
-        virtual void registerBg(const BattleGroundType::Type &type,
+        virtual void registerBg(const BattleGroundTypeT &type,
                                 const std::string &name) const = 0;
 
         virtual void rekoveRequest(const std::string &name) const = 0;

@@ -151,7 +151,7 @@ void BattleGroundHandler::processBattleJoined(Net::MessageIn &msg)
     msg.readInt32("position");
 }
 
-void BattleGroundHandler::registerBg(const BattleGroundType::Type &type,
+void BattleGroundHandler::registerBg(const BattleGroundTypeT &type,
                                      const std::string &name) const
 {
     createOutPacket(CMSG_BATTLE_REGISTER);

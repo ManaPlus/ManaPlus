@@ -39,7 +39,7 @@ class BattleGroundHandler final : public MessageHandler,
 
         void handleMessage(Net::MessageIn &msg) override final;
 
-        void registerBg(const BattleGroundType::Type &type,
+        void registerBg(const BattleGroundTypeT &type,
                         const std::string &name) const override final;
 
         void rekoveRequest(const std::string &name) const override final;
