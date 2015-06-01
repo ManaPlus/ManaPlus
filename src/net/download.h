@@ -29,8 +29,10 @@
 
 #include "localconsts.h"
 
-typedef int (*DownloadUpdate)(void *ptr, DownloadStatus::Type status,
-                              size_t total, size_t remaining);
+typedef int (*DownloadUpdate)(void *ptr,
+                              DownloadStatusT status,
+                              size_t total,
+                              size_t remaining);
 
 // Matches what CURL expects
 typedef size_t (*WriteFunction)( void *ptr, size_t size, size_t nmemb,

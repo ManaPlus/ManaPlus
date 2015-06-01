@@ -158,8 +158,10 @@ class UpdaterWindow final : public Window,
         /**
          * A download callback for progress updates.
          */
-        static int updateProgress(void *ptr, DownloadStatus::Type status,
-                                  size_t dt, size_t dn);
+        static int updateProgress(void *ptr,
+                                  DownloadStatusT status,
+                                  size_t dt,
+                                  size_t dn);
 
         /**
          * A libcurl callback for writing to memory.

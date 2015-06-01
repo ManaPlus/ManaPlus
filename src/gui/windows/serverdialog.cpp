@@ -701,8 +701,10 @@ void ServerDialog::saveCustomServers(const ServerInfo &currentServer,
         config.setValue("MostUsedServerName" + toString(savedServerCount), "");
 }
 
-int ServerDialog::downloadUpdate(void *ptr, DownloadStatus::Type status,
-                                 size_t total, size_t remaining)
+int ServerDialog::downloadUpdate(void *ptr,
+                                 DownloadStatusT status,
+                                 size_t total,
+                                 size_t remaining)
 {
     if (!ptr || status == DownloadStatus::Cancelled)
         return -1;

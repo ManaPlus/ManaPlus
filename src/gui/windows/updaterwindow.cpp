@@ -478,8 +478,10 @@ void UpdaterWindow::loadPatch()
     mScrollArea->setVerticalScrollAmount(0);
 }
 
-int UpdaterWindow::updateProgress(void *ptr, DownloadStatus::Type status,
-                                  size_t dt, size_t dn)
+int UpdaterWindow::updateProgress(void *ptr,
+                                  DownloadStatusT status,
+                                  size_t dt,
+                                  size_t dn)
 {
     UpdaterWindow *const uw = reinterpret_cast<UpdaterWindow *>(ptr);
     if (!uw)

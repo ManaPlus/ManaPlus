@@ -118,7 +118,7 @@ namespace Actions
 {
 
 static int uploadUpdate(void *ptr,
-                        DownloadStatus::Type status,
+                        DownloadStatusT status,
                         size_t total A_UNUSED,
                         size_t remaining A_UNUSED)
 {

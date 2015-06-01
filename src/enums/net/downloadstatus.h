@@ -22,17 +22,17 @@
 #ifndef ENUMS_NET_DOWNLOADSTATUS_H
 #define ENUMS_NET_DOWNLOADSTATUS_H
 
-namespace DownloadStatus
+#include "enums/simpletypes/enumdefines.h"
+
+enumStart(DownloadStatus)
 {
-    enum Type
-    {
-        Cancelled   = -3,
-        ThreadError = -2,
-        Error       = -1,
-        Starting    = 0,
-        Idle        = 1,
-        Complete    = 2
-    };
-}  // namespace DownloadStatus
+    Cancelled   = -3,
+    ThreadError = -2,
+    Error       = -1,
+    Starting    = 0,
+    Idle        = 1,
+    Complete    = 2
+}
+enumEnd(DownloadStatus);
 
 #endif  // ENUMS_NET_DOWNLOADSTATUS_H
