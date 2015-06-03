@@ -54,16 +54,13 @@ class PartyHandler notfinal
 
         virtual void chat(const std::string &text) const = 0;
 
-        virtual Net::PartyShare::Type getShareExperience()
-                                      const A_WARN_UNUSED = 0;
+        virtual PartyShareT getShareExperience() const A_WARN_UNUSED = 0;
 
-        virtual void setShareExperience(const Net::PartyShare::Type
-                                        share) const = 0;
+        virtual void setShareExperience(const PartyShareT share) const = 0;
 
-        virtual Net::PartyShare::Type getShareItems() const A_WARN_UNUSED = 0;
+        virtual PartyShareT getShareItems() const A_WARN_UNUSED = 0;
 
-        virtual void setShareItems(const Net::PartyShare::Type
-                                   share) const = 0;
+        virtual void setShareItems(const PartyShareT share) const = 0;
 
         virtual void changeLeader(const std::string &name) const = 0;
 

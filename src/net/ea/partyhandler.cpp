@@ -45,14 +45,14 @@ namespace Ea
 {
 
 Party *taParty = nullptr;
-Net::PartyShare::Type PartyHandler::mShareExp = Net::PartyShare::UNKNOWN;
-Net::PartyShare::Type PartyHandler::mShareItems = Net::PartyShare::UNKNOWN;
+PartyShareT PartyHandler::mShareExp = PartyShare::UNKNOWN;
+PartyShareT PartyHandler::mShareItems = PartyShare::UNKNOWN;
 
 PartyHandler::PartyHandler() :
     Net::PartyHandler()
 {
-    mShareExp = Net::PartyShare::UNKNOWN;
-    mShareItems = Net::PartyShare::UNKNOWN;
+    mShareExp = PartyShare::UNKNOWN;
+    mShareItems = PartyShare::UNKNOWN;
     taParty = Party::getParty(1);
 }
 
@@ -84,27 +84,27 @@ void PartyHandler::processPartyCreate(Net::MessageIn &msg)
 }
 
 void PartyHandler::processPartySettingsContinue(Net::MessageIn &msg,
-                                                const int16_t exp,
-                                                const int16_t item)
+                                                const PartyShareT exp,
+                                                const PartyShareT item)
 {
     switch (exp)
     {
-        case Net::PartyShare::YES:
-            if (mShareExp == Net::PartyShare::YES)
+        case PartyShare::YES:
+            if (mShareExp == PartyShare::YES)
                 break;
-            mShareExp = Net::PartyShare::YES;
+            mShareExp = PartyShare::YES;
             NotifyManager::notify(NotifyTypes::PARTY_EXP_SHARE_ON);
             break;
-        case Net::PartyShare::NO:
-            if (mShareExp == Net::PartyShare::NO)
+        case PartyShare::NO:
+            if (mShareExp == PartyShare::NO)
                 break;
-            mShareExp = Net::PartyShare::NO;
+            mShareExp = PartyShare::NO;
             NotifyManager::notify(NotifyTypes::PARTY_EXP_SHARE_OFF);
             break;
-        case Net::PartyShare::NOT_POSSIBLE:
-            if (mShareExp == Net::PartyShare::NOT_POSSIBLE)
+        case PartyShare::NOT_POSSIBLE:
+            if (mShareExp == PartyShare::NOT_POSSIBLE)
                 break;
-            mShareExp = Net::PartyShare::NOT_POSSIBLE;
+            mShareExp = PartyShare::NOT_POSSIBLE;
             NotifyManager::notify(NotifyTypes::PARTY_EXP_SHARE_ERROR);
             break;
         default:
@@ -114,22 +114,22 @@ void PartyHandler::processPartySettingsContinue(Net::MessageIn &msg,
 
     switch (item)
     {
-        case Net::PartyShare::YES:
-            if (mShareItems == Net::PartyShare::YES)
+        case PartyShare::YES:
+            if (mShareItems == PartyShare::YES)
                 break;
-            mShareItems = Net::PartyShare::YES;
+            mShareItems = PartyShare::YES;
             NotifyManager::notify(NotifyTypes::PARTY_ITEM_SHARE_ON);
             break;
-        case Net::PartyShare::NO:
-            if (mShareItems == Net::PartyShare::NO)
+        case PartyShare::NO:
+            if (mShareItems == PartyShare::NO)
                 break;
-            mShareItems = Net::PartyShare::NO;
+            mShareItems = PartyShare::NO;
             NotifyManager::notify(NotifyTypes::PARTY_ITEM_SHARE_OFF);
             break;
-        case Net::PartyShare::NOT_POSSIBLE:
-            if (mShareItems == Net::PartyShare::NOT_POSSIBLE)
+        case PartyShare::NOT_POSSIBLE:
+            if (mShareItems == PartyShare::NOT_POSSIBLE)
                 break;
-            mShareItems = Net::PartyShare::NOT_POSSIBLE;
+            mShareItems = PartyShare::NOT_POSSIBLE;
             NotifyManager::notify(NotifyTypes::PARTY_ITEM_SHARE_ERROR);
             break;
         default:

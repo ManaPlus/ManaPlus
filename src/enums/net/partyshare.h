@@ -23,18 +23,15 @@
 #ifndef ENUMS_NET_PARTYSHARE_H
 #define ENUMS_NET_PARTYSHARE_H
 
-namespace Net
+#include "enums/simpletypes/enumdefines.h"
+
+enumStart(PartyShare)
 {
-    namespace PartyShare
-    {
-        enum Type
-        {
-            UNKNOWN = -1,
-            NO,
-            YES,
-            NOT_POSSIBLE = 2
-        };
-    }
-}  // namespace Net
+    UNKNOWN = -1,
+    NO,
+    YES,
+    NOT_POSSIBLE = 2
+}
+enumEnd(PartyShare);
 
 #endif  // ENUMS_NET_PARTYSHARE_H

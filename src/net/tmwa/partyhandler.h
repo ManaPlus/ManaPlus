@@ -56,11 +56,9 @@ class PartyHandler final : public MessageHandler, public Ea::PartyHandler
 
         void chat(const std::string &text) const override final;
 
-        void setShareExperience(const Net::PartyShare::Type share)
-                                const override final;
+        void setShareExperience(const PartyShareT share) const override final;
 
-        void setShareItems(const Net::PartyShare::Type
-                           share) const override final;
+        void setShareItems(const PartyShareT share) const override final;
 
         void changeLeader(const std::string &name) const override final;
 

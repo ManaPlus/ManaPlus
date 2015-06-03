@@ -44,12 +44,10 @@ class PartyHandler notfinal : public Net::PartyHandler
 
         void join(const int partyId) const override final;
 
-        Net::PartyShare::Type getShareExperience()
-                              const override final A_WARN_UNUSED
+        PartyShareT getShareExperience() const override final A_WARN_UNUSED
         { return mShareExp; }
 
-        Net::PartyShare::Type getShareItems()
-                              const override final A_WARN_UNUSED
+        PartyShareT getShareItems() const override final A_WARN_UNUSED
         { return mShareItems; }
 
         static void reload();
@@ -68,11 +66,11 @@ class PartyHandler notfinal : public Net::PartyHandler
         static void processPartyUpdateCoords(Net::MessageIn &msg);
 
         static void processPartySettingsContinue(Net::MessageIn &msg,
-                                                 const int16_t exp,
-                                                 const int16_t item);
+                                                 const PartyShareT exp,
+                                                 const PartyShareT item);
 
-        static Net::PartyShare::Type mShareExp;
-        static Net::PartyShare::Type mShareItems;
+        static PartyShareT mShareExp;
+        static PartyShareT mShareItems;
 };
 
 extern Party *taParty;

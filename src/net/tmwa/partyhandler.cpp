@@ -183,9 +183,9 @@ void PartyHandler::chat(const std::string &text) const
     outMsg.writeString(text, static_cast<int>(text.length()), "text");
 }
 
-void PartyHandler::setShareExperience(const Net::PartyShare::Type share) const
+void PartyHandler::setShareExperience(const PartyShareT share) const
 {
-    if (share == Net::PartyShare::NOT_POSSIBLE)
+    if (share == PartyShare::NOT_POSSIBLE)
         return;
 
     createOutPacket(CMSG_PARTY_SETTINGS);
@@ -193,9 +193,9 @@ void PartyHandler::setShareExperience(const Net::PartyShare::Type share) const
     outMsg.writeInt16(static_cast<int16_t>(mShareItems), "share items");
 }
 
-void PartyHandler::setShareItems(const Net::PartyShare::Type share) const
+void PartyHandler::setShareItems(const PartyShareT share) const
 {
-    if (share == Net::PartyShare::NOT_POSSIBLE)
+    if (share == PartyShare::NOT_POSSIBLE)
         return;
 
     createOutPacket(CMSG_PARTY_SETTINGS);
@@ -214,8 +214,10 @@ void PartyHandler::processPartySettings(Net::MessageIn &msg)
     }
 
     // These seem to indicate the sharing mode for exp and items
-    const int16_t exp = msg.readInt16("share exp");
-    const int16_t item = msg.readInt16("share items");
+    const PartyShareT exp = static_cast<PartyShareT>(
+        msg.readInt16("share exp"));
+    const PartyShareT item = static_cast<PartyShareT>(
+        msg.readInt16("share items"));
     processPartySettingsContinue(msg, exp, item);
 }
 

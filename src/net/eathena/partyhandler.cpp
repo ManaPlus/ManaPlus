@@ -199,9 +199,9 @@ void PartyHandler::chat(const std::string &text) const
 }
 
 // +++ must be 3 types item, exp, pickup
-void PartyHandler::setShareExperience(const Net::PartyShare::Type share) const
+void PartyHandler::setShareExperience(const PartyShareT share) const
 {
-    if (share == Net::PartyShare::NOT_POSSIBLE)
+    if (share == PartyShare::NOT_POSSIBLE)
         return;
 
     createOutPacket(CMSG_PARTY_SETTINGS);
@@ -210,9 +210,9 @@ void PartyHandler::setShareExperience(const Net::PartyShare::Type share) const
 }
 
 // +++ must be 3 types item, exp, pickup
-void PartyHandler::setShareItems(const Net::PartyShare::Type share) const
+void PartyHandler::setShareItems(const PartyShareT share) const
 {
-    if (share == Net::PartyShare::NOT_POSSIBLE)
+    if (share == PartyShare::NOT_POSSIBLE)
         return;
 
     createOutPacket(CMSG_PARTY_SETTINGS);
@@ -266,8 +266,10 @@ void PartyHandler::processPartySettings(Net::MessageIn &msg)
     }
 
     msg.readInt32("party exp");
-    const int16_t exp = msg.readInt8("exp");
-    const int16_t item = msg.readInt8("item");
+    const PartyShareT exp = static_cast<PartyShareT>(
+        msg.readInt8("share exp"));
+    const PartyShareT item = static_cast<PartyShareT>(
+        msg.readInt8("share item"));
     processPartySettingsContinue(msg, exp, item);
 }
 
