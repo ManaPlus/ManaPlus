@@ -37,7 +37,7 @@ class SearchStoreHandler final : public MessageHandler,
 
         void handleMessage(Net::MessageIn &msg) override final;
 
-        void search(const StoreSearchType::Type type,
+        void search(const StoreSearchTypeT type,
                     const int minPrice,
                     const int maxPrice,
                     const int itemId) const override final;

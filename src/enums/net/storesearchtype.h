@@ -22,14 +22,14 @@
 #define ENUMS_NET_STORESEARCHTYPE_H
 #ifdef EATHENA_SUPPORT
 
-namespace StoreSearchType
+#include "enums/simpletypes/enumdefines.h"
+
+enumStart(StoreSearchType)
 {
-    enum Type
-    {
-        Vending    = 0,
-        BuingStore = 1
-    };
+    Vending    = 0,
+    BuingStore = 1
 }
+enumEnd(StoreSearchType);
 
 #endif  // EATHENA_SUPPORT
 #endif  // ENUMS_NET_STORESEARCHTYPE_H

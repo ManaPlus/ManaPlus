@@ -47,7 +47,7 @@ void SearchStoreHandler::handleMessage(Net::MessageIn &msg)
     }
 }
 
-void SearchStoreHandler::search(const StoreSearchType::Type type A_UNUSED,
+void SearchStoreHandler::search(const StoreSearchTypeT type A_UNUSED,
                                 const int minPrice A_UNUSED,
                                 const int maxPrice A_UNUSED,
                                 const int itemId A_UNUSED) const

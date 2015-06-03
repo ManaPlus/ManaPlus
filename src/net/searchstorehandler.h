@@ -38,7 +38,7 @@ class SearchStoreHandler notfinal
         virtual ~SearchStoreHandler()
         { }
 
-        virtual void search(const StoreSearchType::Type type,
+        virtual void search(const StoreSearchTypeT type,
                             const int minPrice,
                             const int maxPrice,
                             const int itemId) const = 0;
