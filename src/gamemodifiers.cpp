@@ -55,7 +55,7 @@
     std::string GameModifiers::get##name1##String() \
     { \
         return gettext(getVarItem(&m##name1##Strings[0], \
-        settings.name2, m##name1##Size)); \
+        static_cast<unsigned>(settings.name2), m##name1##Size)); \
     }
 
 #define addModifier2(name1, name2, str, sz, ...) \

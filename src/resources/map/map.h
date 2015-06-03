@@ -116,7 +116,7 @@ class Map final : public Properties, public ConfigListener
          */
         void drawCollision(Graphics *const graphics,
                            const int scrollX, const int scrollY,
-                           const MapType::MapType drawFlags) const;
+                           const MapTypeT drawFlags) const;
 
         /**
          * Adds a layer to this map. The map takes ownership of the layer.
@@ -217,9 +217,9 @@ class Map final : public Properties, public ConfigListener
          */
         void addAnimation(const int gid, TileAnimation *const animation);
 
-        void setDrawLayersFlags(const MapType::MapType &n);
+        void setDrawLayersFlags(const MapTypeT &n);
 
-        MapType::MapType getDrawLayersFlags() const A_WARN_UNUSED
+        MapTypeT getDrawLayersFlags() const A_WARN_UNUSED
         { return mDrawLayersFlags; }
 
         void addExtraLayer();
@@ -385,7 +385,7 @@ class Map final : public Properties, public ConfigListener
         bool mHasWarps;
 
         // draw flags
-        MapType::MapType mDrawLayersFlags;
+        MapTypeT mDrawLayersFlags;
 
         // Pathfinding members
         unsigned int mOnClosedList;

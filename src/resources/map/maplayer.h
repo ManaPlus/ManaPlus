@@ -129,7 +129,7 @@ class MapLayer final: public ConfigListener
 
         void optionChanged(const std::string &value) override final;
 
-        void setDrawLayerFlags(const MapType::MapType &n);
+        void setDrawLayerFlags(const MapTypeT &n);
 
         void setActorsFix(const int y)
         { mActorsFix = y; }
@@ -145,7 +145,7 @@ class MapLayer final: public ConfigListener
         const int mWidth;
         const int mHeight;
         Image **const mTiles;
-        MapType::MapType mDrawLayerFlags;
+        MapTypeT mDrawLayerFlags;
         const SpecialLayer *mSpecialLayer;
         const SpecialLayer *mTempLayer;
         typedef std::vector<MapRowVertexes*> MapRows;

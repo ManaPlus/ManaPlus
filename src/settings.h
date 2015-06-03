@@ -111,7 +111,7 @@ class Settings final
         unsigned int imitationMode;
         unsigned int cameraMode;
         unsigned int crazyMoveState;
-        MapType::MapType mapDrawType;
+        MapTypeT mapDrawType;
         bool persistentIp;
         bool limitFps;
         bool inputFocused;

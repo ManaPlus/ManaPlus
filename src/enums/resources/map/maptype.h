@@ -23,18 +23,18 @@
 #ifndef RESOURCES_MAP_MAPTYPE_H
 #define RESOURCES_MAP_MAPTYPE_H
 
-namespace MapType
+#include "enums/simpletypes/enumdefines.h"
+
+enumStart(MapType)
 {
-    enum MapType
-    {
-        NORMAL  = 0,
-        DEBUG   = 1,
-        SPECIAL = 2,
-        SPECIAL2 = 3,
-        SPECIAL3 = 4,
-        SPECIAL4 = 5,
-        BLACKWHITE = 6
-    };
-}  // namespace MapType
+    NORMAL  = 0,
+    DEBUG   = 1,
+    SPECIAL = 2,
+    SPECIAL2 = 3,
+    SPECIAL3 = 4,
+    SPECIAL4 = 5,
+    BLACKWHITE = 6
+}
+enumEnd(MapType);
 
 #endif  // RESOURCES_MAP_MAPTYPE_H

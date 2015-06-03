@@ -550,8 +550,9 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
     }\
 
 void Map::drawCollision(Graphics *const graphics,
-                        const int scrollX, const int scrollY,
-                        const MapType::MapType drawFlags) const
+                        const int scrollX,
+                        const int scrollY,
+                        const MapTypeT drawFlags) const
 {
     const int endPixelY = graphics->mHeight + scrollY + mTileHeight - 1;
     int startX = scrollX / mTileWidth;
@@ -1591,7 +1592,7 @@ void Map::addAnimation(const int gid, TileAnimation *const animation)
     mTileAnimations[gid] = animation;
 }
 
-void Map::setDrawLayersFlags(const MapType::MapType &n)
+void Map::setDrawLayersFlags(const MapTypeT &n)
 {
     mDrawLayersFlags = n;
     if (mDrawLayersFlags == MapType::SPECIAL3

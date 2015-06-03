@@ -664,7 +664,7 @@ int MapLayer::getTileDrawWidth(const Image *img,
     return c;
 }
 
-void MapLayer::setDrawLayerFlags(const MapType::MapType &n)
+void MapLayer::setDrawLayerFlags(const MapTypeT &n)
 {
     mDrawLayerFlags = n;
     mSpecialFlag = (mDrawLayerFlags != MapType::SPECIAL

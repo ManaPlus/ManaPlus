@@ -228,7 +228,7 @@ void Viewport::draw(Graphics *graphics)
     // Draw tiles and sprites
     mMap->draw(graphics, mPixelViewX, mPixelViewY);
 
-    const MapType::MapType drawType = settings.mapDrawType;
+    const MapTypeT drawType = settings.mapDrawType;
     if (drawType != MapType::NORMAL)
     {
         if (drawType != MapType::SPECIAL4)
@@ -874,7 +874,7 @@ void Viewport::mouseMoved(MouseEvent &event)
 
 void Viewport::toggleMapDrawType()
 {
-    settings.mapDrawType = static_cast<MapType::MapType>(
+    settings.mapDrawType = static_cast<MapTypeT>(
         static_cast<int>(settings.mapDrawType) + 1);
     if (settings.mapDrawType > MapType::BLACKWHITE)
         settings.mapDrawType = MapType::NORMAL;
