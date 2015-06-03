@@ -23,16 +23,16 @@
 #ifndef ENUMS_NET_SERVERTYPE_H
 #define ENUMS_NET_SERVERTYPE_H
 
-namespace ServerType
+#include "enums/simpletypes/enumdefines.h"
+
+enumStart(ServerType)
 {
-    enum Type
-    {
-        UNKNOWN = 0,
-        TMWATHENA,
-        EVOL,
-        EATHENA,
-        EVOL2
-    };
+    UNKNOWN = 0,
+    TMWATHENA,
+    EVOL,
+    EATHENA,
+    EVOL2
 }
+enumEnd(ServerType);
 
 #endif  // ENUMS_NET_SERVERTYPE_H

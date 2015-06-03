@@ -115,7 +115,7 @@ Net::QuestHandler *questHandler = nullptr;
 
 namespace Net
 {
-ServerType::Type networkType = ServerType::UNKNOWN;
+ServerTypeT networkType = ServerType::UNKNOWN;
 std::set<int> ignorePackets;
 
 void connectToServer(const ServerInfo &server)
@@ -173,7 +173,7 @@ void unload()
     ignorePackets.clear();
 }
 
-ServerType::Type getNetworkType()
+ServerTypeT getNetworkType()
 {
     return networkType;
 }

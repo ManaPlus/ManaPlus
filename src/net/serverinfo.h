@@ -34,7 +34,7 @@ class ServerInfo final
     public:
         typedef std::pair<int, std::string> VersionString;
 
-        ServerType::Type type;
+        ServerTypeT type;
         std::string name;
         std::string hostname;
         std::string althostname;
@@ -126,8 +126,8 @@ class ServerInfo final
                     port != other.port);
         }
 
-        static ServerType::Type parseType(const std::string &serverType)
-                                          A_WARN_UNUSED
+        static ServerTypeT parseType(const std::string &serverType)
+                                     A_WARN_UNUSED
         {
 #ifdef TMWA_SUPPORT
             if (compareStrI(serverType, "tmwathena") == 0)

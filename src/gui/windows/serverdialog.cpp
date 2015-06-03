@@ -50,7 +50,7 @@
 
 static const int MAX_SERVERLIST = 15;
 
-static std::string serverTypeToString(const ServerType::Type type)
+static std::string serverTypeToString(const ServerTypeT type)
 {
     switch (type)
     {
@@ -80,7 +80,7 @@ static std::string serverTypeToString(const ServerType::Type type)
     }
 }
 
-static uint16_t defaultPortForServerType(const ServerType::Type type)
+static uint16_t defaultPortForServerType(const ServerTypeT type)
 {
     switch (type)
     {

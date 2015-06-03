@@ -36,7 +36,7 @@
 namespace Net
 {
 
-ServerType::Type getNetworkType() A_WARN_UNUSED;
+ServerTypeT getNetworkType() A_WARN_UNUSED;
 
 /**
  * Handles server detection and connection
