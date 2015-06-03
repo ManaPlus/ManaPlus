@@ -30,7 +30,7 @@ struct NotificationInfo final
 #ifdef ADVGCC
     NotificationInfo(const char *const sound0,
                      const char *const text0,
-                     const NotifyFlags::Type flags0) :
+                     const NotifyFlagsT flags0) :
         sound(sound0),
         text(text0),
         flags(flags0)
@@ -41,7 +41,7 @@ struct NotificationInfo final
 
     const char *sound;
     const char *text;
-    const NotifyFlags::Type flags;
+    const NotifyFlagsT flags;
 };
 
 #endif  // RESOURCES_NOTIFICATIONINFO_H

@@ -21,20 +21,19 @@
 #ifndef ENUMS_RESOURCES_NOTIFYFLAGS_H
 #define ENUMS_RESOURCES_NOTIFYFLAGS_H
 
-#include "localconsts.h"
+#include "enums/simpletypes/enumdefines.h"
 
-namespace NotifyFlags
+enumStart(NotifyFlags)
 {
-    enum Type
-    {
-        EMPTY = 0,
-        INT,
-        STRING,
-        GUILD,
-        GUILD_STRING,
-        PARTY,
-        PARTY_STRING,
-        SPEECH
-    };
-}  // namespace NotifyFlags
+    EMPTY = 0,
+    INT,
+    STRING,
+    GUILD,
+    GUILD_STRING,
+    PARTY,
+    PARTY_STRING,
+    SPEECH
+}
+enumEnd(NotifyFlags);
+
 #endif  // ENUMS_RESOURCES_NOTIFYFLAGS_H
