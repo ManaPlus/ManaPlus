@@ -48,7 +48,7 @@
 #include "being/localplayer.h"
 #include "being/playerrelations.h"
 
-#include "enums/net/packettypes.h"
+#include "enums/net/packettype.h"
 
 #ifdef TMWA_SUPPORT
 #include "net/download.h"

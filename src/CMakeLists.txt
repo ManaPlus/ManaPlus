@@ -532,7 +532,7 @@ SET(SRCS
     enums/net/auctionsearchtype.h
     enums/net/battlegroundtype.h
     enums/net/downloadstatus.h
-    enums/net/packettypes.h
+    enums/net/packettype.h
     net/gamehandler.h
     net/generalhandler.h
     net/guildhandler.h

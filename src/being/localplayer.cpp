@@ -44,7 +44,7 @@
 #include "enums/being/beingdirection.h"
 #include "enums/being/reachable.h"
 
-#include "enums/net/packettypes.h"
+#include "enums/net/packettype.h"
 
 #include "particle/particle.h"
 

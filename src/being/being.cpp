@@ -42,7 +42,7 @@
 #include "enums/being/attributes.h"
 #include "enums/being/beingdirection.h"
 
-#include "enums/net/packettypes.h"
+#include "enums/net/packettype.h"
 
 #include "particle/particleinfo.h"
 

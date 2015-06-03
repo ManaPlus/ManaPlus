@@ -29,7 +29,7 @@
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
-#include "enums/net/packettypes.h"
+#include "enums/net/packettype.h"
 
 #include "net/packetlimiter.h"
 

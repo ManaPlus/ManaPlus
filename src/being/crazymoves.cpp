@@ -28,7 +28,7 @@
 
 #include "enums/being/beingdirection.h"
 
-#include "enums/net/packettypes.h"
+#include "enums/net/packettype.h"
 
 #include "gui/windows/outfitwindow.h"
 

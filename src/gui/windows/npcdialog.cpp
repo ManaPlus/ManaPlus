@@ -31,7 +31,7 @@
 
 #include "being/being.h"
 
-#include "enums/net/packettypes.h"
+#include "enums/net/packettype.h"
 
 #include "gui/gui.h"
 #include "gui/viewport.h"

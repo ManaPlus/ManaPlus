@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ENUMS_NET_PACKETTYPES_H
-#define ENUMS_NET_PACKETTYPES_H
+#ifndef ENUMS_NET_PACKETTYPE_H
+#define ENUMS_NET_PACKETTYPE_H
 
 namespace PacketType
 {
@@ -44,4 +44,4 @@ namespace PacketType
 
 typedef PacketType::T PacketTypeT;
 
-#endif  // ENUMS_NET_PACKETTYPES_H
+#endif  // ENUMS_NET_PACKETTYPE_H
