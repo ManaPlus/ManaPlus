@@ -21,6 +21,8 @@
 #ifndef NET_PACKETLIMITER_H
 #define NET_PACKETLIMITER_H
 
+#include "enums/net/packettype.h"
+
 #include <string>
 
 #include "localconsts.h"
@@ -31,9 +33,9 @@ namespace PacketLimiter
 
     void writePacketLimits(const std::string &packetLimitsName);
 
-    bool limitPackets(const int type) A_WARN_UNUSED;
+    bool limitPackets(const PacketTypeT type) A_WARN_UNUSED;
 
-    bool checkPackets(const int type) A_WARN_UNUSED;
+    bool checkPackets(const PacketTypeT type) A_WARN_UNUSED;
 }
 
 #endif  // NET_PACKETLIMITER_H

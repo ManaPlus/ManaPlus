@@ -21,10 +21,10 @@
 #ifndef ENUMS_NET_PACKETTYPE_H
 #define ENUMS_NET_PACKETTYPE_H
 
-namespace PacketType
+#include "enums/simpletypes/enumdefines.h"
+
+enumStart(PacketType)
 {
-    enum T
-    {
     PACKET_CHAT       = 0,
     PACKET_PICKUP     = 1,
     PACKET_DROP       = 2,
@@ -39,9 +39,7 @@ namespace PacketType
     PACKET_ONLINELIST = 11,
     PACKET_WHISPER    = 12,
     PACKET_SIZE
-    };
 }
-
-typedef PacketType::T PacketTypeT;
+enumEnd(PacketType);
 
 #endif  // ENUMS_NET_PACKETTYPE_H
