@@ -21,8 +21,10 @@
 #ifndef ENUMS_NET_PACKETTYPES_H
 #define ENUMS_NET_PACKETTYPES_H
 
-enum PacketTypes
+namespace PacketType
 {
+    enum T
+    {
     PACKET_CHAT       = 0,
     PACKET_PICKUP     = 1,
     PACKET_DROP       = 2,
@@ -37,6 +39,9 @@ enum PacketTypes
     PACKET_ONLINELIST = 11,
     PACKET_WHISPER    = 12,
     PACKET_SIZE
-};
+    };
+}
+
+typedef PacketType::T PacketTypeT;
 
 #endif  // ENUMS_NET_PACKETTYPES_H

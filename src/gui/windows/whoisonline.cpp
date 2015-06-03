@@ -596,7 +596,7 @@ void WhoIsOnline::download()
 {
     if (mServerSideList)
     {
-        if (PacketLimiter::limitPackets(PACKET_ONLINELIST))
+        if (PacketLimiter::limitPackets(PacketType::PACKET_ONLINELIST))
             playerHandler->requestOnlineList();
     }
 #ifdef TMWA_SUPPORT
@@ -712,7 +712,7 @@ void WhoIsOnline::action(const ActionEvent &event)
         else
 #endif
         {
-            if (PacketLimiter::limitPackets(PACKET_ONLINELIST))
+            if (PacketLimiter::limitPackets(PacketType::PACKET_ONLINELIST))
             {
                 mUpdateTimer = cur_time;
                 playerHandler->requestOnlineList();

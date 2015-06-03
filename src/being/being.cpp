@@ -2473,7 +2473,7 @@ void Being::setGM(const bool gm)
 
 void Being::talkTo() const
 {
-    if (!PacketLimiter::limitPackets(PACKET_NPC_TALK))
+    if (!PacketLimiter::limitPackets(PacketType::PACKET_NPC_TALK))
         return;
 
     npcHandler->talk(mId);

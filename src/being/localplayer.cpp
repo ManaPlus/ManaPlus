@@ -476,7 +476,7 @@ bool LocalPlayer::pickUp(FloorItem *const item)
     if (!item)
         return false;
 
-    if (!PacketLimiter::limitPackets(PACKET_PICKUP))
+    if (!PacketLimiter::limitPackets(PacketType::PACKET_PICKUP))
         return false;
 
     const int dx = item->getTileX() - mX;
@@ -587,7 +587,7 @@ void LocalPlayer::setDestination(const int x, const int y)
 
             playerHandler->setDestination(x, y, newDir);
 
-//            if (PacketLimiter::limitPackets(PACKET_DIRECTION))
+//            if (PacketLimiter::limitPackets(PacketType::PACKET_DIRECTION))
             {
                 setDirection(newDir);
                 playerHandler->setDirection(newDir);
@@ -654,7 +654,7 @@ void LocalPlayer::startWalking(const unsigned char dir)
     {
         // If the being can't move, just change direction
 
-//            if (PacketLimiter::limitPackets(PACKET_DIRECTION))
+//            if (PacketLimiter::limitPackets(PacketType::PACKET_DIRECTION))
         {
             playerHandler->setDirection(dir);
             setDirection(dir);
@@ -689,7 +689,7 @@ void LocalPlayer::stopWalking(const bool sendToServer)
 
 bool LocalPlayer::toggleSit() const
 {
-    if (!PacketLimiter::limitPackets(PACKET_SIT))
+    if (!PacketLimiter::limitPackets(PacketType::PACKET_SIT))
         return false;
 
     BeingActionT newAction;
@@ -717,7 +717,7 @@ bool LocalPlayer::toggleSit() const
 
 bool LocalPlayer::updateSit() const
 {
-    if (!PacketLimiter::limitPackets(PACKET_SIT))
+    if (!PacketLimiter::limitPackets(PacketType::PACKET_SIT))
         return false;
 
     playerHandler->changeAction(mAction);
@@ -726,7 +726,7 @@ bool LocalPlayer::updateSit() const
 
 bool LocalPlayer::emote(const uint8_t emotion)
 {
-    if (!PacketLimiter::limitPackets(PACKET_EMOTE))
+    if (!PacketLimiter::limitPackets(PacketType::PACKET_EMOTE))
         return false;
 
     playerHandler->emote(emotion);
@@ -776,7 +776,7 @@ void LocalPlayer::attack(Being *const target, const bool keep,
     {
         setAction(BeingAction::ATTACK);
 
-        if (!PacketLimiter::limitPackets(PACKET_ATTACK))
+        if (!PacketLimiter::limitPackets(PacketType::PACKET_ATTACK))
             return;
 
         if (!dontChangeEquipment)
@@ -795,7 +795,7 @@ void LocalPlayer::attack(Being *const target, const bool keep,
 
 void LocalPlayer::stopAttack(const bool keepAttack)
 {
-    if (!PacketLimiter::limitPackets(PACKET_STOPATTACK))
+    if (!PacketLimiter::limitPackets(PacketType::PACKET_STOPATTACK))
         return;
 
     if (mServerAttack == Keep_true && mAction == BeingAction::ATTACK)
@@ -1628,7 +1628,7 @@ void LocalPlayer::tryMagic(const std::string &spell, const int baseMagic,
     {
         if (PlayerInfo::getAttribute(Attributes::MP) >= mana)
         {
-            if (!PacketLimiter::limitPackets(PACKET_CHAT))
+            if (!PacketLimiter::limitPackets(PacketType::PACKET_CHAT))
                 return;
 
             chatWindow->localChatInput(spell);
@@ -2086,7 +2086,7 @@ void LocalPlayer::targetMoved() const
         if (mTarget && mServerAttack == Keep_true)
         {
             logger->log("LocalPlayer::targetMoved0");
-            if (!PacketLimiter::limitPackets(PACKET_ATTACK))
+            if (!PacketLimiter::limitPackets(PacketType::PACKET_ATTACK))
                 return;
             logger->log("LocalPlayer::targetMoved");
             playerHandler->attack(mTarget->getId(), mServerAttack);
@@ -2262,7 +2262,7 @@ void LocalPlayer::imitateDirection(const Being *const being,
 
     if (!mPlayerImitated.empty() && being->getName() == mPlayerImitated)
     {
-        if (!PacketLimiter::limitPackets(PACKET_DIRECTION))
+        if (!PacketLimiter::limitPackets(PacketType::PACKET_DIRECTION))
             return;
 
         if (settings.followMode == 2)

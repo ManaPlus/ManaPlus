@@ -99,7 +99,7 @@ void CrazyMoves::crazyMove1()
     if (localPlayer->getCurrentAction() == BeingAction::MOVE)
         return;
 
-//    if (!PacketLimiter::limitPackets(PACKET_DIRECTION))
+//    if (!PacketLimiter::limitPackets(PacketType::PACKET_DIRECTION))
 //        return;
 
     switch (localPlayer->getDirection())
@@ -134,7 +134,7 @@ void CrazyMoves::crazyMove2()
     if (localPlayer->getCurrentAction() == BeingAction::MOVE)
         return;
 
-//    if (!PacketLimiter::limitPackets(PACKET_DIRECTION))
+//    if (!PacketLimiter::limitPackets(PacketType::PACKET_DIRECTION))
 //        return;
 
     switch (localPlayer->getDirection())
@@ -203,7 +203,7 @@ void CrazyMoves::crazyMove3()
             break;
     }
 
-//    if (!PacketLimiter::limitPackets(PACKET_DIRECTION))
+//    if (!PacketLimiter::limitPackets(PacketType::PACKET_DIRECTION))
 //        return;
 
     localPlayer->setDirection(BeingDirection::DOWN);
@@ -558,7 +558,7 @@ void CrazyMoves::crazyMoveAd()
         switch (param)
         {
             case 'd':
-//                    if (PacketLimiter::limitPackets(PACKET_DIRECTION))
+//               if (PacketLimiter::limitPackets(PacketType::PACKET_DIRECTION))
                 {
                     localPlayer->setDirection(BeingDirection::DOWN);
                     playerHandler->setDirection(
@@ -566,7 +566,7 @@ void CrazyMoves::crazyMoveAd()
                 }
                 break;
             case 'u':
-//                    if (PacketLimiter::limitPackets(PACKET_DIRECTION))
+//               if (PacketLimiter::limitPackets(PacketType::PACKET_DIRECTION))
                 {
                     localPlayer->setDirection(BeingDirection::UP);
                     playerHandler->setDirection(
@@ -574,7 +574,7 @@ void CrazyMoves::crazyMoveAd()
                 }
                 break;
             case 'l':
-//                    if (PacketLimiter::limitPackets(PACKET_DIRECTION))
+//               if (PacketLimiter::limitPackets(PacketType::PACKET_DIRECTION))
                 {
                     localPlayer->setDirection(BeingDirection::LEFT);
                     playerHandler->setDirection(
@@ -582,7 +582,7 @@ void CrazyMoves::crazyMoveAd()
                 }
                 break;
             case 'r':
-//                    if (PacketLimiter::limitPackets(PACKET_DIRECTION))
+//               if (PacketLimiter::limitPackets(PacketType::PACKET_DIRECTION))
                 {
                     localPlayer->setDirection(BeingDirection::RIGHT);
                     playerHandler->setDirection(
@@ -590,7 +590,7 @@ void CrazyMoves::crazyMoveAd()
                 }
                 break;
             case 'L':
-//                    if (PacketLimiter::limitPackets(PACKET_DIRECTION))
+//               if (PacketLimiter::limitPackets(PacketType::PACKET_DIRECTION))
                 {
                     uint8_t dir = 0;
                     switch (localPlayer->getDirection())
@@ -615,7 +615,7 @@ void CrazyMoves::crazyMoveAd()
                 }
                 break;
             case 'R':
-//                    if (PacketLimiter::limitPackets(PACKET_DIRECTION))
+//               if (PacketLimiter::limitPackets(PacketType::PACKET_DIRECTION))
                 {
                     uint8_t dir = 0;
                     switch (localPlayer->getDirection())
@@ -640,7 +640,7 @@ void CrazyMoves::crazyMoveAd()
                 }
                 break;
             case 'b':
-//                    if (PacketLimiter::limitPackets(PACKET_DIRECTION))
+//               if (PacketLimiter::limitPackets(PacketType::PACKET_DIRECTION))
                 {
                     uint8_t dir = 0;
                     switch (localPlayer->getDirection())
@@ -725,7 +725,7 @@ void CrazyMoves::crazyMoveAe()
     }
     if (mMoveProgram[settings.crazyMoveState - 1] == 'e')
         localPlayer->emote(emoteId);
-    else if (PacketLimiter::limitPackets(PACKET_CHAT))
+    else if (PacketLimiter::limitPackets(PacketType::PACKET_CHAT))
         petHandler->emote(emoteId, 0);
 
     settings.crazyMoveState ++;

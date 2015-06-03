@@ -41,85 +41,85 @@ struct PacketLimit final
     int cntLimit;
 };
 
-PacketLimit mPacketLimits[PACKET_SIZE + 1];
+PacketLimit mPacketLimits[PacketType::PACKET_SIZE + 1];
 
 void PacketLimiter::initPacketLimiter()
 {
     // here i setting packet limits. but current server is broken,
     // and this limits may not help.
 
-    mPacketLimits[PACKET_CHAT].timeLimit = 10 + 5;
-    mPacketLimits[PACKET_CHAT].lastTime = 0;
-    mPacketLimits[PACKET_CHAT].cntLimit = 1;
-    mPacketLimits[PACKET_CHAT].cnt = 0;
+    mPacketLimits[PacketType::PACKET_CHAT].timeLimit = 10 + 5;
+    mPacketLimits[PacketType::PACKET_CHAT].lastTime = 0;
+    mPacketLimits[PacketType::PACKET_CHAT].cntLimit = 1;
+    mPacketLimits[PacketType::PACKET_CHAT].cnt = 0;
 
     // 10
-    mPacketLimits[PACKET_PICKUP].timeLimit = 10 + 5;
-    mPacketLimits[PACKET_PICKUP].lastTime = 0;
-    mPacketLimits[PACKET_PICKUP].cntLimit = 1;
-    mPacketLimits[PACKET_PICKUP].cnt = 0;
+    mPacketLimits[PacketType::PACKET_PICKUP].timeLimit = 10 + 5;
+    mPacketLimits[PacketType::PACKET_PICKUP].lastTime = 0;
+    mPacketLimits[PacketType::PACKET_PICKUP].cntLimit = 1;
+    mPacketLimits[PacketType::PACKET_PICKUP].cnt = 0;
 
     // 10 5
-    mPacketLimits[PACKET_DROP].timeLimit = 5;
-    mPacketLimits[PACKET_DROP].lastTime = 0;
-    mPacketLimits[PACKET_DROP].cntLimit = 1;
-    mPacketLimits[PACKET_DROP].cnt = 0;
+    mPacketLimits[PacketType::PACKET_DROP].timeLimit = 5;
+    mPacketLimits[PacketType::PACKET_DROP].lastTime = 0;
+    mPacketLimits[PacketType::PACKET_DROP].cntLimit = 1;
+    mPacketLimits[PacketType::PACKET_DROP].cnt = 0;
 
     // 100
-    mPacketLimits[PACKET_NPC_NEXT].timeLimit = 0;
-    mPacketLimits[PACKET_NPC_NEXT].lastTime = 0;
-    mPacketLimits[PACKET_NPC_NEXT].cntLimit = 1;
-    mPacketLimits[PACKET_NPC_NEXT].cnt = 0;
+    mPacketLimits[PacketType::PACKET_NPC_NEXT].timeLimit = 0;
+    mPacketLimits[PacketType::PACKET_NPC_NEXT].lastTime = 0;
+    mPacketLimits[PacketType::PACKET_NPC_NEXT].cntLimit = 1;
+    mPacketLimits[PacketType::PACKET_NPC_NEXT].cnt = 0;
 
-    mPacketLimits[PACKET_NPC_INPUT].timeLimit = 100;
-    mPacketLimits[PACKET_NPC_INPUT].lastTime = 0;
-    mPacketLimits[PACKET_NPC_INPUT].cntLimit = 1;
-    mPacketLimits[PACKET_NPC_INPUT].cnt = 0;
+    mPacketLimits[PacketType::PACKET_NPC_INPUT].timeLimit = 100;
+    mPacketLimits[PacketType::PACKET_NPC_INPUT].lastTime = 0;
+    mPacketLimits[PacketType::PACKET_NPC_INPUT].cntLimit = 1;
+    mPacketLimits[PacketType::PACKET_NPC_INPUT].cnt = 0;
 
     // 50
-    mPacketLimits[PACKET_NPC_TALK].timeLimit = 60;
-    mPacketLimits[PACKET_NPC_TALK].lastTime = 0;
-    mPacketLimits[PACKET_NPC_TALK].cntLimit = 1;
-    mPacketLimits[PACKET_NPC_TALK].cnt = 0;
+    mPacketLimits[PacketType::PACKET_NPC_TALK].timeLimit = 60;
+    mPacketLimits[PacketType::PACKET_NPC_TALK].lastTime = 0;
+    mPacketLimits[PacketType::PACKET_NPC_TALK].cntLimit = 1;
+    mPacketLimits[PacketType::PACKET_NPC_TALK].cnt = 0;
 
     // 10
-    mPacketLimits[PACKET_EMOTE].timeLimit = 10 + 5;
-    mPacketLimits[PACKET_EMOTE].lastTime = 0;
-    mPacketLimits[PACKET_EMOTE].cntLimit = 1;
-    mPacketLimits[PACKET_EMOTE].cnt = 0;
+    mPacketLimits[PacketType::PACKET_EMOTE].timeLimit = 10 + 5;
+    mPacketLimits[PacketType::PACKET_EMOTE].lastTime = 0;
+    mPacketLimits[PacketType::PACKET_EMOTE].cntLimit = 1;
+    mPacketLimits[PacketType::PACKET_EMOTE].cnt = 0;
 
     // 100
-    mPacketLimits[PACKET_SIT].timeLimit = 100;
-    mPacketLimits[PACKET_SIT].lastTime = 0;
-    mPacketLimits[PACKET_SIT].cntLimit = 1;
-    mPacketLimits[PACKET_SIT].cnt = 0;
+    mPacketLimits[PacketType::PACKET_SIT].timeLimit = 100;
+    mPacketLimits[PacketType::PACKET_SIT].lastTime = 0;
+    mPacketLimits[PacketType::PACKET_SIT].cntLimit = 1;
+    mPacketLimits[PacketType::PACKET_SIT].cnt = 0;
 
-    mPacketLimits[PACKET_DIRECTION].timeLimit = 50;
-    mPacketLimits[PACKET_DIRECTION].lastTime = 0;
-    mPacketLimits[PACKET_DIRECTION].cntLimit = 1;
-    mPacketLimits[PACKET_DIRECTION].cnt = 0;
+    mPacketLimits[PacketType::PACKET_DIRECTION].timeLimit = 50;
+    mPacketLimits[PacketType::PACKET_DIRECTION].lastTime = 0;
+    mPacketLimits[PacketType::PACKET_DIRECTION].cntLimit = 1;
+    mPacketLimits[PacketType::PACKET_DIRECTION].cnt = 0;
 
     // 2+
-    mPacketLimits[PACKET_ATTACK].timeLimit = 2 + 10;
-    mPacketLimits[PACKET_ATTACK].lastTime = 0;
-    mPacketLimits[PACKET_ATTACK].cntLimit = 1;
-    mPacketLimits[PACKET_ATTACK].cnt = 0;
+    mPacketLimits[PacketType::PACKET_ATTACK].timeLimit = 2 + 10;
+    mPacketLimits[PacketType::PACKET_ATTACK].lastTime = 0;
+    mPacketLimits[PacketType::PACKET_ATTACK].cntLimit = 1;
+    mPacketLimits[PacketType::PACKET_ATTACK].cnt = 0;
 
-    mPacketLimits[PACKET_STOPATTACK].timeLimit = 2 + 10;
-    mPacketLimits[PACKET_STOPATTACK].lastTime = 0;
-    mPacketLimits[PACKET_STOPATTACK].cntLimit = 1;
-    mPacketLimits[PACKET_STOPATTACK].cnt = 0;
+    mPacketLimits[PacketType::PACKET_STOPATTACK].timeLimit = 2 + 10;
+    mPacketLimits[PacketType::PACKET_STOPATTACK].lastTime = 0;
+    mPacketLimits[PacketType::PACKET_STOPATTACK].cntLimit = 1;
+    mPacketLimits[PacketType::PACKET_STOPATTACK].cnt = 0;
 
-    mPacketLimits[PACKET_ONLINELIST].timeLimit = 1800;
-    mPacketLimits[PACKET_ONLINELIST].lastTime = 0;
-    mPacketLimits[PACKET_ONLINELIST].cntLimit = 1;
-    mPacketLimits[PACKET_ONLINELIST].cnt = 0;
+    mPacketLimits[PacketType::PACKET_ONLINELIST].timeLimit = 1800;
+    mPacketLimits[PacketType::PACKET_ONLINELIST].lastTime = 0;
+    mPacketLimits[PacketType::PACKET_ONLINELIST].cntLimit = 1;
+    mPacketLimits[PacketType::PACKET_ONLINELIST].cnt = 0;
 
     // 300ms + 50 fix
-    mPacketLimits[PACKET_WHISPER].timeLimit = 30 + 5;
-    mPacketLimits[PACKET_WHISPER].lastTime = 0;
-    mPacketLimits[PACKET_WHISPER].cntLimit = 1;
-    mPacketLimits[PACKET_WHISPER].cnt = 0;
+    mPacketLimits[PacketType::PACKET_WHISPER].timeLimit = 30 + 5;
+    mPacketLimits[PacketType::PACKET_WHISPER].lastTime = 0;
+    mPacketLimits[PacketType::PACKET_WHISPER].cntLimit = 1;
+    mPacketLimits[PacketType::PACKET_WHISPER].cnt = 0;
 
     if (!settings.serverConfigDir.empty())
     {
@@ -148,13 +148,17 @@ void PacketLimiter::initPacketLimiter()
 
             const int ver = atoi(line);
 
-            for (int f = 0; f < PACKET_SIZE; f ++)
+            for (int f = 0; f < PacketType::PACKET_SIZE; f ++)
             {
                 if (!inPacketFile.getline(line, 100))
                     break;
 
-                if (!(ver == 1 && (f == PACKET_DROP || f == PACKET_NPC_NEXT)))
+                if (!(ver == 1 &&
+                    (f == PacketType::PACKET_DROP ||
+                    f == PacketType::PACKET_NPC_NEXT)))
+                {
                     mPacketLimits[f].timeLimit = atoi(line);
+                }
             }
             inPacketFile.close();
             if (ver < 5)
@@ -173,7 +177,7 @@ void PacketLimiter::writePacketLimits(const std::string &packetLimitsName)
         return;
     }
     outPacketFile << "4" << std::endl;
-    for (int f = 0; f < PACKET_SIZE; f ++)
+    for (int f = 0; f < PacketType::PACKET_SIZE; f ++)
     {
         outPacketFile << toString(mPacketLimits[f].timeLimit)
                       << std::endl;
@@ -184,7 +188,7 @@ void PacketLimiter::writePacketLimits(const std::string &packetLimitsName)
 
 bool PacketLimiter::checkPackets(const int type)
 {
-    if (type > PACKET_SIZE)
+    if (type > PacketType::PACKET_SIZE)
         return false;
 
     if (!serverConfig.getValueBool("enableBuggyServers", true))
@@ -227,7 +231,7 @@ bool PacketLimiter::checkPackets(const int type)
 
 bool PacketLimiter::limitPackets(const int type)
 {
-    if (type < 0 || type > PACKET_SIZE)
+    if (type < 0 || type > PacketType::PACKET_SIZE)
         return false;
 
     if (!serverConfig.getValueBool("enableBuggyServers", true))

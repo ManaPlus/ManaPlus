@@ -288,7 +288,7 @@ void NpcDialog::action(const ActionEvent &event)
     {
         if (mActionState == NPC_ACTION_NEXT)
         {
-            if (!PacketLimiter::limitPackets(PACKET_NPC_NEXT))
+            if (!PacketLimiter::limitPackets(PacketType::PACKET_NPC_NEXT))
                 return;
 
             nextDialog();
@@ -313,7 +313,8 @@ void NpcDialog::action(const ActionEvent &event)
 
                     if (selectedIndex >= static_cast<int>(mItems.size())
                         || selectedIndex < 0
-                        || !PacketLimiter::limitPackets(PACKET_NPC_INPUT))
+                        || !PacketLimiter::limitPackets(
+                        PacketType::PACKET_NPC_INPUT))
                     {
                         return;
                     }
@@ -326,16 +327,22 @@ void NpcDialog::action(const ActionEvent &event)
                 }
                 case NPC_INPUT_STRING:
                 {
-                    if (!PacketLimiter::limitPackets(PACKET_NPC_INPUT))
+                    if (!PacketLimiter::limitPackets(
+                        PacketType::PACKET_NPC_INPUT))
+                    {
                         return;
+                    }
                     printText = mTextField->getText();
                     npcHandler->stringInput(mNpcId, printText);
                     break;
                 }
                 case NPC_INPUT_INTEGER:
                 {
-                    if (!PacketLimiter::limitPackets(PACKET_NPC_INPUT))
+                    if (!PacketLimiter::limitPackets(
+                        PacketType::PACKET_NPC_INPUT))
+                    {
                         return;
+                    }
                     printText = strprintf("%d", mIntField->getValue());
                     npcHandler->integerInput(
                         mNpcId, mIntField->getValue());
@@ -343,8 +350,11 @@ void NpcDialog::action(const ActionEvent &event)
                 }
                 case NPC_INPUT_ITEM:
                 {
-                    if (!PacketLimiter::limitPackets(PACKET_NPC_INPUT))
+                    if (!PacketLimiter::limitPackets(
+                        PacketType::PACKET_NPC_INPUT))
+                    {
                         return;
+                    }
 
                     std::string str;
                     const int sz = mInventory->getNumberOfSlotsUsed();

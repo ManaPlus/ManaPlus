@@ -190,7 +190,7 @@ impHandler0(directUp)
     {
         if (localPlayer->getDirection() != BeingDirection::UP)
         {
-//            if (PacketLimiter::limitPackets(PACKET_DIRECTION))
+//            if (PacketLimiter::limitPackets(PacketType::PACKET_DIRECTION))
             {
                 localPlayer->setDirection(BeingDirection::UP);
                 if (playerHandler)
@@ -208,7 +208,7 @@ impHandler0(directDown)
     {
         if (localPlayer->getDirection() != BeingDirection::DOWN)
         {
-//            if (PacketLimiter::limitPackets(PACKET_DIRECTION))
+//            if (PacketLimiter::limitPackets(PacketType::PACKET_DIRECTION))
             {
                 localPlayer->setDirection(BeingDirection::DOWN);
                 if (playerHandler)
@@ -229,7 +229,7 @@ impHandler0(directLeft)
     {
         if (localPlayer->getDirection() != BeingDirection::LEFT)
         {
-//            if (PacketLimiter::limitPackets(PACKET_DIRECTION))
+//            if (PacketLimiter::limitPackets(PacketType::PACKET_DIRECTION))
             {
                 localPlayer->setDirection(BeingDirection::LEFT);
                 if (playerHandler)
@@ -250,7 +250,7 @@ impHandler0(directRight)
     {
         if (localPlayer->getDirection() != BeingDirection::RIGHT)
         {
-//            if (PacketLimiter::limitPackets(PACKET_DIRECTION))
+//            if (PacketLimiter::limitPackets(PacketType::PACKET_DIRECTION))
             {
                 localPlayer->setDirection(BeingDirection::RIGHT);
                 if (playerHandler)
