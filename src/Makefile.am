@@ -709,6 +709,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      net/serverinfo.h \
 	      net/skillhandler.h \
 	      net/tradehandler.h \
+	      net/updatetypeoperators.cpp \
+	      net/updatetypeoperators.h \
 	      enums/net/updatetype.h \
 	      net/uploadcharinfo.h \
 	      net/worldinfo.h \

@@ -86,6 +86,7 @@
 #include "net/loginhandler.h"
 #include "net/net.h"
 #include "net/netconsts.h"
+#include "net/updatetypeoperators.h"
 #include "net/packetlimiter.h"
 #include "net/partyhandler.h"
 
@@ -1078,8 +1079,8 @@ int Client::gameExec()
                     // lower than the default value
                     theme->setMinimumOpacity(0.8F);
 
-                    loginData.updateType
-                        = serverConfig.getValue("updateType", 0);
+                    loginData.updateType = static_cast<UpdateTypeT>(
+                        serverConfig.getValue("updateType", 0));
 
                     mSearchHash = Net::Download::adlerBuffer(
                         const_cast<char*>(mCurrentServer.hostname.c_str()),

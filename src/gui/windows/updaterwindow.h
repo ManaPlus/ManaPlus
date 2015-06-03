@@ -24,6 +24,7 @@
 #define GUI_WINDOWS_UPDATERWINDOW_H
 
 #include "enums/net/downloadstatus.h"
+#include "enums/net/updatetype.h"
 
 #include "gui/widgets/linkhandler.h"
 #include "gui/widgets/window.h"
@@ -69,7 +70,8 @@ class UpdaterWindow final : public Window,
          */
         UpdaterWindow(const std::string &restrict updateHost,
                       const std::string &restrict updatesDir,
-                      const bool applyUpdates, const int updateType);
+                      const bool applyUpdates,
+                      const UpdateTypeT updateType);
 
         A_DELETE_COPY(UpdaterWindow)
 
@@ -242,7 +244,7 @@ class UpdaterWindow final : public Window,
         /** Index offset for disaplay downloaded file. */
         unsigned int mUpdateIndexOffset;
 
-        int mUpdateType;
+        UpdateTypeT mUpdateType;
 
         /** A flag to indicate whether to use a memory buffer or a regular
          * file.

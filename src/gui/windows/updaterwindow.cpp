@@ -42,6 +42,7 @@
 #include "gui/widgets/scrollarea.h"
 
 #include "net/download.h"
+#include "net/updatetypeoperators.h"
 
 #include "resources/resourcemanager.h"
 
@@ -168,7 +169,7 @@ static std::vector<UpdateFile> loadTxtFile(const std::string &fileName)
 UpdaterWindow::UpdaterWindow(const std::string &restrict updateHost,
                              const std::string &restrict updatesDir,
                              const bool applyUpdates,
-                             const int updateType) :
+                             const UpdateTypeT updateType) :
     // TRANSLATORS: updater window name
     Window(_("Updating..."), Modal_false, nullptr, "update.xml"),
     ActionListener(),

@@ -43,6 +43,7 @@
 
 #include "net/charserverhandler.h"
 #include "net/loginhandler.h"
+#include "net/updatetypeoperators.h"
 
 #include "utils/delete2.h"
 #include "utils/paths.h"
@@ -129,7 +130,7 @@ LoginDialog::LoginDialog(LoginData *const data,
 
     mUpdateTypeDropDown->setActionEventId("updatetype");
     mUpdateTypeDropDown->setSelected((mLoginData->updateType
-        | UpdateType::Custom) ^ UpdateType::Custom);
+        | UpdateType::Custom) ^ static_cast<int>(UpdateType::Custom));
 
     if (!mCustomUpdateHost->isSelected())
         mUpdateHostText->setVisible(Visible_false);
@@ -280,12 +281,14 @@ void LoginDialog::prepareUpdate()
     mLoginData->username = mUserField->getText();
     mLoginData->password = mPassField->getText();
     mLoginData->remember = mKeepCheck->isSelected();
-    int updateType = mUpdateTypeDropDown->getSelected();
+    UpdateTypeT updateType = static_cast<UpdateTypeT>(
+        mUpdateTypeDropDown->getSelected());
 
     if (mCustomUpdateHost->isSelected()
         && !mUpdateHostText->getText().empty())
     {
-        updateType |= UpdateType::Custom;
+        updateType = static_cast<UpdateTypeT>(
+            updateType | UpdateType::Custom);
         serverConfig.setValue("customUpdateHost",
             mUpdateHostText->getText());
 
@@ -326,7 +329,7 @@ void LoginDialog::prepareUpdate()
     }
 
     mLoginData->updateType = updateType;
-    serverConfig.setValue("updateType", updateType);
+    serverConfig.setValue("updateType", static_cast<int>(updateType));
 
     mRegisterButton->setEnabled(false);
     mServerButton->setEnabled(false);

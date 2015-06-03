@@ -41,7 +41,7 @@ class LoginData final
             updateHost(),
             updateHosts(),
             lastLogin(),
-            updateType(0),
+            updateType(UpdateType::Normal),
             email(),
             captchaResponse(),
             registerUrl(),
@@ -60,7 +60,7 @@ class LoginData final
         std::string updateHost;
         StringVect updateHosts;
         std::string lastLogin;
-        int updateType;
+        UpdateTypeT updateType;
 
         std::string email;
         std::string captchaResponse;

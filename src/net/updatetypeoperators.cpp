@@ -1,8 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2004-2009  The Mana World Development Team
- *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011-2015  The ManaPlus Developers
+ *  Copyright (C) 2015  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -20,18 +18,21 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ENUMS_NET_UPDATETYPE_H
-#define ENUMS_NET_UPDATETYPE_H
+#include "net/updatetypeoperators.h"
 
-#include "enums/simpletypes/enumdefines.h"
+#include "debug.h"
 
-enumStart(UpdateType)
+int operator&(const UpdateTypeT &a, const UpdateTypeT &b)
 {
-    Normal = 0,
-    Close = 1,
-    Skip = 2,
-    Custom = 4
+    return static_cast<int>(a) & static_cast<int>(b);
 }
-enumEnd(UpdateType);
 
-#endif  // ENUMS_NET_UPDATETYPE_H
+int operator|(const UpdateTypeT &a, const UpdateTypeT &b)
+{
+    return static_cast<int>(a) | static_cast<int>(b);
+}
+
+int operator|(const int &a, const UpdateTypeT &b)
+{
+    return a | static_cast<int>(b);
+}
