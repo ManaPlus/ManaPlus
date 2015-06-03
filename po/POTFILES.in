@@ -8,6 +8,7 @@ src/actormanager.cpp
 src/being/being.cpp
 src/being/localplayer.cpp
 src/being/playerrelations.cpp
+src/catch.hpp
 src/client.cpp
 src/configmanager.cpp
 src/dirs.cpp
