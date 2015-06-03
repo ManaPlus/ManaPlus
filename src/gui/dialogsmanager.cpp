@@ -91,7 +91,7 @@ void DialogsManager::createUpdaterWindow()
     updaterWindow = new UpdaterWindow(settings.updateHost,
         settings.oldUpdates,
         false,
-        UpdateTypeT::Normal);
+        UpdateType::Normal);
     updaterWindow->postInit();
 }
 
