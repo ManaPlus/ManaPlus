@@ -36,6 +36,8 @@
 
 TEST_CASE("AnimatedSprite tests", "animatedsprite")
 {
+    Client::setEnv("SDL_VIDEODRIVER", "dummy");
+
     client = new Client;
     PHYSFS_init("manaplus");
     dirSeparator = "/";
