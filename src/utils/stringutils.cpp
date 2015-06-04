@@ -709,6 +709,80 @@ std::string toStringPrint(const unsigned int val)
     return str;
 }
 
+std::string toString(unsigned int num)
+{
+    char buf[30];
+    buf[29] = '\0';
+    size_t idx = 28;
+    do
+        buf[idx--] = static_cast<char>((num % 10) + '0');
+    while(num /= 10);
+    return buf + idx + 1;
+}
+
+std::string toString(size_t num)
+{
+    char buf[100];
+    buf[99] = '\0';
+    size_t idx = 98;
+    do
+        buf[idx--] = static_cast<char>((num % 10) + '0');
+    while(num /= 10);
+    return buf + idx + 1;
+}
+
+std::string toString(uint16_t num)
+{
+    char buf[10];
+    buf[9] = '\0';
+    size_t idx = 8;
+    do
+        buf[idx--] = static_cast<char>((num % 10) + '0');
+    while(num /= 10);
+    return buf + idx + 1;
+}
+
+std::string toString(unsigned char num)
+{
+    char buf[5];
+    buf[4] = '\0';
+    size_t idx = 3;
+    do
+        buf[idx--] = static_cast<char>((num % 10) + '0');
+    while(num /= 10);
+    return buf + idx + 1;
+}
+
+std::string toString(int num)
+{
+    char buf[30];
+    bool useSign(false);
+    buf[29] = '\0';
+    size_t idx = 28;
+
+    if (num < 0)
+    {
+        useSign = true;
+        num = -num;
+    }
+    do
+        buf[idx--] = static_cast<char>((num % 10) + '0');
+    while(num /= 10);
+    if (useSign)
+        buf[idx--] = '-';
+    return buf + idx + 1;
+}
+
+std::string toString(float num)
+{
+    return strprintf("%f", num);
+}
+
+std::string toString(double num)
+{
+    return strprintf("%f", static_cast<float>(num));
+}
+
 bool isDigit(const std::string &str)
 {
     if (str.empty())

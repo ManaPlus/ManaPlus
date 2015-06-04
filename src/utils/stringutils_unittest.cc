@@ -117,6 +117,26 @@ TEST_CASE("stringuntils ipToString 1")
     REQUIRE("219.255.210.73" == std::string(ipToString(1238564827)));
 }
 
+TEST_CASE("stringuntils toString 1")
+{
+    REQUIRE(strprintf("%d", 0) == toString(0));
+    REQUIRE(strprintf("%d", -1) == toString(-1));
+    REQUIRE(strprintf("%d", 30000000) == toString(30000000));
+    REQUIRE(strprintf("%d", -10000000) == toString(-10000000));
+    REQUIRE(strprintf("%d", 30000000) == toString(
+        static_cast<signed int>(30000000)));
+    REQUIRE(strprintf("%d", 3000) == toString(static_cast<uint16_t>(3000)));
+    REQUIRE(strprintf("%d", 123) == toString(static_cast<unsigned char>(123)));
+}
+
+TEST_CASE("stringuntils toString 2")
+{
+    for (int f = 0; f < 10000000; f += 123)
+    {
+        REQUIRE(strprintf("%d", f) == toString(f));
+    }
+}
+
 TEST_CASE("stringuntils removeColors 1")
 {
     REQUIRE("" == removeColors(""));

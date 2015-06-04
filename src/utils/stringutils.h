@@ -64,20 +64,25 @@ std::string &toUpper(std::string &str);
  */
 unsigned int atox(const std::string &str) A_WARN_UNUSED;
 
-template<typename T> std::string toString(const T &arg) A_WARN_UNUSED;
-
 /**
- * Converts the given value to a string using std::stringstream.
+ * Converts the given value to a string.
  *
- * @param arg the value to convert to a string
+ * @param num the value to convert to a string
  * @return the string representation of arg
  */
-template<typename T> std::string toString(const T &arg)
-{
-    std::stringstream ss;
-    ss << arg;
-    return ss.str();
-}
+std::string toString(unsigned int num);
+
+std::string toString(size_t num);
+
+std::string toString(unsigned char num);
+
+std::string toString(int num);
+
+std::string toString(uint16_t num);
+
+std::string toString(float num);
+
+std::string toString(double num);
 
 std::string toStringPrint(const unsigned int val);
 

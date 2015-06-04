@@ -686,10 +686,10 @@ void ServerDialog::saveCustomServers(const ServerInfo &currentServer,
             ("MostUsedServerOnlineList" + num);
         const std::string persistentIpKey("persistentIp" + num);
 
-        config.setValue(nameKey, toString(server.name));
-        config.setValue(descKey, toString(server.description));
-        config.setValue(onlineListUrlKey, toString(server.onlineListUrl));
-        config.setValue(hostKey, toString(server.hostname));
+        config.setValue(nameKey, server.name);
+        config.setValue(descKey, server.description);
+        config.setValue(onlineListUrlKey, server.onlineListUrl);
+        config.setValue(hostKey, server.hostname);
         config.setValue(typeKey, serverTypeToString(server.type));
         config.setValue(portKey, toString(server.port));
         config.setValue(persistentIpKey, server.persistentIp);
