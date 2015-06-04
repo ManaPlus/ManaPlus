@@ -917,8 +917,6 @@ Files: data/perserver/*
  src/debug.h
  src/graphicsvertexes.cpp
  src/graphicsvertexes.h
- src/guildmanager.cpp
- src/guildmanager.h
  src/gui/widgets/tabs/chat/langtab.cpp
  src/gui/widgets/tabs/chat/langtab.h
  src/gui/widgets/setupitem.cpp

@@ -1,8 +1,9 @@
-manaplus (1.5.5.23-1) UNRELEASED; urgency=low
+manaplus (1.5.5.23-1) unstable; urgency=low
 
   * New upstream release.
+    - Adjust debian/copyright.
 
- -- Patrick Matthäi <pmatthaei@debian.org>  Mon, 25 May 2015 19:38:53 +0200
+ -- Patrick Matthäi <pmatthaei@debian.org>  Fri, 29 May 2015 11:51:16 +0200
 
 manaplus (1.5.5.9-1) unstable; urgency=low
 
