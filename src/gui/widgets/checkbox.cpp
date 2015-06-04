@@ -322,3 +322,16 @@ void CheckBox::widgetHidden(const Event &event A_UNUSED)
     mTextChanged = true;
     mTextChunk.deleteImage();
 }
+
+void CheckBox::setWindow(Widget *const widget)
+{
+    if (!widget && mWindow)
+    {
+        mWindow->removeWidgetListener(this);
+        mWindow = nullptr;
+    }
+    else
+    {
+        Widget2::setWindow(widget);
+    }
+}

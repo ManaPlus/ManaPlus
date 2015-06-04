@@ -269,6 +269,19 @@ void Label::setParent(Widget *widget)
     Widget::setParent(widget);
 }
 
+void Label::setWindow(Widget *const widget)
+{
+    if (!widget && mWindow)
+    {
+        mWindow->removeWidgetListener(this);
+        mWindow = nullptr;
+    }
+    else
+    {
+        Widget2::setWindow(widget);
+    }
+}
+
 void Label::widgetHidden(const Event &event A_UNUSED)
 {
     mTextChanged = true;

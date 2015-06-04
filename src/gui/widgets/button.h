@@ -251,6 +251,8 @@ class Button final : public Widget,
 
         void setParent(Widget *widget) override final;
 
+        void setWindow(Widget *const widget) override final;
+
         enum
         {
             BUTTON_STANDARD = 0,  // 0

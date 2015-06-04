@@ -357,3 +357,16 @@ void RadioButton::widgetHidden(const Event &event A_UNUSED)
     mTextChanged = true;
     mTextChunk.deleteImage();
 }
+
+void RadioButton::setWindow(Widget *const widget)
+{
+    if (!widget && mWindow)
+    {
+        mWindow->removeWidgetListener(this);
+        mWindow = nullptr;
+    }
+    else
+    {
+        Widget2::setWindow(widget);
+    }
+}

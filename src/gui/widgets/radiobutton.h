@@ -196,6 +196,8 @@ class RadioButton final : public Widget,
 
         void widgetHidden(const Event &event) override final;
 
+        void setWindow(Widget *const widget) override final;
+
     private:
         static int instances;
         static Skin *mSkin;

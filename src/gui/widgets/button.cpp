@@ -915,3 +915,16 @@ void Button::setParent(Widget *widget)
         mWindow->addWidgetListener(this);
     Widget::setParent(widget);
 }
+
+void Button::setWindow(Widget *const widget)
+{
+    if (!widget && mWindow)
+    {
+        mWindow->removeWidgetListener(this);
+        mWindow = nullptr;
+    }
+    else
+    {
+        Widget2::setWindow(widget);
+    }
+}

@@ -231,6 +231,8 @@ class TextField notfinal : public Widget,
 
         void setParent(Widget *widget) override final;
 
+        void setWindow(Widget *const widget) override final;
+
     protected:
         void drawCaret(Graphics* graphics, int x);
 

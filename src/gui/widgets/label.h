@@ -162,6 +162,8 @@ class Label final : public Widget,
 
         void setParent(Widget *widget) override final;
 
+        void setWindow(Widget *const widget) override final;
+
         void widgetHidden(const Event &event) override final;
 
         static Skin *mSkin;
