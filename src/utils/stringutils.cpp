@@ -720,7 +720,7 @@ std::string toString(unsigned int num)
     return buf + idx + 1;
 }
 
-std::string toString(size_t num)
+std::string toString(unsigned long num)
 {
     char buf[100];
     buf[99] = '\0';

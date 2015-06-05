@@ -72,7 +72,7 @@ unsigned int atox(const std::string &str) A_WARN_UNUSED;
  */
 std::string toString(unsigned int num);
 
-std::string toString(size_t num);
+std::string toString(unsigned long num);
 
 std::string toString(unsigned char num);
 
