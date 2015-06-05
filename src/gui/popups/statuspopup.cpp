@@ -75,6 +75,7 @@ void StatusPopup::postInit()
     addLabel(12);
     addLabel(13);
     addLabel(14);
+    addLabel(15);
     y += 4;
     addLabel(11);
 }
@@ -164,4 +165,6 @@ void StatusPopup::updateLabels() const
         InputAction::AWAY);
     setLabelText(14, GameModifiers::getCameraModeString(),
         InputAction::CAMERA);
+    setLabelText(15, GameModifiers::getTargetingTypeString(),
+        InputAction::CHANGE_TARGETING_TYPE);
 }

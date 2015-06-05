@@ -33,6 +33,7 @@ namespace Actions
     decHandler(changeMoveType);
     decHandler(changeAttackWeaponType);
     decHandler(changeAttackType);
+    decHandler(changeTargetingType);
     decHandler(changeFollowMode);
     decHandler(changeImitationMode);
     decHandler(changeMagicAttackType);

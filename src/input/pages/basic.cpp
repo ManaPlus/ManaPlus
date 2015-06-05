@@ -133,6 +133,12 @@ SetupActionData setupActionDataBasic[] =
     },
     {
         // TRANSLATORS: input action name
+        N_("Change targeting type"),
+        InputAction::CHANGE_TARGETING_TYPE,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
         N_("Target pet"),
         InputAction::TARGET_PET,
         "",

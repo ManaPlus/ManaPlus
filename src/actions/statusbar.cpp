@@ -80,6 +80,11 @@ impHandler0(changeAttackType)
     callYellowBar(changeAttackType);
 }
 
+impHandler0(changeTargetingType)
+{
+    callYellowBar(changeTargetingType);
+}
+
 impHandler0(changeFollowMode)
 {
     callYellowBar(changeFollowMode);

@@ -66,6 +66,7 @@ class Settings final
             imitationMode(0U),
             cameraMode(0U),
             crazyMoveState(0U),
+            targetingType(0U),
             mapDrawType(MapType::NORMAL),
             persistentIp(true),
             limitFps(false),
@@ -111,6 +112,7 @@ class Settings final
         unsigned int imitationMode;
         unsigned int cameraMode;
         unsigned int crazyMoveState;
+        unsigned int targetingType;
         MapTypeT mapDrawType;
         bool persistentIp;
         bool limitFps;

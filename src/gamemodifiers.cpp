@@ -87,6 +87,7 @@ void GameModifiers::init()
     settings.followMode = config.getIntValue("followMode");
     settings.attackWeaponType = config.getIntValue("attackWeaponType");
     settings.attackType = config.getIntValue("attackType");
+    settings.targetingType = config.getIntValue("targetingType");
     settings.quickDropCounter = config.getIntValue("quickDropCounter");
     settings.pickUpType = config.getIntValue("pickUpType");
     settings.magicAttackType = config.getIntValue("magicAttackType");
@@ -267,6 +268,16 @@ addModifier2(AttackType, attackType, "attackType", 4,
     N_("(d) without auto attack"),
     // TRANSLATORS: attack type in status bar
     N_("(?) attack")
+})
+
+addModifier2(TargetingType, targetingType, "targetingType", 2,
+{
+    // TRANSLATORS: targeting type in status bar
+    N_("(D) don't switch target"),
+    // TRANSLATORS: targeting type in status bar
+    N_("(C) always attack closest"),
+    // TRANSLATORS: targeting type in status bar
+    N_("(?) targeting")
 })
 
 const unsigned GameModifiers::mQuickDropCounterSize = 31;
@@ -490,6 +501,7 @@ void GameModifiers::resetModifiers()
     settings.pvpAttackType = config.resetIntValue("pvpAttackType");
     settings.quickDropCounter = config.resetIntValue("quickDropCounter");
     settings.pickUpType = config.resetIntValue("pickUpType");
+    settings.targetingType = config.resetIntValue("targetingType");
     settings.mapDrawType = MapType::NORMAL;
     if (viewport)
     {

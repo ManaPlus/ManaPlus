@@ -52,6 +52,7 @@ class GameModifiers final
         declModifier(FollowMode)
         declModifier(AttackWeaponType)
         declModifier(AttackType)
+        declModifier(TargetingType)
         declModifier(QuickDropCounter)
         declModifier(PickUpType)
         declModifier(MagicAttackType)

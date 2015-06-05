@@ -97,6 +97,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("pickUpType", 3);
     AddDEF("magicAttackType", 0);
     AddDEF("attackType", 2);
+    AddDEF("targetingType", 0);
     AddDEF("followMode", 0);
     AddDEF("imitationMode", 0);
     AddDEF("syncPlayerMove", false);

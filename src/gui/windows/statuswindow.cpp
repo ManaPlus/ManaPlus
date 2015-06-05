@@ -671,7 +671,8 @@ void StatusWindow::updateStatusBar(ProgressBar *const bar,
         .append(" ").append(translateLetter2(
         GameModifiers::getImitationModeString()))
         .append(translateLetter2(GameModifiers::getCameraModeString()))
-        .append(translateLetter2(GameModifiers::getAwayModeString())));
+        .append(translateLetter2(GameModifiers::getAwayModeString()))
+        .append(translateLetter2(GameModifiers::getTargetingTypeString())));
 
     bar->setProgress(50);
     if (settings.disableGameModifiers)

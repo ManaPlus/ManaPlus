@@ -104,6 +104,10 @@ Setup_Quick::Setup_Quick(const Widget2 *const widget) :
         &GameModifiers::getAwayModeString,
         &GameModifiers::changeAwayMode);
 
+    new SetupQuickItem("", this, "targetingTypeEvent",
+        &GameModifiers::getTargetingTypeString,
+        &GameModifiers::changeTargetingType);
+
     setDimension(Rect(0, 0, 550, 350));
 }
 

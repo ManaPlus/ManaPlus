@@ -807,12 +807,12 @@ impHandler(targetAttack)
                     target = nullptr;
             }
         }
-        if (!target)
+
+        if (!target && !settings.targetingType)
             target = localPlayer->getTarget();
-        // A set target has highest priority
+
         if (!target)
         {
-            // Only auto target Monsters
             target = actorManager->findNearestLivingBeing(
                 localPlayer, 90, ActorType::Monster, AllowSort_true);
         }

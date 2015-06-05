@@ -4490,6 +4490,12 @@ static const InputActionData inputActionData
         InputCondition::INGAME,
         "servconfget|getservconf",
         UseArgs_true},
+    {"keyChangeTargetingType",
+        defaultAction(&Actions::changeTargetingType),
+        InputCondition::GAME | InputCondition::VALIDSPEED
+            | InputCondition::EMODS,
+        "",
+        UseArgs_false},
 };
 
 #undef defaultAction

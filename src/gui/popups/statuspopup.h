@@ -30,7 +30,7 @@
 
 class Label;
 
-const int STATUSPOPUP_NUM_LABELS = 15;
+const int STATUSPOPUP_NUM_LABELS = 16;
 
 /**
  * A popup that displays information about an item.
