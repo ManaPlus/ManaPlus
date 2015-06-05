@@ -26,8 +26,6 @@
 #include "configuration.h"
 #include "textmanager.h"
 
-#include "enums/gui/themecolorid.h"
-
 #include "gui/gui.h"
 #include "gui/theme.h"
 

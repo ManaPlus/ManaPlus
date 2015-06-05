@@ -30,8 +30,6 @@
 
 #include "gui/widgets/windowcontainer.h"
 
-#include "render/renderers.h"
-
 #include "utils/delete2.h"
 
 #include "debug.h"

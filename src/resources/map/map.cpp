@@ -37,6 +37,8 @@
 
 #include "being/localplayer.h"
 
+#include "gui/userpalette.h"
+
 #include "particle/particle.h"
 
 #include "resources/ambientlayer.h"

@@ -23,8 +23,6 @@
 #ifndef GUI_WIDGETS_SELLDIALOG_H
 #define GUI_WIDGETS_SELLDIALOG_H
 
-#include "enums/simpletypes/visible.h"
-
 #include "gui/widgets/window.h"
 
 #include "listeners/actionlistener.h"

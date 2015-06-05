@@ -26,10 +26,6 @@
 
 #include "enums/being/beingdirection.h"
 
-#include "enums/gui/dialogtype.h"
-
-#include "enums/input/inputaction.h"
-
 #include "gui/windows/okdialog.h"
 
 #include "gui/widgets/button.h"

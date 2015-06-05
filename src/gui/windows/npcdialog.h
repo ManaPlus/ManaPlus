@@ -25,7 +25,6 @@
 
 #include "enums/simpletypes/beingid.h"
 #include "enums/simpletypes/beingtypeid.h"
-#include "enums/simpletypes/visible.h"
 
 #include "gui/models/extendedlistmodel.h"
 

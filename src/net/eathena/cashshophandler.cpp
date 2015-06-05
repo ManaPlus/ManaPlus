@@ -20,11 +20,7 @@
 
 #include "net/eathena/cashshophandler.h"
 
-#include "logger.h"
-
 #include "being/playerinfo.h"
-
-#include "enums/being/attributes.h"
 
 #include "gui/windows/buydialog.h"
 

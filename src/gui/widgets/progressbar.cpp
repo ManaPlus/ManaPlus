@@ -30,8 +30,6 @@
 
 #include "gui/fonts/font.h"
 
-#include "render/renderers.h"
-
 #include "utils/delete2.h"
 
 #include "debug.h"

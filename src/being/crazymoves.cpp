@@ -28,8 +28,6 @@
 
 #include "enums/being/beingdirection.h"
 
-#include "enums/net/packettype.h"
-
 #include "gui/windows/outfitwindow.h"
 
 #include "net/packetlimiter.h"

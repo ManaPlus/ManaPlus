@@ -20,8 +20,6 @@
 
 #include "resources/map/mapitem.h"
 
-#include "enums/gui/usercolorid.h"
-
 #include "gui/gui.h"
 #include "gui/userpalette.h"
 

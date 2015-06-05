@@ -30,6 +30,8 @@
 
 #include "being/localplayer.h"
 
+#include "gui/userpalette.h"
+
 #include "render/graphics.h"
 
 #include "resources/image.h"

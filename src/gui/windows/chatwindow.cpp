@@ -33,8 +33,6 @@
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
 
-#include "enums/being/attributes.h"
-
 #include "input/inputmanager.h"
 
 #include "gui/chatconsts.h"
@@ -74,6 +72,8 @@
 #include "utils/files.h"
 
 #include <sys/stat.h>
+
+#include <sstream>
 
 #include "debug.h"
 

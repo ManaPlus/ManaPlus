@@ -23,8 +23,6 @@
 #ifndef GUI_WINDOWS_MINISTATUSWINDOW_H
 #define GUI_WINDOWS_MINISTATUSWINDOW_H
 
-#include "enums/simpletypes/visible.h"
-
 #include "listeners/arrowslistener.h"
 #include "listeners/attributelistener.h"
 #include "listeners/inventorylistener.h"

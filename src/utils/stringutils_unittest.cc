@@ -102,13 +102,13 @@ TEST_CASE("stringuntils atox 1")
     atox(str);
 
     str = "";
-    int k = atox(str);
+    REQUIRE(0 == atox(str));
 
     str = "0";
-    k = atox(str);
+    REQUIRE(0 == atox(str));
 
     str = "0x";
-    k = atox(str);
+    REQUIRE(0 == atox(str));
 }
 
 TEST_CASE("stringuntils ipToString 1")

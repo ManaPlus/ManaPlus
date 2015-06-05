@@ -23,8 +23,6 @@
 #ifndef FLOORITEM_H
 #define FLOORITEM_H
 
-#include "enums/simpletypes/beingid.h"
-
 #include "being/actorsprite.h"
 
 #include "resources/cursor.h"

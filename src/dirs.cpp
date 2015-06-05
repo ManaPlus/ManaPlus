@@ -55,6 +55,8 @@
 
 #include <sys/stat.h>
 
+#include <sstream>
+
 #include "debug.h"
 
 #if defined __native_client__

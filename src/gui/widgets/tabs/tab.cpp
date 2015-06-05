@@ -74,8 +74,6 @@
 #include "gui/widgets/label.h"
 #include "gui/widgets/tabbedarea.h"
 
-#include "render/renderers.h"
-
 #include "resources/image.h"
 #include "resources/imagerect.h"
 
@@ -111,11 +109,13 @@ Tab::Tab(const Widget2 *const widget) :
     mTabHighlightedOutlineColor(&getThemeColor(
         ThemeColorId::TAB_HIGHLIGHTED_OUTLINE)),
     mTabSelectedColor(&getThemeColor(ThemeColorId::TAB_SELECTED)),
-    mTabSelectedOutlineColor(&getThemeColor(ThemeColorId::TAB_SELECTED_OUTLINE)),
+    mTabSelectedOutlineColor(&getThemeColor(
+        ThemeColorId::TAB_SELECTED_OUTLINE)),
     mFlashColor(&getThemeColor(ThemeColorId::TAB_FLASH)),
     mFlashOutlineColor(&getThemeColor(ThemeColorId::TAB_FLASH_OUTLINE)),
     mPlayerFlashColor(&getThemeColor(ThemeColorId::TAB_PLAYER_FLASH)),
-    mPlayerFlashOutlineColor(&getThemeColor(ThemeColorId::TAB_PLAYER_FLASH_OUTLINE)),
+    mPlayerFlashOutlineColor(&getThemeColor(
+        ThemeColorId::TAB_PLAYER_FLASH_OUTLINE)),
     mFlash(0),
     mVertexes(new ImageCollection),
     mImage(nullptr),

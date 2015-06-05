@@ -23,6 +23,7 @@
 #include "soundmanager.h"
 
 #include "configuration.h"
+#include "logger.h"
 
 #include "being/localplayer.h"
 

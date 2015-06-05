@@ -55,7 +55,8 @@ class SocialGuildTab final : public SocialTab,
                 ThemeColorId::GUILD_SOCIAL_TAB_HIGHLIGHTED_OUTLINE));
             setSelectedTabColor(&getThemeColor(
                 ThemeColorId::GUILD_SOCIAL_TAB_SELECTED),
-                &getThemeColor(ThemeColorId::GUILD_SOCIAL_TAB_SELECTED_OUTLINE));
+                &getThemeColor(
+                ThemeColorId::GUILD_SOCIAL_TAB_SELECTED_OUTLINE));
 
             createControls(guild, showBackground);
         }

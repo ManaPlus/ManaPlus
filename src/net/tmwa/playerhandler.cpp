@@ -24,8 +24,6 @@
 
 #include "being/localplayer.h"
 
-#include "enums/being/attributes.h"
-
 #include "gui/windows/statuswindow.h"
 
 #include "net/tmwa/inventoryhandler.h"

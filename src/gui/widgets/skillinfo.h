@@ -26,12 +26,11 @@
 #include "enums/simpletypes/modifiable.h"
 #include "enums/simpletypes/visible.h"
 
-#include "gui/color.h"
-
 #include "resources/skillowner.h"
 #include "resources/skilltype.h"
 
 #include <string>
+
 #include <vector>
 #include <map>
 

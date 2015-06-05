@@ -74,8 +74,6 @@
 #include "resources/image.h"
 #include "resources/imagerect.h"
 
-#include "render/renderers.h"
-
 #include "utils/delete2.h"
 #include "utils/stringutils.h"
 

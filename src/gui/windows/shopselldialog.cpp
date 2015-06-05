@@ -22,8 +22,6 @@
 
 #include "gui/windows/shopselldialog.h"
 
-#include "shopitem.h"
-
 #include "being/playerinfo.h"
 
 #include "gui/windows/tradewindow.h"

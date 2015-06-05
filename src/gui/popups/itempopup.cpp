@@ -249,8 +249,10 @@ void ItemPopup::setLabelColor(Label *label, const ItemType::Type type) const
     {
         caseSetColor(ItemType::UNUSABLE, ThemeColorId::GENERIC)
         caseSetColor(ItemType::USABLE, ThemeColorId::USABLE)
-        caseSetColor(ItemType::EQUIPMENT_ONE_HAND_WEAPON, ThemeColorId::ONEHAND)
-        caseSetColor(ItemType::EQUIPMENT_TWO_HANDS_WEAPON, ThemeColorId::TWOHAND)
+        caseSetColor(ItemType::EQUIPMENT_ONE_HAND_WEAPON,
+            ThemeColorId::ONEHAND)
+        caseSetColor(ItemType::EQUIPMENT_TWO_HANDS_WEAPON,
+            ThemeColorId::TWOHAND)
         caseSetColor(ItemType::EQUIPMENT_TORSO, ThemeColorId::TORSO)
         caseSetColor(ItemType::EQUIPMENT_ARMS, ThemeColorId::ARMS)
         caseSetColor(ItemType::EQUIPMENT_HEAD, ThemeColorId::HEAD)

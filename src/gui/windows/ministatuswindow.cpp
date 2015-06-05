@@ -26,10 +26,6 @@
 #include "configuration.h"
 #include "inventory.h"
 
-#include "enums/being/attributes.h"
-
-#include "enums/gui/progresscolorid.h"
-
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
@@ -88,7 +84,8 @@ MiniStatusWindow::MiniStatusWindow() :
         // TRANSLATORS: status bar name
         "xp bar", _("experience bar"))),
     mJobBar(nullptr),
-    mWeightBar(createBar(0, 140, 0, ThemeColorId::WEIGHT_BAR, ProgressColorId::PROG_WEIGHT,
+    mWeightBar(createBar(0, 140, 0, ThemeColorId::WEIGHT_BAR,
+        ProgressColorId::PROG_WEIGHT,
         "weightprogressbar.xml", "weightprogressbar_fill.xml",
         // TRANSLATORS: status bar name
         "weight bar", _("weight bar"))),
@@ -98,16 +95,19 @@ MiniStatusWindow::MiniStatusWindow() :
         "inventory slots bar",
         // TRANSLATORS: status bar name
         _("inventory slots bar"))),
-    mMoneyBar(createBar(0, 130, 0, ThemeColorId::MONEY_BAR, ProgressColorId::PROG_MONEY,
+    mMoneyBar(createBar(0, 130, 0, ThemeColorId::MONEY_BAR,
+        ProgressColorId::PROG_MONEY,
         "moneyprogressbar.xml", "moneyprogressbar_fill.xml",
         // TRANSLATORS: status bar name
         "money bar", _("money bar"))),
-    mArrowsBar(createBar(0, 50, 0, ThemeColorId::ARROWS_BAR, ProgressColorId::PROG_ARROWS,
+    mArrowsBar(createBar(0, 50, 0, ThemeColorId::ARROWS_BAR,
+        ProgressColorId::PROG_ARROWS,
         "arrowsprogressbar.xml", "arrowsprogressbar_fill.xml",
         // TRANSLATORS: status bar name
         "arrows bar", _("arrows bar"))),
     mStatusBar(createBar(100, (config.getIntValue("fontSize") > 16
-        ? 250 : 165), 0, ThemeColorId::STATUS_BAR, ProgressColorId::PROG_STATUS,
+        ? 250 : 165), 0, ThemeColorId::STATUS_BAR,
+        ProgressColorId::PROG_STATUS,
         "statusprogressbar.xml", "statusprogressbar_fill.xml",
         // TRANSLATORS: status bar name
         "status bar", _("status bar"))),
@@ -130,7 +130,9 @@ MiniStatusWindow::MiniStatusWindow() :
 
     if (job)
     {
-        mJobBar = createBar(0, 100, 0, ThemeColorId::JOB_BAR, ProgressColorId::PROG_JOB,
+        mJobBar = createBar(0, 100, 0,
+            ThemeColorId::JOB_BAR,
+            ProgressColorId::PROG_JOB,
             // TRANSLATORS: status bar name
             "jobprogressbar.xml", "jobprogressbar_fill.xml",
             "job bar", _("job bar"));

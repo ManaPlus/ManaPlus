@@ -26,10 +26,6 @@
 #include "item.h"
 #include "units.h"
 
-#include "enums/being/attributes.h"
-
-#include "enums/gui/progresscolorid.h"
-
 #include "being/playerinfo.h"
 
 #include "input/inputmanager.h"
@@ -94,8 +90,9 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
     mRetrieveButton(nullptr),
     mInvCloseButton(nullptr),
     mWeightBar(nullptr),
-    mSlotsBar(new ProgressBar(this, 0.0F, 100, 0, ProgressColorId::PROG_INVY_SLOTS,
-              "slotsprogressbar.xml", "slotsprogressbar_fill.xml")),
+    mSlotsBar(new ProgressBar(this, 0.0F, 100, 0,
+        ProgressColorId::PROG_INVY_SLOTS,
+        "slotsprogressbar.xml", "slotsprogressbar_fill.xml")),
     mFilter(nullptr),
     mSortModel(new SortListModelInv),
     mSortDropDown(new DropDown(this, mSortModel, false,

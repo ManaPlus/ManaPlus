@@ -1352,7 +1352,8 @@ void BeingHandler::processBeingMove2(Net::MessageIn &msg)
       * later versions of eAthena for both mobs and
       * players
       */
-    Being *const dstBeing = actorManager->findBeing(msg.readBeingId("being id"));
+    Being *const dstBeing = actorManager->findBeing(
+        msg.readBeingId("being id"));
 
     /*
       * This packet doesn't have enough info to actually
@@ -1387,7 +1388,8 @@ void BeingHandler::processBeingChangeDirection(Net::MessageIn &msg)
         return;
     }
 
-    Being *const dstBeing = actorManager->findBeing(msg.readBeingId("being id"));
+    Being *const dstBeing = actorManager->findBeing(
+        msg.readBeingId("being id"));
 
     if (!dstBeing)
     {
@@ -1525,7 +1527,8 @@ void BeingHandler::processPlayerGuilPartyInfo(Net::MessageIn &msg)
         return;
     }
 
-    Being *const dstBeing = actorManager->findBeing(msg.readBeingId("being id"));
+    Being *const dstBeing = actorManager->findBeing(
+        msg.readBeingId("being id"));
 
     if (dstBeing)
     {
@@ -1598,7 +1601,8 @@ void BeingHandler::processIpResponse(Net::MessageIn &msg)
         return;
     }
 
-    Being *const dstBeing = actorManager->findBeing(msg.readBeingId("being id"));
+    Being *const dstBeing = actorManager->findBeing(
+        msg.readBeingId("being id"));
     if (dstBeing)
         dstBeing->setIp(ipToString(msg.readInt32("ip address")));
     BLOCK_END("BeingHandler::processIpResponse")

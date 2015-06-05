@@ -27,8 +27,6 @@
 
 #include "gui/gui.h"
 
-#include "render/renderers.h"
-
 #include "resources/image.h"
 
 #include "utils/delete2.h"

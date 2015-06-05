@@ -23,7 +23,6 @@
 #include "client.h"
 
 #include "chatlogger.h"
-#include "configuration.h"
 #include "configmanager.h"
 #include "defaults.h"
 #include "dirs.h"
@@ -43,8 +42,6 @@
 
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
-
-#include "enums/gui/dialogtype.h"
 
 #include "input/inputmanager.h"
 #include "input/joystick.h"
@@ -137,6 +134,8 @@
 #ifdef USE_OPENGL
 #include "test/testlauncher.h"
 #include "test/testmain.h"
+#else
+#include "configuration.h"
 #endif
 
 #ifdef __APPLE__

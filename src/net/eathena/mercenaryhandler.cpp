@@ -23,7 +23,6 @@
 #include "actormanager.h"
 #include "notifymanager.h"
 
-#include "being/being.h"
 #include "being/localplayer.h"
 #include "being/mercenaryinfo.h"
 #include "being/playerinfo.h"
@@ -90,7 +89,8 @@ void MercenaryHandler::processMercenaryUpdate(Net::MessageIn &msg)
 void MercenaryHandler::processMercenaryInfo(Net::MessageIn &msg)
 {
     // +++ need create if need mercenary being and update stats
-    Being *const dstBeing = actorManager->findBeing(msg.readBeingId("being id"));
+    Being *const dstBeing = actorManager->findBeing(
+        msg.readBeingId("being id"));
     msg.readInt16("atk");
     msg.readInt16("matk");
     msg.readInt16("hit");

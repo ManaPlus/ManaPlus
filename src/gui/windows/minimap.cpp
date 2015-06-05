@@ -31,6 +31,7 @@
 
 #include "gui/popupmanager.h"
 #include "gui/viewport.h"
+#include "gui/userpalette.h"
 
 #include "gui/popups/popupmenu.h"
 #include "gui/popups/textpopup.h"

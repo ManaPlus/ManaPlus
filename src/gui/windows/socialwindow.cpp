@@ -21,8 +21,6 @@
 
 #include "gui/windows/socialwindow.h"
 
-#include "enums/gui/dialogtype.h"
-
 #include "gui/windows/okdialog.h"
 #include "gui/windows/setupwindow.h"
 

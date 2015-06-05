@@ -23,9 +23,6 @@
 #include "actormanager.h"
 #include "shopitem.h"
 
-#include "enums/being/attributes.h"
-
-#include "being/being.h"
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 

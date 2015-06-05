@@ -26,16 +26,10 @@
 #include "configuration.h"
 #include "units.h"
 
-#include "enums/being/attributes.h"
-
-#include "enums/input/inputaction.h"
-
 #include "listeners/charrenamelistener.h"
 #ifdef EATHENA_SUPPORT
 #include "listeners/pincodelistener.h"
 #endif
-
-#include "enums/gui/dialogtype.h"
 
 #include "gui/windows/charcreatedialog.h"
 #include "gui/windows/chardeleteconfirm.h"

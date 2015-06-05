@@ -25,8 +25,6 @@
 
 #include "actions/actionfuncptr.h"
 
-#include "enums/input/inputaction.h"
-
 #include "enums/simpletypes/useargs.h"
 
 struct InputActionData final

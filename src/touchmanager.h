@@ -192,4 +192,3 @@ class TouchManager final : public ConfigListener
 extern TouchManager touchManager;
 
 #endif  // TOUCHMANAGER_H
-

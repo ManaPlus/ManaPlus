@@ -26,10 +26,6 @@
 #include "configuration.h"
 #include "settings.h"
 
-#include "enums/being/attributes.h"
-
-#include "enums/gui/dialogtype.h"
-
 #include "gui/windows/charcreatedialog.h"
 #include "gui/windows/okdialog.h"
 

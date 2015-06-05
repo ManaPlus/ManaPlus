@@ -25,8 +25,6 @@
 #include "configuration.h"
 #include "graphicsvertexes.h"
 
-#include "enums/gui/progresscolorid.h"
-
 #include "being/localplayer.h"
 
 #include "gui/gui.h"
@@ -41,8 +39,6 @@
 #include "gui/models/avatarlistmodel.h"
 
 #include "gui/windows/chatwindow.h"
-
-#include "render/renderers.h"
 
 #include "resources/image.h"
 #include "resources/mapitemtype.h"
@@ -180,7 +176,8 @@ void AvatarListBox::draw(Graphics *graphics)
             if (a->getMaxHp())
             {
                 const ProgressColorIdT themeColor = (isPoison
-                    ? ProgressColorId::PROG_HP_POISON : ProgressColorId::PROG_HP);
+                    ? ProgressColorId::PROG_HP_POISON
+                    : ProgressColorId::PROG_HP);
                 Color color = Theme::getProgressColor(
                     themeColor, static_cast<float>(a->getHp())
                     / static_cast<float>(a->getMaxHp()));
@@ -417,7 +414,8 @@ void AvatarListBox::safeDraw(Graphics *graphics)
             if (a->getMaxHp())
             {
                 const ProgressColorIdT themeColor = (isPoison
-                    ? ProgressColorId::PROG_HP_POISON : ProgressColorId::PROG_HP);
+                    ? ProgressColorId::PROG_HP_POISON
+                    : ProgressColorId::PROG_HP);
                 Color color = Theme::getProgressColor(
                     themeColor, static_cast<float>(a->getHp())
                     / static_cast<float>(a->getMaxHp()));

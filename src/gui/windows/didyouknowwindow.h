@@ -23,8 +23,6 @@
 #ifndef GUI_WINDOWS_DIDYOUKNOWWINDOW_H
 #define GUI_WINDOWS_DIDYOUKNOWWINDOW_H
 
-#include "enums/simpletypes/visible.h"
-
 #include "gui/widgets/linkhandler.h"
 #include "gui/widgets/window.h"
 

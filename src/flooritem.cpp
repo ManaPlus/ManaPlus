@@ -24,8 +24,6 @@
 
 #include "configuration.h"
 
-#include "enums/gui/usercolorid.h"
-
 #include "render/graphics.h"
 
 #include "gui/gui.h"

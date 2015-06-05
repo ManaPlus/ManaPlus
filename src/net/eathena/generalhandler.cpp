@@ -24,16 +24,10 @@
 
 #include "client.h"
 #include "configuration.h"
-#include "logger.h"
 
-#include "enums/being/attributes.h"
-
-#include "gui/windows/inventorywindow.h"
 #include "gui/windows/skilldialog.h"
 #include "gui/windows/socialwindow.h"
 #include "gui/windows/statuswindow.h"
-
-#include "net/ea/guildhandler.h"
 
 #include "gui/widgets/tabs/chat/guildtab.h"
 #include "gui/widgets/tabs/chat/partytab.h"
@@ -41,7 +35,6 @@
 #include "net/eathena/adminhandler.h"
 #include "net/eathena/auctionhandler.h"
 #include "net/eathena/bankhandler.h"
-#include "net/eathena/battlegroundhandler.h"
 #include "net/eathena/beinghandler.h"
 #include "net/eathena/buyingstorehandler.h"
 #include "net/eathena/buysellhandler.h"
@@ -58,7 +51,6 @@
 #include "net/eathena/itemhandler.h"
 #include "net/eathena/loginhandler.h"
 #include "net/eathena/mailhandler.h"
-#include "net/eathena/maphandler.h"
 #include "net/eathena/markethandler.h"
 #include "net/eathena/mercenaryhandler.h"
 #include "net/eathena/network.h"

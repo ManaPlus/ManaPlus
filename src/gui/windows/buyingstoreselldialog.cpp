@@ -26,7 +26,6 @@
 #include "inventory.h"
 #include "shopitem.h"
 
-#include "being/being.h"
 #include "being/playerinfo.h"
 
 #include "gui/models/shopitems.h"

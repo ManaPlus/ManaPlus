@@ -24,6 +24,8 @@
 #ifndef GUI_USERPALETTE_H
 #define GUI_USERPALETTE_H
 
+#include "logger.h"
+
 #include "enums/gui/usercolorid.h"
 
 #include "gui/palette.h"

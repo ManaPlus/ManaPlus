@@ -22,8 +22,6 @@
 
 #include "gui/windows/shopwindow.h"
 
-#include "enums/being/attributes.h"
-
 #ifdef TMWA_SUPPORT
 #include "gui/windows/buydialog.h"
 #include "gui/windows/chatwindow.h"
@@ -89,6 +87,8 @@
 #endif
 
 #include <sys/stat.h>
+
+#include <sstream>
 
 #include "debug.h"
 

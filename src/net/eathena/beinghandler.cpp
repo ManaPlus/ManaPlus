@@ -1232,7 +1232,8 @@ void BeingHandler::processBeingMove2(Net::MessageIn &msg)
       * later versions of eAthena for both mobs and
       * players
       */
-    Being *const dstBeing = actorManager->findBeing(msg.readBeingId("being id"));
+    Being *const dstBeing = actorManager->findBeing(
+        msg.readBeingId("being id"));
 
     uint16_t srcX, srcY, dstX, dstY;
     msg.readCoordinatePair(srcX, srcY, dstX, dstY, "move path");
@@ -1347,6 +1348,8 @@ void BeingHandler::processBeingAction2(Net::MessageIn &msg)
             }
             break;
         default:
+        case AttackType::MISS:
+        case AttackType::SKILLMISS:
             UNIMPLIMENTEDPACKET;
             break;
     }
@@ -1440,7 +1443,8 @@ void BeingHandler::processBeingChangeDirection(Net::MessageIn &msg)
         return;
     }
 
-    Being *const dstBeing = actorManager->findBeing(msg.readBeingId("being id"));
+    Being *const dstBeing = actorManager->findBeing(
+        msg.readBeingId("being id"));
 
     msg.readInt16("head direction");
 
@@ -1666,7 +1670,8 @@ void BeingHandler::processPlayerGuilPartyInfo(Net::MessageIn &msg)
         return;
     }
 
-    Being *const dstBeing = actorManager->findBeing(msg.readBeingId("being id"));
+    Being *const dstBeing = actorManager->findBeing(
+        msg.readBeingId("being id"));
 
     if (dstBeing)
     {

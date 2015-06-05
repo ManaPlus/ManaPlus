@@ -27,8 +27,6 @@
 #include "soundconsts.h"
 #include "soundmanager.h"
 
-#include "enums/input/inputaction.h"
-
 #include "gui/dialogsmanager.h"
 #include "gui/viewport.h"
 

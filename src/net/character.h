@@ -28,9 +28,6 @@
 
 #include "utils/delete2.h"
 
-#include <string>
-#include <vector>
-
 #include "localconsts.h"
 
 namespace Net

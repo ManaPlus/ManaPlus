@@ -24,8 +24,6 @@
 #include "graphicsvertexes.h"
 #include "touchactions.h"
 
-#include "enums/gui/themecolorid.h"
-
 #include "input/mouseinput.h"
 
 #include "gui/gui.h"
@@ -34,8 +32,6 @@
 #include "gui/fonts/font.h"
 
 #include "input/inputmanager.h"
-
-#include "render/renderers.h"
 
 #include "gui/theme.h"
 

@@ -34,8 +34,6 @@
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
-#include "enums/being/attributes.h"
-
 #include "utils/gettext.h"
 
 #ifdef WIN32

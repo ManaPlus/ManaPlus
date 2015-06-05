@@ -24,8 +24,6 @@
 
 #include "being/playerinfo.h"
 
-#include "enums/being/attributes.h"
-
 #include "gui/windows/buydialog.h"
 
 #include "net/eathena/messageout.h"
@@ -127,7 +125,7 @@ void MarketHandler::buyItem(const int itemId,
         cnt = 100;
 
     createOutPacket(CMSG_NPC_MARKET_BUY);
-    outMsg.writeInt16(4 + 6 * cnt, "len");
+    outMsg.writeInt16(static_cast<int16_t>(4 + 6 * cnt), "len");
     for (int f = 0; f < cnt; f ++)
     {
         outMsg.writeInt16(static_cast<int16_t>(itemId), "item id");

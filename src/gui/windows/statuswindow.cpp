@@ -28,10 +28,6 @@
 #include "settings.h"
 #include "units.h"
 
-#include "enums/being/attributes.h"
-
-#include "enums/gui/progresscolorid.h"
-
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
@@ -112,17 +108,24 @@ StatusWindow::StatusWindow() :
     if (!max)
         max = 1;
 
-    mHpBar = new ProgressBar(this, static_cast<float>(PlayerInfo::getAttribute(
-        Attributes::HP)) / static_cast<float>(max), 80, 0, ProgressColorId::PROG_HP,
+    mHpBar = new ProgressBar(this,
+        static_cast<float>(PlayerInfo::getAttribute(Attributes::HP))
+        / static_cast<float>(max),
+        80,
+        0,
+        ProgressColorId::PROG_HP,
         "hpprogressbar.xml", "hpprogressbar_fill.xml");
     mHpBar->setColor(getThemeColor(ThemeColorId::HP_BAR),
         getThemeColor(ThemeColorId::HP_BAR_OUTLINE));
 
     max = PlayerInfo::getAttribute(Attributes::EXP_NEEDED);
-    mXpBar = new ProgressBar(this, max ?
-            static_cast<float>(PlayerInfo::getAttribute(Attributes::EXP))
-            / static_cast<float>(max) : static_cast<float>(0), 80, 0,
-            ProgressColorId::PROG_EXP, "xpprogressbar.xml", "xpprogressbar_fill.xml");
+    mXpBar = new ProgressBar(this,
+        max ? static_cast<float>(PlayerInfo::getAttribute(Attributes::EXP))
+        / static_cast<float>(max) : static_cast<float>(0),
+        80,
+        0,
+        ProgressColorId::PROG_EXP,
+        "xpprogressbar.xml", "xpprogressbar_fill.xml");
     mXpBar->setColor(getThemeColor(ThemeColorId::XP_BAR),
         getThemeColor(ThemeColorId::XP_BAR_OUTLINE));
 
@@ -135,10 +138,13 @@ StatusWindow::StatusWindow() :
         // TRANSLATORS: status window label
         mMpLabel = new Label(this, _("MP:"));
         const bool useMagic = playerHandler->canUseMagic();
-        mMpBar = new ProgressBar(this, max ? static_cast<float>(
-            PlayerInfo::getAttribute(Attributes::MAX_MP))
-            / static_cast<float>(max) : static_cast<float>(0),
-            80, 0, useMagic ? ProgressColorId::PROG_MP : ProgressColorId::PROG_NO_MP,
+        mMpBar = new ProgressBar(this,
+            max ? static_cast<float>(PlayerInfo::getAttribute(
+            Attributes::MAX_MP)) / static_cast<float>(max)
+            : static_cast<float>(0),
+            80,
+            0,
+            useMagic ? ProgressColorId::PROG_MP : ProgressColorId::PROG_NO_MP,
             useMagic ? "mpprogressbar.xml" : "nompprogressbar.xml",
             useMagic ? "mpprogressbar_fill.xml" : "nompprogressbar_fill.xml");
         if (useMagic)

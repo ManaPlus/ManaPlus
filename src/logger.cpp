@@ -38,6 +38,8 @@
 
 #include <sys/time.h>
 
+#include <sstream>
+
 #if defined(__ANDROID__) && defined(ANDROID_LOG)
 #include <android/log.h>
 #define LOG_ANDROID(x) __android_log_print(ANDROID_LOG_INFO, "manaplus", x);

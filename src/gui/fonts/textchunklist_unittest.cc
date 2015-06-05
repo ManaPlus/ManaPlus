@@ -96,7 +96,7 @@ TEST_CASE("TextChunkList addRemoveBack 1", "TextChunkList")
 {
     TextChunkList list;
 
-    TextChunk *chunk = new TextChunk("test",
+    TextChunk *const chunk = new TextChunk("test",
         Color(1, 2, 3), Color(1, 2, 3), nullptr);
 
     list.insertFirst(chunk);
@@ -113,9 +113,9 @@ TEST_CASE("TextChunkList addRemoveBack 2", "TextChunkList")
 {
     TextChunkList list;
 
-    TextChunk *chunk1 = new TextChunk("test",
+    TextChunk *const chunk1 = new TextChunk("test",
         Color(1, 2, 3), Color(1, 2, 3), nullptr);
-    TextChunk *chunk2 = new TextChunk("test2",
+    TextChunk *const chunk2 = new TextChunk("test2",
         Color(1, 2, 4), Color(1, 2, 5), nullptr);
 
     list.insertFirst(chunk2);
@@ -140,9 +140,9 @@ TEST_CASE("TextChunkList addRemoveBack 3", "TextChunkList")
 {
     TextChunkList list;
 
-    TextChunk *chunk1 = new TextChunk("test",
+    TextChunk *const chunk1 = new TextChunk("test",
         Color(1, 2, 3), Color(1, 2, 3), nullptr);
-    TextChunk *chunk2 = new TextChunk("test2",
+    TextChunk *const chunk2 = new TextChunk("test2",
         Color(2, 3, 4), Color(2, 3, 4), nullptr);
 
     list.insertFirst(chunk2);
@@ -161,11 +161,11 @@ TEST_CASE("TextChunkList addRemoveBack 4", "TextChunkList")
 {
     TextChunkList list;
 
-    TextChunk *chunk1 = new TextChunk("test",
+    TextChunk *const chunk1 = new TextChunk("test",
         Color(1, 2, 3), Color(1, 2, 3), nullptr);
-    TextChunk *chunk2 = new TextChunk("test2",
+    TextChunk *const chunk2 = new TextChunk("test2",
         Color(2, 3, 4), Color(2, 3, 4), nullptr);
-    TextChunk *chunk3 = new TextChunk("test",
+    TextChunk *const chunk3 = new TextChunk("test",
         Color(3, 4, 5), Color(3, 4, 5), nullptr);
 
     list.insertFirst(chunk3);
@@ -191,7 +191,7 @@ TEST_CASE("TextChunkList moveToFirst 1", "TextChunkList")
 {
     TextChunkList list;
 
-    TextChunk *chunk = new TextChunk("test",
+    TextChunk *const chunk = new TextChunk("test",
         Color(1, 2, 3), Color(2, 3, 4), nullptr);
 
     list.insertFirst(chunk);
@@ -208,9 +208,9 @@ TEST_CASE("TextChunkList moveToFirst 2", "TextChunkList")
 {
     TextChunkList list;
 
-    TextChunk *chunk1 = new TextChunk("test",
+    TextChunk *const chunk1 = new TextChunk("test",
         Color(1, 2, 3), Color(1, 2, 3), nullptr);
-    TextChunk *chunk2 = new TextChunk("test",
+    TextChunk *const chunk2 = new TextChunk("test",
         Color(2, 3, 4), Color(1, 2, 3), nullptr);
 
     list.insertFirst(chunk1);
@@ -230,11 +230,11 @@ TEST_CASE("TextChunkList moveToFirst 3", "TextChunkList")
 {
     TextChunkList list;
 
-    TextChunk *chunk1 = new TextChunk("test",
+    TextChunk *const chunk1 = new TextChunk("test",
         Color(1, 2, 3), Color(1, 2, 3), nullptr);
-    TextChunk *chunk2 = new TextChunk("test",
+    TextChunk *const chunk2 = new TextChunk("test",
         Color(1, 2, 4), Color(1, 2, 3), nullptr);
-    TextChunk *chunk3 = new TextChunk("test",
+    TextChunk *const chunk3 = new TextChunk("test",
         Color(1, 2, 5), Color(1, 2, 3), nullptr);
 
     list.insertFirst(chunk3);
@@ -257,11 +257,11 @@ TEST_CASE("TextChunkList moveToFirst 4", "TextChunkList")
 {
     TextChunkList list;
 
-    TextChunk *chunk1 = new TextChunk("test",
+    TextChunk *const chunk1 = new TextChunk("test",
         Color(), Color(), nullptr);
-    TextChunk *chunk2 = new TextChunk("test2",
+    TextChunk *const chunk2 = new TextChunk("test2",
         Color(), Color(), nullptr);
-    TextChunk *chunk3 = new TextChunk("test3",
+    TextChunk *const chunk3 = new TextChunk("test3",
         Color(), Color(), nullptr);
 
     list.insertFirst(chunk1);
@@ -283,9 +283,9 @@ TEST_CASE("TextChunkList moveToFirst 4", "TextChunkList")
 TEST_CASE("TextChunkList clear 1", "TextChunkList")
 {
     TextChunkList list;
-    int chunksLeft = textChunkCnt;
+    const int chunksLeft = textChunkCnt;
 
-    TextChunk *chunk = new TextChunk("test",
+    TextChunk *const chunk = new TextChunk("test",
         Color(), Color(), nullptr);
 
     list.insertFirst(chunk);
@@ -302,13 +302,13 @@ TEST_CASE("TextChunkList clear 1", "TextChunkList")
 TEST_CASE("TextChunkList clear 2", "TextChunkList")
 {
     TextChunkList list;
-    int chunksLeft = textChunkCnt;
+    const int chunksLeft = textChunkCnt;
 
-    TextChunk *chunk1 = new TextChunk("test",
+    TextChunk *const chunk1 = new TextChunk("test",
         Color(1, 2, 3), Color(2, 0, 0), nullptr);
-    TextChunk *chunk2 = new TextChunk("test",
+    TextChunk *const chunk2 = new TextChunk("test",
         Color(1, 2, 3), Color(2, 0, 1), nullptr);
-    TextChunk *chunk3 = new TextChunk("test",
+    TextChunk *const chunk3 = new TextChunk("test",
         Color(1, 2, 3), Color(2, 0, 2), nullptr);
 
     list.insertFirst(chunk1);
@@ -327,13 +327,13 @@ TEST_CASE("TextChunkList clear 2", "TextChunkList")
 TEST_CASE("TextChunkList clear 3", "TextChunkList")
 {
     TextChunkList list;
-    int chunksLeft = textChunkCnt;
+    const int chunksLeft = textChunkCnt;
 
-    TextChunk *chunk1 = new TextChunk("test",
+    TextChunk *const chunk1 = new TextChunk("test",
         Color(1, 2, 3), Color(2, 0, 0), nullptr);
-    TextChunk *chunk2 = new TextChunk("test",
+    TextChunk *const chunk2 = new TextChunk("test",
         Color(1, 2, 3), Color(2, 0, 1), nullptr);
-    TextChunk *chunk3 = new TextChunk("test",
+    TextChunk *const chunk3 = new TextChunk("test",
         Color(1, 2, 3), Color(2, 0, 2), nullptr);
 
     list.insertFirst(chunk1);
@@ -358,13 +358,13 @@ TEST_CASE("TextChunkList clear 3", "TextChunkList")
 TEST_CASE("TextChunkList clear 4", "TextChunkList")
 {
     TextChunkList list;
-    int chunksLeft = textChunkCnt;
+    const int chunksLeft = textChunkCnt;
 
-    TextChunk *chunk1 = new TextChunk("test",
+    TextChunk *const chunk1 = new TextChunk("test",
         Color(1, 2, 3), Color(2, 0, 0), nullptr);
-    TextChunk *chunk2 = new TextChunk("test",
+    TextChunk *const chunk2 = new TextChunk("test",
         Color(1, 2, 3), Color(2, 0, 1), nullptr);
-    TextChunk *chunk3 = new TextChunk("test3",
+    TextChunk *const chunk3 = new TextChunk("test3",
         Color(1, 2, 3), Color(2, 0, 2), nullptr);
 
     list.insertFirst(chunk1);
@@ -389,9 +389,9 @@ TEST_CASE("TextChunkList clear 4", "TextChunkList")
 TEST_CASE("TextChunkList remove 1", "TextChunkList")
 {
     TextChunkList list;
-    int chunksLeft = textChunkCnt;
+    const int chunksLeft = textChunkCnt;
 
-    TextChunk *chunk = new TextChunk("test",
+    TextChunk *const chunk = new TextChunk("test",
         Color(), Color(), nullptr);
 
     list.insertFirst(chunk);
@@ -409,13 +409,13 @@ TEST_CASE("TextChunkList remove 1", "TextChunkList")
 TEST_CASE("TextChunkList remove 2", "TextChunkList")
 {
     TextChunkList list;
-    int chunksLeft = textChunkCnt;
+    const int chunksLeft = textChunkCnt;
 
-    TextChunk *chunk1 = new TextChunk("test1",
+    TextChunk *const chunk1 = new TextChunk("test1",
         Color(1, 2, 3), Color(2, 0, 0), nullptr);
-    TextChunk *chunk2 = new TextChunk("test2",
+    TextChunk *const chunk2 = new TextChunk("test2",
         Color(1, 2, 3), Color(2, 0, 1), nullptr);
-    TextChunk *chunk3 = new TextChunk("test3",
+    TextChunk *const chunk3 = new TextChunk("test3",
         Color(1, 2, 3), Color(2, 0, 2), nullptr);
 
     list.insertFirst(chunk1);
@@ -435,13 +435,13 @@ TEST_CASE("TextChunkList remove 2", "TextChunkList")
 TEST_CASE("TextChunkList remove 3", "TextChunkList")
 {
     TextChunkList list;
-    int chunksLeft = textChunkCnt;
+    const int chunksLeft = textChunkCnt;
 
-    TextChunk *chunk1 = new TextChunk("test1",
+    TextChunk *const chunk1 = new TextChunk("test1",
         Color(1, 2, 3), Color(2, 0, 0), nullptr);
-    TextChunk *chunk2 = new TextChunk("test2",
+    TextChunk *const chunk2 = new TextChunk("test2",
         Color(1, 2, 3), Color(2, 0, 1), nullptr);
-    TextChunk *chunk3 = new TextChunk("test3",
+    TextChunk *const chunk3 = new TextChunk("test3",
         Color(1, 2, 3), Color(2, 0, 2), nullptr);
 
     list.insertFirst(chunk1);

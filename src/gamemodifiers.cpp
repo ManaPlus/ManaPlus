@@ -27,8 +27,6 @@
 
 #include "being/localplayer.h"
 
-#include "enums/gui/dialogtype.h"
-
 #include "gui/viewport.h"
 
 #include "gui/windows/chatwindow.h"

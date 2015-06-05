@@ -57,7 +57,8 @@ class SocialPartyTab final : public SocialTab,
                 ThemeColorId::PARTY_SOCIAL_TAB_HIGHLIGHTED_OUTLINE));
             setSelectedTabColor(&getThemeColor(
                 ThemeColorId::PARTY_SOCIAL_TAB_SELECTED),
-                &getThemeColor(ThemeColorId::PARTY_SOCIAL_TAB_SELECTED_OUTLINE));
+                &getThemeColor(
+                ThemeColorId::PARTY_SOCIAL_TAB_SELECTED_OUTLINE));
 
             createControls(party, showBackground);
         }

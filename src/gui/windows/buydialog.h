@@ -24,7 +24,6 @@
 #define GUI_WINDOWS_BUYDIALOG_H
 
 #include "enums/simpletypes/beingid.h"
-#include "enums/simpletypes/visible.h"
 
 #include "gui/widgets/window.h"
 

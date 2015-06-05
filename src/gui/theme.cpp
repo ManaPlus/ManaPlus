@@ -27,9 +27,6 @@
 #include "configuration.h"
 #include "graphicsmanager.h"
 
-#include "enums/gui/progresscolorid.h"
-#include "enums/gui/themecolorid.h"
-
 #include "gui/skin.h"
 #include "gui/themeinfo.h"
 

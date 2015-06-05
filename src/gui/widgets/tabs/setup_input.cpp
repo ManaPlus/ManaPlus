@@ -25,8 +25,6 @@
 
 #include "configuration.h"
 
-#include "enums/gui/dialogtype.h"
-
 #include "input/inputactionoperators.h"
 #include "input/inputmanager.h"
 #include "input/keyboardconfig.h"

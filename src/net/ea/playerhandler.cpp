@@ -33,8 +33,6 @@
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
-#include "enums/being/attributes.h"
-
 #include "gui/onlineplayer.h"
 #include "gui/viewport.h"
 

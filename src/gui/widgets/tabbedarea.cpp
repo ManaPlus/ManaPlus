@@ -65,8 +65,6 @@
 
 #include "gui/widgets/tabbedarea.h"
 
-#include "enums/input/inputaction.h"
-
 #include "gui/gui.h"
 
 #include "gui/widgets/button.h"

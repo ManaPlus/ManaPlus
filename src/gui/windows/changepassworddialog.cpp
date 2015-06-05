@@ -24,8 +24,6 @@
 
 #include "client.h"
 
-#include "enums/gui/dialogtype.h"
-
 #include "gui/windows/okdialog.h"
 
 #include "gui/widgets/button.h"
@@ -40,6 +38,8 @@
 
 #include "utils/delete2.h"
 #include "utils/gettext.h"
+
+#include <sstream>
 
 #include "debug.h"
 

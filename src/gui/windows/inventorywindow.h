@@ -25,8 +25,6 @@
 
 #include "inventory.h"
 
-#include "enums/simpletypes/visible.h"
-
 #include "gui/widgets/window.h"
 
 #include "listeners/actionlistener.h"

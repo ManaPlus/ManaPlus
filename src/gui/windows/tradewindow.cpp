@@ -30,8 +30,6 @@
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
 
-#include "enums/being/attributes.h"
-
 #include "gui/gui.h"
 
 #include "gui/fonts/font.h"

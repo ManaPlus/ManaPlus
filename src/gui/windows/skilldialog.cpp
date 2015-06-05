@@ -30,8 +30,6 @@
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
-#include "enums/being/attributes.h"
-
 #include "gui/windows/setupwindow.h"
 #include "gui/windows/shortcutwindow.h"
 

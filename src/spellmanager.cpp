@@ -27,8 +27,6 @@
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
-#include "enums/being/attributes.h"
-
 #include "gui/windows/chatwindow.h"
 
 #include "net/playerhandler.h"
@@ -36,6 +34,8 @@
 #include "resources/db/commandsdb.h"
 
 #include "utils/dtor.h"
+
+#include <sstream>
 
 #include "debug.h"
 

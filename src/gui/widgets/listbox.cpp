@@ -67,8 +67,6 @@
 
 #include "settings.h"
 
-#include "enums/input/inputaction.h"
-
 #include "listeners/selectionlistener.h"
 
 #include "gui/focushandler.h"
@@ -95,7 +93,8 @@ ListBox::ListBox(const Widget2 *const widget,
     mSelectionListeners(),
     mHighlightColor(getThemeColor(ThemeColorId::HIGHLIGHT)),
     mForegroundSelectedColor(getThemeColor(ThemeColorId::LISTBOX_SELECTED)),
-    mForegroundSelectedColor2(getThemeColor(ThemeColorId::LISTBOX_SELECTED_OUTLINE)),
+    mForegroundSelectedColor2(getThemeColor(
+        ThemeColorId::LISTBOX_SELECTED_OUTLINE)),
     mOldSelected(-1),
     mPadding(0),
     mPressedIndex(-2),

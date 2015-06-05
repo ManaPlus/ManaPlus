@@ -52,6 +52,7 @@
 #endif
 
 #include <SDL_image.h>
+#include <sstream>
 
 #include <sys/time.h>
 

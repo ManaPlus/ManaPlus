@@ -25,7 +25,6 @@
 
 #include "utils/stringvector.h"
 
-#include <sstream>
 #include <list>
 #include <set>
 
@@ -80,9 +79,9 @@ std::string toString(int num);
 
 std::string toString(uint16_t num);
 
-std::string toString(float num);
+std::string toString(const float num);
 
-std::string toString(double num);
+std::string toString(const double num);
 
 std::string toStringPrint(const unsigned int val);
 

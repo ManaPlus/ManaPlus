@@ -42,6 +42,7 @@
 
 #include "gui/gui.h"
 #include "gui/popupmanager.h"
+#include "gui/userpalette.h"
 
 #include "gui/fonts/font.h"
 

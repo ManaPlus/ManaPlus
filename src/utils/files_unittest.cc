@@ -34,7 +34,7 @@ TEST_CASE("Files renameFile", "files")
     PHYSFS_init("manaplus");
     dirSeparator = "/";
     logger = new Logger();
-    ResourceManager *resman = ResourceManager::getInstance();
+    const ResourceManager *const resman = ResourceManager::getInstance();
     resman->addToSearchPath("data", false);
     resman->addToSearchPath("../data", false);
 

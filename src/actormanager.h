@@ -27,7 +27,6 @@
 
 #include "enums/simpletypes/allowsort.h"
 #include "enums/simpletypes/allplayers.h"
-#include "enums/simpletypes/beingid.h"
 #include "enums/simpletypes/beingtypeid.h"
 #include "enums/simpletypes/npcnames.h"
 

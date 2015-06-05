@@ -45,10 +45,10 @@ class SpeechBubble final : public Popup
          * Sets the name displayed for the speech bubble, and in what color.
          */
         void setCaption(const std::string &name,
-                        const Color *const color1 =
-                        &theme->getColor(ThemeColorId::BUBBLE_NAME, 255),
-                        const Color *const color2 =
-                        &theme->getColor(ThemeColorId::BUBBLE_NAME_OUTLINE, 255));
+                        const Color *const color1 = &theme->getColor(
+                        ThemeColorId::BUBBLE_NAME, 255),
+                        const Color *const color2 = &theme->getColor(
+                        ThemeColorId::BUBBLE_NAME_OUTLINE, 255));
 
         /**
          * Sets the text to be displayed.

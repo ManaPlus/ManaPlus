@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_MAP_MAPTYPE_H
-#define RESOURCES_MAP_MAPTYPE_H
+#ifndef ENUMS_RESOURCES_MAP_MAPTYPE_H
+#define ENUMS_RESOURCES_MAP_MAPTYPE_H
 
 #include "enums/simpletypes/enumdefines.h"
 
@@ -37,4 +37,4 @@ enumStart(MapType)
 }
 enumEnd(MapType);
 
-#endif  // RESOURCES_MAP_MAPTYPE_H
+#endif  // ENUMS_RESOURCES_MAP_MAPTYPE_H

@@ -41,10 +41,6 @@
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
 
-#include "utils/stringutils.h"
-
-#include <string>
-
 #include "debug.h"
 
 extern Net::ChatHandler *chatHandler;

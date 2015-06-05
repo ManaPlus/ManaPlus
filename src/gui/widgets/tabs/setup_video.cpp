@@ -24,8 +24,6 @@
 
 #include "configuration.h"
 
-#include "enums/gui/dialogtype.h"
-
 #include "gui/windowmanager.h"
 
 #include "gui/windows/okdialog.h"
@@ -41,8 +39,6 @@
 #include "gui/widgets/slider.h"
 #include "gui/widgets/dropdown.h"
 
-#include "render/renderers.h"
-
 #include "utils/delete2.h"
 
 #if defined(USE_OPENGL) && !defined(ANDROID) && !defined(__APPLE__)
@@ -53,6 +49,10 @@
 
 #include "gui/models/modelistmodel.h"
 #include "gui/models/opengllistmodel.h"
+
+#include "render/renderers.h"
+
+#include <sstream>
 
 #include "debug.h"
 

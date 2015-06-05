@@ -72,7 +72,9 @@
 
 #include "input/key.h"
 
+#ifdef USE_SDL2
 #include <string>
+#endif
 
 class Widget;
 

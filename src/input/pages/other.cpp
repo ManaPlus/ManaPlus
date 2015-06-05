@@ -23,8 +23,6 @@
 
 #include "gui/setupactiondata.h"
 
-#include "enums/input/inputaction.h"
-
 #include "utils/gettext.h"
 
 #include "debug.h"

@@ -25,8 +25,6 @@
 #include "client.h"
 #include "configuration.h"
 
-#include "enums/input/inputaction.h"
-
 #include "listeners/openurllistener.h"
 
 #include "gui/models/updatelistmodel.h"

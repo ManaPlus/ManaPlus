@@ -359,6 +359,8 @@ static const char *cursorType(const TargetCursorTypeT type)
         case TargetCursorType::IN_RANGE:
             return "in-range";
         default:
+        case TargetCursorType::NONE:
+        case TargetCursorType::NUM_TCT:
         case TargetCursorType::NORMAL:
             return "normal";
     }
@@ -373,6 +375,7 @@ static const char *cursorSize(const TargetCursorSizeT size)
         case TargetCursorSize::MEDIUM:
             return "m";
         default:
+        case TargetCursorSize::NUM_TC:
         case TargetCursorSize::SMALL:
             return "s";
     }

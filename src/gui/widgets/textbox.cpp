@@ -65,8 +65,6 @@
 
 #include "gui/widgets/textbox.h"
 
-#include "enums/input/inputaction.h"
-
 #include "gui/gui.h"
 
 #include "gui/fonts/font.h"

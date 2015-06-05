@@ -24,6 +24,7 @@
 
 #include "actormanager.h"
 #include "configuration.h"
+#include "logger.h"
 
 #include "being/localplayer.h"
 #include "being/playerignorestrategy.h"

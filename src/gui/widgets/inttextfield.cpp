@@ -26,9 +26,10 @@
 #include "gui/sdlinput.h"
 #endif
 
-#include "enums/input/inputaction.h"
-
 #include "utils/stringutils.h"
+
+#include <sstream>
+
 #include "debug.h"
 
 IntTextField::IntTextField(const Widget2 *const widget,

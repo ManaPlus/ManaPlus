@@ -21,20 +21,16 @@
 #include "net/eathena/pethandler.h"
 
 #include "actormanager.h"
-#include "inventory.h"
 #include "notifymanager.h"
 
 #include "being/localplayer.h"
 #include "being/petinfo.h"
 #include "being/playerinfo.h"
 
-#include "gui/chatconsts.h"
-
 #include "gui/windows/eggselectiondialog.h"
 
 #include "gui/widgets/tabs/chat/chattab.h"
 
-#include "net/chathandler.h"
 #include "net/inventoryhandler.h"
 #include "net/serverfeatures.h"
 

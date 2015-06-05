@@ -512,8 +512,8 @@ void GuildHandler::changeEmblem(std::string emblem) const
     createOutPacket(CMSG_GUILD_CHANGE_EMBLEM);
     if (emblem.size() > 200)
         emblem = emblem.substr(0, 200);
-    const int sz = emblem.size();
-    outMsg.writeInt16(sz + 4, "len");
+    const int sz = static_cast<int>(emblem.size());
+    outMsg.writeInt16(static_cast<int16_t>(sz + 4), "len");
     outMsg.writeString(emblem, sz, "emblem");
 }
 

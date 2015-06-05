@@ -25,8 +25,6 @@
 
 #include "enums/input/inputaction.h"
 
-#include "enums/simpletypes/visible.h"
-
 #include "gui/widgets/container.h"
 
 #include "listeners/actionlistener.h"

@@ -21,10 +21,6 @@
 
 #include "gui/windows/editserverdialog.h"
 
-#include "enums/gui/dialogtype.h"
-
-#include "enums/input/inputaction.h"
-
 #include "gui/models/typelistmodel.h"
 
 #include "gui/windows/okdialog.h"

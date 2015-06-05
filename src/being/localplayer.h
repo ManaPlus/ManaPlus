@@ -27,11 +27,7 @@
 
 #include "enums/being/pickup.h"
 
-#include "enums/gui/usercolorid.h"
-
 #include "enums/simpletypes/keep.h"
-
-#include "gui/userpalette.h"
 
 #include "listeners/actorspritelistener.h"
 #include "listeners/attributelistener.h"

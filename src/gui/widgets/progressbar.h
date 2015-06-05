@@ -23,8 +23,6 @@
 #ifndef GUI_WIDGETS_PROGRESSBAR_H
 #define GUI_WIDGETS_PROGRESSBAR_H
 
-#include "enums/gui/progresscolorid.h"
-
 #include "gui/widgets/widget.h"
 
 #include "listeners/widgetlistener.h"

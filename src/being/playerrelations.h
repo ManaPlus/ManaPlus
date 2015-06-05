@@ -23,8 +23,6 @@
 #ifndef BEING_PLAYERRELATIONS_H
 #define BEING_PLAYERRELATIONS_H
 
-#include "enums/being/relation.h"
-
 #include "utils/stringvector.h"
 
 #include "being/playerrelation.h"

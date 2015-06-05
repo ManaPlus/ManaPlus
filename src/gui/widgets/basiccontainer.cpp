@@ -63,8 +63,6 @@
 
 #include "gui/widgets/basiccontainer.h"
 
-#include "render/renderers.h"
-
 #include <algorithm>
 
 #include "debug.h"

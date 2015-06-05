@@ -23,6 +23,7 @@
 #include "utils/stringutils.h"
 
 #include <algorithm>
+#include <sstream>
 
 #ifdef WIN32
 #include <sys/time.h>
@@ -716,7 +717,7 @@ std::string toString(unsigned int num)
     size_t idx = 28;
     do
         buf[idx--] = static_cast<char>((num % 10) + '0');
-    while(num /= 10);
+    while (num /= 10);
     return buf + idx + 1;
 }
 
@@ -727,7 +728,7 @@ std::string toString(unsigned long num)
     size_t idx = 98;
     do
         buf[idx--] = static_cast<char>((num % 10) + '0');
-    while(num /= 10);
+    while (num /= 10);
     return buf + idx + 1;
 }
 
@@ -738,7 +739,7 @@ std::string toString(uint16_t num)
     size_t idx = 8;
     do
         buf[idx--] = static_cast<char>((num % 10) + '0');
-    while(num /= 10);
+    while (num /= 10);
     return buf + idx + 1;
 }
 
@@ -749,7 +750,7 @@ std::string toString(unsigned char num)
     size_t idx = 3;
     do
         buf[idx--] = static_cast<char>((num % 10) + '0');
-    while(num /= 10);
+    while (num /= 10);
     return buf + idx + 1;
 }
 
@@ -767,18 +768,18 @@ std::string toString(int num)
     }
     do
         buf[idx--] = static_cast<char>((num % 10) + '0');
-    while(num /= 10);
+    while (num /= 10);
     if (useSign)
         buf[idx--] = '-';
     return buf + idx + 1;
 }
 
-std::string toString(float num)
+std::string toString(const float num)
 {
     return strprintf("%f", num);
 }
 
-std::string toString(double num)
+std::string toString(const double num)
 {
     return strprintf("%f", static_cast<float>(num));
 }

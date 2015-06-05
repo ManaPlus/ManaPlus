@@ -28,10 +28,6 @@
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
 
-#include "enums/being/attributes.h"
-
-#include "enums/net/packettype.h"
-
 #include "gui/viewport.h"
 
 #include "gui/widgets/tabs/chat/chattab.h"
@@ -1787,7 +1783,8 @@ void ActorManager::updateEffects(const std::map<BeingTypeId, int> &addEffects,
         const BeingTypeId type = being->getSubType();
         if (removeEffects.find(type) != removeEffects.end())
             being->removeSpecialEffect();
-        const std::map<BeingTypeId, int>::const_iterator idAdd = addEffects.find(type);
+        const std::map<BeingTypeId, int>::const_iterator
+            idAdd = addEffects.find(type);
         if (idAdd != addEffects.end())
             being->addSpecialEffect((*idAdd).second);
     }

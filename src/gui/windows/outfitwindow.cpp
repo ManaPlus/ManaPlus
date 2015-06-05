@@ -47,6 +47,8 @@
 
 #include "utils/gettext.h"
 
+#include <sstream>
+
 #include "debug.h"
 
 OutfitWindow *outfitWindow = nullptr;

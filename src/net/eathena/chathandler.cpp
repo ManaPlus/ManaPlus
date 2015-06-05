@@ -47,8 +47,6 @@
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
-#include <string>
-
 #include "debug.h"
 
 extern Net::ChatHandler *chatHandler;

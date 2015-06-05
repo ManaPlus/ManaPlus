@@ -27,8 +27,6 @@
 
 #include "being/playerinfo.h"
 
-#include "enums/being/attributes.h"
-
 #include "gui/windows/buydialog.h"
 #include "gui/windows/buyselldialog.h"
 #include "gui/windows/npcselldialog.h"

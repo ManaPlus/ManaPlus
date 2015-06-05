@@ -40,11 +40,7 @@
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
 
-#include "enums/being/attributes.h"
 #include "enums/being/beingdirection.h"
-#include "enums/being/reachable.h"
-
-#include "enums/net/packettype.h"
 
 #include "particle/particle.h"
 
@@ -52,6 +48,7 @@
 
 #include "gui/chatconsts.h"
 #include "gui/gui.h"
+#include "gui/userpalette.h"
 #include "gui/popupmanager.h"
 
 #include "gui/windows/chatwindow.h"

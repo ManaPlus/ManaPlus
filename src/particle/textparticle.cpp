@@ -22,8 +22,6 @@
 
 #include "particle/textparticle.h"
 
-#include "enums/gui/themecolorid.h"
-
 #include "gui/theme.h"
 
 #include "gui/fonts/font.h"

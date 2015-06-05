@@ -301,7 +301,7 @@ void HomunculusHandler::talk(const std::string &restrict text) const
 
     createOutPacket(CMSG_HOMMERC_TALK);
     outMsg.writeInt16(static_cast<int16_t>(sz + 4 + 1), "len");
-    outMsg.writeString(msg, sz, "message");
+    outMsg.writeString(msg, static_cast<int>(sz), "message");
     outMsg.writeInt8(0, "zero byte");
 }
 

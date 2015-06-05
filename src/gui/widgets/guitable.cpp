@@ -24,8 +24,6 @@
 
 #include "settings.h"
 
-#include "enums/input/inputaction.h"
-
 #include "gui/gui.h"
 
 #include "gui/models/tablemodel.h"

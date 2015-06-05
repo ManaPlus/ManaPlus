@@ -23,6 +23,7 @@
 #include "net/eathena/gamehandler.h"
 
 #include "client.h"
+#include "logger.h"
 
 #include "being/localplayer.h"
 

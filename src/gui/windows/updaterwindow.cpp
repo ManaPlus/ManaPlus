@@ -26,12 +26,6 @@
 #include "configuration.h"
 #include "settings.h"
 
-#include "enums/gui/progresscolorid.h"
-
-#include "enums/input/inputaction.h"
-
-#include "enums/net/updatetype.h"
-
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/button.h"
 #include "gui/widgets/containerplacer.h"
@@ -57,6 +51,8 @@
 #include "utils/process.h"
 
 #include <sys/stat.h>
+
+#include <sstream>
 
 #include "debug.h"
 
@@ -193,8 +189,9 @@ UpdaterWindow::UpdaterWindow(const std::string &restrict updateHost,
     mCancelButton(new Button(this, _("Cancel"), "cancel", this)),
     // TRANSLATORS: updater window button
     mPlayButton(new Button(this, _("Play"), "play", this)),
-    mProgressBar(new ProgressBar(this, 0.0, 310, 0, ProgressColorId::PROG_UPDATE,
-                 "updateprogressbar.xml", "updateprogressbar_fill.xml")),
+    mProgressBar(new ProgressBar(this, 0.0, 310, 0,
+        ProgressColorId::PROG_UPDATE,
+        "updateprogressbar.xml", "updateprogressbar_fill.xml")),
     mBrowserBox(new BrowserBox(this, BrowserBox::AUTO_SIZE, true,
         "browserbox.xml")),
     mScrollArea(new ScrollArea(this, mBrowserBox,

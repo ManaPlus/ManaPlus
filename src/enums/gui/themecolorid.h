@@ -22,8 +22,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_THEMECOLORID_H
-#define GUI_THEMECOLORID_H
+#ifndef ENUMS_GUI_THEMECOLORID_H
+#define ENUMS_GUI_THEMECOLORID_H
 
 #include "enums/simpletypes/enumdefines.h"
 
@@ -253,4 +253,4 @@ enumStart(ThemeColorId)
 }
 enumEnd(ThemeColorId);
 
-#endif  // GUI_THEMECOLORID_H
+#endif  // ENUMS_GUI_THEMECOLORID_H

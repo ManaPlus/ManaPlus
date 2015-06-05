@@ -28,8 +28,6 @@
 
 #include "enums/equipslot.h"
 
-#include "enums/being/attributes.h"
-
 #include "net/messagein.h"
 
 #include "net/ea/eaprotocol.h"

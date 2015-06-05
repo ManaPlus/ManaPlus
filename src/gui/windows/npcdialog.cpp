@@ -31,8 +31,6 @@
 
 #include "being/being.h"
 
-#include "enums/net/packettype.h"
-
 #include "gui/gui.h"
 #include "gui/viewport.h"
 
@@ -64,6 +62,8 @@
 #include "utils/copynpaste.h"
 #include "utils/delete2.h"
 #include "utils/gettext.h"
+
+#include <sstream>
 
 #include "debug.h"
 

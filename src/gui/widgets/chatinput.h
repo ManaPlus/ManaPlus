@@ -23,8 +23,6 @@
 #ifndef GUI_WIDGETS_CHATINPUT_H
 #define GUI_WIDGETS_CHATINPUT_H
 
-#include "enums/simpletypes/visible.h"
-
 #include "gui/windows/chatwindow.h"
 
 #include "configuration.h"

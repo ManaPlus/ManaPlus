@@ -24,10 +24,7 @@
 #ifndef GUI_PALETTE_H
 #define GUI_PALETTE_H
 
-#include "logger.h"
-
 #include "enums/gui/gradienttype.h"
-#include "enums/gui/usercolorid.h"
 
 #include "gui/color.h"
 
@@ -39,6 +36,8 @@
 
 #include <map>
 #include <set>
+#include <string>
+#include <vector>
 
 // Default Gradient Delay
 #define GRADIENT_DELAY 40

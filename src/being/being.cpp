@@ -39,14 +39,12 @@
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
 
-#include "enums/being/attributes.h"
 #include "enums/being/beingdirection.h"
-
-#include "enums/net/packettype.h"
 
 #include "particle/particleinfo.h"
 
 #include "gui/gui.h"
+#include "gui/userpalette.h"
 
 #include "gui/fonts/font.h"
 
@@ -61,7 +59,6 @@
 #include "net/gamehandler.h"
 #include "net/npchandler.h"
 #include "net/packetlimiter.h"
-#include "net/pethandler.h"
 #include "net/playerhandler.h"
 #include "net/serverfeatures.h"
 
@@ -1681,7 +1678,6 @@ void Being::petLogic()
         setAction(BeingAction::STAND, 0);
         fixPetSpawnPos(dstX, dstY);
         setTileCoords(dstX, dstY);
-        //petHandler->spawn(mOwner, mId, dstX, dstY);
         mPetAi = true;
     }
     else if (!followDist || divX > followDist || divY > followDist)
@@ -3354,7 +3350,6 @@ void Being::addPet(const BeingId id)
         int dstY = mY;
         being->fixPetSpawnPos(dstX, dstY);
         being->setTileCoords(dstX, dstY);
-        //petHandler->spawn(this, being->mId, dstX, dstY);
     }
 }
 

@@ -57,6 +57,8 @@
 #include <sys/time.h>
 #endif
 
+#include <sstream>
+
 #include "debug.h"
 
 ChatTab *localChatTab = nullptr;

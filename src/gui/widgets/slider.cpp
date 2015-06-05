@@ -68,11 +68,7 @@
 #include "graphicsvertexes.h"
 #include "settings.h"
 
-#include "enums/input/inputaction.h"
-
 #include "gui/gui.h"
-
-#include "render/renderers.h"
 
 #include "resources/image.h"
 #include "resources/imagerect.h"
@@ -201,7 +197,6 @@ void Slider::draw(Graphics *graphics)
 
     int w = getWidth();
     const int h = getHeight();
-    int x = 0;
     const int y = mHasMouse ? (h - buttons[1].grid[HSTART]->getHeight()) / 2 :
         (h - buttons[0].grid[HSTART]->getHeight()) / 2;
 
@@ -209,6 +204,7 @@ void Slider::draw(Graphics *graphics)
 
     if (mRedraw || graphics->getRedraw())
     {
+        int x = 0;
         mRedraw = false;
         mVertexes->clear();
         if (!mHasMouse)

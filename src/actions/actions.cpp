@@ -36,10 +36,6 @@
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
-#include "enums/being/attributes.h"
-
-#include "enums/gui/dialogtype.h"
-
 #include "gui/gui.h"
 #include "gui/popupmanager.h"
 #include "gui/sdlinput.h"
@@ -106,6 +102,8 @@
 #include <SDL_screenkeyboard.h>
 #endif
 #endif
+
+#include <sstream>
 
 #include "debug.h"
 

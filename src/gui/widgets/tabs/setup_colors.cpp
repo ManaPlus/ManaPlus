@@ -21,8 +21,6 @@
 
 #include "gui/widgets/tabs/setup_colors.h"
 
-#include "enums/gui/usercolorid.h"
-
 #include "gui/gui.h"
 #include "gui/userpalette.h"
 
@@ -266,6 +264,8 @@ void Setup_Colors::valueChanged(const SelectionEvent &event A_UNUSED)
     mTextPreview->setOutline(true);
     mTextPreview->useTextAlpha(false);
 
+// probably need combite both switches and add all mssing color ids.
+
     switch (type)
     {
         case UserColorId::AIR_COLLISION_HIGHLIGHT:
@@ -411,7 +411,8 @@ void Setup_Colors::updateGradType()
         // TRANSLATORS: color type
         (grad == GradientType::RAINBOW) ? _("Rainbow") : _("Spectrum"));
 
-    const bool enable = (grad == GradientType::STATIC || grad == GradientType::PULSE);
+    const bool enable = (grad == GradientType::STATIC ||
+        grad == GradientType::PULSE);
     const bool delayEnable = true;
 
     mGradDelayText->setEnabled(delayEnable);

@@ -26,7 +26,6 @@
 #include "enums/gui/chatmsgtype.h"
 
 #include "enums/simpletypes/ignorerecord.h"
-#include "enums/simpletypes/visible.h"
 #include "enums/simpletypes/tryremovecolors.h"
 
 #include "gui/widgets/window.h"

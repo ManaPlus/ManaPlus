@@ -23,8 +23,6 @@
 #ifndef NET_EA_BUYSELLHANDLER_H
 #define NET_EA_BUYSELLHANDLER_H
 
-#include "enums/simpletypes/beingid.h"
-
 #include "net/buysellhandler.h"
 
 class BuyDialog;

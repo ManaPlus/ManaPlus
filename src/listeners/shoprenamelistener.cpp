@@ -23,8 +23,6 @@
 #include "gui/windows/editdialog.h"
 #include "gui/windows/shopwindow.h"
 
-#include "net/charserverhandler.h"
-
 #include "debug.h"
 
 ShopRenameListener shopRenameListener;

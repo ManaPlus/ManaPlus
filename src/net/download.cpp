@@ -43,6 +43,8 @@
 #include "utils/files.h"
 #endif
 
+#include <sstream>
+
 #include "debug.h"
 
 const char *DOWNLOAD_ERROR_MESSAGE_THREAD

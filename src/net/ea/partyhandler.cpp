@@ -108,6 +108,7 @@ void PartyHandler::processPartySettingsContinue(Net::MessageIn &msg,
             NotifyManager::notify(NotifyTypes::PARTY_EXP_SHARE_ERROR);
             break;
         default:
+        case PartyShare::UNKNOWN:
             UNIMPLIMENTEDPACKET;
             break;
     }
@@ -133,6 +134,7 @@ void PartyHandler::processPartySettingsContinue(Net::MessageIn &msg,
             NotifyManager::notify(NotifyTypes::PARTY_ITEM_SHARE_ERROR);
             break;
         default:
+        case PartyShare::UNKNOWN:
             UNIMPLIMENTEDPACKET;
             break;
     }

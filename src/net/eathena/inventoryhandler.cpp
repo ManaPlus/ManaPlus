@@ -26,8 +26,6 @@
 
 #include "enums/equipslot.h"
 
-#include "enums/being/attributes.h"
-
 #include "being/localplayer.h"
 
 #include "listeners/arrowslistener.h"

@@ -24,8 +24,6 @@
 
 #include "actions/actiondef.h"
 
-#include "being/localplayer.h"
-
 #include "gui/chatconsts.h"
 
 #include "gui/windows/chatwindow.h"

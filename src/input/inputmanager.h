@@ -21,8 +21,6 @@
 #ifndef INPUT_INPUTMANAGER_H
 #define INPUT_INPUTMANAGER_H
 
-#include "enums/input/inputaction.h"
-
 #include "input/inputfunction.h"
 
 #include "events/inputevent.h"
@@ -68,9 +66,11 @@ class InputManager final
 
         InputFunction &getKey(InputActionT index) A_WARN_UNUSED;
 
-        std::string getKeyValueString(const InputActionT index) const A_WARN_UNUSED;
+        std::string getKeyValueString(const InputActionT index)
+                                      const A_WARN_UNUSED;
 
-        std::string getKeyStringLong(const InputActionT index) const A_WARN_UNUSED;
+        std::string getKeyStringLong(const InputActionT index)
+                                     const A_WARN_UNUSED;
 
         std::string getKeyValueByName(const std::string &keyName);
 

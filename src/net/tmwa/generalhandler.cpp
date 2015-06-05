@@ -25,8 +25,6 @@
 #include "client.h"
 #include "configuration.h"
 
-#include "enums/being/attributes.h"
-
 #include "gui/windows/skilldialog.h"
 #include "gui/windows/socialwindow.h"
 #include "gui/windows/statuswindow.h"

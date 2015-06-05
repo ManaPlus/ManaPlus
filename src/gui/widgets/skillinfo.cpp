@@ -24,8 +24,6 @@
 
 #include "being/playerinfo.h"
 
-#include "gui/theme.h"
-
 #include "gui/widgets/skilldata.h"
 
 #include "gui/models/skillmodel.h"

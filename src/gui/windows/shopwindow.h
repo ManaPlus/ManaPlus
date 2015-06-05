@@ -23,8 +23,6 @@
 #ifndef GUI_WINDOWS_SHOPWINDOW_H
 #define GUI_WINDOWS_SHOPWINDOW_H
 
-#include "enums/simpletypes/visible.h"
-
 #include "gui/widgets/window.h"
 
 #include "listeners/actionlistener.h"

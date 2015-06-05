@@ -25,11 +25,8 @@
 #include "notifymanager.h"
 #include "shopitem.h"
 
-#include "being/being.h"
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
-
-#include "enums/being/attributes.h"
 
 #include "gui/windows/buyingstoreselldialog.h"
 

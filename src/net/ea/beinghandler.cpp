@@ -241,6 +241,13 @@ void BeingHandler::processBeingAction(Net::MessageIn &msg)
             }
             break;
         default:
+        case AttackType::SPLASH:
+        case AttackType::SKILL:
+        case AttackType::REPEATE:
+        case AttackType::MULTI_REFLECT:
+        case AttackType::TOUCH_SKILL:
+        case AttackType::MISS:
+        case AttackType::SKILLMISS:
             UNIMPLIMENTEDPACKET;
             break;
     }

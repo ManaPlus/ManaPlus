@@ -24,8 +24,6 @@
 
 #include "units.h"
 
-#include "enums/being/attributes.h"
-
 #include "gui/gui.h"
 
 #include "gui/windows/charselectdialog.h"

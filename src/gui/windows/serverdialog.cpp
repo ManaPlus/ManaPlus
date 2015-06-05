@@ -27,8 +27,6 @@
 #include "configuration.h"
 #include "settings.h"
 
-#include "enums/input/inputaction.h"
-
 #include "net/download.h"
 
 #include "gui/widgets/checkbox.h"
