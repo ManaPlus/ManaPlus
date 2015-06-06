@@ -66,10 +66,10 @@ std::string &toUpper(std::string &str)
 
 unsigned int atox(const std::string &str)
 {
-    unsigned int value;
-    sscanf(str.c_str(), "0x%06x", &value);
-
-    return value;
+    unsigned int value = 0;
+    if (sscanf(str.c_str(), "0x%06x", &value))
+        return value;
+    return 0;
 }
 
 const char *ipToString(const uint32_t address)
