@@ -30,9 +30,7 @@
 
 #include <algorithm>
 
-#ifdef WIN32
 #include <sys/time.h>
-#endif
 
 #include "debug.h"
 
