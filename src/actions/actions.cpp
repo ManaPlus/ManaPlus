@@ -832,11 +832,8 @@ impHandler0(attackHuman)
         localPlayer, 10, ActorType::Player, AllowSort_true);
     if (target)
     {
-        if (localPlayer->checAttackPermissions(target))
-        {
-            localPlayer->setTarget(target);
-            localPlayer->attack2(target, true);
-        }
+        localPlayer->setTarget(target);
+        localPlayer->attack2(target, true);
     }
     return true;
 }
