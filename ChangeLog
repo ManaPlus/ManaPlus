@@ -1,3 +1,11 @@
+2015-06-06 New release 1.5.6.6
+fix: buy/sell from personal shops if stand close to npc.
+fix: possible crash if disconnect from server.
+fix: always emulate glTextureSubImage2D function for fix NVidia issue.
+add: improve draw performance.
+add: improve a bit memory usage.
+add: unit tests into make file.
+
 2015-05-23 New release 1.5.5.23
 fix: possible crash in sell dialog.
 fix: possible issue in texture atlases.
