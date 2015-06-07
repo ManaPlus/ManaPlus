@@ -478,7 +478,15 @@ void CharServerHandler::processChangeMapServer(Net::MessageIn &msg)
     gh->setMap(msg.readString(16, "map name"));
     const int x = msg.readInt16("x");
     const int y = msg.readInt16("y");
-    server.hostname = ipToString(msg.readInt32("host"));
+    if (config.getBoolValue("usePersistentIP") || settings.persistentIp)
+    {
+        msg.readInt32("host");
+        server.hostname = settings.serverName;
+    }
+    else
+    {
+        server.hostname = ipToString(msg.readInt32("host"));
+    }
     server.port = msg.readInt16("port");
 
     network->disconnect();
