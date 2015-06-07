@@ -378,6 +378,17 @@ esac],[cilkplus_enabled=false])
 
 AM_CONDITIONAL(ENABLE_CILKPLUS, test x$cilkplus_enabled = xtrue)
 
+# Enable gcc check plugin
+AC_ARG_ENABLE(checkplugin,
+[  --enable-checkplugin    Turn on gcc check plugin],
+[case "${enableval}" in
+  yes) checkplugin_enabled=true ;;
+  no)  checkplugin_enabled=false ;;
+  *) AC_MSG_ERROR(bad value ${enableval} for --enable-checkplugin) ;;
+esac],[checkplugin_enabled=false])
+
+AM_CONDITIONAL(ENABLE_CHECKPLUGIN, test x$checkplugin_enabled = xtrue)
+
 AC_CONFIG_FILES([
 manaplus.spec
 Makefile
