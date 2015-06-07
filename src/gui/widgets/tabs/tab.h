@@ -121,7 +121,8 @@ class Tab notfinal : public BasicContainer,
         {
             mTabColor = color1;
             mTabOutlineColor = color2;
-        }
+            mRedraw = true;
+         }
 
         /**
          * Set the highlighted color for the tab's text.
@@ -131,6 +132,7 @@ class Tab notfinal : public BasicContainer,
         {
             mTabHighlightedColor = color1;
             mTabHighlightedOutlineColor = color2;
+            mRedraw = true;
         }
 
         /**
@@ -141,6 +143,7 @@ class Tab notfinal : public BasicContainer,
         {
             mTabSelectedColor = color1;
             mTabSelectedOutlineColor = color2;
+            mRedraw = true;
         }
 
         /**
@@ -151,6 +154,7 @@ class Tab notfinal : public BasicContainer,
         {
             mFlashColor = color1;
             mFlashOutlineColor = color2;
+            mRedraw = true;
         }
 
         /**
@@ -161,6 +165,7 @@ class Tab notfinal : public BasicContainer,
         {
             mPlayerFlashColor = color1;
             mPlayerFlashOutlineColor = color2;
+            mRedraw = true;
         }
 
         /**

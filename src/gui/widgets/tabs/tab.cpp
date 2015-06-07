@@ -234,7 +234,9 @@ void Tab::draw(Graphics *graphics)
             mode = TAB_HIGHLIGHTED;
         }
 
-        if (labelMode != mLabelMode)
+        // mRedraw need here because no other way to say label to change color
+        // +++ text from label must be moved to tab itself
+        if (labelMode != mLabelMode && mRedraw)
         {
             mLabelMode = labelMode;
             switch (labelMode)
@@ -409,6 +411,7 @@ void Tab::setLabelFont(Font *const font)
     mLabel->setFont(font);
     mLabel->adjustSize();
     adjustSize();
+    mRedraw = true;
 }
 
 
