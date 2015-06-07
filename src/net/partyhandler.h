@@ -68,8 +68,7 @@ class PartyHandler notfinal
 
         virtual void clear() const = 0;
 
-        virtual void inviteResponse(const std::string &inviter,
-                                    const int partyId,
+        virtual void inviteResponse(const int partyId,
                                     const bool accept) const = 0;
 
         virtual ChatTab *getTab() const = 0;

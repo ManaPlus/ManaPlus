@@ -132,8 +132,7 @@ void PartyHandler::invite(const std::string &name) const
     }
 }
 
-void PartyHandler::inviteResponse(const std::string &inviter A_UNUSED,
-                                  const int partyId A_UNUSED,
+void PartyHandler::inviteResponse(const int partyId A_UNUSED,
                                   const bool accept) const
 {
     if (localPlayer)

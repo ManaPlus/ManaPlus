@@ -270,7 +270,7 @@ void SocialWindow::action(const ActionEvent &event)
                     mPartyInviter.c_str()),
                     ChatMsgType::BY_SERVER);
             }
-            partyHandler->inviteResponse(mPartyInviter, mPartyId, true);
+            partyHandler->inviteResponse(mPartyId, true);
         }
         else if (eventId == "no")
         {
@@ -282,7 +282,7 @@ void SocialWindow::action(const ActionEvent &event)
                     mPartyInviter.c_str()),
                     ChatMsgType::BY_SERVER);
             }
-            partyHandler->inviteResponse(mPartyInviter, mPartyId, false);
+            partyHandler->inviteResponse(mPartyId, false);
         }
 
         mPartyInviter.clear();

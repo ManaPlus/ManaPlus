@@ -44,8 +44,7 @@ class PartyHandler final : public MessageHandler, public Ea::PartyHandler
 
         void invite(const std::string &name) const override final;
 
-        void inviteResponse(const std::string &inviter,
-                            const int partyId,
+        void inviteResponse(const int partyId,
                             const bool accept) const override final;
 
         void leave() const override final;
