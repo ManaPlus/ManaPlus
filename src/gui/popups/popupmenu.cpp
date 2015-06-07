@@ -1520,7 +1520,7 @@ void PopupMenu::handleLink(const std::string &link,
     else if (!link.compare(0, 9, "show bar_"))
     {
         if (miniStatusWindow)
-            miniStatusWindow->showBar(link.substr(9), Visible_false);
+            miniStatusWindow->showBar(link.substr(9), Visible_true);
     }
     else if (!link.compare(0, 12, "show window_"))
     {
