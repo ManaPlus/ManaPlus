@@ -172,7 +172,7 @@ class Tab notfinal : public BasicContainer,
          * Set tab flashing state
          */
         void setFlash(const int flash)
-        { mFlash = flash; }
+        { mFlash = flash; mRedraw = true; }
 
         int getFlash() const A_WARN_UNUSED
         { return mFlash; }

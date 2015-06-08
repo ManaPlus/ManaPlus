@@ -236,7 +236,7 @@ void Tab::draw(Graphics *graphics)
 
         // mRedraw need here because no other way to say label to change color
         // +++ text from label must be moved to tab itself
-        if (labelMode != mLabelMode && mRedraw)
+        if (labelMode != mLabelMode || mRedraw)
         {
             mLabelMode = labelMode;
             switch (labelMode)
