@@ -1,13 +1,13 @@
-#The Mana Plus Client
+# The Mana Plus Client
 
 ![The Mana World logo](data/icons/manaplus.png)
 
 Version: 1.5.6.6        Date: 2015-06-06
 
-###Development team:
+### Development team:
  - See [AUTHORS](AUTHORS) file for a list
 
-###Powered by:
+### Powered by:
 
  - [SDL](http://libsdl.org/), SDL_image, SDL_mixer, SDL_ttf, SDL_net (Media framework), SDL_gfx
  - [libxml2](http://xmlsoft.org/) (XML parsing and writing)
@@ -15,12 +15,12 @@ Version: 1.5.6.6        Date: 2015-06-06
  - [libcurl](http://curl.haxx.se/) (HTTP downloads)
  - [zlib](http://zlib.net/) (Archives)
 
-###Additional run time deps:
+### Additional run time deps:
  - xsel (for clipboard access, used only in SDL 1.2)
  - xdg-open (from xdg-utils, for open url in browser)
 
 
-##0. Index
+## 0. Index
 
 1. Account
 2. Commands
@@ -28,16 +28,16 @@ Version: 1.5.6.6        Date: 2015-06-06
 4. Support
 
 
-##1. Account
+## 1. Account
 
 To create an account you can usually press the "Register" button after
 choosing your server. When this doesn't work, visit the website of the server
 you'd like to register on, since they may be using an online registration
 form instead.
 
-##2. Commands
+## 2. Commands
 
-###KEYBOARD:
+### KEYBOARD:
 
 Use arrow keys to move around. Other keys:
 
@@ -62,13 +62,13 @@ Use arrow keys to move around. Other keys:
 - Z                  pick up item
 - Enter              focus chat window / send message
 
-###MOUSE:
+### MOUSE:
 
 Left click to execute default action: walk, pick up an item, attack a monster
 and talk to NPCs (be sure to click on their feet). Right click to show up a
 context menu. Holding [Left Shift] prevents from walking when attacking.
 
-###/Commands:
+### /Commands:
 
 Whispers:
 - /closeall          close all whispers.
@@ -79,7 +79,7 @@ Whispers:
 - /query NICK
 - /q NICK            open new whisper tab for nick.
 
-###Actions:
+### Actions:
 - /help              show small help about chat commands. /target NICK - select nick as target. Can be monster or player nick.
 - /outfit N          wear outfit number N.
 - /outfit next       wear next outfit.
@@ -97,12 +97,12 @@ Whispers:
 - /attack            attack target.
 - /undress NICK      remove all clothes from nick. Local effect only.
 
-###Trade:
+### Trade:
 - /trade NICK        start trade with nick.
 - /priceload         load shop price from disc.
 - /pricesave         save shop price to disc.
 
-###Player relations:
+### Player relations:
 - /ignore NICK       add nick to ignore list.
 - /unignore NICK     Remove nick from ignore list.
 - /friend NICK
@@ -114,20 +114,20 @@ Whispers:
 - /createparty NAME  create party with selected name.
 - /me text           send text to chat as /me command in irc.
 
-###Debug:
+### Debug:
 - /who               print online players number to chat.
 - /all               show visible beings list in debug tab.
 - /where             print current player position to chat.
 - /cacheinfo         show text cache info.
 - /dirs              show client directories in debug window.
 
-###Other:
+### Other:
 - /help              Displays the list of commands
 - /announce          broadcasts a global msg(Gm Cammand only)
 - /who               shows how many players are online
 - /where             displays the map name your currently on
 
-##4. Support
+## 4. Support
 
 If you're having issues with this client, feel free to report them to us.
 You can report on [forum](http://forums.themanaworld.org/viewforum.php?f=12)
