@@ -28,6 +28,7 @@
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/containerplacer.h"
+#include "gui/widgets/createwidget.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layoutcell.h"
 #include "gui/widgets/passwordfield.h"
@@ -235,7 +236,7 @@ void RegisterDialog::action(const ActionEvent &event)
                 mWrongDataNoticeListener->setTarget(this->mPasswordField);
             }
 
-            OkDialog *const dlg = new OkDialog(
+            OkDialog *const dlg = CREATEWIDGETR(OkDialog,
                 // TRANSLATORS: error message
                 _("Error"), errorMsg, _("OK"),
                 DialogType::ERROR,
@@ -243,7 +244,6 @@ void RegisterDialog::action(const ActionEvent &event)
                 ShowCenter_true,
                 nullptr,
                 260);
-            dlg->postInit();
             dlg->addActionListener(mWrongDataNoticeListener);
         }
         else
