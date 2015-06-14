@@ -43,6 +43,7 @@
 #include "gui/windows/helpwindow.h"
 #include "gui/windows/setupwindow.h"
 
+#include "gui/widgets/createwidget.h"
 #include "gui/widgets/desktop.h"
 
 #include "utils/delete2.h"
@@ -94,24 +95,15 @@ void WindowManager::init()
 void WindowManager::createWindows()
 {
     userPalette = new UserPalette;
-    setupWindow = new SetupWindow;
-    setupWindow->postInit();
-    helpWindow = new HelpWindow;
-    helpWindow->postInit();
-    didYouKnowWindow = new DidYouKnowWindow;
-    didYouKnowWindow->postInit();
-    popupMenu = new PopupMenu;
-    popupMenu->postInit();
-    beingPopup = new BeingPopup;
-    beingPopup->postInit();
-    textPopup = new TextPopup;
-    textPopup->postInit();
-    textBoxPopup = new TextBoxPopup;
-    textBoxPopup->postInit();
-    itemPopup = new ItemPopup;
-    itemPopup->postInit();
-    spellPopup = new SpellPopup;
-    spellPopup->postInit();
+    CREATEWIDGET1(setupWindow, SetupWindow);
+    CREATEWIDGET1(helpWindow, HelpWindow);
+    CREATEWIDGET1(didYouKnowWindow, DidYouKnowWindow);
+    CREATEWIDGET1(popupMenu, PopupMenu);
+    CREATEWIDGET1(beingPopup, BeingPopup);
+    CREATEWIDGET1(textPopup, TextPopup);
+    CREATEWIDGET1(textBoxPopup, TextBoxPopup);
+    CREATEWIDGET1(itemPopup, ItemPopup);
+    CREATEWIDGET1(spellPopup, SpellPopup);
 }
 
 void WindowManager::deleteWindows()
