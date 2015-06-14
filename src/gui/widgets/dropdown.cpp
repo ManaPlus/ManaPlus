@@ -31,6 +31,7 @@
 
 #include "gui/models/extendedlistmodel.h"
 
+#include "gui/widgets/createwidget.h"
 #include "gui/widgets/popuplist.h"
 
 #include "resources/imagerect.h"
@@ -61,7 +62,7 @@ DropDown::DropDown(const Widget2 *const widget,
     MouseListener(),
     FocusListener(),
     SelectionListener(),
-    mPopup(new PopupList(this, listModel, extended, modal)),
+    mPopup(CREATEWIDGETR(PopupList, this, listModel, extended, modal)),
     mShadowColor(getThemeColor(ThemeColorId::DROPDOWN_SHADOW)),
     mHighlightColor(getThemeColor(ThemeColorId::HIGHLIGHT)),
     mPadding(1),
@@ -75,7 +76,6 @@ DropDown::DropDown(const Widget2 *const widget,
     mIsDragged(false)
 {
     mAllowLogic = false;
-    mPopup->postInit();
     mFrameSize = 2;
     mForegroundColor2 = getThemeColor(ThemeColorId::DROPDOWN_OUTLINE);
 
