@@ -88,6 +88,7 @@
 
 #include "gui/widgets/tabs/chat/battletab.h"
 
+#include "gui/widgets/createwidget.h"
 #include "gui/widgets/emoteshortcutcontainer.h"
 #include "gui/widgets/itemshortcutcontainer.h"
 #include "gui/widgets/spellshortcutcontainer.h"
@@ -181,42 +182,32 @@ static void createGuiWindows()
     GameModifiers::init();
 
     // Create dialogs
-    emoteWindow = new EmoteWindow;
-    emoteWindow->postInit();
-    chatWindow = new ChatWindow;
-    chatWindow->postInit();
-    tradeWindow = new TradeWindow;
-    tradeWindow->postInit();
-    equipmentWindow = new EquipmentWindow(PlayerInfo::getEquipment(),
+    CREATEWIDGET1(emoteWindow, EmoteWindow);
+    CREATEWIDGET1(chatWindow, ChatWindow);
+    CREATEWIDGET1(tradeWindow, TradeWindow);
+    CREATEWIDGET(equipmentWindow, EquipmentWindow,
+        PlayerInfo::getEquipment(),
         localPlayer);
-    equipmentWindow->postInit();
-    beingEquipmentWindow = new EquipmentWindow(nullptr, nullptr, true);
-    beingEquipmentWindow->postInit();
+    CREATEWIDGET(beingEquipmentWindow, EquipmentWindow,
+        nullptr, nullptr, true);
     beingEquipmentWindow->setVisible(Visible_false);
-    statusWindow = new StatusWindow;
-    statusWindow->postInit();
-    miniStatusWindow = new MiniStatusWindow;
-    miniStatusWindow->postInit();
-    inventoryWindow = new InventoryWindow(PlayerInfo::getInventory());
-    inventoryWindow->postInit();
+    CREATEWIDGET1(statusWindow, StatusWindow);
+    CREATEWIDGET1(miniStatusWindow, MiniStatusWindow);
+    CREATEWIDGET(inventoryWindow, InventoryWindow,
+        PlayerInfo::getInventory());
 #ifdef EATHENA_SUPPORT
     if (serverFeatures->haveCart())
     {
-        cartWindow = new InventoryWindow(PlayerInfo::getCartInventory());
-        cartWindow->postInit();
+        CREATEWIDGET(cartWindow, InventoryWindow,
+            PlayerInfo::getCartInventory());
     }
 #endif
-    shopWindow = new ShopWindow;
-    shopWindow->postInit();
-    skillDialog = new SkillDialog;
-    skillDialog->postInit();
-    minimap = new Minimap;
-    minimap->postInit();
-    debugWindow = new DebugWindow;
-    debugWindow->postInit();
-    itemShortcutWindow = new ShortcutWindow(
+    CREATEWIDGET1(shopWindow, ShopWindow);
+    CREATEWIDGET1(skillDialog, SkillDialog);
+    CREATEWIDGET1(minimap, Minimap);
+    CREATEWIDGET1(debugWindow, DebugWindow);
+    CREATEWIDGET(itemShortcutWindow, ShortcutWindow,
         "ItemShortcut", "items.xml", 83, 460);
-    itemShortcutWindow->postInit();
 
     for (unsigned f = 0; f < SHORTCUT_TABS; f ++)
     {
@@ -229,22 +220,20 @@ static void createGuiWindows()
         didYouKnowWindow->loadData();
     }
 
-    emoteShortcutWindow = new ShortcutWindow("EmoteShortcut",
+    CREATEWIDGET(emoteShortcutWindow, ShortcutWindow,
+        "EmoteShortcut",
         new EmoteShortcutContainer(nullptr),
         "emotes.xml",
         130, 480);
-    emoteShortcutWindow->postInit();
-    outfitWindow = new OutfitWindow();
-    outfitWindow->postInit();
-    dropShortcutWindow = new ShortcutWindow("DropShortcut",
+    CREATEWIDGET1(outfitWindow, OutfitWindow);
+    CREATEWIDGET(dropShortcutWindow, ShortcutWindow,
+        "DropShortcut",
         new VirtShortcutContainer(nullptr, dropShortcut),
         "drops.xml");
-    dropShortcutWindow->postInit();
-    spellShortcutWindow = new ShortcutWindow(
+    CREATEWIDGET(spellShortcutWindow, ShortcutWindow,
         "SpellShortcut",
         "spells.xml",
         265, 328);
-    spellShortcutWindow->postInit();
     for (unsigned f = 0; f < SPELL_SHORTCUT_TABS; f ++)
     {
         spellShortcutWindow->addTab(toString(f + 1),
@@ -252,19 +241,13 @@ static void createGuiWindows()
     }
 
 #ifdef EATHENA_SUPPORT
-    bankWindow = new BankWindow;
-    bankWindow->postInit();
-    mailWindow = new MailWindow;
-    mailWindow->postInit();
+    CREATEWIDGET1(bankWindow, BankWindow);
+    CREATEWIDGET1(mailWindow, MailWindow);
 #endif
-    whoIsOnline = new WhoIsOnline;
-    whoIsOnline->postInit();
-    killStats = new KillStats;
-    killStats->postInit();
-    socialWindow = new SocialWindow;
-    socialWindow->postInit();
-    questsWindow = new QuestsWindow;
-    questsWindow->postInit();
+    CREATEWIDGET1(whoIsOnline, WhoIsOnline);
+    CREATEWIDGET1(killStats, KillStats);
+    CREATEWIDGET1(socialWindow, SocialWindow);
+    CREATEWIDGET1(questsWindow, QuestsWindow);
 
     // TRANSLATORS: chat tab header
     localChatTab = new ChatTab(chatWindow, _("General"),
@@ -336,6 +319,7 @@ static void destroyGuiWindows()
     if (guildManager)
         guildManager->clear();
 #endif
+
     delete2(windowMenu);
     delete2(localChatTab)  // Need to do this first, so it can remove itself
     delete2(debugChatTab)
