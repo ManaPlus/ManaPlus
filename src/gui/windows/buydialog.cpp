@@ -36,6 +36,7 @@
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/containerplacer.h"
+#include "gui/widgets/createwidget.h"
 #include "gui/widgets/dropdown.h"
 #include "gui/widgets/inttextfield.h"
 #include "gui/widgets/label.h"
@@ -240,8 +241,7 @@ void BuyDialog::init()
 
     mShopItems = new ShopItems;
 
-    mShopItemList = new ShopListBox(this, mShopItems, mShopItems);
-    mShopItemList->postInit();
+    CREATEWIDGETV(mShopItemList, ShopListBox, this, mShopItems, mShopItems);
     mScrollArea = new ScrollArea(this, mShopItemList,
         getOptionBool("showbackground"), "buy_background.xml");
     mScrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
