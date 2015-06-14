@@ -28,6 +28,8 @@
 
 #include "gui/windows/buydialog.h"
 
+#include "gui/widgets/createwidget.h"
+
 #include "listeners/vendingmodelistener.h"
 #include "listeners/vendingslotslistener.h"
 
@@ -140,8 +142,7 @@ void VendingHandler::processItemsList(Net::MessageIn &msg)
     Being *const being = actorManager->findBeing(id);
     if (!being)
         return;
-    mBuyDialog = new BuyDialog(being->getName());
-    mBuyDialog->postInit();
+    CREATEWIDGETV(mBuyDialog, BuyDialog, being->getName());
     mBuyDialog->setMoney(PlayerInfo::getAttribute(Attributes::MONEY));
     msg.readInt32("vender id");
     for (int f = 0; f < count; f ++)
