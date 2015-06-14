@@ -1027,6 +1027,8 @@ class Widget notfinal : public Widget2
 
         void windowResized();
 
+        static Widget *callPostInit(Widget *const widget);
+
         virtual void postInit()
         { }
 

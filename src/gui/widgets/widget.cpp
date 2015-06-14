@@ -513,3 +513,9 @@ void Widget::windowResized()
 {
     mRedraw = true;
 }
+
+Widget *Widget::callPostInit(Widget *const widget)
+{
+    widget->postInit();
+    return widget;
+}
