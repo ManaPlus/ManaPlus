@@ -27,6 +27,8 @@
 #include "gui/windows/charcreatedialog.h"
 #include "gui/windows/okdialog.h"
 
+#include "gui/widgets/createwidget.h"
+
 #include "net/ea/eaprotocol.h"
 
 #include "net/character.h"
@@ -135,15 +137,17 @@ void CharServerHandler::processCharCreateFailed(Net::MessageIn &msg)
             errorMessage = _("Incorrect look.");
             break;
     }
-    // TRANSLATORS: error message header
-    (new OkDialog(_("Error"), errorMessage,
+    CREATEWIDGET(OkDialog,
+        // TRANSLATORS: error message header
+        _("Error"),
+        errorMessage,
         // TRANSLATORS: ok dialog button
         _("OK"),
         DialogType::ERROR,
         Modal_true,
         ShowCenter_true,
         nullptr,
-        260))->postInit();
+        260);
     if (mCharCreateDialog)
         mCharCreateDialog->unlock();
     BLOCK_END("CharServerHandler::processCharCreateFailed")
@@ -157,15 +161,18 @@ void CharServerHandler::processCharDelete(Net::MessageIn &msg A_UNUSED)
     mSelectedCharacter = nullptr;
     updateCharSelectDialog();
     unlockCharSelectDialog();
-    // TRANSLATORS: info message
-    (new OkDialog(_("Info"), _("Character deleted."),
+    CREATEWIDGET(OkDialog,
+        // TRANSLATORS: info message header
+        _("Info"),
+        // TRANSLATORS: info message
+        _("Character deleted."),
         // TRANSLATORS: ok dialog button
         _("OK"),
         DialogType::OK,
         Modal_true,
         ShowCenter_true,
         nullptr,
-        260))->postInit();
+        260);
     BLOCK_END("CharServerHandler::processCharDelete")
 }
 

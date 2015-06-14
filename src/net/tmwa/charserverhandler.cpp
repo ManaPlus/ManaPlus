@@ -29,6 +29,8 @@
 #include "gui/windows/charcreatedialog.h"
 #include "gui/windows/okdialog.h"
 
+#include "gui/widgets/createwidget.h"
+
 #include "net/character.h"
 #include "net/serverfeatures.h"
 
@@ -522,15 +524,18 @@ void CharServerHandler::processCharDeleteFailed(Net::MessageIn &msg)
     BLOCK_START("CharServerHandler::processCharDeleteFailed")
     unlockCharSelectDialog();
     msg.readUInt8("error");
-    // TRANSLATORS: error message
-    (new OkDialog(_("Error"), _("Failed to delete character."),
+    CREATEWIDGET(OkDialog,
+        // TRANSLATORS: error header
+        _("Error"),
+        // TRANSLATORS: error message
+        _("Failed to delete character."),
         // TRANSLATORS: ok dialog button
         _("OK"),
         DialogType::ERROR,
         Modal_true,
         ShowCenter_true,
         nullptr,
-        260))->postInit();
+        260);
     BLOCK_END("CharServerHandler::processCharDeleteFailed")
 }
 

@@ -30,6 +30,8 @@
 #include "gui/windows/charselectdialog.h"
 #include "gui/windows/okdialog.h"
 
+#include "gui/widgets/createwidget.h"
+
 #include "net/character.h"
 #include "net/serverfeatures.h"
 
@@ -578,15 +580,18 @@ void CharServerHandler::processCharCheckRename(Net::MessageIn &msg)
     }
     else
     {
-        // TRANSLATORS: info message
-        (new OkDialog(_("Error"), _("Character rename error."),
+        CREATEWIDGET(OkDialog,
+            // TRANSLATORS: error header
+            _("Error"),
+            // TRANSLATORS: error message
+            _("Character rename error."),
             // TRANSLATORS: ok dialog button
             _("Error"),
             DialogType::ERROR,
             Modal_true,
             ShowCenter_true,
             nullptr,
-            260))->postInit();
+            260);
     }
 }
 
@@ -596,15 +601,18 @@ void CharServerHandler::processCharRename(Net::MessageIn &msg)
     if (!flag)
     {
         mCharSelectDialog->setName(mRenameId, mNewName);
-        // TRANSLATORS: info message
-        (new OkDialog(_("Info"), _("Character renamed."),
+        CREATEWIDGET(OkDialog,
+            // TRANSLATORS: info header
+            _("Info"),
+            // TRANSLATORS: info message
+            _("Character renamed."),
             // TRANSLATORS: ok dialog button
             _("OK"),
             DialogType::OK,
             Modal_true,
             ShowCenter_true,
             nullptr,
-            260))->postInit();
+            260);
     }
     else
     {
@@ -629,15 +637,17 @@ void CharServerHandler::processCharRename(Net::MessageIn &msg)
                 message = _("Character not found.");
                 break;
         }
-        // TRANSLATORS: info message
-        (new OkDialog(_("Info"), message,
+        CREATEWIDGET(OkDialog,
+            // TRANSLATORS: info message
+            _("Info"),
+            message,
             // TRANSLATORS: ok dialog button
             _("OK"),
             DialogType::OK,
             Modal_true,
             ShowCenter_true,
             nullptr,
-            260))->postInit();
+            260);
     }
 }
 
@@ -662,15 +672,18 @@ void CharServerHandler::processCharDeleteFailed(Net::MessageIn &msg)
     BLOCK_START("CharServerHandler::processCharDeleteFailed")
     unlockCharSelectDialog();
     msg.readUInt8("error");
-    // TRANSLATORS: error message
-    (new OkDialog(_("Error"), _("Failed to delete character."),
+    CREATEWIDGET(OkDialog,
+        // TRANSLATORS: error header
+        _("Error"),
+        // TRANSLATORS: error message
+        _("Failed to delete character."),
         // TRANSLATORS: ok dialog button
         _("OK"),
         DialogType::ERROR,
         Modal_true,
         ShowCenter_true,
         nullptr,
-        260))->postInit();
+        260);
     BLOCK_END("CharServerHandler::processCharDeleteFailed")
 }
 
