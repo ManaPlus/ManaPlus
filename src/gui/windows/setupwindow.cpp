@@ -28,6 +28,8 @@
 
 #include "gui/windows/chatwindow.h"
 
+#include "gui/widgets/createwidget.h"
+
 #include "gui/widgets/tabs/setup_audio.h"
 #include "gui/widgets/tabs/setup_chat.h"
 #include "gui/widgets/tabs/setup_colors.h"
@@ -67,11 +69,10 @@ SetupWindow::SetupWindow() :
     mModsTab(nullptr),
     mQuickTab(nullptr),
     mResetWindows(nullptr),
-    mPanel(new TabbedArea(this)),
+    mPanel(CREATEWIDGETR(TabbedArea, this)),
     mVersion(new Label(this, FULL_VERSION)),
     mButtonPadding(5)
 {
-    mPanel->postInit();
     setCloseButton(true);
     setResizable(true);
     setStickyButtonLock(true);
