@@ -41,6 +41,7 @@
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/containerplacer.h"
+#include "gui/widgets/createwidget.h"
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/listbox.h"
 #include "gui/widgets/scrollarea.h"
@@ -58,7 +59,7 @@ static const int setupGroups = 9;
 Setup_Input::Setup_Input(const Widget2 *const widget) :
     SetupTab(widget),
     mKeyListModel(new KeyListModel),
-    mKeyList(new ListBox(this, mKeyListModel, "")),
+    mKeyList(CREATEWIDGETR(ListBox, this, mKeyListModel, "")),
     // TRANSLATORS: button in input settings tab
     mAssignKeyButton(new Button(this, _("Assign"), "assign", this)),
     // TRANSLATORS: button in input settings tab
@@ -73,7 +74,6 @@ Setup_Input::Setup_Input(const Widget2 *const widget) :
     mKeySetting(false),
     mActionDataSize(new int [9])
 {
-    mKeyList->postInit();
     inputManager.setSetupInput(this);
     // TRANSLATORS: setting tab name
     setName(_("Input"));
@@ -153,8 +153,9 @@ void Setup_Input::apply()
         const std::string str1 = keyToString(key1);
         const std::string str2 = keyToString(key2);
 
-        // TRANSLATORS: input settings error header
-        (new OkDialog(_("Key Conflict(s) Detected."),
+        CREATEWIDGET(OkDialog,
+            // TRANSLATORS: input settings error header
+            _("Key Conflict(s) Detected."),
             // TRANSLATORS: input settings error
             strprintf(_("Conflict \"%s\" and \"%s\" keys. "
             "Resolve them, or gameplay may result in strange behaviour."),
@@ -165,7 +166,7 @@ void Setup_Input::apply()
             Modal_true,
             ShowCenter_true,
             nullptr,
-            260))->postInit();
+            260);
     }
     keyboard.setEnabled(true);
     inputManager.store();
