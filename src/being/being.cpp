@@ -82,6 +82,7 @@
 
 #include "resources/map/map.h"
 
+#include "gui/widgets/createwidget.h"
 #include "gui/widgets/skilldata.h"
 #include "gui/widgets/skillinfo.h"
 
@@ -313,8 +314,7 @@ Being::~Being()
 
 void Being::createSpeechBubble()
 {
-    mSpeechBubble = new SpeechBubble;
-    mSpeechBubble->postInit();
+    CREATEWIDGET1(mSpeechBubble, SpeechBubble);
 }
 
 void Being::setSubtype(const BeingTypeId subtype,
