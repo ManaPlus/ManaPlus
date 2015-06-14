@@ -32,6 +32,7 @@
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/containerplacer.h"
+#include "gui/widgets/createwidget.h"
 #include "gui/widgets/extendedlistbox.h"
 #include "gui/widgets/layout.h"
 #include "gui/widgets/layouttype.h"
@@ -53,7 +54,8 @@ MailWindow::MailWindow() :
     mMessages(),
     mMessagesMap(),
     mMailModel(new ExtendedNamesModel),
-    mListBox(new ExtendedListBox(this, mMailModel, "extendedlistbox.xml")),
+    mListBox(CREATEWIDGETR(ExtendedListBox,
+        this, mMailModel, "extendedlistbox.xml")),
     mListScrollArea(new ScrollArea(this, mListBox,
         getOptionBool("showlistbackground"), "mail_listbackground.xml")),
     // TRANSLATORS: mail window button
@@ -67,7 +69,6 @@ MailWindow::MailWindow() :
     // TRANSLATORS: mail window button
     mOpenButton(new Button(this, _("Open"), "open", this))
 {
-    mListBox->postInit();
     setWindowName("Mail");
     setCloseButton(true);
     setResizable(true);
@@ -121,8 +122,7 @@ void MailWindow::action(const ActionEvent &event)
     {
         if (!mailEditWindow)
         {
-            mailEditWindow = new MailEditWindow;
-            mailEditWindow->postInit();
+            CREATEWIDGETV0(mailEditWindow, MailEditWindow);
         }
     }
     else if (eventId == "open")
@@ -215,8 +215,7 @@ void MailWindow::showMessage(MailMessage *const mail)
         mail->strTime = mail2->strTime;
     }
     delete mailViewWindow;
-    mailViewWindow = new MailViewWindow(mail);
-    mailViewWindow->postInit();
+    CREATEWIDGETV(mailViewWindow, MailViewWindow, mail);
 }
 
 void MailWindow::viewNext(const int id)
