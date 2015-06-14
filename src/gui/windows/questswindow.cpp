@@ -37,6 +37,7 @@
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/button.h"
 #include "gui/widgets/containerplacer.h"
+#include "gui/widgets/createwidget.h"
 #include "gui/widgets/layout.h"
 #include "gui/widgets/layouttype.h"
 #include "gui/widgets/extendedlistbox.h"
@@ -65,8 +66,8 @@ QuestsWindow::QuestsWindow() :
     Window(_("Quests"), Modal_false, nullptr, "quests.xml"),
     ActionListener(),
     mQuestsModel(new QuestsModel),
-    mQuestsListBox(new ExtendedListBox(this,
-        mQuestsModel, "extendedlistbox.xml")),
+    mQuestsListBox(CREATEWIDGETR(ExtendedListBox,
+        this, mQuestsModel, "extendedlistbox.xml")),
     mQuestScrollArea(new ScrollArea(this, mQuestsListBox,
         getOptionBool("showlistbackground"), "quests_list_background.xml")),
     mItemLinkHandler(new ItemLinkHandler),
@@ -87,8 +88,6 @@ QuestsWindow::QuestsWindow() :
     mCompleteQuestEffectId(paths.getIntValue("completeQuestEffectId")),
     mMap(nullptr)
 {
-    mQuestsListBox->postInit();
-
     setWindowName("Quests");
     setResizable(true);
     setCloseButton(true);
