@@ -50,6 +50,7 @@
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/chatinput.h"
+#include "gui/widgets/createwidget.h"
 #include "gui/widgets/dropdown.h"
 #include "gui/widgets/itemlinkhandler.h"
 #include "gui/widgets/scrollarea.h"
@@ -88,7 +89,7 @@ ChatWindow::ChatWindow() :
     KeyListener(),
     AttributeListener(),
     mItemLinkHandler(new ItemLinkHandler),
-    mChatTabs(new TabbedArea(this)),
+    mChatTabs(CREATEWIDGETR(TabbedArea, this)),
     mChatInput(new ChatInput(this)),
     mRainbowColor(0),
     mWhispers(),
@@ -116,8 +117,6 @@ ChatWindow::ChatWindow() :
     mShowAllLang(serverConfig.getValue("showAllLang", 0)),
     mTmpVisible(false)
 {
-    mChatTabs->postInit();
-
     setWindowName("Chat");
 
     if (setupWindow)
