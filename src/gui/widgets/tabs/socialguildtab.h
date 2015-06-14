@@ -113,24 +113,24 @@ class SocialGuildTab final : public SocialTab,
 
         void invite() override final
         {
-            // TRANSLATORS: guild invite message
-            mInviteDialog = new TextDialog(_("Member Invite to Guild"),
+            CREATEWIDGETV(mInviteDialog, TextDialog,
+                // TRANSLATORS: guild invite message
+                _("Member Invite to Guild"),
                 // TRANSLATORS: guild invite message
                 strprintf(_("Who would you like to invite to guild %s?"),
                 mGuild->getName().c_str()), socialWindow);
-            mInviteDialog->postInit();
             mInviteDialog->setActionEventId("do invite");
             mInviteDialog->addActionListener(this);
         }
 
         void leave() override final
         {
-            // TRANSLATORS: guild leave message
-            mConfirmDialog = new ConfirmDialog(_("Leave Guild?"),
+            CREATEWIDGETV(mConfirmDialog, ConfirmDialog,
+                // TRANSLATORS: guild leave message
+                _("Leave Guild?"),
                 // TRANSLATORS: guild leave message
                 strprintf(_("Are you sure you want to leave guild %s?"),
                 mGuild->getName().c_str()), SOUND_REQUEST, socialWindow);
-            mConfirmDialog->postInit();
             mConfirmDialog->addActionListener(this);
         }
 
