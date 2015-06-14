@@ -31,6 +31,7 @@
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/checkbox.h"
+#include "gui/widgets/createwidget.h"
 #include "gui/widgets/dropdown.h"
 #include "gui/widgets/horizontcontainer.h"
 #include "gui/widgets/inttextfield.h"
@@ -409,9 +410,10 @@ void SetupItemTextField::action(const ActionEvent &event)
     }
     else if (eventId == mEventName + "_EDIT")
     {
-        mEditDialog =  new EditDialog(mText, mTextField->getText(),
+        mEditDialog = CREATEWIDGETR(EditDialog,
+            mText,
+            mTextField->getText(),
             mEventName + "_EDIT_OK");
-        mEditDialog->postInit();
         mEditDialog->addActionListener(this);
     }
     else if (eventId == mEventName + "_EDIT_OK")
@@ -546,9 +548,10 @@ void SetupItemIntTextField::action(const ActionEvent &event)
     }
     else if (eventId == mEventName + "_EDIT")
     {
-        mEditDialog =  new EditDialog(mText, mTextField->getText(),
+        mEditDialog = CREATEWIDGETR(EditDialog,
+            mText,
+            mTextField->getText(),
             mEventName + "_EDIT_OK");
-        mEditDialog->postInit();
         mEditDialog->addActionListener(this);
     }
     else if (eventId == mEventName + "_EDIT_OK")
