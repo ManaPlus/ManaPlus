@@ -28,6 +28,8 @@
 
 #include "gui/windows/tradewindow.h"
 
+#include "gui/widgets/createwidget.h"
+
 #include "net/messagein.h"
 
 #include "utils/gettext.h"
@@ -168,13 +170,14 @@ void TradeHandler::processTradeRequestContinue(const std::string &partner)
                 != tradePartnerName)
             {
                 tradeWindow->clear();
-                // TRANSLATORS: trade message
-                confirmDlg = new ConfirmDialog(_("Request for Trade"),
+                CREATEWIDGETV(confirmDlg, ConfirmDialog,
+                    // TRANSLATORS: trade message
+                    _("Request for Trade"),
                     // TRANSLATORS: trade message
                     strprintf(_("%s wants to trade with you, do"
                     " you accept?"), tradePartnerName.c_str()),
-                    SOUND_REQUEST, true);
-                confirmDlg->postInit();
+                    SOUND_REQUEST,
+                true);
                 confirmDlg->addActionListener(&listener);
             }
             else
