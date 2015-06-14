@@ -27,6 +27,7 @@
 #include "gui/windows/okdialog.h"
 
 #include "gui/widgets/button.h"
+#include "gui/widgets/createwidget.h"
 #include "gui/widgets/passwordfield.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layoutcell.h"
@@ -150,8 +151,9 @@ void ChangePasswordDialog::action(const ActionEvent &event)
             else  // if (error == 3)
                 mWrongDataNoticeListener->setTarget(this->mSecondPassField);
 
-            // TRANSLATORS: change password error header
-            OkDialog *const dlg = new OkDialog(_("Error"),
+            OkDialog *const dlg = CREATEWIDGETR(OkDialog,
+                // TRANSLATORS: change password error header
+                _("Error"),
                 errorMsg.str(),
                 // TRANSLATORS: ok dialog button
                 _("OK"),
@@ -160,7 +162,6 @@ void ChangePasswordDialog::action(const ActionEvent &event)
                 ShowCenter_true,
                 nullptr,
                 260);
-            dlg->postInit();
             dlg->addActionListener(mWrongDataNoticeListener);
         }
         else
