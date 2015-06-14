@@ -27,6 +27,8 @@
 #include "gui/popups/itempopup.h"
 #include "gui/popups/popupmenu.h"
 
+#include "gui/widgets/createwidget.h"
+
 #include "gui/windows/confirmdialog.h"
 #include "gui/windows/helpwindow.h"
 
@@ -65,10 +67,13 @@ void ItemLinkHandler::handleLink(const std::string &link, MouseEvent *event)
         const MouseButtonT button = event->getButton();
         if (button == MouseButton::LEFT)
         {
-            ConfirmDialog *const confirmDlg = new ConfirmDialog(
+            ConfirmDialog *const confirmDlg = CREATEWIDGETR(ConfirmDialog,
                 // TRANSLATORS: dialog message
-                _("Open url"), url, SOUND_REQUEST, false, Modal_true);
-            confirmDlg->postInit();
+                _("Open url"),
+                url,
+                SOUND_REQUEST,
+                false,
+                Modal_true);
             confirmDlg->addActionListener(&listener);
         }
         else if (button == MouseButton::RIGHT)
