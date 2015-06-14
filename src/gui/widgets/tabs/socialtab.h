@@ -28,6 +28,7 @@
 #include "gui/windows/textdialog.h"
 
 #include "gui/widgets/avatarlistbox.h"
+#include "gui/widgets/createwidget.h"
 #include "gui/widgets/scrollarea.h"
 
 #include "gui/widgets/tabs/tab.h"
@@ -104,8 +105,7 @@ class SocialTab notfinal : public Tab
         void createControls(AvatarListModel *const listModel,
                             const bool showBackground)
         {
-            mList = new AvatarListBox(this, listModel);
-            mList->postInit();
+            CREATEWIDGETV(mList, AvatarListBox, this, listModel);
             mScroll = new ScrollArea(this, mList, showBackground,
                 "social_background.xml");
 
