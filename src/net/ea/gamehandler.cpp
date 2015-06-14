@@ -28,6 +28,8 @@
 
 #include "gui/windows/okdialog.h"
 
+#include "gui/widgets/createwidget.h"
+
 #include "net/messagein.h"
 
 #include "resources/notifytypes.h"
@@ -74,7 +76,9 @@ void GameHandler::processMapQuitResponse(Net::MessageIn &msg)
 {
     if (msg.readUInt8("response"))
     {
-        (new OkDialog(_("Game"),
+        CREATEWIDGET(OkDialog,
+            // TRANSLATORS: error header
+            _("Game"),
             // TRANSLATORS: error message
             _("Request to quit denied!"),
             // TRANSLATORS: ok dialog button
@@ -83,7 +87,7 @@ void GameHandler::processMapQuitResponse(Net::MessageIn &msg)
             Modal_true,
             ShowCenter_true,
             nullptr,
-            260))->postInit();
+            260);
     }
 }
 
