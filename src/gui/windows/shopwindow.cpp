@@ -44,6 +44,7 @@
 #include "gui/widgets/button.h"
 #include "gui/widgets/checkbox.h"
 #include "gui/widgets/containerplacer.h"
+#include "gui/widgets/createwidget.h"
 #include "gui/widgets/layout.h"
 #include "gui/widgets/layouttype.h"
 #include "gui/widgets/scrollarea.h"
@@ -112,8 +113,10 @@ ShopWindow::ShopWindow() :
     mBuyShopItems(new ShopItems),
     mSellShopItems(new ShopItems),
     mTradeItem(nullptr),
-    mBuyShopItemList(new ShopListBox(this, mBuyShopItems, mBuyShopItems)),
-    mSellShopItemList(new ShopListBox(this, mSellShopItems, mSellShopItems)),
+    mBuyShopItemList(CREATEWIDGETR(ShopListBox,
+        this, mBuyShopItems, mBuyShopItems)),
+    mSellShopItemList(CREATEWIDGETR(ShopListBox,
+        this, mSellShopItems, mSellShopItems)),
     mCurrentShopItemList(nullptr),
     mScrollArea(new ScrollArea(this, mBuyShopItemList,
         getOptionBool("showbuybackground"), "shop_buy_background.xml")),
@@ -142,9 +145,6 @@ ShopWindow::ShopWindow() :
     mEnableBuyingStore(false),
     mEnableVending(false)
 {
-    mBuyShopItemList->postInit();
-    mSellShopItemList->postInit();
-
     setWindowName("Personal Shop");
     setResizable(true);
     setCloseButton(true);
@@ -368,9 +368,11 @@ void ShopWindow::action(const ActionEvent &event)
     }
     else if (eventId == "rename")
     {
-        EditDialog *const dialog = new EditDialog(
-            _("Please enter new shop name"), mSellShopName, "OK");
-        dialog->postInit();
+        EditDialog *const dialog = CREATEWIDGETR(EditDialog,
+            // TRANSLATORS: shop rename dialog title
+            _("Please enter new shop name"),
+            mSellShopName,
+            "OK");
         shopRenameListener.setDialog(dialog);
         dialog->addActionListener(&shopRenameListener);
     }
@@ -811,14 +813,12 @@ void ShopWindow::showList(const std::string &nick, std::string data)
     if (data.find("B1") == 0)
     {
         data = data.substr(2);
-        buyDialog = new BuyDialog(nick);
-        buyDialog->postInit();
+        CREATEWIDGETV(buyDialog, BuyDialog, nick);
     }
     else if (data.find("S1") == 0)
     {
         data = data.substr(2);
-        sellDialog = new ShopSellDialog(nick);
-        sellDialog->postInit();
+        CREATEWIDGETV(sellDialog, ShopSellDialog, nick);
     }
     else
     {
@@ -954,15 +954,14 @@ void ShopWindow::processRequest(const std::string &nick, std::string data,
     }
     else
     {
-        ConfirmDialog *const confirmDlg = new ConfirmDialog
+        ConfirmDialog *const confirmDlg = CREATEWIDGETR(ConfirmDialog,
             // TRANSLATORS: shop window dialog
-            (_("Request for Trade"),
+            _("Request for Trade"),
             strprintf(_("%s wants to %s %s do you accept?"),
             nick.c_str(), msg.c_str(),
             mTradeItem->getInfo().getName().c_str()),
             SOUND_REQUEST,
             true);
-        confirmDlg->postInit();
         confirmDlg->addActionListener(this);
     }
 }
