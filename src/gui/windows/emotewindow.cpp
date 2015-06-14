@@ -26,6 +26,7 @@
 #include "gui/windows/setupwindow.h"
 
 #include "gui/widgets/colorpage.h"
+#include "gui/widgets/createwidget.h"
 #include "gui/widgets/emotepage.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/tabbedarea.h"
@@ -52,19 +53,16 @@ static const char *const fontSizeList[] =
 EmoteWindow::EmoteWindow() :
     // TRANSLATORS: emotes window name
     Window(_("Emotes"), Modal_false, nullptr, "emotes.xml"),
-    mTabs(new TabbedArea(this)),
+    mTabs(CREATEWIDGETR(TabbedArea, this)),
     mEmotePage(new EmotePage(this)),
     mColorModel(ColorModel::createDefault(this)),
-    mColorPage(new ColorPage(this, mColorModel, "colorpage.xml")),
+    mColorPage(CREATEWIDGETR(ColorPage, this, mColorModel, "colorpage.xml")),
     mScrollColorPage(new ScrollArea(this, mColorPage, false, "emotepage.xml")),
     mFontModel(new NamesModel),
-    mFontPage(new ListBox(this, mFontModel, "")),
+    mFontPage(CREATEWIDGETR(ListBox, this, mFontModel, "")),
     mScrollFontPage(new ScrollArea(this, mFontPage, false, "fontpage.xml")),
     mImageSet(Theme::getImageSetFromThemeXml("emotetabs.xml", "", 17, 16))
 {
-    mTabs->postInit();
-    mColorPage->postInit();
-    mFontPage->postInit();
     setShowTitle(false);
     setResizable(true);
 
