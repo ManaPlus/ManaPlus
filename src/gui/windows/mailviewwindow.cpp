@@ -31,6 +31,7 @@
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/containerplacer.h"
+#include "gui/widgets/createwidget.h"
 #include "gui/widgets/icon.h"
 #include "gui/widgets/label.h"
 
@@ -182,8 +183,7 @@ void MailViewWindow::action(const ActionEvent &event)
             return;
         if (mailEditWindow)
             mailEditWindow->scheduleDelete();
-        mailEditWindow = new MailEditWindow;
-        mailEditWindow->postInit();
+        CREATEWIDGETV0(mailEditWindow, MailEditWindow);
         mailEditWindow->setTo(mMessage->sender);
         mailEditWindow->setSubject("Re:" + mMessage->title);
         mailEditWindow->setMessage(">" + mMessage->text);
