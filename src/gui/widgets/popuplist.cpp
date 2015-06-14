@@ -22,6 +22,7 @@
 
 #include "gui/gui.h"
 
+#include "gui/widgets/createwidget.h"
 #include "gui/widgets/dropdown.h"
 #include "gui/widgets/extendedlistbox.h"
 #include "gui/widgets/scrollarea.h"
@@ -35,15 +36,15 @@ PopupList::PopupList(DropDown *const widget,
     Popup("PopupList", "popuplist.xml"),
     FocusListener(),
     mListModel(listModel),
-    mListBox(extended ? new ExtendedListBox(
+    mListBox(extended ? CREATEWIDGETR(ExtendedListBox,
         widget, listModel, "extendedlistbox.xml", 0) :
-        new ListBox(widget, listModel, "popuplistbox.xml")),
+        CREATEWIDGETR(ListBox,
+        widget, listModel, "popuplistbox.xml")),
     mScrollArea(new ScrollArea(this, mListBox, false)),
     mDropDown(widget),
     mPressedIndex(-2),
     mModal(modal)
 {
-    mListBox->postInit();
     mListBox->setMouseConsume(false);
     mScrollArea->setMouseConsume(false);
     mAllowLogic = false;
