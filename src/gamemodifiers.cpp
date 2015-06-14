@@ -33,6 +33,8 @@
 #include "gui/windows/okdialog.h"
 #include "gui/windows/outfitwindow.h"
 
+#include "gui/widgets/createwidget.h"
+
 #include "gui/widgets/tabs/chat/chattab.h"
 
 #include "listeners/gamemodifierlistener.h"
@@ -430,8 +432,9 @@ void GameModifiers::changeAwayMode(const bool forward A_UNUSED)
         localPlayer->navigateClean();
         if (outfitWindow)
             outfitWindow->wearAwayOutfit();
-        // TRANSLATORS: away message box header
-        OkDialog *const dialog = new OkDialog(_("Away"),
+        OkDialog *const dialog = CREATEWIDGET2(OkDialog,
+            // TRANSLATORS: away message box header
+            _("Away"),
             config.getStringValue("afkMessage"),
             // TRANSLATORS: ok dialog button
             _("OK"),
@@ -440,7 +443,6 @@ void GameModifiers::changeAwayMode(const bool forward A_UNUSED)
             ShowCenter_false,
             nullptr,
             260);
-        dialog->postInit();
         localPlayer->setAwayDialog(dialog);
         dialog->addActionListener(localPlayer->getAwayListener());
         soundManager.volumeOff();
