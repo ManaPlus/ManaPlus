@@ -31,6 +31,7 @@
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/containerplacer.h"
+#include "gui/widgets/createwidget.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layout.h"
 #include "gui/widgets/layouttype.h"
@@ -85,8 +86,10 @@ void SellDialog::postInit()
     // Create a ShopItems instance, that is aware of duplicate entries.
     mShopItems = new ShopItems(true);
 
-    mShopItemList = new ShopListBox(this, mShopItems, mShopItems);
-    mShopItemList->postInit();
+    mShopItemList = CREATEWIDGETR(ShopListBox,
+        this,
+        mShopItems,
+        mShopItems);
     mShopItemList->setProtectItems(true);
     mScrollArea = new ScrollArea(this, mShopItemList,
         getOptionBool("showbackground"), "sell_background.xml");
