@@ -114,24 +114,24 @@ class SocialPartyTab final : public SocialTab,
 
         void invite() override final
         {
-            // TRANSLATORS: party invite message
-            mInviteDialog = new TextDialog(_("Member Invite to Party"),
+            CREATEWIDGETV(mInviteDialog, TextDialog,
+                // TRANSLATORS: party invite message
+                _("Member Invite to Party"),
                 // TRANSLATORS: party invite message
                 strprintf(_("Who would you like to invite to party %s?"),
                 mParty->getName().c_str()), socialWindow);
-            mInviteDialog->postInit();
             mInviteDialog->setActionEventId("do invite");
             mInviteDialog->addActionListener(this);
         }
 
         void leave() override final
         {
-            // TRANSLATORS: party leave message
-            mConfirmDialog = new ConfirmDialog(_("Leave Party?"),
+            CREATEWIDGETV(mConfirmDialog, ConfirmDialog,
+                // TRANSLATORS: party leave message
+                _("Leave Party?"),
                 // TRANSLATORS: party leave message
                 strprintf(_("Are you sure you want to leave party %s?"),
                 mParty->getName().c_str()), SOUND_REQUEST, socialWindow);
-            mConfirmDialog->postInit();
             mConfirmDialog->addActionListener(this);
         }
 
