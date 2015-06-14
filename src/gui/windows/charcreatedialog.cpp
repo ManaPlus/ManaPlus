@@ -30,6 +30,7 @@
 
 #include "gui/widgets/button.h"
 #include "gui/windows/charselectdialog.h"
+#include "gui/widgets/createwidget.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/playerbox.h"
 #include "gui/widgets/slider.h"
@@ -372,8 +373,9 @@ void CharCreateDialog::action(const ActionEvent &event)
         }
         else
         {
-            // TRANSLATORS: char creation error
-            (new OkDialog(_("Error"),
+            CREATEWIDGET(OkDialog,
+                // TRANSLATORS: char creation error
+                _("Error"),
                 // TRANSLATORS: char creation error
                 _("Your name needs to be at least 4 characters."),
                 // TRANSLATORS: ok dialog button
@@ -382,7 +384,7 @@ void CharCreateDialog::action(const ActionEvent &event)
                 Modal_true,
                 ShowCenter_true,
                 nullptr,
-                260))->postInit();
+                260);
         }
     }
     else if (id == "cancel")
