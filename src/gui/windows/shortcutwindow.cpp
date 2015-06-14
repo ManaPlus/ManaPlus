@@ -26,6 +26,7 @@
 #include "gui/widgets/tabbedarea.h"
 
 #include "gui/widgets/button.h"
+#include "gui/widgets/createwidget.h"
 #include "gui/widgets/layout.h"
 #include "gui/widgets/layouttype.h"
 #include "gui/widgets/scrollarea.h"
@@ -108,11 +109,10 @@ ShortcutWindow::ShortcutWindow(const std::string &restrict title,
     Window("Window", Modal_false, nullptr, skinFile),
     mItems(nullptr),
     mScrollArea(nullptr),
-    mTabs(new TabbedArea(this)),
+    mTabs(CREATEWIDGETR(TabbedArea, this)),
     mPages(),
     mButtonIndex(0)
 {
-    mTabs->postInit();
     setWindowName(title);
     setTitleBarHeight(getPadding() + getTitlePadding());
     setShowTitle(false);
