@@ -25,6 +25,7 @@
 #include "gui/windows/setupwindow.h"
 
 #include "gui/widgets/button.h"
+#include "gui/widgets/createwidget.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/tabbedarea.h"
 
@@ -72,7 +73,7 @@ SocialWindow::SocialWindow() :
     // TRANSLATORS: here F is title for friends tab in social window
     mFriends(new SocialFriendsTab(this, _("F"),
         getOptionBool("showtabbackground"))),
-    mCreatePopup(new CreatePartyPopup),
+    mCreatePopup(CREATEWIDGETR0(CreatePartyPopup)),
     // TRANSLATORS: social window button
     mCreateButton(new Button(this, _("Create"), "create", this)),
     // TRANSLATORS: social window button
@@ -80,15 +81,13 @@ SocialWindow::SocialWindow() :
     // TRANSLATORS: social window button
     mLeaveButton(new Button(this, _("Leave"), "leave", this)),
     mCountLabel(new Label(this, "1000 / 1000")),
-    mTabs(new TabbedArea(this)),
+    mTabs(CREATEWIDGETR(TabbedArea, this)),
     mMap(nullptr),
     mLastUpdateTime(0),
     mPartyId(0),
     mNeedUpdate(false),
     mProcessedPortals(false)
 {
-    mCreatePopup->postInit();
-    mTabs->postInit();
 }
 
 void SocialWindow::postInit()
@@ -397,11 +396,11 @@ void SocialWindow::action(const ActionEvent &event)
 
 void SocialWindow::showGuildCreate()
 {
-    // TRANSLATORS: guild creation message
-    mGuildCreateDialog = new TextDialog(_("Guild Name"),
+    CREATEWIDGETV(mGuildCreateDialog, TextDialog,
+        // TRANSLATORS: guild creation message
+        _("Guild Name"),
         // TRANSLATORS: guild creation message
         _("Choose your guild's name."), this);
-    mGuildCreateDialog->postInit();
     mGuildCreateDialog->setActionEventId("create guild");
     mGuildCreateDialog->addActionListener(this);
 }
@@ -431,10 +430,14 @@ void SocialWindow::showGuildInvite(const std::string &restrict guildName,
     if (localChatTab)
         localChatTab->chatLog(msg, ChatMsgType::BY_SERVER);
 
-    // TRANSLATORS: guild invite message
-    mGuildAcceptDialog = new ConfirmDialog(_("Accept Guild Invite"),
-        msg, SOUND_REQUEST, false, Modal_false, this);
-    mGuildAcceptDialog->postInit();
+    CREATEWIDGETV(mGuildAcceptDialog, ConfirmDialog,
+        // TRANSLATORS: guild invite message
+        _("Accept Guild Invite"),
+        msg,
+        SOUND_REQUEST,
+        false,
+        Modal_false,
+        this);
     mGuildAcceptDialog->addActionListener(this);
     mGuildInvited = guildId;
 }
@@ -492,9 +495,13 @@ void SocialWindow::showPartyInvite(const std::string &restrict partyName,
 
     // show invite
     // TRANSLATORS: party invite message
-    mPartyAcceptDialog = new ConfirmDialog(_("Accept Party Invite"),
-        msg, SOUND_REQUEST, false, Modal_false, this);
-    mPartyAcceptDialog->postInit();
+    CREATEWIDGETV(mPartyAcceptDialog, ConfirmDialog,
+        _("Accept Party Invite"),
+        msg,
+        SOUND_REQUEST,
+        false,
+        Modal_false,
+        this);
     mPartyAcceptDialog->addActionListener(this);
     mPartyInviter = inviter;
     mPartyId = partyId;
@@ -507,8 +514,9 @@ void SocialWindow::showPartyCreate()
 
     if (localPlayer->getParty())
     {
-        // TRANSLATORS: party creation message
-        (new OkDialog(_("Create Party"),
+        CREATEWIDGET(OkDialog,
+            // TRANSLATORS: party creation message
+            _("Create Party"),
             _("Cannot create party. You are already in a party"),
             // TRANSLATORS: ok dialog button
             _("OK"),
@@ -516,15 +524,15 @@ void SocialWindow::showPartyCreate()
             Modal_true,
             ShowCenter_true,
             this,
-            260))->postInit();
+            260);
         return;
     }
 
-    // TRANSLATORS: party creation message
-    mPartyCreateDialog = new TextDialog(_("Party Name"),
+    CREATEWIDGETV(mPartyCreateDialog, TextDialog,
+        // TRANSLATORS: party creation message
+        _("Party Name"),
         // TRANSLATORS: party creation message
         _("Choose your party's name."), this);
-    mPartyCreateDialog->postInit();
     mPartyCreateDialog->setActionEventId("create party");
     mPartyCreateDialog->addActionListener(this);
 }
