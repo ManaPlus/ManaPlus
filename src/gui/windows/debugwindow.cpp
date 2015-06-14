@@ -26,6 +26,7 @@
 
 #include "gui/windows/setupwindow.h"
 
+#include "gui/widgets/createwidget.h"
 #include "gui/widgets/tabbedarea.h"
 
 #include "gui/widgets/tabs/debugwindowtabs.h"
@@ -40,12 +41,11 @@ DebugWindow *debugWindow = nullptr;
 DebugWindow::DebugWindow() :
     // TRANSLATORS: debug window name
     Window(_("Debug"), Modal_false, nullptr, "debug.xml"),
-    mTabs(new TabbedArea(this)),
+    mTabs(CREATEWIDGETR(TabbedArea, this)),
     mMapWidget(new MapDebugTab(this)),
     mTargetWidget(new TargetDebugTab(this)),
     mNetWidget(new NetDebugTab(this))
 {
-    mTabs->postInit();
     setWindowName("Debug");
     if (setupWindow)
         setupWindow->registerWindowForReset(this);
