@@ -30,6 +30,7 @@
 #include "net/download.h"
 
 #include "gui/widgets/checkbox.h"
+#include "gui/widgets/createwidget.h"
 #include "gui/widgets/desktop.h"
 #include "gui/windows/editserverdialog.h"
 #include "gui/windows/logindialog.h"
@@ -121,15 +122,13 @@ ServerDialog::ServerDialog(ServerInfo *const serverInfo,
     // TRANSLATORS: servers dialog button
     mLoadButton(new Button(this, _("Load"), "load", this)),
     mServersListModel(new ServersListModel(&mServers, this)),
-    mServersList(new ServersListBox(this, mServersListModel)),
+    mServersList(CREATEWIDGETR(ServersListBox, this, mServersListModel)),
     mDownload(nullptr),
     mServerInfo(serverInfo),
     mPersistentIPCheckBox(nullptr),
     mDownloadProgress(-1.0F),
     mDownloadStatus(DOWNLOADING_UNKNOWN)
 {
-    mServersList->postInit();
-
     if (isSafeMode)
     {
         // TRANSLATORS: servers dialog name
@@ -284,15 +283,17 @@ void ServerDialog::action(const ActionEvent &event)
     }
     else if (eventId == "addEntry")
     {
-        (new EditServerDialog(this, ServerInfo(), -1))->postInit();
+        CREATEWIDGET(EditServerDialog, this, ServerInfo(), -1);
     }
     else if (eventId == "editEntry")
     {
         const int index = mServersList->getSelected();
         if (index >= 0)
         {
-            (new EditServerDialog(this, mServers.at(index),
-                index))->postInit();
+            CREATEWIDGET(EditServerDialog,
+                this,
+                mServers.at(index),
+                index);
         }
     }
     else if (eventId == "remove")
@@ -324,7 +325,7 @@ void ServerDialog::keyPressed(KeyEvent &event)
             return;
 
         case InputAction::GUI_INSERT:
-            (new EditServerDialog(this, ServerInfo(), -1))->postInit();
+            CREATEWIDGET(EditServerDialog, this, ServerInfo(), -1);
             return;
 
         case InputAction::GUI_DELETE:
@@ -344,8 +345,8 @@ void ServerDialog::keyPressed(KeyEvent &event)
             const int index = mServersList->getSelected();
             if (index >= 0)
             {
-                (new EditServerDialog(this, mServers.at(index),
-                    index))->postInit();
+                CREATEWIDGET(EditServerDialog, this, mServers.at(index),
+                    index);
             }
             return;
         }
