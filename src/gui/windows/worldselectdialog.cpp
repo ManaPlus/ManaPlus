@@ -26,6 +26,7 @@
 #include "settings.h"
 
 #include "gui/widgets/button.h"
+#include "gui/widgets/createwidget.h"
 #include "gui/widgets/layout.h"
 #include "gui/widgets/listbox.h"
 #include "gui/widgets/scrollarea.h"
@@ -47,13 +48,12 @@ WorldSelectDialog::WorldSelectDialog(Worlds worlds) :
     ActionListener(),
     KeyListener(),
     mWorldListModel(new WorldListModel(worlds)),
-    mWorldList(new ListBox(this, mWorldListModel, "")),
+    mWorldList(CREATEWIDGETR(ListBox, this, mWorldListModel, "")),
     // TRANSLATORS: world dialog button
     mChangeLoginButton(new Button(this, _("Change Login"), "login", this)),
     // TRANSLATORS: world dialog button
     mChooseWorld(new Button(this, _("Choose World"), "world", this))
 {
-    mWorldList->postInit();
     ScrollArea *const worldsScroll = new ScrollArea(this, mWorldList,
         getOptionBool("showbackground"), "world_background.xml");
 
