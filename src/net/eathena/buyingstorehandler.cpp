@@ -30,6 +30,8 @@
 
 #include "gui/windows/buyingstoreselldialog.h"
 
+#include "gui/widgets/createwidget.h"
+
 #include "listeners/arrowslistener.h"
 #include "listeners/buyingstoremodelistener.h"
 #include "listeners/buyingstoreslotslistener.h"
@@ -194,10 +196,9 @@ void BuyingStoreHandler::processBuyingStoreItemsList(Net::MessageIn &msg)
     if (!dstBeing)
         return;
 
-    SellDialog *const dialog = new BuyingStoreSellDialog(
+    SellDialog *const dialog = CREATEWIDGETR(BuyingStoreSellDialog,
         dstBeing->getId(),
         storeId);
-    dialog->postInit();
     dialog->setMoney(PlayerInfo::getAttribute(Attributes::MONEY));
     Inventory *const inv = PlayerInfo::getInventory();
     for (int f = 0; f < count; f ++)
