@@ -42,6 +42,7 @@
 
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/button.h"
+#include "gui/widgets/createwidget.h"
 #include "gui/widgets/inttextfield.h"
 #include "gui/widgets/itemcontainer.h"
 #include "gui/widgets/itemlinkhandler.h"
@@ -94,7 +95,8 @@ NpcDialog::NpcDialog(const BeingId npcId) :
         getOptionBool("showtextbackground"), "npc_textbackground.xml")),
     mText(),
     mNewText(),
-    mItemList(new ExtendedListBox(this, this, "extendedlistbox.xml")),
+    mItemList(CREATEWIDGETR(ExtendedListBox,
+        this, this, "extendedlistbox.xml")),
     mListScrollArea(new ScrollArea(this, mItemList,
         getOptionBool("showlistbackground"), "npc_listbackground.xml")),
     mItems(),
@@ -130,7 +132,6 @@ NpcDialog::NpcDialog(const BeingId npcId) :
     mShowAvatar(false),
     mLogInteraction(config.getBoolValue("logNpcInGui"))
 {
-    mItemList->postInit();
     // Basic Window Setup
     setWindowName("NpcText");
     setResizable(true);
