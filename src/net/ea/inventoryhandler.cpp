@@ -28,6 +28,8 @@
 
 #include "enums/equipslot.h"
 
+#include "gui/widgets/createwidget.h"
+
 #include "net/messagein.h"
 
 #include "net/ea/eaprotocol.h"
@@ -266,8 +268,7 @@ void InventoryHandler::processPlayerStorageStatus(Net::MessageIn &msg)
 
     if (!storageWindow)
     {
-        storageWindow = new InventoryWindow(mStorage);
-        storageWindow->postInit();
+        CREATEWIDGETV(storageWindow, InventoryWindow, mStorage);
     }
     BLOCK_END("InventoryHandler::processPlayerStorageStatus")
 }
