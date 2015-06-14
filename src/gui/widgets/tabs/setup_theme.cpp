@@ -34,6 +34,7 @@
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/containerplacer.h"
+#include "gui/widgets/createwidget.h"
 #include "gui/widgets/dropdown.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layouthelper.h"
@@ -304,15 +305,17 @@ void Setup_Theme::action(const ActionEvent &event)
     }
     else if (eventId == ACTION_INFO)
     {
-        // TRANSLATORS: theme info dialog header
-        (new OkDialog(_("Theme info"), mThemeInfo,
+        CREATEWIDGET(OkDialog,
+            // TRANSLATORS: theme info dialog header
+            _("Theme info"),
+            mThemeInfo,
             // TRANSLATORS: ok dialog button
             _("OK"),
             DialogType::OK,
             Modal_false,
             ShowCenter_true,
             nullptr,
-            600))->postInit();
+            600);
     }
 }
 
@@ -337,8 +340,9 @@ void Setup_Theme::apply()
 {
     if (config.getStringValue("theme") != mTheme)
     {
-        // TRANSLATORS: theme message dialog
-        (new OkDialog(_("Theme Changed"),
+        CREATEWIDGET(OkDialog,
+            // TRANSLATORS: theme message dialog
+            _("Theme Changed"),
             // TRANSLATORS: ok dialog message
             _("Restart your client for the change to take effect."),
             // TRANSLATORS: ok dialog button
@@ -347,7 +351,7 @@ void Setup_Theme::apply()
             Modal_true,
             ShowCenter_true,
             nullptr,
-            260))->postInit();
+            260);
     }
 
     config.setValue("selectedSkin", "");
