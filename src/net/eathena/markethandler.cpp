@@ -26,6 +26,8 @@
 
 #include "gui/windows/buydialog.h"
 
+#include "gui/widgets/createwidget.h"
+
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
@@ -75,8 +77,7 @@ void MarketHandler::processMarketOpen(Net::MessageIn &msg)
 {
     const int len = (msg.readInt16("len") - 4) / 13;
 
-    mBuyDialog = new BuyDialog(fromInt(BuyDialog::Market, BeingId));
-    mBuyDialog->postInit();
+    CREATEWIDGETV(mBuyDialog, BuyDialog, fromInt(BuyDialog::Market, BeingId));
     mBuyDialog->setMoney(PlayerInfo::getAttribute(Attributes::MONEY));
 
     for (int f = 0; f < len; f ++)
