@@ -95,15 +95,15 @@ void WindowManager::init()
 void WindowManager::createWindows()
 {
     userPalette = new UserPalette;
-    CREATEWIDGET1(setupWindow, SetupWindow);
-    CREATEWIDGET1(helpWindow, HelpWindow);
-    CREATEWIDGET1(didYouKnowWindow, DidYouKnowWindow);
-    CREATEWIDGET1(popupMenu, PopupMenu);
-    CREATEWIDGET1(beingPopup, BeingPopup);
-    CREATEWIDGET1(textPopup, TextPopup);
-    CREATEWIDGET1(textBoxPopup, TextBoxPopup);
-    CREATEWIDGET1(itemPopup, ItemPopup);
-    CREATEWIDGET1(spellPopup, SpellPopup);
+    CREATEWIDGETV0(setupWindow, SetupWindow);
+    CREATEWIDGETV0(helpWindow, HelpWindow);
+    CREATEWIDGETV0(didYouKnowWindow, DidYouKnowWindow);
+    CREATEWIDGETV0(popupMenu, PopupMenu);
+    CREATEWIDGETV0(beingPopup, BeingPopup);
+    CREATEWIDGETV0(textPopup, TextPopup);
+    CREATEWIDGETV0(textBoxPopup, TextBoxPopup);
+    CREATEWIDGETV0(itemPopup, ItemPopup);
+    CREATEWIDGETV0(spellPopup, SpellPopup);
 }
 
 void WindowManager::deleteWindows()

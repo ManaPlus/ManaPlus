@@ -182,31 +182,31 @@ static void createGuiWindows()
     GameModifiers::init();
 
     // Create dialogs
-    CREATEWIDGET1(emoteWindow, EmoteWindow);
-    CREATEWIDGET1(chatWindow, ChatWindow);
-    CREATEWIDGET1(tradeWindow, TradeWindow);
-    CREATEWIDGET(equipmentWindow, EquipmentWindow,
+    CREATEWIDGETV0(emoteWindow, EmoteWindow);
+    CREATEWIDGETV0(chatWindow, ChatWindow);
+    CREATEWIDGETV0(tradeWindow, TradeWindow);
+    CREATEWIDGETV(equipmentWindow, EquipmentWindow,
         PlayerInfo::getEquipment(),
         localPlayer);
-    CREATEWIDGET(beingEquipmentWindow, EquipmentWindow,
+    CREATEWIDGETV(beingEquipmentWindow, EquipmentWindow,
         nullptr, nullptr, true);
     beingEquipmentWindow->setVisible(Visible_false);
-    CREATEWIDGET1(statusWindow, StatusWindow);
-    CREATEWIDGET1(miniStatusWindow, MiniStatusWindow);
-    CREATEWIDGET(inventoryWindow, InventoryWindow,
+    CREATEWIDGETV0(statusWindow, StatusWindow);
+    CREATEWIDGETV0(miniStatusWindow, MiniStatusWindow);
+    CREATEWIDGETV(inventoryWindow, InventoryWindow,
         PlayerInfo::getInventory());
 #ifdef EATHENA_SUPPORT
     if (serverFeatures->haveCart())
     {
-        CREATEWIDGET(cartWindow, InventoryWindow,
+        CREATEWIDGETV(cartWindow, InventoryWindow,
             PlayerInfo::getCartInventory());
     }
 #endif
-    CREATEWIDGET1(shopWindow, ShopWindow);
-    CREATEWIDGET1(skillDialog, SkillDialog);
-    CREATEWIDGET1(minimap, Minimap);
-    CREATEWIDGET1(debugWindow, DebugWindow);
-    CREATEWIDGET(itemShortcutWindow, ShortcutWindow,
+    CREATEWIDGETV0(shopWindow, ShopWindow);
+    CREATEWIDGETV0(skillDialog, SkillDialog);
+    CREATEWIDGETV0(minimap, Minimap);
+    CREATEWIDGETV0(debugWindow, DebugWindow);
+    CREATEWIDGETV(itemShortcutWindow, ShortcutWindow,
         "ItemShortcut", "items.xml", 83, 460);
 
     for (unsigned f = 0; f < SHORTCUT_TABS; f ++)
@@ -220,17 +220,17 @@ static void createGuiWindows()
         didYouKnowWindow->loadData();
     }
 
-    CREATEWIDGET(emoteShortcutWindow, ShortcutWindow,
+    CREATEWIDGETV(emoteShortcutWindow, ShortcutWindow,
         "EmoteShortcut",
         new EmoteShortcutContainer(nullptr),
         "emotes.xml",
         130, 480);
-    CREATEWIDGET1(outfitWindow, OutfitWindow);
-    CREATEWIDGET(dropShortcutWindow, ShortcutWindow,
+    CREATEWIDGETV0(outfitWindow, OutfitWindow);
+    CREATEWIDGETV(dropShortcutWindow, ShortcutWindow,
         "DropShortcut",
         new VirtShortcutContainer(nullptr, dropShortcut),
         "drops.xml");
-    CREATEWIDGET(spellShortcutWindow, ShortcutWindow,
+    CREATEWIDGETV(spellShortcutWindow, ShortcutWindow,
         "SpellShortcut",
         "spells.xml",
         265, 328);
@@ -241,13 +241,13 @@ static void createGuiWindows()
     }
 
 #ifdef EATHENA_SUPPORT
-    CREATEWIDGET1(bankWindow, BankWindow);
-    CREATEWIDGET1(mailWindow, MailWindow);
+    CREATEWIDGETV0(bankWindow, BankWindow);
+    CREATEWIDGETV0(mailWindow, MailWindow);
 #endif
-    CREATEWIDGET1(whoIsOnline, WhoIsOnline);
-    CREATEWIDGET1(killStats, KillStats);
-    CREATEWIDGET1(socialWindow, SocialWindow);
-    CREATEWIDGET1(questsWindow, QuestsWindow);
+    CREATEWIDGETV0(whoIsOnline, WhoIsOnline);
+    CREATEWIDGETV0(killStats, KillStats);
+    CREATEWIDGETV0(socialWindow, SocialWindow);
+    CREATEWIDGETV0(questsWindow, QuestsWindow);
 
     // TRANSLATORS: chat tab header
     localChatTab = new ChatTab(chatWindow, _("General"),

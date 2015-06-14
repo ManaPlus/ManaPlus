@@ -906,7 +906,7 @@ int Client::gameExec()
             if (!top)
                 break;
 
-            CREATEWIDGET(desktop, Desktop, nullptr);
+            CREATEWIDGETV(desktop, Desktop, nullptr);
             top->add(desktop);
             int x = top->getWidth() - mButtonPadding;
             ADDBUTTON(mSetupButton, new Button(desktop,
@@ -1038,7 +1038,7 @@ int Client::gameExec()
                         // lower than the default value
                         theme->setMinimumOpacity(0.8F);
 
-                        CREATEWIDGET(mCurrentDialog, ServerDialog,
+                        CREATEWIDGETV(mCurrentDialog, ServerDialog,
                             &mCurrentServer,
                             settings.configDir);
                     }
@@ -1059,7 +1059,7 @@ int Client::gameExec()
                     BLOCK_START("Client::gameExec STATE_CONNECT_SERVER")
                     logger->log1("State: CONNECT SERVER");
                     loginData.updateHosts.clear();
-                    CREATEWIDGET(mCurrentDialog, ConnectionDialog,
+                    CREATEWIDGETV(mCurrentDialog, ConnectionDialog,
                         // TRANSLATORS: connection dialog header
                         _("Connecting to server"),
                     STATE_SWITCH_SERVER);
@@ -1087,7 +1087,7 @@ int Client::gameExec()
                     if (settings.options.username.empty()
                         || settings.options.password.empty())
                     {
-                        CREATEWIDGET(mCurrentDialog, LoginDialog,
+                        CREATEWIDGETV(mCurrentDialog, LoginDialog,
                             &loginData,
                             mCurrentServer.hostname,
                             &settings.options.updateHost);
@@ -1105,7 +1105,7 @@ int Client::gameExec()
                 case STATE_LOGIN_ATTEMPT:
                     BLOCK_START("Client::gameExec STATE_LOGIN_ATTEMPT")
                     logger->log1("State: LOGIN ATTEMPT");
-                    CREATEWIDGET(mCurrentDialog, ConnectionDialog,
+                    CREATEWIDGETV(mCurrentDialog, ConnectionDialog,
                         // TRANSLATORS: connection dialog header
                         _("Logging in"),
                         STATE_SWITCH_SERVER);
@@ -1133,7 +1133,7 @@ int Client::gameExec()
                         }
                         else
                         {
-                            CREATEWIDGET(mCurrentDialog, WorldSelectDialog,
+                            CREATEWIDGETV(mCurrentDialog, WorldSelectDialog,
                                 worlds);
                             if (settings.options.chooseDefault)
                             {
@@ -1148,7 +1148,7 @@ int Client::gameExec()
                 case STATE_WORLD_SELECT_ATTEMPT:
                     BLOCK_START("Client::gameExec STATE_WORLD_SELECT_ATTEMPT")
                     logger->log1("State: WORLD SELECT ATTEMPT");
-                    CREATEWIDGET(mCurrentDialog, ConnectionDialog,
+                    CREATEWIDGETV(mCurrentDialog, ConnectionDialog,
                         // TRANSLATORS: connection dialog header
                         _("Entering game world"),
                         STATE_WORLD_SELECT);
@@ -1186,7 +1186,7 @@ int Client::gameExec()
                     {
                         settings.oldUpdates = settings.localDataDir
                             + dirSeparator + settings.updatesDir;
-                        CREATEWIDGET(mCurrentDialog, UpdaterWindow,
+                        CREATEWIDGETV(mCurrentDialog, UpdaterWindow,
                             settings.updateHost,
                             settings.oldUpdates,
                             settings.options.dataPath.empty(),
@@ -1280,7 +1280,7 @@ int Client::gameExec()
                 case STATE_GET_CHARACTERS:
                     BLOCK_START("Client::gameExec STATE_GET_CHARACTERS")
                     logger->log1("State: GET CHARACTERS");
-                    CREATEWIDGET(mCurrentDialog, ConnectionDialog,
+                    CREATEWIDGETV(mCurrentDialog, ConnectionDialog,
                         // TRANSLATORS: connection dialog header
                         _("Requesting characters"),
                         STATE_SWITCH_SERVER);
@@ -1295,7 +1295,7 @@ int Client::gameExec()
                     // lower than the default value
                     theme->setMinimumOpacity(0.8F);
 
-                    CREATEWIDGET(mCurrentDialog, CharSelectDialog,
+                    CREATEWIDGETV(mCurrentDialog, CharSelectDialog,
                         &loginData);
 
                     if (!(static_cast<CharSelectDialog*>(mCurrentDialog))
@@ -1319,7 +1319,7 @@ int Client::gameExec()
                 case STATE_CONNECT_GAME:
                     BLOCK_START("Client::gameExec STATE_CONNECT_GAME")
                     logger->log1("State: CONNECT GAME");
-                    CREATEWIDGET(mCurrentDialog, ConnectionDialog,
+                    CREATEWIDGETV(mCurrentDialog, ConnectionDialog,
                         // TRANSLATORS: connection dialog header
                         _("Connecting to the game server"),
                         STATE_CHOOSE_SERVER);
@@ -1330,7 +1330,7 @@ int Client::gameExec()
                 case STATE_CHANGE_MAP:
                     BLOCK_START("Client::gameExec STATE_CHANGE_MAP")
                     logger->log1("State: CHANGE_MAP");
-                    CREATEWIDGET(mCurrentDialog, ConnectionDialog,
+                    CREATEWIDGETV(mCurrentDialog, ConnectionDialog,
                         // TRANSLATORS: connection dialog header
                         _("Changing game servers"),
                         STATE_SWITCH_CHARACTER);
@@ -1385,7 +1385,7 @@ int Client::gameExec()
                 case STATE_LOGIN_ERROR:
                     BLOCK_START("Client::gameExec STATE_LOGIN_ERROR")
                     logger->log1("State: LOGIN ERROR");
-                    CREATEWIDGET(mCurrentDialog, OkDialog,
+                    CREATEWIDGETV(mCurrentDialog, OkDialog,
                         // TRANSLATORS: error dialog header
                         _("Error"),
                         errorMessage,
@@ -1404,7 +1404,7 @@ int Client::gameExec()
                 case STATE_ACCOUNTCHANGE_ERROR:
                     BLOCK_START("Client::gameExec STATE_ACCOUNTCHANGE_ERROR")
                     logger->log1("State: ACCOUNT CHANGE ERROR");
-                    CREATEWIDGET(mCurrentDialog, OkDialog,
+                    CREATEWIDGETV(mCurrentDialog, OkDialog,
                         // TRANSLATORS: error dialog header
                         _("Error"),
                         errorMessage,
@@ -1423,7 +1423,7 @@ int Client::gameExec()
                 case STATE_REGISTER_PREP:
                     BLOCK_START("Client::gameExec STATE_REGISTER_PREP")
                     logger->log1("State: REGISTER_PREP");
-                    CREATEWIDGET(mCurrentDialog, ConnectionDialog,
+                    CREATEWIDGETV(mCurrentDialog, ConnectionDialog,
                         // TRANSLATORS: connection dialog header
                         _("Requesting registration details"),
                         STATE_LOGIN);
@@ -1433,7 +1433,7 @@ int Client::gameExec()
 
                 case STATE_REGISTER:
                     logger->log1("State: REGISTER");
-                    CREATEWIDGET(mCurrentDialog, RegisterDialog,
+                    CREATEWIDGETV(mCurrentDialog, RegisterDialog,
                         &loginData);
                     break;
 
@@ -1447,7 +1447,7 @@ int Client::gameExec()
                 case STATE_CHANGEPASSWORD:
                     BLOCK_START("Client::gameExec STATE_CHANGEPASSWORD")
                     logger->log1("State: CHANGE PASSWORD");
-                    CREATEWIDGET(mCurrentDialog, ChangePasswordDialog,
+                    CREATEWIDGETV(mCurrentDialog, ChangePasswordDialog,
                         &loginData);
                     mCurrentDialog->setVisible(Visible_true);
                     BLOCK_END("Client::gameExec STATE_CHANGEPASSWORD")
@@ -1466,7 +1466,7 @@ int Client::gameExec()
                     BLOCK_START("Client::gameExec "
                         "STATE_CHANGEPASSWORD_SUCCESS")
                     logger->log1("State: CHANGE PASSWORD SUCCESS");
-                    CREATEWIDGET(mCurrentDialog, OkDialog,
+                    CREATEWIDGETV(mCurrentDialog, OkDialog,
                         // TRANSLATORS: password change message header
                         _("Password Change"),
                         // TRANSLATORS: password change message text
@@ -1487,7 +1487,7 @@ int Client::gameExec()
 
                 case STATE_CHANGEEMAIL:
                     logger->log1("State: CHANGE EMAIL");
-                    CREATEWIDGET(mCurrentDialog, ChangeEmailDialog,
+                    CREATEWIDGETV(mCurrentDialog, ChangeEmailDialog,
                         &loginData);
                     mCurrentDialog->setVisible(Visible_true);
                     break;
@@ -1499,7 +1499,7 @@ int Client::gameExec()
 
                 case STATE_CHANGEEMAIL_SUCCESS:
                     logger->log1("State: CHANGE EMAIL SUCCESS");
-                    CREATEWIDGET(mCurrentDialog, OkDialog,
+                    CREATEWIDGETV(mCurrentDialog, OkDialog,
                         // TRANSLATORS: email change message header
                         _("Email Change"),
                         // TRANSLATORS: email change message text
@@ -1517,7 +1517,7 @@ int Client::gameExec()
 
                 case STATE_UNREGISTER:
                     logger->log1("State: UNREGISTER");
-                    CREATEWIDGET(mCurrentDialog, UnRegisterDialog,
+                    CREATEWIDGETV(mCurrentDialog, UnRegisterDialog,
                         &loginData);
                     break;
 

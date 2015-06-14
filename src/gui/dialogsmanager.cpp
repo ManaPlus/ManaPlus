@@ -85,7 +85,7 @@ void DialogsManager::closeDialogs()
 
 void DialogsManager::createUpdaterWindow()
 {
-    CREATEWIDGET(updaterWindow, UpdaterWindow,
+    CREATEWIDGETV(updaterWindow, UpdaterWindow,
         settings.updateHost,
         settings.oldUpdates,
         false,
@@ -98,7 +98,7 @@ Window *DialogsManager::openErrorDialog(const std::string &header,
 {
     if (settings.supportUrl.empty() || config.getBoolValue("hidesupport"))
     {
-        OkDialog *const dialog = CREATEWIDGET2(OkDialog,
+        OkDialog *const dialog = CREATEWIDGETR(OkDialog,
             header,
             message,
             // TRANSLATORS: ok dialog button
@@ -112,7 +112,7 @@ Window *DialogsManager::openErrorDialog(const std::string &header,
     }
     else
     {
-        ConfirmDialog *const dialog = CREATEWIDGET2(ConfirmDialog,
+        ConfirmDialog *const dialog = CREATEWIDGETR(ConfirmDialog,
             header,
             strprintf("%s %s", message.c_str(),
             // TRANSLATORS: error message question
@@ -129,7 +129,7 @@ void DialogsManager::playerDeath()
     if (!deathNotice)
     {
         // TRANSLATORS: message header
-        CREATEWIDGET(deathNotice, OkDialog,
+        CREATEWIDGETV(deathNotice, OkDialog,
             _("Message"),
             DeadDB::getRandomString(),
             // TRANSLATORS: ok dialog button
@@ -157,7 +157,7 @@ void DialogsManager::attributeChanged(const AttributesT id,
             if (newVal >= max && total < max)
             {
                 weightNoticeTime = cur_time + 5;
-                CREATEWIDGET(weightNotice, OkDialog,
+                CREATEWIDGETV(weightNotice, OkDialog,
                     // TRANSLATORS: message header
                     _("Message"),
                     // TRANSLATORS: weight message
@@ -177,7 +177,7 @@ void DialogsManager::attributeChanged(const AttributesT id,
             else if (newVal < max && total >= max)
             {
                 weightNoticeTime = cur_time + 5;
-                CREATEWIDGET(weightNotice, OkDialog,
+                CREATEWIDGETV(weightNotice, OkDialog,
                     // TRANSLATORS: message header
                     _("Message"),
                     // TRANSLATORS: weight message

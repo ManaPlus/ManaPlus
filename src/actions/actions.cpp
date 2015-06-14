@@ -144,7 +144,7 @@ static int uploadUpdate(void *ptr,
             }
             else
             {
-                CREATEWIDGET0(OkDialog,
+                CREATEWIDGET(OkDialog,
                     // TRANSLATORS: file uploaded message
                     _("File uploaded"),
                     str,
@@ -395,7 +395,7 @@ impHandler0(quit)
     }
     else if (!quitDialog)
     {
-        CREATEWIDGET(quitDialog, QuitDialog,
+        CREATEWIDGETV(quitDialog, QuitDialog,
             &quitDialog);
         quitDialog->requestMoveToTop();
         return true;
@@ -720,7 +720,7 @@ impHandler(talk)
     }
     else if (being->getType() == ActorType::Player)
     {
-        CREATEWIDGET0(BuySellDialog,
+        CREATEWIDGET(BuySellDialog,
             being->getName());
     }
     return true;

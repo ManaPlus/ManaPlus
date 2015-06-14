@@ -432,7 +432,7 @@ void GameModifiers::changeAwayMode(const bool forward A_UNUSED)
         localPlayer->navigateClean();
         if (outfitWindow)
             outfitWindow->wearAwayOutfit();
-        OkDialog *const dialog = CREATEWIDGET2(OkDialog,
+        OkDialog *const dialog = CREATEWIDGETR(OkDialog,
             // TRANSLATORS: away message box header
             _("Away"),
             config.getStringValue("afkMessage"),

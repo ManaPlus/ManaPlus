@@ -21,18 +21,18 @@
 #ifndef GUI_WIDGETS_CREATEWIDGET_H
 #define GUI_WIDGETS_CREATEWIDGET_H
 
-#define CREATEWIDGET(var, type, ...) \
+#define CREATEWIDGETV(var, type, ...) \
     var = new type(__VA_ARGS__); \
     var->postInit()
 
-#define CREATEWIDGET0(type, ...) \
+#define CREATEWIDGET(type, ...) \
     (new type(__VA_ARGS__))->postInit()
 
-#define CREATEWIDGET1(var, type) \
+#define CREATEWIDGETV0(var, type) \
     var = new type; \
     var->postInit()
 
-#define CREATEWIDGET2(type, ...) \
+#define CREATEWIDGETR(type, ...) \
     static_cast<type*>(Widget::callPostInit(new type(__VA_ARGS__)))
 
 #define CREATEWIDGETR0(type) \

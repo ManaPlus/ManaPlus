@@ -314,7 +314,7 @@ Being::~Being()
 
 void Being::createSpeechBubble()
 {
-    CREATEWIDGET1(mSpeechBubble, SpeechBubble);
+    CREATEWIDGETV0(mSpeechBubble, SpeechBubble);
 }
 
 void Being::setSubtype(const BeingTypeId subtype,
