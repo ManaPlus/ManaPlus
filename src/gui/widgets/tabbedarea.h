@@ -97,7 +97,7 @@ class TabbedArea final : public ActionListener,
 
         ~TabbedArea();
 
-        void postInit();
+        void postInit() override final;
 
         /**
          * Draw the tabbed area.

@@ -44,8 +44,8 @@ class SliderList final : public Container,
 
         ~SliderList();
 
-        void postInit(ActionListener *const listener,
-                      const std::string &eventId);
+        void postInit2(ActionListener *const listener,
+                       const std::string &eventId);
 
         void updateAlpha();
 

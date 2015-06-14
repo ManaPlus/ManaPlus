@@ -103,7 +103,7 @@ class ListBox notfinal : public Widget,
 
         virtual ~ListBox();
 
-        void postInit();
+        void postInit() override;
 
         /**
          * Draws the list box.

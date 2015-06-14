@@ -25,4 +25,7 @@
     var = new type(__VA_ARGS__); \
     var->postInit()
 
+#define CREATEWIDGET2(type, ...) \
+    static_cast<type>(Widget::callPostInit(new type(__VA_ARGS__)))
+
 #endif  // GUI_WIDGETS_CREATEWIDGET_H

@@ -1078,7 +1078,7 @@ void SetupItemSliderList::createControls()
     mLabel = new Label(this, mText);
     mLabel->setToolTip(mDescription);
     mSlider = new SliderList(this, mModel);
-    mSlider->postInit(mParent, mEventName);
+    mSlider->postInit2(mParent, mEventName);
     mSlider->setSelectedString(mValue);
     mSlider->adjustSize();
 

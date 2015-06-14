@@ -1027,6 +1027,9 @@ class Widget notfinal : public Widget2
 
         void windowResized();
 
+        virtual void postInit()
+        { }
+
     protected:
         /**
           * Distributes an action event to all action listeners

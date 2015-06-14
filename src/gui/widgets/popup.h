@@ -173,7 +173,7 @@ class Popup notfinal : public Container,
         bool isPopupVisible() const
         { return mVisible == Visible_true; }
 
-        virtual void postInit()
+        void postInit() override
         { mInit = true; }
 
     protected:

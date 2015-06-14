@@ -52,8 +52,8 @@ SliderList::SliderList(const Widget2 *const widget,
     setHeight(sliderHeight);
 }
 
-void SliderList::postInit(ActionListener *const listener,
-                          const std::string &eventId)
+void SliderList::postInit2(ActionListener *const listener,
+                           const std::string &eventId)
 {
     mPrevEventId = eventId + "_prev";
     mNextEventId = eventId + "_next";
