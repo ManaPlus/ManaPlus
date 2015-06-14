@@ -31,6 +31,8 @@
 #include "gui/windows/chatwindow.h"
 #include "gui/windows/shopwindow.h"
 
+#include "gui/widgets/createwidget.h"
+
 #include "net/chathandler.h"
 #include "net/serverfeatures.h"
 
@@ -103,8 +105,7 @@ void BuySellHandler::processNpcBuy(Net::MessageIn &msg)
     if (serverFeatures->haveItemColors())
         sz += 1;
     const unsigned int n_items = (msg.getLength() - 4U) / sz;
-    mBuyDialog = new BuyDialog(mNpcId);
-    mBuyDialog->postInit();
+    CREATEWIDGETV(mBuyDialog, BuyDialog, mNpcId);
     mBuyDialog->setMoney(PlayerInfo::getAttribute(Attributes::MONEY));
 
     for (unsigned int k = 0; k < n_items; k++)

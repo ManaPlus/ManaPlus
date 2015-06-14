@@ -31,6 +31,8 @@
 #include "gui/windows/buyselldialog.h"
 #include "gui/windows/npcselldialog.h"
 
+#include "gui/widgets/createwidget.h"
+
 #include "net/ea/eaprotocol.h"
 
 #include "resources/notifytypes.h"
@@ -54,8 +56,7 @@ void BuySellHandler::processNpcBuySellChoice(Net::MessageIn &msg)
     if (!BuySellDialog::isActive())
     {
         mNpcId = msg.readBeingId("npc id");
-        BuySellDialog *const dialog = new BuySellDialog(mNpcId);
-        dialog->postInit();
+        CREATEWIDGET(BuySellDialog, mNpcId);
     }
 }
 
@@ -65,8 +66,7 @@ void BuySellHandler::processNpcSell(Net::MessageIn &msg)
     const int n_items = (msg.getLength() - 4) / 10;
     if (n_items > 0)
     {
-        SellDialog *const dialog = new NpcSellDialog(mNpcId);
-        dialog->postInit();
+        SellDialog *const dialog = CREATEWIDGETR(NpcSellDialog, mNpcId);
         dialog->setMoney(PlayerInfo::getAttribute(Attributes::MONEY));
 
         for (int k = 0; k < n_items; k++)

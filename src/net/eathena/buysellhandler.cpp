@@ -28,6 +28,8 @@
 
 #include "gui/windows/buydialog.h"
 
+#include "gui/widgets/createwidget.h"
+
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
@@ -92,8 +94,7 @@ void BuySellHandler::processNpcBuy(Net::MessageIn &msg)
     msg.readInt16("len");
     const int sz = 11;
     const int n_items = (msg.getLength() - 4) / sz;
-    mBuyDialog = new BuyDialog(mNpcId);
-    mBuyDialog->postInit();
+    CREATEWIDGETV(mBuyDialog, BuyDialog, mNpcId);
     mBuyDialog->setMoney(PlayerInfo::getAttribute(Attributes::MONEY));
 
     for (int k = 0; k < n_items; k++)
