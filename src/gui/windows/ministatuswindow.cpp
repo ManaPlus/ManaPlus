@@ -38,6 +38,7 @@
 
 #include "gui/windows/statuswindow.h"
 
+#include "gui/widgets/createwidget.h"
 #include "gui/widgets/progressbar.h"
 
 #include "net/playerhandler.h"
@@ -111,14 +112,12 @@ MiniStatusWindow::MiniStatusWindow() :
         "statusprogressbar.xml", "statusprogressbar_fill.xml",
         // TRANSLATORS: status bar name
         "status bar", _("status bar"))),
-    mStatusPopup(new StatusPopup),
+    mStatusPopup(CREATEWIDGETR0(StatusPopup)),
     mSpacing(mSkin ? mSkin->getOption("spacing", 3) : 3),
     mIconPadding(mSkin ? mSkin->getOption("iconPadding", 3) : 3),
     mIconSpacing(mSkin ? mSkin->getOption("iconSpacing", 2) : 2),
     mMaxX(0)
 {
-    mStatusPopup->postInit();
-
     StatusWindow::updateHPBar(mHpBar);
 
     if (gameHandler->canUseMagicBar() && statusWindow)
