@@ -720,6 +720,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      net/worldinfo.h \
 	      net/packetcounters.cpp \
 	      net/packetcounters.h \
+	      net/packetdefine.h \
 	      net/packetlimiter.cpp \
 	      net/packetlimiter.h \
 	      resources/action.cpp \
