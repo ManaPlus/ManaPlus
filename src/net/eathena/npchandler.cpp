@@ -28,6 +28,8 @@
 
 #include "gui/windows/npcdialog.h"
 
+#include "gui/widgets/createwidget.h"
+
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
@@ -316,8 +318,7 @@ BeingId NpcHandler::getNpc(Net::MessageIn &msg)
         }
         else
         {
-            mDialog = new NpcDialog(npcId);
-            mDialog->postInit();
+            CREATEWIDGETV(mDialog, NpcDialog, npcId);
             mDialog->saveCamera();
             if (localPlayer)
                 localPlayer->stopWalking(false);
