@@ -43,6 +43,7 @@
 #include "gui/widgets/characterviewnormal.h"
 #include "gui/widgets/characterviewsmall.h"
 #include "gui/widgets/containerplacer.h"
+#include "gui/widgets/createwidget.h"
 
 #include "net/character.h"
 #include "net/logindata.h"
@@ -187,9 +188,11 @@ void CharSelectDialog::postInit()
 #ifdef EATHENA_SUPPORT
     if (charServerHandler->isNeedCreatePin())
     {
-        EditDialog *const dialog = new EditDialog(
-            _("Please set new pincode"), "", "OK");
-        dialog->postInit();
+        EditDialog *const dialog = CREATEWIDGETR(EditDialog,
+            // TRANSLATORS: pin code dialog header.
+            _("Please set new pincode"),
+            "",
+            "OK");
         dialog->addActionListener(&pincodeListener);
     }
 #endif
@@ -226,7 +229,7 @@ void CharSelectDialog::action(const ActionEvent &event)
         else if (eventId == "delete"
                  && mCharacterEntries[selected]->getCharacter())
         {
-            (new CharDeleteConfirm(this, selected))->postInit();
+            CREATEWIDGET(CharDeleteConfirm, this, selected);
             return;
         }
         else if (eventId == "rename"
@@ -234,9 +237,11 @@ void CharSelectDialog::action(const ActionEvent &event)
         {
             const LocalPlayer *const player = mCharacterEntries[
                 selected]->getCharacter()->dummy;
-            EditDialog *const dialog = new EditDialog(
-                _("Please enter new name"), player->getName(), "OK");
-            dialog->postInit();
+            EditDialog *const dialog = CREATEWIDGETR(EditDialog,
+                // TRANSLATORS: character rename dialog header.
+                _("Please enter new name"),
+                player->getName(),
+                "OK");
             charRenameListener.setId(player->getId());
             charRenameListener.setDialog(dialog);
             dialog->addActionListener(&charRenameListener);
@@ -270,14 +275,14 @@ void CharSelectDialog::action(const ActionEvent &event)
                 character->data.mAttributes[Attributes::EXP]),
                 Units::formatCurrency(
                 character->data.mAttributes[Attributes::MONEY]).c_str());
-            (new OkDialog(data->getName(), msg,
+            CREATEWIDGET(OkDialog, data->getName(), msg,
                 // TRANSLATORS: ok dialog button
                 _("OK"),
                 DialogType::SILENCE,
                 Modal_true,
                 ShowCenter_true,
                 nullptr,
-                260))->postInit();
+                260);
         }
     }
     if (eventId == "switch")
@@ -314,15 +319,17 @@ void CharSelectDialog::action(const ActionEvent &event)
             }
             else
             {
-                // TRANSLATORS: error message
-                (new OkDialog(_("Error"), _("Incorrect password"),
+                CREATEWIDGET(OkDialog,
+                    // TRANSLATORS: error message
+                    _("Error"),
+                    _("Incorrect password"),
                     // TRANSLATORS: ok dialog button
                     _("OK"),
                     DialogType::ERROR,
                     Modal_true,
                     ShowCenter_true,
                     nullptr,
-                    260))->postInit();
+                    260);
             }
         }
         mDeleteIndex = -1;
@@ -339,8 +346,7 @@ void CharSelectDialog::use(const int selected)
     else
     {
         CharCreateDialog *const charCreateDialog =
-            new CharCreateDialog(this, selected);
-        charCreateDialog->postInit();
+            CREATEWIDGETR(CharCreateDialog, this, selected);
         mCharServerHandler->setCharCreateDialog(charCreateDialog);
     }
 }
@@ -423,7 +429,7 @@ void CharSelectDialog::keyPressed(KeyEvent &event)
             if (idx >= 0 && mCharacterEntries[idx]
                 && mCharacterEntries[idx]->getCharacter())
             {
-                (new CharDeleteConfirm(this, idx))->postInit();
+                CREATEWIDGET(CharDeleteConfirm, this, idx);
             }
             break;
         }
@@ -462,19 +468,22 @@ void CharSelectDialog::askPasswordForDeletion(const int index)
     mDeleteIndex = index;
     if (serverFeatures->haveEmailOnDelete())
     {
-        mDeleteDialog = new TextDialog(
+        CREATEWIDGETV(mDeleteDialog, TextDialog,
             // TRANSLATORS: char deletion question.
-            _("Enter your email for deleting character"), _("Enter email:"),
+            _("Enter your email for deleting character"),
+            // TRANSLATORS: email label.
+            _("Enter email:"),
             this, false);
     }
     else
     {
-        mDeleteDialog = new TextDialog(
+        CREATEWIDGETV(mDeleteDialog, TextDialog,
             // TRANSLATORS: char deletion question.
-            _("Enter password for deleting character"), _("Enter password:"),
+            _("Enter password for deleting character"),
+            // TRANSLATORS: email label.
+            _("Enter password:"),
             this, true);
     }
-    mDeleteDialog->postInit();
     mDeleteDialog->setActionEventId("try delete character");
     mDeleteDialog->addActionListener(this);
 }
