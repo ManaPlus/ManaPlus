@@ -28,6 +28,7 @@
 
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/containerplacer.h"
+#include "gui/widgets/createwidget.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/listbox.h"
@@ -51,7 +52,7 @@ const char *const Setup_Colors::rawmsg =
 Setup_Colors::Setup_Colors(const Widget2 *const widget) :
     SetupTab(widget),
     SelectionListener(),
-    mColorBox(new ListBox(this, userPalette, "")),
+    mColorBox(CREATEWIDGETR(ListBox, this, userPalette, "")),
     mScroll(new ScrollArea(this, mColorBox,
         true, "setup_colors_background.xml")),
     mPreview(new BrowserBox(this, BrowserBox::AUTO_WRAP, true,
@@ -81,8 +82,6 @@ Setup_Colors::Setup_Colors(const Widget2 *const widget) :
     mBlueSlider(new Slider(this, 0.0, 255.0, 1.0)),
     mBlueText(new TextField(this))
 {
-    mColorBox->postInit();
-
     // TRANSLATORS: settings colors tab name
     setName(_("Colors"));
     mColorBox->addSelectionListener(this);
