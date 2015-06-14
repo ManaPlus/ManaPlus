@@ -41,6 +41,7 @@
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/containerplacer.h"
+#include "gui/widgets/createwidget.h"
 #include "gui/widgets/dropdown.h"
 #include "gui/widgets/icon.h"
 #include "gui/widgets/inttextfield.h"
@@ -437,5 +438,5 @@ void ItemAmountWindow::showWindow(const Usage usage, Window *const parent,
     if (usage != ShopBuyAdd && usage != ShopSellAdd && maxRange <= 1)
         finish(item, maxRange, 0, usage);
     else
-        (new ItemAmountWindow(usage, parent, item, maxRange))->postInit();
+        CREATEWIDGET(ItemAmountWindow, usage, parent, item, maxRange);
 }
