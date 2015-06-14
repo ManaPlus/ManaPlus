@@ -27,6 +27,7 @@
 
 #include "being/playerinfo.h"
 
+#include "gui/widgets/createwidget.h"
 #include "gui/widgets/selldialog.h"
 
 #include "gui/windows/confirmdialog.h"
@@ -84,11 +85,11 @@ void DialogsManager::closeDialogs()
 
 void DialogsManager::createUpdaterWindow()
 {
-    updaterWindow = new UpdaterWindow(settings.updateHost,
+    CREATEWIDGET(updaterWindow, UpdaterWindow,
+        settings.updateHost,
         settings.oldUpdates,
         false,
         UpdateType::Normal);
-    updaterWindow->postInit();
 }
 
 Window *DialogsManager::openErrorDialog(const std::string &header,
@@ -97,7 +98,9 @@ Window *DialogsManager::openErrorDialog(const std::string &header,
 {
     if (settings.supportUrl.empty() || config.getBoolValue("hidesupport"))
     {
-        OkDialog *const dialog = new OkDialog(header, message,
+        OkDialog *const dialog = CREATEWIDGET2(OkDialog,
+            header,
+            message,
             // TRANSLATORS: ok dialog button
             _("Close"),
             DialogType::ERROR,
@@ -105,17 +108,18 @@ Window *DialogsManager::openErrorDialog(const std::string &header,
             ShowCenter_true,
             nullptr,
             260);
-        dialog->postInit();
         return dialog;
     }
     else
     {
-        ConfirmDialog *const dialog = new ConfirmDialog(
-            header, strprintf("%s %s", message.c_str(),
+        ConfirmDialog *const dialog = CREATEWIDGET2(ConfirmDialog,
+            header,
+            strprintf("%s %s", message.c_str(),
             // TRANSLATORS: error message question
             _("Do you want to open support page?")),
-            SOUND_ERROR, false, modal);
-        dialog->postInit();
+            SOUND_ERROR,
+            false,
+            modal);
         return dialog;
     }
 }
@@ -125,7 +129,8 @@ void DialogsManager::playerDeath()
     if (!deathNotice)
     {
         // TRANSLATORS: message header
-        deathNotice = new OkDialog(_("Message"),
+        CREATEWIDGET(deathNotice, OkDialog,
+            _("Message"),
             DeadDB::getRandomString(),
             // TRANSLATORS: ok dialog button
             _("Revive"),
@@ -134,7 +139,6 @@ void DialogsManager::playerDeath()
             ShowCenter_true,
             nullptr,
             260);
-        deathNotice->postInit();
         deathNotice->addActionListener(&postDeathListener);
     }
 }
@@ -153,8 +157,9 @@ void DialogsManager::attributeChanged(const AttributesT id,
             if (newVal >= max && total < max)
             {
                 weightNoticeTime = cur_time + 5;
-                // TRANSLATORS: message header
-                weightNotice = new OkDialog(_("Message"),
+                CREATEWIDGET(weightNotice, OkDialog,
+                    // TRANSLATORS: message header
+                    _("Message"),
                     // TRANSLATORS: weight message
                     _("You are carrying more than "
                     "half your weight. You are "
@@ -166,15 +171,15 @@ void DialogsManager::attributeChanged(const AttributesT id,
                     ShowCenter_true,
                     nullptr,
                     260);
-                weightNotice->postInit();
                 weightNotice->addActionListener(
                     &weightListener);
             }
             else if (newVal < max && total >= max)
             {
                 weightNoticeTime = cur_time + 5;
-                // TRANSLATORS: message header
-                weightNotice = new OkDialog(_("Message"),
+                CREATEWIDGET(weightNotice, OkDialog,
+                    // TRANSLATORS: message header
+                    _("Message"),
                     // TRANSLATORS: weight message
                     _("You are carrying less than "
                     "half your weight. You "
@@ -186,7 +191,6 @@ void DialogsManager::attributeChanged(const AttributesT id,
                     ShowCenter_true,
                     nullptr,
                     260);
-                weightNotice->postInit();
                 weightNotice->addActionListener(
                     &weightListener);
             }
