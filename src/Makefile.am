@@ -299,6 +299,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/container.h \
 	      gui/widgets/containerplacer.cpp \
 	      gui/widgets/containerplacer.h \
+	      gui/widgets/createwidget.h \
 	      gui/widgets/desktop.cpp \
 	      gui/widgets/desktop.h \
 	      gui/widgets/dropdown.cpp \
