@@ -29,6 +29,8 @@
 
 #include "gui/windows/eggselectiondialog.h"
 
+#include "gui/widgets/createwidget.h"
+
 #include "gui/widgets/tabs/chat/chattab.h"
 
 #include "net/inventoryhandler.h"
@@ -209,8 +211,7 @@ void PetHandler::processEggsList(Net::MessageIn &msg)
         inventoryHandler->selectEgg(item);
         return;
     }
-    SellDialog *const dialog = new EggSelectionDialog;
-    dialog->postInit();
+    SellDialog *const dialog = CREATEWIDGETR0(EggSelectionDialog);
 
     for (int f = 0; f < count; f ++)
     {
