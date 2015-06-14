@@ -24,6 +24,8 @@
 
 #include "gui/windows/buydialog.h"
 
+#include "gui/widgets/createwidget.h"
+
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
@@ -91,8 +93,7 @@ void CashShopHandler::processCashShopOpen(Net::MessageIn &msg)
 {
     const int count = (msg.readInt16("len") - 12) / 11;
 
-    mBuyDialog = new BuyDialog(fromInt(BuyDialog::Cash, BeingId));
-    mBuyDialog->postInit();
+    CREATEWIDGETV(mBuyDialog, BuyDialog, fromInt(BuyDialog::Cash, BeingId));
     mBuyDialog->setMoney(PlayerInfo::getAttribute(Attributes::MONEY));
 
     msg.readInt32("cash points");
