@@ -28,6 +28,7 @@
 
 #include "gui/models/shopitems.h"
 
+#include "gui/widgets/createwidget.h"
 #include "gui/widgets/shoplistbox.h"
 #include "gui/widgets/slider.h"
 
@@ -62,7 +63,7 @@ void NpcSellDialog::sellAction(const ActionEvent &event)
         const ItemInfo &info = ItemDB::get(item->getId());
         if (info.isProtected())
         {
-            ConfirmDialog *const dialog = new ConfirmDialog(
+            ConfirmDialog *const dialog = CREATEWIDGETR(ConfirmDialog,
                 // TRANSLATORS: sell confirmation header
                 _("sell item"),
                 // TRANSLATORS: sell confirmation message
@@ -71,7 +72,6 @@ void NpcSellDialog::sellAction(const ActionEvent &event)
                 SOUND_REQUEST,
                 false,
                 Modal_true);
-            dialog->postInit();
             dialog->addActionListener(this);
             return;
         }
