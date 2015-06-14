@@ -32,6 +32,7 @@
 #include "gui/widgets/button.h"
 #include "gui/widgets/checkbox.h"
 #include "gui/widgets/containerplacer.h"
+#include "gui/widgets/createwidget.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/listbox.h"
@@ -67,7 +68,7 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
     mAltFps(config.getIntValue("altfpslimit")),
     mModeListModel(new ModeListModel),
     mOpenGLListModel(new OpenGLListModel),
-    mModeList(new ListBox(widget, mModeListModel, "")),
+    mModeList(CREATEWIDGETR(ListBox, widget, mModeListModel, "")),
     // TRANSLATORS: video settings checkbox
     mFsCheckBox(new CheckBox(this, _("Full screen"), mFullScreenEnabled)),
     mOpenGLDropDown(new DropDown(widget, mOpenGLListModel)),
@@ -101,8 +102,6 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
     // TRANSLATORS: video settings checkbox
     mNoFrameCheckBox(new CheckBox(this, _("No frame"), mNoFrame))
 {
-    mModeList->postInit();
-
     // TRANSLATORS: video settings tab name
     setName(_("Video"));
 
@@ -242,8 +241,9 @@ void Setup_Video::apply()
         }
         else
         {
-            // TRANSLATORS: video settings warning
-            (new OkDialog(_("Switching to Full Screen"),
+            CREATEWIDGET(OkDialog,
+                // TRANSLATORS: video settings warning
+                _("Switching to Full Screen"),
                 // TRANSLATORS: video settings warning
                 _("Restart needed for changes to take effect."),
                 // TRANSLATORS: ok dialog button
@@ -252,7 +252,7 @@ void Setup_Video::apply()
                 Modal_true,
                 ShowCenter_true,
                 nullptr,
-                260))->postInit();
+                260);
         }
 #endif
         config.setValue("screen", fullscreen);
@@ -269,8 +269,9 @@ void Setup_Video::apply()
         config.setValue("opengl", static_cast<int>(mode));
 
         // OpenGL can currently only be changed by restarting, notify user.
-        // TRANSLATORS: video settings warning
-        (new OkDialog(_("Changing to OpenGL"),
+        CREATEWIDGET(OkDialog,
+            // TRANSLATORS: video settings warning
+            _("Changing to OpenGL"),
             // TRANSLATORS: video settings warning
             _("Applying change to OpenGL requires restart."),
             // TRANSLATORS: ok dialog button
@@ -279,7 +280,7 @@ void Setup_Video::apply()
             Modal_true,
             ShowCenter_true,
             nullptr,
-            260))->postInit();
+            260);
     }
 
     mFps = mFpsCheckBox->isSelected() ?
@@ -355,12 +356,11 @@ void Setup_Video::action(const ActionEvent &event)
             }
             else
             {
-                mDialog = new TextDialog(
+                CREATEWIDGETV(mDialog, TextDialog,
                     // TRANSLATORS: resolution question dialog
                     _("Custom resolution (example: 1024x768)"),
                     // TRANSLATORS: resolution question dialog
                     _("Enter new resolution:                "));
-                mDialog->postInit();
                 mDialog->setActionEventId("videomode");
                 mDialog->addActionListener(this);
                 return;
@@ -385,8 +385,9 @@ void Setup_Video::action(const ActionEvent &event)
                 if (width < mainGraphics->mActualWidth
                     || height < mainGraphics->mActualHeight)
                 {
-                    // TRANSLATORS: video settings warning
-                    (new OkDialog(_("Screen Resolution Changed"),
+                    CREATEWIDGET(OkDialog,
+                        // TRANSLATORS: video settings warning
+                        _("Screen Resolution Changed"),
                         // TRANSLATORS: video settings warning
                        _("Restart your client for the change to take effect.")
                        + std::string("\n") + _("Some windows may be moved to "
@@ -397,12 +398,13 @@ void Setup_Video::action(const ActionEvent &event)
                         Modal_true,
                         ShowCenter_true,
                         nullptr,
-                        260))->postInit();
+                        260);
                 }
                 else
                 {
-                    // TRANSLATORS: video settings warning
-                    (new OkDialog(_("Screen Resolution Changed"),
+                    CREATEWIDGET(OkDialog,
+                        // TRANSLATORS: video settings warning
+                        _("Screen Resolution Changed"),
                         // TRANSLATORS: video settings warning
                         _("Restart your client for the change"
                         " to take effect."),
@@ -412,7 +414,7 @@ void Setup_Video::action(const ActionEvent &event)
                         Modal_true,
                         ShowCenter_true,
                         nullptr,
-                        260))->postInit();
+                        260);
                 }
             }
 #else
