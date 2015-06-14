@@ -25,11 +25,17 @@
     var = new type(__VA_ARGS__); \
     var->postInit()
 
+#define CREATEWIDGET0(type, ...) \
+    (new type(__VA_ARGS__))->postInit()
+
 #define CREATEWIDGET1(var, type) \
     var = new type; \
     var->postInit()
 
 #define CREATEWIDGET2(type, ...) \
     static_cast<type*>(Widget::callPostInit(new type(__VA_ARGS__)))
+
+#define CREATEWIDGETR0(type) \
+    static_cast<type*>(Widget::callPostInit(new type))
 
 #endif  // GUI_WIDGETS_CREATEWIDGET_H

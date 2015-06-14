@@ -59,6 +59,8 @@
 #include "gui/windows/skilldialog.h"
 #include "gui/windows/whoisonline.h"
 
+#include "gui/widgets/createwidget.h"
+
 #include "gui/widgets/tabs/chat/chattab.h"
 
 #include "input/inputactionoperators.h"
@@ -142,15 +144,17 @@ static int uploadUpdate(void *ptr,
             }
             else
             {
-                // TRANSLATORS: file uploaded message
-                (new OkDialog(_("File uploaded"), str,
+                CREATEWIDGET0(OkDialog,
+                    // TRANSLATORS: file uploaded message
+                    _("File uploaded"),
+                    str,
                     // TRANSLATORS: ok dialog button
                     _("OK"),
                     DialogType::OK,
                     Modal_true,
                     ShowCenter_false,
                     nullptr,
-                    260))->postInit();
+                    260);
             }
         }
     }
@@ -391,8 +395,8 @@ impHandler0(quit)
     }
     else if (!quitDialog)
     {
-        quitDialog = new QuitDialog(&quitDialog);
-        quitDialog->postInit();
+        CREATEWIDGET(quitDialog, QuitDialog,
+            &quitDialog);
         quitDialog->requestMoveToTop();
         return true;
     }
@@ -716,8 +720,8 @@ impHandler(talk)
     }
     else if (being->getType() == ActorType::Player)
     {
-        BuySellDialog *const dialog = new BuySellDialog(being->getName());
-        dialog->postInit();
+        CREATEWIDGET0(BuySellDialog,
+            being->getName());
     }
     return true;
 }
@@ -1418,8 +1422,7 @@ impHandler0(testSdlFont)
 
 impHandler0(createItems)
 {
-    BuyDialog *const dialog = new BuyDialog();
-    dialog->postInit();
+    BuyDialog *const dialog = CREATEWIDGETR0(BuyDialog);
     const ItemDB::ItemInfos &items = ItemDB::getItemInfos();
     FOR_EACH (ItemDB::ItemInfos::const_iterator, it, items)
     {
