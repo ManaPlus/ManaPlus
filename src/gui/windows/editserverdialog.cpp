@@ -28,6 +28,7 @@
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/checkbox.h"
+#include "gui/widgets/createwidget.h"
 #include "gui/widgets/dropdown.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layout.h"
@@ -206,7 +207,8 @@ void EditServerDialog::action(const ActionEvent &event)
             || mPortField->getText().empty())
         {
             // TRANSLATORS: edit server dialog error header
-            OkDialog *const dlg = new OkDialog(_("Error"),
+            OkDialog *const dlg = CREATEWIDGETR(OkDialog,
+                _("Error"),
                 // TRANSLATORS: edit server dialog error message
                 _("Please at least type both the address and the port "
                   "of the server."),
@@ -217,7 +219,6 @@ void EditServerDialog::action(const ActionEvent &event)
                 ShowCenter_true,
                 nullptr,
                 260);
-            dlg->postInit();
             dlg->addActionListener(this);
         }
         else
