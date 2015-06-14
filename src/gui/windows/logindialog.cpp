@@ -34,6 +34,7 @@
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/checkbox.h"
+#include "gui/widgets/createwidget.h"
 #include "gui/widgets/dropdown.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/passwordfield.h"
@@ -224,10 +225,13 @@ void LoginDialog::action(const ActionEvent &event)
         {
             const std::string &url = mLoginData->registerUrl;
             urlListener.url = url;
-            // TRANSLATORS: question dialog
-            ConfirmDialog *const confirmDlg = new ConfirmDialog(
-                _("Open register url"), url, SOUND_REQUEST, false, Modal_true);
-            confirmDlg->postInit();
+            ConfirmDialog *const confirmDlg = CREATEWIDGETR(ConfirmDialog,
+                // TRANSLATORS: question dialog
+                _("Open register url"),
+                url,
+                SOUND_REQUEST,
+                false,
+                Modal_true);
             confirmDlg->addActionListener(&urlListener);
         }
     }
