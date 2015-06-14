@@ -22,6 +22,8 @@
 
 #include "gui/windows/editdialog.h"
 
+#include "gui/widgets/createwidget.h"
+
 #include "input/inputmanager.h"
 
 #include "debug.h"
@@ -39,8 +41,8 @@ void InputActionReplayListener::openDialog(const std::string &caption,
                                            const std::string &text,
                                            const InputActionT action0)
 {
-    mDialog = new EditDialog(caption, text, "OK");
-    mDialog->postInit();
+    CREATEWIDGETV(mDialog, EditDialog,
+        caption, text, "OK");
     mDialog->addActionListener(this);
     mAction = action0;
 }
