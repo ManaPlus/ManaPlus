@@ -28,6 +28,7 @@
 #include "gui/skin.h"
 #include "gui/viewport.h"
 
+#include "gui/widgets/createwidget.h"
 #include "gui/widgets/listbox.h"
 #include "gui/widgets/skilldata.h"
 
@@ -54,7 +55,7 @@ class SkillListBox final : public ListBox
                      SkillModel *const model) :
             ListBox(widget, model, "skilllistbox.xml"),
             mModel(model),
-            mPopup(new SkillPopup),
+            mPopup(CREATEWIDGETR0(SkillPopup)),
             mTextColor(getThemeColor(ThemeColorId::TEXT)),
             mTextColor2(getThemeColor(ThemeColorId::TEXT_OUTLINE)),
             mCooldownColor(getThemeColor(ThemeColorId::SKILL_COOLDOWN)),
@@ -64,7 +65,6 @@ class SkillListBox final : public ListBox
         {
             mRowHeight = getFont()->getHeight() * 2 + mSpacing + 2 * mPadding;
             mHighlightColor = getThemeColor(ThemeColorId::HIGHLIGHT);
-            mPopup->postInit();
 
             if (mRowHeight < 34)
                 mRowHeight = 34;
