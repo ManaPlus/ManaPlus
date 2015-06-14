@@ -52,6 +52,7 @@
 #include "gui/windowmenu.h"
 
 #include "gui/widgets/button.h"
+#include "gui/widgets/createwidget.h"
 #include "gui/widgets/progressbar.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/textfield.h"
@@ -1033,10 +1034,10 @@ void PopupMenu::handleLink(const std::string &link,
     {
         mRenameListener.setMapItem(mMapItem);
         // TRANSLATORS: number of chars in string should be near original
-        mDialog = new TextDialog(_("Rename map sign          "),
+        CREATEWIDGETV(mDialog, TextDialog,
+            _("Rename map sign          "),
         // TRANSLATORS: number of chars in string should be near original
             _("Name:                    "));
-        mDialog->postInit();
         mRenameListener.setDialog(mDialog);
         mDialog->setText(mMapItem->getComment());
         mDialog->setActionEventId("ok");
@@ -1044,7 +1045,7 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "edit spell" && mSpell)
     {
-        (new TextCommandEditor(mSpell))->postInit();
+        CREATEWIDGET(TextCommandEditor, mSpell);
     }
     else if (link == "undress" && being)
     {
@@ -1053,11 +1054,10 @@ void PopupMenu::handleLink(const std::string &link,
     else if (link == "addcomment" && !mNick.empty())
     {
         // TRANSLATORS: number of chars in string should be near original
-        TextDialog *const dialog = new TextDialog(
+        TextDialog *const dialog = CREATEWIDGETR(TextDialog,
             _("Player comment            "),
             // TRANSLATORS: number of chars in string should be near original
             _("Comment:                      "));
-        dialog->postInit();
         mPlayerListener.setDialog(dialog);
         mPlayerListener.setNick(mNick);
         mPlayerListener.setType(mType);
