@@ -34,6 +34,7 @@
 #include "gui/windows/shortcutwindow.h"
 
 #include "gui/widgets/button.h"
+#include "gui/widgets/createwidget.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/tabbedarea.h"
@@ -70,7 +71,7 @@ SkillDialog::SkillDialog() :
     ActionListener(),
     mSkills(),
     mDurations(),
-    mTabs(new TabbedArea(this)),
+    mTabs(CREATEWIDGETR(TabbedArea, this)),
     mDeleteTabs(),
     mPointsLabel(new Label(this, "0")),
     // TRANSLATORS: skills dialog button
@@ -79,7 +80,6 @@ SkillDialog::SkillDialog() :
     mIncreaseButton(new Button(this, _("Up"), "inc", this)),
     mDefaultModel(nullptr)
 {
-    mTabs->postInit();
     setWindowName("Skills");
     setCloseButton(true);
     setResizable(true);
