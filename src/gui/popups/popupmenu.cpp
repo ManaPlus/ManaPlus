@@ -31,6 +31,7 @@
 
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
+#include "being/playerrelation.h"
 #include "being/playerrelations.h"
 
 #include "input/inputmanager.h"

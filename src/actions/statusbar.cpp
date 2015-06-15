@@ -26,6 +26,7 @@
 #include "actions/actiondef.h"
 
 #include "being/localplayer.h"
+#include "being/playerrelation.h"
 #include "being/playerrelations.h"
 
 #include "gui/viewport.h"

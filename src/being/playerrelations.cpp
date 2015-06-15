@@ -28,6 +28,7 @@
 
 #include "being/localplayer.h"
 #include "being/playerignorestrategy.h"
+#include "being/playerrelation.h"
 
 #include "utils/dtor.h"
 #include "utils/gettext.h"

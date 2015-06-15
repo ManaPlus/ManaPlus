@@ -33,13 +33,13 @@
 #include "gui/widgets/createwidget.h"
 
 #include "net/character.h"
+#include "net/playerhandler.h"
 #include "net/serverfeatures.h"
 
 #include "net/eathena/gamehandler.h"
 #include "net/eathena/loginhandler.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/network.h"
-#include "net/eathena/playerhandler.h"
 #include "net/eathena/protocol.h"
 #include "net/eathena/sprite.h"
 

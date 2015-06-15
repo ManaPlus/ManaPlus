@@ -63,7 +63,7 @@ packet(SMSG_PLAYER_UPDATE_1,         0x01d8);
 packet(SMSG_PLAYER_UPDATE_2,         0x01d9);
 packet(SMSG_PLAYER_MOVE,             0x01da); /**< A nearby player moves */
 packet(SMSG_PLAYER_STOP,             0x0088); /**< Stop walking, set position */
-packet(SMSG_PLAYER_MOVE_TO_ATTACK,   0x0139); /**< Move to within attack range */
+packet(SMSG_PLAYER_MOVE_TO_ATTACK,   0x0139);
 packet(SMSG_PLAYER_STAT_UPDATE_1,    0x00b0);
 packet(SMSG_PLAYER_STAT_UPDATE_2,    0x00b1);
 packet(SMSG_PLAYER_STAT_UPDATE_3,    0x0141);
@@ -71,7 +71,7 @@ packet(SMSG_PLAYER_STAT_UPDATE_4,    0x00bc);
 packet(SMSG_PLAYER_STAT_UPDATE_5,    0x00bd);
 packet(SMSG_PLAYER_STAT_UPDATE_6,    0x00be);
 packet(SMSG_WHO_ANSWER,              0x00c2);
-packet(SMSG_PLAYER_WARP,             0x0091); /**< Warp player to map/location */
+packet(SMSG_PLAYER_WARP,             0x0091);
 packet(SMSG_PLAYER_INVENTORY,        0x01ee);
 packet(SMSG_PLAYER_INVENTORY_ADD,    0x00a0);
 packet(SMSG_PLAYER_INVENTORY_REMOVE, 0x00af);

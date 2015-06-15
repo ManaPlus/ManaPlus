@@ -122,7 +122,7 @@ class Tab notfinal : public BasicContainer,
             mTabColor = color1;
             mTabOutlineColor = color2;
             mRedraw = true;
-         }
+        }
 
         /**
          * Set the highlighted color for the tab's text.

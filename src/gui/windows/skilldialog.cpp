@@ -34,7 +34,6 @@
 #include "gui/windows/shortcutwindow.h"
 
 #include "gui/widgets/button.h"
-#include "gui/widgets/createwidget.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/tabbedarea.h"

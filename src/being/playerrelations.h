@@ -25,7 +25,7 @@
 
 #include "utils/stringvector.h"
 
-#include "being/playerrelation.h"
+#include "enums/being/relation.h"
 
 #include <list>
 #include <map>
@@ -34,6 +34,7 @@
 
 class Being;
 class PlayerIgnoreStrategy;
+class PlayerRelation;
 class PlayerRelationsListener;
 
 /**

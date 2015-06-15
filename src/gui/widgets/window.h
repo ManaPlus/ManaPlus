@@ -289,7 +289,7 @@ class Window notfinal : public BasicContainer2,
         void setSaveVisible(const bool save)
         { mSaveVisible = save; }
 
-        virtual void postInit() override
+        void postInit() override
         { mInit = true; }
 
         /**

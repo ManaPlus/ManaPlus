@@ -25,7 +25,6 @@
 #include "gui/windows/setupwindow.h"
 
 #include "gui/widgets/button.h"
-#include "gui/widgets/createwidget.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/tabbedarea.h"
 

@@ -27,6 +27,7 @@
 #include "notifymanager.h"
 
 #include "being/playerinfo.h"
+#include "being/playerrelation.h"
 #include "being/playerrelations.h"
 
 #include "gui/windows/confirmdialog.h"
