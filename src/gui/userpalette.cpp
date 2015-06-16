@@ -33,6 +33,7 @@ UserPalette *userPalette = nullptr;
 
 const std::string ColorTypeNames[] =
 {
+    "",
     "ColorBeing",
     "ColorFriend",
     "ColorDisregarded",
@@ -113,6 +114,9 @@ UserPalette::UserPalette() :
     mColors[static_cast<size_t>(UserColorId::NPC)] = ColorElem();
     mColors[static_cast<size_t>(UserColorId::MONSTER)] = ColorElem();
 
+    addLabel(UserColorId::LABEL_BEING,
+        // TRANSLATORS: palette label
+        _("Being colors"));
     addColor(UserColorId::BEING,
         0xffffff,
         GradientType::STATIC,
@@ -358,6 +362,8 @@ UserPalette::~UserPalette()
 {
     FOR_EACH (Colors::const_iterator, col, mColors)
     {
+        if (col->grad == GradientType::LABEL)
+            continue;
         const std::string &configName = ColorTypeNames[col->type];
         config.setValue(configName + "Gradient",
             static_cast<int>(col->committedGrad));
@@ -501,6 +507,24 @@ void UserPalette::addColor(const UserColorIdT type,
 
     if (grad != GradientType::STATIC)
         mGradVector.push_back(&mColors[static_cast<size_t>(type)]);
+}
+
+void UserPalette::addLabel(const UserColorIdT type,
+                           const std::string &text)
+{
+    const unsigned maxType = sizeof(ColorTypeNames)
+        / sizeof(ColorTypeNames[0]);
+
+    if (static_cast<unsigned>(type) >= maxType)
+        return;
+
+
+    mColors[static_cast<size_t>(type)] = ColorElem();
+    const std::string str(" \342\200\225\342\200\225\342\200\225"
+        "\342\200\225\342\200\225 ");
+    mColors[static_cast<size_t>(type)].grad = GradientTypeT::LABEL;
+    mColors[static_cast<size_t>(type)].text =
+        std::string(str).append(text).append(str);
 }
 
 int UserPalette::getIdByChar(const signed char c, bool &valid) const

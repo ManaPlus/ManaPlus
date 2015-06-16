@@ -31,7 +31,8 @@ enumStart(GradientType)
     STATIC = 0,
     PULSE,
     SPECTRUM,
-    RAINBOW
+    RAINBOW,
+    LABEL
 }
 enumEnd(GradientType);
 

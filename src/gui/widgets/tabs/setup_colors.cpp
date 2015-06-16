@@ -252,6 +252,25 @@ void Setup_Colors::valueChanged(const SelectionEvent &event A_UNUSED)
     const Color *col = &userPalette->getColor(type);
     const GradientTypeT grad = userPalette->getGradientType(type);
     const int delay = userPalette->getGradientDelay(type);
+    const Visible showControls = fromBool(grad != GradientType::LABEL, Visible);
+    mPreview->setVisible(showControls);
+    mPreviewBox->setVisible(showControls);
+    mTextPreview->setVisible(showControls);
+    mGradTypeLabel->setVisible(showControls);
+    mGradTypeSlider->setVisible(showControls);
+    mGradTypeText->setVisible(showControls);
+    mGradDelayLabel->setVisible(showControls);
+    mGradDelaySlider->setVisible(showControls);
+    mGradDelayText->setVisible(showControls);
+    mRedLabel->setVisible(showControls);
+    mRedSlider->setVisible(showControls);
+    mRedText->setVisible(showControls);
+    mGreenLabel->setVisible(showControls);
+    mGreenSlider->setVisible(showControls);
+    mGreenText->setVisible(showControls);
+    mBlueLabel->setVisible(showControls);
+    mBlueSlider->setVisible(showControls);
+    mBlueText->setVisible(showControls);
 
     mPreview->clearRows();
     mPreviewBox->setContent(mTextPreview);

@@ -250,6 +250,9 @@ class UserPalette final : public Palette, public ListModel
                       GradientTypeT grad,
                       const std::string &text,
                       int delay = GRADIENT_DELAY);
+
+        void addLabel(const UserColorIdT type,
+                      const std::string &text);
 };
 
 extern UserPalette *userPalette;
