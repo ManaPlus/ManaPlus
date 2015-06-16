@@ -2055,6 +2055,7 @@ void Being::setDefaultNameColor(const UserColorIdT defaultColor)
     switch (mTeamId)
     {
         case 0:
+        default:
             mNameColor = &userPalette->getColor(defaultColor);
             break;
         case 1:
