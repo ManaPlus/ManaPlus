@@ -31,7 +31,8 @@
 
 UserPalette *userPalette = nullptr;
 
-const std::string ColorTypeNames[] =
+const std::string ColorTypeNames[static_cast<size_t>(
+    UserColorId::USER_COLOR_LAST)] =
 {
     "",
     "ColorBeing",
@@ -45,15 +46,21 @@ const std::string ColorTypeNames[] =
     "ColorGM",
     "ColorNPC",
     "ColorMonster",
-    "ColorMonsterHp",
-    "ColorMonsterHp2",
+    "ColorPet",
+    "ColorMercenary",
+    "ColorHomunculus",
     "ColorParty",
     "ColorGuild",
+    "",
     "ColorParticle",
     "ColorPickupInfo",
     "ColorExpInfo",
+    "",
     "ColorPlayerHp",
     "ColorPlayerHp2",
+    "ColorMonsterHp",
+    "ColorMonsterHp2",
+    "",
     "ColorHitPlayerMonster",
     "ColorHitMonsterPlayer",
     "ColorHitPlayerPlayer",
@@ -62,23 +69,23 @@ const std::string ColorTypeNames[] =
     "ColorHitLocalPlayerCritical",
     "ColorHitLocalPlayerMiss",
     "ColorMiss",
+    "",
     "ColorPortalHighlight",
     "ColorCollisionHighlight",
     "ColorCollisionAirHighlight",
     "ColorCollisionWaterHighlight",
     "ColorCollisionGroundtopHighlight",
     "ColorWalkableTileHighlight",
+    "ColorNet"
+    "",
     "ColorAttackRange",
     "ColorAttackRangeBorder",
     "ColorMonsterAttackRange",
+    "",
     "ColorFloorItemText",
     "ColorHomePlace",
     "ColorHomePlaceBorder",
     "ColorRoadPoint",
-    "ColorNet",
-    "ColorPet",
-    "ColorMercenary",
-    "ColorHomunculus"
 };
 
 std::string UserPalette::getConfigName(const std::string &typeName)
@@ -116,7 +123,7 @@ UserPalette::UserPalette() :
 
     addLabel(UserColorId::LABEL_BEING,
         // TRANSLATORS: palette label
-        _("Being colors"));
+        _("Beings"));
     addColor(UserColorId::BEING,
         0xffffff,
         GradientType::STATIC,
@@ -167,18 +174,21 @@ UserPalette::UserPalette() :
         GradientType::STATIC,
         // TRANSLATORS: palette color
         _("Monsters"));
-    addColor(UserColorId::MONSTER_HP,
-        0x00ff00,
+    addColor(UserColorId::PET,
+        0xffffff,
         GradientType::STATIC,
         // TRANSLATORS: palette color
-        _("Monster HP bar"),
-        50);
-    addColor(UserColorId::MONSTER_HP2,
-        0xff0000,
+        _("Pets"));
+    addColor(UserColorId::MERCENARY,
+        0xffffff,
         GradientType::STATIC,
         // TRANSLATORS: palette color
-        _("Monster HP bar (second color)"),
-        50);
+        _("Mercenary"));
+    addColor(UserColorId::HOMUNCULUS,
+        0xffffff,
+        GradientType::STATIC,
+        // TRANSLATORS: palette color
+        _("Homunculus"));
     addColor(UserColorId::PARTY,
         0xff00d8,
         // TRANSLATORS: palette color
@@ -194,6 +204,9 @@ UserPalette::UserPalette() :
         GradientType::STATIC,
         // TRANSLATORS: palette color
         _("Enemy"));
+    addLabel(UserColorId::LABEL_PARTICLES,
+        // TRANSLATORS: palette label
+        _("Particles"));
     addColor(UserColorId::PARTICLE,
         0xffffff,
         // TRANSLATORS: palette color
@@ -209,6 +222,9 @@ UserPalette::UserPalette() :
         // TRANSLATORS: palette color
         GradientType::STATIC,
         _("Exp notification"));
+    addLabel(UserColorId::LABEL_HP,
+        // TRANSLATORS: palette label
+        _("Hp bars"));
     addColor(UserColorId::PLAYER_HP,
         0x00ff00,
         // TRANSLATORS: palette color
@@ -220,6 +236,21 @@ UserPalette::UserPalette() :
         // TRANSLATORS: palette color
         _("Player HP bar (second color)"),
         50);
+    addColor(UserColorId::MONSTER_HP,
+        0x00ff00,
+        GradientType::STATIC,
+        // TRANSLATORS: palette color
+        _("Monster HP bar"),
+        50);
+    addColor(UserColorId::MONSTER_HP2,
+        0xff0000,
+        GradientType::STATIC,
+        // TRANSLATORS: palette color
+        _("Monster HP bar (second color)"),
+        50);
+    addLabel(UserColorId::LABEL_HITS,
+        // TRANSLATORS: palette label
+        _("Hits"));
     addColor(UserColorId::HIT_PLAYER_MONSTER,
         0x0064ff,
         // TRANSLATORS: palette color
@@ -259,6 +290,9 @@ UserPalette::UserPalette() :
         // TRANSLATORS: palette color
         GradientType::STATIC,
         _("Misses"));
+    addLabel(UserColorId::LABEL_TILES,
+        // TRANSLATORS: palette label
+        _("Tiles"));
     addColor(UserColorId::PORTAL_HIGHLIGHT,
         0xC80000,
         // TRANSLATORS: palette color
@@ -294,6 +328,14 @@ UserPalette::UserPalette() :
         // TRANSLATORS: palette color
         _("Walkable highlight"),
         255);
+    addColor(UserColorId::NET,
+        0x000000,
+        GradientType::STATIC,
+        // TRANSLATORS: palette color
+        _("Tiles border"), 64);
+    addLabel(UserColorId::LABEL_RANGES,
+        // TRANSLATORS: palette label
+        _("Ranges"));
     addColor(UserColorId::ATTACK_RANGE,
         0xffffff,
         GradientType::STATIC,
@@ -312,6 +354,9 @@ UserPalette::UserPalette() :
         // TRANSLATORS: palette color
         _("Monster attack range"),
         20);
+    addLabel(UserColorId::LABEL_OTHER,
+        // TRANSLATORS: palette label
+        _("Other"));
     addColor(UserColorId::FLOOR_ITEM_TEXT,
         0xffffff,
         GradientType::STATIC,
@@ -335,26 +380,6 @@ UserPalette::UserPalette() :
         GradientType::STATIC,
         // TRANSLATORS: palette color
         _("Road point"), 100);
-    addColor(UserColorId::NET,
-        0x000000,
-        GradientType::STATIC,
-        // TRANSLATORS: palette color
-        _("Tiles border"), 64);
-    addColor(UserColorId::PET,
-        0xffffff,
-        GradientType::STATIC,
-        // TRANSLATORS: palette color
-        _("Pets"));
-    addColor(UserColorId::MERCENARY,
-        0xffffff,
-        GradientType::STATIC,
-        // TRANSLATORS: palette color
-        _("Mercenary"));
-    addColor(UserColorId::HOMUNCULUS,
-        0xffffff,
-        GradientType::STATIC,
-        // TRANSLATORS: palette color
-        _("Homunculus"));
     commit(true);
 }
 
