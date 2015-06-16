@@ -38,6 +38,7 @@ class BeingCacheEntry final
             mId(id),
             mLevel(0),
             mPvpRank(0),
+            mPvpChannel(0),
             mTime(0),
             mFlags(0),
             mIsAdvanced(false)
@@ -96,6 +97,12 @@ class BeingCacheEntry final
         void setPvpRank(const int r)
         { mPvpRank = r; }
 
+        unsigned getPvpChannel() const
+        { return mPvpChannel; }
+
+        void setPvpChannel(const int r)
+        { mPvpChannel = r; }
+
         std::string getIp() const
         { return mIp; }
 
@@ -122,6 +129,7 @@ class BeingCacheEntry final
         BeingId mId;              /**< Unique sprite id */
         int mLevel;
         unsigned int mPvpRank;
+        unsigned int mPvpChannel;
         int mTime;
         int mFlags;
         bool mIsAdvanced;
