@@ -34,6 +34,7 @@ enumStart(UserColorId)
     DISREGARDED,
     IGNORED,
     ERASED,
+    ENEMY,
     PC,
     SELF,
     GM,

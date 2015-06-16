@@ -38,6 +38,7 @@ const std::string ColorTypeNames[] =
     "ColorDisregarded",
     "ColorIgnored",
     "ColorErased",
+    "ColorEnemy",
     "ColorPlayer",
     "ColorSelf",
     "ColorGM",
@@ -184,6 +185,11 @@ UserPalette::UserPalette() :
         // TRANSLATORS: palette color
         GradientType::STATIC,
         _("Guild members"));
+    addColor(UserColorId::ENEMY,
+        0xff4040,
+        GradientType::STATIC,
+        // TRANSLATORS: palette color
+        _("Enemy"));
     addColor(UserColorId::PARTICLE,
         0xffffff,
         // TRANSLATORS: palette color

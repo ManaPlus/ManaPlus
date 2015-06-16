@@ -2084,7 +2084,7 @@ void Being::updateColors()
             }
             else if (mEnemy)
             {
-                mNameColor = &userPalette->getColor(UserColorId::MONSTER);
+                mNameColor = &userPalette->getColor(UserColorId::ENEMY);
             }
             else if (mParty && localPlayer
                      && mParty == localPlayer->getParty())
