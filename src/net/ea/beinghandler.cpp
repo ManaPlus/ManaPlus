@@ -418,21 +418,6 @@ void BeingHandler::processPvpMapMode(Net::MessageIn &msg)
     BLOCK_END("BeingHandler::processPvpMapMode")
 }
 
-void BeingHandler::processPvpSet(Net::MessageIn &msg)
-{
-    BLOCK_START("BeingHandler::processPvpSet")
-    const BeingId id = msg.readBeingId("being id");
-    const int rank = msg.readInt32("rank");
-    msg.readInt32("num");
-    if (actorManager)
-    {
-        Being *const dstBeing = actorManager->findBeing(id);
-        if (dstBeing)
-            dstBeing->setPvpRank(rank);
-    }
-    BLOCK_END("BeingHandler::processPvpSet")
-}
-
 void BeingHandler::processNameResponse2(Net::MessageIn &msg)
 {
     BLOCK_START("BeingHandler::processNameResponse2")

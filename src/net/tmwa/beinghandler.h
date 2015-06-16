@@ -98,6 +98,8 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
         static void processSkillCastCancel(Net::MessageIn &msg);
 
         static void processIpResponse(Net::MessageIn &msg);
+
+        static void processPvpSet(Net::MessageIn &msg);
 };
 
 }  // namespace TmwAthena
