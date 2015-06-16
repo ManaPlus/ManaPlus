@@ -2367,6 +2367,7 @@ bool Being::updateFromCache()
         setLevel(entry->getLevel());
         setPvpRank(entry->getPvpRank());
         setIp(entry->getIp());
+        setTeamId(entry->getTeamId());
 
         mAdvanced = entry->isAdvanced();
         if (mAdvanced)
@@ -2388,7 +2389,7 @@ bool Being::updateFromCache()
         }
 
         updateAwayEffect();
-        if (mType == ActorType::Player)
+        if (mType == ActorType::Player || mTeamId)
             updateColors();
         return true;
     }
@@ -2423,6 +2424,7 @@ void Being::addToCache() const
     entry->setPvpRank(getPvpRank());
     entry->setIp(getIp());
     entry->setAdvanced(isAdvanced());
+    entry->setTeamId(getTeamId());
     if (isAdvanced())
     {
         int flags = 0;

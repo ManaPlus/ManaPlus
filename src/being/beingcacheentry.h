@@ -40,6 +40,7 @@ class BeingCacheEntry final
             mPvpRank(0),
             mTime(0),
             mFlags(0),
+            mTeamId(0U),
             mIsAdvanced(false)
         {
         }
@@ -114,6 +115,12 @@ class BeingCacheEntry final
         void setFlags(const int flags)
         { mFlags = flags; }
 
+        uint16_t getTeamId() const
+        { return mTeamId; }
+
+        void setTeamId(const uint16_t teamId)
+        { mTeamId = teamId; }
+
     protected:
         std::string mName;        /**< Name of character */
         std::string mPartyName;
@@ -124,6 +131,7 @@ class BeingCacheEntry final
         unsigned int mPvpRank;
         int mTime;
         int mFlags;
+        uint16_t mTeamId;
         bool mIsAdvanced;
 };
 
