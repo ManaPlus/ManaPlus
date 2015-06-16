@@ -547,7 +547,7 @@ void UserPalette::addLabel(const UserColorIdT type,
     mColors[static_cast<size_t>(type)] = ColorElem();
     const std::string str(" \342\200\225\342\200\225\342\200\225"
         "\342\200\225\342\200\225 ");
-    mColors[static_cast<size_t>(type)].grad = GradientTypeT::LABEL;
+    mColors[static_cast<size_t>(type)].grad = GradientType::LABEL;
     mColors[static_cast<size_t>(type)].text =
         std::string(str).append(text).append(str);
 }
