@@ -1613,12 +1613,19 @@ void BeingHandler::processPvpSet(Net::MessageIn &msg)
     BLOCK_START("BeingHandler::processPvpSet")
     const BeingId id = msg.readBeingId("being id");
     const int rank = msg.readInt32("rank");
-    msg.readInt32("num");
+    int teamId = 0;
+    if (serverFeatures->haveTeamId())
+        teamId = msg.readInt32("team");
+    else
+        msg.readInt32("num");
     if (actorManager)
     {
         Being *const dstBeing = actorManager->findBeing(id);
         if (dstBeing)
+        {
             dstBeing->setPvpRank(rank);
+            dstBeing->setTeamId(teamId);
+        }
     }
     BLOCK_END("BeingHandler::processPvpSet")
 }
