@@ -51,6 +51,9 @@ const std::string ColorTypeNames[static_cast<size_t>(
     "ColorHomunculus",
     "ColorParty",
     "ColorGuild",
+    "ColorTeam1",
+    "ColorTeam2",
+    "ColorTeam3",
     "",
     "ColorParticle",
     "ColorPickupInfo",
@@ -149,6 +152,11 @@ UserPalette::UserPalette() :
         GradientType::STATIC,
         // TRANSLATORS: palette color
         _("Erased names"));
+    addColor(UserColorId::ENEMY,
+        0xff4040,
+        GradientType::STATIC,
+        // TRANSLATORS: palette color
+        _("Enemy"));
     addColor(UserColorId::PC,
         0xffffff,
         GradientType::STATIC,
@@ -199,11 +207,21 @@ UserPalette::UserPalette() :
         // TRANSLATORS: palette color
         GradientType::STATIC,
         _("Guild members"));
-    addColor(UserColorId::ENEMY,
-        0xff4040,
-        GradientType::STATIC,
+    addColor(UserColorId::TEAM1,
+        0x0000ff,
         // TRANSLATORS: palette color
-        _("Enemy"));
+        GradientType::STATIC,
+        strprintf(_("Team %d"), 1));
+    addColor(UserColorId::TEAM2,
+        0x00a020,
+        // TRANSLATORS: palette color
+        GradientType::STATIC,
+        strprintf(_("Team %d"), 2));
+    addColor(UserColorId::TEAM3,
+        0xffff20,
+        // TRANSLATORS: palette color
+        GradientType::STATIC,
+        strprintf(_("Team %d"), 3));
     addLabel(UserColorId::LABEL_PARTICLES,
         // TRANSLATORS: palette label
         _("Particles"));
