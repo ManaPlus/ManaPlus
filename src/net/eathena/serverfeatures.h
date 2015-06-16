@@ -113,6 +113,8 @@ class ServerFeatures final : public Net::ServerFeatures
         bool haveMute() const override final;
 
         bool haveChangePassword() const override final;
+
+        bool haveTeamId() const override final;
 };
 
 }  // namespace EAthena

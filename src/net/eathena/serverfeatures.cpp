@@ -235,4 +235,9 @@ bool ServerFeatures::haveChangePassword() const
     return serverVersion >= 6;
 }
 
+bool ServerFeatures::haveTeamId() const
+{
+    return false;
+}
+
 }  // namespace EAthena

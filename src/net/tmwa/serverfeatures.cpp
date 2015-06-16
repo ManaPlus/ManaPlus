@@ -234,4 +234,9 @@ bool ServerFeatures::haveChangePassword() const
     return true;
 }
 
+bool ServerFeatures::haveTeamId() const
+{
+    return tmwServerVersion > 0;
+}
+
 }  // namespace TmwAthena
