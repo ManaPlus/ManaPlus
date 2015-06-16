@@ -925,6 +925,11 @@ class Being notfinal : public ActorSprite,
         void setAreaSize(const int areaSize)
         { mAreaSize = areaSize; }
 
+        void setTeamId(const uint16_t teamId);
+
+        uint16_t getTeamId() const
+        { return mTeamId; }
+
     protected:
         /**
          * Updates name's location.
@@ -940,6 +945,8 @@ class Being notfinal : public ActorSprite,
         void removeItemParticles(const int id);
 
         void createSpeechBubble();
+
+        void setDefaultNameColor(const UserColorIdT defaultColor);
 
         static int getDefaultEffectId(const AttackTypeT &type);
 
@@ -1105,6 +1112,7 @@ class Being notfinal : public ActorSprite,
         int mKarma;
         int mManner;
         int mAreaSize;
+        uint16_t mTeamId;
         uint16_t mLook;
         unsigned char mHairColor;
         bool mErased;

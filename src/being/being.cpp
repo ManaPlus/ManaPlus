@@ -216,6 +216,7 @@ Being::Being(const BeingId id,
     mKarma(0),
     mManner(0),
     mAreaSize(11),
+    mTeamId(0U),
     mLook(0U),
     mHairColor(0),
     mErased(false),
@@ -2049,18 +2050,37 @@ void Being::showName()
     updateCoords();
 }
 
+void Being::setDefaultNameColor(const UserColorIdT defaultColor)
+{
+    switch (mTeamId)
+    {
+        case 0:
+            mNameColor = &userPalette->getColor(defaultColor);
+            break;
+        case 1:
+            mNameColor = &userPalette->getColor(UserColorId::TEAM1);
+            break;
+        case 2:
+            mNameColor = &userPalette->getColor(UserColorId::TEAM2);
+            break;
+        case 3:
+            mNameColor = &userPalette->getColor(UserColorId::TEAM3);
+            break;
+    }
+}
+
 void Being::updateColors()
 {
     if (userPalette)
     {
         if (mType == ActorType::Monster)
         {
-            mNameColor = &userPalette->getColor(UserColorId::MONSTER);
+            setDefaultNameColor(UserColorId::MONSTER);
             mTextColor = &userPalette->getColor(UserColorId::MONSTER);
         }
         else if (mType == ActorType::Npc)
         {
-            mNameColor = &userPalette->getColor(UserColorId::NPC);
+            setDefaultNameColor(UserColorId::NPC);
             mTextColor = &userPalette->getColor(UserColorId::NPC);
         }
         else if (this == localPlayer)
@@ -2119,7 +2139,7 @@ void Being::updateColors()
             }
             else
             {
-                mNameColor = &userPalette->getColor(UserColorId::PC);
+                setDefaultNameColor(UserColorId::PC);
             }
         }
 
@@ -3644,6 +3664,15 @@ void Being::recreateItemParticles()
                 pi->particles.push_back(p);
             }
         }
+    }
+}
+
+void Being::setTeamId(const uint16_t teamId)
+{
+    if (mTeamId != teamId)
+    {
+        mTeamId = teamId;
+        updateColors();
     }
 }
 
