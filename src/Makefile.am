@@ -14,7 +14,7 @@ manaplus_CXXFLAGS += -DENABLE_PORTABLE
 endif
 
 if ENABLE_CHECKPLUGIN
-manaplus_CXXFLAGS += -fplugin=../build/checkplugin.so -fplugin-arg-checkplugin-command=parse
+manaplus_CXXFLAGS += -fplugin=../build/checkplugin.so -fplugin-arg-checkplugin-command=detectnullpointers
 endif
 
 if USE_OPENGL
