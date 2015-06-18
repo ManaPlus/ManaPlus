@@ -404,8 +404,7 @@ void LocalPlayer::setGMLevel(const int level)
         if (chatWindow)
         {
             chatWindow->loadGMCommands();
-            if (!gmChatTab && config.getBoolValue("enableGmTab"))
-                chatWindow->addSpecialChannelTab(GM_CHANNEL, false);
+            chatWindow->showGMTab();
         }
     }
 }

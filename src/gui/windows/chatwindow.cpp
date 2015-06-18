@@ -2149,6 +2149,16 @@ void ChatWindow::debugMessage(const std::string &msg)
         debugChatTab->chatLog(msg, ChatMsgType::BY_SERVER);
 }
 
+void ChatWindow::showGMTab()
+{
+    if (!gmChatTab &&
+        config.getBoolValue("enableGmTab") &&
+        localPlayer->getGMLevel() >= paths.getIntValue("gmTabMinimalLevel"))
+    {
+        addSpecialChannelTab(GM_CHANNEL, false);
+    }
+}
+
 #ifdef EATHENA_SUPPORT
 void ChatWindow::joinRoom(const bool isJoin)
 {

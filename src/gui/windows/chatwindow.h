@@ -323,6 +323,8 @@ class ChatWindow final : public Window,
 
         void postConnection();
 
+        void showGMTab();
+
 #ifdef USE_PROFILER
         void logicChildren();
 #endif

@@ -596,6 +596,7 @@ DefaultsData* getPathsDefaults()
     AddDEF("poisonEffectName", "poison");
     AddDEF("cartEffectName", "cart");
     AddDEF("ridingEffectName", "riding");
+    AddDEF("gmTabMinimalLevel", "2");
 
     return configData;
 }

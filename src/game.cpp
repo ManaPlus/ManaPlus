@@ -287,14 +287,13 @@ static void createGuiWindows()
         battleChatTab = nullptr;
     }
 
-    if (localPlayer && !gmChatTab && config.getBoolValue("enableGmTab")
-        && localPlayer->getGMLevel() > 0)
+    if (chatWindow)
     {
-        chatWindow->addSpecialChannelTab(GM_CHANNEL, false);
-    }
+        chatWindow->showGMTab();
 
-    if (!isSafeMode && chatWindow)
-        chatWindow->loadState();
+        if (!isSafeMode)
+            chatWindow->loadState();
+    }
 
     if (setupWindow)
         setupWindow->externalUpdate();
