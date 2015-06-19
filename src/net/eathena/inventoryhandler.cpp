@@ -22,11 +22,13 @@
 
 #include "net/eathena/inventoryhandler.h"
 
+#include "item.h"
 #include "notifymanager.h"
 
 #include "enums/equipslot.h"
 
 #include "being/localplayer.h"
+#include "being/playerinfo.h"
 
 #include "listeners/arrowslistener.h"
 
@@ -36,6 +38,7 @@
 #include "net/eathena/protocol.h"
 
 #include "net/ea/eaprotocol.h"
+#include "net/ea/equipbackend.h"
 
 #include "resources/notifytypes.h"
 

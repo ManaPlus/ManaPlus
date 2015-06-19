@@ -34,8 +34,9 @@
 
 class Being;
 class PlayerIgnoreStrategy;
-class PlayerRelation;
 class PlayerRelationsListener;
+
+struct PlayerRelation;
 
 /**
  * Player relations class, represents any particular relations and/or

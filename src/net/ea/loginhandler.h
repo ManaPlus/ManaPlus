@@ -27,9 +27,9 @@
 
 #include "net/registrationoptions.h"
 
-#include "net/ea/token.h"
-
 class LoginData;
+
+struct Token;
 
 namespace Net
 {

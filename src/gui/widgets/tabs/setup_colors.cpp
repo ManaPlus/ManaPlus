@@ -252,7 +252,8 @@ void Setup_Colors::valueChanged(const SelectionEvent &event A_UNUSED)
     const Color *col = &userPalette->getColor(type);
     const GradientTypeT grad = userPalette->getGradientType(type);
     const int delay = userPalette->getGradientDelay(type);
-    const Visible showControls = fromBool(grad != GradientType::LABEL, Visible);
+    const Visible showControls = fromBool(grad != GradientType::LABEL,
+        Visible);
     mPreview->setVisible(showControls);
     mPreviewBox->setVisible(showControls);
     mTextPreview->setVisible(showControls);

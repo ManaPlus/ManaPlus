@@ -1075,7 +1075,7 @@ class Being notfinal : public ActorSprite,
         int mHP;
         int mMaxHP;
         int mDistance;
-        ReachableT mReachable; /**< 0 - unknown, 1 - reachable, 2 - not reachable*/
+        ReachableT mReachable;
         int mGoodStatus;
 
         static int mUpdateConfigTime;

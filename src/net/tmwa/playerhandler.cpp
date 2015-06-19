@@ -23,6 +23,7 @@
 #include "net/tmwa/playerhandler.h"
 
 #include "being/localplayer.h"
+#include "being/playerinfo.h"
 
 #include "gui/windows/statuswindow.h"
 

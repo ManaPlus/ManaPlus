@@ -27,4 +27,10 @@
         var = nullptr;\
     }
 
+#define delete2Arr(var) \
+    {\
+        delete []var;\
+        var = nullptr;\
+    }
+
 #endif  // UTILS_DELETE2_H

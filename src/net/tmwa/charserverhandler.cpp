@@ -34,6 +34,8 @@
 #include "net/character.h"
 #include "net/serverfeatures.h"
 
+#include "net/ea/token.h"
+
 #include "net/tmwa/gamehandler.h"
 #include "net/tmwa/loginhandler.h"
 #include "net/tmwa/messageout.h"

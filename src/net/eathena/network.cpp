@@ -52,7 +52,7 @@ Network::Network() :
 Network::~Network()
 {
     clearHandlers();
-    delete2(mMessageHandlers);
+    delete2Arr(mMessageHandlers);
     mInstance = nullptr;
 }
 

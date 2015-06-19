@@ -29,6 +29,8 @@
 
 #include "net/serverfeatures.h"
 
+#include "net/ea/token.h"
+
 #include "net/eathena/loginhandler.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/network.h"

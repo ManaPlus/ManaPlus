@@ -2130,7 +2130,7 @@ void Being::updateColors()
             }
             else if (player_relations.getRelation(mName)
                      == Relation::IGNORED ||
-                     player_relations.getRelation(mName)== Relation::ENEMY2)
+                     player_relations.getRelation(mName) == Relation::ENEMY2)
             {
                 mNameColor = &userPalette->getColor(UserColorId::IGNORED);
             }

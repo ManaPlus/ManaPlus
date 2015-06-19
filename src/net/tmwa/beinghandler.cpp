@@ -1624,7 +1624,7 @@ void BeingHandler::processPvpSet(Net::MessageIn &msg)
         if (dstBeing)
         {
             dstBeing->setPvpRank(rank);
-            dstBeing->setTeamId(teamId);
+            dstBeing->setTeamId(static_cast<uint16_t>(teamId));
             dstBeing->addToCache();
         }
     }

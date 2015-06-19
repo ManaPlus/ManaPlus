@@ -46,7 +46,6 @@
 
 #include "input/keyboardconfig.h"
 
-#include "gui/chatconsts.h"
 #include "gui/gui.h"
 #include "gui/userpalette.h"
 #include "gui/popupmanager.h"
@@ -60,7 +59,6 @@
 #include "gui/windows/statuswindow.h"
 #include "gui/windows/updaterwindow.h"
 
-#include "gui/widgets/tabs/chat/gmtab.h"
 #include "gui/widgets/tabs/chat/whispertab.h"
 
 #include "net/beinghandler.h"

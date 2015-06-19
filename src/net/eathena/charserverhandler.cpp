@@ -36,6 +36,8 @@
 #include "net/playerhandler.h"
 #include "net/serverfeatures.h"
 
+#include "net/ea/token.h"
+
 #include "net/eathena/gamehandler.h"
 #include "net/eathena/loginhandler.h"
 #include "net/eathena/messageout.h"

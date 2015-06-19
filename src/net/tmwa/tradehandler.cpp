@@ -30,7 +30,6 @@
 #include "being/playerrelation.h"
 #include "being/playerrelations.h"
 
-#include "gui/windows/confirmdialog.h"
 #include "gui/windows/tradewindow.h"
 
 #include "net/serverfeatures.h"
@@ -49,7 +48,6 @@
 extern Net::TradeHandler *tradeHandler;
 
 extern std::string tradePartnerName;
-extern ConfirmDialog *confirmDlg;
 
 namespace TmwAthena
 {
@@ -277,9 +275,8 @@ void TradeHandler::processTradeItemAddResponse(Net::MessageIn &msg)
 
 void TradeHandler::processTradeResponse(Net::MessageIn &msg)
 {
-    if (confirmDlg || tradePartnerName.empty()
-        || !player_relations.hasPermission(tradePartnerName,
-        PlayerRelation::TRADE))
+    if (tradePartnerName.empty() ||
+        !player_relations.hasPermission(tradePartnerName, PlayerRelation::TRADE))
     {
         tradeHandler->respond(false);
         return;

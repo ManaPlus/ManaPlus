@@ -25,9 +25,10 @@
 
 #include "localconsts.h"
 
+#include "enums/simpletypes/beingid.h"
+
 #include "net/inventoryhandler.h"
 
-#include "net/ea/equipbackend.h"
 #include "net/ea/inventoryitem.h"
 
 #include <queue>
@@ -39,6 +40,8 @@ namespace Net
 
 namespace Ea
 {
+
+class EquipBackend;
 
 typedef std::vector<InventoryItem> InventoryItems;
 typedef std::queue<BeingId> PickupQueue;
