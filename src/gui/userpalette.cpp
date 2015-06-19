@@ -79,7 +79,7 @@ const std::string ColorTypeNames[static_cast<size_t>(
     "ColorCollisionWaterHighlight",
     "ColorCollisionGroundtopHighlight",
     "ColorWalkableTileHighlight",
-    "ColorNet"
+    "ColorNet",
     "",
     "ColorAttackRange",
     "ColorAttackRangeBorder",
