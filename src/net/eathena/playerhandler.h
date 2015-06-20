@@ -112,6 +112,8 @@ class PlayerHandler final : public MessageHandler, public Ea::PlayerHandler
         static void processPlayerRankPoints(Net::MessageIn &msg);
 
         static void processPlayerClientCommand(Net::MessageIn &msg);
+
+        static void processOnlineList(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
