@@ -33,8 +33,6 @@
 
 #include "listeners/arrowslistener.h"
 
-#include "net/serverfeatures.h"
-
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
 

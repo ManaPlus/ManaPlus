@@ -216,10 +216,7 @@ void LoginHandler::processServerVersion(Net::MessageIn &msg)
 
 int LoginHandler::supportedOptionalActions() const
 {
-    return serverFeatures->haveEmailOnRegister()
-        ? Net::RegistrationOptions::SetEmailOnRegister
-        | Net::RegistrationOptions::SetGenderOnRegister
-        : Net::RegistrationOptions::SetGenderOnRegister;
+    return Net::RegistrationOptions::SetGenderOnRegister;
 }
 
 void LoginHandler::sendVersion() const

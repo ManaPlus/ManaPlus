@@ -267,12 +267,7 @@ void CharServerHandler::newCharacter(const std::string &name, const int slot,
     outMsg.writeInt8(static_cast<int8_t>(hairColor), "hair color");
     outMsg.writeInt8(0, "unused");
     outMsg.writeInt8(static_cast<int8_t>(hairstyle), "hair style");
-    if (serverFeatures->haveLookSelection())
-        outMsg.writeInt8(static_cast<int8_t>(look), "look");
-    else
-        outMsg.writeInt8(0, "unused");
-    if (serverFeatures->haveRaceSelection())
-        outMsg.writeInt8(race, "class");
+    outMsg.writeInt8(0, "unused");
 }
 
 void CharServerHandler::deleteCharacter(Net::Character *const character,

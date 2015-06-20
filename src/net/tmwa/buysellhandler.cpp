@@ -34,7 +34,6 @@
 #include "gui/widgets/createwidget.h"
 
 #include "net/chathandler.h"
-#include "net/serverfeatures.h"
 
 #include "net/tmwa/protocol.h"
 
