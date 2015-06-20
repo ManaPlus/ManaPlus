@@ -186,29 +186,14 @@ void TradeHandler::processTradeItemAdd(Net::MessageIn &msg)
         }
         else
         {
-            if (serverFeatures->haveItemColors())
-            {
-                tradeWindow->addItem2(type, 0,
-                    cards, 4,
-                    false, amount,
-                    refine,
-                    identify,
-                    Identified_true,
-                    Damaged_false,
-                    Favorite_false,
-                    Equipm_false);
-            }
-            else
-            {
-                tradeWindow->addItem2(type, 0,
-                    cards, 4,
-                    false, amount,
-                    refine, 1,
-                    fromBool(identify, Identified),
-                    Damaged_false,
-                    Favorite_false,
-                    Equipm_false);
-            }
+            tradeWindow->addItem2(type, 0,
+                cards, 4,
+                false, amount,
+                refine, 1,
+                fromBool(identify, Identified),
+                Damaged_false,
+                Favorite_false,
+                Equipm_false);
         }
     }
 }

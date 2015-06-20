@@ -184,20 +184,9 @@ void NpcHandler::buyItem(const BeingId beingId A_UNUSED,
                          const int amount) const
 {
     createOutPacket(CMSG_NPC_BUY_REQUEST);
-    if (serverFeatures->haveItemColors())
-    {
-        outMsg.writeInt16(10, "len");
-        outMsg.writeInt16(static_cast<int16_t>(amount), "amount");
-        outMsg.writeInt16(static_cast<int16_t>(itemId), "item id");
-        outMsg.writeInt8(color, "color");
-        outMsg.writeInt8(0, "unused");
-    }
-    else
-    {
-        outMsg.writeInt16(8, "len");
-        outMsg.writeInt16(static_cast<int16_t>(amount), "amount");
-        outMsg.writeInt16(static_cast<int16_t>(itemId), "item id");
-    }
+    outMsg.writeInt16(8, "len");
+    outMsg.writeInt16(static_cast<int16_t>(amount), "amount");
+    outMsg.writeInt16(static_cast<int16_t>(itemId), "item id");
 }
 
 void NpcHandler::sellItem(const BeingId beingId A_UNUSED,

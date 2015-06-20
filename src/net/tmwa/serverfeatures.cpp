@@ -61,12 +61,12 @@ bool ServerFeatures::haveServerHp() const
 
 bool ServerFeatures::havePlayerStatusUpdate() const
 {
-    return serverVersion >= 4;
+    return false;
 }
 
 bool ServerFeatures::haveBrokenPlayerAttackDistance() const
 {
-    return serverVersion < 1;
+    return true;
 }
 
 bool ServerFeatures::haveNativeGuilds() const
@@ -81,12 +81,12 @@ bool ServerFeatures::haveIncompleteChatMessages() const
 
 bool ServerFeatures::haveRaceSelection() const
 {
-    return serverVersion >= 2;
+    return false;
 }
 
 bool ServerFeatures::haveLookSelection() const
 {
-    return serverVersion >= 9;
+    return false;
 }
 
 bool ServerFeatures::haveChatChannels() const
@@ -101,12 +101,12 @@ bool ServerFeatures::haveServerIgnore() const
 
 bool ServerFeatures::haveMove3() const
 {
-    return serverVersion >= 10 || tmwServerVersion >= 0x0f0512;
+    return tmwServerVersion >= 0x0f0512;
 }
 
 bool ServerFeatures::haveItemColors() const
 {
-    return serverVersion >= 1;
+    return false;
 }
 
 bool ServerFeatures::haveOtherGender() const

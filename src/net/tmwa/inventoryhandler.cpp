@@ -297,26 +297,13 @@ void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
 
         if (inventory)
         {
-            if (serverFeatures->haveItemColors())
-            {
-                inventory->setItem(index, itemId, itemType, 1, refine,
-                    identified,
-                    Identified_true,
-                    Damaged_false,
-                    Favorite_false,
-                    Equipm_true,
-                    Equipped_false);
-            }
-            else
-            {
-                inventory->setItem(index, itemId, itemType, 1, refine,
-                    1,
-                    fromBool(identified, Identified),
-                    Damaged_false,
-                    Favorite_false,
-                    Equipm_true,
-                    Equipped_false);
-            }
+            inventory->setItem(index, itemId, itemType, 1, refine,
+                1,
+                fromBool(identified, Identified),
+                Damaged_false,
+                Favorite_false,
+                Equipm_true,
+                Equipped_false);
             inventory->setCards(index, cards, 4);
         }
 
@@ -409,26 +396,13 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
             if (item && item->getId() == itemId)
                 amount += item->getQuantity();
 
-            if (serverFeatures->haveItemColors())
-            {
-                inventory->setItem(index, itemId, type, amount, refine,
-                    identified,
-                    Identified_true,
-                    Damaged_false,
-                    Favorite_false,
-                    fromBool(equipType, Equipm),
-                    Equipped_false);
-            }
-            else
-            {
-                inventory->setItem(index, itemId, type, amount, refine,
-                    1,
-                    fromBool(identified, Identified),
-                    Damaged_false,
-                    Favorite_false,
-                    fromBool(equipType, Equipm),
-                    Equipped_false);
-            }
+            inventory->setItem(index, itemId, type, amount, refine,
+                1,
+                fromBool(identified, Identified),
+                Damaged_false,
+                Favorite_false,
+                fromBool(equipType, Equipm),
+                Equipped_false);
             inventory->setCards(index, cards, 4);
         }
         ArrowsListener::distributeEvent();
@@ -480,26 +454,13 @@ void InventoryHandler::processPlayerInventory(Net::MessageIn &msg)
 
         if (inventory)
         {
-            if (serverFeatures->haveItemColors())
-            {
-                inventory->setItem(index, itemId, itemType, amount,
-                    0, identified,
-                    Identified_true,
-                    Damaged_false,
-                    Favorite_false,
-                    fromBool(isEquipment, Equipm),
-                    Equipped_false);
-            }
-            else
-            {
-                inventory->setItem(index, itemId, itemType, amount,
-                    0, 1,
-                    fromBool(identified, Identified),
-                    Damaged_false,
-                    Favorite_false,
-                    fromBool(isEquipment, Equipm),
-                    Equipped_false);
-            }
+            inventory->setItem(index, itemId, itemType, amount,
+                0, 1,
+                fromBool(identified, Identified),
+                Damaged_false,
+                Favorite_false,
+                fromBool(isEquipment, Equipm),
+                Equipped_false);
             inventory->setCards(index, cards, 4);
         }
     }
@@ -534,24 +495,12 @@ void InventoryHandler::processPlayerStorage(Net::MessageIn &msg)
                         cards[0], cards[1], cards[2], cards[3]);
         }
 
-        if (serverFeatures->haveItemColors())
-        {
-            mInventoryItems.push_back(Ea::InventoryItem(index, itemId,
-                itemType, cards, amount, 0, identified,
-                Identified_true,
-                Damaged_false,
-                Favorite_false,
-                Equipm_false));
-        }
-        else
-        {
-            mInventoryItems.push_back(Ea::InventoryItem(index, itemId,
-                itemType, cards, amount, 0, 1,
-                fromBool(identified, Identified),
-                Damaged_false,
-                Favorite_false,
-                Equipm_false));
-        }
+        mInventoryItems.push_back(Ea::InventoryItem(index, itemId,
+            itemType, cards, amount, 0, 1,
+            fromBool(identified, Identified),
+            Damaged_false,
+            Favorite_false,
+            Equipm_false));
     }
     BLOCK_END("InventoryHandler::processPlayerInventory")
 }
@@ -615,24 +564,12 @@ void InventoryHandler::processPlayerStorageEquip(Net::MessageIn &msg)
                 static_cast<unsigned int>(refine));
         }
 
-        if (serverFeatures->haveItemColors())
-        {
-            mInventoryItems.push_back(Ea::InventoryItem(index, itemId,
-                itemType, cards, amount, refine, identified,
-                Identified_true,
-                Damaged_false,
-                Favorite_false,
-                Equipm_false));
-        }
-        else
-        {
-            mInventoryItems.push_back(Ea::InventoryItem(index, itemId,
-                itemType, cards, amount, refine, 1,
-                fromBool(identified, Identified),
-                Damaged_false,
-                Favorite_false,
-                Equipm_false));
-        }
+        mInventoryItems.push_back(Ea::InventoryItem(index, itemId,
+            itemType, cards, amount, refine, 1,
+            fromBool(identified, Identified),
+            Damaged_false,
+            Favorite_false,
+            Equipm_false));
     }
     BLOCK_END("InventoryHandler::processPlayerStorageEquip")
 }
@@ -660,26 +597,13 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
     {
         if (mStorage)
         {
-            if (serverFeatures->haveItemColors())
-            {
-                mStorage->setItem(index, itemId, 0, amount,
-                    refine, identified,
-                    Identified_true,
-                    Damaged_false,
-                    Favorite_false,
-                    Equipm_false,
-                    Equipped_false);
-            }
-            else
-            {
-                mStorage->setItem(index, itemId, 0, amount,
-                    refine, 1,
-                    fromBool(identified, Identified),
-                    Damaged_false,
-                    Favorite_false,
-                    Equipm_false,
-                    Equipped_false);
-            }
+            mStorage->setItem(index, itemId, 0, amount,
+                refine, 1,
+                fromBool(identified, Identified),
+                Damaged_false,
+                Favorite_false,
+                Equipm_false,
+                Equipped_false);
             mStorage->setCards(index, cards, 4);
         }
     }

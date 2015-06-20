@@ -101,10 +101,7 @@ void BuySellHandler::handleMessage(Net::MessageIn &msg)
 void BuySellHandler::processNpcBuy(Net::MessageIn &msg)
 {
     msg.readInt16("len");
-    unsigned int sz = 11;
-    if (serverFeatures->haveItemColors())
-        sz += 1;
-    const unsigned int n_items = (msg.getLength() - 4U) / sz;
+    const unsigned int n_items = (msg.getLength() - 4U) / 11;
     CREATEWIDGETV(mBuyDialog, BuyDialog, mNpcId);
     mBuyDialog->setMoney(PlayerInfo::getAttribute(Attributes::MONEY));
 
@@ -115,8 +112,6 @@ void BuySellHandler::processNpcBuy(Net::MessageIn &msg)
         const int type = msg.readUInt8("type");
         const int itemId = msg.readInt16("item id");
         uint8_t color = 1;
-        if (serverFeatures->haveItemColors())
-            color = msg.readUInt8("item color");
         mBuyDialog->addItem(itemId, type, color, 0, value);
     }
     mBuyDialog->sort();
