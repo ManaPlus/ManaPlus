@@ -32,7 +32,6 @@
 packet(SMSG_SERVER_VERSION_RESPONSE, 0x7531);
 
 packet(CMSG_LOGIN_REGISTER,          0x0064);
-packet(CMSG_LOGIN_REGISTER2,         0x01de);
 
 packet(SMSG_SERVER_PING,             0x007f); /**< Contains server tick */
 packet(SMSG_CONNECTION_PROBLEM,      0x0081);
@@ -44,7 +43,6 @@ packet(SMSG_LOGIN_ERROR,             0x006a);
 packet(SMSG_CHAR_LOGIN,              0x006b);
 packet(SMSG_CHAR_LOGIN_ERROR,        0x006c);
 packet(SMSG_CHAR_CREATE_SUCCEEDED,   0x006d);
-packet(SMSG_CHAR_CREATE_SUCCEEDED2,  0x0221);
 
 packet(SMSG_CHAR_CREATE_FAILED,      0x006e);
 packet(SMSG_CHAR_DELETE_SUCCEEDED,   0x006f);
@@ -102,10 +100,8 @@ packet(SMSG_BEING_SELFEFFECT,        0x019b);
 packet(SMSG_BEING_EMOTION,           0x00c0);
 packet(SMSG_BEING_ACTION,            0x008a); /**< Attack, sit, stand up, ... */
 packet(SMSG_BEING_CHAT,              0x008d); /**< A being talks */
-packet(SMSG_BEING_CHAT2,             0x0223); /**< A being talks in channels */
 packet(CMSG_NAME_REQUEST,            0x0094);
 packet(SMSG_BEING_NAME_RESPONSE,     0x0095); /**< Has to be requested */
-packet(SMSG_BEING_NAME_RESPONSE2,    0x0220); /**< Has to be requested */
 packet(SMSG_BEING_CHANGE_DIRECTION,  0x009c);
 packet(SMSG_BEING_RESURRECT,         0x0148);
 
@@ -125,7 +121,6 @@ packet(SMSG_NPC_SELL_RESPONSE,       0x00cb);
 packet(SMSG_NPC_INT_INPUT,           0x0142); /**< Integer input */
 packet(SMSG_NPC_STR_INPUT,           0x01d4); /**< String input */
 packet(SMSG_PLAYER_CHAT,             0x008e); /**< Player talks */
-packet(SMSG_PLAYER_CHAT2,            0x0224); /**< Player talks */
 packet(SMSG_WHISPER,                 0x0097); /**< Whisper Recieved */
 packet(SMSG_WHISPER_RESPONSE,        0x0098);
 packet(SMSG_GM_CHAT,                 0x009a); /**< GM announce */
@@ -208,7 +203,6 @@ packet(CMSG_MAP_LOADED,              0x007d);
 packet(CMSG_CLIENT_QUIT,             0x018A);
 
 packet(CMSG_CHAT_MESSAGE,            0x008c);
-packet(CMSG_CHAT_MESSAGE2,           0x0222);
 packet(CMSG_CHAT_WHISPER,            0x0096);
 packet(CMSG_CHAT_WHO,                0x00c1);
 
@@ -302,19 +296,12 @@ packet(SMSG_PVP_MAP_MODE,            0x0199);
 packet(SMSG_PVP_SET,                 0x019a);
 packet(CMSG_IGNORE_ALL,              0x00d0);
 packet(SMSG_IGNORE_ALL_RESPONSE,     0x00d2);
-packet(CMSG_ONLINE_LIST,             0x0210);
-packet(SMSG_ONLINE_LIST,             0x0211);
 packet(SMSG_NPC_COMMAND,             0x0212);
-packet(CMSG_SET_STATUS,              0x0213);
 packet(SMSG_QUEST_SET_VAR,           0x0214);
 packet(SMSG_QUEST_PLAYER_VARS,       0x0215);
 packet(SMSG_BEING_MOVE3,             0x0225);
-packet(SMSG_MAP_MASK,                0x0226);
 packet(SMSG_MAP_MUSIC,               0x0227);
 packet(SMSG_NPC_CHANGETITLE,         0x0228);
-
-packet(CMSG_SEND_CLIENT_INFO,        0x7533);
-packet(SMSG_UPDATE_HOST2,            0x7534);
 
 #undef packet
 

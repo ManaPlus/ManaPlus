@@ -54,7 +54,6 @@ LoginHandler::LoginHandler() :
     static const uint16_t _messages[] =
     {
         SMSG_UPDATE_HOST,
-        SMSG_UPDATE_HOST2,
         SMSG_LOGIN_DATA,
         SMSG_LOGIN_ERROR,
         SMSG_CHAR_PASSWORD_RESPONSE,
@@ -80,10 +79,6 @@ void LoginHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_UPDATE_HOST:
             processUpdateHost(msg);
-            break;
-
-        case SMSG_UPDATE_HOST2:
-            processUpdateHost2(msg);
             break;
 
         case SMSG_LOGIN_DATA:
@@ -139,49 +134,31 @@ void LoginHandler::changePassword(const std::string &restrict oldPassword,
 
 void LoginHandler::sendLoginRegister(const std::string &restrict username,
                                      const std::string &restrict password,
-                                     const std::string &restrict email) const
+                                     const std::string &restrict email
+                                     A_UNUSED) const
 {
-    if (email.empty())
+    createOutPacket(CMSG_LOGIN_REGISTER);
+    if (serverVersion > 0)
     {
-        createOutPacket(CMSG_LOGIN_REGISTER);
-        if (serverVersion > 0)
-        {
-            outMsg.writeInt32(CLIENT_PROTOCOL_VERSION,
-                "client protocol version");
-        }
-        else
-        {
-            outMsg.writeInt32(CLIENT_TMW_PROTOCOL_VERSION,
-                "client protocol version");
-        }
-
-        outMsg.writeString(username, 24, "login");
-        outMsg.writeStringNoLog(password, 24, "password");
-
-        /*
-         * eAthena calls the last byte "client version 2", but it isn't used at
-         * at all. We're retasking it, as a bit mask:
-         *  0 - can handle the 0x63 "update host" packet
-         *  1 - defaults to the first char-server (instead of the last)
-         */
-        outMsg.writeInt8(0x03, "flags");
+        outMsg.writeInt32(CLIENT_PROTOCOL_VERSION,
+            "client protocol version");
     }
     else
     {
-        createOutPacket(CMSG_LOGIN_REGISTER2);
-        outMsg.writeInt32(0, "client version");
-        outMsg.writeString(username, 24, "login");
-        outMsg.writeStringNoLog(password, 24, "password");
-
-        /*
-         * eAthena calls the last byte "client version 2", but it isn't used at
-         * at all. We're retasking it, as a bit mask:
-         *  0 - can handle the 0x63 "update host" packet
-         *  1 - defaults to the first char-server (instead of the last)
-         */
-        outMsg.writeInt8(0x03, "flags");
-        outMsg.writeString(email, 24, "email");
+        outMsg.writeInt32(CLIENT_TMW_PROTOCOL_VERSION,
+            "client protocol version");
     }
+
+    outMsg.writeString(username, 24, "login");
+    outMsg.writeStringNoLog(password, 24, "password");
+
+    /*
+     * eAthena calls the last byte "client version 2", but it isn't used at
+     * at all. We're retasking it, as a bit mask:
+     *  0 - can handle the 0x63 "update host" packet
+     *  1 - defaults to the first char-server (instead of the last)
+     */
+    outMsg.writeInt8(0x03, "flags");
 }
 
 ServerInfo *LoginHandler::getCharServer() const
@@ -191,9 +168,6 @@ ServerInfo *LoginHandler::getCharServer() const
 
 void LoginHandler::requestUpdateHosts()
 {
-    createOutPacket(CMSG_SEND_CLIENT_INFO);
-    outMsg.writeInt8(CLIENT_PROTOCOL_VERSION, "protocol version");
-    outMsg.writeInt8(0, "unused");
 }
 
 void LoginHandler::processServerVersion(Net::MessageIn &msg)

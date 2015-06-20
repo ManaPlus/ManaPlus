@@ -97,8 +97,6 @@ class CharServerHandler final : public MessageHandler,
     protected:
         static void processCharCreate(Net::MessageIn &msg);
 
-        static void processCharCreate2(Net::MessageIn &msg);
-
         static void processCharDeleteFailed(Net::MessageIn &msg);
 };
 

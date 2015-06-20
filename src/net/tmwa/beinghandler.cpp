@@ -75,7 +75,6 @@ BeingHandler::BeingHandler(const bool enableSync) :
         SMSG_BEING_CHANGE_LOOKS,
         SMSG_BEING_CHANGE_LOOKS2,
         SMSG_BEING_NAME_RESPONSE,
-        SMSG_BEING_NAME_RESPONSE2,
         SMSG_PLAYER_GUILD_PARTY_INFO,
         SMSG_BEING_CHANGE_DIRECTION,
         SMSG_PLAYER_UPDATE_1,
@@ -166,10 +165,6 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_BEING_NAME_RESPONSE:
             processNameResponse(msg);
-            break;
-
-        case SMSG_BEING_NAME_RESPONSE2:
-            processNameResponse2(msg);
             break;
 
         case SMSG_BEING_IP_RESPONSE:

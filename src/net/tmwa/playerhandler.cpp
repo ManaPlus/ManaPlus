@@ -54,8 +54,6 @@ PlayerHandler::PlayerHandler() :
         SMSG_PLAYER_STAT_UPDATE_5,
         SMSG_PLAYER_STAT_UPDATE_6,
         SMSG_PLAYER_ARROW_MESSAGE,
-        SMSG_ONLINE_LIST,
-        SMSG_MAP_MASK,
         SMSG_MAP_MUSIC,
         0
     };
@@ -103,14 +101,6 @@ void PlayerHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_PLAYER_ARROW_MESSAGE:
             processPlayerArrowMessage(msg);
-            break;
-
-        case SMSG_ONLINE_LIST:
-            processOnlineList(msg);
-            break;
-
-        case SMSG_MAP_MASK:
-            processMapMask(msg);
             break;
 
         case SMSG_MAP_MUSIC:
@@ -227,7 +217,6 @@ void PlayerHandler::respawn() const
 
 void PlayerHandler::requestOnlineList() const
 {
-    createOutPacket(CMSG_ONLINE_LIST);
 }
 
 void PlayerHandler::removeOption() const
@@ -242,11 +231,8 @@ void PlayerHandler::setMemo() const
 {
 }
 
-void PlayerHandler::updateStatus(const uint8_t status) const
+void PlayerHandler::updateStatus(const uint8_t status A_UNUSED) const
 {
-    createOutPacket(CMSG_SET_STATUS);
-    outMsg.writeInt8(status, "status");
-    outMsg.writeInt8(0, "unused");
 }
 
 void PlayerHandler::processPlayerStatUpdate5(Net::MessageIn &msg)

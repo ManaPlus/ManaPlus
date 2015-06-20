@@ -56,9 +56,7 @@ ChatHandler::ChatHandler() :
     static const uint16_t _messages[] =
     {
         SMSG_BEING_CHAT,
-        SMSG_BEING_CHAT2,
         SMSG_PLAYER_CHAT,
-        SMSG_PLAYER_CHAT2,
         SMSG_WHISPER,
         SMSG_WHISPER_RESPONSE,
         SMSG_GM_CHAT,
@@ -89,17 +87,8 @@ void ChatHandler::handleMessage(Net::MessageIn &msg)
             processBeingChat(msg);
             break;
 
-        // Received speech from being
-        case SMSG_BEING_CHAT2:
-            processBeingChat(msg);
-            break;
-
         case SMSG_PLAYER_CHAT:
             processChat(msg);
-            break;
-
-        case SMSG_PLAYER_CHAT2:
-            processChat2(msg);
             break;
 
         case SMSG_GM_CHAT:
@@ -121,7 +110,7 @@ void ChatHandler::handleMessage(Net::MessageIn &msg)
 }
 
 void ChatHandler::talk(const std::string &restrict text,
-                       const std::string &restrict channel) const
+                       const std::string &restrict channel A_UNUSED) const
 {
     if (!localPlayer)
         return;
@@ -129,24 +118,10 @@ void ChatHandler::talk(const std::string &restrict text,
     const std::string mes = std::string(localPlayer->getName()).append(
         " : ").append(text);
 
-    if (serverFeatures->haveSpecialChatChannels() && channel.size() == 3)
-    {
-        createOutPacket(CMSG_CHAT_MESSAGE2);
-        // Added + 1 in order to let eAthena parse admin commands correctly
-        outMsg.writeInt16(static_cast<int16_t>(mes.length() + 4 + 3 + 1),
-            "len");
-        outMsg.writeInt8(channel[0], "channel byte 0");
-        outMsg.writeInt8(channel[1], "channel byte 1");
-        outMsg.writeInt8(channel[2], "channel byte 2");
-        outMsg.writeString(mes, static_cast<int>(mes.length() + 1), "message");
-    }
-    else
-    {
-        createOutPacket(CMSG_CHAT_MESSAGE);
-        // Added + 1 in order to let eAthena parse admin commands correctly
-        outMsg.writeInt16(static_cast<int16_t>(mes.length() + 4 + 1), "len");
-        outMsg.writeString(mes, static_cast<int>(mes.length() + 1), "message");
-    }
+    createOutPacket(CMSG_CHAT_MESSAGE);
+    // Added + 1 in order to let eAthena parse admin commands correctly
+    outMsg.writeInt16(static_cast<int16_t>(mes.length() + 4 + 1), "len");
+    outMsg.writeString(mes, static_cast<int>(mes.length() + 1), "message");
 }
 
 void ChatHandler::talkRaw(const std::string &mes) const
@@ -303,23 +278,6 @@ void ChatHandler::processChat(Net::MessageIn &msg)
     processChatContinue(msg.readRawString(chatMsgLength, "message"), "");
 }
 
-void ChatHandler::processChat2(Net::MessageIn &msg)
-{
-    BLOCK_START("ChatHandler::processChat")
-    const int chatMsgLength = msg.readInt16("len") - 4 - 3;
-    std::string channel;
-    channel = msg.readUInt8("channel byte 0");
-    channel += msg.readUInt8("channel byte 1");
-    channel += msg.readUInt8("channel byte 2");
-    if (chatMsgLength <= 0)
-    {
-        BLOCK_END("ChatHandler::processChat")
-        return;
-    }
-
-    processChatContinue(msg.readRawString(chatMsgLength, "message"), channel);
-}
-
 void ChatHandler::processChatContinue(std::string chatMsg,
                                       const std::string &channel)
 {
@@ -373,18 +331,8 @@ void ChatHandler::processChatContinue(std::string chatMsg,
 void ChatHandler::processGmChat(Net::MessageIn &msg)
 {
     BLOCK_START("ChatHandler::processChat")
-    const bool channels = msg.getId() == SMSG_PLAYER_CHAT2;
-    const bool normalChat = msg.getId() == SMSG_PLAYER_CHAT
-        || msg.getId() == SMSG_PLAYER_CHAT2;
+    const bool normalChat = msg.getId() == SMSG_PLAYER_CHAT;
     int chatMsgLength = msg.readInt16("len") - 4;
-    std::string channel;
-    if (channels)
-    {
-        chatMsgLength -= 3;
-        channel = msg.readUInt8("channel byte 0");
-        channel += msg.readUInt8("channel byte 1");
-        channel += msg.readUInt8("channel byte 2");
-    }
     if (chatMsgLength <= 0)
     {
         BLOCK_END("ChatHandler::processChat")
@@ -401,23 +349,21 @@ void ChatHandler::processGmChat(Net::MessageIn &msg)
         {
             allow = chatWindow->resortChatLog(chatMsg,
                 ChatMsgType::BY_PLAYER,
-                channel,
+                GENERAL_CHANNEL,
                 IgnoreRecord_false,
                 TryRemoveColors_true);
         }
 
-        if (channel.empty())
+        const std::string senseStr("You sense the following: ");
+        if (actorManager && !chatMsg.find(senseStr))
         {
-            const std::string senseStr("You sense the following: ");
-            if (actorManager && !chatMsg.find(senseStr))
-            {
-                actorManager->parseLevels(
-                    chatMsg.substr(senseStr.size()));
-            }
+            actorManager->parseLevels(
+                chatMsg.substr(senseStr.size()));
         }
 
-        if (pos == std::string::npos && !mShowMotd
-            && mSkipping && channel.empty())
+        if (pos == std::string::npos &&
+            !mShowMotd &&
+            mSkipping)
         {
             // skip motd from "new" tmw server
             if (mMotdTime == -1)
@@ -436,7 +382,7 @@ void ChatHandler::processGmChat(Net::MessageIn &msg)
         if (localPlayer)
         {
             if ((chatWindow || mShowMotd) && allow)
-                localPlayer->setSpeech(chatMsg, channel);
+                localPlayer->setSpeech(chatMsg, GENERAL_CHANNEL);
         }
     }
     else if (localChatTab)
@@ -610,22 +556,12 @@ void ChatHandler::processBeingChat(Net::MessageIn &msg)
         return;
 
     BLOCK_START("ChatHandler::processBeingChat")
-    const bool channels = msg.getId() == SMSG_BEING_CHAT2;
     int chatMsgLength = msg.readInt16("len") - 8;
     Being *const being = actorManager->findBeing(msg.readBeingId("being id"));
     if (!being)
     {
         BLOCK_END("ChatHandler::processBeingChat")
         return;
-    }
-
-    std::string channel;
-    if (channels)
-    {
-        chatMsgLength -= 3;
-        channel = msg.readUInt8("channel byte 0");
-        channel += msg.readUInt8("channel byte 1");
-        channel += msg.readUInt8("channel byte 2");
     }
 
     if (chatMsgLength <= 0)
@@ -673,7 +609,7 @@ void ChatHandler::processBeingChat(Net::MessageIn &msg)
         allow = chatWindow->resortChatLog(
             removeColors(sender_name).append(" : ").append(chatMsg),
             ChatMsgType::BY_OTHER,
-            channel,
+            GENERAL_CHANNEL,
             IgnoreRecord_false,
             TryRemoveColors_true);
     }
@@ -681,7 +617,7 @@ void ChatHandler::processBeingChat(Net::MessageIn &msg)
     if (allow && player_relations.hasPermission(sender_name,
         PlayerRelation::SPEECH_FLOAT))
     {
-        being->setSpeech(chatMsg, channel);
+        being->setSpeech(chatMsg, GENERAL_CHANNEL);
     }
     BLOCK_END("ChatHandler::processBeingChat")
 }

@@ -102,8 +102,6 @@ void Network::dispatchMessages()
         int len = -1;
         if (msgId == SMSG_SERVER_VERSION_RESPONSE)
             len = 10;
-        else if (msgId == SMSG_UPDATE_HOST2)
-            len = -1;
         else if (msgId < packet_lengths_size)
             len = packet_lengths[msgId];
 
@@ -156,10 +154,6 @@ bool Network::messageReady()
         if (msgId == SMSG_SERVER_VERSION_RESPONSE)
         {
             len = 10;
-        }
-        else if (msgId == SMSG_UPDATE_HOST2)
-        {
-            len = -1;
         }
         else
         {
