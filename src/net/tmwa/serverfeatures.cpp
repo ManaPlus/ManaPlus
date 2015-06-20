@@ -111,17 +111,17 @@ bool ServerFeatures::haveItemColors() const
 
 bool ServerFeatures::haveOtherGender() const
 {
-    return serverVersion >= 5;
+    return false;
 }
 
 bool ServerFeatures::haveMonsterAttackRange() const
 {
-    return serverVersion > 0 || tmwServerVersion >= 0x0f0513;
+    return tmwServerVersion >= 0x0f0513;
 }
 
 bool ServerFeatures::haveEmailOnRegister() const
 {
-    return serverVersion >= 7;
+    return false;
 }
 
 bool ServerFeatures::haveEmailOnDelete() const
@@ -161,7 +161,7 @@ bool ServerFeatures::haveMapServerVersion() const
 
 bool ServerFeatures::haveNpcGender() const
 {
-    return serverVersion > 0 || tmwServerVersion >= 0x0f0513;
+    return tmwServerVersion >= 0x0f0513;
 }
 
 bool ServerFeatures::haveJoinChannel() const
