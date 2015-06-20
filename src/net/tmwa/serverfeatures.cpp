@@ -94,11 +94,6 @@ bool ServerFeatures::haveLookSelection() const
     return serverVersion >= 9;
 }
 
-bool ServerFeatures::haveSpecialChatChannels() const
-{
-    return serverVersion >= 8;
-}
-
 bool ServerFeatures::haveChatChannels() const
 {
     return false;
