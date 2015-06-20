@@ -483,13 +483,7 @@ void BeingHandler::processPlayerUpdate1(Net::MessageIn &msg)
     const uint16_t headMid = msg.readInt16("head mid");
     const uint8_t hairColor = msg.readUInt8("hair color");
     msg.readUInt8("unused");
-
-    uint8_t colors[9];
-    colors[0] = msg.readUInt8("color 0");
-    colors[1] = msg.readUInt8("color 1");
-    colors[2] = msg.readUInt8("color 2");
-
-    msg.readUInt8("unused");
+    msg.readInt32("unused");
 
     const int guild = msg.readInt32("guild");
 
@@ -623,13 +617,7 @@ void BeingHandler::processPlayerUpdate2(Net::MessageIn &msg)
     const uint16_t headMid = msg.readInt16("head mid");
     const uint8_t hairColor = msg.readUInt8("hair color");
     msg.readUInt8("unused");
-
-    uint8_t colors[9];
-    colors[0] = msg.readUInt8("color 0");
-    colors[1] = msg.readUInt8("color 1");
-    colors[2] = msg.readUInt8("color 2");
-
-    msg.readUInt8("unused");
+    msg.readInt32("unused");
 
     const int guild = msg.readInt32("guild");
 
@@ -763,13 +751,7 @@ void BeingHandler::processPlayerMove(Net::MessageIn &msg)
     const uint16_t headMid = msg.readInt16("head mid");
     const uint8_t hairColor = msg.readUInt8("hair color");
     msg.readUInt8("unused");
-
-    uint8_t colors[9];
-    colors[0] = msg.readUInt8("color 0");
-    colors[1] = msg.readUInt8("color 1");
-    colors[2] = msg.readUInt8("color 2");
-
-    msg.readUInt8("unused");
+    msg.readInt32("unused");
 
     const int guild = msg.readInt32("guild");
 

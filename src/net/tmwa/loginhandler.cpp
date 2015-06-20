@@ -173,9 +173,9 @@ void LoginHandler::requestUpdateHosts()
 void LoginHandler::processServerVersion(Net::MessageIn &msg)
 {
     const uint8_t b1 = msg.readUInt8("b1");  // -1
-    const uint8_t b2 = msg.readUInt8("b2");  // E
-    const uint8_t b3 = msg.readUInt8("b3");  // V
-    const uint8_t b4 = msg.readUInt8("b4");  // L
+    const uint8_t b2 = msg.readUInt8("b2");
+    const uint8_t b3 = msg.readUInt8("b3");
+    msg.readUInt8("b4");
     if (b1 == 255)
     {   // old TMWA
         const unsigned int options = msg.readInt32("options");
