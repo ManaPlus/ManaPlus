@@ -27,6 +27,7 @@
 #include "gui/windows/logindialog.h"
 
 #include "net/generalhandler.h"
+#include "net/logindata.h"
 #include "net/serverfeatures.h"
 
 #include "net/eathena/messageout.h"
@@ -34,6 +35,7 @@
 #include "net/eathena/protocol.h"
 
 #include "utils/gettext.h"
+#include "utils/paths.h"
 
 #include "debug.h"
 
@@ -251,7 +253,25 @@ void LoginHandler::processLoginError2(Net::MessageIn &msg)
 
 void LoginHandler::processUpdateHost2(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    const int len = msg.readInt16("len") - 4;
+    const std::string updateHost = msg.readString(len, "host");
+
+    splitToStringVector(loginData.updateHosts, updateHost, '|');
+    FOR_EACH (StringVectIter, it, loginData.updateHosts)
+    {
+        if (!checkPath(*it))
+        {
+            logger->log1("Warning: incorrect update server name");
+            loginData.updateHosts.clear();
+        break;
+        }
+    }
+
+    logger->log("Received update hosts \"%s\" from login server.",
+        updateHost.c_str());
+
+    if (client->getState() == STATE_PRE_LOGIN)
+        client->setState(STATE_LOGIN);
 }
 
 void LoginHandler::sendVersion() const

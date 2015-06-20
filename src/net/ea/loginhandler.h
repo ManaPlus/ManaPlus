@@ -87,8 +87,6 @@ class LoginHandler notfinal : public Net::LoginHandler
 
         static void processLoginError(Net::MessageIn &msg);
 
-        static void processUpdateHost2(Net::MessageIn &msg);
-
         void loginOrRegister(LoginData *const data) const override final;
 
     protected:
