@@ -9571,7 +9571,7 @@ msgstr "Nenhuma loja correspondente foi encontrada."
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:479
 msgid "There are too many results. Please enter more detailed search term."
-msgstr "Há muitos resultados. Por favor insira mais detalhes de pesquisa,"
+msgstr "Há muitos resultados. Por favor insira mais detalhes de pesquisa."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:484
