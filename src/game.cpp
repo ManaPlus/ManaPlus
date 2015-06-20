@@ -256,17 +256,6 @@ static void createGuiWindows()
     if (config.getBoolValue("showChatHistory"))
         localChatTab->loadFromLogFile("#General");
 
-    if (serverFeatures->haveLangTab()
-        && serverConfig.getValue("enableLangTab", 1))
-    {
-        const std::string lang = getLangShort();
-        if (lang.size() == 2)
-        {
-            langChatTab = new LangTab(chatWindow, lang + " ");
-            langChatTab->setAllowHighlight(false);
-        }
-    }
-
     // TRANSLATORS: chat tab header
     debugChatTab = new ChatTab(chatWindow, _("Debug"), "",
         "#Debug", ChatTabType::DEBUG);

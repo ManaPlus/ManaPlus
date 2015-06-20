@@ -44,8 +44,6 @@ class ServerFeatures final : public Net::ServerFeatures
 
         bool haveServerHp() const override final;
 
-        bool haveLangTab() const override final;
-
         bool havePlayerStatusUpdate() const override final;
 
         bool haveBrokenPlayerAttackDistance() const override final;

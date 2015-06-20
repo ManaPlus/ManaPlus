@@ -60,11 +60,6 @@ bool ServerFeatures::haveServerHp() const
     return true;
 }
 
-bool ServerFeatures::haveLangTab() const
-{
-    return false;
-}
-
 bool ServerFeatures::havePlayerStatusUpdate() const
 {
     return serverVersion >= 5;

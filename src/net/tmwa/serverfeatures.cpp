@@ -36,7 +36,7 @@ ServerFeatures::ServerFeatures()
 
 bool ServerFeatures::haveServerOnlineList() const
 {
-    return serverVersion >= 3;
+    return false;
 }
 
 bool ServerFeatures::haveOnlineList() const
@@ -56,12 +56,7 @@ bool ServerFeatures::haveChangePartyLeader() const
 
 bool ServerFeatures::haveServerHp() const
 {
-    return serverVersion > 0 || tmwServerVersion > 0x0f0513;
-}
-
-bool ServerFeatures::haveLangTab() const
-{
-    return serverVersion >= 8;
+    return tmwServerVersion > 0x0f0513;
 }
 
 bool ServerFeatures::havePlayerStatusUpdate() const
