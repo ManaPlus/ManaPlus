@@ -23,6 +23,7 @@
 #include "net/eathena/playerhandler.h"
 
 #include "configuration.h"
+#include "game.h"
 
 #include "being/beingflag.h"
 #include "being/localplayer.h"
@@ -40,6 +41,8 @@
 #include "net/eathena/inventoryhandler.h"
 
 #include "utils/stringutils.h"
+
+#include "resources/map/map.h"
 
 #include "debug.h"
 
@@ -727,6 +730,15 @@ void PlayerHandler::processOnlineList(Net::MessageIn &msg)
         whoIsOnline->loadList(arr);
     delete [] start;
     BLOCK_END("PlayerHandler::processOnlineList")
+}
+
+void PlayerHandler::processMapMask(Net::MessageIn &msg)
+{
+    const int mask = msg.readInt32("mask");
+    msg.readInt32("unused");
+    Map *const map = Game::instance()->getCurrentMap();
+    if (map)
+        map->setMask(mask);
 }
 
 }  // namespace EAthena

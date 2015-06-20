@@ -114,6 +114,8 @@ class PlayerHandler final : public MessageHandler, public Ea::PlayerHandler
         static void processPlayerClientCommand(Net::MessageIn &msg);
 
         static void processOnlineList(Net::MessageIn &msg);
+
+        static void processMapMask(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
