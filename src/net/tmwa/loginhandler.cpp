@@ -176,17 +176,7 @@ void LoginHandler::processServerVersion(Net::MessageIn &msg)
     const uint8_t b2 = msg.readUInt8("b2");  // E
     const uint8_t b3 = msg.readUInt8("b3");  // V
     const uint8_t b4 = msg.readUInt8("b4");  // L
-    if (b1 == 255 && b2 == 'E' && b3 == 'V' && b4 == 'L')
-    {
-        const unsigned int options = msg.readUInt8("options");
-        mRegistrationEnabled = options & FLAG_REGISTRATION;
-        msg.readInt16("unused");
-        serverVersion = msg.readUInt8("server version");
-        tmwServerVersion = 0;
-        if (serverVersion >= 5)
-            requestUpdateHosts();
-    }
-    else if (b1 == 255)
+    if (b1 == 255)
     {   // old TMWA
         const unsigned int options = msg.readInt32("options");
         mRegistrationEnabled = options & FLAG_REGISTRATION;
@@ -212,7 +202,7 @@ void LoginHandler::processServerVersion(Net::MessageIn &msg)
     else if (tmwServerVersion > 0)
         logger->log("Tmw server version: x%06x", tmwServerVersion);
     else
-        logger->log("Server witout version");
+        logger->log("Server without version");
 
     if (serverVersion < 5)
     {
