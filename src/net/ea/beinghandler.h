@@ -64,8 +64,6 @@ class BeingHandler notfinal : public Net::BeingHandler
 
         static void processPvpMapMode(Net::MessageIn &msg);
 
-        static void processNameResponse2(Net::MessageIn &msg);
-
         static void processBeingMove3(Net::MessageIn &msg);
 
         // Should we honor server "Stop Walking" packets

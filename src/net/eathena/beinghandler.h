@@ -165,6 +165,8 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
         static void processBeingViewEquipment(Net::MessageIn &msg);
 
         static void processPvpSet(Net::MessageIn &msg);
+
+        static void processNameResponse2(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
