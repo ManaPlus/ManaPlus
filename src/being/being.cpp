@@ -2562,10 +2562,11 @@ void Being::drawSpritesSDL(Graphics *const graphics,
 void Being::drawSpriteAt(Graphics *const graphics,
                          const int x, const int y) const
 {
-    CompoundSprite::draw(graphics, x, y);
-
     if (!userPalette)
+    {
+        CompoundSprite::draw(graphics, x, y);
         return;
+    }
 
     if (mHighlightMapPortals &&
         mMap &&
@@ -2605,6 +2606,8 @@ void Being::drawSpriteAt(Graphics *const graphics,
             x - attackRange, y - attackRange,
             2 * attackRange + mapTileSize, 2 * attackRange + mapTileSize));
     }
+
+    CompoundSprite::draw(graphics, x, y);
 
     if (mShowMobHP && mInfo && localPlayer && localPlayer->getTarget() == this
         && mType == ActorType::Monster)
