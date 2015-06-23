@@ -143,7 +143,7 @@ class DropDown final : public ActionListener,
          *
          * @param graphics a Graphics object to draw with.
          */
-        void drawButton(Graphics *graphics);
+        void drawButton(Graphics *graphics) A_NONNULL(2);
 
         PopupList *mPopup;
         Color mShadowColor;

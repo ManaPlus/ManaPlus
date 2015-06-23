@@ -87,7 +87,7 @@ class Setup_Input final : public SetupTab
         static void fixTranslation(SetupActionData *const actionDatas,
                                    const InputActionT actionStart,
                                    const InputActionT actionEnd,
-                                   const std::string &text);
+                                   const std::string &text) A_NONNULL(1);
 
         KeyListModel *mKeyListModel;
         ListBox *mKeyList;

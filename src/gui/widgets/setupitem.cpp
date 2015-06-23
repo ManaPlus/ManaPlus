@@ -194,6 +194,8 @@ void SetupItem::externalUnloaded(const std::string &eventName A_UNUSED)
 
 void SetupItem::fixFirstItemSize(Widget *const widget)
 {
+    if (!widget)
+        return;
     const int maxSize = mParent->getPreferredFirstItemSize();
     if (widget->getWidth() < maxSize)
         widget->setWidth(maxSize);

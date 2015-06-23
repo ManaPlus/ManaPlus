@@ -70,6 +70,8 @@ void SetupTabScroll::clear()
 
 void SetupTabScroll::addControl(SetupItem *const widget)
 {
+    if (!widget)
+        return;
     const std::string actionId = widget->getActionEventId();
     if (!actionId.empty())
     {

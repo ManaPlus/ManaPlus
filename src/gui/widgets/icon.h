@@ -67,9 +67,9 @@ class Icon final : public Widget
         /**
          * Draws the Icon.
          */
-        void draw(Graphics *g) override final;
+        void draw(Graphics *g) override final A_NONNULL(2);
 
-        void safeDraw(Graphics *g) override final;
+        void safeDraw(Graphics *g) override final A_NONNULL(2);
 
     private:
         Image *mImage;

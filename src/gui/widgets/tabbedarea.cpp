@@ -253,6 +253,8 @@ void TabbedArea::addTab(Tab *const tab,
 
 void TabbedArea::adjustWidget(Widget *const widget) const
 {
+    if (!widget)
+        return;
     const int frameSize = 2 * mFrameSize;
     widget->setSize(getWidth() - frameSize,
         getHeight() - frameSize - mTabContainer->getHeight());

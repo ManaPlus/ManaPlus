@@ -83,9 +83,9 @@ class PlayerBox final : public Widget,
         /**
          * Draws the background and border of the scroll area.
          */
-        void drawFrame(Graphics *graphics) override final;
+        void drawFrame(Graphics *graphics) override final A_NONNULL(2);
 
-        void safeDrawFrame(Graphics *graphics) override final;
+        void safeDrawFrame(Graphics *graphics) override final A_NONNULL(2);
 
         Being *getBeing() A_WARN_UNUSED
         { return mBeing; }

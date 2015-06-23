@@ -119,9 +119,9 @@ class TextField notfinal : public Widget,
         /**
          * Draws the background and border.
          */
-        void drawFrame(Graphics *graphics) override final;
+        void drawFrame(Graphics *graphics) override final A_NONNULL(2);
 
-        void safeDrawFrame(Graphics *graphics) override final;
+        void safeDrawFrame(Graphics *graphics) override final A_NONNULL(2);
 
         /**
          * Determine whether the field should be numeric or not
@@ -234,7 +234,7 @@ class TextField notfinal : public Widget,
         void setWindow(Widget *const widget) override final;
 
     protected:
-        void drawCaret(Graphics* graphics, int x);
+        void drawCaret(Graphics* graphics, int x) A_NONNULL(2);
 
         void fixScroll();
 

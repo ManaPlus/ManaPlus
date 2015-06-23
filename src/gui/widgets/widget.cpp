@@ -516,6 +516,7 @@ void Widget::windowResized()
 
 Widget *Widget::callPostInit(Widget *const widget)
 {
-    widget->postInit();
+    if (widget)
+        widget->postInit();
     return widget;
 }

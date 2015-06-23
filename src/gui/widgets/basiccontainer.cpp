@@ -240,6 +240,8 @@ void BasicContainer::setFocusHandler(FocusHandler *const focusHandler)
 
 void BasicContainer::add(Widget *const widget)
 {
+    if (!widget)
+        return;
     mWidgets.push_back(widget);
     if (widget->isAllowLogic())
         mLogicWidgets.push_back(widget);
@@ -255,6 +257,8 @@ void BasicContainer::add(Widget *const widget)
 
 void BasicContainer::remove(Widget* widget)
 {
+    if (!widget)
+        return;
     FOR_EACH (WidgetListIterator, iter, mWidgets)
     {
         if (*iter == widget)
@@ -382,6 +386,9 @@ void BasicContainer::logicChildren()
 
 void BasicContainer::showWidgetPart(Widget *const widget, const Rect &area)
 {
+    if (!widget)
+        return;
+
     const Rect widgetArea = getChildrenArea();
 
     const int x = widget->mDimension.x;

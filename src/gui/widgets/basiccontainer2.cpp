@@ -116,8 +116,11 @@ void BasicContainer2::add(Widget* widget)
 }
 
 void BasicContainer2::addXY(Widget* widget,
-                            const int x, const int y)
+                            const int x,
+                            const int y)
 {
+    if (!widget)
+        return;
     widget->setPosition(x, y);
     BasicContainer::add(widget);
 }

@@ -106,7 +106,7 @@ class RadioButton final : public Widget,
         /**
          * Draws the radiobutton, not the caption.
          */
-        void drawBox(Graphics* graphics);
+        void drawBox(Graphics* graphics) A_NONNULL(2);
 
         /**
          * Implementation of the draw methods.

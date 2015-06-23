@@ -163,9 +163,9 @@ class BasicContainer notfinal : public Widget,
           *
           * @param graphics A graphics object to draw with.
           */
-        virtual void drawChildren(Graphics* graphics);
+        virtual void drawChildren(Graphics* graphics) A_NONNULL(2);
 
-        virtual void safeDrawChildren(Graphics* graphics);
+        virtual void safeDrawChildren(Graphics* graphics) A_NONNULL(2);
 
         /**
           * Calls logic for the children widgets of the basic
