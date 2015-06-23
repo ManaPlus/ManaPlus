@@ -55,7 +55,7 @@ class ImageParticle notfinal : public Particle
          */
         virtual void draw(Graphics *const graphics,
                           const int offsetX,
-                          const int offsetY) const override final;
+                          const int offsetY) const override final A_NONNULL(2);
 
         void setAlpha(const float alpha) override final
         { mAlpha = alpha; }

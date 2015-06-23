@@ -76,9 +76,9 @@ class PlayerBox final : public Widget,
         /**
          * Draws the scroll area.
          */
-        void draw(Graphics *graphics) override final;
+        void draw(Graphics *graphics) override final A_NONNULL(2);
 
-        void safeDraw(Graphics *graphics) override final;
+        void safeDraw(Graphics *graphics) override final A_NONNULL(2);
 
         /**
          * Draws the background and border of the scroll area.

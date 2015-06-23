@@ -41,9 +41,9 @@ class AvatarListBox final : public ListBox,
         /**
          * Draws the list box.
          */
-        void draw(Graphics *gcnGraphics) override final;
+        void draw(Graphics *gcnGraphics) override final A_NONNULL(2);
 
-        void safeDraw(Graphics *gcnGraphics) override final;
+        void safeDraw(Graphics *gcnGraphics) override final A_NONNULL(2);
 
         void mousePressed(MouseEvent &event) override final;
 

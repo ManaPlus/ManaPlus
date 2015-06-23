@@ -355,8 +355,9 @@ class Being notfinal : public ActorSprite,
         /**
          * Draws the emotion picture above the being.
          */
-        void drawEmotion(Graphics *const graphics, const int offsetX,
-                         const int offsetY) const;
+        void drawEmotion(Graphics *const graphics,
+                         const int offsetX,
+                         const int offsetY) const A_NONNULL(2);
 
         BeingTypeId getSubType() const
         { return mSubType; }
@@ -530,10 +531,13 @@ class Being notfinal : public ActorSprite,
         void setState(const uint8_t state);
 
         virtual void drawSprites(Graphics *const  graphics,
-                                 int posX, int posY) const override final;
+                                 int posX,
+                                 int posY) const override final A_NONNULL(2);
 
         virtual void drawSpritesSDL(Graphics *const graphics,
-                                    int posX, int posY) const override final;
+                                    int posX,
+                                    int posY) const override final
+                                    A_NONNULL(2);
 
         void drawHpBar(Graphics *const graphics,
                        const int maxHP,
@@ -544,7 +548,7 @@ class Being notfinal : public ActorSprite,
                        const int x,
                        const int y,
                        const int width,
-                       const int height) const;
+                       const int height) const A_NONNULL(2);
 
         static void load();
 
@@ -622,10 +626,11 @@ class Being notfinal : public ActorSprite,
         void talkTo() const;
 
         void draw(Graphics *const graphics,
-                  const int offsetX, const int offsetY) const override final;
+                  const int offsetX,
+                  const int offsetY) const override final A_NONNULL(2);
 
         void drawSpriteAt(Graphics *const graphics,
-                          const int x, const int y) const;
+                          const int x, const int y) const A_NONNULL(2);
 
         void setMoveTime()
         { mMoveTime = cur_time; }

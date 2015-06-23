@@ -52,7 +52,7 @@ class CompoundSprite notfinal : public Sprite
 
         void draw(Graphics *const graphics,
                   const int posX,
-                  const int posY) const override;
+                  const int posY) const override A_NONNULL(2);
 
         /**
          * Gets the width in pixels of the first sprite in the list.

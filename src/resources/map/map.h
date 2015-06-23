@@ -109,14 +109,17 @@ class Map final : public Properties, public ConfigListener
          * the clipping rectangle set on the Graphics object. However,
          * currently the map is always drawn full-screen.
          */
-        void draw(Graphics *const graphics, int scrollX, int scrollY);
+        void draw(Graphics *const graphics,
+                  int scrollX,
+                  int scrollY) A_NONNULL(2);
 
         /**
          * Visualizes collision layer for debugging
          */
         void drawCollision(Graphics *const graphics,
-                           const int scrollX, const int scrollY,
-                           const MapTypeT drawFlags) const;
+                           const int scrollX,
+                           const int scrollY,
+                           const MapTypeT drawFlags) const A_NONNULL(2);
 
         /**
          * Adds a layer to this map. The map takes ownership of the layer.
@@ -357,8 +360,9 @@ class Map final : public Properties, public ConfigListener
         /**
          * Draws the foreground or background layers to the given graphics output.
          */
-        void drawAmbientLayers(Graphics *const graphics, const LayerType type,
-                               const int detail) const;
+        void drawAmbientLayers(Graphics *const graphics,
+                               const LayerType type,
+                               const int detail) const A_NONNULL(2);
 
         /**
          * Tells whether the given coordinates fall within the map boundaries.

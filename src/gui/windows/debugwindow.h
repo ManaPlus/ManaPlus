@@ -54,9 +54,9 @@ class DebugWindow final : public Window
          */
         void slowLogic();
 
-        void draw(Graphics *g) override final;
+        void draw(Graphics *g) override final A_NONNULL(2);
 
-        void safeDraw(Graphics *g) override final;
+        void safeDraw(Graphics *g) override final A_NONNULL(2);
 
         void setPing(int pingTime);
 

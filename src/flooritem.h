@@ -59,7 +59,8 @@ class FloorItem final : public ActorSprite
         { return ActorType::FloorItem; }
 
         void draw(Graphics *const graphics,
-                  const int offsetX, const int offsetY) const override final;
+                  const int offsetX, const int offsetY)
+                  const override final A_NONNULL(2);
 
         /**
          * Returns the item ID.

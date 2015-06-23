@@ -107,9 +107,9 @@ class TextField notfinal : public Widget,
         /**
          * Draws the text field.
          */
-        void draw(Graphics *graphics) override;
+        void draw(Graphics *graphics) override A_NONNULL(2);
 
-        void safeDraw(Graphics *graphics) override;
+        void safeDraw(Graphics *graphics) override A_NONNULL(2);
 
         /**
          * Update the alpha value to the graphic components.

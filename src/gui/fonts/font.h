@@ -110,7 +110,8 @@ class Font final
                         Color col,
                         const Color &col2,
                         const std::string &text,
-                        const int x, const int y);
+                        const int x,
+                        const int y) A_NONNULL(2);
 
         void clear();
 

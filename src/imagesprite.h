@@ -47,7 +47,8 @@ class ImageSprite final : public Sprite
         { return false; }
 
         void draw(Graphics *const graphics,
-                  const int posX, const int posY) const override final;
+                  const int posX, const int posY)
+                  const override final A_NONNULL(2);
 
         int getWidth() const override final A_WARN_UNUSED
         { return mImage ? mImage->getWidth() : 0; }

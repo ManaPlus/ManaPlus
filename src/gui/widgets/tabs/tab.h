@@ -109,9 +109,9 @@ class Tab notfinal : public BasicContainer,
         /**
          * Draw the tabbed area.
          */
-        void draw(Graphics *graphics) override final;
+        void draw(Graphics *graphics) override final A_NONNULL(2);
 
-        void safeDraw(Graphics *graphics) override final;
+        void safeDraw(Graphics *graphics) override final A_NONNULL(2);
 
         /**
          * Set the normal color for the tab's text.

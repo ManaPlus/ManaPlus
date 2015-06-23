@@ -50,7 +50,8 @@ class Actor notfinal
          * partly with the clipping rectangle support.
          */
         virtual void draw(Graphics *const graphics,
-                          const int offsetX, const int offsetY) const = 0;
+                          const int offsetX,
+                          const int offsetY) const A_NONNULL(2) = 0;
 
         /**
          * Returns the horizontal size of the actors graphical representation

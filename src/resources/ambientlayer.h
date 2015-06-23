@@ -57,9 +57,13 @@ class AmbientLayer final
 
         ~AmbientLayer();
 
-        void update(const int timePassed, const float dx, const float dy);
+        void update(const int timePassed,
+                    const float dx,
+                    const float dy);
 
-        void draw(Graphics *const graphics, const int x, const int y) const;
+        void draw(Graphics *const graphics,
+                  const int x,
+                  const int y) const A_NONNULL(2);
 
     private:
         Image *mImage;

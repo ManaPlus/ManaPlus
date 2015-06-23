@@ -64,7 +64,7 @@ class SimpleAnimation final
         bool update(const int timePassed);
 
         void draw(Graphics *const graphics,
-                  const int posX, const int posY) const;
+                  const int posX, const int posY) const A_NONNULL(2);
 
         /**
          * Resets the animation.

@@ -42,9 +42,9 @@ class ExtendedListBox final : public ListBox
         /**
          * Draws the list box.
          */
-        void draw(Graphics *graphics) override final;
+        void draw(Graphics *graphics) override final A_NONNULL(2);
 
-        void safeDraw(Graphics *graphics) override final;
+        void safeDraw(Graphics *graphics) override final A_NONNULL(2);
 
         void adjustSize() override;
 

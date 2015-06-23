@@ -87,30 +87,43 @@ class MapLayer final: public ConfigListener
          * layer.
          */
         void draw(Graphics *const graphics,
-                  int startX, int startY, int endX, int endY,
-                  const int scrollX, const int scrollY) const;
+                  int startX,
+                  int startY,
+                  int endX,
+                  int endY,
+                  const int scrollX,
+                  const int scrollY) const A_NONNULL(2);
 
-        void drawSDL(Graphics *const graphics) const;
+        void drawSDL(Graphics *const graphics) const A_NONNULL(2);
 
 #ifdef USE_OPENGL
-        void drawOGL(Graphics *const graphics) const;
+        void drawOGL(Graphics *const graphics) const A_NONNULL(2);
 
         void updateOGL(Graphics *const graphics,
-                       int startX, int startY,
-                       int endX, int endY,
-                       const int scrollX, const int scrollY);
+                       int startX,
+                       int startY,
+                       int endX,
+                       int endY,
+                       const int scrollX,
+                       const int scrollY) A_NONNULL(2);
 #endif
 
         void updateSDL(const Graphics *const graphics,
-                       int startX, int startY,
-                       int endX, int endY,
-                       const int scrollX, const int scrollY);
+                       int startX,
+                       int startY,
+                       int endX,
+                       int endY,
+                       const int scrollX,
+                       const int scrollY) A_NONNULL(2);
 
         void drawFringe(Graphics *const graphics,
-                        int startX, int startY,
-                        int endX, int endY,
-                        const int scrollX, const int scrollY,
-                        const Actors *const actors) const;
+                        int startX,
+                        int startY,
+                        int endX,
+                        int endY,
+                        const int scrollX,
+                        const int scrollY,
+                        const Actors *const actors) const A_NONNULL(2);
 
         bool isFringeLayer() const A_WARN_UNUSED
         { return mIsFringeLayer; }

@@ -109,9 +109,9 @@ class CheckBox final : public Widget,
         /**
          * Draws the caption, then calls drawBox to draw the check box.
          */
-        void draw(Graphics *const graphics) override final;
+        void draw(Graphics *const graphics) override final A_NONNULL(2);
 
-        void safeDraw(Graphics *const graphics) override final;
+        void safeDraw(Graphics *const graphics) override final A_NONNULL(2);
 
         /**
          * Update the alpha value to the checkbox components.
@@ -121,7 +121,7 @@ class CheckBox final : public Widget,
         /**
          * Draws the check box, not the caption.
          */
-        void drawBox(Graphics *const graphics);
+        void drawBox(Graphics *const graphics) A_NONNULL(2);
 
         /**
          * Called when the mouse enteres the widget area.

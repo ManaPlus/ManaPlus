@@ -112,9 +112,9 @@ class RadioButton final : public Widget,
          * Implementation of the draw methods.
          * Thus, avoiding the rhomb around the radio button.
          */
-        void draw(Graphics* graphics) override final;
+        void draw(Graphics* graphics) override final A_NONNULL(2);
 
-        void safeDraw(Graphics* graphics) override final;
+        void safeDraw(Graphics* graphics) override final A_NONNULL(2);
 
         /**
          * Called when the mouse enteres the widget area.

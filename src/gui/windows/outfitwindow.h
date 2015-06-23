@@ -52,9 +52,9 @@ class OutfitWindow final : public Window,
 
         void action(const ActionEvent &event) override final;
 
-        void draw(Graphics *graphics) override final;
+        void draw(Graphics *graphics) override final A_NONNULL(2);
 
-        void safeDraw(Graphics *graphics) override final;
+        void safeDraw(Graphics *graphics) override final A_NONNULL(2);
 
         void mousePressed(MouseEvent &event) override final;
 

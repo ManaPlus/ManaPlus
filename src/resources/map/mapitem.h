@@ -71,8 +71,9 @@ class MapItem final
         void setName(const std::string &name)
         { mName = name; }
 
-        void draw(Graphics *const graphics, const int x, const int y,
-                  const int dx, const int dy) const;
+        void draw(Graphics *const graphics,
+                  const int x, const int y,
+                  const int dx, const int dy) const A_NONNULL(2);
 
     private:
         Image *mImage;

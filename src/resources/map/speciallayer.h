@@ -40,9 +40,10 @@ class SpecialLayer final
 
         ~SpecialLayer();
 
-        void draw(Graphics *const graphics, int startX, int startY,
+        void draw(Graphics *const graphics,
+                  int startX, int startY,
                   int endX, int endY,
-                  const int scrollX, const int scrollY) const;
+                  const int scrollX, const int scrollY) const A_NONNULL(2);
 
         MapItem* getTile(const int x, const int y) const A_WARN_UNUSED;
 

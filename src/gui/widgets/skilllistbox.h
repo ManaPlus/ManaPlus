@@ -90,7 +90,7 @@ class SkillListBox final : public ListBox
             return static_cast<SkillModel*>(mListModel)->getSkillAt(selected);
         }
 
-        void draw(Graphics *graphics) override final
+        void draw(Graphics *graphics) override final A_NONNULL(2)
         {
             if (!mListModel)
                 return;

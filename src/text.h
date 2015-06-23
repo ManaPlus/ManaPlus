@@ -74,7 +74,7 @@ class Text notfinal
          * Draws the text.
          */
         virtual void draw(Graphics *const graphics,
-                          const int xOff, const int yOff);
+                          const int xOff, const int yOff) A_NONNULL(2);
 
     private:
         Font *mFont;           /**< The font of the text */
@@ -121,7 +121,7 @@ class FlashText final : public Text
          * Draws the text.
          */
         void draw(Graphics *const graphics,
-                  const int xOff, const int yOff) override final;
+                  const int xOff, const int yOff) override final A_NONNULL(2);
 
     private:
         int mTime;             /**< Time left for flashing */

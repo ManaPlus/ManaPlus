@@ -127,7 +127,7 @@ class Gui final
          */
         ~Gui();
 
-        void postInit(Graphics *const graphics);
+        void postInit(Graphics *const graphics) A_NONNULL(2);
 
         /**
          * Performs logic of the GUI. Overridden to track mouse pointer

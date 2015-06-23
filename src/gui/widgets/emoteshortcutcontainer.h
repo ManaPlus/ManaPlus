@@ -49,9 +49,9 @@ class EmoteShortcutContainer final : public ShortcutContainer
         /**
          * Draws the items.
          */
-        void draw(Graphics *graphics) override final;
+        void draw(Graphics *graphics) override final A_NONNULL(2);
 
-        void safeDraw(Graphics *graphics) override final;
+        void safeDraw(Graphics *graphics) override final A_NONNULL(2);
 
         /**
          * Handles mouse when dragged.

@@ -70,6 +70,7 @@
 #define A_WARN_UNUSED __attribute__ ((warn_unused_result))
 #define DEPRECATED __attribute__ ((deprecated))
 #define restrict __restrict__
+#define A_NONNULL(...) __attribute__((nonnull (__VA_ARGS__)))
 #else
 #define A_UNUSED
 #define A_WARN_UNUSED

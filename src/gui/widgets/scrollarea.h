@@ -137,9 +137,9 @@ class ScrollArea final : public BasicContainer,
         /**
          * Draws the scroll area.
          */
-        void draw(Graphics *graphics) override final;
+        void draw(Graphics *graphics) override final A_NONNULL(2);
 
-        void safeDraw(Graphics *graphics) override final;
+        void safeDraw(Graphics *graphics) override final A_NONNULL(2);
 
         /**
          * Draws the background and border of the scroll area.
@@ -449,21 +449,23 @@ class ScrollArea final : public BasicContainer,
          */
         void checkPolicies();
 
-        void drawButton(Graphics *const graphics, const BUTTON_DIR dir);
-        void calcButton(Graphics *const graphics, const BUTTON_DIR dir);
-        void drawVBar(Graphics *const graphics) const;
-        void drawHBar(Graphics *const graphics) const;
-        void drawVMarker(Graphics *const graphics);
-        void drawHMarker(Graphics *const graphics);
+        void drawButton(Graphics *const graphics,
+                        const BUTTON_DIR dir) A_NONNULL(2);
+        void calcButton(Graphics *const graphics,
+                        const BUTTON_DIR dir) A_NONNULL(2);
+        void drawVBar(Graphics *const graphics) const A_NONNULL(2);
+        void drawHBar(Graphics *const graphics) const A_NONNULL(2);
+        void drawVMarker(Graphics *const graphics) A_NONNULL(2);
+        void drawHMarker(Graphics *const graphics) A_NONNULL(2);
 
-        void calcVBar(const Graphics *const graphics);
-        void calcHBar(const Graphics *const graphics);
-        void calcVMarker(Graphics *const graphics);
-        void calcHMarker(Graphics *const graphics);
+        void calcVBar(const Graphics *const graphics) A_NONNULL(2);
+        void calcHBar(const Graphics *const graphics) A_NONNULL(2);
+        void calcVMarker(Graphics *const graphics) A_NONNULL(2);
+        void calcHMarker(Graphics *const graphics) A_NONNULL(2);
 
         Image *getImageByState(Rect &dim, const BUTTON_DIR dir);
 
-        void updateCalcFlag(Graphics *const graphics);
+        void updateCalcFlag(Graphics *const graphics) A_NONNULL(2);
 
         static int instances;
         static float mAlpha;

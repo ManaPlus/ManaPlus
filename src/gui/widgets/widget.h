@@ -121,9 +121,9 @@ class Widget notfinal : public Widget2
           * @param graphics aA graphics object to draw with.
           * @since 0.1.0
           */
-        virtual void draw(Graphics* graphics) = 0;
+        virtual void draw(Graphics* graphics) A_NONNULL(2) = 0;
 
-        virtual void safeDraw(Graphics* graphics) = 0;
+        virtual void safeDraw(Graphics* graphics) A_NONNULL(2) = 0;
 
         /**
           * Called when a widget is given a chance to draw a frame around itself.
@@ -145,10 +145,10 @@ class Widget notfinal : public Widget2
           * @see setFrameSize, getFrameSize
           * @since 0.8.0
           */
-        virtual void drawFrame(Graphics* graphics A_UNUSED)
+        virtual void drawFrame(Graphics* graphics A_UNUSED) A_NONNULL(2)
         { }
 
-        virtual void safeDrawFrame(Graphics* graphics A_UNUSED)
+        virtual void safeDrawFrame(Graphics* graphics A_UNUSED) A_NONNULL(2)
         { }
 
         /**

@@ -74,9 +74,9 @@ class Viewport final : public WindowContainer,
         /**
          * Draws the viewport.
          */
-        void draw(Graphics *graphics) override final;
+        void draw(Graphics *graphics) override final A_NONNULL(2);
 
-        void safeDraw(Graphics *graphics) override final;
+        void safeDraw(Graphics *graphics) override final A_NONNULL(2);
 
         /**
          * Implements player to keep following mouse.
@@ -183,14 +183,15 @@ class Viewport final : public WindowContainer,
          * Finds a path from the player to the mouse, and draws it. This is for
          * debug purposes.
          */
-        void drawDebugPath(Graphics *const graphics);
+        void drawDebugPath(Graphics *const graphics) A_NONNULL(2);
 
         /**
          * Draws the given path.
          */
         void drawPath(Graphics *const graphics,
                       const Path &path,
-                      const Color &color = Color(255, 0, 0)) const;
+                      const Color &color = Color(255, 0, 0))
+                      const A_NONNULL(2);
 
         bool leftMouseAction();
 

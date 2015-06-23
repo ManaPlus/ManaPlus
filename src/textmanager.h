@@ -63,7 +63,8 @@ class TextManager final
          * Draw the text
          */
         void draw(Graphics *const graphics,
-                  const int xOff, const int yOff);
+                  const int xOff,
+                  const int yOff) A_NONNULL(2);
 
     private:
         /**

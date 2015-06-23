@@ -41,7 +41,8 @@ class TextParticle final : public Particle
          * Draws the particle image.
          */
         void draw(Graphics *const graphics,
-                  const int offsetX, const int offsetY) const override final;
+                  const int offsetX,
+                  const int offsetY) const override final A_NONNULL(2);
 
         // hack to improve text visibility
         int getPixelY() const override final A_WARN_UNUSED

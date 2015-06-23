@@ -62,7 +62,8 @@ class Sprite notfinal
          * pixels.
          */
         virtual void draw(Graphics *const graphics,
-                          const int posX, const int posY) const = 0;
+                          const int posX, const int posY)
+                          const A_NONNULL(2) = 0;
 
         /**
          * Gets the width in pixels of the image of the current frame

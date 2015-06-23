@@ -70,9 +70,9 @@ class EquipmentWindow final : public Window,
         /**
          * Draws the equipment window.
          */
-        void draw(Graphics *graphics) override final;
+        void draw(Graphics *graphics) override final A_NONNULL(2);
 
-        void safeDraw(Graphics *graphics) override final;
+        void safeDraw(Graphics *graphics) override final A_NONNULL(2);
 
         void action(const ActionEvent &event) override final;
 
