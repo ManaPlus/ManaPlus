@@ -38,7 +38,8 @@
     \
     void name::addListener(name *const listener) \
     { \
-        mListeners.push_back(listener); \
+        if (listener) \
+            mListeners.push_back(listener); \
     } \
     \
     void name::removeListener(const name *const listener) \

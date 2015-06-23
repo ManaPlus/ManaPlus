@@ -36,7 +36,7 @@ GuiTableActionListener::GuiTableActionListener(GuiTable *const restrict table,
     mColumn(column),
     mWidget(widget)
 {
-    if (widget)
+    if (widget && table)
     {
         widget->addActionListener(this);
         widget->setParent(table);
