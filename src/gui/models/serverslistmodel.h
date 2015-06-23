@@ -42,7 +42,8 @@ class ServersListModel final : public ListModel
         ServersListModel(ServerInfos *const servers,
                          ServerDialog *const parent) :
             mServers(servers),
-            mVersionStrings(servers->size(), VersionString(0, "")),
+            mVersionStrings(servers ? servers->size() : 0,
+                VersionString(0, "")),
             mParent(parent)
         {
         }

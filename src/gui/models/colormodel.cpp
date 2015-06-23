@@ -70,6 +70,8 @@ void ColorModel::add(const std::string &name, const Color *const color1,
 ColorModel *ColorModel::createDefault(const Widget2 *const widget)
 {
     ColorModel *const model = new ColorModel();
+    if (!widget)
+        return model;
     // TRANSLATORS: color name
     addColor(_("black"), BLACK);
     // TRANSLATORS: color name

@@ -47,6 +47,8 @@ std::string NamesModel::getElementAt(int i)
 
 void NamesModel::fillFromArray(const char *const *const arr, std::size_t sz)
 {
+    if (!arr)
+        return;
     for (size_t f = 0; f < sz; f ++)
         mNames.push_back(gettext(arr[f]));
 }
