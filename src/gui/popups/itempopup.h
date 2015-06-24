@@ -75,7 +75,8 @@ class ItemPopup final : public Popup
         int mLastId;
         unsigned char mLastColor;
 
-        void setLabelColor(Label *label, const ItemType::Type type) const;
+        void setLabelColor(Label *label,
+                           const ItemType::Type type) const A_NONNULL(2);
 };
 
 extern ItemPopup *itemPopup;

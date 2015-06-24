@@ -168,7 +168,7 @@ class PopupMenu final : public Popup, public LinkHandler
 
         void addFollow();
 
-        void addBuySell(const Being *const being);
+        void addBuySell(const Being *const being) A_NONNULL(2);
 
         void addParty(const std::string &nick);
 
@@ -182,7 +182,8 @@ class PopupMenu final : public Popup, public LinkHandler
 
         void addProtection();
 
-        void addUseDrop(const Item *const item, const bool isProtected);
+        void addUseDrop(const Item *const item,
+                        const bool isProtected) A_NONNULL(2);
 
         void addGmCommands();
 

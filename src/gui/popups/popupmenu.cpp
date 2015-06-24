@@ -968,6 +968,9 @@ void PopupMenu::showWindowPopup(Window *const window)
 
 void PopupMenu::addWindowMenu(Window *const window)
 {
+    if (!window)
+        return;
+
     if (window->getCloseButton())
     {
         // TRANSLATORS: popup menu item
