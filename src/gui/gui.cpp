@@ -470,7 +470,7 @@ void Gui::draw()
 
     int mouseX;
     int mouseY;
-    const MouseStateType button = getMouseState(&mouseX, &mouseY);
+    const MouseStateType button = getMouseState(mouseX, mouseY);
 
     if ((settings.mouseFocused || button & SDL_BUTTON(1))
         && mMouseCursors && mCustomCursor && mMouseCursorAlpha > 0.0F)
@@ -942,7 +942,7 @@ MouseEvent *Gui::createMouseEvent(Window *const widget)
     int mouseY = 0;
 
     getAbsolutePosition(widget, x, y);
-    getMouseState(&mouseX, &mouseY);
+    getMouseState(mouseX, mouseY);
 
     return new MouseEvent(widget,
         MouseEventType::MOVED,
@@ -953,8 +953,11 @@ MouseEvent *Gui::createMouseEvent(Window *const widget)
 }
 
 void Gui::getAbsolutePosition(Widget *restrict widget,
-                              int &restrict x, int &restrict y)
+                              int &restrict x,
+                              int &restrict y)
 {
+    if (!widget)
+        return;
     x = 0;
     y = 0;
     while (widget->getParent())
@@ -1103,12 +1106,12 @@ void Gui::removeDragged(const Widget *const widget)
         mFocusHandler->setDraggedWidget(nullptr);
 }
 
-MouseStateType Gui::getMouseState(int *const x, int *const y)
+MouseStateType Gui::getMouseState(int &x, int &y)
 {
-    const MouseStateType res = SDL_GetMouseState(x, y);
+    const MouseStateType res = SDL_GetMouseState(&x, &y);
     const int scale = mainGraphics->getScale();
-    (*x) /= scale;
-    (*y) /= scale;
+    x /= scale;
+    y /= scale;
     return res;
 }
 

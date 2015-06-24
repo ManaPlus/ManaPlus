@@ -47,7 +47,7 @@ void ToolTipListener::mouseMoved(MouseEvent &event)
     }
     else
     {
-        Gui::getMouseState(&x, &y);
+        Gui::getMouseState(x, y);
     }
 
     event.consume();

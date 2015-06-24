@@ -226,7 +226,7 @@ class Gui final
         int getLastMouseY() const
         { return mLastMouseY; }
 
-        static MouseStateType getMouseState(int *const x, int *const y);
+        static MouseStateType getMouseState(int &x, int &y);
 
         /**
          * Sets the top widget. The top widget is the root widget

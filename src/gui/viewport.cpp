@@ -280,7 +280,7 @@ void Viewport::logic()
     BLOCK_START("Viewport::logic")
     // Make the player follow the mouse position
     // if the mouse is dragged elsewhere than in a window.
-    Gui::getMouseState(&mMouseX, &mMouseY);
+    Gui::getMouseState(mMouseX, mMouseY);
     BLOCK_END("Viewport::logic")
 }
 
@@ -288,7 +288,7 @@ void Viewport::followMouse()
 {
     if (!gui)
         return;
-    const MouseStateType button = Gui::getMouseState(&mMouseX, &mMouseY);
+    const MouseStateType button = Gui::getMouseState(mMouseX, mMouseY);
     // If the left button is dragged
     if (mPlayerFollowMouse && (button & SDL_BUTTON(1)))
     {
@@ -309,7 +309,7 @@ void Viewport::drawDebugPath(Graphics *const graphics)
     if (!localPlayer || !userPalette || !actorManager || !mMap || !gui)
         return;
 
-    Gui::getMouseState(&mMouseX, &mMouseY);
+    Gui::getMouseState(mMouseX, mMouseY);
 
     static Path debugPath;
     static Vector lastMouseDestination = Vector(0.0F, 0.0F);

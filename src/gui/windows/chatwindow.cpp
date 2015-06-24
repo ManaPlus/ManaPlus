@@ -2103,7 +2103,7 @@ void ChatWindow::updateVisibility()
     int mouseY = 0;
     int x = 0;
     int y = 0;
-    Gui::getMouseState(&mouseX, &mouseY);
+    Gui::getMouseState(mouseX, mouseY);
     getAbsolutePosition(x, y);
     if (mChatInput->isVisible())
     {

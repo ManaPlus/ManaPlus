@@ -126,7 +126,7 @@ void CharacterDisplay::mouseMoved(MouseEvent &event A_UNUSED)
 
     int mouseX = 0;
     int mouseY = 0;
-    Gui::getMouseState(&mouseX, &mouseY);
+    Gui::getMouseState(mouseX, mouseY);
     const std::string &name = mName->getCaption();
     if (!name.empty())
     {

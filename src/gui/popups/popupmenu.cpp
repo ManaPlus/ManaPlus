@@ -414,7 +414,7 @@ void PopupMenu::setMousePos()
     }
     else
     {
-        Gui::getMouseState(&mX, &mY);
+        Gui::getMouseState(mX, mY);
     }
 }
 

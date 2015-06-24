@@ -364,7 +364,8 @@ struct SkinHelper final
     Image *image;
     ResourceManager *resman;
 
-    bool loadList(const SkinParameter *const params, const size_t size)
+    bool loadList(const SkinParameter *const params,
+                  const size_t size) A_NONNULL(2)
     {
         for (size_t f = 0; f < size; f ++)
         {
