@@ -672,6 +672,8 @@ void EquipmentWindow::addDefaultPage()
 
 void EquipmentWindow::loadPage(const XmlNodePtr node)
 {
+    if (!node)
+        return;
     // TRANSLATORS: unknown equipment page name
     const std::string &name = XML::langProperty(node, "name", _("Unknown"));
     const int page = addPage(name);
@@ -698,6 +700,8 @@ void EquipmentWindow::loadSlot(const XmlNodePtr slotNode,
                                const ImageSet *const imageset,
                                const int page)
 {
+    if (!imageset)
+        return;
     const int slot = parseSlotName(XML::getProperty(slotNode, "name", ""));
     if (slot < 0)
         return;

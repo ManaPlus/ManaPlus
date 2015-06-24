@@ -50,7 +50,7 @@ class RegisterDialog final : public Window,
          *
          * @see Window::Window
          */
-        explicit RegisterDialog(LoginData *const loginData);
+        explicit RegisterDialog(LoginData &loginData);
 
         A_DELETE_COPY(RegisterDialog)
 

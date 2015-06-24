@@ -43,11 +43,11 @@
 
 #include "debug.h"
 
-UnRegisterDialog::UnRegisterDialog(LoginData *const data) :
+UnRegisterDialog::UnRegisterDialog(LoginData &data) :
     // TRANSLATORS: unregister dialog name
     Window(_("Unregister"), Modal_true, nullptr, "unregister.xml"),
     ActionListener(),
-    mLoginData(data),
+    mLoginData(&data),
     mPasswordField(new PasswordField(this, mLoginData->password)),
     // TRANSLATORS: unregister dialog. button.
     mUnRegisterButton(new Button(this, _("Unregister"), "unregister", this)),

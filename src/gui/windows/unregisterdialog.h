@@ -46,7 +46,7 @@ class UnRegisterDialog final : public Window,
          *
          * @see Window::Window
          */
-        explicit UnRegisterDialog(LoginData *const loginData);
+        explicit UnRegisterDialog(LoginData &loginData);
 
         A_DELETE_COPY(UnRegisterDialog)
 

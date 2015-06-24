@@ -46,7 +46,7 @@ class ChangePasswordDialog final : public Window,
          *
          * @see Window::Window
          */
-        explicit ChangePasswordDialog(LoginData *const data);
+        explicit ChangePasswordDialog(LoginData &data);
 
         A_DELETE_COPY(ChangePasswordDialog)
 

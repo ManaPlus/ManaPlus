@@ -43,7 +43,7 @@
 
 #include "debug.h"
 
-ChangeEmailDialog::ChangeEmailDialog(LoginData *const data) :
+ChangeEmailDialog::ChangeEmailDialog(LoginData &data) :
     // TRANSLATORS: change email dialog header
     Window(_("Change Email Address"), Modal_true, nullptr, "changeemail.xml"),
     ActionListener(),
@@ -55,7 +55,7 @@ ChangeEmailDialog::ChangeEmailDialog(LoginData *const data) :
     // TRANSLATORS: button in change email dialog
     mCancelButton(new Button(this, _("Cancel"), "cancel", this)),
     mWrongDataNoticeListener(new WrongDataNoticeListener),
-    mLoginData(data)
+    mLoginData(&data)
 {
     // TRANSLATORS: label in change email dialog
     Label *const accountLabel = new Label(this, strprintf(_("Account: %s"),

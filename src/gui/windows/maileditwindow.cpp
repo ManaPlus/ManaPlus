@@ -160,8 +160,11 @@ void MailEditWindow::action(const ActionEvent &event)
     }
 }
 
-void MailEditWindow::addItem(const Item *const item, const int amount)
+void MailEditWindow::addItem(const Item *const item,
+                             const int amount)
 {
+    if (!item)
+        return;
     mInventory->addItem(item->getId(),
         item->getType(),
         amount,

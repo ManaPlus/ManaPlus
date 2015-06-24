@@ -52,7 +52,7 @@ class CharSelectDialog final : public Window,
         /**
          * Constructor.
          */
-        explicit CharSelectDialog(LoginData *const data);
+        explicit CharSelectDialog(LoginData &data);
 
         A_DELETE_COPY(CharSelectDialog)
 

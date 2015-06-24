@@ -37,7 +37,7 @@ class MailViewWindow final : public Window,
                              public ActionListener
 {
     public:
-        explicit MailViewWindow(const MailMessage *const message);
+        explicit MailViewWindow(const MailMessage *const message) A_NONNULL(2);
 
         A_DELETE_COPY(MailViewWindow)
 

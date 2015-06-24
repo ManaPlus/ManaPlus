@@ -183,6 +183,9 @@ SocialWindow::~SocialWindow()
 
 bool SocialWindow::addTab(Guild *const guild)
 {
+    if (!guild)
+        return false;
+
     if (mGuilds.find(guild) != mGuilds.end())
         return false;
 

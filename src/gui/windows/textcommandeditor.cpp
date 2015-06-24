@@ -46,7 +46,8 @@ TextCommandEditor::TextCommandEditor(TextCommand *const command) :
     // TRANSLATORS: command editor name
     Window(_("Command Editor"), Modal_false, nullptr, "commandeditor.xml"),
     ActionListener(),
-    mIsMagicCommand(command->getCommandType() == TEXT_COMMAND_MAGIC),
+    mIsMagicCommand(command ?
+        (command->getCommandType() == TEXT_COMMAND_MAGIC) : false),
     mCommand(command),
     // TRANSLATORS: command editor button
     mIsMagic(new RadioButton(this, _("magic"), "magic", mIsMagicCommand)),
@@ -128,20 +129,23 @@ TextCommandEditor::TextCommandEditor(TextCommand *const command) :
     mCancelButton->adjustSize();
     mDeleteButton->adjustSize();
 
-    if (command->getCommandType() == TEXT_COMMAND_MAGIC)
-        showControls(Visible_true);
-    else
-        showControls(Visible_false);
+    if (command)
+    {
+        if (command->getCommandType() == TEXT_COMMAND_MAGIC)
+            showControls(Visible_true);
+        else
+            showControls(Visible_false);
 
-    mSymbolTextField->setText(command->getSymbol());
-    mCommandTextField->setText(command->getCommand());
-    mCommentTextField->setText(command->getComment());
-    mManaField->setValue(command->getMana());
-    mTypeDropDown->setSelected(static_cast<int>(command->getTargetType()));
-    mMagicLvlField->setValue(command->getBaseLvl());
-    mSchoolDropDown->setSelected(static_cast<int>(command->getSchool())
-        - MAGIC_START_ID);
-    mSchoolLvlField->setValue(command->getSchoolLvl());
+        mSymbolTextField->setText(command->getSymbol());
+        mCommandTextField->setText(command->getCommand());
+        mCommentTextField->setText(command->getComment());
+        mManaField->setValue(command->getMana());
+        mTypeDropDown->setSelected(static_cast<int>(command->getTargetType()));
+        mMagicLvlField->setValue(command->getBaseLvl());
+        mSchoolDropDown->setSelected(static_cast<int>(command->getSchool())
+            - MAGIC_START_ID);
+        mSchoolLvlField->setValue(command->getSchoolLvl());
+    }
 
     ContainerPlacer placer;
     placer = getPlacer(0, 0);

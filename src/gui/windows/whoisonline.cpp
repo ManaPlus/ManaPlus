@@ -278,6 +278,8 @@ void WhoIsOnline::updateWindow(size_t numOnline)
 void WhoIsOnline::handlerPlayerRelation(const std::string &nick,
                                         OnlinePlayer *const player)
 {
+    if (!player)
+        return;
     switch (player_relations.getRelation(nick))
     {
         case Relation::NEUTRAL:
@@ -509,6 +511,8 @@ int WhoIsOnline::downloadThread(void *ptr)
 {
     int attempts = 0;
     WhoIsOnline *const wio = reinterpret_cast<WhoIsOnline *>(ptr);
+    if (!wio)
+        return 0;
     CURLcode res;
     const std::string url(settings.onlineListUrl + "/online.txt");
 

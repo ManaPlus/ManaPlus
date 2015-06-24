@@ -68,27 +68,31 @@ ShortcutWindow::ShortcutWindow(const std::string &restrict title,
     mDragOffsetX = 0;
     mDragOffsetY = 0;
 
-    content->setWidget2(this);
+    if (content)
+        content->setWidget2(this);
     if (setupWindow)
         setupWindow->registerWindowForReset(this);
 
-    const int border = SCROLL_PADDING * 2 + getPadding() * 2;
-    const int bw = mItems->getBoxWidth();
-    const int bh = mItems->getBoxHeight();
-    const int maxItems = mItems->getMaxItems();
     setMinWidth(32);
     setMinHeight(32);
-    setMaxWidth(bw * maxItems + border);
-    setMaxHeight(bh * maxItems + border);
+    const int border = SCROLL_PADDING * 2 + getPadding() * 2;
+    if (mItems)
+    {
+        const int bw = mItems->getBoxWidth();
+        const int bh = mItems->getBoxHeight();
+        const int maxItems = mItems->getMaxItems();
+        setMaxWidth(bw * maxItems + border);
+        setMaxHeight(bh * maxItems + border);
 
-    if (width == 0)
-        width = bw + border;
-    if (height == 0)
-        height = bh * maxItems + border;
+        if (width == 0)
+            width = bw + border;
+        if (height == 0)
+            height = bh * maxItems + border;
 
-    setDefaultSize(width, height, ImageRect::LOWER_RIGHT);
+        setDefaultSize(width, height, ImageRect::LOWER_RIGHT);
 
-    mBoxesWidth += bw + border;
+        mBoxesWidth += bw + border;
+    }
 
     mScrollArea->setPosition(SCROLL_PADDING, SCROLL_PADDING);
     mScrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
@@ -161,6 +165,8 @@ void ShortcutWindow::addButton(const std::string &text,
 void ShortcutWindow::addTab(const std::string &name,
                             ShortcutContainer *const content)
 {
+    if (!content)
+        return;
     ScrollArea *const scroll = new ScrollArea(this, content, false);
     scroll->setPosition(SCROLL_PADDING, SCROLL_PADDING);
     scroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);

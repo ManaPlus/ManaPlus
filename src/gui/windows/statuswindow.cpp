@@ -652,6 +652,8 @@ std::string StatusWindow::translateLetter2(const std::string &letters)
 void StatusWindow::updateStatusBar(ProgressBar *const bar,
                                    const bool percent A_UNUSED) const
 {
+    if (!bar)
+        return;
     bar->setText(translateLetter2(GameModifiers::getMoveTypeString())
         .append(translateLetter2(GameModifiers::getCrazyMoveTypeString()))
         .append(translateLetter2(GameModifiers::getMoveToTargetTypeString()))

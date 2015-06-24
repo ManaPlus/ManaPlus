@@ -59,6 +59,8 @@ void ItemAmountWindow::finish(const Item *const item,
                               const int price,
                               const Usage usage)
 {
+    if (!item)
+        return;
     switch (usage)
     {
         case TradeAdd:
@@ -106,8 +108,10 @@ void ItemAmountWindow::finish(const Item *const item,
     }
 }
 
-ItemAmountWindow::ItemAmountWindow(const Usage usage, Window *const parent,
-                                   Item *const item, const int maxRange) :
+ItemAmountWindow::ItemAmountWindow(const Usage usage,
+                                   Window *const parent,
+                                   Item *const item,
+                                   const int maxRange) :
     Window("", Modal_false, parent, "amount.xml"),
     ActionListener(),
     KeyListener(),

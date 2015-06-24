@@ -1088,7 +1088,7 @@ int Client::gameExec()
                         || settings.options.password.empty())
                     {
                         CREATEWIDGETV(mCurrentDialog, LoginDialog,
-                            &loginData,
+                            loginData,
                             mCurrentServer.hostname,
                             &settings.options.updateHost);
                     }
@@ -1296,7 +1296,7 @@ int Client::gameExec()
                     theme->setMinimumOpacity(0.8F);
 
                     CREATEWIDGETV(mCurrentDialog, CharSelectDialog,
-                        &loginData);
+                        loginData);
 
                     if (!(static_cast<CharSelectDialog*>(mCurrentDialog))
                         ->selectByName(settings.options.character,
@@ -1434,7 +1434,7 @@ int Client::gameExec()
                 case STATE_REGISTER:
                     logger->log1("State: REGISTER");
                     CREATEWIDGETV(mCurrentDialog, RegisterDialog,
-                        &loginData);
+                        loginData);
                     break;
 
                 case STATE_REGISTER_ATTEMPT:
@@ -1448,7 +1448,7 @@ int Client::gameExec()
                     BLOCK_START("Client::gameExec STATE_CHANGEPASSWORD")
                     logger->log1("State: CHANGE PASSWORD");
                     CREATEWIDGETV(mCurrentDialog, ChangePasswordDialog,
-                        &loginData);
+                        loginData);
                     mCurrentDialog->setVisible(Visible_true);
                     BLOCK_END("Client::gameExec STATE_CHANGEPASSWORD")
                     break;
@@ -1488,7 +1488,7 @@ int Client::gameExec()
                 case STATE_CHANGEEMAIL:
                     logger->log1("State: CHANGE EMAIL");
                     CREATEWIDGETV(mCurrentDialog, ChangeEmailDialog,
-                        &loginData);
+                        loginData);
                     mCurrentDialog->setVisible(Visible_true);
                     break;
 
@@ -1518,7 +1518,7 @@ int Client::gameExec()
                 case STATE_UNREGISTER:
                     logger->log1("State: UNREGISTER");
                     CREATEWIDGETV(mCurrentDialog, UnRegisterDialog,
-                        &loginData);
+                        loginData);
                     break;
 
                 case STATE_UNREGISTER_ATTEMPT:

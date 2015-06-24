@@ -496,6 +496,9 @@ void TradeWindow::initTrade(const std::string &nick)
 
 bool TradeWindow::checkItem(const Item *const item) const
 {
+    if (!item)
+        return false;
+
     const int itemId = item->getId();
     if (PlayerInfo::isItemProtected(itemId))
         return false;

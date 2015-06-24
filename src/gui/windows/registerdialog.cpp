@@ -46,12 +46,12 @@
 
 #include "debug.h"
 
-RegisterDialog::RegisterDialog(LoginData *const data) :
+RegisterDialog::RegisterDialog(LoginData &data) :
     // TRANSLATORS: register dialog name
     Window(_("Register"), Modal_false, nullptr, "register.xml"),
     ActionListener(),
     KeyListener(),
-    mLoginData(data),
+    mLoginData(&data),
     mUserField(new TextField(this, mLoginData->username)),
     mPasswordField(new PasswordField(this, mLoginData->password)),
     mConfirmField(new PasswordField(this)),

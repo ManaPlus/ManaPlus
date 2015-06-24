@@ -46,7 +46,7 @@ class ChangeEmailDialog final : public Window,
          *
          * @see Window::Window
          */
-        explicit ChangeEmailDialog(LoginData *const data);
+        explicit ChangeEmailDialog(LoginData &data);
 
         A_DELETE_COPY(ChangeEmailDialog)
 

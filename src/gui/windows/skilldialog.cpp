@@ -703,6 +703,9 @@ void SkillDialog::useSkill(const SkillInfo *const info)
 
 void SkillDialog::addSkillDuration(SkillInfo *const skill)
 {
+    if (!skill)
+        return;
+
     FOR_EACH (std::vector<SkillInfo*>::const_iterator, it, mDurations)
     {
         if ((*it)->id == skill->id)

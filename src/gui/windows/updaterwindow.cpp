@@ -541,6 +541,8 @@ size_t UpdaterWindow::memoryWrite(void *ptr, size_t size,
 {
     UpdaterWindow *const uw = reinterpret_cast<UpdaterWindow *>(stream);
     const size_t totalMem = size * nmemb;
+    if (!uw)
+        return 0;
     uw->mMemoryBuffer = static_cast<char*>(realloc(uw->mMemoryBuffer,
         static_cast<size_t>(uw->mDownloadedBytes) + totalMem));
     if (uw->mMemoryBuffer)
@@ -712,6 +714,8 @@ void UpdaterWindow::unloadUpdates(const std::string &dir)
 void UpdaterWindow::loadManaPlusUpdates(const std::string &dir,
                                         const ResourceManager *const resman)
 {
+    if (!resman)
+        return;
     std::string fixPath = dir + "/fix";
     std::vector<UpdateFile> updateFiles = loadXMLFile(
         std::string(fixPath).append("/").append(xmlUpdateFile), false);
@@ -737,6 +741,8 @@ void UpdaterWindow::loadManaPlusUpdates(const std::string &dir,
 void UpdaterWindow::unloadManaPlusUpdates(const std::string &dir,
                                           const ResourceManager *const resman)
 {
+    if (!resman)
+        return;
     const std::string fixPath = dir + "/fix";
     const std::vector<UpdateFile> updateFiles = loadXMLFile(
         std::string(fixPath).append("/").append(xmlUpdateFile), true);
@@ -762,6 +768,8 @@ void UpdaterWindow::addUpdateFile(const ResourceManager *const resman,
                                   const std::string &restrict file,
                                   const bool append)
 {
+    if (!resman)
+        return;
     const std::string tmpPath = std::string(path).append("/").append(file);
     if (!append)
         resman->addToSearchPath(tmpPath, append);
@@ -780,6 +788,8 @@ void UpdaterWindow::removeUpdateFile(const ResourceManager *const resman,
                                      const std::string &restrict fixPath,
                                      const std::string &restrict file)
 {
+    if (!resman)
+        return;
     resman->removeFromSearchPath(std::string(path).append("/").append(file));
     const std::string fixFile = std::string(fixPath).append("/").append(file);
     struct stat statbuf;
@@ -1070,6 +1080,8 @@ void UpdaterWindow::loadMods(const std::string &dir,
                              const ResourceManager *const resman,
                              const std::vector<UpdateFile> &updateFiles)
 {
+    if (!resman)
+        return;
     ModDB::load();
     std::string modsString = serverConfig.getValue("mods", "");
     std::set<std::string> modsList;

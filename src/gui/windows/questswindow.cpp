@@ -197,6 +197,8 @@ void QuestsWindow::loadXmlFile(const std::string &fileName)
 
 void QuestsWindow::loadQuest(const int var, const XmlNodePtr node)
 {
+    if (!node)
+        return;
     QuestItem *const quest = new QuestItem();
     // TRANSLATORS: quests window quest name
     quest->name = XML::langProperty(node, "name", _("unknown"));

@@ -52,7 +52,8 @@ class LoginDialog final : public Window,
          *
          * @see Window::Window
          */
-        LoginDialog(LoginData *const data, std::string serverName,
+        LoginDialog(LoginData &data,
+                    std::string serverName,
                     std::string *const updateHost);
 
         A_DELETE_COPY(LoginDialog)

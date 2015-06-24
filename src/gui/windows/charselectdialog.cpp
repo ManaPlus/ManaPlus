@@ -56,16 +56,16 @@
 // Character slots per row in the dialog
 static const int SLOTS_PER_ROW = 5;
 
-CharSelectDialog::CharSelectDialog(LoginData *const data) :
+CharSelectDialog::CharSelectDialog(LoginData &data) :
     // TRANSLATORS: char select dialog name
     Window(strprintf(_("Account %s (last login time %s)"),
-        data->username.c_str(), data->lastLogin.c_str()),
+        data.username.c_str(), data.lastLogin.c_str()),
         Modal_false,
         nullptr,
         "char.xml"),
     ActionListener(),
     KeyListener(),
-    mLoginData(data),
+    mLoginData(&data),
     // TRANSLATORS: char select dialog. button.
     mSwitchLoginButton(new Button(this, _("Switch"), "switch", this)),
     // TRANSLATORS: char select dialog. button.

@@ -44,7 +44,7 @@
 
 #include "debug.h"
 
-ChangePasswordDialog::ChangePasswordDialog(LoginData *const data) :
+ChangePasswordDialog::ChangePasswordDialog(LoginData &data) :
     // TRANSLATORS: change password window name
     Window(_("Change Password"), Modal_true, nullptr, "changepassword.xml"),
     ActionListener(),
@@ -57,7 +57,7 @@ ChangePasswordDialog::ChangePasswordDialog(LoginData *const data) :
     // TRANSLATORS: change password dialog button
     mCancelButton(new Button(this, _("Cancel"), "cancel", this)),
     mWrongDataNoticeListener(new WrongDataNoticeListener),
-    mLoginData(data)
+    mLoginData(&data)
 {
     Label *const accountLabel = new Label(this,
         // TRANSLATORS: change password dialog label

@@ -182,6 +182,12 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
     for (size_t f = 0; f < sz; f ++)
         mFilter->addButton(tags[f], tags[f], false);
 
+    if (!mInventory)
+    {
+        invInstances.push_back(this);
+        return;
+    }
+
     switch (mInventory->getType())
     {
         case InventoryType::INVENTORY:

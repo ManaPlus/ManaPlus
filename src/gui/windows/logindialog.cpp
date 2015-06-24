@@ -57,14 +57,14 @@ namespace
     OpenUrlListener urlListener;
 }  // namespace
 
-LoginDialog::LoginDialog(LoginData *const data,
+LoginDialog::LoginDialog(LoginData &data,
                          std::string serverName,
                          std::string *const updateHost) :
     // TRANSLATORS: login dialog name
     Window(_("Login"), Modal_false, nullptr, "login.xml"),
     ActionListener(),
     KeyListener(),
-    mLoginData(data),
+    mLoginData(&data),
     mUserField(new TextField(this, mLoginData->username)),
     mPassField(new PasswordField(this, mLoginData->password)),
     // TRANSLATORS: login dialog label
@@ -104,7 +104,7 @@ LoginDialog::LoginDialog(LoginData *const data,
     Label *const userLabel = new Label(this, _("Name:"));
     // TRANSLATORS: login dialog label
     Label *const passLabel = new Label(this, _("Password:"));
-    if (mLoginData && mLoginData->updateHosts.size() > 1)
+    if (mLoginData->updateHosts.size() > 1)
     {
         // TRANSLATORS: login dialog label
         mUpdateHostLabel = new Label(this, strprintf(_("Update host: %s"),
