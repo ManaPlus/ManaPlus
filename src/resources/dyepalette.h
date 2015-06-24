@@ -50,12 +50,12 @@ class DyePalette final
          * implicitly black (0, 0, 0).
          */
         void getColor(const unsigned int intensity,
-                      unsigned int color[3]) const;
+                      unsigned int (&color)[3]) const;
 
         /**
          * Gets a pixel color depending on its intensity.
          */
-        void getColor(double intensity, int color[3]) const;
+        void getColor(double intensity, int (&color)[3]) const;
 
         /**
          * replace colors for SDL for S dye.

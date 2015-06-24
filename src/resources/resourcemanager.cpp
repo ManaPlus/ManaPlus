@@ -260,6 +260,8 @@ bool ResourceManager::cleanOrphans(const bool always)
 
 void ResourceManager::logResource(const Resource *const res)
 {
+    if (!res)
+        return;
 #ifdef USE_OPENGL
     const Image *const image = dynamic_cast<const Image *const>(res);
     if (image)

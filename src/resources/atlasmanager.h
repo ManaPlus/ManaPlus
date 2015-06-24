@@ -60,10 +60,10 @@ class AtlasManager final
                                int size);
 
         static SDL_Surface *createSDLAtlas(TextureAtlas *const atlas)
-                                           A_WARN_UNUSED;
+                                           A_WARN_UNUSED A_NONNULL(1);
 
 
-        static void convertAtlas(TextureAtlas *const atlas);
+        static void convertAtlas(TextureAtlas *const atlas) A_NONNULL(1);
 };
 
 #endif  // USE_OPENGL

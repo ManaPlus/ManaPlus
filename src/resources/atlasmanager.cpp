@@ -319,6 +319,8 @@ void AtlasManager::convertAtlas(TextureAtlas *const atlas)
 
 void AtlasManager::injectToResources(const AtlasResource *const resource)
 {
+    if (!resource)
+        return;
     ResourceManager *const resman = ResourceManager::getInstance();
     FOR_EACH (std::vector<TextureAtlas*>::const_iterator,
               it, resource->atlases)
@@ -344,6 +346,8 @@ void AtlasManager::injectToResources(const AtlasResource *const resource)
 
 void AtlasManager::moveToDeleted(AtlasResource *const resource)
 {
+    if (!resource)
+        return;
     ResourceManager *const resman = ResourceManager::getInstance();
     FOR_EACH (std::vector<TextureAtlas*>::iterator, it, resource->atlases)
     {

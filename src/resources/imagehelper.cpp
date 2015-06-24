@@ -163,6 +163,8 @@ SDL_Surface* ImageHelper::convertTo32Bit(SDL_Surface *const tmpImage)
 
 void ImageHelper::dumpSurfaceFormat(const SDL_Surface *const image)
 {
+    if (!image)
+        return;
     if (image->format)
     {
         const SDL_PixelFormat * const format = image->format;

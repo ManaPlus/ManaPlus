@@ -491,10 +491,19 @@ void MapReader::readProperties(const XmlNodePtrConst node,
     BLOCK_END("MapReader::readProperties")
 }
 
-inline static void setTile(Map *const map, MapLayer *const layer,
+inline static void setTile(Map *const map,
+                           MapLayer *const layer,
                            const MapLayer::Type &layerType,
                            MapHeights *const heights,
-                           const int x, const int y, const int gid)
+                           const int x, const int y,
+                           const int gid) A_NONNULL(1, 2, 4);
+
+inline static void setTile(Map *const map,
+                           MapLayer *const layer,
+                           const MapLayer::Type &layerType,
+                           MapHeights *const heights,
+                           const int x, const int y,
+                           const int gid)
 {
     const Tileset * const set = map->getTilesetWithGid(gid);
     switch (layerType)
@@ -588,6 +597,9 @@ bool MapReader::readBase64Layer(const XmlNodePtrConst childNode,
                                 int &restrict x, int &restrict y,
                                 const int w, const int h)
 {
+    if (!map || !layer || !childNode)
+        return false;
+
     if (!compression.empty() && compression != "gzip"
         && compression != "zlib")
     {
@@ -690,6 +702,9 @@ bool MapReader::readCsvLayer(const XmlNodePtrConst childNode,
                              int &restrict x, int &restrict y,
                              const int w, const int h)
 {
+    if (!map || !layer || !childNode)
+        return false;
+
     XmlNodePtrConst dataChild = childNode->xmlChildrenNode;
     if (!dataChild)
         return true;
@@ -733,6 +748,9 @@ bool MapReader::readCsvLayer(const XmlNodePtrConst childNode,
 
 void MapReader::readLayer(const XmlNodePtr node, Map *const map)
 {
+    if (!map || !node)
+        return;
+
     // Layers are not necessarily the same size as the map
     const int w = XML::getProperty(node, "width", map->getWidth());
     const int h = XML::getProperty(node, "height", map->getHeight());
@@ -878,7 +896,7 @@ Tileset *MapReader::readTileset(XmlNodePtr node,
                                 Map *const map)
 {
     BLOCK_START("MapReader::readTileset")
-    if (!map)
+    if (!map || !node)
     {
         BLOCK_END("MapReader::readTileset")
         return nullptr;
@@ -1072,6 +1090,8 @@ Map *MapReader::createEmptyMap(const std::string &restrict filename,
 
 void MapReader::updateMusic(Map *const map)
 {
+    if (!map)
+        return;
     std::string name = map->getProperty("shortName");
     const size_t p = name.rfind(".");
     if (p != std::string::npos)

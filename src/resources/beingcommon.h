@@ -52,7 +52,7 @@ namespace BeingCommon
 {
     void readBasicAttributes(BeingInfo *const info,
                              XmlNodePtrConst node,
-                             const std::string &hoverCursor);
+                             const std::string &hoverCursor) A_NONNULL(1);
 
     void getIncludeFiles(const std::string &dir,
                          StringVect &list,
@@ -61,7 +61,7 @@ namespace BeingCommon
     bool readObjectNodes(XmlNodePtrConst &spriteNode,
                          SpriteDisplay &display,
                          BeingInfo *const currentInfo,
-                         const std::string &dbName);
+                         const std::string &dbName) A_NONNULL(3);
 }  // namespace BeingCommon
 
 #endif  // RESOURCES_BEINGCOMMON_H

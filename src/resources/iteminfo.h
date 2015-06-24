@@ -201,11 +201,6 @@ class ItemInfo final
 
         void setDrawPriority(const int direction, const int n);
 
-        static void setSpriteOrder(int *const ptr,
-                                   const int direction,
-                                   const int n,
-                                   const int def = -1);
-
         const std::map<int, int> &getTags() const A_WARN_UNUSED
         { return mTags; }
 
@@ -280,7 +275,12 @@ class ItemInfo final
         int mDrawAfter[10];
         int mDrawPriority[10];
 
-    protected:
+    private:
+        static void setSpriteOrder(int *const ptr,
+                                   const int direction,
+                                   const int n,
+                                   const int def = -1) A_NONNULL(1);
+
         SpriteDisplay mDisplay;     /**< Display info (like icon) */
         std::string mName;
         std::string mDescription;   /**< Short description. */

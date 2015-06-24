@@ -198,8 +198,6 @@ class ResourceManager final
 
         void decRefDelete(Resource *const res);
 
-        static void logResource(const Resource *const res);
-
         /**
          * Move resource to deleted resources list.
          */
@@ -261,6 +259,8 @@ class ResourceManager final
          * Deletes the resource after logging a cleanup message.
          */
         static void cleanUp(Resource *const resource);
+
+        static void logResource(const Resource *const res);
 
         static ResourceManager *instance;
         std::set<SDL_Surface*> deletedSurfaces;

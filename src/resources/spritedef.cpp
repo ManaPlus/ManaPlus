@@ -185,10 +185,16 @@ void SpriteDef::substituteActions()
     substituteAction(SpriteAction::DEADRIDE, SpriteAction::DEAD);
 }
 
-void SpriteDef::loadSprite(const XmlNodePtr spriteNode, const int variant,
+void SpriteDef::loadSprite(const XmlNodePtr spriteNode,
+                           const int variant,
                            const std::string &palettes)
 {
     BLOCK_START("SpriteDef::loadSprite")
+    if (!spriteNode)
+    {
+        BLOCK_END("SpriteDef::loadSprite")
+        return;
+    }
     // Get the variant
     const int variantCount = XML::getProperty(spriteNode, "variants", 0);
     int variant_offset = 0;
@@ -243,6 +249,9 @@ void SpriteDef::loadImageSet(const XmlNodePtr node,
 void SpriteDef::loadAction(const XmlNodePtr node,
                            const int variant_offset)
 {
+    if (!node)
+        return;
+
     const std::string actionName = XML::getProperty(node, "name", "");
     const std::string imageSetName = XML::getProperty(node, "imageset", "");
     const unsigned hp = XML::getProperty(node, "hp", 100);
@@ -288,7 +297,7 @@ void SpriteDef::loadAnimation(const XmlNodePtr animationNode,
                               const ImageSet *const imageSet,
                               const int variant_offset) const
 {
-    if (!action || !imageSet)
+    if (!action || !imageSet || !animationNode)
         return;
 
     const std::string directionName =

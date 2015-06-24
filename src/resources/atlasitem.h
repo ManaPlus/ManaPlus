@@ -34,8 +34,8 @@ struct AtlasItem final
         name(),
         x(0),
         y(0),
-        width(image0->mBounds.w),
-        height(image0->mBounds.h)
+        width(image0 ? image0->mBounds.w : 0),
+        height(image0 ? image0->mBounds.h : 0)
     {
     }
 

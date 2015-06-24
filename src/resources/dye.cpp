@@ -150,6 +150,9 @@ int Dye::getType() const
 
 void Dye::normalDye(uint32_t *restrict pixels, const int bufSize) const
 {
+    if (!pixels)
+        return;
+
 #ifdef ENABLE_CILKPLUS
     cilk_for (int ptr = 0; ptr < bufSize; ptr ++)
     {
@@ -265,6 +268,9 @@ endlabel:{}
 
 void Dye::normalOGLDye(uint32_t *restrict pixels, const int bufSize) const
 {
+    if (!pixels)
+        return;
+
 #ifdef ENABLE_CILKPLUS
     cilk_for (int ptr = 0; ptr < bufSize; ptr ++)
     {

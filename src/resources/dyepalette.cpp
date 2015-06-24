@@ -100,7 +100,7 @@ unsigned int DyePalette::hexDecode(const signed char c)
 }
 
 void DyePalette::getColor(const unsigned int intensity,
-                          unsigned int color[3]) const
+                          unsigned int (&color)[3]) const
 {
     if (intensity == 0)
     {
@@ -152,7 +152,7 @@ void DyePalette::getColor(const unsigned int intensity,
     color[2] = ((255 - t) * b1 + t * b2) / 255;
 }
 
-void DyePalette::getColor(double intensity, int color[3]) const
+void DyePalette::getColor(double intensity, int (&color)[3]) const
 {
     // Nothing to do here
     if (mColors.empty())
@@ -202,7 +202,7 @@ void DyePalette::replaceSColor(uint32_t *restrict pixels,
 {
     std::vector<DyeColor>::const_iterator it_end = mColors.end();
     const size_t sz = mColors.size();
-    if (!sz)
+    if (!sz || !pixels)
         return;
     if (sz % 2)
         -- it_end;
@@ -310,7 +310,7 @@ void DyePalette::replaceAColor(uint32_t *restrict pixels,
 {
     std::vector<DyeColor>::const_iterator it_end = mColors.end();
     const size_t sz = mColors.size();
-    if (!sz)
+    if (!sz || !pixels)
         return;
     if (sz % 2)
         -- it_end;
@@ -401,7 +401,7 @@ void DyePalette::replaceSOGLColor(uint32_t *restrict pixels,
 {
     std::vector<DyeColor>::const_iterator it_end = mColors.end();
     const size_t sz = mColors.size();
-    if (!sz)
+    if (!sz || !pixels)
         return;
     if (sz % 2)
         -- it_end;
@@ -496,7 +496,7 @@ void DyePalette::replaceAOGLColor(uint32_t *restrict pixels,
 {
     std::vector<DyeColor>::const_iterator it_end = mColors.end();
     const size_t sz = mColors.size();
-    if (!sz)
+    if (!sz || !pixels)
         return;
     if (sz % 2)
         -- it_end;

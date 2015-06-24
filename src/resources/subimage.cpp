@@ -29,7 +29,8 @@
 #include "debug.h"
 
 #ifdef USE_SDL2
-SubImage::SubImage(Image *const parent, SDL_Texture *const image,
+SubImage::SubImage(Image *const parent,
+                   SDL_Texture *const image,
                    const int x, const int y,
                    const int width, const int height) :
     Image(image, width, height),
@@ -81,7 +82,8 @@ SubImage::SubImage(Image *const parent, SDL_Texture *const image,
 }
 #endif
 
-SubImage::SubImage(Image *const parent, SDL_Surface *const image,
+SubImage::SubImage(Image *const parent,
+                   SDL_Surface *const image,
                    const int x, const int y,
                    const int width, const int height) :
     Image(image, false),
@@ -134,8 +136,10 @@ SubImage::SubImage(Image *const parent, SDL_Surface *const image,
 }
 
 #ifdef USE_OPENGL
-SubImage::SubImage(Image *const parent, const GLuint image,
-                   const int x, const int y, const int width, const int height,
+SubImage::SubImage(Image *const parent,
+                   const GLuint image,
+                   const int x, const int y,
+                   const int width, const int height,
                    const int texWidth, const int texHeight) :
     Image(image, width, height, texWidth, texHeight),
     mInternalBounds(),
