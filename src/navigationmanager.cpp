@@ -66,6 +66,8 @@ Resource *NavigationManager::loadWalkLayer(const Map *const map)
 
     const MetaTile *const tiles = map->getMetaTiles();
     int *const data = walkLayer->getData();
+    if (!tiles || !data)
+        return walkLayer;
 
     int x = 0;
     int y = 0;
@@ -81,7 +83,8 @@ Resource *NavigationManager::loadWalkLayer(const Map *const map)
 #endif
 
 bool NavigationManager::findWalkableTile(int &x1, int &y1,
-                                         const int width, const int height,
+                                         const int width,
+                                         const int height,
                                          const MetaTile *const tiles,
                                          const int *const data)
 {
@@ -103,8 +106,10 @@ bool NavigationManager::findWalkableTile(int &x1, int &y1,
 }
 
 void NavigationManager::fillNum(int x, int y,
-                                const int width, const int height,
-                                const int num, const MetaTile *const tiles,
+                                const int width,
+                                const int height,
+                                const int num,
+                                const MetaTile *const tiles,
                                 int *const data)
 {
     std::vector<Cell> cells;

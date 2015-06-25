@@ -179,6 +179,8 @@ GuildMember *Guild::getMember(const std::string &name) const
 
 void Guild::removeMember(const GuildMember *const member)
 {
+    if (!member)
+        return;
     MemberList::iterator itr = mMembers.begin();
     const MemberList::iterator itr_end = mMembers.end();
     while (itr != itr_end)

@@ -69,7 +69,8 @@ class GameModifiers final
     protected:
         static const char *getVarItem(const char *const *const arr,
                                       const unsigned index,
-                                      const unsigned sz) A_WARN_UNUSED;
+                                      const unsigned sz)
+                                      A_WARN_UNUSED A_NONNULL(1);
 };
 
 #undef declModifier

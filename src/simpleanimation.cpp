@@ -39,7 +39,7 @@ SimpleAnimation::SimpleAnimation(Animation *const animation) :
     mAnimation(animation),
     mAnimationTime(0),
     mAnimationPhase(0),
-    mCurrentFrame(&mAnimation->mFrames[0]),
+    mCurrentFrame(mAnimation ? &mAnimation->mFrames[0] : nullptr),
     mInitialized(true),
     mImageSet(nullptr)
 {

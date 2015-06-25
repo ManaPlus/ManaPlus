@@ -110,16 +110,19 @@ class TouchManager final : public ConfigListener
 
         void init();
 
-        void loadTouchItem(TouchItem **item, const std::string &name,
+        void loadTouchItem(TouchItem **item,
+                           const std::string &name,
                            const std::string &imageName,
                            const std::string &text,
-                           int x, int y, const int width, const int height,
-                           const int type, const std::string &eventPressed,
+                           int x, int y,
+                           const int width, const int height,
+                           const int type,
+                           const std::string &eventPressed,
                            const std::string &eventReleased,
                            const TouchFuncPtr fAll = nullptr,
                            const TouchFuncPtr fPressed = nullptr,
                            const TouchFuncPtr fReleased = nullptr,
-                           const TouchFuncPtr fOut = nullptr);
+                           const TouchFuncPtr fOut = nullptr) A_NONNULL(2);
 
         void clear();
 

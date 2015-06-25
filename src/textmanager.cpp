@@ -36,12 +36,17 @@ TextManager::TextManager() :
 
 void TextManager::addText(Text *const text)
 {
+    if (!text)
+        return;
     place(text, nullptr, text->mX, text->mY, text->mHeight);
     mTextList.push_back(text);
 }
 
-void TextManager::moveText(Text *const text, const int x, const int y) const
+void TextManager::moveText(Text *const text,
+                           const int x, const int y) const
 {
+    if (!text)
+        return;
     text->mX = x;
     text->mY = y;
     place(text, text, text->mX, text->mY, text->mHeight);
@@ -72,9 +77,14 @@ void TextManager::draw(Graphics *const graphics,
     BLOCK_END("TextManager::draw")
 }
 
-void TextManager::place(const Text *const textObj, const Text *const omit,
-                        const int &x A_UNUSED, int &y, const int h) const
+void TextManager::place(const Text *const textObj,
+                        const Text *const omit,
+                        const int &x A_UNUSED,
+                        int &y,
+                        const int h) const
 {
+    if (!textObj)
+        return;
     const int xLeft = textObj->mX;
     const int xRight1 = xLeft + textObj->mWidth;
     const int TEST = 50;  // Number of lines to test for text

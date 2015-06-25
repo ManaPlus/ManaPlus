@@ -673,11 +673,14 @@ bool Configuration::resetBoolValue(const std::string &key)
 }
 
 
-void ConfigurationObject::initFromXML(const XmlNodePtrConst parent_node)
+void ConfigurationObject::initFromXML(const XmlNodePtrConst parentNode)
 {
     clear();
 
-    for_each_xml_child_node(node, parent_node)
+    if (!parentNode)
+        return;
+
+    for_each_xml_child_node(node, parentNode)
     {
         if (xmlNameEqual(node, "list"))
         {

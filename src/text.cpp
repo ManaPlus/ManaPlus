@@ -56,8 +56,8 @@ Text::Text(const std::string &text,
     mXOffset(0),
     mText(text),
     mColor(color),
-    mOutlineColor(isSpeech == Speech_true ?
-        *color : theme->getColor(ThemeColorId::OUTLINE, 255)),
+    mOutlineColor(color ? (isSpeech == Speech_true ?
+        *color : theme->getColor(ThemeColorId::OUTLINE, 255)) : Color()),
     mIsSpeech(isSpeech),
     mTextChanged(true)
 {

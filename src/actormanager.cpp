@@ -1794,6 +1794,8 @@ Being *ActorManager::cloneBeing(const Being *const srcBeing,
                                 const int dx, const int dy,
                                 const int id)
 {
+    if (!srcBeing)
+        return nullptr;
     Being *const dstBeing = actorManager->createBeing(fromInt(
         toInt(srcBeing->getId(), int) + id, BeingId),
         ActorType::Player,

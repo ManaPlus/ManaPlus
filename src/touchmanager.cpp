@@ -110,7 +110,8 @@ void TouchManager::init()
     mHeight = mainGraphics->mHeight;
 }
 
-void TouchManager::loadTouchItem(TouchItem **item, const std::string &name,
+void TouchManager::loadTouchItem(TouchItem **item,
+                                 const std::string &name,
                                  const std::string &imageName,
                                  const std::string &text,
                                  int x, int y,
