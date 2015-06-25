@@ -399,7 +399,7 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
                 startX, startY,
                 endX, endY,
                 scrollX, scrollY,
-                &mActors);
+                mActors);
         }
     }
     else
@@ -436,7 +436,7 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
                     startX, startY,
                     endX, endY,
                     scrollX, scrollY,
-                    &mActors);
+                    mActors);
             }
 
             FOR_EACH (Layers::iterator, it, mDrawOverLayers)
@@ -461,7 +461,7 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
                     startX, startY,
                     endX, endY,
                     scrollX, scrollY,
-                    &mActors);
+                    mActors);
             }
 
             FOR_EACH (Layers::iterator, it, mDrawOverLayers)

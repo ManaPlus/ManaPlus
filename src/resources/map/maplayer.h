@@ -123,7 +123,7 @@ class MapLayer final: public ConfigListener
                         int endY,
                         const int scrollX,
                         const int scrollY,
-                        const Actors *const actors) const A_NONNULL(2);
+                        const Actors &actors) const A_NONNULL(2);
 
         bool isFringeLayer() const A_WARN_UNUSED
         { return mIsFringeLayer; }

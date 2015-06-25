@@ -353,10 +353,11 @@ void MapLayer::drawOGL(Graphics *const graphics) const
 }
 #endif
 
-void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
+void MapLayer::drawFringe(Graphics *const graphics,
+                          int startX, int startY,
                           int endX, int endY,
                           const int scrollX, const int scrollY,
-                          const Actors *const actors) const
+                          const Actors &actors) const
 {
     BLOCK_START("MapLayer::drawFringe")
     if (!localPlayer || !mSpecialLayer || !mTempLayer)
@@ -379,8 +380,8 @@ void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
     if (endY > mHeight)
         endY = mHeight;
 
-    ActorsCIter ai = actors->begin();
-    const ActorsCIter ai_end = actors->end();
+    ActorsCIter ai = actors.begin();
+    const ActorsCIter ai_end = actors.end();
 
     const int dx = (mX * mapTileSize) - scrollX;
     const int dy = (mY * mapTileSize) - scrollY + mapTileSize;
