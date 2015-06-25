@@ -110,6 +110,12 @@ static inline void drawQuad(const Image *const image A_UNUSED,
                             const int srcX A_UNUSED, const int srcY A_UNUSED,
                             const int dstX A_UNUSED, const int dstY A_UNUSED,
                             const int width A_UNUSED,
+                            const int height A_UNUSED) A_NONNULL(1);
+
+static inline void drawQuad(const Image *const image A_UNUSED,
+                            const int srcX A_UNUSED, const int srcY A_UNUSED,
+                            const int dstX A_UNUSED, const int dstY A_UNUSED,
+                            const int width A_UNUSED,
                             const int height A_UNUSED)
 {
     if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
@@ -706,6 +712,8 @@ void NullOpenGLGraphics::calcTileCollection(ImageCollection *const vertCol,
                                             const Image *const image,
                                             int x, int y)
 {
+    if (!vertCol || !image)
+        return;
     if (vertCol->currentGLImage != image->mGLImage)
     {
         ImageVertexes *const vert = new ImageVertexes();
@@ -724,6 +732,8 @@ void NullOpenGLGraphics::calcTileCollection(ImageCollection *const vertCol,
 void NullOpenGLGraphics::drawTileCollection(const ImageCollection
                                             *const vertCol)
 {
+    if (!vertCol)
+        return;
     const ImageVertexesVector &draws = vertCol->draws;
     const ImageCollectionCIter it_end = draws.end();
     for (ImageCollectionCIter it = draws.begin(); it != it_end; ++ it)
@@ -746,6 +756,8 @@ void NullOpenGLGraphics::calcPattern(ImageCollection* const vertCol,
                                      const int x, const int y,
                                      const int w, const int h) const
 {
+    if (!vertCol || !image)
+        return;
     ImageVertexes *vert = nullptr;
     if (vertCol->currentGLImage != image->mGLImage)
     {
@@ -903,6 +915,8 @@ void NullOpenGLGraphics::calcWindow(ImageCollection *const vertCol,
                                     const int w, const int h,
                                     const ImageRect &imgRect)
 {
+    if (!vertCol)
+        return;
     ImageVertexes *vert = nullptr;
     Image *const image = imgRect.grid[4];
     if (!image)

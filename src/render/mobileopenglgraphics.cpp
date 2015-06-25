@@ -154,6 +154,11 @@ bool MobileOpenGLGraphics::setVideoMode(const int w, const int h,
 static inline void drawQuad(const Image *const image,
                             const int srcX, const int srcY,
                             const int dstX, const int dstY,
+                            const int width, const int height) A_NONNULL(1);
+
+static inline void drawQuad(const Image *const image,
+                            const int srcX, const int srcY,
+                            const int dstX, const int dstY,
                             const int width, const int height)
 {
 //    if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
@@ -192,6 +197,13 @@ static inline void drawQuad(const Image *const image,
         glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
     }
 }
+
+static inline void drawRescaledQuad(const Image *const image,
+                                    const int srcX, const int srcY,
+                                    const int dstX, const int dstY,
+                                    const int width, const int height,
+                                    const int desiredWidth,
+                                    const int desiredHeight) A_NONNULL(1);
 
 static inline void drawRescaledQuad(const Image *const image,
                                     const int srcX, const int srcY,
@@ -686,6 +698,8 @@ void MobileOpenGLGraphics::calcTileCollection(ImageCollection *const vertCol,
                                               const Image *const image,
                                               int x, int y)
 {
+    if (!vertCol || !image)
+        return;
     if (vertCol->currentGLImage != image->mGLImage)
     {
         ImageVertexes *const vert = new ImageVertexes();
@@ -704,6 +718,8 @@ void MobileOpenGLGraphics::calcTileCollection(ImageCollection *const vertCol,
 void MobileOpenGLGraphics::drawTileCollection(const ImageCollection
                                               *const vertCol)
 {
+    if (!vertCol)
+        return;
     const ImageVertexesVector &draws = vertCol->draws;
     const ImageCollectionCIter it_end = draws.end();
     for (ImageCollectionCIter it = draws.begin(); it != it_end; ++ it)
@@ -726,6 +742,8 @@ void MobileOpenGLGraphics::calcPattern(ImageCollection* const vertCol,
                                        const int x, const int y,
                                        const int w, const int h) const
 {
+    if (!vertCol || !image)
+        return;
     ImageVertexes *vert = nullptr;
     if (vertCol->currentGLImage != image->mGLImage)
     {
@@ -823,6 +841,8 @@ void MobileOpenGLGraphics::calcWindow(ImageCollection *const vertCol,
                                       const int w, const int h,
                                       const ImageRect &imgRect)
 {
+    if (!vertCol)
+        return;
     ImageVertexes *vert = nullptr;
     const Image *const image = imgRect.grid[4];
     if (vertCol->currentGLImage != image->mGLImage)

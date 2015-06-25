@@ -646,6 +646,9 @@ void SDLGraphics::calcPattern(ImageCollection* const vertCol,
                               const int x, const int y,
                               const int w, const int h) const
 {
+    if (!vertCol || !image)
+        return;
+
     ImageVertexes *vert = nullptr;
     if (vertCol->currentImage != image)
     {
@@ -667,6 +670,8 @@ void SDLGraphics::calcTileVertexes(ImageVertexes *const vert,
                                    const Image *const image,
                                    int x, int y) const
 {
+    if (!vert || !image)
+        return;
     vert->image = image;
     calcTileSDL(vert, x, y);
 }
@@ -675,6 +680,8 @@ void SDLGraphics::calcTileVertexesInline(ImageVertexes *const vert,
                                          const Image *const image,
                                          int x, int y) const
 {
+    if (!vert || !image)
+        return;
     vert->image = image;
     calcTileSDL(vert, x, y);
 }
@@ -711,6 +718,8 @@ void SDLGraphics::calcTileCollection(ImageCollection *const vertCol,
                                      const Image *const image,
                                      int x, int y)
 {
+    if (!vertCol)
+        return;
     if (vertCol->currentImage != image)
     {
         ImageVertexes *const vert = new ImageVertexes();
@@ -729,6 +738,8 @@ void SDLGraphics::calcTileCollection(ImageCollection *const vertCol,
 void SDLGraphics::drawTileCollection(const ImageCollection
                                      *const vertCol)
 {
+    if (!vertCol)
+        return;
     const ImageVertexesVector &draws = vertCol->draws;
     const ImageCollectionCIter it_end = draws.end();
     for (ImageCollectionCIter it = draws.begin(); it != it_end; ++ it)
@@ -749,6 +760,8 @@ void SDLGraphics::drawTileCollection(const ImageCollection
 
 void SDLGraphics::drawTileVertexes(const ImageVertexes *const vert)
 {
+    if (!vert)
+        return;
     // vert and img must be != 0
     const Image *const img = vert->image;
     const DoubleRects *const rects = &vert->sdl;
@@ -803,6 +816,9 @@ void SDLGraphics::calcWindow(ImageCollection *const vertCol,
                              const int w, const int h,
                              const ImageRect &imgRect)
 {
+    if (!vertCol)
+        return;
+
     ImageVertexes *vert = nullptr;
     Image *const image = imgRect.grid[4];
     if (vertCol->currentImage != image)

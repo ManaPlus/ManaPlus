@@ -727,6 +727,8 @@ void SDL2SoftwareGraphics::calcTileCollection(ImageCollection *const vertCol,
                                               const Image *const image,
                                               int x, int y)
 {
+    if (!vertCol)
+        return;
     if (vertCol->currentImage != image)
     {
         ImageVertexes *const vert = new ImageVertexes();
@@ -745,6 +747,8 @@ void SDL2SoftwareGraphics::calcTileCollection(ImageCollection *const vertCol,
 void SDL2SoftwareGraphics::drawTileCollection(const ImageCollection
                                               *const vertCol)
 {
+    if (!vertCol)
+        return;
     const ImageVertexesVector &draws = vertCol->draws;
     const ImageCollectionCIter it_end = draws.end();
     for (ImageCollectionCIter it = draws.begin(); it != it_end; ++ it)
@@ -765,6 +769,8 @@ void SDL2SoftwareGraphics::drawTileCollection(const ImageCollection
 
 void SDL2SoftwareGraphics::drawTileVertexes(const ImageVertexes *const vert)
 {
+    if (!vert)
+        return;
     // vert and img must be != 0
     const Image *const img = vert->image;
     const DoubleRects *const rects = &vert->sdl;

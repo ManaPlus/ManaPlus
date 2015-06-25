@@ -206,6 +206,11 @@ static inline void bindPointerInt(const GLint *const vert,
 static inline void drawQuad(const Image *const image,
                             const int srcX, const int srcY,
                             const int dstX, const int dstY,
+                            const int width, const int height) A_NONNULL(1);
+
+static inline void drawQuad(const Image *const image,
+                            const int srcX, const int srcY,
+                            const int dstX, const int dstY,
                             const int width, const int height)
 {
     if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
@@ -264,6 +269,13 @@ static inline void drawQuad(const Image *const image,
         glDrawArrays(GL_QUADS, 0, 4);
     }
 }
+
+static inline void drawRescaledQuad(const Image *const image,
+                                    const int srcX, const int srcY,
+                                    const int dstX, const int dstY,
+                                    const int width, const int height,
+                                    const int desiredWidth,
+                                    const int desiredHeight) A_NONNULL(1);
 
 static inline void drawRescaledQuad(const Image *const image,
                                     const int srcX, const int srcY,
@@ -995,6 +1007,8 @@ void NormalOpenGLGraphics::calcTileCollection(ImageCollection *const vertCol,
                                               const Image *const image,
                                               int x, int y)
 {
+    if (!vertCol || !image)
+        return;
     if (vertCol->currentGLImage != image->mGLImage)
     {
         ImageVertexes *const vert = new ImageVertexes();
@@ -1013,6 +1027,8 @@ void NormalOpenGLGraphics::calcTileCollection(ImageCollection *const vertCol,
 void NormalOpenGLGraphics::drawTileCollection(const ImageCollection
                                               *const vertCol)
 {
+    if (!vertCol)
+        return;
     const ImageVertexesVector &draws = vertCol->draws;
     const ImageCollectionCIter it_end = draws.end();
     for (ImageCollectionCIter it = draws.begin(); it != it_end; ++ it)
@@ -1035,6 +1051,8 @@ void NormalOpenGLGraphics::calcPattern(ImageCollection* const vertCol,
                                        const int x, const int y,
                                        const int w, const int h) const
 {
+    if (!vertCol || !image)
+        return;
     ImageVertexes *vert = nullptr;
     if (vertCol->currentGLImage != image->mGLImage)
     {
@@ -1151,6 +1169,8 @@ void NormalOpenGLGraphics::calcWindow(ImageCollection *const vertCol,
                                       const int w, const int h,
                                       const ImageRect &imgRect)
 {
+    if (!vertCol)
+        return;
     ImageVertexes *vert = nullptr;
     Image *const image = imgRect.grid[4];
     if (!image)

@@ -257,8 +257,7 @@ void ModernOpenGLGraphics::setColorAlpha(const float alpha)
     }
 }
 
-void ModernOpenGLGraphics::drawQuad(const Image *const image A_UNUSED,
-                                    const int srcX, const int srcY,
+void ModernOpenGLGraphics::drawQuad(const int srcX, const int srcY,
                                     const int dstX, const int dstY,
                                     const int width, const int height)
 {
@@ -284,8 +283,7 @@ void ModernOpenGLGraphics::drawQuad(const Image *const image A_UNUSED,
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
 
-void ModernOpenGLGraphics::drawRescaledQuad(const Image *const image A_UNUSED,
-                                            const int srcX, const int srcY,
+void ModernOpenGLGraphics::drawRescaledQuad(const int srcX, const int srcY,
                                             const int dstX, const int dstY,
                                             const int width, const int height,
                                             const int desiredWidth,
@@ -336,8 +334,7 @@ void ModernOpenGLGraphics::drawImageInline(const Image *const image,
 
     const ClipRect &clipArea = mClipStack.top();
     const SDL_Rect &imageRect = image->mBounds;
-    drawQuad(nullptr,
-        imageRect.x, imageRect.y,
+    drawQuad(imageRect.x, imageRect.y,
         dstX + clipArea.xOffset, dstY + clipArea.yOffset,
         imageRect.w, imageRect.h);
 }
@@ -416,8 +413,7 @@ void ModernOpenGLGraphics::drawRescaledImage(const Image *const image,
 
     const ClipRect &clipArea = mClipStack.top();
     // Draw a textured quad.
-    drawRescaledQuad(nullptr,
-        imageRect.x, imageRect.y,
+    drawRescaledQuad(imageRect.x, imageRect.y,
         dstX + clipArea.xOffset, dstY + clipArea.yOffset,
         imageRect.w, imageRect.h,
         desiredWidth, desiredHeight);
@@ -652,6 +648,8 @@ void ModernOpenGLGraphics::calcTileCollection(ImageCollection *const vertCol,
                                               const Image *const image,
                                               int x, int y)
 {
+    if (!vertCol || !image)
+        return;
     if (vertCol->currentGLImage != image->mGLImage)
     {
         ImageVertexes *const vert = new ImageVertexes();
@@ -670,6 +668,8 @@ void ModernOpenGLGraphics::calcTileCollection(ImageCollection *const vertCol,
 void ModernOpenGLGraphics::drawTileCollection(const ImageCollection
                                               *const vertCol)
 {
+    if (!vertCol)
+        return;
     setTexturingAndBlending(true);
 /*
     if (!vertCol)
@@ -699,6 +699,8 @@ void ModernOpenGLGraphics::calcPattern(ImageCollection* const vertCol,
                                        const int x, const int y,
                                        const int w, const int h) const
 {
+    if (!vertCol || !image)
+        return;
     ImageVertexes *vert = nullptr;
     if (vertCol->currentGLImage != image->mGLImage)
     {
@@ -791,6 +793,8 @@ void ModernOpenGLGraphics::calcWindow(ImageCollection *const vertCol,
                                       const int w, const int h,
                                       const ImageRect &imgRect)
 {
+    if (!vertCol)
+        return;
     ImageVertexes *vert = nullptr;
     const Image *const image = imgRect.grid[4];
     if (vertCol->currentGLImage != image->mGLImage)
@@ -1256,6 +1260,8 @@ void ModernOpenGLGraphics::createGLContext()
 
 void ModernOpenGLGraphics::finalize(ImageCollection *const col)
 {
+    if (!col)
+        return;
     FOR_EACH (ImageCollectionIter, it, col->draws)
         finalize(*it);
 }
@@ -1264,6 +1270,8 @@ void ModernOpenGLGraphics::finalize(ImageVertexes *const vert)
 {
     // in future need convert in each switchVp/continueVp
 
+    if (!vert)
+        return;
     OpenGLGraphicsVertexes &ogl = vert->ogl;
     const std::vector<int> &vp = ogl.mVp;
     std::vector<int>::const_iterator ivp;

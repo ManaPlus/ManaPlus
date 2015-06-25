@@ -74,6 +74,11 @@ bool SafeOpenGLGraphics::setVideoMode(const int w, const int h,
 static inline void drawQuad(const Image *image,
                             const int srcX, const int srcY,
                             const int dstX, const int dstY,
+                            const int width, const int height) A_NONNULL(1);
+
+static inline void drawQuad(const Image *image,
+                            const int srcX, const int srcY,
+                            const int dstX, const int dstY,
                             const int width, const int height)
 {
     if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
@@ -107,6 +112,13 @@ static inline void drawQuad(const Image *image,
         glVertex2i(dstX, dstY + height);
     }
 }
+
+static inline void drawRescaledQuad(const Image *const image,
+                                    const int srcX, const int srcY,
+                                    const int dstX, const int dstY,
+                                    const int width, const int height,
+                                    const int desiredWidth,
+                                    const int desiredHeight) A_NONNULL(1);
 
 static inline void drawRescaledQuad(const Image *const image,
                                     const int srcX, const int srcY,

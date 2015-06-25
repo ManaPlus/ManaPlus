@@ -67,7 +67,7 @@ class ModernOpenGLGraphics final : public Graphics
         void testDraw() override final;
 
         void removeArray(const uint32_t id,
-                         uint32_t *const arr) override final;
+                         uint32_t *const arr) override final A_NONNULL(3);
 
         void createGLContext() override final;
 
@@ -80,13 +80,11 @@ class ModernOpenGLGraphics final : public Graphics
     private:
         void deleteGLObjects();
 
-        inline void drawQuad(const Image *const image,
-                             const int srcX, const int srcY,
+        inline void drawQuad(const int srcX, const int srcY,
                              const int dstX, const int dstY,
                              const int width, const int height);
 
-        inline void drawRescaledQuad(const Image *const image,
-                                     const int srcX, const int srcY,
+        inline void drawRescaledQuad(const int srcX, const int srcY,
                                      const int dstX, const int dstY,
                                      const int width, const int height,
                                      const int desiredWidth,
