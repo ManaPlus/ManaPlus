@@ -73,6 +73,8 @@ ParticleEmitter::ParticleEmitter(const XmlNodePtrConst emitterNode,
     mOutputPause.set(0);
     mParticleAlpha.set(1.0F);
 
+    if (!emitterNode)
+        return;
     for_each_xml_child_node(propertyNode, emitterNode)
     {
         if (xmlNameEqual(propertyNode, "property"))
