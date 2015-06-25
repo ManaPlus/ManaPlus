@@ -406,6 +406,8 @@ void InventoryHandler::insertCard(const int cardIndex,
 void InventoryHandler::favoriteItem(const Item *const item,
                                     const bool favorite) const
 {
+    if (!item)
+        return;
     createOutPacket(CMSG_PLAYER_FAVORITE_ITEM);
     outMsg.writeInt16(static_cast<int16_t>(item->getInvIndex()
         + INVENTORY_OFFSET),
@@ -802,6 +804,8 @@ void InventoryHandler::processPlayerInsertCard(Net::MessageIn &msg)
 
 void InventoryHandler::selectEgg(const Item *const item) const
 {
+    if (!item)
+        return;
     createOutPacket(CMSG_PET_SELECT_EGG);
     outMsg.writeInt16(static_cast<int16_t>(
         item->getInvIndex() + INVENTORY_OFFSET), "index");

@@ -139,6 +139,8 @@ void AuctionHandler::cancelReg() const
 void AuctionHandler::setItem(const Item *const item,
                              const int amount) const
 {
+    if (!item)
+        return;
     createOutPacket(CMSG_AUCTION_SET_ITEM);
     outMsg.writeInt16(static_cast<int16_t>(
         item->getInvIndex() + INVENTORY_OFFSET), "index");

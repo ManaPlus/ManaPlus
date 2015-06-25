@@ -86,17 +86,13 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
                                                    Being *const dstBeing,
                                                    const uint8_t type,
                                                    const int id,
-                                                   const int id2);
+                                                   const int id2) A_NONNULL(2);
 
         static void processBeingSpecialEffect(Net::MessageIn &msg);
 
         static void processBeingSpecialEffectNum(Net::MessageIn &msg);
 
         static void processBeingSoundEffect(Net::MessageIn &msg);
-
-        static void applyPlayerAction(Net::MessageIn &msg,
-                                      Being *const being,
-                                      const uint8_t type);
 
         void viewPlayerEquipment(const Being *const being);
 

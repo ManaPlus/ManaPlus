@@ -327,7 +327,7 @@ void BuyingStoreHandler::sell(const Being *const being,
                               const Item *const item,
                               const int amount) const
 {
-    if (!being)
+    if (!being || !item)
         return;
 
     createOutPacket(CMSG_BUYINGSTORE_SELL);

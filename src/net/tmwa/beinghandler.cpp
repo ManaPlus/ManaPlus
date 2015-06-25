@@ -238,6 +238,8 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
 
 void BeingHandler::undress(Being *const being) const
 {
+    if (!being)
+        return;
     being->setSprite(SPRITE_WEAPON, 0);
     being->setSprite(SPRITE_HEAD_BOTTOM, 0);
     being->setSprite(SPRITE_CLOTHES_COLOR, 0);
@@ -1355,6 +1357,8 @@ void BeingHandler::processBeingChangeDirection(Net::MessageIn &msg)
 
 void BeingHandler::setServerGender(Being *const being, const uint8_t gender)
 {
+    if (!being)
+        return;
     switch (gender)
     {
         case 2:
@@ -1376,6 +1380,8 @@ void BeingHandler::applyPlayerAction(Net::MessageIn &msg,
                                      Being *const being,
                                      const uint8_t type)
 {
+    if (!being)
+        return;
     switch (type)
     {
         case 0:

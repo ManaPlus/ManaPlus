@@ -479,6 +479,8 @@ Being *BeingHandler::createBeing2(Net::MessageIn &msg,
 
 void BeingHandler::undress(Being *const being) const
 {
+    if (!being)
+        return;
     being->setSprite(SPRITE_WEAPON, 0);
     being->setSprite(SPRITE_HEAD_BOTTOM, 0);
     being->setSprite(SPRITE_CLOTHES_COLOR, 0);
@@ -1505,37 +1507,6 @@ void BeingHandler::processBeingSoundEffect(Net::MessageIn &msg)
     msg.readUInt8("type");
     msg.readInt32("unused");
     msg.readInt32("source being id");
-}
-
-void BeingHandler::applyPlayerAction(Net::MessageIn &msg,
-                                     Being *const being,
-                                     const uint8_t type)
-{
-    switch (type)
-    {
-        case 0:
-            being->setAction(BeingAction::STAND, 0);
-            localPlayer->imitateAction(being, BeingAction::STAND);
-            break;
-
-        case 1:
-            if (being->getCurrentAction() != BeingAction::DEAD)
-            {
-                being->setAction(BeingAction::DEAD, 0);
-                being->recalcSpritesOrder();
-            }
-            break;
-
-        case 2:
-            being->setAction(BeingAction::SIT, 0);
-            localPlayer->imitateAction(being, BeingAction::SIT);
-            break;
-
-        default:
-            // need set stand state?
-            UNIMPLIMENTEDPACKET;
-            break;
-    }
 }
 
 void BeingHandler::viewPlayerEquipment(const Being *const being)
