@@ -120,6 +120,11 @@ namespace Actions
 static int uploadUpdate(void *ptr,
                         DownloadStatusT status,
                         size_t total A_UNUSED,
+                        size_t remaining A_UNUSED) A_NONNULL(1);
+
+static int uploadUpdate(void *ptr,
+                        DownloadStatusT status,
+                        size_t total A_UNUSED,
                         size_t remaining A_UNUSED)
 {
     if (status == DownloadStatus::Idle || status == DownloadStatus::Starting)
