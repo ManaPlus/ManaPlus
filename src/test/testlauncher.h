@@ -43,7 +43,8 @@ class TestLauncher final
 
         int exec();
 
-        int calcFps(const timeval *const start, const timeval *const end,
+        int calcFps(const timeval &start,
+                    const timeval &end,
                     const int calls) const;
 
         int testBackend() const;

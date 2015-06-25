@@ -188,7 +188,7 @@ int TestLauncher::testFps()
     }
 
     gettimeofday(&end, nullptr);
-    const int tFps = calcFps(&start, &end, cnt);
+    const int tFps = calcFps(start, end, cnt);
     file << mTest << std::endl;
     file << tFps << std::endl;
 
@@ -220,7 +220,7 @@ int TestLauncher::testFps2()
     }
 
     gettimeofday(&end, nullptr);
-    const int tFps = calcFps(&start, &end, cnt);
+    const int tFps = calcFps(start, end, cnt);
     file << mTest << std::endl;
     file << tFps << std::endl;
 
@@ -267,7 +267,7 @@ int TestLauncher::testFps3()
     }
 
     gettimeofday(&end, nullptr);
-    const int tFps = calcFps(&start, &end, cnt);
+    const int tFps = calcFps(start, end, cnt);
     file << mTest << std::endl;
     file << tFps << std::endl;
 
@@ -406,7 +406,7 @@ int TestLauncher::testInternal()
     }
 
     gettimeofday(&end, nullptr);
-    const int tFps = calcFps(&start, &end, cnt);
+    const int tFps = calcFps(start, end, cnt);
     file << mTest << std::endl;
     file << tFps << std::endl;
     file << mem << std::endl;
@@ -657,15 +657,16 @@ int TestLauncher::testVideoDetection()
     return 0;
 }
 
-int TestLauncher::calcFps(const timeval *const start, const timeval *const end,
+int TestLauncher::calcFps(const timeval &start,
+                          const timeval &end,
                           const int calls) const
 {
     long mtime;
     long seconds;
     long useconds;
 
-    seconds  = end->tv_sec  - start->tv_sec;
-    useconds = end->tv_usec - start->tv_usec;
+    seconds  = end.tv_sec  - start.tv_sec;
+    useconds = end.tv_usec - start.tv_usec;
 
     mtime = (seconds * 1000 + useconds / 1000.0) + 0.5;
     if (mtime == 0)
