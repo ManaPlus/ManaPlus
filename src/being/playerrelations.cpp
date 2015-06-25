@@ -94,7 +94,7 @@ namespace
                            std::map<std::string, PlayerRelation *>
                            *const container) const override final
             {
-                if (!cobj)
+                if (!cobj || !container)
                     return container;
                 const std::string name = cobj->getValue(NAME, "");
                 if (name.empty())
