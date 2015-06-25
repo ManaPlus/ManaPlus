@@ -102,8 +102,10 @@ void CharDB::loadMinMax(const XmlNodePtr node,
                         unsigned *restrict const min,
                         unsigned *restrict const max)
 {
-    *min = XML::getProperty(node, "min", 1);
-    *max = XML::getProperty(node, "max", 10);
+    if (min)
+        *min = XML::getProperty(node, "min", 1);
+    if (max)
+        *max = XML::getProperty(node, "max", 10);
 }
 
 void CharDB::unload()

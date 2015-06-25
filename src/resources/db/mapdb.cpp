@@ -98,6 +98,8 @@ void MapDB::loadRemapXmlFile(const std::string &fileName)
 
 void MapDB::readMap(XmlNodePtrConst node)
 {
+    if (!node)
+        return;
     const std::string map = XML::getProperty(node, "name", "");
     if (map.empty())
         return;
@@ -116,6 +118,8 @@ void MapDB::readMap(XmlNodePtrConst node)
 
 void MapDB::readAtlas(XmlNodePtrConst node)
 {
+    if (!node)
+        return;
     const std::string atlas = XML::getProperty(node, "name", "");
     if (atlas.empty())
         return;

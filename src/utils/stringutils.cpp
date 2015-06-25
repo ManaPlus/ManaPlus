@@ -294,6 +294,8 @@ const char* getSafeUtf8String(const std::string &text)
 
 void getSafeUtf8String(std::string text, char *const buf)
 {
+    if (!buf)
+        return;
     const size_t sz = text.size();
     const size_t size = sz + UTF8_MAX_SIZE;
     if (size > 65500)

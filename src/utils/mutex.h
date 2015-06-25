@@ -90,12 +90,14 @@ inline void Mutex::unlock()
 inline MutexLocker::MutexLocker(Mutex *const mutex) :
     mMutex(mutex)
 {
-    mMutex->lock();
+    if (mMutex)
+        mMutex->lock();
 }
 
 inline MutexLocker::~MutexLocker()
 {
-    mMutex->unlock();
+    if (mMutex)
+        mMutex->unlock();
 }
 
 #endif  // UTILS_MUTEX_H

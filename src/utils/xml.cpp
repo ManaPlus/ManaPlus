@@ -245,6 +245,8 @@ namespace XML
     XmlNodePtr findFirstChildByName(const XmlNodePtrConst parent,
                                     const char *const name)
     {
+        if (!parent)
+            return nullptr;
         for_each_xml_child_node(child, parent)
         {
             if (xmlNameEqual(child, name))

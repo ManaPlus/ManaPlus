@@ -48,6 +48,8 @@ void *GlxHelper::createContext(const unsigned long window,
     XSync(display, false);
     int (*handler)(Display *, XErrorEvent *) = XSetErrorHandler(ErrorHandler);
     void *context = mglXGetCurrentContext();
+    if (!display)
+        return context;
     if (isGLNull(mglXGetCurrentContext)
         || isGLNull(mglXCreateContextAttribs)
         || isGLNull(mglXChooseFBConfig))
@@ -124,6 +126,8 @@ bool GlxHelper::makeCurrent(const unsigned long window,
                             void *const display,
                             void *const context)
 {
+    if (!display)
+        return false;
     return mglXMakeCurrent(static_cast<Display*>(display), window, context);
 }
 

@@ -145,6 +145,11 @@ inline unsigned int SDLAlpha32(const unsigned int src,
     return (b & 0xff) | (g & 0xff00) | (r & 0xff0000);
 }
 
+inline unsigned short SDLAlpha16(const unsigned short src,
+                                 const unsigned short dst,
+                                 const unsigned char a,
+                                 const SDL_PixelFormat *const f) A_NONNULL(4);
+
 /**
   * Blends two 16 bit colors together.
   *
@@ -178,6 +183,8 @@ inline unsigned short SDLAlpha16(const unsigned short src,
 inline void SDLputPixelAlpha(SDL_Surface* surface, int x, int y,
                              const Color& color)
 {
+    if (!surface)
+        return;
     const int bpp = surface->format->BytesPerPixel;
 
     SDL_LockSurface(surface);

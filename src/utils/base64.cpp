@@ -42,8 +42,11 @@ static char base64_table[] =
 static const char base64_pad = '=';
 
 unsigned char *php3_base64_encode(const unsigned char *restrict const string,
-                                  int length, int *restrict const ret_length)
+                                  int length,
+                                  int *restrict const ret_length)
 {
+    if (!string)
+        return nullptr;
     const unsigned char *current = string;
     int i = 0;
     unsigned char *const result = static_cast<unsigned char *>(
