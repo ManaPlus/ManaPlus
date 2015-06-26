@@ -496,7 +496,7 @@ inline static void setTile(Map *const map,
                            const MapLayer::Type &layerType,
                            MapHeights *const heights,
                            const int x, const int y,
-                           const int gid) A_NONNULL(1, 2, 4);
+                           const int gid) A_NONNULL(1, 4);
 
 inline static void setTile(Map *const map,
                            MapLayer *const layer,
@@ -512,7 +512,8 @@ inline static void setTile(Map *const map,
         {
             Image *const img = set ? set->get(gid - set->getFirstGid())
                 : nullptr;
-            layer->setTile(x, y, img);
+            if (layer)
+                layer->setTile(x, y, img);
             break;
         }
 
@@ -597,7 +598,7 @@ bool MapReader::readBase64Layer(const XmlNodePtrConst childNode,
                                 int &restrict x, int &restrict y,
                                 const int w, const int h)
 {
-    if (!map || !layer || !childNode)
+    if (!map || !childNode)
         return false;
 
     if (!compression.empty() && compression != "gzip"
@@ -702,7 +703,7 @@ bool MapReader::readCsvLayer(const XmlNodePtrConst childNode,
                              int &restrict x, int &restrict y,
                              const int w, const int h)
 {
-    if (!map || !layer || !childNode)
+    if (!map || !childNode)
         return false;
 
     XmlNodePtrConst dataChild = childNode->xmlChildrenNode;
