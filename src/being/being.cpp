@@ -3577,6 +3577,7 @@ void Being::setTileCoords(const int x, const int y)
     {
         mOffsetY = mMap->getHeightOffset(mX, mY);
         mFixedOffsetY = mOffsetY;
+        mOldHeight = 0;
         mNeedPosUpdate = true;
     }
 }
