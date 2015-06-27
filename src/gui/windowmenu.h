@@ -87,9 +87,9 @@ class WindowMenu final : public Container,
 #endif
 
     protected:
-        void drawChildren(Graphics* graphics) override final;
+        void drawChildren(Graphics* graphics) override final A_NONNULL(2);
 
-        void safeDrawChildren(Graphics* graphics) override final;
+        void safeDrawChildren(Graphics* graphics) override final A_NONNULL(2);
 
     private:
         inline void addButton(const char *const text,

@@ -63,7 +63,7 @@ class MiniStatusWindow final : public Window,
 
         void eraseIcon(const int index);
 
-        void drawIcons(Graphics *const graphics);
+        void drawIcons(Graphics *const graphics) A_NONNULL(2);
 
         void updateStatus() override final;
 

@@ -70,7 +70,7 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
 
         void draw1(Graphics *const graphics,
                    const int offsetX,
-                   const int offsetY) const;
+                   const int offsetY) const A_NONNULL(2);
 
         virtual void logic();
 

@@ -140,7 +140,7 @@ class ServersListBox final : public ListBox
             }
         }
 
-        void safeDraw(Graphics *graphics) override final
+        void safeDraw(Graphics *graphics) override final A_NONNULL(2)
         {
             ServersListBox::draw(graphics);
         }

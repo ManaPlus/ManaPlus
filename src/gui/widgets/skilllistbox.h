@@ -174,7 +174,7 @@ class SkillListBox final : public ListBox
             }
         }
 
-        void safeDraw(Graphics *graphics) override final
+        void safeDraw(Graphics *graphics) override final A_NONNULL(2)
         {
             SkillListBox::draw(graphics);
         }
