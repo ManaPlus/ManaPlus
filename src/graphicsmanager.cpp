@@ -40,9 +40,7 @@
 #include "configuration.h"
 #include "logger.h"
 
-#ifdef DYECMD
 #include "configuration.h"
-#endif
 
 #include "settings.h"
 

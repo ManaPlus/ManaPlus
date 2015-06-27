@@ -11,18 +11,22 @@ dyecmd_CXXFLAGS = -DPKG_DATADIR=\""$(pkgdatadir)/"\"      \
 
 if ENABLE_PORTABLE
 manaplus_CXXFLAGS += -DENABLE_PORTABLE
+dyecmd_CXXFLAGS += -DENABLE_PORTABLE
 endif
 
 if ENABLE_CHECKPLUGIN
 manaplus_CXXFLAGS += -fplugin=../build/checkplugin.so -fplugin-arg-checkplugin-command=detectnullpointers
+dyecmd_CXXFLAGS += -fplugin=../build/checkplugin.so -fplugin-arg-checkplugin-command=detectnullpointers
 endif
 
 if USE_OPENGL
 manaplus_CXXFLAGS += -DUSE_OPENGL
+dyecmd_CXXFLAGS += -DUSE_OPENGL
 endif
 
 if ENABLE_MEM_DEBUG
 manaplus_CXXFLAGS += -DENABLE_MEM_DEBUG -DDEBUG_DUMP_LEAKS
+dyecmd_CXXFLAGS += -DENABLE_MEM_DEBUG -DDEBUG_DUMP_LEAKS
 
 manaplus_SOURCES = debug/debug_new.cpp \
 	      debug/debug_new.h \
@@ -78,10 +82,44 @@ dyecmd_SOURCES = gui/cliprect.cpp \
 	      render/sdlgraphics.cpp \
 	      render/sdlgraphics.h \
 	      render/softwaregraphicsdef.hpp \
+	      render/mgl.cpp \
+	      render/mgl.h \
+	      render/mgl.hpp \
+	      render/mglcheck.h \
+	      render/mgldefines.h \
+	      render/mglemu.cpp \
+	      render/mglemu.h \
+	      render/mglfunctions.h \
+	      render/mgltypes.h \
+	      render/mglx.cpp \
+	      render/mglx.h \
+	      render/mglx.hpp \
+	      render/mglxinit.cpp \
+	      render/mglxinit.h \
+	      render/mglxtypes.h \
+	      render/mobileopenglgraphics.cpp \
+	      render/mobileopenglgraphics.h \
+	      render/modernopenglgraphics.cpp \
+	      render/modernopenglgraphics.h \
+	      render/normalopenglgraphics.cpp \
+	      render/normalopenglgraphics.h \
+	      render/safeopenglgraphics.cpp\
+	      render/safeopenglgraphics.h \
+	      render/shaders/shader.cpp \
+	      render/shaders/shader.h \
+	      render/shaders/shaderprogram.cpp \
+	      render/shaders/shaderprogram.h \
+	      render/shaders/shadersmanager.cpp \
+	      render/shaders/shadersmanager.h \
 	      resources/action.cpp \
 	      resources/action.h \
 	      resources/animation.cpp \
 	      resources/animation.h \
+	      resources/atlasitem.h \
+	      resources/atlasmanager.cpp \
+	      resources/atlasmanager.h \
+	      resources/atlasresource.cpp \
+	      resources/atlasresource.h \
 	      resources/db/palettedb.cpp \
 	      resources/db/palettedb.h \
 	      resources/delayedmanager.cpp \
@@ -103,6 +141,8 @@ dyecmd_SOURCES = gui/cliprect.cpp \
 	      resources/imageset.h \
 	      resources/imagewriter.cpp \
 	      resources/imagewriter.h \
+	      resources/openglimagehelper.cpp \
+	      resources/openglimagehelper.h \
 	      resources/resource.cpp \
 	      resources/resource.h \
 	      resources/resourcemanager.cpp \
@@ -127,6 +167,15 @@ dyecmd_SOURCES = gui/cliprect.cpp \
 	      resources/spritedef.h \
 	      resources/spritedisplay.h \
 	      resources/spritereference.h \
+	      test/testmain.cpp \
+	      test/testmain.h \
+	      utils/env.cpp \
+	      utils/env.h \
+	      utils/gettext.h \
+	      utils/gettexthelper.cpp \
+	      utils/gettexthelper.h \
+	      utils/glxhelper.cpp \
+	      utils/glxhelper.h \
 	      utils/files.cpp \
 	      utils/files.h \
 	      utils/mkdir.cpp \
@@ -139,6 +188,11 @@ dyecmd_SOURCES = gui/cliprect.cpp \
 	      utils/physfsrwops.h \
 	      utils/physfstools.cpp \
 	      utils/physfstools.h \
+	      utils/physfscheckutils.cpp \
+	      utils/physfscheckutils.h \
+	      utils/physfsmemoryobject.h \
+	      utils/process.cpp \
+	      utils/process.h \
 	      utils/sdl2helper.cpp \
 	      utils/sdl2helper.h \
 	      utils/sdlcheckutils.cpp \
@@ -164,6 +218,7 @@ endif
 
 if ENABLE_CHECKS
 manaplus_CXXFLAGS += -DENABLE_CHECKS
+dyecmd_CXXFLAGS += -DENABLE_CHECKS
 endif
 
 if USE_SDL2
@@ -1123,11 +1178,11 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      render/mobileopenglgraphics.h \
 	      render/modernopenglgraphics.cpp \
 	      render/modernopenglgraphics.h \
+	      render/normalopenglgraphics.cpp \
+	      render/normalopenglgraphics.h \
 	      input/mouseinput.h \
 	      navigationmanager.cpp \
 	      navigationmanager.h \
-	      render/normalopenglgraphics.cpp \
-	      render/normalopenglgraphics.h \
 	      notifymanager.cpp \
 	      notifymanager.h \
 	      options.h \
