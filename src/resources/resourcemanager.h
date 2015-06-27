@@ -51,7 +51,7 @@ class ResourceManager final
 
     public:
         typedef Resource *(*loader)(SDL_RWops *);
-        typedef Resource *(*generator)(const void *const);
+        typedef Resource *(&generator)(const void *const);
 
         ResourceManager();
 

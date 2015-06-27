@@ -463,7 +463,8 @@ Resource *ResourceManager::getFromCache(const std::string &idPath)
     return nullptr;
 }
 
-Resource *ResourceManager::get(const std::string &idPath, const generator fun,
+Resource *ResourceManager::get(const std::string &idPath,
+                               const generator fun,
                                const void *const data)
 {
 #ifndef DISABLE_RESOURCE_CACHING
@@ -532,7 +533,7 @@ struct ResourceLoader final
 Resource *ResourceManager::load(const std::string &path, const loader fun)
 {
     ResourceLoader rl = { this, path, fun };
-    return get(path, &ResourceLoader::load, &rl);
+    return get(path, ResourceLoader::load, &rl);
 }
 
 SDLMusic *ResourceManager::getMusic(const std::string &idPath)
@@ -592,7 +593,7 @@ struct DyedImageLoader final
 Image *ResourceManager::getImage(const std::string &idPath)
 {
     DyedImageLoader rl = { this, idPath };
-    return static_cast<Image*>(get(idPath, &DyedImageLoader::load, &rl));
+    return static_cast<Image*>(get(idPath, DyedImageLoader::load, &rl));
 }
 
 struct ImageSetLoader final
@@ -625,7 +626,7 @@ ImageSet *ResourceManager::getImageSet(const std::string &imagePath,
     ImageSetLoader rl = { this, imagePath, w, h };
     std::stringstream ss;
     ss << imagePath << "[" << w << "x" << h << "]";
-    return static_cast<ImageSet*>(get(ss.str(), &ImageSetLoader::load, &rl));
+    return static_cast<ImageSet*>(get(ss.str(), ImageSetLoader::load, &rl));
 }
 
 
@@ -661,7 +662,7 @@ ImageSet *ResourceManager::getSubImageSet(Image *const parent,
     std::stringstream ss;
     ss << parent->getIdPath() << ", set[" << width << "x" << height << "]";
     return static_cast<ImageSet*>(get(ss.str(),
-        &SubImageSetLoader::load, &rl));
+        SubImageSetLoader::load, &rl));
 }
 
 struct SubImageLoader final
@@ -698,7 +699,7 @@ Image *ResourceManager::getSubImage(Image *const parent,
     std::stringstream ss;
     ss << parent->getIdPath() << ",[" << x << "," << y << ","
         << width << "x" << height << "]";
-    return static_cast<Image*>(get(ss.str(), &SubImageLoader::load, &rl));
+    return static_cast<Image*>(get(ss.str(), SubImageLoader::load, &rl));
 }
 
 #ifdef USE_OPENGL
@@ -723,7 +724,7 @@ Resource *ResourceManager::getAtlas(const std::string &name,
                                     const StringVect &files)
 {
     AtlasLoader rl = { name, &files };
-    return get("atlas_" + name, &AtlasLoader::load, &rl);
+    return get("atlas_" + name, AtlasLoader::load, &rl);
 }
 
 struct ShaderLoader final
@@ -747,7 +748,7 @@ Resource *ResourceManager::getShader(const unsigned int type,
                                      const std::string &name)
 {
     ShaderLoader rl = { name, type };
-    return get("shader_" + name, &ShaderLoader::load, &rl);
+    return get("shader_" + name, ShaderLoader::load, &rl);
 }
 
 struct ShaderProgramLoader final
@@ -773,7 +774,7 @@ Resource *ResourceManager::getShaderProgram(const std::string &vertex,
 {
     ShaderProgramLoader rl = { vertex, fragment };
     return get("program_" + vertex + " + " + fragment,
-        &ShaderProgramLoader::load, &rl);
+        ShaderProgramLoader::load, &rl);
 }
 #endif
 
@@ -803,7 +804,7 @@ WalkLayer *ResourceManager::getWalkLayer(const std::string &name,
 {
     WalkLayerLoader rl = {name, map};
     return static_cast<WalkLayer*>(get("map_" + name,
-        &WalkLayerLoader::load, &rl));
+        WalkLayerLoader::load, &rl));
 }
 
 struct SpriteDefLoader final
@@ -828,7 +829,7 @@ SpriteDef *ResourceManager::getSprite(const std::string &path,
     SpriteDefLoader rl = { path, variant, mUseLongLiveSprites };
     std::stringstream ss;
     ss << path << "[" << variant << "]";
-    return static_cast<SpriteDef*>(get(ss.str(), &SpriteDefLoader::load, &rl));
+    return static_cast<SpriteDef*>(get(ss.str(), SpriteDefLoader::load, &rl));
 }
 
 void ResourceManager::release(Resource *const res)
@@ -1041,7 +1042,7 @@ Image *ResourceManager::getRescaled(const Image *const image,
         "_rescaled%dx%d", width, height);
     const RescaledLoader rl = { this, image, width, height };
     Image *const img = static_cast<Image *const>(
-        get(idPath, &RescaledLoader::load, &rl));
+        get(idPath, RescaledLoader::load, &rl));
     return img;
 }
 
