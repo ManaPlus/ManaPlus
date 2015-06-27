@@ -118,6 +118,7 @@
 
 #include "utils/cpu.h"
 #include "utils/delete2.h"
+#include "utils/env.h"
 #include "utils/fuzzer.h"
 #include "utils/gettext.h"
 #include "utils/gettexthelper.h"
@@ -505,41 +506,6 @@ void Client::initSoundManager()
         "loginMusic", "Magick - Real.ogg"));
 }
 
-void Client::updateEnv()
-{
-#if defined(WIN32) || defined(__APPLE__)
-    if (config.getBoolValue("centerwindow"))
-        setEnv("SDL_VIDEO_CENTERED", "1");
-    else
-        setEnv("SDL_VIDEO_CENTERED", "0");
-#endif
-
-    if (config.getBoolValue("allowscreensaver"))
-        setEnv("SDL_VIDEO_ALLOW_SCREENSAVER", "1");
-    else
-        setEnv("SDL_VIDEO_ALLOW_SCREENSAVER", "0");
-
-#ifndef WIN32
-    const int vsync = settings.options.test.empty()
-        ? config.getIntValue("vsync") : 1;
-    // __GL_SYNC_TO_VBLANK is nvidia variable.
-    // vblank_mode is MESA variable.
-    switch (vsync)
-    {
-        case 1:
-            Client::setEnv("__GL_SYNC_TO_VBLANK", "0");
-            Client::setEnv("vblank_mode", "0");
-            break;
-        case 2:
-            Client::setEnv("__GL_SYNC_TO_VBLANK", "1");
-            Client::setEnv("vblank_mode", "1");
-            break;
-        default:
-            break;
-    }
-#endif
-}
-
 void Client::initGraphics()
 {
     WindowManager::applyVSync();
@@ -553,21 +519,6 @@ void Client::initGraphics()
     WindowManager::applyGamma();
 
     mainGraphics->beginDraw();
-}
-
-void Client::setEnv(const char *const name, const char *const value)
-{
-    if (!name || !value)
-        return;
-#ifdef WIN32
-    if (putenv(const_cast<char*>((std::string(name)
-        + "=" + value).c_str())))
-#else
-    if (setenv(name, value, 1))
-#endif
-    {
-        logger->log("setenv failed: %s=%s", name, value);
-    }
 }
 
 void Client::testsClear()

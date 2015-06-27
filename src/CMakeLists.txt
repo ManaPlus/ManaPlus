@@ -732,6 +732,8 @@ SET(SRCS
     utils/cpu.h
     utils/delete2.h
     utils/dtor.h
+    utils/env.cpp
+    utils/env.h
     utils/files.cpp
     utils/files.h
     utils/fuzzer.cpp

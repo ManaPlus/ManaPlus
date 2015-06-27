@@ -25,6 +25,7 @@
 #include "configuration.h"
 #include "logger.h"
 
+#include "utils/env.h"
 #include "utils/physfstools.h"
 
 #include <libintl.h>
@@ -54,8 +55,8 @@ void GettextHelper::initLang()
 
     if (!lang.empty())
     {
-        Client::setEnv("LANG", lang.c_str());
-        Client::setEnv("LANGUAGE", lang.c_str());
+        setEnv("LANG", lang.c_str());
+        setEnv("LANGUAGE", lang.c_str());
     }
 #ifdef ANDROID
 #ifdef USE_SDL2

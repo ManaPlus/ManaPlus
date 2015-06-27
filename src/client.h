@@ -97,16 +97,12 @@ class Client final : public ConfigListener,
 
         void slowLogic();
 
-        static void setEnv(const char *const name, const char *const value);
-
     private:
         void initSoundManager();
 
         void initConfigListeners();
 
         static void initGraphics();
-
-        static void updateEnv();
 
         static void initFeatures();
 
