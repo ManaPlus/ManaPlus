@@ -466,10 +466,10 @@ TEST_CASE("TextChunkList sort 1", "TextChunkList")
         Color(1, 2, 3), Color(1, 2, 3));
     TextChunkSmall item3("test line2",
         Color(1, 2, 3), Color(1, 2, 3));
-    REQUIRE(false == item1 < item2);
-    REQUIRE(false == item2 < item1);
-    REQUIRE(true == item1 < item3);
-    REQUIRE(false == item3 < item1);
+    REQUIRE(false == (item1 < item2));
+    REQUIRE(false == (item2 < item1));
+    REQUIRE(item1 < item3);
+    REQUIRE(false == (item3 < item1));
 }
 
 TEST_CASE("TextChunkList sort 2", "TextChunkList")
@@ -478,8 +478,8 @@ TEST_CASE("TextChunkList sort 2", "TextChunkList")
         Color(1, 2, 3), Color(1, 2, 3));
     TextChunkSmall item2("test line1",
         Color(2, 3, 4), Color(1, 2, 3));
-    REQUIRE(true == item1 < item2);
-    REQUIRE(false == item2 < item1);
+    REQUIRE(item1 < item2);
+    REQUIRE(false == (item2 < item1));
 }
 
 TEST_CASE("TextChunkList sort 3", "TextChunkList")
@@ -488,8 +488,8 @@ TEST_CASE("TextChunkList sort 3", "TextChunkList")
         Color(1, 2, 3), Color(1, 2, 3));
     TextChunkSmall item2("test line1",
         Color(1, 3, 4), Color(1, 2, 3));
-    REQUIRE(true == item1 < item2);
-    REQUIRE(false == item2 < item1);
+    REQUIRE(item1 < item2);
+    REQUIRE(false == (item2 < item1));
 }
 
 TEST_CASE("TextChunkList sort 4", "TextChunkList")
@@ -498,8 +498,8 @@ TEST_CASE("TextChunkList sort 4", "TextChunkList")
         Color(1, 2, 3), Color(1, 2, 3));
     TextChunkSmall item2("test line1",
         Color(1, 2, 4), Color(1, 2, 3));
-    REQUIRE(true == item1 < item2);
-    REQUIRE(false == item2 < item1);
+    REQUIRE(item1 < item2);
+    REQUIRE(false == (item2 < item1));
 }
 
 TEST_CASE("TextChunkList sort 5", "TextChunkList")
@@ -508,8 +508,8 @@ TEST_CASE("TextChunkList sort 5", "TextChunkList")
         Color(1, 2, 3), Color(1, 2, 3));
     TextChunkSmall item2("test line1",
         Color(1, 2, 3), Color(2, 2, 3));
-    REQUIRE(true == item1 < item2);
-    REQUIRE(false == item2 < item1);
+    REQUIRE(item1 < item2);
+    REQUIRE(false == (item2 < item1));
 }
 
 TEST_CASE("TextChunkList sort 6", "TextChunkList")
@@ -518,8 +518,8 @@ TEST_CASE("TextChunkList sort 6", "TextChunkList")
         Color(1, 2, 3), Color(1, 2, 3));
     TextChunkSmall item2("test line1",
         Color(1, 2, 3), Color(1, 3, 3));
-    REQUIRE(true == item1 < item2);
-    REQUIRE(false == item2 < item1);
+    REQUIRE(item1 < item2);
+    REQUIRE(false == (item2 < item1));
 }
 
 TEST_CASE("TextChunkList sort 7", "TextChunkList")
@@ -528,6 +528,6 @@ TEST_CASE("TextChunkList sort 7", "TextChunkList")
         Color(1, 2, 3), Color(1, 2, 3));
     TextChunkSmall item2("test line1",
         Color(1, 2, 3), Color(1, 2, 4));
-    REQUIRE(true == item1 < item2);
-    REQUIRE(false == item2 < item1);
+    REQUIRE(item1 < item2);
+    REQUIRE(false == (item2 < item1));
 }

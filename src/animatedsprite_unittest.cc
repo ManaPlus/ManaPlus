@@ -30,13 +30,14 @@
 #include "resources/sdlimagehelper.h"
 #include "resources/spriteaction.h"
 
+#include "utils/env.h"
 #include "utils/physfstools.h"
 
 #include "debug.h"
 
 TEST_CASE("AnimatedSprite tests", "animatedsprite")
 {
-    Client::setEnv("SDL_VIDEODRIVER", "dummy");
+    setEnv("SDL_VIDEODRIVER", "dummy");
 
     client = new Client;
     PHYSFS_init("manaplus");
