@@ -712,11 +712,8 @@ void EquipmentWindow::loadSlot(const XmlNodePtr slotNode,
     const int imageIndex = XML::getProperty(slotNode, "image", -1);
     Image *image = nullptr;
 
-    if (imageset && imageIndex >= 0 && imageIndex
-        < static_cast<signed>(imageset->size()))
-    {
+    if (imageIndex >= 0 && imageIndex < static_cast<signed>(imageset->size()))
         image = imageset->get(imageIndex);
-    }
 
     std::vector<EquipmentBox*> &boxes = mPages[page]->boxes;
     if (boxes[slot])

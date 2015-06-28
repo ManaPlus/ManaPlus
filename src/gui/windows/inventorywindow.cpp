@@ -327,7 +327,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
 
     invInstances.push_back(this);
 
-    if (inventory && inventory->isMainInventory())
+    if (inventory->isMainInventory())
     {
         updateDropButton();
     }
