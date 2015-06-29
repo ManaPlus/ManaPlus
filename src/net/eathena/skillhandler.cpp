@@ -27,6 +27,8 @@
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
+#include "enums/resources/notifytypes.h"
+
 #include "gui/widgets/skillinfo.h"
 
 #include "gui/windows/skilldialog.h"
@@ -34,8 +36,6 @@
 #include "net/eathena/menu.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
-
-#include "resources/notifytypes.h"
 
 #include "utils/gettext.h"
 #include "utils/stringutils.h"

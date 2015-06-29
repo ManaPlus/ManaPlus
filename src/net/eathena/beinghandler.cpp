@@ -32,6 +32,8 @@
 #include "being/mercenaryinfo.h"
 #include "being/playerinfo.h"
 
+#include "enums/resources/notifytypes.h"
+
 #include "particle/particle.h"
 
 #include "input/keyboardconfig.h"
@@ -50,8 +52,6 @@
 #include "net/eathena/sprite.h"
 
 #include "resources/iteminfo.h"
-#include "resources/notifytypes.h"
-
 #include "resources/db/itemdb.h"
 
 #include "resources/map/map.h"

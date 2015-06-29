@@ -24,6 +24,8 @@
 
 #include "being/localplayer.h"
 
+#include "enums/resources/notifytypes.h"
+
 #include "net/guildhandler.h"
 #include "net/partyhandler.h"
 
@@ -32,7 +34,6 @@
 #endif
 
 #include "resources/notifications.h"
-#include "resources/notifytypes.h"
 
 #include "resources/db/sounddb.h"
 

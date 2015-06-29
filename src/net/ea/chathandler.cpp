@@ -28,13 +28,13 @@
 
 #include "being/being.h"
 
+#include "enums/resources/notifytypes.h"
+
 #include "gui/windows/chatwindow.h"
 
 #include "gui/widgets/tabs/chat/gmtab.h"
 
 #include "net/messagein.h"
-
-#include "resources/notifytypes.h"
 
 #include "utils/gettext.h"
 

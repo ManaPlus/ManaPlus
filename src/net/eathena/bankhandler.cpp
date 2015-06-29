@@ -22,12 +22,12 @@
 
 #include "notifymanager.h"
 
+#include "enums/resources/notifytypes.h"
+
 #include "listeners/banklistener.h"
 
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
-
-#include "resources/notifytypes.h"
 
 #include "debug.h"
 

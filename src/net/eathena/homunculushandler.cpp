@@ -26,6 +26,8 @@
 #include "being/homunculusinfo.h"
 #include "being/playerinfo.h"
 
+#include "enums/resources/notifytypes.h"
+
 #include "gui/windows/skilldialog.h"
 
 #include "net/serverfeatures.h"
@@ -34,7 +36,6 @@
 #include "net/eathena/protocol.h"
 
 #include "resources/iteminfo.h"
-#include "resources/notifytypes.h"
 
 #include "resources/db/itemdb.h"
 

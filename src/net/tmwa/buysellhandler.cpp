@@ -27,6 +27,8 @@
 
 #include "being/playerinfo.h"
 
+#include "enums/resources/notifytypes.h"
+
 #include "gui/windows/buydialog.h"
 #include "gui/windows/chatwindow.h"
 #include "gui/windows/shopwindow.h"
@@ -36,8 +38,6 @@
 #include "net/chathandler.h"
 
 #include "net/tmwa/protocol.h"
-
-#include "resources/notifytypes.h"
 
 #include "utils/timer.h"
 

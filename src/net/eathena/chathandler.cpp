@@ -30,6 +30,8 @@
 #include "being/playerrelation.h"
 #include "being/playerrelations.h"
 
+#include "enums/resources/notifytypes.h"
+
 #include "gui/chatconsts.h"
 
 #include "gui/windows/chatwindow.h"
@@ -43,8 +45,6 @@
 #include "net/eathena/protocol.h"
 
 #include "resources/chatobject.h"
-#include "resources/notifytypes.h"
-
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 

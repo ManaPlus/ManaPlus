@@ -27,6 +27,8 @@
 
 #include "being/localplayer.h"
 
+#include "enums/resources/notifytypes.h"
+
 #include "gui/windows/chatwindow.h"
 #include "gui/windows/socialwindow.h"
 
@@ -34,8 +36,6 @@
 
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
-
-#include "resources/notifytypes.h"
 
 #include "debug.h"
 

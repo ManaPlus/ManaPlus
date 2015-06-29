@@ -31,6 +31,8 @@
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
+#include "enums/resources/notifytypes.h"
+
 #include "listeners/arrowslistener.h"
 
 #include "net/tmwa/messageout.h"
@@ -38,8 +40,6 @@
 
 #include "net/ea/eaprotocol.h"
 #include "net/ea/equipbackend.h"
-
-#include "resources/notifytypes.h"
 
 #include "debug.h"
 

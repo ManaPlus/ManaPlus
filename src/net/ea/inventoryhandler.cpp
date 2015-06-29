@@ -28,6 +28,8 @@
 
 #include "enums/equipslot.h"
 
+#include "enums/resources/notifytypes.h"
+
 #include "gui/widgets/createwidget.h"
 
 #include "net/messagein.h"
@@ -38,8 +40,6 @@
 #include "utils/delete2.h"
 
 #include "listeners/arrowslistener.h"
-
-#include "resources/notifytypes.h"
 
 #include "debug.h"
 

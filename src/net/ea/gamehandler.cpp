@@ -26,13 +26,13 @@
 #include "game.h"
 #include "notifymanager.h"
 
+#include "enums/resources/notifytypes.h"
+
 #include "gui/windows/okdialog.h"
 
 #include "gui/widgets/createwidget.h"
 
 #include "net/messagein.h"
-
-#include "resources/notifytypes.h"
 
 #include "utils/gettext.h"
 

@@ -24,14 +24,14 @@
 
 #include "being/playerinfo.h"
 
+#include "enums/resources/notifytypes.h"
+
 #include "gui/windows/buydialog.h"
 
 #include "gui/widgets/createwidget.h"
 
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
-
-#include "resources/notifytypes.h"
 
 #include "debug.h"
 

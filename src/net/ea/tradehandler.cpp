@@ -27,6 +27,8 @@
 #include "being/playerinfo.h"
 #include "being/playerrelation.h"
 
+#include "enums/resources/notifytypes.h"
+
 #include "gui/windows/tradewindow.h"
 
 #include "gui/widgets/createwidget.h"
@@ -35,8 +37,6 @@
 
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
-
-#include "resources/notifytypes.h"
 
 #include "listeners/requesttradelistener.h"
 

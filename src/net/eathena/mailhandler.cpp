@@ -22,6 +22,8 @@
 
 #include "notifymanager.h"
 
+#include "enums/resources/notifytypes.h"
+
 #include "gui/mailmessage.h"
 
 #include "gui/windows/mailwindow.h"
@@ -30,8 +32,6 @@
 
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
-
-#include "resources/notifytypes.h"
 
 #include "utils/gettext.h"
 #include "utils/stringutils.h"

@@ -23,8 +23,9 @@
 #include "configuration.h"
 #include "notifymanager.h"
 
+#include "enums/resources/notifytypes.h"
+
 #include "resources/beingcommon.h"
-#include "resources/notifytypes.h"
 
 #include "debug.h"
 

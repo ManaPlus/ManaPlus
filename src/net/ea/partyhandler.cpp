@@ -28,6 +28,8 @@
 
 #include "being/localplayer.h"
 
+#include "enums/resources/notifytypes.h"
+
 #include "gui/windows/chatwindow.h"
 #include "gui/windows/socialwindow.h"
 
@@ -36,8 +38,6 @@
 #include "gui/widgets/tabs/chat/partytab.h"
 
 #include "utils/delete2.h"
-
-#include "resources/notifytypes.h"
 
 #include "debug.h"
 

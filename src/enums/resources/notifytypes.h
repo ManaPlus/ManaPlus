@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_NOTIFYTYPES_H
-#define RESOURCES_NOTIFYTYPES_H
+#ifndef ENUMS_RESOURCES_NOTIFYTYPES_H
+#define ENUMS_RESOURCES_NOTIFYTYPES_H
 
 #include "localconsts.h"
 
@@ -177,4 +177,4 @@ namespace NotifyTypes
         TYPE_END
     };
 }  // namespace NotifyTypes
-#endif  // RESOURCES_NOTIFYTYPES_H
+#endif  // ENUMS_RESOURCES_NOTIFYTYPES_H

@@ -31,12 +31,12 @@
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
+#include "enums/resources/notifytypes.h"
+
 #include "gui/viewport.h"
 
 #include "gui/windows/skilldialog.h"
 #include "gui/windows/statuswindow.h"
-
-#include "resources/notifytypes.h"
 
 #include "resources/map/map.h"
 

@@ -27,12 +27,12 @@
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
+#include "enums/resources/notifytypes.h"
+
 #include "gui/windows/skilldialog.h"
 
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
-
-#include "resources/notifytypes.h"
 
 #include "utils/gettext.h"
 

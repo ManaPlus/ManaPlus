@@ -24,6 +24,8 @@
 
 #include "notifymanager.h"
 
+#include "enums/resources/notifytypes.h"
+
 #include "gui/chatconsts.h"
 
 #include "net/chathandler.h"
@@ -31,8 +33,6 @@
 #include "net/serverfeatures.h"
 
 #include "utils/stringutils.h"
-
-#include "resources/notifytypes.h"
 
 #include "debug.h"
 

@@ -37,13 +37,14 @@
 
 #include "being/localplayer.h"
 
+#include "enums/resources/notifytypes.h"
+
 #include "gui/userpalette.h"
 
 #include "particle/particle.h"
 
 #include "resources/ambientlayer.h"
 #include "resources/mapitemtype.h"
-#include "resources/notifytypes.h"
 #include "resources/resourcemanager.h"
 #include "resources/subimage.h"
 

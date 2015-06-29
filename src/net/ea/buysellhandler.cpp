@@ -27,6 +27,8 @@
 
 #include "being/playerinfo.h"
 
+#include "enums/resources/notifytypes.h"
+
 #include "gui/windows/buydialog.h"
 #include "gui/windows/buyselldialog.h"
 #include "gui/windows/npcselldialog.h"
@@ -34,8 +36,6 @@
 #include "gui/widgets/createwidget.h"
 
 #include "net/ea/eaprotocol.h"
-
-#include "resources/notifytypes.h"
 
 #include "debug.h"
 

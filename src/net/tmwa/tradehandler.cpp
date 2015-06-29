@@ -30,14 +30,14 @@
 #include "being/playerrelation.h"
 #include "being/playerrelations.h"
 
+#include "enums/resources/notifytypes.h"
+
 #include "gui/windows/tradewindow.h"
 
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
 
 #include "net/ea/eaprotocol.h"
-
-#include "resources/notifytypes.h"
 
 #include "utils/stringutils.h"
 
