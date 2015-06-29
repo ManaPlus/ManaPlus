@@ -24,10 +24,10 @@
 
 #include "logger.h"
 
+#include "enums/resources/map/blockmask.h"
+
 #include "resources/beingcommon.h"
 #include "resources/beinginfo.h"
-
-#include "resources/map/blockmask.h"
 
 #include "utils/dtor.h"
 #include "utils/gettext.h"
