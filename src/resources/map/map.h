@@ -30,9 +30,9 @@
 #include "enums/render/rendertype.h"
 
 #include "enums/resources/map/blockmask.h"
+#include "enums/resources/map/blocktype.h"
 #include "enums/resources/map/maptype.h"
 
-#include "resources/map/blocktype.h"
 #include "resources/map/properties.h"
 
 #include "listeners/configlistener.h"

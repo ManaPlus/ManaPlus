@@ -22,7 +22,6 @@
 #ifndef BEING_ACTORSPRITE_H
 #define BEING_ACTORSPRITE_H
 
-#include "resources/map/blocktype.h"
 #include "resources/map/mapconsts.h"
 
 #include "being/actor.h"
@@ -35,6 +34,8 @@
 #include "enums/simpletypes/beingid.h"
 #include "enums/simpletypes/enable.h"
 #include "enums/simpletypes/forcedisplay.h"
+
+#include "enums/resources/map/blocktype.h"
 
 #include "particle/particlelist.h"
 #include "particle/particlevector.h"

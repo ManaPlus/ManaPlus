@@ -941,7 +941,7 @@ SET(SRCS
     main.cpp
     main.h
     enums/resources/map/blockmask.h
-    resources/map/blocktype.h
+    enums/resources/map/blocktype.h
     resources/map/location.h
     resources/map/map.cpp
     resources/map/map.h

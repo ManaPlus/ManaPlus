@@ -25,14 +25,14 @@
 
 #include "enums/being/targetcursorsize.h"
 
+#include "enums/resources/map/blocktype.h"
+
 #include "enums/simpletypes/beingtypeid.h"
 
 #include "resources/beingmenuitem.h"
 #include "resources/cursor.h"
 #include "resources/soundinfo.h"
 #include "resources/spritedisplay.h"
-
-#include "resources/map/blocktype.h"
 
 struct Attack;
 
