@@ -785,7 +785,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      resources/iteminfo.h \
 	      resources/iteminfo.cpp \
 	      resources/itemslot.h \
-	      resources/itemsoundevent.h \
+	      enums/resources/itemsoundevent.h \
 	      resources/itemtype.h \
 	      resources/itemtypemap.h \
 	      resources/itemtypemapdata.h \
