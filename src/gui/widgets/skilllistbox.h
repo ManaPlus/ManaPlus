@@ -30,15 +30,12 @@
 
 #include "gui/widgets/createwidget.h"
 #include "gui/widgets/listbox.h"
-#include "gui/widgets/skilldata.h"
 
 #include "gui/fonts/font.h"
 
 #include "gui/models/skillmodel.h"
 
 #include "gui/popups/skillpopup.h"
-
-#include "render/graphics.h"
 
 #include "utils/delete2.h"
 

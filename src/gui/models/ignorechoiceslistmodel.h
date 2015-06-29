@@ -26,6 +26,7 @@
 #include "gui/models/playerrelationlistmodel.h"
 
 #include "being/playerignorestrategy.h"
+#include "being/playerrelations.h"
 
 /**
  * Class for choosing one of the various `what to do when ignoring a player' options

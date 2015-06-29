@@ -80,30 +80,6 @@ Resource *NavigationManager::loadWalkLayer(const Map *const map)
 
     return walkLayer;
 }
-#endif
-
-bool NavigationManager::findWalkableTile(int &x1, int &y1,
-                                         const int width,
-                                         const int height,
-                                         const MetaTile *const tiles,
-                                         const int *const data)
-{
-    for (int y = 0; y < height; y ++)
-    {
-        const int y2 = y * width;
-        for (int x = 0; x < width; x ++)
-        {
-            const int ptr = x + y2;
-            if (!(tiles[ptr].blockmask & blockWalkMask) && !data[ptr])
-            {
-                x1 = x;
-                y1 = y;
-                return true;
-            }
-        }
-    }
-    return false;
-}
 
 void NavigationManager::fillNum(int x, int y,
                                 const int width,
@@ -167,4 +143,28 @@ void NavigationManager::fillNum(int x, int y,
             }
         }
     }
+}
+#endif
+
+bool NavigationManager::findWalkableTile(int &x1, int &y1,
+                                         const int width,
+                                         const int height,
+                                         const MetaTile *const tiles,
+                                         const int *const data)
+{
+    for (int y = 0; y < height; y ++)
+    {
+        const int y2 = y * width;
+        for (int x = 0; x < width; x ++)
+        {
+            const int ptr = x + y2;
+            if (!(tiles[ptr].blockmask & blockWalkMask) && !data[ptr])
+            {
+                x1 = x;
+                y1 = y;
+                return true;
+            }
+        }
+    }
+    return false;
 }

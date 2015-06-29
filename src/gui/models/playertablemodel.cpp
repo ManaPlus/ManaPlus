@@ -22,6 +22,8 @@
 
 #include "gui/models/playertablemodel.h"
 
+#include "being/playerrelations.h"
+
 #include "gui/widgets/dropdown.h"
 #include "gui/widgets/label.h"
 

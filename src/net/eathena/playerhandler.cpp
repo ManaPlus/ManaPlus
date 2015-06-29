@@ -40,8 +40,6 @@
 #include "net/eathena/protocol.h"
 #include "net/eathena/inventoryhandler.h"
 
-#include "utils/stringutils.h"
-
 #include "resources/map/map.h"
 
 #include "debug.h"

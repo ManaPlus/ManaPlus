@@ -35,6 +35,6 @@ namespace BlockMask
         GROUND    = 0x10,  // 0001 0000
         GROUNDTOP = 0x20   // 0010 0000
     };
-}
+}  // namespace BlockMask
 
 #endif  // ENUMS_RESOURCES_MAP_BLOCKMASK_H

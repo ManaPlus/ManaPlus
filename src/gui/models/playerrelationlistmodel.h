@@ -24,7 +24,6 @@
 #define GUI_MODELS_PLAYERRELATIONLISTMODEL_H
 
 #include "being/playerrelation.h"
-#include "being/playerrelations.h"
 
 #include "gui/models/listmodel.h"
 

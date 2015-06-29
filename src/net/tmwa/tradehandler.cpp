@@ -259,7 +259,8 @@ void TradeHandler::processTradeItemAddResponse(Net::MessageIn &msg)
 void TradeHandler::processTradeResponse(Net::MessageIn &msg)
 {
     if (tradePartnerName.empty() ||
-        !player_relations.hasPermission(tradePartnerName, PlayerRelation::TRADE))
+        !player_relations.hasPermission(tradePartnerName,
+        PlayerRelation::TRADE))
     {
         tradeHandler->respond(false);
         return;

@@ -27,8 +27,6 @@
 
 #include "gui/models/tablemodel.h"
 
-#include "being/playerrelation.h"
-
 #include "localconsts.h"
 
 class PlayerRelationListModel;

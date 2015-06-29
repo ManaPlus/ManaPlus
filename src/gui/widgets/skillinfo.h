@@ -30,7 +30,6 @@
 #include "resources/skilltype.h"
 
 #include <string>
-
 #include <vector>
 #include <map>
 

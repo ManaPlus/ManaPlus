@@ -70,13 +70,20 @@
 #define A_WARN_UNUSED __attribute__ ((warn_unused_result))
 #define DEPRECATED __attribute__ ((deprecated))
 #define restrict __restrict__
+
+#ifndef ENABLE_CILKPLUS
 #define A_NONNULL(...) __attribute__((nonnull (__VA_ARGS__)))
+#else
+#define A_NONNULL(...)
+#endif
+
 #else
 #define A_UNUSED
 #define A_WARN_UNUSED
 #define gnu_printf printf
 #define DEPRECATED
 #define restrict
+#define A_NONNULL(...)
 #endif
 #ifdef __clang__
 #define gnu_printf printf

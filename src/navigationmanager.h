@@ -48,12 +48,14 @@ class NavigationManager final
                                      const MetaTile *const tiles,
                                      const int *const data) A_NONNULL(5, 6);
 
+#ifndef DYECMD
         static void fillNum(int x, int y,
                             const int width,
                             const int height,
                             const int num,
                             const MetaTile *const tiles,
                             int *const data) A_NONNULL(6, 7);
+#endif
 };
 
 #endif  // NAVIGATIONMANAGER_H

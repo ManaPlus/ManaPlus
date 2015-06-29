@@ -109,7 +109,8 @@ class ResourceManager final
          * @return A valid resource or <code>NULL</code> if the resource could
          *         not be generated.
          */
-        Resource *get(const std::string &idPath, const generator fun,
+        Resource *get(const std::string &idPath,
+                      generator fun,
                       const void *const data) A_WARN_UNUSED;
 
         Resource *getFromCache(const std::string &idPath) A_WARN_UNUSED;

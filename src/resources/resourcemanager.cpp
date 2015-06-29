@@ -464,7 +464,7 @@ Resource *ResourceManager::getFromCache(const std::string &idPath)
 }
 
 Resource *ResourceManager::get(const std::string &idPath,
-                               const generator fun,
+                               generator fun,
                                const void *const data)
 {
 #ifndef DISABLE_RESOURCE_CACHING

@@ -37,6 +37,6 @@ namespace BlockType
         GROUNDTOP,
         NB_BLOCKTYPES
     };
-}
+}  // namespace BlockType
 
 #endif  // ENUMS_RESOURCES_MAP_BLOCKTYPE_H

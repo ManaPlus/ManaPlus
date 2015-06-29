@@ -22,14 +22,11 @@
 
 #include "net/tmwa/inventoryhandler.h"
 
-#include "item.h"
-
 #include "notifymanager.h"
 
 #include "enums/equipslot.h"
 
 #include "being/localplayer.h"
-#include "being/playerinfo.h"
 
 #include "enums/resources/notifytypes.h"
 

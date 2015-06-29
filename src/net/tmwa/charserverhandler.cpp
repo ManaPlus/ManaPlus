@@ -32,7 +32,6 @@
 #include "gui/widgets/createwidget.h"
 
 #include "net/character.h"
-#include "net/serverfeatures.h"
 
 #include "net/ea/token.h"
 

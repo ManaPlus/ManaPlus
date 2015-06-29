@@ -24,7 +24,6 @@
 
 #include "chatlogger.h"
 #include "configmanager.h"
-#include "defaults.h"
 #include "dirs.h"
 #include "dropshortcut.h"
 #include "emoteshortcut.h"

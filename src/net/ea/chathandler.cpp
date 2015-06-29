@@ -32,7 +32,7 @@
 
 #include "gui/windows/chatwindow.h"
 
-#include "gui/widgets/tabs/chat/gmtab.h"
+#include "gui/widgets/tabs/chat/chattab.h"
 
 #include "net/messagein.h"
 

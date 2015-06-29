@@ -114,7 +114,6 @@
 
 #include "utils/delete2.h"
 #include "utils/gettext.h"
-#include "utils/langs.h"
 #include "utils/mkdir.h"
 #include "utils/physfstools.h"
 #include "utils/sdlcheckutils.h"
