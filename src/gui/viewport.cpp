@@ -29,7 +29,7 @@
 #include "sdlshared.h"
 #include "textmanager.h"
 
-#include "resources/mapitemtype.h"
+#include "enums/resources/map/mapitemtype.h"
 
 #include "resources/map/map.h"
 #include "resources/map/mapitem.h"

@@ -34,6 +34,8 @@
 #include "being/playerrelation.h"
 #include "being/playerrelations.h"
 
+#include "enums/resources/map/mapitemtype.h"
+
 #include "input/inputmanager.h"
 
 #include "gui/buttontext.h"
@@ -77,7 +79,6 @@
 
 #include "resources/chatobject.h"
 #include "resources/iteminfo.h"
-#include "resources/mapitemtype.h"
 
 #include "resources/db/npcdb.h"
 

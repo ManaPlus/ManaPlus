@@ -20,7 +20,7 @@
 
 #include "resources/map/speciallayer.h"
 
-#include "resources/mapitemtype.h"
+#include "enums/resources/map/mapitemtype.h"
 
 #include "resources/map/mapconsts.h"
 #include "resources/map/mapitem.h"

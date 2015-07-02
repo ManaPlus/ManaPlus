@@ -20,13 +20,14 @@
 
 #include "resources/map/mapitem.h"
 
+#include "enums/resources/map/mapitemtype.h"
+
 #include "gui/gui.h"
 #include "gui/userpalette.h"
 
 #include "gui/fonts/font.h"
 
 #include "resources/image.h"
-#include "resources/mapitemtype.h"
 #include "resources/resourcemanager.h"
 
 #include "render/graphics.h"

@@ -42,6 +42,8 @@
 
 #include "enums/being/beingdirection.h"
 
+#include "enums/resources/map/mapitemtype.h"
+
 #include "particle/particle.h"
 
 #include "input/keyboardconfig.h"
@@ -70,7 +72,6 @@
 
 #include "resources/iteminfo.h"
 #include "resources/itemslot.h"
-#include "resources/mapitemtype.h"
 
 #include "resources/db/weaponsdb.h"
 

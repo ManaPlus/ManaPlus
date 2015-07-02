@@ -30,12 +30,13 @@
 
 #include "being/localplayer.h"
 
+#include "enums/resources/map/mapitemtype.h"
+
 #include "gui/userpalette.h"
 
 #include "render/graphics.h"
 
 #include "resources/image.h"
-#include "resources/mapitemtype.h"
 
 #include "resources/map/mapitem.h"
 #include "resources/map/maprowvertexes.h"

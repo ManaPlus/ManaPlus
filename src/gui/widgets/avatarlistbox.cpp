@@ -27,6 +27,8 @@
 
 #include "being/localplayer.h"
 
+#include "enums/resources/map/mapitemtype.h"
+
 #include "gui/gui.h"
 #include "gui/popupmanager.h"
 #include "gui/skin.h"
@@ -41,7 +43,6 @@
 #include "gui/windows/chatwindow.h"
 
 #include "resources/image.h"
-#include "resources/mapitemtype.h"
 
 #include "resources/map/map.h"
 

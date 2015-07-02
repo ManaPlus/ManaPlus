@@ -28,6 +28,8 @@
 #endif
 #include "logger.h"
 
+#include "enums/resources/map/mapitemtype.h"
+
 #include "resources/map/map.h"
 #include "resources/map/mapconsts.h"
 #include "resources/map/mapheights.h"
@@ -36,7 +38,6 @@
 #include "resources/animation.h"
 #include "resources/beingcommon.h"
 #include "resources/image.h"
-#include "resources/mapitemtype.h"
 #include "resources/resourcemanager.h"
 
 #ifdef USE_OPENGL

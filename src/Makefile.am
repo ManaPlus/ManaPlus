@@ -796,7 +796,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      resources/db/moddb.cpp \
 	      resources/db/moddb.h \
 	      resources/mapinfo.h \
-	      resources/mapitemtype.h \
+	      enums/resources/map/mapitemtype.h \
 	      resources/mapreader.cpp \
 	      resources/mapreader.h \
 	      resources/modinfo.cpp \

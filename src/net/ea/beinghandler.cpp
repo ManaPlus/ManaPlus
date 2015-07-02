@@ -30,11 +30,11 @@
 #include "being/playerrelation.h"
 #include "being/playerrelations.h"
 
+#include "enums/resources/map/mapitemtype.h"
+
 #include "gui/viewport.h"
 
 #include "gui/windows/socialwindow.h"
-
-#include "resources/mapitemtype.h"
 
 #include "resources/map/map.h"
 

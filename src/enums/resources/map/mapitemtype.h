@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_MAPITEMTYPE_H
-#define RESOURCES_MAPITEMTYPE_H
+#ifndef ENUMS_RESOURCES_MAPITEMTYPE_H
+#define ENUMS_RESOURCES_MAPITEMTYPE_H
 
 namespace MapItemType
 {
@@ -44,4 +44,4 @@ namespace MapItemType
     };
 }  // namespace MapItemType
 
-#endif  // RESOURCES_MAPITEMTYPE_H
+#endif  // ENUMS_RESOURCES_MAPITEMTYPE_H
