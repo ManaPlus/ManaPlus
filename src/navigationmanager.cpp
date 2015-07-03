@@ -29,6 +29,7 @@
 static const int blockWalkMask = (BlockMask::WALL | BlockMask::AIR
     | BlockMask::WATER);
 
+#ifndef DYECMD
 namespace
 {
     struct Cell final
@@ -43,6 +44,7 @@ namespace
         int y;
     };
 }  // namespace
+#endif
 
 NavigationManager::NavigationManager()
 {

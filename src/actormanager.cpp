@@ -196,7 +196,20 @@ ActorManager::ActorManager() :
     mCyclePlayers(config.getBoolValue("cyclePlayers")),
     mCycleMonsters(config.getBoolValue("cycleMonsters")),
     mCycleNPC(config.getBoolValue("cycleNPC")),
-    mExtMouseTargeting(config.getBoolValue("extMouseTargeting"))
+    mExtMouseTargeting(config.getBoolValue("extMouseTargeting")),
+    mPriorityAttackMobs(),
+    mPriorityAttackMobsSet(),
+    mPriorityAttackMobsMap(),
+    mAttackMobs(),
+    mAttackMobsSet(),
+    mAttackMobsMap(),
+    mIgnoreAttackMobs(),
+    mIgnoreAttackMobsSet(),
+    mPickupItems(),
+    mPickupItemsSet(),
+    mPickupItemsMap(),
+    mIgnorePickupItems(),
+    mIgnorePickupItemsSet()
 {
     config.addListener("targetDeadPlayers", this);
     config.addListener("targetOnlyReachable", this);
