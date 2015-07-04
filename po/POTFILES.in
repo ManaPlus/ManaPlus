@@ -133,6 +133,7 @@ src/input/pages/outfits.cpp
 src/input/pages/shortcuts.cpp
 src/input/pages/windows.cpp
 src/inventory.cpp
+src/localconsts.h
 src/logger.h
 src/main.cpp
 src/net/ea/charserverhandler.cpp
