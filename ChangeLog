@@ -1,3 +1,9 @@
+2015-07-04 New release 1.5.7.4
+fix: draw attack rectange under beings.
+fix: being position with heights layer.
+add: some missing checks.
+remove: outdated code used in evol v1.
+
 2015-06-20 New release 1.5.6.20
 fix: tab colors update.
 fix: bars context menu.
