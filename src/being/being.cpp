@@ -2581,12 +2581,8 @@ void Being::drawSpriteAt(Graphics *const graphics,
 
         if (mDrawHotKeys && !mName.empty())
         {
-            Font *const font = gui->getFont();
-            if (font)
-            {
-                const Color &color = userPalette->getColor(UserColorId::BEING);
-                font->drawString(graphics, color, color, mName, x, y);
-            }
+            const Color &color = userPalette->getColor(UserColorId::BEING);
+            gui->getFont()->drawString(graphics, color, color, mName, x, y);
         }
     }
 

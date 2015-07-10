@@ -199,7 +199,7 @@ class Guild final : public AvatarListModel
 
         typedef std::vector<GuildMember*> MemberList;
 
-        const MemberList *getMembers() const A_WARN_UNUSED
+        const MemberList *getMembers() const RETURNS_NONNULL A_WARN_UNUSED
         { return &mMembers; }
 
     private:

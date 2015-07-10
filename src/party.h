@@ -154,7 +154,7 @@ class Party final : public AvatarListModel
 
         typedef std::vector<PartyMember*> MemberList;
 
-        const MemberList *getMembers() const A_WARN_UNUSED
+        const MemberList *getMembers() const RETURNS_NONNULL A_WARN_UNUSED
         { return &mMembers; }
 
         static Party *getParty(const int16_t id) A_WARN_UNUSED;

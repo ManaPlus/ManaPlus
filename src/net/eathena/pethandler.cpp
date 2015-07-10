@@ -202,6 +202,8 @@ void PetHandler::processEggsList(Net::MessageIn &msg)
 {
     const int count = (msg.readInt16("len") - 4) / 2;
     Inventory *const inv = PlayerInfo::getInventory();
+    if (!inv)
+        return;
     menu = MenuType::Eggs;
 
     if (count == 1)

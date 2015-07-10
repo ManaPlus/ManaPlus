@@ -70,6 +70,7 @@
 #define A_WARN_UNUSED __attribute__ ((warn_unused_result))
 #define DEPRECATED __attribute__ ((deprecated))
 #define restrict __restrict__
+#define RETURNS_NONNULL __attribute__((returns_nonnull))
 
 #ifndef ENABLE_CILKPLUS
 #define A_NONNULL(...) __attribute__((nonnull (__VA_ARGS__)))
@@ -83,6 +84,7 @@
 #define gnu_printf printf
 #define DEPRECATED
 #define restrict
+#define RETURNS_NONNULL
 #define A_NONNULL(...)
 #endif
 #ifdef __clang__

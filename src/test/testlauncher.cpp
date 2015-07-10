@@ -340,6 +340,8 @@ int TestLauncher::testTextures()
         SDL_Surface *const screen1 = mainGraphics->getScreenshot();
         SDL_Surface *const screen2 = imageHelper->convertTo32Bit(screen1);
         SDL_FreeSurface(screen1);
+        if (!screen2)
+            break;
         pixels = static_cast<uint32_t*>(screen2->pixels);
         bool fail(false);
         for (int f = 0; f < 6; f ++)
@@ -588,6 +590,8 @@ int TestLauncher::testDraw()
     vert->image = img[2];
     Skin *skin = theme->load("button.xml", "button.xml");
 
+    if (!skin)
+        return 0;
     mainGraphics->pushClipArea(Rect(10, 20, 790, 580));
     mainGraphics->setColor(Color(0xFFU, 0xFFU, 0x00U, 0xFFU));
     mainGraphics->drawRectangle(Rect(0, 0, 400, 200));

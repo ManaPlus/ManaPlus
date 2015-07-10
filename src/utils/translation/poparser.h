@@ -58,7 +58,7 @@ class PoParser final
 
         static std::string getFileName(const std::string &lang);
 
-        PoDict *getDict() const;
+        PoDict *getDict() const RETURNS_NONNULL A_WARN_UNUSED;
 
         static void convertStr(std::string &str);
 

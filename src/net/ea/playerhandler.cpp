@@ -100,6 +100,11 @@ void PlayerHandler::processPlayerWarp(Net::MessageIn &msg)
         localPlayer->stopAttack();
 
     Game *const game = Game::instance();
+    if (!game)
+    {
+        BLOCK_END("PlayerHandler::processPlayerWarp")
+        return;
+    }
 
     const std::string &currentMapName = game->getCurrentMapName();
     const bool sameMap = (currentMapName == mapPath);

@@ -150,7 +150,7 @@ class PlayerRelationsManager final
          * Retrieves a sorted vector of all players for which we have any
          * relations recorded.
          */
-        StringVect *getPlayers() const A_WARN_UNUSED;
+        StringVect *getPlayers() const RETURNS_NONNULL A_WARN_UNUSED;
 
         StringVect *getPlayersByRelation(const RelationT rel)
                                          const A_WARN_UNUSED;

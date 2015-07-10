@@ -900,8 +900,7 @@ int Client::gameExec()
                 delete2(mGame);
                 Game::clearInstance();
                 ResourceManager *const resman = ResourceManager::getInstance();
-                if (resman)
-                    resman->cleanOrphans();
+                resman->cleanOrphans();
                 Party::clearParties();
                 Guild::clearGuilds();
                 NpcDialog::clearDialogs();

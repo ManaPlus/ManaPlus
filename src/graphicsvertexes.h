@@ -94,13 +94,13 @@ class OpenGLGraphicsVertexes final
 
         void switchVp(const int n);
 
-        GLfloat *continueFloatTexArray();
+        GLfloat *continueFloatTexArray() RETURNS_NONNULL;
 
-        GLint *continueIntVertArray();
+        GLint *continueIntVertArray() RETURNS_NONNULL;
 
-        GLshort *continueShortVertArray();
+        GLshort *continueShortVertArray() RETURNS_NONNULL;
 
-        GLint *continueIntTexArray();
+        GLint *continueIntTexArray() RETURNS_NONNULL;
 
         int continueVp();
 
