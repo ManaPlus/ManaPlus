@@ -71,6 +71,8 @@ Image *SDLImageHelper::load(SDL_RWops *const rw, Dye const &dye)
     SDL_Surface *const surf = MSDL_ConvertSurface(
         tmpImage, &rgba, SDL_SWSURFACE);
     MSDL_FreeSurface(tmpImage);
+    if (!surf)
+        return nullptr;
 
     uint32_t *pixels = static_cast<uint32_t *>(surf->pixels);
     const int type = dye.getType();

@@ -223,7 +223,7 @@ class ResourceManager final
          * Returns an instance of the class, creating one if it does not
          * already exist.
          */
-        static ResourceManager *getInstance() A_WARN_UNUSED;
+        static ResourceManager *getInstance() RETURNS_NONNULL A_WARN_UNUSED;
 
         /**
          * Deletes the class instance if it exists.

@@ -497,7 +497,7 @@ inline static void setTile(Map *const map,
                            const MapLayer::Type &layerType,
                            MapHeights *const heights,
                            const int x, const int y,
-                           const int gid) A_NONNULL(1, 4);
+                           const int gid) A_NONNULL(1);
 
 inline static void setTile(Map *const map,
                            MapLayer *const layer,
@@ -556,9 +556,9 @@ inline static void setTile(Map *const map,
 
         case MapLayer::HEIGHTS:
         {
-            if (!set)
+            if (!set || !heights)
                 break;
-            if (map->getVersion() >= 2)
+            if (heights && map->getVersion() >= 2)
             {
                 heights->setHeight(x, y, static_cast<uint8_t>(
                     gid - set->getFirstGid() + 1));

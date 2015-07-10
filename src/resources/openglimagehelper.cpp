@@ -67,6 +67,8 @@ Image *OpenGLImageHelper::load(SDL_RWops *const rw, Dye const &dye)
 
     SDL_Surface *const surf = convertTo32Bit(tmpImage);
     MSDL_FreeSurface(tmpImage);
+    if (!surf)
+        return nullptr;
 
     uint32_t *pixels = static_cast<uint32_t *>(surf->pixels);
     const int type = dye.getType();
@@ -291,6 +293,8 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
 
     SDL_Surface *oldImage = tmpImage;
     tmpImage = convertSurfaceNormalize(tmpImage, width, height);
+    if (!tmpImage)
+        return nullptr;
 
     const int realWidth = tmpImage->w;
     const int realHeight = tmpImage->h;
@@ -438,6 +442,8 @@ void OpenGLImageHelper::copySurfaceToImage(const Image *const image,
 
     SDL_Surface *const oldSurface = surface;
     surface = convertSurface(surface, surface->w, surface->h);
+    if (!surface)
+        return;
 
     mglTextureSubImage2D(image->mGLImage,
         mTextureType, 0,
