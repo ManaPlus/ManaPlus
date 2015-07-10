@@ -1276,7 +1276,7 @@ void ScrollArea::setScrollbarWidth(const int width)
 void ScrollArea::showWidgetPart(Widget *const widget, const Rect &area)
 {
     const Widget *const content = getContent();
-    if (widget != content)
+    if (widget != content || !content)
         return;
 
     BasicContainer::showWidgetPart(widget, area);

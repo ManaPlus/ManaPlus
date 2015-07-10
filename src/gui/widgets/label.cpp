@@ -99,11 +99,8 @@ Label::Label(const Widget2 *const widget,
     mTextChanged(true)
 {
     const Font *const font = getFont();
-    if (font)
-    {
-        setWidth(font->getWidth(caption));
-        setHeight(font->getHeight());
-    }
+    setWidth(font->getWidth(caption));
+    setHeight(font->getHeight());
     init();
 }
 

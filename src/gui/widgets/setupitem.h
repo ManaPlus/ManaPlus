@@ -71,7 +71,7 @@ class SetupItem notfinal : public ActionListener,
         Widget *getWidget() const A_WARN_UNUSED
         { return mWidget; }
 
-        Configuration *getConfig() const A_WARN_UNUSED;
+        Configuration *getConfig() const RETURNS_NONNULL A_WARN_UNUSED;
 
         virtual std::string getActionEventId() const A_WARN_UNUSED;
 

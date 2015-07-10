@@ -156,32 +156,32 @@ class Gui final
         /**
          * Return game font.
          */
-        Font *getFont() const A_WARN_UNUSED
+        Font *getFont() const RETURNS_NONNULL A_WARN_UNUSED
         { return mGuiFont; }
 
         /**
          * Return help font.
          */
-        Font *getHelpFont() const A_WARN_UNUSED
+        Font *getHelpFont() const RETURNS_NONNULL A_WARN_UNUSED
         { return mHelpFont; }
 
         /**
          * Return secure font.
          */
-        Font *getSecureFont() const A_WARN_UNUSED
+        Font *getSecureFont() const RETURNS_NONNULL A_WARN_UNUSED
         { return mSecureFont; }
 
         /**
          * Return npc font.
          */
-        Font *getNpcFont() const A_WARN_UNUSED
+        Font *getNpcFont() const RETURNS_NONNULL A_WARN_UNUSED
         { return mNpcFont; }
 
         /**
          * Return the Font used for "Info Particles", i.e. ones showing, what
          * you picked up, etc.
          */
-        Font *getInfoParticleFont() const A_WARN_UNUSED
+        Font *getInfoParticleFont() const RETURNS_NONNULL A_WARN_UNUSED
         { return mInfoParticleFont; }
 
         /**
@@ -257,7 +257,7 @@ class Gui final
          *      OpenLayerGraphics, OpenGLGraphics, SDLGraphics
          * @since 0.1.0
          */
-        void setGraphics(Graphics *const graphics);
+        void setGraphics(Graphics *const graphics) A_NONNULL(2);
 
         /**
          * Gets the graphics object used for drawing.
@@ -268,7 +268,7 @@ class Gui final
          *      OpenLayerGraphics, OpenGLGraphics, SDLGraphics
          * @since 0.1.0
          */
-        Graphics* getGraphics() const A_WARN_UNUSED;
+        Graphics* getGraphics() const RETURNS_NONNULL A_WARN_UNUSED;
 
         /**
          * Sets the input object to use for input handling.

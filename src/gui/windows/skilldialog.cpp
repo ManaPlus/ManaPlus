@@ -337,7 +337,7 @@ void SkillDialog::loadXmlFile(const std::string &fileName)
                         ? 0 : XML::getProperty(node, "level", 0);
                     SkillData *data = skill->getData(level);
                     if (!data)
-                        data = new SkillData();
+                        data = new SkillData;
 
                     data->name = name;
                     data->setIcon(icon);

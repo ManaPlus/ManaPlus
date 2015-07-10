@@ -46,7 +46,7 @@ class DialogsManager final : public AttributeListener,
 
         static Window *openErrorDialog(const std::string &header,
                                        const std::string &message,
-                                       const Modal modal);
+                                       const Modal modal) RETURNS_NONNULL;
 
         void playerDeath() override final;
 

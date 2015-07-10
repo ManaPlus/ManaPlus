@@ -36,8 +36,7 @@ ColorPage::ColorPage(const Widget2 *const widget,
     mItemPadding = mSkin ? mSkin->getOption("itemPadding") : 1;
     mRowHeight = 13;
     const Font *const font = getFont();
-    if (font)
-        mRowHeight = font->getHeight() + 2 * mItemPadding;
+    mRowHeight = font->getHeight() + 2 * mItemPadding;
     if (mListModel)
     {
         setHeight(getRowHeight() * mListModel->getNumberOfElements()

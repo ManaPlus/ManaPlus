@@ -455,28 +455,25 @@ void TabbedArea::widgetResized(const Event &event A_UNUSED)
         - mWidgetContainer->getY() - widgetFrameSize;
 
     Widget *const w = getCurrentWidget();
-    if (w)
+    ScrollArea *const scr = dynamic_cast<ScrollArea *const>(w);
+    if (scr)
     {
-        ScrollArea *const scr = dynamic_cast<ScrollArea *const>(w);
-        if (scr)
+        if (mFollowDownScroll && height != 0)
         {
-            if (mFollowDownScroll && height != 0)
+            const Rect &rect = w->getDimension();
+            if (rect.height != 0 && rect.height > height + 2)
             {
-                const Rect &rect = w->getDimension();
-                if (rect.height != 0 && rect.height > height + 2)
+                if (scr->getVerticalScrollAmount()
+                    >= scr->getVerticalMaxScroll() - 2
+                    && scr->getVerticalScrollAmount()
+                    <= scr->getVerticalMaxScroll() + 2)
                 {
-                    if (scr->getVerticalScrollAmount()
-                        >= scr->getVerticalMaxScroll() - 2
-                        && scr->getVerticalScrollAmount()
-                        <= scr->getVerticalMaxScroll() + 2)
-                    {
-                        const int newScroll = scr->getVerticalScrollAmount()
-                            + rect.height - height;
-                        w->setSize(mWidgetContainer->getWidth() - frameSize,
-                            mWidgetContainer->getHeight() - frameSize);
-                        if (newScroll)
-                            scr->setVerticalScrollAmount(newScroll);
-                    }
+                    const int newScroll = scr->getVerticalScrollAmount()
+                        + rect.height - height;
+                    w->setSize(mWidgetContainer->getWidth() - frameSize,
+                        mWidgetContainer->getHeight() - frameSize);
+                    if (newScroll)
+                        scr->setVerticalScrollAmount(newScroll);
                 }
             }
         }

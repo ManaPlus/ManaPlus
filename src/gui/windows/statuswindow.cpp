@@ -633,7 +633,7 @@ std::string StatusWindow::translateLetter(const char *const letters)
 {
     char buf[2];
     char *const str = gettext(letters);
-    if (strlen(str) != 3)
+    if (!str || strlen(str) != 3)
         return letters;
 
     buf[0] = str[1];

@@ -45,7 +45,8 @@ class ColorModel final : public ListModel
 
         std::string getElementAt(int i) override final A_WARN_UNUSED;
 
-        virtual const ColorPair *getColorAt(const int i) const A_WARN_UNUSED;
+        const ColorPair *getColorAt(const int i)
+                                    const RETURNS_NONNULL A_WARN_UNUSED;
 
         StringVect &getNames() A_WARN_UNUSED
         { return mNames; }
@@ -53,10 +54,12 @@ class ColorModel final : public ListModel
         size_t size() A_WARN_UNUSED
         { return mNames.size(); }
 
-        void add(const std::string &name, const Color *const color1,
+        void add(const std::string &name,
+                 const Color *const color1,
                  const Color *const color2);
 
-        static ColorModel *createDefault(const Widget2 *const widget);
+        static ColorModel *createDefault(const Widget2 *const widget)
+                                         RETURNS_NONNULL;
 
     protected:
         StringVect mNames;

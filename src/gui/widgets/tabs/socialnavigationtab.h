@@ -170,7 +170,7 @@ class SocialNavigationTab final : public SocialTab
                 return;
 
             std::vector<Avatar*> *const avatars = mBeings->getMembers();
-            if (!avatars || avatars->size() <= static_cast<size_t>(num))
+            if (avatars->size() <= static_cast<size_t>(num))
                 return;
 
             const Avatar *const ava = avatars->at(num);
@@ -184,8 +184,6 @@ class SocialNavigationTab final : public SocialTab
                 return;
 
             std::vector<Avatar*> *const avatars = mBeings->getMembers();
-            if (!avatars)
-                return;
 
             const Map *const map = socialWindow->getMap();
             if (!map)
@@ -220,9 +218,6 @@ class SocialNavigationTab final : public SocialTab
                 return -1;
 
             std::vector<Avatar*> *const avatars = mBeings->getMembers();
-            if (!avatars)
-                return -1;
-
             const Map *const map = socialWindow->getMap();
             if (!map)
                 return -1;
@@ -255,10 +250,6 @@ class SocialNavigationTab final : public SocialTab
                 return;
 
             std::vector<Avatar*> *const avatars = mBeings->getMembers();
-
-            if (!avatars)
-                return;
-
             const MapItem *const portal = map->findPortalXY(x, y);
             if (!portal)
                 return;
@@ -288,10 +279,6 @@ class SocialNavigationTab final : public SocialTab
                 return;
 
             std::vector<Avatar*> *const avatars = mBeings->getMembers();
-
-            if (!avatars)
-                return;
-
             std::vector<Avatar*>::iterator i = avatars->begin();
             const std::vector<Avatar*>::iterator i_end = avatars->end();
 

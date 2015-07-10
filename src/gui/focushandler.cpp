@@ -339,6 +339,8 @@ void FocusHandler::distributeFocusGainedEvent(const Event &focusEvent)
 
     Widget *const sourceWidget = focusEvent.getSource();
 
+    if (!sourceWidget)
+        return;
     std::list<FocusListener*> focusListeners
         = sourceWidget->getFocusListeners();
 
@@ -550,6 +552,8 @@ void FocusHandler::focusNone()
 void FocusHandler::distributeFocusLostEvent(const Event& focusEvent)
 {
     Widget *const sourceWidget = focusEvent.getSource();
+    if (!sourceWidget)
+        return;
 
     std::list<FocusListener*> focusListeners
         = sourceWidget->getFocusListeners();

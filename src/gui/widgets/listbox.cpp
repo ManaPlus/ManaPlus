@@ -122,10 +122,7 @@ ListBox::ListBox(const Widget2 *const widget,
     }
 
     const Font *const font = getFont();
-    if (font)
-        mRowHeight = font->getHeight() + 2 * mItemPadding;
-    else
-        mRowHeight = 13;
+    mRowHeight = font->getHeight() + 2 * mItemPadding;
 }
 
 void ListBox::postInit()

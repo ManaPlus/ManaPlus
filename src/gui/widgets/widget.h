@@ -682,7 +682,7 @@ class Widget notfinal : public Widget2
           * @see setFont, setGlobalFont
           * @since 0.1.0
           */
-        Font *getFont() const A_WARN_UNUSED;
+        Font *getFont() const RETURNS_NONNULL A_WARN_UNUSED;
 
         /**
           * Sets the global font to be used by default for all widgets.
@@ -1027,7 +1027,7 @@ class Widget notfinal : public Widget2
 
         void windowResized();
 
-        static Widget *callPostInit(Widget *const widget);
+        static Widget *callPostInit(Widget *const widget) RETURNS_NONNULL;
 
         virtual void postInit()
         { }

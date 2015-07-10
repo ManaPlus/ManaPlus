@@ -488,6 +488,8 @@ void BuyDialog::action(const ActionEvent &event)
     else if (eventId == "buy" && mAmountItems > 0 && mAmountItems <= mMaxItems)
     {
         ShopItem *const item = mShopItems->at(selectedItem);
+        if (!item)
+            return;
         if (mNpcId == fromInt(Items, BeingId))
         {
             adminHandler->createItems(item->getId(),
@@ -544,13 +546,10 @@ void BuyDialog::action(const ActionEvent &event)
             if (tradeWindow)
 #endif
             {
-                if (item)
-                {
-                    buySellHandler->sendBuyRequest(mNick,
-                        item, mAmountItems);
-                    tradeWindow->addAutoMoney(mNick,
-                        item->getPrice() * mAmountItems);
-                }
+                buySellHandler->sendBuyRequest(mNick,
+                    item, mAmountItems);
+                tradeWindow->addAutoMoney(mNick,
+                    item->getPrice() * mAmountItems);
             }
         }
     }

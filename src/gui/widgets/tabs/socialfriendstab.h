@@ -74,8 +74,6 @@ class SocialFriendsTab final : public SocialTab
                 return;
 
             std::vector<Avatar*> *const avatars = mBeings->getMembers();
-            if (!avatars)
-                return;
 
             std::vector<Avatar*>::iterator ia = avatars->begin();
             while (ia != avatars->end())

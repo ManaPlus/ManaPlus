@@ -43,7 +43,7 @@ class BeingsListModel final : public AvatarListModel
             mMembers.clear();
         }
 
-        std::vector<Avatar*> *getMembers()
+        std::vector<Avatar*> *getMembers() RETURNS_NONNULL A_WARN_UNUSED
         {
             return &mMembers;
         }

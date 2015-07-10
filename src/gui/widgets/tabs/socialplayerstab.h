@@ -119,9 +119,6 @@ class SocialPlayersTab final : public SocialTab
         Avatar* findAvatarbyName(const std::string &name)
         {
             std::vector<Avatar*> *const avatars = mBeings->getMembers();
-            if (!avatars)
-                return nullptr;
-
             Avatar *ava = nullptr;
             std::vector<Avatar*>::const_iterator i = avatars->begin();
             const std::vector<Avatar*>::const_iterator i_end = avatars->end();
@@ -141,9 +138,6 @@ class SocialPlayersTab final : public SocialTab
         void getPlayersAvatars()
         {
             std::vector<Avatar*> *const avatars = mBeings->getMembers();
-            if (!avatars)
-                return;
-
             if (actorManager)
             {
                 StringVect names;

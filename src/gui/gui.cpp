@@ -117,11 +117,11 @@ Gui::Gui() :
     mLastMouseDragButton(MouseButton::EMPTY),
     mWidgetWithMouseQueue(),
     mConfigListener(new GuiConfigListener(this)),
-    mGuiFont(),
-    mInfoParticleFont(),
-    mHelpFont(),
-    mSecureFont(),
-    mNpcFont(),
+    mGuiFont(nullptr),
+    mInfoParticleFont(nullptr),
+    mHelpFont(nullptr),
+    mSecureFont(nullptr),
+    mNpcFont(nullptr),
     mMouseCursors(nullptr),
     mMouseCursorAlpha(1.0F),
     mMouseInactivityTimer(0),
@@ -455,6 +455,8 @@ void Gui::draw()
 {
     BLOCK_START("Gui::draw 1")
     Widget *const top = getTop();
+    if (!top)
+        return;
     mGraphics->pushClipArea(top->getDimension());
 
     if (isBatchDrawRenders(openGLMode))
@@ -661,7 +663,8 @@ void Gui::handleMouseMoved(const MouseInput &mouseInput)
     // mouse entered events.
     if (mFocusHandler->getModalMouseInputFocused()
         && widget == mFocusHandler->getModalMouseInputFocused()
-        && Widget::widgetExists(widget))
+        && Widget::widgetExists(widget) &&
+        widget)
     {
         int x, y;
         widget->getAbsolutePosition(x, y);
@@ -742,6 +745,8 @@ void Gui::handleMousePressed(const MouseInput &mouseInput)
     if (mFocusHandler->getDraggedWidget())
         sourceWidget = mFocusHandler->getDraggedWidget();
 
+    if (!sourceWidget)
+        return;
     int sourceWidgetX;
     int sourceWidgetY;
     sourceWidget->getAbsolutePosition(sourceWidgetX, sourceWidgetY);
@@ -1038,7 +1043,7 @@ void Gui::handleMouseReleased(const MouseInput &mouseInput)
 
         Widget *const oldWidget = sourceWidget;
         sourceWidget = mFocusHandler->getDraggedWidget();
-        if (oldWidget != sourceWidget)
+        if (oldWidget && oldWidget != sourceWidget)
         {
             oldWidget->getAbsolutePosition(sourceWidgetX, sourceWidgetY);
             distributeMouseEvent(oldWidget,
@@ -1049,6 +1054,8 @@ void Gui::handleMouseReleased(const MouseInput &mouseInput)
         }
     }
 
+    if (!sourceWidget)
+        return;
     sourceWidget->getAbsolutePosition(sourceWidgetX, sourceWidgetY);
     distributeMouseEvent(sourceWidget,
                          MouseEventType::RELEASED,
@@ -1165,13 +1172,16 @@ void Gui::handleMouseWheelMovedDown(const MouseInput& mouseInput)
 
     int sourceWidgetX = 0;
     int sourceWidgetY = 0;
-    sourceWidget->getAbsolutePosition(sourceWidgetX, sourceWidgetY);
+    if (sourceWidget)
+    {
+        sourceWidget->getAbsolutePosition(sourceWidgetX, sourceWidgetY);
 
-    distributeMouseEvent(sourceWidget,
-                         MouseEventType::WHEEL_MOVED_DOWN,
-                         mouseInput.getButton(),
-                         mouseInput.getX(),
-                         mouseInput.getY());
+        distributeMouseEvent(sourceWidget,
+             MouseEventType::WHEEL_MOVED_DOWN,
+             mouseInput.getButton(),
+             mouseInput.getX(),
+             mouseInput.getY());
+    }
 }
 
 void Gui::handleMouseWheelMovedUp(const MouseInput& mouseInput)
@@ -1182,14 +1192,17 @@ void Gui::handleMouseWheelMovedUp(const MouseInput& mouseInput)
     if (mFocusHandler->getDraggedWidget())
         sourceWidget = mFocusHandler->getDraggedWidget();
 
-    int sourceWidgetX, sourceWidgetY;
-    sourceWidget->getAbsolutePosition(sourceWidgetX, sourceWidgetY);
-
-    distributeMouseEvent(sourceWidget,
-                         MouseEventType::WHEEL_MOVED_UP,
-                         mouseInput.getButton(),
-                         mouseInput.getX(),
-                         mouseInput.getY());
+    int sourceWidgetX;
+    int sourceWidgetY;
+    if (sourceWidget)
+    {
+        sourceWidget->getAbsolutePosition(sourceWidgetX, sourceWidgetY);
+        distributeMouseEvent(sourceWidget,
+             MouseEventType::WHEEL_MOVED_UP,
+             mouseInput.getButton(),
+             mouseInput.getX(),
+             mouseInput.getY());
+    }
 }
 
 Widget* Gui::getWidgetAt(const int x, const int y) const
@@ -1243,9 +1256,10 @@ void Gui::distributeKeyEvent(KeyEvent &event) const
     Widget* parent = event.getSource();
     Widget* widget = parent;
 
+    if (!parent)
+        return;
     if (mFocusHandler->getModalFocused() && !widget->isModalFocused())
         return;
-
     if (mFocusHandler->getModalMouseInputFocused()
         && !widget->isModalMouseInputFocused())
     {

@@ -616,18 +616,21 @@ void ItemContainer::mouseReleased(MouseEvent &event)
 #endif
         {
             inventory = PlayerInfo::getInventory();
-            const Item *const item = inventory->getItem(dragDrop.getTag());
-            if (item && !PlayerInfo::isItemProtected(item->getId()))
+            if (inventory)
             {
-                mInventory->addItem(item->getId(), item->getType(),
-                    1,
-                    1,
-                    item->getColor(),
-                    item->getIdentified(),
-                    item->getDamaged(),
-                    item->getFavorite(),
-                    Equipm_false,
-                    Equipped_false);
+                const Item *const item = inventory->getItem(dragDrop.getTag());
+                if (item && !PlayerInfo::isItemProtected(item->getId()))
+                {
+                    mInventory->addItem(item->getId(), item->getType(),
+                        1,
+                        1,
+                        item->getColor(),
+                        item->getIdentified(),
+                        item->getDamaged(),
+                        item->getFavorite(),
+                        Equipm_false,
+                        Equipped_false);
+                }
             }
             return;
         }
@@ -638,9 +641,12 @@ void ItemContainer::mouseReleased(MouseEvent &event)
 #endif
         {
             inventory = PlayerInfo::getInventory();
-            const Item *const item = inventory->getItem(dragDrop.getTag());
-            if (item)
-                mInventory->removeItemAt(dragDrop.getTag());
+            if (inventory)
+            {
+                const Item *const item = inventory->getItem(dragDrop.getTag());
+                if (item)
+                    mInventory->removeItemAt(dragDrop.getTag());
+            }
             return;
         }
 

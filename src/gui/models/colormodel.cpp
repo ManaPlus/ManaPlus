@@ -51,7 +51,7 @@ std::string ColorModel::getElementAt(int i)
 const ColorPair *ColorModel::getColorAt(const int i) const
 {
     if (i >= static_cast<int>(mColors.size()) || i < 0)
-        return nullptr;
+        return &mColors[0];
 
     return &mColors[i];
 }

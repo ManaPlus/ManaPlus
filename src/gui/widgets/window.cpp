@@ -641,11 +641,14 @@ void Window::widgetResized(const Event &event A_UNUSED)
         if (showClose)
         {
             const Image *const button = mSkin->getCloseImage(false);
-            const int buttonWidth = button->getWidth();
-            mCloseRect.x = mDimension.width - buttonWidth - mClosePadding;
-            mCloseRect.y = mClosePadding;
-            mCloseRect.width = buttonWidth;
-            mCloseRect.height = button->getHeight();
+            if (button)
+            {
+                const int buttonWidth = button->getWidth();
+                mCloseRect.x = mDimension.width - buttonWidth - mClosePadding;
+                mCloseRect.y = mClosePadding;
+                mCloseRect.width = buttonWidth;
+                mCloseRect.height = button->getHeight();
+            }
         }
         if (mStickyButton)
         {

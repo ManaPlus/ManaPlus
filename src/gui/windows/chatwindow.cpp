@@ -692,11 +692,11 @@ void ChatWindow::mousePressed(MouseEvent &event)
     {
         if (popupMenu)
         {
-            Tab *const tab = mChatTabs->getSelectedTab();
-            if (tab)
+            ChatTab *const cTab = dynamic_cast<ChatTab*>(
+                mChatTabs->getSelectedTab());
+            if (cTab)
             {
                 event.consume();
-                ChatTab *const cTab = dynamic_cast<ChatTab*>(tab);
                 if (inputManager.isActionActive(InputAction::CHAT_MOD))
                 {
                     inputManager.executeChatCommand(
@@ -2163,11 +2163,14 @@ void ChatWindow::showGMTab()
 void ChatWindow::joinRoom(const bool isJoin)
 {
     Tab *const tab = mChatTabs->getTabByIndex(0);
-    std::string name;
-    if (isJoin)
-        name = PlayerInfo::getRoomName();
-    else
-        name = _("General");
-    tab->setCaption(name);
+    if (tab)
+    {
+        std::string name;
+        if (isJoin)
+            name = PlayerInfo::getRoomName();
+        else
+            name = _("General");
+        tab->setCaption(name);
+    }
 }
 #endif

@@ -393,7 +393,7 @@ void Minimap::draw2(Graphics *const graphics)
             const PartyMember *const m = party->getMember(
                 localPlayer->getName());
             const Party::MemberList *const members = party->getMembers();
-            if (m && members)
+            if (m)
             {
                 const std::string curMap = m->getMap();
                 Party::MemberList::const_iterator it = members->begin();

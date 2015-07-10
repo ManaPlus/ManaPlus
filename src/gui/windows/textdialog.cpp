@@ -68,18 +68,10 @@ TextDialog::TextDialog(const std::string &restrict title,
     place(2, 2, mOkButton);
     place(3, 2, cancelButton);
 
-    const Font *const font = getFont();
-    if (font)
-    {
-        int width = font->getWidth(title);
-        if (width < textLabel->getWidth())
-            width = textLabel->getWidth();
-        reflowLayout(static_cast<int>(width + 20));
-    }
-    else
-    {
-        reflowLayout(static_cast<int>(textLabel->getWidth() + 20));
-    }
+    int width = getFont()->getWidth(title);
+    if (width < textLabel->getWidth())
+        width = textLabel->getWidth();
+    reflowLayout(static_cast<int>(width + 20));
 }
 
 void TextDialog::postInit()
