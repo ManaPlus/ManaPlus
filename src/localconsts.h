@@ -70,7 +70,12 @@
 #define A_WARN_UNUSED __attribute__ ((warn_unused_result))
 #define DEPRECATED __attribute__ ((deprecated))
 #define restrict __restrict__
+
+#if GCC_VERSION < 40900
+#define RETURNS_NONNULL
+#else
 #define RETURNS_NONNULL __attribute__((returns_nonnull))
+#endif
 
 #ifndef ENABLE_CILKPLUS
 #define A_NONNULL(...) __attribute__((nonnull (__VA_ARGS__)))
