@@ -331,6 +331,9 @@ class Map final : public Properties, public ConfigListener
 
         void updateDrawLayersList();
 
+        bool isHeightsPresent() const
+        { return mHeights != nullptr; }
+
     protected:
         friend class Actor;
         friend class Minimap;

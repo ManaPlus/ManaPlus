@@ -673,8 +673,36 @@ void Viewport::walkByMouse(const MouseEvent &event)
             {
                 const int destX = static_cast<int>((event.getX() + mPixelViewX)
                     / static_cast<float>(mMap->getTileWidth()));
-                const int destY = static_cast<int>((event.getY() + mPixelViewY)
-                    / static_cast<float>(mMap->getTileHeight()));
+                int destY;
+
+                if (mMap->isHeightsPresent())
+                {
+                    const int clickY = event.getY() + mPixelViewY - 16;
+                    destY = event.getY() + mPixelViewY;
+                    int newDiffY = 1000000;
+                    const int heightTiles = mainGraphics->mHeight / mMap->getTileHeight();
+                    const int tileViewY = mPixelViewY / 32;
+                    for (int f = tileViewY; f < tileViewY + heightTiles; f ++)
+                    {
+                        if (!mMap->getWalk(destX, f))
+                            continue;
+
+                        const int offset = mMap->getHeightOffset(destX, f) * 16;
+                        const int pixelF = f * 32;
+                        const int diff = abs(clickY + offset - pixelF);
+                        if (diff < newDiffY)
+                        {
+                            destY = pixelF;
+                            newDiffY = diff;
+                        }
+                    }
+                    destY /= 32;
+                }
+                else
+                {
+                    destY = static_cast<int>((event.getY() + mPixelViewY)
+                        / static_cast<float>(mMap->getTileHeight()));
+                }
                 if (playerX != destX || playerY != destY)
                 {
                     if (!localPlayer->navigateTo(destX, destY))
