@@ -69,6 +69,7 @@
         <color id="UNKNOWN_ITEM" color="#ffffff" />
         <color id="CHARM" color="#ffffff" />
         <color id="GENERIC" color="#eeeeee" />
+        <color id="CARD" color="#eeeeee" />
         <color id="HEAD" color="#b4d7ec" />
         <color id="USABLE" color="#ece9b4" />
         <color id="TORSO" color="#b4d7ec" />
@@ -232,6 +233,8 @@
         <color id="CHARM" color="#ffffff" />
         <color id="GENERIC" color="#dbdbdb" />
         <color id="GENERIC_OUTLINE" color="#333333" />
+        <color id="CARD" color="#dbdbdb" />
+        <color id="CARD_OUTLINE" color="#333333" />
         <color id="HEAD" color="#f8eb7c" />
         <color id="HEAD_OUTLINE" color="#382a01" />
         <color id="USABLE" color="#b4d7ec" />
@@ -390,6 +393,7 @@
         <color id="UNKNOWN_ITEM" color="#ffffff" />
         <color id="CHARM" color="#ffffff" />
         <color id="GENERIC" color="#eeeeee" />
+        <color id="CARD" color="#eeeeee" />
         <color id="HEAD" color="#b4d7ec" />
         <color id="USABLE" color="#ece9b4" />
         <color id="TORSO" color="#b4d7ec" />

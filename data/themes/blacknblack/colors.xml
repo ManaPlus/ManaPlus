@@ -76,6 +76,7 @@
         <color id="UNKNOWN_ITEM" color="#999999" />
         <color id="CHARM" color="#ffd700" />
         <color id="GENERIC" color="#21a5b1" />
+        <color id="CARD" color="#21a5b1" />
         <color id="HEAD" color="#527fa4" />
         <color id="USABLE" color="#268d24" />
         <color id="TORSO" color="#d12aa4" />
