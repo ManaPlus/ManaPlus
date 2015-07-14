@@ -30,6 +30,8 @@
 
 #include "enums/resources/notifytypes.h"
 
+#include "gui/popups/itempopup.h"
+
 #include "gui/widgets/createwidget.h"
 
 #include "gui/windows/insertcarddialog.h"
@@ -810,7 +812,7 @@ void InventoryHandler::processPlayerUseCard(Net::MessageIn &msg)
 
 void InventoryHandler::processPlayerInsertCard(Net::MessageIn &msg)
 {
-    msg.readInt16("item index");
+    const int itemIndex = msg.readInt16("item index") - INVENTORY_OFFSET;
     const int cardIndex = msg.readInt16("card index") - INVENTORY_OFFSET;
     if (msg.readUInt8("flag"))
     {
@@ -820,12 +822,21 @@ void InventoryHandler::processPlayerInsertCard(Net::MessageIn &msg)
     {
         NotifyManager::notify(NotifyTypes::CARD_INSERT_SUCCESS);
         Inventory *const inv = PlayerInfo::getInventory();
-        Item *const item = inv->getItem(cardIndex);
-        if (!item)
-            return;
-        item->increaseQuantity(-1);
-        if (item->getQuantity() == 0)
-            inv->removeItemAt(cardIndex);
+        Item *const card = inv->getItem(cardIndex);
+        int cardId = 0;
+        if (card)
+        {
+            cardId = card->getId();
+            card->increaseQuantity(-1);
+            if (card->getQuantity() == 0)
+                inv->removeItemAt(cardIndex);
+        }
+        Item *const item = inv->getItem(itemIndex);
+        if (item)
+        {
+            item->addCard(cardId);
+            itemPopup->resetPopup();
+        }
     }
 }
 

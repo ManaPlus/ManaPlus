@@ -160,3 +160,15 @@ void Item::setCards(const int *const cards, const int size)
     for (int f = 0; f < sz; f ++)
         mCards[f] = cards[f];
 }
+
+void Item::addCard(const int card)
+{
+    for (int f = 0; f < maxCards; f ++)
+    {
+        if (!mCards[f])
+        {
+            mCards[f] = card;
+            return;
+        }
+    }
+}

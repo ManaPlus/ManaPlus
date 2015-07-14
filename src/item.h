@@ -211,6 +211,8 @@ class Item notfinal
         int getType() const A_WARN_UNUSED
         { return mType; }
 
+        void addCard(const int card);
+
         int mId;              /**< Item type id. */
         unsigned char mColor;
         int mQuantity;        /**< Number of items. */

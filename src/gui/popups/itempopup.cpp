@@ -330,6 +330,11 @@ void ItemPopup::mouseMoved(MouseEvent &event)
 
     // When the mouse moved on top of the popup, hide it
     setVisible(Visible_false);
+    resetPopup();
+}
+
+void ItemPopup::resetPopup()
+{
     mLastName.clear();
     mLastColor = 1;
     mLastId = 0;

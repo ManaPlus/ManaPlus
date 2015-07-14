@@ -68,6 +68,8 @@ class ItemPopup final : public Popup
 
         void mouseMoved(MouseEvent &event) override final;
 
+        void resetPopup();
+
     private:
         std::string getCardsString(const int *const cards);
 
