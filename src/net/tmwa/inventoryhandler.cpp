@@ -240,7 +240,7 @@ void InventoryHandler::moveItem2(const int source, const int slot,
     }
 }
 
-void InventoryHandler::useCard(const int index A_UNUSED) const
+void InventoryHandler::useCard(const Item *const item A_UNUSED)
 {
 }
 

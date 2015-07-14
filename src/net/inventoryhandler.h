@@ -71,7 +71,7 @@ class InventoryHandler notfinal
 
         virtual int convertFromServerSlot(const int eAthenaSlot) const = 0;
 
-        virtual void useCard(const int index) const = 0;
+        virtual void useCard(const Item *const item) = 0;
 
         virtual void insertCard(const int cardIndex,
                                 const int itemIndex) const = 0;
@@ -82,6 +82,8 @@ class InventoryHandler notfinal
         virtual void selectEgg(const Item *const item) const = 0;
 
         virtual int getProjectileSlot() const = 0;
+
+        virtual int getItemIndex() const A_WARN_UNUSED = 0;
 };
 
 }  // namespace Net

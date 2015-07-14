@@ -97,7 +97,7 @@ packet(SMSG_PLAYER_REFINE,           0x0188);
 packet(SMSG_PLAYER_EQUIPMENT,        0x0992);
 packet(SMSG_PLAYER_EQUIP,            0x0999);
 packet(SMSG_PLAYER_UNEQUIP,          0x099a);
-packet(SMSG_PLAYER_UNE_CARD,         0x017b);
+packet(SMSG_PLAYER_USE_CARD,         0x017b);
 packet(SMSG_PLAYER_INSERT_CARD,      0x017d);
 packet(SMSG_PLAYER_ATTACK_RANGE,     0x013a);
 packet(SMSG_PLAYER_ARROW_EQUIP,      0x013c);

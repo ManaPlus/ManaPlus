@@ -30,6 +30,10 @@
 
 #include "enums/resources/notifytypes.h"
 
+#include "gui/widgets/createwidget.h"
+
+#include "gui/windows/insertcarddialog.h"
+
 #include "listeners/arrowslistener.h"
 
 #include "net/eathena/itemflags.h"
@@ -72,7 +76,8 @@ Ea::InventoryItems InventoryHandler::mCartItems;
 
 InventoryHandler::InventoryHandler() :
     MessageHandler(),
-    Ea::InventoryHandler()
+    Ea::InventoryHandler(),
+    mItemIndex(0)
 {
     static const uint16_t _messages[] =
     {
@@ -93,7 +98,7 @@ InventoryHandler::InventoryHandler() :
         SMSG_PLAYER_UNEQUIP,
         SMSG_PLAYER_ARROW_EQUIP,
         SMSG_PLAYER_ATTACK_RANGE,
-        SMSG_PLAYER_UNE_CARD,
+        SMSG_PLAYER_USE_CARD,
         SMSG_PLAYER_INSERT_CARD,
         SMSG_PLAYER_ITEM_RENTAL_TIME,
         SMSG_PLAYER_ITEM_RENTAL_EXPIRED,
@@ -200,7 +205,7 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
             processPlayerArrowEquip(msg);
             break;
 
-        case SMSG_PLAYER_UNE_CARD:
+        case SMSG_PLAYER_USE_CARD:
             processPlayerUseCard(msg);
             break;
 
@@ -385,10 +390,15 @@ void InventoryHandler::moveItem2(const int source,
     }
 }
 
-void InventoryHandler::useCard(const int index) const
+void InventoryHandler::useCard(const Item *const item)
 {
+    if (!item)
+        return;
+
+    mItemIndex = item->getInvIndex();
     createOutPacket(CMSG_PLAYER_USE_CARD);
-    outMsg.writeInt16(static_cast<int16_t>(index + INVENTORY_OFFSET), "index");
+    outMsg.writeInt16(static_cast<int16_t>(
+        mItemIndex + INVENTORY_OFFSET), "index");
 }
 
 void InventoryHandler::insertCard(const int cardIndex,
@@ -783,21 +793,40 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
 
 void InventoryHandler::processPlayerUseCard(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
-    // +++ here need show dialog with item selection for card.
+    SellDialog *const dialog = CREATEWIDGETR(InsertCardDialog,
+        inventoryHandler->getItemIndex());
+    Inventory *const inv = PlayerInfo::getInventory();
+
     const int count = (msg.readInt16("len") - 4) / 2;
     for (int f = 0; f < count; f ++)
-        msg.readInt16("item id");
+    {
+        const int itemIndex = msg.readInt16("item index") - INVENTORY_OFFSET;
+        const Item *const item = inv->getItem(itemIndex);
+        if (!item)
+            continue;
+        dialog->addItem(item, 0);
+    }
 }
 
 void InventoryHandler::processPlayerInsertCard(Net::MessageIn &msg)
 {
     msg.readInt16("item index");
-    msg.readInt16("card index");
+    const int cardIndex = msg.readInt16("card index") - INVENTORY_OFFSET;
     if (msg.readUInt8("flag"))
+    {
         NotifyManager::notify(NotifyTypes::CARD_INSERT_FAILED);
+    }
     else
+    {
         NotifyManager::notify(NotifyTypes::CARD_INSERT_SUCCESS);
+        Inventory *const inv = PlayerInfo::getInventory();
+        Item *const item = inv->getItem(cardIndex);
+        if (!item)
+            return;
+        item->increaseQuantity(-1);
+        if (item->getQuantity() == 0)
+            inv->removeItemAt(cardIndex);
+    }
 }
 
 void InventoryHandler::selectEgg(const Item *const item) const

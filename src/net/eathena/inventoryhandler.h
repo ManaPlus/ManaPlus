@@ -58,7 +58,7 @@ class InventoryHandler final : public MessageHandler,
                        const int amount,
                        const int destination) const override final;
 
-        void useCard(const int index) const override final;
+        void useCard(const Item *const item) override final;
 
         void insertCard(const int cardIndex,
                         const int itemIndex) const override final;
@@ -73,6 +73,9 @@ class InventoryHandler final : public MessageHandler,
 
         int getProjectileSlot() const override final
         { return 23; }
+
+        int getItemIndex() const override final A_WARN_UNUSED
+        { return mItemIndex; }
 
     protected:
         static void processPlayerEquipment(Net::MessageIn &msg);
@@ -142,6 +145,9 @@ class InventoryHandler final : public MessageHandler,
         static void processBindItem(Net::MessageIn &msg);
 
         static Ea::InventoryItems mCartItems;
+
+    private:
+        int mItemIndex;
 };
 
 }  // namespace EAthena

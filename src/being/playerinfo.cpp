@@ -41,6 +41,10 @@
 #include "net/mercenaryhandler.h"
 #include "net/playerhandler.h"
 
+#ifdef EATHENA_SUPPORT
+#include "resources/itemtype.h"
+#endif
+
 #include "utils/delete2.h"
 
 #include "debug.h"
@@ -267,6 +271,18 @@ void useEquipItem(const Item *const item, const Sfx sfx)
 {
     if (item)
     {
+#ifdef EATHENA_SUPPORT
+        if (item->getType() == ItemType::CARD)
+        {
+            if (mProtectedItems.find(item->getId()) == mProtectedItems.end())
+            {
+                inventoryHandler->useCard(item);
+                if (sfx == Sfx_true)
+                    ItemSoundManager::playSfx(item, ItemSoundEvent::USECARD);
+            }
+        }
+        else
+#endif
         if (item->isEquipment() == Equipm_true)
         {
             if (item->isEquipped() == Equipped_true)

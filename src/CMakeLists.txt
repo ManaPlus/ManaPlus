@@ -368,6 +368,8 @@ SET(SRCS
     gui/mailmessage.h
     gui/windows/helpwindow.cpp
     gui/windows/helpwindow.h
+    gui/windows/insertcarddialog.cpp
+    gui/windows/insertcarddialog.h
     gui/windows/inventorywindow.cpp
     gui/windows/inventorywindow.h
     gui/windows/itemamountwindow.cpp

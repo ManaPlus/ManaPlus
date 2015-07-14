@@ -1408,6 +1408,8 @@ manaplus_SOURCES += gui/windows/bankwindow.cpp \
 	      gui/windows/buyingstoreselldialog.h \
 	      gui/windows/eggselectiondialog.cpp \
 	      gui/windows/eggselectiondialog.h \
+	      gui/windows/insertcarddialog.cpp \
+	      gui/windows/insertcarddialog.h \
 	      gui/windows/maileditwindow.cpp \
 	      gui/windows/maileditwindow.h \
 	      gui/windows/mailviewwindow.cpp \
