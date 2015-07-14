@@ -568,7 +568,7 @@ void EquipmentWindow::mouseMoved(MouseEvent &event)
 
     if (item)
     {
-        itemPopup->setItem(item);
+        itemPopup->setItem(item, false);
         itemPopup->position(x + getX(), y + getY());
     }
     else

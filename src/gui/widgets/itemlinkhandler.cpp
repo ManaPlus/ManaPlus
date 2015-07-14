@@ -118,7 +118,7 @@ void ItemLinkHandler::handleLink(const std::string &link, MouseEvent *event)
         if (id > 0)
         {
             const ItemInfo &itemInfo = ItemDB::get(id);
-            itemPopup->setItem(itemInfo, color, true);
+            itemPopup->setItem(itemInfo, color, true, -1);
             if (itemPopup->isPopupVisible())
             {
                 itemPopup->setVisible(Visible_false);

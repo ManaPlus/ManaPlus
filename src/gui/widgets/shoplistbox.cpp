@@ -218,7 +218,7 @@ void ShopListBox::mouseMoved(MouseEvent &event)
         const Item *const item = mShopItems->at(index);
         if (item)
         {
-            itemPopup->setItem(item);
+            itemPopup->setItem(item, false);
             itemPopup->position(viewport->mMouseX, viewport->mMouseY);
         }
         else

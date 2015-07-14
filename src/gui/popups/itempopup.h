@@ -57,10 +57,13 @@ class ItemPopup final : public Popup
         /**
          * Sets the info to be displayed given a particular item.
          */
-        void setItem(const ItemInfo &item, const unsigned char color,
-                     const bool showImage = false, int id = -1);
+        void setItem(const ItemInfo &item,
+                     const unsigned char color,
+                     const bool showImage,
+                     int id);
 
-        void setItem(const Item *const item, const bool showImage = false);
+        void setItem(const Item *const item,
+                     const bool showImage);
 
         void mouseMoved(MouseEvent &event) override final;
 

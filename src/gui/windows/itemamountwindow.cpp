@@ -307,7 +307,7 @@ void ItemAmountWindow::mouseMoved(MouseEvent &event)
 
     if (event.getSource() == mItemIcon)
     {
-        itemPopup->setItem(mItem);
+        itemPopup->setItem(mItem, false);
         itemPopup->position(viewport->mMouseX, viewport->mMouseY);
     }
 }

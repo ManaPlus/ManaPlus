@@ -684,7 +684,7 @@ void ItemContainer::mouseMoved(MouseEvent &event)
 
     if (item && viewport)
     {
-        itemPopup->setItem(item);
+        itemPopup->setItem(item, false);
         itemPopup->position(viewport->mMouseX, viewport->mMouseY);
     }
     else

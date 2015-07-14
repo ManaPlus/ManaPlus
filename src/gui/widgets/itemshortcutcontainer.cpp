@@ -556,7 +556,7 @@ void ItemShortcutContainer::mouseMoved(MouseEvent &event)
         const Item *const item = inv->findItem(itemId, itemColor);
         if (item && viewport)
         {
-            itemPopup->setItem(item);
+            itemPopup->setItem(item, false);
             itemPopup->position(viewport->mMouseX, viewport->mMouseY);
         }
         else
