@@ -60,7 +60,8 @@ class ItemPopup final : public Popup
         void setItem(const ItemInfo &item,
                      const unsigned char color,
                      const bool showImage,
-                     int id);
+                     int id,
+                     const int *const cards);
 
         void setItem(const Item *const item,
                      const bool showImage);
@@ -68,10 +69,13 @@ class ItemPopup final : public Popup
         void mouseMoved(MouseEvent &event) override final;
 
     private:
+        std::string getCardsString(const int *const cards);
+
         Label *mItemName;
         TextBox *mItemDesc;
         TextBox *mItemEffect;
         TextBox *mItemWeight;
+        TextBox *mItemCards;
         ItemType::Type mItemType;
         Icon *mIcon;
         std::string mLastName;

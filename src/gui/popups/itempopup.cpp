@@ -53,34 +53,41 @@ ItemPopup::ItemPopup() :
     mItemDesc(new TextBox(this)),
     mItemEffect(new TextBox(this)),
     mItemWeight(new TextBox(this)),
+    mItemCards(new TextBox(this)),
     mItemType(ItemType::UNUSABLE),
     mIcon(new Icon(this, nullptr)),
     mLastName(),
     mLastId(0),
     mLastColor(1)
 {
-    // Item Name
+    // Item name
     mItemName->setFont(boldFont);
     mItemName->setPosition(0, 0);
 
     const int fontHeight = getFont()->getHeight();
 
-    // Item Description
+    // Item description
     mItemDesc->setEditable(false);
     mItemDesc->setPosition(0, fontHeight);
     mItemDesc->setForegroundColorAll(getThemeColor(ThemeColorId::POPUP),
         getThemeColor(ThemeColorId::POPUP_OUTLINE));
 
-    // Item Effect
+    // Item effect
     mItemEffect->setEditable(false);
     mItemEffect->setPosition(0, 2 * fontHeight);
     mItemEffect->setForegroundColorAll(getThemeColor(ThemeColorId::POPUP),
         getThemeColor(ThemeColorId::POPUP_OUTLINE));
 
-    // Item Weight
+    // Item weight
     mItemWeight->setEditable(false);
     mItemWeight->setPosition(0, 3 * fontHeight);
     mItemWeight->setForegroundColorAll(getThemeColor(ThemeColorId::POPUP),
+        getThemeColor(ThemeColorId::POPUP_OUTLINE));
+
+    // Item cards
+    mItemCards->setEditable(false);
+    mItemCards->setPosition(0, 4 * fontHeight);
+    mItemCards->setForegroundColorAll(getThemeColor(ThemeColorId::POPUP),
         getThemeColor(ThemeColorId::POPUP_OUTLINE));
 }
 
@@ -91,6 +98,7 @@ void ItemPopup::postInit()
     add(mItemDesc);
     add(mItemEffect);
     add(mItemWeight);
+    add(mItemCards);
     add(mIcon);
 
     addMouseListener(this);
@@ -106,13 +114,18 @@ ItemPopup::~ItemPopup()
     }
 }
 
-void ItemPopup::setItem(const Item *const item, const bool showImage)
+void ItemPopup::setItem(const Item *const item,
+                        const bool showImage)
 {
     if (!item)
         return;
 
     const ItemInfo &ii = item->getInfo();
-    setItem(ii, item->getColor(), showImage, item->getId());
+    setItem(ii,
+        item->getColor(),
+        showImage,
+        item->getId(),
+        item->getCards());
     if (item->getRefine() > 0)
     {
         mLastName = ii.getName();
@@ -139,8 +152,11 @@ void ItemPopup::setItem(const Item *const item, const bool showImage)
     }
 }
 
-void ItemPopup::setItem(const ItemInfo &item, const unsigned char color,
-                        const bool showImage, int id)
+void ItemPopup::setItem(const ItemInfo &item,
+                        const unsigned char color,
+                        const bool showImage,
+                        int id,
+                        const int *const cards)
 {
     if (!mIcon || (item.getName() == mLastName && color == mLastColor
         && id == mLastId))
@@ -203,6 +219,7 @@ void ItemPopup::setItem(const ItemInfo &item, const unsigned char color,
     // TRANSLATORS: popup label
     mItemWeight->setTextWrapped(strprintf(_("Weight: %s"),
         Units::formatWeight(item.getWeight()).c_str()), 196);
+    mItemCards->setTextWrapped(getCardsString(cards), 196);
 
     int minWidth = mItemName->getWidth() + space;
 
@@ -214,27 +231,58 @@ void ItemPopup::setItem(const ItemInfo &item, const unsigned char color,
         minWidth = mItemEffect->getMinWidth();
     if (mItemWeight->getMinWidth() > minWidth)
         minWidth = mItemWeight->getMinWidth();
+    if (mItemCards->getMinWidth() > minWidth)
+        minWidth = mItemCards->getMinWidth();
 
     const int numRowsDesc = mItemDesc->getNumberOfRows();
     const int numRowsEffect = mItemEffect->getNumberOfRows();
     const int numRowsWeight = mItemWeight->getNumberOfRows();
+    const int numRowsCards = mItemCards->getNumberOfRows();
     const int height = getFont()->getHeight();
 
     if (item.getEffect().empty())
     {
-        setContentSize(minWidth, (numRowsDesc + 2 + numRowsWeight) * height);
+        setContentSize(minWidth,
+            (numRowsDesc + 2 + numRowsWeight + numRowsCards) * height);
         mItemWeight->setPosition(0, (numRowsDesc + 2) * height);
+        mItemCards->setPosition(0, (numRowsDesc + numRowsWeight + 2) * height);
     }
     else
     {
         setContentSize(minWidth, (numRowsDesc + numRowsEffect + 2
-            + numRowsWeight) * height);
+            + numRowsWeight + numRowsCards) * height);
+        mItemEffect->setPosition(0, (numRowsDesc + 2) * height);
         mItemWeight->setPosition(0, (numRowsDesc + numRowsEffect + 2)
             * height);
-        mItemEffect->setPosition(0, (numRowsDesc + 2) * height);
+        mItemCards->setPosition(0, (numRowsDesc + numRowsEffect
+            + numRowsWeight + 2) * height);
     }
 
     mItemDesc->setPosition(0, 2 * height);
+}
+
+std::string ItemPopup::getCardsString(const int *const cards)
+{
+    if (!cards)
+        return std::string();
+
+    std::string label;
+
+    for (int f = 0; f < maxCards; f ++)
+    {
+        const int id = cards[f];
+        if (id)
+        {
+            if (!label.empty())
+                label.append(" / ");
+            const ItemInfo &info = ItemDB::get(id);
+            label.append(info.getName());
+        }
+    }
+    if (label.empty())
+        return label;
+    // TRANSLATORS: popup label
+    return _("Cards: ") + label;
 }
 
 #define caseSetColor(name1, name2) \
