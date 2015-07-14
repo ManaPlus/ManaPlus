@@ -265,6 +265,7 @@ void ItemPopup::setLabelColor(Label *label, const ItemType::Type type) const
         caseSetColor(ItemType::EQUIPMENT_CHARM, ThemeColorId::CHARM)
         caseSetColor(ItemType::SPRITE_RACE, ThemeColorId::UNKNOWN_ITEM)
         caseSetColor(ItemType::SPRITE_HAIR, ThemeColorId::UNKNOWN_ITEM)
+        caseSetColor(ItemType::CARD, ThemeColorId::CARD)
         default:
         {
             return label->setForegroundColorAll(getThemeColor(

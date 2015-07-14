@@ -815,6 +815,8 @@ static int readColorType(const std::string &type)
         "WARNING_OUTLINE",
         "CHARM",
         "CHARM_OUTLINE",
+        "CARD",
+        "CARD_OUTLINE",
         "PLAYER_ADVANCED",
         "PLAYER_ADVANCED_OUTLINE",
         "BUBBLE_NAME",

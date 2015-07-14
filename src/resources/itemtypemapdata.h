@@ -92,6 +92,10 @@ ItemTypeMap itemTypeMap[] =
         // TRANSLATORS: inventory button
         N_("Equip"), N_("Unequip")
     },
+    {"card", ItemType::CARD,
+        // TRANSLATORS: inventory button
+        N_("Insert"), std::string()
+    },
     {"racesprite", ItemType::SPRITE_RACE,
         std::string(), std::string()
     },

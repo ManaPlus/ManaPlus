@@ -187,6 +187,7 @@ static void initStatic()
     mSoundNames["pickup"] = ItemSoundEvent::PICKUP;
     mSoundNames["take"] = ItemSoundEvent::TAKE;
     mSoundNames["put"] = ItemSoundEvent::PUT;
+    mSoundNames["usecard"] = ItemSoundEvent::USECARD;
 }
 
 void ItemDB::load()

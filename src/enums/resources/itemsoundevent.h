@@ -39,7 +39,8 @@ namespace ItemSoundEvent
         PUT,    // put into container
         EQUIP,
         UNEQUIP,
-        USE
+        USE,
+        USECARD
     };
 }  // namespace ItemSoundEvent
 

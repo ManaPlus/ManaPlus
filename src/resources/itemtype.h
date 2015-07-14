@@ -36,6 +36,7 @@ namespace ItemType
         EQUIPMENT_TWO_HANDS_WEAPON,
         EQUIPMENT_TORSO,
         EQUIPMENT_ARMS,  // 5
+        CARD,
         EQUIPMENT_HEAD,
         EQUIPMENT_LEGS,
         EQUIPMENT_SHIELD,
