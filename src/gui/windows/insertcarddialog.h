@@ -35,7 +35,7 @@ class InsertCardDialog final : public SellDialog
          *
          * @see Window::Window
          */
-        InsertCardDialog(const int itemIndex);
+        explicit InsertCardDialog(const int itemIndex);
 
         A_DELETE_COPY(InsertCardDialog)
 

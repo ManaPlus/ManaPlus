@@ -20,11 +20,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "enums/simpletypes/beingid.h"
-#include "enums/being/gender.h"
-
 #ifndef NET_EA_TOKEN_H
 #define NET_EA_TOKEN_H
+
+#include "enums/simpletypes/beingid.h"
+#include "enums/being/gender.h"
 
 struct Token final
 {
