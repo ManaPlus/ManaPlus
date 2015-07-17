@@ -1170,12 +1170,12 @@ void Gui::handleMouseWheelMovedDown(const MouseInput& mouseInput)
     if (mFocusHandler->getDraggedWidget())
         sourceWidget = mFocusHandler->getDraggedWidget();
 
-    int sourceWidgetX = 0;
-    int sourceWidgetY = 0;
     if (sourceWidget)
     {
-        sourceWidget->getAbsolutePosition(sourceWidgetX, sourceWidgetY);
+        int sourceWidgetX = 0;
+        int sourceWidgetY = 0;
 
+        sourceWidget->getAbsolutePosition(sourceWidgetX, sourceWidgetY);
         distributeMouseEvent(sourceWidget,
              MouseEventType::WHEEL_MOVED_DOWN,
              mouseInput.getButton(),
@@ -1192,10 +1192,11 @@ void Gui::handleMouseWheelMovedUp(const MouseInput& mouseInput)
     if (mFocusHandler->getDraggedWidget())
         sourceWidget = mFocusHandler->getDraggedWidget();
 
-    int sourceWidgetX;
-    int sourceWidgetY;
     if (sourceWidget)
     {
+        int sourceWidgetX;
+        int sourceWidgetY;
+
         sourceWidget->getAbsolutePosition(sourceWidgetX, sourceWidgetY);
         distributeMouseEvent(sourceWidget,
              MouseEventType::WHEEL_MOVED_UP,

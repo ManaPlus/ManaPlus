@@ -680,7 +680,8 @@ void Viewport::walkByMouse(const MouseEvent &event)
                     const int clickY = event.getY() + mPixelViewY - 16;
                     destY = event.getY() + mPixelViewY;
                     int newDiffY = 1000000;
-                    const int heightTiles = mainGraphics->mHeight / mMap->getTileHeight();
+                    const int heightTiles = mainGraphics->mHeight
+                        / mMap->getTileHeight();
                     const int tileViewY = mPixelViewY / 32;
                     for (int f = tileViewY; f < tileViewY + heightTiles; f ++)
                     {

@@ -71,11 +71,15 @@
 #define DEPRECATED __attribute__ ((deprecated))
 #define restrict __restrict__
 
+#ifdef __INTEL_COMPILER
+#define RETURNS_NONNULL
+#else  // __INTEL_COMPILER
 #if GCC_VERSION < 40900
 #define RETURNS_NONNULL
-#else
+#else  // GCC_VERSION < 40900
 #define RETURNS_NONNULL __attribute__((returns_nonnull))
-#endif
+#endif  // GCC_VERSION < 40900
+#endif  // __INTEL_COMPILER
 
 #ifndef ENABLE_CILKPLUS
 #define A_NONNULL(...) __attribute__((nonnull (__VA_ARGS__)))

@@ -350,6 +350,7 @@ void ItemDB::loadXmlFile(const std::string &fileName, int &tagNum)
             case ItemType::USABLE:
                 itemInfo->addTag(mTags["Usable"]);
                 break;
+            case ItemType::CARD:
             case ItemType::UNUSABLE:
                 itemInfo->addTag(mTags["Unusable"]);
                 break;
