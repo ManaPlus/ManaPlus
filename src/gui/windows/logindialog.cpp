@@ -94,7 +94,8 @@ LoginDialog::LoginDialog(LoginData &data,
     setCloseButton(true);
     setWindowName("Login");
 
-    charServerHandler->clear();
+    if (charServerHandler)
+        charServerHandler->clear();
 
     // TRANSLATORS: login dialog label
     Label *const serverLabel1 = new Label(this, _("Server:"));
@@ -191,8 +192,15 @@ void LoginDialog::postInit()
         mPassField->requestFocus();
 
     mLoginButton->setEnabled(canSubmit());
-    mRegisterButton->setEnabled(loginHandler->isRegistrationEnabled()
-        || !mLoginData->registerUrl.empty());
+    if (loginHandler)
+    {
+        mRegisterButton->setEnabled(loginHandler->isRegistrationEnabled()
+            || !mLoginData->registerUrl.empty());
+    }
+    else
+    {
+        mRegisterButton->setEnabled(false);
+    }
 }
 
 LoginDialog::~LoginDialog()

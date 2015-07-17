@@ -104,11 +104,16 @@ namespace XML
                 // Get length of file
                 file.seekg(0, std::ios::end);
                 size = static_cast<int>(file.tellg());
-                file.seekg(0, std::ios::beg);
-
-                data = static_cast<char*>(malloc(size));
-
-                file.read(data, size);
+                if (size < 0)
+                {
+                    logger->log("Error loading XML file %s", filename.c_str());
+                }
+                else
+                {
+                    file.seekg(0, std::ios::beg);
+                    data = static_cast<char*>(malloc(size));
+                    file.read(data, size);
+                }
                 file.close();
             }
             else
