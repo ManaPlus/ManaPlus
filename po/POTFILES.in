@@ -73,6 +73,7 @@ src/gui/widgets/tabs/socialpartytab.h
 src/gui/widgets/tabs/socialpickuptab.h
 src/gui/widgets/tabs/socialplayerstab.h
 src/gui/widgets/tabs/socialtabbase.h
+src/gui/windowmanager_unittest.cc
 src/gui/windowmenu.cpp
 src/gui/windows/bankwindow.cpp
 src/gui/windows/buydialog.cpp
@@ -93,6 +94,7 @@ src/gui/windows/eggselectiondialog.cpp
 src/gui/windows/emotewindow.cpp
 src/gui/windows/equipmentwindow.cpp
 src/gui/windows/helpwindow.cpp
+src/gui/windows/insertcarddialog.cpp
 src/gui/windows/inventorywindow.cpp
 src/gui/windows/itemamountwindow.cpp
 src/gui/windows/killstats.cpp

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2015-07-04 18:40+0300\n"
+"POT-Creation-Date: 2015-07-18 14:24+0300\n"
 "PO-Revision-Date: 2015-04-06 11:05+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/manaplus/"
@@ -39,7 +39,7 @@ msgstr ""
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: text dialog button
 #. TRANSLATORS: ok dialog button
-#: src/actions/actions.cpp:157 src/client.cpp:1425 src/client.cpp:1458
+#: src/actions/actions.cpp:157 src/client.cpp:1424 src/client.cpp:1457
 #: src/gamemodifiers.cpp:440 src/gui/dialogsmanager.cpp:168
 #: src/gui/dialogsmanager.cpp:188 src/gui/widgets/tabs/setup_input.cpp:164
 #: src/gui/widgets/tabs/setup_theme.cpp:313
@@ -537,7 +537,7 @@ msgstr "ヘルプ"
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: quests window button
 #. TRANSLATORS: shop window button
-#: src/client.cpp:883 src/client.cpp:1343 src/client.cpp:1362
+#: src/client.cpp:883 src/client.cpp:1342 src/client.cpp:1361
 #: src/gui/dialogsmanager.cpp:105 src/gui/popups/popupmenu.cpp:738
 #: src/gui/popups/popupmenu.cpp:979 src/gui/windows/didyouknowwindow.cpp:81
 #: src/gui/windows/inventorywindow.cpp:265
@@ -549,32 +549,32 @@ msgid "Close"
 msgstr "閉じる"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1014
+#: src/client.cpp:1013 src/gui/windowmanager_unittest.cc:150
 msgid "Connecting to server"
 msgstr "サーバーに接続しています"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1060
+#: src/client.cpp:1059 src/gui/windowmanager_unittest.cc:167
 msgid "Logging in"
 msgstr "ログインしています"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1103
+#: src/client.cpp:1102
 msgid "Entering game world"
 msgstr "ゲームの世界に移動しています"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1235
+#: src/client.cpp:1234
 msgid "Requesting characters"
 msgstr "キャラクターを呼び出しています"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1274
+#: src/client.cpp:1273
 msgid "Connecting to the game server"
 msgstr "ゲームサーバーに接続しています"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1285
+#: src/client.cpp:1284
 msgid "Changing game servers"
 msgstr "ゲームサーバーを変更しています"
 
@@ -588,7 +588,7 @@ msgstr "ゲームサーバーを変更しています"
 #. TRANSLATORS: error header
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: error header
-#: src/client.cpp:1340 src/client.cpp:1359 src/client.cpp:1570
+#: src/client.cpp:1339 src/client.cpp:1358 src/client.cpp:1569
 #: src/gui/windows/changeemaildialog.cpp:166
 #: src/gui/windows/changepassworddialog.cpp:156
 #: src/gui/windows/charcreatedialog.cpp:378
@@ -605,37 +605,37 @@ msgid "Error"
 msgstr "エラー"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1378
+#: src/client.cpp:1377
 msgid "Requesting registration details"
 msgstr "登録内容を呼び出しています"
 
 #. TRANSLATORS: password change message header
-#: src/client.cpp:1421
+#: src/client.cpp:1420
 msgid "Password Change"
 msgstr "パスワード変更"
 
 #. TRANSLATORS: password change message text
-#: src/client.cpp:1423
+#: src/client.cpp:1422
 msgid "Password changed successfully!"
 msgstr "パスワードを変更しました!"
 
 #. TRANSLATORS: email change message header
-#: src/client.cpp:1454
+#: src/client.cpp:1453
 msgid "Email Change"
 msgstr "メールアドレス変更"
 
 #. TRANSLATORS: email change message text
-#: src/client.cpp:1456
+#: src/client.cpp:1455
 msgid "Email changed successfully!"
 msgstr "メールアドレスを変更しました!"
 
 #. TRANSLATORS: unregister message header
-#: src/client.cpp:1486
+#: src/client.cpp:1485
 msgid "Unregister Successful"
 msgstr "登録を解除しました"
 
 #. TRANSLATORS: unregister message text
-#: src/client.cpp:1488
+#: src/client.cpp:1487
 msgid "Farewell, come back any time..."
 msgstr "さようなら　また会いましょう..."
 
@@ -675,7 +675,7 @@ msgid "dyecmd srcdyestring dstfile"
 msgstr ""
 
 #. TRANSLATORS: chat tab header
-#: src/game.cpp:252 src/gui/windows/chatwindow.cpp:2170
+#: src/game.cpp:252 src/gui/windows/chatwindow.cpp:2172
 msgid "General"
 msgstr "一般"
 
@@ -1613,10 +1613,15 @@ msgid "Cancel"
 msgstr "キャンセル"
 
 #. TRANSLATORS: popup label
-#: src/gui/popups/itempopup.cpp:204
+#: src/gui/popups/itempopup.cpp:220
 #, c-format
 msgid "Weight: %s"
 msgstr "重力: %s"
+
+#. TRANSLATORS: popup label
+#: src/gui/popups/itempopup.cpp:285
+msgid "Cards: "
+msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: trade with player
@@ -2768,7 +2773,7 @@ msgstr "最大"
 #. TRANSLATORS: sell dialog label
 #. TRANSLATORS: buy dialog label
 #: src/gui/widgets/selldialog.cpp:130 src/gui/widgets/selldialog.cpp:325
-#: src/gui/windows/buydialog.cpp:255 src/gui/windows/buydialog.cpp:627
+#: src/gui/windows/buydialog.cpp:255 src/gui/windows/buydialog.cpp:626
 #, c-format
 msgid "Price: %s / Total: %s"
 msgstr "価格:%s /合計:%s"
@@ -5062,7 +5067,7 @@ msgid "Ignore mobs"
 msgstr "無視している敵"
 
 #. TRANSLATORS: social window label
-#: src/gui/widgets/tabs/socialfriendstab.h:116
+#: src/gui/widgets/tabs/socialfriendstab.h:114
 #, c-format
 msgid "Friends: %u/%u"
 msgstr ""
@@ -5175,7 +5180,7 @@ msgid "Ignore items"
 msgstr ""
 
 #. TRANSLATORS: social window label
-#: src/gui/widgets/tabs/socialplayerstab.h:194
+#: src/gui/widgets/tabs/socialplayerstab.h:188
 #, c-format
 msgid "Visible players: %d"
 msgstr ""
@@ -5475,7 +5480,7 @@ msgstr "パスワードの変更"
 #. TRANSLATORS: register dialog. label.
 #. TRANSLATORS: unregister dialog. label.
 #: src/gui/windows/changepassworddialog.cpp:68
-#: src/gui/windows/logindialog.cpp:106 src/gui/windows/registerdialog.cpp:76
+#: src/gui/windows/logindialog.cpp:107 src/gui/windows/registerdialog.cpp:76
 #: src/gui/windows/unregisterdialog.cpp:67
 msgid "Password:"
 msgstr "パスワード:"
@@ -5517,7 +5522,7 @@ msgstr "新しいキャラクター"
 #. TRANSLATORS: login dialog label
 #. TRANSLATORS: register dialog. label.
 #: src/gui/windows/charcreatedialog.cpp:81
-#: src/gui/windows/editserverdialog.cpp:71 src/gui/windows/logindialog.cpp:104
+#: src/gui/windows/editserverdialog.cpp:71 src/gui/windows/logindialog.cpp:105
 #: src/gui/windows/registerdialog.cpp:74
 msgid "Name:"
 msgstr "名前:"
@@ -5849,6 +5854,21 @@ msgstr ""
 msgid "Did you know..."
 msgstr ""
 
+#. TRANSLATORS: insert card dialog name
+#: src/gui/windows/insertcarddialog.cpp:43
+#: src/gui/windows/insertcarddialog.cpp:45
+#, fuzzy
+msgid "Insert card"
+msgstr "挿入"
+
+#. TRANSLATORS: insert card dialog button
+#. TRANSLATORS: input action name
+#. TRANSLATORS: inventory button
+#: src/gui/windows/insertcarddialog.cpp:51 src/input/pages/gui.cpp:121
+#: src/resources/itemtypemapdata.h:97
+msgid "Insert"
+msgstr "挿入"
+
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: outfits window button
 #. TRANSLATORS: inventory button
@@ -6067,18 +6087,18 @@ msgid "Custom update host"
 msgstr "カスタムアップデートホスト"
 
 #. TRANSLATORS: login dialog label
-#: src/gui/windows/logindialog.cpp:100
+#: src/gui/windows/logindialog.cpp:101
 msgid "Server:"
 msgstr "サーバー:"
 
 #. TRANSLATORS: login dialog label
-#: src/gui/windows/logindialog.cpp:110
+#: src/gui/windows/logindialog.cpp:111
 #, c-format
 msgid "Update host: %s"
 msgstr "アップデートホスト: %s"
 
 #. TRANSLATORS: question dialog
-#: src/gui/windows/logindialog.cpp:230
+#: src/gui/windows/logindialog.cpp:238
 msgid "Open register url"
 msgstr ""
 
@@ -7319,11 +7339,6 @@ msgstr "選択2"
 #: src/input/pages/gui.cpp:115
 msgid "Backspace"
 msgstr "バックスペース"
-
-#. TRANSLATORS: input action name
-#: src/input/pages/gui.cpp:121
-msgid "Insert"
-msgstr "挿入"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/gui.cpp:127
@@ -8904,7 +8919,7 @@ msgstr ""
 #. TRANSLATORS: unknown info name
 #. TRANSLATORS: being info default name
 #: src/resources/beinginfo.cpp:50 src/resources/db/avatardb.cpp:89
-#: src/resources/db/itemdb.cpp:333 src/resources/db/moddb.cpp:78
+#: src/resources/db/itemdb.cpp:334 src/resources/db/moddb.cpp:78
 #: src/resources/db/monsterdb.cpp:103 src/resources/modinfo.cpp:29
 msgid "unnamed"
 msgstr "名前なし"
@@ -8982,7 +8997,7 @@ msgid "Flee %s"
 msgstr ""
 
 #. TRANSLATORS: item name
-#: src/resources/db/itemdb.cpp:217
+#: src/resources/db/itemdb.cpp:218
 msgid "Unknown item"
 msgstr "不明なアイテム"
 

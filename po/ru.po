@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2015-07-04 18:40+0300\n"
+"POT-Creation-Date: 2015-07-18 14:24+0300\n"
 "PO-Revision-Date: 2015-04-11 11:22+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/manaplus/"
@@ -44,7 +44,7 @@ msgstr "Файл выгружен"
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: text dialog button
 #. TRANSLATORS: ok dialog button
-#: src/actions/actions.cpp:157 src/client.cpp:1425 src/client.cpp:1458
+#: src/actions/actions.cpp:157 src/client.cpp:1424 src/client.cpp:1457
 #: src/gamemodifiers.cpp:440 src/gui/dialogsmanager.cpp:168
 #: src/gui/dialogsmanager.cpp:188 src/gui/widgets/tabs/setup_input.cpp:164
 #: src/gui/widgets/tabs/setup_theme.cpp:313
@@ -544,7 +544,7 @@ msgstr "Помощь"
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: quests window button
 #. TRANSLATORS: shop window button
-#: src/client.cpp:883 src/client.cpp:1343 src/client.cpp:1362
+#: src/client.cpp:883 src/client.cpp:1342 src/client.cpp:1361
 #: src/gui/dialogsmanager.cpp:105 src/gui/popups/popupmenu.cpp:738
 #: src/gui/popups/popupmenu.cpp:979 src/gui/windows/didyouknowwindow.cpp:81
 #: src/gui/windows/inventorywindow.cpp:265
@@ -556,32 +556,32 @@ msgid "Close"
 msgstr "Закрыть"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1014
+#: src/client.cpp:1013 src/gui/windowmanager_unittest.cc:150
 msgid "Connecting to server"
 msgstr "Идет подключение к серверу..."
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1060
+#: src/client.cpp:1059 src/gui/windowmanager_unittest.cc:167
 msgid "Logging in"
 msgstr "Авторизация"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1103
+#: src/client.cpp:1102
 msgid "Entering game world"
 msgstr "Входим в игровой мир"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1235
+#: src/client.cpp:1234
 msgid "Requesting characters"
 msgstr "Получение списка персонажей"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1274
+#: src/client.cpp:1273
 msgid "Connecting to the game server"
 msgstr "Подключение к игровому серверу"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1285
+#: src/client.cpp:1284
 msgid "Changing game servers"
 msgstr "Смена игрового сервера"
 
@@ -595,7 +595,7 @@ msgstr "Смена игрового сервера"
 #. TRANSLATORS: error header
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: error header
-#: src/client.cpp:1340 src/client.cpp:1359 src/client.cpp:1570
+#: src/client.cpp:1339 src/client.cpp:1358 src/client.cpp:1569
 #: src/gui/windows/changeemaildialog.cpp:166
 #: src/gui/windows/changepassworddialog.cpp:156
 #: src/gui/windows/charcreatedialog.cpp:378
@@ -612,37 +612,37 @@ msgid "Error"
 msgstr "Ошибка"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1378
+#: src/client.cpp:1377
 msgid "Requesting registration details"
 msgstr "Запрос регистрационных данных"
 
 #. TRANSLATORS: password change message header
-#: src/client.cpp:1421
+#: src/client.cpp:1420
 msgid "Password Change"
 msgstr "Изменить Пароль"
 
 #. TRANSLATORS: password change message text
-#: src/client.cpp:1423
+#: src/client.cpp:1422
 msgid "Password changed successfully!"
 msgstr "Пароль изменен!"
 
 #. TRANSLATORS: email change message header
-#: src/client.cpp:1454
+#: src/client.cpp:1453
 msgid "Email Change"
 msgstr "Сменить Email"
 
 #. TRANSLATORS: email change message text
-#: src/client.cpp:1456
+#: src/client.cpp:1455
 msgid "Email changed successfully!"
 msgstr "Email изменен!"
 
 #. TRANSLATORS: unregister message header
-#: src/client.cpp:1486
+#: src/client.cpp:1485
 msgid "Unregister Successful"
 msgstr "Регистрация удалена"
 
 #. TRANSLATORS: unregister message text
-#: src/client.cpp:1488
+#: src/client.cpp:1487
 msgid "Farewell, come back any time..."
 msgstr "Хорошо, возвращайтесь в любое время..."
 
@@ -682,7 +682,7 @@ msgid "dyecmd srcdyestring dstfile"
 msgstr "dyecmd файл_строка_цвета файл_назначения"
 
 #. TRANSLATORS: chat tab header
-#: src/game.cpp:252 src/gui/windows/chatwindow.cpp:2170
+#: src/game.cpp:252 src/gui/windows/chatwindow.cpp:2172
 msgid "General"
 msgstr "Общие"
 
@@ -1624,10 +1624,15 @@ msgid "Cancel"
 msgstr "Отмена"
 
 #. TRANSLATORS: popup label
-#: src/gui/popups/itempopup.cpp:204
+#: src/gui/popups/itempopup.cpp:220
 #, c-format
 msgid "Weight: %s"
 msgstr "Вес: %s"
+
+#. TRANSLATORS: popup label
+#: src/gui/popups/itempopup.cpp:285
+msgid "Cards: "
+msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: trade with player
@@ -2780,7 +2785,7 @@ msgstr "Макс"
 #. TRANSLATORS: sell dialog label
 #. TRANSLATORS: buy dialog label
 #: src/gui/widgets/selldialog.cpp:130 src/gui/widgets/selldialog.cpp:325
-#: src/gui/windows/buydialog.cpp:255 src/gui/windows/buydialog.cpp:627
+#: src/gui/windows/buydialog.cpp:255 src/gui/windows/buydialog.cpp:626
 #, c-format
 msgid "Price: %s / Total: %s"
 msgstr "Цена: %s / Всего: %s"
@@ -5087,7 +5092,7 @@ msgid "Ignore mobs"
 msgstr "Игнорируемые монстры"
 
 #. TRANSLATORS: social window label
-#: src/gui/widgets/tabs/socialfriendstab.h:116
+#: src/gui/widgets/tabs/socialfriendstab.h:114
 #, c-format
 msgid "Friends: %u/%u"
 msgstr "Друзей: %u/%u"
@@ -5200,7 +5205,7 @@ msgid "Ignore items"
 msgstr "Игнорировать предметы"
 
 #. TRANSLATORS: social window label
-#: src/gui/widgets/tabs/socialplayerstab.h:194
+#: src/gui/widgets/tabs/socialplayerstab.h:188
 #, c-format
 msgid "Visible players: %d"
 msgstr "Видимых игроков: %d"
@@ -5500,7 +5505,7 @@ msgstr "Изменить пароль"
 #. TRANSLATORS: register dialog. label.
 #. TRANSLATORS: unregister dialog. label.
 #: src/gui/windows/changepassworddialog.cpp:68
-#: src/gui/windows/logindialog.cpp:106 src/gui/windows/registerdialog.cpp:76
+#: src/gui/windows/logindialog.cpp:107 src/gui/windows/registerdialog.cpp:76
 #: src/gui/windows/unregisterdialog.cpp:67
 msgid "Password:"
 msgstr "Пароль:"
@@ -5542,7 +5547,7 @@ msgstr "Новый персонаж"
 #. TRANSLATORS: login dialog label
 #. TRANSLATORS: register dialog. label.
 #: src/gui/windows/charcreatedialog.cpp:81
-#: src/gui/windows/editserverdialog.cpp:71 src/gui/windows/logindialog.cpp:104
+#: src/gui/windows/editserverdialog.cpp:71 src/gui/windows/logindialog.cpp:105
 #: src/gui/windows/registerdialog.cpp:74
 msgid "Name:"
 msgstr "Имя:"
@@ -5879,6 +5884,21 @@ msgstr "Шрифты"
 msgid "Did you know..."
 msgstr "Знаете ли вы..."
 
+#. TRANSLATORS: insert card dialog name
+#: src/gui/windows/insertcarddialog.cpp:43
+#: src/gui/windows/insertcarddialog.cpp:45
+#, fuzzy
+msgid "Insert card"
+msgstr "Вставка"
+
+#. TRANSLATORS: insert card dialog button
+#. TRANSLATORS: input action name
+#. TRANSLATORS: inventory button
+#: src/gui/windows/insertcarddialog.cpp:51 src/input/pages/gui.cpp:121
+#: src/resources/itemtypemapdata.h:97
+msgid "Insert"
+msgstr "Вставка"
+
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: outfits window button
 #. TRANSLATORS: inventory button
@@ -6101,18 +6121,18 @@ msgid "Custom update host"
 msgstr "Польз. сайт обновлений"
 
 #. TRANSLATORS: login dialog label
-#: src/gui/windows/logindialog.cpp:100
+#: src/gui/windows/logindialog.cpp:101
 msgid "Server:"
 msgstr "Сервер:"
 
 #. TRANSLATORS: login dialog label
-#: src/gui/windows/logindialog.cpp:110
+#: src/gui/windows/logindialog.cpp:111
 #, c-format
 msgid "Update host: %s"
 msgstr "Сервер обновлений: %s"
 
 #. TRANSLATORS: question dialog
-#: src/gui/windows/logindialog.cpp:230
+#: src/gui/windows/logindialog.cpp:238
 msgid "Open register url"
 msgstr "Открыть ссылку регистрации"
 
@@ -7354,11 +7374,6 @@ msgstr "Выбор2"
 #: src/input/pages/gui.cpp:115
 msgid "Backspace"
 msgstr "Удаление влево"
-
-#. TRANSLATORS: input action name
-#: src/input/pages/gui.cpp:121
-msgid "Insert"
-msgstr "Вставка"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/gui.cpp:127
@@ -8937,7 +8952,7 @@ msgstr "Новый OpenGL"
 #. TRANSLATORS: unknown info name
 #. TRANSLATORS: being info default name
 #: src/resources/beinginfo.cpp:50 src/resources/db/avatardb.cpp:89
-#: src/resources/db/itemdb.cpp:333 src/resources/db/moddb.cpp:78
+#: src/resources/db/itemdb.cpp:334 src/resources/db/moddb.cpp:78
 #: src/resources/db/monsterdb.cpp:103 src/resources/modinfo.cpp:29
 msgid "unnamed"
 msgstr "безымянный"
@@ -9015,7 +9030,7 @@ msgid "Flee %s"
 msgstr "Уклонение %s"
 
 #. TRANSLATORS: item name
-#: src/resources/db/itemdb.cpp:217
+#: src/resources/db/itemdb.cpp:218
 msgid "Unknown item"
 msgstr "Неизвестный предмет"
 
