@@ -1,3 +1,8 @@
+2015-07-18 New release 1.5.7.18
+fix: moving with mouse on tiles with height more than zero.
+fix: crash if warp to map with heights with smaller size.
+add: support for insert and see cards (hercules).
+
 2015-07-04 New release 1.5.7.4
 fix: draw attack rectange under beings.
 fix: being position with heights layer.
