@@ -907,22 +907,36 @@ void GraphicsManager::initOpenGLFunctions()
         return;
     }
 
-    if (is45)
-    {
-        logger->log1("found GL_EXT_direct_state_access");
-//        assignFunctionEmu2(glTextureSubImage2D, "glTextureSubImage2D");
-    }
-    else if (supportExtension("GL_EXT_direct_state_access"))
-    {
-        logger->log1("found GL_EXT_direct_state_access");
-//        assignFunctionEmu2(glTextureSubImage2D, "glTextureSubImage2DEXT");
+    if (findI(mGlVendor, "NVIDIA") == std::string::npos)
+    {   // not for NVIDIA. in NVIDIA atleast in windows drivers DSA is broken
+        if (is45)
+        {
+            logger->log1("found GL_EXT_direct_state_access");
+            assignFunctionEmu2(glTextureSubImage2D, "glTextureSubImage2D");
+        }
+        else if (supportExtension("GL_EXT_direct_state_access"))
+        {
+            logger->log1("found GL_EXT_direct_state_access");
+            assignFunctionEmu2(glTextureSubImage2D, "glTextureSubImage2DEXT");
+        }
+        else if (supportExtension("GL_ARB_direct_state_access"))
+        {
+            logger->log1("found GL_ARB_direct_state_access");
+            logger->log1("GL_EXT_direct_state_access not found");
+            assignFunctionEmu2(glTextureSubImage2D, "glTextureSubImage2DEXT");
+        }
+        else
+        {
+            logger->log1("GL_EXT_direct_state_access not found");
+            logger->log1("GL_ARB_direct_state_access not found");
+            emulateFunction(glTextureSubImage2D);
+        }
     }
     else
     {
-        logger->log1("GL_EXT_direct_state_access not found");
-//        emulateFunction(glTextureSubImage2D);
+        logger->log1("Not checked for DSA because on NVIDIA it broken");
+        emulateFunction(glTextureSubImage2D);
     }
-    emulateFunction(glTextureSubImage2D);
 
     if (is12 && (is42 || supportExtension("GL_ARB_texture_storage")))
     {
