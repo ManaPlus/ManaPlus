@@ -152,6 +152,7 @@ gmon.out
 
 #mac crap
 .DS_Store
+/Xcode
 
 /manaplus.depend
 /manaplus.layout
