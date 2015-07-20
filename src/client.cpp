@@ -139,10 +139,6 @@
 #include "configuration.h"
 #endif
 
-#ifdef __APPLE__
-#include <CoreFoundation/CFBundle.h>
-#endif
-
 #ifdef WIN32
 #include <SDL_syswm.h>
 #include "utils/specialfolder.h"
