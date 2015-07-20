@@ -81,7 +81,7 @@ class Logger final
         /**
          * Enters a message in the log. The message will be timestamped.
          */
-        void log(const char *const log_text, ...)
+        void log(const char *const log_text, ...) A_NONNULL(2)
 #ifdef __GNUC__
 #ifdef __OpenBSD__
 
@@ -102,7 +102,7 @@ class Logger final
         /**
          * Enters a message in the log (thread safe).
          */
-        void log_r(const char *const log_text, ...)
+        void log_r(const char *const log_text, ...) A_NONNULL(2)
 #ifdef __GNUC__
 #ifdef __OpenBSD__
             __attribute__((__format__(printf, 2, 3)))
@@ -122,7 +122,7 @@ class Logger final
         /**
          * Enters a message in the log. The message will be timestamped.
          */
-        void log1(const char *const log_text);
+        void log1(const char *const log_text) A_NONNULL(2);
 
         /**
          * Enters a message in the log. The message will be timestamped.

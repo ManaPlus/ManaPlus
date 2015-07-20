@@ -268,20 +268,28 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     if (serverFeatures->haveLookSelection() && mMinLook < mMaxLook)
     {
         y += 24;
-        mPrevLookButton->setPosition(leftX, y);
-        mNextLookButton->setPosition(rightX, y);
+        if (mPrevLookButton)
+            mPrevLookButton->setPosition(leftX, y);
+        if (mNextLookButton)
+            mNextLookButton->setPosition(rightX, y);
         y += 5;
-        mLookLabel->setPosition(labelX, y);
-        mLookNameLabel->setPosition(nameX, y);  // 93
+        if (mLookLabel)
+            mLookLabel->setPosition(labelX, y);
+        if (mLookNameLabel)
+            mLookNameLabel->setPosition(nameX, y);  // 93
     }
     if (serverFeatures->haveRaceSelection())
     {
         y += 24;
-        mPrevRaceButton->setPosition(leftX, y);
-        mNextRaceButton->setPosition(rightX, y);
+        if (mPrevRaceButton)
+            mPrevRaceButton->setPosition(leftX, y);
+        if (mNextRaceButton)
+            mNextRaceButton->setPosition(rightX, y);
         y += 5;
-        mRaceLabel->setPosition(labelX, y);
-        mRaceNameLabel->setPosition(nameX, y);
+        if (mRaceLabel)
+            mRaceLabel->setPosition(labelX, y);
+        if (mRaceNameLabel)
+            mRaceNameLabel->setPosition(nameX, y);
     }
 
     updateSliders();

@@ -3611,7 +3611,7 @@ void Being::addItemParticles(const int id, const SpriteDisplay &display)
         pi = (*it).second;
     }
 
-    if (!pi->particles.empty())
+    if (!pi || !pi->particles.empty())
         return;
 
     // setup particle effects
@@ -3735,7 +3735,10 @@ void Being::setRiding(const bool b)
     if (b)
     {
         mHorseInfo = HorseDB::get(1);
-        mHorseSprite = mHorseInfo->sprite;
+        if (mHorseInfo)
+            mHorseSprite = mHorseInfo->sprite;
+        else
+            mHorseSprite = nullptr;
     }
     else
     {

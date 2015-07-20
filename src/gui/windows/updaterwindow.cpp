@@ -362,7 +362,11 @@ void UpdaterWindow::loadNews()
     // Reallocate and include terminating 0 character
     mMemoryBuffer = static_cast<char*>(realloc(
         mMemoryBuffer, mDownloadedBytes + 1));
-
+    if (!mMemoryBuffer)
+    {
+        logger->log1("Couldn't load news");
+        return;
+    }
     mMemoryBuffer[mDownloadedBytes] = '\0';
     mBrowserBox->clearRows();
 
@@ -425,6 +429,11 @@ void UpdaterWindow::loadPatch()
     // Reallocate and include terminating 0 character
     mMemoryBuffer = static_cast<char*>(
         realloc(mMemoryBuffer, mDownloadedBytes + 1));
+    if (!mMemoryBuffer)
+    {
+        logger->log1("Couldn't load patch");
+        return;
+    }
     mMemoryBuffer[mDownloadedBytes] = '\0';
 
     std::string version;

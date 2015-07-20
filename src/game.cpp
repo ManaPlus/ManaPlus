@@ -275,13 +275,9 @@ static void createGuiWindows()
         battleChatTab = nullptr;
     }
 
-    if (chatWindow)
-    {
-        chatWindow->showGMTab();
-
-        if (!isSafeMode)
-            chatWindow->loadState();
-    }
+    chatWindow->showGMTab();
+    if (!isSafeMode)
+        chatWindow->loadState();
 
     if (setupWindow)
         setupWindow->externalUpdate();

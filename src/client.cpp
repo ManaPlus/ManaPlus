@@ -426,8 +426,7 @@ void Client::gameInit()
             branding.getValue("defaultServerType", "tmwathena"));
     }
 
-    if (chatLogger)
-        chatLogger->setServerName(mCurrentServer.hostname);
+    chatLogger->setServerName(mCurrentServer.hostname);
 
     if (loginData.username.empty() && loginData.remember)
         loginData.username = serverConfig.getValue("username", "");

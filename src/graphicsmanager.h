@@ -134,7 +134,8 @@ class GraphicsManager final
 
         static std::string getGLString(const int num) A_WARN_UNUSED;
 
-        static void logString(const char *const format, const int num);
+        static void logString(const char *const format,
+                              const int num) A_NONNULL(1);
 
         void detectVideoSettings();
 

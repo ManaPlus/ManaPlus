@@ -1531,6 +1531,8 @@ impHandler(invToStorage)
     Item *item = nullptr;
     const int amount = getAmountFromEvent(event, item,
         InventoryType::INVENTORY);
+    if (!item)
+        return true;
     if (amount)
     {
         inventoryHandler->moveItem2(InventoryType::INVENTORY,

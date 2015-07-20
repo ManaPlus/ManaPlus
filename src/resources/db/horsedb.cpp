@@ -97,6 +97,8 @@ void HorseDB::loadXmlFile(const std::string &fileName)
         else
             currentInfo = new HorseInfo;
 
+        if (!currentInfo)
+            continue;
         currentInfo->offsetX = XML::getProperty(horseNode, "offsetX", 0);
         currentInfo->offsetY = XML::getProperty(horseNode, "offsetY", 0);
 

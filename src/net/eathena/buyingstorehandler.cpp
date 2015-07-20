@@ -208,6 +208,8 @@ void BuyingStoreHandler::processBuyingStoreItemsList(Net::MessageIn &msg)
         const int itemType = msg.readUInt8("item type");
         const int itemId = msg.readInt16("item id");
 
+        if (!inv)
+            continue;
         const Item *const item = inv->findItem(itemId, 1);
         if (!item)
             continue;

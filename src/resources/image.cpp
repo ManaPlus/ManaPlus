@@ -305,6 +305,8 @@ void Image::setAlpha(const float alpha)
             else
             {
                 mSDLSurface = SDLImageHelper::SDLDuplicateSurface(mSDLSurface);
+                if (!mSDLSurface)
+                    return;
             }
         }
 

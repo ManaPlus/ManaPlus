@@ -373,13 +373,9 @@ bool retrieveBuffer(std::string& text, size_t& pos)
     {
         Display *const dpy = info.info.x11.display;
         Window us = info.info.x11.window;
-        char *data = nullptr;
 
         requestAtom = XInternAtom(dpy, "UTF8_STRING", true);
-
-        if (!data)
-            data = getSelection(dpy, us, XA_PRIMARY);
-
+        char *data = getSelection(dpy, us, XA_PRIMARY);
         if (!data)
             data = getSelection(dpy, us, XA_SECONDARY);
         if (!data)

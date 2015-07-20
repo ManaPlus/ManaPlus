@@ -136,11 +136,14 @@ void MailEditWindow::action(const ActionEvent &event)
         if (tempItem)
         {
             const Inventory *const inv = PlayerInfo::getInventory();
-            const Item *const item = inv->findItem(tempItem->getId(), 1);
-            if (item)
+            if (inv)
             {
-                mailHandler->setAttach(item->getInvIndex(),
-                    tempItem->getQuantity());
+                const Item *const item = inv->findItem(tempItem->getId(), 1);
+                if (item)
+                {
+                    mailHandler->setAttach(item->getInvIndex(),
+                        tempItem->getQuantity());
+                }
             }
         }
 

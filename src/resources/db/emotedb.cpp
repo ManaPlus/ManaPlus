@@ -108,6 +108,8 @@ void EmoteDB::loadXmlFile(const std::string &fileName)
             currentInfo = mEmoteInfos[id];
         else
             currentInfo = new EmoteInfo;
+        if (!currentInfo)
+            continue;
         currentInfo->time = XML::getProperty(emoteNode, "time", 500);
         currentInfo->effectId = XML::getProperty(emoteNode, "effect", -1);
 

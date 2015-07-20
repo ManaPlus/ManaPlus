@@ -54,6 +54,9 @@ static void xmlErrorLogger(void *ctx A_UNUSED, const char *msg, ...)
     if (msgSize * 3 > size)
         size = msgSize * 3;
 
+    if (!msg)
+        return;
+
     char* buf = new char[size + 1];
     va_list ap;
 

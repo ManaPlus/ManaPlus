@@ -803,6 +803,8 @@ void InventoryHandler::processPlayerUseCard(Net::MessageIn &msg)
     for (int f = 0; f < count; f ++)
     {
         const int itemIndex = msg.readInt16("item index") - INVENTORY_OFFSET;
+        if (!inv)
+            continue;
         const Item *const item = inv->getItem(itemIndex);
         if (!item)
             continue;
@@ -822,6 +824,8 @@ void InventoryHandler::processPlayerInsertCard(Net::MessageIn &msg)
     {
         NotifyManager::notify(NotifyTypes::CARD_INSERT_SUCCESS);
         Inventory *const inv = PlayerInfo::getInventory();
+        if (!inv)
+            return;
         Item *const card = inv->getItem(cardIndex);
         int cardId = 0;
         if (card)

@@ -663,7 +663,6 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
             return;
 
         dstBeing = createBeing2(msg, id, job, type);
-
         if (!dstBeing)
             return;
     }
@@ -831,7 +830,6 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
             return;
 
         dstBeing = createBeing2(msg, id, job, type);
-
         if (!dstBeing)
             return;
     }
@@ -1001,7 +999,6 @@ void BeingHandler::processBeingSpawn(Net::MessageIn &msg)
             return;
 
         dstBeing = createBeing2(msg, id, job, type);
-
         if (!dstBeing)
             return;
     }
@@ -1120,6 +1117,8 @@ void BeingHandler::processMapTypeProperty(Net::MessageIn &msg)
         MapTypeProperty2 props;
         props.data = static_cast<uint32_t>(flags);
         Game *const game = Game::instance();
+        if (!game)
+            return;
         Map *const map = game->getCurrentMap();
         if (!map)
             return;
@@ -1679,6 +1678,8 @@ void BeingHandler::processBeingFakeName(Net::MessageIn &msg)
     msg.skip(4, "unsued");
 
     Being *const dstBeing = createBeing2(msg, id, job, type);
+    if (!dstBeing)
+        return;
     dstBeing->setSubtype(fromInt(job, BeingTypeId), 0);
     dstBeing->setTileCoords(x, y);
     dstBeing->setDirection(dir);
