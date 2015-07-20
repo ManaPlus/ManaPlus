@@ -909,7 +909,7 @@ void Gui::distributeMouseEvent(Widget *const source,
         if (type == MouseEventType::RELEASED)
             dragDrop.clear();
 
-        if (event.isConsumed())
+        if (!widget || event.isConsumed())
             break;
 
         // If a non modal focused widget has been reach
@@ -1306,8 +1306,12 @@ void Gui::distributeKeyEvent(KeyEvent &event) const
 
         // If a non modal focused widget has been reach
         // and we have modal focus cancel the distribution.
-        if (mFocusHandler->getModalFocused() && !widget->isModalFocused())
+        if (widget &&
+            mFocusHandler->getModalFocused() &&
+            !widget->isModalFocused())
+        {
             break;
+        }
     }
 }
 

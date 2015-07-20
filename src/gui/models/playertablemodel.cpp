@@ -96,10 +96,6 @@ void PlayerTableModel::playerRelationsUpdated()
 
     freeWidgets();
     StringVect *const player_names = player_relations.getPlayers();
-
-    if (!player_names)
-        return;
-
     delete mPlayers;
     mPlayers = player_names;
 
