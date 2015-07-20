@@ -152,14 +152,6 @@ gmon.out
 
 #mac crap
 .DS_Store
-Xcode/ManaPlus.xcodeproj/xcuserdata
-Xcode/ManaPlus.xcodeproj/project.xcworkspace/xcuserdata
-Xcode/Release/ManaPlus.dmg
-Xcode/Release/*.dmg
-Xcode/Release/Manaplus_ssh.txt
-Xcode/DerivedData/
-Xcode/Build/
-Xcode/Release/Release*
 
 /manaplus.depend
 /manaplus.layout
