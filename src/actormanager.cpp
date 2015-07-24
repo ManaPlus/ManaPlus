@@ -40,6 +40,7 @@
 #include "input/inputmanager.h"
 
 #include "utils/checkutils.h"
+#include "utils/mathutils.h"
 #include "utils/gettext.h"
 
 #include "net/beinghandler.h"
@@ -1288,7 +1289,7 @@ void ActorManager::heal(const Being *const target) const
     }
 }
 
-Being* ActorManager::findMostDamagedPlayer() const
+Being* ActorManager::findMostDamagedPlayer(const int maxTileDist) const
 {
     if (!localPlayer)
         return nullptr;
@@ -1311,6 +1312,12 @@ Being* ActorManager::findMostDamagedPlayer() const
             continue;
         }
 
+        const int dx = being->getTileX() - localPlayer->getTileX();
+        const int dy = being->getTileY() - localPlayer->getTileY();
+        const int distance = fastSqrtInt(dx * dx + dy * dy);
+
+        if (distance > maxTileDist)
+            continue;
 
         if (being->getDamageTaken() > maxDamageTaken)
         {

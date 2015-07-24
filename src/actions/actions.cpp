@@ -98,6 +98,7 @@
 #include "utils/delete2.h"
 #include "utils/gettext.h"
 #include "utils/timer.h"
+#include "utils/mathutils.h"
 
 #ifdef ANDROID
 #ifndef USE_SDL2
@@ -531,7 +532,21 @@ impHandler0(healmd)
 {
     if (actorManager)
     {
-        Being *target = actorManager->findMostDamagedPlayer();
+        const int matk = PlayerInfo::getStatEffective(Attributes::MATK);
+        int maxHealingRadius;
+
+        // magic levels < 2
+        if (PlayerInfo::getSkillLevel(340) < 2
+            || PlayerInfo::getSkillLevel(341) < 2)
+        {
+            maxHealingRadius = matk / 100 + 1;
+        }
+        else
+        {
+            maxHealingRadius = (12 * fastSqrtInt(matk) + matk) / 100 + 1;
+        }
+
+        Being *target = actorManager->findMostDamagedPlayer(maxHealingRadius);
         if (target)
             actorManager->heal(target);
 
