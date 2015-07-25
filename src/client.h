@@ -116,6 +116,8 @@ class Client final : public ConfigListener,
 
         void stateConnectServer1();
 
+        void stateWorldSelect1();
+
         ServerInfo mCurrentServer;
 
         Game *mGame;

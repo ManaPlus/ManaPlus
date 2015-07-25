@@ -775,6 +775,15 @@ void Client::stateConnectServer1()
     }
 }
 
+void Client::stateWorldSelect1()
+{
+    if (mOldState == STATE_UPDATE)
+    {
+        if (loginHandler->getWorlds().size() < 2)
+            mState = STATE_PRE_LOGIN;
+    }
+}
+
 int Client::gameExec()
 {
     int lastTickTime = tick_time;
@@ -845,10 +854,9 @@ int Client::gameExec()
         {
             stateConnectServer1();
         }
-        else if (mState == STATE_WORLD_SELECT && mOldState == STATE_UPDATE)
+        else if (mState == STATE_WORLD_SELECT)
         {
-            if (loginHandler->getWorlds().size() < 2)
-                mState = STATE_PRE_LOGIN;
+            stateWorldSelect1();
         }
         else if (mOldState == STATE_START ||
                  (mOldState == STATE_GAME && mState != STATE_GAME))
