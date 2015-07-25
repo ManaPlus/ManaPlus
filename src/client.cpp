@@ -825,6 +825,12 @@ void Client::stateGame1()
         mainGraphics->getHeight());
 }
 
+void Client::stateSwitchLogin1()
+{
+    if (mOldState == STATE_GAME)
+        gameHandler->disconnect();
+}
+
 int Client::gameExec()
 {
     int lastTickTime = tick_time;
@@ -904,10 +910,11 @@ int Client::gameExec()
         {
             stateGame1();
         }
+        else if (mState == STATE_SWITCH_LOGIN)
+        {
+            stateSwitchLogin1();
+        }
         BLOCK_END("Client::gameExec 6")
-
-        if (mState == STATE_SWITCH_LOGIN && mOldState == STATE_GAME)
-            gameHandler->disconnect();
 
         if (mState != mOldState)
         {

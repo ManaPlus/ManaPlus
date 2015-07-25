@@ -120,6 +120,8 @@ class Client final : public ConfigListener,
 
         void stateGame1();
 
+        void stateSwitchLogin1();
+
         ServerInfo mCurrentServer;
 
         Game *mGame;
