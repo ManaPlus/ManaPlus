@@ -64,7 +64,7 @@ static const uint16_t crc_table[256] =
     0x6e17, 0x7e36, 0x4e55, 0x5e74, 0x2e93, 0x3eb2, 0x0ed1, 0x1ef0
 };
 
-static const int square_roots[1000] =
+static const uint8_t square_roots[1000] =
 {
     0, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4,
     4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6,
@@ -188,7 +188,7 @@ inline int powerOfTwo(const unsigned int input)
 inline int fastSqrtInt(const unsigned int n)
 {
     if (n < 1000)
-        return square_roots[n];
+        return static_cast<int>(square_roots[n]);
     return sqrt(n);
 }
 
