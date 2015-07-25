@@ -703,6 +703,78 @@ void Client::stateConnectGame1()
         loginHandler->disconnect();
 }
 
+void Client::stateConnectServer1()
+{
+    if (mOldState == STATE_CHOOSE_SERVER)
+    {
+        settings.serverName = mCurrentServer.hostname;
+        ConfigManager::initServerConfig(mCurrentServer.hostname);
+        PacketLimiter::initPacketLimiter();
+        initTradeFilter();
+        Dirs::initUsersDir();
+        player_relations.init();
+
+        // Initialize the item and emote shortcuts.
+        for (unsigned f = 0; f < SHORTCUT_TABS; f ++)
+        {
+            delete itemShortcut[f];
+            itemShortcut[f] = new ItemShortcut(f);
+        }
+        delete emoteShortcut;
+        emoteShortcut = new EmoteShortcut;
+
+        // Initialize the drop shortcuts.
+        delete dropShortcut;
+        dropShortcut = new DropShortcut;
+
+        initFeatures();
+        PlayerInfo::loadData();
+        loginData.registerUrl = mCurrentServer.registerUrl;
+        if (!mCurrentServer.onlineListUrl.empty())
+            settings.onlineListUrl = mCurrentServer.onlineListUrl;
+        else
+            settings.onlineListUrl = settings.serverName;
+        settings.persistentIp = mCurrentServer.persistentIp;
+        settings.supportUrl = mCurrentServer.supportUrl;
+        settings.updateMirrors = mCurrentServer.updateMirrors;
+
+        if (settings.options.username.empty())
+        {
+            if (loginData.remember)
+                loginData.username = serverConfig.getValue("username", "");
+            else
+                loginData.username.clear();
+        }
+        else
+        {
+            loginData.username = settings.options.username;
+        }
+
+        loginData.remember = serverConfig.getValue("remember", 1);
+        Net::connectToServer(mCurrentServer);
+
+#ifdef USE_MUMBLE
+        if (mumbleManager)
+            mumbleManager->setServer(mCurrentServer.hostname);
+#endif
+
+#ifdef TMWA_SUPPORT
+        GuildManager::init();
+#endif
+
+        if (!mConfigAutoSaved)
+        {
+            mConfigAutoSaved = true;
+            config.write();
+        }
+    }
+    else if (mOldState != STATE_CHOOSE_SERVER &&
+             loginHandler->isConnected())
+    {
+        mState = STATE_PRE_LOGIN;
+    }
+}
+
 int Client::gameExec()
 {
     int lastTickTime = tick_time;
@@ -769,75 +841,9 @@ int Client::gameExec()
         {
             stateConnectGame1();
         }
-        else if (mState == STATE_CONNECT_SERVER &&
-                 mOldState == STATE_CHOOSE_SERVER)
+        else if (mState == STATE_CONNECT_SERVER)
         {
-            settings.serverName = mCurrentServer.hostname;
-            ConfigManager::initServerConfig(mCurrentServer.hostname);
-            PacketLimiter::initPacketLimiter();
-            initTradeFilter();
-            Dirs::initUsersDir();
-            player_relations.init();
-
-            // Initialize the item and emote shortcuts.
-            for (unsigned f = 0; f < SHORTCUT_TABS; f ++)
-            {
-                delete itemShortcut[f];
-                itemShortcut[f] = new ItemShortcut(f);
-            }
-            delete emoteShortcut;
-            emoteShortcut = new EmoteShortcut;
-
-            // Initialize the drop shortcuts.
-            delete dropShortcut;
-            dropShortcut = new DropShortcut;
-
-            initFeatures();
-            PlayerInfo::loadData();
-            loginData.registerUrl = mCurrentServer.registerUrl;
-            if (!mCurrentServer.onlineListUrl.empty())
-                settings.onlineListUrl = mCurrentServer.onlineListUrl;
-            else
-                settings.onlineListUrl = settings.serverName;
-            settings.persistentIp = mCurrentServer.persistentIp;
-            settings.supportUrl = mCurrentServer.supportUrl;
-            settings.updateMirrors = mCurrentServer.updateMirrors;
-
-            if (settings.options.username.empty())
-            {
-                if (loginData.remember)
-                    loginData.username = serverConfig.getValue("username", "");
-                else
-                    loginData.username.clear();
-            }
-            else
-            {
-                loginData.username = settings.options.username;
-            }
-
-            loginData.remember = serverConfig.getValue("remember", 1);
-            Net::connectToServer(mCurrentServer);
-
-#ifdef USE_MUMBLE
-            if (mumbleManager)
-                mumbleManager->setServer(mCurrentServer.hostname);
-#endif
-
-#ifdef TMWA_SUPPORT
-            GuildManager::init();
-#endif
-
-            if (!mConfigAutoSaved)
-            {
-                mConfigAutoSaved = true;
-                config.write();
-            }
-        }
-        else if (mState == STATE_CONNECT_SERVER &&
-                 mOldState != STATE_CHOOSE_SERVER &&
-                 loginHandler->isConnected())
-        {
-            mState = STATE_PRE_LOGIN;
+            stateConnectServer1();
         }
         else if (mState == STATE_WORLD_SELECT && mOldState == STATE_UPDATE)
         {
