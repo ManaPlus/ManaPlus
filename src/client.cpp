@@ -455,6 +455,18 @@ void Client::gameInit()
     WindowManager::updateScreenKeyboard(SDL_GetScreenKeyboardHeight(nullptr));
 #endif
 #endif
+
+#ifdef USE_MUMBLE
+    if (!mumbleManager)
+        mumbleManager = new MumbleManager();
+#endif
+
+    mSkin = theme->load("windowmenu.xml", "");
+    if (mSkin)
+    {
+        mButtonPadding = mSkin->getPadding();
+        mButtonSpacing = mSkin->getOption("spacing", 3);
+    }
 }
 
 Client::~Client()
@@ -688,18 +700,6 @@ int Client::testsExec()
 int Client::gameExec()
 {
     int lastTickTime = tick_time;
-
-#ifdef USE_MUMBLE
-    if (!mumbleManager)
-        mumbleManager = new MumbleManager();
-#endif
-
-    mSkin = theme->load("windowmenu.xml", "");
-    if (mSkin)
-    {
-        mButtonPadding = mSkin->getPadding();
-        mButtonSpacing = mSkin->getOption("spacing", 3);
-    }
 
     while (mState != STATE_EXIT)
     {
