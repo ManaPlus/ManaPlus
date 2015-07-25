@@ -697,6 +697,12 @@ int Client::testsExec()
     top->add(var);
 
 
+void Client::stateConnectGame1()
+{
+    if (gameHandler->isConnected())
+        loginHandler->disconnect();
+}
+
 int Client::gameExec()
 {
     int lastTickTime = tick_time;
@@ -759,10 +765,9 @@ int Client::gameExec()
         BLOCK_END("~Client::SDL_framerateDelay")
 
         BLOCK_START("Client::gameExec 6")
-        if (mState == STATE_CONNECT_GAME &&
-            gameHandler->isConnected())
+        if (mState == STATE_CONNECT_GAME)
         {
-            loginHandler->disconnect();
+            stateConnectGame1();
         }
         else if (mState == STATE_CONNECT_SERVER &&
                  mOldState == STATE_CHOOSE_SERVER)

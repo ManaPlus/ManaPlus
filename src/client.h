@@ -112,6 +112,8 @@ class Client final : public ConfigListener,
 
         static void logVars();
 
+        void stateConnectGame1();
+
         ServerInfo mCurrentServer;
 
         Game *mGame;
