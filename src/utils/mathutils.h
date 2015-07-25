@@ -28,7 +28,7 @@
 
 #include "localconsts.h"
 
-static const uint16_t crc_table[256] =
+static constexpr const uint16_t crc_table[256] =
 {
     0x0000, 0x1021, 0x2042, 0x3063, 0x4084, 0x50a5, 0x60c6, 0x70e7,
     0x8108, 0x9129, 0xa14a, 0xb16b, 0xc18c, 0xd1ad, 0xe1ce, 0xf1ef,
@@ -64,7 +64,7 @@ static const uint16_t crc_table[256] =
     0x6e17, 0x7e36, 0x4e55, 0x5e74, 0x2e93, 0x3eb2, 0x0ed1, 0x1ef0
 };
 
-static const uint8_t square_roots[1000] =
+static constexpr const uint8_t square_roots[1000] =
 {
     0, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4,
     4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6,
@@ -119,12 +119,13 @@ static const uint8_t square_roots[1000] =
 };
 
 inline uint16_t getCrc16(const std::string &str) A_WARN_UNUSED;
-inline float fastInvSqrt(float x) A_WARN_UNUSED;
-inline float fastSqrt(const float x) A_WARN_UNUSED;
+constexpr inline float fastInvSqrt(float x) A_WARN_UNUSED;
+constexpr inline float fastSqrt(const float x) A_WARN_UNUSED;
 constexpr inline float weightedAverage(const float n1, const float n2,
                                        const float w) A_WARN_UNUSED;
 constexpr inline int roundDouble(const double v) A_WARN_UNUSED;
-inline int powerOfTwo(const unsigned int input) A_WARN_UNUSED;
+constexpr inline int powerOfTwo(const unsigned int input) A_WARN_UNUSED;
+constexpr inline int fastSqrtInt(const unsigned int n) A_WARN_UNUSED;
 
 inline uint16_t getCrc16(const std::string &str)
 {
@@ -150,9 +151,9 @@ inline uint16_t getCrc16(const std::string &str)
  * Unfortunately the original creator of this function seems to be unknown.
  */
 
-inline float fastInvSqrt(float x)
+constexpr inline float fastInvSqrt(float x)
 {
-    union { int i; float x; } tmp;
+    union { int i; float x; } tmp = {0U};
     const float xhalf = 0.5F * x;
     tmp.x = x;
     tmp.i = 0x5f375a86 - (tmp.i >> 1);
@@ -161,7 +162,7 @@ inline float fastInvSqrt(float x)
     return x;
 }
 
-inline float fastSqrt(const float x)
+constexpr inline float fastSqrt(const float x)
 {
     return 1.0F / fastInvSqrt(x);
 }
@@ -177,7 +178,7 @@ constexpr inline int roundDouble(const double v)
     return (v > 0.0) ? static_cast<int>(v + 0.5) : static_cast<int>(v - 0.5);
 }
 
-inline int powerOfTwo(const unsigned int input)
+constexpr inline int powerOfTwo(const unsigned int input)
 {
     unsigned int value = 1;
     while (value < input)
@@ -185,7 +186,7 @@ inline int powerOfTwo(const unsigned int input)
     return value;
 }
 
-inline int fastSqrtInt(const unsigned int n)
+constexpr inline int fastSqrtInt(const unsigned int n)
 {
     if (n < 1000)
         return static_cast<int>(square_roots[n]);
