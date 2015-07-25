@@ -107,7 +107,7 @@ MiniStatusWindow::MiniStatusWindow() :
         // TRANSLATORS: status bar name
         "arrows bar", _("arrows bar"))),
     mStatusBar(createBar(100, (config.getIntValue("fontSize") > 16
-        ? 250 : 165), 0, ThemeColorId::STATUS_BAR,
+        ? 270 : 180), 0, ThemeColorId::STATUS_BAR,
         ProgressColorId::PROG_STATUS,
         "statusprogressbar.xml", "statusprogressbar_fill.xml",
         // TRANSLATORS: status bar name
