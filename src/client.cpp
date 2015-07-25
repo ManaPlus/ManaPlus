@@ -784,6 +784,47 @@ void Client::stateWorldSelect1()
     }
 }
 
+void Client::stateGame1()
+{
+    if (!gui)
+        return;
+
+    BasicContainer2 *const top = static_cast<BasicContainer2*>(
+        gui->getTop());
+
+    if (!top)
+        return;
+
+    CREATEWIDGETV(desktop, Desktop, nullptr);
+    top->add(desktop);
+    int x = top->getWidth() - mButtonPadding;
+    ADDBUTTON(mSetupButton, new Button(desktop,
+        // TRANSLATORS: setup tab quick button
+        _("Setup"), "Setup", this))
+    ADDBUTTON(mPerfomanceButton, new Button(desktop,
+        // TRANSLATORS: perfoamance tab quick button
+        _("Performance"), "Perfomance", this))
+    ADDBUTTON(mVideoButton, new Button(desktop,
+        // TRANSLATORS: video tab quick button
+        _("Video"), "Video", this))
+    ADDBUTTON(mThemesButton, new Button(desktop,
+        // TRANSLATORS: theme tab quick button
+        _("Theme"), "Themes", this))
+    ADDBUTTON(mAboutButton, new Button(desktop,
+        // TRANSLATORS: theme tab quick button
+        _("About"), "about", this))
+    ADDBUTTON(mHelpButton, new Button(desktop,
+        // TRANSLATORS: theme tab quick button
+        _("Help"), "help", this))
+#ifdef ANDROID
+    ADDBUTTON(mCloseButton, new Button(desktop,
+        // TRANSLATORS: close quick button
+        _("Close"), "close", this))
+#endif
+    desktop->setSize(mainGraphics->getWidth(),
+        mainGraphics->getHeight());
+}
+
 int Client::gameExec()
 {
     int lastTickTime = tick_time;
@@ -861,43 +902,7 @@ int Client::gameExec()
         else if (mOldState == STATE_START ||
                  (mOldState == STATE_GAME && mState != STATE_GAME))
         {
-            if (!gui)
-                break;
-
-            BasicContainer2 *const top = static_cast<BasicContainer2*>(
-                gui->getTop());
-
-            if (!top)
-                break;
-
-            CREATEWIDGETV(desktop, Desktop, nullptr);
-            top->add(desktop);
-            int x = top->getWidth() - mButtonPadding;
-            ADDBUTTON(mSetupButton, new Button(desktop,
-                // TRANSLATORS: setup tab quick button
-                _("Setup"), "Setup", this))
-            ADDBUTTON(mPerfomanceButton, new Button(desktop,
-                // TRANSLATORS: perfoamance tab quick button
-                _("Performance"), "Perfomance", this))
-            ADDBUTTON(mVideoButton, new Button(desktop,
-                // TRANSLATORS: video tab quick button
-                _("Video"), "Video", this))
-            ADDBUTTON(mThemesButton, new Button(desktop,
-                // TRANSLATORS: theme tab quick button
-                _("Theme"), "Themes", this))
-            ADDBUTTON(mAboutButton, new Button(desktop,
-                // TRANSLATORS: theme tab quick button
-                _("About"), "about", this))
-            ADDBUTTON(mHelpButton, new Button(desktop,
-                // TRANSLATORS: theme tab quick button
-                _("Help"), "help", this))
-#ifdef ANDROID
-            ADDBUTTON(mCloseButton, new Button(desktop,
-                // TRANSLATORS: close quick button
-                _("Close"), "close", this))
-#endif
-            desktop->setSize(mainGraphics->getWidth(),
-                mainGraphics->getHeight());
+            stateGame1();
         }
         BLOCK_END("Client::gameExec 6")
 
