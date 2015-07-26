@@ -496,6 +496,7 @@ DefaultsData* getPathsDefaults()
     AddDEF("guiIcons", "graphics/guiicons/");
     AddDEF("shaders", "graphics/shaders/");
     AddDEF("help", "help/");
+    AddDEF("badges", "graphics/badges/");
 
     AddDEF("simpleVertexShader", "simple_vertex.glsl");
     AddDEF("simpleFragmentShader", "simple_frag.glsl");

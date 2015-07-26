@@ -399,6 +399,7 @@ data/evol/evol.desktop
 data/evol/Makefile
 data/fonts/Makefile
 data/graphics/Makefile
+data/graphics/badges/Makefile
 data/graphics/flags/Makefile
 data/graphics/gui/Makefile
 data/graphics/images/Makefile
