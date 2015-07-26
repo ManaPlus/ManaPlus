@@ -119,13 +119,13 @@ static constexpr const uint8_t square_roots[1000] =
 };
 
 inline uint16_t getCrc16(const std::string &str) A_WARN_UNUSED;
-constexpr inline float fastInvSqrt(float x) A_WARN_UNUSED;
-constexpr inline float fastSqrt(const float x) A_WARN_UNUSED;
+constexpr2 inline float fastInvSqrt(float x) A_WARN_UNUSED;
+constexpr2 inline float fastSqrt(const float x) A_WARN_UNUSED;
 constexpr inline float weightedAverage(const float n1, const float n2,
                                        const float w) A_WARN_UNUSED;
 constexpr inline int roundDouble(const double v) A_WARN_UNUSED;
-constexpr inline int powerOfTwo(const unsigned int input) A_WARN_UNUSED;
-constexpr inline int fastSqrtInt(const unsigned int n) A_WARN_UNUSED;
+constexpr2 inline int powerOfTwo(const unsigned int input) A_WARN_UNUSED;
+constexpr2 inline int fastSqrtInt(const unsigned int n) A_WARN_UNUSED;
 
 inline uint16_t getCrc16(const std::string &str)
 {
@@ -151,7 +151,7 @@ inline uint16_t getCrc16(const std::string &str)
  * Unfortunately the original creator of this function seems to be unknown.
  */
 
-constexpr inline float fastInvSqrt(float x)
+constexpr2 inline float fastInvSqrt(float x)
 {
     union { int i; float x; } tmp = {0U};
     const float xhalf = 0.5F * x;
@@ -162,7 +162,7 @@ constexpr inline float fastInvSqrt(float x)
     return x;
 }
 
-constexpr inline float fastSqrt(const float x)
+constexpr2 inline float fastSqrt(const float x)
 {
     return 1.0F / fastInvSqrt(x);
 }
@@ -178,7 +178,7 @@ constexpr inline int roundDouble(const double v)
     return (v > 0.0) ? static_cast<int>(v + 0.5) : static_cast<int>(v - 0.5);
 }
 
-constexpr inline int powerOfTwo(const unsigned int input)
+constexpr2 inline int powerOfTwo(const unsigned int input)
 {
     unsigned int value = 1;
     while (value < input)
@@ -186,7 +186,7 @@ constexpr inline int powerOfTwo(const unsigned int input)
     return value;
 }
 
-constexpr inline int fastSqrtInt(const unsigned int n)
+constexpr2 inline int fastSqrtInt(const unsigned int n)
 {
     if (n < 1000)
         return static_cast<int>(square_roots[n]);

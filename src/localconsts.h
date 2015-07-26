@@ -43,6 +43,7 @@
 #define final
 #define override
 #define constexpr
+#define constexpr2
 #define noexcept
 #define A_DELETE(func)
 #define A_DELETE_COPY(func)
@@ -56,6 +57,11 @@
 // #define A_DELETE_COPY
 #else
 #define ADVGCC
+#if GCC_VERSION < 40900
+#define constexpr2
+#else
+#define constexpr2 constexpr
+#endif
 #endif
 #undef Z_NULL
 #define Z_NULL nullptr
