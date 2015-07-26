@@ -49,13 +49,13 @@ static void xmlErrorLogger(void *ctx A_UNUSED, const char *msg A_UNUSED, ...)
 
 static void xmlErrorLogger(void *ctx A_UNUSED, const char *msg, ...)
 {
+    if (!msg)
+        return;
+
     size_t size = 1024;
     const size_t msgSize = strlen(msg);
     if (msgSize * 3 > size)
         size = msgSize * 3;
-
-    if (!msg)
-        return;
 
     char* buf = new char[size + 1];
     va_list ap;

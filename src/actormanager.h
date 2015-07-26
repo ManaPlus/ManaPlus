@@ -185,7 +185,8 @@ class ActorManager final: public ConfigListener
         * Finds most damaged player, non-enemy and alive
         * \param maxTileDist maximal distance.
         */
-        Being *findMostDamagedPlayer(const int maxTileDist) const A_WARN_UNUSED;
+        Being *findMostDamagedPlayer(const int maxTileDist)
+                                     const A_WARN_UNUSED;
 
        /**
         * Heal all players in distance.

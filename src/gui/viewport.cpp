@@ -688,7 +688,8 @@ void Viewport::walkByMouse(const MouseEvent &event)
                         if (!mMap->getWalk(destX, f))
                             continue;
 
-                        const int offset = mMap->getHeightOffset(destX, f) * 16;
+                        const int offset = mMap->getHeightOffset(
+                            destX, f) * 16;
                         const int pixelF = f * 32;
                         const int diff = abs(clickY + offset - pixelF);
                         if (diff < newDiffY)
