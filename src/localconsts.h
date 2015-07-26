@@ -47,7 +47,7 @@
 #define noexcept
 #define A_DELETE(func)
 #define A_DELETE_COPY(func)
-#else
+#else  // !defined(__GXX_EXPERIMENTAL_CXX0X__)
 #if GCC_VERSION < 40700
 #define final
 #define override
@@ -55,21 +55,25 @@
 #define noexcept
 // #define A_DELETE
 // #define A_DELETE_COPY
-#else
+#else  // GCC_VERSION < 40700
 #define ADVGCC
 #if GCC_VERSION < 40900
 #define constexpr2
-#else
+#else  // GCC_VERSION < 40900
+#if __cpp_constexpr > 201309
 #define constexpr2 constexpr
-#endif
-#endif
+#else  // __cpp_constexpr > 201309
+#define constexpr2
+#endif  // __cpp_constexpr > 201309
+#endif  // GCC_VERSION < 40900
+#endif  // GCC_VERSION < 40700
 #undef Z_NULL
 #define Z_NULL nullptr
 #define M_TCPOK
 #define A_DELETE(func) func = delete
 #define A_DELETE_COPY(name) name(const name &) = delete; \
     name &operator=(const name&) = delete;
-#endif
+#endif  // !defined(__GXX_EXPERIMENTAL_CXX0X__)
 
 #ifdef __GNUC__
 #define A_UNUSED  __attribute__ ((unused))
