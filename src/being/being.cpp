@@ -132,6 +132,7 @@ Being::Being(const BeingId id,
     mInfo(BeingInfo::unknown),
     mEmotionSprite(nullptr),
     mAnimationEffect(nullptr),
+    mTeamBadge(nullptr),
     mSpriteAction(SpriteAction::STAND),
     mName(),
     mRaceName(),
@@ -1828,7 +1829,8 @@ void Being::petLogic()
     }
 }
 
-void Being::drawEmotion(Graphics *const graphics, const int offsetX,
+void Being::drawEmotion(Graphics *const graphics,
+                        const int offsetX,
                         const int offsetY) const
 {
     const int px = getPixelX() - offsetX - mapTileSize / 2;
@@ -1837,6 +1839,20 @@ void Being::drawEmotion(Graphics *const graphics, const int offsetX,
         mEmotionSprite->draw(graphics, px, py);
     if (mAnimationEffect)
         mAnimationEffect->draw(graphics, px, py);
+    if (mTeamBadge)
+    {
+        if (mDispName && gui)
+        {
+            Font *const font = gui->getFont();
+            mTeamBadge->draw(graphics,
+                mDispName->getX() - offsetX + mDispName->getWidth(),
+                mDispName->getY() - offsetY - font->getHeight());
+        }
+        else
+        {
+            mTeamBadge->draw(graphics, px, py);
+        }
+    }
 }
 
 void Being::drawSpeech(const int offsetX, const int offsetY)
@@ -3674,6 +3690,15 @@ void Being::setTeamId(const uint16_t teamId)
 {
     if (mTeamId != teamId)
     {
+        delete2(mTeamBadge);
+        if (teamId)
+        {
+            mTeamBadge = AnimatedSprite::load(
+                strprintf("%steam%d.xml",
+                paths.getStringValue("badges").c_str(),
+                teamId));
+        }
+
         mTeamId = teamId;
         updateColors();
     }

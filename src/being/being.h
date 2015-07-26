@@ -957,7 +957,8 @@ class Being notfinal : public ActorSprite,
 
         BeingInfo *mInfo;
         AnimatedSprite *mEmotionSprite;
-        AnimatedSprite* mAnimationEffect;
+        AnimatedSprite *mAnimationEffect;
+        AnimatedSprite *mTeamBadge;
 
         std::string mSpriteAction;
         std::string mName;              /**< Name of character */
