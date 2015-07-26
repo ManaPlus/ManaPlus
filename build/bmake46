@@ -57,7 +57,7 @@ autoreconf -i
 --datadir=$dir/run/share/games \
 --bindir=$dir/run/bin \
 --mandir=$dir/run/share/man \
---enable-memdebug=yes \
+--enable-memdebug=no \
 --enable-tcmalloc=no \
 --enable-googleprofiler=no
 
