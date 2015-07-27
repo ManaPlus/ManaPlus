@@ -1553,6 +1553,22 @@ bool ChatWindow::resortChatLog(std::string line,
     size_t idx2 = line.find(": ");
     if (idx2 != std::string::npos)
     {
+        std::string nick = line.substr(0, idx2);
+        if (nick.find("#") != std::string::npos ||
+            nick.find(":") != std::string::npos ||
+            nick.find("%") != std::string::npos ||
+            nick.find("@") != std::string::npos)
+        {
+            replaceAll(nick, "#", "_");
+            replaceAll(nick, "%", "_");
+            const std::string errMsg = strprintf(
+                // TRANSLATORS: error message
+                _("Broken nick detected: %s"), nick.c_str());
+            if (debugChatTab)
+                debugChatTab->chatLog(errMsg, ChatMsgType::BY_SERVER);
+            else
+                localChatTab->chatLog(errMsg, ChatMsgType::BY_SERVER);
+        }
         const size_t idx = line.find(": \302\202");
         if (idx == idx2)
         {
