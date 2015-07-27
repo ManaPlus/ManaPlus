@@ -1866,7 +1866,7 @@ void ActorManager::removeRoom(const int chatId)
     for_actors
     {
         ActorSprite *const actor = *it;
-        if (actor && actor->getType() != ActorType::Player)
+        if (actor && actor->getType() == ActorType::Npc)
         {
             Being *const being = static_cast<Being*>(actor);
             const ChatObject *const chat = being->getChat();
@@ -1886,7 +1886,7 @@ void ActorManager::updateRoom(const ChatObject *const newChat)
     for_actors
     {
         ActorSprite *const actor = *it;
-        if (actor && actor->getType() != ActorType::Player)
+        if (actor && actor->getType() == ActorType::Npc)
         {
             Being *const being = static_cast<Being*>(actor);
             ChatObject *const chat = being->getChat();
