@@ -381,6 +381,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("disableLoggingInGame", false);
     AddDEF("sellShopName", "unnamed");
     AddDEF("showBadges", true);
+    AddDEF("showBadgesTop", true);
     return configData;
 }
 

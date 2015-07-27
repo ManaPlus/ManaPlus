@@ -1104,6 +1104,7 @@ class Being notfinal : public ActorSprite,
         static Move mMoveNames;
         static bool mUseDiagonal;
         static bool mShowBadges;
+        static bool mShowBadgesTop;
         static int mAwayEffect;
 
         unsigned int mMoveTime;

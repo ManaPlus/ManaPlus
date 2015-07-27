@@ -118,6 +118,7 @@ bool Being::mHideErased = false;
 Move Being::mMoveNames = Move_false;
 bool Being::mUseDiagonal = true;
 bool Being::mShowBadges = true;
+bool Being::mShowBadgesTop = true;
 int Being::mAwayEffect = -1;
 
 std::list<BeingCacheEntry*> beingInfoCache;
@@ -1849,7 +1850,7 @@ void Being::drawEmotion(Graphics *const graphics,
         mAnimationEffect->draw(graphics, px, py);
     if (mTeamBadge && mShowBadges)
     {
-        if (mDispName && gui)
+        if (!mShowBadgesTop && mDispName && gui)
         {
             Font *const font = gui->getFont();
             mTeamBadge->draw(graphics,
@@ -2374,6 +2375,7 @@ void Being::reReadConfig()
         mMoveNames = fromBool(config.getBoolValue("moveNames"), Move);
         mUseDiagonal = config.getBoolValue("useDiagonalSpeed");
         mShowBadges = config.getBoolValue("showBadges");
+        mShowBadgesTop = config.getBoolValue("showBadgesTop");
 
         mUpdateConfigTime = cur_time;
     }

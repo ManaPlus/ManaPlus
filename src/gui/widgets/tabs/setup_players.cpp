@@ -74,6 +74,10 @@ Setup_Players::Setup_Players(const Widget2 *const widget) :
         "showBadges", this, "showBadgesEvent");
 
     // TRANSLATORS: settings option
+    new SetupItemCheckBox(_("Show badges at top"), "",
+        "showBadgesTop", this, "showBadgesTopEvent");
+
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Secure trades"), "",
         "securetrades", this, "securetradesEvent");
 
