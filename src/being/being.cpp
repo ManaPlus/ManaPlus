@@ -1365,6 +1365,8 @@ void Being::setAction(const BeingActionT &action, const int attackId)
             mEmotionSprite->play(currentAction);
         if (mAnimationEffect)
             mAnimationEffect->play(currentAction);
+        if (mTeamBadge)
+            mTeamBadge->play(currentAction);
 #ifdef EATHENA_SUPPORT
         if (mHorseSprite)
             mHorseSprite->play(currentAction);
@@ -1428,6 +1430,8 @@ void Being::setDirection(const uint8_t direction)
         mEmotionSprite->setSpriteDirection(dir);
     if (mAnimationEffect)
         mAnimationEffect->setSpriteDirection(dir);
+    if (mTeamBadge)
+        mTeamBadge->setSpriteDirection(dir);
 #ifdef EATHENA_SUPPORT
     if (mHorseSprite)
         mHorseSprite->setSpriteDirection(dir);
@@ -1532,6 +1536,8 @@ void Being::logic()
         if (mAnimationEffect->isTerminated())
             delete2(mAnimationEffect)
     }
+    if (mTeamBadge)
+        mTeamBadge->update(time);
 
     int frameCount = static_cast<int>(getFrameCount());
 
