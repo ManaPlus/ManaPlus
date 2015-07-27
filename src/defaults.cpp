@@ -380,6 +380,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("ignorelogpackets", "");
     AddDEF("disableLoggingInGame", false);
     AddDEF("sellShopName", "unnamed");
+    AddDEF("showBadges", true);
     return configData;
 }
 

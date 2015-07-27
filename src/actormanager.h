@@ -330,6 +330,8 @@ class ActorManager final: public ConfigListener
         void updateEffects(const std::map<BeingTypeId, int> &addEffects,
                            const std::set<BeingTypeId> &removeEffects) const;
 
+        void updateBadges();
+
 #ifdef EATHENA_SUPPORT
         void removeRoom(const int chatId);
 

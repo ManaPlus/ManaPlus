@@ -70,6 +70,10 @@ Setup_Players::Setup_Players(const Widget2 *const widget) :
         "moveNames", this, "moveNamesEvent");
 
     // TRANSLATORS: settings option
+    new SetupItemCheckBox(_("Show badges"), "",
+        "showBadges", this, "showBadgesEvent");
+
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Secure trades"), "",
         "securetrades", this, "securetradesEvent");
 

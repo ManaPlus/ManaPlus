@@ -932,6 +932,8 @@ class Being notfinal : public ActorSprite,
 
         void setTeamId(const uint16_t teamId);
 
+        void showBadges(const bool show);
+
         uint16_t getTeamId() const
         { return mTeamId; }
 
@@ -1101,6 +1103,7 @@ class Being notfinal : public ActorSprite,
         static bool mHideErased;
         static Move mMoveNames;
         static bool mUseDiagonal;
+        static bool mShowBadges;
         static int mAwayEffect;
 
         unsigned int mMoveTime;

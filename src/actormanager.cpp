@@ -1578,6 +1578,8 @@ void ActorManager::optionChanged(const std::string &name)
         mCycleNPC = config.getBoolValue("cycleNPC");
     else if (name == "extMouseTargeting")
         mExtMouseTargeting = config.getBoolValue("extMouseTargeting");
+    else if (name == "showBadges")
+        updateBadges();
 }
 
 void ActorManager::removeAttackMob(const std::string &name)
@@ -1842,6 +1844,20 @@ Being *ActorManager::cloneBeing(const Being *const srcBeing,
         ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
     dstBeing->setHairColor(hairColor);
     return dstBeing;
+}
+
+void ActorManager::updateBadges()
+{
+    const bool showBadges = config.getBoolValue("showBadges");
+    for_actors
+    {
+        ActorSprite *const actor = *it;
+        if (actor && actor->getType() == ActorType::Player)
+        {
+            Being *const being = static_cast<Being*>(actor);
+            being->showBadges(showBadges);
+        }
+    }
 }
 
 #ifdef EATHENA_SUPPORT

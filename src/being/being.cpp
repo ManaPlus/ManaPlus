@@ -117,6 +117,7 @@ bool Being::mEnableReorderSprites = true;
 bool Being::mHideErased = false;
 Move Being::mMoveNames = Move_false;
 bool Being::mUseDiagonal = true;
+bool Being::mShowBadges = true;
 int Being::mAwayEffect = -1;
 
 std::list<BeingCacheEntry*> beingInfoCache;
@@ -288,6 +289,7 @@ Being::~Being()
     delete2(mText);
     delete2(mEmotionSprite);
     delete2(mAnimationEffect);
+    delete2(mTeamBadge);
 #ifdef EATHENA_SUPPORT
     delete2(mChat);
 #endif
@@ -1839,7 +1841,7 @@ void Being::drawEmotion(Graphics *const graphics,
         mEmotionSprite->draw(graphics, px, py);
     if (mAnimationEffect)
         mAnimationEffect->draw(graphics, px, py);
-    if (mTeamBadge)
+    if (mTeamBadge && mShowBadges)
     {
         if (mDispName && gui)
         {
@@ -2365,6 +2367,7 @@ void Being::reReadConfig()
         mHideErased = config.getBoolValue("hideErased");
         mMoveNames = fromBool(config.getBoolValue("moveNames"), Move);
         mUseDiagonal = config.getBoolValue("useDiagonalSpeed");
+        mShowBadges = config.getBoolValue("showBadges");
 
         mUpdateConfigTime = cur_time;
     }
@@ -3690,17 +3693,21 @@ void Being::setTeamId(const uint16_t teamId)
 {
     if (mTeamId != teamId)
     {
-        delete2(mTeamBadge);
-        if (teamId)
-        {
-            mTeamBadge = AnimatedSprite::load(
-                strprintf("%steam%d.xml",
-                paths.getStringValue("badges").c_str(),
-                teamId));
-        }
-
         mTeamId = teamId;
+        showBadges(mTeamId != 0);
         updateColors();
+    }
+}
+
+void Being::showBadges(const bool show)
+{
+    delete2(mTeamBadge);
+    if (show && mTeamId)
+    {
+        mTeamBadge = AnimatedSprite::load(
+            strprintf("%steam%d.xml",
+            paths.getStringValue("badges").c_str(),
+            mTeamId));
     }
 }
 
