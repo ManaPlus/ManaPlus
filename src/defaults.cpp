@@ -601,6 +601,9 @@ DefaultsData* getPathsDefaults()
     AddDEF("cartEffectName", "cart");
     AddDEF("ridingEffectName", "riding");
     AddDEF("gmTabMinimalLevel", "2");
+    AddDEF("team1badge", "team1.xml");
+    AddDEF("team2badge", "team2.xml");
+    AddDEF("team3badge", "team3.xml");
 
     return configData;
 }

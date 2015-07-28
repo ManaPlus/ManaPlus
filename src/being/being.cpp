@@ -3713,9 +3713,9 @@ void Being::showBadges(const bool show)
     if (show && mTeamId)
     {
         mTeamBadge = AnimatedSprite::load(
-            strprintf("%steam%d.xml",
-            paths.getStringValue("badges").c_str(),
-            mTeamId));
+            paths.getStringValue("badges") +
+            paths.getStringValue(strprintf("team%dbadge",
+            mTeamId)));
     }
 }
 
