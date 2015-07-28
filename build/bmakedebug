@@ -35,7 +35,7 @@ export CXXFLAGS="-ggdb3 -O2 -pipe -ffast-math \
 -Wwrite-strings -Wstack-protector -Wshadow -Wunused-macros -Wsynth \
 -Wbuiltin-macro-redefined -Wctor-dtor-privacy -Wdeprecated \
 -Wendif-labels -Wformat=1 -Wimport -Wnon-virtual-dtor -Wpsabi \
--Wsign-promo -Wwrite-strings -D_FORTIFY_SOURCE=2 -std=gnu++1y \
+-Wsign-promo -Wwrite-strings -D_FORTIFY_SOURCE=2 -std=gnu++17 \
 -Wdelete-non-virtual-dtor -Wmaybe-uninitialized -Wunused-local-typedefs \
 -Wvector-operation-performance -Wfree-nonheap-object -Winvalid-memory-model \
 -Wnarrowing -Wzero-as-null-pointer-constant -funsafe-loop-optimizations \
