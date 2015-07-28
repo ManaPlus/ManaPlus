@@ -907,8 +907,10 @@ void GraphicsManager::initOpenGLFunctions()
         return;
     }
 
-    if (findI(mGlVendor, "NVIDIA") == std::string::npos)
+    if (findI(mGlVendor, "NVIDIA") == std::string::npos &&
+        mGlVersionString.find("Mesa 10.6.") == std::string::npos)
     {   // not for NVIDIA. in NVIDIA atleast in windows drivers DSA is broken
+        // Mesa 10.6.3 show support for DSA, but it broken. Works in 10.7 dev
         if (is45)
         {
             logger->log1("found GL_EXT_direct_state_access");
@@ -934,7 +936,8 @@ void GraphicsManager::initOpenGLFunctions()
     }
     else
     {
-        logger->log1("Not checked for DSA because on NVIDIA it broken");
+        logger->log1("Not checked for DSA because on "
+            "NVIDIA or in Mesa it broken");
         emulateFunction(glTextureSubImage2D);
     }
 
