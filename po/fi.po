@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2015-07-26 18:56+0300\n"
+"POT-Creation-Date: 2015-07-29 02:28+0300\n"
 "PO-Revision-Date: 2015-04-06 11:05+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Finnish (http://www.transifex.com/projects/p/manaplus/"
@@ -34,7 +34,7 @@ msgstr ""
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: text dialog button
 #. TRANSLATORS: ok dialog button
-#: src/actions/actions.cpp:158 src/client.cpp:1450 src/client.cpp:1483
+#: src/actions/actions.cpp:158 src/client.cpp:1453 src/client.cpp:1486
 #: src/gamemodifiers.cpp:451 src/gui/dialogsmanager.cpp:168
 #: src/gui/dialogsmanager.cpp:188 src/gui/widgets/tabs/setup_input.cpp:164
 #: src/gui/widgets/tabs/setup_theme.cpp:313
@@ -317,25 +317,25 @@ msgid "Visible on map"
 msgstr "Näkyvillä kartalla"
 
 #. TRANSLATORS: default race name
-#: src/being/being.cpp:426
+#: src/being/being.cpp:435
 msgid "Human"
 msgstr ""
 
-#: src/being/being.cpp:600
+#: src/being/being.cpp:609
 msgid "dodge"
 msgstr "väistö"
 
-#: src/being/being.cpp:600
+#: src/being/being.cpp:609
 msgid "miss"
 msgstr "huti"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being/being.cpp:1987 src/gui/windows/whoisonline.cpp:871
+#: src/being/being.cpp:2035 src/gui/windows/whoisonline.cpp:871
 msgid "A"
 msgstr "P"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being/being.cpp:1992 src/gui/windows/whoisonline.cpp:876
+#: src/being/being.cpp:2040 src/gui/windows/whoisonline.cpp:876
 msgid "I"
 msgstr "-"
 
@@ -485,37 +485,37 @@ msgstr "Leijuva puhekupla"
 #. TRANSLATORS: setup tab quick button
 #. TRANSLATORS: full button name
 #. TRANSLATORS: setup window name
-#: src/client.cpp:803 src/gui/windowmenu.cpp:177
+#: src/client.cpp:805 src/gui/windowmenu.cpp:177
 #: src/gui/windows/setupwindow.cpp:64
 msgid "Setup"
 msgstr "Asetukset"
 
 #. TRANSLATORS: perfoamance tab quick button
 #. TRANSLATORS: settings tab name
-#: src/client.cpp:806 src/gui/widgets/tabs/setup_perfomance.cpp:54
+#: src/client.cpp:808 src/gui/widgets/tabs/setup_perfomance.cpp:54
 msgid "Performance"
 msgstr ""
 
 #. TRANSLATORS: video tab quick button
 #. TRANSLATORS: video settings tab name
-#: src/client.cpp:809 src/gui/widgets/tabs/setup_video.cpp:106
+#: src/client.cpp:811 src/gui/widgets/tabs/setup_video.cpp:106
 msgid "Video"
 msgstr "Kuva"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: theme settings tab name
-#: src/client.cpp:812 src/gui/widgets/tabs/setup_theme.cpp:121
+#: src/client.cpp:814 src/gui/widgets/tabs/setup_theme.cpp:121
 msgid "Theme"
 msgstr "Teema"
 
 #. TRANSLATORS: theme tab quick button
-#: src/client.cpp:815
+#: src/client.cpp:817
 msgid "About"
 msgstr ""
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: help window name
-#: src/client.cpp:818 src/gui/windowmenu.cpp:72
+#: src/client.cpp:820 src/gui/windowmenu.cpp:72
 #: src/gui/windows/helpwindow.cpp:53
 msgid "Help"
 msgstr "Apua"
@@ -533,7 +533,7 @@ msgstr "Apua"
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: quests window button
 #. TRANSLATORS: shop window button
-#: src/client.cpp:822 src/client.cpp:1368 src/client.cpp:1387
+#: src/client.cpp:824 src/client.cpp:1371 src/client.cpp:1390
 #: src/gui/dialogsmanager.cpp:105 src/gui/popups/popupmenu.cpp:738
 #: src/gui/popups/popupmenu.cpp:979 src/gui/windows/didyouknowwindow.cpp:81
 #: src/gui/windows/inventorywindow.cpp:265
@@ -545,32 +545,32 @@ msgid "Close"
 msgstr "Sulje"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1039 src/gui/windowmanager_unittest.cc:150
+#: src/client.cpp:1041 src/gui/windowmanager_unittest.cc:150
 msgid "Connecting to server"
 msgstr "Yhdistän palvelimeen"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1085 src/gui/windowmanager_unittest.cc:167
+#: src/client.cpp:1087 src/gui/windowmanager_unittest.cc:167
 msgid "Logging in"
 msgstr "Kirjaudun sisään"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1128
+#: src/client.cpp:1130
 msgid "Entering game world"
 msgstr "Siirryn pelimaailmaan"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1260
+#: src/client.cpp:1263
 msgid "Requesting characters"
 msgstr "Pyydän hahmoja"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1299
+#: src/client.cpp:1302
 msgid "Connecting to the game server"
 msgstr "Yhdistän pelipalvelimeen"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1310
+#: src/client.cpp:1313
 msgid "Changing game servers"
 msgstr "Vaihdan pelipalvelinta"
 
@@ -584,7 +584,7 @@ msgstr "Vaihdan pelipalvelinta"
 #. TRANSLATORS: error header
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: error header
-#: src/client.cpp:1365 src/client.cpp:1384 src/client.cpp:1595
+#: src/client.cpp:1368 src/client.cpp:1387 src/client.cpp:1598
 #: src/gui/windows/changeemaildialog.cpp:166
 #: src/gui/windows/changepassworddialog.cpp:156
 #: src/gui/windows/charcreatedialog.cpp:386
@@ -601,37 +601,37 @@ msgid "Error"
 msgstr "Virhe"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1403
+#: src/client.cpp:1406
 msgid "Requesting registration details"
 msgstr "Pyydän rekisteröitymisen yksityiskohtia"
 
 #. TRANSLATORS: password change message header
-#: src/client.cpp:1446
+#: src/client.cpp:1449
 msgid "Password Change"
 msgstr "Salasanan vaihto"
 
 #. TRANSLATORS: password change message text
-#: src/client.cpp:1448
+#: src/client.cpp:1451
 msgid "Password changed successfully!"
 msgstr "Salasana vaihdettu onnistuneesti!"
 
 #. TRANSLATORS: email change message header
-#: src/client.cpp:1479
+#: src/client.cpp:1482
 msgid "Email Change"
 msgstr "Sähköpostin vaihto"
 
 #. TRANSLATORS: email change message text
-#: src/client.cpp:1481
+#: src/client.cpp:1484
 msgid "Email changed successfully!"
 msgstr "Sähköpostiosoite vaihdettu onnistuneesti!"
 
 #. TRANSLATORS: unregister message header
-#: src/client.cpp:1511
+#: src/client.cpp:1514
 msgid "Unregister Successful"
 msgstr "Tietojen poisto onnistui"
 
 #. TRANSLATORS: unregister message text
-#: src/client.cpp:1513
+#: src/client.cpp:1516
 msgid "Farewell, come back any time..."
 msgstr "Näkemisiin, tule pian takaisin..."
 
@@ -671,7 +671,7 @@ msgid "dyecmd srcdyestring dstfile"
 msgstr ""
 
 #. TRANSLATORS: chat tab header
-#: src/game.cpp:252 src/gui/windows/chatwindow.cpp:2172
+#: src/game.cpp:252 src/gui/windows/chatwindow.cpp:2188
 msgid "General"
 msgstr "Yleiset"
 
@@ -4545,46 +4545,57 @@ msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_players.cpp:73
+#, fuzzy
+msgid "Show badges"
+msgstr "Näytä tavarat"
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_players.cpp:77
+msgid "Show badges at top"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_players.cpp:81
 msgid "Secure trades"
 msgstr "Turvaa kaupat"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:77
+#: src/gui/widgets/tabs/setup_players.cpp:85
 msgid "Unsecure chars in names"
 msgstr "Turvattomia merkkejä nimissä"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:81
+#: src/gui/widgets/tabs/setup_players.cpp:89
 msgid "Show statuses"
 msgstr "Näytä tilat"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:85
+#: src/gui/widgets/tabs/setup_players.cpp:93
 msgid "Show ip addresses on screenshots"
 msgstr "Näytä IP-osoitteet kuvakaappauksissa"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:89
+#: src/gui/widgets/tabs/setup_players.cpp:97
 msgid "Allow self heal with mouse click"
 msgstr "Salli itsen parantaminen hiiren napsautuksella"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:93
+#: src/gui/widgets/tabs/setup_players.cpp:101
 msgid "Group friends in who is online window"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:97
+#: src/gui/widgets/tabs/setup_players.cpp:105
 msgid "Hide erased players nicks"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:101
+#: src/gui/widgets/tabs/setup_players.cpp:109
 msgid "Use special diagonal speed in players moving"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:105
+#: src/gui/widgets/tabs/setup_players.cpp:113
 msgid ""
 "Emulate right mouse button by long mouse click (useful for touch interfaces)"
 msgstr ""
@@ -5753,8 +5764,14 @@ msgstr "Läsnä: %s; %d pelaajaa paikalla."
 msgid "Whispering to %s: %s"
 msgstr "Kuiskaat pelaajalle %s: %s"
 
+#. TRANSLATORS: error message
+#: src/gui/windows/chatwindow.cpp:1566
+#, c-format
+msgid "Broken nick detected: %s"
+msgstr ""
+
 #. TRANSLATORS: owners pet name. For example: 4144's pet
-#: src/gui/windows/chatwindow.cpp:1738 src/net/eathena/pethandler.cpp:173
+#: src/gui/windows/chatwindow.cpp:1754 src/net/eathena/pethandler.cpp:173
 #, c-format
 msgid "%s's pet"
 msgstr ""
