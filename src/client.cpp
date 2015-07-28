@@ -98,6 +98,7 @@
 #include "resources/spritereference.h"
 
 #include "resources/db/avatardb.h"
+#include "resources/db/badgesdb.h"
 #include "resources/db/chardb.h"
 #include "resources/db/colordb.h"
 #include "resources/db/deaddb.h"
@@ -561,6 +562,7 @@ void Client::gameClear()
     MonsterDB::unload();
     NPCDB::unload();
     AvatarDB::unload();
+    BadgesDB::unload();
     WeaponsDB::unload();
     PaletteDB::unload();
     PETDB::unload();
@@ -1233,6 +1235,7 @@ int Client::gameExec()
                     HomunculusDB::load();
                     MonsterDB::load();
                     AvatarDB::load();
+                    BadgesDB::load();
                     WeaponsDB::load();
                     NPCDB::load();
                     PETDB::load();

@@ -738,6 +738,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      resources/attack.h \
 	      resources/db/avatardb.cpp \
 	      resources/db/avatardb.h \
+	      resources/db/badgesdb.cpp \
+	      resources/db/badgesdb.h \
 	      resources/beingcommon.cpp \
 	      resources/beingcommon.h \
 	      resources/beinginfo.cpp \

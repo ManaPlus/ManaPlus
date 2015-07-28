@@ -227,8 +227,7 @@ class Being notfinal : public ActorSprite,
         /**
          * Sets the name of the party the being is in. Shown in BeingPopup.
          */
-        void setPartyName(const std::string &name)
-        { mPartyName = name; }
+        void setPartyName(const std::string &name);
 
         const std::string &getPartyName() const A_WARN_UNUSED
         { return mPartyName; }
@@ -955,11 +954,14 @@ class Being notfinal : public ActorSprite,
 
         void setDefaultNameColor(const UserColorIdT defaultColor);
 
+        void updateBadgesCount();
+
         static int getDefaultEffectId(const AttackTypeT &type);
 
         BeingInfo *mInfo;
         AnimatedSprite *mEmotionSprite;
         AnimatedSprite *mAnimationEffect;
+        AnimatedSprite *mPartyBadge;
         AnimatedSprite *mTeamBadge;
 
         std::string mSpriteAction;
@@ -1124,6 +1126,7 @@ class Being notfinal : public ActorSprite,
         int mAreaSize;
         uint16_t mTeamId;
         uint16_t mLook;
+        uint16_t mBadgesCount;
         unsigned char mHairColor;
         bool mErased;
         bool mEnemy;

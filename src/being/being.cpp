@@ -71,6 +71,7 @@
 #include "resources/spriteaction.h"
 
 #include "resources/db/avatardb.h"
+#include "resources/db/badgesdb.h"
 #include "resources/db/emotedb.h"
 #include "resources/db/homunculusdb.h"
 #include "resources/db/horsedb.h"
@@ -134,6 +135,7 @@ Being::Being(const BeingId id,
     mInfo(BeingInfo::unknown),
     mEmotionSprite(nullptr),
     mAnimationEffect(nullptr),
+    mPartyBadge(nullptr),
     mTeamBadge(nullptr),
     mSpriteAction(SpriteAction::STAND),
     mName(),
@@ -221,6 +223,7 @@ Being::Being(const BeingId id,
     mAreaSize(11),
     mTeamId(0U),
     mLook(0U),
+    mBadgesCount(0U),
     mHairColor(0),
     mErased(false),
     mEnemy(false),
@@ -290,7 +293,9 @@ Being::~Being()
     delete2(mText);
     delete2(mEmotionSprite);
     delete2(mAnimationEffect);
+    delete2(mPartyBadge);
     delete2(mTeamBadge);
+    mBadgesCount = 0;
 #ifdef EATHENA_SUPPORT
     delete2(mChat);
 #endif
@@ -1366,6 +1371,8 @@ void Being::setAction(const BeingActionT &action, const int attackId)
             mEmotionSprite->play(currentAction);
         if (mAnimationEffect)
             mAnimationEffect->play(currentAction);
+        if (mPartyBadge)
+            mPartyBadge->play(currentAction);
         if (mTeamBadge)
             mTeamBadge->play(currentAction);
 #ifdef EATHENA_SUPPORT
@@ -1431,6 +1438,8 @@ void Being::setDirection(const uint8_t direction)
         mEmotionSprite->setSpriteDirection(dir);
     if (mAnimationEffect)
         mAnimationEffect->setSpriteDirection(dir);
+    if (mPartyBadge)
+        mPartyBadge->setSpriteDirection(dir);
     if (mTeamBadge)
         mTeamBadge->setSpriteDirection(dir);
 #ifdef EATHENA_SUPPORT
@@ -1537,6 +1546,8 @@ void Being::logic()
         if (mAnimationEffect->isTerminated())
             delete2(mAnimationEffect)
     }
+    if (mPartyBadge)
+        mPartyBadge->update(time);
     if (mTeamBadge)
         mTeamBadge->update(time);
 
@@ -1848,18 +1859,30 @@ void Being::drawEmotion(Graphics *const graphics,
         mEmotionSprite->draw(graphics, px, py);
     if (mAnimationEffect)
         mAnimationEffect->draw(graphics, px, py);
-    if (mTeamBadge && mShowBadges)
+    if (mShowBadges && mBadgesCount)
     {
+        int x;
+        int y;
         if (!mShowBadgesTop && mDispName && gui)
         {
             Font *const font = gui->getFont();
-            mTeamBadge->draw(graphics,
-                mDispName->getX() - offsetX + mDispName->getWidth(),
-                mDispName->getY() - offsetY - font->getHeight());
+            x = mDispName->getX() - offsetX + mDispName->getWidth();
+            y = mDispName->getY() - offsetY - font->getHeight();
         }
         else
         {
-            mTeamBadge->draw(graphics, px, py);
+            x = px + 8 - mBadgesCount * 8;
+            y = py;
+        }
+        if (mTeamBadge)
+        {
+            mTeamBadge->draw(graphics, x, y);
+            x += 16;
+        }
+        if (mPartyBadge)
+        {
+            mPartyBadge->draw(graphics, x, y);
+//            x += 16;
         }
     }
 }
@@ -3710,13 +3733,43 @@ void Being::setTeamId(const uint16_t teamId)
 void Being::showBadges(const bool show)
 {
     delete2(mTeamBadge);
-    if (show && mTeamId)
+    if (show && mTeamId && mShowBadges)
     {
-        mTeamBadge = AnimatedSprite::load(
-            paths.getStringValue("badges") +
+        const std::string name = paths.getStringValue("badges") +
             paths.getStringValue(strprintf("team%dbadge",
-            mTeamId)));
+            mTeamId));
+        if (!name.empty())
+            mTeamBadge = AnimatedSprite::load(name);
     }
+    updateBadgesCount();
+}
+
+void Being::setPartyName(const std::string &name)
+{
+    if (mPartyName != name)
+    {
+        delete2(mPartyBadge);
+        mPartyName = name;
+        if (!mPartyName.empty() && mShowBadges)
+        {
+            const std::string badge = BadgesDB::getPartyBadge(mPartyName);
+            if (!badge.empty())
+            {
+                mPartyBadge = AnimatedSprite::load(
+                    paths.getStringValue("badges") + badge);
+            }
+        }
+        updateBadgesCount();
+    }
+}
+
+void Being::updateBadgesCount()
+{
+    mBadgesCount = 0;
+    if (mTeamBadge)
+        mBadgesCount ++;
+    if (mPartyBadge)
+        mBadgesCount ++;
 }
 
 #ifdef EATHENA_SUPPORT
