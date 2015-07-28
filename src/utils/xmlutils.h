@@ -22,6 +22,7 @@
 #define UTILS_XMLUTILS_H
 
 #include <string>
+#include <map>
 #include <vector>
 
 void readXmlIntVector(const std::string &fileName,
@@ -30,5 +31,13 @@ void readXmlIntVector(const std::string &fileName,
                       const std::string &itemName,
                       const std::string &attributeName,
                       std::vector<int> &arr);
+
+void readXmlStringMap(const std::string &fileName,
+                      const std::string &rootName,
+                      const std::string &sectionName,
+                      const std::string &itemName,
+                      const std::string &attributeKeyName,
+                      const std::string &attributeValueName,
+                      std::map<std::string, std::string> &arr);
 
 #endif  // UTILS_XMLUTILS_H

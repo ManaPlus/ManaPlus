@@ -61,3 +61,42 @@ void readXmlIntVector(const std::string &fileName,
         }
     }
 }
+
+void readXmlStringMap(const std::string &fileName,
+                      const std::string &rootName,
+                      const std::string &sectionName,
+                      const std::string &itemName,
+                      const std::string &attributeKeyName,
+                      const std::string &attributeValueName,
+                      std::map<std::string, std::string> &arr)
+{
+    arr.clear();
+    XML::Document doc(fileName, UseResman_true, SkipError_false);
+    const XmlNodePtrConst rootNode = doc.rootNode();
+
+    if (!rootNode || !xmlNameEqual(rootNode, rootName.c_str()))
+    {
+        logger->log("Error while loading %s!", fileName.c_str());
+        return;
+    }
+
+    for_each_xml_child_node(sectionNode, rootNode)
+    {
+        if (!xmlNameEqual(sectionNode, sectionName.c_str()))
+            continue;
+        for_each_xml_child_node(childNode, sectionNode)
+        {
+            if (!xmlNameEqual(childNode, itemName.c_str()))
+                continue;
+
+            const std::string key = XML::getProperty(childNode,
+                attributeKeyName.c_str(), "");
+            if (key.empty())
+                continue;
+            const std::string val = XML::getProperty(childNode,
+                attributeValueName.c_str(), "");
+
+            arr[key] = val;
+        }
+    }
+}
