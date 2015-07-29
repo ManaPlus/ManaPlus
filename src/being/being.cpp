@@ -1892,7 +1892,6 @@ void Being::drawEmotion(Graphics *const graphics,
         }
         else if (mShowBadges == 3 && mDispName && gui)
         {
-            Font *const font = gui->getFont();
             x = px + 8 - mBadgesCount * 8;
             y = mDispName->getY() - offsetY;
         }
