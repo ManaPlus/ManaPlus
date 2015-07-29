@@ -150,7 +150,7 @@ Setup_Chat::Setup_Chat(const Widget2 *const widget) :
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Hide shop messages"),
-        _("If this setting enabled, no messages related to built-in ManaPlus"
+        _("If this setting enabled, no messages related to built-in ManaPlus "
         "shop will be displayed in chat. Disable this setting if you want "
         "to see shop-related messages.\n\nNote: technically, ManaPlus shop "
         "implemented as usual private messages with special content. If you "
@@ -240,8 +240,8 @@ Setup_Chat::Setup_Chat(const Widget2 *const widget) :
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Resize chat tabs if need"),
-        _("If this feature enabled, text in chat will be automatically"
-        "adjusted to adapt to appearance of chat input field when you"
+        _("If this feature enabled, text in chat will be automatically "
+        "adjusted to adapt to appearance of chat input field when you "
         "typing message and when input field of chat disappears. If disabled, "
         "chat input area will allways occupy its place, which could be "
         "otherwise usable for text.\n\n"
@@ -255,7 +255,7 @@ Setup_Chat::Setup_Chat(const Widget2 *const widget) :
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Use local time"),
-        _("If this feature enabled, timestamps in chat will use local times."
+        _("If this feature enabled, timestamps in chat will use local times. "
         "If disabled, server time will be used (often it is GMT+0)."),
         "useLocalTime", this, "useLocalTimeEvent");
 
