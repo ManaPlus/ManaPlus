@@ -134,6 +134,7 @@ Being::Being(const BeingId id,
     mInfo(BeingInfo::unknown),
     mEmotionSprite(nullptr),
     mAnimationEffect(nullptr),
+    mGmBadge(nullptr),
     mGuildBadge(nullptr),
     mPartyBadge(nullptr),
     mTeamBadge(nullptr),
@@ -293,6 +294,7 @@ Being::~Being()
     delete2(mText);
     delete2(mEmotionSprite);
     delete2(mAnimationEffect);
+    delete2(mGmBadge);
     delete2(mGuildBadge);
     delete2(mPartyBadge);
     delete2(mTeamBadge);
@@ -1386,6 +1388,8 @@ void Being::setAction(const BeingActionT &action, const int attackId)
             mEmotionSprite->play(currentAction);
         if (mAnimationEffect)
             mAnimationEffect->play(currentAction);
+        if (mGmBadge)
+            mGmBadge->play(currentAction);
         if (mGuildBadge)
             mGuildBadge->play(currentAction);
         if (mPartyBadge)
@@ -1455,6 +1459,8 @@ void Being::setDirection(const uint8_t direction)
         mEmotionSprite->setSpriteDirection(dir);
     if (mAnimationEffect)
         mAnimationEffect->setSpriteDirection(dir);
+    if (mGmBadge)
+        mGmBadge->setSpriteDirection(dir);
     if (mGuildBadge)
         mGuildBadge->setSpriteDirection(dir);
     if (mPartyBadge)
@@ -1565,6 +1571,8 @@ void Being::logic()
         if (mAnimationEffect->isTerminated())
             delete2(mAnimationEffect)
     }
+    if (mGmBadge)
+        mGmBadge->update(time);
     if (mGuildBadge)
         mGuildBadge->update(time);
     if (mPartyBadge)
@@ -1903,6 +1911,11 @@ void Being::drawEmotion(Graphics *const graphics,
         if (mTeamBadge)
         {
             mTeamBadge->draw(graphics, x, y);
+            x += 16;
+        }
+        if (mGmBadge)
+        {
+            mGmBadge->draw(graphics, x, y);
             x += 16;
         }
         if (mGuildBadge)
@@ -2566,9 +2579,22 @@ void Being::setGender(const GenderT gender)
 
 void Being::setGM(const bool gm)
 {
-    mIsGM = gm;
-
-    updateColors();
+    if (mIsGM != gm)
+    {
+        delete2(mGmBadge);
+        mIsGM = gm;
+        if (mIsGM && mShowBadges)
+        {
+            const std::string gmBadge = paths.getStringValue("gmbadge");
+            if (!gmBadge.empty())
+            {
+                mGmBadge = AnimatedSprite::load(
+                    paths.getStringValue("badges") + gmBadge);
+            }
+        }
+        updateColors();
+        updateBadgesCount();
+    }
 }
 
 void Being::talkTo() const
@@ -3797,6 +3823,8 @@ void Being::updateBadgesCount()
 {
     mBadgesCount = 0;
     if (mTeamBadge)
+        mBadgesCount ++;
+    if (mGmBadge)
         mBadgesCount ++;
     if (mGuildBadge)
         mBadgesCount ++;
