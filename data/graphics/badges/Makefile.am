@@ -1,6 +1,8 @@
 badgesdir = $(pkgdatadir)/data/graphics/badges
 
 badges_DATA =				\
+	gm.png		\
+	gm.xml		\
 	team1.png		\
 	team1.xml		\
 	team2.png		\
