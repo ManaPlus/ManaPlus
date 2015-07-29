@@ -121,7 +121,7 @@ Setup_Chat::Setup_Chat(const Widget2 *const widget) :
     // TODO: ask 4144 if popup description is correct.
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable debug chat Log"),
-        _("If you enable thus, debug chat tab also will be logged to disk."),
+        _("If you enable this, debug chat tab also will be logged to disk."),
         "enableDebugLog", this, "enableDebugLogEvent");
 
     // TRANSLATORS: settings option
