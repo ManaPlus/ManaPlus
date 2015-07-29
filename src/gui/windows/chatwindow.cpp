@@ -1561,13 +1561,9 @@ bool ChatWindow::resortChatLog(std::string line,
         {
             replaceAll(tmpNick, "#", "_");
             replaceAll(tmpNick, "%", "_");
-            const std::string errMsg = strprintf(
-                // TRANSLATORS: error message
-                _("Broken nick detected: %s"), tmpNick.c_str());
-            if (debugChatTab)
-                debugChatTab->chatLog(errMsg, ChatMsgType::BY_SERVER);
-            else
-                localChatTab->chatLog(errMsg, ChatMsgType::BY_SERVER);
+            // TRANSLATORS: error message
+            line = _("Broken nick detected: ") + line;
+            own = ChatMsgType::BY_SERVER;
         }
         const size_t idx = line.find(": \302\202");
         if (idx == idx2)
