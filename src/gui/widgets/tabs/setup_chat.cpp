@@ -265,7 +265,7 @@ Setup_Chat::Setup_Chat(const Widget2 *const widget) :
     // TRANSLATORS: settings option
     new SetupItemTextField(_("Highlight words (separated by comma)"),
         _("Here you can specify some extra words which will also cause "
-        "highlighting. Use comma to separate words.\n\nNote: frequent"
+        "highlighting. Use comma to separate words.\n\nNote: frequent "
         "hilights are annoying - use it with caution."),
         "highlightWords", this, "highlightWordsEvent");
 
