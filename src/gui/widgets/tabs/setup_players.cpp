@@ -29,6 +29,7 @@
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/setupitem.h"
 
+#include "utils/delete2.h"
 #include "utils/gettext.h"
 
 #include "debug.h"
@@ -129,4 +130,9 @@ Setup_Players::Setup_Players(const Widget2 *const widget) :
         "", "longmouseclick", this, "longmouseclickEvent");
 
     setDimension(Rect(0, 0, 550, 350));
+}
+
+Setup_Players::~Setup_Players()
+{
+    delete2(mBadgesList);
 }

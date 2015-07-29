@@ -32,6 +32,8 @@ class Setup_Players final : public SetupTabScroll
     public:
         explicit Setup_Players(const Widget2 *const widget);
 
+        ~Setup_Players();
+
         A_DELETE_COPY(Setup_Players)
 
     private:
