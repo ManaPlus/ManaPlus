@@ -218,6 +218,7 @@ ActorManager::ActorManager() :
     config.addListener("cycleMonsters", this);
     config.addListener("cycleNPC", this);
     config.addListener("extMouseTargeting", this);
+    config.addListener("showBadges", this);
 
     loadAttackList();
 }
@@ -1848,7 +1849,8 @@ Being *ActorManager::cloneBeing(const Being *const srcBeing,
 
 void ActorManager::updateBadges()
 {
-    const bool showBadges = config.getBoolValue("showBadges");
+    const int showBadges = config.getIntValue("showBadges");
+    Being::mShowBadges = showBadges;
     for_actors
     {
         ActorSprite *const actor = *it;

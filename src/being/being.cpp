@@ -1006,21 +1006,26 @@ void Being::setShowName(const bool doShowName)
         delete2(mDispName)
 }
 
+void Being::showGuildBadge(const bool show)
+{
+    delete2(mGuildBadge);
+    if (show && !mGuildName.empty() && mShowBadges)
+    {
+        const std::string badge = BadgesDB::getGuildBadge(mGuildName);
+        if (!badge.empty())
+        {
+            mGuildBadge = AnimatedSprite::load(
+                paths.getStringValue("badges") + badge);
+        }
+    }
+}
+
 void Being::setGuildName(const std::string &name)
 {
     if (mGuildName != name)
     {
-        delete2(mGuildBadge);
         mGuildName = name;
-        if (!mGuildName.empty() && mShowBadges)
-        {
-            const std::string badge = BadgesDB::getGuildBadge(mGuildName);
-            if (!badge.empty())
-            {
-                mGuildBadge = AnimatedSprite::load(
-                    paths.getStringValue("badges") + badge);
-            }
-        }
+        showGuildBadge(!mGuildName.empty());
         updateBadgesCount();
     }
 }
@@ -2577,23 +2582,29 @@ void Being::setGender(const GenderT gender)
     }
 }
 
+void Being::showGmBadge(const bool show)
+{
+    delete2(mGmBadge);
+    if (show && mIsGM && mShowBadges)
+    {
+        const std::string gmBadge = paths.getStringValue("gmbadge");
+        if (!gmBadge.empty())
+        {
+            mGmBadge = AnimatedSprite::load(
+                paths.getStringValue("badges") + gmBadge);
+        }
+    }
+    updateBadgesCount();
+}
+
 void Being::setGM(const bool gm)
 {
     if (mIsGM != gm)
     {
-        delete2(mGmBadge);
         mIsGM = gm;
-        if (mIsGM && mShowBadges)
-        {
-            const std::string gmBadge = paths.getStringValue("gmbadge");
-            if (!gmBadge.empty())
-            {
-                mGmBadge = AnimatedSprite::load(
-                    paths.getStringValue("badges") + gmBadge);
-            }
-        }
+
+        showGmBadge(mIsGM);
         updateColors();
-        updateBadgesCount();
     }
 }
 
@@ -3781,12 +3792,12 @@ void Being::setTeamId(const uint16_t teamId)
     if (mTeamId != teamId)
     {
         mTeamId = teamId;
-        showBadges(mTeamId != 0);
+        showTeamBadge(mTeamId != 0);
         updateColors();
     }
 }
 
-void Being::showBadges(const bool show)
+void Being::showTeamBadge(const bool show)
 {
     delete2(mTeamBadge);
     if (show && mTeamId && mShowBadges)
@@ -3800,22 +3811,35 @@ void Being::showBadges(const bool show)
     updateBadgesCount();
 }
 
+void Being::showBadges(const bool show)
+{
+    showTeamBadge(show);
+    showGuildBadge(show);
+    showGmBadge(show);
+    showPartyBadge(show);
+}
+
+void Being::showPartyBadge(const bool show)
+{
+    delete2(mPartyBadge);
+    if (show && !mPartyName.empty() && mShowBadges)
+    {
+        const std::string badge = BadgesDB::getPartyBadge(mPartyName);
+        if (!badge.empty())
+        {
+            mPartyBadge = AnimatedSprite::load(
+                paths.getStringValue("badges") + badge);
+        }
+    }
+    updateBadgesCount();
+}
+
 void Being::setPartyName(const std::string &name)
 {
     if (mPartyName != name)
     {
-        delete2(mPartyBadge);
         mPartyName = name;
-        if (!mPartyName.empty() && mShowBadges)
-        {
-            const std::string badge = BadgesDB::getPartyBadge(mPartyName);
-            if (!badge.empty())
-            {
-                mPartyBadge = AnimatedSprite::load(
-                    paths.getStringValue("badges") + badge);
-            }
-        }
-        updateBadgesCount();
+        showPartyBadge(!mPartyName.empty());
     }
 }
 
