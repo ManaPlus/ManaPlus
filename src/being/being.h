@@ -961,6 +961,7 @@ class Being notfinal : public ActorSprite,
         BeingInfo *mInfo;
         AnimatedSprite *mEmotionSprite;
         AnimatedSprite *mAnimationEffect;
+        AnimatedSprite *mGuildBadge;
         AnimatedSprite *mPartyBadge;
         AnimatedSprite *mTeamBadge;
 
