@@ -1889,8 +1889,6 @@ void Being::drawEmotion(Graphics *const graphics,
 {
     const int px = getPixelX() - offsetX - mapTileSize / 2;
     const int py = getPixelY() - offsetY - mapTileSize * 2 - mapTileSize;
-    if (mEmotionSprite)
-        mEmotionSprite->draw(graphics, px, py);
     if (mAnimationEffect)
         mAnimationEffect->draw(graphics, px, py);
     if (mShowBadges && mBadgesCount)
@@ -1934,6 +1932,8 @@ void Being::drawEmotion(Graphics *const graphics,
 //            x += 16;
         }
     }
+    if (mEmotionSprite)
+        mEmotionSprite->draw(graphics, px, py);
 }
 
 void Being::drawSpeech(const int offsetX, const int offsetY)
