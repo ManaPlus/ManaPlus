@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2015-07-29 02:28+0300\n"
-"PO-Revision-Date: 2015-04-06 11:05+0000\n"
+"POT-Creation-Date: 2015-07-29 22:39+0300\n"
+"PO-Revision-Date: 2015-07-29 09:12+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Turkish (http://www.transifex.com/projects/p/manaplus/"
 "language/tr/)\n"
@@ -313,30 +313,30 @@ msgid "Quick"
 msgstr ""
 
 #. TRANSLATORS: visible beings on map
-#: src/actormanager.cpp:1375
+#: src/actormanager.cpp:1376
 msgid "Visible on map"
 msgstr "Haritada görünür"
 
 #. TRANSLATORS: default race name
-#: src/being/being.cpp:435
+#: src/being/being.cpp:438
 msgid "Human"
 msgstr "İnsan"
 
-#: src/being/being.cpp:609
+#: src/being/being.cpp:612
 msgid "dodge"
 msgstr "kaçınıldı"
 
-#: src/being/being.cpp:609
+#: src/being/being.cpp:612
 msgid "miss"
 msgstr "kaçırıldı"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being/being.cpp:2035 src/gui/windows/whoisonline.cpp:871
+#: src/being/being.cpp:2084 src/gui/windows/whoisonline.cpp:871
 msgid "A"
 msgstr "A"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being/being.cpp:2040 src/gui/windows/whoisonline.cpp:876
+#: src/being/being.cpp:2089 src/gui/windows/whoisonline.cpp:876
 msgid "I"
 msgstr "İ"
 
@@ -886,9 +886,8 @@ msgstr "(d) otomatik atak olmadan"
 
 #. TRANSLATORS: targeting type in status bar
 #: src/gamemodifiers.cpp:276
-#, fuzzy
 msgid "(D) don't switch target"
-msgstr "(?) hedefe hareket"
+msgstr ""
 
 #. TRANSLATORS: targeting type in status bar
 #: src/gamemodifiers.cpp:278
@@ -897,9 +896,8 @@ msgstr ""
 
 #. TRANSLATORS: targeting type in status bar
 #: src/gamemodifiers.cpp:280
-#, fuzzy
 msgid "(?) targeting"
-msgstr "(?) taklit"
+msgstr ""
 
 #. TRANSLATORS: pickup size in status bar
 #: src/gamemodifiers.cpp:314
@@ -1874,7 +1872,7 @@ msgstr "Sohbete isim ekle"
 
 #. TRANSLATORS: popup menu header
 #. TRANSLATORS: settings tab name
-#: src/gui/popups/popupmenu.cpp:429 src/gui/widgets/tabs/setup_players.cpp:38
+#: src/gui/popups/popupmenu.cpp:429 src/gui/widgets/tabs/setup_players.cpp:55
 msgid "Players"
 msgstr "Oyuncular"
 
@@ -2466,9 +2464,8 @@ msgstr ""
 
 #. TRANSLATORS: palette label
 #: src/gui/userpalette.cpp:129
-#, fuzzy
 msgid "Beings"
-msgstr "Var olma"
+msgstr ""
 
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:134
@@ -2552,9 +2549,8 @@ msgstr ""
 
 #. TRANSLATORS: palette label
 #: src/gui/userpalette.cpp:227
-#, fuzzy
 msgid "Particles"
-msgstr "Partikül yazı tipi"
+msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/userpalette.cpp:232 src/gui/widgets/tabs/setup_visual.cpp:157
@@ -2675,9 +2671,8 @@ msgstr ""
 
 #. TRANSLATORS: palette label
 #: src/gui/userpalette.cpp:356
-#, fuzzy
 msgid "Ranges"
-msgstr "Değiştir"
+msgstr ""
 
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:361
@@ -3492,7 +3487,7 @@ msgid "Enable debug chat Log"
 msgstr ""
 
 #: src/gui/widgets/tabs/setup_chat.cpp:124
-msgid "If you enable thus, debug chat tab also will be logged to disk."
+msgid "If you enable this, debug chat tab also will be logged to disk."
 msgstr ""
 
 #. TRANSLATORS: settings option
@@ -3546,7 +3541,7 @@ msgstr "Alışveriş mesajlarını gizle"
 
 #: src/gui/widgets/tabs/setup_chat.cpp:153
 msgid ""
-"If this setting enabled, no messages related to built-in ManaPlusshop will "
+"If this setting enabled, no messages related to built-in ManaPlus shop will "
 "be displayed in chat. Disable this setting if you want to see shop-related "
 "messages.\n"
 "\n"
@@ -3705,10 +3700,10 @@ msgstr ""
 
 #: src/gui/widgets/tabs/setup_chat.cpp:243
 msgid ""
-"If this feature enabled, text in chat will be automaticallyadjusted to adapt "
-"to appearance of chat input field when youtyping message and when input "
-"field of chat disappears. If disabled, chat input area will allways occupy "
-"its place, which could be otherwise usable for text.\n"
+"If this feature enabled, text in chat will be automatically adjusted to "
+"adapt to appearance of chat input field when you typing message and when "
+"input field of chat disappears. If disabled, chat input area will allways "
+"occupy its place, which could be otherwise usable for text.\n"
 "\n"
 "Note: its mostly about jumpy attitude vs less usable space for text."
 msgstr ""
@@ -3725,7 +3720,7 @@ msgstr ""
 
 #: src/gui/widgets/tabs/setup_chat.cpp:258
 msgid ""
-"If this feature enabled, timestamps in chat will use locak times.If "
+"If this feature enabled, timestamps in chat will use local times. If "
 "disabled, server time will be used (often it is GMT+0)."
 msgstr ""
 
@@ -3739,7 +3734,7 @@ msgid ""
 "Here you can specify some extra words which will also cause highlighting. "
 "Use comma to separate words.\n"
 "\n"
-"Note: frequenthilights are annoying - use it with caution."
+"Note: frequent hilights are annoying - use it with caution."
 msgstr ""
 
 #. TRANSLATORS: settings option
@@ -4513,94 +4508,110 @@ msgstr ""
 msgid "Disable logging in game (do not enable)"
 msgstr ""
 
-#. TRANSLATORS: settings option
+#. TRANSLATORS: screen badges type
+#: src/gui/widgets/tabs/setup_players.cpp:41
+msgid "hide"
+msgstr ""
+
+#. TRANSLATORS: screen badges type
+#: src/gui/widgets/tabs/setup_players.cpp:43
+#, fuzzy
+msgid "show at top"
+msgstr "Sohbet geçmişini göster"
+
+#. TRANSLATORS: screen badges type
 #: src/gui/widgets/tabs/setup_players.cpp:45
+#, fuzzy
+msgid "show at right"
+msgstr "Sohbet geçmişini göster"
+
+#. TRANSLATORS: screen badges type
+#: src/gui/widgets/tabs/setup_players.cpp:47
+msgid "show at bottom"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_players.cpp:62
 msgid "Show gender"
 msgstr "Cinsiyeti göster"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:49
+#: src/gui/widgets/tabs/setup_players.cpp:66
 msgid "Show level"
 msgstr "Leveli göster"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:53
+#: src/gui/widgets/tabs/setup_players.cpp:70
 msgid "Show own name"
 msgstr "Kendi adını göster"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:57
+#: src/gui/widgets/tabs/setup_players.cpp:74
 msgid "Enable extended mouse targeting"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:61
+#: src/gui/widgets/tabs/setup_players.cpp:78
 msgid "Target dead players"
 msgstr "Ölü oyuncuları hedef al"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:65
+#: src/gui/widgets/tabs/setup_players.cpp:82
 msgid "Visible names"
 msgstr "Görünür isimler"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:69
+#: src/gui/widgets/tabs/setup_players.cpp:86
 msgid "Auto move names"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:73
-#, fuzzy
-msgid "Show badges"
-msgstr "Nesneleri göster"
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:77
-msgid "Show badges at top"
+#: src/gui/widgets/tabs/setup_players.cpp:91
+msgid "Badges"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:81
+#: src/gui/widgets/tabs/setup_players.cpp:95
 msgid "Secure trades"
 msgstr "Güvenli takas"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:85
+#: src/gui/widgets/tabs/setup_players.cpp:99
 msgid "Unsecure chars in names"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:89
+#: src/gui/widgets/tabs/setup_players.cpp:103
 msgid "Show statuses"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:93
+#: src/gui/widgets/tabs/setup_players.cpp:107
 msgid "Show ip addresses on screenshots"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:97
+#: src/gui/widgets/tabs/setup_players.cpp:111
 msgid "Allow self heal with mouse click"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:101
+#: src/gui/widgets/tabs/setup_players.cpp:115
 msgid "Group friends in who is online window"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:105
+#: src/gui/widgets/tabs/setup_players.cpp:119
 msgid "Hide erased players nicks"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:109
+#: src/gui/widgets/tabs/setup_players.cpp:123
 msgid "Use special diagonal speed in players moving"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:113
+#: src/gui/widgets/tabs/setup_players.cpp:127
 msgid ""
 "Emulate right mouse button by long mouse click (useful for touch interfaces)"
 msgstr ""
@@ -5386,9 +5397,8 @@ msgstr ""
 
 #. TRANSLATORS: short button name for mail window.
 #: src/gui/windowmenu.cpp:156
-#, fuzzy
 msgid "MA"
-msgstr "A"
+msgstr ""
 
 #. TRANSLATORS: full button name
 #. TRANSLATORS: mail window name
@@ -5959,9 +5969,8 @@ msgstr "Saklanacak nesne miktarını seç."
 
 #. TRANSLATORS: amount window message
 #: src/gui/windows/itemamountwindow.cpp:252
-#, fuzzy
 msgid "Select amount of items to send."
-msgstr "Saklanacak nesne miktarını seç."
+msgstr ""
 
 #. TRANSLATORS: amount window message
 #: src/gui/windows/itemamountwindow.cpp:257
@@ -6140,9 +6149,8 @@ msgstr ""
 
 #. TRANSLATORS: mail edit window name
 #: src/gui/windows/maileditwindow.cpp:47
-#, fuzzy
 msgid "Edit mail"
-msgstr "E-Posta:"
+msgstr ""
 
 #. TRANSLATORS: mail edit window button
 #: src/gui/windows/maileditwindow.cpp:50
@@ -6175,24 +6183,21 @@ msgstr ""
 #. TRANSLATORS: mail view window label
 #: src/gui/windows/maileditwindow.cpp:60
 #: src/gui/windows/mailviewwindow.cpp:103
-#, fuzzy
 msgid "Money:"
-msgstr "Para: %s"
+msgstr ""
 
 #. TRANSLATORS: mail edit window label
 #: src/gui/windows/maileditwindow.cpp:62
 #: src/gui/windows/mailviewwindow.cpp:119
 #: src/gui/windows/mailviewwindow.cpp:124
-#, fuzzy
 msgid "Item:"
-msgstr "Harita itemi"
+msgstr ""
 
 #. TRANSLATORS: mail edit window label
 #. TRANSLATORS: mail view window label
 #: src/gui/windows/maileditwindow.cpp:64 src/gui/windows/mailviewwindow.cpp:75
-#, fuzzy
 msgid "Message:"
-msgstr "Mesaj"
+msgstr ""
 
 #. TRANSLATORS: mail view window name
 #: src/gui/windows/mailviewwindow.cpp:53
@@ -6215,9 +6220,8 @@ msgid "From:"
 msgstr ""
 
 #: src/gui/windows/mailviewwindow.cpp:131
-#, fuzzy
 msgid "Get attach"
-msgstr "(?) saldırı"
+msgstr ""
 
 #. TRANSLATORS: mail window button
 #: src/gui/windows/mailwindow.cpp:62
@@ -6231,9 +6235,8 @@ msgstr ""
 
 #. TRANSLATORS: mail window button
 #: src/gui/windows/mailwindow.cpp:68
-#, fuzzy
 msgid "Return"
-msgstr "Yumurtaya dön"
+msgstr ""
 
 #. TRANSLATORS: mail window button
 #: src/gui/windows/mailwindow.cpp:70
@@ -7023,9 +7026,8 @@ msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/basic.cpp:136
-#, fuzzy
 msgid "Change targeting type"
-msgstr "Hedefe gitme tipini değiştir"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/basic.cpp:142
@@ -8020,9 +8022,8 @@ msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/windows.cpp:196
-#, fuzzy
 msgid "Quick settings window"
-msgstr "Hızlı düşür Penceresi"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/windows.cpp:208
@@ -9700,21 +9701,18 @@ msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:572
-#, fuzzy
 msgid "Message successfully sent."
-msgstr "Oyuncu başarı ile %s!"
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:576
-#, fuzzy
 msgid "Message send failed."
-msgstr "Mesaj sohbeti kapatır."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:580
-#, fuzzy
 msgid "Item attach failed."
-msgstr "Nesne paylaşımı etkinleştirildi."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:584
@@ -9738,9 +9736,8 @@ msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:600
-#, fuzzy
 msgid "Message successfully deleted."
-msgstr "Grup başarıyla kuruldu."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:604
@@ -9768,27 +9765,3 @@ msgstr ""
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
 msgstr ""
 "/%s ayar seçenekleri \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\" 'dir."
-
-#~ msgid "Hide shield sprite"
-#~ msgstr "Kalkan görüntüsünü gizle"
-
-#~ msgid "BC"
-#~ msgstr "BK"
-
-#~ msgid "Bot checker"
-#~ msgstr "Bot kontrolörü"
-
-#~ msgid "Bot Checker"
-#~ msgstr "Bot Kontrolörü"
-
-#~ msgid "Result"
-#~ msgstr "Sonuç"
-
-#~ msgid "Split"
-#~ msgstr "Bölme"
-
-#~ msgid "Failed to send as sender or letter invalid."
-#~ msgstr "Gönderen olarak gönderme yapılamadı ya da hatalı karakter."
-
-#~ msgid "Bot Checker Window"
-#~ msgstr "Bot Kontrolörü Penceresi"

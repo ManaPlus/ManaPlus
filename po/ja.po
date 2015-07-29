@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2015-07-29 02:28+0300\n"
-"PO-Revision-Date: 2015-04-06 11:05+0000\n"
+"POT-Creation-Date: 2015-07-29 22:39+0300\n"
+"PO-Revision-Date: 2015-07-29 09:12+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/manaplus/"
 "language/ja/)\n"
@@ -317,30 +317,30 @@ msgid "Quick"
 msgstr ""
 
 #. TRANSLATORS: visible beings on map
-#: src/actormanager.cpp:1375
+#: src/actormanager.cpp:1376
 msgid "Visible on map"
 msgstr "マップに表示させる"
 
 #. TRANSLATORS: default race name
-#: src/being/being.cpp:435
+#: src/being/being.cpp:438
 msgid "Human"
 msgstr "人間"
 
-#: src/being/being.cpp:609
+#: src/being/being.cpp:612
 msgid "dodge"
 msgstr "ドッジ"
 
-#: src/being/being.cpp:609
+#: src/being/being.cpp:612
 msgid "miss"
 msgstr "ミス"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being/being.cpp:2035 src/gui/windows/whoisonline.cpp:871
+#: src/being/being.cpp:2084 src/gui/windows/whoisonline.cpp:871
 msgid "A"
 msgstr "A"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being/being.cpp:2040 src/gui/windows/whoisonline.cpp:876
+#: src/being/being.cpp:2089 src/gui/windows/whoisonline.cpp:876
 msgid "I"
 msgstr "I"
 
@@ -889,9 +889,8 @@ msgstr "(d) 自動攻撃なし"
 
 #. TRANSLATORS: targeting type in status bar
 #: src/gamemodifiers.cpp:276
-#, fuzzy
 msgid "(D) don't switch target"
-msgstr "(?) ターゲットに近付く"
+msgstr ""
 
 #. TRANSLATORS: targeting type in status bar
 #: src/gamemodifiers.cpp:278
@@ -900,9 +899,8 @@ msgstr ""
 
 #. TRANSLATORS: targeting type in status bar
 #: src/gamemodifiers.cpp:280
-#, fuzzy
 msgid "(?) targeting"
-msgstr "(?) 真似をする"
+msgstr ""
 
 #. TRANSLATORS: pickup size in status bar
 #: src/gamemodifiers.cpp:314
@@ -1873,7 +1871,7 @@ msgstr "名前をチャットへ追加する"
 
 #. TRANSLATORS: popup menu header
 #. TRANSLATORS: settings tab name
-#: src/gui/popups/popupmenu.cpp:429 src/gui/widgets/tabs/setup_players.cpp:38
+#: src/gui/popups/popupmenu.cpp:429 src/gui/widgets/tabs/setup_players.cpp:55
 msgid "Players"
 msgstr "プレイヤー"
 
@@ -2161,9 +2159,8 @@ msgstr "表示"
 
 #. TRANSLATORS: popup menu item
 #: src/gui/popups/popupmenu.cpp:1979
-#, fuzzy
 msgid "Open yellow bar settings"
-msgstr "黄色バーをリセットする"
+msgstr ""
 
 #. TRANSLATORS: popup menu item
 #: src/gui/popups/popupmenu.cpp:1981
@@ -2466,9 +2463,8 @@ msgstr "GUI"
 
 #. TRANSLATORS: palette label
 #: src/gui/userpalette.cpp:129
-#, fuzzy
 msgid "Beings"
-msgstr "プレイヤー"
+msgstr ""
 
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:134
@@ -2552,9 +2548,8 @@ msgstr ""
 
 #. TRANSLATORS: palette label
 #: src/gui/userpalette.cpp:227
-#, fuzzy
 msgid "Particles"
-msgstr "パーティクルフォント"
+msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/userpalette.cpp:232 src/gui/widgets/tabs/setup_visual.cpp:157
@@ -2675,9 +2670,8 @@ msgstr ""
 
 #. TRANSLATORS: palette label
 #: src/gui/userpalette.cpp:356
-#, fuzzy
 msgid "Ranges"
-msgstr "変更"
+msgstr ""
 
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:361
@@ -3491,7 +3485,7 @@ msgid "Enable debug chat Log"
 msgstr ""
 
 #: src/gui/widgets/tabs/setup_chat.cpp:124
-msgid "If you enable thus, debug chat tab also will be logged to disk."
+msgid "If you enable this, debug chat tab also will be logged to disk."
 msgstr ""
 
 #. TRANSLATORS: settings option
@@ -3545,7 +3539,7 @@ msgstr "売買メッセージを隠す"
 
 #: src/gui/widgets/tabs/setup_chat.cpp:153
 msgid ""
-"If this setting enabled, no messages related to built-in ManaPlusshop will "
+"If this setting enabled, no messages related to built-in ManaPlus shop will "
 "be displayed in chat. Disable this setting if you want to see shop-related "
 "messages.\n"
 "\n"
@@ -3704,10 +3698,10 @@ msgstr "チャットタブをリサイズする"
 
 #: src/gui/widgets/tabs/setup_chat.cpp:243
 msgid ""
-"If this feature enabled, text in chat will be automaticallyadjusted to adapt "
-"to appearance of chat input field when youtyping message and when input "
-"field of chat disappears. If disabled, chat input area will allways occupy "
-"its place, which could be otherwise usable for text.\n"
+"If this feature enabled, text in chat will be automatically adjusted to "
+"adapt to appearance of chat input field when you typing message and when "
+"input field of chat disappears. If disabled, chat input area will allways "
+"occupy its place, which could be otherwise usable for text.\n"
 "\n"
 "Note: its mostly about jumpy attitude vs less usable space for text."
 msgstr ""
@@ -3724,7 +3718,7 @@ msgstr "ローカルタイムを使う"
 
 #: src/gui/widgets/tabs/setup_chat.cpp:258
 msgid ""
-"If this feature enabled, timestamps in chat will use locak times.If "
+"If this feature enabled, timestamps in chat will use local times. If "
 "disabled, server time will be used (often it is GMT+0)."
 msgstr ""
 
@@ -3738,7 +3732,7 @@ msgid ""
 "Here you can specify some extra words which will also cause highlighting. "
 "Use comma to separate words.\n"
 "\n"
-"Note: frequenthilights are annoying - use it with caution."
+"Note: frequent hilights are annoying - use it with caution."
 msgstr ""
 
 #. TRANSLATORS: settings option
@@ -4512,94 +4506,110 @@ msgstr ""
 msgid "Disable logging in game (do not enable)"
 msgstr ""
 
-#. TRANSLATORS: settings option
+#. TRANSLATORS: screen badges type
+#: src/gui/widgets/tabs/setup_players.cpp:41
+msgid "hide"
+msgstr ""
+
+#. TRANSLATORS: screen badges type
+#: src/gui/widgets/tabs/setup_players.cpp:43
+#, fuzzy
+msgid "show at top"
+msgstr "チャット履歴を表示"
+
+#. TRANSLATORS: screen badges type
 #: src/gui/widgets/tabs/setup_players.cpp:45
+#, fuzzy
+msgid "show at right"
+msgstr "チャット履歴を表示"
+
+#. TRANSLATORS: screen badges type
+#: src/gui/widgets/tabs/setup_players.cpp:47
+msgid "show at bottom"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_players.cpp:62
 msgid "Show gender"
 msgstr "性別を表示する"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:49
+#: src/gui/widgets/tabs/setup_players.cpp:66
 msgid "Show level"
 msgstr "レベルを表示する"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:53
+#: src/gui/widgets/tabs/setup_players.cpp:70
 msgid "Show own name"
 msgstr "自分の名前を表示する"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:57
+#: src/gui/widgets/tabs/setup_players.cpp:74
 msgid "Enable extended mouse targeting"
 msgstr "エクステンドマウスターゲットを有効にする"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:61
+#: src/gui/widgets/tabs/setup_players.cpp:78
 msgid "Target dead players"
 msgstr "死んだプレイヤーの標的を有効"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:65
+#: src/gui/widgets/tabs/setup_players.cpp:82
 msgid "Visible names"
 msgstr "名前を表示する"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:69
+#: src/gui/widgets/tabs/setup_players.cpp:86
 msgid "Auto move names"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:73
-#, fuzzy
-msgid "Show badges"
-msgstr "アイテムを表示する"
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:77
-msgid "Show badges at top"
+#: src/gui/widgets/tabs/setup_players.cpp:91
+msgid "Badges"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:81
+#: src/gui/widgets/tabs/setup_players.cpp:95
 msgid "Secure trades"
 msgstr "トレードを安全化する"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:85
+#: src/gui/widgets/tabs/setup_players.cpp:99
 msgid "Unsecure chars in names"
 msgstr "セキュリティ上安全ではない文字が含まれています"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:89
+#: src/gui/widgets/tabs/setup_players.cpp:103
 msgid "Show statuses"
 msgstr "ステータスを表示する"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:93
+#: src/gui/widgets/tabs/setup_players.cpp:107
 msgid "Show ip addresses on screenshots"
 msgstr "スクリーンショットにIPを表示させる"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:97
+#: src/gui/widgets/tabs/setup_players.cpp:111
 msgid "Allow self heal with mouse click"
 msgstr "クリックでヒール"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:101
+#: src/gui/widgets/tabs/setup_players.cpp:115
 msgid "Group friends in who is online window"
 msgstr "オンラインリストをグループ化する"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:105
+#: src/gui/widgets/tabs/setup_players.cpp:119
 msgid "Hide erased players nicks"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:109
+#: src/gui/widgets/tabs/setup_players.cpp:123
 msgid "Use special diagonal speed in players moving"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:113
+#: src/gui/widgets/tabs/setup_players.cpp:127
 msgid ""
 "Emulate right mouse button by long mouse click (useful for touch interfaces)"
 msgstr ""
@@ -5385,9 +5395,8 @@ msgstr ""
 
 #. TRANSLATORS: short button name for mail window.
 #: src/gui/windowmenu.cpp:156
-#, fuzzy
 msgid "MA"
-msgstr "地図"
+msgstr ""
 
 #. TRANSLATORS: full button name
 #. TRANSLATORS: mail window name
@@ -5891,9 +5900,8 @@ msgstr ""
 #. TRANSLATORS: insert card dialog name
 #: src/gui/windows/insertcarddialog.cpp:43
 #: src/gui/windows/insertcarddialog.cpp:45
-#, fuzzy
 msgid "Insert card"
-msgstr "挿入"
+msgstr ""
 
 #. TRANSLATORS: insert card dialog button
 #. TRANSLATORS: input action name
@@ -5959,9 +5967,8 @@ msgstr "保管するアイテムの数量を入力してください."
 
 #. TRANSLATORS: amount window message
 #: src/gui/windows/itemamountwindow.cpp:252
-#, fuzzy
 msgid "Select amount of items to send."
-msgstr "保管するアイテムの数量を入力してください."
+msgstr ""
 
 #. TRANSLATORS: amount window message
 #: src/gui/windows/itemamountwindow.cpp:257
@@ -6138,9 +6145,8 @@ msgstr ""
 
 #. TRANSLATORS: mail edit window name
 #: src/gui/windows/maileditwindow.cpp:47
-#, fuzzy
 msgid "Edit mail"
-msgstr "Eメール:"
+msgstr ""
 
 #. TRANSLATORS: mail edit window button
 #: src/gui/windows/maileditwindow.cpp:50
@@ -6173,24 +6179,21 @@ msgstr ""
 #. TRANSLATORS: mail view window label
 #: src/gui/windows/maileditwindow.cpp:60
 #: src/gui/windows/mailviewwindow.cpp:103
-#, fuzzy
 msgid "Money:"
-msgstr "GP: %s"
+msgstr ""
 
 #. TRANSLATORS: mail edit window label
 #: src/gui/windows/maileditwindow.cpp:62
 #: src/gui/windows/mailviewwindow.cpp:119
 #: src/gui/windows/mailviewwindow.cpp:124
-#, fuzzy
 msgid "Item:"
-msgstr "マップアイテム"
+msgstr ""
 
 #. TRANSLATORS: mail edit window label
 #. TRANSLATORS: mail view window label
 #: src/gui/windows/maileditwindow.cpp:64 src/gui/windows/mailviewwindow.cpp:75
-#, fuzzy
 msgid "Message:"
-msgstr "メッセージ"
+msgstr ""
 
 #. TRANSLATORS: mail view window name
 #: src/gui/windows/mailviewwindow.cpp:53
@@ -6204,9 +6207,8 @@ msgstr ""
 
 #. TRANSLATORS: mail view window label
 #: src/gui/windows/mailviewwindow.cpp:65
-#, fuzzy
 msgid "Time:"
-msgstr "時間"
+msgstr ""
 
 #. TRANSLATORS: mail view window label
 #: src/gui/windows/mailviewwindow.cpp:69
@@ -6214,9 +6216,8 @@ msgid "From:"
 msgstr ""
 
 #: src/gui/windows/mailviewwindow.cpp:131
-#, fuzzy
 msgid "Get attach"
-msgstr "(?) 攻撃"
+msgstr ""
 
 #. TRANSLATORS: mail window button
 #: src/gui/windows/mailwindow.cpp:62
@@ -6225,9 +6226,8 @@ msgstr ""
 
 #. TRANSLATORS: mail window button
 #: src/gui/windows/mailwindow.cpp:64
-#, fuzzy
 msgid "New"
-msgstr "ネット"
+msgstr ""
 
 #. TRANSLATORS: mail window button
 #: src/gui/windows/mailwindow.cpp:68
@@ -6236,9 +6236,8 @@ msgstr ""
 
 #. TRANSLATORS: mail window button
 #: src/gui/windows/mailwindow.cpp:70
-#, fuzzy
 msgid "Open"
-msgstr "URLを開く"
+msgstr ""
 
 #: src/gui/windows/ministatuswindow.cpp:71
 msgid "health bar"
@@ -7023,9 +7022,8 @@ msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/basic.cpp:136
-#, fuzzy
 msgid "Change targeting type"
-msgstr "ターゲットへ接近方法変更"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/basic.cpp:142
@@ -8020,9 +8018,8 @@ msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/windows.cpp:196
-#, fuzzy
 msgid "Quick settings window"
-msgstr "クエスト窓"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/windows.cpp:208
@@ -9707,33 +9704,28 @@ msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:572
-#, fuzzy
 msgid "Message successfully sent."
-msgstr "プレイヤーの%sに成功しました!"
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:576
-#, fuzzy
 msgid "Message send failed."
-msgstr "チャットを閉じます."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:580
-#, fuzzy
 msgid "Item attach failed."
-msgstr "認証エラー."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:584
-#, fuzzy
 msgid "Money attach failed."
-msgstr "攻撃フィルターを有効にする"
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:588
-#, fuzzy
 msgid "Message return failed."
-msgstr "チャット作成失敗!"
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:592
@@ -9742,15 +9734,13 @@ msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:596
-#, fuzzy
 msgid "Message deletion failed."
-msgstr "認証に失敗しました."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:600
-#, fuzzy
 msgid "Message successfully deleted."
-msgstr "パーティを作成しました."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:604
@@ -9769,9 +9759,8 @@ msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:620
-#, fuzzy
 msgid "You enter battle field."
-msgstr "Blue Gemが必要です!"
+msgstr ""
 
 #. TRANSLATORS: chat option changed message
 #: src/utils/booleanoptions.h:27
@@ -9780,36 +9769,3 @@ msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
 msgstr ""
 "/%sへの可能なオプションは：\"yes\", \"no\", \"true\", \"false\", \"1\", "
 "\"0\"."
-
-#~ msgid "Hide shield sprite"
-#~ msgstr "シールドスプライトを隠す"
-
-#~ msgid "BC"
-#~ msgstr "BC"
-
-#~ msgid "Bot checker"
-#~ msgstr "ボットチェッカー"
-
-#~ msgid "Bot Checker"
-#~ msgstr "ボットチェッカー"
-
-#~ msgid "Result"
-#~ msgstr "結果"
-
-#~ msgid "Split"
-#~ msgstr "分割"
-
-#~ msgid "Time before jacko spawn:"
-#~ msgstr "次のJackOの出現まで:"
-
-#~ msgid "%s %d?"
-#~ msgstr "%s %d?"
-
-#~ msgid "jacko spawning"
-#~ msgstr "JackOが出現中"
-
-#~ msgid "Failed to send as sender or letter invalid."
-#~ msgstr "文字か差出人が無効の為送信に失敗しました."
-
-#~ msgid "Bot Checker Window"
-#~ msgstr "ボットチェッカーウィンドウ"

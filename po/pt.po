@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2015-07-29 02:28+0300\n"
-"PO-Revision-Date: 2015-04-06 11:05+0000\n"
+"POT-Creation-Date: 2015-07-29 22:39+0300\n"
+"PO-Revision-Date: 2015-07-29 09:12+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/manaplus/"
 "language/pt/)\n"
@@ -314,30 +314,30 @@ msgid "Quick"
 msgstr ""
 
 #. TRANSLATORS: visible beings on map
-#: src/actormanager.cpp:1375
+#: src/actormanager.cpp:1376
 msgid "Visible on map"
 msgstr "Visivel no mapa"
 
 #. TRANSLATORS: default race name
-#: src/being/being.cpp:435
+#: src/being/being.cpp:438
 msgid "Human"
 msgstr "Humano"
 
-#: src/being/being.cpp:609
+#: src/being/being.cpp:612
 msgid "dodge"
 msgstr "desviou"
 
-#: src/being/being.cpp:609
+#: src/being/being.cpp:612
 msgid "miss"
 msgstr "errou"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being/being.cpp:2035 src/gui/windows/whoisonline.cpp:871
+#: src/being/being.cpp:2084 src/gui/windows/whoisonline.cpp:871
 msgid "A"
 msgstr "A"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being/being.cpp:2040 src/gui/windows/whoisonline.cpp:876
+#: src/being/being.cpp:2089 src/gui/windows/whoisonline.cpp:876
 msgid "I"
 msgstr "l"
 
@@ -887,9 +887,8 @@ msgstr "(d) sem auto ataque"
 
 #. TRANSLATORS: targeting type in status bar
 #: src/gamemodifiers.cpp:276
-#, fuzzy
 msgid "(D) don't switch target"
-msgstr "(?)  Mover ao alvo"
+msgstr ""
 
 #. TRANSLATORS: targeting type in status bar
 #: src/gamemodifiers.cpp:278
@@ -898,9 +897,8 @@ msgstr ""
 
 #. TRANSLATORS: targeting type in status bar
 #: src/gamemodifiers.cpp:280
-#, fuzzy
 msgid "(?) targeting"
-msgstr "(?) Mímica"
+msgstr ""
 
 #. TRANSLATORS: pickup size in status bar
 #: src/gamemodifiers.cpp:314
@@ -1875,7 +1873,7 @@ msgstr "Adicionar nome ao chat"
 
 #. TRANSLATORS: popup menu header
 #. TRANSLATORS: settings tab name
-#: src/gui/popups/popupmenu.cpp:429 src/gui/widgets/tabs/setup_players.cpp:38
+#: src/gui/popups/popupmenu.cpp:429 src/gui/widgets/tabs/setup_players.cpp:55
 msgid "Players"
 msgstr "Jogadores"
 
@@ -2163,9 +2161,8 @@ msgstr "Mostrar"
 
 #. TRANSLATORS: popup menu item
 #: src/gui/popups/popupmenu.cpp:1979
-#, fuzzy
 msgid "Open yellow bar settings"
-msgstr "Resetar barra amarela"
+msgstr ""
 
 #. TRANSLATORS: popup menu item
 #: src/gui/popups/popupmenu.cpp:1981
@@ -2468,9 +2465,8 @@ msgstr "Gui"
 
 #. TRANSLATORS: palette label
 #: src/gui/userpalette.cpp:129
-#, fuzzy
 msgid "Beings"
-msgstr "Personagem"
+msgstr ""
 
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:134
@@ -2554,9 +2550,8 @@ msgstr ""
 
 #. TRANSLATORS: palette label
 #: src/gui/userpalette.cpp:227
-#, fuzzy
 msgid "Particles"
-msgstr "Fonte de particulas"
+msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/userpalette.cpp:232 src/gui/widgets/tabs/setup_visual.cpp:157
@@ -2677,9 +2672,8 @@ msgstr ""
 
 #. TRANSLATORS: palette label
 #: src/gui/userpalette.cpp:356
-#, fuzzy
 msgid "Ranges"
-msgstr "Mudar"
+msgstr ""
 
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:361
@@ -3493,7 +3487,7 @@ msgid "Enable debug chat Log"
 msgstr ""
 
 #: src/gui/widgets/tabs/setup_chat.cpp:124
-msgid "If you enable thus, debug chat tab also will be logged to disk."
+msgid "If you enable this, debug chat tab also will be logged to disk."
 msgstr ""
 
 #. TRANSLATORS: settings option
@@ -3547,7 +3541,7 @@ msgstr "Esconder mensagens de loja"
 
 #: src/gui/widgets/tabs/setup_chat.cpp:153
 msgid ""
-"If this setting enabled, no messages related to built-in ManaPlusshop will "
+"If this setting enabled, no messages related to built-in ManaPlus shop will "
 "be displayed in chat. Disable this setting if you want to see shop-related "
 "messages.\n"
 "\n"
@@ -3706,10 +3700,10 @@ msgstr "Redimensionar as abas de chat caso precisar"
 
 #: src/gui/widgets/tabs/setup_chat.cpp:243
 msgid ""
-"If this feature enabled, text in chat will be automaticallyadjusted to adapt "
-"to appearance of chat input field when youtyping message and when input "
-"field of chat disappears. If disabled, chat input area will allways occupy "
-"its place, which could be otherwise usable for text.\n"
+"If this feature enabled, text in chat will be automatically adjusted to "
+"adapt to appearance of chat input field when you typing message and when "
+"input field of chat disappears. If disabled, chat input area will allways "
+"occupy its place, which could be otherwise usable for text.\n"
 "\n"
 "Note: its mostly about jumpy attitude vs less usable space for text."
 msgstr ""
@@ -3726,7 +3720,7 @@ msgstr "Usar hora local"
 
 #: src/gui/widgets/tabs/setup_chat.cpp:258
 msgid ""
-"If this feature enabled, timestamps in chat will use locak times.If "
+"If this feature enabled, timestamps in chat will use local times. If "
 "disabled, server time will be used (often it is GMT+0)."
 msgstr ""
 
@@ -3740,7 +3734,7 @@ msgid ""
 "Here you can specify some extra words which will also cause highlighting. "
 "Use comma to separate words.\n"
 "\n"
-"Note: frequenthilights are annoying - use it with caution."
+"Note: frequent hilights are annoying - use it with caution."
 msgstr ""
 
 #. TRANSLATORS: settings option
@@ -4514,94 +4508,110 @@ msgstr ""
 msgid "Disable logging in game (do not enable)"
 msgstr ""
 
-#. TRANSLATORS: settings option
+#. TRANSLATORS: screen badges type
+#: src/gui/widgets/tabs/setup_players.cpp:41
+msgid "hide"
+msgstr ""
+
+#. TRANSLATORS: screen badges type
+#: src/gui/widgets/tabs/setup_players.cpp:43
+#, fuzzy
+msgid "show at top"
+msgstr "Mostrar mensagens antigas"
+
+#. TRANSLATORS: screen badges type
 #: src/gui/widgets/tabs/setup_players.cpp:45
+#, fuzzy
+msgid "show at right"
+msgstr "Mostrar mensagens antigas"
+
+#. TRANSLATORS: screen badges type
+#: src/gui/widgets/tabs/setup_players.cpp:47
+msgid "show at bottom"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_players.cpp:62
 msgid "Show gender"
 msgstr "Mostrar gênero"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:49
+#: src/gui/widgets/tabs/setup_players.cpp:66
 msgid "Show level"
 msgstr "Mostrar nível"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:53
+#: src/gui/widgets/tabs/setup_players.cpp:70
 msgid "Show own name"
 msgstr "Mostrar o próprio nome"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:57
+#: src/gui/widgets/tabs/setup_players.cpp:74
 msgid "Enable extended mouse targeting"
 msgstr "Ativar segmentação prolongada de mouse"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:61
+#: src/gui/widgets/tabs/setup_players.cpp:78
 msgid "Target dead players"
 msgstr "Jogadores(as) mortos(as) como alvo"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:65
+#: src/gui/widgets/tabs/setup_players.cpp:82
 msgid "Visible names"
 msgstr "Nomes visíveis"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:69
+#: src/gui/widgets/tabs/setup_players.cpp:86
 msgid "Auto move names"
 msgstr "Nomes de movimentos automáticos"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:73
-#, fuzzy
-msgid "Show badges"
-msgstr "Mostar itens"
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:77
-msgid "Show badges at top"
+#: src/gui/widgets/tabs/setup_players.cpp:91
+msgid "Badges"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:81
+#: src/gui/widgets/tabs/setup_players.cpp:95
 msgid "Secure trades"
 msgstr "Trocas seguras"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:85
+#: src/gui/widgets/tabs/setup_players.cpp:99
 msgid "Unsecure chars in names"
 msgstr "Letras de nome inseguras"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:89
+#: src/gui/widgets/tabs/setup_players.cpp:103
 msgid "Show statuses"
 msgstr "Ver status"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:93
+#: src/gui/widgets/tabs/setup_players.cpp:107
 msgid "Show ip addresses on screenshots"
 msgstr "Mostrar endereço de IP em Capturas de Tela"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:97
+#: src/gui/widgets/tabs/setup_players.cpp:111
 msgid "Allow self heal with mouse click"
 msgstr "Permitir curar-se com o clique do mouse"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:101
+#: src/gui/widgets/tabs/setup_players.cpp:115
 msgid "Group friends in who is online window"
 msgstr "Grupo de amigos na lista online"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:105
+#: src/gui/widgets/tabs/setup_players.cpp:119
 msgid "Hide erased players nicks"
 msgstr "Ocultar nicks de jogadores apagados"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:109
+#: src/gui/widgets/tabs/setup_players.cpp:123
 msgid "Use special diagonal speed in players moving"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:113
+#: src/gui/widgets/tabs/setup_players.cpp:127
 msgid ""
 "Emulate right mouse button by long mouse click (useful for touch interfaces)"
 msgstr ""
@@ -5391,9 +5401,8 @@ msgstr ""
 
 #. TRANSLATORS: short button name for mail window.
 #: src/gui/windowmenu.cpp:156
-#, fuzzy
 msgid "MA"
-msgstr "MAP"
+msgstr ""
 
 #. TRANSLATORS: full button name
 #. TRANSLATORS: mail window name
@@ -5902,9 +5911,8 @@ msgstr "Você Sabia..."
 #. TRANSLATORS: insert card dialog name
 #: src/gui/windows/insertcarddialog.cpp:43
 #: src/gui/windows/insertcarddialog.cpp:45
-#, fuzzy
 msgid "Insert card"
-msgstr "Inserir"
+msgstr ""
 
 #. TRANSLATORS: insert card dialog button
 #. TRANSLATORS: input action name
@@ -5970,9 +5978,8 @@ msgstr "Escolha a quantidade de itens para armazenar."
 
 #. TRANSLATORS: amount window message
 #: src/gui/windows/itemamountwindow.cpp:252
-#, fuzzy
 msgid "Select amount of items to send."
-msgstr "Escolha a quantidade de itens para armazenar."
+msgstr ""
 
 #. TRANSLATORS: amount window message
 #: src/gui/windows/itemamountwindow.cpp:257
@@ -6151,9 +6158,8 @@ msgstr "Abrir URL de cadastro"
 
 #. TRANSLATORS: mail edit window name
 #: src/gui/windows/maileditwindow.cpp:47
-#, fuzzy
 msgid "Edit mail"
-msgstr "Email:"
+msgstr ""
 
 #. TRANSLATORS: mail edit window button
 #: src/gui/windows/maileditwindow.cpp:50
@@ -6186,24 +6192,21 @@ msgstr ""
 #. TRANSLATORS: mail view window label
 #: src/gui/windows/maileditwindow.cpp:60
 #: src/gui/windows/mailviewwindow.cpp:103
-#, fuzzy
 msgid "Money:"
-msgstr "Dinheiro: %s"
+msgstr ""
 
 #. TRANSLATORS: mail edit window label
 #: src/gui/windows/maileditwindow.cpp:62
 #: src/gui/windows/mailviewwindow.cpp:119
 #: src/gui/windows/mailviewwindow.cpp:124
-#, fuzzy
 msgid "Item:"
-msgstr "Mapa Item"
+msgstr ""
 
 #. TRANSLATORS: mail edit window label
 #. TRANSLATORS: mail view window label
 #: src/gui/windows/maileditwindow.cpp:64 src/gui/windows/mailviewwindow.cpp:75
-#, fuzzy
 msgid "Message:"
-msgstr "Mensagem"
+msgstr ""
 
 #. TRANSLATORS: mail view window name
 #: src/gui/windows/mailviewwindow.cpp:53
@@ -6217,9 +6220,8 @@ msgstr ""
 
 #. TRANSLATORS: mail view window label
 #: src/gui/windows/mailviewwindow.cpp:65
-#, fuzzy
 msgid "Time:"
-msgstr "Tempo"
+msgstr ""
 
 #. TRANSLATORS: mail view window label
 #: src/gui/windows/mailviewwindow.cpp:69
@@ -6227,9 +6229,8 @@ msgid "From:"
 msgstr ""
 
 #: src/gui/windows/mailviewwindow.cpp:131
-#, fuzzy
 msgid "Get attach"
-msgstr "(?) Ataque"
+msgstr ""
 
 #. TRANSLATORS: mail window button
 #: src/gui/windows/mailwindow.cpp:62
@@ -6238,9 +6239,8 @@ msgstr ""
 
 #. TRANSLATORS: mail window button
 #: src/gui/windows/mailwindow.cpp:64
-#, fuzzy
 msgid "New"
-msgstr "Rede"
+msgstr ""
 
 #. TRANSLATORS: mail window button
 #: src/gui/windows/mailwindow.cpp:68
@@ -6249,9 +6249,8 @@ msgstr ""
 
 #. TRANSLATORS: mail window button
 #: src/gui/windows/mailwindow.cpp:70
-#, fuzzy
 msgid "Open"
-msgstr "Abrir URL"
+msgstr ""
 
 #: src/gui/windows/ministatuswindow.cpp:71
 msgid "health bar"
@@ -7035,9 +7034,8 @@ msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/basic.cpp:136
-#, fuzzy
 msgid "Change targeting type"
-msgstr "Mudar o tipo de movimento ao alvo"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/basic.cpp:142
@@ -8032,9 +8030,8 @@ msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/windows.cpp:196
-#, fuzzy
 msgid "Quick settings window"
-msgstr "Janela de Missões"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/windows.cpp:208
@@ -9722,33 +9719,28 @@ msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:572
-#, fuzzy
 msgid "Message successfully sent."
-msgstr "Jogador %s com sucesso!"
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:576
-#, fuzzy
 msgid "Message send failed."
-msgstr "A mensagem fecha o chat."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:580
-#, fuzzy
 msgid "Item attach failed."
-msgstr "Falha ao checar Emperium."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:584
-#, fuzzy
 msgid "Money attach failed."
-msgstr "Alcance do monstro"
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:588
-#, fuzzy
 msgid "Message return failed."
-msgstr "Falha ao criar Chat!"
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:592
@@ -9757,15 +9749,13 @@ msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:596
-#, fuzzy
 msgid "Message deletion failed."
-msgstr "Falha de autenticação."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:600
-#, fuzzy
 msgid "Message successfully deleted."
-msgstr "Grupo criado."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:604
@@ -9784,9 +9774,8 @@ msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:620
-#, fuzzy
 msgid "You enter battle field."
-msgstr "Você precisa de outra jóia azul!"
+msgstr ""
 
 #. TRANSLATORS: chat option changed message
 #: src/utils/booleanoptions.h:27
@@ -9794,36 +9783,3 @@ msgstr "Você precisa de outra jóia azul!"
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
 msgstr ""
 "Opções para /%s são \"yes\" e \"no\", \"true\" e \"false\", \"1\" e \"0\"."
-
-#~ msgid "Hide shield sprite"
-#~ msgstr "Ocultar sprite de escudo"
-
-#~ msgid "BC"
-#~ msgstr "AB"
-
-#~ msgid "Bot checker"
-#~ msgstr "Analisador de bot"
-
-#~ msgid "Bot Checker"
-#~ msgstr "Analizador de bot"
-
-#~ msgid "Result"
-#~ msgstr "Resultado"
-
-#~ msgid "Split"
-#~ msgstr "Dividir"
-
-#~ msgid "Time before jacko spawn:"
-#~ msgstr "Tempo para próximo JackO:"
-
-#~ msgid "%s %d?"
-#~ msgstr "%s %d?"
-
-#~ msgid "jacko spawning"
-#~ msgstr "Aparição do JackO"
-
-#~ msgid "Failed to send as sender or letter invalid."
-#~ msgstr "Falha ao enviar como remetente ou a carta é inválida."
-
-#~ msgid "Bot Checker Window"
-#~ msgstr "Janela Analisador de bot"
