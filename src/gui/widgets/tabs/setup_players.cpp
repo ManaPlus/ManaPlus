@@ -22,6 +22,8 @@
 
 #include "gui/widgets/tabs/setup_players.h"
 
+#include "gui/models/namesmodel.h"
+
 #include "gui/widgets/containerplacer.h"
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/scrollarea.h"
@@ -31,8 +33,23 @@
 
 #include "debug.h"
 
+static const int badgesListSize = 4;
+
+static const char *const badgesList[] =
+{
+    // TRANSLATORS: screen badges type
+    N_("hide"),
+    // TRANSLATORS: screen badges type
+    N_("show at top"),
+    // TRANSLATORS: screen badges type
+    N_("show at right"),
+    // TRANSLATORS: screen badges type
+    N_("show at bottom"),
+};
+
 Setup_Players::Setup_Players(const Widget2 *const widget) :
-    SetupTabScroll(widget)
+    SetupTabScroll(widget),
+    mBadgesList(new NamesModel)
 {
     // TRANSLATORS: settings tab name
     setName(_("Players"));
@@ -69,13 +86,10 @@ Setup_Players::Setup_Players(const Widget2 *const widget) :
     new SetupItemCheckBox(_("Auto move names"), "",
         "moveNames", this, "moveNamesEvent");
 
+    mBadgesList->fillFromArray(&badgesList[0], badgesListSize);
     // TRANSLATORS: settings option
-    new SetupItemCheckBox(_("Show badges"), "",
-        "showBadges", this, "showBadgesEvent");
-
-    // TRANSLATORS: settings option
-    new SetupItemCheckBox(_("Show badges at top"), "",
-        "showBadgesTop", this, "showBadgesTopEvent");
+    new SetupItemDropDown(_("Badges"), "",
+        "showBadges", this, "showBadgesEvent", mBadgesList, 150);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Secure trades"), "",

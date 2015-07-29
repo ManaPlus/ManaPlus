@@ -25,12 +25,17 @@
 
 #include "gui/widgets/tabs/setuptabscroll.h"
 
+class NamesModel;
+
 class Setup_Players final : public SetupTabScroll
 {
     public:
         explicit Setup_Players(const Widget2 *const widget);
 
         A_DELETE_COPY(Setup_Players)
+
+    private:
+        NamesModel *mBadgesList;
 };
 
 #endif  // GUI_WIDGETS_TABS_SETUP_PLAYERS_H

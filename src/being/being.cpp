@@ -118,8 +118,7 @@ bool Being::mEnableReorderSprites = true;
 bool Being::mHideErased = false;
 Move Being::mMoveNames = Move_false;
 bool Being::mUseDiagonal = true;
-bool Being::mShowBadges = true;
-bool Being::mShowBadgesTop = true;
+uint8_t Being::mShowBadges = 1;
 int Being::mAwayEffect = -1;
 
 std::list<BeingCacheEntry*> beingInfoCache;
@@ -1885,11 +1884,17 @@ void Being::drawEmotion(Graphics *const graphics,
     {
         int x;
         int y;
-        if (!mShowBadgesTop && mDispName && gui)
+        if (mShowBadges == 2 && mDispName && gui)
         {
             Font *const font = gui->getFont();
             x = mDispName->getX() - offsetX + mDispName->getWidth();
             y = mDispName->getY() - offsetY - font->getHeight();
+        }
+        else if (mShowBadges == 3 && mDispName && gui)
+        {
+            Font *const font = gui->getFont();
+            x = px + 8 - mBadgesCount * 8;
+            y = mDispName->getY() - offsetY;
         }
         else
         {
@@ -2424,8 +2429,7 @@ void Being::reReadConfig()
         mHideErased = config.getBoolValue("hideErased");
         mMoveNames = fromBool(config.getBoolValue("moveNames"), Move);
         mUseDiagonal = config.getBoolValue("useDiagonalSpeed");
-        mShowBadges = config.getBoolValue("showBadges");
-        mShowBadgesTop = config.getBoolValue("showBadgesTop");
+        mShowBadges = config.getIntValue("showBadges");
 
         mUpdateConfigTime = cur_time;
     }
