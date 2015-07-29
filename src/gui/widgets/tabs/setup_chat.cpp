@@ -255,7 +255,7 @@ Setup_Chat::Setup_Chat(const Widget2 *const widget) :
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Use local time"),
-        _("If this feature enabled, timestamps in chat will use locak times."
+        _("If this feature enabled, timestamps in chat will use local times."
         "If disabled, server time will be used (often it is GMT+0)."),
         "useLocalTime", this, "useLocalTimeEvent");
 
