@@ -20,6 +20,8 @@
 
 #include "resources/db/weaponsdb.h"
 
+#include "configuration.h"
+
 #include "utils/xmlutils.h"
 
 #include "debug.h"
@@ -34,7 +36,7 @@ namespace
 
 static void loadDB(const std::string &name, WeaponsInfos &arr)
 {
-    readXmlIntVector("weapons.xml",
+    readXmlIntVector(paths.getStringValue("weaponsFile"),
         "weapons",
         name,
         "item",

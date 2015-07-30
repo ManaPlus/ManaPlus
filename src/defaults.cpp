@@ -598,6 +598,7 @@ DefaultsData* getPathsDefaults()
     AddDEF("defaultcommandsPatchDir", "defaultcommands.d");
     AddDEF("badgesFile", "badges.xml");
     AddDEF("badgesPatchFile", "badges_patch.xml");
+    AddDEF("weaponsFile", "weapons.xml");
     AddDEF("poisonEffectName", "poison");
     AddDEF("cartEffectName", "cart");
     AddDEF("ridingEffectName", "riding");
