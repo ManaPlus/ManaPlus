@@ -136,6 +136,7 @@ Being::Being(const BeingId id,
     mAnimationEffect(nullptr),
     mGmBadge(nullptr),
     mGuildBadge(nullptr),
+    mNameBadge(nullptr),
     mPartyBadge(nullptr),
     mTeamBadge(nullptr),
     mSpriteAction(SpriteAction::STAND),
@@ -296,6 +297,7 @@ Being::~Being()
     delete2(mAnimationEffect);
     delete2(mGmBadge);
     delete2(mGuildBadge);
+    delete2(mNameBadge);
     delete2(mPartyBadge);
     delete2(mTeamBadge);
     mBadgesCount = 0;
@@ -974,12 +976,36 @@ void Being::handleSkill(Being *const victim, const int damage,
     }
 }
 
+void Being::showNameBadge(const bool show)
+{
+    delete2(mNameBadge);
+    if (show && !mName.empty() && mShowBadges)
+    {
+        const std::string badge = BadgesDB::getNameBadge(mName);
+        if (!badge.empty())
+        {
+            mNameBadge = AnimatedSprite::load(
+                paths.getStringValue("badges") + badge);
+        }
+    }
+}
+
 void Being::setName(const std::string &name)
 {
     if (mType == ActorType::Npc)
     {
         mName = name.substr(0, name.find('#', 0));
         showName();
+    }
+    else if (mType == ActorType::Player)
+    {
+        if (mName != name)
+        {
+            mName = name;
+            showNameBadge(!mName.empty());
+        }
+        if (getShowName())
+            showName();
     }
     else
     {
@@ -1397,6 +1423,8 @@ void Being::setAction(const BeingActionT &action, const int attackId)
             mGmBadge->play(currentAction);
         if (mGuildBadge)
             mGuildBadge->play(currentAction);
+        if (mNameBadge)
+            mNameBadge->play(currentAction);
         if (mPartyBadge)
             mPartyBadge->play(currentAction);
         if (mTeamBadge)
@@ -1468,6 +1496,8 @@ void Being::setDirection(const uint8_t direction)
         mGmBadge->setSpriteDirection(dir);
     if (mGuildBadge)
         mGuildBadge->setSpriteDirection(dir);
+    if (mNameBadge)
+        mNameBadge->setSpriteDirection(dir);
     if (mPartyBadge)
         mPartyBadge->setSpriteDirection(dir);
     if (mTeamBadge)
@@ -1580,6 +1610,8 @@ void Being::logic()
         mGmBadge->update(time);
     if (mGuildBadge)
         mGuildBadge->update(time);
+    if (mNameBadge)
+        mNameBadge->update(time);
     if (mPartyBadge)
         mPartyBadge->update(time);
     if (mTeamBadge)
@@ -1914,6 +1946,11 @@ void Being::drawEmotion(Graphics *const graphics,
         if (mTeamBadge)
         {
             mTeamBadge->draw(graphics, x, y);
+            x += 16;
+        }
+        if (mNameBadge)
+        {
+            mNameBadge->draw(graphics, x, y);
             x += 16;
         }
         if (mGmBadge)
@@ -3817,6 +3854,7 @@ void Being::showBadges(const bool show)
     showGuildBadge(show);
     showGmBadge(show);
     showPartyBadge(show);
+    showNameBadge(show);
 }
 
 void Being::showPartyBadge(const bool show)
@@ -3851,6 +3889,8 @@ void Being::updateBadgesCount()
     if (mGmBadge)
         mBadgesCount ++;
     if (mGuildBadge)
+        mBadgesCount ++;
+    if (mNameBadge)
         mBadgesCount ++;
     if (mPartyBadge)
         mBadgesCount ++;

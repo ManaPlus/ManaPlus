@@ -37,6 +37,8 @@ namespace BadgesDB
 
     const std::string getGuildBadge(const std::string &name);
 
+    const std::string getNameBadge(const std::string &name);
+
     const std::string getPartyBadge(const std::string &name);
 }  // namespace BadgesDB
 

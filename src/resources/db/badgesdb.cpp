@@ -27,6 +27,7 @@
 namespace
 {
     BadgesInfos mGuilds;
+    BadgesInfos mNames;
     BadgesInfos mParties;
     bool mLoaded = false;
 }
@@ -48,12 +49,15 @@ void BadgesDB::load()
         unload();
 
     loadDB("guild", mGuilds);
+    loadDB("name", mNames);
     loadDB("party", mParties);
 }
 
 void BadgesDB::unload()
 {
     mParties.clear();
+    mGuilds.clear();
+    mNames.clear();
     mLoaded = false;
 }
 
@@ -61,6 +65,14 @@ const std::string BadgesDB::getPartyBadge(const std::string &name)
 {
     BadgesInfosIter it = mParties.find(name);
     if (it == mParties.end())
+        return std::string();
+    return (*it).second;
+}
+
+const std::string BadgesDB::getNameBadge(const std::string &name)
+{
+    BadgesInfosIter it = mNames.find(name);
+    if (it == mNames.end())
         return std::string();
     return (*it).second;
 }

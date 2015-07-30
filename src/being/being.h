@@ -939,6 +939,8 @@ class Being notfinal : public ActorSprite,
 
         void showPartyBadge(const bool show);
 
+        void showNameBadge(const bool show);
+
         void showBadges(const bool show);
 
         uint16_t getTeamId() const
@@ -971,6 +973,7 @@ class Being notfinal : public ActorSprite,
         AnimatedSprite *mAnimationEffect;
         AnimatedSprite *mGmBadge;
         AnimatedSprite *mGuildBadge;
+        AnimatedSprite *mNameBadge;
         AnimatedSprite *mPartyBadge;
         AnimatedSprite *mTeamBadge;
 
