@@ -49,15 +49,24 @@ void readXmlIntVector(const std::string &fileName,
             continue;
         for_each_xml_child_node(childNode, sectionNode)
         {
-            if (!xmlNameEqual(childNode, itemName.c_str()))
-                continue;
-
-            const int val = XML::getProperty(childNode,
-                attributeName.c_str(), -1);
-            if (val == -1)
-                continue;
-
-            arr.push_back(val);
+            if (xmlNameEqual(childNode, itemName.c_str()))
+            {
+                const int val = XML::getProperty(childNode,
+                    attributeName.c_str(), -1);
+                if (val == -1)
+                    continue;
+                arr.push_back(val);
+            }
+            else if (xmlNameEqual(childNode, "include"))
+            {
+                const std::string name = XML::getProperty(
+                    childNode, "name", "");
+                if (!name.empty())
+                {
+                    readXmlIntVector(name, rootName, sectionName, itemName,
+                        attributeName, arr);
+                }
+            }
         }
     }
 }
@@ -86,17 +95,27 @@ void readXmlStringMap(const std::string &fileName,
             continue;
         for_each_xml_child_node(childNode, sectionNode)
         {
-            if (!xmlNameEqual(childNode, itemName.c_str()))
-                continue;
-
-            const std::string key = XML::getProperty(childNode,
-                attributeKeyName.c_str(), "");
-            if (key.empty())
-                continue;
-            const std::string val = XML::getProperty(childNode,
-                attributeValueName.c_str(), "");
-
-            arr[key] = val;
+            if (xmlNameEqual(childNode, itemName.c_str()))
+            {
+                const std::string key = XML::getProperty(childNode,
+                    attributeKeyName.c_str(), "");
+                if (key.empty())
+                    continue;
+                const std::string val = XML::getProperty(childNode,
+                    attributeValueName.c_str(), "");
+                arr[key] = val;
+            }
+            else if (xmlNameEqual(childNode, "include"))
+            {
+                const std::string name = XML::getProperty(
+                    childNode, "name", "");
+                if (!name.empty())
+                {
+                    readXmlStringMap(name, rootName, sectionName, itemName,
+                        attributeKeyName, attributeValueName,
+                        arr);
+                }
+            }
         }
     }
 }
