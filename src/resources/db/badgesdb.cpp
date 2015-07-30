@@ -20,6 +20,10 @@
 
 #include "resources/db/badgesdb.h"
 
+#include "configuration.h"
+
+#include "resources/beingcommon.h"
+
 #include "utils/xmlutils.h"
 
 #include "debug.h"
@@ -32,15 +36,31 @@ namespace
     bool mLoaded = false;
 }
 
-static void loadDB(const std::string &name, BadgesInfos &arr)
+static void loadXmlFile(const std::string &file,
+                        const std::string &name,
+                        BadgesInfos &arr)
 {
-    readXmlStringMap("badges.xml",
+    readXmlStringMap(file,
         "badges",
         name,
         "badge",
         "name",
         "image",
         arr);
+}
+
+static void loadDB(const std::string &name, BadgesInfos &arr)
+{
+    loadXmlFile(paths.getStringValue("badgesFile"),
+        name, arr);
+    loadXmlFile(paths.getStringValue("badgesPatchFile"),
+        name, arr);
+
+    StringVect listVect;
+    BeingCommon::getIncludeFiles(paths.getStringValue(
+        "badgesPatchDir"), listVect, ".xml");
+    FOR_EACH (StringVectCIter, itVect, listVect)
+        loadXmlFile(*itVect, name, arr);
 }
 
 void BadgesDB::load()

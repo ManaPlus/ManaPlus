@@ -79,7 +79,6 @@ void readXmlStringMap(const std::string &fileName,
                       const std::string &attributeValueName,
                       std::map<std::string, std::string> &arr)
 {
-    arr.clear();
     XML::Document doc(fileName, UseResman_true, SkipError_false);
     const XmlNodePtrConst rootNode = doc.rootNode();
 
