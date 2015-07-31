@@ -1849,7 +1849,8 @@ Being *ActorManager::cloneBeing(const Being *const srcBeing,
 
 void ActorManager::updateBadges()
 {
-    const int showBadges = config.getIntValue("showBadges");
+    const uint8_t showBadges = static_cast<uint8_t>(
+        config.getIntValue("showBadges"));
     Being::mShowBadges = showBadges;
     for_actors
     {

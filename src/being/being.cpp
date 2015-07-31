@@ -2483,7 +2483,7 @@ void Being::reReadConfig()
         mHideErased = config.getBoolValue("hideErased");
         mMoveNames = fromBool(config.getBoolValue("moveNames"), Move);
         mUseDiagonal = config.getBoolValue("useDiagonalSpeed");
-        mShowBadges = config.getIntValue("showBadges");
+        mShowBadges = static_cast<uint8_t>(config.getIntValue("showBadges"));
 
         mUpdateConfigTime = cur_time;
     }
