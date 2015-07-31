@@ -944,6 +944,7 @@ impHandler(confGet)
     if (args.empty())
         return false;
 
+    // TRANSLATORS: result from command /confget
     const std::string str = strprintf(_("Config value: %s"),
         config.getStringValue(args).c_str());
     outStringNormal(event.tab, str, str);
@@ -956,6 +957,7 @@ impHandler(serverConfGet)
     if (args.empty())
         return false;
 
+    // TRANSLATORS: result from command /serverconfget
     const std::string str = strprintf(_("Server config value: %s"),
         serverConfig.getStringValue(args).c_str());
     outStringNormal(event.tab, str, str);
