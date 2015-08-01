@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2015-07-29 22:39+0300\n"
-"PO-Revision-Date: 2015-07-29 09:12+0000\n"
+"POT-Creation-Date: 2015-08-01 14:09+0300\n"
+"PO-Revision-Date: 2015-07-30 09:13+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Turkish (http://www.transifex.com/projects/p/manaplus/"
 "language/tr/)\n"
@@ -283,12 +283,14 @@ msgstr "kara listeye alınmış"
 msgid "enemy"
 msgstr "düşman"
 
-#: src/actions/commands.cpp:947
+#. TRANSLATORS: result from command /confget
+#: src/actions/commands.cpp:948
 #, c-format
 msgid "Config value: %s"
 msgstr ""
 
-#: src/actions/commands.cpp:959
+#. TRANSLATORS: result from command /serverconfget
+#: src/actions/commands.cpp:961
 #, c-format
 msgid "Server config value: %s"
 msgstr ""
@@ -318,25 +320,25 @@ msgid "Visible on map"
 msgstr "Haritada görünür"
 
 #. TRANSLATORS: default race name
-#: src/being/being.cpp:438
+#: src/being/being.cpp:440
 msgid "Human"
 msgstr "İnsan"
 
-#: src/being/being.cpp:612
+#: src/being/being.cpp:614
 msgid "dodge"
 msgstr "kaçınıldı"
 
-#: src/being/being.cpp:612
+#: src/being/being.cpp:614
 msgid "miss"
 msgstr "kaçırıldı"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being/being.cpp:2084 src/gui/windows/whoisonline.cpp:871
+#: src/being/being.cpp:2121 src/gui/windows/whoisonline.cpp:871
 msgid "A"
 msgstr "A"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being/being.cpp:2089 src/gui/windows/whoisonline.cpp:876
+#: src/being/being.cpp:2126 src/gui/windows/whoisonline.cpp:876
 msgid "I"
 msgstr "İ"
 
@@ -672,7 +674,7 @@ msgid "dyecmd srcdyestring dstfile"
 msgstr "dyecmd srcdyestring dstfile"
 
 #. TRANSLATORS: chat tab header
-#: src/game.cpp:252 src/gui/windows/chatwindow.cpp:2188
+#: src/game.cpp:252 src/gui/windows/chatwindow.cpp:2184
 msgid "General"
 msgstr "Genel"
 
@@ -1872,7 +1874,7 @@ msgstr "Sohbete isim ekle"
 
 #. TRANSLATORS: popup menu header
 #. TRANSLATORS: settings tab name
-#: src/gui/popups/popupmenu.cpp:429 src/gui/widgets/tabs/setup_players.cpp:55
+#: src/gui/popups/popupmenu.cpp:429 src/gui/widgets/tabs/setup_players.cpp:56
 msgid "Players"
 msgstr "Oyuncular"
 
@@ -2541,6 +2543,7 @@ msgstr ""
 msgid "Guild members"
 msgstr ""
 
+#. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:214 src/gui/userpalette.cpp:219
 #: src/gui/userpalette.cpp:224
 #, c-format
@@ -2552,15 +2555,18 @@ msgstr ""
 msgid "Particles"
 msgstr ""
 
+#. TRANSLATORS: palette color
 #. TRANSLATORS: settings option
 #: src/gui/userpalette.cpp:232 src/gui/widgets/tabs/setup_visual.cpp:157
 msgid "Particle effects"
 msgstr "Partikül efektleri"
 
+#. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:237
 msgid "Pickup notification"
 msgstr ""
 
+#. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:242
 msgid "Exp notification"
 msgstr ""
@@ -2570,6 +2576,7 @@ msgstr ""
 msgid "Hp bars"
 msgstr ""
 
+#. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:250
 msgid "Player HP bar"
 msgstr "Oyuncu HP çubuğu"
@@ -2594,10 +2601,12 @@ msgstr "Canavar HP çubuğu (ikinci renk)"
 msgid "Hits"
 msgstr ""
 
+#. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:276
 msgid "Player hits monster"
 msgstr ""
 
+#. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:281
 msgid "Monster hits player"
 msgstr ""
@@ -2607,6 +2616,7 @@ msgstr ""
 msgid "Other player hits local player"
 msgstr ""
 
+#. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:291
 msgid "Critical Hit"
 msgstr "Kritik Vuruş"
@@ -2626,6 +2636,7 @@ msgstr ""
 msgid "Local player miss"
 msgstr ""
 
+#. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:310
 msgid "Misses"
 msgstr "Kaçırmalar"
@@ -2635,6 +2646,7 @@ msgstr "Kaçırmalar"
 msgid "Tiles"
 msgstr ""
 
+#. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:318
 msgid "Portal highlight"
 msgstr ""
@@ -4509,109 +4521,107 @@ msgid "Disable logging in game (do not enable)"
 msgstr ""
 
 #. TRANSLATORS: screen badges type
-#: src/gui/widgets/tabs/setup_players.cpp:41
+#: src/gui/widgets/tabs/setup_players.cpp:42
 msgid "hide"
 msgstr ""
 
 #. TRANSLATORS: screen badges type
-#: src/gui/widgets/tabs/setup_players.cpp:43
-#, fuzzy
+#: src/gui/widgets/tabs/setup_players.cpp:44
 msgid "show at top"
-msgstr "Sohbet geçmişini göster"
+msgstr ""
 
 #. TRANSLATORS: screen badges type
-#: src/gui/widgets/tabs/setup_players.cpp:45
-#, fuzzy
+#: src/gui/widgets/tabs/setup_players.cpp:46
 msgid "show at right"
-msgstr "Sohbet geçmişini göster"
+msgstr ""
 
 #. TRANSLATORS: screen badges type
-#: src/gui/widgets/tabs/setup_players.cpp:47
+#: src/gui/widgets/tabs/setup_players.cpp:48
 msgid "show at bottom"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:62
+#: src/gui/widgets/tabs/setup_players.cpp:63
 msgid "Show gender"
 msgstr "Cinsiyeti göster"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:66
+#: src/gui/widgets/tabs/setup_players.cpp:67
 msgid "Show level"
 msgstr "Leveli göster"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:70
+#: src/gui/widgets/tabs/setup_players.cpp:71
 msgid "Show own name"
 msgstr "Kendi adını göster"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:74
+#: src/gui/widgets/tabs/setup_players.cpp:75
 msgid "Enable extended mouse targeting"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:78
+#: src/gui/widgets/tabs/setup_players.cpp:79
 msgid "Target dead players"
 msgstr "Ölü oyuncuları hedef al"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:82
+#: src/gui/widgets/tabs/setup_players.cpp:83
 msgid "Visible names"
 msgstr "Görünür isimler"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:86
+#: src/gui/widgets/tabs/setup_players.cpp:87
 msgid "Auto move names"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:91
+#: src/gui/widgets/tabs/setup_players.cpp:92
 msgid "Badges"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:95
+#: src/gui/widgets/tabs/setup_players.cpp:96
 msgid "Secure trades"
 msgstr "Güvenli takas"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:99
+#: src/gui/widgets/tabs/setup_players.cpp:100
 msgid "Unsecure chars in names"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:103
+#: src/gui/widgets/tabs/setup_players.cpp:104
 msgid "Show statuses"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:107
+#: src/gui/widgets/tabs/setup_players.cpp:108
 msgid "Show ip addresses on screenshots"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:111
+#: src/gui/widgets/tabs/setup_players.cpp:112
 msgid "Allow self heal with mouse click"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:115
+#: src/gui/widgets/tabs/setup_players.cpp:116
 msgid "Group friends in who is online window"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:119
+#: src/gui/widgets/tabs/setup_players.cpp:120
 msgid "Hide erased players nicks"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:123
+#: src/gui/widgets/tabs/setup_players.cpp:124
 msgid "Use special diagonal speed in players moving"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:127
+#: src/gui/widgets/tabs/setup_players.cpp:128
 msgid ""
 "Emulate right mouse button by long mouse click (useful for touch interfaces)"
 msgstr ""
@@ -5779,13 +5789,12 @@ msgid "Whispering to %s: %s"
 msgstr "%s 'e fısıldanıyor: %s"
 
 #. TRANSLATORS: error message
-#: src/gui/windows/chatwindow.cpp:1566
-#, c-format
-msgid "Broken nick detected: %s"
+#: src/gui/windows/chatwindow.cpp:1565
+msgid "Broken nick detected: "
 msgstr ""
 
 #. TRANSLATORS: owners pet name. For example: 4144's pet
-#: src/gui/windows/chatwindow.cpp:1754 src/net/eathena/pethandler.cpp:173
+#: src/gui/windows/chatwindow.cpp:1750 src/net/eathena/pethandler.cpp:173
 #, c-format
 msgid "%s's pet"
 msgstr ""

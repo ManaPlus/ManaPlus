@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2015-07-29 22:39+0300\n"
-"PO-Revision-Date: 2015-07-29 09:12+0000\n"
+"POT-Creation-Date: 2015-08-01 14:09+0300\n"
+"PO-Revision-Date: 2015-07-30 09:13+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Ukrainian (http://www.transifex.com/projects/p/manaplus/"
 "language/uk/)\n"
@@ -286,12 +286,14 @@ msgstr "чорний список"
 msgid "enemy"
 msgstr "супротивник"
 
-#: src/actions/commands.cpp:947
+#. TRANSLATORS: result from command /confget
+#: src/actions/commands.cpp:948
 #, c-format
 msgid "Config value: %s"
 msgstr ""
 
-#: src/actions/commands.cpp:959
+#. TRANSLATORS: result from command /serverconfget
+#: src/actions/commands.cpp:961
 #, c-format
 msgid "Server config value: %s"
 msgstr ""
@@ -321,25 +323,25 @@ msgid "Visible on map"
 msgstr "Видимий на мапі"
 
 #. TRANSLATORS: default race name
-#: src/being/being.cpp:438
+#: src/being/being.cpp:440
 msgid "Human"
 msgstr "Людина"
 
-#: src/being/being.cpp:612
+#: src/being/being.cpp:614
 msgid "dodge"
 msgstr "ухилення"
 
-#: src/being/being.cpp:612
+#: src/being/being.cpp:614
 msgid "miss"
 msgstr "промах"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being/being.cpp:2084 src/gui/windows/whoisonline.cpp:871
+#: src/being/being.cpp:2121 src/gui/windows/whoisonline.cpp:871
 msgid "A"
 msgstr "A"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being/being.cpp:2089 src/gui/windows/whoisonline.cpp:876
+#: src/being/being.cpp:2126 src/gui/windows/whoisonline.cpp:876
 msgid "I"
 msgstr "I"
 
@@ -676,7 +678,7 @@ msgid "dyecmd srcdyestring dstfile"
 msgstr "dyecmd файл_рядків_кольору файл_призначення"
 
 #. TRANSLATORS: chat tab header
-#: src/game.cpp:252 src/gui/windows/chatwindow.cpp:2188
+#: src/game.cpp:252 src/gui/windows/chatwindow.cpp:2184
 msgid "General"
 msgstr "Загальне"
 
@@ -1874,7 +1876,7 @@ msgstr "Додати ім'я до чату"
 
 #. TRANSLATORS: popup menu header
 #. TRANSLATORS: settings tab name
-#: src/gui/popups/popupmenu.cpp:429 src/gui/widgets/tabs/setup_players.cpp:55
+#: src/gui/popups/popupmenu.cpp:429 src/gui/widgets/tabs/setup_players.cpp:56
 msgid "Players"
 msgstr "Гравці"
 
@@ -2543,6 +2545,7 @@ msgstr "Члени групи"
 msgid "Guild members"
 msgstr "Члени гільдії"
 
+#. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:214 src/gui/userpalette.cpp:219
 #: src/gui/userpalette.cpp:224
 #, c-format
@@ -2554,15 +2557,18 @@ msgstr ""
 msgid "Particles"
 msgstr ""
 
+#. TRANSLATORS: palette color
 #. TRANSLATORS: settings option
 #: src/gui/userpalette.cpp:232 src/gui/widgets/tabs/setup_visual.cpp:157
 msgid "Particle effects"
 msgstr "Ефекти частинок"
 
+#. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:237
 msgid "Pickup notification"
 msgstr "Повідомлення про підбирання"
 
+#. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:242
 msgid "Exp notification"
 msgstr "Повідомлення про зміну досвіду"
@@ -2572,6 +2578,7 @@ msgstr "Повідомлення про зміну досвіду"
 msgid "Hp bars"
 msgstr ""
 
+#. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:250
 msgid "Player HP bar"
 msgstr "Рядок здоров'я гравця"
@@ -2596,10 +2603,12 @@ msgstr "Рівень здоров'я мобу (другий колір)"
 msgid "Hits"
 msgstr ""
 
+#. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:276
 msgid "Player hits monster"
 msgstr "Гравець вдарив тварюку"
 
+#. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:281
 msgid "Monster hits player"
 msgstr "Тварюка вдарила гравця"
@@ -2609,6 +2618,7 @@ msgstr "Тварюка вдарила гравця"
 msgid "Other player hits local player"
 msgstr "Гравець в вас влучив"
 
+#. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:291
 msgid "Critical Hit"
 msgstr "Критичний удар"
@@ -2628,6 +2638,7 @@ msgstr "Ваше здійснили критичне попадання"
 msgid "Local player miss"
 msgstr "Ви промахнулись"
 
+#. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:310
 msgid "Misses"
 msgstr "Промах"
@@ -2637,6 +2648,7 @@ msgstr "Промах"
 msgid "Tiles"
 msgstr ""
 
+#. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:318
 msgid "Portal highlight"
 msgstr "Підсвічення телепорту"
@@ -4513,109 +4525,107 @@ msgid "Disable logging in game (do not enable)"
 msgstr "Вимкнути ведення логу у грі (не вмикати)"
 
 #. TRANSLATORS: screen badges type
-#: src/gui/widgets/tabs/setup_players.cpp:41
+#: src/gui/widgets/tabs/setup_players.cpp:42
 msgid "hide"
 msgstr ""
 
 #. TRANSLATORS: screen badges type
-#: src/gui/widgets/tabs/setup_players.cpp:43
-#, fuzzy
+#: src/gui/widgets/tabs/setup_players.cpp:44
 msgid "show at top"
-msgstr "Показувати історію чату"
+msgstr ""
 
 #. TRANSLATORS: screen badges type
-#: src/gui/widgets/tabs/setup_players.cpp:45
-#, fuzzy
+#: src/gui/widgets/tabs/setup_players.cpp:46
 msgid "show at right"
-msgstr "Рухати улюбленця праворуч"
+msgstr ""
 
 #. TRANSLATORS: screen badges type
-#: src/gui/widgets/tabs/setup_players.cpp:47
+#: src/gui/widgets/tabs/setup_players.cpp:48
 msgid "show at bottom"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:62
+#: src/gui/widgets/tabs/setup_players.cpp:63
 msgid "Show gender"
 msgstr "Показувати стать"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:66
+#: src/gui/widgets/tabs/setup_players.cpp:67
 msgid "Show level"
 msgstr "Показувати рівень"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:70
+#: src/gui/widgets/tabs/setup_players.cpp:71
 msgid "Show own name"
 msgstr "Показувати особисте ім'я"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:74
+#: src/gui/widgets/tabs/setup_players.cpp:75
 msgid "Enable extended mouse targeting"
 msgstr "Ввімкнути розширене наведення миші"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:78
+#: src/gui/widgets/tabs/setup_players.cpp:79
 msgid "Target dead players"
 msgstr "Дозволити наводити фокус на мертвих гравців"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:82
+#: src/gui/widgets/tabs/setup_players.cpp:83
 msgid "Visible names"
 msgstr "Видимі імена"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:86
+#: src/gui/widgets/tabs/setup_players.cpp:87
 msgid "Auto move names"
 msgstr "Автоматичне переупорядкування імен гравців"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:91
+#: src/gui/widgets/tabs/setup_players.cpp:92
 msgid "Badges"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:95
+#: src/gui/widgets/tabs/setup_players.cpp:96
 msgid "Secure trades"
 msgstr "Захистити торгівлю"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:99
+#: src/gui/widgets/tabs/setup_players.cpp:100
 msgid "Unsecure chars in names"
 msgstr "Небезпечні символи в іменах"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:103
+#: src/gui/widgets/tabs/setup_players.cpp:104
 msgid "Show statuses"
 msgstr "Відображати статуси"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:107
+#: src/gui/widgets/tabs/setup_players.cpp:108
 msgid "Show ip addresses on screenshots"
 msgstr "Додавати IP адреси до скріншоту (ГМ)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:111
+#: src/gui/widgets/tabs/setup_players.cpp:112
 msgid "Allow self heal with mouse click"
 msgstr "Лікувати самого себе за кліком миші"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:115
+#: src/gui/widgets/tabs/setup_players.cpp:116
 msgid "Group friends in who is online window"
 msgstr "Відокремлювати приятелів у вікні \"Хто онлайн\""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:119
+#: src/gui/widgets/tabs/setup_players.cpp:120
 msgid "Hide erased players nicks"
 msgstr "Ховати імена стертих гравців"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:123
+#: src/gui/widgets/tabs/setup_players.cpp:124
 msgid "Use special diagonal speed in players moving"
 msgstr "Вжити спеціальну діагональну швидкість під час руху"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:127
+#: src/gui/widgets/tabs/setup_players.cpp:128
 msgid ""
 "Emulate right mouse button by long mouse click (useful for touch interfaces)"
 msgstr ""
@@ -5790,13 +5800,13 @@ msgid "Whispering to %s: %s"
 msgstr "Шепчу до %s: %s"
 
 #. TRANSLATORS: error message
-#: src/gui/windows/chatwindow.cpp:1566
-#, c-format
-msgid "Broken nick detected: %s"
-msgstr ""
+#: src/gui/windows/chatwindow.cpp:1565
+#, fuzzy
+msgid "Broken nick detected: "
+msgstr "Виявлено перевищення швидкісних лімітів."
 
 #. TRANSLATORS: owners pet name. For example: 4144's pet
-#: src/gui/windows/chatwindow.cpp:1754 src/net/eathena/pethandler.cpp:173
+#: src/gui/windows/chatwindow.cpp:1750 src/net/eathena/pethandler.cpp:173
 #, c-format
 msgid "%s's pet"
 msgstr "%s'ів улюбленець"

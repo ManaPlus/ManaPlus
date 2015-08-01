@@ -33,9 +33,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2015-07-29 22:39+0300\n"
-"PO-Revision-Date: 2015-07-29 20:43+0000\n"
-"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"POT-Creation-Date: 2015-08-01 14:09+0300\n"
+"PO-Revision-Date: 2015-07-31 13:20+0000\n"
+"Last-Translator: Suni <kristin.joris@gmail.com>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/manaplus/language/"
 "de/)\n"
 "Language: de\n"
@@ -301,19 +301,21 @@ msgstr "neutral"
 #. TRANSLATORS: blacklist command
 #: src/actions/commands.cpp:237
 msgid "blacklisted"
-msgstr "Auf die schwarze Liste gesetzt"
+msgstr "Schwarze Liste"
 
 #. TRANSLATORS: enemy command
 #: src/actions/commands.cpp:244
 msgid "enemy"
 msgstr "Feind"
 
-#: src/actions/commands.cpp:947
+#. TRANSLATORS: result from command /confget
+#: src/actions/commands.cpp:948
 #, c-format
 msgid "Config value: %s"
 msgstr "Konfigurationswert: %s"
 
-#: src/actions/commands.cpp:959
+#. TRANSLATORS: result from command /serverconfget
+#: src/actions/commands.cpp:961
 #, c-format
 msgid "Server config value: %s"
 msgstr "Konfigurationswert des Servers: %s"
@@ -343,25 +345,25 @@ msgid "Visible on map"
 msgstr "Auf der Karte sichtbar"
 
 #. TRANSLATORS: default race name
-#: src/being/being.cpp:438
+#: src/being/being.cpp:440
 msgid "Human"
 msgstr "Mensch"
 
-#: src/being/being.cpp:612
+#: src/being/being.cpp:614
 msgid "dodge"
 msgstr "ausweichen"
 
-#: src/being/being.cpp:612
+#: src/being/being.cpp:614
 msgid "miss"
 msgstr "verfehlt"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being/being.cpp:2084 src/gui/windows/whoisonline.cpp:871
+#: src/being/being.cpp:2121 src/gui/windows/whoisonline.cpp:871
 msgid "A"
 msgstr "A"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being/being.cpp:2089 src/gui/windows/whoisonline.cpp:876
+#: src/being/being.cpp:2126 src/gui/windows/whoisonline.cpp:876
 msgid "I"
 msgstr "I"
 
@@ -697,7 +699,7 @@ msgid "dyecmd srcdyestring dstfile"
 msgstr "dyecmd srcdyestring dstfile"
 
 #. TRANSLATORS: chat tab header
-#: src/game.cpp:252 src/gui/windows/chatwindow.cpp:2188
+#: src/game.cpp:252 src/gui/windows/chatwindow.cpp:2184
 msgid "General"
 msgstr "Allgemein"
 
@@ -1469,7 +1471,7 @@ msgstr "Gelöscht"
 #. TRANSLATORS: relation type
 #: src/gui/models/playerrelationlistmodel.h:45
 msgid "Blacklisted"
-msgstr "Auf die schwarze Liste gesetzt"
+msgstr "Schwarze Liste"
 
 #. TRANSLATORS: relation type
 #. TRANSLATORS: palette color
@@ -1897,7 +1899,7 @@ msgstr "Name zum Chat hinzufügen"
 
 #. TRANSLATORS: popup menu header
 #. TRANSLATORS: settings tab name
-#: src/gui/popups/popupmenu.cpp:429 src/gui/widgets/tabs/setup_players.cpp:55
+#: src/gui/popups/popupmenu.cpp:429 src/gui/widgets/tabs/setup_players.cpp:56
 msgid "Players"
 msgstr "Spieler"
 
@@ -2176,12 +2178,12 @@ msgstr "Fenster: Wegwerfen leeren"
 #. TRANSLATORS: popup menu item
 #: src/gui/popups/popupmenu.cpp:1904 src/gui/popups/popupmenu.cpp:1965
 msgid "Hide"
-msgstr "Verstecken"
+msgstr "Verstecke"
 
 #. TRANSLATORS: popup menu item
 #: src/gui/popups/popupmenu.cpp:1911 src/gui/popups/popupmenu.cpp:1972
 msgid "Show"
-msgstr "Zeigen"
+msgstr "Zeige"
 
 #. TRANSLATORS: popup menu item
 #: src/gui/popups/popupmenu.cpp:1979
@@ -2191,7 +2193,7 @@ msgstr "Einstellungen des gelben Balkens öffnen"
 #. TRANSLATORS: popup menu item
 #: src/gui/popups/popupmenu.cpp:1981
 msgid "Reset yellow bar"
-msgstr "Gelben Balken zurücksetzten"
+msgstr "Gelben Balken zurücksetzen"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: copy status to chat
@@ -2566,6 +2568,7 @@ msgstr "Gruppenmitglieder"
 msgid "Guild members"
 msgstr "Gildenmitglieder"
 
+#. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:214 src/gui/userpalette.cpp:219
 #: src/gui/userpalette.cpp:224
 #, c-format
@@ -2577,15 +2580,18 @@ msgstr "Team %d"
 msgid "Particles"
 msgstr "Partikel"
 
+#. TRANSLATORS: palette color
 #. TRANSLATORS: settings option
 #: src/gui/userpalette.cpp:232 src/gui/widgets/tabs/setup_visual.cpp:157
 msgid "Particle effects"
 msgstr "Partikeleffekte"
 
+#. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:237
 msgid "Pickup notification"
 msgstr "Benachrichtigung über aufgehobene Gegenstände"
 
+#. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:242
 msgid "Exp notification"
 msgstr "Benachrichtigung über EP"
@@ -2595,6 +2601,7 @@ msgstr "Benachrichtigung über EP"
 msgid "Hp bars"
 msgstr "HP Balken"
 
+#. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:250
 msgid "Player HP bar"
 msgstr "Balken: Spieler HP"
@@ -2619,10 +2626,12 @@ msgstr "Balken: Monster HP  (Zweite Farbe)"
 msgid "Hits"
 msgstr "Treffer"
 
+#. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:276
 msgid "Player hits monster"
 msgstr "Spieler trifft Monster"
 
+#. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:281
 msgid "Monster hits player"
 msgstr "Monster trifft Spieler"
@@ -2632,6 +2641,7 @@ msgstr "Monster trifft Spieler"
 msgid "Other player hits local player"
 msgstr "Anderer Spieler trifft lokalen Spieler"
 
+#. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:291
 msgid "Critical Hit"
 msgstr "Kritischer Treffer"
@@ -2651,6 +2661,7 @@ msgstr "Lokaler Spieler kritischer Treffer"
 msgid "Local player miss"
 msgstr "Lokaler Spieler verfehlt"
 
+#. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:310
 msgid "Misses"
 msgstr "Verfehlt"
@@ -2660,6 +2671,7 @@ msgstr "Verfehlt"
 msgid "Tiles"
 msgstr "Kacheln"
 
+#. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:318
 msgid "Portal highlight"
 msgstr "Portal hervorheben"
@@ -3161,7 +3173,7 @@ msgstr "Ziel Gilde:"
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:382
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:400
 msgid "Attack delay:"
-msgstr "Angriffs-Verzögerung:"
+msgstr "Angriffsverzug:"
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:280
@@ -3543,7 +3555,6 @@ msgid "Enable debug chat Log"
 msgstr "Debug-Chatlog aktivieren"
 
 #: src/gui/widgets/tabs/setup_chat.cpp:124
-#, fuzzy
 msgid "If you enable this, debug chat tab also will be logged to disk."
 msgstr ""
 "Wenn du dies aktivierst, wird der Debug Chatreiter ebenfalls auf der "
@@ -3611,7 +3622,6 @@ msgid "Hide shop messages"
 msgstr "Mitteilungen über Laden verstecken"
 
 #: src/gui/widgets/tabs/setup_chat.cpp:153
-#, fuzzy
 msgid ""
 "If this setting enabled, no messages related to built-in ManaPlus shop will "
 "be displayed in chat. Disable this setting if you want to see shop-related "
@@ -3628,7 +3638,7 @@ msgstr ""
 "Hinweis: Technisch gesehen, wird der ManaPlus-Shop mit gewöhnlichen "
 "Nachrichten mit besonderen Inhalt realisiert. Falls du diese Einstellung, "
 "deaktivierst kannst du diese Nachrichten sehen und  eine Idee davon bekommen "
-"wenn andere Spieler deinen Laden ansehen. "
+"wenn andere Spieler deinen Laden ansehen."
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:162
@@ -3830,7 +3840,6 @@ msgid "Resize chat tabs if need"
 msgstr "Falls nötig Chatreiter Größe ändern"
 
 #: src/gui/widgets/tabs/setup_chat.cpp:243
-#, fuzzy
 msgid ""
 "If this feature enabled, text in chat will be automatically adjusted to "
 "adapt to appearance of chat input field when you typing message and when "
@@ -3845,7 +3854,7 @@ msgstr ""
 "immer seinen Platz belegen, was sonst für Text nützlich sein könnte.\n"
 "\n"
 "Hinweis:  Es geht um sprunghaftes Verhalten des Chats gegen weniger "
-"nutzbaren Platz für Text. "
+"nutzbaren Platz für Text."
 
 #. TRANSLATORS: settings group
 #: src/gui/widgets/tabs/setup_chat.cpp:254
@@ -3858,12 +3867,11 @@ msgid "Use local time"
 msgstr "Lokale Zeit benutzen"
 
 #: src/gui/widgets/tabs/setup_chat.cpp:258
-#, fuzzy
 msgid ""
 "If this feature enabled, timestamps in chat will use local times. If "
 "disabled, server time will be used (often it is GMT+0)."
 msgstr ""
-"Wenn dieses Feature aktiviert ist, benutzen Zeitstempel im Chat die lokale "
+"Wenn dieses Funktion aktiviert ist, benutzen Zeitstempel im Chat die lokale "
 "Zeit. Wenn deaktiviert, wird die Serverzeit benutzt (oftmals ist das GMT+0)."
 
 #. TRANSLATORS: settings option
@@ -3872,7 +3880,6 @@ msgid "Highlight words (separated by comma)"
 msgstr "Wörter hervorheben (Mit Komma trennen)"
 
 #: src/gui/widgets/tabs/setup_chat.cpp:267
-#, fuzzy
 msgid ""
 "Here you can specify some extra words which will also cause highlighting. "
 "Use comma to separate words.\n"
@@ -3952,7 +3959,7 @@ msgstr "Typ:"
 #: src/gui/widgets/tabs/setup_colors.cpp:69
 #: src/gui/widgets/tabs/setup_colors.cpp:357
 msgid "Delay:"
-msgstr "Verzögerung:"
+msgstr "Verzug:"
 
 #. TRANSLATORS: colors tab. label.
 #: src/gui/widgets/tabs/setup_colors.cpp:73
@@ -4297,7 +4304,7 @@ msgstr "Nächstes Ziel angreifen"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:204
 msgid "Sync player move"
-msgstr "Bewegungen des Spielers synchronisieren"
+msgstr "Bewegungen des Spielers syncen"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:208
@@ -4428,7 +4435,7 @@ msgstr "Tastatur"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:303
 msgid "Repeat delay"
-msgstr "Wiederholverzögerung"
+msgstr "Wiederholungsverzug"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:307
@@ -4534,7 +4541,7 @@ msgstr "Screenshotverzeichnis"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:401
 msgid "Network delay between sub servers"
-msgstr "Netzwerkverzögerung zwischen Unterservern"
+msgstr "Netzwerkverzug zwischen Unterservern"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:405
@@ -4681,109 +4688,107 @@ msgid "Disable logging in game (do not enable)"
 msgstr "Aufzeichnen im Spiel deaktivieren (Nicht aktivieren)"
 
 #. TRANSLATORS: screen badges type
-#: src/gui/widgets/tabs/setup_players.cpp:41
+#: src/gui/widgets/tabs/setup_players.cpp:42
 msgid "hide"
-msgstr ""
+msgstr "Verstecke"
 
 #. TRANSLATORS: screen badges type
-#: src/gui/widgets/tabs/setup_players.cpp:43
-#, fuzzy
+#: src/gui/widgets/tabs/setup_players.cpp:44
 msgid "show at top"
-msgstr "Abzeichen oben anzeigen"
+msgstr "Oben anzeigen"
 
 #. TRANSLATORS: screen badges type
-#: src/gui/widgets/tabs/setup_players.cpp:45
-#, fuzzy
+#: src/gui/widgets/tabs/setup_players.cpp:46
 msgid "show at right"
-msgstr "Hut im Chat anzeigen"
+msgstr "Rechts anzeigen"
 
 #. TRANSLATORS: screen badges type
-#: src/gui/widgets/tabs/setup_players.cpp:47
+#: src/gui/widgets/tabs/setup_players.cpp:48
 msgid "show at bottom"
-msgstr ""
+msgstr "Unten anzeigen"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:62
+#: src/gui/widgets/tabs/setup_players.cpp:63
 msgid "Show gender"
 msgstr "Geschlecht anzeigen"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:66
+#: src/gui/widgets/tabs/setup_players.cpp:67
 msgid "Show level"
 msgstr "Level anzeigen"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:70
+#: src/gui/widgets/tabs/setup_players.cpp:71
 msgid "Show own name"
 msgstr "Eigenen Namen anzeigen"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:74
+#: src/gui/widgets/tabs/setup_players.cpp:75
 msgid "Enable extended mouse targeting"
 msgstr "Erweitertes Zielen mit der Maus aktivieren"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:78
+#: src/gui/widgets/tabs/setup_players.cpp:79
 msgid "Target dead players"
 msgstr "Anvisieren toter Spieler"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:82
+#: src/gui/widgets/tabs/setup_players.cpp:83
 msgid "Visible names"
 msgstr "Sichtbare Namen"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:86
+#: src/gui/widgets/tabs/setup_players.cpp:87
 msgid "Auto move names"
 msgstr "Namen automatisch bewegen"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:91
+#: src/gui/widgets/tabs/setup_players.cpp:92
 msgid "Badges"
-msgstr ""
+msgstr "Abzeichen"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:95
+#: src/gui/widgets/tabs/setup_players.cpp:96
 msgid "Secure trades"
 msgstr "Sicheres Handeln"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:99
+#: src/gui/widgets/tabs/setup_players.cpp:100
 msgid "Unsecure chars in names"
 msgstr "Unsichere Zeichen im Namen verwenden"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:103
+#: src/gui/widgets/tabs/setup_players.cpp:104
 msgid "Show statuses"
 msgstr "Status anzeigen"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:107
+#: src/gui/widgets/tabs/setup_players.cpp:108
 msgid "Show ip addresses on screenshots"
 msgstr "IP auf Screenshots anzeigen."
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:111
+#: src/gui/widgets/tabs/setup_players.cpp:112
 msgid "Allow self heal with mouse click"
 msgstr "Selbstheilung mit Mausklick erlauben"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:115
+#: src/gui/widgets/tabs/setup_players.cpp:116
 msgid "Group friends in who is online window"
 msgstr "Freunde im Fenster: Wer ist online? gruppieren"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:119
+#: src/gui/widgets/tabs/setup_players.cpp:120
 msgid "Hide erased players nicks"
 msgstr "Gelöschte Spielernamen verstecken"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:123
+#: src/gui/widgets/tabs/setup_players.cpp:124
 msgid "Use special diagonal speed in players moving"
 msgstr "Besondere diagonale Geschwindigkeit bei Spielerbewegung benutzen"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:127
+#: src/gui/widgets/tabs/setup_players.cpp:128
 msgid ""
 "Emulate right mouse button by long mouse click (useful for touch interfaces)"
 msgstr "Rechtsklick bei langem Klick emulieren (nützlich für Touchpads)"
@@ -5964,13 +5969,13 @@ msgid "Whispering to %s: %s"
 msgstr "Flüstern zu %s: %s"
 
 #. TRANSLATORS: error message
-#: src/gui/windows/chatwindow.cpp:1566
-#, c-format
-msgid "Broken nick detected: %s"
+#: src/gui/windows/chatwindow.cpp:1565
+#, fuzzy
+msgid "Broken nick detected: "
 msgstr "Defekter Spielername entdeckt: %s"
 
 #. TRANSLATORS: owners pet name. For example: 4144's pet
-#: src/gui/windows/chatwindow.cpp:1754 src/net/eathena/pethandler.cpp:173
+#: src/gui/windows/chatwindow.cpp:1750 src/net/eathena/pethandler.cpp:173
 #, c-format
 msgid "%s's pet"
 msgstr "%ss Haustier"
@@ -6691,7 +6696,7 @@ msgstr "Ankündigen"
 #. TRANSLATORS: shop window checkbox
 #: src/gui/windows/shopwindow.cpp:201
 msgid "Show links in announce"
-msgstr "Links in Ankündigung anzeigen"
+msgstr "Links in Ankündigungen anzeigen"
 
 #. TRANSLATORS: shop rename dialog title
 #: src/gui/windows/shopwindow.cpp:373
@@ -6700,7 +6705,7 @@ msgstr "Bitte neuen Namen für den Stand eingeben"
 
 #: src/gui/windows/shopwindow.cpp:432 src/gui/windows/shopwindow.cpp:451
 msgid "Unpublish"
-msgstr "Verstecken"
+msgstr "Verstecke"
 
 #. TRANSLATORS: shop window dialog
 #. TRANSLATORS: trade message
@@ -7142,12 +7147,12 @@ msgstr "Tasten für Anvisieren und Angreifen"
 #. TRANSLATORS: input action name
 #: src/input/pages/basic.cpp:46
 msgid "Target & attack closest monster"
-msgstr "Nächstes Monster anvisieren und angreifen"
+msgstr "Nächstes Monster anvisieren & angreifen"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/basic.cpp:52
 msgid "Target & attack closest player"
-msgstr "Nächsten Spieler anvisieren und angreifen"
+msgstr "Nächstes Spieler anvisieren & angreifen"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/basic.cpp:58
@@ -7157,12 +7162,12 @@ msgstr "Zum Ziel bewegen"
 #. TRANSLATORS: input action name
 #: src/input/pages/basic.cpp:64
 msgid "Change Move to Target type"
-msgstr "Zum Ziel bewegen Typ ändern"
+msgstr "\"Zum Ziel bewegen\" -Typ ändern"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/basic.cpp:70
 msgid "Move to Home location"
-msgstr "Zu Stammplatz bewegen"
+msgstr "Zum Stammplatz bewegen"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/basic.cpp:76
@@ -7172,12 +7177,12 @@ msgstr "Stammplatz setzen"
 #. TRANSLATORS: input action name
 #: src/input/pages/basic.cpp:82
 msgid "Move to navigation point"
-msgstr "Zum Navigationspunkt bewegen"
+msgstr "Zum Wegpunkt bewegen"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/basic.cpp:94
 msgid "Stop Attack / Modifier key"
-msgstr "Angreifen stoppen / Modifikationstaste"
+msgstr "Angriff stoppen / Modifikationstaste"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/basic.cpp:100
@@ -7292,7 +7297,7 @@ msgstr "Zum sicheren Videomodus zurückkehren"
 #. TRANSLATORS: input action name
 #: src/input/pages/basic.cpp:238
 msgid "Fire your homunculus"
-msgstr "Deinen Humunkulus feuern"
+msgstr "Humunkulus feuern"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/basic.cpp:256
@@ -7422,7 +7427,7 @@ msgstr "Smilies"
 #. TRANSLATORS: input action name
 #: src/input/pages/chat.cpp:187
 msgid "Show smiles"
-msgstr "Smilies zeigen"
+msgstr "Smilies anzeigen"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/emotes.cpp:35
@@ -7635,7 +7640,7 @@ msgstr "Haustier nach rechts bewegen"
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:95
 msgid "Move to navigation point shortcuts"
-msgstr "Kurzbefehle für die Bewegung zu einem Navigationspunkt"
+msgstr "Kurzbefehle für die Bewegung zu einem Wegpunkt"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:101 src/input/pages/move.cpp:107
@@ -8913,22 +8918,22 @@ msgstr "% Kritisch"
 #. TRANSLATORS: player stat
 #: src/net/eathena/generalhandler.cpp:406 src/net/tmwa/generalhandler.cpp:376
 msgid "Attack Delay"
-msgstr "Angriffsverzögerung"
+msgstr "Angriffsverzug"
 
 #. TRANSLATORS: player stat
 #: src/net/eathena/generalhandler.cpp:407 src/net/tmwa/generalhandler.cpp:378
 msgid "Walk Delay"
-msgstr "Lauf-Verzögerung:"
+msgstr "Laufverzug:"
 
 #. TRANSLATORS: player stat
 #: src/net/eathena/generalhandler.cpp:408 src/net/tmwa/generalhandler.cpp:380
 msgid "Attack Range"
-msgstr "Angriffsreichweite"
+msgstr "Angriffsbereich"
 
 #. TRANSLATORS: player stat
 #: src/net/eathena/generalhandler.cpp:409 src/net/tmwa/generalhandler.cpp:382
 msgid "Damage per sec."
-msgstr "Schaden pro Sek."
+msgstr "Schaden/Sek"
 
 #: src/net/eathena/generalhandler.cpp:410
 msgid "Karma"
@@ -9976,6 +9981,3 @@ msgstr "Du betrittst das Schlachtfeld."
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
 msgstr ""
 "Gültige Optionen für /%s sind \"yes\",\"no\",\"true\",\"false\",\"1\",\"0\"."
-
-#~ msgid "Show badges"
-#~ msgstr "Abzeichen anzeigen"
