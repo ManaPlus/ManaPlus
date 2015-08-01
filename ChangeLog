@@ -1,3 +1,12 @@
+2015-08-01 New release 1.5.8.1
+fix: update tmw address in tmw detection code.
+fix: not allow broken nicks. show messages from this nicks with warnings.
+add: enable fast atlases creation (except NVIDIA and Mesa 10.6)
+add: update xcode files (socapex)
+add: option to yellow bar for targetting type (travolta)
+add: calculate heal radius (travolta)
+add: badges for battle teams, parties, guilds, gms and personal player.
+
 2015-07-18 New release 1.5.7.18
 fix: moving with mouse on tiles with height more than zero.
 fix: crash if warp to map with heights with smaller size.
