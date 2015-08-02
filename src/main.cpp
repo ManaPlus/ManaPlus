@@ -24,14 +24,13 @@
 #include "main.h"
 
 #include "client.h"
+#include "commandline.h"
 #include "settings.h"
 
 #include "utils/delete2.h"
-#include "utils/gettext.h"
 #ifdef ANDROID
 #include "utils/mkdir.h"
 #endif
-#include "utils/paths.h"
 #include "utils/physfscheckutils.h"
 #include "utils/physfsrwops.h"
 #include "utils/process.h"
@@ -75,209 +74,6 @@
 
 char *selfName = nullptr;
 
-static void printHelp()
-{
-    std::cout
-        // TRANSLATORS: command line help
-        << _("manaplus [options] [manaplus-file]") << std::endl << std::endl
-        // TRANSLATORS: command line help
-        << _("[manaplus-file] : The manaplus file is an XML file (.manaplus)")
-        << std::endl
-        // TRANSLATORS: command line help
-        << _("                  used to set custom parameters") << std::endl
-        // TRANSLATORS: command line help
-        << _("                  to the manaplus client.")
-        << std::endl << std::endl
-        // TRANSLATORS: command line help
-        << _("Options:") << std::endl
-        // TRANSLATORS: command line help
-        << _("  -l --log-file       : Log file to use") << std::endl
-        // TRANSLATORS: command line help
-        << _("  -a --chat-log-dir   : Chat log dir to use") << std::endl
-        // TRANSLATORS: command line help
-        << _("  -v --version        : Display the version") << std::endl
-        // TRANSLATORS: command line help
-        << _("  -h --help           : Display this help") << std::endl
-        // TRANSLATORS: command line help
-        << _("  -C --config-dir     : Configuration directory to use")
-        << std::endl
-        // TRANSLATORS: command line help
-        << _("  -U --username       : Login with this username") << std::endl
-        // TRANSLATORS: command line help
-        << _("  -P --password       : Login with this password") << std::endl
-        // TRANSLATORS: command line help
-        << _("  -c --character      : Login with this character") << std::endl
-        // TRANSLATORS: command line help
-        << _("  -s --server         : Login server name or IP") << std::endl
-        // TRANSLATORS: command line help
-        << _("  -y --server-type    : Login server type") << std::endl
-        // TRANSLATORS: command line help
-        << _("  -p --port           : Login server port") << std::endl
-        // TRANSLATORS: command line help
-        << _("  -H --update-host    : Use this update host") << std::endl
-        // TRANSLATORS: command line help
-        << _("  -D --default        : Choose default character server and "
-                                     "character") << std::endl
-        // TRANSLATORS: command line help
-        << _("  -u --skip-update    : Skip the update downloads") << std::endl
-        // TRANSLATORS: command line help
-        << _("  -d --data           : Directory to load game "
-             "data from") << std::endl
-        // TRANSLATORS: command line help
-        << _("  -L --localdata-dir  : Directory to use as local data"
-             " directory") << std::endl
-        // TRANSLATORS: command line help
-        << _("     --screenshot-dir : Directory to store screenshots")
-        << std::endl
-        // TRANSLATORS: command line help
-        << _("     --safemode       : Start game in safe mode") << std::endl
-        // TRANSLATORS: command line help
-        << _("     --renderer       : Set renderer type") << std::endl
-        // TRANSLATORS: command line help
-        << _("  -T --tests          : Start testing drivers and "
-                                     "auto configuring") << std::endl
-#ifdef USE_OPENGL
-        // TRANSLATORS: command line help
-        << _("  -O --no-opengl      : Disable OpenGL for this session")
-        << std::endl
-#endif
-        ;
-}
-
-static void printVersion()
-{
-    std::cout << strprintf("ManaPlus client %s", FULL_VERSION) << std::endl;
-}
-
-static void parseOptions(const int argc, char *const argv[])
-{
-    const char *const optstring = "hvud:U:P:Dc:p:y:l:L:C:s:t:T:a:r";
-
-    const struct option long_options[] =
-    {
-        { "config-dir",     required_argument, nullptr, 'C' },
-        { "data",           required_argument, nullptr, 'd' },
-        { "default",        no_argument,       nullptr, 'D' },
-        { "password",       required_argument, nullptr, 'P' },
-        { "character",      required_argument, nullptr, 'c' },
-        { "help",           no_argument,       nullptr, 'h' },
-        { "localdata-dir",  required_argument, nullptr, 'L' },
-        { "update-host",    required_argument, nullptr, 'H' },
-        { "port",           required_argument, nullptr, 'p' },
-        { "server",         required_argument, nullptr, 's' },
-        { "skip-update",    no_argument,       nullptr, 'u' },
-        { "username",       required_argument, nullptr, 'U' },
-        { "no-opengl",      no_argument,       nullptr, 'O' },
-        { "chat-log-dir",   required_argument, nullptr, 'a' },
-        { "version",        no_argument,       nullptr, 'v' },
-        { "log-file",       required_argument, nullptr, 'l' },
-        { "screenshot-dir", required_argument, nullptr, 'i' },
-        { "safemode",       no_argument,       nullptr, 'm' },
-        { "tests",          no_argument,       nullptr, 'T' },
-        { "test",           required_argument, nullptr, 't' },
-        { "renderer",       required_argument, nullptr, 'r' },
-        { "server-type",    required_argument, nullptr, 'y' },
-        { nullptr,          0,                 nullptr, 0 }
-    };
-
-    Options &options = settings.options;
-
-    while (optind < argc)
-    {
-        const int result = getopt_long(argc, argv,
-            optstring, long_options, nullptr);
-
-        if (result == -1)
-            break;
-
-        switch (result)
-        {
-            case 'C':
-                options.configDir = optarg;
-                break;
-            case 'd':
-                options.dataPath = optarg;
-                break;
-            case 'D':
-                options.chooseDefault = true;
-                break;
-            case '?':  // Unknown option
-            case ':':  // Missing argument
-            case 'h':
-                options.printHelp = true;
-                break;
-            case 'H':
-                if (checkPath(optarg))
-                    options.updateHost = optarg;
-                else
-                    options.updateHost.clear();
-                break;
-            case 'c':
-                options.character = optarg;
-                break;
-            case 'P':
-                options.password = optarg;
-                break;
-            case 's':
-                options.serverName = optarg;
-                break;
-            case 'p':
-                options.serverPort = static_cast<uint16_t>(atoi(optarg));
-                break;
-            case 'u':
-                options.skipUpdate = true;
-                break;
-            case 'U':
-                options.username = optarg;
-                break;
-            case 'v':
-                options.printVersion = true;
-                break;
-            case 'L':
-                options.localDataDir = optarg;
-                break;
-            case 'O':
-                options.noOpenGL = true;
-                break;
-            case 'l':
-                options.logFileName = std::string(optarg);
-                break;
-            case 'a':
-                options.chatLogDir = std::string(optarg);
-                break;
-            case 'i':
-                options.screenshotDir = optarg;
-                break;
-            case 'm':
-                options.safeMode = true;
-                break;
-            case 'T':
-                options.testMode = true;
-                options.test.clear();
-                break;
-            case 't':
-                options.testMode = true;
-                options.test = std::string(optarg);
-                break;
-            case 'r':
-                options.renderer = static_cast<int>(atoi(optarg));
-                break;
-            case 'y':
-                options.serverType = optarg;
-                break;
-            default:
-                break;
-        }
-    }
-
-    // when there are still options left use the last
-    // one as branding file
-    if (optind < argc)
-    {
-        options.brandingPath = argv[optind];
-    }
-}
-
 #ifdef WIN32
 extern "C" char const *_nl_locale_name_default(void);
 #endif
@@ -295,17 +91,6 @@ int main(int argc, char *argv[])
     selfName = argv[0];
 
     parseOptions(argc, argv);
-
-    if (settings.options.printHelp)
-    {
-        printHelp();
-        _exit(0);
-    }
-    else if (settings.options.printVersion)
-    {
-        printVersion();
-        _exit(0);
-    }
 
     std::ios::sync_with_stdio(false);
 
