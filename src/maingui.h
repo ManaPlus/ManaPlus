@@ -20,17 +20,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "maingui.h"
+#ifndef MAINGUI_H
+#define MAINGUI_H
 
-#ifdef UNITTESTS
-#define CATCH_CONFIG_MAIN
-#include "catch.hpp"
-#endif
-#include "debug.h"
+#include "localconsts.h"
 
-#ifndef UNITTESTS
-int main(int argc, char *argv[])
-{
-    return mainGui(argc, argv);
-}
-#endif
+int mainGui(int argc, char *argv[]);
+
+#endif  // MAINGUI_H

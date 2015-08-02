@@ -946,6 +946,8 @@ SET(SRCS
     logger.h
     main.cpp
     main.h
+    maingui.cpp
+    maingui.h
     enums/resources/map/blockmask.h
     enums/resources/map/blocktype.h
     resources/map/location.h
