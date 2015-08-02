@@ -28,14 +28,19 @@
 #include "being/playerinfo.h"
 
 #include "gui/widgets/createwidget.h"
-#include "gui/widgets/selldialog.h"
 
 #include "gui/windows/confirmdialog.h"
+
+#ifndef DYECMD
+#include "gui/widgets/selldialog.h"
+
 #include "gui/windows/buyselldialog.h"
 #include "gui/windows/buydialog.h"
 #include "gui/windows/updaterwindow.h"
 
 #include "listeners/playerpostdeathlistener.h"
+#endif
+
 #include "listeners/weightlistener.h"
 
 #include "net/inventoryhandler.h"
@@ -55,11 +60,13 @@ DialogsManager *dialogsManager = nullptr;
 OkDialog *weightNotice = nullptr;
 int weightNoticeTime = 0;
 
+#ifndef DYECMD
 namespace
 {
     PlayerPostDeathListener postDeathListener;
     WeightListener weightListener;
 }  // namespace
+#endif
 
 DialogsManager::DialogsManager() :
     AttributeListener(),
@@ -69,6 +76,7 @@ DialogsManager::DialogsManager() :
 
 void DialogsManager::closeDialogs()
 {
+#ifndef DYECMD
     NpcDialog::clearDialogs();
     BuyDialog::closeAll();
     BuySellDialog::closeAll();
@@ -76,6 +84,7 @@ void DialogsManager::closeDialogs()
     SellDialog::closeAll();
     if (inventoryHandler)
         inventoryHandler->destroyStorage();
+#endif
     if (deathNotice)
     {
         deathNotice->scheduleDelete();
@@ -85,11 +94,13 @@ void DialogsManager::closeDialogs()
 
 void DialogsManager::createUpdaterWindow()
 {
+#ifndef DYECMD
     CREATEWIDGETV(updaterWindow, UpdaterWindow,
         settings.updateHost,
         settings.oldUpdates,
         false,
         UpdateType::Normal);
+#endif
 }
 
 Window *DialogsManager::openErrorDialog(const std::string &header,
@@ -126,6 +137,7 @@ Window *DialogsManager::openErrorDialog(const std::string &header,
 
 void DialogsManager::playerDeath()
 {
+#ifndef DYECMD
     if (!deathNotice)
     {
         // TRANSLATORS: message header
@@ -141,8 +153,10 @@ void DialogsManager::playerDeath()
             260);
         deathNotice->addActionListener(&postDeathListener);
     }
+#endif
 }
 
+#ifndef DYECMD
 void DialogsManager::attributeChanged(const AttributesT id,
                                       const int oldVal,
                                       const int newVal)
@@ -197,3 +211,10 @@ void DialogsManager::attributeChanged(const AttributesT id,
         }
     }
 }
+#else
+void DialogsManager::attributeChanged(const AttributesT id A_UNUSED,
+                                      const int oldVal A_UNUSED,
+                                      const int newVal A_UNUSED)
+{
+}
+#endif

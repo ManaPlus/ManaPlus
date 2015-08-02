@@ -18,33 +18,21 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ACTIONS_ACTIONDEF_H
-#define ACTIONS_ACTIONDEF_H
+#include "actions/target.h"
 
-#include "gamemodifiers.h"
-#include "settings.h"
+#include "actions/actiondef.h"
 
-#include "input/inputmanager.h"
+#include "debug.h"
 
-#define impHandler(name) bool name(InputEvent &event)
-#define impHandler0(name) bool name(InputEvent &event A_UNUSED)
-#define impHandlerVoid(name) bool name(InputEvent &event A_UNUSED) \
-    { \
-        return false; \
-    }
+namespace Actions
+{
 
-#define callYellowBar(name) \
-    GameModifiers::name(!inputManager.isActionActive( \
-        InputAction::STOP_ATTACK)); \
-    return true;
+impHandlerVoid(targetPlayer)
+impHandlerVoid(targetMonster)
+impHandlerVoid(targetClosestMonster)
+impHandlerVoid(targetNPC)
+impHandlerVoid(targetMercenary)
+impHandlerVoid(targetPet)
+impHandlerVoid(contextMenu)
 
-#define callYellowBarCond(name) \
-    if (!settings.disableGameModifiers) \
-    { \
-        GameModifiers::name(!inputManager.isActionActive( \
-            InputAction::STOP_ATTACK)); \
-        return true; \
-    } \
-    return false;
-
-#endif  // ACTIONS_ACTIONDEF_H
+}  // namespace Actions

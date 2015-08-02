@@ -21,6 +21,7 @@
 #include "logger.h"
 
 #include "graphicsmanager.h"
+#include "maingui.h"
 #include "sdlshared.h"
 
 #include "resources/image.h"
@@ -41,8 +42,6 @@
 
 #include "debug.h"
 
-int serverVersion = 0;
-
 static void printHelp()
 {
     std::cout << _("dyecmd srcfile dyestring dstfile") << std::endl;
@@ -52,6 +51,10 @@ static void printHelp()
 
 int main(int argc, char **argv)
 {
+    if (argc == 2)
+    {
+        return mainGui(argc, argv);
+    }
     if (argc < 3 || argc > 4)
     {
         printHelp();

@@ -22,7 +22,9 @@
 
 #include "configuration.h"
 #include "client.h"
+#ifndef DYECMD
 #include "game.h"
+#endif
 #include "logger.h"
 #ifdef USE_MUMBLE
 #include "mumblemanager.h"
@@ -122,12 +124,14 @@ bool EventsManager::handleCommonEvents(const SDL_Event &event) const
 bool EventsManager::handleEvents() const
 {
     BLOCK_START("EventsManager::handleEvents")
+#ifndef DYECMD
     if (Game::instance())
     {
         // Let the game handle the events while it is active
         Game::instance()->handleInput();
     }
     else
+#endif
     {
         SDL_Event event;
         // Handle SDL events
@@ -179,6 +183,7 @@ bool EventsManager::handleEvents() const
 void EventsManager::handleGameEvents() const
 {
     BLOCK_START("EventsManager::handleGameEvents")
+#ifndef DYECMD
     Game *const game = Game::instance();
 
     // Events
@@ -192,6 +197,7 @@ void EventsManager::handleGameEvents() const
         if (handleCommonEvents(event))
             break;
     }  // End while
+#endif
     BLOCK_END("EventsManager::handleGameEvents")
 }
 
@@ -421,7 +427,9 @@ void EventsManager::logEvent(const SDL_Event &event)
 #ifdef USE_SDL2
 void EventsManager::handleSDL2WindowEvent(const SDL_Event &event)
 {
+#ifndef DYECMD
     int fpsLimit = 0;
+#endif
     const int eventType = event.window.event;
     const bool inGame = (client->getState() == STATE_GAME);
     switch (eventType)
@@ -445,6 +453,7 @@ void EventsManager::handleSDL2WindowEvent(const SDL_Event &event)
             break;
         case SDL_WINDOWEVENT_MINIMIZED:
             WindowManager::setIsMinimized(true);
+#ifndef DYECMD
             if (inGame)
             {
                 if (localPlayer && !settings.awayMode)
@@ -453,11 +462,13 @@ void EventsManager::handleSDL2WindowEvent(const SDL_Event &event)
                     localPlayer->setHalfAway(true);
                 }
             }
+#endif
             setPriority(false);
             break;
         case SDL_WINDOWEVENT_RESTORED:
         case SDL_WINDOWEVENT_MAXIMIZED:
             WindowManager::setIsMinimized(false);
+#ifndef DYECMD
             if (inGame)
             {
                 if (localPlayer)
@@ -467,6 +478,7 @@ void EventsManager::handleSDL2WindowEvent(const SDL_Event &event)
                     localPlayer->setHalfAway(false);
                 }
             }
+#endif
             setPriority(true);
             break;
         default:
@@ -476,6 +488,7 @@ void EventsManager::handleSDL2WindowEvent(const SDL_Event &event)
     if (!inGame)
         return;
 
+#ifndef DYECMD
     if (eventType == SDL_WINDOWEVENT_MINIMIZED
         || eventType == SDL_WINDOWEVENT_RESTORED
         || eventType == SDL_WINDOWEVENT_MAXIMIZED)
@@ -487,23 +500,28 @@ void EventsManager::handleSDL2WindowEvent(const SDL_Event &event)
         }
         Game::instance()->updateFrameRate(fpsLimit);
     }
+#endif
 }
 #else
 void EventsManager::handleActive(const SDL_Event &event)
 {
+#ifndef DYECMD
     int fpsLimit = 0;
     const bool inGame = (client->getState() == STATE_GAME);
+#endif
     if (event.active.state & SDL_APPACTIVE)
     {
         if (event.active.gain)
         {   // window restore
             WindowManager::setIsMinimized(false);
+#ifndef DYECMD
             if (inGame && localPlayer)
             {
                 if (!settings.awayMode)
                     fpsLimit = config.getIntValue("fpslimit");
                 localPlayer->setHalfAway(false);
             }
+#endif
             setPriority(true);
         }
         else
@@ -512,25 +530,33 @@ void EventsManager::handleActive(const SDL_Event &event)
             client->setState(STATE_EXIT);
 #else
             WindowManager::setIsMinimized(true);
+#ifndef DYECMD
             if (inGame && localPlayer && !settings.awayMode)
             {
                 fpsLimit = config.getIntValue("altfpslimit");
                 localPlayer->setHalfAway(true);
             }
+#endif
             setPriority(false);
 #endif
         }
+#ifndef DYECMD
         if (inGame && localPlayer)
             localPlayer->updateStatus();
+#endif
     }
+#ifndef DYECMD
     if (inGame && localPlayer)
         localPlayer->updateName();
+#endif
 
     if (event.active.state & SDL_APPINPUTFOCUS)
         settings.inputFocused = event.active.gain;
     if (event.active.state & SDL_APPMOUSEFOCUS)
         settings.mouseFocused = event.active.gain;
+#ifndef DYECMD
     if (inGame)
         Game::instance()->updateFrameRate(fpsLimit);
+#endif
 }
 #endif

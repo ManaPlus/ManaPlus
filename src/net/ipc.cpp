@@ -187,6 +187,8 @@ void IPC::flush()
     if (!mThreadLocked)
     {
         SDL_mutexP(mMutex);
+#ifndef DYECMD
+// probably need enable only commands in tool
         if (chatWindow)
         {
             FOR_EACH (std::vector<std::string>::const_iterator, it,
@@ -195,6 +197,7 @@ void IPC::flush()
                 chatWindow->chatInput(*it);
             }
         }
+#endif
         mDelayedCommands.clear();
         SDL_mutexV(mMutex);
     }

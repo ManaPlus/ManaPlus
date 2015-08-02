@@ -24,7 +24,9 @@
 
 #include "logger.h"
 
+#ifndef DYECMD
 #include "resources/db/palettedb.h"
+#endif
 
 #include <cmath>
 
@@ -68,6 +70,7 @@ DyePalette::DyePalette(const std::string &description,
             ++pos;
         }
     }
+#ifndef DYECMD
     else if (description[0] == '@')
     {
         size_t pos = 1;
@@ -83,7 +86,7 @@ DyePalette::DyePalette(const std::string &description,
             pos = idx + 1;
         }
     }
-
+#endif
     logger->log("Error, invalid embedded palette: %s", description.c_str());
 }
 

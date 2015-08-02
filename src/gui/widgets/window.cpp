@@ -67,7 +67,11 @@
 
 #include "client.h"
 #include "configuration.h"
+#ifndef DYECMD
 #include "dragdrop.h"
+#else
+#include "resources/image.h"
+#endif
 #include "graphicsvertexes.h"
 #include "soundconsts.h"
 #include "soundmanager.h"
@@ -236,8 +240,10 @@ Window::~Window()
     if (gui)
         gui->removeDragged(this);
 
+#ifndef DYECMD
     if (setupWindow)
         setupWindow->unregisterWindowForReset(this);
+#endif
 
     client->windowRemoved(this);
 
@@ -848,6 +854,7 @@ void Window::mousePressed(MouseEvent &event)
         else
             mMoved = false;
     }
+#ifndef DYECMD
     else if (button == MouseButton::RIGHT)
     {
         if (popupMenu)
@@ -856,6 +863,7 @@ void Window::mousePressed(MouseEvent &event)
             popupMenu->showWindowPopup(this);
         }
     }
+#endif
 }
 
 void Window::close()
@@ -891,8 +899,10 @@ void Window::updateResizeHandler(MouseEvent &event)
     if (!gui)
         return;
 
+#ifndef DYECMD
     if (!dragDrop.isEmpty())
         return;
+#endif
 
     mResizeHandles = getResizeHandles(event);
 

@@ -235,10 +235,12 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
             bLink.y2 = bLink.y1 + font->getHeight();
             if (bLink.caption.empty())
             {
+#ifndef DYECMD
                 const int id = atoi(bLink.link.c_str());
                 if (id)
                     bLink.caption = ItemDB::get(id).getName();
                 else
+#endif
                     bLink.caption = bLink.link;
                 if (translator)
                     bLink.caption = translator->getStr(bLink.caption);

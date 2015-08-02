@@ -778,6 +778,7 @@ Resource *ResourceManager::getShaderProgram(const std::string &vertex,
 }
 #endif
 
+#ifndef DYECMD
 struct WalkLayerLoader final
 {
     const std::string name;
@@ -788,17 +789,15 @@ struct WalkLayerLoader final
         if (!v)
             return nullptr;
 
-#ifdef DYECMD
-        return nullptr;
-#else
         const WalkLayerLoader *const rl = static_cast<const
             WalkLayerLoader *const>(v);
         Resource *const resource = NavigationManager::loadWalkLayer(rl->map);
         return resource;
-#endif
     }
 };
+#endif
 
+#ifndef DYECMD
 WalkLayer *ResourceManager::getWalkLayer(const std::string &name,
                                          Map *const map)
 {
@@ -806,6 +805,13 @@ WalkLayer *ResourceManager::getWalkLayer(const std::string &name,
     return static_cast<WalkLayer*>(get("map_" + name,
         WalkLayerLoader::load, &rl));
 }
+#else
+WalkLayer *ResourceManager::getWalkLayer(const std::string &name A_UNUSED,
+                                         Map *const map A_UNUSED)
+{
+    return nullptr;
+}
+#endif
 
 struct SpriteDefLoader final
 {

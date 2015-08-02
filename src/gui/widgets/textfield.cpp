@@ -748,8 +748,10 @@ void TextField::mousePressed(MouseEvent &event)
     event.consume();
     if (event.getButton() == MouseButton::RIGHT)
     {
+#ifndef DYECMD
         if (popupMenu)
             popupMenu->showTextFieldPopup(this);
+#endif
     }
     else if (event.getButton() == MouseButton::LEFT)
     {

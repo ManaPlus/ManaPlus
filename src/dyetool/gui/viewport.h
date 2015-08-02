@@ -20,13 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_VIEWPORT_H
-#define GUI_VIEWPORT_H
-
-#ifdef DYECMD
-#include "dyetool/gui/viewport.h"
-
-#else
+#ifndef DYETOOL_GUI_VIEWPORT_H
+#define DYETOOL_GUI_VIEWPORT_H
 
 #include "position.h"
 
@@ -162,26 +157,8 @@ class Viewport final : public WindowContainer,
         void setCameraRelativeY(const int n)
         { mCameraRelativeY = n; }
 
-        void moveCameraToActor(const BeingId actorId,
-                               const int x = 0,
-                               const int y = 0);
-
-        void moveCameraToPosition(const int x, const int y);
-
-        void moveCameraRelative(const int x, const int y);
-
-        void returnCamera();
-
         int mMouseX;                /**< Current mouse position in pixels. */
         int mMouseY;                /**< Current mouse position in pixels. */
-
-    protected:
-        friend class ActorManager;
-
-        /// Clears any matching hovers
-        void clearHover(const ActorSprite *const actor);
-
-        static void validateSpeed();
 
     private:
         /**
@@ -240,5 +217,4 @@ class Viewport final : public WindowContainer,
 
 extern Viewport *viewport;           /**< The viewport. */
 
-#endif  // DYECMD
-#endif  // GUI_VIEWPORT_H
+#endif  // DYETOOL_GUI_VIEWPORT_H

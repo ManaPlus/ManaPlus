@@ -2,33 +2,37 @@ AUTOMAKE_OPTIONS = subdir-objects
 
 bin_PROGRAMS = manaplus dyecmd
 
-manaplus_CXXFLAGS = -DPKG_DATADIR=\""$(pkgdatadir)/"\"      \
+dyecmd_CXXFLAGS = -DPKG_DATADIR=\""$(pkgdatadir)/"\"      \
 		-DLOCALEDIR=\""$(localedir)"\"           \
 		-Wall
-dyecmd_CXXFLAGS = -DPKG_DATADIR=\""$(pkgdatadir)/"\"      \
+manaplus_CXXFLAGS = -DPKG_DATADIR=\""$(pkgdatadir)/"\"      \
 		-DLOCALEDIR=\""$(localedir)"\"           \
 		-Wall
 
 if ENABLE_PORTABLE
-manaplus_CXXFLAGS += -DENABLE_PORTABLE
 dyecmd_CXXFLAGS += -DENABLE_PORTABLE
+manaplus_CXXFLAGS += -DENABLE_PORTABLE
 endif
 
 if ENABLE_CHECKPLUGIN
-manaplus_CXXFLAGS += -fplugin=../build/checkplugin.so -fplugin-arg-checkplugin-command=detectnullpointers
 dyecmd_CXXFLAGS += -fplugin=../build/checkplugin.so -fplugin-arg-checkplugin-command=detectnullpointers
+manaplus_CXXFLAGS += -fplugin=../build/checkplugin.so -fplugin-arg-checkplugin-command=detectnullpointers
 endif
 
 if USE_OPENGL
-manaplus_CXXFLAGS += -DUSE_OPENGL
 dyecmd_CXXFLAGS += -DUSE_OPENGL
+manaplus_CXXFLAGS += -DUSE_OPENGL
 endif
 
 if ENABLE_MEM_DEBUG
-manaplus_CXXFLAGS += -DENABLE_MEM_DEBUG -DDEBUG_DUMP_LEAKS
 dyecmd_CXXFLAGS += -DENABLE_MEM_DEBUG -DDEBUG_DUMP_LEAKS
+manaplus_CXXFLAGS += -DENABLE_MEM_DEBUG -DDEBUG_DUMP_LEAKS
 
 manaplus_SOURCES = debug/debug_new.cpp \
+	      debug/debug_new.h \
+	      debug/fast_mutex.h \
+	      debug/static_assert.h
+dyecmd_SOURCES = debug/debug_new.cpp \
 	      debug/debug_new.h \
 	      debug/fast_mutex.h \
 	      debug/static_assert.h
@@ -37,200 +41,29 @@ manaplus_SOURCES =
 endif
 
 if ENABLE_CILKPLUS
-manaplus_CXXFLAGS += -DENABLE_CILKPLUS -fcilkplus -lcilkrts
 dyecmd_CXXFLAGS += -DENABLE_CILKPLUS -fcilkplus -lcilkrts
+manaplus_CXXFLAGS += -DENABLE_CILKPLUS -fcilkplus -lcilkrts
 endif
 
 dyecmd_CXXFLAGS += -DDYECMD
-dyecmd_SOURCES = gui/cliprect.cpp \
-	      gui/color.cpp \
-	      gui/rect.cpp \
-	      events/actionevent.h \
-	      gui/cliprect.h \
-	      gui/color.h \
-	      events/event.h \
-	      gui/rect.h \
-	      dyetool/dyemain.cpp \
-	      animatedsprite.cpp \
-	      animatedsprite.h \
-	      animationdelayload.cpp \
-	      animationdelayload.h \
-	      configuration.cpp \
-	      configuration.h \
-	      graphicsmanager.cpp \
-	      graphicsmanager.h \
-	      graphicsvertexes.cpp \
-	      graphicsvertexes.h \
-	      logger.cpp \
-	      logger.h \
-	      navigationmanager.cpp \
-	      navigationmanager.h \
-	      settings.cpp \
-	      settings.h \
-	      listeners/debugmessagelistener.cpp \
-	      listeners/debugmessagelistener.h \
-	      resources/map/walklayer.cpp \
-	      resources/map/walklayer.h \
-	      render/graphics.cpp \
-	      render/graphics.h \
-	      render/renderers.cpp \
-	      render/renderers.h \
-	      render/sdl2softwaregraphics.cpp \
-	      render/sdl2softwaregraphics.h \
-	      render/sdl2graphics.cpp \
-	      render/sdl2graphics.h \
-	      render/sdlgraphics.cpp \
-	      render/sdlgraphics.h \
-	      render/softwaregraphicsdef.hpp \
-	      render/mgl.cpp \
-	      render/mgl.h \
-	      render/mgl.hpp \
-	      render/mglcheck.h \
-	      render/mgldefines.h \
-	      render/mglemu.cpp \
-	      render/mglemu.h \
-	      render/mglfunctions.h \
-	      render/mgltypes.h \
-	      render/mglx.cpp \
-	      render/mglx.h \
-	      render/mglx.hpp \
-	      render/mglxinit.cpp \
-	      render/mglxinit.h \
-	      render/mglxtypes.h \
-	      render/mobileopenglgraphics.cpp \
-	      render/mobileopenglgraphics.h \
-	      render/modernopenglgraphics.cpp \
-	      render/modernopenglgraphics.h \
-	      render/normalopenglgraphics.cpp \
-	      render/normalopenglgraphics.h \
-	      render/safeopenglgraphics.cpp\
-	      render/safeopenglgraphics.h \
-	      render/shaders/shader.cpp \
-	      render/shaders/shader.h \
-	      render/shaders/shaderprogram.cpp \
-	      render/shaders/shaderprogram.h \
-	      render/shaders/shadersmanager.cpp \
-	      render/shaders/shadersmanager.h \
-	      resources/action.cpp \
-	      resources/action.h \
-	      resources/animation.cpp \
-	      resources/animation.h \
-	      resources/atlasitem.h \
-	      resources/atlasmanager.cpp \
-	      resources/atlasmanager.h \
-	      resources/atlasresource.cpp \
-	      resources/atlasresource.h \
-	      resources/db/palettedb.cpp \
-	      resources/db/palettedb.h \
-	      resources/delayedmanager.cpp \
-	      resources/delayedmanager.h \
-	      resources/dye.cpp \
-	      resources/dye.h \
-	      resources/dyepalette.cpp \
-	      resources/dyepalette.h \
-	      resources/effectdescription.h \
-	      resources/emoteinfo.h \
-	      resources/emotesprite.h \
-	      resources/equipmentslots.h \
-	      resources/image.cpp \
-	      resources/image.h \
-	      resources/imagehelper.cpp \
-	      resources/imagehelper.h \
-	      resources/imagerect.h \
-	      resources/imageset.cpp \
-	      resources/imageset.h \
-	      resources/imagewriter.cpp \
-	      resources/imagewriter.h \
-	      resources/openglimagehelper.cpp \
-	      resources/openglimagehelper.h \
-	      resources/resource.cpp \
-	      resources/resource.h \
-	      resources/resourcemanager.cpp \
-	      resources/resourcemanager.h \
-	      resources/sdl2softwareimagehelper.cpp \
-	      resources/sdl2softwareimagehelper.h \
-	      resources/sdl2imagehelper.cpp \
-	      resources/sdl2imagehelper.h \
-	      resources/sdlimagehelper.cpp \
-	      resources/sdlimagehelper.h \
-	      resources/sdlmusic.cpp \
-	      resources/sdlmusic.h \
-	      resources/soundeffect.cpp \
-	      resources/soundeffect.h \
-	      resources/subimage.cpp \
-	      resources/subimage.h \
-	      resources/surfaceimagehelper.cpp \
-	      resources/surfaceimagehelper.h \
-	      resources/textureatlas.h \
-	      resources/updatefile.h \
-	      resources/spritedef.cpp \
-	      resources/spritedef.h \
-	      resources/spritedisplay.h \
-	      resources/spritereference.h \
-	      test/testmain.cpp \
-	      test/testmain.h \
-	      utils/env.cpp \
-	      utils/env.h \
-	      utils/gettext.h \
-	      utils/gettexthelper.cpp \
-	      utils/gettexthelper.h \
-	      utils/glxhelper.cpp \
-	      utils/glxhelper.h \
-	      utils/files.cpp \
-	      utils/files.h \
-	      utils/mkdir.cpp \
-	      utils/mkdir.h \
-	      utils/paths.cpp \
-	      utils/paths.h \
-	      utils/perfomance.cpp \
-	      utils/perfomance.h \
-	      utils/physfsrwops.cpp \
-	      utils/physfsrwops.h \
-	      utils/physfstools.cpp \
-	      utils/physfstools.h \
-	      utils/physfscheckutils.cpp \
-	      utils/physfscheckutils.h \
-	      utils/physfsmemoryobject.h \
-	      utils/process.cpp \
-	      utils/process.h \
-	      utils/sdl2helper.cpp \
-	      utils/sdl2helper.h \
-	      utils/sdlcheckutils.cpp \
-	      utils/sdlcheckutils.h \
-	      utils/sdlhelper.cpp \
-	      utils/sdlhelper.h \
-	      utils/sdlmemoryobject.h \
-	      utils/stringmap.h \
-	      utils/stringutils.cpp \
-	      utils/stringutils.h \
-	      utils/timer.cpp \
-	      utils/timer.h \
-	      utils/xml.cpp \
-	      utils/xml.h \
-	      utils/xmlutils.cpp \
-	      utils/xmlutils.h \
-	      utils/translation/podict.cpp \
-	      utils/translation/podict.h
+dyecmd_SOURCES = dyetool/dyemain.cpp
 
 if USE_MUMBLE
 manaplus_CXXFLAGS += -DUSE_MUMBLE
 endif
 
 if ENABLE_CHECKS
-manaplus_CXXFLAGS += -DENABLE_CHECKS
 dyecmd_CXXFLAGS += -DENABLE_CHECKS
+manaplus_CXXFLAGS += -DENABLE_CHECKS
 endif
+
+SRC = 
 
 if USE_SDL2
 if USE_INTERNALSDLGFX
 dyecmd_CXXFLAGS += -I$(srcdir)/sdl2gfx -DUSE_SDL2
-dyecmd_SOURCES += sdl2gfx/SDL2_framerate.c \
-	      sdl2gfx/SDL2_framerate.h \
-	      sdl2gfx/SDL2_rotozoom.c \
-	      sdl2gfx/SDL2_rotozoom.h
-
 manaplus_CXXFLAGS += -I$(srcdir)/sdl2gfx -DUSE_SDL2
-manaplus_SOURCES += sdl2gfx/SDL2_framerate.c \
+SRC += sdl2gfx/SDL2_framerate.c \
 	      sdl2gfx/SDL2_framerate.h \
 	      sdl2gfx/SDL2_rotozoom.c \
 	      sdl2gfx/SDL2_rotozoom.h
@@ -240,8 +73,10 @@ manaplus_CXXFLAGS += -DUSE_SDL2
 endif
 endif
 
-manaplus_SOURCES += events/actionevent.h \
+SRC += events/actionevent.h \
 	      listeners/actionlistener.h \
+	      listeners/attributelistener.cpp \
+	      listeners/attributelistener.h \
 	      gui/widgets/basiccontainer.h \
 	      gui/buttoninfo.h \
 	      gui/buttontext.h \
@@ -267,9 +102,8 @@ manaplus_SOURCES += events/actionevent.h \
 	      listeners/debugmessagelistener.h \
 	      listeners/guitableactionlistener.cpp \
 	      listeners/guitableactionlistener.h \
-	      listeners/inputactionreplaylistener.cpp \
-	      listeners/inputactionreplaylistener.h \
-	      listeners/inventorylistener.h \
+	      listeners/tooltiplistener.cpp \
+	      listeners/tooltiplistener.h \
 	      render/graphics.h \
 	      events/inputguievent.h \
 	      input/key.h \
@@ -285,21 +119,12 @@ manaplus_SOURCES += events/actionevent.h \
 	      listeners/openurllistener.h \
 	      listeners/playerdeathlistener.cpp \
 	      listeners/playerdeathlistener.h \
-	      listeners/playerpostdeathlistener.h \
-	      listeners/playerlistener.cpp \
-	      listeners/playerlistener.h \
 	      gui/rect.h \
 	      events/selectionevent.h \
 	      listeners/selectionlistener.h \
 	      listeners/statlistener.cpp \
 	      listeners/statlistener.h \
 	      listeners/tablemodellistener.h \
-	      listeners/tooltiplistener.cpp \
-	      listeners/tooltiplistener.h \
-	      listeners/updatestatuslistener.cpp \
-	      listeners/updatestatuslistener.h \
-	      listeners/uploadlistener.cpp \
-	      listeners/uploadlistener.h \
 	      utils/sdlpixel.h \
 	      gui/widgets/widget.h \
 	      listeners/weightlistener.h \
@@ -316,33 +141,12 @@ manaplus_SOURCES += events/actionevent.h \
 	      input/key.cpp \
 	      gui/rect.cpp \
 	      gui/widgets/widget.cpp \
-	      gui/widgets/basiccontainer2.cpp
-
-manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
-	      gui/widgets/avatarlistbox.h \
-	      gui/models/avatarlistmodel.h \
-	      gui/models/beingslistmodel.h \
+	      gui/widgets/basiccontainer2.cpp \
 	      gui/models/colorlistmodel.h \
-	      gui/widgets/tabs/chat/battletab.cpp \
-	      gui/widgets/tabs/chat/battletab.h \
-	      gui/widgets/tabs/chat/channeltab.cpp \
-	      gui/widgets/tabs/chat/channeltab.h \
 	      gui/widgets/browserbox.cpp \
 	      gui/widgets/browserbox.h \
 	      gui/widgets/button.cpp \
 	      gui/widgets/button.h \
-	      gui/widgets/characterdisplay.cpp \
-	      gui/widgets/characterdisplay.h \
-	      gui/widgets/characterviewbase.h \
-	      gui/widgets/characterviewnormal.cpp \
-	      gui/widgets/characterviewnormal.h \
-	      gui/widgets/characterviewsmall.cpp \
-	      gui/widgets/characterviewsmall.h \
-	      gui/widgets/tabs/chat/chattabtype.h \
-	      gui/widgets/tabs/debugwindowtabs.cpp \
-	      gui/widgets/tabs/debugwindowtabs.h \
-	      gui/widgets/tabs/chat/chattab.cpp \
-	      gui/widgets/tabs/chat/chattab.h \
 	      gui/widgets/chatinput.h \
 	      gui/widgets/checkbox.cpp \
 	      gui/widgets/checkbox.h \
@@ -359,8 +163,6 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/desktop.h \
 	      gui/widgets/dropdown.cpp \
 	      gui/widgets/dropdown.h \
-	      gui/widgets/emoteshortcutcontainer.cpp \
-	      gui/widgets/emoteshortcutcontainer.h \
 	      gui/widgets/equipmentbox.h \
 	      gui/widgets/equipmentpage.h \
 	      gui/widgets/extendedlistbox.cpp \
@@ -378,8 +180,6 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/models/langlistmodel.h \
 	      gui/widgets/flowcontainer.cpp \
 	      gui/widgets/flowcontainer.h \
-	      gui/widgets/tabs/chat/gmtab.cpp \
-	      gui/widgets/tabs/chat/gmtab.h \
 	      gui/widgets/guitable.cpp \
 	      gui/widgets/guitable.h \
 	      gui/widgets/horizontcontainer.cpp \
@@ -388,23 +188,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/icon.h \
 	      gui/widgets/inttextfield.cpp \
 	      gui/widgets/inttextfield.h \
-	      gui/widgets/itemcontainer.cpp \
-	      gui/widgets/itemcontainer.h \
-	      gui/widgets/itemlinkhandler.cpp \
-	      gui/widgets/itemlinkhandler.h \
-	      gui/widgets/virtshortcutcontainer.cpp \
-	      gui/widgets/virtshortcutcontainer.h \
-	      gui/widgets/emotepage.cpp \
-	      gui/widgets/emotepage.h \
-	      gui/widgets/itemshortcutcontainer.cpp \
-	      gui/widgets/itemshortcutcontainer.h \
-	      gui/widgets/spellshortcutcontainer.cpp \
-	      gui/widgets/spellshortcutcontainer.h \
-	      gui/widgets/statuswindowattrs.h \
 	      gui/widgets/label.cpp \
 	      gui/widgets/label.h \
-	      gui/widgets/tabs/chat/langtab.cpp \
-	      gui/widgets/tabs/chat/langtab.h \
 	      gui/widgets/layout.cpp \
 	      gui/widgets/layout.h \
 	      gui/widgets/layoutarray.cpp \
@@ -423,16 +208,9 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/models/modelistmodel.h \
 	      gui/models/namesmodel.cpp \
 	      gui/models/namesmodel.h \
-	      gui/models/opengllistmodel.h \
-	      gui/models/playerrelationlistmodel.h \
-	      gui/models/playertablemodel.cpp \
-	      gui/models/playertablemodel.h \
-	      gui/models/questsmodel.h \
 	      gui/models/serverslistmodel.h \
 	      gui/widgets/passwordfield.cpp \
 	      gui/widgets/passwordfield.h \
-	      gui/widgets/playerbox.cpp \
-	      gui/widgets/playerbox.h \
 	      gui/widgets/popup.cpp \
 	      gui/widgets/popup.h \
 	      gui/widgets/popuplist.cpp \
@@ -447,52 +225,11 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/radiogroup.h \
 	      gui/widgets/scrollarea.cpp \
 	      gui/widgets/scrollarea.h \
-	      gui/widgets/serverslistbox.h \
-	      gui/widgets/setupbuttonitem.cpp \
-	      gui/widgets/setupbuttonitem.h \
-	      gui/widgets/setupitem.cpp \
-	      gui/widgets/setupitem.h \
-	      gui/widgets/setupquickitem.cpp \
-	      gui/widgets/setupquickitem.h \
-	      gui/widgets/tabs/setuptab.cpp \
-	      gui/widgets/tabs/setuptab.h \
-	      gui/widgets/tabs/setuptabscroll.cpp \
-	      gui/widgets/tabs/setuptabscroll.h \
-	      gui/widgets/setuptouchitem.cpp \
-	      gui/widgets/setuptouchitem.h \
-	      gui/models/shopitems.cpp \
-	      gui/models/shopitems.h \
-	      gui/widgets/shoplistbox.cpp \
-	      gui/widgets/shoplistbox.h \
-	      gui/widgets/shortcutcontainer.cpp \
-	      gui/widgets/shortcutcontainer.h \
-	      gui/widgets/skilldata.cpp \
-	      gui/widgets/skilldata.h \
-	      gui/widgets/skillinfo.cpp \
-	      gui/widgets/skillinfo.h \
-	      gui/widgets/skilllistbox.h \
-	      gui/models/skillmodel.cpp \
-	      gui/models/skillmodel.h \
-	      gui/models/sortlistmodelbuy.h \
-	      gui/models/sortlistmodelinv.h \
 	      gui/models/soundsmodel.h \
 	      gui/widgets/slider.cpp \
 	      gui/widgets/slider.h \
 	      gui/widgets/sliderlist.cpp \
 	      gui/widgets/sliderlist.h \
-	      gui/widgets/tabs/shortcuttab.h \
-	      gui/widgets/tabs/skilltab.h \
-	      gui/widgets/tabs/socialattacktab.h \
-	      gui/widgets/tabs/socialfriendsfunctor.h \
-	      gui/widgets/tabs/socialfriendstab.h \
-	      gui/widgets/tabs/socialguildtab.h \
-	      gui/widgets/tabs/socialguildtab2.h \
-	      gui/widgets/tabs/socialnavigationtab.h \
-	      gui/widgets/tabs/socialpartytab.h \
-	      gui/widgets/tabs/socialpickuptab.h \
-	      gui/widgets/tabs/socialplayerstab.h \
-	      gui/widgets/tabs/socialtab.h \
-	      gui/widgets/tabs/socialtabbase.h \
 	      gui/widgets/tabs/tab.cpp \
 	      gui/widgets/tabs/tab.h \
 	      gui/widgets/tabbedarea.cpp \
@@ -500,12 +237,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/models/tablemodel.cpp \
 	      gui/models/tablemodel.h \
 	      gui/models/targettypemodel.h \
-	      gui/models/touchactionmodel.cpp \
-	      gui/models/touchactionmodel.h \
 	      gui/models/typelistmodel.h \
-	      gui/models/updatetypemodel.h \
-	      gui/models/updatelistmodel.h \
-	      gui/models/worldlistmodel.h \
 	      gui/models/themesmodel.h \
 	      gui/widgets/tabstrip.cpp \
 	      gui/widgets/tabstrip.h \
@@ -515,12 +247,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/textfield.h \
 	      gui/widgets/textpreview.cpp \
 	      gui/widgets/textpreview.h \
-	      gui/widgets/tabs/chat/tradetab.cpp \
-	      gui/widgets/tabs/chat/tradetab.h \
 	      gui/widgets/vertcontainer.cpp \
 	      gui/widgets/vertcontainer.h \
-	      gui/widgets/tabs/chat/whispertab.cpp \
-	      gui/widgets/tabs/chat/whispertab.h \
 	      gui/widgets/widget2.h \
 	      gui/widgets/widgetgroup.cpp \
 	      gui/widgets/widgetgroup.h \
@@ -528,151 +256,23 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/window.h \
 	      gui/widgets/windowcontainer.cpp \
 	      gui/widgets/windowcontainer.h \
-	      gui/popups/beingpopup.cpp \
-	      gui/popups/beingpopup.h \
-	      gui/popups/createpartypopup.h \
-	      gui/windows/buydialog.cpp \
-	      gui/windows/buydialog.h \
-	      gui/windows/buyselldialog.cpp \
-	      gui/windows/buyselldialog.h \
-	      gui/windows/changeemaildialog.cpp \
-	      gui/windows/changeemaildialog.h \
-	      gui/windows/changepassworddialog.cpp \
-	      gui/windows/changepassworddialog.h \
-	      gui/windows/charselectdialog.cpp \
-	      gui/windows/charselectdialog.h \
-	      gui/windows/charcreatedialog.cpp \
-	      gui/windows/charcreatedialog.h \
-	      gui/windows/chardeleteconfirm.h \
-	      gui/windows/chatwindow.cpp \
-	      gui/windows/chatwindow.h \
 	      gui/windows/confirmdialog.cpp \
 	      gui/windows/confirmdialog.h \
-	      gui/windows/connectiondialog.cpp \
-	      gui/windows/connectiondialog.h \
-	      gui/windows/debugwindow.cpp \
-	      gui/windows/debugwindow.h \
-	      gui/windows/didyouknowwindow.cpp \
-	      gui/windows/didyouknowwindow.h \
-	      gui/windows/editdialog.cpp \
-	      gui/windows/editdialog.h \
-	      gui/windows/editserverdialog.cpp \
-	      gui/windows/editserverdialog.h \
-	      gui/windows/emotewindow.cpp \
-	      gui/windows/emotewindow.h \
-	      gui/windows/equipmentwindow.cpp \
-	      gui/windows/equipmentwindow.h \
 	      gui/focushandler.cpp \
 	      gui/focushandler.h \
 	      gui/gui.cpp \
 	      gui/gui.h \
 	      gui/mailmessage.h \
-	      gui/windows/helpwindow.cpp \
-	      gui/windows/helpwindow.h \
-	      gui/windows/inventorywindow.cpp \
-	      gui/windows/inventorywindow.h \
-	      gui/windows/itemamountwindow.cpp \
-	      gui/windows/itemamountwindow.h \
-	      gui/popups/itempopup.cpp \
-	      gui/popups/itempopup.h \
-	      gui/popups/spellpopup.cpp \
-	      gui/popups/spellpopup.h \
-	      gui/popups/statuspopup.cpp \
-	      gui/popups/statuspopup.h \
-	      gui/popups/textboxpopup.cpp \
-	      gui/popups/textboxpopup.h \
-	      gui/windows/killstats.cpp \
-	      gui/windows/killstats.h \
-	      gui/windows/logindialog.cpp \
-	      gui/windows/logindialog.h \
-	      gui/windows/minimap.cpp \
-	      gui/windows/minimap.h \
-	      gui/windows/ministatuswindow.cpp \
-	      gui/windows/ministatuswindow.h \
-	      gui/windows/npcdialog.cpp \
-	      gui/windows/npcdialog.h \
-	      gui/windows/npcselldialog.cpp \
-	      gui/windows/npcselldialog.h \
 	      gui/windows/okdialog.cpp \
 	      gui/windows/okdialog.h \
-	      gui/windows/outfitwindow.cpp \
-	      gui/windows/outfitwindow.h \
-	      gui/windows/textcommandeditor.cpp \
-	      gui/windows/textcommandeditor.h \
 	      gui/onlineplayer.h \
 	      gui/palette.cpp \
 	      gui/palette.h \
-	      gui/popupmanager.cpp \
-	      gui/popupmanager.h \
-	      gui/popups/popupmenu.cpp \
-	      gui/popups/popupmenu.h \
-	      gui/popups/skillpopup.cpp \
-	      gui/popups/skillpopup.h \
-	      gui/windows/questswindow.cpp \
-	      gui/windows/questswindow.h \
-	      gui/windows/quitdialog.cpp \
-	      gui/windows/quitdialog.h \
-	      gui/windows/registerdialog.cpp \
-	      gui/windows/registerdialog.h \
 	      gui/sdlinput.cpp \
 	      gui/sdlinput.h \
-	      gui/widgets/selldialog.cpp \
-	      gui/widgets/selldialog.h \
-	      gui/windows/serverdialog.cpp \
-	      gui/windows/serverdialog.h \
-	      gui/windows/setupwindow.cpp \
-	      gui/windows/setupwindow.h \
-	      gui/widgets/tabs/setup_audio.cpp \
-	      gui/widgets/tabs/setup_audio.h \
-	      gui/widgets/tabs/setup_colors.cpp \
-	      gui/widgets/tabs/setup_colors.h \
-	      gui/widgets/tabs/setup_joystick.cpp \
-	      gui/widgets/tabs/setup_joystick.h \
-	      gui/widgets/tabs/setup_mods.cpp \
-	      gui/widgets/tabs/setup_mods.h \
-	      gui/widgets/tabs/setup_other.cpp \
-	      gui/widgets/tabs/setup_other.h \
-	      gui/widgets/tabs/setup_theme.cpp \
-	      gui/widgets/tabs/setup_theme.h \
-	      gui/widgets/tabs/setup_touch.cpp \
-	      gui/widgets/tabs/setup_touch.h \
-	      gui/widgets/tabs/setup_chat.cpp \
-	      gui/widgets/tabs/setup_chat.h \
-	      gui/widgets/tabs/setup_input.cpp \
-	      gui/widgets/tabs/setup_input.h \
-	      gui/widgets/tabs/setup_perfomance.cpp \
-	      gui/widgets/tabs/setup_perfomance.h \
-	      gui/widgets/tabs/setup_players.cpp \
-	      gui/widgets/tabs/setup_players.h \
-	      gui/widgets/tabs/setup_quick.cpp \
-	      gui/widgets/tabs/setup_quick.h \
-	      gui/widgets/tabs/setup_relations.cpp \
-	      gui/widgets/tabs/setup_relations.h \
-	      gui/widgets/tabs/setup_video.cpp \
-	      gui/widgets/tabs/setup_video.h \
-	      gui/widgets/tabs/setup_visual.cpp \
-	      gui/widgets/tabs/setup_visual.h \
+	      gui/windows/editdialog.cpp \
+	      gui/windows/editdialog.h \
 	      gui/setupactiondata.h \
-	      gui/setupinputpages.cpp \
-	      gui/setupinputpages.h \
-	      input/pages/basic.cpp \
-	      input/pages/basic.h \
-	      input/pages/chat.cpp \
-	      input/pages/chat.h \
-	      input/pages/emotes.cpp \
-	      input/pages/emotes.h \
-	      input/pages/gui.cpp \
-	      input/pages/gui.h \
-	      input/pages/move.cpp \
-	      input/pages/move.h \
-	      input/pages/other.cpp \
-	      input/pages/other.h \
-	      input/pages/outfits.cpp \
-	      input/pages/outfits.h \
-	      input/pages/shortcuts.cpp \
-	      input/pages/shortcuts.h \
-	      input/pages/windows.cpp \
-	      input/pages/windows.h \
 	      gui/fonts/font.cpp \
 	      gui/fonts/font.h \
 	      gui/fonts/textchunk.cpp \
@@ -681,22 +281,6 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/fonts/textchunklist.h \
 	      gui/fonts/textchunksmall.cpp \
 	      gui/fonts/textchunksmall.h \
-	      gui/windows/shopwindow.cpp \
-	      gui/windows/shopwindow.h \
-	      gui/windows/shortcutwindow.cpp \
-	      gui/windows/shortcutwindow.h \
-	      gui/windows/skilldialog.cpp \
-	      gui/windows/skilldialog.h \
-	      gui/windows/socialwindow.cpp \
-	      gui/windows/socialwindow.h \
-	      gui/popups/speechbubble.cpp \
-	      gui/popups/speechbubble.h \
-	      gui/windows/statuswindow.cpp \
-	      gui/windows/statuswindow.h \
-	      gui/windows/textdialog.cpp \
-	      gui/windows/textdialog.h \
-	      gui/popups/textpopup.cpp \
-	      gui/popups/textpopup.h \
 	      gui/skin.cpp \
 	      gui/skin.h \
 	      gui/theme.cpp \
@@ -704,130 +288,37 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/themecolorsidoperators.cpp \
 	      gui/themecolorsidoperators.h \
 	      gui/themeinfo.h \
-	      gui/touchactiondata.cpp \
-	      gui/touchactiondata.h \
-	      gui/windows/tradewindow.cpp \
-	      gui/windows/tradewindow.h \
-	      gui/windows/unregisterdialog.cpp \
-	      gui/windows/unregisterdialog.h \
-	      gui/windows/updaterwindow.cpp \
-	      gui/windows/updaterwindow.h \
 	      gui/userpalette.cpp \
 	      gui/userpalette.h \
-	      gui/viewport.cpp \
-	      gui/viewport.h \
 	      gui/windowmanager.cpp \
 	      gui/windowmanager.h \
-	      gui/windows/whoisonline.cpp \
-	      gui/windows/whoisonline.h \
-	      gui/windowmenu.cpp \
-	      gui/windowmenu.h \
-	      gui/windows/worldselectdialog.cpp \
-	      gui/windows/worldselectdialog.h \
-	      net/adminhandler.h \
-	      net/beinghandler.h \
-	      net/buysellhandler.h \
-	      net/character.h \
-	      net/charserverhandler.cpp \
-	      net/charserverhandler.h \
-	      net/chathandler.h \
-	      net/download.cpp \
-	      net/download.h \
 	      enums/net/auctionsearchtype.h \
 	      enums/net/battlegroundtype.h \
 	      enums/net/downloadstatus.h \
 	      enums/net/packettype.h \
-	      net/gamehandler.h \
-	      net/generalhandler.h \
-	      net/guildhandler.h \
-	      net/inventoryhandler.h \
-	      net/ipc.cpp \
-	      net/ipc.h \
-	      net/ea/inventoryitem.h \
-	      net/logindata.h \
-	      net/loginhandler.h \
-	      net/messagehandler.h \
-	      net/messagein.cpp \
-	      net/messagein.h \
-	      net/messageout.cpp \
-	      net/messageout.h \
-	      net/net.cpp \
-	      net/net.h \
-	      net/netconsts.h \
-	      net/npchandler.h \
-	      net/partyhandler.h \
 	      enums/net/partyshare.h \
 	      enums/net/servertype.h \
 	      enums/net/storesearchtype.h \
-	      net/pethandler.h \
-	      net/playerhandler.h \
-	      net/questhandler.h \
-	      net/registrationoptions.h \
-	      net/sdltcpnet.cpp \
-	      net/sdltcpnet.h \
-	      net/serverfeatures.h \
-	      net/serverinfo.h \
-	      net/skillhandler.h \
-	      net/tradehandler.h \
-	      net/updatetypeoperators.cpp \
-	      net/updatetypeoperators.h \
 	      enums/net/updatetype.h \
-	      net/uploadcharinfo.h \
-	      net/worldinfo.h \
-	      net/packetcounters.cpp \
-	      net/packetcounters.h \
-	      net/packetdefine.h \
-	      net/packetlimiter.cpp \
-	      net/packetlimiter.h \
 	      resources/action.cpp \
 	      resources/action.h \
 	      resources/ambientlayer.cpp \
 	      resources/ambientlayer.h \
-	      resources/animation.cpp \
-	      resources/animation.h \
 	      resources/atlasitem.h \
 	      resources/atlasmanager.cpp \
 	      resources/atlasmanager.h \
 	      resources/atlasresource.cpp \
 	      resources/atlasresource.h \
 	      resources/attack.h \
-	      resources/db/avatardb.cpp \
-	      resources/db/avatardb.h \
-	      resources/db/badgesdb.cpp \
-	      resources/db/badgesdb.h \
-	      resources/beingcommon.cpp \
-	      resources/beingcommon.h \
-	      resources/beinginfo.cpp \
-	      resources/beinginfo.h \
-	      resources/beingmenuitem.h \
-	      resources/chatobject.cpp \
-	      resources/chatobject.h \
-	      resources/db/chardb.cpp \
-	      resources/db/chardb.h \
-	      resources/db/colordb.cpp \
-	      resources/db/colordb.h \
-	      resources/db/commandsdb.cpp \
-	      resources/db/commandsdb.h \
 	      resources/cursor.cpp \
 	      resources/cursor.h \
-	      resources/delayedmanager.cpp \
-	      resources/delayedmanager.h \
-	      resources/db/deaddb.cpp \
-	      resources/db/deaddb.h \
 	      resources/dye.cpp \
 	      resources/dye.h \
 	      resources/dyecolor.h \
 	      resources/dyepalette.cpp \
 	      resources/dyepalette.h \
-	      resources/db/emotedb.cpp \
-	      resources/db/emotedb.h \
-	      resources/db/homunculusdb.cpp \
-	      resources/db/homunculusdb.h \
-	      resources/db/horsedb.cpp \
-	      resources/db/horsedb.h \
 	      resources/fboinfo.h \
 	      resources/frame.h \
-	      resources/horseinfo.h \
 	      resources/image.cpp \
 	      resources/image.h \
 	      resources/imagehelper.cpp \
@@ -836,47 +327,17 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      resources/imageset.h \
 	      resources/imagewriter.cpp \
 	      resources/imagewriter.h \
-	      resources/db/itemdb.cpp \
-	      resources/db/itemdb.h \
-	      resources/db/itemdbstat.h \
-	      resources/iteminfo.h \
-	      resources/iteminfo.cpp \
-	      resources/itemslot.h \
-	      enums/resources/itemsoundevent.h \
-	      resources/itemtype.h \
-	      resources/itemtypemap.h \
-	      resources/itemtypemapdata.h \
-	      resources/db/mapdb.cpp \
-	      resources/db/mapdb.h \
-	      resources/db/mercenarydb.cpp \
-	      resources/db/mercenarydb.h \
-	      resources/db/moddb.cpp \
-	      resources/db/moddb.h \
-	      resources/mapinfo.h \
-	      enums/resources/map/mapitemtype.h \
-	      resources/mapreader.cpp \
-	      resources/mapreader.h \
-	      resources/modinfo.cpp \
-	      resources/modinfo.h \
 	      resources/mstack.h \
 	      resources/notificationinfo.h \
 	      resources/notifications.h \
 	      enums/resources/notifyflags.h \
 	      enums/resources/notifytypes.h \
-	      resources/db/monsterdb.cpp \
-	      resources/db/monsterdb.h \
-	      resources/db/npcdb.cpp \
-	      resources/db/npcdb.h \
 	      resources/openglimagehelper.cpp \
 	      resources/openglimagehelper.h \
 	      resources/questeffect.h \
 	      resources/questitem.h \
 	      resources/questitemtext.h \
 	      resources/questtype.h \
-	      resources/db/palettedb.cpp \
-	      resources/db/palettedb.h \
-	      resources/db/petdb.cpp \
-	      resources/db/petdb.h \
 	      resources/resource.cpp \
 	      resources/resource.h \
 	      resources/resourcemanager.cpp \
@@ -892,10 +353,6 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      resources/skillconsts.h \
 	      resources/skillowner.h \
 	      resources/skilltype.h \
-	      resources/db/sounddb.cpp \
-	      resources/db/sounddb.h \
-	      resources/db/weaponsdb.cpp \
-	      resources/db/weaponsdb.h \
 	      resources/soundeffect.cpp \
 	      resources/soundeffect.h \
 	      resources/soundinfo.h \
@@ -919,8 +376,6 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      utils/base64.cpp \
 	      utils/base64.h \
 	      utils/booleanoptions.h \
-	      utils/chatutils.cpp \
-	      utils/chatutils.h \
 	      utils/checkutils.cpp \
 	      utils/checkutils.h \
 	      utils/copynpaste.cpp \
@@ -982,79 +437,11 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      test/testmain.h \
 	      actions/actiondef.h \
 	      actions/actionfuncptr.h \
-	      actions/actions.cpp \
-	      actions/actions.h \
-	      actions/chat.cpp \
-	      actions/chat.h \
-	      actions/commands.cpp \
-	      actions/commands.h \
-	      actions/move.cpp \
-	      actions/move.h \
-	      actions/pets.cpp \
-	      actions/pets.h \
-	      actions/statusbar.cpp \
-	      actions/statusbar.h \
-	      actions/tabs.cpp \
-	      actions/tabs.h \
-	      actions/target.cpp \
-	      actions/target.h \
-	      actions/windows.cpp \
-	      actions/windows.h \
-	      being/actor.cpp \
-	      being/actor.h \
-	      being/actorsprite.cpp \
-	      being/actorsprite.h \
-	      enums/being/actortype.h \
-	      enums/being/attacktype.h \
-	      enums/being/attributes.h \
-	      listeners/actorspritelistener.h \
-	      listeners/arrowslistener.cpp \
-	      listeners/arrowslistener.h \
-	      listeners/attributelistener.cpp \
-	      listeners/attributelistener.h \
-	      listeners/awaylistener.cpp \
-	      listeners/awaylistener.h \
 	      listeners/baselistener.hpp \
-	      listeners/charrenamelistener.cpp \
-	      listeners/charrenamelistener.h \
-	      actormanager.cpp \
-	      actormanager.h \
-	      animatedsprite.cpp \
-	      animatedsprite.h \
-	      animationdelayload.cpp \
-	      animationdelayload.h \
-	      particle/animationparticle.cpp \
-	      particle/animationparticle.h \
-	      avatar.cpp \
-	      avatar.h \
-	      being/being.cpp \
-	      being/being.h \
-	      enums/being/beingaction.h \
-	      being/beingcacheentry.h \
-	      enums/being/beingdirection.h \
-	      being/beingflag.h \
-	      being/beingspeech.h \
-	      beingequipbackend.cpp \
-	      beingequipbackend.h \
-	      spellmanager.cpp \
-	      spellmanager.h \
-	      catch.hpp \
-	      chatlogger.cpp \
-	      chatlogger.h \
-	      client.cpp \
-	      client.h \
 	      commandline.cpp \
 	      commandline.h \
 	      configmanager.cpp \
 	      configmanager.h \
-	      being/compounditem.h \
-	      being/compoundsprite.cpp \
-	      being/compoundsprite.h \
-	      being/crazymoves.cpp \
-	      being/crazymoves.h \
-	      enums/being/cookingtype.h \
-	      enums/being/gender.h \
-	      being/homunculusinfo.h \
 	      listeners/configlistener.h \
 	      configuration.cpp \
 	      configuration.h \
@@ -1063,55 +450,16 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      defaults.h \
 	      dirs.cpp \
 	      dirs.h \
-	      dragdrop.h \
-	      dropshortcut.cpp \
-	      dropshortcut.h \
-	      effectmanager.cpp \
-	      effectmanager.h \
-	      emoteshortcut.cpp \
-	      emoteshortcut.h \
-	      emoteshortcutconsts.h \
-	      equipment.h \
 	      eventsmanager.cpp \
 	      eventsmanager.h \
-	      flooritem.cpp \
-	      flooritem.h \
-	      game.cpp \
-	      game.h \
-	      gamemodifiers.cpp \
-	      gamemodifiers.h \
 	      render/graphics.cpp \
 	      render/graphics.h \
 	      graphicsmanager.cpp \
 	      graphicsmanager.h \
 	      graphicsvertexes.cpp \
 	      graphicsvertexes.h \
-	      guild.cpp \
-	      guild.h \
-	      enums/dragdropsource.h \
-	      enums/equipslot.h \
-	      enums/guildpositionflags.h \
-	      enums/inventorytype.h \
-	      particle/imageparticle.cpp \
-	      particle/imageparticle.h \
-	      imagesprite.cpp \
-	      imagesprite.h \
-	      inventory.cpp \
-	      inventory.h \
-	      item.cpp \
-	      item.h \
-	      itemshortcut.cpp \
-	      itemshortcut.h \
-	      itemsoundmanager.cpp \
-	      itemsoundmanager.h \
-	      spellshortcut.cpp \
-	      spellshortcut.h \
-	      textcommand.cpp \
-	      textcommand.h \
 	      events/inputevent.h \
-	      enums/input/inputaction.h \
 	      input/inputactiondata.h \
-	      input/inputactionmap.h \
 	      input/inputactionoperators.cpp \
 	      input/inputactionoperators.h \
 	      input/inputactionsortfunctor.h \
@@ -1129,36 +477,10 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      input/multitouchmanager.cpp \
 	      input/multitouchmanager.h \
 	      localconsts.h \
-	      being/localplayer.cpp \
-	      being/localplayer.h \
-	      being/mercenaryinfo.h \
-	      being/petinfo.h \
-	      enums/being/pickup.h \
 	      logger.cpp \
 	      logger.h \
-	      main.cpp \
-	      main.h \
 	      maingui.cpp \
 	      maingui.h \
-	      enums/resources/map/blockmask.h \
-	      enums/resources/map/blocktype.h \
-	      resources/map/location.h \
-	      resources/map/map.cpp \
-	      resources/map/map.h \
-	      resources/map/mapconsts.h \
-	      resources/map/mapheights.cpp \
-	      resources/map/mapheights.h \
-	      resources/map/mapitem.cpp \
-	      resources/map/mapitem.h \
-	      resources/map/maplayer.cpp \
-	      resources/map/maplayer.h \
-	      resources/map/mapobject.h \
-	      resources/map/mapobjectlist.h \
-	      resources/map/maprowvertexes.h \
-	      enums/resources/map/maptype.h \
-	      resources/map/metatile.h \
-	      resources/map/objectslayer.cpp \
-	      resources/map/objectslayer.h \
 	      render/mgl.cpp \
 	      render/mgl.h \
 	      render/mgl.hpp \
@@ -1181,10 +503,6 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      render/normalopenglgraphics.cpp \
 	      render/normalopenglgraphics.h \
 	      input/mouseinput.h \
-	      navigationmanager.cpp \
-	      navigationmanager.h \
-	      notifymanager.cpp \
-	      notifymanager.h \
 	      options.h \
 	      render/graphicsdef.hpp \
 	      render/imagegraphics.cpp \
@@ -1203,45 +521,14 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      render/rendererslistsdl2.h \
 	      enums/render/blitmode.h \
 	      enums/render/rendertype.h \
-	      particle/particle.cpp \
-	      particle/particle.h \
-	      particle/particlecontainer.cpp \
-	      particle/particlecontainer.h \
-	      particle/particleemitter.cpp \
-	      particle/particleemitter.h \
-	      particle/particleemitterprop.h \
-	      particle/particleinfo.h \
-	      particle/particlelist.cpp \
-	      particle/particlelist.h \
-	      particle/particlevector.cpp \
-	      particle/particlevector.h \
-	      party.cpp \
-	      party.h \
 	      being/playerignorestrategy.h \
-	      being/playerinfo.cpp \
-	      being/playerinfo.h \
-	      being/playerrelation.cpp \
-	      being/playerrelation.h \
-	      being/playerrelations.cpp \
-	      being/playerrelations.h \
 	      enums/being/rank.h \
 	      enums/being/reachable.h \
 	      enums/being/relation.h \
 	      enums/being/targetcursorsize.h \
 	      enums/being/targetcursortype.h \
-	      listeners/playerrelationslistener.h \
-	      listeners/renamelistener.cpp \
-	      listeners/renamelistener.h \
-	      listeners/requesttradelistener.h \
 	      position.cpp \
 	      position.h \
-	      resources/map/properties.h \
-	      resources/map/speciallayer.cpp \
-	      resources/map/speciallayer.h \
-	      resources/map/tileanimation.cpp \
-	      resources/map/tileanimation.h \
-	      particle/rotationalparticle.cpp \
-	      particle/rotationalparticle.h \
 	      render/safeopenglgraphics.cpp\
 	      render/safeopenglgraphics.h \
 	      render/sdl2graphics.cpp \
@@ -1254,16 +541,6 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      sdlshared.h \
 	      settings.cpp \
 	      settings.h \
-	      shopitem.cpp \
-	      shopitem.h \
-	      shortcutbase.cpp \
-	      shortcutbase.h \
-	      simpleanimation.cpp \
-	      simpleanimation.h \
-	      soundconsts.h \
-	      soundmanager.cpp \
-	      soundmanager.h \
-	      sprite.h \
 	      enums/screendensity.h \
 	      enums/state.h \
 	      enums/simpletypes/allowsort.h \
@@ -1297,8 +574,6 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      enums/simpletypes/useargs.h \
 	      enums/simpletypes/useresman.h \
 	      enums/simpletypes/visible.h \
-	      statuseffect.cpp \
-	      statuseffect.h \
 	      render/surfacegraphics.cpp \
 	      render/surfacegraphics.h \
 	      render/shaders/shader.cpp \
@@ -1307,29 +582,590 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      render/shaders/shaderprogram.h \
 	      render/shaders/shadersmanager.cpp \
 	      render/shaders/shadersmanager.h \
+	      resources/animation.cpp \
+	      resources/animation.h \
+	      simpleanimation.cpp \
+	      simpleanimation.h \
+	      sprite.h \
+	      soundconsts.h \
+	      soundmanager.cpp \
+	      soundmanager.h \
 	      text.cpp \
 	      text.h \
 	      textmanager.cpp \
 	      textmanager.h \
-	      particle/textparticle.cpp \
-	      particle/textparticle.h \
-	      resources/map/tileset.h \
 	      touchactions.cpp \
 	      touchactions.h \
 	      touchmanager.cpp \
 	      touchmanager.h \
-	      units.cpp \
-	      units.h \
 	      variabledata.h \
 	      vector.cpp \
 	      vector.h \
-	      resources/map/walklayer.cpp \
-	      resources/map/walklayer.h \
-	      winver.h \
+	      net/ipc.cpp \
+	      net/ipc.h \
+	      net/sdltcpnet.cpp \
+	      net/sdltcpnet.h \
+	      gui/popups/textboxpopup.cpp \
+	      gui/popups/textboxpopup.h \
+	      gui/popups/textpopup.cpp \
+	      gui/popups/textpopup.h \
+	      gui/popupmanager.cpp \
+	      gui/popupmanager.h \
+	      enums/input/inputaction.h \
+	      input/inputactionmap.h \
+	      winver.h
+
+dyecmd_SOURCES += ${SRC}
+manaplus_SOURCES += ${SRC}
+
+manaplus_SOURCES += main.cpp \
+	      main.h \
+	      avatar.cpp \
+	      avatar.h \
+	      actormanager.cpp \
+	      actormanager.h \
+	      animatedsprite.cpp \
+	      animatedsprite.h \
+	      animationdelayload.cpp \
+	      animationdelayload.h \
+	      actions/actions.cpp \
+	      actions/actions.h \
+	      actions/chat.cpp \
+	      actions/chat.h \
+	      actions/commands.cpp \
+	      actions/commands.h \
+	      actions/move.cpp \
+	      actions/move.h \
+	      actions/pets.cpp \
+	      actions/pets.h \
+	      actions/statusbar.cpp \
+	      actions/statusbar.h \
+	      actions/tabs.cpp \
+	      actions/tabs.h \
+	      actions/target.cpp \
+	      actions/target.h \
+	      actions/windows.cpp \
+	      actions/windows.h \
+	      client.cpp \
+	      client.h \
+	      imagesprite.cpp \
+	      imagesprite.h \
+	      inventory.cpp \
+	      inventory.h \
+	      textcommand.cpp \
+	      textcommand.h \
+	      item.cpp \
+	      item.h \
+	      itemshortcut.cpp \
+	      itemshortcut.h \
+	      itemsoundmanager.cpp \
+	      itemsoundmanager.h \
+	      enums/dragdropsource.h \
+	      enums/equipslot.h \
+	      enums/guildpositionflags.h \
+	      enums/inventorytype.h \
+	      spellshortcut.cpp \
+	      spellshortcut.h \
+	      statuseffect.cpp \
+	      statuseffect.h \
+	      units.cpp \
+	      units.h \
+	      particle/animationparticle.cpp \
+	      particle/animationparticle.h \
+	      being/being.cpp \
+	      being/being.h \
+	      enums/being/beingaction.h \
+	      being/beingcacheentry.h \
+	      enums/being/beingdirection.h \
+	      being/beingflag.h \
+	      being/beingspeech.h \
+	      being/localplayer.cpp \
+	      being/localplayer.h \
+	      being/mercenaryinfo.h \
+	      being/petinfo.h \
+	      being/compounditem.h \
+	      being/compoundsprite.cpp \
+	      being/compoundsprite.h \
+	      being/crazymoves.cpp \
+	      being/crazymoves.h \
+	      enums/being/cookingtype.h \
+	      enums/being/gender.h \
+	      being/homunculusinfo.h \
+	      enums/being/pickup.h \
+	      beingequipbackend.cpp \
+	      beingequipbackend.h \
+	      shopitem.cpp \
+	      shopitem.h \
+	      flooritem.cpp \
+	      flooritem.h \
+	      game.cpp \
+	      game.h \
+	      gamemodifiers.cpp \
+	      gamemodifiers.h \
+	      guild.cpp \
+	      guild.h \
+	      spellmanager.cpp \
+	      spellmanager.h \
+	      catch.hpp \
+	      chatlogger.cpp \
+	      chatlogger.h \
+	      shortcutbase.cpp \
+	      shortcutbase.h \
+	      being/playerinfo.cpp \
+	      being/playerinfo.h \
+	      being/playerrelation.cpp \
+	      being/playerrelation.h \
+	      being/playerrelations.cpp \
+	      being/playerrelations.h \
+	      gui/touchactiondata.cpp \
+	      gui/touchactiondata.h \
+	      gui/models/avatarlistmodel.h \
+	      gui/models/beingslistmodel.h \
+	      gui/models/opengllistmodel.h \
+	      gui/models/playerrelationlistmodel.h \
+	      gui/models/playertablemodel.cpp \
+	      gui/models/playertablemodel.h \
+	      gui/models/questsmodel.h \
+	      being/actor.cpp \
+	      being/actor.h \
+	      being/actorsprite.cpp \
+	      being/actorsprite.h \
+	      enums/being/actortype.h \
+	      enums/being/attacktype.h \
+	      enums/being/attributes.h \
+	      dragdrop.h \
+	      dropshortcut.cpp \
+	      dropshortcut.h \
+	      effectmanager.cpp \
+	      effectmanager.h \
+	      emoteshortcut.cpp \
+	      emoteshortcut.h \
+	      emoteshortcutconsts.h \
+	      equipment.h \
+	      listeners/actorspritelistener.h \
+	      listeners/arrowslistener.cpp \
+	      listeners/arrowslistener.h \
+	      listeners/awaylistener.cpp \
+	      listeners/awaylistener.h \
+	      listeners/charrenamelistener.cpp \
+	      listeners/charrenamelistener.h \
+	      gui/viewport.cpp \
+	      gui/viewport.h \
+	      gui/popups/itempopup.cpp \
+	      gui/popups/itempopup.h \
+	      gui/popups/spellpopup.cpp \
+	      gui/popups/spellpopup.h \
+	      gui/popups/statuspopup.cpp \
+	      gui/popups/statuspopup.h \
+	      gui/popups/popupmenu.cpp \
+	      gui/popups/popupmenu.h \
+	      gui/popups/skillpopup.cpp \
+	      gui/popups/skillpopup.h \
+	      gui/popups/speechbubble.cpp \
+	      gui/popups/speechbubble.h \
+	      gui/popups/beingpopup.cpp \
+	      gui/popups/beingpopup.h \
+	      gui/popups/createpartypopup.h \
+	      gui/widgets/itemcontainer.cpp \
+	      gui/widgets/itemcontainer.h \
+	      gui/widgets/tabs/chat/battletab.cpp \
+	      gui/widgets/tabs/chat/battletab.h \
+	      gui/widgets/tabs/chat/channeltab.cpp \
+	      gui/widgets/tabs/chat/channeltab.h \
+	      gui/widgets/tabs/chat/chattabtype.h \
+	      gui/widgets/tabs/debugwindowtabs.cpp \
+	      gui/widgets/tabs/debugwindowtabs.h \
+	      gui/widgets/tabs/chat/chattab.cpp \
+	      gui/widgets/tabs/chat/chattab.h \
+	      gui/widgets/tabs/chat/gmtab.cpp \
+	      gui/widgets/tabs/chat/gmtab.h \
+	      gui/widgets/tabs/chat/langtab.cpp \
+	      gui/widgets/tabs/chat/langtab.h \
+	      gui/widgets/tabs/chat/tradetab.cpp \
+	      gui/widgets/tabs/chat/tradetab.h \
+	      gui/widgets/tabs/chat/whispertab.cpp \
+	      gui/widgets/tabs/chat/whispertab.h \
 	      gui/widgets/tabs/chat/guildtab.cpp \
 	      gui/widgets/tabs/chat/guildtab.h \
 	      gui/widgets/tabs/chat/partytab.cpp \
 	      gui/widgets/tabs/chat/partytab.h \
+	      gui/widgets/avatarlistbox.cpp \
+	      gui/widgets/avatarlistbox.h \
+	      gui/widgets/characterdisplay.cpp \
+	      gui/widgets/characterdisplay.h \
+	      gui/widgets/characterviewbase.h \
+	      gui/widgets/characterviewnormal.cpp \
+	      gui/widgets/characterviewnormal.h \
+	      gui/widgets/characterviewsmall.cpp \
+	      gui/widgets/characterviewsmall.h \
+	      gui/widgets/itemlinkhandler.cpp \
+	      gui/widgets/itemlinkhandler.h \
+	      gui/widgets/emoteshortcutcontainer.cpp \
+	      gui/widgets/emoteshortcutcontainer.h \
+	      gui/widgets/virtshortcutcontainer.cpp \
+	      gui/widgets/virtshortcutcontainer.h \
+	      gui/widgets/emotepage.cpp \
+	      gui/widgets/emotepage.h \
+	      gui/widgets/itemshortcutcontainer.cpp \
+	      gui/widgets/itemshortcutcontainer.h \
+	      gui/widgets/spellshortcutcontainer.cpp \
+	      gui/widgets/spellshortcutcontainer.h \
+	      gui/widgets/statuswindowattrs.h \
+	      gui/widgets/selldialog.cpp \
+	      gui/widgets/selldialog.h \
+	      gui/widgets/tabs/setup_audio.cpp \
+	      gui/widgets/tabs/setup_audio.h \
+	      gui/widgets/tabs/setup_colors.cpp \
+	      gui/widgets/tabs/setup_colors.h \
+	      gui/widgets/tabs/setup_joystick.cpp \
+	      gui/widgets/tabs/setup_joystick.h \
+	      gui/widgets/tabs/setup_mods.cpp \
+	      gui/widgets/tabs/setup_mods.h \
+	      gui/widgets/tabs/setup_other.cpp \
+	      gui/widgets/tabs/setup_other.h \
+	      gui/widgets/tabs/setup_theme.cpp \
+	      gui/widgets/tabs/setup_theme.h \
+	      gui/widgets/tabs/setup_touch.cpp \
+	      gui/widgets/tabs/setup_touch.h \
+	      gui/widgets/tabs/setup_chat.cpp \
+	      gui/widgets/tabs/setup_chat.h \
+	      gui/widgets/tabs/setup_input.cpp \
+	      gui/widgets/tabs/setup_input.h \
+	      gui/widgets/tabs/setup_perfomance.cpp \
+	      gui/widgets/tabs/setup_perfomance.h \
+	      gui/widgets/tabs/setup_players.cpp \
+	      gui/widgets/tabs/setup_players.h \
+	      gui/widgets/tabs/setup_quick.cpp \
+	      gui/widgets/tabs/setup_quick.h \
+	      gui/widgets/tabs/setup_relations.cpp \
+	      gui/widgets/tabs/setup_relations.h \
+	      gui/widgets/tabs/setup_video.cpp \
+	      gui/widgets/tabs/setup_video.h \
+	      gui/widgets/tabs/setup_visual.cpp \
+	      gui/widgets/tabs/setup_visual.h \
+	      gui/widgets/serverslistbox.h \
+	      gui/widgets/setupbuttonitem.cpp \
+	      gui/widgets/setupbuttonitem.h \
+	      gui/widgets/setupitem.cpp \
+	      gui/widgets/setupitem.h \
+	      gui/widgets/setupquickitem.cpp \
+	      gui/widgets/setupquickitem.h \
+	      gui/widgets/tabs/setuptab.cpp \
+	      gui/widgets/tabs/setuptab.h \
+	      gui/widgets/tabs/setuptabscroll.cpp \
+	      gui/widgets/tabs/setuptabscroll.h \
+	      gui/widgets/setuptouchitem.cpp \
+	      gui/widgets/setuptouchitem.h \
+	      gui/widgets/playerbox.cpp \
+	      gui/widgets/playerbox.h \
+	      gui/models/shopitems.cpp \
+	      gui/models/shopitems.h \
+	      gui/widgets/shoplistbox.cpp \
+	      gui/widgets/shoplistbox.h \
+	      gui/widgets/shortcutcontainer.cpp \
+	      gui/widgets/shortcutcontainer.h \
+	      gui/widgets/skilldata.cpp \
+	      gui/widgets/skilldata.h \
+	      gui/widgets/skillinfo.cpp \
+	      gui/widgets/skillinfo.h \
+	      gui/widgets/skilllistbox.h \
+	      gui/widgets/tabs/shortcuttab.h \
+	      gui/widgets/tabs/skilltab.h \
+	      gui/widgets/tabs/socialattacktab.h \
+	      gui/widgets/tabs/socialfriendsfunctor.h \
+	      gui/widgets/tabs/socialfriendstab.h \
+	      gui/widgets/tabs/socialguildtab.h \
+	      gui/widgets/tabs/socialguildtab2.h \
+	      gui/widgets/tabs/socialnavigationtab.h \
+	      gui/widgets/tabs/socialpartytab.h \
+	      gui/widgets/tabs/socialpickuptab.h \
+	      gui/widgets/tabs/socialplayerstab.h \
+	      gui/widgets/tabs/socialtab.h \
+	      gui/widgets/tabs/socialtabbase.h \
+	      gui/models/skillmodel.cpp \
+	      gui/models/skillmodel.h \
+	      gui/models/sortlistmodelbuy.h \
+	      gui/models/sortlistmodelinv.h \
+	      gui/models/touchactionmodel.cpp \
+	      gui/models/touchactionmodel.h \
+	      gui/models/updatetypemodel.h \
+	      gui/models/updatelistmodel.h \
+	      gui/models/worldlistmodel.h \
+	      gui/windowmenu.cpp \
+	      gui/windowmenu.h \
+	      gui/windows/tradewindow.cpp \
+	      gui/windows/tradewindow.h \
+	      gui/windows/unregisterdialog.cpp \
+	      gui/windows/unregisterdialog.h \
+	      gui/windows/updaterwindow.cpp \
+	      gui/windows/updaterwindow.h \
+	      gui/windows/whoisonline.cpp \
+	      gui/windows/whoisonline.h \
+	      gui/windows/worldselectdialog.cpp \
+	      gui/windows/worldselectdialog.h \
+	      gui/windows/shopwindow.cpp \
+	      gui/windows/shopwindow.h \
+	      gui/windows/shortcutwindow.cpp \
+	      gui/windows/shortcutwindow.h \
+	      gui/windows/skilldialog.cpp \
+	      gui/windows/skilldialog.h \
+	      gui/windows/socialwindow.cpp \
+	      gui/windows/socialwindow.h \
+	      gui/windows/statuswindow.cpp \
+	      gui/windows/statuswindow.h \
+	      gui/windows/textdialog.cpp \
+	      gui/windows/textdialog.h \
+	      gui/windows/setupwindow.cpp \
+	      gui/windows/setupwindow.h \
+	      gui/windows/serverdialog.cpp \
+	      gui/windows/serverdialog.h \
+	      gui/windows/quitdialog.cpp \
+	      gui/windows/quitdialog.h \
+	      gui/windows/questswindow.cpp \
+	      gui/windows/questswindow.h \
+	      gui/windows/registerdialog.cpp \
+	      gui/windows/registerdialog.h \
+	      gui/windows/buydialog.cpp \
+	      gui/windows/buydialog.h \
+	      gui/windows/buyselldialog.cpp \
+	      gui/windows/buyselldialog.h \
+	      gui/windows/changeemaildialog.cpp \
+	      gui/windows/changeemaildialog.h \
+	      gui/windows/changepassworddialog.cpp \
+	      gui/windows/changepassworddialog.h \
+	      gui/windows/charselectdialog.cpp \
+	      gui/windows/charselectdialog.h \
+	      gui/windows/charcreatedialog.cpp \
+	      gui/windows/charcreatedialog.h \
+	      gui/windows/chardeleteconfirm.h \
+	      gui/windows/chatwindow.cpp \
+	      gui/windows/chatwindow.h \
+	      gui/windows/connectiondialog.cpp \
+	      gui/windows/connectiondialog.h \
+	      gui/windows/debugwindow.cpp \
+	      gui/windows/debugwindow.h \
+	      gui/windows/didyouknowwindow.cpp \
+	      gui/windows/didyouknowwindow.h \
+	      gui/windows/editserverdialog.cpp \
+	      gui/windows/editserverdialog.h \
+	      gui/windows/emotewindow.cpp \
+	      gui/windows/emotewindow.h \
+	      gui/windows/equipmentwindow.cpp \
+	      gui/windows/equipmentwindow.h \
+	      gui/windows/helpwindow.cpp \
+	      gui/windows/helpwindow.h \
+	      gui/windows/inventorywindow.cpp \
+	      gui/windows/inventorywindow.h \
+	      gui/windows/itemamountwindow.cpp \
+	      gui/windows/itemamountwindow.h \
+	      gui/windows/killstats.cpp \
+	      gui/windows/killstats.h \
+	      gui/windows/logindialog.cpp \
+	      gui/windows/logindialog.h \
+	      gui/windows/minimap.cpp \
+	      gui/windows/minimap.h \
+	      gui/windows/ministatuswindow.cpp \
+	      gui/windows/ministatuswindow.h \
+	      gui/windows/npcdialog.cpp \
+	      gui/windows/npcdialog.h \
+	      gui/windows/npcselldialog.cpp \
+	      gui/windows/npcselldialog.h \
+	      gui/windows/outfitwindow.cpp \
+	      gui/windows/outfitwindow.h \
+	      gui/windows/textcommandeditor.cpp \
+	      gui/windows/textcommandeditor.h \
+	      gui/setupinputpages.cpp \
+	      gui/setupinputpages.h \
+	      input/pages/basic.cpp \
+	      input/pages/basic.h \
+	      input/pages/chat.cpp \
+	      input/pages/chat.h \
+	      input/pages/emotes.cpp \
+	      input/pages/emotes.h \
+	      input/pages/gui.cpp \
+	      input/pages/gui.h \
+	      input/pages/move.cpp \
+	      input/pages/move.h \
+	      input/pages/other.cpp \
+	      input/pages/other.h \
+	      input/pages/outfits.cpp \
+	      input/pages/outfits.h \
+	      input/pages/shortcuts.cpp \
+	      input/pages/shortcuts.h \
+	      input/pages/windows.cpp \
+	      input/pages/windows.h \
+	      listeners/playerpostdeathlistener.h \
+	      listeners/inputactionreplaylistener.cpp \
+	      listeners/inputactionreplaylistener.h \
+	      listeners/inventorylistener.h \
+	      listeners/updatestatuslistener.cpp \
+	      listeners/updatestatuslistener.h \
+	      listeners/uploadlistener.cpp \
+	      listeners/uploadlistener.h \
+	      listeners/playerlistener.cpp \
+	      listeners/playerlistener.h \
+	      listeners/playerrelationslistener.h \
+	      listeners/renamelistener.cpp \
+	      listeners/renamelistener.h \
+	      listeners/requesttradelistener.h \
+	      particle/rotationalparticle.cpp \
+	      particle/rotationalparticle.h \
+	      navigationmanager.cpp \
+	      navigationmanager.h \
+	      notifymanager.cpp \
+	      notifymanager.h \
+	      particle/imageparticle.cpp \
+	      particle/imageparticle.h \
+	      particle/particle.cpp \
+	      particle/particle.h \
+	      particle/particlecontainer.cpp \
+	      particle/particlecontainer.h \
+	      particle/particleemitter.cpp \
+	      particle/particleemitter.h \
+	      particle/particleemitterprop.h \
+	      particle/particleinfo.h \
+	      particle/particlelist.cpp \
+	      particle/particlelist.h \
+	      particle/particlevector.cpp \
+	      particle/particlevector.h \
+	      party.cpp \
+	      party.h \
+	      utils/chatutils.cpp \
+	      utils/chatutils.h \
+	      resources/db/avatardb.cpp \
+	      resources/db/avatardb.h \
+	      resources/db/badgesdb.cpp \
+	      resources/db/badgesdb.h \
+	      resources/db/chardb.cpp \
+	      resources/db/chardb.h \
+	      resources/db/colordb.cpp \
+	      resources/db/colordb.h \
+	      resources/db/commandsdb.cpp \
+	      resources/db/commandsdb.h \
+	      resources/db/deaddb.cpp \
+	      resources/db/deaddb.h \
+	      resources/db/emotedb.cpp \
+	      resources/db/emotedb.h \
+	      resources/db/homunculusdb.cpp \
+	      resources/db/homunculusdb.h \
+	      resources/db/horsedb.cpp \
+	      resources/db/horsedb.h \
+	      resources/db/itemdb.cpp \
+	      resources/db/itemdb.h \
+	      resources/db/itemdbstat.h \
+	      resources/db/mapdb.cpp \
+	      resources/db/mapdb.h \
+	      resources/db/mercenarydb.cpp \
+	      resources/db/mercenarydb.h \
+	      resources/db/moddb.cpp \
+	      resources/db/moddb.h \
+	      resources/db/monsterdb.cpp \
+	      resources/db/monsterdb.h \
+	      resources/db/npcdb.cpp \
+	      resources/db/npcdb.h \
+	      resources/db/palettedb.cpp \
+	      resources/db/palettedb.h \
+	      resources/db/petdb.cpp \
+	      resources/db/petdb.h \
+	      resources/db/sounddb.cpp \
+	      resources/db/sounddb.h \
+	      resources/db/weaponsdb.cpp \
+	      resources/db/weaponsdb.h \
+	      resources/iteminfo.h \
+	      resources/iteminfo.cpp \
+	      resources/itemslot.h \
+	      enums/resources/itemsoundevent.h \
+	      resources/itemtype.h \
+	      resources/itemtypemap.h \
+	      resources/itemtypemapdata.h \
+	      resources/mapinfo.h \
+	      enums/resources/map/mapitemtype.h \
+	      resources/mapreader.cpp \
+	      resources/mapreader.h \
+	      resources/modinfo.cpp \
+	      resources/modinfo.h \
+	      resources/beingcommon.cpp \
+	      resources/beingcommon.h \
+	      resources/beinginfo.cpp \
+	      resources/beinginfo.h \
+	      resources/beingmenuitem.h \
+	      resources/chatobject.cpp \
+	      resources/chatobject.h \
+	      resources/delayedmanager.cpp \
+	      resources/delayedmanager.h \
+	      resources/horseinfo.h \
+	      enums/resources/map/blockmask.h \
+	      enums/resources/map/blocktype.h \
+	      resources/map/location.h \
+	      resources/map/map.cpp \
+	      resources/map/map.h \
+	      resources/map/mapconsts.h \
+	      resources/map/mapheights.cpp \
+	      resources/map/mapheights.h \
+	      resources/map/mapitem.cpp \
+	      resources/map/mapitem.h \
+	      resources/map/maplayer.cpp \
+	      resources/map/maplayer.h \
+	      resources/map/mapobject.h \
+	      resources/map/mapobjectlist.h \
+	      resources/map/maprowvertexes.h \
+	      enums/resources/map/maptype.h \
+	      resources/map/metatile.h \
+	      resources/map/objectslayer.cpp \
+	      resources/map/objectslayer.h \
+	      particle/textparticle.cpp \
+	      particle/textparticle.h \
+	      resources/map/properties.h \
+	      resources/map/speciallayer.cpp \
+	      resources/map/speciallayer.h \
+	      resources/map/tileanimation.cpp \
+	      resources/map/tileanimation.h \
+	      resources/map/tileset.h \
+	      resources/map/walklayer.cpp \
+	      resources/map/walklayer.h \
+	      net/adminhandler.h \
+	      net/beinghandler.h \
+	      net/buysellhandler.h \
+	      net/character.h \
+	      net/charserverhandler.cpp \
+	      net/charserverhandler.h \
+	      net/chathandler.h \
+	      net/download.cpp \
+	      net/download.h \
+	      net/gamehandler.h \
+	      net/generalhandler.h \
+	      net/guildhandler.h \
+	      net/inventoryhandler.h \
+	      net/ea/inventoryitem.h \
+	      net/logindata.h \
+	      net/loginhandler.h \
+	      net/messagehandler.h \
+	      net/messagein.cpp \
+	      net/messagein.h \
+	      net/messageout.cpp \
+	      net/messageout.h \
+	      net/net.cpp \
+	      net/net.h \
+	      net/netconsts.h \
+	      net/npchandler.h \
+	      net/partyhandler.h \
+	      net/pethandler.h \
+	      net/playerhandler.h \
+	      net/questhandler.h \
+	      net/registrationoptions.h \
+	      net/serverfeatures.h \
+	      net/serverinfo.h \
+	      net/skillhandler.h \
+	      net/tradehandler.h \
+	      net/updatetypeoperators.cpp \
+	      net/updatetypeoperators.h \
+	      net/uploadcharinfo.h \
+	      net/worldinfo.h \
+	      net/packetcounters.cpp \
+	      net/packetcounters.h \
+	      net/packetdefine.h \
+	      net/packetlimiter.cpp \
+	      net/packetlimiter.h \
 	      net/ea/adminhandler.cpp \
 	      net/ea/adminhandler.h \
 	      net/ea/beinghandler.cpp \
@@ -1599,6 +1435,29 @@ endif
 manaplus_SOURCES += \
 	      mumblemanager.cpp \
 	      mumblemanager.h
+
+dyecmd_SOURCES += dyetool/gui/viewport.cpp \
+	      dyetool/gui/viewport.h \
+	      dyetool/client.cpp \
+	      dyetool/client.h \
+	      dyetool/actions/actions.cpp \
+	      dyetool/actions/actions.h \
+	      dyetool/actions/chat.cpp \
+	      dyetool/actions/chat.h \
+	      dyetool/actions/commands.cpp \
+	      dyetool/actions/commands.h \
+	      dyetool/actions/move.cpp \
+	      dyetool/actions/move.h \
+	      dyetool/actions/pets.cpp \
+	      dyetool/actions/pets.h \
+	      dyetool/actions/statusbar.cpp \
+	      dyetool/actions/statusbar.h \
+	      dyetool/actions/tabs.cpp \
+	      dyetool/actions/tabs.h \
+	      dyetool/actions/target.cpp \
+	      dyetool/actions/target.h \
+	      dyetool/actions/windows.cpp \
+	      dyetool/actions/windows.h
 
 if ENABLE_UNITTESTS
 TESTS = manaplustests

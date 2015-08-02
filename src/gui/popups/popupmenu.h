@@ -23,6 +23,8 @@
 #ifndef GUI_POPUPS_POPUPMENU_H
 #define GUI_POPUPS_POPUPMENU_H
 
+#ifndef DYECMD
+
 #include "enums/inventorytype.h"
 
 #include "enums/simpletypes/beingid.h"
@@ -229,4 +231,5 @@ class PopupMenu final : public Popup, public LinkHandler
 
 extern PopupMenu *popupMenu;
 
+#endif  // DYE_CMD
 #endif  // GUI_POPUPS_POPUPMENU_H

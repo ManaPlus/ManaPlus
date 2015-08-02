@@ -32,16 +32,19 @@
 #include "gui/gui.h"
 #include "gui/userpalette.h"
 
+#include "gui/popups/textpopup.h"
+
+#ifndef DYECMD
 #include "gui/popups/beingpopup.h"
 #include "gui/popups/itempopup.h"
 #include "gui/popups/popupmenu.h"
 #include "gui/popups/spellpopup.h"
 #include "gui/popups/textboxpopup.h"
-#include "gui/popups/textpopup.h"
 
 #include "gui/windows/didyouknowwindow.h"
 #include "gui/windows/helpwindow.h"
 #include "gui/windows/setupwindow.h"
+#endif
 
 #include "gui/widgets/createwidget.h"
 #include "gui/widgets/desktop.h"
@@ -95,21 +98,23 @@ void WindowManager::init()
 void WindowManager::createWindows()
 {
     userPalette = new UserPalette;
+#ifndef DYECMD
     CREATEWIDGETV0(setupWindow, SetupWindow);
     CREATEWIDGETV0(helpWindow, HelpWindow);
     CREATEWIDGETV0(didYouKnowWindow, DidYouKnowWindow);
     CREATEWIDGETV0(popupMenu, PopupMenu);
     CREATEWIDGETV0(beingPopup, BeingPopup);
-    CREATEWIDGETV0(textPopup, TextPopup);
     CREATEWIDGETV0(textBoxPopup, TextBoxPopup);
     CREATEWIDGETV0(itemPopup, ItemPopup);
     CREATEWIDGETV0(spellPopup, SpellPopup);
+#endif
+    CREATEWIDGETV0(textPopup, TextPopup);
 }
 
 void WindowManager::deleteWindows()
 {
+#ifndef DYECMD
     delete2(textBoxPopup);
-    delete2(textPopup);
     delete2(beingPopup);
     delete2(itemPopup);
     delete2(spellPopup);
@@ -120,6 +125,8 @@ void WindowManager::deleteWindows()
     delete2(userPalette);
     delete2(spellManager)
     delete2(spellShortcut)
+#endif
+    delete2(textPopup);
 }
 
 void WindowManager::initTitle()
@@ -196,9 +203,11 @@ void WindowManager::resizeVideo(int actualWidth,
 
         client->moveButtons(width);
 
+#ifndef DYECMD
         Game *const game = Game::instance();
         if (game)
             game->videoResized(width, height);
+#endif
 
         if (gui)
             gui->draw();

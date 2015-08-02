@@ -73,7 +73,11 @@
 
 #include "gui/widgets/window.h"
 
+#ifndef DYECMD
 #include "dragdrop.h"
+#else
+#include "resources/image.h"
+#endif
 #include "settings.h"
 #include "touchmanager.h"
 
@@ -477,6 +481,7 @@ void Gui::draw()
     if ((settings.mouseFocused || button & SDL_BUTTON(1))
         && mMouseCursors && mCustomCursor && mMouseCursorAlpha > 0.0F)
     {
+#ifndef DYECMD
         const Image *const image = dragDrop.getItemImage();
         if (mGuiFont)
         {
@@ -497,6 +502,7 @@ void Gui::draw()
             const int posY = mouseY - (image->mBounds.h / 2);
             mGraphics->drawImage(image, posX, posY);
         }
+#endif
         Image *const mouseCursor = mMouseCursors->get(
             static_cast<int>(mCursorType));
         if (mouseCursor)
@@ -906,9 +912,10 @@ void Gui::distributeMouseEvent(Widget *const source,
         widget = parent;
         parent = swap->getParent();
 
+#ifndef DYECMD
         if (type == MouseEventType::RELEASED)
             dragDrop.clear();
-
+#endif
         if (!widget || event.isConsumed())
             break;
 

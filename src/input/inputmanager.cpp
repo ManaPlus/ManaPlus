@@ -323,7 +323,9 @@ bool InputManager::hasConflicts(InputActionT &restrict key1,
 
 void InputManager::callbackNewKey()
 {
+#ifndef DYECMD
     mSetupInput->newKeyCallback(mNewKeyIndex);
+#endif
 }
 
 bool InputManager::isActionActive(const InputActionT index) const
@@ -521,7 +523,9 @@ void InputManager::unassignKey()
     update();
 }
 
-bool InputManager::handleAssignKey(const SDL_Event &event, const int type)
+#ifndef DYECMD
+bool InputManager::handleAssignKey(const SDL_Event &event,
+                                   const int type)
 {
     if (setupWindow && setupWindow->isWindowVisible() &&
         getNewKeyIndex() > InputAction::NO_VALUE)
@@ -533,6 +537,13 @@ bool InputManager::handleAssignKey(const SDL_Event &event, const int type)
     }
     return false;
 }
+#else
+bool InputManager::handleAssignKey(const SDL_Event &event A_UNUSED,
+                                   const int type A_UNUSED)
+{
+    return false;
+}
+#endif
 
 bool InputManager::handleEvent(const SDL_Event &event)
 {
@@ -551,6 +562,7 @@ bool InputManager::handleEvent(const SDL_Event &event)
 
             keyboard.handleActicateKey(event);
             // send straight to gui for certain windows
+#ifndef DYECMD
             if (quitDialog || TextDialog::isActive())
             {
                 if (guiInput)
@@ -560,6 +572,7 @@ bool InputManager::handleEvent(const SDL_Event &event)
                 BLOCK_END("InputManager::handleEvent")
                 return true;
             }
+#endif
             break;
         }
         case SDL_KEYUP:
@@ -666,6 +679,7 @@ void InputManager::updateConditionMask()
     mMask = 1;
     if (keyboard.isEnabled())
         mMask |= InputCondition::ENABLED;
+#ifndef DYECMD
     if ((!chatWindow || !chatWindow->isInputFocused()) &&
         !NpcDialog::isAnyInputFocused() &&
         !InventoryWindow::isAnyInputFocused() &&
@@ -700,18 +714,6 @@ void InputManager::updateConditionMask()
 #endif
         mMask |= InputCondition::NOROOM;
 
-    if (!settings.awayMode)
-        mMask |= InputCondition::NOAWAY;
-
-    if (!setupWindow || !setupWindow->isWindowVisible())
-        mMask |= InputCondition::NOSETUP;
-
-    if (Game::instance() && Game::instance()->getValidSpeed())
-        mMask |= InputCondition::VALIDSPEED;
-
-    if (gui && !gui->getFocusHandler()->getModalFocused())
-        mMask |= InputCondition::NOMODAL;
-
     const NpcDialog *const dialog = NpcDialog::getActive();
     if (!dialog || !dialog->isTextInputFocused())
         mMask |= InputCondition::NONPCINPUT;
@@ -721,6 +723,27 @@ void InputManager::updateConditionMask()
         if (!InventoryWindow::isStorageActive())
             mMask |= InputCondition::NOTALKING;
     }
+    if (!setupWindow || !setupWindow->isWindowVisible())
+        mMask |= InputCondition::NOSETUP;
+
+    if (Game::instance() && Game::instance()->getValidSpeed())
+        mMask |= InputCondition::VALIDSPEED;
+
+    if (Game::instance())
+        mMask |= InputCondition::INGAME;
+
+    if (!localPlayer || localPlayer->getFollow().empty())
+        mMask |= InputCondition::NOFOLLOW;
+
+    if (localPlayer && localPlayer->isAlive())
+        mMask |= InputCondition::ALIVE;
+#endif
+
+    if (!settings.awayMode)
+        mMask |= InputCondition::NOAWAY;
+
+    if (gui && !gui->getFocusHandler()->getModalFocused())
+        mMask |= InputCondition::NOMODAL;
 
     if (!settings.disableGameModifiers)
         mMask |= InputCondition::EMODS;
@@ -730,14 +753,6 @@ void InputManager::updateConditionMask()
     {
         mMask |= InputCondition::NOTARGET;
     }
-    if (Game::instance())
-        mMask |= InputCondition::INGAME;
-
-    if (!localPlayer || localPlayer->getFollow().empty())
-        mMask |= InputCondition::NOFOLLOW;
-
-    if (localPlayer && localPlayer->isAlive())
-        mMask |= InputCondition::ALIVE;
 }
 
 bool InputManager::checkKey(const InputActionData *const key) const

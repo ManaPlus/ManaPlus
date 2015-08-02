@@ -42,14 +42,18 @@ PopupManager::~PopupManager()
 
 void PopupManager::closePopupMenu()
 {
+#ifndef DYECMD
     if (popupMenu)
         popupMenu->handleLink("cancel", nullptr);
+#endif
 }
 
 void PopupManager::hideBeingPopup()
 {
+#ifndef DYECMD
     if (beingPopup)
         beingPopup->setVisible(Visible_false);
+#endif
 }
 
 void PopupManager::hideTextPopup()
@@ -60,19 +64,27 @@ void PopupManager::hideTextPopup()
 
 void PopupManager::hidePopupMenu()
 {
+#ifndef DYECMD
     if (popupMenu)
         popupMenu->setVisible(Visible_false);
+#endif
 }
 
 bool PopupManager::isPopupMenuVisible()
 {
+#ifndef DYECMD
     return popupMenu ? popupMenu->isPopupVisible() : false;
+#else
+    return false;
+#endif
 }
 
 void PopupManager::clearPopup()
 {
+#ifndef DYECMD
     if (popupMenu)
         popupMenu->clear();
+#endif
 }
 
 bool PopupManager::isTextPopupVisible()
@@ -82,5 +94,9 @@ bool PopupManager::isTextPopupVisible()
 
 bool PopupManager::isBeingPopupVisible()
 {
+#ifndef DYECMD
     return beingPopup ? beingPopup->isPopupVisible() : false;
+#else
+    return false;
+#endif
 }

@@ -20,18 +20,12 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef CLIENT_H
-#define CLIENT_H
-
-#ifdef DYECMD
-#include "dyetool/client.h"
-
-#else
+#ifndef DYETOOL_CLIENT_H
+#define DYETOOL_CLIENT_H
 
 #include "enums/state.h"
 
 #include "listeners/actionlistener.h"
-#include "listeners/configlistener.h"
 
 #include "net/serverinfo.h"
 
@@ -45,11 +39,8 @@
 
 class Button;
 class Desktop;
-class Game;
-class LoginData;
 class Skin;
 class Window;
-class QuitDialog;
 
 extern bool isSafeMode;
 extern int serverVersion;
@@ -58,14 +49,12 @@ extern int start_time;
 extern int textures_count;
 
 extern std::string errorMessage;
-extern LoginData loginData;
 
 /**
  * The core part of the client. This class initializes all subsystems, runs
  * the event loop, and shuts everything down again.
  */
-class Client final : public ConfigListener,
-                     public ActionListener
+class Client final : public ActionListener
 {
     public:
         Client();
@@ -88,13 +77,7 @@ class Client final : public ConfigListener,
         State getState() const A_WARN_UNUSED
         { return mState; }
 
-        static bool isTmw() A_WARN_UNUSED;
-
-        void optionChanged(const std::string &name) override final;
-
         void action(const ActionEvent &event) override final;
-
-        static void initTradeFilter();
 
         void moveButtons(const int width);
 
@@ -103,13 +86,11 @@ class Client final : public ConfigListener,
         void slowLogic();
 
     private:
+        void stateGame();
+
         void initSoundManager();
 
-        void initConfigListeners();
-
         static void initGraphics();
-
-        static void initFeatures();
 
         void gameClear();
 
@@ -117,21 +98,7 @@ class Client final : public ConfigListener,
 
         static void logVars();
 
-        void stateConnectGame1();
-
-        void stateConnectServer1();
-
-        void stateWorldSelect1();
-
-        void stateGame1();
-
-        void stateSwitchLogin1();
-
-        ServerInfo mCurrentServer;
-
-        Game *mGame;
         Window *mCurrentDialog;
-        QuitDialog *mQuitDialog;
         Button *mSetupButton;
         Button *mVideoButton;
         Button *mHelpButton;
@@ -156,5 +123,4 @@ extern Client *client;
 extern unsigned int mLastHost;
 extern unsigned long mSearchHash;
 
-#endif  // DYECMD
-#endif  // CLIENT_H
+#endif  // DYETOOL_CLIENT_H

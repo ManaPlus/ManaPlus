@@ -25,7 +25,9 @@
 #include "configuration.h"
 #include "logger.h"
 
+#ifndef DYECMD
 #include "being/localplayer.h"
+#endif
 
 #include "resources/sdlmusic.h"
 #include "resources/resourcemanager.h"
@@ -361,6 +363,7 @@ void SoundManager::logic()
 void SoundManager::playSfx(const std::string &path,
                            const int x, const int y) const
 {
+#ifndef DYECMD
     if (!mInstalled || path.empty() || !mPlayBattle)
         return;
 
@@ -393,6 +396,7 @@ void SoundManager::playSfx(const std::string &path,
         if (!mCacheSounds)
             sample->decRef();
     }
+#endif
 }
 
 void SoundManager::playGuiSound(const std::string &name)
