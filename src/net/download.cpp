@@ -368,7 +368,8 @@ int Download::downloadThread(void *ptr)
                             logger->log_r("curl error %d: %s host: %s",
                                 res, d->mError, d->mUrl.c_str());
                         }
-                        break;
+                        attempts++;
+                        continue;
                     }
 
                     if (d->mOptions.cancel)
