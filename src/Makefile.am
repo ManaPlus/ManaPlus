@@ -1441,23 +1441,14 @@ dyecmd_SOURCES += dyetool/gui/viewport.cpp \
 	      dyetool/client.cpp \
 	      dyetool/client.h \
 	      dyetool/actions/actions.cpp \
-	      dyetool/actions/actions.h \
 	      dyetool/actions/chat.cpp \
-	      dyetool/actions/chat.h \
 	      dyetool/actions/commands.cpp \
-	      dyetool/actions/commands.h \
 	      dyetool/actions/move.cpp \
-	      dyetool/actions/move.h \
 	      dyetool/actions/pets.cpp \
-	      dyetool/actions/pets.h \
 	      dyetool/actions/statusbar.cpp \
-	      dyetool/actions/statusbar.h \
 	      dyetool/actions/tabs.cpp \
-	      dyetool/actions/tabs.h \
 	      dyetool/actions/target.cpp \
-	      dyetool/actions/target.h \
-	      dyetool/actions/windows.cpp \
-	      dyetool/actions/windows.h
+	      dyetool/actions/windows.cpp
 
 if ENABLE_UNITTESTS
 TESTS = manaplustests
