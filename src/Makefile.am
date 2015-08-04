@@ -421,6 +421,7 @@ SRC += events/actionevent.h \
 	      utils/sdlhelper.h \
 	      utils/specialfolder.cpp \
 	      utils/specialfolder.h \
+	      utils/stringmap.h \
 	      utils/stringutils.cpp \
 	      utils/stringutils.h \
 	      utils/stringvector.h \
