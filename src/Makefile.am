@@ -38,6 +38,7 @@ dyecmd_SOURCES = debug/debug_new.cpp \
 	      debug/static_assert.h
 else
 manaplus_SOURCES =
+dyecmd_SOURCES =
 endif
 
 if ENABLE_CILKPLUS
@@ -46,7 +47,7 @@ manaplus_CXXFLAGS += -DENABLE_CILKPLUS -fcilkplus -lcilkrts
 endif
 
 dyecmd_CXXFLAGS += -DDYECMD
-dyecmd_SOURCES = dyetool/dyemain.cpp
+dyecmd_SOURCES += dyetool/dyemain.cpp
 
 if USE_MUMBLE
 manaplus_CXXFLAGS += -DUSE_MUMBLE
@@ -332,6 +333,7 @@ SRC += events/actionevent.h \
 	      resources/notifications.h \
 	      enums/resources/notifyflags.h \
 	      enums/resources/notifytypes.h \
+	      resources/imagerect.h \
 	      resources/openglimagehelper.cpp \
 	      resources/openglimagehelper.h \
 	      resources/questeffect.h \
@@ -1094,7 +1096,15 @@ manaplus_SOURCES += main.cpp \
 	      resources/chatobject.h \
 	      resources/delayedmanager.cpp \
 	      resources/delayedmanager.h \
+	      resources/effectdescription.h \
+	      resources/emoteinfo.h \
+	      resources/emotesprite.h \
+	      resources/equipmentslots.h \
 	      resources/horseinfo.h \
+	      resources/spritedisplay.h \
+	      resources/spritereference.h \
+	      resources/textureatlas.h \
+	      resources/updatefile.h \
 	      enums/resources/map/blockmask.h \
 	      enums/resources/map/blocktype.h \
 	      resources/map/location.h \
