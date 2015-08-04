@@ -10,11 +10,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2015-08-01 14:09+0300\n"
-"PO-Revision-Date: 2015-07-30 09:13+0000\n"
+"POT-Creation-Date: 2015-08-04 15:55+0300\n"
+"PO-Revision-Date: 2015-08-02 09:12+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
-"Language-Team: Ukrainian (http://www.transifex.com/projects/p/manaplus/"
-"language/uk/)\n"
+"Language-Team: Ukrainian (http://www.transifex.com/akaras/manaplus/language/"
+"uk/)\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -37,8 +37,8 @@ msgstr "Файл завантажено"
 #. TRANSLATORS: text dialog button
 #. TRANSLATORS: ok dialog button
 #: src/actions/actions.cpp:158 src/client.cpp:1453 src/client.cpp:1486
-#: src/gamemodifiers.cpp:451 src/gui/dialogsmanager.cpp:168
-#: src/gui/dialogsmanager.cpp:188 src/gui/widgets/tabs/setup_input.cpp:164
+#: src/gamemodifiers.cpp:451 src/gui/dialogsmanager.cpp:182
+#: src/gui/dialogsmanager.cpp:202 src/gui/widgets/tabs/setup_input.cpp:164
 #: src/gui/widgets/tabs/setup_theme.cpp:313
 #: src/gui/widgets/tabs/setup_theme.cpp:349
 #: src/gui/widgets/tabs/setup_video.cpp:250
@@ -492,41 +492,46 @@ msgstr "Плаваюча бульбашка"
 #. TRANSLATORS: setup tab quick button
 #. TRANSLATORS: full button name
 #. TRANSLATORS: setup window name
-#: src/client.cpp:805 src/gui/windowmenu.cpp:177
+#: src/client.cpp:805 src/dyetool/client.cpp:486 src/gui/windowmenu.cpp:177
 #: src/gui/windows/setupwindow.cpp:64
 msgid "Setup"
 msgstr "Налаштування"
 
 #. TRANSLATORS: perfoamance tab quick button
 #. TRANSLATORS: settings tab name
-#: src/client.cpp:808 src/gui/widgets/tabs/setup_perfomance.cpp:54
+#: src/client.cpp:808 src/dyetool/client.cpp:489
+#: src/gui/widgets/tabs/setup_perfomance.cpp:54
 msgid "Performance"
 msgstr "Продуктивність"
 
 #. TRANSLATORS: video tab quick button
 #. TRANSLATORS: video settings tab name
-#: src/client.cpp:811 src/gui/widgets/tabs/setup_video.cpp:106
+#: src/client.cpp:811 src/dyetool/client.cpp:492
+#: src/gui/widgets/tabs/setup_video.cpp:106
 msgid "Video"
 msgstr "Відео"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: theme settings tab name
-#: src/client.cpp:814 src/gui/widgets/tabs/setup_theme.cpp:121
+#: src/client.cpp:814 src/dyetool/client.cpp:495
+#: src/gui/widgets/tabs/setup_theme.cpp:121
 msgid "Theme"
 msgstr "Теми"
 
 #. TRANSLATORS: theme tab quick button
-#: src/client.cpp:817
+#: src/client.cpp:817 src/dyetool/client.cpp:498
 msgid "About"
 msgstr "Про програму"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: help window name
-#: src/client.cpp:820 src/gui/windowmenu.cpp:72
+#: src/client.cpp:820 src/dyetool/client.cpp:501 src/gui/windowmenu.cpp:72
 #: src/gui/windows/helpwindow.cpp:53
 msgid "Help"
 msgstr "Довідка"
 
+#. TRANSLATORS: close quick button
+#. TRANSLATORS: ok dialog button
 #. TRANSLATORS: close quick button
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: popup menu item
@@ -541,8 +546,9 @@ msgstr "Довідка"
 #. TRANSLATORS: quests window button
 #. TRANSLATORS: shop window button
 #: src/client.cpp:824 src/client.cpp:1371 src/client.cpp:1390
-#: src/gui/dialogsmanager.cpp:105 src/gui/popups/popupmenu.cpp:738
-#: src/gui/popups/popupmenu.cpp:979 src/gui/windows/didyouknowwindow.cpp:81
+#: src/dyetool/client.cpp:505 src/gui/dialogsmanager.cpp:116
+#: src/gui/popups/popupmenu.cpp:738 src/gui/popups/popupmenu.cpp:979
+#: src/gui/windows/didyouknowwindow.cpp:81
 #: src/gui/windows/inventorywindow.cpp:265
 #: src/gui/windows/inventorywindow.cpp:289
 #: src/gui/windows/maileditwindow.cpp:52 src/gui/windows/mailviewwindow.cpp:59
@@ -642,6 +648,138 @@ msgstr "Акаунт видалено"
 msgid "Farewell, come back any time..."
 msgstr "До побачення та вертайтесь."
 
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:42
+msgid "manaplus [options] [manaplus-file]"
+msgstr "manaplus [опції] [manaplus-файл]"
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:44
+msgid "[manaplus-file] : The manaplus file is an XML file (.manaplus)"
+msgstr "[manaplus-файл] : Файл manaplus це XML файл (.manaplus)"
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:47
+msgid "                  used to set custom parameters"
+msgstr "                  використовується для додаткових параметрів"
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:49
+msgid "                  to the manaplus client."
+msgstr "                  до manaplus клієнту."
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:52
+msgid "Options:"
+msgstr "Параметри:"
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:54
+msgid "  -l --log-file       : Log file to use"
+msgstr "  - --log-file        : Лог-файл"
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:56
+msgid "  -a --chat-log-dir   : Chat log dir to use"
+msgstr "  -a --chat-log-dir   : Тека логу чату"
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:58
+msgid "  -v --version        : Display the version"
+msgstr "  -v --version        : Показати версію"
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:60
+msgid "  -h --help           : Display this help"
+msgstr "  -h --help           : Показати ще раз цю довідку"
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:62
+msgid "  -C --config-dir     : Configuration directory to use"
+msgstr ""
+"  -C --config-file    : Файл, з якого необхідно завантажити налаштування"
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:65
+msgid "  -U --username       : Login with this username"
+msgstr "  -U --username       : Зареєструватися на сервері зі вказаним логіном"
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:67
+msgid "  -P --password       : Login with this password"
+msgstr "  -P --password       : Зареєструватися на сервері зі вказаним паролем"
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:69
+msgid "  -c --character      : Login with this character"
+msgstr "  -c --character      : Обрати в акаунті зазначеного персонажа"
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:71
+msgid "  -s --server         : Login server name or IP"
+msgstr "  -s --server         : Ім'я серверу або IP"
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:73
+msgid "  -y --server-type    : Login server type"
+msgstr "  -y --server-type    : Тип логін-серверу"
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:75
+msgid "  -p --port           : Login server port"
+msgstr "  -p --port           : Порт логіну"
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:77
+msgid "  -H --update-host    : Use this update host"
+msgstr ""
+"  -H --update-host    : Сервер, з якого необхідно завантажити оновлення"
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:79
+msgid "  -D --default        : Choose default character server and character"
+msgstr "  -D --default        : Обрати сервер та персонаж за замовчуванням"
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:82
+msgid "  -u --skip-update    : Skip the update downloads"
+msgstr "  -u --skip-update    : Пропустити завантаження оновлення"
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:84
+msgid "  -d --data           : Directory to load game data from"
+msgstr "  -d --data           : Тека з користувацькими ігровими ресурсами"
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:87
+msgid "  -L --localdata-dir  : Directory to use as local data directory"
+msgstr "  -L --localdata-dir  : Тека з локальними даними"
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:90
+msgid "     --screenshot-dir : Directory to store screenshots"
+msgstr "     --screenshot-dir : Тека скріншотів"
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:93
+msgid "     --safemode       : Start game in safe mode"
+msgstr "     --safemode       : Ввімкнути гру в безпечному режимі"
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:95
+msgid "     --renderer       : Set renderer type"
+msgstr "     --renderer       : Ввімкнути тип рендерингу"
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:97
+msgid "  -T --tests          : Start testing drivers and auto configuring"
+msgstr "  -T --tests          : Стартувати тести та автоконфігурацію"
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:101
+msgid "  -O --no-opengl      : Disable OpenGL for this session"
+msgstr "  -O --no-opengl      : Вимкнути OpenGL під час цієї сесії"
+
 #. TRANSLATORS: directory creation error
 #: src/configmanager.cpp:53 src/dirs.cpp:352 src/dirs.cpp:367 src/dirs.cpp:412
 #: src/dirs.cpp:580 src/dirs.cpp:588
@@ -665,15 +803,15 @@ msgstr "Неможливо створити теку для оновлень!"
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "Помилка: тека %s не існує і не може бути створена! Виходимо."
 
-#: src/dyetool/dyemain.cpp:48
+#: src/dyetool/dyemain.cpp:47
 msgid "dyecmd srcfile dyestring dstfile"
 msgstr "dyecmd файл_джерела рядок_кольору файл_призначення"
 
-#: src/dyetool/dyemain.cpp:49
+#: src/dyetool/dyemain.cpp:48
 msgid "or"
 msgstr "або"
 
-#: src/dyetool/dyemain.cpp:50
+#: src/dyetool/dyemain.cpp:49
 msgid "dyecmd srcdyestring dstfile"
 msgstr "dyecmd файл_рядків_кольору файл_призначення"
 
@@ -1102,25 +1240,25 @@ msgid "(F) free camera mode"
 msgstr "(F) вільний режим камери"
 
 #. TRANSLATORS: error message question
-#: src/gui/dialogsmanager.cpp:119
+#: src/gui/dialogsmanager.cpp:130
 msgid "Do you want to open support page?"
 msgstr "Чи бажаєте відвідати сторінку підтримки?"
 
 #. TRANSLATORS: message header
-#: src/gui/dialogsmanager.cpp:133 src/gui/dialogsmanager.cpp:162
-#: src/gui/dialogsmanager.cpp:182
+#: src/gui/dialogsmanager.cpp:145 src/gui/dialogsmanager.cpp:176
+#: src/gui/dialogsmanager.cpp:196
 msgid "Message"
 msgstr "Повідомлення"
 
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: revive player
-#: src/gui/dialogsmanager.cpp:136 src/gui/popups/popupmenu.cpp:2636
+#: src/gui/dialogsmanager.cpp:148 src/gui/popups/popupmenu.cpp:2636
 msgid "Revive"
 msgstr "Опритомнити"
 
 #. TRANSLATORS: weight message
-#: src/gui/dialogsmanager.cpp:164
+#: src/gui/dialogsmanager.cpp:178
 msgid ""
 "You are carrying more than half your weight. You are unable to regain health."
 msgstr ""
@@ -1128,7 +1266,7 @@ msgstr ""
 "зможете відновлюватися."
 
 #. TRANSLATORS: weight message
-#: src/gui/dialogsmanager.cpp:184
+#: src/gui/dialogsmanager.cpp:198
 msgid "You are carrying less than half your weight. You can regain health."
 msgstr "Ви навантажені менш, ніж на половину. Тепер ви можете відновлюватися."
 
@@ -5801,9 +5939,8 @@ msgstr "Шепчу до %s: %s"
 
 #. TRANSLATORS: error message
 #: src/gui/windows/chatwindow.cpp:1565
-#, fuzzy
 msgid "Broken nick detected: "
-msgstr "Виявлено перевищення швидкісних лімітів."
+msgstr ""
 
 #. TRANSLATORS: owners pet name. For example: 4144's pet
 #: src/gui/windows/chatwindow.cpp:1750 src/net/eathena/pethandler.cpp:173
@@ -6940,25 +7077,25 @@ msgstr "Оберіть світ"
 #. TRANSLATORS: long key name. must be short.
 #. TRANSLATORS: short key name. must be very short.
 #. TRANSLATORS: long key name, should be short
-#: src/input/inputmanager.cpp:376 src/input/inputmanager.cpp:420
+#: src/input/inputmanager.cpp:378 src/input/inputmanager.cpp:422
 #: src/input/keyboardconfig.cpp:102
 #, c-format
 msgid "key_%d"
 msgstr "клавіша_%d"
 
 #. TRANSLATORS: long joystick button name. must be short.
-#: src/input/inputmanager.cpp:382
+#: src/input/inputmanager.cpp:384
 #, c-format
 msgid "JButton%d"
 msgstr "КлавішаДж%d"
 
 #. TRANSLATORS: unknown long key type
-#: src/input/inputmanager.cpp:396
+#: src/input/inputmanager.cpp:398
 msgid "unknown key"
 msgstr "невідома клавіша"
 
 #. TRANSLATORS: short joystick button name. muse be very short
-#: src/input/inputmanager.cpp:426
+#: src/input/inputmanager.cpp:428
 #, c-format
 msgid "JB%d"
 msgstr "ДЖ%d"
@@ -6966,7 +7103,7 @@ msgstr "ДЖ%d"
 #. TRANSLATORS: unknown short key type. must be short
 #. TRANSLATORS: Unknown key short string.
 #. TRANSLATORS: This string must be maximum 5 chars
-#: src/input/inputmanager.cpp:440 src/input/keyboardconfig.cpp:146
+#: src/input/inputmanager.cpp:442 src/input/keyboardconfig.cpp:146
 msgid "u key"
 msgstr "невід."
 
@@ -8100,138 +8237,6 @@ msgstr "Сховище"
 #: src/inventory.cpp:311
 msgid "Npc"
 msgstr ""
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:82
-msgid "manaplus [options] [manaplus-file]"
-msgstr "manaplus [опції] [manaplus-файл]"
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:84
-msgid "[manaplus-file] : The manaplus file is an XML file (.manaplus)"
-msgstr "[manaplus-файл] : Файл manaplus це XML файл (.manaplus)"
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:87
-msgid "                  used to set custom parameters"
-msgstr "                  використовується для додаткових параметрів"
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:89
-msgid "                  to the manaplus client."
-msgstr "                  до manaplus клієнту."
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:92
-msgid "Options:"
-msgstr "Параметри:"
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:94
-msgid "  -l --log-file       : Log file to use"
-msgstr "  - --log-file        : Лог-файл"
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:96
-msgid "  -a --chat-log-dir   : Chat log dir to use"
-msgstr "  -a --chat-log-dir   : Тека логу чату"
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:98
-msgid "  -v --version        : Display the version"
-msgstr "  -v --version        : Показати версію"
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:100
-msgid "  -h --help           : Display this help"
-msgstr "  -h --help           : Показати ще раз цю довідку"
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:102
-msgid "  -C --config-dir     : Configuration directory to use"
-msgstr ""
-"  -C --config-file    : Файл, з якого необхідно завантажити налаштування"
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:105
-msgid "  -U --username       : Login with this username"
-msgstr "  -U --username       : Зареєструватися на сервері зі вказаним логіном"
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:107
-msgid "  -P --password       : Login with this password"
-msgstr "  -P --password       : Зареєструватися на сервері зі вказаним паролем"
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:109
-msgid "  -c --character      : Login with this character"
-msgstr "  -c --character      : Обрати в акаунті зазначеного персонажа"
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:111
-msgid "  -s --server         : Login server name or IP"
-msgstr "  -s --server         : Ім'я серверу або IP"
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:113
-msgid "  -y --server-type    : Login server type"
-msgstr "  -y --server-type    : Тип логін-серверу"
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:115
-msgid "  -p --port           : Login server port"
-msgstr "  -p --port           : Порт логіну"
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:117
-msgid "  -H --update-host    : Use this update host"
-msgstr ""
-"  -H --update-host    : Сервер, з якого необхідно завантажити оновлення"
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:119
-msgid "  -D --default        : Choose default character server and character"
-msgstr "  -D --default        : Обрати сервер та персонаж за замовчуванням"
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:122
-msgid "  -u --skip-update    : Skip the update downloads"
-msgstr "  -u --skip-update    : Пропустити завантаження оновлення"
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:124
-msgid "  -d --data           : Directory to load game data from"
-msgstr "  -d --data           : Тека з користувацькими ігровими ресурсами"
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:127
-msgid "  -L --localdata-dir  : Directory to use as local data directory"
-msgstr "  -L --localdata-dir  : Тека з локальними даними"
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:130
-msgid "     --screenshot-dir : Directory to store screenshots"
-msgstr "     --screenshot-dir : Тека скріншотів"
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:133
-msgid "     --safemode       : Start game in safe mode"
-msgstr "     --safemode       : Ввімкнути гру в безпечному режимі"
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:135
-msgid "     --renderer       : Set renderer type"
-msgstr "     --renderer       : Ввімкнути тип рендерингу"
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:137
-msgid "  -T --tests          : Start testing drivers and auto configuring"
-msgstr "  -T --tests          : Стартувати тести та автоконфігурацію"
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:141
-msgid "  -O --no-opengl      : Disable OpenGL for this session"
-msgstr "  -O --no-opengl      : Вимкнути OpenGL під час цієї сесії"
 
 #. TRANSLATORS: error message
 #: src/net/ea/charserverhandler.cpp:87

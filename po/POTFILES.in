@@ -10,8 +10,10 @@ src/being/localplayer.cpp
 src/being/playerrelations.cpp
 src/catch.hpp
 src/client.cpp
+src/commandline.cpp
 src/configmanager.cpp
 src/dirs.cpp
+src/dyetool/client.cpp
 src/dyetool/dyemain.cpp
 src/game.cpp
 src/gamemodifiers.cpp
@@ -137,7 +139,6 @@ src/input/pages/windows.cpp
 src/inventory.cpp
 src/localconsts.h
 src/logger.h
-src/main.cpp
 src/net/ea/charserverhandler.cpp
 src/net/ea/chathandler.cpp
 src/net/ea/gamehandler.cpp

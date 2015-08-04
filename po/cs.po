@@ -14,10 +14,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2015-08-01 14:09+0300\n"
-"PO-Revision-Date: 2015-07-30 09:13+0000\n"
+"POT-Creation-Date: 2015-08-04 15:55+0300\n"
+"PO-Revision-Date: 2015-08-02 09:12+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
-"Language-Team: Czech (http://www.transifex.com/projects/p/manaplus/language/"
+"Language-Team: Czech (http://www.transifex.com/akaras/manaplus/language/"
 "cs/)\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -40,8 +40,8 @@ msgstr "Soubor byl uploadován"
 #. TRANSLATORS: text dialog button
 #. TRANSLATORS: ok dialog button
 #: src/actions/actions.cpp:158 src/client.cpp:1453 src/client.cpp:1486
-#: src/gamemodifiers.cpp:451 src/gui/dialogsmanager.cpp:168
-#: src/gui/dialogsmanager.cpp:188 src/gui/widgets/tabs/setup_input.cpp:164
+#: src/gamemodifiers.cpp:451 src/gui/dialogsmanager.cpp:182
+#: src/gui/dialogsmanager.cpp:202 src/gui/widgets/tabs/setup_input.cpp:164
 #: src/gui/widgets/tabs/setup_theme.cpp:313
 #: src/gui/widgets/tabs/setup_theme.cpp:349
 #: src/gui/widgets/tabs/setup_video.cpp:250
@@ -493,41 +493,46 @@ msgstr "Plovoucí bublina"
 #. TRANSLATORS: setup tab quick button
 #. TRANSLATORS: full button name
 #. TRANSLATORS: setup window name
-#: src/client.cpp:805 src/gui/windowmenu.cpp:177
+#: src/client.cpp:805 src/dyetool/client.cpp:486 src/gui/windowmenu.cpp:177
 #: src/gui/windows/setupwindow.cpp:64
 msgid "Setup"
 msgstr "Nastavení"
 
 #. TRANSLATORS: perfoamance tab quick button
 #. TRANSLATORS: settings tab name
-#: src/client.cpp:808 src/gui/widgets/tabs/setup_perfomance.cpp:54
+#: src/client.cpp:808 src/dyetool/client.cpp:489
+#: src/gui/widgets/tabs/setup_perfomance.cpp:54
 msgid "Performance"
 msgstr "Výkon"
 
 #. TRANSLATORS: video tab quick button
 #. TRANSLATORS: video settings tab name
-#: src/client.cpp:811 src/gui/widgets/tabs/setup_video.cpp:106
+#: src/client.cpp:811 src/dyetool/client.cpp:492
+#: src/gui/widgets/tabs/setup_video.cpp:106
 msgid "Video"
 msgstr "Video"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: theme settings tab name
-#: src/client.cpp:814 src/gui/widgets/tabs/setup_theme.cpp:121
+#: src/client.cpp:814 src/dyetool/client.cpp:495
+#: src/gui/widgets/tabs/setup_theme.cpp:121
 msgid "Theme"
 msgstr "Téma"
 
 #. TRANSLATORS: theme tab quick button
-#: src/client.cpp:817
+#: src/client.cpp:817 src/dyetool/client.cpp:498
 msgid "About"
 msgstr "O ManaPlus"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: help window name
-#: src/client.cpp:820 src/gui/windowmenu.cpp:72
+#: src/client.cpp:820 src/dyetool/client.cpp:501 src/gui/windowmenu.cpp:72
 #: src/gui/windows/helpwindow.cpp:53
 msgid "Help"
 msgstr "Nápověda"
 
+#. TRANSLATORS: close quick button
+#. TRANSLATORS: ok dialog button
 #. TRANSLATORS: close quick button
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: popup menu item
@@ -542,8 +547,9 @@ msgstr "Nápověda"
 #. TRANSLATORS: quests window button
 #. TRANSLATORS: shop window button
 #: src/client.cpp:824 src/client.cpp:1371 src/client.cpp:1390
-#: src/gui/dialogsmanager.cpp:105 src/gui/popups/popupmenu.cpp:738
-#: src/gui/popups/popupmenu.cpp:979 src/gui/windows/didyouknowwindow.cpp:81
+#: src/dyetool/client.cpp:505 src/gui/dialogsmanager.cpp:116
+#: src/gui/popups/popupmenu.cpp:738 src/gui/popups/popupmenu.cpp:979
+#: src/gui/windows/didyouknowwindow.cpp:81
 #: src/gui/windows/inventorywindow.cpp:265
 #: src/gui/windows/inventorywindow.cpp:289
 #: src/gui/windows/maileditwindow.cpp:52 src/gui/windows/mailviewwindow.cpp:59
@@ -643,6 +649,137 @@ msgstr "Zrušení registrace úspěšné"
 msgid "Farewell, come back any time..."
 msgstr "Nashledanou, vraťte se kdykoli..."
 
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:42
+msgid "manaplus [options] [manaplus-file]"
+msgstr "manaplus [možnosti] [soubor-manaplus]"
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:44
+msgid "[manaplus-file] : The manaplus file is an XML file (.manaplus)"
+msgstr "[soubor-manaplus] : Manaplus soubor je XML soubor (.manaplus)"
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:47
+msgid "                  used to set custom parameters"
+msgstr "                  používá se k nastavení vlastních parametrů"
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:49
+msgid "                  to the manaplus client."
+msgstr "                  pro manaplus klienta."
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:52
+msgid "Options:"
+msgstr "Nastavení:"
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:54
+msgid "  -l --log-file       : Log file to use"
+msgstr "  -l --log-file       : Použij logový soubor"
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:56
+msgid "  -a --chat-log-dir   : Chat log dir to use"
+msgstr "  -a --chat-log-dir   : Složka uchování záznamu chatu"
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:58
+msgid "  -v --version        : Display the version"
+msgstr "  -v --version        : Zobraz verzi"
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:60
+msgid "  -h --help           : Display this help"
+msgstr "  -h --help           : Zobraz tuto nápovědu"
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:62
+msgid "  -C --config-dir     : Configuration directory to use"
+msgstr "  -C --config-dir     : Použij adresář s konfigurací"
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:65
+msgid "  -U --username       : Login with this username"
+msgstr "  -U --username       : Přihlaš se tímto jménem"
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:67
+msgid "  -P --password       : Login with this password"
+msgstr "  -P --password       : Přihlaš se tímto heslem"
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:69
+msgid "  -c --character      : Login with this character"
+msgstr "  -c --character      : Přihlaš se k této postavě"
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:71
+msgid "  -s --server         : Login server name or IP"
+msgstr "  -s --server         : Přihlaš se k tomuto serveru nebo IP"
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:73
+msgid "  -y --server-type    : Login server type"
+msgstr "  -y --server-type    : Typ přihlašovacího serveru"
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:75
+msgid "  -p --port           : Login server port"
+msgstr "  -p --port           : Přihlaš se k tomuto portu"
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:77
+msgid "  -H --update-host    : Use this update host"
+msgstr "  -H --update-host    : Použít tohoto host pro update"
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:79
+msgid "  -D --default        : Choose default character server and character"
+msgstr "  -D --default        : Vyber výchozí server postav a postavu"
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:82
+msgid "  -u --skip-update    : Skip the update downloads"
+msgstr "  -u --skip-update    : Přeskoč stahování aktualizací"
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:84
+msgid "  -d --data           : Directory to load game data from"
+msgstr "  -d --data           : Adresář odkud načíst herní data"
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:87
+msgid "  -L --localdata-dir  : Directory to use as local data directory"
+msgstr "  -L --localdata-dir  : Adresář který použít jako lokální uložiště dat"
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:90
+msgid "     --screenshot-dir : Directory to store screenshots"
+msgstr "     --screenshot-dir : Adresář pro snímky obrazovky"
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:93
+msgid "     --safemode       : Start game in safe mode"
+msgstr "     --safemode       : Pro spuštění hry v bezpečném módu"
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:95
+msgid "     --renderer       : Set renderer type"
+msgstr "     --renderer       : Nastaví typ vykreslování"
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:97
+msgid "  -T --tests          : Start testing drivers and auto configuring"
+msgstr ""
+"  -T --tests          : Spustit testování ovladačů a automatickou konfiguraci"
+
+#. TRANSLATORS: command line help
+#: src/commandline.cpp:101
+msgid "  -O --no-opengl      : Disable OpenGL for this session"
+msgstr "  -O --no-opengl      : Zakázat OpenGL pro toto sezení"
+
 #. TRANSLATORS: directory creation error
 #: src/configmanager.cpp:53 src/dirs.cpp:352 src/dirs.cpp:367 src/dirs.cpp:412
 #: src/dirs.cpp:580 src/dirs.cpp:588
@@ -666,15 +803,15 @@ msgstr "Chyba při vytváření adresáře s updaty!"
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "Chyba: %s neexistuje a nelze ho vytvořit. Ukončuji."
 
-#: src/dyetool/dyemain.cpp:48
+#: src/dyetool/dyemain.cpp:47
 msgid "dyecmd srcfile dyestring dstfile"
 msgstr "dyecmd srcfile dyestring dstfile"
 
-#: src/dyetool/dyemain.cpp:49
+#: src/dyetool/dyemain.cpp:48
 msgid "or"
 msgstr "nebo"
 
-#: src/dyetool/dyemain.cpp:50
+#: src/dyetool/dyemain.cpp:49
 msgid "dyecmd srcdyestring dstfile"
 msgstr "dyecmd srcdyestring dstfile"
 
@@ -1103,31 +1240,31 @@ msgid "(F) free camera mode"
 msgstr "(F) mód volné kamery"
 
 #. TRANSLATORS: error message question
-#: src/gui/dialogsmanager.cpp:119
+#: src/gui/dialogsmanager.cpp:130
 msgid "Do you want to open support page?"
 msgstr "Preješ si otevřít stránku podpory?"
 
 #. TRANSLATORS: message header
-#: src/gui/dialogsmanager.cpp:133 src/gui/dialogsmanager.cpp:162
-#: src/gui/dialogsmanager.cpp:182
+#: src/gui/dialogsmanager.cpp:145 src/gui/dialogsmanager.cpp:176
+#: src/gui/dialogsmanager.cpp:196
 msgid "Message"
 msgstr "Zpráva"
 
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: revive player
-#: src/gui/dialogsmanager.cpp:136 src/gui/popups/popupmenu.cpp:2636
+#: src/gui/dialogsmanager.cpp:148 src/gui/popups/popupmenu.cpp:2636
 msgid "Revive"
 msgstr "Oživ"
 
 #. TRANSLATORS: weight message
-#: src/gui/dialogsmanager.cpp:164
+#: src/gui/dialogsmanager.cpp:178
 msgid ""
 "You are carrying more than half your weight. You are unable to regain health."
 msgstr "Nesete více než polovinu vaší váhy. Regenerace života nyní není možná."
 
 #. TRANSLATORS: weight message
-#: src/gui/dialogsmanager.cpp:184
+#: src/gui/dialogsmanager.cpp:198
 msgid "You are carrying less than half your weight. You can regain health."
 msgstr ""
 "Nesete méně než polovinu vaší váhy. Regenerace života je nyní opět možná."
@@ -5806,9 +5943,8 @@ msgstr "Šeptání pro %s: %s"
 
 #. TRANSLATORS: error message
 #: src/gui/windows/chatwindow.cpp:1565
-#, fuzzy
 msgid "Broken nick detected: "
-msgstr "Detekován podvod s rychlostí."
+msgstr ""
 
 #. TRANSLATORS: owners pet name. For example: 4144's pet
 #: src/gui/windows/chatwindow.cpp:1750 src/net/eathena/pethandler.cpp:173
@@ -6945,25 +7081,25 @@ msgstr "Vyber svět"
 #. TRANSLATORS: long key name. must be short.
 #. TRANSLATORS: short key name. must be very short.
 #. TRANSLATORS: long key name, should be short
-#: src/input/inputmanager.cpp:376 src/input/inputmanager.cpp:420
+#: src/input/inputmanager.cpp:378 src/input/inputmanager.cpp:422
 #: src/input/keyboardconfig.cpp:102
 #, c-format
 msgid "key_%d"
 msgstr "kl_%d"
 
 #. TRANSLATORS: long joystick button name. must be short.
-#: src/input/inputmanager.cpp:382
+#: src/input/inputmanager.cpp:384
 #, c-format
 msgid "JButton%d"
 msgstr "Jknoflík%d"
 
 #. TRANSLATORS: unknown long key type
-#: src/input/inputmanager.cpp:396
+#: src/input/inputmanager.cpp:398
 msgid "unknown key"
 msgstr "neznámá klávesa"
 
 #. TRANSLATORS: short joystick button name. muse be very short
-#: src/input/inputmanager.cpp:426
+#: src/input/inputmanager.cpp:428
 #, c-format
 msgid "JB%d"
 msgstr "JK%d"
@@ -6971,7 +7107,7 @@ msgstr "JK%d"
 #. TRANSLATORS: unknown short key type. must be short
 #. TRANSLATORS: Unknown key short string.
 #. TRANSLATORS: This string must be maximum 5 chars
-#: src/input/inputmanager.cpp:440 src/input/keyboardconfig.cpp:146
+#: src/input/inputmanager.cpp:442 src/input/keyboardconfig.cpp:146
 msgid "u key"
 msgstr "n kl"
 
@@ -8107,137 +8243,6 @@ msgstr "Sklad"
 #: src/inventory.cpp:311
 msgid "Npc"
 msgstr ""
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:82
-msgid "manaplus [options] [manaplus-file]"
-msgstr "manaplus [možnosti] [soubor-manaplus]"
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:84
-msgid "[manaplus-file] : The manaplus file is an XML file (.manaplus)"
-msgstr "[soubor-manaplus] : Manaplus soubor je XML soubor (.manaplus)"
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:87
-msgid "                  used to set custom parameters"
-msgstr "                  používá se k nastavení vlastních parametrů"
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:89
-msgid "                  to the manaplus client."
-msgstr "                  pro manaplus klienta."
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:92
-msgid "Options:"
-msgstr "Nastavení:"
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:94
-msgid "  -l --log-file       : Log file to use"
-msgstr "  -l --log-file       : Použij logový soubor"
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:96
-msgid "  -a --chat-log-dir   : Chat log dir to use"
-msgstr "  -a --chat-log-dir   : Složka uchování záznamu chatu"
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:98
-msgid "  -v --version        : Display the version"
-msgstr "  -v --version        : Zobraz verzi"
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:100
-msgid "  -h --help           : Display this help"
-msgstr "  -h --help           : Zobraz tuto nápovědu"
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:102
-msgid "  -C --config-dir     : Configuration directory to use"
-msgstr "  -C --config-dir     : Použij adresář s konfigurací"
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:105
-msgid "  -U --username       : Login with this username"
-msgstr "  -U --username       : Přihlaš se tímto jménem"
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:107
-msgid "  -P --password       : Login with this password"
-msgstr "  -P --password       : Přihlaš se tímto heslem"
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:109
-msgid "  -c --character      : Login with this character"
-msgstr "  -c --character      : Přihlaš se k této postavě"
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:111
-msgid "  -s --server         : Login server name or IP"
-msgstr "  -s --server         : Přihlaš se k tomuto serveru nebo IP"
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:113
-msgid "  -y --server-type    : Login server type"
-msgstr "  -y --server-type    : Typ přihlašovacího serveru"
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:115
-msgid "  -p --port           : Login server port"
-msgstr "  -p --port           : Přihlaš se k tomuto portu"
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:117
-msgid "  -H --update-host    : Use this update host"
-msgstr "  -H --update-host    : Použít tohoto host pro update"
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:119
-msgid "  -D --default        : Choose default character server and character"
-msgstr "  -D --default        : Vyber výchozí server postav a postavu"
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:122
-msgid "  -u --skip-update    : Skip the update downloads"
-msgstr "  -u --skip-update    : Přeskoč stahování aktualizací"
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:124
-msgid "  -d --data           : Directory to load game data from"
-msgstr "  -d --data           : Adresář odkud načíst herní data"
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:127
-msgid "  -L --localdata-dir  : Directory to use as local data directory"
-msgstr "  -L --localdata-dir  : Adresář který použít jako lokální uložiště dat"
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:130
-msgid "     --screenshot-dir : Directory to store screenshots"
-msgstr "     --screenshot-dir : Adresář pro snímky obrazovky"
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:133
-msgid "     --safemode       : Start game in safe mode"
-msgstr "     --safemode       : Pro spuštění hry v bezpečném módu"
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:135
-msgid "     --renderer       : Set renderer type"
-msgstr "     --renderer       : Nastaví typ vykreslování"
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:137
-msgid "  -T --tests          : Start testing drivers and auto configuring"
-msgstr ""
-"  -T --tests          : Spustit testování ovladačů a automatickou konfiguraci"
-
-#. TRANSLATORS: command line help
-#: src/main.cpp:141
-msgid "  -O --no-opengl      : Disable OpenGL for this session"
-msgstr "  -O --no-opengl      : Zakázat OpenGL pro toto sezení"
 
 #. TRANSLATORS: error message
 #: src/net/ea/charserverhandler.cpp:87
