@@ -360,10 +360,16 @@ void SoundManager::logic()
     BLOCK_END("SoundManager::logic")
 }
 
+#ifdef DYECMD
+void SoundManager::playSfx(const std::string &path A_UNUSED,
+                           const int x A_UNUSED,
+                           const int y A_UNUSED) const
+{
+}
+#else
 void SoundManager::playSfx(const std::string &path,
                            const int x, const int y) const
 {
-#ifndef DYECMD
     if (!mInstalled || path.empty() || !mPlayBattle)
         return;
 
@@ -396,8 +402,8 @@ void SoundManager::playSfx(const std::string &path,
         if (!mCacheSounds)
             sample->decRef();
     }
-#endif
 }
+#endif
 
 void SoundManager::playGuiSound(const std::string &name)
 {
