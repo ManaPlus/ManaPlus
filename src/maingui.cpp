@@ -37,10 +37,6 @@
 #include "utils/process.h"
 #include "utils/xml.h"
 
-#ifdef UNITTESTS
-#include <gtest/gtest.h>
-#endif
-
 #ifdef __MINGW32__
 #include <windows.h>
 #endif

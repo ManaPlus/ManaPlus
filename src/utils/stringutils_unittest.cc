@@ -22,8 +22,6 @@
 
 #include "utils/stringutils.h"
 
-#include "gtest/gtest.h"
-
 #include <list>
 #include <string>
 #include <vector>
