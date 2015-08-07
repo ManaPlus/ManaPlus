@@ -230,4 +230,9 @@ bool ServerFeatures::haveTeamId() const
     return false;
 }
 
+bool ServerFeatures::haveNewGuild() const
+{
+    return false;
+}
+
 }  // namespace EAthena

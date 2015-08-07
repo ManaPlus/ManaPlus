@@ -111,6 +111,8 @@ class ServerFeatures final : public Net::ServerFeatures
         bool haveChangePassword() const override final;
 
         bool haveTeamId() const override final;
+
+        bool haveNewGuild() const override final;
 };
 
 }  // namespace TmwAthena
