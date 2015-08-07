@@ -127,7 +127,7 @@ namespace NotifyManager
             NotifyFlags::EMPTY},
         {"guild user kicked",
             // TRANSLATORS: notification message
-            N_("%s has kicked from your guild."),
+            N_("%s has been kicked from your guild."),
             NotifyFlags::GUILD_STRING},
         {"use failed",
             // TRANSLATORS: notification message
