@@ -229,4 +229,9 @@ bool ServerFeatures::haveTeamId() const
     return tmwServerVersion > 0;
 }
 
+bool ServerFeatures::haveNewGuild() const
+{
+    return tmwServerVersion > 0;
+}
+
 }  // namespace TmwAthena

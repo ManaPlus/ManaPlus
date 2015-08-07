@@ -398,9 +398,20 @@ void GuildHandler::processGuildMemberLogin(Net::MessageIn &msg)
 
 void GuildHandler::processGuildExpulsion(Net::MessageIn &msg)
 {
-    const std::string nick = msg.readString(24, "name");
-    msg.readString(40, "reason");
-    msg.readString(24, "kicker name");
+    std::string nick;
+    if (serverFeatures->haveNewGuild())
+    {
+        nick = msg.readString(24, "name");
+        msg.readString(40, "reason");
+        msg.readString(24, "kicker name");
+    }
+    else
+    {
+        msg.readInt16("len?");
+        nick = msg.readString(24, "name?");
+        msg.skip(24, "player name");
+        msg.readString(44, "message");
+    }
     processGuildExpulsionContinue(nick);
 }
 

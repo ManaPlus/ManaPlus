@@ -108,6 +108,8 @@ class ServerFeatures notfinal
         virtual bool haveChangePassword() const = 0;
 
         virtual bool haveTeamId() const = 0;
+
+        virtual bool haveNewGuild() const = 0;
 };
 
 }  // namespace Net
