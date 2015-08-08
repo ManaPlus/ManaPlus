@@ -78,9 +78,9 @@ class NullOpenGLGraphics final : public Graphics
         #include "render/openglgraphicsdefadvanced.hpp"
 
     private:
-        GLfloat *mFloatTexArray;
-        GLint *mIntTexArray;
-        GLint *mIntVertArray;
+        GLfloat *mFloatTexArray A_NONNULLPOINTER;
+        GLint *mIntTexArray A_NONNULLPOINTER;
+        GLint *mIntVertArray A_NONNULLPOINTER;
         bool mTexture;
 
         bool mIsByteColor;

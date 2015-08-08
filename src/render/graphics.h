@@ -523,6 +523,6 @@ class Graphics notfinal
         Color mColor;
 };
 
-extern Graphics *mainGraphics;
+extern Graphics *mainGraphics A_NONNULLPOINTER;
 
 #endif  // RENDER_GRAPHICS_H

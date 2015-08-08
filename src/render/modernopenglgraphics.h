@@ -105,8 +105,8 @@ class ModernOpenGLGraphics final : public Graphics
 
         inline void bindElementBuffer(const GLuint ebo);
 
-        GLint *mIntArray;
-        GLint *mIntArrayCached;
+        GLint *mIntArray A_NONNULLPOINTER;
+        GLint *mIntArrayCached A_NONNULLPOINTER;
         ShaderProgram *mProgram;
         float mAlphaCached;
         int mVpCached;

@@ -94,7 +94,7 @@
 #endif
 #endif
 
-Graphics *mainGraphics = nullptr;
+Graphics *mainGraphics A_NONNULLPOINTER = nullptr;
 
 Graphics::Graphics() :
     mWidth(0),

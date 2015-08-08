@@ -532,7 +532,7 @@ SDL_Surface* SafeOpenGLGraphics::getScreenshot()
     SDL_Surface *const screenshot = MSDL_CreateRGBSurface(
         SDL_SWSURFACE, w, h, 24, 0xff0000, 0x00ff00, 0x0000ff, 0x000000);
 
-    if (!screenshot)
+    if (!screenshot || !screenshot->pixels)
         return nullptr;
 
     if (SDL_MUSTLOCK(screenshot))

@@ -89,12 +89,12 @@ class NormalOpenGLGraphics final : public Graphics
 #endif
 
     private:
-        GLfloat *mFloatTexArray;
-        GLint *mIntTexArray;
-        GLint *mIntVertArray;
-        GLfloat *mFloatTexArrayCached;
-        GLint *mIntTexArrayCached;
-        GLint *mIntVertArrayCached;
+        GLfloat *mFloatTexArray A_NONNULLPOINTER;
+        GLint *mIntTexArray A_NONNULLPOINTER;
+        GLint *mIntVertArray A_NONNULLPOINTER;
+        GLfloat *mFloatTexArrayCached A_NONNULLPOINTER;
+        GLint *mIntTexArrayCached A_NONNULLPOINTER;
+        GLint *mIntVertArrayCached A_NONNULLPOINTER;
         float mAlphaCached;
         int mVpCached;
         bool mTexture;
