@@ -278,7 +278,7 @@ class Gui final
          *      SDLInput
          * @since 0.1.0
          */
-        void setInput(SDLInput *const input);
+        void setInput(SDLInput *const input) A_NONNULL(2);
 
         /**
          * Gets the input object being used for input handling.
@@ -438,17 +438,17 @@ class Gui final
         /**
          * Holds the graphics implementation used.
          */
-        Graphics* mGraphics;
+        Graphics* mGraphics A_NONNULLPOINTER;
 
         /**
          * Holds the input implementation used.
          */
-        SDLInput* mInput;
+        SDLInput* mInput A_NONNULLPOINTER;
 
         /**
          * Holds the focus handler for the Gui.
          */
-        FocusHandler* mFocusHandler;
+        FocusHandler* mFocusHandler A_NONNULLPOINTER;
 
         /**
          * Typedef.
@@ -505,12 +505,18 @@ class Gui final
         std::deque<Widget*> mWidgetWithMouseQueue;
 
         GuiConfigListener *mConfigListener;
-        Font *mGuiFont;                  /**< The global GUI font */
-        Font *mInfoParticleFont;         /**< Font for Info Particles */
-        Font *mHelpFont;                 /**< Font for Help Window */
-        Font *mSecureFont;               /**< Font for secure labels */
-        Font *mNpcFont;                  /**< Font for npc text */
-        ImageSet *mMouseCursors;            /**< Mouse cursor images */
+        /** The global GUI font */
+        Font *mGuiFont A_NONNULLPOINTER;
+        /** Font for Info Particles */
+        Font *mInfoParticleFont A_NONNULLPOINTER;
+        /** Font for Help Window */
+        Font *mHelpFont A_NONNULLPOINTER;
+        /** Font for secure labels */
+        Font *mSecureFont A_NONNULLPOINTER;
+        /** Font for npc text */
+        Font *mNpcFont A_NONNULLPOINTER;
+        /** Mouse cursor images */
+        ImageSet *mMouseCursors;
         float mMouseCursorAlpha;
         int mMouseInactivityTimer;
         Cursor::Cursor mCursorType;
@@ -534,6 +540,6 @@ extern SDLInput *guiInput;                  /**< GUI input */
 /**
  * Bolded text font
  */
-extern Font *boldFont;
+extern Font *boldFont A_NONNULLPOINTER;
 
 #endif  // GUI_GUI_H

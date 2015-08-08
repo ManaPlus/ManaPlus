@@ -569,7 +569,7 @@ void Gui::setUseCustomCursor(const bool customCursor)
 void Gui::handleMouseMoved(const MouseInput &mouseInput)
 {
     // Check if the mouse leaves the application window.
-    if (!mWidgetWithMouseQueue.empty() && (mouseInput.getX() < 0
+    if (mTop && !mWidgetWithMouseQueue.empty() && (mouseInput.getX() < 0
         || mouseInput.getY() < 0 || !mTop->getDimension().isPointInRect(
         mouseInput.getX(), mouseInput.getY())))
     {

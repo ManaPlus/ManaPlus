@@ -40,6 +40,9 @@ class DialogsManager final : public AttributeListener,
     public:
         DialogsManager();
 
+        virtual ~DialogsManager()
+        { }
+
         static void closeDialogs();
 
         static void createUpdaterWindow();

@@ -74,8 +74,8 @@ class PopupList final : public Popup,
 
     private:
         ListModel *mListModel;
-        ListBox *mListBox;
-        ScrollArea *mScrollArea;
+        ListBox *mListBox A_NONNULLPOINTER;
+        ScrollArea *mScrollArea A_NONNULLPOINTER;
         DropDown *mDropDown;
         int mPressedIndex;
         Modal mModal;

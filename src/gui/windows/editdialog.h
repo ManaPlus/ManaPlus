@@ -66,7 +66,7 @@ class EditDialog final : public Window,
 
     private:
         std::string mEventOk;
-        TextField *mTextField;
+        TextField *mTextField A_NONNULLPOINTER;
 };
 
 #endif  // GUI_WINDOWS_EDITDIALOG_H

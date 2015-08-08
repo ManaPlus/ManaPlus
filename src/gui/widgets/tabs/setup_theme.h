@@ -52,61 +52,61 @@ class Setup_Theme final : public SetupTab
 
     private:
         Label *mThemeLabel;
-        ThemesModel *mThemesModel;
+        ThemesModel *mThemesModel A_NONNULLPOINTER;
         DropDown *mThemeDropDown;
         std::string mTheme;
         ThemeInfo *mInfo;
 
-        FontsModel *mFontsModel;
-        Label *mFontLabel;
-        DropDown *mFontDropDown;
+        FontsModel *mFontsModel A_NONNULLPOINTER;
+        Label *mFontLabel A_NONNULLPOINTER;
+        DropDown *mFontDropDown A_NONNULLPOINTER;
         std::string mFont;
 
-        LangListModel *mLangListModel;
+        LangListModel *mLangListModel A_NONNULLPOINTER;
 
-        Label *mLangLabel;
-        DropDown *mLangDropDown;
+        Label *mLangLabel A_NONNULLPOINTER;
+        DropDown *mLangDropDown A_NONNULLPOINTER;
         std::string mLang;
 
-        Label *mBoldFontLabel;
-        DropDown *mBoldFontDropDown;
+        Label *mBoldFontLabel A_NONNULLPOINTER;
+        DropDown *mBoldFontDropDown A_NONNULLPOINTER;
         std::string mBoldFont;
 
-        Label *mParticleFontLabel;
-        DropDown *mParticleFontDropDown;
+        Label *mParticleFontLabel A_NONNULLPOINTER;
+        DropDown *mParticleFontDropDown A_NONNULLPOINTER;
         std::string mParticleFont;
 
-        Label *mHelpFontLabel;
-        DropDown *mHelpFontDropDown;
+        Label *mHelpFontLabel A_NONNULLPOINTER;
+        DropDown *mHelpFontDropDown A_NONNULLPOINTER;
         std::string mHelpFont;
 
-        Label *mSecureFontLabel;
-        DropDown *mSecureFontDropDown;
+        Label *mSecureFontLabel A_NONNULLPOINTER;
+        DropDown *mSecureFontDropDown A_NONNULLPOINTER;
         std::string mSecureFont;
 
-        Label *mNpcFontLabel;
-        DropDown *mNpcFontDropDown;
+        Label *mNpcFontLabel A_NONNULLPOINTER;
+        DropDown *mNpcFontDropDown A_NONNULLPOINTER;
         std::string mNpcFont;
 
-        Label *mJapanFontLabel;
-        DropDown *mJapanFontDropDown;
+        Label *mJapanFontLabel A_NONNULLPOINTER;
+        DropDown *mJapanFontDropDown A_NONNULLPOINTER;
         std::string mJapanFont;
 
-        Label *mChinaFontLabel;
-        DropDown *mChinaFontDropDown;
+        Label *mChinaFontLabel A_NONNULLPOINTER;
+        DropDown *mChinaFontDropDown A_NONNULLPOINTER;
         std::string mChinaFont;
 
-        FontSizeChoiceListModel *mFontSizeListModel;
+        FontSizeChoiceListModel *mFontSizeListModel A_NONNULLPOINTER;
         Label *mFontSizeLabel;
         int mFontSize;
         DropDown *mFontSizeDropDown;
 
-        FontSizeChoiceListModel *mNpcFontSizeListModel;
+        FontSizeChoiceListModel *mNpcFontSizeListModel A_NONNULLPOINTER;
         Label *mNpcFontSizeLabel;
         int mNpcFontSize;
-        DropDown *mNpcFontSizeDropDown;
+        DropDown *mNpcFontSizeDropDown A_NONNULLPOINTER;
 
-        Button *mInfoButton;
+        Button *mInfoButton A_NONNULLPOINTER;
         std::string mThemeInfo;
 };
 

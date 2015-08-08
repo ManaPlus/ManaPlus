@@ -71,7 +71,7 @@ namespace
             bool operator() (const ItemIdPair *const pair1,
                              const ItemIdPair *const pair2) const
             {
-                if (!pair1 || !pair2)
+                if (!pair1->mItem || !pair2->mItem)
                     return false;
 
                 return (pair1->mItem->getInfo().getName()
@@ -85,7 +85,7 @@ namespace
             bool operator() (const ItemIdPair *const pair1,
                              const ItemIdPair *const pair2) const
             {
-                if (!pair1 || !pair2)
+                if (!pair1->mItem || !pair2->mItem)
                     return false;
 
                 return pair1->mItem->getId() < pair2->mItem->getId();
@@ -98,7 +98,7 @@ namespace
             bool operator() (const ItemIdPair *const pair1,
                              const ItemIdPair *const pair2) const
             {
-                if (!pair1 || !pair2)
+                if (!pair1->mItem || !pair2->mItem)
                     return false;
 
                 const int w1 = pair1->mItem->getInfo().getWeight();
@@ -118,7 +118,7 @@ namespace
             bool operator() (const ItemIdPair *const pair1,
                              const ItemIdPair *const pair2) const
             {
-                if (!pair1 || !pair2)
+                if (!pair1->mItem || !pair2->mItem)
                     return false;
 
                 const int c1 = pair1->mItem->getQuantity();
@@ -138,7 +138,7 @@ namespace
             bool operator() (const ItemIdPair *const pair1,
                              const ItemIdPair *const pair2) const
             {
-                if (!pair1 || !pair2)
+                if (!pair1->mItem || !pair2->mItem)
                     return false;
 
                 const ItemInfo &info1 = pair1->mItem->getInfo();
@@ -490,7 +490,7 @@ void ItemContainer::mouseDragged(MouseEvent &event A_UNUSED)
 
 void ItemContainer::mouseReleased(MouseEvent &event)
 {
-    if (mClicks == 2)
+    if (mClicks == 2 || !inventoryHandler || !tradeHandler)
         return;
 
     switch (mSelectionStatus)

@@ -49,14 +49,14 @@ class Setup_Joystick final : public SetupTab
         void setTempEnabled(const bool sel);
 
     private:
-        Label *mCalibrateLabel;
-        Button *mCalibrateButton;
-        Button *mDetectButton;
-        bool mOriginalJoystickEnabled;
-        CheckBox *mJoystickEnabled;
-        NamesModel *mNamesModel;
-        DropDown *mNamesDropDown;
-        CheckBox *mUseInactiveCheckBox;
+        Label *mCalibrateLabel A_NONNULLPOINTER;
+        Button *mCalibrateButton A_NONNULLPOINTER;
+        Button *mDetectButton A_NONNULLPOINTER;
+        CheckBox *mJoystickEnabled A_NONNULLPOINTER;
+        NamesModel *mNamesModel A_NONNULLPOINTER;
+        DropDown *mNamesDropDown A_NONNULLPOINTER;
+        CheckBox *mUseInactiveCheckBox A_NONNULLPOINTER;
+        bool mOriginalJoystickEnabled A_NONNULLPOINTER;
 };
 
 #endif  // GUI_WIDGETS_TABS_SETUP_JOYSTICK_H

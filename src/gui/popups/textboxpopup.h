@@ -56,7 +56,7 @@ class TextBoxPopup final : public Popup
         void mouseMoved(MouseEvent &event) override final;
 
     private:
-        TextBox *mTextBox;
+        TextBox *mTextBox A_NONNULLPOINTER;
 };
 
 extern TextBoxPopup *textBoxPopup;

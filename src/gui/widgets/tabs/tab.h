@@ -208,8 +208,7 @@ class Tab notfinal : public BasicContainer,
         virtual void setCurrent()
         { }
 
-        Label* mLabel;
-
+        Label* mLabel A_NONNULLPOINTER;
 
         TabbedArea* mTabbedArea;
 
@@ -232,7 +231,7 @@ class Tab notfinal : public BasicContainer,
         const Color *mPlayerFlashColor;
         const Color *mPlayerFlashOutlineColor;
         int mFlash;
-        ImageCollection *mVertexes;
+        ImageCollection *mVertexes A_NONNULLPOINTER;
         Image *mImage;
         int mMode;
         int mLabelMode;

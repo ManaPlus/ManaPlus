@@ -201,7 +201,7 @@ class ChatTab notfinal : public Tab
 
         void addRow(std::string &line);
 
-        BrowserBox *mTextOutput;
+        BrowserBox *mTextOutput A_NONNULLPOINTER;
         ScrollArea *mScrollArea;
         std::string mChannelName;
         std::string mLogName;

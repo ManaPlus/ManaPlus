@@ -688,7 +688,7 @@ class Window notfinal : public BasicContainer2,
          * where two borders are moved at the same time.
          */
         static const unsigned resizeBorderWidth = 10;
-        ImageCollection *mVertexes;
+        ImageCollection *mVertexes A_NONNULLPOINTER;
         int mCaptionOffsetX;
         int mCaptionOffsetY;
         Graphics::Alignment mCaptionAlign;
@@ -699,7 +699,7 @@ class Window notfinal : public BasicContainer2,
         int mClosePadding;
         int mStickySpacing;
         int mStickyPadding;
-        Font *mCaptionFont;
+        Font *mCaptionFont A_NONNULLPOINTER;
         Modal mModal;                 /**< Window is modal */
         bool mShowTitle;              /**< Window has a title bar */
         bool mCloseWindowButton;      /**< Window has a close button */

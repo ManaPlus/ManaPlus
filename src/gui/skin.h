@@ -38,10 +38,10 @@ class Skin final
         Skin(ImageRect *const restrict skin,
              const ImageRect *const restrict images,
              const std::string &filePath,
-             const std::string &name = "",
-             const int padding = 3,
-             const int titlePadding = 4,
-             StringIntMap *restrict const options = nullptr);
+             const std::string &name,
+             const int padding,
+             const int titlePadding,
+             StringIntMap *restrict const options) A_NONNULL(8);
 
         A_DELETE_COPY(Skin)
 
@@ -129,7 +129,7 @@ class Skin final
         Image *mStickyImageDown;   /**< Sticky Button Image */
         int mPadding;
         int mTitlePadding;
-        StringIntMap *mOptions;
+        StringIntMap *mOptions A_NONNULLPOINTER;
 };
 
 #endif  // GUI_SKIN_H

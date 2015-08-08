@@ -123,17 +123,17 @@ class SellDialog notfinal : public Window,
         virtual void initButtons()
         { }
 
-        Button *mSellButton;
-        Button *mQuitButton;
+        Button *mSellButton A_NONNULLPOINTER;
+        Button *mQuitButton A_NONNULLPOINTER;
         Button *mAddMaxButton;
         Button *mIncreaseButton;
         Button *mDecreaseButton;
-        ShopListBox *mShopItemList;
-        ScrollArea *mScrollArea;
+        ShopListBox *mShopItemList A_NONNULLPOINTER;
+        ScrollArea *mScrollArea A_NONNULLPOINTER;
         Label *mMoneyLabel;
         Label *mQuantityLabel;
         Slider *mSlider;
-        ShopItems *mShopItems;
+        ShopItems *mShopItems A_NONNULLPOINTER;
 
         int mPlayerMoney;
         int mMaxItems;

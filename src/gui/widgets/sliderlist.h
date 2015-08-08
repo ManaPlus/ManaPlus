@@ -77,8 +77,8 @@ class SliderList final : public Container,
 
         int getMaxLabelWidth() const A_WARN_UNUSED;
 
-        Button *mButtons[2];
-        Label *mLabel;
+        Button *mButtons[2] A_NONNULLPOINTER;
+        Label *mLabel A_NONNULLPOINTER;
         ListModel *mListModel;
         std::string mPrevEventId;
         std::string mNextEventId;

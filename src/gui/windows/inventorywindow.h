@@ -128,7 +128,7 @@ class InventoryWindow final : public Window,
         void slotsChanged(Inventory *const inventory) override final;
 
         bool isMainInventory() const A_WARN_UNUSED
-        { return mInventory->isMainInventory(); }
+        { return mInventory ? mInventory->isMainInventory() : false; }
 
         /**
          * Returns true if any instances exist.
@@ -174,7 +174,7 @@ class InventoryWindow final : public Window,
         static WindowList invInstances;
 
         Inventory *mInventory;
-        ItemContainer *mItems;
+        ItemContainer *mItems A_NONNULLPOINTER;
 
         Button *mUseButton;
         Button *mDropButton;

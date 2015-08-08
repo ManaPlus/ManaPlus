@@ -963,8 +963,9 @@ void BrowserBox::moveSelectionDown()
 
 void BrowserBox::selectSelection()
 {
-    if (mSelectedLink < 0 || mSelectedLink >= static_cast<signed int>(
-        mLinks.size()))
+    if (!mLinkHandler ||
+        mSelectedLink < 0 ||
+        mSelectedLink >= static_cast<signed int>(mLinks.size()))
     {
         return;
     }

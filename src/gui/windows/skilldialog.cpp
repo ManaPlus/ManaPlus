@@ -115,6 +115,8 @@ void SkillDialog::action(const ActionEvent &event)
     const std::string &eventId = event.getId();
     if (eventId == "inc")
     {
+        if (!playerHandler)
+            return;
         const SkillTab *const tab = static_cast<const SkillTab *const>(
             mTabs->getSelectedTab());
         if (tab)

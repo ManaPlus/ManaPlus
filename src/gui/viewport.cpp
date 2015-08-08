@@ -195,11 +195,8 @@ void Viewport::draw(Graphics *graphics)
             {
                 logger->log("incorrect player position: %d, %d, %d, %d",
                     player_x, player_y, mPixelViewX, mPixelViewY);
-                if (localPlayer)
-                {
-                    logger->log("tile position: %d, %d",
-                        localPlayer->getTileX(), localPlayer->getTileY());
-                }
+                logger->log("tile position: %d, %d",
+                    localPlayer->getTileX(), localPlayer->getTileY());
             }
             mPixelViewX = player_x;
             mPixelViewY = player_y;

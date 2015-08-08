@@ -122,7 +122,7 @@ class LangListModel final : public ExtendedListModel
             return mIcons[i];
         }
 
-        Image *mIcons[langs_count];
+        Image *mIcons[langs_count] A_NONNULLPOINTER;
 };
 
 #endif  // GUI_MODELS_LANGLISTMODEL_H

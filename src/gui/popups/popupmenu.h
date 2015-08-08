@@ -201,8 +201,8 @@ class PopupMenu final : public Popup, public LinkHandler
 
         bool addBeingMenu();
 
-        BrowserBox *mBrowserBox;
-        ScrollArea *mScrollArea;
+        BrowserBox *mBrowserBox A_NONNULLPOINTER;
+        ScrollArea *mScrollArea A_NONNULLPOINTER;
 
         BeingId mBeingId;
         BeingId mFloorItemId;

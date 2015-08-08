@@ -59,23 +59,23 @@ class MapDebugTab final : public DebugTab
         void logic() override final;
 
     private:
-        Label *mMusicFileLabel;
-        Label *mMapLabel;
-        Label *mMinimapLabel;
-        Label *mTileMouseLabel;
-        Label *mParticleCountLabel;
-        Label *mMapActorCountLabel;
-        Label *mXYLabel;
-        Label *mTexturesLabel;
+        Label *mMusicFileLabel A_NONNULLPOINTER;
+        Label *mMapLabel A_NONNULLPOINTER;
+        Label *mMinimapLabel A_NONNULLPOINTER;
+        Label *mTileMouseLabel A_NONNULLPOINTER;
+        Label *mParticleCountLabel A_NONNULLPOINTER;
+        Label *mMapActorCountLabel A_NONNULLPOINTER;
+        Label *mXYLabel A_NONNULLPOINTER;
+        Label *mTexturesLabel A_NONNULLPOINTER;
         int mUpdateTime;
 #ifdef DEBUG_DRAW_CALLS
-        Label *mDrawCallsLabel;
+        Label *mDrawCallsLabel A_NONNULLPOINTER;
 #endif
 #ifdef DEBUG_BIND_TEXTURE
-        Label *mBindsLabel;
+        Label *mBindsLabel A_NONNULLPOINTER;
 #endif
-        Label *mFPSLabel;
-        Label *mLPSLabel;
+        Label *mFPSLabel A_NONNULLPOINTER;
+        Label *mLPSLabel A_NONNULLPOINTER;
         std::string mFPSText;
 };
 
@@ -91,19 +91,19 @@ class TargetDebugTab final : public DebugTab
         void logic() override final;
 
     private:
-        Label *mTargetLabel;
-        Label *mTargetIdLabel;
-        Label *mTargetTypeLabel;
-        Label *mTargetLevelLabel;
-        Label *mTargetRaceLabel;
-        Label *mTargetPartyLabel;
-        Label *mTargetGuildLabel;
-        Label *mAttackDelayLabel;
-        Label *mMinHitLabel;
-        Label *mMaxHitLabel;
-        Label *mCriticalHitLabel;
-        Label *mKarmaLabel;
-        Label *mMannerLabel;
+        Label *mTargetLabel A_NONNULLPOINTER;
+        Label *mTargetIdLabel A_NONNULLPOINTER;
+        Label *mTargetTypeLabel A_NONNULLPOINTER;
+        Label *mTargetLevelLabel A_NONNULLPOINTER;
+        Label *mTargetRaceLabel A_NONNULLPOINTER;
+        Label *mTargetPartyLabel A_NONNULLPOINTER;
+        Label *mTargetGuildLabel A_NONNULLPOINTER;
+        Label *mAttackDelayLabel A_NONNULLPOINTER;
+        Label *mMinHitLabel A_NONNULLPOINTER;
+        Label *mMaxHitLabel A_NONNULLPOINTER;
+        Label *mCriticalHitLabel A_NONNULLPOINTER;
+        Label *mKarmaLabel A_NONNULLPOINTER;
+        Label *mMannerLabel A_NONNULLPOINTER;
 };
 
 class NetDebugTab final : public DebugTab
@@ -118,9 +118,9 @@ class NetDebugTab final : public DebugTab
         void logic() override final;
 
     private:
-        Label *mPingLabel;
-        Label *mInPackets1Label;
-        Label *mOutPackets1Label;
+        Label *mPingLabel A_NONNULLPOINTER;
+        Label *mInPackets1Label A_NONNULLPOINTER;
+        Label *mOutPackets1Label A_NONNULLPOINTER;
 };
 
 #endif  // GUI_WIDGETS_TABS_DEBUGWINDOWTABS_H

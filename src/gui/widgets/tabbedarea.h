@@ -241,7 +241,7 @@ class TabbedArea final : public ActionListener,
         typedef std::vector <std::pair<Tab*, Widget*> > TabContainer;
 
         /** The tab arrows */
-        Button *mArrowButton[2];
+        Button *mArrowButton[2] A_NONNULLPOINTER;
 
         /** Check whether the arrow should be clickable */
         void updateArrowEnableState();
@@ -253,8 +253,8 @@ class TabbedArea final : public ActionListener,
         void updateTabsWidth();
 
         Tab* mSelectedTab;
-        BasicContainer2* mTabContainer;
-        BasicContainer2* mWidgetContainer;
+        BasicContainer2* mTabContainer A_NONNULLPOINTER;
+        BasicContainer2* mWidgetContainer A_NONNULLPOINTER;
         std::vector<Tab*> mTabsToDelete;
         TabContainer mTabs;
 

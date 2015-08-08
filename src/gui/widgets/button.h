@@ -286,7 +286,7 @@ class Button final : public Widget,
 
         TextChunk mTextChunk;
 
-        ImageCollection *mVertexes2;
+        ImageCollection *mVertexes2 A_NONNULLPOINTER;
         Color mEnabledColor;
         Color mEnabledColor2;
         Color mDisabledColor;

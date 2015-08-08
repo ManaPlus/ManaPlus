@@ -86,8 +86,8 @@ class CharacterDisplay final : public Container,
 
     private:
         Net::Character *mCharacter;
-        PlayerBox *mPlayerBox;
-        Label *mName;
+        PlayerBox *mPlayerBox A_NONNULLPOINTER;
+        Label *mName A_NONNULLPOINTER;
 };
 
 #endif  // GUI_WIDGETS_CHARACTERDISPLAY_H

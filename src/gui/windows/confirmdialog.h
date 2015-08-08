@@ -64,7 +64,7 @@ class ConfirmDialog notfinal : public Window,
         void postInit() override final;
 
     private:
-        TextBox *mTextBox;
+        TextBox *mTextBox A_NONNULLPOINTER;
         bool mIgnore;
 };
 

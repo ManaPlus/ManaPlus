@@ -142,6 +142,8 @@ class LayoutCell notfinal
             ARRAY
         };
 
+        static LayoutCell emptyCell;
+
     private:
         LayoutCell() :
             mWidget(nullptr),

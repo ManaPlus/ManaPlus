@@ -479,8 +479,8 @@ class ScrollArea final : public BasicContainer,
         static ImageRect hBackground;
         static Image *buttons[4][2];
 
-        ImageCollection *mVertexes;
-        ImageCollection *mVertexes2;
+        ImageCollection *mVertexes A_NONNULLPOINTER;
+        ImageCollection *mVertexes2 A_NONNULLPOINTER;
 
         /**
          * Holds the horizontal scroll bar policy.

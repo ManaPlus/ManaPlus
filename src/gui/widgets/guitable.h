@@ -180,7 +180,7 @@ class GuiTable final : public Widget,
 
         static float mAlpha;
 
-        TableModel *mModel;
+        TableModel *mModel A_NONNULLPOINTER;
 
         /** If someone moves a fresh widget to the top, we must display it. */
         Widget *mTopWidget;

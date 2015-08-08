@@ -117,8 +117,7 @@ DropDown::DropDown(const Widget2 *const widget,
         }
 
         // get the border skin
-        if (theme)
-            theme->loadRect(skinRect, "dropdown_background.xml", "");
+        theme->loadRect(skinRect, "dropdown_background.xml", "");
     }
 
     instances++;

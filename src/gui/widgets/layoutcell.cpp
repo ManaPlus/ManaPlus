@@ -30,6 +30,7 @@
 #include "debug.h"
 
 static LayoutArray tempArray;
+LayoutCell LayoutCell::emptyCell;
 
 LayoutCell::~LayoutCell()
 {

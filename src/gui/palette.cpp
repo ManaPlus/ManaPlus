@@ -90,7 +90,7 @@ void Palette::advanceGradient()
 
         for (size_t i = 0, sz = mGradVector.size(); i < sz; i++)
         {
-            ColorElem *const elem = mGradVector[i];
+            ColorElem *const elem A_NONNULLPOINTER = mGradVector[i];
             if (!elem)
                 continue;
 

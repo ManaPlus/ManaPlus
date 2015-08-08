@@ -55,32 +55,32 @@ class Setup_Colors final : public SetupTab,
     private:
         static const char *const rawmsg;
 
-        ListBox *mColorBox;
-        ScrollArea *mScroll;
-        BrowserBox *mPreview;
-        TextPreview *mTextPreview;
-        ScrollArea *mPreviewBox;
+        ListBox *mColorBox A_NONNULLPOINTER;
+        ScrollArea *mScroll A_NONNULLPOINTER;
+        BrowserBox *mPreview A_NONNULLPOINTER;
+        TextPreview *mTextPreview A_NONNULLPOINTER;
+        ScrollArea *mPreviewBox A_NONNULLPOINTER;
         int mSelected;
 
-        Label *mGradTypeLabel;
-        Slider *mGradTypeSlider;
-        Label *mGradTypeText;
+        Label *mGradTypeLabel A_NONNULLPOINTER;
+        Slider *mGradTypeSlider A_NONNULLPOINTER;
+        Label *mGradTypeText A_NONNULLPOINTER;
 
-        Label *mGradDelayLabel;
-        Slider *mGradDelaySlider;
-        TextField *mGradDelayText;
+        Label *mGradDelayLabel A_NONNULLPOINTER;
+        Slider *mGradDelaySlider A_NONNULLPOINTER;
+        TextField *mGradDelayText A_NONNULLPOINTER;
 
-        Label *mRedLabel;
-        Slider *mRedSlider;
-        TextField *mRedText;
+        Label *mRedLabel A_NONNULLPOINTER;
+        Slider *mRedSlider A_NONNULLPOINTER;
+        TextField *mRedText A_NONNULLPOINTER;
 
-        Label *mGreenLabel;
-        Slider *mGreenSlider;
-        TextField *mGreenText;
+        Label *mGreenLabel A_NONNULLPOINTER;
+        Slider *mGreenSlider A_NONNULLPOINTER;
+        TextField *mGreenText A_NONNULLPOINTER;
 
-        Label *mBlueLabel;
-        Slider *mBlueSlider;
-        TextField *mBlueText;
+        Label *mBlueLabel A_NONNULLPOINTER;
+        Slider *mBlueSlider A_NONNULLPOINTER;
+        TextField *mBlueText A_NONNULLPOINTER;
 
         static void setEntry(Slider *const s, TextField *const t,
                              const int value);
