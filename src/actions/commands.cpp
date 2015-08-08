@@ -76,9 +76,12 @@ static std::string getNick(const InputEvent &event)
         WhisperTab *const whisper = dynamic_cast<WhisperTab* const>(event.tab);
         if (!whisper || whisper->getNick().empty())
         {
-            // TRANSLATORS: change relation
-            event.tab->chatLog(_("Please specify a name."),
-                ChatMsgType::BY_SERVER);
+            if (event.tab)
+            {
+                // TRANSLATORS: change relation
+                event.tab->chatLog(_("Please specify a name."),
+                    ChatMsgType::BY_SERVER);
+            }
             return std::string();
         }
         args = whisper->getNick();
@@ -139,8 +142,12 @@ static void changeRelation(const InputEvent &event,
 
 impHandler(chatAnnounce)
 {
-    adminHandler->announce(event.args);
-    return true;
+    if (adminHandler)
+    {
+        adminHandler->announce(event.args);
+        return true;
+    }
+    return false;
 }
 
 impHandler(chatIgnore)
@@ -510,18 +517,23 @@ impHandler(imitation)
 
 impHandler0(sendMail)
 {
+    // +++ need impliment for hercules
     return false;
 }
 
 impHandler(info)
 {
-    if (!event.tab || !localPlayer
-        || !serverFeatures->haveNativeGuilds())
+    if (!event.tab ||
+        !localPlayer ||
+        !serverFeatures ||
+        !serverFeatures->haveNativeGuilds())
     {
         return false;
     }
 
-    if (event.tab->getType() == ChatTabType::GUILD)
+    if (event.tab &&
+        guildHandler &&
+        event.tab->getType() == ChatTabType::GUILD)
     {
         const Guild *const guild = localPlayer->getGuild();
         if (guild)
@@ -652,8 +664,10 @@ impHandler(enableHighlight)
     {
         event.tab->setAllowHighlight(true);
         if (chatWindow)
+        {
             chatWindow->saveState();
-        return true;
+            return true;
+        }
     }
     return false;
 }
@@ -664,8 +678,10 @@ impHandler(disableHighlight)
     {
         event.tab->setAllowHighlight(false);
         if (chatWindow)
+        {
             chatWindow->saveState();
-        return true;
+            return true;
+        }
     }
     return false;
 }
@@ -676,8 +692,10 @@ impHandler(dontRemoveName)
     {
         event.tab->setRemoveNames(false);
         if (chatWindow)
+        {
             chatWindow->saveState();
-        return true;
+            return true;
+        }
     }
     return false;
 }
@@ -688,8 +706,10 @@ impHandler(removeName)
     {
         event.tab->setRemoveNames(true);
         if (chatWindow)
+        {
             chatWindow->saveState();
-        return true;
+            return true;
+        }
     }
     return false;
 }
@@ -700,8 +720,10 @@ impHandler(disableAway)
     {
         event.tab->setNoAway(true);
         if (chatWindow)
+        {
             chatWindow->saveState();
-        return true;
+            return true;
+        }
     }
     return false;
 }
@@ -712,8 +734,10 @@ impHandler(enableAway)
     {
         event.tab->setNoAway(false);
         if (chatWindow)
+        {
             chatWindow->saveState();
-        return true;
+            return true;
+        }
     }
     return false;
 }
@@ -730,20 +754,32 @@ impHandler(testParticle)
 
 impHandler(talkRaw)
 {
-    chatHandler->talkRaw(event.args);
-    return true;
+    if (chatHandler)
+    {
+        chatHandler->talkRaw(event.args);
+        return true;
+    }
+    return false;
 }
 
 impHandler(gm)
 {
-    chatHandler->talk("@wgm " + event.args, GENERAL_CHANNEL);
-    return true;
+    if (chatHandler)
+    {
+        chatHandler->talk("@wgm " + event.args, GENERAL_CHANNEL);
+        return true;
+    }
+    return false;
 }
 
 impHandler(hack)
 {
-    chatHandler->sendRaw(event.args);
-    return true;
+    if (chatHandler)
+    {
+        chatHandler->sendRaw(event.args);
+        return true;
+    }
+    return false;
 }
 
 impHandler(debugSpawn)
@@ -766,8 +802,12 @@ impHandler(serverIgnoreWhisper)
     if (args.empty())
         return false;
 
-    chatHandler->ignore(args);
-    return true;
+    if (chatHandler)
+    {
+        chatHandler->ignore(args);
+        return true;
+    }
+    return false;
 }
 
 impHandler(serverUnIgnoreWhisper)
@@ -776,8 +816,12 @@ impHandler(serverUnIgnoreWhisper)
     if (args.empty())
         return false;
 
-    chatHandler->unIgnore(args);
-    return true;
+    if (chatHandler)
+    {
+        chatHandler->unIgnore(args);
+        return true;
+    }
+    return false;
 }
 
 impHandler(setHomunculusName)
@@ -787,27 +831,35 @@ impHandler(setHomunculusName)
     if (args.empty())
         return false;
 
-    homunculusHandler->setName(args);
-    return true;
-#else
-    return false;
+    if (homunculusHandler)
+    {
+        homunculusHandler->setName(args);
+        return true;
+    }
 #endif
+    return false;
 }
 
 impHandler0(fireHomunculus)
 {
 #ifdef EATHENA_SUPPORT
-    homunculusHandler->fire();
-    return true;
-#else
-    return false;
+    if (homunculusHandler)
+    {
+        homunculusHandler->fire();
+        return true;
+    }
 #endif
+    return false;
 }
 
 impHandler0(leaveParty)
 {
-    partyHandler->leave();
-    return true;
+    if (partyHandler)
+    {
+        partyHandler->leave();
+        return true;
+    }
+    return false;
 }
 
 impHandler(warp)
@@ -815,38 +867,44 @@ impHandler(warp)
     int x = 0;
     int y = 0;
 
-    if (Game::instance() && parse2Int(event.args, x, y))
+    if (adminHandler &&
+        Game::instance() &&
+        parse2Int(event.args, x, y))
     {
         adminHandler->warp(Game::instance()->getCurrentMapName(),
             x, y);
+        return true;
     }
-    return true;
+    return false;
 }
 
 impHandler(homunTalk)
 {
 #ifdef EATHENA_SUPPORT
-    if (!serverFeatures->haveTalkPet())
+    if (!serverFeatures || !serverFeatures->haveTalkPet())
         return false;
 
     std::string args = event.args;
     if (findCutFirst(args, "/me "))
         args = textToMe(args);
-    homunculusHandler->talk(args);
-    return true;
-#else
-    return false;
+    if (homunculusHandler)
+    {
+        homunculusHandler->talk(args);
+        return true;
+    }
 #endif
+    return false;
 }
 
 impHandler(homunEmote)
 {
 #ifdef EATHENA_SUPPORT
-    if (!serverFeatures->haveTalkPet())
+    if (!serverFeatures || !serverFeatures->haveTalkPet())
         return false;
 
-    if (event.action >= InputAction::HOMUN_EMOTE_1
-        && event.action <= InputAction::HOMUN_EMOTE_48)
+    if (homunculusHandler &&
+        event.action >= InputAction::HOMUN_EMOTE_1 &&
+        event.action <= InputAction::HOMUN_EMOTE_48)
     {
         const int emotion = event.action - InputAction::HOMUN_EMOTE_1;
         if (emoteShortcut)
@@ -863,21 +921,23 @@ impHandler(homunEmote)
 impHandler(commandHomunEmote)
 {
 #ifdef EATHENA_SUPPORT
-    if (!serverFeatures->haveTalkPet())
+    if (!serverFeatures || !serverFeatures->haveTalkPet())
         return false;
 
-    homunculusHandler->emote(static_cast<uint8_t>(
-        atoi(event.args.c_str())));
-    return true;
-#else
-    return false;
+    if (homunculusHandler)
+    {
+        homunculusHandler->emote(static_cast<uint8_t>(
+            atoi(event.args.c_str())));
+        return true;
+    }
 #endif
+    return false;
 }
 
 impHandler(createPublicChatRoom)
 {
 #ifdef EATHENA_SUPPORT
-    if (event.args.empty())
+    if (!chatHandler || event.args.empty())
         return false;
     chatHandler->createChatRoom(event.args, "", 100, true);
     return true;
@@ -889,6 +949,8 @@ impHandler(createPublicChatRoom)
 impHandler(joinChatRoom)
 {
 #ifdef EATHENA_SUPPORT
+    if (!chatHandler)
+        return false;
     const std::string args = event.args;
     if (args.empty())
         return false;
@@ -905,11 +967,13 @@ impHandler(joinChatRoom)
 impHandler0(leaveChatRoom)
 {
 #ifdef EATHENA_SUPPORT
-    chatHandler->leaveChatRoom();
-    return true;
-#else
-    return false;
+    if (chatHandler)
+    {
+        chatHandler->leaveChatRoom();
+        return true;
+    }
 #endif
+    return false;
 }
 
 impHandler(confSet)

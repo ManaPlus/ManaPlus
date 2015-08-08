@@ -273,7 +273,7 @@ impHandler0(questsWindowShow)
 impHandler0(bankWindowShow)
 {
 #ifdef EATHENA_SUPPORT
-    if (!serverFeatures->haveBankApi())
+    if (!serverFeatures || !serverFeatures->haveBankApi())
         return false;
 
     showHideWindow(bankWindow);
@@ -286,9 +286,10 @@ impHandler0(bankWindowShow)
 impHandler0(cartWindowShow)
 {
 #ifdef EATHENA_SUPPORT
-    if (!serverFeatures->haveCart()
-        || !localPlayer
-        || !localPlayer->getHaveCart())
+    if (!serverFeatures ||
+        !serverFeatures->haveCart() ||
+        !localPlayer ||
+        !localPlayer->getHaveCart())
     {
         return false;
     }
@@ -316,9 +317,7 @@ impHandler0(quickWindowShow)
     if (setupWindow)
     {
         if (setupWindow->isWindowVisible())
-        {
             setupWindow->doCancel();
-        }
         setupWindow->setVisible(Visible_true);
         setupWindow->activateTab(_("Quick"));
         setupWindow->requestMoveToTop();

@@ -132,6 +132,9 @@ static int uploadUpdate(void *ptr,
         return 0;
 
     UploadChatInfo *const info = reinterpret_cast<UploadChatInfo*>(ptr);
+    if (!info)
+        return 0;
+
     if (status == DownloadStatus::Complete)
     {
         std::string str = Net::Download::getUploadResponse();
@@ -174,7 +177,7 @@ static void uploadFile(const std::string &str,
                        const std::string &addStr,
                        ChatTab *const tab)
 {
-    UploadChatInfo *const info = new UploadChatInfo();
+    UploadChatInfo *const info = new UploadChatInfo;
     Net::Download *const upload = new Net::Download(info,
         "http://sprunge.us",
         &uploadUpdate,
@@ -561,8 +564,9 @@ impHandler0(itenplz)
 {
     if (actorManager)
     {
-        if (playerHandler && playerHandler->canUseMagic()
-            && PlayerInfo::getAttribute(Attributes::MP) >= 3)
+        if (playerHandler &&
+            playerHandler->canUseMagic() &&
+            PlayerInfo::getAttribute(Attributes::MP) >= 3)
         {
             actorManager->itenplz();
         }
@@ -652,15 +656,22 @@ impHandler0(ignoreInput)
 
 impHandler(buy)
 {
+    if (!serverFeatures)
+        return false;
     const std::string args = event.args;
     Being *being = findBeing(args, false);
     if (!being && !serverFeatures->haveVending())
     {
-        const std::set<std::string> &players = whoIsOnline->getOnlineNicks();
-        if (players.find(args) != players.end())
+        if (whoIsOnline)
         {
-            buySellHandler->requestSellList(args);
-            return true;
+            const std::set<std::string> &players =
+                whoIsOnline->getOnlineNicks();
+            if (players.find(args) != players.end())
+            {
+                if (buySellHandler)
+                    buySellHandler->requestSellList(args);
+                return true;
+            }
         }
         return false;
     }
@@ -673,16 +684,18 @@ impHandler(buy)
 
     if (being->getType() == ActorType::Npc)
     {
-        npcHandler->buy(being->getId());
+        if (npcHandler)
+            npcHandler->buy(being->getId());
         return true;
     }
     else if (being->getType() == ActorType::Player)
     {
 #ifdef EATHENA_SUPPORT
-        if (serverFeatures->haveVending())
+        if (vendingHandler && serverFeatures->haveVending())
             vendingHandler->open(being);
         else
 #endif
+        if (buySellHandler)
             buySellHandler->requestSellList(being->getName());
         return true;
     }
@@ -691,15 +704,23 @@ impHandler(buy)
 
 impHandler(sell)
 {
+    if (!serverFeatures)
+        return false;
+
     const std::string args = event.args;
     Being *being = findBeing(args, false);
     if (!being && !serverFeatures->haveVending())
     {
-        const std::set<std::string> &players = whoIsOnline->getOnlineNicks();
-        if (players.find(args) != players.end())
+        if (whoIsOnline)
         {
-            buySellHandler->requestBuyList(args);
-            return true;
+            const std::set<std::string> &players =
+                whoIsOnline->getOnlineNicks();
+            if (players.find(args) != players.end())
+            {
+                if (buySellHandler)
+                    buySellHandler->requestBuyList(args);
+                return true;
+            }
         }
         return false;
     }
@@ -712,16 +733,18 @@ impHandler(sell)
 
     if (being->getType() == ActorType::Npc)
     {
-        npcHandler->sell(being->getId());
+        if (npcHandler)
+            npcHandler->sell(being->getId());
         return true;
     }
     else if (being->getType() == ActorType::Player)
     {
 #ifdef EATHENA_SUPPORT
-        if (serverFeatures->haveVending())
+        if (buyingStoreHandler && serverFeatures->haveVending())
             buyingStoreHandler->open(being);
         else
 #endif
+        if (buySellHandler)
             buySellHandler->requestBuyList(being->getName());
         return true;
     }
@@ -911,7 +934,8 @@ impHandler0(openTrade)
     const Being *const being = localPlayer->getTarget();
     if (being && being->getType() == ActorType::Player)
     {
-        tradeHandler->request(being);
+        if (tradeHandler)
+            tradeHandler->request(being);
         tradePartnerName = being->getName();
         if (tradeWindow)
             tradeWindow->clear();
@@ -969,7 +993,8 @@ impHandler(where)
 
 impHandler0(who)
 {
-    chatHandler->who();
+    if (chatHandler)
+        chatHandler->who();
     return true;
 }
 
@@ -1010,7 +1035,8 @@ impHandler(trade)
         being = localPlayer->getTarget();
     if (being)
     {
-        tradeHandler->request(being);
+        if (tradeHandler)
+            tradeHandler->request(being);
         tradePartnerName = being->getName();
         if (tradeWindow)
             tradeWindow->clear();
@@ -1082,7 +1108,8 @@ impHandler0(cacheInfo)
 
 impHandler0(disconnect)
 {
-    gameHandler->disconnect2();
+    if (gameHandler)
+        gameHandler->disconnect2();
     return true;
 }
 
@@ -1096,7 +1123,7 @@ impHandler(undress)
         target = actorManager->findNearestByName(event.args);
     if (!target)
         target = localPlayer->getTarget();
-    if (target)
+    if (target && beingHandler)
         beingHandler->undress(target);
     return true;
 }
@@ -1279,13 +1306,15 @@ impHandler0(dump)
 
 impHandler0(serverIgnoreAll)
 {
-    chatHandler->ignoreAll();
+    if (chatHandler)
+        chatHandler->ignoreAll();
     return true;
 }
 
 impHandler0(serverUnIgnoreAll)
 {
-    chatHandler->unIgnoreAll();
+    if (chatHandler)
+        chatHandler->unIgnoreAll();
     return true;
 }
 
@@ -1444,6 +1473,8 @@ impHandler0(createItems)
     FOR_EACH (ItemDB::ItemInfos::const_iterator, it, items)
     {
         const ItemInfo *const info = (*it).second;
+        if (!info)
+            continue;
         const int id = info->getId();
         if (id <= 500)
             continue;
@@ -1499,7 +1530,8 @@ impHandler(uploadLog)
 impHandler0(mercenaryFire)
 {
 #ifdef EATHENA_SUPPORT
-    mercenaryHandler->fire();
+    if (mercenaryHandler)
+        mercenaryHandler->fire();
     return true;
 #else
     return false;
@@ -1547,10 +1579,13 @@ impHandler(invToStorage)
         return true;
     if (amount)
     {
-        inventoryHandler->moveItem2(InventoryType::INVENTORY,
-            item->getInvIndex(),
-            amount,
-            InventoryType::STORAGE);
+        if (inventoryHandler)
+        {
+            inventoryHandler->moveItem2(InventoryType::INVENTORY,
+                item->getInvIndex(),
+                amount,
+                InventoryType::STORAGE);
+        }
     }
     else
     {
@@ -1570,7 +1605,8 @@ impHandler(tradeAdd)
 
     if (amount)
     {
-        tradeWindow->tradeItem(item, amount, true);
+        if (tradeWindow)
+            tradeWindow->tradeItem(item, amount, true);
     }
     else
     {
@@ -1586,10 +1622,13 @@ impHandler(storageToInv)
     const int amount = getAmountFromEvent(event, item, InventoryType::STORAGE);
     if (amount)
     {
-        inventoryHandler->moveItem2(InventoryType::STORAGE,
-            item->getInvIndex(),
-            amount,
-            InventoryType::INVENTORY);
+        if (inventoryHandler && item)
+        {
+            inventoryHandler->moveItem2(InventoryType::STORAGE,
+                item->getInvIndex(),
+                amount,
+                InventoryType::INVENTORY);
+        }
     }
     else
     {
@@ -1636,7 +1675,7 @@ impHandler(kick)
     }
     if (!target)
         target = localPlayer->getTarget();
-    if (target)
+    if (target && adminHandler)
         adminHandler->kick(target->getId());
     return true;
 }

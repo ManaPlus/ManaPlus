@@ -56,7 +56,8 @@ static void outString(ChatTab *const tab,
 {
     if (!tab)
     {
-        chatHandler->talk(def, GENERAL_CHANNEL);
+        if (chatHandler)
+            chatHandler->talk(def, GENERAL_CHANNEL);
         return;
     }
 
@@ -64,20 +65,24 @@ static void outString(ChatTab *const tab,
     {
         case ChatTabType::PARTY:
         {
-            partyHandler->chat(str);
+            if (partyHandler)
+                partyHandler->chat(str);
             break;
         }
         case ChatTabType::GUILD:
         {
-            if (!localPlayer)
+            if (!guildHandler || !localPlayer)
                 return;
             const Guild *const guild = localPlayer->getGuild();
             if (guild)
             {
                 if (guild->getServerGuild())
                 {
-                    if (!serverFeatures->haveNativeGuilds())
+                    if (!serverFeatures ||
+                        !serverFeatures->haveNativeGuilds())
+                    {
                         return;
+                    }
                     guildHandler->chat(str);
                 }
 #ifdef TMWA_SUPPORT
@@ -101,7 +106,8 @@ static void outString(ChatTab *const tab,
         case ChatTabType::DEBUG:
         case ChatTabType::BATTLE:
         case ChatTabType::LANG:
-            chatHandler->talk(str, GENERAL_CHANNEL);
+            if (chatHandler)
+                chatHandler->talk(str, GENERAL_CHANNEL);
             break;
     }
 }
@@ -238,13 +244,18 @@ impHandler(msg)
 
     if (splitWhisper(event.args, recvnick, message))
     {
+        if (!chatWindow)
+            return false;
         chatWindow->addWhisper(recvnick, message, ChatMsgType::BY_PLAYER);
     }
     else
     {
-        // TRANSLATORS: whisper send
-        event.tab->chatLog(_("Cannot send empty whispers!"),
-            ChatMsgType::BY_SERVER);
+        if (event.tab)
+        {
+            // TRANSLATORS: whisper send
+            event.tab->chatLog(_("Cannot send empty whispers!"),
+                ChatMsgType::BY_SERVER);
+        }
     }
     return true;
 }
@@ -271,7 +282,7 @@ impHandler(msg2)
     std::string recvnick;
     std::string message;
 
-    if (splitWhisper(event.args, recvnick, message))
+    if (chatHandler && splitWhisper(event.args, recvnick, message))
         chatHandler->privateMessage(recvnick, message);
     return true;
 }
@@ -310,7 +321,7 @@ impHandler0(clearChatTab)
 
 impHandler(createParty)
 {
-    if (!event.tab)
+    if (!event.tab || !partyHandler)
         return false;
 
     if (event.args.empty())
@@ -328,8 +339,13 @@ impHandler(createParty)
 
 impHandler(createGuild)
 {
-    if (!event.tab || !serverFeatures->haveNativeGuilds())
+    if (!guildHandler ||
+        !event.tab ||
+        !serverFeatures ||
+        !serverFeatures->haveNativeGuilds())
+    {
         return false;
+    }
 
     if (event.args.empty())
     {
@@ -348,7 +364,8 @@ impHandler(party)
 {
     if (!event.args.empty())
     {
-        partyHandler->invite(event.args);
+        if (partyHandler)
+            partyHandler->invite(event.args);
     }
     else
     {
@@ -364,7 +381,7 @@ impHandler(party)
 
 impHandler(guild)
 {
-    if (!event.tab || !localPlayer)
+    if (!guildHandler || !event.tab || !localPlayer)
         return false;
 
     const std::string args = event.args;
@@ -450,7 +467,8 @@ impHandler(kickParty)
 {
     if (!event.args.empty())
     {
-        partyHandler->kick(event.args);
+        if (partyHandler)
+            partyHandler->kick(event.args);
     }
     else
     {
@@ -474,10 +492,15 @@ impHandler(kickGuild)
             if (guild)
             {
                 if (guild->getServerGuild())
-                    guildHandler->kick(guild->getMember(event.args), "");
+                {
+                    if (guildHandler)
+                        guildHandler->kick(guild->getMember(event.args), "");
+                }
 #ifdef TMWA_SUPPORT
                 else if (guildManager)
+                {
                     guildManager->kick(event.args);
+                }
 #endif
             }
         }
@@ -566,7 +589,7 @@ impHandler0(chatGuildTab)
 
 impHandler(hat)
 {
-    if (!localPlayer)
+    if (!localPlayer || !charServerHandler)
         return false;
 
     const int sprite = localPlayer->getSpriteID(
