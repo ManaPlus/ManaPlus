@@ -124,8 +124,8 @@ class ShortcutBase notfinal
         void clear(const bool isSave = true);
 
     private:
-        int *mItems;
-        unsigned char *mItemColors;
+        int *mItems A_NONNULLPOINTER;
+        unsigned char *mItemColors A_NONNULLPOINTER;
         std::string mItemName;
         std::string mColorName;
         int mItemSelected;

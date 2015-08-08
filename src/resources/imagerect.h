@@ -68,7 +68,7 @@ class ImageRect final
             LOWER_RIGHT = 8
         };
 
-        Image *grid[9];
+        Image *grid[9] A_NONNULLPOINTER;
 };
 
 #endif  // RESOURCES_IMAGERECT_H

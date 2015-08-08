@@ -153,12 +153,13 @@ static void initEngines()
 #endif
     crazyMoves = new CrazyMoves;
 
-    particleEngine = new Particle();
+    particleEngine = new Particle;
     particleEngine->setMap(nullptr);
     particleEngine->setupEngine();
     BeingInfo::init();
 
-    gameHandler->initEngines();
+    if (gameHandler)
+        gameHandler->initEngines();
 
     keyboard.update();
     if (joystick)
@@ -195,7 +196,7 @@ static void createGuiWindows()
     CREATEWIDGETV(inventoryWindow, InventoryWindow,
         PlayerInfo::getInventory());
 #ifdef EATHENA_SUPPORT
-    if (serverFeatures->haveCart())
+    if (serverFeatures && serverFeatures->haveCart())
     {
         CREATEWIDGETV(cartWindow, InventoryWindow,
             PlayerInfo::getCartInventory());
@@ -285,7 +286,8 @@ static void createGuiWindows()
     if (localPlayer)
         localPlayer->updateStatus();
 
-    generalHandler->gameStarted();
+    if (generalHandler)
+        generalHandler->gameStarted();
 }
 
 /**
@@ -293,7 +295,8 @@ static void createGuiWindows()
  */
 static void destroyGuiWindows()
 {
-    generalHandler->gameEnded();
+    if (generalHandler)
+        generalHandler->gameEnded();
 
     if (whoIsOnline)
         whoIsOnline->setAllowUpdate(false);

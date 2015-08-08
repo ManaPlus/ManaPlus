@@ -111,6 +111,6 @@ class ImageHelper notfinal
         static RenderType mUseOpenGL;
 };
 
-extern ImageHelper *imageHelper;
-extern ImageHelper *surfaceImageHelper;
+extern ImageHelper *imageHelper A_NONNULLPOINTER;
+extern ImageHelper *surfaceImageHelper A_NONNULLPOINTER;
 #endif  // RESOURCES_IMAGEHELPER_H

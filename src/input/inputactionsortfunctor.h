@@ -35,7 +35,7 @@ class InputActionSortFunctor final
                 >= keys[static_cast<size_t>(key2)].priority;
         }
 
-        const InputActionData *keys;
+        const InputActionData *keys A_NONNULLPOINTER;
 };
 
 #endif  // INPUT_INPUTACTIONSORTFUNCTOR_H

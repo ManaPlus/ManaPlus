@@ -95,7 +95,7 @@ class InputManager final
         /**
          * Set a reference to the key setup window.
          */
-        void setSetupInput(Setup_Input *const setupInput)
+        void setSetupInput(Setup_Input *const setupInput) A_NONNULL(2)
         { mSetupInput = setupInput; }
 
         /**
@@ -145,9 +145,10 @@ class InputManager final
 
         static bool isActionActive0(const InputActionT index) A_WARN_UNUSED;
 
-        Setup_Input *mSetupInput;    /**< Reference to setup window */
-
-        InputActionT mNewKeyIndex;   /**< Index of new key to be assigned */
+        /** Reference to setup window */
+        Setup_Input *mSetupInput A_NONNULLPOINTER;
+        /** Index of new key to be assigned */
+        InputActionT mNewKeyIndex;
 
         int mMask;
 

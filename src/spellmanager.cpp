@@ -131,7 +131,7 @@ void SpellManager::invoke(const int spellId) const
     if (!spell)
         return;
 
-    if (spell->getCommand() == "")
+    if (!playerHandler || spell->getCommand().empty())
         return;
 
     if (spell->getCommandType() == TEXT_COMMAND_TEXT

@@ -264,19 +264,24 @@ Being *ActorManager::createBeing(const BeingId id,
         || type == ActorType::Npc)
     {
         being->updateFromCache();
-        beingHandler->requestNameById(id);
+        if (beingHandler)
+            beingHandler->requestNameById(id);
         if (localPlayer)
             localPlayer->checkNewName(being);
     }
     else if (type == ActorType::Monster)
     {
-        if (serverFeatures->haveMonsterName())
+        if (serverFeatures && serverFeatures->haveMonsterName())
             beingHandler->requestNameById(id);
     }
     else if (type == ActorType::Portal)
     {
-        if (serverFeatures->haveServerWarpNames())
+        if (beingHandler &&
+            serverFeatures &&
+            serverFeatures->haveServerWarpNames())
+        {
             beingHandler->requestNameById(id);
+        }
     }
     if (type == ActorType::Player)
     {
@@ -513,10 +518,13 @@ void ActorManager::findBeingsByPixel(std::vector<ActorSprite*> &beings,
 
         ActorSprite *const actor = *it;
 
-        if ((being && (being->isAlive()
-            || (mTargetDeadPlayers && being->getType() == ActorType::Player))
-            && (allPlayers == AllPlayers_true ||  being != localPlayer))
-            || actor->getType() == ActorType::FloorItem)
+        if ((being &&
+            (being->isAlive() ||
+            (mTargetDeadPlayers &&
+            being->getType() == ActorType::Player)) &&
+            (allPlayers == AllPlayers_true ||
+            being != localPlayer)) ||
+            actor->getType() == ActorType::FloorItem)
         {
             if ((actor->getPixelX() - xtol <= x) &&
                 (actor->getPixelX() + xtol > x) &&
@@ -834,9 +842,6 @@ void ActorManager::logic()
     FOR_EACH (ActorSpritesConstIterator, it, mDeleteActors)
     {
         const ActorSprite *const actor = *it;
-        if (!actor)
-            continue;
-
         const ActorTypeT &type = actor->getType();
         if (type == ActorType::Player)
         {
@@ -1855,7 +1860,7 @@ void ActorManager::updateBadges()
     for_actors
     {
         ActorSprite *const actor = *it;
-        if (actor && actor->getType() == ActorType::Player)
+        if (actor->getType() == ActorType::Player)
         {
             Being *const being = static_cast<Being*>(actor);
             being->showBadges(showBadges);
@@ -1869,7 +1874,7 @@ void ActorManager::removeRoom(const int chatId)
     for_actors
     {
         ActorSprite *const actor = *it;
-        if (actor && actor->getType() == ActorType::Npc)
+        if (actor->getType() == ActorType::Npc)
         {
             Being *const being = static_cast<Being*>(actor);
             const ChatObject *const chat = being->getChat();
@@ -1889,7 +1894,7 @@ void ActorManager::updateRoom(const ChatObject *const newChat)
     for_actors
     {
         ActorSprite *const actor = *it;
-        if (actor && actor->getType() == ActorType::Npc)
+        if (actor->getType() == ActorType::Npc)
         {
             Being *const being = static_cast<Being*>(actor);
             ChatObject *const chat = being->getChat();

@@ -150,6 +150,12 @@
 #define FOR_EACHP(type, iter, array) for (type iter = array->begin(), \
     iter##_end = array->end(); iter != iter##_end; ++ iter)
 
+#ifdef ENABLE_CHECKPLUGIN
+#define A_NONNULLPOINTER __attribute__((nonnullpointer))
+#else
+#define A_NONNULLPOINTER
+#endif
+
 #ifdef ENABLE_CHECKS
 
 #define CHECKLISTENERS \

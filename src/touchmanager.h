@@ -174,9 +174,9 @@ class TouchManager final : public ConfigListener
     private:
         TouchItem *mKeyboard;
         TouchItem *mPad;
-        TouchItem *mButtons[buttonsCount];
+        TouchItem *mButtons[buttonsCount] A_NONNULLPOINTER;
         TouchItemVector mObjects;
-        ImageCollection *mVertexes;
+        ImageCollection *mVertexes A_NONNULLPOINTER;
         bool mActions[actionsSize];
         bool mRedraw;
         bool mShowJoystick;

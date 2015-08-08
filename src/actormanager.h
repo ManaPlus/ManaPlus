@@ -64,7 +64,7 @@ class ActorManager final: public ConfigListener
         /**
          * Sets the current player.
          */
-        void setPlayer(LocalPlayer *const player);
+        void setPlayer(LocalPlayer *const player) A_NONNULL(2);
 
         /**
          * Create a Being and add it to the list of ActorSprites.

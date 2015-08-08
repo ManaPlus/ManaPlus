@@ -56,6 +56,9 @@ GuiTableActionListener::~GuiTableActionListener()
 
 void GuiTableActionListener::action(const ActionEvent &actionEvent A_UNUSED)
 {
-    mTable->setSelected(mRow, mColumn);
-    mTable->distributeActionEvent();
+    if (mTable)
+    {
+        mTable->setSelected(mRow, mColumn);
+        mTable->distributeActionEvent();
+    }
 }

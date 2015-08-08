@@ -93,7 +93,7 @@ int IPC::acceptLoop(void *ptr)
     const int max_length = 1024;
     const TcpNet::SocketSet set = TcpNet::allocSocketSet(1);
     TcpNet::addSocket(set, ipc1->mSocket);
-    ipc->mListen = true;
+    ipc1->mListen = true;
     while (ipc1->mListen)
     {
         TcpNet::checkSockets(set, 250);
@@ -141,7 +141,7 @@ int IPC::acceptLoop(void *ptr)
     }
     TcpNet::closeSocket(ipc1->mSocket);
     ipc1->mSocket = nullptr;
-    ipc->mThread = nullptr;
+    ipc1->mThread = nullptr;
     return 0;
 }
 
