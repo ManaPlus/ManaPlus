@@ -1069,9 +1069,9 @@ class Being notfinal : public ActorSprite,
         Vector mWalkSpeed;
         float mSpeed;
         std::string mIp;
-        int *mSpriteRemap;
-        int *mSpriteHide;
-        int *mSpriteDraw;
+        int *mSpriteRemap A_NONNULLPOINTER;
+        int *mSpriteHide A_NONNULLPOINTER;
+        int *mSpriteDraw A_NONNULLPOINTER;
         std::string mComment;
 #ifdef EATHENA_SUPPORT
         std::string mBuyBoard;

@@ -333,10 +333,11 @@ void LocalPlayer::slowLogic()
         weightNoticeTime = 0;
     }
 
-    if (!serverFeatures->havePlayerStatusUpdate()
-        && mEnableAdvert
-        && !mBlockAdvert
-        && mAdvertTime < cur_time)
+    if (serverFeatures &&
+        !serverFeatures->havePlayerStatusUpdate() &&
+        mEnableAdvert &&
+        !mBlockAdvert &&
+        mAdvertTime < cur_time)
     {
         uint8_t smile = BeingFlag::SPECIAL;
         if (mTradebot && shopWindow && !shopWindow->isShopEmpty())

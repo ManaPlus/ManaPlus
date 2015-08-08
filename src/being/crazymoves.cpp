@@ -94,8 +94,12 @@ void CrazyMoves::crazyMove()
 
 void CrazyMoves::crazyMove1()
 {
-    if (localPlayer->getCurrentAction() == BeingAction::MOVE)
+    if (!localPlayer ||
+        !playerHandler ||
+        localPlayer->getCurrentAction() == BeingAction::MOVE)
+    {
         return;
+    }
 
 //    if (!PacketLimiter::limitPackets(PacketType::PACKET_DIRECTION))
 //        return;
@@ -129,8 +133,12 @@ void CrazyMoves::crazyMove1()
 
 void CrazyMoves::crazyMove2()
 {
-    if (localPlayer->getCurrentAction() == BeingAction::MOVE)
+    if (!localPlayer ||
+        !playerHandler ||
+        localPlayer->getCurrentAction() == BeingAction::MOVE)
+    {
         return;
+    }
 
 //    if (!PacketLimiter::limitPackets(PacketType::PACKET_DIRECTION))
 //        return;
@@ -176,8 +184,12 @@ void CrazyMoves::crazyMove2()
 
 void CrazyMoves::crazyMove3()
 {
-    if (localPlayer->getCurrentAction() == BeingAction::MOVE)
+    if (!localPlayer ||
+        !playerHandler ||
+        localPlayer->getCurrentAction() == BeingAction::MOVE)
+    {
         return;
+    }
 
     switch (settings.crazyMoveState)
     {
@@ -210,8 +222,11 @@ void CrazyMoves::crazyMove3()
 
 void CrazyMoves::crazyMove4()
 {
-    if (localPlayer->getCurrentAction() == BeingAction::MOVE)
+    if (!localPlayer ||
+        localPlayer->getCurrentAction() == BeingAction::MOVE)
+    {
         return;
+    }
 
     switch (settings.crazyMoveState)
     {
@@ -230,8 +245,11 @@ void CrazyMoves::crazyMove4()
 
 void CrazyMoves::crazyMove5()
 {
-    if (localPlayer->getCurrentAction() == BeingAction::MOVE)
+    if (!localPlayer ||
+        localPlayer->getCurrentAction() == BeingAction::MOVE)
+    {
         return;
+    }
 
     switch (settings.crazyMoveState)
     {
@@ -250,8 +268,11 @@ void CrazyMoves::crazyMove5()
 
 void CrazyMoves::crazyMove6()
 {
-    if (localPlayer->getCurrentAction() == BeingAction::MOVE)
+    if (!localPlayer ||
+        localPlayer->getCurrentAction() == BeingAction::MOVE)
+    {
         return;
+    }
 
     switch (settings.crazyMoveState)
     {
@@ -294,8 +315,11 @@ void CrazyMoves::crazyMove6()
 
 void CrazyMoves::crazyMove7()
 {
-    if (localPlayer->getCurrentAction() == BeingAction::MOVE)
+    if (!localPlayer ||
+        localPlayer->getCurrentAction() == BeingAction::MOVE)
+    {
         return;
+    }
 
     switch (settings.crazyMoveState)
     {
@@ -322,7 +346,7 @@ void CrazyMoves::crazyMove7()
 
 void CrazyMoves::crazyMove8()
 {
-    if (localPlayer->getCurrentAction() == BeingAction::MOVE)
+    if (!localPlayer || localPlayer->getCurrentAction() == BeingAction::MOVE)
         return;
     const Map *const map = localPlayer->getMap();
     if (!map)
@@ -431,7 +455,7 @@ void CrazyMoves::crazyMove9()
     int dx = 0;
     int dy = 0;
 
-    if (localPlayer->getCurrentAction() == BeingAction::MOVE)
+    if (!localPlayer || localPlayer->getCurrentAction() == BeingAction::MOVE)
         return;
 
     switch (settings.crazyMoveState)
@@ -452,7 +476,8 @@ void CrazyMoves::crazyMove9()
             settings.crazyMoveState = 2;
             if (!localPlayer->allowAction())
                 return;
-            playerHandler->changeAction(BeingAction::SIT);
+            if (playerHandler)
+                playerHandler->changeAction(BeingAction::SIT);
             break;
         case 2:
             settings.crazyMoveState = 3;
@@ -467,6 +492,9 @@ void CrazyMoves::crazyMove9()
 
 void CrazyMoves::crazyMoveAm()
 {
+    if (!localPlayer)
+        return;
+
     settings.crazyMoveState ++;
     if (settings.crazyMoveState < mMoveProgram.length())
     {

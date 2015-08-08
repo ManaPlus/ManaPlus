@@ -209,7 +209,9 @@ Inventory *getInventory()
 
 Inventory *getStorageInventory()
 {
-    return inventoryHandler->getStorage();
+    if (inventoryHandler)
+        return inventoryHandler->getStorage();
+    return nullptr;
 }
 
 #ifdef EATHENA_SUPPORT
@@ -250,21 +252,24 @@ void equipItem(const Item *const item, const Sfx sfx)
 {
     if (sfx == Sfx_true)
         ItemSoundManager::playSfx(item, ItemSoundEvent::EQUIP);
-    inventoryHandler->equipItem(item);
+    if (inventoryHandler)
+        inventoryHandler->equipItem(item);
 }
 
 void unequipItem(const Item *const item, const Sfx sfx)
 {
     if (sfx == Sfx_true)
         ItemSoundManager::playSfx(item, ItemSoundEvent::UNEQUIP);
-    inventoryHandler->unequipItem(item);
+    if (inventoryHandler)
+        inventoryHandler->unequipItem(item);
 }
 
 void useItem(const Item *const item, const Sfx sfx)
 {
     if (sfx == Sfx_true)
         ItemSoundManager::playSfx(item, ItemSoundEvent::USE);
-    inventoryHandler->useItem(item);
+    if (inventoryHandler)
+        inventoryHandler->useItem(item);
 }
 
 void useEquipItem(const Item *const item, const Sfx sfx)
@@ -276,7 +281,8 @@ void useEquipItem(const Item *const item, const Sfx sfx)
         {
             if (mProtectedItems.find(item->getId()) == mProtectedItems.end())
             {
-                inventoryHandler->useCard(item);
+                if (inventoryHandler)
+                    inventoryHandler->useCard(item);
                 if (sfx == Sfx_true)
                     ItemSoundManager::playSfx(item, ItemSoundEvent::USECARD);
             }
@@ -289,20 +295,23 @@ void useEquipItem(const Item *const item, const Sfx sfx)
             {
                 if (sfx == Sfx_true)
                     ItemSoundManager::playSfx(item, ItemSoundEvent::UNEQUIP);
-                inventoryHandler->unequipItem(item);
+                if (inventoryHandler)
+                    inventoryHandler->unequipItem(item);
             }
             else
             {
                 if (sfx == Sfx_true)
                     ItemSoundManager::playSfx(item, ItemSoundEvent::EQUIP);
-                inventoryHandler->equipItem(item);
+                if (inventoryHandler)
+                    inventoryHandler->equipItem(item);
             }
         }
         else
         {
             if (mProtectedItems.find(item->getId()) == mProtectedItems.end())
             {
-                inventoryHandler->useItem(item);
+                if (inventoryHandler)
+                    inventoryHandler->useItem(item);
                 if (sfx == Sfx_true)
                     ItemSoundManager::playSfx(item, ItemSoundEvent::USE);
             }
@@ -320,13 +329,15 @@ void useEquipItem2(const Item *const item, const Sfx sfx)
             {
                 if (sfx == Sfx_true)
                     ItemSoundManager::playSfx(item, ItemSoundEvent::UNEQUIP);
-                inventoryHandler->unequipItem(item);
+                if (inventoryHandler)
+                    inventoryHandler->unequipItem(item);
             }
             else
             {
                 if (sfx == Sfx_true)
                     ItemSoundManager::playSfx(item, ItemSoundEvent::EQUIP);
-                inventoryHandler->equipItem(item);
+                if (inventoryHandler)
+                    inventoryHandler->equipItem(item);
             }
         }
         else
@@ -335,7 +346,8 @@ void useEquipItem2(const Item *const item, const Sfx sfx)
             {
                 if (sfx == Sfx_true)
                     ItemSoundManager::playSfx(item, ItemSoundEvent::USE);
-                inventoryHandler->useItem(item);
+                if (inventoryHandler)
+                    inventoryHandler->useItem(item);
             }
         }
     }
@@ -347,7 +359,8 @@ void dropItem(const Item *const item, const int amount, const Sfx sfx)
     {
         if (sfx == Sfx_true)
             ItemSoundManager::playSfx(item, ItemSoundEvent::DROP);
-        inventoryHandler->dropItem(item, amount);
+        if (inventoryHandler)
+            inventoryHandler->dropItem(item, amount);
     }
 }
 
@@ -355,7 +368,8 @@ void pickUpItem(const FloorItem *const item, const Sfx sfx)
 {
     if (sfx == Sfx_true)
         ItemSoundManager::playSfx(item, ItemSoundEvent::PICKUP);
-    playerHandler->pickUp(item);
+    if (playerHandler)
+        playerHandler->pickUp(item);
 }
 
 // --- Misc -------------------------------------------------------------------
@@ -582,18 +596,18 @@ BeingId getMercenaryId()
 
 void updateMoveAI()
 {
-    if (mMercenary)
+    if (mMercenary && mercenaryHandler)
         mercenaryHandler->moveToMaster();
-    if (mHomunculus)
+    if (mHomunculus && homunculusHandler)
         homunculusHandler->moveToMaster();
 }
 
 void updateAttackAi(const BeingId targetId,
                     const Keep keep)
 {
-    if (mMercenary)
+    if (mMercenary && mercenaryHandler)
         mercenaryHandler->attack(targetId, keep);
-    if (mHomunculus)
+    if (mHomunculus && homunculusHandler)
         homunculusHandler->attack(targetId, keep);
 }
 

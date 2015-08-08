@@ -177,8 +177,9 @@ Being::Being(const BeingId id,
     mIsGM(false),
     mType(type),
     mSpeechBubble(nullptr),
-    mWalkSpeed(playerHandler->getDefaultWalkSpeed()),
-    mSpeed(playerHandler->getDefaultWalkSpeed().x),
+    mWalkSpeed(playerHandler ? playerHandler->getDefaultWalkSpeed()
+        : Vector(1, 1, 1)),
+    mSpeed(playerHandler ? playerHandler->getDefaultWalkSpeed().x : 0),
     mIp(),
     mSpriteRemap(new int[20]),
     mSpriteHide(new int[20]),
@@ -423,9 +424,16 @@ void Being::setSubtype(const BeingTypeId subtype,
             mYDiff = mInfo->getSortOffsetY();
             const int speed = mInfo->getWalkSpeed();
             if (!speed)
-                setWalkSpeed(playerHandler->getDefaultWalkSpeed());
+            {
+                if (playerHandler)
+                    setWalkSpeed(playerHandler->getDefaultWalkSpeed());
+                else
+                    setWalkSpeed(Vector(1, 1, 0));
+            }
             else
+            {
                 setWalkSpeed(Vector(speed, speed, 0));
+            }
         }
     }
     else if (mType == ActorType::Player)
@@ -577,7 +585,7 @@ void Being::setSpeech(const std::string &text, const std::string &channel,
     }
 
     const int speech = mSpeechType;
-    if (speech == BeingSpeech::TEXT_OVERHEAD && userPalette)
+    if (speech == BeingSpeech::TEXT_OVERHEAD)
     {
         delete mText;
         mText = new Text(mSpeech,
@@ -592,8 +600,11 @@ void Being::setSpeech(const std::string &text, const std::string &channel,
         const bool isShowName = (speech == BeingSpeech::NAME_IN_BUBBLE);
         if (!mSpeechBubble)
             createSpeechBubble();
-        mSpeechBubble->setCaption(isShowName ? mName : "");
-        mSpeechBubble->setText(mSpeech, isShowName);
+        if (mSpeechBubble)
+        {
+            mSpeechBubble->setCaption(isShowName ? mName : "");
+            mSpeechBubble->setText(mSpeech, isShowName);
+        }
     }
 }
 
@@ -894,7 +905,9 @@ void Being::handleAttack(Being *const victim, const int damage,
     reset();
     mActionTime = tick_time;
 
-    if (!serverFeatures->haveAttackDirections() && this != localPlayer)
+    if (serverFeatures &&
+        !serverFeatures->haveAttackDirections() &&
+        this != localPlayer)
     {
         const uint8_t dir = calcDirection(victim->getTileX(),
             victim->getTileY());
@@ -2287,7 +2300,7 @@ void Being::updateSprite(const unsigned int slot, const int id,
                          std::string color, const unsigned char colorId,
                          const bool isWeapon, const bool isTempSprite)
 {
-    if (slot >= charServerHandler->maxSprite())
+    if (!charServerHandler || slot >= charServerHandler->maxSprite())
         return;
 
     if (slot >= static_cast<unsigned int>(mSpriteIDs.size()))
@@ -2302,7 +2315,7 @@ void Being::setSprite(const unsigned int slot, const int id,
                       std::string color, const unsigned char colorId,
                       const bool isWeapon, const bool isTempSprite)
 {
-    if (slot >= charServerHandler->maxSprite())
+    if (!charServerHandler || slot >= charServerHandler->maxSprite())
         return;
 
     if (slot >= static_cast<unsigned int>(size()))
@@ -2509,7 +2522,7 @@ bool Being::updateFromCache()
         if (mAdvanced)
         {
             const int flags = entry->getFlags();
-            if (!serverFeatures->haveVending())
+            if (serverFeatures && !serverFeatures->haveVending())
                 mShop = ((flags & BeingFlag::SHOP) != 0);
             mAway = ((flags & BeingFlag::AWAY) != 0);
             mInactive = ((flags & BeingFlag::INACTIVE) != 0);
@@ -2518,7 +2531,7 @@ bool Being::updateFromCache()
         }
         else
         {
-            if (!serverFeatures->haveVending())
+            if (serverFeatures && !serverFeatures->haveVending())
                 mShop = false;
             mAway = false;
             mInactive = false;
@@ -2564,7 +2577,7 @@ void Being::addToCache() const
     if (isAdvanced())
     {
         int flags = 0;
-        if (!serverFeatures->haveVending() && mShop)
+        if (serverFeatures && !serverFeatures->haveVending() && mShop)
             flags += BeingFlag::SHOP;
         if (mAway)
             flags += BeingFlag::AWAY;
@@ -2650,7 +2663,8 @@ void Being::talkTo() const
     if (!PacketLimiter::limitPackets(PacketType::PACKET_NPC_TALK))
         return;
 
-    npcHandler->talk(mId);
+    if (npcHandler)
+        npcHandler->talk(mId);
 }
 
 void Being::draw(Graphics *const graphics,
