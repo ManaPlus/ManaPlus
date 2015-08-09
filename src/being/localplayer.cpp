@@ -2483,7 +2483,7 @@ void LocalPlayer::fixAttackTarget()
     if (!mMap || !mTarget)
         return;
 
-    if (settings.moveToTargetType == 7 || !settings.attackType
+    if (settings.moveToTargetType == 11 || !settings.attackType
         || !config.getBoolValue("autofixPos"))
     {
         return;

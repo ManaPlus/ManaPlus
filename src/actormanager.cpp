@@ -945,7 +945,7 @@ Being *ActorManager::findNearestLivingBeing(const Being *const aroundBeing,
     const int attackRange = localPlayer->getAttackRange();
 
     bool specialDistance = false;
-    if (settings.moveToTargetType == 7
+    if (settings.moveToTargetType == 11
         && localPlayer->getAttackRange() > 2)
     {
         specialDistance = true;
