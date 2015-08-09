@@ -650,7 +650,7 @@ bool GraphicsManager::supportExtension(const std::string &ext) const
     return mExtensions.find(ext) != mExtensions.end();
 }
 
-void GraphicsManager::updateTextureFormat() const
+void GraphicsManager::updateTextureCompressionFormat() const
 {
     const int compressionFormat = config.getIntValue("compresstextures");
     // using extensions if can
@@ -716,12 +716,18 @@ void GraphicsManager::updateTextureFormat() const
             }
         }
         delete []formats;
+        if (compressionFormat)
+            logger->log1("no correct compression format found");
     }
     else
     {
-        logger->log1("no correct compression format found");
+        if (compressionFormat)
+            logger->log1("no correct compression format found");
     }
+}
 
+void GraphicsManager::updateTextureFormat() const
+{
     const int renderer = settings.options.renderer;
 
     // using default formats

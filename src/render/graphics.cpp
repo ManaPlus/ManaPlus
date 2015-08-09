@@ -302,6 +302,7 @@ bool Graphics::setOpenGLMode()
 
     graphicsManager.initOpenGL();
     initArrays(graphicsManager.getMaxVertices());
+    graphicsManager.updateTextureCompressionFormat();
     graphicsManager.updateTextureFormat();
     updateMemoryInfo();
 

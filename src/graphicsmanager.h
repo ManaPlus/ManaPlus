@@ -98,6 +98,8 @@ class GraphicsManager final
 
         void updateTextureFormat() const;
 
+        void updateTextureCompressionFormat() const;
+
         bool checkGLVersion(const int major, const int minor)
                             const A_WARN_UNUSED;
 
