@@ -1232,6 +1232,7 @@ int Client::gameExec()
                     TranslationManager::loadCurrentLang();
                     PlayerInfo::stateChange(mState);
 
+                    delete spellManager;
                     spellManager = new SpellManager;
                     spellShortcut = new SpellShortcut;
 
