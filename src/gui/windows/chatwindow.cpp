@@ -1557,7 +1557,12 @@ bool ChatWindow::resortChatLog(std::string line,
         if (tmpNick.find("#") != std::string::npos ||
             tmpNick.find(":") != std::string::npos ||
             tmpNick.find("%") != std::string::npos ||
-            tmpNick.find("@") != std::string::npos)
+            tmpNick.find("@") != std::string::npos ||
+            tmpNick.size() < 4 ||
+            tmpNick[0] == '@' ||
+            tmpNick[0] == '/' ||
+            tmpNick[0] == '!'
+            )
         {
             replaceAll(tmpNick, "#", "_");
             replaceAll(tmpNick, "%", "_");
