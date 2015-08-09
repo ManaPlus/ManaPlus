@@ -1472,6 +1472,7 @@ manaplustests_SOURCES = ${manaplus_SOURCES} \
 	      gui/fonts/textchunklist_unittest.cc \
 	      gui/widgets/browserbox_unittest.cc \
 	      utils/files_unittest.cc \
+	      utils/mathutils_unittest.cc \
 	      utils/stringutils_unittest.cc \
 	      utils/xmlutils_unittest.cc \
 	      resources/dye_unittest.cc \
