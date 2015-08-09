@@ -1234,6 +1234,7 @@ int Client::gameExec()
 
                     delete spellManager;
                     spellManager = new SpellManager;
+                    delete spellShortcut;
                     spellShortcut = new SpellShortcut;
 
                     // Load XML databases
