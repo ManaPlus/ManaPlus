@@ -22,25 +22,13 @@
 
 #include "client.h"
 
-#include "chatlogger.h"
 #include "configmanager.h"
 #include "dirs.h"
-#include "dropshortcut.h"
-#include "emoteshortcut.h"
 #include "eventsmanager.h"
-#include "game.h"
 #include "graphicsmanager.h"
-#include "itemshortcut.h"
-#include "party.h"
 #include "settings.h"
 #include "soundmanager.h"
-#include "spellshortcut.h"
-#include "statuseffect.h"
-#include "units.h"
 #include "touchmanager.h"
-
-#include "being/playerinfo.h"
-#include "being/playerrelations.h"
 
 #include "input/inputmanager.h"
 #include "input/joystick.h"
@@ -56,7 +44,6 @@
 #include "gui/widgets/createwidget.h"
 #include "gui/widgets/desktop.h"
 #include "gui/widgets/windowcontainer.h"
-#include "gui/widgets/window.h"
 
 #include "resources/imagehelper.h"
 #include "resources/resourcemanager.h"
@@ -75,8 +62,6 @@
 #include "utils/timer.h"
 
 #include "utils/translation/translationmanager.h"
-
-#include "listeners/errorlistener.h"
 
 #include "configuration.h"
 
@@ -130,9 +115,7 @@ Client::Client() :
     mOldState(STATE_START),
     mSkin(nullptr),
     mButtonPadding(1),
-    mButtonSpacing(3),
-    mPing(0),
-    mConfigAutoSaved(false)
+    mButtonSpacing(3)
 {
     WindowManager::init();
 }
@@ -240,7 +223,7 @@ void Client::gameInit()
     ConfigManager::checkConfigVersion();
     logVars();
     Cpu::detect();
-#if defined(USE_OPENGL) 
+#if defined(USE_OPENGL)
 #if !defined(ANDROID) && !defined(__APPLE__) && !defined(__native_client__)
     if (!settings.options.safeMode && settings.options.test.empty()
         && !config.getBoolValue("videodetected"))

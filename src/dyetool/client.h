@@ -27,8 +27,6 @@
 
 #include "listeners/actionlistener.h"
 
-#include "net/serverinfo.h"
-
 #ifdef USE_SDL2
 #include <SDL2_framerate.h>
 #else
@@ -115,8 +113,6 @@ class Client final : public ActionListener
         Skin *mSkin;
         int mButtonPadding;
         int mButtonSpacing;
-        int mPing;
-        bool mConfigAutoSaved;
 };
 
 extern Client *client;

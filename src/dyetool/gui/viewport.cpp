@@ -22,42 +22,17 @@
 
 #include "gui/viewport.h"
 
-#include "actormanager.h"
 #include "configuration.h"
-#include "game.h"
-#include "settings.h"
 #include "sdlshared.h"
-#include "textmanager.h"
-
-#include "enums/resources/map/mapitemtype.h"
-
-#include "resources/map/map.h"
-#include "resources/map/mapitem.h"
-#include "resources/map/speciallayer.h"
-
-#include "being/localplayer.h"
-#include "being/playerinfo.h"
-
-#include "input/inputmanager.h"
 
 #include "gui/gui.h"
 #include "gui/popupmanager.h"
-#include "gui/userpalette.h"
-
-#include "gui/fonts/font.h"
-
-#include "gui/popups/beingpopup.h"
-#include "gui/popups/popupmenu.h"
-#include "gui/popups/textpopup.h"
-
-#include "gui/windows/ministatuswindow.h"
 
 #include "debug.h"
 
 Viewport *viewport = nullptr;
 
 extern volatile int tick_time;
-extern MiniStatusWindow *miniStatusWindow;
 
 Viewport::Viewport() :
     WindowContainer(nullptr),

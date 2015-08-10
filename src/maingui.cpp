@@ -31,6 +31,7 @@
 #include "utils/delete2.h"
 #ifdef ANDROID
 #include "utils/mkdir.h"
+#include "utils/paths.h"
 #endif
 #include "utils/physfscheckutils.h"
 #include "utils/physfsrwops.h"

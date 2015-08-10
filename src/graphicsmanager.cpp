@@ -40,8 +40,6 @@
 #include "configuration.h"
 #include "logger.h"
 
-#include "configuration.h"
-
 #include "settings.h"
 
 #ifdef USE_OPENGL

@@ -25,8 +25,6 @@
 
 #include "position.h"
 
-#include "enums/simpletypes/beingid.h"
-
 #include "gui/widgets/windowcontainer.h"
 
 #include "listeners/mouselistener.h"
