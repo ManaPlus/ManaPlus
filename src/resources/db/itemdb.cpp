@@ -94,29 +94,51 @@ namespace
     static const FieldType fields[] =
     {
         // TRANSLATORS: item info label (attack)
-        { "attack",   N_("Attack %s"),     true },
+        { "attack",      N_("Attack %s"),      true },
+        // TRANSLATORS: item info label (min attack)
+        { "minattack",   N_("Min attack %s"),  true },
+        // TRANSLATORS: item info label (max attack)
+        { "maxattack",   N_("Max attack %s"),  true },
         // TRANSLATORS: item info label (attack)
         { "criticalattack", N_("Critical attack %s"), true },
         // TRANSLATORS: item info label (magic attack)
-        { "mattack",  N_("M. Attack %s"),  true },
+        { "mattack",     N_("M. Attack %s"),   true },
         // TRANSLATORS: item info label (defence)
-        { "defense",  N_("Defense %s"),    true },
-        // TRANSLATORS: item info label (defence)
+        { "defense",     N_("Defense %s"),     true },
+        // TRANSLATORS: item info label (min defence)
+        { "mindefense",  N_("Min defense %s"), true },
+        // TRANSLATORS: item info label (max defence)
+        { "maxdefense",  N_("Max defense %s"), true },
+        // TRANSLATORS: item info label (critical defence)
         { "criticaldefense", N_("Critical defense %s"), true },
         // TRANSLATORS: item info label (magic defence)
-        { "mdefense", N_("M. Defense %s"), true },
+        { "mdefense",    N_("M. Defense %s"),  true },
+        // TRANSLATORS: item info label (min magic defence)
+        { "minmdefense", N_("Min M. Defense %s"), true },
+        // TRANSLATORS: item info label (max magic defence)
+        { "maxmdefense", N_("Max M. Defense %s"), true },
         // TRANSLATORS: item info label (health)
-        { "hp",       N_("HP %s"),         true },
+        { "hp",          N_("HP %s"),          true },
+        // TRANSLATORS: item info label (max health)
+        { "maxhp",       N_("Max HP %s"),      true },
         // TRANSLATORS: item info label (mana)
-        { "mp",       N_("MP %s"),         true },
+        { "mp",          N_("MP %s"),          true },
+        // TRANSLATORS: item info label (max mana)
+        { "maxmp",       N_("Max MP %s"),      true },
         // TRANSLATORS: item info label (level)
-        { "level",    N_("Level %s"),      false },
+        { "level",       N_("Level %s"),       false },
         // TRANSLATORS: item info label (moving speed)
-        { "speed",    N_("Speed %s"),      true },
-        // TRANSLATORS: item info label (health)
-        { "range",    N_("Range %s"),      true },
-        // TRANSLATORS: item info label (health)
-        { "flee",     N_("Flee %s"),       true }
+        { "speed",       N_("Speed %s"),       true },
+        // TRANSLATORS: item info label (attack range)
+        { "range",       N_("Range %s"),       true },
+        // TRANSLATORS: item info label (flee)
+        { "flee",        N_("Flee %s"),        true },
+        // TRANSLATORS: item info label (min flee)
+        { "minflee",     N_("Min flee %s"),    true },
+        // TRANSLATORS: item info label (max flee)
+        { "maxflee",     N_("Max flee %s"),    true },
+        // TRANSLATORS: item info label (card slots number)
+        { "cardslots",   N_("Card slots %s"),  false }
     };
 }  // namespace
 
