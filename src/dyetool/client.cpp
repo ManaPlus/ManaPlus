@@ -44,6 +44,7 @@
 #include "gui/widgets/createwidget.h"
 #include "gui/widgets/desktop.h"
 #include "gui/widgets/windowcontainer.h"
+#include "gui/widgets/window.h"
 
 #include "resources/imagehelper.h"
 #include "resources/resourcemanager.h"
