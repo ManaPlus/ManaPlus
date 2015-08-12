@@ -88,7 +88,9 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
                                                    Being *const dstBeing,
                                                    const uint8_t type,
                                                    const int id,
-                                                   const int id2) A_NONNULL(2);
+                                                   const int id2,
+                                                   const uint16_t *cards)
+                                                   A_NONNULL(2);
 
         static void processBeingSpecialEffect(Net::MessageIn &msg);
 

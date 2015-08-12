@@ -517,13 +517,15 @@ void BeingHandler::processBeingChangeLook2(Net::MessageIn &msg)
     if (!localPlayer || !dstBeing)
         return;
 
-    processBeingChangeLookContinue(msg, dstBeing, type, id, id2);
+    processBeingChangeLookContinue(msg, dstBeing, type, id, id2, nullptr);
 }
 
 void BeingHandler::processBeingChangeLookCards(Net::MessageIn &msg)
 {
     if (!actorManager)
         return;
+
+    uint16_t cards[4];
 
     Being *const dstBeing = actorManager->findBeing(
         msg.readBeingId("being id"));
@@ -535,19 +537,21 @@ void BeingHandler::processBeingChangeLookCards(Net::MessageIn &msg)
         id2 = 1;
 
     for (int f = 0; f < 4; f ++)
-        msg.readInt16("card");          // +++ ignore cards for now
+        cards[f] = msg.readInt16("card");
 
     if (!localPlayer || !dstBeing)
         return;
 
-    processBeingChangeLookContinue(msg, dstBeing, type, id, id2);
+    processBeingChangeLookContinue(msg, dstBeing, type, id, id2, &cards[0]);
 }
 
 void BeingHandler::processBeingChangeLookContinue(Net::MessageIn &msg,
                                                   Being *const dstBeing,
                                                   const uint8_t type,
                                                   const int id,
-                                                  const int id2)
+                                                  const int id2,
+                                                  const uint16_t *cards
+                                                  A_UNUSED)
 {
     if (dstBeing->getType() == ActorType::Player)
         dstBeing->setOtherTime();
