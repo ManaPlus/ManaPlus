@@ -86,6 +86,7 @@ BeingHandler::BeingHandler(const bool enableSync) :
         SMSG_BEING_SOUND_EFFECT,
         SMSG_BEING_EMOTION,
         SMSG_BEING_CHANGE_LOOKS2,
+        SMSG_BEING_CHANGE_LOOKS_CARDS,
         SMSG_BEING_NAME_RESPONSE,
         SMSG_BEING_NAME_RESPONSE2,
         SMSG_PLAYER_GUILD_PARTY_INFO,
@@ -219,6 +220,10 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_BEING_CHANGE_LOOKS2:
             processBeingChangeLook2(msg);
+            break;
+
+        case SMSG_BEING_CHANGE_LOOKS_CARDS:
+            processBeingChangeLookCards(msg);
             break;
 
         case SMSG_BEING_NAME_RESPONSE:
@@ -508,6 +513,29 @@ void BeingHandler::processBeingChangeLook2(Net::MessageIn &msg)
     unsigned int id2 = msg.readInt16("id2");
     if (type != 2)
         id2 = 1;
+
+    if (!localPlayer || !dstBeing)
+        return;
+
+    processBeingChangeLookContinue(msg, dstBeing, type, id, id2);
+}
+
+void BeingHandler::processBeingChangeLookCards(Net::MessageIn &msg)
+{
+    if (!actorManager)
+        return;
+
+    Being *const dstBeing = actorManager->findBeing(
+        msg.readBeingId("being id"));
+    const uint8_t type = msg.readUInt8("type");
+
+    const int id = msg.readInt16("id1");
+    unsigned int id2 = msg.readInt16("id2");
+    if (type != 2)
+        id2 = 1;
+
+    for (int f = 0; f < 4; f ++)
+        msg.readInt16("card");          // +++ ignore cards for now
 
     if (!localPlayer || !dstBeing)
         return;

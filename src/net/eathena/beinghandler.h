@@ -54,6 +54,8 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
 
         static void processBeingChangeLook2(Net::MessageIn &msg);
 
+        static void processBeingChangeLookCards(Net::MessageIn &msg);
+
         static void processBeingVisible(Net::MessageIn &msg);
 
         static void processBeingMove(Net::MessageIn &msg);
