@@ -198,40 +198,16 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     character->data.mStats[Attributes::DEX].base = msg.readUInt8("dex");
     character->data.mStats[Attributes::LUK].base = msg.readUInt8("luk");
 
-    if (withColors)
-    {
-        tempPlayer->setSprite(SPRITE_HAIR, shoes, "",
-            msg.readUInt8("shoes color"));
-        tempPlayer->setSprite(SPRITE_SHOES, gloves, "",
-            msg.readUInt8("gloves color"));
-        tempPlayer->setSprite(SPRITE_SHIELD, cape, "",
-            msg.readUInt8("cape color"));
-        tempPlayer->setSprite(SPRITE_HEAD_TOP, misc1, "",
-            msg.readUInt8("misc1 color"));
-        tempPlayer->setSprite(SPRITE_WEAPON, bottomClothes,
-            "", msg.readUInt8("bottom clothes color"));
-        tempPlayer->setSprite(SPRITE_FLOOR, shield, "",
-            msg.readUInt8("shield color"));
-        tempPlayer->setSprite(SPRITE_CLOTHES_COLOR, hat, "",
-            msg.readUInt8("head option top color"));
-        tempPlayer->setSprite(SPRITE_HEAD_BOTTOM, topClothes, "",
-            msg.readUInt8("top clothes color"));
-        tempPlayer->setSprite(SPRITE_HEAD_MID, misc2, "",
-            msg.readUInt8("misc2 color"));
-        msg.skip(5, "unused");
-    }
-    else
-    {
-        tempPlayer->setSprite(SPRITE_HAIR, shoes);
-        tempPlayer->setSprite(SPRITE_SHOES, gloves);
-        tempPlayer->setSprite(SPRITE_SHIELD, cape);
-        tempPlayer->setSprite(SPRITE_HEAD_TOP, misc1);
-        tempPlayer->setSprite(SPRITE_WEAPON, bottomClothes);
-        tempPlayer->setSprite(SPRITE_FLOOR, shield);
-        tempPlayer->setSprite(SPRITE_CLOTHES_COLOR, hat);  // head option top
-        tempPlayer->setSprite(SPRITE_HEAD_BOTTOM, topClothes);
-        tempPlayer->setSprite(SPRITE_HEAD_MID, misc2);
-    }
+    tempPlayer->setSprite(SPRITE_HAIR, shoes);
+    tempPlayer->setSprite(SPRITE_SHOES, gloves);
+    tempPlayer->setSprite(SPRITE_SHIELD, cape);
+    tempPlayer->setSprite(SPRITE_HEAD_TOP, misc1);
+    tempPlayer->setSprite(SPRITE_WEAPON, bottomClothes);
+    tempPlayer->setSprite(SPRITE_FLOOR, shield);
+    tempPlayer->setSprite(SPRITE_CLOTHES_COLOR, hat);  // head option top
+    tempPlayer->setSprite(SPRITE_HEAD_BOTTOM, topClothes);
+    tempPlayer->setSprite(SPRITE_HEAD_MID, misc2);
+
     character->slot = msg.readUInt8("slot");
     msg.readUInt8("unused");
 }
