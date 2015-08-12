@@ -232,8 +232,9 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     msg.readInt16("speed");
     const uint16_t race = msg.readInt16("class");
 //    tempPlayer->setSubtype(race, 0);
-    const int hairStyle = msg.readInt16("hair style");
-    const int weapon = msg.readInt32("weapon");
+    const int hairStyle = msg.readInt32("hair style");
+    const int option = (msg.readInt16("weapon") | 1) ^ 1;
+    const int weapon = 0;
 
     tempPlayer->setSprite(SPRITE_BODY, weapon, "", 1, true);
 
