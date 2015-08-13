@@ -87,10 +87,12 @@ class CharServerHandler notfinal
         virtual void changeSlot(const int oldSlot, const int newSlot) = 0;
 
         virtual void readPlayerData(Net::MessageIn &msg,
-                                    Net::Character *const character,
-                                    const bool withColors) const = 0;
+                                    Net::Character *const character) const = 0;
 
         virtual void ping() const = 0;
+
+        /** The list of available characters. */
+        static Net::Characters mCharacters;
 
     protected:
         CharServerHandler()
@@ -103,9 +105,6 @@ class CharServerHandler notfinal
 
         static void updateCharSelectDialog();
         static void unlockCharSelectDialog();
-
-        /** The list of available characters. */
-        static Net::Characters mCharacters;
 
         /** The selected character. */
         static Net::Character *mSelectedCharacter;

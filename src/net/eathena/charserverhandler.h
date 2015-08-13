@@ -86,8 +86,8 @@ class CharServerHandler final : public MessageHandler,
         void changeSlot(const int oldSlot, const int newSlot) override final;
 
         void readPlayerData(Net::MessageIn &msg,
-                            Net::Character *const character,
-                            const bool) const override final;
+                            Net::Character *const character)
+                            const override final;
 
         void ping() const override final;
 

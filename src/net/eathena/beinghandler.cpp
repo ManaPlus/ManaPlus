@@ -38,6 +38,7 @@
 
 #include "input/keyboardconfig.h"
 
+#include "gui/windows/charselectdialog.h"
 #include "gui/windows/skilldialog.h"
 #include "gui/windows/socialwindow.h"
 #include "gui/windows/outfitwindow.h"
@@ -45,6 +46,10 @@
 #include "net/serverfeatures.h"
 
 #include "net/ea/eaprotocol.h"
+
+#include "net/charserverhandler.h"
+
+#include "net/character.h"
 
 #include "net/eathena/maptypeproperty2.h"
 #include "net/eathena/messageout.h"
@@ -522,13 +527,32 @@ void BeingHandler::processBeingChangeLook2(Net::MessageIn &msg)
 
 void BeingHandler::processBeingChangeLookCards(Net::MessageIn &msg)
 {
-    if (!actorManager)
-        return;
-
+    Being *dstBeing = nullptr;
     uint16_t cards[4];
 
-    Being *const dstBeing = actorManager->findBeing(
-        msg.readBeingId("being id"));
+    if (!actorManager)
+    { // here can be look from char server
+        if (!serverFeatures->haveAdvancedSprites())
+            return;
+        Net::Characters &chars = Net::CharServerHandler::mCharacters;
+        const BeingId id = msg.readBeingId("being id");
+
+        FOR_EACH(Net::Characters::iterator, it, chars)
+        {
+            Net::Character *character = *it;
+            if (character->dummy && character->dummy->getId() == id)
+            {
+                dstBeing = character->dummy;
+                break;
+            }
+        }
+    }
+    else
+    {
+        dstBeing = actorManager->findBeing(
+            msg.readBeingId("being id"));
+    }
+
     const uint8_t type = msg.readUInt8("type");
 
     const int id = msg.readInt16("id1");
@@ -539,7 +563,7 @@ void BeingHandler::processBeingChangeLookCards(Net::MessageIn &msg)
     for (int f = 0; f < 4; f ++)
         cards[f] = msg.readInt16("card");
 
-    if (!localPlayer || !dstBeing)
+    if (!dstBeing)
         return;
 
     processBeingChangeLookContinue(msg, dstBeing, type, id, id2, &cards[0]);
@@ -570,23 +594,27 @@ void BeingHandler::processBeingChangeLookContinue(Net::MessageIn &msg,
         case 2:  // LOOK_WEAPON Weapon ID in id, Shield ID in id2
             dstBeing->setSprite(SPRITE_BODY, id, "", 1, true);
             dstBeing->setSprite(SPRITE_FLOOR, id2);
-            localPlayer->imitateOutfit(dstBeing, SPRITE_FLOOR);
+            if (localPlayer)
+                localPlayer->imitateOutfit(dstBeing, SPRITE_FLOOR);
             break;
         case 3:  // LOOK_HEAD_BOTTOM
             dstBeing->setSprite(SPRITE_WEAPON, id, color,
                 static_cast<unsigned char>(id2));
-            localPlayer->imitateOutfit(dstBeing, SPRITE_WEAPON);
+            if (localPlayer)
+                localPlayer->imitateOutfit(dstBeing, SPRITE_WEAPON);
             break;
         case 4:  // LOOK_HEAD_TOP Change upper headgear for eAthena, hat for us
             dstBeing->setSprite(SPRITE_CLOTHES_COLOR, id, color,
                 static_cast<unsigned char>(id2));
-            localPlayer->imitateOutfit(dstBeing, SPRITE_CLOTHES_COLOR);
+            if (localPlayer)
+                localPlayer->imitateOutfit(dstBeing, SPRITE_CLOTHES_COLOR);
             break;
         case 5:  // LOOK_HEAD_MID Change middle headgear for eathena,
                  // armor for us
             dstBeing->setSprite(SPRITE_HEAD_BOTTOM, id, color,
                 static_cast<unsigned char>(id2));
-            localPlayer->imitateOutfit(dstBeing, SPRITE_HEAD_BOTTOM);
+            if (localPlayer)
+                localPlayer->imitateOutfit(dstBeing, SPRITE_HEAD_BOTTOM);
             break;
         case 6:  // eAthena LOOK_HAIR_COLOR
             dstBeing->setHairColor(id);
@@ -600,52 +628,62 @@ void BeingHandler::processBeingChangeLookContinue(Net::MessageIn &msg,
         case 8:  // eAthena LOOK_SHIELD
             dstBeing->setSprite(SPRITE_FLOOR, id, color,
                 static_cast<unsigned char>(id2));
-            localPlayer->imitateOutfit(dstBeing, SPRITE_FLOOR);
+            if (localPlayer)
+                localPlayer->imitateOutfit(dstBeing, SPRITE_FLOOR);
             break;
         case 9:  // eAthena LOOK_SHOES
             dstBeing->setSprite(SPRITE_HAIR, id, color,
                 static_cast<unsigned char>(id2));
-            localPlayer->imitateOutfit(dstBeing, SPRITE_HAIR);
+            if (localPlayer)
+                localPlayer->imitateOutfit(dstBeing, SPRITE_HAIR);
             break;
         case 10:  // LOOK_GLOVES
             dstBeing->setSprite(SPRITE_SHOES, id, color,
                 static_cast<unsigned char>(id2));
-            localPlayer->imitateOutfit(dstBeing, SPRITE_SHOES);
+            if (localPlayer)
+                localPlayer->imitateOutfit(dstBeing, SPRITE_SHOES);
             break;
         case 11:  // LOOK_FLOOR
             dstBeing->setSprite(SPRITE_SHIELD, id, color,
                 static_cast<unsigned char>(id2));
-            localPlayer->imitateOutfit(dstBeing, SPRITE_SHIELD);
+            if (localPlayer)
+                localPlayer->imitateOutfit(dstBeing, SPRITE_SHIELD);
             break;
         case 12:  // LOOK_ROBE
             dstBeing->setSprite(SPRITE_HEAD_TOP, id, color,
                 static_cast<unsigned char>(id2));
-            localPlayer->imitateOutfit(dstBeing, SPRITE_HEAD_TOP);
+            if (localPlayer)
+                localPlayer->imitateOutfit(dstBeing, SPRITE_HEAD_TOP);
             break;
         case 13:  // COSTUME_HEAD_TOP
             dstBeing->setSprite(SPRITE_HEAD_MID, id, color,
                 static_cast<unsigned char>(id2));
-            localPlayer->imitateOutfit(dstBeing, SPRITE_HEAD_MID);
+            if (localPlayer)
+                localPlayer->imitateOutfit(dstBeing, SPRITE_HEAD_MID);
             break;
         case 14:  // COSTUME_HEAD_MID
             dstBeing->setSprite(SPRITE_ROBE, id, color,
                 static_cast<unsigned char>(id2));
-            localPlayer->imitateOutfit(dstBeing, SPRITE_ROBE);
+            if (localPlayer)
+                localPlayer->imitateOutfit(dstBeing, SPRITE_ROBE);
             break;
         case 15:  // COSTUME_HEAD_LOW
             dstBeing->setSprite(SPRITE_EVOL2, id, color,
                 static_cast<unsigned char>(id2));
-            localPlayer->imitateOutfit(dstBeing, SPRITE_EVOL2);
+            if (localPlayer)
+                localPlayer->imitateOutfit(dstBeing, SPRITE_EVOL2);
             break;
         case 16:  // COSTUME_GARMENT
             dstBeing->setSprite(SPRITE_EVOL3, id, color,
                 static_cast<unsigned char>(id2));
-            localPlayer->imitateOutfit(dstBeing, SPRITE_EVOL3);
+            if (localPlayer)
+                localPlayer->imitateOutfit(dstBeing, SPRITE_EVOL3);
             break;
         case 17:  // ARMOR
             dstBeing->setSprite(SPRITE_EVOL4, id, color,
                 static_cast<unsigned char>(id2));
-            localPlayer->imitateOutfit(dstBeing, SPRITE_EVOL4);
+            if (localPlayer)
+                localPlayer->imitateOutfit(dstBeing, SPRITE_EVOL4);
             break;
         default:
             UNIMPLIMENTEDPACKET;

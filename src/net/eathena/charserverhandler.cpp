@@ -191,8 +191,7 @@ void CharServerHandler::handleMessage(Net::MessageIn &msg)
 }
 
 void CharServerHandler::readPlayerData(Net::MessageIn &msg,
-                                       Net::Character *const character,
-                                       const bool) const
+                                       Net::Character *const character) const
 {
     if (!character)
         return;
@@ -233,7 +232,7 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     const uint16_t race = msg.readInt16("class");
 //    tempPlayer->setSubtype(race, 0);
     const int hairStyle = msg.readInt32("hair style");
-    const int option = (msg.readInt16("weapon") | 1) ^ 1;
+    const int option A_UNUSED = (msg.readInt16("weapon") | 1) ^ 1;
     const int weapon = 0;
 
     tempPlayer->setSprite(SPRITE_BODY, weapon, "", 1, true);
@@ -270,16 +269,18 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     msg.readString(16, "map name");
     msg.readInt32("delete date");
     const int shoes = msg.readInt32("robe");
-    tempPlayer->setSprite(SPRITE_HAIR, shoes);
-    tempPlayer->setSprite(SPRITE_SHOES, gloves);
-    tempPlayer->setSprite(SPRITE_SHIELD, cape);
-    tempPlayer->setSprite(SPRITE_HEAD_TOP, misc1);
-    tempPlayer->setSprite(SPRITE_WEAPON, bottomClothes);
-    tempPlayer->setSprite(SPRITE_FLOOR, shield);
-
-    tempPlayer->setSprite(SPRITE_CLOTHES_COLOR, hat);
-    tempPlayer->setSprite(SPRITE_HEAD_BOTTOM, topClothes);
-//    tempPlayer->setSprite(SPRITE_HEAD_MID, misc2);
+    if (!serverFeatures->haveAdvancedSprites())
+    {
+        tempPlayer->setSprite(SPRITE_HAIR, shoes);
+        tempPlayer->setSprite(SPRITE_SHOES, gloves);
+        tempPlayer->setSprite(SPRITE_SHIELD, cape);
+        tempPlayer->setSprite(SPRITE_HEAD_TOP, misc1);
+        tempPlayer->setSprite(SPRITE_WEAPON, bottomClothes);
+        tempPlayer->setSprite(SPRITE_FLOOR, shield);
+        tempPlayer->setSprite(SPRITE_CLOTHES_COLOR, hat);
+        tempPlayer->setSprite(SPRITE_HEAD_BOTTOM, topClothes);
+//        tempPlayer->setSprite(SPRITE_HEAD_MID, misc2);
+    }
     msg.readInt32("slot change");
     tempPlayer->setRename(msg.readInt32("rename (inverse)"));
 
@@ -409,7 +410,7 @@ void CharServerHandler::processCharLogin(Net::MessageIn &msg)
     for (int i = 0; i < count; ++i)
     {
         Net::Character *const character = new Net::Character;
-        readPlayerData(msg, character, false);
+        readPlayerData(msg, character);
         mCharacters.push_back(character);
         if (character->dummy)
         {
@@ -550,7 +551,7 @@ void CharServerHandler::processCharCreate(Net::MessageIn &msg)
 {
     BLOCK_START("CharServerHandler::processCharCreate")
     Net::Character *const character = new Net::Character;
-    charServerHandler->readPlayerData(msg, character, false);
+    charServerHandler->readPlayerData(msg, character);
     mCharacters.push_back(character);
 
     updateCharSelectDialog();
@@ -733,7 +734,7 @@ void CharServerHandler::processCharCharacters(Net::MessageIn &msg)
     for (int i = 0; i < count; ++i)
     {
         Net::Character *const character = new Net::Character;
-        charServerHandler->readPlayerData(msg, character, false);
+        charServerHandler->readPlayerData(msg, character);
         mCharacters.push_back(character);
         if (character->dummy)
         {

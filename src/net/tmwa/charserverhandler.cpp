@@ -125,8 +125,7 @@ void CharServerHandler::handleMessage(Net::MessageIn &msg)
 }
 
 void CharServerHandler::readPlayerData(Net::MessageIn &msg,
-                                       Net::Character *const character,
-                                       const bool withColors) const
+                                       Net::Character *const character) const
 {
     if (!character)
         return;
@@ -342,23 +341,18 @@ void CharServerHandler::processCharLogin(Net::MessageIn &msg)
     if (slots > 0 && slots < 30)
         loginData.characterSlots = static_cast<uint16_t>(slots);
 
-    const bool version = msg.readUInt8("version") == 1 && serverVersion > 0;
-    msg.skip(17, "unused");
+    msg.skip(18, "unused");
 
     delete_all(mCharacters);
     mCharacters.clear();
 
     // Derive number of characters from message length
-    int count = (msg.getLength() - 24);
-    if (version)
-        count /= 120;
-    else
-        count /= 106;
+    const int count = (msg.getLength() - 24) / 106;
 
     for (int i = 0; i < count; ++i)
     {
         Net::Character *const character = new Net::Character;
-        readPlayerData(msg, character, version);
+        readPlayerData(msg, character);
         mCharacters.push_back(character);
         if (character->dummy)
         {
@@ -444,7 +438,7 @@ void CharServerHandler::processCharCreate(Net::MessageIn &msg)
 {
     BLOCK_START("CharServerHandler::processCharCreate")
     Net::Character *const character = new Net::Character;
-    charServerHandler->readPlayerData(msg, character, false);
+    charServerHandler->readPlayerData(msg, character);
     mCharacters.push_back(character);
 
     updateCharSelectDialog();
