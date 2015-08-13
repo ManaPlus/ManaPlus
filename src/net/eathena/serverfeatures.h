@@ -113,6 +113,8 @@ class ServerFeatures final : public Net::ServerFeatures
         bool haveTeamId() const override final;
 
         bool haveNewGuild() const override final;
+
+        bool haveAdvancedSprites() const override final;
 };
 
 }  // namespace EAthena

@@ -235,4 +235,9 @@ bool ServerFeatures::haveNewGuild() const
     return false;
 }
 
+bool ServerFeatures::haveAdvancedSprites() const
+{
+    return serverVersion >= 7;
+}
+
 }  // namespace EAthena

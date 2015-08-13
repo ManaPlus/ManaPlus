@@ -234,4 +234,9 @@ bool ServerFeatures::haveNewGuild() const
     return tmwServerVersion > 0;
 }
 
+bool ServerFeatures::haveAdvancedSprites() const
+{
+    return false;
+}
+
 }  // namespace TmwAthena
