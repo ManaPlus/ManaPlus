@@ -160,7 +160,7 @@ packet(SMSG_BEING_SPECIAL_EFFECT,    0x01f3);
 packet(SMSG_BEING_SPECIAL_EFFECT_NUM, 0x0284);
 packet(SMSG_BEING_SOUND_EFFECT,      0x01d3);
 packet(SMSG_BEING_EMOTION,           0x00c0);
-packet(SMSG_BEING_ACTION,            0x008a); /**< Attack, sit, stand up, ... */
+packet(SMSG_BEING_ACTION,            0x008a); /**< Attack, sit, stand up, ...*/
 packet(SMSG_BEING_ACTION2,           0x02e1);
 packet(SMSG_BEING_CHAT,              0x008d); /**< A being talks */
 packet(SMSG_BEING_SLIDE,             0x01ff);
@@ -264,14 +264,14 @@ packet(SMSG_PARTY_MEMBER_INFO,       0x01e9);
 packet(SMSG_PARTY_ITEM_PICKUP,       0x02b8);
 packet(SMSG_PARTY_LEADER,            0x07fc);
 
-packet(SMSG_PLAYER_STORAGE_ITEMS,    0x0995); /**< Item list for storage */
-packet(SMSG_PLAYER_STORAGE_EQUIP,    0x0996); /**< Equipment list for storage */
-packet(SMSG_PLAYER_STORAGE_STATUS,   0x00f2); /**< Slots used and total slots */
+packet(SMSG_PLAYER_STORAGE_ITEMS,    0x0995); /* Item list for storage */
+packet(SMSG_PLAYER_STORAGE_EQUIP,    0x0996); /* Equipment list for storage */
+packet(SMSG_PLAYER_STORAGE_STATUS,   0x00f2); /* Slots used and total slots */
 packet(SMSG_PLAYER_STORAGE_ADD_OUTDATED, 0x00f4);
-packet(SMSG_PLAYER_STORAGE_ADD,      0x01c4); /**< Add item/equip to storage */
+packet(SMSG_PLAYER_STORAGE_ADD,      0x01c4); /* Add item/equip to storage */
 // Remove item/equip from storage
 packet(SMSG_PLAYER_STORAGE_REMOVE,   0x00f6);
-packet(SMSG_PLAYER_STORAGE_CLOSE,    0x00f8); /**< Storage access closed */
+packet(SMSG_PLAYER_STORAGE_CLOSE,    0x00f8); /* Storage access closed */
 packet(SMSG_PLAYER_STORAGE_PASSWORD, 0x023a);
 packet(SMSG_PLAYER_STORAGE_PASSWORD_RESULT, 0x023c);
 

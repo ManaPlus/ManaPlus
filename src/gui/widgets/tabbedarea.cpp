@@ -81,6 +81,7 @@ TabbedArea::TabbedArea(const Widget2 *const widget) :
     KeyListener(),
     MouseListener(),
     WidgetListener(),
+    mArrowButton(),
     mSelectedTab(nullptr),
     mTabContainer(new BasicContainer2(widget)),
     mWidgetContainer(new BasicContainer2(widget)),

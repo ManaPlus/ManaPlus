@@ -28,9 +28,7 @@
 #include "notifymanager.h"
 #include "party.h"
 
-#include "being/localplayer.h"
 #include "being/mercenaryinfo.h"
-#include "being/playerinfo.h"
 
 #include "enums/resources/notifytypes.h"
 
@@ -38,7 +36,6 @@
 
 #include "input/keyboardconfig.h"
 
-#include "gui/windows/charselectdialog.h"
 #include "gui/windows/skilldialog.h"
 #include "gui/windows/socialwindow.h"
 #include "gui/windows/outfitwindow.h"
@@ -537,7 +534,7 @@ void BeingHandler::processBeingChangeLookCards(Net::MessageIn &msg)
         Net::Characters &chars = Net::CharServerHandler::mCharacters;
         const BeingId id = msg.readBeingId("being id");
 
-        FOR_EACH(Net::Characters::iterator, it, chars)
+        FOR_EACH (Net::Characters::iterator, it, chars)
         {
             Net::Character *character = *it;
             if (character->dummy && character->dummy->getId() == id)

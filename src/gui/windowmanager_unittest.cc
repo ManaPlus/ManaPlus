@@ -25,10 +25,7 @@
 #include "settings.h"
 
 #include "gui/gui.h"
-#include "gui/theme.h"
 #include "gui/userpalette.h"
-
-#include "gui/fonts/font.h"
 
 #include "gui/popups/beingpopup.h"
 #include "gui/popups/itempopup.h"
@@ -58,8 +55,6 @@
 #include "utils/env.h"
 #include "utils/gettext.h"
 #include "utils/physfstools.h"
-
-#include "net/logindata.h"
 
 #include "debug.h"
 

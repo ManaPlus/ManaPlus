@@ -36,7 +36,6 @@
 #include "localconsts.h"
 
 class Button;
-class Desktop;
 class Skin;
 class Window;
 
