@@ -44,7 +44,7 @@ void CashShopHandler::handleMessage(Net::MessageIn &msg A_UNUSED)
 
 void CashShopHandler::buyItem(const int points A_UNUSED,
                               const int itemId A_UNUSED,
-                              const unsigned char color A_UNUSED,
+                              const ItemColor color A_UNUSED,
                               const int amount A_UNUSED) const
 {
 }

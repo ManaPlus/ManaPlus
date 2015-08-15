@@ -83,15 +83,18 @@ Item *Inventory::getItem(const int index) const
     return mItems[index];
 }
 
-Item *Inventory::findItem(const int itemId, const unsigned char color) const
+Item *Inventory::findItem(const int itemId,
+                          const ItemColor color) const
 {
     for (unsigned i = 0; i < mSize; i++)
     {
         Item *const item = mItems[i];
         if (item && item->mId == itemId)
         {
-            if (color == 0 || item->mColor == color
-                || (color == 1 && item->mColor <= 1))
+            if (color == ItemColor_zero ||
+                item->mColor == color ||
+                (color == ItemColor_one &&
+                item->mColor <= ItemColor_one))
             {
                 return item;
             }
@@ -105,7 +108,7 @@ int Inventory::addItem(const int id,
                        const int type,
                        const int quantity,
                        const uint8_t refine,
-                       const uint8_t color,
+                       const ItemColor color,
                        const Identified identified,
                        const Damaged damaged,
                        const Favorite favorite,
@@ -123,7 +126,7 @@ void Inventory::setItem(const int index,
                         const int type,
                         const int quantity,
                         const uint8_t refine,
-                        const unsigned char color,
+                        const ItemColor color,
                         const Identified identified,
                         const Damaged damaged,
                         const Favorite favorite,

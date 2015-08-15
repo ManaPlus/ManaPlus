@@ -27,6 +27,8 @@
 
 #include "enums/dragdropsource.h"
 
+#include "enums/simpletypes/itemcolor.h"
+
 #include "gui/widgets/skilldata.h"
 #include "gui/widgets/skillinfo.h"
 
@@ -44,8 +46,8 @@ class DragDrop final
             mItem(item ? item->getId() : 0),
             mSelItem(0),
             mTag(-1),
-            mItemColor(item ? item->getColor() : static_cast<uint8_t>(1U)),
-            mSelItemColor(1)
+            mItemColor(item ? item->getColor() : ItemColor_one),
+            mSelItemColor(ItemColor_one)
         {
             if (mItemImage)
                 mItemImage->incRef();
@@ -62,7 +64,7 @@ class DragDrop final
         int getItem() const
         { return mItem; }
 
-        uint8_t getItemColor() const
+        ItemColor getItemColor() const
         { return mItemColor; }
 
         Image *getItemImage()
@@ -93,7 +95,7 @@ class DragDrop final
             else
             {
                 mItem = 0;
-                mItemColor = 1;
+                mItemColor = ItemColor_one;
                 mItemImage = nullptr;
                 mSource = DRAGDROP_SOURCE_EMPTY;
                 mTag = -1;
@@ -107,7 +109,7 @@ class DragDrop final
             if (mItemImage)
                 mItemImage->decRef();
             mItem = 0;
-            mItemColor = 1;
+            mItemColor = ItemColor_one;
 
             if (command)
             {
@@ -141,7 +143,7 @@ class DragDrop final
             if (mItemImage)
                 mItemImage->decRef();
             mItem = 0;
-            mItemColor = 1;
+            mItemColor = ItemColor_one;
             mText.clear();
             mItemImage = nullptr;
             mSource = DRAGDROP_SOURCE_EMPTY;
@@ -169,7 +171,7 @@ class DragDrop final
             if (mItem)
                 ItemSoundManager::playSfx(mItem, ItemSoundEvent::PUT);
             mItem = 0;
-            mItemColor = 1;
+            mItemColor = ItemColor_one;
             mItemImage = nullptr;
             mSource = DRAGDROP_SOURCE_EMPTY;
             mText.clear();
@@ -189,20 +191,20 @@ class DragDrop final
             else
             {
                 mSelItem = 0;
-                mSelItemColor = 1;
+                mSelItemColor = ItemColor_one;
             }
         }
 
         void deselect()
         {
             mSelItem = 0;
-            mSelItemColor = 1;
+            mSelItemColor = ItemColor_one;
         }
 
         int getSelected() const
         { return mSelItem; }
 
-        uint8_t getSelectedColor() const
+        ItemColor getSelectedColor() const
         { return mSelItemColor; }
 
         bool isSelected() const
@@ -242,8 +244,8 @@ class DragDrop final
         int mItem;
         int mSelItem;
         int mTag;
-        uint8_t mItemColor;
-        uint8_t mSelItemColor;
+        ItemColor mItemColor;
+        ItemColor mSelItemColor;
 };
 
 extern DragDrop dragDrop;

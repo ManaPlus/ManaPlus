@@ -158,7 +158,7 @@ void VendingHandler::processItemsList(Net::MessageIn &msg)
         for (int d = 0; d < 4; d ++)
             msg.readInt16("card");
 
-        const unsigned char color = 1;
+        const ItemColor color = ItemColor_one;
         ShopItem *const item = mBuyDialog->addItem(itemId, type,
             color, amount, value);
         if (item)

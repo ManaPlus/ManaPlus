@@ -23,6 +23,8 @@
 #ifndef GUI_WINDOWS_OUTFITWINDOW_H
 #define GUI_WINDOWS_OUTFITWINDOW_H
 
+#include "enums/simpletypes/itemcolor.h"
+
 #include "gui/widgets/window.h"
 
 #include "listeners/actionlistener.h"
@@ -119,7 +121,7 @@ class OutfitWindow final : public Window,
         int mItems[OUTFITS_COUNT + 1][OUTFIT_ITEM_COUNT];
         int mAwayOutfit;
 
-        unsigned char mItemColors[OUTFITS_COUNT + 1][OUTFIT_ITEM_COUNT];
+        ItemColor mItemColors[OUTFITS_COUNT + 1][OUTFIT_ITEM_COUNT];
         bool mItemClicked;
         bool mItemsUnequip[OUTFITS_COUNT];
 };

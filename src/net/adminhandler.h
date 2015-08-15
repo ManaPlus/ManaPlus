@@ -24,6 +24,7 @@
 #define NET_ADMINHANDLER_H
 
 #include "enums/simpletypes/beingid.h"
+#include "enums/simpletypes/itemcolor.h"
 
 #include <string>
 
@@ -69,7 +70,8 @@ class AdminHandler notfinal
         virtual void warp(const std::string &map,
                           const int x, const int y) const = 0;
 
-        virtual void createItems(const int id, const int color,
+        virtual void createItems(const int id,
+                                 const ItemColor color,
                                  const int amount) const = 0;
 
         virtual void gotoName(const std::string &name) const = 0;

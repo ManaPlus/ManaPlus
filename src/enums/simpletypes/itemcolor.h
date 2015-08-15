@@ -1,6 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2011-2015  The ManaPlus Developers
+ *  Copyright (C) 2015  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -18,37 +18,12 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_MARKETHANDLER_H
-#define NET_MARKETHANDLER_H
+#ifndef ENUMS_SIMPLETYPES_ITEMCOLOR_H
+#define ENUMS_SIMPLETYPES_ITEMCOLOR_H
 
-#ifdef EATHENA_SUPPORT
+#include "enums/simpletypes/intdefines.h"
 
-#include "enums/simpletypes/itemcolor.h"
+defIntEnum(ItemColor, uint16_t);
+defIntEnumNeg(ItemColor);
 
-#include <string>
-
-#include "localconsts.h"
-
-namespace Net
-{
-
-class MarketHandler notfinal
-{
-    public:
-        virtual ~MarketHandler()
-        { }
-
-        virtual void close() = 0;
-
-        virtual void buyItem(const int itemId,
-                             const int type,
-                             const ItemColor color,
-                             const int amount) const = 0;
-};
-
-}  // namespace Net
-
-extern Net::MarketHandler *marketHandler;
-
-#endif  // EATHENA_SUPPORT
-#endif  // NET_MARKETHANDLER_H
+#endif  // ENUMS_SIMPLETYPES_ITEMCOLOR_H

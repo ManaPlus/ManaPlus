@@ -24,6 +24,7 @@
 #define GUI_WINDOWS_BUYDIALOG_H
 
 #include "enums/simpletypes/beingid.h"
+#include "enums/simpletypes/itemcolor.h"
 
 #include "gui/widgets/window.h"
 
@@ -105,7 +106,7 @@ class BuyDialog final : public Window,
          */
         ShopItem *addItem(const int id,
                           const int type,
-                          const unsigned char color,
+                          const ItemColor color,
                           const int amount,
                           const int price);
 

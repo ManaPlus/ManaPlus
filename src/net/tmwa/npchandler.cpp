@@ -178,7 +178,7 @@ void NpcHandler::sell(const BeingId beingId) const
 
 void NpcHandler::buyItem(const BeingId beingId A_UNUSED,
                          const int itemId,
-                         const unsigned char color A_UNUSED,
+                         const ItemColor color A_UNUSED,
                          const int amount) const
 {
     createOutPacket(CMSG_NPC_BUY_REQUEST);

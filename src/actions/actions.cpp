@@ -439,7 +439,8 @@ impHandler(dropItemId)
         return false;
 
     // +++ ignoring item color for now
-    Item *const item = inv->findItem(atoi(event.args.c_str()), 1);
+    Item *const item = inv->findItem(atoi(event.args.c_str()),
+        ItemColor_one);
 
     if (item && !PlayerInfo::isItemProtected(item->getId()))
     {
@@ -467,7 +468,8 @@ impHandler(dropItemIdAll)
         return false;
 
     // +++ ignoring item color for now
-    Item *const item = inv->findItem(atoi(event.args.c_str()), 1);
+    Item *const item = inv->findItem(atoi(event.args.c_str()),
+        ItemColor_one);
 
     if (item && !PlayerInfo::isItemProtected(item->getId()))
         PlayerInfo::dropItem(item, item->getQuantity(), Sfx_true);
@@ -1485,14 +1487,14 @@ impHandler0(createItems)
 
         if (!colors)
         {
-            dialog->addItem(id, 0, 1, 100, 0);
+            dialog->addItem(id, 0, ItemColor_one, 100, 0);
         }
         else
         {
-            for (unsigned char f = 0; f < colors; f ++)
+            for (int f = 0; f < colors; f ++)
             {
-                if (!info->getColor(f).empty())
-                    dialog->addItem(id, 0, f, 100, 0);
+                if (!info->getColor(fromInt(f, ItemColor)).empty())
+                    dialog->addItem(id, 0, fromInt(f, ItemColor), 100, 0);
             }
         }
     }
@@ -1548,7 +1550,8 @@ impHandler(useItem)
         if (inv)
         {
             // +++ ignoring item color for now
-            const Item *const item = inv->findItem(itemId, 1);
+            const Item *const item = inv->findItem(itemId,
+                ItemColor_one);
             PlayerInfo::useEquipItem(item, Sfx_true);
         }
     }

@@ -58,7 +58,7 @@ void BuyingStoreSellDialog::sellAction(const ActionEvent &event A_UNUSED)
         return;
     // +++ need add colors
     Item *const item2 = PlayerInfo::getInventory()->findItem(
-        item1->getId(), 1);
+        item1->getId(), ItemColor_one);
     if (!item2)
         return;
 

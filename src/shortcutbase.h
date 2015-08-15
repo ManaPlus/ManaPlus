@@ -23,6 +23,8 @@
 #ifndef SHORTCUTBASE_H
 #define SHORTCUTBASE_H
 
+#include "enums/simpletypes/itemcolor.h"
+
 #include <string>
 
 #include "localconsts.h"
@@ -67,7 +69,7 @@ class ShortcutBase notfinal
         int getItem(const int index) const A_WARN_UNUSED
         { return mItems[index]; }
 
-        unsigned char getItemColor(const int index) const A_WARN_UNUSED
+        ItemColor getItemColor(const int index) const A_WARN_UNUSED
         { return mItemColors[index]; }
 
         /**
@@ -95,8 +97,9 @@ class ShortcutBase notfinal
          * @param index Index of the item.
          * @param itemId ID of the item.
          */
-        void setItems(const int index, const int itemId,
-                      const unsigned char color)
+        void setItems(const int index,
+                      const int itemId,
+                      const ItemColor color)
         { mItems[index] = itemId; mItemColors[index] = color; save(); }
 
         /**
@@ -125,12 +128,12 @@ class ShortcutBase notfinal
 
     private:
         int *mItems A_NONNULLPOINTER;
-        unsigned char *mItemColors A_NONNULLPOINTER;
+        ItemColor *mItemColors A_NONNULLPOINTER;
         std::string mItemName;
         std::string mColorName;
         int mItemSelected;
         int mMaxSize;
-        unsigned char mItemColorSelected;
+        ItemColor mItemColorSelected;
 };
 
 #endif  // SHORTCUTBASE_H

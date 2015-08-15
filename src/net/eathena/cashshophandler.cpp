@@ -104,7 +104,7 @@ void CashShopHandler::processCashShopOpen(Net::MessageIn &msg)
         const int value = msg.readInt32("discount price");
         const int type = msg.readUInt8("item type");
         const int itemId = msg.readInt16("item id");
-        const int color = 1;
+        const ItemColor color = ItemColor_one;
         mBuyDialog->addItem(itemId, type, color, 0, value);
     }
     mBuyDialog->sort();
@@ -168,7 +168,7 @@ void CashShopHandler::processCashShopSchedule(Net::MessageIn &msg)
 
 void CashShopHandler::buyItem(const int points,
                               const int itemId,
-                              const unsigned char color A_UNUSED,
+                              const ItemColor color A_UNUSED,
                               const int amount) const
 {
     createOutPacket(CMSG_NPC_CASH_SHOP_BUY);

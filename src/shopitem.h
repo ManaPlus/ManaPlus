@@ -47,7 +47,7 @@ class ShopItem final : public Item
         ShopItem(const int inventoryIndex,
                  const int id,
                  const int type,
-                 const unsigned char color,
+                 const ItemColor color,
                  const int quantity,
                  const int price);
 
@@ -60,7 +60,7 @@ class ShopItem final : public Item
          */
         ShopItem(const int id,
                  const int type,
-                 const unsigned char color,
+                 const ItemColor color,
                  const int price);
 
         A_DELETE_COPY(ShopItem)

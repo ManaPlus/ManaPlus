@@ -624,11 +624,13 @@ void CharCreateDialog::updateHair()
     {
         mHairColor = minHairColor;
     }
-    mHairColorNameLabel->setCaption(ColorDB::getHairColorName(mHairColor));
+    mHairColorNameLabel->setCaption(ColorDB::getHairColorName(
+        fromInt(mHairColor, ItemColor)));
     mHairColorNameLabel->resizeTo(150, 150);
 
     mPlayer->setSprite(charServerHandler->hairSprite(),
-        mHairStyle * -1, item.getDyeColorsString(mHairColor));
+        mHairStyle * -1,
+        item.getDyeColorsString(fromInt(mHairColor, ItemColor)));
 }
 
 void CharCreateDialog::updateRace()
@@ -667,7 +669,8 @@ void CharCreateDialog::updateLook()
     }
     if (mLookNameLabel)
     {
-        mLookNameLabel->setCaption(item.getColorName(mLook));
+        mLookNameLabel->setCaption(item.getColorName(
+            fromInt(mLook, ItemColor)));
         mLookNameLabel->resizeTo(150, 150);
     }
 }

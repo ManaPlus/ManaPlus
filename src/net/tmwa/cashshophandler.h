@@ -42,7 +42,7 @@ class CashShopHandler final : public MessageHandler,
 
         void buyItem(const int points,
                      const int itemId,
-                     const unsigned char color,
+                     const ItemColor color,
                      const int amount) const override final;
 
         void close() const override final;

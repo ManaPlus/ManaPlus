@@ -458,8 +458,12 @@ void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
         flags.byte = msg.readUInt8("flags");
         if (inventory)
         {
-            inventory->setItem(index, itemId, itemType, 1, refine,
+            inventory->setItem(index,
+                itemId,
+                itemType,
                 1,
+                refine,
+                ItemColor_one,
                 fromBool(flags.bits.isIdentified, Identified),
                 fromBool(flags.bits.isDamaged, Damaged),
                 fromBool(flags.bits.isFavorite, Favorite),
@@ -542,14 +546,23 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
                 break;
         }
         if (localPlayer)
-            localPlayer->pickedUp(itemInfo, 0, 1, floorId, pickup);
+        {
+            localPlayer->pickedUp(itemInfo,
+                0,
+                ItemColor_one,
+                floorId,
+                pickup);
+        }
     }
     else
     {
         if (localPlayer)
         {
-            localPlayer->pickedUp(itemInfo, amount,
-                1, floorId, Pickup::OKAY);
+            localPlayer->pickedUp(itemInfo,
+                amount,
+                ItemColor_one,
+                floorId,
+                Pickup::OKAY);
         }
 
         if (inventory)
@@ -559,8 +572,12 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
             if (item && item->getId() == itemId)
                 amount += item->getQuantity();
 
-            inventory->setItem(index, itemId, itemType, amount, refine,
-                1,
+            inventory->setItem(index,
+                itemId,
+                itemType,
+                amount,
+                refine,
+                ItemColor_one,
                 fromBool(identified, Identified),
                 fromBool(damaged, Damaged),
                 Favorite_false,
@@ -608,8 +625,12 @@ void InventoryHandler::processPlayerInventory(Net::MessageIn &msg)
 
         if (inventory)
         {
-            inventory->setItem(index, itemId, itemType, amount,
-                0, 1,
+            inventory->setItem(index,
+                itemId,
+                itemType,
+                amount,
+                0,
+                ItemColor_one,
                 fromBool(flags.bits.isIdentified, Identified),
                 fromBool(flags.bits.isDamaged, Damaged),
                 fromBool(flags.bits.isFavorite, Favorite),
@@ -645,8 +666,13 @@ void InventoryHandler::processPlayerStorage(Net::MessageIn &msg)
         ItemFlags flags;
         flags.byte = msg.readUInt8("flags");
 
-        mInventoryItems.push_back(Ea::InventoryItem(index, itemId, itemType,
-            cards, amount, 0, 1,
+        mInventoryItems.push_back(Ea::InventoryItem(index,
+            itemId,
+            itemType,
+            cards,
+            amount,
+            0,
+            ItemColor_one,
             fromBool(flags.bits.isIdentified, Identified),
             fromBool(flags.bits.isDamaged, Damaged),
             fromBool(flags.bits.isFavorite, Favorite),
@@ -746,8 +772,13 @@ void InventoryHandler::processPlayerStorageEquip(Net::MessageIn &msg)
         ItemFlags flags;
         flags.byte = msg.readUInt8("flags");
 
-        mInventoryItems.push_back(Ea::InventoryItem(index, itemId, itemType,
-            cards, amount, refine, 1,
+        mInventoryItems.push_back(Ea::InventoryItem(index,
+            itemId,
+            itemType,
+            cards,
+            amount,
+            refine,
+            ItemColor_one,
             fromBool(flags.bits.isIdentified, Identified),
             fromBool(flags.bits.isDamaged, Damaged),
             fromBool(flags.bits.isFavorite, Favorite),
@@ -773,15 +804,19 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
 
     if (Item *const item = mStorage->getItem(index))
     {
-        item->setId(itemId, 1);
+        item->setId(itemId, ItemColor_one);
         item->increaseQuantity(amount);
     }
     else
     {
         if (mStorage)
         {
-            mStorage->setItem(index, itemId, itemType, amount,
-                refine, 1,
+            mStorage->setItem(index,
+                itemId,
+                itemType,
+                amount,
+                refine,
+                ItemColor_one,
                 fromBool(identified, Identified),
                 Damaged_false,
                 Favorite_false,
@@ -960,8 +995,12 @@ void InventoryHandler::processPlayerCartAdd(Net::MessageIn &msg)
         if (item && item->getId() == itemId)
             amount += item->getQuantity();
 
-        inventory->setItem(index, itemId, itemType, amount, refine,
-            1,
+        inventory->setItem(index,
+            itemId,
+            itemType,
+            amount,
+            refine,
+            ItemColor_one,
             fromBool(identified, Identified),
             Damaged_false,
             Favorite_false,
@@ -995,8 +1034,13 @@ void InventoryHandler::processPlayerCartEquip(Net::MessageIn &msg)
         ItemFlags flags;
         flags.byte = msg.readUInt8("flags");
 
-        mCartItems.push_back(Ea::InventoryItem(index, itemId, itemType,
-            cards, amount, refine, 1,
+        mCartItems.push_back(Ea::InventoryItem(index,
+            itemId,
+            itemType,
+            cards,
+            amount,
+            refine,
+            ItemColor_one,
             fromBool(flags.bits.isIdentified, Identified),
             fromBool(flags.bits.isDamaged, Damaged),
             fromBool(flags.bits.isFavorite, Favorite),
@@ -1027,8 +1071,13 @@ void InventoryHandler::processPlayerCartItems(Net::MessageIn &msg)
         ItemFlags flags;
         flags.byte = msg.readUInt8("flags");
 
-        mCartItems.push_back(Ea::InventoryItem(index, itemId, itemType,
-            cards, amount, 0, 1,
+        mCartItems.push_back(Ea::InventoryItem(index,
+            itemId,
+            itemType,
+            cards,
+            amount,
+            0,
+            ItemColor_one,
             fromBool(flags.bits.isIdentified, Identified),
             fromBool(flags.bits.isDamaged, Damaged),
             fromBool(flags.bits.isFavorite, Favorite),

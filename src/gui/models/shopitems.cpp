@@ -53,7 +53,7 @@ std::string ShopItems::getElementAt(int i)
 
 ShopItem *ShopItems::addItem(const int id,
                              const int type,
-                             const unsigned char color,
+                             const ItemColor color,
                              const int amount,
                              const int price)
 {
@@ -65,7 +65,7 @@ ShopItem *ShopItems::addItem(const int id,
 
 ShopItem *ShopItems::addItemNoDup(const int id,
                                   const int type,
-                                  const unsigned char color,
+                                  const ItemColor color,
                                   const int amount,
                                   const int price)
 {
@@ -82,7 +82,7 @@ ShopItem *ShopItems::addItemNoDup(const int id,
 ShopItem *ShopItems::addItem2(const int inventoryIndex,
                               const int id,
                               const int type,
-                              const unsigned char color,
+                              const ItemColor color,
                               const int quantity,
                               const int price)
 {
@@ -155,7 +155,8 @@ void ShopItems::clear()
     mShopItems.clear();
 }
 
-ShopItem *ShopItems::findItem(const int id, const unsigned char color) const
+ShopItem *ShopItems::findItem(const int id,
+                              const ItemColor color) const
 {
     std::vector<ShopItem*>::const_iterator it = mShopItems.begin();
     const std::vector<ShopItem*>::const_iterator e = mShopItems.end();

@@ -24,6 +24,8 @@
 #ifndef GUI_POPUPS_ITEMPOPUP_H
 #define GUI_POPUPS_ITEMPOPUP_H
 
+#include "enums/simpletypes/itemcolor.h"
+
 #include "gui/widgets/popup.h"
 
 #include "resources/itemtype.h"
@@ -58,7 +60,7 @@ class ItemPopup final : public Popup
          * Sets the info to be displayed given a particular item.
          */
         void setItem(const ItemInfo &item,
-                     const unsigned char color,
+                     const ItemColor color,
                      const bool showImage,
                      int id,
                      const int *const cards);
@@ -82,7 +84,7 @@ class ItemPopup final : public Popup
         Icon *mIcon;
         std::string mLastName;
         int mLastId;
-        unsigned char mLastColor;
+        ItemColor mLastColor;
 
         void setLabelColor(Label *label,
                            const ItemType::Type type) const A_NONNULL(2);

@@ -124,7 +124,7 @@ void ItemShortcutContainer::draw(Graphics *graphics)
             itemX + 2, itemY + 2);
 
         const int itemId = selShortcut->getItem(i);
-        const unsigned char itemColor = selShortcut->getItemColor(i);
+        const ItemColor itemColor = selShortcut->getItemColor(i);
 
         if (itemId < 0)
             continue;
@@ -261,7 +261,7 @@ void ItemShortcutContainer::safeDraw(Graphics *graphics)
             itemX + 2, itemY + 2);
 
         const int itemId = selShortcut->getItem(i);
-        const unsigned char itemColor = selShortcut->getItemColor(i);
+        const ItemColor itemColor = selShortcut->getItemColor(i);
 
         if (itemId < 0)
             continue;
@@ -372,7 +372,7 @@ void ItemShortcutContainer::mouseDragged(MouseEvent &event)
                 return;
 
             const int itemId = selShortcut->getItem(index);
-            const unsigned char itemColor = selShortcut->getItemColor(index);
+            const ItemColor itemColor = selShortcut->getItemColor(index);
 
             if (itemId < 0)
                 return;
@@ -540,7 +540,7 @@ void ItemShortcutContainer::mouseMoved(MouseEvent &event)
         return;
 
     const int itemId = selShortcut->getItem(index);
-    const unsigned char itemColor = selShortcut->getItemColor(index);
+    const ItemColor itemColor = selShortcut->getItemColor(index);
 
     if (itemId < 0)
         return;

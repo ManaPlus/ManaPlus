@@ -27,6 +27,7 @@
 #include "enums/simpletypes/equipm.h"
 #include "enums/simpletypes/favorite.h"
 #include "enums/simpletypes/identified.h"
+#include "enums/simpletypes/itemcolor.h"
 
 #if defined(__GXX_EXPERIMENTAL_CXX0X__)
 #include <cstdint>
@@ -51,7 +52,7 @@ class InventoryItem final
         int cards[4];
         int quantity;
         uint8_t refine;
-        unsigned char color;
+        ItemColor color;
         Identified identified;
         Damaged damaged;
         Favorite favorite;
@@ -63,7 +64,7 @@ class InventoryItem final
                       const int *const cards0,
                       const int quantity0,
                       const uint8_t refine0,
-                      const unsigned char color0,
+                      const ItemColor color0,
                       const Identified identified0,
                       const Damaged damaged0,
                       const Favorite favorite0,

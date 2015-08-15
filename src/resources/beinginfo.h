@@ -28,6 +28,7 @@
 #include "enums/resources/map/blocktype.h"
 
 #include "enums/simpletypes/beingtypeid.h"
+#include "enums/simpletypes/itemcolor.h"
 
 #include "resources/beingmenuitem.h"
 #include "resources/cursor.h"
@@ -38,7 +39,7 @@ struct Attack;
 
 namespace ColorDB
 {
-    class ItemColor;
+    class ItemColorData;
 }
 
 typedef std::map<int, Attack*> Attacks;
@@ -312,7 +313,7 @@ class BeingInfo final
 
         void setColorsList(const std::string &name);
 
-        std::string getColor(const int idx) const A_WARN_UNUSED;
+        std::string getColor(const ItemColor idx) const A_WARN_UNUSED;
 
         void addMenu(const std::string &name, const std::string &command);
 
@@ -332,7 +333,7 @@ class BeingInfo final
         std::vector<BeingMenuItem> mMenu;
         unsigned char mBlockWalkMask;
         BlockType::BlockType mBlockType;
-        const std::map <int, ColorDB::ItemColor> *mColors;
+        const std::map <ItemColor, ColorDB::ItemColorData> *mColors;
         int mTargetOffsetX;
         int mTargetOffsetY;
         int mNameOffsetX;

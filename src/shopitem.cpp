@@ -35,7 +35,7 @@
 ShopItem::ShopItem(const int inventoryIndex,
                    const int id,
                    const int type,
-                   const unsigned char color,
+                   const ItemColor color,
                    const int quantity,
                    const int price) :
     Item(id, type, 0, 0, color,
@@ -57,7 +57,7 @@ ShopItem::ShopItem(const int inventoryIndex,
 
 ShopItem::ShopItem(const int id,
                    const int type,
-                   const unsigned char color,
+                   const ItemColor color,
                    const int price) :
     Item(id, type, 0, 0, color,
          Identified_true,

@@ -58,7 +58,7 @@ ItemPopup::ItemPopup() :
     mIcon(new Icon(this, nullptr)),
     mLastName(),
     mLastId(0),
-    mLastColor(1)
+    mLastColor(ItemColor_one)
 {
     // Item name
     mItemName->setFont(boldFont);
@@ -153,7 +153,7 @@ void ItemPopup::setItem(const Item *const item,
 }
 
 void ItemPopup::setItem(const ItemInfo &item,
-                        const unsigned char color,
+                        const ItemColor color,
                         const bool showImage,
                         int id,
                         const int *const cards)
@@ -336,6 +336,6 @@ void ItemPopup::mouseMoved(MouseEvent &event)
 void ItemPopup::resetPopup()
 {
     mLastName.clear();
-    mLastColor = 1;
+    mLastColor = ItemColor_one;
     mLastId = 0;
 }

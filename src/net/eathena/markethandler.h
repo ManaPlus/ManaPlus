@@ -43,7 +43,7 @@ class MarketHandler final : public MessageHandler,
 
         void buyItem(const int itemId,
                      const int type,
-                     const unsigned char color,
+                     const ItemColor color,
                      const int amount) const override final;
 
     protected:

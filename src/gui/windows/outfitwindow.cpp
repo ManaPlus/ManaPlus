@@ -172,7 +172,7 @@ void OutfitWindow::load(const bool oldConfig)
         for (size_t i = 0, sz = tokens2.size();
              i < sz && i < OUTFIT_ITEM_COUNT; i++)
         {
-            mItemColors[o][i] = tokens2[i];
+            mItemColors[o][i] = fromInt(tokens2[i], ItemColor);
         }
 
         mItemsUnequip[o] = cfg->getValueBool("OutfitUnequip" + toString(o),
@@ -203,7 +203,7 @@ void OutfitWindow::save() const
             if (i < OUTFIT_ITEM_COUNT - 1)
                 outfitStr.append(" ");
             outfitColorsStr.append(toString(static_cast<int>(
-                mItemColors[o][i])));
+                toInt(mItemColors[o][i], int))));
             if (i < OUTFIT_ITEM_COUNT - 1)
                 outfitColorsStr.append(" ");
         }
@@ -278,7 +278,8 @@ void OutfitWindow::wearOutfit(const int outfit, const bool unwearEmpty,
     for (unsigned i = 0; i < OUTFIT_ITEM_COUNT; i++)
     {
         const Item *const item = PlayerInfo::getInventory()->findItem(
-            mItems[outfit][i], mItemColors[outfit][i]);
+            mItems[outfit][i],
+            mItemColors[outfit][i]);
         if (item
             && item->isEquipped() == Equipped_false
             && item->getQuantity())
@@ -453,7 +454,7 @@ void OutfitWindow::mouseDragged(MouseEvent &event)
                 return;
             }
             const int itemId = mItems[mCurrentOutfit][index];
-            const unsigned char itemColor = mItemColors[mCurrentOutfit][index];
+            const ItemColor itemColor = mItemColors[mCurrentOutfit][index];
             if (itemId < 0)
             {
                 Window::mouseDragged(event);
@@ -719,7 +720,7 @@ void OutfitWindow::clearCurrentOutfit()
     for (unsigned f = 0; f < OUTFIT_ITEM_COUNT; f++)
     {
         mItems[mCurrentOutfit][f] = -1;
-        mItemColors[mCurrentOutfit][f] = 1;
+        mItemColors[mCurrentOutfit][f] = ItemColor_one;
     }
     save();
 }

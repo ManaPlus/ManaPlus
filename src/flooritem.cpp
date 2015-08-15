@@ -47,7 +47,7 @@ FloorItem::FloorItem(const BeingId id,
                      const int itemId,
                      const int x, const int y,
                      const int amount,
-                     const unsigned char color) :
+                     const ItemColor color) :
     ActorSprite(id),
     mItemId(itemId),
     mX(x),

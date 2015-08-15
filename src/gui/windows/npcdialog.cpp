@@ -369,7 +369,7 @@ void NpcDialog::action(const ActionEvent &event)
                         if (item)
                         {
                             str = strprintf("%d,%d", item->getId(),
-                                item->getColor());
+                                toInt(item->getColor(), int));
                         }
                         else
                         {
@@ -382,7 +382,7 @@ void NpcDialog::action(const ActionEvent &event)
                             if (item)
                             {
                                 str.append(strprintf("%d,%d", item->getId(),
-                                    item->getColor()));
+                                    toInt(item->getColor(), int)));
                             }
                             else
                             {

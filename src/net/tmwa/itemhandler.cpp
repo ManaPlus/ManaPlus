@@ -72,7 +72,7 @@ void ItemHandler::processItemDropped(Net::MessageIn &msg)
 {
     const BeingId id = msg.readBeingId("item object id");
     const int itemId = msg.readInt16("item id");
-    const uint8_t identify = msg.readUInt8("identify");
+    const ItemColor identify = fromInt(msg.readUInt8("identify"), ItemColor);
     const int x = msg.readInt16("x");
     const int y = msg.readInt16("y");
     const int subX = static_cast<int>(msg.readInt8("sub x"));

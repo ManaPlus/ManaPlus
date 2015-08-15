@@ -29,6 +29,7 @@
 #include "enums/simpletypes/equipm.h"
 #include "enums/simpletypes/favorite.h"
 #include "enums/simpletypes/identified.h"
+#include "enums/simpletypes/itemcolor.h"
 
 #include "listeners/actionlistener.h"
 #include "listeners/selectionlistener.h"
@@ -75,7 +76,7 @@ class TradeWindow final : public Window,
                      const bool own,
                      const int quantity,
                      const uint8_t refine,
-                     const unsigned char color,
+                     const ItemColor color,
                      const Identified identified,
                      const Damaged damaged,
                      const Favorite favorite) const;
@@ -95,7 +96,7 @@ class TradeWindow final : public Window,
                       const bool own,
                       const int quantity,
                       const uint8_t refine,
-                      const unsigned char color,
+                      const ItemColor color,
                       const Identified identified,
                       const Damaged damaged,
                       const Favorite favorite,

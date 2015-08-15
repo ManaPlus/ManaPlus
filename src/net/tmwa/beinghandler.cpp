@@ -339,70 +339,70 @@ void BeingHandler::processBeingChangeLookContinue(Net::MessageIn &msg,
             break;
         }
         case 2:     // Weapon ID in id, Shield ID in id2
-            dstBeing->setSprite(SPRITE_BODY, id, "", 1, true);
+            dstBeing->setSprite(SPRITE_BODY, id, "", ItemColor_one, true);
             dstBeing->setSprite(SPRITE_FLOOR, id2);
             localPlayer->imitateOutfit(dstBeing, SPRITE_FLOOR);
             break;
         case 3:     // Change lower headgear for eAthena, pants for us
             dstBeing->setSprite(SPRITE_WEAPON, id, color,
-                static_cast<unsigned char>(id2));
+                fromInt(id2, ItemColor));
             localPlayer->imitateOutfit(dstBeing, SPRITE_WEAPON);
             break;
         case 4:     // Change upper headgear for eAthena, hat for us
             dstBeing->setSprite(SPRITE_CLOTHES_COLOR, id, color,
-                static_cast<unsigned char>(id2));
+                fromInt(id2, ItemColor));
             localPlayer->imitateOutfit(dstBeing, SPRITE_CLOTHES_COLOR);
             break;
         case 5:     // Change middle headgear for eathena, armor for us
             dstBeing->setSprite(SPRITE_HEAD_BOTTOM, id, color,
-                static_cast<unsigned char>(id2));
+                fromInt(id2, ItemColor));
             localPlayer->imitateOutfit(dstBeing, SPRITE_HEAD_BOTTOM);
             break;
         case 6:     // eAthena LOOK_HAIR_COLOR
             dstBeing->setHairColor(SPRITE_HAIR_COLOR,
-                static_cast<uint8_t>(id));
+                fromInt(id, ItemColor));
             break;
         case 7:     // Clothes color
             // ignoring it
             break;
         case 8:     // eAthena LOOK_SHIELD
             dstBeing->setSprite(SPRITE_FLOOR, id, color,
-                static_cast<unsigned char>(id2));
+                fromInt(id2, ItemColor));
             localPlayer->imitateOutfit(dstBeing, SPRITE_FLOOR);
             break;
         case 9:     // eAthena LOOK_SHOES
             dstBeing->setSprite(SPRITE_HAIR, id, color,
-                static_cast<unsigned char>(id2));
+                fromInt(id2, ItemColor));
             localPlayer->imitateOutfit(dstBeing, SPRITE_HAIR);
             break;
         case 10:   // LOOK_GLOVES
             dstBeing->setSprite(SPRITE_SHOES, id, color,
-                static_cast<unsigned char>(id2));
+                fromInt(id2, ItemColor));
             localPlayer->imitateOutfit(dstBeing, SPRITE_SHOES);
             break;
         case 11:  // LOOK_CAPE
             dstBeing->setSprite(SPRITE_SHIELD, id, color,
-                static_cast<unsigned char>(id2));
+                fromInt(id2, ItemColor));
             localPlayer->imitateOutfit(dstBeing, SPRITE_SHIELD);
             break;
         case 12:
             dstBeing->setSprite(SPRITE_HEAD_TOP, id, color,
-                static_cast<unsigned char>(id2));
+                fromInt(id2, ItemColor));
             localPlayer->imitateOutfit(dstBeing, SPRITE_HEAD_TOP);
             break;
         case 13:
             dstBeing->setSprite(SPRITE_HEAD_MID, id, color,
-                static_cast<unsigned char>(id2));
+                fromInt(id2, ItemColor));
             localPlayer->imitateOutfit(dstBeing, SPRITE_HEAD_MID);
             break;
         case 14:
             dstBeing->setSprite(SPRITE_ROBE, id, color,
-                static_cast<unsigned char>(id2));
+                fromInt(id2, ItemColor));
             localPlayer->imitateOutfit(dstBeing, SPRITE_ROBE);
             break;
         case 15:
             dstBeing->setSprite(SPRITE_EVOL2, id, color,
-                static_cast<unsigned char>(id2));
+                fromInt(id2, ItemColor));
             localPlayer->imitateOutfit(dstBeing, SPRITE_EVOL2);
             break;
         case 16:
@@ -483,7 +483,8 @@ void BeingHandler::processPlayerUpdate1(Net::MessageIn &msg)
 
     const uint16_t headTop = msg.readInt16("head top");
     const uint16_t headMid = msg.readInt16("head mid");
-    const uint8_t hairColor = msg.readUInt8("hair color");
+    const ItemColor hairColor = fromInt(
+        msg.readUInt8("hair color"), ItemColor);
     msg.readUInt8("unused");
     msg.readInt32("unused");
 
@@ -508,7 +509,7 @@ void BeingHandler::processPlayerUpdate1(Net::MessageIn &msg)
     if (!disguiseId)
     {
         // Set these after the gender, as the sprites may be gender-specific
-        dstBeing->updateSprite(SPRITE_BODY, weapon, "", 1, true);
+        dstBeing->updateSprite(SPRITE_BODY, weapon, "", ItemColor_one, true);
         dstBeing->updateSprite(SPRITE_FLOOR, shield);
         dstBeing->updateSprite(SPRITE_WEAPON, headBottom);
         dstBeing->updateSprite(SPRITE_HEAD_BOTTOM, headMid);
@@ -617,7 +618,8 @@ void BeingHandler::processPlayerUpdate2(Net::MessageIn &msg)
     const uint16_t headBottom = msg.readInt16("head bottom");
     const uint16_t headTop = msg.readInt16("head top");
     const uint16_t headMid = msg.readInt16("head mid");
-    const uint8_t hairColor = msg.readUInt8("hair color");
+    const ItemColor hairColor = fromInt(
+        msg.readUInt8("hair color"), ItemColor);
     msg.readUInt8("unused");
     msg.readInt32("unused");
 
@@ -642,7 +644,7 @@ void BeingHandler::processPlayerUpdate2(Net::MessageIn &msg)
     if (!disguiseId)
     {
         // Set these after the gender, as the sprites may be gender-specific
-        dstBeing->updateSprite(SPRITE_BODY, weapon, "", 1, true);
+        dstBeing->updateSprite(SPRITE_BODY, weapon, "", ItemColor_one, true);
         dstBeing->updateSprite(SPRITE_FLOOR, shield);
         dstBeing->updateSprite(SPRITE_WEAPON, headBottom);
         dstBeing->updateSprite(SPRITE_HEAD_BOTTOM, headMid);
@@ -751,7 +753,8 @@ void BeingHandler::processPlayerMove(Net::MessageIn &msg)
 
     const uint16_t headTop = msg.readInt16("head top");
     const uint16_t headMid = msg.readInt16("head mid");
-    const uint8_t hairColor = msg.readUInt8("hair color");
+    const ItemColor hairColor = fromInt(
+        msg.readUInt8("hair color"), ItemColor);
     msg.readUInt8("unused");
     msg.readInt32("unused");
 
@@ -776,7 +779,7 @@ void BeingHandler::processPlayerMove(Net::MessageIn &msg)
     if (!disguiseId)
     {
         // Set these after the gender, as the sprites may be gender-specific
-        dstBeing->updateSprite(SPRITE_BODY, weapon, "", 1, true);
+        dstBeing->updateSprite(SPRITE_BODY, weapon, "", ItemColor_one, true);
         dstBeing->updateSprite(SPRITE_FLOOR, shield);
         dstBeing->updateSprite(SPRITE_WEAPON, headBottom);
         dstBeing->updateSprite(SPRITE_HEAD_BOTTOM, headMid);
@@ -942,7 +945,7 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
     const uint16_t shield = msg.readInt16("shield");
     const uint16_t headTop = msg.readInt16("head top");
     const uint16_t headMid = msg.readInt16("head mid");
-    const uint8_t hairColor = msg.readUInt8("hair color");
+    const ItemColor hairColor = fromInt(msg.readUInt8("hair color"), ItemColor);
     msg.readUInt8("unused");
     const uint16_t shoes = msg.readInt16("shoes / clothes color");
 
@@ -1004,7 +1007,7 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
         setSprite(dstBeing, SPRITE_CLOTHES_COLOR, headTop);
         setSprite(dstBeing, SPRITE_HAIR, shoes);
         setSprite(dstBeing, SPRITE_SHOES, gloves);
-        setSprite(dstBeing, SPRITE_BODY, weapon, "", 1, true);
+        setSprite(dstBeing, SPRITE_BODY, weapon, "", ItemColor_one, true);
         setSprite(dstBeing, SPRITE_FLOOR, shield);
     }
     else if (dstBeing->getType() == ActorType::Npc
@@ -1143,7 +1146,8 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
     const uint16_t shield = msg.readInt16("shield");
     const uint16_t headTop = msg.readInt16("head top");
     const uint16_t headMid = msg.readInt16("head mid");
-    const uint8_t hairColor = msg.readUInt8("hair color");
+    const ItemColor hairColor = fromInt(
+        msg.readUInt8("hair color"), ItemColor);
     msg.readUInt8("unused");
     const uint16_t shoes = msg.readInt16("shoes / clothes color");
 
@@ -1205,7 +1209,7 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
         setSprite(dstBeing, SPRITE_CLOTHES_COLOR, headTop);
         setSprite(dstBeing, SPRITE_HAIR, shoes);
         setSprite(dstBeing, SPRITE_SHOES, gloves);
-        setSprite(dstBeing, SPRITE_BODY, weapon, "", 1, true);
+        setSprite(dstBeing, SPRITE_BODY, weapon, "", ItemColor_one, true);
         setSprite(dstBeing, SPRITE_FLOOR, shield);
     }
     else if (dstBeing->getType() == ActorType::Npc

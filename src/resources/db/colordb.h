@@ -22,6 +22,8 @@
 #ifndef RESOURCES_DB_COLORDB_H
 #define RESOURCES_DB_COLORDB_H
 
+#include "enums/simpletypes/itemcolor.h"
+
 #include <map>
 #include <string>
 
@@ -32,24 +34,25 @@
  */
 namespace ColorDB
 {
-    class ItemColor final
+    class ItemColorData final
     {
         public:
-            ItemColor() :
-                id(0),
+            ItemColorData() :
+                id(ItemColor_zero),
                 name(),
                 color()
             { }
 
-            ItemColor(const int id0, const std::string &name0,
-                      const std::string &color0) :
+            ItemColorData(const ItemColor id0,
+                          const std::string &name0,
+                          const std::string &color0) :
                 id(id0),
                 name(name0),
                 color(color0)
             {
             }
 
-            int id;
+            ItemColor id;
             std::string name;
             std::string color;
     };
@@ -63,7 +66,7 @@ namespace ColorDB
      * Loads the color data from <code>colors.xml</code>.
      */
     void loadHair(const std::string &fileName,
-                  std::map<int, ItemColor> &colors);
+                  std::map<ItemColor, ItemColorData> &colors);
 
     void loadColorLists(const std::string &fileName);
 
@@ -72,17 +75,19 @@ namespace ColorDB
      */
     void unload();
 
-    std::string &getHairColorName(const int id) A_WARN_UNUSED;
+    std::string &getHairColorName(const ItemColor id) A_WARN_UNUSED;
 
     int getHairSize() A_WARN_UNUSED;
 
-    const std::map <int, ItemColor> *getColorsList(const std::string
-                                                   &name) A_WARN_UNUSED;
+    const std::map <ItemColor, ItemColorData> *getColorsList(const std::string
+                                                             &name)
+                                                             A_WARN_UNUSED;
 
     // Color DB
-    typedef std::map<int, ItemColor> Colors;
+    typedef std::map<ItemColor, ItemColorData> Colors;
     typedef Colors::iterator ColorIterator;
-    typedef std::map <std::string, std::map <int, ItemColor> > ColorLists;
+    typedef std::map <std::string, std::map <ItemColor, ItemColorData> >
+        ColorLists;
     typedef ColorLists::iterator ColorListsIterator;
 }  // namespace ColorDB
 

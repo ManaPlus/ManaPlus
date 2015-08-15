@@ -23,6 +23,8 @@
 
 #ifdef EATHENA_SUPPORT
 
+#include "enums/simpletypes/itemcolor.h"
+
 #include <string>
 
 #include "localconsts.h"
@@ -38,7 +40,7 @@ class CashShopHandler notfinal
 
         virtual void buyItem(const int points,
                              const int itemId,
-                             const unsigned char color,
+                             const ItemColor color,
                              const int amount) const = 0;
 
         virtual void close() const = 0;

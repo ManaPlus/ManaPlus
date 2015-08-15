@@ -27,6 +27,7 @@
 
 #include "enums/gui/usercolorid.h"
 
+#include "enums/simpletypes/itemcolor.h"
 #include "enums/simpletypes/move.h"
 
 #include "resources/beinginfo.h"
@@ -306,13 +307,13 @@ class Being notfinal : public ActorSprite,
          */
         void setSprite(const unsigned int slot, const int id,
                        std::string color = "",
-                       const unsigned char colorId = 1,
+                       const ItemColor colorId = ItemColor_one,
                        const bool isWeapon = false,
                        const bool isTempSprite = false);
 
         void updateSprite(const unsigned int slot, const int id,
                           std::string color = "",
-                          const unsigned char colorId = 1,
+                          const ItemColor colorId = ItemColor_one,
                           const bool isWeapon = false,
                           const bool isTempSprite = false);
 
@@ -784,17 +785,17 @@ class Being notfinal : public ActorSprite,
 
         int getSpriteID(const int slot) const A_WARN_UNUSED;
 
-        unsigned char getSpriteColor(const int slot) const A_WARN_UNUSED;
+        ItemColor getSpriteColor(const int slot) const A_WARN_UNUSED;
 
         void setHairStyle(const unsigned int slot, const int id);
 
         void setHairColor(const unsigned int slot,
-                          const unsigned char color);
+                          const ItemColor color);
 
-        void setHairColor(const unsigned char color)
+        void setHairColor(const ItemColor color)
         { mHairColor = color; }
 
-        unsigned char getHairColor() const A_WARN_UNUSED
+        ItemColor getHairColor() const A_WARN_UNUSED
         { return mHairColor; }
 
         void recalcSpritesOrder();
@@ -1007,7 +1008,7 @@ class Being notfinal : public ActorSprite,
 
         StringVect mSpriteColors;
         std::vector<int> mSpriteIDs;
-        std::vector<unsigned char> mSpriteColorsIds;
+        std::vector<ItemColor> mSpriteColorsIds;
         SpriteParticleInfo mSpriteParticles;
 
         // Character guild information
@@ -1139,7 +1140,7 @@ class Being notfinal : public ActorSprite,
         uint16_t mTeamId;
         uint16_t mLook;
         uint16_t mBadgesCount;
-        unsigned char mHairColor;
+        ItemColor mHairColor;
         bool mErased;
         bool mEnemy;
         bool mGotComment;

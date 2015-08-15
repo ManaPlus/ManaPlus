@@ -82,7 +82,7 @@ void ItemHandler::processItemDropped(Net::MessageIn &msg)
     const BeingId id = msg.readBeingId("id");
     const int itemId = msg.readInt16("item id");
     msg.readInt16("type");
-    const uint8_t identify = msg.readUInt8("identify");
+    msg.readUInt8("identify");
     const int x = msg.readInt16("x");
     const int y = msg.readInt16("y");
     const int subX = static_cast<int>(msg.readInt8("subx"));
@@ -91,8 +91,12 @@ void ItemHandler::processItemDropped(Net::MessageIn &msg)
 
     if (actorManager)
     {
-        actorManager->createItem(id, itemId,
-            x, y, amount, identify, subX, subY);
+        actorManager->createItem(id,
+            itemId,
+            x, y,
+            amount,
+            ItemColor_one,
+            subX, subY);
     }
 }
 

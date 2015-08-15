@@ -31,6 +31,7 @@
 #include "enums/simpletypes/equipped.h"
 #include "enums/simpletypes/favorite.h"
 #include "enums/simpletypes/identified.h"
+#include "enums/simpletypes/itemcolor.h"
 
 #include "enums/being/gender.h"
 
@@ -81,7 +82,7 @@ class Inventory final
          * @return Item found on success, NULL on failure.
          */
         Item *findItem(const int itemId,
-                       const unsigned char color) const A_WARN_UNUSED;
+                       const ItemColor color) const A_WARN_UNUSED;
 
         /**
          * Adds a new item in a free slot.
@@ -90,7 +91,7 @@ class Inventory final
                     const int type,
                     const int quantity,
                     const uint8_t refine,
-                    const unsigned char color,
+                    const ItemColor color,
                     const Identified identified,
                     const Damaged damaged,
                     const Favorite favorite,
@@ -105,7 +106,7 @@ class Inventory final
                      const int type,
                      const int quantity,
                      const uint8_t refine,
-                     const unsigned char color,
+                     const ItemColor color,
                      const Identified identified,
                      const Damaged damaged,
                      const Favorite favorite,

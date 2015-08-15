@@ -28,6 +28,7 @@
 #include "enums/simpletypes/equipped.h"
 #include "enums/simpletypes/favorite.h"
 #include "enums/simpletypes/identified.h"
+#include "enums/simpletypes/itemcolor.h"
 
 #include "resources/db/itemdb.h"
 
@@ -50,7 +51,7 @@ class Item notfinal
              const int type,
              const int quantity,
              const uint8_t refine,
-             const uint8_t color,
+             const ItemColor color,
              const Identified identified,
              const Damaged damaged,
              const Favorite favorite,
@@ -67,7 +68,7 @@ class Item notfinal
         /**
          * Sets the item id, color the item type.
          */
-        void setId(const int id, const unsigned char color);
+        void setId(const int id, const ItemColor color);
 
         /**
          * Returns the item id.
@@ -168,11 +169,11 @@ class Item notfinal
         std::string getName() const A_WARN_UNUSED;
 
         static Image *getImage(const int id,
-                               const unsigned char color) A_WARN_UNUSED;
+                               const ItemColor color) A_WARN_UNUSED;
 
         bool isHaveTag(const int tagId) const A_WARN_UNUSED;
 
-        unsigned char getColor() const A_WARN_UNUSED
+        ItemColor getColor() const A_WARN_UNUSED
         { return mColor; }
 
         const std::string &getDescription() const A_WARN_UNUSED
@@ -214,7 +215,7 @@ class Item notfinal
         void addCard(const int card);
 
         int mId;              /**< Item type id. */
-        unsigned char mColor;
+        ItemColor mColor;
         int mQuantity;        /**< Number of items. */
 
     protected:

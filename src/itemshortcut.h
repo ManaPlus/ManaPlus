@@ -23,6 +23,8 @@
 #ifndef ITEMSHORTCUT_H
 #define ITEMSHORTCUT_H
 
+#include "enums/simpletypes/itemcolor.h"
+
 #include "localconsts.h"
 
 const unsigned int SHORTCUT_ITEMS = 20;
@@ -66,7 +68,7 @@ class ItemShortcut final
         int getItem(const int index) const A_WARN_UNUSED
         { return mItems[index]; }
 
-        unsigned char getItemColor(const int index) const A_WARN_UNUSED
+        ItemColor getItemColor(const int index) const A_WARN_UNUSED
         { return mItemColors[index]; }
 
         /**
@@ -88,8 +90,9 @@ class ItemShortcut final
          */
         void setItem(const int index);
 
-        void setItem(const int index, const int item,
-                     const unsigned char color);
+        void setItem(const int index,
+                     const int item,
+                     const ItemColor color);
 
         /**
          * Adds an item to the items store specified by the index.
@@ -97,8 +100,9 @@ class ItemShortcut final
          * @param index Index of the item.
          * @param itemId ID of the item.
          */
-        void setItems(const int index, const int itemId,
-                      const unsigned char color)
+        void setItems(const int index,
+                      const int itemId,
+                      const ItemColor color)
         { mItems[index] = itemId; mItemColors[index] = color; save(); }
 
         /**
@@ -149,10 +153,10 @@ class ItemShortcut final
         void swap(const int index1, const int index2);
 
     private:
-        int mItems[SHORTCUT_ITEMS];                /**< The items. */
-        unsigned char mItemColors[SHORTCUT_ITEMS]; /**< The item colors. */
+        int mItems[SHORTCUT_ITEMS];             /**< The items. */
+        ItemColor mItemColors[SHORTCUT_ITEMS];  /**< The item colors. */
         int mItemSelected;
-        unsigned char mItemColorSelected;
+        ItemColor mItemColorSelected;
         int mNumber;
 };
 

@@ -138,7 +138,8 @@ void MailEditWindow::action(const ActionEvent &event)
             const Inventory *const inv = PlayerInfo::getInventory();
             if (inv)
             {
-                const Item *const item = inv->findItem(tempItem->getId(), 1);
+                const Item *const item = inv->findItem(
+                    tempItem->getId(), ItemColor_one);
                 if (item)
                 {
                     mailHandler->setAttach(item->getInvIndex(),

@@ -23,6 +23,8 @@
 #ifndef GUI_WIDGETS_SELLDIALOG_H
 #define GUI_WIDGETS_SELLDIALOG_H
 
+#include "enums/simpletypes/itemcolor.h"
+
 #include "gui/widgets/window.h"
 
 #include "listeners/actionlistener.h"
@@ -92,7 +94,7 @@ class SellDialog notfinal : public Window,
 
         void addItem(const int id,
                      const int type,
-                     const unsigned char color,
+                     const ItemColor color,
                      const int amount,
                      const int price);
 

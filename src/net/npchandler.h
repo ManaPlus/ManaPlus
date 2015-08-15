@@ -28,6 +28,7 @@
 #include "enums/being/cookingtype.h"
 
 #include "enums/simpletypes/beingid.h"
+#include "enums/simpletypes/itemcolor.h"
 
 #include "localconsts.h"
 
@@ -65,7 +66,7 @@ class NpcHandler notfinal
 
         virtual void buyItem(const BeingId beingId,
                              const int itemId,
-                             const unsigned char color,
+                             const ItemColor color,
                              const int amount) const = 0;
 
         virtual void sellItem(const BeingId beingId,

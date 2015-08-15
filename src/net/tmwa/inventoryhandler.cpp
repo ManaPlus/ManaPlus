@@ -292,8 +292,12 @@ void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
 
         if (inventory)
         {
-            inventory->setItem(index, itemId, itemType, 1, refine,
+            inventory->setItem(index,
+                itemId,
+                itemType,
                 1,
+                refine,
+                ItemColor_one,
                 fromBool(identified, Identified),
                 Damaged_false,
                 Favorite_false,
@@ -374,14 +378,23 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
                 break;
         }
         if (localPlayer)
-            localPlayer->pickedUp(itemInfo, 0, identified, floorId, pickup);
+        {
+            localPlayer->pickedUp(itemInfo,
+                0,
+                fromInt(identified, ItemColor),
+                floorId,
+                pickup);
+        }
     }
     else
     {
         if (localPlayer)
         {
-            localPlayer->pickedUp(itemInfo, amount,
-                identified, floorId, Pickup::OKAY);
+            localPlayer->pickedUp(itemInfo,
+                amount,
+                fromInt(identified, ItemColor),
+                floorId,
+                Pickup::OKAY);
         }
 
         if (inventory)
@@ -391,8 +404,12 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
             if (item && item->getId() == itemId)
                 amount += item->getQuantity();
 
-            inventory->setItem(index, itemId, type, amount, refine,
-                1,
+            inventory->setItem(index,
+                itemId,
+                type,
+                amount,
+                refine,
+                ItemColor_one,
                 fromBool(identified, Identified),
                 Damaged_false,
                 Favorite_false,
@@ -449,8 +466,12 @@ void InventoryHandler::processPlayerInventory(Net::MessageIn &msg)
 
         if (inventory)
         {
-            inventory->setItem(index, itemId, itemType, amount,
-                0, 1,
+            inventory->setItem(index,
+                itemId,
+                itemType,
+                amount,
+                0,
+                ItemColor_one,
                 fromBool(identified, Identified),
                 Damaged_false,
                 Favorite_false,
@@ -490,8 +511,13 @@ void InventoryHandler::processPlayerStorage(Net::MessageIn &msg)
                         cards[0], cards[1], cards[2], cards[3]);
         }
 
-        mInventoryItems.push_back(Ea::InventoryItem(index, itemId,
-            itemType, cards, amount, 0, 1,
+        mInventoryItems.push_back(Ea::InventoryItem(index,
+            itemId,
+            itemType,
+            cards,
+            amount,
+            0,
+            ItemColor_one,
             fromBool(identified, Identified),
             Damaged_false,
             Favorite_false,
@@ -559,8 +585,13 @@ void InventoryHandler::processPlayerStorageEquip(Net::MessageIn &msg)
                 static_cast<unsigned int>(refine));
         }
 
-        mInventoryItems.push_back(Ea::InventoryItem(index, itemId,
-            itemType, cards, amount, refine, 1,
+        mInventoryItems.push_back(Ea::InventoryItem(index,
+            itemId,
+            itemType,
+            cards,
+            amount,
+            refine,
+            ItemColor_one,
             fromBool(identified, Identified),
             Damaged_false,
             Favorite_false,
@@ -585,15 +616,19 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
 
     if (Item *const item = mStorage->getItem(index))
     {
-        item->setId(itemId, identified);
+        item->setId(itemId, ItemColor_one);
         item->increaseQuantity(amount);
     }
     else
     {
         if (mStorage)
         {
-            mStorage->setItem(index, itemId, 0, amount,
-                refine, 1,
+            mStorage->setItem(index,
+                itemId,
+                0,
+                amount,
+                refine,
+                ItemColor_one,
                 fromBool(identified, Identified),
                 Damaged_false,
                 Favorite_false,

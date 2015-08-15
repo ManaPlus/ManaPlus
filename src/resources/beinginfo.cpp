@@ -206,12 +206,12 @@ void BeingInfo::setColorsList(const std::string &name)
         mColors = ColorDB::getColorsList(name);
 }
 
-std::string BeingInfo::getColor(const int idx) const
+std::string BeingInfo::getColor(const ItemColor idx) const
 {
     if (!mColors)
         return std::string();
 
-    const std::map <int, ColorDB::ItemColor>::const_iterator
+    const std::map <ItemColor, ColorDB::ItemColorData>::const_iterator
         it = mColors->find(idx);
     if (it == mColors->end())
         return std::string();

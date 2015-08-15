@@ -84,7 +84,7 @@ class ActorManager final: public ConfigListener
                               const int itemId,
                               const int x, const int y,
                               const int amount,
-                              const unsigned char color,
+                              const ItemColor color,
                               const int subX, const int subY);
 
         /**

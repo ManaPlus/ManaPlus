@@ -348,7 +348,8 @@ void ShopWindow::action(const ActionEvent &event)
                     if (!item)
                         continue;
                     // +++ need add colors
-                    Item *const cartItem = inv->findItem(item->getId(), 1);
+                    Item *const cartItem = inv->findItem(item->getId(),
+                        ItemColor_one);
                     if (!cartItem)
                         continue;
                     item->setInvIndex(cartItem->getInvIndex());
@@ -391,7 +392,7 @@ void ShopWindow::action(const ActionEvent &event)
         return;
 
     // +++ need support for colors
-    Item *const item = inv->findItem(mSelectedItem, 0);
+    Item *const item = inv->findItem(mSelectedItem, ItemColor_zero);
     if (item)
     {
         if (eventId == "add")
@@ -551,12 +552,12 @@ void ShopWindow::loadList()
                     if (tokens[1] && tokens[2] && mBuyShopItems)
                     {
                         mBuyShopItems->addItem(
-                            tokens[0], 0, 1, tokens[1], tokens[2]);
+                            tokens[0], 0, ItemColor_one, tokens[1], tokens[2]);
                     }
                     if (tokens[3] && tokens[4] && mSellShopItems)
                     {
                         mSellShopItems->addItem(
-                            tokens[0], 0, 1, tokens[3], tokens[4]);
+                            tokens[0], 0, ItemColor_one, tokens[3], tokens[4]);
                     }
                 }
             }
@@ -748,7 +749,8 @@ void ShopWindow::giveList(const std::string &nick, const int mode)
         if (mode == SELL)
         {
             // +++ need support for colors
-            const Item *const item2 = inv->findItem(item->getId(), 0);
+            const Item *const item2 = inv->findItem(item->getId(),
+                ItemColor_zero);
             if (item2)
             {
                 int amount = item->getQuantity();
@@ -844,19 +846,19 @@ void ShopWindow::showList(const std::string &nick, std::string data)
         int amount = decodeStr(data.substr(f + 6, 3));
         // +++ need impliment colors?
         if (buyDialog && amount > 0)
-            buyDialog->addItem(id, 0, 1, amount, price);
+            buyDialog->addItem(id, 0, ItemColor_one, amount, price);
         if (sellDialog)
         {
             // +++ need support for colors
-            const Item *const item = inv->findItem(id, 0);
+            const Item *const item = inv->findItem(id, ItemColor_zero);
             if (item)
             {
                 if (item->getQuantity() < amount)
                     amount = item->getQuantity();
                 if (amount > 0)
-                    sellDialog->addItem(id, 0, 1, amount, price);
+                    sellDialog->addItem(id, 0, ItemColor_one, amount, price);
                 else
-                    sellDialog->addItem(id, 0, 1, -1, price);
+                    sellDialog->addItem(id, 0, ItemColor_one, -1, price);
             }
         }
     }
@@ -919,12 +921,13 @@ void ShopWindow::processRequest(const std::string &nick, std::string data,
 
     delete mTradeItem;
     // +++ need impliment colors?
-    mTradeItem = new ShopItem(-1, id, 0, 1, amount, price);
+    mTradeItem = new ShopItem(-1, id, 0, ItemColor_one, amount, price);
 
     if (mode == BUY)
     {
         // +++ need support for colors
-        const Item *const item2 = inv->findItem(mTradeItem->getId(), 0);
+        const Item *const item2 = inv->findItem(mTradeItem->getId(),
+            ItemColor_zero);
         if (!item2 || item2->getQuantity() < amount
             || !findShopItem(mTradeItem, SELL))
         {

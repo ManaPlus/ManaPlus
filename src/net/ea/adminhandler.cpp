@@ -74,7 +74,8 @@ void AdminHandler::ipcheckName(const std::string &name) const
     chatHandler->talk("@ipcheck " + name, GENERAL_CHANNEL);
 }
 
-void AdminHandler::createItems(const int id, const int color,
+void AdminHandler::createItems(const int id,
+                               const ItemColor color,
                                const int amount) const
 {
     if (!serverFeatures->haveItemColors())
@@ -85,7 +86,7 @@ void AdminHandler::createItems(const int id, const int color,
     else
     {
         chatHandler->talk(strprintf("@item %d %d %d",
-            id, color, amount), GENERAL_CHANNEL);
+            id, toInt(color, int), amount), GENERAL_CHANNEL);
     }
 }
 

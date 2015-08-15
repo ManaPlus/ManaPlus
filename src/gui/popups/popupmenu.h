@@ -28,6 +28,7 @@
 #include "enums/inventorytype.h"
 
 #include "enums/simpletypes/beingid.h"
+#include "enums/simpletypes/itemcolor.h"
 
 #include "gui/widgets/linkhandler.h"
 #include "gui/widgets/popup.h"
@@ -105,8 +106,9 @@ class PopupMenu final : public Popup, public LinkHandler
 
         void showItemPopup(const int x, const int y, Item *const item);
 
-        void showItemPopup(const int x, const int y, const int itemId,
-                           const unsigned char color);
+        void showItemPopup(const int x, const int y,
+                           const int itemId,
+                           const ItemColor color);
 
         void showDropPopup(const int x, const int y, Item *const item);
 
@@ -208,7 +210,7 @@ class PopupMenu final : public Popup, public LinkHandler
         BeingId mFloorItemId;
         Item *mItem;
         int mItemId;
-        unsigned char mItemColor;
+        ItemColor mItemColor;
         MapItem *mMapItem;
         ChatTab *mTab;
         TextCommand *mSpell;

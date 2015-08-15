@@ -76,7 +76,7 @@ Being *BeingHandler::createBeing(const BeingId id,
 
 void BeingHandler::setSprite(Being *const being, const unsigned int slot,
                              const int id, const std::string &color,
-                             const unsigned char colorId,
+                             const ItemColor colorId,
                              const bool isWeapon,
                              const bool isTempSprite)
 {

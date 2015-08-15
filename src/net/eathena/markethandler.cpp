@@ -87,7 +87,7 @@ void MarketHandler::processMarketOpen(Net::MessageIn &msg)
         const int value = msg.readInt32("price");
         const int amount = msg.readInt32("amount");
         msg.readInt16("view");
-        const unsigned char color = 1;
+        const ItemColor color = ItemColor_one;
         mBuyDialog->addItem(itemId, type, color, amount, value);
     }
     mBuyDialog->sort();
@@ -116,7 +116,7 @@ void MarketHandler::close()
 
 void MarketHandler::buyItem(const int itemId,
                             const int type,
-                            const unsigned char color A_UNUSED,
+                            const ItemColor color A_UNUSED,
                             const int amount) const
 {
     const bool nonStack = type == 4 || type == 5 || type == 7 || type == 8;

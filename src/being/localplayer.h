@@ -176,7 +176,7 @@ class LocalPlayer final : public Being,
          */
         void pickedUp(const ItemInfo &itemInfo,
                       const int amount,
-                      const unsigned char color,
+                      const ItemColor color,
                       const BeingId floorItemId,
                       const PickupT fail);
 

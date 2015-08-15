@@ -42,7 +42,7 @@ class BeingHandler notfinal : public Net::BeingHandler
         static void setSprite(Being *const being, const unsigned int slot,
                               const int id,
                               const std::string &color = "",
-                              const unsigned char colorId = 1,
+                              const ItemColor colorId = ItemColor_one,
                               const bool isWeapon = false,
                               const bool isTempSprite = false);
 

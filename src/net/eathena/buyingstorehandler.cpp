@@ -210,11 +210,11 @@ void BuyingStoreHandler::processBuyingStoreItemsList(Net::MessageIn &msg)
 
         if (!inv)
             continue;
-        const Item *const item = inv->findItem(itemId, 1);
+        const Item *const item = inv->findItem(itemId, ItemColor_one);
         if (!item)
             continue;
         // +++ need add colors support
-        dialog->addItem(itemId, itemType, 1, amount, price);
+        dialog->addItem(itemId, itemType, ItemColor_one, amount, price);
     }
 }
 

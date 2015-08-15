@@ -23,6 +23,8 @@
 #ifndef GUI_MODELS_SHOPITEMS_H
 #define GUI_MODELS_SHOPITEMS_H
 
+#include "enums/simpletypes/itemcolor.h"
+
 #include "gui/models/listmodel.h"
 
 #include <vector>
@@ -60,7 +62,7 @@ class ShopItems final : public ListModel
          */
         ShopItem *addItem(const int id,
                           const int type,
-                          const unsigned char color,
+                          const ItemColor color,
                           const int amount,
                           const int price);
 
@@ -76,13 +78,13 @@ class ShopItems final : public ListModel
         ShopItem *addItem2(const int inventoryIndex,
                            const int id,
                            const int type,
-                           const unsigned char color,
+                           const ItemColor color,
                            const int amount,
                            const int price);
 
         ShopItem *addItemNoDup(const int id,
                                const int type,
-                               const unsigned char color,
+                               const ItemColor color,
                                const int amount,
                                const int price);
 
@@ -145,7 +147,7 @@ class ShopItems final : public ListModel
          * @return the item found or 0
          */
         ShopItem *findItem(const int id,
-                           const unsigned char color) const A_WARN_UNUSED;
+                           const ItemColor color) const A_WARN_UNUSED;
 
         bool findInAllItems(std::vector<ShopItem*>::iterator &it,
                             const ShopItem *const item);

@@ -39,7 +39,7 @@ ItemShortcut *itemShortcut[SHORTCUT_TABS];
 
 ItemShortcut::ItemShortcut(const int number) :
     mItemSelected(-1),
-    mItemColorSelected(1),
+    mItemColorSelected(ItemColor_one),
     mNumber(number)
 {
     load();
@@ -74,8 +74,9 @@ void ItemShortcut::load(const bool oldConfig)
     for (unsigned int i = 0; i < SHORTCUT_ITEMS; i++)
     {
         const int itemId = cfg->getValue(name + toString(i), -1);
-        const unsigned char itemColor = static_cast<const unsigned char>(
-            cfg->getValue(color + toString(i), 1));
+        const ItemColor itemColor = fromInt(
+            cfg->getValue(color + toString(i), 1),
+            ItemColor);
 
         mItems[i] = itemId;
         mItemColors[i] = itemColor;
@@ -103,7 +104,8 @@ void ItemShortcut::save() const
     for (unsigned int i = 0; i < SHORTCUT_ITEMS; i++)
     {
         const int itemId = mItems[i] ? mItems[i] : -1;
-        const int itemColor = mItemColors[i] ? mItemColors[i] : 1;
+        const int itemColor = (mItemColors[i] != ItemColor_zero) ?
+            toInt(mItemColors[i], int) : 1;
         if (itemId != -1)
         {
             serverConfig.setValue(name + toString(i), itemId);
@@ -124,7 +126,7 @@ void ItemShortcut::useItem(const int index) const
         return;
 
     const int itemId = mItems[index];
-    const unsigned char itemColor = mItemColors[index];
+    const ItemColor itemColor = mItemColors[index];
     if (itemId >= 0)
     {
         if (itemId < SPELL_MIN_ID)
@@ -195,7 +197,7 @@ void ItemShortcut::setItemSelected(const Item *const item)
     else
     {
         mItemSelected = -1;
-        mItemColorSelected = 1;
+        mItemColorSelected = ItemColor_one;
     }
 }
 
@@ -206,8 +208,9 @@ void ItemShortcut::setItem(const int index)
     save();
 }
 
-void ItemShortcut::setItem(const int index, const int item,
-                           const unsigned char color)
+void ItemShortcut::setItem(const int index,
+                           const int item,
+                           const ItemColor color)
 {
     mItems[index] = item;
     mItemColors[index] = color;
@@ -226,7 +229,7 @@ void ItemShortcut::swap(const int index1, const int index2)
     const int tmpItem = mItems[index1];
     mItems[index1] = mItems[index2];
     mItems[index2] = tmpItem;
-    const unsigned char tmpColor = mItemColors[index1];
+    const ItemColor tmpColor = mItemColors[index1];
     mItemColors[index1] = mItemColors[index2];
     mItemColors[index2] = tmpColor;
     save();

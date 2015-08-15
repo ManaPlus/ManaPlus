@@ -23,6 +23,8 @@
 #ifndef FLOORITEM_H
 #define FLOORITEM_H
 
+#include "enums/simpletypes/itemcolor.h"
+
 #include "being/actorsprite.h"
 
 #include "resources/cursor.h"
@@ -49,7 +51,7 @@ class FloorItem final : public ActorSprite
                   const int itemId,
                   const int x, const int y,
                   const int amount,
-                  const unsigned char color);
+                  const ItemColor color);
 
         A_DELETE_COPY(FloorItem)
 
@@ -88,7 +90,7 @@ class FloorItem final : public ActorSprite
         unsigned getPickupCount() const A_WARN_UNUSED
         { return mPickupCount; }
 
-        unsigned char getColor() const A_WARN_UNUSED
+        ItemColor getColor() const A_WARN_UNUSED
         { return mColor; }
 
         bool getShowMsg() const A_WARN_UNUSED
@@ -111,7 +113,7 @@ class FloorItem final : public ActorSprite
         int mHeightPosDiff;
         unsigned int mPickupCount;
         Cursor::Cursor mCursor;
-        unsigned char mColor;
+        ItemColor mColor;
         bool mShowMsg;
         bool mHighlight;
 };

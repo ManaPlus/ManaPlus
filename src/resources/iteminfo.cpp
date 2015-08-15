@@ -201,12 +201,12 @@ void ItemInfo::setColorsList(const std::string &name)
     }
 }
 
-std::string ItemInfo::getDyeColorsString(const int color) const
+std::string ItemInfo::getDyeColorsString(const ItemColor color) const
 {
     if (!mColors || mColorList.empty())
         return "";
 
-    const std::map <int, ColorDB::ItemColor>::const_iterator
+    const std::map <ItemColor, ColorDB::ItemColorData>::const_iterator
         it = mColors->find(color);
     if (it == mColors->end())
         return "";
@@ -214,23 +214,23 @@ std::string ItemInfo::getDyeColorsString(const int color) const
     return it->second.color;
 }
 
-const std::string ItemInfo::getDescription(const unsigned char color) const
+const std::string ItemInfo::getDescription(const ItemColor color) const
 {
     return replaceColors(mDescription, color);
 }
 
-const std::string ItemInfo::getName(const unsigned char color) const
+const std::string ItemInfo::getName(const ItemColor color) const
 {
     return replaceColors(mName, color);
 }
 
 const std::string ItemInfo::replaceColors(std::string str,
-                                          const unsigned char color) const
+                                          const ItemColor color) const
 {
     std::string name;
     if (mColors && !mColorList.empty())
     {
-        const std::map <int, ColorDB::ItemColor>::const_iterator
+        const std::map <ItemColor, ColorDB::ItemColorData>::const_iterator
             it = mColors->find(color);
         if (it == mColors->end())
             name = "unknown";
@@ -369,24 +369,24 @@ void ItemInfo::setSprite(const std::string &animationFile,
     mAnimationFiles[static_cast<int>(gender) + race * 4] = animationFile;
 }
 
-std::string ItemInfo::getColorName(const int idx) const
+std::string ItemInfo::getColorName(const ItemColor idx) const
 {
     if (!mColors)
         return std::string();
 
-    const std::map <int, ColorDB::ItemColor>::const_iterator
+    const std::map <ItemColor, ColorDB::ItemColorData>::const_iterator
         it = mColors->find(idx);
     if (it == mColors->end())
         return std::string();
     return it->second.name;
 }
 
-std::string ItemInfo::getColor(const int idx) const
+std::string ItemInfo::getColor(const ItemColor idx) const
 {
     if (!mColors)
         return std::string();
 
-    const std::map <int, ColorDB::ItemColor>::const_iterator
+    const std::map <ItemColor, ColorDB::ItemColorData>::const_iterator
         it = mColors->find(idx);
     if (it == mColors->end())
         return std::string();

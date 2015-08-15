@@ -813,7 +813,7 @@ void LocalPlayer::untarget()
 
 void LocalPlayer::pickedUp(const ItemInfo &itemInfo,
                            const int amount,
-                           const unsigned char color,
+                           const ItemColor color,
                            const BeingId floorItemId,
                            const PickupT fail)
 {
@@ -1317,7 +1317,7 @@ void LocalPlayer::changeEquipmentBeforeAttack(const Being *const target) const
         const WeaponsInfos &swords = WeaponsDB::getSwords();
         FOR_EACH (WeaponsInfosIter, it, swords)
         {
-            item = inv->findItem(*it, 0);
+            item = inv->findItem(*it, ItemColor_zero);
             if (item)
                 break;
         }
@@ -1337,7 +1337,7 @@ void LocalPlayer::changeEquipmentBeforeAttack(const Being *const target) const
             const WeaponsInfos &shields = WeaponsDB::getShields();
             FOR_EACH (WeaponsInfosIter, it, shields)
             {
-                item = inv->findItem(*it, 0);
+                item = inv->findItem(*it, ItemColor_zero);
                 if (item)
                     break;
             }
@@ -1352,7 +1352,7 @@ void LocalPlayer::changeEquipmentBeforeAttack(const Being *const target) const
         const WeaponsInfos &bows = WeaponsDB::getBows();
         FOR_EACH (WeaponsInfosIter, it, bows)
         {
-            item = inv->findItem(*it, 0);
+            item = inv->findItem(*it, ItemColor_zero);
             if (item)
                 break;
         }

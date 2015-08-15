@@ -58,7 +58,7 @@ void DropShortcut::dropFirst() const
         return;
 
     const int itemId = getItem(0);
-    const unsigned char itemColor = getItemColor(0);
+    const ItemColor itemColor = getItemColor(0);
     if (PlayerInfo::isItemProtected(itemId))
         return;
 
@@ -116,7 +116,7 @@ bool DropShortcut::dropItem(const int cnt)
         return false;
 
     int itemId = 0;
-    unsigned char itemColor = 1;
+    ItemColor itemColor = ItemColor_one;
     while (mLastDropIndex < DROP_SHORTCUT_ITEMS && itemId < 1)
     {
         if (!PlayerInfo::isItemProtected(itemId))

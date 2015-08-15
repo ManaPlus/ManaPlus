@@ -197,7 +197,7 @@ void SellDialog::addItem(const Item *const item, const int price)
 
 void SellDialog::addItem(const int id,
                          const int type,
-                         const unsigned char color,
+                         const ItemColor color,
                          const int amount,
                          const int price)
 {

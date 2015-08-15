@@ -60,7 +60,7 @@ class NpcHandler final : public MessageHandler, public Ea::NpcHandler
 
         void buyItem(const BeingId beingId,
                      const int itemId,
-                     const unsigned char color,
+                     const ItemColor color,
                      const int amount) const override final;
 
         void sellItem(const BeingId beingId,

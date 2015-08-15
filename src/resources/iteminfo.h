@@ -26,6 +26,7 @@
 #include "enums/being/gender.h"
 
 #include "enums/simpletypes/beingtypeid.h"
+#include "enums/simpletypes/itemcolor.h"
 
 #include "resources/cursor.h"
 #include "resources/itemtype.h"
@@ -34,7 +35,7 @@
 
 namespace ColorDB
 {
-    class ItemColor;
+    class ItemColorData;
 }
 
 // sprite, <itemfrom, itemto>
@@ -69,7 +70,7 @@ class ItemInfo final
         const std::string &getName() const A_WARN_UNUSED
         { return mName; }
 
-        const std::string getName(const unsigned char color)
+        const std::string getName(const ItemColor color)
                                   const A_WARN_UNUSED;
 
         void setDisplay(const SpriteDisplay &display)
@@ -84,7 +85,7 @@ class ItemInfo final
         const std::string &getDescription() const A_WARN_UNUSED
         { return mDescription; }
 
-        const std::string getDescription(const unsigned char color)
+        const std::string getDescription(const ItemColor color)
                                          const A_WARN_UNUSED;
 
         void setEffect(const std::string &effect)
@@ -238,7 +239,7 @@ class ItemInfo final
         const SpriteToItemMap *getSpriteToItemReplaceMap(const int directions)
                                                          const A_WARN_UNUSED;
 
-        std::string getDyeColorsString(const int color) const A_WARN_UNUSED;
+        std::string getDyeColorsString(const ItemColor color) const A_WARN_UNUSED;
 
         void setColorsList(const std::string &name);
 
@@ -246,7 +247,7 @@ class ItemInfo final
         { return !mColorList.empty(); }
 
         const std::string replaceColors(std::string str,
-                                        const unsigned char color)
+                                        const ItemColor color)
                                         const A_WARN_UNUSED;
 
         void setPickupCursor(const std::string &cursor)
@@ -267,9 +268,9 @@ class ItemInfo final
         int getColorsSize() const
         { return mColors ? static_cast<int>(mColors->size()) : 0; }
 
-        std::string getColorName(const int idx) const;
+        std::string getColorName(const ItemColor idx) const;
 
-        std::string getColor(const int idx) const;
+        std::string getColor(const ItemColor idx) const;
 
         int mDrawBefore[10];
         int mDrawAfter[10];
@@ -317,7 +318,7 @@ class ItemInfo final
         /** Stores the names of sounds to be played at certain event. */
         std::map <ItemSoundEvent::Type, SoundInfoVect> mSounds;
         std::map <int, int> mTags;
-        const std::map <int, ColorDB::ItemColor> *mColors;
+        const std::map <ItemColor, ColorDB::ItemColorData> *mColors;
         std::string mColorList;
         int mHitEffectId;
         int mCriticalHitEffectId;

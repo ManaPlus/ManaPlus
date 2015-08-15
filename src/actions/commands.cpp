@@ -285,7 +285,7 @@ impHandler(chatAdd)
     if (inv)
     {
         // +++ need add also color here
-        item = inv->findItem(id, 1);
+        item = inv->findItem(id, ItemColor_one);
     }
 
     if (item)

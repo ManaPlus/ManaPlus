@@ -105,7 +105,7 @@ PopupMenu::PopupMenu() :
     mFloorItemId(BeingId_zero),
     mItem(nullptr),
     mItemId(0),
-    mItemColor(1),
+    mItemColor(ItemColor_one),
     mMapItem(nullptr),
     mTab(nullptr),
     mSpell(nullptr),
@@ -1558,7 +1558,7 @@ void PopupMenu::handleLink(const std::string &link,
         replaceAll(cmd, "'BEINGID'", toString(toInt(mBeingId, int)));
         replaceAll(cmd, "'FLOORID'", toString(toInt(mFloorItemId, int)));
         replaceAll(cmd, "'ITEMID'", toString(mItemId));
-        replaceAll(cmd, "'ITEMCOLOR'", toString(mItemColor));
+        replaceAll(cmd, "'ITEMCOLOR'", toString(toInt(mItemColor, int)));
         replaceAll(cmd, "'BEINGTYPEID'", toString(static_cast<int>(mType)));
         replaceAll(cmd, "'PLAYER'", localPlayer->getName());
         if (mItem)
@@ -1594,7 +1594,7 @@ void PopupMenu::handleLink(const std::string &link,
     mFloorItemId = BeingId_zero;
     mItem = nullptr;
     mItemId = 0;
-    mItemColor = 1;
+    mItemColor = ItemColor_one;
     mMapItem = nullptr;
     mTab = nullptr;
     mSpell = nullptr;
@@ -1751,8 +1751,9 @@ void PopupMenu::showPopup(Window *const parent,
     showPopup(x, y);
 }
 
-void PopupMenu::showItemPopup(const int x, const int y, const int itemId,
-                              const unsigned char color)
+void PopupMenu::showItemPopup(const int x, const int y,
+                              const int itemId,
+                              const ItemColor color)
 {
     const Inventory *const inv = PlayerInfo::getInventory();
     if (!inv)
@@ -1788,7 +1789,8 @@ void PopupMenu::showItemPopup(const int x, const int y, const int itemId,
     }
 }
 
-void PopupMenu::showItemPopup(const int x, const int y, Item *const item)
+void PopupMenu::showItemPopup(const int x, const int y,
+                              Item *const item)
 {
     mItem = item;
     mX = x;
@@ -1801,7 +1803,7 @@ void PopupMenu::showItemPopup(const int x, const int y, Item *const item)
     else
     {
         mItemId = 0;
-        mItemColor = 1;
+        mItemColor = ItemColor_one;
     }
     mNick.clear();
     mBrowserBox->clearRows();
@@ -2103,7 +2105,8 @@ void PopupMenu::showPickupItemPopup(const int x, const int y,
 }
 
 void PopupMenu::showUndressPopup(const int x, const int y,
-                                 const Being *const being, Item *const item)
+                                 const Being *const being,
+                                 Item *const item)
 {
     if (!being || !item)
         return;

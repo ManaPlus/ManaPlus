@@ -363,7 +363,7 @@ void BuyDialog::reset()
 
 ShopItem *BuyDialog::addItem(const int id,
                              const int type,
-                             const unsigned char color,
+                             const ItemColor color,
                              const int amount,
                              const int price)
 {
@@ -493,7 +493,8 @@ void BuyDialog::action(const ActionEvent &event)
         if (mNpcId == fromInt(Items, BeingId))
         {
             adminHandler->createItems(item->getId(),
-                mAmountItems, item->getColor());
+                item->getColor(),
+                mAmountItems);
         }
         else if (mNpcId != fromInt(Nick, BeingId))
         {

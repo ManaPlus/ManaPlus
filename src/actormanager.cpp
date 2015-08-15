@@ -300,7 +300,7 @@ FloorItem *ActorManager::createItem(const BeingId id,
                                     const int itemId,
                                     const int x, const int y,
                                     const int amount,
-                                    const unsigned char color,
+                                    const ItemColor color,
                                     const int subX, const int subY)
 {
     FloorItem *const floorItem = new FloorItem(id, itemId,
@@ -1840,12 +1840,12 @@ Being *ActorManager::cloneBeing(const Being *const srcBeing,
     for (int slot = 0; slot < sz; slot ++)
     {
         const int spriteId = srcBeing->getSpriteID(slot);
-        const unsigned char color = srcBeing->getSpriteColor(slot);
+        const ItemColor color = srcBeing->getSpriteColor(slot);
         dstBeing->setSprite(slot, spriteId, "", color, false);
     }
     const int hairSlot = charServerHandler->hairSprite();
     const int hairStyle = -srcBeing->getSpriteID(hairSlot);
-    const unsigned char hairColor = srcBeing->getHairColor();
+    const ItemColor hairColor = srcBeing->getHairColor();
     dstBeing->setSprite(hairSlot, hairStyle * -1,
         ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
     dstBeing->setHairColor(hairColor);

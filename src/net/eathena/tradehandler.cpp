@@ -199,10 +199,14 @@ void TradeHandler::processTradeItemAdd(Net::MessageIn &msg)
         }
         else
         {
-            tradeWindow->addItem2(type, itemType,
-                cards, 4,
-                false, amount,
-                refine, 1,
+            tradeWindow->addItem2(type,
+                itemType,
+                cards,
+                4,
+                false,
+                amount,
+                refine,
+                ItemColor_one,
                 fromBool(identify, Identified),
                 Damaged_false,
                 Favorite_false,

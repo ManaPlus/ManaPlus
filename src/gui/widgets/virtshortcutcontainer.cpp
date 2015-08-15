@@ -233,7 +233,7 @@ void VirtShortcutContainer::mouseDragged(MouseEvent &event)
                 return;
 
             const int itemId = mShortcut->getItem(index);
-            const unsigned char itemColor = mShortcut->getItemColor(index);
+            const ItemColor itemColor = mShortcut->getItemColor(index);
 
             if (itemId < 0)
                 return;
@@ -347,7 +347,7 @@ void VirtShortcutContainer::mouseMoved(MouseEvent &event)
         return;
 
     const int itemId = mShortcut->getItem(index);
-    const unsigned char itemColor = mShortcut->getItemColor(index);
+    const ItemColor itemColor = mShortcut->getItemColor(index);
 
     if (itemId < 0)
         return;

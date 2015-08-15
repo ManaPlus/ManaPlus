@@ -40,14 +40,14 @@ Item::Item(const int id,
            const int type,
            const int quantity,
            const uint8_t refine,
-           const unsigned char color,
+           const ItemColor color,
            const Identified identified,
            const Damaged damaged,
            const Favorite favorite,
            const Equipm equipment,
            const Equipped equipped) :
     mId(0),
-    mColor(0),
+    mColor(ItemColor_zero),
     mQuantity(quantity),
     mImage(nullptr),
     mDescription(),
@@ -78,7 +78,8 @@ Item::~Item()
     dragDrop.clearItem(this);
 }
 
-void Item::setId(const int id, const unsigned char color)
+void Item::setId(const int id,
+                 const ItemColor color)
 {
     mId = id;
     mColor = color;
@@ -114,7 +115,8 @@ bool Item::isHaveTag(const int tagId) const
     return (*it).second > 0;
 }
 
-Image *Item::getImage(const int id, const unsigned char color)
+Image *Item::getImage(const int id,
+                      const ItemColor color)
 {
     ResourceManager *const resman = ResourceManager::getInstance();
     const ItemInfo &info = ItemDB::get(id);
