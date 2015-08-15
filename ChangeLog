@@ -1,3 +1,13 @@
+2015-08-15 New release 1.5.8.15
+fix: download updates if download error happend.
+fix: key message in outfits window.
+fix: archer attack range in yellow bar.
+fix: wrong sprites in char selection dialog (hercules).
+fix: show all sprites in char selection dialog (hercules).
+add: for future tmwa guilds fix guild kick.
+add: new attributes for items description.
+add: send to client equipped cards (hercules).
+
 2015-08-01 New release 1.5.8.1
 fix: update tmw address in tmw detection code.
 fix: not allow broken nicks. show messages from this nicks with warnings.
