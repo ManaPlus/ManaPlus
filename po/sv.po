@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2015-08-14 22:58+0300\n"
-"PO-Revision-Date: 2015-08-02 09:12+0000\n"
+"PO-Revision-Date: 2015-08-15 09:12+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Swedish (Sweden) (http://www.transifex.com/akaras/manaplus/"
 "language/sv_SE/)\n"
@@ -8994,15 +8994,15 @@ msgstr "Attack %s"
 
 #. TRANSLATORS: item info label (min attack)
 #: src/resources/db/itemdb.cpp:99
-#, fuzzy, c-format
+#, c-format
 msgid "Min attack %s"
-msgstr "Attack %s"
+msgstr ""
 
 #. TRANSLATORS: item info label (max attack)
 #: src/resources/db/itemdb.cpp:101
-#, fuzzy, c-format
+#, c-format
 msgid "Max attack %s"
-msgstr "Attack %s"
+msgstr ""
 
 #. TRANSLATORS: item info label (attack)
 #: src/resources/db/itemdb.cpp:103
@@ -9024,15 +9024,15 @@ msgstr "Defense %s"
 
 #. TRANSLATORS: item info label (min defence)
 #: src/resources/db/itemdb.cpp:109
-#, fuzzy, c-format
+#, c-format
 msgid "Min defense %s"
-msgstr "Defense %s"
+msgstr ""
 
 #. TRANSLATORS: item info label (max defence)
 #: src/resources/db/itemdb.cpp:111
-#, fuzzy, c-format
+#, c-format
 msgid "Max defense %s"
-msgstr "Defense %s"
+msgstr ""
 
 #. TRANSLATORS: item info label (critical defence)
 #: src/resources/db/itemdb.cpp:113
@@ -9048,15 +9048,15 @@ msgstr ""
 
 #. TRANSLATORS: item info label (min magic defence)
 #: src/resources/db/itemdb.cpp:117
-#, fuzzy, c-format
+#, c-format
 msgid "Min M. Defense %s"
-msgstr "Defense %s"
+msgstr ""
 
 #. TRANSLATORS: item info label (max magic defence)
 #: src/resources/db/itemdb.cpp:119
-#, fuzzy, c-format
+#, c-format
 msgid "Max M. Defense %s"
-msgstr "Defense %s"
+msgstr ""
 
 #. TRANSLATORS: item info label (health)
 #: src/resources/db/itemdb.cpp:121
@@ -9066,9 +9066,9 @@ msgstr "HP %s"
 
 #. TRANSLATORS: item info label (max health)
 #: src/resources/db/itemdb.cpp:123
-#, fuzzy, c-format
+#, c-format
 msgid "Max HP %s"
-msgstr "HP %s"
+msgstr ""
 
 #. TRANSLATORS: item info label (mana)
 #: src/resources/db/itemdb.cpp:125
@@ -9078,9 +9078,9 @@ msgstr "MP %s"
 
 #. TRANSLATORS: item info label (max mana)
 #: src/resources/db/itemdb.cpp:127
-#, fuzzy, c-format
+#, c-format
 msgid "Max MP %s"
-msgstr "MP %s"
+msgstr ""
 
 #. TRANSLATORS: item info label (level)
 #: src/resources/db/itemdb.cpp:129
@@ -9114,9 +9114,9 @@ msgstr ""
 
 #. TRANSLATORS: item info label (max flee)
 #: src/resources/db/itemdb.cpp:139
-#, fuzzy, c-format
+#, c-format
 msgid "Max flee %s"
-msgstr "Maximalt antal medlemmar: %d"
+msgstr ""
 
 #. TRANSLATORS: item info label (card slots number)
 #: src/resources/db/itemdb.cpp:141
@@ -9253,9 +9253,9 @@ msgstr "Du blev visst kickad från guilden."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:130
-#, fuzzy, c-format
+#, c-format
 msgid "%s has been kicked from your guild."
-msgstr "%s har blivit kickad ur guilden."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:134

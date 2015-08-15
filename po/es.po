@@ -22,7 +22,7 @@ msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2015-08-14 22:58+0300\n"
-"PO-Revision-Date: 2015-08-04 13:11+0000\n"
+"PO-Revision-Date: 2015-08-15 09:12+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Spanish (http://www.transifex.com/akaras/manaplus/language/"
 "es/)\n"
@@ -9030,15 +9030,15 @@ msgstr "Ataque %s"
 
 #. TRANSLATORS: item info label (min attack)
 #: src/resources/db/itemdb.cpp:99
-#, fuzzy, c-format
+#, c-format
 msgid "Min attack %s"
-msgstr "Ataque mágico %s"
+msgstr ""
 
 #. TRANSLATORS: item info label (max attack)
 #: src/resources/db/itemdb.cpp:101
-#, fuzzy, c-format
+#, c-format
 msgid "Max attack %s"
-msgstr "Ataque mágico %s"
+msgstr ""
 
 #. TRANSLATORS: item info label (attack)
 #: src/resources/db/itemdb.cpp:103
@@ -9060,15 +9060,15 @@ msgstr "Defensa %s"
 
 #. TRANSLATORS: item info label (min defence)
 #: src/resources/db/itemdb.cpp:109
-#, fuzzy, c-format
+#, c-format
 msgid "Min defense %s"
-msgstr "Defensa mágica %s"
+msgstr ""
 
 #. TRANSLATORS: item info label (max defence)
 #: src/resources/db/itemdb.cpp:111
-#, fuzzy, c-format
+#, c-format
 msgid "Max defense %s"
-msgstr "Defensa mágica %s"
+msgstr ""
 
 #. TRANSLATORS: item info label (critical defence)
 #: src/resources/db/itemdb.cpp:113
@@ -9084,15 +9084,15 @@ msgstr "Defensa mágica %s"
 
 #. TRANSLATORS: item info label (min magic defence)
 #: src/resources/db/itemdb.cpp:117
-#, fuzzy, c-format
+#, c-format
 msgid "Min M. Defense %s"
-msgstr "Defensa mágica %s"
+msgstr ""
 
 #. TRANSLATORS: item info label (max magic defence)
 #: src/resources/db/itemdb.cpp:119
-#, fuzzy, c-format
+#, c-format
 msgid "Max M. Defense %s"
-msgstr "Defensa mágica %s"
+msgstr ""
 
 #. TRANSLATORS: item info label (health)
 #: src/resources/db/itemdb.cpp:121
@@ -9102,9 +9102,9 @@ msgstr "PV %s"
 
 #. TRANSLATORS: item info label (max health)
 #: src/resources/db/itemdb.cpp:123
-#, fuzzy, c-format
+#, c-format
 msgid "Max HP %s"
-msgstr "PV %s"
+msgstr ""
 
 #. TRANSLATORS: item info label (mana)
 #: src/resources/db/itemdb.cpp:125
@@ -9114,9 +9114,9 @@ msgstr "MP %s"
 
 #. TRANSLATORS: item info label (max mana)
 #: src/resources/db/itemdb.cpp:127
-#, fuzzy, c-format
+#, c-format
 msgid "Max MP %s"
-msgstr "MP %s"
+msgstr ""
 
 #. TRANSLATORS: item info label (level)
 #: src/resources/db/itemdb.cpp:129
@@ -9144,21 +9144,21 @@ msgstr "Escaparse %s"
 
 #. TRANSLATORS: item info label (min flee)
 #: src/resources/db/itemdb.cpp:137
-#, fuzzy, c-format
+#, c-format
 msgid "Min flee %s"
-msgstr "Escaparse %s"
+msgstr ""
 
 #. TRANSLATORS: item info label (max flee)
 #: src/resources/db/itemdb.cpp:139
-#, fuzzy, c-format
+#, c-format
 msgid "Max flee %s"
-msgstr "Escaparse %s"
+msgstr ""
 
 #. TRANSLATORS: item info label (card slots number)
 #: src/resources/db/itemdb.cpp:141
-#, fuzzy, c-format
+#, c-format
 msgid "Card slots %s"
-msgstr "Tarjetas: "
+msgstr ""
 
 #. TRANSLATORS: item name
 #: src/resources/db/itemdb.cpp:240
@@ -9289,9 +9289,9 @@ msgstr "Fuiste expulsado del gremio."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:130
-#, fuzzy, c-format
+#, c-format
 msgid "%s has been kicked from your guild."
-msgstr "%s ha sido expulsado de tu gremio."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:134

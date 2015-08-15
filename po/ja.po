@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2015-08-14 22:58+0300\n"
-"PO-Revision-Date: 2015-08-02 09:12+0000\n"
+"PO-Revision-Date: 2015-08-15 09:12+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Japanese (http://www.transifex.com/akaras/manaplus/language/"
 "ja/)\n"
@@ -8984,15 +8984,15 @@ msgstr ""
 
 #. TRANSLATORS: item info label (min attack)
 #: src/resources/db/itemdb.cpp:99
-#, fuzzy, c-format
+#, c-format
 msgid "Min attack %s"
-msgstr "(?) 攻撃"
+msgstr ""
 
 #. TRANSLATORS: item info label (max attack)
 #: src/resources/db/itemdb.cpp:101
-#, fuzzy, c-format
+#, c-format
 msgid "Max attack %s"
-msgstr "(?) 攻撃"
+msgstr ""
 
 #. TRANSLATORS: item info label (attack)
 #: src/resources/db/itemdb.cpp:103
@@ -9014,15 +9014,15 @@ msgstr ""
 
 #. TRANSLATORS: item info label (min defence)
 #: src/resources/db/itemdb.cpp:109
-#, fuzzy, c-format
+#, c-format
 msgid "Min defense %s"
-msgstr "M.Defense"
+msgstr ""
 
 #. TRANSLATORS: item info label (max defence)
 #: src/resources/db/itemdb.cpp:111
-#, fuzzy, c-format
+#, c-format
 msgid "Max defense %s"
-msgstr "最大メンバー数: %d"
+msgstr ""
 
 #. TRANSLATORS: item info label (critical defence)
 #: src/resources/db/itemdb.cpp:113
@@ -9038,15 +9038,15 @@ msgstr ""
 
 #. TRANSLATORS: item info label (min magic defence)
 #: src/resources/db/itemdb.cpp:117
-#, fuzzy, c-format
+#, c-format
 msgid "Min M. Defense %s"
-msgstr "M.Defense"
+msgstr ""
 
 #. TRANSLATORS: item info label (max magic defence)
 #: src/resources/db/itemdb.cpp:119
-#, fuzzy, c-format
+#, c-format
 msgid "Max M. Defense %s"
-msgstr "M.Defense"
+msgstr ""
 
 #. TRANSLATORS: item info label (health)
 #: src/resources/db/itemdb.cpp:121
@@ -9104,9 +9104,9 @@ msgstr ""
 
 #. TRANSLATORS: item info label (max flee)
 #: src/resources/db/itemdb.cpp:139
-#, fuzzy, c-format
+#, c-format
 msgid "Max flee %s"
-msgstr "最大メンバー数: %d"
+msgstr ""
 
 #. TRANSLATORS: item info label (card slots number)
 #: src/resources/db/itemdb.cpp:141
@@ -9243,9 +9243,9 @@ msgstr "ギルドから追い出されました."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:130
-#, fuzzy, c-format
+#, c-format
 msgid "%s has been kicked from your guild."
-msgstr "%sがギルドから追い出しました."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:134
