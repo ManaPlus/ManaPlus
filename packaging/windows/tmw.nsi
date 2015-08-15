@@ -384,10 +384,10 @@ Section /o "Profiler" SecProfiler
   ${EndIf}
 SectionEnd
 
-Section "Tools" SecTools
-  SetOutPath "$INSTDIR"
-  File "${EXEDIR}\dyecmd.exe"
-SectionEnd
+; Section "Tools" SecTools
+;   SetOutPath "$INSTDIR"
+;   File "${EXEDIR}\dyecmd.exe"
+; SectionEnd
 
 Section "Translations" SecTrans
   SetOutPath "$INSTDIR"
@@ -402,7 +402,7 @@ SectionEnd
   !insertmacro MUI_DESCRIPTION_TEXT ${SecTrans} "Translations for the user interface. Uncheck this component to leave it in English."
   !insertmacro MUI_DESCRIPTION_TEXT ${SecDebug} "Install debugger for try to detect stability issues."
   !insertmacro MUI_DESCRIPTION_TEXT ${SecProfiler} "Install profiler build to detect perfomance issues."
-  !insertmacro MUI_DESCRIPTION_TEXT ${SecTools} "Install tools like dyecmd."
+;   !insertmacro MUI_DESCRIPTION_TEXT ${SecTools} "Install tools like dyecmd."
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
 
