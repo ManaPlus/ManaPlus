@@ -107,7 +107,7 @@ bool ServerFeatures::haveMove3() const
 
 bool ServerFeatures::haveItemColors() const
 {
-    return false;
+    return true;
 }
 
 bool ServerFeatures::haveOtherGender() const
