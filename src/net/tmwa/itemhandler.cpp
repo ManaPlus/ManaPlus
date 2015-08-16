@@ -81,8 +81,14 @@ void ItemHandler::processItemDropped(Net::MessageIn &msg)
 
     if (actorManager)
     {
-        actorManager->createItem(id, itemId,
-            x, y, amount, identify, subX, subY);
+        actorManager->createItem(id,
+            itemId,
+            x, y,
+            0,
+            amount,
+            identify,
+            Identified_false,
+            subX, subY);
     }
 }
 

@@ -83,8 +83,10 @@ class ActorManager final: public ConfigListener
         FloorItem *createItem(const BeingId id,
                               const int itemId,
                               const int x, const int y,
+                              const int itemType,
                               const int amount,
                               const ItemColor color,
+                              const Identified identified,
                               const int subX, const int subY);
 
         /**

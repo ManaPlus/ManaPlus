@@ -43,7 +43,8 @@ void ItemHandler::processItemVisible(Net::MessageIn &msg)
 {
     const BeingId id = msg.readBeingId("item object id");
     const int itemId = msg.readInt16("item id");
-    const ItemColor identify = fromInt(msg.readUInt8("identify"), ItemColor);
+    const Identified identified = fromInt(
+        msg.readUInt8("identify"), Identified);
     const int x = msg.readInt16("x");
     const int y = msg.readInt16("y");
     const int amount = msg.readInt16("amount");
@@ -55,8 +56,10 @@ void ItemHandler::processItemVisible(Net::MessageIn &msg)
         actorManager->createItem(id,
             itemId,
             x, y,
+            0,
             amount,
-            identify,
+            ItemColor_one,
+            identified,
             subX, subY);
     }
 }

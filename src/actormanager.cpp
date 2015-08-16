@@ -299,12 +299,19 @@ Being *ActorManager::createBeing(const BeingId id,
 FloorItem *ActorManager::createItem(const BeingId id,
                                     const int itemId,
                                     const int x, const int y,
+                                    const int itemType,
                                     const int amount,
                                     const ItemColor color,
+                                    const Identified identified,
                                     const int subX, const int subY)
 {
-    FloorItem *const floorItem = new FloorItem(id, itemId,
-        x, y, amount, color);
+    FloorItem *const floorItem = new FloorItem(id,
+        itemId,
+        x, y,
+        itemType,
+        amount,
+        color,
+        identified);
     floorItem->postInit(mMap, subX, subY);
 
     if (!checkForPickup(floorItem))

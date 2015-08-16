@@ -46,8 +46,10 @@ extern volatile int cur_time;
 FloorItem::FloorItem(const BeingId id,
                      const int itemId,
                      const int x, const int y,
+                     const int itemType,
                      const int amount,
-                     const ItemColor color) :
+                     const ItemColor color,
+                     const Identified identified) :
     ActorSprite(id),
     mItemId(itemId),
     mX(x),
@@ -55,9 +57,11 @@ FloorItem::FloorItem(const BeingId id,
     mDropTime(cur_time),
     mAmount(amount),
     mHeightPosDiff(0),
+    mItemType(itemType),
     mPickupCount(0),
     mCursor(Cursor::CURSOR_PICKUP),
     mColor(color),
+    mIdentified(identified),
     mShowMsg(true),
     mHighlight(config.getBoolValue("floorItemsHighlight"))
 {

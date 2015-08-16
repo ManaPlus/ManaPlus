@@ -23,6 +23,7 @@
 #ifndef FLOORITEM_H
 #define FLOORITEM_H
 
+#include "enums/simpletypes/identified.h"
 #include "enums/simpletypes/itemcolor.h"
 
 #include "being/actorsprite.h"
@@ -50,8 +51,10 @@ class FloorItem final : public ActorSprite
         FloorItem(const BeingId id,
                   const int itemId,
                   const int x, const int y,
+                  const int itemType,
                   const int amount,
-                  const ItemColor color);
+                  const ItemColor color,
+                  const Identified identified);
 
         A_DELETE_COPY(FloorItem)
 
@@ -111,9 +114,11 @@ class FloorItem final : public ActorSprite
         int mDropTime;
         int mAmount;
         int mHeightPosDiff;
+        int mItemType;
         unsigned int mPickupCount;
         Cursor::Cursor mCursor;
         ItemColor mColor;
+        Identified mIdentified;
         bool mShowMsg;
         bool mHighlight;
 };

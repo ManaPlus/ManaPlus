@@ -81,8 +81,9 @@ void ItemHandler::processItemDropped(Net::MessageIn &msg)
 {
     const BeingId id = msg.readBeingId("id");
     const int itemId = msg.readInt16("item id");
-    msg.readInt16("type");
-    msg.readUInt8("identify");
+    const int itemType = msg.readInt16("type");
+    const Identified identified = fromInt(
+        msg.readUInt8("identify"), Identified);
     const int x = msg.readInt16("x");
     const int y = msg.readInt16("y");
     const int subX = static_cast<int>(msg.readInt8("subx"));
@@ -94,8 +95,10 @@ void ItemHandler::processItemDropped(Net::MessageIn &msg)
         actorManager->createItem(id,
             itemId,
             x, y,
+            itemType,
             amount,
             ItemColor_one,
+            identified,
             subX, subY);
     }
 }
