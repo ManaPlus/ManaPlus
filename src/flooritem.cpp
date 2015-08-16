@@ -23,6 +23,7 @@
 #include "flooritem.h"
 
 #include "configuration.h"
+#include "item.h"
 
 #include "render/graphics.h"
 
@@ -48,14 +49,18 @@ FloorItem::FloorItem(const BeingId id,
                      const int x, const int y,
                      const int itemType,
                      const int amount,
+                     const int refine,
                      const ItemColor color,
-                     const Identified identified) :
+                     const Identified identified,
+                     const int *const cards) :
     ActorSprite(id),
+    mCards(),
     mItemId(itemId),
     mX(x),
     mY(y),
     mDropTime(cur_time),
     mAmount(amount),
+    mRefine(refine),
     mHeightPosDiff(0),
     mItemType(itemType),
     mPickupCount(0),
@@ -65,6 +70,7 @@ FloorItem::FloorItem(const BeingId id,
     mShowMsg(true),
     mHighlight(config.getBoolValue("floorItemsHighlight"))
 {
+    setCards(cards, maxCards);
 }
 
 void FloorItem::postInit(Map *const map, int subX, int subY)
@@ -101,6 +107,18 @@ void FloorItem::postInit(Map *const map, int subX, int subY)
         ForceDisplay_true,
         1,
         info.getDyeColorsString(mColor));
+}
+
+void FloorItem::setCards(const int *const cards,
+                         const int size)
+{
+    if (size < 0 || !cards)
+        return;
+    int sz = size;
+    if (sz > maxCards)
+        sz = maxCards;
+    for (int f = 0; f < sz; f ++)
+        mCards[f] = cards[f];
 }
 
 const ItemInfo &FloorItem::getInfo() const

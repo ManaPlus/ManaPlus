@@ -140,6 +140,7 @@ packet(SMSG_SKILL_ARROW_CREATE_LIST, 0x01ad);
 packet(SMSG_SKILL_DEVOTION_EFFECT,   0x01cf);
 packet(SMSG_ITEM_USE_RESPONSE,       0x00a8);
 packet(SMSG_ITEM_VISIBLE,            0x009d); /**< An item is on the floor */
+packet(SMSG_ITEM_VISIBLE2,           0x0b18);
 packet(SMSG_GRAFFITI_VISIBLE,        0x01c9);
 packet(SMSG_ITEM_DROPPED,            0x084b); /**< An item is dropped */
 packet(SMSG_ITEM_MVP_DROPPED,        0x07fd);

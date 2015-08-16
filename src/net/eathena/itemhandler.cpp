@@ -39,6 +39,7 @@ ItemHandler::ItemHandler() :
     static const uint16_t _messages[] =
     {
         SMSG_ITEM_VISIBLE,
+        SMSG_ITEM_VISIBLE2,
         SMSG_ITEM_DROPPED,
         SMSG_ITEM_REMOVE,
         SMSG_GRAFFITI_VISIBLE,
@@ -72,6 +73,10 @@ void ItemHandler::handleMessage(Net::MessageIn &msg)
             processItemMvpDropped(msg);
             break;
 
+        case SMSG_ITEM_VISIBLE2:
+            processItemVisible2(msg);
+            break;
+
         default:
             break;
     }
@@ -97,9 +102,11 @@ void ItemHandler::processItemDropped(Net::MessageIn &msg)
             x, y,
             itemType,
             amount,
+            0,
             ItemColor_one,
             identified,
-            subX, subY);
+            subX, subY,
+            nullptr);
     }
 }
 
@@ -147,9 +154,44 @@ void ItemHandler::processItemVisible(Net::MessageIn &msg)
             x, y,
             0,
             amount,
+            0,
             ItemColor_one,
             identified,
-            subX, subY);
+            subX, subY,
+            nullptr);
+    }
+}
+
+void ItemHandler::processItemVisible2(Net::MessageIn &msg)
+{
+    const BeingId id = msg.readBeingId("item object id");
+    const int itemId = msg.readInt16("item id");
+    const int itemType = msg.readUInt8("type");
+    const Identified identified = fromInt(
+        msg.readUInt8("identify"), Identified);
+    msg.readUInt8("attribute");
+    const uint8_t refine = msg.readUInt8("refine");
+    int cards[4];
+    for (int f = 0; f < 4; f++)
+        cards[f] = msg.readInt16("card");
+    const int x = msg.readInt16("x");
+    const int y = msg.readInt16("y");
+    const int amount = msg.readInt16("amount");
+    const int subX = static_cast<int>(msg.readInt8("sub x"));
+    const int subY = static_cast<int>(msg.readInt8("sub y"));
+
+    if (actorManager)
+    {
+        actorManager->createItem(id,
+            itemId,
+            x, y,
+            itemType,
+            amount,
+            refine,
+            ItemColor_one,
+            identified,
+            subX, subY,
+            &cards[0]);
     }
 }
 

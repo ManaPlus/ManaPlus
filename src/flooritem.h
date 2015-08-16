@@ -53,8 +53,10 @@ class FloorItem final : public ActorSprite
                   const int x, const int y,
                   const int itemType,
                   const int amount,
+                  const int refine,
                   const ItemColor color,
-                  const Identified identified);
+                  const Identified identified,
+                  const int *const cards);
 
         A_DELETE_COPY(FloorItem)
 
@@ -108,11 +110,16 @@ class FloorItem final : public ActorSprite
         Cursor::Cursor getHoverCursor() const A_WARN_UNUSED
         { return mCursor; }
 
+        void setCards(const int *const cards,
+                      const int size);
+
     private:
+        int mCards[4];
         int mItemId;
         int mX, mY;
         int mDropTime;
         int mAmount;
+        int mRefine;
         int mHeightPosDiff;
         int mItemType;
         unsigned int mPickupCount;

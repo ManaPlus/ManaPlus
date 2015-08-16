@@ -301,17 +301,21 @@ FloorItem *ActorManager::createItem(const BeingId id,
                                     const int x, const int y,
                                     const int itemType,
                                     const int amount,
+                                    const int refine,
                                     const ItemColor color,
                                     const Identified identified,
-                                    const int subX, const int subY)
+                                    const int subX, const int subY,
+                                    const int *const cards)
 {
     FloorItem *const floorItem = new FloorItem(id,
         itemId,
         x, y,
         itemType,
         amount,
+        refine,
         color,
-        identified);
+        identified,
+        cards);
     floorItem->postInit(mMap, subX, subY);
 
     if (!checkForPickup(floorItem))

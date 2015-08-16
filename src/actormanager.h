@@ -85,9 +85,11 @@ class ActorManager final: public ConfigListener
                               const int x, const int y,
                               const int itemType,
                               const int amount,
+                              const int refine,
                               const ItemColor color,
                               const Identified identified,
-                              const int subX, const int subY);
+                              const int subX, const int subY,
+                              const int *const cards);
 
         /**
          * Destroys the given ActorSprite at the end of

@@ -86,9 +86,11 @@ void ItemHandler::processItemDropped(Net::MessageIn &msg)
             x, y,
             0,
             amount,
+            0,
             identify,
             Identified_false,
-            subX, subY);
+            subX, subY,
+            nullptr);
     }
 }
 
@@ -111,9 +113,11 @@ void ItemHandler::processItemVisible(Net::MessageIn &msg)
             x, y,
             0,
             amount,
+            0,
             ItemColor_one,
             identified,
-            subX, subY);
+            subX, subY,
+            nullptr);
     }
 }
 
