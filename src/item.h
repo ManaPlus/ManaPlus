@@ -176,6 +176,9 @@ class Item notfinal
         ItemColor getColor() const A_WARN_UNUSED
         { return mColor; }
 
+        void setColor(const ItemColor color)
+        { mColor = color; }
+
         const std::string &getDescription() const A_WARN_UNUSED
         { return mDescription; }
 
@@ -213,6 +216,8 @@ class Item notfinal
         { return mType; }
 
         void addCard(const int card);
+
+        void updateColor();
 
         int mId;              /**< Item type id. */
         ItemColor mColor;

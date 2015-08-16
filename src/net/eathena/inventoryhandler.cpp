@@ -877,6 +877,7 @@ void InventoryHandler::processPlayerInsertCard(Net::MessageIn &msg)
         if (item)
         {
             item->addCard(cardId);
+            item->updateColor();
             itemPopup->resetPopup();
         }
     }

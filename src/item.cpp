@@ -22,13 +22,14 @@
 
 #include "item.h"
 
+#include "configuration.h"
 #include "dragdrop.h"
+#include "itemcolormanager.h"
 
 #include "gui/theme.h"
 
 #include "resources/iteminfo.h"
 #include "resources/resourcemanager.h"
-#include "configuration.h"
 
 #include "net/serverfeatures.h"
 
@@ -173,4 +174,10 @@ void Item::addCard(const int card)
             return;
         }
     }
+}
+
+void Item::updateColor()
+{
+    if (serverFeatures->haveItemColors())
+        setId(mId, ItemColorManager::getColorFromCards(&mCards[0]));
 }
