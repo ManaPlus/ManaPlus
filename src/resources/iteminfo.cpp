@@ -59,8 +59,8 @@ ItemInfo::ItemInfo() :
     mAnimationFiles(),
     mSounds(),
     mTags(),
-    mColors(nullptr),
-    mColorList(),
+    mColorsList(nullptr),
+    mColorsListName(),
     mHitEffectId(-1),
     mCriticalHitEffectId(-1),
     mMissEffectId(-1),
@@ -191,24 +191,24 @@ void ItemInfo::setColorsList(const std::string &name)
 {
     if (name.empty())
     {
-        mColors = nullptr;
-        mColorList.clear();
+        mColorsList = nullptr;
+        mColorsListName.clear();
     }
     else
     {
-        mColors = ColorDB::getColorsList(name);
-        mColorList = name;
+        mColorsList = ColorDB::getColorsList(name);
+        mColorsListName = name;
     }
 }
 
 std::string ItemInfo::getDyeColorsString(const ItemColor color) const
 {
-    if (!mColors || mColorList.empty())
+    if (!mColorsList || mColorsListName.empty())
         return "";
 
     const std::map <ItemColor, ColorDB::ItemColorData>::const_iterator
-        it = mColors->find(color);
-    if (it == mColors->end())
+        it = mColorsList->find(color);
+    if (it == mColorsList->end())
         return "";
 
     return it->second.color;
@@ -228,11 +228,11 @@ const std::string ItemInfo::replaceColors(std::string str,
                                           const ItemColor color) const
 {
     std::string name;
-    if (mColors && !mColorList.empty())
+    if (mColorsList && !mColorsListName.empty())
     {
         const std::map <ItemColor, ColorDB::ItemColorData>::const_iterator
-            it = mColors->find(color);
-        if (it == mColors->end())
+            it = mColorsList->find(color);
+        if (it == mColorsList->end())
             name = "unknown";
         else
             name = it->second.name;
@@ -371,24 +371,24 @@ void ItemInfo::setSprite(const std::string &animationFile,
 
 std::string ItemInfo::getColorName(const ItemColor idx) const
 {
-    if (!mColors)
+    if (!mColorsList)
         return std::string();
 
     const std::map <ItemColor, ColorDB::ItemColorData>::const_iterator
-        it = mColors->find(idx);
-    if (it == mColors->end())
+        it = mColorsList->find(idx);
+    if (it == mColorsList->end())
         return std::string();
     return it->second.name;
 }
 
 std::string ItemInfo::getColor(const ItemColor idx) const
 {
-    if (!mColors)
+    if (!mColorsList)
         return std::string();
 
     const std::map <ItemColor, ColorDB::ItemColorData>::const_iterator
-        it = mColors->find(idx);
-    if (it == mColors->end())
+        it = mColorsList->find(idx);
+    if (it == mColorsList->end())
         return std::string();
     return it->second.color;
 }

@@ -244,7 +244,7 @@ class ItemInfo final
         void setColorsList(const std::string &name);
 
         bool isHaveColors() const A_WARN_UNUSED
-        { return !mColorList.empty(); }
+        { return !mColorsListName.empty(); }
 
         const std::string replaceColors(std::string str,
                                         const ItemColor color)
@@ -266,7 +266,7 @@ class ItemInfo final
         { return mProtected; }
 
         int getColorsSize() const
-        { return mColors ? static_cast<int>(mColors->size()) : 0; }
+        { return mColorsList ? static_cast<int>(mColorsList->size()) : 0; }
 
         std::string getColorName(const ItemColor idx) const;
 
@@ -318,8 +318,8 @@ class ItemInfo final
         /** Stores the names of sounds to be played at certain event. */
         std::map <ItemSoundEvent::Type, SoundInfoVect> mSounds;
         std::map <int, int> mTags;
-        const std::map <ItemColor, ColorDB::ItemColorData> *mColors;
-        std::string mColorList;
+        const std::map <ItemColor, ColorDB::ItemColorData> *mColorsList;
+        std::string mColorsListName;
         int mHitEffectId;
         int mCriticalHitEffectId;
         int mMissEffectId;
