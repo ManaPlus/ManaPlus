@@ -22,9 +22,20 @@
 
 #include "resources/iteminfo.h"
 
+#include "resources/db/itemdb.h"
+
 #include "debug.h"
 
 ItemColor ItemColorManager::getColorFromCards(const int *const cards)
 {
+    if (!cards)
+        return ItemColor_one;
+    for (int f = 0; f < 4; f ++)
+    {
+        const ItemInfo &info = ItemDB::get(cards[f]);
+        const ItemColor &color = info.getCardColor();
+        if (color != ItemColor_zero)
+            return color;
+    }
     return ItemColor_one;
 }
