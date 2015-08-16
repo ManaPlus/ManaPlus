@@ -41,6 +41,8 @@ class ItemHandler final : public MessageHandler, public Ea::ItemHandler
 
     protected:
         static void processItemDropped(Net::MessageIn &msg);
+
+        static void processItemVisible(Net::MessageIn &msg);
 };
 
 }  // namespace TmwAthena

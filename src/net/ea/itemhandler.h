@@ -42,8 +42,6 @@ class ItemHandler notfinal
 
         virtual ~ItemHandler();
 
-        static void processItemVisible(Net::MessageIn &msg);
-
         static void processItemRemove(Net::MessageIn &msg);
 };
 

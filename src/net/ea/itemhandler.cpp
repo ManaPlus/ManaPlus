@@ -39,31 +39,6 @@ ItemHandler::~ItemHandler()
 {
 }
 
-void ItemHandler::processItemVisible(Net::MessageIn &msg)
-{
-    const BeingId id = msg.readBeingId("item object id");
-    const int itemId = msg.readInt16("item id");
-    const Identified identified = fromInt(
-        msg.readUInt8("identify"), Identified);
-    const int x = msg.readInt16("x");
-    const int y = msg.readInt16("y");
-    const int amount = msg.readInt16("amount");
-    const int subX = static_cast<int>(msg.readInt8("sub x"));
-    const int subY = static_cast<int>(msg.readInt8("sub y"));
-
-    if (actorManager)
-    {
-        actorManager->createItem(id,
-            itemId,
-            x, y,
-            0,
-            amount,
-            ItemColor_one,
-            identified,
-            subX, subY);
-    }
-}
-
 void ItemHandler::processItemRemove(Net::MessageIn &msg)
 {
     if (actorManager)
