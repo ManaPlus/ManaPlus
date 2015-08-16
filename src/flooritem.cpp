@@ -110,11 +110,10 @@ void FloorItem::postInit(Map *const map, int subX, int subY)
 }
 
 void FloorItem::setCards(const int *const cards,
-                         const int size)
+                         int sz)
 {
-    if (size < 0 || !cards)
+    if (sz < 0 || !cards)
         return;
-    int sz = size;
     if (sz > maxCards)
         sz = maxCards;
     for (int f = 0; f < sz; f ++)

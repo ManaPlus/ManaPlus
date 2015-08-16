@@ -111,7 +111,7 @@ class FloorItem final : public ActorSprite
         { return mCursor; }
 
         void setCards(const int *const cards,
-                      const int size);
+                      int sz);
 
     private:
         int mCards[4];
