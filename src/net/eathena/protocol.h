@@ -143,6 +143,7 @@ packet(SMSG_ITEM_VISIBLE,            0x009d); /**< An item is on the floor */
 packet(SMSG_ITEM_VISIBLE2,           0x0b18);
 packet(SMSG_GRAFFITI_VISIBLE,        0x01c9);
 packet(SMSG_ITEM_DROPPED,            0x084b); /**< An item is dropped */
+packet(SMSG_ITEM_DROPPED2,           0x0b19);
 packet(SMSG_ITEM_MVP_DROPPED,        0x07fd);
 packet(SMSG_ITEM_REMOVE,             0x00a1); /**< An item disappers */
 packet(SMSG_BEING_VISIBLE,           0x0915);

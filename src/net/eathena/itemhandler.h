@@ -42,6 +42,8 @@ class ItemHandler final : public MessageHandler, public Ea::ItemHandler
     protected:
         static void processItemDropped(Net::MessageIn &msg);
 
+        static void processItemDropped2(Net::MessageIn &msg);
+
         static void processGraffiti(Net::MessageIn &msg);
 
         static void processItemMvpDropped(Net::MessageIn &msg);
