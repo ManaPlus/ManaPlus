@@ -906,6 +906,8 @@ SET(SRCS
     inventory.h
     item.cpp
     item.h
+    itemcolormanager.cpp
+    itemcolormanager.h
     itemshortcut.cpp
     itemshortcut.h
     itemsoundmanager.cpp

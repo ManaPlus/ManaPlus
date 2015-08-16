@@ -479,6 +479,7 @@ void PartyHandler::processPartyItemPickup(Net::MessageIn &msg)
         msg.readInt16("card");
     msg.readInt16("equip location");
     msg.readUInt8("item type");
+    // for color can be used ItemColorManager
 }
 
 void PartyHandler::processPartyLeader(Net::MessageIn &msg)

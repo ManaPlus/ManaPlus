@@ -109,6 +109,7 @@ MailViewWindow::MailViewWindow(const MailMessage *const message) :
     {
         ResourceManager *const resman = ResourceManager::getInstance();
         const ItemInfo &item = ItemDB::get(message->itemId);
+        // +++ need use message->cards and ItemColorManager for colors
         Image *const image = resman->getImage(combineDye2(
             paths.getStringValue("itemIcons").append(
             item.getDisplay().image),

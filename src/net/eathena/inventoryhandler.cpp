@@ -23,6 +23,7 @@
 #include "net/eathena/inventoryhandler.h"
 
 #include "notifymanager.h"
+#include "itemcolormanager.h"
 
 #include "being/localplayer.h"
 
@@ -463,7 +464,7 @@ void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
                 itemType,
                 1,
                 refine,
-                ItemColor_one,
+                ItemColorManager::getColorFromCards(&cards[0]),
                 fromBool(flags.bits.isIdentified, Identified),
                 fromBool(flags.bits.isDamaged, Damaged),
                 fromBool(flags.bits.isFavorite, Favorite),
@@ -505,6 +506,7 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
     msg.readInt32("hire expire date");
     msg.readInt16("bind on equip");
 
+    const ItemColor color = ItemColorManager::getColorFromCards(&cards[0]);
     const ItemInfo &itemInfo = ItemDB::get(itemId);
     BeingId floorId;
     if (mSentPickups.empty())
@@ -549,7 +551,7 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
         {
             localPlayer->pickedUp(itemInfo,
                 0,
-                ItemColor_one,
+                color,
                 floorId,
                 pickup);
         }
@@ -560,7 +562,7 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
         {
             localPlayer->pickedUp(itemInfo,
                 amount,
-                ItemColor_one,
+                color,
                 floorId,
                 Pickup::OKAY);
         }
@@ -577,7 +579,7 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
                 itemType,
                 amount,
                 refine,
-                ItemColor_one,
+                color,
                 fromBool(identified, Identified),
                 fromBool(damaged, Damaged),
                 Favorite_false,
@@ -630,7 +632,7 @@ void InventoryHandler::processPlayerInventory(Net::MessageIn &msg)
                 itemType,
                 amount,
                 0,
-                ItemColor_one,
+                ItemColorManager::getColorFromCards(&cards[0]),
                 fromBool(flags.bits.isIdentified, Identified),
                 fromBool(flags.bits.isDamaged, Damaged),
                 fromBool(flags.bits.isFavorite, Favorite),
@@ -672,7 +674,7 @@ void InventoryHandler::processPlayerStorage(Net::MessageIn &msg)
             cards,
             amount,
             0,
-            ItemColor_one,
+            ItemColorManager::getColorFromCards(&cards[0]),
             fromBool(flags.bits.isIdentified, Identified),
             fromBool(flags.bits.isDamaged, Damaged),
             fromBool(flags.bits.isFavorite, Favorite),
@@ -778,7 +780,7 @@ void InventoryHandler::processPlayerStorageEquip(Net::MessageIn &msg)
             cards,
             amount,
             refine,
-            ItemColor_one,
+            ItemColorManager::getColorFromCards(&cards[0]),
             fromBool(flags.bits.isIdentified, Identified),
             fromBool(flags.bits.isDamaged, Damaged),
             fromBool(flags.bits.isFavorite, Favorite),
@@ -802,9 +804,10 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
     for (int f = 0; f < 4; f++)
         cards[f] = msg.readInt16("card");
 
+    const ItemColor color = ItemColorManager::getColorFromCards(&cards[0]);
     if (Item *const item = mStorage->getItem(index))
     {
-        item->setId(itemId, ItemColor_one);
+        item->setId(itemId, color);
         item->increaseQuantity(amount);
     }
     else
@@ -816,7 +819,7 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
                 itemType,
                 amount,
                 refine,
-                ItemColor_one,
+                color,
                 fromBool(identified, Identified),
                 Damaged_false,
                 Favorite_false,
@@ -1000,7 +1003,7 @@ void InventoryHandler::processPlayerCartAdd(Net::MessageIn &msg)
             itemType,
             amount,
             refine,
-            ItemColor_one,
+            ItemColorManager::getColorFromCards(&cards[0]),
             fromBool(identified, Identified),
             Damaged_false,
             Favorite_false,
@@ -1040,7 +1043,7 @@ void InventoryHandler::processPlayerCartEquip(Net::MessageIn &msg)
             cards,
             amount,
             refine,
-            ItemColor_one,
+            ItemColorManager::getColorFromCards(&cards[0]),
             fromBool(flags.bits.isIdentified, Identified),
             fromBool(flags.bits.isDamaged, Damaged),
             fromBool(flags.bits.isFavorite, Favorite),
@@ -1077,7 +1080,7 @@ void InventoryHandler::processPlayerCartItems(Net::MessageIn &msg)
             cards,
             amount,
             0,
-            ItemColor_one,
+            ItemColorManager::getColorFromCards(&cards[0]),
             fromBool(flags.bits.isIdentified, Identified),
             fromBool(flags.bits.isDamaged, Damaged),
             fromBool(flags.bits.isFavorite, Favorite),

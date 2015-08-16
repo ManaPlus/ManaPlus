@@ -23,6 +23,7 @@
 #include "net/eathena/itemhandler.h"
 
 #include "actormanager.h"
+#include "itemcolormanager.h"
 #include "logger.h"
 
 #include "net/eathena/protocol.h"
@@ -141,7 +142,7 @@ void ItemHandler::processItemDropped2(Net::MessageIn &msg)
             itemType,
             amount,
             refine,
-            ItemColor_one,
+            ItemColorManager::getColorFromCards(&cards[0]),
             identified,
             subX, subY,
             &cards[0]);
@@ -226,7 +227,7 @@ void ItemHandler::processItemVisible2(Net::MessageIn &msg)
             itemType,
             amount,
             refine,
-            ItemColor_one,
+            ItemColorManager::getColorFromCards(&cards[0]),
             identified,
             subX, subY,
             &cards[0]);

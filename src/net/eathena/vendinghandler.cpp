@@ -21,6 +21,7 @@
 #include "net/eathena/vendinghandler.h"
 
 #include "actormanager.h"
+#include "itemcolormanager.h"
 #include "shopitem.h"
 
 #include "being/localplayer.h"
@@ -142,6 +143,7 @@ void VendingHandler::processItemsList(Net::MessageIn &msg)
     Being *const being = actorManager->findBeing(id);
     if (!being)
         return;
+    int cards[4];
     CREATEWIDGETV(mBuyDialog, BuyDialog, being->getName());
     mBuyDialog->setMoney(PlayerInfo::getAttribute(Attributes::MONEY));
     msg.readInt32("vender id");
@@ -156,9 +158,9 @@ void VendingHandler::processItemsList(Net::MessageIn &msg)
         msg.readUInt8("attribute");
         msg.readUInt8("refine");
         for (int d = 0; d < 4; d ++)
-            msg.readInt16("card");
+            cards[d] = msg.readInt16("card");
 
-        const ItemColor color = ItemColor_one;
+        const ItemColor color = ItemColorManager::getColorFromCards(&cards[0]);
         ShopItem *const item = mBuyDialog->addItem(itemId, type,
             color, amount, value);
         if (item)

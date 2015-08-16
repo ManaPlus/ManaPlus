@@ -25,6 +25,7 @@
 #include "actormanager.h"
 #include "effectmanager.h"
 #include "game.h"
+#include "itemcolormanager.h"
 #include "notifymanager.h"
 #include "party.h"
 
@@ -525,7 +526,7 @@ void BeingHandler::processBeingChangeLook2(Net::MessageIn &msg)
 void BeingHandler::processBeingChangeLookCards(Net::MessageIn &msg)
 {
     Being *dstBeing = nullptr;
-    uint16_t cards[4];
+    int cards[4];
 
     if (!actorManager)
     { // here can be look from char server
@@ -571,12 +572,13 @@ void BeingHandler::processBeingChangeLookContinue(Net::MessageIn &msg,
                                                   const uint8_t type,
                                                   const int id,
                                                   const int id2,
-                                                  const uint16_t *cards
+                                                  const int *cards
                                                   A_UNUSED)
 {
     if (dstBeing->getType() == ActorType::Player)
         dstBeing->setOtherTime();
 
+    const ItemColor itemColor = ItemColorManager::getColorFromCards(cards);
     const std::string color;
     switch (type)
     {
@@ -589,7 +591,7 @@ void BeingHandler::processBeingChangeLookContinue(Net::MessageIn &msg,
             dstBeing->setSpriteID(SPRITE_HAIR_COLOR, id * -1);
             break;
         case 2:  // LOOK_WEAPON Weapon ID in id, Shield ID in id2
-            dstBeing->setSprite(SPRITE_BODY, id, "", ItemColor_one, true);
+            dstBeing->setSprite(SPRITE_BODY, id, "", itemColor, true);
             dstBeing->setSprite(SPRITE_FLOOR, id2);
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_FLOOR);

@@ -660,6 +660,8 @@ manaplus_SOURCES += main.cpp \
 	      textcommand.h \
 	      item.cpp \
 	      item.h \
+	      itemcolormanager.cpp \
+	      itemcolormanager.h \
 	      itemshortcut.cpp \
 	      itemshortcut.h \
 	      itemsoundmanager.cpp \

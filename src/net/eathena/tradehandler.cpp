@@ -24,6 +24,7 @@
 
 #include "inventory.h"
 #include "item.h"
+#include "itemcolormanager.h"
 #include "notifymanager.h"
 
 #include "being/playerinfo.h"
@@ -206,7 +207,7 @@ void TradeHandler::processTradeItemAdd(Net::MessageIn &msg)
                 false,
                 amount,
                 refine,
-                ItemColor_one,
+                ItemColorManager::getColorFromCards(&cards[0]),
                 fromBool(identify, Identified),
                 Damaged_false,
                 Favorite_false,

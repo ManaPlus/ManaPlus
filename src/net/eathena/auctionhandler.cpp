@@ -108,6 +108,7 @@ void AuctionHandler::processAuctionResults(Net::MessageIn &msg)
         msg.readInt32("buy now");
         msg.readString(24, "buyer name");
         msg.readInt32("timestamp");
+        // +++ need use ItemColorManager for color
     }
 }
 

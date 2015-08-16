@@ -129,6 +129,8 @@ void SearchStoreHandler::processSearchAck(Net::MessageIn &msg)
         msg.readUInt8("refine");
         for (int d = 0; d < 4; d++)
             msg.readInt16("card");
+
+        // +++ need use ItemColorManager for colors
     }
 }
 
