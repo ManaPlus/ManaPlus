@@ -140,11 +140,11 @@ void ItemHandler::processItemDropped2(Net::MessageIn &msg)
             x, y,
             itemType,
             amount,
-            0,
+            refine,
             ItemColor_one,
             identified,
             subX, subY,
-            nullptr);
+            &cards[0]);
     }
 }
 
