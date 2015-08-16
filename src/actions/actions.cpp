@@ -1485,18 +1485,7 @@ impHandler0(createItems)
         if (colors >= 255)
             colors = 254;
 
-        if (!colors)
-        {
-            dialog->addItem(id, 0, ItemColor_one, 100, 0);
-        }
-        else
-        {
-            for (int f = 0; f < colors; f ++)
-            {
-                if (!info->getColor(fromInt(f, ItemColor)).empty())
-                    dialog->addItem(id, 0, fromInt(f, ItemColor), 100, 0);
-            }
-        }
+        dialog->addItem(id, 0, ItemColor_one, 100, 0);
     }
     dialog->sort();
     return true;

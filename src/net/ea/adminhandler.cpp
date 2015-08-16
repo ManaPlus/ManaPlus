@@ -75,19 +75,11 @@ void AdminHandler::ipcheckName(const std::string &name) const
 }
 
 void AdminHandler::createItems(const int id,
-                               const ItemColor color,
+                               const ItemColor color A_UNUSED,
                                const int amount) const
 {
-    if (!serverFeatures->haveItemColors())
-    {
-        chatHandler->talk(strprintf("@item %d %d",
-            id, amount), GENERAL_CHANNEL);
-    }
-    else
-    {
-        chatHandler->talk(strprintf("@item %d %d %d",
-            id, toInt(color, int), amount), GENERAL_CHANNEL);
-    }
+    chatHandler->talk(strprintf("@item %d %d", id, amount),
+        GENERAL_CHANNEL);
 }
 
 void AdminHandler::processKickAck(Net::MessageIn &msg)
