@@ -72,7 +72,7 @@ void ItemHandler::processItemDropped(Net::MessageIn &msg)
 {
     const BeingId id = msg.readBeingId("item object id");
     const int itemId = msg.readInt16("item id");
-    const ItemColor identify = fromInt(msg.readUInt8("identify"), ItemColor);
+    const Identified identify = fromInt(msg.readUInt8("identify"), Identified);
     const int x = msg.readInt16("x");
     const int y = msg.readInt16("y");
     const int subX = static_cast<int>(msg.readInt8("sub x"));
@@ -87,8 +87,8 @@ void ItemHandler::processItemDropped(Net::MessageIn &msg)
             0,
             amount,
             0,
+            ItemColor_one,
             identify,
-            Identified_false,
             subX, subY,
             nullptr);
     }

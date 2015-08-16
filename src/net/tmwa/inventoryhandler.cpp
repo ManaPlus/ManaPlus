@@ -381,7 +381,7 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
         {
             localPlayer->pickedUp(itemInfo,
                 0,
-                fromInt(identified, ItemColor),
+                ItemColor_one,
                 floorId,
                 pickup);
         }
@@ -392,7 +392,7 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
         {
             localPlayer->pickedUp(itemInfo,
                 amount,
-                fromInt(identified, ItemColor),
+                ItemColor_one,
                 floorId,
                 Pickup::OKAY);
         }
