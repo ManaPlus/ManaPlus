@@ -299,6 +299,7 @@ void ItemDB::loadXmlFile(const std::string &fileName, int &tagNum)
         const std::string typeStr = XML::getProperty(node, "type", "other");
         const int weight = XML::getProperty(node, "weight", 0);
         const int view = XML::getProperty(node, "view", 0);
+        const int cardColor = XML::getProperty(node, "cardColor", -1);
 
         std::string name = XML::langProperty(node, "name", "");
         std::string image = XML::getProperty(node, "image", "");
@@ -366,6 +367,8 @@ void ItemDB::loadXmlFile(const std::string &fileName, int &tagNum)
         itemInfo->setPet(pet);
         itemInfo->setProtected(XML::getBoolProperty(
             node, "sellProtected", false));
+        if (cardColor != -1)
+            itemInfo->setCardColor(fromInt(cardColor, ItemColor));
 
         switch (itemInfo->getType())
         {

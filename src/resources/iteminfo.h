@@ -228,6 +228,12 @@ class ItemInfo final
         int getPet() const
         { return mPet; }
 
+        void setCardColor(const ItemColor color)
+        { mCardColor = color; }
+
+        ItemColor getCardColor() const
+        { return mCardColor; }
+
         /** Effects to be shown when weapon attacks - see also effects.xml */
         std::string mMissileParticleFile;
 
@@ -320,6 +326,7 @@ class ItemInfo final
         std::map <int, int> mTags;
         const std::map <ItemColor, ColorDB::ItemColorData> *mColorsList;
         std::string mColorsListName;
+        ItemColor mCardColor;
         int mHitEffectId;
         int mCriticalHitEffectId;
         int mMissEffectId;

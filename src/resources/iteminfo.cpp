@@ -61,6 +61,7 @@ ItemInfo::ItemInfo() :
     mTags(),
     mColorsList(nullptr),
     mColorsListName(),
+    mCardColor(ItemColor_zero),
     mHitEffectId(-1),
     mCriticalHitEffectId(-1),
     mMissEffectId(-1),
