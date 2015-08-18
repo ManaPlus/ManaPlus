@@ -868,8 +868,7 @@ impHandler0(attackHuman)
     if (!actorManager || !localPlayer)
         return false;
 
-    Being *const target = actorManager->findNearestLivingBeing(
-        localPlayer, 10, ActorType::Player, AllowSort_true);
+    Being *const target = actorManager->findNearestPvpPlayer();
     if (target)
     {
         localPlayer->setTarget(target);

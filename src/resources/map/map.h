@@ -276,6 +276,9 @@ class Map final : public Properties, public ConfigListener
 
         void setPvpMode(const int mode);
 
+        int getPvpMode() const A_WARN_UNUSED
+        { return mPvp; }
+
         const ObjectsLayer* getObjectsLayer() const A_WARN_UNUSED
         { return mObjects; }
 

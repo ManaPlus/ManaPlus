@@ -22,6 +22,7 @@
 
 #include "actormanager.h"
 
+#include "game.h"
 #include "configuration.h"
 #include "settings.h"
 
@@ -51,6 +52,8 @@
 
 #include "resources/chatobject.h"
 #include "resources/iteminfo.h"
+
+#include "resources/map/map.h"
 
 #include "resources/db/itemdb.h"
 
@@ -905,6 +908,62 @@ void ActorManager::clear()
         mActors.insert(localPlayer);
 }
 
+Being *ActorManager::findNearestPvpPlayer() const
+{
+    if (!localPlayer)
+        return nullptr;
+
+    // don't attack players
+    if (settings.pvpAttackType == 3)
+        return nullptr;
+
+    const Game *const game = Game::instance();
+    if (!game)
+        return nullptr;
+
+    const Map *const map = game->getCurrentMap();
+    if (!map)
+        return nullptr;
+
+    const int mapPvpMode = map->getPvpMode();
+    Being *target = nullptr;
+    int minDistSquared = 20000;
+
+    for_actors
+    {
+        if ((*it)->getType() != ActorType::Player)
+            continue;
+
+        Being *const being = static_cast<Being*>(*it);
+
+        if (!being || !being->isAlive() ||
+            localPlayer == being)
+        {
+            continue;
+        }
+
+        const int teamId = being->getTeamId();
+        // this condition is very TMW-specific
+        if (!(mapPvpMode || teamId))
+            continue;
+
+        if (!localPlayer->checAttackPermissions(being))
+            continue;
+
+        const int dx = being->getTileX() - localPlayer->getTileX();
+        const int dy = being->getTileY() - localPlayer->getTileY();
+        const int distSquared = dx * dx + dy * dy;
+        if (distSquared < minDistSquared)
+        {
+            minDistSquared = distSquared;
+            target = being;
+        }
+    }
+
+    return target;
+}
+
+
 Being *ActorManager::findNearestLivingBeing(const int x, const int y,
                                             const int maxTileDist,
                                             const ActorTypeT type,
@@ -1321,10 +1380,10 @@ Being* ActorManager::findMostDamagedPlayer(const int maxTileDist) const
 
         Being *const being = static_cast<Being*>(*it);
 
-        if ((!being) || (!being->isAlive()) ||  // don't heal dead
-            (player_relations.getRelation(being->getName()) ==
-            Relation::ENEMY2) ||                // don't heal enemy
-            (localPlayer == being))             // don't heal self
+        if (!being || !being->isAlive() ||     // don't heal dead
+            player_relations.getRelation(being->getName()) ==
+            Relation::ENEMY2 ||                // don't heal enemy
+            localPlayer == being)              // don't heal self
         {
             continue;
         }

@@ -193,6 +193,12 @@ class ActorManager final: public ConfigListener
                                      const A_WARN_UNUSED;
 
        /**
+        * Finds the nearest player who has PVP on,
+        * or just the nearest player if map pvp is on
+        */
+        Being *findNearestPvpPlayer() const A_WARN_UNUSED;
+
+       /**
         * Heal all players in distance.
         *
         * \param maxdist maximal distance. If minimal distance is larger,
