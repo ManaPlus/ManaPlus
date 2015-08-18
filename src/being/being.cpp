@@ -2666,11 +2666,21 @@ void Being::setGM(const bool gm)
 
 void Being::talkTo() const
 {
-    if (!PacketLimiter::limitPackets(PacketType::PACKET_NPC_TALK))
+    if (!npcHandler)
         return;
 
-    if (npcHandler)
-        npcHandler->talk(mId);
+    if (!PacketLimiter::limitPackets(PacketType::PACKET_NPC_TALK))
+    {
+        // using workaround...
+        if (playerHandler &&
+            PacketLimiter::limitPackets(PacketType::PACKET_ATTACK))
+        {
+            playerHandler->attack(mId, Keep_false);
+        }
+        return;
+    }
+
+    npcHandler->talk(mId);
 }
 
 void Being::draw(Graphics *const graphics,
