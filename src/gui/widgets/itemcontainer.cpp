@@ -36,6 +36,7 @@
 #include "gui/popups/itempopup.h"
 
 #include "gui/windows/chatwindow.h"
+#include "gui/windows/inventorywindow.h"
 #include "gui/windows/shopwindow.h"
 #include "gui/windows/shortcutwindow.h"
 
@@ -578,6 +579,18 @@ void ItemContainer::mouseReleased(MouseEvent &event)
             srcContainer = InventoryType::INVENTORY;
             dstContainer = InventoryType::CART;
             inventory = PlayerInfo::getInventory();
+        }
+        if (src == DRAGDROP_SOURCE_INVENTORY
+            && dst == DRAGDROP_SOURCE_INVENTORY)
+        {
+            const int index = getSlotIndex(event.getX(), event.getY());
+            if (index == Inventory::NO_SLOT_INDEX)
+                return;
+            if (index == mSelectedIndex || mSelectedIndex == -1)
+                return;
+            if (inventoryWindow)
+                inventoryWindow->combineItems(index, mSelectedIndex);
+            return;
         }
         else if (src == DRAGDROP_SOURCE_CART
                  && dst == DRAGDROP_SOURCE_INVENTORY)

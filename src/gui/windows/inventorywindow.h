@@ -156,6 +156,9 @@ class InventoryWindow final : public Window,
                               const int oldVal,
                               const int newVal) override final;
 
+        void combineItems(const int index1,
+                          const int index2);
+
         static bool isAnyInputFocused();
 
         static InventoryWindow *getFirstVisible();

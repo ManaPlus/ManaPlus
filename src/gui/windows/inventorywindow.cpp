@@ -40,11 +40,13 @@
 #include "gui/popups/popupmenu.h"
 #include "gui/popups/textpopup.h"
 
+#include "gui/windows/confirmdialog.h"
 #include "gui/windows/itemamountwindow.h"
 #include "gui/windows/setupwindow.h"
 #include "gui/windows/tradewindow.h"
 
 #include "gui/widgets/button.h"
+#include "gui/widgets/createwidget.h"
 #include "gui/widgets/containerplacer.h"
 #include "gui/widgets/dropdown.h"
 #include "gui/widgets/itemcontainer.h"
@@ -55,6 +57,8 @@
 #include "gui/widgets/tabstrip.h"
 #include "gui/widgets/textfield.h"
 #include "gui/widgets/windowcontainer.h"
+
+#include "listeners/insertcardlistener.h"
 
 #include "net/inventoryhandler.h"
 
@@ -70,6 +74,7 @@ InventoryWindow *storageWindow = nullptr;
 InventoryWindow *cartWindow = nullptr;
 #endif
 InventoryWindow::WindowList InventoryWindow::invInstances;
+InsertCardListener insertCardListener;
 
 InventoryWindow::InventoryWindow(Inventory *const inventory) :
     Window("Inventory", Modal_false, nullptr, "inventory.xml"),
@@ -1004,3 +1009,39 @@ void InventoryWindow::attributeChanged(const AttributesT id,
         updateWeight();
     }
 }
+
+#ifdef EATHENA_SUPPORT
+void InventoryWindow::combineItems(const int index1,
+                                   const int index2)
+{
+    if (!mInventory)
+        return;
+    const Item *item1 = mInventory->getItem(index1);
+    if (!item1)
+        return;
+    const Item *item2 = mInventory->getItem(index2);
+    if (!item2)
+        return;
+
+    if (item1->getType() != ItemType::CARD)
+    {
+        const Item *tmpItem = item1;
+        item1 = item2;
+        item2 = tmpItem;
+    }
+
+    ConfirmDialog *const confirmDlg = CREATEWIDGETR(ConfirmDialog,
+        // TRANSLATORS: question dialog title
+        _("Insert card request"),
+        // TRANSLATORS: question dialog message
+        strprintf(_("Insert %s into %s?"),
+        item1->getName().c_str(),
+        item2->getName().c_str()),
+        SOUND_REQUEST,
+        false,
+        Modal_true);
+    insertCardListener.itemIndex = item2->getInvIndex();
+    insertCardListener.cardIndex = item1->getInvIndex();
+    confirmDlg->addActionListener(&insertCardListener);
+}
+#endif

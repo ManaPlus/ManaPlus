@@ -1003,6 +1003,7 @@ manaplus_SOURCES += main.cpp \
 	      listeners/playerpostdeathlistener.h \
 	      listeners/inputactionreplaylistener.cpp \
 	      listeners/inputactionreplaylistener.h \
+	      listeners/insertcardlistener.h \
 	      listeners/inventorylistener.h \
 	      listeners/updatestatuslistener.cpp \
 	      listeners/updatestatuslistener.h \
