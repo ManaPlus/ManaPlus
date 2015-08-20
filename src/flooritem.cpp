@@ -106,7 +106,7 @@ void FloorItem::postInit(Map *const map, int subX, int subY)
     setupSpriteDisplay(info.getDisplay(),
         ForceDisplay_true,
         1,
-        info.getDyeColorsString(mColor));
+        info.getDyeIconColorsString(mColor));
 }
 
 void FloorItem::setCards(const int *const cards,

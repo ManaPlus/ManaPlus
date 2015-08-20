@@ -98,7 +98,7 @@ void Item::setId(const int id,
 
     const std::string dye = combineDye2(paths.getStringValue(
         "itemIcons").append(info.getDisplay().image),
-        info.getDyeColorsString(color));
+        info.getDyeIconColorsString(color));
     mImage = resman->getImage(dye);
 
     if (!mImage)
@@ -123,7 +123,7 @@ Image *Item::getImage(const int id,
     const ItemInfo &info = ItemDB::get(id);
     Image *image = resman->getImage(combineDye2(paths.getStringValue(
         "itemIcons").append(info.getDisplay().image),
-        info.getDyeColorsString(color)));
+        info.getDyeIconColorsString(color)));
 
     if (!image)
         image = Theme::getImageFromTheme("unknown-item.png");

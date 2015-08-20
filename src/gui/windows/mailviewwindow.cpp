@@ -113,7 +113,7 @@ MailViewWindow::MailViewWindow(const MailMessage *const message) :
         Image *const image = resman->getImage(combineDye2(
             paths.getStringValue("itemIcons").append(
             item.getDisplay().image),
-            item.getDyeColorsString(ItemColor_one)));
+            item.getDyeIconColorsString(ItemColor_one)));
 
         mIcon = new Icon(this, image);
         if (message->itemAmount != 1)
