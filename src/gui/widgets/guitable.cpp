@@ -89,11 +89,8 @@ void GuiTable::setModel(TableModel *const new_model)
     mModel = new_model;
     installActionListeners();
 
-    if (new_model)
-    {
-        new_model->installListener(this);
-        recomputeDimensions();
-    }
+    new_model->installListener(this);
+    recomputeDimensions();
 }
 
 void GuiTable::recomputeDimensions()
@@ -139,23 +136,17 @@ int GuiTable::getSelectedColumn() const
 
 int GuiTable::getRowHeight() const
 {
-    if (mModel)
-        return mModel->getRowHeight() + 4;  // border
-    else
-        return 0;
+    return mModel->getRowHeight() + 4;  // border
 }
 
 int GuiTable::getColumnWidth(const int i) const
 {
-    if (mModel)
-        return mModel->getColumnWidth(i) + 4;  // border
-    else
-        return 0;
+    return mModel->getColumnWidth(i) + 4;  // border
 }
 
 void GuiTable::setSelectedRow(const int selected)
 {
-    if (!mModel || !mSelectable)
+    if (!mSelectable)
     {
         mSelectedRow = -1;
     }
@@ -184,27 +175,20 @@ void GuiTable::setSelectedRow(const int selected)
 
 void GuiTable::setSelectedColumn(const int selected)
 {
-    if (!mModel)
+    const int columns = mModel->getColumns();
+    if ((selected >= columns && mWrappingEnabled) ||
+        (selected < 0 && !mWrappingEnabled))
     {
-        mSelectedColumn = -1;
+        mSelectedColumn = 0;
+    }
+    else if ((selected >= columns && !mWrappingEnabled) ||
+             (selected < 0 && mWrappingEnabled))
+    {
+        mSelectedColumn = columns - 1;
     }
     else
     {
-        const int columns = mModel->getColumns();
-        if ((selected >= columns && mWrappingEnabled) ||
-            (selected < 0 && !mWrappingEnabled))
-        {
-            mSelectedColumn = 0;
-        }
-        else if ((selected >= columns && !mWrappingEnabled) ||
-                 (selected < 0 && mWrappingEnabled))
-        {
-            mSelectedColumn = columns - 1;
-        }
-        else
-        {
-            mSelectedColumn = selected;
-        }
+        mSelectedColumn = selected;
     }
 }
 
@@ -216,9 +200,6 @@ void GuiTable::uninstallActionListeners()
 
 void GuiTable::installActionListeners()
 {
-    if (!mModel)
-        return;
-
     const int rows = mModel->getRows();
     const int columns = mModel->getColumns();
 
@@ -241,7 +222,7 @@ void GuiTable::installActionListeners()
 // -- widget ops
 void GuiTable::draw(Graphics* graphics)
 {
-    if (!mModel || !getRowHeight())
+    if (!getRowHeight())
         return;
 
     BLOCK_START("GuiTable::draw")
@@ -347,7 +328,7 @@ void GuiTable::draw(Graphics* graphics)
 
 void GuiTable::safeDraw(Graphics* graphics)
 {
-    if (!mModel || !getRowHeight())
+    if (!getRowHeight())
         return;
 
     BLOCK_START("GuiTable::draw")
@@ -516,7 +497,7 @@ void GuiTable::keyPressed(KeyEvent& event)
 // -- MouseListener notifications
 void GuiTable::mousePressed(MouseEvent& event)
 {
-    if (!mModel || !mSelectable)
+    if (!mSelectable)
         return;
 
     if (event.getButton() == MouseButton::LEFT)
@@ -611,7 +592,7 @@ int GuiTable::getRowForY(int y) const
     if (rowHeight > 0)
        row = y / rowHeight;
 
-    if (!mModel || row < 0 || row >= mModel->getRows())
+    if (row < 0 || row >= mModel->getRows())
         return -1;
     else
         return row;
@@ -619,9 +600,6 @@ int GuiTable::getRowForY(int y) const
 
 int GuiTable::getColumnForX(int x) const
 {
-    if (!mModel)
-        return -1;
-
     int column;
     int delta = 0;
 
@@ -641,9 +619,9 @@ int GuiTable::getColumnForX(int x) const
 
 void GuiTable::setFocusHandler(FocusHandler *const focusHandler)
 {
-// add check for focusHandler. may be need remove it?
+    // add check for focusHandler. may be need remove it?
 
-    if (!mModel || !focusHandler)
+    if (!focusHandler)
         return;
 
     Widget::setFocusHandler(focusHandler);

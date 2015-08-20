@@ -61,11 +61,6 @@ class GuiTable final : public Widget,
         ~GuiTable();
 
         /**
-         * Retrieves the active table model
-         */
-        const TableModel *getModel() const A_WARN_UNUSED;
-
-        /**
          * Sets the table model
          *
          * Note that actions issued by widgets returned from the model will
@@ -74,6 +69,11 @@ class GuiTable final : public Widget,
          * after such an update, add an action listener to the table instead.
          */
         void setModel(TableModel *const m);
+
+        /**
+         * Retrieves the active table model
+         */
+        const TableModel *getModel() const A_WARN_UNUSED RETURNS_NONNULL;
 
         void setSelected(const int row, const int column);
 

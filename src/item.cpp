@@ -178,6 +178,6 @@ void Item::addCard(const int card)
 
 void Item::updateColor()
 {
-    if (serverFeatures->haveItemColors())
+    if (serverFeatures && serverFeatures->haveItemColors())
         setId(mId, ItemColorManager::getColorFromCards(&mCards[0]));
 }

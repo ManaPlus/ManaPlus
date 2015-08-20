@@ -145,7 +145,7 @@ class ProgressBar final : public Widget,
         Color mBackgroundColorToGo;
 
         std::string mText;
-        ImageCollection *mVertexes;
+        ImageCollection *mVertexes A_NONNULLPOINTER;
         ProgressColorIdT mProgressPalette;
         unsigned int mPadding;
         unsigned int mFillPadding;

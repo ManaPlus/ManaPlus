@@ -182,7 +182,7 @@ class Popup notfinal : public Container,
 
     private:
         std::string mPopupName;       /**< Name of the popup */
-        ImageCollection *mVertexes;
+        ImageCollection *mVertexes A_NONNULLPOINTER;
         int mMinWidth;                /**< Minimum popup width */
         int mMinHeight;               /**< Minimum popup height */
         int mMaxWidth;                /**< Maximum popup width */

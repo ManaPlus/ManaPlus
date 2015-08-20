@@ -182,7 +182,7 @@ bool EffectManager::trigger(const int id, const int x, const int y,
         if (effect.id == id)
         {
             rValue = true;
-            if (!effect.gfx.empty() && particleEngine)
+            if (!effect.gfx.empty())
                 particleEngine->addEffect(effect.gfx, x, y, rotation);
             if (!effect.sfx.empty())
                 soundManager.playSfx(effect.sfx);
