@@ -245,12 +245,21 @@ class ItemInfo final
         const SpriteToItemMap *getSpriteToItemReplaceMap(const int directions)
                                                          const A_WARN_UNUSED;
 
-        std::string getDyeColorsString(const ItemColor color) const A_WARN_UNUSED;
+        std::string getDyeColorsString(const ItemColor color)
+                                       const A_WARN_UNUSED;
+
+        std::string getDyeIconColorsString(const ItemColor color)
+                                           const A_WARN_UNUSED;
 
         void setColorsList(const std::string &name);
 
+        void setIconColorsList(const std::string &name);
+
         bool isHaveColors() const A_WARN_UNUSED
         { return !mColorsListName.empty(); }
+
+        bool isHaveIconColors() const A_WARN_UNUSED
+        { return !mIconColorsListName.empty(); }
 
         const std::string replaceColors(std::string str,
                                         const ItemColor color)
@@ -274,9 +283,15 @@ class ItemInfo final
         int getColorsSize() const
         { return mColorsList ? static_cast<int>(mColorsList->size()) : 0; }
 
-        std::string getColorName(const ItemColor idx) const;
+        int getIconColorsSize() const
+        { return mIconColorsList ? static_cast<int>(mIconColorsList->size())
+            : 0; }
 
+        std::string getColorName(const ItemColor idx) const;
         std::string getColor(const ItemColor idx) const;
+
+        std::string getIconColorName(const ItemColor idx) const;
+        std::string getIconColor(const ItemColor idx) const;
 
         int mDrawBefore[10];
         int mDrawAfter[10];
@@ -325,7 +340,9 @@ class ItemInfo final
         std::map <ItemSoundEvent::Type, SoundInfoVect> mSounds;
         std::map <int, int> mTags;
         const std::map <ItemColor, ColorDB::ItemColorData> *mColorsList;
+        const std::map <ItemColor, ColorDB::ItemColorData> *mIconColorsList;
         std::string mColorsListName;
+        std::string mIconColorsListName;
         ItemColor mCardColor;
         int mHitEffectId;
         int mCriticalHitEffectId;

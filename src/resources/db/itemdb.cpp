@@ -319,12 +319,19 @@ void ItemDB::loadXmlFile(const std::string &fileName, int &tagNum)
             node, "maxFloorOffset", mapTileSize, 0, mapTileSize);
         std::string useButton = XML::langProperty(node, "useButton", "");
         std::string useButton2 = XML::langProperty(node, "useButton2", "");
-        std::string colors;
-        colors = XML::getProperty(node, "colors", "");
+        std::string colors = XML::getProperty(node, "colors", "");
+        std::string iconColors = XML::getProperty(node, "iconColors", "");
+        if (iconColors.empty())
+            iconColors = colors;
 
         // check for empty hair palete
-        if (colors.empty() && id <= -1 && id > -100)
-            colors = "hair";
+        if (id <= -1 && id > -100)
+        {
+            if (colors.empty())
+                colors = "hair";
+            if (iconColors.empty())
+                iconColors = "hair";
+        }
 
         std::string tags[3];
         tags[0] = XML::getProperty(node, "tag",
@@ -425,6 +432,7 @@ void ItemDB::loadXmlFile(const std::string &fileName, int &tagNum)
         itemInfo->setDrawAfter(-1, parseSpriteName(drawAfter));
         itemInfo->setDrawPriority(-1, drawPriority);
         itemInfo->setColorsList(colors);
+        itemInfo->setIconColorsList(iconColors);
         itemInfo->setMaxFloorOffset(maxFloorOffset);
         itemInfo->setPickupCursor(XML::getProperty(
             node, "pickupCursor", "pickup"));

@@ -60,7 +60,9 @@ ItemInfo::ItemInfo() :
     mSounds(),
     mTags(),
     mColorsList(nullptr),
+    mIconColorsList(nullptr),
     mColorsListName(),
+    mIconColorsListName(),
     mCardColor(ItemColor_zero),
     mHitEffectId(-1),
     mCriticalHitEffectId(-1),
@@ -202,6 +204,20 @@ void ItemInfo::setColorsList(const std::string &name)
     }
 }
 
+void ItemInfo::setIconColorsList(const std::string &name)
+{
+    if (name.empty())
+    {
+        mIconColorsList = nullptr;
+        mIconColorsListName.clear();
+    }
+    else
+    {
+        mIconColorsList = ColorDB::getColorsList(name);
+        mIconColorsListName = name;
+    }
+}
+
 std::string ItemInfo::getDyeColorsString(const ItemColor color) const
 {
     if (!mColorsList || mColorsListName.empty())
@@ -210,6 +226,19 @@ std::string ItemInfo::getDyeColorsString(const ItemColor color) const
     const std::map <ItemColor, ColorDB::ItemColorData>::const_iterator
         it = mColorsList->find(color);
     if (it == mColorsList->end())
+        return "";
+
+    return it->second.color;
+}
+
+std::string ItemInfo::getDyeIconColorsString(const ItemColor color) const
+{
+    if (!mIconColorsList || mIconColorsListName.empty())
+        return "";
+
+    const std::map <ItemColor, ColorDB::ItemColorData>::const_iterator
+        it = mIconColorsList->find(color);
+    if (it == mIconColorsList->end())
         return "";
 
     return it->second.color;
@@ -390,6 +419,30 @@ std::string ItemInfo::getColor(const ItemColor idx) const
     const std::map <ItemColor, ColorDB::ItemColorData>::const_iterator
         it = mColorsList->find(idx);
     if (it == mColorsList->end())
+        return std::string();
+    return it->second.color;
+}
+
+std::string ItemInfo::getIconColorName(const ItemColor idx) const
+{
+    if (!mIconColorsList)
+        return std::string();
+
+    const std::map <ItemColor, ColorDB::ItemColorData>::const_iterator
+        it = mIconColorsList->find(idx);
+    if (it == mIconColorsList->end())
+        return std::string();
+    return it->second.name;
+}
+
+std::string ItemInfo::getIconColor(const ItemColor idx) const
+{
+    if (!mIconColorsList)
+        return std::string();
+
+    const std::map <ItemColor, ColorDB::ItemColorData>::const_iterator
+        it = mIconColorsList->find(idx);
+    if (it == mIconColorsList->end())
         return std::string();
     return it->second.color;
 }
