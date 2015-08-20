@@ -32,17 +32,30 @@
 #include "net/inventoryhandler.h"
 
 #include "utils/gettext.h"
+#include "utils/stringutils.h"
 
 #include "debug.h"
 
-InsertCardDialog::InsertCardDialog(const int itemIndex) :
+InsertCardDialog::InsertCardDialog(const int itemIndex,
+                                   const Item *const item) :
     SellDialog(false),
+    mItem(item),
     mItemIndex(itemIndex)
 {
     // TRANSLATORS: insert card dialog name
     setWindowName(_("Insert card"));
-    // TRANSLATORS: insert card dialog name
-    setCaption(_("Insert card"));
+    if (item)
+    {
+        // TRANSLATORS: insert card dialog name
+        setCaption(strprintf(_("Insert card %s"),
+            item->getName().c_str()));
+    }
+    else
+    {
+        // TRANSLATORS: insert card dialog name
+        setCaption(strprintf(_("Insert card %s"),
+            ""));
+    }
 }
 
 void InsertCardDialog::initButtons()

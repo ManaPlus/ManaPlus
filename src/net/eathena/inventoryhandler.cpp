@@ -833,9 +833,13 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
 
 void InventoryHandler::processPlayerUseCard(Net::MessageIn &msg)
 {
+    const Inventory *const inv = PlayerInfo::getInventory();
+    const int index = inventoryHandler->getItemIndex();
+    const Item *item1 = nullptr;
+    if (inv)
+        item1 = inv->getItem(index);
     SellDialog *const dialog = CREATEWIDGETR(InsertCardDialog,
-        inventoryHandler->getItemIndex());
-    Inventory *const inv = PlayerInfo::getInventory();
+        index, item1);
 
     const int count = (msg.readInt16("len") - 4) / 2;
     for (int f = 0; f < count; f ++)
