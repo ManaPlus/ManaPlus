@@ -75,13 +75,13 @@ class ItemPopup final : public Popup
     private:
         std::string getCardsString(const int *const cards);
 
-        Label *mItemName;
-        TextBox *mItemDesc;
-        TextBox *mItemEffect;
-        TextBox *mItemWeight;
-        TextBox *mItemCards;
+        Label *mItemName A_NONNULLPOINTER;
+        TextBox *mItemDesc A_NONNULLPOINTER;
+        TextBox *mItemEffect A_NONNULLPOINTER;
+        TextBox *mItemWeight A_NONNULLPOINTER;
+        TextBox *mItemCards A_NONNULLPOINTER;
         ItemType::Type mItemType;
-        Icon *mIcon;
+        Icon *mIcon A_NONNULLPOINTER;
         std::string mLastName;
         int mLastId;
         ItemColor mLastColor;

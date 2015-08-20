@@ -66,7 +66,7 @@ class StatusPopup final : public Popup
                           const std::string &text,
                           const InputActionT key) const;
 
-        Label *mLabels[STATUSPOPUP_NUM_LABELS];
+        Label *mLabels[STATUSPOPUP_NUM_LABELS] A_NONNULLPOINTER;
 };
 
 #endif  // GUI_POPUPS_STATUSPOPUP_H

@@ -57,14 +57,14 @@ class BeingPopup final : public Popup
 #endif
 
     private:
-        Label *mBeingName;
-        Label *mBeingParty;
-        Label *mBeingGuild;
-        Label *mBeingRank;
-        Label *mBeingComment;
-        Label *mBeingBuyBoard;
-        Label *mBeingSellBoard;
-        Label *mBeingRoom;
+        Label *mBeingName A_NONNULLPOINTER;
+        Label *mBeingParty A_NONNULLPOINTER;
+        Label *mBeingGuild A_NONNULLPOINTER;
+        Label *mBeingRank A_NONNULLPOINTER;
+        Label *mBeingComment A_NONNULLPOINTER;
+        Label *mBeingBuyBoard A_NONNULLPOINTER;
+        Label *mBeingSellBoard A_NONNULLPOINTER;
+        Label *mBeingRoom A_NONNULLPOINTER;
 };
 
 extern BeingPopup *beingPopup;

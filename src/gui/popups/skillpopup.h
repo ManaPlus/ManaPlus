@@ -59,9 +59,9 @@ class SkillPopup final : public Popup
         void mouseMoved(MouseEvent &event) override final;
 
     private:
-        Label *mSkillName;
-        TextBox *mSkillDesc;
-        TextBox *mSkillEffect;
+        Label *mSkillName A_NONNULLPOINTER;
+        TextBox *mSkillDesc A_NONNULLPOINTER;
+        TextBox *mSkillEffect A_NONNULLPOINTER;
         unsigned int mLastId;
 };
 

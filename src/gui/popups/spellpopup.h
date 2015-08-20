@@ -62,9 +62,8 @@ class SpellPopup final : public Popup
         void mouseMoved(MouseEvent &event) override final;
 
     private:
-        Label *mItemName;
-
-        Label *mItemComment;
+        Label *mItemName A_NONNULLPOINTER;
+        Label *mItemComment A_NONNULLPOINTER;
 };
 
 extern SpellPopup *spellPopup;

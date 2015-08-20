@@ -60,8 +60,8 @@ class SpeechBubble final : public Popup
     private:
         std::string mText;
         int mSpacing;
-        Label *mCaption;
-        BrowserBox *mSpeechBox;
+        Label *mCaption A_NONNULLPOINTER;
+        BrowserBox *mSpeechBox A_NONNULLPOINTER;
 };
 
 #endif  // GUI_POPUPS_SPEECHBUBBLE_H
