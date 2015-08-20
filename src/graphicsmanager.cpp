@@ -909,8 +909,17 @@ void GraphicsManager::initOpenGLFunctions()
         return;
     }
 
-    if (findI(mGlVendor, "NVIDIA") == std::string::npos &&
-        mGlVersionString.find("Mesa 10.6.") == std::string::npos)
+    if (findI(mGlVendor, "NVIDIA") != std::string::npos ||
+        mGlVersionString.find("Mesa 10.6.") != std::string::npos ||
+        (findI(mGlVendor, "AMD Radeon HD") != std::string::npos &&
+        mGlVersionString.find("Compatibility Profile Context 14.10") !=
+        std::string::npos))
+    {
+        logger->log1("Not checked for DSA because on "
+            "NVIDIA or AMD or in Mesa it broken");
+        emulateFunction(glTextureSubImage2D);
+    }
+    else
     {   // not for NVIDIA. in NVIDIA atleast in windows drivers DSA is broken
         // Mesa 10.6.3 show support for DSA, but it broken. Works in 10.7 dev
         if (is45)
@@ -935,12 +944,6 @@ void GraphicsManager::initOpenGLFunctions()
             logger->log1("GL_ARB_direct_state_access not found");
             emulateFunction(glTextureSubImage2D);
         }
-    }
-    else
-    {
-        logger->log1("Not checked for DSA because on "
-            "NVIDIA or in Mesa it broken");
-        emulateFunction(glTextureSubImage2D);
     }
 
     if (is12 && (is42 || supportExtension("GL_ARB_texture_storage")))
