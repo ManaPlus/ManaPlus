@@ -241,36 +241,36 @@ class NpcDialog final : public Window,
         std::string mDefaultString;
 
         // Used for the main input area
-        BrowserBox *mTextBox;
-        ScrollArea *mScrollArea;
+        BrowserBox *mTextBox A_NONNULLPOINTER;
+        ScrollArea *mScrollArea A_NONNULLPOINTER;
         std::string mText;
         std::string mNewText;
 
         // Used for choice input
-        ExtendedListBox *mItemList;
-        ScrollArea *mListScrollArea;
+        ExtendedListBox *mItemList A_NONNULLPOINTER;
+        ScrollArea *mListScrollArea A_NONNULLPOINTER;
         StringVect mItems;
         std::vector<Image *> mImages;
-        ItemLinkHandler *mItemLinkHandler;
+        ItemLinkHandler *mItemLinkHandler A_NONNULLPOINTER;
 
         // Used for string and integer input
-        TextField *mTextField;
-        IntTextField *mIntField;
-        Button *mPlusButton;
-        Button *mMinusButton;
-        Button *mClearButton;
+        TextField *mTextField A_NONNULLPOINTER;
+        IntTextField *mIntField A_NONNULLPOINTER;
+        Button *mPlusButton A_NONNULLPOINTER;
+        Button *mMinusButton A_NONNULLPOINTER;
+        Button *mClearButton A_NONNULLPOINTER;
 
         // Used for the button
-        Button *mButton;
-        Button *mButton2;
-        Button *mButton3;
+        Button *mButton A_NONNULLPOINTER;
+        Button *mButton2 A_NONNULLPOINTER;
+        Button *mButton3 A_NONNULLPOINTER;
 
         // Will reset the text and integer input to the provided default
-        Button *mResetButton;
+        Button *mResetButton A_NONNULLPOINTER;
 
-        Inventory *mInventory;
-        ItemContainer *mItemContainer;
-        ScrollArea *mItemScrollArea;
+        Inventory *mInventory A_NONNULLPOINTER;
+        ItemContainer *mItemContainer A_NONNULLPOINTER;
+        ScrollArea *mItemScrollArea A_NONNULLPOINTER;
 
         enum NpcInputState
         {
@@ -291,7 +291,7 @@ class NpcDialog final : public Window,
 
         NpcInputState mInputState;
         NpcActionState mActionState;
-        PlayerBox *mPlayerBox;
+        PlayerBox *mPlayerBox A_NONNULLPOINTER;
         Being *mAvatarBeing;
         int mLastNextTime;
         int mCameraMode;

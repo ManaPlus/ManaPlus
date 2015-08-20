@@ -360,13 +360,13 @@ class ChatWindow final : public Window,
                                         std::string partName);
 
         /** Used for showing item popup on clicking links **/
-        ItemLinkHandler *mItemLinkHandler;
+        ItemLinkHandler *mItemLinkHandler A_NONNULLPOINTER;
 
         /** Tabbed area for holding each channel. */
-        TabbedArea *mChatTabs;
+        TabbedArea *mChatTabs A_NONNULLPOINTER;
 
         /** Input box for typing chat messages. */
-        ChatInput *mChatInput;
+        ChatInput *mChatInput A_NONNULLPOINTER;
 
         void initTradeFilter();
 
@@ -401,9 +401,9 @@ class ChatWindow final : public Window,
 
         StringVect mTradeFilter;
 
-        ColorListModel *mColorListModel;
-        DropDown *mColorPicker;
-        Button *mChatButton;
+        ColorListModel *mColorListModel A_NONNULLPOINTER;
+        DropDown *mColorPicker A_NONNULLPOINTER;
+        Button *mChatButton A_NONNULLPOINTER;
         std::list<std::string> mAwayLog;
         StringVect mHighlights;
         StringVect mGlobalsFilter;

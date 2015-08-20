@@ -68,10 +68,10 @@ class WorldSelectDialog final : public Window,
         void keyPressed(KeyEvent &event) override final;
 
     private:
-        WorldListModel *mWorldListModel;
-        ListBox *mWorldList;
-        Button *mChangeLoginButton;
-        Button *mChooseWorld;
+        WorldListModel *mWorldListModel A_NONNULLPOINTER;
+        ListBox *mWorldList A_NONNULLPOINTER;
+        Button *mChangeLoginButton A_NONNULLPOINTER;
+        Button *mChooseWorld A_NONNULLPOINTER;
 };
 
 #endif  // GUI_WINDOWS_WORLDSELECTDIALOG_H

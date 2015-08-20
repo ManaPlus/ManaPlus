@@ -80,17 +80,17 @@ class RegisterDialog final : public Window,
          */
         bool canSubmit() const;
 
-        LoginData *mLoginData;
-        TextField *mUserField;
-        TextField *mPasswordField;
-        TextField *mConfirmField;
+        LoginData *mLoginData A_NONNULLPOINTER;
+        TextField *mUserField A_NONNULLPOINTER;
+        TextField *mPasswordField A_NONNULLPOINTER;
+        TextField *mConfirmField A_NONNULLPOINTER;
         TextField *mEmailField;
-        Button *mRegisterButton;
-        Button *mCancelButton;
+        Button *mRegisterButton A_NONNULLPOINTER;
+        Button *mCancelButton A_NONNULLPOINTER;
         RadioButton *mMaleButton;
         RadioButton *mFemaleButton;
         RadioButton *mOtherButton;
-        WrongDataNoticeListener *mWrongDataNoticeListener;
+        WrongDataNoticeListener *mWrongDataNoticeListener A_NONNULLPOINTER;
 };
 
 #endif  // GUI_WINDOWS_REGISTERDIALOG_H

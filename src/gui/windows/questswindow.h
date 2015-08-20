@@ -77,13 +77,13 @@ class QuestsWindow final : public Window,
 
         void loadEffect(const int var, const XmlNodePtr node);
 
-        QuestsModel *mQuestsModel;
-        ExtendedListBox *mQuestsListBox;
-        ScrollArea *mQuestScrollArea;
-        ItemLinkHandler *mItemLinkHandler;
-        BrowserBox *mText;
-        ScrollArea *mTextScrollArea;
-        Button *mCloseButton;
+        QuestsModel *mQuestsModel A_NONNULLPOINTER;
+        ExtendedListBox *mQuestsListBox A_NONNULLPOINTER;
+        ScrollArea *mQuestScrollArea A_NONNULLPOINTER;
+        ItemLinkHandler *mItemLinkHandler A_NONNULLPOINTER;
+        BrowserBox *mText A_NONNULLPOINTER;
+        ScrollArea *mTextScrollArea A_NONNULLPOINTER;
+        Button *mCloseButton A_NONNULLPOINTER;
         Image *mCompleteIcon;
         Image *mIncompleteIcon;
         // quest variables: var, value

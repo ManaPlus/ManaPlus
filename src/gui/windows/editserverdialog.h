@@ -63,17 +63,17 @@ class EditServerDialog final : public Window,
         void keyPressed(KeyEvent &event) override final;
 
     private:
-        TextField *mServerAddressField;
-        TextField *mPortField;
-        TextField *mNameField;
-        TextField *mDescriptionField;
-        TextField *mOnlineListUrlField;
-        Button *mConnectButton;
-        Button *mOkButton;
-        Button *mCancelButton;
-        CheckBox *mPersistentIp;
-        TypeListModel *mTypeListModel;
-        DropDown *mTypeField;
+        TextField *mServerAddressField A_NONNULLPOINTER;
+        TextField *mPortField A_NONNULLPOINTER;
+        TextField *mNameField A_NONNULLPOINTER;
+        TextField *mDescriptionField A_NONNULLPOINTER;
+        TextField *mOnlineListUrlField A_NONNULLPOINTER;
+        Button *mConnectButton A_NONNULLPOINTER;
+        Button *mOkButton A_NONNULLPOINTER;
+        Button *mCancelButton A_NONNULLPOINTER;
+        CheckBox *mPersistentIp A_NONNULLPOINTER;
+        TypeListModel *mTypeListModel A_NONNULLPOINTER;
+        DropDown *mTypeField A_NONNULLPOINTER;
 
         ServerDialog *mServerDialog;
         ServerInfo mServer;

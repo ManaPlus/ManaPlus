@@ -79,10 +79,9 @@ class HelpWindow final : public Window,
 
         void loadFile(std::string file);
 
-        Button *mDYKButton;
-
-        BrowserBox *mBrowserBox;
-        ScrollArea *mScrollArea;
+        Button *mDYKButton A_NONNULLPOINTER;
+        BrowserBox *mBrowserBox A_NONNULLPOINTER;
+        ScrollArea *mScrollArea A_NONNULLPOINTER;
         HelpTagsMap mTagFileMap;
 };
 

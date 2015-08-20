@@ -225,12 +225,12 @@ class UpdaterWindow final : public Window,
 
         std::string mUpdateServerPath;
 
-        Label *mLabel;              /**< Progress bar caption. */
-        Button *mCancelButton;      /**< Button to stop the update process. */
-        Button *mPlayButton;        /**< Button to start playing. */
-        ProgressBar *mProgressBar;  /**< Update progress bar. */
-        BrowserBox *mBrowserBox;    /**< Box to display news. */
-        ScrollArea *mScrollArea;    /**< Used to scroll news box. */
+        Label *mLabel A_NONNULLPOINTER;
+        Button *mCancelButton A_NONNULLPOINTER;
+        Button *mPlayButton A_NONNULLPOINTER;
+        ProgressBar *mProgressBar A_NONNULLPOINTER;
+        BrowserBox *mBrowserBox A_NONNULLPOINTER;
+        ScrollArea *mScrollArea A_NONNULLPOINTER;
 
         /** Status of the current download. */
         UpdateDownloadStatus mDownloadStatus;

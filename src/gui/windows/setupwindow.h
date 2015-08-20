@@ -86,8 +86,8 @@ class SetupWindow final : public Window,
         SetupTab *mModsTab;
         SetupTab *mQuickTab;
         Button *mResetWindows;
-        TabbedArea *mPanel;
-        Label *mVersion;
+        TabbedArea *mPanel A_NONNULLPOINTER;
+        Label *mVersion A_NONNULLPOINTER;
         int mButtonPadding;
 };
 

@@ -67,10 +67,10 @@ class DebugWindow final : public Window
 #endif
 
     private:
-        TabbedArea *mTabs;
-        MapDebugTab *mMapWidget;
-        TargetDebugTab *mTargetWidget;
-        NetDebugTab *mNetWidget;
+        TabbedArea *mTabs A_NONNULLPOINTER;
+        MapDebugTab *mMapWidget A_NONNULLPOINTER;
+        TargetDebugTab *mTargetWidget A_NONNULLPOINTER;
+        NetDebugTab *mNetWidget A_NONNULLPOINTER;
 };
 
 extern DebugWindow *debugWindow;

@@ -107,15 +107,15 @@ class CharSelectDialog final : public Window,
         void unlock();
         void setLocked(const bool locked);
 
-        LoginData *mLoginData;
+        LoginData *mLoginData A_NONNULLPOINTER;
 
-        Button *mSwitchLoginButton;
-        Button *mChangePasswordButton;
+        Button *mSwitchLoginButton A_NONNULLPOINTER;
+        Button *mChangePasswordButton A_NONNULLPOINTER;
         Button *mUnregisterButton;
         Button *mChangeEmailButton;
-        Button *mPlayButton;
-        Button *mInfoButton;
-        Button *mDeleteButton;
+        Button *mPlayButton A_NONNULLPOINTER;
+        Button *mInfoButton A_NONNULLPOINTER;
+        Button *mDeleteButton A_NONNULLPOINTER;
         Button *mRenameButton;
         CharacterViewBase *mCharacterView;
 

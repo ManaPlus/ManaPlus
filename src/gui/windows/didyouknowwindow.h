@@ -68,11 +68,11 @@ class DidYouKnowWindow final : public Window,
     private:
         void loadFile(const int num);
 
-        BrowserBox *mBrowserBox;
-        ScrollArea *mScrollArea;
-        Button *mButtonPrev;
-        Button *mButtonNext;
-        CheckBox *mOpenAgainCheckBox;
+        BrowserBox *mBrowserBox A_NONNULLPOINTER;
+        ScrollArea *mScrollArea A_NONNULLPOINTER;
+        Button *mButtonPrev A_NONNULLPOINTER;
+        Button *mButtonNext A_NONNULLPOINTER;
+        CheckBox *mOpenAgainCheckBox A_NONNULLPOINTER;
 };
 
 extern DidYouKnowWindow *didYouKnowWindow;

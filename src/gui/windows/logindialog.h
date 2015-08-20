@@ -86,20 +86,20 @@ class LoginDialog final : public Window,
 
         void prepareUpdate();
 
-        LoginData *mLoginData;
+        LoginData *mLoginData A_NONNULLPOINTER;
 
-        TextField *mUserField;
-        TextField *mPassField;
-        CheckBox *mKeepCheck;
-        Label *mUpdateTypeLabel;
+        TextField *mUserField A_NONNULLPOINTER;
+        TextField *mPassField A_NONNULLPOINTER;
+        CheckBox *mKeepCheck A_NONNULLPOINTER;
+        Label *mUpdateTypeLabel A_NONNULLPOINTER;
         Label *mUpdateHostLabel;
-        UpdateTypeModel *mUpdateTypeModel;
-        DropDown *mUpdateTypeDropDown;
-        Button *mServerButton;
-        Button *mLoginButton;
-        Button *mRegisterButton;
-        CheckBox *mCustomUpdateHost;
-        TextField *mUpdateHostText;
+        UpdateTypeModel *mUpdateTypeModel A_NONNULLPOINTER;
+        DropDown *mUpdateTypeDropDown A_NONNULLPOINTER;
+        Button *mServerButton A_NONNULLPOINTER;
+        Button *mLoginButton A_NONNULLPOINTER;
+        Button *mRegisterButton A_NONNULLPOINTER;
+        CheckBox *mCustomUpdateHost A_NONNULLPOINTER;
+        TextField *mUpdateHostText A_NONNULLPOINTER;
         UpdateListModel *mUpdateListModel;
         DropDown *mUpdateHostDropDown;
 

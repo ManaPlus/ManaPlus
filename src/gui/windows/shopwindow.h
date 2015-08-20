@@ -174,18 +174,18 @@ class ShopWindow final : public Window,
         typedef std::list<ShopWindow*> DialogList;
         static DialogList instances;
 
-        Button *mCloseButton;
+        Button *mCloseButton A_NONNULLPOINTER;
 
-        ShopItems *mBuyShopItems;
-        ShopItems *mSellShopItems;
+        ShopItems *mBuyShopItems A_NONNULLPOINTER;
+        ShopItems *mSellShopItems A_NONNULLPOINTER;
         ShopItem *mTradeItem;
 
-        ShopListBox *mBuyShopItemList;
-        ShopListBox *mSellShopItemList;
+        ShopListBox *mBuyShopItemList A_NONNULLPOINTER;
+        ShopListBox *mSellShopItemList A_NONNULLPOINTER;
         ShopListBox *mCurrentShopItemList;
-        ScrollArea *mScrollArea;
-        Button *mAddButton;
-        Button *mDeleteButton;
+        ScrollArea *mScrollArea A_NONNULLPOINTER;
+        Button *mAddButton A_NONNULLPOINTER;
+        Button *mDeleteButton A_NONNULLPOINTER;
         Button *mAnnounceButton;
         Button *mPublishButton;
         Button *mRenameButton;

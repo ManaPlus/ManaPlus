@@ -153,17 +153,17 @@ class SocialWindow final : public Window,
 
         SocialTab *mAttackFilter;
         SocialTab *mPickupFilter;
-        SocialTab *mPlayers;
-        SocialTab *mNavigation;
-        SocialTab *mFriends;
+        SocialTab *mPlayers A_NONNULLPOINTER;
+        SocialTab *mNavigation A_NONNULLPOINTER;
+        SocialTab *mFriends A_NONNULLPOINTER;
 
-        CreatePartyPopup *mCreatePopup;
+        CreatePartyPopup *mCreatePopup A_NONNULLPOINTER;
 
-        Button *mCreateButton;
-        Button *mInviteButton;
-        Button *mLeaveButton;
-        Label *mCountLabel;
-        TabbedArea *mTabs;
+        Button *mCreateButton A_NONNULLPOINTER;
+        Button *mInviteButton A_NONNULLPOINTER;
+        Button *mLeaveButton A_NONNULLPOINTER;
+        Label *mCountLabel A_NONNULLPOINTER;
+        TabbedArea *mTabs A_NONNULLPOINTER;
         Map *mMap;
 
         int mLastUpdateTime;

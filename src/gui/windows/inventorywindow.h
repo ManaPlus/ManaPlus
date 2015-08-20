@@ -187,11 +187,11 @@ class InventoryWindow final : public Window,
         Button *mInvCloseButton;
 
         ProgressBar *mWeightBar;
-        ProgressBar *mSlotsBar;
+        ProgressBar *mSlotsBar A_NONNULLPOINTER;
         TabStrip *mFilter;
-        SortListModelInv *mSortModel;
-        DropDown *mSortDropDown;
-        TextField *mNameFilter;
+        SortListModelInv *mSortModel A_NONNULLPOINTER;
+        DropDown *mSortDropDown A_NONNULLPOINTER;
+        TextField *mNameFilter A_NONNULLPOINTER;
         LayoutCell *mSortDropDownCell;
         LayoutCell *mNameFilterCell;
         LayoutCell *mFilterCell;

@@ -106,25 +106,25 @@ class StatusWindow final : public Window,
         /**
          * Status Part
          */
-        Label *mLvlLabel;
-        Label *mMoneyLabel;
-        Label *mHpLabel;
-        Label *mMpLabel;
-        Label *mXpLabel;
-        ProgressBar *mHpBar;
-        ProgressBar *mMpBar;
-        ProgressBar *mXpBar;
+        Label *mLvlLabel A_NONNULLPOINTER;
+        Label *mMoneyLabel A_NONNULLPOINTER;
+        Label *mHpLabel A_NONNULLPOINTER;
+        Label *mMpLabel A_NONNULLPOINTER;
+        Label *mXpLabel A_NONNULLPOINTER;
+        ProgressBar *mHpBar A_NONNULLPOINTER;
+        ProgressBar *mMpBar A_NONNULLPOINTER;
+        ProgressBar *mXpBar A_NONNULLPOINTER;
 
         Label *mJobLvlLabel;
         Label *mJobLabel;
         ProgressBar *mJobBar;
 
-        VertContainer *mAttrCont;
-        ScrollArea *mAttrScroll;
-        VertContainer *mDAttrCont;
-        ScrollArea *mDAttrScroll;
+        VertContainer *mAttrCont A_NONNULLPOINTER;
+        ScrollArea *mAttrScroll A_NONNULLPOINTER;
+        VertContainer *mDAttrCont A_NONNULLPOINTER;
+        ScrollArea *mDAttrScroll A_NONNULLPOINTER;
 
-        Label *mCharacterPointsLabel;
+        Label *mCharacterPointsLabel A_NONNULLPOINTER;
         Label *mCorrectionPointsLabel;
         Button *mCopyButton;
 

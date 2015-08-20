@@ -178,17 +178,17 @@ class TradeWindow final : public Window,
          */
         void setStatus(const Status s);
 
-        Inventory *mMyInventory;
-        Inventory *mPartnerInventory;
+        Inventory *mMyInventory A_NONNULLPOINTER;
+        Inventory *mPartnerInventory A_NONNULLPOINTER;
 
-        ItemContainer *mMyItemContainer;
-        ItemContainer *mPartnerItemContainer;
+        ItemContainer *mMyItemContainer A_NONNULLPOINTER;
+        ItemContainer *mPartnerItemContainer A_NONNULLPOINTER;
 
-        Label *mMoneyLabel;
-        Button *mAddButton;
-        Button *mOkButton;
-        Button  *mMoneyChangeButton;
-        TextField *mMoneyField;
+        Label *mMoneyLabel A_NONNULLPOINTER;
+        Button *mAddButton A_NONNULLPOINTER;
+        Button *mOkButton A_NONNULLPOINTER;
+        Button  *mMoneyChangeButton A_NONNULLPOINTER;
+        TextField *mMoneyField A_NONNULLPOINTER;
 
         Item* mAutoAddItem;
         std::string mAutoAddToNick;

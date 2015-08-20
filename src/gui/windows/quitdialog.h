@@ -46,7 +46,7 @@ class QuitDialog final : public Window,
          *
          * @pointerToMe  will be set to NULL when the QuitDialog is destroyed
          */
-        explicit QuitDialog(QuitDialog **const pointerToMe);
+        explicit QuitDialog(QuitDialog **const pointerToMe) A_NONNULL(2);
 
         A_DELETE_COPY(QuitDialog)
 
@@ -69,15 +69,15 @@ class QuitDialog final : public Window,
                          RadioButton *const option);
         std::vector<RadioButton*> mOptions;
 
-        RadioButton *mLogoutQuit;
-        RadioButton *mForceQuit;
-        RadioButton *mSwitchAccountServer;
-        RadioButton *mSwitchCharacter;
-        RadioButton *mRate;
-        Button *mOkButton;
-        Button *mCancelButton;
+        RadioButton *mLogoutQuit A_NONNULLPOINTER;
+        RadioButton *mForceQuit A_NONNULLPOINTER;
+        RadioButton *mSwitchAccountServer A_NONNULLPOINTER;
+        RadioButton *mSwitchCharacter A_NONNULLPOINTER;
+        RadioButton *mRate A_NONNULLPOINTER;
+        Button *mOkButton A_NONNULLPOINTER;
+        Button *mCancelButton A_NONNULLPOINTER;
 
-        QuitDialog **mMyPointer;
+        QuitDialog **mMyPointer A_NONNULLPOINTER;
         bool mNeedForceQuit;
 };
 

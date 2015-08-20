@@ -66,14 +66,14 @@ class EmoteWindow final : public Window
         void widgetMoved(const Event &event) override final;
 
     private:
-        TabbedArea *mTabs;
-        EmotePage *mEmotePage;
-        ColorModel *mColorModel;
-        ColorPage *mColorPage;
-        ScrollArea *mScrollColorPage;
-        NamesModel *mFontModel;
-        ListBox *mFontPage;
-        ScrollArea *mScrollFontPage;
+        TabbedArea *mTabs A_NONNULLPOINTER;
+        EmotePage *mEmotePage A_NONNULLPOINTER;
+        ColorModel *mColorModel A_NONNULLPOINTER;
+        ColorPage *mColorPage A_NONNULLPOINTER;
+        ScrollArea *mScrollColorPage A_NONNULLPOINTER;
+        NamesModel *mFontModel A_NONNULLPOINTER;
+        ListBox *mFontPage A_NONNULLPOINTER;
+        ScrollArea *mScrollFontPage A_NONNULLPOINTER;
         ImageSet *mImageSet;
 };
 

@@ -158,22 +158,22 @@ class BuyDialog final : public Window,
         typedef std::list<BuyDialog*> DialogList;
         static DialogList instances;
 
-        Button *mBuyButton;
-        Button *mQuitButton;
-        Button *mAddMaxButton;
-        Button *mIncreaseButton;
-        Button *mDecreaseButton;
-        ShopListBox *mShopItemList;
-        ScrollArea *mScrollArea;
-        Label *mMoneyLabel;
-        Label *mQuantityLabel;
-        Slider *mSlider;
-        Label *mAmountLabel;
-        IntTextField *mAmountField;
-        ShopItems *mShopItems;
+        Button *mBuyButton A_NONNULLPOINTER;
+        Button *mQuitButton A_NONNULLPOINTER;
+        Button *mAddMaxButton A_NONNULLPOINTER;
+        Button *mIncreaseButton A_NONNULLPOINTER;
+        Button *mDecreaseButton A_NONNULLPOINTER;
+        ShopListBox *mShopItemList A_NONNULLPOINTER;
+        ScrollArea *mScrollArea A_NONNULLPOINTER;
+        Label *mMoneyLabel A_NONNULLPOINTER;
+        Label *mQuantityLabel A_NONNULLPOINTER;
+        Slider *mSlider A_NONNULLPOINTER;
+        Label *mAmountLabel A_NONNULLPOINTER;
+        IntTextField *mAmountField A_NONNULLPOINTER;
+        ShopItems *mShopItems A_NONNULLPOINTER;
         SortListModelBuy *mSortModel;
         DropDown *mSortDropDown;
-        TextField *mFilterTextField;
+        TextField *mFilterTextField A_NONNULLPOINTER;
         Label *mFilterLabel;
 
         BeingId mNpcId;

@@ -126,15 +126,15 @@ class ServerDialog final : public Window,
         Mutex mMutex;
         ServerInfos mServers;
         const std::string &mDir;
-        Label  *mDescription;
-        Button *mQuitButton;
-        Button *mConnectButton;
-        Button *mAddEntryButton;
-        Button *mEditEntryButton;
-        Button *mDeleteButton;
-        Button *mLoadButton;
-        ServersListModel *mServersListModel;
-        ListBox *mServersList;
+        Label  *mDescription A_NONNULLPOINTER;
+        Button *mQuitButton A_NONNULLPOINTER;
+        Button *mConnectButton A_NONNULLPOINTER;
+        Button *mAddEntryButton A_NONNULLPOINTER;
+        Button *mEditEntryButton A_NONNULLPOINTER;
+        Button *mDeleteButton A_NONNULLPOINTER;
+        Button *mLoadButton A_NONNULLPOINTER;
+        ServersListModel *mServersListModel A_NONNULLPOINTER;
+        ListBox *mServersList A_NONNULLPOINTER;
 
         enum ServerDialogDownloadStatus
         {

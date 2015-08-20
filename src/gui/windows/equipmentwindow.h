@@ -130,14 +130,14 @@ class EquipmentWindow final : public Window,
 
         Equipment *mEquipment;
 
-        PlayerBox *mPlayerBox;
-        Button *mUnequip;
+        PlayerBox *mPlayerBox A_NONNULLPOINTER;
+        Button *mUnequip A_NONNULLPOINTER;
 
         ImageSet *mImageSet;
         Being *mBeing;
         Image *mSlotBackground;
         Image *mSlotHighlightedBackground;
-        ImageCollection *mVertexes;
+        ImageCollection *mVertexes A_NONNULLPOINTER;
         std::vector<EquipmentPage*> mPages;
         TabStrip *mTabs;
         Color mHighlightColor;

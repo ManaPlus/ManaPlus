@@ -74,24 +74,24 @@ class KillStats final : public Window,
 
     private:
         int mKillTimer;  /**< Timer for kill stats. */
-        Button *mResetButton;
-        Button *mTimerButton;
+        Button *mResetButton A_NONNULLPOINTER;
+        Button *mTimerButton A_NONNULLPOINTER;
         Label *mLine1;
         Label *mLine2;
         Label *mLine3;
-        Label *mLine4;
-        Label *mLine5;
-        Label *mLine6;
-        Label *mLine7;
+        Label *mLine4 A_NONNULLPOINTER;
+        Label *mLine5 A_NONNULLPOINTER;
+        Label *mLine6 A_NONNULLPOINTER;
+        Label *mLine7 A_NONNULLPOINTER;
 
-        Label *mExpSpeed1Label;
-        Label *mExpTime1Label;
-        Label *mExpSpeed5Label;
-        Label *mExpTime5Label;
-        Label *mExpSpeed15Label;
-        Label *mExpTime15Label;
+        Label *mExpSpeed1Label A_NONNULLPOINTER;
+        Label *mExpTime1Label A_NONNULLPOINTER;
+        Label *mExpSpeed5Label A_NONNULLPOINTER;
+        Label *mExpTime5Label A_NONNULLPOINTER;
+        Label *mExpSpeed15Label A_NONNULLPOINTER;
+        Label *mExpTime15Label A_NONNULLPOINTER;
 
-        Label *mLastKillExpLabel;
+        Label *mLastKillExpLabel A_NONNULLPOINTER;
 
         int mKillCounter;   /**< Session Kill counter. */
         int mExpCounter;    /**< Session Exp counter. */

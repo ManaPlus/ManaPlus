@@ -144,14 +144,15 @@ class WhoIsOnline final : public Window,
         char *mMemoryBuffer;
 
         /** Buffer to handler human readable error provided by curl. */
-        char *mCurlError;
+        char *mCurlError A_NONNULLPOINTER;
 
-        BrowserBox *mBrowserBox;
-        ScrollArea *mScrollArea;
+        BrowserBox *mBrowserBox A_NONNULLPOINTER;
+        ScrollArea *mScrollArea A_NONNULLPOINTER;
+        Button *mUpdateButton A_NONNULLPOINTER;
+
         std::set<OnlinePlayer*> mOnlinePlayers;
         std::set<std::string> mOnlineNicks;
 
-        Button *mUpdateButton;
         std::vector<OnlinePlayer*> mFriends;
         std::vector<OnlinePlayer*> mNeutral;
         std::vector<OnlinePlayer*> mDisregard;

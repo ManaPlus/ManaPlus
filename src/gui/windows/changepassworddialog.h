@@ -61,16 +61,16 @@ class ChangePasswordDialog final : public Window,
         void action(const ActionEvent &event) override final;
 
     private:
-        TextField *mOldPassField;
-        TextField *mFirstPassField;
-        TextField *mSecondPassField;
+        TextField *mOldPassField A_NONNULLPOINTER;
+        TextField *mFirstPassField A_NONNULLPOINTER;
+        TextField *mSecondPassField A_NONNULLPOINTER;
 
-        Button *mChangePassButton;
-        Button *mCancelButton;
+        Button *mChangePassButton A_NONNULLPOINTER;
+        Button *mCancelButton A_NONNULLPOINTER;
 
-        WrongDataNoticeListener *mWrongDataNoticeListener;
+        WrongDataNoticeListener *mWrongDataNoticeListener A_NONNULLPOINTER;
 
-        LoginData *mLoginData;
+        LoginData *mLoginData A_NONNULLPOINTER;
 };
 
 #endif  // GUI_WINDOWS_CHANGEPASSWORDDIALOG_H

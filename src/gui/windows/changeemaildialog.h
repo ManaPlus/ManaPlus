@@ -67,15 +67,15 @@ class ChangeEmailDialog final : public Window,
         static void setEmail(std::string *email);
 
     private:
-        TextField *mFirstEmailField;
-        TextField *mSecondEmailField;
+        TextField *mFirstEmailField A_NONNULLPOINTER;
+        TextField *mSecondEmailField A_NONNULLPOINTER;
 
-        Button *mChangeEmailButton;
-        Button *mCancelButton;
+        Button *mChangeEmailButton A_NONNULLPOINTER;
+        Button *mCancelButton A_NONNULLPOINTER;
 
-        WrongDataNoticeListener *mWrongDataNoticeListener;
+        WrongDataNoticeListener *mWrongDataNoticeListener A_NONNULLPOINTER;
 
-        LoginData *mLoginData;
+        LoginData *mLoginData A_NONNULLPOINTER;
 };
 
 #endif  // GUI_WINDOWS_CHANGEEMAILDIALOG_H

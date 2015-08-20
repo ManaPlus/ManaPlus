@@ -107,16 +107,18 @@ class ItemAmountWindow final : public Window,
                          Item *const item,
                          const int maxRange = 0);
 
-        IntTextField *mItemAmountTextField;   /**< Item amount caption. */
-        IntTextField *mItemPriceTextField;   /**< Item price caption. */
+        /**< Item amount caption. */
+        IntTextField *mItemAmountTextField A_NONNULLPOINTER;
+        /**< Item price caption. */
+        IntTextField *mItemPriceTextField;
         Label *mGPLabel;
         Item *mItem;
-        Icon *mItemIcon;
+        Icon *mItemIcon A_NONNULLPOINTER;
 
         /**
          * Item Amount buttons.
          */
-        Slider *mItemAmountSlide;
+        Slider *mItemAmountSlide A_NONNULLPOINTER;
         Slider *mItemPriceSlide;
         DropDown *mItemDropDown;
         ItemsModal *mItemsModal;

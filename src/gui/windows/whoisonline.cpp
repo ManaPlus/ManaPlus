@@ -99,10 +99,10 @@ WhoIsOnline::WhoIsOnline() :
     mBrowserBox(new BrowserBox(this, BrowserBox::AUTO_SIZE, true,
         "onlinebrowserbox.xml")),
     mScrollArea(new ScrollArea(this, mBrowserBox, false)),
-    mOnlinePlayers(),
-    mOnlineNicks(),
     // TRANSLATORS: who is online. button.
     mUpdateButton(new Button(this, _("Update"), "update", this)),
+    mOnlinePlayers(),
+    mOnlineNicks(),
     mFriends(),
     mNeutral(),
     mDisregard(),

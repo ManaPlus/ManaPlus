@@ -105,16 +105,16 @@ class CharCreateDialog final : public Window,
 
         CharSelectDialog *mCharSelectDialog;
 
-        TextField *mNameField;
-        Label *mNameLabel;
-        Button *mNextHairColorButton;
-        Button *mPrevHairColorButton;
-        Label *mHairColorLabel;
-        Label *mHairColorNameLabel;
-        Button *mNextHairStyleButton;
-        Button *mPrevHairStyleButton;
-        Label *mHairStyleLabel;
-        Label *mHairStyleNameLabel;
+        TextField *mNameField A_NONNULLPOINTER;
+        Label *mNameLabel A_NONNULLPOINTER;
+        Button *mNextHairColorButton A_NONNULLPOINTER;
+        Button *mPrevHairColorButton A_NONNULLPOINTER;
+        Label *mHairColorLabel A_NONNULLPOINTER;
+        Label *mHairColorNameLabel A_NONNULLPOINTER;
+        Button *mNextHairStyleButton A_NONNULLPOINTER;
+        Button *mPrevHairStyleButton A_NONNULLPOINTER;
+        Label *mHairStyleLabel A_NONNULLPOINTER;
+        Label *mHairStyleNameLabel A_NONNULLPOINTER;
         Button *mNextRaceButton;
         Button *mPrevRaceButton;
         Label *mRaceLabel;

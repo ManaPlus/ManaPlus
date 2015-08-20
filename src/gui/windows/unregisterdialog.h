@@ -60,11 +60,11 @@ class UnRegisterDialog final : public Window,
         void action(const ActionEvent &event) override final;
 
     private:
-        LoginData *mLoginData;
-        TextField *mPasswordField;
-        Button *mUnRegisterButton;
-        Button *mCancelButton;
-        WrongDataNoticeListener *mWrongDataNoticeListener;
+        LoginData *mLoginData A_NONNULLPOINTER;
+        TextField *mPasswordField A_NONNULLPOINTER;
+        Button *mUnRegisterButton A_NONNULLPOINTER;
+        Button *mCancelButton A_NONNULLPOINTER;
+        WrongDataNoticeListener *mWrongDataNoticeListener A_NONNULLPOINTER;
 };
 
 #endif  // GUI_WINDOWS_UNREGISTERDIALOG_H

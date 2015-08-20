@@ -102,13 +102,13 @@ class OutfitWindow final : public Window,
                              const int pointY) const A_WARN_UNUSED;
         void save() const;
 
-        Button *mPreviousButton;
-        Button *mNextButton;
-        Button *mEquipButtom;
-        Label *mCurrentLabel;
-        CheckBox *mUnequipCheck;
-        CheckBox *mAwayOutfitCheck;
-        Label *mKeyLabel;
+        Button *mPreviousButton A_NONNULLPOINTER;
+        Button *mNextButton A_NONNULLPOINTER;
+        Button *mEquipButtom A_NONNULLPOINTER;
+        Label *mCurrentLabel A_NONNULLPOINTER;
+        CheckBox *mUnequipCheck A_NONNULLPOINTER;
+        CheckBox *mAwayOutfitCheck A_NONNULLPOINTER;
+        Label *mKeyLabel A_NONNULLPOINTER;
 
         Color mBorderColor;
 

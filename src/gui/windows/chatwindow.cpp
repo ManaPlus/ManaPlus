@@ -1558,7 +1558,7 @@ bool ChatWindow::resortChatLog(std::string line,
             tmpNick.find(":") != std::string::npos ||
             tmpNick.find("%") != std::string::npos ||
             tmpNick.find("@") != std::string::npos ||
-            tmpNick.size() < 4 ||
+            tmpNick.size() < 5 ||
             tmpNick[0] == '@' ||
             tmpNick[0] == '/' ||
             tmpNick[0] == '!'
