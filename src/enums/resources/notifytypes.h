@@ -173,6 +173,7 @@ namespace NotifyTypes
         MAIL_GET_ATTACH_TOO_MANY_ITEMS,
         NEW_MAIL,
         MAP_TYPE_BATTLEFIELD,
+        RENTAL_TIME_LEFT,
 
         TYPE_END
     };

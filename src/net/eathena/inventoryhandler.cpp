@@ -47,6 +47,11 @@
 #include "net/ea/eaprotocol.h"
 #include "net/ea/equipbackend.h"
 
+#include "resources/iteminfo.h"
+
+#include "utils/gettext.h"
+#include "utils/stringutils.h"
+
 #include "debug.h"
 
 extern Net::InventoryHandler *inventoryHandler;
@@ -899,10 +904,13 @@ void InventoryHandler::selectEgg(const Item *const item) const
 
 void InventoryHandler::processPlayerItemRentalTime(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
-    // +++ need update item rental time
-    msg.readInt16("item id");
-    msg.readInt32("seconds");
+    const int id = msg.readInt16("item id");
+    const int seconds = msg.readInt32("seconds");
+    const ItemInfo &info = ItemDB::get(id);
+    const std::string timeStr = timeDiffToString(seconds);
+    NotifyManager::notify(NotifyTypes::RENTAL_TIME_LEFT,
+        strprintf(_("Left %s rental time for item %s."),
+        timeStr.c_str(), info.getName().c_str()));
 }
 
 void InventoryHandler::processPlayerItemRentalExpired(Net::MessageIn &msg)

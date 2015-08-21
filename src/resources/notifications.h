@@ -612,13 +612,15 @@ namespace NotifyManager
             N_("Can't get attach. Too many items."),
             NotifyFlags::EMPTY},
         {"new mail",
-            // TRANSLATORS: notification message
             "%s",
             NotifyFlags::STRING},
         {"mail type battle field",
             // TRANSLATORS: notification message
             N_("You enter battle field."),
             NotifyFlags::EMPTY},
+        {"rental time left",
+            "%s",
+            NotifyFlags::STRING},
     };
 }  // namespace NotifyManager
 #endif  // RESOURCES_NOTIFICATIONS_H
