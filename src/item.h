@@ -215,6 +215,12 @@ class Item notfinal
         int getType() const A_WARN_UNUSED
         { return mType; }
 
+        void setTag(const int tag)
+        { mTag = tag; }
+
+        int getTag() const A_WARN_UNUSED
+        { return mTag; }
+
         void addCard(const int card);
 
         void updateColor();
@@ -231,6 +237,7 @@ class Item notfinal
         uint8_t mRefine;      /**< Item refine level. */
         int mInvIndex;        /**< Inventory index. */
         int mType;            /**< Item type. */
+        int mTag;
         Equipm mEquipment;    /**< Item is equipment. */
         Equipped mEquipped;   /**< Item is equipped. */
         bool mInEquipment;    /**< Item is in equipment */
