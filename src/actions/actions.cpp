@@ -1162,59 +1162,9 @@ impHandler0(uptime)
     }
     else
     {
-        std::string str;
-        int timeDiff = cur_time - start_time;
-
-        const int weeks = timeDiff / 60 / 60 / 24 / 7;
-        if (weeks > 0)
-        {
-            // TRANSLATORS: uptime command
-            str = strprintf(ngettext(N_("%d week"), N_("%d weeks"),
-                weeks), weeks);
-            timeDiff -= weeks * 60 * 60 * 24 * 7;
-        }
-
-        const int days = timeDiff / 60 / 60 / 24;
-        if (days > 0)
-        {
-            if (!str.empty())
-                str.append(", ");
-            // TRANSLATORS: uptime command
-            str.append(strprintf(ngettext(N_("%d day"), N_("%d days"),
-                days), days));
-            timeDiff -= days * 60 * 60 * 24;
-        }
-        const int hours = timeDiff / 60 / 60;
-        if (hours > 0)
-        {
-            if (!str.empty())
-                str.append(", ");
-            // TRANSLATORS: uptime command
-            str.append(strprintf(ngettext(N_("%d hour"), N_("%d hours"),
-                hours), hours));
-            timeDiff -= hours * 60 * 60;
-        }
-        const int min = timeDiff / 60;
-        if (min > 0)
-        {
-            if (!str.empty())
-                str.append(", ");
-            // TRANSLATORS: uptime command
-            str.append(strprintf(ngettext(N_("%d minute"), N_("%d minutes"),
-                min), min));
-            timeDiff -= min * 60;
-        }
-
-        if (timeDiff > 0)
-        {
-            if (!str.empty())
-                str.append(", ");
-            // TRANSLATORS: uptime command
-            str.append(strprintf(ngettext(N_("%d second"), N_("%d seconds"),
-                timeDiff), timeDiff));
-        }
         // TRANSLATORS: uptime command
-        debugChatTab->chatLog(strprintf(_("Client uptime: %s"), str.c_str()),
+        debugChatTab->chatLog(strprintf(_("Client uptime: %s"),
+            timeDiffToString(cur_time - start_time).c_str()),
             ChatMsgType::BY_SERVER);
     }
     return true;

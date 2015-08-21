@@ -252,4 +252,6 @@ std::string removeToken(std::string &str, const std::string &token);
 
 std::string timeToStr(const int time);
 
+std::string timeDiffToString(int timeDiff);
+
 #endif  // UTILS_STRINGUTILS_H
