@@ -396,12 +396,55 @@ void NpcDialog::action(const ActionEvent &event)
                     mInventory->clear();
                     break;
                 }
+                case NPC_INPUT_ITEM_INDEX:
+                {
+                    if (!PacketLimiter::limitPackets(
+                        PacketType::PACKET_NPC_INPUT))
+                    {
+                        return;
+                    }
+
+                    std::string str;
+                    const int sz = mInventory->getNumberOfSlotsUsed();
+                    if (sz == 0)
+                    {
+                        str = "-1";
+                    }
+                    else
+                    {
+                        const Item *item = mInventory->getItem(0);
+                        if (item)
+                        {
+                            str = strprintf("%d", item->getTag());
+                        }
+                        else
+                        {
+                            str = "-1";
+                        }
+                        for (int f = 1; f < sz; f ++)
+                        {
+                            str.append(";");
+                            item = mInventory->getItem(f);
+                            logger->log("tag=%d", item->getTag());
+                            if (item)
+                                str.append(strprintf("%d", item->getTag()));
+                            else
+                                str.append("-1");
+                        }
+                    }
+
+                    // need send selected item
+                    npcHandler->stringInput(mNpcId, str);
+                    mInventory->clear();
+                    break;
+                }
 
                 case NPC_INPUT_NONE:
                 default:
                     break;
             }
-            if (mInputState != NPC_INPUT_ITEM)
+            if (mInputState != NPC_INPUT_ITEM &&
+                mInputState != NPC_INPUT_ITEM_INDEX)
             {
                 // addText will auto remove the input layout
                 addText(strprintf("> \"%s\"", printText.c_str()), false);
@@ -423,6 +466,7 @@ void NpcDialog::action(const ActionEvent &event)
                 mIntField->setValue(mDefaultInt);
                 break;
             case NPC_INPUT_ITEM:
+            case NPC_INPUT_ITEM_INDEX:
                 mInventory->clear();
                 break;
             case NPC_INPUT_NONE:
@@ -444,6 +488,7 @@ void NpcDialog::action(const ActionEvent &event)
         switch (mInputState)
         {
             case NPC_INPUT_ITEM:
+            case NPC_INPUT_ITEM_INDEX:
                 mInventory->clear();
                 break;
             case NPC_INPUT_STRING:
@@ -464,6 +509,9 @@ void NpcDialog::action(const ActionEvent &event)
                 case NPC_INPUT_ITEM:
                     npcHandler->stringInput(mNpcId, "0,0");
                     break;
+                case NPC_INPUT_ITEM_INDEX:
+                    npcHandler->stringInput(mNpcId, "-1");
+                    break;
                 case NPC_INPUT_STRING:
                 case NPC_INPUT_INTEGER:
                 case NPC_INPUT_NONE:
@@ -482,7 +530,7 @@ void NpcDialog::action(const ActionEvent &event)
             const Item *const item = inventoryWindow->getSelectedItem();
             if (item)
             {
-                mInventory->addItem(item->getId(),
+                const int index = mInventory->addItem(item->getId(),
                     item->getType(),
                     1,
                     1,
@@ -492,6 +540,9 @@ void NpcDialog::action(const ActionEvent &event)
                     item->getFavorite(),
                     Equipm_false,
                     Equipped_false);
+                Item *const item2 = mInventory->getItem(index);
+                if (item2)
+                    item2->setTag(item->getInvIndex());
             }
         }
     }
@@ -637,6 +688,14 @@ void NpcDialog::itemRequest(const int size)
     buildLayout();
 }
 
+void NpcDialog::itemIndexRequest(const int size)
+{
+    mActionState = NPC_ACTION_INPUT;
+    mInputState = NPC_INPUT_ITEM_INDEX;
+    mInventory->resize(size);
+    buildLayout();
+}
+
 void NpcDialog::move(const int amount)
 {
     if (mActionState != NPC_ACTION_INPUT)
@@ -653,6 +712,7 @@ void NpcDialog::move(const int amount)
         case NPC_INPUT_NONE:
         case NPC_INPUT_STRING:
         case NPC_INPUT_ITEM:
+        case NPC_INPUT_ITEM_INDEX:
         default:
             break;
     }
@@ -833,6 +893,7 @@ void NpcDialog::buildLayout()
                 break;
 
             case NPC_INPUT_ITEM:
+            case NPC_INPUT_ITEM_INDEX:
                 placeItemInputControls();
                 break;
 

@@ -193,6 +193,15 @@ void NpcHandler::processNpcCommand(Net::MessageIn &msg)
                 mDialog->itemRequest(invSize);
             break;
         }
+        case 11:  // send selected item index
+        {
+            int invSize = toInt(id, int);
+            if (!invSize)
+                invSize = 1;
+            if (mDialog)
+                mDialog->itemIndexRequest(invSize);
+            break;
+        }
         default:
             UNIMPLIMENTEDPACKET;
             break;

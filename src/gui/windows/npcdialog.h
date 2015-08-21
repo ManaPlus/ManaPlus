@@ -163,6 +163,8 @@ class NpcDialog final : public Window,
 
         void itemRequest(const int size);
 
+        void itemIndexRequest(const int size);
+
         void move(const int amount);
 
         void setVisible(Visible visible) override final;
@@ -278,7 +280,8 @@ class NpcDialog final : public Window,
             NPC_INPUT_LIST,
             NPC_INPUT_STRING,
             NPC_INPUT_INTEGER,
-            NPC_INPUT_ITEM
+            NPC_INPUT_ITEM,
+            NPC_INPUT_ITEM_INDEX
         };
 
         enum NpcActionState
