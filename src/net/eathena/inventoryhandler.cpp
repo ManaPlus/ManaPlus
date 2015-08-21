@@ -909,6 +909,7 @@ void InventoryHandler::processPlayerItemRentalTime(Net::MessageIn &msg)
     const ItemInfo &info = ItemDB::get(id);
     const std::string timeStr = timeDiffToString(seconds);
     NotifyManager::notify(NotifyTypes::RENTAL_TIME_LEFT,
+        // TRANSLATORS: notification message
         strprintf(_("Left %s rental time for item %s."),
         timeStr.c_str(), info.getName().c_str()));
 }
@@ -1155,11 +1156,42 @@ void InventoryHandler::processPlayerIdentified(Net::MessageIn &msg)
 
 void InventoryHandler::processPlayerRefine(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
-
-    msg.readInt16("flag");
-    msg.readInt16("inv index");
-    msg.readInt16("val");
+    const int flag = msg.readInt16("flag");
+    const int index = msg.readInt16("inv index") - INVENTORY_OFFSET;
+    msg.readInt16("refine");
+    const Inventory *const inv = PlayerInfo::getInventory();
+    const Item *item = nullptr;
+    int notifyType;
+    std::string message;
+    std::string itemName;
+    if (inv)
+        item = inv->getItem(index);
+    if (item)
+    {
+        itemName = item->getName();
+    }
+    else
+    {
+        // TRANSLATORS: unknown item
+        itemName = _("Unknown item");
+    }
+    switch (flag)
+    {
+        case 0:
+            notifyType = NotifyTypes::REFINE_SUCCESS;
+            break;
+        case 1:
+            notifyType = NotifyTypes::REFINE_FAILURE;
+            break;
+        case 2:
+            notifyType = NotifyTypes::REFINE_DOWNGRADE;
+            break;
+        default:
+            UNIMPLIMENTEDPACKET;
+            notifyType = NotifyTypes::REFINE_UNKNOWN;
+            break;
+    }
+    NotifyManager::notify(notifyType, itemName);
 }
 
 void InventoryHandler::processPlayerRepairList(Net::MessageIn &msg)

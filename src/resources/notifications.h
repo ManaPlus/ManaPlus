@@ -625,6 +625,22 @@ namespace NotifyManager
             // TRANSLATORS: notification message
             N_("Rental time for %s expired"),
             NotifyFlags::STRING},
+        {"refine success",
+            // TRANSLATORS: notification message
+            N_("Refine success for item %s."),
+            NotifyFlags::STRING},
+        {"refine failure",
+            // TRANSLATORS: notification message
+            N_("Refine failure for item %s."),
+            NotifyFlags::STRING},
+        {"refine downgrade",
+            // TRANSLATORS: notification message
+            N_("Refine failure. Item %s downgraded."),
+            NotifyFlags::STRING},
+        {"refine unknown",
+            // TRANSLATORS: notification message
+            N_("Refine unknown for item %s."),
+            NotifyFlags::STRING},
     };
 }  // namespace NotifyManager
 #endif  // RESOURCES_NOTIFICATIONS_H

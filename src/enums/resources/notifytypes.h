@@ -175,6 +175,10 @@ namespace NotifyTypes
         MAP_TYPE_BATTLEFIELD,
         RENTAL_TIME_LEFT,
         RENTAL_TIME_EXPIRED,
+        REFINE_SUCCESS,
+        REFINE_FAILURE,
+        REFINE_DOWNGRADE,
+        REFINE_UNKNOWN,
 
         TYPE_END
     };
