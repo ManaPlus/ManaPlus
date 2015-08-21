@@ -621,6 +621,10 @@ namespace NotifyManager
         {"rental time left",
             "%s",
             NotifyFlags::STRING},
+        {"rental time expired",
+            // TRANSLATORS: notification message
+            N_("Rental time for %s expired"),
+            NotifyFlags::STRING},
     };
 }  // namespace NotifyManager
 #endif  // RESOURCES_NOTIFICATIONS_H

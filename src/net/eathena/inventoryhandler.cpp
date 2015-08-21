@@ -915,10 +915,24 @@ void InventoryHandler::processPlayerItemRentalTime(Net::MessageIn &msg)
 
 void InventoryHandler::processPlayerItemRentalExpired(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
-    // ++ need remove item from inventory
-    msg.readInt16("index");
-    msg.readInt16("item id");
+    Inventory *const inventory = localPlayer
+        ? PlayerInfo::getInventory() : nullptr;
+
+    const int index = msg.readInt16("index") - INVENTORY_OFFSET;
+    const int id = msg.readInt16("item id");
+    const ItemInfo &info = ItemDB::get(id);
+
+    NotifyManager::notify(NotifyTypes::RENTAL_TIME_EXPIRED,
+        info.getName());
+    if (inventory)
+    {
+        if (Item *const item = inventory->getItem(index))
+        {
+            item->increaseQuantity(-item->getQuantity());
+            inventory->removeItemAt(index);
+            ArrowsListener::distributeEvent();
+        }
+    }
 }
 
 int InventoryHandler::convertFromServerSlot(const int serverSlot) const

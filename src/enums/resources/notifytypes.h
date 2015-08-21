@@ -174,6 +174,7 @@ namespace NotifyTypes
         NEW_MAIL,
         MAP_TYPE_BATTLEFIELD,
         RENTAL_TIME_LEFT,
+        RENTAL_TIME_EXPIRED,
 
         TYPE_END
     };
