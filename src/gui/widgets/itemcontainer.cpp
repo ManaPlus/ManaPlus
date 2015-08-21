@@ -634,7 +634,8 @@ void ItemContainer::mouseReleased(MouseEvent &event)
                 const Item *const item = inventory->getItem(dragDrop.getTag());
                 if (item && !PlayerInfo::isItemProtected(item->getId()))
                 {
-                    mInventory->addItem(item->getId(), item->getType(),
+                    const int index = mInventory->addItem(item->getId(),
+                        item->getType(),
                         1,
                         1,
                         item->getColor(),
@@ -643,6 +644,9 @@ void ItemContainer::mouseReleased(MouseEvent &event)
                         item->getFavorite(),
                         Equipm_false,
                         Equipped_false);
+                    Item *const item2 = mInventory->getItem(index);
+                    if (item2)
+                        item2->setTag(item->getInvIndex());
                 }
             }
             return;
