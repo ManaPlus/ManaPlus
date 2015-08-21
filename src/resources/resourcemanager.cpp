@@ -58,6 +58,7 @@
 
 #include "debug.h"
 
+ResourceManager *resourceManager = nullptr;
 ResourceManager *ResourceManager::instance = nullptr;
 
 ResourceManager::ResourceManager() :
@@ -169,6 +170,12 @@ ResourceManager::~ResourceManager()
     }
     clearDeleted();
     clearScheduled();
+}
+
+void ResourceManager::init()
+{
+    if (!resourceManager)
+        resourceManager = new ResourceManager;
 }
 
 void ResourceManager::cleanUp(Resource *const res)
@@ -949,10 +956,7 @@ void ResourceManager::decRefDelete(Resource *const res)
 
 ResourceManager *ResourceManager::getInstance()
 {
-    // Create a new instance if necessary.
-    if (!instance)
-        instance = new ResourceManager;
-    return instance;
+    return resourceManager;
 }
 
 void ResourceManager::deleteInstance()

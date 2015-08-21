@@ -277,6 +277,7 @@ void Client::gameInit()
         ConfigManager::storeSafeParameters();
 #endif
 
+    ResourceManager::init();
     const ResourceManager *const resman = ResourceManager::getInstance();
     if (!resman->setWriteDir(settings.localDataDir))
     {

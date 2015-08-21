@@ -255,6 +255,8 @@ class ResourceManager final
 
         void clearCache();
 
+        void static init();
+
     private:
         /**
          * Deletes the resource after logging a cleanup message.
@@ -272,5 +274,7 @@ class ResourceManager final
         bool mDestruction;
         bool mUseLongLiveSprites;
 };
+
+extern ResourceManager *resourceManager;
 
 #endif  // RESOURCES_RESOURCEMANAGER_H
