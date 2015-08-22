@@ -1124,9 +1124,9 @@ void ChatHandler::processChatSilence(Net::MessageIn &msg)
 
 void ChatHandler::processChatTalkieBox(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
     msg.readBeingId("being id");
-    msg.readString(80, "message");
+    const std::string message = msg.readString(80, "message");
+    localChatTab->chatLog(message, ChatMsgType::BY_SERVER);
 }
 
 void ChatHandler::processBattleChatMessage(Net::MessageIn &msg)
