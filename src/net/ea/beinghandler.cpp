@@ -394,12 +394,16 @@ void BeingHandler::processPlayerMoveToAttack(Net::MessageIn &msg)
 
 void BeingHandler::processSkillNoDamage(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
-    msg.readInt16("skill id");
-    msg.readInt16("heal");
-    msg.readInt32("dst id");
-    msg.readInt32("src id");
-    msg.readUInt8("fail");
+    const int id = msg.readInt16("skill id");
+    const int heal = msg.readInt16("heal");
+    Being *const dstBeing = actorManager->findBeing(
+        msg.readBeingId("dst being id"));
+    Being *const srcBeing = actorManager->findBeing(
+        msg.readBeingId("src being id"));
+    const int flag = msg.readUInt8("fail");
+
+    if (srcBeing)
+        srcBeing->handleSkill(dstBeing, heal, id, 1);
 }
 
 void BeingHandler::processPvpMapMode(Net::MessageIn &msg)
