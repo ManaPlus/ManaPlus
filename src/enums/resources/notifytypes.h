@@ -202,6 +202,7 @@ namespace NotifyTypes
         UNIGNORE_PLAYER_FAILURE,
         UNIGNORE_PLAYER_UNKNOWN,
         IGNORE_PLAYER_TYPE_UNKNOWN,
+        PET_CATCH_PROCESS,
 
         TYPE_END
     };

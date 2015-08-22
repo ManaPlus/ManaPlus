@@ -349,7 +349,7 @@ void PetHandler::startAi(const bool start A_UNUSED) const
 
 void PetHandler::processPetCatchProcess(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    NotifyManager::notify(NotifyTypes::PET_CATCH_PROCESS);
 }
 
 }  // namespace EAthena

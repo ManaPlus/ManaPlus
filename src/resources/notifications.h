@@ -734,6 +734,10 @@ namespace NotifyManager
             // TRANSLATORS: notification message
             N_("Unknown ignore type."),
             NotifyFlags::EMPTY},
+        {"pet catch process",
+            // TRANSLATORS: notification message
+            N_("Pet catch started."),
+            NotifyFlags::EMPTY},
     };
 }  // namespace NotifyManager
 #endif  // RESOURCES_NOTIFICATIONS_H
