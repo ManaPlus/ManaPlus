@@ -24,10 +24,13 @@
 
 #include "configuration.h"
 #include "game.h"
+#include "notifymanager.h"
 
 #include "being/beingflag.h"
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
+
+#include "enums/resources/notifytypes.h"
 
 #include "gui/onlineplayer.h"
 
@@ -578,9 +581,46 @@ void PlayerHandler::processPlayerHeal(Net::MessageIn &msg)
 
 void PlayerHandler::processPlayerSkillMessage(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
-    // +++ need show this message
-    msg.readInt32("type");
+    const int message = msg.readInt32("type");
+    switch (message)
+    {
+        case 0x15:
+            NotifyManager::notify(NotifyTypes::SKILL_END_ALL_NEGATIVE_STATUS);
+            break;
+        case 0x16:
+            NotifyManager::notify(NotifyTypes::SKILL_IMMUNITY_TO_ALL_STATUSES);
+            break;
+        case 0x17:
+            NotifyManager::notify(NotifyTypes::SKILL_MAX_HP);
+            break;
+        case 0x18:
+            NotifyManager::notify(NotifyTypes::SKILL_MAX_SP);
+            break;
+        case 0x19:
+            NotifyManager::notify(NotifyTypes::SKILL_ALL_STATUS_PLUS_20);
+            break;
+        case 0x1c:
+            NotifyManager::notify(NotifyTypes::SKILL_ENCHANT_WEAPON_HOLY);
+            break;
+        case 0x1d:
+            NotifyManager::notify(NotifyTypes::SKILL_ENCHANT_ARMOR_HOLY);
+            break;
+        case 0x1e:
+            NotifyManager::notify(NotifyTypes::SKILL_DEF_PLUS_25);
+            break;
+        case 0x1f:
+            NotifyManager::notify(NotifyTypes::SKILL_ATTACK_PLUS_100);
+            break;
+        case 0x20:
+            NotifyManager::notify(NotifyTypes::SKILL_FLEE_PLUS_50);
+            break;
+        case 0x28:
+            NotifyManager::notify(NotifyTypes::SKILL_FULL_STRIP_FAILED);
+            break;
+        default:
+            NotifyManager::notify(NotifyTypes::SKILL_MESSAGE_UNKNOWN);
+            break;
+    }
 }
 
 void PlayerHandler::setStat(Net::MessageIn &msg,

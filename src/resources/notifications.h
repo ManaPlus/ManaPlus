@@ -653,6 +653,55 @@ namespace NotifyManager
             // TRANSLATORS: notification message
             N_("Item %s bound to you."),
             NotifyFlags::STRING},
+
+        {"skill end all negative status",
+            // TRANSLATORS: notification message
+            N_("End all negative status."),
+            NotifyFlags::EMPTY},
+        {"skill immunity to all status",
+            // TRANSLATORS: notification message
+            N_("Immunity to all status."),
+            NotifyFlags::EMPTY},
+        {"skill max hp",
+            // TRANSLATORS: notification message
+            N_("Max hp +100%."),
+            NotifyFlags::EMPTY},
+        {"skill max sp",
+            // TRANSLATORS: notification message
+            N_("Max sp +100%."),
+            NotifyFlags::EMPTY},
+        {"skill all stats +20",
+            // TRANSLATORS: notification message
+            N_("All stats +20."),
+            NotifyFlags::EMPTY},
+        {"skill enchant weapon with holy element",
+            // TRANSLATORS: notification message
+            N_("Enchant weapon with holy element."),
+            NotifyFlags::EMPTY},
+        {"skill enchant armor with holy element",
+            // TRANSLATORS: notification message
+            N_("Enchant armor with holy element."),
+            NotifyFlags::EMPTY},
+        {"skill def +25%",
+            // TRANSLATORS: notification message
+            N_("Def +25%."),
+            NotifyFlags::EMPTY},
+        {"skill atk +100%",
+            // TRANSLATORS: notification message
+            N_("Atk +100%."),
+            NotifyFlags::EMPTY},
+        {"skill flee +50",
+            // TRANSLATORS: notification message
+            N_("Flee +50."),
+            NotifyFlags::EMPTY},
+        {"skill full strip failed",
+            // TRANSLATORS: notification message
+            N_("Full strip failed because of coating."),
+            NotifyFlags::EMPTY},
+        {"skill message unknown",
+            // TRANSLATORS: notification message
+            N_("Unknown skill message."),
+            NotifyFlags::EMPTY},
     };
 }  // namespace NotifyManager
 #endif  // RESOURCES_NOTIFICATIONS_H
