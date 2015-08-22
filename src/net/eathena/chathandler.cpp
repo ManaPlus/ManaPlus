@@ -1140,10 +1140,10 @@ void ChatHandler::processBattleChatMessage(Net::MessageIn &msg)
 
 void ChatHandler::processScriptMessage(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
     const int sz = msg.readInt16("len") - 8;
     msg.readBeingId("being id");
-    msg.readString(sz, "message");
+    const std::string message = msg.readString(sz, "message");
+    localChatTab->chatLog(message, ChatMsgType::BY_SERVER);
 }
 
 void ChatHandler::leaveChatRoom() const
