@@ -186,7 +186,7 @@ void TradeHandler::processTradeItemAdd(Net::MessageIn &msg)
     const int itemType = msg.readUInt8("item type");
     const int amount = msg.readInt32("amount");
     const uint8_t identify = msg.readUInt8("identify");
-    msg.readUInt8("attribute");
+    const Damaged damaged = fromBool(msg.readUInt8("attribute"), Damaged);
     const uint8_t refine = msg.readUInt8("refine");
     int cards[4];
     for (int f = 0; f < 4; f++)
@@ -209,7 +209,7 @@ void TradeHandler::processTradeItemAdd(Net::MessageIn &msg)
                 refine,
                 ItemColorManager::getColorFromCards(&cards[0]),
                 fromBool(identify, Identified),
-                Damaged_false,
+                damaged,
                 Favorite_false,
                 Equipm_false);
         }

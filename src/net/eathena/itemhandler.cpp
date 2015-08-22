@@ -26,6 +26,8 @@
 #include "itemcolormanager.h"
 #include "logger.h"
 
+#include "enums/simpletypes/damaged.h"
+
 #include "net/eathena/protocol.h"
 
 #include "debug.h"
@@ -123,7 +125,7 @@ void ItemHandler::processItemDropped2(Net::MessageIn &msg)
     const int itemType = msg.readUInt8("type");
     const Identified identified = fromInt(
         msg.readUInt8("identify"), Identified);
-    msg.readUInt8("attribute");
+    const Damaged damaged = fromBool(msg.readUInt8("attribute"), Damaged);
     const uint8_t refine = msg.readUInt8("refine");
     int cards[4];
     for (int f = 0; f < 4; f++)
@@ -208,7 +210,7 @@ void ItemHandler::processItemVisible2(Net::MessageIn &msg)
     const int itemType = msg.readUInt8("type");
     const Identified identified = fromInt(
         msg.readUInt8("identify"), Identified);
-    msg.readUInt8("attribute");
+    const Damaged damaged = fromBool(msg.readUInt8("attribute"), Damaged);
     const uint8_t refine = msg.readUInt8("refine");
     int cards[4];
     for (int f = 0; f < 4; f++)

@@ -803,7 +803,7 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
     const int itemId = msg.readInt16("item id");
     const int itemType = msg.readUInt8("type");
     const unsigned char identified = msg.readUInt8("identify");
-    msg.readUInt8("attribute");
+    const Damaged damaged = fromBool(msg.readUInt8("attribute"), Damaged);
     const uint8_t refine = msg.readUInt8("refine");
     int cards[4];
     for (int f = 0; f < 4; f++)
@@ -826,7 +826,7 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
                 refine,
                 color,
                 fromBool(identified, Identified),
-                Damaged_false,
+                damaged,
                 Favorite_false,
                 Equipm_false,
                 Equipped_false);
@@ -1013,7 +1013,7 @@ void InventoryHandler::processPlayerCartAdd(Net::MessageIn &msg)
     const int itemId = msg.readInt16("item id");
     const int itemType = msg.readUInt8("item type");
     uint8_t identified = msg.readUInt8("identified");
-    msg.readUInt8("attribute");
+    const Damaged damaged = fromBool(msg.readUInt8("attribute"), Damaged);
     const uint8_t refine = msg.readUInt8("refine");
     int cards[4];
     for (int f = 0; f < 4; f++)
@@ -1033,7 +1033,7 @@ void InventoryHandler::processPlayerCartAdd(Net::MessageIn &msg)
             refine,
             ItemColorManager::getColorFromCards(&cards[0]),
             fromBool(identified, Identified),
-            Damaged_false,
+            damaged,
             Favorite_false,
             Equipm_false,
             Equipped_false);
