@@ -641,6 +641,14 @@ namespace NotifyManager
             // TRANSLATORS: notification message
             N_("Refine unknown for item %s."),
             NotifyFlags::STRING},
+        {"cart add weight error",
+            // TRANSLATORS: notification message
+            N_("You can't add item to card because weight too high."),
+            NotifyFlags::EMPTY},
+        {"cart add count error",
+            // TRANSLATORS: notification message
+            N_("You can't add item to card because too many items."),
+            NotifyFlags::EMPTY},
     };
 }  // namespace NotifyManager
 #endif  // RESOURCES_NOTIFICATIONS_H

@@ -179,6 +179,8 @@ namespace NotifyTypes
         REFINE_FAILURE,
         REFINE_DOWNGRADE,
         REFINE_UNKNOWN,
+        CART_ADD_WEIGHT_ERROR,
+        CART_ADD_COUNT_ERROR,
 
         TYPE_END
     };

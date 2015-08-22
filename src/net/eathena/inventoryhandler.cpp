@@ -1278,9 +1278,17 @@ void InventoryHandler::processFavoriteItem(Net::MessageIn &msg)
 
 void InventoryHandler::processCartAddError(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
-
-    msg.readUInt8("flag");
+    switch(msg.readUInt8("flag"))
+    {
+        case 0:
+            NotifyManager::notify(NotifyTypes::CART_ADD_WEIGHT_ERROR);
+            break;
+        case 1:
+            NotifyManager::notify(NotifyTypes::CART_ADD_COUNT_ERROR);
+            break;
+        default:
+            break;
+    }
 }
 
 void InventoryHandler::processBindItem(Net::MessageIn &msg)
