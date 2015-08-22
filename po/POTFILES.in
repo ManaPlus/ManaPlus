@@ -148,6 +148,7 @@ src/net/ea/network.cpp
 src/net/eathena/charserverhandler.cpp
 src/net/eathena/chathandler.cpp
 src/net/eathena/generalhandler.cpp
+src/net/eathena/inventoryhandler.cpp
 src/net/eathena/itemflags.h
 src/net/eathena/loginhandler.cpp
 src/net/eathena/mailhandler.cpp
@@ -174,5 +175,6 @@ src/resources/modinfo.cpp
 src/resources/notifications.h
 src/utils/booleanoptions.h
 src/utils/gettext.h
+src/utils/stringutils.cpp
 src/utils/stringutils.h
 src/utils/xml.cpp

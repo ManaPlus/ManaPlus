@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Andrei Karas <akaras@inbox.ru>, 2011
+# Pak Long Wu <paklongwu1006@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2015-08-14 22:58+0300\n"
-"PO-Revision-Date: 2015-08-15 09:12+0000\n"
-"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"PO-Revision-Date: 2015-08-22 00:16+0000\n"
+"Last-Translator: Pak Long Wu <paklongwu1006@gmail.com>\n"
 "Language-Team: Chinese (Hong Kong) (http://www.transifex.com/akaras/manaplus/language/zh_HK/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,7 +22,7 @@ msgstr ""
 #. TRANSLATORS: file uploaded message
 #: src/actions/actions.cpp:158
 msgid "File uploaded"
-msgstr ""
+msgstr "檔案上載成功"
 
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: edit dialog label
@@ -63,100 +64,100 @@ msgstr "確定"
 #. TRANSLATORS: clear fonts cache message
 #: src/actions/actions.cpp:1008 src/actions/actions.cpp:1021
 msgid "Cache cleaned"
-msgstr ""
+msgstr "緩存清理成功"
 
 #. TRANSLATORS: uptime command
 #: src/actions/actions.cpp:1159 src/actions/actions.cpp:1216
 #, c-format
 msgid "Client uptime: %s"
-msgstr ""
+msgstr "客戶端已開啟： %s"
 
 #. TRANSLATORS: uptime command
 #: src/actions/actions.cpp:1171
 #, c-format
 msgid "%d week"
-msgstr ""
+msgstr "%d 星期"
 
 #: src/actions/actions.cpp:1171
 #, c-format
 msgid "%d weeks"
-msgstr ""
+msgstr "%d 星期"
 
 #. TRANSLATORS: uptime command
 #: src/actions/actions.cpp:1182
 #, c-format
 msgid "%d day"
-msgstr ""
+msgstr "%d 日"
 
 #: src/actions/actions.cpp:1182
 #, c-format
 msgid "%d days"
-msgstr ""
+msgstr "%d 日"
 
 #. TRANSLATORS: uptime command
 #: src/actions/actions.cpp:1192
 #, c-format
 msgid "%d hour"
-msgstr ""
+msgstr "%d 小時"
 
 #: src/actions/actions.cpp:1192
 #, c-format
 msgid "%d hours"
-msgstr ""
+msgstr "%d 小時"
 
 #. TRANSLATORS: uptime command
 #: src/actions/actions.cpp:1202
 #, c-format
 msgid "%d minute"
-msgstr ""
+msgstr "%d 分鐘"
 
 #: src/actions/actions.cpp:1202
 #, c-format
 msgid "%d minutes"
-msgstr ""
+msgstr "%d 分鐘"
 
 #. TRANSLATORS: uptime command
 #: src/actions/actions.cpp:1212
 #, c-format
 msgid "%d second"
-msgstr ""
+msgstr "%d 秒"
 
 #: src/actions/actions.cpp:1212
 #, c-format
 msgid "%d seconds"
-msgstr ""
+msgstr "%d 秒"
 
 #. TRANSLATORS: dump command
 #: src/actions/actions.cpp:1274 src/actions/actions.cpp:1283
 msgid "Resource images:"
-msgstr ""
+msgstr "來源影像："
 
 #. TRANSLATORS: dump command
 #: src/actions/actions.cpp:1277 src/actions/actions.cpp:1287
 msgid "Resource orphaned images:"
-msgstr ""
+msgstr "來源孤立影像："
 
 #. TRANSLATORS: dump environment command
 #: src/actions/actions.cpp:1378
 msgid "Environment variables dumped"
-msgstr ""
+msgstr "環境變量轉儲成功"
 
 #: src/actions/actions.cpp:1505
 msgid "Uploaded config into:"
-msgstr ""
+msgstr "已把配置上傳至："
 
 #: src/actions/actions.cpp:1514
 msgid "Uploaded server config into:"
-msgstr ""
+msgstr "已把伺服器配置上傳至："
 
 #: src/actions/actions.cpp:1523
 msgid "Uploaded log into:"
-msgstr ""
+msgstr "已把日誌上傳至："
 
 #. TRANSLATORS: whisper send
 #: src/actions/chat.cpp:256
 msgid "Cannot send empty whispers!"
-msgstr ""
+msgstr "不能發送空白的悄悄話！"
 
 #. TRANSLATORS: new whisper or channel query
 #: src/actions/chat.cpp:305
@@ -168,12 +169,12 @@ msgstr ""
 #. TRANSLATORS: chat error message
 #: src/actions/chat.cpp:330 src/gui/widgets/tabs/chat/partytab.cpp:71
 msgid "Party name is missing."
-msgstr ""
+msgstr "欠缺隊伍名稱。`"
 
 #. TRANSLATORS: create guild message
 #: src/actions/chat.cpp:353
 msgid "Guild name is missing."
-msgstr ""
+msgstr "欠缺公會名稱。`"
 
 #. TRANSLATORS: party invite message
 #. TRANSLATORS: guild invite message
@@ -182,213 +183,213 @@ msgstr ""
 #: src/actions/chat.cpp:375 src/actions/chat.cpp:406 src/actions/chat.cpp:478
 #: src/actions/chat.cpp:513 src/actions/commands.cpp:82
 msgid "Please specify a name."
-msgstr ""
+msgstr "請指定一個名字。"
 
 #: src/actions/chat.cpp:426
 msgid "Return toggles chat."
-msgstr ""
+msgstr "確認鍵切換聊天。"
 
 #: src/actions/chat.cpp:426
 msgid "Message closes chat."
-msgstr ""
+msgstr "訊息關閉聊天。"
 
 #. TRANSLATORS: message from toggle chat command
 #: src/actions/chat.cpp:438
 msgid "Return now toggles chat."
-msgstr ""
+msgstr "確認鍵現在會切換聊天。"
 
 #. TRANSLATORS: message from toggle chat command
 #: src/actions/chat.cpp:448
 msgid "Message now closes chat."
-msgstr ""
+msgstr "訊息現在會關閉聊天。"
 
 #: src/actions/chat.cpp:598
 #, c-format
 msgid "equipped hat %s."
-msgstr ""
+msgstr "已準備帽子 %s。"
 
 #. TRANSLATORS: change relation
 #: src/actions/commands.cpp:125
 #, c-format
 msgid "Player already %s!"
-msgstr ""
+msgstr "玩家已經 %s！"
 
 #. TRANSLATORS: change relation
 #: src/actions/commands.cpp:138
 #, c-format
 msgid "Player successfully %s!"
-msgstr ""
+msgstr "玩家成功 %s！"
 
 #. TRANSLATORS: change relation
 #: src/actions/commands.cpp:140
 #, c-format
 msgid "Player could not be %s!"
-msgstr ""
+msgstr "玩家不能被 %s！"
 
 #. TRANSLATORS: unignore command
 #: src/actions/commands.cpp:175
 msgid "Player wasn't ignored!"
-msgstr ""
+msgstr "玩家沒有被忽略！"
 
 #. TRANSLATORS: unignore command
 #: src/actions/commands.cpp:184
 msgid "Player no longer ignored!"
-msgstr ""
+msgstr "玩家不再被忽略！"
 
 #. TRANSLATORS: unignore command
 #: src/actions/commands.cpp:186
 msgid "Player could not be unignored!"
-msgstr ""
+msgstr "玩家不能被忽略！"
 
 #. TRANSLATORS: erase command
 #: src/actions/commands.cpp:201
 msgid "Player already erased!"
-msgstr ""
+msgstr "玩家已經擦去！"
 
 #. TRANSLATORS: erase command
 #: src/actions/commands.cpp:214
 msgid "Player no longer erased!"
-msgstr ""
+msgstr "玩家不再被擦去！"
 
 #. TRANSLATORS: erase command
 #: src/actions/commands.cpp:216
 msgid "Player could not be erased!"
-msgstr ""
+msgstr "玩家不能被擦去！"
 
 #. TRANSLATORS: adding friend command
 #: src/actions/commands.cpp:223
 msgid "friend"
-msgstr ""
+msgstr "朋友"
 
 #. TRANSLATORS: disregard command
 #: src/actions/commands.cpp:230
 msgid "disregarded"
-msgstr ""
+msgstr "被忽略"
 
 #. TRANSLATORS: neutral command
 #: src/actions/commands.cpp:237
 msgid "neutral"
-msgstr ""
+msgstr "中立"
 
 #. TRANSLATORS: blacklist command
 #: src/actions/commands.cpp:244
 msgid "blacklisted"
-msgstr ""
+msgstr "被列入黑名單"
 
 #. TRANSLATORS: enemy command
 #: src/actions/commands.cpp:251
 msgid "enemy"
-msgstr ""
+msgstr "冤家"
 
 #. TRANSLATORS: result from command /confget
 #: src/actions/commands.cpp:1012
 #, c-format
 msgid "Config value: %s"
-msgstr ""
+msgstr "配置數值：%s"
 
 #. TRANSLATORS: result from command /serverconfget
 #: src/actions/commands.cpp:1025
 #, c-format
 msgid "Server config value: %s"
-msgstr ""
+msgstr "伺服器配置數值：%s"
 
 #: src/actions/pets.cpp:109
 msgid "Rename your pet"
-msgstr ""
+msgstr "重新命名你的寵物"
 
 #. TRANSLATORS: disable trades message
 #: src/actions/statusbar.cpp:177
 msgid "Ignoring incoming trade requests"
-msgstr ""
+msgstr "正在忽略傳入的交易請求"
 
 #. TRANSLATORS: enable trades message
 #: src/actions/statusbar.cpp:187
 msgid "Accepting incoming trade requests"
-msgstr ""
+msgstr "正在接受傳入的交易請求"
 
 #. TRANSLATORS: quick tab in settings
 #: src/actions/windows.cpp:322 src/gui/widgets/tabs/setup_quick.cpp:45
 msgid "Quick"
-msgstr ""
+msgstr "快速"
 
 #. TRANSLATORS: visible beings on map
 #: src/actormanager.cpp:1381
 msgid "Visible on map"
-msgstr ""
+msgstr "在地圖上可見"
 
 #. TRANSLATORS: default race name
 #: src/being/being.cpp:448
 msgid "Human"
-msgstr ""
+msgstr "人類"
 
 #: src/being/being.cpp:625
 msgid "dodge"
-msgstr ""
+msgstr "閃避"
 
 #: src/being/being.cpp:625
 msgid "miss"
-msgstr ""
+msgstr "失誤"
 
 #. TRANSLATORS: this away status writed in player nick
 #: src/being/being.cpp:2134 src/gui/windows/whoisonline.cpp:871
 msgid "A"
-msgstr ""
+msgstr "A"
 
 #. TRANSLATORS: this inactive status writed in player nick
 #: src/being/being.cpp:2139 src/gui/windows/whoisonline.cpp:876
 msgid "I"
-msgstr ""
+msgstr "I"
 
 #. TRANSLATORS: chat message after death
 #: src/being/localplayer.cpp:381
 #, c-format
 msgid "You were killed by %s."
-msgstr ""
+msgstr "你已被 %s 殺死，"
 
 #. TRANSLATORS: pickup error message
 #: src/being/localplayer.cpp:837
 msgid "Tried to pick up nonexistent item."
-msgstr ""
+msgstr "曾試圖拿起不存在的物品。"
 
 #. TRANSLATORS: pickup error message
 #: src/being/localplayer.cpp:841
 msgid "Item is too heavy."
-msgstr ""
+msgstr "該物品太重。"
 
 #. TRANSLATORS: pickup error message
 #: src/being/localplayer.cpp:845
 msgid "Item is too far away."
-msgstr ""
+msgstr "該物品太遠。"
 
 #. TRANSLATORS: pickup error message
 #: src/being/localplayer.cpp:849
 msgid "Inventory is full."
-msgstr ""
+msgstr "背包已滿。"
 
 #. TRANSLATORS: pickup error message
 #: src/being/localplayer.cpp:853
 msgid "Stack is too big."
-msgstr ""
+msgstr "數目太大。"
 
 #. TRANSLATORS: pickup error message
 #: src/being/localplayer.cpp:857
 msgid "Item belongs to someone else."
-msgstr ""
+msgstr "該物品屬於其他人。"
 
 #. TRANSLATORS: pickup error message
 #: src/being/localplayer.cpp:861
 msgid "You can't pickup this amount of items."
-msgstr ""
+msgstr "你不能拿起這個數量的物品。"
 
 #. TRANSLATORS: pickup error message
 #: src/being/localplayer.cpp:865
 msgid "Your item stack has max amount."
-msgstr ""
+msgstr "你的物品數量已達最大限額。"
 
 #. TRANSLATORS: pickup error message
 #: src/being/localplayer.cpp:872
 msgid "Unknown problem picking up item."
-msgstr ""
+msgstr "拿起物品時遇到不明錯誤。"
 
 #. TRANSLATORS: %d is number,
 #. [@@%d|%s@@] - here player can see link to item
@@ -396,60 +397,60 @@ msgstr ""
 #, c-format
 msgid "You picked up %d [@@%d|%s@@]."
 msgid_plural "You picked up %d [@@%d|%s@@]."
-msgstr[0] ""
+msgstr[0] "你拿起了 %d [@@%d|%s@@]。"
 
 #. TRANSLATORS: this is normal experience
 #. TRANSLATORS: get xp message
 #: src/being/localplayer.cpp:1068 src/being/localplayer.cpp:1069
 #: src/being/localplayer.cpp:1095
 msgid "xp"
-msgstr ""
+msgstr "經驗值"
 
 #. TRANSLATORS: this is job experience
 #: src/being/localplayer.cpp:1073 src/being/localplayer.cpp:1079
 #: src/being/localplayer.cpp:1085
 msgid "job"
-msgstr ""
+msgstr "勞動值"
 
 #. TRANSLATORS: get hp message
 #: src/being/localplayer.cpp:1104
 msgid "hp"
-msgstr ""
+msgstr "生命值"
 
 #. TRANSLATORS: get hp message
 #: src/being/localplayer.cpp:1113
 msgid "mana"
-msgstr ""
+msgstr "法力值"
 
 #. TRANSLATORS: follow command message
 #: src/being/localplayer.cpp:2187
 #, c-format
 msgid "Follow: %s"
-msgstr ""
+msgstr "跟隨： %s"
 
 #. TRANSLATORS: follow command message
 #. TRANSLATORS: cancel follow message
 #: src/being/localplayer.cpp:2193 src/being/localplayer.cpp:2218
 msgid "Follow canceled"
-msgstr ""
+msgstr "已取消跟隨。"
 
 #. TRANSLATORS: imitate command message
 #: src/being/localplayer.cpp:2203
 #, c-format
 msgid "Imitation: %s"
-msgstr ""
+msgstr "模仿：%s"
 
 #. TRANSLATORS: imitate command message
 #. TRANSLATORS: cancel follow message
 #: src/being/localplayer.cpp:2209 src/being/localplayer.cpp:2223
 msgid "Imitation canceled"
-msgstr ""
+msgstr "已取消模仿。"
 
 #. TRANSLATORS: wait player/monster message
 #: src/being/localplayer.cpp:2573
 #, c-format
 msgid "You see %s"
-msgstr ""
+msgstr "你看到 %s"
 
 #. TRANSLATORS: ignore/unignore action
 #. TRANSLATORS: popup menu item
@@ -459,27 +460,27 @@ msgstr ""
 #: src/being/playerrelations.cpp:469 src/gui/popups/popupmenu.cpp:2308
 #: src/gui/popups/popupmenu.cpp:2350
 msgid "Completely ignore"
-msgstr ""
+msgstr "完全忽略"
 
 #. TRANSLATORS: ignore/unignore action
 #: src/being/playerrelations.cpp:486
 msgid "Print '...'"
-msgstr ""
+msgstr "打印 '...'"
 
 #. TRANSLATORS: ignore/unignore action
 #: src/being/playerrelations.cpp:509
 msgid "Blink name"
-msgstr ""
+msgstr "閃爍名字"
 
 #. TRANSLATORS: ignore strategi
 #: src/being/playerrelations.cpp:555
 msgid "Floating '...' bubble"
-msgstr ""
+msgstr "浮動的 '...' 泡泡"
 
 #. TRANSLATORS: ignore strategi
 #: src/being/playerrelations.cpp:559
 msgid "Floating bubble"
-msgstr ""
+msgstr "浮動的泡泡"
 
 #. TRANSLATORS: setup tab quick button
 #. TRANSLATORS: full button name
@@ -494,7 +495,7 @@ msgstr "設定"
 #: src/client.cpp:813 src/dyetool/client.cpp:473
 #: src/gui/widgets/tabs/setup_perfomance.cpp:54
 msgid "Performance"
-msgstr ""
+msgstr "性能"
 
 #. TRANSLATORS: video tab quick button
 #. TRANSLATORS: video settings tab name
@@ -508,12 +509,12 @@ msgstr "顯示"
 #: src/client.cpp:819 src/dyetool/client.cpp:479
 #: src/gui/widgets/tabs/setup_theme.cpp:121
 msgid "Theme"
-msgstr ""
+msgstr "主題"
 
 #. TRANSLATORS: theme tab quick button
 #: src/client.cpp:822 src/dyetool/client.cpp:482
 msgid "About"
-msgstr ""
+msgstr "關於"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: help window name
@@ -552,32 +553,32 @@ msgstr "關閉"
 #. TRANSLATORS: connection dialog header
 #: src/client.cpp:1048 src/gui/windowmanager_unittest.cc:145
 msgid "Connecting to server"
-msgstr ""
+msgstr "正在連接到伺服器"
 
 #. TRANSLATORS: connection dialog header
 #: src/client.cpp:1094 src/gui/windowmanager_unittest.cc:162
 msgid "Logging in"
-msgstr ""
+msgstr "正在登入"
 
 #. TRANSLATORS: connection dialog header
 #: src/client.cpp:1143
 msgid "Entering game world"
-msgstr ""
+msgstr "正在進入遊戲"
 
 #. TRANSLATORS: connection dialog header
 #: src/client.cpp:1278
 msgid "Requesting characters"
-msgstr ""
+msgstr "正在查詢角色"
 
 #. TRANSLATORS: connection dialog header
 #: src/client.cpp:1318
 msgid "Connecting to the game server"
-msgstr ""
+msgstr "正在連接到遊戲伺服器"
 
 #. TRANSLATORS: connection dialog header
 #: src/client.cpp:1330
 msgid "Changing game servers"
-msgstr ""
+msgstr "正在轉換遊戲伺服器"
 
 #. TRANSLATORS: error dialog header
 #. TRANSLATORS: change email error header
@@ -608,207 +609,207 @@ msgstr "錯誤"
 #. TRANSLATORS: connection dialog header
 #: src/client.cpp:1424
 msgid "Requesting registration details"
-msgstr ""
+msgstr "正在查詢註冊的詳細信息"
 
 #. TRANSLATORS: password change message header
 #: src/client.cpp:1471
 msgid "Password Change"
-msgstr ""
+msgstr "更改密碼"
 
 #. TRANSLATORS: password change message text
 #: src/client.cpp:1473
 msgid "Password changed successfully!"
-msgstr ""
+msgstr "成功更改密碼！"
 
 #. TRANSLATORS: email change message header
 #: src/client.cpp:1505
 msgid "Email Change"
-msgstr ""
+msgstr "更改電郵地址"
 
 #. TRANSLATORS: email change message text
 #: src/client.cpp:1507
 msgid "Email changed successfully!"
-msgstr ""
+msgstr "成功更改電郵地址！"
 
 #. TRANSLATORS: unregister message header
 #: src/client.cpp:1541
 msgid "Unregister Successful"
-msgstr ""
+msgstr "取消註冊成功"
 
 #. TRANSLATORS: unregister message text
 #: src/client.cpp:1543
 msgid "Farewell, come back any time..."
-msgstr ""
+msgstr "再見了，隨時回來吧..."
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:42
 msgid "manaplus [options] [manaplus-file]"
-msgstr ""
+msgstr "manaplus [options] [manaplus-file]"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:44
 msgid "[manaplus-file] : The manaplus file is an XML file (.manaplus)"
-msgstr ""
+msgstr "[manaplus-file] : 這個 manaplus 檔案是一個 XML 檔案 (.manaplus)"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:47
 msgid "                  used to set custom parameters"
-msgstr ""
+msgstr "用於設置自定義參數"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:49
 msgid "                  to the manaplus client."
-msgstr ""
+msgstr "至manaplus 客戶端。"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:52
 msgid "Options:"
-msgstr ""
+msgstr "選項："
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:54
 msgid "  -l --log-file       : Log file to use"
-msgstr ""
+msgstr "-l --log-file：使用的日誌文件"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:56
 msgid "  -a --chat-log-dir   : Chat log dir to use"
-msgstr ""
+msgstr "-a --chat-log-dir：使用的聊天記錄目錄"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:58
 msgid "  -v --version        : Display the version"
-msgstr ""
+msgstr "-v --version：顯示軟件版本"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:60
 msgid "  -h --help           : Display this help"
-msgstr ""
+msgstr "-h --help：顯示這幫助"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:62
 msgid "  -C --config-dir     : Configuration directory to use"
-msgstr ""
+msgstr "-C --config-dir：使用的配置目錄"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:65
 msgid "  -U --username       : Login with this username"
-msgstr ""
+msgstr "-U --username：使用的用戶名稱"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:67
 msgid "  -P --password       : Login with this password"
-msgstr ""
+msgstr "-P --password：使用的密碼"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:69
 msgid "  -c --character      : Login with this character"
-msgstr ""
+msgstr "-c --character：使用的角色"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:71
 msgid "  -s --server         : Login server name or IP"
-msgstr ""
+msgstr "-s --server：登錄的伺服器名稱或IP"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:73
 msgid "  -y --server-type    : Login server type"
-msgstr ""
+msgstr "-y --server-type：登錄的伺服器種類"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:75
 msgid "  -p --port           : Login server port"
-msgstr ""
+msgstr "-p --port：登錄的伺服器端口"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:77
 msgid "  -H --update-host    : Use this update host"
-msgstr ""
+msgstr "-H --update-host：使用此更新主機"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:79
 msgid "  -D --default        : Choose default character server and character"
-msgstr ""
+msgstr "-D --default：選擇默認的角色服務器和角色"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:82
 msgid "  -u --skip-update    : Skip the update downloads"
-msgstr ""
+msgstr "-u --skip-update：跳過更新下載"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:84
 msgid "  -d --data           : Directory to load game data from"
-msgstr ""
+msgstr "-d --data：加載遊戲數據的目錄"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:87
 msgid "  -L --localdata-dir  : Directory to use as local data directory"
-msgstr ""
+msgstr "-L --localdata-dir：加載遊戲本地數據的目錄"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:90
 msgid "     --screenshot-dir : Directory to store screenshots"
-msgstr ""
+msgstr "--screenshot-dir：儲存截圖的目錄"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:93
 msgid "     --safemode       : Start game in safe mode"
-msgstr ""
+msgstr "--safemode：用安全模式開啟遊戲"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:95
 msgid "     --renderer       : Set renderer type"
-msgstr ""
+msgstr "--renderer：設置渲染器類型"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:97
 msgid "  -T --tests          : Start testing drivers and auto configuring"
-msgstr ""
+msgstr "-T --tests：開始測試驅動器和自動配置"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:101
 msgid "  -O --no-opengl      : Disable OpenGL for this session"
-msgstr ""
+msgstr "-O --no-opengl：在這次指令禁用OpenGL"
 
 #. TRANSLATORS: directory creation error
 #: src/configmanager.cpp:53 src/dirs.cpp:352 src/dirs.cpp:367 src/dirs.cpp:412
 #: src/dirs.cpp:580 src/dirs.cpp:588
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
-msgstr ""
+msgstr "%s 不存在且無法創建！正在退出。"
 
 #. TRANSLATORS: update server initialisation error
 #: src/dirs.cpp:462
 #, c-format
 msgid "Invalid update host: %s."
-msgstr ""
+msgstr "無效的更新主機：%s。"
 
 #. TRANSLATORS: update server initialisation error
 #: src/dirs.cpp:503 src/dirs.cpp:510
 msgid "Error creating updates directory!"
-msgstr ""
+msgstr "創建更新的目錄時遇到錯誤！"
 
 #: src/dirs.cpp:532 src/dirs.cpp:550
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
-msgstr ""
+msgstr "錯誤：%s 不存在且無法創建！正在退出。"
 
 #: src/dyetool/dyemain.cpp:47
 msgid "dyecmd srcfile dyestring dstfile"
-msgstr ""
+msgstr "dyecmd srcfile dyestring dstfile"
 
 #: src/dyetool/dyemain.cpp:48
 msgid "or"
-msgstr ""
+msgstr "or"
 
 #: src/dyetool/dyemain.cpp:49
 msgid "dyecmd srcdyestring dstfile"
-msgstr ""
+msgstr "dyecmd srcdyestring dstfile"
 
 #. TRANSLATORS: chat tab header
 #: src/game.cpp:253 src/gui/windows/chatwindow.cpp:2189
 msgid "General"
-msgstr ""
+msgstr "一般"
 
 #. TRANSLATORS: chat tab header
 #. TRANSLATORS: full button name
@@ -816,347 +817,347 @@ msgstr ""
 #: src/game.cpp:260 src/gui/windowmenu.cpp:163
 #: src/gui/windows/debugwindow.cpp:43
 msgid "Debug"
-msgstr ""
+msgstr "調試"
 
 #. TRANSLATORS: save file message
 #: src/game.cpp:559
 #, c-format
 msgid "Screenshot saved as %s"
-msgstr ""
+msgstr "截圖已保存為 %s"
 
 #. TRANSLATORS: save file message
 #: src/game.cpp:569
 msgid "Saving screenshot failed!"
-msgstr ""
+msgstr "保存截圖失敗！"
 
 #. TRANSLATORS: error message text
 #: src/game.cpp:654
 msgid "The connection to the server was lost."
-msgstr ""
+msgstr "與服務器的連接中斷。"
 
 #. TRANSLATORS: error message header
 #: src/game.cpp:657
 msgid "Network Error"
-msgstr ""
+msgstr "網絡錯誤"
 
 #. TRANSLATORS: move type in status bar
 #: src/gamemodifiers.cpp:149
 msgid "(D) default moves"
-msgstr ""
+msgstr "(D) 默認動作"
 
 #. TRANSLATORS: move type in status bar
 #: src/gamemodifiers.cpp:151
 msgid "(I) invert moves"
-msgstr ""
+msgstr "(I) 翻轉動作"
 
 #. TRANSLATORS: move type in status bar
 #: src/gamemodifiers.cpp:153
 msgid "(c) moves with some crazy moves"
-msgstr ""
+msgstr "(c) 移動時帶有一些瘋狂動作"
 
 #. TRANSLATORS: move type in status bar
 #: src/gamemodifiers.cpp:155
 msgid "(C) moves with crazy moves"
-msgstr ""
+msgstr "(C) 移動時帶有瘋狂動作"
 
 #. TRANSLATORS: move type in status bar
 #: src/gamemodifiers.cpp:157
 msgid "(d) double normal + crazy"
-msgstr ""
+msgstr "(d) 雙重正常+瘋狂"
 
 #. TRANSLATORS: move type in status bar
 #: src/gamemodifiers.cpp:159
 msgid "(?) unknown move"
-msgstr ""
+msgstr "(?) 未知動作"
 
 #. TRANSLATORS: crazy move type in status bar
 #: src/gamemodifiers.cpp:184
 #, c-format
 msgid "(%u) crazy move number %u"
-msgstr ""
+msgstr "(%u) %u 號瘋狂動作"
 
 #. TRANSLATORS: crazy move type in status bar
 #: src/gamemodifiers.cpp:190
 msgid "(a) custom crazy move"
-msgstr ""
+msgstr "(a) 自訂瘋狂動作"
 
 #. TRANSLATORS: crazy move type in status bar
 #: src/gamemodifiers.cpp:195
 msgid "(?) crazy move"
-msgstr ""
+msgstr "(?) 瘋狂動作"
 
 #. TRANSLATORS: move to target type in status bar
 #: src/gamemodifiers.cpp:202
 msgid "(0) default moves to target"
-msgstr ""
+msgstr "(0) 默認移動至目標"
 
 #. TRANSLATORS: move to target type in status bar
 #: src/gamemodifiers.cpp:204
 msgid "(1) moves to target in distance 1"
-msgstr ""
+msgstr "(1) 移動至目標的1格外"
 
 #. TRANSLATORS: move to target type in status bar
 #: src/gamemodifiers.cpp:206
 msgid "(2) moves to target in distance 2"
-msgstr ""
+msgstr "(2) 移動至目標的2格外"
 
 #. TRANSLATORS: move to target type in status bar
 #: src/gamemodifiers.cpp:208
 msgid "(3) moves to target in distance 3"
-msgstr ""
+msgstr "(3) 移動至目標的3格外"
 
 #. TRANSLATORS: move to target type in status bar
 #: src/gamemodifiers.cpp:210
 msgid "(4) moves to target in distance 4"
-msgstr ""
+msgstr "(4) 移動至目標的4格外"
 
 #. TRANSLATORS: move to target type in status bar
 #: src/gamemodifiers.cpp:212
 msgid "(5) moves to target in distance 5"
-msgstr ""
+msgstr "(5) 移動至目標的5格外"
 
 #. TRANSLATORS: move to target type in status bar
 #: src/gamemodifiers.cpp:214
 msgid "(6) moves to target in distance 6"
-msgstr ""
+msgstr "(6) 移動至目標的6格外"
 
 #. TRANSLATORS: move to target type in status bar
 #: src/gamemodifiers.cpp:216
 msgid "(7) moves to target in distance 7"
-msgstr ""
+msgstr "(7) 移動至目標的7格外"
 
 #. TRANSLATORS: move to target type in status bar
 #: src/gamemodifiers.cpp:218
 msgid "(8) moves to target in distance 8"
-msgstr ""
+msgstr "(8) 移動至目標的8格外"
 
 #. TRANSLATORS: move to target type in status bar
 #: src/gamemodifiers.cpp:220
 msgid "(9) moves to target in distance 9"
-msgstr ""
+msgstr "(9) 移動至目標的9格外"
 
 #. TRANSLATORS: move to target type in status bar
 #: src/gamemodifiers.cpp:222
 msgid "(A) moves to target in attack range"
-msgstr ""
+msgstr "(A) 移動至對目標的攻擊範圍"
 
 #. TRANSLATORS: move to target type in status bar
 #: src/gamemodifiers.cpp:224
 msgid "(a) archer attack range"
-msgstr ""
+msgstr "(a) 弓箭手攻擊範圍"
 
 #. TRANSLATORS: move to target type in status bar
 #: src/gamemodifiers.cpp:226
 msgid "(B) moves to target in attack range - 1"
-msgstr ""
+msgstr "(B) 移動至對目標的攻擊範圍-1格"
 
 #. TRANSLATORS: move to target type in status bar
 #: src/gamemodifiers.cpp:228
 msgid "(?) move to target"
-msgstr ""
+msgstr "(?) 移動至目標"
 
 #. TRANSLATORS: folow mode in status bar
 #: src/gamemodifiers.cpp:234
 msgid "(D) default follow"
-msgstr ""
+msgstr "(D) 默認跟隨"
 
 #. TRANSLATORS: folow mode in status bar
 #: src/gamemodifiers.cpp:236
 msgid "(R) relative follow"
-msgstr ""
+msgstr "(R) 相對性跟隨"
 
 #. TRANSLATORS: folow mode in status bar
 #: src/gamemodifiers.cpp:238
 msgid "(M) mirror follow"
-msgstr ""
+msgstr "(M) 鏡面跟隨"
 
 #. TRANSLATORS: folow mode in status bar
 #: src/gamemodifiers.cpp:240
 msgid "(P) pet follow"
-msgstr ""
+msgstr "(P) 寵物跟隨"
 
 #. TRANSLATORS: folow mode in status bar
 #: src/gamemodifiers.cpp:242
 msgid "(?) unknown follow"
-msgstr ""
+msgstr "(?) 未知跟隨"
 
 #. TRANSLATORS: switch attack type in status bar
 #. TRANSLATORS: attack type in status bar
 #: src/gamemodifiers.cpp:248 src/gamemodifiers.cpp:256
 #: src/gamemodifiers.cpp:270
 msgid "(?) attack"
-msgstr ""
+msgstr "(?) 攻擊"
 
 #. TRANSLATORS: switch attack type in status bar
 #. TRANSLATORS: attack type in status bar
 #: src/gamemodifiers.cpp:250 src/gamemodifiers.cpp:262
 msgid "(D) default attack"
-msgstr ""
+msgstr "(D) 默認攻擊"
 
 #. TRANSLATORS: switch attack type in status bar
 #: src/gamemodifiers.cpp:252
 msgid "(s) switch attack without shield"
-msgstr ""
+msgstr "(s) 沒有盾牌時轉換武器"
 
 #. TRANSLATORS: switch attack type in status bar
 #: src/gamemodifiers.cpp:254
 msgid "(S) switch attack with shield"
-msgstr ""
+msgstr "(S) 有盾牌時轉換武器"
 
 #. TRANSLATORS: attack type in status bar
 #: src/gamemodifiers.cpp:264
 msgid "(G) go and attack"
-msgstr ""
+msgstr "(G) 移動及攻擊"
 
 #. TRANSLATORS: attack type in status bar
 #: src/gamemodifiers.cpp:266
 msgid "(A) go, attack, pickup"
-msgstr ""
+msgstr "(A) 移動、攻擊、拿起物品"
 
 #. TRANSLATORS: attack type in status bar
 #: src/gamemodifiers.cpp:268
 msgid "(d) without auto attack"
-msgstr ""
+msgstr "(d) 關閉自動攻擊"
 
 #. TRANSLATORS: targeting type in status bar
 #: src/gamemodifiers.cpp:276
 msgid "(D) don't switch target"
-msgstr ""
+msgstr "(D) 不要更改目標"
 
 #. TRANSLATORS: targeting type in status bar
 #: src/gamemodifiers.cpp:278
 msgid "(C) always attack closest"
-msgstr ""
+msgstr "(C) 總是攻擊最近的"
 
 #. TRANSLATORS: targeting type in status bar
 #: src/gamemodifiers.cpp:280
 msgid "(?) targeting"
-msgstr ""
+msgstr "(?) 指定目標"
 
 #. TRANSLATORS: pickup size in status bar
 #: src/gamemodifiers.cpp:314
 msgid "(S) small pick up 1x1 cells"
-msgstr ""
+msgstr "(S) 拿起物品範圍 1x1"
 
 #. TRANSLATORS: pickup size in status bar
 #: src/gamemodifiers.cpp:316
 msgid "(D) default pick up 2x1 cells"
-msgstr ""
+msgstr "(D) 默認拿起物品範圍 2x1"
 
 #. TRANSLATORS: pickup size in status bar
 #: src/gamemodifiers.cpp:318
 msgid "(F) forward pick up 2x3 cells"
-msgstr ""
+msgstr "(F) 向前拿起物品 2x3"
 
 #. TRANSLATORS: pickup size in status bar
 #: src/gamemodifiers.cpp:320
 msgid "(3) pick up 3x3 cells"
-msgstr ""
+msgstr "(3) 拿起物品範圍 3x3"
 
 #. TRANSLATORS: pickup size in status bar
 #: src/gamemodifiers.cpp:322
 msgid "(g) go and pick up in distance 4"
-msgstr ""
+msgstr "(g) 移動並拿起4格外的物品"
 
 #. TRANSLATORS: pickup size in status bar
 #: src/gamemodifiers.cpp:324
 msgid "(G) go and pick up in distance 8"
-msgstr ""
+msgstr "(G) 移動並拿起8格外的物品"
 
 #. TRANSLATORS: pickup size in status bar
 #: src/gamemodifiers.cpp:326
 msgid "(A) go and pick up in max distance"
-msgstr ""
+msgstr "(A) 移動並拿起最大距離外的物品"
 
 #. TRANSLATORS: pickup size in status bar
 #: src/gamemodifiers.cpp:328
 msgid "(?) pick up"
-msgstr ""
+msgstr "(?) 拿起物品"
 
 #. TRANSLATORS: magic attack in status bar
 #: src/gamemodifiers.cpp:334
 msgid "(f) use #flar for magic attack"
-msgstr ""
+msgstr "(f) 使用 #flar 作魔法攻擊"
 
 #. TRANSLATORS: magic attack in status bar
 #: src/gamemodifiers.cpp:336
 msgid "(c) use #chiza for magic attack"
-msgstr ""
+msgstr "(c) 使用 #chiza 作魔法攻擊"
 
 #. TRANSLATORS: magic attack in status bar
 #: src/gamemodifiers.cpp:338
 msgid "(I) use #ingrav for magic attack"
-msgstr ""
+msgstr "(I) 使用 #ingrav 作魔法攻擊"
 
 #. TRANSLATORS: magic attack in status bar
 #: src/gamemodifiers.cpp:340
 msgid "(F) use #frillyar for magic attack"
-msgstr ""
+msgstr "(F) 使用 #frillyar 作魔法攻擊"
 
 #. TRANSLATORS: magic attack in status bar
 #: src/gamemodifiers.cpp:342
 msgid "(U) use #upmarmu for magic attack"
-msgstr ""
+msgstr "(U) 使用 #upmarmu 作魔法攻擊"
 
 #. TRANSLATORS: magic attack in status bar
 #: src/gamemodifiers.cpp:344
 msgid "(?) magic attack"
-msgstr ""
+msgstr "(?) 魔法攻擊"
 
 #. TRANSLATORS: player attack type in status bar
 #: src/gamemodifiers.cpp:350
 msgid "(a) attack all players"
-msgstr ""
+msgstr "(a) 攻擊所有玩家"
 
 #. TRANSLATORS: player attack type in status bar
 #: src/gamemodifiers.cpp:352
 msgid "(f) attack all except friends"
-msgstr ""
+msgstr "(f) 攻擊所有朋友以外的玩家"
 
 #. TRANSLATORS: player attack type in status bar
 #: src/gamemodifiers.cpp:354
 msgid "(b) attack bad relations"
-msgstr ""
+msgstr "(b) 攻擊關係差的"
 
 #. TRANSLATORS: player attack type in status bar
 #: src/gamemodifiers.cpp:356
 msgid "(d) don't attack players"
-msgstr ""
+msgstr "(d) 不要攻擊玩家"
 
 #. TRANSLATORS: player attack type in status bar
 #: src/gamemodifiers.cpp:358
 msgid "(?) pvp attack"
-msgstr ""
+msgstr "(?) PVP 攻擊"
 
 #. TRANSLATORS: imitation type in status bar
 #: src/gamemodifiers.cpp:364
 msgid "(D) default imitation"
-msgstr ""
+msgstr "(D) 默認模仿"
 
 #. TRANSLATORS: imitation type in status bar
 #: src/gamemodifiers.cpp:366
 msgid "(O) outfits imitation"
-msgstr ""
+msgstr "(O) 裝備模仿"
 
 #. TRANSLATORS: imitation type in status bar
 #: src/gamemodifiers.cpp:368
 msgid "(?) imitation"
-msgstr ""
+msgstr "(?) 模仿"
 
 #. TRANSLATORS: game modifiers state in status bar
 #: src/gamemodifiers.cpp:374
 msgid "Game modifiers are enabled"
-msgstr ""
+msgstr "遊戲修改器已啟用"
 
 #. TRANSLATORS: game modifiers state in status bar
 #: src/gamemodifiers.cpp:376
 msgid "Game modifiers are disabled"
-msgstr ""
+msgstr "遊戲修改器已禁用"
 
 #. TRANSLATORS: game modifiers state in status bar
 #: src/gamemodifiers.cpp:378
 msgid "Game modifiers are unknown"
-msgstr ""
+msgstr "未知遊戲修改器"
 
 #. TRANSLATORS: map view type in status bar
 #: src/gamemodifiers.cpp:392
@@ -5398,7 +5399,7 @@ msgstr ""
 #: src/gui/windowmenu.cpp:97 src/gui/windows/inventorywindow.cpp:144
 #: src/inventory.cpp:301
 msgid "Inventory"
-msgstr "物品攔"
+msgstr "背包"
 
 #. TRANSLATORS: short button name for cart window.
 #: src/gui/windowmenu.cpp:99
