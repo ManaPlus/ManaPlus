@@ -1293,9 +1293,23 @@ void InventoryHandler::processCartAddError(Net::MessageIn &msg)
 
 void InventoryHandler::processBindItem(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
-
-    msg.readInt16("item index");
+    const int index = msg.readInt16("item index") - INVENTORY_OFFSET;
+    const Inventory *const inv = PlayerInfo::getInventory();
+    if (inv)
+    {
+        std::string itemName;
+        const Item *item = inv->getItem(index);
+        if (item)
+        {
+            itemName = item->getName();
+        }
+        else
+        {
+            // TRANSLATORS: unknown item message
+            itemName = _("Unknown item");
+        }
+        NotifyManager::notify(NotifyTypes::BOUND_ITEM, itemName);
+    }
 }
 
 }  // namespace EAthena

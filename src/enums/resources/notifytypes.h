@@ -181,6 +181,7 @@ namespace NotifyTypes
         REFINE_UNKNOWN,
         CART_ADD_WEIGHT_ERROR,
         CART_ADD_COUNT_ERROR,
+        BOUND_ITEM,
 
         TYPE_END
     };

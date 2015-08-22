@@ -649,6 +649,10 @@ namespace NotifyManager
             // TRANSLATORS: notification message
             N_("You can't add item to card because too many items."),
             NotifyFlags::EMPTY},
+        {"bound item",
+            // TRANSLATORS: notification message
+            N_("Item %s bound to you."),
+            NotifyFlags::STRING},
     };
 }  // namespace NotifyManager
 #endif  // RESOURCES_NOTIFICATIONS_H
