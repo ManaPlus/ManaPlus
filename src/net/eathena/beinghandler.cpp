@@ -1431,15 +1431,20 @@ void BeingHandler::processMonsterHp(Net::MessageIn &msg)
 
 void BeingHandler::processSkillAutoCast(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
-    msg.readInt16("skill id");
-    msg.readInt16("inf");
+    const int id = msg.readInt16("skill id");
+    const int type = msg.readInt16("inf");
     msg.readInt16("unused");
-    msg.readInt16("skill level");
-    msg.readInt16("sp");
-    msg.readInt16("range");
+    const int level = msg.readInt16("skill level");
+    const int sp = msg.readInt16("sp");
+    const int range = msg.readInt16("range");
     msg.readString(24, "skill name");
     msg.readInt8("unused");
+
+    if (localPlayer)
+    {
+        localPlayer->handleSkill(localPlayer, 0, id, level);
+        localPlayer->takeDamage(localPlayer, 0, AttackType::SKILL, id, level);
+    }
 }
 
 void BeingHandler::processRanksList(Net::MessageIn &msg)
