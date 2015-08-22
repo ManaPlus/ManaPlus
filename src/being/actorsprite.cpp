@@ -281,7 +281,6 @@ void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
         }
         else
         {
-            ResourceManager *const resman = ResourceManager::getInstance();
             std::string imagePath;
             switch (imageType)
             {
@@ -296,8 +295,7 @@ void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
                     break;
             }
             imagePath = combineDye2(imagePath, color);
-
-            Image *img = resman->getImage(imagePath);
+            Image *img = resourceManager->getImage(imagePath);
 
             if (!img)
                 img = Theme::getImageFromTheme("unknown-item.png");

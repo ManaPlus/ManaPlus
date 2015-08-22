@@ -122,27 +122,22 @@ class UpdaterWindow final : public Window,
 
         static void unloadUpdates(const std::string &dir);
 
-        static void addUpdateFile(const ResourceManager *const resman,
-                                  const std::string &restrict path,
+        static void addUpdateFile(const std::string &restrict path,
                                   const std::string &restrict fixPath,
                                   const std::string &restrict file,
                                   const bool append);
 
-        static void removeUpdateFile(const ResourceManager *const resman,
-                                     const std::string &restrict path,
+        static void removeUpdateFile(const std::string &restrict path,
                                      const std::string &restrict fixPath,
                                      const std::string &filerestrict);
 
-        static void loadManaPlusUpdates(const std::string &dir,
-                                        const ResourceManager *const resman);
+        static void loadManaPlusUpdates(const std::string &dir);
 
-        static void unloadManaPlusUpdates(const std::string &dir,
-                                          const ResourceManager *const resman);
+        static void unloadManaPlusUpdates(const std::string &dir);
 
         static unsigned long getFileHash(const std::string &filePath);
 
         static void loadMods(const std::string &dir,
-                             const ResourceManager *const resman,
                              const std::vector<UpdateFile> &updateFiles);
 
         static void loadDirMods(const std::string &dir);

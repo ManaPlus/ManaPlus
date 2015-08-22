@@ -65,7 +65,6 @@ void Resource::decRef()
     if (mRefCount == 0 && !mNotCount)
     {
         // Warn the manager that this resource is no longer used.
-        ResourceManager *const resman = ResourceManager::getInstance();
-        resman->release(this);
+        resourceManager->release(this);
     }
 }

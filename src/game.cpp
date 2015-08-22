@@ -994,8 +994,7 @@ void Game::changeMap(const std::string &mapPath)
     BLOCK_START("Game::changeMap")
 
     resetAdjustLevel();
-    ResourceManager *const resman = ResourceManager::getInstance();
-    resman->cleanProtected();
+    resourceManager->cleanProtected();
 
     if (popupManager)
     {

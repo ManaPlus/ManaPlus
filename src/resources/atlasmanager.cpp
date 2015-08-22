@@ -101,19 +101,18 @@ void AtlasManager::loadImages(const StringVect &files,
                               std::vector<Image*> &images)
 {
     BLOCK_START("AtlasManager::loadImages")
-    ResourceManager *const resman = ResourceManager::getInstance();
 
     FOR_EACH (StringVectCIter, it, files)
     {
         const std::string str = *it;
         // check is image with same name already in cache
         // and if yes, move it to deleted set
-        Resource *const res = resman->getTempResource(str);
+        Resource *const res = resourceManager->getTempResource(str);
         if (res)
         {
             // increase counter because in moveToDeleted it will be decreased.
             res->incRef();
-            resman->moveToDeleted(res);
+            resourceManager->moveToDeleted(res);
         }
 
         std::string path = str;
@@ -321,7 +320,6 @@ void AtlasManager::injectToResources(const AtlasResource *const resource)
 {
     if (!resource)
         return;
-    ResourceManager *const resman = ResourceManager::getInstance();
     FOR_EACH (std::vector<TextureAtlas*>::const_iterator,
               it, resource->atlases)
     {
@@ -331,14 +329,14 @@ void AtlasManager::injectToResources(const AtlasResource *const resource)
         {
             Image *const image = atlas->atlasImage;
             if (image)
-                resman->addResource(atlas->name, image);
+                resourceManager->addResource(atlas->name, image);
             FOR_EACH (std::vector<AtlasItem*>::iterator, it2, atlas->items)
             {
                 AtlasItem *const item = *it2;
                 if (!item)
                     continue;
                 // add each atlas sub image to resources
-                resman->addResource(item->name, item->image);
+                resourceManager->addResource(item->name, item->image);
             }
         }
     }
@@ -348,7 +346,6 @@ void AtlasManager::moveToDeleted(AtlasResource *const resource)
 {
     if (!resource)
         return;
-    ResourceManager *const resman = ResourceManager::getInstance();
     FOR_EACH (std::vector<TextureAtlas*>::iterator, it, resource->atlases)
     {
         // move each atlas image to deleted
@@ -359,7 +356,7 @@ void AtlasManager::moveToDeleted(AtlasResource *const resource)
             if (image)
             {
                 // move each atlas image to deleted
-                resman->moveToDeleted(image);
+                resourceManager->moveToDeleted(image);
             }
             FOR_EACH (std::vector<AtlasItem*>::iterator, it2, atlas->items)
             {
@@ -370,7 +367,7 @@ void AtlasManager::moveToDeleted(AtlasResource *const resource)
                     if (image2)
                     {
                         // move each atlas sub image to deleted
-                        resman->moveToDeleted(image2);
+                        resourceManager->moveToDeleted(image2);
                     }
                 }
             }

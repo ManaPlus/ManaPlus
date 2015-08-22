@@ -175,10 +175,9 @@ void ItemPopup::setItem(const ItemInfo &item,
 
     if (showImage)
     {
-        ResourceManager *const resman = ResourceManager::getInstance();
-        Image *const image = resman->getImage(combineDye2(
-            paths.getStringValue("itemIcons").append(
-            item.getDisplay().image), item.getDyeIconColorsString(color)));
+        Image *const image = resourceManager->getImage(combineDye2(
+            paths.getStringValue("itemIcons").append(item.getDisplay().image),
+            item.getDyeIconColorsString(color)));
 
         mIcon->setImage(image);
         if (image)

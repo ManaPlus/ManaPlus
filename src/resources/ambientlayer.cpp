@@ -59,11 +59,12 @@ AmbientLayer::AmbientLayer(Image *const img,
         {
             // Rescale the overlay to keep the ratio as if we were on
             // the default resolution...
-            Image *const rescaledOverlay = ResourceManager::getInstance()->
-                getRescaled(mImage, static_cast<int>(mImage->mBounds.w)
-                / defaultScreenWidth * width,
-                static_cast<int>(mImage->mBounds.h)
-                / defaultScreenHeight * height);
+            Image *const rescaledOverlay = resourceManager->getRescaled(
+                mImage,
+                static_cast<int>(mImage->mBounds.w) /
+                defaultScreenWidth * width,
+                static_cast<int>(mImage->mBounds.h) /
+                defaultScreenHeight * height);
 
             if (rescaledOverlay)
                 mImage = rescaledOverlay;

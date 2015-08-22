@@ -167,8 +167,7 @@ void Client::gameInit()
 #endif
 
     ResourceManager::init();
-    const ResourceManager *const resman = ResourceManager::getInstance();
-    if (!resman->setWriteDir(settings.localDataDir))
+    if (!resourceManager->setWriteDir(settings.localDataDir))
     {
         logger->error(strprintf("%s couldn't be set as home directory! "
             "Exiting.", settings.localDataDir.c_str()));
@@ -246,10 +245,10 @@ void Client::gameInit()
 
     // Add the main data directories to our PhysicsFS search path
     if (!settings.options.dataPath.empty())
-        resman->addToSearchPath(settings.options.dataPath, false);
+        resourceManager->addToSearchPath(settings.options.dataPath, false);
 
     // Add the local data directory to PhysicsFS search path
-    resman->addToSearchPath(settings.localDataDir, false);
+    resourceManager->addToSearchPath(settings.localDataDir, false);
     TranslationManager::loadCurrentLang();
 
     WindowManager::initTitle();
@@ -587,15 +586,12 @@ int Client::gameExec()
                     BLOCK_START("Client::gameExec STATE_LOAD_DATA")
                     logger->log1("State: LOAD DATA");
 
-                    const ResourceManager *const resman
-                        = ResourceManager::getInstance();
-
                     // If another data path has been set,
                     // we don't load any other files...
                     if (settings.options.dataPath.empty())
                     {
                         // Add customdata directory
-                        resman->searchAndAddArchives(
+                        resourceManager->searchAndAddArchives(
                             "customdata/",
                             "zip",
                             false);
@@ -603,12 +599,12 @@ int Client::gameExec()
 
                     if (!settings.options.skipUpdate)
                     {
-                        resman->searchAndAddArchives(
+                        resourceManager->searchAndAddArchives(
                             settings.updatesDir + "/local/",
                             "zip",
                             false);
 
-                        resman->addToSearchPath(settings.localDataDir
+                        resourceManager->addToSearchPath(settings.localDataDir
                             + dirSeparator + settings.updatesDir + "/local/",
                             false);
                     }

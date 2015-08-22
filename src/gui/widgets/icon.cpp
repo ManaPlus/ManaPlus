@@ -32,7 +32,7 @@
 Icon::Icon(const Widget2 *const widget,
            const std::string &file) :
     Widget(widget),
-    mImage(ResourceManager::getInstance()->getImage(file))
+    mImage(resourceManager->getImage(file))
 {
     if (mImage)
     {

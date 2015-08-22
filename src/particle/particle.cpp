@@ -301,8 +301,6 @@ Particle *Particle::addEffect(const std::string &particleEffectFile,
         return nullptr;
     }
 
-    ResourceManager *const resman = ResourceManager::getInstance();
-
     // Parse particles
     for_each_xml_child_node(effectChildNode, rootNode)
     {
@@ -337,7 +335,7 @@ Particle *Particle::addEffect(const std::string &particleEffectFile,
             }
             if (!imageSrc.empty() && !dyePalettes.empty())
                 Dye::instantiate(imageSrc, dyePalettes);
-            Image *const img = resman->getImage(imageSrc);
+            Image *const img = resourceManager->getImage(imageSrc);
 
             newParticle = new ImageParticle(img);
             newParticle->setMap(mMap);

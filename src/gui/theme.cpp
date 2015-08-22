@@ -347,8 +347,7 @@ struct SkinHelper final
         height(),
         rect(),
         node(),
-        image(),
-        resman()
+        image()
     {
     }
 
@@ -362,7 +361,6 @@ struct SkinHelper final
     ImageRect *rect;
     XmlNodePtr *node;
     Image *image;
-    ResourceManager *resman;
 
     bool loadList(const SkinParameter *const params,
                   const size_t size) A_NONNULL(2)
@@ -372,7 +370,7 @@ struct SkinHelper final
             const SkinParameter &param = params[f];
             if (partType == param.name)
             {
-                rect->grid[param.index] = resman->getSubImage(
+                rect->grid[param.index] = resourceManager->getSubImage(
                     image, xPos, yPos, width, height);
                 return true;
             }
@@ -430,7 +428,6 @@ Skin *Theme::readSkin(const std::string &filename, const bool full)
         if (widgetType == "Window")
         {
             SkinHelper helper;
-            helper.resman = ResourceManager::getInstance();
             const int globalXPos = XML::getProperty(widgetNode, "xpos", 0);
             const int globalYPos = XML::getProperty(widgetNode, "ypos", 0);
             for_each_xml_child_node(partNode, widgetNode)
@@ -635,15 +632,13 @@ std::string Theme::resolveThemePath(const std::string &path)
 
 Image *Theme::getImageFromTheme(const std::string &path)
 {
-    ResourceManager *const resman = ResourceManager::getInstance();
-    return resman->getImage(resolveThemePath(path));
+    return resourceManager->getImage(resolveThemePath(path));
 }
 
 ImageSet *Theme::getImageSetFromTheme(const std::string &path,
                                       const int w, const int h)
 {
-    ResourceManager *const resman = ResourceManager::getInstance();
-    return resman->getImageSet(resolveThemePath(path), w, h);
+    return resourceManager->getImageSet(resolveThemePath(path), w, h);
 }
 
 static int readColorType(const std::string &type)
@@ -1143,8 +1138,8 @@ ImageSet *Theme::getImageSetFromThemeXml(const std::string &name,
             const SDL_Rect &rect2 = image->mBounds;
             if (rect2.w && rect2.h)
             {
-                ResourceManager *const resman = ResourceManager::getInstance();
-                ImageSet *const imageSet = resman->getSubImageSet(image, w, h);
+                ImageSet *const imageSet = resourceManager->getSubImageSet(
+                    image, w, h);
                 theme->unload(skin);
                 return imageSet;
             }

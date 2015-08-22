@@ -330,7 +330,6 @@ Map *MapReader::readMap(XmlNodePtrConst node, const std::string &path)
 
     const std::string fileName = path.substr(path.rfind("/") + 1);
     map->setProperty("shortName", fileName);
-    ResourceManager *const resman = ResourceManager::getInstance();
 
 #ifdef USE_OPENGL
     BLOCK_START("MapReader::readMap load atlas")
@@ -339,7 +338,7 @@ Map *MapReader::readMap(XmlNodePtrConst node, const std::string &path)
         const MapInfo *const info = MapDB::getMapAtlas(fileName);
         if (info)
         {
-            map->setAtlas(resman->getAtlas(
+            map->setAtlas(resourceManager->getAtlas(
                 info->atlas, *info->files));
         }
     }
@@ -460,7 +459,7 @@ Map *MapReader::readMap(XmlNodePtrConst node, const std::string &path)
     map->clearIndexedTilesets();
     map->setActorsFix(0, atoi(map->getProperty("actorsfix").c_str()));
     map->reduce();
-    map->setWalkLayer(resman->getWalkLayer(fileName, map));
+    map->setWalkLayer(resourceManager->getWalkLayer(fileName, map));
     unloadTempLayers();
     map->updateDrawLayersList();
     BLOCK_END("MapReader::readMap xml")
@@ -946,8 +945,7 @@ Tileset *MapReader::readTileset(XmlNodePtr node,
 
             if (!source.empty())
             {
-                ResourceManager *const resman = ResourceManager::getInstance();
-                Image *const tilebmp = resman->getImage(
+                Image *const tilebmp = resourceManager->getImage(
                     resolveRelativePath(pathDir, source));
 
                 if (tilebmp)

@@ -65,14 +65,13 @@ Shader *ShadersManager::createShader(const unsigned int type,
 ShaderProgram *ShadersManager::createProgram(const std::string &vertex,
                                              const std::string &fragment)
 {
-    ResourceManager *const resman = ResourceManager::getInstance();
     Shader *const vertexShader = static_cast<Shader*>(
-        resman->getShader(GL_VERTEX_SHADER, vertex));
+        resourceManager->getShader(GL_VERTEX_SHADER, vertex));
     if (!vertexShader)
         return nullptr;
 
     Shader *const fragmentShader = static_cast<Shader*>(
-        resman->getShader(GL_FRAGMENT_SHADER, fragment));
+        resourceManager->getShader(GL_FRAGMENT_SHADER, fragment));
 
     if (!fragmentShader)
     {

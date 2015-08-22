@@ -53,8 +53,7 @@ AtlasResource::~AtlasResource()
             delete atlas;
         }
     }
-    ResourceManager *const resman = ResourceManager::getInstance();
-    resman->clearDeleted(false);
+    resourceManager->clearDeleted(false);
 }
 
 void AtlasResource::incRef()

@@ -954,11 +954,6 @@ void ResourceManager::decRefDelete(Resource *const res)
     }
 }
 
-ResourceManager *ResourceManager::getInstance()
-{
-    return resourceManager;
-}
-
 void ResourceManager::deleteInstance()
 {
 #ifdef DUMP_LEAKED_RESOURCES

@@ -172,10 +172,9 @@ void Desktop::setBestFittingWallpaper()
 
     if (nWallPaper)
     {
-        ResourceManager *const resman = ResourceManager::getInstance();
         if (mWallpaper)
         {
-            resman->decRefDelete(mWallpaper);
+            resourceManager->decRefDelete(mWallpaper);
             mWallpaper = nullptr;
         }
 
@@ -188,12 +187,12 @@ void Desktop::setBestFittingWallpaper()
             || nWallPaper->getHeight() != height))
         {
             // We rescale to obtain a fullscreen wallpaper...
-            Image *const newRsclWlPpr = resman->getRescaled(
+            Image *const newRsclWlPpr = resourceManager->getRescaled(
                 nWallPaper, width, height);
 
             if (newRsclWlPpr)
             {
-                resman->decRefDelete(nWallPaper);
+                resourceManager->decRefDelete(nWallPaper);
                 // We replace the resource in the resource manager
                 mWallpaper = newRsclWlPpr;
             }

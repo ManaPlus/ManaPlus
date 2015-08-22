@@ -1001,7 +1001,7 @@ impHandler0(who)
 
 impHandler0(cleanGraphics)
 {
-    ResourceManager::getInstance()->clearCache();
+    resourceManager->clearCache();
 
     if (debugChatTab)
     {
@@ -1216,24 +1216,22 @@ impHandler(dump)
     if (!debugChatTab)
         return false;
 
-    ResourceManager *const resman = ResourceManager::getInstance();
-
     if (!event.args.empty())
     {
-        ResourceManager::Resources *res = resman->getResources();
+        ResourceManager::Resources *res = resourceManager->getResources();
         // TRANSLATORS: dump command
         showRes(_("Resource images:"), res);
-        res = resman->getOrphanedResources();
+        res = resourceManager->getOrphanedResources();
         // TRANSLATORS: dump command
         showRes(_("Resource orphaned images:"), res);
     }
     else
     {
-        ResourceManager::Resources *res = resman->getResources();
+        ResourceManager::Resources *res = resourceManager->getResources();
         // TRANSLATORS: dump command
         debugChatTab->chatLog(_("Resource images:") + toString(res->size()),
             ChatMsgType::BY_SERVER);
-        res = resman->getOrphanedResources();
+        res = resourceManager->getOrphanedResources();
         // TRANSLATORS: dump command
         debugChatTab->chatLog(_("Resource orphaned images:")
             + toString(res->size()),

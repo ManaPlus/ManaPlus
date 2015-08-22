@@ -232,8 +232,8 @@ void SpriteDef::loadImageSet(const XmlNodePtr node,
     std::string imageSrc = XML::getProperty(node, "src", "");
     Dye::instantiate(imageSrc, palettes);
 
-    ResourceManager *const resman = ResourceManager::getInstance();
-    ImageSet *const imageSet = resman->getImageSet(imageSrc, width, height);
+    ImageSet *const imageSet = resourceManager->getImageSet(imageSrc,
+        width, height);
 
     if (!imageSet)
     {

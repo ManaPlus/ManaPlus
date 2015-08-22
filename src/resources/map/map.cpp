@@ -222,8 +222,6 @@ void Map::optionChanged(const std::string &value)
 
 void Map::initializeAmbientLayers()
 {
-    ResourceManager *const resman = ResourceManager::getInstance();
-
     // search for "foreground*" or "overlay*" (old term) in map properties
     for (int i = 0; /* terminated by a break */; i++)
     {
@@ -243,7 +241,8 @@ void Map::initializeAmbientLayers()
             break;  // the FOR loop
         }
 
-        Image *const img = resman->getImage(getProperty(name + "image"));
+        Image *const img = resourceManager->getImage(
+            getProperty(name + "image"));
         if (img)
         {
             int mask = atoi(getProperty(name + "mask").c_str());
@@ -270,7 +269,8 @@ void Map::initializeAmbientLayers()
          toString(i)).append("image")); i ++)
     {
         const std::string name("background" + toString(i));
-        Image *const img = resman->getImage(getProperty(name + "image"));
+        Image *const img = resourceManager->getImage(
+            getProperty(name + "image"));
 
         if (img)
         {

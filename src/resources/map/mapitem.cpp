@@ -114,14 +114,9 @@ void MapItem::setType(const int type)
     }
 
     if (!name.empty())
-    {
-        ResourceManager *const resman = ResourceManager::getInstance();
-        mImage = resman->getImage(name);
-    }
+        mImage = resourceManager->getImage(name);
     else
-    {
         mImage = nullptr;
-    }
 }
 
 void MapItem::setPos(const int x, const int y)

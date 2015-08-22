@@ -168,7 +168,6 @@ void Minimap::setMap(const Map *const map)
         {
             std::string tempname = paths.getStringValue("minimaps").append(
                 map->getFilename()).append(".png");
-            ResourceManager *const resman = ResourceManager::getInstance();
 
             std::string minimapName = map->getProperty("minimap");
 
@@ -183,7 +182,7 @@ void Minimap::setMap(const Map *const map)
                     minimapName = tempname;
             }
 
-            mMapImage = resman->getImage(minimapName);
+            mMapImage = resourceManager->getImage(minimapName);
             mCustomMapImage = false;
         }
     }

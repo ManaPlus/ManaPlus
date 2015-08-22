@@ -255,8 +255,8 @@ void SoundManager::setSfxVolume(const int volume)
 
 static SDLMusic *loadMusic(const std::string &fileName)
 {
-    ResourceManager *const resman = ResourceManager::getInstance();
-    return resman->getMusic(paths.getStringValue("music").append(fileName));
+    return resourceManager->getMusic(
+        paths.getStringValue("music").append(fileName));
 }
 
 void SoundManager::playMusic(const std::string &fileName)
@@ -378,8 +378,7 @@ void SoundManager::playSfx(const std::string &path,
         tmpPath = path;
     else
         tmpPath = paths.getValue("sfx", "sfx/").append(path);
-    ResourceManager *const resman = ResourceManager::getInstance();
-    SoundEffect *const sample = resman->getSoundEffect(tmpPath);
+    SoundEffect *const sample = resourceManager->getSoundEffect(tmpPath);
     if (sample)
     {
         logger->log("SoundManager::playSfx() Playing: %s", path.c_str());
@@ -421,8 +420,7 @@ void SoundManager::playGuiSfx(const std::string &path)
         tmpPath = path;
     else
         tmpPath = paths.getValue("sfx", "sfx/").append(path);
-    ResourceManager *const resman = ResourceManager::getInstance();
-    SoundEffect *const sample = resman->getSoundEffect(tmpPath);
+    SoundEffect *const sample = resourceManager->getSoundEffect(tmpPath);
     if (sample)
     {
         logger->log("SoundManager::playGuiSfx() Playing: %s", path.c_str());

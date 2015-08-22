@@ -55,8 +55,7 @@ void AnimationDelayLoad::load()
 {
     if (mSprite)
     {
-        ResourceManager *const resman = ResourceManager::getInstance();
-        SpriteDef *const s = resman->getSprite(mFileName, mVariant);
+        SpriteDef *const s = resourceManager->getSprite(mFileName, mVariant);
         if (!s)
             return;
         mSprite->setSprite(s);

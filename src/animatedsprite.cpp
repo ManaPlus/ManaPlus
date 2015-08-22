@@ -63,8 +63,7 @@ AnimatedSprite::AnimatedSprite(SpriteDef *const sprite) :
 AnimatedSprite *AnimatedSprite::load(const std::string &filename,
                                      const int variant)
 {
-    ResourceManager *const resman = ResourceManager::getInstance();
-    SpriteDef *const s = resman->getSprite(filename, variant);
+    SpriteDef *const s = resourceManager->getSprite(filename, variant);
     if (!s)
         return nullptr;
     AnimatedSprite *const as = new AnimatedSprite(s);
@@ -78,8 +77,7 @@ AnimatedSprite *AnimatedSprite::delayedLoad(const std::string &filename,
 {
     if (!mEnableCache)
         return load(filename, variant);
-    ResourceManager *const resman = ResourceManager::getInstance();
-    Resource *const res = resman->getFromCache(filename, variant);
+    Resource *const res = resourceManager->getFromCache(filename, variant);
     if (res)
     {
         res->decRef();

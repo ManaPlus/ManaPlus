@@ -185,14 +185,12 @@ Image::~Image()
 
 void Image::SDLCleanCache()
 {
-    ResourceManager *const resman = ResourceManager::getInstance();
-
     for (std::map<float, SDL_Surface*>::iterator
          i = mAlphaCache.begin(), i_end = mAlphaCache.end();
          i != i_end; ++i)
     {
         if (mSDLSurface != i->second)
-            resman->scheduleDelete(i->second);
+            resourceManager->scheduleDelete(i->second);
         i->second = nullptr;
     }
     mAlphaCache.clear();

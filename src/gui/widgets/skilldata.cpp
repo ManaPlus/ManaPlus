@@ -59,9 +59,8 @@ SkillData::~SkillData()
 
 void SkillData::setIcon(const std::string &iconPath)
 {
-    ResourceManager *const res = ResourceManager::getInstance();
     if (!iconPath.empty())
-        icon = res->getImage(iconPath);
+        icon = resourceManager->getImage(iconPath);
 
     if (!icon)
     {

@@ -121,7 +121,7 @@ BrowserBox::BrowserBox(const Widget2 *const widget,
         mSkin = theme->load(skin, "browserbox.xml");
     if (mInstances == 0)
     {
-        mEmotes = ResourceManager::getInstance()->getImageSet(
+        mEmotes = resourceManager->getImageSet(
             "graphics/sprites/chatemotes.png", 17, 18);
     }
     mInstances ++;
@@ -570,8 +570,6 @@ int BrowserBox::calcHeight()
 
     Color selColor[2] = {mForegroundColor, mForegroundColor2};
     const Color textColor[2] = {mForegroundColor, mForegroundColor2};
-    ResourceManager *const resman = ResourceManager::getInstance();
-
     mLineParts.clear();
 
     FOR_EACH (TextRowCIter, i, mTextRows)
@@ -601,7 +599,7 @@ int BrowserBox::calcHeight()
             const size_t sz = str.size();
             if (sz > 2 && str.substr(sz - 1) == "~")
                 str = str.substr(0, sz - 1);
-            Image *const img = resman->getImage(str);
+            Image *const img = resourceManager->getImage(str);
             if (img)
             {
                 img->incRef();

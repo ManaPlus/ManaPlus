@@ -93,14 +93,13 @@ void Item::setId(const int id,
     if (mImage)
         mImage->decRef();
 
-    ResourceManager *const resman = ResourceManager::getInstance();
     const ItemInfo &info = getInfo();
     mTags = info.getTags();
 
     const std::string dye = combineDye2(paths.getStringValue(
         "itemIcons").append(info.getDisplay().image),
         info.getDyeIconColorsString(color));
-    mImage = resman->getImage(dye);
+    mImage = resourceManager->getImage(dye);
 
     if (!mImage)
     {
@@ -120,9 +119,8 @@ bool Item::isHaveTag(const int tagId) const
 Image *Item::getImage(const int id,
                       const ItemColor color)
 {
-    ResourceManager *const resman = ResourceManager::getInstance();
     const ItemInfo &info = ItemDB::get(id);
-    Image *image = resman->getImage(combineDye2(paths.getStringValue(
+    Image *image = resourceManager->getImage(combineDye2(paths.getStringValue(
         "itemIcons").append(info.getDisplay().image),
         info.getDyeIconColorsString(color)));
 

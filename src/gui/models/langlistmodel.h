@@ -84,10 +84,9 @@ class LangListModel final : public ExtendedListModel
     public:
         LangListModel()
         {
-            ResourceManager *const resman = ResourceManager::getInstance();
             for (int f = 0; f < langs_count; f ++)
             {
-                mIcons[f] = resman->getImage("graphics/flags/"
+                mIcons[f] = resourceManager->getImage("graphics/flags/"
                     + LANG_NAME[f].icon);
             }
         }

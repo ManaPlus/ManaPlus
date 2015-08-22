@@ -115,9 +115,8 @@ void TextCommand::loadImage()
     if (getIcon().empty())
         return;
 
-    ResourceManager *const resman = ResourceManager::getInstance();
     const SpriteDisplay display = ItemDB::get(getIcon()).getDisplay();
-    mImage = resman->getImage(paths.getStringValue("itemIcons")
+    mImage = resourceManager->getImage(paths.getStringValue("itemIcons")
         .append(display.image));
 
     if (!mImage)

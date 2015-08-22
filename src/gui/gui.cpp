@@ -295,8 +295,7 @@ Gui::~Gui()
 void Gui::logic()
 {
     BLOCK_START("Gui::logic")
-    ResourceManager *const resman = ResourceManager::getInstance();
-    resman->clearScheduled();
+    resourceManager->clearScheduled();
 
     if (!mTop)
     {

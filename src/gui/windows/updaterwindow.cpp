@@ -639,7 +639,6 @@ void UpdaterWindow::download()
 
 void UpdaterWindow::loadUpdates()
 {
-    const ResourceManager *const resman = ResourceManager::getInstance();
     if (mUpdateFiles.empty())
     {   // updates not downloaded
         mUpdateFiles = loadXMLFile(std::string(mUpdatesDir).append(
@@ -661,17 +660,17 @@ void UpdaterWindow::loadUpdates()
         const UpdateFile &file = mUpdateFiles[mUpdateIndex];
         if (!file.group.empty())
             continue;
-        UpdaterWindow::addUpdateFile(resman, mUpdatesDir,
-            fixPath, file.name, false);
+        UpdaterWindow::addUpdateFile(mUpdatesDir,
+            fixPath,
+            file.name,
+            false);
     }
-    loadManaPlusUpdates(mUpdatesDir, resman);
-    loadMods(mUpdatesDir, resman, mUpdateFiles);
+    loadManaPlusUpdates(mUpdatesDir);
+    loadMods(mUpdatesDir, mUpdateFiles);
 }
 
 void UpdaterWindow::loadLocalUpdates(const std::string &dir)
 {
-    const ResourceManager *const resman = ResourceManager::getInstance();
-
     std::vector<UpdateFile> updateFiles = loadXMLFile(
         std::string(dir).append("/").append(xmlUpdateFile), false);
 
@@ -691,16 +690,17 @@ void UpdaterWindow::loadLocalUpdates(const std::string &dir)
         const UpdateFile &file = updateFiles[updateIndex];
         if (!file.group.empty())
             continue;
-        UpdaterWindow::addUpdateFile(resman, dir,
-            fixPath, file.name, false);
+        UpdaterWindow::addUpdateFile(dir,
+            fixPath,
+            file.name,
+            false);
     }
-    loadManaPlusUpdates(dir, resman);
-    loadMods(dir, resman, updateFiles);
+    loadManaPlusUpdates(dir);
+    loadMods(dir, updateFiles);
 }
 
 void UpdaterWindow::unloadUpdates(const std::string &dir)
 {
-    const ResourceManager *const resman = ResourceManager::getInstance();
     std::vector<UpdateFile> updateFiles = loadXMLFile(
         std::string(dir).append("/").append(xmlUpdateFile), true);
 
@@ -714,17 +714,15 @@ void UpdaterWindow::unloadUpdates(const std::string &dir)
     for (unsigned int updateIndex = 0, sz = static_cast<unsigned int>(
          updateFiles.size()); updateIndex < sz; updateIndex ++)
     {
-        UpdaterWindow::removeUpdateFile(resman, dir, fixPath,
+        UpdaterWindow::removeUpdateFile(dir,
+            fixPath,
             updateFiles[updateIndex].name);
     }
-    unloadManaPlusUpdates(dir, resman);
+    unloadManaPlusUpdates(dir);
 }
 
-void UpdaterWindow::loadManaPlusUpdates(const std::string &dir,
-                                        const ResourceManager *const resman)
+void UpdaterWindow::loadManaPlusUpdates(const std::string &dir)
 {
-    if (!resman)
-        return;
     std::string fixPath = dir + "/fix";
     std::vector<UpdateFile> updateFiles = loadXMLFile(
         std::string(fixPath).append("/").append(xmlUpdateFile), false);
@@ -742,16 +740,13 @@ void UpdaterWindow::loadManaPlusUpdates(const std::string &dir,
             std::string fileName = std::string(fixPath).append(
                 "/").append(name);
             if (!stat(fileName.c_str(), &statbuf))
-                resman->addToSearchPath(fileName, false);
+                resourceManager->addToSearchPath(fileName, false);
         }
     }
 }
 
-void UpdaterWindow::unloadManaPlusUpdates(const std::string &dir,
-                                          const ResourceManager *const resman)
+void UpdaterWindow::unloadManaPlusUpdates(const std::string &dir)
 {
-    if (!resman)
-        return;
     const std::string fixPath = dir + "/fix";
     const std::vector<UpdateFile> updateFiles = loadXMLFile(
         std::string(fixPath).append("/").append(xmlUpdateFile), true);
@@ -766,44 +761,39 @@ void UpdaterWindow::unloadManaPlusUpdates(const std::string &dir,
             const std::string file = std::string(
                 fixPath).append("/").append(name);
             if (!stat(file.c_str(), &statbuf))
-                resman->removeFromSearchPath(file);
+                resourceManager->removeFromSearchPath(file);
         }
     }
 }
 
-void UpdaterWindow::addUpdateFile(const ResourceManager *const resman,
-                                  const std::string &restrict path,
+void UpdaterWindow::addUpdateFile(const std::string &restrict path,
                                   const std::string &restrict fixPath,
                                   const std::string &restrict file,
                                   const bool append)
 {
-    if (!resman)
-        return;
     const std::string tmpPath = std::string(path).append("/").append(file);
     if (!append)
-        resman->addToSearchPath(tmpPath, append);
+        resourceManager->addToSearchPath(tmpPath, append);
 
     const std::string fixFile = std::string(fixPath).append("/").append(file);
     struct stat statbuf;
     if (!stat(fixFile.c_str(), &statbuf))
-        resman->addToSearchPath(fixFile, append);
+        resourceManager->addToSearchPath(fixFile, append);
 
     if (append)
-        resman->addToSearchPath(tmpPath, append);
+        resourceManager->addToSearchPath(tmpPath, append);
 }
 
-void UpdaterWindow::removeUpdateFile(const ResourceManager *const resman,
-                                     const std::string &restrict path,
+void UpdaterWindow::removeUpdateFile(const std::string &restrict path,
                                      const std::string &restrict fixPath,
                                      const std::string &restrict file)
 {
-    if (!resman)
-        return;
-    resman->removeFromSearchPath(std::string(path).append("/").append(file));
+    resourceManager->removeFromSearchPath(
+        std::string(path).append("/").append(file));
     const std::string fixFile = std::string(fixPath).append("/").append(file);
     struct stat statbuf;
     if (!stat(fixFile.c_str(), &statbuf))
-        resman->removeFromSearchPath(fixFile);
+        resourceManager->removeFromSearchPath(fixFile);
 }
 
 void UpdaterWindow::logic()
@@ -1086,11 +1076,8 @@ void UpdaterWindow::loadFile(std::string file)
 }
 
 void UpdaterWindow::loadMods(const std::string &dir,
-                             const ResourceManager *const resman,
                              const std::vector<UpdateFile> &updateFiles)
 {
-    if (!resman)
-        return;
     ModDB::load();
     std::string modsString = serverConfig.getValue("mods", "");
     std::set<std::string> modsList;
@@ -1107,8 +1094,10 @@ void UpdaterWindow::loadMods(const std::string &dir,
             it = modsList.find(file.group);
         if (it != modsList.end())
         {
-            UpdaterWindow::addUpdateFile(resman, dir,
-                fixPath, file.name, false);
+            UpdaterWindow::addUpdateFile(dir,
+                fixPath,
+                file.name,
+                false);
         }
     }
 
@@ -1132,7 +1121,7 @@ void UpdaterWindow::loadMods(const std::string &dir,
                 std::string fileName = std::string(fixPath).append(
                     "/").append(name);
                 if (!stat(fileName.c_str(), &statbuf))
-                    resman->addToSearchPath(fileName, false);
+                    resourceManager->addToSearchPath(fileName, false);
             }
         }
     }
@@ -1143,7 +1132,6 @@ void UpdaterWindow::loadMods(const std::string &dir,
 void UpdaterWindow::loadDirMods(const std::string &dir)
 {
     ModDB::load();
-    const ResourceManager *const resman = ResourceManager::getInstance();
     const ModInfos &mods = ModDB::getAll();
 
     std::string modsString = serverConfig.getValue("mods", "");
@@ -1160,14 +1148,13 @@ void UpdaterWindow::loadDirMods(const std::string &dir)
         {
             const std::string &localDir = mod->getLocalDir();
             if (!localDir.empty())
-                resman->addToSearchPath(dir + "/" + localDir, false);
+                resourceManager->addToSearchPath(dir + "/" + localDir, false);
         }
     }
 }
 
 void UpdaterWindow::unloadMods(const std::string &dir)
 {
-    const ResourceManager *const resman = ResourceManager::getInstance();
     const ModInfos &mods = ModDB::getAll();
     std::string modsString = serverConfig.getValue("mods", "");
     StringVect modsList;
@@ -1183,7 +1170,7 @@ void UpdaterWindow::unloadMods(const std::string &dir)
         {
             const std::string &localDir = mod->getLocalDir();
             if (!localDir.empty())
-                resman->removeFromSearchPath(dir + "/" + localDir);
+                resourceManager->removeFromSearchPath(dir + "/" + localDir);
         }
     }
 }

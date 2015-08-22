@@ -190,9 +190,9 @@ void Dirs::extractDataDir()
 
 void Dirs::mountDataDir()
 {
-    const ResourceManager *const resman = ResourceManager::getInstance();
-    resman->addToSearchPath(PKG_DATADIR "data/perserver/default", false);
-    resman->addToSearchPath("data/perserver/default", false);
+    resourceManager->addToSearchPath(PKG_DATADIR "data/perserver/default",
+        false);
+    resourceManager->addToSearchPath("data/perserver/default", false);
 
 #if defined __APPLE__
     CFBundleRef mainBundle = CFBundleGetMainBundle();
@@ -206,27 +206,28 @@ void Dirs::mountDataDir()
     CFRelease(resourcesURL);
     // possible crash
     strncat(path, "/data", PATH_MAX - 1);
-    resman->addToSearchPath(path, false);
+    resourceManager->addToSearchPath(path, false);
 // possible this need for support run client from dmg images.
 //    mPackageDir = path;
 #endif
-    resman->addToSearchPath(PKG_DATADIR "data", false);
+    resourceManager->addToSearchPath(PKG_DATADIR "data", false);
     setPackageDir(PKG_DATADIR "data");
-    resman->addToSearchPath("data", false);
+    resourceManager->addToSearchPath("data", false);
 
 #ifdef ANDROID
 #ifdef USE_SDL2
     if (getenv("APPDIR"))
     {
         const std::string appDir = getenv("APPDIR");
-        resman->addToSearchPath(appDir + "/data", false);
-        resman->addToSearchPath(appDir + "/data/perserver/default", false);
+        resourceManager->addToSearchPath(appDir + "/data", false);
+        resourceManager->addToSearchPath(appDir + "/data/perserver/default",
+            false);
     }
 #endif
 #endif
 
 #if defined __native_client__
-    resman->addToSearchPath(_nacl_dir.append("/data"), false);
+    resourceManager->addToSearchPath(_nacl_dir.append("/data"), false);
 #endif
 
     // Add branding/data to PhysFS search path
@@ -244,7 +245,7 @@ void Dirs::mountDataDir()
 #endif
         if (loc > 0)
         {
-            resman->addToSearchPath(path.substr(
+            resourceManager->addToSearchPath(path.substr(
                 0, loc + 1).append("data"), false);
         }
     }

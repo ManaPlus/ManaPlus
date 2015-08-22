@@ -109,10 +109,7 @@ ParticleEmitter::ParticleEmitter(const XmlNodePtrConst emitterNode,
                 {
                     if (!dyePalettes.empty())
                         Dye::instantiate(image, dyePalettes);
-
-                    ResourceManager *const resman
-                        = ResourceManager::getInstance();
-                    mParticleImage = resman->getImage(image);
+                    mParticleImage = resourceManager->getImage(image);
                 }
             }
             else if (name == "subimage")
@@ -124,13 +121,10 @@ ParticleEmitter::ParticleEmitter(const XmlNodePtrConst emitterNode,
                 {
                     if (!dyePalettes.empty())
                         Dye::instantiate(image, dyePalettes);
-
-                    ResourceManager *const resman
-                        = ResourceManager::getInstance();
-                    Image *img = resman->getImage(image);
+                    Image *img = resourceManager->getImage(image);
                     if (img)
                     {
-                        mParticleImage = resman->getSubImage(img,
+                        mParticleImage = resourceManager->getSubImage(img,
                             XML::getProperty(propertyNode, "x", 0),
                             XML::getProperty(propertyNode, "y", 0),
                             XML::getProperty(propertyNode, "width", 0),
@@ -363,17 +357,16 @@ ParticleEmitter::ParticleEmitter(const ParticleEmitter &o)
 
 ImageSet *ParticleEmitter::getImageSet(XmlNodePtrConst node)
 {
-    ResourceManager *const resman = ResourceManager::getInstance();
     ImageSet *imageset = nullptr;
     const int subX = XML::getProperty(node, "subX", -1);
     if (subX != -1)
     {
-        Image *const img = resman->getImage(XML::getProperty(
+        Image *const img = resourceManager->getImage(XML::getProperty(
             node, "imageset", ""));
         if (!img)
             return nullptr;
 
-        Image *const img2 = resman->getSubImage(img, subX,
+        Image *const img2 = resourceManager->getSubImage(img, subX,
             XML::getProperty(node, "subY", 0),
             XML::getProperty(node, "subWidth", 0),
             XML::getProperty(node, "subHeight", 0));
@@ -383,7 +376,7 @@ ImageSet *ParticleEmitter::getImageSet(XmlNodePtrConst node)
             return nullptr;
         }
 
-        imageset = resman->getSubImageSet(img2,
+        imageset = resourceManager->getSubImageSet(img2,
             XML::getProperty(node, "width", 0),
             XML::getProperty(node, "height", 0));
         img2->decRef();
@@ -391,7 +384,7 @@ ImageSet *ParticleEmitter::getImageSet(XmlNodePtrConst node)
     }
     else
     {
-        imageset = resman->getImageSet(
+        imageset = resourceManager->getImageSet(
             XML::getProperty(node, "imageset", ""),
             XML::getProperty(node, "width", 0),
             XML::getProperty(node, "height", 0));

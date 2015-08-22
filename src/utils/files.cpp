@@ -45,8 +45,7 @@ void Files::extractLocale()
 
     const std::string fileName2 = std::string(getenv(
         "APPDIR")).append("/locale.zip");
-    const ResourceManager *const resman = ResourceManager::getInstance();
-    resman->addToSearchPath(fileName2, false);
+    resourceManager->addToSearchPath(fileName2, false);
 
     const std::string localDir = std::string(getenv("APPDIR")).append("/");
     char **rootDirs = PhysFs::enumerateFiles("locale");
@@ -66,7 +65,7 @@ void Files::extractLocale()
         }
     }
     PhysFs::freeList(rootDirs);
-    resman->removeFromSearchPath(fileName2);
+    resourceManager->removeFromSearchPath(fileName2);
     remove(fileName2.c_str());
 }
 #endif // ANDROID
@@ -123,10 +122,9 @@ void Files::extractZip(const std::string &restrict zipName,
                        const std::string &restrict inDir,
                        const std::string &restrict outDir)
 {
-    const ResourceManager *const resman = ResourceManager::getInstance();
-    resman->addToSearchPath(zipName, false);
+    resourceManager->addToSearchPath(zipName, false);
     copyPhysFsDir(inDir, outDir);
-    resman->removeFromSearchPath(zipName);
+    resourceManager->removeFromSearchPath(zipName);
     remove(zipName.c_str());
 }
 

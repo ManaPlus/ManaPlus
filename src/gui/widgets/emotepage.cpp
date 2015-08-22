@@ -39,7 +39,7 @@ EmotePage::EmotePage(const Widget2 *const widget) :
     Widget(widget),
     MouseListener(),
     WidgetListener(),
-    mEmotes(ResourceManager::getInstance()->getImageSet(
+    mEmotes(resourceManager->getImageSet(
         "graphics/sprites/chatemotes.png", emoteWidth, emoteHeight)),
     mVertexes(new ImageCollection),
     mSelectedIndex(-1)

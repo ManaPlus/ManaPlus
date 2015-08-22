@@ -75,10 +75,10 @@ int main(int argc, char **argv)
     imageHelper = new SDLImageHelper;
 #endif
 
-    ResourceManager *resman = new ResourceManager;
-    resman->setWriteDir(".");
-    resman->addToSearchPath(".", false);
-    resman->addToSearchPath("/", false);
+    ResourceManager::init();
+    resourceManager->setWriteDir(".");
+    resourceManager->addToSearchPath(".", false);
+    resourceManager->addToSearchPath("/", false);
     std::string src = argv[1];
     std::string dst;
     if (argc == 4)
@@ -91,7 +91,7 @@ int main(int argc, char **argv)
         dst = argv[2];
     }
 
-    Image *image = resman->getImage(src);
+    Image *image = resourceManager->getImage(src);
     if (!image)
     {
         printf("Error loading image\n");

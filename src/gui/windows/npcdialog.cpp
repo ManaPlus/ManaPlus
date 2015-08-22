@@ -597,8 +597,6 @@ void NpcDialog::addChoice(const std::string &choice)
 void NpcDialog::parseListItems(const std::string &itemString)
 {
     std::istringstream iss(itemString);
-    ResourceManager *const resman = ResourceManager::getInstance();
-
     std::string tmp;
     const std::string path = paths.getStringValue("guiIcons");
     while (getline(iss, tmp, ':'))
@@ -614,7 +612,7 @@ void NpcDialog::parseListItems(const std::string &itemString)
         else
         {
             mItems.push_back(tmp.substr(pos + 1));
-            Image *const img = resman->getImage(std::string(
+            Image *const img = resourceManager->getImage(std::string(
                 path).append(tmp.substr(0, pos)).append(".png"));
             mImages.push_back(img);
         }
