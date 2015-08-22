@@ -702,6 +702,38 @@ namespace NotifyManager
             // TRANSLATORS: notification message
             N_("Unknown skill message."),
             NotifyFlags::EMPTY},
+        {"ignore player success",
+            // TRANSLATORS: notification message
+            N_("Player succesfully ignored."),
+            NotifyFlags::EMPTY},
+        {"ignore player failure",
+            // TRANSLATORS: notification message
+            N_("Player ignore failed."),
+            NotifyFlags::EMPTY},
+        {"ignore player too many",
+            // TRANSLATORS: notification message
+            N_("Player ignore failed. Because too many ignores."),
+            NotifyFlags::EMPTY},
+        {"ignore player unknown",
+            // TRANSLATORS: notification message
+            N_("Unknown player ignore failure."),
+            NotifyFlags::EMPTY},
+        {"unignore player success",
+            // TRANSLATORS: notification message
+            N_("Player succesfully unignored."),
+            NotifyFlags::EMPTY},
+        {"unignore player failure",
+            // TRANSLATORS: notification message
+            N_("Player unignore failed."),
+            NotifyFlags::EMPTY},
+        {"unignore player unknown",
+            // TRANSLATORS: notification message
+            N_("Unknown player unignore failure."),
+            NotifyFlags::EMPTY},
+        {"ignore unknown type",
+            // TRANSLATORS: notification message
+            N_("Unknown ignore type."),
+            NotifyFlags::EMPTY},
     };
 }  // namespace NotifyManager
 #endif  // RESOURCES_NOTIFICATIONS_H

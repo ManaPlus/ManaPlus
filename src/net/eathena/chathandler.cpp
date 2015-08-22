@@ -378,9 +378,49 @@ void ChatHandler::unIgnore(const std::string &nick) const
 
 void ChatHandler::processIgnoreNickAck(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
-    msg.readUInt8("type");
-    msg.readUInt8("flag");
+    const int type = msg.readUInt8("type");
+    const int flag = msg.readUInt8("flag");
+    switch (type)
+    {
+        case 0:
+            switch (flag)
+            {
+                case 0:
+                    NotifyManager::notify(NotifyTypes::IGNORE_PLAYER_SUCCESS);
+                    break;
+                case 1:
+                    NotifyManager::notify(NotifyTypes::IGNORE_PLAYER_FAILURE);
+                    break;
+                case 2:
+                    NotifyManager::notify(NotifyTypes::IGNORE_PLAYER_TOO_MANY);
+                    break;
+                default:
+                    NotifyManager::notify(NotifyTypes::IGNORE_PLAYER_UNKNOWN);
+                    break;
+            }
+            break;
+        case 1:
+            switch (flag)
+            {
+                case 0:
+                    NotifyManager::notify(
+                        NotifyTypes::UNIGNORE_PLAYER_SUCCESS);
+                    break;
+                case 1:
+                    NotifyManager::notify(
+                        NotifyTypes::UNIGNORE_PLAYER_FAILURE);
+                    break;
+                default:
+                    NotifyManager::notify(
+                        NotifyTypes::UNIGNORE_PLAYER_UNKNOWN);
+                    break;
+            }
+            break;
+
+        default:
+            NotifyManager::notify(NotifyTypes::IGNORE_PLAYER_TYPE_UNKNOWN);
+            break;
+    }
 }
 
 void ChatHandler::requestIgnoreList() const
