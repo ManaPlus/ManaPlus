@@ -366,7 +366,7 @@ void BeingNet::processSkillNoDamage(Net::MessageIn &msg)
         msg.readBeingId("dst being id"));
     Being *const srcBeing = actorManager->findBeing(
         msg.readBeingId("src being id"));
-    const int flag = msg.readUInt8("fail");
+    msg.readUInt8("fail");
 
     if (srcBeing)
         srcBeing->handleSkill(dstBeing, heal, id, 1);

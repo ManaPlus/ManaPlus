@@ -347,7 +347,7 @@ void PetHandler::startAi(const bool start A_UNUSED) const
 {
 }
 
-void PetHandler::processPetCatchProcess(Net::MessageIn &msg)
+void PetHandler::processPetCatchProcess(Net::MessageIn &msg A_UNUSED)
 {
     NotifyManager::notify(NotifyTypes::PET_CATCH_PROCESS);
 }
