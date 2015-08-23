@@ -45,9 +45,8 @@ TEST_CASE("AnimatedSprite tests", "animatedsprite")
     XML::initXML();
     SDL_Init(SDL_INIT_VIDEO);
     logger = new Logger();
-    ResourceManager *resman = ResourceManager::getInstance();
-    resman->addToSearchPath("data", false);
-    resman->addToSearchPath("../data", false);
+    resourceManager->addToSearchPath("data", false);
+    resourceManager->addToSearchPath("../data", false);
 
     imageHelper = new SDLImageHelper();
     SDL_SetVideoMode(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
