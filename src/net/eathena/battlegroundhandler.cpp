@@ -22,6 +22,7 @@
 
 #include "logger.h"
 
+#include "net/eathena/battleground.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
@@ -56,99 +57,40 @@ void BattleGroundHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_BATTLE_EMBLEM:
-            processBattleEmblem(msg);
+            BattleGround::processBattleEmblem(msg);
             break;
 
         case SMSG_BATTLE_UPDATE_SCORE:
-            processBattleUpdateScore(msg);
+            BattleGround::processBattleUpdateScore(msg);
             break;
 
         case SMSG_BATTLE_UPDATE_COORDS:
-            processBattleUpdateCoords(msg);
+            BattleGround::processBattleUpdateCoords(msg);
             break;
 
         case SMSG_BATTLE_PLAY:
-            processBattlePlay(msg);
+            BattleGround::processBattlePlay(msg);
             break;
 
         case SMSG_BATTLE_QUEUE_ACK:
-            processBattleQueueAck(msg);
+            BattleGround::processBattleQueueAck(msg);
             break;
 
         case SMSG_BATTLE_BEGINS:
-            processBattleBegins(msg);
+            BattleGround::processBattleBegins(msg);
             break;
 
         case SMSG_BATTLE_NOTICE_DELETE:
-            processBattleNoticeDelete(msg);
+            BattleGround::processBattleNoticeDelete(msg);
             break;
 
         case SMSG_BATTLE_JOINED:
-            processBattleJoined(msg);
+            BattleGround::processBattleJoined(msg);
             break;
 
         default:
             break;
     }
-}
-
-void BattleGroundHandler::processBattleEmblem(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    msg.readBeingId("account id");
-    msg.readString(24, "name");
-    msg.readInt16("camp");
-}
-
-void BattleGroundHandler::processBattleUpdateScore(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    msg.readInt16("camp a points");
-    msg.readInt16("camp b points");
-}
-
-void BattleGroundHandler::processBattleUpdateCoords(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    msg.readBeingId("account id");
-    msg.readString(24, "name");
-    msg.readInt16("class");
-    msg.readInt16("x");
-    msg.readInt16("y");
-}
-
-void BattleGroundHandler::processBattlePlay(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    msg.readString(24, "battle ground name");
-}
-
-void BattleGroundHandler::processBattleQueueAck(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    msg.readUInt8("type");
-    msg.readString(24, "bg name");
-}
-
-void BattleGroundHandler::processBattleBegins(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    msg.readString(24, "bg name");
-    msg.readString(24, "game name");
-}
-
-void BattleGroundHandler::processBattleNoticeDelete(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    msg.readUInt8("type");
-    msg.readString(24, "bg name");
-}
-
-void BattleGroundHandler::processBattleJoined(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    msg.readString(24, "name");
-    msg.readInt32("position");
 }
 
 void BattleGroundHandler::registerBg(const BattleGroundTypeT &type,

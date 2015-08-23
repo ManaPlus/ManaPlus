@@ -18,40 +18,27 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_EATHENA_BATTLEGROUNDHANDLER_H
-#define NET_EATHENA_BATTLEGROUNDHANDLER_H
+#ifndef NET_EATHENA_BATTLEGROUND_H
+#define NET_EATHENA_BATTLEGROUND_H
 
 #ifdef EATHENA_SUPPORT
-
-#include "net/battlegroundhandler.h"
 
 #include "net/eathena/messagehandler.h"
 
 namespace EAthena
 {
-class BattleGroundHandler final : public MessageHandler,
-                                  public Net::BattleGroundHandler
-{
-    public:
-        BattleGroundHandler();
-
-        A_DELETE_COPY(BattleGroundHandler)
-
-        void handleMessage(Net::MessageIn &msg) override final;
-
-        void registerBg(const BattleGroundTypeT &type,
-                        const std::string &name) const override final;
-
-        void rekoveRequest(const std::string &name) const override final;
-
-        void beginAck(const bool result,
-                      const std::string &bgName,
-                      const std::string &gameName) const override final;
-
-        void checkState(const std::string &name) const override final;
-};
-
+    namespace BattleGround
+    {
+        void processBattleEmblem(Net::MessageIn &msg);
+        void processBattleUpdateScore(Net::MessageIn &msg);
+        void processBattleUpdateCoords(Net::MessageIn &msg);
+        void processBattlePlay(Net::MessageIn &msg);
+        void processBattleQueueAck(Net::MessageIn &msg);
+        void processBattleBegins(Net::MessageIn &msg);
+        void processBattleNoticeDelete(Net::MessageIn &msg);
+        void processBattleJoined(Net::MessageIn &msg);
+    }  // namespace BattleGround
 }  // namespace EAthena
 
 #endif  // EATHENA_SUPPORT
-#endif  // NET_EATHENA_BATTLEGROUNDHANDLER_H
+#endif  // NET_EATHENA_BATTLEGROUND_H

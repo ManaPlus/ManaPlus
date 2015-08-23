@@ -1372,6 +1372,8 @@ manaplus_SOURCES += gui/windows/bankwindow.cpp \
 	      net/eathena/bank.h \
 	      net/eathena/bankhandler.cpp \
 	      net/eathena/bankhandler.h \
+	      net/eathena/battleground.cpp \
+	      net/eathena/battleground.h \
 	      net/eathena/battlegroundhandler.cpp \
 	      net/eathena/battlegroundhandler.h \
 	      net/eathena/cashshophandler.cpp \
