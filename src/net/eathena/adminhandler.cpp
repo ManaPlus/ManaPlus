@@ -26,6 +26,9 @@
 
 #include "being/being.h"
 
+#include "net/ea/admin.h"
+
+#include "net/eathena/admin.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
@@ -59,16 +62,16 @@ void AdminHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_ADMIN_KICK_ACK:
-            processKickAck(msg);
+            Ea::Admin::processKickAck(msg);
             break;
         case SMSG_ADMIN_GET_LOGIN_ACK:
-            processAdminGetLoginAck(msg);
+            Admin::processAdminGetLoginAck(msg);
             break;
         case SMSG_ADMIN_SET_TILE_TYPE:
-            processSetTileType(msg);
+            Admin::processSetTileType(msg);
             break;
         case SMSG_ADMIN_ACCOUNT_STATS:
-            processAccountStats(msg);
+            Admin::processAccountStats(msg);
             break;
         default:
             break;
@@ -184,60 +187,11 @@ void AdminHandler::unequipAll(const Being *const being) const
     outMsg.writeBeingId(being->getId(), "account id");
 }
 
-void AdminHandler::processAdminGetLoginAck(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    msg.readBeingId("account id");
-    msg.readString(24, "login");
-}
-
-void AdminHandler::processSetTileType(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    // +++ here need set collision tile for map
-    msg.readInt16("x");
-    msg.readInt16("y");
-    msg.readInt16("type");
-    msg.readString(16, "map name");
-}
-
 void AdminHandler::requestStats(const std::string &name)
 {
     mStatsName = name;
     createOutPacket(CMSG_ADMIN_REQUEST_STATS);
     outMsg.writeString(name, 24, "name");
-}
-
-void AdminHandler::processAccountStats(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    // +++ need show in other players stats window, nick in mStatsName
-    msg.readUInt8("str");
-    msg.readUInt8("need str");
-    msg.readUInt8("agi");
-    msg.readUInt8("need agi");
-    msg.readUInt8("vit");
-    msg.readUInt8("need vit");
-    msg.readUInt8("int");
-    msg.readUInt8("need int");
-    msg.readUInt8("dex");
-    msg.readUInt8("need dex");
-    msg.readUInt8("luk");
-    msg.readUInt8("need luk");
-    msg.readInt16("attack");
-    msg.readInt16("refine");
-    msg.readInt16("matk max");
-    msg.readInt16("matk min");
-    msg.readInt16("item def");
-    msg.readInt16("plus def");
-    msg.readInt16("mdef");
-    msg.readInt16("plus mdef");
-    msg.readInt16("hit");
-    msg.readInt16("flee");
-    msg.readInt16("flee2/10");
-    msg.readInt16("cri/10");
-    msg.readInt16("speed");
-    msg.readInt16("zero");
 }
 
 }  // namespace EAthena

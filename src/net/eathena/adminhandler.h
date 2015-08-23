@@ -76,12 +76,6 @@ class AdminHandler final : public MessageHandler, public Ea::AdminHandler
         void requestStats(const std::string &name) override final;
 
     protected:
-        static void processAdminGetLoginAck(Net::MessageIn &msg);
-
-        static void processSetTileType(Net::MessageIn &msg);
-
-        static void processAccountStats(Net::MessageIn &msg);
-
         static std::string mStatsName;
 };
 

@@ -20,10 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_EA_ADMINHANDLER_H
-#define NET_EA_ADMINHANDLER_H
-
-#include "net/adminhandler.h"
+#ifndef NET_EA_ADMIN_H
+#define NET_EA_ADMIN_H
 
 #include "localconsts.h"
 
@@ -34,37 +32,10 @@ namespace Net
 
 namespace Ea
 {
-
-class AdminHandler notfinal : public Net::AdminHandler
-{
-    public:
-        AdminHandler()
-        { }
-
-        A_DELETE_COPY(AdminHandler)
-
-        virtual ~AdminHandler()
-        { }
-
-        void kickName(const std::string &name) const override final;
-
-        void ban(const int playerId) const override final;
-
-        void banName(const std::string &name) const override final;
-
-        void unban(const int playerId) const override final;
-
-        void unbanName(const std::string &name) const override final;
-
-        void reviveName(const std::string &name) const override final;
-
-        void ipcheckName(const std::string &name) const override final;
-
-        void createItems(const int id,
-                         const ItemColor color,
-                         const int amount) const override final;
-};
-
+    namespace Admin
+    {
+        void processKickAck(Net::MessageIn &msg);
+    }  // namespace Admin
 }  // namespace Ea
 
-#endif  // NET_EA_ADMINHANDLER_H
+#endif  // NET_EA_ADMIN_H

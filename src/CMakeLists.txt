@@ -1339,6 +1339,8 @@ SET(DYE_CMD_SRCS
 )
 
 SET(SRCS_EVOL
+    net/ea/admin.cpp
+    net/ea/admin.h
     net/ea/adminhandler.cpp
     net/ea/adminhandler.h
     net/ea/beinghandler.cpp
@@ -1512,6 +1514,8 @@ SET(SRCS_EATHENA
     net/roulettehandler.h
     net/searchstorehandler.h
     net/vendinghandler.h
+    net/eathena/admin.cpp
+    net/eathena/admin.h
     net/eathena/adminhandler.cpp
     net/eathena/adminhandler.h
     net/eathena/auctionhandler.cpp
