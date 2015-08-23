@@ -52,6 +52,7 @@ FloorItem::FloorItem(const BeingId id,
                      const int refine,
                      const ItemColor color,
                      const Identified identified,
+                     const Damaged damaged,
                      const int *const cards) :
     ActorSprite(id),
     mCards(),
@@ -67,6 +68,7 @@ FloorItem::FloorItem(const BeingId id,
     mCursor(Cursor::CURSOR_PICKUP),
     mColor(color),
     mIdentified(identified),
+    mDamaged(damaged),
     mShowMsg(true),
     mHighlight(config.getBoolValue("floorItemsHighlight"))
 {

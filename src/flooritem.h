@@ -23,6 +23,7 @@
 #ifndef FLOORITEM_H
 #define FLOORITEM_H
 
+#include "enums/simpletypes/damaged.h"
 #include "enums/simpletypes/identified.h"
 #include "enums/simpletypes/itemcolor.h"
 
@@ -56,6 +57,7 @@ class FloorItem final : public ActorSprite
                   const int refine,
                   const ItemColor color,
                   const Identified identified,
+                  const Damaged damaged,
                   const int *const cards);
 
         A_DELETE_COPY(FloorItem)
@@ -126,6 +128,7 @@ class FloorItem final : public ActorSprite
         Cursor::Cursor mCursor;
         ItemColor mColor;
         Identified mIdentified;
+        Damaged mDamaged;
         bool mShowMsg;
         bool mHighlight;
 };

@@ -28,6 +28,7 @@
 #include "enums/simpletypes/allowsort.h"
 #include "enums/simpletypes/allplayers.h"
 #include "enums/simpletypes/beingtypeid.h"
+#include "enums/simpletypes/damaged.h"
 #include "enums/simpletypes/npcnames.h"
 
 #include "listeners/configlistener.h"
@@ -88,6 +89,7 @@ class ActorManager final: public ConfigListener
                               const int refine,
                               const ItemColor color,
                               const Identified identified,
+                              const Damaged damaged,
                               const int subX, const int subY,
                               const int *const cards);
 

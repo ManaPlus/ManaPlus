@@ -113,6 +113,7 @@ void ItemHandler::processItemDropped(Net::MessageIn &msg)
             0,
             ItemColor_one,
             identified,
+            Damaged_false,
             subX, subY,
             nullptr);
     }
@@ -146,6 +147,7 @@ void ItemHandler::processItemDropped2(Net::MessageIn &msg)
             refine,
             ItemColorManager::getColorFromCards(&cards[0]),
             identified,
+            damaged,
             subX, subY,
             &cards[0]);
     }
@@ -198,6 +200,7 @@ void ItemHandler::processItemVisible(Net::MessageIn &msg)
             0,
             ItemColor_one,
             identified,
+            Damaged_false,
             subX, subY,
             nullptr);
     }
@@ -231,6 +234,7 @@ void ItemHandler::processItemVisible2(Net::MessageIn &msg)
             refine,
             ItemColorManager::getColorFromCards(&cards[0]),
             identified,
+            damaged,
             subX, subY,
             &cards[0]);
     }

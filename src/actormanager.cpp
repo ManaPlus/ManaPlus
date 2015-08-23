@@ -307,6 +307,7 @@ FloorItem *ActorManager::createItem(const BeingId id,
                                     const int refine,
                                     const ItemColor color,
                                     const Identified identified,
+                                    const Damaged damaged,
                                     const int subX, const int subY,
                                     const int *const cards)
 {
@@ -318,6 +319,7 @@ FloorItem *ActorManager::createItem(const BeingId id,
         refine,
         color,
         identified,
+        damaged,
         cards);
     floorItem->postInit(mMap, subX, subY);
 

@@ -89,6 +89,7 @@ void ItemHandler::processItemDropped(Net::MessageIn &msg)
             0,
             ItemColor_one,
             identify,
+            Damaged_false,
             subX, subY,
             nullptr);
     }
@@ -116,6 +117,7 @@ void ItemHandler::processItemVisible(Net::MessageIn &msg)
             0,
             ItemColor_one,
             identified,
+            Damaged_false,
             subX, subY,
             nullptr);
     }
