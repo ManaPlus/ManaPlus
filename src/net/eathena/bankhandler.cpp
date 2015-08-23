@@ -26,6 +26,7 @@
 
 #include "listeners/banklistener.h"
 
+#include "net/eathena/bank.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
@@ -55,15 +56,15 @@ void BankHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_BANK_STATUS:
-            processBankStatus(msg);
+            Bank::processBankStatus(msg);
             break;
 
         case SMSG_BANK_DEPOSIT:
-            processBankDeposit(msg);
+            Bank::processBankDeposit(msg);
             break;
 
         case SMSG_BANK_WITHDRAW:
-            processBankWithdraw(msg);
+            Bank::processBankWithdraw(msg);
             break;
 
         default:
@@ -89,33 +90,6 @@ void BankHandler::check() const
 {
     createOutPacket(CMSG_BANK_CHECK);
     outMsg.writeInt32(0, "account id");
-}
-
-void BankHandler::processBankStatus(Net::MessageIn &msg)
-{
-    const int money = static_cast<int>(msg.readInt64("money"));
-    msg.readInt16("reason");
-    BankListener::distributeEvent(money);
-}
-
-void BankHandler::processBankDeposit(Net::MessageIn &msg)
-{
-    const int reason = msg.readInt16("reason");
-    const int money = static_cast<int>(msg.readInt64("money"));
-    msg.readInt32("balance");
-    BankListener::distributeEvent(money);
-    if (reason)
-        NotifyManager::notify(NotifyTypes::BANK_DEPOSIT_FAILED);
-}
-
-void BankHandler::processBankWithdraw(Net::MessageIn &msg)
-{
-    const int reason = msg.readInt16("reason");
-    const int money = static_cast<int>(msg.readInt64("money"));
-    msg.readInt32("balance");
-    BankListener::distributeEvent(money);
-    if (reason)
-        NotifyManager::notify(NotifyTypes::BANK_WITHDRAW_FAILED);
 }
 
 void BankHandler::open() const
