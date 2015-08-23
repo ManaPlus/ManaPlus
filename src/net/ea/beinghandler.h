@@ -35,40 +35,6 @@ class BeingHandler notfinal : public Net::BeingHandler
 
     protected:
         explicit BeingHandler(const bool enableSync);
-
-        static Being *createBeing(const BeingId id,
-                                  const int job) A_WARN_UNUSED;
-
-        static void setSprite(Being *const being, const unsigned int slot,
-                              const int id,
-                              const std::string &color = "",
-                              const ItemColor colorId = ItemColor_one,
-                              const bool isWeapon = false,
-                              const bool isTempSprite = false);
-
-        static void processBeingRemove(Net::MessageIn &msg);
-
-        static void processSkillDamage(Net::MessageIn &msg);
-
-        static void processBeingAction(Net::MessageIn &msg);
-
-        static void processBeingEmotion(Net::MessageIn &msg);
-
-        static void processNameResponse(Net::MessageIn &msg);
-
-        static void processPlayerStop(Net::MessageIn &msg);
-
-        static void processPlayerMoveToAttack(Net::MessageIn &msg);
-
-        static void processSkillNoDamage(Net::MessageIn &msg);
-
-        static void processPvpMapMode(Net::MessageIn &msg);
-
-        static void processBeingMove3(Net::MessageIn &msg);
-
-        // Should we honor server "Stop Walking" packets
-        static BeingId mSpawnId;
-        static bool mSync;
 };
 
 }  // namespace Ea

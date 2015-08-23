@@ -1185,6 +1185,8 @@ manaplus_SOURCES += main.cpp \
 	      net/ea/admin.h \
 	      net/ea/adminhandler.cpp \
 	      net/ea/adminhandler.h \
+	      net/ea/beingnet.cpp \
+	      net/ea/beingnet.h \
 	      net/ea/beinghandler.cpp \
 	      net/ea/beinghandler.h \
 	      net/ea/buysellhandler.cpp \
@@ -1228,6 +1230,8 @@ manaplus_SOURCES += \
 	      gui/windows/shopselldialog.h \
 	      net/tmwa/adminhandler.cpp \
 	      net/tmwa/adminhandler.h \
+	      net/tmwa/beingnet.cpp \
+	      net/tmwa/beingnet.h \
 	      net/tmwa/beinghandler.cpp \
 	      net/tmwa/beinghandler.h \
 	      net/tmwa/buysellhandler.cpp \
@@ -1378,6 +1382,8 @@ manaplus_SOURCES += gui/windows/bankwindow.cpp \
 	      net/eathena/battlegroundhandler.h \
 	      net/eathena/cashshophandler.cpp \
 	      net/eathena/cashshophandler.h \
+	      net/eathena/beingnet.cpp \
+	      net/eathena/beingnet.h \
 	      net/eathena/beinghandler.cpp \
 	      net/eathena/beinghandler.h \
 	      net/eathena/buyingstorehandler.cpp \

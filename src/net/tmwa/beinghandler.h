@@ -49,57 +49,6 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
 
     protected:
         void viewPlayerEquipment(const Being *const being);
-
-        static void processBeingChangeLook(Net::MessageIn &msg);
-
-        static void processBeingChangeLook2(Net::MessageIn &msg);
-
-        static void processBeingVisible(Net::MessageIn &msg);
-
-        static void processBeingMove(Net::MessageIn &msg);
-
-        static void processPlayerUpdate1(Net::MessageIn &msg);
-
-        static void processPlayerUpdate2(Net::MessageIn &msg);
-
-        static void processPlayerMove(Net::MessageIn &msg);
-
-        static void processBeingSpawn(Net::MessageIn &msg);
-
-        static void processSkillCasting(Net::MessageIn &msg);
-
-        static void processBeingStatusChange(Net::MessageIn &msg);
-
-        static void processBeingMove2(Net::MessageIn &msg);
-
-        static void processBeingChangeDirection(Net::MessageIn &msg);
-
-        static void processBeingChangeLookContinue(Net::MessageIn &msg,
-                                                   Being *const dstBeing,
-                                                   const uint8_t type,
-                                                   const int id,
-                                                   const int id2) A_NONNULL(2);
-
-        static void processPlaterStatusChange(Net::MessageIn &msg);
-
-        static void processBeingResurrect(Net::MessageIn &msg);
-
-        static void processPlayerGuilPartyInfo(Net::MessageIn &msg);
-
-        static void setServerGender(Being *const being,
-                                    const uint8_t gender);
-
-        static void applyPlayerAction(Net::MessageIn &msg,
-                                      Being *const being,
-                                      const uint8_t type);
-
-        static void processBeingSelfEffect(Net::MessageIn &msg);
-
-        static void processSkillCastCancel(Net::MessageIn &msg);
-
-        static void processIpResponse(Net::MessageIn &msg);
-
-        static void processPvpSet(Net::MessageIn &msg);
 };
 
 }  // namespace TmwAthena
