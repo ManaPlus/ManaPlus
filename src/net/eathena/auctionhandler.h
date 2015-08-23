@@ -62,17 +62,6 @@ class AuctionHandler final : public MessageHandler, public Net::AuctionHandler
         void buy() const override final;
 
         void sell() const override final;
-
-    protected:
-        static void processOpenWindow(Net::MessageIn &msg);
-
-        static void processAuctionResults(Net::MessageIn &msg);
-
-        static void processAuctionSetItem(Net::MessageIn &msg);
-
-        static void processAuctionMessage(Net::MessageIn &msg);
-
-        static void processAuctionClose(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

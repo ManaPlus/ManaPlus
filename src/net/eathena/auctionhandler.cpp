@@ -25,6 +25,7 @@
 
 #include "net/ea/eaprotocol.h"
 
+#include "net/eathena/auction.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
@@ -56,79 +57,28 @@ void AuctionHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_AUCTION_OPEN_WINDOW:
-            processOpenWindow(msg);
+            Auction::processOpenWindow(msg);
             break;
 
         case SMSG_AUCTION_RESULTS:
-            processAuctionResults(msg);
+            Auction::processAuctionResults(msg);
             break;
 
         case SMSG_AUCTION_SET_ITEM:
-            processAuctionSetItem(msg);
+            Auction::processAuctionSetItem(msg);
             break;
 
         case SMSG_AUCTION_MESSAGE:
-            processAuctionMessage(msg);
+            Auction::processAuctionMessage(msg);
             break;
 
         case SMSG_AUCTION_CLOSE:
-            processAuctionClose(msg);
+            Auction::processAuctionClose(msg);
             break;
 
         default:
             break;
     }
-}
-
-void AuctionHandler::processOpenWindow(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    msg.readInt32("flag");  // 0 - open, 1 - close
-}
-
-void AuctionHandler::processAuctionResults(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    msg.readInt16("len");
-    msg.readInt32("pages");
-    const int itemCount = msg.readInt32("items count");
-    for (int f = 0; f < itemCount; f ++)
-    {
-        msg.readInt32("auction id");
-        msg.readString(24, "seller name");
-        msg.readInt32("item id");
-        msg.readInt32("auction type");
-        msg.readInt16("item amount");  // always 1
-        msg.readUInt8("identify");
-        msg.readUInt8("attribute");
-        msg.readUInt8("refine");
-        for (int d = 0; d < 4; d ++)
-            msg.readInt16("card");
-        msg.readInt32("price");
-        msg.readInt32("buy now");
-        msg.readString(24, "buyer name");
-        msg.readInt32("timestamp");
-        // +++ need use ItemColorManager for color
-    }
-}
-
-void AuctionHandler::processAuctionSetItem(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    msg.readInt16("index");
-    msg.readUInt8("flag");
-}
-
-void AuctionHandler::processAuctionMessage(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    msg.readUInt8("message");
-}
-
-void AuctionHandler::processAuctionClose(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    msg.readInt16("flag");
 }
 
 void AuctionHandler::cancelReg() const

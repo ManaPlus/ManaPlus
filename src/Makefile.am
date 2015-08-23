@@ -1364,6 +1364,8 @@ manaplus_SOURCES += gui/windows/bankwindow.cpp \
 	      net/eathena/admin.h \
 	      net/eathena/adminhandler.cpp \
 	      net/eathena/adminhandler.h \
+	      net/eathena/auction.cpp \
+	      net/eathena/auction.h \
 	      net/eathena/auctionhandler.cpp \
 	      net/eathena/auctionhandler.h \
 	      net/eathena/bankhandler.cpp \
