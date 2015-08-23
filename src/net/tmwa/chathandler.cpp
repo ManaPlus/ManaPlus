@@ -62,6 +62,7 @@ ChatHandler::ChatHandler() :
         SMSG_GM_CHAT,
         SMSG_MVP_EFFECT,
         SMSG_IGNORE_ALL_RESPONSE,
+        SMSG_SCRIPT_MESSAGE,
         0
     };
     handledMessages = _messages;
@@ -101,6 +102,10 @@ void ChatHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_IGNORE_ALL_RESPONSE:
             processIgnoreAllResponse(msg);
+            break;
+
+        case SMSG_SCRIPT_MESSAGE:
+            processScriptMessage(msg);
             break;
 
         default:
@@ -620,6 +625,14 @@ void ChatHandler::processBeingChat(Net::MessageIn &msg)
         being->setSpeech(chatMsg, GENERAL_CHANNEL);
     }
     BLOCK_END("ChatHandler::processBeingChat")
+}
+
+void ChatHandler::processScriptMessage(Net::MessageIn &msg)
+{
+    const int sz = msg.readInt16("len") - 5;
+    msg.readUInt8("message type");
+    const std::string message = msg.readString(sz, "message");
+    localChatTab->chatLog(message, ChatMsgType::BY_SERVER);
 }
 
 void ChatHandler::talkPet(const std::string &restrict text,

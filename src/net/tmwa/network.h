@@ -30,7 +30,7 @@
  * the protocol accordingly.
  */
 #define CLIENT_PROTOCOL_VERSION      12
-#define CLIENT_TMW_PROTOCOL_VERSION  4
+#define CLIENT_TMW_PROTOCOL_VERSION  5
 
 namespace TmwAthena
 {
