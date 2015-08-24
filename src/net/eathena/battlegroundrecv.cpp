@@ -18,7 +18,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "net/eathena/battleground.h"
+#include "net/eathena/battlegroundrecv.h"
 
 #include "logger.h"
 
@@ -27,7 +27,7 @@
 namespace EAthena
 {
 
-void BattleGround::processBattleEmblem(Net::MessageIn &msg)
+void BattleGroundRecv::processBattleEmblem(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
     msg.readBeingId("account id");
@@ -35,14 +35,14 @@ void BattleGround::processBattleEmblem(Net::MessageIn &msg)
     msg.readInt16("camp");
 }
 
-void BattleGround::processBattleUpdateScore(Net::MessageIn &msg)
+void BattleGroundRecv::processBattleUpdateScore(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
     msg.readInt16("camp a points");
     msg.readInt16("camp b points");
 }
 
-void BattleGround::processBattleUpdateCoords(Net::MessageIn &msg)
+void BattleGroundRecv::processBattleUpdateCoords(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
     msg.readBeingId("account id");
@@ -52,34 +52,34 @@ void BattleGround::processBattleUpdateCoords(Net::MessageIn &msg)
     msg.readInt16("y");
 }
 
-void BattleGround::processBattlePlay(Net::MessageIn &msg)
+void BattleGroundRecv::processBattlePlay(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
     msg.readString(24, "battle ground name");
 }
 
-void BattleGround::processBattleQueueAck(Net::MessageIn &msg)
+void BattleGroundRecv::processBattleQueueAck(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
     msg.readUInt8("type");
     msg.readString(24, "bg name");
 }
 
-void BattleGround::processBattleBegins(Net::MessageIn &msg)
+void BattleGroundRecv::processBattleBegins(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
     msg.readString(24, "bg name");
     msg.readString(24, "game name");
 }
 
-void BattleGround::processBattleNoticeDelete(Net::MessageIn &msg)
+void BattleGroundRecv::processBattleNoticeDelete(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
     msg.readUInt8("type");
     msg.readString(24, "bg name");
 }
 
-void BattleGround::processBattleJoined(Net::MessageIn &msg)
+void BattleGroundRecv::processBattleJoined(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
     msg.readString(24, "name");

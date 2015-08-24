@@ -1530,8 +1530,8 @@ SET(SRCS_EATHENA
     net/eathena/bankrecv.h
     net/eathena/bankhandler.cpp
     net/eathena/bankhandler.h
-    net/eathena/battleground.cpp
-    net/eathena/battleground.h
+    net/eathena/battlegroundrecv.cpp
+    net/eathena/battlegroundrecv.h
     net/eathena/battlegroundhandler.cpp
     net/eathena/battlegroundhandler.h
     net/eathena/cashshophandler.cpp

@@ -22,7 +22,7 @@
 
 #include "logger.h"
 
-#include "net/eathena/battleground.h"
+#include "net/eathena/battlegroundrecv.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
@@ -57,35 +57,35 @@ void BattleGroundHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_BATTLE_EMBLEM:
-            BattleGround::processBattleEmblem(msg);
+            BattleGroundRecv::processBattleEmblem(msg);
             break;
 
         case SMSG_BATTLE_UPDATE_SCORE:
-            BattleGround::processBattleUpdateScore(msg);
+            BattleGroundRecv::processBattleUpdateScore(msg);
             break;
 
         case SMSG_BATTLE_UPDATE_COORDS:
-            BattleGround::processBattleUpdateCoords(msg);
+            BattleGroundRecv::processBattleUpdateCoords(msg);
             break;
 
         case SMSG_BATTLE_PLAY:
-            BattleGround::processBattlePlay(msg);
+            BattleGroundRecv::processBattlePlay(msg);
             break;
 
         case SMSG_BATTLE_QUEUE_ACK:
-            BattleGround::processBattleQueueAck(msg);
+            BattleGroundRecv::processBattleQueueAck(msg);
             break;
 
         case SMSG_BATTLE_BEGINS:
-            BattleGround::processBattleBegins(msg);
+            BattleGroundRecv::processBattleBegins(msg);
             break;
 
         case SMSG_BATTLE_NOTICE_DELETE:
-            BattleGround::processBattleNoticeDelete(msg);
+            BattleGroundRecv::processBattleNoticeDelete(msg);
             break;
 
         case SMSG_BATTLE_JOINED:
-            BattleGround::processBattleJoined(msg);
+            BattleGroundRecv::processBattleJoined(msg);
             break;
 
         default:

@@ -27,7 +27,7 @@
 
 namespace EAthena
 {
-    namespace BattleGround
+    namespace BattleGroundRecv
     {
         void processBattleEmblem(Net::MessageIn &msg);
         void processBattleUpdateScore(Net::MessageIn &msg);
