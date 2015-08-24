@@ -45,6 +45,7 @@ TEST_CASE("AnimatedSprite tests", "animatedsprite")
     XML::initXML();
     SDL_Init(SDL_INIT_VIDEO);
     logger = new Logger();
+    ResourceManager::init();
     resourceManager->addToSearchPath("data", false);
     resourceManager->addToSearchPath("../data", false);
 

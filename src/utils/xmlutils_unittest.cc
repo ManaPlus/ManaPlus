@@ -38,6 +38,7 @@ TEST_CASE("xmlutils readXmlIntVector 1")
     dirSeparator = "/";
     XML::initXML();
     logger = new Logger();
+    ResourceManager::init();
     resourceManager->addToSearchPath("data", false);
     resourceManager->addToSearchPath("../data", false);
 
