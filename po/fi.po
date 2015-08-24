@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2015-08-23 00:52+0300\n"
-"PO-Revision-Date: 2015-08-15 09:12+0000\n"
+"POT-Creation-Date: 2015-08-24 23:43+0300\n"
+"PO-Revision-Date: 2015-08-23 09:14+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Finnish (http://www.transifex.com/akaras/manaplus/language/"
 "fi/)\n"
@@ -259,7 +259,7 @@ msgid "Quick"
 msgstr ""
 
 #. TRANSLATORS: visible beings on map
-#: src/actormanager.cpp:1451
+#: src/actormanager.cpp:1453
 msgid "Visible on map"
 msgstr "Näkyvillä kartalla"
 
@@ -3013,15 +3013,13 @@ msgstr "Saaliinjako käytössä."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/gui/widgets/tabs/chat/partytab.cpp:103
-#: src/resources/notifications.h:210
+#: src/gui/widgets/tabs/chat/partytab.cpp:103 src/resources/notifications.h:210
 msgid "Item sharing disabled."
 msgstr "Saaliinjako poistettu käytöstä."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/gui/widgets/tabs/chat/partytab.cpp:108
-#: src/resources/notifications.h:214
+#: src/gui/widgets/tabs/chat/partytab.cpp:108 src/resources/notifications.h:214
 msgid "Item sharing not possible."
 msgstr "Saaliinjako ei ole mahdollista."
 
@@ -3032,22 +3030,19 @@ msgstr "Saaliinjaon tila on tuntematon."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/gui/widgets/tabs/chat/partytab.cpp:149
-#: src/resources/notifications.h:194
+#: src/gui/widgets/tabs/chat/partytab.cpp:149 src/resources/notifications.h:194
 msgid "Experience sharing enabled."
 msgstr "Kokemuksen jako käytössä."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/gui/widgets/tabs/chat/partytab.cpp:154
-#: src/resources/notifications.h:198
+#: src/gui/widgets/tabs/chat/partytab.cpp:154 src/resources/notifications.h:198
 msgid "Experience sharing disabled."
 msgstr "Kokemuksen jako pois käytöstä."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/gui/widgets/tabs/chat/partytab.cpp:159
-#: src/resources/notifications.h:202
+#: src/gui/widgets/tabs/chat/partytab.cpp:159 src/resources/notifications.h:202
 msgid "Experience sharing not possible."
 msgstr "Kokemuksen jako ei ole mahdollista."
 
@@ -3474,8 +3469,7 @@ msgstr ""
 #. TRANSLATORS: settings colors tab name
 #. TRANSLATORS: emotes tab name
 #: src/gui/widgets/tabs/setup_chat.cpp:65
-#: src/gui/widgets/tabs/setup_colors.cpp:86
-#: src/gui/windows/emotewindow.cpp:116
+#: src/gui/widgets/tabs/setup_colors.cpp:86 src/gui/windows/emotewindow.cpp:116
 msgid "Colors"
 msgstr "Värit"
 
@@ -5547,8 +5541,7 @@ msgstr "Määrä:"
 #. TRANSLATORS: char select dialog. button.
 #. TRANSLATORS: social window button
 #: src/gui/windows/buydialog.cpp:275 src/gui/windows/charcreatedialog.cpp:119
-#: src/gui/windows/charselectdialog.cpp:636
-#: src/gui/windows/socialwindow.cpp:77
+#: src/gui/windows/charselectdialog.cpp:636 src/gui/windows/socialwindow.cpp:77
 msgid "Create"
 msgstr "Luo"
 
@@ -5661,8 +5654,7 @@ msgstr "Nimi:"
 #: src/gui/windows/charcreatedialog.cpp:94
 #: src/gui/windows/charcreatedialog.cpp:111
 #: src/gui/windows/charcreatedialog.cpp:196
-#: src/gui/windows/charcreatedialog.cpp:206
-#: src/gui/windows/outfitwindow.cpp:63
+#: src/gui/windows/charcreatedialog.cpp:206 src/gui/windows/outfitwindow.cpp:63
 msgid ">"
 msgstr ">"
 
@@ -5673,8 +5665,7 @@ msgstr ">"
 #: src/gui/windows/charcreatedialog.cpp:89
 #: src/gui/windows/charcreatedialog.cpp:96
 #: src/gui/windows/charcreatedialog.cpp:198
-#: src/gui/windows/charcreatedialog.cpp:208
-#: src/gui/windows/outfitwindow.cpp:61
+#: src/gui/windows/charcreatedialog.cpp:208 src/gui/windows/outfitwindow.cpp:61
 msgid "<"
 msgstr "<"
 
@@ -5712,8 +5703,7 @@ msgstr ""
 
 #. TRANSLATORS: one char size female character gender
 #. TRANSLATORS: here F is title for friends tab in social window
-#: src/gui/windows/charcreatedialog.cpp:224
-#: src/gui/windows/socialwindow.cpp:73
+#: src/gui/windows/charcreatedialog.cpp:224 src/gui/windows/socialwindow.cpp:73
 msgid "F"
 msgstr ""
 
@@ -5781,8 +5771,7 @@ msgstr "Pelaa"
 #. TRANSLATORS: info message header
 #. TRANSLATORS: info header
 #. TRANSLATORS: info message
-#: src/gui/windows/charselectdialog.cpp:79
-#: src/net/ea/charserverhandler.cpp:166
+#: src/gui/windows/charselectdialog.cpp:79 src/net/ea/charserverhandler.cpp:166
 #: src/net/eathena/charserverhandler.cpp:610
 #: src/net/eathena/charserverhandler.cpp:646
 msgid "Info"
@@ -5918,8 +5907,7 @@ msgstr ""
 
 #. TRANSLATORS: edit server dialog button
 #. TRANSLATORS: servers dialog button
-#: src/gui/windows/editserverdialog.cpp:54
-#: src/gui/windows/serverdialog.cpp:115
+#: src/gui/windows/editserverdialog.cpp:54 src/gui/windows/serverdialog.cpp:115
 msgid "Connect"
 msgstr "Yhdistä"
 
@@ -6046,9 +6034,9 @@ msgstr ""
 
 #. TRANSLATORS: question dialog message
 #: src/gui/windows/inventorywindow.cpp:1037
-#, fuzzy, c-format
+#, c-format
 msgid "Insert %s into %s?"
-msgstr "Kutsuit käyttäjän %s kiltaan %s."
+msgstr ""
 
 #. TRANSLATORS: item amount window button
 #: src/gui/windows/itemamountwindow.cpp:183
@@ -6284,14 +6272,12 @@ msgstr ""
 
 #. TRANSLATORS: mail edit window label
 #. TRANSLATORS: mail view window label
-#: src/gui/windows/maileditwindow.cpp:60
-#: src/gui/windows/mailviewwindow.cpp:103
+#: src/gui/windows/maileditwindow.cpp:60 src/gui/windows/mailviewwindow.cpp:103
 msgid "Money:"
 msgstr ""
 
 #. TRANSLATORS: mail edit window label
-#: src/gui/windows/maileditwindow.cpp:62
-#: src/gui/windows/mailviewwindow.cpp:120
+#: src/gui/windows/maileditwindow.cpp:62 src/gui/windows/mailviewwindow.cpp:120
 #: src/gui/windows/mailviewwindow.cpp:125
 msgid "Item:"
 msgstr ""
@@ -6399,9 +6385,8 @@ msgstr "Taso: %d (GM %d)"
 
 #. TRANSLATORS: status bar label
 #. TRANSLATORS: status window label
-#: src/gui/windows/ministatuswindow.cpp:359
-#: src/gui/windows/statuswindow.cpp:67 src/gui/windows/statuswindow.cpp:262
-#: src/gui/windows/statuswindow.cpp:387
+#: src/gui/windows/ministatuswindow.cpp:359 src/gui/windows/statuswindow.cpp:67
+#: src/gui/windows/statuswindow.cpp:262 src/gui/windows/statuswindow.cpp:387
 #, c-format
 msgid "Level: %d"
 msgstr "Taso: %d"
@@ -9851,9 +9836,9 @@ msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:654
-#, fuzzy, c-format
+#, c-format
 msgid "Item %s bound to you."
-msgstr "Tavara on liian painava."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:659
@@ -9877,9 +9862,8 @@ msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:675
-#, fuzzy
 msgid "All stats +20."
-msgstr "Tappotilastot"
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:679
@@ -9913,21 +9897,18 @@ msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:703
-#, fuzzy
 msgid "Unknown skill message."
-msgstr "Tuntematon palvelimen vastaus."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:707
-#, fuzzy
 msgid "Player succesfully ignored."
-msgstr "Pelaaja on nyt %s!"
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:711
-#, fuzzy
 msgid "Player ignore failed."
-msgstr "Kuiskausten huomiotta jättäminen epäonnistui."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:715
@@ -9936,33 +9917,28 @@ msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:719
-#, fuzzy
 msgid "Unknown player ignore failure."
-msgstr "Tuntematon hahmopalvelinvirhe."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:723
-#, fuzzy
 msgid "Player succesfully unignored."
-msgstr "Pelaaja on nyt %s!"
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:727
-#, fuzzy
 msgid "Player unignore failed."
-msgstr "Kuiskausten huomiointi epäonnistui."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:731
-#, fuzzy
 msgid "Unknown player unignore failure."
-msgstr "Tuntematon hahmopalvelinvirhe."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:735
-#, fuzzy
 msgid "Unknown ignore type."
-msgstr "Tuntematon tavara"
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:739

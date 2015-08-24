@@ -22,8 +22,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2015-08-23 00:52+0300\n"
-"PO-Revision-Date: 2015-08-15 09:12+0000\n"
+"POT-Creation-Date: 2015-08-24 23:43+0300\n"
+"PO-Revision-Date: 2015-08-23 09:14+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/akaras/manaplus/"
 "language/pt_BR/)\n"
@@ -274,7 +274,7 @@ msgid "Quick"
 msgstr ""
 
 #. TRANSLATORS: visible beings on map
-#: src/actormanager.cpp:1451
+#: src/actormanager.cpp:1453
 msgid "Visible on map"
 msgstr "Mapa visivel"
 
@@ -3035,15 +3035,13 @@ msgstr "Compartilhamento de itens habilitado."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/gui/widgets/tabs/chat/partytab.cpp:103
-#: src/resources/notifications.h:210
+#: src/gui/widgets/tabs/chat/partytab.cpp:103 src/resources/notifications.h:210
 msgid "Item sharing disabled."
 msgstr "Compartilhamento de itens desabilitado."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/gui/widgets/tabs/chat/partytab.cpp:108
-#: src/resources/notifications.h:214
+#: src/gui/widgets/tabs/chat/partytab.cpp:108 src/resources/notifications.h:214
 msgid "Item sharing not possible."
 msgstr "Não é possível compartilhar itens."
 
@@ -3054,22 +3052,19 @@ msgstr "Compartilhamento de itens desconhecido."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/gui/widgets/tabs/chat/partytab.cpp:149
-#: src/resources/notifications.h:194
+#: src/gui/widgets/tabs/chat/partytab.cpp:149 src/resources/notifications.h:194
 msgid "Experience sharing enabled."
 msgstr "Compartilhamento de experiência habilitado."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/gui/widgets/tabs/chat/partytab.cpp:154
-#: src/resources/notifications.h:198
+#: src/gui/widgets/tabs/chat/partytab.cpp:154 src/resources/notifications.h:198
 msgid "Experience sharing disabled."
 msgstr "Compartilhamento de experiência desabilitado."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/gui/widgets/tabs/chat/partytab.cpp:159
-#: src/resources/notifications.h:202
+#: src/gui/widgets/tabs/chat/partytab.cpp:159 src/resources/notifications.h:202
 msgid "Experience sharing not possible."
 msgstr "Não é possível compartilhar experiência."
 
@@ -3496,8 +3491,7 @@ msgstr ""
 #. TRANSLATORS: settings colors tab name
 #. TRANSLATORS: emotes tab name
 #: src/gui/widgets/tabs/setup_chat.cpp:65
-#: src/gui/widgets/tabs/setup_colors.cpp:86
-#: src/gui/windows/emotewindow.cpp:116
+#: src/gui/widgets/tabs/setup_colors.cpp:86 src/gui/windows/emotewindow.cpp:116
 msgid "Colors"
 msgstr "Cores"
 
@@ -5576,8 +5570,7 @@ msgstr "Quantidade:"
 #. TRANSLATORS: char select dialog. button.
 #. TRANSLATORS: social window button
 #: src/gui/windows/buydialog.cpp:275 src/gui/windows/charcreatedialog.cpp:119
-#: src/gui/windows/charselectdialog.cpp:636
-#: src/gui/windows/socialwindow.cpp:77
+#: src/gui/windows/charselectdialog.cpp:636 src/gui/windows/socialwindow.cpp:77
 msgid "Create"
 msgstr "Criar"
 
@@ -5690,8 +5683,7 @@ msgstr "Nome:"
 #: src/gui/windows/charcreatedialog.cpp:94
 #: src/gui/windows/charcreatedialog.cpp:111
 #: src/gui/windows/charcreatedialog.cpp:196
-#: src/gui/windows/charcreatedialog.cpp:206
-#: src/gui/windows/outfitwindow.cpp:63
+#: src/gui/windows/charcreatedialog.cpp:206 src/gui/windows/outfitwindow.cpp:63
 msgid ">"
 msgstr ">"
 
@@ -5702,8 +5694,7 @@ msgstr ">"
 #: src/gui/windows/charcreatedialog.cpp:89
 #: src/gui/windows/charcreatedialog.cpp:96
 #: src/gui/windows/charcreatedialog.cpp:198
-#: src/gui/windows/charcreatedialog.cpp:208
-#: src/gui/windows/outfitwindow.cpp:61
+#: src/gui/windows/charcreatedialog.cpp:208 src/gui/windows/outfitwindow.cpp:61
 msgid "<"
 msgstr "<"
 
@@ -5741,8 +5732,7 @@ msgstr "Aparência:"
 
 #. TRANSLATORS: one char size female character gender
 #. TRANSLATORS: here F is title for friends tab in social window
-#: src/gui/windows/charcreatedialog.cpp:224
-#: src/gui/windows/socialwindow.cpp:73
+#: src/gui/windows/charcreatedialog.cpp:224 src/gui/windows/socialwindow.cpp:73
 msgid "F"
 msgstr "A"
 
@@ -5810,8 +5800,7 @@ msgstr "Jogar"
 #. TRANSLATORS: info message header
 #. TRANSLATORS: info header
 #. TRANSLATORS: info message
-#: src/gui/windows/charselectdialog.cpp:79
-#: src/net/ea/charserverhandler.cpp:166
+#: src/gui/windows/charselectdialog.cpp:79 src/net/ea/charserverhandler.cpp:166
 #: src/net/eathena/charserverhandler.cpp:610
 #: src/net/eathena/charserverhandler.cpp:646
 msgid "Info"
@@ -5952,8 +5941,7 @@ msgstr "Editar Servidor"
 
 #. TRANSLATORS: edit server dialog button
 #. TRANSLATORS: servers dialog button
-#: src/gui/windows/editserverdialog.cpp:54
-#: src/gui/windows/serverdialog.cpp:115
+#: src/gui/windows/editserverdialog.cpp:54 src/gui/windows/serverdialog.cpp:115
 msgid "Connect"
 msgstr "Conectar"
 
@@ -6027,9 +6015,9 @@ msgstr ""
 #. TRANSLATORS: insert card dialog name
 #: src/gui/windows/insertcarddialog.cpp:50
 #: src/gui/windows/insertcarddialog.cpp:56
-#, fuzzy, c-format
+#, c-format
 msgid "Insert card %s"
-msgstr "Inserir"
+msgstr ""
 
 #. TRANSLATORS: insert card dialog button
 #. TRANSLATORS: input action name
@@ -6080,9 +6068,9 @@ msgstr ""
 
 #. TRANSLATORS: question dialog message
 #: src/gui/windows/inventorywindow.cpp:1037
-#, fuzzy, c-format
+#, c-format
 msgid "Insert %s into %s?"
-msgstr "Convidou o jogador %s para a guilda %s."
+msgstr ""
 
 #. TRANSLATORS: item amount window button
 #: src/gui/windows/itemamountwindow.cpp:183
@@ -6318,14 +6306,12 @@ msgstr ""
 
 #. TRANSLATORS: mail edit window label
 #. TRANSLATORS: mail view window label
-#: src/gui/windows/maileditwindow.cpp:60
-#: src/gui/windows/mailviewwindow.cpp:103
+#: src/gui/windows/maileditwindow.cpp:60 src/gui/windows/mailviewwindow.cpp:103
 msgid "Money:"
 msgstr ""
 
 #. TRANSLATORS: mail edit window label
-#: src/gui/windows/maileditwindow.cpp:62
-#: src/gui/windows/mailviewwindow.cpp:120
+#: src/gui/windows/maileditwindow.cpp:62 src/gui/windows/mailviewwindow.cpp:120
 #: src/gui/windows/mailviewwindow.cpp:125
 msgid "Item:"
 msgstr ""
@@ -6433,9 +6419,8 @@ msgstr "Nível: %d (GM %d)"
 
 #. TRANSLATORS: status bar label
 #. TRANSLATORS: status window label
-#: src/gui/windows/ministatuswindow.cpp:359
-#: src/gui/windows/statuswindow.cpp:67 src/gui/windows/statuswindow.cpp:262
-#: src/gui/windows/statuswindow.cpp:387
+#: src/gui/windows/ministatuswindow.cpp:359 src/gui/windows/statuswindow.cpp:67
+#: src/gui/windows/statuswindow.cpp:262 src/gui/windows/statuswindow.cpp:387
 #, c-format
 msgid "Level: %d"
 msgstr "Nível: %d"
@@ -9894,9 +9879,9 @@ msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:654
-#, fuzzy, c-format
+#, c-format
 msgid "Item %s bound to you."
-msgstr "Este item é muito pesado."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:659
@@ -9920,9 +9905,8 @@ msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:675
-#, fuzzy
 msgid "All stats +20."
-msgstr "Estatísticas"
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:679
@@ -9946,9 +9930,8 @@ msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:695
-#, fuzzy
 msgid "Flee +50."
-msgstr "Evasão %s"
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:699
@@ -9957,21 +9940,18 @@ msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:703
-#, fuzzy
 msgid "Unknown skill message."
-msgstr "Erro desconhecido de habilidade: %d."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:707
-#, fuzzy
 msgid "Player succesfully ignored."
-msgstr "Jogador %s com sucesso!"
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:711
-#, fuzzy
 msgid "Player ignore failed."
-msgstr "Todos sussurros ignorados falharam."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:715
@@ -9980,39 +9960,33 @@ msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:719
-#, fuzzy
 msgid "Unknown player ignore failure."
-msgstr "Erro desconhecido do char-server."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:723
-#, fuzzy
 msgid "Player succesfully unignored."
-msgstr "Jogador %s com sucesso!"
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:727
-#, fuzzy
 msgid "Player unignore failed."
-msgstr "Todos sussurros não-ignorados falharam."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:731
-#, fuzzy
 msgid "Unknown player unignore failure."
-msgstr "Erro desconhecido do char-server."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:735
-#, fuzzy
 msgid "Unknown ignore type."
-msgstr "Item desconhecido"
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:739
-#, fuzzy
 msgid "Pet catch started."
-msgstr "Captura de animal de estimação falhou."
+msgstr ""
 
 #. TRANSLATORS: chat option changed message
 #: src/utils/booleanoptions.h:27
