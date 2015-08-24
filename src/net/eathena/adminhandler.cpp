@@ -26,9 +26,9 @@
 
 #include "being/being.h"
 
-#include "net/ea/admin.h"
+#include "net/ea/adminrecv.h"
 
-#include "net/eathena/admin.h"
+#include "net/eathena/adminrecv.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
@@ -62,16 +62,16 @@ void AdminHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_ADMIN_KICK_ACK:
-            Ea::Admin::processKickAck(msg);
+            Ea::AdminRecv::processKickAck(msg);
             break;
         case SMSG_ADMIN_GET_LOGIN_ACK:
-            Admin::processAdminGetLoginAck(msg);
+            AdminRecv::processAdminGetLoginAck(msg);
             break;
         case SMSG_ADMIN_SET_TILE_TYPE:
-            Admin::processSetTileType(msg);
+            AdminRecv::processSetTileType(msg);
             break;
         case SMSG_ADMIN_ACCOUNT_STATS:
-            Admin::processAccountStats(msg);
+            AdminRecv::processAccountStats(msg);
             break;
         default:
             break;

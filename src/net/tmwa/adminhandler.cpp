@@ -26,7 +26,7 @@
 
 #include "net/chathandler.h"
 
-#include "net/ea/admin.h"
+#include "net/ea/adminrecv.h"
 
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
@@ -59,7 +59,7 @@ void AdminHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_ADMIN_KICK_ACK:
-            Ea::Admin::processKickAck(msg);
+            Ea::AdminRecv::processKickAck(msg);
             break;
 
         default:

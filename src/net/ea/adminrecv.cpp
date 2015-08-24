@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "net/ea/admin.h"
+#include "net/ea/adminrecv.h"
 
 #include "notifymanager.h"
 
@@ -33,7 +33,7 @@
 namespace Ea
 {
 
-void Admin::processKickAck(Net::MessageIn &msg)
+void AdminRecv::processKickAck(Net::MessageIn &msg)
 {
     if (msg.readInt32("flag") == 0)
         NotifyManager::notify(NotifyTypes::KICK_FAIL);

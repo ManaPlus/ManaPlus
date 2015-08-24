@@ -18,7 +18,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "net/eathena/admin.h"
+#include "net/eathena/adminrecv.h"
 
 #include "logger.h"
 
@@ -32,14 +32,14 @@
 namespace EAthena
 {
 
-void Admin::processAdminGetLoginAck(Net::MessageIn &msg)
+void AdminRecv::processAdminGetLoginAck(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
     msg.readBeingId("account id");
     msg.readString(24, "login");
 }
 
-void Admin::processSetTileType(Net::MessageIn &msg)
+void AdminRecv::processSetTileType(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
     // +++ here need set collision tile for map
@@ -49,7 +49,7 @@ void Admin::processSetTileType(Net::MessageIn &msg)
     msg.readString(16, "map name");
 }
 
-void Admin::processAccountStats(Net::MessageIn &msg)
+void AdminRecv::processAccountStats(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
     // +++ need show in other players stats window, nick in mStatsName

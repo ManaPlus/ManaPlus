@@ -1,5 +1,7 @@
 /*
  *  The ManaPlus Client
+ *  Copyright (C) 2004-2009  The Mana World Development Team
+ *  Copyright (C) 2009-2010  The Mana Developers
  *  Copyright (C) 2011-2015  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
@@ -18,19 +20,22 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_EATHENA_ADMIN_H
-#define NET_EATHENA_ADMIN_H
+#ifndef NET_EA_ADMIN_H
+#define NET_EA_ADMIN_H
 
-#include "net/eathena/messagehandler.h"
+#include "localconsts.h"
 
-namespace EAthena
+namespace Net
 {
-    namespace Admin
-    {
-        void processAdminGetLoginAck(Net::MessageIn &msg);
-        void processSetTileType(Net::MessageIn &msg);
-        void processAccountStats(Net::MessageIn &msg);
-    }  // namespace Admin
-}  // namespace EAthena
+    class MessageIn;
+}
 
-#endif  // NET_EATHENA_ADMIN_H
+namespace Ea
+{
+    namespace AdminRecv
+    {
+        void processKickAck(Net::MessageIn &msg);
+    }  // namespace Admin
+}  // namespace Ea
+
+#endif  // NET_EA_ADMIN_H
