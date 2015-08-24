@@ -1522,8 +1522,8 @@ SET(SRCS_EATHENA
     net/eathena/adminrecv.h
     net/eathena/adminhandler.cpp
     net/eathena/adminhandler.h
-    net/eathena/auction.cpp
-    net/eathena/auction.h
+    net/eathena/auctionrecv.cpp
+    net/eathena/auctionrecv.h
     net/eathena/auctionhandler.cpp
     net/eathena/auctionhandler.h
     net/eathena/bank.cpp

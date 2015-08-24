@@ -18,7 +18,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "net/eathena/auction.h"
+#include "net/eathena/auctionrecv.h"
 
 #include "logger.h"
 
@@ -29,13 +29,13 @@
 namespace EAthena
 {
 
-void Auction::processOpenWindow(Net::MessageIn &msg)
+void AuctionRecv::processOpenWindow(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
     msg.readInt32("flag");  // 0 - open, 1 - close
 }
 
-void Auction::processAuctionResults(Net::MessageIn &msg)
+void AuctionRecv::processAuctionResults(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
     msg.readInt16("len");
@@ -61,20 +61,20 @@ void Auction::processAuctionResults(Net::MessageIn &msg)
     }
 }
 
-void Auction::processAuctionSetItem(Net::MessageIn &msg)
+void AuctionRecv::processAuctionSetItem(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
     msg.readInt16("index");
     msg.readUInt8("flag");
 }
 
-void Auction::processAuctionMessage(Net::MessageIn &msg)
+void AuctionRecv::processAuctionMessage(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
     msg.readUInt8("message");
 }
 
-void Auction::processAuctionClose(Net::MessageIn &msg)
+void AuctionRecv::processAuctionClose(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
     msg.readInt16("flag");

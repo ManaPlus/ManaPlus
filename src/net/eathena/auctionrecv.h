@@ -29,7 +29,7 @@
 
 namespace EAthena
 {
-    namespace Auction
+    namespace AuctionRecv
     {
         void processOpenWindow(Net::MessageIn &msg);
         void processAuctionResults(Net::MessageIn &msg);

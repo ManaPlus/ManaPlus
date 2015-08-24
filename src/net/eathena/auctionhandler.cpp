@@ -25,7 +25,7 @@
 
 #include "net/ea/eaprotocol.h"
 
-#include "net/eathena/auction.h"
+#include "net/eathena/auctionrecv.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
@@ -57,23 +57,23 @@ void AuctionHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_AUCTION_OPEN_WINDOW:
-            Auction::processOpenWindow(msg);
+            AuctionRecv::processOpenWindow(msg);
             break;
 
         case SMSG_AUCTION_RESULTS:
-            Auction::processAuctionResults(msg);
+            AuctionRecv::processAuctionResults(msg);
             break;
 
         case SMSG_AUCTION_SET_ITEM:
-            Auction::processAuctionSetItem(msg);
+            AuctionRecv::processAuctionSetItem(msg);
             break;
 
         case SMSG_AUCTION_MESSAGE:
-            Auction::processAuctionMessage(msg);
+            AuctionRecv::processAuctionMessage(msg);
             break;
 
         case SMSG_AUCTION_CLOSE:
-            Auction::processAuctionClose(msg);
+            AuctionRecv::processAuctionClose(msg);
             break;
 
         default:
