@@ -26,6 +26,7 @@
 
 #include "gui/widgets/createwidget.h"
 
+#include "net/eathena/cashshoprecv.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
@@ -35,8 +36,6 @@ extern Net::CashShopHandler *cashShopHandler;
 
 namespace EAthena
 {
-
-BuyDialog *CashShopHandler::mBuyDialog = nullptr;
 
 CashShopHandler::CashShopHandler() :
     MessageHandler()
@@ -53,7 +52,7 @@ CashShopHandler::CashShopHandler() :
     };
     handledMessages = _messages;
     cashShopHandler = this;
-    mBuyDialog = nullptr;
+    CashShopRecv::mBuyDialog = nullptr;
 }
 
 void CashShopHandler::handleMessage(Net::MessageIn &msg)
@@ -61,108 +60,31 @@ void CashShopHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_NPC_CASH_SHOP_OPEN:
-            processCashShopOpen(msg);
+            CashShopRecv::processCashShopOpen(msg);
             break;
 
         case SMSG_NPC_CASH_BUY_ACK:
-            processCashShopBuyAck(msg);
+            CashShopRecv::processCashShopBuyAck(msg);
             break;
 
         case SMSG_NPC_CASH_POINTS:
-            processCashShopPoints(msg);
+            CashShopRecv::processCashShopPoints(msg);
             break;
 
         case SMSG_NPC_CASH_BUY:
-            processCashShopBuy(msg);
+            CashShopRecv::processCashShopBuy(msg);
             break;
 
         case SMSG_NPC_CASH_TAB_PRICE_LIST:
-            processCashShopTabPriceList(msg);
+            CashShopRecv::processCashShopTabPriceList(msg);
             break;
 
         case SMSG_NPC_CASH_SCHEDULE:
-            processCashShopSchedule(msg);
+            CashShopRecv::processCashShopSchedule(msg);
             break;
 
         default:
             break;
-    }
-}
-
-void CashShopHandler::processCashShopOpen(Net::MessageIn &msg)
-{
-    const int count = (msg.readInt16("len") - 12) / 11;
-
-    CREATEWIDGETV(mBuyDialog, BuyDialog, fromInt(BuyDialog::Cash, BeingId));
-    mBuyDialog->setMoney(PlayerInfo::getAttribute(Attributes::MONEY));
-
-    msg.readInt32("cash points");
-    msg.readInt32("kafra points");
-    for (int f = 0; f < count; f ++)
-    {
-        msg.readInt32("price");
-        const int value = msg.readInt32("discount price");
-        const int type = msg.readUInt8("item type");
-        const int itemId = msg.readInt16("item id");
-        const ItemColor color = ItemColor_one;
-        mBuyDialog->addItem(itemId, type, color, 0, value);
-    }
-    mBuyDialog->sort();
-}
-
-void CashShopHandler::processCashShopBuyAck(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    msg.readInt32("cash points");
-    msg.readInt32("kafra points");
-    msg.readInt16("error");
-}
-
-void CashShopHandler::processCashShopPoints(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    msg.readInt32("cash points");
-    msg.readInt32("kafra points");
-}
-
-void CashShopHandler::processCashShopBuy(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    msg.readInt32("id");
-    msg.readInt16("result");
-    msg.readInt32("cash points");
-    msg.readInt32("kafra points");
-}
-
-void CashShopHandler::processCashShopTabPriceList(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    const int count = (msg.readInt16("len") - 10) / 6;
-    msg.readInt32("tab");
-    const int itemsCount = msg.readInt16("count");
-    if (count != itemsCount)
-        logger->log("error: wrong list count");
-
-    for (int f = 0; f < count; f ++)
-    {
-        msg.readInt16("item id");
-        msg.readInt32("price");
-    }
-}
-
-void CashShopHandler::processCashShopSchedule(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    const int count = (msg.readInt16("len") - 8) / 6;
-    const int itemsCount = msg.readInt16("count");
-    msg.readInt16("tab");
-    if (count != itemsCount)
-        logger->log("error: wrong list count");
-
-    for (int f = 0; f < count; f ++)
-    {
-        msg.readInt16("item id");
-        msg.readInt32("price");
     }
 }
 

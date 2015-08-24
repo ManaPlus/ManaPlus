@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_EATHENA_CASHSHOPHANDLER_H
-#define NET_EATHENA_CASHSHOPHANDLER_H
+#ifndef NET_EATHENA_CASHSHOPRECV_H
+#define NET_EATHENA_CASHSHOPRECV_H
 
 #ifdef EATHENA_SUPPORT
 
@@ -31,31 +31,17 @@ class BuyDialog;
 
 namespace EAthena
 {
-class CashShopHandler final : public MessageHandler,
-                              public Net::CashShopHandler
-{
-    public:
-        CashShopHandler();
-
-        A_DELETE_COPY(CashShopHandler)
-
-        void handleMessage(Net::MessageIn &msg) override final;
-
-        void buyItem(const int points,
-                     const int itemId,
-                     const ItemColor color,
-                     const int amount) const override final;
-
-        void close() const override final;
-
-        void requestPoints() const override final;
-
-        void requestTab(const int tab) const override final;
-
-        void schedule() const override final;
-};
-
+    namespace CashShopRecv
+    {
+        extern BuyDialog *mBuyDialog;
+        void processCashShopOpen(Net::MessageIn &msg);
+        void processCashShopBuyAck(Net::MessageIn &msg);
+        void processCashShopPoints(Net::MessageIn &msg);
+        void processCashShopBuy(Net::MessageIn &msg);
+        void processCashShopTabPriceList(Net::MessageIn &msg);
+        void processCashShopSchedule(Net::MessageIn &msg);
+    }  // namespace CashShopRecv
 }  // namespace EAthena
 
 #endif  // EATHENA_SUPPORT
-#endif  // NET_EATHENA_CASHSHOPHANDLER_H
+#endif  // NET_EATHENA_CASHSHOPRECV_H
