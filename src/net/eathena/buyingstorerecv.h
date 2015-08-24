@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_EATHENA_BUYINGSTOREHANDLER_H
-#define NET_EATHENA_BUYINGSTOREHANDLER_H
+#ifndef NET_EATHENA_BUYINGSTORERECV_H
+#define NET_EATHENA_BUYINGSTORERECV_H
 
 #ifdef EATHENA_SUPPORT
 
@@ -29,32 +29,29 @@
 
 namespace EAthena
 {
-class BuyingStoreHandler final : public MessageHandler,
-                                 public Net::BuyingStoreHandler
-{
-    public:
-        BuyingStoreHandler();
+    namespace BuyingStoreRecv
+    {
+        void processBuyingStoreOpen(Net::MessageIn &msg);
 
-        A_DELETE_COPY(BuyingStoreHandler)
+        void processBuyingStoreCreateFailed(Net::MessageIn &msg);
 
-        void handleMessage(Net::MessageIn &msg) override final;
+        void processBuyingStoreOwnItems(Net::MessageIn &msg);
 
-        void create(const std::string &name,
-                    const int maxMoney,
-                    const bool flag,
-                    std::vector<ShopItem*> &items) const override final;
+        void processBuyingStoreShowBoard(Net::MessageIn &msg);
 
-        void close() const override final;
+        void processBuyingStoreHideBoard(Net::MessageIn &msg);
 
-        void open(const Being *const being) const override final;
+        void processBuyingStoreItemsList(Net::MessageIn &msg);
 
-        void sell(const Being *const being,
-                  const int storeId,
-                  const Item *const item,
-                  const int amount) const override final;
-};
+        void processBuyingStoreSellFailed(Net::MessageIn &msg);
 
+        void processBuyingStoreReport(Net::MessageIn &msg);
+
+        void processBuyingStoreDeleteItem(Net::MessageIn &msg);
+
+        void processBuyingStoreSellerSellFailed(Net::MessageIn &msg);
+    }  // namespace BuyingStoreRecv
 }  // namespace EAthena
 
 #endif  // EATHENA_SUPPORT
-#endif  // NET_EATHENA_BUYINGSTOREHANDLER_H
+#endif  // NET_EATHENA_BUYINGSTORERECV_H

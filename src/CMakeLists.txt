@@ -1542,6 +1542,8 @@ SET(SRCS_EATHENA
     net/eathena/beinghandler.h
     net/eathena/buyingstorehandler.cpp
     net/eathena/buyingstorehandler.h
+    net/eathena/buyingstorerecv.cpp
+    net/eathena/buyingstorerecv.h
     net/eathena/beingtype.h
     net/eathena/buysellhandler.cpp
     net/eathena/buysellhandler.h

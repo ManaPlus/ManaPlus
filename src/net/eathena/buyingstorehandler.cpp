@@ -40,6 +40,7 @@
 
 #include "net/ea/eaprotocol.h"
 
+#include "net/eathena/buyingstorerecv.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
@@ -76,218 +77,47 @@ void BuyingStoreHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_BUYINGSTORE_OPEN:
-            processBuyingStoreOpen(msg);
+            BuyingStoreRecv::processBuyingStoreOpen(msg);
             break;
 
         case SMSG_BUYINGSTORE_CREATE_FAILED:
-            processBuyingStoreCreateFailed(msg);
+            BuyingStoreRecv::processBuyingStoreCreateFailed(msg);
             break;
 
         case SMSG_BUYINGSTORE_OWN_ITEMS:
-            processBuyingStoreOwnItems(msg);
+            BuyingStoreRecv::processBuyingStoreOwnItems(msg);
             break;
 
         case SMSG_BUYINGSTORE_SHOW_BOARD:
-            processBuyingStoreShowBoard(msg);
+            BuyingStoreRecv::processBuyingStoreShowBoard(msg);
             break;
 
         case SMSG_BUYINGSTORE_HIDE_BOARD:
-            processBuyingStoreHideBoard(msg);
+            BuyingStoreRecv::processBuyingStoreHideBoard(msg);
             break;
 
         case SMSG_BUYINGSTORE_ITEMS_LIST:
-            processBuyingStoreItemsList(msg);
+            BuyingStoreRecv::processBuyingStoreItemsList(msg);
             break;
 
         case SMSG_BUYINGSTORE_SELL_FAILED:
-            processBuyingStoreSellFailed(msg);
+            BuyingStoreRecv::processBuyingStoreSellFailed(msg);
             break;
 
         case SMSG_BUYINGSTORE_REPORT:
-            processBuyingStoreReport(msg);
+            BuyingStoreRecv::processBuyingStoreReport(msg);
             break;
 
         case SMSG_BUYINGSTORE_DELETE_ITEM:
-            processBuyingStoreDeleteItem(msg);
+            BuyingStoreRecv::processBuyingStoreDeleteItem(msg);
             break;
 
         case SMSG_BUYINGSTORE_SELLER_SELL_FAILED:
-            processBuyingStoreSellerSellFailed(msg);
+            BuyingStoreRecv::processBuyingStoreSellerSellFailed(msg);
             break;
 
         default:
             break;
-    }
-}
-
-void BuyingStoreHandler::processBuyingStoreOpen(Net::MessageIn &msg)
-{
-    BuyingStoreSlotsListener::distributeEvent(msg.readUInt8("slots"));
-}
-
-void BuyingStoreHandler::processBuyingStoreCreateFailed(Net::MessageIn &msg)
-{
-    const int16_t result = msg.readInt16("result");
-    const int weight = msg.readInt32("weight");
-    switch (result)
-    {
-        case 1:
-        default:
-            NotifyManager::notify(NotifyTypes::BUYING_STORE_CREATE_FAILED);
-            break;
-        case 2:
-            NotifyManager::notify(
-                NotifyTypes::BUYING_STORE_CREATE_FAILED_WEIGHT,
-                weight);
-            break;
-        case 8:
-            NotifyManager::notify(NotifyTypes::BUYING_STORE_CREATE_EMPTY);
-            break;
-    }
-}
-
-void BuyingStoreHandler::processBuyingStoreOwnItems(Net::MessageIn &msg)
-{
-    const int count = (msg.readInt16("len") - 12) / 9;
-    msg.readBeingId("account id");
-    msg.readInt32("money limit");
-    for (int f = 0; f < count; f ++)
-    {
-        msg.readInt32("price");
-        msg.readInt16("amount");
-        msg.readUInt8("item type");
-        msg.readInt16("item id");
-    }
-    PlayerInfo::enableVending(true);
-    BuyingStoreModeListener::distributeEvent(true);
-}
-
-void BuyingStoreHandler::processBuyingStoreShowBoard(Net::MessageIn &msg)
-{
-    const BeingId id = msg.readBeingId("owner id");
-    const std::string shopName = msg.readString(80, "shop name");
-    Being *const dstBeing = actorManager->findBeing(id);
-    if (dstBeing)
-        dstBeing->setBuyBoard(shopName);
-}
-
-void BuyingStoreHandler::processBuyingStoreHideBoard(Net::MessageIn &msg)
-{
-    const BeingId id = msg.readBeingId("owner id");
-    Being *const dstBeing = actorManager->findBeing(id);
-    if (dstBeing)
-        dstBeing->setBuyBoard(std::string());
-    if (dstBeing == localPlayer)
-    {
-        PlayerInfo::enableVending(false);
-        BuyingStoreModeListener::distributeEvent(false);
-    }
-}
-
-void BuyingStoreHandler::processBuyingStoreItemsList(Net::MessageIn &msg)
-{
-    const int count = (msg.readInt16("len") - 16) / 9;
-    const BeingId id = msg.readBeingId("account id");
-    const int storeId = msg.readInt32("store id");
-    // +++ in future need use it too
-    msg.readInt32("money limit");
-
-    Being *const dstBeing = actorManager->findBeing(id);
-    if (!dstBeing)
-        return;
-
-    SellDialog *const dialog = CREATEWIDGETR(BuyingStoreSellDialog,
-        dstBeing->getId(),
-        storeId);
-    dialog->setMoney(PlayerInfo::getAttribute(Attributes::MONEY));
-    Inventory *const inv = PlayerInfo::getInventory();
-    for (int f = 0; f < count; f ++)
-    {
-        const int price = msg.readInt32("price");
-        const int amount = msg.readInt16("amount");
-        const int itemType = msg.readUInt8("item type");
-        const int itemId = msg.readInt16("item id");
-
-        if (!inv)
-            continue;
-        const Item *const item = inv->findItem(itemId, ItemColor_one);
-        if (!item)
-            continue;
-        // +++ need add colors support
-        dialog->addItem(itemId, itemType, ItemColor_one, amount, price);
-    }
-}
-
-void BuyingStoreHandler::processBuyingStoreSellFailed(Net::MessageIn &msg)
-{
-    const int16_t result = msg.readInt16("result");
-    switch (result)
-    {
-        case 3:
-            NotifyManager::notify(
-                NotifyTypes::BUYING_STORE_SELL_FAILED_MONEY_LIMIT);
-            break;
-        case 4:
-            NotifyManager::notify(NotifyTypes::BUYING_STORE_SELL_FAILED_EMPTY);
-            break;
-        default:
-            NotifyManager::notify(NotifyTypes::BUYING_STORE_SELL_FAILED);
-            break;
-    }
-}
-
-void BuyingStoreHandler::processBuyingStoreSellerSellFailed(Net::MessageIn
-                                                            &msg)
-{
-    const int16_t result = msg.readInt16("result");
-    msg.readInt16("item id");
-    switch (result)
-    {
-        case 5:
-            NotifyManager::notify(
-                NotifyTypes::BUYING_STORE_SELLER_SELL_FAILED_DEAL);
-            break;
-        case 6:
-            NotifyManager::notify(
-                NotifyTypes::BUYING_STORE_SELLER_SELL_FAILED_AMOUNT);
-            break;
-        case 7:
-            NotifyManager::notify(
-                NotifyTypes::BUYING_STORE_SELLER_SELL_FAILED_BALANCE);
-            break;
-        default:
-            NotifyManager::notify(
-                NotifyTypes::BUYING_STORE_SELLER_SELL_FAILED);
-            break;
-    }
-}
-
-void BuyingStoreHandler::processBuyingStoreReport(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    msg.readInt16("item id");
-    msg.readInt16("amount");
-    msg.readInt32("money limit");
-}
-
-void BuyingStoreHandler::processBuyingStoreDeleteItem(Net::MessageIn &msg)
-{
-    Inventory *const inventory = localPlayer
-        ? PlayerInfo::getInventory() : nullptr;
-
-    const int index = msg.readInt16("index") - INVENTORY_OFFSET;
-    const int amount = msg.readInt16("amount");
-    msg.readInt32("price");
-
-    if (inventory)
-    {
-        if (Item *const item = inventory->getItem(index))
-        {
-            item->increaseQuantity(-amount);
-            if (item->getQuantity() == 0)
-                inventory->removeItemAt(index);
-            ArrowsListener::distributeEvent();
-        }
     }
 }
 
