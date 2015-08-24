@@ -18,7 +18,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "net/eathena/bank.h"
+#include "net/eathena/bankrecv.h"
 
 #include "notifymanager.h"
 
@@ -31,14 +31,14 @@
 namespace EAthena
 {
 
-void Bank::processBankStatus(Net::MessageIn &msg)
+void BankRecv::processBankStatus(Net::MessageIn &msg)
 {
     const int money = static_cast<int>(msg.readInt64("money"));
     msg.readInt16("reason");
     BankListener::distributeEvent(money);
 }
 
-void Bank::processBankDeposit(Net::MessageIn &msg)
+void BankRecv::processBankDeposit(Net::MessageIn &msg)
 {
     const int reason = msg.readInt16("reason");
     const int money = static_cast<int>(msg.readInt64("money"));
@@ -48,7 +48,7 @@ void Bank::processBankDeposit(Net::MessageIn &msg)
         NotifyManager::notify(NotifyTypes::BANK_DEPOSIT_FAILED);
 }
 
-void Bank::processBankWithdraw(Net::MessageIn &msg)
+void BankRecv::processBankWithdraw(Net::MessageIn &msg)
 {
     const int reason = msg.readInt16("reason");
     const int money = static_cast<int>(msg.readInt64("money"));

@@ -29,12 +29,12 @@
 
 namespace EAthena
 {
-    namespace Bank
+    namespace BankRecv
     {
         void processBankStatus(Net::MessageIn &msg);
         void processBankDeposit(Net::MessageIn &msg);
         void processBankWithdraw(Net::MessageIn &msg);
-    }  // namespace Bank
+    }  // namespace BankRecv
 }  // namespace EAthena
 
 #endif  // EATHENA_SUPPORT

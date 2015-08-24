@@ -26,7 +26,7 @@
 
 #include "listeners/banklistener.h"
 
-#include "net/eathena/bank.h"
+#include "net/eathena/bankrecv.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
@@ -56,15 +56,15 @@ void BankHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_BANK_STATUS:
-            Bank::processBankStatus(msg);
+            BankRecv::processBankStatus(msg);
             break;
 
         case SMSG_BANK_DEPOSIT:
-            Bank::processBankDeposit(msg);
+            BankRecv::processBankDeposit(msg);
             break;
 
         case SMSG_BANK_WITHDRAW:
-            Bank::processBankWithdraw(msg);
+            BankRecv::processBankWithdraw(msg);
             break;
 
         default:
