@@ -1349,6 +1349,8 @@ SET(SRCS_EVOL
     net/ea/beinghandler.h
     net/ea/buysellhandler.cpp
     net/ea/buysellhandler.h
+    net/ea/buysellrecv.cpp
+    net/ea/buysellrecv.h
     net/ea/charserverhandler.cpp
     net/ea/charserverhandler.h
     net/ea/chathandler.cpp
@@ -1393,6 +1395,8 @@ SET(SRCS_TMWA
     net/tmwa/beinghandler.h
     net/tmwa/buysellhandler.cpp
     net/tmwa/buysellhandler.h
+    net/tmwa/buysellrecv.cpp
+    net/tmwa/buysellrecv.h
     net/tmwa/charserverhandler.cpp
     net/tmwa/charserverhandler.h
     net/tmwa/chathandler.cpp
@@ -1547,6 +1551,8 @@ SET(SRCS_EATHENA
     net/eathena/beingtype.h
     net/eathena/buysellhandler.cpp
     net/eathena/buysellhandler.h
+    net/eathena/buysellrecv.cpp
+    net/eathena/buysellrecv.h
     net/eathena/charserverhandler.cpp
     net/eathena/charserverhandler.h
     net/eathena/chathandler.cpp

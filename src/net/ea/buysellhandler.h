@@ -36,16 +36,6 @@ class BuySellHandler notfinal : public Net::BuySellHandler
         BuySellHandler();
 
         A_DELETE_COPY(BuySellHandler)
-
-    protected:
-        static void processNpcBuySellChoice(Net::MessageIn &msg);
-
-        static void processNpcSell(Net::MessageIn &msg);
-
-        static void processNpcBuyResponse(Net::MessageIn &msg);
-
-        static BeingId mNpcId;
-        static BuyDialog *mBuyDialog;
 };
 
 }  // namespace Ea

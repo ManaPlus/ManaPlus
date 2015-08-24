@@ -20,33 +20,24 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "net/ea/buysellhandler.h"
+#ifndef NET_EA_BUYSELLRECV_H
+#define NET_EA_BUYSELLRECV_H
 
-#include "inventory.h"
-#include "notifymanager.h"
+#include "net/buysellhandler.h"
 
-#include "being/playerinfo.h"
-
-#include "enums/resources/notifytypes.h"
-
-#include "gui/windows/buydialog.h"
-#include "gui/windows/buyselldialog.h"
-#include "gui/windows/npcselldialog.h"
-
-#include "gui/widgets/createwidget.h"
-
-#include "net/ea/buysellrecv.h"
-#include "net/ea/eaprotocol.h"
-
-#include "debug.h"
+class BuyDialog;
 
 namespace Ea
 {
+    namespace BuySellRecv
+    {
+        extern BeingId mNpcId;
+        extern BuyDialog *mBuyDialog;
 
-BuySellHandler::BuySellHandler()
-{
-    BuySellRecv::mNpcId = BeingId_zero;
-    BuySellRecv::mBuyDialog = nullptr;
-}
-
+        void processNpcBuySellChoice(Net::MessageIn &msg);
+        void processNpcSell(Net::MessageIn &msg);
+        void processNpcBuyResponse(Net::MessageIn &msg);
+    }  // namespace BuySellRecv
 }  // namespace Ea
+
+#endif  // NET_EA_BUYSELLRECV_H

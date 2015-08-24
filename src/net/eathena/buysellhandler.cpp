@@ -32,6 +32,9 @@
 
 #include "gui/widgets/createwidget.h"
 
+#include "net/ea/buysellrecv.h"
+
+#include "net/eathena/buysellrecv.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
@@ -57,7 +60,7 @@ BuySellHandler::BuySellHandler() :
     };
     handledMessages = _messages;
     buySellHandler = this;
-    mBuyDialog = nullptr;
+    Ea::BuySellRecv::mBuyDialog = nullptr;
 }
 
 void BuySellHandler::handleMessage(Net::MessageIn &msg)
@@ -65,66 +68,26 @@ void BuySellHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_NPC_BUY_SELL_CHOICE:
-            processNpcBuySellChoice(msg);
+            Ea::BuySellRecv::processNpcBuySellChoice(msg);
             break;
 
         case SMSG_NPC_BUY:
-            processNpcBuy(msg);
+            BuySellRecv::processNpcBuy(msg);
             break;
 
         case SMSG_NPC_SELL:
-            processNpcSell(msg);
+            Ea::BuySellRecv::processNpcSell(msg);
             break;
 
         case SMSG_NPC_BUY_RESPONSE:
-            processNpcBuyResponse(msg);
+            Ea::BuySellRecv::processNpcBuyResponse(msg);
             break;
 
         case SMSG_NPC_SELL_RESPONSE:
-            processNpcSellResponse(msg);
+            BuySellRecv::processNpcSellResponse(msg);
             break;
 
         default:
-            break;
-    }
-}
-
-void BuySellHandler::processNpcBuy(Net::MessageIn &msg)
-{
-    msg.readInt16("len");
-    const int sz = 11;
-    const int n_items = (msg.getLength() - 4) / sz;
-    CREATEWIDGETV(mBuyDialog, BuyDialog, mNpcId);
-    mBuyDialog->setMoney(PlayerInfo::getAttribute(Attributes::MONEY));
-
-    for (int k = 0; k < n_items; k++)
-    {
-        const int value = msg.readInt32("price");
-        msg.readInt32("dc value?");
-        const int type = msg.readUInt8("type");
-        const int itemId = msg.readInt16("item id");
-        const ItemColor color = ItemColor_one;
-        mBuyDialog->addItem(itemId, type, color, 0, value);
-    }
-    mBuyDialog->sort();
-}
-
-void BuySellHandler::processNpcSellResponse(Net::MessageIn &msg)
-{
-    switch (msg.readUInt8("result"))
-    {
-        case 0:
-            NotifyManager::notify(NotifyTypes::SOLD);
-            break;
-        case 1:
-        default:
-            NotifyManager::notify(NotifyTypes::SELL_FAILED);
-            break;
-        case 2:
-            NotifyManager::notify(NotifyTypes::SELL_TRADE_FAILED);
-            break;
-        case 3:
-            NotifyManager::notify(NotifyTypes::SELL_UNSELLABLE_FAILED);
             break;
     }
 }

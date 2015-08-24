@@ -20,33 +20,20 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef NET_EATHENA_BUYSELLRECV_H
+#define NET_EATHENA_BUYSELLRECV_H
+
 #include "net/ea/buysellhandler.h"
 
-#include "inventory.h"
-#include "notifymanager.h"
+#include "net/eathena/messagehandler.h"
 
-#include "being/playerinfo.h"
-
-#include "enums/resources/notifytypes.h"
-
-#include "gui/windows/buydialog.h"
-#include "gui/windows/buyselldialog.h"
-#include "gui/windows/npcselldialog.h"
-
-#include "gui/widgets/createwidget.h"
-
-#include "net/ea/buysellrecv.h"
-#include "net/ea/eaprotocol.h"
-
-#include "debug.h"
-
-namespace Ea
+namespace EAthena
 {
+    namespace BuySellRecv
+    {
+        void processNpcBuy(Net::MessageIn &msg);
+        void processNpcSellResponse(Net::MessageIn &msg);
+    }  // namespace BuySellRecv
+}  // namespace EAthena
 
-BuySellHandler::BuySellHandler()
-{
-    BuySellRecv::mNpcId = BeingId_zero;
-    BuySellRecv::mBuyDialog = nullptr;
-}
-
-}  // namespace Ea
+#endif  // NET_EATHENA_BUYSELLRECV_H

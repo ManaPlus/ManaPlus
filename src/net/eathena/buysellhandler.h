@@ -54,11 +54,6 @@ class BuySellHandler final : public MessageHandler, public Ea::BuySellHandler
                              const int amount) const override final;
 
         void close() const override final;
-
-    protected:
-        static void processNpcBuy(Net::MessageIn &msg);
-
-        static void processNpcSellResponse(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
