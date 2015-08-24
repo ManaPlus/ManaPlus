@@ -51,7 +51,7 @@ static void printHelp()
 
 int main(int argc, char **argv)
 {
-    if (argc == 2)
+    if (argc == 2 && strcmp(argv[1], "--help"))
     {
         return mainGui(argc, argv);
     }
