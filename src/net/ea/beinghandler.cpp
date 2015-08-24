@@ -40,7 +40,7 @@
 
 #include "net/serverfeatures.h"
 
-#include "net/ea/beingnet.h"
+#include "net/ea/beingrecv.h"
 
 #include "debug.h"
 
@@ -49,8 +49,8 @@ namespace Ea
 
 BeingHandler::BeingHandler(const bool enableSync)
 {
-    BeingNet::mSync = enableSync;
-    BeingNet::mSpawnId = BeingId_zero;
+    BeingRecv::mSync = enableSync;
+    BeingRecv::mSpawnId = BeingId_zero;
 }
 
 }  // namespace Ea

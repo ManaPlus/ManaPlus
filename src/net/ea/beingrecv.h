@@ -27,7 +27,7 @@
 
 namespace Ea
 {
-    namespace BeingNet
+    namespace BeingRecv
     {
         extern bool mSync;
         extern BeingId mSpawnId;
@@ -54,6 +54,6 @@ namespace Ea
 
 }  // namespace Ea
 
-//extern bool Ea::BeingNet::mSync;
+//extern bool Ea::BeingRecv::mSync;
 
 #endif  // NET_EA_BEING_H

@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "net/tmwa/beingnet.h"
+#include "net/tmwa/beingrecv.h"
 
 #include "actormanager.h"
 #include "effectmanager.h"
@@ -38,7 +38,7 @@
 
 #include "net/serverfeatures.h"
 
-#include "net/ea/beingnet.h"
+#include "net/ea/beingrecv.h"
 
 #include "net/tmwa/guildmanager.h"
 #include "net/tmwa/messageout.h"
@@ -59,12 +59,12 @@ extern int serverVersion;
 namespace TmwAthena
 {
 
-void BeingNet::processBeingChangeLook(Net::MessageIn &msg)
+void BeingRecv::processBeingChangeLook(Net::MessageIn &msg)
 {
-    BLOCK_START("BeingNet::processBeingChangeLook")
+    BLOCK_START("BeingRecv::processBeingChangeLook")
     if (!actorManager)
     {
-        BLOCK_END("BeingNet::processBeingChangeLook")
+        BLOCK_END("BeingRecv::processBeingChangeLook")
         return;
     }
 
@@ -77,19 +77,19 @@ void BeingNet::processBeingChangeLook(Net::MessageIn &msg)
 
     if (!localPlayer || !dstBeing)
     {
-        BLOCK_END("BeingNet::processBeingChangeLook")
+        BLOCK_END("BeingRecv::processBeingChangeLook")
         return;
     }
     processBeingChangeLookContinue(msg, dstBeing, type, id, id2);
-    BLOCK_END("BeingNet::processBeingChangeLook")
+    BLOCK_END("BeingRecv::processBeingChangeLook")
 }
 
-void BeingNet::processBeingChangeLook2(Net::MessageIn &msg)
+void BeingRecv::processBeingChangeLook2(Net::MessageIn &msg)
 {
-    BLOCK_START("BeingNet::processBeingChangeLook")
+    BLOCK_START("BeingRecv::processBeingChangeLook")
     if (!actorManager)
     {
-        BLOCK_END("BeingNet::processBeingChangeLook")
+        BLOCK_END("BeingRecv::processBeingChangeLook")
         return;
     }
 
@@ -112,18 +112,18 @@ void BeingNet::processBeingChangeLook2(Net::MessageIn &msg)
 
     if (!localPlayer || !dstBeing)
     {
-        BLOCK_END("BeingNet::processBeingChangeLook")
+        BLOCK_END("BeingRecv::processBeingChangeLook")
         return;
     }
     processBeingChangeLookContinue(msg, dstBeing, type, id, id2);
-    BLOCK_END("BeingNet::processBeingChangeLook")
+    BLOCK_END("BeingRecv::processBeingChangeLook")
 }
 
-void BeingNet::processBeingChangeLookContinue(Net::MessageIn &msg,
-                                           Being *const dstBeing,
-                                           const uint8_t type,
-                                           const int id,
-                                           const int id2)
+void BeingRecv::processBeingChangeLookContinue(Net::MessageIn &msg,
+                                               Being *const dstBeing,
+                                               const uint8_t type,
+                                               const int id,
+                                               const int id2)
 {
     if (dstBeing->getType() == ActorType::Player)
         dstBeing->setOtherTime();
@@ -219,12 +219,12 @@ void BeingNet::processBeingChangeLookContinue(Net::MessageIn &msg,
     }
 }
 
-void BeingNet::processPlayerUpdate1(Net::MessageIn &msg)
+void BeingRecv::processPlayerUpdate1(Net::MessageIn &msg)
 {
-    BLOCK_START("BeingNet::processPlayerMoveUpdate")
+    BLOCK_START("BeingRecv::processPlayerMoveUpdate")
     if (!actorManager || !localPlayer)
     {
-        BLOCK_END("BeingNet::processPlayerMoveUpdate")
+        BLOCK_END("BeingRecv::processPlayerMoveUpdate")
         return;
     }
 
@@ -245,15 +245,15 @@ void BeingNet::processPlayerUpdate1(Net::MessageIn &msg)
     {
         if (actorManager->isBlocked(id) == true)
         {
-            BLOCK_END("BeingNet::processPlayerMoveUpdate")
+            BLOCK_END("BeingRecv::processPlayerMoveUpdate")
             return;
         }
 
-        dstBeing = Ea::BeingNet::createBeing(id, job);
+        dstBeing = Ea::BeingRecv::createBeing(id, job);
 
         if (!dstBeing)
         {
-            BLOCK_END("BeingNet::processPlayerMoveUpdate")
+            BLOCK_END("BeingRecv::processPlayerMoveUpdate")
             return;
         }
     }
@@ -352,15 +352,15 @@ void BeingNet::processPlayerUpdate1(Net::MessageIn &msg)
     dstBeing->setStatusEffectBlock(16, static_cast<uint16_t>(
         statusEffects & 0xffff));
 
-    BLOCK_END("BeingNet::processPlayerMoveUpdate")
+    BLOCK_END("BeingRecv::processPlayerMoveUpdate")
 }
 
-void BeingNet::processPlayerUpdate2(Net::MessageIn &msg)
+void BeingRecv::processPlayerUpdate2(Net::MessageIn &msg)
 {
-    BLOCK_START("BeingNet::processPlayerMoveUpdate")
+    BLOCK_START("BeingRecv::processPlayerMoveUpdate")
     if (!actorManager || !localPlayer)
     {
-        BLOCK_END("BeingNet::processPlayerMoveUpdate")
+        BLOCK_END("BeingRecv::processPlayerMoveUpdate")
         return;
     }
 
@@ -381,15 +381,15 @@ void BeingNet::processPlayerUpdate2(Net::MessageIn &msg)
     {
         if (actorManager->isBlocked(id) == true)
         {
-            BLOCK_END("BeingNet::processPlayerMoveUpdate")
+            BLOCK_END("BeingRecv::processPlayerMoveUpdate")
             return;
         }
 
-        dstBeing = Ea::BeingNet::createBeing(id, job);
+        dstBeing = Ea::BeingRecv::createBeing(id, job);
 
         if (!dstBeing)
         {
-            BLOCK_END("BeingNet::processPlayerMoveUpdate")
+            BLOCK_END("BeingRecv::processPlayerMoveUpdate")
             return;
         }
     }
@@ -484,15 +484,15 @@ void BeingNet::processPlayerUpdate2(Net::MessageIn &msg)
     dstBeing->setStatusEffectBlock(16, static_cast<uint16_t>(
         statusEffects & 0xffff));
 
-    BLOCK_END("BeingNet::processPlayerMoveUpdate")
+    BLOCK_END("BeingRecv::processPlayerMoveUpdate")
 }
 
-void BeingNet::processPlayerMove(Net::MessageIn &msg)
+void BeingRecv::processPlayerMove(Net::MessageIn &msg)
 {
-    BLOCK_START("BeingNet::processPlayerMoveUpdate")
+    BLOCK_START("BeingRecv::processPlayerMoveUpdate")
     if (!actorManager || !localPlayer)
     {
-        BLOCK_END("BeingNet::processPlayerMoveUpdate")
+        BLOCK_END("BeingRecv::processPlayerMoveUpdate")
         return;
     }
 
@@ -513,15 +513,15 @@ void BeingNet::processPlayerMove(Net::MessageIn &msg)
     {
         if (actorManager->isBlocked(id) == true)
         {
-            BLOCK_END("BeingNet::processPlayerMoveUpdate")
+            BLOCK_END("BeingRecv::processPlayerMoveUpdate")
             return;
         }
 
-        dstBeing = Ea::BeingNet::createBeing(id, job);
+        dstBeing = Ea::BeingRecv::createBeing(id, job);
 
         if (!dstBeing)
         {
-            BLOCK_END("BeingNet::processPlayerMoveUpdate")
+            BLOCK_END("BeingRecv::processPlayerMoveUpdate")
             return;
         }
     }
@@ -646,15 +646,15 @@ void BeingNet::processPlayerMove(Net::MessageIn &msg)
 
     if (dstBeing->getType() == ActorType::Player)
         dstBeing->setMoveTime();
-    BLOCK_END("BeingNet::processPlayerMoveUpdate")
+    BLOCK_END("BeingRecv::processPlayerMoveUpdate")
 }
 
-void BeingNet::processBeingVisible(Net::MessageIn &msg)
+void BeingRecv::processBeingVisible(Net::MessageIn &msg)
 {
-    BLOCK_START("BeingNet::processBeingVisibleOrMove")
+    BLOCK_START("BeingRecv::processBeingVisibleOrMove")
     if (!actorManager)
     {
-        BLOCK_END("BeingNet::processBeingVisibleOrMove")
+        BLOCK_END("BeingRecv::processBeingVisibleOrMove")
         return;
     }
 
@@ -662,11 +662,11 @@ void BeingNet::processBeingVisible(Net::MessageIn &msg)
 
     // Information about a being in range
     const BeingId id = msg.readBeingId("being id");
-    if (id == Ea::BeingNet::mSpawnId)
-        spawnId = Ea::BeingNet::mSpawnId;
+    if (id == Ea::BeingRecv::mSpawnId)
+        spawnId = Ea::BeingRecv::mSpawnId;
     else
         spawnId = BeingId_zero;
-    Ea::BeingNet::mSpawnId = BeingId_zero;
+    Ea::BeingRecv::mSpawnId = BeingId_zero;
     int16_t speed = msg.readInt16("speed");
     const uint16_t stunMode = msg.readInt16("opt1");
     uint32_t statusEffects = msg.readInt16("opt2");
@@ -692,21 +692,21 @@ void BeingNet::processBeingVisible(Net::MessageIn &msg)
         // known as ghosts, so don't create those.
         if (job == 0 && toInt(id, int) >= 110000000)
         {
-            BLOCK_END("BeingNet::processBeingVisibleOrMove")
+            BLOCK_END("BeingRecv::processBeingVisibleOrMove")
             return;
         }
 
         if (actorManager->isBlocked(id) == true)
         {
-            BLOCK_END("BeingNet::processBeingVisibleOrMove")
+            BLOCK_END("BeingRecv::processBeingVisibleOrMove")
             return;
         }
 
-        dstBeing = Ea::BeingNet::createBeing(id, job);
+        dstBeing = Ea::BeingRecv::createBeing(id, job);
 
         if (!dstBeing)
         {
-            BLOCK_END("BeingNet::processBeingVisibleOrMove")
+            BLOCK_END("BeingRecv::processBeingVisibleOrMove")
             return;
         }
     }
@@ -804,17 +804,17 @@ void BeingNet::processBeingVisible(Net::MessageIn &msg)
         gender &= 3;
         dstBeing->setGender(Being::intToGender(gender));
         // Set these after the gender, as the sprites may be gender-specific
-        Ea::BeingNet::setSprite(dstBeing, SPRITE_HAIR_COLOR, hairStyle * -1,
+        Ea::BeingRecv::setSprite(dstBeing, SPRITE_HAIR_COLOR, hairStyle * -1,
             ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
         dstBeing->setHairColor(hairColor);
-        Ea::BeingNet::setSprite(dstBeing, SPRITE_WEAPON, headBottom);
-        Ea::BeingNet::setSprite(dstBeing, SPRITE_HEAD_BOTTOM, headMid);
-        Ea::BeingNet::setSprite(dstBeing, SPRITE_CLOTHES_COLOR, headTop);
-        Ea::BeingNet::setSprite(dstBeing, SPRITE_HAIR, shoes);
-        Ea::BeingNet::setSprite(dstBeing, SPRITE_SHOES, gloves);
-        Ea::BeingNet::setSprite(dstBeing, SPRITE_BODY, weapon, "",
+        Ea::BeingRecv::setSprite(dstBeing, SPRITE_WEAPON, headBottom);
+        Ea::BeingRecv::setSprite(dstBeing, SPRITE_HEAD_BOTTOM, headMid);
+        Ea::BeingRecv::setSprite(dstBeing, SPRITE_CLOTHES_COLOR, headTop);
+        Ea::BeingRecv::setSprite(dstBeing, SPRITE_HAIR, shoes);
+        Ea::BeingRecv::setSprite(dstBeing, SPRITE_SHOES, gloves);
+        Ea::BeingRecv::setSprite(dstBeing, SPRITE_BODY, weapon, "",
             ItemColor_one, true);
-        Ea::BeingNet::setSprite(dstBeing, SPRITE_FLOOR, shield);
+        Ea::BeingRecv::setSprite(dstBeing, SPRITE_FLOOR, shield);
     }
     else if (dstBeing->getType() == ActorType::Npc
              && serverFeatures->haveNpcGender())
@@ -854,15 +854,15 @@ void BeingNet::processBeingVisible(Net::MessageIn &msg)
         (statusEffects >> 16) & 0xffff));
     dstBeing->setStatusEffectBlock(16, static_cast<uint16_t>(
         statusEffects & 0xffff));
-    BLOCK_END("BeingNet::processBeingVisibleOrMove")
+    BLOCK_END("BeingRecv::processBeingVisibleOrMove")
 }
 
-void BeingNet::processBeingMove(Net::MessageIn &msg)
+void BeingRecv::processBeingMove(Net::MessageIn &msg)
 {
-    BLOCK_START("BeingNet::processBeingVisibleOrMove")
+    BLOCK_START("BeingRecv::processBeingVisibleOrMove")
     if (!actorManager)
     {
-        BLOCK_END("BeingNet::processBeingVisibleOrMove")
+        BLOCK_END("BeingRecv::processBeingVisibleOrMove")
         return;
     }
 
@@ -870,11 +870,11 @@ void BeingNet::processBeingMove(Net::MessageIn &msg)
 
     // Information about a being in range
     const BeingId id = msg.readBeingId("being id");
-    if (id == Ea::BeingNet::mSpawnId)
-        spawnId = Ea::BeingNet::mSpawnId;
+    if (id == Ea::BeingRecv::mSpawnId)
+        spawnId = Ea::BeingRecv::mSpawnId;
     else
         spawnId = BeingId_zero;
-    Ea::BeingNet::mSpawnId = BeingId_zero;
+    Ea::BeingRecv::mSpawnId = BeingId_zero;
     int16_t speed = msg.readInt16("speed");
     const uint16_t stunMode = msg.readInt16("opt1");
     uint32_t statusEffects = msg.readInt16("opt2");
@@ -900,21 +900,21 @@ void BeingNet::processBeingMove(Net::MessageIn &msg)
         // known as ghosts, so don't create those.
         if (job == 0 && toInt(id, int) >= 110000000)
         {
-            BLOCK_END("BeingNet::processBeingVisibleOrMove")
+            BLOCK_END("BeingRecv::processBeingVisibleOrMove")
             return;
         }
 
         if (actorManager->isBlocked(id) == true)
         {
-            BLOCK_END("BeingNet::processBeingVisibleOrMove")
+            BLOCK_END("BeingRecv::processBeingVisibleOrMove")
             return;
         }
 
-        dstBeing = Ea::BeingNet::createBeing(id, job);
+        dstBeing = Ea::BeingRecv::createBeing(id, job);
 
         if (!dstBeing)
         {
-            BLOCK_END("BeingNet::processBeingVisibleOrMove")
+            BLOCK_END("BeingRecv::processBeingVisibleOrMove")
             return;
         }
     }
@@ -1007,17 +1007,17 @@ void BeingNet::processBeingMove(Net::MessageIn &msg)
         gender &= 3;
         dstBeing->setGender(Being::intToGender(gender));
         // Set these after the gender, as the sprites may be gender-specific
-        Ea::BeingNet::setSprite(dstBeing, SPRITE_HAIR_COLOR, hairStyle * -1,
+        Ea::BeingRecv::setSprite(dstBeing, SPRITE_HAIR_COLOR, hairStyle * -1,
             ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
         dstBeing->setHairColor(hairColor);
-        Ea::BeingNet::setSprite(dstBeing, SPRITE_WEAPON, headBottom);
-        Ea::BeingNet::setSprite(dstBeing, SPRITE_HEAD_BOTTOM, headMid);
-        Ea::BeingNet::setSprite(dstBeing, SPRITE_CLOTHES_COLOR, headTop);
-        Ea::BeingNet::setSprite(dstBeing, SPRITE_HAIR, shoes);
-        Ea::BeingNet::setSprite(dstBeing, SPRITE_SHOES, gloves);
-        Ea::BeingNet::setSprite(dstBeing, SPRITE_BODY, weapon, "",
+        Ea::BeingRecv::setSprite(dstBeing, SPRITE_WEAPON, headBottom);
+        Ea::BeingRecv::setSprite(dstBeing, SPRITE_HEAD_BOTTOM, headMid);
+        Ea::BeingRecv::setSprite(dstBeing, SPRITE_CLOTHES_COLOR, headTop);
+        Ea::BeingRecv::setSprite(dstBeing, SPRITE_HAIR, shoes);
+        Ea::BeingRecv::setSprite(dstBeing, SPRITE_SHOES, gloves);
+        Ea::BeingRecv::setSprite(dstBeing, SPRITE_BODY, weapon, "",
             ItemColor_one, true);
-        Ea::BeingNet::setSprite(dstBeing, SPRITE_FLOOR, shield);
+        Ea::BeingRecv::setSprite(dstBeing, SPRITE_FLOOR, shield);
     }
     else if (dstBeing->getType() == ActorType::Npc
              && serverFeatures->haveNpcGender())
@@ -1046,24 +1046,24 @@ void BeingNet::processBeingMove(Net::MessageIn &msg)
         (statusEffects >> 16) & 0xffff));
     dstBeing->setStatusEffectBlock(16, static_cast<uint16_t>(
         statusEffects & 0xffff));
-    BLOCK_END("BeingNet::processBeingVisibleOrMove")
+    BLOCK_END("BeingRecv::processBeingVisibleOrMove")
 }
 
-void BeingNet::processBeingSpawn(Net::MessageIn &msg)
+void BeingRecv::processBeingSpawn(Net::MessageIn &msg)
 {
-    BLOCK_START("BeingNet::processBeingSpawn")
+    BLOCK_START("BeingRecv::processBeingSpawn")
     // skipping this packet
-    Ea::BeingNet::mSpawnId = msg.readBeingId("being id");
+    Ea::BeingRecv::mSpawnId = msg.readBeingId("being id");
     msg.readInt16("speed");
     msg.readInt16("opt1");
     msg.readInt16("opt2");
     msg.readInt16("option");
     msg.readInt16("disguise");
     msg.skip(25, "unused");
-    BLOCK_END("BeingNet::processBeingSpawn")
+    BLOCK_END("BeingRecv::processBeingSpawn")
 }
 
-void BeingNet::processSkillCasting(Net::MessageIn &msg)
+void BeingRecv::processSkillCasting(Net::MessageIn &msg)
 {
     msg.readInt32("src id");
     msg.readInt32("dst id");
@@ -1074,12 +1074,12 @@ void BeingNet::processSkillCasting(Net::MessageIn &msg)
     msg.readInt32("cast time");
 }
 
-void BeingNet::processBeingStatusChange(Net::MessageIn &msg)
+void BeingRecv::processBeingStatusChange(Net::MessageIn &msg)
 {
-    BLOCK_START("BeingNet::processBeingStatusChange")
+    BLOCK_START("BeingRecv::processBeingStatusChange")
     if (!actorManager)
     {
-        BLOCK_END("BeingNet::processBeingStatusChange")
+        BLOCK_END("BeingRecv::processBeingStatusChange")
         return;
     }
 
@@ -1092,15 +1092,15 @@ void BeingNet::processBeingStatusChange(Net::MessageIn &msg)
     Being *const dstBeing = actorManager->findBeing(id);
     if (dstBeing)
         dstBeing->setStatusEffect(status, flag);
-    BLOCK_END("BeingNet::processBeingStatusChange")
+    BLOCK_END("BeingRecv::processBeingStatusChange")
 }
 
-void BeingNet::processBeingMove2(Net::MessageIn &msg)
+void BeingRecv::processBeingMove2(Net::MessageIn &msg)
 {
-    BLOCK_START("BeingNet::processBeingMove2")
+    BLOCK_START("BeingRecv::processBeingMove2")
     if (!actorManager)
     {
-        BLOCK_END("BeingNet::processBeingMove2")
+        BLOCK_END("BeingRecv::processBeingMove2")
         return;
     }
 
@@ -1120,7 +1120,7 @@ void BeingNet::processBeingMove2(Net::MessageIn &msg)
 
     if (!dstBeing)
     {
-        BLOCK_END("BeingNet::processBeingMove2")
+        BLOCK_END("BeingRecv::processBeingMove2")
         return;
     }
 
@@ -1133,15 +1133,15 @@ void BeingNet::processBeingMove2(Net::MessageIn &msg)
     dstBeing->setDestination(dstX, dstY);
     if (dstBeing->getType() == ActorType::Player)
         dstBeing->setMoveTime();
-    BLOCK_END("BeingNet::processBeingMove2")
+    BLOCK_END("BeingRecv::processBeingMove2")
 }
 
-void BeingNet::processBeingChangeDirection(Net::MessageIn &msg)
+void BeingRecv::processBeingChangeDirection(Net::MessageIn &msg)
 {
-    BLOCK_START("BeingNet::processBeingChangeDirection")
+    BLOCK_START("BeingRecv::processBeingChangeDirection")
     if (!actorManager)
     {
-        BLOCK_END("BeingNet::processBeingChangeDirection")
+        BLOCK_END("BeingRecv::processBeingChangeDirection")
         return;
     }
 
@@ -1152,7 +1152,7 @@ void BeingNet::processBeingChangeDirection(Net::MessageIn &msg)
     {
         msg.readInt16("unused");
         msg.readUInt8("direction");
-        BLOCK_END("BeingNet::processBeingChangeDirection");
+        BLOCK_END("BeingRecv::processBeingChangeDirection");
         return;
     }
 
@@ -1163,15 +1163,15 @@ void BeingNet::processBeingChangeDirection(Net::MessageIn &msg)
     dstBeing->setDirection(dir);
     if (localPlayer)
         localPlayer->imitateDirection(dstBeing, dir);
-    BLOCK_END("BeingNet::processBeingChangeDirection")
+    BLOCK_END("BeingRecv::processBeingChangeDirection")
 }
 
-void BeingNet::processPlaterStatusChange(Net::MessageIn &msg)
+void BeingRecv::processPlaterStatusChange(Net::MessageIn &msg)
 {
-    BLOCK_START("BeingNet::processPlayerStop")
+    BLOCK_START("BeingRecv::processPlayerStop")
     if (!actorManager)
     {
-        BLOCK_END("BeingNet::processPlayerStop")
+        BLOCK_END("BeingRecv::processPlayerStop")
         return;
     }
 
@@ -1191,15 +1191,15 @@ void BeingNet::processPlaterStatusChange(Net::MessageIn &msg)
         (statusEffects >> 16) & 0xffff));
     dstBeing->setStatusEffectBlock(16, static_cast<uint16_t>(
         statusEffects & 0xffff));
-    BLOCK_END("BeingNet::processPlayerStop")
+    BLOCK_END("BeingRecv::processPlayerStop")
 }
 
-void BeingNet::processBeingResurrect(Net::MessageIn &msg)
+void BeingRecv::processBeingResurrect(Net::MessageIn &msg)
 {
-    BLOCK_START("BeingNet::processBeingResurrect")
+    BLOCK_START("BeingRecv::processBeingResurrect")
     if (!actorManager || !localPlayer)
     {
-        BLOCK_END("BeingNet::processBeingResurrect")
+        BLOCK_END("BeingRecv::processBeingResurrect")
         return;
     }
 
@@ -1209,7 +1209,7 @@ void BeingNet::processBeingResurrect(Net::MessageIn &msg)
     Being *const dstBeing = actorManager->findBeing(id);
     if (!dstBeing)
     {
-        BLOCK_END("BeingNet::processBeingResurrect")
+        BLOCK_END("BeingRecv::processBeingResurrect")
         return;
     }
 
@@ -1219,15 +1219,15 @@ void BeingNet::processBeingResurrect(Net::MessageIn &msg)
 
     if (msg.readUInt8("flag?") == 1U)
         dstBeing->setAction(BeingAction::STAND, 0);
-    BLOCK_END("BeingNet::processBeingResurrect")
+    BLOCK_END("BeingRecv::processBeingResurrect")
 }
 
-void BeingNet::processPlayerGuilPartyInfo(Net::MessageIn &msg)
+void BeingRecv::processPlayerGuilPartyInfo(Net::MessageIn &msg)
 {
-    BLOCK_START("BeingNet::processPlayerGuilPartyInfo")
+    BLOCK_START("BeingRecv::processPlayerGuilPartyInfo")
     if (!actorManager)
     {
-        BLOCK_END("BeingNet::processPlayerGuilPartyInfo")
+        BLOCK_END("BeingRecv::processPlayerGuilPartyInfo")
         return;
     }
 
@@ -1257,15 +1257,15 @@ void BeingNet::processPlayerGuilPartyInfo(Net::MessageIn &msg)
         msg.readString(24, "guild pos");
         msg.readString(24, "?");
     }
-    BLOCK_END("BeingNet::processPlayerGuilPartyInfo")
+    BLOCK_END("BeingRecv::processPlayerGuilPartyInfo")
 }
 
-void BeingNet::processBeingSelfEffect(Net::MessageIn &msg)
+void BeingRecv::processBeingSelfEffect(Net::MessageIn &msg)
 {
-    BLOCK_START("BeingNet::processBeingSelfEffect")
+    BLOCK_START("BeingRecv::processBeingSelfEffect")
     if (!effectManager || !actorManager)
     {
-        BLOCK_END("BeingNet::processBeingSelfEffect")
+        BLOCK_END("BeingRecv::processBeingSelfEffect")
         return;
     }
 
@@ -1273,7 +1273,7 @@ void BeingNet::processBeingSelfEffect(Net::MessageIn &msg)
     Being *const being = actorManager->findBeing(id);
     if (!being)
     {
-        BLOCK_END("BeingNet::processBeingSelfEffect")
+        BLOCK_END("BeingRecv::processBeingSelfEffect")
         return;
     }
 
@@ -1288,20 +1288,20 @@ void BeingNet::processBeingSelfEffect(Net::MessageIn &msg)
     {   // reset received damage
         socialWindow->resetDamage(being->getName());
     }
-    BLOCK_END("BeingNet::processBeingSelfEffect")
+    BLOCK_END("BeingRecv::processBeingSelfEffect")
 }
 
-void BeingNet::processSkillCastCancel(Net::MessageIn &msg)
+void BeingRecv::processSkillCastCancel(Net::MessageIn &msg)
 {
     msg.readInt32("skill id");
 }
 
-void BeingNet::processIpResponse(Net::MessageIn &msg)
+void BeingRecv::processIpResponse(Net::MessageIn &msg)
 {
-    BLOCK_START("BeingNet::processIpResponse")
+    BLOCK_START("BeingRecv::processIpResponse")
     if (!actorManager)
     {
-        BLOCK_END("BeingNet::processIpResponse")
+        BLOCK_END("BeingRecv::processIpResponse")
         return;
     }
 
@@ -1309,12 +1309,12 @@ void BeingNet::processIpResponse(Net::MessageIn &msg)
         msg.readBeingId("being id"));
     if (dstBeing)
         dstBeing->setIp(ipToString(msg.readInt32("ip address")));
-    BLOCK_END("BeingNet::processIpResponse")
+    BLOCK_END("BeingRecv::processIpResponse")
 }
 
-void BeingNet::processPvpSet(Net::MessageIn &msg)
+void BeingRecv::processPvpSet(Net::MessageIn &msg)
 {
-    BLOCK_START("BeingNet::processPvpSet")
+    BLOCK_START("BeingRecv::processPvpSet")
     const BeingId id = msg.readBeingId("being id");
     const int rank = msg.readInt32("rank");
     int teamId = 0;
@@ -1332,12 +1332,12 @@ void BeingNet::processPvpSet(Net::MessageIn &msg)
             dstBeing->addToCache();
         }
     }
-    BLOCK_END("BeingNet::processPvpSet")
+    BLOCK_END("BeingRecv::processPvpSet")
 }
 
-void BeingNet::applyPlayerAction(Net::MessageIn &msg,
-                                 Being *const being,
-                                 const uint8_t type)
+void BeingRecv::applyPlayerAction(Net::MessageIn &msg,
+                                  Being *const being,
+                                  const uint8_t type)
 {
     if (!being)
         return;
@@ -1367,7 +1367,8 @@ void BeingNet::applyPlayerAction(Net::MessageIn &msg,
     }
 }
 
-void BeingNet::setServerGender(Being *const being, const uint8_t gender)
+void BeingRecv::setServerGender(Being *const being,
+                                const uint8_t gender)
 {
     if (!being)
         return;

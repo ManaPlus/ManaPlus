@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "net/ea/beingnet.h"
+#include "net/ea/beingrecv.h"
 
 #include "actormanager.h"
 #include "game.h"
@@ -45,18 +45,18 @@
 namespace Ea
 {
 
-namespace BeingNet
+namespace BeingRecv
 {
     bool mSync = false;
     BeingId mSpawnId = BeingId_zero;
-}  // namespace BeingNet
+}  // namespace BeingRecv
 
-void BeingNet::processBeingRemove(Net::MessageIn &msg)
+void BeingRecv::processBeingRemove(Net::MessageIn &msg)
 {
-    BLOCK_START("BeingNet::processBeingRemove")
+    BLOCK_START("BeingRecv::processBeingRemove")
     if (!actorManager || !localPlayer)
     {
-        BLOCK_END("BeingNet::processBeingRemove")
+        BLOCK_END("BeingRecv::processBeingRemove")
         return;
     }
 
@@ -67,7 +67,7 @@ void BeingNet::processBeingRemove(Net::MessageIn &msg)
     if (!dstBeing)
     {
         msg.readUInt8("dead flag?");
-        BLOCK_END("BeingNet::processBeingRemove")
+        BLOCK_END("BeingRecv::processBeingRemove")
         return;
     }
 
@@ -95,15 +95,15 @@ void BeingNet::processBeingRemove(Net::MessageIn &msg)
         }
         actorManager->destroy(dstBeing);
     }
-    BLOCK_END("BeingNet::processBeingRemove")
+    BLOCK_END("BeingRecv::processBeingRemove")
 }
 
-void BeingNet::processSkillDamage(Net::MessageIn &msg)
+void BeingRecv::processSkillDamage(Net::MessageIn &msg)
 {
-    BLOCK_START("BeingNet::processSkillDamage")
+    BLOCK_START("BeingRecv::processSkillDamage")
     if (!actorManager)
     {
-        BLOCK_END("BeingNet::processSkillDamage")
+        BLOCK_END("BeingRecv::processSkillDamage")
         return;
     }
 
@@ -123,15 +123,15 @@ void BeingNet::processSkillDamage(Net::MessageIn &msg)
         srcBeing->handleSkill(dstBeing, param1, id, level);
     if (dstBeing)
         dstBeing->takeDamage(srcBeing, param1, AttackType::SKILL, id, level);
-    BLOCK_END("BeingNet::processSkillDamage")
+    BLOCK_END("BeingRecv::processSkillDamage")
 }
 
-void BeingNet::processBeingAction(Net::MessageIn &msg)
+void BeingRecv::processBeingAction(Net::MessageIn &msg)
 {
-    BLOCK_START("BeingNet::processBeingAction")
+    BLOCK_START("BeingRecv::processBeingAction")
     if (!actorManager)
     {
-        BLOCK_END("BeingNet::processBeingAction")
+        BLOCK_END("BeingRecv::processBeingAction")
         return;
     }
 
@@ -218,15 +218,15 @@ void BeingNet::processBeingAction(Net::MessageIn &msg)
             UNIMPLIMENTEDPACKET;
             break;
     }
-    BLOCK_END("BeingNet::processBeingAction")
+    BLOCK_END("BeingRecv::processBeingAction")
 }
 
-void BeingNet::processBeingEmotion(Net::MessageIn &msg)
+void BeingRecv::processBeingEmotion(Net::MessageIn &msg)
 {
-    BLOCK_START("BeingNet::processBeingEmotion")
+    BLOCK_START("BeingRecv::processBeingEmotion")
     if (!localPlayer || !actorManager)
     {
-        BLOCK_END("BeingNet::processBeingEmotion")
+        BLOCK_END("BeingRecv::processBeingEmotion")
         return;
     }
 
@@ -234,7 +234,7 @@ void BeingNet::processBeingEmotion(Net::MessageIn &msg)
         msg.readBeingId("being id"));
     if (!dstBeing)
     {
-        BLOCK_END("BeingNet::processBeingEmotion")
+        BLOCK_END("BeingRecv::processBeingEmotion")
         return;
     }
 
@@ -249,15 +249,15 @@ void BeingNet::processBeingEmotion(Net::MessageIn &msg)
     }
     if (dstBeing->getType() == ActorType::Player)
         dstBeing->setOtherTime();
-    BLOCK_END("BeingNet::processBeingEmotion")
+    BLOCK_END("BeingRecv::processBeingEmotion")
 }
 
-void BeingNet::processNameResponse(Net::MessageIn &msg)
+void BeingRecv::processNameResponse(Net::MessageIn &msg)
 {
-    BLOCK_START("BeingNet::processNameResponse")
+    BLOCK_START("BeingRecv::processNameResponse")
     if (!localPlayer || !actorManager)
     {
-        BLOCK_END("BeingNet::processNameResponse")
+        BLOCK_END("BeingRecv::processNameResponse")
         return;
     }
 
@@ -305,20 +305,20 @@ void BeingNet::processNameResponse(Net::MessageIn &msg)
                 }
                 localPlayer->checkNewName(dstBeing);
             }
-            BLOCK_END("BeingNet::processNameResponse")
+            BLOCK_END("BeingRecv::processNameResponse")
             return;
         }
     }
     msg.readString(24, "name");
-    BLOCK_END("BeingNet::processNameResponse")
+    BLOCK_END("BeingRecv::processNameResponse")
 }
 
-void BeingNet::processPlayerStop(Net::MessageIn &msg)
+void BeingRecv::processPlayerStop(Net::MessageIn &msg)
 {
-    BLOCK_START("BeingNet::processPlayerStop")
+    BLOCK_START("BeingRecv::processPlayerStop")
     if (!actorManager || !localPlayer)
     {
-        BLOCK_END("BeingNet::processPlayerStop")
+        BLOCK_END("BeingRecv::processPlayerStop")
         return;
     }
 
@@ -334,18 +334,18 @@ void BeingNet::processPlayerStop(Net::MessageIn &msg)
             dstBeing->setTileCoords(x, y);
             if (dstBeing->getCurrentAction() == BeingAction::MOVE)
                 dstBeing->setAction(BeingAction::STAND, 0);
-            BLOCK_END("BeingNet::processPlayerStop")
+            BLOCK_END("BeingRecv::processPlayerStop")
             return;
         }
     }
     msg.readInt16("x");
     msg.readInt16("y");
-    BLOCK_END("BeingNet::processPlayerStop")
+    BLOCK_END("BeingRecv::processPlayerStop")
 }
 
-void BeingNet::processPlayerMoveToAttack(Net::MessageIn &msg)
+void BeingRecv::processPlayerMoveToAttack(Net::MessageIn &msg)
 {
-    BLOCK_START("BeingNet::processPlayerStop")
+    BLOCK_START("BeingRecv::processPlayerStop")
     msg.readInt32("target id");
     msg.readInt16("target x");
     msg.readInt16("target y");
@@ -355,10 +355,10 @@ void BeingNet::processPlayerMoveToAttack(Net::MessageIn &msg)
 
     if (localPlayer)
         localPlayer->fixAttackTarget();
-    BLOCK_END("BeingNet::processPlayerStop")
+    BLOCK_END("BeingRecv::processPlayerStop")
 }
 
-void BeingNet::processSkillNoDamage(Net::MessageIn &msg)
+void BeingRecv::processSkillNoDamage(Net::MessageIn &msg)
 {
     const int id = msg.readInt16("skill id");
     const int heal = msg.readInt16("heal");
@@ -372,28 +372,28 @@ void BeingNet::processSkillNoDamage(Net::MessageIn &msg)
         srcBeing->handleSkill(dstBeing, heal, id, 1);
 }
 
-void BeingNet::processPvpMapMode(Net::MessageIn &msg)
+void BeingRecv::processPvpMapMode(Net::MessageIn &msg)
 {
-    BLOCK_START("BeingNet::processPvpMapMode")
+    BLOCK_START("BeingRecv::processPvpMapMode")
     const Game *const game = Game::instance();
     if (!game)
     {
-        BLOCK_END("BeingNet::processPvpMapMode")
+        BLOCK_END("BeingRecv::processPvpMapMode")
         return;
     }
 
     Map *const map = game->getCurrentMap();
     if (map)
         map->setPvpMode(msg.readInt16("pvp mode"));
-    BLOCK_END("BeingNet::processPvpMapMode")
+    BLOCK_END("BeingRecv::processPvpMapMode")
 }
 
-void BeingNet::processBeingMove3(Net::MessageIn &msg)
+void BeingRecv::processBeingMove3(Net::MessageIn &msg)
 {
-    BLOCK_START("BeingNet::processBeingMove3")
+    BLOCK_START("BeingRecv::processBeingMove3")
     if (!actorManager || !serverFeatures->haveMove3())
     {
-        BLOCK_END("BeingNet::processBeingMove3")
+        BLOCK_END("BeingRecv::processBeingMove3")
         return;
     }
 
@@ -405,7 +405,7 @@ void BeingNet::processBeingMove3(Net::MessageIn &msg)
         msg.readBeingId("being id"));
     if (!dstBeing)
     {
-        BLOCK_END("BeingNet::processBeingMove3")
+        BLOCK_END("BeingRecv::processBeingMove3")
         return;
     }
     const int16_t speed = msg.readInt16("speed");
@@ -433,11 +433,11 @@ void BeingNet::processBeingMove3(Net::MessageIn &msg)
         delete [] moves;
     }
     dstBeing->setPath(path);
-    BLOCK_END("BeingNet::processBeingMove3")
+    BLOCK_END("BeingRecv::processBeingMove3")
 }
 
-Being *BeingNet::createBeing(const BeingId id,
-                             const int job)
+Being *BeingRecv::createBeing(const BeingId id,
+                              const int job)
 {
     if (!actorManager)
         return nullptr;
@@ -457,13 +457,13 @@ Being *BeingNet::createBeing(const BeingId id,
     return being;
 }
 
-void BeingNet::setSprite(Being *const being,
-                         const unsigned int slot,
-                         const int id,
-                         const std::string &color,
-                         const ItemColor colorId,
-                         const bool isWeapon,
-                         const bool isTempSprite)
+void BeingRecv::setSprite(Being *const being,
+                          const unsigned int slot,
+                          const int id,
+                          const std::string &color,
+                          const ItemColor colorId,
+                          const bool isWeapon,
+                          const bool isTempSprite)
 {
     if (!being)
         return;

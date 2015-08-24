@@ -29,7 +29,7 @@
 
 namespace TmwAthena
 {
-    namespace BeingNet
+    namespace BeingRecv
     {
         void processBeingChangeLook(Net::MessageIn &msg);
         void processBeingChangeLook2(Net::MessageIn &msg);
@@ -60,7 +60,7 @@ namespace TmwAthena
                                const uint8_t type);
         void setServerGender(Being *const being,
                              const uint8_t gender);
-    }  // namespace Being
+    }  // namespace BeingRecv
 }  // namespace TmwAthena
 
 #endif  // NET_TMWA_BEING_H

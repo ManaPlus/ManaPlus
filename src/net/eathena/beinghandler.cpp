@@ -49,9 +49,9 @@
 
 #include "net/character.h"
 
-#include "net/ea/beingnet.h"
+#include "net/ea/beingrecv.h"
 
-#include "net/eathena/beingnet.h"
+#include "net/eathena/beingrecv.h"
 #include "net/eathena/maptypeproperty2.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
@@ -161,126 +161,126 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_BEING_VISIBLE:
-            BeingNet::processBeingVisible(msg);
+            BeingRecv::processBeingVisible(msg);
             break;
 
         case SMSG_BEING_MOVE:
-            BeingNet::processBeingMove(msg);
+            BeingRecv::processBeingMove(msg);
             break;
 
         case SMSG_BEING_SPAWN:
-            BeingNet::processBeingSpawn(msg);
+            BeingRecv::processBeingSpawn(msg);
             break;
 
         case SMSG_BEING_MOVE2:
-            BeingNet::processBeingMove2(msg);
+            BeingRecv::processBeingMove2(msg);
             break;
 
         case SMSG_BEING_REMOVE:
-            Ea::BeingNet::processBeingRemove(msg);
+            Ea::BeingRecv::processBeingRemove(msg);
             break;
 
         case SMSG_BEING_REMOVE_SKILL:
-            BeingNet::processBeingRemoveSkil(msg);
+            BeingRecv::processBeingRemoveSkil(msg);
             break;
 
         case SMSG_BEING_RESURRECT:
-            BeingNet::processBeingResurrect(msg);
+            BeingRecv::processBeingResurrect(msg);
             break;
 
         case SMSG_SKILL_DAMAGE:
-            Ea::BeingNet::processSkillDamage(msg);
+            Ea::BeingRecv::processSkillDamage(msg);
             break;
 
         case SMSG_SKILL_AUTO_CAST:
-            BeingNet::processSkillAutoCast(msg);
+            BeingRecv::processSkillAutoCast(msg);
             break;
 
         case SMSG_BEING_ACTION:
-            Ea::BeingNet::processBeingAction(msg);
+            Ea::BeingRecv::processBeingAction(msg);
             break;
 
         case SMSG_BEING_ACTION2:
-            BeingNet::processBeingAction2(msg);
+            BeingRecv::processBeingAction2(msg);
             break;
 
         case SMSG_BEING_SELFEFFECT:
-            BeingNet::processBeingSelfEffect(msg);
+            BeingRecv::processBeingSelfEffect(msg);
             break;
 
         case SMSG_BEING_SPECIAL_EFFECT:
-            BeingNet::processBeingSpecialEffect(msg);
+            BeingRecv::processBeingSpecialEffect(msg);
             break;
 
         case SMSG_BEING_SPECIAL_EFFECT_NUM:
-            BeingNet::processBeingSpecialEffectNum(msg);
+            BeingRecv::processBeingSpecialEffectNum(msg);
             break;
 
         case SMSG_BEING_SOUND_EFFECT:
-            BeingNet::processBeingSoundEffect(msg);
+            BeingRecv::processBeingSoundEffect(msg);
             break;
 
         case SMSG_BEING_EMOTION:
-            Ea::BeingNet::processBeingEmotion(msg);
+            Ea::BeingRecv::processBeingEmotion(msg);
             break;
 
         case SMSG_BEING_CHANGE_LOOKS2:
-            BeingNet::processBeingChangeLook2(msg);
+            BeingRecv::processBeingChangeLook2(msg);
             break;
 
         case SMSG_BEING_CHANGE_LOOKS_CARDS:
-            BeingNet::processBeingChangeLookCards(msg);
+            BeingRecv::processBeingChangeLookCards(msg);
             break;
 
         case SMSG_BEING_NAME_RESPONSE:
-            Ea::BeingNet::processNameResponse(msg);
+            Ea::BeingRecv::processNameResponse(msg);
             break;
 
         case SMSG_BEING_NAME_RESPONSE2:
-            BeingNet::processNameResponse2(msg);
+            BeingRecv::processNameResponse2(msg);
             break;
 
         case SMSG_SOLVE_CHAR_NAME:
             break;
 
         case SMSG_PLAYER_GUILD_PARTY_INFO:
-            BeingNet::processPlayerGuilPartyInfo(msg);
+            BeingRecv::processPlayerGuilPartyInfo(msg);
             break;
 
         case SMSG_BEING_CHANGE_DIRECTION:
-            BeingNet::processBeingChangeDirection(msg);
+            BeingRecv::processBeingChangeDirection(msg);
             break;
 
         case SMSG_PLAYER_STOP:
-            Ea::BeingNet::processPlayerStop(msg);
+            Ea::BeingRecv::processPlayerStop(msg);
             break;
 
         case SMSG_PLAYER_MOVE_TO_ATTACK:
-            Ea::BeingNet::processPlayerMoveToAttack(msg);
+            Ea::BeingRecv::processPlayerMoveToAttack(msg);
             break;
 
         case SMSG_PLAYER_STATUS_CHANGE:
-            BeingNet::processPlaterStatusChange(msg);
+            BeingRecv::processPlaterStatusChange(msg);
             break;
 
         case SMSG_PLAYER_STATUS_CHANGE2:
-            BeingNet::processPlaterStatusChange2(msg);
+            BeingRecv::processPlaterStatusChange2(msg);
             break;
 
         case SMSG_PLAYER_STATUS_CHANGE_NO_TICK:
-            BeingNet::processPlaterStatusChangeNoTick(msg);
+            BeingRecv::processPlaterStatusChangeNoTick(msg);
             break;
 
         case SMSG_BEING_STATUS_CHANGE:
-            BeingNet::processBeingStatusChange(msg);
+            BeingRecv::processBeingStatusChange(msg);
             break;
 
         case SMSG_BEING_STATUS_CHANGE2:
-            BeingNet::processBeingStatusChange2(msg);
+            BeingRecv::processBeingStatusChange2(msg);
             break;
 
         case SMSG_SKILL_CASTING:
-            BeingNet::processSkillCasting(msg);
+            BeingRecv::processSkillCasting(msg);
             break;
 
         case SMSG_SKILL_CAST_CANCEL:
@@ -288,136 +288,136 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
             break;
 
         case SMSG_SKILL_NO_DAMAGE:
-            Ea::BeingNet::processSkillNoDamage(msg);
+            Ea::BeingRecv::processSkillNoDamage(msg);
             break;
 
         case SMSG_SKILL_GROUND_NO_DAMAGE:
-            BeingNet::processSkillGroundNoDamage(msg);
+            BeingRecv::processSkillGroundNoDamage(msg);
             break;
 
         case SMSG_SKILL_ENTRY:
-            BeingNet::processSkillEntry(msg);
+            BeingRecv::processSkillEntry(msg);
             break;
 
         case SMSG_PVP_MAP_MODE:
-            Ea::BeingNet::processPvpMapMode(msg);
+            Ea::BeingRecv::processPvpMapMode(msg);
             break;
 
         case SMSG_PVP_SET:
-            BeingNet::processPvpSet(msg);
+            BeingRecv::processPvpSet(msg);
             break;
 
         case SMSG_MAP_TYPE_PROPERTY2:
-            BeingNet::processMapTypeProperty(msg);
+            BeingRecv::processMapTypeProperty(msg);
             break;
 
         case SMSG_MAP_TYPE:
-            BeingNet::processMapType(msg);
+            BeingRecv::processMapType(msg);
             break;
 
         case SMSG_MONSTER_HP:
         case SMSG_PLAYER_HP:
-            BeingNet::processMonsterHp(msg);
+            BeingRecv::processMonsterHp(msg);
             break;
 
         case SMSG_RANKS_LIST:
-            BeingNet::processRanksList(msg);
+            BeingRecv::processRanksList(msg);
             break;
 
         case SMSG_BEING_FAKE_NAME:
-            BeingNet::processBeingFakeName(msg);
+            BeingRecv::processBeingFakeName(msg);
             break;
 
         case SMSG_BEING_STAT_UPDATE_1:
-            BeingNet::processBeingStatUpdate1(msg);
+            BeingRecv::processBeingStatUpdate1(msg);
             break;
 
         case SMSG_MOB_INFO:
-            BeingNet::processMobInfo(msg);
+            BeingRecv::processMobInfo(msg);
             break;
 
         case SMSG_BEING_MOVE3:
-            Ea::BeingNet::processBeingMove3(msg);
+            Ea::BeingRecv::processBeingMove3(msg);
             break;
 
         case SMSG_BEING_ATTRS:
-            BeingNet::processBeingAttrs(msg);
+            BeingRecv::processBeingAttrs(msg);
             break;
 
         case SMSG_MONSTER_INFO:
-            BeingNet::processMonsterInfo(msg);
+            BeingRecv::processMonsterInfo(msg);
             break;
 
         case SMSG_CLASS_CHANGE:
-            BeingNet::processClassChange(msg);
+            BeingRecv::processClassChange(msg);
             break;
 
         case SMSG_SPIRIT_BALLS:
-            BeingNet::processSpiritBalls(msg);
+            BeingRecv::processSpiritBalls(msg);
             break;
 
         case SMSG_SPIRIT_BALL_SINGLE:
-            BeingNet::processSpiritBallSingle(msg);
+            BeingRecv::processSpiritBallSingle(msg);
             break;
 
         case SMSG_BLADE_STOP:
-            BeingNet::processBladeStop(msg);
+            BeingRecv::processBladeStop(msg);
             break;
 
         case SMSG_COMBO_DELAY:
-            BeingNet::processComboDelay(msg);
+            BeingRecv::processComboDelay(msg);
             break;
 
         case SMSG_WEDDING_EFFECT:
-            BeingNet::processWddingEffect(msg);
+            BeingRecv::processWddingEffect(msg);
             break;
 
         case SMSG_BEING_SLIDE:
-            BeingNet::processBeingSlide(msg);
+            BeingRecv::processBeingSlide(msg);
             break;
 
         case SMSG_STARS_KILL:
-            BeingNet::processStarsKill(msg);
+            BeingRecv::processStarsKill(msg);
             break;
 
         case SMSG_BLACKSMITH_RANKS_LIST:
-            BeingNet::processBlacksmithRanksList(msg);
+            BeingRecv::processBlacksmithRanksList(msg);
             break;
 
         case SMSG_ALCHEMIST_RANKS_LIST:
-            BeingNet::processAlchemistRanksList(msg);
+            BeingRecv::processAlchemistRanksList(msg);
             break;
 
         case SMSG_TAEKWON_RANKS_LIST:
-            BeingNet::processTaekwonRanksList(msg);
+            BeingRecv::processTaekwonRanksList(msg);
             break;
 
         case SMSG_PK_RANKS_LIST:
-            BeingNet::processPkRanksList(msg);
+            BeingRecv::processPkRanksList(msg);
             break;
 
         case SMSG_GLADIATOR_FEEL_REQUEST:
-            BeingNet::processGladiatorFeelRequest(msg);
+            BeingRecv::processGladiatorFeelRequest(msg);
             break;
 
         case SMSG_BOSS_MAP_INFO:
-            BeingNet::processBossMapInfo(msg);
+            BeingRecv::processBossMapInfo(msg);
             break;
 
         case SMSG_BEING_FONT:
-            BeingNet::processBeingFont(msg);
+            BeingRecv::processBeingFont(msg);
             break;
 
         case SMSG_BEING_MILLENIUM_SHIELD:
-            BeingNet::processBeingMilleniumShield(msg);
+            BeingRecv::processBeingMilleniumShield(msg);
             break;
 
         case SMSG_BEING_CHARM:
-            BeingNet::processBeingCharm(msg);
+            BeingRecv::processBeingCharm(msg);
             break;
 
         case SMSG_BEING_VIEW_EQUIPMENT:
-            BeingNet::processBeingViewEquipment(msg);
+            BeingRecv::processBeingViewEquipment(msg);
             break;
 
         default:

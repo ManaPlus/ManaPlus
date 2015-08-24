@@ -30,7 +30,7 @@
 
 namespace EAthena
 {
-    namespace BeingNet
+    namespace BeingRecv
     {
         void processBeingChangeLook2(Net::MessageIn &msg);
         void processBeingChangeLookCards(Net::MessageIn &msg);
@@ -95,7 +95,7 @@ namespace EAthena
                             const BeingId id,
                             const int16_t job,
                             const BeingType::BeingType beingType);
-    }  // namespace Being
+    }  // namespace BeingRecv
 }  // namespace EAthena
 
 #endif  // NET_EATHENA_BEING_H
