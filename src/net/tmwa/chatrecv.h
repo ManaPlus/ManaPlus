@@ -20,36 +20,30 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_EA_CHATHANDLER_H
-#define NET_EA_CHATHANDLER_H
+#ifndef NET_TMWA_CHATRECV_H
+#define NET_TMWA_CHATRECV_H
 
-#include "net/chathandler.h"
+#include "net/ea/chathandler.h"
 
-#include <queue>
+#include "net/tmwa/messagehandler.h"
 
-namespace Net
+namespace TmwAthena
 {
-    class MessageIn;
-}
+    class MessageOut;
 
-namespace Ea
-{
+    namespace ChatRecv
+    {
+        void processChat(Net::MessageIn &msg);
+        void processChatContinue(std::string chatMsg,
+                                 const std::string &channel);
+        void processGmChat(Net::MessageIn &msg);
+        void processWhisper(Net::MessageIn &msg);
+        void processWhisperResponse(Net::MessageIn &msg);
+        void processWhisperContinue(const std::string &nick,
+                                    std::string chatMsg);
+        void processBeingChat(Net::MessageIn &msg);
+        void processScriptMessage(Net::MessageIn &msg);
+    }  // namespace ChatRecv
+}  // namespace TmwAthena
 
-typedef std::queue<std::string> WhisperQueue;
-
-class ChatHandler notfinal : public Net::ChatHandler
-{
-    public:
-        ChatHandler();
-
-        A_DELETE_COPY(ChatHandler)
-
-        void me(const std::string &restrict text,
-                const std::string &restrict channel) const override final;
-
-        void clear() override final;
-};
-
-}  // namespace Ea
-
-#endif  // NET_EA_CHATHANDLER_H
+#endif  // NET_TMWA_CHATRECV_H

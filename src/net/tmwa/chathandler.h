@@ -94,24 +94,6 @@ class ChatHandler final : public MessageHandler, public Ea::ChatHandler
         void kickFromChatRoom(const std::string &nick) const override final;
 
     protected:
-        static void processChat(Net::MessageIn &msg);
-
-        static void processChatContinue(std::string chatMsg,
-                                        const std::string &channel);
-
-        static void processGmChat(Net::MessageIn &msg);
-
-        static void processWhisper(Net::MessageIn &msg);
-
-        static void processWhisperResponse(Net::MessageIn &msg);
-
-        static void processWhisperContinue(const std::string &nick,
-                                           std::string chatMsg);
-
-        static void processBeingChat(Net::MessageIn &msg);
-
-        static void processScriptMessage(Net::MessageIn &msg);
-
         static void processRaw(MessageOut &restrict outMsg,
                                const std::string &restrict line);
 };

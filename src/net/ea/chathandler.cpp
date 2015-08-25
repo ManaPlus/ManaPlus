@@ -36,6 +36,8 @@
 
 #include "net/messagein.h"
 
+#include "net/ea/chatrecv.h"
+
 #include "utils/gettext.h"
 
 #include "debug.h"
@@ -43,26 +45,20 @@
 namespace Ea
 {
 
-WhisperQueue ChatHandler::mSentWhispers;
-int ChatHandler::mMotdTime = -1;
-bool ChatHandler::mShowAllLang = false;
-bool ChatHandler::mShowMotd = false;
-bool ChatHandler::mSkipping = true;
-
 ChatHandler::ChatHandler()
 {
-    if (!mSentWhispers.empty())
-        mSentWhispers.pop();
-    mMotdTime = -1;
-    mShowAllLang = serverConfig.getValue("showAllLang", 0);
-    mShowMotd = config.getBoolValue("showmotd");
-    mSkipping = true;
+    if (!ChatRecv::mSentWhispers.empty())
+        ChatRecv::mSentWhispers.pop();
+    ChatRecv::mMotdTime = -1;
+    ChatRecv::mShowAllLang = serverConfig.getValue("showAllLang", 0);
+    ChatRecv::mShowMotd = config.getBoolValue("showmotd");
+    ChatRecv::mSkipping = true;
 }
 
 void ChatHandler::clear()
 {
-    mShowMotd = config.getBoolValue("showmotd");
-    mSkipping = true;
+    ChatRecv::mShowMotd = config.getBoolValue("showmotd");
+    ChatRecv::mSkipping = true;
 }
 
 void ChatHandler::me(const std::string &restrict text,
@@ -71,141 +67,6 @@ void ChatHandler::me(const std::string &restrict text,
     // here need string duplication
     std::string action = strprintf("*%s*", text.c_str());
     talk(action, channel);
-}
-
-std::string ChatHandler::getPopLastWhisperNick()
-{
-    std::string nick;
-    if (mSentWhispers.empty())
-    {
-        nick = "user";
-    }
-    else
-    {
-        nick = mSentWhispers.front();
-        mSentWhispers.pop();
-    }
-    return nick;
-}
-
-std::string ChatHandler::getLastWhisperNick()
-{
-    std::string nick;
-    if (mSentWhispers.empty())
-        nick = "user";
-    else
-        nick = mSentWhispers.front();
-    return nick;
-}
-
-void ChatHandler::processWhisperResponseContinue(Net::MessageIn &msg,
-                                                 const uint8_t type)
-{
-    const std::string nick = getPopLastWhisperNick();
-    switch (type)
-    {
-        case 0x00:
-            // Success (don't need to report)
-            break;
-        case 0x01:
-            if (chatWindow)
-            {
-                chatWindow->addWhisper(nick,
-                    // TRANSLATORS: chat message
-                    strprintf(_("Whisper could not be sent, %s is offline."),
-                        nick.c_str()),
-                        ChatMsgType::BY_SERVER);
-            }
-            break;
-        case 0x02:
-            if (chatWindow)
-            {
-                chatWindow->addWhisper(nick,
-                    // TRANSLATORS: chat message
-                    strprintf(_("Whisper could not "
-                    "be sent, ignored by %s."), nick.c_str()),
-                    ChatMsgType::BY_SERVER);
-            }
-            break;
-        case 0x03:
-            if (chatWindow)
-            {
-                chatWindow->addWhisper(nick,
-                    // TRANSLATORS: chat message
-                    strprintf(_("Whisper could not "
-                    "be sent, you ignored by all players.")),
-                    ChatMsgType::BY_SERVER);
-            }
-            break;
-        default:
-            UNIMPLIMENTEDPACKET;
-            break;
-    }
-    BLOCK_END("ChatHandler::processWhisperResponse")
-}
-
-void ChatHandler::processMVPEffect(Net::MessageIn &msg)
-{
-    BLOCK_START("ChatHandler::processMVPEffect")
-    // Display MVP player
-    const BeingId id = msg.readBeingId("being id");
-    if (localChatTab && actorManager && config.getBoolValue("showMVP"))
-    {
-        const Being *const being = actorManager->findBeing(id);
-        if (!being)
-            NotifyManager::notify(NotifyTypes::MVP_PLAYER, "");
-        else
-            NotifyManager::notify(NotifyTypes::MVP_PLAYER, being->getName());
-    }
-    BLOCK_END("ChatHandler::processMVPEffect")
-}
-
-void ChatHandler::processIgnoreAllResponse(Net::MessageIn &msg)
-{
-    BLOCK_START("ChatHandler::processIgnoreAllResponse")
-    const uint8_t action = msg.readUInt8("action");
-    const uint8_t fail = msg.readUInt8("result");
-    if (!localChatTab)
-    {
-        BLOCK_END("ChatHandler::processIgnoreAllResponse")
-        return;
-    }
-
-    switch (action)
-    {
-        case 0:
-        {
-            switch (fail)
-            {
-                case 0:
-                    NotifyManager::notify(NotifyTypes::WHISPERS_IGNORED);
-                    break;
-                default:
-                    NotifyManager::notify(NotifyTypes::
-                        WHISPERS_IGNORE_FAILED);
-                    break;
-            }
-            break;
-        }
-        case 1:
-        {
-            switch (fail)
-            {
-                case 0:
-                    NotifyManager::notify(NotifyTypes::WHISPERS_UNIGNORED);
-                    break;
-                default:
-                    NotifyManager::notify(NotifyTypes::
-                        WHISPERS_UNIGNORE_FAILED);
-                    break;
-            }
-            break;
-        }
-        default:
-            // unknown result
-            break;
-    }
-    BLOCK_END("ChatHandler::processIgnoreAllResponse")
 }
 
 }  // namespace Ea

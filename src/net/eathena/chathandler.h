@@ -96,79 +96,8 @@ class ChatHandler final : public MessageHandler, public Ea::ChatHandler
         void kickFromChatRoom(const std::string &nick) const override final;
 
     protected:
-        static std::string extractChannelFromMessage(std::string &chatMsg);
-
         static void processRaw(MessageOut &restrict outMsg,
                                const std::string &restrict line);
-
-        static void processChat(Net::MessageIn &msg);
-
-        static void processColorChat(Net::MessageIn &msg);
-
-        static void processChatContinue(std::string chatMsg,
-                                        ChatMsgTypeT own);
-
-        static void processWhisper(Net::MessageIn &msg);
-
-        static void processWhisperResponse(Net::MessageIn &msg);
-
-        static void processGmChat(Net::MessageIn &msg);
-
-        static void processGmChat2(Net::MessageIn &msg);
-
-        static void processChatIgnoreList(Net::MessageIn &msg);
-
-        static void processFormatMessage(Net::MessageIn &msg);
-
-        static void processFormatMessageNumber(Net::MessageIn &msg);
-
-        static void processFormatMessageSkill(Net::MessageIn &msg);
-
-        static void processChatDisplay(Net::MessageIn &msg);
-
-        static void processChatRoomJoinAck(Net::MessageIn &msg);
-
-        static void processChatRoomLeave(Net::MessageIn &msg);
-
-        static void processJoinChannel(Net::MessageIn &msg);
-
-        static void processWhisperContinue(const std::string &nick,
-                                           std::string chatMsg);
-
-        static void processBeingChat(Net::MessageIn &msg);
-
-        static void processIgnoreNickAck(Net::MessageIn &msg);
-
-        static void processChatRoomCreateAck(Net::MessageIn &msg);
-
-        static void processChatRoomDestroy(Net::MessageIn &msg);
-
-        static void processChatRoomJoinFailed(Net::MessageIn &msg);
-
-        static void processChatRoomAddMember(Net::MessageIn &msg);
-
-        static void processChatRoomSettings(Net::MessageIn &msg);
-
-        static void processChatRoomRoleChange(Net::MessageIn &msg);
-
-        static void processMVPItem(Net::MessageIn &msg);
-
-        static void processMVPExp(Net::MessageIn &msg);
-
-        static void processMVPNoItem(Net::MessageIn &msg);
-
-        static void processMannerMessage(Net::MessageIn &msg);
-
-        static void processChatSilence(Net::MessageIn &msg);
-
-        static void processChatTalkieBox(Net::MessageIn &msg);
-
-        static void processBattleChatMessage(Net::MessageIn &msg);
-
-        static void processScriptMessage(Net::MessageIn &msg);
-
-    private:
-        static std::string mChatRoom;
 };
 
 }  // namespace EAthena

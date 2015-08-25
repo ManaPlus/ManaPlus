@@ -41,6 +41,9 @@
 #include "net/mercenaryhandler.h"
 #include "net/serverfeatures.h"
 
+#include "net/ea/chatrecv.h"
+
+#include "net/eathena/chatrecv.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
@@ -54,8 +57,6 @@ extern Net::ChatHandler *chatHandler;
 
 namespace EAthena
 {
-
-std::string ChatHandler::mChatRoom;
 
 ChatHandler::ChatHandler() :
     MessageHandler(),
@@ -106,133 +107,133 @@ void ChatHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_WHISPER_RESPONSE:
-            processWhisperResponse(msg);
+            ChatRecv::processWhisperResponse(msg);
             break;
 
         // Received whisper
         case SMSG_WHISPER:
-            processWhisper(msg);
+            ChatRecv::processWhisper(msg);
             break;
 
         // Received speech from being
         case SMSG_BEING_CHAT:
-            processBeingChat(msg);
+            ChatRecv::processBeingChat(msg);
             break;
 
         case SMSG_PLAYER_CHAT:
-            processChat(msg);
+            ChatRecv::processChat(msg);
             break;
 
         case SMSG_FORMAT_MESSAGE:
-            processFormatMessage(msg);
+            ChatRecv::processFormatMessage(msg);
             break;
 
         case SMSG_FORMAT_MESSAGE_NUMBER:
-            processFormatMessageNumber(msg);
+            ChatRecv::processFormatMessageNumber(msg);
             break;
 
         case SMSG_FORMAT_MESSAGE_SKILL:
-            processFormatMessageSkill(msg);
+            ChatRecv::processFormatMessageSkill(msg);
             break;
 
         case SMSG_COLOR_MESSAGE:
-            processColorChat(msg);
+            ChatRecv::processColorChat(msg);
             break;
 
         case SMSG_GM_CHAT:
-            processGmChat(msg);
+            ChatRecv::processGmChat(msg);
             break;
 
         case SMSG_GM_CHAT2:
-            processGmChat2(msg);
+            ChatRecv::processGmChat2(msg);
             break;
 
         case SMSG_MVP_EFFECT:
-            processMVPEffect(msg);
+            Ea::ChatRecv::processMVPEffect(msg);
             break;
 
         case SMSG_MVP_ITEM:
-            processMVPItem(msg);
+            ChatRecv::processMVPItem(msg);
             break;
 
         case SMSG_MVP_EXP:
-            processMVPExp(msg);
+            ChatRecv::processMVPExp(msg);
             break;
 
         case SMSG_MVP_NO_ITEM:
-            processMVPNoItem(msg);
+            ChatRecv::processMVPNoItem(msg);
             break;
 
         case SMSG_IGNORE_ALL_RESPONSE:
-            processIgnoreAllResponse(msg);
+            Ea::ChatRecv::processIgnoreAllResponse(msg);
             break;
 
         case SMSG_CHAT_IGNORE_LIST:
-            processChatIgnoreList(msg);
+            ChatRecv::processChatIgnoreList(msg);
             break;
 
         case SMSG_CHAT_DISPLAY:
-            processChatDisplay(msg);
+            ChatRecv::processChatDisplay(msg);
             break;
 
         case SMSG_CHAT_ROOM_JOIN_ACK:
-            processChatRoomJoinAck(msg);
+            ChatRecv::processChatRoomJoinAck(msg);
             break;
 
         case SMSG_CHAT_ROOM_LEAVE:
-            processChatRoomLeave(msg);
+            ChatRecv::processChatRoomLeave(msg);
             break;
 
         case SMSG_CHAT_JOIN_CHANNEL:
-            processJoinChannel(msg);
+            ChatRecv::processJoinChannel(msg);
             break;
 
         case SMSG_IGNORE_NICK_ACK:
-            processIgnoreNickAck(msg);
+            ChatRecv::processIgnoreNickAck(msg);
             break;
 
         case SMSG_CHAT_ROOM_CREATE_ACK:
-            processChatRoomCreateAck(msg);
+            ChatRecv::processChatRoomCreateAck(msg);
             break;
 
         case SMSG_CHAT_ROOM_DESTROY:
-            processChatRoomDestroy(msg);
+            ChatRecv::processChatRoomDestroy(msg);
             break;
 
         case SMSG_CHAT_ROOM_JOIN_FAILED:
-            processChatRoomJoinFailed(msg);
+            ChatRecv::processChatRoomJoinFailed(msg);
             break;
 
         case SMSG_CHAT_ROOM_ADD_MEMBER:
-            processChatRoomAddMember(msg);
+            ChatRecv::processChatRoomAddMember(msg);
             break;
 
         case SMSG_CHAT_ROOM_SETTINGS:
-            processChatRoomSettings(msg);
+            ChatRecv::processChatRoomSettings(msg);
             break;
 
         case SMSG_CHAT_ROOM_ROLE_CHANGE:
-            processChatRoomRoleChange(msg);
+            ChatRecv::processChatRoomRoleChange(msg);
             break;
 
         case SMSG_MANNER_MESSAGE:
-            processMannerMessage(msg);
+            ChatRecv::processMannerMessage(msg);
             break;
 
         case SMSG_CHAT_SILENCE:
-            processChatSilence(msg);
+            ChatRecv::processChatSilence(msg);
             break;
 
         case SMSG_CHAT_TALKIE_BOX:
-            processChatTalkieBox(msg);
+            ChatRecv::processChatTalkieBox(msg);
             break;
 
         case SMSG_BATTLE_CHAT_MESSAGE:
-            processBattleChatMessage(msg);
+            ChatRecv::processBattleChatMessage(msg);
             break;
 
         case SMSG_SCRIPT_MESSAGE:
-            processScriptMessage(msg);
+            ChatRecv::processScriptMessage(msg);
             break;
 
         default:
@@ -270,7 +271,7 @@ void ChatHandler::privateMessage(const std::string &restrict recipient,
     outMsg.writeString(recipient, 24, "recipient nick");
     outMsg.writeString(text, static_cast<int>(text.length()), "message");
     outMsg.writeInt8(0, "null char");
-    mSentWhispers.push(recipient);
+    Ea::ChatRecv::mSentWhispers.push(recipient);
 }
 
 void ChatHandler::channelMessage(const std::string &restrict channel,
@@ -376,53 +377,6 @@ void ChatHandler::unIgnore(const std::string &nick) const
     outMsg.writeInt8(1, "flag");
 }
 
-void ChatHandler::processIgnoreNickAck(Net::MessageIn &msg)
-{
-    const int type = msg.readUInt8("type");
-    const int flag = msg.readUInt8("flag");
-    switch (type)
-    {
-        case 0:
-            switch (flag)
-            {
-                case 0:
-                    NotifyManager::notify(NotifyTypes::IGNORE_PLAYER_SUCCESS);
-                    break;
-                case 1:
-                    NotifyManager::notify(NotifyTypes::IGNORE_PLAYER_FAILURE);
-                    break;
-                case 2:
-                    NotifyManager::notify(NotifyTypes::IGNORE_PLAYER_TOO_MANY);
-                    break;
-                default:
-                    NotifyManager::notify(NotifyTypes::IGNORE_PLAYER_UNKNOWN);
-                    break;
-            }
-            break;
-        case 1:
-            switch (flag)
-            {
-                case 0:
-                    NotifyManager::notify(
-                        NotifyTypes::UNIGNORE_PLAYER_SUCCESS);
-                    break;
-                case 1:
-                    NotifyManager::notify(
-                        NotifyTypes::UNIGNORE_PLAYER_FAILURE);
-                    break;
-                default:
-                    NotifyManager::notify(
-                        NotifyTypes::UNIGNORE_PLAYER_UNKNOWN);
-                    break;
-            }
-            break;
-
-        default:
-            NotifyManager::notify(NotifyTypes::IGNORE_PLAYER_TYPE_UNKNOWN);
-            break;
-    }
-}
-
 void ChatHandler::requestIgnoreList() const
 {
     createOutPacket(CMSG_REQUEST_IGNORE_LIST);
@@ -440,7 +394,7 @@ void ChatHandler::createChatRoom(const std::string &title,
     outMsg.writeInt8(static_cast<int8_t>(isPublic ? 1 : 0), "public");
     outMsg.writeString(password, 8, "password");
     outMsg.writeString(title, 36, "title");
-    mChatRoom = title;
+    ChatRecv::mChatRoom = title;
 }
 
 void ChatHandler::battleTalk(const std::string &text) const
@@ -457,264 +411,6 @@ void ChatHandler::battleTalk(const std::string &text) const
     outMsg.writeString(mes, static_cast<int>(mes.length() + 1), "message");
 }
 
-void ChatHandler::processChat(Net::MessageIn &msg)
-{
-    BLOCK_START("ChatHandler::processChat")
-    int chatMsgLength = msg.readInt16("len") - 4;
-    if (chatMsgLength <= 0)
-    {
-        BLOCK_END("ChatHandler::processChat")
-        return;
-    }
-
-    processChatContinue(msg.readRawString(chatMsgLength, "message"),
-        ChatMsgType::BY_PLAYER);
-}
-
-void ChatHandler::processFormatMessage(Net::MessageIn &msg)
-{
-    const int msgId = msg.readInt16("msg id");
-    // +++ here need load message from configuration file
-    std::string chatMsg;
-    if (msgId >= 1266 && msgId <= 1269)
-    {
-        mercenaryHandler->handleMercenaryMessage(msgId - 1266);
-        return;
-    }
-    switch (msgId)
-    {
-        case 1334:
-            chatMsg = _("Can't cast skill in this area.");
-            break;
-        case 1335:
-            chatMsg = _("Can't use item in this area.");
-            break;
-        case 1773:
-            chatMsg = _("Can't equip. Wrong level.");
-            break;
-        case 1774:
-            chatMsg = _("Can't use. Wrong level.");
-            break;
-        case 1923:
-            chatMsg = _("Work in progress.");  // busy with npc
-            break;
-        default:
-            chatMsg = strprintf("Message #%d", msgId);
-            break;
-    }
-    processChatContinue(chatMsg, ChatMsgType::BY_SERVER);
-}
-
-void ChatHandler::processFormatMessageNumber(Net::MessageIn &msg)
-{
-    int msgId = msg.readInt16("msg id");
-    int value = msg.readInt32("value");
-    if (msgId == 1862)
-    {
-        NotifyManager::notify(NotifyTypes::USE_ITEM_WAIT, value);
-        return;
-    }
-    // +++ here need load message from configuration file
-    const std::string chatMsg = strprintf(
-        "Message #%d, value: %d", msgId, value);
-    processChatContinue(chatMsg, ChatMsgType::BY_SERVER);
-}
-
-void ChatHandler::processFormatMessageSkill(Net::MessageIn &msg)
-{
-    const int skillId = msg.readInt16("skill id");
-    const int msgId = msg.readInt32("msg id");
-    // +++ here need load message from configuration file
-    const std::string chatMsg = strprintf(
-        "Message #%d, skill: %d", msgId, skillId);
-    processChatContinue(chatMsg, ChatMsgType::BY_SERVER);
-}
-
-void ChatHandler::processColorChat(Net::MessageIn &msg)
-{
-    BLOCK_START("ChatHandler::processChat")
-    int chatMsgLength = msg.readInt16("len") - 4;
-    msg.readInt32("unused");
-    msg.readInt32("chat color");
-    chatMsgLength -= 8;
-    if (chatMsgLength <= 0)
-    {
-        BLOCK_END("ChatHandler::processChat")
-        return;
-    }
-
-    std::string message = msg.readRawString(chatMsgLength, "message");
-    std::string msg2 = message;
-    if (findCutFirst(msg2, "You're now in the '#") && findCutLast(msg2, "'"))
-    {
-        const size_t idx = msg2.find("' channel for '");
-        if (idx != std::string::npos && chatWindow)
-        {
-            chatWindow->addChannelTab(std::string("#").append(
-                msg2.substr(0, idx)), false);
-            return;
-        }
-    }
-    else
-    {
-        const std::string nick = getLastWhisperNick();
-        if (nick.size() > 1 && nick[0] == '#')
-        {
-            if (message == strprintf("[ %s ] %s : \302\202\302",
-                nick.c_str(), localPlayer->getName().c_str()))
-            {
-                mSentWhispers.pop();
-            }
-        }
-    }
-    processChatContinue(message, ChatMsgType::BY_UNKNOWN);
-}
-
-std::string ChatHandler::extractChannelFromMessage(std::string &chatMsg)
-{
-    std::string msg = chatMsg;
-    std::string channel(GENERAL_CHANNEL);
-    if (findCutFirst(msg, "[ #"))
-    {   // found channel message
-        const size_t idx = msg.find(" ] ");
-        if (idx != std::string::npos)
-        {
-            channel = std::string("#").append(msg.substr(0, idx));
-            chatMsg = msg.substr(idx + 3);
-        }
-    }
-    return channel;
-}
-
-void ChatHandler::processChatContinue(std::string chatMsg,
-                                      ChatMsgTypeT own)
-{
-    const std::string channel = extractChannelFromMessage(chatMsg);
-    bool allow(true);
-    if (chatWindow)
-    {
-        allow = chatWindow->resortChatLog(chatMsg,
-            own,
-            channel,
-            IgnoreRecord_false,
-            TryRemoveColors_true);
-    }
-
-    const size_t pos = chatMsg.find(" : ", 0);
-    if (pos != std::string::npos)
-        chatMsg.erase(0, pos + 3);
-
-    trim(chatMsg);
-
-    if (localPlayer)
-    {
-        if ((chatWindow || mShowMotd) && allow)
-            localPlayer->setSpeech(chatMsg, GENERAL_CHANNEL);
-    }
-    BLOCK_END("ChatHandler::processChat")
-}
-
-void ChatHandler::processGmChat(Net::MessageIn &msg)
-{
-    BLOCK_START("ChatHandler::processChat")
-    int chatMsgLength = msg.readInt16("len") - 4;
-    if (chatMsgLength <= 0)
-    {
-        BLOCK_END("ChatHandler::processChat")
-        return;
-    }
-
-    std::string chatMsg = msg.readRawString(chatMsgLength, "message");
-    // remove non persistend "colors" from server.
-    if (!findCutFirst(chatMsg, "ssss"))
-        findCutFirst(chatMsg, "eulb");
-
-    if (chatWindow)
-        chatWindow->addGlobalMessage(chatMsg);
-    BLOCK_END("ChatHandler::processChat")
-}
-
-void ChatHandler::processGmChat2(Net::MessageIn &msg)
-{
-    const int chatMsgLength = msg.readInt16("len") - 16;
-    msg.readInt32("font color");
-    msg.readInt16("font type");
-    msg.readInt16("font size");
-    msg.readInt16("font align");
-    msg.readInt16("font y");
-    const std::string chatMsg = msg.readRawString(chatMsgLength, "message");
-    if (chatWindow)
-        chatWindow->addGlobalMessage(chatMsg);
-}
-
-void ChatHandler::processWhisper(Net::MessageIn &msg)
-{
-    BLOCK_START("ChatHandler::processWhisper")
-    const int chatMsgLength = msg.readInt16("len") - 32;
-    std::string nick = msg.readString(24, "nick");
-    msg.readInt32("admin flag");
-
-    if (chatMsgLength <= 0)
-    {
-        BLOCK_END("ChatHandler::processWhisper")
-        return;
-    }
-
-    processWhisperContinue(nick, msg.readString(chatMsgLength, "message"));
-}
-
-void ChatHandler::processWhisperResponse(Net::MessageIn &msg)
-{
-    BLOCK_START("ChatHandler::processWhisperResponse")
-
-    const uint8_t type = msg.readUInt8("response");
-    msg.readInt32("unknown");
-    if (type == 1 && chatWindow)
-    {
-        const std::string nick = getLastWhisperNick();
-        if (nick.size() > 1 && nick[0] == '#')
-        {
-            chatWindow->channelChatLog(nick,
-                // TRANSLATORS: chat message
-                strprintf(_("Message could not be sent, channel "
-                "%s is not exists."), nick.c_str()),
-                ChatMsgType::BY_SERVER,
-                IgnoreRecord_false,
-                TryRemoveColors_false);
-            if (!mSentWhispers.empty())
-                mSentWhispers.pop();
-            return;
-        }
-    }
-    processWhisperResponseContinue(msg, type);
-}
-
-void ChatHandler::processChatIgnoreList(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    // +++ need put it in some object or window
-    const int count = (msg.readInt16("len") - 4) / 24;
-    for (int f = 0; f < count; f ++)
-        msg.readString(24, "nick");
-}
-
-void ChatHandler::processChatDisplay(Net::MessageIn &msg)
-{
-    const int len = msg.readInt16("len") - 17;
-    ChatObject *const obj = new ChatObject;
-    obj->ownerId = msg.readBeingId("owner account id");
-    obj->chatId = msg.readInt32("chat id");
-    obj->maxUsers = msg.readInt16("max users");
-    obj->currentUsers = msg.readInt16("current users");
-    obj->type = msg.readUInt8("type");
-    obj->title = msg.readString(len, "title");
-    obj->update();
-
-    Being *const dstBeing = actorManager->findBeing(obj->ownerId);
-    if (dstBeing)
-        dstBeing->setChat(obj);
-}
-
 void ChatHandler::joinChat(const ChatObject *const chat,
                            const std::string &password) const
 {
@@ -724,73 +420,6 @@ void ChatHandler::joinChat(const ChatObject *const chat,
     createOutPacket(CMSG_CHAT_ROOM_JOIN);
     outMsg.writeInt32(chat->chatId, "chat id");
     outMsg.writeString(password, 8, "password");
-}
-
-void ChatHandler::processChatRoomJoinAck(Net::MessageIn &msg)
-{
-    const int count = (msg.readInt16("len") - 8) / 28;
-    const int id = msg.readInt32("chat id");
-
-    // +++ ignore chat members for now
-    for (int f = 0; f < count; f ++)
-    {
-        msg.readInt32("role");
-        msg.readString(24, "name");
-    }
-
-    ChatObject *oldChat = ChatObject::findById(id);
-
-    if (oldChat)
-        PlayerInfo::setRoomName(oldChat->title);
-    else
-        PlayerInfo::setRoomName(std::string());
-    chatWindow->joinRoom(true);
-    ChatObject *const obj = new ChatObject;
-    if (oldChat)
-    {
-        obj->ownerId = oldChat->ownerId;
-        obj->chatId = oldChat->chatId;
-        obj->maxUsers = oldChat->maxUsers;
-        obj->currentUsers = oldChat->currentUsers;
-        obj->type = oldChat->type;
-        obj->title = oldChat->title;
-//        obj->update();
-    }
-    localPlayer->setChat(obj);
-}
-
-void ChatHandler::processChatRoomLeave(Net::MessageIn &msg)
-{
-    msg.readInt16("users");
-    const std::string name = msg.readString(24, "name");
-    const int status = msg.readUInt8("flag");  // 0 - left, 1 - kicked
-    switch (status)
-    {
-        case 0:
-            NotifyManager::notify(NotifyTypes::ROOM_LEAVE, name);
-            break;
-        case 1:
-            NotifyManager::notify(NotifyTypes::ROOM_KICKED, name);
-            break;
-        default:
-            UNIMPLIMENTEDPACKET;
-            break;
-    }
-    if (localPlayer && name == localPlayer->getName())
-    {
-        if (chatWindow)
-            chatWindow->joinRoom(false);
-        PlayerInfo::setRoomName(std::string());
-        if (localPlayer)
-            localPlayer->setChat(nullptr);
-    }
-    else
-    {
-        Being *const being = actorManager->findBeingByName(
-            name, ActorType::Player);
-        if (being)
-            being->setChat(nullptr);
-    }
 }
 
 void ChatHandler::joinChannel(const std::string &channel)
@@ -806,37 +435,6 @@ void ChatHandler::joinChannel(const std::string &channel)
     }
 }
 
-void ChatHandler::processJoinChannel(Net::MessageIn &msg)
-{
-    if (!chatWindow)
-        return;
-
-    const std::string channel = msg.readString(24, "channel name");
-    int flag = msg.readUInt8("flag");
-
-    if (channel.size() < 2)
-        return;
-    switch (flag)
-    {
-        case 0:
-        default:
-            chatWindow->channelChatLog(channel,
-                // TRANSLATORS: chat message
-                strprintf(_("Can't open channel. Channel "
-                "%s is not exists."), channel.c_str()),
-                ChatMsgType::BY_SERVER,
-                IgnoreRecord_false,
-                TryRemoveColors_false);
-            break;
-
-        case 1:
-        case 2:
-            chatWindow->addChannelTab(std::string("#").append(
-                channel.substr(1)), false);
-            break;
-    }
-}
-
 void ChatHandler::partChannel(const std::string &channel)
 {
     if (serverFeatures->haveJoinChannel())
@@ -844,91 +442,6 @@ void ChatHandler::partChannel(const std::string &channel)
         createOutPacket(CMSG_CHAT_PART_CHANNEL);
         outMsg.writeString(channel, 24, "channel name");
     }
-}
-
-void ChatHandler::processWhisperContinue(const std::string &nick,
-                                         std::string chatMsg)
-{
-    // ignoring future whisper messages
-    if (chatMsg.find("\302\202G") == 0 || chatMsg.find("\302\202A") == 0)
-    {
-        BLOCK_END("ChatHandler::processWhisper")
-        return;
-    }
-    // remove first unicode space if this is may be whisper command.
-    if (chatMsg.find("\302\202!") == 0)
-        chatMsg = chatMsg.substr(2);
-
-    if (nick != "Server")
-    {
-        if (player_relations.hasPermission(nick, PlayerRelation::WHISPER))
-            chatWindow->addWhisper(nick, chatMsg);
-    }
-    else if (localChatTab)
-    {
-        localChatTab->chatLog(chatMsg, ChatMsgType::BY_SERVER);
-    }
-    BLOCK_END("ChatHandler::processWhisper")
-}
-
-void ChatHandler::processBeingChat(Net::MessageIn &msg)
-{
-    if (!actorManager)
-        return;
-
-    BLOCK_START("ChatHandler::processBeingChat")
-    int chatMsgLength = msg.readInt16("len") - 8;
-    Being *const being = actorManager->findBeing(msg.readBeingId("being id"));
-
-    if (chatMsgLength <= 0)
-    {
-        BLOCK_END("ChatHandler::processBeingChat")
-        return;
-    }
-
-    std::string chatMsg = msg.readRawString(chatMsgLength, "message");
-
-    if (being && being->getType() == ActorType::Player)
-        being->setTalkTime();
-
-    const size_t pos = chatMsg.find(" : ", 0);
-    std::string sender_name = ((pos == std::string::npos)
-        ? "" : chatMsg.substr(0, pos));
-
-    if (being && sender_name != being->getName()
-        && being->getType() == ActorType::Player)
-    {
-        if (!being->getName().empty())
-            sender_name = being->getName();
-    }
-    else
-    {
-        chatMsg.erase(0, pos + 3);
-    }
-
-    trim(chatMsg);
-
-    bool allow(true);
-    // We use getIgnorePlayer instead of ignoringPlayer here
-    // because ignorePlayer' side effects are triggered
-    // right below for Being::IGNORE_SPEECH_FLOAT.
-    if (player_relations.checkPermissionSilently(sender_name,
-        PlayerRelation::SPEECH_LOG) && chatWindow)
-    {
-        allow = chatWindow->resortChatLog(
-            removeColors(sender_name).append(" : ").append(chatMsg),
-            ChatMsgType::BY_OTHER,
-            GENERAL_CHANNEL,
-            IgnoreRecord_false,
-            TryRemoveColors_true);
-    }
-
-    if (allow && being && player_relations.hasPermission(sender_name,
-        PlayerRelation::SPEECH_FLOAT))
-    {
-        being->setSpeech(chatMsg, GENERAL_CHANNEL);
-    }
-    BLOCK_END("ChatHandler::processBeingChat")
 }
 
 void ChatHandler::talkPet(const std::string &restrict text,
@@ -945,205 +458,6 @@ void ChatHandler::talkPet(const std::string &restrict text,
     outMsg.writeInt16(static_cast<int16_t>(sz + 4 + 1), "len");
     outMsg.writeString(msg, static_cast<int>(sz), "message");
     outMsg.writeInt8(0, "zero byte");
-}
-
-void ChatHandler::processChatRoomCreateAck(Net::MessageIn &msg)
-{
-    const int result = msg.readUInt8("flag");
-    switch (result)
-    {
-        case 0:
-        {
-            PlayerInfo::setRoomName(mChatRoom);
-            chatWindow->joinRoom(true);
-            ChatObject *const obj = new ChatObject;
-            obj->ownerId = localPlayer->getId();
-            obj->chatId = 0;
-            obj->maxUsers = 1000;
-            obj->currentUsers = 1;
-            obj->type = 1;
-            obj->title = mChatRoom;
-            obj->update();
-            localPlayer->setChat(obj);
-            break;
-        }
-        case 1:
-            NotifyManager::notify(NotifyTypes::ROOM_LIMIT_EXCEEDED);
-            break;
-        case 2:
-            NotifyManager::notify(NotifyTypes::ROOM_ALREADY_EXISTS);
-            break;
-        default:
-            UNIMPLIMENTEDPACKET;
-            break;
-    }
-    mChatRoom.clear();
-}
-
-void ChatHandler::processChatRoomDestroy(Net::MessageIn &msg)
-{
-    const int chatId = msg.readInt32("chat id");
-    actorManager->removeRoom(chatId);
-}
-
-void ChatHandler::processChatRoomJoinFailed(Net::MessageIn &msg)
-{
-    const int result = msg.readUInt8("flag");
-    switch (result)
-    {
-        case 0:
-            NotifyManager::notify(NotifyTypes::ROOM_ERROR_FULL);
-            break;
-        case 1:
-            NotifyManager::notify(NotifyTypes::ROOM_ERROR_WRONG_PASSWORD);
-            break;
-        case 2:
-            NotifyManager::notify(NotifyTypes::ROOM_ERROR_KICKED);
-            break;
-        case 3:
-            break;
-        case 4:
-            NotifyManager::notify(NotifyTypes::ROOM_ERROR_ZENY);
-            break;
-        case 5:
-            NotifyManager::notify(NotifyTypes::ROOM_ERROR_LOW_LEVEL);
-            break;
-        case 6:
-            NotifyManager::notify(NotifyTypes::ROOM_ERROR_HIGH_LEVEL);
-            break;
-        case 7:
-            NotifyManager::notify(NotifyTypes::ROOM_ERROR_RACE);
-            break;
-        default:
-            UNIMPLIMENTEDPACKET;
-    }
-}
-
-void ChatHandler::processChatRoomAddMember(Net::MessageIn &msg)
-{
-    msg.readInt16("users");
-    const std::string name = msg.readString(24, "name");
-    if (!localChatTab)
-        return;
-    NotifyManager::notify(NotifyTypes::ROOM_JOINED, name);
-}
-
-void ChatHandler::processChatRoomSettings(Net::MessageIn &msg)
-{
-    const int sz = msg.readInt16("len") - 17;
-    const BeingId ownerId = msg.readBeingId("owner id");
-    const int chatId = msg.readInt32("chat id");
-    const uint16_t limit = msg.readInt16("limit");
-    msg.readInt16("users");
-    const uint8_t type = msg.readUInt8("type");
-    const std::string &title = msg.readString(sz, "title");
-    ChatObject *const chat = localPlayer->getChat();
-    if (chat && chat->chatId == chatId)
-    {
-        chat->ownerId = ownerId;
-        chat->maxUsers = limit;
-        chat->type = type;
-        if (chat->title != title)
-        {
-            chat->title = title;
-            actorManager->updateRoom(chat);
-            chatWindow->joinRoom(true);
-        }
-    }
-}
-
-void ChatHandler::processChatRoomRoleChange(Net::MessageIn &msg)
-{
-    const int role = msg.readInt32("role");
-    const std::string name = msg.readString(24, "name");
-    switch (role)
-    {
-        case 0:
-            NotifyManager::notify(NotifyTypes::ROOM_ROLE_OWNER, name);
-            break;
-        case 1:
-            // dont show normal role
-            break;
-        default:
-            UNIMPLIMENTEDPACKET;
-            break;
-    }
-}
-
-void ChatHandler::processMVPItem(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    msg.readInt16("item id");
-}
-
-void ChatHandler::processMVPExp(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    msg.readInt32("exo");
-}
-
-void ChatHandler::processMVPNoItem(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-}
-
-void ChatHandler::processMannerMessage(Net::MessageIn &msg)
-{
-    const int result = msg.readInt32("type");
-    switch (result)
-    {
-        case 0:
-            NotifyManager::notify(NotifyTypes::MANNER_CHANGED);
-            break;
-        case 5:
-            break;
-        default:
-            UNIMPLIMENTEDPACKET;
-            break;
-    }
-}
-
-void ChatHandler::processChatSilence(Net::MessageIn &msg)
-{
-    const int result = msg.readUInt8("type");
-    const std::string name = msg.readString(24, "gm name");
-
-    switch (result)
-    {
-        case 0:
-            NotifyManager::notify(NotifyTypes::MANNER_POSITIVE_POINTS, name);
-            break;
-        case 1:
-            NotifyManager::notify(NotifyTypes::MANNER_NEGATIVE_POINTS, name);
-            break;
-        default:
-            UNIMPLIMENTEDPACKET;
-            break;
-    }
-}
-
-void ChatHandler::processChatTalkieBox(Net::MessageIn &msg)
-{
-    msg.readBeingId("being id");
-    const std::string message = msg.readString(80, "message");
-    localChatTab->chatLog(message, ChatMsgType::BY_SERVER);
-}
-
-void ChatHandler::processBattleChatMessage(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    const int sz = msg.readInt16("len") - 24 - 8;
-    msg.readBeingId("account id");
-    msg.readString(24, "nick");
-    msg.readString(sz, "message");
-}
-
-void ChatHandler::processScriptMessage(Net::MessageIn &msg)
-{
-    const int sz = msg.readInt16("len") - 8;
-    msg.readBeingId("being id");
-    const std::string message = msg.readString(sz, "message");
-    localChatTab->chatLog(message, ChatMsgType::BY_SERVER);
 }
 
 void ChatHandler::leaveChatRoom() const

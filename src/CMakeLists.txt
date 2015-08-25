@@ -1357,6 +1357,8 @@ SET(SRCS_EVOL
     net/ea/charserverrecv.h
     net/ea/chathandler.cpp
     net/ea/chathandler.h
+    net/ea/chatrecv.cpp
+    net/ea/chatrecv.h
     net/ea/eaprotocol.h
     net/ea/equipbackend.h
     net/ea/gamehandler.cpp
@@ -1405,6 +1407,8 @@ SET(SRCS_TMWA
     net/tmwa/charserverrecv.h
     net/tmwa/chathandler.cpp
     net/tmwa/chathandler.h
+    net/tmwa/chatrecv.cpp
+    net/tmwa/chatrecv.h
     net/tmwa/gamehandler.cpp
     net/tmwa/gamehandler.h
     net/tmwa/generalhandler.cpp
@@ -1565,6 +1569,8 @@ SET(SRCS_EATHENA
     net/eathena/charserverrecv.h
     net/eathena/chathandler.cpp
     net/eathena/chathandler.h
+    net/eathena/chatrecv.cpp
+    net/eathena/chatrecv.h
     net/eathena/elementalhandler.cpp
     net/eathena/elementalhandler.h
     net/eathena/familyhandler.cpp

@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_EA_CHATHANDLER_H
-#define NET_EA_CHATHANDLER_H
+#ifndef NET_EA_CHATRECV_H
+#define NET_EA_CHATRECV_H
 
 #include "net/chathandler.h"
 
@@ -34,22 +34,23 @@ namespace Net
 
 namespace Ea
 {
+    typedef std::queue<std::string> WhisperQueue;
 
-typedef std::queue<std::string> WhisperQueue;
+    namespace ChatRecv
+    {
+        void processMVPEffect(Net::MessageIn &msg);
+        void processIgnoreAllResponse(Net::MessageIn &msg);
+        void processWhisperResponseContinue(Net::MessageIn &msg,
+                                            const uint8_t type);
+        std::string getPopLastWhisperNick();
+        std::string getLastWhisperNick();
 
-class ChatHandler notfinal : public Net::ChatHandler
-{
-    public:
-        ChatHandler();
-
-        A_DELETE_COPY(ChatHandler)
-
-        void me(const std::string &restrict text,
-                const std::string &restrict channel) const override final;
-
-        void clear() override final;
-};
-
+        extern WhisperQueue mSentWhispers;
+        extern int mMotdTime;
+        extern bool mShowAllLang;
+        extern bool mShowMotd;
+        extern bool mSkipping;
+    }  // namespace ChatRecv
 }  // namespace Ea
 
-#endif  // NET_EA_CHATHANDLER_H
+#endif  // NET_EA_CHATRECV_H
