@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_EATHENA_FAMILYHANDLER_H
-#define NET_EATHENA_FAMILYHANDLER_H
+#ifndef NET_EATHENA_FAMILYRECV_H
+#define NET_EATHENA_FAMILYRECV_H
 
 #ifdef EATHENA_SUPPORT
 
@@ -29,22 +29,17 @@
 
 namespace EAthena
 {
-class FamilyHandler final : public MessageHandler,
-                            public Net::FamilyHandler
-{
-    public:
-        FamilyHandler();
+    namespace FamilyRecv
+    {
+        extern int mParent1;
+        extern int mParent2;
 
-        A_DELETE_COPY(FamilyHandler)
-
-        void handleMessage(Net::MessageIn &msg) override final;
-
-        void askForChild(const Being *const being) override final;
-
-        void askForChildReply(const bool accept) override final;
-};
-
+        void processAskForChild(Net::MessageIn &msg);
+        void processCallPartner(Net::MessageIn &msg);
+        void processDivorced(Net::MessageIn &msg);
+        void processAskForChildReply(Net::MessageIn &msg);
+    }  // namespace FamilyRecv
 }  // namespace EAthena
 
 #endif  // EATHENA_SUPPORT
-#endif  // NET_EATHENA_FAMILYHANDLER_H
+#endif  // NET_EATHENA_FAMILYRECV_H

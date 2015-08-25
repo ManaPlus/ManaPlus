@@ -1423,6 +1423,8 @@ manaplus_SOURCES += gui/windows/bankwindow.cpp \
 	      net/eathena/elementalrecv.h \
 	      net/eathena/familyhandler.cpp \
 	      net/eathena/familyhandler.h \
+	      net/eathena/familyrecv.cpp \
+	      net/eathena/familyrecv.h \
 	      net/eathena/friendshandler.cpp \
 	      net/eathena/friendshandler.h \
 	      net/eathena/gamehandler.cpp \

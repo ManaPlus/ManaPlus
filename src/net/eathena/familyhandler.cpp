@@ -24,6 +24,7 @@
 
 #include "being/being.h"
 
+#include "net/eathena/familyrecv.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
@@ -34,14 +35,11 @@ extern Net::FamilyHandler *familyHandler;
 namespace EAthena
 {
 
-int FamilyHandler::mParent1 = 0;
-int FamilyHandler::mParent2 = 0;
-
 FamilyHandler::FamilyHandler() :
     MessageHandler()
 {
-    mParent1 = 0;
-    mParent2 = 0;
+    FamilyRecv::mParent1 = 0;
+    FamilyRecv::mParent2 = 0;
 
     static const uint16_t _messages[] =
     {
@@ -60,19 +58,19 @@ void FamilyHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_FAMILY_ASK_FOR_CHILD:
-            processAskForChild(msg);
+            FamilyRecv::processAskForChild(msg);
             break;
 
         case SMSG_FAMILY_CALL_PARTNER:
-            processCallPartner(msg);
+            FamilyRecv::processCallPartner(msg);
             break;
 
         case SMSG_FAMILY_DIVORCED:
-            processDivorced(msg);
+            FamilyRecv::processDivorced(msg);
             break;
 
         case SMSG_FAMILY_ASK_FOR_CHILD_REPLY:
-            processAskForChildReply(msg);
+            FamilyRecv::processAskForChildReply(msg);
             break;
 
         default:
@@ -89,38 +87,12 @@ void FamilyHandler::askForChild(const Being *const being)
     outMsg.writeBeingId(being->getId(), "account id");
 }
 
-void FamilyHandler::processAskForChild(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    msg.readInt32("account id who ask");
-    msg.readInt32("acoount id for other parent");
-    msg.readString(24, "name who ask");
-}
-
-void FamilyHandler::processCallPartner(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    msg.readString(24, "name");
-}
-
 void FamilyHandler::askForChildReply(const bool accept)
 {
     createOutPacket(CMSG_FAMILY_ASK_FOR_CHILD_REPLY);
-    outMsg.writeInt32(mParent1, "parent1");
-    outMsg.writeInt32(mParent2, "parent2");
+    outMsg.writeInt32(FamilyRecv::mParent1, "parent1");
+    outMsg.writeInt32(FamilyRecv::mParent2, "parent2");
     outMsg.writeInt32(accept ? 0: 1, "result");
-}
-
-void FamilyHandler::processDivorced(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    msg.readString(24, "name");
-}
-
-void FamilyHandler::processAskForChildReply(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    msg.readInt32("type");
 }
 
 }  // namespace EAthena
