@@ -64,14 +64,7 @@ class CharServerHandler final : public MessageHandler,
 
         void connect() override final;
 
-        void processCharLogin(Net::MessageIn &msg);
-
-        void processCharMapInfo(Net::MessageIn &msg);
-
-        void processChangeMapServer(Net::MessageIn &msg);
-
-        bool isNeedCreatePin() const override final A_WARN_UNUSED
-        { return mNeedCreatePin; }
+        bool isNeedCreatePin() const override final A_WARN_UNUSED;
 
         void setNewPincode(const std::string &pin) override final;
 
@@ -85,47 +78,9 @@ class CharServerHandler final : public MessageHandler,
 
         void changeSlot(const int oldSlot, const int newSlot) override final;
 
-        void readPlayerData(Net::MessageIn &msg,
-                            Net::Character *const character)
-                            const override final;
-
         void ping() const override final;
 
         unsigned int hatSprite() const override final A_WARN_UNUSED;
-
-    protected:
-        static void processPincodeStatus(Net::MessageIn &msg);
-
-        static void processCharLogin2(Net::MessageIn &msg);
-
-        static void processCharCreate(Net::MessageIn &msg);
-
-        static void processCharCheckRename(Net::MessageIn &msg);
-
-        static void processCharRename(Net::MessageIn &msg);
-
-        static void processCharChangeSlot(Net::MessageIn &msg);
-
-        static void processCharDeleteFailed(Net::MessageIn &msg);
-
-        static void processCharCaptchaNotSupported(Net::MessageIn &msg);
-
-        static void processCharDelete2Ack(Net::MessageIn &msg);
-
-        static void processCharDelete2AcceptActual(Net::MessageIn &msg);
-
-        static void processCharDelete2CancelAck(Net::MessageIn &msg);
-
-        static void processCharCharacters(Net::MessageIn &msg);
-
-        static void processCharBanCharList(Net::MessageIn &msg);
-
-    private:
-        static std::string mNewName;
-        static uint32_t mPinSeed;
-        static BeingId mPinAccountId;
-        static BeingId mRenameId;
-        static bool mNeedCreatePin;
 };
 
 }  // namespace EAthena

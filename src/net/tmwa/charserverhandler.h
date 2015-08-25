@@ -64,12 +64,6 @@ class CharServerHandler final : public MessageHandler,
 
         void connect() override final;
 
-        void processCharLogin(Net::MessageIn &msg);
-
-        void processCharMapInfo(Net::MessageIn &msg);
-
-        void processChangeMapServer(Net::MessageIn &msg);
-
         bool isNeedCreatePin() const override final
         { return false; }
 
@@ -86,18 +80,9 @@ class CharServerHandler final : public MessageHandler,
 
         void changeSlot(const int oldSlot, const int newSlot) override final;
 
-        void readPlayerData(Net::MessageIn &msg,
-                            Net::Character *const character)
-                            const override final;
-
         void ping() const override final;
 
         unsigned int hatSprite() const override final A_WARN_UNUSED;
-
-    protected:
-        static void processCharCreate(Net::MessageIn &msg);
-
-        static void processCharDeleteFailed(Net::MessageIn &msg);
 };
 
 }  // namespace TmwAthena

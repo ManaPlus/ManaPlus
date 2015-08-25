@@ -1195,6 +1195,8 @@ manaplus_SOURCES += main.cpp \
 	      net/ea/buysellrecv.h \
 	      net/ea/charserverhandler.cpp \
 	      net/ea/charserverhandler.h \
+	      net/ea/charserverrecv.cpp \
+	      net/ea/charserverrecv.h \
 	      net/ea/chathandler.cpp \
 	      net/ea/chathandler.h \
 	      net/ea/eaprotocol.h \
@@ -1242,6 +1244,8 @@ manaplus_SOURCES += \
 	      net/tmwa/buysellrecv.h \
 	      net/tmwa/charserverhandler.cpp \
 	      net/tmwa/charserverhandler.h \
+	      net/tmwa/charserverrecv.cpp \
+	      net/tmwa/charserverrecv.h \
 	      net/tmwa/chathandler.cpp \
 	      net/tmwa/chathandler.h \
 	      net/tmwa/gamehandler.cpp \
@@ -1403,6 +1407,8 @@ manaplus_SOURCES += gui/windows/bankwindow.cpp \
 	      net/eathena/buysellrecv.h \
 	      net/eathena/charserverhandler.cpp \
 	      net/eathena/charserverhandler.h \
+	      net/eathena/charserverrecv.cpp \
+	      net/eathena/charserverrecv.h \
 	      net/eathena/chathandler.cpp \
 	      net/eathena/chathandler.h \
 	      net/eathena/elementalhandler.cpp \

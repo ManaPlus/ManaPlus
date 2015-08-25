@@ -20,41 +20,24 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_EA_CHARSERVERHANDLER_H
-#define NET_EA_CHARSERVERHANDLER_H
+#ifndef NET_EA_CHARSERVERRECV_H
+#define NET_EA_CHARSERVERRECV_H
 
 #include "net/charserverhandler.h"
 
+namespace Net
+{
+    class MessageIn;
+}
+
 namespace Ea
 {
-
-/**
- * Deals with incoming messages from the character server.
- */
-class CharServerHandler notfinal : public Net::CharServerHandler
-{
-    public:
-        A_DELETE_COPY(CharServerHandler)
-
-        void setCharSelectDialog(CharSelectDialog *const window)
-                                 override final;
-
-        void requestCharacters() override final;
-
-        unsigned int baseSprite() const override final A_WARN_UNUSED;
-
-        unsigned int hairSprite() const override final A_WARN_UNUSED;
-
-        unsigned int maxSprite() const override final A_WARN_UNUSED;
-
-        virtual void connect() = 0;
-
-        void clear() override final;
-
-    protected:
-        CharServerHandler();
-};
-
+    namespace CharServerRecv
+    {
+        void processCharLoginError(Net::MessageIn &msg);
+        void processCharCreateFailed(Net::MessageIn &msg);
+        void processCharDelete(Net::MessageIn &msg);
+    }  // namespace CharServerRecv
 }  // namespace Ea
 
-#endif  // NET_EA_CHARSERVERHANDLER_H
+#endif  // NET_EA_CHARSERVERRECV_H

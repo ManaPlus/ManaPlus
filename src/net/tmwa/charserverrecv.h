@@ -20,51 +20,25 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_TMWA_NETWORK_H
-#define NET_TMWA_NETWORK_H
+#ifndef NET_TMWA_CHARSERVERRECV_H
+#define NET_TMWA_CHARSERVERRECV_H
 
-#include "net/ea/network.h"
+#include "net/ea/charserverhandler.h"
 
-/**
- * Protocol version, reported to the eAthena char and mapserver who can adjust
- * the protocol accordingly.
- */
-#define CLIENT_PROTOCOL_VERSION      12
-#define CLIENT_TMW_PROTOCOL_VERSION  5
+#include "net/tmwa/messagehandler.h"
 
 namespace TmwAthena
 {
-class MessageHandler;
-
-class Network final : public Ea::Network
-{
-    public:
-        Network();
-
-        A_DELETE_COPY(Network)
-
-        ~Network();
-
-        void registerHandler(MessageHandler *const handler);
-
-        void unregisterHandler(MessageHandler *const handler);
-
-        void clearHandlers();
-
-        bool messageReady();
-
-        void dispatchMessages();
-
-        static Network *mInstance;
-
-    protected:
-        friend class MessageOut;
-
-        static Network *instance() A_WARN_UNUSED;
-
-        MessageHandler **mMessageHandlers;
-};
-
+    namespace CharServerRecv
+    {
+        void readPlayerData(Net::MessageIn &msg,
+                            Net::Character *const character);
+        void processCharCreate(Net::MessageIn &msg);
+        void processCharDeleteFailed(Net::MessageIn &msg);
+        void processCharLogin(Net::MessageIn &msg);
+        void processCharMapInfo(Net::MessageIn &msg);
+        void processChangeMapServer(Net::MessageIn &msg);
+    }  // namespace CharServerRecv
 }  // namespace TmwAthena
 
-#endif  // NET_TMWA_NETWORK_H
+#endif  // NET_TMWA_CHARSERVERRECV_H
