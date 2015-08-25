@@ -48,13 +48,6 @@ class BankHandler final : public MessageHandler,
         void open() const override final;
 
         void close() const override final;
-
-    protected:
-        static void processBankStatus(Net::MessageIn &msg);
-
-        static void processBankDeposit(Net::MessageIn &msg);
-
-        static void processBankWithdraw(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
