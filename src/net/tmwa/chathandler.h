@@ -61,9 +61,6 @@ class ChatHandler final : public MessageHandler, public Ea::ChatHandler
 
         void unIgnoreAll() const override final;
 
-        static void processRaw(MessageOut &restrict outMsg,
-                               const std::string &restrict line);
-
         void createChatRoom(const std::string &title,
                             const std::string &password,
                             const int limit,
@@ -114,6 +111,9 @@ class ChatHandler final : public MessageHandler, public Ea::ChatHandler
         static void processBeingChat(Net::MessageIn &msg);
 
         static void processScriptMessage(Net::MessageIn &msg);
+
+        static void processRaw(MessageOut &restrict outMsg,
+                               const std::string &restrict line);
 };
 
 }  // namespace TmwAthena

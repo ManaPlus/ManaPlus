@@ -42,6 +42,7 @@ class ItemHandler notfinal
 
         virtual ~ItemHandler();
 
+    protected:
         static void processItemRemove(Net::MessageIn &msg);
 };
 

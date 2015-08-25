@@ -51,8 +51,6 @@ class PetHandler final :  public MessageHandler, public Net::PetHandler
 
         void sendPetMessage(const int data) const override final;
 
-        void processPetMessage(Net::MessageIn &msg);
-
         void setName(const std::string &name) const override final;
 
         void requestStatus() const override final;
@@ -70,6 +68,8 @@ class PetHandler final :  public MessageHandler, public Net::PetHandler
         void startAi(const bool start) const override final;
 
     protected:
+        void processPetMessage(Net::MessageIn &msg);
+
         static void processPetRoulette(Net::MessageIn &msg);
 
         static void processEggsList(Net::MessageIn &msg);

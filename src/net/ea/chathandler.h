@@ -47,16 +47,16 @@ class ChatHandler notfinal : public Net::ChatHandler
         void me(const std::string &restrict text,
                 const std::string &restrict channel) const override final;
 
+        void clear() override final;
+
+    protected:
         static void processMVPEffect(Net::MessageIn &msg);
 
         static void processIgnoreAllResponse(Net::MessageIn &msg);
 
-        void clear() override final;
-
         static void processWhisperResponseContinue(Net::MessageIn &msg,
                                                    const uint8_t type);
 
-    protected:
         static std::string getPopLastWhisperNick();
 
         static std::string getLastWhisperNick();

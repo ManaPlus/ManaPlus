@@ -52,17 +52,17 @@ class GameHandler notfinal : public Net::GameHandler
         bool canUseMagicBar() const override final A_WARN_UNUSED
         { return true; }
 
+        void clear() override final;
+
+        void initEngines() const override final;
+
+    protected:
         static void processWhoAnswer(Net::MessageIn &msg);
 
         static void processCharSwitchResponse(Net::MessageIn &msg);
 
         static void processMapQuitResponse(Net::MessageIn &msg);
 
-        void clear() override final;
-
-        void initEngines() const override final;
-
-    protected:
         static std::string mMap;
         static BeingId mCharID;  // < Saved for map-server switching
 };

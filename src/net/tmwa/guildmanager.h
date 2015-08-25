@@ -46,8 +46,6 @@ class GuildManager final
 
         static void send(const std::string &msg);
 
-        bool processGuildMessage(const std::string &msg);
-
         void getNames(StringVect &names) const;
 
         void requestGuildInfo();
@@ -83,6 +81,8 @@ class GuildManager final
         { return mHavePower; }
 
         ChatTab *getTab();
+
+        bool processGuildMessage(const std::string &msg);
 
     private:
         bool process(std::string msg);

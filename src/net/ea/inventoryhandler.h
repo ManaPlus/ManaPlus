@@ -73,6 +73,16 @@ class InventoryHandler notfinal : public Net::InventoryHandler
 
         static int getSlot(const int eAthenaSlot) A_WARN_UNUSED;
 
+        void destroyStorage() override final;
+
+        void forgotStorage() override final;
+
+        Inventory *getStorage() const override final
+        { return mStorage; }
+
+    protected:
+        InventoryHandler();
+
         static void processPlayerInventoryRemove(Net::MessageIn &msg);
 
         static void processPlayerInventoryUse(Net::MessageIn &msg);
@@ -86,16 +96,6 @@ class InventoryHandler notfinal : public Net::InventoryHandler
         static void processPlayerAttackRange(Net::MessageIn &msg);
 
         static void processPlayerArrowEquip(Net::MessageIn &msg);
-
-        void destroyStorage() override final;
-
-        void forgotStorage() override final;
-
-        Inventory *getStorage() const override final
-        { return mStorage; }
-
-    protected:
-        InventoryHandler();
 
         static EquipBackend mEquips;
         static InventoryItems mInventoryItems;

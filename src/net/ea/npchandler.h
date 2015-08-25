@@ -42,6 +42,9 @@ class NpcHandler notfinal : public Net::NpcHandler
     public:
         A_DELETE_COPY(NpcHandler)
 
+    protected:
+        NpcHandler();
+
         static void processNpcChoice(Net::MessageIn &msg);
 
         static void processNpcMessage(Net::MessageIn &msg);
@@ -57,9 +60,6 @@ class NpcHandler notfinal : public Net::NpcHandler
         static void processNpcCommand(Net::MessageIn &msg);
 
         static void processChangeTitle(Net::MessageIn &msg);
-
-    protected:
-        NpcHandler();
 
         static NpcDialog *mDialog;
 

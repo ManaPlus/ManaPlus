@@ -38,12 +38,12 @@ class QuestHandler final : public MessageHandler,
 
         void handleMessage(Net::MessageIn &msg) override final;
 
+        void setQeustActiveState(const int questId,
+                                 const bool active) const override final;
+    protected:
         static void processSetQuestVar(Net::MessageIn &msg);
 
         static void processPlayerQuests(Net::MessageIn &msg);
-
-        void setQeustActiveState(const int questId,
-                                 const bool active) const override final;
 };
 
 }  // namespace TmwAthena

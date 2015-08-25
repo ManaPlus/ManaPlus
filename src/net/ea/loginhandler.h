@@ -81,16 +81,16 @@ class LoginHandler notfinal : public Net::LoginHandler
                                const std::string &password)
                                const override final;
 
+        void loginOrRegister(LoginData *const data) const override final;
+
+    protected:
+        LoginHandler();
+
         static void processUpdateHost(Net::MessageIn &msg);
 
         static void processLoginData(Net::MessageIn &msg);
 
         static void processLoginError(Net::MessageIn &msg);
-
-        void loginOrRegister(LoginData *const data) const override final;
-
-    protected:
-        LoginHandler();
 
         virtual void sendLoginRegister(const std::string &username,
                                        const std::string &password,
