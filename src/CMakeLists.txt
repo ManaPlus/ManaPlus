@@ -1573,6 +1573,8 @@ SET(SRCS_EATHENA
     net/eathena/chatrecv.h
     net/eathena/elementalhandler.cpp
     net/eathena/elementalhandler.h
+    net/eathena/elementalrecv.cpp
+    net/eathena/elementalrecv.h
     net/eathena/familyhandler.cpp
     net/eathena/familyhandler.h
     net/eathena/friendshandler.cpp

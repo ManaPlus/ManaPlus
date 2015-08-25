@@ -36,11 +36,6 @@ class ElementalHandler final : public MessageHandler,
         A_DELETE_COPY(ElementalHandler)
 
         void handleMessage(Net::MessageIn &msg) override final;
-
-    protected:
-        static void processElementalUpdateStatus(Net::MessageIn &msg);
-
-        static void processElementalInfo(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

@@ -18,48 +18,20 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "net/eathena/elementalhandler.h"
+#ifndef NET_EATHENA_ELEMENTALRECV_H
+#define NET_EATHENA_ELEMENTALRECV_H
 
-#include "logger.h"
+#include "net/elementalhandler.h"
 
-#include "net/eathena/elementalrecv.h"
-#include "net/eathena/protocol.h"
-
-#include "debug.h"
-
-extern Net::ElementalHandler *elementalHandler;
+#include "net/eathena/messagehandler.h"
 
 namespace EAthena
 {
-
-ElementalHandler::ElementalHandler() :
-    MessageHandler()
-{
-    static const uint16_t _messages[] =
+    namespace ElementalRecv
     {
-        SMSG_ELEMENTAL_UPDATE_STATUS,
-        SMSG_ELEMENTAL_INFO,
-        0
-    };
-    handledMessages = _messages;
-    elementalHandler = this;
-}
-
-void ElementalHandler::handleMessage(Net::MessageIn &msg)
-{
-    switch (msg.getId())
-    {
-        case SMSG_ELEMENTAL_UPDATE_STATUS:
-            ElementalRecv::processElementalUpdateStatus(msg);
-            break;
-
-        case SMSG_ELEMENTAL_INFO:
-            ElementalRecv::processElementalInfo(msg);
-            break;
-
-        default:
-            break;
-    }
-}
-
+        void processElementalUpdateStatus(Net::MessageIn &msg);
+        void processElementalInfo(Net::MessageIn &msg);
+    }  // namespace ElementalRecv
 }  // namespace EAthena
+
+#endif  // NET_EATHENA_ELEMENTALRECV_H

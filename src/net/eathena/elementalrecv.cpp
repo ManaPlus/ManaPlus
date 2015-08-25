@@ -18,48 +18,32 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "net/eathena/elementalhandler.h"
+#include "net/eathena/elementalrecv.h"
 
 #include "logger.h"
 
-#include "net/eathena/elementalrecv.h"
 #include "net/eathena/protocol.h"
 
 #include "debug.h"
 
-extern Net::ElementalHandler *elementalHandler;
-
 namespace EAthena
 {
 
-ElementalHandler::ElementalHandler() :
-    MessageHandler()
+void ElementalRecv::processElementalUpdateStatus(Net::MessageIn &msg)
 {
-    static const uint16_t _messages[] =
-    {
-        SMSG_ELEMENTAL_UPDATE_STATUS,
-        SMSG_ELEMENTAL_INFO,
-        0
-    };
-    handledMessages = _messages;
-    elementalHandler = this;
+    UNIMPLIMENTEDPACKET;
+    msg.readInt16("type");
+    msg.readInt32("value");
 }
 
-void ElementalHandler::handleMessage(Net::MessageIn &msg)
+void ElementalRecv::processElementalInfo(Net::MessageIn &msg)
 {
-    switch (msg.getId())
-    {
-        case SMSG_ELEMENTAL_UPDATE_STATUS:
-            ElementalRecv::processElementalUpdateStatus(msg);
-            break;
-
-        case SMSG_ELEMENTAL_INFO:
-            ElementalRecv::processElementalInfo(msg);
-            break;
-
-        default:
-            break;
-    }
+    UNIMPLIMENTEDPACKET;
+    msg.readInt32("elemental id");
+    msg.readInt32("hp");
+    msg.readInt32("max hp");
+    msg.readInt32("sp");
+    msg.readInt32("max sp");
 }
 
 }  // namespace EAthena
