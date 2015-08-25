@@ -1,6 +1,7 @@
 flagsdir = $(pkgdatadir)/data/graphics/flags
 
 flags_DATA =				\
+	ca.png			\
 	cn.png			\
 	cz.png			\
 	de.png			\

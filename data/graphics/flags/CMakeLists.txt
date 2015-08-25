@@ -1,4 +1,5 @@
 SET(FILES
+    ca.png
     cn.png
     cz.png
     de.png

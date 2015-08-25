@@ -37,16 +37,20 @@ struct Language final
     std::string icon;
 };
 
-const int langs_count = 18;
+const int langs_count = 19;
 
 const Language LANG_NAME[langs_count] =
 {
     // TRANSLATORS: language
     {N_("(default)"), "", ""},
     // TRANSLATORS: language
+    {N_("Catalan"), "ca_ES", "ca.png"},
+    // TRANSLATORS: language
     {N_("Chinese (China)"), "zh_CN", "cn.png"},
     // TRANSLATORS: language
     {N_("Czech"), "cs_CZ", "cz.png"},
+    // TRANSLATORS: language
+    {N_("Dutch (Belgium/Flemish)"), "nl_BE", "nl_BE.png"},
     // TRANSLATORS: language
     {N_("English"), "C", "en.png"},
     // TRANSLATORS: language
@@ -60,11 +64,9 @@ const Language LANG_NAME[langs_count] =
     // TRANSLATORS: language
     {N_("Italian"), "it_IT", "it.png"},
     // TRANSLATORS: language
-    {N_("Polish"), "pl_PL", "pl.png"},
-    // TRANSLATORS: language
     {N_("Japanese"), "ja_JP", "jp.png"},
     // TRANSLATORS: language
-    {N_("Dutch (Belgium/Flemish)"), "nl_BE", "nl_BE.png"},
+    {N_("Polish"), "pl_PL", "pl.png"},
     // TRANSLATORS: language
     {N_("Portuguese"), "pt_PT", "pt.png"},
     // TRANSLATORS: language
