@@ -18,7 +18,8 @@ flags_DATA =				\
 	pt.png			\
 	ru.png			\
 	se.png			\
-	tr.png
+	tr.png			\
+	ua.png
 
 EXTRA_DIST =				\
 	$(flags_DATA)			\
