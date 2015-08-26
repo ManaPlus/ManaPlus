@@ -34,6 +34,9 @@
 
 #include "gui/widgets/tabs/chat/guildtab.h"
 
+#include "net/ea/guildrecv.h"
+
+#include "net/tmwa/guildrecv.h"
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
 
@@ -96,107 +99,107 @@ void GuildHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_GUILD_CREATE_RESPONSE:
-            processGuildCreateResponse(msg);
+            Ea::GuildRecv::processGuildCreateResponse(msg);
             break;
 
         case SMSG_GUILD_POSITION_INFO:
-            processGuildPositionInfo(msg);
+            GuildRecv::processGuildPositionInfo(msg);
             break;
 
         case SMSG_GUILD_MEMBER_LOGIN:
-            processGuildMemberLogin(msg);
+            GuildRecv::processGuildMemberLogin(msg);
             break;
 
         case SMSG_GUILD_MASTER_OR_MEMBER:
-            processGuildMasterOrMember(msg);
+            Ea::GuildRecv::processGuildMasterOrMember(msg);
             break;
 
         case SMSG_GUILD_BASIC_INFO:
-            processGuildBasicInfo(msg);
+            Ea::GuildRecv::processGuildBasicInfo(msg);
             break;
 
         case SMSG_GUILD_ALIANCE_INFO:
-            processGuildAlianceInfo(msg);
+            Ea::GuildRecv::processGuildAlianceInfo(msg);
             break;
 
         case SMSG_GUILD_MEMBER_LIST:
-            processGuildMemberList(msg);
+            Ea::GuildRecv::processGuildMemberList(msg);
             break;
 
         case SMSG_GUILD_POS_NAME_LIST:
-            processGuildPosNameList(msg);
+            Ea::GuildRecv::processGuildPosNameList(msg);
             break;
 
         case SMSG_GUILD_POS_INFO_LIST:
-            processGuildPosInfoList(msg);
+            Ea::GuildRecv::processGuildPosInfoList(msg);
             break;
 
         case SMSG_GUILD_POSITION_CHANGED:
-            processGuildPositionChanged(msg);
+            Ea::GuildRecv::processGuildPositionChanged(msg);
             break;
 
         case SMSG_GUILD_MEMBER_POS_CHANGE:
-            processGuildMemberPosChange(msg);
+            Ea::GuildRecv::processGuildMemberPosChange(msg);
             break;
 
         case SMSG_GUILD_EMBLEM_DATA:
-            processGuildEmblemData(msg);
+            Ea::GuildRecv::processGuildEmblemData(msg);
             break;
 
         case SMSG_GUILD_SKILL_INFO:
-            processGuildSkillInfo(msg);
+            Ea::GuildRecv::processGuildSkillInfo(msg);
             break;
 
         case SMSG_GUILD_NOTICE:
-            processGuildNotice(msg);
+            Ea::GuildRecv::processGuildNotice(msg);
             break;
 
         case SMSG_GUILD_INVITE:
-            processGuildInvite(msg);
+            Ea::GuildRecv::processGuildInvite(msg);
             break;
 
         case SMSG_GUILD_INVITE_ACK:
-            processGuildInviteAck(msg);
+            Ea::GuildRecv::processGuildInviteAck(msg);
             break;
 
         case SMSG_GUILD_LEAVE:
-            processGuildLeave(msg);
+            Ea::GuildRecv::processGuildLeave(msg);
             break;
 
         case SMSG_GUILD_EXPULSION:
-            processGuildExpulsion(msg);
+            GuildRecv::processGuildExpulsion(msg);
             break;
 
         case SMSG_GUILD_EXPULSION_LIST:
-            processGuildExpulsionList(msg);
+            GuildRecv::processGuildExpulsionList(msg);
             break;
 
         case SMSG_GUILD_MESSAGE:
-            processGuildMessage(msg);
+            Ea::GuildRecv::processGuildMessage(msg);
             break;
 
         case SMSG_GUILD_SKILL_UP:
-            processGuildSkillUp(msg);
+            Ea::GuildRecv::processGuildSkillUp(msg);
             break;
 
         case SMSG_GUILD_REQ_ALLIANCE:
-            processGuildReqAlliance(msg);
+            Ea::GuildRecv::processGuildReqAlliance(msg);
             break;
 
         case SMSG_GUILD_REQ_ALLIANCE_ACK:
-            processGuildReqAllianceAck(msg);
+            Ea::GuildRecv::processGuildReqAllianceAck(msg);
             break;
 
         case SMSG_GUILD_DEL_ALLIANCE:
-            processGuildDelAlliance(msg);
+            Ea::GuildRecv::processGuildDelAlliance(msg);
             break;
 
         case SMSG_GUILD_OPPOSITION_ACK:
-            processGuildOppositionAck(msg);
+            Ea::GuildRecv::processGuildOppositionAck(msg);
             break;
 
         case SMSG_GUILD_BROKEN:
-            processGuildBroken(msg);
+            Ea::GuildRecv::processGuildBroken(msg);
             break;
 
         default:
@@ -305,7 +308,7 @@ void GuildHandler::info()
     // 3 = skill info
     // 4 = expulsion list
 
-    showBasicInfo = true;
+    Ea::GuildRecv::showBasicInfo = true;
     createOutPacket(CMSG_GUILD_REQUEST_INFO);
     outMsg.writeInt32(0, "action");  // Request basic info
 }
@@ -336,99 +339,6 @@ void GuildHandler::changeNotice(const int guildId,
 void GuildHandler::checkMaster() const
 {
     createOutPacket(CMSG_GUILD_CHECK_MASTER);
-}
-
-void GuildHandler::processGuildPositionInfo(Net::MessageIn &msg)
-{
-    const int guildId = msg.readInt32("guild id");
-    const int emblem  = msg.readInt32("emblem");
-    const int posMode = msg.readInt32("position");
-    msg.readInt32("unused");
-    msg.readUInt8("usused");
-    std::string guildName = msg.readString(24, "guild name");
-
-    PlayerInfo::setGuildPositionFlags(GuildPositionFlags::Invite);
-
-    Guild *const g = Guild::getGuild(static_cast<int16_t>(guildId));
-    if (!g)
-        return;
-
-    g->setName(guildName);
-    g->setEmblemId(emblem);
-    if (!Ea::taGuild)
-        Ea::taGuild = g;
-    if (!guildTab && chatWindow)
-    {
-        guildTab = new GuildTab(chatWindow);
-        if (config.getBoolValue("showChatHistory"))
-            guildTab->loadFromLogFile("#Guild");
-        if (localPlayer)
-            localPlayer->addGuild(Ea::taGuild);
-        guildHandler->memberList();
-    }
-
-    if (localPlayer)
-    {
-        localPlayer->setGuild(g);
-        localPlayer->setGuildName(g->getName());
-    }
-
-    logger->log("Guild position info: %d %d %d %s\n", guildId,
-                emblem, posMode, guildName.c_str());
-}
-
-void GuildHandler::processGuildMemberLogin(Net::MessageIn &msg)
-{
-    const BeingId accountId = msg.readBeingId("account id");
-    const int charId = msg.readInt32("char id");
-    const int online = msg.readInt32("flag");
-    if (Ea::taGuild)
-    {
-        GuildMember *const m = Ea::taGuild->getMember(accountId, charId);
-        if (m)
-        {
-            m->setOnline(online);
-            if (guildTab)
-                guildTab->showOnline(m->getName(), fromBool(online, Online));
-            if (socialWindow)
-                socialWindow->updateGuildCounter();
-        }
-    }
-}
-
-void GuildHandler::processGuildExpulsion(Net::MessageIn &msg)
-{
-    std::string nick;
-    if (serverFeatures->haveNewGuild())
-    {
-        nick = msg.readString(24, "name");
-        msg.readString(40, "reason");
-        msg.readString(24, "kicker name");
-    }
-    else
-    {
-        msg.readInt16("len?");
-        nick = msg.readString(24, "name?");
-        msg.skip(24, "player name");
-        msg.readString(44, "message");
-    }
-    processGuildExpulsionContinue(nick);
-}
-
-void GuildHandler::processGuildExpulsionList(Net::MessageIn &msg)
-{
-    const int length = msg.readInt16("len");
-    if (length < 4)
-        return;
-
-    const int count = (length - 4) / 88;
-
-    for (int i = 0; i < count; i++)
-    {
-        msg.readString(24, "name of expulsed");
-        msg.readString(24, "name of expluser");
-        msg.readString(24, "message");
-    }
 }
 
 void GuildHandler::requestAlliance(const Being *const being A_UNUSED) const

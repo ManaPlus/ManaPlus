@@ -19,53 +19,29 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef NET_EATHENA_GUILDRECV_H
+#define NET_EATHENA_GUILDRECV_H
+
 #include "net/ea/guildhandler.h"
 
-#include "actormanager.h"
-#include "notifymanager.h"
+#include "net/eathena/messagehandler.h"
 
-#include "being/localplayer.h"
-#include "being/playerinfo.h"
-
-#include "enums/resources/notifytypes.h"
-
-#include "gui/windows/skilldialog.h"
-#include "gui/windows/socialwindow.h"
-
-#include "net/messagein.h"
-
-#include "net/ea/guildrecv.h"
-
-#include "gui/widgets/tabs/chat/guildtab.h"
-
-#include "utils/delete2.h"
-#include "utils/gettext.h"
-#include "utils/stringutils.h"
-
-#include "debug.h"
-
-GuildTab *guildTab = nullptr;
+namespace EAthena
+{
+    namespace GuildRecv
+    {
+        void processGuildUpdateCoords(Net::MessageIn &msg);
+        void processGuildPositionInfo(Net::MessageIn &msg);
+        void processGuildMemberLogin(Net::MessageIn &msg);
+        void processGuildExpulsion(Net::MessageIn &msg);
+        void processGuildExpulsionList(Net::MessageIn &msg);
+        void processGuildEmblem(Net::MessageIn &msg);
+    }  // namespace GuildRecv
+}  // namespace EAthena
 
 namespace Ea
 {
-GuildHandler::GuildHandler()
-{
-    Ea::GuildRecv::showBasicInfo = false;
+    extern Guild *taGuild;
 }
 
-GuildHandler::~GuildHandler()
-{
-    delete2(guildTab);
-}
-
-void GuildHandler::clear() const
-{
-    taGuild = nullptr;
-}
-
-ChatTab *GuildHandler::getTab() const
-{
-    return guildTab;
-}
-
-}  // namespace Ea
+#endif  // NET_EATHENA_GUILDRECV_H

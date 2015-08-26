@@ -42,58 +42,9 @@ class GuildHandler notfinal : public Net::GuildHandler
 
         virtual ~GuildHandler();
 
-        static void processGuildCreateResponse(Net::MessageIn &msg);
-
-        static void processGuildMasterOrMember(Net::MessageIn &msg);
-
-        static void processGuildBasicInfo(Net::MessageIn &msg);
-
-        static void processGuildAlianceInfo(Net::MessageIn &msg);
-
-        static void processGuildMemberList(Net::MessageIn &msg);
-
-        static void processGuildPosNameList(Net::MessageIn &msg);
-
-        static void processGuildPosInfoList(Net::MessageIn &msg);
-
-        static void processGuildPositionChanged(Net::MessageIn &msg);
-
-        static void processGuildMemberPosChange(Net::MessageIn &msg);
-
-        static void processGuildEmblemData(Net::MessageIn &msg);
-
-        static void processGuildSkillInfo(Net::MessageIn &msg);
-
-        static void processGuildNotice(Net::MessageIn &msg);
-
-        static void processGuildInvite(Net::MessageIn &msg);
-
-        static void processGuildInviteAck(Net::MessageIn &msg);
-
-        static void processGuildLeave(Net::MessageIn &msg);
-
-        static void processGuildMessage(Net::MessageIn &msg);
-
-        static void processGuildSkillUp(Net::MessageIn &msg);
-
-        static void processGuildReqAlliance(Net::MessageIn &msg);
-
-        static void processGuildReqAllianceAck(Net::MessageIn &msg);
-
-        static void processGuildDelAlliance(Net::MessageIn &msg);
-
-        static void processGuildOppositionAck(Net::MessageIn &msg);
-
-        static void processGuildBroken(Net::MessageIn &msg);
-
-        static void processGuildExpulsionContinue(const std::string &nick);
-
         void clear() const override final;
 
         ChatTab *getTab() const override final;
-
-    protected:
-        static bool showBasicInfo;
 };
 
 extern Guild *taGuild;

@@ -91,19 +91,6 @@ class GuildHandler final : public Ea::GuildHandler, public MessageHandler
         void changeEmblem(std::string emblem) const override final;
 
         void requestEmblem(const int guildId) const override final;
-
-    protected:
-        static void processGuildUpdateCoords(Net::MessageIn &msg);
-
-        static void processGuildPositionInfo(Net::MessageIn &msg);
-
-        static void processGuildMemberLogin(Net::MessageIn &msg);
-
-        static void processGuildExpulsion(Net::MessageIn &msg);
-
-        static void processGuildExpulsionList(Net::MessageIn &msg);
-
-        static void processGuildEmblem(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
