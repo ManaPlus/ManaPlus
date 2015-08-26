@@ -32,6 +32,7 @@
 
 #include "net/serverfeatures.h"
 
+#include "net/eathena/homunculusrecv.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
@@ -69,170 +70,27 @@ void HomunculusHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_HOMUNCULUS_SKILLS:
-            processHomunculusSkills(msg);
+            HomunculusRecv::processHomunculusSkills(msg);
             break;
 
         case SMSG_HOMUNCULUS_DATA:
-            processHomunculusData(msg);
+            HomunculusRecv::processHomunculusData(msg);
             break;
 
         case SMSG_HOMUNCULUS_INFO:
-            processHomunculusInfo(msg);
+            HomunculusRecv::processHomunculusInfo(msg);
             break;
 
         case SMSG_HOMUNCULUS_SKILL_UP:
-            processHomunculusSkillUp(msg);
+            HomunculusRecv::processHomunculusSkillUp(msg);
             break;
 
         case SMSG_HOMUNCULUS_FOOD:
-            processHomunculusFood(msg);
+            HomunculusRecv::processHomunculusFood(msg);
             break;
 
         default:
             break;
-    }
-}
-
-void HomunculusHandler::processHomunculusSkills(Net::MessageIn &msg)
-{
-    if (skillDialog)
-        skillDialog->hideSkills(SkillOwner::Homunculus);
-
-    const int count = (msg.readInt16("len") - 4) / 37;
-    for (int f = 0; f < count; f ++)
-    {
-        const int skillId = msg.readInt16("skill id");
-        const SkillType::SkillType inf = static_cast<SkillType::SkillType>(
-            msg.readInt16("inf"));
-        msg.readInt16("unused");
-        const int level = msg.readInt16("skill level");
-        const int sp = msg.readInt16("sp");
-        const int range = msg.readInt16("range");
-        const std::string name = msg.readString(24, "skill name");
-        const Modifiable up = fromBool(msg.readUInt8("up flag"), Modifiable);
-        PlayerInfo::setSkillLevel(skillId, level);
-        if (skillDialog)
-        {
-            if (!skillDialog->updateSkill(skillId, range, up, inf, sp))
-            {
-                skillDialog->addSkill(SkillOwner::Homunculus,
-                    skillId, name, level, range, up, inf, sp);
-            }
-        }
-    }
-    if (skillDialog)
-        skillDialog->updateModels();
-}
-
-void HomunculusHandler::processHomunculusData(Net::MessageIn &msg)
-{
-    msg.readUInt8("unused");
-    const int cmd = msg.readUInt8("state");
-    const BeingId id = msg.readBeingId("homunculus id");
-    Being *const dstBeing = actorManager->findBeing(id);
-    const int data = msg.readInt32("data");
-    if (!cmd)  // pre init
-    {
-        HomunculusInfo *const info = new HomunculusInfo;
-        info->id = id;
-        PlayerInfo::setHomunculus(info);
-        PlayerInfo::setHomunculusBeing(dstBeing);
-        return;
-    }
-    HomunculusInfo *const info = PlayerInfo::getHomunculus();
-    if (!info)
-        return;
-    switch (cmd)
-    {
-        case 1:  // intimacy
-            info->intimacy = data;
-            break;
-        case 2:  // hunger
-            info->hungry = data;
-            break;
-        case 3:  // accesory
-            info->equip = data;
-            break;
-        default:
-            break;
-    }
-}
-
-void HomunculusHandler::processHomunculusInfo(Net::MessageIn &msg)
-{
-    const std::string name = msg.readString(24, "name");
-    msg.readUInt8("flags");  // 0x01 - renamed, 0x02 - vaporize, 0x04 - alive
-    const int level = msg.readInt16("level");
-    const int hungry = msg.readInt16("hungry");
-    const int intimacy = msg.readInt16("intimacy");
-    const int equip = msg.readInt16("equip");
-    msg.readInt16("atk");
-    msg.readInt16("matk");
-    msg.readInt16("hit");
-    msg.readInt16("luk/3 or crit/10");
-    msg.readInt16("def");
-    msg.readInt16("mdef");
-    msg.readInt16("flee");
-    msg.readInt16("attack speed");
-    msg.readInt16("hp");
-    msg.readInt16("max hp");
-    msg.readInt16("sp");
-    msg.readInt16("max sp");
-    msg.readInt32("exp");
-    msg.readInt32("next exp");
-    msg.readInt16("skill points");
-    const int range = msg.readInt16("attack range");
-
-    HomunculusInfo *const info = PlayerInfo::getHomunculus();
-    if (!info)  // we can't find homunculus being because id is missing
-        return;
-    Being *const dstBeing = actorManager->findBeing(info->id);
-
-    info->name = name;
-    info->level = level;
-    info->range = range;
-    info->hungry = hungry;
-    info->intimacy = intimacy;
-    info->equip = equip;
-    PlayerInfo::setHomunculusBeing(dstBeing);
-}
-
-void HomunculusHandler::processHomunculusSkillUp(Net::MessageIn &msg)
-{
-    const int skillId = msg.readInt16("skill id");
-    const int level = msg.readInt16("level");
-    const int sp = msg.readInt16("sp");
-    const int range = msg.readInt16("range");
-    const Modifiable up = fromBool(msg.readUInt8("up flag"), Modifiable);
-
-    if (skillDialog && PlayerInfo::getSkillLevel(skillId) != level)
-        skillDialog->playUpdateEffect(skillId);
-    PlayerInfo::setSkillLevel(skillId, level);
-    if (skillDialog)
-    {
-        if (!skillDialog->updateSkill(skillId, range,
-            up, SkillType::Unknown, sp))
-        {
-            skillDialog->addSkill(SkillOwner::Homunculus,
-                skillId, "", level,
-                range, up, SkillType::Unknown, sp);
-        }
-    }
-}
-
-void HomunculusHandler::processHomunculusFood(Net::MessageIn &msg)
-{
-    const int flag = msg.readUInt8("fail");
-    const int itemId = msg.readInt16("food id");
-    if (flag)
-    {
-        NotifyManager::notify(NotifyTypes::HOMUNCULUS_FEED_OK);
-    }
-    else
-    {
-        const std::string name = strprintf("[@@%d|%s@@]", itemId,
-            ItemDB::get(itemId).getName().c_str());
-        NotifyManager::notify(NotifyTypes::HOMUNCULUS_FEED_FAIL, name);
     }
 }
 

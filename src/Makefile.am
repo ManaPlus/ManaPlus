@@ -1453,6 +1453,8 @@ manaplus_SOURCES += gui/windows/bankwindow.cpp \
 	      net/eathena/guildrecv.h \
 	      net/eathena/homunculushandler.cpp \
 	      net/eathena/homunculushandler.h \
+	      net/eathena/homunculusrecv.cpp \
+	      net/eathena/homunculusrecv.h \
 	      net/eathena/inventoryhandler.cpp \
 	      net/eathena/inventoryhandler.h \
 	      net/eathena/itemflags.h \
