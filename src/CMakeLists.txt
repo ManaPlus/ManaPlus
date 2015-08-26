@@ -1417,6 +1417,8 @@ SET(SRCS_TMWA
     net/tmwa/gamerecv.h
     net/tmwa/generalhandler.cpp
     net/tmwa/generalhandler.h
+    net/tmwa/generalrecv.cpp
+    net/tmwa/generalrecv.h
     net/tmwa/guildhandler.cpp
     net/tmwa/guildhandler.h
     net/tmwa/guildmanager.cpp
@@ -1593,6 +1595,8 @@ SET(SRCS_EATHENA
     net/eathena/gamerecv.h
     net/eathena/generalhandler.cpp
     net/eathena/generalhandler.h
+    net/eathena/generalrecv.cpp
+    net/eathena/generalrecv.h
     net/eathena/guildhandler.cpp
     net/eathena/guildhandler.h
     net/eathena/homunculushandler.cpp
