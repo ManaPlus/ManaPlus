@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_EATHENA_FRIENDSHANDLER_H
-#define NET_EATHENA_FRIENDSHANDLER_H
+#ifndef NET_EATHENA_FRIENDSRECV_H
+#define NET_EATHENA_FRIENDSRECV_H
 
 #ifdef EATHENA_SUPPORT
 
@@ -29,27 +29,15 @@
 
 namespace EAthena
 {
-class FriendsHandler final : public MessageHandler,
-                             public Net::FriendsHandler
-{
-    public:
-        FriendsHandler();
-
-        A_DELETE_COPY(FriendsHandler)
-
-        void handleMessage(Net::MessageIn &msg) override final;
-
-        void invite(const std::string &name) const override final;
-
-        void inviteResponse(const int accountId,
-                            const int charId,
-                            const bool accept) const override final;
-
-        void remove(const int accountId,
-                    const int charId) const override final;
-};
-
+    namespace FriendsRecv
+    {
+        void processPlayerOnline(Net::MessageIn &msg);
+        void processFriendsList(Net::MessageIn &msg);
+        void processRequestAck(Net::MessageIn &msg);
+        void processRequest(Net::MessageIn &msg);
+        void processDeletePlayer(Net::MessageIn &msg);
+    }  // namespace FriendsRecv
 }  // namespace EAthena
 
 #endif  // EATHENA_SUPPORT
-#endif  // NET_EATHENA_FRIENDSHANDLER_H
+#endif  // NET_EATHENA_FRIENDSRECV_H

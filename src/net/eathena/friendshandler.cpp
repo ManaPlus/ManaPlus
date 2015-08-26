@@ -22,6 +22,7 @@
 
 #include "logger.h"
 
+#include "net/eathena/friendsrecv.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
@@ -53,65 +54,28 @@ void FriendsHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_FRIENDS_PLAYER_ONLINE:
-            processPlayerOnline(msg);
+            FriendsRecv::processPlayerOnline(msg);
             break;
 
         case SMSG_FRIENDS_LIST:
-            processFriendsList(msg);
+            FriendsRecv::processFriendsList(msg);
             break;
 
         case SMSG_FRIENDS_REQUEST_ACK:
-            processRequestAck(msg);
+            FriendsRecv::processRequestAck(msg);
             break;
 
         case SMSG_FRIENDS_REQUEST:
-            processRequest(msg);
+            FriendsRecv::processRequest(msg);
             break;
 
         case SMSG_FRIENDS_DELETE_PLAYER:
-            processDeletePlayer(msg);
+            FriendsRecv::processDeletePlayer(msg);
             break;
 
         default:
             break;
     }
-}
-
-void FriendsHandler::processPlayerOnline(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    msg.readBeingId("account id");
-    msg.readInt32("char id");
-    msg.readUInt8("flag");  // 0 - online, 1 - offline
-}
-
-void FriendsHandler::processFriendsList(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    const int count = (msg.readInt16("size") - 4) / 32;
-    for (int f = 0; f < count; f ++)
-    {
-        msg.readBeingId("account id");
-        msg.readInt32("char id");
-        msg.readString(24, "name");
-    }
-}
-
-void FriendsHandler::processRequestAck(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    msg.readInt16("type");
-    msg.readBeingId("account id");
-    msg.readInt32("char id");
-    msg.readString(24, "name");
-}
-
-void FriendsHandler::processRequest(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    msg.readBeingId("account id");
-    msg.readInt32("char id");
-    msg.readString(24, "name");
 }
 
 void FriendsHandler::invite(const std::string &name) const
@@ -135,13 +99,6 @@ void FriendsHandler::remove(const int accountId, const int charId) const
     createOutPacket(CMSG_FRIENDS_DELETE_PLAYER);
     outMsg.writeInt32(accountId, "account id");
     outMsg.writeInt32(charId, "char id");
-}
-
-void FriendsHandler::processDeletePlayer(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    msg.readBeingId("account id");
-    msg.readInt32("char id");
 }
 
 }  // namespace EAthena
