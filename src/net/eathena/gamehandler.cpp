@@ -31,6 +31,9 @@
 
 #include "net/ea/token.h"
 
+#include "net/ea/gamerecv.h"
+
+#include "net/eathena/gamerecv.h"
 #include "net/eathena/loginhandler.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/network.h"
@@ -69,33 +72,31 @@ void GameHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_MAP_LOGIN_SUCCESS:
-            processMapLogin(msg);
+            GameRecv::processMapLogin(msg);
             break;
 
         case SMSG_SERVER_PING:
-            processServerTick(msg);
-            // We ignore this for now
-            // int tick = msg.readInt32()
+            GameRecv::processServerTick(msg);
             break;
 
         case SMSG_WHO_ANSWER:
-            processWhoAnswer(msg);
+            Ea::GameRecv::processWhoAnswer(msg);
             break;
 
         case SMSG_CHAR_SWITCH_RESPONSE:
-            processCharSwitchResponse(msg);
+            Ea::GameRecv::processCharSwitchResponse(msg);
             break;
 
         case SMSG_MAP_QUIT_RESPONSE:
-            processMapQuitResponse(msg);
+            Ea::GameRecv::processMapQuitResponse(msg);
             break;
 
         case SMSG_MAP_ACCOUNT_ID:
-            processMapAccountId(msg);
+            GameRecv::processMapAccountId(msg);
             break;
 
         case SMSG_MAP_AUTH_REFUSE:
-            processMapAuthRefuse(msg);
+            GameRecv::processMapAuthRefuse(msg);
             break;
 
         default:
@@ -123,19 +124,19 @@ void GameHandler::connect()
         // Change the player's ID to the account ID to match what eAthena uses
         if (localPlayer)
         {
-            mCharID = localPlayer->getId();
+            Ea::GameRecv::mCharID = localPlayer->getId();
             localPlayer->setId(token.account_ID);
         }
         else
         {
-            mCharID = BeingId_zero;
+            Ea::GameRecv::mCharID = BeingId_zero;
         }
     }
 
     // Send login infos
     createOutPacket(CMSG_MAP_SERVER_CONNECT);
     outMsg.writeBeingId(token.account_ID, "account id");
-    outMsg.writeBeingId(mCharID, "char id");
+    outMsg.writeBeingId(Ea::GameRecv::mCharID, "char id");
     outMsg.writeInt32(token.session_ID1, "session key1");
     outMsg.writeInt32(0, "tick");
     outMsg.writeInt8(Being::genderToInt(token.sex), "sex");
@@ -180,51 +181,4 @@ void GameHandler::disconnect2() const
 {
 }
 
-void GameHandler::processMapAccountId(Net::MessageIn &msg)
-{
-    // ignored, because we already know local player account id.
-    msg.readBeingId("account id");
-}
-
-void GameHandler::processMapLogin(Net::MessageIn &msg)
-{
-    unsigned char direction;
-    uint16_t x, y;
-    msg.readInt32("start time");
-    msg.readCoordinates(x, y, direction, "position");
-    msg.readInt8("x size");
-    msg.readInt8("y size");
-    logger->log("Protocol: Player start position: "
-        "(%d, %d), Direction: %d",
-        x, y, direction);
-    msg.readInt16("font");
-    msg.readUInt8("sex");
-
-    mLastHost &= 0xffffff;
-
-    GameHandler *const g = static_cast<GameHandler*>(gameHandler);
-    if (g)
-    {
-        Network *const network = g->mNetwork;
-        if (network)
-            network->pauseDispatch();
-    }
-
-    // Switch now or we'll have problems
-    client->setState(STATE_GAME);
-    if (localPlayer)
-        localPlayer->setTileCoords(x, y);
-}
-
-void GameHandler::processServerTick(Net::MessageIn &msg)
-{
-    // ignoring
-    msg.readInt32("tick");
-}
-
-void GameHandler::processMapAuthRefuse(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    msg.readUInt8("error");
-}
 }  // namespace EAthena

@@ -20,55 +20,47 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "net/ea/gamehandler.h"
+#include "net/tmwa/gamerecv.h"
 
 #include "client.h"
-#include "game.h"
-#include "notifymanager.h"
+#include "logger.h"
 
-#include "enums/resources/notifytypes.h"
+#include "being/localplayer.h"
 
-#include "gui/windows/okdialog.h"
+#include "net/ea/token.h"
 
-#include "gui/widgets/createwidget.h"
-
-#include "net/messagein.h"
-
-#include "net/ea/gamerecv.h"
-
-#include "utils/gettext.h"
+#include "net/tmwa/loginhandler.h"
+#include "net/tmwa/messageout.h"
+#include "net/tmwa/network.h"
+#include "net/tmwa/protocol.h"
 
 #include "debug.h"
 
-namespace Ea
+namespace TmwAthena
 {
 
-GameHandler::GameHandler() :
-    Net::GameHandler()
+extern ServerInfo mapServer;
+
+void GameRecv::processMapLogin(Net::MessageIn &msg)
 {
-    GameRecv::mMap.clear();
-    GameRecv::mCharID = BeingId_zero;
+    unsigned char direction;
+    uint16_t x, y;
+    msg.readInt32("tick");
+    msg.readCoordinates(x, y, direction, "position");
+    msg.readInt16("unknown?");
+    logger->log("Protocol: Player start position: (%d, %d),"
+                " Direction: %d", x, y, direction);
+
+    mLastHost &= 0xffffff;
+
+    Network *const network = Network::mInstance;
+    if (network)
+        network->pauseDispatch();
+
+    // Switch now or we'll have problems
+    client->setState(STATE_GAME);
+    if (localPlayer)
+        localPlayer->setTileCoords(x, y);
 }
 
-void GameHandler::who() const
-{
-}
-
-void GameHandler::setMap(const std::string &map)
-{
-    GameRecv::mMap = map.substr(0, map.rfind("."));
-}
-
-void GameHandler::clear()
-{
-    GameRecv::mMap.clear();
-    GameRecv::mCharID = BeingId_zero;
-}
-
-void GameHandler::initEngines() const
-{
-    if (!GameRecv::mMap.empty())
-        Game::instance()->changeMap(GameRecv::mMap);
-}
-
-}  // namespace Ea
+}  // namespace TmwAthena

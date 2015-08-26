@@ -20,43 +20,19 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_EA_GAMEHANDLER_H
-#define NET_EA_GAMEHANDLER_H
+#ifndef NET_TMWA_GAMERECV_H
+#define NET_TMWA_GAMERECV_H
 
-#include "enums/simpletypes/beingid.h"
+#include "net/tmwa/messagehandler.h"
 
-#include "net/gamehandler.h"
+#include "net/ea/gamehandler.h"
 
-namespace Net
+namespace TmwAthena
 {
-    class MessageIn;
-}
+    namespace GameRecv
+    {
+        void processMapLogin(Net::MessageIn &msg);
+    }  // namespace GameRecv
+}  // namespace TmwAthena
 
-namespace Ea
-{
-
-class GameHandler notfinal : public Net::GameHandler
-{
-    public:
-        GameHandler();
-
-        A_DELETE_COPY(GameHandler)
-
-        void who() const override final;
-
-        bool removeDeadBeings() const override final A_WARN_UNUSED
-        { return true; }
-
-        virtual void setMap(const std::string &map);
-
-        bool canUseMagicBar() const override final A_WARN_UNUSED
-        { return true; }
-
-        void clear() override final;
-
-        void initEngines() const override final;
-};
-
-}  // namespace Ea
-
-#endif  // NET_EA_GAMEHANDLER_H
+#endif  // NET_TMWA_GAMERECV_H

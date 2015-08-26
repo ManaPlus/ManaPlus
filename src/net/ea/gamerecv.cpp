@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "net/ea/gamehandler.h"
+#include "net/ea/gamerecv.h"
 
 #include "client.h"
 #include "game.h"
@@ -34,8 +34,6 @@
 
 #include "net/messagein.h"
 
-#include "net/ea/gamerecv.h"
-
 #include "utils/gettext.h"
 
 #include "debug.h"
@@ -43,32 +41,41 @@
 namespace Ea
 {
 
-GameHandler::GameHandler() :
-    Net::GameHandler()
+namespace GameRecv
 {
-    GameRecv::mMap.clear();
-    GameRecv::mCharID = BeingId_zero;
+    std::string mMap;
+    BeingId mCharID = BeingId_zero;
+}  // namespace GameRev
+
+void GameRecv::processWhoAnswer(Net::MessageIn &msg)
+{
+    NotifyManager::notify(NotifyTypes::ONLINE_USERS,
+        msg.readInt32("users count"));
 }
 
-void GameHandler::who() const
+void GameRecv::processCharSwitchResponse(Net::MessageIn &msg)
 {
+    if (msg.readUInt8("response"))
+        client->setState(STATE_SWITCH_CHARACTER);
 }
 
-void GameHandler::setMap(const std::string &map)
+void GameRecv::processMapQuitResponse(Net::MessageIn &msg)
 {
-    GameRecv::mMap = map.substr(0, map.rfind("."));
-}
-
-void GameHandler::clear()
-{
-    GameRecv::mMap.clear();
-    GameRecv::mCharID = BeingId_zero;
-}
-
-void GameHandler::initEngines() const
-{
-    if (!GameRecv::mMap.empty())
-        Game::instance()->changeMap(GameRecv::mMap);
+    if (msg.readUInt8("response"))
+    {
+        CREATEWIDGET(OkDialog,
+            // TRANSLATORS: error header
+            _("Game"),
+            // TRANSLATORS: error message
+            _("Request to quit denied!"),
+            // TRANSLATORS: ok dialog button
+            _("OK"),
+            DialogType::ERROR,
+            Modal_true,
+            ShowCenter_true,
+            nullptr,
+            260);
+    }
 }
 
 }  // namespace Ea

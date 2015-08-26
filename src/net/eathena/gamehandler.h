@@ -55,15 +55,6 @@ class GameHandler final : public MessageHandler, public Ea::GameHandler
 
         bool mustPing() const override final A_WARN_UNUSED
         { return true; }
-
-    protected:
-        static void processMapAccountId(Net::MessageIn &msg);
-
-        static void processMapLogin(Net::MessageIn &msg);
-
-        static void processServerTick(Net::MessageIn &msg);
-
-        static void processMapAuthRefuse(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

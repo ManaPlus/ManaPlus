@@ -1205,6 +1205,8 @@ manaplus_SOURCES += main.cpp \
 	      net/ea/equipbackend.h \
 	      net/ea/gamehandler.cpp \
 	      net/ea/gamehandler.h \
+	      net/ea/gamerecv.cpp \
+	      net/ea/gamerecv.h \
 	      net/ea/guildhandler.cpp \
 	      net/ea/guildhandler.h \
 	      net/ea/inventoryhandler.cpp \
@@ -1254,6 +1256,8 @@ manaplus_SOURCES += \
 	      net/tmwa/chatrecv.h \
 	      net/tmwa/gamehandler.cpp \
 	      net/tmwa/gamehandler.h \
+	      net/tmwa/gamerecv.cpp \
+	      net/tmwa/gamerecv.h \
 	      net/tmwa/generalhandler.cpp \
 	      net/tmwa/generalhandler.h \
 	      net/tmwa/guildhandler.cpp \
@@ -1431,6 +1435,8 @@ manaplus_SOURCES += gui/windows/bankwindow.cpp \
 	      net/eathena/friendsrecv.h \
 	      net/eathena/gamehandler.cpp \
 	      net/eathena/gamehandler.h \
+	      net/eathena/gamerecv.cpp \
+	      net/eathena/gamerecv.h \
 	      net/eathena/generalhandler.cpp \
 	      net/eathena/generalhandler.h \
 	      net/eathena/guildhandler.cpp \

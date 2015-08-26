@@ -29,6 +29,9 @@
 
 #include "net/ea/token.h"
 
+#include "net/ea/gamerecv.h"
+
+#include "net/tmwa/gamerecv.h"
 #include "net/tmwa/loginhandler.h"
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/network.h"
@@ -66,7 +69,7 @@ void GameHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_MAP_LOGIN_SUCCESS:
-            processMapLogin(msg);
+            GameRecv::processMapLogin(msg);
             break;
 
         case SMSG_SERVER_PING:
@@ -75,15 +78,15 @@ void GameHandler::handleMessage(Net::MessageIn &msg)
             break;
 
         case SMSG_WHO_ANSWER:
-            processWhoAnswer(msg);
+            Ea::GameRecv::processWhoAnswer(msg);
             break;
 
         case SMSG_CHAR_SWITCH_RESPONSE:
-            processCharSwitchResponse(msg);
+            Ea::GameRecv::processCharSwitchResponse(msg);
             break;
 
         case SMSG_MAP_QUIT_RESPONSE:
-            processMapQuitResponse(msg);
+            Ea::GameRecv::processMapQuitResponse(msg);
             break;
 
         default:
@@ -111,19 +114,19 @@ void GameHandler::connect()
         // Change the player's ID to the account ID to match what eAthena uses
         if (localPlayer)
         {
-            mCharID = localPlayer->getId();
+            Ea::GameRecv::mCharID = localPlayer->getId();
             localPlayer->setId(token.account_ID);
         }
         else
         {
-            mCharID = BeingId_zero;
+            Ea::GameRecv::mCharID = BeingId_zero;
         }
     }
 
     // Send login infos
     createOutPacket(CMSG_MAP_SERVER_CONNECT);
     outMsg.writeBeingId(token.account_ID, "account id");
-    outMsg.writeBeingId(mCharID, "char id");
+    outMsg.writeBeingId(Ea::GameRecv::mCharID, "char id");
     outMsg.writeInt32(token.session_ID1, "session id1");
     outMsg.writeInt32(token.session_ID2, "session id2");
     outMsg.writeInt8(Being::genderToInt(token.sex), "gender");
@@ -169,32 +172,6 @@ void GameHandler::ping(const int tick) const
 void GameHandler::disconnect2() const
 {
     createOutPacket(CMSG_CLIENT_DISCONNECT);
-}
-
-void GameHandler::processMapLogin(Net::MessageIn &msg)
-{
-    unsigned char direction;
-    uint16_t x, y;
-    msg.readInt32("tick");
-    msg.readCoordinates(x, y, direction, "position");
-    msg.readInt16("unknown?");
-    logger->log("Protocol: Player start position: (%d, %d),"
-                " Direction: %d", x, y, direction);
-
-    mLastHost &= 0xffffff;
-
-    GameHandler *const g = static_cast<GameHandler*>(gameHandler);
-    if (g)
-    {
-        Network *const network = g->mNetwork;
-        if (network)
-            network->pauseDispatch();
-    }
-
-    // Switch now or we'll have problems
-    client->setState(STATE_GAME);
-    if (localPlayer)
-        localPlayer->setTileCoords(x, y);
 }
 
 }  // namespace TmwAthena
