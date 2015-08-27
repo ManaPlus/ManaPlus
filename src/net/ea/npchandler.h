@@ -44,26 +44,6 @@ class NpcHandler notfinal : public Net::NpcHandler
 
     protected:
         NpcHandler();
-
-        static void processNpcChoice(Net::MessageIn &msg);
-
-        static void processNpcMessage(Net::MessageIn &msg);
-
-        static void processNpcClose(Net::MessageIn &msg);
-
-        static void processNpcNext(Net::MessageIn &msg);
-
-        static void processNpcIntInput(Net::MessageIn &msg);
-
-        static void processNpcStrInput(Net::MessageIn &msg);
-
-        static void processNpcCommand(Net::MessageIn &msg);
-
-        static void processChangeTitle(Net::MessageIn &msg);
-
-        static NpcDialog *mDialog;
-
-        static bool mRequestLang;
 };
 
 }  // namespace Ea

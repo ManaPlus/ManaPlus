@@ -88,21 +88,6 @@ class NpcHandler final : public MessageHandler, public Ea::NpcHandler
         void selectArrow(const int nameId) const override final;
 
         void selectAutoSpell(const int skillId) const override final;
-
-    protected:
-        static void processNpcCutin(Net::MessageIn &msg);
-
-        static void processNpcViewPoint(Net::MessageIn &msg);
-
-        static void processNpcShowProgressBar(Net::MessageIn &msg);
-
-        static void processNpcCloseTimeout(Net::MessageIn &msg);
-
-        static void processArea(Net::MessageIn &msg);
-
-        static void processShowDigit(Net::MessageIn &msg);
-
-        static void processProgressBarAbort(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

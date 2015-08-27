@@ -20,27 +20,36 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "net/ea/npchandler.h"
+#ifndef NET_EA_NPCRECV_H
+#define NET_EA_NPCRECV_H
 
-#include "gui/viewport.h"
+#include "net/npchandler.h"
 
-#include "gui/windows/npcdialog.h"
+#include "localconsts.h"
 
-#include "net/messagein.h"
+class NpcDialog;
 
-#include "net/ea/npcrecv.h"
-
-#include "utils/langs.h"
-
-#include "debug.h"
+namespace Net
+{
+    class MessageIn;
+}
 
 namespace Ea
 {
+    namespace NpcRecv
+    {
+        extern NpcDialog *mDialog;
+        extern bool mRequestLang;
 
-NpcHandler::NpcHandler()
-{
-    NpcRecv::mDialog = nullptr;
-    NpcRecv::mRequestLang = false;
-}
-
+        void processNpcChoice(Net::MessageIn &msg);
+        void processNpcMessage(Net::MessageIn &msg);
+        void processNpcClose(Net::MessageIn &msg);
+        void processNpcNext(Net::MessageIn &msg);
+        void processNpcIntInput(Net::MessageIn &msg);
+        void processNpcStrInput(Net::MessageIn &msg);
+        void processNpcCommand(Net::MessageIn &msg);
+        void processChangeTitle(Net::MessageIn &msg);
+    }  // namespace NpcRecv
 }  // namespace Ea
+
+#endif  // NET_EA_NPCRECV_H

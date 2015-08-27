@@ -28,6 +28,8 @@
 
 #include "gui/widgets/createwidget.h"
 
+#include "net/ea/npcrecv.h"
+
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
 
@@ -67,42 +69,42 @@ void NpcHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_NPC_CHOICE:
-            processNpcChoice(msg);
+            Ea::NpcRecv::processNpcChoice(msg);
             break;
 
         case SMSG_NPC_MESSAGE:
-            processNpcMessage(msg);
+            Ea::NpcRecv::processNpcMessage(msg);
             break;
 
         case SMSG_NPC_CLOSE:
-            processNpcClose(msg);
+            Ea::NpcRecv::processNpcClose(msg);
             break;
 
         case SMSG_NPC_NEXT:
-            processNpcNext(msg);
+            Ea::NpcRecv::processNpcNext(msg);
             break;
 
         case SMSG_NPC_INT_INPUT:
-            processNpcIntInput(msg);
+            Ea::NpcRecv::processNpcIntInput(msg);
             break;
 
         case SMSG_NPC_STR_INPUT:
-            processNpcStrInput(msg);
+            Ea::NpcRecv::processNpcStrInput(msg);
             break;
 
         case SMSG_NPC_COMMAND:
-            processNpcCommand(msg);
+            Ea::NpcRecv::processNpcCommand(msg);
             break;
 
         case SMSG_NPC_CHANGETITLE:
-            processChangeTitle(msg);
+            Ea::NpcRecv::processChangeTitle(msg);
             break;
 
         default:
             break;
     }
 
-    mDialog = nullptr;
+    Ea::NpcRecv::mDialog = nullptr;
     BLOCK_END("NpcHandler::handleMessage")
 }
 
@@ -130,8 +132,8 @@ void NpcHandler::closeDialog(const BeingId npcId)
         NpcDialog *const dialog = (*it).second;
         if (dialog)
             dialog->close();
-        if (dialog == mDialog)
-            mDialog = nullptr;
+        if (dialog == Ea::NpcRecv::mDialog)
+            Ea::NpcRecv::mDialog = nullptr;
         NpcDialog::mNpcDialogs.erase(it);
     }
 }
@@ -248,7 +250,7 @@ BeingId NpcHandler::getNpc(Net::MessageIn &msg)
     const BeingId npcId = msg.readBeingId("npc id");
 
     const NpcDialogs::const_iterator diag = NpcDialog::mNpcDialogs.find(npcId);
-    mDialog = nullptr;
+    Ea::NpcRecv::mDialog = nullptr;
 
     if (diag == NpcDialog::mNpcDialogs.end())
     {
@@ -265,21 +267,21 @@ BeingId NpcHandler::getNpc(Net::MessageIn &msg)
         }
         else
         {
-            CREATEWIDGETV(mDialog, NpcDialog, npcId);
-            mDialog->saveCamera();
+            CREATEWIDGETV(Ea::NpcRecv::mDialog, NpcDialog, npcId);
+            Ea::NpcRecv::mDialog->saveCamera();
             if (localPlayer)
                 localPlayer->stopWalking(false);
-            NpcDialog::mNpcDialogs[npcId] = mDialog;
+            NpcDialog::mNpcDialogs[npcId] = Ea::NpcRecv::mDialog;
         }
     }
     else
     {
         NpcDialog *const dialog = diag->second;
-        if (mDialog && mDialog != dialog)
-            mDialog->restoreCamera();
-        mDialog = dialog;
-        if (mDialog)
-            mDialog->saveCamera();
+        if (Ea::NpcRecv::mDialog && Ea::NpcRecv::mDialog != dialog)
+            Ea::NpcRecv::mDialog->restoreCamera();
+        Ea::NpcRecv::mDialog = dialog;
+        if (Ea::NpcRecv::mDialog)
+            Ea::NpcRecv::mDialog->saveCamera();
     }
     return npcId;
 }

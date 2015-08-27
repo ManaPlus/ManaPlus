@@ -1,7 +1,5 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2004-2009  The Mana World Development Team
- *  Copyright (C) 2009-2010  The Mana Developers
  *  Copyright (C) 2011-2015  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
@@ -20,27 +18,25 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef NET_EATHENA_NPCRECV_H
+#define NET_EATHENA_NPCRECV_H
+
 #include "net/ea/npchandler.h"
 
-#include "gui/viewport.h"
+#include "net/eathena/messagehandler.h"
 
-#include "gui/windows/npcdialog.h"
-
-#include "net/messagein.h"
-
-#include "net/ea/npcrecv.h"
-
-#include "utils/langs.h"
-
-#include "debug.h"
-
-namespace Ea
+namespace EAthena
 {
+    namespace NpcRecv
+    {
+        void processNpcCutin(Net::MessageIn &msg);
+        void processNpcViewPoint(Net::MessageIn &msg);
+        void processNpcShowProgressBar(Net::MessageIn &msg);
+        void processNpcCloseTimeout(Net::MessageIn &msg);
+        void processArea(Net::MessageIn &msg);
+        void processShowDigit(Net::MessageIn &msg);
+        void processProgressBarAbort(Net::MessageIn &msg);
+    }  // namespace NpcRecv
+}  // namespace EAthena
 
-NpcHandler::NpcHandler()
-{
-    NpcRecv::mDialog = nullptr;
-    NpcRecv::mRequestLang = false;
-}
-
-}  // namespace Ea
+#endif  // NET_EATHENA_NPCRECV_H

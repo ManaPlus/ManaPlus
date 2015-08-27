@@ -30,7 +30,10 @@
 
 #include "gui/widgets/createwidget.h"
 
+#include "net/ea/npcrecv.h"
+
 #include "net/eathena/messageout.h"
+#include "net/eathena/npcrecv.h"
 #include "net/eathena/protocol.h"
 
 #include "net/ea/eaprotocol.h"
@@ -74,70 +77,70 @@ void NpcHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_NPC_CHOICE:
-            processNpcChoice(msg);
+            Ea::NpcRecv::processNpcChoice(msg);
             break;
 
         case SMSG_NPC_MESSAGE:
-            processNpcMessage(msg);
+            Ea::NpcRecv::processNpcMessage(msg);
             break;
 
         case SMSG_NPC_CLOSE:
-            processNpcClose(msg);
+            Ea::NpcRecv::processNpcClose(msg);
             break;
 
         case SMSG_NPC_NEXT:
-            processNpcNext(msg);
+            Ea::NpcRecv::processNpcNext(msg);
             break;
 
         case SMSG_NPC_INT_INPUT:
-            processNpcIntInput(msg);
+            Ea::NpcRecv::processNpcIntInput(msg);
             break;
 
         case SMSG_NPC_STR_INPUT:
-            processNpcStrInput(msg);
+            Ea::NpcRecv::processNpcStrInput(msg);
             break;
 
         case SMSG_NPC_CUTIN:
-            processNpcCutin(msg);
+            NpcRecv::processNpcCutin(msg);
             break;
 
         case SMSG_NPC_VIEWPOINT:
-            processNpcViewPoint(msg);
+            NpcRecv::processNpcViewPoint(msg);
             break;
 
         case SMSG_NPC_SHOW_PROGRESS_BAR:
-            processNpcShowProgressBar(msg);
+            NpcRecv::processNpcShowProgressBar(msg);
             break;
 
         case SMSG_NPC_CLOSE_TIMEOUT:
-            processNpcCloseTimeout(msg);
+            NpcRecv::processNpcCloseTimeout(msg);
             break;
 
         case SMSG_NPC_COMMAND:
-            processNpcCommand(msg);
+            Ea::NpcRecv::processNpcCommand(msg);
             break;
 
         case SMSG_NPC_CHANGETITLE:
-            processChangeTitle(msg);
+            Ea::NpcRecv::processChangeTitle(msg);
             break;
 
         case SMSG_NPC_AREA:
-            processArea(msg);
+            NpcRecv::processArea(msg);
             break;
 
         case SMSG_NPC_SHOW_DIGIT:
-            processShowDigit(msg);
+            NpcRecv::processShowDigit(msg);
             break;
 
         case SMSG_NPC_PROGRESS_BAR_ABORT:
-            processProgressBarAbort(msg);
+            NpcRecv::processProgressBarAbort(msg);
             break;
 
         default:
             break;
     }
 
-    mDialog = nullptr;
+    Ea::NpcRecv::mDialog = nullptr;
 }
 
 void NpcHandler::talk(const BeingId npcId) const
@@ -164,8 +167,8 @@ void NpcHandler::closeDialog(const BeingId npcId)
         NpcDialog *const dialog = (*it).second;
         if (dialog)
             dialog->close();
-        if (dialog == mDialog)
-            mDialog = nullptr;
+        if (dialog == Ea::NpcRecv::mDialog)
+            Ea::NpcRecv::mDialog = nullptr;
         NpcDialog::mNpcDialogs.erase(it);
     }
 }
@@ -298,7 +301,7 @@ BeingId NpcHandler::getNpc(Net::MessageIn &msg)
     const BeingId npcId = msg.readBeingId("npc id");
 
     const NpcDialogs::const_iterator diag = NpcDialog::mNpcDialogs.find(npcId);
-    mDialog = nullptr;
+    Ea::NpcRecv::mDialog = nullptr;
 
     if (msg.getId() == SMSG_NPC_VIEWPOINT)
         return npcId;
@@ -318,88 +321,23 @@ BeingId NpcHandler::getNpc(Net::MessageIn &msg)
         }
         else
         {
-            CREATEWIDGETV(mDialog, NpcDialog, npcId);
-            mDialog->saveCamera();
+            CREATEWIDGETV(Ea::NpcRecv::mDialog, NpcDialog, npcId);
+            Ea::NpcRecv::mDialog->saveCamera();
             if (localPlayer)
                 localPlayer->stopWalking(false);
-            NpcDialog::mNpcDialogs[npcId] = mDialog;
+            NpcDialog::mNpcDialogs[npcId] = Ea::NpcRecv::mDialog;
         }
     }
     else
     {
         NpcDialog *const dialog = diag->second;
-        if (mDialog && mDialog != dialog)
-            mDialog->restoreCamera();
-        mDialog = dialog;
-        if (mDialog)
-            mDialog->saveCamera();
+        if (Ea::NpcRecv::mDialog && Ea::NpcRecv::mDialog != dialog)
+            Ea::NpcRecv::mDialog->restoreCamera();
+        Ea::NpcRecv::mDialog = dialog;
+        if (Ea::NpcRecv::mDialog)
+            Ea::NpcRecv::mDialog->saveCamera();
     }
     return npcId;
-}
-
-void NpcHandler::processNpcCutin(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    mRequestLang = false;
-    msg.readString(64, "image name");
-    msg.readUInt8("type");
-}
-
-void NpcHandler::processNpcViewPoint(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    mRequestLang = false;
-    // +++ probably need add nav point and start moving to it
-    msg.readInt32("npc id");
-    msg.readInt32("type");  // 0 display for 15 sec,
-                            // 1 display until teleport,
-                            // 2 remove
-    msg.readInt32("x");
-    msg.readInt32("y");
-    msg.readUInt8("number");  // can be used for scripts
-    msg.readInt32("color");
-}
-
-void NpcHandler::processNpcShowProgressBar(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    mRequestLang = false;
-    // +++ probably need show progress bar in npc dialog
-    msg.readInt32("color");
-    msg.readInt32("seconds");
-}
-
-void NpcHandler::processNpcCloseTimeout(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    mRequestLang = false;
-    // this packet send after npc closed by timeout.
-    msg.readInt32("npc id");
-}
-
-void NpcHandler::processArea(Net::MessageIn &msg)
-{
-    const int len = msg.readInt16("len");
-    if (len < 12)
-        return;
-    Being *const dstBeing = actorManager->findBeing(
-        msg.readBeingId("npc id"));
-    const int area = msg.readInt32("area size");
-    if (dstBeing)
-        dstBeing->setAreaSize(area);
-}
-
-void NpcHandler::processShowDigit(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-
-    msg.readUInt8("type");
-    msg.readInt32("value");
-}
-
-void NpcHandler::processProgressBarAbort(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
 }
 
 }  // namespace EAthena

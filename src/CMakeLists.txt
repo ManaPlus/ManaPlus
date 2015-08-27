@@ -1385,6 +1385,8 @@ SET(SRCS_EVOL
     net/ea/network.h
     net/ea/npchandler.cpp
     net/ea/npchandler.h
+    net/ea/npcrecv.cpp
+    net/ea/npcrecv.h
     net/ea/partyhandler.cpp
     net/ea/partyhandler.h
     net/ea/playerhandler.cpp
@@ -1664,6 +1666,8 @@ SET(SRCS_EATHENA
     net/eathena/network.h
     net/eathena/npchandler.cpp
     net/eathena/npchandler.h
+    net/eathena/npcrecv.cpp
+    net/eathena/npcrecv.h
     net/eathena/packets.h
     net/eathena/partyhandler.cpp
     net/eathena/partyhandler.h
