@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_EATHENA_MARKETHANDLER_H
-#define NET_EATHENA_MARKETHANDLER_H
+#ifndef NET_EATHENA_MARKETRECV_H
+#define NET_EATHENA_MARKETRECV_H
 
 #include "net/markethandler.h"
 
@@ -29,24 +29,13 @@ class BuyDialog;
 
 namespace EAthena
 {
-class MarketHandler final : public MessageHandler,
-                            public Net::MarketHandler
-{
-    public:
-        MarketHandler();
+    namespace MarketRecv
+    {
+        extern BuyDialog *mBuyDialog;
 
-        A_DELETE_COPY(MarketHandler)
-
-        void handleMessage(Net::MessageIn &msg) override final;
-
-        void close() override final;
-
-        void buyItem(const int itemId,
-                     const int type,
-                     const ItemColor color,
-                     const int amount) const override final;
-};
-
+        void processMarketOpen(Net::MessageIn &msg);
+        void processMarketBuyAck(Net::MessageIn &msg);
+    }  // namespace MarketRecv
 }  // namespace EAthena
 
-#endif  // NET_EATHENA_MARKETHANDLER_H
+#endif  // NET_EATHENA_MARKETRECV_H

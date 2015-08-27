@@ -1645,6 +1645,8 @@ SET(SRCS_EATHENA
     net/eathena/maptypeproperty2.h
     net/eathena/markethandler.cpp
     net/eathena/markethandler.h
+    net/eathena/marketrecv.cpp
+    net/eathena/marketrecv.h
     net/eathena/menu.cpp
     net/eathena/menu.h
     net/eathena/menutype.h

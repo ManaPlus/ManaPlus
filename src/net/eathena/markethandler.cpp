@@ -30,6 +30,7 @@
 
 #include "gui/widgets/createwidget.h"
 
+#include "net/eathena/marketrecv.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
@@ -39,8 +40,6 @@ extern Net::MarketHandler *marketHandler;
 
 namespace EAthena
 {
-
-BuyDialog *MarketHandler::mBuyDialog = nullptr;
 
 MarketHandler::MarketHandler() :
     MessageHandler()
@@ -53,7 +52,7 @@ MarketHandler::MarketHandler() :
     };
     handledMessages = _messages;
     marketHandler = this;
-    mBuyDialog = nullptr;
+    MarketRecv::mBuyDialog = nullptr;
 }
 
 void MarketHandler::handleMessage(Net::MessageIn &msg)
@@ -61,52 +60,16 @@ void MarketHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_NPC_MARKET_OPEN:
-            processMarketOpen(msg);
+            MarketRecv::processMarketOpen(msg);
             break;
 
         case SMSG_NPC_MARKET_BUY_ACK:
-            processMarketBuyAck(msg);
+            MarketRecv::processMarketBuyAck(msg);
             break;
 
         default:
             break;
     }
-}
-
-void MarketHandler::processMarketOpen(Net::MessageIn &msg)
-{
-    const int len = (msg.readInt16("len") - 4) / 13;
-
-    CREATEWIDGETV(mBuyDialog, BuyDialog, fromInt(BuyDialog::Market, BeingId));
-    mBuyDialog->setMoney(PlayerInfo::getAttribute(Attributes::MONEY));
-
-    for (int f = 0; f < len; f ++)
-    {
-        const int itemId = msg.readInt16("item id");
-        const int type = msg.readUInt8("type");
-        const int value = msg.readInt32("price");
-        const int amount = msg.readInt32("amount");
-        msg.readInt16("view");
-        const ItemColor color = ItemColor_one;
-        mBuyDialog->addItem(itemId, type, color, amount, value);
-    }
-    mBuyDialog->sort();
-}
-
-void MarketHandler::processMarketBuyAck(Net::MessageIn &msg)
-{
-    const int len = (msg.readInt16("len") - 5) / 8;
-    const int res = msg.readUInt8("result");
-    for (int f = 0; f < len; f ++)
-    {
-        msg.readInt16("item id");
-        msg.readInt16("amount");
-        msg.readInt32("price");
-    }
-    if (res)
-        NotifyManager::notify(NotifyTypes::BUY_DONE);
-    else
-        NotifyManager::notify(NotifyTypes::BUY_FAILED);
 }
 
 void MarketHandler::close()
