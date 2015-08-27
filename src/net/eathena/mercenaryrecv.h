@@ -33,8 +33,7 @@ namespace EAthena
         void processMercenaryUpdate(Net::MessageIn &msg);
         void processMercenaryInfo(Net::MessageIn &msg);
         void processMercenarySkills(Net::MessageIn &msg);
-};
-
+    }  // namespace MercenaryRecv
 }  // namespace EAthena
 
 #endif  // NET_EATHENA_MERCENARYRECV_H
