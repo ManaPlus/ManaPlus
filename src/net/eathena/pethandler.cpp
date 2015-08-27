@@ -42,6 +42,7 @@
 
 #include "net/eathena/menu.h"
 #include "net/eathena/messageout.h"
+#include "net/eathena/petrecv.h"
 #include "net/eathena/protocol.h"
 
 #include "utils/gettext.h"
@@ -55,8 +56,7 @@ namespace EAthena
 {
 
 PetHandler::PetHandler() :
-    MessageHandler(),
-    mRandCounter(1000)
+    MessageHandler()
 {
     static const uint16_t _messages[] =
     {
@@ -79,31 +79,31 @@ void PetHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_PET_MESSAGE:
-            processPetMessage(msg);
+            PetRecv::processPetMessage(msg);
             break;
 
         case SMSG_PET_ROULETTE:
-            processPetRoulette(msg);
+            PetRecv::processPetRoulette(msg);
             break;
 
         case SMSG_PET_EGGS_LIST:
-            processEggsList(msg);
+            PetRecv::processEggsList(msg);
             break;
 
         case SMSG_PET_DATA:
-            processPetData(msg);
+            PetRecv::processPetData(msg);
             break;
 
         case SMSG_PET_STATUS:
-            processPetStatus(msg);
+            PetRecv::processPetStatus(msg);
             break;
 
         case SMSG_PET_FOOD:
-            processPetFood(msg);
+            PetRecv::processPetFood(msg);
             break;
 
         case SMSG_PET_CATCH_PROCESS:
-            processPetCatchProcess(msg);
+            PetRecv::processPetCatchProcess(msg);
             break;
 
         default:
@@ -156,150 +156,6 @@ void PetHandler::setName(const std::string &name) const
     outMsg.writeString(name, 24, "name");
 }
 
-void PetHandler::processPetMessage(Net::MessageIn &msg)
-{
-    const BeingId id = msg.readBeingId("pet id");
-    const int data = msg.readInt32("param");
-    Being *const dstBeing = actorManager->findBeing(id);
-    if (!dstBeing)
-        return;
-
-    const int hungry = data - (toInt(dstBeing->getSubType(), int)
-        - 100) * 100 - 50;
-    if (hungry >= 0 && hungry <= 4)
-    {
-        if (localChatTab && localPlayer)
-        {
-            std::string nick = strprintf(_("%s's pet"),
-                localPlayer->getName().c_str());
-            localChatTab->chatLog(nick, strprintf("hungry level %d", hungry));
-        }
-        PetInfo *const info = PlayerInfo::getPet();
-        if (!info || info->id != id)
-            return;
-        info->hungry = hungry;
-    }
-}
-
-void PetHandler::processPetRoulette(Net::MessageIn &msg)
-{
-    const uint8_t data = msg.readUInt8("data");
-    switch (data)
-    {
-        case 0:
-            NotifyManager::notify(NotifyTypes::PET_CATCH_FAILED);
-            break;
-        case 1:
-            NotifyManager::notify(NotifyTypes::PET_CATCH_SUCCESS);
-            break;
-        default:
-            NotifyManager::notify(NotifyTypes::PET_CATCH_UNKNOWN, data);
-            break;
-    }
-}
-
-void PetHandler::processEggsList(Net::MessageIn &msg)
-{
-    const int count = (msg.readInt16("len") - 4) / 2;
-    Inventory *const inv = PlayerInfo::getInventory();
-    if (!inv)
-        return;
-    menu = MenuType::Eggs;
-
-    if (count == 1)
-    {
-        const int index = msg.readInt16("index") - INVENTORY_OFFSET;
-        const Item *const item = inv->getItem(index);
-        inventoryHandler->selectEgg(item);
-        return;
-    }
-    SellDialog *const dialog = CREATEWIDGETR0(EggSelectionDialog);
-
-    for (int f = 0; f < count; f ++)
-    {
-        const int index = msg.readInt16("index") - INVENTORY_OFFSET;
-        const Item *const item = inv->getItem(index);
-
-        if (item)
-            dialog->addItem(item, 0);
-    }
-}
-
-void PetHandler::processPetData(Net::MessageIn &msg)
-{
-    const int cmd = msg.readUInt8("type");
-    const BeingId id = msg.readBeingId("pet id");
-    Being *const dstBeing = actorManager->findBeing(id);
-    const int data = msg.readInt32("data");
-    if (!cmd)  // pre init
-    {
-        PetInfo *const info = new PetInfo;
-        info->id = id;
-        PlayerInfo::setPet(info);
-        PlayerInfo::setPetBeing(dstBeing);
-        return;
-    }
-    PetInfo *const info = PlayerInfo::getPet();
-    if (!info)
-        return;
-    switch (cmd)
-    {
-        case 1:  // intimacy
-            info->intimacy = data;
-            break;
-        case 2:  // hunger
-            info->hungry = data;
-            break;
-        case 3:  // accesory
-            info->equip = data;
-            break;
-        case 4:  // performance
-            info->performance = data;
-            break;
-        case 5:  // hair style
-            info->hairStyle = data;
-            break;
-        default:
-            break;
-    }
-}
-
-void PetHandler::processPetStatus(Net::MessageIn &msg)
-{
-    const std::string name = msg.readString(24, "pet name");
-    msg.readUInt8("rename flag");
-    const int level = msg.readInt16("level");
-    const int hungry = msg.readInt16("hungry");
-    const int intimacy = msg.readInt16("intimacy");
-    const int equip = msg.readInt16("equip");
-    const int race = msg.readInt16("class");
-
-//    Being *const being = PlayerInfo::getPetBeing();
-//    if (being)
-//        being->setLevel(level);
-
-    PetInfo *const info = PlayerInfo::getPet();
-    if (!info)
-        return;
-    info->name = name;
-    info->level = level;
-    info->hungry = hungry;
-    info->intimacy = intimacy;
-    info->equip = equip;
-    info->race = race;
-}
-
-void PetHandler::processPetFood(Net::MessageIn &msg)
-{
-    // +++ need show notification message about success or fail
-    const int result = msg.readUInt8("result");
-    msg.readInt16("food id");
-    if (result)
-        NotifyManager::notify(NotifyTypes::PET_FEED_OK);
-    else
-        NotifyManager::notify(NotifyTypes::PET_FEED_ERROR);
-}
-
 void PetHandler::requestStatus() const
 {
     createOutPacket(CMSG_PET_MENU_ACTION);
@@ -345,11 +201,6 @@ void PetHandler::setDirection(const unsigned char type) const
 
 void PetHandler::startAi(const bool start A_UNUSED) const
 {
-}
-
-void PetHandler::processPetCatchProcess(Net::MessageIn &msg A_UNUSED)
-{
-    NotifyManager::notify(NotifyTypes::PET_CATCH_PROCESS);
 }
 
 }  // namespace EAthena

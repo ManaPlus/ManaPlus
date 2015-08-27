@@ -66,23 +66,6 @@ class PetHandler final :  public MessageHandler, public Net::PetHandler
         void setDirection(const unsigned char type) const override final;
 
         void startAi(const bool start) const override final;
-
-    protected:
-        void processPetMessage(Net::MessageIn &msg);
-
-        static void processPetRoulette(Net::MessageIn &msg);
-
-        static void processEggsList(Net::MessageIn &msg);
-
-        static void processPetData(Net::MessageIn &msg);
-
-        static void processPetStatus(Net::MessageIn &msg);
-
-        static void processPetFood(Net::MessageIn &msg);
-
-        static void processPetCatchProcess(Net::MessageIn &msg);
-
-        int mRandCounter;
 };
 
 }  // namespace EAthena
