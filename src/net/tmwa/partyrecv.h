@@ -19,44 +19,25 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_EA_PARTYHANDLER_H
-#define NET_EA_PARTYHANDLER_H
+#ifndef NET_TMWA_PARTYRECV_H
+#define NET_TMWA_PARTYRECV_H
 
-#include "net/partyhandler.h"
+#include "net/tmwa/messagehandler.h"
 
-class Party;
+#include "net/ea/partyhandler.h"
 
-namespace Net
+namespace TmwAthena
 {
-    class MessageIn;
-}
+    namespace PartyRecv
+    {
+        void processPartySettings(Net::MessageIn &msg);
+        void processPartyInfo(Net::MessageIn &msg);
+        void processPartyMessage(Net::MessageIn &msg);
+        void processPartyInviteResponse(Net::MessageIn &msg);
+        void processPartyInvited(Net::MessageIn &msg);
+        void processPartyMove(Net::MessageIn &msg);
+        void processPartyUpdateHp(Net::MessageIn &msg);
+    }  // namespace PartyRecv
+}  // namespace TmwAthena
 
-namespace Ea
-{
-class PartyHandler notfinal : public Net::PartyHandler
-{
-    public:
-        PartyHandler();
-
-        A_DELETE_COPY(PartyHandler)
-
-        virtual ~PartyHandler();
-
-        void join(const int partyId) const override final;
-
-        PartyShareT getShareExperience() const override final A_WARN_UNUSED;
-
-        PartyShareT getShareItems() const override final A_WARN_UNUSED;
-
-        static void reload();
-
-        void clear() const override final;
-
-        ChatTab *getTab() const override final;
-};
-
-extern Party *taParty;
-
-}  // namespace Ea
-
-#endif  // NET_EA_PARTYHANDLER_H
+#endif  // NET_TMWA_PARTYRECV_H

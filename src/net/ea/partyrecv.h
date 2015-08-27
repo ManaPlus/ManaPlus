@@ -19,8 +19,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_EA_PARTYHANDLER_H
-#define NET_EA_PARTYHANDLER_H
+#ifndef NET_EA_PARTYRECV_H
+#define NET_EA_PARTYRECV_H
 
 #include "net/partyhandler.h"
 
@@ -33,30 +33,21 @@ namespace Net
 
 namespace Ea
 {
-class PartyHandler notfinal : public Net::PartyHandler
-{
-    public:
-        PartyHandler();
+    namespace PartyRecv
+    {
+        extern PartyShareT mShareExp;
+        extern PartyShareT mShareItems;
 
-        A_DELETE_COPY(PartyHandler)
+        void processPartyCreate(Net::MessageIn &msg);
+        void processPartyLeave(Net::MessageIn &msg);
+        void processPartyUpdateCoords(Net::MessageIn &msg);
+        void processPartySettingsContinue(Net::MessageIn &msg,
+                                          const PartyShareT exp,
+                                          const PartyShareT item);
 
-        virtual ~PartyHandler();
-
-        void join(const int partyId) const override final;
-
-        PartyShareT getShareExperience() const override final A_WARN_UNUSED;
-
-        PartyShareT getShareItems() const override final A_WARN_UNUSED;
-
-        static void reload();
-
-        void clear() const override final;
-
-        ChatTab *getTab() const override final;
-};
-
-extern Party *taParty;
-
+        void createTab();
+    }  // namespace PartyRecv
+    extern Party *taParty;
 }  // namespace Ea
 
-#endif  // NET_EA_PARTYHANDLER_H
+#endif  // NET_EA_PARTYRECV_H

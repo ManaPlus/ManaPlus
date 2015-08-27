@@ -34,7 +34,10 @@
 
 #include "gui/widgets/tabs/chat/partytab.h"
 
+#include "net/ea/partyrecv.h"
+
 #include "net/tmwa/messageout.h"
+#include "net/tmwa/partyrecv.h"
 #include "net/tmwa/protocol.h"
 
 #include "debug.h"
@@ -76,34 +79,34 @@ void PartyHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_PARTY_CREATE:
-            processPartyCreate(msg);
+            Ea::PartyRecv::processPartyCreate(msg);
             break;
         case SMSG_PARTY_INFO:
-            processPartyInfo(msg);
+            PartyRecv::processPartyInfo(msg);
             break;
         case SMSG_PARTY_INVITE_RESPONSE:
-            processPartyInviteResponse(msg);
+            PartyRecv::processPartyInviteResponse(msg);
             break;
         case SMSG_PARTY_INVITED:
-            processPartyInvited(msg);
+            PartyRecv::processPartyInvited(msg);
             break;
         case SMSG_PARTY_SETTINGS:
-            processPartySettings(msg);
+            PartyRecv::processPartySettings(msg);
             break;
         case SMSG_PARTY_MOVE:
-            processPartyMove(msg);
+            PartyRecv::processPartyMove(msg);
             break;
         case SMSG_PARTY_LEAVE:
-            processPartyLeave(msg);
+            Ea::PartyRecv::processPartyLeave(msg);
             break;
         case SMSG_PARTY_UPDATE_HP:
-            processPartyUpdateHp(msg);
+            PartyRecv::processPartyUpdateHp(msg);
             break;
         case SMSG_PARTY_UPDATE_COORDS:
-            processPartyUpdateCoords(msg);
+            Ea::PartyRecv::processPartyUpdateCoords(msg);
             break;
         case SMSG_PARTY_MESSAGE:
-            processPartyMessage(msg);
+            PartyRecv::processPartyMessage(msg);
             break;
 
         default:
@@ -189,7 +192,8 @@ void PartyHandler::setShareExperience(const PartyShareT share) const
 
     createOutPacket(CMSG_PARTY_SETTINGS);
     outMsg.writeInt16(static_cast<int16_t>(share), "share exp");
-    outMsg.writeInt16(static_cast<int16_t>(mShareItems), "share items");
+    outMsg.writeInt16(static_cast<int16_t>(Ea::PartyRecv::mShareItems),
+        "share items");
 }
 
 void PartyHandler::setShareItems(const PartyShareT share) const
@@ -198,183 +202,9 @@ void PartyHandler::setShareItems(const PartyShareT share) const
         return;
 
     createOutPacket(CMSG_PARTY_SETTINGS);
-    outMsg.writeInt16(static_cast<int16_t>(mShareExp), "share exp");
+    outMsg.writeInt16(static_cast<int16_t>(Ea::PartyRecv::mShareExp),
+        "share exp");
     outMsg.writeInt16(static_cast<int16_t>(share), "share items");
-}
-
-void PartyHandler::processPartySettings(Net::MessageIn &msg)
-{
-    if (!partyTab)
-    {
-        if (!chatWindow)
-            return;
-
-        createTab();
-    }
-
-    // These seem to indicate the sharing mode for exp and items
-    const PartyShareT exp = static_cast<PartyShareT>(
-        msg.readInt16("share exp"));
-    const PartyShareT item = static_cast<PartyShareT>(
-        msg.readInt16("share items"));
-    processPartySettingsContinue(msg, exp, item);
-}
-
-void PartyHandler::processPartyInfo(Net::MessageIn &msg)
-{
-    bool isOldParty = false;
-    std::set<std::string> names;
-    std::set<std::string> onlineNames;
-    if (!Ea::taParty)
-    {
-        logger->log1("error: party empty in SMSG_PARTY_INFO");
-        Ea::taParty = Party::getParty(1);
-    }
-    if (Ea::taParty)
-    {
-        if (Ea::taParty->getNumberOfElements() > 1)
-        {
-            isOldParty = true;
-            Ea::taParty->getNamesSet(names);
-            const Party::MemberList *const members = Ea::taParty->getMembers();
-            FOR_EACHP (Party::MemberList::const_iterator, it, members)
-            {
-                if ((*it)->getOnline())
-                    onlineNames.insert((*it)->getName());
-            }
-            if (localPlayer)
-                onlineNames.insert(localPlayer->getName());
-        }
-    }
-
-    if (!localPlayer)
-        logger->log1("error: localPlayer==0 in SMSG_PARTY_INFO");
-
-    if (Ea::taParty)
-        Ea::taParty->clearMembers();
-
-    const int length = msg.readInt16("len");
-    if (Ea::taParty)
-        Ea::taParty->setName(msg.readString(24, "party name"));
-
-    const int count = (length - 28) / 46;
-    if (localPlayer && Ea::taParty)
-    {
-        localPlayer->setParty(Ea::taParty);
-        localPlayer->setPartyName(Ea::taParty->getName());
-    }
-
-    for (int i = 0; i < count; i++)
-    {
-        const BeingId id = msg.readBeingId("id");
-        std::string nick = msg.readString(24, "nick");
-        std::string map = msg.readString(16, "map");
-        const bool leader = msg.readUInt8("leader") == 0U;
-        const bool online = msg.readUInt8("online") == 0U;
-
-        if (Ea::taParty)
-        {
-            bool joined(false);
-
-            if (isOldParty)
-            {
-                if (names.find(nick) == names.end())
-                {
-                    NotifyManager::notify(NotifyTypes::PARTY_USER_JOINED,
-                        nick);
-                    joined = true;
-                }
-            }
-            PartyMember *const member = Ea::taParty->addMember(id, nick);
-            if (member)
-            {
-                if (!joined && partyTab)
-                {
-                    if (!names.empty() && ((onlineNames.find(nick)
-                        == onlineNames.end() && online)
-                        || (onlineNames.find(nick) != onlineNames.end()
-                        && !online)))
-                    {
-                        partyTab->showOnline(nick, fromBool(online, Online));
-                    }
-
-                    member->setLeader(leader);
-                    member->setOnline(online);
-                    member->setMap(map);
-                }
-                else
-                {
-                    member->setLeader(leader);
-                    member->setOnline(online);
-                    member->setMap(map);
-                }
-            }
-        }
-    }
-
-    if (Ea::taParty)
-        Ea::taParty->sort();
-
-    if (localPlayer && Ea::taParty)
-    {
-        localPlayer->setParty(Ea::taParty);
-        localPlayer->setPartyName(Ea::taParty->getName());
-        if (socialWindow)
-            socialWindow->updateParty();
-    }
-}
-
-void PartyHandler::processPartyMessage(Net::MessageIn &msg)
-{
-    const int msgLength = msg.readInt16("len") - 8;
-    if (msgLength <= 0)
-        return;
-
-    const BeingId id = msg.readBeingId("id");
-    const std::string chatMsg = msg.readString(msgLength, "message");
-
-    if (Ea::taParty && partyTab)
-    {
-        const PartyMember *const member = Ea::taParty->getMember(id);
-        if (member)
-        {
-            partyTab->chatLog(member->getName(), chatMsg);
-        }
-        else
-        {
-            NotifyManager::notify(NotifyTypes::PARTY_UNKNOWN_USER_MSG,
-                chatMsg);
-        }
-    }
-}
-
-void PartyHandler::processPartyInviteResponse(Net::MessageIn &msg)
-{
-    if (!partyTab)
-        return;
-
-    const std::string nick = msg.readString(24, "nick");
-
-    switch (msg.readUInt8("status"))
-    {
-        case 0:
-            NotifyManager::notify(NotifyTypes::PARTY_INVITE_ALREADY_MEMBER,
-                nick);
-            break;
-        case 1:
-            NotifyManager::notify(NotifyTypes::PARTY_INVITE_REFUSED, nick);
-            break;
-        case 2:
-            NotifyManager::notify(NotifyTypes::PARTY_INVITE_DONE, nick);
-            break;
-        case 3:
-            NotifyManager::notify(NotifyTypes::PARTY_INVITE_PARTY_FULL,
-                nick);
-            break;
-        default:
-            NotifyManager::notify(NotifyTypes::PARTY_INVITE_ERROR, nick);
-            break;
-    }
 }
 
 void PartyHandler::changeLeader(const std::string &name A_UNUSED) const
@@ -383,80 +213,6 @@ void PartyHandler::changeLeader(const std::string &name A_UNUSED) const
 
 void PartyHandler::allowInvite(const bool allow A_UNUSED) const
 {
-}
-
-void PartyHandler::processPartyInvited(Net::MessageIn &msg)
-{
-    const BeingId id = msg.readBeingId("account id");
-    const std::string partyName = msg.readString(24, "party name");
-    std::string nick;
-
-    if (actorManager)
-    {
-        const Being *const being = actorManager->findBeing(id);
-        if (being)
-        {
-            if (being->getType() == ActorType::Player)
-                nick = being->getName();
-        }
-    }
-
-    if (socialWindow)
-        socialWindow->showPartyInvite(partyName, nick, 0);
-}
-
-void PartyHandler::processPartyMove(Net::MessageIn &msg)
-{
-    const BeingId id = msg.readBeingId("id");
-    PartyMember *m = nullptr;
-    if (Ea::taParty)
-        m = Ea::taParty->getMember(id);
-    if (m)
-    {
-        msg.readInt32("unused");
-        m->setX(msg.readInt16("x"));
-        m->setY(msg.readInt16("y"));
-        const bool online = msg.readUInt8("online") != 0;
-        if (m->getOnline() != online)
-            partyTab->showOnline(m->getName(), fromBool(online, Online));
-        m->setOnline(online);
-        msg.readString(24, "party");
-        msg.readString(24, "nick");
-        m->setMap(msg.readString(16, "map"));
-    }
-    else
-    {
-        msg.readInt32("unused");
-        msg.readInt16("x");
-        msg.readInt16("y");
-        msg.readUInt8("online");
-        msg.readString(24, "party");
-        msg.readString(24, "nick");
-        msg.readString(16, "map");
-    }
-}
-
-void PartyHandler::processPartyUpdateHp(Net::MessageIn &msg)
-{
-    const BeingId id = msg.readBeingId("id");
-    const int hp = msg.readInt16("hp");
-    const int maxhp = msg.readInt16("max hp");
-    PartyMember *m = nullptr;
-    if (Ea::taParty)
-        m = Ea::taParty->getMember(id);
-    if (m)
-    {
-        m->setHp(hp);
-        m->setMaxHp(maxhp);
-    }
-
-    // The server only sends this when the member is in range, so
-    // lets make sure they get the party hilight.
-    if (actorManager && Ea::taParty)
-    {
-        if (Being *const b = actorManager->findBeing(id))
-            b->setParty(Ea::taParty);
-    }
 }
 
 }  // namespace TmwAthena
