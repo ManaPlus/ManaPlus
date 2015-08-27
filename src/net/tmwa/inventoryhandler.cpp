@@ -32,6 +32,9 @@
 
 #include "listeners/arrowslistener.h"
 
+#include "net/ea/inventoryrecv.h"
+
+#include "net/tmwa/inventoryrecv.h"
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
 
@@ -102,67 +105,67 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_PLAYER_INVENTORY:
-            processPlayerInventory(msg);
+            InventoryRecv::processPlayerInventory(msg);
             break;
 
         case SMSG_PLAYER_STORAGE_ITEMS:
-            processPlayerStorage(msg);
+            InventoryRecv::processPlayerStorage(msg);
             break;
 
         case SMSG_PLAYER_STORAGE_EQUIP:
-            processPlayerStorageEquip(msg);
+            InventoryRecv::processPlayerStorageEquip(msg);
             break;
 
         case SMSG_PLAYER_INVENTORY_ADD:
-            processPlayerInventoryAdd(msg);
+            InventoryRecv::processPlayerInventoryAdd(msg);
             break;
 
         case SMSG_PLAYER_INVENTORY_REMOVE:
-            processPlayerInventoryRemove(msg);
+            Ea::InventoryRecv::processPlayerInventoryRemove(msg);
             break;
 
         case SMSG_PLAYER_INVENTORY_USE:
-            processPlayerInventoryUse(msg);
+            Ea::InventoryRecv::processPlayerInventoryUse(msg);
             break;
 
         case SMSG_ITEM_USE_RESPONSE:
-            processItemUseResponse(msg);
+            Ea::InventoryRecv::processItemUseResponse(msg);
             break;
 
         case SMSG_PLAYER_STORAGE_STATUS:
-            processPlayerStorageStatus(msg);
+            Ea::InventoryRecv::processPlayerStorageStatus(msg);
             break;
 
         case SMSG_PLAYER_STORAGE_ADD:
-            processPlayerStorageAdd(msg);
+            InventoryRecv::processPlayerStorageAdd(msg);
             break;
 
         case SMSG_PLAYER_STORAGE_REMOVE:
-            processPlayerStorageRemove(msg);
+            InventoryRecv::processPlayerStorageRemove(msg);
             break;
 
         case SMSG_PLAYER_STORAGE_CLOSE:
-            processPlayerStorageClose(msg);
+            Ea::InventoryRecv::processPlayerStorageClose(msg);
             break;
 
         case SMSG_PLAYER_EQUIPMENT:
-            processPlayerEquipment(msg);
+            InventoryRecv::processPlayerEquipment(msg);
             break;
 
         case SMSG_PLAYER_EQUIP:
-            processPlayerEquip(msg);
+            InventoryRecv::processPlayerEquip(msg);
             break;
 
         case SMSG_PLAYER_UNEQUIP:
-            processPlayerUnEquip(msg);
+            InventoryRecv::processPlayerUnEquip(msg);
             break;
 
         case SMSG_PLAYER_ATTACK_RANGE:
-            processPlayerAttackRange(msg);
+            Ea::InventoryRecv::processPlayerAttackRange(msg);
             break;
 
         case SMSG_PLAYER_ARROW_EQUIP:
-            processPlayerArrowEquip(msg);
+            Ea::InventoryRecv::processPlayerArrowEquip(msg);
             break;
 
         default:
@@ -254,392 +257,6 @@ void InventoryHandler::favoriteItem(const Item *const item A_UNUSED,
 {
 }
 
-void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
-{
-    BLOCK_START("InventoryHandler::processPlayerEquipment")
-    Inventory *const inventory = localPlayer
-        ? PlayerInfo::getInventory() : nullptr;
-
-    msg.readInt16("len");
-    Equipment *const equipment = PlayerInfo::getEquipment();
-    if (equipment && !equipment->getBackend())
-    {   // look like SMSG_PLAYER_INVENTORY was not received
-        mEquips.clear();
-        equipment->setBackend(&mEquips);
-    }
-    const int number = (msg.getLength() - 4) / 20;
-
-    for (int loop = 0; loop < number; loop++)
-    {
-        const int index = msg.readInt16("index") - INVENTORY_OFFSET;
-        const int itemId = msg.readInt16("item id");
-        const uint8_t itemType = msg.readUInt8("item type");
-        const uint8_t identified = msg.readUInt8("identify");
-
-        msg.readInt16("equip type?");
-        const int equipType = msg.readInt16("equip type");
-        msg.readUInt8("attribute");
-        const uint8_t refine = msg.readUInt8("refine");
-        int cards[4];
-        for (int f = 0; f < 4; f++)
-            cards[f] = msg.readInt16("card");
-
-        if (mDebugInventory)
-        {
-            logger->log("Index: %d, ID: %d, Type: %d, Identified: %d",
-                        index, itemId, itemType, identified);
-        }
-
-        if (inventory)
-        {
-            inventory->setItem(index,
-                itemId,
-                itemType,
-                1,
-                refine,
-                ItemColor_one,
-                fromBool(identified, Identified),
-                Damaged_false,
-                Favorite_false,
-                Equipm_true,
-                Equipped_false);
-            inventory->setCards(index, cards, 4);
-        }
-
-        if (equipType)
-            mEquips.setEquipment(getSlot(equipType), index);
-    }
-    BLOCK_END("InventoryHandler::processPlayerEquipment")
-}
-
-void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
-{
-    BLOCK_START("InventoryHandler::processPlayerInventoryAdd")
-    Inventory *const inventory = localPlayer
-        ? PlayerInfo::getInventory() : nullptr;
-
-    if (PlayerInfo::getEquipment()
-        && !PlayerInfo::getEquipment()->getBackend())
-    {   // look like SMSG_PLAYER_INVENTORY was not received
-        mEquips.clear();
-        PlayerInfo::getEquipment()->setBackend(&mEquips);
-    }
-    const int index = msg.readInt16("index") - INVENTORY_OFFSET;
-    int amount = msg.readInt16("amount");
-    const int itemId = msg.readInt16("item id");
-    const uint8_t identified = msg.readUInt8("identified");
-    msg.readUInt8("attribute");
-    const uint8_t refine = msg.readUInt8("refine");
-    int cards[4];
-    for (int f = 0; f < 4; f++)
-        cards[f] = msg.readInt16("card");
-    const int equipType = msg.readInt16("equip type");
-    const int type = msg.readUInt8("item type");
-
-    const ItemInfo &itemInfo = ItemDB::get(itemId);
-    const unsigned char err = msg.readUInt8("status");
-    BeingId floorId;
-    if (mSentPickups.empty())
-    {
-        floorId = BeingId_zero;
-    }
-    else
-    {
-        floorId = mSentPickups.front();
-        mSentPickups.pop();
-    }
-
-    if (err)
-    {
-        PickupT pickup;
-        switch (err)
-        {
-            case 1:
-                pickup = Pickup::BAD_ITEM;
-                break;
-            case 2:
-                pickup = Pickup::TOO_HEAVY;
-                break;
-            case 3:
-                pickup = Pickup::TOO_FAR;
-                break;
-            case 4:
-                pickup = Pickup::INV_FULL;
-                break;
-            case 5:
-                pickup = Pickup::STACK_FULL;
-                break;
-            case 6:
-                pickup = Pickup::DROP_STEAL;
-                break;
-            default:
-                pickup = Pickup::UNKNOWN;
-                UNIMPLIMENTEDPACKET;
-                break;
-        }
-        if (localPlayer)
-        {
-            localPlayer->pickedUp(itemInfo,
-                0,
-                ItemColor_one,
-                floorId,
-                pickup);
-        }
-    }
-    else
-    {
-        if (localPlayer)
-        {
-            localPlayer->pickedUp(itemInfo,
-                amount,
-                ItemColor_one,
-                floorId,
-                Pickup::OKAY);
-        }
-
-        if (inventory)
-        {
-            const Item *const item = inventory->getItem(index);
-
-            if (item && item->getId() == itemId)
-                amount += item->getQuantity();
-
-            inventory->setItem(index,
-                itemId,
-                type,
-                amount,
-                refine,
-                ItemColor_one,
-                fromBool(identified, Identified),
-                Damaged_false,
-                Favorite_false,
-                fromBool(equipType, Equipm),
-                Equipped_false);
-            inventory->setCards(index, cards, 4);
-        }
-        ArrowsListener::distributeEvent();
-    }
-    BLOCK_END("InventoryHandler::processPlayerInventoryAdd")
-}
-
-void InventoryHandler::processPlayerInventory(Net::MessageIn &msg)
-{
-    BLOCK_START("InventoryHandler::processPlayerInventory")
-    Inventory *const inventory = localPlayer
-        ? PlayerInfo::getInventory() : nullptr;
-
-    if (PlayerInfo::getEquipment())
-    {
-        // Clear inventory - this will be a complete refresh
-        mEquips.clear();
-        PlayerInfo::getEquipment()->setBackend(&mEquips);
-    }
-
-    if (inventory)
-        inventory->clear();
-
-    msg.readInt16("len");
-    const int number = (msg.getLength() - 4) / 18;
-
-    for (int loop = 0; loop < number; loop++)
-    {
-        int cards[4];
-        const int index = msg.readInt16("index") - INVENTORY_OFFSET;
-        const int itemId = msg.readInt16("item id");
-        const uint8_t itemType = msg.readUInt8("item type");
-        const uint8_t identified = msg.readUInt8("identified");
-        const int amount = msg.readInt16("amount");
-        const int arrow = msg.readInt16("arrow");
-        for (int i = 0; i < 4; i++)
-            cards[i] = msg.readInt16("card");
-
-        if (mDebugInventory)
-        {
-            logger->log("Index: %d, ID: %d, Type: %d, Identified: %d, "
-                        "Qty: %d, Cards: %d, %d, %d, %d",
-                        index, itemId, itemType, identified, amount,
-                        cards[0], cards[1], cards[2], cards[3]);
-        }
-
-        // Trick because arrows are not considered equipment
-        const bool isEquipment = arrow & 0x8000;
-
-        if (inventory)
-        {
-            inventory->setItem(index,
-                itemId,
-                itemType,
-                amount,
-                0,
-                ItemColor_one,
-                fromBool(identified, Identified),
-                Damaged_false,
-                Favorite_false,
-                fromBool(isEquipment, Equipm),
-                Equipped_false);
-            inventory->setCards(index, cards, 4);
-        }
-    }
-    BLOCK_END("InventoryHandler::processPlayerInventory")
-}
-
-void InventoryHandler::processPlayerStorage(Net::MessageIn &msg)
-{
-    BLOCK_START("InventoryHandler::processPlayerInventory")
-    mInventoryItems.clear();
-
-    msg.readInt16("len");
-    const int number = (msg.getLength() - 4) / 18;
-
-    for (int loop = 0; loop < number; loop++)
-    {
-        int cards[4];
-        const int index = msg.readInt16("index") - STORAGE_OFFSET;
-        const int itemId = msg.readInt16("item id");
-        const uint8_t itemType = msg.readUInt8("item type");
-        const uint8_t identified = msg.readUInt8("identified");
-        const int amount = msg.readInt16("amount");
-        msg.readInt16("arrow");
-        for (int i = 0; i < 4; i++)
-            cards[i] = msg.readInt16("card");
-
-        if (mDebugInventory)
-        {
-            logger->log("Index: %d, ID: %d, Type: %d, Identified: %d, "
-                        "Qty: %d, Cards: %d, %d, %d, %d",
-                        index, itemId, itemType, identified, amount,
-                        cards[0], cards[1], cards[2], cards[3]);
-        }
-
-        mInventoryItems.push_back(Ea::InventoryItem(index,
-            itemId,
-            itemType,
-            cards,
-            amount,
-            0,
-            ItemColor_one,
-            fromBool(identified, Identified),
-            Damaged_false,
-            Favorite_false,
-            Equipm_false));
-    }
-    BLOCK_END("InventoryHandler::processPlayerInventory")
-}
-
-void InventoryHandler::processPlayerEquip(Net::MessageIn &msg)
-{
-    BLOCK_START("InventoryHandler::processPlayerEquip")
-    const int index = msg.readInt16("index") - INVENTORY_OFFSET;
-    const int equipType = msg.readInt16("equip type");
-    const uint8_t flag = msg.readUInt8("flag");
-
-    if (!flag)
-        NotifyManager::notify(NotifyTypes::EQUIP_FAILED);
-    else
-        mEquips.setEquipment(getSlot(equipType), index);
-    BLOCK_END("InventoryHandler::processPlayerEquip")
-}
-
-void InventoryHandler::processPlayerUnEquip(Net::MessageIn &msg)
-{
-    BLOCK_START("InventoryHandler::processPlayerUnEquip")
-    msg.readInt16("index");
-    const int equipType = msg.readInt16("equip type");
-    const uint8_t flag = msg.readUInt8("flag");
-
-    if (flag)
-        mEquips.setEquipment(getSlot(equipType), -1);
-    if (equipType & 0x8000)
-        ArrowsListener::distributeEvent();
-    BLOCK_END("InventoryHandler::processPlayerUnEquip")
-}
-
-void InventoryHandler::processPlayerStorageEquip(Net::MessageIn &msg)
-{
-    BLOCK_START("InventoryHandler::processPlayerStorageEquip")
-    msg.readInt16("len");
-    const int number = (msg.getLength() - 4) / 20;
-
-    for (int loop = 0; loop < number; loop++)
-    {
-        int cards[4];
-        const int index = msg.readInt16("index") - STORAGE_OFFSET;
-        const int itemId = msg.readInt16("item id");
-        const uint8_t itemType = msg.readUInt8("item type");
-        const uint8_t identified = msg.readUInt8("identified");
-        const int amount = 1;
-        msg.readInt16("equip point?");
-        msg.readInt16("another equip point?");
-        msg.readUInt8("attribute (broken)");
-        const uint8_t refine = msg.readUInt8("refine");
-        for (int i = 0; i < 4; i++)
-            cards[i] = msg.readInt16("card");
-
-        if (mDebugInventory)
-        {
-            logger->log("Index: %d, ID: %d, Type: %d, Identified: %u, "
-                "Qty: %d, Cards: %d, %d, %d, %d, Refine: %u",
-                index, itemId, itemType,
-                static_cast<unsigned int>(identified), amount,
-                cards[0], cards[1], cards[2], cards[3],
-                static_cast<unsigned int>(refine));
-        }
-
-        mInventoryItems.push_back(Ea::InventoryItem(index,
-            itemId,
-            itemType,
-            cards,
-            amount,
-            refine,
-            ItemColor_one,
-            fromBool(identified, Identified),
-            Damaged_false,
-            Favorite_false,
-            Equipm_false));
-    }
-    BLOCK_END("InventoryHandler::processPlayerStorageEquip")
-}
-
-void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
-{
-    BLOCK_START("InventoryHandler::processPlayerStorageAdd")
-    // Move an item into storage
-    const int index = msg.readInt16("index") - STORAGE_OFFSET;
-    const int amount = msg.readInt32("amount");
-    const int itemId = msg.readInt16("item id");
-    const unsigned char identified = msg.readUInt8("identified");
-    msg.readUInt8("attribute");
-    const uint8_t refine = msg.readUInt8("refine");
-    int cards[4];
-    for (int f = 0; f < 4; f++)
-        cards[f] = msg.readInt16("card");
-
-    if (Item *const item = mStorage->getItem(index))
-    {
-        item->setId(itemId, ItemColor_one);
-        item->increaseQuantity(amount);
-    }
-    else
-    {
-        if (mStorage)
-        {
-            mStorage->setItem(index,
-                itemId,
-                0,
-                amount,
-                refine,
-                ItemColor_one,
-                fromBool(identified, Identified),
-                Damaged_false,
-                Favorite_false,
-                Equipm_false,
-                Equipped_false);
-            mStorage->setCards(index, cards, 4);
-        }
-    }
-    BLOCK_END("InventoryHandler::processPlayerStorageAdd")
-}
-
 void InventoryHandler::selectEgg(const Item *const item A_UNUSED) const
 {
 }
@@ -650,24 +267,6 @@ int InventoryHandler::convertFromServerSlot(const int serverSlot) const
         return 0;
 
     return static_cast<int>(EQUIP_CONVERT[serverSlot]);
-}
-
-void InventoryHandler::processPlayerStorageRemove(Net::MessageIn &msg)
-{
-    BLOCK_START("InventoryHandler::processPlayerStorageRemove")
-    // Move an item out of storage
-    const int index = msg.readInt16("index") - STORAGE_OFFSET;
-    const int amount = msg.readInt16("amount");
-    if (mStorage)
-    {
-        if (Item *const item = mStorage->getItem(index))
-        {
-            item->increaseQuantity(-amount);
-            if (item->getQuantity() == 0)
-                mStorage->removeItemAt(index);
-        }
-    }
-    BLOCK_END("InventoryHandler::processPlayerStorageRemove")
 }
 
 }  // namespace TmwAthena

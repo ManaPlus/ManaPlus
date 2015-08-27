@@ -68,40 +68,16 @@ class InventoryHandler notfinal : public Net::InventoryHandler
 
         size_t getSize(const int type) const override final A_WARN_UNUSED;
 
-        void pushPickup(const BeingId floorId)
-        { mSentPickups.push(floorId); }
-
-        static int getSlot(const int eAthenaSlot) A_WARN_UNUSED;
+        void pushPickup(const BeingId floorId);
 
         void destroyStorage() override final;
 
         void forgotStorage() override final;
 
-        Inventory *getStorage() const override final
-        { return mStorage; }
+        Inventory *getStorage() const override final;
 
     protected:
         InventoryHandler();
-
-        static void processPlayerInventoryRemove(Net::MessageIn &msg);
-
-        static void processPlayerInventoryUse(Net::MessageIn &msg);
-
-        static void processItemUseResponse(Net::MessageIn &msg);
-
-        static void processPlayerStorageStatus(Net::MessageIn &msg);
-
-        static void processPlayerStorageClose(Net::MessageIn &msg);
-
-        static void processPlayerAttackRange(Net::MessageIn &msg);
-
-        static void processPlayerArrowEquip(Net::MessageIn &msg);
-
-        static EquipBackend mEquips;
-        static InventoryItems mInventoryItems;
-        static Inventory *mStorage;
-        static PickupQueue mSentPickups;
-        static bool mDebugInventory;
 };
 
 }  // namespace Ea

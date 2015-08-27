@@ -1213,6 +1213,8 @@ manaplus_SOURCES += main.cpp \
 	      net/ea/guildrecv.h \
 	      net/ea/inventoryhandler.cpp \
 	      net/ea/inventoryhandler.h \
+	      net/ea/inventoryrecv.cpp \
+	      net/ea/inventoryrecv.h \
 	      net/ea/itemhandler.cpp \
 	      net/ea/itemhandler.h \
 	      net/ea/loginhandler.cpp \
@@ -1272,6 +1274,8 @@ manaplus_SOURCES += \
 	      net/tmwa/guildrecv.h \
 	      net/tmwa/inventoryhandler.cpp \
 	      net/tmwa/inventoryhandler.h \
+	      net/tmwa/inventoryrecv.cpp \
+	      net/tmwa/inventoryrecv.h \
 	      net/tmwa/itemhandler.cpp \
 	      net/tmwa/itemhandler.h \
 	      net/tmwa/loginhandler.cpp \
@@ -1457,6 +1461,8 @@ manaplus_SOURCES += gui/windows/bankwindow.cpp \
 	      net/eathena/homunculusrecv.h \
 	      net/eathena/inventoryhandler.cpp \
 	      net/eathena/inventoryhandler.h \
+	      net/eathena/inventoryrecv.cpp \
+	      net/eathena/inventoryrecv.h \
 	      net/eathena/itemflags.h \
 	      net/eathena/itemhandler.cpp \
 	      net/eathena/itemhandler.h \

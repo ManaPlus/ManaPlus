@@ -76,25 +76,6 @@ class InventoryHandler final : public MessageHandler,
 
         int getItemIndex() const override final A_WARN_UNUSED
         { return 0; }
-
-    protected:
-        static void processPlayerEquipment(Net::MessageIn &msg);
-
-        static void processPlayerInventoryAdd(Net::MessageIn &msg);
-
-        static void processPlayerInventory(Net::MessageIn &msg);
-
-        static void processPlayerStorage(Net::MessageIn &msg);
-
-        static void processPlayerEquip(Net::MessageIn &msg);
-
-        static void processPlayerUnEquip(Net::MessageIn &msg);
-
-        static void processPlayerStorageEquip(Net::MessageIn &msg);
-
-        static void processPlayerStorageAdd(Net::MessageIn &msg);
-
-        static void processPlayerStorageRemove(Net::MessageIn &msg);
 };
 
 }  // namespace TmwAthena
