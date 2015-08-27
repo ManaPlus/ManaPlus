@@ -57,25 +57,6 @@ class MailHandler final : public MessageHandler, public Net::MailHandler
         void send(const std::string &name,
                   const std::string &title,
                   std::string message) const override final;
-
-    protected:
-        static void processMailOpen(Net::MessageIn &msg);
-
-        static void processMailList(Net::MessageIn &msg);
-
-        static void processReadMail(Net::MessageIn &msg);
-
-        static void processGetAttachment(Net::MessageIn &msg);
-
-        static void processSendMailAck(Net::MessageIn &msg);
-
-        static void processNewMail(Net::MessageIn &msg);
-
-        static void processSetAttachmentAck(Net::MessageIn &msg);
-
-        static void processDeleteAck(Net::MessageIn &msg);
-
-        static void processMailReturn(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

@@ -30,6 +30,7 @@
 
 #include "net/ea/eaprotocol.h"
 
+#include "net/eathena/mailrecv.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
@@ -68,196 +69,43 @@ void MailHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_MAIL_OPEN_WINDOW:
-            processMailOpen(msg);
+            MailRecv::processMailOpen(msg);
             break;
 
         case SMSG_MAIL_MAILS_LIST:
-            processMailList(msg);
+            MailRecv::processMailList(msg);
             break;
 
         case SMSG_MAIL_READ_MAIL:
-            processReadMail(msg);
+            MailRecv::processReadMail(msg);
             break;
 
         case SMSG_MAIL_GET_ATTACHMENT:
-            processGetAttachment(msg);
+            MailRecv::processGetAttachment(msg);
             break;
 
         case SMSG_MAIL_SEND_MAIL_ACK:
-            processSendMailAck(msg);
+            MailRecv::processSendMailAck(msg);
             break;
 
         case SMSG_MAIL_NEW_MAIL:
-            processNewMail(msg);
+            MailRecv::processNewMail(msg);
             break;
 
         case SMSG_MAIL_SET_ATTACHMENT_ACK:
-            processSetAttachmentAck(msg);
+            MailRecv::processSetAttachmentAck(msg);
             break;
 
         case SMSG_MAIL_DELETE_MAIL_ACK:
-            processDeleteAck(msg);
+            MailRecv::processDeleteAck(msg);
             break;
 
         case SMSG_MAIL_RETURN:
-            processMailReturn(msg);
+            MailRecv::processMailReturn(msg);
             break;
 
         default:
             break;
-    }
-}
-
-void MailHandler::processMailOpen(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    const int flag = msg.readInt32("flag");
-    switch (flag)
-    {
-        case 0:  // open window
-            break;
-
-        case 1:  // close window
-            break;
-
-        default:
-            UNIMPLIMENTEDPACKET;
-            break;
-    }
-}
-
-void MailHandler::processMailList(Net::MessageIn &msg)
-{
-    const int count = (msg.readInt16("len") - 8) / 73;
-    const int amount = msg.readInt32("amount");
-    if (count != amount)
-        logger->log("error: wrong mails count");
-    mailWindow->clear();
-    for (int f = 0; f < count; f ++)
-    {
-        MailMessage *const mail = new MailMessage;
-        mail->id = msg.readInt32("message id");
-        mail->title = msg.readString(40, "title");
-        mail->unread = msg.readUInt8("unread flag") ? true : false;
-        mail->sender = msg.readString(24, "sender name");
-        mail->time = msg.readInt32("time stamp");
-        mail->strTime = timeToStr(mail->time);
-        mailWindow->addMail(mail);
-    }
-}
-
-void MailHandler::processReadMail(Net::MessageIn &msg)
-{
-    const int sz = msg.readInt16("len") - 101;
-    MailMessage *mail = new MailMessage;
-    mail->id = msg.readInt32("message id");
-    mail->title = msg.readString(40, "title");
-    mail->sender = msg.readString(24, "sender name");
-    msg.readInt32("unused");
-    mail->money = msg.readInt32("money");
-    mail->itemAmount = msg.readInt32("item amount");
-    mail->itemId = msg.readInt16("item id");
-    mail->itemType = msg.readInt16("item type");
-    mail->itemIdentify = msg.readUInt8("identify");
-    mail->itemAttribute = msg.readUInt8("attribute");
-    mail->itemRefine = msg.readUInt8("refine");
-    for (int f = 0; f < 4; f ++)
-        mail->card[f] = msg.readInt16("card");
-    const int msgLen = msg.readUInt8("msg len");
-    if (msgLen != sz)
-        logger->log("error: wrong message size");
-    mail->text = msg.readString(sz, "message");
-    msg.readUInt8("zero");
-    mail->strTime = timeToStr(mail->time);
-    mailWindow->showMessage(mail);
-}
-
-void MailHandler::processGetAttachment(Net::MessageIn &msg)
-{
-    switch (msg.readUInt8("flag"))
-    {
-        case 0:
-            NotifyManager::notify(NotifyTypes::MAIL_GET_ATTACH_OK);
-            break;
-        case 1:
-            NotifyManager::notify(NotifyTypes::MAIL_GET_ATTACH_ERROR);
-            break;
-        case 2:
-            NotifyManager::notify(NotifyTypes::MAIL_GET_ATTACH_TOO_MANY_ITEMS);
-            break;
-        default:
-            UNIMPLIMENTEDPACKET;
-            break;
-    }
-}
-
-void MailHandler::processSendMailAck(Net::MessageIn &msg)
-{
-    switch (msg.readUInt8("fail flag"))
-    {
-        case 0:
-            NotifyManager::notify(NotifyTypes::MAIL_SEND_OK);
-            break;
-        case 1:
-            NotifyManager::notify(NotifyTypes::MAIL_SEND_ERROR);
-            break;
-        default:
-            UNIMPLIMENTEDPACKET;
-            break;
-    }
-}
-
-void MailHandler::processNewMail(Net::MessageIn &msg)
-{
-    msg.readInt32("message id");
-    const std::string subj = msg.readString(40, "title");
-    const std::string sender = msg.readString(24, "sender name");
-    NotifyManager::notify(NotifyTypes::NEW_MAIL,
-        strprintf(_("You have new mail from %s with subject %s"),
-        sender.c_str(), subj.c_str()));
-    mailHandler->refresh();
-}
-
-void MailHandler::processSetAttachmentAck(Net::MessageIn &msg)
-{
-    const int index = msg.readInt16("index");
-    const int flag = msg.readUInt8("flag");
-    if (flag)
-    {
-        if (index)
-            NotifyManager::notify(NotifyTypes::MAIL_ATTACH_ITEM_ERROR);
-        else
-            NotifyManager::notify(NotifyTypes::MAIL_ATTACH_MONEY_ERROR);
-    }
-}
-
-void MailHandler::processDeleteAck(Net::MessageIn &msg)
-{
-    const int mail = msg.readInt32("message id");
-    const int flag = msg.readInt16("fail flag");
-    if (flag)
-    {
-        NotifyManager::notify(NotifyTypes::MAIL_DELETE_ERROR);
-    }
-    else
-    {
-        NotifyManager::notify(NotifyTypes::MAIL_DELETE_OK);
-        mailWindow->removeMail(mail);
-    }
-}
-
-void MailHandler::processMailReturn(Net::MessageIn &msg)
-{
-    const int mail = msg.readInt32("message id");
-    const int flag = msg.readInt16("fail flag");
-    if (flag)
-    {
-        NotifyManager::notify(NotifyTypes::MAIL_RETURN_ERROR);
-    }
-    else
-    {
-        NotifyManager::notify(NotifyTypes::MAIL_RETURN_OK);
-        mailWindow->removeMail(mail);
     }
 }
 

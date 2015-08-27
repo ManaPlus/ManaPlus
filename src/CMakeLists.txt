@@ -1636,6 +1636,8 @@ SET(SRCS_EATHENA
     net/eathena/loginrecv.h
     net/eathena/mailhandler.cpp
     net/eathena/mailhandler.h
+    net/eathena/mailrecv.cpp
+    net/eathena/mailrecv.h
     net/eathena/maphandler.cpp
     net/eathena/maphandler.h
     net/eathena/maptypeproperty2.h
