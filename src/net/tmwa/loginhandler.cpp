@@ -27,6 +27,9 @@
 
 #include "net/serverfeatures.h"
 
+#include "net/ea/loginrecv.h"
+
+#include "net/tmwa/loginrecv.h"
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/network.h"
 #include "net/tmwa/protocol.h"
@@ -41,11 +44,6 @@ namespace TmwAthena
 {
 
 extern ServerInfo charServer;
-
-enum ServerFlags
-{
-    FLAG_REGISTRATION = 1
-};
 
 LoginHandler::LoginHandler() :
     MessageHandler(),
@@ -74,23 +72,23 @@ void LoginHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_CHAR_PASSWORD_RESPONSE:
-            processCharPasswordResponse(msg);
+            LoginRecv::processCharPasswordResponse(msg);
             break;
 
         case SMSG_UPDATE_HOST:
-            processUpdateHost(msg);
+            Ea::LoginRecv::processUpdateHost(msg);
             break;
 
         case SMSG_LOGIN_DATA:
-            processLoginData(msg);
+            Ea::LoginRecv::processLoginData(msg);
             break;
 
         case SMSG_LOGIN_ERROR:
-            processLoginError(msg);
+            Ea::LoginRecv::processLoginError(msg);
             break;
 
         case SMSG_SERVER_VERSION_RESPONSE:
-            processServerVersion(msg);
+            LoginRecv::processServerVersion(msg);
             break;
 
         default:
@@ -114,7 +112,7 @@ bool LoginHandler::isConnected() const
     if (!mNetwork)
         return false;
 
-    return mVersionResponse && mNetwork->isConnected();
+    return Ea::LoginRecv::mVersionResponse && mNetwork->isConnected();
 }
 
 void LoginHandler::disconnect()
@@ -170,50 +168,6 @@ void LoginHandler::requestUpdateHosts()
 {
 }
 
-void LoginHandler::processServerVersion(Net::MessageIn &msg)
-{
-    const uint8_t b1 = msg.readUInt8("b1");  // -1
-    const uint8_t b2 = msg.readUInt8("b2");
-    const uint8_t b3 = msg.readUInt8("b3");
-    msg.readUInt8("b4");
-    if (b1 == 255)
-    {   // old TMWA
-        const unsigned int options = msg.readInt32("options");
-        mRegistrationEnabled = options & FLAG_REGISTRATION;
-        serverVersion = 0;
-        tmwServerVersion = 0;
-    }
-    else if (b1 >= 0x0d)
-    {   // new TMWA
-        const unsigned int options = msg.readInt32("options");
-        mRegistrationEnabled = options & FLAG_REGISTRATION;
-        serverVersion = 0;
-        tmwServerVersion = (b1 << 16) | (b2 << 8) | b3;
-    }
-    else
-    {   // eAthena
-        const unsigned int options = msg.readInt32("options");
-        mRegistrationEnabled = options & FLAG_REGISTRATION;
-        serverVersion = 0;
-        tmwServerVersion = 0;
-    }
-    if (serverVersion > 0)
-        logger->log("Evol server version: %d", serverVersion);
-    else if (tmwServerVersion > 0)
-        logger->log("Tmw server version: x%06x", tmwServerVersion);
-    else
-        logger->log("Server without version");
-
-    if (serverVersion < 5)
-    {
-        if (client->getState() != STATE_LOGIN)
-            client->setState(STATE_LOGIN);
-    }
-
-    // Leave this last
-    mVersionResponse = true;
-}
-
 int LoginHandler::supportedOptionalActions() const
 {
     return Net::RegistrationOptions::SetGenderOnRegister;
@@ -221,42 +175,6 @@ int LoginHandler::supportedOptionalActions() const
 
 void LoginHandler::sendVersion() const
 {
-}
-
-void LoginHandler::processCharPasswordResponse(Net::MessageIn &msg)
-{
-    // 0: acc not found, 1: success, 2: password mismatch, 3: pass too short
-    const uint8_t errMsg = msg.readUInt8("result code");
-    // Successful pass change
-    if (errMsg == 1)
-    {
-        client->setState(STATE_CHANGEPASSWORD_SUCCESS);
-    }
-    // pass change failed
-    else
-    {
-        switch (errMsg)
-        {
-            case 0:
-                errorMessage =
-                    // TRANSLATORS: error message
-                    _("Account was not found. Please re-login.");
-                break;
-            case 2:
-                // TRANSLATORS: error message
-                errorMessage = _("Old password incorrect.");
-                break;
-            case 3:
-                // TRANSLATORS: error message
-                errorMessage = _("New password too short.");
-                break;
-            default:
-                // TRANSLATORS: error message
-                errorMessage = _("Unknown error.");
-                break;
-        }
-        client->setState(STATE_ACCOUNTCHANGE_ERROR);
-    }
 }
 
 void LoginHandler::ping() const

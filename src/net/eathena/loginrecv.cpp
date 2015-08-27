@@ -1,0 +1,201 @@
+/*
+ *  The ManaPlus Client
+ *  Copyright (C) 2004-2009  The Mana World Development Team
+ *  Copyright (C) 2009-2010  The Mana Developers
+ *  Copyright (C) 2011-2015  The ManaPlus Developers
+ *
+ *  This file is part of The ManaPlus Client.
+ *
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#include "net/eathena/loginrecv.h"
+
+#include "client.h"
+
+#include "gui/windows/logindialog.h"
+
+#include "net/generalhandler.h"
+#include "net/logindata.h"
+#include "net/serverfeatures.h"
+
+#include "net/eathena/messageout.h"
+#include "net/eathena/network.h"
+#include "net/eathena/protocol.h"
+
+#include "utils/gettext.h"
+#include "utils/paths.h"
+
+#include "debug.h"
+
+namespace EAthena
+{
+
+extern ServerInfo charServer;
+
+void LoginRecv::processLoginError2(Net::MessageIn &msg)
+{
+    const uint32_t code = msg.readInt32("error");
+    msg.readString(20, "error message");
+    logger->log("Login::error code: %u", code);
+
+    switch (code)
+    {
+        case 0:
+            // TRANSLATORS: error message
+            errorMessage = _("Unregistered ID.");
+            break;
+        case 1:
+            // TRANSLATORS: error message
+            errorMessage = _("Wrong password.");
+            LoginDialog::savedPassword.clear();
+            break;
+        case 2:
+            // TRANSLATORS: error message
+            errorMessage = _("Account expired.");
+            break;
+        case 3:
+            // TRANSLATORS: error message
+            errorMessage = _("Rejected from server.");
+            break;
+        case 4:
+            // TRANSLATORS: error message
+            errorMessage = _("You have been permanently banned from "
+                              "the game. Please contact the GM team.");
+            break;
+        case 5:
+            // TRANSLATORS: error message
+            errorMessage = _("Client too old.");
+            break;
+        case 6:
+            // TRANSLATORS: error message
+            errorMessage = strprintf(_("You have been temporarily "
+                                        "banned from the game until "
+                                        "%s.\nPlease contact the GM "
+                                        "team via the forums."),
+                                        msg.readString(20, "date").c_str());
+            break;
+        case 7:
+            // look like unused
+            // TRANSLATORS: error message
+            errorMessage = _("Server overpopulated.");
+            break;
+        case 9:
+            // look like unused
+            // TRANSLATORS: error message
+            errorMessage = _("This user name is already taken.");
+            break;
+        case 10:
+            // look like unused
+            // TRANSLATORS: error message
+            errorMessage = _("Wrong name.");
+            break;
+        case 11:
+            // look like unused
+            // TRANSLATORS: error message
+            errorMessage = _("Incorrect email.");
+            break;
+        case 99:
+            // look like unused
+            // TRANSLATORS: error message
+            errorMessage = _("Username permanently erased.");
+            break;
+        default:
+            // TRANSLATORS: error message
+            errorMessage = _("Unknown error.");
+            UNIMPLIMENTEDPACKET;
+            break;
+    }
+    client->setState(STATE_ERROR);
+}
+
+void LoginRecv::processUpdateHost2(Net::MessageIn &msg)
+{
+    const int len = msg.readInt16("len") - 4;
+    const std::string updateHost = msg.readString(len, "host");
+
+    splitToStringVector(loginData.updateHosts, updateHost, '|');
+    FOR_EACH (StringVectIter, it, loginData.updateHosts)
+    {
+        if (!checkPath(*it))
+        {
+            logger->log1("Warning: incorrect update server name");
+            loginData.updateHosts.clear();
+        break;
+        }
+    }
+
+    logger->log("Received update hosts \"%s\" from login server.",
+        updateHost.c_str());
+
+    if (client->getState() == STATE_PRE_LOGIN)
+        client->setState(STATE_LOGIN);
+}
+
+void LoginRecv::processServerVersion(Net::MessageIn &msg)
+{
+    msg.readInt16("len");
+    msg.readInt32("unused");
+    serverVersion = msg.readInt32("server version");
+    if (serverVersion > 0)
+        logger->log("Evol2 server version: %d", serverVersion);
+    else
+        logger->log("Hercules without version");
+    client->setState(STATE_LOGIN);
+}
+
+void LoginRecv::processCondingKey(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+    const int sz = msg.readInt16("len") - 4;
+    msg.readString(sz, "coding key");
+}
+
+void LoginRecv::processCharPasswordResponse(Net::MessageIn &msg)
+{
+    // 0: acc not found, 1: success, 2: password mismatch, 3: pass too short
+    const uint8_t errMsg = msg.readUInt8("result code");
+    // Successful pass change
+    if (errMsg == 1)
+    {
+        client->setState(STATE_CHANGEPASSWORD_SUCCESS);
+    }
+    // pass change failed
+    else
+    {
+        switch (errMsg)
+        {
+            case 0:
+                errorMessage =
+                    // TRANSLATORS: error message
+                    _("Account was not found. Please re-login.");
+                break;
+            case 2:
+                // TRANSLATORS: error message
+                errorMessage = _("Old password incorrect.");
+                break;
+            case 3:
+                // TRANSLATORS: error message
+                errorMessage = _("New password too short.");
+                break;
+            default:
+                // TRANSLATORS: error message
+                errorMessage = _("Unknown error.");
+                break;
+        }
+        client->setState(STATE_ACCOUNTCHANGE_ERROR);
+    }
+}
+
+}  // namespace EAthena

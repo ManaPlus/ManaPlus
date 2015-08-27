@@ -30,6 +30,9 @@
 #include "net/logindata.h"
 #include "net/serverfeatures.h"
 
+#include "net/ea/loginrecv.h"
+
+#include "net/eathena/loginrecv.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/network.h"
 #include "net/eathena/protocol.h"
@@ -74,31 +77,31 @@ void LoginHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_LOGIN_DATA:
-            processLoginData(msg);
+            Ea::LoginRecv::processLoginData(msg);
             break;
 
         case SMSG_LOGIN_ERROR:
-            processLoginError(msg);
+            Ea::LoginRecv::processLoginError(msg);
             break;
 
         case SMSG_LOGIN_ERROR2:
-            processLoginError2(msg);
+            LoginRecv::processLoginError2(msg);
             break;
 
         case SMSG_SERVER_VERSION_RESPONSE:
-            processServerVersion(msg);
+            LoginRecv::processServerVersion(msg);
             break;
 
         case SMSG_UPDATE_HOST:
-            processUpdateHost(msg);
+            Ea::LoginRecv::processUpdateHost(msg);
             break;
 
         case SMSG_LOGIN_CODING_KEY:
-            processCondingKey(msg);
+            LoginRecv::processCondingKey(msg);
             break;
 
         case SMSG_CHAR_PASSWORD_RESPONSE:
-            processCharPasswordResponse(msg);
+            LoginRecv::processCharPasswordResponse(msg);
             break;
 
         default:
@@ -175,105 +178,6 @@ ServerInfo *LoginHandler::getCharServer() const
     return &charServer;
 }
 
-void LoginHandler::processLoginError2(Net::MessageIn &msg)
-{
-    const uint32_t code = msg.readInt32("error");
-    msg.readString(20, "error message");
-    logger->log("Login::error code: %u", code);
-
-    switch (code)
-    {
-        case 0:
-            // TRANSLATORS: error message
-            errorMessage = _("Unregistered ID.");
-            break;
-        case 1:
-            // TRANSLATORS: error message
-            errorMessage = _("Wrong password.");
-            LoginDialog::savedPassword.clear();
-            break;
-        case 2:
-            // TRANSLATORS: error message
-            errorMessage = _("Account expired.");
-            break;
-        case 3:
-            // TRANSLATORS: error message
-            errorMessage = _("Rejected from server.");
-            break;
-        case 4:
-            // TRANSLATORS: error message
-            errorMessage = _("You have been permanently banned from "
-                              "the game. Please contact the GM team.");
-            break;
-        case 5:
-            // TRANSLATORS: error message
-            errorMessage = _("Client too old.");
-            break;
-        case 6:
-            // TRANSLATORS: error message
-            errorMessage = strprintf(_("You have been temporarily "
-                                        "banned from the game until "
-                                        "%s.\nPlease contact the GM "
-                                        "team via the forums."),
-                                        msg.readString(20, "date").c_str());
-            break;
-        case 7:
-            // look like unused
-            // TRANSLATORS: error message
-            errorMessage = _("Server overpopulated.");
-            break;
-        case 9:
-            // look like unused
-            // TRANSLATORS: error message
-            errorMessage = _("This user name is already taken.");
-            break;
-        case 10:
-            // look like unused
-            // TRANSLATORS: error message
-            errorMessage = _("Wrong name.");
-            break;
-        case 11:
-            // look like unused
-            // TRANSLATORS: error message
-            errorMessage = _("Incorrect email.");
-            break;
-        case 99:
-            // look like unused
-            // TRANSLATORS: error message
-            errorMessage = _("Username permanently erased.");
-            break;
-        default:
-            // TRANSLATORS: error message
-            errorMessage = _("Unknown error.");
-            UNIMPLIMENTEDPACKET;
-            break;
-    }
-    client->setState(STATE_ERROR);
-}
-
-void LoginHandler::processUpdateHost2(Net::MessageIn &msg)
-{
-    const int len = msg.readInt16("len") - 4;
-    const std::string updateHost = msg.readString(len, "host");
-
-    splitToStringVector(loginData.updateHosts, updateHost, '|');
-    FOR_EACH (StringVectIter, it, loginData.updateHosts)
-    {
-        if (!checkPath(*it))
-        {
-            logger->log1("Warning: incorrect update server name");
-            loginData.updateHosts.clear();
-        break;
-        }
-    }
-
-    logger->log("Received update hosts \"%s\" from login server.",
-        updateHost.c_str());
-
-    if (client->getState() == STATE_PRE_LOGIN)
-        client->setState(STATE_LOGIN);
-}
-
 void LoginHandler::sendVersion() const
 {
     createOutPacket(CMSG_SERVER_VERSION_REQUEST);
@@ -283,25 +187,6 @@ void LoginHandler::sendVersion() const
     outMsg.writeInt32(0, "unused");
     outMsg.writeInt32(0, "unused");
     generalHandler->flushSend();
-}
-
-void LoginHandler::processServerVersion(Net::MessageIn &msg)
-{
-    msg.readInt16("len");
-    msg.readInt32("unused");
-    serverVersion = msg.readInt32("server version");
-    if (serverVersion > 0)
-        logger->log("Evol2 server version: %d", serverVersion);
-    else
-        logger->log("Hercules without version");
-    client->setState(STATE_LOGIN);
-}
-
-void LoginHandler::processCondingKey(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    const int sz = msg.readInt16("len") - 4;
-    msg.readString(sz, "coding key");
 }
 
 int LoginHandler::supportedOptionalActions() const
@@ -321,42 +206,6 @@ void LoginHandler::ping() const
     outMsg.writeInt32(0, "unused");
     outMsg.writeInt32(0, "unused");
     outMsg.writeInt32(0, "unused");
-}
-
-void LoginHandler::processCharPasswordResponse(Net::MessageIn &msg)
-{
-    // 0: acc not found, 1: success, 2: password mismatch, 3: pass too short
-    const uint8_t errMsg = msg.readUInt8("result code");
-    // Successful pass change
-    if (errMsg == 1)
-    {
-        client->setState(STATE_CHANGEPASSWORD_SUCCESS);
-    }
-    // pass change failed
-    else
-    {
-        switch (errMsg)
-        {
-            case 0:
-                errorMessage =
-                    // TRANSLATORS: error message
-                    _("Account was not found. Please re-login.");
-                break;
-            case 2:
-                // TRANSLATORS: error message
-                errorMessage = _("Old password incorrect.");
-                break;
-            case 3:
-                // TRANSLATORS: error message
-                errorMessage = _("New password too short.");
-                break;
-            default:
-                // TRANSLATORS: error message
-                errorMessage = _("Unknown error.");
-                break;
-        }
-        client->setState(STATE_ACCOUNTCHANGE_ERROR);
-    }
 }
 
 }  // namespace EAthena

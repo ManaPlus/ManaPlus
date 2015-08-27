@@ -70,8 +70,7 @@ class LoginHandler notfinal : public Net::LoginHandler
 
         virtual ServerInfo *getCharServer() const A_WARN_UNUSED = 0;
 
-        const Token &getToken() const A_WARN_UNUSED
-        { return mToken; }
+        const Token &getToken() const A_WARN_UNUSED;
 
         void logout() const override final;
 
@@ -86,21 +85,9 @@ class LoginHandler notfinal : public Net::LoginHandler
     protected:
         LoginHandler();
 
-        static void processUpdateHost(Net::MessageIn &msg);
-
-        static void processLoginData(Net::MessageIn &msg);
-
-        static void processLoginError(Net::MessageIn &msg);
-
         virtual void sendLoginRegister(const std::string &username,
                                        const std::string &password,
                                        const std::string &email) const = 0;
-
-        static std::string mUpdateHost;
-        static Worlds mWorlds;
-        static Token mToken;
-        static bool mVersionResponse;
-        static bool mRegistrationEnabled;
 };
 
 }  // namespace Ea

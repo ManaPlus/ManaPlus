@@ -37,6 +37,7 @@
 #include "net/logindata.h"
 #include "net/messagein.h"
 
+#include "net/ea/loginrecv.h"
 #include "net/ea/token.h"
 
 #include "debug.h"
@@ -44,30 +45,24 @@
 namespace Ea
 {
 
-std::string LoginHandler::mUpdateHost;
-Worlds LoginHandler::mWorlds;
-Token LoginHandler::mToken;
-bool LoginHandler::mVersionResponse = false;
-bool LoginHandler::mRegistrationEnabled = true;
-
 LoginHandler::LoginHandler() :
     Net::LoginHandler()
 {
-    mVersionResponse = false;
-    mRegistrationEnabled = true;
-    mUpdateHost.clear();
-    mWorlds.clear();
-    mToken.clear();
+    LoginRecv::mVersionResponse = false;
+    LoginRecv::mRegistrationEnabled = true;
+    LoginRecv::mUpdateHost.clear();
+    LoginRecv::mWorlds.clear();
+    LoginRecv::mToken.clear();
 }
 
 LoginHandler::~LoginHandler()
 {
-    delete_all(mWorlds);
+    delete_all(LoginRecv::mWorlds);
 }
 
 bool LoginHandler::isRegistrationEnabled() const
 {
-    return mRegistrationEnabled;
+    return LoginRecv::mRegistrationEnabled;
 }
 
 void LoginHandler::getRegistrationDetails() const
@@ -88,17 +83,25 @@ void LoginHandler::loginAccount(LoginData *const loginData1) const
 void LoginHandler::chooseServer(const unsigned int server,
                                 const bool persistentIp) const
 {
-    if (static_cast<size_t>(server) >= mWorlds.size() || !mWorlds[server])
+    if (static_cast<size_t>(server) >= LoginRecv::mWorlds.size() ||
+        !LoginRecv::mWorlds[server])
+    {
         return;
+    }
 
     ServerInfo *const charServer = getCharServer();
     if (charServer)
     {
         if (config.getBoolValue("usePersistentIP") || persistentIp)
+        {
             charServer->hostname = settings.serverName;
+        }
         else
-            charServer->hostname = ipToString(mWorlds[server]->address);
-        charServer->port = mWorlds[server]->port;
+        {
+            charServer->hostname = ipToString(
+                LoginRecv::mWorlds[server]->address);
+        }
+        charServer->port = LoginRecv::mWorlds[server]->port;
     }
 
     client->setState(STATE_UPDATE);
@@ -131,137 +134,13 @@ void LoginHandler::registerAccount(const LoginData *const loginData1) const
 
 const Worlds &LoginHandler::getWorlds() const
 {
-    return mWorlds;
+    return LoginRecv::mWorlds;
 }
 
 void LoginHandler::clearWorlds()
 {
-    delete_all(mWorlds);
-    mWorlds.clear();
-}
-
-void LoginHandler::processUpdateHost(Net::MessageIn &msg)
-{
-    const int len = msg.readInt16("len") - 4;
-    mUpdateHost = msg.readString(len, "update host");
-
-    if (!checkPath(mUpdateHost))
-    {
-        mUpdateHost.clear();
-        logger->log1("Warning: incorrect update server name");
-    }
-    loginData.updateHost = mUpdateHost;
-
-    logger->log("Received update host \"%s\" from login server.",
-        mUpdateHost.c_str());
-}
-
-void LoginHandler::processLoginData(Net::MessageIn &msg)
-{
-    msg.readInt16("len");
-
-    loginHandler->clearWorlds();
-
-    const int worldCount = (msg.getLength() - 47) / 32;
-
-    mToken.session_ID1 = msg.readInt32("session id1");
-    mToken.account_ID = msg.readBeingId("accound id");
-    mToken.session_ID2 = msg.readInt32("session id2");
-    msg.readInt32("old ip");
-    loginData.lastLogin = msg.readString(24, "last login");
-    msg.readInt16("unused");
-
-    // reserve bits for future usage
-    mToken.sex = Being::intToGender(static_cast<uint8_t>(
-        msg.readUInt8("gender") & 3U));
-
-    for (int i = 0; i < worldCount; i++)
-    {
-        WorldInfo *const world = new WorldInfo;
-
-        world->address = msg.readInt32("ip address");
-        world->port = msg.readInt16("port");
-        world->name = msg.readString(20, "name");
-        world->online_users = msg.readInt16("online number");
-        config.setValue("updatehost", mUpdateHost);
-        world->updateHost = mUpdateHost;
-        msg.readInt16("maintenance");
-        msg.readInt16("new");
-
-        logger->log("Network: Server: %s (%s:%d)", world->name.c_str(),
-            ipToString(world->address), world->port);
-
-        mWorlds.push_back(world);
-    }
-    client->setState(STATE_WORLD_SELECT);
-}
-
-void LoginHandler::processLoginError(Net::MessageIn &msg)
-{
-    const uint8_t code = msg.readUInt8("error");
-    logger->log("Login::error code: %u", static_cast<unsigned int>(code));
-    std::string date = msg.readString(20, "date");
-
-    switch (code)
-    {
-        case 0:
-            // TRANSLATORS: error message
-            errorMessage = _("Unregistered ID.");
-            break;
-        case 1:
-            // TRANSLATORS: error message
-            errorMessage = _("Wrong password.");
-            LoginDialog::savedPassword.clear();
-            break;
-        case 2:
-            // TRANSLATORS: error message
-            errorMessage = _("Account expired.");
-            break;
-        case 3:
-            // TRANSLATORS: error message
-            errorMessage = _("Rejected from server.");
-            break;
-        case 4:
-            // TRANSLATORS: error message
-            errorMessage = _("You have been permanently banned from "
-                              "the game. Please contact the GM team.");
-            break;
-        case 5:
-            // TRANSLATORS: error message
-            errorMessage = _("Client too old.");
-            break;
-        case 6:
-            // TRANSLATORS: error message
-            errorMessage = strprintf(_("You have been temporarily "
-                "banned from the game until %s.\nPlease contact the GM "
-                "team via the forums."), date.c_str());
-            break;
-        case 7:
-            // TRANSLATORS: error message
-            errorMessage = _("Server overpopulated.");
-            break;
-        case 9:
-            // TRANSLATORS: error message
-            errorMessage = _("This user name is already taken.");
-            break;
-        case 10:
-            // TRANSLATORS: error message
-            errorMessage = _("Wrong name.");
-            break;
-        case 11:
-            // TRANSLATORS: error message
-            errorMessage = _("Incorrect email.");
-            break;
-        case 99:
-            // TRANSLATORS: error message
-            errorMessage = _("Username permanently erased.");
-            break;
-        default:
-            // TRANSLATORS: error message
-            errorMessage = _("Unknown error.");
-            break;
-    }
-    client->setState(STATE_ERROR);
+    delete_all(LoginRecv::mWorlds);
+    LoginRecv::mWorlds.clear();
 }
 
 void LoginHandler::loginOrRegister(LoginData *const data) const
@@ -300,6 +179,11 @@ void LoginHandler::unregisterAccount(const std::string &username A_UNUSED,
                                      const std::string &password
                                      A_UNUSED) const
 {
+}
+
+const Token &LoginHandler::getToken() const
+{
+    return LoginRecv::mToken;
 }
 
 }  // namespace Ea
