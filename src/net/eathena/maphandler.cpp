@@ -22,6 +22,7 @@
 
 #include "logger.h"
 
+#include "net/eathena/maprecv.h"
 #include "net/eathena/protocol.h"
 
 #include "debug.h"
@@ -51,52 +52,24 @@ void MapHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_INSTANCE_START:
-            processInstanceStart(msg);
+            MapRecv::processInstanceStart(msg);
             break;
 
         case SMSG_INSTANCE_CREATE:
-            processInstanceCreate(msg);
+            MapRecv::processInstanceCreate(msg);
             break;
 
         case SMSG_INSTANCE_INFO:
-            processInstanceInfo(msg);
+            MapRecv::processInstanceInfo(msg);
             break;
 
         case SMSG_INSTANCE_DELETE:
-            processInstanceDelete(msg);
+            MapRecv::processInstanceDelete(msg);
             break;
 
         default:
             break;
     }
-}
-
-void MapHandler::processInstanceStart(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    msg.readString(61, "instance name");
-    msg.readInt16("flag");
-}
-
-void MapHandler::processInstanceCreate(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    msg.readInt16("flag");
-}
-
-void MapHandler::processInstanceInfo(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    msg.readString(61, "instance name");
-    msg.readInt32("remaining time");
-    msg.readInt32("no players close time");
-}
-
-void MapHandler::processInstanceDelete(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    msg.readInt32("flag");
-    msg.readInt32("unused");
 }
 
 }  // namespace EAthena

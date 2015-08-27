@@ -1640,6 +1640,8 @@ SET(SRCS_EATHENA
     net/eathena/mailrecv.h
     net/eathena/maphandler.cpp
     net/eathena/maphandler.h
+    net/eathena/maprecv.cpp
+    net/eathena/maprecv.h
     net/eathena/maptypeproperty2.h
     net/eathena/markethandler.cpp
     net/eathena/markethandler.h
