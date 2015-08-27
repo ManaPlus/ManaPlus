@@ -38,19 +38,6 @@ class ItemHandler final : public MessageHandler, public Ea::ItemHandler
         A_DELETE_COPY(ItemHandler)
 
         void handleMessage(Net::MessageIn &msg) override final;
-
-    protected:
-        static void processItemDropped(Net::MessageIn &msg);
-
-        static void processItemDropped2(Net::MessageIn &msg);
-
-        static void processGraffiti(Net::MessageIn &msg);
-
-        static void processItemMvpDropped(Net::MessageIn &msg);
-
-        static void processItemVisible(Net::MessageIn &msg);
-
-        static void processItemVisible2(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

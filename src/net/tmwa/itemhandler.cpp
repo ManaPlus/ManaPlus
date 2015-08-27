@@ -24,6 +24,9 @@
 
 #include "actormanager.h"
 
+#include "net/ea/itemrecv.h"
+
+#include "net/tmwa/itemrecv.h"
 #include "net/tmwa/protocol.h"
 
 #include "debug.h"
@@ -51,76 +54,21 @@ void ItemHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_ITEM_VISIBLE:
-            processItemVisible(msg);
+            ItemRecv::processItemVisible(msg);
             break;
 
         case SMSG_ITEM_DROPPED:
-            processItemDropped(msg);
+            ItemRecv::processItemDropped(msg);
             break;
 
         case SMSG_ITEM_REMOVE:
-            processItemRemove(msg);
+            Ea::ItemRecv::processItemRemove(msg);
             break;
 
         default:
             break;
     }
     BLOCK_END("ItemHandler::handleMessage")
-}
-
-void ItemHandler::processItemDropped(Net::MessageIn &msg)
-{
-    const BeingId id = msg.readBeingId("item object id");
-    const int itemId = msg.readInt16("item id");
-    const Identified identify = fromInt(msg.readUInt8("identify"), Identified);
-    const int x = msg.readInt16("x");
-    const int y = msg.readInt16("y");
-    const int subX = static_cast<int>(msg.readInt8("sub x"));
-    const int subY = static_cast<int>(msg.readInt8("sub y"));
-    const int amount = msg.readInt16("amount");
-
-    if (actorManager)
-    {
-        actorManager->createItem(id,
-            itemId,
-            x, y,
-            0,
-            amount,
-            0,
-            ItemColor_one,
-            identify,
-            Damaged_false,
-            subX, subY,
-            nullptr);
-    }
-}
-
-void ItemHandler::processItemVisible(Net::MessageIn &msg)
-{
-    const BeingId id = msg.readBeingId("item object id");
-    const int itemId = msg.readInt16("item id");
-    const Identified identified = fromInt(
-        msg.readUInt8("identify"), Identified);
-    const int x = msg.readInt16("x");
-    const int y = msg.readInt16("y");
-    const int amount = msg.readInt16("amount");
-    const int subX = static_cast<int>(msg.readInt8("sub x"));
-    const int subY = static_cast<int>(msg.readInt8("sub y"));
-
-    if (actorManager)
-    {
-        actorManager->createItem(id,
-            itemId,
-            x, y,
-            0,
-            amount,
-            0,
-            ItemColor_one,
-            identified,
-            Damaged_false,
-            subX, subY,
-            nullptr);
-    }
 }
 
 }  // namespace TmwAthena

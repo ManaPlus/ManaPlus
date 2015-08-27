@@ -20,25 +20,22 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "net/ea/itemhandler.h"
+#ifndef NET_EA_ITEMRECV_H
+#define NET_EA_ITEMRECV_H
 
-#include "actormanager.h"
+#include "localconsts.h"
 
-#include "net/messagein.h"
-
-#include "net/ea/itemrecv.h"
-
-#include "debug.h"
+namespace Net
+{
+    class MessageIn;
+}
 
 namespace Ea
 {
-
-ItemHandler::ItemHandler()
-{
-}
-
-ItemHandler::~ItemHandler()
-{
-}
-
+    namespace ItemRecv
+    {
+        void processItemRemove(Net::MessageIn &msg);
+    }  // namespace ItemRecv
 }  // namespace Ea
+
+#endif  // NET_EA_ITEMRECV_H

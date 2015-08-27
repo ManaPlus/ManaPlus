@@ -41,9 +41,6 @@ class ItemHandler notfinal
         A_DELETE_COPY(ItemHandler)
 
         virtual ~ItemHandler();
-
-    protected:
-        static void processItemRemove(Net::MessageIn &msg);
 };
 
 }  // namespace Ea

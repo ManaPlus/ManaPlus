@@ -20,25 +20,20 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef NET_TMWA_ITEMRECV_H
+#define NET_TMWA_ITEMRECV_H
+
+#include "net/tmwa/messagehandler.h"
+
 #include "net/ea/itemhandler.h"
 
-#include "actormanager.h"
-
-#include "net/messagein.h"
-
-#include "net/ea/itemrecv.h"
-
-#include "debug.h"
-
-namespace Ea
+namespace TmwAthena
 {
+    namespace ItemRecv
+    {
+        void processItemDropped(Net::MessageIn &msg);
+        void processItemVisible(Net::MessageIn &msg);
+    }  // namespace ItemRecv
+}  // namespace TmwAthena
 
-ItemHandler::ItemHandler()
-{
-}
-
-ItemHandler::~ItemHandler()
-{
-}
-
-}  // namespace Ea
+#endif  // NET_TMWA_ITEMRECV_H

@@ -20,25 +20,27 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "net/ea/itemhandler.h"
+#include "net/ea/itemrecv.h"
 
 #include "actormanager.h"
 
 #include "net/messagein.h"
-
-#include "net/ea/itemrecv.h"
 
 #include "debug.h"
 
 namespace Ea
 {
 
-ItemHandler::ItemHandler()
+void ItemRecv::processItemRemove(Net::MessageIn &msg)
 {
-}
-
-ItemHandler::~ItemHandler()
-{
+    if (actorManager)
+    {
+        if (FloorItem *const item = actorManager
+            ->findItem(msg.readBeingId("floor item id")))
+        {
+            actorManager->destroy(item);
+        }
+    }
 }
 
 }  // namespace Ea

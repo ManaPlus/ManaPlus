@@ -28,6 +28,9 @@
 
 #include "enums/simpletypes/damaged.h"
 
+#include "net/ea/itemrecv.h"
+
+#include "net/eathena/itemrecv.h"
 #include "net/eathena/protocol.h"
 
 #include "debug.h"
@@ -58,185 +61,35 @@ void ItemHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_ITEM_VISIBLE:
-            processItemVisible(msg);
+            ItemRecv::processItemVisible(msg);
             break;
 
         case SMSG_ITEM_DROPPED:
-            processItemDropped(msg);
+            ItemRecv::processItemDropped(msg);
             break;
 
         case SMSG_ITEM_REMOVE:
-            processItemRemove(msg);
+            Ea::ItemRecv::processItemRemove(msg);
             break;
 
         case SMSG_GRAFFITI_VISIBLE:
-            processGraffiti(msg);
+            ItemRecv::processGraffiti(msg);
             break;
 
         case SMSG_ITEM_MVP_DROPPED:
-            processItemMvpDropped(msg);
+            ItemRecv::processItemMvpDropped(msg);
             break;
 
         case SMSG_ITEM_VISIBLE2:
-            processItemVisible2(msg);
+            ItemRecv::processItemVisible2(msg);
             break;
 
         case SMSG_ITEM_DROPPED2:
-            processItemDropped2(msg);
+            ItemRecv::processItemDropped2(msg);
             break;
 
         default:
             break;
-    }
-}
-
-void ItemHandler::processItemDropped(Net::MessageIn &msg)
-{
-    const BeingId id = msg.readBeingId("id");
-    const int itemId = msg.readInt16("item id");
-    const int itemType = msg.readInt16("type");
-    const Identified identified = fromInt(
-        msg.readUInt8("identify"), Identified);
-    const int x = msg.readInt16("x");
-    const int y = msg.readInt16("y");
-    const int subX = static_cast<int>(msg.readInt8("subx"));
-    const int subY = static_cast<int>(msg.readInt8("suby"));
-    const int amount = msg.readInt16("count");
-
-    if (actorManager)
-    {
-        actorManager->createItem(id,
-            itemId,
-            x, y,
-            itemType,
-            amount,
-            0,
-            ItemColor_one,
-            identified,
-            Damaged_false,
-            subX, subY,
-            nullptr);
-    }
-}
-
-void ItemHandler::processItemDropped2(Net::MessageIn &msg)
-{
-    const BeingId id = msg.readBeingId("id");
-    const int itemId = msg.readInt16("item id");
-    const int itemType = msg.readUInt8("type");
-    const Identified identified = fromInt(
-        msg.readUInt8("identify"), Identified);
-    const Damaged damaged = fromBool(msg.readUInt8("attribute"), Damaged);
-    const uint8_t refine = msg.readUInt8("refine");
-    int cards[4];
-    for (int f = 0; f < 4; f++)
-        cards[f] = msg.readInt16("card");
-    const int x = msg.readInt16("x");
-    const int y = msg.readInt16("y");
-    const int amount = msg.readInt16("amount");
-    const int subX = static_cast<int>(msg.readInt8("subx"));
-    const int subY = static_cast<int>(msg.readInt8("suby"));
-
-    if (actorManager)
-    {
-        actorManager->createItem(id,
-            itemId,
-            x, y,
-            itemType,
-            amount,
-            refine,
-            ItemColorManager::getColorFromCards(&cards[0]),
-            identified,
-            damaged,
-            subX, subY,
-            &cards[0]);
-    }
-}
-
-void ItemHandler::processGraffiti(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    msg.readInt32("graffiti id");
-    msg.readInt32("creator id");
-    msg.readInt16("x");
-    msg.readInt16("y");
-    msg.readUInt8("job");
-    msg.readUInt8("visible");
-    msg.readUInt8("is content");
-    msg.readString(80, "text");
-}
-
-void ItemHandler::processItemMvpDropped(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    msg.readInt16("len");
-    msg.readUInt8("type");
-    msg.readInt16("item id");
-    msg.readUInt8("len");
-    msg.readString(24, "name");
-    msg.readUInt8("monster name len");
-    msg.readString(24, "monster name");
-}
-
-void ItemHandler::processItemVisible(Net::MessageIn &msg)
-{
-    const BeingId id = msg.readBeingId("item object id");
-    const int itemId = msg.readInt16("item id");
-    const Identified identified = fromInt(
-        msg.readUInt8("identify"), Identified);
-    const int x = msg.readInt16("x");
-    const int y = msg.readInt16("y");
-    const int amount = msg.readInt16("amount");
-    const int subX = static_cast<int>(msg.readInt8("sub x"));
-    const int subY = static_cast<int>(msg.readInt8("sub y"));
-
-    if (actorManager)
-    {
-        actorManager->createItem(id,
-            itemId,
-            x, y,
-            0,
-            amount,
-            0,
-            ItemColor_one,
-            identified,
-            Damaged_false,
-            subX, subY,
-            nullptr);
-    }
-}
-
-void ItemHandler::processItemVisible2(Net::MessageIn &msg)
-{
-    const BeingId id = msg.readBeingId("item object id");
-    const int itemId = msg.readInt16("item id");
-    const int itemType = msg.readUInt8("type");
-    const Identified identified = fromInt(
-        msg.readUInt8("identify"), Identified);
-    const Damaged damaged = fromBool(msg.readUInt8("attribute"), Damaged);
-    const uint8_t refine = msg.readUInt8("refine");
-    int cards[4];
-    for (int f = 0; f < 4; f++)
-        cards[f] = msg.readInt16("card");
-    const int x = msg.readInt16("x");
-    const int y = msg.readInt16("y");
-    const int amount = msg.readInt16("amount");
-    const int subX = static_cast<int>(msg.readInt8("sub x"));
-    const int subY = static_cast<int>(msg.readInt8("sub y"));
-
-    if (actorManager)
-    {
-        actorManager->createItem(id,
-            itemId,
-            x, y,
-            itemType,
-            amount,
-            refine,
-            ItemColorManager::getColorFromCards(&cards[0]),
-            identified,
-            damaged,
-            subX, subY,
-            &cards[0]);
     }
 }
 

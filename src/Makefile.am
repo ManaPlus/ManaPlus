@@ -1217,6 +1217,8 @@ manaplus_SOURCES += main.cpp \
 	      net/ea/inventoryrecv.h \
 	      net/ea/itemhandler.cpp \
 	      net/ea/itemhandler.h \
+	      net/ea/itemrecv.cpp \
+	      net/ea/itemrecv.h \
 	      net/ea/loginhandler.cpp \
 	      net/ea/loginhandler.h \
 	      net/ea/network.cpp \
@@ -1278,6 +1280,8 @@ manaplus_SOURCES += \
 	      net/tmwa/inventoryrecv.h \
 	      net/tmwa/itemhandler.cpp \
 	      net/tmwa/itemhandler.h \
+	      net/tmwa/itemrecv.cpp \
+	      net/tmwa/itemrecv.h \
 	      net/tmwa/loginhandler.cpp \
 	      net/tmwa/loginhandler.h \
 	      net/tmwa/messagehandler.cpp \
@@ -1466,6 +1470,8 @@ manaplus_SOURCES += gui/windows/bankwindow.cpp \
 	      net/eathena/itemflags.h \
 	      net/eathena/itemhandler.cpp \
 	      net/eathena/itemhandler.h \
+	      net/eathena/itemrecv.cpp \
+	      net/eathena/itemrecv.h \
 	      net/eathena/loginhandler.cpp \
 	      net/eathena/loginhandler.h \
 	      net/eathena/mailhandler.cpp \

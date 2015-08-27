@@ -20,25 +20,24 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef NET_EATHENA_ITEMRECV_H
+#define NET_EATHENA_ITEMRECV_H
+
+#include "net/eathena/messagehandler.h"
+
 #include "net/ea/itemhandler.h"
 
-#include "actormanager.h"
-
-#include "net/messagein.h"
-
-#include "net/ea/itemrecv.h"
-
-#include "debug.h"
-
-namespace Ea
+namespace EAthena
 {
+    namespace ItemRecv
+    {
+        void processItemDropped(Net::MessageIn &msg);
+        void processItemDropped2(Net::MessageIn &msg);
+        void processGraffiti(Net::MessageIn &msg);
+        void processItemMvpDropped(Net::MessageIn &msg);
+        void processItemVisible(Net::MessageIn &msg);
+        void processItemVisible2(Net::MessageIn &msg);
+    }  // namespace ItemRecv
+}  // namespace EAthena
 
-ItemHandler::ItemHandler()
-{
-}
-
-ItemHandler::~ItemHandler()
-{
-}
-
-}  // namespace Ea
+#endif  // NET_EATHENA_ITEMRECV_H

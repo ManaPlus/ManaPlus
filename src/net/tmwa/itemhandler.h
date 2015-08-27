@@ -38,11 +38,6 @@ class ItemHandler final : public MessageHandler, public Ea::ItemHandler
         A_DELETE_COPY(ItemHandler)
 
         void handleMessage(Net::MessageIn &msg) override final;
-
-    protected:
-        static void processItemDropped(Net::MessageIn &msg);
-
-        static void processItemVisible(Net::MessageIn &msg);
 };
 
 }  // namespace TmwAthena
