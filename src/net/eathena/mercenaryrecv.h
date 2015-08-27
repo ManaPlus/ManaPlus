@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_EATHENA_MERCENARYHANDLER_H
-#define NET_EATHENA_MERCENARYHANDLER_H
+#ifndef NET_EATHENA_MERCENARYRECV_H
+#define NET_EATHENA_MERCENARYRECV_H
 
 #include "net/mercenaryhandler.h"
 
@@ -27,32 +27,14 @@
 
 namespace EAthena
 {
-class MercenaryHandler final : public MessageHandler,
-                               public Net::MercenaryHandler
-{
-    public:
-        MercenaryHandler();
-
-        A_DELETE_COPY(MercenaryHandler)
-
-        void handleMessage(Net::MessageIn &msg) override final;
-
-        void fire() override final;
-
-        void moveToMaster() const override final;
-
-        void move(const int x, const int y) const override final;
-
-        void attack(const BeingId targetId,
-                    const Keep keep) const override final;
-
-        void talk(const std::string &restrict text) const override final;
-
-        void emote(const uint8_t emoteId) const override final;
-
-        void setDirection(const unsigned char type) const override final;
+    namespace MercenaryRecv
+    {
+        void handleMercenaryMessage(const int cmd);
+        void processMercenaryUpdate(Net::MessageIn &msg);
+        void processMercenaryInfo(Net::MessageIn &msg);
+        void processMercenarySkills(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
 
-#endif  // NET_EATHENA_MERCENARYHANDLER_H
+#endif  // NET_EATHENA_MERCENARYRECV_H

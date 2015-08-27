@@ -40,8 +40,6 @@ class MercenaryHandler final : public MessageHandler,
 
         void handleMessage(Net::MessageIn &msg) override final;
 
-        void handleMercenaryMessage(const int cmd) override final;
-
         void fire() override final;
 
         void moveToMaster() const override final;

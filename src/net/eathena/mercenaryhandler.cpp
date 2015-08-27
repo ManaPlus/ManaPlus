@@ -33,6 +33,7 @@
 
 #include "net/serverfeatures.h"
 
+#include "net/eathena/mercenaryrecv.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
@@ -62,120 +63,18 @@ void MercenaryHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_MERCENARY_UPDATE:
-            processMercenaryUpdate(msg);
+            MercenaryRecv::processMercenaryUpdate(msg);
             break;
 
         case SMSG_MERCENARY_INFO:
-            processMercenaryInfo(msg);
+            MercenaryRecv::processMercenaryInfo(msg);
             break;
 
         case SMSG_MERCENARY_SKILLS:
-            processMercenarySkills(msg);
+            MercenaryRecv::processMercenarySkills(msg);
             break;
 
         default:
-            break;
-    }
-}
-
-void MercenaryHandler::processMercenaryUpdate(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    // +++ need create if need mercenary being and update stats
-    msg.readInt16("type");
-    msg.readInt32("value");
-}
-
-void MercenaryHandler::processMercenaryInfo(Net::MessageIn &msg)
-{
-    // +++ need create if need mercenary being and update stats
-    Being *const dstBeing = actorManager->findBeing(
-        msg.readBeingId("being id"));
-    msg.readInt16("atk");
-    msg.readInt16("matk");
-    msg.readInt16("hit");
-    msg.readInt16("crit/10");
-    msg.readInt16("def");
-    msg.readInt16("mdef");
-    msg.readInt16("flee");
-    msg.readInt16("attack speed");
-    const std::string name = msg.readString(24, "name");
-    const int level = msg.readInt16("level");
-    msg.readInt32("hp");
-    msg.readInt32("max hp");
-    msg.readInt32("sp");
-    msg.readInt32("max sp");
-    msg.readInt32("expire time");
-    msg.readInt16("faith");
-    msg.readInt32("calls");
-    msg.readInt32("kills");
-    const int range = msg.readInt16("attack range");
-    if (dstBeing && localPlayer)
-    {
-        MercenaryInfo *const mercenary = new MercenaryInfo;
-        mercenary->id = dstBeing->getId();
-        mercenary->name = name;
-        mercenary->level = level;
-        mercenary->range = range;
-        PlayerInfo::setMercenary(mercenary);
-        PlayerInfo::setMercenaryBeing(dstBeing);
-    }
-}
-
-void MercenaryHandler::processMercenarySkills(Net::MessageIn &msg)
-{
-    if (skillDialog)
-        skillDialog->hideSkills(SkillOwner::Mercenary);
-    const int count = (msg.readInt16("len") - 4) / 37;
-    for (int f = 0; f < count; f ++)
-    {
-        const int skillId = msg.readInt16("skill id");
-        const SkillType::SkillType inf = static_cast<SkillType::SkillType>(
-            msg.readInt32("inf"));
-        const int level = msg.readInt16("skill level");
-        const int sp = msg.readInt16("sp");
-        const int range = msg.readInt16("range");
-        const std::string name = msg.readString(24, "skill name");
-        const Modifiable up = fromBool(msg.readUInt8("up flag"), Modifiable);
-        PlayerInfo::setSkillLevel(skillId, level);
-        if (skillDialog)
-        {
-            if (!skillDialog->updateSkill(skillId, range, up, inf, sp))
-            {
-                skillDialog->addSkill(SkillOwner::Mercenary,
-                    skillId, name, level, range, up, inf, sp);
-            }
-        }
-    }
-    if (skillDialog)
-        skillDialog->updateModels();
-}
-
-void MercenaryHandler::handleMercenaryMessage(const int cmd)
-{
-    PlayerInfo::setMercenary(nullptr);
-    if (skillDialog)
-    {
-        skillDialog->hideSkills(SkillOwner::Mercenary);
-        skillDialog->updateModels();
-    }
-
-    switch (cmd)
-    {
-        case 0:
-            NotifyManager::notify(NotifyTypes::MERCENARY_EXPIRED);
-            break;
-        case 1:
-            NotifyManager::notify(NotifyTypes::MERCENARY_KILLED);
-            break;
-        case 2:
-            NotifyManager::notify(NotifyTypes::MERCENARY_FIRED);
-            break;
-        case 3:
-            NotifyManager::notify(NotifyTypes::MERCENARY_RUN);
-            break;
-        default:
-            NotifyManager::notify(NotifyTypes::MERCENARY_UNKNOWN);
             break;
     }
 }

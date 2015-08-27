@@ -38,11 +38,11 @@
 
 #include "gui/widgets/tabs/chat/chattab.h"
 
-#include "net/mercenaryhandler.h"
 #include "net/serverfeatures.h"
 
 #include "net/ea/chatrecv.h"
 
+#include "net/eathena/mercenaryrecv.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
@@ -130,7 +130,7 @@ void ChatRecv::processFormatMessage(Net::MessageIn &msg)
     std::string chatMsg;
     if (msgId >= 1266 && msgId <= 1269)
     {
-        mercenaryHandler->handleMercenaryMessage(msgId - 1266);
+        MercenaryRecv::handleMercenaryMessage(msgId - 1266);
         return;
     }
     switch (msgId)

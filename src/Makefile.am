@@ -1498,6 +1498,8 @@ manaplus_SOURCES += gui/windows/bankwindow.cpp \
 	      net/eathena/menutype.h \
 	      net/eathena/mercenaryhandler.cpp \
 	      net/eathena/mercenaryhandler.h \
+	      net/eathena/mercenaryrecv.cpp \
+	      net/eathena/mercenaryrecv.h \
 	      net/eathena/messagehandler.cpp \
 	      net/eathena/messagehandler.h \
 	      net/eathena/messagein.cpp \
