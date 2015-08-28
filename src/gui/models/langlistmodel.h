@@ -37,7 +37,7 @@ struct Language final
     std::string icon;
 };
 
-const int langs_count = 20;
+const int langs_count = 21;
 
 const Language LANG_NAME[langs_count] =
 {
@@ -47,6 +47,8 @@ const Language LANG_NAME[langs_count] =
     {N_("Catalan"), "ca_ES", "ca.png"},
     // TRANSLATORS: language
     {N_("Chinese (China)"), "zh_CN", "cn.png"},
+    // TRANSLATORS: language
+    {N_("Chinese (Hong Kong)"), "zh_HK", "hk.png"},
     // TRANSLATORS: language
     {N_("Czech"), "cs_CZ", "cz.png"},
     // TRANSLATORS: language

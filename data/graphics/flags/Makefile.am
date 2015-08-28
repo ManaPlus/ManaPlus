@@ -9,6 +9,7 @@ flags_DATA =				\
 	es.png			\
 	fi.png			\
 	fr.png			\
+	hk.png			\
 	id.png			\
 	it.png			\
 	jp.png			\
