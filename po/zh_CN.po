@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2015-08-28 01:56+0300\n"
+"POT-Creation-Date: 2015-08-28 03:37+0300\n"
 "PO-Revision-Date: 2015-08-23 09:14+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/akaras/manaplus/"
@@ -1393,86 +1393,91 @@ msgstr ""
 
 #. TRANSLATORS: language
 #: src/gui/models/langlistmodel.h:51
-msgid "Czech"
+msgid "Chinese (Hong Kong)"
 msgstr ""
 
 #. TRANSLATORS: language
 #: src/gui/models/langlistmodel.h:53
-msgid "Dutch (Belgium/Flemish)"
+msgid "Czech"
 msgstr ""
 
 #. TRANSLATORS: language
 #: src/gui/models/langlistmodel.h:55
-msgid "English"
+msgid "Dutch (Belgium/Flemish)"
 msgstr ""
 
 #. TRANSLATORS: language
 #: src/gui/models/langlistmodel.h:57
-msgid "Finnish"
+msgid "English"
 msgstr ""
 
 #. TRANSLATORS: language
 #: src/gui/models/langlistmodel.h:59
-msgid "French"
+msgid "Finnish"
 msgstr ""
 
 #. TRANSLATORS: language
 #: src/gui/models/langlistmodel.h:61
-msgid "German"
+msgid "French"
 msgstr ""
 
 #. TRANSLATORS: language
 #: src/gui/models/langlistmodel.h:63
-msgid "Indonesian"
+msgid "German"
 msgstr ""
 
 #. TRANSLATORS: language
 #: src/gui/models/langlistmodel.h:65
-msgid "Italian"
+msgid "Indonesian"
 msgstr ""
 
 #. TRANSLATORS: language
 #: src/gui/models/langlistmodel.h:67
-msgid "Japanese"
+msgid "Italian"
 msgstr ""
 
 #. TRANSLATORS: language
 #: src/gui/models/langlistmodel.h:69
-msgid "Polish"
+msgid "Japanese"
 msgstr ""
 
 #. TRANSLATORS: language
 #: src/gui/models/langlistmodel.h:71
-msgid "Portuguese"
+msgid "Polish"
 msgstr ""
 
 #. TRANSLATORS: language
 #: src/gui/models/langlistmodel.h:73
-msgid "Portuguese (Brazilian)"
+msgid "Portuguese"
 msgstr ""
 
 #. TRANSLATORS: language
 #: src/gui/models/langlistmodel.h:75
-msgid "Russian"
+msgid "Portuguese (Brazilian)"
 msgstr ""
 
 #. TRANSLATORS: language
 #: src/gui/models/langlistmodel.h:77
-msgid "Spanish (Castilian)"
+msgid "Russian"
 msgstr ""
 
 #. TRANSLATORS: language
 #: src/gui/models/langlistmodel.h:79
-msgid "Swedish (Sweden)"
+msgid "Spanish (Castilian)"
 msgstr ""
 
 #. TRANSLATORS: language
 #: src/gui/models/langlistmodel.h:81
-msgid "Turkish"
+msgid "Swedish (Sweden)"
 msgstr ""
 
 #. TRANSLATORS: language
 #: src/gui/models/langlistmodel.h:83
+msgid "Turkish"
+msgstr ""
+
+#. TRANSLATORS: language
+#: src/gui/models/langlistmodel.h:85
 msgid "Ukraine"
 msgstr ""
 

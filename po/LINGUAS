@@ -27,6 +27,7 @@ pl
 pt
 pt_BR
 ru
+sr
 #sk # Not enough translations
 #sq # Not enough translations
 sv
@@ -36,5 +37,5 @@ sv_SE
 tr
 uk
 zh_CN
-#zh_HK # Disabled because of current client limitations (font fallbacking)
+zh_HK
 #zh_TW # Disabled because of current client limitations (font fallbacking)
