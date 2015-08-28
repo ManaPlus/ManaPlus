@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2015-08-23 00:52+0300\n"
-"PO-Revision-Date: 2015-08-24 21:15+0000\n"
-"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"POT-Creation-Date: 2015-08-24 23:43+0300\n"
+"PO-Revision-Date: 2015-08-27 05:41+0000\n"
+"Last-Translator: Pak Long Wu <paklongwu1006@gmail.com>\n"
 "Language-Team: Chinese (Hong Kong) (http://www.transifex.com/akaras/manaplus/language/zh_HK/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -258,7 +258,7 @@ msgid "Quick"
 msgstr "快速"
 
 #. TRANSLATORS: visible beings on map
-#: src/actormanager.cpp:1451
+#: src/actormanager.cpp:1453
 msgid "Visible on map"
 msgstr "在地圖上可見"
 
@@ -1142,7 +1142,7 @@ msgstr "(b) 黑白地圖顯示"
 #. TRANSLATORS: pickup size in status bar
 #: src/gamemodifiers.cpp:406
 msgid "(?) map view"
-msgstr ""
+msgstr "(?) 地圖顯示"
 
 #. TRANSLATORS: away type in status bar
 #: src/gamemodifiers.cpp:418
@@ -1456,42 +1456,42 @@ msgstr "西班牙語 (卡斯蒂利亞)"
 #. TRANSLATORS: language
 #: src/gui/models/langlistmodel.h:77
 msgid "Swedish (Sweden)"
-msgstr ""
+msgstr "瑞典語(瑞典)"
 
 #. TRANSLATORS: language
 #: src/gui/models/langlistmodel.h:79
 msgid "Turkish"
-msgstr ""
+msgstr "土耳其語"
 
 #. TRANSLATORS: magic school
 #: src/gui/models/magicschoolmodel.h:35
 msgid "General Magic"
-msgstr ""
+msgstr "基本魔法"
 
 #. TRANSLATORS: magic school
 #: src/gui/models/magicschoolmodel.h:37
 msgid "Life Magic"
-msgstr ""
+msgstr "生命魔法"
 
 #. TRANSLATORS: magic school
 #: src/gui/models/magicschoolmodel.h:39
 msgid "War Magic"
-msgstr ""
+msgstr "戰鬥魔法"
 
 #. TRANSLATORS: magic school
 #: src/gui/models/magicschoolmodel.h:41
 msgid "Transmute Magic"
-msgstr ""
+msgstr "物質轉換魔法"
 
 #. TRANSLATORS: magic school
 #: src/gui/models/magicschoolmodel.h:43
 msgid "Nature Magic"
-msgstr ""
+msgstr "自然魔法"
 
 #. TRANSLATORS: magic school
 #: src/gui/models/magicschoolmodel.h:45
 msgid "Astral Magic"
-msgstr ""
+msgstr "奧術魔法"
 
 #. TRANSLATORS: relation type
 #: src/gui/models/playerrelationlistmodel.h:35
@@ -1506,159 +1506,159 @@ msgstr "好友"
 #. TRANSLATORS: relation type
 #: src/gui/models/playerrelationlistmodel.h:39
 msgid "Disregarded"
-msgstr ""
+msgstr "被無視"
 
 #. TRANSLATORS: relation type
 #: src/gui/models/playerrelationlistmodel.h:41
 msgid "Ignored"
-msgstr "忽略"
+msgstr "被忽略"
 
 #. TRANSLATORS: relation type
 #: src/gui/models/playerrelationlistmodel.h:43
 msgid "Erased"
-msgstr ""
+msgstr "被擦去"
 
 #. TRANSLATORS: relation type
 #: src/gui/models/playerrelationlistmodel.h:45
 msgid "Blacklisted"
-msgstr ""
+msgstr "被列入黑名單"
 
 #. TRANSLATORS: relation type
 #. TRANSLATORS: palette color
 #: src/gui/models/playerrelationlistmodel.h:47 src/gui/userpalette.cpp:159
 msgid "Enemy"
-msgstr ""
+msgstr "冤家"
 
 #. TRANSLATORS: buy dialog sort type.
 #: src/gui/models/sortlistmodelbuy.h:33
 msgid "unsorted"
-msgstr ""
+msgstr "未分類"
 
 #. TRANSLATORS: buy dialog sort type.
 #: src/gui/models/sortlistmodelbuy.h:35
 msgid "by price"
-msgstr ""
+msgstr "按價錢"
 
 #. TRANSLATORS: buy dialog sort type.
 #. TRANSLATORS: inventory sort mode
 #: src/gui/models/sortlistmodelbuy.h:37 src/gui/models/sortlistmodelinv.h:34
 msgid "by name"
-msgstr ""
+msgstr "按名字"
 
 #. TRANSLATORS: buy dialog sort type.
 #. TRANSLATORS: inventory sort mode
 #: src/gui/models/sortlistmodelbuy.h:39 src/gui/models/sortlistmodelinv.h:36
 msgid "by id"
-msgstr ""
+msgstr "按ID"
 
 #. TRANSLATORS: buy dialog sort type.
 #. TRANSLATORS: inventory sort mode
 #: src/gui/models/sortlistmodelbuy.h:41 src/gui/models/sortlistmodelinv.h:38
 msgid "by weight"
-msgstr ""
+msgstr "按重量"
 
 #. TRANSLATORS: buy dialog sort type.
 #. TRANSLATORS: inventory sort mode
 #: src/gui/models/sortlistmodelbuy.h:43 src/gui/models/sortlistmodelinv.h:40
 msgid "by amount"
-msgstr ""
+msgstr "按數量"
 
 #. TRANSLATORS: buy dialog sort type.
 #. TRANSLATORS: inventory sort mode
 #: src/gui/models/sortlistmodelbuy.h:45 src/gui/models/sortlistmodelinv.h:42
 msgid "by type"
-msgstr ""
+msgstr "按種類"
 
 #. TRANSLATORS: target type
 #: src/gui/models/targettypemodel.h:32
 msgid "No Target"
-msgstr ""
+msgstr "沒有目標"
 
 #. TRANSLATORS: target type
 #: src/gui/models/targettypemodel.h:34
 msgid "Allow Target"
-msgstr ""
+msgstr "允許目標"
 
 #. TRANSLATORS: target type
 #: src/gui/models/targettypemodel.h:36
 msgid "Need Target"
-msgstr ""
+msgstr "需要目標"
 
 #. TRANSLATORS: update type
 #. TRANSLATORS: onscreen button size
 #: src/gui/models/updatetypemodel.h:32 src/gui/widgets/tabs/setup_touch.cpp:43
 msgid "Normal"
-msgstr ""
+msgstr "正常"
 
 #. TRANSLATORS: update type
 #: src/gui/models/updatetypemodel.h:34
 msgid "Auto Close"
-msgstr ""
+msgstr "自動關閉"
 
 #. TRANSLATORS: update type
 #: src/gui/models/updatetypemodel.h:36
 msgid "Skip"
-msgstr ""
+msgstr "跳過"
 
 #. TRANSLATORS: being popup label
 #: src/gui/popups/beingpopup.cpp:167 src/gui/popups/beingpopup.cpp:187
 #, c-format
 msgid "Hungry: %d"
-msgstr ""
+msgstr "飢餓：%d"
 
 #. TRANSLATORS: being popup label
 #: src/gui/popups/beingpopup.cpp:171 src/gui/popups/beingpopup.cpp:191
 #, c-format
 msgid "Intimacy: %d"
-msgstr ""
+msgstr "親密關係：%d"
 
 #. TRANSLATORS: being popup label
 #: src/gui/popups/beingpopup.cpp:207
 #, c-format
 msgid "Party: %s"
-msgstr ""
+msgstr "隊伍：%s"
 
 #. TRANSLATORS: being popup label
 #: src/gui/popups/beingpopup.cpp:225
 #, c-format
 msgid "Guild: %s"
-msgstr ""
+msgstr "公會：%s"
 
 #. TRANSLATORS: being popup label
 #: src/gui/popups/beingpopup.cpp:242
 #, c-format
 msgid "Pvp rank: %u"
-msgstr ""
+msgstr "PVP排名：%u"
 
 #. TRANSLATORS: being popup label
 #: src/gui/popups/beingpopup.cpp:259
 #, c-format
 msgid "Buy shop: %s"
-msgstr ""
+msgstr "購買商店：%s"
 
 #. TRANSLATORS: being popup label
 #: src/gui/popups/beingpopup.cpp:276
 #, c-format
 msgid "Sell shop: %s"
-msgstr ""
+msgstr "售賣商店：%s"
 
 #. TRANSLATORS: being popup label
 #: src/gui/popups/beingpopup.cpp:291
 #, c-format
 msgid "Comment: %s"
-msgstr ""
+msgstr "評語：%s"
 
 #. TRANSLATORS: being popup label
 #: src/gui/popups/beingpopup.cpp:305
 #, c-format
 msgid "Chat room: %s"
-msgstr ""
+msgstr "聊天室：%s"
 
 #. TRANSLATORS: party popup item
 #. TRANSLATORS: party creation message
 #: src/gui/popups/createpartypopup.h:50 src/gui/windows/socialwindow.cpp:521
 msgid "Create Party"
-msgstr ""
+msgstr "選擇隊伍"
 
 #. TRANSLATORS: party popup item
 #. TRANSLATORS: popup menu item
@@ -1709,12 +1709,12 @@ msgstr "取消"
 #: src/gui/popups/itempopup.cpp:219
 #, c-format
 msgid "Weight: %s"
-msgstr ""
+msgstr "重量：%s"
 
 #. TRANSLATORS: popup label
 #: src/gui/popups/itempopup.cpp:284
 msgid "Cards: "
-msgstr ""
+msgstr "卡片： "
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: trade with player
@@ -1739,27 +1739,27 @@ msgstr "交易"
 #: src/input/pages/basic.cpp:40 src/net/eathena/generalhandler.cpp:396
 #: src/net/tmwa/generalhandler.cpp:359
 msgid "Attack"
-msgstr ""
+msgstr "攻擊"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: send whisper to player
 #: src/gui/popups/popupmenu.cpp:167 src/gui/popups/popupmenu.cpp:259
 #: src/gui/popups/popupmenu.cpp:473
 msgid "Whisper"
-msgstr ""
+msgstr "悄悄話"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: heal player
 #: src/gui/popups/popupmenu.cpp:173 src/gui/popups/popupmenu.cpp:818
 msgid "Heal"
-msgstr ""
+msgstr "療癒"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: kick player from guild
 #: src/gui/popups/popupmenu.cpp:193 src/gui/popups/popupmenu.cpp:209
 #: src/gui/popups/popupmenu.cpp:522 src/gui/popups/popupmenu.cpp:846
 msgid "Kick from guild"
-msgstr ""
+msgstr "從公會踢出"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: change player position in guild
@@ -6892,13 +6892,13 @@ msgstr ""
 #: src/gui/windows/tradewindow.cpp:514
 msgid ""
 "Failed adding item. You can not overlap one kind of item on the window."
-msgstr "增加物品失敗.你不能覆蓋視窗中的該類物品能."
+msgstr "增加物品失敗。你不能覆蓋視窗中的物品."
 
 #. TRANSLATORS: unregister dialog. label.
 #: src/gui/windows/unregisterdialog.cpp:64
 #, c-format
 msgid "Name: %s"
-msgstr "名字:%s"
+msgstr "名字：%s"
 
 #. TRANSLATORS: updater window name
 #: src/gui/windows/updaterwindow.cpp:170
