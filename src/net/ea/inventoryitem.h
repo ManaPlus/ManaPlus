@@ -35,6 +35,8 @@
 #include <stdint.h>
 #endif
 
+#include <vector>
+
 #include "localconsts.h"
 
 namespace Ea
@@ -86,6 +88,8 @@ class InventoryItem final
                 cards[f] = cards0[f];
         }
 };
+
+typedef std::vector<InventoryItem> InventoryItems;
 
 }  // namespace Ea
 

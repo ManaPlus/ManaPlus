@@ -20,8 +20,6 @@
 
 #include "net/eathena/maphandler.h"
 
-#include "logger.h"
-
 #include "net/eathena/maprecv.h"
 #include "net/eathena/protocol.h"
 

@@ -21,9 +21,10 @@
 #ifndef NET_EATHENA_MARKETRECV_H
 #define NET_EATHENA_MARKETRECV_H
 
-#include "net/markethandler.h"
-
-#include "net/eathena/messagehandler.h"
+namespace Net
+{
+    class MessageIn;
+}
 
 class BuyDialog;
 

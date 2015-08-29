@@ -23,9 +23,10 @@
 #ifndef NET_TMWA_BUYSELLRECV_H
 #define NET_TMWA_BUYSELLRECV_H
 
-#include "net/ea/buysellhandler.h"
-
-#include "net/tmwa/messagehandler.h"
+namespace Net
+{
+    class MessageIn;
+}
 
 namespace TmwAthena
 {

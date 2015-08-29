@@ -24,6 +24,5 @@
 #include "enums/simpletypes/intdefines.h"
 
 defIntEnum(ItemColor, uint16_t);
-defIntEnumNeg(ItemColor);
 
 #endif  // ENUMS_SIMPLETYPES_ITEMCOLOR_H

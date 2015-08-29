@@ -23,9 +23,10 @@
 #ifndef NET_TMWA_LOGINRECV_H
 #define NET_TMWA_LOGINRECV_H
 
-#include "net/ea/loginhandler.h"
-
-#include "net/tmwa/messagehandler.h"
+namespace Net
+{
+    class MessageIn;
+}
 
 namespace TmwAthena
 {

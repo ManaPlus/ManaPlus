@@ -20,8 +20,6 @@
 
 #include "net/eathena/elementalhandler.h"
 
-#include "logger.h"
-
 #include "net/eathena/elementalrecv.h"
 #include "net/eathena/protocol.h"
 

@@ -23,9 +23,10 @@
 #ifndef NET_EATHENA_ITEMRECV_H
 #define NET_EATHENA_ITEMRECV_H
 
-#include "net/eathena/messagehandler.h"
-
-#include "net/ea/itemhandler.h"
+namespace Net
+{
+    class MessageIn;
+}
 
 namespace EAthena
 {

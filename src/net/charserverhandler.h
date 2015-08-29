@@ -31,8 +31,6 @@ class CharSelectDialog;
 namespace Net
 {
 
-class MessageIn;
-
 struct Character;
 
 typedef std::list<Character*> Characters;

@@ -23,9 +23,10 @@
 
 #ifdef EATHENA_SUPPORT
 
-#include "net/cashshophandler.h"
-
-#include "net/eathena/messagehandler.h"
+namespace Net
+{
+    class MessageIn;
+}
 
 class BuyDialog;
 

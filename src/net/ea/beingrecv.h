@@ -20,10 +20,20 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_EA_BEING_H
-#define NET_EA_BEING_H
+#ifndef NET_EA_BEINGRECV_H
+#define NET_EA_BEINGRECV_H
 
-#include "net/beinghandler.h"
+#include "enums/simpletypes/beingid.h"
+#include "enums/simpletypes/itemcolor.h"
+
+#include <string>
+
+namespace Net
+{
+    class MessageIn;
+}
+
+class Being;
 
 namespace Ea
 {
@@ -51,9 +61,6 @@ namespace Ea
                        const bool isWeapon = false,
                        const bool isTempSprite = false);
     }  // namespace Being
-
 }  // namespace Ea
 
-//extern bool Ea::BeingRecv::mSync;
-
-#endif  // NET_EA_BEING_H
+#endif  // NET_EA_BEINGRECV_H

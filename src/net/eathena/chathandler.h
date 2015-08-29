@@ -25,8 +25,6 @@
 
 #include "net/ea/chathandler.h"
 
-#include "enums/gui/chatmsgtype.h"
-
 #include "net/eathena/messagehandler.h"
 
 namespace EAthena

@@ -78,7 +78,7 @@ std::string ChatRecv::getLastWhisperNick()
 }
 
 void ChatRecv::processWhisperResponseContinue(Net::MessageIn &msg,
-                                                 const uint8_t type)
+                                              const uint8_t type)
 {
     const std::string nick = getPopLastWhisperNick();
     switch (type)

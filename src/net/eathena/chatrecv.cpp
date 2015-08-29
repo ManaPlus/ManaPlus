@@ -38,21 +38,17 @@
 
 #include "gui/widgets/tabs/chat/chattab.h"
 
-#include "net/serverfeatures.h"
+#include "net/messagein.h"
 
 #include "net/ea/chatrecv.h"
 
 #include "net/eathena/mercenaryrecv.h"
-#include "net/eathena/messageout.h"
-#include "net/eathena/protocol.h"
 
 #include "resources/chatobject.h"
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
 #include "debug.h"
-
-extern Net::ChatHandler *chatHandler;
 
 namespace EAthena
 {
@@ -239,7 +235,7 @@ std::string ChatRecv::extractChannelFromMessage(std::string &chatMsg)
 }
 
 void ChatRecv::processChatContinue(std::string chatMsg,
-                                      ChatMsgTypeT own)
+                                   ChatMsgTypeT own)
 {
     const std::string channel = extractChannelFromMessage(chatMsg);
     bool allow(true);
@@ -466,7 +462,7 @@ void ChatRecv::processJoinChannel(Net::MessageIn &msg)
 }
 
 void ChatRecv::processWhisperContinue(const std::string &nick,
-                                         std::string chatMsg)
+                                      std::string chatMsg)
 {
     // ignoring future whisper messages
     if (chatMsg.find("\302\202G") == 0 || chatMsg.find("\302\202A") == 0)

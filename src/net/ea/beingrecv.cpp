@@ -38,6 +38,7 @@
 
 #include "resources/map/map.h"
 
+#include "net/messagein.h"
 #include "net/serverfeatures.h"
 
 #include "debug.h"

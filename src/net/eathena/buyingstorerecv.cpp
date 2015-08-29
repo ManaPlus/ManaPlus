@@ -22,8 +22,8 @@
 
 #include "actormanager.h"
 #include "inventory.h"
+#include "item.h"
 #include "notifymanager.h"
-#include "shopitem.h"
 
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
@@ -38,10 +38,9 @@
 #include "listeners/buyingstoremodelistener.h"
 #include "listeners/buyingstoreslotslistener.h"
 
-#include "net/ea/eaprotocol.h"
+#include "net/messagein.h"
 
-#include "net/eathena/messageout.h"
-#include "net/eathena/protocol.h"
+#include "net/ea/eaprotocol.h"
 
 #include "debug.h"
 
@@ -164,8 +163,7 @@ void BuyingStoreRecv::processBuyingStoreSellFailed(Net::MessageIn &msg)
     }
 }
 
-void BuyingStoreRecv::processBuyingStoreSellerSellFailed(Net::MessageIn
-                                                            &msg)
+void BuyingStoreRecv::processBuyingStoreSellerSellFailed(Net::MessageIn &msg)
 {
     const int16_t result = msg.readInt16("result");
     msg.readInt16("item id");

@@ -25,7 +25,6 @@
 
 #include "net/ea/beinghandler.h"
 
-#include "net/eathena/beingtype.h"
 #include "net/eathena/messagehandler.h"
 
 namespace EAthena

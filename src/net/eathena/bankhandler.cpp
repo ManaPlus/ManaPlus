@@ -20,12 +20,6 @@
 
 #include "net/eathena/bankhandler.h"
 
-#include "notifymanager.h"
-
-#include "enums/resources/notifytypes.h"
-
-#include "listeners/banklistener.h"
-
 #include "net/eathena/bankrecv.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"

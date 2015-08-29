@@ -29,12 +29,10 @@
 
 #include "gui/widgets/createwidget.h"
 
-#include "net/ea/eaprotocol.h"
-
 #include "net/character.h"
+#include "net/charserverhandler.h"
 #include "net/messagein.h"
 
-#include "utils/dtor.h"
 #include "utils/gettext.h"
 
 #include "debug.h"

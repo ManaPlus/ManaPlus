@@ -27,7 +27,6 @@
 
 #include "enums/gui/usercolorid.h"
 
-#include "enums/simpletypes/itemcolor.h"
 #include "enums/simpletypes/move.h"
 
 #include "resources/beinginfo.h"

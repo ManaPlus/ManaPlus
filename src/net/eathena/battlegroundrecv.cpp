@@ -22,6 +22,8 @@
 
 #include "logger.h"
 
+#include "net/messagein.h"
+
 #include "debug.h"
 
 namespace EAthena

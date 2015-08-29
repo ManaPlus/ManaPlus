@@ -36,13 +36,11 @@
 #include "gui/widgets/tabs/chat/chattab.h"
 
 #include "net/inventoryhandler.h"
-#include "net/serverfeatures.h"
+#include "net/messagein.h"
 
 #include "net/ea/eaprotocol.h"
 
 #include "net/eathena/menu.h"
-#include "net/eathena/messageout.h"
-#include "net/eathena/protocol.h"
 
 #include "utils/gettext.h"
 #include "utils/stringutils.h"

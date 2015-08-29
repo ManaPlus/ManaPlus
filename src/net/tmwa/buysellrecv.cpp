@@ -22,7 +22,6 @@
 
 #include "net/tmwa/buysellrecv.h"
 
-#include "configuration.h"
 #include "notifymanager.h"
 
 #include "being/playerinfo.h"
@@ -30,18 +29,12 @@
 #include "enums/resources/notifytypes.h"
 
 #include "gui/windows/buydialog.h"
-#include "gui/windows/chatwindow.h"
-#include "gui/windows/shopwindow.h"
 
 #include "gui/widgets/createwidget.h"
 
-#include "net/chathandler.h"
+#include "net/buysellhandler.h"
 
 #include "net/ea/buysellrecv.h"
-
-#include "net/tmwa/protocol.h"
-
-#include "utils/timer.h"
 
 #include "debug.h"
 

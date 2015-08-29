@@ -27,12 +27,9 @@
 
 #include "being/localplayer.h"
 
-#include "net/ea/token.h"
+#include "net/messagein.h"
 
-#include "net/tmwa/loginhandler.h"
-#include "net/tmwa/messageout.h"
 #include "net/tmwa/network.h"
-#include "net/tmwa/protocol.h"
 
 #include "debug.h"
 

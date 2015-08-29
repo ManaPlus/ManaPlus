@@ -23,13 +23,13 @@
 #ifndef NET_EA_LOGINRECV_H
 #define NET_EA_LOGINRECV_H
 
-#include "net/loginhandler.h"
+#include "net/worldinfo.h"
 
-#include "net/registrationoptions.h"
+#include "net/ea/token.h"
+
+#include <string>
 
 class LoginData;
-
-struct Token;
 
 namespace Net
 {

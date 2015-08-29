@@ -27,6 +27,7 @@
 #include "gui/windows/npcdialog.h"
 
 #include "net/messagein.h"
+#include "net/npchandler.h"
 
 #include "utils/langs.h"
 

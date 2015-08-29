@@ -22,21 +22,9 @@
 
 #include "net/ea/gamehandler.h"
 
-#include "client.h"
 #include "game.h"
-#include "notifymanager.h"
-
-#include "enums/resources/notifytypes.h"
-
-#include "gui/windows/okdialog.h"
-
-#include "gui/widgets/createwidget.h"
-
-#include "net/messagein.h"
 
 #include "net/ea/gamerecv.h"
-
-#include "utils/gettext.h"
 
 #include "debug.h"
 

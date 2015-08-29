@@ -30,8 +30,7 @@
 
 #include "gui/widgets/createwidget.h"
 
-#include "net/eathena/messageout.h"
-#include "net/eathena/protocol.h"
+#include "net/messagein.h"
 
 #include "debug.h"
 

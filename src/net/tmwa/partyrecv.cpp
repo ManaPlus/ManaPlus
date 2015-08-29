@@ -34,10 +34,9 @@
 
 #include "gui/widgets/tabs/chat/partytab.h"
 
-#include "net/ea/partyrecv.h"
+#include "net/messagein.h"
 
-#include "net/tmwa/messageout.h"
-#include "net/tmwa/protocol.h"
+#include "net/ea/partyrecv.h"
 
 #include "debug.h"
 

@@ -23,8 +23,6 @@
 #ifndef NET_EA_CHARSERVERRECV_H
 #define NET_EA_CHARSERVERRECV_H
 
-#include "net/charserverhandler.h"
-
 namespace Net
 {
     class MessageIn;

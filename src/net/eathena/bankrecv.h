@@ -18,14 +18,15 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_EATHENA_BANK_H
-#define NET_EATHENA_BANK_H
+#ifndef NET_EATHENA_BANKRECV_H
+#define NET_EATHENA_BANKRECV_H
 
 #ifdef EATHENA_SUPPORT
 
-#include "net/bankhandler.h"
-
-#include "net/eathena/messagehandler.h"
+namespace Net
+{
+    class MessageIn;
+}
 
 namespace EAthena
 {
@@ -38,4 +39,4 @@ namespace EAthena
 }  // namespace EAthena
 
 #endif  // EATHENA_SUPPORT
-#endif  // NET_EATHENA_BANK_H
+#endif  // NET_EATHENA_BANKRECV_H

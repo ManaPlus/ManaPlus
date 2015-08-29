@@ -18,14 +18,15 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_EATHENA_AUCTION_H
-#define NET_EATHENA_AUCTION_H
+#ifndef NET_EATHENA_AUCTIONRECV_H
+#define NET_EATHENA_AUCTIONRECV_H
 
 #ifdef EATHENA_SUPPORT
 
-#include "net/auctionhandler.h"
-
-#include "net/eathena/messagehandler.h"
+namespace Net
+{
+    class MessageIn;
+}
 
 namespace EAthena
 {
@@ -40,4 +41,4 @@ namespace EAthena
 }  // namespace EAthena
 
 #endif  // EATHENA_SUPPORT
-#endif  // NET_EATHENA_AUCTION_H
+#endif  // NET_EATHENA_AUCTIONRECV_H

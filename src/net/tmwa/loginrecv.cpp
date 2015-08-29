@@ -25,13 +25,9 @@
 #include "client.h"
 #include "logger.h"
 
-#include "net/serverfeatures.h"
-
 #include "net/ea/loginrecv.h"
 
-#include "net/tmwa/messageout.h"
-#include "net/tmwa/network.h"
-#include "net/tmwa/protocol.h"
+#include "net/messagein.h"
 
 #include "utils/gettext.h"
 

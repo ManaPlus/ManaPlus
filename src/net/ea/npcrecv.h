@@ -23,8 +23,6 @@
 #ifndef NET_EA_NPCRECV_H
 #define NET_EA_NPCRECV_H
 
-#include "net/npchandler.h"
-
 #include "localconsts.h"
 
 class NpcDialog;

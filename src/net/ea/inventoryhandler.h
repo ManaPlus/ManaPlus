@@ -33,17 +33,9 @@
 
 #include <queue>
 
-namespace Net
-{
-    class MessageIn;
-}
-
 namespace Ea
 {
 
-class EquipBackend;
-
-typedef std::vector<InventoryItem> InventoryItems;
 typedef std::queue<BeingId> PickupQueue;
 
 class InventoryHandler notfinal : public Net::InventoryHandler

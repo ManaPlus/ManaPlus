@@ -31,11 +31,6 @@ class LoginData;
 
 struct Token;
 
-namespace Net
-{
-    class MessageIn;
-}
-
 namespace Ea
 {
 

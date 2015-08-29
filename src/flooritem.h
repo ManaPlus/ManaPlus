@@ -112,8 +112,19 @@ class FloorItem final : public ActorSprite
         Cursor::Cursor getHoverCursor() const A_WARN_UNUSED
         { return mCursor; }
 
-        void setCards(const int *const cards,
-                      int sz);
+        void setCards(const int *const cards, int sz);
+
+        int getRefine() const A_WARN_UNUSED
+        { return mRefine; }
+
+        int getItemType() const A_WARN_UNUSED
+        { return mItemType; }
+
+        Identified getIdentified() const A_WARN_UNUSED
+        { return mIdentified; }
+
+        Damaged getDamaged() const A_WARN_UNUSED
+        { return mDamaged; }
 
     private:
         int mCards[4];

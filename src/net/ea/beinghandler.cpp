@@ -22,24 +22,6 @@
 
 #include "net/ea/beinghandler.h"
 
-#include "actormanager.h"
-#include "game.h"
-#include "party.h"
-
-#include "being/localplayer.h"
-#include "being/playerrelation.h"
-#include "being/playerrelations.h"
-
-#include "enums/resources/map/mapitemtype.h"
-
-#include "gui/viewport.h"
-
-#include "gui/windows/socialwindow.h"
-
-#include "resources/map/map.h"
-
-#include "net/serverfeatures.h"
-
 #include "net/ea/beingrecv.h"
 
 #include "debug.h"

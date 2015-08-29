@@ -27,11 +27,6 @@
 
 #include <queue>
 
-namespace Net
-{
-    class MessageIn;
-}
-
 namespace Ea
 {
 

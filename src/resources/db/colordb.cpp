@@ -99,7 +99,10 @@ void ColorDB::loadHair(const std::string &fileName,
                 node, "id", 0), ItemColor);
 
             if (colors.find(id) != colors.end())
-                logger->log("ColorDB: Redefinition of dye ID %d", toInt(id, int));
+            {
+                logger->log("ColorDB: Redefinition of dye ID %d",
+                    toInt(id, int));
+            }
 
             colors[id] = ItemColorData(id, XML::langProperty(node, "name", ""),
                 XML::getProperty(node, "value", "#FFFFFF"));

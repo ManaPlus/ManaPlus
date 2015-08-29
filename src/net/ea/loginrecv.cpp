@@ -24,17 +24,16 @@
 
 #include "client.h"
 #include "configuration.h"
-#include "settings.h"
 
 #include "being/being.h"
 
 #include "gui/windows/logindialog.h"
 
-#include "utils/dtor.h"
 #include "utils/gettext.h"
 #include "utils/paths.h"
 
 #include "net/logindata.h"
+#include "net/loginhandler.h"
 #include "net/messagein.h"
 
 #include "net/ea/token.h"

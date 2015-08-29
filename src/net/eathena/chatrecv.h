@@ -23,16 +23,17 @@
 #ifndef NET_EATHENA_CHATRECV_H
 #define NET_EATHENA_CHATRECV_H
 
-#include "net/ea/chathandler.h"
-
 #include "enums/gui/chatmsgtype.h"
 
-#include "net/eathena/messagehandler.h"
+#include <string>
+
+namespace Net
+{
+    class MessageIn;
+}
 
 namespace EAthena
 {
-    class MessageOut;
-
     namespace ChatRecv
     {
         std::string extractChannelFromMessage(std::string &chatMsg);

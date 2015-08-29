@@ -27,13 +27,6 @@
 
 #include "localconsts.h"
 
-class NpcDialog;
-
-namespace Net
-{
-    class MessageIn;
-}
-
 namespace Ea
 {
 

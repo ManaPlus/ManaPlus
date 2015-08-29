@@ -22,18 +22,9 @@
 
 #include "net/eathena/charserverhandler.h"
 
-#include "client.h"
-#include "configuration.h"
-#include "settings.h"
-
 #include "gui/windows/charcreatedialog.h"
-#include "gui/windows/charselectdialog.h"
-#include "gui/windows/okdialog.h"
-
-#include "gui/widgets/createwidget.h"
 
 #include "net/character.h"
-#include "net/playerhandler.h"
 #include "net/serverfeatures.h"
 
 #include "net/ea/token.h"
@@ -41,19 +32,10 @@
 #include "net/ea/charserverrecv.h"
 
 #include "net/eathena/charserverrecv.h"
-#include "net/eathena/gamehandler.h"
 #include "net/eathena/loginhandler.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/network.h"
 #include "net/eathena/protocol.h"
-#include "net/eathena/sprite.h"
-
-#include "resources/iteminfo.h"
-
-#include "resources/db/itemdb.h"
-
-#include "utils/dtor.h"
-#include "utils/gettext.h"
 
 #include "debug.h"
 

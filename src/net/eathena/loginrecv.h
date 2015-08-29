@@ -23,9 +23,10 @@
 #ifndef NET_EATHENA_LOGINRECV_H
 #define NET_EATHENA_LOGINRECV_H
 
-#include "net/ea/loginhandler.h"
-
-#include "net/eathena/messagehandler.h"
+namespace Net
+{
+    class MessageIn;
+}
 
 namespace EAthena
 {

@@ -23,14 +23,7 @@
 #ifndef NET_EA_GAMEHANDLER_H
 #define NET_EA_GAMEHANDLER_H
 
-#include "enums/simpletypes/beingid.h"
-
 #include "net/gamehandler.h"
-
-namespace Net
-{
-    class MessageIn;
-}
 
 namespace Ea
 {

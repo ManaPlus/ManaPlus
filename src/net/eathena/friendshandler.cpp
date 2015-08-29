@@ -20,8 +20,6 @@
 
 #include "net/eathena/friendshandler.h"
 
-#include "logger.h"
-
 #include "net/eathena/friendsrecv.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"

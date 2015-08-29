@@ -22,6 +22,7 @@
 #include "net/ea/guildrecv.h"
 
 #include "actormanager.h"
+#include "guild.h"
 #include "notifymanager.h"
 
 #include "being/localplayer.h"

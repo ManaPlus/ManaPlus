@@ -24,10 +24,7 @@
 
 #include "client.h"
 
-#include "gui/windows/logindialog.h"
-
 #include "net/generalhandler.h"
-#include "net/logindata.h"
 #include "net/serverfeatures.h"
 
 #include "net/ea/loginrecv.h"
@@ -36,9 +33,6 @@
 #include "net/eathena/messageout.h"
 #include "net/eathena/network.h"
 #include "net/eathena/protocol.h"
-
-#include "utils/gettext.h"
-#include "utils/paths.h"
 
 #include "debug.h"
 

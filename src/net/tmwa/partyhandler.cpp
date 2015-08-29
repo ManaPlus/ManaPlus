@@ -29,11 +29,6 @@
 
 #include "enums/resources/notifytypes.h"
 
-#include "gui/windows/chatwindow.h"
-#include "gui/windows/socialwindow.h"
-
-#include "gui/widgets/tabs/chat/partytab.h"
-
 #include "net/ea/partyrecv.h"
 
 #include "net/tmwa/messageout.h"

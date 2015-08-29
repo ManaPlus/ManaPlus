@@ -22,12 +22,6 @@
 
 #include "net/ea/itemhandler.h"
 
-#include "actormanager.h"
-
-#include "net/messagein.h"
-
-#include "net/ea/itemrecv.h"
-
 #include "debug.h"
 
 namespace Ea

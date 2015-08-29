@@ -22,9 +22,13 @@
 #ifndef NET_EATHENA_GUILDRECV_H
 #define NET_EATHENA_GUILDRECV_H
 
-#include "net/ea/guildhandler.h"
+namespace Net
+{
+    class MessageIn;
+}
 
-#include "net/eathena/messagehandler.h"
+class Guild;
+class GuildTab;
 
 namespace EAthena
 {
@@ -43,5 +47,7 @@ namespace Ea
 {
     extern Guild *taGuild;
 }
+
+extern GuildTab *guildTab;
 
 #endif  // NET_EATHENA_GUILDRECV_H

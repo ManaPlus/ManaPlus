@@ -23,9 +23,12 @@
 #ifndef NET_EATHENA_INVENTORYRECV_H
 #define NET_EATHENA_INVENTORYRECV_H
 
-#include "net/ea/inventoryhandler.h"
+#include "net/ea/inventoryitem.h"
 
-#include "net/eathena/messagehandler.h"
+namespace Net
+{
+    class MessageIn;
+}
 
 namespace EAthena
 {

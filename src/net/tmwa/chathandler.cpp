@@ -22,28 +22,19 @@
 
 #include "net/tmwa/chathandler.h"
 
-#include "actormanager.h"
-#include "configuration.h"
-
 #include "being/localplayer.h"
-#include "being/playerrelation.h"
-#include "being/playerrelations.h"
 
 #include "gui/chatconsts.h"
-
-#include "gui/widgets/tabs/chat/gmtab.h"
-
-#include "gui/windows/chatwindow.h"
-#include "gui/windows/shopwindow.h"
 
 #include "net/serverfeatures.h"
 
 #include "net/ea/chatrecv.h"
 
 #include "net/tmwa/chatrecv.h"
-#include "net/tmwa/guildmanager.h"
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
+
+#include "utils/stringutils.h"
 
 #include "debug.h"
 

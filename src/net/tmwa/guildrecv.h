@@ -22,9 +22,13 @@
 #ifndef NET_TMWA_GUILDRECV_H
 #define NET_TMWA_GUILDRECV_H
 
-#include "net/ea/guildhandler.h"
+namespace Net
+{
+    class MessageIn;
+}
 
-#include "net/tmwa/messagehandler.h"
+class Guild;
+class GuildTab;
 
 namespace TmwAthena
 {

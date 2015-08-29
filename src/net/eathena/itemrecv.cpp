@@ -26,9 +26,7 @@
 #include "itemcolormanager.h"
 #include "logger.h"
 
-#include "enums/simpletypes/damaged.h"
-
-#include "net/eathena/protocol.h"
+#include "net/messagein.h"
 
 #include "debug.h"
 

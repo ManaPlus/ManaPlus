@@ -23,9 +23,10 @@
 #ifndef NET_TMWA_INVENTORYRECV_H
 #define NET_TMWA_INVENTORYRECV_H
 
-#include "net/ea/inventoryhandler.h"
-
-#include "net/tmwa/messagehandler.h"
+namespace Net
+{
+    class MessageIn;
+}
 
 namespace TmwAthena
 {

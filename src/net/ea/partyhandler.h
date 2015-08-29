@@ -26,11 +26,6 @@
 
 class Party;
 
-namespace Net
-{
-    class MessageIn;
-}
-
 namespace Ea
 {
 class PartyHandler notfinal : public Net::PartyHandler

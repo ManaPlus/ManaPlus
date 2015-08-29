@@ -22,10 +22,7 @@
 
 #include "logger.h"
 
-#include "being/being.h"
-
-#include "net/eathena/messageout.h"
-#include "net/eathena/protocol.h"
+#include "net/messagein.h"
 
 #include "debug.h"
 

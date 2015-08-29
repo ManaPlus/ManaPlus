@@ -27,11 +27,6 @@
 
 #include "localconsts.h"
 
-namespace Net
-{
-    class MessageIn;
-}
-
 namespace Ea
 {
 

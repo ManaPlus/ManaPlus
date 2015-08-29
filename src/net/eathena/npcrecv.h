@@ -21,9 +21,10 @@
 #ifndef NET_EATHENA_NPCRECV_H
 #define NET_EATHENA_NPCRECV_H
 
-#include "net/ea/npchandler.h"
-
-#include "net/eathena/messagehandler.h"
+namespace Net
+{
+    class MessageIn;
+}
 
 namespace EAthena
 {

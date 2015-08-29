@@ -20,33 +20,13 @@
 
 #include "net/eathena/pethandler.h"
 
-#include "actormanager.h"
-#include "notifymanager.h"
-
-#include "being/localplayer.h"
-#include "being/petinfo.h"
 #include "being/playerinfo.h"
 
-#include "enums/resources/notifytypes.h"
-
-#include "gui/windows/eggselectiondialog.h"
-
-#include "gui/widgets/createwidget.h"
-
-#include "gui/widgets/tabs/chat/chattab.h"
-
-#include "net/inventoryhandler.h"
 #include "net/serverfeatures.h"
 
-#include "net/ea/eaprotocol.h"
-
-#include "net/eathena/menu.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/petrecv.h"
 #include "net/eathena/protocol.h"
-
-#include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include "debug.h"
 

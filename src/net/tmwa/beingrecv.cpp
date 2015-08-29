@@ -36,13 +36,13 @@
 #include "gui/windows/outfitwindow.h"
 #include "gui/windows/socialwindow.h"
 
+#include "net/beinghandler.h"
+#include "net/messagein.h"
 #include "net/serverfeatures.h"
 
 #include "net/ea/beingrecv.h"
 
 #include "net/tmwa/guildmanager.h"
-#include "net/tmwa/messageout.h"
-#include "net/tmwa/protocol.h"
 #include "net/tmwa/sprite.h"
 
 #include "resources/iteminfo.h"
@@ -750,7 +750,8 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
     const uint16_t shield = msg.readInt16("shield");
     const uint16_t headTop = msg.readInt16("head top");
     const uint16_t headMid = msg.readInt16("head mid");
-    const ItemColor hairColor = fromInt(msg.readUInt8("hair color"), ItemColor);
+    const ItemColor hairColor = fromInt(msg.readUInt8("hair color"),
+        ItemColor);
     msg.readUInt8("unused");
     const uint16_t shoes = msg.readInt16("shoes / clothes color");
 

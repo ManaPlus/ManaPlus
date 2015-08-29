@@ -22,38 +22,18 @@
 
 #include "net/eathena/inventoryhandler.h"
 
-#include "notifymanager.h"
-#include "itemcolormanager.h"
-
-#include "being/localplayer.h"
+#include "item.h"
 
 #include "enums/equipslot.h"
-
-#include "enums/resources/notifytypes.h"
-
-#include "gui/popups/itempopup.h"
-
-#include "gui/widgets/createwidget.h"
-
-#include "gui/windows/insertcarddialog.h"
-
-#include "listeners/arrowslistener.h"
 
 #include "net/ea/inventoryrecv.h"
 
 #include "net/eathena/inventoryrecv.h"
-#include "net/eathena/itemflags.h"
 #include "net/eathena/menu.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
 #include "net/ea/eaprotocol.h"
-#include "net/ea/equipbackend.h"
-
-#include "resources/iteminfo.h"
-
-#include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include "debug.h"
 

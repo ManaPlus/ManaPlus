@@ -21,9 +21,10 @@
 #ifndef NET_EATHENA_MERCENARYRECV_H
 #define NET_EATHENA_MERCENARYRECV_H
 
-#include "net/mercenaryhandler.h"
-
-#include "net/eathena/messagehandler.h"
+namespace Net
+{
+    class MessageIn;
+}
 
 namespace EAthena
 {

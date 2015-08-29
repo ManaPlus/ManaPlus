@@ -20,8 +20,6 @@
 
 #include "net/eathena/familyhandler.h"
 
-#include "logger.h"
-
 #include "being/being.h"
 
 #include "net/eathena/familyrecv.h"

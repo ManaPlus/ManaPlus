@@ -23,9 +23,10 @@
 #ifndef NET_EATHENA_GAMERECV_H
 #define NET_EATHENA_GAMERECV_H
 
-#include "net/eathena/messagehandler.h"
-
-#include "net/ea/gamehandler.h"
+namespace Net
+{
+    class MessageIn;
+}
 
 namespace EAthena
 {

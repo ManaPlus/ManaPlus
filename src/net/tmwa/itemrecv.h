@@ -23,9 +23,10 @@
 #ifndef NET_TMWA_ITEMRECV_H
 #define NET_TMWA_ITEMRECV_H
 
-#include "net/tmwa/messagehandler.h"
-
-#include "net/ea/itemhandler.h"
+namespace Net
+{
+    class MessageIn;
+}
 
 namespace TmwAthena
 {

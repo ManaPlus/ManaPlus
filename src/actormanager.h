@@ -28,7 +28,6 @@
 #include "enums/simpletypes/allowsort.h"
 #include "enums/simpletypes/allplayers.h"
 #include "enums/simpletypes/beingtypeid.h"
-#include "enums/simpletypes/damaged.h"
 #include "enums/simpletypes/npcnames.h"
 
 #include "listeners/configlistener.h"

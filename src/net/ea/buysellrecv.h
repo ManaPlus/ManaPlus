@@ -23,7 +23,12 @@
 #ifndef NET_EA_BUYSELLRECV_H
 #define NET_EA_BUYSELLRECV_H
 
-#include "net/buysellhandler.h"
+#include "enums/simpletypes/beingid.h"
+
+namespace Net
+{
+    class MessageIn;
+}
 
 class BuyDialog;
 

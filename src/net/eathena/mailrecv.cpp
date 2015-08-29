@@ -28,10 +28,8 @@
 
 #include "gui/windows/mailwindow.h"
 
-#include "net/ea/eaprotocol.h"
-
-#include "net/eathena/messageout.h"
-#include "net/eathena/protocol.h"
+#include "net/mailhandler.h"
+#include "net/messagein.h"
 
 #include "utils/gettext.h"
 #include "utils/stringutils.h"

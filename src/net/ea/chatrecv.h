@@ -23,8 +23,7 @@
 #ifndef NET_EA_CHATRECV_H
 #define NET_EA_CHATRECV_H
 
-#include "net/chathandler.h"
-
+#include <string>
 #include <queue>
 
 namespace Net

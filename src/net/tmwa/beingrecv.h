@@ -20,12 +20,27 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_TMWA_BEING_H
-#define NET_TMWA_BEING_H
+#ifndef NET_TMWA_BEINGRECV_H
+#define NET_TMWA_BEINGRECV_H
 
-#include "net/ea/beinghandler.h"
+#if defined(__GXX_EXPERIMENTAL_CXX0X__)
+#if defined(__APPLE__)
+#include <tr1/cstdint>
+#else
+#include <cstdint>
+#endif
+#else
+#include <stdint.h>
+#endif
 
-#include "net/tmwa/messagehandler.h"
+#include "localconsts.h"
+
+namespace Net
+{
+    class MessageIn;
+}
+
+class Being;
 
 namespace TmwAthena
 {
@@ -63,4 +78,4 @@ namespace TmwAthena
     }  // namespace BeingRecv
 }  // namespace TmwAthena
 
-#endif  // NET_TMWA_BEING_H
+#endif  // NET_TMWA_BEINGRECV_H

@@ -40,7 +40,6 @@ class BrowserBox;
 class Button;
 class Label;
 class ProgressBar;
-class ResourceManager;
 class ScrollArea;
 
 namespace Net

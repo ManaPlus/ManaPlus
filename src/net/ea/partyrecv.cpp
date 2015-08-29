@@ -61,8 +61,8 @@ void PartyRecv::processPartyCreate(Net::MessageIn &msg)
 }
 
 void PartyRecv::processPartySettingsContinue(Net::MessageIn &msg,
-                                                const PartyShareT exp,
-                                                const PartyShareT item)
+                                             const PartyShareT exp,
+                                             const PartyShareT item)
 {
     switch (exp)
     {

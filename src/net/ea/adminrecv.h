@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_EA_ADMIN_H
-#define NET_EA_ADMIN_H
+#ifndef NET_EA_ADMINRECV_H
+#define NET_EA_ADMINRECV_H
 
 #include "localconsts.h"
 
@@ -38,4 +38,4 @@ namespace Ea
     }  // namespace Admin
 }  // namespace Ea
 
-#endif  // NET_EA_ADMIN_H
+#endif  // NET_EA_ADMINRECV_H

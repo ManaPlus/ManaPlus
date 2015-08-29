@@ -22,9 +22,10 @@
 #ifndef NET_TMWA_PARTYRECV_H
 #define NET_TMWA_PARTYRECV_H
 
-#include "net/tmwa/messagehandler.h"
-
-#include "net/ea/partyhandler.h"
+namespace Net
+{
+    class MessageIn;
+}
 
 namespace TmwAthena
 {

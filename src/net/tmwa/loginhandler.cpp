@@ -23,7 +23,6 @@
 #include "net/tmwa/loginhandler.h"
 
 #include "client.h"
-#include "logger.h"
 
 #include "net/serverfeatures.h"
 
@@ -33,8 +32,6 @@
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/network.h"
 #include "net/tmwa/protocol.h"
-
-#include "utils/gettext.h"
 
 #include "debug.h"
 

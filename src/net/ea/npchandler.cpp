@@ -22,15 +22,7 @@
 
 #include "net/ea/npchandler.h"
 
-#include "gui/viewport.h"
-
-#include "gui/windows/npcdialog.h"
-
-#include "net/messagein.h"
-
 #include "net/ea/npcrecv.h"
-
-#include "utils/langs.h"
 
 #include "debug.h"
 

@@ -22,12 +22,6 @@
 
 #include "net/eathena/itemhandler.h"
 
-#include "actormanager.h"
-#include "itemcolormanager.h"
-#include "logger.h"
-
-#include "enums/simpletypes/damaged.h"
-
 #include "net/ea/itemrecv.h"
 
 #include "net/eathena/itemrecv.h"

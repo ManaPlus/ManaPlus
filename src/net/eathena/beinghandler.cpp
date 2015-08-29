@@ -22,47 +22,12 @@
 
 #include "net/eathena/beinghandler.h"
 
-#include "actormanager.h"
-#include "effectmanager.h"
-#include "game.h"
-#include "itemcolormanager.h"
-#include "notifymanager.h"
-#include "party.h"
-
-#include "being/mercenaryinfo.h"
-
-#include "enums/resources/notifytypes.h"
-
-#include "particle/particle.h"
-
-#include "input/keyboardconfig.h"
-
-#include "gui/windows/skilldialog.h"
-#include "gui/windows/socialwindow.h"
-#include "gui/windows/outfitwindow.h"
-
-#include "net/serverfeatures.h"
-
-#include "net/ea/eaprotocol.h"
-
-#include "net/charserverhandler.h"
-
-#include "net/character.h"
-
 #include "net/ea/beingrecv.h"
 
 #include "net/eathena/beingrecv.h"
-#include "net/eathena/maptypeproperty2.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 #include "net/eathena/sprite.h"
-
-#include "resources/iteminfo.h"
-#include "resources/db/itemdb.h"
-
-#include "resources/map/map.h"
-
-#include "utils/timer.h"
 
 #include "debug.h"
 

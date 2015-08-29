@@ -22,8 +22,6 @@
 
 #include "net/eathena/npchandler.h"
 
-#include "actormanager.h"
-
 #include "being/localplayer.h"
 
 #include "gui/windows/npcdialog.h"

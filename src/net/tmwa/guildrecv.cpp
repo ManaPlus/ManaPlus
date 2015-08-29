@@ -21,8 +21,8 @@
 
 #include "net/tmwa/guildrecv.h"
 
-#include "actormanager.h"
 #include "configuration.h"
+#include "guild.h"
 
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
@@ -32,12 +32,13 @@
 
 #include "net/serverfeatures.h"
 
+#include "net/messagein.h"
+
+#include "net/tmwa/guildhandler.h"
+
 #include "gui/widgets/tabs/chat/guildtab.h"
 
 #include "net/ea/guildrecv.h"
-
-#include "net/tmwa/messageout.h"
-#include "net/tmwa/protocol.h"
 
 #include "debug.h"
 

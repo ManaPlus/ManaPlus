@@ -24,16 +24,13 @@
 
 #include "notifymanager.h"
 
-#include "enums/equipslot.h"
-
 #include "being/localplayer.h"
 
 #include "enums/resources/notifytypes.h"
 
 #include "listeners/arrowslistener.h"
 
-#include "net/tmwa/messageout.h"
-#include "net/tmwa/protocol.h"
+#include "net/messagein.h"
 
 #include "net/ea/eaprotocol.h"
 #include "net/ea/equipbackend.h"

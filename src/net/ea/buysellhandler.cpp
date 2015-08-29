@@ -22,21 +22,7 @@
 
 #include "net/ea/buysellhandler.h"
 
-#include "inventory.h"
-#include "notifymanager.h"
-
-#include "being/playerinfo.h"
-
-#include "enums/resources/notifytypes.h"
-
-#include "gui/windows/buydialog.h"
-#include "gui/windows/buyselldialog.h"
-#include "gui/windows/npcselldialog.h"
-
-#include "gui/widgets/createwidget.h"
-
 #include "net/ea/buysellrecv.h"
-#include "net/ea/eaprotocol.h"
 
 #include "debug.h"
 

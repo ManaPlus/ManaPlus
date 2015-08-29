@@ -23,7 +23,6 @@
 #include "net/ea/gamerecv.h"
 
 #include "client.h"
-#include "game.h"
 #include "notifymanager.h"
 
 #include "enums/resources/notifytypes.h"
@@ -45,7 +44,7 @@ namespace GameRecv
 {
     std::string mMap;
     BeingId mCharID = BeingId_zero;
-}  // namespace GameRev
+}  // namespace GameRecv
 
 void GameRecv::processWhoAnswer(Net::MessageIn &msg)
 {

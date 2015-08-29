@@ -45,7 +45,6 @@ class InsertCardDialog final : public SellDialog
         void sellAction(const ActionEvent &event) override final;
 
     private:
-        const Item *mItem;
         int mItemIndex;
 };
 

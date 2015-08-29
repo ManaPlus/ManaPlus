@@ -22,23 +22,8 @@
 
 #include "net/eathena/chathandler.h"
 
-#include "actormanager.h"
-#include "notifymanager.h"
-
 #include "being/localplayer.h"
-#include "being/playerinfo.h"
-#include "being/playerrelation.h"
-#include "being/playerrelations.h"
 
-#include "enums/resources/notifytypes.h"
-
-#include "gui/chatconsts.h"
-
-#include "gui/windows/chatwindow.h"
-
-#include "gui/widgets/tabs/chat/chattab.h"
-
-#include "net/mercenaryhandler.h"
 #include "net/serverfeatures.h"
 
 #include "net/ea/chatrecv.h"
@@ -48,7 +33,7 @@
 #include "net/eathena/protocol.h"
 
 #include "resources/chatobject.h"
-#include "utils/gettext.h"
+
 #include "utils/stringutils.h"
 
 #include "debug.h"

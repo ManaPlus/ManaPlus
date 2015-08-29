@@ -22,9 +22,10 @@
 #ifndef NET_EATHENA_PARTYRECV_H
 #define NET_EATHENA_PARTYRECV_H
 
-#include "net/eathena/messagehandler.h"
-
-#include "net/ea/partyhandler.h"
+namespace Net
+{
+    class MessageIn;
+}
 
 namespace EAthena
 {

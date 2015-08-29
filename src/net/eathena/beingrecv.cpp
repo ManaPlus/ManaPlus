@@ -49,10 +49,9 @@
 #include "net/charserverhandler.h"
 
 #include "net/character.h"
+#include "net/messagein.h"
 
 #include "net/eathena/maptypeproperty2.h"
-#include "net/eathena/messageout.h"
-#include "net/eathena/protocol.h"
 #include "net/eathena/sprite.h"
 
 #include "resources/iteminfo.h"
@@ -136,7 +135,7 @@ void BeingRecv::processBeingChangeLookContinue(Net::MessageIn &msg,
                                                const uint8_t type,
                                                const int id,
                                                const int id2,
-                                               const int *cards A_UNUSED)
+                                               const int *cards)
 {
     if (dstBeing->getType() == ActorType::Player)
         dstBeing->setOtherTime();
@@ -322,7 +321,8 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
 
     const uint16_t headTop = msg.readInt16("head top");
     const uint16_t headMid = msg.readInt16("head mid");
-    const ItemColor hairColor = fromInt(msg.readInt16("hair color"), ItemColor);
+    const ItemColor hairColor = fromInt(msg.readInt16("hair color"),
+        ItemColor);
     const uint16_t shoes = msg.readInt16("shoes or clothes color?");
 
     const uint16_t gloves = msg.readInt16("head dir / gloves");

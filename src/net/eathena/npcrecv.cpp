@@ -21,19 +21,13 @@
 #include "net/eathena/npcrecv.h"
 
 #include "actormanager.h"
+#include "logger.h"
 
-#include "being/localplayer.h"
+#include "being/being.h"
 
-#include "gui/windows/npcdialog.h"
-
-#include "gui/widgets/createwidget.h"
+#include "net/messagein.h"
 
 #include "net/ea/npcrecv.h"
-
-#include "net/eathena/messageout.h"
-#include "net/eathena/protocol.h"
-
-#include "net/ea/eaprotocol.h"
 
 #include "debug.h"
 

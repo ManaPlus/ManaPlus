@@ -23,9 +23,15 @@
 #ifndef NET_EATHENA_CHARSERVERRECV_H
 #define NET_EATHENA_CHARSERVERRECV_H
 
-#include "net/ea/charserverhandler.h"
+#include "enums/simpletypes/beingid.h"
 
-#include "net/eathena/messagehandler.h"
+#include <string>
+
+namespace Net
+{
+    class Character;
+    class MessageIn;
+}
 
 namespace EAthena
 {

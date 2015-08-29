@@ -23,9 +23,10 @@
 #ifndef NET_TMWA_GAMERECV_H
 #define NET_TMWA_GAMERECV_H
 
-#include "net/tmwa/messagehandler.h"
-
-#include "net/ea/gamehandler.h"
+namespace Net
+{
+    class MessageIn;
+}
 
 namespace TmwAthena
 {

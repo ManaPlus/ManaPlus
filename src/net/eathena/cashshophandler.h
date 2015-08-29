@@ -27,8 +27,6 @@
 
 #include "net/eathena/messagehandler.h"
 
-class BuyDialog;
-
 namespace EAthena
 {
 class CashShopHandler final : public MessageHandler,

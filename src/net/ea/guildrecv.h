@@ -22,14 +22,14 @@
 #ifndef NET_EA_GUILDRECV_H
 #define NET_EA_GUILDRECV_H
 
-#include "net/guildhandler.h"
+#include <string>
 
 namespace Net
 {
     class MessageIn;
 }
 
-class GuildTab;
+class Guild;
 
 namespace Ea
 {

@@ -21,9 +21,10 @@
 #ifndef NET_EATHENA_ELEMENTALRECV_H
 #define NET_EATHENA_ELEMENTALRECV_H
 
-#include "net/elementalhandler.h"
-
-#include "net/eathena/messagehandler.h"
+namespace Net
+{
+    class MessageIn;
+}
 
 namespace EAthena
 {

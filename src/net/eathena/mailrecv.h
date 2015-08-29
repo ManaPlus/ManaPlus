@@ -21,14 +21,13 @@
 #ifndef NET_EATHENA_MAILRECV_H
 #define NET_EATHENA_MAILRECV_H
 
-#include "net/mailhandler.h"
-
-#include "net/eathena/messagehandler.h"
+namespace Net
+{
+    class MessageIn;
+}
 
 namespace EAthena
 {
-    class MessageOut;
-
     namespace MailRecv
     {
         void processMailOpen(Net::MessageIn &msg);

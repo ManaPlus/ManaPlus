@@ -23,13 +23,8 @@
 #include "net/tmwa/charserverhandler.h"
 
 #include "client.h"
-#include "configuration.h"
-#include "settings.h"
 
 #include "gui/windows/charcreatedialog.h"
-#include "gui/windows/okdialog.h"
-
-#include "gui/widgets/createwidget.h"
 
 #include "net/character.h"
 
@@ -38,19 +33,13 @@
 #include "net/ea/charserverrecv.h"
 
 #include "net/tmwa/charserverrecv.h"
-#include "net/tmwa/gamehandler.h"
 #include "net/tmwa/loginhandler.h"
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/network.h"
 #include "net/tmwa/protocol.h"
-#include "net/tmwa/sprite.h"
-
-#include "resources/iteminfo.h"
 
 #include "resources/db/chardb.h"
-#include "resources/db/itemdb.h"
 
-#include "utils/dtor.h"
 #include "utils/gettext.h"
 
 #include "debug.h"

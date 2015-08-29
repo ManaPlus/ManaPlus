@@ -20,16 +20,7 @@
 
 #include "net/eathena/mercenaryhandler.h"
 
-#include "actormanager.h"
-#include "notifymanager.h"
-
-#include "being/localplayer.h"
-#include "being/mercenaryinfo.h"
 #include "being/playerinfo.h"
-
-#include "enums/resources/notifytypes.h"
-
-#include "gui/windows/skilldialog.h"
 
 #include "net/serverfeatures.h"
 

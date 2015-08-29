@@ -35,6 +35,8 @@
 
 #include "gui/widgets/createwidget.h"
 
+#include "net/buysellhandler.h"
+
 #include "net/ea/eaprotocol.h"
 
 #include "debug.h"

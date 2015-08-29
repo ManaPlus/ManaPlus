@@ -20,23 +20,10 @@
 
 #include "net/eathena/buyingstorehandler.h"
 
-#include "actormanager.h"
-#include "inventory.h"
-#include "notifymanager.h"
 #include "shopitem.h"
 
-#include "being/localplayer.h"
+#include "being/being.h"
 #include "being/playerinfo.h"
-
-#include "enums/resources/notifytypes.h"
-
-#include "gui/windows/buyingstoreselldialog.h"
-
-#include "gui/widgets/createwidget.h"
-
-#include "listeners/arrowslistener.h"
-#include "listeners/buyingstoremodelistener.h"
-#include "listeners/buyingstoreslotslistener.h"
 
 #include "net/ea/eaprotocol.h"
 

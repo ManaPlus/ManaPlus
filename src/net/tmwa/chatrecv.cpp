@@ -40,8 +40,9 @@
 
 #include "net/ea/chatrecv.h"
 
+#include "net/messagein.h"
+
 #include "net/tmwa/guildmanager.h"
-#include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
 
 #include "debug.h"
@@ -63,7 +64,7 @@ void ChatRecv::processChat(Net::MessageIn &msg)
 }
 
 void ChatRecv::processChatContinue(std::string chatMsg,
-                                      const std::string &channel)
+                                   const std::string &channel)
 {
     const size_t pos = chatMsg.find(" : ", 0);
 
@@ -213,7 +214,7 @@ void ChatRecv::processWhisperResponse(Net::MessageIn &msg)
 }
 
 void ChatRecv::processWhisperContinue(const std::string &nick,
-                                         std::string chatMsg)
+                                      std::string chatMsg)
 {
     // ignoring future whisper messages
     if (chatMsg.find("\302\202G") == 0 || chatMsg.find("\302\202A") == 0)

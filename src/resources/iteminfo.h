@@ -284,8 +284,10 @@ class ItemInfo final
         { return mColorsList ? static_cast<int>(mColorsList->size()) : 0; }
 
         int getIconColorsSize() const
-        { return mIconColorsList ? static_cast<int>(mIconColorsList->size())
-            : 0; }
+        {
+            return mIconColorsList ? static_cast<int>(mIconColorsList->size())
+                : 0;
+        }
 
         std::string getColorName(const ItemColor idx) const;
         std::string getColor(const ItemColor idx) const;

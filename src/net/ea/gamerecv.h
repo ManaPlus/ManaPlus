@@ -25,7 +25,7 @@
 
 #include "enums/simpletypes/beingid.h"
 
-#include "net/gamehandler.h"
+#include <string>
 
 namespace Net
 {

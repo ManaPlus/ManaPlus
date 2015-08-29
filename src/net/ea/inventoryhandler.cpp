@@ -22,25 +22,10 @@
 
 #include "net/ea/inventoryhandler.h"
 
-#include "notifymanager.h"
-
-#include "being/localplayer.h"
-
-#include "enums/equipslot.h"
-
-#include "enums/resources/notifytypes.h"
-
-#include "gui/widgets/createwidget.h"
-
-#include "net/messagein.h"
-
-#include "net/ea/eaprotocol.h"
 #include "net/ea/equipbackend.h"
 #include "net/ea/inventoryrecv.h"
 
 #include "utils/delete2.h"
-
-#include "listeners/arrowslistener.h"
 
 #include "debug.h"
 

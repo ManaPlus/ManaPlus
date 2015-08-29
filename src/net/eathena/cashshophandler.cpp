@@ -20,12 +20,6 @@
 
 #include "net/eathena/cashshophandler.h"
 
-#include "being/playerinfo.h"
-
-#include "gui/windows/buydialog.h"
-
-#include "gui/widgets/createwidget.h"
-
 #include "net/eathena/cashshoprecv.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"

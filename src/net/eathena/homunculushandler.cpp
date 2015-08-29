@@ -20,27 +20,13 @@
 
 #include "net/eathena/homunculushandler.h"
 
-#include "actormanager.h"
-#include "notifymanager.h"
-
-#include "being/homunculusinfo.h"
 #include "being/playerinfo.h"
-
-#include "enums/resources/notifytypes.h"
-
-#include "gui/windows/skilldialog.h"
 
 #include "net/serverfeatures.h"
 
 #include "net/eathena/homunculusrecv.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
-
-#include "resources/iteminfo.h"
-
-#include "resources/db/itemdb.h"
-
-#include "utils/stringutils.h"
 
 #include "debug.h"
 

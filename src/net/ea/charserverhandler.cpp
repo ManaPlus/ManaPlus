@@ -22,20 +22,11 @@
 
 #include "net/ea/charserverhandler.h"
 
-#include "client.h"
-
-#include "gui/windows/charcreatedialog.h"
-#include "gui/windows/okdialog.h"
-
-#include "gui/widgets/createwidget.h"
+#include "net/serverinfo.h"
 
 #include "net/ea/eaprotocol.h"
 
-#include "net/character.h"
-#include "net/messagein.h"
-
 #include "utils/dtor.h"
-#include "utils/gettext.h"
 
 #include "debug.h"
 

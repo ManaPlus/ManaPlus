@@ -22,8 +22,6 @@
 
 #include "net/eathena/adminhandler.h"
 
-#include "logger.h"
-
 #include "being/being.h"
 
 #include "net/ea/adminrecv.h"

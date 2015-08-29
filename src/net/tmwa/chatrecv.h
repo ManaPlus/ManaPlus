@@ -23,14 +23,15 @@
 #ifndef NET_TMWA_CHATRECV_H
 #define NET_TMWA_CHATRECV_H
 
-#include "net/ea/chathandler.h"
+#include <string>
 
-#include "net/tmwa/messagehandler.h"
+namespace Net
+{
+    class MessageIn;
+}
 
 namespace TmwAthena
 {
-    class MessageOut;
-
     namespace ChatRecv
     {
         void processChat(Net::MessageIn &msg);

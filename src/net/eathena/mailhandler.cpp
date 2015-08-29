@@ -20,22 +20,11 @@
 
 #include "net/eathena/mailhandler.h"
 
-#include "notifymanager.h"
-
-#include "enums/resources/notifytypes.h"
-
-#include "gui/mailmessage.h"
-
-#include "gui/windows/mailwindow.h"
-
 #include "net/ea/eaprotocol.h"
 
 #include "net/eathena/mailrecv.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
-
-#include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include "debug.h"
 

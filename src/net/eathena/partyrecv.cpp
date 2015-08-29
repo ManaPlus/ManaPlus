@@ -34,10 +34,9 @@
 
 #include "gui/widgets/tabs/chat/partytab.h"
 
-#include "net/ea/partyrecv.h"
+#include "net/messagein.h"
 
-#include "net/eathena/messageout.h"
-#include "net/eathena/protocol.h"
+#include "net/ea/partyrecv.h"
 
 #include "debug.h"
 

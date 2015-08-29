@@ -22,8 +22,6 @@
 
 #include "net/tmwa/itemhandler.h"
 
-#include "actormanager.h"
-
 #include "net/ea/itemrecv.h"
 
 #include "net/tmwa/itemrecv.h"

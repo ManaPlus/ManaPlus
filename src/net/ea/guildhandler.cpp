@@ -21,26 +21,11 @@
 
 #include "net/ea/guildhandler.h"
 
-#include "actormanager.h"
-#include "notifymanager.h"
-
-#include "being/localplayer.h"
-#include "being/playerinfo.h"
-
-#include "enums/resources/notifytypes.h"
-
-#include "gui/windows/skilldialog.h"
-#include "gui/windows/socialwindow.h"
-
-#include "net/messagein.h"
-
 #include "net/ea/guildrecv.h"
 
 #include "gui/widgets/tabs/chat/guildtab.h"
 
 #include "utils/delete2.h"
-#include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include "debug.h"
 

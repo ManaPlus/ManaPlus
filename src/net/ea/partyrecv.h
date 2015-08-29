@@ -22,7 +22,7 @@
 #ifndef NET_EA_PARTYRECV_H
 #define NET_EA_PARTYRECV_H
 
-#include "net/partyhandler.h"
+#include "enums/net/partyshare.h"
 
 class Party;
 

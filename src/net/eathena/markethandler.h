@@ -25,10 +25,9 @@
 
 #include "net/eathena/messagehandler.h"
 
-class BuyDialog;
-
 namespace EAthena
 {
+
 class MarketHandler final : public MessageHandler,
                             public Net::MarketHandler
 {

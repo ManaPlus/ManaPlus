@@ -30,14 +30,11 @@
 
 #include "gui/windows/skilldialog.h"
 
-#include "net/serverfeatures.h"
-
-#include "net/eathena/messageout.h"
-#include "net/eathena/protocol.h"
-
 #include "resources/iteminfo.h"
 
 #include "resources/db/itemdb.h"
+
+#include "net/messagein.h"
 
 #include "utils/stringutils.h"
 

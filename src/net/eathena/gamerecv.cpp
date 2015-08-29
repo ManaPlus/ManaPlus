@@ -27,14 +27,9 @@
 
 #include "being/localplayer.h"
 
-#include "net/serverfeatures.h"
+#include "net/messagein.h"
 
-#include "net/ea/token.h"
-
-#include "net/eathena/loginhandler.h"
-#include "net/eathena/messageout.h"
 #include "net/eathena/network.h"
-#include "net/eathena/protocol.h"
 
 #include "debug.h"
 

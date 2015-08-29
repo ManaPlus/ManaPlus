@@ -25,8 +25,6 @@
 
 #include "net/buysellhandler.h"
 
-class BuyDialog;
-
 namespace Ea
 {
 

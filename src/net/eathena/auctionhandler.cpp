@@ -21,7 +21,6 @@
 #include "net/eathena/auctionhandler.h"
 
 #include "item.h"
-#include "logger.h"
 
 #include "net/ea/eaprotocol.h"
 

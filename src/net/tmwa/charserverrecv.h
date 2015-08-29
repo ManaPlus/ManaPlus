@@ -23,9 +23,12 @@
 #ifndef NET_TMWA_CHARSERVERRECV_H
 #define NET_TMWA_CHARSERVERRECV_H
 
-#include "net/ea/charserverhandler.h"
+namespace Net
+{
+    class MessageIn;
 
-#include "net/tmwa/messagehandler.h"
+    struct Character;
+}
 
 namespace TmwAthena
 {

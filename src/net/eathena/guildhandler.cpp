@@ -22,17 +22,9 @@
 #include "net/eathena/guildhandler.h"
 
 #include "actormanager.h"
-#include "configuration.h"
 
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
-
-#include "gui/windows/chatwindow.h"
-#include "gui/windows/socialwindow.h"
-
-#include "gui/widgets/tabs/chat/guildtab.h"
-
-#include "net/ea/guildrecv.h"
 
 #include "net/ea/guildrecv.h"
 

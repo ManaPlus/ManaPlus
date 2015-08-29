@@ -18,10 +18,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_EATHENA_ADMIN_H
-#define NET_EATHENA_ADMIN_H
+#ifndef NET_EATHENA_ADMINRECV_H
+#define NET_EATHENA_ADMINRECV_H
 
-#include "net/eathena/messagehandler.h"
+namespace Net
+{
+    class MessageIn;
+}
 
 namespace EAthena
 {
@@ -33,4 +36,4 @@ namespace EAthena
     }  // namespace Admin
 }  // namespace EAthena
 
-#endif  // NET_EATHENA_ADMIN_H
+#endif  // NET_EATHENA_ADMINRECV_H

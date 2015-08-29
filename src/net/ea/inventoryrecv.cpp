@@ -32,6 +32,7 @@
 
 #include "gui/widgets/createwidget.h"
 
+#include "net/inventoryhandler.h"
 #include "net/messagein.h"
 
 #include "net/ea/eaprotocol.h"
@@ -79,7 +80,7 @@ namespace InventoryRecv
     Inventory *mStorage = nullptr;
     PickupQueue mSentPickups;
     bool mDebugInventory = true;
-}
+}  // namespace InventoryRecv
 
 void InventoryRecv::processPlayerInventoryRemove(Net::MessageIn &msg)
 {

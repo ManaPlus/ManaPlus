@@ -21,8 +21,8 @@
 
 #include "net/eathena/guildrecv.h"
 
-#include "actormanager.h"
 #include "configuration.h"
+#include "guild.h"
 
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
@@ -34,8 +34,9 @@
 
 #include "net/ea/guildrecv.h"
 
-#include "net/eathena/messageout.h"
-#include "net/eathena/protocol.h"
+#include "net/messagein.h"
+
+#include "net/eathena/guildhandler.h"
 
 #include "debug.h"
 

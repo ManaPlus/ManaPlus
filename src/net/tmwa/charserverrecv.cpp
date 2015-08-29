@@ -32,19 +32,17 @@
 #include "gui/widgets/createwidget.h"
 
 #include "net/character.h"
+#include "net/charserverhandler.h"
 
 #include "net/ea/token.h"
 
 #include "net/tmwa/gamehandler.h"
 #include "net/tmwa/loginhandler.h"
-#include "net/tmwa/messageout.h"
 #include "net/tmwa/network.h"
-#include "net/tmwa/protocol.h"
 #include "net/tmwa/sprite.h"
 
 #include "resources/iteminfo.h"
 
-#include "resources/db/chardb.h"
 #include "resources/db/itemdb.h"
 
 #include "utils/dtor.h"

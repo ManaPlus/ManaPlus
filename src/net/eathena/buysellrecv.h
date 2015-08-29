@@ -23,9 +23,10 @@
 #ifndef NET_EATHENA_BUYSELLRECV_H
 #define NET_EATHENA_BUYSELLRECV_H
 
-#include "net/ea/buysellhandler.h"
-
-#include "net/eathena/messagehandler.h"
+namespace Net
+{
+    class MessageIn;
+}
 
 namespace EAthena
 {

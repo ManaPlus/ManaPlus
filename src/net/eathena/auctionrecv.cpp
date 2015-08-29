@@ -22,7 +22,7 @@
 
 #include "logger.h"
 
-#include "net/eathena/messagein.h"
+#include "net/messagein.h"
 
 #include "debug.h"
 

@@ -27,8 +27,6 @@
 
 #include "being/localplayer.h"
 
-#include "enums/equipslot.h"
-
 #include "enums/resources/notifytypes.h"
 
 #include "gui/popups/itempopup.h"
@@ -39,10 +37,12 @@
 
 #include "listeners/arrowslistener.h"
 
+#include "net/inventoryhandler.h"
+
+#include "net/messagein.h"
+
 #include "net/eathena/itemflags.h"
 #include "net/eathena/menu.h"
-#include "net/eathena/messageout.h"
-#include "net/eathena/protocol.h"
 
 #include "net/ea/eaprotocol.h"
 #include "net/ea/equipbackend.h"
@@ -903,7 +903,7 @@ void InventoryRecv::processFavoriteItem(Net::MessageIn &msg)
 
 void InventoryRecv::processCartAddError(Net::MessageIn &msg)
 {
-    switch(msg.readUInt8("flag"))
+    switch (msg.readUInt8("flag"))
     {
         case 0:
             NotifyManager::notify(NotifyTypes::CART_ADD_WEIGHT_ERROR);

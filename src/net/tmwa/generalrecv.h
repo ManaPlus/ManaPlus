@@ -23,9 +23,10 @@
 #ifndef NET_TMWA_GENERALRECV_H
 #define NET_TMWA_GENERALRECV_H
 
-#include "net/generalhandler.h"
-
-#include "net/tmwa/messagehandler.h"
+namespace Net
+{
+    class MessageIn;
+}
 
 namespace TmwAthena
 {

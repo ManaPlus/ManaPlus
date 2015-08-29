@@ -34,8 +34,6 @@
 
 #include "resources/iteminfo.h"
 
-#include "resources/db/itemdb.h"
-
 #include "resources/map/map.h"
 
 #include "net/serverfeatures.h"

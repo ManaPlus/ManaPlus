@@ -20,13 +20,31 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_EATHENA_BEING_H
-#define NET_EATHENA_BEING_H
-
-#include "net/ea/beinghandler.h"
+#ifndef NET_EATHENA_BEINGRECV_H
+#define NET_EATHENA_BEINGRECV_H
 
 #include "net/eathena/beingtype.h"
-#include "net/eathena/messagehandler.h"
+
+#include "enums/simpletypes/beingid.h"
+
+#if defined(__GXX_EXPERIMENTAL_CXX0X__)
+#if defined(__APPLE__)
+#include <tr1/cstdint>
+#else
+#include <cstdint>
+#endif
+#else
+#include <stdint.h>
+#endif
+
+#include "localconsts.h"
+
+namespace Net
+{
+    class MessageIn;
+}
+
+class Being;
 
 namespace EAthena
 {
@@ -98,4 +116,4 @@ namespace EAthena
     }  // namespace BeingRecv
 }  // namespace EAthena
 
-#endif  // NET_EATHENA_BEING_H
+#endif  // NET_EATHENA_BEINGRECV_H

@@ -249,7 +249,7 @@ class ResourceManager final
 
         void clearCache();
 
-        void static init();
+        static void init();
 
     private:
         /**

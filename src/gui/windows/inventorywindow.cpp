@@ -60,8 +60,6 @@
 
 #include "listeners/insertcardlistener.h"
 
-#include "net/inventoryhandler.h"
-
 #include "resources/iteminfo.h"
 
 #include "utils/delete2.h"

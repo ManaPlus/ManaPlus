@@ -22,23 +22,9 @@
 
 #include "net/ea/chathandler.h"
 
-#include "actormanager.h"
 #include "configuration.h"
-#include "notifymanager.h"
-
-#include "being/being.h"
-
-#include "enums/resources/notifytypes.h"
-
-#include "gui/windows/chatwindow.h"
-
-#include "gui/widgets/tabs/chat/chattab.h"
-
-#include "net/messagein.h"
 
 #include "net/ea/chatrecv.h"
-
-#include "utils/gettext.h"
 
 #include "debug.h"
 

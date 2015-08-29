@@ -22,36 +22,12 @@
 
 #include "net/tmwa/beinghandler.h"
 
-#include "actormanager.h"
-#include "effectmanager.h"
-#include "guild.h"
-#include "party.h"
-
-#include "being/localplayer.h"
-
-#include "particle/particle.h"
-
-#include "input/keyboardconfig.h"
-
-#include "gui/windows/outfitwindow.h"
-#include "gui/windows/socialwindow.h"
-
-#include "net/serverfeatures.h"
-
 #include "net/ea/beingrecv.h"
 
 #include "net/tmwa/beingrecv.h"
-#include "net/tmwa/guildmanager.h"
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
 #include "net/tmwa/sprite.h"
-
-#include "resources/iteminfo.h"
-
-#include "resources/db/itemdb.h"
-
-#include "utils/stringutils.h"
-#include "utils/timer.h"
 
 #include "debug.h"
 

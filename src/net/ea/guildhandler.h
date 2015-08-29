@@ -24,11 +24,6 @@
 
 #include "net/guildhandler.h"
 
-namespace Net
-{
-    class MessageIn;
-}
-
 class GuildTab;
 
 namespace Ea
