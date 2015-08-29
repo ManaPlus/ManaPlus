@@ -23,8 +23,20 @@
 #ifndef NET_WORLDINFO_H
 #define NET_WORLDINFO_H
 
+#if defined(__GXX_EXPERIMENTAL_CXX0X__)
+#if defined(__APPLE__)
+#include <tr1/cstdint>
+#else
+#include <cstdint>
+#endif
+#else
+#include <stdint.h>
+#endif
+
 #include <string>
 #include <vector>
+
+#include "localconsts.h"
 
 struct WorldInfo final
 {
