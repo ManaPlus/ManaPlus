@@ -1,3 +1,13 @@
+2015-08-29 New release 1.5.8.29
+add: support for item colors (hercules)
+add: separate item icon palette.
+add: drag drop cards for insert (hercules)
+add: improve player attack action (Travolta)
+add: disable DSA if driver AMD HD 14.10.*
+add: rental items support (hercules)
+add: support for message from scripts on server.
+add: Catalan, China (Hong Kong), Ukraine languages for manual selection.
+
 2015-08-15 New release 1.5.8.15
 fix: download updates if download error happend.
 fix: key message in outfits window.
