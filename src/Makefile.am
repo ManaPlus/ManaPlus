@@ -1544,6 +1544,8 @@ manaplus_SOURCES += gui/windows/bankwindow.cpp \
 	      net/eathena/questrecv.h \
 	      net/eathena/roulettehandler.cpp \
 	      net/eathena/roulettehandler.h \
+	      net/eathena/rouletterecv.cpp \
+	      net/eathena/rouletterecv.h \
 	      net/eathena/searchstorehandler.cpp \
 	      net/eathena/searchstorehandler.h \
 	      net/eathena/serverfeatures.cpp \

@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_EATHENA_ROULETTEHANDLER_H
-#define NET_EATHENA_ROULETTEHANDLER_H
+#ifndef NET_EATHENA_ROULETTERECV_H
+#define NET_EATHENA_ROULETTERECV_H
 
 #include "net/roulettehandler.h"
 
@@ -27,17 +27,13 @@
 
 namespace EAthena
 {
-class RouletteHandler final : public MessageHandler,
-                              public Net::RouletteHandler
-{
-    public:
-        RouletteHandler();
-
-        A_DELETE_COPY(RouletteHandler)
-
-        void handleMessage(Net::MessageIn &msg) override final;
-};
-
+    namespace RouletteRecv
+    {
+        void processRouletteInfoAckType(Net::MessageIn &msg);
+        void processRouletteItemAck(Net::MessageIn &msg);
+        void processRouletteGenerateAckType(Net::MessageIn &msg);
+        void processRouletteOpenAck(Net::MessageIn &msg);
+    }  // namespace RouletteRecv
 }  // namespace EAthena
 
-#endif  // NET_EATHENA_ROULETTEHANDLER_H
+#endif  // NET_EATHENA_ROULETTERECV_H

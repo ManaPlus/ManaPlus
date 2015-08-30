@@ -23,6 +23,7 @@
 #include "logger.h"
 
 #include "net/eathena/protocol.h"
+#include "net/eathena/rouletterecv.h"
 
 #include "debug.h"
 
@@ -51,71 +52,24 @@ void RouletteHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_ROULETTE_INFO_ACK_TYPE:
-            processRouletteInfoAckType(msg);
+            RouletteRecv::processRouletteInfoAckType(msg);
             break;
 
         case SMSG_ROULETTE_RECV_ITEM_ACK:
-            processRouletteItemAck(msg);
+            RouletteRecv::processRouletteItemAck(msg);
             break;
 
         case SMSG_ROULETTE_GENERATE_ACK_TYPE:
-            processRouletteGenerateAckType(msg);
+            RouletteRecv::processRouletteGenerateAckType(msg);
             break;
 
         case SMSG_ROULETTE_OPEN_ACK:
-            processRouletteOpenAck(msg);
+            RouletteRecv::processRouletteOpenAck(msg);
             break;
 
         default:
             break;
     }
-}
-
-void RouletteHandler::processRouletteInfoAckType(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    const int count = (msg.readInt16("len") - 8) / 8;
-    msg.readInt32("serial");
-
-    for (int f = 0; f < count; f ++)
-    {
-        msg.readInt16("row");
-        msg.readInt16("position");
-        msg.readInt16("item id");
-        msg.readInt16("count");
-    }
-}
-
-void RouletteHandler::processRouletteItemAck(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    msg.readUInt8("result");
-    msg.readInt16("item id");
-}
-
-void RouletteHandler::processRouletteGenerateAckType(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    msg.readUInt8("result");
-    msg.readInt16("step");
-    msg.readInt16("idx");
-    msg.readInt16("item id");
-    msg.readInt32("remain gold");
-    msg.readInt32("remain silver");
-    msg.readInt32("remain bronze");
-}
-
-void RouletteHandler::processRouletteOpenAck(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    msg.readUInt8("result");
-    msg.readInt32("serial");
-    msg.readUInt8("step");
-    msg.readUInt8("idx");
-    msg.readInt16("additional item id");
-    msg.readInt32("gold point");
-    msg.readInt32("silver point");
-    msg.readInt32("bronze point");
 }
 
 }  // namespace EAthena
