@@ -53,20 +53,6 @@ class TradeHandler final : public MessageHandler, public Ea::TradeHandler
         void finish() const override final;
 
         void cancel() const override final;
-
-    protected:
-        static void processTradeRequest(Net::MessageIn &msg);
-
-        static void processTradeResponse(Net::MessageIn &msg);
-
-        static void processTradeUndo(Net::MessageIn &msg);
-
-        static void processTradeItemAdd(Net::MessageIn &msg);
-
-        static void processTradeItemAddResponse(Net::MessageIn &msg);
-
-        static int mQuantity;
-        static int mItemIndex;
 };
 
 }  // namespace EAthena

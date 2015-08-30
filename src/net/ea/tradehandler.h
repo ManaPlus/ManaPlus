@@ -42,17 +42,6 @@ class TradeHandler notfinal : public Net::TradeHandler
 
         void removeItem(const int slotNum,
                         const int amount) const override final;
-
-    protected:
-        static void processTradeOk(Net::MessageIn &msg);
-
-        static void processTradeCancel(Net::MessageIn &msg);
-
-        static void processTradeComplete(Net::MessageIn &msg);
-
-        static void processTradeRequestContinue(const std::string &partner);
-
-        static void processTradeResponseContinue(const uint8_t type);
 };
 
 }  // namespace Ea

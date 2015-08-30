@@ -20,41 +20,26 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_TMWA_TRADEHANDLER_H
-#define NET_TMWA_TRADEHANDLER_H
+#ifndef NET_EATHENA_TRADERECV_H
+#define NET_EATHENA_TRADERECV_H
 
 #include "net/ea/tradehandler.h"
 
-#include "net/tmwa/messagehandler.h"
+#include "net/eathena/messagehandler.h"
 
-namespace TmwAthena
+namespace EAthena
 {
+    namespace TradeRecv
+    {
+        extern int mQuantity;
+        extern int mItemIndex;
 
-class TradeHandler final : public MessageHandler, public Ea::TradeHandler
-{
-    public:
-        TradeHandler();
+        void processTradeRequest(Net::MessageIn &msg);
+        void processTradeResponse(Net::MessageIn &msg);
+        void processTradeUndo(Net::MessageIn &msg);
+        void processTradeItemAdd(Net::MessageIn &msg);
+        void processTradeItemAddResponse(Net::MessageIn &msg);
+    }  // namespace TradeRecv
+}  // namespace EAthena
 
-        A_DELETE_COPY(TradeHandler)
-
-        void handleMessage(Net::MessageIn &msg) override final;
-
-        void request(const Being *const being) const override final;
-
-        void respond(const bool accept) const override final;
-
-        void addItem(const Item *const item,
-                     const int amount) const override final;
-
-        void setMoney(const int amount) const override final;
-
-        void confirm() const override final;
-
-        void finish() const override final;
-
-        void cancel() const override final;
-};
-
-}  // namespace TmwAthena
-
-#endif  // NET_TMWA_TRADEHANDLER_H
+#endif  // NET_EATHENA_TRADERECV_H

@@ -34,8 +34,11 @@
 
 #include "gui/windows/tradewindow.h"
 
+#include "net/ea/traderecv.h"
+
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
+#include "net/tmwa/traderecv.h"
 
 #include "net/ea/eaprotocol.h"
 
@@ -76,31 +79,31 @@ void TradeHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_TRADE_REQUEST:
-            processTradeRequest(msg);
+            TradeRecv::processTradeRequest(msg);
             break;
 
         case SMSG_TRADE_RESPONSE:
-            processTradeResponse(msg);
+            TradeRecv::processTradeResponse(msg);
             break;
 
         case SMSG_TRADE_ITEM_ADD:
-            processTradeItemAdd(msg);
+            TradeRecv::processTradeItemAdd(msg);
             break;
 
         case SMSG_TRADE_ITEM_ADD_RESPONSE:
-            processTradeItemAddResponse(msg);
+            TradeRecv::processTradeItemAddResponse(msg);
             break;
 
         case SMSG_TRADE_OK:
-            processTradeOk(msg);
+            Ea::TradeRecv::processTradeOk(msg);
             break;
 
         case SMSG_TRADE_CANCEL:
-            processTradeCancel(msg);
+            Ea::TradeRecv::processTradeCancel(msg);
             break;
 
         case SMSG_TRADE_COMPLETE:
-            processTradeComplete(msg);
+            Ea::TradeRecv::processTradeComplete(msg);
             break;
 
         default:
@@ -158,119 +161,6 @@ void TradeHandler::finish() const
 void TradeHandler::cancel() const
 {
     createOutPacket(CMSG_TRADE_CANCEL_REQUEST);
-}
-
-void TradeHandler::processTradeRequest(Net::MessageIn &msg)
-{
-    processTradeRequestContinue(msg.readString(24, "name"));
-}
-
-void TradeHandler::processTradeItemAdd(Net::MessageIn &msg)
-{
-    const int amount = msg.readInt32("amount");
-    const int type = msg.readInt16("type");
-    const uint8_t identify = msg.readUInt8("identify");
-    msg.readUInt8("attribute");
-    const uint8_t refine = msg.readUInt8("refine");
-    int cards[4];
-    for (int f = 0; f < 4; f++)
-        cards[f] = msg.readInt16("card");
-
-    if (tradeWindow)
-    {
-        if (type == 0)
-        {
-            tradeWindow->setMoney(amount);
-        }
-        else
-        {
-            tradeWindow->addItem2(type,
-                0,
-                cards,
-                4,
-                false,
-                amount,
-                refine,
-                ItemColor_one,
-                fromBool(identify, Identified),
-                Damaged_false,
-                Favorite_false,
-                Equipm_false);
-        }
-    }
-}
-
-void TradeHandler::processTradeItemAddResponse(Net::MessageIn &msg)
-{
-    // Trade: New Item add response (was 0x00ea, now 01b1)
-    const int index = msg.readInt16("index") - INVENTORY_OFFSET;
-    Item *item = nullptr;
-    if (PlayerInfo::getInventory())
-        item = PlayerInfo::getInventory()->getItem(index);
-
-    if (!item)
-    {
-        if (tradeWindow)
-            tradeWindow->receivedOk(true);
-        return;
-    }
-    const int quantity = msg.readInt16("amount");
-
-    const uint8_t res = msg.readUInt8("status");
-    switch (res)
-    {
-        case 0:
-            // Successfully added item
-            if (tradeWindow)
-            {
-                tradeWindow->addItem2(item->getId(),
-                    item->getType(),
-                    item->getCards(),
-                    4,
-                    true,
-                    quantity,
-                    item->getRefine(),
-                    item->getColor(),
-                    item->getIdentified(),
-                    item->getDamaged(),
-                    item->getFavorite(),
-                    item->isEquipment());
-            }
-            item->increaseQuantity(-quantity);
-            break;
-        case 1:
-            // Add item failed - player overweighted
-            NotifyManager::notify(NotifyTypes::
-                TRADE_ADD_PARTNER_OVER_WEIGHT);
-            break;
-        case 2:
-            // Add item failed - player has no free slot
-            NotifyManager::notify(NotifyTypes::TRADE_ADD_PARTNER_NO_SLOTS);
-            break;
-        case 3:
-            // Add item failed - non tradable item
-            NotifyManager::notify(NotifyTypes::TRADE_ADD_UNTRADABLE_ITEM);
-            break;
-        default:
-            NotifyManager::notify(NotifyTypes::TRADE_ADD_ERROR);
-            UNIMPLIMENTEDPACKET;
-            logger->log("QQQ SMSG_TRADE_ITEM_ADD_RESPONSE: "
-                        + toString(res));
-            break;
-    }
-}
-
-void TradeHandler::processTradeResponse(Net::MessageIn &msg)
-{
-    if (tradePartnerName.empty() ||
-        !player_relations.hasPermission(tradePartnerName,
-        PlayerRelation::TRADE))
-    {
-        tradeHandler->respond(false);
-        return;
-    }
-    const uint8_t type = msg.readUInt8("type");
-    processTradeResponseContinue(type);
 }
 
 }  // namespace TmwAthena

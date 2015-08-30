@@ -1243,7 +1243,9 @@ manaplus_SOURCES += main.cpp \
 	      net/ea/skillrecv.h \
 	      net/ea/token.h \
 	      net/ea/tradehandler.cpp \
-	      net/ea/tradehandler.h
+	      net/ea/tradehandler.h \
+	      net/ea/traderecv.cpp \
+	      net/ea/traderecv.h
 
 if ENABLE_TMWA
 manaplus_CXXFLAGS += -DTMWA_SUPPORT
@@ -1330,7 +1332,9 @@ manaplus_SOURCES += \
 	      net/tmwa/skillrecv.h \
 	      net/tmwa/sprite.h \
 	      net/tmwa/tradehandler.cpp \
-	      net/tmwa/tradehandler.h
+	      net/tmwa/tradehandler.h \
+	      net/tmwa/traderecv.cpp \
+	      net/tmwa/traderecv.h
 endif
 
 if ENABLE_EATHENA
@@ -1563,6 +1567,8 @@ manaplus_SOURCES += gui/windows/bankwindow.cpp \
 	      net/eathena/sprite.h \
 	      net/eathena/tradehandler.cpp \
 	      net/eathena/tradehandler.h \
+	      net/eathena/traderecv.cpp \
+	      net/eathena/traderecv.h \
 	      net/eathena/vendinghandler.cpp \
 	      net/eathena/vendinghandler.h
 endif

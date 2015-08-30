@@ -1402,6 +1402,8 @@ SET(SRCS_EVOL
     net/ea/token.h
     net/ea/tradehandler.cpp
     net/ea/tradehandler.h
+    net/ea/traderecv.cpp
+    net/ea/traderecv.h
     )
 
 SET(SRCS_TMWA
@@ -1488,6 +1490,8 @@ SET(SRCS_TMWA
     net/tmwa/sprite.h
     net/tmwa/tradehandler.cpp
     net/tmwa/tradehandler.h
+    net/tmwa/traderecv.cpp
+    net/tmwa/traderecv.h
     )
 
 SET(SRCS_TMWAEATHENA
@@ -1717,6 +1721,8 @@ SET(SRCS_EATHENA
     net/eathena/sprite.h
     net/eathena/tradehandler.cpp
     net/eathena/tradehandler.h
+    net/eathena/traderecv.cpp
+    net/eathena/traderecv.h
     net/eathena/vendinghandler.cpp
     net/eathena/vendinghandler.h
     )

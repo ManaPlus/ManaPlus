@@ -20,41 +20,26 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_TMWA_TRADEHANDLER_H
-#define NET_TMWA_TRADEHANDLER_H
+#ifndef NET_EA_TRADERECV_H
+#define NET_EA_TRADERECV_H
 
-#include "net/ea/tradehandler.h"
+#include "net/tradehandler.h"
 
-#include "net/tmwa/messagehandler.h"
-
-namespace TmwAthena
+namespace Net
 {
+    class MessageIn;
+}
 
-class TradeHandler final : public MessageHandler, public Ea::TradeHandler
+namespace Ea
 {
-    public:
-        TradeHandler();
+    namespace TradeRecv
+    {
+        void processTradeOk(Net::MessageIn &msg);
+        void processTradeCancel(Net::MessageIn &msg);
+        void processTradeComplete(Net::MessageIn &msg);
+        void processTradeRequestContinue(const std::string &partner);
+        void processTradeResponseContinue(const uint8_t type);
+    } // namespace TradeRecv
+}  // namespace Ea
 
-        A_DELETE_COPY(TradeHandler)
-
-        void handleMessage(Net::MessageIn &msg) override final;
-
-        void request(const Being *const being) const override final;
-
-        void respond(const bool accept) const override final;
-
-        void addItem(const Item *const item,
-                     const int amount) const override final;
-
-        void setMoney(const int amount) const override final;
-
-        void confirm() const override final;
-
-        void finish() const override final;
-
-        void cancel() const override final;
-};
-
-}  // namespace TmwAthena
-
-#endif  // NET_TMWA_TRADEHANDLER_H
+#endif  // NET_EA_TRADERECV_H

@@ -33,8 +33,11 @@
 
 #include "gui/windows/tradewindow.h"
 
+#include "net/ea/traderecv.h"
+
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
+#include "net/eathena/traderecv.h"
 
 #include "net/ea/eaprotocol.h"
 
@@ -44,9 +47,6 @@ extern Net::TradeHandler *tradeHandler;
 
 namespace EAthena
 {
-int TradeHandler::mQuantity = 0;
-int TradeHandler::mItemIndex = -1;
-
 TradeHandler::TradeHandler() :
     MessageHandler(),
     Ea::TradeHandler()
@@ -65,8 +65,8 @@ TradeHandler::TradeHandler() :
     };
     handledMessages = _messages;
     tradeHandler = this;
-    mItemIndex = -1;
-    mQuantity = 0;
+    TradeRecv::mItemIndex = -1;
+    TradeRecv::mQuantity = 0;
 }
 
 
@@ -75,35 +75,35 @@ void TradeHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_TRADE_REQUEST:
-            processTradeRequest(msg);
+            TradeRecv::processTradeRequest(msg);
             break;
 
         case SMSG_TRADE_RESPONSE:
-            processTradeResponse(msg);
+            TradeRecv::processTradeResponse(msg);
             break;
 
         case SMSG_TRADE_ITEM_ADD:
-            processTradeItemAdd(msg);
+            TradeRecv::processTradeItemAdd(msg);
             break;
 
         case SMSG_TRADE_ITEM_ADD_RESPONSE:
-            processTradeItemAddResponse(msg);
+            TradeRecv::processTradeItemAddResponse(msg);
             break;
 
         case SMSG_TRADE_OK:
-            processTradeOk(msg);
+            Ea::TradeRecv::processTradeOk(msg);
             break;
 
         case SMSG_TRADE_CANCEL:
-            processTradeCancel(msg);
+            Ea::TradeRecv::processTradeCancel(msg);
             break;
 
         case SMSG_TRADE_COMPLETE:
-            processTradeComplete(msg);
+            Ea::TradeRecv::processTradeComplete(msg);
             break;
 
         case SMSG_TRADE_UNDO:
-            processTradeUndo(msg);
+            TradeRecv::processTradeUndo(msg);
             break;
 
         default:
@@ -134,10 +134,11 @@ void TradeHandler::addItem(const Item *const item, const int amount) const
     if (!item)
         return;
 
-    mItemIndex = item->getInvIndex();
-    mQuantity = amount;
+    TradeRecv::mItemIndex = item->getInvIndex();
+    TradeRecv::mQuantity = amount;
     createOutPacket(CMSG_TRADE_ITEM_ADD_REQUEST);
-    outMsg.writeInt16(static_cast<int16_t>(mItemIndex + INVENTORY_OFFSET),
+    outMsg.writeInt16(static_cast<int16_t>(
+        TradeRecv::mItemIndex + INVENTORY_OFFSET),
         "index");
     outMsg.writeInt32(amount, "amount");
 }
@@ -162,112 +163,6 @@ void TradeHandler::finish() const
 void TradeHandler::cancel() const
 {
     createOutPacket(CMSG_TRADE_CANCEL_REQUEST);
-}
-
-void TradeHandler::processTradeRequest(Net::MessageIn &msg)
-{
-    const std::string &partner = msg.readString(24, "name");
-    msg.readInt32("char id");
-    msg.readInt16("base level");
-    processTradeRequestContinue(partner);
-}
-
-void TradeHandler::processTradeResponse(Net::MessageIn &msg)
-{
-    const uint8_t type = msg.readUInt8("type");
-    msg.readInt32("char id");
-    msg.readInt16("base level");
-    processTradeResponseContinue(type);
-}
-
-void TradeHandler::processTradeItemAdd(Net::MessageIn &msg)
-{
-    const int type = msg.readInt16("type");
-    const int itemType = msg.readUInt8("item type");
-    const int amount = msg.readInt32("amount");
-    const uint8_t identify = msg.readUInt8("identify");
-    const Damaged damaged = fromBool(msg.readUInt8("attribute"), Damaged);
-    const uint8_t refine = msg.readUInt8("refine");
-    int cards[4];
-    for (int f = 0; f < 4; f++)
-        cards[f] = msg.readInt16("card");
-
-    if (tradeWindow)
-    {
-        if (type == 0)
-        {
-            tradeWindow->setMoney(amount);
-        }
-        else
-        {
-            tradeWindow->addItem2(type,
-                itemType,
-                cards,
-                4,
-                false,
-                amount,
-                refine,
-                ItemColorManager::getColorFromCards(&cards[0]),
-                fromBool(identify, Identified),
-                damaged,
-                Favorite_false,
-                Equipm_false);
-        }
-    }
-}
-
-void TradeHandler::processTradeItemAddResponse(Net::MessageIn &msg)
-{
-    msg.readInt16("index");
-    const uint8_t res = msg.readUInt8("fail");
-    switch (res)
-    {
-        case 0:  // Successfully added item
-        case 9:  // silent added item
-        {
-            Item *const item = PlayerInfo::getInventory()->getItem(
-                mItemIndex);
-            if (!item)
-                return;
-            if (tradeWindow)
-            {
-                tradeWindow->addItem2(item->getId(),
-                    item->getType(),
-                    item->getCards(),
-                    4,
-                    true,
-                    mQuantity,
-                    item->getRefine(),
-                    item->getColor(),
-                    item->getIdentified(),
-                    item->getDamaged(),
-                    item->getFavorite(),
-                    item->isEquipment());
-            }
-            item->increaseQuantity(-mQuantity);
-            mItemIndex = -1;
-            mQuantity = 0;
-            break;
-        }
-        case 1:
-            // Add item failed - player overweighted
-            NotifyManager::notify(NotifyTypes::
-                TRADE_ADD_PARTNER_OVER_WEIGHT);
-            break;
-        case 2:
-            NotifyManager::notify(NotifyTypes::TRADE_ADD_ERROR);
-            break;
-        default:
-            NotifyManager::notify(NotifyTypes::TRADE_ADD_ERROR);
-            UNIMPLIMENTEDPACKET;
-            break;
-    }
-}
-
-void TradeHandler::processTradeUndo(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    // +++ here need clear trade window from partner side?
 }
 
 }  // namespace EAthena
