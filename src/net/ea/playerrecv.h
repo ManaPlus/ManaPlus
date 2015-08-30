@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_EA_PLAYERHANDLER_H
-#define NET_EA_PLAYERHANDLER_H
+#ifndef NET_EA_PLAYERRECV_H
+#define NET_EA_PLAYERRECV_H
 
 #include "net/playerhandler.h"
 
@@ -34,34 +34,18 @@ namespace Net
 
 namespace Ea
 {
-
-class PlayerHandler notfinal : public Net::PlayerHandler
-{
-    public:
-        PlayerHandler();
-
-        A_DELETE_COPY(PlayerHandler)
-
-        void decreaseAttribute(const AttributesT attr) const override final;
-
-        void ignorePlayer(const std::string &player,
-                          const bool ignore) const override final;
-
-        void ignoreAll(const bool ignore) const override final;
-
-        bool canUseMagic() const override final;
-
-        bool canCorrectAttributes() const override final;
-
-        Vector getDefaultWalkSpeed() const override final A_WARN_UNUSED;
-
-        void setStat(Net::MessageIn &msg,
-                     const int type,
-                     const int base,
-                     const int mod,
-                     const Notify notify) const override;
-};
-
+    namespace PlayerRecv
+    {
+        void processPlayerWarp(Net::MessageIn &msg);
+        void processPlayerStatUpdate1(Net::MessageIn &msg);
+        void processPlayerStatUpdate2(Net::MessageIn &msg);
+        void processPlayerStatUpdate3(Net::MessageIn &msg);
+        void processPlayerStatUpdate4(Net::MessageIn &msg);
+        void processPlayerStatUpdate6(Net::MessageIn &msg);
+        void processPlayerArrowMessage(Net::MessageIn &msg);
+        void processMapMusic(Net::MessageIn &msg);
+    }  // namespace PlayerRecv
+    static const int NoStat = INT_MAX;
 }  // namespace Ea
 
-#endif  // NET_EA_PLAYERHANDLER_H
+#endif  // NET_EA_PLAYERRECV_H

@@ -41,6 +41,7 @@
 #include "resources/map/map.h"
 
 #include "net/ea/eaprotocol.h"
+#include "net/ea/playerrecv.h"
 
 #include "debug.h"
 
@@ -78,170 +79,6 @@ Vector PlayerHandler::getDefaultWalkSpeed() const
     // Return an normalized speed for any side
     // as the offset is calculated elsewhere.
     return Vector(150, 150, 0);
-}
-
-void PlayerHandler::processPlayerWarp(Net::MessageIn &msg)
-{
-    BLOCK_START("PlayerHandler::processPlayerWarp")
-    std::string mapPath = msg.readString(16, "map name");
-    int x = msg.readInt16("x");
-    int y = msg.readInt16("y");
-
-    logger->log("Warping to %s (%d, %d)", mapPath.c_str(), x, y);
-
-    if (!localPlayer)
-        logger->log1("SMSG_PLAYER_WARP localPlayer null");
-
-    /*
-      * We must clear the local player's target *before* the call
-      * to changeMap, as it deletes all beings.
-      */
-    if (localPlayer)
-        localPlayer->stopAttack();
-
-    Game *const game = Game::instance();
-    if (!game)
-    {
-        BLOCK_END("PlayerHandler::processPlayerWarp")
-        return;
-    }
-
-    const std::string &currentMapName = game->getCurrentMapName();
-    const bool sameMap = (currentMapName == mapPath);
-
-    // Switch the actual map, deleting the previous one if necessary
-    mapPath = mapPath.substr(0, mapPath.rfind("."));
-    game->changeMap(mapPath);
-
-    int scrollOffsetX = 0;
-    int scrollOffsetY = 0;
-
-    if (localPlayer)
-    {
-        const Map *const map = game->getCurrentMap();
-        if (map)
-        {
-            if (x >= map->getWidth())
-                x = map->getWidth() - 1;
-            if (y >= map->getHeight())
-                y = map->getHeight() - 1;
-            if (x < 0)
-                x = 0;
-            if (y < 0)
-                y = 0;
-            /* Scroll if neccessary */
-            if (!sameMap
-                || (abs(x - localPlayer->getTileX())
-                > MAP_TELEPORT_SCROLL_DISTANCE)
-                || (abs(y - localPlayer->getTileY())
-                > MAP_TELEPORT_SCROLL_DISTANCE))
-            {
-                scrollOffsetX = (x - localPlayer->getTileX())
-                    * map->getTileWidth();
-                scrollOffsetY = (y - localPlayer->getTileY())
-                    * map->getTileHeight();
-            }
-        }
-
-        localPlayer->setAction(BeingAction::STAND, 0);
-        localPlayer->setTileCoords(x, y);
-        localPlayer->updatePets();
-        localPlayer->navigateClean();
-    }
-
-    logger->log("Adjust scrolling by %d:%d", scrollOffsetX, scrollOffsetY);
-
-    if (viewport)
-    {
-        viewport->returnCamera();
-        viewport->scrollBy(scrollOffsetX, scrollOffsetY);
-    }
-    BLOCK_END("PlayerHandler::processPlayerWarp")
-}
-
-void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
-{
-    BLOCK_START("PlayerHandler::processPlayerStatUpdate1")
-    const int type = msg.readInt16("type");
-    const int value = msg.readInt32("value");
-    if (!localPlayer)
-    {
-        BLOCK_END("PlayerHandler::processPlayerStatUpdate1")
-        return;
-    }
-
-    playerHandler->setStat(msg, type, value, NoStat, Notify_true);
-    BLOCK_END("PlayerHandler::processPlayerStatUpdate1")
-}
-
-void PlayerHandler::processPlayerStatUpdate2(Net::MessageIn &msg)
-{
-    BLOCK_START("PlayerHandler::processPlayerStatUpdate2")
-    const int type = msg.readInt16("type");
-    const int value = msg.readInt32("value");
-    playerHandler->setStat(msg, type, value, NoStat, Notify_true);
-    BLOCK_END("PlayerHandler::processPlayerStatUpdate2")
-}
-
-void PlayerHandler::processPlayerStatUpdate3(Net::MessageIn &msg)
-{
-    BLOCK_START("PlayerHandler::processPlayerStatUpdate3")
-    const int type = msg.readInt32("type");
-    const int base = msg.readInt32("base");
-    const int bonus = msg.readInt32("bonus");
-
-    playerHandler->setStat(msg, type, base, bonus, Notify_false);
-    BLOCK_END("PlayerHandler::processPlayerStatUpdate3")
-}
-
-void PlayerHandler::processPlayerStatUpdate4(Net::MessageIn &msg)
-{
-    BLOCK_START("PlayerHandler::processPlayerStatUpdate4")
-    const uint16_t type = msg.readInt16("type");
-    const uint8_t ok = msg.readUInt8("flag");
-    const int value = msg.readUInt8("value");
-
-    if (ok != 1)
-    {
-        const int oldValue = PlayerInfo::getStatBase(
-            static_cast<AttributesT>(type));
-        const int points = PlayerInfo::getAttribute(Attributes::CHAR_POINTS)
-            + oldValue - value;
-        PlayerInfo::setAttribute(Attributes::CHAR_POINTS, points);
-        NotifyManager::notify(NotifyTypes::SKILL_RAISE_ERROR);
-    }
-
-    playerHandler->setStat(msg, type, value, NoStat, Notify_true);
-    BLOCK_END("PlayerHandler::processPlayerStatUpdate4")
-}
-
-void PlayerHandler::processPlayerStatUpdate6(Net::MessageIn &msg)
-{
-    BLOCK_START("PlayerHandler::processPlayerStatUpdate6")
-    const int type = msg.readInt16("type");
-    const int value = msg.readUInt8("value");
-    if (statusWindow)
-        playerHandler->setStat(msg, type, value, NoStat, Notify_true);
-    BLOCK_END("PlayerHandler::processPlayerStatUpdate6")
-}
-
-void PlayerHandler::processPlayerArrowMessage(Net::MessageIn &msg)
-{
-    BLOCK_START("PlayerHandler::processPlayerArrowMessage")
-    const int type = msg.readInt16("type");
-    switch (type)
-    {
-        case 0:
-            NotifyManager::notify(NotifyTypes::ARROWS_EQUIP_NEEDED);
-            break;
-        case 3:
-            // arrows equiped
-            break;
-        default:
-            UNIMPLIMENTEDPACKET;
-            break;
-    }
-    BLOCK_END("PlayerHandler::processPlayerArrowMessage")
 }
 
 bool PlayerHandler::canUseMagic() const
@@ -452,17 +289,6 @@ void PlayerHandler::setStat(Net::MessageIn &msg,
             UNIMPLIMENTEDPACKET;
             break;
     }
-}
-
-void PlayerHandler::processMapMusic(Net::MessageIn &msg)
-{
-    const int size = msg.readInt16("len") - 5;
-    const std::string music = msg.readString(size, "name");
-    soundManager.playMusic(music);
-
-    Map *const map = viewport->getMap();
-    if (map)
-        map->setMusicFile(music);
 }
 
 }  // namespace Ea

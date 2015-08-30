@@ -27,8 +27,11 @@
 
 #include "gui/windows/statuswindow.h"
 
+#include "net/ea/playerrecv.h"
+
 #include "net/tmwa/inventoryhandler.h"
 #include "net/tmwa/messageout.h"
+#include "net/tmwa/playerrecv.h"
 #include "net/tmwa/protocol.h"
 
 #include "debug.h"
@@ -67,44 +70,44 @@ void PlayerHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_WALK_RESPONSE:
-            processWalkResponse(msg);
+            PlayerRecv::processWalkResponse(msg);
             break;
 
         case SMSG_PLAYER_WARP:
-            processPlayerWarp(msg);
+            Ea::PlayerRecv::processPlayerWarp(msg);
             break;
 
         case SMSG_PLAYER_STAT_UPDATE_1:
-            processPlayerStatUpdate1(msg);
+            Ea::PlayerRecv::processPlayerStatUpdate1(msg);
             break;
 
         case SMSG_PLAYER_STAT_UPDATE_2:
-            processPlayerStatUpdate2(msg);
+            Ea::PlayerRecv::processPlayerStatUpdate2(msg);
             break;
 
         case SMSG_PLAYER_STAT_UPDATE_3:  // Update a base attribute
-            processPlayerStatUpdate3(msg);
+            Ea::PlayerRecv::processPlayerStatUpdate3(msg);
             break;
 
         case SMSG_PLAYER_STAT_UPDATE_4:  // Attribute increase ack
-            processPlayerStatUpdate4(msg);
+            Ea::PlayerRecv::processPlayerStatUpdate4(msg);
             break;
 
         // Updates stats and status points
         case SMSG_PLAYER_STAT_UPDATE_5:
-            processPlayerStatUpdate5(msg);
+            PlayerRecv::processPlayerStatUpdate5(msg);
             break;
 
         case SMSG_PLAYER_STAT_UPDATE_6:
-            processPlayerStatUpdate6(msg);
+            Ea::PlayerRecv::processPlayerStatUpdate6(msg);
             break;
 
         case SMSG_PLAYER_ARROW_MESSAGE:
-            processPlayerArrowMessage(msg);
+            Ea::PlayerRecv::processPlayerArrowMessage(msg);
             break;
 
         case SMSG_MAP_MUSIC:
-            processMapMusic(msg);
+            Ea::PlayerRecv::processMapMusic(msg);
             break;
 
         default:
@@ -233,133 +236,6 @@ void PlayerHandler::setMemo() const
 
 void PlayerHandler::updateStatus(const uint8_t status A_UNUSED) const
 {
-}
-
-void PlayerHandler::processPlayerStatUpdate5(Net::MessageIn &msg)
-{
-    BLOCK_START("PlayerHandler::processPlayerStatUpdate5")
-    PlayerInfo::setAttribute(Attributes::CHAR_POINTS,
-        msg.readInt16("char points"));
-
-    unsigned int val = msg.readUInt8("str");
-    PlayerInfo::setStatBase(Attributes::STR, val);
-    if (statusWindow)
-    {
-        statusWindow->setPointsNeeded(Attributes::STR,
-            msg.readUInt8("str cost"));
-    }
-    else
-    {
-        msg.readUInt8("str cost");
-    }
-
-    val = msg.readUInt8("agi");
-    PlayerInfo::setStatBase(Attributes::AGI, val);
-    if (statusWindow)
-    {
-        statusWindow->setPointsNeeded(Attributes::AGI,
-            msg.readUInt8("agi cost"));
-    }
-    else
-    {
-        msg.readUInt8("agi cost");
-    }
-
-    val = msg.readUInt8("vit");
-    PlayerInfo::setStatBase(Attributes::VIT, val);
-    if (statusWindow)
-    {
-        statusWindow->setPointsNeeded(Attributes::VIT,
-            msg.readUInt8("vit cost"));
-    }
-    else
-    {
-        msg.readUInt8("vit cost");
-    }
-
-    val = msg.readUInt8("int");
-    PlayerInfo::setStatBase(Attributes::INT, val);
-    if (statusWindow)
-    {
-        statusWindow->setPointsNeeded(Attributes::INT,
-            msg.readUInt8("int cost"));
-    }
-    else
-    {
-        msg.readUInt8("int cost");
-    }
-
-    val = msg.readUInt8("dex");
-    PlayerInfo::setStatBase(Attributes::DEX, val);
-    if (statusWindow)
-    {
-        statusWindow->setPointsNeeded(Attributes::DEX,
-            msg.readUInt8("dex cost"));
-    }
-    else
-    {
-        msg.readUInt8("dex cost");
-    }
-
-    val = msg.readUInt8("luk");
-    PlayerInfo::setStatBase(Attributes::LUK, val);
-    if (statusWindow)
-    {
-        statusWindow->setPointsNeeded(Attributes::LUK,
-            msg.readUInt8("luk cost"));
-    }
-    else
-    {
-        msg.readUInt8("luk cost");
-    }
-
-    PlayerInfo::setStatBase(Attributes::ATK,
-        msg.readInt16("atk"), Notify_false);
-    PlayerInfo::setStatMod(Attributes::ATK, msg.readInt16("atk+"));
-    PlayerInfo::updateAttrs();
-
-    val = msg.readInt16("matk");
-    PlayerInfo::setStatBase(Attributes::MATK, val, Notify_false);
-
-    val = msg.readInt16("matk+");
-    PlayerInfo::setStatMod(Attributes::MATK, val);
-
-    PlayerInfo::setStatBase(Attributes::DEF,
-        msg.readInt16("def"), Notify_false);
-    PlayerInfo::setStatMod(Attributes::DEF, msg.readInt16("def+"));
-
-    PlayerInfo::setStatBase(Attributes::MDEF,
-        msg.readInt16("mdef"), Notify_false);
-    PlayerInfo::setStatMod(Attributes::MDEF, msg.readInt16("mdef+"));
-
-    PlayerInfo::setStatBase(Attributes::HIT, msg.readInt16("hit"));
-
-    PlayerInfo::setStatBase(Attributes::FLEE,
-        msg.readInt16("flee"), Notify_false);
-    PlayerInfo::setStatMod(Attributes::FLEE, msg.readInt16("flee+"));
-
-    PlayerInfo::setStatBase(Attributes::CRIT, msg.readInt16("crit"));
-
-    PlayerInfo::setStatBase(Attributes::MANNER, msg.readInt16("manner"));
-    msg.readInt16("unused?");
-    BLOCK_END("PlayerHandler::processPlayerStatUpdate5")
-}
-
-void PlayerHandler::processWalkResponse(Net::MessageIn &msg)
-{
-    BLOCK_START("PlayerHandler::processWalkResponse")
-    /*
-      * This client assumes that all walk messages succeed,
-      * and that the server will send a correction notice
-      * otherwise.
-      */
-    uint16_t srcX, srcY, dstX, dstY;
-    msg.readInt32("tick");
-    msg.readCoordinatePair(srcX, srcY, dstX, dstY, "move path");
-    msg.readUInt8("unused");
-    if (localPlayer)
-        localPlayer->setRealPos(dstX, dstY);
-    BLOCK_END("PlayerHandler::processWalkResponse")
 }
 
 void PlayerHandler::setShortcut(const int idx A_UNUSED,

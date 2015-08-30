@@ -1235,6 +1235,8 @@ manaplus_SOURCES += main.cpp \
 	      net/ea/partyrecv.h \
 	      net/ea/playerhandler.cpp \
 	      net/ea/playerhandler.h \
+	      net/ea/playerrecv.cpp \
+	      net/ea/playerrecv.h \
 	      net/ea/skillhandler.cpp \
 	      net/ea/skillhandler.h \
 	      net/ea/token.h \
@@ -1311,6 +1313,8 @@ manaplus_SOURCES += \
 	      net/tmwa/pethandler.h \
 	      net/tmwa/playerhandler.cpp \
 	      net/tmwa/playerhandler.h \
+	      net/tmwa/playerrecv.cpp \
+	      net/tmwa/playerrecv.h \
 	      net/tmwa/protocol.h \
 	      net/tmwa/questhandler.cpp \
 	      net/tmwa/questhandler.h \
@@ -1529,6 +1533,8 @@ manaplus_SOURCES += gui/windows/bankwindow.cpp \
 	      net/eathena/petrecv.h \
 	      net/eathena/playerhandler.cpp \
 	      net/eathena/playerhandler.h \
+	      net/eathena/playerrecv.cpp \
+	      net/eathena/playerrecv.h \
 	      net/eathena/protocol.h \
 	      net/eathena/questhandler.cpp \
 	      net/eathena/questhandler.h \

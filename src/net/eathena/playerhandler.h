@@ -70,52 +70,11 @@ class PlayerHandler final : public MessageHandler, public Ea::PlayerHandler
         void revive() const override final;
         void setViewEquipment(const bool allow) const override final;
 
-    protected:
         void setStat(Net::MessageIn &msg,
                      const int type,
                      const int base,
                      const int mod,
                      const Notify notify) const override final;
-
-        static void processPlayerShortcuts(Net::MessageIn &msg);
-
-        static void processPlayerShowEquip(Net::MessageIn &msg);
-
-        static void processPlayerStatUpdate5(Net::MessageIn &msg);
-
-        static void processPlayerGetExp(Net::MessageIn &msg);
-
-        static void processPvpInfo(Net::MessageIn &msg);
-
-        static void processPlayerHeal(Net::MessageIn &msg);
-
-        static void processPlayerSkillMessage(Net::MessageIn &msg);
-
-        static void processWalkResponse(Net::MessageIn &msg);
-
-        static void processNotifyMapInfo(Net::MessageIn &msg);
-
-        static void processPlayerFameBlacksmith(Net::MessageIn &msg);
-
-        static void processPlayerFameAlchemist(Net::MessageIn &msg);
-
-        static void processPlayerUpgradeMessage(Net::MessageIn &msg);
-
-        static void processPlayerFameTaekwon(Net::MessageIn &msg);
-
-        static void processPlayerReadBook(Net::MessageIn &msg);
-
-        static void processPlayerEquipTickAck(Net::MessageIn &msg);
-
-        static void processPlayerAutoShadowSpellList(Net::MessageIn &msg);
-
-        static void processPlayerRankPoints(Net::MessageIn &msg);
-
-        static void processPlayerClientCommand(Net::MessageIn &msg);
-
-        static void processOnlineList(Net::MessageIn &msg);
-
-        static void processMapMask(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

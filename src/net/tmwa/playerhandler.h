@@ -79,16 +79,11 @@ class PlayerHandler final : public MessageHandler, public Ea::PlayerHandler
 
         void setViewEquipment(const bool allow) const override final;
 
-    protected:
         void setStat(Net::MessageIn &msg,
                      const int type,
                      const int base,
                      const int mod,
                      const Notify notify) const override final;
-
-        static void processPlayerStatUpdate5(Net::MessageIn &msg);
-
-        static void processWalkResponse(Net::MessageIn &msg);
 };
 
 }  // namespace TmwAthena
