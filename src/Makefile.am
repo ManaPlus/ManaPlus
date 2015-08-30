@@ -1178,9 +1178,9 @@ manaplus_SOURCES += main.cpp \
 	      net/worldinfo.h \
 	      net/packetcounters.cpp \
 	      net/packetcounters.h \
-	      net/packetdefine.h \
 	      net/packetlimiter.cpp \
 	      net/packetlimiter.h \
+	      net/protocoldefine.h \
 	      net/ea/adminrecv.cpp \
 	      net/ea/adminrecv.h \
 	      net/ea/adminhandler.cpp \

@@ -23,7 +23,7 @@
 #ifndef NET_TMWA_PROTOCOL_H
 #define NET_TMWA_PROTOCOL_H
 
-#include "net/packetdefine.h"
+#include "net/protocoldefine.h"
 
 #include "net/tmwa/packets.inc"
 

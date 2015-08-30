@@ -23,7 +23,8 @@
 #ifndef NET_EATHENA_PROTOCOL_H
 #define NET_EATHENA_PROTOCOL_H
 
-#include "net/packetdefine.h"
+#include "net/protocoldefine.h"
+
 #include "net/eathena/packets.inc"
 
 #undef packet
