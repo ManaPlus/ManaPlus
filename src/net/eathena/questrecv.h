@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_EATHENA_QUESTHANDLER_H
-#define NET_EATHENA_QUESTHANDLER_H
+#ifndef NET_EATHENA_QUESTRECV_H
+#define NET_EATHENA_QUESTRECV_H
 
 #include "net/eathena/messagehandler.h"
 
@@ -27,20 +27,16 @@
 
 namespace EAthena
 {
-
-class QuestHandler final : public MessageHandler, public Net::QuestHandler
-{
-    public:
-        QuestHandler();
-
-        A_DELETE_COPY(QuestHandler)
-
-        void handleMessage(Net::MessageIn &msg) override final;
-
-        void setQeustActiveState(const int questId,
-                                 const bool active) const override final;
-};
-
+    namespace QuestRecv
+    {
+        void processAddQuest(Net::MessageIn &msg);
+        void processAddQuests(Net::MessageIn &msg);
+        void processAddQuestsObjectives(Net::MessageIn &msg);
+        void processUpdateQuestsObjectives(Net::MessageIn &msg);
+        void processRemoveQuest(Net::MessageIn &msg);
+        void processActivateQuest(Net::MessageIn &msg);
+        void processNpcQuestEffect(Net::MessageIn &msg);
+    }  // namespace QuestRecv
 }  // namespace EAthena
 
-#endif  // NET_EATHENA_QUESTHANDLER_H
+#endif  // NET_EATHENA_QUESTRECV_H

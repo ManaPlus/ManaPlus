@@ -18,29 +18,20 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_EATHENA_QUESTHANDLER_H
-#define NET_EATHENA_QUESTHANDLER_H
+#ifndef NET_TMWA_QUESTRECV_H
+#define NET_TMWA_QUESTRECV_H
 
-#include "net/eathena/messagehandler.h"
+#include "net/tmwa/messagehandler.h"
 
 #include "net/questhandler.h"
 
-namespace EAthena
+namespace TmwAthena
 {
+    namespace QuestRecv
+    {
+        void processSetQuestVar(Net::MessageIn &msg);
+        void processPlayerQuests(Net::MessageIn &msg);
+    }  // namespace QuestRecv
+}  // namespace TmwAthena
 
-class QuestHandler final : public MessageHandler, public Net::QuestHandler
-{
-    public:
-        QuestHandler();
-
-        A_DELETE_COPY(QuestHandler)
-
-        void handleMessage(Net::MessageIn &msg) override final;
-
-        void setQeustActiveState(const int questId,
-                                 const bool active) const override final;
-};
-
-}  // namespace EAthena
-
-#endif  // NET_EATHENA_QUESTHANDLER_H
+#endif  // NET_TMWA_QUESTRECV_H

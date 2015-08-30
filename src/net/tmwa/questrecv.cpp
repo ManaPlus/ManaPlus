@@ -18,13 +18,12 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "net/tmwa/questhandler.h"
+#include "net/tmwa/questrecv.h"
 
 #include "gui/windows/skilldialog.h"
 #include "gui/windows/questswindow.h"
 
 #include "net/tmwa/protocol.h"
-#include "net/tmwa/questrecv.h"
 
 #include "resources/skillconsts.h"
 
@@ -33,42 +32,36 @@
 namespace TmwAthena
 {
 
-QuestHandler::QuestHandler() :
-    MessageHandler(),
-    Net::QuestHandler()
+void QuestRecv::processSetQuestVar(Net::MessageIn &msg)
 {
-    static const uint16_t _messages[] =
+    const int var = msg.readInt16("variable");
+    const int val = msg.readInt32("value");
+    if (questsWindow)
     {
-        SMSG_QUEST_SET_VAR,
-        SMSG_QUEST_PLAYER_VARS,
-        0
-    };
-    handledMessages = _messages;
-    questHandler = this;
-}
-
-void QuestHandler::handleMessage(Net::MessageIn &msg)
-{
-    BLOCK_START("QuestHandler::handleMessage")
-    switch (msg.getId())
-    {
-        case SMSG_QUEST_SET_VAR:
-            QuestRecv::processSetQuestVar(msg);
-            break;
-
-        case SMSG_QUEST_PLAYER_VARS:
-            QuestRecv::processPlayerQuests(msg);
-            break;
-
-        default:
-            break;
+        questsWindow->updateQuest(var, val);
+        questsWindow->rebuild(true);
     }
-    BLOCK_END("QuestHandler::handleMessage")
+    if (skillDialog)
+    {
+        skillDialog->updateQuest(var, val);
+        skillDialog->playUpdateEffect(var + SKILL_VAR_MIN_ID);
+    }
 }
 
-void QuestHandler::setQeustActiveState(const int questId A_UNUSED,
-                                       const bool active A_UNUSED) const
+void QuestRecv::processPlayerQuests(Net::MessageIn &msg)
 {
+    const int count = (msg.readInt16("len") - 4) / 6;
+    for (int f = 0; f < count; f ++)
+    {
+        const int var = msg.readInt16("variable");
+        const int val = msg.readInt32("value");
+        if (questsWindow)
+            questsWindow->updateQuest(var, val);
+        if (skillDialog)
+            skillDialog->updateQuest(var, val);
+    }
+    if (questsWindow)
+        questsWindow->rebuild(false);
 }
 
 }  // namespace TmwAthena

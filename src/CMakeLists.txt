@@ -1475,6 +1475,8 @@ SET(SRCS_TMWA
     net/tmwa/protocol.h
     net/tmwa/questhandler.cpp
     net/tmwa/questhandler.h
+    net/tmwa/questrecv.cpp
+    net/tmwa/questrecv.h
     net/tmwa/serverfeatures.cpp
     net/tmwa/serverfeatures.h
     net/tmwa/skillhandler.cpp
@@ -1692,6 +1694,8 @@ SET(SRCS_EATHENA
     net/eathena/protocol.h
     net/eathena/questhandler.cpp
     net/eathena/questhandler.h
+    net/eathena/questrecv.cpp
+    net/eathena/questrecv.h
     net/eathena/roulettehandler.cpp
     net/eathena/roulettehandler.h
     net/eathena/searchstorehandler.cpp
