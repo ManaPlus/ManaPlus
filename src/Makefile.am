@@ -1570,7 +1570,9 @@ manaplus_SOURCES += gui/windows/bankwindow.cpp \
 	      net/eathena/traderecv.cpp \
 	      net/eathena/traderecv.h \
 	      net/eathena/vendinghandler.cpp \
-	      net/eathena/vendinghandler.h
+	      net/eathena/vendinghandler.h \
+	      net/eathena/vendingrecv.cpp \
+	      net/eathena/vendingrecv.h
 endif
 
 manaplus_SOURCES += \

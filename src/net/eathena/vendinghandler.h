@@ -55,25 +55,6 @@ class VendingHandler final : public MessageHandler,
         void createShop(const std::string &name,
                         const bool flag,
                         std::vector<ShopItem*> &items) const override final;
-
-    protected:
-        static void processOpenReq(Net::MessageIn &msg);
-
-        static void processShowBoard(Net::MessageIn &msg);
-
-        static void processHideBoard(Net::MessageIn &msg);
-
-        static void processItemsList(Net::MessageIn &msg);
-
-        static void processBuyAck(Net::MessageIn &msg);
-
-        static void processOpen(Net::MessageIn &msg);
-
-        static void processReport(Net::MessageIn &msg);
-
-        static void processOpenStatus(Net::MessageIn &msg);
-
-        static BuyDialog *mBuyDialog;
 };
 
 }  // namespace EAthena

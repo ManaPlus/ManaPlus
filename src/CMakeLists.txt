@@ -1725,6 +1725,8 @@ SET(SRCS_EATHENA
     net/eathena/traderecv.h
     net/eathena/vendinghandler.cpp
     net/eathena/vendinghandler.h
+    net/eathena/vendingrecv.cpp
+    net/eathena/vendingrecv.h
     )
 
 IF (WIN32)
