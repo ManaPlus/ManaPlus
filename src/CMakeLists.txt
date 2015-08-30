@@ -1702,6 +1702,8 @@ SET(SRCS_EATHENA
     net/eathena/rouletterecv.h
     net/eathena/searchstorehandler.cpp
     net/eathena/searchstorehandler.h
+    net/eathena/searchstorerecv.cpp
+    net/eathena/searchstorerecv.h
     net/eathena/serverfeatures.cpp
     net/eathena/serverfeatures.h
     net/eathena/skillhandler.cpp

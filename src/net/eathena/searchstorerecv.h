@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_EATHENA_SEARCHSTOREHANDLER_H
-#define NET_EATHENA_SEARCHSTOREHANDLER_H
+#ifndef NET_EATHENA_SEARCHSTORERECV_H
+#define NET_EATHENA_SEARCHSTORERECV_H
 
 #include "net/searchstorehandler.h"
 
@@ -27,30 +27,13 @@
 
 namespace EAthena
 {
-class SearchStoreHandler final : public MessageHandler,
-                                 public Net::SearchStoreHandler
-{
-    public:
-        SearchStoreHandler();
-
-        A_DELETE_COPY(SearchStoreHandler)
-
-        void handleMessage(Net::MessageIn &msg) override final;
-
-        void search(const StoreSearchTypeT type,
-                    const int minPrice,
-                    const int maxPrice,
-                    const int itemId) const override final;
-
-        void nextPage() const override final;
-
-        void close() const override final;
-
-        void select(const int accountId,
-                    const int storeId,
-                    const int itemId) const override final;
-};
-
+    namespace SearchStoreRecv
+    {
+        void processSearchAck(Net::MessageIn &msg);
+        void processSearchFailed(Net::MessageIn &msg);
+        void processSearchOpen(Net::MessageIn &msg);
+        void processSearchClickAck(Net::MessageIn &msg);
+    }  // namespace SearchStoreRecv
 }  // namespace EAthena
 
-#endif  // NET_EATHENA_SEARCHSTOREHANDLER_H
+#endif  // NET_EATHENA_SEARCHSTORERECV_H
