@@ -20,24 +20,40 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_EA_SKILLHANDLER_H
-#define NET_EA_SKILLHANDLER_H
+#include "net/ea/skillrecv.h"
 
-#include "net/skillhandler.h"
+#include "being/playerinfo.h"
 
-#include "localconsts.h"
+#include "gui/windows/skilldialog.h"
+
+#include "net/messagein.h"
+
+#include "debug.h"
 
 namespace Ea
 {
 
-class SkillHandler notfinal : public Net::SkillHandler
+void SkillRecv::processPlayerSkillUp(Net::MessageIn &msg)
 {
-    public:
-        SkillHandler();
+    const int skillId = msg.readInt16("skill id");
+    const int level = msg.readInt16("skill level");
+    const int sp = msg.readInt16("sp");
+    const int range = msg.readInt16("range");
+    const Modifiable up = fromBool(msg.readUInt8("up flag"), Modifiable);
 
-        A_DELETE_COPY(SkillHandler)
-};
+    if (skillDialog && PlayerInfo::getSkillLevel(skillId) != level)
+        skillDialog->playUpdateEffect(skillId);
+    PlayerInfo::setSkillLevel(skillId, level);
+    if (skillDialog)
+    {
+        if (!skillDialog->updateSkill(skillId, range,
+            up, SkillType::Unknown, sp))
+        {
+            skillDialog->addSkill(SkillOwner::Player,
+                skillId, "", level,
+                range, up, SkillType::Unknown, sp);
+        }
+    }
+}
 
 }  // namespace Ea
-
-#endif  // NET_EA_SKILLHANDLER_H

@@ -1239,6 +1239,8 @@ manaplus_SOURCES += main.cpp \
 	      net/ea/playerrecv.h \
 	      net/ea/skillhandler.cpp \
 	      net/ea/skillhandler.h \
+	      net/ea/skillrecv.cpp \
+	      net/ea/skillrecv.h \
 	      net/ea/token.h \
 	      net/ea/tradehandler.cpp \
 	      net/ea/tradehandler.h
@@ -1324,6 +1326,8 @@ manaplus_SOURCES += \
 	      net/tmwa/serverfeatures.h \
 	      net/tmwa/skillhandler.cpp \
 	      net/tmwa/skillhandler.h \
+	      net/tmwa/skillrecv.cpp \
+	      net/tmwa/skillrecv.h \
 	      net/tmwa/sprite.h \
 	      net/tmwa/tradehandler.cpp \
 	      net/tmwa/tradehandler.h
@@ -1554,6 +1558,8 @@ manaplus_SOURCES += gui/windows/bankwindow.cpp \
 	      net/eathena/serverfeatures.h \
 	      net/eathena/skillhandler.cpp \
 	      net/eathena/skillhandler.h \
+	      net/eathena/skillrecv.cpp \
+	      net/eathena/skillrecv.h \
 	      net/eathena/sprite.h \
 	      net/eathena/tradehandler.cpp \
 	      net/eathena/tradehandler.h \

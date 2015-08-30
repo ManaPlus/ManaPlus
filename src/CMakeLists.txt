@@ -1397,6 +1397,8 @@ SET(SRCS_EVOL
     net/ea/playerrecv.h
     net/ea/skillhandler.cpp
     net/ea/skillhandler.h
+    net/ea/skillrecv.cpp
+    net/ea/skillrecv.h
     net/ea/token.h
     net/ea/tradehandler.cpp
     net/ea/tradehandler.h
@@ -1481,6 +1483,8 @@ SET(SRCS_TMWA
     net/tmwa/serverfeatures.h
     net/tmwa/skillhandler.cpp
     net/tmwa/skillhandler.h
+    net/tmwa/skillrecv.cpp
+    net/tmwa/skillrecv.h
     net/tmwa/sprite.h
     net/tmwa/tradehandler.cpp
     net/tmwa/tradehandler.h
@@ -1708,6 +1712,8 @@ SET(SRCS_EATHENA
     net/eathena/serverfeatures.h
     net/eathena/skillhandler.cpp
     net/eathena/skillhandler.h
+    net/eathena/skillrecv.cpp
+    net/eathena/skillrecv.h
     net/eathena/sprite.h
     net/eathena/tradehandler.cpp
     net/eathena/tradehandler.h

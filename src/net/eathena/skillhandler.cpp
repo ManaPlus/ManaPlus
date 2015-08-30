@@ -33,9 +33,12 @@
 
 #include "gui/windows/skilldialog.h"
 
+#include "net/ea/skillrecv.h"
+
 #include "net/eathena/menu.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
+#include "net/eathena/skillrecv.h"
 
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
@@ -82,75 +85,75 @@ void SkillHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_PLAYER_SKILLS:
-            processPlayerSkills(msg);
+            SkillRecv::processPlayerSkills(msg);
             break;
 
         case SMSG_PLAYER_SKILL_UP:
-            processPlayerSkillUp(msg);
+            Ea::SkillRecv::processPlayerSkillUp(msg);
             break;
 
         case SMSG_SKILL_FAILED:
-            processSkillFailed(msg);
+            SkillRecv::processSkillFailed(msg);
             break;
 
         case SMSG_PLAYER_SKILL_COOLDOWN:
-            processSkillCoolDown(msg);
+            SkillRecv::processSkillCoolDown(msg);
             break;
 
         case SMSG_PLAYER_SKILL_COOLDOWN_LIST:
-            processSkillCoolDownList(msg);
+            SkillRecv::processSkillCoolDownList(msg);
             break;
 
         case SMSG_SKILL_SNAP:
-            processSkillSnap(msg);
+            SkillRecv::processSkillSnap(msg);
             break;
 
         case SMSG_PLAYER_ADD_SKILL:
-            processSkillAdd(msg);
+            SkillRecv::processSkillAdd(msg);
             break;
 
         case SMSG_PLAYER_UPDATE_SKILL:
-            processSkillUpdate(msg);
+            SkillRecv::processSkillUpdate(msg);
             break;
 
         case SMSG_PLAYER_DELETE_SKILL:
-            processSkillDelete(msg);
+            SkillRecv::processSkillDelete(msg);
             break;
 
         case SMSG_SKILL_WARP_POINT:
-            processSkillWarpPoint(msg);
+            SkillRecv::processSkillWarpPoint(msg);
             break;
 
         case SMSG_SKILL_MEMO_MESSAGE:
-            processSkillMemoMessage(msg);
+            SkillRecv::processSkillMemoMessage(msg);
             break;
 
         case SMSG_PLAYER_SKILL_PRODUCE_MIX_LIST:
-            processSkillProduceMixList(msg);
+            SkillRecv::processSkillProduceMixList(msg);
             break;
 
         case SMSG_PLAYER_SKILL_PRODUCE_EFFECT:
-            processSkillProduceEffect(msg);
+            SkillRecv::processSkillProduceEffect(msg);
             break;
 
         case SMSG_SKILL_UNIT_UPDATE:
-            processSkillUnitUpdate(msg);
+            SkillRecv::processSkillUnitUpdate(msg);
             break;
 
         case SMSG_SKILL_ARROW_CREATE_LIST:
-            processSkillArrowCreateList(msg);
+            SkillRecv::processSkillArrowCreateList(msg);
             break;
 
         case SMSG_PLAYER_SKILL_AUTO_SPELLS:
-            processSkillAutoSpells(msg);
+            SkillRecv::processSkillAutoSpells(msg);
             break;
 
         case SMSG_SKILL_DEVOTION_EFFECT:
-            processSkillDevotionEffect(msg);
+            SkillRecv::processSkillDevotionEffect(msg);
             break;
 
         case SMSG_SKILL_ITEM_LIST_WINDOW:
-            processSkillItemListWindow(msg);
+            SkillRecv::processSkillItemListWindow(msg);
             break;
 
         default:
@@ -194,320 +197,6 @@ void SkillHandler::useMap(const int id, const std::string &map) const
     createOutPacket(CMSG_SKILL_USE_MAP);
     outMsg.writeInt16(static_cast<int16_t>(id), "skill id");
     outMsg.writeString(map, 16, "map name");
-}
-
-void SkillHandler::processPlayerSkills(Net::MessageIn &msg)
-{
-    msg.readInt16("len");
-    const int skillCount = (msg.getLength() - 4) / 37;
-    int updateSkill = 0;
-
-    if (skillDialog)
-        skillDialog->hideSkills(SkillOwner::Player);
-    for (int k = 0; k < skillCount; k++)
-    {
-        const int skillId = msg.readInt16("skill id");
-        const SkillType::SkillType inf = static_cast<SkillType::SkillType>(
-            msg.readInt32("inf"));
-        const int level = msg.readInt16("skill level");
-        const int sp = msg.readInt16("sp");
-        const int range = msg.readInt16("range");
-        const std::string name = msg.readString(24, "skill name");
-        const Modifiable up = fromBool(msg.readUInt8("up flag"), Modifiable);
-        const int oldLevel = PlayerInfo::getSkillLevel(skillId);
-        if (oldLevel && oldLevel != level)
-            updateSkill = skillId;
-        PlayerInfo::setSkillLevel(skillId, level);
-        if (skillDialog)
-        {
-            if (!skillDialog->updateSkill(skillId, range, up, inf, sp))
-            {
-                skillDialog->addSkill(SkillOwner::Player,
-                    skillId, name, level, range, up, inf, sp);
-            }
-        }
-    }
-    if (skillDialog)
-    {
-        skillDialog->update();
-        if (updateSkill)
-            skillDialog->playUpdateEffect(updateSkill);
-    }
-}
-
-void SkillHandler::processSkillAdd(Net::MessageIn &msg)
-{
-    int updateSkill = 0;
-    const int skillId = msg.readInt16("skill id");
-    const SkillType::SkillType inf = static_cast<SkillType::SkillType>(
-        msg.readInt32("inf"));
-    const int level = msg.readInt16("skill level");
-    const int sp = msg.readInt16("sp");
-    const int range = msg.readInt16("range");
-    const std::string name = msg.readString(24, "skill name");
-    const Modifiable up = fromBool(msg.readUInt8("up flag"), Modifiable);
-    const int oldLevel = PlayerInfo::getSkillLevel(skillId);
-    if (oldLevel && oldLevel != level)
-        updateSkill = skillId;
-    PlayerInfo::setSkillLevel(skillId, level);
-    if (skillDialog)
-    {
-        if (!skillDialog->updateSkill(skillId, range, up, inf, sp))
-        {
-            skillDialog->addSkill(SkillOwner::Player,
-                skillId, name, level, range, up, inf, sp);
-        }
-        skillDialog->update();
-        if (updateSkill)
-            skillDialog->playUpdateEffect(updateSkill);
-    }
-}
-
-void SkillHandler::processSkillUpdate(Net::MessageIn &msg)
-{
-    int updateSkill = 0;
-    const int skillId = msg.readInt16("skill id");
-    const SkillType::SkillType inf = static_cast<SkillType::SkillType>(
-        msg.readInt32("inf"));
-    const int level = msg.readInt16("skill level");
-    const int sp = msg.readInt16("sp");
-    const int range = msg.readInt16("range");
-    const Modifiable up = fromBool(msg.readUInt8("up flag"), Modifiable);
-    const int oldLevel = PlayerInfo::getSkillLevel(skillId);
-    if (oldLevel && oldLevel != level)
-        updateSkill = skillId;
-    PlayerInfo::setSkillLevel(skillId, level);
-    if (skillDialog)
-    {
-        if (!skillDialog->updateSkill(skillId, range, up, inf, sp))
-        {
-            skillDialog->addSkill(SkillOwner::Player,
-                skillId, "", level, range, up, inf, sp);
-        }
-        skillDialog->update();
-        if (updateSkill)
-            skillDialog->playUpdateEffect(updateSkill);
-    }
-}
-
-void SkillHandler::processSkillDelete(Net::MessageIn &msg)
-{
-    int updateSkill = 0;
-    const int skillId = msg.readInt16("skill id");
-    const int oldLevel = PlayerInfo::getSkillLevel(skillId);
-    if (oldLevel != 0)
-        updateSkill = skillId;
-    PlayerInfo::setSkillLevel(skillId, 0);
-    if (skillDialog)
-    {
-        skillDialog->removeSkill(skillId);
-        skillDialog->update();
-        if (updateSkill)
-            skillDialog->playRemoveEffect(updateSkill);
-    }
-}
-
-void SkillHandler::processSkillCoolDown(Net::MessageIn &msg)
-{
-    const int skillId = msg.readInt16("skill id");
-    const int duration = msg.readInt32("duration");
-    if (skillDialog)
-        skillDialog->setSkillDuration(SkillOwner::Player, skillId, duration);
-}
-
-void SkillHandler::processSkillCoolDownList(Net::MessageIn &msg)
-{
-    const int count = (msg.readInt16("len") - 4) / 10;
-    for (int f = 0; f < count; f ++)
-    {
-        const int skillId = msg.readInt16("skill id");
-        msg.readInt32("total");
-        const int duration = msg.readInt32("duration");
-        if (skillDialog)
-        {
-            skillDialog->setSkillDuration(SkillOwner::Player,
-                skillId, duration);
-        }
-    }
-}
-
-void SkillHandler::processSkillFailed(Net::MessageIn &msg)
-{
-    // Action failed (ex. sit because you have not reached the
-    // right level)
-    const int skillId = msg.readInt16("skill id");
-    const int bskill  = msg.readInt32("btype");
-    const signed char success = msg.readUInt8("success");
-    const signed char reason  = msg.readUInt8("reason");
-    if (success != static_cast<int>(SKILL_FAILED)
-        && bskill == static_cast<int>(BSKILL_EMOTE))
-    {
-        logger->log("Action: %d/%d", bskill, success);
-    }
-
-    std::string txt;
-    if (success == static_cast<int>(SKILL_FAILED) && bskill != 0)
-    {
-        if (localPlayer && bskill == static_cast<int>(BSKILL_EMOTE)
-            && reason == static_cast<int>(RFAIL_SKILLDEP))
-        {
-            localPlayer->stopAdvert();
-        }
-
-        SkillInfo *const info = skillDialog->getSkill(bskill);
-        if (info)
-            txt = info->errorText;
-        else
-            txt = strprintf(_("Unknown skill error: %d"), bskill);
-    }
-    else
-    {
-        SkillInfo *const info = skillDialog->getSkill(skillId);
-        if (info)
-            txt = info->errorText + ".";
-        else
-            txt = strprintf(_("Unknown skill error: %d."), skillId);
-    }
-
-    txt.append(" ");
-    switch (reason)
-    {
-        case RFAIL_SKILLDEP:
-            // TRANSLATORS: error message
-            txt.append(_("You have not yet reached a high enough lvl!"));
-            break;
-        case RFAIL_INSUFHP:
-            // TRANSLATORS: error message
-            txt.append(_("Insufficient HP!"));
-            break;
-        case RFAIL_INSUFSP:
-            // TRANSLATORS: error message
-            txt.append(_("Insufficient SP!"));
-            break;
-        case RFAIL_NOMEMO:
-            // TRANSLATORS: error message
-            txt.append(_("You have no memos!"));
-            break;
-        case RFAIL_SKILLDELAY:
-            // TRANSLATORS: error message
-            txt.append(_("You cannot do that right now!"));
-            break;
-        case RFAIL_ZENY:
-            // TRANSLATORS: error message
-            txt.append(_("Seems you need more money... ;-)"));
-            break;
-        case RFAIL_WEAPON:
-            // TRANSLATORS: error message
-            txt.append(_("You cannot use this skill with that "
-                "kind of weapon!"));
-            break;
-        case RFAIL_REDGEM:
-            // TRANSLATORS: error message
-            txt.append(_("You need another red gem!"));
-            break;
-        case RFAIL_BLUEGEM:
-            // TRANSLATORS: error message
-            txt.append(_("You need another blue gem!"));
-            break;
-        case RFAIL_OVERWEIGHT:
-                // TRANSLATORS: error message
-            txt.append(_("You're carrying to much to do this!"));
-            break;
-        default:
-            UNIMPLIMENTEDPACKET;
-            break;
-    }
-
-    NotifyManager::notify(NotifyTypes::SKILL_FAIL_MESSAGE, txt);
-}
-
-void SkillHandler::processSkillSnap(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    msg.readBeingId("being id");
-    msg.readInt16("x");
-    msg.readInt16("y");
-}
-
-void SkillHandler::processSkillWarpPoint(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    msg.readInt16("skill id");
-    msg.readString(16, "map name 1");
-    msg.readString(16, "map name 2");
-    msg.readString(16, "map name 3");
-    msg.readString(16, "map name 4");
-}
-
-void SkillHandler::processSkillMemoMessage(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    msg.readUInt8("type");
-}
-
-void SkillHandler::processSkillProduceMixList(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-
-    const int count = (msg.readInt16("len") - 8) / 8;
-    for (int f = 0; f < count; f ++)
-    {
-        msg.readInt16("item id");
-        for (int d = 0; d < 3; d ++)
-            msg.readInt16("material id");
-    }
-}
-
-void SkillHandler::processSkillProduceEffect(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-
-    msg.readInt16("flag");
-    msg.readInt16("item id");
-}
-
-void SkillHandler::processSkillUnitUpdate(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-
-    msg.readBeingId("being id");
-}
-
-void SkillHandler::processSkillArrowCreateList(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-
-    const int count = (msg.readInt16("len") - 4) / 2;
-    for (int f = 0; f < count; f ++)
-        msg.readInt16("item id");
-}
-
-void SkillHandler::processSkillAutoSpells(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-
-    for (int f = 0; f < 7; f ++)
-        msg.readInt32("skill id");
-
-    menu = MenuType::AutoSpell;
-}
-
-void SkillHandler::processSkillDevotionEffect(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-
-    msg.readBeingId("being id");
-    for (int f = 0; f < 5; f ++)
-        msg.readInt32("devotee id");
-    msg.readInt16("range");
-}
-
-void SkillHandler::processSkillItemListWindow(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-
-    msg.readInt32("skill level");
-    msg.readInt32("unused");
 }
 
 }  // namespace EAthena

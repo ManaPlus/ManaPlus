@@ -37,27 +37,4 @@ SkillHandler::SkillHandler()
 {
 }
 
-void SkillHandler::processPlayerSkillUp(Net::MessageIn &msg)
-{
-    const int skillId = msg.readInt16("skill id");
-    const int level = msg.readInt16("skill level");
-    const int sp = msg.readInt16("sp");
-    const int range = msg.readInt16("range");
-    const Modifiable up = fromBool(msg.readUInt8("up flag"), Modifiable);
-
-    if (skillDialog && PlayerInfo::getSkillLevel(skillId) != level)
-        skillDialog->playUpdateEffect(skillId);
-    PlayerInfo::setSkillLevel(skillId, level);
-    if (skillDialog)
-    {
-        if (!skillDialog->updateSkill(skillId, range,
-            up, SkillType::Unknown, sp))
-        {
-            skillDialog->addSkill(SkillOwner::Player,
-                skillId, "", level,
-                range, up, SkillType::Unknown, sp);
-        }
-    }
-}
-
 }  // namespace Ea

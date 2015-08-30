@@ -20,24 +20,20 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_EA_SKILLHANDLER_H
-#define NET_EA_SKILLHANDLER_H
+#ifndef NET_TMWA_SKILLRECV_H
+#define NET_TMWA_SKILLRECV_H
 
-#include "net/skillhandler.h"
+#include "net/ea/skillhandler.h"
 
-#include "localconsts.h"
+#include "net/tmwa/messagehandler.h"
 
-namespace Ea
+namespace TmwAthena
 {
+    namespace SkillRecv
+    {
+        void processSkillFailed(Net::MessageIn &msg);
+        void processPlayerSkills(Net::MessageIn &msg);
+    }  // namespace SkillRecv
+}  // namespace TmwAthena
 
-class SkillHandler notfinal : public Net::SkillHandler
-{
-    public:
-        SkillHandler();
-
-        A_DELETE_COPY(SkillHandler)
-};
-
-}  // namespace Ea
-
-#endif  // NET_EA_SKILLHANDLER_H
+#endif  // NET_TMWA_SKILLRECV_H

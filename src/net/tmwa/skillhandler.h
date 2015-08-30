@@ -53,11 +53,6 @@ class SkillHandler final : public MessageHandler, public Ea::SkillHandler
                     const std::string &text) const override final;
 
         void useMap(const int id, const std::string &map) const override final;
-
-    protected:
-        static void processSkillFailed(Net::MessageIn &msg);
-
-        static void processPlayerSkills(Net::MessageIn &msg);
 };
 
 }  // namespace TmwAthena

@@ -53,41 +53,6 @@ class SkillHandler final : public MessageHandler, public Ea::SkillHandler
                     const std::string &text) const override final;
 
         void useMap(const int id, const std::string &map) const override final;
-
-    protected:
-        static void processSkillFailed(Net::MessageIn &msg);
-
-        static void processPlayerSkills(Net::MessageIn &msg);
-
-        static void processSkillCoolDown(Net::MessageIn &msg);
-
-        static void processSkillCoolDownList(Net::MessageIn &msg);
-
-        static void processSkillSnap(Net::MessageIn &msg);
-
-        static void processSkillAdd(Net::MessageIn &msg);
-
-        static void processSkillUpdate(Net::MessageIn &msg);
-
-        static void processSkillDelete(Net::MessageIn &msg);
-
-        static void processSkillWarpPoint(Net::MessageIn &msg);
-
-        static void processSkillMemoMessage(Net::MessageIn &msg);
-
-        static void processSkillProduceMixList(Net::MessageIn &msg);
-
-        static void processSkillProduceEffect(Net::MessageIn &msg);
-
-        static void processSkillUnitUpdate(Net::MessageIn &msg);
-
-        static void processSkillArrowCreateList(Net::MessageIn &msg);
-
-        static void processSkillAutoSpells(Net::MessageIn &msg);
-
-        static void processSkillDevotionEffect(Net::MessageIn &msg);
-
-        static void processSkillItemListWindow(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
