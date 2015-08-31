@@ -50,7 +50,7 @@ Network::Network() :
     mInstance = this;
     memset(&mMessageHandlers[0], 0, sizeof(MessageHandler*) * 0xffff);
     mPackets = new PacketInfo[messagesSize];
-#include "net/eathena/recvpackets.h"
+#include "net/eathena/recvpackets.inc"
 }
 
 Network::~Network()

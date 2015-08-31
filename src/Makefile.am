@@ -1327,7 +1327,7 @@ manaplus_SOURCES += \
 	      net/tmwa/questhandler.h \
 	      net/tmwa/questrecv.cpp \
 	      net/tmwa/questrecv.h \
-	      net/tmwa/recvpackets.h \
+	      net/tmwa/recvpackets.inc \
 	      net/tmwa/serverfeatures.cpp \
 	      net/tmwa/serverfeatures.h \
 	      net/tmwa/skillhandler.cpp \
@@ -1555,7 +1555,7 @@ manaplus_SOURCES += gui/windows/bankwindow.cpp \
 	      net/eathena/questhandler.h \
 	      net/eathena/questrecv.cpp \
 	      net/eathena/questrecv.h \
-	      net/eathena/recvpackets.h \
+	      net/eathena/recvpackets.inc \
 	      net/eathena/roulettehandler.cpp \
 	      net/eathena/roulettehandler.h \
 	      net/eathena/rouletterecv.cpp \

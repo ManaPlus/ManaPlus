@@ -50,7 +50,7 @@ Network::Network() :
     mInstance = this;
     memset(&mMessageHandlers[0], 0, sizeof(MessageHandler*) * 0xffff);
     mPackets = new PacketInfo[messagesSize];
-#include "net/tmwa/recvpackets.h"
+#include "net/tmwa/recvpackets.inc"
 }
 
 Network::~Network()
