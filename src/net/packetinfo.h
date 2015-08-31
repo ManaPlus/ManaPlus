@@ -21,7 +21,9 @@
 #ifndef NET_PACKETINFO_H
 #define NET_PACKETINFO_H
 
-struct PacketInfo
+#include "localconsts.h"
+
+struct PacketInfo final
 {
     PacketInfo() :
         name(nullptr),
