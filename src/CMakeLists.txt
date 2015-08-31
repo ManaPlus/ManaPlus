@@ -574,9 +574,11 @@ SET(SRCS
     net/worldinfo.h
     net/packetcounters.cpp
     net/packetcounters.h
+    net/packetinfo.h
     net/packetlimiter.cpp
     net/packetlimiter.h
     net/protocoldefine.h
+    net/recvpacketdefine.h
     resources/action.cpp
     resources/action.h
     resources/ambientlayer.cpp
@@ -1482,6 +1484,7 @@ SET(SRCS_TMWA
     net/tmwa/questhandler.h
     net/tmwa/questrecv.cpp
     net/tmwa/questrecv.h
+    net/tmwa/recvpackets.h
     net/tmwa/serverfeatures.cpp
     net/tmwa/serverfeatures.h
     net/tmwa/skillhandler.cpp
@@ -1706,6 +1709,7 @@ SET(SRCS_EATHENA
     net/eathena/questhandler.h
     net/eathena/questrecv.cpp
     net/eathena/questrecv.h
+    net/eathena/recvpackets.h
     net/eathena/roulettehandler.cpp
     net/eathena/roulettehandler.h
     net/eathena/rouletterecv.cpp

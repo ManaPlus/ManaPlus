@@ -27,6 +27,4 @@
 
 #include "net/eathena/packets.inc"
 
-#undef packet
-
 #endif  // NET_EATHENA_PROTOCOL_H

@@ -26,6 +26,8 @@
 #include "net/serverinfo.h"
 #include "net/sdltcpnet.h"
 
+struct PacketInfo;
+
 namespace Ea
 {
 
@@ -90,6 +92,8 @@ class Network notfinal
         TcpNet::Socket mSocket;
 
         ServerInfo mServer;
+
+        PacketInfo *mPackets;
 
         char *mInBuffer;
         char *mOutBuffer;

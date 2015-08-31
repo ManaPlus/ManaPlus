@@ -1,8 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2004-2009  The Mana World Development Team
- *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011-2015  The ManaPlus Developers
+ *  Copyright (C) 2015  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -20,11 +18,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_TMWA_PROTOCOL_H
-#define NET_TMWA_PROTOCOL_H
+#ifndef NET_TMWA_RECVPACKETS_H
+#define NET_TMWA_RECVPACKETS_H
 
-#include "net/protocoldefine.h"
+#include "net/recvpacketdefine.h"
 
 #include "net/tmwa/packets.inc"
 
-#endif  // NET_TMWA_PROTOCOL_H
+#endif  // NET_TMWA_RECVPACKETS_H

@@ -1167,6 +1167,7 @@ manaplus_SOURCES += main.cpp \
 	      net/pethandler.h \
 	      net/playerhandler.h \
 	      net/questhandler.h \
+	      net/recvpacketdefine.h \
 	      net/registrationoptions.h \
 	      net/serverfeatures.h \
 	      net/serverinfo.h \
@@ -1178,6 +1179,7 @@ manaplus_SOURCES += main.cpp \
 	      net/worldinfo.h \
 	      net/packetcounters.cpp \
 	      net/packetcounters.h \
+	      net/packetinfo.h \
 	      net/packetlimiter.cpp \
 	      net/packetlimiter.h \
 	      net/protocoldefine.h \
@@ -1325,6 +1327,7 @@ manaplus_SOURCES += \
 	      net/tmwa/questhandler.h \
 	      net/tmwa/questrecv.cpp \
 	      net/tmwa/questrecv.h \
+	      net/tmwa/recvpackets.h \
 	      net/tmwa/serverfeatures.cpp \
 	      net/tmwa/serverfeatures.h \
 	      net/tmwa/skillhandler.cpp \
@@ -1552,6 +1555,7 @@ manaplus_SOURCES += gui/windows/bankwindow.cpp \
 	      net/eathena/questhandler.h \
 	      net/eathena/questrecv.cpp \
 	      net/eathena/questrecv.h \
+	      net/eathena/recvpackets.h \
 	      net/eathena/roulettehandler.cpp \
 	      net/eathena/roulettehandler.h \
 	      net/eathena/rouletterecv.cpp \

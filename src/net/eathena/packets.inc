@@ -729,3 +729,5 @@ packet(CMSG_SEARCHSTORE_CLICK,       0x0835);
 packet(CMSG_SET_STATUS,              0x0b0e);
 
 packet(CMSG_ONLINE_LIST,             0x0b0f);
+
+#undef packet

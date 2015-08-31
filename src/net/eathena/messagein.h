@@ -41,11 +41,12 @@ class MessageIn final : public Net::MessageIn
         /**
          * Constructor.
          */
-        MessageIn(const char *const data, const unsigned int length);
+        MessageIn(const char *const data,
+                  const unsigned int length);
 
         A_DELETE_COPY(MessageIn)
 
-        void postInit();
+        void postInit(const char *const str);
 
         /**< Reads a short. */
         int16_t readInt16(const char *const str) override final;

@@ -25,6 +25,7 @@
 #include "configuration.h"
 #include "logger.h"
 
+#include "utils/delete2.h"
 #include "utils/gettext.h"
 #include "utils/sdlhelper.h"
 
@@ -55,6 +56,7 @@ int networkThread(void *data)
 Network::Network() :
     mSocket(nullptr),
     mServer(),
+    mPackets(nullptr),
     mInBuffer(new char[BUFFER_SIZE]),
     mOutBuffer(new char[BUFFER_SIZE]),
     mInSize(0),
@@ -81,8 +83,9 @@ Network::~Network()
     SDL_DestroyMutex(mMutexOut);
     mMutexOut = nullptr;
 
-    delete []mInBuffer;
-    delete []mOutBuffer;
+    delete2Arr(mInBuffer);
+    delete2Arr(mOutBuffer);
+    delete2Arr(mPackets);
 
     TcpNet::quit();
 }

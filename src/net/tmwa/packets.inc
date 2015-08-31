@@ -294,3 +294,5 @@ packet(SMSG_BEING_MOVE3,             0x0225);
 packet(SMSG_MAP_MUSIC,               0x0227);
 packet(SMSG_NPC_CHANGETITLE,         0x0228);
 packet(SMSG_SCRIPT_MESSAGE,          0x0229);
+
+#undef packet

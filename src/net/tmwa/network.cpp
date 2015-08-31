@@ -24,6 +24,8 @@
 
 #include "logger.h"
 
+#include "net/packetinfo.h"
+
 #include "net/tmwa/messagehandler.h"
 #include "net/tmwa/messagein.h"
 #include "net/tmwa/packets.h"
@@ -47,6 +49,8 @@ Network::Network() :
 {
     mInstance = this;
     memset(&mMessageHandlers[0], 0, sizeof(MessageHandler*) * 0xffff);
+    mPackets = new PacketInfo[messagesSize];
+#include "net/tmwa/recvpackets.h"
 }
 
 Network::~Network()
@@ -109,7 +113,7 @@ void Network::dispatchMessages()
             len = readWord(2);
 
         MessageIn msg(mInBuffer, len);
-        msg.postInit();
+        msg.postInit(mPackets[msgId].name);
         SDL_mutexV(mMutexIn);
         BLOCK_END("Network::dispatchMessages 2")
         BLOCK_START("Network::dispatchMessages 3")

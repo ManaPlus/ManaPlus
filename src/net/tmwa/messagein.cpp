@@ -34,18 +34,19 @@
 namespace TmwAthena
 {
 
-MessageIn::MessageIn(const char *const data, const unsigned int length) :
+MessageIn::MessageIn(const char *const data,
+                     const unsigned int length) :
     Net::MessageIn(data, length)
 {
 }
 
-void MessageIn::postInit()
+void MessageIn::postInit(const char *const str)
 {
     // Read the message ID
     mId = readId();
     IGNOREDEBUGLOG;
     DEBUGLOG2("Receive packet", 0, "MessageIn");
-    readInt16("packet id");
+    readInt16(str);
 }
 
 uint16_t MessageIn::readId()
