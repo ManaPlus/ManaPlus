@@ -18,9 +18,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_PACKETDEFINE_H
-#define NET_PACKETDEFINE_H
+#ifndef NET_PROTOCOLINDEFINE_H
+#define NET_PROTOCOLINDEFINE_H
 
-#define packet(name, id) static const int name = id
+#define packet(name, id, sz) static const int name = id
 
-#endif  // NET_PACKETDEFINE_H
+#endif  // NET_PROTOCOLINDEFINE_H

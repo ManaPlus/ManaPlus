@@ -23,11 +23,12 @@
 #ifndef NET_EATHENA_PROTOCOL_H
 #define NET_EATHENA_PROTOCOL_H
 
-#include "net/protocoldefine.h"
-
+#include "net/protocolindefine.h"
 #include "net/eathena/packetsin.inc"
-#include "net/eathena/packetsout.inc"
+#undef packet
 
+#include "net/protocoloutdefine.h"
+#include "net/eathena/packetsout.inc"
 #undef packet
 
 #endif  // NET_EATHENA_PROTOCOL_H

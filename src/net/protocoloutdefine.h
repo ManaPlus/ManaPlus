@@ -1,8 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2004-2009  The Mana World Development Team
- *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011-2015  The ManaPlus Developers
+ *  Copyright (C) 2015  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -20,15 +18,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_TMWA_PROTOCOL_H
-#define NET_TMWA_PROTOCOL_H
+#ifndef NET_PROTOCOLOUTDEFINE_H
+#define NET_PROTOCOLOUTDEFINE_H
 
-#include "net/protocolindefine.h"
-#include "net/tmwa/packetsin.inc"
-#undef packet
+#define packet(name, id) static const int name = id
 
-#include "net/protocoloutdefine.h"
-#include "net/tmwa/packetsout.inc"
-#undef packet
-
-#endif  // NET_TMWA_PROTOCOL_H
+#endif  // NET_PROTOCOLOUTDEFINE_H

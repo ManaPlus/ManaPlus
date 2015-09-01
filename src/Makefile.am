@@ -1182,7 +1182,8 @@ manaplus_SOURCES += main.cpp \
 	      net/packetinfo.h \
 	      net/packetlimiter.cpp \
 	      net/packetlimiter.h \
-	      net/protocoldefine.h \
+	      net/protocolindefine.h \
+	      net/protocoloutdefine.h \
 	      net/ea/adminrecv.cpp \
 	      net/ea/adminrecv.h \
 	      net/ea/adminhandler.cpp \
