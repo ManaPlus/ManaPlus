@@ -28,7 +28,6 @@
 
 #include "net/tmwa/messagehandler.h"
 #include "net/tmwa/messagein.h"
-#include "net/tmwa/packets.h"
 #include "net/tmwa/protocol.h"
 
 #include "utils/delete2.h"

@@ -28,7 +28,6 @@
 
 #include "net/eathena/messagehandler.h"
 #include "net/eathena/messagein.h"
-#include "net/eathena/packets.h"
 #include "net/eathena/protocol.h"
 
 #include "utils/delete2.h"

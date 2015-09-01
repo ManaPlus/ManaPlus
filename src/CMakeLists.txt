@@ -1468,7 +1468,6 @@ SET(SRCS_TMWA
     net/tmwa/network.h
     net/tmwa/npchandler.cpp
     net/tmwa/npchandler.h
-    net/tmwa/packets.h
     net/tmwa/packetsin.inc
     net/tmwa/packetsout.inc
     net/tmwa/partyhandler.cpp
