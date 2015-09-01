@@ -38,8 +38,7 @@
 namespace EAthena
 {
 
-static const unsigned int packet_lengths_size
-    = static_cast<unsigned int>(sizeof(packet_lengths) / sizeof(int16_t));
+static const unsigned int packet_lengths_size = 0xFFFFU;
 static const unsigned int messagesSize = 0xFFFFU;
 Network *Network::mInstance = nullptr;
 
@@ -103,8 +102,7 @@ void Network::dispatchMessages()
         const unsigned int msgId = readWord(0);
         int len = -1;
         if (msgId < packet_lengths_size)
-            len = packet_lengths[msgId];
-
+            len = mPackets[msgId].len;
         if (len == -1)
             len = readWord(2);
 
@@ -144,14 +142,10 @@ bool Network::messageReady()
     if (mInSize >= 2)
     {
         const int msgId = readWord(0);
-        if (msgId == SMSG_SERVER_VERSION_RESPONSE)
+        if (msgId >= 0 &&
+            static_cast<unsigned int>(msgId) < packet_lengths_size)
         {
-            len = 10;
-        }
-        else if (msgId >= 0 && static_cast<unsigned int>(msgId)
-                 < packet_lengths_size)
-        {
-            len = packet_lengths[msgId];
+            len = mPackets[msgId].len;
         }
 
         if (len == -1 && mInSize > 4)

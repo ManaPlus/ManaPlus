@@ -381,7 +381,7 @@ packet(SMSG_SEARCHSTORE_OPEN,              0x083a,   5);
 packet(SMSG_SEARCHSTORE_SEARCH_ACK,        0x0836,   0);
 packet(SMSG_SEARCHSTORE_SEARCH_FAILED,     0x0837,   0);
 packet(SMSG_SERVER_PING,                   0x007f,   6);
-packet(SMSG_SERVER_VERSION_RESPONSE,       0x7531,  10);
+packet(SMSG_SERVER_VERSION_RESPONSE,       0x7531,  -1);
 packet(SMSG_SKILL_ARROW_CREATE_LIST,       0x01ad,  -1);
 packet(SMSG_SKILL_AUTO_CAST,               0x0147,  39);
 packet(SMSG_SKILL_CASTING,                 0x07fb,  25);

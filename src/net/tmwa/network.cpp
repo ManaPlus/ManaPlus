@@ -38,8 +38,7 @@
 namespace TmwAthena
 {
 
-static const unsigned int packet_lengths_size
-    = static_cast<unsigned int>(sizeof(packet_lengths) / sizeof(int16_t));
+static const unsigned int packet_lengths_size = 0x0230U;
 static const unsigned int messagesSize = 0xFFFFU;
 Network *Network::mInstance = nullptr;
 
@@ -107,7 +106,7 @@ void Network::dispatchMessages()
         if (msgId == SMSG_SERVER_VERSION_RESPONSE)
             len = 10;
         else if (msgId < packet_lengths_size)
-            len = packet_lengths[msgId];
+            len = mPackets[msgId].len;
 
         if (len == -1)
             len = readWord(2);
@@ -164,7 +163,7 @@ bool Network::messageReady()
             if (msgId >= 0 && static_cast<unsigned int>(msgId)
                 < packet_lengths_size)
             {
-                len = packet_lengths[msgId];
+                len = mPackets[msgId].len;
             }
         }
 
