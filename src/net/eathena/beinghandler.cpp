@@ -281,6 +281,9 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
             break;
 
         case SMSG_MONSTER_HP:
+            BeingRecv::processMonsterHp(msg);
+            break;
+
         case SMSG_PLAYER_HP:
             BeingRecv::processMonsterHp(msg);
             break;
