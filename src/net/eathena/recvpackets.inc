@@ -23,6 +23,8 @@
 
 #include "net/recvpacketdefine.h"
 
-#include "net/eathena/packets.inc"
+#include "net/eathena/packetsin.inc"
+
+#undef packet
 
 #endif  // NET_EATHENA_RECVPACKETS_H

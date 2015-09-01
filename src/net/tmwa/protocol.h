@@ -25,6 +25,9 @@
 
 #include "net/protocoldefine.h"
 
-#include "net/tmwa/packets.inc"
+#include "net/tmwa/packetsin.inc"
+#include "net/tmwa/packetsout.inc"
+
+#undef packet
 
 #endif  // NET_TMWA_PROTOCOL_H

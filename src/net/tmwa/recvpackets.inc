@@ -23,6 +23,8 @@
 
 #include "net/recvpacketdefine.h"
 
-#include "net/tmwa/packets.inc"
+#include "net/tmwa/packetsin.inc"
+
+#undef packet
 
 #endif  // NET_TMWA_RECVPACKETS_H

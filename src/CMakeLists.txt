@@ -1468,7 +1468,8 @@ SET(SRCS_TMWA
     net/tmwa/npchandler.cpp
     net/tmwa/npchandler.h
     net/tmwa/packets.h
-    net/tmwa/packets.inc
+    net/tmwa/packetsin.inc
+    net/tmwa/packetsout.inc
     net/tmwa/partyhandler.cpp
     net/tmwa/partyhandler.h
     net/tmwa/partyrecv.cpp
@@ -1691,7 +1692,8 @@ SET(SRCS_EATHENA
     net/eathena/npcrecv.cpp
     net/eathena/npcrecv.h
     net/eathena/packets.h
-    net/eathena/packets.inc
+    net/eathena/packetsin.inc
+    net/eathena/packetsout.inc
     net/eathena/partyhandler.cpp
     net/eathena/partyhandler.h
     net/eathena/partyrecv.cpp

@@ -25,6 +25,9 @@
 
 #include "net/protocoldefine.h"
 
-#include "net/eathena/packets.inc"
+#include "net/eathena/packetsin.inc"
+#include "net/eathena/packetsout.inc"
+
+#undef packet
 
 #endif  // NET_EATHENA_PROTOCOL_H
