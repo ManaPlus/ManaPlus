@@ -26,7 +26,6 @@ packet(CMSG_LOGIN_REGISTER,          0x0064);
 
 packet(CMSG_NAME_REQUEST,            0x0094);
 
-// Custom change password packet
 packet(CMSG_CHAR_PASSWORD_CHANGE,    0x0061);
 packet(CMSG_CHAR_SERVER_CONNECT,     0x0065);
 packet(CMSG_CHAR_SELECT,             0x0066);
@@ -34,7 +33,7 @@ packet(CMSG_CHAR_CREATE,             0x0067);
 packet(CMSG_CHAR_DELETE,             0x0068);
 
 packet(CMSG_MAP_SERVER_CONNECT,      0x0072);
-packet(CMSG_MAP_PING,                0x007e); /**< Send to server with tick */
+packet(CMSG_MAP_PING,                0x007e);
 packet(CMSG_MAP_LOADED,              0x007d);
 packet(CMSG_CLIENT_QUIT,             0x018A);
 
@@ -46,7 +45,6 @@ packet(CMSG_SKILL_LEVELUP_REQUEST,   0x0112);
 packet(CMSG_STAT_UPDATE_REQUEST,     0x00bb);
 packet(CMSG_SKILL_USE_BEING,         0x0113);
 packet(CMSG_SKILL_USE_POSITION,      0x0116);
-// Variant of 0x116 with 80 char string at end (unsure of use)
 packet(CMSG_SKILL_USE_POSITION_MORE, 0x0190);
 packet(CMSG_SKILL_USE_MAP,           0x011b);
 
@@ -89,9 +87,9 @@ packet(CMSG_PARTY_SETTINGS,          0x0102);
 packet(CMSG_PARTY_KICK,              0x0103);
 packet(CMSG_PARTY_MESSAGE,           0x0108);
 
-packet(CMSG_MOVE_TO_STORAGE,         0x00f3); /** Move item to storage */
-packet(CMSG_MOVE_FROM_STORAGE,       0x00f5); /** Remove item from storage */
-packet(CMSG_CLOSE_STORAGE,           0x00f7); /** Request storage close */
+packet(CMSG_MOVE_TO_STORAGE,         0x00f3);
+packet(CMSG_MOVE_FROM_STORAGE,       0x00f5);
+packet(CMSG_CLOSE_STORAGE,           0x00f7);
 
 packet(CMSG_ADMIN_ANNOUNCE,          0x0099);
 packet(CMSG_ADMIN_LOCAL_ANNOUNCE,    0x019C);

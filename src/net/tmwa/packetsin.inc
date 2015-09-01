@@ -22,10 +22,10 @@
 
 packet(SMSG_SERVER_VERSION_RESPONSE, 0x7531);
 
-packet(SMSG_SERVER_PING,             0x007f); /**< Contains server tick */
+packet(SMSG_SERVER_PING,             0x007f);
 packet(SMSG_CONNECTION_PROBLEM,      0x0081);
 
-packet(SMSG_UPDATE_HOST,             0x0063); /**< Custom update host packet */
+packet(SMSG_UPDATE_HOST,             0x0063);
 packet(SMSG_LOGIN_DATA,              0x0069);
 packet(SMSG_LOGIN_ERROR,             0x006a);
 
@@ -38,18 +38,17 @@ packet(SMSG_CHAR_DELETE_SUCCEEDED,   0x006f);
 packet(SMSG_CHAR_DELETE_FAILED,      0x0070);
 packet(SMSG_CHAR_MAP_INFO,           0x0071);
 
-// Custom packet reply to password change request
 packet(SMSG_CHAR_PASSWORD_RESPONSE,  0x0062);
 
 packet(SMSG_CHAR_SWITCH_RESPONSE,    0x00b3);
 packet(SMSG_CHANGE_MAP_SERVER,       0x0092);
 
-packet(SMSG_MAP_LOGIN_SUCCESS,       0x0073); /**< Contains starting location */
+packet(SMSG_MAP_LOGIN_SUCCESS,       0x0073);
 packet(SMSG_MAP_QUIT_RESPONSE,       0x018b);
 packet(SMSG_PLAYER_UPDATE_1,         0x01d8);
 packet(SMSG_PLAYER_UPDATE_2,         0x01d9);
-packet(SMSG_PLAYER_MOVE,             0x01da); /**< A nearby player moves */
-packet(SMSG_PLAYER_STOP,             0x0088); /**< Stop walking, set position */
+packet(SMSG_PLAYER_MOVE,             0x01da);
+packet(SMSG_PLAYER_STOP,             0x0088);
 packet(SMSG_PLAYER_MOVE_TO_ATTACK,   0x0139);
 packet(SMSG_PLAYER_STAT_UPDATE_1,    0x00b0);
 packet(SMSG_PLAYER_STAT_UPDATE_2,    0x00b1);
@@ -74,22 +73,21 @@ packet(SMSG_PLAYER_SKILL_UP,         0x010e);
 packet(SMSG_SKILL_FAILED,            0x0110);
 packet(SMSG_SKILL_DAMAGE,            0x01de);
 packet(SMSG_ITEM_USE_RESPONSE,       0x00a8);
-packet(SMSG_ITEM_VISIBLE,            0x009d); /**< An item is on the floor */
-packet(SMSG_ITEM_DROPPED,            0x009e); /**< An item is dropped */
-packet(SMSG_ITEM_REMOVE,             0x00a1); /**< An item disappers */
+packet(SMSG_ITEM_VISIBLE,            0x009d);
+packet(SMSG_ITEM_DROPPED,            0x009e);
+packet(SMSG_ITEM_REMOVE,             0x00a1);
 packet(SMSG_BEING_VISIBLE,           0x0078);
-packet(SMSG_BEING_MOVE,              0x007b); /**< A nearby monster moves */
-packet(SMSG_BEING_SPAWN,             0x007c); /**< A being spawns nearby */
-packet(SMSG_BEING_MOVE2,             0x0086); /**< New eAthena being moves */
+packet(SMSG_BEING_MOVE,              0x007b);
+packet(SMSG_BEING_SPAWN,             0x007c);
+packet(SMSG_BEING_MOVE2,             0x0086);
 packet(SMSG_BEING_REMOVE,            0x0080);
 packet(SMSG_BEING_CHANGE_LOOKS,      0x00c3);
-// Same as 0x00c3, but 16 bit ID
 packet(SMSG_BEING_CHANGE_LOOKS2,     0x01d7);
 packet(SMSG_BEING_SELFEFFECT,        0x019b);
 packet(SMSG_BEING_EMOTION,           0x00c0);
-packet(SMSG_BEING_ACTION,            0x008a); /**< Attack, sit, stand up, ... */
-packet(SMSG_BEING_CHAT,              0x008d); /**< A being talks */
-packet(SMSG_BEING_NAME_RESPONSE,     0x0095); /**< Has to be requested */
+packet(SMSG_BEING_ACTION,            0x008a);
+packet(SMSG_BEING_CHAT,              0x008d);
+packet(SMSG_BEING_NAME_RESPONSE,     0x0095);
 packet(SMSG_BEING_CHANGE_DIRECTION,  0x009c);
 packet(SMSG_BEING_RESURRECT,         0x0148);
 
@@ -100,25 +98,24 @@ packet(SMSG_BEING_STATUS_CHANGE,     0x0196);
 packet(SMSG_NPC_MESSAGE,             0x00b4);
 packet(SMSG_NPC_NEXT,                0x00b5);
 packet(SMSG_NPC_CLOSE,               0x00b6);
-packet(SMSG_NPC_CHOICE,              0x00b7); /**< Display a choice */
+packet(SMSG_NPC_CHOICE,              0x00b7);
 packet(SMSG_NPC_BUY_SELL_CHOICE,     0x00c4);
 packet(SMSG_NPC_BUY,                 0x00c6);
 packet(SMSG_NPC_SELL,                0x00c7);
 packet(SMSG_NPC_BUY_RESPONSE,        0x00ca);
 packet(SMSG_NPC_SELL_RESPONSE,       0x00cb);
-packet(SMSG_NPC_INT_INPUT,           0x0142); /**< Integer input */
-packet(SMSG_NPC_STR_INPUT,           0x01d4); /**< String input */
-packet(SMSG_PLAYER_CHAT,             0x008e); /**< Player talks */
-packet(SMSG_WHISPER,                 0x0097); /**< Whisper Recieved */
+packet(SMSG_NPC_INT_INPUT,           0x0142);
+packet(SMSG_NPC_STR_INPUT,           0x01d4);
+packet(SMSG_PLAYER_CHAT,             0x008e);
+packet(SMSG_WHISPER,                 0x0097);
 packet(SMSG_WHISPER_RESPONSE,        0x0098);
-packet(SMSG_GM_CHAT,                 0x009a); /**< GM announce */
+packet(SMSG_GM_CHAT,                 0x009a);
 packet(SMSG_WALK_RESPONSE,           0x0087);
 
-// Receiving a request to trade
 packet(SMSG_TRADE_REQUEST,           0x00e5);
 packet(SMSG_TRADE_RESPONSE,          0x00e7);
 packet(SMSG_TRADE_ITEM_ADD,          0x00e9);
-packet(SMSG_TRADE_ITEM_ADD_RESPONSE, 0x01b1); /**< Not standard eAthena! */
+packet(SMSG_TRADE_ITEM_ADD_RESPONSE, 0x01b1);
 packet(SMSG_TRADE_OK,                0x00ec);
 packet(SMSG_TRADE_CANCEL,            0x00ee);
 packet(SMSG_TRADE_COMPLETE,          0x00f0);
@@ -134,13 +131,12 @@ packet(SMSG_PARTY_UPDATE_HP,         0x0106);
 packet(SMSG_PARTY_UPDATE_COORDS,     0x0107);
 packet(SMSG_PARTY_MESSAGE,           0x0109);
 
-packet(SMSG_PLAYER_STORAGE_ITEMS,    0x01f0); /**< Item list for storage */
-packet(SMSG_PLAYER_STORAGE_EQUIP,    0x00a6); /**< Equipment list for storage */
-packet(SMSG_PLAYER_STORAGE_STATUS,   0x00f2); /**< Slots used and total slots */
-packet(SMSG_PLAYER_STORAGE_ADD,      0x00f4); /**< Add item/equip to storage */
-// Remove item/equip from storage
+packet(SMSG_PLAYER_STORAGE_ITEMS,    0x01f0);
+packet(SMSG_PLAYER_STORAGE_EQUIP,    0x00a6);
+packet(SMSG_PLAYER_STORAGE_STATUS,   0x00f2);
+packet(SMSG_PLAYER_STORAGE_ADD,      0x00f4);
 packet(SMSG_PLAYER_STORAGE_REMOVE,   0x00f6);
-packet(SMSG_PLAYER_STORAGE_CLOSE,    0x00f8); /**< Storage access closed */
+packet(SMSG_PLAYER_STORAGE_CLOSE,    0x00f8);
 
 packet(SMSG_ADMIN_KICK_ACK,          0x00cd);
 

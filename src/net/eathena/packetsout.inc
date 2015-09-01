@@ -37,7 +37,7 @@ packet(CMSG_CHAR_RENAME,             0x028f);
 packet(CMSG_CHAR_CHANGE_SLOT,        0x08d4);
 
 packet(CMSG_MAP_SERVER_CONNECT,      0x089c);
-packet(CMSG_MAP_PING,                0x035f); /**< Send to server with tick */
+packet(CMSG_MAP_PING,                0x035f);
 packet(CMSG_LOGIN_PING,              0x0200);
 packet(CMSG_CHAR_PING,               0x0187);
 packet(CMSG_MAP_LOADED,              0x007d);
@@ -66,7 +66,6 @@ packet(CMSG_SKILL_LEVELUP_REQUEST,   0x0112);
 packet(CMSG_STAT_UPDATE_REQUEST,     0x00bb);
 packet(CMSG_SKILL_USE_BEING,         0x083c);
 packet(CMSG_SKILL_USE_POSITION,      0x0436);
-// Variant of 0x116 with 80 char string at end (unsure of use)
 packet(CMSG_SKILL_USE_POSITION_MORE, 0x0366);
 packet(CMSG_SKILL_USE_MAP,           0x011b);
 
@@ -126,9 +125,9 @@ packet(CMSG_PARTY_MESSAGE,           0x0108);
 packet(CMSG_PARTY_CHANGE_LEADER,     0x07da);
 packet(CMSG_PARTY_ALLOW_INVITES,     0x02c8);
 
-packet(CMSG_MOVE_TO_STORAGE,         0x07ec); /** Move item to storage */
-packet(CMSG_MOVE_FROM_STORAGE,       0x085b); /** Remove item from storage */
-packet(CMSG_CLOSE_STORAGE,           0x0193); /** Request storage close */
+packet(CMSG_MOVE_TO_STORAGE,         0x07ec);
+packet(CMSG_MOVE_FROM_STORAGE,       0x085b);
+packet(CMSG_CLOSE_STORAGE,           0x0193);
 
 packet(CMSG_MOVE_TO_CART,            0x0126);
 packet(CMSG_MOVE_FROM_CART,          0x0127);
