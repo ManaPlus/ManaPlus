@@ -26,6 +26,57 @@
 
 #include "net/packetinfo.h"
 
+#include "net/ea/adminrecv.h"
+#include "net/ea/beingrecv.h"
+#include "net/ea/buysellrecv.h"
+#include "net/ea/charserverrecv.h"
+#include "net/ea/chatrecv.h"
+#include "net/ea/gamerecv.h"
+#include "net/ea/guildrecv.h"
+#include "net/ea/inventoryrecv.h"
+#include "net/ea/itemrecv.h"
+#include "net/ea/loginrecv.h"
+#include "net/ea/npcrecv.h"
+#include "net/ea/partyrecv.h"
+#include "net/ea/playerrecv.h"
+#include "net/ea/skillrecv.h"
+#include "net/ea/traderecv.h"
+
+#include "net/eathena/adminrecv.h"
+#include "net/eathena/auctionrecv.h"
+#include "net/eathena/bankrecv.h"
+#include "net/eathena/battlegroundrecv.h"
+#include "net/eathena/beingrecv.h"
+#include "net/eathena/buyingstorerecv.h"
+#include "net/eathena/buysellrecv.h"
+#include "net/eathena/cashshoprecv.h"
+#include "net/eathena/charserverrecv.h"
+#include "net/eathena/chatrecv.h"
+#include "net/eathena/elementalrecv.h"
+#include "net/eathena/familyrecv.h"
+#include "net/eathena/friendsrecv.h"
+#include "net/eathena/gamerecv.h"
+#include "net/eathena/generalrecv.h"
+#include "net/eathena/guildrecv.h"
+#include "net/eathena/homunculusrecv.h"
+#include "net/eathena/inventoryrecv.h"
+#include "net/eathena/itemrecv.h"
+#include "net/eathena/loginrecv.h"
+#include "net/eathena/mailrecv.h"
+#include "net/eathena/maprecv.h"
+#include "net/eathena/marketrecv.h"
+#include "net/eathena/mercenaryrecv.h"
+#include "net/eathena/npcrecv.h"
+#include "net/eathena/partyrecv.h"
+#include "net/eathena/petrecv.h"
+#include "net/eathena/playerrecv.h"
+#include "net/eathena/questrecv.h"
+#include "net/eathena/rouletterecv.h"
+#include "net/eathena/searchstorerecv.h"
+#include "net/eathena/skillrecv.h"
+#include "net/eathena/traderecv.h"
+#include "net/eathena/vendingrecv.h"
+
 #include "net/eathena/messagehandler.h"
 #include "net/eathena/messagein.h"
 #include "net/eathena/protocol.h"
@@ -120,9 +171,9 @@ void Network::dispatchMessages()
 
         if (msgId < messagesSize)
         {
-            MessageHandler *const handler = mMessageHandlers[msgId];
-            if (handler)
-                handler->handleMessage(msg);
+            PacketFuncPtr func = mPackets[msgId].func;
+            if (func)
+                func(msg);
             else
                 logger->log("Unhandled packet: %u 0x%x", msgId, msgId);
         }

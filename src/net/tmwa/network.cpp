@@ -26,6 +26,38 @@
 
 #include "net/packetinfo.h"
 
+#include "net/ea/adminrecv.h"
+#include "net/ea/beingrecv.h"
+#include "net/ea/buysellrecv.h"
+#include "net/ea/charserverrecv.h"
+#include "net/ea/chatrecv.h"
+#include "net/ea/gamerecv.h"
+#include "net/ea/guildrecv.h"
+#include "net/ea/inventoryrecv.h"
+#include "net/ea/itemrecv.h"
+#include "net/ea/loginrecv.h"
+#include "net/ea/npcrecv.h"
+#include "net/ea/partyrecv.h"
+#include "net/ea/playerrecv.h"
+#include "net/ea/skillrecv.h"
+#include "net/ea/traderecv.h"
+
+#include "net/tmwa/beingrecv.h"
+#include "net/tmwa/buysellrecv.h"
+#include "net/tmwa/charserverrecv.h"
+#include "net/tmwa/chatrecv.h"
+#include "net/tmwa/gamerecv.h"
+#include "net/tmwa/generalrecv.h"
+#include "net/tmwa/guildrecv.h"
+#include "net/tmwa/inventoryrecv.h"
+#include "net/tmwa/itemrecv.h"
+#include "net/tmwa/loginrecv.h"
+#include "net/tmwa/partyrecv.h"
+#include "net/tmwa/playerrecv.h"
+#include "net/tmwa/questrecv.h"
+#include "net/tmwa/skillrecv.h"
+#include "net/tmwa/traderecv.h"
+
 #include "net/tmwa/messagehandler.h"
 #include "net/tmwa/messagein.h"
 #include "net/tmwa/protocol.h"
@@ -127,9 +159,9 @@ void Network::dispatchMessages()
 
         if (msgId < messagesSize)
         {
-            MessageHandler *const handler = mMessageHandlers[msgId];
-            if (handler)
-                handler->handleMessage(msg);
+            PacketFuncPtr func = mPackets[msgId].func;
+            if (func)
+                func(msg);
             else
                 logger->log("Unhandled packet: %u 0x%x", msgId, msgId);
         }

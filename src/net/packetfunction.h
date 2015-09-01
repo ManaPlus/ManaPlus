@@ -18,25 +18,16 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_PACKETINFO_H
-#define NET_PACKETINFO_H
-
-#include "net/packetfunction.h"
+#ifndef NET_PACKETFUNCTION_H
+#define NET_PACKETFUNCTION_H
 
 #include "localconsts.h"
 
-struct PacketInfo final
+namespace Net
 {
-    PacketInfo() :
-        name(nullptr),
-        func(nullptr),
-        len(0)
-    {
-    }
+    class MessageIn;
+}
 
-    const char *name;
-    PacketFuncPtr func;
-    int len;
-};
+typedef void (*PacketFuncPtr) (Net::MessageIn &msg);
 
-#endif  // NET_PACKETINFO_H
+#endif  // NET_PACKETFUNCTION_H

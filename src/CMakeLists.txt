@@ -574,6 +574,7 @@ SET(SRCS
     net/worldinfo.h
     net/packetcounters.cpp
     net/packetcounters.h
+    net/packetfunction.h
     net/packetinfo.h
     net/packetlimiter.cpp
     net/packetlimiter.h
