@@ -1691,7 +1691,6 @@ SET(SRCS_EATHENA
     net/eathena/npchandler.h
     net/eathena/npcrecv.cpp
     net/eathena/npcrecv.h
-    net/eathena/packets.h
     net/eathena/packetsin.inc
     net/eathena/packetsout.inc
     net/eathena/partyhandler.cpp
