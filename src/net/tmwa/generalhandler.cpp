@@ -175,10 +175,8 @@ void GeneralHandler::handleMessage(Net::MessageIn &msg)
 
 void GeneralHandler::load()
 {
-    (new Network)->registerHandler(this);
-
-    if (!mNetwork)
-        return;
+    mNetwork = new Network;
+    mNetwork->registerHandlers();
 
     mNetwork->registerHandler(mAdminHandler);
     mNetwork->registerHandler(mBeingHandler);

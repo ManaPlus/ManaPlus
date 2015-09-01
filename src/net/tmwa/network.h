@@ -55,14 +55,14 @@ class Network final : public Ea::Network
 
         void dispatchMessages();
 
+        void registerHandlers();
+
         static Network *mInstance;
 
     protected:
         friend class MessageOut;
 
         static Network *instance() A_WARN_UNUSED;
-
-        MessageHandler **mMessageHandlers;
 };
 
 }  // namespace TmwAthena

@@ -93,29 +93,27 @@ static const unsigned int messagesSize = 0xFFFFU;
 Network *Network::mInstance = nullptr;
 
 Network::Network() :
-    Ea::Network(),
-    mMessageHandlers(new MessageHandler*[messagesSize])
+    Ea::Network()
 {
     mInstance = this;
-    memset(&mMessageHandlers[0], 0, sizeof(MessageHandler*) * 0xffff);
     mPackets = new PacketInfo[messagesSize];
-#include "net/eathena/recvpackets.inc"
 }
 
 Network::~Network()
 {
     clearHandlers();
-    delete2Arr(mMessageHandlers);
     mInstance = nullptr;
+}
+
+void Network::registerHandlers()
+{
+#include "net/eathena/recvpackets.inc"
 }
 
 void Network::registerHandler(MessageHandler *const handler)
 {
     if (!handler)
         return;
-
-    for (const uint16_t *i = handler->handledMessages; *i; ++i)
-        mMessageHandlers[*i] = handler;
 
     handler->setNetwork(this);
 }
@@ -125,22 +123,11 @@ void Network::unregisterHandler(MessageHandler *const handler)
     if (!handler)
         return;
 
-    for (const uint16_t *i = handler->handledMessages; *i; ++i)
-        mMessageHandlers[*i] = nullptr;
-
     handler->setNetwork(nullptr);
 }
 
 void Network::clearHandlers()
 {
-    for (size_t f = 0; f < messagesSize; f ++)
-    {
-        if (mMessageHandlers[f])
-        {
-            mMessageHandlers[f]->setNetwork(nullptr);
-            mMessageHandlers[f] = nullptr;
-        }
-    }
 }
 
 void Network::dispatchMessages()
