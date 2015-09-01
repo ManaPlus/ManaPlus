@@ -1667,4 +1667,9 @@ Being *BeingRecv::createBeing2(Net::MessageIn &msg,
     return being;
 }
 
+void BeingRecv::processSkillCancel(Net::MessageIn &msg)
+{
+    msg.readInt32("id?");
+}
+
 }  // namespace EAthena

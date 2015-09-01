@@ -249,7 +249,7 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
             break;
 
         case SMSG_SKILL_CAST_CANCEL:
-            msg.readInt32("id?");
+            BeingRecv::processSkillCancel(msg);
             break;
 
         case SMSG_SKILL_NO_DAMAGE:
