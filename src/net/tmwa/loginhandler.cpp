@@ -96,26 +96,26 @@ void LoginHandler::handleMessage(Net::MessageIn &msg)
 
 void LoginHandler::connect()
 {
-    if (!mNetwork)
+    if (!Network::mInstance)
         return;
 
-    mNetwork->connect(mServer);
+    Network::mInstance->connect(mServer);
     if (serverFeatures->haveServerVersion())
         createOutPacket(CMSG_SERVER_VERSION_REQUEST);
 }
 
 bool LoginHandler::isConnected() const
 {
-    if (!mNetwork)
+    if (!Network::mInstance)
         return false;
 
-    return Ea::LoginRecv::mVersionResponse && mNetwork->isConnected();
+    return Ea::LoginRecv::mVersionResponse && Network::mInstance->isConnected();
 }
 
 void LoginHandler::disconnect()
 {
-    if (mNetwork && mNetwork->getServer() == mServer)
-        mNetwork->disconnect();
+    if (Network::mInstance && Network::mInstance->getServer() == mServer)
+        Network::mInstance->disconnect();
 }
 
 void LoginHandler::changePassword(const std::string &restrict oldPassword,

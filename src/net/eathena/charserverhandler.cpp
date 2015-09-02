@@ -239,11 +239,11 @@ void CharServerHandler::connect()
     const Token &token =
         static_cast<LoginHandler*>(loginHandler)->getToken();
 
-    if (!mNetwork)
+    if (!Network::mInstance)
         return;
 
-    mNetwork->disconnect();
-    mNetwork->connect(charServer);
+    Network::mInstance->disconnect();
+    Network::mInstance->connect(charServer);
     createOutPacket(CMSG_CHAR_SERVER_CONNECT);
     outMsg.writeBeingId(token.account_ID, "account id");
     outMsg.writeInt32(token.session_ID1, "session id1");
@@ -252,7 +252,7 @@ void CharServerHandler::connect()
     outMsg.writeInt8(Being::genderToInt(token.sex), "gender");
 
     // We get 4 useless bytes before the real answer comes in (what are these?)
-    mNetwork->skip(4);
+    Network::mInstance->skip(4);
 }
 
 void CharServerHandler::setCharCreateDialog(CharCreateDialog *const window)

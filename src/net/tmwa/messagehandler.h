@@ -43,9 +43,6 @@ class MessageHandler notfinal : public Net::MessageHandler
         virtual ~MessageHandler();
 
         void setNetwork(Network *const network);
-
-    protected:
-        Network *mNetwork;
 };
 
 typedef MessageHandler* MessageHandlerPtr;

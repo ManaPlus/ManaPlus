@@ -32,21 +32,19 @@ namespace EAthena
 {
 
 MessageHandler::MessageHandler() :
-    Net::MessageHandler(),
-    mNetwork(nullptr)
+    Net::MessageHandler()
 {
 }
 
 MessageHandler::~MessageHandler()
 {
-    if (mNetwork)
-        mNetwork->unregisterHandler(this);
+    if (Network::mInstance)
+        Network::mInstance->unregisterHandler(this);
 }
 
 void MessageHandler::setNetwork(Network *const network)
 {
-    assert(!(network && mNetwork));
-    mNetwork = network;
+    assert(!(network && Network::mInstance));
 }
 
 }  // namespace EAthena

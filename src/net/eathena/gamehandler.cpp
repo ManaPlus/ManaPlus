@@ -110,10 +110,10 @@ void GameHandler::mapLoadedEvent() const
 
 void GameHandler::connect()
 {
-    if (!mNetwork)
+    if (!Network::mInstance)
         return;
 
-    mNetwork->connect(mapServer);
+    Network::mInstance->connect(mapServer);
 
     const Token &token = static_cast<LoginHandler*>(loginHandler)->getToken();
 
@@ -149,20 +149,20 @@ void GameHandler::connect()
     }
 */
     // We get 4 useless bytes before the real answer comes in (what are these?)
-//    mNetwork->skip(4);
+//    Network::mInstance->skip(4);
 }
 
 bool GameHandler::isConnected() const
 {
-    if (!mNetwork)
+    if (!Network::mInstance)
         return false;
-    return mNetwork->isConnected();
+    return Network::mInstance->isConnected();
 }
 
 void GameHandler::disconnect()
 {
-    if (mNetwork)
-        mNetwork->disconnect();
+    if (Network::mInstance)
+        Network::mInstance->disconnect();
 }
 
 void GameHandler::quit() const

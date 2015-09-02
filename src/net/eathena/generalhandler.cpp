@@ -140,7 +140,7 @@ GeneralHandler::GeneralHandler() :
 
 GeneralHandler::~GeneralHandler()
 {
-    delete2(mNetwork);
+    delete2(Network::mInstance);
 }
 
 void GeneralHandler::handleMessage(Net::MessageIn &msg)
@@ -162,48 +162,14 @@ void GeneralHandler::handleMessage(Net::MessageIn &msg)
 
 void GeneralHandler::load()
 {
-    mNetwork = new Network;
-    mNetwork->registerHandlers();
-
-    mNetwork->registerHandler(mAdminHandler);
-    mNetwork->registerHandler(mBeingHandler);
-    mNetwork->registerHandler(mBuySellHandler);
-    mNetwork->registerHandler(mChatHandler);
-    mNetwork->registerHandler(mCharServerHandler);
-    mNetwork->registerHandler(mGameHandler);
-    mNetwork->registerHandler(mGuildHandler);
-    mNetwork->registerHandler(mInventoryHandler);
-    mNetwork->registerHandler(mItemHandler);
-    mNetwork->registerHandler(mLoginHandler);
-    mNetwork->registerHandler(mNpcHandler);
-    mNetwork->registerHandler(mPlayerHandler);
-    mNetwork->registerHandler(mSkillHandler);
-    mNetwork->registerHandler(mTradeHandler);
-    mNetwork->registerHandler(mPartyHandler);
-    mNetwork->registerHandler(mPetHandler);
-    mNetwork->registerHandler(mQuestHandler);
-    mNetwork->registerHandler(mMailHandler);
-    mNetwork->registerHandler(mAuctionHandler);
-    mNetwork->registerHandler(mCashShopHandler);
-    mNetwork->registerHandler(mFamilyHandler);
-    mNetwork->registerHandler(mBankHandler);
-    mNetwork->registerHandler(mBattleGroundHandler);
-    mNetwork->registerHandler(mMercenaryHandler);
-    mNetwork->registerHandler(mBuyingStoreHandler);
-    mNetwork->registerHandler(mHomunculusHandler);
-    mNetwork->registerHandler(mFriendsHandler);
-    mNetwork->registerHandler(mElementalHandler);
-    mNetwork->registerHandler(mMapHandler);
-    mNetwork->registerHandler(mMarketHandler);
-    mNetwork->registerHandler(mVendingHandler);
-    mNetwork->registerHandler(mSearchStoreHandler);
-    mNetwork->registerHandler(mRouletteHandler);
+    new Network;
+    Network::mInstance->registerHandlers();
 }
 
 void GeneralHandler::reload()
 {
-    if (mNetwork)
-        mNetwork->disconnect();
+    if (Network::mInstance)
+        Network::mInstance->disconnect();
 
     static_cast<LoginHandler*>(mLoginHandler)->clearWorlds();
     CharServerHandler *const charHandler = static_cast<CharServerHandler*>(
@@ -225,24 +191,24 @@ void GeneralHandler::unload()
 
 void GeneralHandler::flushSend()
 {
-    if (!mNetwork)
+    if (!Network::mInstance)
         return;
 
-    mNetwork->flush();
+    Network::mInstance->flush();
 }
 
 void GeneralHandler::flushNetwork()
 {
-    if (!mNetwork)
+    if (!Network::mInstance)
         return;
 
-    mNetwork->flush();
-    mNetwork->dispatchMessages();
+    Network::mInstance->flush();
+    Network::mInstance->dispatchMessages();
 
-    if (mNetwork->getState() == Network::NET_ERROR)
+    if (Network::mInstance->getState() == Network::NET_ERROR)
     {
-        if (!mNetwork->getError().empty())
-            errorMessage = mNetwork->getError();
+        if (!Network::mInstance->getError().empty())
+            errorMessage = Network::mInstance->getError();
         else
             errorMessage = _("Got disconnected from server!");
 
@@ -252,8 +218,8 @@ void GeneralHandler::flushNetwork()
 
 void GeneralHandler::clearHandlers()
 {
-    if (mNetwork)
-        mNetwork->clearHandlers();
+    if (Network::mInstance)
+        Network::mInstance->clearHandlers();
 }
 
 void GeneralHandler::gameStarted() const

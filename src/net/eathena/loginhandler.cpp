@@ -105,10 +105,10 @@ void LoginHandler::handleMessage(Net::MessageIn &msg)
 
 void LoginHandler::connect()
 {
-    if (!mNetwork)
+    if (!Network::mInstance)
         return;
 
-    mNetwork->connect(mServer);
+    Network::mInstance->connect(mServer);
     if (serverFeatures->haveServerVersion())
     {
         sendVersion();
@@ -122,16 +122,16 @@ void LoginHandler::connect()
 
 bool LoginHandler::isConnected() const
 {
-    if (!mNetwork)
+    if (!Network::mInstance)
         return false;
 
-    return mNetwork->isConnected();
+    return Network::mInstance->isConnected();
 }
 
 void LoginHandler::disconnect()
 {
-    if (mNetwork && mNetwork->getServer() == mServer)
-        mNetwork->disconnect();
+    if (Network::mInstance && Network::mInstance->getServer() == mServer)
+        Network::mInstance->disconnect();
 }
 
 void LoginHandler::changePassword(const std::string &restrict oldPassword,
