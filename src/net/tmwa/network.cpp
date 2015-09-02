@@ -58,7 +58,6 @@
 #include "net/tmwa/skillrecv.h"
 #include "net/tmwa/traderecv.h"
 
-#include "net/tmwa/messagehandler.h"
 #include "net/tmwa/messagein.h"
 #include "net/tmwa/protocol.h"
 
@@ -89,22 +88,6 @@ Network::~Network()
 void Network::registerHandlers()
 {
 #include "net/tmwa/recvpackets.inc"
-}
-
-void Network::registerHandler(MessageHandler *const handler)
-{
-    if (!handler)
-        return;
-
-    handler->setNetwork(this);
-}
-
-void Network::unregisterHandler(MessageHandler *const handler)
-{
-    if (!handler)
-        return;
-
-    handler->setNetwork(nullptr);
 }
 
 void Network::clearHandlers()

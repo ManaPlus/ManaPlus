@@ -25,19 +25,14 @@
 
 #include "net/familyhandler.h"
 
-#include "net/eathena/messagehandler.h"
-
 namespace EAthena
 {
-class FamilyHandler final : public MessageHandler,
-                            public Net::FamilyHandler
+class FamilyHandler final : public Net::FamilyHandler
 {
     public:
         FamilyHandler();
 
         A_DELETE_COPY(FamilyHandler)
-
-        void handleMessage(Net::MessageIn &msg) override final;
 
         void askForChild(const Being *const being) override final;
 

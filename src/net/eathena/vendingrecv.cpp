@@ -34,6 +34,8 @@
 #include "listeners/vendingmodelistener.h"
 #include "listeners/vendingslotslistener.h"
 
+#include "net/messagein.h"
+
 #include "net/ea/eaprotocol.h"
 
 #include "net/eathena/messageout.h"

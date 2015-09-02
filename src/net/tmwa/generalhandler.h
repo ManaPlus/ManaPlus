@@ -25,15 +25,53 @@
 
 #include "net/generalhandler.h"
 
-#include "net/tmwa/messagehandler.h"
+namespace Net
+{
+    class MessageIn;
+}
 
 namespace TmwAthena
 {
+class AdminHandler;
+class BeingHandler;
+class BuySellHandler;
+class CharServerHandler;
+class ChatHandler;
+class GameHandler;
+class GuildHandler;
+class InventoryHandler;
+class ItemHandler;
+class LoginHandler;
+class NpcHandler;
+class PartyHandler;
+class PetHandler;
+class PlayerHandler;
+class SkillHandler;
+class TradeHandler;
+class QuestHandler;
+class ServerFeatures;
+#ifdef EATHENA_SUPPORT
+class AuctionHandler;
+class BankHandler;
+class BattleGroundHandler;
+class BuyingStoreHandler;
+class CashShopHandler;
+class ElementalHandler;
+class FamilyHandler;
+class FriendsHandler;
+class HomunculusHandler;
+class MailHandler;
+class MapHandler;
+class MarketHandler;
+class MercenaryHandler;
+class RouletteHandler;
+class SearchStoreHandler;
+class VendingHandler;
+#endif
 
 class ServerFeatures;
 
-class GeneralHandler final : public MessageHandler,
-                             public Net::GeneralHandler
+class GeneralHandler final : public Net::GeneralHandler
 {
     public:
         GeneralHandler();
@@ -41,8 +79,6 @@ class GeneralHandler final : public MessageHandler,
         A_DELETE_COPY(GeneralHandler)
 
         ~GeneralHandler();
-
-        void handleMessage(Net::MessageIn &msg) override final;
 
         void load() override final;
 
@@ -63,41 +99,41 @@ class GeneralHandler final : public MessageHandler,
         void gameEnded() const override final;
 
     protected:
-        MessageHandlerPtr mAdminHandler;
-        MessageHandlerPtr mBeingHandler;
-        MessageHandlerPtr mBuySellHandler;
-        MessageHandlerPtr mCharServerHandler;
-        MessageHandlerPtr mChatHandler;
-        MessageHandlerPtr mGameHandler;
-        MessageHandlerPtr mGuildHandler;
-        MessageHandlerPtr mInventoryHandler;
-        MessageHandlerPtr mItemHandler;
-        MessageHandlerPtr mLoginHandler;
-        MessageHandlerPtr mNpcHandler;
-        MessageHandlerPtr mPartyHandler;
-        MessageHandlerPtr mPetHandler;
-        MessageHandlerPtr mPlayerHandler;
-        MessageHandlerPtr mSkillHandler;
-        MessageHandlerPtr mTradeHandler;
-        MessageHandlerPtr mQuestHandler;
+        AdminHandler *mAdminHandler;
+        BeingHandler *mBeingHandler;
+        BuySellHandler *mBuySellHandler;
+        CharServerHandler *mCharServerHandler;
+        ChatHandler *mChatHandler;
+        GameHandler *mGameHandler;
+        GuildHandler *mGuildHandler;
+        InventoryHandler *mInventoryHandler;
+        ItemHandler *mItemHandler;
+        LoginHandler *mLoginHandler;
+        NpcHandler *mNpcHandler;
+        PartyHandler *mPartyHandler;
+        PetHandler *mPetHandler;
+        PlayerHandler *mPlayerHandler;
+        SkillHandler *mSkillHandler;
+        TradeHandler *mTradeHandler;
+        QuestHandler *mQuestHandler;
         ServerFeatures *mServerFeatures;
 #ifdef EATHENA_SUPPORT
-        MessageHandlerPtr mAuctionHandler;
-        MessageHandlerPtr mBankHandler;
-        MessageHandlerPtr mBattleGroundHandler;
-        MessageHandlerPtr mBuyingStoreHandler;
-        MessageHandlerPtr mCashShopHandler;
-        MessageHandlerPtr mElementalHandler;
-        MessageHandlerPtr mFamilyHandler;
-        MessageHandlerPtr mFriendsHandler;
-        MessageHandlerPtr mHomunculusHandler;
-        MessageHandlerPtr mMailHandler;
-        MessageHandlerPtr mMapHandler;
-        MessageHandlerPtr mMarketHandler;
-        MessageHandlerPtr mMercenaryHandler;
-        MessageHandlerPtr mRouletteHandler;
-        MessageHandlerPtr mSearchStoreHandler;
-        MessageHandlerPtr mVendingHandler;
+        AuctionHandler *mAuctionHandler;
+        BankHandler *mBankHandler;
+        BattleGroundHandler *mBattleGroundHandler;
+        BuyingStoreHandler *mBuyingStoreHandler;
+        CashShopHandler *mCashShopHandler;
+        ElementalHandler *mElementalHandler;
+        FamilyHandler *mFamilyHandler;
+        FriendsHandler *mFriendsHandler;
+        HomunculusHandler *mHomunculusHandler;
+        MailHandler *mMailHandler;
+        MapHandler *mMapHandler;
+        MarketHandler *mMarketHandler;
+        MercenaryHandler *mMercenaryHandler;
+        RouletteHandler *mRouletteHandler;
+        SearchStoreHandler *mSearchStoreHandler;
+        VendingHandler *mVendingHandler;
 #endif
 };
 

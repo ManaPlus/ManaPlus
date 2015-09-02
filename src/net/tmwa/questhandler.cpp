@@ -34,36 +34,9 @@ namespace TmwAthena
 {
 
 QuestHandler::QuestHandler() :
-    MessageHandler(),
     Net::QuestHandler()
 {
-    static const uint16_t _messages[] =
-    {
-        SMSG_QUEST_SET_VAR,
-        SMSG_QUEST_PLAYER_VARS,
-        0
-    };
-    handledMessages = _messages;
     questHandler = this;
-}
-
-void QuestHandler::handleMessage(Net::MessageIn &msg)
-{
-    BLOCK_START("QuestHandler::handleMessage")
-    switch (msg.getId())
-    {
-        case SMSG_QUEST_SET_VAR:
-            QuestRecv::processSetQuestVar(msg);
-            break;
-
-        case SMSG_QUEST_PLAYER_VARS:
-            QuestRecv::processPlayerQuests(msg);
-            break;
-
-        default:
-            break;
-    }
-    BLOCK_END("QuestHandler::handleMessage")
 }
 
 void QuestHandler::setQeustActiveState(const int questId A_UNUSED,

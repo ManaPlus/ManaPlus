@@ -23,19 +23,20 @@
 
 #include "net/maphandler.h"
 
-#include "net/eathena/messagehandler.h"
+namespace Net
+{
+    class MessageIn;
+}
 
 namespace EAthena
 {
 
-class MapHandler final : public MessageHandler, public Net::MapHandler
+class MapHandler final : public Net::MapHandler
 {
     public:
         MapHandler();
 
         A_DELETE_COPY(MapHandler)
-
-        void handleMessage(Net::MessageIn &msg) override final;
 
     protected:
         void processInstanceStart(Net::MessageIn &msg);

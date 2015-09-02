@@ -27,19 +27,9 @@ extern Net::CashShopHandler *cashShopHandler;
 namespace TmwAthena
 {
 
-CashShopHandler::CashShopHandler() :
-    MessageHandler()
+CashShopHandler::CashShopHandler()
 {
-    static const uint16_t _messages[] =
-    {
-        0
-    };
-    handledMessages = _messages;
     cashShopHandler = this;
-}
-
-void CashShopHandler::handleMessage(Net::MessageIn &msg A_UNUSED)
-{
 }
 
 void CashShopHandler::buyItem(const int points A_UNUSED,

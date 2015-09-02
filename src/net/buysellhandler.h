@@ -36,8 +36,6 @@ class BuySellHandler notfinal
         virtual ~BuySellHandler()
         { }
 
-        virtual void handleMessage(Net::MessageIn &msg) = 0;
-
         virtual void requestSellList(const std::string &nick) const = 0;
 
         virtual void requestBuyList(const std::string &nick) const = 0;

@@ -23,21 +23,17 @@
 #ifndef NET_EATHENA_GAMEHANDLER_H
 #define NET_EATHENA_GAMEHANDLER_H
 
-#include "net/eathena/messagehandler.h"
-
 #include "net/ea/gamehandler.h"
 
 namespace EAthena
 {
 
-class GameHandler final : public MessageHandler, public Ea::GameHandler
+class GameHandler final : public Ea::GameHandler
 {
     public:
         GameHandler();
 
         A_DELETE_COPY(GameHandler)
-
-        void handleMessage(Net::MessageIn &msg) override final;
 
         void connect() override final;
 

@@ -27,24 +27,9 @@ extern Net::FriendsHandler *friendsHandler;
 namespace TmwAthena
 {
 
-FriendsHandler::FriendsHandler() :
-    MessageHandler()
+FriendsHandler::FriendsHandler()
 {
-    static const uint16_t _messages[] =
-    {
-        0
-    };
-    handledMessages = _messages;
     friendsHandler = this;
-}
-
-void FriendsHandler::handleMessage(Net::MessageIn &msg)
-{
-    switch (msg.getId())
-    {
-        default:
-            break;
-    }
 }
 
 void FriendsHandler::invite(const std::string &name A_UNUSED) const

@@ -25,19 +25,14 @@
 
 #include "net/friendshandler.h"
 
-#include "net/eathena/messagehandler.h"
-
 namespace EAthena
 {
-class FriendsHandler final : public MessageHandler,
-                             public Net::FriendsHandler
+class FriendsHandler final : public Net::FriendsHandler
 {
     public:
         FriendsHandler();
 
         A_DELETE_COPY(FriendsHandler)
-
-        void handleMessage(Net::MessageIn &msg) override final;
 
         void invite(const std::string &name) const override final;
 

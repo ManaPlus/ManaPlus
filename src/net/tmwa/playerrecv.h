@@ -25,8 +25,6 @@
 
 #include "net/ea/playerhandler.h"
 
-#include "net/tmwa/messagehandler.h"
-
 namespace TmwAthena
 {
     namespace PlayerRecv

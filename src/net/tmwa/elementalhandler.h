@@ -25,21 +25,15 @@
 
 #include "net/elementalhandler.h"
 
-#include "net/tmwa/messagehandler.h"
-
 namespace TmwAthena
 {
-class ElementalHandler final : public MessageHandler,
-                               public Net::ElementalHandler
-{
-    public:
-        ElementalHandler();
+    class ElementalHandler final : public Net::ElementalHandler
+    {
+        public:
+            ElementalHandler();
 
-        A_DELETE_COPY(ElementalHandler)
-
-        void handleMessage(Net::MessageIn &msg) override final;
-};
-
+            A_DELETE_COPY(ElementalHandler)
+    };
 }  // namespace TmwAthena
 
 #endif  // EATHENA_SUPPORT

@@ -25,20 +25,15 @@
 
 #include "net/homunculushandler.h"
 
-#include "net/tmwa/messagehandler.h"
-
 namespace TmwAthena
 {
 
-class HomunculusHandler final : public MessageHandler,
-                                public Net::HomunculusHandler
+class HomunculusHandler final : public Net::HomunculusHandler
 {
     public:
         HomunculusHandler();
 
         A_DELETE_COPY(HomunculusHandler)
-
-        void handleMessage(Net::MessageIn &msg) override final;
 
         void setName(const std::string &name) const override final;
 

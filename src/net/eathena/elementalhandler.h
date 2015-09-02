@@ -23,19 +23,14 @@
 
 #include "net/elementalhandler.h"
 
-#include "net/eathena/messagehandler.h"
-
 namespace EAthena
 {
-class ElementalHandler final : public MessageHandler,
-                               public Net::ElementalHandler
+class ElementalHandler final : public Net::ElementalHandler
 {
     public:
         ElementalHandler();
 
         A_DELETE_COPY(ElementalHandler)
-
-        void handleMessage(Net::MessageIn &msg) override final;
 };
 
 }  // namespace EAthena

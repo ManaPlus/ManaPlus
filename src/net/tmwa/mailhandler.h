@@ -25,19 +25,15 @@
 
 #include "net/mailhandler.h"
 
-#include "net/tmwa/messagehandler.h"
-
 namespace TmwAthena
 {
 
-class MailHandler final : public MessageHandler, public Net::MailHandler
+class MailHandler final : public Net::MailHandler
 {
     public:
         MailHandler();
 
         A_DELETE_COPY(MailHandler)
-
-        void handleMessage(Net::MessageIn &msg) override final;
 
         void refresh() const override final;
 

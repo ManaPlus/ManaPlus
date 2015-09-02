@@ -25,7 +25,10 @@
 
 #include "net/ea/skillhandler.h"
 
-#include "net/tmwa/messagehandler.h"
+namespace Net
+{
+    class MessageIn;
+}
 
 namespace TmwAthena
 {

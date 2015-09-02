@@ -25,6 +25,8 @@
 
 #include "enums/resources/notifytypes.h"
 
+#include "net/messagein.h"
+
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 

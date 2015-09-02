@@ -23,21 +23,17 @@
 #ifndef NET_TMWA_ITEMHANDLER_H
 #define NET_TMWA_ITEMHANDLER_H
 
-#include "net/tmwa/messagehandler.h"
-
 #include "net/ea/itemhandler.h"
 
 namespace TmwAthena
 {
 
-class ItemHandler final : public MessageHandler, public Ea::ItemHandler
+class ItemHandler final : public Ea::ItemHandler
 {
     public:
         ItemHandler();
 
         A_DELETE_COPY(ItemHandler)
-
-        void handleMessage(Net::MessageIn &msg) override final;
 };
 
 }  // namespace TmwAthena

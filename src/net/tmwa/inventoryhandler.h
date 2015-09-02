@@ -25,13 +25,10 @@
 
 #include "net/ea/inventoryhandler.h"
 
-#include "net/tmwa/messagehandler.h"
-
 namespace TmwAthena
 {
 
-class InventoryHandler final : public MessageHandler,
-                               public Ea::InventoryHandler
+class InventoryHandler final : public Ea::InventoryHandler
 {
     public:
         InventoryHandler();
@@ -39,8 +36,6 @@ class InventoryHandler final : public MessageHandler,
         A_DELETE_COPY(InventoryHandler)
 
         ~InventoryHandler();
-
-        void handleMessage(Net::MessageIn &msg) override final;
 
         void equipItem(const Item *const item) const override final;
 

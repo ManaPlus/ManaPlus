@@ -25,19 +25,14 @@
 
 #include "net/roulettehandler.h"
 
-#include "net/tmwa/messagehandler.h"
-
 namespace TmwAthena
 {
-class RouletteHandler final : public MessageHandler,
-                              public Net::RouletteHandler
+class RouletteHandler final : public Net::RouletteHandler
 {
     public:
         RouletteHandler();
 
         A_DELETE_COPY(RouletteHandler)
-
-        void handleMessage(Net::MessageIn &msg) override final;
 };
 
 }  // namespace TmwAthena

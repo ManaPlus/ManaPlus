@@ -25,19 +25,15 @@
 
 #include "net/ea/buysellhandler.h"
 
-#include "net/eathena/messagehandler.h"
-
 namespace EAthena
 {
 
-class BuySellHandler final : public MessageHandler, public Ea::BuySellHandler
+class BuySellHandler final : public Ea::BuySellHandler
 {
     public:
         BuySellHandler();
 
         A_DELETE_COPY(BuySellHandler)
-
-        void handleMessage(Net::MessageIn &msg) override final;
 
         void requestSellList(const std::string &nick)
                              const override final;

@@ -25,8 +25,6 @@
 
 #include "net/ea/tradehandler.h"
 
-#include "net/tmwa/messagehandler.h"
-
 namespace TmwAthena
 {
     namespace TradeRecv

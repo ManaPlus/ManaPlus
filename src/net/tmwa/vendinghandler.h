@@ -25,20 +25,15 @@
 
 #include "net/vendinghandler.h"
 
-#include "net/tmwa/messagehandler.h"
-
 namespace TmwAthena
 {
 
-class VendingHandler final : public MessageHandler,
-                             public Net::VendingHandler
+class VendingHandler final : public Net::VendingHandler
 {
     public:
         VendingHandler();
 
         A_DELETE_COPY(VendingHandler)
-
-        void handleMessage(Net::MessageIn &msg) override final;
 
         void close() const override final;
 

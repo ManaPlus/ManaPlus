@@ -25,7 +25,10 @@
 
 #include "net/ea/skillhandler.h"
 
-#include "net/eathena/messagehandler.h"
+namespace Net
+{
+    class MessageIn;
+}
 
 namespace EAthena
 {

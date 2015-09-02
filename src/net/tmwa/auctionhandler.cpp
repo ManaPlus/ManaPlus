@@ -27,19 +27,9 @@ extern Net::AuctionHandler *auctionHandler;
 namespace TmwAthena
 {
 
-AuctionHandler::AuctionHandler() :
-    MessageHandler()
+AuctionHandler::AuctionHandler()
 {
-    static const uint16_t _messages[] =
-    {
-        0
-    };
-    handledMessages = _messages;
     auctionHandler = this;
-}
-
-void AuctionHandler::handleMessage(Net::MessageIn &msg A_UNUSED)
-{
 }
 
 void AuctionHandler::cancelReg() const

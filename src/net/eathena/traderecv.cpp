@@ -33,12 +33,13 @@
 
 #include "gui/windows/tradewindow.h"
 
+#include "net/messagein.h"
+
+#include "net/ea/eaprotocol.h"
 #include "net/ea/traderecv.h"
 
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
-
-#include "net/ea/eaprotocol.h"
 
 #include "debug.h"
 

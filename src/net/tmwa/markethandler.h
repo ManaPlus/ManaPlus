@@ -25,19 +25,14 @@
 
 #include "net/markethandler.h"
 
-#include "net/tmwa/messagehandler.h"
-
 namespace TmwAthena
 {
-class MarketHandler final : public MessageHandler,
-                            public Net::MarketHandler
+class MarketHandler final : public Net::MarketHandler
 {
     public:
         MarketHandler();
 
         A_DELETE_COPY(MarketHandler)
-
-        void handleMessage(Net::MessageIn &msg) override final;
 
         void close() override final;
 

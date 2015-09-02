@@ -37,6 +37,7 @@
 #include "net/eathena/adminhandler.h"
 #include "net/eathena/auctionhandler.h"
 #include "net/eathena/bankhandler.h"
+#include "net/eathena/battlegroundhandler.h"
 #include "net/eathena/beinghandler.h"
 #include "net/eathena/buyingstorehandler.h"
 #include "net/eathena/buysellhandler.h"
@@ -52,6 +53,7 @@
 #include "net/eathena/inventoryhandler.h"
 #include "net/eathena/itemhandler.h"
 #include "net/eathena/loginhandler.h"
+#include "net/eathena/maphandler.h"
 #include "net/eathena/mailhandler.h"
 #include "net/eathena/markethandler.h"
 #include "net/eathena/mercenaryhandler.h"
@@ -82,7 +84,6 @@ namespace EAthena
 {
 
 GeneralHandler::GeneralHandler() :
-    MessageHandler(),
     mAdminHandler(new AdminHandler),
     mBeingHandler(new BeingHandler(config.getBoolValue("EnableSync"))),
     mBuySellHandler(new BuySellHandler),
@@ -106,25 +107,18 @@ GeneralHandler::GeneralHandler() :
     mCashShopHandler(new CashShopHandler),
     mFamilyHandler(new FamilyHandler),
     mBankHandler(new BankHandler),
-    mBattleGroundHandler(new BankHandler),
+    mBattleGroundHandler(new BattleGroundHandler),
     mMercenaryHandler(new MercenaryHandler),
     mBuyingStoreHandler(new BuyingStoreHandler),
     mHomunculusHandler(new HomunculusHandler),
     mFriendsHandler(new FriendsHandler),
     mElementalHandler(new ElementalHandler),
-    mMapHandler(new MarketHandler),
+    mMapHandler(new MapHandler),
     mMarketHandler(new MarketHandler),
     mVendingHandler(new VendingHandler),
     mRouletteHandler(new RouletteHandler),
     mSearchStoreHandler(new SearchStoreHandler)
 {
-    static const uint16_t _messages[] =
-    {
-        SMSG_CONNECTION_PROBLEM,
-        SMSG_MAP_NOT_FOUND,
-        0
-    };
-    handledMessages = _messages;
     generalHandler = this;
 
     std::vector<ItemDB::Stat> stats;
@@ -141,23 +135,6 @@ GeneralHandler::GeneralHandler() :
 GeneralHandler::~GeneralHandler()
 {
     delete2(Network::mInstance);
-}
-
-void GeneralHandler::handleMessage(Net::MessageIn &msg)
-{
-    switch (msg.getId())
-    {
-        case SMSG_CONNECTION_PROBLEM:
-            GeneralRecv::processConnectionProblem(msg);
-            break;
-
-        case SMSG_MAP_NOT_FOUND:
-            GeneralRecv::processMapNotFound(msg);
-            break;
-
-        default:
-            break;
-    }
 }
 
 void GeneralHandler::load()

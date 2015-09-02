@@ -32,44 +32,9 @@ extern Net::RouletteHandler *rouletteHandler;
 namespace EAthena
 {
 
-RouletteHandler::RouletteHandler() :
-    MessageHandler()
+RouletteHandler::RouletteHandler()
 {
-    static const uint16_t _messages[] =
-    {
-        SMSG_ROULETTE_INFO_ACK_TYPE,
-        SMSG_ROULETTE_RECV_ITEM_ACK,
-        SMSG_ROULETTE_GENERATE_ACK_TYPE,
-        SMSG_ROULETTE_OPEN_ACK,
-        0
-    };
-    handledMessages = _messages;
     rouletteHandler = this;
-}
-
-void RouletteHandler::handleMessage(Net::MessageIn &msg)
-{
-    switch (msg.getId())
-    {
-        case SMSG_ROULETTE_INFO_ACK_TYPE:
-            RouletteRecv::processRouletteInfoAckType(msg);
-            break;
-
-        case SMSG_ROULETTE_RECV_ITEM_ACK:
-            RouletteRecv::processRouletteItemAck(msg);
-            break;
-
-        case SMSG_ROULETTE_GENERATE_ACK_TYPE:
-            RouletteRecv::processRouletteGenerateAckType(msg);
-            break;
-
-        case SMSG_ROULETTE_OPEN_ACK:
-            RouletteRecv::processRouletteOpenAck(msg);
-            break;
-
-        default:
-            break;
-    }
 }
 
 }  // namespace EAthena

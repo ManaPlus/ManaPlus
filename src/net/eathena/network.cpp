@@ -77,7 +77,6 @@
 #include "net/eathena/traderecv.h"
 #include "net/eathena/vendingrecv.h"
 
-#include "net/eathena/messagehandler.h"
 #include "net/eathena/messagein.h"
 #include "net/eathena/protocol.h"
 
@@ -108,22 +107,6 @@ Network::~Network()
 void Network::registerHandlers()
 {
 #include "net/eathena/recvpackets.inc"
-}
-
-void Network::registerHandler(MessageHandler *const handler)
-{
-    if (!handler)
-        return;
-
-    handler->setNetwork(this);
-}
-
-void Network::unregisterHandler(MessageHandler *const handler)
-{
-    if (!handler)
-        return;
-
-    handler->setNetwork(nullptr);
 }
 
 void Network::clearHandlers()

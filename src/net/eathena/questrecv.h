@@ -21,9 +21,12 @@
 #ifndef NET_EATHENA_QUESTRECV_H
 #define NET_EATHENA_QUESTRECV_H
 
-#include "net/eathena/messagehandler.h"
-
 #include "net/questhandler.h"
+
+namespace Net
+{
+    class MessageIn;
+}
 
 namespace EAthena
 {

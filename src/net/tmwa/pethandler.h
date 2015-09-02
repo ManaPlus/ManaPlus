@@ -21,21 +21,17 @@
 #ifndef NET_TMWA_PETHANDLER_H
 #define NET_TMWA_PETHANDLER_H
 
-#include "net/tmwa/messagehandler.h"
-
 #include "net/pethandler.h"
 
 namespace TmwAthena
 {
 
-class PetHandler final :  public MessageHandler, public Net::PetHandler
+class PetHandler final : public Net::PetHandler
 {
     public:
         PetHandler();
 
         A_DELETE_COPY(PetHandler)
-
-        void handleMessage(Net::MessageIn &msg) override final;
 
         void move(const int petId,
                   const int x, const int y) const override final;

@@ -27,19 +27,9 @@ extern Net::MailHandler *mailHandler;
 namespace TmwAthena
 {
 
-MailHandler::MailHandler() :
-    MessageHandler()
+MailHandler::MailHandler()
 {
-    static const uint16_t _messages[] =
-    {
-        0
-    };
-    handledMessages = _messages;
     mailHandler = this;
-}
-
-void MailHandler::handleMessage(Net::MessageIn &msg A_UNUSED)
-{
 }
 
 void MailHandler::refresh() const

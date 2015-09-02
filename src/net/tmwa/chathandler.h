@@ -25,20 +25,16 @@
 
 #include "net/ea/chathandler.h"
 
-#include "net/tmwa/messagehandler.h"
-
 namespace TmwAthena
 {
 class MessageOut;
 
-class ChatHandler final : public MessageHandler, public Ea::ChatHandler
+class ChatHandler final : public Ea::ChatHandler
 {
     public:
         ChatHandler();
 
         A_DELETE_COPY(ChatHandler)
-
-        void handleMessage(Net::MessageIn &msg) override final;
 
         void talk(const std::string &restrict text,
                   const std::string &restrict channel) const override final;

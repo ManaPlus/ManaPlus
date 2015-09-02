@@ -34,12 +34,13 @@
 
 #include "gui/windows/tradewindow.h"
 
+#include "net/messagein.h"
+
+#include "net/ea/eaprotocol.h"
 #include "net/ea/traderecv.h"
 
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
-
-#include "net/ea/eaprotocol.h"
 
 #include "utils/stringutils.h"
 

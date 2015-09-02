@@ -23,6 +23,8 @@
 #include "gui/windows/skilldialog.h"
 #include "gui/windows/questswindow.h"
 
+#include "net/messagein.h"
+
 #include "net/tmwa/protocol.h"
 
 #include "resources/skillconsts.h"

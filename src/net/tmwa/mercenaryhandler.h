@@ -25,20 +25,15 @@
 
 #include "net/mercenaryhandler.h"
 
-#include "net/tmwa/messagehandler.h"
-
 namespace TmwAthena
 {
 
-class MercenaryHandler final : public MessageHandler,
-                               public Net::MercenaryHandler
+class MercenaryHandler final : public Net::MercenaryHandler
 {
     public:
         MercenaryHandler();
 
         A_DELETE_COPY(MercenaryHandler)
-
-        void handleMessage(Net::MessageIn &msg) override final;
 
         void fire() override final;
 

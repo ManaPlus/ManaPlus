@@ -35,61 +35,9 @@ extern Net::PetHandler *petHandler;
 namespace EAthena
 {
 
-PetHandler::PetHandler() :
-    MessageHandler()
+PetHandler::PetHandler()
 {
-    static const uint16_t _messages[] =
-    {
-        SMSG_PET_MESSAGE,
-        SMSG_PET_ROULETTE,
-        SMSG_PET_EGGS_LIST,
-        SMSG_PET_DATA,
-        SMSG_PET_STATUS,
-        SMSG_PET_FOOD,
-        SMSG_PET_CATCH_PROCESS,
-        0
-    };
-    handledMessages = _messages;
     petHandler = this;
-}
-
-void PetHandler::handleMessage(Net::MessageIn &msg)
-{
-    BLOCK_START("PetHandler::handleMessage")
-    switch (msg.getId())
-    {
-        case SMSG_PET_MESSAGE:
-            PetRecv::processPetMessage(msg);
-            break;
-
-        case SMSG_PET_ROULETTE:
-            PetRecv::processPetRoulette(msg);
-            break;
-
-        case SMSG_PET_EGGS_LIST:
-            PetRecv::processEggsList(msg);
-            break;
-
-        case SMSG_PET_DATA:
-            PetRecv::processPetData(msg);
-            break;
-
-        case SMSG_PET_STATUS:
-            PetRecv::processPetStatus(msg);
-            break;
-
-        case SMSG_PET_FOOD:
-            PetRecv::processPetFood(msg);
-            break;
-
-        case SMSG_PET_CATCH_PROCESS:
-            PetRecv::processPetCatchProcess(msg);
-            break;
-
-        default:
-            break;
-    }
-    BLOCK_END("PetHandler::handleMessage")
 }
 
 void PetHandler::move(const int petId A_UNUSED,

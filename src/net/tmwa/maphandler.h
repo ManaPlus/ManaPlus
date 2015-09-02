@@ -25,21 +25,15 @@
 
 #include "net/maphandler.h"
 
-#include "net/tmwa/messagehandler.h"
-
 namespace TmwAthena
 {
 
-class MapHandler final : public MessageHandler, public Net::MapHandler
+class MapHandler final : public Net::MapHandler
 {
     public:
         MapHandler();
 
         A_DELETE_COPY(MapHandler)
-
-        void handleMessage(Net::MessageIn &msg) override final;
-
-    protected:
 };
 
 }  // namespace TmwAthena

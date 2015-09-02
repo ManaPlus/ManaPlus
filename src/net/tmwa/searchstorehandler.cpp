@@ -27,24 +27,9 @@ extern Net::SearchStoreHandler *searchStoreHandler;
 namespace TmwAthena
 {
 
-SearchStoreHandler::SearchStoreHandler() :
-    MessageHandler()
+SearchStoreHandler::SearchStoreHandler()
 {
-    static const uint16_t _messages[] =
-    {
-        0
-    };
-    handledMessages = _messages;
     searchStoreHandler = this;
-}
-
-void SearchStoreHandler::handleMessage(Net::MessageIn &msg)
-{
-    switch (msg.getId())
-    {
-        default:
-            break;
-    }
 }
 
 void SearchStoreHandler::search(const StoreSearchTypeT type A_UNUSED,

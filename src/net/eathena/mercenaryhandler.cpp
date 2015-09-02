@@ -35,39 +35,9 @@ extern Net::MercenaryHandler *mercenaryHandler;
 namespace EAthena
 {
 
-MercenaryHandler::MercenaryHandler() :
-    MessageHandler()
+MercenaryHandler::MercenaryHandler()
 {
-    static const uint16_t _messages[] =
-    {
-        SMSG_MERCENARY_UPDATE,
-        SMSG_MERCENARY_INFO,
-        SMSG_MERCENARY_SKILLS,
-        0
-    };
-    handledMessages = _messages;
     mercenaryHandler = this;
-}
-
-void MercenaryHandler::handleMessage(Net::MessageIn &msg)
-{
-    switch (msg.getId())
-    {
-        case SMSG_MERCENARY_UPDATE:
-            MercenaryRecv::processMercenaryUpdate(msg);
-            break;
-
-        case SMSG_MERCENARY_INFO:
-            MercenaryRecv::processMercenaryInfo(msg);
-            break;
-
-        case SMSG_MERCENARY_SKILLS:
-            MercenaryRecv::processMercenarySkills(msg);
-            break;
-
-        default:
-            break;
-    }
 }
 
 void MercenaryHandler::fire()

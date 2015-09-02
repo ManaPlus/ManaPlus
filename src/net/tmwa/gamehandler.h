@@ -23,21 +23,17 @@
 #ifndef NET_TMWA_GAMEHANDLER_H
 #define NET_TMWA_GAMEHANDLER_H
 
-#include "net/tmwa/messagehandler.h"
-
 #include "net/ea/gamehandler.h"
 
 namespace TmwAthena
 {
 
-class GameHandler final : public MessageHandler, public Ea::GameHandler
+class GameHandler final : public Ea::GameHandler
 {
     public:
         GameHandler();
 
         A_DELETE_COPY(GameHandler)
-
-        void handleMessage(Net::MessageIn &msg) override final;
 
         void connect() override final;
 

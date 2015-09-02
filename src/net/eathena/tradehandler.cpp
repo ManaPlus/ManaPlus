@@ -48,67 +48,11 @@ extern Net::TradeHandler *tradeHandler;
 namespace EAthena
 {
 TradeHandler::TradeHandler() :
-    MessageHandler(),
     Ea::TradeHandler()
 {
-    static const uint16_t _messages[] =
-    {
-        SMSG_TRADE_REQUEST,
-        SMSG_TRADE_RESPONSE,
-        SMSG_TRADE_ITEM_ADD,
-        SMSG_TRADE_ITEM_ADD_RESPONSE,
-        SMSG_TRADE_OK,
-        SMSG_TRADE_CANCEL,
-        SMSG_TRADE_COMPLETE,
-        SMSG_TRADE_UNDO,
-        0
-    };
-    handledMessages = _messages;
     tradeHandler = this;
     TradeRecv::mItemIndex = -1;
     TradeRecv::mQuantity = 0;
-}
-
-
-void TradeHandler::handleMessage(Net::MessageIn &msg)
-{
-    switch (msg.getId())
-    {
-        case SMSG_TRADE_REQUEST:
-            TradeRecv::processTradeRequest(msg);
-            break;
-
-        case SMSG_TRADE_RESPONSE:
-            TradeRecv::processTradeResponse(msg);
-            break;
-
-        case SMSG_TRADE_ITEM_ADD:
-            TradeRecv::processTradeItemAdd(msg);
-            break;
-
-        case SMSG_TRADE_ITEM_ADD_RESPONSE:
-            TradeRecv::processTradeItemAddResponse(msg);
-            break;
-
-        case SMSG_TRADE_OK:
-            Ea::TradeRecv::processTradeOk(msg);
-            break;
-
-        case SMSG_TRADE_CANCEL:
-            Ea::TradeRecv::processTradeCancel(msg);
-            break;
-
-        case SMSG_TRADE_COMPLETE:
-            Ea::TradeRecv::processTradeComplete(msg);
-            break;
-
-        case SMSG_TRADE_UNDO:
-            TradeRecv::processTradeUndo(msg);
-            break;
-
-        default:
-            break;
-    }
 }
 
 void TradeHandler::request(const Being *const being) const

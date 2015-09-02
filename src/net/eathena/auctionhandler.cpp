@@ -35,49 +35,9 @@ extern Net::AuctionHandler *auctionHandler;
 namespace EAthena
 {
 
-AuctionHandler::AuctionHandler() :
-    MessageHandler()
+AuctionHandler::AuctionHandler()
 {
-    static const uint16_t _messages[] =
-    {
-        SMSG_AUCTION_OPEN_WINDOW,
-        SMSG_AUCTION_RESULTS,
-        SMSG_AUCTION_SET_ITEM,
-        SMSG_AUCTION_MESSAGE,
-        SMSG_AUCTION_CLOSE,
-        0
-    };
-    handledMessages = _messages;
     auctionHandler = this;
-}
-
-void AuctionHandler::handleMessage(Net::MessageIn &msg)
-{
-    switch (msg.getId())
-    {
-        case SMSG_AUCTION_OPEN_WINDOW:
-            AuctionRecv::processOpenWindow(msg);
-            break;
-
-        case SMSG_AUCTION_RESULTS:
-            AuctionRecv::processAuctionResults(msg);
-            break;
-
-        case SMSG_AUCTION_SET_ITEM:
-            AuctionRecv::processAuctionSetItem(msg);
-            break;
-
-        case SMSG_AUCTION_MESSAGE:
-            AuctionRecv::processAuctionMessage(msg);
-            break;
-
-        case SMSG_AUCTION_CLOSE:
-            AuctionRecv::processAuctionClose(msg);
-            break;
-
-        default:
-            break;
-    }
 }
 
 void AuctionHandler::cancelReg() const

@@ -25,19 +25,14 @@
 
 #include "net/buyingstorehandler.h"
 
-#include "net/eathena/messagehandler.h"
-
 namespace EAthena
 {
-class BuyingStoreHandler final : public MessageHandler,
-                                 public Net::BuyingStoreHandler
+class BuyingStoreHandler final : public Net::BuyingStoreHandler
 {
     public:
         BuyingStoreHandler();
 
         A_DELETE_COPY(BuyingStoreHandler)
-
-        void handleMessage(Net::MessageIn &msg) override final;
 
         void create(const std::string &name,
                     const int maxMoney,

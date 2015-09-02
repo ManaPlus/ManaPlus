@@ -21,9 +21,12 @@
 #ifndef NET_TMWA_QUESTRECV_H
 #define NET_TMWA_QUESTRECV_H
 
-#include "net/tmwa/messagehandler.h"
-
 #include "net/questhandler.h"
+
+namespace Net
+{
+    class MessageIn;
+}
 
 namespace TmwAthena
 {

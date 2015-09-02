@@ -48,7 +48,6 @@ extern ServerInfo charServer;
 extern ServerInfo mapServer;
 
 CharServerHandler::CharServerHandler() :
-    MessageHandler(),
     Ea::CharServerHandler()
 {
     CharServerRecv::mNewName.clear();
@@ -57,116 +56,7 @@ CharServerHandler::CharServerHandler() :
     CharServerRecv::mRenameId = BeingId_zero;
     CharServerRecv::mNeedCreatePin = false;
 
-    static const uint16_t _messages[] =
-    {
-        SMSG_CHAR_LOGIN,
-        SMSG_CHAR_LOGIN2,
-        SMSG_CHAR_LOGIN_ERROR,
-        SMSG_CHAR_CREATE_SUCCEEDED,
-        SMSG_CHAR_CREATE_FAILED,
-        SMSG_CHAR_DELETE_SUCCEEDED,
-        SMSG_CHAR_DELETE_FAILED,
-        SMSG_CHAR_MAP_INFO,
-        SMSG_CHANGE_MAP_SERVER,
-        SMSG_CHAR_PINCODE_STATUS,
-        SMSG_CHAR_CHECK_RENAME,
-        SMSG_CHAR_RENAME,
-        SMSG_CHAR_CHANGE_SLOT,
-        SMSG_CHAR_CAPTCHA_NOT_SUPPORTED,
-        SMSG_CHAR_DELETE2_ACK,
-        SMSG_CHAR_DELETE2_ACCEPT_ACTUAL_ACK,
-        SMSG_CHAR_DELETE2_CANCEL_ACK,
-        SMSG_CHAR_CHARACTERS,
-        SMSG_CHAR_BAN_CHAR_LIST,
-        0
-    };
-    handledMessages = _messages;
     charServerHandler = this;
-}
-
-void CharServerHandler::handleMessage(Net::MessageIn &msg)
-{
-    switch (msg.getId())
-    {
-        case SMSG_CHAR_LOGIN:
-            CharServerRecv::processCharLogin(msg);
-            break;
-
-        case SMSG_CHAR_LOGIN2:
-            CharServerRecv::processCharLogin2(msg);
-            break;
-
-        case SMSG_CHAR_LOGIN_ERROR:
-            Ea::CharServerRecv::processCharLoginError(msg);
-            break;
-
-        case SMSG_CHAR_CREATE_SUCCEEDED:
-            CharServerRecv::processCharCreate(msg);
-            break;
-
-        case SMSG_CHAR_CREATE_FAILED:
-            Ea::CharServerRecv::processCharCreateFailed(msg);
-            break;
-
-        case SMSG_CHAR_DELETE_SUCCEEDED:
-            Ea::CharServerRecv::processCharDelete(msg);
-            break;
-
-        case SMSG_CHAR_DELETE_FAILED:
-            CharServerRecv::processCharDeleteFailed(msg);
-            break;
-
-        case SMSG_CHAR_MAP_INFO:
-            CharServerRecv::processCharMapInfo(msg);
-            break;
-
-        case SMSG_CHANGE_MAP_SERVER:
-            CharServerRecv::processChangeMapServer(msg);
-            break;
-
-        case SMSG_CHAR_PINCODE_STATUS:
-            CharServerRecv::processPincodeStatus(msg);
-            break;
-
-        case SMSG_CHAR_CHECK_RENAME:
-            CharServerRecv::processCharCheckRename(msg);
-            break;
-
-        case SMSG_CHAR_RENAME:
-            CharServerRecv::processCharRename(msg);
-            break;
-
-        case SMSG_CHAR_CHANGE_SLOT:
-            CharServerRecv::processCharChangeSlot(msg);
-            break;
-
-        case SMSG_CHAR_CAPTCHA_NOT_SUPPORTED:
-            CharServerRecv::processCharCaptchaNotSupported(msg);
-            break;
-
-        case SMSG_CHAR_DELETE2_ACK:
-            CharServerRecv::processCharDelete2Ack(msg);
-            break;
-
-        case SMSG_CHAR_DELETE2_ACCEPT_ACTUAL_ACK:
-            CharServerRecv::processCharDelete2AcceptActual(msg);
-            break;
-
-        case SMSG_CHAR_DELETE2_CANCEL_ACK:
-            CharServerRecv::processCharDelete2CancelAck(msg);
-            break;
-
-        case SMSG_CHAR_CHARACTERS:
-            CharServerRecv::processCharCharacters(msg);
-            break;
-
-        case SMSG_CHAR_BAN_CHAR_LIST:
-            CharServerRecv::processCharBanCharList(msg);
-            break;
-
-        default:
-            break;
-    }
 }
 
 void CharServerHandler::chooseCharacter(Net::Character *const character)

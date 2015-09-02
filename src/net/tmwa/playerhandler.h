@@ -25,19 +25,15 @@
 
 #include "net/ea/playerhandler.h"
 
-#include "net/tmwa/messagehandler.h"
-
 namespace TmwAthena
 {
 
-class PlayerHandler final : public MessageHandler, public Ea::PlayerHandler
+class PlayerHandler final : public Ea::PlayerHandler
 {
     public:
         PlayerHandler();
 
         A_DELETE_COPY(PlayerHandler)
-
-        void handleMessage(Net::MessageIn &msg) override final;
 
         void attack(const BeingId id,
                     const Keep keep) const override final;

@@ -44,52 +44,10 @@ namespace TmwAthena
 {
 
 BuySellHandler::BuySellHandler() :
-    MessageHandler(),
     Ea::BuySellHandler()
 {
-    static const uint16_t _messages[] =
-    {
-        SMSG_NPC_BUY_SELL_CHOICE,
-        SMSG_NPC_BUY,
-        SMSG_NPC_SELL,
-        SMSG_NPC_BUY_RESPONSE,
-        SMSG_NPC_SELL_RESPONSE,
-        0
-    };
-    handledMessages = _messages;
     buySellHandler = this;
     Ea::BuySellRecv::mBuyDialog = nullptr;
-}
-
-void BuySellHandler::handleMessage(Net::MessageIn &msg)
-{
-    BLOCK_START("BuySellHandler::handleMessage")
-    switch (msg.getId())
-    {
-        case SMSG_NPC_BUY_SELL_CHOICE:
-            Ea::BuySellRecv::processNpcBuySellChoice(msg);
-            break;
-
-        case SMSG_NPC_BUY:
-            BuySellRecv::processNpcBuy(msg);
-            break;
-
-        case SMSG_NPC_SELL:
-            Ea::BuySellRecv::processNpcSell(msg);
-            break;
-
-        case SMSG_NPC_BUY_RESPONSE:
-            Ea::BuySellRecv::processNpcBuyResponse(msg);
-            break;
-
-        case SMSG_NPC_SELL_RESPONSE:
-            BuySellRecv::processNpcSellResponse(msg);
-            break;
-
-        default:
-            break;
-    }
-    BLOCK_END("BuySellHandler::handleMessage")
 }
 
 void BuySellHandler::requestSellList(const std::string &nick) const

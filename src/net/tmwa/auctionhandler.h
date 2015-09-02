@@ -25,18 +25,14 @@
 
 #include "net/auctionhandler.h"
 
-#include "net/tmwa/messagehandler.h"
-
 namespace TmwAthena
 {
-class AuctionHandler final : public MessageHandler, public Net::AuctionHandler
+class AuctionHandler final : public Net::AuctionHandler
 {
     public:
         AuctionHandler();
 
         A_DELETE_COPY(AuctionHandler)
-
-        void handleMessage(Net::MessageIn &msg) override final;
 
         void cancelReg() const override final;
 

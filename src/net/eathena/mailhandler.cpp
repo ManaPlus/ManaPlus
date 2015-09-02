@@ -33,69 +33,9 @@ extern Net::MailHandler *mailHandler;
 namespace EAthena
 {
 
-MailHandler::MailHandler() :
-    MessageHandler()
+MailHandler::MailHandler()
 {
-    static const uint16_t _messages[] =
-    {
-        SMSG_MAIL_OPEN_WINDOW,
-        SMSG_MAIL_MAILS_LIST,
-        SMSG_MAIL_READ_MAIL,
-        SMSG_MAIL_GET_ATTACHMENT,
-        SMSG_MAIL_SEND_MAIL_ACK,
-        SMSG_MAIL_NEW_MAIL,
-        SMSG_MAIL_SET_ATTACHMENT_ACK,
-        SMSG_MAIL_DELETE_MAIL_ACK,
-        SMSG_MAIL_RETURN,
-        0
-    };
-    handledMessages = _messages;
     mailHandler = this;
-}
-
-void MailHandler::handleMessage(Net::MessageIn &msg)
-{
-    switch (msg.getId())
-    {
-        case SMSG_MAIL_OPEN_WINDOW:
-            MailRecv::processMailOpen(msg);
-            break;
-
-        case SMSG_MAIL_MAILS_LIST:
-            MailRecv::processMailList(msg);
-            break;
-
-        case SMSG_MAIL_READ_MAIL:
-            MailRecv::processReadMail(msg);
-            break;
-
-        case SMSG_MAIL_GET_ATTACHMENT:
-            MailRecv::processGetAttachment(msg);
-            break;
-
-        case SMSG_MAIL_SEND_MAIL_ACK:
-            MailRecv::processSendMailAck(msg);
-            break;
-
-        case SMSG_MAIL_NEW_MAIL:
-            MailRecv::processNewMail(msg);
-            break;
-
-        case SMSG_MAIL_SET_ATTACHMENT_ACK:
-            MailRecv::processSetAttachmentAck(msg);
-            break;
-
-        case SMSG_MAIL_DELETE_MAIL_ACK:
-            MailRecv::processDeleteAck(msg);
-            break;
-
-        case SMSG_MAIL_RETURN:
-            MailRecv::processMailReturn(msg);
-            break;
-
-        default:
-            break;
-    }
 }
 
 void MailHandler::refresh() const

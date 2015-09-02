@@ -23,9 +23,12 @@
 
 #include "net/vendinghandler.h"
 
-#include "net/eathena/messagehandler.h"
-
 class BuyDialog;
+
+namespace Net
+{
+    class MessageIn;
+}
 
 namespace EAthena
 {

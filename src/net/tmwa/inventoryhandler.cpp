@@ -62,110 +62,13 @@ namespace TmwAthena
 {
 
 InventoryHandler::InventoryHandler() :
-    MessageHandler(),
     Ea::InventoryHandler()
 {
-    static const uint16_t _messages[] =
-    {
-        SMSG_PLAYER_INVENTORY,
-        SMSG_PLAYER_INVENTORY_ADD,
-        SMSG_PLAYER_INVENTORY_REMOVE,
-        SMSG_PLAYER_INVENTORY_USE,
-        SMSG_ITEM_USE_RESPONSE,
-        SMSG_PLAYER_STORAGE_ITEMS,
-        SMSG_PLAYER_STORAGE_EQUIP,
-        SMSG_PLAYER_STORAGE_STATUS,
-        SMSG_PLAYER_STORAGE_ADD,
-        SMSG_PLAYER_STORAGE_REMOVE,
-        SMSG_PLAYER_STORAGE_CLOSE,
-        SMSG_PLAYER_EQUIPMENT,
-        SMSG_PLAYER_EQUIP,
-        SMSG_PLAYER_UNEQUIP,
-        SMSG_PLAYER_ARROW_EQUIP,
-        SMSG_PLAYER_ATTACK_RANGE,
-        0
-    };
-    handledMessages = _messages;
     inventoryHandler = this;
 }
 
 InventoryHandler::~InventoryHandler()
 {
-}
-
-void InventoryHandler::handleMessage(Net::MessageIn &msg)
-{
-    BLOCK_START("InventoryHandler::handleMessage")
-    switch (msg.getId())
-    {
-        case SMSG_PLAYER_INVENTORY:
-            InventoryRecv::processPlayerInventory(msg);
-            break;
-
-        case SMSG_PLAYER_STORAGE_ITEMS:
-            InventoryRecv::processPlayerStorage(msg);
-            break;
-
-        case SMSG_PLAYER_STORAGE_EQUIP:
-            InventoryRecv::processPlayerStorageEquip(msg);
-            break;
-
-        case SMSG_PLAYER_INVENTORY_ADD:
-            InventoryRecv::processPlayerInventoryAdd(msg);
-            break;
-
-        case SMSG_PLAYER_INVENTORY_REMOVE:
-            Ea::InventoryRecv::processPlayerInventoryRemove(msg);
-            break;
-
-        case SMSG_PLAYER_INVENTORY_USE:
-            Ea::InventoryRecv::processPlayerInventoryUse(msg);
-            break;
-
-        case SMSG_ITEM_USE_RESPONSE:
-            Ea::InventoryRecv::processItemUseResponse(msg);
-            break;
-
-        case SMSG_PLAYER_STORAGE_STATUS:
-            Ea::InventoryRecv::processPlayerStorageStatus(msg);
-            break;
-
-        case SMSG_PLAYER_STORAGE_ADD:
-            InventoryRecv::processPlayerStorageAdd(msg);
-            break;
-
-        case SMSG_PLAYER_STORAGE_REMOVE:
-            InventoryRecv::processPlayerStorageRemove(msg);
-            break;
-
-        case SMSG_PLAYER_STORAGE_CLOSE:
-            Ea::InventoryRecv::processPlayerStorageClose(msg);
-            break;
-
-        case SMSG_PLAYER_EQUIPMENT:
-            InventoryRecv::processPlayerEquipment(msg);
-            break;
-
-        case SMSG_PLAYER_EQUIP:
-            InventoryRecv::processPlayerEquip(msg);
-            break;
-
-        case SMSG_PLAYER_UNEQUIP:
-            InventoryRecv::processPlayerUnEquip(msg);
-            break;
-
-        case SMSG_PLAYER_ATTACK_RANGE:
-            Ea::InventoryRecv::processPlayerAttackRange(msg);
-            break;
-
-        case SMSG_PLAYER_ARROW_EQUIP:
-            Ea::InventoryRecv::processPlayerArrowEquip(msg);
-            break;
-
-        default:
-            break;
-    }
-    BLOCK_END("InventoryHandler::handleMessage")
 }
 
 void InventoryHandler::equipItem(const Item *const item) const

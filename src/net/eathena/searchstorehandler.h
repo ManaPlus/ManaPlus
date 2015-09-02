@@ -23,19 +23,14 @@
 
 #include "net/searchstorehandler.h"
 
-#include "net/eathena/messagehandler.h"
-
 namespace EAthena
 {
-class SearchStoreHandler final : public MessageHandler,
-                                 public Net::SearchStoreHandler
+class SearchStoreHandler final : public Net::SearchStoreHandler
 {
     public:
         SearchStoreHandler();
 
         A_DELETE_COPY(SearchStoreHandler)
-
-        void handleMessage(Net::MessageIn &msg) override final;
 
         void search(const StoreSearchTypeT type,
                     const int minPrice,

@@ -54,62 +54,9 @@ namespace TmwAthena
 {
 
 TradeHandler::TradeHandler() :
-    MessageHandler(),
     Ea::TradeHandler()
 {
-    static const uint16_t _messages[] =
-    {
-        SMSG_TRADE_REQUEST,
-        SMSG_TRADE_RESPONSE,
-        SMSG_TRADE_ITEM_ADD,
-        SMSG_TRADE_ITEM_ADD_RESPONSE,
-        SMSG_TRADE_OK,
-        SMSG_TRADE_CANCEL,
-        SMSG_TRADE_COMPLETE,
-        0
-    };
-    handledMessages = _messages;
     tradeHandler = this;
-}
-
-
-void TradeHandler::handleMessage(Net::MessageIn &msg)
-{
-    BLOCK_START("TradeHandler::handleMessage")
-    switch (msg.getId())
-    {
-        case SMSG_TRADE_REQUEST:
-            TradeRecv::processTradeRequest(msg);
-            break;
-
-        case SMSG_TRADE_RESPONSE:
-            TradeRecv::processTradeResponse(msg);
-            break;
-
-        case SMSG_TRADE_ITEM_ADD:
-            TradeRecv::processTradeItemAdd(msg);
-            break;
-
-        case SMSG_TRADE_ITEM_ADD_RESPONSE:
-            TradeRecv::processTradeItemAddResponse(msg);
-            break;
-
-        case SMSG_TRADE_OK:
-            Ea::TradeRecv::processTradeOk(msg);
-            break;
-
-        case SMSG_TRADE_CANCEL:
-            Ea::TradeRecv::processTradeCancel(msg);
-            break;
-
-        case SMSG_TRADE_COMPLETE:
-            Ea::TradeRecv::processTradeComplete(msg);
-            break;
-
-        default:
-            break;
-    }
-    BLOCK_END("TradeHandler::handleMessage")
 }
 
 void TradeHandler::request(const Being *const being) const

@@ -46,52 +46,9 @@ namespace TmwAthena
 extern ServerInfo mapServer;
 
 GameHandler::GameHandler() :
-    MessageHandler(),
     Ea::GameHandler()
 {
-    static const uint16_t _messages[] =
-    {
-        SMSG_MAP_LOGIN_SUCCESS,
-        SMSG_SERVER_PING,
-        SMSG_WHO_ANSWER,
-        SMSG_CHAR_SWITCH_RESPONSE,
-        SMSG_MAP_QUIT_RESPONSE,
-        0
-    };
-    handledMessages = _messages;
     gameHandler = this;
-}
-
-void GameHandler::handleMessage(Net::MessageIn &msg)
-{
-    BLOCK_START("GameHandler::handleMessage")
-    switch (msg.getId())
-    {
-        case SMSG_MAP_LOGIN_SUCCESS:
-            GameRecv::processMapLogin(msg);
-            break;
-
-        case SMSG_SERVER_PING:
-            // We ignore this for now
-            // int tick = msg.readInt32()
-            break;
-
-        case SMSG_WHO_ANSWER:
-            Ea::GameRecv::processWhoAnswer(msg);
-            break;
-
-        case SMSG_CHAR_SWITCH_RESPONSE:
-            Ea::GameRecv::processCharSwitchResponse(msg);
-            break;
-
-        case SMSG_MAP_QUIT_RESPONSE:
-            Ea::GameRecv::processMapQuitResponse(msg);
-            break;
-
-        default:
-            break;
-    }
-    BLOCK_END("GameHandler::handleMessage")
 }
 
 void GameHandler::mapLoadedEvent() const

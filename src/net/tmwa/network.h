@@ -34,8 +34,6 @@
 
 namespace TmwAthena
 {
-class MessageHandler;
-
 class Network final : public Ea::Network
 {
     public:
@@ -44,10 +42,6 @@ class Network final : public Ea::Network
         A_DELETE_COPY(Network)
 
         ~Network();
-
-        void registerHandler(MessageHandler *const handler);
-
-        void unregisterHandler(MessageHandler *const handler);
 
         void clearHandlers();
 

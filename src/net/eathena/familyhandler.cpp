@@ -33,47 +33,12 @@ extern Net::FamilyHandler *familyHandler;
 namespace EAthena
 {
 
-FamilyHandler::FamilyHandler() :
-    MessageHandler()
+FamilyHandler::FamilyHandler()
 {
     FamilyRecv::mParent1 = 0;
     FamilyRecv::mParent2 = 0;
 
-    static const uint16_t _messages[] =
-    {
-        SMSG_FAMILY_ASK_FOR_CHILD,
-        SMSG_FAMILY_CALL_PARTNER,
-        SMSG_FAMILY_DIVORCED,
-        SMSG_FAMILY_ASK_FOR_CHILD_REPLY,
-        0
-    };
-    handledMessages = _messages;
     familyHandler = this;
-}
-
-void FamilyHandler::handleMessage(Net::MessageIn &msg)
-{
-    switch (msg.getId())
-    {
-        case SMSG_FAMILY_ASK_FOR_CHILD:
-            FamilyRecv::processAskForChild(msg);
-            break;
-
-        case SMSG_FAMILY_CALL_PARTNER:
-            FamilyRecv::processCallPartner(msg);
-            break;
-
-        case SMSG_FAMILY_DIVORCED:
-            FamilyRecv::processDivorced(msg);
-            break;
-
-        case SMSG_FAMILY_ASK_FOR_CHILD_REPLY:
-            FamilyRecv::processAskForChildReply(msg);
-            break;
-
-        default:
-            break;
-    }
 }
 
 void FamilyHandler::askForChild(const Being *const being)

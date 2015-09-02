@@ -25,19 +25,15 @@
 
 #include "net/ea/beinghandler.h"
 
-#include "net/tmwa/messagehandler.h"
-
 namespace TmwAthena
 {
 
-class BeingHandler final : public MessageHandler, public Ea::BeingHandler
+class BeingHandler final : public Ea::BeingHandler
 {
     public:
         explicit BeingHandler(const bool enableSync);
 
         A_DELETE_COPY(BeingHandler)
-
-        void handleMessage(Net::MessageIn &msg) override final;
 
         void requestNameById(const BeingId id) const override final;
 

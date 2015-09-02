@@ -33,6 +33,8 @@
 
 #include "gui/windows/skilldialog.h"
 
+#include "net/messagein.h"
+
 #include "net/ea/skillrecv.h"
 
 #include "net/eathena/menu.h"

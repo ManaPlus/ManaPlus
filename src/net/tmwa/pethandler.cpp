@@ -35,21 +35,9 @@ namespace TmwAthena
 {
 
 PetHandler::PetHandler() :
-    MessageHandler(),
     mRandCounter(1000)
 {
-    static const uint16_t _messages[] =
-    {
-        0
-    };
-    handledMessages = _messages;
     petHandler = this;
-}
-
-void PetHandler::handleMessage(Net::MessageIn &msg A_UNUSED)
-{
-    BLOCK_START("PetHandler::handleMessage")
-    BLOCK_END("PetHandler::handleMessage")
 }
 
 void PetHandler::move(const int petId A_UNUSED,

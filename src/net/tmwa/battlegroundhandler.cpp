@@ -27,19 +27,9 @@ extern Net::BattleGroundHandler *battleGroundHandler;
 namespace TmwAthena
 {
 
-BattleGroundHandler::BattleGroundHandler() :
-    MessageHandler()
+BattleGroundHandler::BattleGroundHandler()
 {
-    static const uint16_t _messages[] =
-    {
-        0
-    };
-    handledMessages = _messages;
     battleGroundHandler = this;
-}
-
-void BattleGroundHandler::handleMessage(Net::MessageIn &msg A_UNUSED)
-{
 }
 
 void BattleGroundHandler::registerBg(const BattleGroundTypeT &type

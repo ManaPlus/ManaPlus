@@ -31,55 +31,10 @@ extern Net::CashShopHandler *cashShopHandler;
 namespace EAthena
 {
 
-CashShopHandler::CashShopHandler() :
-    MessageHandler()
+CashShopHandler::CashShopHandler()
 {
-    static const uint16_t _messages[] =
-    {
-        SMSG_NPC_CASH_SHOP_OPEN,
-        SMSG_NPC_CASH_BUY_ACK,
-        SMSG_NPC_CASH_POINTS,
-        SMSG_NPC_CASH_BUY,
-        SMSG_NPC_CASH_TAB_PRICE_LIST,
-        SMSG_NPC_CASH_SCHEDULE,
-        0
-    };
-    handledMessages = _messages;
     cashShopHandler = this;
     CashShopRecv::mBuyDialog = nullptr;
-}
-
-void CashShopHandler::handleMessage(Net::MessageIn &msg)
-{
-    switch (msg.getId())
-    {
-        case SMSG_NPC_CASH_SHOP_OPEN:
-            CashShopRecv::processCashShopOpen(msg);
-            break;
-
-        case SMSG_NPC_CASH_BUY_ACK:
-            CashShopRecv::processCashShopBuyAck(msg);
-            break;
-
-        case SMSG_NPC_CASH_POINTS:
-            CashShopRecv::processCashShopPoints(msg);
-            break;
-
-        case SMSG_NPC_CASH_BUY:
-            CashShopRecv::processCashShopBuy(msg);
-            break;
-
-        case SMSG_NPC_CASH_TAB_PRICE_LIST:
-            CashShopRecv::processCashShopTabPriceList(msg);
-            break;
-
-        case SMSG_NPC_CASH_SCHEDULE:
-            CashShopRecv::processCashShopSchedule(msg);
-            break;
-
-        default:
-            break;
-    }
 }
 
 void CashShopHandler::buyItem(const int points,

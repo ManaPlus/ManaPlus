@@ -33,58 +33,8 @@ namespace EAthena
 {
 
 ItemHandler::ItemHandler() :
-    MessageHandler(),
     Ea::ItemHandler()
 {
-    static const uint16_t _messages[] =
-    {
-        SMSG_ITEM_VISIBLE,
-        SMSG_ITEM_VISIBLE2,
-        SMSG_ITEM_DROPPED,
-        SMSG_ITEM_DROPPED2,
-        SMSG_ITEM_REMOVE,
-        SMSG_GRAFFITI_VISIBLE,
-        SMSG_ITEM_MVP_DROPPED,
-        0
-    };
-    handledMessages = _messages;
-}
-
-void ItemHandler::handleMessage(Net::MessageIn &msg)
-{
-    switch (msg.getId())
-    {
-        case SMSG_ITEM_VISIBLE:
-            ItemRecv::processItemVisible(msg);
-            break;
-
-        case SMSG_ITEM_DROPPED:
-            ItemRecv::processItemDropped(msg);
-            break;
-
-        case SMSG_ITEM_REMOVE:
-            Ea::ItemRecv::processItemRemove(msg);
-            break;
-
-        case SMSG_GRAFFITI_VISIBLE:
-            ItemRecv::processGraffiti(msg);
-            break;
-
-        case SMSG_ITEM_MVP_DROPPED:
-            ItemRecv::processItemMvpDropped(msg);
-            break;
-
-        case SMSG_ITEM_VISIBLE2:
-            ItemRecv::processItemVisible2(msg);
-            break;
-
-        case SMSG_ITEM_DROPPED2:
-            ItemRecv::processItemDropped2(msg);
-            break;
-
-        default:
-            break;
-    }
 }
 
 }  // namespace EAthena

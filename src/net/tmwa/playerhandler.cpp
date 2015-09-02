@@ -43,77 +43,9 @@ namespace TmwAthena
 {
 
 PlayerHandler::PlayerHandler() :
-    MessageHandler(),
     Ea::PlayerHandler()
 {
-    static const uint16_t _messages[] =
-    {
-        SMSG_WALK_RESPONSE,
-        SMSG_PLAYER_WARP,
-        SMSG_PLAYER_STAT_UPDATE_1,
-        SMSG_PLAYER_STAT_UPDATE_2,
-        SMSG_PLAYER_STAT_UPDATE_3,
-        SMSG_PLAYER_STAT_UPDATE_4,
-        SMSG_PLAYER_STAT_UPDATE_5,
-        SMSG_PLAYER_STAT_UPDATE_6,
-        SMSG_PLAYER_ARROW_MESSAGE,
-        SMSG_MAP_MUSIC,
-        0
-    };
-    handledMessages = _messages;
     playerHandler = this;
-}
-
-void PlayerHandler::handleMessage(Net::MessageIn &msg)
-{
-    BLOCK_START("PlayerHandler::handleMessage")
-    switch (msg.getId())
-    {
-        case SMSG_WALK_RESPONSE:
-            PlayerRecv::processWalkResponse(msg);
-            break;
-
-        case SMSG_PLAYER_WARP:
-            Ea::PlayerRecv::processPlayerWarp(msg);
-            break;
-
-        case SMSG_PLAYER_STAT_UPDATE_1:
-            Ea::PlayerRecv::processPlayerStatUpdate1(msg);
-            break;
-
-        case SMSG_PLAYER_STAT_UPDATE_2:
-            Ea::PlayerRecv::processPlayerStatUpdate2(msg);
-            break;
-
-        case SMSG_PLAYER_STAT_UPDATE_3:  // Update a base attribute
-            Ea::PlayerRecv::processPlayerStatUpdate3(msg);
-            break;
-
-        case SMSG_PLAYER_STAT_UPDATE_4:  // Attribute increase ack
-            Ea::PlayerRecv::processPlayerStatUpdate4(msg);
-            break;
-
-        // Updates stats and status points
-        case SMSG_PLAYER_STAT_UPDATE_5:
-            PlayerRecv::processPlayerStatUpdate5(msg);
-            break;
-
-        case SMSG_PLAYER_STAT_UPDATE_6:
-            Ea::PlayerRecv::processPlayerStatUpdate6(msg);
-            break;
-
-        case SMSG_PLAYER_ARROW_MESSAGE:
-            Ea::PlayerRecv::processPlayerArrowMessage(msg);
-            break;
-
-        case SMSG_MAP_MUSIC:
-            Ea::PlayerRecv::processMapMusic(msg);
-            break;
-
-        default:
-            break;
-    }
-    BLOCK_END("PlayerHandler::handleMessage")
 }
 
 void PlayerHandler::attack(const BeingId id,

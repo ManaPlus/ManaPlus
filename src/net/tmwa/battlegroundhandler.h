@@ -25,20 +25,15 @@
 
 #include "net/battlegroundhandler.h"
 
-#include "net/tmwa/messagehandler.h"
-
 namespace TmwAthena
 {
 
-class BattleGroundHandler final : public MessageHandler,
-                                  public Net::BattleGroundHandler
+class BattleGroundHandler final : public Net::BattleGroundHandler
 {
     public:
         BattleGroundHandler();
 
         A_DELETE_COPY(BattleGroundHandler)
-
-        void handleMessage(Net::MessageIn &msg) override final;
 
         void registerBg(const BattleGroundTypeT &type,
                         const std::string &name) const override final;

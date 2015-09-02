@@ -25,19 +25,15 @@
 
 #include "net/ea/npchandler.h"
 
-#include "net/eathena/messagehandler.h"
-
 namespace EAthena
 {
 
-class NpcHandler final : public MessageHandler, public Ea::NpcHandler
+class NpcHandler final : public Ea::NpcHandler
 {
     public:
         NpcHandler();
 
         A_DELETE_COPY(NpcHandler)
-
-        void handleMessage(Net::MessageIn &msg) override final;
 
         void talk(const BeingId npcId) const override final;
 

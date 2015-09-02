@@ -24,12 +24,10 @@
 
 #include "net/ea/guildhandler.h"
 
-#include "net/tmwa/messagehandler.h"
-
 namespace TmwAthena
 {
 
-class GuildHandler final : public Ea::GuildHandler, public MessageHandler
+class GuildHandler final : public Ea::GuildHandler
 {
     public:
         GuildHandler();
@@ -37,8 +35,6 @@ class GuildHandler final : public Ea::GuildHandler, public MessageHandler
         A_DELETE_COPY(GuildHandler)
 
         ~GuildHandler();
-
-        void handleMessage(Net::MessageIn &msg) override final;
 
         void create(const std::string &name) const override final;
 

@@ -21,22 +21,17 @@
 #ifndef NET_TMWA_QUESTHANDLER_H
 #define NET_TMWA_QUESTHANDLER_H
 
-#include "net/tmwa/messagehandler.h"
-
 #include "net/questhandler.h"
 
 namespace TmwAthena
 {
 
-class QuestHandler final : public MessageHandler,
-                           public Net::QuestHandler
+class QuestHandler final : public Net::QuestHandler
 {
     public:
         QuestHandler();
 
         A_DELETE_COPY(QuestHandler)
-
-        void handleMessage(Net::MessageIn &msg) override final;
 
         void setQeustActiveState(const int questId,
                                  const bool active) const override final;

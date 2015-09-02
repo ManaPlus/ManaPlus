@@ -31,35 +31,10 @@ extern Net::MarketHandler *marketHandler;
 namespace EAthena
 {
 
-MarketHandler::MarketHandler() :
-    MessageHandler()
+MarketHandler::MarketHandler()
 {
-    static const uint16_t _messages[] =
-    {
-        SMSG_NPC_MARKET_OPEN,
-        SMSG_NPC_MARKET_BUY_ACK,
-        0
-    };
-    handledMessages = _messages;
     marketHandler = this;
     MarketRecv::mBuyDialog = nullptr;
-}
-
-void MarketHandler::handleMessage(Net::MessageIn &msg)
-{
-    switch (msg.getId())
-    {
-        case SMSG_NPC_MARKET_OPEN:
-            MarketRecv::processMarketOpen(msg);
-            break;
-
-        case SMSG_NPC_MARKET_BUY_ACK:
-            MarketRecv::processMarketBuyAck(msg);
-            break;
-
-        default:
-            break;
-    }
 }
 
 void MarketHandler::close()

@@ -25,19 +25,20 @@
 
 #include "net/ea/tradehandler.h"
 
-#include "net/eathena/messagehandler.h"
+namespace Net
+{
+    class MessageIn;
+}
 
 namespace EAthena
 {
 
-class TradeHandler final : public MessageHandler, public Ea::TradeHandler
+class TradeHandler final : public Ea::TradeHandler
 {
     public:
         TradeHandler();
 
         A_DELETE_COPY(TradeHandler)
-
-        void handleMessage(Net::MessageIn &msg) override final;
 
         void request(const Being *const being) const override final;
 

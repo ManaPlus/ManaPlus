@@ -27,19 +27,9 @@ extern Net::VendingHandler *vendingHandler;
 namespace TmwAthena
 {
 
-VendingHandler::VendingHandler() :
-    MessageHandler()
+VendingHandler::VendingHandler()
 {
-    static const uint16_t _messages[] =
-    {
-        0
-    };
-    handledMessages = _messages;
     vendingHandler = this;
-}
-
-void VendingHandler::handleMessage(Net::MessageIn &msg A_UNUSED)
-{
 }
 
 void VendingHandler::close() const

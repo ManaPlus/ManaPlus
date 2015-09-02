@@ -31,39 +31,9 @@ extern Net::BankHandler *bankHandler;
 namespace EAthena
 {
 
-BankHandler::BankHandler() :
-    MessageHandler()
+BankHandler::BankHandler()
 {
-    static const uint16_t _messages[] =
-    {
-        SMSG_BANK_STATUS,
-        SMSG_BANK_DEPOSIT,
-        SMSG_BANK_WITHDRAW,
-        0
-    };
-    handledMessages = _messages;
     bankHandler = this;
-}
-
-void BankHandler::handleMessage(Net::MessageIn &msg)
-{
-    switch (msg.getId())
-    {
-        case SMSG_BANK_STATUS:
-            BankRecv::processBankStatus(msg);
-            break;
-
-        case SMSG_BANK_DEPOSIT:
-            BankRecv::processBankDeposit(msg);
-            break;
-
-        case SMSG_BANK_WITHDRAW:
-            BankRecv::processBankWithdraw(msg);
-            break;
-
-        default:
-            break;
-    }
 }
 
 void BankHandler::deposit(const int money) const

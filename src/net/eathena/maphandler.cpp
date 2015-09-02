@@ -30,44 +30,9 @@ extern Net::MapHandler *mapHandler;
 namespace EAthena
 {
 
-MapHandler::MapHandler() :
-    MessageHandler()
+MapHandler::MapHandler()
 {
-    static const uint16_t _messages[] =
-    {
-        SMSG_INSTANCE_START,
-        SMSG_INSTANCE_CREATE,
-        SMSG_INSTANCE_INFO,
-        SMSG_INSTANCE_DELETE,
-        0
-    };
-    handledMessages = _messages;
     mapHandler = this;
-}
-
-void MapHandler::handleMessage(Net::MessageIn &msg)
-{
-    switch (msg.getId())
-    {
-        case SMSG_INSTANCE_START:
-            MapRecv::processInstanceStart(msg);
-            break;
-
-        case SMSG_INSTANCE_CREATE:
-            MapRecv::processInstanceCreate(msg);
-            break;
-
-        case SMSG_INSTANCE_INFO:
-            MapRecv::processInstanceInfo(msg);
-            break;
-
-        case SMSG_INSTANCE_DELETE:
-            MapRecv::processInstanceDelete(msg);
-            break;
-
-        default:
-            break;
-    }
 }
 
 }  // namespace EAthena

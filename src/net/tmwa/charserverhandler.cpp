@@ -54,66 +54,9 @@ extern ServerInfo mapServer;
 extern ServerInfo charServer;
 
 CharServerHandler::CharServerHandler() :
-    MessageHandler(),
     Ea::CharServerHandler()
 {
-    static const uint16_t _messages[] =
-    {
-        SMSG_CHAR_LOGIN,
-        SMSG_CHAR_LOGIN_ERROR,
-        SMSG_CHAR_CREATE_SUCCEEDED,
-        SMSG_CHAR_CREATE_FAILED,
-        SMSG_CHAR_DELETE_SUCCEEDED,
-        SMSG_CHAR_DELETE_FAILED,
-        SMSG_CHAR_MAP_INFO,
-        SMSG_CHANGE_MAP_SERVER,
-        0
-    };
-    handledMessages = _messages;
     charServerHandler = this;
-}
-
-void CharServerHandler::handleMessage(Net::MessageIn &msg)
-{
-    BLOCK_START("CharServerHandler::handleMessage")
-    switch (msg.getId())
-    {
-        case SMSG_CHAR_LOGIN:
-            CharServerRecv::processCharLogin(msg);
-            break;
-
-        case SMSG_CHAR_LOGIN_ERROR:
-            Ea::CharServerRecv::processCharLoginError(msg);
-            break;
-
-        case SMSG_CHAR_CREATE_SUCCEEDED:
-            CharServerRecv::processCharCreate(msg);
-            break;
-
-        case SMSG_CHAR_CREATE_FAILED:
-            Ea::CharServerRecv::processCharCreateFailed(msg);
-            break;
-
-        case SMSG_CHAR_DELETE_SUCCEEDED:
-            Ea::CharServerRecv::processCharDelete(msg);
-            break;
-
-        case SMSG_CHAR_DELETE_FAILED:
-            CharServerRecv::processCharDeleteFailed(msg);
-            break;
-
-        case SMSG_CHAR_MAP_INFO:
-            CharServerRecv::processCharMapInfo(msg);
-            break;
-
-        case SMSG_CHANGE_MAP_SERVER:
-            CharServerRecv::processChangeMapServer(msg);
-            break;
-
-        default:
-            break;
-    }
-    BLOCK_END("CharServerHandler::handleMessage")
 }
 
 void CharServerHandler::chooseCharacter(Net::Character *const character)

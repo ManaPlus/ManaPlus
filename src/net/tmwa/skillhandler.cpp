@@ -47,41 +47,9 @@ namespace TmwAthena
 {
 
 SkillHandler::SkillHandler() :
-    MessageHandler(),
     Ea::SkillHandler()
 {
-    static const uint16_t _messages[] =
-    {
-        SMSG_PLAYER_SKILLS,
-        SMSG_SKILL_FAILED,
-        SMSG_PLAYER_SKILL_UP,
-        0
-    };
-    handledMessages = _messages;
     skillHandler = this;
-}
-
-void SkillHandler::handleMessage(Net::MessageIn &msg)
-{
-    BLOCK_START("SkillHandler::handleMessage")
-    switch (msg.getId())
-    {
-        case SMSG_PLAYER_SKILLS:
-            SkillRecv::processPlayerSkills(msg);
-            break;
-
-        case SMSG_PLAYER_SKILL_UP:
-            Ea::SkillRecv::processPlayerSkillUp(msg);
-            break;
-
-        case SMSG_SKILL_FAILED:
-            SkillRecv::processSkillFailed(msg);
-            break;
-
-        default:
-            break;
-    }
-    BLOCK_END("SkillHandler::handleMessage")
 }
 
 void SkillHandler::useBeing(const int id, const int level,

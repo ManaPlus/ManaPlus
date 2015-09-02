@@ -23,7 +23,10 @@
 
 #include "net/searchstorehandler.h"
 
-#include "net/eathena/messagehandler.h"
+namespace Net
+{
+    class MessageIn;
+}
 
 namespace EAthena
 {

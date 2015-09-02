@@ -87,7 +87,6 @@ namespace TmwAthena
 {
 
 GeneralHandler::GeneralHandler() :
-    MessageHandler(),
     mAdminHandler(new AdminHandler),
     mBeingHandler(new BeingHandler(config.getBoolValue("EnableSync"))),
     mBuySellHandler(new BuySellHandler),
@@ -117,7 +116,7 @@ GeneralHandler::GeneralHandler() :
     mFriendsHandler(new FriendsHandler),
     mHomunculusHandler(new HomunculusHandler),
     mMailHandler(new MailHandler),
-    mMapHandler(new MarketHandler),
+    mMapHandler(new MapHandler),
     mMarketHandler(new MarketHandler),
     mMercenaryHandler(new MercenaryHandler),
     mRouletteHandler(new RouletteHandler),
@@ -127,12 +126,6 @@ GeneralHandler::GeneralHandler() :
     mServerFeatures(new ServerFeatures)
 #endif
 {
-    static const uint16_t _messages[] =
-    {
-        SMSG_CONNECTION_PROBLEM,
-        0
-    };
-    handledMessages = _messages;
     generalHandler = this;
 
     std::vector<ItemDB::Stat> stats;
@@ -155,22 +148,6 @@ GeneralHandler::GeneralHandler() :
 GeneralHandler::~GeneralHandler()
 {
     delete2(Network::mInstance);
-}
-
-void GeneralHandler::handleMessage(Net::MessageIn &msg)
-{
-    BLOCK_START("GeneralHandler::handleMessage")
-
-    switch (msg.getId())
-    {
-        case SMSG_CONNECTION_PROBLEM:
-            GeneralRecv::processConnectionProblem(msg);
-            break;
-
-        default:
-            break;
-    }
-    BLOCK_END("GeneralHandler::handleMessage")
 }
 
 void GeneralHandler::load()

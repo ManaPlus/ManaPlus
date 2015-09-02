@@ -33,6 +33,7 @@
 
 #include "net/character.h"
 #include "net/charserverhandler.h"
+#include "net/messagein.h"
 
 #include "net/ea/token.h"
 

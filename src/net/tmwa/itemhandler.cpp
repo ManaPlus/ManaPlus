@@ -33,40 +33,8 @@ namespace TmwAthena
 {
 
 ItemHandler::ItemHandler() :
-    MessageHandler(),
     Ea::ItemHandler()
 {
-    static const uint16_t _messages[] =
-    {
-        SMSG_ITEM_VISIBLE,
-        SMSG_ITEM_DROPPED,
-        SMSG_ITEM_REMOVE,
-        0
-    };
-    handledMessages = _messages;
-}
-
-void ItemHandler::handleMessage(Net::MessageIn &msg)
-{
-    BLOCK_START("ItemHandler::handleMessage")
-    switch (msg.getId())
-    {
-        case SMSG_ITEM_VISIBLE:
-            ItemRecv::processItemVisible(msg);
-            break;
-
-        case SMSG_ITEM_DROPPED:
-            ItemRecv::processItemDropped(msg);
-            break;
-
-        case SMSG_ITEM_REMOVE:
-            Ea::ItemRecv::processItemRemove(msg);
-            break;
-
-        default:
-            break;
-    }
-    BLOCK_END("ItemHandler::handleMessage")
 }
 
 }  // namespace TmwAthena

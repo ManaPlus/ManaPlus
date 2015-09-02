@@ -43,71 +43,13 @@ namespace TmwAthena
 {
 
 PartyHandler::PartyHandler() :
-    MessageHandler(),
     Ea::PartyHandler()
 {
-    static const uint16_t _messages[] =
-    {
-        SMSG_PARTY_CREATE,
-        SMSG_PARTY_INFO,
-        SMSG_PARTY_INVITE_RESPONSE,
-        SMSG_PARTY_INVITED,
-        SMSG_PARTY_SETTINGS,
-        SMSG_PARTY_MOVE,
-        SMSG_PARTY_LEAVE,
-        SMSG_PARTY_UPDATE_HP,
-        SMSG_PARTY_UPDATE_COORDS,
-        SMSG_PARTY_MESSAGE,
-        0
-    };
-    handledMessages = _messages;
     partyHandler = this;
 }
 
 PartyHandler::~PartyHandler()
 {
-}
-
-void PartyHandler::handleMessage(Net::MessageIn &msg)
-{
-    BLOCK_START("PartyHandler::handleMessage")
-    switch (msg.getId())
-    {
-        case SMSG_PARTY_CREATE:
-            Ea::PartyRecv::processPartyCreate(msg);
-            break;
-        case SMSG_PARTY_INFO:
-            PartyRecv::processPartyInfo(msg);
-            break;
-        case SMSG_PARTY_INVITE_RESPONSE:
-            PartyRecv::processPartyInviteResponse(msg);
-            break;
-        case SMSG_PARTY_INVITED:
-            PartyRecv::processPartyInvited(msg);
-            break;
-        case SMSG_PARTY_SETTINGS:
-            PartyRecv::processPartySettings(msg);
-            break;
-        case SMSG_PARTY_MOVE:
-            PartyRecv::processPartyMove(msg);
-            break;
-        case SMSG_PARTY_LEAVE:
-            Ea::PartyRecv::processPartyLeave(msg);
-            break;
-        case SMSG_PARTY_UPDATE_HP:
-            PartyRecv::processPartyUpdateHp(msg);
-            break;
-        case SMSG_PARTY_UPDATE_COORDS:
-            Ea::PartyRecv::processPartyUpdateCoords(msg);
-            break;
-        case SMSG_PARTY_MESSAGE:
-            PartyRecv::processPartyMessage(msg);
-            break;
-
-        default:
-            break;
-    }
-    BLOCK_END("PartyHandler::handleMessage")
 }
 
 void PartyHandler::create(const std::string &name) const

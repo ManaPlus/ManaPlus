@@ -25,12 +25,10 @@
 
 #include "net/ea/loginhandler.h"
 
-#include "net/tmwa/messagehandler.h"
-
 namespace TmwAthena
 {
 
-class LoginHandler final : public MessageHandler, public Ea::LoginHandler
+class LoginHandler final : public Ea::LoginHandler
 {
     public:
         LoginHandler();
@@ -38,8 +36,6 @@ class LoginHandler final : public MessageHandler, public Ea::LoginHandler
         A_DELETE_COPY(LoginHandler)
 
         ~LoginHandler();
-
-        void handleMessage(Net::MessageIn &msg) override final;
 
         void connect() override final;
 

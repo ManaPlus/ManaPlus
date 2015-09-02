@@ -25,23 +25,18 @@
 
 #include "net/ea/charserverhandler.h"
 
-#include "net/eathena/messagehandler.h"
-
 namespace EAthena
 {
 
 /**
  * Deals with incoming messages from the character server.
  */
-class CharServerHandler final : public MessageHandler,
-                                public Ea::CharServerHandler
+class CharServerHandler final : public Ea::CharServerHandler
 {
     public:
         CharServerHandler();
 
         A_DELETE_COPY(CharServerHandler)
-
-        void handleMessage(Net::MessageIn &msg) override final;
 
         void chooseCharacter(Net::Character *const character) override final;
 

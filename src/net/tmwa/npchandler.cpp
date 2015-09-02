@@ -28,12 +28,13 @@
 
 #include "gui/widgets/createwidget.h"
 
-#include "net/ea/npcrecv.h"
+#include "net/messagein.h"
 
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
 
 #include "net/ea/eaprotocol.h"
+#include "net/ea/npcrecv.h"
 
 #include "debug.h"
 
@@ -43,69 +44,9 @@ namespace TmwAthena
 {
 
 NpcHandler::NpcHandler() :
-    MessageHandler(),
     Ea::NpcHandler()
 {
-    static const uint16_t _messages[] =
-    {
-        SMSG_NPC_CHOICE,
-        SMSG_NPC_MESSAGE,
-        SMSG_NPC_NEXT,
-        SMSG_NPC_CLOSE,
-        SMSG_NPC_INT_INPUT,
-        SMSG_NPC_STR_INPUT,
-        SMSG_NPC_COMMAND,
-        SMSG_NPC_CHANGETITLE,
-        0
-    };
-    handledMessages = _messages;
     npcHandler = this;
-}
-
-void NpcHandler::handleMessage(Net::MessageIn &msg)
-{
-    BLOCK_START("NpcHandler::handleMessage")
-
-    switch (msg.getId())
-    {
-        case SMSG_NPC_CHOICE:
-            Ea::NpcRecv::processNpcChoice(msg);
-            break;
-
-        case SMSG_NPC_MESSAGE:
-            Ea::NpcRecv::processNpcMessage(msg);
-            break;
-
-        case SMSG_NPC_CLOSE:
-            Ea::NpcRecv::processNpcClose(msg);
-            break;
-
-        case SMSG_NPC_NEXT:
-            Ea::NpcRecv::processNpcNext(msg);
-            break;
-
-        case SMSG_NPC_INT_INPUT:
-            Ea::NpcRecv::processNpcIntInput(msg);
-            break;
-
-        case SMSG_NPC_STR_INPUT:
-            Ea::NpcRecv::processNpcStrInput(msg);
-            break;
-
-        case SMSG_NPC_COMMAND:
-            Ea::NpcRecv::processNpcCommand(msg);
-            break;
-
-        case SMSG_NPC_CHANGETITLE:
-            Ea::NpcRecv::processChangeTitle(msg);
-            break;
-
-        default:
-            break;
-    }
-
-    Ea::NpcRecv::mDialog = nullptr;
-    BLOCK_END("NpcHandler::handleMessage")
 }
 
 void NpcHandler::talk(const BeingId npcId) const

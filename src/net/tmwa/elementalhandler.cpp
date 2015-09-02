@@ -27,24 +27,9 @@ extern Net::ElementalHandler *elementalHandler;
 namespace TmwAthena
 {
 
-ElementalHandler::ElementalHandler() :
-    MessageHandler()
+ElementalHandler::ElementalHandler()
 {
-    static const uint16_t _messages[] =
-    {
-        0
-    };
-    handledMessages = _messages;
     elementalHandler = this;
-}
-
-void ElementalHandler::handleMessage(Net::MessageIn &msg)
-{
-    switch (msg.getId())
-    {
-        default:
-            break;
-    }
 }
 
 }  // namespace TmwAthena

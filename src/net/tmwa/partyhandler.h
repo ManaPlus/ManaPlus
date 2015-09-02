@@ -22,14 +22,12 @@
 #ifndef NET_TMWA_PARTYHANDLER_H
 #define NET_TMWA_PARTYHANDLER_H
 
-#include "net/tmwa/messagehandler.h"
-
 #include "net/ea/partyhandler.h"
 
 namespace TmwAthena
 {
 
-class PartyHandler final : public MessageHandler, public Ea::PartyHandler
+class PartyHandler final : public Ea::PartyHandler
 {
     public:
         PartyHandler();
@@ -37,8 +35,6 @@ class PartyHandler final : public MessageHandler, public Ea::PartyHandler
         A_DELETE_COPY(PartyHandler)
 
         ~PartyHandler();
-
-        void handleMessage(Net::MessageIn &msg) override final;
 
         void create(const std::string &name) const override final;
 

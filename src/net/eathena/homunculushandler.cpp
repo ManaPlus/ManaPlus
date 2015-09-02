@@ -35,49 +35,9 @@ extern Net::HomunculusHandler *homunculusHandler;
 namespace EAthena
 {
 
-HomunculusHandler::HomunculusHandler() :
-    MessageHandler()
+HomunculusHandler::HomunculusHandler()
 {
-    static const uint16_t _messages[] =
-    {
-        SMSG_HOMUNCULUS_SKILLS,
-        SMSG_HOMUNCULUS_DATA,
-        SMSG_HOMUNCULUS_INFO,
-        SMSG_HOMUNCULUS_SKILL_UP,
-        SMSG_HOMUNCULUS_FOOD,
-        0
-    };
-    handledMessages = _messages;
     homunculusHandler = this;
-}
-
-void HomunculusHandler::handleMessage(Net::MessageIn &msg)
-{
-    switch (msg.getId())
-    {
-        case SMSG_HOMUNCULUS_SKILLS:
-            HomunculusRecv::processHomunculusSkills(msg);
-            break;
-
-        case SMSG_HOMUNCULUS_DATA:
-            HomunculusRecv::processHomunculusData(msg);
-            break;
-
-        case SMSG_HOMUNCULUS_INFO:
-            HomunculusRecv::processHomunculusInfo(msg);
-            break;
-
-        case SMSG_HOMUNCULUS_SKILL_UP:
-            HomunculusRecv::processHomunculusSkillUp(msg);
-            break;
-
-        case SMSG_HOMUNCULUS_FOOD:
-            HomunculusRecv::processHomunculusFood(msg);
-            break;
-
-        default:
-            break;
-    }
 }
 
 void HomunculusHandler::setName(const std::string &name) const

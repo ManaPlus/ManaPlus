@@ -25,19 +25,15 @@
 
 #include "net/ea/skillhandler.h"
 
-#include "net/tmwa/messagehandler.h"
-
 namespace TmwAthena
 {
 
-class SkillHandler final : public MessageHandler, public Ea::SkillHandler
+class SkillHandler final : public Ea::SkillHandler
 {
     public:
         SkillHandler();
 
         A_DELETE_COPY(SkillHandler)
-
-        void handleMessage(Net::MessageIn &msg) override final;
 
         void useBeing(const int id,
                       const int level,

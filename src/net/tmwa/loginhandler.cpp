@@ -43,55 +43,13 @@ namespace TmwAthena
 extern ServerInfo charServer;
 
 LoginHandler::LoginHandler() :
-    MessageHandler(),
     Ea::LoginHandler()
 {
-    static const uint16_t _messages[] =
-    {
-        SMSG_UPDATE_HOST,
-        SMSG_LOGIN_DATA,
-        SMSG_LOGIN_ERROR,
-        SMSG_CHAR_PASSWORD_RESPONSE,
-        SMSG_SERVER_VERSION_RESPONSE,
-        0
-    };
-    handledMessages = _messages;
     loginHandler = this;
 }
 
 LoginHandler::~LoginHandler()
 {
-}
-
-void LoginHandler::handleMessage(Net::MessageIn &msg)
-{
-    BLOCK_START("LoginHandler::handleMessage")
-    switch (msg.getId())
-    {
-        case SMSG_CHAR_PASSWORD_RESPONSE:
-            LoginRecv::processCharPasswordResponse(msg);
-            break;
-
-        case SMSG_UPDATE_HOST:
-            Ea::LoginRecv::processUpdateHost(msg);
-            break;
-
-        case SMSG_LOGIN_DATA:
-            Ea::LoginRecv::processLoginData(msg);
-            break;
-
-        case SMSG_LOGIN_ERROR:
-            Ea::LoginRecv::processLoginError(msg);
-            break;
-
-        case SMSG_SERVER_VERSION_RESPONSE:
-            LoginRecv::processServerVersion(msg);
-            break;
-
-        default:
-            break;
-    }
-    BLOCK_END("LoginHandler::handleMessage")
 }
 
 void LoginHandler::connect()

@@ -25,20 +25,15 @@
 
 #include "net/bankhandler.h"
 
-#include "net/tmwa/messagehandler.h"
-
 namespace TmwAthena
 {
 
-class BankHandler final : public MessageHandler,
-                          public Net::BankHandler
+class BankHandler final : public Net::BankHandler
 {
     public:
         BankHandler();
 
         A_DELETE_COPY(BankHandler)
-
-        void handleMessage(Net::MessageIn &msg) override final;
 
         void deposit(const int money) const override final;
 

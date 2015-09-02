@@ -40,40 +40,9 @@ namespace EAthena
 std::string AdminHandler::mStatsName;
 
 AdminHandler::AdminHandler() :
-    MessageHandler(),
     Ea::AdminHandler()
 {
-    static const uint16_t _messages[] =
-    {
-        SMSG_ADMIN_KICK_ACK,
-        SMSG_ADMIN_GET_LOGIN_ACK,
-        SMSG_ADMIN_SET_TILE_TYPE,
-        SMSG_ADMIN_ACCOUNT_STATS,
-        0
-    };
-    handledMessages = _messages;
     adminHandler = this;
-}
-
-void AdminHandler::handleMessage(Net::MessageIn &msg)
-{
-    switch (msg.getId())
-    {
-        case SMSG_ADMIN_KICK_ACK:
-            Ea::AdminRecv::processKickAck(msg);
-            break;
-        case SMSG_ADMIN_GET_LOGIN_ACK:
-            AdminRecv::processAdminGetLoginAck(msg);
-            break;
-        case SMSG_ADMIN_SET_TILE_TYPE:
-            AdminRecv::processSetTileType(msg);
-            break;
-        case SMSG_ADMIN_ACCOUNT_STATS:
-            AdminRecv::processAccountStats(msg);
-            break;
-        default:
-            break;
-    }
 }
 
 void AdminHandler::announce(const std::string &text) const

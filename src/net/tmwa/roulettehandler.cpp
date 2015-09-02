@@ -27,24 +27,9 @@ extern Net::RouletteHandler *rouletteHandler;
 namespace TmwAthena
 {
 
-RouletteHandler::RouletteHandler() :
-    MessageHandler()
+RouletteHandler::RouletteHandler()
 {
-    static const uint16_t _messages[] =
-    {
-        0
-    };
-    handledMessages = _messages;
     rouletteHandler = this;
-}
-
-void RouletteHandler::handleMessage(Net::MessageIn &msg)
-{
-    switch (msg.getId())
-    {
-        default:
-            break;
-    }
 }
 
 }  // namespace TmwAthena

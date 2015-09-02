@@ -31,64 +31,9 @@ extern Net::BattleGroundHandler *battleGroundHandler;
 namespace EAthena
 {
 
-BattleGroundHandler::BattleGroundHandler() :
-    MessageHandler()
+BattleGroundHandler::BattleGroundHandler()
 {
-    static const uint16_t _messages[] =
-    {
-        SMSG_BATTLE_EMBLEM,
-        SMSG_BATTLE_UPDATE_SCORE,
-        SMSG_BATTLE_UPDATE_COORDS,
-        SMSG_BATTLE_PLAY,
-        SMSG_BATTLE_QUEUE_ACK,
-        SMSG_BATTLE_BEGINS,
-        SMSG_BATTLE_NOTICE_DELETE,
-        SMSG_BATTLE_JOINED,
-        0
-    };
-    handledMessages = _messages;
     battleGroundHandler = this;
-}
-
-void BattleGroundHandler::handleMessage(Net::MessageIn &msg)
-{
-    switch (msg.getId())
-    {
-        case SMSG_BATTLE_EMBLEM:
-            BattleGroundRecv::processBattleEmblem(msg);
-            break;
-
-        case SMSG_BATTLE_UPDATE_SCORE:
-            BattleGroundRecv::processBattleUpdateScore(msg);
-            break;
-
-        case SMSG_BATTLE_UPDATE_COORDS:
-            BattleGroundRecv::processBattleUpdateCoords(msg);
-            break;
-
-        case SMSG_BATTLE_PLAY:
-            BattleGroundRecv::processBattlePlay(msg);
-            break;
-
-        case SMSG_BATTLE_QUEUE_ACK:
-            BattleGroundRecv::processBattleQueueAck(msg);
-            break;
-
-        case SMSG_BATTLE_BEGINS:
-            BattleGroundRecv::processBattleBegins(msg);
-            break;
-
-        case SMSG_BATTLE_NOTICE_DELETE:
-            BattleGroundRecv::processBattleNoticeDelete(msg);
-            break;
-
-        case SMSG_BATTLE_JOINED:
-            BattleGroundRecv::processBattleJoined(msg);
-            break;
-
-        default:
-            break;
-    }
 }
 
 void BattleGroundHandler::registerBg(const BattleGroundTypeT &type,

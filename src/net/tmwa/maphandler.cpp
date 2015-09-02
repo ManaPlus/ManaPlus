@@ -27,19 +27,9 @@ extern Net::MapHandler *mapHandler;
 namespace TmwAthena
 {
 
-MapHandler::MapHandler() :
-    MessageHandler()
+MapHandler::MapHandler()
 {
-    static const uint16_t _messages[] =
-    {
-        0
-    };
-    handledMessages = _messages;
     mapHandler = this;
-}
-
-void MapHandler::handleMessage(Net::MessageIn &msg A_UNUSED)
-{
 }
 
 }  // namespace TmwAthena

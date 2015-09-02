@@ -44,63 +44,13 @@ namespace EAthena
 extern ServerInfo charServer;
 
 LoginHandler::LoginHandler() :
-    MessageHandler(),
     Ea::LoginHandler()
 {
-    static const uint16_t _messages[] =
-    {
-        SMSG_LOGIN_DATA,
-        SMSG_LOGIN_ERROR,
-        SMSG_LOGIN_ERROR2,
-        SMSG_SERVER_VERSION_RESPONSE,
-        SMSG_UPDATE_HOST,
-        SMSG_LOGIN_CODING_KEY,
-        SMSG_CHAR_PASSWORD_RESPONSE,
-        0
-    };
-    handledMessages = _messages;
     loginHandler = this;
 }
 
 LoginHandler::~LoginHandler()
 {
-}
-
-void LoginHandler::handleMessage(Net::MessageIn &msg)
-{
-    switch (msg.getId())
-    {
-        case SMSG_LOGIN_DATA:
-            Ea::LoginRecv::processLoginData(msg);
-            break;
-
-        case SMSG_LOGIN_ERROR:
-            Ea::LoginRecv::processLoginError(msg);
-            break;
-
-        case SMSG_LOGIN_ERROR2:
-            LoginRecv::processLoginError2(msg);
-            break;
-
-        case SMSG_SERVER_VERSION_RESPONSE:
-            LoginRecv::processServerVersion(msg);
-            break;
-
-        case SMSG_UPDATE_HOST:
-            Ea::LoginRecv::processUpdateHost(msg);
-            break;
-
-        case SMSG_LOGIN_CODING_KEY:
-            LoginRecv::processCondingKey(msg);
-            break;
-
-        case SMSG_CHAR_PASSWORD_RESPONSE:
-            LoginRecv::processCharPasswordResponse(msg);
-            break;
-
-        default:
-            break;
-    }
 }
 
 void LoginHandler::connect()

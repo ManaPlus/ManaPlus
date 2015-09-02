@@ -27,19 +27,9 @@ extern Net::HomunculusHandler *homunculusHandler;
 namespace TmwAthena
 {
 
-HomunculusHandler::HomunculusHandler() :
-    MessageHandler()
+HomunculusHandler::HomunculusHandler()
 {
-    static const uint16_t _messages[] =
-    {
-        0
-    };
-    handledMessages = _messages;
     homunculusHandler = this;
-}
-
-void HomunculusHandler::handleMessage(Net::MessageIn &msg A_UNUSED)
-{
 }
 
 void HomunculusHandler::setName(const std::string &name A_UNUSED) const

@@ -27,24 +27,9 @@ extern Net::MarketHandler *marketHandler;
 namespace TmwAthena
 {
 
-MarketHandler::MarketHandler() :
-    MessageHandler()
+MarketHandler::MarketHandler()
 {
-    static const uint16_t _messages[] =
-    {
-        0
-    };
-    handledMessages = _messages;
     marketHandler = this;
-}
-
-void MarketHandler::handleMessage(Net::MessageIn &msg)
-{
-    switch (msg.getId())
-    {
-        default:
-            break;
-    }
 }
 
 void MarketHandler::close()

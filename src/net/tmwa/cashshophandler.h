@@ -25,20 +25,15 @@
 
 #include "net/cashshophandler.h"
 
-#include "net/tmwa/messagehandler.h"
-
 namespace TmwAthena
 {
 
-class CashShopHandler final : public MessageHandler,
-                              public Net::CashShopHandler
+class CashShopHandler final : public Net::CashShopHandler
 {
     public:
         CashShopHandler();
 
         A_DELETE_COPY(CashShopHandler)
-
-        void handleMessage(Net::MessageIn &msg) override final;
 
         void buyItem(const int points,
                      const int itemId,

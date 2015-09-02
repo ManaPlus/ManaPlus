@@ -30,34 +30,9 @@ extern Net::ElementalHandler *elementalHandler;
 namespace EAthena
 {
 
-ElementalHandler::ElementalHandler() :
-    MessageHandler()
+ElementalHandler::ElementalHandler()
 {
-    static const uint16_t _messages[] =
-    {
-        SMSG_ELEMENTAL_UPDATE_STATUS,
-        SMSG_ELEMENTAL_INFO,
-        0
-    };
-    handledMessages = _messages;
     elementalHandler = this;
-}
-
-void ElementalHandler::handleMessage(Net::MessageIn &msg)
-{
-    switch (msg.getId())
-    {
-        case SMSG_ELEMENTAL_UPDATE_STATUS:
-            ElementalRecv::processElementalUpdateStatus(msg);
-            break;
-
-        case SMSG_ELEMENTAL_INFO:
-            ElementalRecv::processElementalInfo(msg);
-            break;
-
-        default:
-            break;
-    }
 }
 
 }  // namespace EAthena

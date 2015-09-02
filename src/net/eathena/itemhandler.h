@@ -23,21 +23,17 @@
 #ifndef NET_EATHENA_ITEMHANDLER_H
 #define NET_EATHENA_ITEMHANDLER_H
 
-#include "net/eathena/messagehandler.h"
-
 #include "net/ea/itemhandler.h"
 
 namespace EAthena
 {
 
-class ItemHandler final : public MessageHandler, public Ea::ItemHandler
+class ItemHandler final : public Ea::ItemHandler
 {
     public:
         ItemHandler();
 
         A_DELETE_COPY(ItemHandler)
-
-        void handleMessage(Net::MessageIn &msg) override final;
 };
 
 }  // namespace EAthena

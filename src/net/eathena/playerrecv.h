@@ -25,8 +25,6 @@
 
 #include "net/ea/playerhandler.h"
 
-#include "net/eathena/messagehandler.h"
-
 namespace EAthena
 {
     namespace PlayerRecv

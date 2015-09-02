@@ -44,68 +44,9 @@ namespace TmwAthena
 {
 
 ChatHandler::ChatHandler() :
-    MessageHandler(),
     Ea::ChatHandler()
 {
-    static const uint16_t _messages[] =
-    {
-        SMSG_BEING_CHAT,
-        SMSG_PLAYER_CHAT,
-        SMSG_WHISPER,
-        SMSG_WHISPER_RESPONSE,
-        SMSG_GM_CHAT,
-        SMSG_MVP_EFFECT,
-        SMSG_IGNORE_ALL_RESPONSE,
-        SMSG_SCRIPT_MESSAGE,
-        0
-    };
-    handledMessages = _messages;
     chatHandler = this;
-}
-
-void ChatHandler::handleMessage(Net::MessageIn &msg)
-{
-    BLOCK_START("ChatHandler::handleMessage")
-    switch (msg.getId())
-    {
-        case SMSG_WHISPER_RESPONSE:
-            ChatRecv::processWhisperResponse(msg);
-            break;
-
-        // Received whisper
-        case SMSG_WHISPER:
-            ChatRecv::processWhisper(msg);
-            break;
-
-        // Received speech from being
-        case SMSG_BEING_CHAT:
-            ChatRecv::processBeingChat(msg);
-            break;
-
-        case SMSG_PLAYER_CHAT:
-            ChatRecv::processChat(msg);
-            break;
-
-        case SMSG_GM_CHAT:
-            ChatRecv::processGmChat(msg);
-            break;
-
-        case SMSG_MVP_EFFECT:
-            Ea::ChatRecv::processMVPEffect(msg);
-            break;
-
-        case SMSG_IGNORE_ALL_RESPONSE:
-            Ea::ChatRecv::processIgnoreAllResponse(msg);
-            break;
-
-        case SMSG_SCRIPT_MESSAGE:
-            ChatRecv::processScriptMessage(msg);
-            break;
-
-        default:
-            break;
-    }
-    BLOCK_END("ChatHandler::handleMessage")
 }
 
 void ChatHandler::talk(const std::string &restrict text,

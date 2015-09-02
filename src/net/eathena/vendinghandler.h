@@ -23,21 +23,16 @@
 
 #include "net/vendinghandler.h"
 
-#include "net/eathena/messagehandler.h"
-
 class BuyDialog;
 
 namespace EAthena
 {
-class VendingHandler final : public MessageHandler,
-                             public Net::VendingHandler
+class VendingHandler final : public Net::VendingHandler
 {
     public:
         VendingHandler();
 
         A_DELETE_COPY(VendingHandler)
-
-        void handleMessage(Net::MessageIn &msg) override final;
 
         void close() const override final;
 

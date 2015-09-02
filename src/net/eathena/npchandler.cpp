@@ -28,13 +28,14 @@
 
 #include "gui/widgets/createwidget.h"
 
+#include "net/messagein.h"
+
+#include "net/ea/eaprotocol.h"
 #include "net/ea/npcrecv.h"
 
 #include "net/eathena/messageout.h"
 #include "net/eathena/npcrecv.h"
 #include "net/eathena/protocol.h"
-
-#include "net/ea/eaprotocol.h"
 
 #include "debug.h"
 
@@ -44,101 +45,9 @@ namespace EAthena
 {
 
 NpcHandler::NpcHandler() :
-    MessageHandler(),
     Ea::NpcHandler()
 {
-    static const uint16_t _messages[] =
-    {
-        SMSG_NPC_CHOICE,
-        SMSG_NPC_MESSAGE,
-        SMSG_NPC_NEXT,
-        SMSG_NPC_CLOSE,
-        SMSG_NPC_INT_INPUT,
-        SMSG_NPC_STR_INPUT,
-        SMSG_NPC_CUTIN,
-        SMSG_NPC_VIEWPOINT,
-        SMSG_NPC_SHOW_PROGRESS_BAR,
-        SMSG_NPC_CLOSE_TIMEOUT,
-        SMSG_NPC_COMMAND,
-        SMSG_NPC_CHANGETITLE,
-        SMSG_NPC_AREA,
-        SMSG_NPC_SHOW_DIGIT,
-        SMSG_NPC_PROGRESS_BAR_ABORT,
-        0
-    };
-    handledMessages = _messages;
     npcHandler = this;
-}
-
-void NpcHandler::handleMessage(Net::MessageIn &msg)
-{
-    switch (msg.getId())
-    {
-        case SMSG_NPC_CHOICE:
-            Ea::NpcRecv::processNpcChoice(msg);
-            break;
-
-        case SMSG_NPC_MESSAGE:
-            Ea::NpcRecv::processNpcMessage(msg);
-            break;
-
-        case SMSG_NPC_CLOSE:
-            Ea::NpcRecv::processNpcClose(msg);
-            break;
-
-        case SMSG_NPC_NEXT:
-            Ea::NpcRecv::processNpcNext(msg);
-            break;
-
-        case SMSG_NPC_INT_INPUT:
-            Ea::NpcRecv::processNpcIntInput(msg);
-            break;
-
-        case SMSG_NPC_STR_INPUT:
-            Ea::NpcRecv::processNpcStrInput(msg);
-            break;
-
-        case SMSG_NPC_CUTIN:
-            NpcRecv::processNpcCutin(msg);
-            break;
-
-        case SMSG_NPC_VIEWPOINT:
-            NpcRecv::processNpcViewPoint(msg);
-            break;
-
-        case SMSG_NPC_SHOW_PROGRESS_BAR:
-            NpcRecv::processNpcShowProgressBar(msg);
-            break;
-
-        case SMSG_NPC_CLOSE_TIMEOUT:
-            NpcRecv::processNpcCloseTimeout(msg);
-            break;
-
-        case SMSG_NPC_COMMAND:
-            Ea::NpcRecv::processNpcCommand(msg);
-            break;
-
-        case SMSG_NPC_CHANGETITLE:
-            Ea::NpcRecv::processChangeTitle(msg);
-            break;
-
-        case SMSG_NPC_AREA:
-            NpcRecv::processArea(msg);
-            break;
-
-        case SMSG_NPC_SHOW_DIGIT:
-            NpcRecv::processShowDigit(msg);
-            break;
-
-        case SMSG_NPC_PROGRESS_BAR_ABORT:
-            NpcRecv::processProgressBarAbort(msg);
-            break;
-
-        default:
-            break;
-    }
-
-    Ea::NpcRecv::mDialog = nullptr;
 }
 
 void NpcHandler::talk(const BeingId npcId) const

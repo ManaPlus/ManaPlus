@@ -31,49 +31,9 @@ extern Net::FriendsHandler *friendsHandler;
 namespace EAthena
 {
 
-FriendsHandler::FriendsHandler() :
-    MessageHandler()
+FriendsHandler::FriendsHandler()
 {
-    static const uint16_t _messages[] =
-    {
-        SMSG_FRIENDS_PLAYER_ONLINE,
-        SMSG_FRIENDS_LIST,
-        SMSG_FRIENDS_REQUEST_ACK,
-        SMSG_FRIENDS_REQUEST,
-        SMSG_FRIENDS_DELETE_PLAYER,
-        0
-    };
-    handledMessages = _messages;
     friendsHandler = this;
-}
-
-void FriendsHandler::handleMessage(Net::MessageIn &msg)
-{
-    switch (msg.getId())
-    {
-        case SMSG_FRIENDS_PLAYER_ONLINE:
-            FriendsRecv::processPlayerOnline(msg);
-            break;
-
-        case SMSG_FRIENDS_LIST:
-            FriendsRecv::processFriendsList(msg);
-            break;
-
-        case SMSG_FRIENDS_REQUEST_ACK:
-            FriendsRecv::processRequestAck(msg);
-            break;
-
-        case SMSG_FRIENDS_REQUEST:
-            FriendsRecv::processRequest(msg);
-            break;
-
-        case SMSG_FRIENDS_DELETE_PLAYER:
-            FriendsRecv::processDeletePlayer(msg);
-            break;
-
-        default:
-            break;
-    }
 }
 
 void FriendsHandler::invite(const std::string &name) const

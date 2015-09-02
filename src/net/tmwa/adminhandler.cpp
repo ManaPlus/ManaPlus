@@ -41,31 +41,9 @@ namespace TmwAthena
 {
 
 AdminHandler::AdminHandler() :
-    MessageHandler(),
     Ea::AdminHandler()
 {
-    static const uint16_t _messages[] =
-    {
-        SMSG_ADMIN_KICK_ACK,
-        0
-    };
-    handledMessages = _messages;
     adminHandler = this;
-}
-
-void AdminHandler::handleMessage(Net::MessageIn &msg)
-{
-    BLOCK_START("AdminHandler::handleMessage")
-    switch (msg.getId())
-    {
-        case SMSG_ADMIN_KICK_ACK:
-            Ea::AdminRecv::processKickAck(msg);
-            break;
-
-        default:
-            break;
-    }
-    BLOCK_END("AdminHandler::handleMessage")
 }
 
 void AdminHandler::announce(const std::string &text) const

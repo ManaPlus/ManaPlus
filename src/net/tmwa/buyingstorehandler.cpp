@@ -27,19 +27,9 @@ extern Net::BuyingStoreHandler *buyingStoreHandler;
 namespace TmwAthena
 {
 
-BuyingStoreHandler::BuyingStoreHandler() :
-    MessageHandler()
+BuyingStoreHandler::BuyingStoreHandler()
 {
-    static const uint16_t _messages[] =
-    {
-        0
-    };
-    handledMessages = _messages;
     buyingStoreHandler = this;
-}
-
-void BuyingStoreHandler::handleMessage(Net::MessageIn &msg A_UNUSED)
-{
 }
 
 void BuyingStoreHandler::create(const std::string &name A_UNUSED,

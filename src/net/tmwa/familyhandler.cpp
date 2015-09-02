@@ -27,19 +27,9 @@ extern Net::FamilyHandler *familyHandler;
 namespace TmwAthena
 {
 
-FamilyHandler::FamilyHandler() :
-    MessageHandler()
+FamilyHandler::FamilyHandler()
 {
-    static const uint16_t _messages[] =
-    {
-        0
-    };
-    handledMessages = _messages;
     familyHandler = this;
-}
-
-void FamilyHandler::handleMessage(Net::MessageIn &msg A_UNUSED)
-{
 }
 
 void FamilyHandler::askForChild(const Being *const being A_UNUSED)

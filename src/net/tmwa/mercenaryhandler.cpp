@@ -27,19 +27,9 @@ extern Net::MercenaryHandler *mercenaryHandler;
 namespace TmwAthena
 {
 
-MercenaryHandler::MercenaryHandler() :
-    MessageHandler()
+MercenaryHandler::MercenaryHandler()
 {
-    static const uint16_t _messages[] =
-    {
-        0
-    };
-    handledMessages = _messages;
     mercenaryHandler = this;
-}
-
-void MercenaryHandler::handleMessage(Net::MessageIn &msg A_UNUSED)
-{
 }
 
 void MercenaryHandler::fire()

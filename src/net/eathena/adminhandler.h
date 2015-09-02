@@ -25,19 +25,15 @@
 
 #include "net/ea/adminhandler.h"
 
-#include "net/eathena/messagehandler.h"
-
 namespace EAthena
 {
 
-class AdminHandler final : public MessageHandler, public Ea::AdminHandler
+class AdminHandler final : public Ea::AdminHandler
 {
     public:
         AdminHandler();
 
         A_DELETE_COPY(AdminHandler)
-
-        void handleMessage(Net::MessageIn &msg) override final;
 
         void announce(const std::string &text) const override final;
 

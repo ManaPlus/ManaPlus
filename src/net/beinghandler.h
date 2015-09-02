@@ -37,8 +37,6 @@ class BeingHandler notfinal
         virtual ~BeingHandler()
         { }
 
-        virtual void handleMessage(Net::MessageIn &msg) = 0;
-
         virtual void requestNameById(const BeingId id) const = 0;
 
         virtual void undress(Being *const being) const = 0;

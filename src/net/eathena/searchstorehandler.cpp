@@ -36,44 +36,9 @@ extern Net::SearchStoreHandler *searchStoreHandler;
 namespace EAthena
 {
 
-SearchStoreHandler::SearchStoreHandler() :
-    MessageHandler()
+SearchStoreHandler::SearchStoreHandler()
 {
-    static const uint16_t _messages[] =
-    {
-        SMSG_SEARCHSTORE_SEARCH_ACK,
-        SMSG_SEARCHSTORE_SEARCH_FAILED,
-        SMSG_SEARCHSTORE_OPEN,
-        SMSG_SEARCHSTORE_CLICK_ACK,
-        0
-    };
-    handledMessages = _messages;
     searchStoreHandler = this;
-}
-
-void SearchStoreHandler::handleMessage(Net::MessageIn &msg)
-{
-    switch (msg.getId())
-    {
-        case SMSG_SEARCHSTORE_SEARCH_ACK:
-            SearchStoreRecv::processSearchAck(msg);
-            break;
-
-        case SMSG_SEARCHSTORE_SEARCH_FAILED:
-            SearchStoreRecv::processSearchFailed(msg);
-            break;
-
-        case SMSG_SEARCHSTORE_OPEN:
-            SearchStoreRecv::processSearchOpen(msg);
-            break;
-
-        case SMSG_SEARCHSTORE_CLICK_ACK:
-            SearchStoreRecv::processSearchClickAck(msg);
-            break;
-
-        default:
-            break;
-    }
 }
 
 void SearchStoreHandler::search(const StoreSearchTypeT type,
