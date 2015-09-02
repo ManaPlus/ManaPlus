@@ -704,7 +704,7 @@ namespace NotifyManager
             NotifyFlags::EMPTY},
         {"ignore player success",
             // TRANSLATORS: notification message
-            N_("Player succesfully ignored."),
+            N_("Player successfully ignored."),
             NotifyFlags::EMPTY},
         {"ignore player failure",
             // TRANSLATORS: notification message
@@ -720,7 +720,7 @@ namespace NotifyManager
             NotifyFlags::EMPTY},
         {"unignore player success",
             // TRANSLATORS: notification message
-            N_("Player succesfully unignored."),
+            N_("Player successfully unignored."),
             NotifyFlags::EMPTY},
         {"unignore player failure",
             // TRANSLATORS: notification message
