@@ -29,6 +29,8 @@
 #include "utils/gettext.h"
 #include "utils/sdlhelper.h"
 
+#include "net/packetinfo.h"
+
 #include <sstream>
 
 #include "debug.h"
