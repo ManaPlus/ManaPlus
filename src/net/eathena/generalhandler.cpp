@@ -32,8 +32,6 @@
 #include "gui/widgets/tabs/chat/guildtab.h"
 #include "gui/widgets/tabs/chat/partytab.h"
 
-#include "net/eathena/generalrecv.h"
-
 #include "net/eathena/adminhandler.h"
 #include "net/eathena/auctionhandler.h"
 #include "net/eathena/bankhandler.h"
@@ -62,7 +60,6 @@
 #include "net/eathena/partyhandler.h"
 #include "net/eathena/pethandler.h"
 #include "net/eathena/playerhandler.h"
-#include "net/eathena/protocol.h"
 #include "net/eathena/roulettehandler.h"
 #include "net/eathena/searchstorehandler.h"
 #include "net/eathena/serverfeatures.h"

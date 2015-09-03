@@ -24,7 +24,6 @@
 
 #include "net/ea/eaprotocol.h"
 
-#include "net/eathena/auctionrecv.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 

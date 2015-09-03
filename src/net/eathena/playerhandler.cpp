@@ -22,31 +22,11 @@
 
 #include "net/eathena/playerhandler.h"
 
-#include "configuration.h"
-#include "game.h"
-#include "notifymanager.h"
-
-#include "being/beingflag.h"
-#include "being/localplayer.h"
 #include "being/playerinfo.h"
 
-#include "enums/resources/notifytypes.h"
-
-#include "gui/onlineplayer.h"
-
-#include "gui/windows/statuswindow.h"
-#include "gui/windows/whoisonline.h"
-
-#include "input/inputmanager.h"
-
-#include "net/ea/playerrecv.h"
-
 #include "net/eathena/messageout.h"
-#include "net/eathena/playerrecv.h"
 #include "net/eathena/protocol.h"
 #include "net/eathena/inventoryhandler.h"
-
-#include "resources/map/map.h"
 
 #include "debug.h"
 

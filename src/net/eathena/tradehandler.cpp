@@ -22,18 +22,9 @@
 
 #include "net/eathena/tradehandler.h"
 
-#include "inventory.h"
 #include "item.h"
-#include "itemcolormanager.h"
-#include "notifymanager.h"
 
 #include "being/playerinfo.h"
-
-#include "enums/resources/notifytypes.h"
-
-#include "gui/windows/tradewindow.h"
-
-#include "net/ea/traderecv.h"
 
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"

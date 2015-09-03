@@ -32,8 +32,6 @@
 #include "gui/widgets/tabs/chat/guildtab.h"
 #include "gui/widgets/tabs/chat/partytab.h"
 
-#include "net/tmwa/generalrecv.h"
-
 #include "net/tmwa/adminhandler.h"
 #include "net/tmwa/beinghandler.h"
 #include "net/tmwa/buysellhandler.h"
@@ -49,7 +47,6 @@
 #include "net/tmwa/partyhandler.h"
 #include "net/tmwa/pethandler.h"
 #include "net/tmwa/playerhandler.h"
-#include "net/tmwa/protocol.h"
 #include "net/tmwa/serverfeatures.h"
 #include "net/tmwa/tradehandler.h"
 #include "net/tmwa/skillhandler.h"

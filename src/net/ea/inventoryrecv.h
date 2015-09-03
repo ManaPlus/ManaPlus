@@ -40,9 +40,9 @@ class Inventory;
 
 namespace Ea
 {
-    class EquipBackend;
-
     typedef std::queue<BeingId> PickupQueue;
+
+    class EquipBackend;
 
     namespace InventoryRecv
     {

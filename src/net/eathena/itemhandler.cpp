@@ -22,11 +22,6 @@
 
 #include "net/eathena/itemhandler.h"
 
-#include "net/ea/itemrecv.h"
-
-#include "net/eathena/itemrecv.h"
-#include "net/eathena/protocol.h"
-
 #include "debug.h"
 
 namespace EAthena

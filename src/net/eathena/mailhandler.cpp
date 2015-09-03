@@ -22,7 +22,6 @@
 
 #include "net/ea/eaprotocol.h"
 
-#include "net/eathena/mailrecv.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 

@@ -35,9 +35,6 @@
 
 #include "net/ea/skillrecv.h"
 
-#include "net/tmwa/messageout.h"
-#include "net/tmwa/protocol.h"
-
 #include "utils/gettext.h"
 
 #include "debug.h"

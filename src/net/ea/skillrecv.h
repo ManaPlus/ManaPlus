@@ -23,8 +23,6 @@
 #ifndef NET_EA_SKILLRECV_H
 #define NET_EA_SKILLRECV_H
 
-#include "net/skillhandler.h"
-
 #include "localconsts.h"
 
 namespace Net

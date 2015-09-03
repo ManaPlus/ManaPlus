@@ -23,8 +23,6 @@
 #ifndef NET_EATHENA_TRADERECV_H
 #define NET_EATHENA_TRADERECV_H
 
-#include "net/ea/tradehandler.h"
-
 namespace Net
 {
     class MessageIn;

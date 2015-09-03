@@ -27,9 +27,7 @@
 
 #include "gui/windows/statuswindow.h"
 
-#include "net/tmwa/inventoryhandler.h"
-#include "net/tmwa/messageout.h"
-#include "net/tmwa/protocol.h"
+#include "net/messagein.h"
 
 #include "debug.h"
 

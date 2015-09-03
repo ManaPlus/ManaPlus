@@ -24,7 +24,6 @@
 
 #include "net/serverfeatures.h"
 
-#include "net/eathena/homunculusrecv.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 

@@ -25,7 +25,6 @@
 
 namespace EAthena
 {
-class MessageOut;
 
 class MailHandler final : public Net::MailHandler
 {

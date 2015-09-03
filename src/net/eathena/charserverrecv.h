@@ -29,8 +29,9 @@
 
 namespace Net
 {
-    class Character;
     class MessageIn;
+
+    struct Character;
 }
 
 namespace EAthena

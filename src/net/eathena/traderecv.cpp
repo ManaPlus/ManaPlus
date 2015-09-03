@@ -35,15 +35,9 @@
 
 #include "net/messagein.h"
 
-#include "net/ea/eaprotocol.h"
 #include "net/ea/traderecv.h"
 
-#include "net/eathena/messageout.h"
-#include "net/eathena/protocol.h"
-
 #include "debug.h"
-
-extern Net::TradeHandler *tradeHandler;
 
 namespace EAthena
 {

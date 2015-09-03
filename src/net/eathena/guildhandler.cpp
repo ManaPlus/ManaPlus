@@ -28,7 +28,6 @@
 
 #include "net/ea/guildrecv.h"
 
-#include "net/eathena/guildrecv.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 

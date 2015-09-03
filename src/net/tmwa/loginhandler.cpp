@@ -28,7 +28,6 @@
 
 #include "net/ea/loginrecv.h"
 
-#include "net/tmwa/loginrecv.h"
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/network.h"
 #include "net/tmwa/protocol.h"
@@ -67,7 +66,8 @@ bool LoginHandler::isConnected() const
     if (!Network::mInstance)
         return false;
 
-    return Ea::LoginRecv::mVersionResponse && Network::mInstance->isConnected();
+    return Ea::LoginRecv::mVersionResponse &&
+        Network::mInstance->isConnected();
 }
 
 void LoginHandler::disconnect()

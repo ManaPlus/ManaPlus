@@ -39,9 +39,7 @@
 
 #include "input/inputmanager.h"
 
-#include "net/eathena/messageout.h"
-#include "net/eathena/protocol.h"
-#include "net/eathena/inventoryhandler.h"
+#include "net/messagein.h"
 
 #include "resources/map/map.h"
 

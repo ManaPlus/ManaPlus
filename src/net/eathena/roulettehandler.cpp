@@ -20,11 +20,6 @@
 
 #include "net/eathena/roulettehandler.h"
 
-#include "logger.h"
-
-#include "net/eathena/protocol.h"
-#include "net/eathena/rouletterecv.h"
-
 #include "debug.h"
 
 extern Net::RouletteHandler *rouletteHandler;

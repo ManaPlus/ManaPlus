@@ -20,14 +20,6 @@
 
 #include "net/tmwa/questhandler.h"
 
-#include "gui/windows/skilldialog.h"
-#include "gui/windows/questswindow.h"
-
-#include "net/tmwa/protocol.h"
-#include "net/tmwa/questrecv.h"
-
-#include "resources/skillconsts.h"
-
 #include "debug.h"
 
 namespace TmwAthena

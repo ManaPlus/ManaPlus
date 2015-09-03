@@ -25,11 +25,6 @@
 
 #include "net/ea/adminhandler.h"
 
-namespace Net
-{
-    class MessageIn;
-}
-
 namespace TmwAthena
 {
 

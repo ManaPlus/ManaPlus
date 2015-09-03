@@ -22,27 +22,14 @@
 
 #include "net/tmwa/tradehandler.h"
 
-#include "inventory.h"
 #include "item.h"
-#include "notifymanager.h"
 
 #include "being/playerinfo.h"
-#include "being/playerrelation.h"
-#include "being/playerrelations.h"
-
-#include "enums/resources/notifytypes.h"
-
-#include "gui/windows/tradewindow.h"
-
-#include "net/ea/traderecv.h"
 
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
-#include "net/tmwa/traderecv.h"
 
 #include "net/ea/eaprotocol.h"
-
-#include "utils/stringutils.h"
 
 #include "debug.h"
 

@@ -20,14 +20,8 @@
 
 #include "net/eathena/searchstorehandler.h"
 
-#include "logger.h"
-#include "notifymanager.h"
-
-#include "enums/resources/notifytypes.h"
-
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
-#include "net/eathena/searchstorerecv.h"
 
 #include "debug.h"
 

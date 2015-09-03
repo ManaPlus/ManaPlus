@@ -60,7 +60,7 @@ namespace Ea
                        const ItemColor colorId = ItemColor_one,
                        const bool isWeapon = false,
                        const bool isTempSprite = false);
-    }  // namespace Being
+    }  // namespace BeingRecv
 }  // namespace Ea
 
 #endif  // NET_EA_BEINGRECV_H

@@ -25,7 +25,6 @@
 #include "net/serverfeatures.h"
 
 #include "net/eathena/messageout.h"
-#include "net/eathena/petrecv.h"
 #include "net/eathena/protocol.h"
 
 #include "debug.h"

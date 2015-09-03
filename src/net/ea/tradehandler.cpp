@@ -22,27 +22,9 @@
 
 #include "net/ea/tradehandler.h"
 
-#include "notifymanager.h"
-
-#include "being/playerinfo.h"
-#include "being/playerrelation.h"
-
-#include "enums/resources/notifytypes.h"
-
-#include "gui/windows/tradewindow.h"
-
-#include "gui/widgets/createwidget.h"
-
-#include "net/messagein.h"
-
-#include "utils/gettext.h"
-#include "utils/stringutils.h"
-
 #include "listeners/requesttradelistener.h"
 
 #include "debug.h"
-
-extern std::string tradePartnerName;
 
 /**
  * Listener for request trade dialogs

@@ -23,7 +23,10 @@
 #ifndef NET_EATHENA_PLAYERRECV_H
 #define NET_EATHENA_PLAYERRECV_H
 
-#include "net/ea/playerhandler.h"
+namespace Net
+{
+    class MessageIn;
+}
 
 namespace EAthena
 {

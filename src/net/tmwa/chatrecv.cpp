@@ -43,7 +43,6 @@
 #include "net/messagein.h"
 
 #include "net/tmwa/guildmanager.h"
-#include "net/tmwa/protocol.h"
 
 #include "debug.h"
 
@@ -123,7 +122,6 @@ void ChatRecv::processChatContinue(std::string chatMsg,
 void ChatRecv::processGmChat(Net::MessageIn &msg)
 {
     BLOCK_START("ChatRecv::processChat")
-    const bool normalChat = msg.getId() == SMSG_PLAYER_CHAT;
     int chatMsgLength = msg.readInt16("len") - 4;
     if (chatMsgLength <= 0)
     {
@@ -132,57 +130,8 @@ void ChatRecv::processGmChat(Net::MessageIn &msg)
     }
 
     std::string chatMsg = msg.readRawString(chatMsgLength, "message");
-    const size_t pos = chatMsg.find(" : ", 0);
 
-    if (normalChat)
-    {
-        bool allow(true);
-        if (chatWindow)
-        {
-            allow = chatWindow->resortChatLog(chatMsg,
-                ChatMsgType::BY_PLAYER,
-                GENERAL_CHANNEL,
-                IgnoreRecord_false,
-                TryRemoveColors_true);
-        }
-
-        const std::string senseStr("You sense the following: ");
-        if (actorManager && !chatMsg.find(senseStr))
-        {
-            actorManager->parseLevels(
-                chatMsg.substr(senseStr.size()));
-        }
-
-        if (pos == std::string::npos &&
-            !Ea::ChatRecv::mShowMotd &&
-            Ea::ChatRecv::mSkipping)
-        {
-            // skip motd from "new" tmw server
-            if (Ea::ChatRecv::mMotdTime == -1)
-            {
-                Ea::ChatRecv::mMotdTime = cur_time + 1;
-            }
-            else if (Ea::ChatRecv::mMotdTime == cur_time ||
-                     Ea::ChatRecv::mMotdTime < cur_time)
-            {
-                Ea::ChatRecv::mSkipping = false;
-            }
-            BLOCK_END("ChatRecv::processChat")
-            return;
-        }
-
-        if (pos != std::string::npos)
-            chatMsg.erase(0, pos + 3);
-
-        trim(chatMsg);
-
-        if (localPlayer)
-        {
-            if ((chatWindow || Ea::ChatRecv::mShowMotd) && allow)
-                localPlayer->setSpeech(chatMsg, GENERAL_CHANNEL);
-        }
-    }
-    else if (localChatTab)
+    if (localChatTab)
     {
         if (chatWindow)
             chatWindow->addGlobalMessage(chatMsg);

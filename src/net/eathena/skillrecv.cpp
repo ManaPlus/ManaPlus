@@ -38,9 +38,6 @@
 #include "net/ea/skillrecv.h"
 
 #include "net/eathena/menu.h"
-#include "net/eathena/messageout.h"
-#include "net/eathena/protocol.h"
-#include "net/eathena/skillrecv.h"
 
 #include "utils/gettext.h"
 #include "utils/stringutils.h"

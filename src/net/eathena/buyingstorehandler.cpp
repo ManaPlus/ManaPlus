@@ -27,7 +27,6 @@
 
 #include "net/ea/eaprotocol.h"
 
-#include "net/eathena/buyingstorerecv.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 

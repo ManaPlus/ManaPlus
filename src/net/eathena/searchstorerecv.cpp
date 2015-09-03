@@ -27,9 +27,6 @@
 
 #include "net/messagein.h"
 
-#include "net/eathena/messageout.h"
-#include "net/eathena/protocol.h"
-
 #include "debug.h"
 
 namespace EAthena

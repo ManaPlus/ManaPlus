@@ -23,13 +23,9 @@
 #include "net/tmwa/inventoryhandler.h"
 
 #include "item.h"
-#include "logger.h"
 
 #include "enums/equipslot.h"
 
-#include "net/ea/inventoryrecv.h"
-
-#include "net/tmwa/inventoryrecv.h"
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
 

@@ -29,8 +29,6 @@
 
 #include "net/inventoryhandler.h"
 
-#include "net/ea/inventoryitem.h"
-
 #include <queue>
 
 namespace Ea

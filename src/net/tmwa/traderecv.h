@@ -23,7 +23,10 @@
 #ifndef NET_TMWA_TRADERECV_H
 #define NET_TMWA_TRADERECV_H
 
-#include "net/ea/tradehandler.h"
+namespace Net
+{
+    class MessageIn;
+}
 
 namespace TmwAthena
 {

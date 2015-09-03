@@ -22,12 +22,6 @@
 
 #include "net/ea/skillhandler.h"
 
-#include "being/playerinfo.h"
-
-#include "gui/windows/skilldialog.h"
-
-#include "net/messagein.h"
-
 #include "debug.h"
 
 namespace Ea

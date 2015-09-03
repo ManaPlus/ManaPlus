@@ -37,8 +37,9 @@
 #include "gui/windows/socialwindow.h"
 
 #include "net/beinghandler.h"
-#include "net/messagein.h"
 #include "net/serverfeatures.h"
+
+#include "net/messagein.h"
 
 #include "net/ea/beingrecv.h"
 

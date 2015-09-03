@@ -23,8 +23,6 @@
 
 #include "net/vendinghandler.h"
 
-class BuyDialog;
-
 namespace EAthena
 {
 class VendingHandler final : public Net::VendingHandler

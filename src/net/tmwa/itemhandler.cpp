@@ -22,11 +22,6 @@
 
 #include "net/tmwa/itemhandler.h"
 
-#include "net/ea/itemrecv.h"
-
-#include "net/tmwa/itemrecv.h"
-#include "net/tmwa/protocol.h"
-
 #include "debug.h"
 
 namespace TmwAthena

@@ -21,8 +21,6 @@
 #ifndef NET_EATHENA_SEARCHSTORERECV_H
 #define NET_EATHENA_SEARCHSTORERECV_H
 
-#include "net/searchstorehandler.h"
-
 namespace Net
 {
     class MessageIn;

@@ -27,9 +27,6 @@
 #include "net/generalhandler.h"
 #include "net/serverfeatures.h"
 
-#include "net/ea/loginrecv.h"
-
-#include "net/eathena/loginrecv.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/network.h"
 #include "net/eathena/protocol.h"

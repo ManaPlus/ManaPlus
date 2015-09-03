@@ -23,6 +23,7 @@
 #include "net/ea/buysellrecv.h"
 
 #include "inventory.h"
+#include "item.h"
 #include "notifymanager.h"
 
 #include "being/playerinfo.h"
@@ -35,7 +36,7 @@
 
 #include "gui/widgets/createwidget.h"
 
-#include "net/buysellhandler.h"
+#include "net/messagein.h"
 
 #include "net/ea/eaprotocol.h"
 

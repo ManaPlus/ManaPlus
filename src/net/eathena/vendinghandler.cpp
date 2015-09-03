@@ -20,21 +20,10 @@
 
 #include "net/eathena/vendinghandler.h"
 
-#include "actormanager.h"
-#include "itemcolormanager.h"
 #include "shopitem.h"
 
-#include "being/localplayer.h"
+#include "being/being.h"
 #include "being/playerinfo.h"
-
-#include "gui/windows/buydialog.h"
-
-#include "gui/widgets/createwidget.h"
-
-#include "listeners/vendingmodelistener.h"
-#include "listeners/vendingslotslistener.h"
-
-#include "net/messagein.h"
 
 #include "net/ea/eaprotocol.h"
 

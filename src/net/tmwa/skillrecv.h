@@ -23,8 +23,6 @@
 #ifndef NET_TMWA_SKILLRECV_H
 #define NET_TMWA_SKILLRECV_H
 
-#include "net/ea/skillhandler.h"
-
 namespace Net
 {
     class MessageIn;

@@ -22,10 +22,8 @@
 
 #include "net/ea/playerhandler.h"
 
-#include "game.h"
 #include "party.h"
 #include "notifymanager.h"
-#include "soundmanager.h"
 #include "units.h"
 
 #include "being/localplayer.h"
@@ -33,21 +31,13 @@
 
 #include "enums/resources/notifytypes.h"
 
-#include "gui/viewport.h"
-
 #include "gui/windows/skilldialog.h"
 #include "gui/windows/statuswindow.h"
-
-#include "resources/map/map.h"
 
 #include "net/ea/eaprotocol.h"
 #include "net/ea/playerrecv.h"
 
 #include "debug.h"
-
-// Max. distance we are willing to scroll after a teleport;
-// everything beyond will reset the port hard.
-static const int MAP_TELEPORT_SCROLL_DISTANCE = 8;
 
 namespace Ea
 {

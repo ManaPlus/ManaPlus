@@ -61,8 +61,6 @@
 #include "net/tmwa/messagein.h"
 #include "net/tmwa/protocol.h"
 
-#include "utils/delete2.h"
-
 #include "debug.h"
 
 namespace TmwAthena

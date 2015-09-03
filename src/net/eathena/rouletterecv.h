@@ -21,8 +21,6 @@
 #ifndef NET_EATHENA_ROULETTERECV_H
 #define NET_EATHENA_ROULETTERECV_H
 
-#include "net/roulettehandler.h"
-
 namespace Net
 {
     class MessageIn;

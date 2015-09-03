@@ -25,13 +25,8 @@
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
-#include "gui/windows/statuswindow.h"
-
-#include "net/ea/playerrecv.h"
-
 #include "net/tmwa/inventoryhandler.h"
 #include "net/tmwa/messageout.h"
-#include "net/tmwa/playerrecv.h"
 #include "net/tmwa/protocol.h"
 
 #include "debug.h"

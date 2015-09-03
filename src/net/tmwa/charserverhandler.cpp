@@ -30,9 +30,6 @@
 
 #include "net/ea/token.h"
 
-#include "net/ea/charserverrecv.h"
-
-#include "net/tmwa/charserverrecv.h"
 #include "net/tmwa/loginhandler.h"
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/network.h"

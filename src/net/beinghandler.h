@@ -26,8 +26,6 @@
 
 #include "enums/being/rank.h"
 
-#include "net/messagein.h"
-
 namespace Net
 {
 

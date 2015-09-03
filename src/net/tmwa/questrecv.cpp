@@ -25,8 +25,6 @@
 
 #include "net/messagein.h"
 
-#include "net/tmwa/protocol.h"
-
 #include "resources/skillconsts.h"
 
 #include "debug.h"

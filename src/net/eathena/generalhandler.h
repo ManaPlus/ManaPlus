@@ -63,8 +63,6 @@ class RouletteHandler;
 class SearchStoreHandler;
 class VendingHandler;
 
-class ServerFeatures;
-
 class GeneralHandler final : public Net::GeneralHandler
 {
     public:

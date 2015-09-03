@@ -40,7 +40,7 @@ namespace EAthena
         void processBattleBegins(Net::MessageIn &msg);
         void processBattleNoticeDelete(Net::MessageIn &msg);
         void processBattleJoined(Net::MessageIn &msg);
-    }  // namespace BattleGround
+    }  // namespace BattleGroundRecv
 }  // namespace EAthena
 
 #endif  // EATHENA_SUPPORT

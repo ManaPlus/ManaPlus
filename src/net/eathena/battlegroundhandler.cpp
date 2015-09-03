@@ -20,7 +20,6 @@
 
 #include "net/eathena/battlegroundhandler.h"
 
-#include "net/eathena/battlegroundrecv.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 

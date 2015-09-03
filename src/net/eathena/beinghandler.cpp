@@ -22,9 +22,6 @@
 
 #include "net/eathena/beinghandler.h"
 
-#include "net/ea/beingrecv.h"
-
-#include "net/eathena/beingrecv.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 #include "net/eathena/sprite.h"

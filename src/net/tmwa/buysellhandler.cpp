@@ -31,9 +31,6 @@
 
 #include "net/ea/buysellrecv.h"
 
-#include "net/tmwa/buysellrecv.h"
-#include "net/tmwa/protocol.h"
-
 #include "utils/timer.h"
 
 #include "debug.h"

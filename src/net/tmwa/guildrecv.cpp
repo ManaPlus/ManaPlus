@@ -22,7 +22,6 @@
 #include "net/tmwa/guildrecv.h"
 
 #include "configuration.h"
-#include "guild.h"
 
 #include "being/localplayer.h"
 #include "being/playerinfo.h"

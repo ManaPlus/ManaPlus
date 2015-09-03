@@ -30,7 +30,6 @@
 
 #include "net/ea/gamerecv.h"
 
-#include "net/tmwa/gamerecv.h"
 #include "net/tmwa/loginhandler.h"
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/network.h"

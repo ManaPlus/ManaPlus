@@ -23,7 +23,13 @@
 #ifndef NET_EA_TRADERECV_H
 #define NET_EA_TRADERECV_H
 
-#include "net/tradehandler.h"
+#if defined(__GXX_EXPERIMENTAL_CXX0X__)
+#include <cstdint>
+#else
+#include <stdint.h>
+#endif
+
+#include <string>
 
 namespace Net
 {
@@ -39,7 +45,7 @@ namespace Ea
         void processTradeComplete(Net::MessageIn &msg);
         void processTradeRequestContinue(const std::string &partner);
         void processTradeResponseContinue(const uint8_t type);
-    } // namespace TradeRecv
+    }  // namespace TradeRecv
 }  // namespace Ea
 
 #endif  // NET_EA_TRADERECV_H

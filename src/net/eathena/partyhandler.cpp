@@ -32,7 +32,6 @@
 #include "net/ea/partyrecv.h"
 
 #include "net/eathena/messageout.h"
-#include "net/eathena/partyrecv.h"
 #include "net/eathena/protocol.h"
 
 #include "debug.h"

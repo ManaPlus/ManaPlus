@@ -21,8 +21,6 @@
 #ifndef NET_EATHENA_VENDINGRECV_H
 #define NET_EATHENA_VENDINGRECV_H
 
-#include "net/vendinghandler.h"
-
 class BuyDialog;
 
 namespace Net

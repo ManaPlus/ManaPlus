@@ -20,14 +20,8 @@
 
 #include "net/eathena/questhandler.h"
 
-#include "gui/windows/skilldialog.h"
-#include "gui/windows/questswindow.h"
-
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
-#include "net/eathena/questrecv.h"
-
-#include "resources/skillconsts.h"
 
 #include "debug.h"
 

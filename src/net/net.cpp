@@ -66,7 +66,6 @@ namespace Net
     class GameHandler;
     class GuildHandler;
     class InventoryHandler;
-    class ItemHandler;
     class NpcHandler;
     class PartyHandler;
     class PetHandler;

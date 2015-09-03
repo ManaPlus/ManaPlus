@@ -36,8 +36,6 @@
 #include "net/loginhandler.h"
 #include "net/messagein.h"
 
-#include "net/ea/token.h"
-
 #include "debug.h"
 
 namespace Ea

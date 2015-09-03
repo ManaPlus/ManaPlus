@@ -26,11 +26,8 @@
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
-#include "net/serverfeatures.h"
-
 #include "net/ea/guildrecv.h"
 
-#include "net/tmwa/guildrecv.h"
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
 

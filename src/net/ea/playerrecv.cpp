@@ -23,10 +23,8 @@
 #include "net/ea/playerrecv.h"
 
 #include "game.h"
-#include "party.h"
 #include "notifymanager.h"
 #include "soundmanager.h"
-#include "units.h"
 
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
@@ -35,12 +33,12 @@
 
 #include "gui/viewport.h"
 
-#include "gui/windows/skilldialog.h"
 #include "gui/windows/statuswindow.h"
 
 #include "resources/map/map.h"
 
-#include "net/ea/eaprotocol.h"
+#include "net/messagein.h"
+#include "net/playerhandler.h"
 
 #include "debug.h"
 

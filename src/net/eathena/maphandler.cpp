@@ -20,9 +20,6 @@
 
 #include "net/eathena/maphandler.h"
 
-#include "net/eathena/maprecv.h"
-#include "net/eathena/protocol.h"
-
 #include "debug.h"
 
 extern Net::MapHandler *mapHandler;

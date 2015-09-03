@@ -32,7 +32,6 @@
 
 #include "net/ea/gamerecv.h"
 
-#include "net/eathena/gamerecv.h"
 #include "net/eathena/loginhandler.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/network.h"

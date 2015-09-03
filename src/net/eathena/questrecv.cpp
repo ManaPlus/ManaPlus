@@ -25,9 +25,6 @@
 
 #include "net/messagein.h"
 
-#include "net/eathena/messageout.h"
-#include "net/eathena/protocol.h"
-
 #include "resources/skillconsts.h"
 
 #include "debug.h"

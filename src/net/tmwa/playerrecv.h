@@ -23,7 +23,10 @@
 #ifndef NET_TMWA_PLAYERRECV_H
 #define NET_TMWA_PLAYERRECV_H
 
-#include "net/ea/playerhandler.h"
+namespace Net
+{
+    class MessageIn;
+}
 
 namespace TmwAthena
 {

@@ -26,8 +26,6 @@
 
 #include "enums/equipslot.h"
 
-#include "net/ea/inventoryrecv.h"
-
 #include "net/eathena/inventoryrecv.h"
 #include "net/eathena/menu.h"
 #include "net/eathena/messageout.h"

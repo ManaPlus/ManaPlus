@@ -24,9 +24,6 @@
 
 #include "being/being.h"
 
-#include "net/ea/adminrecv.h"
-
-#include "net/eathena/adminrecv.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 

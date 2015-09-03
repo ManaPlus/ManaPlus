@@ -22,9 +22,6 @@
 
 #include "net/tmwa/beinghandler.h"
 
-#include "net/ea/beingrecv.h"
-
-#include "net/tmwa/beingrecv.h"
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
 #include "net/tmwa/sprite.h"

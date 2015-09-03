@@ -32,7 +32,6 @@
 #include "net/logindata.h"
 
 #include "net/ea/loginrecv.h"
-#include "net/ea/token.h"
 
 #include "debug.h"
 

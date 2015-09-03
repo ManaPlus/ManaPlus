@@ -30,7 +30,6 @@
 
 #include "net/ea/chatrecv.h"
 
-#include "net/tmwa/chatrecv.h"
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
 

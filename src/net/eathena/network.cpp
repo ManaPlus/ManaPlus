@@ -78,9 +78,6 @@
 #include "net/eathena/vendingrecv.h"
 
 #include "net/eathena/messagein.h"
-#include "net/eathena/protocol.h"
-
-#include "utils/delete2.h"
 
 #include "debug.h"
 

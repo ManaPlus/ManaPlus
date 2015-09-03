@@ -23,8 +23,6 @@
 #ifndef NET_BUYSELLHANDLER_H
 #define NET_BUYSELLHANDLER_H
 
-#include "net/messagein.h"
-
 #include "shopitem.h"
 
 namespace Net

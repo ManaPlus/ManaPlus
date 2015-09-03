@@ -38,8 +38,6 @@
 
 #include "net/ea/token.h"
 
-#include "net/messagein.h"
-
 #include "net/eathena/gamehandler.h"
 #include "net/eathena/loginhandler.h"
 #include "net/eathena/messageout.h"

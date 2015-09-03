@@ -29,8 +29,6 @@
 
 #include "net/ea/token.h"
 
-#include "net/ea/charserverrecv.h"
-
 #include "net/eathena/charserverrecv.h"
 #include "net/eathena/loginhandler.h"
 #include "net/eathena/messageout.h"

@@ -25,11 +25,6 @@
 
 #include "net/ea/tradehandler.h"
 
-namespace Net
-{
-    class MessageIn;
-}
-
 namespace EAthena
 {
 

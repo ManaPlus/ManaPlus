@@ -23,8 +23,6 @@
 #ifndef NET_EA_PLAYERRECV_H
 #define NET_EA_PLAYERRECV_H
 
-#include "net/playerhandler.h"
-
 #include <climits>
 
 namespace Net
@@ -45,6 +43,7 @@ namespace Ea
         void processPlayerArrowMessage(Net::MessageIn &msg);
         void processMapMusic(Net::MessageIn &msg);
     }  // namespace PlayerRecv
+
     static const int NoStat = INT_MAX;
 }  // namespace Ea
 

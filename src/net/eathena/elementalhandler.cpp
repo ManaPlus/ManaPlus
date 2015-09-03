@@ -20,9 +20,6 @@
 
 #include "net/eathena/elementalhandler.h"
 
-#include "net/eathena/elementalrecv.h"
-#include "net/eathena/protocol.h"
-
 #include "debug.h"
 
 extern Net::ElementalHandler *elementalHandler;
