@@ -518,6 +518,11 @@ impHandler(imitation)
 impHandler0(sendMail)
 {
     // +++ need impliment for hercules
+    if (serverConfig.getBoolValue("enableManaMarketBot"))
+    {
+        chatHandler->privateMessage("ManaMarket", "!mail " + event.args);
+        return true;
+    }
     return false;
 }
 

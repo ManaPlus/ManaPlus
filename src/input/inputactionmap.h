@@ -2978,7 +2978,7 @@ static const InputActionData inputActionData
     {"keySendMail",
         defaultAction(&Actions::sendMail),
         InputCondition::INGAME,
-        "mail",
+        "sendmail|mailsend|mailto",
         UseArgs_true},
     {"keyTradeCommand",
         defaultAction(&Actions::trade),

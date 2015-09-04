@@ -67,6 +67,16 @@ void ConfigManager::initServerConfig(const std::string &serverName)
         serverConfig.setDefaultValues(getConfigDefaults());
         logger->log("serverConfigPath: " + configPath);
     }
+
+    int val = serverConfig.getValue("enableManaMarketBot", -1);
+    if (val == -1)
+    {
+        if (client->isTmw())
+            val = 1;
+        else
+            val = 0;
+        serverConfig.setValue("enableManaMarketBot", val);
+    }
 }
 
 void ConfigManager::initConfiguration()
