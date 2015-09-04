@@ -69,7 +69,11 @@
 char *selfName = nullptr;
 
 #ifndef UNITTESTS
+#ifdef ANDROID
+int main(int argc, char *argv[])
+#else
 int mainGui(int argc, char *argv[])
+#endif
 {
 #if defined(__MINGW32__)
     // load mingw crash handler. Won't fail if dll is not present.

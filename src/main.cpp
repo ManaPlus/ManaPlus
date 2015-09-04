@@ -28,7 +28,7 @@
 #endif
 #include "debug.h"
 
-#ifndef UNITTESTS
+#if !defined(UNITTESTS) && !defined(ANDROID)
 int main(int argc, char *argv[])
 {
     return mainGui(argc, argv);
