@@ -1,6 +1,10 @@
 AUTOMAKE_OPTIONS = subdir-objects
 
+if ENABLE_DYECMD
 bin_PROGRAMS = manaplus dyecmd
+else
+bin_PROGRAMS = manaplus
+endif
 
 dyecmd_CXXFLAGS = -DPKG_DATADIR=\""$(pkgdatadir)/"\"      \
 		-DLOCALEDIR=\""$(localedir)"\"           \

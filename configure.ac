@@ -15,6 +15,8 @@ AC_ARG_ENABLE(androidbuild,
   *) AC_MSG_ERROR(bad value ${enableval} for --enable-androidbuild) ;;
 esac],[androidbuild_enabled=false])
 
+AM_CONDITIONAL(ENABLE_DYECMD, test x$androidbuild_enabled = xyes)
+
 # Enable nacl build
 AC_ARG_ENABLE(naclbuild,
 [  --enable-naclbuild    Turn on nacl building],
