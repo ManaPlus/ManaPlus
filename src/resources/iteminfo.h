@@ -261,6 +261,12 @@ class ItemInfo final
         bool isHaveIconColors() const A_WARN_UNUSED
         { return !mIconColorsListName.empty(); }
 
+        std::string getColorsListName() const A_WARN_UNUSED
+        { return mColorsListName; }
+
+        std::string getIconColorsListName() const A_WARN_UNUSED
+        { return mIconColorsListName; }
+
         const std::string replaceColors(std::string str,
                                         const ItemColor color)
                                         const A_WARN_UNUSED;

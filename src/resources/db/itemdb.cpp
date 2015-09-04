@@ -296,10 +296,11 @@ void ItemDB::loadXmlFile(const std::string &fileName, int &tagNum)
         if (!itemInfo)
             itemInfo = new ItemInfo;
 
-        const std::string typeStr = XML::getProperty(node, "type", "other");
-        const int weight = XML::getProperty(node, "weight", 0);
-        const int view = XML::getProperty(node, "view", 0);
-        const int cardColor = XML::getProperty(node, "cardColor", -1);
+        const std::string typeStr = XML::getProperty(node, "type", "");
+        int weight = XML::getProperty(node, "weight", 0);
+        int view = XML::getProperty(node, "view", 0);
+        int cardColor = XML::getProperty(node, "cardColor", -1);
+        const int inherit = XML::getProperty(node, "inherit", -1);
 
         std::string name = XML::langProperty(node, "name", "");
         std::string image = XML::getProperty(node, "image", "");
@@ -314,7 +315,7 @@ void ItemDB::loadXmlFile(const std::string &fileName, int &tagNum)
             node, "rideattack-action", "");
         std::string drawBefore = XML::getProperty(node, "drawBefore", "");
         std::string drawAfter = XML::getProperty(node, "drawAfter", "");
-        const int pet = XML::getProperty(node, "pet", 0);
+        int pet = XML::getProperty(node, "pet", 0);
         const int maxFloorOffset = XML::getIntProperty(
             node, "maxFloorOffset", mapTileSize, 0, mapTileSize);
         std::string useButton = XML::langProperty(node, "useButton", "");
@@ -341,15 +342,15 @@ void ItemDB::loadXmlFile(const std::string &fileName, int &tagNum)
 
         const int drawPriority = XML::getProperty(node, "drawPriority", 0);
 
-        const int attackRange = XML::getProperty(node, "attack-range", 0);
+        int attackRange = XML::getProperty(node, "attack-range", 0);
         std::string missileParticle = XML::getProperty(
             node, "missile-particle", "");
-        const int hitEffectId = XML::getProperty(node, "hit-effect-id",
+        int hitEffectId = XML::getProperty(node, "hit-effect-id",
             paths.getIntValue("hitEffectId"));
-        const int criticalEffectId = XML::getProperty(
+        int criticalEffectId = XML::getProperty(
             node, "critical-hit-effect-id",
             paths.getIntValue("criticalHitEffectId"));
-        const int missEffectId = XML::getProperty(node, "miss-effect-id",
+        int missEffectId = XML::getProperty(node, "miss-effect-id",
             paths.getIntValue("missEffectId"));
 
         SpriteDisplay display;
@@ -359,23 +360,61 @@ void ItemDB::loadXmlFile(const std::string &fileName, int &tagNum)
         else
             display.floor = image;
 
+        const ItemInfo *inheritItemInfo = nullptr;
+
+        if (inherit >= 0)
+        {
+            if (mItemInfos.find(inherit) != mItemInfos.end())
+            {
+                inheritItemInfo = mItemInfos[inherit];
+            }
+            else
+            {
+                logger->log("Inherit item %d from not existing item %d",
+                    id, inherit);
+            }
+        }
+
         itemInfo->setId(id);
+        if (name.empty() && inheritItemInfo)
+            name = inheritItemInfo->getName();
         // TRANSLATORS: item info name
         itemInfo->setName(name.empty() ? _("unnamed") : name);
+        if (description.empty() && inheritItemInfo)
+            description = inheritItemInfo->getDescription();
         itemInfo->setDescription(description);
+        if (typeStr.empty())
+        {
+            if (inheritItemInfo)
+                itemInfo->setType(inheritItemInfo->getType());
+            else
+                itemInfo->setType(itemTypeFromString("other"));
+        }
+        else
+        {
+            itemInfo->setType(itemTypeFromString(typeStr));
+        }
         itemInfo->setType(itemTypeFromString(typeStr));
+        if (useButton.empty() && inheritItemInfo)
+            useButton = inheritItemInfo->getUseButton();
         if (useButton.empty())
             useButton = useButtonFromItemType(itemInfo->getType());
         itemInfo->setUseButton(useButton);
+        if (useButton2.empty() && inheritItemInfo)
+            useButton2 = inheritItemInfo->getUseButton();
         if (useButton2.empty())
             useButton2 = useButton2FromItemType(itemInfo->getType());
         itemInfo->setUseButton2(useButton2);
         itemInfo->addTag(mTags["All"]);
+        if (!pet && inheritItemInfo)
+            pet = inheritItemInfo->getPet();
         itemInfo->setPet(pet);
         itemInfo->setProtected(XML::getBoolProperty(
             node, "sellProtected", false));
         if (cardColor != -1)
             itemInfo->setCardColor(fromInt(cardColor, ItemColor));
+        else if (inheritItemInfo)
+            itemInfo->setCardColor(inheritItemInfo->getCardColor());
 
         switch (itemInfo->getType())
         {
@@ -417,21 +456,47 @@ void ItemDB::loadXmlFile(const std::string &fileName, int &tagNum)
             }
         }
 
+        if (!view && inheritItemInfo)
+            view = inheritItemInfo->getView();
         itemInfo->setView(view);
+        if (!weight && inheritItemInfo)
+            weight = inheritItemInfo->getWeight();
         itemInfo->setWeight(weight);
+        if (attackAction.empty() && inheritItemInfo)
+            attackAction = inheritItemInfo->getAttackAction();
         itemInfo->setAttackAction(attackAction);
+        if (skyAttackAction.empty() && inheritItemInfo)
+            skyAttackAction = inheritItemInfo->getSkyAttackAction();
         itemInfo->setSkyAttackAction(skyAttackAction);
+        if (waterAttackAction.empty() && inheritItemInfo)
+            waterAttackAction = inheritItemInfo->getWaterAttackAction();
         itemInfo->setWaterAttackAction(waterAttackAction);
+        if (rideAttackAction.empty() && inheritItemInfo)
+            rideAttackAction = inheritItemInfo->getRideAttackAction();
         itemInfo->setRideAttackAction(rideAttackAction);
+        if (!attackRange && inheritItemInfo)
+            attackRange = inheritItemInfo->getAttackRange();
         itemInfo->setAttackRange(attackRange);
+        if (missileParticle.empty() && inheritItemInfo)
+            missileParticle = inheritItemInfo->getMissileParticleFile();
         itemInfo->setMissileParticleFile(missileParticle);
+        if (!hitEffectId && inheritItemInfo)
+            hitEffectId = inheritItemInfo->getHitEffectId();
         itemInfo->setHitEffectId(hitEffectId);
+        if (!criticalEffectId && inheritItemInfo)
+            criticalEffectId = inheritItemInfo->getCriticalHitEffectId();
         itemInfo->setCriticalHitEffectId(criticalEffectId);
+        if (!missEffectId && inheritItemInfo)
+            missEffectId = inheritItemInfo->getMissEffectId();
         itemInfo->setMissEffectId(missEffectId);
         itemInfo->setDrawBefore(-1, parseSpriteName(drawBefore));
         itemInfo->setDrawAfter(-1, parseSpriteName(drawAfter));
         itemInfo->setDrawPriority(-1, drawPriority);
+        if (colors.empty() && inheritItemInfo)
+            colors = inheritItemInfo->getColorsListName();
         itemInfo->setColorsList(colors);
+        if (iconColors.empty() && inheritItemInfo)
+            iconColors = inheritItemInfo->getIconColorsListName();
         itemInfo->setIconColorsList(iconColors);
         itemInfo->setMaxFloorOffset(maxFloorOffset);
         itemInfo->setPickupCursor(XML::getProperty(
@@ -466,6 +531,8 @@ void ItemDB::loadXmlFile(const std::string &fileName, int &tagNum)
         if (!effect.empty() && !temp.empty())
             effect.append(" / ");
         effect.append(temp);
+        if (effect.empty() && inheritItemInfo)
+            effect = inheritItemInfo->getEffect();
         itemInfo->setEffect(effect);
 
         for_each_xml_child_node(itemChild, node)
