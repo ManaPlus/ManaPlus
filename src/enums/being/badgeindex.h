@@ -1,6 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2015  The ManaPlus Developers
+ *  Copyright (C) 2011-2015  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -18,39 +18,23 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ENUMS_SIMPLETYPES_ENUMDEFINES_H
-#define ENUMS_SIMPLETYPES_ENUMDEFINES_H
+#ifndef ENUMS_BEING_BADGEINDEX_H
+#define ENUMS_BEING_BADGEINDEX_H
 
-#include "localconsts.h"
+#include "enums/simpletypes/enumdefines.h"
 
-#ifdef ADVGCC
+enum2Start(BadgeIndex)
+{
+    Away     = 0,
+    Inactive = 1,
+    Team     = 2,
+    Shop     = 3,
+    Gm       = 4,
+    Guild    = 5,
+    Party    = 6,
+    Name     = 7,
+    BadgeIndexSize,
+}
+enum2End(BadgeIndex);
 
-#define enumStart(name) enum class name
-#define enumEnd(name) ; \
-    typedef name name##T
-
-#else  // ADVGCC
-
-#define enumStart(name) \
-    namespace name \
-    { \
-        enum T
-
-#define enumEnd(name) \
-        ;\
-    } \
-    typedef name::T name##T
-
-#endif  // ADVGCC
-
-#define enum2Start(name) \
-    namespace name \
-    { \
-        enum T
-
-#define enum2End(name) \
-        ;\
-    } \
-    typedef name::T name##T
-
-#endif  // ENUMS_SIMPLETYPES_ENUMDEFINES_H
+#endif  // ENUMS_BEING_BADGEINDEX_H

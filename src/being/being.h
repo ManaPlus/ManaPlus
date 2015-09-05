@@ -23,6 +23,7 @@
 #ifndef BEING_BEING_H
 #define BEING_BEING_H
 
+#include "enums/being/badgeindex.h"
 #include "enums/being/reachable.h"
 
 #include "enums/gui/usercolorid.h"
@@ -971,11 +972,7 @@ class Being notfinal : public ActorSprite,
         BeingInfo *mInfo;
         AnimatedSprite *mEmotionSprite;
         AnimatedSprite *mAnimationEffect;
-        AnimatedSprite *mGmBadge;
-        AnimatedSprite *mGuildBadge;
-        AnimatedSprite *mNameBadge;
-        AnimatedSprite *mPartyBadge;
-        AnimatedSprite *mTeamBadge;
+        AnimatedSprite *mBadges[BadgeIndex::BadgeIndexSize];
 
         std::string mSpriteAction;
         std::string mName;              /**< Name of character */

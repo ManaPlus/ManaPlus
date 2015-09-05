@@ -743,6 +743,7 @@ manaplus_SOURCES += main.cpp \
 	      enums/being/actortype.h \
 	      enums/being/attacktype.h \
 	      enums/being/attributes.h \
+	      enums/being/badgeindex.h \
 	      dragdrop.h \
 	      dropshortcut.cpp \
 	      dropshortcut.h \

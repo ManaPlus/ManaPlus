@@ -125,6 +125,9 @@ std::list<BeingCacheEntry*> beingInfoCache;
 typedef std::map<int, Guild*>::const_iterator GuildsMapCIter;
 typedef std::map<int, int>::const_iterator IntMapCIter;
 
+#define for_each_badges() \
+    for (int f = 0; f < BadgeIndex::BadgeIndexSize; f++)
+
 Being::Being(const BeingId id,
              const ActorTypeT type,
              const BeingTypeId subtype,
@@ -134,11 +137,7 @@ Being::Being(const BeingId id,
     mInfo(BeingInfo::unknown),
     mEmotionSprite(nullptr),
     mAnimationEffect(nullptr),
-    mGmBadge(nullptr),
-    mGuildBadge(nullptr),
-    mNameBadge(nullptr),
-    mPartyBadge(nullptr),
-    mTeamBadge(nullptr),
+    mBadges(),
     mSpriteAction(SpriteAction::STAND),
     mName(),
     mRaceName(),
@@ -245,6 +244,9 @@ Being::Being(const BeingId id,
         mSpriteDraw[f] = 0;
     }
 
+    for_each_badges()
+        mBadges[f] = nullptr;
+
     setMap(map);
     setSubtype(subtype, 0);
 
@@ -291,16 +293,14 @@ Being::~Being()
     delete [] mSpriteDraw;
     mSpriteDraw = nullptr;
 
+    for_each_badges()
+        delete2(mBadges[f]);
+
     delete2(mSpeechBubble);
     delete2(mDispName);
     delete2(mText);
     delete2(mEmotionSprite);
     delete2(mAnimationEffect);
-    delete2(mGmBadge);
-    delete2(mGuildBadge);
-    delete2(mNameBadge);
-    delete2(mPartyBadge);
-    delete2(mTeamBadge);
     mBadgesCount = 0;
 #ifdef EATHENA_SUPPORT
     delete2(mChat);
@@ -991,13 +991,13 @@ void Being::handleSkill(Being *const victim, const int damage,
 
 void Being::showNameBadge(const bool show)
 {
-    delete2(mNameBadge);
+    delete2(mBadges[BadgeIndex::Name]);
     if (show && !mName.empty() && mShowBadges)
     {
         const std::string badge = BadgesDB::getNameBadge(mName);
         if (!badge.empty())
         {
-            mNameBadge = AnimatedSprite::load(
+            mBadges[BadgeIndex::Name] = AnimatedSprite::load(
                 paths.getStringValue("badges") + badge);
         }
     }
@@ -1047,13 +1047,13 @@ void Being::setShowName(const bool doShowName)
 
 void Being::showGuildBadge(const bool show)
 {
-    delete2(mGuildBadge);
+    delete2(mBadges[BadgeIndex::Guild]);
     if (show && !mGuildName.empty() && mShowBadges)
     {
         const std::string badge = BadgesDB::getGuildBadge(mGuildName);
         if (!badge.empty())
         {
-            mGuildBadge = AnimatedSprite::load(
+            mBadges[BadgeIndex::Guild] = AnimatedSprite::load(
                 paths.getStringValue("badges") + badge);
         }
     }
@@ -1432,16 +1432,12 @@ void Being::setAction(const BeingActionT &action, const int attackId)
             mEmotionSprite->play(currentAction);
         if (mAnimationEffect)
             mAnimationEffect->play(currentAction);
-        if (mGmBadge)
-            mGmBadge->play(currentAction);
-        if (mGuildBadge)
-            mGuildBadge->play(currentAction);
-        if (mNameBadge)
-            mNameBadge->play(currentAction);
-        if (mPartyBadge)
-            mPartyBadge->play(currentAction);
-        if (mTeamBadge)
-            mTeamBadge->play(currentAction);
+        for_each_badges()
+        {
+            AnimatedSprite *const sprite = mBadges[f];
+            if (sprite)
+                sprite->play(currentAction);
+        }
 #ifdef EATHENA_SUPPORT
         if (mHorseSprite)
             mHorseSprite->play(currentAction);
@@ -1505,16 +1501,14 @@ void Being::setDirection(const uint8_t direction)
         mEmotionSprite->setSpriteDirection(dir);
     if (mAnimationEffect)
         mAnimationEffect->setSpriteDirection(dir);
-    if (mGmBadge)
-        mGmBadge->setSpriteDirection(dir);
-    if (mGuildBadge)
-        mGuildBadge->setSpriteDirection(dir);
-    if (mNameBadge)
-        mNameBadge->setSpriteDirection(dir);
-    if (mPartyBadge)
-        mPartyBadge->setSpriteDirection(dir);
-    if (mTeamBadge)
-        mTeamBadge->setSpriteDirection(dir);
+
+    for_each_badges()
+    {
+        AnimatedSprite *const sprite = mBadges[f];
+        if (sprite)
+            sprite->setSpriteDirection(dir);
+    }
+
 #ifdef EATHENA_SUPPORT
     if (mHorseSprite)
         mHorseSprite->setSpriteDirection(dir);
@@ -1619,16 +1613,12 @@ void Being::logic()
         if (mAnimationEffect->isTerminated())
             delete2(mAnimationEffect)
     }
-    if (mGmBadge)
-        mGmBadge->update(time);
-    if (mGuildBadge)
-        mGuildBadge->update(time);
-    if (mNameBadge)
-        mNameBadge->update(time);
-    if (mPartyBadge)
-        mPartyBadge->update(time);
-    if (mTeamBadge)
-        mTeamBadge->update(time);
+    for_each_badges()
+    {
+        AnimatedSprite *const sprite = mBadges[f];
+        if (sprite)
+            sprite->update(time);
+    }
 
     int frameCount = static_cast<int>(getFrameCount());
 
@@ -1956,30 +1946,14 @@ void Being::drawEmotion(Graphics *const graphics,
             x = px + 8 - mBadgesCount * 8;
             y = py;
         }
-        if (mTeamBadge)
+        for_each_badges()
         {
-            mTeamBadge->draw(graphics, x, y);
-            x += 16;
-        }
-        if (mNameBadge)
-        {
-            mNameBadge->draw(graphics, x, y);
-            x += 16;
-        }
-        if (mGmBadge)
-        {
-            mGmBadge->draw(graphics, x, y);
-            x += 16;
-        }
-        if (mGuildBadge)
-        {
-            mGuildBadge->draw(graphics, x, y);
-            x += 16;
-        }
-        if (mPartyBadge)
-        {
-            mPartyBadge->draw(graphics, x, y);
-//            x += 16;
+            AnimatedSprite *const sprite = mBadges[f];
+            if (sprite)
+            {
+                sprite->draw(graphics, x, y);
+                x += 16;
+            }
         }
     }
     if (mEmotionSprite)
@@ -2640,13 +2614,13 @@ void Being::setGender(const GenderT gender)
 
 void Being::showGmBadge(const bool show)
 {
-    delete2(mGmBadge);
+    delete2(mBadges[BadgeIndex::Gm]);
     if (show && mIsGM && mShowBadges)
     {
         const std::string gmBadge = paths.getStringValue("gmbadge");
         if (!gmBadge.empty())
         {
-            mGmBadge = AnimatedSprite::load(
+            mBadges[BadgeIndex::Gm] = AnimatedSprite::load(
                 paths.getStringValue("badges") + gmBadge);
         }
     }
@@ -3887,14 +3861,14 @@ void Being::setTeamId(const uint16_t teamId)
 
 void Being::showTeamBadge(const bool show)
 {
-    delete2(mTeamBadge);
+    delete2(mBadges[BadgeIndex::Team]);
     if (show && mTeamId && mShowBadges)
     {
         const std::string name = paths.getStringValue("badges") +
             paths.getStringValue(strprintf("team%dbadge",
             mTeamId));
         if (!name.empty())
-            mTeamBadge = AnimatedSprite::load(name);
+            mBadges[BadgeIndex::Team] = AnimatedSprite::load(name);
     }
     updateBadgesCount();
 }
@@ -3910,13 +3884,13 @@ void Being::showBadges(const bool show)
 
 void Being::showPartyBadge(const bool show)
 {
-    delete2(mPartyBadge);
+    delete2(mBadges[BadgeIndex::Party]);
     if (show && !mPartyName.empty() && mShowBadges)
     {
         const std::string badge = BadgesDB::getPartyBadge(mPartyName);
         if (!badge.empty())
         {
-            mPartyBadge = AnimatedSprite::load(
+            mBadges[BadgeIndex::Party] = AnimatedSprite::load(
                 paths.getStringValue("badges") + badge);
         }
     }
@@ -3935,16 +3909,11 @@ void Being::setPartyName(const std::string &name)
 void Being::updateBadgesCount()
 {
     mBadgesCount = 0;
-    if (mTeamBadge)
-        mBadgesCount ++;
-    if (mGmBadge)
-        mBadgesCount ++;
-    if (mGuildBadge)
-        mBadgesCount ++;
-    if (mNameBadge)
-        mBadgesCount ++;
-    if (mPartyBadge)
-        mBadgesCount ++;
+    for_each_badges()
+    {
+        if (mBadges[f])
+            mBadgesCount ++;
+    }
 }
 
 #ifdef EATHENA_SUPPORT

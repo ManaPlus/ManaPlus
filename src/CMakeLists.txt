@@ -818,6 +818,7 @@ SET(SRCS
     enums/being/actortype.h
     enums/being/attacktype.h
     enums/being/attributes.h
+    enums/being/badgeindex.h
     listeners/actorspritelistener.h
     listeners/arrowslistener.cpp
     listeners/arrowslistener.h
