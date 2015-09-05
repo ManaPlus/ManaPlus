@@ -20,45 +20,18 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_CHARACTER_H
-#define NET_CHARACTER_H
+#ifndef NET_CHARACTERS_H
+#define NET_CHARACTERS_H
 
-#include "being/localplayer.h"
-#include "being/playerinfo.h"
-
-#include "utils/delete2.h"
+#include <list>
 
 #include "localconsts.h"
 
 namespace Net
 {
+    class Character;
 
-/**
- * A structure to hold information about a character.
- */
-struct Character final
-{
-    Character() :
-        dummy(nullptr),
-        data(),
-        slot(0U)
-    {
-    }
-
-    A_DELETE_COPY(Character)
-
-    ~Character()
-    {
-        delete2(dummy);
-    }
-
-    LocalPlayer *dummy;  /**< A dummy representing this character */
-    PlayerInfoBackend data;
-    uint16_t slot;       /**< The index in the list of characters */
-};
-
-typedef std::list<Character*> Characters;
-
+    typedef std::list<Character*> Characters;
 }  // namespace Net
 
-#endif  // NET_CHARACTER_H
+#endif  // NET_CHARACTERS_H

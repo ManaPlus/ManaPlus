@@ -23,6 +23,7 @@
 #ifndef NET_CHATHANDLER_H
 #define NET_CHATHANDLER_H
 
+#include <list>
 #include <string>
 
 #include "localconsts.h"
@@ -31,6 +32,7 @@ struct ChatObject;
 
 namespace Net
 {
+
 class ChatHandler notfinal
 {
     public:

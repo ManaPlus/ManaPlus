@@ -1146,6 +1146,7 @@ manaplus_SOURCES += main.cpp \
 	      net/beinghandler.h \
 	      net/buysellhandler.h \
 	      net/character.h \
+	      net/characters.h \
 	      net/charserverhandler.cpp \
 	      net/charserverhandler.h \
 	      net/chathandler.h \

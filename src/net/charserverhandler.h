@@ -25,6 +25,8 @@
 
 #include "being/localplayer.h"
 
+#include "net/characters.h"
+
 class CharCreateDialog;
 class CharSelectDialog;
 
@@ -32,8 +34,6 @@ namespace Net
 {
 
 struct Character;
-
-typedef std::list<Character*> Characters;
 
 class CharServerHandler notfinal
 {
