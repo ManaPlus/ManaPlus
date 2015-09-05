@@ -1,4 +1,6 @@
 SET(FILES
+    away.png
+    away.xml
     gm.png
     gm.xml
     inactive.png

@@ -609,6 +609,7 @@ DefaultsData* getPathsDefaults()
     AddDEF("gmbadge", "gm.xml");
     AddDEF("shopbadge", "shop.xml");
     AddDEF("inactivebadge", "inactive.xml");
+    AddDEF("awaybadge", "away.xml");
 
     return configData;
 }
