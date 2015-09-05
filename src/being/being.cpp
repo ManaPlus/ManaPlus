@@ -2100,7 +2100,7 @@ std::string Being::getGenderSign() const
     }
     if (mShowPlayersStatus)
     {
-        if (mShop)
+        if (mShop && !mShowBadges)
             str.append("$");
         if (mAway)
         {
@@ -2517,6 +2517,7 @@ bool Being::updateFromCache()
             mInactive = false;
         }
 
+        showShopBadge(mShop);
         updateAwayEffect();
         if (mType == ActorType::Player || mTeamId)
             updateColors();
@@ -3368,6 +3369,7 @@ void Being::setState(const uint8_t state)
     mAway = away;
     mInactive = inactive;
     updateAwayEffect();
+    showShopBadge(mShop);
 
     if (needUpdate)
     {
@@ -3880,6 +3882,7 @@ void Being::showBadges(const bool show)
     showGmBadge(show);
     showPartyBadge(show);
     showNameBadge(show);
+    showShopBadge(show);
 }
 
 void Being::showPartyBadge(const bool show)
@@ -3897,6 +3900,7 @@ void Being::showPartyBadge(const bool show)
     updateBadgesCount();
 }
 
+
 void Being::setPartyName(const std::string &name)
 {
     if (mPartyName != name)
@@ -3904,6 +3908,21 @@ void Being::setPartyName(const std::string &name)
         mPartyName = name;
         showPartyBadge(!mPartyName.empty());
     }
+}
+
+void Being::showShopBadge(const bool show)
+{
+    delete2(mBadges[BadgeIndex::Shop]);
+    if (show && mShop && mShowBadges)
+    {
+        const std::string badge = paths.getStringValue("shopbadge");
+        if (!badge.empty())
+        {
+            mBadges[BadgeIndex::Shop] = AnimatedSprite::load(
+                paths.getStringValue("badges") + badge);
+        }
+    }
+    updateBadgesCount();
 }
 
 void Being::updateBadgesCount()
@@ -3928,6 +3947,7 @@ void Being::setSellBoard(const std::string &text)
     mShop = !text.empty() || !mBuyBoard.empty();
     mSellBoard = text;
     updateName();
+    showShopBadge(mShop);
 }
 
 void Being::setBuyBoard(const std::string &text)
@@ -3935,6 +3955,7 @@ void Being::setBuyBoard(const std::string &text)
     mShop = !text.empty() || !mSellBoard.empty();
     mBuyBoard = text;
     updateName();
+    showShopBadge(mShop);
 }
 #endif
 
@@ -3942,6 +3963,7 @@ void Being::enableShop(const bool b)
 {
     mShop = b;
     updateName();
+    showShopBadge(mShop);
 }
 
 bool Being::isBuyShopEnabled() const

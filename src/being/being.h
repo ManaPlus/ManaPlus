@@ -942,6 +942,8 @@ class Being notfinal : public ActorSprite,
 
         void showNameBadge(const bool show);
 
+        void showShopBadge(const bool show);
+
         void showBadges(const bool show);
 
         uint16_t getTeamId() const

@@ -1,6 +1,8 @@
 SET(FILES
     gm.png
     gm.xml
+    shop.png
+    shop.xml
     team1.png
     team1.xml
     team2.png

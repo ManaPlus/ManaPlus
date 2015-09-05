@@ -607,6 +607,7 @@ DefaultsData* getPathsDefaults()
     AddDEF("team2badge", "team2.xml");
     AddDEF("team3badge", "team3.xml");
     AddDEF("gmbadge", "gm.xml");
+    AddDEF("shopbadge", "shop.xml");
 
     return configData;
 }
