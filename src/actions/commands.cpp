@@ -52,6 +52,8 @@
 #include "net/guildhandler.h"
 #ifdef EATHENA_SUPPORT
 #include "net/homunculushandler.h"
+#include "net/mailhandler.h"
+#include "net/net.h"
 #endif
 #include "net/partyhandler.h"
 #include "net/serverfeatures.h"
@@ -518,6 +520,21 @@ impHandler(imitation)
 impHandler0(sendMail)
 {
     // +++ need impliment for hercules
+    const ServerTypeT type = Net::getNetworkType();
+#ifdef EATHENA_SUPPORT
+    if (type == ServerType::EATHENA || type == ServerType::EVOL2)
+    {
+        std::string name;
+        std::string text;
+
+        if (parse2Str(event.args, name, text))
+        {
+            // TRANSLATORS: quick mail message caption
+            mailHandler->send(name, _("Quick message"), text);
+        }
+    }
+    else
+#endif
     if (serverConfig.getBoolValue("enableManaMarketBot"))
     {
         chatHandler->privateMessage("ManaMarket", "!mail " + event.args);
