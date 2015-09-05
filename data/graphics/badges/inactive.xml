@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Author: 4144
+Copyright (C) 2015 ManaPlus developers -->
+<sprite>
+    <imageset name="icon"
+              src="graphics/badges/inactive.png"
+              width="16"
+              height="16"
+              offsetY="0"/>
+    <action name="default" imageset="icon">
+        <animation direction="default">
+            <frame index="0"/>
+        </animation>
+    </action>
+</sprite>

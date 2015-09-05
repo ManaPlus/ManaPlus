@@ -2107,7 +2107,7 @@ std::string Being::getGenderSign() const
             // TRANSLATORS: this away status writed in player nick
             str.append(_("A"));
         }
-        else if (mInactive)
+        else if (mInactive && !mShowBadges)
         {
             // TRANSLATORS: this inactive status writed in player nick
             str.append(_("I"));
@@ -2518,6 +2518,7 @@ bool Being::updateFromCache()
         }
 
         showShopBadge(mShop);
+        showInactiveBadge(mInactive);
         updateAwayEffect();
         if (mType == ActorType::Player || mTeamId)
             updateColors();
@@ -3370,6 +3371,7 @@ void Being::setState(const uint8_t state)
     mInactive = inactive;
     updateAwayEffect();
     showShopBadge(mShop);
+    showInactiveBadge(mInactive);
 
     if (needUpdate)
     {
@@ -3883,6 +3885,7 @@ void Being::showBadges(const bool show)
     showPartyBadge(show);
     showNameBadge(show);
     showShopBadge(show);
+    showInactiveBadge(show);
 }
 
 void Being::showPartyBadge(const bool show)
@@ -3919,6 +3922,21 @@ void Being::showShopBadge(const bool show)
         if (!badge.empty())
         {
             mBadges[BadgeIndex::Shop] = AnimatedSprite::load(
+                paths.getStringValue("badges") + badge);
+        }
+    }
+    updateBadgesCount();
+}
+
+void Being::showInactiveBadge(const bool show)
+{
+    delete2(mBadges[BadgeIndex::Inactive]);
+    if (show && mShop && mShowBadges)
+    {
+        const std::string badge = paths.getStringValue("inactivebadge");
+        if (!badge.empty())
+        {
+            mBadges[BadgeIndex::Inactive] = AnimatedSprite::load(
                 paths.getStringValue("badges") + badge);
         }
     }
