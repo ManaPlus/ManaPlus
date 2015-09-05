@@ -22,6 +22,7 @@
 
 #include "net/ea/charserverhandler.h"
 
+#include "net/character.h"
 #include "net/serverinfo.h"
 
 #include "net/ea/eaprotocol.h"
