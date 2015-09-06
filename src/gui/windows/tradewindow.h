@@ -164,6 +164,8 @@ class TradeWindow final : public Window,
 
         bool isInpupFocused() const A_WARN_UNUSED;
 
+        void completeTrade();
+
     private:
         enum Status
         {

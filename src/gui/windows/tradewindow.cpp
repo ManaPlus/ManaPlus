@@ -23,6 +23,7 @@
 #include "gui/windows/tradewindow.h"
 
 #include "configuration.h"
+#include "game.h"
 #include "item.h"
 #include "units.h"
 
@@ -294,6 +295,14 @@ void TradeWindow::receivedOk(const bool own)
 
     if (mOkMe && mOkOther)
         setStatus(ACCEPTING);
+}
+
+void TradeWindow::completeTrade()
+{
+    if (config.getBoolValue("tradescreenshot"))
+        Game::createScreenshot();
+    setVisible(Visible_false);
+    reset();
 }
 
 void TradeWindow::tradeItem(const Item *const item, const int quantity,

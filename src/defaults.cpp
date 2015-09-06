@@ -381,6 +381,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("disableLoggingInGame", false);
     AddDEF("sellShopName", "unnamed");
     AddDEF("showBadges", 1);
+    AddDEF("tradescreenshot", false);
     return configData;
 }
 

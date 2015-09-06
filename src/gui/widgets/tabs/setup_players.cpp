@@ -125,6 +125,10 @@ Setup_Players::Setup_Players(const Widget2 *const widget) :
         "", "useDiagonalSpeed", this, "useDiagonalSpeedEvent");
 
     // TRANSLATORS: settings option
+    new SetupItemCheckBox(_("Create screenshots for each complete trades"),
+        "", "tradescreenshot", this, "tradescreenshotEvent");
+
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Emulate right mouse button by long mouse click"
         " (useful for touch interfaces)"),
         "", "longmouseclick", this, "longmouseclickEvent");

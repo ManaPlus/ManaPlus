@@ -135,10 +135,7 @@ void TradeRecv::processTradeComplete(Net::MessageIn &msg A_UNUSED)
 {
     NotifyManager::notify(NotifyTypes::TRADE_COMPLETE);
     if (tradeWindow)
-    {
-        tradeWindow->setVisible(Visible_false);
-        tradeWindow->reset();
-    }
+        tradeWindow->completeTrade();
     PlayerInfo::setTrading(Trading_false);
 }
 
