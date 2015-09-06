@@ -224,4 +224,13 @@ void PlayerRecv::processMapMusic(Net::MessageIn &msg)
         map->setMusicFile(music);
 }
 
+void PlayerRecv::processMapMask(Net::MessageIn &msg)
+{
+    const int mask = msg.readInt32("mask");
+    msg.readInt32("unused");
+    Map *const map = Game::instance()->getCurrentMap();
+    if (map)
+        map->setMask(mask);
+}
+
 }  // namespace Ea

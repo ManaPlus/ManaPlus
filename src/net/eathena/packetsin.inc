@@ -212,7 +212,7 @@ packet(SMSG_MANNER_MESSAGE,                0x014a,   6, &ChatRecv::processManner
 packet(SMSG_MAP_ACCOUNT_ID,                0x0283,   6, &GameRecv::processMapAccountId);
 packet(SMSG_MAP_AUTH_REFUSE,               0x0074,   3, &GameRecv::processMapAuthRefuse);
 packet(SMSG_MAP_LOGIN_SUCCESS,             0x0a18,  14, &GameRecv::processMapLogin);
-packet(SMSG_MAP_MASK,                      0x0b02,  10, &PlayerRecv::processMapMask);
+packet(SMSG_MAP_MASK,                      0x0b02,  10, &Ea::PlayerRecv::processMapMask);
 packet(SMSG_MAP_MUSIC,                     0x0b05,  -1, &Ea::PlayerRecv::processMapMusic);
 packet(SMSG_MAP_NOT_FOUND,                 0x0840,  -1, &GeneralRecv::processMapNotFound);
 packet(SMSG_MAP_QUIT_RESPONSE,             0x018b,   4, &Ea::GameRecv::processMapQuitResponse);

@@ -422,13 +422,4 @@ void PlayerRecv::processOnlineList(Net::MessageIn &msg)
     BLOCK_END("PlayerRecv::processOnlineList")
 }
 
-void PlayerRecv::processMapMask(Net::MessageIn &msg)
-{
-    const int mask = msg.readInt32("mask");
-    msg.readInt32("unused");
-    Map *const map = Game::instance()->getCurrentMap();
-    if (map)
-        map->setMask(mask);
-}
-
 }  // namespace EAthena

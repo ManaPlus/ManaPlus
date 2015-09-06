@@ -168,3 +168,4 @@ packet(SMSG_WALK_RESPONSE,                 0x0087,  12, &PlayerRecv::processWalk
 packet(SMSG_WHISPER,                       0x0097,  -1, &ChatRecv::processWhisper);
 packet(SMSG_WHISPER_RESPONSE,              0x0098,   3, &ChatRecv::processWhisperResponse);
 packet(SMSG_WHO_ANSWER,                    0x00c2,   6, &Ea::GameRecv::processWhoAnswer);
+packet(SMSG_MAP_MASK,                      0x0226,  10, &Ea::PlayerRecv::processMapMask);

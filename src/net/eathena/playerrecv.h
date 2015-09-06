@@ -51,7 +51,6 @@ namespace EAthena
         void processPlayerRankPoints(Net::MessageIn &msg);
         void processPlayerClientCommand(Net::MessageIn &msg);
         void processOnlineList(Net::MessageIn &msg);
-        void processMapMask(Net::MessageIn &msg);
     }  // namespace PlayerRecv
 }  // namespace EAthena
 

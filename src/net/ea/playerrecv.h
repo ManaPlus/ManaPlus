@@ -42,6 +42,7 @@ namespace Ea
         void processPlayerStatUpdate6(Net::MessageIn &msg);
         void processPlayerArrowMessage(Net::MessageIn &msg);
         void processMapMusic(Net::MessageIn &msg);
+        void processMapMask(Net::MessageIn &msg);
     }  // namespace PlayerRecv
 
     static const int NoStat = INT_MAX;
