@@ -195,3 +195,8 @@ void MailEditWindow::setMessage(const std::string &str)
 {
     mMessageField->setText(str);
 }
+
+void MailEditWindow::close()
+{
+    scheduleDelete();
+}

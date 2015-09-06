@@ -56,6 +56,8 @@ class MailEditWindow final : public Window,
 
         void setMessage(const std::string &str);
 
+        void close() override final;
+
     private:
         Button *mSendButton;
         Button *mCloseButton;
