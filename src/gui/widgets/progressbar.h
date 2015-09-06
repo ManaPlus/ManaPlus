@@ -23,6 +23,8 @@
 #ifndef GUI_WIDGETS_PROGRESSBAR_H
 #define GUI_WIDGETS_PROGRESSBAR_H
 
+#include "gui/fonts/textchunk.h"
+
 #include "gui/widgets/widget.h"
 
 #include "listeners/widgetlistener.h"
@@ -108,8 +110,7 @@ class ProgressBar final : public Widget,
         /**
          * Sets the text shown on the progress bar.
          */
-        void setText(const std::string &str)
-        { mText = str; }
+        void setText(const std::string &str);
 
         /**
          * Returns the text shown on the progress bar.
@@ -133,11 +134,14 @@ class ProgressBar final : public Widget,
 
         void widgetMoved(const Event &event) override final;
 
+        void widgetHidden(const Event &event) override final;
+
         void setPadding(unsigned int padding)
         { mPadding = padding; }
 
     private:
         ImageRect mFillRect;
+        TextChunk mTextChunk;
         Skin *mSkin;
         float mProgress;
         float mProgressToGo;
@@ -156,6 +160,7 @@ class ProgressBar final : public Widget,
         bool mFillImage;
         bool mSmoothProgress;
         bool mSmoothColorChange;
+        bool mTextChanged;
 };
 
 #endif  // GUI_WIDGETS_PROGRESSBAR_H

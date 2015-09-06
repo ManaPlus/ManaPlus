@@ -47,6 +47,7 @@ ProgressBar::ProgressBar(const Widget2 *const widget,
     Widget(widget),
     WidgetListener(),
     mFillRect(),
+    mTextChunk(),
     mSkin(nullptr),
     mProgress(progress),
     mProgressToGo(progress),
@@ -58,7 +59,8 @@ ProgressBar::ProgressBar(const Widget2 *const widget,
     mFillPadding(3),
     mFillImage(false),
     mSmoothProgress(true),
-    mSmoothColorChange(true)
+    mSmoothColorChange(true),
+    mTextChanged(true)
 {
     mBackgroundColor = Theme::getProgressColor(
         backColor >= ProgressColorId::PROG_HP
@@ -106,6 +108,7 @@ ProgressBar::~ProgressBar()
     }
     Theme::unloadRect(mFillRect);
     delete2(mVertexes);
+    mTextChunk.deleteImage();
 }
 
 void ProgressBar::logic()
@@ -204,20 +207,25 @@ void ProgressBar::draw(Graphics *graphics)
     // The label
     if (!mText.empty())
     {
-        const Color oldColor = graphics->getColor();
-
         Font *const font = gui->getFont();
-        const int textX = mDimension.width / 2;
-        const int textY = (mDimension.height - font->getHeight()) / 2;
+        if (mTextChanged)
+        {
+            mTextChunk.textFont = font;
+            mTextChunk.deleteImage();
+            mTextChunk.text = mText;
+            mTextChunk.color = mForegroundColor;
+            mTextChunk.color2 = mForegroundColor2;
+            font->generate(mTextChunk);
+            mTextChanged = false;
+        }
 
-        font->drawString(graphics,
-            mForegroundColor,
-            mForegroundColor2,
-            mText,
-            textX - font->getWidth(mText) / 2,
-            textY);
-
-        graphics->setColor(oldColor);
+        const Image *const image = mTextChunk.img;
+        if (image)
+        {
+            const int textX = (mDimension.width - font->getWidth(mText)) / 2;
+            const int textY = (mDimension.height - font->getHeight()) / 2;
+            graphics->drawImage(image, textX, textY);
+        }
     }
     BLOCK_END("ProgressBar::draw")
 }
@@ -270,20 +278,25 @@ void ProgressBar::safeDraw(Graphics *graphics)
     // The label
     if (!mText.empty())
     {
-        const Color oldColor = graphics->getColor();
-
         Font *const font = gui->getFont();
-        const int textX = mDimension.width / 2;
-        const int textY = (mDimension.height - font->getHeight()) / 2;
+        if (mTextChanged)
+        {
+            mTextChunk.textFont = font;
+            mTextChunk.deleteImage();
+            mTextChunk.text = mText;
+            mTextChunk.color = mForegroundColor;
+            mTextChunk.color2 = mForegroundColor2;
+            font->generate(mTextChunk);
+            mTextChanged = false;
+        }
 
-        font->drawString(graphics,
-            mForegroundColor,
-            mForegroundColor2,
-            mText,
-            textX - font->getWidth(mText) / 2,
-            textY);
-
-        graphics->setColor(oldColor);
+        const Image *const image = mTextChunk.img;
+        if (image)
+        {
+            const int textX = (mDimension.width - font->getWidth(mText)) / 2;
+            const int textY = (mDimension.height - font->getHeight()) / 2;
+            graphics->drawImage(image, textX, textY);
+        }
     }
     BLOCK_END("ProgressBar::safeDraw")
 }
@@ -331,6 +344,7 @@ void ProgressBar::setColor(const Color &color1, const Color &color2)
 {
     mForegroundColor = color1;
     mForegroundColor2 = color2;
+    mTextChanged = true;
 }
 
 void ProgressBar::widgetResized(const Event &event A_UNUSED)
@@ -341,4 +355,19 @@ void ProgressBar::widgetResized(const Event &event A_UNUSED)
 void ProgressBar::widgetMoved(const Event &event A_UNUSED)
 {
     mRedraw = true;
+}
+
+void ProgressBar::setText(const std::string &str)
+{
+    if (mText != str)
+    {
+        mText = str;
+        mTextChanged = true;
+    }
+}
+
+void ProgressBar::widgetHidden(const Event &event A_UNUSED)
+{
+    mTextChanged = true;
+    mTextChunk.deleteImage();
 }
