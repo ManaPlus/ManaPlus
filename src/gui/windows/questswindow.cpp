@@ -184,6 +184,7 @@ void QuestsWindow::loadXmlFile(const std::string &fileName)
             const int id = XML::getProperty(varNode, "id", 0);
             if (id < 0)
                 continue;
+            mVars[id] = 0;
             for_each_xml_child_node(questNode, varNode)
             {
                 if (xmlNameEqual(questNode, "quest"))
