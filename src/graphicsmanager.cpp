@@ -912,8 +912,10 @@ void GraphicsManager::initOpenGLFunctions()
     if (findI(mGlVendor, "NVIDIA") != std::string::npos ||
         mGlVersionString.find("Mesa 10.6.") != std::string::npos ||
         (findI(mGlRenderer, "AMD Radeon HD") != std::string::npos &&
-        mGlVersionString.find("Compatibility Profile Context 14.10") !=
-        std::string::npos))
+        (mGlVersionString.find(
+        "Compatibility Profile Context 14.") != std::string::npos ||
+        mGlVersionString.find(
+        "Compatibility Profile Context 15.") != std::string::npos)))
     {
         logger->log1("Not checked for DSA because on "
             "NVIDIA or AMD or in Mesa it broken");
