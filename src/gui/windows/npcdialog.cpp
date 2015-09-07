@@ -797,9 +797,9 @@ void NpcDialog::placeTextInputControls()
     {
         place(0, 0, mPlayerBox);
         place(1, 0, mScrollArea, 6, 3);
-        place(0, 3, mTextField, 6);
-        place(0, 4, mResetButton, 2);
-        place(4, 4, mClearButton, 2);
+        place(1, 3, mTextField, 6);
+        place(1, 4, mResetButton, 2);
+        place(3, 4, mClearButton, 2);
         place(5, 4, mButton, 2);
     }
     else
@@ -821,7 +821,7 @@ void NpcDialog::placeIntInputControls()
         place(1, 3, mMinusButton, 1);
         place(2, 3, mIntField, 4);
         place(6, 3, mPlusButton, 1);
-        place(0, 4, mResetButton, 2);
+        place(1, 4, mResetButton, 2);
         place(3, 4, mClearButton, 2);
         place(5, 4, mButton, 2);
     }
