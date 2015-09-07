@@ -31,7 +31,7 @@
 #include "net/ea/chatrecv.h"
 
 #include "net/tmwa/messageout.h"
-#include "net/tmwa/protocol.h"
+#include "net/tmwa/protocolout.h"
 
 #include "utils/stringutils.h"
 

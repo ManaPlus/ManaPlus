@@ -34,7 +34,8 @@
 #include "net/ea/npcrecv.h"
 
 #include "net/eathena/messageout.h"
-#include "net/eathena/protocol.h"
+#include "net/eathena/protocolin.h"
+#include "net/eathena/protocolout.h"
 
 #include "debug.h"
 
@@ -197,6 +198,7 @@ void NpcHandler::selectAutoSpell(const int skillId) const
 
 BeingId NpcHandler::getNpc(Net::MessageIn &msg)
 {
+    // +++ must be removed SMSG_*
     if (msg.getId() == SMSG_NPC_CHOICE
         || msg.getId() == SMSG_NPC_MESSAGE
         || msg.getId() == SMSG_NPC_CHANGETITLE)
@@ -209,11 +211,13 @@ BeingId NpcHandler::getNpc(Net::MessageIn &msg)
     const NpcDialogs::const_iterator diag = NpcDialog::mNpcDialogs.find(npcId);
     Ea::NpcRecv::mDialog = nullptr;
 
+    // +++ must be removed SMSG_*
     if (msg.getId() == SMSG_NPC_VIEWPOINT)
         return npcId;
 
     if (diag == NpcDialog::mNpcDialogs.end())
     {
+        // +++ must be removed SMSG_*
         // Empty dialogs don't help
         if (msg.getId() == SMSG_NPC_CLOSE)
         {

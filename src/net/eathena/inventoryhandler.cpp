@@ -29,7 +29,7 @@
 #include "net/eathena/inventoryrecv.h"
 #include "net/eathena/menu.h"
 #include "net/eathena/messageout.h"
-#include "net/eathena/protocol.h"
+#include "net/eathena/protocolout.h"
 
 #include "net/ea/eaprotocol.h"
 

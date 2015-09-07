@@ -30,7 +30,7 @@
 
 #include "net/eathena/chatrecv.h"
 #include "net/eathena/messageout.h"
-#include "net/eathena/protocol.h"
+#include "net/eathena/protocolout.h"
 
 #include "resources/chatobject.h"
 

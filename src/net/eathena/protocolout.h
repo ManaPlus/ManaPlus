@@ -1,8 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2004-2009  The Mana World Development Team
- *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011-2015  The ManaPlus Developers
+ *  Copyright (C) 2015  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -20,15 +18,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_TMWA_PROTOCOL_H
-#define NET_TMWA_PROTOCOL_H
-
-#include "net/protocolindefine.h"
-#include "net/tmwa/packetsin.inc"
-#undef packet
+#ifndef NET_EATHENA_PROTOCOLOUT_H
+#define NET_EATHENA_PROTOCOLOUT_H
 
 #include "net/protocoloutdefine.h"
-#include "net/tmwa/packetsout.inc"
+#include "net/eathena/packetsout.inc"
 #undef packet
 
-#endif  // NET_TMWA_PROTOCOL_H
+#endif  // NET_EATHENA_PROTOCOLOUT_H

@@ -59,14 +59,13 @@
 #include "net/tmwa/traderecv.h"
 
 #include "net/tmwa/messagein.h"
-#include "net/tmwa/protocol.h"
 
 #include "debug.h"
 
 namespace TmwAthena
 {
 
-static const unsigned int packet_lengths_size = 0x0230U;
+static const unsigned int packet_lengths_size = 0xFFFFU;
 static const unsigned int messagesSize = 0xFFFFU;
 Network *Network::mInstance = nullptr;
 
@@ -102,9 +101,7 @@ void Network::dispatchMessages()
         BLOCK_START("Network::dispatchMessages 2")
         const unsigned int msgId = readWord(0);
         int len = -1;
-        if (msgId == SMSG_SERVER_VERSION_RESPONSE)
-            len = 10;
-        else if (msgId < packet_lengths_size)
+        if (msgId < packet_lengths_size)
             len = mPackets[msgId].len;
 
         if (len == -1)
@@ -153,17 +150,10 @@ bool Network::messageReady()
     if (mInSize >= 2)
     {
         const int msgId = readWord(0);
-        if (msgId == SMSG_SERVER_VERSION_RESPONSE)
+        if (msgId >= 0 && static_cast<unsigned int>(msgId)
+            < packet_lengths_size)
         {
-            len = 10;
-        }
-        else
-        {
-            if (msgId >= 0 && static_cast<unsigned int>(msgId)
-                < packet_lengths_size)
-            {
-                len = mPackets[msgId].len;
-            }
+            len = mPackets[msgId].len;
         }
 
         if (len == -1 && mInSize > 4)

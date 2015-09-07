@@ -32,7 +32,7 @@
 #include "net/ea/partyrecv.h"
 
 #include "net/tmwa/messageout.h"
-#include "net/tmwa/protocol.h"
+#include "net/tmwa/protocolout.h"
 
 #include "debug.h"
 

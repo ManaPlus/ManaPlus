@@ -27,7 +27,7 @@
 #include "being/playerinfo.h"
 
 #include "net/tmwa/messageout.h"
-#include "net/tmwa/protocol.h"
+#include "net/tmwa/protocolout.h"
 
 #include "net/ea/eaprotocol.h"
 

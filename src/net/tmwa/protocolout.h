@@ -1,6 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2012-2015  The ManaPlus Developers
+ *  Copyright (C) 2015  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -18,28 +18,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "net/eathena/questhandler.h"
+#ifndef NET_TMWA_PROTOCOLOUT_H
+#define NET_TMWA_PROTOCOLOUT_H
 
-#include "net/eathena/messageout.h"
-#include "net/eathena/protocolout.h"
+#include "net/protocoloutdefine.h"
+#include "net/tmwa/packetsout.inc"
+#undef packet
 
-#include "debug.h"
-
-namespace EAthena
-{
-
-QuestHandler::QuestHandler() :
-    Net::QuestHandler()
-{
-    questHandler = this;
-}
-
-void QuestHandler::setQeustActiveState(const int questId,
-                                       const bool active) const
-{
-    createOutPacket(CMSG_QUEST_ACTIVATE);
-    outMsg.writeInt32(questId, "quest id");
-    outMsg.writeInt8(static_cast<int8_t>(active ? 1 : 0), "activate");
-}
-
-}  // namespace EAthena
+#endif  // NET_TMWA_PROTOCOLOUT_H

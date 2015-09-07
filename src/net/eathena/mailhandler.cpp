@@ -23,7 +23,7 @@
 #include "net/ea/eaprotocol.h"
 
 #include "net/eathena/messageout.h"
-#include "net/eathena/protocol.h"
+#include "net/eathena/protocolout.h"
 
 #include "debug.h"
 
