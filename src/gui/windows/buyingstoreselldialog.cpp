@@ -56,9 +56,9 @@ void BuyingStoreSellDialog::sellAction(const ActionEvent &event A_UNUSED)
     Being *const being = actorManager->findBeing(mAccountId);
     if (!being)
         return;
-    // +++ need add colors
     Item *const item2 = PlayerInfo::getInventory()->findItem(
-        item1->getId(), ItemColor_one);
+        item1->getId(),
+        item1->getColor());
     if (!item2)
         return;
 

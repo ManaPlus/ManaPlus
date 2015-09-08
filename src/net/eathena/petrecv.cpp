@@ -185,7 +185,6 @@ void PetRecv::processPetStatus(Net::MessageIn &msg)
 
 void PetRecv::processPetFood(Net::MessageIn &msg)
 {
-    // +++ need show notification message about success or fail
     const int result = msg.readUInt8("result");
     msg.readInt16("food id");
     if (result)

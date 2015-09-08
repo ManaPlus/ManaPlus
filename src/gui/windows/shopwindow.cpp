@@ -347,9 +347,8 @@ void ShopWindow::action(const ActionEvent &event)
                     ShopItem *const item = *it;
                     if (!item)
                         continue;
-                    // +++ need add colors
                     Item *const cartItem = inv->findItem(item->getId(),
-                        ItemColor_one);
+                        item->getColor());
                     if (!cartItem)
                         continue;
                     item->setInvIndex(cartItem->getInvIndex());
@@ -748,7 +747,6 @@ void ShopWindow::giveList(const std::string &nick, const int mode)
 
         if (mode == SELL)
         {
-            // +++ need support for colors
             const Item *const item2 = inv->findItem(item->getId(),
                 ItemColor_zero);
             if (item2)

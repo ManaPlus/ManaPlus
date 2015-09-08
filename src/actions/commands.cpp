@@ -519,7 +519,6 @@ impHandler(imitation)
 
 impHandler0(sendMail)
 {
-    // +++ need impliment for hercules
     const ServerTypeT type = Net::getNetworkType();
 #ifdef EATHENA_SUPPORT
     if (type == ServerType::EATHENA || type == ServerType::EVOL2)
