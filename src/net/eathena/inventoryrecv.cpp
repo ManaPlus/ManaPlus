@@ -29,6 +29,8 @@
 
 #include "enums/resources/notifytypes.h"
 
+#include "enums/net/deleteitemreason.h"
+
 #include "gui/popups/itempopup.h"
 
 #include "gui/widgets/createwidget.h"
@@ -377,15 +379,56 @@ void InventoryRecv::processPlayerInventoryRemove2(Net::MessageIn &msg)
     Inventory *const inventory = localPlayer
         ? PlayerInfo::getInventory() : nullptr;
 
-    // +++ here possible use particle or text/sound effects
-    // for different reasons
-    msg.readInt16("reason");
+    const DeleteItemReasonT reason = fromInt(msg.readInt16("reason"),
+        DeleteItemReasonT);
     const int index = msg.readInt16("index") - INVENTORY_OFFSET;
     const int amount = msg.readInt16("amount");
+
     if (inventory)
     {
         if (Item *const item = inventory->getItem(index))
         {
+            switch (reason)
+            {
+                case DeleteItemReason::Normal:
+                    NotifyManager::notify(NotifyTypes::DELETE_ITEM_NORMAL,
+                        item->getName());
+                    break;
+                case DeleteItemReason::SkillUse:
+                    NotifyManager::notify(NotifyTypes::DELETE_ITEM_SKILL_USE,
+                        item->getName());
+                    break;
+                case DeleteItemReason::FailRefine:
+                    NotifyManager::notify(NotifyTypes::DELETE_ITEM_FAIL_REFINE,
+                        item->getName());
+                    break;
+                case DeleteItemReason::MaterialChange:
+                    NotifyManager::notify(
+                        NotifyTypes::DELETE_ITEM_MATERIAL_CHANGE,
+                        item->getName());
+                    break;
+                case DeleteItemReason::ToStorage:
+                    NotifyManager::notify(NotifyTypes::DELETE_ITEM_TO_STORAGE,
+                        item->getName());
+                    break;
+                case DeleteItemReason::ToCart:
+                    NotifyManager::notify(NotifyTypes::DELETE_ITEM_TO_CART,
+                        item->getName());
+                    break;
+                case DeleteItemReason::Sold:
+                    NotifyManager::notify(NotifyTypes::DELETE_ITEM_SOLD,
+                        item->getName());
+                    break;
+                case DeleteItemReason::Analysis:
+                    NotifyManager::notify(NotifyTypes::DELETE_ITEM_ANALYSIS,
+                        item->getName());
+                    break;
+                default:
+                    NotifyManager::notify(NotifyTypes::DELETE_ITEM_UNKNOWN,
+                        item->getName());
+                    break;
+            }
+
             item->increaseQuantity(-amount);
             if (item->getQuantity() == 0)
                 inventory->removeItemAt(index);
