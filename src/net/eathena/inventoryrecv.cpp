@@ -357,10 +357,9 @@ void InventoryRecv::processPlayerUnEquip(Net::MessageIn &msg)
     const int equipType = msg.readInt32("wear location");
     const uint8_t flag = msg.readUInt8("result");
 
-    // +++ need use UNEQUIP_FAILED event
     if (flag)
     {
-        NotifyManager::notify(NotifyTypes::EQUIP_FAILED);
+        NotifyManager::notify(NotifyTypes::UNEQUIP_FAILED);
     }
     else
     {

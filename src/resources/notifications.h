@@ -141,6 +141,10 @@ namespace NotifyManager
             // TRANSLATORS: notification message
             N_("Unable to equip because you have wrong level."),
             NotifyFlags::EMPTY},
+        {"unequip failed",
+            // TRANSLATORS: notification message
+            N_("Unable to unequip."),
+            NotifyFlags::EMPTY},
         {"party create failed",
             // TRANSLATORS: notification message
             N_("Couldn't create party."),
