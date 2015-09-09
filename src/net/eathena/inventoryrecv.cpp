@@ -379,8 +379,8 @@ void InventoryRecv::processPlayerInventoryRemove2(Net::MessageIn &msg)
     Inventory *const inventory = localPlayer
         ? PlayerInfo::getInventory() : nullptr;
 
-    const DeleteItemReasonT reason = fromInt(msg.readInt16("reason"),
-        DeleteItemReasonT);
+    const DeleteItemReasonT reason = static_cast<DeleteItemReasonT>(
+        msg.readInt16("reason"));
     const int index = msg.readInt16("index") - INVENTORY_OFFSET;
     const int amount = msg.readInt16("amount");
 
