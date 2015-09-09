@@ -119,7 +119,7 @@ packet(SMSG_PLAYER_EQUIPMENT,              0x00a4,  -1, &InventoryRecv::processP
 packet(SMSG_PLAYER_GUILD_PARTY_INFO,       0x0195, 102, &BeingRecv::processPlayerGuilPartyInfo);
 packet(SMSG_PLAYER_INVENTORY,              0x01ee,  -1, &InventoryRecv::processPlayerInventory);
 packet(SMSG_PLAYER_INVENTORY_ADD,          0x00a0,  23, &InventoryRecv::processPlayerInventoryAdd);
-packet(SMSG_PLAYER_INVENTORY_REMOVE,       0x00af,   6, &Ea::InventoryRecv::processPlayerInventoryRemove);
+packet(SMSG_PLAYER_INVENTORY_REMOVE,       0x00af,   6, &InventoryRecv::processPlayerInventoryRemove);
 packet(SMSG_PLAYER_INVENTORY_USE,          0x01c8,  13, &Ea::InventoryRecv::processPlayerInventoryUse);
 packet(SMSG_PLAYER_MOVE,                   0x01da,  60, &BeingRecv::processPlayerMove);
 packet(SMSG_PLAYER_MOVE_TO_ATTACK,         0x0139,  16, &Ea::BeingRecv::processPlayerMoveToAttack);

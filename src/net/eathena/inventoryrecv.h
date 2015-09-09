@@ -69,6 +69,7 @@ namespace EAthena
         void processFavoriteItem(Net::MessageIn &msg);
         void processCartAddError(Net::MessageIn &msg);
         void processBindItem(Net::MessageIn &msg);
+        void processPlayerInventoryRemove(Net::MessageIn &msg);
     }  // namespace InventoryRecv
 }  // namespace EAthena
 

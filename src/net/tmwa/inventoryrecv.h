@@ -41,6 +41,7 @@ namespace TmwAthena
         void processPlayerStorageEquip(Net::MessageIn &msg);
         void processPlayerStorageAdd(Net::MessageIn &msg);
         void processPlayerStorageRemove(Net::MessageIn &msg);
+        void processPlayerInventoryRemove(Net::MessageIn &msg);
     }  // namespace InventoryRecv
 }  // namespace TmwAthena
 

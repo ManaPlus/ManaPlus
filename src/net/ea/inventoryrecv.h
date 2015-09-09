@@ -52,7 +52,6 @@ namespace Ea
         extern PickupQueue mSentPickups;
         extern bool mDebugInventory;
 
-        void processPlayerInventoryRemove(Net::MessageIn &msg);
         void processPlayerInventoryUse(Net::MessageIn &msg);
         void processItemUseResponse(Net::MessageIn &msg);
         void processPlayerStorageStatus(Net::MessageIn &msg);

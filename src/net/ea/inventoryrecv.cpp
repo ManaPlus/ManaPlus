@@ -82,27 +82,6 @@ namespace InventoryRecv
     bool mDebugInventory = true;
 }  // namespace InventoryRecv
 
-void InventoryRecv::processPlayerInventoryRemove(Net::MessageIn &msg)
-{
-    BLOCK_START("InventoryRecv::processPlayerInventoryRemove")
-    Inventory *const inventory = localPlayer
-        ? PlayerInfo::getInventory() : nullptr;
-
-    const int index = msg.readInt16("index") - INVENTORY_OFFSET;
-    const int amount = msg.readInt16("amount");
-    if (inventory)
-    {
-        if (Item *const item = inventory->getItem(index))
-        {
-            item->increaseQuantity(-amount);
-            if (item->getQuantity() == 0)
-                inventory->removeItemAt(index);
-            ArrowsListener::distributeEvent();
-        }
-    }
-    BLOCK_END("InventoryRecv::processPlayerInventoryRemove")
-}
-
 void InventoryRecv::processPlayerInventoryUse(Net::MessageIn &msg)
 {
     BLOCK_START("InventoryRecv::processPlayerInventoryUse")

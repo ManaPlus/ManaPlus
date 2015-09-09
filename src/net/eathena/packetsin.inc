@@ -310,7 +310,7 @@ packet(SMSG_PLAYER_IDENTIFY_LIST,          0x0177,  -1, &InventoryRecv::processP
 packet(SMSG_PLAYER_INSERT_CARD,            0x017d,   7, &InventoryRecv::processPlayerInsertCard);
 packet(SMSG_PLAYER_INVENTORY,              0x0991,  -1, &InventoryRecv::processPlayerInventory);
 packet(SMSG_PLAYER_INVENTORY_ADD,          0x0990,  31, &InventoryRecv::processPlayerInventoryAdd);
-packet(SMSG_PLAYER_INVENTORY_REMOVE,       0x00af,   6, &Ea::InventoryRecv::processPlayerInventoryRemove);
+packet(SMSG_PLAYER_INVENTORY_REMOVE,       0x00af,   6, &InventoryRecv::processPlayerInventoryRemove);
 packet(SMSG_PLAYER_INVENTORY_REMOVE2,      0x07fa,   8, &InventoryRecv::processPlayerInventoryRemove2);
 packet(SMSG_PLAYER_INVENTORY_USE,          0x01c8,  13, &Ea::InventoryRecv::processPlayerInventoryUse);
 packet(SMSG_PLAYER_ITEM_RENTAL_EXPIRED,    0x0299,   6, &InventoryRecv::processPlayerItemRentalExpired);
