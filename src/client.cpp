@@ -171,6 +171,7 @@ extern FPSmanager fpsManager;
 volatile bool runCounters;
 bool isSafeMode = false;
 int serverVersion = 0;
+int packetVersion = 0;
 unsigned int tmwServerVersion = 0;
 int start_time;
 unsigned int mLastHost = 0;
@@ -1010,6 +1011,7 @@ int Client::gameExec()
 
                     loginData.clearUpdateHost();
                     serverVersion = 0;
+                    packetVersion = 0;
                     tmwServerVersion = 0;
 
                     // Allow changing this using a server choice dialog

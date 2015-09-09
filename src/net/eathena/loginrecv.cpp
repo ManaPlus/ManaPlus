@@ -35,6 +35,8 @@
 
 #include "debug.h"
 
+extern int packetVersion;
+
 namespace EAthena
 {
 
@@ -145,9 +147,23 @@ void LoginRecv::processServerVersion(Net::MessageIn &msg)
     msg.readInt32("unused");
     serverVersion = msg.readInt32("server version");
     if (serverVersion > 0)
+    {
         logger->log("Evol2 server version: %d", serverVersion);
+        if (serverVersion >= 8)
+        {
+            packetVersion = msg.readInt32("packet version");
+            logger->log("Hercules packet version: %d", packetVersion);
+        }
+        else
+        {
+            packetVersion = 20150000;
+            logger->log("Possible hercules packet version: %d", packetVersion);
+        }
+    }
     else
+    {
         logger->log("Hercules without version");
+    }
     client->setState(STATE_LOGIN);
 }
 

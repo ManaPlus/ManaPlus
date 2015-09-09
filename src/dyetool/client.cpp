@@ -94,6 +94,7 @@ extern FPSmanager fpsManager;
 volatile bool runCounters;
 bool isSafeMode = false;
 int serverVersion = 0;
+int packetVersion = 0;
 unsigned int tmwServerVersion = 0;
 int start_time;
 unsigned int mLastHost = 0;
