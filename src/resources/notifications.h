@@ -742,44 +742,34 @@ namespace NotifyManager
             N_("Pet catch started."),
             NotifyFlags::EMPTY},
         {"delete item normal",
-            // TRANSLATORS: notification message
-            N_("Deleted item %s."),
+            "",
             NotifyFlags::STRING},
         {"delete item skill use",
-            // TRANSLATORS: notification message
-            N_("Deleted item %s by skill usage."),
+            "",
             NotifyFlags::STRING},
         {"delete item fail refine",
-            // TRANSLATORS: notification message
-            N_("Deleted item %s because refine failed."),
+            "",
             NotifyFlags::STRING},
         {"delete item material change",
-            // TRANSLATORS: notification message
-            N_("Deleted item %s because changing material."),
+            "",
             NotifyFlags::STRING},
         {"delete item to storage",
-            // TRANSLATORS: notification message
-            N_("Item %s moved to storage."),
+            "",
             NotifyFlags::STRING},
         {"delete item to cart",
-            // TRANSLATORS: notification message
-            N_("Item %s moved to cart."),
+            "",
             NotifyFlags::STRING},
         {"delete item sold",
-            // TRANSLATORS: notification message
-            N_("Item %s sold."),
+            "",
             NotifyFlags::STRING},
         {"delete item analysis",
-            // TRANSLATORS: notification message
-            N_("Item %s deleted because analysis."),
+            "",
             NotifyFlags::STRING},
         {"delete item unknown",
-            // TRANSLATORS: notification message
-            N_("Item %s deleted."),
+            "",
             NotifyFlags::STRING},
         {"delete item dropped",
-            // TRANSLATORS: notification message
-            N_("Dropped item %s."),
+            "",
             NotifyFlags::STRING},
     };
 }  // namespace NotifyManager
