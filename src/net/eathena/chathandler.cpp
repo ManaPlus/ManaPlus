@@ -106,13 +106,18 @@ void ChatHandler::sendRaw(const std::string &args) const
     if (pos != std::string::npos)
     {
         str = line.substr(0, pos);
-        outMsg = new MessageOut(static_cast<int16_t>(parseNumber(str)));
+
+        const int16_t id = static_cast<int16_t>(parseNumber(str));
+        outMsg = new MessageOut(id);
+        outMsg->writeInt16(id, "packet id");
         line = line.substr(pos + 1);
         pos = line.find(" ");
     }
     else
     {
-        outMsg = new MessageOut(static_cast<int16_t>(parseNumber(line)));
+        const int16_t id = static_cast<int16_t>(parseNumber(line));
+        outMsg = new MessageOut(id);
+        outMsg->writeInt16(id, "packet id");
         delete outMsg;
         return;
     }

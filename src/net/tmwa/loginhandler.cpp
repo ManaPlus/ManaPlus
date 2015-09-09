@@ -58,7 +58,9 @@ void LoginHandler::connect()
 
     Network::mInstance->connect(mServer);
     if (serverFeatures->haveServerVersion())
+    {
         createOutPacket(CMSG_SERVER_VERSION_REQUEST);
+    }
 }
 
 bool LoginHandler::isConnected() const

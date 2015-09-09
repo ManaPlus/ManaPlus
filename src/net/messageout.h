@@ -29,7 +29,8 @@
 
 #include "localconsts.h"
 
-#define createOutPacket(name) MessageOut outMsg(name, #name)
+#define createOutPacket(name) MessageOut outMsg(name); \
+    outMsg.writeInt16(name, #name)
 
 namespace Net
 {

@@ -43,8 +43,7 @@ class MessageOut final : public Net::MessageOut
         /**
          * Constructor.
          */
-        explicit MessageOut(const int16_t id,
-                            const char *const str = "packet id");
+        explicit MessageOut(const int16_t id);
 
         A_DELETE_COPY(MessageOut)
 
