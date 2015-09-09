@@ -991,6 +991,11 @@ void InventoryRecv::processPlayerInventoryRemove(Net::MessageIn &msg)
     {
         if (Item *const item = inventory->getItem(index))
         {
+            if (amount)
+            {
+                NotifyManager::notify(NotifyTypes::DELETE_ITEM_DROPPED,
+                    item->getName());
+            }
             item->increaseQuantity(-amount);
             if (item->getQuantity() == 0)
                 inventory->removeItemAt(index);

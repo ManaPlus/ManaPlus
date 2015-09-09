@@ -213,6 +213,7 @@ namespace NotifyTypes
         DELETE_ITEM_SOLD,
         DELETE_ITEM_ANALYSIS,
         DELETE_ITEM_UNKNOWN,
+        DELETE_ITEM_DROPPED,
 
         TYPE_END
     };

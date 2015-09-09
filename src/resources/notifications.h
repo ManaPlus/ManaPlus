@@ -777,6 +777,10 @@ namespace NotifyManager
             // TRANSLATORS: notification message
             N_("Item %s deleted."),
             NotifyFlags::STRING},
+        {"delete item dropped",
+            // TRANSLATORS: notification message
+            N_("Dropped item %s."),
+            NotifyFlags::STRING},
     };
 }  // namespace NotifyManager
 #endif  // RESOURCES_NOTIFICATIONS_H
