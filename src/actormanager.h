@@ -347,6 +347,11 @@ class ActorManager final: public ConfigListener
         void removeRoom(const int chatId);
 
         void updateRoom(const ChatObject *const newChat);
+
+        std::string findCharById(const int32_t id);
+
+        void addChar(const int32_t id,
+                     const std::string &name);
 #endif
 
     protected:
@@ -371,6 +376,9 @@ class ActorManager final: public ConfigListener
         ActorSprites mActors;
         ActorSprites mDeleteActors;
         std::set<BeingId> mBlockedBeings;
+#ifdef EATHENA_SUPPORT
+        std::map<int32_t, std::string> mChars;
+#endif
         Map *mMap;
         std::string mSpellHeal1;
         std::string mSpellHeal2;

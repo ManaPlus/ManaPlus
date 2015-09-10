@@ -1672,4 +1672,12 @@ void BeingRecv::processSkillCancel(Net::MessageIn &msg)
     msg.readInt32("id?");
 }
 
+void BeingRecv::processSolveCharName(Net::MessageIn &msg)
+{
+    const int id = msg.readInt32("char id");
+    const std::string name = msg.readString(24, "name");
+    if (actorManager)
+        actorManager->addChar(id, name);
+}
+
 }  // namespace EAthena

@@ -191,6 +191,9 @@ ActorManager::ActorManager() :
     mActors(),
     mDeleteActors(),
     mBlockedBeings(),
+#ifdef EATHENA_SUPPORT
+    mChars(),
+#endif
     mMap(nullptr),
     mSpellHeal1(serverConfig.getValue("spellHeal1", "#lum")),
     mSpellHeal2(serverConfig.getValue("spellHeal2", "#inma")),
@@ -908,6 +911,10 @@ void ActorManager::clear()
 
     if (localPlayer)
         mActors.insert(localPlayer);
+
+#ifdef EATHENA_SUPPORT
+    mChars.clear();
+#endif
 }
 
 Being *ActorManager::findNearestPvpPlayer() const
@@ -1980,4 +1987,19 @@ void ActorManager::updateRoom(const ChatObject *const newChat)
         }
     }
 }
+
+std::string ActorManager::findCharById(const int32_t id)
+{
+    std::map<int32_t, std::string>::const_iterator it = mChars.find(id);
+    if (it == mChars.end())
+        return std::string();
+    return (*it).second;
+}
+
+void ActorManager::addChar(const int32_t id,
+                           const std::string &name)
+{
+    mChars[id] = name;
+}
+
 #endif

@@ -110,6 +110,7 @@ namespace EAthena
         void processPvpSet(Net::MessageIn &msg);
         void processNameResponse2(Net::MessageIn &msg);
         void processSkillCancel(Net::MessageIn &msg);
+        void processSolveCharName(Net::MessageIn &msg);
         Being *createBeing2(Net::MessageIn &msg,
                             const BeingId id,
                             const int16_t job,

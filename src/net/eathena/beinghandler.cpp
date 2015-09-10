@@ -73,4 +73,10 @@ void BeingHandler::viewPlayerEquipment(const Being *const being)
     outMsg.writeBeingId(being->getId(), "account id");
 }
 
+void BeingHandler::requestNameByCharId(const int id) const
+{
+    createOutPacket(CMSG_SOLVE_CHAR_NAME);
+    outMsg.writeInt32(id, "character id");
+}
+
 }  // namespace EAthena

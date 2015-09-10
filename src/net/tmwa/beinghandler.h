@@ -43,6 +43,8 @@ class BeingHandler final : public Ea::BeingHandler
         void requestRanks(const RankT rank A_UNUSED) const override final;
 #endif
 
+        void requestNameByCharId(const int id) const override final;
+
     protected:
         void viewPlayerEquipment(const Being *const being);
 };

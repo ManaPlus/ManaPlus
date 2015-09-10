@@ -37,6 +37,8 @@ class BeingHandler notfinal
 
         virtual void requestNameById(const BeingId id) const = 0;
 
+        virtual void requestNameByCharId(const int id) const = 0;
+
         virtual void undress(Being *const being) const = 0;
 
 #ifdef EATHENA_SUPPORT

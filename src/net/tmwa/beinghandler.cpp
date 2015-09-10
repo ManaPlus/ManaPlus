@@ -68,4 +68,8 @@ void BeingHandler::viewPlayerEquipment(const Being *const being A_UNUSED)
 {
 }
 
+void BeingHandler::requestNameByCharId(const int id A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena
