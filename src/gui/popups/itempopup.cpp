@@ -23,9 +23,12 @@
 
 #include "gui/popups/itempopup.h"
 
+#include "actormanager.h"
 #include "configuration.h"
 #include "item.h"
 #include "units.h"
+
+#include "being/being.h"
 
 #include "gui/gui.h"
 
@@ -41,6 +44,7 @@
 #include "resources/iteminfo.h"
 #include "resources/resourcemanager.h"
 
+#include "net/beinghandler.h"
 #include "net/serverfeatures.h"
 
 #include "debug.h"
@@ -267,21 +271,48 @@ std::string ItemPopup::getCardsString(const int *const cards)
 
     std::string label;
 
-    for (int f = 0; f < maxCards; f ++)
+    switch (cards[0])
     {
-        const int id = cards[f];
-        if (id)
+        case 0xfe:  // named item
         {
-            if (!label.empty())
-                label.append(" / ");
-            const ItemInfo &info = ItemDB::get(id);
-            label.append(info.getName());
+            const int32_t charId = cards[2] + 65536 * cards[3];
+            std::string name = actorManager->findCharById(charId);
+            if (name.empty())
+            {
+                name = toString(charId);
+                beingHandler->requestNameByCharId(charId);
+            }
+            // TRANSLATORS: named item description
+            label.append(strprintf(_("Item named: %s"), name.c_str()));
+            return label;
+        }
+        case 0x00FFU:  // forged item
+        {
+            return label;
+        }
+        case 0xFF00U:
+        {
+            return label;
+        }
+        default:
+        {
+            for (int f = 0; f < maxCards; f ++)
+            {
+                const int id = cards[f];
+                if (id)
+                {
+                    if (!label.empty())
+                        label.append(" / ");
+                    const ItemInfo &info = ItemDB::get(id);
+                    label.append(info.getName());
+                }
+            }
+            if (label.empty())
+                return label;
+            // TRANSLATORS: popup label
+            return _("Cards: ") + label;
         }
     }
-    if (label.empty())
-        return label;
-    // TRANSLATORS: popup label
-    return _("Cards: ") + label;
 }
 
 #define caseSetColor(name1, name2) \
