@@ -535,7 +535,6 @@ class Gui final
 };
 
 extern Gui *gui;                            /**< The GUI system */
-extern SDLInput *guiInput;                  /**< GUI input */
 
 /**
  * Bolded text font

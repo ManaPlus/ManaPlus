@@ -29,6 +29,7 @@
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
 
+#include "gui/sdlinput.h"
 #include "gui/viewport.h"
 
 #include "gui/widgets/tabs/chat/chattab.h"
@@ -2000,6 +2001,11 @@ void ActorManager::addChar(const int32_t id,
                            const std::string &name)
 {
     mChars[id] = name;
+
+    if (!guiInput)
+        return;
+
+    guiInput->simulateMouseMove();
 }
 
 #endif

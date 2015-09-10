@@ -79,6 +79,7 @@
 
 #include "input/inputmanager.h"
 
+#include "gui/gui.h"
 #include "gui/sdlinput.h"
 
 #include "render/graphics.h"
@@ -91,6 +92,8 @@
 #include <SDL_timer.h>
 
 #include "debug.h"
+
+SDLInput *guiInput = nullptr;
 
 SDLInput::SDLInput() :
     mKeyInputQueue(),
@@ -543,6 +546,24 @@ void SDLInput::simulateMouseClick(const int x, const int y,
     mouseInput.setTimeStamp(SDL_GetTicks());
     mMouseInputQueue.push(mouseInput);
     mouseInput.setType(MouseEventType::RELEASED);
+    mouseInput.setTimeStamp(SDL_GetTicks());
+    mMouseInputQueue.push(mouseInput);
+}
+
+void SDLInput::simulateMouseMove()
+{
+    if (!gui)
+        return;
+
+    int x, y;
+    Gui::getMouseState(x, y);
+
+    MouseInput mouseInput;
+    mouseInput.setX(x);
+    mouseInput.setY(y);
+    mouseInput.setReal(x, y);
+    mouseInput.setButton(MouseButton::EMPTY);
+    mouseInput.setType(MouseEventType::MOVED);
     mouseInput.setTimeStamp(SDL_GetTicks());
     mMouseInputQueue.push(mouseInput);
 }

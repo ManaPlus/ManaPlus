@@ -120,6 +120,8 @@ class SDLInput final
         void simulateMouseClick(const int x, const int y,
                                 const MouseButtonT button);
 
+        void simulateMouseMove();
+
     protected:
         /**
          * Converts a mouse button from SDL to a Guichan mouse button
@@ -148,5 +150,7 @@ class SDLInput final
         bool mMouseDown;
         bool mMouseInWindow;
 };
+
+extern SDLInput *guiInput;                  /**< GUI input */
 
 #endif  // GUI_SDLINPUT_H

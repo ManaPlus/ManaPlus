@@ -100,11 +100,7 @@
 
 #include "debug.h"
 
-// Guichan stuff
 Gui *gui = nullptr;
-SDLInput *guiInput = nullptr;
-
-// Bolded font
 Font *boldFont = nullptr;
 
 Gui::Gui() :

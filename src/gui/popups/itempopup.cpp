@@ -281,6 +281,7 @@ std::string ItemPopup::getCardsString(const int *const cards)
             {
                 name = toString(charId);
                 beingHandler->requestNameByCharId(charId);
+                mLastId = 0;  // allow recreate popup with same data
             }
             // TRANSLATORS: named item description
             label.append(strprintf(_("Item named: %s"), name.c_str()));
