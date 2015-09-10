@@ -148,8 +148,14 @@ void MailEditWindow::action(const ActionEvent &event)
             }
         }
 
+        std::string subject = mSubjectField->getText();
+        if (subject.empty())
+        {
+            // TRANSLATORS: empty mail message subject
+            subject.append(_("empty subject"));
+        }
         mailHandler->send(mToField->getText(),
-            mSubjectField->getText(),
+            subject,
             mMessageField->getText());
     }
     else if (eventId == "add")
