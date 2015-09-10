@@ -155,14 +155,14 @@ src/net/eathena/loginrecv.cpp
 src/net/eathena/mailrecv.cpp
 src/net/eathena/maptypeproperty2.h
 src/net/eathena/petrecv.cpp
-src/net/eathena/skillhandler.cpp
-src/net/ea/tradehandler.cpp
+src/net/eathena/skillrecv.cpp
+src/net/ea/traderecv.cpp
 src/net/tmwa/charserverhandler.cpp
 src/net/tmwa/charserverrecv.cpp
 src/net/tmwa/generalhandler.cpp
 src/net/tmwa/generalrecv.cpp
 src/net/tmwa/loginrecv.cpp
-src/net/tmwa/skillhandler.cpp
+src/net/tmwa/skillrecv.cpp
 src/render/rendererslistsdl2.h
 src/render/rendererslistsdl.h
 src/resources/beinginfo.cpp
