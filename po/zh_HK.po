@@ -588,7 +588,7 @@ msgstr "取消註冊成功"
 #. TRANSLATORS: unregister message text
 #: src/client.cpp:1543
 msgid "Farewell, come back any time..."
-msgstr "再見了，隨時回來吧…"
+msgstr "再見了，隨時回來吧..."
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:42
@@ -2139,21 +2139,21 @@ msgstr "鎖定"
 
 #: src/gui/popups/popupmenu.cpp:1043
 msgid "Rename map sign          "
-msgstr "清除地圖標誌"
+msgstr "清除地圖標誌             "
 
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popups/popupmenu.cpp:1045
 msgid "Name:                    "
-msgstr "名字："
+msgstr "名字:                    "
 
 #: src/gui/popups/popupmenu.cpp:1063
 msgid "Player comment            "
-msgstr "玩家評語"
+msgstr "玩家評語                  "
 
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popups/popupmenu.cpp:1065
 msgid "Comment:                      "
-msgstr "評語："
+msgstr "評語:                         "
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add item to trade
@@ -2436,7 +2436,7 @@ msgstr "保護物件"
 #: src/gui/popups/popupmenu.cpp:2597 src/gui/windows/inventorywindow.cpp:216
 #: src/gui/windows/inventorywindow.cpp:893
 msgid "Drop..."
-msgstr "丟棄…"
+msgstr "丟棄..."
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: drop all item amount
@@ -2457,7 +2457,7 @@ msgstr "丟棄"
 #. TRANSLATORS: gm commands
 #: src/gui/popups/popupmenu.cpp:2617
 msgid "GM..."
-msgstr "GM…"
+msgstr "GM..."
 
 #. TRANSLATORS: popup menu header
 #: src/gui/popups/popupmenu.cpp:2625
@@ -2495,7 +2495,7 @@ msgstr "踢走"
 #: src/gui/popups/popupmenu.cpp:2668
 #, c-format
 msgid "Mute %d"
-msgstr "靜音 %d "
+msgstr "靜音 %d"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: mute player
@@ -2975,13 +2975,13 @@ msgstr ""
 #. TRANSLATORS: chat message
 #: src/gui/widgets/tabs/chat/chattab.cpp:176
 msgid "Global announcement:"
-msgstr "全服公告："
+msgstr "全服公告:"
 
 #. TRANSLATORS: chat message
 #: src/gui/widgets/tabs/chat/chattab.cpp:182
 #, c-format
 msgid "Global announcement from %s:"
-msgstr "來自 %s 的全服公告："
+msgstr "來自 %s 的全服公告:"
 
 #. TRANSLATORS: chat message
 #: src/gui/widgets/tabs/chat/chattab.cpp:208
@@ -5953,7 +5953,7 @@ msgstr ""
 #. TRANSLATORS: edit server dialog label
 #: src/gui/windows/editserverdialog.cpp:75
 msgid "Port:"
-msgstr "端口："
+msgstr "端口:"
 
 #. TRANSLATORS: edit server dialog label
 #: src/gui/windows/editserverdialog.cpp:77

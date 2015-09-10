@@ -10124,12 +10124,12 @@ msgstr "Alle stats +20."
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:682
 msgid "Enchant weapon with holy element."
-msgstr "Verzaubere Waffe mit heiligem Element"
+msgstr "Verzaubere Waffe mit heiligem Element."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:686
 msgid "Enchant armor with holy element."
-msgstr "Verzaubere Rüstung mit heiligem Element"
+msgstr "Verzaubere Rüstung mit heiligem Element."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:690
