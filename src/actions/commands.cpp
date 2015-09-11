@@ -519,8 +519,8 @@ impHandler(imitation)
 
 impHandler0(sendMail)
 {
-    const ServerTypeT type = Net::getNetworkType();
 #ifdef EATHENA_SUPPORT
+    const ServerTypeT type = Net::getNetworkType();
     if (type == ServerType::EATHENA || type == ServerType::EVOL2)
     {
         std::string name;

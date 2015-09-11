@@ -222,7 +222,9 @@ void ItemPopup::setItem(const ItemInfo &item,
     // TRANSLATORS: popup label
     mItemWeight->setTextWrapped(strprintf(_("Weight: %s"),
         Units::formatWeight(item.getWeight()).c_str()), 196);
+#ifdef EATHENA_SUPPORT
     mItemCards->setTextWrapped(getCardsString(cards), 196);
+#endif
 
     int minWidth = mItemName->getWidth() + space;
 
@@ -264,6 +266,7 @@ void ItemPopup::setItem(const ItemInfo &item,
     mItemDesc->setPosition(0, 2 * height);
 }
 
+#ifdef EATHENA_SUPPORT
 std::string ItemPopup::getCardsString(const int *const cards)
 {
     if (!cards)
@@ -315,6 +318,7 @@ std::string ItemPopup::getCardsString(const int *const cards)
         }
     }
 }
+#endif
 
 #define caseSetColor(name1, name2) \
     case name1: \
