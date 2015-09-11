@@ -33,7 +33,8 @@ enum2Start(BadgeIndex)
     Guild    = 5,
     Party    = 6,
     Name     = 7,
-    BadgeIndexSize,
+
+    BadgeIndexSize
 }
 enum2End(BadgeIndex);
 

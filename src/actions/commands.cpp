@@ -517,7 +517,7 @@ impHandler(imitation)
     return true;
 }
 
-impHandler0(sendMail)
+impHandler(sendMail)
 {
 #ifdef EATHENA_SUPPORT
     const ServerTypeT type = Net::getNetworkType();

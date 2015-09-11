@@ -23,9 +23,11 @@
 #ifndef GUI_WINDOWS_CHARSELECTDIALOG_H
 #define GUI_WINDOWS_CHARSELECTDIALOG_H
 
+#include "enums/simpletypes/beingid.h"
+
 #include "gui/widgets/window.h"
 
-#include "net/charserverhandler.h"
+#include "net/characters.h"
 
 #include "listeners/actionlistener.h"
 #include "listeners/keylistener.h"
@@ -35,6 +37,11 @@ class CharacterDisplay;
 class CharacterViewBase;
 class LoginData;
 class TextDialog;
+
+namespace Net
+{
+    class CharServerHandler;
+}
 
 /**
  * Character selection dialog.

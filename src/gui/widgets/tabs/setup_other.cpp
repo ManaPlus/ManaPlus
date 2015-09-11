@@ -296,7 +296,7 @@ Setup_Other::Setup_Other(const Widget2 *const widget) :
         "enableGuildBotEvent", false);
 
     // TRANSLATORS: settings option
-    new SetupItemCheckBox(_("Enable manamarket bot bot support"),
+    new SetupItemCheckBox(_("Enable manamarket bot support"),
         "", "enableManaMarketBot", this,
         "enableManaMarketBotEvent", false);
 

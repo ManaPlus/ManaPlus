@@ -73,6 +73,7 @@
 #include "gui/widgets/desktop.h"
 #include "gui/widgets/windowcontainer.h"
 
+#include "net/charserverhandler.h"
 #include "net/chathandler.h"
 #include "net/download.h"
 #include "net/gamehandler.h"

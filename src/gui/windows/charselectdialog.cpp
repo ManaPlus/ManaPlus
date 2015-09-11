@@ -46,6 +46,7 @@
 #include "gui/widgets/createwidget.h"
 
 #include "net/character.h"
+#include "net/charserverhandler.h"
 #include "net/logindata.h"
 #include "net/loginhandler.h"
 #include "net/registrationoptions.h"

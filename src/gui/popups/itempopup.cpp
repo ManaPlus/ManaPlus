@@ -28,8 +28,6 @@
 #include "item.h"
 #include "units.h"
 
-#include "being/being.h"
-
 #include "gui/gui.h"
 
 #include "gui/fonts/font.h"

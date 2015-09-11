@@ -37,6 +37,7 @@
 #include "gui/widgets/tabstrip.h"
 #include "gui/widgets/textfield.h"
 
+#include "net/charserverhandler.h"
 #include "net/serverfeatures.h"
 
 #include "resources/iteminfo.h"

@@ -129,7 +129,7 @@ void InventoryHandler::moveItem2(const int source,
                                  const int amount,
                                  const int destination) const
 {
-    int packet = 0;
+    int16_t packet = 0;
     int offset = INVENTORY_OFFSET;
     if (source == InventoryType::INVENTORY)
     {

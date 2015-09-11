@@ -29,7 +29,7 @@
 
 namespace Net
 {
-    class Character;
+    struct Character;
 
     typedef std::list<Character*> Characters;
 }  // namespace Net

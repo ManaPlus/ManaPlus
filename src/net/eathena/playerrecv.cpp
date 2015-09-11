@@ -23,7 +23,6 @@
 #include "net/eathena/playerrecv.h"
 
 #include "configuration.h"
-#include "game.h"
 #include "notifymanager.h"
 
 #include "being/beingflag.h"
@@ -40,8 +39,6 @@
 #include "input/inputmanager.h"
 
 #include "net/messagein.h"
-
-#include "resources/map/map.h"
 
 #include "debug.h"
 

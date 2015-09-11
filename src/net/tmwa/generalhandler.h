@@ -25,11 +25,6 @@
 
 #include "net/generalhandler.h"
 
-namespace Net
-{
-    class MessageIn;
-}
-
 namespace TmwAthena
 {
 class AdminHandler;
@@ -68,8 +63,6 @@ class RouletteHandler;
 class SearchStoreHandler;
 class VendingHandler;
 #endif
-
-class ServerFeatures;
 
 class GeneralHandler final : public Net::GeneralHandler
 {
