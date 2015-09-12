@@ -1,3 +1,18 @@
+2015-09-12 New release 1.5.9.12
+fix: closing mail edit window.
+fix: buttons position in npc dialog with visible avatar and input field.
+add: received packet name in debug log.
+add: inhirit attribute in items.xml.
+add: manamarket bot integration for support /sendmail command.
+add: /sendmail for quick messages (hercules).
+add: badges for shop, away, inactive modes.
+add: packet SMSG_MAP_MASK (tmwa).
+add: option for creting screenshots on complete trade.
+add: by default init all possible quests to 0.
+add: driver AMD HD 15.x to ignore list.
+add: read packet version from server (hercules).
+add: named items (hercules).
+
 2015-08-29 New release 1.5.8.29
 add: support for item colors (hercules)
 add: separate item icon palette.
