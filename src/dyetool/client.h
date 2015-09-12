@@ -82,6 +82,8 @@ class Client final : public ActionListener
 
         void slowLogic();
 
+        bool isTmw();
+
     private:
         void stateGame();
 
