@@ -9294,7 +9294,7 @@ msgstr "Невозможно одеть, т.к. у ваш уровень не п
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:146
 msgid "Unable to unequip."
-msgstr "Нельзя снять"
+msgstr "Нельзя снять."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:150
