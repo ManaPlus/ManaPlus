@@ -9,13 +9,26 @@ AC_ARG_ENABLE(androidbuild,
 [  --enable-androidbuild    Turn on android building],
 [case "${enableval}" in
   yes) androidbuild_enabled=true
+       dyecmd_enabled=false
  ;;
   no)  androidbuild_enabled=false
  ;;
   *) AC_MSG_ERROR(bad value ${enableval} for --enable-androidbuild) ;;
 esac],[androidbuild_enabled=false])
 
-AM_CONDITIONAL(ENABLE_DYECMD, test x$androidbuild_enabled != xyes)
+# Enable for dyecmd
+AC_ARG_WITH(dyecmd,[  --with-dyecmd        build dyecmd tool ] )
+if test "x$with_dyecmd" == "xno"; then
+    with_dyecmd=no
+else
+    if test "x$androidbuild_enabled" == "xfalse"; then
+        with_dyecmd=yes
+    else
+        with_dyecmd=no
+    fi
+fi
+
+AM_CONDITIONAL(ENABLE_DYECMD, test x$with_dyecmd = xyes)
 
 # Enable nacl build
 AC_ARG_ENABLE(naclbuild,
