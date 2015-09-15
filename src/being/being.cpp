@@ -2519,7 +2519,7 @@ bool Being::updateFromCache()
 
         showShopBadge(mShop);
         showInactiveBadge(mInactive);
-        showAwayBadge(mInactive);
+        showAwayBadge(mAway);
         updateAwayEffect();
         if (mType == ActorType::Player || mTeamId)
             updateColors();
@@ -3373,7 +3373,7 @@ void Being::setState(const uint8_t state)
     updateAwayEffect();
     showShopBadge(mShop);
     showInactiveBadge(mInactive);
-    showAwayBadge(mInactive);
+    showAwayBadge(mAway);
 
     if (needUpdate)
     {
