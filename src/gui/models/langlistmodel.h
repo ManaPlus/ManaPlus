@@ -82,7 +82,7 @@ const Language LANG_NAME[langs_count] =
     // TRANSLATORS: language
     {N_("Turkish"), "tr_TR", "tr.png"},
     // TRANSLATORS: language
-    {N_("Ukraine"), "uk_UA", "ua.png"}
+    {N_("Ukrainian"), "uk_UA", "ua.png"}
 };
 
 class LangListModel final : public ExtendedListModel
