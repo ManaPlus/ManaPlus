@@ -141,7 +141,7 @@ Setup_Visual::Setup_Visual(const Widget2 *const widget) :
 
     // TRANSLATORS: settings option
     new SetupItemSlider(_("Gui opacity"), "", "guialpha",
-        this, "guialphaEvent", 0.1, 1.0, 0.1, 150, true, true);
+        this, "guialphaEvent", 0.1, 1.01, 0.1, 150, true, true);
 
     mSpeachList->fillFromArray(&speachList[0], speachListSize);
     // TRANSLATORS: settings option
