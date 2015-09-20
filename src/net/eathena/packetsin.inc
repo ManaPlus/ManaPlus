@@ -62,7 +62,7 @@ packet(SMSG_BEING_MOVE3,                   0x0b04,  -1, &Ea::BeingRecv::processB
 packet(SMSG_BEING_NAME_RESPONSE,           0x0095,  30, &Ea::BeingRecv::processNameResponse);
 packet(SMSG_BEING_NAME_RESPONSE2,          0x0b01,  -1, &BeingRecv::processNameResponse2);
 packet(SMSG_BEING_REMOVE,                  0x0080,   7, &Ea::BeingRecv::processBeingRemove);
-packet(SMSG_BEING_REMOVE_SKILL,            0x0120,   6, &BeingRecv::processBeingRemoveSkil);
+packet(SMSG_BEING_REMOVE_SKILL,            0x0120,   6, &BeingRecv::processBeingRemoveSkill);
 packet(SMSG_BEING_RESURRECT,               0x0148,   8, &BeingRecv::processBeingResurrect);
 packet(SMSG_BEING_SELFEFFECT,              0x019b,  10, &BeingRecv::processBeingSelfEffect);
 packet(SMSG_BEING_SLIDE,                   0x01ff,  10, &BeingRecv::processBeingSlide);

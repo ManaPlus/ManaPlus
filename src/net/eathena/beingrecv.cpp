@@ -1275,7 +1275,7 @@ void BeingRecv::processPlayerGuilPartyInfo(Net::MessageIn &msg)
     BLOCK_END("BeingRecv::processPlayerGuilPartyInfo")
 }
 
-void BeingRecv::processBeingRemoveSkil(Net::MessageIn &msg)
+void BeingRecv::processBeingRemoveSkill(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
     // +++ if skill unit was added, here need remove it from actors
