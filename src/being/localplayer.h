@@ -27,6 +27,7 @@
 
 #include "enums/being/pickup.h"
 
+#include "enums/simpletypes/allowsort.h"
 #include "enums/simpletypes/keep.h"
 
 #include "listeners/actorspritelistener.h"
@@ -131,6 +132,9 @@ class LocalPlayer final : public Being,
          * Sets the target being of the player.
          */
         void setTarget(Being *const target);
+
+        Being *setNewTarget(const ActorTypeT type,
+                            const AllowSort allowSort);
 
         /**
          * Sets a new destination for this being to walk to.

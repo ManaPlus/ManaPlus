@@ -35,16 +35,8 @@ namespace Actions
 
 static bool setTarget(const ActorTypeT type, const AllowSort allowSort)
 {
-    if (actorManager && localPlayer)
-    {
-        Being *const target = actorManager->findNearestLivingBeing(
-            localPlayer, 20, type, allowSort);
-
-        if (target && target != localPlayer->getTarget())
-            localPlayer->setTarget(target);
-
-        return true;
-    }
+    if (localPlayer)
+        return localPlayer->setNewTarget(type, allowSort) != nullptr;
     return false;
 }
 

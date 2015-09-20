@@ -554,6 +554,22 @@ void LocalPlayer::setTarget(Being *const target)
         target->setShowName(true);
 }
 
+Being *LocalPlayer::setNewTarget(const ActorTypeT type,
+                                 const AllowSort allowSort)
+{
+    if (actorManager)
+    {
+        Being *const target = actorManager->findNearestLivingBeing(
+            localPlayer, 20, type, allowSort);
+
+        if (target && target != mTarget)
+            localPlayer->setTarget(target);
+
+        return target;
+    }
+    return nullptr;
+}
+
 void LocalPlayer::setDestination(const int x, const int y)
 {
     mActivityTime = cur_time;
