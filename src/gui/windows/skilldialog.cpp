@@ -159,7 +159,8 @@ void SkillDialog::action(const ActionEvent &event)
         if (tab)
         {
             const SkillInfo *const info = tab->getSelectedInfo();
-            useSkill(info);
+            useSkill(info,
+                fromBool(config.getBoolValue("skillAutotarget"), AutoTarget));
         }
     }
     else if (eventId == "close")
@@ -538,7 +539,8 @@ void SkillDialog::widgetResized(const Event &event)
         mTabs->adjustSize();
 }
 
-void SkillDialog::useItem(const int itemId) const
+void SkillDialog::useItem(const int itemId,
+                          const AutoTarget autoTarget) const
 {
     const std::map<int, SkillInfo*>::const_iterator
         it = mSkills.find(itemId - SKILL_MIN_ID);
@@ -546,7 +548,7 @@ void SkillDialog::useItem(const int itemId) const
         return;
 
     const SkillInfo *const info = (*it).second;
-    useSkill(info);
+    useSkill(info, autoTarget);
 }
 
 void SkillDialog::updateTabSelection()
@@ -659,9 +661,10 @@ void SkillDialog::playCastingDstEffect(const int id, Being *const being) const
         paths.getIntValue("skillCastingDstEffectId"));
 }
 
-void SkillDialog::useSkill(const SkillInfo *const info)
+void SkillDialog::useSkill(const SkillInfo *const info,
+                           const AutoTarget autoTarget)
 {
-    if (!info)
+    if (!info || !localPlayer)
         return;
     const SkillData *const data = info->data;
     if (data)
@@ -675,6 +678,20 @@ void SkillDialog::useSkill(const SkillInfo *const info)
         switch (info->type)
         {
             case SkillType::Attack:
+            {
+                const Being *being = localPlayer->getTarget();
+                if (!being && autoTarget == AutoTarget_true)
+                {
+                    being = localPlayer->setNewTarget(ActorType::Monster,
+                        AllowSort_true);
+                }
+                if (being)
+                {
+                    skillHandler->useBeing(info->id,
+                        info->level, being->getId());
+                }
+                break;
+            }
             case SkillType::Support:
             {
                 const Being *const being = localPlayer->getTarget();

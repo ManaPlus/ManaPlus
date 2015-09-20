@@ -382,6 +382,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("sellShopName", "unnamed");
     AddDEF("showBadges", 1);
     AddDEF("tradescreenshot", false);
+    AddDEF("skillAutotarget", true);
     return configData;
 }
 

@@ -25,6 +25,7 @@
 
 #include "gui/widgets/window.h"
 
+#include "enums/simpletypes/autotarget.h"
 #include "enums/simpletypes/modifiable.h"
 
 #include "listeners/actionlistener.h"
@@ -112,7 +113,8 @@ class SkillDialog final : public Window,
 
         void widgetResized(const Event &event) override final;
 
-        void useItem(const int itemId) const;
+        void useItem(const int itemId,
+                     const AutoTarget autoTarget) const;
 
         void updateTabSelection();
 
@@ -132,7 +134,8 @@ class SkillDialog final : public Window,
 
         void removeSkill(const int id);
 
-        static void useSkill(const SkillInfo *const info);
+        static void useSkill(const SkillInfo *const info,
+                             const AutoTarget autoTarget);
 
         SkillData *getSkillData(const int id) const;
 

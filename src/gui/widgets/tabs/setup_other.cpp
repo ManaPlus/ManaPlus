@@ -116,6 +116,10 @@ Setup_Other::Setup_Other(const Widget2 *const widget) :
         "targetOnlyReachable", this, "targetOnlyReachableEvent");
 
     // TRANSLATORS: settings option
+    new SetupItemCheckBox(_("Seleck auto target for attack skills"), "",
+        "skillAutotarget", this, "skillAutotargetEvent");
+
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Highlight monster attack range"), "",
         "highlightMonsterAttackRange", this,
         "highlightMonsterAttackRangeEvent");
