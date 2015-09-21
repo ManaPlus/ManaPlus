@@ -21,7 +21,7 @@
 #ifndef NET_EATHENA_PROTOCOLOUT_H
 #define NET_EATHENA_PROTOCOLOUT_H
 
-#include "net/protocoloutdefine.h"
+#include "net/protocoloutinclude.h"
 #include "net/eathena/packetsout.inc"
 #undef packet
 

@@ -580,7 +580,7 @@ SET(SRCS
     net/packetlimiter.cpp
     net/packetlimiter.h
     net/protocolindefine.h
-    net/protocoloutdefine.h
+    net/protocoloutinclude.h
     net/recvpacketdefine.h
     resources/action.cpp
     resources/action.h

@@ -21,7 +21,7 @@
 #ifndef NET_TMWA_PROTOCOLOUT_H
 #define NET_TMWA_PROTOCOLOUT_H
 
-#include "net/protocoloutdefine.h"
+#include "net/protocoloutinclude.h"
 #include "net/tmwa/packetsout.inc"
 #undef packet
 
