@@ -18,16 +18,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_TMWA_PROTOCOLOUT_H
-#define NET_TMWA_PROTOCOLOUT_H
+#ifndef NET_PROTOCOLOUTDEFINE_H
+#define NET_PROTOCOLOUTDEFINE_H
 
-#include "net/protocoloutinclude.h"
+#define packet(name, id) int name = id
 
-namespace TmwAthena
-{
-#include "net/tmwa/packetsout.inc"
-}  // namespace TmwAthena
-
-#undef packet
-
-#endif  // NET_TMWA_PROTOCOLOUT_H
+#endif  // NET_PROTOCOLOUTDEFINE_H

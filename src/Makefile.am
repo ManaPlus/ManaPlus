@@ -1191,6 +1191,7 @@ manaplus_SOURCES += main.cpp \
 	      net/packetlimiter.cpp \
 	      net/packetlimiter.h \
 	      net/protocolindefine.h \
+	      net/protocoloutdefine.h \
 	      net/protocoloutinclude.h \
 	      net/ea/adminrecv.cpp \
 	      net/ea/adminrecv.h \
@@ -1330,6 +1331,7 @@ manaplus_SOURCES += \
 	      net/tmwa/playerrecv.cpp \
 	      net/tmwa/playerrecv.h \
 	      net/tmwa/protocolin.h \
+	      net/tmwa/protocolout.cpp \
 	      net/tmwa/protocolout.h \
 	      net/tmwa/questhandler.cpp \
 	      net/tmwa/questhandler.h \
@@ -1557,6 +1559,7 @@ manaplus_SOURCES += gui/windows/bankwindow.cpp \
 	      net/eathena/playerrecv.cpp \
 	      net/eathena/playerrecv.h \
 	      net/eathena/protocolin.h \
+	      net/eathena/protocolout.cpp \
 	      net/eathena/protocolout.h \
 	      net/eathena/questhandler.cpp \
 	      net/eathena/questhandler.h \

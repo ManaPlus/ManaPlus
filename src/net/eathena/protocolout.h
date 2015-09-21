@@ -22,7 +22,12 @@
 #define NET_EATHENA_PROTOCOLOUT_H
 
 #include "net/protocoloutinclude.h"
+
+namespace EAthena
+{
 #include "net/eathena/packetsout.inc"
+}  // namespace Eathena
+
 #undef packet
 
 #endif  // NET_EATHENA_PROTOCOLOUT_H

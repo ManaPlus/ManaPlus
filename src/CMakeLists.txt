@@ -580,6 +580,7 @@ SET(SRCS
     net/packetlimiter.cpp
     net/packetlimiter.h
     net/protocolindefine.h
+    net/protocoloutdefine.h
     net/protocoloutinclude.h
     net/recvpacketdefine.h
     resources/action.cpp
@@ -1483,6 +1484,7 @@ SET(SRCS_TMWA
     net/tmwa/playerrecv.cpp
     net/tmwa/playerrecv.h
     net/tmwa/protocolin.h
+    net/tmwa/protocolout.cpp
     net/tmwa/protocolout.h
     net/tmwa/questhandler.cpp
     net/tmwa/questhandler.h
@@ -1707,6 +1709,7 @@ SET(SRCS_EATHENA
     net/eathena/playerrecv.cpp
     net/eathena/playerrecv.h
     net/eathena/protocolin.h
+    net/eathena/protocolout.cpp
     net/eathena/protocolout.h
     net/eathena/questhandler.cpp
     net/eathena/questhandler.h

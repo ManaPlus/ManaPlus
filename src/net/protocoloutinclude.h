@@ -21,6 +21,6 @@
 #ifndef NET_PROTOCOLOUTINCLUDE_H
 #define NET_PROTOCOLOUTINCLUDE_H
 
-#define packet(name, id) static const int name = id
+#define packet(name, id) extern int name
 
 #endif  // NET_PROTOCOLOUTINCLUDE_H

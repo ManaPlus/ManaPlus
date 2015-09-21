@@ -18,16 +18,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_TMWA_PROTOCOLOUT_H
-#define NET_TMWA_PROTOCOLOUT_H
-
-#include "net/protocoloutinclude.h"
 
 namespace TmwAthena
 {
+#include "net/protocoloutdefine.h"
 #include "net/tmwa/packetsout.inc"
-}  // namespace TmwAthena
-
 #undef packet
+}  // namesspace TmwAthena
 
-#endif  // NET_TMWA_PROTOCOLOUT_H
+
+#include "debug.h"
