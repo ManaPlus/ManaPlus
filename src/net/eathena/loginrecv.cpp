@@ -30,6 +30,8 @@
 
 #include "net/messagein.h"
 
+#include "net/eathena/updateprotocol.h"
+
 #include "utils/gettext.h"
 #include "utils/paths.h"
 
@@ -164,6 +166,7 @@ void LoginRecv::processServerVersion(Net::MessageIn &msg)
     {
         logger->log("Hercules without version");
     }
+    updateProtocol();
     client->setState(STATE_LOGIN);
 }
 

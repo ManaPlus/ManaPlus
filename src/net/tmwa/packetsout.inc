@@ -121,3 +121,7 @@ packet(CMSG_IGNORE_NICK,             0x00cf);
 
 packet(CMSG_CLIENT_DISCONNECT,       0x7532);
 packet(CMSG_IGNORE_ALL,              0x00d0);
+
+#ifdef PACKETS_UPDATE
+// condition code here
+#endif

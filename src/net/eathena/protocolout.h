@@ -29,5 +29,8 @@ namespace EAthena
 }  // namespace Eathena
 
 #undef packet
+#undef packet2
+#undef startCondition
+#undef endCondition
 
 #endif  // NET_EATHENA_PROTOCOLOUT_H

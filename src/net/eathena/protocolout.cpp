@@ -23,6 +23,7 @@ namespace EAthena
 #include "net/protocoloutdefine.h"
 #include "net/eathena/packetsout.inc"
 #undef packet
+
 }  // namespace EAthena
 
 #include "debug.h"

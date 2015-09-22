@@ -30,6 +30,7 @@ namespace TmwAthena
 
 void updateProtocol()
 {
+#define PACKETS_UPDATE
 #include "net/protocoloutupdate.h"
 #include "net/tmwa/packetsout.inc"
 #undef packet

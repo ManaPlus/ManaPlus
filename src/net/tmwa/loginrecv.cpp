@@ -29,6 +29,8 @@
 
 #include "net/messagein.h"
 
+#include "net/tmwa/updateprotocol.h"
+
 #include "utils/gettext.h"
 
 #include "debug.h"
@@ -79,6 +81,8 @@ void LoginRecv::processServerVersion(Net::MessageIn &msg)
         logger->log("Tmw server version: x%06x", tmwServerVersion);
     else
         logger->log("Server without version");
+
+    updateProtocol();
 
     if (serverVersion < 5)
     {

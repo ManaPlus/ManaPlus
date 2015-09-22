@@ -29,5 +29,8 @@ namespace TmwAthena
 }  // namespace TmwAthena
 
 #undef packet
+#undef packet2
+#undef startCondition
+#undef endCondition
 
 #endif  // NET_TMWA_PROTOCOLOUT_H
