@@ -18,11 +18,27 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace EAthena
-{
-#include "net/protocoloutdefine.h"
-#include "net/eathena/packetsout.inc"
-#undef packet
-}  // namespace EAthena
+#include "net/tmwa/updateprotocol.h"
+
+#include "net/tmwa/network.h"
+#include "net/tmwa/protocolout.h"
 
 #include "debug.h"
+
+namespace TmwAthena
+{
+
+void updateProtocol()
+{
+#include "net/protocoloutupdate.h"
+#include "net/tmwa/packetsout.inc"
+#undef packet
+    Network *const network = Network::mInstance;
+    if (network)
+    {
+        network->clearHandlers();
+        network->registerHandlers();
+    }
+}
+
+}  // namesspace TmwAthena

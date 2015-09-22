@@ -18,11 +18,12 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef NET_EATHENA_UPDATEPROTOCOL_H
+#define NET_EATHENA_UPDATEPROTOCOL_H
+
 namespace EAthena
 {
-#include "net/protocoloutdefine.h"
-#include "net/eathena/packetsout.inc"
-#undef packet
-}  // namespace EAthena
+    void updateProtocol();
+}  // namespace Eathena
 
-#include "debug.h"
+#endif  // NET_EATHENA_UPDATEPROTOCOL_H

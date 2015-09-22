@@ -1348,7 +1348,9 @@ manaplus_SOURCES += \
 	      net/tmwa/tradehandler.cpp \
 	      net/tmwa/tradehandler.h \
 	      net/tmwa/traderecv.cpp \
-	      net/tmwa/traderecv.h
+	      net/tmwa/traderecv.h \
+	      net/tmwa/updateprotocol.cpp \
+	      net/tmwa/updateprotocol.h
 endif
 
 if ENABLE_EATHENA
@@ -1585,6 +1587,8 @@ manaplus_SOURCES += gui/windows/bankwindow.cpp \
 	      net/eathena/tradehandler.h \
 	      net/eathena/traderecv.cpp \
 	      net/eathena/traderecv.h \
+	      net/eathena/updateprotocol.cpp \
+	      net/eathena/updateprotocol.h \
 	      net/eathena/vendinghandler.cpp \
 	      net/eathena/vendinghandler.h \
 	      net/eathena/vendingrecv.cpp \

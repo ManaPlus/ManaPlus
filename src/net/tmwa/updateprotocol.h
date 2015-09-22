@@ -18,11 +18,12 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace EAthena
-{
-#include "net/protocoloutdefine.h"
-#include "net/eathena/packetsout.inc"
-#undef packet
-}  // namespace EAthena
+#ifndef NET_TMWA_UPDATEPROTOCOL_H
+#define NET_TMWA_UPDATEPROTOCOL_H
 
-#include "debug.h"
+namespace TmwAthena
+{
+    void updateProtocol();
+}  // namespace TmwAthena
+
+#endif  // NET_TMWA_UPDATEPROTOCOL_H

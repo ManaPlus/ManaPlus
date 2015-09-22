@@ -18,11 +18,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace EAthena
-{
-#include "net/protocoloutdefine.h"
-#include "net/eathena/packetsout.inc"
-#undef packet
-}  // namespace EAthena
+#ifndef NET_PROTOCOLOUTUPDATE_H
+#define NET_PROTOCOLOUTUPDATE_H
 
-#include "debug.h"
+#define packet(name, id) name = id
+
+#endif  // NET_PROTOCOLOUTUPDATE_H

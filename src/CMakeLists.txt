@@ -1502,6 +1502,8 @@ SET(SRCS_TMWA
     net/tmwa/tradehandler.h
     net/tmwa/traderecv.cpp
     net/tmwa/traderecv.h
+    net/tmwa/updateprotocol.cpp
+    net/tmwa/updateprotocol.h
     )
 
 SET(SRCS_TMWAEATHENA
@@ -1735,6 +1737,8 @@ SET(SRCS_EATHENA
     net/eathena/tradehandler.h
     net/eathena/traderecv.cpp
     net/eathena/traderecv.h
+    net/eathena/updateprotocol.cpp
+    net/eathena/updateprotocol.h
     net/eathena/vendinghandler.cpp
     net/eathena/vendinghandler.h
     net/eathena/vendingrecv.cpp

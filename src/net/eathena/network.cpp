@@ -108,6 +108,12 @@ void Network::registerHandlers()
 
 void Network::clearHandlers()
 {
+    for (size_t f = 0; f < packet_lengths_size; f ++)
+    {
+        mPackets[f].name = "";
+        mPackets[f].len = 0;
+        mPackets[f].func = nullptr;
+    }
 }
 
 void Network::dispatchMessages()
