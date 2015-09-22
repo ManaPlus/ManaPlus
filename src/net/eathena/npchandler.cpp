@@ -34,7 +34,6 @@
 #include "net/ea/npcrecv.h"
 
 #include "net/eathena/messageout.h"
-#include "net/eathena/protocolin.h"
 #include "net/eathena/protocolout.h"
 
 #include "debug.h"
@@ -196,35 +195,23 @@ void NpcHandler::selectAutoSpell(const int skillId) const
     outMsg.writeInt32(static_cast<int16_t>(skillId), "skill id");
 }
 
-BeingId NpcHandler::getNpc(Net::MessageIn &msg)
+BeingId NpcHandler::getNpc(Net::MessageIn &msg,
+                           const NpcAction action)
 {
-    // +++ must be removed SMSG_*
-    if (msg.getId() == SMSG_NPC_CHOICE
-        || msg.getId() == SMSG_NPC_MESSAGE
-        || msg.getId() == SMSG_NPC_CHANGETITLE)
-    {
-        msg.readInt16("len");
-    }
-
     const BeingId npcId = msg.readBeingId("npc id");
 
     const NpcDialogs::const_iterator diag = NpcDialog::mNpcDialogs.find(npcId);
     Ea::NpcRecv::mDialog = nullptr;
 
-    // +++ must be removed SMSG_*
-    if (msg.getId() == SMSG_NPC_VIEWPOINT)
-        return npcId;
-
     if (diag == NpcDialog::mNpcDialogs.end())
     {
-        // +++ must be removed SMSG_*
         // Empty dialogs don't help
-        if (msg.getId() == SMSG_NPC_CLOSE)
+        if (action == NpcAction::Close)
         {
             closeDialog(npcId);
             return npcId;
         }
-        else if (msg.getId() == SMSG_NPC_NEXT)
+        else if (action == NpcAction::Next)
         {
             nextDialog(npcId);
             return npcId;

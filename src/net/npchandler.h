@@ -27,6 +27,8 @@
 
 #include "enums/being/cookingtype.h"
 
+#include "enums/net/npcaction.h"
+
 #include "enums/simpletypes/beingid.h"
 #include "enums/simpletypes/itemcolor.h"
 
@@ -43,7 +45,8 @@ class NpcHandler notfinal
         virtual ~NpcHandler()
         { }
 
-        virtual BeingId getNpc(Net::MessageIn &msg) = 0;
+        virtual BeingId getNpc(Net::MessageIn &msg,
+                               const NpcAction action) = 0;
 
         virtual void talk(const BeingId npcId) const = 0;
 

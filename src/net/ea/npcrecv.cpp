@@ -44,7 +44,8 @@ namespace NpcRecv
 
 void NpcRecv::processNpcChoice(Net::MessageIn &msg)
 {
-    npcHandler->getNpc(msg);
+    msg.readInt16("len");
+    npcHandler->getNpc(msg, NpcAction::Other);
     mRequestLang = false;
 
     if (mDialog)
@@ -61,7 +62,8 @@ void NpcRecv::processNpcChoice(Net::MessageIn &msg)
 
 void NpcRecv::processNpcMessage(Net::MessageIn &msg)
 {
-    npcHandler->getNpc(msg);
+    msg.readInt16("len");
+    npcHandler->getNpc(msg, NpcAction::Other);
     mRequestLang = false;
 
     const std::string message = msg.readString(msg.getLength() - 8, "message");
@@ -75,7 +77,7 @@ void NpcRecv::processNpcMessage(Net::MessageIn &msg)
 void NpcRecv::processNpcClose(Net::MessageIn &msg)
 {
     // Show the close button
-    npcHandler->getNpc(msg);
+    npcHandler->getNpc(msg, NpcAction::Close);
     mRequestLang = false;
     if (mDialog)
         mDialog->showCloseButton();
@@ -84,7 +86,7 @@ void NpcRecv::processNpcClose(Net::MessageIn &msg)
 void NpcRecv::processNpcNext(Net::MessageIn &msg)
 {
     // Show the next button
-    npcHandler->getNpc(msg);
+    npcHandler->getNpc(msg, NpcAction::Next);
     mRequestLang = false;
     if (mDialog)
         mDialog->showNextButton();
@@ -93,7 +95,7 @@ void NpcRecv::processNpcNext(Net::MessageIn &msg)
 void NpcRecv::processNpcIntInput(Net::MessageIn &msg)
 {
     // Request for an integer
-    npcHandler->getNpc(msg);
+    npcHandler->getNpc(msg, NpcAction::Other);
     mRequestLang = false;
     if (mDialog)
         mDialog->integerRequest(0);
@@ -102,7 +104,7 @@ void NpcRecv::processNpcIntInput(Net::MessageIn &msg)
 void NpcRecv::processNpcStrInput(Net::MessageIn &msg)
 {
     // Request for a string
-    BeingId npcId = npcHandler->getNpc(msg);
+    BeingId npcId = npcHandler->getNpc(msg, NpcAction::Other);
     if (mRequestLang)
     {
         mRequestLang = false;
@@ -116,7 +118,7 @@ void NpcRecv::processNpcStrInput(Net::MessageIn &msg)
 
 void NpcRecv::processNpcCommand(Net::MessageIn &msg)
 {
-    const BeingId npcId = npcHandler->getNpc(msg);
+    const BeingId npcId = npcHandler->getNpc(msg, NpcAction::Other);
     mRequestLang = false;
 
     const int cmd = msg.readInt16("cmd");
@@ -208,7 +210,8 @@ void NpcRecv::processNpcCommand(Net::MessageIn &msg)
 
 void NpcRecv::processChangeTitle(Net::MessageIn &msg)
 {
-    npcHandler->getNpc(msg);
+    msg.readInt16("len");
+    npcHandler->getNpc(msg, NpcAction::Other);
     mRequestLang = false;
     const std::string str = msg.readString(-1, "title");
     if (mDialog)

@@ -77,7 +77,8 @@ class NpcHandler final : public Ea::NpcHandler
 
         void refine(const int index) const override final;
 
-        BeingId getNpc(Net::MessageIn &msg) override final;
+        BeingId getNpc(Net::MessageIn &msg,
+                       const NpcAction action) override final;
 
         void identify(const int index) const override final;
 

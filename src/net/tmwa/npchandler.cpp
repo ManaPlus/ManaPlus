@@ -31,7 +31,6 @@
 #include "net/messagein.h"
 
 #include "net/tmwa/messageout.h"
-#include "net/tmwa/protocolin.h"
 #include "net/tmwa/protocolout.h"
 
 #include "net/ea/eaprotocol.h"
@@ -180,16 +179,9 @@ void NpcHandler::selectAutoSpell(const int skillId A_UNUSED) const
 {
 }
 
-BeingId NpcHandler::getNpc(Net::MessageIn &msg)
+BeingId NpcHandler::getNpc(Net::MessageIn &msg,
+                           const NpcAction action)
 {
-    // +++ must be removed packet id checks from here
-    if (msg.getId() == SMSG_NPC_CHOICE
-        || msg.getId() == SMSG_NPC_MESSAGE
-        || msg.getId() == SMSG_NPC_CHANGETITLE)
-    {
-        msg.readInt16("len");
-    }
-
     const BeingId npcId = msg.readBeingId("npc id");
 
     const NpcDialogs::const_iterator diag = NpcDialog::mNpcDialogs.find(npcId);
@@ -199,12 +191,12 @@ BeingId NpcHandler::getNpc(Net::MessageIn &msg)
     {
         // +++ must be removed packet id checks from here
         // Empty dialogs don't help
-        if (msg.getId() == SMSG_NPC_CLOSE)
+        if (action == NpcAction::Close)
         {
             closeDialog(npcId);
             return npcId;
         }
-        else if (msg.getId() == SMSG_NPC_NEXT)
+        else if (action == NpcAction::Next)
         {
             nextDialog(npcId);
             return npcId;
