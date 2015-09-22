@@ -39,6 +39,9 @@
 
 #include "debug.h"
 
+extern int packetVersion;
+extern int serverVersion;
+
 namespace EAthena
 {
 
@@ -75,6 +78,15 @@ void TradeRecv::processTradeItemAdd(Net::MessageIn &msg)
     int cards[4];
     for (int f = 0; f < 4; f++)
         cards[f] = msg.readInt16("card");
+    if (serverVersion >= 8 && packetVersion >= 20150226)
+    {
+        for (int f = 0; f < 5; f ++)
+        {
+            msg.readInt16("rnd index");
+            msg.readInt16("rnd value");
+            msg.readUInt8("rnd param");
+        }
+    }
 
     if (tradeWindow)
     {

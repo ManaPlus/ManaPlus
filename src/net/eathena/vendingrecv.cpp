@@ -38,6 +38,9 @@
 
 #include "debug.h"
 
+extern int packetVersion;
+extern int serverVersion;
+
 namespace EAthena
 {
 
@@ -96,6 +99,15 @@ void VendingRecv::processItemsList(Net::MessageIn &msg)
         msg.readUInt8("refine");
         for (int d = 0; d < 4; d ++)
             cards[d] = msg.readInt16("card");
+        if (serverVersion >= 8 && packetVersion >= 20150226)
+        {
+            for (int f = 0; f < 5; f ++)
+            {
+                msg.readInt16("rnd index");
+                msg.readInt16("rnd value");
+                msg.readUInt8("rnd param");
+            }
+        }
 
         const ItemColor color = ItemColorManager::getColorFromCards(&cards[0]);
         ShopItem *const item = mBuyDialog->addItem(itemId, type,
@@ -130,6 +142,15 @@ void VendingRecv::processOpen(Net::MessageIn &msg)
         msg.readUInt8("refine");
         for (int d = 0; d < 4; d ++)
             msg.readInt16("card");
+        if (serverVersion >= 8 && packetVersion >= 20150226)
+        {
+            for (int f = 0; f < 5; f ++)
+            {
+                msg.readInt16("rnd index");
+                msg.readInt16("rnd value");
+                msg.readUInt8("rnd param");
+            }
+        }
     }
     PlayerInfo::enableVending(true);
     VendingModeListener::distributeEvent(true);

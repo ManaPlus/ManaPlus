@@ -57,6 +57,9 @@
 
 #include "debug.h"
 
+extern int packetVersion;
+extern int serverVersion;
+
 namespace EAthena
 {
 
@@ -78,7 +81,13 @@ void InventoryRecv::processPlayerEquipment(Net::MessageIn &msg)
         Ea::InventoryRecv::mEquips.clear();
         equipment->setBackend(&Ea::InventoryRecv::mEquips);
     }
-    const int number = (msg.getLength() - 4) / 31;
+    int sz;
+    if (serverVersion >= 8 && packetVersion >= 20150226)
+        sz = 57;
+    else
+        sz = 31;
+
+    const int number = (msg.getLength() - 4) / sz;
 
     for (int loop = 0; loop < number; loop++)
     {
@@ -94,6 +103,16 @@ void InventoryRecv::processPlayerEquipment(Net::MessageIn &msg)
         msg.readInt32("hire expire date (?)");
         msg.readInt16("equip type");
         msg.readInt16("item sprite number");
+        if (serverVersion >= 8 && packetVersion >= 20150226)
+        {
+            msg.readUInt8("rnd count");
+            for (int f = 0; f < 5; f ++)
+            {
+                msg.readInt16("rnd index");
+                msg.readInt16("rnd value");
+                msg.readUInt8("rnd param");
+            }
+        }
         ItemFlags flags;
         flags.byte = msg.readUInt8("flags");
         if (inventory)
@@ -147,6 +166,15 @@ void InventoryRecv::processPlayerInventoryAdd(Net::MessageIn &msg)
     const unsigned char err = msg.readUInt8("result");
     msg.readInt32("hire expire date");
     msg.readInt16("bind on equip");
+    if (serverVersion >= 8 && packetVersion >= 20150226)
+    {
+        for (int f = 0; f < 5; f ++)
+        {
+            msg.readInt16("rnd index");
+            msg.readInt16("rnd value");
+            msg.readUInt8("rnd param");
+        }
+    }
 
     const ItemColor color = ItemColorManager::getColorFromCards(&cards[0]);
     const ItemInfo &itemInfo = ItemDB::get(itemId);
@@ -442,6 +470,11 @@ void InventoryRecv::processPlayerStorageEquip(Net::MessageIn &msg)
 {
     BLOCK_START("InventoryRecv::processPlayerStorageEquip")
     msg.readInt16("len");
+    int sz;
+    if (serverVersion >= 8 && packetVersion >= 20150226)
+        sz = 57;
+    else
+        sz = 31;
     const int number = (msg.getLength() - 4 - 24) / 31;
 
     msg.readString(24, "storage name");
@@ -460,6 +493,17 @@ void InventoryRecv::processPlayerStorageEquip(Net::MessageIn &msg)
         msg.readInt32("hire expire date");
         msg.readInt16("bind on equip");
         msg.readInt16("sprite");
+        if (serverVersion >= 8 && packetVersion >= 20150226)
+        {
+            msg.readUInt8("rnd count");
+            for (int f = 0; f < 5; f ++)
+            {
+                msg.readInt16("rnd index");
+                msg.readInt16("rnd value");
+                msg.readUInt8("rnd param");
+            }
+        }
+
         ItemFlags flags;
         flags.byte = msg.readUInt8("flags");
 
@@ -493,6 +537,15 @@ void InventoryRecv::processPlayerStorageAdd(Net::MessageIn &msg)
     int cards[4];
     for (int f = 0; f < 4; f++)
         cards[f] = msg.readInt16("card");
+    if (serverVersion >= 8 && packetVersion >= 20150226)
+    {
+        for (int f = 0; f < 5; f ++)
+        {
+            msg.readInt16("rnd index");
+            msg.readInt16("rnd value");
+            msg.readUInt8("rnd param");
+        }
+    }
 
     const ItemColor color = ItemColorManager::getColorFromCards(&cards[0]);
     if (Item *const item = Ea::InventoryRecv::mStorage->getItem(index))
@@ -685,6 +738,15 @@ void InventoryRecv::processPlayerCartAdd(Net::MessageIn &msg)
     int cards[4];
     for (int f = 0; f < 4; f++)
         cards[f] = msg.readInt16("card");
+    if (serverVersion >= 8 && packetVersion >= 20150226)
+    {
+        for (int f = 0; f < 5; f ++)
+        {
+            msg.readInt16("rnd index");
+            msg.readInt16("rnd value");
+            msg.readUInt8("rnd param");
+        }
+    }
 
     if (inventory)
     {
@@ -713,7 +775,13 @@ void InventoryRecv::processPlayerCartEquip(Net::MessageIn &msg)
 {
     BLOCK_START("InventoryRecv::processPlayerCartEquip")
     msg.readInt16("len");
-    const int number = (msg.getLength() - 4) / 31;
+    int sz;
+    if (serverVersion >= 8 && packetVersion >= 20150226)
+        sz = 57;
+    else
+        sz = 31;
+
+    const int number = (msg.getLength() - 4) / sz;
     for (int loop = 0; loop < number; loop++)
     {
         const int index = msg.readInt16("index") - INVENTORY_OFFSET;
@@ -729,6 +797,16 @@ void InventoryRecv::processPlayerCartEquip(Net::MessageIn &msg)
         msg.readInt32("hire expire date");
         msg.readInt16("bind on equip");
         msg.readInt16("sprite");
+        if (serverVersion >= 8 && packetVersion >= 20150226)
+        {
+            msg.readUInt8("rnd count");
+            for (int f = 0; f < 5; f ++)
+            {
+                msg.readInt16("rnd index");
+                msg.readInt16("rnd value");
+                msg.readUInt8("rnd param");
+            }
+        }
         ItemFlags flags;
         flags.byte = msg.readUInt8("flags");
 

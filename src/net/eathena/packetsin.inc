@@ -428,3 +428,17 @@ packet(SMSG_WEDDING_EFFECT,                0x01ea,   6, &BeingRecv::processWddin
 packet(SMSG_WHISPER,                       0x0097,  -1, &ChatRecv::processWhisper);
 packet(SMSG_WHISPER_RESPONSE,              0x09df,   7, &ChatRecv::processWhisperResponse);
 packet(SMSG_WHO_ANSWER,                    0x00c2,   6, &Ea::GameRecv::processWhoAnswer);
+
+if (serverVersion >= 8 && packetVersion >= 20150226)
+{
+    packet(SMSG_VENDING_OPEN,                  0x0136,  -1, &VendingRecv::processOpen);
+    packet(SMSG_VENDING_ITEMS_LIST,            0x0800,  -1, &VendingRecv::processItemsList);
+
+    packet(SMSG_TRADE_ITEM_ADD,                0x0a09,  45, &TradeRecv::processTradeItemAdd);
+    packet(SMSG_PLAYER_STORAGE_ADD,            0x0a0a,  47, &InventoryRecv::processPlayerStorageAdd);
+    packet(SMSG_PLAYER_CART_ADD,               0x0a0b,  47, &InventoryRecv::processPlayerCartAdd);
+    packet(SMSG_PLAYER_INVENTORY_ADD,          0x0a0c,  56, &InventoryRecv::processPlayerInventoryAdd);
+    packet(SMSG_PLAYER_EQUIPMENT,              0x0a0d,  -1, &InventoryRecv::processPlayerEquipment);
+    packet(SMSG_PLAYER_CART_EQUIP,             0x0a0f,  -1, &InventoryRecv::processPlayerCartEquip);
+    packet(SMSG_PLAYER_STORAGE_EQUIP,          0x0a10,  -1, &InventoryRecv::processPlayerStorageEquip);
+}
