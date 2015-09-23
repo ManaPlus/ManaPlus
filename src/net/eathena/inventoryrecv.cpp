@@ -475,7 +475,7 @@ void InventoryRecv::processPlayerStorageEquip(Net::MessageIn &msg)
         sz = 57;
     else
         sz = 31;
-    const int number = (msg.getLength() - 4 - 24) / 31;
+    const int number = (msg.getLength() - 4 - 24) / sz;
 
     msg.readString(24, "storage name");
     for (int loop = 0; loop < number; loop++)
