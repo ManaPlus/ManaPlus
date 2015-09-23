@@ -1194,6 +1194,7 @@ manaplus_SOURCES += main.cpp \
 	      net/protocolindefine.h \
 	      net/protocoloutdefine.h \
 	      net/protocoloutinclude.h \
+	      net/protocoloutupdate.h \
 	      net/ea/adminrecv.cpp \
 	      net/ea/adminrecv.h \
 	      net/ea/adminhandler.cpp \

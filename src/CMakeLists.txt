@@ -583,6 +583,7 @@ SET(SRCS
     net/protocolindefine.h
     net/protocoloutdefine.h
     net/protocoloutinclude.h
+    net/protocoloutupdate.h
     net/recvpacketdefine.h
     resources/action.cpp
     resources/action.h
