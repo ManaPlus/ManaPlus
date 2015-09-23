@@ -46,7 +46,7 @@ class NpcHandler notfinal
         { }
 
         virtual BeingId getNpc(Net::MessageIn &msg,
-                               const NpcAction action) = 0;
+                               const NpcActionT action) = 0;
 
         virtual void talk(const BeingId npcId) const = 0;
 

@@ -66,7 +66,7 @@ class NpcHandler final : public Ea::NpcHandler
         void completeProgressBar() const override final;
 
         BeingId getNpc(Net::MessageIn &msg,
-                       const NpcAction action) override final;
+                       const NpcAction actionT) override final;
 
         void produceMix(const int nameId,
                         const int materialId1,

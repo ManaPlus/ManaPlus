@@ -196,7 +196,7 @@ void NpcHandler::selectAutoSpell(const int skillId) const
 }
 
 BeingId NpcHandler::getNpc(Net::MessageIn &msg,
-                           const NpcAction action)
+                           const NpcActionT action)
 {
     const BeingId npcId = msg.readBeingId("npc id");
 
