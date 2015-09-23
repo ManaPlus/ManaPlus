@@ -1485,7 +1485,6 @@ SET(SRCS_TMWA
     net/tmwa/playerhandler.h
     net/tmwa/playerrecv.cpp
     net/tmwa/playerrecv.h
-    net/tmwa/protocolin.h
     net/tmwa/protocolout.cpp
     net/tmwa/protocolout.h
     net/tmwa/questhandler.cpp
@@ -1712,7 +1711,6 @@ SET(SRCS_EATHENA
     net/eathena/playerhandler.h
     net/eathena/playerrecv.cpp
     net/eathena/playerrecv.h
-    net/eathena/protocolin.h
     net/eathena/protocolout.cpp
     net/eathena/protocolout.h
     net/eathena/questhandler.cpp
