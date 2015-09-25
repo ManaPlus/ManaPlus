@@ -42,4 +42,4 @@ void updateProtocol()
     }
 }
 
-}  // namesspace TmwAthena
+}  // namespace TmwAthena

@@ -20,8 +20,6 @@
 
 #include "actions/target.h"
 
-#include "actormanager.h"
-
 #include "actions/actiondef.h"
 
 #include "being/localplayer.h"

@@ -26,7 +26,7 @@
 namespace EAthena
 {
 #include "net/eathena/packetsout.inc"
-}  // namespace Eathena
+}  // namespace EAthena
 
 #undef packet
 #undef packet2

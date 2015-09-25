@@ -24,6 +24,6 @@
 namespace EAthena
 {
     void updateProtocol();
-}  // namespace Eathena
+}  // namespace EAthena
 
 #endif  // NET_EATHENA_UPDATEPROTOCOL_H
