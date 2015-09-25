@@ -115,6 +115,10 @@ namespace EAthena
                             const BeingId id,
                             const int16_t job,
                             const BeingType::BeingType beingType);
+        void applyPlayerAction(Net::MessageIn &msg,
+                               Being *const being,
+                               const uint8_t type);
+
     }  // namespace BeingRecv
 }  // namespace EAthena
 

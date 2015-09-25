@@ -363,7 +363,7 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
     msg.readCoordinates(x, y, dir, "position");
     msg.readInt8("xs");
     msg.readInt8("ys");
-    msg.readUInt8("action type");
+    applyPlayerAction(msg, dstBeing, msg.readUInt8("action type"));
     dstBeing->setTileCoords(x, y);
 
     if (job == 45 && socialWindow && outfitWindow)
@@ -1678,6 +1678,38 @@ void BeingRecv::processSolveCharName(Net::MessageIn &msg)
     const std::string name = msg.readString(24, "name");
     if (actorManager)
         actorManager->addChar(id, name);
+}
+
+void BeingRecv::applyPlayerAction(Net::MessageIn &msg,
+                                  Being *const being,
+                                  const uint8_t type)
+{
+    if (!being)
+        return;
+    switch (type)
+    {
+        case 0:
+            being->setAction(BeingAction::STAND, 0);
+            localPlayer->imitateAction(being, BeingAction::STAND);
+            break;
+
+        case 1:
+            if (being->getCurrentAction() != BeingAction::DEAD)
+            {
+                being->setAction(BeingAction::DEAD, 0);
+                being->recalcSpritesOrder();
+            }
+            break;
+
+        case 2:
+            being->setAction(BeingAction::SIT, 0);
+            localPlayer->imitateAction(being, BeingAction::SIT);
+            break;
+
+        default:
+            UNIMPLIMENTEDPACKET;
+            break;
+    }
 }
 
 }  // namespace EAthena
