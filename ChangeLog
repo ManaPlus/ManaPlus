@@ -1,3 +1,11 @@
+2015-09-26 New release 1.5.9.26
+fix: away badge.
+fix: allow set gui opacity to 100% on windows.
+fix: non local player moving on tiles with height more than zero.
+fix: saving beings state (hercules).
+add: select target if missing for attack skill automatically.
+add: support for packet version 20150226 (hercules).
+
 2015-09-12 New release 1.5.9.12
 fix: closing mail edit window.
 fix: buttons position in npc dialog with visible avatar and input field.
