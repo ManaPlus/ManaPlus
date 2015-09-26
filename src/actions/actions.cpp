@@ -82,6 +82,7 @@
 #include "net/ipc.h"
 #ifdef EATHENA_SUPPORT
 #include "net/mercenaryhandler.h"
+#include "net/net.h"
 #include "net/vendinghandler.h"
 #endif
 #include "net/npchandler.h"
@@ -486,6 +487,10 @@ impHandler(dropItemInvAll)
 
 impHandler(heal)
 {
+#ifdef EATHENA_SUPPORT
+    if (Net::getNetworkType() != ServerType::TMWATHENA)
+        return false;
+#endif
     if (actorManager && localPlayer)
     {
         std::string args = event.args;
@@ -535,6 +540,10 @@ impHandler(heal)
 
 impHandler0(healmd)
 {
+#ifdef EATHENA_SUPPORT
+    if (Net::getNetworkType() != ServerType::TMWATHENA)
+        return false;
+#endif
     if (actorManager)
     {
         const int matk = PlayerInfo::getStatEffective(Attributes::MATK);
@@ -564,6 +573,10 @@ impHandler0(healmd)
 
 impHandler0(itenplz)
 {
+#ifdef EATHENA_SUPPORT
+    if (Net::getNetworkType() != ServerType::TMWATHENA)
+        return false;
+#endif
     if (actorManager)
     {
         if (playerHandler &&
@@ -589,6 +602,10 @@ impHandler0(setHome)
 
 impHandler0(magicAttack)
 {
+#ifdef EATHENA_SUPPORT
+    if (Net::getNetworkType() != ServerType::TMWATHENA)
+        return false;
+#endif
     if (localPlayer)
     {
         localPlayer->magicAttack();
