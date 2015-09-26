@@ -413,6 +413,10 @@ void BeingRecv::processBeingMove3(Net::MessageIn &msg)
     dstBeing->setWalkSpeed(Vector(speed, speed, 0));
     int16_t x = msg.readInt16("x");
     int16_t y = msg.readInt16("y");
+
+    dstBeing->setAction(BeingAction::STAND, 0);
+    dstBeing->setTileCoords(x, y);
+
     const unsigned char *moves = msg.readBytes(len, "moving path");
     Path path;
     if (moves)
