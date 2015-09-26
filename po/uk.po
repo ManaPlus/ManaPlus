@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2015-09-12 13:54+0300\n"
-"PO-Revision-Date: 2015-09-11 08:24+0000\n"
+"POT-Creation-Date: 2015-09-26 14:43+0300\n"
+"PO-Revision-Date: 2015-09-13 08:44+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Ukrainian (http://www.transifex.com/akaras/manaplus/language/"
 "uk/)\n"
@@ -301,53 +301,53 @@ msgid "You were killed by %s."
 msgstr "Вас вбив %s."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:837
+#: src/being/localplayer.cpp:853
 msgid "Tried to pick up nonexistent item."
 msgstr "Спроби підняти неіснуючий предмет."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:841
+#: src/being/localplayer.cpp:857
 msgid "Item is too heavy."
 msgstr "Предмет занадто важкий."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:845
+#: src/being/localplayer.cpp:861
 msgid "Item is too far away."
 msgstr "Предмет задалеко щоб підняти."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:849
+#: src/being/localplayer.cpp:865
 msgid "Inventory is full."
 msgstr "В сумці немає місця."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:853
+#: src/being/localplayer.cpp:869
 msgid "Stack is too big."
 msgstr "Забагато предметів у купі."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:857
+#: src/being/localplayer.cpp:873
 msgid "Item belongs to someone else."
 msgstr "Предмет належить комусь іншому."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:861
+#: src/being/localplayer.cpp:877
 msgid "You can't pickup this amount of items."
 msgstr "Не можливо підняти стільки предметів."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:865
+#: src/being/localplayer.cpp:881
 msgid "Your item stack has max amount."
 msgstr "Кількість цих предметів досягла межі."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:872
+#: src/being/localplayer.cpp:888
 msgid "Unknown problem picking up item."
 msgstr "Невстановлена помилка під час спроби підняти предмет."
 
 #. TRANSLATORS: %d is number,
 #. [@@%d|%s@@] - here player can see link to item
-#: src/being/localplayer.cpp:896
+#: src/being/localplayer.cpp:912
 #, c-format
 msgid "You picked up %d [@@%d|%s@@]."
 msgid_plural "You picked up %d [@@%d|%s@@]."
@@ -357,53 +357,53 @@ msgstr[2] "Ви підняли %d [@@%d|%s@@]."
 
 #. TRANSLATORS: this is normal experience
 #. TRANSLATORS: get xp message
-#: src/being/localplayer.cpp:1068 src/being/localplayer.cpp:1069
-#: src/being/localplayer.cpp:1095
+#: src/being/localplayer.cpp:1084 src/being/localplayer.cpp:1085
+#: src/being/localplayer.cpp:1111
 msgid "xp"
 msgstr "досвід"
 
 #. TRANSLATORS: this is job experience
-#: src/being/localplayer.cpp:1073 src/being/localplayer.cpp:1079
-#: src/being/localplayer.cpp:1085
+#: src/being/localplayer.cpp:1089 src/being/localplayer.cpp:1095
+#: src/being/localplayer.cpp:1101
 msgid "job"
 msgstr "робота"
 
 #. TRANSLATORS: get hp message
-#: src/being/localplayer.cpp:1104
+#: src/being/localplayer.cpp:1120
 msgid "hp"
 msgstr ""
 
 #. TRANSLATORS: get hp message
-#: src/being/localplayer.cpp:1113
+#: src/being/localplayer.cpp:1129
 msgid "mana"
 msgstr ""
 
 #. TRANSLATORS: follow command message
-#: src/being/localplayer.cpp:2187
+#: src/being/localplayer.cpp:2203
 #, c-format
 msgid "Follow: %s"
 msgstr "Йти слідом за: %s"
 
 #. TRANSLATORS: follow command message
 #. TRANSLATORS: cancel follow message
-#: src/being/localplayer.cpp:2193 src/being/localplayer.cpp:2218
+#: src/being/localplayer.cpp:2209 src/being/localplayer.cpp:2234
 msgid "Follow canceled"
 msgstr "Слідкування відмінено"
 
 #. TRANSLATORS: imitate command message
-#: src/being/localplayer.cpp:2203
+#: src/being/localplayer.cpp:2219
 #, c-format
 msgid "Imitation: %s"
 msgstr "Імітація: %s"
 
 #. TRANSLATORS: imitate command message
 #. TRANSLATORS: cancel follow message
-#: src/being/localplayer.cpp:2209 src/being/localplayer.cpp:2223
+#: src/being/localplayer.cpp:2225 src/being/localplayer.cpp:2239
 msgid "Imitation canceled"
 msgstr "Імітацію відмінено"
 
 #. TRANSLATORS: wait player/monster message
-#: src/being/localplayer.cpp:2573
+#: src/being/localplayer.cpp:2589
 #, c-format
 msgid "You see %s"
 msgstr "Ти бачиш %s"
@@ -1487,7 +1487,7 @@ msgstr "Турецька"
 
 #. TRANSLATORS: language
 #: src/gui/models/langlistmodel.h:85
-msgid "Ukraine"
+msgid "Ukrainian"
 msgstr ""
 
 #. TRANSLATORS: magic school
@@ -2247,8 +2247,8 @@ msgstr "Вилучити всю кількість"
 #: src/gui/popups/popupmenu.cpp:1780 src/gui/popups/popupmenu.cpp:2582
 #: src/gui/windows/inventorywindow.cpp:201
 #: src/gui/windows/inventorywindow.cpp:774 src/gui/windows/skilldialog.cpp:77
-#: src/gui/windows/skilldialog.cpp:151 src/gui/windows/skilldialog.cpp:321
-#: src/gui/windows/skilldialog.cpp:485 src/gui/windows/skilldialog.cpp:567
+#: src/gui/windows/skilldialog.cpp:151 src/gui/windows/skilldialog.cpp:322
+#: src/gui/windows/skilldialog.cpp:486 src/gui/windows/skilldialog.cpp:569
 #: src/resources/itemtypemapdata.h:37 src/resources/itemtypemapdata.h:41
 msgid "Use"
 msgstr "Використати"
@@ -2530,7 +2530,7 @@ msgstr "Швидкі клавіші"
 #. TRANSLATORS: settings group
 #. TRANSLATORS: full button name
 #. TRANSLATORS: input action label
-#: src/gui/setupinputpages.cpp:49 src/gui/widgets/tabs/setup_other.cpp:320
+#: src/gui/setupinputpages.cpp:49 src/gui/widgets/tabs/setup_other.cpp:324
 #: src/gui/windowmenu.cpp:172 src/input/pages/windows.cpp:34
 msgid "Windows"
 msgstr "Вікна"
@@ -2560,7 +2560,7 @@ msgstr "Чат"
 #: src/gui/setupinputpages.cpp:57 src/gui/userpalette.cpp:377
 #: src/gui/widgets/tabs/setup_audio.cpp:148
 #: src/gui/widgets/tabs/setup_chat.cpp:263
-#: src/gui/widgets/tabs/setup_other.cpp:342
+#: src/gui/widgets/tabs/setup_other.cpp:346
 #: src/gui/widgets/tabs/setup_visual.cpp:192
 #: src/gui/windows/registerdialog.cpp:101 src/input/pages/chat.cpp:145
 #: src/input/pages/gui.cpp:85 src/input/pages/other.cpp:106
@@ -2919,7 +2919,7 @@ msgstr "Редагувати"
 
 #. TRANSLATORS: skill level
 #. TRANSLATORS: skills dialog. skill level
-#: src/gui/widgets/skillinfo.cpp:95 src/gui/windows/skilldialog.cpp:481
+#: src/gui/widgets/skillinfo.cpp:95 src/gui/windows/skilldialog.cpp:482
 #, c-format
 msgid "Lvl: %d"
 msgstr "Рівень: %d"
@@ -4137,188 +4137,193 @@ msgstr "Брати у ціль тільки досяжних мобів"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:119
+msgid "Seleck auto target for attack skills"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_other.cpp:123
 msgid "Highlight monster attack range"
 msgstr "Підсвічувати межу атаки мобів"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:124
+#: src/gui/widgets/tabs/setup_other.cpp:128
 msgid "Show monster hp bar"
 msgstr "Показувати рівень здоров'я мобів"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:128
+#: src/gui/widgets/tabs/setup_other.cpp:132
 msgid "Cycle monster targets"
 msgstr "Прокручувати мобів по колу"
 
 #. TRANSLATORS: settings group
 #. TRANSLATORS: debug window tab
 #. TRANSLATORS: mini map window name
-#: src/gui/widgets/tabs/setup_other.cpp:133 src/gui/windowmenu.cpp:103
+#: src/gui/widgets/tabs/setup_other.cpp:137 src/gui/windowmenu.cpp:103
 #: src/gui/windows/debugwindow.cpp:61 src/gui/windows/minimap.cpp:59
 #: src/gui/windows/minimap.cpp:122
 msgid "Map"
 msgstr "Локація"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:136
+#: src/gui/widgets/tabs/setup_other.cpp:140
 msgid "Show warps particles"
 msgstr "Показувати частинки телепортів"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:140
+#: src/gui/widgets/tabs/setup_other.cpp:144
 msgid "Highlight map portals"
 msgstr "Підсвічувати телепорти"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:144
+#: src/gui/widgets/tabs/setup_other.cpp:148
 msgid "Highlight floor items"
 msgstr "Підсвічувати кинуті предмети"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:148
+#: src/gui/widgets/tabs/setup_other.cpp:152
 msgid "Highlight player attack range"
 msgstr "Підсвічувати межу досяжності атаки"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:152
+#: src/gui/widgets/tabs/setup_other.cpp:156
 msgid "Show extended minimaps"
 msgstr "Показувати розширені мінімапи"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:156
+#: src/gui/widgets/tabs/setup_other.cpp:160
 msgid "Draw path"
 msgstr "Малювати шлях"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:160
+#: src/gui/widgets/tabs/setup_other.cpp:164
 msgid "Draw hotkeys on map"
 msgstr "Показувати користувацькі локації на мапі"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:164
+#: src/gui/widgets/tabs/setup_other.cpp:168
 msgid "Enable lazy scrolling"
 msgstr "Ввімкнути ледаче гортання"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:168
+#: src/gui/widgets/tabs/setup_other.cpp:172
 msgid "Scroll laziness"
 msgstr "Рівень ледачості"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:172
+#: src/gui/widgets/tabs/setup_other.cpp:176
 msgid "Scroll radius"
 msgstr "Радіус гортання"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:176
+#: src/gui/widgets/tabs/setup_other.cpp:180
 msgid "Auto resize minimaps"
 msgstr "Автоматично змінювати розмір мінімап"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:180
+#: src/gui/widgets/tabs/setup_other.cpp:184
 msgid "Play map animations"
 msgstr "Дозволити анімації мапи"
 
 #. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_other.cpp:185
+#: src/gui/widgets/tabs/setup_other.cpp:189
 msgid "Moving"
 msgstr "Рухи"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:188
+#: src/gui/widgets/tabs/setup_other.cpp:192
 msgid "Auto fix position"
 msgstr "Корегування позиції"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:192
+#: src/gui/widgets/tabs/setup_other.cpp:196
 msgid "Show server side position"
 msgstr "Показати позицію на боці серверу"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:196
+#: src/gui/widgets/tabs/setup_other.cpp:200
 msgid "Attack while moving"
 msgstr "Атакувати під час руху"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:200
+#: src/gui/widgets/tabs/setup_other.cpp:204
 msgid "Attack next target"
 msgstr "Атакувати наступну ціль"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:204
+#: src/gui/widgets/tabs/setup_other.cpp:208
 msgid "Sync player move"
 msgstr "Синхронізувати рух"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:208
+#: src/gui/widgets/tabs/setup_other.cpp:212
 msgid "Crazy move A program"
 msgstr "Користувацькі божевільні рухи (програма A)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:212
+#: src/gui/widgets/tabs/setup_other.cpp:216
 msgid "Mouse relative moves (good for touch interfaces)"
 msgstr "Рух відносно миші (добре для тач інтерфейсів)"
 
 #. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_other.cpp:217
+#: src/gui/widgets/tabs/setup_other.cpp:221
 msgid "Player"
 msgstr "Гравець"
 
-#: src/gui/widgets/tabs/setup_other.cpp:219
+#: src/gui/widgets/tabs/setup_other.cpp:223
 msgid "Show own hp bar"
 msgstr "Показувати свій рівень здоров'я"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:223
+#: src/gui/widgets/tabs/setup_other.cpp:227
 msgid "Enable quick stats"
 msgstr "Дозволити швидку зміну характеристик"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:227
+#: src/gui/widgets/tabs/setup_other.cpp:231
 msgid "Cycle player targets"
 msgstr "Прокручувати гравців по колу"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:231
+#: src/gui/widgets/tabs/setup_other.cpp:235
 msgid "Show job exp messages"
 msgstr "Показувати досвід роботи"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:235
+#: src/gui/widgets/tabs/setup_other.cpp:239
 msgid "Show players popups"
 msgstr "Показувати бульбашки від гравців"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:239
+#: src/gui/widgets/tabs/setup_other.cpp:243
 msgid "Afk message"
 msgstr "Повідомлення режиму відсутності"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:243
+#: src/gui/widgets/tabs/setup_other.cpp:247
 msgid "Show job"
 msgstr "Показувати роботу"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:247
+#: src/gui/widgets/tabs/setup_other.cpp:251
 msgid "Enable attack filter"
 msgstr "Ввімкнути фільтр атаки"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:251
+#: src/gui/widgets/tabs/setup_other.cpp:255
 msgid "Enable pickup filter"
 msgstr "Ввімкнути фільтр підбирання"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:255
+#: src/gui/widgets/tabs/setup_other.cpp:259
 msgid "Enable advert protocol"
 msgstr "Дозволити трансляцію стану клієнта"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:259
+#: src/gui/widgets/tabs/setup_other.cpp:263
 msgid "Enabled pets support"
 msgstr "Ввімкнути підтримку улюбленців"
 
-#: src/gui/widgets/tabs/setup_other.cpp:262
+#: src/gui/widgets/tabs/setup_other.cpp:266
 msgid "Enable weight notifications"
 msgstr "Повідомляти про вагове перенавантаження"
 
@@ -4326,177 +4331,176 @@ msgstr "Повідомляти про вагове перенавантажен�
 #. TRANSLATORS: full button name
 #. TRANSLATORS: shop window name
 #. TRANSLATORS: shop button tooltip
-#: src/gui/widgets/tabs/setup_other.cpp:267 src/gui/windowmenu.cpp:138
+#: src/gui/widgets/tabs/setup_other.cpp:271 src/gui/windowmenu.cpp:138
 #: src/gui/windows/buyselldialog.cpp:40 src/gui/windows/buyselldialog.cpp:51
 #: src/gui/windows/inventorywindow.cpp:236
 msgid "Shop"
 msgstr "Крамниця"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:270
+#: src/gui/widgets/tabs/setup_other.cpp:274
 msgid "Accept sell/buy requests"
 msgstr "Приймати пропозиції купівлі/продажу"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:274
+#: src/gui/widgets/tabs/setup_other.cpp:278
 msgid "Enable shop mode"
 msgstr "Ввімкнути режим крамниці"
 
 #. TRANSLATORS: settings group
 #. TRANSLATORS: npc dialog name
-#: src/gui/widgets/tabs/setup_other.cpp:279 src/gui/windows/npcdialog.cpp:87
+#: src/gui/widgets/tabs/setup_other.cpp:283 src/gui/windows/npcdialog.cpp:87
 msgid "NPC"
 msgstr "NPC"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:282
+#: src/gui/widgets/tabs/setup_other.cpp:286
 msgid "Cycle npc targets"
 msgstr "Прокручувати NPC по колу"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:286
+#: src/gui/widgets/tabs/setup_other.cpp:290
 msgid "Log NPC dialogue"
 msgstr "Зберігати діалог з NPC"
 
 #. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_other.cpp:291
+#: src/gui/widgets/tabs/setup_other.cpp:295
 msgid "Bots support"
 msgstr "Підтримка ботів"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:294
+#: src/gui/widgets/tabs/setup_other.cpp:298
 msgid "Enable guild bot support and disable native guild support"
 msgstr "Ввімкнути підтримку guild-боту та вимкнути серверну підтримку гільдій"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:299
-#, fuzzy
+#: src/gui/widgets/tabs/setup_other.cpp:303
 msgid "Enable manamarket bot support"
-msgstr "Ввімкнути підтримку улюбленців"
+msgstr ""
 
 #. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_other.cpp:305
+#: src/gui/widgets/tabs/setup_other.cpp:309
 msgid "Keyboard"
 msgstr "Клавіатура"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:308
+#: src/gui/widgets/tabs/setup_other.cpp:312
 msgid "Repeat delay"
 msgstr "Затримка перед повторенням"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:312
+#: src/gui/widgets/tabs/setup_other.cpp:316
 msgid "Repeat interval"
 msgstr "Інтервал повторення"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:316
+#: src/gui/widgets/tabs/setup_other.cpp:320
 msgid "Custom repeat interval"
 msgstr "Користувацький Інтервал"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:324
+#: src/gui/widgets/tabs/setup_other.cpp:328
 msgid "Shortcut buttons"
 msgstr "Клавіші"
 
 #. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_other.cpp:329
+#: src/gui/widgets/tabs/setup_other.cpp:333
 msgid "Proxy server"
 msgstr "Проксі сервер"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:333
+#: src/gui/widgets/tabs/setup_other.cpp:337
 msgid "Proxy type"
 msgstr "Тип проксі"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:337
+#: src/gui/widgets/tabs/setup_other.cpp:341
 msgid "Proxy address:port"
 msgstr "Проксі хост:порт"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:345
+#: src/gui/widgets/tabs/setup_other.cpp:349
 msgid "Enable server side attack"
 msgstr "Ввімкнути серверну атаку"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:349
+#: src/gui/widgets/tabs/setup_other.cpp:353
 msgid "Hide support page link on error"
 msgstr "Не видавати адресу підтримки при помилці"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:353
+#: src/gui/widgets/tabs/setup_other.cpp:357
 msgid "Enable double clicks"
 msgstr "Ввімкнути підтримку подвійних кліків"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:357
+#: src/gui/widgets/tabs/setup_other.cpp:361
 msgid "Enable bot checker"
 msgstr "Ввімкнути перевірку ботів"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:361
+#: src/gui/widgets/tabs/setup_other.cpp:365
 msgid "Enable buggy servers protection (do not disable)"
 msgstr "Ввімкнути захист від глючних серверів (не вимикати!)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:366
+#: src/gui/widgets/tabs/setup_other.cpp:370
 msgid "Enable debug log"
 msgstr "Ввімкнути лог зневадження"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:370
+#: src/gui/widgets/tabs/setup_other.cpp:374
 msgid "Ignore logging packets"
 msgstr "Не вносити в лог мережеві пакети"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:374
+#: src/gui/widgets/tabs/setup_other.cpp:378
 msgid "Log unimplimented packets"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:378
+#: src/gui/widgets/tabs/setup_other.cpp:382
 msgid "Enable OpenGL log"
 msgstr "Ввімкнути OpenGL лог"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:382
+#: src/gui/widgets/tabs/setup_other.cpp:386
 msgid "Enable input log"
 msgstr "Ввімкнути лог введення"
 
 #. TRANSLATORS: settings option
 #. TRANSLATORS: input action name
-#: src/gui/widgets/tabs/setup_other.cpp:386 src/input/pages/other.cpp:408
+#: src/gui/widgets/tabs/setup_other.cpp:390 src/input/pages/other.cpp:408
 msgid "Upload log file"
 msgstr "Завантажили лог файл"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:390
+#: src/gui/widgets/tabs/setup_other.cpp:394
 msgid "Low traffic mode"
 msgstr "Режим кешування гравців"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:395
+#: src/gui/widgets/tabs/setup_other.cpp:399
 msgid "Use FBO for screenshots (only for opengl)"
 msgstr "Вживати FBO для скріншотів (тільки OpenGL)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:401
+#: src/gui/widgets/tabs/setup_other.cpp:405
 msgid "Screenshot directory"
 msgstr "Тека скріншотів"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:406
+#: src/gui/widgets/tabs/setup_other.cpp:410
 msgid "Network delay between sub servers"
 msgstr "Встановити затримку з'єднання між підсерверами"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:410
+#: src/gui/widgets/tabs/setup_other.cpp:414
 msgid "Show background"
 msgstr "Показати фон"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:415
+#: src/gui/widgets/tabs/setup_other.cpp:419
 msgid "Screen density override"
 msgstr "Корекція роздільності екрану"
 
@@ -6686,24 +6690,24 @@ msgid "Up"
 msgstr "Вище"
 
 #. TRANSLATORS: skills dialog label
-#: src/gui/windows/skilldialog.cpp:191
+#: src/gui/windows/skilldialog.cpp:192
 #, c-format
 msgid "Skill points available: %d"
 msgstr "Балів вмінь: %d"
 
 #. TRANSLATORS: skills dialog default skill tab
-#: src/gui/windows/skilldialog.cpp:289
+#: src/gui/windows/skilldialog.cpp:290
 #, c-format
 msgid "Skill Set %d"
 msgstr "Група вмінь %d"
 
 #. TRANSLATORS: skills dialog. skill id
-#: src/gui/windows/skilldialog.cpp:310
+#: src/gui/windows/skilldialog.cpp:311
 #, c-format
 msgid "Skill %d"
 msgstr "Вміння %d"
 
-#: src/gui/windows/skilldialog.cpp:486
+#: src/gui/windows/skilldialog.cpp:487
 #, c-format
 msgid "Failed skill: %s"
 msgstr "Невдале вміння: %s"
@@ -8246,7 +8250,7 @@ msgstr "Неможливо створити персонажа. Скоріше �
 
 #. TRANSLATORS: error message
 #: src/net/ea/charserverrecv.cpp:80 src/net/ea/loginrecv.cpp:159
-#: src/net/eathena/loginrecv.cpp:100
+#: src/net/eathena/loginrecv.cpp:102
 msgid "Wrong name."
 msgstr "Некоректне ім'я."
 
@@ -8362,38 +8366,38 @@ msgid "Guild castle: %s"
 msgstr "Замок гільдії: %s"
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginrecv.cpp:119 src/net/eathena/loginrecv.cpp:55
+#: src/net/ea/loginrecv.cpp:119 src/net/eathena/loginrecv.cpp:57
 msgid "Unregistered ID."
 msgstr "Не зареєстрований ID."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginrecv.cpp:123 src/net/eathena/loginrecv.cpp:59
+#: src/net/ea/loginrecv.cpp:123 src/net/eathena/loginrecv.cpp:61
 msgid "Wrong password."
 msgstr "Неправильний пароль."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginrecv.cpp:128 src/net/eathena/loginrecv.cpp:64
+#: src/net/ea/loginrecv.cpp:128 src/net/eathena/loginrecv.cpp:66
 msgid "Account expired."
 msgstr "Акаунт прострочено."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginrecv.cpp:132 src/net/eathena/loginrecv.cpp:68
+#: src/net/ea/loginrecv.cpp:132 src/net/eathena/loginrecv.cpp:70
 msgid "Rejected from server."
 msgstr "Отримана відмова від серверу."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginrecv.cpp:136 src/net/eathena/loginrecv.cpp:72
+#: src/net/ea/loginrecv.cpp:136 src/net/eathena/loginrecv.cpp:74
 msgid ""
 "You have been permanently banned from the game. Please contact the GM team."
 msgstr "Вас було навіки забанено. Пишіть листи команді ГМ'ів."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginrecv.cpp:141 src/net/eathena/loginrecv.cpp:77
+#: src/net/ea/loginrecv.cpp:141 src/net/eathena/loginrecv.cpp:79
 msgid "Client too old."
 msgstr "Клієнт застарий."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginrecv.cpp:145 src/net/eathena/loginrecv.cpp:81
+#: src/net/ea/loginrecv.cpp:145 src/net/eathena/loginrecv.cpp:83
 #, c-format
 msgid ""
 "You have been temporarily banned from the game until %s.\n"
@@ -8403,28 +8407,28 @@ msgstr ""
 "Звертайтесь до команди ГМ'ів на форумі."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginrecv.cpp:151 src/net/eathena/loginrecv.cpp:90
+#: src/net/ea/loginrecv.cpp:151 src/net/eathena/loginrecv.cpp:92
 msgid "Server overpopulated."
 msgstr "Сервер перенаселено."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginrecv.cpp:155 src/net/eathena/loginrecv.cpp:95
+#: src/net/ea/loginrecv.cpp:155 src/net/eathena/loginrecv.cpp:97
 msgid "This user name is already taken."
 msgstr "Цей логін все є чиїмось."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginrecv.cpp:163 src/net/eathena/loginrecv.cpp:105
+#: src/net/ea/loginrecv.cpp:163 src/net/eathena/loginrecv.cpp:107
 msgid "Incorrect email."
 msgstr "Некоректна електронна пошта."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginrecv.cpp:167 src/net/eathena/loginrecv.cpp:110
+#: src/net/ea/loginrecv.cpp:167 src/net/eathena/loginrecv.cpp:112
 msgid "Username permanently erased."
 msgstr "Користувач стертий."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginrecv.cpp:171 src/net/eathena/loginrecv.cpp:114
-#: src/net/eathena/loginrecv.cpp:206 src/net/tmwa/loginrecv.cpp:122
+#: src/net/ea/loginrecv.cpp:171 src/net/eathena/loginrecv.cpp:116
+#: src/net/eathena/loginrecv.cpp:209 src/net/tmwa/loginrecv.cpp:126
 msgid "Unknown error."
 msgstr "Невстановлена помилка."
 
@@ -8757,7 +8761,7 @@ msgid "Map not found"
 msgstr "Мапу не знайдено."
 
 #. TRANSLATORS: notification message
-#: src/net/eathena/inventoryrecv.cpp:588
+#: src/net/eathena/inventoryrecv.cpp:641
 #, c-format
 msgid "Left %s rental time for item %s."
 msgstr ""
@@ -8765,23 +8769,23 @@ msgstr ""
 #. TRANSLATORS: unknown item
 #. TRANSLATORS: unknown item message
 #. TRANSLATORS: item name
-#: src/net/eathena/inventoryrecv.cpp:843 src/net/eathena/inventoryrecv.cpp:976
+#: src/net/eathena/inventoryrecv.cpp:921 src/net/eathena/inventoryrecv.cpp:1054
 #: src/resources/db/itemdb.cpp:240
 msgid "Unknown item"
 msgstr "Невідомий предмет"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/loginrecv.cpp:194 src/net/tmwa/loginrecv.cpp:110
+#: src/net/eathena/loginrecv.cpp:197 src/net/tmwa/loginrecv.cpp:114
 msgid "Account was not found. Please re-login."
 msgstr "Акаунт не знайдено. Будь ласка, спробуйте знов."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/loginrecv.cpp:198 src/net/tmwa/loginrecv.cpp:114
+#: src/net/eathena/loginrecv.cpp:201 src/net/tmwa/loginrecv.cpp:118
 msgid "Old password incorrect."
 msgstr "Старий пароль некоректний."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/loginrecv.cpp:202 src/net/tmwa/loginrecv.cpp:118
+#: src/net/eathena/loginrecv.cpp:205 src/net/tmwa/loginrecv.cpp:122
 msgid "New password too short."
 msgstr "Новий пароль замалий."
 

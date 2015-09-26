@@ -21,8 +21,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2015-09-12 13:54+0300\n"
-"PO-Revision-Date: 2015-09-11 08:24+0000\n"
+"POT-Creation-Date: 2015-09-26 14:43+0300\n"
+"PO-Revision-Date: 2015-09-13 08:44+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: French (http://www.transifex.com/akaras/manaplus/language/"
 "fr/)\n"
@@ -312,53 +312,53 @@ msgid "You were killed by %s."
 msgstr "Tu as été tué par %s."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:837
+#: src/being/localplayer.cpp:853
 msgid "Tried to pick up nonexistent item."
 msgstr "Vous avez essayé de prendre un objet qui n'existe pas."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:841
+#: src/being/localplayer.cpp:857
 msgid "Item is too heavy."
 msgstr "L'objet est trop lourd."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:845
+#: src/being/localplayer.cpp:861
 msgid "Item is too far away."
 msgstr "L'objet est trop éloigné."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:849
+#: src/being/localplayer.cpp:865
 msgid "Inventory is full."
 msgstr "L'inventaire est plein."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:853
+#: src/being/localplayer.cpp:869
 msgid "Stack is too big."
 msgstr "La pile est trop grande."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:857
+#: src/being/localplayer.cpp:873
 msgid "Item belongs to someone else."
 msgstr "L'objet appartient a quelqu'un d'autre."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:861
+#: src/being/localplayer.cpp:877
 msgid "You can't pickup this amount of items."
 msgstr "Tu ne peux pas ramasser cette quantité d'objets."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:865
+#: src/being/localplayer.cpp:881
 msgid "Your item stack has max amount."
 msgstr "Ta pile de cet objet est pleine."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:872
+#: src/being/localplayer.cpp:888
 msgid "Unknown problem picking up item."
 msgstr "Problème inconnu pour ramasser l'objet."
 
 #. TRANSLATORS: %d is number,
 #. [@@%d|%s@@] - here player can see link to item
-#: src/being/localplayer.cpp:896
+#: src/being/localplayer.cpp:912
 #, c-format
 msgid "You picked up %d [@@%d|%s@@]."
 msgid_plural "You picked up %d [@@%d|%s@@]."
@@ -367,53 +367,53 @@ msgstr[1] "Vous avez ramassé %d [@@%d|%s@@]."
 
 #. TRANSLATORS: this is normal experience
 #. TRANSLATORS: get xp message
-#: src/being/localplayer.cpp:1068 src/being/localplayer.cpp:1069
-#: src/being/localplayer.cpp:1095
+#: src/being/localplayer.cpp:1084 src/being/localplayer.cpp:1085
+#: src/being/localplayer.cpp:1111
 msgid "xp"
 msgstr "xp"
 
 #. TRANSLATORS: this is job experience
-#: src/being/localplayer.cpp:1073 src/being/localplayer.cpp:1079
-#: src/being/localplayer.cpp:1085
+#: src/being/localplayer.cpp:1089 src/being/localplayer.cpp:1095
+#: src/being/localplayer.cpp:1101
 msgid "job"
 msgstr "job"
 
 #. TRANSLATORS: get hp message
-#: src/being/localplayer.cpp:1104
+#: src/being/localplayer.cpp:1120
 msgid "hp"
 msgstr "PV"
 
 #. TRANSLATORS: get hp message
-#: src/being/localplayer.cpp:1113
+#: src/being/localplayer.cpp:1129
 msgid "mana"
 msgstr "Mana"
 
 #. TRANSLATORS: follow command message
-#: src/being/localplayer.cpp:2187
+#: src/being/localplayer.cpp:2203
 #, c-format
 msgid "Follow: %s"
 msgstr "Suivre : %s"
 
 #. TRANSLATORS: follow command message
 #. TRANSLATORS: cancel follow message
-#: src/being/localplayer.cpp:2193 src/being/localplayer.cpp:2218
+#: src/being/localplayer.cpp:2209 src/being/localplayer.cpp:2234
 msgid "Follow canceled"
 msgstr "Suivi annulé"
 
 #. TRANSLATORS: imitate command message
-#: src/being/localplayer.cpp:2203
+#: src/being/localplayer.cpp:2219
 #, c-format
 msgid "Imitation: %s"
 msgstr "Imiter : %s"
 
 #. TRANSLATORS: imitate command message
 #. TRANSLATORS: cancel follow message
-#: src/being/localplayer.cpp:2209 src/being/localplayer.cpp:2223
+#: src/being/localplayer.cpp:2225 src/being/localplayer.cpp:2239
 msgid "Imitation canceled"
 msgstr "Imitation annulée"
 
 #. TRANSLATORS: wait player/monster message
-#: src/being/localplayer.cpp:2573
+#: src/being/localplayer.cpp:2589
 #, c-format
 msgid "You see %s"
 msgstr "Tu vois %s"
@@ -1506,7 +1506,7 @@ msgstr "Turc"
 
 #. TRANSLATORS: language
 #: src/gui/models/langlistmodel.h:85
-msgid "Ukraine"
+msgid "Ukrainian"
 msgstr ""
 
 #. TRANSLATORS: magic school
@@ -2266,8 +2266,8 @@ msgstr "Reprendre tout"
 #: src/gui/popups/popupmenu.cpp:1780 src/gui/popups/popupmenu.cpp:2582
 #: src/gui/windows/inventorywindow.cpp:201
 #: src/gui/windows/inventorywindow.cpp:774 src/gui/windows/skilldialog.cpp:77
-#: src/gui/windows/skilldialog.cpp:151 src/gui/windows/skilldialog.cpp:321
-#: src/gui/windows/skilldialog.cpp:485 src/gui/windows/skilldialog.cpp:567
+#: src/gui/windows/skilldialog.cpp:151 src/gui/windows/skilldialog.cpp:322
+#: src/gui/windows/skilldialog.cpp:486 src/gui/windows/skilldialog.cpp:569
 #: src/resources/itemtypemapdata.h:37 src/resources/itemtypemapdata.h:41
 msgid "Use"
 msgstr "Utiliser"
@@ -2549,7 +2549,7 @@ msgstr "Raccourcis"
 #. TRANSLATORS: settings group
 #. TRANSLATORS: full button name
 #. TRANSLATORS: input action label
-#: src/gui/setupinputpages.cpp:49 src/gui/widgets/tabs/setup_other.cpp:320
+#: src/gui/setupinputpages.cpp:49 src/gui/widgets/tabs/setup_other.cpp:324
 #: src/gui/windowmenu.cpp:172 src/input/pages/windows.cpp:34
 msgid "Windows"
 msgstr "Fenêtres"
@@ -2579,7 +2579,7 @@ msgstr "Conversation"
 #: src/gui/setupinputpages.cpp:57 src/gui/userpalette.cpp:377
 #: src/gui/widgets/tabs/setup_audio.cpp:148
 #: src/gui/widgets/tabs/setup_chat.cpp:263
-#: src/gui/widgets/tabs/setup_other.cpp:342
+#: src/gui/widgets/tabs/setup_other.cpp:346
 #: src/gui/widgets/tabs/setup_visual.cpp:192
 #: src/gui/windows/registerdialog.cpp:101 src/input/pages/chat.cpp:145
 #: src/input/pages/gui.cpp:85 src/input/pages/other.cpp:106
@@ -2938,7 +2938,7 @@ msgstr "Éditer"
 
 #. TRANSLATORS: skill level
 #. TRANSLATORS: skills dialog. skill level
-#: src/gui/widgets/skillinfo.cpp:95 src/gui/windows/skilldialog.cpp:481
+#: src/gui/widgets/skillinfo.cpp:95 src/gui/windows/skilldialog.cpp:482
 #, c-format
 msgid "Lvl: %d"
 msgstr "Niveau : %d"
@@ -4158,188 +4158,193 @@ msgstr "Ne viser en auto que les monstres à portée de tir"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:119
+msgid "Seleck auto target for attack skills"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_other.cpp:123
 msgid "Highlight monster attack range"
 msgstr "Afficher la portée d'attaque des monstres"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:124
+#: src/gui/widgets/tabs/setup_other.cpp:128
 msgid "Show monster hp bar"
 msgstr "Afficher la barre de vie des monstres"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:128
+#: src/gui/widgets/tabs/setup_other.cpp:132
 msgid "Cycle monster targets"
 msgstr "Sélectionner les monstres par ordre de distance"
 
 #. TRANSLATORS: settings group
 #. TRANSLATORS: debug window tab
 #. TRANSLATORS: mini map window name
-#: src/gui/widgets/tabs/setup_other.cpp:133 src/gui/windowmenu.cpp:103
+#: src/gui/widgets/tabs/setup_other.cpp:137 src/gui/windowmenu.cpp:103
 #: src/gui/windows/debugwindow.cpp:61 src/gui/windows/minimap.cpp:59
 #: src/gui/windows/minimap.cpp:122
 msgid "Map"
 msgstr "Carte"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:136
+#: src/gui/widgets/tabs/setup_other.cpp:140
 msgid "Show warps particles"
 msgstr "Montrer les effets de déplacement"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:140
+#: src/gui/widgets/tabs/setup_other.cpp:144
 msgid "Highlight map portals"
 msgstr "Afficher les portails de changement de carte"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:144
+#: src/gui/widgets/tabs/setup_other.cpp:148
 msgid "Highlight floor items"
 msgstr "Mettre en évidence les objets sur le sol"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:148
+#: src/gui/widgets/tabs/setup_other.cpp:152
 msgid "Highlight player attack range"
 msgstr "Afficher la portée d'attaque du joueur"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:152
+#: src/gui/widgets/tabs/setup_other.cpp:156
 msgid "Show extended minimaps"
 msgstr "Afficher les mini-cartes avancées"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:156
+#: src/gui/widgets/tabs/setup_other.cpp:160
 msgid "Draw path"
 msgstr "Afficher le chemin"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:160
+#: src/gui/widgets/tabs/setup_other.cpp:164
 msgid "Draw hotkeys on map"
 msgstr "Afficher les touches-raccourcis sur la carte"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:164
+#: src/gui/widgets/tabs/setup_other.cpp:168
 msgid "Enable lazy scrolling"
 msgstr "Activer le défilement paresseux"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:168
+#: src/gui/widgets/tabs/setup_other.cpp:172
 msgid "Scroll laziness"
 msgstr "Paresse de défilement"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:172
+#: src/gui/widgets/tabs/setup_other.cpp:176
 msgid "Scroll radius"
 msgstr "Rayon de défilement"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:176
+#: src/gui/widgets/tabs/setup_other.cpp:180
 msgid "Auto resize minimaps"
 msgstr "Redimensionnement automatique des mini-cartes"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:180
+#: src/gui/widgets/tabs/setup_other.cpp:184
 msgid "Play map animations"
 msgstr "Jouer les animations de la carte"
 
 #. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_other.cpp:185
+#: src/gui/widgets/tabs/setup_other.cpp:189
 msgid "Moving"
 msgstr "En mouvement"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:188
+#: src/gui/widgets/tabs/setup_other.cpp:192
 msgid "Auto fix position"
 msgstr "Auto-correction de position"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:192
+#: src/gui/widgets/tabs/setup_other.cpp:196
 msgid "Show server side position"
 msgstr "Afficher la position du côté du serveur"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:196
+#: src/gui/widgets/tabs/setup_other.cpp:200
 msgid "Attack while moving"
 msgstr "Attaquer en bougeant"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:200
+#: src/gui/widgets/tabs/setup_other.cpp:204
 msgid "Attack next target"
 msgstr "Attaquer la prochaine cible"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:204
+#: src/gui/widgets/tabs/setup_other.cpp:208
 msgid "Sync player move"
 msgstr "Synchroniser les mouvements du joueur"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:208
+#: src/gui/widgets/tabs/setup_other.cpp:212
 msgid "Crazy move A program"
 msgstr "Programme de mouvement de fou A"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:212
+#: src/gui/widgets/tabs/setup_other.cpp:216
 msgid "Mouse relative moves (good for touch interfaces)"
 msgstr "Mouvements relatifs à la souris (bon pour les interfaces tactiles)"
 
 #. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_other.cpp:217
+#: src/gui/widgets/tabs/setup_other.cpp:221
 msgid "Player"
 msgstr "Joueur"
 
-#: src/gui/widgets/tabs/setup_other.cpp:219
+#: src/gui/widgets/tabs/setup_other.cpp:223
 msgid "Show own hp bar"
 msgstr "Afficher ta propre barre de vie"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:223
+#: src/gui/widgets/tabs/setup_other.cpp:227
 msgid "Enable quick stats"
 msgstr "Activer les statistiques instantanées"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:227
+#: src/gui/widgets/tabs/setup_other.cpp:231
 msgid "Cycle player targets"
 msgstr "Sélectionner les joueurs par ordre de distance"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:231
+#: src/gui/widgets/tabs/setup_other.cpp:235
 msgid "Show job exp messages"
 msgstr "Afficher les expériences de compétences"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:235
+#: src/gui/widgets/tabs/setup_other.cpp:239
 msgid "Show players popups"
 msgstr "Afficher les pop-ups des joueurs"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:239
+#: src/gui/widgets/tabs/setup_other.cpp:243
 msgid "Afk message"
 msgstr "Message d'absence"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:243
+#: src/gui/widgets/tabs/setup_other.cpp:247
 msgid "Show job"
 msgstr "Afficher les compétences"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:247
+#: src/gui/widgets/tabs/setup_other.cpp:251
 msgid "Enable attack filter"
 msgstr "Activer le mode attaque"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:251
+#: src/gui/widgets/tabs/setup_other.cpp:255
 msgid "Enable pickup filter"
 msgstr "Activer le filtre de ramassage"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:255
+#: src/gui/widgets/tabs/setup_other.cpp:259
 msgid "Enable advert protocol"
 msgstr "Lancer le protocole d'avertissements"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:259
+#: src/gui/widgets/tabs/setup_other.cpp:263
 msgid "Enabled pets support"
 msgstr "Possibilité des familiers activée"
 
-#: src/gui/widgets/tabs/setup_other.cpp:262
+#: src/gui/widgets/tabs/setup_other.cpp:266
 msgid "Enable weight notifications"
 msgstr "Activer les notifications de poids"
 
@@ -4347,178 +4352,177 @@ msgstr "Activer les notifications de poids"
 #. TRANSLATORS: full button name
 #. TRANSLATORS: shop window name
 #. TRANSLATORS: shop button tooltip
-#: src/gui/widgets/tabs/setup_other.cpp:267 src/gui/windowmenu.cpp:138
+#: src/gui/widgets/tabs/setup_other.cpp:271 src/gui/windowmenu.cpp:138
 #: src/gui/windows/buyselldialog.cpp:40 src/gui/windows/buyselldialog.cpp:51
 #: src/gui/windows/inventorywindow.cpp:236
 msgid "Shop"
 msgstr "Boutique"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:270
+#: src/gui/widgets/tabs/setup_other.cpp:274
 msgid "Accept sell/buy requests"
 msgstr "Accepter les requêtes d'achat / de vente"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:274
+#: src/gui/widgets/tabs/setup_other.cpp:278
 msgid "Enable shop mode"
 msgstr "Activer le mode boutique"
 
 #. TRANSLATORS: settings group
 #. TRANSLATORS: npc dialog name
-#: src/gui/widgets/tabs/setup_other.cpp:279 src/gui/windows/npcdialog.cpp:87
+#: src/gui/widgets/tabs/setup_other.cpp:283 src/gui/windows/npcdialog.cpp:87
 msgid "NPC"
 msgstr "PNJ"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:282
+#: src/gui/widgets/tabs/setup_other.cpp:286
 msgid "Cycle npc targets"
 msgstr "Boucler les cibles PNJ"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:286
+#: src/gui/widgets/tabs/setup_other.cpp:290
 msgid "Log NPC dialogue"
 msgstr "Effectuer l'historique des conversations des PNJs"
 
 #. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_other.cpp:291
+#: src/gui/widgets/tabs/setup_other.cpp:295
 msgid "Bots support"
 msgstr "Support des bots"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:294
+#: src/gui/widgets/tabs/setup_other.cpp:298
 msgid "Enable guild bot support and disable native guild support"
 msgstr ""
 "Activer le support du bot de guilde et désactiver le support par défault"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:299
-#, fuzzy
+#: src/gui/widgets/tabs/setup_other.cpp:303
 msgid "Enable manamarket bot support"
-msgstr "Possibilité des familiers activée"
+msgstr ""
 
 #. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_other.cpp:305
+#: src/gui/widgets/tabs/setup_other.cpp:309
 msgid "Keyboard"
 msgstr "Clavier"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:308
+#: src/gui/widgets/tabs/setup_other.cpp:312
 msgid "Repeat delay"
 msgstr "Délai de répétition"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:312
+#: src/gui/widgets/tabs/setup_other.cpp:316
 msgid "Repeat interval"
 msgstr "Intervalle de répétition"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:316
+#: src/gui/widgets/tabs/setup_other.cpp:320
 msgid "Custom repeat interval"
 msgstr "Intervalle de répétition personnalisé"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:324
+#: src/gui/widgets/tabs/setup_other.cpp:328
 msgid "Shortcut buttons"
 msgstr "Boutons de raccourcis"
 
 #. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_other.cpp:329
+#: src/gui/widgets/tabs/setup_other.cpp:333
 msgid "Proxy server"
 msgstr "Serveur proxy"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:333
+#: src/gui/widgets/tabs/setup_other.cpp:337
 msgid "Proxy type"
 msgstr "Type de proxy"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:337
+#: src/gui/widgets/tabs/setup_other.cpp:341
 msgid "Proxy address:port"
 msgstr "Adresse du proxy:port"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:345
+#: src/gui/widgets/tabs/setup_other.cpp:349
 msgid "Enable server side attack"
 msgstr "Activer l'attaque de la part du serveur"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:349
+#: src/gui/widgets/tabs/setup_other.cpp:353
 msgid "Hide support page link on error"
 msgstr "Cacher le lien de la page d'aide quand erreur"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:353
+#: src/gui/widgets/tabs/setup_other.cpp:357
 msgid "Enable double clicks"
 msgstr "Activer double-cliques"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:357
+#: src/gui/widgets/tabs/setup_other.cpp:361
 msgid "Enable bot checker"
 msgstr "Activer le testeur de robots"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:361
+#: src/gui/widgets/tabs/setup_other.cpp:365
 msgid "Enable buggy servers protection (do not disable)"
 msgstr "Activer la protection pour serveurs defaillant (ne pas désactiver)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:366
+#: src/gui/widgets/tabs/setup_other.cpp:370
 msgid "Enable debug log"
 msgstr "Activer l'historique des informations de débogage"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:370
+#: src/gui/widgets/tabs/setup_other.cpp:374
 msgid "Ignore logging packets"
 msgstr "Ignorer les paquets d'identification"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:374
+#: src/gui/widgets/tabs/setup_other.cpp:378
 msgid "Log unimplimented packets"
 msgstr "Effectuer l'historique des paquets non implémentés"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:378
+#: src/gui/widgets/tabs/setup_other.cpp:382
 msgid "Enable OpenGL log"
 msgstr "Activer historique OpenGL"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:382
+#: src/gui/widgets/tabs/setup_other.cpp:386
 msgid "Enable input log"
 msgstr "Activer l'historique d'entrées"
 
 #. TRANSLATORS: settings option
 #. TRANSLATORS: input action name
-#: src/gui/widgets/tabs/setup_other.cpp:386 src/input/pages/other.cpp:408
+#: src/gui/widgets/tabs/setup_other.cpp:390 src/input/pages/other.cpp:408
 msgid "Upload log file"
 msgstr "Mettre en ligne le fichier d'historique"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:390
+#: src/gui/widgets/tabs/setup_other.cpp:394
 msgid "Low traffic mode"
 msgstr "Mode traffic faible"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:395
+#: src/gui/widgets/tabs/setup_other.cpp:399
 msgid "Use FBO for screenshots (only for opengl)"
 msgstr "Utiliser FBO pour les captures d'écran (seulement pour OpenGL)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:401
+#: src/gui/widgets/tabs/setup_other.cpp:405
 msgid "Screenshot directory"
 msgstr "Répertoire des captures d'écran"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:406
+#: src/gui/widgets/tabs/setup_other.cpp:410
 msgid "Network delay between sub servers"
 msgstr "Retard du réseau entre les sous-serveurs"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:410
+#: src/gui/widgets/tabs/setup_other.cpp:414
 msgid "Show background"
 msgstr "Montrer le fond"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:415
+#: src/gui/widgets/tabs/setup_other.cpp:419
 msgid "Screen density override"
 msgstr "Écrasement de la densité de l'écran"
 
@@ -6719,24 +6723,24 @@ msgid "Up"
 msgstr "Augmenter"
 
 #. TRANSLATORS: skills dialog label
-#: src/gui/windows/skilldialog.cpp:191
+#: src/gui/windows/skilldialog.cpp:192
 #, c-format
 msgid "Skill points available: %d"
 msgstr "Points de compétences : %d"
 
 #. TRANSLATORS: skills dialog default skill tab
-#: src/gui/windows/skilldialog.cpp:289
+#: src/gui/windows/skilldialog.cpp:290
 #, c-format
 msgid "Skill Set %d"
 msgstr "Compétence choisie : %d"
 
 #. TRANSLATORS: skills dialog. skill id
-#: src/gui/windows/skilldialog.cpp:310
+#: src/gui/windows/skilldialog.cpp:311
 #, c-format
 msgid "Skill %d"
 msgstr "Compétence %d"
 
-#: src/gui/windows/skilldialog.cpp:486
+#: src/gui/windows/skilldialog.cpp:487
 #, c-format
 msgid "Failed skill: %s"
 msgstr "Compétence ratée : %s"
@@ -8287,7 +8291,7 @@ msgstr ""
 
 #. TRANSLATORS: error message
 #: src/net/ea/charserverrecv.cpp:80 src/net/ea/loginrecv.cpp:159
-#: src/net/eathena/loginrecv.cpp:100
+#: src/net/eathena/loginrecv.cpp:102
 msgid "Wrong name."
 msgstr "Mauvais nom."
 
@@ -8405,27 +8409,27 @@ msgid "Guild castle: %s"
 msgstr "Château de la guilde : %s"
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginrecv.cpp:119 src/net/eathena/loginrecv.cpp:55
+#: src/net/ea/loginrecv.cpp:119 src/net/eathena/loginrecv.cpp:57
 msgid "Unregistered ID."
 msgstr "Id non enregistrée."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginrecv.cpp:123 src/net/eathena/loginrecv.cpp:59
+#: src/net/ea/loginrecv.cpp:123 src/net/eathena/loginrecv.cpp:61
 msgid "Wrong password."
 msgstr "Mauvais mot de passe."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginrecv.cpp:128 src/net/eathena/loginrecv.cpp:64
+#: src/net/ea/loginrecv.cpp:128 src/net/eathena/loginrecv.cpp:66
 msgid "Account expired."
 msgstr "Le compte a expiré."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginrecv.cpp:132 src/net/eathena/loginrecv.cpp:68
+#: src/net/ea/loginrecv.cpp:132 src/net/eathena/loginrecv.cpp:70
 msgid "Rejected from server."
 msgstr "Rejeté par le serveur."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginrecv.cpp:136 src/net/eathena/loginrecv.cpp:72
+#: src/net/ea/loginrecv.cpp:136 src/net/eathena/loginrecv.cpp:74
 msgid ""
 "You have been permanently banned from the game. Please contact the GM team."
 msgstr ""
@@ -8433,12 +8437,12 @@ msgstr ""
 "MJs."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginrecv.cpp:141 src/net/eathena/loginrecv.cpp:77
+#: src/net/ea/loginrecv.cpp:141 src/net/eathena/loginrecv.cpp:79
 msgid "Client too old."
 msgstr "Client trop ancien."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginrecv.cpp:145 src/net/eathena/loginrecv.cpp:81
+#: src/net/ea/loginrecv.cpp:145 src/net/eathena/loginrecv.cpp:83
 #, c-format
 msgid ""
 "You have been temporarily banned from the game until %s.\n"
@@ -8448,28 +8452,28 @@ msgstr ""
 "Merci de contacter l'équipe des MJs sur le forum."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginrecv.cpp:151 src/net/eathena/loginrecv.cpp:90
+#: src/net/ea/loginrecv.cpp:151 src/net/eathena/loginrecv.cpp:92
 msgid "Server overpopulated."
 msgstr "Serveur surpeuplé."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginrecv.cpp:155 src/net/eathena/loginrecv.cpp:95
+#: src/net/ea/loginrecv.cpp:155 src/net/eathena/loginrecv.cpp:97
 msgid "This user name is already taken."
 msgstr "Ce nom d'utilisateur est déjà utilisé."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginrecv.cpp:163 src/net/eathena/loginrecv.cpp:105
+#: src/net/ea/loginrecv.cpp:163 src/net/eathena/loginrecv.cpp:107
 msgid "Incorrect email."
 msgstr "Mail incorrecte."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginrecv.cpp:167 src/net/eathena/loginrecv.cpp:110
+#: src/net/ea/loginrecv.cpp:167 src/net/eathena/loginrecv.cpp:112
 msgid "Username permanently erased."
 msgstr "Le nom de l'utilisateur a été éliminé de façon permanente."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginrecv.cpp:171 src/net/eathena/loginrecv.cpp:114
-#: src/net/eathena/loginrecv.cpp:206 src/net/tmwa/loginrecv.cpp:122
+#: src/net/ea/loginrecv.cpp:171 src/net/eathena/loginrecv.cpp:116
+#: src/net/eathena/loginrecv.cpp:209 src/net/tmwa/loginrecv.cpp:126
 msgid "Unknown error."
 msgstr "Erreur inconnue."
 
@@ -8802,7 +8806,7 @@ msgid "Map not found"
 msgstr "Carte non trouvée"
 
 #. TRANSLATORS: notification message
-#: src/net/eathena/inventoryrecv.cpp:588
+#: src/net/eathena/inventoryrecv.cpp:641
 #, c-format
 msgid "Left %s rental time for item %s."
 msgstr ""
@@ -8810,23 +8814,23 @@ msgstr ""
 #. TRANSLATORS: unknown item
 #. TRANSLATORS: unknown item message
 #. TRANSLATORS: item name
-#: src/net/eathena/inventoryrecv.cpp:843 src/net/eathena/inventoryrecv.cpp:976
+#: src/net/eathena/inventoryrecv.cpp:921 src/net/eathena/inventoryrecv.cpp:1054
 #: src/resources/db/itemdb.cpp:240
 msgid "Unknown item"
 msgstr "Objet inconnu"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/loginrecv.cpp:194 src/net/tmwa/loginrecv.cpp:110
+#: src/net/eathena/loginrecv.cpp:197 src/net/tmwa/loginrecv.cpp:114
 msgid "Account was not found. Please re-login."
 msgstr "Le compte n'a pas été trouvé. Reconnectes-toi s'il-te-plaît."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/loginrecv.cpp:198 src/net/tmwa/loginrecv.cpp:114
+#: src/net/eathena/loginrecv.cpp:201 src/net/tmwa/loginrecv.cpp:118
 msgid "Old password incorrect."
 msgstr "Ancien mot de passe incorrect."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/loginrecv.cpp:202 src/net/tmwa/loginrecv.cpp:118
+#: src/net/eathena/loginrecv.cpp:205 src/net/tmwa/loginrecv.cpp:122
 msgid "New password too short."
 msgstr "Le nouveau mot de passe est trop court."
 

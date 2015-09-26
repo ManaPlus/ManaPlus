@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2015-09-10 18:46+0300\n"
-"PO-Revision-Date: 2015-09-11 08:24+0000\n"
+"POT-Creation-Date: 2015-09-12 13:54+0300\n"
+"PO-Revision-Date: 2015-09-13 08:44+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Telugu (http://www.transifex.com/akaras/manaplus/language/te/)\n"
 "MIME-Version: 1.0\n"
@@ -32,7 +32,7 @@ msgstr ""
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: text dialog button
 #. TRANSLATORS: ok dialog button
-#: src/actions/actions.cpp:161 src/client.cpp:1475 src/client.cpp:1509
+#: src/actions/actions.cpp:161 src/client.cpp:1476 src/client.cpp:1510
 #: src/gamemodifiers.cpp:451 src/gui/dialogsmanager.cpp:182
 #: src/gui/dialogsmanager.cpp:202 src/gui/widgets/tabs/setup_input.cpp:164
 #: src/gui/widgets/tabs/setup_theme.cpp:313
@@ -43,18 +43,18 @@ msgstr ""
 #: src/gui/widgets/tabs/setup_video.cpp:412
 #: src/gui/windows/changeemaildialog.cpp:169
 #: src/gui/windows/changepassworddialog.cpp:159
-#: src/gui/windows/charcreatedialog.cpp:390
-#: src/gui/windows/charselectdialog.cpp:280
-#: src/gui/windows/charselectdialog.cpp:327 src/gui/windows/editdialog.cpp:50
+#: src/gui/windows/charcreatedialog.cpp:391
+#: src/gui/windows/charselectdialog.cpp:281
+#: src/gui/windows/charselectdialog.cpp:328 src/gui/windows/editdialog.cpp:50
 #: src/gui/windows/editserverdialog.cpp:56
 #: src/gui/windows/editserverdialog.cpp:216
 #: src/gui/windows/itemamountwindow.cpp:179 src/gui/windows/quitdialog.cpp:66
 #: src/gui/windows/registerdialog.cpp:241 src/gui/windows/socialwindow.cpp:524
 #: src/gui/windows/textdialog.cpp:48 src/gui/windows/unregisterdialog.cpp:149
 #: src/net/ea/charserverrecv.cpp:108 src/net/ea/charserverrecv.cpp:134
-#: src/net/ea/gamerecv.cpp:71 src/net/eathena/charserverrecv.cpp:377
-#: src/net/eathena/charserverrecv.cpp:412
-#: src/net/eathena/charserverrecv.cpp:440 src/net/tmwa/charserverrecv.cpp:282
+#: src/net/ea/gamerecv.cpp:71 src/net/eathena/charserverrecv.cpp:378
+#: src/net/eathena/charserverrecv.cpp:413
+#: src/net/eathena/charserverrecv.cpp:441 src/net/tmwa/charserverrecv.cpp:282
 msgid "OK"
 msgstr "సరే"
 
@@ -434,40 +434,40 @@ msgstr ""
 #. TRANSLATORS: setup tab quick button
 #. TRANSLATORS: full button name
 #. TRANSLATORS: setup window name
-#: src/client.cpp:811 src/dyetool/client.cpp:471 src/gui/windowmenu.cpp:177
+#: src/client.cpp:812 src/dyetool/client.cpp:471 src/gui/windowmenu.cpp:177
 #: src/gui/windows/setupwindow.cpp:64
 msgid "Setup"
 msgstr ""
 
 #. TRANSLATORS: perfoamance tab quick button
 #. TRANSLATORS: settings tab name
-#: src/client.cpp:814 src/dyetool/client.cpp:474
+#: src/client.cpp:815 src/dyetool/client.cpp:474
 #: src/gui/widgets/tabs/setup_perfomance.cpp:54
 msgid "Performance"
 msgstr ""
 
 #. TRANSLATORS: video tab quick button
 #. TRANSLATORS: video settings tab name
-#: src/client.cpp:817 src/dyetool/client.cpp:477
+#: src/client.cpp:818 src/dyetool/client.cpp:477
 #: src/gui/widgets/tabs/setup_video.cpp:106
 msgid "Video"
 msgstr ""
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: theme settings tab name
-#: src/client.cpp:820 src/dyetool/client.cpp:480
+#: src/client.cpp:821 src/dyetool/client.cpp:480
 #: src/gui/widgets/tabs/setup_theme.cpp:121
 msgid "Theme"
 msgstr ""
 
 #. TRANSLATORS: theme tab quick button
-#: src/client.cpp:823 src/dyetool/client.cpp:483
+#: src/client.cpp:824 src/dyetool/client.cpp:483
 msgid "About"
 msgstr ""
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: help window name
-#: src/client.cpp:826 src/dyetool/client.cpp:486 src/gui/windowmenu.cpp:72
+#: src/client.cpp:827 src/dyetool/client.cpp:486 src/gui/windowmenu.cpp:72
 #: src/gui/windows/helpwindow.cpp:53
 msgid "Help"
 msgstr "సహాయం"
@@ -487,7 +487,7 @@ msgstr "సహాయం"
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: quests window button
 #. TRANSLATORS: shop window button
-#: src/client.cpp:830 src/client.cpp:1389 src/client.cpp:1408
+#: src/client.cpp:831 src/client.cpp:1390 src/client.cpp:1409
 #: src/dyetool/client.cpp:490 src/gui/dialogsmanager.cpp:116
 #: src/gui/popups/popupmenu.cpp:738 src/gui/popups/popupmenu.cpp:979
 #: src/gui/windows/didyouknowwindow.cpp:81
@@ -500,32 +500,32 @@ msgid "Close"
 msgstr ""
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1051 src/gui/windowmanager_unittest.cc:145
+#: src/client.cpp:1052 src/gui/windowmanager_unittest.cc:145
 msgid "Connecting to server"
 msgstr ""
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1097 src/gui/windowmanager_unittest.cc:162
+#: src/client.cpp:1098 src/gui/windowmanager_unittest.cc:162
 msgid "Logging in"
 msgstr ""
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1146
+#: src/client.cpp:1147
 msgid "Entering game world"
 msgstr ""
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1278
+#: src/client.cpp:1279
 msgid "Requesting characters"
 msgstr ""
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1318
+#: src/client.cpp:1319
 msgid "Connecting to the game server"
 msgstr ""
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1330
+#: src/client.cpp:1331
 msgid "Changing game servers"
 msgstr ""
 
@@ -539,52 +539,52 @@ msgstr ""
 #. TRANSLATORS: error header
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: error header
-#: src/client.cpp:1386 src/client.cpp:1405 src/client.cpp:1635
+#: src/client.cpp:1387 src/client.cpp:1406 src/client.cpp:1636
 #: src/gui/windows/changeemaildialog.cpp:166
 #: src/gui/windows/changepassworddialog.cpp:156
-#: src/gui/windows/charcreatedialog.cpp:386
-#: src/gui/windows/charselectdialog.cpp:324
+#: src/gui/windows/charcreatedialog.cpp:387
+#: src/gui/windows/charselectdialog.cpp:325
 #: src/gui/windows/editserverdialog.cpp:211
 #: src/gui/windows/registerdialog.cpp:241
 #: src/gui/windows/unregisterdialog.cpp:146 src/net/ea/charserverrecv.cpp:105
-#: src/net/eathena/charserverrecv.cpp:350
-#: src/net/eathena/charserverrecv.cpp:354
-#: src/net/eathena/charserverrecv.cpp:436 src/net/tmwa/charserverrecv.cpp:278
+#: src/net/eathena/charserverrecv.cpp:351
+#: src/net/eathena/charserverrecv.cpp:355
+#: src/net/eathena/charserverrecv.cpp:437 src/net/tmwa/charserverrecv.cpp:278
 msgid "Error"
 msgstr "పొరపాటు"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1424
+#: src/client.cpp:1425
 msgid "Requesting registration details"
 msgstr ""
 
 #. TRANSLATORS: password change message header
-#: src/client.cpp:1471
+#: src/client.cpp:1472
 msgid "Password Change"
 msgstr ""
 
 #. TRANSLATORS: password change message text
-#: src/client.cpp:1473
+#: src/client.cpp:1474
 msgid "Password changed successfully!"
 msgstr ""
 
 #. TRANSLATORS: email change message header
-#: src/client.cpp:1505
+#: src/client.cpp:1506
 msgid "Email Change"
 msgstr ""
 
 #. TRANSLATORS: email change message text
-#: src/client.cpp:1507
+#: src/client.cpp:1508
 msgid "Email changed successfully!"
 msgstr ""
 
 #. TRANSLATORS: unregister message header
-#: src/client.cpp:1541
+#: src/client.cpp:1542
 msgid "Unregister Successful"
 msgstr ""
 
 #. TRANSLATORS: unregister message text
-#: src/client.cpp:1543
+#: src/client.cpp:1544
 msgid "Farewell, come back any time..."
 msgstr ""
 
@@ -1711,7 +1711,7 @@ msgstr ""
 #: src/gui/popups/popupmenu.cpp:2696 src/gui/windows/buyselldialog.cpp:75
 #: src/gui/windows/changeemaildialog.cpp:56
 #: src/gui/windows/changepassworddialog.cpp:58
-#: src/gui/windows/charcreatedialog.cpp:121
+#: src/gui/windows/charcreatedialog.cpp:122
 #: src/gui/windows/connectiondialog.cpp:52
 #: src/gui/windows/editserverdialog.cpp:58
 #: src/gui/windows/itemamountwindow.cpp:181 src/gui/windows/quitdialog.cpp:68
@@ -1723,19 +1723,19 @@ msgid "Cancel"
 msgstr "రద్దుచేయి"
 
 #. TRANSLATORS: popup label
-#: src/gui/popups/itempopup.cpp:223
+#: src/gui/popups/itempopup.cpp:221
 #, c-format
 msgid "Weight: %s"
 msgstr ""
 
 #. TRANSLATORS: named item description
-#: src/gui/popups/itempopup.cpp:287
+#: src/gui/popups/itempopup.cpp:288
 #, c-format
 msgid "Item named: %s"
 msgstr ""
 
 #. TRANSLATORS: popup label
-#: src/gui/popups/itempopup.cpp:314
+#: src/gui/popups/itempopup.cpp:315
 msgid "Cards: "
 msgstr ""
 
@@ -1952,7 +1952,7 @@ msgstr ""
 #. TRANSLATORS: rename map item
 #. TRANSLATORS: shop window button
 #: src/gui/popups/popupmenu.cpp:360 src/gui/popups/popupmenu.cpp:620
-#: src/gui/windows/charselectdialog.cpp:129 src/gui/windows/shopwindow.cpp:192
+#: src/gui/windows/charselectdialog.cpp:130 src/gui/windows/shopwindow.cpp:192
 msgid "Rename"
 msgstr ""
 
@@ -4327,7 +4327,7 @@ msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:299
-msgid "Enable manamarket bot bot support"
+msgid "Enable manamarket bot support"
 msgstr ""
 
 #. TRANSLATORS: settings group
@@ -4721,7 +4721,7 @@ msgstr ""
 #. TRANSLATORS: command editor button
 #. TRANSLATORS: input action name
 #: src/gui/widgets/tabs/setup_relations.cpp:77
-#: src/gui/windows/charselectdialog.cpp:81 src/gui/windows/mailwindow.cpp:66
+#: src/gui/windows/charselectdialog.cpp:82 src/gui/windows/mailwindow.cpp:66
 #: src/gui/windows/serverdialog.cpp:121 src/gui/windows/shopwindow.cpp:126
 #: src/gui/windows/textcommandeditor.cpp:91 src/input/pages/gui.cpp:109
 msgid "Delete"
@@ -5537,8 +5537,8 @@ msgstr ""
 #. TRANSLATORS: char create dialog button
 #. TRANSLATORS: char select dialog. button.
 #. TRANSLATORS: social window button
-#: src/gui/windows/buydialog.cpp:275 src/gui/windows/charcreatedialog.cpp:119
-#: src/gui/windows/charselectdialog.cpp:636
+#: src/gui/windows/buydialog.cpp:275 src/gui/windows/charcreatedialog.cpp:120
+#: src/gui/windows/charselectdialog.cpp:637
 #: src/gui/windows/socialwindow.cpp:77
 msgid "Create"
 msgstr "సృష్టించు"
@@ -5630,7 +5630,7 @@ msgid "The new password entries mismatch."
 msgstr ""
 
 #. TRANSLATORS: char create dialog name
-#: src/gui/windows/charcreatedialog.cpp:75
+#: src/gui/windows/charcreatedialog.cpp:76
 msgid "New Character"
 msgstr ""
 
@@ -5638,7 +5638,7 @@ msgstr ""
 #. TRANSLATORS: edit server dialog label
 #. TRANSLATORS: login dialog label
 #. TRANSLATORS: register dialog. label.
-#: src/gui/windows/charcreatedialog.cpp:81
+#: src/gui/windows/charcreatedialog.cpp:82
 #: src/gui/windows/editserverdialog.cpp:71 src/gui/windows/logindialog.cpp:105
 #: src/gui/windows/registerdialog.cpp:74
 msgid "Name:"
@@ -5648,11 +5648,11 @@ msgstr "పేరు:"
 #. You may change this symbol if your language uses another.
 #. TRANSLATORS: char create dialog button
 #. TRANSLATORS: outfits window button
-#: src/gui/windows/charcreatedialog.cpp:85
-#: src/gui/windows/charcreatedialog.cpp:94
-#: src/gui/windows/charcreatedialog.cpp:111
-#: src/gui/windows/charcreatedialog.cpp:196
-#: src/gui/windows/charcreatedialog.cpp:206
+#: src/gui/windows/charcreatedialog.cpp:86
+#: src/gui/windows/charcreatedialog.cpp:95
+#: src/gui/windows/charcreatedialog.cpp:112
+#: src/gui/windows/charcreatedialog.cpp:197
+#: src/gui/windows/charcreatedialog.cpp:207
 #: src/gui/windows/outfitwindow.cpp:63
 msgid ">"
 msgstr ""
@@ -5661,75 +5661,75 @@ msgstr ""
 #. You may change this symbol if your language uses another.
 #. TRANSLATORS: char create dialog button
 #. TRANSLATORS: outfits window button
-#: src/gui/windows/charcreatedialog.cpp:89
-#: src/gui/windows/charcreatedialog.cpp:96
-#: src/gui/windows/charcreatedialog.cpp:198
-#: src/gui/windows/charcreatedialog.cpp:208
+#: src/gui/windows/charcreatedialog.cpp:90
+#: src/gui/windows/charcreatedialog.cpp:97
+#: src/gui/windows/charcreatedialog.cpp:199
+#: src/gui/windows/charcreatedialog.cpp:209
 #: src/gui/windows/outfitwindow.cpp:61
 msgid "<"
 msgstr ""
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:91
+#: src/gui/windows/charcreatedialog.cpp:92
 msgid "Hair color:"
 msgstr ""
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:98
+#: src/gui/windows/charcreatedialog.cpp:99
 msgid "Hair style:"
 msgstr ""
 
 #. TRANSLATORS: char create dialog button
-#: src/gui/windows/charcreatedialog.cpp:109
+#: src/gui/windows/charcreatedialog.cpp:110
 msgid "^"
 msgstr ""
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:117
-#: src/gui/windows/charcreatedialog.cpp:509
+#: src/gui/windows/charcreatedialog.cpp:118
+#: src/gui/windows/charcreatedialog.cpp:510
 #, c-format
 msgid "Please distribute %d points"
 msgstr ""
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:200
+#: src/gui/windows/charcreatedialog.cpp:201
 msgid "Race:"
 msgstr ""
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:210
+#: src/gui/windows/charcreatedialog.cpp:211
 msgid "Look:"
 msgstr ""
 
 #. TRANSLATORS: one char size female character gender
 #. TRANSLATORS: here F is title for friends tab in social window
-#: src/gui/windows/charcreatedialog.cpp:224
+#: src/gui/windows/charcreatedialog.cpp:225
 #: src/gui/windows/socialwindow.cpp:73
 msgid "F"
 msgstr ""
 
 #. TRANSLATORS: one char size male character gender
-#: src/gui/windows/charcreatedialog.cpp:226
+#: src/gui/windows/charcreatedialog.cpp:227
 msgid "M"
 msgstr ""
 
 #. TRANSLATORS: one char size unknown character gender
-#: src/gui/windows/charcreatedialog.cpp:228
+#: src/gui/windows/charcreatedialog.cpp:229
 msgid "U"
 msgstr ""
 
 #. TRANSLATORS: char creation error
-#: src/gui/windows/charcreatedialog.cpp:388
+#: src/gui/windows/charcreatedialog.cpp:389
 msgid "Your name needs to be at least 4 characters."
 msgstr "మీ పేరు కనీసం 4 అక్షరాల పొడవుండాలి."
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:499
+#: src/gui/windows/charcreatedialog.cpp:500
 msgid "Character stats OK"
 msgstr ""
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:515
+#: src/gui/windows/charcreatedialog.cpp:516
 #, c-format
 msgid "Please remove %d points"
 msgstr ""
@@ -5745,25 +5745,25 @@ msgid "Are you sure you want to delete this character?"
 msgstr ""
 
 #. TRANSLATORS: char select dialog name
-#: src/gui/windows/charselectdialog.cpp:61
+#: src/gui/windows/charselectdialog.cpp:62
 #, c-format
 msgid "Account %s (last login time %s)"
 msgstr ""
 
 #. TRANSLATORS: char select dialog. button.
-#: src/gui/windows/charselectdialog.cpp:70
+#: src/gui/windows/charselectdialog.cpp:71
 msgid "Switch"
 msgstr ""
 
 #. TRANSLATORS: char select dialog. button.
-#: src/gui/windows/charselectdialog.cpp:72
+#: src/gui/windows/charselectdialog.cpp:73
 msgid "Password"
 msgstr ""
 
 #. TRANSLATORS: char select dialog. button.
 #. TRANSLATORS: updater window button
-#: src/gui/windows/charselectdialog.cpp:77
-#: src/gui/windows/charselectdialog.cpp:626
+#: src/gui/windows/charselectdialog.cpp:78
+#: src/gui/windows/charselectdialog.cpp:627
 #: src/gui/windows/updaterwindow.cpp:191
 msgid "Play"
 msgstr ""
@@ -5772,44 +5772,44 @@ msgstr ""
 #. TRANSLATORS: info message header
 #. TRANSLATORS: info header
 #. TRANSLATORS: info message
-#: src/gui/windows/charselectdialog.cpp:79 src/net/ea/charserverrecv.cpp:130
-#: src/net/eathena/charserverrecv.cpp:373
-#: src/net/eathena/charserverrecv.cpp:409
+#: src/gui/windows/charselectdialog.cpp:80 src/net/ea/charserverrecv.cpp:130
+#: src/net/eathena/charserverrecv.cpp:374
+#: src/net/eathena/charserverrecv.cpp:410
 msgid "Info"
 msgstr ""
 
 #. TRANSLATORS: char select dialog. button.
 #. TRANSLATORS: unregister dialog name
 #. TRANSLATORS: unregister dialog. button.
-#: src/gui/windows/charselectdialog.cpp:107
+#: src/gui/windows/charselectdialog.cpp:108
 #: src/gui/windows/unregisterdialog.cpp:48
 #: src/gui/windows/unregisterdialog.cpp:53
 msgid "Unregister"
 msgstr ""
 
 #. TRANSLATORS: char select dialog. button.
-#: src/gui/windows/charselectdialog.cpp:119
+#: src/gui/windows/charselectdialog.cpp:120
 msgid "Change Email"
 msgstr ""
 
 #. TRANSLATORS: char select dialog name
-#: src/gui/windows/charselectdialog.cpp:163
+#: src/gui/windows/charselectdialog.cpp:164
 #, c-format
 msgid "Account %s"
 msgstr ""
 
 #. TRANSLATORS: pin code dialog header.
-#: src/gui/windows/charselectdialog.cpp:193
+#: src/gui/windows/charselectdialog.cpp:194
 msgid "Please set new pincode"
 msgstr ""
 
 #. TRANSLATORS: character rename dialog header.
-#: src/gui/windows/charselectdialog.cpp:242
+#: src/gui/windows/charselectdialog.cpp:243
 msgid "Please enter new name"
 msgstr ""
 
 #. TRANSLATORS: char select dialog. player info message.
-#: src/gui/windows/charselectdialog.cpp:262
+#: src/gui/windows/charselectdialog.cpp:263
 #, c-format
 msgid ""
 "Hp: %u/%u\n"
@@ -5819,27 +5819,27 @@ msgid ""
 "Money: %s"
 msgstr ""
 
-#: src/gui/windows/charselectdialog.cpp:325
+#: src/gui/windows/charselectdialog.cpp:326
 msgid "Incorrect password"
 msgstr ""
 
 #. TRANSLATORS: char deletion question.
-#: src/gui/windows/charselectdialog.cpp:473
+#: src/gui/windows/charselectdialog.cpp:474
 msgid "Enter your email for deleting character"
 msgstr ""
 
 #. TRANSLATORS: email label.
-#: src/gui/windows/charselectdialog.cpp:475
+#: src/gui/windows/charselectdialog.cpp:476
 msgid "Enter email:"
 msgstr ""
 
 #. TRANSLATORS: char deletion question.
-#: src/gui/windows/charselectdialog.cpp:482
+#: src/gui/windows/charselectdialog.cpp:483
 msgid "Enter password for deleting character"
 msgstr ""
 
 #. TRANSLATORS: email label.
-#: src/gui/windows/charselectdialog.cpp:484
+#: src/gui/windows/charselectdialog.cpp:485
 msgid "Enter password:"
 msgstr ""
 
@@ -8396,33 +8396,33 @@ msgstr ""
 
 #. TRANSLATORS: error message
 #. TRANSLATORS: char rename error
-#: src/net/eathena/charserverrecv.cpp:352
-#: src/net/eathena/charserverrecv.cpp:400
+#: src/net/eathena/charserverrecv.cpp:353
+#: src/net/eathena/charserverrecv.cpp:401
 msgid "Character rename error."
 msgstr ""
 
 #. TRANSLATORS: info message
-#: src/net/eathena/charserverrecv.cpp:375
+#: src/net/eathena/charserverrecv.cpp:376
 msgid "Character renamed."
 msgstr ""
 
 #. TRANSLATORS: char rename error
-#: src/net/eathena/charserverrecv.cpp:391
+#: src/net/eathena/charserverrecv.cpp:392
 msgid "Rename not allowed."
 msgstr ""
 
 #. TRANSLATORS: char rename error
-#: src/net/eathena/charserverrecv.cpp:395
+#: src/net/eathena/charserverrecv.cpp:396
 msgid "New name is not set."
 msgstr ""
 
 #. TRANSLATORS: char rename error
-#: src/net/eathena/charserverrecv.cpp:404
+#: src/net/eathena/charserverrecv.cpp:405
 msgid "Character not found."
 msgstr ""
 
 #. TRANSLATORS: error message
-#: src/net/eathena/charserverrecv.cpp:438 src/net/tmwa/charserverrecv.cpp:280
+#: src/net/eathena/charserverrecv.cpp:439 src/net/tmwa/charserverrecv.cpp:280
 msgid "Failed to delete character."
 msgstr ""
 
