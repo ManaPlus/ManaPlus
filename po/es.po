@@ -9979,12 +9979,12 @@ msgstr ""
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:670
 msgid "Max hp +100%."
-msgstr "HP máximo +100%"
+msgstr "HP máximo +100%."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:674
 msgid "Max sp +100%."
-msgstr "SP máximo +100%"
+msgstr "SP máximo +100%."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:678
