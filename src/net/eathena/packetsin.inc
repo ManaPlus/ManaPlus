@@ -37,6 +37,7 @@ packet(SMSG_BANK_WITHDRAW,                 0x09aa,  16, &BankRecv::processBankWi
 packet(SMSG_BATTLE_BEGINS,                 0x08df,  50, &BattleGroundRecv::processBattleBegins);
 packet(SMSG_BATTLE_CHAT_MESSAGE,           0x02dc,  -1, &ChatRecv::processBattleChatMessage);
 packet(SMSG_BATTLE_EMBLEM,                 0x02dd,  32, &BattleGroundRecv::processBattleEmblem);
+packet(SMSG_BATTLE_EMBLEM2,                0x0b1a,  34, &BattleGroundRecv::processBattleEmblem2);
 packet(SMSG_BATTLE_JOINED,                 0x08d9,  30, &BattleGroundRecv::processBattleJoined);
 packet(SMSG_BATTLE_NOTICE_DELETE,          0x08db,  27, &BattleGroundRecv::processBattleNoticeDelete);
 packet(SMSG_BATTLE_PLAY,                   0x07fe,  26, &BattleGroundRecv::processBattlePlay);

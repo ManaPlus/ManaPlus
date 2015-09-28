@@ -20,7 +20,10 @@
 
 #include "net/eathena/battlegroundrecv.h"
 
+#include "actormanager.h"
 #include "logger.h"
+
+#include "being/being.h"
 
 #include "net/messagein.h"
 
@@ -34,7 +37,20 @@ void BattleGroundRecv::processBattleEmblem(Net::MessageIn &msg)
     UNIMPLIMENTEDPACKET;
     msg.readBeingId("account id");
     msg.readString(24, "name");
-    msg.readInt16("camp");
+    msg.readInt16("bg id");
+}
+
+void BattleGroundRecv::processBattleEmblem2(Net::MessageIn &msg)
+{
+    const BeingId id = msg.readBeingId("account id");
+    msg.readString(24, "name");
+    msg.readInt16("bg id");
+    const int teamId = msg.readInt16("team id");
+
+    Being *const dstBeing = actorManager->findBeing(id);
+    if (dstBeing)
+        dstBeing->setTeamId(teamId);
+
 }
 
 void BattleGroundRecv::processBattleUpdateScore(Net::MessageIn &msg)

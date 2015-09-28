@@ -33,6 +33,7 @@ namespace EAthena
     namespace BattleGroundRecv
     {
         void processBattleEmblem(Net::MessageIn &msg);
+        void processBattleEmblem2(Net::MessageIn &msg);
         void processBattleUpdateScore(Net::MessageIn &msg);
         void processBattleUpdateCoords(Net::MessageIn &msg);
         void processBattlePlay(Net::MessageIn &msg);
