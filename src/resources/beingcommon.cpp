@@ -23,6 +23,8 @@
 #include "configuration.h"
 #include "logger.h"
 
+#include "enums/resources/map/blockmask.h"
+
 #include "utils/files.h"
 
 #include "resources/beinginfo.h"
@@ -50,6 +52,21 @@ void BeingCommon::readBasicAttributes(BeingInfo *const info,
 
     info->setHpBarOffsetX(XML::getProperty(node, "hpBarOffsetX", 0));
     info->setHpBarOffsetY(XML::getProperty(node, "hpBarOffsetY", 0));
+
+    unsigned char block = 0;
+    std::string walkStr = XML::getProperty(
+        node, "walkType", "walk");
+    if (walkStr == "walk")
+        block = BlockMask::WATER | BlockMask::AIR;
+    else if (walkStr == "fly")
+        block = 0;
+    else if (walkStr == "swim")
+        block = BlockMask::GROUND | BlockMask::AIR;
+    else if (walkStr == "walkswim" || walkStr == "swimwalk")
+        block = BlockMask::AIR;
+
+    info->setBlockWalkMask(static_cast<unsigned char>(
+        BlockMask::WALL | block));
 }
 
 void BeingCommon::getIncludeFiles(const std::string &dir,

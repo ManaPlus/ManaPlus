@@ -105,21 +105,6 @@ void MercenaryDB::loadXmlFile(const std::string &fileName)
         currentInfo->setColorsList(XML::getProperty(mercenaryNode,
             "colors", ""));
 
-        unsigned char block = 0;
-        std::string walkStr = XML::getProperty(
-            mercenaryNode, "walkType", "walk");
-        if (walkStr == "walk")
-            block = BlockMask::WATER | BlockMask::AIR;
-        else if (walkStr == "fly")
-            block = 0;
-        else if (walkStr == "swim")
-            block = BlockMask::GROUND | BlockMask::AIR;
-        else if (walkStr == "walkswim" || walkStr == "swimwalk")
-            block = BlockMask::AIR;
-
-        currentInfo->setBlockWalkMask(static_cast<unsigned char>(
-            BlockMask::WALL | block));
-
         if (currentInfo->getMaxHP())
             currentInfo->setStaticMaxHP(true);
 
