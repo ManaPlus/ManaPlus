@@ -53,20 +53,32 @@ void BeingCommon::readBasicAttributes(BeingInfo *const info,
     info->setHpBarOffsetX(XML::getProperty(node, "hpBarOffsetX", 0));
     info->setHpBarOffsetY(XML::getProperty(node, "hpBarOffsetY", 0));
 
-    unsigned char block = 0;
+    unsigned char block = BlockMask::WALL;
     std::string walkStr = XML::getProperty(
         node, "walkType", "walk");
-    if (walkStr == "walk")
-        block = BlockMask::WATER | BlockMask::AIR;
-    else if (walkStr == "fly")
-        block = 0;
-    else if (walkStr == "swim")
-        block = BlockMask::GROUND | BlockMask::AIR;
-    else if (walkStr == "walkswim" || walkStr == "swimwalk")
-        block = BlockMask::AIR;
 
-    info->setBlockWalkMask(static_cast<unsigned char>(
-        BlockMask::WALL | block));
+    const int allFlags = BlockMask::GROUND |
+        BlockMask::WALL |
+        BlockMask::WATER |
+        BlockMask::AIR;
+    StringVect tokens;
+    splitToStringVector(tokens, walkStr, ',');
+    FOR_EACH(StringVectCIter, it, tokens)
+    {
+        if (walkStr == "walk" || walkStr == "ground")
+            block |= BlockMask::GROUND;
+        else if (walkStr == "fly" || walkStr == "air")
+            block |= BlockMask::GROUND | BlockMask::WATER | BlockMask::AIR;
+        else if (walkStr == "all")
+            block |= allFlags;
+        else if (walkStr == "wall")
+            block |= BlockMask::WALL;
+        else if (walkStr == "swim" || walkStr == "water")
+            block |= BlockMask::WATER;
+        else if (walkStr == "walkswim" || walkStr == "swimwalk") // legacy
+            block |= BlockMask::GROUND | BlockMask::WATER;
+    }
+    info->setBlockWalkMask(static_cast<unsigned char>(block ^ allFlags));
 }
 
 void BeingCommon::getIncludeFiles(const std::string &dir,
