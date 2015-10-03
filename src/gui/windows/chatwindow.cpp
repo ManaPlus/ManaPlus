@@ -1629,6 +1629,14 @@ bool ChatWindow::resortChatLog(std::string line,
                     ignoreRecord,
                     tryRemoveColors);
             }
+            else if (localChatTab)
+            {
+                line = line.erase(idx + 2, 2);
+                localChatTab->chatLog(prefix + line,
+                    own,
+                    ignoreRecord,
+                    tryRemoveColors);
+            }
             return false;
         }
     }
