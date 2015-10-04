@@ -820,13 +820,15 @@ void ItemContainer::updateMatrix()
         delete sortedItems[idx];
 }
 
-int ItemContainer::getSlotIndex(const int x, const int y) const
+int ItemContainer::getSlotIndex(int x, int y) const
 {
     if (!mShowMatrix)
         return Inventory::NO_SLOT_INDEX;
 
     if (x < mDimension.width && y < mDimension.height && x >= 0 && y >= 0)
     {
+        if (x > mBoxWidth * mGridColumns)
+            return Inventory::NO_SLOT_INDEX;
         const int idx = (y / mBoxHeight) * mGridColumns + (x / mBoxWidth);
         if (idx >= 0 && idx < mGridRows * mGridColumns
             && mShowMatrix[idx] >= 0)

@@ -171,7 +171,7 @@ class ItemContainer final : public Widget,
          * @param y The Y coordinate position.
          * @return The slot index on success, -1 on failure.
          */
-        int getSlotIndex(const int x, const int y) const;
+        int getSlotIndex(int x, int y) const;
 
         Inventory *mInventory;
         Image *mSelImg;
