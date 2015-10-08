@@ -343,6 +343,9 @@ class ActorManager final: public ConfigListener
 
         void updateBadges();
 
+        size_t size() const
+        { return mActors.size(); }
+
 #ifdef EATHENA_SUPPORT
         void removeRoom(const int chatId);
 

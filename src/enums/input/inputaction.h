@@ -603,6 +603,7 @@ enumStart(InputAction)
     CONG_GET,
     SERVER_CONG_GET,
     CHANGE_TARGETING_TYPE,
+    TEST_INFO,
     TOTAL
 }
 enumEnd(InputAction);

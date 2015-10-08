@@ -105,5 +105,6 @@ impHandlerVoid(protectItem)
 impHandlerVoid(unprotectItem)
 impHandlerVoid(kick)
 impHandlerVoid(clearDrop)
+impHandlerVoid(testInfo)
 
 }  // namespace Actions

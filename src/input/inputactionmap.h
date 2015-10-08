@@ -4496,6 +4496,11 @@ static const InputActionData inputActionData
             | InputCondition::EMODS,
         "",
         UseArgs_false},
+    {"keyTestInfo",
+        defaultAction(&Actions::testInfo),
+        InputCondition::INGAME,
+        "testinfo",
+        UseArgs_false},
 };
 
 #undef defaultAction

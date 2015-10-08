@@ -1640,4 +1640,15 @@ impHandler0(clearDrop)
     return true;
 }
 
+impHandler0(testInfo)
+{
+    if (actorManager)
+    {
+        logger->log("actors count: %d", static_cast<int>(
+            actorManager->size()));
+        return true;
+    }
+    return false;
+}
+
 }  // namespace Actions
