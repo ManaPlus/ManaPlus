@@ -1693,11 +1693,11 @@ void ActorManager::removePickupItem(const std::string &name)
 
 #define addMobToList(name, mob) \
 {\
-    const int size = get##mob##sSize();\
-    if (size > 0)\
+    const int sz = get##mob##sSize();\
+    if (sz > 0)\
     {\
         const int idx = get##mob##Index("");\
-        if (idx + 1 == size)\
+        if (idx + 1 == sz)\
         {\
             std::list<std::string>::iterator itr = m##mob##s.end();\
             -- itr;\
