@@ -24,8 +24,6 @@
 
 #include "logger.h"
 
-#include "enums/resources/map/blockmask.h"
-
 #include "resources/beingcommon.h"
 #include "resources/beinginfo.h"
 

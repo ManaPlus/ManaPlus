@@ -75,7 +75,7 @@ void BeingCommon::readBasicAttributes(BeingInfo *const info,
             block |= BlockMask::WALL;
         else if (walkStr == "swim" || walkStr == "water")
             block |= BlockMask::WATER;
-        else if (walkStr == "walkswim" || walkStr == "swimwalk") // legacy
+        else if (walkStr == "walkswim" || walkStr == "swimwalk")  // legacy
             block |= BlockMask::GROUND | BlockMask::WATER;
     }
     info->setBlockWalkMask(static_cast<unsigned char>(block ^ allFlags));

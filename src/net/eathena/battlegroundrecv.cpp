@@ -50,7 +50,6 @@ void BattleGroundRecv::processBattleEmblem2(Net::MessageIn &msg)
     Being *const dstBeing = actorManager->findBeing(id);
     if (dstBeing)
         dstBeing->setTeamId(teamId);
-
 }
 
 void BattleGroundRecv::processBattleUpdateScore(Net::MessageIn &msg)
