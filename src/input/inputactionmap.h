@@ -2195,7 +2195,8 @@ static const InputActionData inputActionData
         Input::GRP_DEFAULT,
         &Actions::magicAttack,
         InputAction::NO_VALUE, 50,
-        InputCondition::GAME | InputCondition::VALIDSPEED,
+        InputCondition::GAME | InputCondition::NOFOLLOW
+            | InputCondition::VALIDSPEED,
         "magicattack",
         UseArgs_false},
     {"keySwitchMagicAttack",
@@ -2932,7 +2933,8 @@ static const InputActionData inputActionData
         UseArgs_true},
     {"keyAttackHuman",
         defaultAction(&Actions::attackHuman),
-        InputCondition::INGAME,
+        InputCondition::GAME | InputCondition::NOFOLLOW
+            | InputCondition::VALIDSPEED,
         "atkhuman",
         UseArgs_false},
     {"keyOutfit",
