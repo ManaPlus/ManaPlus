@@ -1,3 +1,12 @@
+2015-10-10 New release 1.5.10.10
+fix: moving animation lag in moving (hercules)
+fix: recode buildin sounds to 44100 khz
+fix: show trade messages with disabled trade tab in general tab.
+fix: dont show popup in inventory not on items.
+fix: attack actions on SDL2 builds.
+add: walkType attribute to all beings.
+add: extend walkType attribute to support different types.
+
 2015-09-26 New release 1.5.9.26
 fix: away badge.
 fix: allow set gui opacity to 100% on windows.
