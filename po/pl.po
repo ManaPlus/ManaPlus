@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2015-09-26 14:43+0300\n"
-"PO-Revision-Date: 2015-09-13 08:44+0000\n"
+"POT-Creation-Date: 2015-10-10 13:57+0300\n"
+"PO-Revision-Date: 2015-09-27 08:24+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Polish (http://www.transifex.com/akaras/manaplus/language/"
 "pl/)\n"
@@ -27,7 +27,7 @@ msgstr ""
 "|| n%100>=20) ? 1 : 2);\n"
 
 #. TRANSLATORS: file uploaded message
-#: src/actions/actions.cpp:158
+#: src/actions/actions.cpp:159
 msgid "File uploaded"
 msgstr "Plik wysłano"
 
@@ -40,7 +40,7 @@ msgstr "Plik wysłano"
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: text dialog button
 #. TRANSLATORS: ok dialog button
-#: src/actions/actions.cpp:161 src/client.cpp:1476 src/client.cpp:1510
+#: src/actions/actions.cpp:162 src/client.cpp:1476 src/client.cpp:1510
 #: src/gamemodifiers.cpp:451 src/gui/dialogsmanager.cpp:182
 #: src/gui/dialogsmanager.cpp:202 src/gui/widgets/tabs/setup_input.cpp:164
 #: src/gui/widgets/tabs/setup_theme.cpp:313
@@ -68,40 +68,40 @@ msgstr "Ok"
 
 #. TRANSLATORS: clear graphics command message
 #. TRANSLATORS: clear fonts cache message
-#: src/actions/actions.cpp:1009 src/actions/actions.cpp:1022
+#: src/actions/actions.cpp:1026 src/actions/actions.cpp:1039
 msgid "Cache cleaned"
 msgstr "Cache opróżnione"
 
 #. TRANSLATORS: uptime command
-#: src/actions/actions.cpp:1160 src/actions/actions.cpp:1166
+#: src/actions/actions.cpp:1177 src/actions/actions.cpp:1183
 #, c-format
 msgid "Client uptime: %s"
 msgstr "Czas pracy programu: %s"
 
 #. TRANSLATORS: dump command
-#: src/actions/actions.cpp:1223 src/actions/actions.cpp:1232
+#: src/actions/actions.cpp:1240 src/actions/actions.cpp:1249
 msgid "Resource images:"
 msgstr "Obrazy źródłowe:"
 
 #. TRANSLATORS: dump command
-#: src/actions/actions.cpp:1226 src/actions/actions.cpp:1236
+#: src/actions/actions.cpp:1243 src/actions/actions.cpp:1253
 msgid "Resource orphaned images:"
 msgstr "Osierocone obrazy źródłowe:"
 
 #. TRANSLATORS: dump environment command
-#: src/actions/actions.cpp:1327
+#: src/actions/actions.cpp:1344
 msgid "Environment variables dumped"
 msgstr "Zmienne środowiskowe zostały zrzucone"
 
-#: src/actions/actions.cpp:1439
+#: src/actions/actions.cpp:1456
 msgid "Uploaded config into:"
 msgstr "Załaduj ustawienia do:"
 
-#: src/actions/actions.cpp:1448
+#: src/actions/actions.cpp:1465
 msgid "Uploaded server config into:"
 msgstr "Załaduj ustawienia serwera do:"
 
-#: src/actions/actions.cpp:1457
+#: src/actions/actions.cpp:1474
 msgid "Uploaded log into:"
 msgstr "Załaduj log do:"
 
@@ -763,7 +763,7 @@ msgid "dyecmd srcdyestring dstfile"
 msgstr "dyecmd srcdyestring dstfile"
 
 #. TRANSLATORS: chat tab header
-#: src/game.cpp:253 src/gui/windows/chatwindow.cpp:2189
+#: src/game.cpp:253 src/gui/windows/chatwindow.cpp:2197
 msgid "General"
 msgstr "Ogólny"
 
@@ -5920,7 +5920,7 @@ msgid "Broken nick detected: "
 msgstr ""
 
 #. TRANSLATORS: owners pet name. For example: 4144's pet
-#: src/gui/windows/chatwindow.cpp:1755 src/net/eathena/petrecv.cpp:67
+#: src/gui/windows/chatwindow.cpp:1763 src/net/eathena/petrecv.cpp:67
 #, c-format
 msgid "%s's pet"
 msgstr "zwierzątko gracza %s's"
@@ -7073,26 +7073,29 @@ msgstr "Wybierz świat"
 
 #. TRANSLATORS: long key name. must be short.
 #. TRANSLATORS: short key name. must be very short.
+#. TRANSLATORS: long key name. must be short.
+#. TRANSLATORS: short key name. must be very short.
 #. TRANSLATORS: long key name, should be short
 #: src/input/inputmanager.cpp:378 src/input/inputmanager.cpp:422
+#: src/input/inputmanager.cpp-orig:378 src/input/inputmanager.cpp-orig:422
 #: src/input/keyboardconfig.cpp:102
 #, c-format
 msgid "key_%d"
 msgstr "key_%d"
 
 #. TRANSLATORS: long joystick button name. must be short.
-#: src/input/inputmanager.cpp:384
+#: src/input/inputmanager.cpp:384 src/input/inputmanager.cpp-orig:384
 #, c-format
 msgid "JButton%d"
 msgstr "JButton%d"
 
 #. TRANSLATORS: unknown long key type
-#: src/input/inputmanager.cpp:398
+#: src/input/inputmanager.cpp:398 src/input/inputmanager.cpp-orig:398
 msgid "unknown key"
 msgstr "nieznany klawisz"
 
 #. TRANSLATORS: short joystick button name. muse be very short
-#: src/input/inputmanager.cpp:428
+#: src/input/inputmanager.cpp:428 src/input/inputmanager.cpp-orig:428
 #, c-format
 msgid "JB%d"
 msgstr "JB%d"
@@ -7100,7 +7103,8 @@ msgstr "JB%d"
 #. TRANSLATORS: unknown short key type. must be short
 #. TRANSLATORS: Unknown key short string.
 #. TRANSLATORS: This string must be maximum 5 chars
-#: src/input/inputmanager.cpp:442 src/input/keyboardconfig.cpp:146
+#: src/input/inputmanager.cpp:442 src/input/inputmanager.cpp-orig:442
+#: src/input/keyboardconfig.cpp:146
 msgid "u key"
 msgstr "(nieznany)"
 
@@ -8994,7 +8998,7 @@ msgstr "Nowoczesny OpenGL"
 #. TRANSLATORS: being info default name
 #: src/resources/beinginfo.cpp:50 src/resources/db/avatardb.cpp:89
 #: src/resources/db/itemdb.cpp:382 src/resources/db/moddb.cpp:78
-#: src/resources/db/monsterdb.cpp:103 src/resources/modinfo.cpp:29
+#: src/resources/db/monsterdb.cpp:101 src/resources/modinfo.cpp:29
 msgid "unnamed"
 msgstr "nienazwany"
 
