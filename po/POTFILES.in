@@ -126,7 +126,6 @@ src/gui/windows/updaterwindow.cpp
 src/gui/windows/whoisonline.cpp
 src/gui/windows/worldselectdialog.cpp
 src/input/inputmanager.cpp
-src/input/inputmanager.cpp-orig
 src/input/keyboardconfig.cpp
 src/input/pages/basic.cpp
 src/input/pages/chat.cpp

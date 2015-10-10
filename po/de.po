@@ -33,7 +33,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2015-10-10 13:57+0300\n"
+"POT-Creation-Date: 2015-10-10 15:04+0300\n"
 "PO-Revision-Date: 2015-09-27 09:40+0000\n"
 "Last-Translator: Suni <kristin.joris@gmail.com>\n"
 "Language-Team: German (http://www.transifex.com/akaras/manaplus/language/"
@@ -7238,29 +7238,26 @@ msgstr "Welt auswählen"
 
 #. TRANSLATORS: long key name. must be short.
 #. TRANSLATORS: short key name. must be very short.
-#. TRANSLATORS: long key name. must be short.
-#. TRANSLATORS: short key name. must be very short.
 #. TRANSLATORS: long key name, should be short
 #: src/input/inputmanager.cpp:378 src/input/inputmanager.cpp:422
-#: src/input/inputmanager.cpp-orig:378 src/input/inputmanager.cpp-orig:422
 #: src/input/keyboardconfig.cpp:102
 #, c-format
 msgid "key_%d"
 msgstr "Taste_%d"
 
 #. TRANSLATORS: long joystick button name. must be short.
-#: src/input/inputmanager.cpp:384 src/input/inputmanager.cpp-orig:384
+#: src/input/inputmanager.cpp:384
 #, c-format
 msgid "JButton%d"
 msgstr "JKnopf%d"
 
 #. TRANSLATORS: unknown long key type
-#: src/input/inputmanager.cpp:398 src/input/inputmanager.cpp-orig:398
+#: src/input/inputmanager.cpp:398
 msgid "unknown key"
 msgstr "Unbekannte Taste"
 
 #. TRANSLATORS: short joystick button name. muse be very short
-#: src/input/inputmanager.cpp:428 src/input/inputmanager.cpp-orig:428
+#: src/input/inputmanager.cpp:428
 #, c-format
 msgid "JB%d"
 msgstr "JK%d"
@@ -7268,8 +7265,7 @@ msgstr "JK%d"
 #. TRANSLATORS: unknown short key type. must be short
 #. TRANSLATORS: Unknown key short string.
 #. TRANSLATORS: This string must be maximum 5 chars
-#: src/input/inputmanager.cpp:442 src/input/inputmanager.cpp-orig:442
-#: src/input/keyboardconfig.cpp:146
+#: src/input/inputmanager.cpp:442 src/input/keyboardconfig.cpp:146
 msgid "u key"
 msgstr "UTaste"
 
