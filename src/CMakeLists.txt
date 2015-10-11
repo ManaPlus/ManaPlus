@@ -1136,6 +1136,7 @@ SET(SRCS
     textmanager.h
     particle/textparticle.cpp
     particle/textparticle.h
+    resources/map/tileinfo.h
     resources/map/tileset.h
     touchactions.cpp
     touchactions.h

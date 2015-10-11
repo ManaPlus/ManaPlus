@@ -1143,6 +1143,7 @@ manaplus_SOURCES += main.cpp \
 	      resources/map/speciallayer.h \
 	      resources/map/tileanimation.cpp \
 	      resources/map/tileanimation.h \
+	      resources/map/tileinfo.h \
 	      resources/map/tileset.h \
 	      resources/map/walklayer.cpp \
 	      resources/map/walklayer.h \

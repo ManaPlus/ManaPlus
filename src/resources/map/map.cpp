@@ -1405,7 +1405,7 @@ void Map::reduce()
                 if (x >= layer->mWidth || y >= layer->mHeight)
                     continue;
 
-                Image *const img = layer->mTiles[x + y * layer->mWidth];
+                Image *const img = layer->mTiles[x + y * layer->mWidth].image;
                 if (img)
                 {
                     if (img->hasAlphaChannel() && img->isAlphaCalculated())
@@ -1487,7 +1487,7 @@ void Map::reduce()
                     continue;
                 }
 
-                const Image *img = layer->mTiles[x + y * layer->mWidth];
+                const Image *img = layer->mTiles[x + y * layer->mWidth].image;
                 if (img && !img->isAlphaVisible())
                 {   // removing all down tiles
                     ++ ri;
@@ -1496,10 +1496,10 @@ void Map::reduce()
                         MapLayer *const layer2 = *ri;
                         const size_t pos = static_cast<size_t>(
                             x + y * layer2->mWidth);
-                        img = layer2->mTiles[pos];
+                        img = layer2->mTiles[pos].image;
                         if (img)
                         {
-                            layer2->mTiles[pos] = nullptr;
+                            layer2->mTiles[pos].image = nullptr;
                             cnt ++;
                         }
                         ++ ri;

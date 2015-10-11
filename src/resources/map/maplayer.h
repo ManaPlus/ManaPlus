@@ -29,6 +29,8 @@
 
 #include "enums/resources/map/maptype.h"
 
+#include "resources/map/tileinfo.h"
+
 #include <vector>
 
 class Image;
@@ -76,7 +78,7 @@ class MapLayer final: public ConfigListener
          * Set tile image with x + y * width already known.
          */
         void setTile(const int index, Image *const img)
-        { mTiles[index] = img; }
+        { mTiles[index].image = img; }
 
         /**
          * Draws this layer to the given graphics context. The coordinates are
@@ -157,7 +159,7 @@ class MapLayer final: public ConfigListener
         const int mY;
         const int mWidth;
         const int mHeight;
-        Image **const mTiles;
+        TileInfo *const mTiles;
         MapTypeT mDrawLayerFlags;
         const SpecialLayer *mSpecialLayer;
         const SpecialLayer *mTempLayer;

@@ -52,7 +52,7 @@ MapLayer::MapLayer(const int x, const int y,
     mY(y),
     mWidth(width),
     mHeight(height),
-    mTiles(new Image*[mWidth * mHeight]),
+    mTiles(new TileInfo[mWidth * mHeight]),
     mDrawLayerFlags(MapType::NORMAL),
     mSpecialLayer(nullptr),
     mTempLayer(nullptr),
@@ -63,7 +63,7 @@ MapLayer::MapLayer(const int x, const int y,
     mHighlightAttackRange(config.getBoolValue("highlightAttackRange")),
     mSpecialFlag(true)
 {
-    std::fill_n(mTiles, mWidth * mHeight, static_cast<Image*>(nullptr));
+//    std::fill_n(mTiles, mWidth * mHeight, static_cast<Image*>(nullptr));
 
     config.addListener("highlightAttackRange", this);
 }
@@ -72,7 +72,10 @@ MapLayer::~MapLayer()
 {
     config.removeListener("highlightAttackRange", this);
     CHECKLISTENERS
-    delete [] mTiles;
+//    const int sz = mWidth * mHeight;
+//    for (int f = 0; f < sz; f ++)
+//        delete mTiles[f].image;
+    delete []mTiles;
     delete_all(mTempRows);
     mTempRows.clear();
 }
@@ -88,7 +91,7 @@ void MapLayer::optionChanged(const std::string &value)
 
 void MapLayer::setTile(const int x, const int y, Image *const img)
 {
-    mTiles[x + y * mWidth] = img;
+    mTiles[x + y * mWidth].image = img;
 }
 
 void MapLayer::draw(Graphics *const graphics,
@@ -123,14 +126,14 @@ void MapLayer::draw(Graphics *const graphics,
 
         const int py0 = y32 + dy;
 
-        Image **tilePtr = mTiles + static_cast<size_t>(startX + yWidth);
+        TileInfo *tilePtr = &mTiles[static_cast<size_t>(startX + yWidth)];
 
         for (int x = startX; x < endX; x++, tilePtr++)
         {
             const int x32 = x * mapTileSize;
 
             int c = 0;
-            const Image *const img = *tilePtr;
+            const Image *const img = (*tilePtr).image;
             if (img)
             {
                 const int px = x32 + dx;
@@ -216,11 +219,11 @@ void MapLayer::updateSDL(const Graphics *const graphics,
 
         const int yWidth = y * mWidth;
         const int py0 = y * mapTileSize + dy;
-        Image **tilePtr = mTiles + static_cast<size_t>(startX + yWidth);
+        TileInfo *tilePtr = &mTiles[static_cast<size_t>(startX + yWidth)];
 
         for (int x = startX; x < endX; x++, tilePtr++)
         {
-            Image *const img = *tilePtr;
+            Image *const img = (*tilePtr).image;
             if (img)
             {
                 const int px = x * mapTileSize + dx;
@@ -279,10 +282,10 @@ void MapLayer::updateOGL(Graphics *const graphics,
     {
         const int yWidth = y * mWidth;
         const int py0 = y * mapTileSize + dy;
-        Image **tilePtr = mTiles + static_cast<size_t>(startX + yWidth);
+        TileInfo *tilePtr = &mTiles[static_cast<size_t>(startX + yWidth)];
         for (int x = startX; x < endX; x++, tilePtr++)
         {
-            Image *const img = *tilePtr;
+            Image *const img = (*tilePtr).image;
             if (img)
             {
                 const int px = x * mapTileSize + dx;
@@ -480,14 +483,14 @@ void MapLayer::drawFringe(Graphics *const graphics,
             const int py0 = y32 + dy;
             const int py1 = y32 - scrollY;
 
-            Image **tilePtr = mTiles + static_cast<size_t>(startX + yWidth);
+            TileInfo *tilePtr = &mTiles[static_cast<size_t>(startX + yWidth)];
             for (int x = startX; x < endX; x++, tilePtr++)
             {
                 const int x32 = x * mapTileSize;
 
                 const int px1 = x32 - scrollX;
                 int c = 0;
-                const Image *const img = *tilePtr;
+                const Image *const img = (*tilePtr).image;
                 if (img)
                 {
                     if (mSpecialFlag || img->mBounds.h <= mapTileSize)
@@ -565,11 +568,11 @@ void MapLayer::drawFringe(Graphics *const graphics,
 
             const int py0 = y32 + dy;
 
-            Image **tilePtr = mTiles + static_cast<size_t>(startX + yWidth);
+            TileInfo *tilePtr = &mTiles[static_cast<size_t>(startX + yWidth)];
             for (int x = startX; x < endX; x++, tilePtr++)
             {
                 const int x32 = x * mapTileSize;
-                const Image *const img = *tilePtr;
+                const Image *const img = (*tilePtr).image;
                 if (img)
                 {
                     const int px = x32 + dx;
