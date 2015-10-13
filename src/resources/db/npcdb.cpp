@@ -109,6 +109,9 @@ void NPCDB::loadXmlFile(const std::string &fileName)
         currentInfo->setAvatarId(fromInt(XML::getProperty(
             npcNode, "avatar", 0), BeingTypeId));
 
+        currentInfo->setAllowDelete(XML::getBoolProperty(npcNode,
+            "allowDelete", true));
+
         SpriteDisplay display;
         for_each_xml_child_node(spriteNode, npcNode)
         {

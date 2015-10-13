@@ -311,6 +311,12 @@ class BeingInfo final
         int getAttackDirectionType() const A_WARN_UNUSED
         { return mAttackDirectionType; }
 
+        void setAllowDelete(const bool b)
+        { mAllowDelete = b; }
+
+        int getAllowDelete() const A_WARN_UNUSED
+        { return mAllowDelete; }
+
         void setColorsList(const std::string &name);
 
         std::string getColor(const ItemColor idx) const A_WARN_UNUSED;
@@ -365,6 +371,7 @@ class BeingInfo final
         int mAttackDirectionType;
         bool mStaticMaxHP;
         bool mTargetSelection;
+        bool mAllowDelete;
 };
 
 typedef std::map<BeingTypeId, BeingInfo*> BeingInfos;

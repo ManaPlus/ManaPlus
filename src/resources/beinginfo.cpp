@@ -90,7 +90,8 @@ BeingInfo::BeingInfo() :
     mDeadDirectionType(1),
     mAttackDirectionType(1),
     mStaticMaxHP(false),
-    mTargetSelection(true)
+    mTargetSelection(true),
+    mAllowDelete(true)
 {
     SpriteDisplay display;
     display.sprites.push_back(SpriteReference::Empty);

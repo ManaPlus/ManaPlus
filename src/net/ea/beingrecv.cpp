@@ -64,6 +64,7 @@ void BeingRecv::processBeingRemove(Net::MessageIn &msg)
     // A being should be removed or has died
 
     const BeingId id = msg.readBeingId("being id");
+    const uint8_t type = msg.readUInt8("remove flag");
     Being *const dstBeing = actorManager->findBeing(id);
     if (!dstBeing)
     {
@@ -79,13 +80,19 @@ void BeingRecv::processBeingRemove(Net::MessageIn &msg)
     if (dstBeing == localPlayer->getTarget())
         localPlayer->stopAttack(true);
 
-    if (msg.readUInt8("dead flag?") == 1U)
+    if (type == 1U)
     {
         if (dstBeing->getCurrentAction() != BeingAction::DEAD)
         {
             dstBeing->setAction(BeingAction::DEAD, 0);
             dstBeing->recalcSpritesOrder();
         }
+    }
+    else if (type == 0U && dstBeing->getType() == ActorType::Npc)
+    {
+        const BeingInfo *const info = dstBeing->getInfo();
+        if (!info || info->getAllowDelete())
+            actorManager->destroy(dstBeing);
     }
     else
     {
