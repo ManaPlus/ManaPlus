@@ -383,6 +383,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("showBadges", 1);
     AddDEF("tradescreenshot", false);
     AddDEF("skillAutotarget", true);
+    AddDEF("logPlayerActions", false);
     return configData;
 }
 

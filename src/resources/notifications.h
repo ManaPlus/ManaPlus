@@ -771,6 +771,26 @@ namespace NotifyManager
         {"delete item dropped",
             "",
             NotifyFlags::STRING},
+        {"being remove died",
+            // TRANSLATORS: notification message
+            N_("Player %s died."),
+            NotifyFlags::STRING},
+        {"being remove logged out",
+            // TRANSLATORS: notification message
+            N_("Player %s logged out."),
+            NotifyFlags::STRING},
+        {"being remove warped",
+            // TRANSLATORS: notification message
+            N_("Player %s warped."),
+            NotifyFlags::STRING},
+        {"being remove trick dead",
+            // TRANSLATORS: notification message
+            N_("Player %s trick dead."),
+            NotifyFlags::STRING},
+        {"being remove unknown",
+            // TRANSLATORS: notification message
+            N_("Player %s unknown remove."),
+            NotifyFlags::STRING},
     };
 }  // namespace NotifyManager
 #endif  // RESOURCES_NOTIFICATIONS_H

@@ -23,12 +23,16 @@
 #include "net/ea/beingrecv.h"
 
 #include "actormanager.h"
+#include "configuration.h"
 #include "game.h"
+#include "notifymanager.h"
 #include "party.h"
 
 #include "being/localplayer.h"
 #include "being/playerrelation.h"
 #include "being/playerrelations.h"
+
+#include "enums/resources/notifytypes.h"
 
 #include "enums/resources/map/mapitemtype.h"
 
@@ -100,6 +104,40 @@ void BeingRecv::processBeingRemove(Net::MessageIn &msg)
         {
             if (socialWindow)
                 socialWindow->updateActiveList();
+            const std::string name = dstBeing->getName();
+            if (!name.empty() && config.getBoolValue("logPlayerActions"))
+            {
+                switch (type)
+                {
+                    case 0:
+                        break;
+                    case 1:
+                        NotifyManager::notify(
+                            NotifyTypes::BEING_REMOVE_DIED,
+                            name);
+                        break;
+                    case 2:
+                        NotifyManager::notify(
+                            NotifyTypes::BEING_REMOVE_LOGGED_OUT,
+                            name);
+                        break;
+                    case 3:
+                        NotifyManager::notify(
+                            NotifyTypes::BEING_REMOVE_WARPED,
+                            name);
+                        break;
+                    case 4:
+                        NotifyManager::notify(
+                            NotifyTypes::BEING_REMOVE_TRICK_DEAD,
+                            name);
+                        break;
+                    default:
+                        NotifyManager::notify(
+                            NotifyTypes::BEING_REMOVE_UNKNOWN,
+                            name);
+                        break;
+                }
+            }
         }
         actorManager->destroy(dstBeing);
     }

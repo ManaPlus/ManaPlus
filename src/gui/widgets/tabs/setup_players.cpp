@@ -125,6 +125,10 @@ Setup_Players::Setup_Players(const Widget2 *const widget) :
         "", "useDiagonalSpeed", this, "useDiagonalSpeedEvent");
 
     // TRANSLATORS: settings option
+    new SetupItemCheckBox(_("Log players actions (for GM)"),
+        "", "logPlayerActions", this, "logPlayerActionsEvent");
+
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Create screenshots for each complete trades"),
         "", "tradescreenshot", this, "tradescreenshotEvent");
 
