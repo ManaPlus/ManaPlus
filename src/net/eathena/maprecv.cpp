@@ -69,7 +69,7 @@ void MapRecv::processSetTilesType(Net::MessageIn &msg)
     const int y1 = msg.readInt16("y1");
     const int x2 = msg.readInt16("x2");
     const int y2 = msg.readInt16("y2");
-    const BlockTypeT mask = fromInt(msg.readInt32("mask"), BlockType);
+    const BlockTypeT mask = static_cast<BlockTypeT>(msg.readInt32("mask"));
     const std::string name = msg.readString(16, "map name");
 
     Map *const map = viewport->getMap();
