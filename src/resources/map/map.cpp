@@ -680,7 +680,7 @@ const Tileset *Map::getTilesetWithGid(const int gid) const
 }
 
 void Map::addBlockMask(const int x, const int y,
-                    const BlockTypeT type)
+                       const BlockTypeT type)
 {
     if (type == BlockType::NONE || !contains(x, y))
         return;
@@ -703,6 +703,39 @@ void Map::addBlockMask(const int x, const int y,
             break;
         case BlockType::GROUNDTOP:
             mMetaTiles[tileNum].blockmask |= BlockMask::GROUNDTOP;
+            break;
+        default:
+        case BlockType::NONE:
+        case BlockType::NB_BLOCKTYPES:
+            // Do nothing.
+            break;
+    }
+}
+
+void Map::setBlockMask(const int x, const int y,
+                       const BlockTypeT type)
+{
+    if (type == BlockType::NONE || !contains(x, y))
+        return;
+
+    const int tileNum = x + y * mWidth;
+
+    switch (type)
+    {
+        case BlockType::WALL:
+            mMetaTiles[tileNum].blockmask = BlockMask::WALL;
+            break;
+        case BlockType::AIR:
+            mMetaTiles[tileNum].blockmask = BlockMask::AIR;
+            break;
+        case BlockType::WATER:
+            mMetaTiles[tileNum].blockmask = BlockMask::WATER;
+            break;
+        case BlockType::GROUND:
+            mMetaTiles[tileNum].blockmask = BlockMask::GROUND;
+            break;
+        case BlockType::GROUNDTOP:
+            mMetaTiles[tileNum].blockmask = BlockMask::GROUNDTOP;
             break;
         default:
         case BlockType::NONE:
@@ -779,6 +812,14 @@ const std::string Map::getFilename() const
     const std::string fileName = getProperty("_filename");
     const size_t lastSlash = fileName.rfind("/") + 1;
     return fileName.substr(lastSlash, fileName.rfind(".") - lastSlash);
+}
+
+const std::string Map::getGatName() const
+{
+    const std::string fileName = getProperty("_filename");
+    const size_t lastSlash = fileName.rfind("/") + 1;
+    return fileName.substr(lastSlash,
+        fileName.rfind(".") - lastSlash).append(".gat");
 }
 
 Path Map::findPath(const int startX, const int startY,

@@ -142,10 +142,10 @@ class Map final : public Properties, public ConfigListener
         const MetaTile *getMetaTile(const int x,
                                     const int y) const A_WARN_UNUSED;
 
-        /**
-         * Marks a tile as occupied.
-         */
         void addBlockMask(const int x, const int y,
+                          const BlockTypeT type);
+
+        void setBlockMask(const int x, const int y,
                           const BlockTypeT type);
 
         /**
@@ -194,6 +194,8 @@ class Map final : public Properties, public ConfigListener
          * Gives the map id based on filepath (ex: 009-1)
          */
         const std::string getFilename() const A_WARN_UNUSED;
+
+        const std::string getGatName() const A_WARN_UNUSED;
 
         /**
          * Find a path from one location to the next.

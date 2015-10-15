@@ -22,7 +22,13 @@
 
 #include "logger.h"
 
+#include "enums/resources/map/blocktype.h"
+
+#include "gui/viewport.h"
+
 #include "net/messagein.h"
+
+#include "resources/map/map.h"
 
 #include "debug.h"
 
@@ -59,13 +65,26 @@ void MapRecv::processInstanceDelete(Net::MessageIn &msg)
 
 void MapRecv::processSetTilesType(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
-    msg.readInt16("x1");
-    msg.readInt16("y1");
-    msg.readInt16("x2");
-    msg.readInt16("y2");
-    msg.readInt32("mask");
-    msg.readString(16, "map name");
+    const int x1 = msg.readInt16("x1");
+    const int y1 = msg.readInt16("y1");
+    const int x2 = msg.readInt16("x2");
+    const int y2 = msg.readInt16("y2");
+    const BlockType mask = fromInt(msg.readInt32("mask"), BlockType);
+    const std::string name = msg.readString(16, "map name");
+
+    Map *const map = viewport->getMap();
+//    logger->log("map test name: %s, mask %d", map->getGatName().c_str(), (int)mask);
+    if (map && map->getGatName() == name)
+    {
+        for (int y = y1; y <= y2; y ++)
+        {
+            for (int x = x1; x <= x2; x ++)
+            {
+                logger->log("set col %d,%d", x, y);
+                map->setBlockMask(x, y, mask);
+            }
+        }
+    }
 }
 
 }  // namespace EAthena
