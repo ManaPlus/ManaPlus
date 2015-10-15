@@ -147,14 +147,6 @@ Map::Map(const int width, const int height,
     mCustom(false),
     mDrawOnlyFringe(false)
 {
-    const int size = mWidth * mHeight;
-    for (size_t i = 0; i < static_cast<size_t>(BlockType::NB_BLOCKTYPES); i++)
-    {
-        mOccupation[i] = new unsigned[static_cast<size_t>(size)];
-        memset(mOccupation[i], 0, static_cast<size_t>(size)
-            * sizeof(unsigned));
-    }
-
     config.addListener("OverlayDetail", this);
     config.addListener("guialpha", this);
     config.addListener("beingopacity", this);
@@ -171,8 +163,6 @@ Map::~Map()
     CHECKLISTENERS
 
     delete [] mMetaTiles;
-    for (size_t i = 0; i < static_cast<size_t>(BlockType::NB_BLOCKTYPES); i++)
-        delete [] mOccupation[i];
 
     if (mWalkLayer)
     {
@@ -697,38 +687,34 @@ void Map::blockTile(const int x, const int y,
 
     const int tileNum = x + y * mWidth;
 
-    if (mOccupation[static_cast<size_t>(type)][tileNum] < UINT_MAX &&
-        (++mOccupation[static_cast<size_t>(type)][tileNum]) > 0)
+    switch (type)
     {
-        switch (type)
-        {
-            case BlockType::WALL:
-                mMetaTiles[tileNum].blockmask |= BlockMask::WALL;
-                break;
-            case BlockType::CHARACTER:
-                mMetaTiles[tileNum].blockmask |= BlockMask::CHARACTER;
-                break;
-            case BlockType::MONSTER:
-                mMetaTiles[tileNum].blockmask |= BlockMask::MONSTER;
-                break;
-            case BlockType::AIR:
-                mMetaTiles[tileNum].blockmask |= BlockMask::AIR;
-                break;
-            case BlockType::WATER:
-                mMetaTiles[tileNum].blockmask |= BlockMask::WATER;
-                break;
-            case BlockType::GROUND:
-                mMetaTiles[tileNum].blockmask |= BlockMask::GROUND;
-                break;
-            case BlockType::GROUNDTOP:
-                mMetaTiles[tileNum].blockmask |= BlockMask::GROUNDTOP;
-                break;
-            default:
-            case BlockType::NONE:
-            case BlockType::NB_BLOCKTYPES:
-                // Do nothing.
-                break;
-        }
+        case BlockType::WALL:
+            mMetaTiles[tileNum].blockmask |= BlockMask::WALL;
+            break;
+        case BlockType::CHARACTER:
+            mMetaTiles[tileNum].blockmask |= BlockMask::CHARACTER;
+            break;
+        case BlockType::MONSTER:
+            mMetaTiles[tileNum].blockmask |= BlockMask::MONSTER;
+            break;
+        case BlockType::AIR:
+            mMetaTiles[tileNum].blockmask |= BlockMask::AIR;
+            break;
+        case BlockType::WATER:
+            mMetaTiles[tileNum].blockmask |= BlockMask::WATER;
+            break;
+        case BlockType::GROUND:
+            mMetaTiles[tileNum].blockmask |= BlockMask::GROUND;
+            break;
+        case BlockType::GROUNDTOP:
+            mMetaTiles[tileNum].blockmask |= BlockMask::GROUNDTOP;
+            break;
+        default:
+        case BlockType::NONE:
+        case BlockType::NB_BLOCKTYPES:
+            // Do nothing.
+            break;
     }
 }
 

@@ -375,11 +375,6 @@ class Map final : public Properties, public ConfigListener
          */
         bool contains(const int x, const int y) const A_WARN_UNUSED;
 
-        /**
-         * Blockmasks for different entities
-         */
-        unsigned *mOccupation[static_cast<size_t>(BlockType::NB_BLOCKTYPES)];
-
         const int mWidth;
         const int mHeight;
         const int mTileWidth;
