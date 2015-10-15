@@ -526,19 +526,19 @@ inline static void setTile(Map *const map,
                     switch (gid - set->getFirstGid())
                     {
                         case Map::COLLISION_EMPTY:
-                            map->blockTile(x, y, BlockType::GROUND);
+                            map->addBlockMask(x, y, BlockType::GROUND);
                             break;
                         case Map::COLLISION_WALL:
-                            map->blockTile(x, y, BlockType::WALL);
+                            map->addBlockMask(x, y, BlockType::WALL);
                             break;
                         case Map::COLLISION_AIR:
-                            map->blockTile(x, y, BlockType::AIR);
+                            map->addBlockMask(x, y, BlockType::AIR);
                             break;
                         case Map::COLLISION_WATER:
-                            map->blockTile(x, y, BlockType::WATER);
+                            map->addBlockMask(x, y, BlockType::WATER);
                             break;
                         case Map::COLLISION_GROUNDTOP:
-                            map->blockTile(x, y, BlockType::GROUNDTOP);
+                            map->addBlockMask(x, y, BlockType::GROUNDTOP);
                             break;
                         default:
                             break;
@@ -547,7 +547,7 @@ inline static void setTile(Map *const map,
                 else
                 {
                     if (gid - set->getFirstGid() != 0)
-                        map->blockTile(x, y, BlockType::WALL);
+                        map->addBlockMask(x, y, BlockType::WALL);
                 }
             }
             break;

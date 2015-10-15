@@ -679,7 +679,7 @@ const Tileset *Map::getTilesetWithGid(const int gid) const
         return nullptr;
 }
 
-void Map::blockTile(const int x, const int y,
+void Map::addBlockMask(const int x, const int y,
                     const BlockTypeT type)
 {
     if (type == BlockType::NONE || !contains(x, y))
@@ -735,7 +735,7 @@ unsigned char Map::getBlockMask(const int x, const int y) const
 
 void Map::setWalk(const int x, const int y)
 {
-    blockTile(x, y, BlockType::GROUNDTOP);
+    addBlockMask(x, y, BlockType::GROUNDTOP);
 }
 
 bool Map::contains(const int x, const int y) const

@@ -145,8 +145,8 @@ class Map final : public Properties, public ConfigListener
         /**
          * Marks a tile as occupied.
          */
-        void blockTile(const int x, const int y,
-                       const BlockTypeT type);
+        void addBlockMask(const int x, const int y,
+                          const BlockTypeT type);
 
         /**
          * Gets walkability for a tile with a blocking bitmask. When called
