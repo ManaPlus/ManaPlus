@@ -156,7 +156,7 @@ class Map final : public Properties, public ConfigListener
                      const unsigned char blockWalkMask = BlockMask::WALL
                      | BlockMask::AIR | BlockMask::WATER) const A_WARN_UNUSED;
 
-        void setWalk(const int x, const int y, const bool walkable);
+        void setWalk(const int x, const int y);
 
         unsigned char getBlockMask(const int x, const int y) const;
 

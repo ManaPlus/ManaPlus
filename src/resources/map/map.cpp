@@ -733,7 +733,7 @@ unsigned char Map::getBlockMask(const int x, const int y) const
     return mMetaTiles[x + y * mWidth].blockmask;
 }
 
-void Map::setWalk(const int x, const int y, const bool walkable A_UNUSED)
+void Map::setWalk(const int x, const int y)
 {
     blockTile(x, y, BlockType::GROUNDTOP);
 }

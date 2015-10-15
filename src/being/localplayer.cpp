@@ -2492,7 +2492,7 @@ void LocalPlayer::setRealPos(const int x, const int y)
         mCrossY = y;
     }
     if (mMap->isCustom())
-        mMap->setWalk(x, y, true);
+        mMap->setWalk(x, y);
 }
 void LocalPlayer::fixAttackTarget()
 {
