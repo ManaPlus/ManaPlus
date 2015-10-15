@@ -148,7 +148,7 @@ Map::Map(const int width, const int height,
     mDrawOnlyFringe(false)
 {
     const int size = mWidth * mHeight;
-    for (int i = 0; i < BlockType::NB_BLOCKTYPES; i++)
+    for (size_t i = 0; i < static_cast<size_t>(BlockType::NB_BLOCKTYPES); i++)
     {
         mOccupation[i] = new unsigned[static_cast<size_t>(size)];
         memset(mOccupation[i], 0, static_cast<size_t>(size)
@@ -171,7 +171,7 @@ Map::~Map()
     CHECKLISTENERS
 
     delete [] mMetaTiles;
-    for (int i = 0; i < BlockType::NB_BLOCKTYPES; i++)
+    for (size_t i = 0; i < static_cast<size_t>(BlockType::NB_BLOCKTYPES); i++)
         delete [] mOccupation[i];
 
     if (mWalkLayer)
@@ -690,7 +690,7 @@ const Tileset *Map::getTilesetWithGid(const int gid) const
 }
 
 void Map::blockTile(const int x, const int y,
-                    const BlockType::BlockType type)
+                    const BlockTypeT type)
 {
     if (type == BlockType::NONE || !contains(x, y))
         return;

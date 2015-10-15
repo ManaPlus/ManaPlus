@@ -400,7 +400,7 @@ class Being notfinal : public ActorSprite,
         /**
          * Gets the way the monster blocks pathfinding for other objects
          */
-        BlockType::BlockType getBlockType() const override A_WARN_UNUSED
+        BlockTypeT getBlockType() const override A_WARN_UNUSED
         {
             if (!mInfo)
                 return BlockType::NONE;

@@ -80,7 +80,7 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
         /**
          * Gets the way the object blocks pathfinding for other objects
          */
-        virtual BlockType::BlockType getBlockType() const A_WARN_UNUSED
+        virtual BlockTypeT getBlockType() const A_WARN_UNUSED
         { return BlockType::NONE; }
 
         /**

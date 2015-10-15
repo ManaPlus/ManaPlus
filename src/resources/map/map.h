@@ -146,7 +146,7 @@ class Map final : public Properties, public ConfigListener
          * Marks a tile as occupied.
          */
         void blockTile(const int x, const int y,
-                       const BlockType::BlockType type);
+                       const BlockTypeT type);
 
         /**
          * Gets walkability for a tile with a blocking bitmask. When called
@@ -378,7 +378,7 @@ class Map final : public Properties, public ConfigListener
         /**
          * Blockmasks for different entities
          */
-        unsigned *mOccupation[BlockType::NB_BLOCKTYPES];
+        unsigned *mOccupation[static_cast<size_t>(BlockType::NB_BLOCKTYPES)];
 
         const int mWidth;
         const int mHeight;

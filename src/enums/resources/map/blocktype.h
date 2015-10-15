@@ -23,20 +23,20 @@
 #ifndef ENUMS_RESOURCES_MAP_BLOCKTYPE_H
 #define ENUMS_RESOURCES_MAP_BLOCKTYPE_H
 
-namespace BlockType
+#include "enums/simpletypes/enumdefines.h"
+
+enumStart(BlockType)
 {
-    enum BlockType
-    {
-        NONE = -1,
-        WALL,
-        CHARACTER,
-        MONSTER,
-        AIR,
-        WATER,
-        GROUND,
-        GROUNDTOP,
-        NB_BLOCKTYPES
-    };
-}  // namespace BlockType
+    NONE = -1,
+    WALL,
+    CHARACTER,
+    MONSTER,
+    AIR,
+    WATER,
+    GROUND,
+    GROUNDTOP,
+    NB_BLOCKTYPES
+}
+enumEnd(BlockType);
 
 #endif  // ENUMS_RESOURCES_MAP_BLOCKTYPE_H

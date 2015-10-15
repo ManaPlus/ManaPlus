@@ -119,10 +119,10 @@ class BeingInfo final
         unsigned char getBlockWalkMask() const A_WARN_UNUSED
         { return mBlockWalkMask; }
 
-        void setBlockType(const BlockType::BlockType &blockType)
+        void setBlockType(const BlockTypeT &blockType)
         { mBlockType = blockType; }
 
-        BlockType::BlockType getBlockType() const A_WARN_UNUSED
+        BlockTypeT getBlockType() const A_WARN_UNUSED
         { return mBlockType; }
 
         void setTargetOffsetX(const int n)
@@ -338,7 +338,7 @@ class BeingInfo final
         Attacks mAttacks;
         std::vector<BeingMenuItem> mMenu;
         unsigned char mBlockWalkMask;
-        BlockType::BlockType mBlockType;
+        BlockTypeT mBlockType;
         const std::map <ItemColor, ColorDB::ItemColorData> *mColors;
         int mTargetOffsetX;
         int mTargetOffsetY;
