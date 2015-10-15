@@ -92,7 +92,7 @@ void HomunculusDB::loadXmlFile(const std::string &fileName)
         if (!currentInfo)
             currentInfo = new BeingInfo;
 
-        currentInfo->setBlockType(BlockType::MONSTER);
+        currentInfo->setBlockType(BlockType::NONE);
         BeingCommon::readBasicAttributes(currentInfo,
             homunculusNode, "attack");
 

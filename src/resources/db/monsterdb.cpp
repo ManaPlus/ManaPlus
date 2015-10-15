@@ -95,7 +95,7 @@ void MonsterDB::loadXmlFile(const std::string &fileName)
         if (!currentInfo)
             currentInfo = new BeingInfo;
 
-        currentInfo->setBlockType(BlockType::MONSTER);
+        currentInfo->setBlockType(BlockType::NONE);
         currentInfo->setName(XML::langProperty(
             // TRANSLATORS: unknown info name
             monsterNode, "name", _("unnamed")));

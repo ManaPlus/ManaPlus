@@ -54,11 +54,9 @@ BeingInfo::BeingInfo() :
     mAttacks(),
     mMenu(),
     mBlockWalkMask(BlockMask::WALL
-                 | BlockMask::CHARACTER
-                 | BlockMask::MONSTER
                  | BlockMask::AIR
                  | BlockMask::WATER),
-    mBlockType(BlockType::CHARACTER),
+    mBlockType(BlockType::NONE),
     mColors(nullptr),
     mTargetOffsetX(0),
     mTargetOffsetY(0),

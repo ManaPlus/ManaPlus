@@ -29,8 +29,6 @@ enumStart(BlockType)
 {
     NONE = -1,
     WALL,
-    CHARACTER,
-    MONSTER,
     AIR,
     WATER,
     GROUND,

@@ -692,12 +692,6 @@ void Map::blockTile(const int x, const int y,
         case BlockType::WALL:
             mMetaTiles[tileNum].blockmask |= BlockMask::WALL;
             break;
-        case BlockType::CHARACTER:
-            mMetaTiles[tileNum].blockmask |= BlockMask::CHARACTER;
-            break;
-        case BlockType::MONSTER:
-            mMetaTiles[tileNum].blockmask |= BlockMask::MONSTER;
-            break;
         case BlockType::AIR:
             mMetaTiles[tileNum].blockmask |= BlockMask::AIR;
             break;

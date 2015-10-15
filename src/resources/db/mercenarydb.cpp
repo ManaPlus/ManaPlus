@@ -92,7 +92,7 @@ void MercenaryDB::loadXmlFile(const std::string &fileName)
         if (!currentInfo)
             currentInfo = new BeingInfo;
 
-        currentInfo->setBlockType(BlockType::MONSTER);
+        currentInfo->setBlockType(BlockType::NONE);
         BeingCommon::readBasicAttributes(currentInfo, mercenaryNode, "attack");
 
         currentInfo->setMaxHP(XML::getProperty(mercenaryNode, "maxHP", 0));

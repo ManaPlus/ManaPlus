@@ -28,8 +28,6 @@ namespace BlockMask
     enum BlockMask
     {
         WALL      = 0x80,  // 1000 0000
-        CHARACTER = 0x01,  // 0000 0001
-        MONSTER   = 0x02,  // 0000 0010
         AIR       = 0x04,  // 0000 0100
         WATER     = 0x08,  // 0000 1000
         GROUND    = 0x10,  // 0001 0000
