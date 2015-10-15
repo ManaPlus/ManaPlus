@@ -57,4 +57,15 @@ void MapRecv::processInstanceDelete(Net::MessageIn &msg)
     msg.readInt32("unused");
 }
 
+void MapRecv::processSetTilesType(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+    msg.readInt16("x1");
+    msg.readInt16("y1");
+    msg.readInt16("x2");
+    msg.readInt16("y2");
+    msg.readInt32("mask");
+    msg.readString(16, "map name");
+}
+
 }  // namespace EAthena
