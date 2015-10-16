@@ -127,9 +127,10 @@ void DyePalette::getColor(const unsigned int intensity,
         j = 0;
 
     // Get the exact color if any, the next color otherwise.
-    const int r2 = mColors[j].value[0];
-    const int g2 = mColors[j].value[1];
-    const int b2 = mColors[j].value[2];
+    const DyeColor &colorJ = mColors[j];
+    const int r2 = colorJ.value[0];
+    const int g2 = colorJ.value[1];
+    const int b2 = colorJ.value[2];
 
     if (t == 0)
     {
@@ -141,18 +142,22 @@ void DyePalette::getColor(const unsigned int intensity,
     }
 
     // Get the previous color. First color is implicitly black.
-    int r1 = 0, g1 = 0, b1 = 0;
     if (i > 0 && i < last + 1)
     {
-        r1 = mColors[i - 1].value[0];
-        g1 = mColors[i - 1].value[1];
-        b1 = mColors[i - 1].value[2];
+        const DyeColor &colorI = mColors[i - 1];
+        const int t2 = 255 - t;
+        // Perform a linear interpolation.
+        color[0] = (t2 * colorI.value[0] + t * r2) / 255;
+        color[1] = (t2 * colorI.value[1] + t * g2) / 255;
+        color[2] = (t2 * colorI.value[2] + t * b2) / 255;
     }
-
-    // Perform a linear interpolation.
-    color[0] = ((255 - t) * r1 + t * r2) / 255;
-    color[1] = ((255 - t) * g1 + t * g2) / 255;
-    color[2] = ((255 - t) * b1 + t * b2) / 255;
+    else
+    {
+        // Perform a linear interpolation.
+        color[0] = (t * r2) / 255;
+        color[1] = (t * g2) / 255;
+        color[2] = (t * b2) / 255;
+    }
 }
 
 void DyePalette::getColor(double intensity, int (&color)[3]) const
@@ -173,31 +178,28 @@ void DyePalette::getColor(double intensity, int (&color)[3]) const
     // Color indices
     const int i = static_cast<int>(floor(intensity));
     const int j = static_cast<int>(ceil(intensity));
+    const DyeColor &colorI = mColors[i];
 
     if (i == j)
     {
         // Exact color.
-        color[0] = mColors[i].value[0];
-        color[1] = mColors[i].value[1];
-        color[2] = mColors[i].value[2];
+        color[0] = colorI.value[0];
+        color[1] = colorI.value[1];
+        color[2] = colorI.value[2];
         return;
     }
 
     intensity -= i;
     const double rest = 1 - intensity;
-
-    // Get the colors
-    const int r1 = mColors[i].value[0];
-    const int g1 = mColors[i].value[1];
-    const int b1 = mColors[i].value[2];
-    const int r2 = mColors[j].value[0];
-    const int g2 = mColors[j].value[1];
-    const int b2 = mColors[j].value[2];
+    const DyeColor &colorJ = mColors[j];
 
     // Perform the interpolation.
-    color[0] = static_cast<int>(rest * r1 + intensity * r2);
-    color[1] = static_cast<int>(rest * g1 + intensity * g2);
-    color[2] = static_cast<int>(rest * b1 + intensity * b2);
+    color[0] = static_cast<int>(rest * colorI.value[0] +
+        intensity * colorJ.value[0]);
+    color[1] = static_cast<int>(rest * colorI.value[1] +
+        intensity * colorJ.value[1]);
+    color[2] = static_cast<int>(rest * colorI.value[2] +
+        intensity * colorJ.value[2]);
 }
 
 void DyePalette::replaceSColor(uint32_t *restrict pixels,
