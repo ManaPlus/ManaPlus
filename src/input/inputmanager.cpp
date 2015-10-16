@@ -811,6 +811,27 @@ bool InputManager::executeChatCommand(const std::string &cmd,
     return false;
 }
 
+bool InputManager::executeRemoteChatCommand(const std::string &cmd,
+                                            const std::string &args,
+                                            ChatTab *const tab)
+{
+    const StringIntMapCIter it = mChatMap.find(cmd);
+    if (it != mChatMap.end())
+    {
+        const InputActionData &data = inputActionData[(*it).second];
+        if (data.isProtected == Protected_true)
+            return false;
+        ActionFuncPtr func = *(data.action);
+        if (func)
+        {
+            InputEvent evt(args, tab, mMask);
+            func(evt);
+            return true;
+        }
+    }
+    return false;
+}
+
 bool InputManager::executeChatCommand(const InputActionT keyNum,
                                       const std::string &args,
                                       ChatTab *const tab)

@@ -26,6 +26,7 @@
 #include "actions/actionfuncptr.h"
 
 #include "enums/simpletypes/useargs.h"
+#include "enums/simpletypes/protected.h"
 
 struct InputActionData final
 {
@@ -41,6 +42,7 @@ struct InputActionData final
     const int condition;
     const std::string chatCommand;
     const UseArgs useArgs;
+    const Protected isProtected;
 };
 
 namespace Input

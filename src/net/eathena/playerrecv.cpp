@@ -357,7 +357,7 @@ void PlayerRecv::processPlayerClientCommand(Net::MessageIn &msg)
         cmd = command;
         args.clear();
     }
-    inputManager.executeChatCommand(cmd, args, nullptr);
+    inputManager.executeRemoteChatCommand(cmd, args, nullptr);
 }
 
 void PlayerRecv::processOnlineList(Net::MessageIn &msg)

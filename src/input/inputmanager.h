@@ -134,6 +134,10 @@ class InputManager final
                                 const std::string &args,
                                 ChatTab *const tab);
 
+        bool executeRemoteChatCommand(const std::string &cmd,
+                                      const std::string &args,
+                                      ChatTab *const tab);
+
         bool executeChatCommand(const InputActionT keyNum,
                                 const std::string &args,
                                 ChatTab *const tab);

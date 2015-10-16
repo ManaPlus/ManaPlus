@@ -1111,6 +1111,7 @@ SET(SRCS
     enums/simpletypes/notify.h
     enums/simpletypes/npcnames.h
     enums/simpletypes/online.h
+    enums/simpletypes/protected.h
     enums/simpletypes/sfx.h
     enums/simpletypes/showcenter.h
     enums/simpletypes/skiperror.h
