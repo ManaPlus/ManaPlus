@@ -24,7 +24,7 @@ packet(SMSG_ADMIN_ACCOUNT_STATS,           0x0214,  42, &AdminRecv::processAccou
 packet(SMSG_ADMIN_GET_LOGIN_ACK,           0x01e0,  30, &AdminRecv::processAdminGetLoginAck);
 packet(SMSG_ADMIN_KICK_ACK,                0x00cd,   6, &Ea::AdminRecv::processKickAck);
 packet(SMSG_ADMIN_SET_TILE_TYPE,           0x0192,  24, &AdminRecv::processSetTileType);
-packet(SMSG_MAP_SET_TILES_TYPE,            0x0b1b,  30, &MapRecv::processSetTilesType);
+packet(SMSG_MAP_SET_TILES_TYPE,            0x0b1b,  34, &MapRecv::processSetTilesType);
 packet(SMSG_ALCHEMIST_RANKS_LIST,          0x021a, 282, &BeingRecv::processAlchemistRanksList);
 packet(SMSG_AUCTION_CLOSE,                 0x025d,   4, &AuctionRecv::processAuctionClose);
 packet(SMSG_AUCTION_MESSAGE,               0x0250,   3, &AuctionRecv::processAuctionMessage);

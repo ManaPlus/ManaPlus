@@ -70,8 +70,10 @@ void MapRecv::processSetTilesType(Net::MessageIn &msg)
     const int x2 = msg.readInt16("x2");
     const int y2 = msg.readInt16("y2");
     const BlockTypeT mask = static_cast<BlockTypeT>(msg.readInt32("mask"));
+    const int layer = msg.readInt32("layer");
     const std::string name = msg.readString(16, "map name");
-
+    if (layer)
+        return;
     Map *const map = viewport->getMap();
 //    logger->log("map test name: %s, mask %d", map->getGatName().c_str(), (int)mask);
     if (map && map->getGatName() == name)
