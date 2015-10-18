@@ -42,10 +42,14 @@ void HorseDB::load()
     if (mLoaded)
         unload();
 
-    mUnknown.sprite = AnimatedSprite::load(
+    mUnknown.downSprite = AnimatedSprite::load(
         paths.getStringValue("spriteErrorFile"));
-    mUnknown.offsetX = 0;
-    mUnknown.offsetY = 0;
+    mUnknown.upSprite = AnimatedSprite::load(
+        paths.getStringValue("spriteErrorFile"));
+    mUnknown.upOffsetX = 0;
+    mUnknown.upOffsetY = 0;
+    mUnknown.downOffsetX = 0;
+    mUnknown.downOffsetY = 0;
 
     logger->log1("Initializing horse database...");
 
@@ -99,22 +103,33 @@ void HorseDB::loadXmlFile(const std::string &fileName)
 
         if (!currentInfo)
             continue;
-        currentInfo->offsetX = XML::getProperty(horseNode, "offsetX", 0);
-        currentInfo->offsetY = XML::getProperty(horseNode, "offsetY", 0);
+        const int offsetX = XML::getProperty(horseNode, "offsetX", 0);
+        const int offsetY = XML::getProperty(horseNode, "offsetY", 0);
+        currentInfo->upOffsetX = XML::getProperty(horseNode, "upOffsetX", offsetX);
+        currentInfo->upOffsetY = XML::getProperty(horseNode, "upOffsetY", offsetY);
+        currentInfo->downOffsetX = XML::getProperty(horseNode, "downOffsetX", offsetX);
+        currentInfo->downOffsetY = XML::getProperty(horseNode, "downOffsetY", offsetY);
 
         for_each_xml_child_node(spriteNode, horseNode)
         {
             if (!spriteNode->xmlChildrenNode)
                 continue;
 
-            if (xmlNameEqual(spriteNode, "sprite"))
+            if (xmlNameEqual(spriteNode, "downSprite"))
             {
-                currentInfo->sprite = AnimatedSprite::load(
+                currentInfo->downSprite = AnimatedSprite::load(
                     paths.getStringValue("sprites").append(std::string(
                     reinterpret_cast<const char*>(
                     spriteNode->xmlChildrenNode->content))),
                     XML::getProperty(spriteNode, "variant", 0));
-                break;
+            }
+            else if (xmlNameEqual(spriteNode, "upSprite"))
+            {
+                currentInfo->upSprite = AnimatedSprite::load(
+                    paths.getStringValue("sprites").append(std::string(
+                    reinterpret_cast<const char*>(
+                    spriteNode->xmlChildrenNode->content))),
+                    XML::getProperty(spriteNode, "variant", 0));
             }
         }
         mHorseInfos[id] = currentInfo;
@@ -125,12 +140,14 @@ void HorseDB::unload()
 {
     FOR_EACH (HorseInfos::const_iterator, i, mHorseInfos)
     {
-        delete i->second->sprite;
+        delete i->second->upSprite;
+        delete i->second->downSprite;
         delete i->second;
     }
     mHorseInfos.clear();
 
-    delete mUnknown.sprite;
+    delete mUnknown.upSprite;
+    delete mUnknown.downSprite;
 
     mLoaded = false;
 }

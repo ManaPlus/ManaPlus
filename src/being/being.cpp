@@ -194,7 +194,8 @@ Being::Being(const BeingId id,
 #ifdef EATHENA_SUPPORT
     mChat(nullptr),
     mHorseInfo(nullptr),
-    mHorseSprite(nullptr),
+    mDownHorseSprite(nullptr),
+    mUpHorseSprite(nullptr),
 #endif
     mX(0),
     mY(0),
@@ -1439,8 +1440,10 @@ void Being::setAction(const BeingActionT &action, const int attackId)
                 sprite->play(currentAction);
         }
 #ifdef EATHENA_SUPPORT
-        if (mHorseSprite)
-            mHorseSprite->play(currentAction);
+        if (mDownHorseSprite)
+            mDownHorseSprite->play(currentAction);
+        if (mUpHorseSprite)
+            mUpHorseSprite->play(currentAction);
 #endif
         mAction = action;
     }
@@ -1510,8 +1513,10 @@ void Being::setDirection(const uint8_t direction)
     }
 
 #ifdef EATHENA_SUPPORT
-    if (mHorseSprite)
-        mHorseSprite->setSpriteDirection(dir);
+    if (mDownHorseSprite)
+        mDownHorseSprite->setSpriteDirection(dir);
+    if (mUpHorseSprite)
+        mUpHorseSprite->setSpriteDirection(dir);
 #endif
     recalcSpritesOrder();
 }
@@ -1603,8 +1608,10 @@ void Being::logic()
     if (mEmotionSprite)
         mEmotionSprite->update(time);
 #ifdef EATHENA_SUPPORT
-    if (mHorseSprite)
-        mHorseSprite->update(time);
+    if (mDownHorseSprite)
+        mDownHorseSprite->update(time);
+    if (mUpHorseSprite)
+        mUpHorseSprite->update(time);
 #endif
 
     if (mAnimationEffect)
@@ -2669,19 +2676,23 @@ void Being::draw(Graphics *const graphics,
         const int px = getActorX() + offsetX;
         const int py = getActorY() + offsetY;
 #ifdef EATHENA_SUPPORT
-        if (mHorseInfo)
+        if (mDownHorseSprite)
         {
-            AnimatedSprite *const sprite = mHorseInfo->sprite;
-            if (sprite)
-            {
-                sprite->draw(graphics,
-                    px + mHorseInfo->offsetX,
-                    py + mHorseInfo->offsetY);
-            }
+            mDownHorseSprite->draw(graphics,
+                px + mHorseInfo->downOffsetX,
+                py + mHorseInfo->downOffsetY);
         }
 #endif
         ActorSprite::draw1(graphics, px, py);
         drawSpriteAt(graphics, px, py);
+#ifdef EATHENA_SUPPORT
+        if (mUpHorseSprite)
+        {
+            mUpHorseSprite->draw(graphics,
+                px + mHorseInfo->upOffsetX,
+                py + mHorseInfo->upOffsetY);
+        }
+#endif
     }
 }
 
@@ -4031,14 +4042,21 @@ void Being::setRiding(const bool b)
     {
         mHorseInfo = HorseDB::get(1);
         if (mHorseInfo)
-            mHorseSprite = mHorseInfo->sprite;
+        {
+            mDownHorseSprite = mHorseInfo->downSprite;
+            mUpHorseSprite = mHorseInfo->upSprite;
+        }
         else
-            mHorseSprite = nullptr;
+        {
+            mDownHorseSprite = nullptr;
+            mUpHorseSprite = nullptr;
+        }
     }
     else
     {
         mHorseInfo = nullptr;
-        mHorseSprite = nullptr;
+        mDownHorseSprite = nullptr;
+        mUpHorseSprite = nullptr;
     }
 }
 #endif

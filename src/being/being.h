@@ -1087,7 +1087,8 @@ class Being notfinal : public ActorSprite,
         ChatObject *mChat;
         HorseInfo *mHorseInfo;
 #endif
-        AnimatedSprite *mHorseSprite;
+        AnimatedSprite *mDownHorseSprite;
+        AnimatedSprite *mUpHorseSprite;
 
         int mX;             // position in tiles
         int mY;             // position in tiles

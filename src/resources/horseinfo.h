@@ -29,16 +29,22 @@ class AnimatedSprite;
 struct HorseInfo final
 {
     HorseInfo() :
-        sprite(nullptr),
-        offsetX(0),
-        offsetY(0)
+        downSprite(nullptr),
+        upSprite(nullptr),
+        downOffsetX(0),
+        downOffsetY(0),
+        upOffsetX(0),
+        upOffsetY(0)
     { }
 
     A_DELETE_COPY(HorseInfo)
 
-    AnimatedSprite *sprite;
-    int offsetX;
-    int offsetY;
+    AnimatedSprite *downSprite;
+    AnimatedSprite *upSprite;
+    int downOffsetX;
+    int downOffsetY;
+    int upOffsetX;
+    int upOffsetY;
 };
 
 #endif  // RESOURCES_HORSEINFO_H
