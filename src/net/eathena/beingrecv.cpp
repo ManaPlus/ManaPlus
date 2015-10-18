@@ -261,9 +261,8 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
     int16_t speed = msg.readInt16("speed");
     const uint16_t stunMode = msg.readInt16("opt1");
     // probably wrong effect usage
-    const uint32_t statusEffects = msg.readInt16("opt2");
-    msg.readInt32("option");
-
+    uint32_t statusEffects = msg.readInt16("opt2");
+    statusEffects |= (static_cast<uint32_t>(msg.readInt32("option"))) << 16;
     const int16_t job = msg.readInt16("class");
 
     Being *dstBeing = actorManager->findBeing(id);
@@ -423,7 +422,7 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
 //    {
         const uint16_t stunMode = msg.readInt16("opt1");
         // probably wrong effect usage
-        const uint32_t statusEffects = msg.readInt16("opt2");
+        uint32_t statusEffects = msg.readInt16("opt2");
 //    }
 //    else
 //    {
@@ -431,8 +430,7 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
 //        msg.readInt16("body state");
 //        msg.readInt16("health state");
 //    }
-    msg.readInt32("effect state");
-
+    statusEffects |= (static_cast<uint32_t>(msg.readInt32("option"))) << 16;
     const int16_t job = msg.readInt16("class");
 
     Being *dstBeing = actorManager->findBeing(id);
@@ -594,7 +592,7 @@ void BeingRecv::processBeingSpawn(Net::MessageIn &msg)
 //    {
         const uint16_t stunMode = msg.readInt16("opt1");
         // probably wrong effect usage
-        const uint32_t statusEffects = msg.readInt16("opt2");
+        uint32_t statusEffects = msg.readInt16("opt2");
 //    }
 //    else
 //    {
@@ -602,8 +600,7 @@ void BeingRecv::processBeingSpawn(Net::MessageIn &msg)
 //        msg.readInt16("body state");
 //        msg.readInt16("health state");
 //    }
-    msg.readInt32("effect state");
-
+    statusEffects |= (static_cast<uint32_t>(msg.readInt32("option"))) << 16;
     const int16_t job = msg.readInt16("class");
 
     Being *dstBeing = actorManager->findBeing(id);
@@ -1179,7 +1176,7 @@ void BeingRecv::processPlaterStatusChange(Net::MessageIn &msg)
 
     const uint16_t stunMode = msg.readInt16("stun mode");
     uint32_t statusEffects = msg.readInt16("status effect");
-    statusEffects |= (static_cast<uint32_t>(msg.readInt32("opt?"))) << 16;
+    statusEffects |= (static_cast<uint32_t>(msg.readInt32("option"))) << 16;
     dstBeing->setKarma(msg.readUInt8("karma"));
 
     dstBeing->setStunMode(stunMode);
@@ -1194,6 +1191,8 @@ void BeingRecv::processPlaterStatusChange2(Net::MessageIn &msg)
 {
     if (!actorManager)
         return;
+
+    // look like this function unused on server
 
     const BeingId id = msg.readBeingId("account id");
     Being *const dstBeing = actorManager->findBeing(id);
