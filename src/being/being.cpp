@@ -128,6 +128,9 @@ typedef std::map<int, int>::const_iterator IntMapCIter;
 #define for_each_badges() \
     for (int f = 0; f < BadgeIndex::BadgeIndexSize; f++)
 
+#define for_each_horses(name) \
+    FOR_EACH (std::vector<AnimatedSprite*>::const_iterator, it, name)
+
 Being::Being(const BeingId id,
              const ActorTypeT type,
              const BeingTypeId subtype,
@@ -194,8 +197,6 @@ Being::Being(const BeingId id,
 #ifdef EATHENA_SUPPORT
     mChat(nullptr),
     mHorseInfo(nullptr),
-    mDownHorseSprite(nullptr),
-    mUpHorseSprite(nullptr),
 #endif
     mX(0),
     mY(0),
@@ -305,6 +306,7 @@ Being::~Being()
     mBadgesCount = 0;
 #ifdef EATHENA_SUPPORT
     delete2(mChat);
+    removeHorse();
 #endif
 
     if (mOwner)
@@ -1440,10 +1442,10 @@ void Being::setAction(const BeingActionT &action, const int attackId)
                 sprite->play(currentAction);
         }
 #ifdef EATHENA_SUPPORT
-        if (mDownHorseSprite)
-            mDownHorseSprite->play(currentAction);
-        if (mUpHorseSprite)
-            mUpHorseSprite->play(currentAction);
+        for_each_horses(mDownHorseSprites)
+            (*it)->play(currentAction);
+        for_each_horses(mUpHorseSprites)
+            (*it)->play(currentAction);
 #endif
         mAction = action;
     }
@@ -1513,10 +1515,10 @@ void Being::setDirection(const uint8_t direction)
     }
 
 #ifdef EATHENA_SUPPORT
-    if (mDownHorseSprite)
-        mDownHorseSprite->setSpriteDirection(dir);
-    if (mUpHorseSprite)
-        mUpHorseSprite->setSpriteDirection(dir);
+    for_each_horses(mDownHorseSprites)
+        (*it)->setSpriteDirection(dir);
+    for_each_horses(mUpHorseSprites)
+        (*it)->setSpriteDirection(dir);
 #endif
     recalcSpritesOrder();
 }
@@ -1608,10 +1610,10 @@ void Being::logic()
     if (mEmotionSprite)
         mEmotionSprite->update(time);
 #ifdef EATHENA_SUPPORT
-    if (mDownHorseSprite)
-        mDownHorseSprite->update(time);
-    if (mUpHorseSprite)
-        mUpHorseSprite->update(time);
+    for_each_horses(mDownHorseSprites)
+        (*it)->update(time);
+    for_each_horses(mUpHorseSprites)
+        (*it)->update(time);
 #endif
 
     if (mAnimationEffect)
@@ -2676,22 +2678,33 @@ void Being::draw(Graphics *const graphics,
         const int px = getActorX() + offsetX;
         const int py = getActorY() + offsetY;
 #ifdef EATHENA_SUPPORT
-        if (mDownHorseSprite)
+        if (mHorseInfo)
         {
-            mDownHorseSprite->draw(graphics,
-                px + mHorseInfo->downOffsetX,
-                py + mHorseInfo->downOffsetY);
+            for_each_horses(mDownHorseSprites)
+            {
+                (*it)->draw(graphics,
+                    px + mHorseInfo->downOffsetX,
+                    py + mHorseInfo->downOffsetY);
+            }
+
+            ActorSprite::draw1(graphics, px, py);
+            drawSpriteAt(graphics, px, py);
+
+            for_each_horses(mUpHorseSprites)
+            {
+                (*it)->draw(graphics,
+                    px + mHorseInfo->upOffsetX,
+                    py + mHorseInfo->upOffsetY);
+            }
         }
-#endif
+        else
+        {
+            ActorSprite::draw1(graphics, px, py);
+            drawSpriteAt(graphics, px, py);
+        }
+#else
         ActorSprite::draw1(graphics, px, py);
         drawSpriteAt(graphics, px, py);
-#ifdef EATHENA_SUPPORT
-        if (mUpHorseSprite)
-        {
-            mUpHorseSprite->draw(graphics,
-                px + mHorseInfo->upOffsetX,
-                py + mHorseInfo->upOffsetY);
-        }
 #endif
     }
 }
@@ -4032,31 +4045,45 @@ bool Being::isSellShopEnabled() const
 }
 
 #ifdef EATHENA_SUPPORT
+void Being::removeHorse()
+{
+    delete_all(mUpHorseSprites);
+    mUpHorseSprites.clear();
+    delete_all(mDownHorseSprites);
+    mDownHorseSprites.clear();
+}
+
 void Being::setRiding(const bool b)
 {
     if (b == mRiding)
         return;
     mRiding = b;
     setAction(mAction, 0);
+    removeHorse();
     if (b)
     {
         mHorseInfo = HorseDB::get(1);
         if (mHorseInfo)
         {
-            mDownHorseSprite = mHorseInfo->downSprite;
-            mUpHorseSprite = mHorseInfo->upSprite;
-        }
-        else
-        {
-            mDownHorseSprite = nullptr;
-            mUpHorseSprite = nullptr;
+            FOR_EACH (SpriteRefs, it, mHorseInfo->downSprites)
+            {
+                SpriteReference *const ref = *it;
+                mDownHorseSprites.push_back(AnimatedSprite::load(
+                    ref->sprite,
+                    ref->variant));
+            }
+            FOR_EACH (SpriteRefs, it, mHorseInfo->upSprites)
+            {
+                SpriteReference *const ref = *it;
+                mUpHorseSprites.push_back(AnimatedSprite::load(
+                    ref->sprite,
+                    ref->variant));
+            }
         }
     }
     else
     {
         mHorseInfo = nullptr;
-        mDownHorseSprite = nullptr;
-        mUpHorseSprite = nullptr;
     }
 }
 #endif

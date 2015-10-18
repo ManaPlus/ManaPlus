@@ -43,6 +43,4 @@ struct SpriteDisplay final
     StringVect particles;
 };
 
-typedef std::vector<SpriteReference*>::const_iterator SpriteRefs;
-
 #endif  // RESOURCES_SPRITEDISPLAY_H

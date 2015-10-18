@@ -895,6 +895,8 @@ class Being notfinal : public ActorSprite,
 
         void setRiding(const bool b) override final;
 
+        void removeHorse();
+
         void setSellBoard(const std::string &text);
 
         std::string getSellBoard() const A_WARN_UNUSED
@@ -1087,8 +1089,8 @@ class Being notfinal : public ActorSprite,
         ChatObject *mChat;
         HorseInfo *mHorseInfo;
 #endif
-        AnimatedSprite *mDownHorseSprite;
-        AnimatedSprite *mUpHorseSprite;
+        std::vector<AnimatedSprite*> mDownHorseSprites;
+        std::vector<AnimatedSprite*> mUpHorseSprites;
 
         int mX;             // position in tiles
         int mY;             // position in tiles

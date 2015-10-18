@@ -22,15 +22,15 @@
 #ifndef RESOURCES_HORSEINFO_H
 #define RESOURCES_HORSEINFO_H
 
-#include "localconsts.h"
+#include "resources/spritereference.h"
 
-class AnimatedSprite;
+#include <vector>
+
+#include "localconsts.h"
 
 struct HorseInfo final
 {
     HorseInfo() :
-        downSprite(nullptr),
-        upSprite(nullptr),
         downOffsetX(0),
         downOffsetY(0),
         upOffsetX(0),
@@ -39,8 +39,8 @@ struct HorseInfo final
 
     A_DELETE_COPY(HorseInfo)
 
-    AnimatedSprite *downSprite;
-    AnimatedSprite *upSprite;
+    std::vector<SpriteReference*> downSprites;
+    std::vector<SpriteReference*> upSprites;
     int downOffsetX;
     int downOffsetY;
     int upOffsetX;

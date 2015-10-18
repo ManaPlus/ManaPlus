@@ -23,7 +23,7 @@
 #ifndef RESOURCES_SPRITEREFERENCE_H
 #define RESOURCES_SPRITEREFERENCE_H
 
-#include <string>
+#include "utils/stringvector.h"
 
 #include "localconsts.h"
 
@@ -47,5 +47,7 @@ struct SpriteReference final
     std::string sprite;
     int variant;
 };
+
+typedef std::vector<SpriteReference*>::const_iterator SpriteRefs;
 
 #endif  // RESOURCES_SPRITEREFERENCE_H

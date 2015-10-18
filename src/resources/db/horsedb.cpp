@@ -21,12 +21,13 @@
 
 #include "resources/db/horsedb.h"
 
-#include "animatedsprite.h"
 #include "configuration.h"
 #include "logger.h"
 
 #include "resources/beingcommon.h"
 #include "resources/horseinfo.h"
+
+#include "utils/dtor.h"
 
 #include "debug.h"
 
@@ -38,11 +39,15 @@ namespace
 }
 
 #define loadSprite(name) \
-    currentInfo->name = AnimatedSprite::load( \
-        paths.getStringValue("sprites").append(std::string( \
-        reinterpret_cast<const char*>( \
-        spriteNode->xmlChildrenNode->content))), \
-        XML::getProperty(spriteNode, "variant", 0))
+    { \
+        SpriteReference *const currentSprite = new SpriteReference; \
+        currentSprite->sprite = paths.getStringValue("sprites").append( \
+            std::string(reinterpret_cast<const char*>( \
+            spriteNode->xmlChildrenNode->content))); \
+        currentSprite->variant = XML::getProperty( \
+            spriteNode, "variant", 0); \
+        currentInfo->name.push_back(currentSprite); \
+    }
 
 static void loadDownSprites(XmlNodePtrConst parentNode,
                             HorseInfo *currentInfo);
@@ -55,10 +60,18 @@ void HorseDB::load()
     if (mLoaded)
         unload();
 
-    mUnknown.downSprite = AnimatedSprite::load(
+    SpriteReference *currentSprite = new SpriteReference;
+    currentSprite->sprite = paths.getStringValue("sprites").append(
         paths.getStringValue("spriteErrorFile"));
-    mUnknown.upSprite = AnimatedSprite::load(
+    currentSprite->variant = 0;
+    mUnknown.downSprites.push_back(currentSprite);
+
+    currentSprite = new SpriteReference;
+    currentSprite->sprite = paths.getStringValue("sprites").append(
         paths.getStringValue("spriteErrorFile"));
+    currentSprite->variant = 0;
+    mUnknown.upSprites.push_back(currentSprite);
+
     mUnknown.upOffsetX = 0;
     mUnknown.upOffsetY = 0;
     mUnknown.downOffsetX = 0;
@@ -129,7 +142,7 @@ void HorseDB::loadXmlFile(const std::string &fileName)
                 continue;
 
             if (xmlNameEqual(spriteNode, "sprite"))
-                loadSprite(downSprite);
+                loadSprite(downSprites)
 
             if (xmlNameEqual(spriteNode, "down"))
                 loadDownSprites(spriteNode, currentInfo);
@@ -149,10 +162,7 @@ static void loadDownSprites(XmlNodePtrConst parentNode,
             continue;
 
         if (xmlNameEqual(spriteNode, "sprite"))
-        {
-            loadSprite(downSprite);
-            return;
-        }
+            loadSprite(downSprites)
     }
 }
 
@@ -165,10 +175,7 @@ static void loadUpSprites(XmlNodePtrConst parentNode,
             continue;
 
         if (xmlNameEqual(spriteNode, "sprite"))
-        {
-            loadSprite(upSprite);
-            return;
-        }
+            loadSprite(upSprites)
     }
 }
 
@@ -176,14 +183,14 @@ void HorseDB::unload()
 {
     FOR_EACH (HorseInfos::const_iterator, i, mHorseInfos)
     {
-        delete i->second->upSprite;
-        delete i->second->downSprite;
+        delete_all(i->second->upSprites);
+        delete_all(i->second->downSprites);
         delete i->second;
     }
     mHorseInfos.clear();
 
-    delete mUnknown.upSprite;
-    delete mUnknown.downSprite;
+    delete_all(mUnknown.upSprites);
+    delete_all(mUnknown.downSprites);
 
     mLoaded = false;
 }
