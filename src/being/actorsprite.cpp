@@ -30,6 +30,8 @@
 
 #include "gui/theme.h"
 
+#include "listeners/debugmessagelistener.h"
+
 #include "particle/particle.h"
 
 #include "resources/resourcemanager.h"
@@ -198,13 +200,22 @@ void ActorSprite::setStatusEffectBlock(const int offset,
 {
     for (unsigned i = 0; i < STATUS_EFFECTS; i++)
     {
+        const bool val = (newEffects & (1 << i)) > 0;
         const int index = StatusEffect::blockEffectIndexToEffectIndex(
             offset + i);
 
         if (index != -1)
         {
-            setStatusEffect(index,
-                fromBool((newEffects & (1 << i)) > 0, Enable));
+            setStatusEffect(index, fromBool(val, Enable));
+        }
+        else if (val && config.getBoolValue("unimplimentedLog"))
+        {
+            const std::string str = strprintf(
+                "Error: unknown effect by block-index. "
+                "Offset: %d, effect int: %d, i: %u",
+                offset, (int)newEffects, i);
+            logger->log(str);
+            DebugMessageListener::distributeEvent(str);
         }
     }
 }
