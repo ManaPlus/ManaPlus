@@ -37,6 +37,19 @@ namespace
     bool mLoaded = false;
 }
 
+#define loadSprite(name) \
+    currentInfo->name = AnimatedSprite::load( \
+        paths.getStringValue("sprites").append(std::string( \
+        reinterpret_cast<const char*>( \
+        spriteNode->xmlChildrenNode->content))), \
+        XML::getProperty(spriteNode, "variant", 0))
+
+static void loadDownSprites(XmlNodePtrConst parentNode,
+                            HorseInfo *currentInfo);
+
+static void loadUpSprites(XmlNodePtrConst parentNode,
+                          HorseInfo *currentInfo);
+
 void HorseDB::load()
 {
     if (mLoaded)
@@ -115,24 +128,47 @@ void HorseDB::loadXmlFile(const std::string &fileName)
             if (!spriteNode->xmlChildrenNode)
                 continue;
 
-            if (xmlNameEqual(spriteNode, "downSprite"))
-            {
-                currentInfo->downSprite = AnimatedSprite::load(
-                    paths.getStringValue("sprites").append(std::string(
-                    reinterpret_cast<const char*>(
-                    spriteNode->xmlChildrenNode->content))),
-                    XML::getProperty(spriteNode, "variant", 0));
-            }
-            else if (xmlNameEqual(spriteNode, "upSprite"))
-            {
-                currentInfo->upSprite = AnimatedSprite::load(
-                    paths.getStringValue("sprites").append(std::string(
-                    reinterpret_cast<const char*>(
-                    spriteNode->xmlChildrenNode->content))),
-                    XML::getProperty(spriteNode, "variant", 0));
-            }
+            if (xmlNameEqual(spriteNode, "sprite"))
+                loadSprite(downSprite);
+
+            if (xmlNameEqual(spriteNode, "down"))
+                loadDownSprites(spriteNode, currentInfo);
+            else if (xmlNameEqual(spriteNode, "up"))
+                loadUpSprites(spriteNode, currentInfo);
         }
         mHorseInfos[id] = currentInfo;
+    }
+}
+
+static void loadDownSprites(XmlNodePtrConst parentNode,
+                            HorseInfo *currentInfo)
+{
+    for_each_xml_child_node(spriteNode, parentNode)
+    {
+        if (!spriteNode->xmlChildrenNode)
+            continue;
+
+        if (xmlNameEqual(spriteNode, "sprite"))
+        {
+            loadSprite(downSprite);
+            return;
+        }
+    }
+}
+
+static void loadUpSprites(XmlNodePtrConst parentNode,
+                          HorseInfo *currentInfo)
+{
+    for_each_xml_child_node(spriteNode, parentNode)
+    {
+        if (!spriteNode->xmlChildrenNode)
+            continue;
+
+        if (xmlNameEqual(spriteNode, "sprite"))
+        {
+            loadSprite(upSprite);
+            return;
+        }
     }
 }
 
