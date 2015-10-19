@@ -4081,16 +4081,22 @@ void Being::setHorse(const int horseId)
             FOR_EACH (SpriteRefs, it, mHorseInfo->downSprites)
             {
                 SpriteReference *const ref = *it;
-                mDownHorseSprites.push_back(AnimatedSprite::load(
+                AnimatedSprite *const sprite = AnimatedSprite::load(
                     ref->sprite,
-                    ref->variant));
+                    ref->variant);
+                mDownHorseSprites.push_back(sprite);
+                sprite->play(mSpriteAction);
+                sprite->setSpriteDirection(mSpriteDirection);
             }
             FOR_EACH (SpriteRefs, it, mHorseInfo->upSprites)
             {
                 SpriteReference *const ref = *it;
-                mUpHorseSprites.push_back(AnimatedSprite::load(
+                AnimatedSprite *const sprite = AnimatedSprite::load(
                     ref->sprite,
-                    ref->variant));
+                    ref->variant);
+                mUpHorseSprites.push_back(sprite);
+                sprite->play(mSpriteAction);
+                sprite->setSpriteDirection(mSpriteDirection);
             }
         }
     }
