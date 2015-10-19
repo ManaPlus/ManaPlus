@@ -240,4 +240,9 @@ bool ServerFeatures::haveAdvancedSprites() const
     return serverVersion >= 7;
 }
 
+bool ServerFeatures::haveExtendedRiding() const
+{
+    return serverVersion >= 9;
+}
+
 }  // namespace EAthena

@@ -66,6 +66,7 @@ ActorSprite::ActorSprite(const BeingId id) :
     mStunParticleEffects(),
     mStatusParticleEffects(&mStunParticleEffects, false),
     mChildParticleEffects(&mStatusParticleEffects, false),
+    mHorseId(0),
     mId(id),
     mStunMode(0),
     mUsedTargetCursor(nullptr),
@@ -74,8 +75,7 @@ ActorSprite::ActorSprite(const BeingId id) :
     mCursorPaddingY(0),
     mMustResetParticles(false),
     mPoison(false),
-    mHaveCart(false),
-    mRiding(false)
+    mHaveCart(false)
 {
 }
 

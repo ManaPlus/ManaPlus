@@ -239,4 +239,9 @@ bool ServerFeatures::haveAdvancedSprites() const
     return false;
 }
 
+bool ServerFeatures::haveExtendedRiding() const
+{
+    return false;
+}
+
 }  // namespace TmwAthena

@@ -115,6 +115,8 @@ class ServerFeatures final : public Net::ServerFeatures
         bool haveNewGuild() const override final;
 
         bool haveAdvancedSprites() const override final;
+
+        bool haveExtendedRiding() const override final;
 };
 
 }  // namespace EAthena

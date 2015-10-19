@@ -1249,7 +1249,7 @@ void Being::fireMissile(Being *const victim, const std::string &particle) const
 
 std::string Being::getSitAction() const
 {
-    if (mRiding)
+    if (mHorseId != 0)
         return SpriteAction::SITRIDE;
     if (mMap)
     {
@@ -1267,7 +1267,7 @@ std::string Being::getSitAction() const
 
 std::string Being::getMoveAction() const
 {
-    if (mRiding)
+    if (mHorseId != 0)
         return SpriteAction::RIDE;
     if (mMap)
     {
@@ -1285,7 +1285,7 @@ std::string Being::getWeaponAttackAction(const ItemInfo *const weapon) const
     if (!weapon)
         return SpriteAction::ATTACK;
 
-    if (mRiding)
+    if (mHorseId != 0)
         return weapon->getRideAttackAction();
     if (mMap)
     {
@@ -1317,7 +1317,7 @@ std::string Being::getAttackAction(const Attack *const attack1) const
 #define getSpriteAction(func, action) \
     std::string Being::get##func##Action() const \
 { \
-    if (mRiding) \
+    if (mHorseId != 0) \
         return SpriteAction::action##RIDE; \
     if (mMap) \
     { \
@@ -4055,14 +4055,27 @@ void Being::removeHorse()
 
 void Being::setRiding(const bool b)
 {
-    if (b == mRiding)
+    if (serverFeatures->haveExtendedRiding())
         return;
-    mRiding = b;
+
+    if (b == (mHorseId != 0))
+        return;
+    if (b)
+        setHorse(1);
+    else
+        setHorse(0);
+}
+
+void Being::setHorse(const int horseId)
+{
+    if (mHorseId == horseId)
+        return;
+    mHorseId = horseId;
     setAction(mAction, 0);
     removeHorse();
-    if (b)
+    if (mHorseId != 0)
     {
-        mHorseInfo = HorseDB::get(1);
+        mHorseInfo = HorseDB::get(horseId);
         if (mHorseInfo)
         {
             FOR_EACH (SpriteRefs, it, mHorseInfo->downSprites)

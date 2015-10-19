@@ -895,6 +895,8 @@ class Being notfinal : public ActorSprite,
 
         void setRiding(const bool b) override final;
 
+        void setHorse(const int horseId);
+
         void removeHorse();
 
         void setSellBoard(const std::string &text);

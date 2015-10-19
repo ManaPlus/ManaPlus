@@ -177,7 +177,7 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
         { return mHaveCart; }
 
         virtual void setRiding(const bool b)
-        { mRiding = b; }
+        { mHorseId = b ? 1 : 0; }
 
     protected:
         /**
@@ -226,6 +226,7 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
         ParticleList mStunParticleEffects;
         ParticleVector mStatusParticleEffects;
         ParticleList mChildParticleEffects;
+        int mHorseId;
         BeingId mId;
         uint16_t mStunMode;             /**< Stun mode; zero if not stunned */
 
@@ -243,7 +244,6 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
         bool mMustResetParticles;
         bool mPoison;
         bool mHaveCart;
-        bool mRiding;
 };
 
 #endif  // BEING_ACTORSPRITE_H
