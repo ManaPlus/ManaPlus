@@ -1363,21 +1363,35 @@ void BeingRecv::processBeingAttrs(Net::MessageIn &msg)
     const int len = msg.readInt16("len");
     if (len < 12)
         return;
+    const bool haveMount = serverFeatures->haveExtendedRiding();
+    if (haveMount && len < 14)
+        return;
+
     Being *const dstBeing = actorManager->findBeing(
         msg.readBeingId("player id"));
     const int gmLevel = msg.readInt32("gm level");
-    if (dstBeing && gmLevel)
+    uint16_t mount = 0;
+    if (haveMount)
+        mount = msg.readInt16("mount");
+    if (dstBeing)
     {
-        if (dstBeing == localPlayer)
-            localPlayer->setGMLevel(gmLevel);
-        dstBeing->setGM(true);
+        if (gmLevel)
+        {
+            if (dstBeing == localPlayer)
+                localPlayer->setGMLevel(gmLevel);
+            dstBeing->setGM(true);
+        }
+        else
+        {
+            if (dstBeing == localPlayer)
+                localPlayer->setGMLevel(0);
+            if (dstBeing)
+                dstBeing->setGM(false);
+        }
     }
-    else
+    if (haveMount)
     {
-        if (dstBeing == localPlayer)
-            localPlayer->setGMLevel(0);
-        if (dstBeing)
-            dstBeing->setGM(false);
+        dstBeing->setHorse(mount);
     }
 }
 

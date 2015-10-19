@@ -191,6 +191,8 @@ void HorseDB::unload()
 
     delete_all(mUnknown.upSprites);
     delete_all(mUnknown.downSprites);
+    mUnknown.upSprites.clear();
+    mUnknown.downSprites.clear();
 
     mLoaded = false;
 }
