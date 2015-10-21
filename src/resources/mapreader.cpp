@@ -764,6 +764,7 @@ void MapReader::readLayer(const XmlNodePtr node, Map *const map)
     const bool isCollisionLayer = (name.substr(0, 9) == "collision");
     const bool isHeightLayer = (name.substr(0, 7) == "heights");
     int mask = 1;
+    int tileCondition = -1;
 
     MapLayer::Type layerType = MapLayer::TILES;
     if (isCollisionLayer)
@@ -811,6 +812,10 @@ void MapReader::readLayer(const XmlNodePtr node, Map *const map)
                 {
                     mask = atoi(value.c_str());
                 }
+                else if (pname == "TileCondition")
+                {
+                    tileCondition = atoi(value.c_str());
+                }
             }
         }
 
@@ -819,7 +824,11 @@ void MapReader::readLayer(const XmlNodePtr node, Map *const map)
 
         if (layerType == MapLayer::TILES)
         {
-            layer = new MapLayer(offsetX, offsetY, w, h, isFringeLayer, mask);
+            layer = new MapLayer(offsetX, offsetY,
+                w, h,
+                isFringeLayer,
+                mask,
+                tileCondition);
             map->addLayer(layer);
         }
         else if (layerType == MapLayer::HEIGHTS)
@@ -1079,9 +1088,9 @@ Map *MapReader::createEmptyMap(const std::string &restrict filename,
     map->setProperty("_realfilename", filename);
     updateMusic(map);
     map->setCustom(true);
-    MapLayer *layer = new MapLayer(0, 0, 300, 300, false, 1);
+    MapLayer *layer = new MapLayer(0, 0, 300, 300, false, 1, -1);
     map->addLayer(layer);
-    layer = new MapLayer(0, 0, 300, 300, true, 1);
+    layer = new MapLayer(0, 0, 300, 300, true, 1, -1);
     map->addLayer(layer);
     map->updateDrawLayersList();
 

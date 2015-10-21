@@ -47,7 +47,8 @@
 MapLayer::MapLayer(const int x, const int y,
                    const int width, const int height,
                    const bool fringeLayer,
-                   const int mask) :
+                   const int mask,
+                   const int tileCondition) :
     mX(x),
     mY(y),
     mWidth(width),
@@ -58,6 +59,7 @@ MapLayer::MapLayer(const int x, const int y,
     mTempLayer(nullptr),
     mTempRows(),
     mMask(mask),
+    mTileCondition(tileCondition),
     mActorsFix(0),
     mIsFringeLayer(fringeLayer),
     mHighlightAttackRange(config.getBoolValue("highlightAttackRange")),

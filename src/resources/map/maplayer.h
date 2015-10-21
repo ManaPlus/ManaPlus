@@ -60,7 +60,9 @@ class MapLayer final: public ConfigListener
          */
         MapLayer(const int x, const int y,
                  const int width, const int height,
-                 const bool isFringeLayer, const int mask);
+                 const bool isFringeLayer,
+                 const int mask,
+                 const int tileCondition);
 
         A_DELETE_COPY(MapLayer)
 
@@ -166,6 +168,7 @@ class MapLayer final: public ConfigListener
         typedef std::vector<MapRowVertexes*> MapRows;
         MapRows mTempRows;
         int mMask;
+        int mTileCondition;
         int mActorsFix;
         const bool mIsFringeLayer;    /**< Whether the actors are drawn. */
         bool mHighlightAttackRange;
