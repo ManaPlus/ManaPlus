@@ -30,6 +30,7 @@
 
 #include "being/localplayer.h"
 
+#include "enums/resources/map/blockmask.h"
 #include "enums/resources/map/mapitemtype.h"
 
 #include "gui/userpalette.h"
@@ -40,6 +41,7 @@
 
 #include "resources/map/mapitem.h"
 #include "resources/map/maprowvertexes.h"
+#include "resources/map/metatile.h"
 #include "resources/map/speciallayer.h"
 
 #include "debug.h"
@@ -132,6 +134,8 @@ void MapLayer::draw(Graphics *const graphics,
 
         for (int x = startX; x < endX; x++, tilePtr++)
         {
+            if (!tilePtr->isEnabled)
+                continue;
             const int x32 = x * mapTileSize;
 
             int c = 0;
@@ -144,7 +148,7 @@ void MapLayer::draw(Graphics *const graphics,
                 {
                     int width = 0;
                     // here need not draw over player position
-                    c = getTileDrawWidth(img, endX - x, width);
+                    c = getTileDrawWidth(tilePtr, endX - x, width);
 
                     if (!c)
                     {
@@ -225,6 +229,8 @@ void MapLayer::updateSDL(const Graphics *const graphics,
 
         for (int x = startX; x < endX; x++, tilePtr++)
         {
+            if (!tilePtr->isEnabled)
+                continue;
             Image *const img = (*tilePtr).image;
             if (img)
             {
@@ -287,6 +293,8 @@ void MapLayer::updateOGL(Graphics *const graphics,
         TileInfo *tilePtr = &mTiles[static_cast<size_t>(startX + yWidth)];
         for (int x = startX; x < endX; x++, tilePtr++)
         {
+            if (!tilePtr->isEnabled)
+                continue;
             Image *const img = (*tilePtr).image;
             if (img)
             {
@@ -501,7 +509,7 @@ void MapLayer::drawFringe(Graphics *const graphics,
                         const int py = py0 - img->mBounds.h;
                         int width = 0;
                         // here need not draw over player position
-                        c = getTileDrawWidth(img, endX - x, width);
+                        c = getTileDrawWidth(tilePtr, endX - x, width);
 
                         if (!c)
                         {
@@ -583,7 +591,7 @@ void MapLayer::drawFringe(Graphics *const graphics,
                     {
                         int width = 0;
                         // here need not draw over player position
-                        const int c = getTileDrawWidth(img, endX - x, width);
+                        const int c = getTileDrawWidth(tilePtr, endX - x, width);
 
                         if (!c)
                         {
@@ -646,12 +654,12 @@ void MapLayer::drawFringe(Graphics *const graphics,
     BLOCK_END("MapLayer::drawFringe")
 }
 
-int MapLayer::getTileDrawWidth(const Image *img,
+int MapLayer::getTileDrawWidth(const TileInfo *tilePtr,
                                const int endX,
                                int &width)
 {
     BLOCK_START("MapLayer::getTileDrawWidth")
-    const Image *const img1 = img;
+    const Image *const img1 = tilePtr->image;
     int c = 0;
     if (!img1)
     {
@@ -662,7 +670,8 @@ int MapLayer::getTileDrawWidth(const Image *img,
     width = img1->mBounds.w;
     for (int x = 1; x < endX; x++)
     {
-        img ++;
+        tilePtr ++;
+        const Image *const img = tilePtr->image;
         if (img != img1)
             break;
         c ++;
@@ -679,4 +688,29 @@ void MapLayer::setDrawLayerFlags(const MapTypeT &n)
     mSpecialFlag = (mDrawLayerFlags != MapType::SPECIAL
         && mDrawLayerFlags != MapType::SPECIAL2
         && mDrawLayerFlags != MapType::SPECIAL4);
+}
+
+void MapLayer::updateConditionTiles(MetaTile *const metaTiles,
+                                    const int width, const int height)
+{
+    const int width1 = width < mWidth ? width : mWidth;
+    const int height1 = height < mHeight ? height : mHeight;
+
+    for (int y = mY; y < height1; y ++)
+    {
+        MetaTile *metaPtr = metaTiles + (y - mY) * width;
+        TileInfo *tilePtr = mTiles + y * mWidth;
+        for (int x = mX; x < width1; x ++, metaPtr ++, tilePtr ++)
+        {
+            if (metaPtr->blockmask & mTileCondition ||
+                (metaPtr->blockmask == 0 && mTileCondition == BlockMask::GROUND))
+            {
+                tilePtr->isEnabled = true;
+            }
+            else
+            {
+                tilePtr->isEnabled = false;
+            }
+        }
+    }
 }

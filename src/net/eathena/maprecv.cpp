@@ -75,17 +75,14 @@ void MapRecv::processSetTilesType(Net::MessageIn &msg)
     if (layer)
         return;
     Map *const map = viewport->getMap();
-//    logger->log("map test name: %s, mask %d", map->getGatName().c_str(), (int)mask);
     if (map && map->getGatName() == name)
     {
         for (int y = y1; y <= y2; y ++)
         {
             for (int x = x1; x <= x2; x ++)
-            {
-                logger->log("set col %d,%d", x, y);
                 map->setBlockMask(x, y, mask);
-            }
         }
+        map->updateConditionLayers();
     }
 }
 

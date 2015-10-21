@@ -339,6 +339,8 @@ class Map final : public Properties, public ConfigListener
         bool isHeightsPresent() const
         { return mHeights != nullptr; }
 
+        void updateConditionLayers();
+
     protected:
         friend class Actor;
         friend class Minimap;

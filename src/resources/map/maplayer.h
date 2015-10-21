@@ -37,6 +37,8 @@ class Image;
 class MapRowVertexes;
 class SpecialLayer;
 
+struct MetaTile;
+
 /**
  * A map layer. Stores a grid of tiles and their offset, and implements layer
  * rendering.
@@ -152,9 +154,12 @@ class MapLayer final: public ConfigListener
         { mActorsFix = y; }
 
     protected:
-        static int getTileDrawWidth(const Image *img,
+        static int getTileDrawWidth(const TileInfo *img,
                                     const int endX,
                                     int &width) A_WARN_UNUSED;
+
+        void updateConditionTiles(MetaTile *const metaTiles,
+                                  const int width, const int height);
 
     private:
         const int mX;

@@ -28,11 +28,13 @@ class Image;
 struct TileInfo final
 {
     TileInfo() :
-        image(nullptr)
+        image(nullptr),
+        isEnabled(true)
     {
     }
 
     Image *image;
+    bool isEnabled;
 };
 
 #endif  // RESOURCES_MAP_TILEINFO_H

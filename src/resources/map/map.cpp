@@ -1645,3 +1645,17 @@ void Map::setActorsFix(const int x, const int y)
     if (mFringeLayer)
         mFringeLayer->setActorsFix(y);
 }
+
+void Map::updateConditionLayers()
+{
+    mRedrawMap = true;
+
+    FOR_EACH (LayersCIter, it, mLayers)
+    {
+        MapLayer *const layer = *it;
+        if (!layer || layer->mTileCondition == -1)
+            continue;
+        layer->updateConditionTiles(mMetaTiles,
+            mWidth, mHeight);
+    }
+}
