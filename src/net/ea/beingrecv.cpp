@@ -72,7 +72,6 @@ void BeingRecv::processBeingRemove(Net::MessageIn &msg)
     Being *const dstBeing = actorManager->findBeing(id);
     if (!dstBeing)
     {
-        msg.readUInt8("dead flag?");
         BLOCK_END("BeingRecv::processBeingRemove")
         return;
     }
