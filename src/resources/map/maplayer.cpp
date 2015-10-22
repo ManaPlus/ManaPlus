@@ -139,7 +139,7 @@ void MapLayer::draw(Graphics *const graphics,
             const int x32 = x * mapTileSize;
 
             int c = 0;
-            const Image *const img = (*tilePtr).image;
+            const Image *const img = tilePtr->image;
             if (img)
             {
                 const int px = x32 + dx;
@@ -163,6 +163,7 @@ void MapLayer::draw(Graphics *const graphics,
             }
 
             x += c;
+            tilePtr += c;
         }
     }
     BLOCK_END("MapLayer::draw")
@@ -496,11 +497,13 @@ void MapLayer::drawFringe(Graphics *const graphics,
             TileInfo *tilePtr = &mTiles[static_cast<size_t>(startX + yWidth)];
             for (int x = startX; x < endX; x++, tilePtr++)
             {
+                if (!tilePtr->isEnabled)
+                    continue;
                 const int x32 = x * mapTileSize;
 
                 const int px1 = x32 - scrollX;
                 int c = 0;
-                const Image *const img = (*tilePtr).image;
+                const Image *const img = tilePtr->image;
                 if (img)
                 {
                     if (mSpecialFlag || img->mBounds.h <= mapTileSize)
@@ -557,6 +560,7 @@ void MapLayer::drawFringe(Graphics *const graphics,
                     }
                 }
                 x += c;
+                tilePtr += c;
             }
         }
 
@@ -581,8 +585,10 @@ void MapLayer::drawFringe(Graphics *const graphics,
             TileInfo *tilePtr = &mTiles[static_cast<size_t>(startX + yWidth)];
             for (int x = startX; x < endX; x++, tilePtr++)
             {
+                if (!tilePtr->isEnabled)
+                    continue;
                 const int x32 = x * mapTileSize;
-                const Image *const img = (*tilePtr).image;
+                const Image *const img = tilePtr->image;
                 if (img)
                 {
                     const int px = x32 + dx;
@@ -602,6 +608,7 @@ void MapLayer::drawFringe(Graphics *const graphics,
                             graphics->drawPattern(img, px, py,
                                 width, img->mBounds.h);
                             x += c;
+                            tilePtr += c;
                         }
                     }
                 }
@@ -672,7 +679,7 @@ int MapLayer::getTileDrawWidth(const TileInfo *tilePtr,
     {
         tilePtr ++;
         const Image *const img = tilePtr->image;
-        if (img != img1)
+        if (img != img1 || !tilePtr->isEnabled)
             break;
         c ++;
         if (img)
