@@ -766,6 +766,7 @@ void MapReader::readLayer(const XmlNodePtr node, Map *const map)
     const bool isHeightLayer = (name.substr(0, 7) == "heights");
     int mask = 1;
     int tileCondition = -1;
+    int conditionLayer = 0;
 
     MapLayer::Type layerType = MapLayer::TILES;
     if (isCollisionLayer)
@@ -817,11 +818,20 @@ void MapReader::readLayer(const XmlNodePtr node, Map *const map)
                 {
                     tileCondition = atoi(value.c_str());
                 }
+                else if (pname == "ConditionLayer")
+                {
+                    conditionLayer = atoi(value.c_str());
+                }
             }
         }
 
         if (!xmlNameEqual(childNode, "data"))
             continue;
+
+        // Disable for future usage "TileCondition" attribute
+        // if already set ConditionLayer to non zero
+        if (conditionLayer != 0)
+            tileCondition = -1;
 
         if (layerType == MapLayer::TILES)
         {
