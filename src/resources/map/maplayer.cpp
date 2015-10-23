@@ -597,7 +597,9 @@ void MapLayer::drawFringe(Graphics *const graphics,
                     {
                         int width = 0;
                         // here need not draw over player position
-                        const int c = getTileDrawWidth(tilePtr, endX - x, width);
+                        const int c = getTileDrawWidth(tilePtr,
+                            endX - x,
+                            width);
 
                         if (!c)
                         {
@@ -710,7 +712,8 @@ void MapLayer::updateConditionTiles(MetaTile *const metaTiles,
         for (int x = mX; x < width1; x ++, metaPtr ++, tilePtr ++)
         {
             if (metaPtr->blockmask & mTileCondition ||
-                (metaPtr->blockmask == 0 && mTileCondition == BlockMask::GROUND))
+                (metaPtr->blockmask == 0 &&
+                mTileCondition == BlockMask::GROUND))
             {
                 tilePtr->isEnabled = true;
             }

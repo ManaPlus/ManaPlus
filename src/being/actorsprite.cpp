@@ -213,7 +213,7 @@ void ActorSprite::setStatusEffectBlock(const int offset,
             const std::string str = strprintf(
                 "Error: unknown effect by block-index. "
                 "Offset: %d, effect int: %d, i: %u",
-                offset, (int)newEffects, i);
+                offset, static_cast<int>(newEffects), i);
             logger->log(str);
             DebugMessageListener::distributeEvent(str);
         }

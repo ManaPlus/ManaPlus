@@ -1090,9 +1090,9 @@ class Being notfinal : public ActorSprite,
 #ifdef EATHENA_SUPPORT
         ChatObject *mChat;
         HorseInfo *mHorseInfo;
-#endif
         std::vector<AnimatedSprite*> mDownHorseSprites;
         std::vector<AnimatedSprite*> mUpHorseSprites;
+#endif
 
         int mX;             // position in tiles
         int mY;             // position in tiles

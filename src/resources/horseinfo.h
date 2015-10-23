@@ -24,13 +24,13 @@
 
 #include "resources/spritereference.h"
 
-#include <vector>
-
 #include "localconsts.h"
 
 struct HorseInfo final
 {
     HorseInfo() :
+        downSprites(),
+        upSprites(),
         downOffsetX(0),
         downOffsetY(0),
         upOffsetX(0),

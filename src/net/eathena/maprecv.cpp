@@ -20,10 +20,6 @@
 
 #include "net/eathena/maprecv.h"
 
-#include "logger.h"
-
-#include "enums/resources/map/blocktype.h"
-
 #include "gui/viewport.h"
 
 #include "net/messagein.h"

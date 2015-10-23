@@ -197,6 +197,8 @@ Being::Being(const BeingId id,
 #ifdef EATHENA_SUPPORT
     mChat(nullptr),
     mHorseInfo(nullptr),
+    mDownHorseSprites(),
+    mUpHorseSprites(),
 #endif
     mX(0),
     mY(0),

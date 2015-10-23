@@ -42,7 +42,6 @@
 #include <windows.h>
 #endif
 
-#include <getopt.h>
 #include <iostream>
 #include <unistd.h>
 
