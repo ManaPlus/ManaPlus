@@ -1,3 +1,14 @@
+2015-10-24 New release 1.5.10.24
+fix: remove useless memory allocations.
+fix: status effects (hercules)
+add: flag for stay npcs after they going outside of visible range
+add: option for show why player disappeared (settings / players / Log players actions)
+add: support for change collisions from server side (hercules)
+add: support for show tiles from special layes based on tile collision type.
+add: protect most actions from executing from server.
+add: support for two parts and multy sprites horses.
+add: logging for not implimented status effects.
+
 2015-10-10 New release 1.5.10.10
 fix: moving animation lag in moving (hercules)
 fix: recode buildin sounds to 44100 khz
