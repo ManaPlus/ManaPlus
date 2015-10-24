@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2015-10-10 15:04+0300\n"
+"POT-Creation-Date: 2015-10-24 14:50+0300\n"
 "PO-Revision-Date: 2015-09-27 08:24+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Turkish (http://www.transifex.com/akaras/manaplus/language/"
@@ -269,25 +269,25 @@ msgid "Visible on map"
 msgstr "Haritada görünür"
 
 #. TRANSLATORS: default race name
-#: src/being/being.cpp:448
+#: src/being/being.cpp:453
 msgid "Human"
 msgstr "İnsan"
 
-#: src/being/being.cpp:625
+#: src/being/being.cpp:630
 msgid "dodge"
 msgstr "kaçınıldı"
 
-#: src/being/being.cpp:625
+#: src/being/being.cpp:630
 msgid "miss"
 msgstr "kaçırıldı"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being/being.cpp:2108 src/gui/windows/whoisonline.cpp:871
+#: src/being/being.cpp:2119 src/gui/windows/whoisonline.cpp:871
 msgid "A"
 msgstr "A"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being/being.cpp:2113 src/gui/windows/whoisonline.cpp:876
+#: src/being/being.cpp:2124 src/gui/windows/whoisonline.cpp:876
 msgid "I"
 msgstr "İ"
 
@@ -1834,7 +1834,7 @@ msgstr "Taşı"
 #. TRANSLATORS: talk with npc
 #. TRANSLATORS: input action name
 #: src/gui/popups/popupmenu.cpp:253 src/input/pages/basic.cpp:88
-#: src/resources/db/npcdb.cpp:147
+#: src/resources/db/npcdb.cpp:150
 msgid "Talk"
 msgstr "Konuş"
 
@@ -1850,7 +1850,7 @@ msgstr "Konuş"
 #: src/gui/windows/buydialog.cpp:194 src/gui/windows/buydialog.cpp:212
 #: src/gui/windows/buydialog.cpp:275 src/gui/windows/buyselldialog.cpp:71
 #: src/gui/windows/shopwindow.cpp:168 src/input/pages/basic.cpp:244
-#: src/resources/db/npcdb.cpp:148
+#: src/resources/db/npcdb.cpp:151
 msgid "Buy"
 msgstr "Satın Al"
 
@@ -1866,7 +1866,7 @@ msgstr "Satın Al"
 #: src/gui/popups/popupmenu.cpp:266 src/gui/popups/popupmenu.cpp:2395
 #: src/gui/widgets/selldialog.cpp:52 src/gui/widgets/selldialog.cpp:99
 #: src/gui/windows/buyselldialog.cpp:73 src/gui/windows/shopwindow.cpp:170
-#: src/input/pages/basic.cpp:250 src/resources/db/npcdb.cpp:149
+#: src/input/pages/basic.cpp:250 src/resources/db/npcdb.cpp:152
 msgid "Sell"
 msgstr "Sat"
 
@@ -4134,7 +4134,7 @@ msgstr "Sadece erişilebilen canavarları otomatik hedefle"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:119
-msgid "Seleck auto target for attack skills"
+msgid "Select auto target for attack skills"
 msgstr ""
 
 #. TRANSLATORS: settings option
@@ -4730,11 +4730,16 @@ msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_players.cpp:128
-msgid "Create screenshots for each complete trades"
+msgid "Log players actions (for GM)"
 msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_players.cpp:132
+msgid "Create screenshots for each complete trades"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_players.cpp:136
 msgid ""
 "Emulate right mouse button by long mouse click (useful for touch interfaces)"
 msgstr ""
@@ -9993,6 +9998,36 @@ msgstr ""
 #: src/resources/notifications.h:742
 msgid "Pet catch started."
 msgstr ""
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:776
+#, fuzzy, c-format
+msgid "Player %s died."
+msgstr "Oyuncu görmezden gelinmiyordu!"
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:780
+#, fuzzy, c-format
+msgid "Player %s logged out."
+msgstr "Oyuncu daha fazla görmezden gelinmiyor!"
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:784
+#, fuzzy, c-format
+msgid "Player %s warped."
+msgstr "Oyuncu HP çubuğu"
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:788
+#, c-format
+msgid "Player %s trick dead."
+msgstr ""
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:792
+#, fuzzy, c-format
+msgid "Player %s unknown remove."
+msgstr "(?) bilinmeyen hareket"
 
 #. TRANSLATORS: chat option changed message
 #: src/utils/booleanoptions.h:27

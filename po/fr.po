@@ -14,6 +14,7 @@
 # Escales Loïc <loic.escales@gmail.com>, 2014-2015
 # Jacques Bossu <ja.bossu@caramail.com>, 2015
 # Jumpy <antoinebcn@hotmail.com>, 2011
+# Marc Piton Soteras <mortistmw@gmail.com>, 2015
 # reid <reidyaro@gmail.com>, 2011-2012
 # reid <reidyaro@gmail.com>, 2011, 2012
 # Steel Style <steelstyle@free.fr>, 2012
@@ -21,8 +22,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2015-10-10 15:04+0300\n"
-"PO-Revision-Date: 2015-09-27 08:24+0000\n"
+"POT-Creation-Date: 2015-10-24 14:50+0300\n"
+"PO-Revision-Date: 2015-10-24 11:48+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: French (http://www.transifex.com/akaras/manaplus/language/"
 "fr/)\n"
@@ -244,7 +245,7 @@ msgstr "ennemi"
 #. TRANSLATORS: quick mail message caption
 #: src/actions/commands.cpp:532
 msgid "Quick message"
-msgstr ""
+msgstr "Message Rapide"
 
 #. TRANSLATORS: result from command /confget
 #: src/actions/commands.cpp:1033
@@ -283,25 +284,25 @@ msgid "Visible on map"
 msgstr "Visible sur la carte"
 
 #. TRANSLATORS: default race name
-#: src/being/being.cpp:448
+#: src/being/being.cpp:453
 msgid "Human"
 msgstr "Humain"
 
-#: src/being/being.cpp:625
+#: src/being/being.cpp:630
 msgid "dodge"
 msgstr "esquive"
 
-#: src/being/being.cpp:625
+#: src/being/being.cpp:630
 msgid "miss"
 msgstr "raté"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being/being.cpp:2108 src/gui/windows/whoisonline.cpp:871
+#: src/being/being.cpp:2119 src/gui/windows/whoisonline.cpp:871
 msgid "A"
 msgstr "A"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being/being.cpp:2113 src/gui/windows/whoisonline.cpp:876
+#: src/being/being.cpp:2124 src/gui/windows/whoisonline.cpp:876
 msgid "I"
 msgstr "I"
 
@@ -1412,7 +1413,7 @@ msgstr "(défaut)"
 #. TRANSLATORS: language
 #: src/gui/models/langlistmodel.h:47
 msgid "Catalan"
-msgstr ""
+msgstr "Catalan"
 
 #. TRANSLATORS: language
 #: src/gui/models/langlistmodel.h:49
@@ -1422,7 +1423,7 @@ msgstr "Chinois (Chine)"
 #. TRANSLATORS: language
 #: src/gui/models/langlistmodel.h:51
 msgid "Chinese (Hong Kong)"
-msgstr ""
+msgstr "Chinois (Hong Kong)"
 
 #. TRANSLATORS: language
 #: src/gui/models/langlistmodel.h:53
@@ -1507,7 +1508,7 @@ msgstr "Turc"
 #. TRANSLATORS: language
 #: src/gui/models/langlistmodel.h:85
 msgid "Ukrainian"
-msgstr ""
+msgstr "Ukrainien"
 
 #. TRANSLATORS: magic school
 #: src/gui/models/magicschoolmodel.h:35
@@ -1857,7 +1858,7 @@ msgstr "Déplacement"
 #. TRANSLATORS: talk with npc
 #. TRANSLATORS: input action name
 #: src/gui/popups/popupmenu.cpp:253 src/input/pages/basic.cpp:88
-#: src/resources/db/npcdb.cpp:147
+#: src/resources/db/npcdb.cpp:150
 msgid "Talk"
 msgstr "Parler"
 
@@ -1873,7 +1874,7 @@ msgstr "Parler"
 #: src/gui/windows/buydialog.cpp:194 src/gui/windows/buydialog.cpp:212
 #: src/gui/windows/buydialog.cpp:275 src/gui/windows/buyselldialog.cpp:71
 #: src/gui/windows/shopwindow.cpp:168 src/input/pages/basic.cpp:244
-#: src/resources/db/npcdb.cpp:148
+#: src/resources/db/npcdb.cpp:151
 msgid "Buy"
 msgstr "Acheter"
 
@@ -1889,7 +1890,7 @@ msgstr "Acheter"
 #: src/gui/popups/popupmenu.cpp:266 src/gui/popups/popupmenu.cpp:2395
 #: src/gui/widgets/selldialog.cpp:52 src/gui/widgets/selldialog.cpp:99
 #: src/gui/windows/buyselldialog.cpp:73 src/gui/windows/shopwindow.cpp:170
-#: src/input/pages/basic.cpp:250 src/resources/db/npcdb.cpp:149
+#: src/input/pages/basic.cpp:250 src/resources/db/npcdb.cpp:152
 msgid "Sell"
 msgstr "Vendre"
 
@@ -2290,12 +2291,12 @@ msgstr "Montrer"
 #. TRANSLATORS: popup menu item
 #: src/gui/popups/popupmenu.cpp:1981
 msgid "Open yellow bar settings"
-msgstr ""
+msgstr "Ouvrir la fenêtre de réglages de la barre jaune"
 
 #. TRANSLATORS: popup menu item
 #: src/gui/popups/popupmenu.cpp:1983
 msgid "Reset yellow bar"
-msgstr "Remise aux valeurs de défaut de la barre jaune"
+msgstr "Remise à zéro des valeurs de la barre jaune"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: copy status to chat
@@ -2680,7 +2681,7 @@ msgstr ""
 #. TRANSLATORS: palette label
 #: src/gui/userpalette.cpp:227
 msgid "Particles"
-msgstr ""
+msgstr "Particules"
 
 #. TRANSLATORS: palette color
 #. TRANSLATORS: settings option
@@ -2701,7 +2702,7 @@ msgstr "Notification d'Exp"
 #. TRANSLATORS: palette label
 #: src/gui/userpalette.cpp:245
 msgid "Hp bars"
-msgstr ""
+msgstr "Barre de PV"
 
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:250
@@ -2726,7 +2727,7 @@ msgstr "Barre de vie du monstre (Couleur secondaire)"
 #. TRANSLATORS: palette label
 #: src/gui/userpalette.cpp:271
 msgid "Hits"
-msgstr ""
+msgstr "Coups"
 
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:276
@@ -2771,7 +2772,7 @@ msgstr "Coups manqués"
 #. TRANSLATORS: palette label
 #: src/gui/userpalette.cpp:313
 msgid "Tiles"
-msgstr ""
+msgstr "Tuiles"
 
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:318
@@ -4158,7 +4159,7 @@ msgstr "Ne viser en auto que les monstres à portée de tir"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:119
-msgid "Seleck auto target for attack skills"
+msgid "Select auto target for attack skills"
 msgstr ""
 
 #. TRANSLATORS: settings option
@@ -4398,7 +4399,7 @@ msgstr ""
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:303
 msgid "Enable manamarket bot support"
-msgstr ""
+msgstr "Activer le support de bot du ManaMarket"
 
 #. TRANSLATORS: settings group
 #: src/gui/widgets/tabs/setup_other.cpp:309
@@ -4663,22 +4664,22 @@ msgstr "Désactiver l'entrée en jeu (ne pas activer)"
 #. TRANSLATORS: screen badges type
 #: src/gui/widgets/tabs/setup_players.cpp:42
 msgid "hide"
-msgstr ""
+msgstr "masquer"
 
 #. TRANSLATORS: screen badges type
 #: src/gui/widgets/tabs/setup_players.cpp:44
 msgid "show at top"
-msgstr ""
+msgstr "afficher en haut"
 
 #. TRANSLATORS: screen badges type
 #: src/gui/widgets/tabs/setup_players.cpp:46
 msgid "show at right"
-msgstr ""
+msgstr "afficher à droite"
 
 #. TRANSLATORS: screen badges type
 #: src/gui/widgets/tabs/setup_players.cpp:48
 msgid "show at bottom"
-msgstr ""
+msgstr "afficher en bas"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_players.cpp:63
@@ -4718,7 +4719,7 @@ msgstr "Bouger automatiquement les noms"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_players.cpp:92
 msgid "Badges"
-msgstr ""
+msgstr "Badges"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_players.cpp:96
@@ -4763,11 +4764,16 @@ msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_players.cpp:128
-msgid "Create screenshots for each complete trades"
+msgid "Log players actions (for GM)"
 msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_players.cpp:132
+msgid "Create screenshots for each complete trades"
+msgstr "Créer un imprimé écran pour chaque échange réussi"
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_players.cpp:136
 msgid ""
 "Emulate right mouse button by long mouse click (useful for touch interfaces)"
 msgstr ""
@@ -5572,7 +5578,7 @@ msgstr ""
 #: src/gui/windowmenu.cpp:158 src/gui/windows/mailwindow.cpp:52
 #: src/inventory.cpp:325
 msgid "Mail"
-msgstr ""
+msgstr "Mail"
 
 #. TRANSLATORS: short button name for debug window.
 #: src/gui/windowmenu.cpp:161
@@ -5633,7 +5639,7 @@ msgstr "Créer"
 #. TRANSLATORS: buy dialog label
 #: src/gui/windows/buydialog.cpp:316
 msgid "Filter:"
-msgstr ""
+msgstr "Filtre:"
 
 #. TRANSLATORS: change email dialog header
 #. TRANSLATORS: button in change email dialog
@@ -6331,7 +6337,7 @@ msgstr "Ouvrir l'URL d'inscription"
 #. TRANSLATORS: mail edit window name
 #: src/gui/windows/maileditwindow.cpp:47
 msgid "Edit mail"
-msgstr ""
+msgstr "Editer le mail"
 
 #. TRANSLATORS: mail edit window button
 #: src/gui/windows/maileditwindow.cpp:50
@@ -6358,50 +6364,50 @@ msgstr "Vers :"
 #. TRANSLATORS: mail view window label
 #: src/gui/windows/maileditwindow.cpp:58 src/gui/windows/mailviewwindow.cpp:72
 msgid "Subject:"
-msgstr ""
+msgstr "Sujet:"
 
 #. TRANSLATORS: mail edit window label
 #. TRANSLATORS: mail view window label
 #: src/gui/windows/maileditwindow.cpp:60 src/gui/windows/mailviewwindow.cpp:103
 msgid "Money:"
-msgstr ""
+msgstr "Argent:"
 
 #. TRANSLATORS: mail edit window label
 #: src/gui/windows/maileditwindow.cpp:62 src/gui/windows/mailviewwindow.cpp:120
 #: src/gui/windows/mailviewwindow.cpp:125
 msgid "Item:"
-msgstr ""
+msgstr "Objet:"
 
 #. TRANSLATORS: mail edit window label
 #. TRANSLATORS: mail view window label
 #: src/gui/windows/maileditwindow.cpp:64 src/gui/windows/mailviewwindow.cpp:75
 msgid "Message:"
-msgstr ""
+msgstr "Message:"
 
 #. TRANSLATORS: empty mail message subject
 #: src/gui/windows/maileditwindow.cpp:155
 msgid "empty subject"
-msgstr ""
+msgstr "sujet vide"
 
 #. TRANSLATORS: mail view window name
 #: src/gui/windows/mailviewwindow.cpp:53
 msgid "View mail"
-msgstr ""
+msgstr "Lire le mail"
 
 #. TRANSLATORS: mail view window button
 #: src/gui/windows/mailviewwindow.cpp:63
 msgid "Reply"
-msgstr ""
+msgstr "Réponse"
 
 #. TRANSLATORS: mail view window label
 #: src/gui/windows/mailviewwindow.cpp:65
 msgid "Time:"
-msgstr ""
+msgstr "Heure:"
 
 #. TRANSLATORS: mail view window label
 #: src/gui/windows/mailviewwindow.cpp:69
 msgid "From:"
-msgstr ""
+msgstr "De:"
 
 #: src/gui/windows/mailviewwindow.cpp:132
 msgid "Get attach"
@@ -6410,12 +6416,12 @@ msgstr ""
 #. TRANSLATORS: mail window button
 #: src/gui/windows/mailwindow.cpp:62
 msgid "Refresh"
-msgstr ""
+msgstr "Rafraîchir"
 
 #. TRANSLATORS: mail window button
 #: src/gui/windows/mailwindow.cpp:64
 msgid "New"
-msgstr ""
+msgstr "Nouveau"
 
 #. TRANSLATORS: mail window button
 #: src/gui/windows/mailwindow.cpp:68
@@ -6425,7 +6431,7 @@ msgstr ""
 #. TRANSLATORS: mail window button
 #: src/gui/windows/mailwindow.cpp:70
 msgid "Open"
-msgstr ""
+msgstr "Ouvrir"
 
 #: src/gui/windows/ministatuswindow.cpp:71
 msgid "health bar"
@@ -7214,7 +7220,7 @@ msgstr "Cibler le mercenaire"
 #. TRANSLATORS: input action name
 #: src/input/pages/basic.cpp:136
 msgid "Change targeting type"
-msgstr ""
+msgstr "Change le mode de visée"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/basic.cpp:142
@@ -8210,7 +8216,7 @@ msgstr "Fenêtre Panier"
 #. TRANSLATORS: input action name
 #: src/input/pages/windows.cpp:196
 msgid "Quick settings window"
-msgstr ""
+msgstr "Fenêtre de réglages rapides"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/windows.cpp:208
@@ -9046,13 +9052,13 @@ msgstr "Attaque %s"
 #: src/resources/db/itemdb.cpp:99
 #, c-format
 msgid "Min attack %s"
-msgstr ""
+msgstr "Attaque Mini %s"
 
 #. TRANSLATORS: item info label (max attack)
 #: src/resources/db/itemdb.cpp:101
 #, c-format
 msgid "Max attack %s"
-msgstr ""
+msgstr "Attaque Max %s"
 
 #. TRANSLATORS: item info label (attack)
 #: src/resources/db/itemdb.cpp:103
@@ -9076,13 +9082,13 @@ msgstr "Défense %s"
 #: src/resources/db/itemdb.cpp:109
 #, c-format
 msgid "Min defense %s"
-msgstr ""
+msgstr "Défense Mini %s"
 
 #. TRANSLATORS: item info label (max defence)
 #: src/resources/db/itemdb.cpp:111
 #, c-format
 msgid "Max defense %s"
-msgstr ""
+msgstr "Défense Max %s"
 
 #. TRANSLATORS: item info label (critical defence)
 #: src/resources/db/itemdb.cpp:113
@@ -9100,13 +9106,13 @@ msgstr "Défense M. %s"
 #: src/resources/db/itemdb.cpp:117
 #, c-format
 msgid "Min M. Defense %s"
-msgstr ""
+msgstr "Défense M. Mini %s"
 
 #. TRANSLATORS: item info label (max magic defence)
 #: src/resources/db/itemdb.cpp:119
 #, c-format
 msgid "Max M. Defense %s"
-msgstr ""
+msgstr "Défense M. Max %s"
 
 #. TRANSLATORS: item info label (health)
 #: src/resources/db/itemdb.cpp:121
@@ -9118,7 +9124,7 @@ msgstr "PV %s"
 #: src/resources/db/itemdb.cpp:123
 #, c-format
 msgid "Max HP %s"
-msgstr ""
+msgstr "PV Max %s"
 
 #. TRANSLATORS: item info label (mana)
 #: src/resources/db/itemdb.cpp:125
@@ -9130,7 +9136,7 @@ msgstr "PM %s"
 #: src/resources/db/itemdb.cpp:127
 #, c-format
 msgid "Max MP %s"
-msgstr ""
+msgstr "PM Max %s"
 
 #. TRANSLATORS: item info label (level)
 #: src/resources/db/itemdb.cpp:129
@@ -9160,13 +9166,13 @@ msgstr "Fuir %s"
 #: src/resources/db/itemdb.cpp:137
 #, c-format
 msgid "Min flee %s"
-msgstr ""
+msgstr "Fuite Mini %s"
 
 #. TRANSLATORS: item info label (max flee)
 #: src/resources/db/itemdb.cpp:139
 #, c-format
 msgid "Max flee %s"
-msgstr ""
+msgstr "Fuite Max %s"
 
 #. TRANSLATORS: item info label (card slots number)
 #: src/resources/db/itemdb.cpp:141
@@ -9300,7 +9306,7 @@ msgstr "Vous avez été exclu de la guilde."
 #: src/resources/notifications.h:130
 #, c-format
 msgid "%s has been kicked from your guild."
-msgstr ""
+msgstr "%s a été éjecté de votre guilde."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:134
@@ -9855,12 +9861,12 @@ msgstr ""
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:576
 msgid "Message successfully sent."
-msgstr ""
+msgstr "Message envoyé avec succès."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:580
 msgid "Message send failed."
-msgstr ""
+msgstr "Echec de l'envoi du message."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:584
@@ -9910,7 +9916,7 @@ msgstr ""
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:623
 msgid "You enter battle field."
-msgstr ""
+msgstr "Vous entrez sur le champ de bataille."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:630
@@ -9961,52 +9967,52 @@ msgstr ""
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:662
 msgid "End all negative status."
-msgstr ""
+msgstr "Fin de tous les statuts négatifs."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:666
 msgid "Immunity to all status."
-msgstr ""
+msgstr "Immunité à tous les statuts."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:670
 msgid "Max hp +100%."
-msgstr ""
+msgstr "PV max +100%."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:674
 msgid "Max sp +100%."
-msgstr ""
+msgstr "PM max +100%."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:678
 msgid "All stats +20."
-msgstr ""
+msgstr "Toutes les statistiques +20."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:682
 msgid "Enchant weapon with holy element."
-msgstr ""
+msgstr "Enchante l'arme avec un élément sacré."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:686
 msgid "Enchant armor with holy element."
-msgstr ""
+msgstr "Enchante l'armure avec un élément sacré."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:690
 msgid "Def +25%."
-msgstr ""
+msgstr "Défense +25%."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:694
 msgid "Atk +100%."
-msgstr ""
+msgstr "Attaque +100%."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:698
 msgid "Flee +50."
-msgstr ""
+msgstr "Fuite +50."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:702
@@ -10021,37 +10027,41 @@ msgstr ""
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:710
 msgid "Player successfully ignored."
-msgstr ""
+msgstr "Joueur ignoré avec succès."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:714
 msgid "Player ignore failed."
-msgstr ""
+msgstr "La tentative d'ignorer le joueur a échoué."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:718
 msgid "Player ignore failed. Because too many ignores."
 msgstr ""
+"La tentative d'ignorer le joueur a échoué pour cette raison: vous ignorez "
+"déjà beaucoup trop de joueurs."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:722
 msgid "Unknown player ignore failure."
-msgstr ""
+msgstr "La tentative d'ignorer le joueur a échoué pour une raison inconnue."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:726
 msgid "Player successfully unignored."
-msgstr ""
+msgstr "Joueur retiré de votre liste d'ignorés avec succès."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:730
 msgid "Player unignore failed."
-msgstr ""
+msgstr "La tentative de retirer le joueur de votre liste d'ignorés a échoué."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:734
 msgid "Unknown player unignore failure."
 msgstr ""
+"La tentative de retirer le joueur de votre liste d'ignorés a échoué pour une "
+"raison inconnue."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:738
@@ -10062,6 +10072,36 @@ msgstr ""
 #: src/resources/notifications.h:742
 msgid "Pet catch started."
 msgstr ""
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:776
+#, fuzzy, c-format
+msgid "Player %s died."
+msgstr "Dirige le joueur en bas"
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:780
+#, fuzzy, c-format
+msgid "Player %s logged out."
+msgstr "Le joueur n'est plus ignoré !"
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:784
+#, fuzzy, c-format
+msgid "Player %s warped."
+msgstr "Barre de vie du Joueur"
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:788
+#, c-format
+msgid "Player %s trick dead."
+msgstr ""
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:792
+#, fuzzy, c-format
+msgid "Player %s unknown remove."
+msgstr "(?) déplacement inconnu"
 
 #. TRANSLATORS: chat option changed message
 #: src/utils/booleanoptions.h:27

@@ -29,13 +29,14 @@
 # Philipp <philipp.krueger1@googlemail.com>, 2012
 # Rosemarie Tauber <horos@online.de>, 2012
 # Suni <kristin.joris@gmail.com>, 2015
+# Valsu <valsu@hylia.de>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2015-10-10 15:04+0300\n"
-"PO-Revision-Date: 2015-09-27 09:40+0000\n"
-"Last-Translator: Suni <kristin.joris@gmail.com>\n"
+"POT-Creation-Date: 2015-10-24 14:50+0300\n"
+"PO-Revision-Date: 2015-10-17 13:38+0000\n"
+"Last-Translator: Valsu <valsu@hylia.de>\n"
 "Language-Team: German (http://www.transifex.com/akaras/manaplus/language/"
 "de/)\n"
 "Language: de\n"
@@ -294,25 +295,25 @@ msgid "Visible on map"
 msgstr "Auf der Karte sichtbar"
 
 #. TRANSLATORS: default race name
-#: src/being/being.cpp:448
+#: src/being/being.cpp:453
 msgid "Human"
 msgstr "Mensch"
 
-#: src/being/being.cpp:625
+#: src/being/being.cpp:630
 msgid "dodge"
 msgstr "ausweichen"
 
-#: src/being/being.cpp:625
+#: src/being/being.cpp:630
 msgid "miss"
 msgstr "verfehlt"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being/being.cpp:2108 src/gui/windows/whoisonline.cpp:871
+#: src/being/being.cpp:2119 src/gui/windows/whoisonline.cpp:871
 msgid "A"
 msgstr "A"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being/being.cpp:2113 src/gui/windows/whoisonline.cpp:876
+#: src/being/being.cpp:2124 src/gui/windows/whoisonline.cpp:876
 msgid "I"
 msgstr "I"
 
@@ -1514,7 +1515,7 @@ msgstr "Türkisch"
 #. TRANSLATORS: language
 #: src/gui/models/langlistmodel.h:85
 msgid "Ukrainian"
-msgstr ""
+msgstr "Ukrainisch"
 
 #. TRANSLATORS: magic school
 #: src/gui/models/magicschoolmodel.h:35
@@ -1768,7 +1769,7 @@ msgstr "Gewicht: %s"
 #: src/gui/popups/itempopup.cpp:288
 #, c-format
 msgid "Item named: %s"
-msgstr ""
+msgstr "Objektname: %s"
 
 #. TRANSLATORS: popup label
 #: src/gui/popups/itempopup.cpp:315
@@ -1864,7 +1865,7 @@ msgstr "Bewegen"
 #. TRANSLATORS: talk with npc
 #. TRANSLATORS: input action name
 #: src/gui/popups/popupmenu.cpp:253 src/input/pages/basic.cpp:88
-#: src/resources/db/npcdb.cpp:147
+#: src/resources/db/npcdb.cpp:150
 msgid "Talk"
 msgstr "Sprechen"
 
@@ -1880,7 +1881,7 @@ msgstr "Sprechen"
 #: src/gui/windows/buydialog.cpp:194 src/gui/windows/buydialog.cpp:212
 #: src/gui/windows/buydialog.cpp:275 src/gui/windows/buyselldialog.cpp:71
 #: src/gui/windows/shopwindow.cpp:168 src/input/pages/basic.cpp:244
-#: src/resources/db/npcdb.cpp:148
+#: src/resources/db/npcdb.cpp:151
 msgid "Buy"
 msgstr "Kaufen"
 
@@ -1896,7 +1897,7 @@ msgstr "Kaufen"
 #: src/gui/popups/popupmenu.cpp:266 src/gui/popups/popupmenu.cpp:2395
 #: src/gui/widgets/selldialog.cpp:52 src/gui/widgets/selldialog.cpp:99
 #: src/gui/windows/buyselldialog.cpp:73 src/gui/windows/shopwindow.cpp:170
-#: src/input/pages/basic.cpp:250 src/resources/db/npcdb.cpp:149
+#: src/input/pages/basic.cpp:250 src/resources/db/npcdb.cpp:152
 msgid "Sell"
 msgstr "Verkaufen"
 
@@ -4297,8 +4298,9 @@ msgstr "Nur erreichbare Monster automatisch anvisieren"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:119
-msgid "Seleck auto target for attack skills"
-msgstr ""
+#, fuzzy
+msgid "Select auto target for attack skills"
+msgstr "Automatischen Angriff für Angriffsfertigkeiten auswählen"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:123
@@ -4538,7 +4540,7 @@ msgstr ""
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:303
 msgid "Enable manamarket bot support"
-msgstr ""
+msgstr "Aktiviere Bot-Unterstützung für den Mana-Markt"
 
 #. TRANSLATORS: settings group
 #: src/gui/widgets/tabs/setup_other.cpp:309
@@ -4902,11 +4904,16 @@ msgstr "Besondere diagonale Geschwindigkeit bei Spielerbewegung benutzen"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_players.cpp:128
-msgid "Create screenshots for each complete trades"
+msgid "Log players actions (for GM)"
 msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_players.cpp:132
+msgid "Create screenshots for each complete trades"
+msgstr "Erstelle Bildschirmfoto für jeden abgeschlossenen Handel"
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_players.cpp:136
 msgid ""
 "Emulate right mouse button by long mouse click (useful for touch interfaces)"
 msgstr "Rechtsklick bei langem Klick emulieren (nützlich für Touchpads)"
@@ -9452,7 +9459,7 @@ msgstr "Ausrüsten fehlgeschlagen, weil du das falsche Level hast."
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:146
 msgid "Unable to unequip."
-msgstr ""
+msgstr "Ausrüsten fehlgeschlagen."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:150
@@ -10101,12 +10108,12 @@ msgstr "Gegenstand %s ist an dich gebunden."
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:662
 msgid "End all negative status."
-msgstr ""
+msgstr "Beende alle negativen Zustände."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:666
 msgid "Immunity to all status."
-msgstr ""
+msgstr "Immun gegen alle Zustände."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:670
@@ -10136,12 +10143,12 @@ msgstr "Verzaubere Rüstung mit heiligem Element."
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:690
 msgid "Def +25%."
-msgstr ""
+msgstr "VTG +25%."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:694
 msgid "Atk +100%."
-msgstr ""
+msgstr "ANG +100%."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:698
@@ -10151,12 +10158,12 @@ msgstr "Flucht +50."
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:702
 msgid "Full strip failed because of coating."
-msgstr ""
+msgstr "Vollständiges Entkleiden wegen Bemantelung fehlgeschlagen."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:706
 msgid "Unknown skill message."
-msgstr ""
+msgstr "Unbekannte Fähigkeitsbenachrichtigung."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:710
@@ -10166,42 +10173,72 @@ msgstr "Spieler wurde erfolgreich ignoriert."
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:714
 msgid "Player ignore failed."
-msgstr ""
+msgstr "Spieler ignorieren fehlgeschlagen."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:718
 msgid "Player ignore failed. Because too many ignores."
-msgstr ""
+msgstr "Spieler ignorieren fehlgeschlagen. Grund: Zu häufiges Ignorieren."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:722
 msgid "Unknown player ignore failure."
-msgstr ""
+msgstr "Unbekannter Fehler beim Spieler ignorieren."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:726
 msgid "Player successfully unignored."
-msgstr ""
+msgstr "Ignorieren des Spielers erfolgreich rückgängig gemacht."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:730
 msgid "Player unignore failed."
-msgstr ""
+msgstr "Fehler bei Aufhebung von Ignorieren des Spielers."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:734
 msgid "Unknown player unignore failure."
-msgstr ""
+msgstr "Unbekannter Fehler beim Aufheben von Spieler ignorieren."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:738
 msgid "Unknown ignore type."
-msgstr ""
+msgstr "Unbekannter Ignorierungstyp."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:742
 msgid "Pet catch started."
 msgstr "Haustierfang gestartet."
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:776
+#, fuzzy, c-format
+msgid "Player %s died."
+msgstr "Spieler nach Unten lenken"
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:780
+#, fuzzy, c-format
+msgid "Player %s logged out."
+msgstr "Spieler wird nicht länger ignoriert!"
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:784
+#, fuzzy, c-format
+msgid "Player %s warped."
+msgstr "Balken: Spieler HP"
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:788
+#, c-format
+msgid "Player %s trick dead."
+msgstr ""
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:792
+#, fuzzy, c-format
+msgid "Player %s unknown remove."
+msgstr "(?) Unbekannte Bewegung"
 
 #. TRANSLATORS: chat option changed message
 #: src/utils/booleanoptions.h:27
