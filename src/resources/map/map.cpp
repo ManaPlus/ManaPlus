@@ -1426,6 +1426,10 @@ void Map::reduce()
                 if (x >= layer->mWidth || y >= layer->mHeight)
                     continue;
 
+                // skip layers with flags
+                if (layer->mTileCondition != -1 || layer->mMask != 1)
+                    continue;
+
                 Image *const img = layer->mTiles[x + y * layer->mWidth].image;
                 if (img)
                 {
@@ -1508,6 +1512,13 @@ void Map::reduce()
                     continue;
                 }
 
+                // skip layers with flags
+                if (layer->mTileCondition != -1 || layer->mMask != 1)
+                {
+                    ++ ri;
+                    continue;
+                }
+
                 const Image *img = layer->mTiles[x + y * layer->mWidth].image;
                 if (img && !img->isAlphaVisible())
                 {   // removing all down tiles
@@ -1515,6 +1526,12 @@ void Map::reduce()
                     while (ri != mLayers.rend())
                     {
                         MapLayer *const layer2 = *ri;
+                        // skip layers with flags
+                        if (layer2->mTileCondition != -1 || layer2->mMask != 1)
+                        {
+                            ++ ri;
+                            continue;
+                        }
                         const size_t pos = static_cast<size_t>(
                             x + y * layer2->mWidth);
                         img = layer2->mTiles[pos].image;
