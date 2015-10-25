@@ -1667,11 +1667,12 @@ void Client::optionChanged(const std::string &name)
         settings.limitFps = fpsLimit > 0;
         WindowManager::setFramerate(fpsLimit);
     }
-    else if (name == "guialpha")
+    else if (name == "guialpha" || name == "enableGuiOpacity")
     {
         const float alpha = config.getFloatValue("guialpha");
         settings.guiAlpha = alpha;
-        ImageHelper::setEnableAlpha(alpha != 1.0F);
+        ImageHelper::setEnableAlpha(alpha != 1.0F &&
+            config.getBoolValue("enableGuiOpacity"));
     }
     else if (name == "gamma" || name == "enableGamma")
     {

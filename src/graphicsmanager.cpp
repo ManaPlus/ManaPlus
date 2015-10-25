@@ -456,12 +456,13 @@ void GraphicsManager::initGraphics()
     OpenGLImageHelper::setBlur(config.getBoolValue("blur"));
     SurfaceImageHelper::SDLSetEnableAlphaCache(
         config.getBoolValue("alphaCache") && !openGLMode);
-    ImageHelper::setEnableAlpha(config.getFloatValue("guialpha") != 1.0F
-        || openGLMode);
+    ImageHelper::setEnableAlpha((config.getFloatValue("guialpha") != 1.0F ||
+        openGLMode) && config.getBoolValue("enableGuiOpacity"));
 #else
     SurfaceImageHelper::SDLSetEnableAlphaCache(
         config.getBoolValue("alphaCache"));
-    ImageHelper::setEnableAlpha(config.getFloatValue("guialpha") != 1.0F);
+    ImageHelper::setEnableAlpha(config.getFloatValue("guialpha") != 1.0F &&
+        config.getBoolValue("enableGuiOpacity"));
 #endif
     createRenderers();
     detectPixelSize();

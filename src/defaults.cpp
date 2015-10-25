@@ -384,6 +384,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("tradescreenshot", false);
     AddDEF("skillAutotarget", true);
     AddDEF("logPlayerActions", false);
+    AddDEF("enableGuiOpacity", true);
     return configData;
 }
 
