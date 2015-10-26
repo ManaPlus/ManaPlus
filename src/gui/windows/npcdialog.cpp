@@ -1061,3 +1061,7 @@ void NpcDialog::copyToClipboard(const BeingId npcId,
         sendBuffer(str);
     }
 }
+
+void NpcDialog::setSkin(const std::string &skin)
+{
+}

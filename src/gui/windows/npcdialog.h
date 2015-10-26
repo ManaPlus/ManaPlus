@@ -214,6 +214,8 @@ class NpcDialog final : public Window,
         int isCloseState() const
         { return mActionState == NPC_ACTION_CLOSE; }
 
+        void setSkin(const std::string &skin);
+
         static void copyToClipboard(const BeingId npcId,
                                     const int x, const int y);
 

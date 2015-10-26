@@ -260,6 +260,7 @@ packet(SMSG_NPC_SHOW_DIGIT,                0x01b1,   7, &NpcRecv::processShowDig
 packet(SMSG_NPC_SHOW_PROGRESS_BAR,         0x02f0,  10, &NpcRecv::processNpcShowProgressBar);
 packet(SMSG_NPC_STR_INPUT,                 0x01d4,   6, &Ea::NpcRecv::processNpcStrInput);
 packet(SMSG_NPC_VIEWPOINT,                 0x0144,  23, &NpcRecv::processNpcViewPoint);
+packet(SMSG_NPC_SKIN,                      0x0b1c,  -1, &NpcRecv::processNpcSkin);
 packet(SMSG_ONLINE_LIST,                   0x0b10,  -1, &PlayerRecv::processOnlineList);
 packet(SMSG_PARTY_CREATE,                  0x00fa,   3, &Ea::PartyRecv::processPartyCreate);
 packet(SMSG_PARTY_INFO,                    0x00fb,  -1, &PartyRecv::processPartyInfo);

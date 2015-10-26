@@ -25,7 +25,10 @@
 
 #include "being/being.h"
 
+#include "gui/windows/npcdialog.h"
+
 #include "net/messagein.h"
+#include "net/npchandler.h"
 
 #include "net/ea/npcrecv.h"
 
@@ -98,6 +101,15 @@ void NpcRecv::processShowDigit(Net::MessageIn &msg)
 void NpcRecv::processProgressBarAbort(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
+}
+
+void NpcRecv::processNpcSkin(Net::MessageIn &msg)
+{
+    const int len = msg.readInt16("len");
+    npcHandler->getNpc(msg, NpcAction::Other);
+    const std::string skin = msg.readString(len - 8, "skin");
+    if (Ea::NpcRecv::mDialog)
+        Ea::NpcRecv::mDialog->setSkin(skin);
 }
 
 }  // namespace EAthena
