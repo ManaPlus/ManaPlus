@@ -337,6 +337,8 @@ SRC += events/actionevent.h \
 	      resources/mstack.h \
 	      resources/notificationinfo.h \
 	      resources/notifications.h \
+	      resources/npcbuttoninfo.h \
+	      resources/npcdialoginfo.h \
 	      enums/resources/notifyflags.h \
 	      enums/resources/notifytypes.h \
 	      resources/imagerect.h \
@@ -1079,6 +1081,8 @@ manaplus_SOURCES += main.cpp \
 	      resources/db/monsterdb.h \
 	      resources/db/npcdb.cpp \
 	      resources/db/npcdb.h \
+	      resources/db/npcdialogdb.cpp \
+	      resources/db/npcdialogdb.h \
 	      resources/db/palettedb.cpp \
 	      resources/db/palettedb.h \
 	      resources/db/petdb.cpp \

@@ -672,12 +672,16 @@ SET(SRCS
     resources/mstack.h
     resources/notificationinfo.h
     resources/notifications.h
+    resources/npcbuttoninfo.h
+    resources/npcdialoginfo.h
     enums/resources/notifyflags.h
     enums/resources/notifytypes.h
     resources/db/monsterdb.cpp
     resources/db/monsterdb.h
     resources/db/npcdb.cpp
     resources/db/npcdb.h
+    resources/db/npcdialogdb.cpp
+    resources/db/npcdialogdb.h
     resources/openglimagehelper.cpp
     resources/openglimagehelper.h
     resources/questeffect.h

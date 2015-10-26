@@ -594,6 +594,9 @@ DefaultsData* getPathsDefaults()
     AddDEF("mapsFile", "maps.xml");
     AddDEF("mapsPatchFile", "maps_patch.xml");
     AddDEF("mapsPatchDir", "maps.d");
+    AddDEF("npcDialogsFile", "npcdialogs.xml");
+    AddDEF("npcDialogsPatchFile", "npcdialogs_patch.xml");
+    AddDEF("npcDialogsPatchDir", "npcdialogs.d");
     AddDEF("deadMessagesFile", "deadmessages.xml");
     AddDEF("deadMessagesPatchFile", "deadmessages_patch.xml");
     AddDEF("deadMessagesPatchDir", "deadmessages.d");
