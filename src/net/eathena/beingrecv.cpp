@@ -1388,10 +1388,10 @@ void BeingRecv::processBeingAttrs(Net::MessageIn &msg)
             if (dstBeing)
                 dstBeing->setGM(false);
         }
-    }
-    if (haveMount)
-    {
-        dstBeing->setHorse(mount);
+        if (haveMount)
+        {
+            dstBeing->setHorse(mount);
+        }
     }
 }
 
