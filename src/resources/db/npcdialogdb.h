@@ -27,6 +27,8 @@
 
 #include "localconsts.h"
 
+class Widget;
+
 /**
  * Color information database.
  */
@@ -45,6 +47,8 @@ namespace NpcDialogDB
     void unload();
 
     void deleteDialog(const std::string &name);
+
+    NpcDialogInfo *getDialog(const std::string &name);
 
     typedef std::map<std::string, NpcDialogInfo*> Dialogs;
     typedef Dialogs::iterator DialogsIter;

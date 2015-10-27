@@ -56,6 +56,7 @@
 
 #include "resources/db/avatardb.h"
 #include "resources/db/npcdb.h"
+#include "resources/db/npcdialogdb.h"
 
 #include "net/npchandler.h"
 #include "net/packetlimiter.h"
@@ -99,6 +100,9 @@ NpcDialog::NpcDialog(const BeingId npcId) :
         this, this, "extendedlistbox.xml")),
     mListScrollArea(new ScrollArea(this, mItemList,
         getOptionBool("showlistbackground"), "npc_listbackground.xml")),
+    mSkinContainer(new Container(this)),
+    mSkinScrollArea(new ScrollArea(this, mSkinContainer,
+        getOptionBool("showlistbackground"), "npc_listbackground.xml")),
     mItems(),
     mImages(),
     mItemLinkHandler(new ItemLinkHandler),
@@ -123,6 +127,8 @@ NpcDialog::NpcDialog(const BeingId npcId) :
         getOptionBool("showitemsbackground"), "npc_listbackground.xml")),
     mInputState(NPC_INPUT_NONE),
     mActionState(NPC_ACTION_WAIT),
+    mSkinControls(),
+    mSkinName(),
     mPlayerBox(new PlayerBox(nullptr)),
     mAvatarBeing(nullptr),
     mLastNextTime(0),
@@ -172,6 +178,8 @@ NpcDialog::NpcDialog(const BeingId npcId) :
     setContentSize(260, 175);
     mListScrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
     mItemScrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
+    mSkinScrollArea->setScrollPolicy(ScrollArea::SHOW_NEVER,
+        ScrollArea::SHOW_NEVER);
     mItemList->setVisible(Visible_true);
     mTextField->setVisible(Visible_true);
     mIntField->setVisible(Visible_true);
@@ -226,6 +234,8 @@ NpcDialog::~NpcDialog()
         delete mPlayerBox;
     }
 
+    deleteSkinControls();
+
     delete2(mTextBox);
     delete2(mClearButton);
     delete2(mButton);
@@ -243,6 +253,7 @@ NpcDialog::~NpcDialog()
     delete2(mInventory);
     delete2(mItemScrollArea);
     delete2(mListScrollArea);
+    delete2(mSkinScrollArea);
 
     FOR_EACH (ImageVectorIter, it, mImages)
     {
@@ -546,6 +557,29 @@ void NpcDialog::action(const ActionEvent &event)
             }
         }
     }
+    else if (eventId.find("skin_") == 0)
+    {
+        const std::string cmd = eventId.substr(5);
+        std::string printText;
+        int cnt = 0;
+        FOR_EACH(StringVectCIter, it, mItems)
+        {
+            if (cmd == *it)
+            {
+                npcHandler->listInput(mNpcId, cnt + 1);
+                printText = mItems[cnt];
+                break;
+            }
+            cnt ++;
+        }
+        if (mInputState != NPC_INPUT_ITEM &&
+            mInputState != NPC_INPUT_ITEM_INDEX)
+        {
+            // addText will auto remove the input layout
+            addText(strprintf("> \"%s\"", printText.c_str()), false);
+        }
+        mNewText.clear();
+    }
 }
 
 void NpcDialog::nextDialog()
@@ -791,6 +825,28 @@ void NpcDialog::placeMenuControls()
     }
 }
 
+void NpcDialog::placeSkinControls()
+{
+    createSkinControls();
+    if (mShowAvatar)
+    {
+        place(0, 0, mPlayerBox);
+        place(1, 0, mScrollArea, 6, 3);
+        place(0, 3, mSkinScrollArea, 7, 3);
+        place(1, 6, mButton2, 2);
+        place(3, 6, mClearButton, 2);
+        place(5, 6, mButton, 2);
+    }
+    else
+    {
+        place(0, 0, mScrollArea, 6, 3);
+        place(0, 3, mSkinScrollArea, 6, 3);
+        place(0, 6, mButton2, 2);
+        place(2, 6, mClearButton, 2);
+        place(4, 6, mButton, 2);
+    }
+}
+
 void NpcDialog::placeTextInputControls()
 {
     if (mShowAvatar)
@@ -878,7 +934,10 @@ void NpcDialog::buildLayout()
         switch (mInputState)
         {
             case NPC_INPUT_LIST:
-                placeMenuControls();
+                if (mSkinName.empty())
+                    placeMenuControls();
+                else
+                    placeSkinControls();
                 mItemList->setSelected(-1);
                 break;
 
@@ -1064,4 +1123,35 @@ void NpcDialog::copyToClipboard(const BeingId npcId,
 
 void NpcDialog::setSkin(const std::string &skin)
 {
+    mSkinName = skin;
+}
+
+void NpcDialog::deleteSkinControls()
+{
+    mSkinContainer->removeControls();
+}
+
+void NpcDialog::createSkinControls()
+{
+    deleteSkinControls();
+
+    const NpcDialogInfo *const dialog = NpcDialogDB::getDialog(mSkinName);
+    if (!dialog)
+    {
+        logger->log("Error: creating controls for not existing npc dialog %s",
+            mSkinName.c_str());
+        return;
+    }
+
+    FOR_EACH (std::vector<NpcButtonInfo*>::const_iterator, it, dialog->buttons)
+    {
+        const NpcButtonInfo *const info = *it;
+        Button *const button = new Button(this,
+            info->name,
+            "skin_" + info->value,
+            this);
+
+        button->setPosition(info->x, info->y);
+        mSkinContainer->add(button);
+    }
 }

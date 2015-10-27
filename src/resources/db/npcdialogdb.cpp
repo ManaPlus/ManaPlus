@@ -140,3 +140,11 @@ void NpcDialogDB::unload()
 
     mLoaded = false;
 }
+
+NpcDialogInfo *NpcDialogDB::getDialog(const std::string &name)
+{
+    DialogsIter it = mDialogs.find(name);
+    if (it == mDialogs.end())
+        return nullptr;
+    return (*it).second;
+}

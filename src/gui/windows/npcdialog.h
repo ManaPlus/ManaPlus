@@ -35,6 +35,7 @@
 class Being;
 class Button;
 class BrowserBox;
+class Container;
 class ExtendedListBox;
 class ItemLinkHandler;
 class Inventory;
@@ -233,11 +234,17 @@ class NpcDialog final : public Window,
 
         void placeMenuControls();
 
+        void placeSkinControls();
+
         void placeTextInputControls();
 
         void placeIntInputControls();
 
         void placeItemInputControls();
+
+        void createSkinControls();
+
+        void deleteSkinControls();
 
         BeingId mNpcId;
 
@@ -253,6 +260,8 @@ class NpcDialog final : public Window,
         // Used for choice input
         ExtendedListBox *mItemList A_NONNULLPOINTER;
         ScrollArea *mListScrollArea A_NONNULLPOINTER;
+        Container *mSkinContainer A_NONNULLPOINTER;
+        ScrollArea *mSkinScrollArea A_NONNULLPOINTER;
         StringVect mItems;
         std::vector<Image *> mImages;
         ItemLinkHandler *mItemLinkHandler A_NONNULLPOINTER;
@@ -296,6 +305,8 @@ class NpcDialog final : public Window,
 
         NpcInputState mInputState;
         NpcActionState mActionState;
+        std::vector<Widget*> mSkinControls;
+        std::string mSkinName;
         PlayerBox *mPlayerBox A_NONNULLPOINTER;
         Being *mAvatarBeing;
         int mLastNextTime;
