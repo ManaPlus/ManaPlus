@@ -675,6 +675,7 @@ SET(SRCS
     resources/npcbuttoninfo.h
     resources/npcdialoginfo.h
     resources/npcimageinfo.h
+    resources/npctextinfo.h
     enums/resources/notifyflags.h
     enums/resources/notifytypes.h
     resources/db/monsterdb.cpp

@@ -18,32 +18,29 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_NPCDIALOGINFO_H
-#define RESOURCES_NPCDIALOGINFO_H
+#ifndef RESOURCES_NPCTEXTINFO_H
+#define RESOURCES_NPCTEXTINFO_H
 
-#include "resources/npcbuttoninfo.h"
-#include "resources/npcimageinfo.h"
-#include "resources/npctextinfo.h"
-
-#include "utils/stringvector.h"
+#include <string>
 
 #include "localconsts.h"
 
-struct NpcDialogInfo final
+struct NpcTextInfo final
 {
-    NpcDialogInfo() :
-        buttons(),
-        images(),
-        name(),
-        hideText(false)
+    NpcTextInfo() :
+        text(),
+        x(0),
+        y(0),
+        width(32),
+        height(32)
     {
     }
 
-    std::vector<NpcButtonInfo*> buttons;
-    std::vector<NpcImageInfo*> images;
-    std::vector<NpcTextInfo*> texts;
-    std::string name;
-    bool hideText;
+    std::string text;
+    int x;
+    int y;
+    int width;
+    int height;
 };
 
-#endif  // RESOURCES_NPCDIALOGINFO_H
+#endif  // RESOURCES_NPCTEXTINFO_H

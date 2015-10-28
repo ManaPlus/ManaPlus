@@ -1173,7 +1173,31 @@ void NpcDialog::createSkinControls()
             mSkinContainer->add(icon);
         }
     }
-
+    FOR_EACH (std::vector<NpcTextInfo*>::const_iterator, it, dialog->texts)
+    {
+        const NpcTextInfo *const info = *it;
+        BrowserBox *box = new BrowserBox(this,
+            BrowserBox::AUTO_WRAP,
+            true,
+            "browserbox.xml");
+        box->setOpaque(false);
+        box->setMaxRow(config.getIntValue("ChatLogLength"));
+        box->setLinkHandler(mItemLinkHandler);
+        box->setProcessVars(true);
+        box->setFont(gui->getNpcFont());
+        box->setEnableKeys(true);
+        box->setEnableTabs(true);
+        box->setPosition(info->x, info->y);
+        mSkinContainer->add(box);
+        box->setWidth(info->width);
+        box->setHeight(info->height);
+        StringVect parts;
+        splitToStringVector(parts, info->text, '\n');
+        FOR_EACH (StringVectCIter, it2, parts)
+        {
+            box->addRow(*it2);
+        }
+    }
     FOR_EACH (std::vector<NpcButtonInfo*>::const_iterator, it, dialog->buttons)
     {
         const NpcButtonInfo *const info = *it;

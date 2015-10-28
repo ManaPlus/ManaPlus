@@ -96,6 +96,26 @@ static void loadNpcDialog(NpcDialogInfo *const dialog,
                 childNode, "y", 0, 0, 10000);
             dialog->images.push_back(imageInfo);
         }
+        else if (xmlNameEqual(childNode, "text"))
+        {
+            const std::string text = XML::getProperty(childNode, "text", "");
+            if (text.empty())
+            {
+                logger->log("Error: no text attribute found in text tag.");
+                continue;
+            }
+            NpcTextInfo *const textInfo = new NpcTextInfo;
+            textInfo->text = text;
+            textInfo->x = XML::getIntProperty(
+                childNode, "x", 0, 0, 10000);
+            textInfo->y = XML::getIntProperty(
+                childNode, "y", 0, 0, 10000);
+            textInfo->width = XML::getIntProperty(
+                childNode, "width", 20, 10, 10000);
+            textInfo->height = XML::getIntProperty(
+                childNode, "height", 20, 10, 10000);
+            dialog->texts.push_back(textInfo);
+        }
     }
 }
 
@@ -149,6 +169,7 @@ void NpcDialogDB::deleteDialog(const std::string &name)
     NpcDialogInfo *dialog = (*it).second;
     delete_all(dialog->buttons);
     delete_all(dialog->images);
+    delete_all(dialog->texts);
     mDialogs.erase(it);
     delete dialog;
 }
@@ -162,6 +183,7 @@ void NpcDialogDB::unload()
         NpcDialogInfo *dialog = (*it).second;
         delete_all(dialog->buttons);
         delete_all(dialog->images);
+        delete_all(dialog->texts);
         delete dialog;
     }
     mDialogs.clear();
