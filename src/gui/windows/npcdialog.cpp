@@ -321,6 +321,8 @@ void NpcDialog::action(const ActionEvent &event)
             {
                 case NPC_INPUT_LIST:
                 {
+                    if (!mSkinName.empty())
+                        return;
                     if (gui)
                         gui->resetClickCount();
                     const int selectedIndex = mItemList->getSelected();
@@ -570,17 +572,18 @@ void NpcDialog::action(const ActionEvent &event)
             {
                 npcHandler->listInput(mNpcId, cnt + 1);
                 printText = mItems[cnt];
+
+                if (mInputState != NPC_INPUT_ITEM &&
+                    mInputState != NPC_INPUT_ITEM_INDEX)
+                {
+                    // addText will auto remove the input layout
+                    addText(strprintf("> \"%s\"", printText.c_str()), false);
+                }
+                mNewText.clear();
                 break;
             }
             cnt ++;
         }
-        if (mInputState != NPC_INPUT_ITEM &&
-            mInputState != NPC_INPUT_ITEM_INDEX)
-        {
-            // addText will auto remove the input layout
-            addText(strprintf("> \"%s\"", printText.c_str()), false);
-        }
-        mNewText.clear();
     }
 }
 
