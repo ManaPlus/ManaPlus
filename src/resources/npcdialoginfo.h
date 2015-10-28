@@ -31,12 +31,14 @@ struct NpcDialogInfo final
 {
     NpcDialogInfo() :
         buttons(),
-        name()
+        name(),
+        hideText(false)
     {
     }
 
     std::vector<NpcButtonInfo*> buttons;
     std::string name;
+    bool hideText;
 };
 
 #endif  // RESOURCES_NPCDIALOGINFO_H

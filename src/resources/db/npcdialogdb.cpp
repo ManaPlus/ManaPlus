@@ -107,6 +107,8 @@ void NpcDialogDB::loadXmlFile(const std::string &fileName)
             deleteDialog(name);
             NpcDialogInfo *const dialog = new NpcDialogInfo;
             dialog->name = name;
+            dialog->hideText = XML::getBoolProperty(
+                node, "hideText", false);
             mDialogs[name] = dialog;
             loadNpcDialog(dialog, node);
         }

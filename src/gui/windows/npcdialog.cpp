@@ -136,7 +136,8 @@ NpcDialog::NpcDialog(const BeingId npcId) :
     mCameraX(0),
     mCameraY(0),
     mShowAvatar(false),
-    mLogInteraction(config.getBoolValue("logNpcInGui"))
+    mLogInteraction(config.getBoolValue("logNpcInGui")),
+    mHideText(false)
 {
     // Basic Window Setup
     setWindowName("NpcText");
@@ -828,22 +829,43 @@ void NpcDialog::placeMenuControls()
 void NpcDialog::placeSkinControls()
 {
     createSkinControls();
-    if (mShowAvatar)
+    if (mHideText)
     {
-        place(0, 0, mPlayerBox);
-        place(1, 0, mScrollArea, 6, 3);
-        place(0, 3, mSkinScrollArea, 7, 3);
-        place(1, 6, mButton2, 2);
-        place(3, 6, mClearButton, 2);
-        place(5, 6, mButton, 2);
+        if (mShowAvatar)
+        {
+            place(0, 0, mPlayerBox);
+            place(1, 0, mSkinScrollArea, 7, 3);
+            place(1, 3, mButton2, 2);
+            place(3, 3, mClearButton, 2);
+            place(5, 3, mButton, 2);
+        }
+        else
+        {
+            place(0, 0, mSkinScrollArea, 6, 3);
+            place(0, 3, mButton2, 2);
+            place(2, 3, mClearButton, 2);
+            place(4, 3, mButton, 2);
+        }
     }
     else
     {
-        place(0, 0, mScrollArea, 6, 3);
-        place(0, 3, mSkinScrollArea, 6, 3);
-        place(0, 6, mButton2, 2);
-        place(2, 6, mClearButton, 2);
-        place(4, 6, mButton, 2);
+        if (mShowAvatar)
+        {
+            place(0, 0, mPlayerBox);
+            place(1, 0, mScrollArea, 6, 3);
+            place(0, 3, mSkinScrollArea, 7, 3);
+            place(1, 6, mButton2, 2);
+            place(3, 6, mClearButton, 2);
+            place(5, 6, mButton, 2);
+        }
+        else
+        {
+            place(0, 0, mScrollArea, 6, 3);
+            place(0, 3, mSkinScrollArea, 6, 3);
+            place(0, 6, mButton2, 2);
+            place(2, 6, mClearButton, 2);
+            place(4, 6, mButton, 2);
+        }
     }
 }
 
@@ -1143,6 +1165,7 @@ void NpcDialog::createSkinControls()
         return;
     }
 
+    mHideText = dialog->hideText;
     FOR_EACH (std::vector<NpcButtonInfo*>::const_iterator, it, dialog->buttons)
     {
         const NpcButtonInfo *const info = *it;
@@ -1158,10 +1181,6 @@ void NpcDialog::createSkinControls()
             button->loadImageSet(info->image);
         }
         mSkinContainer->add(button);
-        logger->log("test 1");
         button->adjustSize();
-        logger->log("test 2");
-        button->setWidth(20);
-        button->setHeight(20);
     }
 }
