@@ -339,6 +339,7 @@ SRC += events/actionevent.h \
 	      resources/notifications.h \
 	      resources/npcbuttoninfo.h \
 	      resources/npcdialoginfo.h \
+	      resources/npcdialogmenuinfo.h \
 	      resources/npcimageinfo.h \
 	      resources/npctextinfo.h \
 	      enums/resources/notifyflags.h \
