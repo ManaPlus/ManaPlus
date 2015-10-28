@@ -56,9 +56,6 @@ static void loadNpcDialog(NpcDialogInfo *const dialog,
         if (xmlNameEqual(childNode, "button"))
         {
             const std::string name = XML::getProperty(childNode, "name", "");
-            if (name.empty())
-                continue;
-
             const std::string value = XML::getProperty(childNode, "value", "");
             if (value.empty())
                 continue;
@@ -70,6 +67,17 @@ static void loadNpcDialog(NpcDialogInfo *const dialog,
                 childNode, "y", 0, 0, 10000);
             button->name = name;
             button->value = value;
+            button->image = XML::getProperty(childNode, "image", "");
+            if (button->name.empty() && button->image.empty())
+            {
+                logger->log("Error: npc button without name or image");
+                delete button;
+                continue;
+            }
+            button->imageWidth = XML::getIntProperty(
+                childNode, "imageWidth", 16, 1, 1000);
+            button->imageHeight = XML::getIntProperty(
+                childNode, "imageHeight", 16, 1, 1000);
             dialog->buttons.push_back(button);
         }
     }

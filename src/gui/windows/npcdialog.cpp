@@ -1146,12 +1146,22 @@ void NpcDialog::createSkinControls()
     FOR_EACH (std::vector<NpcButtonInfo*>::const_iterator, it, dialog->buttons)
     {
         const NpcButtonInfo *const info = *it;
-        Button *const button = new Button(this,
-            info->name,
-            "skin_" + info->value,
-            this);
-
+        Button *const button = new Button(this);
+        button->setCaption(info->name);
+        button->setActionEventId("skin_" + info->value);
+        button->addActionListener(this);
         button->setPosition(info->x, info->y);
+        if (!info->image.empty())
+        {
+            button->setImageWidth(info->imageWidth);
+            button->setImageHeight(info->imageHeight);
+            button->loadImageSet(info->image);
+        }
         mSkinContainer->add(button);
+        logger->log("test 1");
+        button->adjustSize();
+        logger->log("test 2");
+        button->setWidth(20);
+        button->setHeight(20);
     }
 }

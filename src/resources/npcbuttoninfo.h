@@ -30,15 +30,21 @@ struct NpcButtonInfo final
     NpcButtonInfo() :
         name(),
         value(),
+        image(),
         x(0),
-        y(0)
+        y(0),
+        imageWidth(16),
+        imageHeight(16)
     {
     }
 
     std::string name;
     std::string value;
+    std::string image;
     int x;
     int y;
+    int imageWidth;
+    int imageHeight;
 };
 
 #endif  // RESOURCES_NPCBUTTONINFO_H

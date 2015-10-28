@@ -253,6 +253,12 @@ class Button final : public Widget,
 
         void setWindow(Widget *const widget) override final;
 
+        void setImageWidth(const int width)
+        { mImageWidth = width; }
+
+        void setImageHeight(const int height)
+        { mImageHeight = height; }
+
         enum
         {
             BUTTON_STANDARD = 0,  // 0
