@@ -80,6 +80,22 @@ static void loadNpcDialog(NpcDialogInfo *const dialog,
                 childNode, "imageHeight", 16, 1, 1000);
             dialog->buttons.push_back(button);
         }
+        else if (xmlNameEqual(childNode, "image"))
+        {
+            const std::string image = XML::getProperty(childNode, "image", "");
+            if (image.empty())
+            {
+                logger->log("Error: no image attribute found in image tag.");
+                continue;
+            }
+            NpcImageInfo *const imageInfo = new NpcImageInfo;
+            imageInfo->name = image;
+            imageInfo->x = XML::getIntProperty(
+                childNode, "x", 0, 0, 10000);
+            imageInfo->y = XML::getIntProperty(
+                childNode, "y", 0, 0, 10000);
+            dialog->images.push_back(imageInfo);
+        }
     }
 }
 
@@ -132,6 +148,7 @@ void NpcDialogDB::deleteDialog(const std::string &name)
 
     NpcDialogInfo *dialog = (*it).second;
     delete_all(dialog->buttons);
+    delete_all(dialog->images);
     mDialogs.erase(it);
     delete dialog;
 }
@@ -144,6 +161,7 @@ void NpcDialogDB::unload()
     {
         NpcDialogInfo *dialog = (*it).second;
         delete_all(dialog->buttons);
+        delete_all(dialog->images);
         delete dialog;
     }
     mDialogs.clear();

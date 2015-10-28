@@ -25,6 +25,8 @@
 
 #include "gui/widgets/widget.h"
 
+#include "enums/simpletypes/autorelease.h"
+
 #include "localconsts.h"
 
 class Image;
@@ -41,13 +43,15 @@ class Icon final : public Widget
          * Constructor.
          */
         Icon(const Widget2 *const widget,
-             const std::string &filename);
+             const std::string &filename,
+             const AutoRelease autoRelease = AutoRelease_false);
 
         /**
          * Constructor, uses an existing Image.
          */
         Icon(const Widget2 *const widget,
-             Image *const image);
+             Image *const image,
+             const AutoRelease autoRelease = AutoRelease_false);
 
         A_DELETE_COPY(Icon)
 
@@ -73,6 +77,7 @@ class Icon final : public Widget
 
     private:
         Image *mImage;
+        AutoRelease mAutoRelease;
 };
 
 #endif  // GUI_WIDGETS_ICON_H

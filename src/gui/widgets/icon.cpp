@@ -30,9 +30,11 @@
 #include "debug.h"
 
 Icon::Icon(const Widget2 *const widget,
-           const std::string &file) :
+           const std::string &file,
+           const AutoRelease autoRelease) :
     Widget(widget),
-    mImage(resourceManager->getImage(file))
+    mImage(resourceManager->getImage(file)),
+    mAutoRelease(autoRelease)
 {
     if (mImage)
     {
@@ -43,9 +45,11 @@ Icon::Icon(const Widget2 *const widget,
 }
 
 Icon::Icon(const Widget2 *const widget,
-           Image *const image) :
+           Image *const image,
+           const AutoRelease autoRelease) :
     Widget(widget),
-    mImage(image)
+    mImage(image),
+    mAutoRelease(autoRelease)
 {
     if (mImage)
     {
@@ -59,6 +63,8 @@ Icon::~Icon()
 {
     if (gui)
         gui->removeDragged(this);
+    if (mImage && mAutoRelease == AutoRelease_true)
+        mImage->decRef();
 }
 
 void Icon::setImage(Image *const image)

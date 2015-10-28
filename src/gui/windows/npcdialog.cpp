@@ -43,6 +43,7 @@
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/button.h"
 #include "gui/widgets/createwidget.h"
+#include "gui/widgets/icon.h"
 #include "gui/widgets/inttextfield.h"
 #include "gui/widgets/itemcontainer.h"
 #include "gui/widgets/itemlinkhandler.h"
@@ -1166,6 +1167,18 @@ void NpcDialog::createSkinControls()
     }
 
     mHideText = dialog->hideText;
+    FOR_EACH (std::vector<NpcImageInfo*>::const_iterator, it, dialog->images)
+    {
+        const NpcImageInfo *const info = *it;
+        Image *const image = Theme::getImageFromTheme(info->name);
+        if (image)
+        {
+            Icon *const icon = new Icon(this, image, AutoRelease_true);
+            icon->setPosition(info->x, info->y);
+            mSkinContainer->add(icon);
+        }
+    }
+
     FOR_EACH (std::vector<NpcButtonInfo*>::const_iterator, it, dialog->buttons)
     {
         const NpcButtonInfo *const info = *it;

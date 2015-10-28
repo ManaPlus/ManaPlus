@@ -1,6 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2011-2015  The ManaPlus Developers
+ *  Copyright (C) 2015  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -18,30 +18,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_NPCDIALOGINFO_H
-#define RESOURCES_NPCDIALOGINFO_H
+#ifndef ENUMS_SIMPLETYPES_AUTORELEASE_H
+#define ENUMS_SIMPLETYPES_AUTORELEASE_H
 
-#include "resources/npcbuttoninfo.h"
-#include "resources/npcimageinfo.h"
+#include "enums/simpletypes/booldefines.h"
 
-#include "utils/stringvector.h"
+defBoolEnum(AutoRelease);
 
-#include "localconsts.h"
-
-struct NpcDialogInfo final
-{
-    NpcDialogInfo() :
-        buttons(),
-        images(),
-        name(),
-        hideText(false)
-    {
-    }
-
-    std::vector<NpcButtonInfo*> buttons;
-    std::vector<NpcImageInfo*> images;
-    std::string name;
-    bool hideText;
-};
-
-#endif  // RESOURCES_NPCDIALOGINFO_H
+#endif  // ENUMS_SIMPLETYPES_AUTORELEASE_H

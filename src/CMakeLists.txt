@@ -674,6 +674,7 @@ SET(SRCS
     resources/notifications.h
     resources/npcbuttoninfo.h
     resources/npcdialoginfo.h
+    resources/npcimageinfo.h
     enums/resources/notifyflags.h
     enums/resources/notifytypes.h
     resources/db/monsterdb.cpp
@@ -1093,6 +1094,7 @@ SET(SRCS
     enums/state.h
     enums/simpletypes/allowsort.h
     enums/simpletypes/allplayers.h
+    enums/simpletypes/autorelease.h
     enums/simpletypes/autotarget.h
     enums/simpletypes/beingid.h
     enums/simpletypes/beingtypeid.h
