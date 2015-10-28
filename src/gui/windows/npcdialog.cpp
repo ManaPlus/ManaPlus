@@ -132,6 +132,7 @@ NpcDialog::NpcDialog(const BeingId npcId) :
     mSkinName(),
     mPlayerBox(new PlayerBox(nullptr)),
     mAvatarBeing(nullptr),
+    mDialogInfo(nullptr),
     mLastNextTime(0),
     mCameraMode(-1),
     mCameraX(0),
@@ -321,7 +322,7 @@ void NpcDialog::action(const ActionEvent &event)
             {
                 case NPC_INPUT_LIST:
                 {
-                    if (!mSkinName.empty())
+                    if (mDialogInfo)
                         return;
                     if (gui)
                         gui->resetClickCount();
@@ -952,7 +953,7 @@ void NpcDialog::buildLayout()
         switch (mInputState)
         {
             case NPC_INPUT_LIST:
-                if (mSkinName.empty())
+                if (!mDialogInfo)
                     placeMenuControls();
                 else
                     placeSkinControls();
@@ -1141,7 +1142,21 @@ void NpcDialog::copyToClipboard(const BeingId npcId,
 
 void NpcDialog::setSkin(const std::string &skin)
 {
+    if (skin.empty())
+    {
+        mSkinName = skin;
+        mDialogInfo = nullptr;
+        return;
+    }
+    const NpcDialogInfo *const dialog = NpcDialogDB::getDialog(skin);
+    if (!dialog)
+    {
+        logger->log("Error: creating controls for not existing npc dialog %s",
+            skin.c_str());
+        return;
+    }
     mSkinName = skin;
+    mDialogInfo = dialog;
 }
 
 void NpcDialog::deleteSkinControls()
@@ -1153,18 +1168,13 @@ void NpcDialog::createSkinControls()
 {
     deleteSkinControls();
 
-    const NpcDialogInfo *const dialog = NpcDialogDB::getDialog(mSkinName);
-    if (!dialog)
-    {
-        logger->log("Error: creating controls for not existing npc dialog %s",
-            mSkinName.c_str());
+    if (!mDialogInfo)
         return;
-    }
 
-    mHideText = dialog->hideText;
+    mHideText = mDialogInfo->hideText;
     FOR_EACH (std::vector<NpcImageInfo*>::const_iterator,
         it,
-        dialog->menu.images)
+        mDialogInfo->menu.images)
     {
         const NpcImageInfo *const info = *it;
         Image *const image = Theme::getImageFromTheme(info->name);
@@ -1177,7 +1187,7 @@ void NpcDialog::createSkinControls()
     }
     FOR_EACH (std::vector<NpcTextInfo*>::const_iterator,
         it,
-        dialog->menu.texts)
+        mDialogInfo->menu.texts)
     {
         const NpcTextInfo *const info = *it;
         BrowserBox *box = new BrowserBox(this,
@@ -1204,7 +1214,7 @@ void NpcDialog::createSkinControls()
     }
     FOR_EACH (std::vector<NpcButtonInfo*>::const_iterator,
         it,
-        dialog->menu.buttons)
+        mDialogInfo->menu.buttons)
     {
         const NpcButtonInfo *const info = *it;
         Button *const button = new Button(this);

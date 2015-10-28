@@ -46,6 +46,8 @@ class PlayerBox;
 class ScrollArea;
 class TextField;
 
+struct NpcDialogInfo;
+
 typedef std::map<BeingId, NpcDialog*> NpcDialogs;
 
 /**
@@ -309,6 +311,7 @@ class NpcDialog final : public Window,
         std::string mSkinName;
         PlayerBox *mPlayerBox A_NONNULLPOINTER;
         Being *mAvatarBeing;
+        const NpcDialogInfo *mDialogInfo;
         int mLastNextTime;
         int mCameraMode;
         int mCameraX;
