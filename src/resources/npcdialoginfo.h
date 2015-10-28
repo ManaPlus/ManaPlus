@@ -22,6 +22,7 @@
 #define RESOURCES_NPCDIALOGINFO_H
 
 #include "resources/npcbuttoninfo.h"
+#include "resources/npcdialogmenuinfo.h"
 #include "resources/npcimageinfo.h"
 #include "resources/npctextinfo.h"
 
@@ -32,16 +33,13 @@
 struct NpcDialogInfo final
 {
     NpcDialogInfo() :
-        buttons(),
-        images(),
+        menu(),
         name(),
         hideText(false)
     {
     }
 
-    std::vector<NpcButtonInfo*> buttons;
-    std::vector<NpcImageInfo*> images;
-    std::vector<NpcTextInfo*> texts;
+    NpcDialogMenuInfo menu;
     std::string name;
     bool hideText;
 };

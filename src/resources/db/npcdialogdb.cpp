@@ -48,8 +48,8 @@ void NpcDialogDB::load()
     mLoaded = true;
 }
 
-static void loadNpcDialog(NpcDialogInfo *const dialog,
-                          const XmlNodePtrConst node)
+static void loadNpcDialogMenu(NpcDialogInfo *const dialog,
+                              const XmlNodePtrConst node)
 {
     for_each_xml_child_node(childNode, node)
     {
@@ -78,7 +78,7 @@ static void loadNpcDialog(NpcDialogInfo *const dialog,
                 childNode, "imageWidth", 16, 1, 1000);
             button->imageHeight = XML::getIntProperty(
                 childNode, "imageHeight", 16, 1, 1000);
-            dialog->buttons.push_back(button);
+            dialog->menu.buttons.push_back(button);
         }
         else if (xmlNameEqual(childNode, "image"))
         {
@@ -94,7 +94,7 @@ static void loadNpcDialog(NpcDialogInfo *const dialog,
                 childNode, "x", 0, 0, 10000);
             imageInfo->y = XML::getIntProperty(
                 childNode, "y", 0, 0, 10000);
-            dialog->images.push_back(imageInfo);
+            dialog->menu.images.push_back(imageInfo);
         }
         else if (xmlNameEqual(childNode, "text"))
         {
@@ -114,7 +114,19 @@ static void loadNpcDialog(NpcDialogInfo *const dialog,
                 childNode, "width", 20, 10, 10000);
             textInfo->height = XML::getIntProperty(
                 childNode, "height", 20, 10, 10000);
-            dialog->texts.push_back(textInfo);
+            dialog->menu.texts.push_back(textInfo);
+        }
+    }
+}
+
+static void loadNpcDialog(NpcDialogInfo *const dialog,
+                          const XmlNodePtrConst node)
+{
+    for_each_xml_child_node(childNode, node)
+    {
+        if (xmlNameEqual(childNode, "menu"))
+        {
+            loadNpcDialogMenu(dialog, childNode);
         }
     }
 }
@@ -167,9 +179,9 @@ void NpcDialogDB::deleteDialog(const std::string &name)
         return;
 
     NpcDialogInfo *dialog = (*it).second;
-    delete_all(dialog->buttons);
-    delete_all(dialog->images);
-    delete_all(dialog->texts);
+    delete_all(dialog->menu.buttons);
+    delete_all(dialog->menu.images);
+    delete_all(dialog->menu.texts);
     mDialogs.erase(it);
     delete dialog;
 }
@@ -181,9 +193,9 @@ void NpcDialogDB::unload()
     FOR_EACH(DialogsIter, it, mDialogs)
     {
         NpcDialogInfo *dialog = (*it).second;
-        delete_all(dialog->buttons);
-        delete_all(dialog->images);
-        delete_all(dialog->texts);
+        delete_all(dialog->menu.buttons);
+        delete_all(dialog->menu.images);
+        delete_all(dialog->menu.texts);
         delete dialog;
     }
     mDialogs.clear();

@@ -1162,7 +1162,9 @@ void NpcDialog::createSkinControls()
     }
 
     mHideText = dialog->hideText;
-    FOR_EACH (std::vector<NpcImageInfo*>::const_iterator, it, dialog->images)
+    FOR_EACH (std::vector<NpcImageInfo*>::const_iterator,
+        it,
+        dialog->menu.images)
     {
         const NpcImageInfo *const info = *it;
         Image *const image = Theme::getImageFromTheme(info->name);
@@ -1173,7 +1175,9 @@ void NpcDialog::createSkinControls()
             mSkinContainer->add(icon);
         }
     }
-    FOR_EACH (std::vector<NpcTextInfo*>::const_iterator, it, dialog->texts)
+    FOR_EACH (std::vector<NpcTextInfo*>::const_iterator,
+        it,
+        dialog->menu.texts)
     {
         const NpcTextInfo *const info = *it;
         BrowserBox *box = new BrowserBox(this,
@@ -1198,7 +1202,9 @@ void NpcDialog::createSkinControls()
             box->addRow(*it2);
         }
     }
-    FOR_EACH (std::vector<NpcButtonInfo*>::const_iterator, it, dialog->buttons)
+    FOR_EACH (std::vector<NpcButtonInfo*>::const_iterator,
+        it,
+        dialog->menu.buttons)
     {
         const NpcButtonInfo *const info = *it;
         Button *const button = new Button(this);
