@@ -172,6 +172,10 @@ class Inventory final
 
         void resize(const unsigned int newSize);
 
+        int findIndexByTag(const int tag) const;
+
+        void addVirtualItem(const Item *const item);
+
     protected:
         typedef std::list<InventoryListener*> InventoryListenerList;
         InventoryListenerList mInventoryListeners;

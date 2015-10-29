@@ -542,25 +542,7 @@ void NpcDialog::action(const ActionEvent &event)
     else if (eventId == "add")
     {
         if (inventoryWindow)
-        {
-            const Item *const item = inventoryWindow->getSelectedItem();
-            if (item)
-            {
-                const int index = mInventory->addItem(item->getId(),
-                    item->getType(),
-                    1,
-                    1,
-                    item->getColor(),
-                    item->getIdentified(),
-                    item->getDamaged(),
-                    item->getFavorite(),
-                    Equipm_false,
-                    Equipped_false);
-                Item *const item2 = mInventory->getItem(index);
-                if (item2)
-                    item2->setTag(item->getInvIndex());
-            }
-        }
+            mInventory->addVirtualItem(inventoryWindow->getSelectedItem());
     }
     else if (eventId.find("skin_") == 0)
     {

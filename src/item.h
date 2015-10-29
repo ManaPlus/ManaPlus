@@ -228,6 +228,7 @@ class Item notfinal
         int mId;              /**< Item type id. */
         ItemColor mColor;
         int mQuantity;        /**< Number of items. */
+        int mTag;
 
     protected:
         Image *mImage;        /**< Item image. */
@@ -237,7 +238,6 @@ class Item notfinal
         uint8_t mRefine;      /**< Item refine level. */
         int mInvIndex;        /**< Inventory index. */
         int mType;            /**< Item type. */
-        int mTag;
         Equipm mEquipment;    /**< Item is equipment. */
         Equipped mEquipped;   /**< Item is equipped. */
         bool mInEquipment;    /**< Item is in equipment */

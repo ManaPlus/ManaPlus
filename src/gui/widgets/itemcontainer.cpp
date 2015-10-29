@@ -631,23 +631,8 @@ void ItemContainer::mouseReleased(MouseEvent &event)
             inventory = PlayerInfo::getInventory();
             if (inventory)
             {
-                const Item *const item = inventory->getItem(dragDrop.getTag());
-                if (item && !PlayerInfo::isItemProtected(item->getId()))
-                {
-                    const int index = mInventory->addItem(item->getId(),
-                        item->getType(),
-                        1,
-                        1,
-                        item->getColor(),
-                        item->getIdentified(),
-                        item->getDamaged(),
-                        item->getFavorite(),
-                        Equipm_false,
-                        Equipped_false);
-                    Item *const item2 = mInventory->getItem(index);
-                    if (item2)
-                        item2->setTag(item->getInvIndex());
-                }
+                mInventory->addVirtualItem(inventory->getItem(
+                    dragDrop.getTag()));
             }
             return;
         }

@@ -25,6 +25,8 @@
 #include "item.h"
 #include "logger.h"
 
+#include "being/playerinfo.h"
+
 #include "net/inventoryhandler.h"
 
 #include "resources/iteminfo.h"
@@ -346,4 +348,39 @@ void Inventory::resize(const unsigned int newSize)
     mSize = newSize;
     mItems = new Item*[static_cast<size_t>(mSize)];
     std::fill_n(mItems, mSize, static_cast<Item*>(nullptr));
+}
+
+int Inventory::findIndexByTag(const int tag) const
+{
+    for (unsigned i = 0; i < mSize; i++)
+    {
+        const Item *const item = mItems[i];
+        if (item && item->mTag == tag)
+            return i;
+    }
+
+    return -1;
+}
+
+void Inventory::addVirtualItem(const Item *const item)
+{
+    if (item && !PlayerInfo::isItemProtected(item->getId()))
+    {
+        if (findIndexByTag(item->getInvIndex()) != -1)
+            return;
+
+        const int index = addItem(item->getId(),
+            item->getType(),
+            1,
+            1,
+            item->getColor(),
+            item->getIdentified(),
+            item->getDamaged(),
+            item->getFavorite(),
+            Equipm_false,
+            Equipped_false);
+            Item *const item2 = getItem(index);
+        if (item2)
+            item2->setTag(item->getInvIndex());
+    }
 }
