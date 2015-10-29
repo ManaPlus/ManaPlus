@@ -174,7 +174,8 @@ class Inventory final
 
         int findIndexByTag(const int tag) const;
 
-        void addVirtualItem(const Item *const item);
+        void addVirtualItem(const Item *const item,
+                            int index);
 
     protected:
         typedef std::list<InventoryListener*> InventoryListenerList;

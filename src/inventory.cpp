@@ -362,24 +362,42 @@ int Inventory::findIndexByTag(const int tag) const
     return -1;
 }
 
-void Inventory::addVirtualItem(const Item *const item)
+void Inventory::addVirtualItem(const Item *const item,
+                               int index)
 {
     if (item && !PlayerInfo::isItemProtected(item->getId()))
     {
         if (findIndexByTag(item->getInvIndex()) != -1)
             return;
 
-        const int index = addItem(item->getId(),
-            item->getType(),
-            1,
-            1,
-            item->getColor(),
-            item->getIdentified(),
-            item->getDamaged(),
-            item->getFavorite(),
-            Equipm_false,
-            Equipped_false);
-            Item *const item2 = getItem(index);
+        if (index >= 0 && index < mSize && mItems[index] == nullptr)
+        {
+            setItem(index,
+                item->getId(),
+                item->getType(),
+                1,
+                1,
+                item->getColor(),
+                item->getIdentified(),
+                item->getDamaged(),
+                item->getFavorite(),
+                Equipm_false,
+                Equipped_false);
+        }
+        else
+        {
+            index = addItem(item->getId(),
+                item->getType(),
+                1,
+                1,
+                item->getColor(),
+                item->getIdentified(),
+                item->getDamaged(),
+                item->getFavorite(),
+                Equipm_false,
+                Equipped_false);
+        }
+        Item *const item2 = getItem(index);
         if (item2)
             item2->setTag(item->getInvIndex());
     }

@@ -542,7 +542,7 @@ void NpcDialog::action(const ActionEvent &event)
     else if (eventId == "add")
     {
         if (inventoryWindow)
-            mInventory->addVirtualItem(inventoryWindow->getSelectedItem());
+            mInventory->addVirtualItem(inventoryWindow->getSelectedItem(), 0);
     }
     else if (eventId.find("skin_") == 0)
     {
