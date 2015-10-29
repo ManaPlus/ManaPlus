@@ -370,7 +370,9 @@ void Inventory::addVirtualItem(const Item *const item,
         if (findIndexByTag(item->getInvIndex()) != -1)
             return;
 
-        if (index >= 0 && index < mSize && mItems[index] == nullptr)
+        if (index >= 0 &&
+            index < static_cast<int>(mSize) &&
+            mItems[index] == nullptr)
         {
             setItem(index,
                 item->getId(),
