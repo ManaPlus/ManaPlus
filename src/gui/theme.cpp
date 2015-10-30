@@ -440,8 +440,10 @@ Skin *Theme::readSkin(const std::string &filename, const bool full)
                         partNode, "xpos", 0) + globalXPos;
                     helper.yPos = XML::getProperty(
                         partNode, "ypos", 0) + globalYPos;
-                    helper.width = XML::getProperty(partNode, "width", 1);
-                    helper.height = XML::getProperty(partNode, "height", 1);
+                    helper.width = XML::getProperty(partNode, "width", 0);
+                    helper.height = XML::getProperty(partNode, "height", 0);
+                    if (!helper.width || !helper.height)
+                        continue;
                     helper.image = dBorders;
 
                     helper.rect = border;
