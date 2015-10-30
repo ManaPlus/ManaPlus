@@ -795,11 +795,50 @@ void ItemContainer::mouseReleased(MouseEvent &event)
             }
             return;
         }
-#ifdef EATHENA_SUPPORT
-        else if (src == DRAGDROP_SOURCE_NPC || src == DRAGDROP_SOURCE_MAIL)
-#else
         else if (src == DRAGDROP_SOURCE_NPC)
-#endif
+        {
+            if (dst == DRAGDROP_SOURCE_NPC)
+            {
+                const Item *const item = mInventory->getItem(
+                    dragDrop.getTag());
+                const int index = getSlotByXY(event.getX(), event.getY());
+                if (index == Inventory::NO_SLOT_INDEX)
+                {
+                    mInventory->removeItemAt(dragDrop.getTag());
+                    return;
+                }
+                mInventory->removeItemAt(index);
+                mInventory->setItem(index,
+                    item->getId(),
+                    item->getType(),
+                    1,
+                    1,
+                    item->getColor(),
+                    item->getIdentified(),
+                    item->getDamaged(),
+                    item->getFavorite(),
+                    Equipm_false,
+                    Equipped_false);
+                Item *const item2 = mInventory->getItem(index);
+                if (item2)
+                    item2->setTag(item->getTag());
+                mInventory->removeItemAt(dragDrop.getTag());
+            }
+            else
+            {
+                inventory = PlayerInfo::getInventory();
+                if (inventory)
+                {
+                    const Item *const item = inventory->getItem(
+                        dragDrop.getTag());
+                    if (item)
+                        mInventory->removeItemAt(dragDrop.getTag());
+                }
+                return;
+            }
+        }
+#ifdef EATHENA_SUPPORT
+        else if (src == DRAGDROP_SOURCE_MAIL)
         {
             inventory = PlayerInfo::getInventory();
             if (inventory)
@@ -810,6 +849,7 @@ void ItemContainer::mouseReleased(MouseEvent &event)
             }
             return;
         }
+#endif
 
         if (inventory)
         {

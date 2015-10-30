@@ -199,6 +199,8 @@ void Inventory::removeItem(const int id)
 
 void Inventory::removeItemAt(const int index)
 {
+    if (!mItems[index])
+        return;
     delete2(mItems[index]);
     mUsed--;
     if (mUsed < 0)  // Already at 0, no need to distribute event
