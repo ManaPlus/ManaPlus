@@ -27,6 +27,8 @@
 #include "listeners/mouselistener.h"
 #include "listeners/widgetlistener.h"
 
+#include "enums/simpletypes/forcequantity.h"
+
 #include "gui/widgets/widget.h"
 
 #include "localconsts.h"
@@ -57,7 +59,7 @@ class ItemContainer final : public Widget,
          */
         ItemContainer(const Widget2 *const widget,
                       Inventory *const inventory,
-                      const bool forceQuantity = false);
+                      const ForceQuantity forceQuantity = ForceQuantity_false);
 
         A_DELETE_COPY(ItemContainer)
 
@@ -204,7 +206,7 @@ class ItemContainer final : public Widget,
         int mPaddingItemX;
         int mPaddingItemY;
         SelectionState mSelectionStatus;
-        bool mForceQuantity;
+        ForceQuantity mForceQuantity;
         bool mDescItems;
         bool mRedraw;
 };

@@ -159,7 +159,7 @@ namespace
 
 ItemContainer::ItemContainer(const Widget2 *const widget,
                              Inventory *const inventory,
-                             const bool forceQuantity) :
+                             const ForceQuantity forceQuantity) :
     Widget(widget),
     KeyListener(),
     MouseListener(),
@@ -342,7 +342,8 @@ void ItemContainer::draw(Graphics *graphics)
 
             // Draw item caption
             std::string caption;
-            if (item->getQuantity() > 1 || mForceQuantity)
+            if (item->getQuantity() > 1 ||
+                mForceQuantity == ForceQuantity_true)
             {
                 caption = toString(item->getQuantity());
             }
@@ -460,7 +461,8 @@ void ItemContainer::safeDraw(Graphics *graphics)
 
             // Draw item caption
             std::string caption;
-            if (item->getQuantity() > 1 || mForceQuantity)
+            if (item->getQuantity() > 1 ||
+                mForceQuantity == ForceQuantity_true)
             {
                 caption = toString(item->getQuantity());
             }

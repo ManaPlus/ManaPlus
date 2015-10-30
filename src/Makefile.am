@@ -571,6 +571,7 @@ SRC += events/actionevent.h \
 	      enums/simpletypes/equipped.h \
 	      enums/simpletypes/favorite.h \
 	      enums/simpletypes/forcedisplay.h \
+	      enums/simpletypes/forcequantity.h \
 	      enums/simpletypes/identified.h \
 	      enums/simpletypes/ignorerecord.h \
 	      enums/simpletypes/intdefines.h \
