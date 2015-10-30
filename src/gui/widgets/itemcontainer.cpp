@@ -883,14 +883,17 @@ void ItemContainer::adjustHeight()
     if (mGridRows == 0 || (mLastUsedSlot + 1) % mGridColumns > 0)
         ++mGridRows;
 
-
     const unsigned int invSize = mInventory->getSize();
-    const int maxRows = mShowEmptyRows == ShowEmptyRows_true ?
+    int maxRows = mShowEmptyRows == ShowEmptyRows_true ?
         std::max(invSize / mGridColumns,
         static_cast<unsigned int>(mGridRows)) : mGridRows;
 
     if (mShowEmptyRows == ShowEmptyRows_true)
+    {
+        if (mGridColumns * maxRows < invSize)
+            maxRows ++;
         mGridRows = maxRows;
+    }
 
     setHeight(maxRows * mBoxHeight);
     updateMatrix();
@@ -1019,7 +1022,6 @@ int ItemContainer::getSlotByXY(int x, int y) const
         if (x > mBoxWidth * mGridColumns)
             return Inventory::NO_SLOT_INDEX;
         const int idx = (y / mBoxHeight) * mGridColumns + (x / mBoxWidth);
-        logger->log("getSlotByXY 3: %d, %d*%d", idx, mGridRows, mGridColumns);
         if (idx >= 0 && idx < mGridRows * mGridColumns)
             return idx;
     }
