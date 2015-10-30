@@ -35,6 +35,7 @@ gui_DATA =				\
 	incomplete_icon.xml	\
 	info.xml	\
 	inventory.xml	\
+	inventory_cell.xml	\
 	item_selection.xml	\
 	item_shortcut_background.xml	\
 	itemcontainer.xml			\

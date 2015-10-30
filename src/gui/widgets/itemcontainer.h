@@ -131,6 +131,8 @@ class ItemContainer final : public Widget,
         void unsetInventory()
         { mInventory = nullptr; }
 
+        void setCellBackgroundImage(const std::string &xmlName);
+
     private:
         enum Direction
         {
@@ -176,10 +178,12 @@ class ItemContainer final : public Widget,
         Inventory *mInventory;
         Image *mSelImg;
         Image *mProtectedImg;
+        Image *mCellBackgroundImg;
         std::string mName;
 
         int *mShowMatrix;
         Skin *mSkin;
+        ImageCollection *mVertexes;
         Color mEquipedColor;
         Color mEquipedColor2;
         Color mUnEquipedColor;
@@ -202,6 +206,7 @@ class ItemContainer final : public Widget,
         SelectionState mSelectionStatus;
         bool mForceQuantity;
         bool mDescItems;
+        bool mRedraw;
 };
 
 #endif  // GUI_WIDGETS_ITEMCONTAINER_H

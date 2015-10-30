@@ -23,6 +23,7 @@
 #include "gui/widgets/itemcontainer.h"
 
 #include "dragdrop.h"
+#include "graphicsvertexes.h"
 #include "itemshortcut.h"
 
 #include "being/playerinfo.h"
@@ -43,6 +44,7 @@
 #include "net/inventoryhandler.h"
 #include "net/tradehandler.h"
 
+#include "utils/delete2.h"
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
@@ -165,9 +167,11 @@ ItemContainer::ItemContainer(const Widget2 *const widget,
     mInventory(inventory),
     mSelImg(Theme::getImageFromThemeXml("item_selection.xml", "")),
     mProtectedImg(Theme::getImageFromTheme("lock.png")),
+    mCellBackgroundImg(Theme::getImageFromThemeXml("inventory_cell.xml", "")),
     mName(),
     mShowMatrix(nullptr),
     mSkin(theme ? theme->load("itemcontainer.xml", "") : nullptr),
+    mVertexes(new ImageCollection),
     mEquipedColor(getThemeColor(ThemeColorId::ITEM_EQUIPPED)),
     mEquipedColor2(getThemeColor(ThemeColorId::ITEM_EQUIPPED_OUTLINE)),
     mUnEquipedColor(getThemeColor(ThemeColorId::ITEM_NOT_EQUIPPED)),
@@ -188,7 +192,8 @@ ItemContainer::ItemContainer(const Widget2 *const widget,
     mPaddingItemY(mSkin ? mSkin->getOption("paddingItemY", 0) : 0),
     mSelectionStatus(SEL_NONE),
     mForceQuantity(forceQuantity),
-    mDescItems(false)
+    mDescItems(false),
+    mRedraw(true)
 {
     setFocusable(true);
     addKeyListener(this);
@@ -217,6 +222,7 @@ ItemContainer::~ItemContainer()
         theme->unload(mSkin);
 
     delete []mShowMatrix;
+    delete2(mVertexes);
 }
 
 void ItemContainer::logic()
@@ -247,6 +253,33 @@ void ItemContainer::draw(Graphics *graphics)
 
     BLOCK_START("ItemContainer::draw")
     Font *const font = getFont();
+
+    if (mCellBackgroundImg)
+    {
+        if (mRedraw)
+        {
+            mRedraw = false;
+            mVertexes->clear();
+
+            const unsigned int invSize = mInventory->getSize();
+            const int maxRows = invSize / mGridColumns;
+            for (int j = 0; j < maxRows; j++)
+            {
+                const int intY0 = j * mBoxHeight;
+                for (int i = 0; i < mGridColumns; i++)
+                {
+                    int itemX = i * mBoxWidth;
+                    int itemY = intY0;
+                    graphics->calcTileCollection(mVertexes,
+                        mCellBackgroundImg,
+                        itemX + mPaddingItemX,
+                        itemY + mPaddingItemY);
+                }
+            }
+            graphics->finalize(mVertexes);
+        }
+        graphics->drawTileCollection(mVertexes);
+    }
 
     for (int j = 0; j < mGridRows; j++)
     {
@@ -342,7 +375,120 @@ void ItemContainer::draw(Graphics *graphics)
 
 void ItemContainer::safeDraw(Graphics *graphics)
 {
-    ItemContainer::draw(graphics);
+    if (!mInventory || !mShowMatrix)
+        return;
+
+    BLOCK_START("ItemContainer::draw")
+    Font *const font = getFont();
+
+    if (mCellBackgroundImg)
+    {
+        const unsigned int invSize = mInventory->getSize();
+        const int maxRows = invSize / mGridColumns;
+        for (int j = 0; j < maxRows; j++)
+        {
+            const int intY0 = j * mBoxHeight;
+            for (int i = 0; i < mGridColumns; i++)
+            {
+                int itemX = i * mBoxWidth;
+                int itemY = intY0;
+                graphics->drawImage(mCellBackgroundImg,
+                    itemX + mPaddingItemX,
+                    itemY + mPaddingItemY);
+            }
+        }
+    }
+
+    for (int j = 0; j < mGridRows; j++)
+    {
+        const int intY0 = j * mBoxHeight;
+        int itemIndex = j * mGridColumns - 1;
+        for (int i = 0; i < mGridColumns; i++)
+        {
+            int itemX = i * mBoxWidth;
+            int itemY = intY0;
+            itemIndex ++;
+            if (mShowMatrix[itemIndex] < 0)
+                continue;
+
+            const Item *const item = mInventory->getItem(
+                mShowMatrix[itemIndex]);
+
+            if (!item || item->getId() == 0)
+                continue;
+
+            Image *const image = item->getImage();
+            if (image)
+            {
+                if (mShowMatrix[itemIndex] == mSelectedIndex)
+                {
+                    if (mSelImg)
+                        graphics->drawImage(mSelImg, itemX, itemY);
+                }
+                image->setAlpha(1.0F);  // ensure the image if fully drawn...
+                graphics->drawImage(image,
+                    itemX + mPaddingItemX,
+                    itemY + mPaddingItemY);
+                if (mProtectedImg && PlayerInfo::isItemProtected(
+                    item->getId()))
+                {
+                    graphics->drawImage(mProtectedImg,
+                        itemX + mPaddingItemX,
+                        itemY + mPaddingItemY);
+                }
+            }
+        }
+    }
+
+    for (int j = 0; j < mGridRows; j++)
+    {
+        const int intY0 = j * mBoxHeight;
+        int itemIndex = j * mGridColumns - 1;
+        for (int i = 0; i < mGridColumns; i++)
+        {
+            int itemX = i * mBoxWidth;
+            int itemY = intY0;
+            itemIndex ++;
+            if (mShowMatrix[itemIndex] < 0)
+                continue;
+
+            const Item *const item = mInventory->getItem(
+                mShowMatrix[itemIndex]);
+
+            if (!item || item->getId() == 0)
+                continue;
+
+            // Draw item caption
+            std::string caption;
+            if (item->getQuantity() > 1 || mForceQuantity)
+            {
+                caption = toString(item->getQuantity());
+            }
+            else if (item->isEquipped() == Equipped_true)
+            {
+                // TRANSLATORS: Text under equipped items (should be small)
+                caption = _("Eq.");
+            }
+
+            if (item->isEquipped() == Equipped_true)
+            {
+                font->drawString(graphics,
+                    mEquipedColor, mEquipedColor2,
+                    caption,
+                    itemX + (mBoxWidth - font->getWidth(caption)) / 2,
+                    itemY + mEquippedTextPadding);
+            }
+            else
+            {
+                font->drawString(graphics,
+                    mUnEquipedColor, mUnEquipedColor2,
+                    caption,
+                    itemX + (mBoxWidth - font->getWidth(caption)) / 2,
+                    itemY + mEquippedTextPadding);
+            }
+        }
+    }
+    BLOCK_END("ItemContainer::draw")
 }
 
 void ItemContainer::selectNone()
@@ -716,7 +862,9 @@ void ItemContainer::adjustHeight()
     if (mGridRows == 0 || (mLastUsedSlot + 1) % mGridColumns > 0)
         ++mGridRows;
 
-    setHeight(mGridRows * mBoxHeight);
+    const unsigned int invSize = mInventory->getSize();
+    const int maxRows = invSize / mGridColumns;
+    setHeight(maxRows * mBoxHeight);
 
     updateMatrix();
 }
@@ -726,6 +874,7 @@ void ItemContainer::updateMatrix()
     if (!mInventory)
         return;
 
+    mRedraw = true;
     delete []mShowMatrix;
     mShowMatrix = new int[static_cast<size_t>(mGridRows * mGridColumns)];
 
@@ -836,4 +985,12 @@ void ItemContainer::setSortType(const int sortType)
 {
     mSortType = sortType;
     updateMatrix();
+}
+
+void ItemContainer::setCellBackgroundImage(const std::string &xmlName)
+{
+    if (mCellBackgroundImg)
+        mCellBackgroundImg->decRef();
+    mCellBackgroundImg = Theme::getImageFromThemeXml(xmlName, "");
+    mRedraw = true;
 }
