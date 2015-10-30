@@ -123,7 +123,8 @@ NpcDialog::NpcDialog(const BeingId npcId) :
     // TRANSLATORS: npc dialog button
     mResetButton(new Button(this, _("Reset"), "reset", this)),
     mInventory(new Inventory(InventoryType::NPC, 1)),
-    mItemContainer(new ItemContainer(this, mInventory, ShowEmptyRows_true)),
+    mItemContainer(new ItemContainer(this, mInventory,
+        10000, ShowEmptyRows_true)),
     mItemScrollArea(new ScrollArea(this, mItemContainer,
         getOptionBool("showitemsbackground"), "npc_listbackground.xml")),
     mInputState(NPC_INPUT_NONE),
@@ -374,7 +375,7 @@ void NpcDialog::action(const ActionEvent &event)
                     }
 
                     std::string str;
-                    const int sz = mInventory->getNumberOfSlotsUsed();
+                    const int sz = mInventory->getSize();
                     if (sz == 0)
                     {
                         str = "0,0";
@@ -421,7 +422,7 @@ void NpcDialog::action(const ActionEvent &event)
                     }
 
                     std::string str;
-                    const int sz = mInventory->getNumberOfSlotsUsed();
+                    const int sz = mInventory->getSize();
                     if (sz == 0)
                     {
                         str = "-1";
@@ -441,7 +442,6 @@ void NpcDialog::action(const ActionEvent &event)
                         {
                             str.append(";");
                             item = mInventory->getItem(f);
-                            logger->log("tag=%d", item->getTag());
                             if (item)
                                 str.append(strprintf("%d", item->getTag()));
                             else

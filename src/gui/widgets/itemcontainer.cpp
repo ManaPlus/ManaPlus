@@ -159,6 +159,7 @@ namespace
 
 ItemContainer::ItemContainer(const Widget2 *const widget,
                              Inventory *const inventory,
+                             const int maxColumns,
                              const ShowEmptyRows showEmptyRows,
                              const ForceQuantity forceQuantity) :
     Widget(widget),
@@ -191,6 +192,7 @@ ItemContainer::ItemContainer(const Widget2 *const widget,
                          "equippedTextPadding", 29) : 29),
     mPaddingItemX(mSkin ? mSkin->getOption("paddingItemX", 0) : 0),
     mPaddingItemY(mSkin ? mSkin->getOption("paddingItemY", 0) : 0),
+    mMaxColumns(maxColumns),
     mSelectionStatus(SEL_NONE),
     mForceQuantity(forceQuantity),
     mShowEmptyRows(showEmptyRows),
@@ -258,18 +260,20 @@ void ItemContainer::draw(Graphics *graphics)
 
     if (mCellBackgroundImg)
     {
-        if (mRedraw)
+        if (mRedraw || graphics->getRedraw())
         {
             mRedraw = false;
             mVertexes->clear();
 
-            const unsigned int invSize = mInventory->getSize();
+            const int invSize = mInventory->getSize();
             const int maxRows = mShowEmptyRows == ShowEmptyRows_true ?
-                invSize / mGridColumns : mGridRows;
+                std::max(invSize / mGridColumns, mGridRows) : mGridRows;
+            const int maxColumns = mGridColumns > invSize ?
+                invSize : mGridColumns;
             for (int j = 0; j < maxRows; j++)
             {
                 const int intY0 = j * mBoxHeight;
-                for (int i = 0; i < mGridColumns; i++)
+                for (int i = 0; i < maxColumns; i++)
                 {
                     int itemX = i * mBoxWidth;
                     int itemY = intY0;
@@ -387,13 +391,15 @@ void ItemContainer::safeDraw(Graphics *graphics)
 
     if (mCellBackgroundImg)
     {
-        const unsigned int invSize = mInventory->getSize();
+        const int invSize = mInventory->getSize();
         const int maxRows = mShowEmptyRows == ShowEmptyRows_true ?
-            invSize / mGridColumns : mGridRows;
+            std::max(invSize / mGridColumns, mGridRows) : mGridRows;
+        const int maxColumns = mGridColumns > invSize ?
+            invSize : mGridColumns;
         for (int j = 0; j < maxRows; j++)
         {
             const int intY0 = j * mBoxHeight;
-            for (int i = 0; i < mGridColumns; i++)
+            for (int i = 0; i < maxColumns; i++)
             {
                 int itemX = i * mBoxWidth;
                 int itemY = intY0;
@@ -785,7 +791,7 @@ void ItemContainer::mouseReleased(MouseEvent &event)
             {
                 mInventory->addVirtualItem(
                     inventory->getItem(dragDrop.getTag()),
-                    getSlotIndex(event.getX(), event.getY()));
+                    getSlotByXY(event.getX(), event.getY()));
             }
             return;
         }
@@ -855,8 +861,17 @@ void ItemContainer::mouseExited(MouseEvent &event A_UNUSED)
 
 void ItemContainer::widgetResized(const Event &event A_UNUSED)
 {
-    mGridColumns = std::max(1, mDimension.width / mBoxWidth);
+    mGridColumns = std::min(mMaxColumns,
+        std::max(1, mDimension.width / mBoxWidth));
+    if (mGridColumns > mMaxColumns)
+        mGridColumns = mMaxColumns;
     adjustHeight();
+    mRedraw = true;
+}
+
+void ItemContainer::widgetMoved(const Event &event A_UNUSED)
+{
+    mRedraw = true;
 }
 
 void ItemContainer::adjustHeight()
@@ -868,11 +883,16 @@ void ItemContainer::adjustHeight()
     if (mGridRows == 0 || (mLastUsedSlot + 1) % mGridColumns > 0)
         ++mGridRows;
 
+
     const unsigned int invSize = mInventory->getSize();
     const int maxRows = mShowEmptyRows == ShowEmptyRows_true ?
-        invSize / mGridColumns : mGridRows;
-    setHeight(maxRows * mBoxHeight);
+        std::max(invSize / mGridColumns,
+        static_cast<unsigned int>(mGridRows)) : mGridRows;
 
+    if (mShowEmptyRows == ShowEmptyRows_true)
+        mGridRows = maxRows;
+
+    setHeight(maxRows * mBoxHeight);
     updateMatrix();
 }
 
@@ -898,6 +918,13 @@ void ItemContainer::updateMatrix()
         Item *const item = mInventory->getItem(idx);
 
         if (!item || item->getId() == 0 || !item->isHaveTag(mTag))
+        {
+            if (mShowEmptyRows == ShowEmptyRows_true)
+                sortedItems.push_back(new ItemIdPair(idx, nullptr));
+            continue;
+        }
+
+        if (!item->isHaveTag(mTag))
             continue;
 
         if (mName.empty())
@@ -977,6 +1004,24 @@ int ItemContainer::getSlotIndex(int x, int y) const
         {
             return mShowMatrix[idx];
         }
+    }
+
+    return Inventory::NO_SLOT_INDEX;
+}
+
+int ItemContainer::getSlotByXY(int x, int y) const
+{
+    if (!mShowMatrix)
+        return Inventory::NO_SLOT_INDEX;
+
+    if (x < mDimension.width && y < mDimension.height && x >= 0 && y >= 0)
+    {
+        if (x > mBoxWidth * mGridColumns)
+            return Inventory::NO_SLOT_INDEX;
+        const int idx = (y / mBoxHeight) * mGridColumns + (x / mBoxWidth);
+        logger->log("getSlotByXY 3: %d, %d*%d", idx, mGridRows, mGridColumns);
+        if (idx >= 0 && idx < mGridRows * mGridColumns)
+            return idx;
     }
 
     return Inventory::NO_SLOT_INDEX;

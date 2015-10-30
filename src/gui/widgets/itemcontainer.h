@@ -60,6 +60,7 @@ class ItemContainer final : public Widget,
          */
         ItemContainer(const Widget2 *const widget,
                       Inventory *const inventory,
+                      const int maxColumns = 100000,
                       const ShowEmptyRows showEmptyRows = ShowEmptyRows_false,
                       const ForceQuantity forceQuantity = ForceQuantity_false);
 
@@ -95,6 +96,8 @@ class ItemContainer final : public Widget,
 
         // WidgetListener
         void widgetResized(const Event &event) override final;
+
+        void widgetMoved(const Event &event) override final;
 
         /**
          * Returns the selected item.
@@ -171,13 +174,15 @@ class ItemContainer final : public Widget,
         void distributeValueChangedEvent();
 
         /**
-         * Gets the slot index based on the cursor position.
+         * Gets the inventory slot index based on the cursor position.
          *
          * @param x The X coordinate position.
          * @param y The Y coordinate position.
          * @return The slot index on success, -1 on failure.
          */
         int getSlotIndex(int x, int y) const;
+
+        int getSlotByXY(int x, int y) const;
 
         Inventory *mInventory;
         Image *mSelImg;
@@ -207,6 +212,7 @@ class ItemContainer final : public Widget,
         int mEquippedTextPadding;
         int mPaddingItemX;
         int mPaddingItemY;
+        int mMaxColumns;
         SelectionState mSelectionStatus;
         ForceQuantity mForceQuantity;
         ShowEmptyRows mShowEmptyRows;
