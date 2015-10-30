@@ -928,10 +928,9 @@ void ItemContainer::adjustHeight()
     if (mGridRows == 0 || (mLastUsedSlot + 1) % mGridColumns > 0)
         ++mGridRows;
 
-    const unsigned int invSize = mInventory->getSize();
+    const int invSize = mInventory->getSize();
     int maxRows = mShowEmptyRows == ShowEmptyRows_true ?
-        std::max(invSize / mGridColumns,
-        static_cast<unsigned int>(mGridRows)) : mGridRows;
+        std::max(invSize / mGridColumns, mGridRows) : mGridRows;
 
     if (mShowEmptyRows == ShowEmptyRows_true)
     {
