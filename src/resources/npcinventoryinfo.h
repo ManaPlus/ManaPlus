@@ -18,33 +18,23 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_NPCDIALOGINFO_H
-#define RESOURCES_NPCDIALOGINFO_H
+#ifndef RESOURCES_NPCINVENTORYINFO_H
+#define RESOURCES_NPCINVENTORYINFO_H
 
-#include "resources/npcbuttoninfo.h"
-#include "resources/npcdialogmenuinfo.h"
-#include "resources/npcimageinfo.h"
-#include "resources/npcinventoryinfo.h"
-#include "resources/npctextinfo.h"
-
-#include "utils/stringvector.h"
+#include <string>
 
 #include "localconsts.h"
 
-struct NpcDialogInfo final
+struct NpcInventoryInfo final
 {
-    NpcDialogInfo() :
-        menu(),
-        inventory(),
-        name(),
-        hideText(false)
+    NpcInventoryInfo() :
+        cell(),
+        columns(100000)
     {
     }
 
-    NpcDialogMenuInfo menu;
-    NpcInventoryInfo inventory;
-    std::string name;
-    bool hideText;
+    std::string cell;
+    int columns;
 };
 
-#endif  // RESOURCES_NPCDIALOGINFO_H
+#endif  // RESOURCES_NPCINVENTORYINFO_H

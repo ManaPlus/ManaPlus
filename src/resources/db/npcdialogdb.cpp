@@ -119,6 +119,14 @@ static void loadNpcDialogMenu(NpcDialogInfo *const dialog,
     }
 }
 
+static void loadNpcDialogInventory(NpcDialogInfo *const dialog,
+                                   XmlNodePtrConst node)
+{
+    dialog->inventory.cell = XML::getProperty(node, "cell", "");
+    dialog->inventory.columns = XML::getIntProperty(
+        node, "columns", 10000, 1, 10000);
+}
+
 static void loadNpcDialog(NpcDialogInfo *const dialog,
                           const XmlNodePtrConst node)
 {
@@ -127,6 +135,10 @@ static void loadNpcDialog(NpcDialogInfo *const dialog,
         if (xmlNameEqual(childNode, "menu"))
         {
             loadNpcDialogMenu(dialog, childNode);
+        }
+        else if (xmlNameEqual(childNode, "inventory"))
+        {
+            loadNpcDialogInventory(dialog, childNode);
         }
     }
 }

@@ -318,7 +318,6 @@ class NpcDialog final : public Window,
         int mCameraY;
         bool mShowAvatar;
         bool mLogInteraction;
-        bool mHideText;
 };
 
 #endif  // GUI_WINDOWS_NPCDIALOG_H

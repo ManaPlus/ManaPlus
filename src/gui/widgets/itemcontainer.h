@@ -140,6 +140,8 @@ class ItemContainer final : public Widget,
 
         void setCellBackgroundImage(const std::string &xmlName);
 
+        void setMaxColumns(const int maxColumns);
+
     private:
         enum Direction
         {
@@ -172,6 +174,8 @@ class ItemContainer final : public Widget,
          * Sends out selection events to the list of selection listeners.
          */
         void distributeValueChangedEvent();
+
+        void updateSize();
 
         /**
          * Gets the inventory slot index based on the cursor position.

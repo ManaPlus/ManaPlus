@@ -139,8 +139,7 @@ NpcDialog::NpcDialog(const BeingId npcId) :
     mCameraX(0),
     mCameraY(0),
     mShowAvatar(false),
-    mLogInteraction(config.getBoolValue("logNpcInGui")),
-    mHideText(false)
+    mLogInteraction(config.getBoolValue("logNpcInGui"))
 {
     // Basic Window Setup
     setWindowName("NpcText");
@@ -816,7 +815,7 @@ void NpcDialog::placeMenuControls()
 void NpcDialog::placeSkinControls()
 {
     createSkinControls();
-    if (mHideText)
+    if (mDialogInfo && mDialogInfo->hideText)
     {
         if (mShowAvatar)
         {
@@ -896,22 +895,54 @@ void NpcDialog::placeIntInputControls()
 
 void NpcDialog::placeItemInputControls()
 {
-    if (mShowAvatar)
+    if (mDialogInfo)
     {
-        place(0, 0, mPlayerBox);
-        place(1, 0, mScrollArea, 6, 3);
-        place(0, 3, mItemScrollArea, 7, 3);
-        place(1, 6, mButton3, 2);
-        place(3, 6, mClearButton, 2);
-        place(5, 6, mButton, 2);
+        mItemContainer->setCellBackgroundImage(mDialogInfo->inventory.cell);
+        mItemContainer->setMaxColumns(mDialogInfo->inventory.columns);
     }
     else
     {
-        place(0, 0, mScrollArea, 6, 3);
-        place(0, 3, mItemScrollArea, 6, 3);
-        place(0, 6, mButton3, 2);
-        place(2, 6, mClearButton, 2);
-        place(4, 6, mButton, 2);
+        mItemContainer->setCellBackgroundImage("inventory_cell.xml");
+        mItemContainer->setMaxColumns(10000);
+    }
+
+    if (mDialogInfo && mDialogInfo->hideText)
+    {
+        if (mShowAvatar)
+        {
+            place(0, 0, mPlayerBox);
+            place(1, 0, mItemScrollArea, 7, 3);
+            place(1, 3, mButton3, 2);
+            place(3, 3, mClearButton, 2);
+            place(5, 3, mButton, 2);
+        }
+        else
+        {
+            place(0, 0, mItemScrollArea, 6, 3);
+            place(0, 3, mButton3, 2);
+            place(2, 3, mClearButton, 2);
+            place(4, 3, mButton, 2);
+        }
+    }
+    else
+    {
+        if (mShowAvatar)
+        {
+            place(0, 0, mPlayerBox);
+            place(1, 0, mScrollArea, 6, 3);
+            place(0, 3, mItemScrollArea, 7, 3);
+            place(1, 6, mButton3, 2);
+            place(3, 6, mClearButton, 2);
+            place(5, 6, mButton, 2);
+        }
+        else
+        {
+            place(0, 0, mScrollArea, 6, 3);
+            place(0, 3, mItemScrollArea, 6, 3);
+            place(0, 6, mButton3, 2);
+            place(2, 6, mClearButton, 2);
+            place(4, 6, mButton, 2);
+        }
     }
 }
 
@@ -1153,7 +1184,6 @@ void NpcDialog::createSkinControls()
     if (!mDialogInfo)
         return;
 
-    mHideText = mDialogInfo->hideText;
     FOR_EACH (std::vector<NpcImageInfo*>::const_iterator,
         it,
         mDialogInfo->menu.images)

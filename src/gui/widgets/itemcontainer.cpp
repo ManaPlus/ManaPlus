@@ -901,6 +901,11 @@ void ItemContainer::mouseExited(MouseEvent &event A_UNUSED)
 
 void ItemContainer::widgetResized(const Event &event A_UNUSED)
 {
+    updateSize();
+}
+
+void ItemContainer::updateSize()
+{
     mGridColumns = std::min(mMaxColumns,
         std::max(1, mDimension.width / mBoxWidth));
     if (mGridColumns > mMaxColumns)
@@ -1087,4 +1092,10 @@ void ItemContainer::setCellBackgroundImage(const std::string &xmlName)
         mCellBackgroundImg->decRef();
     mCellBackgroundImg = Theme::getImageFromThemeXml(xmlName, "");
     mRedraw = true;
+}
+
+void ItemContainer::setMaxColumns(const int maxColumns)
+{
+    mMaxColumns = maxColumns;
+    updateSize();
 }
