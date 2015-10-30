@@ -1123,6 +1123,7 @@ SET(SRCS
     enums/simpletypes/protected.h
     enums/simpletypes/sfx.h
     enums/simpletypes/showcenter.h
+    enums/simpletypes/showemptyrows.h
     enums/simpletypes/skiperror.h
     enums/simpletypes/speech.h
     enums/simpletypes/trading.h

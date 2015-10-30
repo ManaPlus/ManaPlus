@@ -159,6 +159,7 @@ namespace
 
 ItemContainer::ItemContainer(const Widget2 *const widget,
                              Inventory *const inventory,
+                             const ShowEmptyRows showEmptyRows,
                              const ForceQuantity forceQuantity) :
     Widget(widget),
     KeyListener(),
@@ -192,6 +193,7 @@ ItemContainer::ItemContainer(const Widget2 *const widget,
     mPaddingItemY(mSkin ? mSkin->getOption("paddingItemY", 0) : 0),
     mSelectionStatus(SEL_NONE),
     mForceQuantity(forceQuantity),
+    mShowEmptyRows(showEmptyRows),
     mDescItems(false),
     mRedraw(true)
 {
@@ -262,7 +264,8 @@ void ItemContainer::draw(Graphics *graphics)
             mVertexes->clear();
 
             const unsigned int invSize = mInventory->getSize();
-            const int maxRows = invSize / mGridColumns;
+            const int maxRows = mShowEmptyRows == ShowEmptyRows_true ?
+                invSize / mGridColumns : mGridRows;
             for (int j = 0; j < maxRows; j++)
             {
                 const int intY0 = j * mBoxHeight;
@@ -385,7 +388,8 @@ void ItemContainer::safeDraw(Graphics *graphics)
     if (mCellBackgroundImg)
     {
         const unsigned int invSize = mInventory->getSize();
-        const int maxRows = invSize / mGridColumns;
+        const int maxRows = mShowEmptyRows == ShowEmptyRows_true ?
+            invSize / mGridColumns : mGridRows;
         for (int j = 0; j < maxRows; j++)
         {
             const int intY0 = j * mBoxHeight;
@@ -865,7 +869,8 @@ void ItemContainer::adjustHeight()
         ++mGridRows;
 
     const unsigned int invSize = mInventory->getSize();
-    const int maxRows = invSize / mGridColumns;
+    const int maxRows = mShowEmptyRows == ShowEmptyRows_true ?
+        invSize / mGridColumns : mGridRows;
     setHeight(maxRows * mBoxHeight);
 
     updateMatrix();

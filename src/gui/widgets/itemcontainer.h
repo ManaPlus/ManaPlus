@@ -28,6 +28,7 @@
 #include "listeners/widgetlistener.h"
 
 #include "enums/simpletypes/forcequantity.h"
+#include "enums/simpletypes/showemptyrows.h"
 
 #include "gui/widgets/widget.h"
 
@@ -59,6 +60,7 @@ class ItemContainer final : public Widget,
          */
         ItemContainer(const Widget2 *const widget,
                       Inventory *const inventory,
+                      const ShowEmptyRows showEmptyRows = ShowEmptyRows_false,
                       const ForceQuantity forceQuantity = ForceQuantity_false);
 
         A_DELETE_COPY(ItemContainer)
@@ -207,6 +209,7 @@ class ItemContainer final : public Widget,
         int mPaddingItemY;
         SelectionState mSelectionStatus;
         ForceQuantity mForceQuantity;
+        ShowEmptyRows mShowEmptyRows;
         bool mDescItems;
         bool mRedraw;
 };
