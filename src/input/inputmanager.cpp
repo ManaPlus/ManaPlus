@@ -732,11 +732,22 @@ void InputManager::updateConditionMask()
     if (Game::instance())
         mMask |= InputCondition::INGAME;
 
-    if (!localPlayer || localPlayer->getFollow().empty())
-        mMask |= InputCondition::NOFOLLOW;
+    if (localPlayer)
+    {
+        if (localPlayer->getFollow().empty())
+            mMask |= InputCondition::NOFOLLOW;
 
-    if (localPlayer && localPlayer->isAlive())
-        mMask |= InputCondition::ALIVE;
+        if (!localPlayer->isTrickDead())
+            mMask |= InputCondition::NOBLOCK;
+
+        if (localPlayer->isAlive())
+            mMask |= InputCondition::ALIVE;
+    }
+    else
+    {
+        mMask |= InputCondition::NOFOLLOW;
+        mMask |= InputCondition::NOBLOCK;
+    }
 #endif
 
     if (!settings.awayMode)

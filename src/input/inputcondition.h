@@ -46,11 +46,13 @@ namespace InputCondition
         ALIVE      = 32768,                  // player alive
         NOVENDING  = 65536,                  // vending disabled
         NOROOM     = 131072,                 // not joined room
+        NOBLOCK    = 262144,                 // no blocked move (trick dead)
         SHORTCUT   = 2 + 4 + 16 + 512 + 2048,  // flags for shortcut keys
         SHORTCUT0  = 2 + 4 + 16 + 512,       // flags for shortcut keys
         GAME       = 2 + 4 + 8 + 16 + 64 + 2048,  // main game key
         GAME2      = 2 + 8 + 16 + 64 + 2048,
-        ARROWKEYS  = 2 + 4 + 8 + 16 + 64 + 2048 + 4096 + 16384 + 65536 + 131072
+        ARROWKEYS  = 2 + 4 + 8 + 16 + 64 + 2048 + 4096 +
+                     16384 + 65536 + 131072 + 262144
     };
 }  // namespace InputCondition
 
