@@ -275,7 +275,7 @@ SetupItemTextField::SetupItemTextField(const std::string &restrict text,
                                        SetupTabScroll *restrict const parent,
                                        const std::string &restrict eventName,
                                        const MainConfig mainConfig,
-                                       const bool useBase64) :
+                                       const UseBase64 useBase64) :
     SetupItem(text, description, keyName, parent, eventName, mainConfig),
     mHorizont(nullptr),
     mLabel(nullptr),
@@ -295,7 +295,7 @@ SetupItemTextField::SetupItemTextField(const std::string &restrict text,
                                        const std::string &restrict eventName,
                                        const std::string &restrict def,
                                        const MainConfig mainConfig,
-                                       const bool useBase64) :
+                                       const UseBase64 useBase64) :
     SetupItem(text, description, keyName, parent, eventName, def, mainConfig),
     mHorizont(nullptr),
     mLabel(nullptr),
@@ -319,7 +319,7 @@ SetupItemTextField::~SetupItemTextField()
 
 void SetupItemTextField::save()
 {
-    if (mUseBase64)
+    if (mUseBase64 == UseBase64_true)
     {
         std::string normalValue = mValue;
         mValue = encodeBase64String(mValue);
@@ -335,7 +335,7 @@ void SetupItemTextField::save()
 void SetupItemTextField::cancel(const std::string &eventName A_UNUSED)
 {
     load();
-    if (mUseBase64)
+    if (mUseBase64 == UseBase64_true)
         mValue = decodeBase64String(mValue);
     toWidget();
 }
@@ -343,7 +343,7 @@ void SetupItemTextField::cancel(const std::string &eventName A_UNUSED)
 void SetupItemTextField::externalUpdated(const std::string &eventName A_UNUSED)
 {
     load();
-    if (mUseBase64)
+    if (mUseBase64 == UseBase64_true)
         mValue = decodeBase64String(mValue);
     toWidget();
 }
@@ -351,7 +351,7 @@ void SetupItemTextField::externalUpdated(const std::string &eventName A_UNUSED)
 void SetupItemTextField::rereadValue()
 {
     load();
-    if (mUseBase64)
+    if (mUseBase64 == UseBase64_true)
         mValue = decodeBase64String(mValue);
     toWidget();
 }
@@ -359,7 +359,7 @@ void SetupItemTextField::rereadValue()
 void SetupItemTextField::createControls()
 {
     load();
-    if (mUseBase64)
+    if (mUseBase64 == UseBase64_true)
         mValue = decodeBase64String(mValue);
     mHorizont = new HorizontContainer(this, 32, 2);
 

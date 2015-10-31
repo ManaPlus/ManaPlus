@@ -22,6 +22,7 @@
 #define GUI_WIDGETS_SETUPITEM_H
 
 #include "enums/simpletypes/mainconfig.h"
+#include "enums/simpletypes/usebase64.h"
 
 #include "gui/widgets/widget2.h"
 
@@ -187,7 +188,7 @@ class SetupItemTextField final : public SetupItem
                            SetupTabScroll *restrict const parent,
                            const std::string &restrict eventName,
                            const MainConfig mainConfig = MainConfig_true,
-                           const bool useBase64 = false);
+                           const UseBase64 useBase64 = UseBase64_false);
 
         SetupItemTextField(const std::string &restrict text,
                            const std::string &restrict description,
@@ -196,7 +197,7 @@ class SetupItemTextField final : public SetupItem
                            const std::string &restrict eventName,
                            const std::string &restrict def,
                            const MainConfig mainConfig = MainConfig_true,
-                           const bool useBase64 = false);
+                           const UseBase64 useBase64 = UseBase64_false);
 
         A_DELETE_COPY(SetupItemTextField)
 
@@ -221,7 +222,7 @@ class SetupItemTextField final : public SetupItem
 
         void save() override final;
 
-        void setUseBase64(const bool b)
+        void setUseBase64(const UseBase64 b)
         { mUseBase64 = b; }
 
     protected:
@@ -230,7 +231,7 @@ class SetupItemTextField final : public SetupItem
         TextField *mTextField;
         Button *mButton;
         EditDialog *mEditDialog;
-        bool mUseBase64;
+        UseBase64 mUseBase64;
 };
 
 class SetupItemIntTextField final : public SetupItem

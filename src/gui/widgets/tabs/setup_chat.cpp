@@ -213,7 +213,8 @@ Setup_Chat::Setup_Chat(const Widget2 *const widget) :
     new SetupItemCheckBox(_("Enable language tab"),
         _("If this feature enabled, language tab will appear if server "
         "supports this feature.\n\nNote: only supported by Evol server yet."),
-        "enableLangTab", this, "enableLangTabEvent", false);
+        "enableLangTab", this, "enableLangTabEvent",
+        MainConfig_false);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show all languages messages"),
@@ -221,7 +222,8 @@ Setup_Chat::Setup_Chat(const Widget2 *const widget) :
         "for different languages, you will see messages for all languages, "
         "regardless of your language preferences.\n\nNote: it only works "
         "on servers supporting language tabs feature, like Evol."),
-        "showAllLang", this, "showAllLangEvent", false);
+        "showAllLang", this, "showAllLangEvent",
+        MainConfig_false);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable battle tab"),

@@ -410,7 +410,7 @@ Setup_Other::Setup_Other(const Widget2 *const widget) :
     new SetupItemTextField(_("Screenshot directory"), "",
         "screenshotDirectory3", this, "screenshotDirectory3Event",
         MainConfig_true,
-        true);
+        UseBase64_true);
 #endif
 
     // TRANSLATORS: settings option
