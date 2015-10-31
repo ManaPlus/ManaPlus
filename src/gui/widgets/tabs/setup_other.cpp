@@ -241,7 +241,7 @@ Setup_Other::Setup_Other(const Widget2 *const widget) :
 
     // TRANSLATORS: settings option
     new SetupItemTextField(_("Afk message"), "",
-        "afkMessage", this, "afkMessageEvent");
+        "afkMessage", this, "afkMessageEvent", false);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show job"), "", "showJob",
@@ -443,4 +443,5 @@ void Setup_Other::externalUpdated()
     reread("showJob");
     reread("enableGuildBot");
     reread("enableBuggyServers");
+    reread("afkMessage");
 }

@@ -446,7 +446,7 @@ void GameModifiers::changeAwayMode(const bool forward A_UNUSED)
         OkDialog *const dialog = CREATEWIDGETR(OkDialog,
             // TRANSLATORS: away message box header
             _("Away"),
-            config.getStringValue("afkMessage"),
+            serverConfig.getValue("afkMessage", "I am away from keyboard."),
             // TRANSLATORS: ok dialog button
             _("OK"),
             DialogType::SILENCE,

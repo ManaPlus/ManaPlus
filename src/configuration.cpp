@@ -48,6 +48,7 @@ Configuration paths;               // XML default paths information reader
 
 const std::string unusedKeys[] =
 {
+    "afkmessage",
     "hideShield",
     "AttackRange",
     "emoteshortcut0",

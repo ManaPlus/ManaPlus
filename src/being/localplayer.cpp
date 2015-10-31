@@ -1891,7 +1891,7 @@ void LocalPlayer::setAfkMessage(std::string message)
         {
             config.setValue("afkFormat", 0);
         }
-        config.setValue("afkMessage", message);
+        serverConfig.setValue("afkMessage", message);
     }
 }
 
@@ -1909,7 +1909,8 @@ void LocalPlayer::afkRespond(ChatTab *const tab, const std::string &nick)
         if (mAfkTime == 0 || time < mAfkTime
             || time - mAfkTime > awayLimitTimer)
         {
-            std::string str(config.getStringValue("afkMessage"));
+            std::string str(serverConfig.getValue("afkMessage",
+                "I am away from keyboard."));
             if (str.find("'NAME'") != std::string::npos)
                 replaceAll(str, "'NAME'", nick);
 
