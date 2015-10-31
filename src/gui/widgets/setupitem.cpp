@@ -576,7 +576,7 @@ void SetupItemIntTextField::apply(const std::string &eventName)
 SetupItemLabel::SetupItemLabel(const std::string &restrict text,
                                const std::string &restrict description,
                                SetupTabScroll *restrict const parent,
-                               const bool separator) :
+                               const Separator separator) :
     SetupItem(text, description, "", parent, "", "", MainConfig_true),
     mLabel(nullptr),
     mIsSeparator(separator)
@@ -593,7 +593,7 @@ SetupItemLabel::~SetupItemLabel()
 
 void SetupItemLabel::createControls()
 {
-    if (mIsSeparator)
+    if (mIsSeparator == Separator_true)
     {
         const std::string str(" \342\200\225\342\200\225\342\200\225"
             "\342\200\225\342\200\225 ");

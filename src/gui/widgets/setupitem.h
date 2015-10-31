@@ -23,6 +23,7 @@
 
 #include "enums/simpletypes/mainconfig.h"
 #include "enums/simpletypes/usebase64.h"
+#include "enums/simpletypes/separator.h"
 
 #include "gui/widgets/widget2.h"
 
@@ -284,7 +285,7 @@ class SetupItemLabel final : public SetupItem
         SetupItemLabel(const std::string &restrict text,
                        const std::string &restrict description,
                        SetupTabScroll *restrict const parent,
-                       const bool separator = true);
+                       const Separator separator = Separator_true);
 
         A_DELETE_COPY(SetupItemLabel)
 
@@ -302,7 +303,7 @@ class SetupItemLabel final : public SetupItem
 
     protected:
         Label *mLabel;
-        bool mIsSeparator;
+        Separator mIsSeparator;
 };
 
 class SetupItemDropDown final : public SetupItem

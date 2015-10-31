@@ -74,7 +74,8 @@ void Setup_Mods::loadMods()
     if (mods.empty())
     {
         // TRANSLATORS: settings label
-        new SetupItemLabel(_("No mods present"), "", this, false);
+        new SetupItemLabel(_("No mods present"), "", this,
+            Separator_false);
         return;
     }
 
