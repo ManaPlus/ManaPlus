@@ -48,7 +48,8 @@ StatusEffect::StatusEffect() :
     mPersistentParticleEffect(false),
     mIsPoison(false),
     mIsCart(false),
-    mIsRiding(false)
+    mIsRiding(false),
+    mIsTrickDead(false)
 {
 }
 
@@ -204,6 +205,8 @@ void StatusEffect::loadXmlFile(const std::string &fileName)
                 (name == paths.getStringValue("cartEffectName"));
             startEffect->mIsRiding =
                 (name == paths.getStringValue("ridingEffectName"));
+            startEffect->mIsTrickDead =
+                (name == paths.getStringValue("trickDeadEffectName"));
             startEffect->mMessage = XML::getProperty(
                 node, "start-message", "");
             startEffect->mSFXEffect = XML::getProperty(
@@ -219,6 +222,7 @@ void StatusEffect::loadXmlFile(const std::string &fileName)
             endEffect->mIsPoison = startEffect->mIsPoison;
             endEffect->mIsCart = startEffect->mIsCart;
             endEffect->mIsRiding = startEffect->mIsRiding;
+            endEffect->mIsTrickDead = startEffect->mIsTrickDead;
             endEffect->mMessage = XML::getProperty(node, "end-message", "");
             endEffect->mSFXEffect = XML::getProperty(node, "end-audio", "");
             endEffect->mParticleEffect = XML::getProperty(

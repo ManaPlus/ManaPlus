@@ -109,6 +109,7 @@ void BeingRecv::processBeingRemove(Net::MessageIn &msg)
                 switch (type)
                 {
                     case 0:
+                        dstBeing->serverRemove();
                         break;
                     case 1:
                         NotifyManager::notify(

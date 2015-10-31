@@ -179,6 +179,12 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
         virtual void setRiding(const bool b)
         { mHorseId = b ? 1 : 0; }
 
+        virtual void setTrickDead(const bool b)
+        { mTrickDead = b; }
+
+        bool isTrickDead() const A_WARN_UNUSED
+        { return mTrickDead; }
+
     protected:
         /**
          * Notify self that the stun mode has been updated. Invoked by
@@ -244,6 +250,7 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
         bool mMustResetParticles;
         bool mPoison;
         bool mHaveCart;
+        bool mTrickDead;
 };
 
 #endif  // BEING_ACTORSPRITE_H

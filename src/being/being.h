@@ -888,6 +888,8 @@ class Being notfinal : public ActorSprite,
         { return mLastAttackY; }
 
 #ifdef EATHENA_SUPPORT
+        void setTrickDead(const bool b) override final;
+
         void setChat(ChatObject *const obj);
 
         ChatObject *getChat() const
@@ -956,6 +958,8 @@ class Being notfinal : public ActorSprite,
 
         uint16_t getTeamId() const
         { return mTeamId; }
+
+        void serverRemove();
 
     protected:
         /**

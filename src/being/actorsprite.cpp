@@ -75,7 +75,8 @@ ActorSprite::ActorSprite(const BeingId id) :
     mCursorPaddingY(0),
     mMustResetParticles(false),
     mPoison(false),
-    mHaveCart(false)
+    mHaveCart(false),
+    mTrickDead(false)
 {
 }
 
@@ -240,6 +241,8 @@ void ActorSprite::updateStatusEffect(const int index, const Enable newStatus)
         setHaveCart(newStatus == Enable_true);
     else if (effect->isRiding())
         setRiding(newStatus == Enable_true);
+    else if (effect->isTrickDead())
+        setTrickDead(newStatus == Enable_true);
     handleStatusEffect(effect, index);
 }
 

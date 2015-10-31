@@ -956,14 +956,20 @@ void Being::handleSkill(Being *const victim, const int damage,
     if (!victim || !mInfo || !skillDialog)
         return;
 
-    if (this != localPlayer)
-        setAction(BeingAction::ATTACK, 1);
-
     const SkillInfo *const skill = skillDialog->getSkill(skillId);
     const SkillData *const data = skill
         ? skill->getData1(skillLevel) : nullptr;
     if (data)
         fireMissile(victim, data->particle);
+
+    if (this != localPlayer && skill)
+    {
+        const SkillType::SkillType type = skill->type;
+        if (type == SkillType::Attack || type == SkillType::Ground)
+            setAction(BeingAction::ATTACK, 1);
+        else
+            setAction(BeingAction::STAND, 1);
+    }
 
     reset();
     mActionTime = tick_time;
@@ -1333,8 +1339,34 @@ std::string Being::getAttackAction(const Attack *const attack1) const
 }
 
 getSpriteAction(Dead, DEAD)
-getSpriteAction(Stand, STAND)
 getSpriteAction(Spawn, SPAWN)
+
+std::string Being::getStandAction() const
+{
+    if (mHorseId != 0)
+        return SpriteAction::STANDRIDE;
+    if (mMap)
+    {
+        const unsigned char mask = mMap->getBlockMask(mX, mY);
+        if (mTrickDead)
+        {
+            if (mask & BlockMask::AIR)
+                return SpriteAction::DEADSKY;
+            else if (mask & BlockMask::WATER)
+                return SpriteAction::DEADWATER;
+            else
+                return SpriteAction::DEAD;
+        }
+        else
+        {
+            if (mask & BlockMask::AIR)
+                return SpriteAction::STANDSKY;
+            else if (mask & BlockMask::WATER)
+                return SpriteAction::STANDWATER;
+        }
+    }
+    return SpriteAction::STAND;
+}
 
 void Being::setAction(const BeingActionT &action, const int attackId)
 {
@@ -4107,4 +4139,20 @@ void Being::setHorse(const int horseId)
         mHorseInfo = nullptr;
     }
 }
+
+void Being::setTrickDead(const bool b)
+{
+    if (b != mTrickDead)
+    {
+        mTrickDead = b;
+        setAction(mAction, 0);
+    }
+}
+
+void Being::serverRemove()
+{
+    // remove some flags what can survive player remove and next visible
+    mTrickDead = false;
+}
+
 #endif
