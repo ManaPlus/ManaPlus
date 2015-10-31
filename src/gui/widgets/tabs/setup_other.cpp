@@ -241,11 +241,13 @@ Setup_Other::Setup_Other(const Widget2 *const widget) :
 
     // TRANSLATORS: settings option
     new SetupItemTextField(_("Afk message"), "",
-        "afkMessage", this, "afkMessageEvent", false);
+        "afkMessage", this, "afkMessageEvent",
+        MainConfig_false);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show job"), "", "showJob",
-        this, "showJobEvent", false);
+        this, "showJobEvent",
+        MainConfig_false);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable attack filter"), "",
@@ -297,12 +299,14 @@ Setup_Other::Setup_Other(const Widget2 *const widget) :
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable guild bot support and disable native "
         "guild support"), "", "enableGuildBot", this,
-        "enableGuildBotEvent", false);
+        "enableGuildBotEvent",
+        MainConfig_false);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable manamarket bot support"),
         "", "enableManaMarketBot", this,
-        "enableManaMarketBotEvent", false);
+        "enableManaMarketBotEvent",
+        MainConfig_false);
 
 
     // TRANSLATORS: settings group
@@ -364,7 +368,8 @@ Setup_Other::Setup_Other(const Widget2 *const widget) :
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable buggy servers protection "
         "(do not disable)"), "", "enableBuggyServers", this,
-        "enableBuggyServersEvent", false);
+        "enableBuggyServersEvent",
+        MainConfig_false);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable debug log"), "",
@@ -403,7 +408,9 @@ Setup_Other::Setup_Other(const Widget2 *const widget) :
 #ifndef WIN32
     // TRANSLATORS: settings option
     new SetupItemTextField(_("Screenshot directory"), "",
-        "screenshotDirectory3", this, "screenshotDirectory3Event", true, true);
+        "screenshotDirectory3", this, "screenshotDirectory3Event",
+        MainConfig_true,
+        true);
 #endif
 
     // TRANSLATORS: settings option

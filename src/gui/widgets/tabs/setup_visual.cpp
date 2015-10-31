@@ -141,7 +141,8 @@ Setup_Visual::Setup_Visual(const Widget2 *const widget) :
 
     // TRANSLATORS: settings option
     new SetupItemSlider(_("Gui opacity"), "", "guialpha",
-        this, "guialphaEvent", 0.1, 1.01, 0.1, 150, true, true);
+        this, "guialphaEvent", 0.1, 1.01, 0.1, 150, true,
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable gui opacity"),
@@ -171,7 +172,7 @@ Setup_Visual::Setup_Visual(const Widget2 *const widget) :
     mParticleList->push_back(_("max"));
     (new SetupItemSlider2(_("Particle detail"), "", "particleEmitterSkip",
         this, "particleEmitterSkipEvent", 0, 3, 1,
-        mParticleList, true, true, false))->setInvertValue(3);
+        mParticleList, true, MainConfig_true, false))->setInvertValue(3);
 
     mParticleTypeList->fillFromArray(&particleTypeList[0],
         particleTypeListSize);
@@ -189,7 +190,8 @@ Setup_Visual::Setup_Visual(const Widget2 *const widget) :
 
     // TRANSLATORS: settings option
     new SetupItemSlider(_("Gamma"), "", "gamma",
-        this, "gammeEvent", 1, 20, 1, 350, true, true);
+        this, "gammeEvent", 1, 20, 1, 350, true,
+        MainConfig_true);
 
 
     // TRANSLATORS: settings group

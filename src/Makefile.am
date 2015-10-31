@@ -578,6 +578,7 @@ SRC += events/actionevent.h \
 	      enums/simpletypes/intdefines.h \
 	      enums/simpletypes/itemcolor.h \
 	      enums/simpletypes/keep.h \
+	      enums/simpletypes/mainconfig.h \
 	      enums/simpletypes/modal.h \
 	      enums/simpletypes/modifiable.h \
 	      enums/simpletypes/move.h \

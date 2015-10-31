@@ -130,7 +130,7 @@ void SetupTabScroll::externalUpdated()
          iter != iter_end; ++ iter)
     {
         SetupItem *const widget = (*iter).second;
-        if (widget && !widget->isMainConfig())
+        if (widget && widget->isMainConfig() == MainConfig_false)
             widget->externalUpdated((*iter).first);
     }
 }
@@ -142,7 +142,7 @@ void SetupTabScroll::externalUnloaded()
          iter != iter_end; ++ iter)
     {
         SetupItem *const widget = (*iter).second;
-        if (widget && !widget->isMainConfig())
+        if (widget && widget->isMainConfig() == MainConfig_false)
             widget->externalUnloaded((*iter).first);
     }
 }

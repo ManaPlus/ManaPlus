@@ -21,6 +21,8 @@
 #ifndef GUI_WIDGETS_SETUPITEM_H
 #define GUI_WIDGETS_SETUPITEM_H
 
+#include "enums/simpletypes/mainconfig.h"
+
 #include "gui/widgets/widget2.h"
 
 #include "listeners/actionlistener.h"
@@ -87,7 +89,7 @@ class SetupItem notfinal : public ActionListener,
 
         virtual void externalUnloaded(const std::string &eventName);
 
-        bool isMainConfig() const A_WARN_UNUSED
+        MainConfig isMainConfig() const A_WARN_UNUSED
         { return mMainConfig; }
 
         void fixFirstItemSize(Widget *const widget);
@@ -109,7 +111,7 @@ class SetupItem notfinal : public ActionListener,
                   const std::string &restrict keyName,
                   SetupTabScroll *restrict const parent,
                   const std::string &restrict eventName,
-                  const bool mainConfig);
+                  const MainConfig mainConfig);
 
         SetupItem(const std::string &restrict text,
                   const std::string &restrict description,
@@ -117,7 +119,7 @@ class SetupItem notfinal : public ActionListener,
                   SetupTabScroll *restrict const parent,
                   const std::string &restrict eventName,
                   const std::string &def,
-                  const bool mainConfig);
+                  const MainConfig mainConfig);
 
         std::string mText;
 
@@ -139,7 +141,7 @@ class SetupItem notfinal : public ActionListener,
 
         int mValueType;
 
-        bool mMainConfig;
+        MainConfig mMainConfig;
 
         bool mUseDefault;
 };
@@ -152,7 +154,7 @@ class SetupItemCheckBox final : public SetupItem
                           const std::string &restrict keyName,
                           SetupTabScroll *restrict const parent,
                           const std::string &restrict eventName,
-                          const bool mainConfig = true);
+                          const MainConfig mainConfig = MainConfig_true);
 
         SetupItemCheckBox(const std::string &restrict text,
                           const std::string &restrict description,
@@ -160,7 +162,7 @@ class SetupItemCheckBox final : public SetupItem
                           SetupTabScroll *restrict const parent,
                           const std::string &restrict eventName,
                           const std::string &restrict def,
-                          const bool mainConfig = true);
+                          const MainConfig mainConfig = MainConfig_true);
 
         A_DELETE_COPY(SetupItemCheckBox)
 
@@ -184,7 +186,7 @@ class SetupItemTextField final : public SetupItem
                            const std::string &restrict keyName,
                            SetupTabScroll *restrict const parent,
                            const std::string &restrict eventName,
-                           const bool mainConfig = true,
+                           const MainConfig mainConfig = MainConfig_true,
                            const bool useBase64 = false);
 
         SetupItemTextField(const std::string &restrict text,
@@ -193,7 +195,7 @@ class SetupItemTextField final : public SetupItem
                            SetupTabScroll *restrict const parent,
                            const std::string &restrict eventName,
                            const std::string &restrict def,
-                           const bool mainConfig = true,
+                           const MainConfig mainConfig = MainConfig_true,
                            const bool useBase64 = false);
 
         A_DELETE_COPY(SetupItemTextField)
@@ -240,7 +242,7 @@ class SetupItemIntTextField final : public SetupItem
                               SetupTabScroll *restrict const parent,
                               const std::string &restrict eventName,
                               const int min, const int max,
-                              const bool mainConfig = true);
+                              const MainConfig mainConfig = MainConfig_true);
 
         SetupItemIntTextField(const std::string &restrict text,
                               const std::string &restrict description,
@@ -249,7 +251,7 @@ class SetupItemIntTextField final : public SetupItem
                               const std::string &restrict eventName,
                               const int min, const int max,
                               const std::string &restrict def,
-                              const bool mainConfig = true);
+                              const MainConfig mainConfig = MainConfig_true);
 
         A_DELETE_COPY(SetupItemIntTextField)
 
@@ -311,7 +313,8 @@ class SetupItemDropDown final : public SetupItem
                           SetupTabScroll *restrict const parent,
                           const std::string &restrict eventName,
                           ListModel *restrict const model,
-                          const int width, const bool mainConfig = true);
+                          const int width,
+                          const MainConfig mainConfig = MainConfig_true);
 
         SetupItemDropDown(const std::string &restrict text,
                           const std::string &restrict description,
@@ -321,7 +324,7 @@ class SetupItemDropDown final : public SetupItem
                           ListModel *restrict const model,
                           const int width,
                           const std::string &restrict def,
-                          const bool mainConfig = true);
+                          const MainConfig mainConfig = MainConfig_true);
 
         A_DELETE_COPY(SetupItemDropDown)
 
@@ -354,7 +357,7 @@ class SetupItemSlider final : public SetupItem
                         const double step,
                         const int width,
                         const bool onTheFly,
-                        const bool mainConfig);
+                        const MainConfig mainConfig);
 
         SetupItemSlider(const std::string &restrict text,
                         const std::string &restrict description,
@@ -367,7 +370,7 @@ class SetupItemSlider final : public SetupItem
                         const std::string &restrict def,
                         const int width,
                         const bool onTheFly,
-                        const bool mainConfig);
+                        const MainConfig mainConfig);
 
         A_DELETE_COPY(SetupItemSlider)
 
@@ -411,7 +414,7 @@ class SetupItemSlider2 final : public SetupItem
                          const int min, const int max, const int step,
                          SetupItemNames *restrict const values,
                          const bool onTheFly,
-                         const bool mainConfig,
+                         const MainConfig mainConfig,
                          const bool doNotAlign);
 
         SetupItemSlider2(const std::string &restrict text,
@@ -423,7 +426,7 @@ class SetupItemSlider2 final : public SetupItem
                          SetupItemNames *restrict const values,
                          const std::string &restrict def,
                          const bool onTheFly,
-                         const bool mainConfig,
+                         const MainConfig mainConfig,
                          const bool doNotAlign);
 
         A_DELETE_COPY(SetupItemSlider2)
@@ -487,8 +490,9 @@ class SetupItemSliderList notfinal : public SetupItem
                             SetupTabScroll *restrict const parent,
                             const std::string &restrict eventName,
                             ListModel *restrict const model,
-                            const int width = 150, const bool onTheFly = false,
-                            const bool mainConfig = true);
+                            const int width = 150,
+                            const bool onTheFly = false,
+                            const MainConfig mainConfig = MainConfig_true);
 
         SetupItemSliderList(const std::string &restrict text,
                             const std::string &restrict description,
@@ -499,7 +503,7 @@ class SetupItemSliderList notfinal : public SetupItem
                             const std::string &restrict def,
                             const int width = 150,
                             const bool onTheFly = false,
-                            const bool mainConfig = true);
+                            const MainConfig mainConfig = MainConfig_true);
 
         HorizontContainer *mHorizont;
         Label *mLabel;
@@ -520,7 +524,7 @@ class SetupItemSound final : public SetupItemSliderList
                        ListModel *restrict const model,
                        const int width = 150,
                        const bool onTheFly = false,
-                       const bool mainConfig = true);
+                       const MainConfig mainConfig = MainConfig_true);
 
         A_DELETE_COPY(SetupItemSound)
 
@@ -544,7 +548,7 @@ class SetupItemSliderInt final : public SetupItemSliderList
                            const int min,
                            const int width = 150,
                            const bool onTheFly = false,
-                           const bool mainConfig = true);
+                           const MainConfig mainConfig = MainConfig_true);
 
         A_DELETE_COPY(SetupItemSliderInt)
 

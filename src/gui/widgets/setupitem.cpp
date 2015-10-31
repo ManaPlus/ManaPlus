@@ -53,7 +53,7 @@ SetupItem::SetupItem(const std::string &restrict text,
                      const std::string &restrict keyName,
                      SetupTabScroll *restrict const parent,
                      const std::string &restrict eventName,
-                     const bool mainConfig) :
+                     const MainConfig mainConfig) :
     ActionListener(),
     Widget2(parent),
     mText(text),
@@ -77,7 +77,7 @@ SetupItem::SetupItem(const std::string &restrict text,
                      SetupTabScroll *restrict const parent,
                      const std::string &restrict eventName,
                      const std::string &restrict def,
-                     const bool mainConfig) :
+                     const MainConfig mainConfig) :
     ActionListener(),
     Widget2(parent),
     mText(text),
@@ -101,7 +101,7 @@ SetupItem::~SetupItem()
 
 Configuration *SetupItem::getConfig() const
 {
-    if (mMainConfig)
+    if (mMainConfig == MainConfig_true)
         return &config;
     else
         return &serverConfig;
@@ -212,7 +212,7 @@ SetupItemCheckBox::SetupItemCheckBox(const std::string &restrict text,
                                      const std::string &restrict keyName,
                                      SetupTabScroll *restrict const parent,
                                      const std::string &restrict eventName,
-                                     const bool mainConfig) :
+                                     const MainConfig mainConfig) :
     SetupItem(text, description, keyName, parent, eventName, mainConfig),
     mCheckBox(nullptr)
 {
@@ -225,7 +225,7 @@ SetupItemCheckBox::SetupItemCheckBox(const std::string &restrict text,
                                      SetupTabScroll *restrict const parent,
                                      const std::string &restrict eventName,
                                      const std::string &restrict def,
-                                     const bool mainConfig) :
+                                     const MainConfig mainConfig) :
     SetupItem(text, description, keyName, parent, eventName, def, mainConfig),
     mCheckBox(nullptr)
 {
@@ -274,7 +274,7 @@ SetupItemTextField::SetupItemTextField(const std::string &restrict text,
                                        const std::string &restrict keyName,
                                        SetupTabScroll *restrict const parent,
                                        const std::string &restrict eventName,
-                                       const bool mainConfig,
+                                       const MainConfig mainConfig,
                                        const bool useBase64) :
     SetupItem(text, description, keyName, parent, eventName, mainConfig),
     mHorizont(nullptr),
@@ -294,7 +294,7 @@ SetupItemTextField::SetupItemTextField(const std::string &restrict text,
                                        SetupTabScroll *restrict const parent,
                                        const std::string &restrict eventName,
                                        const std::string &restrict def,
-                                       const bool mainConfig,
+                                       const MainConfig mainConfig,
                                        const bool useBase64) :
     SetupItem(text, description, keyName, parent, eventName, def, mainConfig),
     mHorizont(nullptr),
@@ -444,7 +444,7 @@ SetupItemIntTextField::SetupItemIntTextField(const std::string &restrict text,
                                              const std::string &restrict
                                              eventName,
                                              const int min, const int max,
-                                             const bool mainConfig) :
+                                             const MainConfig mainConfig) :
     SetupItem(text, description, keyName, parent, eventName, mainConfig),
     mHorizont(nullptr),
     mLabel(nullptr),
@@ -469,7 +469,7 @@ SetupItemIntTextField::SetupItemIntTextField(const std::string &restrict text,
                                              eventName,
                                              const int min, const int max,
                                              const std::string &restrict def,
-                                             const bool mainConfig) :
+                                             const MainConfig mainConfig) :
     SetupItem(text, description, keyName, parent, eventName, def, mainConfig),
     mHorizont(nullptr),
     mLabel(nullptr),
@@ -577,7 +577,7 @@ SetupItemLabel::SetupItemLabel(const std::string &restrict text,
                                const std::string &restrict description,
                                SetupTabScroll *restrict const parent,
                                const bool separator) :
-    SetupItem(text, description, "", parent, "", "", true),
+    SetupItem(text, description, "", parent, "", "", MainConfig_true),
     mLabel(nullptr),
     mIsSeparator(separator)
 {
@@ -636,7 +636,7 @@ SetupItemDropDown::SetupItemDropDown(const std::string &restrict text,
                                      const std::string &restrict eventName,
                                      ListModel *restrict const model,
                                      const int width,
-                                     const bool mainConfig) :
+                                     const MainConfig mainConfig) :
     SetupItem(text, description, keyName, parent, eventName, mainConfig),
     mHorizont(nullptr),
     mLabel(nullptr),
@@ -656,7 +656,7 @@ SetupItemDropDown::SetupItemDropDown(const std::string &restrict text,
                                      ListModel *restrict const model,
                                      const int width,
                                      const std::string &restrict def,
-                                     const bool mainConfig) :
+                                     const MainConfig mainConfig) :
     SetupItem(text, description, keyName, parent, eventName, def, mainConfig),
     mHorizont(nullptr),
     mLabel(nullptr),
@@ -729,7 +729,7 @@ SetupItemSlider::SetupItemSlider(const std::string &restrict text,
                                  const double step,
                                  const int width,
                                  const bool onTheFly,
-                                 const bool mainConfig) :
+                                 const MainConfig mainConfig) :
     SetupItem(text, description, keyName, parent, eventName, mainConfig),
     mHorizont(nullptr),
     mLabel(nullptr),
@@ -755,7 +755,7 @@ SetupItemSlider::SetupItemSlider(const std::string &restrict text,
                                  const std::string &restrict def,
                                  const int width,
                                  const bool onTheFly,
-                                 const bool mainConfig) :
+                                 const MainConfig mainConfig) :
     SetupItem(text, description, keyName, parent, eventName, def, mainConfig),
     mHorizont(nullptr),
     mLabel(nullptr),
@@ -847,7 +847,7 @@ SetupItemSlider2::SetupItemSlider2(const std::string &restrict text,
                                    const int step,
                                    SetupItemNames *restrict const values,
                                    const bool onTheFly,
-                                   const bool mainConfig,
+                                   const MainConfig mainConfig,
                                    const bool doNotAlign) :
     SetupItem(text, description, keyName, parent, eventName, mainConfig),
     mHorizont(nullptr),
@@ -878,7 +878,7 @@ SetupItemSlider2::SetupItemSlider2(const std::string &restrict text,
                                    SetupItemNames *restrict const values,
                                    const std::string &restrict def,
                                    const bool onTheFly,
-                                   const bool mainConfig,
+                                   const MainConfig mainConfig,
                                    const bool doNotAlign) :
     SetupItem(text, description, keyName, parent, eventName, def, mainConfig),
     mHorizont(nullptr),
@@ -1032,8 +1032,9 @@ SetupItemSliderList::SetupItemSliderList(const std::string &restrict text,
                                          SetupTabScroll *restrict const parent,
                                          const std::string &restrict eventName,
                                          ListModel *restrict const model,
-                                         const int width, const bool onTheFly,
-                                         const bool mainConfig) :
+                                         const int width,
+                                         const bool onTheFly,
+                                         const MainConfig mainConfig) :
     SetupItem(text, description, keyName, parent, eventName, mainConfig),
     mHorizont(nullptr),
     mLabel(nullptr),
@@ -1055,7 +1056,7 @@ SetupItemSliderList::SetupItemSliderList(const std::string &restrict text,
                                          const std::string &restrict def,
                                          const int width,
                                          const bool onTheFly,
-                                         const bool mainConfig) :
+                                         const MainConfig mainConfig) :
     SetupItem(text, description, keyName, parent, eventName, def, mainConfig),
     mHorizont(nullptr),
     mLabel(nullptr),
@@ -1139,7 +1140,7 @@ SetupItemSound::SetupItemSound(const std::string &restrict text,
                                const std::string &restrict eventName,
                                ListModel *restrict const model,
                                const int width, const bool onTheFly,
-                               const bool mainConfig) :
+                               const MainConfig mainConfig) :
     SetupItemSliderList(text, description, keyName, parent, eventName,
                         model, width, onTheFly, mainConfig),
     mButton(nullptr)
@@ -1179,7 +1180,7 @@ SetupItemSliderInt::SetupItemSliderInt(const std::string &restrict text,
                                        const int min,
                                        const int width,
                                        const bool onTheFly,
-                                       const bool mainConfig) :
+                                       const MainConfig mainConfig) :
     SetupItemSliderList(text, description, keyName, parent, eventName,
                         model, width, onTheFly, mainConfig),
     mMin(min)

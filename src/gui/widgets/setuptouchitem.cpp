@@ -42,7 +42,7 @@ SetupActionDropDown::SetupActionDropDown(const std::string &restrict text,
                                          TouchActionsModel *restrict
                                          const model,
                                          const int width,
-                                         const bool mainConfig) :
+                                         const MainConfig mainConfig) :
     SetupItem(text, description, keyName, parent, eventName, mainConfig),
     mHorizont(nullptr),
     mLabel(nullptr),
@@ -64,7 +64,7 @@ SetupActionDropDown::SetupActionDropDown(const std::string &restrict text,
                                          const model,
                                          const int width,
                                          const std::string &restrict def,
-                                         const bool mainConfig) :
+                                         const MainConfig mainConfig) :
     SetupItem(text, description, keyName, parent, eventName, def, mainConfig),
     mHorizont(nullptr),
     mLabel(nullptr),

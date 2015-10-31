@@ -34,7 +34,7 @@ SetupButtonItem::SetupButtonItem(const std::string &restrict text,
                                  SetupTabScroll *restrict const parent,
                                  const std::string &restrict eventName,
                                  ActionListener *const listener) :
-    SetupItem(text, description, "", parent, eventName, false),
+    SetupItem(text, description, "", parent, eventName, MainConfig_false),
     mHorizont(nullptr),
     mButton(nullptr)
 {

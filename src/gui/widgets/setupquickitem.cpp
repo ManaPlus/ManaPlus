@@ -34,7 +34,7 @@ SetupQuickItem::SetupQuickItem(const std::string &restrict description,
                                const std::string &restrict eventName,
                                ModifierGetFuncPtr getFunc,
                                ModifierChangeFuncPtr changeFunc) :
-    SetupItem("", description, "", parent, eventName, false),
+    SetupItem("", description, "", parent, eventName, MainConfig_false),
     mHorizont(nullptr),
     mButton(nullptr),
     mLabel(nullptr),
