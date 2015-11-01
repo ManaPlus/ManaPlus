@@ -748,7 +748,8 @@ void InventoryRecv::processPlayerCartAdd(Net::MessageIn &msg)
         }
     }
 
-    if (inventory)
+    // check what cart was created, if not add delayed items
+    if (inventory && inventory->getSize() > 0)
     {
         const Item *const item = inventory->getItem(index);
 
@@ -767,6 +768,20 @@ void InventoryRecv::processPlayerCartAdd(Net::MessageIn &msg)
             Equipm_false,
             Equipped_false);
         inventory->setCards(index, cards, 4);
+    }
+    else
+    {
+        mCartItems.push_back(Ea::InventoryItem(index,
+            itemId,
+            itemType,
+            cards,
+            amount,
+            refine,
+            ItemColorManager::getColorFromCards(&cards[0]),
+            fromBool(identified, Identified),
+            damaged,
+            Favorite_false,
+            Equipm_false));
     }
     BLOCK_END("InventoryRecv::processPlayerCartAdd")
 }
