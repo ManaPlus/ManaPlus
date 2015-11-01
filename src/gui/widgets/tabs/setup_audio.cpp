@@ -73,13 +73,15 @@ Setup_Audio::Setup_Audio(const Widget2 *const widget) :
     // TRANSLATORS: settings option
     new SetupItemSlider(_("Sfx volume"), "", "sfxVolume",
         this, "sfxVolumeEvent", 0, soundManager.getMaxVolume(), 1,
-        150, true,
+        150,
+        OnTheFly_true,
         MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemSlider(_("Music volume"), "", "musicVolume",
         this, "musicVolumeEvent", 0, soundManager.getMaxVolume(), 1,
-        150, true,
+        150,
+        OnTheFly_true,
         MainConfig_true);
 
     // TRANSLATORS: settings option
@@ -100,7 +102,8 @@ Setup_Audio::Setup_Audio(const Widget2 *const widget) :
     mChannelsList->push_back(_("surround+center+lfe"));
     // TRANSLATORS: settings option
     new SetupItemSlider2(_("Audio channels"), "", "audioChannels", this,
-        "audioChannels", 1, 4, 1, mChannelsList, false,
+        "audioChannels", 1, 4, 1, mChannelsList,
+        OnTheFly_false,
         MainConfig_true,
         false);
 

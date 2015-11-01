@@ -728,7 +728,7 @@ SetupItemSlider::SetupItemSlider(const std::string &restrict text,
                                  const double max,
                                  const double step,
                                  const int width,
-                                 const bool onTheFly,
+                                 const OnTheFly onTheFly,
                                  const MainConfig mainConfig) :
     SetupItem(text, description, keyName, parent, eventName, mainConfig),
     mHorizont(nullptr),
@@ -754,7 +754,7 @@ SetupItemSlider::SetupItemSlider(const std::string &restrict text,
                                  const double step,
                                  const std::string &restrict def,
                                  const int width,
-                                 const bool onTheFly,
+                                 const OnTheFly onTheFly,
                                  const MainConfig mainConfig) :
     SetupItem(text, description, keyName, parent, eventName, def, mainConfig),
     mHorizont(nullptr),
@@ -823,7 +823,7 @@ void SetupItemSlider::toWidget()
 void SetupItemSlider::action(const ActionEvent &event A_UNUSED)
 {
     fromWidget();
-    if (mOnTheFly)
+    if (mOnTheFly == OnTheFly_true)
         save();
 }
 
@@ -846,7 +846,7 @@ SetupItemSlider2::SetupItemSlider2(const std::string &restrict text,
                                    const int max,
                                    const int step,
                                    SetupItemNames *restrict const values,
-                                   const bool onTheFly,
+                                   const OnTheFly onTheFly,
                                    const MainConfig mainConfig,
                                    const bool doNotAlign) :
     SetupItem(text, description, keyName, parent, eventName, mainConfig),
@@ -877,7 +877,7 @@ SetupItemSlider2::SetupItemSlider2(const std::string &restrict text,
                                    const int step,
                                    SetupItemNames *restrict const values,
                                    const std::string &restrict def,
-                                   const bool onTheFly,
+                                   const OnTheFly onTheFly,
                                    const MainConfig mainConfig,
                                    const bool doNotAlign) :
     SetupItem(text, description, keyName, parent, eventName, def, mainConfig),
@@ -987,7 +987,7 @@ void SetupItemSlider2::action(const ActionEvent &event A_UNUSED)
 {
     fromWidget();
     updateLabel();
-    if (mOnTheFly)
+    if (mOnTheFly == OnTheFly_true)
         save();
 }
 
@@ -1033,7 +1033,7 @@ SetupItemSliderList::SetupItemSliderList(const std::string &restrict text,
                                          const std::string &restrict eventName,
                                          ListModel *restrict const model,
                                          const int width,
-                                         const bool onTheFly,
+                                         const OnTheFly onTheFly,
                                          const MainConfig mainConfig) :
     SetupItem(text, description, keyName, parent, eventName, mainConfig),
     mHorizont(nullptr),
@@ -1055,7 +1055,7 @@ SetupItemSliderList::SetupItemSliderList(const std::string &restrict text,
                                          ListModel *restrict const model,
                                          const std::string &restrict def,
                                          const int width,
-                                         const bool onTheFly,
+                                         const OnTheFly onTheFly,
                                          const MainConfig mainConfig) :
     SetupItem(text, description, keyName, parent, eventName, def, mainConfig),
     mHorizont(nullptr),
@@ -1120,7 +1120,7 @@ void SetupItemSliderList::toWidget()
 void SetupItemSliderList::action(const ActionEvent &event A_UNUSED)
 {
     fromWidget();
-    if (mOnTheFly)
+    if (mOnTheFly == OnTheFly_true)
         save();
 }
 
@@ -1139,7 +1139,8 @@ SetupItemSound::SetupItemSound(const std::string &restrict text,
                                SetupTabScroll *restrict const parent,
                                const std::string &restrict eventName,
                                ListModel *restrict const model,
-                               const int width, const bool onTheFly,
+                               const int width,
+                               const OnTheFly onTheFly,
                                const MainConfig mainConfig) :
     SetupItemSliderList(text, description, keyName, parent, eventName,
                         model, width, onTheFly, mainConfig),
@@ -1179,7 +1180,7 @@ SetupItemSliderInt::SetupItemSliderInt(const std::string &restrict text,
                                        ListModel *restrict const model,
                                        const int min,
                                        const int width,
-                                       const bool onTheFly,
+                                       const OnTheFly onTheFly,
                                        const MainConfig mainConfig) :
     SetupItemSliderList(text, description, keyName, parent, eventName,
                         model, width, onTheFly, mainConfig),

@@ -22,6 +22,7 @@
 #define GUI_WIDGETS_SETUPITEM_H
 
 #include "enums/simpletypes/mainconfig.h"
+#include "enums/simpletypes/onthefly.h"
 #include "enums/simpletypes/usebase64.h"
 #include "enums/simpletypes/separator.h"
 
@@ -358,7 +359,7 @@ class SetupItemSlider final : public SetupItem
                         const double max,
                         const double step,
                         const int width,
-                        const bool onTheFly,
+                        const OnTheFly onTheFly,
                         const MainConfig mainConfig);
 
         SetupItemSlider(const std::string &restrict text,
@@ -371,7 +372,7 @@ class SetupItemSlider final : public SetupItem
                         const double step,
                         const std::string &restrict def,
                         const int width,
-                        const bool onTheFly,
+                        const OnTheFly onTheFly,
                         const MainConfig mainConfig);
 
         A_DELETE_COPY(SetupItemSlider)
@@ -398,7 +399,7 @@ class SetupItemSlider final : public SetupItem
         double mMax;
         double mStep;
         int mWidth;
-        bool mOnTheFly;
+        OnTheFly mOnTheFly;
 };
 
 typedef std::vector<std::string> SetupItemNames;
@@ -415,7 +416,7 @@ class SetupItemSlider2 final : public SetupItem
                          const std::string &restrict eventName,
                          const int min, const int max, const int step,
                          SetupItemNames *restrict const values,
-                         const bool onTheFly,
+                         const OnTheFly onTheFly,
                          const MainConfig mainConfig,
                          const bool doNotAlign);
 
@@ -427,7 +428,7 @@ class SetupItemSlider2 final : public SetupItem
                          const int min, const int max, const int step,
                          SetupItemNames *restrict const values,
                          const std::string &restrict def,
-                         const bool onTheFly,
+                         const OnTheFly onTheFly,
                          const MainConfig mainConfig,
                          const bool doNotAlign);
 
@@ -462,7 +463,7 @@ class SetupItemSlider2 final : public SetupItem
         int mStep;
         int mInvertValue;
         bool mInvert;
-        bool mOnTheFly;
+        OnTheFly mOnTheFly;
         bool mDoNotAlign;
 };
 
@@ -493,7 +494,7 @@ class SetupItemSliderList notfinal : public SetupItem
                             const std::string &restrict eventName,
                             ListModel *restrict const model,
                             const int width = 150,
-                            const bool onTheFly = false,
+                            const OnTheFly onTheFly = OnTheFly_false,
                             const MainConfig mainConfig = MainConfig_true);
 
         SetupItemSliderList(const std::string &restrict text,
@@ -504,7 +505,7 @@ class SetupItemSliderList notfinal : public SetupItem
                             ListModel *restrict const model,
                             const std::string &restrict def,
                             const int width = 150,
-                            const bool onTheFly = false,
+                            const OnTheFly onTheFly = OnTheFly_false,
                             const MainConfig mainConfig = MainConfig_true);
 
         HorizontContainer *mHorizont;
@@ -512,7 +513,7 @@ class SetupItemSliderList notfinal : public SetupItem
         SliderList *mSlider;
         ListModel *mModel;
         int mWidth;
-        bool mOnTheFly;
+        OnTheFly mOnTheFly;
 };
 
 class SetupItemSound final : public SetupItemSliderList
@@ -525,7 +526,7 @@ class SetupItemSound final : public SetupItemSliderList
                        const std::string &restrict eventName,
                        ListModel *restrict const model,
                        const int width = 150,
-                       const bool onTheFly = false,
+                       const OnTheFly onTheFly = OnTheFly_false,
                        const MainConfig mainConfig = MainConfig_true);
 
         A_DELETE_COPY(SetupItemSound)
@@ -549,7 +550,7 @@ class SetupItemSliderInt final : public SetupItemSliderList
                            ListModel *restrict const model,
                            const int min,
                            const int width = 150,
-                           const bool onTheFly = false,
+                           const OnTheFly onTheFly = OnTheFly_false,
                            const MainConfig mainConfig = MainConfig_true);
 
         A_DELETE_COPY(SetupItemSliderInt)
