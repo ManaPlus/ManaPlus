@@ -175,7 +175,7 @@ Setup_Visual::Setup_Visual(const Widget2 *const widget) :
         this, "particleEmitterSkipEvent", 0, 3, 1, mParticleList,
         OnTheFly_true,
         MainConfig_true,
-        false))->setInvertValue(3);
+        DoNotAlign_false))->setInvertValue(3);
 
     mParticleTypeList->fillFromArray(&particleTypeList[0],
         particleTypeListSize);

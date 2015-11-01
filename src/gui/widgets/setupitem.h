@@ -21,6 +21,7 @@
 #ifndef GUI_WIDGETS_SETUPITEM_H
 #define GUI_WIDGETS_SETUPITEM_H
 
+#include "enums/simpletypes/donotalign.h"
 #include "enums/simpletypes/mainconfig.h"
 #include "enums/simpletypes/onthefly.h"
 #include "enums/simpletypes/usebase64.h"
@@ -418,7 +419,7 @@ class SetupItemSlider2 final : public SetupItem
                          SetupItemNames *restrict const values,
                          const OnTheFly onTheFly,
                          const MainConfig mainConfig,
-                         const bool doNotAlign);
+                         const DoNotAlign doNotAlign);
 
         SetupItemSlider2(const std::string &restrict text,
                          const std::string &restrict description,
@@ -430,7 +431,7 @@ class SetupItemSlider2 final : public SetupItem
                          const std::string &restrict def,
                          const OnTheFly onTheFly,
                          const MainConfig mainConfig,
-                         const bool doNotAlign);
+                         const DoNotAlign doNotAlign);
 
         A_DELETE_COPY(SetupItemSlider2)
 
@@ -464,7 +465,7 @@ class SetupItemSlider2 final : public SetupItem
         int mInvertValue;
         bool mInvert;
         OnTheFly mOnTheFly;
-        bool mDoNotAlign;
+        DoNotAlign mDoNotAlign;
 };
 
 class SetupItemSliderList notfinal : public SetupItem

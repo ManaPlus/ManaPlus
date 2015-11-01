@@ -1103,6 +1103,7 @@ SET(SRCS
     enums/simpletypes/beingtypeid.h
     enums/simpletypes/booldefines.h
     enums/simpletypes/damaged.h
+    enums/simpletypes/donotalign.h
     enums/simpletypes/enable.h
     enums/simpletypes/enumdefines.h
     enums/simpletypes/equipm.h

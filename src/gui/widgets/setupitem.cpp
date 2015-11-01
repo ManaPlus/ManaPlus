@@ -848,7 +848,7 @@ SetupItemSlider2::SetupItemSlider2(const std::string &restrict text,
                                    SetupItemNames *restrict const values,
                                    const OnTheFly onTheFly,
                                    const MainConfig mainConfig,
-                                   const bool doNotAlign) :
+                                   const DoNotAlign doNotAlign) :
     SetupItem(text, description, keyName, parent, eventName, mainConfig),
     mHorizont(nullptr),
     mLabel(nullptr),
@@ -879,7 +879,7 @@ SetupItemSlider2::SetupItemSlider2(const std::string &restrict text,
                                    const std::string &restrict def,
                                    const OnTheFly onTheFly,
                                    const MainConfig mainConfig,
-                                   const bool doNotAlign) :
+                                   const DoNotAlign doNotAlign) :
     SetupItem(text, description, keyName, parent, eventName, def, mainConfig),
     mHorizont(nullptr),
     mLabel(nullptr),
@@ -926,7 +926,7 @@ void SetupItemSlider2::createControls()
     mWidget = mSlider;
     mSlider->setWidth(150);
     mSlider->setHeight(40);
-    if (!mDoNotAlign)
+    if (mDoNotAlign == DoNotAlign_false)
         fixFirstItemSize(mLabel);
     mHorizont->add(mLabel);
     mHorizont->add(mSlider, -10);

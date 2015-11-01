@@ -105,7 +105,7 @@ Setup_Audio::Setup_Audio(const Widget2 *const widget) :
         "audioChannels", 1, 4, 1, mChannelsList,
         OnTheFly_false,
         MainConfig_true,
-        false);
+        DoNotAlign_false);
 
 
     // TRANSLATORS: settings group
