@@ -69,6 +69,9 @@ class StatusEffect final
          */
         std::string getAction() const A_WARN_UNUSED;
 
+        std::string getName() const A_WARN_UNUSED
+        { return mName; }
+
         /**
          * Determines whether the particle effect should be restarted when the
          * being changes maps
@@ -134,6 +137,7 @@ class StatusEffect final
         std::string mParticleEffect;
         std::string mIcon;
         std::string mAction;
+        std::string mName;
         bool mPersistentParticleEffect;
         bool mIsPoison;
         bool mIsCart;

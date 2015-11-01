@@ -21,6 +21,8 @@
 
 #include "gui/popups/beingpopup.h"
 
+#include "statuseffect.h"
+
 #include "being/being.h"
 #include "being/homunculusinfo.h"
 #include "being/petinfo.h"
@@ -51,7 +53,8 @@ BeingPopup::BeingPopup() :
     mBeingComment(new Label(this, "A")),
     mBeingBuyBoard(new Label(this, "A")),
     mBeingSellBoard(new Label(this, "A")),
-    mBeingRoom(new Label(this, "A"))
+    mBeingRoom(new Label(this, "A")),
+    mBeingEffects(new Label(this, "A"))
 {
     // Being Name
     mBeingName->setFont(boldFont);
@@ -69,6 +72,7 @@ BeingPopup::BeingPopup() :
     mBeingSellBoard->setPosition(0, 4 * fontHeight);
     mBeingComment->setPosition(0, 5 * fontHeight);
     mBeingRoom->setPosition(0, 6 * fontHeight);
+    mBeingEffects->setPosition(0, 7 * fontHeight);
 
     mBeingParty->setForegroundColorAll(getThemeColor(ThemeColorId::POPUP),
         getThemeColor(ThemeColorId::POPUP_OUTLINE));
@@ -83,6 +87,8 @@ BeingPopup::BeingPopup() :
     mBeingComment->setForegroundColorAll(getThemeColor(ThemeColorId::POPUP),
         getThemeColor(ThemeColorId::POPUP_OUTLINE));
     mBeingRoom->setForegroundColorAll(getThemeColor(ThemeColorId::POPUP),
+        getThemeColor(ThemeColorId::POPUP_OUTLINE));
+    mBeingEffects->setForegroundColorAll(getThemeColor(ThemeColorId::POPUP),
         getThemeColor(ThemeColorId::POPUP_OUTLINE));
 }
 
@@ -101,6 +107,7 @@ void BeingPopup::postInit()
     add(mBeingBuyBoard);
     add(mBeingSellBoard);
     add(mBeingRoom);
+    add(mBeingEffects);
 }
 
 void BeingPopup::show(const int x, const int y, Being *const b)
@@ -118,6 +125,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
     Label *label5 = mBeingSellBoard;
     Label *label6 = mBeingComment;
     Label *label7 = mBeingRoom;
+    Label *label8 = mBeingEffects;
 
     b->updateComment();
 
@@ -155,6 +163,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
     label5->setCaption("");
     label6->setCaption("");
     label7->setCaption("");
+    label8->setCaption("");
 
 #ifdef EATHENA_SUPPORT
     const ActorTypeT type = b->getType();
@@ -176,6 +185,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
             label5 = nullptr;
             label6 = nullptr;
             label7 = nullptr;
+            label8 = nullptr;
         }
     }
     else if (type == ActorType::Homunculus)
@@ -196,6 +206,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
             label5 = nullptr;
             label6 = nullptr;
             label7 = nullptr;
+            label8 = nullptr;
         }
     }
     else
@@ -210,6 +221,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
         }
         else
         {
+            label8 = label7;
             label7 = label6;
             label6 = label5;
             label5 = label4;
@@ -228,6 +240,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
         }
         else
         {
+            label8 = label7;
             label7 = label6;
             label6 = label5;
             label5 = label4;
@@ -245,6 +258,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
         }
         else
         {
+            label8 = label7;
             label7 = label6;
             label6 = label5;
             label5 = label4;
@@ -263,6 +277,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
         else
 #endif
         {
+            label8 = label7;
             label7 = label6;
             label6 = label5;
             label5 = label4;
@@ -280,6 +295,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
         else
 #endif
         {
+            label8 = label7;
             label7 = label6;
             label6 = label5;
             label5 = nullptr;
@@ -294,21 +310,46 @@ void BeingPopup::show(const int x, const int y, Being *const b)
         }
         else
         {
+            label8 = label7;
             label7 = label6;
             label6 = nullptr;
         }
+
+        const std::set<int> &effects = b->getStatusEffects();
+        if (!effects.empty())
+        {
+            std::string effectsStr;
+            FOR_EACH (std::set<int>::const_iterator, it, effects)
+            {
+                StatusEffect *const effect = StatusEffect::getStatusEffect(
+                    *it, Enable_true);
+                if (!effectsStr.empty())
+                    effectsStr.append(", ");
+                effectsStr.append(effect->getName());
+            }
+            // TRANSLATORS: being popup label
+            label7->setCaption(strprintf(_("Effects: %s"),
+                effectsStr.c_str()));
+            label7->adjustSize();
+        }
+        else
+        {
+            label8 = label7;
+            label7 = nullptr;
+        }
+
 #ifdef EATHENA_SUPPORT
         const ChatObject *const chat = b->getChat();
         if (chat)
         {
             // TRANSLATORS: being popup label
-            label7->setCaption(strprintf(_("Chat room: %s"),
+            label8->setCaption(strprintf(_("Chat room: %s"),
                 chat->title.c_str()));
-            label7->adjustSize();
+            label8->adjustSize();
         }
         else
         {
-            label7 = nullptr;
+            label8 = nullptr;
         }
 #endif
     }
@@ -328,6 +369,8 @@ void BeingPopup::show(const int x, const int y, Being *const b)
         minWidth = label6->getWidth();
     if (label7 && label7->getWidth() > minWidth)
         minWidth = label7->getWidth();
+    if (label8 && label8->getWidth() > minWidth)
+        minWidth = label8->getWidth();
 
     const int height1 = getFont()->getHeight();
     int height = height1;
@@ -344,6 +387,8 @@ void BeingPopup::show(const int x, const int y, Being *const b)
     if (label6)
         height += height1;
     if (label7)
+        height += height1;
+    if (label8)
         height += height1;
 
     setContentSize(minWidth, height);

@@ -65,6 +65,7 @@ class BeingPopup final : public Popup
         Label *mBeingBuyBoard A_NONNULLPOINTER;
         Label *mBeingSellBoard A_NONNULLPOINTER;
         Label *mBeingRoom A_NONNULLPOINTER;
+        Label *mBeingEffects A_NONNULLPOINTER;
 };
 
 extern BeingPopup *beingPopup;

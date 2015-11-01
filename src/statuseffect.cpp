@@ -45,6 +45,7 @@ StatusEffect::StatusEffect() :
     mParticleEffect(),
     mIcon(),
     mAction(),
+    mName(),
     mPersistentParticleEffect(false),
     mIsPoison(false),
     mIsCart(false),
@@ -199,6 +200,7 @@ void StatusEffect::loadXmlFile(const std::string &fileName)
             if (!endEffect)
                 endEffect = new StatusEffect;
 
+            startEffect->mName = name;
             startEffect->mIsPoison =
                 (name == paths.getStringValue("poisonEffectName"));
             startEffect->mIsCart =
@@ -219,6 +221,7 @@ void StatusEffect::loadXmlFile(const std::string &fileName)
             startEffect->mPersistentParticleEffect = (XML::getProperty(
                 node, "persistent-particle-effect", "no")) != "no";
 
+            endEffect->mName = startEffect->mName;
             endEffect->mIsPoison = startEffect->mIsPoison;
             endEffect->mIsCart = startEffect->mIsCart;
             endEffect->mIsRiding = startEffect->mIsRiding;

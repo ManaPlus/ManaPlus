@@ -185,6 +185,9 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
         bool isTrickDead() const A_WARN_UNUSED
         { return mTrickDead; }
 
+        const std::set<int> &getStatusEffects() const A_WARN_UNUSED
+        { return mStatusEffects; }
+
     protected:
         /**
          * Notify self that the stun mode has been updated. Invoked by
