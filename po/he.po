@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2015-09-26 14:43+0300\n"
-"PO-Revision-Date: 2015-09-27 08:24+0000\n"
+"POT-Creation-Date: 2015-10-24 14:50+0300\n"
+"PO-Revision-Date: 2015-10-25 08:49+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Hebrew (http://www.transifex.com/akaras/manaplus/language/he/)\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. TRANSLATORS: file uploaded message
-#: src/actions/actions.cpp:158
+#: src/actions/actions.cpp:159
 msgid "File uploaded"
 msgstr ""
 
@@ -32,7 +32,7 @@ msgstr ""
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: text dialog button
 #. TRANSLATORS: ok dialog button
-#: src/actions/actions.cpp:161 src/client.cpp:1476 src/client.cpp:1510
+#: src/actions/actions.cpp:162 src/client.cpp:1476 src/client.cpp:1510
 #: src/gamemodifiers.cpp:451 src/gui/dialogsmanager.cpp:182
 #: src/gui/dialogsmanager.cpp:202 src/gui/widgets/tabs/setup_input.cpp:164
 #: src/gui/widgets/tabs/setup_theme.cpp:313
@@ -60,40 +60,40 @@ msgstr "אישור"
 
 #. TRANSLATORS: clear graphics command message
 #. TRANSLATORS: clear fonts cache message
-#: src/actions/actions.cpp:1009 src/actions/actions.cpp:1022
+#: src/actions/actions.cpp:1026 src/actions/actions.cpp:1039
 msgid "Cache cleaned"
 msgstr ""
 
 #. TRANSLATORS: uptime command
-#: src/actions/actions.cpp:1160 src/actions/actions.cpp:1166
+#: src/actions/actions.cpp:1177 src/actions/actions.cpp:1183
 #, c-format
 msgid "Client uptime: %s"
 msgstr ""
 
 #. TRANSLATORS: dump command
-#: src/actions/actions.cpp:1223 src/actions/actions.cpp:1232
+#: src/actions/actions.cpp:1240 src/actions/actions.cpp:1249
 msgid "Resource images:"
 msgstr ""
 
 #. TRANSLATORS: dump command
-#: src/actions/actions.cpp:1226 src/actions/actions.cpp:1236
+#: src/actions/actions.cpp:1243 src/actions/actions.cpp:1253
 msgid "Resource orphaned images:"
 msgstr ""
 
 #. TRANSLATORS: dump environment command
-#: src/actions/actions.cpp:1327
+#: src/actions/actions.cpp:1344
 msgid "Environment variables dumped"
 msgstr ""
 
-#: src/actions/actions.cpp:1439
+#: src/actions/actions.cpp:1456
 msgid "Uploaded config into:"
 msgstr ""
 
-#: src/actions/actions.cpp:1448
+#: src/actions/actions.cpp:1465
 msgid "Uploaded server config into:"
 msgstr ""
 
-#: src/actions/actions.cpp:1457
+#: src/actions/actions.cpp:1474
 msgid "Uploaded log into:"
 msgstr ""
 
@@ -266,25 +266,25 @@ msgid "Visible on map"
 msgstr ""
 
 #. TRANSLATORS: default race name
-#: src/being/being.cpp:448
+#: src/being/being.cpp:453
 msgid "Human"
 msgstr ""
 
-#: src/being/being.cpp:625
+#: src/being/being.cpp:630
 msgid "dodge"
 msgstr ""
 
-#: src/being/being.cpp:625
+#: src/being/being.cpp:630
 msgid "miss"
 msgstr ""
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being/being.cpp:2108 src/gui/windows/whoisonline.cpp:871
+#: src/being/being.cpp:2119 src/gui/windows/whoisonline.cpp:871
 msgid "A"
 msgstr ""
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being/being.cpp:2113 src/gui/windows/whoisonline.cpp:876
+#: src/being/being.cpp:2124 src/gui/windows/whoisonline.cpp:876
 msgid "I"
 msgstr ""
 
@@ -754,7 +754,7 @@ msgid "dyecmd srcdyestring dstfile"
 msgstr ""
 
 #. TRANSLATORS: chat tab header
-#: src/game.cpp:253 src/gui/windows/chatwindow.cpp:2189
+#: src/game.cpp:253 src/gui/windows/chatwindow.cpp:2197
 msgid "General"
 msgstr "כללי"
 
@@ -1828,7 +1828,7 @@ msgstr ""
 #. TRANSLATORS: talk with npc
 #. TRANSLATORS: input action name
 #: src/gui/popups/popupmenu.cpp:253 src/input/pages/basic.cpp:88
-#: src/resources/db/npcdb.cpp:147
+#: src/resources/db/npcdb.cpp:150
 msgid "Talk"
 msgstr "דבר"
 
@@ -1844,7 +1844,7 @@ msgstr "דבר"
 #: src/gui/windows/buydialog.cpp:194 src/gui/windows/buydialog.cpp:212
 #: src/gui/windows/buydialog.cpp:275 src/gui/windows/buyselldialog.cpp:71
 #: src/gui/windows/shopwindow.cpp:168 src/input/pages/basic.cpp:244
-#: src/resources/db/npcdb.cpp:148
+#: src/resources/db/npcdb.cpp:151
 msgid "Buy"
 msgstr "קנה"
 
@@ -1860,7 +1860,7 @@ msgstr "קנה"
 #: src/gui/popups/popupmenu.cpp:266 src/gui/popups/popupmenu.cpp:2395
 #: src/gui/widgets/selldialog.cpp:52 src/gui/widgets/selldialog.cpp:99
 #: src/gui/windows/buyselldialog.cpp:73 src/gui/windows/shopwindow.cpp:170
-#: src/input/pages/basic.cpp:250 src/resources/db/npcdb.cpp:149
+#: src/input/pages/basic.cpp:250 src/resources/db/npcdb.cpp:152
 msgid "Sell"
 msgstr "מכר"
 
@@ -4094,7 +4094,7 @@ msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:119
-msgid "Seleck auto target for attack skills"
+msgid "Select auto target for attack skills"
 msgstr ""
 
 #. TRANSLATORS: settings option
@@ -4690,11 +4690,16 @@ msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_players.cpp:128
-msgid "Create screenshots for each complete trades"
+msgid "Log players actions (for GM)"
 msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_players.cpp:132
+msgid "Create screenshots for each complete trades"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_players.cpp:136
 msgid ""
 "Emulate right mouse button by long mouse click (useful for touch interfaces)"
 msgstr ""
@@ -5866,7 +5871,7 @@ msgid "Broken nick detected: "
 msgstr ""
 
 #. TRANSLATORS: owners pet name. For example: 4144's pet
-#: src/gui/windows/chatwindow.cpp:1755 src/net/eathena/petrecv.cpp:67
+#: src/gui/windows/chatwindow.cpp:1763 src/net/eathena/petrecv.cpp:67
 #, c-format
 msgid "%s's pet"
 msgstr ""
@@ -8939,7 +8944,7 @@ msgstr ""
 #. TRANSLATORS: being info default name
 #: src/resources/beinginfo.cpp:50 src/resources/db/avatardb.cpp:89
 #: src/resources/db/itemdb.cpp:382 src/resources/db/moddb.cpp:78
-#: src/resources/db/monsterdb.cpp:103 src/resources/modinfo.cpp:29
+#: src/resources/db/monsterdb.cpp:101 src/resources/modinfo.cpp:29
 msgid "unnamed"
 msgstr "ללא שם"
 
@@ -9959,6 +9964,36 @@ msgstr ""
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:742
 msgid "Pet catch started."
+msgstr ""
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:776
+#, c-format
+msgid "Player %s died."
+msgstr ""
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:780
+#, c-format
+msgid "Player %s logged out."
+msgstr ""
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:784
+#, c-format
+msgid "Player %s warped."
+msgstr ""
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:788
+#, c-format
+msgid "Player %s trick dead."
+msgstr ""
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:792
+#, c-format
+msgid "Player %s unknown remove."
 msgstr ""
 
 #. TRANSLATORS: chat option changed message
