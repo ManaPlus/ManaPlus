@@ -165,8 +165,8 @@ const SoundInfo &ItemInfo::getSound(const ItemSoundEvent::Type event) const
         % i->second.size()] : empty;
 }
 
-std::map<int, int> *ItemInfo::addReplaceSprite(const int sprite,
-                                               const int direction)
+IntMap *ItemInfo::addReplaceSprite(const int sprite,
+                                   const int direction)
 {
     if (direction < 0 || direction >= 10)
         return nullptr;
@@ -183,7 +183,7 @@ std::map<int, int> *ItemInfo::addReplaceSprite(const int sprite,
     SpriteToItemMap::iterator it = spMap->find(sprite);
     if (it == spMap->end())
     {
-        std::map<int, int> tmp;
+        IntMap tmp;
         (*mSpriteToItemReplaceMap[direction])[sprite] = tmp;
         it = mSpriteToItemReplaceMap[direction]->find(sprite);
     }

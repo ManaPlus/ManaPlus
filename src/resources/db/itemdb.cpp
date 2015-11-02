@@ -589,11 +589,10 @@ void ItemDB::loadXmlFile(const std::string &fileName, int &tagNum)
                      itr_end = spriteToItems->end(); itr != itr_end; ++ itr)
                 {
                     const int remSprite = itr->first;
-                    const std::map<int, int> &itemReplacer = itr->second;
+                    const IntMap &itemReplacer = itr->second;
                     logger->log("sprite: %d", remSprite);
 
-                    for (std::map<int, int>::const_iterator
-                         repIt = itemReplacer.begin(),
+                    for (IntMapCIter repIt = itemReplacer.begin(),
                          repIt_end = itemReplacer.end();
                          repIt != repIt_end; ++ repIt)
                     {
@@ -934,8 +933,7 @@ static void loadReplaceSprite(ItemInfo *const itemInfo,
             {  // replace only given sprites
                 for (int f = 0; f < 10; f ++)
                 {
-                    std::map<int, int> *const mapList
-                        = itemInfo->addReplaceSprite(
+                    IntMap *const mapList = itemInfo->addReplaceSprite(
                         parseSpriteName(removeSprite), f);
                     if (!mapList)
                         continue;
@@ -969,7 +967,7 @@ static void loadReplaceSprite(ItemInfo *const itemInfo,
                 {
                     const int from = XML::getProperty(itemNode, "from", 0);
                     const int to = XML::getProperty(itemNode, "to", 1);
-                    std::map<int, int> *mapList = itemInfo->addReplaceSprite(
+                    IntMap *mapList = itemInfo->addReplaceSprite(
                         parseSpriteName(removeSprite), SpriteDirection::DOWN);
                     if (mapList)
                         (*mapList)[from] = to;
@@ -1002,7 +1000,7 @@ static void loadReplaceSprite(ItemInfo *const itemInfo,
                 {
                     const int from = XML::getProperty(itemNode, "from", 0);
                     const int to = XML::getProperty(itemNode, "to", 1);
-                    std::map<int, int> *mapList = itemInfo->addReplaceSprite(
+                    IntMap *mapList = itemInfo->addReplaceSprite(
                         parseSpriteName(removeSprite), SpriteDirection::UP);
                     if (mapList)
                         (*mapList)[from] = to;
@@ -1022,7 +1020,7 @@ static void loadReplaceSprite(ItemInfo *const itemInfo,
         }
         default:
         {
-            std::map<int, int> *const mapList = itemInfo->addReplaceSprite(
+            IntMap *const mapList = itemInfo->addReplaceSprite(
                 parseSpriteName(removeSprite), direction);
             if (!mapList)
                 return;

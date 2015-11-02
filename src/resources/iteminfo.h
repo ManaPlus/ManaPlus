@@ -33,13 +33,15 @@
 #include "resources/soundinfo.h"
 #include "resources/spritedisplay.h"
 
+#include "utils/intmap.h"
+
 namespace ColorDB
 {
     class ItemColorData;
 }
 
 // sprite, <itemfrom, itemto>
-typedef std::map<int, std::map<int, int> > SpriteToItemMap;
+typedef std::map<int, IntMap> SpriteToItemMap;
 typedef SpriteToItemMap::const_iterator SpriteToItemMapCIter;
 
 /**
@@ -202,7 +204,7 @@ class ItemInfo final
 
         void setDrawPriority(const int direction, const int n);
 
-        const std::map<int, int> &getTags() const A_WARN_UNUSED
+        const IntMap &getTags() const A_WARN_UNUSED
         { return mTags; }
 
         void addTag(const int tag)
@@ -239,8 +241,8 @@ class ItemInfo final
 
         int getReplaceToSpriteId(int id) const A_WARN_UNUSED;
 
-        std::map<int, int> *addReplaceSprite(const int sprite,
-                                             const int direction);
+        IntMap *addReplaceSprite(const int sprite,
+                                 const int direction);
 
         const SpriteToItemMap *getSpriteToItemReplaceMap(const int directions)
                                                          const A_WARN_UNUSED;

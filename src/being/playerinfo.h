@@ -35,7 +35,8 @@
 #include "enums/simpletypes/sfx.h"
 #include "enums/simpletypes/trading.h"
 
-#include <map>
+#include "utils/intmap.h"
+
 #ifdef EATHENA_SUPPORT
 #include <string>
 #endif
@@ -51,7 +52,6 @@ struct Stat final
     int expNeed;
 };
 
-typedef std::map<int, int> IntMap;
 typedef std::map<AttributesT, int> AtrIntMap;
 typedef std::map<AttributesT, Stat> StatMap;
 

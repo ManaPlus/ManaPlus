@@ -27,6 +27,7 @@
 
 #include "gui/widgets/window.h"
 
+#include "utils/intmap.h"
 #include "utils/xml.h"
 
 #include "listeners/actionlistener.h"
@@ -87,7 +88,7 @@ class QuestsWindow final : public Window,
         Image *mCompleteIcon;
         Image *mIncompleteIcon;
         // quest variables: var, value
-        std::map<int, int> mVars;
+        IntMap mVars;
         // quests: var, quests
         std::map<int, std::vector<QuestItem*> > mQuests;
         std::vector<QuestEffect*> mAllEffects;

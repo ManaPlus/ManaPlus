@@ -295,8 +295,7 @@ void QuestsWindow::rebuild(const bool playSound)
     int updatedQuest = -1;
     int newCompleteStatus = -1;
 
-    for (std::map<int, int>::const_iterator it = mVars.begin(),
-         it_end = mVars.end(); it != it_end; ++ it)
+    FOR_EACH (IntMapCIter, it, mVars)
     {
         const int var = (*it).first;
         const int val = (*it).second;
@@ -454,8 +453,7 @@ void QuestsWindow::updateEffects()
         const QuestEffect *const effect = *it;
         if (effect)
         {
-            const std::map<int, int>::const_iterator
-                varIt = mVars.find(effect->var);
+            const IntMapCIter varIt = mVars.find(effect->var);
             if (varIt != mVars.end())
             {
                 const std::set<int> &vals = effect->values;

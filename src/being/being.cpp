@@ -2972,7 +2972,7 @@ void Being::recalcSpritesOrder()
         return;
 
     std::vector<int> slotRemap;
-    std::map<int, int> itemSlotRemap;
+    IntMap itemSlotRemap;
 
     std::vector<int>::iterator it;
     int oldHide[20];
@@ -3018,7 +3018,7 @@ void Being::recalcSpritesOrder()
                 FOR_EACHP (SpriteToItemMapCIter, itr, spriteToItems)
                 {
                     const int remSprite = itr->first;
-                    const std::map<int, int> &itemReplacer = itr->second;
+                    const IntMap &itemReplacer = itr->second;
                     if (remSprite >= 0)
                     {   // slot known
                         if (itemReplacer.empty())
@@ -3027,7 +3027,7 @@ void Being::recalcSpritesOrder()
                         }
                         else if (mSpriteHide[remSprite] != 1)
                         {
-                            std::map<int, int>::const_iterator repIt
+                            IntMapCIter repIt
                                 = itemReplacer.find(mSpriteIDs[remSprite]);
                             if (repIt == itemReplacer.end())
                             {
@@ -3169,8 +3169,7 @@ void Being::recalcSpritesOrder()
             int idx1 = -1;
 //            logger->log("item %d, id=%d", slot, id);
             int reorder = 0;
-            const std::map<int, int>::const_iterator
-                orderIt = itemSlotRemap.find(id);
+            const IntMapCIter orderIt = itemSlotRemap.find(id);
             if (orderIt != itemSlotRemap.end())
                 reorder = orderIt->second;
 
