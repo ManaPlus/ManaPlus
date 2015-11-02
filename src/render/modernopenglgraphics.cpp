@@ -797,6 +797,8 @@ void ModernOpenGLGraphics::calcWindow(ImageCollection *const vertCol,
         return;
     ImageVertexes *vert = nullptr;
     const Image *const image = imgRect.grid[4];
+    if (!image)
+        return;
     if (vertCol->currentGLImage != image->mGLImage)
     {
         vert = new ImageVertexes();

@@ -821,6 +821,8 @@ void SDLGraphics::calcWindow(ImageCollection *const vertCol,
 
     ImageVertexes *vert = nullptr;
     Image *const image = imgRect.grid[4];
+    if (!image)
+        return;
     if (vertCol->currentImage != image)
     {
         vert = new ImageVertexes();
