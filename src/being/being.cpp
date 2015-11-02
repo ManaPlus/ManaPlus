@@ -4078,6 +4078,12 @@ bool Being::isSellShopEnabled() const
 #endif
 }
 
+void Being::serverRemove()
+{
+    // remove some flags what can survive player remove and next visible
+    mTrickDead = false;
+}
+
 #ifdef EATHENA_SUPPORT
 void Being::removeHorse()
 {
@@ -4147,12 +4153,6 @@ void Being::setTrickDead(const bool b)
         mTrickDead = b;
         setAction(mAction, 0);
     }
-}
-
-void Being::serverRemove()
-{
-    // remove some flags what can survive player remove and next visible
-    mTrickDead = false;
 }
 
 #endif
