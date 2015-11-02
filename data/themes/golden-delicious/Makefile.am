@@ -40,6 +40,7 @@ gui_DATA =				\
 	incomplete_icon.xml		\
 	info.xml		\
 	inventory.xml		\
+	inventory_cell2.xml		\
 	item_selection.xml		\
 	itemcontainer.xml		\
 	itempopup.xml		\

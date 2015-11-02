@@ -37,6 +37,7 @@ SET (FILES
     incomplete_icon.xml
     info.xml
     inventory.xml
+    inventory_cell2.xml
     itemcontainer.xml
     itempopup.xml
     item_selection.xml
