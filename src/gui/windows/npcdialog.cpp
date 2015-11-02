@@ -30,6 +30,7 @@
 #include "soundmanager.h"
 
 #include "being/being.h"
+#include "being/playerinfo.h"
 
 #include "gui/gui.h"
 #include "gui/viewport.h"
@@ -367,6 +368,7 @@ void NpcDialog::action(const ActionEvent &event)
                 }
                 case NPC_INPUT_ITEM:
                 {
+                    restoreVirtuals();
                     if (!PacketLimiter::limitPackets(
                         PacketType::PACKET_NPC_INPUT))
                     {
@@ -414,6 +416,7 @@ void NpcDialog::action(const ActionEvent &event)
                 }
                 case NPC_INPUT_ITEM_INDEX:
                 {
+                    restoreVirtuals();
                     if (!PacketLimiter::limitPackets(
                         PacketType::PACKET_NPC_INPUT))
                     {
@@ -517,6 +520,7 @@ void NpcDialog::action(const ActionEvent &event)
     }
     else if (eventId == "close")
     {
+        restoreVirtuals();
         if (mActionState == NPC_ACTION_INPUT)
         {
             switch (mInputState)
@@ -541,7 +545,12 @@ void NpcDialog::action(const ActionEvent &event)
     else if (eventId == "add")
     {
         if (inventoryWindow)
-            mInventory->addVirtualItem(inventoryWindow->getSelectedItem(), 0);
+        {
+            Item *const item = inventoryWindow->getSelectedItem();
+            Inventory *const inventory = PlayerInfo::getInventory();
+            if (mInventory->addVirtualItem(item, 0) && inventory)
+                inventory->virtualRemove(item, 1);
+        }
     }
     else if (eventId.find("skin_") == 0)
     {
@@ -1243,4 +1252,11 @@ void NpcDialog::createSkinControls()
         mSkinContainer->add(button);
         button->adjustSize();
     }
+}
+
+void NpcDialog::restoreVirtuals()
+{
+    Inventory *const inventory = PlayerInfo::getInventory();
+    if (inventory)
+        inventory->restoreVirtuals();
 }

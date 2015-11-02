@@ -35,6 +35,8 @@
 
 #include "enums/being/gender.h"
 
+#include "utils/intmap.h"
+
 #include <list>
 #include <string>
 
@@ -174,15 +176,20 @@ class Inventory final
 
         int findIndexByTag(const int tag) const;
 
-        void addVirtualItem(const Item *const item,
+        bool addVirtualItem(const Item *const item,
                             int index);
 
+        void virtualRemove(Item *const item,
+                           const int amount);
+
+        void restoreVirtuals();
     protected:
         typedef std::list<InventoryListener*> InventoryListenerList;
         InventoryListenerList mInventoryListeners;
 
         void distributeSlotsChangedEvent();
 
+        IntMap mVirtualRemove;
         InventoryType::Type mType;
         unsigned mSize; /**< The max number of inventory items */
         Item **mItems;  /**< The holder of items */

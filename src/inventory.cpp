@@ -55,6 +55,7 @@ namespace
 
 Inventory::Inventory(const InventoryType::Type type, const int size1) :
     mInventoryListeners(),
+    mVirtualRemove(),
     mType(type),
     mSize(size1 == -1 ? static_cast<unsigned>(
           inventoryHandler->getSize(type))
@@ -364,18 +365,15 @@ int Inventory::findIndexByTag(const int tag) const
     return -1;
 }
 
-void Inventory::addVirtualItem(const Item *const item,
+bool Inventory::addVirtualItem(const Item *const item,
                                int index)
 {
     if (item && !PlayerInfo::isItemProtected(item->getId()))
     {
-        if (findIndexByTag(item->getInvIndex()) != -1)
-            return;
-
-        if (index >= 0 &&
-            index < static_cast<int>(mSize) &&
-            mItems[index] == nullptr)
+        if (index >= 0 && index < static_cast<int>(mSize))
         {
+            if (mItems[index] != nullptr)
+                return false;
             setItem(index,
                 item->getId(),
                 item->getType(),
@@ -401,8 +399,47 @@ void Inventory::addVirtualItem(const Item *const item,
                 Equipm_false,
                 Equipped_false);
         }
+        if (index == -1)
+            return false;
+
         Item *const item2 = getItem(index);
         if (item2)
             item2->setTag(item->getInvIndex());
+        return true;
     }
+    return false;
+}
+
+void Inventory::virtualRemove(Item *const item,
+                              const int amount)
+{
+    if (!item || item->mQuantity < amount)
+        return;
+
+    const int index = item->getInvIndex();
+    const IntMapCIter it = mVirtualRemove.find(index);
+    if (it == mVirtualRemove.end())
+        mVirtualRemove[index] = amount;
+    else
+        mVirtualRemove[index] += amount;
+    item->mQuantity -= amount;
+}
+
+void Inventory::restoreVirtuals()
+{
+    const int sz = static_cast<int>(mSize);
+
+    logger->log("Inventory::restoreVirtuals 1");
+    FOR_EACH (IntMapCIter, it, mVirtualRemove)
+    {
+        logger->log("Inventory::restoreVirtuals 2");
+        const int index = (*it).first;
+        if (index < 0 || index >= sz)
+            continue;
+        Item *const item = mItems[index];
+        if (!item)
+            continue;
+        item->mQuantity += (*it).second;
+    }
+    mVirtualRemove.clear();
 }

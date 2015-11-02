@@ -248,6 +248,8 @@ class NpcDialog final : public Window,
 
         void deleteSkinControls();
 
+        void restoreVirtuals();
+
         BeingId mNpcId;
 
         int mDefaultInt;

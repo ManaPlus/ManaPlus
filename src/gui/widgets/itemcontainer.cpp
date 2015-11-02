@@ -789,9 +789,13 @@ void ItemContainer::mouseReleased(MouseEvent &event)
             inventory = PlayerInfo::getInventory();
             if (inventory)
             {
-                mInventory->addVirtualItem(
-                    inventory->getItem(dragDrop.getTag()),
-                    getSlotByXY(event.getX(), event.getY()));
+                Item *const item = inventory->getItem(dragDrop.getTag());
+                if (mInventory->addVirtualItem(
+                    item,
+                    getSlotByXY(event.getX(), event.getY())))
+                {
+                    inventory->virtualRemove(item, 1);
+                }
             }
             return;
         }
