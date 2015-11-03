@@ -245,4 +245,9 @@ bool ServerFeatures::haveExtendedRiding() const
     return serverVersion >= 9;
 }
 
+bool ServerFeatures::haveAdvancedBuySell() const
+{
+    return true;
+}
+
 }  // namespace EAthena

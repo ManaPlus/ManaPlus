@@ -159,6 +159,7 @@ class BuyDialog final : public Window,
         static DialogList instances;
 
         Button *mBuyButton A_NONNULLPOINTER;
+        Button *mConfirmButton A_NONNULLPOINTER;
         Button *mQuitButton A_NONNULLPOINTER;
         Button *mAddMaxButton A_NONNULLPOINTER;
         Button *mIncreaseButton A_NONNULLPOINTER;
@@ -176,11 +177,12 @@ class BuyDialog final : public Window,
         TextField *mFilterTextField A_NONNULLPOINTER;
         Label *mFilterLabel;
 
+        std::string mNick;
         BeingId mNpcId;
         int mMoney;
         int mAmountItems;
         int mMaxItems;
-        std::string mNick;
+        bool mAdvanced;
 };
 
 #endif  // GUI_WINDOWS_BUYDIALOG_H

@@ -130,6 +130,10 @@ void NpcHandler::buyItem(const BeingId beingId A_UNUSED,
     outMsg.writeInt16(static_cast<int16_t>(itemId), "item id");
 }
 
+void NpcHandler::buyItems(std::vector<ShopItem*> &items A_UNUSED) const
+{
+}
+
 void NpcHandler::sellItem(const BeingId beingId A_UNUSED,
                           const int itemId,
                           const int amount) const

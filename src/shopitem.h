@@ -143,6 +143,11 @@ class ShopItem final : public Item
         bool isVisible() const
         { return mVisible; }
 
+        void increaseUsedQuantity(const int amount);
+
+        int getUsedQuantity() const A_WARN_UNUSED
+        { return mUsedQuantity; }
+
     protected:
         void updateDisplayName(const int quantity);
 
@@ -158,6 +163,7 @@ class ShopItem final : public Item
         } DuplicateItem;
         std::stack<DuplicateItem*> mDuplicates; /** <-- Stores duplicates */
         int mPrice;
+        int mUsedQuantity;
         bool mShowQuantity;
         bool mVisible;
 };

@@ -244,4 +244,9 @@ bool ServerFeatures::haveExtendedRiding() const
     return false;
 }
 
+bool ServerFeatures::haveAdvancedBuySell() const
+{
+    return false;
+}
+
 }  // namespace TmwAthena

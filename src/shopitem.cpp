@@ -22,6 +22,7 @@
 
 #include "shopitem.h"
 
+#include "logger.h"
 #include "units.h"
 
 #include "resources/iteminfo.h"
@@ -47,6 +48,7 @@ ShopItem::ShopItem(const int inventoryIndex,
     mDisplayName(),
     mDuplicates(),
     mPrice(price),
+    mUsedQuantity(0),
     mShowQuantity(true),
     mVisible(true)
 {
@@ -68,6 +70,7 @@ ShopItem::ShopItem(const int id,
     mDisplayName(),
     mDuplicates(),
     mPrice(price),
+    mUsedQuantity(0),
     mShowQuantity(false),
     mVisible(true)
 {
@@ -97,14 +100,15 @@ void ShopItem::updateDisplayName(const int quantity)
         mDisplayName.append(" (").append(
             Units::formatCurrency(mPrice)).append(") ");
     }
-    if (quantity > 1)
+    if (mShowQuantity && quantity > 1)
         mDisplayName.append("[").append(toString(quantity)).append("]");
+    if (mUsedQuantity > 0)
+        mDisplayName.append(" +").append(toString(mUsedQuantity));
 }
 
 void ShopItem::update()
 {
-    if (mShowQuantity)
-        updateDisplayName(mQuantity);
+    updateDisplayName(mQuantity);
 }
 
 void ShopItem::addDuplicate(const int inventoryIndex, const int quantity)
@@ -140,4 +144,22 @@ int ShopItem::sellCurrentDuplicate(const int quantity)
         mDuplicates.pop();
     }
     return sellCount;
+}
+
+void ShopItem::increaseUsedQuantity(const int amount)
+{
+    if (mShowQuantity && mQuantity)
+    {
+        if (mQuantity < mUsedQuantity + amount ||
+            mUsedQuantity + amount < 0)
+        {
+            return;
+        }
+    }
+    else if (mUsedQuantity + amount < 0)
+    {
+        return;
+    }
+
+    mUsedQuantity += amount;
 }

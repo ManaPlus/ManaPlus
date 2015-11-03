@@ -18,6 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "shopitem.h"
+
 #include "net/eathena/markethandler.h"
 
 #include "net/eathena/marketrecv.h"
@@ -59,6 +61,56 @@ void MarketHandler::buyItem(const int itemId,
     {
         outMsg.writeInt16(static_cast<int16_t>(itemId), "item id");
         outMsg.writeInt32(static_cast<int16_t>(amount2), "amount");
+    }
+}
+
+void MarketHandler::buyItems(std::vector<ShopItem*> &items) const
+{
+    int cnt = 0;
+    const int pairSize = 6;
+
+    FOR_EACH (std::vector<ShopItem*>::iterator, it, items)
+    {
+        ShopItem *const item = *it;
+        const int usedQuantity = item->getUsedQuantity();
+        const int type = item->getType();
+        if (!usedQuantity)
+            continue;
+        if (type == 4 || type == 5 || type == 7 || type == 8)
+            cnt += item->getUsedQuantity();
+        else
+            cnt ++;
+    }
+
+    if (cnt > 100)
+        return;
+
+    createOutPacket(CMSG_NPC_MARKET_BUY);
+    outMsg.writeInt16(static_cast<int16_t>(4 + pairSize * cnt), "len");
+    FOR_EACH (std::vector<ShopItem*>::iterator, it, items)
+    {
+        ShopItem *const item = *it;
+        const int usedQuantity = item->getUsedQuantity();
+        if (!usedQuantity)
+            continue;
+        item->increaseQuantity(usedQuantity);
+        item->increaseUsedQuantity(-usedQuantity);
+        item->update();
+        const int type = item->getType();
+        if (type == 4 || type == 5 || type == 7 || type == 8)
+        {
+            for (int f = 0; f < usedQuantity; f ++)
+            {
+                outMsg.writeInt16(static_cast<int16_t>(item->getId()),
+                    "item id");
+                outMsg.writeInt32(static_cast<int16_t>(1), "amount");
+            }
+        }
+        else
+        {
+            outMsg.writeInt16(static_cast<int16_t>(item->getId()), "item id");
+            outMsg.writeInt32(static_cast<int16_t>(usedQuantity), "amount");
+        }
     }
 }
 

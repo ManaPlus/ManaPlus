@@ -22,6 +22,8 @@
 
 #include "net/eathena/npchandler.h"
 
+#include "shopitem.h"
+
 #include "being/localplayer.h"
 
 #include "gui/windows/npcdialog.h"
@@ -128,6 +130,55 @@ void NpcHandler::buyItem(const BeingId beingId A_UNUSED,
     outMsg.writeInt16(8, "len");
     outMsg.writeInt16(static_cast<int16_t>(amount), "amount");
     outMsg.writeInt16(static_cast<int16_t>(itemId), "item id");
+}
+
+void NpcHandler::buyItems(std::vector<ShopItem*> &items) const
+{
+    int cnt = 0;
+    const int pairSize = 4;
+
+    FOR_EACH (std::vector<ShopItem*>::iterator, it, items)
+    {
+        ShopItem *const item = *it;
+        const int usedQuantity = item->getUsedQuantity();
+        const int type = item->getType();
+        if (!usedQuantity)
+            continue;
+        if (type == 4 || type == 5 || type == 7 || type == 8)
+            cnt += item->getUsedQuantity();
+        else
+            cnt ++;
+    }
+
+    if (cnt > 100)
+        return;
+
+    createOutPacket(CMSG_NPC_BUY_REQUEST);
+    outMsg.writeInt16(static_cast<int16_t>(4 + pairSize * cnt), "len");
+    FOR_EACH (std::vector<ShopItem*>::iterator, it, items)
+    {
+        ShopItem *const item = *it;
+        const int usedQuantity = item->getUsedQuantity();
+        if (!usedQuantity)
+            continue;
+        item->increaseUsedQuantity(-usedQuantity);
+        item->update();
+        const int type = item->getType();
+        if (type == 4 || type == 5 || type == 7 || type == 8)
+        {
+            for (int f = 0; f < usedQuantity; f ++)
+            {
+                outMsg.writeInt16(static_cast<int16_t>(1), "amount");
+                outMsg.writeInt16(static_cast<int16_t>(item->getId()),
+                    "item id");
+            }
+        }
+        else
+        {
+            outMsg.writeInt16(static_cast<int16_t>(usedQuantity), "amount");
+            outMsg.writeInt16(static_cast<int16_t>(item->getId()), "item id");
+        }
+    }
 }
 
 void NpcHandler::sellItem(const BeingId beingId A_UNUSED,

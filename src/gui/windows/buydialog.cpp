@@ -180,11 +180,12 @@ BuyDialog::BuyDialog() :
     mSortDropDown(nullptr),
     mFilterTextField(new TextField(this, "", true, this, "namefilter", true)),
     mFilterLabel(nullptr),
+    mNick(),
     mNpcId(fromInt(Items, BeingId)),
     mMoney(0),
     mAmountItems(0),
     mMaxItems(0),
-    mNick()
+    mAdvanced(false)
 {
     init();
 }
@@ -198,11 +199,12 @@ BuyDialog::BuyDialog(const BeingId npcId) :
     mSortDropDown(nullptr),
     mFilterTextField(new TextField(this, "", true, this, "namefilter", true)),
     mFilterLabel(nullptr),
+    mNick(),
     mNpcId(npcId),
     mMoney(0),
     mAmountItems(0),
     mMaxItems(0),
-    mNick()
+    mAdvanced(serverFeatures ? serverFeatures->haveAdvancedBuySell() : false)
 {
     init();
 }
@@ -217,11 +219,12 @@ BuyDialog::BuyDialog(std::string nick) :
         Modal_false, this, "sort")),
     mFilterTextField(new TextField(this, "", true, this, "namefilter", true)),
     mFilterLabel(nullptr),
+    mNick(nick),
     mNpcId(fromInt(Nick, BeingId)),
     mMoney(0),
     mAmountItems(0),
     mMaxItems(0),
-    mNick(nick)
+    mAdvanced(false)
 {
     init();
 }
@@ -235,6 +238,13 @@ void BuyDialog::init()
     setMinWidth(260);
     setMinHeight(220);
     setDefaultSize(260, 230, ImageRect::CENTER);
+
+    // reset advance flag for personal shops and cash shop
+    if (mAdvanced &&
+        (mNpcId == fromInt(Nick, BeingId) || mNpcId == fromInt(Cash, BeingId)))
+    {
+        mAdvanced = false;
+    }
 
     if (setupWindow)
         setupWindow->registerWindowForReset(this);
@@ -270,9 +280,19 @@ void BuyDialog::init()
     // TRANSLATORS: This is a narrow symbol used to denote 'decreasing'.
     // You may change this symbol if your language uses another.
     mDecreaseButton = new Button(this, _("-"), "dec", this);
-    // TRANSLATORS: buy dialog button
     mBuyButton = new Button(this, mNpcId == fromInt(Items, BeingId)
-        ? _("Create") :_("Buy"), "buy", this);
+        // TRANSLATORS: buy dialog button
+        ? _("Create") : (mAdvanced ? _("Add") : _("Buy")), "buy", this);
+    if (mAdvanced)
+    {
+        // TRANSLATORS: buy dialog button
+        mConfirmButton = new Button(this, _("Buy"), "confirm", this);
+        mConfirmButton->setEnabled(false);
+    }
+    else
+    {
+        mConfirmButton = nullptr;
+    }
     // TRANSLATORS: buy dialog button
     mQuitButton = new Button(this, _("Quit"), "quit", this);
     // TRANSLATORS: buy dialog button
@@ -318,7 +338,15 @@ void BuyDialog::init()
         placer(0, 8, mFilterLabel, 2);
     }
     placer(2, 8, mFilterTextField, 2);
-    placer(7, 8, mBuyButton);
+    if (mAdvanced)
+    {
+        placer(6, 8, mBuyButton);
+        placer(7, 8, mConfirmButton);
+    }
+    else
+    {
+        placer(7, 8, mBuyButton);
+    }
     placer(8, 8, mQuitButton);
 
     Layout &layout = getLayout();
@@ -498,8 +526,15 @@ void BuyDialog::action(const ActionEvent &event)
         }
         else if (mNpcId != fromInt(Nick, BeingId))
         {
+            if (mAdvanced)
+            {
+                item->increaseUsedQuantity(mAmountItems);
+                item->update();
+                if (mConfirmButton)
+                    mConfirmButton->setEnabled(true);
+            }
 #ifdef EATHENA_SUPPORT
-            if (mNpcId == fromInt(Market, BeingId))
+            else if (mNpcId == fromInt(Market, BeingId))
             {
                 marketHandler->buyItem(item->getId(),
                     item->getType(),
@@ -515,8 +550,8 @@ void BuyDialog::action(const ActionEvent &event)
                     item->getColor(),
                     mAmountItems);
             }
-            else
 #endif
+            else
             {
                 npcHandler->buyItem(mNpcId,
                     item->getId(),
@@ -553,6 +588,22 @@ void BuyDialog::action(const ActionEvent &event)
                     item->getPrice() * mAmountItems);
             }
         }
+    }
+    else if (eventId == "confirm")
+    {
+        std::vector<ShopItem*> &items = mShopItems->allItems();
+
+#ifdef EATHENA_SUPPORT
+        if (mNpcId == fromInt(Market, BeingId))
+        {
+            marketHandler->buyItems(items);
+        }
+#endif
+        else
+        {
+            npcHandler->buyItems(items);
+        }
+        close();
     }
 }
 

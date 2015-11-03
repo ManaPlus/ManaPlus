@@ -114,6 +114,8 @@ class ServerFeatures notfinal
         virtual bool haveAdvancedSprites() const = 0;
 
         virtual bool haveExtendedRiding() const = 0;
+
+        virtual bool haveAdvancedBuySell() const = 0;
 };
 
 }  // namespace Net

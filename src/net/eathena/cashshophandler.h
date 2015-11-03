@@ -39,6 +39,8 @@ class CashShopHandler final : public Net::CashShopHandler
                      const ItemColor color,
                      const int amount) const override final;
 
+        void buyItems(std::vector<ShopItem*> &items) const override final;
+
         void close() const override final;
 
         void requestPoints() const override final;

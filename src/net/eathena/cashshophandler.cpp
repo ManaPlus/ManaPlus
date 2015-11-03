@@ -50,6 +50,11 @@ void CashShopHandler::buyItem(const int points,
     outMsg.writeInt16(static_cast<int16_t>(itemId), "item id");
 }
 
+void CashShopHandler::buyItems(std::vector<ShopItem*> &items A_UNUSED) const
+{
+    // +++ probably need impliment buy many items at same time
+}
+
 void CashShopHandler::close() const
 {
     createOutPacket(CMSG_NPC_CASH_SHOP_CLOSE);

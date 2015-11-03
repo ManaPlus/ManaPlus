@@ -26,8 +26,11 @@
 #include "enums/simpletypes/itemcolor.h"
 
 #include <string>
+#include <vector>
 
 #include "localconsts.h"
+
+class ShopItem;
 
 namespace Net
 {
@@ -44,6 +47,8 @@ class MarketHandler notfinal
                              const int type,
                              const ItemColor color,
                              const int amount) const = 0;
+
+        virtual void buyItems(std::vector<ShopItem*> &items) const = 0;
 };
 
 }  // namespace Net
