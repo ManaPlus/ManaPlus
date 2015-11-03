@@ -801,6 +801,7 @@ void ItemContainer::mouseReleased(MouseEvent &event)
         }
         else if (src == DRAGDROP_SOURCE_NPC)
         {
+            inventory = PlayerInfo::getInventory();
             if (dst == DRAGDROP_SOURCE_NPC)
             {
                 const Item *const item = mInventory->getItem(
@@ -808,6 +809,8 @@ void ItemContainer::mouseReleased(MouseEvent &event)
                 const int index = getSlotByXY(event.getX(), event.getY());
                 if (index == Inventory::NO_SLOT_INDEX)
                 {
+                    if (inventory)
+                        inventory->virtualRestore(item, 1);
                     mInventory->removeItemAt(dragDrop.getTag());
                     return;
                 }
@@ -830,13 +833,15 @@ void ItemContainer::mouseReleased(MouseEvent &event)
             }
             else
             {
-                inventory = PlayerInfo::getInventory();
                 if (inventory)
                 {
                     const Item *const item = inventory->getItem(
                         dragDrop.getTag());
                     if (item)
+                    {
+                        inventory->virtualRestore(item, 1);
                         mInventory->removeItemAt(dragDrop.getTag());
+                    }
                 }
                 return;
             }

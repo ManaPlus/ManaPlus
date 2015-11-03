@@ -182,7 +182,11 @@ class Inventory final
         void virtualRemove(Item *const item,
                            const int amount);
 
+        void virtualRestore(const Item *const item,
+                            const int amount);
+
         void restoreVirtuals();
+
     protected:
         typedef std::list<InventoryListener*> InventoryListenerList;
         InventoryListenerList mInventoryListeners;

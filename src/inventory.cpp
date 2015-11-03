@@ -443,3 +443,19 @@ void Inventory::restoreVirtuals()
     }
     mVirtualRemove.clear();
 }
+
+void Inventory::virtualRestore(const Item *const item,
+                               const int amount)
+{
+    const int index = item->getTag();
+    const IntMapCIter it = mVirtualRemove.find(index);
+    if (it != mVirtualRemove.end())
+    {
+        mVirtualRemove[index] -= amount;
+        if (mVirtualRemove[index] < 0)
+            mVirtualRemove.erase(index);
+        if (index < 0 || index >= static_cast<int>(mSize) || !mItems[index])
+            return;
+        mItems[index]->mQuantity += amount;
+    }
+}
