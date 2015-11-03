@@ -82,6 +82,8 @@ class NpcHandler notfinal
                               const int itemId,
                               const int amount) const = 0;
 
+        virtual void sellItems(std::vector<ShopItem*> &items) const = 0;
+
         virtual void completeProgressBar() const = 0;
 
         virtual void produceMix(const int nameId,

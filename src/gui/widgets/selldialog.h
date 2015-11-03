@@ -51,7 +51,8 @@ class SellDialog notfinal : public Window,
         /**
          * Constructor.
          */
-        explicit SellDialog(const bool isSell);
+        SellDialog(const bool isSell,
+                   const bool advanced);
 
         A_DELETE_COPY(SellDialog)
 
@@ -127,6 +128,7 @@ class SellDialog notfinal : public Window,
 
         Button *mSellButton A_NONNULLPOINTER;
         Button *mQuitButton A_NONNULLPOINTER;
+        Button *mConfirmButton A_NONNULLPOINTER;
         Button *mAddMaxButton;
         Button *mIncreaseButton;
         Button *mDecreaseButton;
@@ -142,6 +144,7 @@ class SellDialog notfinal : public Window,
         int mAmountItems;
 
         bool mIsSell;
+        bool mAdvanced;
 };
 
 #endif  // GUI_WIDGETS_SELLDIALOG_H

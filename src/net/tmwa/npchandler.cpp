@@ -145,6 +145,10 @@ void NpcHandler::sellItem(const BeingId beingId A_UNUSED,
     outMsg.writeInt16(static_cast<int16_t>(amount), "amount");
 }
 
+void NpcHandler::sellItems(std::vector<ShopItem*> &items A_UNUSED) const
+{
+}
+
 void NpcHandler::completeProgressBar() const
 {
 }

@@ -187,8 +187,39 @@ void NpcHandler::sellItem(const BeingId beingId A_UNUSED,
     createOutPacket(CMSG_NPC_SELL_REQUEST);
     outMsg.writeInt16(8, "len");
     outMsg.writeInt16(static_cast<int16_t>(itemId + INVENTORY_OFFSET),
-        "item id");
+        "item index");
     outMsg.writeInt16(static_cast<int16_t>(amount), "amount");
+}
+
+void NpcHandler::sellItems(std::vector<ShopItem*> &items) const
+{
+    const int pairSize = 4;
+    int cnt = 0;
+
+    FOR_EACH (std::vector<ShopItem*>::iterator, it, items)
+    {
+        ShopItem *const item = *it;
+        const int usedQuantity = item->getUsedQuantity();
+        if (!usedQuantity)
+            continue;
+        cnt ++;
+    }
+
+    createOutPacket(CMSG_NPC_SELL_REQUEST);
+    outMsg.writeInt16(static_cast<int16_t>(4 + pairSize * cnt), "len");
+    FOR_EACH (std::vector<ShopItem*>::iterator, it, items)
+    {
+        ShopItem *const item = *it;
+        const int usedQuantity = item->getUsedQuantity();
+        if (!usedQuantity)
+            continue;
+        item->increaseUsedQuantity(-usedQuantity);
+        item->update();
+        outMsg.writeInt16(static_cast<int16_t>(
+            item->getCurrentInvIndex() + INVENTORY_OFFSET),
+            "item index");
+        outMsg.writeInt16(static_cast<int16_t>(usedQuantity), "amount");
+    }
 }
 
 void NpcHandler::completeProgressBar() const

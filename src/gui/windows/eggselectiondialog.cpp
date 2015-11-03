@@ -36,7 +36,7 @@
 #include "debug.h"
 
 EggSelectionDialog::EggSelectionDialog() :
-    SellDialog(false)
+    SellDialog(false, false)
 {
     // TRANSLATORS: egg selection dialog name
     setWindowName(_("Select egg"));

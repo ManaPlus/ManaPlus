@@ -49,6 +49,10 @@ class NpcSellDialog final : public SellDialog
     protected:
         void sellAction(const ActionEvent &event) override final;
 
+        void sellOneItem();
+
+        void sellManyItems(const std::string &eventId);
+
         BeingId mNpcId;
 };
 

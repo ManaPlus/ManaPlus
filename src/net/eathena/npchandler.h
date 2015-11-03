@@ -65,6 +65,8 @@ class NpcHandler final : public Ea::NpcHandler
                       const int itemId,
                       const int amount) const override final;
 
+        void sellItems(std::vector<ShopItem*> &items) const override final;
+
         void completeProgressBar() const override final;
 
         void produceMix(const int nameId,

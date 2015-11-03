@@ -47,13 +47,15 @@
 
 SellDialog::DialogList SellDialog::instances;
 
-SellDialog::SellDialog(const bool isSell) :
+SellDialog::SellDialog(const bool isSell,
+                       const bool advanced) :
     // TRANSLATORS: sell dialog name
     Window(_("Sell"), Modal_false, nullptr, "sell.xml"),
     ActionListener(),
     SelectionListener(),
     mSellButton(nullptr),
     mQuitButton(nullptr),
+    mConfirmButton(nullptr),
     mAddMaxButton(nullptr),
     mIncreaseButton(nullptr),
     mDecreaseButton(nullptr),
@@ -66,7 +68,8 @@ SellDialog::SellDialog(const bool isSell) :
     mPlayerMoney(0),
     mMaxItems(0),
     mAmountItems(0),
-    mIsSell(isSell)
+    mIsSell(isSell),
+    mAdvanced(advanced)
 {
 }
 
@@ -86,6 +89,9 @@ void SellDialog::postInit()
     // Create a ShopItems instance, that is aware of duplicate entries.
     mShopItems = new ShopItems(true);
 
+    if (mAdvanced)
+        mShopItems->setMergeDuplicates(false);
+
     mShopItemList = CREATEWIDGETR(ShopListBox,
         this,
         mShopItems,
@@ -95,8 +101,11 @@ void SellDialog::postInit()
         getOptionBool("showbackground"), "sell_background.xml");
     mScrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
 
-    // TRANSLATORS: sell dialog button
-    mSellButton = new Button(this, _("Sell"), "presell", this);
+    mSellButton = new Button(this,
+        // TRANSLATORS: sell dialog button
+        mAdvanced ? _("Add") : _("Sell"),
+        "presell",
+        this);
     // TRANSLATORS: sell dialog button
     mQuitButton = new Button(this, _("Quit"), "quit", this);
 
@@ -129,6 +138,12 @@ void SellDialog::postInit()
         // TRANSLATORS: sell dialog label
         mMoneyLabel = new Label(this, strprintf(_("Price: %s / Total: %s"),
             "", ""));
+        if (mAdvanced)
+        {
+            // TRANSLATORS: sell dialog button
+            mConfirmButton = new Button(this, _("Sell"), "confirm", this);
+            mConfirmButton->setEnabled(false);
+        }
 
         mDecreaseButton->adjustSize();
         mDecreaseButton->setWidth(mIncreaseButton->getWidth());
@@ -145,7 +160,15 @@ void SellDialog::postInit()
         placer(5, 5, mQuantityLabel, 2);
         placer(7, 5, mAddMaxButton);
         placer(0, 6, mMoneyLabel, 8);
-        placer(6, 7, mSellButton);
+        if (mAdvanced)
+        {
+            placer(5, 7, mSellButton);
+            placer(6, 7, mConfirmButton);
+        }
+        else
+        {
+            placer(6, 7, mSellButton);
+        }
         placer(7, 7, mQuitButton);
     }
     else
@@ -252,7 +275,10 @@ void SellDialog::action(const ActionEvent &event)
         mSlider->setValue(mAmountItems);
         updateButtonsAndLabels();
     }
-    else if (eventId == "presell" || eventId == "sell" || eventId == "yes")
+    else if (eventId == "presell" ||
+             eventId == "sell" ||
+             eventId == "yes" ||
+             eventId == "confirm")
     {
         sellAction(event);
     }

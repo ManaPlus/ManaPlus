@@ -28,12 +28,14 @@
 
 #include "gui/models/shopitems.h"
 
+#include "gui/widgets/button.h"
 #include "gui/widgets/createwidget.h"
 #include "gui/widgets/shoplistbox.h"
 #include "gui/widgets/slider.h"
 
 #include "net/buysellhandler.h"
 #include "net/npchandler.h"
+#include "net/serverfeatures.h"
 
 #include "resources/iteminfo.h"
 
@@ -43,23 +45,25 @@
 #include "debug.h"
 
 NpcSellDialog::NpcSellDialog(const BeingId npcId) :
-    SellDialog(true),
+    SellDialog(true,
+        serverFeatures ? serverFeatures->haveAdvancedBuySell() : false),
     mNpcId(npcId)
 {
 }
 
 void NpcSellDialog::sellAction(const ActionEvent &event)
 {
-    if (mAmountItems <= 0 || mAmountItems > mMaxItems)
-        return;
-
     const std::string &eventId = event.getId();
     const int selectedItem = mShopItemList->getSelected();
     ShopItem *const item = mShopItems->at(selectedItem);
     if (!item || PlayerInfo::isItemProtected(item->getId()))
         return;
+
     if (eventId == "presell")
     {
+        if (mAmountItems <= 0 || mAmountItems > mMaxItems)
+            return;
+
         const ItemInfo &info = ItemDB::get(item->getId());
         if (info.isProtected())
         {
@@ -76,6 +80,38 @@ void NpcSellDialog::sellAction(const ActionEvent &event)
             return;
         }
     }
+
+    if (mAdvanced)
+        sellManyItems(event.getId());
+    else
+        sellOneItem();
+}
+
+void NpcSellDialog::sellManyItems(const std::string &eventId)
+{
+    if (eventId == "confirm")
+    {
+        npcHandler->sellItems(mShopItems->allItems());
+        close();
+    }
+    else
+    {
+        const int selectedItem = mShopItemList->getSelected();
+        ShopItem *const item = mShopItems->at(selectedItem);
+        item->increaseUsedQuantity(mAmountItems);
+        item->update();
+        if (mConfirmButton)
+            mConfirmButton->setEnabled(true);
+    }
+}
+
+void NpcSellDialog::sellOneItem()
+{
+    if (mAmountItems <= 0 || mAmountItems > mMaxItems)
+        return;
+
+    const int selectedItem = mShopItemList->getSelected();
+    ShopItem *const item = mShopItems->at(selectedItem);
     // Attempt sell
     mPlayerMoney += mAmountItems * mShopItems->at(selectedItem)->getPrice();
     mMaxItems -= mAmountItems;
