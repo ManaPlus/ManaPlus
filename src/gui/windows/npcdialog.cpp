@@ -54,6 +54,7 @@
 #include "gui/widgets/playerbox.h"
 #include "gui/widgets/scrollarea.h"
 
+#include "resources/npcdialoginfo.h"
 #include "resources/resourcemanager.h"
 
 #include "resources/db/avatardb.h"
@@ -557,7 +558,7 @@ void NpcDialog::action(const ActionEvent &event)
         const std::string cmd = eventId.substr(5);
         std::string printText;
         int cnt = 0;
-        FOR_EACH(StringVectCIter, it, mItems)
+        FOR_EACH (StringVectCIter, it, mItems)
         {
             if (cmd == *it)
             {

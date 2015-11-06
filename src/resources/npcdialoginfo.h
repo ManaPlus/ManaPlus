@@ -21,13 +21,8 @@
 #ifndef RESOURCES_NPCDIALOGINFO_H
 #define RESOURCES_NPCDIALOGINFO_H
 
-#include "resources/npcbuttoninfo.h"
 #include "resources/npcdialogmenuinfo.h"
-#include "resources/npcimageinfo.h"
 #include "resources/npcinventoryinfo.h"
-#include "resources/npctextinfo.h"
-
-#include "utils/stringvector.h"
 
 #include "localconsts.h"
 

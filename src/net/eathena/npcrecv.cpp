@@ -21,7 +21,6 @@
 #include "net/eathena/npcrecv.h"
 
 #include "actormanager.h"
-#include "logger.h"
 
 #include "being/being.h"
 

@@ -24,6 +24,7 @@
 #include "logger.h"
 
 #include "resources/beingcommon.h"
+#include "resources/npcdialoginfo.h"
 
 #include "utils/dtor.h"
 

@@ -263,7 +263,8 @@ static const InputActionData inputActionData
         Input::GRP_DEFAULT,
         &Actions::sit,
         InputAction::NO_VALUE, 50,
-        InputCondition::GAME | InputCondition::NOTARGET | InputCondition::NOBLOCK,
+        InputCondition::GAME | InputCondition::NOTARGET |
+            InputCondition::NOBLOCK,
         "sit",
         UseArgs_false,
         Protected_false},

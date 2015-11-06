@@ -21,13 +21,13 @@
 #ifndef RESOURCES_DB_NPCDIALOGDB_H
 #define RESOURCES_DB_NPCDIALOGDB_H
 
-#include "resources/npcdialoginfo.h"
-
 #include <map>
 
 #include "localconsts.h"
 
 class Widget;
+
+struct NpcDialogInfo;
 
 /**
  * Color information database.

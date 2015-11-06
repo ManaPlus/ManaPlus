@@ -22,7 +22,6 @@
 
 #include "shopitem.h"
 
-#include "logger.h"
 #include "units.h"
 
 #include "resources/iteminfo.h"
