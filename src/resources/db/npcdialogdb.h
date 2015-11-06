@@ -22,6 +22,7 @@
 #define RESOURCES_DB_NPCDIALOGDB_H
 
 #include <map>
+#include <string>
 
 #include "localconsts.h"
 

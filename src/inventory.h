@@ -38,6 +38,7 @@
 #include "utils/intmap.h"
 
 #include <list>
+#include <string>
 
 #include "localconsts.h"
 
