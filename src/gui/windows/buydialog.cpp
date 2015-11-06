@@ -51,9 +51,9 @@
 #ifdef EATHENA_SUPPORT
 #include "net/cashshophandler.h"
 #include "net/markethandler.h"
-#include "net/serverfeatures.h"
 #include "net/vendinghandler.h"
 #endif
+#include "net/serverfeatures.h"
 #include "net/npchandler.h"
 
 #include "resources/iteminfo.h"
@@ -598,8 +598,8 @@ void BuyDialog::action(const ActionEvent &event)
         {
             marketHandler->buyItems(items);
         }
-#endif
         else
+#endif
         {
             npcHandler->buyItems(items);
         }
