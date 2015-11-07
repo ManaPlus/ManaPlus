@@ -30,6 +30,8 @@
 
 #include "particle/particle.h"
 
+#include "listeners/debugmessagelistener.h"
+
 #include "resources/beingcommon.h"
 #include "resources/spriteaction.h"
 
@@ -124,7 +126,12 @@ StatusEffect *StatusEffect::getStatusEffect(const int index,
     const std::map<int, StatusEffect *>::iterator it = effects.find(index);
     if (it != effects.end())
         return (*it).second;
-    logger->log("Missing status effect: %d", index);
+    if (config.getBoolValue("unimplimentedLog"))
+    {
+        const std::string str = strprintf("Missing status effect: %d", index);
+        logger->log(str);
+        DebugMessageListener::distributeEvent(str);
+    }
     return nullptr;
 }
 
