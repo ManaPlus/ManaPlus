@@ -1,3 +1,13 @@
+2015-11-07 New release 1.5.11.7
+fix: not reduce tiles in conditional layers.
+fix: cart inventory if it empty.
+add: separate flag for enable/disable gui opacity.
+add: npc menu and inventory skins support.
+add: extend npc inventory.
+add: dead trick status effect (hercules).
+add: status effects in player popup.
+add: buy/sell many items at once from npc (hercules).
+
 2015-10-24 New release 1.5.10.24
 fix: remove useless memory allocations.
 fix: status effects (hercules)
