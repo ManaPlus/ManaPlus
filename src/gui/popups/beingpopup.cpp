@@ -323,6 +323,8 @@ void BeingPopup::show(const int x, const int y, Being *const b)
             {
                 StatusEffect *const effect = StatusEffect::getStatusEffect(
                     *it, Enable_true);
+                if (!effect)
+                    continue;
                 if (!effectsStr.empty())
                     effectsStr.append(", ");
                 effectsStr.append(effect->getName());
