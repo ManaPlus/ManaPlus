@@ -14,13 +14,14 @@
 # Yummie <reslayer@mail.ru>, 2011
 # Yummie <reslayer@mail.ru>, 2011
 # Ильшат Сайдуллин <bio_editor@mail.ru>, 2013
+# Роман Верменко <dargodet@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2015-11-02 15:36+0300\n"
-"PO-Revision-Date: 2015-10-25 10:29+0000\n"
-"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"POT-Creation-Date: 2015-11-07 14:36+0300\n"
+"PO-Revision-Date: 2015-11-05 18:48+0000\n"
+"Last-Translator: Роман Верменко <dargodet@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/akaras/manaplus/language/"
 "ru/)\n"
 "Language: ru\n"
@@ -509,7 +510,7 @@ msgstr "Помощь"
 #: src/gui/windows/inventorywindow.cpp:268
 #: src/gui/windows/inventorywindow.cpp:292
 #: src/gui/windows/maileditwindow.cpp:52 src/gui/windows/mailviewwindow.cpp:59
-#: src/gui/windows/npcdialog.cpp:78 src/gui/windows/npcdialog.cpp:120
+#: src/gui/windows/npcdialog.cpp:80 src/gui/windows/npcdialog.cpp:122
 #: src/gui/windows/questswindow.cpp:78 src/gui/windows/shopwindow.cpp:112
 msgid "Close"
 msgstr "Закрыть"
@@ -1687,9 +1688,9 @@ msgstr "Комментарий: %s"
 
 #. TRANSLATORS: being popup label
 #: src/gui/popups/beingpopup.cpp:331
-#, fuzzy, c-format
+#, c-format
 msgid "Effects: %s"
-msgstr "Эффекты"
+msgstr "Эффекты: %s"
 
 #. TRANSLATORS: being popup label
 #: src/gui/popups/beingpopup.cpp:346
@@ -1770,7 +1771,7 @@ msgstr "Карты: "
 #. TRANSLATORS: trade chat tab name
 #. TRANSLATORS: inventory type name
 #: src/gui/popups/popupmenu.cpp:161 src/gui/popups/popupmenu.cpp:811
-#: src/gui/widgets/tabs/chat/tradetab.cpp:39 src/inventory.cpp:335
+#: src/gui/widgets/tabs/chat/tradetab.cpp:39 src/inventory.cpp:336
 msgid "Trade"
 msgstr "Торговать"
 
@@ -1863,14 +1864,15 @@ msgstr "Разговор"
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: buy item
 #. TRANSLATORS: buy dialog name
+#. TRANSLATORS: buy dialog button
 #. TRANSLATORS: shop window button
 #. TRANSLATORS: shop window tab name
 #. TRANSLATORS: input action name
 #: src/gui/popups/popupmenu.cpp:263 src/gui/popups/popupmenu.cpp:2383
-#: src/gui/windows/buydialog.cpp:194 src/gui/windows/buydialog.cpp:212
-#: src/gui/windows/buydialog.cpp:275 src/gui/windows/buyselldialog.cpp:71
-#: src/gui/windows/shopwindow.cpp:168 src/input/pages/basic.cpp:244
-#: src/resources/db/npcdb.cpp:151
+#: src/gui/windows/buydialog.cpp:195 src/gui/windows/buydialog.cpp:214
+#: src/gui/windows/buydialog.cpp:285 src/gui/windows/buydialog.cpp:289
+#: src/gui/windows/buyselldialog.cpp:71 src/gui/windows/shopwindow.cpp:168
+#: src/input/pages/basic.cpp:244 src/resources/db/npcdb.cpp:151
 msgid "Buy"
 msgstr "Купить"
 
@@ -1884,9 +1886,10 @@ msgstr "Купить"
 #. TRANSLATORS: shop window tab name
 #. TRANSLATORS: input action name
 #: src/gui/popups/popupmenu.cpp:266 src/gui/popups/popupmenu.cpp:2395
-#: src/gui/widgets/selldialog.cpp:52 src/gui/widgets/selldialog.cpp:99
-#: src/gui/windows/buyselldialog.cpp:73 src/gui/windows/shopwindow.cpp:170
-#: src/input/pages/basic.cpp:250 src/resources/db/npcdb.cpp:152
+#: src/gui/widgets/selldialog.cpp:53 src/gui/widgets/selldialog.cpp:106
+#: src/gui/widgets/selldialog.cpp:144 src/gui/windows/buyselldialog.cpp:73
+#: src/gui/windows/shopwindow.cpp:170 src/input/pages/basic.cpp:250
+#: src/resources/db/npcdb.cpp:152
 msgid "Sell"
 msgstr "Продать"
 
@@ -2082,7 +2085,7 @@ msgstr "Изменить заклинание"
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: remove all text from chat tab
 #. TRANSLATORS: npc dialog button
-#: src/gui/popups/popupmenu.cpp:743 src/gui/windows/npcdialog.cpp:117
+#: src/gui/popups/popupmenu.cpp:743 src/gui/windows/npcdialog.cpp:119
 msgid "Clear"
 msgstr "Очистить"
 
@@ -2869,12 +2872,25 @@ msgid "Open url"
 msgstr "Открыть ссылку"
 
 #. TRANSLATORS: sell dialog button
+#. TRANSLATORS: mail edit window button
+#. TRANSLATORS: npc dialog button
+#. TRANSLATORS: servers dialog button
+#. TRANSLATORS: shop window label
+#. TRANSLATORS: trade window button
+#: src/gui/widgets/selldialog.cpp:106 src/gui/windows/buydialog.cpp:285
+#: src/gui/windows/maileditwindow.cpp:54 src/gui/windows/npcdialog.cpp:124
+#: src/gui/windows/serverdialog.cpp:117 src/gui/windows/shopwindow.cpp:124
+#: src/gui/windows/tradewindow.cpp:83
+msgid "Add"
+msgstr "Добавить"
+
+#. TRANSLATORS: sell dialog button
 #. TRANSLATORS: buy dialog button
 #. TRANSLATORS: quit dialog name
 #. TRANSLATORS: quit dialog button
 #. TRANSLATORS: servers dialog button
 #. TRANSLATORS: input action name
-#: src/gui/widgets/selldialog.cpp:101 src/gui/windows/buydialog.cpp:277
+#: src/gui/widgets/selldialog.cpp:110 src/gui/windows/buydialog.cpp:297
 #: src/gui/windows/quitdialog.cpp:50 src/gui/windows/quitdialog.cpp:55
 #: src/gui/windows/quitdialog.cpp:57 src/gui/windows/serverdialog.cpp:113
 #: src/input/pages/basic.cpp:220
@@ -2887,9 +2903,9 @@ msgstr "Выход"
 #. TRANSLATORS: item amount window button
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: status window label (plus sign)
-#: src/gui/widgets/selldialog.cpp:119 src/gui/windows/buydialog.cpp:269
+#: src/gui/widgets/selldialog.cpp:128 src/gui/windows/buydialog.cpp:279
 #: src/gui/windows/itemamountwindow.cpp:177
-#: src/gui/windows/itemamountwindow.cpp:212 src/gui/windows/npcdialog.cpp:113
+#: src/gui/windows/itemamountwindow.cpp:212 src/gui/windows/npcdialog.cpp:115
 #: src/gui/windows/statuswindow.cpp:766
 msgid "+"
 msgstr "+"
@@ -2900,9 +2916,9 @@ msgstr "+"
 #. TRANSLATORS: item amount window button
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: status window label (minus sign)
-#: src/gui/widgets/selldialog.cpp:121 src/gui/windows/buydialog.cpp:272
+#: src/gui/widgets/selldialog.cpp:130 src/gui/windows/buydialog.cpp:282
 #: src/gui/windows/itemamountwindow.cpp:175
-#: src/gui/windows/itemamountwindow.cpp:209 src/gui/windows/npcdialog.cpp:115
+#: src/gui/windows/itemamountwindow.cpp:209 src/gui/windows/npcdialog.cpp:117
 #: src/gui/windows/statuswindow.cpp:779
 msgid "-"
 msgstr "-"
@@ -2912,7 +2928,7 @@ msgstr "-"
 #. TRANSLATORS: status bar label
 #. TRANSLATORS: status window label
 #. TRANSLATORS: status bar label
-#: src/gui/widgets/selldialog.cpp:123 src/gui/windows/buydialog.cpp:279
+#: src/gui/widgets/selldialog.cpp:132 src/gui/windows/buydialog.cpp:299
 #: src/gui/windows/statuswindow.cpp:502 src/gui/windows/statuswindow.cpp:558
 #: src/gui/windows/statuswindow.cpp:763 src/gui/windows/statuswindow.cpp:795
 msgid "Max"
@@ -2920,8 +2936,8 @@ msgstr "Макс"
 
 #. TRANSLATORS: sell dialog label
 #. TRANSLATORS: buy dialog label
-#: src/gui/widgets/selldialog.cpp:130 src/gui/widgets/selldialog.cpp:325
-#: src/gui/windows/buydialog.cpp:255 src/gui/windows/buydialog.cpp:627
+#: src/gui/widgets/selldialog.cpp:139 src/gui/widgets/selldialog.cpp:351
+#: src/gui/windows/buydialog.cpp:265 src/gui/windows/buydialog.cpp:678
 #, c-format
 msgid "Price: %s / Total: %s"
 msgstr "Цена: %s / Всего: %s"
@@ -3498,6 +3514,9 @@ msgid ""
 "\n"
 "Hit Enter or hover mouse to show chat again."
 msgstr ""
+"Окно чата будет автоматически скрыто, когда не используется.\n"
+"\n"
+"Нажмите Enter или наведите курсор, чтобы показать чат снова."
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:57
@@ -4365,7 +4384,7 @@ msgstr "Включить режим магазина"
 
 #. TRANSLATORS: settings group
 #. TRANSLATORS: npc dialog name
-#: src/gui/widgets/tabs/setup_other.cpp:285 src/gui/windows/npcdialog.cpp:89
+#: src/gui/widgets/tabs/setup_other.cpp:285 src/gui/windows/npcdialog.cpp:91
 msgid "NPC"
 msgstr "NPC"
 
@@ -5187,9 +5206,8 @@ msgstr "Непрозрачность интерфейса"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_visual.cpp:149
-#, fuzzy
 msgid "Enable gui opacity"
-msgstr "Непрозрачность интерфейса"
+msgstr "Включить прозрачность интерфейса"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_visual.cpp:154
@@ -5463,7 +5481,7 @@ msgstr "ИНВ"
 #. TRANSLATORS: inventory window name
 #. TRANSLATORS: inventory type name
 #: src/gui/windowmenu.cpp:97 src/gui/windows/inventorywindow.cpp:147
-#: src/inventory.cpp:308
+#: src/inventory.cpp:309
 msgid "Inventory"
 msgstr "Инвентарь"
 
@@ -5475,7 +5493,7 @@ msgstr "ТЕ"
 #. TRANSLATORS: cart button tooltip
 #. TRANSLATORS: inventory type name
 #: src/gui/windowmenu.cpp:100 src/gui/windows/inventorywindow.cpp:234
-#: src/inventory.cpp:324
+#: src/inventory.cpp:325
 msgid "Cart"
 msgstr "Телега"
 
@@ -5570,7 +5588,7 @@ msgstr "ПО"
 #. TRANSLATORS: mail window name
 #. TRANSLATORS: inventory type name
 #: src/gui/windowmenu.cpp:158 src/gui/windows/mailwindow.cpp:52
-#: src/inventory.cpp:329
+#: src/inventory.cpp:330
 msgid "Mail"
 msgstr "Почта"
 
@@ -5618,20 +5636,21 @@ msgid "Create items"
 msgstr "Создание предметов"
 
 #. TRANSLATORS: buy dialog label
-#: src/gui/windows/buydialog.cpp:264
+#: src/gui/windows/buydialog.cpp:274
 msgid "Amount:"
 msgstr "Количество:"
 
+#. TRANSLATORS: buy dialog button
 #. TRANSLATORS: char create dialog button
 #. TRANSLATORS: char select dialog. button.
 #. TRANSLATORS: social window button
-#: src/gui/windows/buydialog.cpp:275 src/gui/windows/charcreatedialog.cpp:120
+#: src/gui/windows/buydialog.cpp:285 src/gui/windows/charcreatedialog.cpp:120
 #: src/gui/windows/charselectdialog.cpp:637 src/gui/windows/socialwindow.cpp:77
 msgid "Create"
 msgstr "Создать"
 
 #. TRANSLATORS: buy dialog label
-#: src/gui/windows/buydialog.cpp:316
+#: src/gui/windows/buydialog.cpp:336
 msgid "Filter:"
 msgstr "Фильтр:"
 
@@ -6342,17 +6361,6 @@ msgstr "Редактирование почты"
 msgid "Send"
 msgstr "Отправить"
 
-#. TRANSLATORS: mail edit window button
-#. TRANSLATORS: npc dialog button
-#. TRANSLATORS: servers dialog button
-#. TRANSLATORS: shop window label
-#. TRANSLATORS: trade window button
-#: src/gui/windows/maileditwindow.cpp:54 src/gui/windows/npcdialog.cpp:122
-#: src/gui/windows/serverdialog.cpp:117 src/gui/windows/shopwindow.cpp:124
-#: src/gui/windows/tradewindow.cpp:83
-msgid "Add"
-msgstr "Добавить"
-
 #. TRANSLATORS: mail edit window label
 #: src/gui/windows/maileditwindow.cpp:56
 msgid "To:"
@@ -6503,32 +6511,32 @@ msgid "Job level: %d"
 msgstr "Уровень профессии: %d"
 
 #. TRANSLATORS: npc dialog button
-#: src/gui/windows/npcdialog.cpp:74
+#: src/gui/windows/npcdialog.cpp:76
 msgid "Stop waiting"
 msgstr "Остановить ожидание"
 
 #. TRANSLATORS: npc dialog button
-#: src/gui/windows/npcdialog.cpp:76
+#: src/gui/windows/npcdialog.cpp:78
 msgid "Next"
 msgstr "Следующий"
 
 #. TRANSLATORS: npc dialog button
-#: src/gui/windows/npcdialog.cpp:80
+#: src/gui/windows/npcdialog.cpp:82
 msgid "Submit"
 msgstr "Применить"
 
 #. TRANSLATORS: npc dialog button
-#: src/gui/windows/npcdialog.cpp:124
+#: src/gui/windows/npcdialog.cpp:126
 msgid "Reset"
 msgstr "Сбросить"
 
 #. TRANSLATORS: sell confirmation header
-#: src/gui/windows/npcselldialog.cpp:68
+#: src/gui/windows/npcselldialog.cpp:72
 msgid "sell item"
 msgstr "продажа предмета"
 
 #. TRANSLATORS: sell confirmation message
-#: src/gui/windows/npcselldialog.cpp:70
+#: src/gui/windows/npcselldialog.cpp:74
 #, c-format
 msgid "Do you really want to sell %s?"
 msgstr "Вы действительно хотите продать %s?"
@@ -8258,12 +8266,12 @@ msgid "Clear drops window"
 msgstr "Очистить окно бросания"
 
 #. TRANSLATORS: inventory type name
-#: src/inventory.cpp:313
+#: src/inventory.cpp:314
 msgid "Storage"
 msgstr "Хранилище"
 
 #. TRANSLATORS: inventory type name
-#: src/inventory.cpp:318
+#: src/inventory.cpp:319
 msgid "Npc"
 msgstr "НИП"
 
