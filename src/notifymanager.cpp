@@ -62,6 +62,8 @@ namespace NotifyManager
 
     static void chatLog(ChatTab *const tab, const std::string &str)
     {
+        if (str.empty())
+            return;
         if (tab)
             tab->chatLog(str, ChatMsgType::BY_SERVER);
         else if (debugChatTab)
@@ -73,6 +75,12 @@ namespace NotifyManager
         if (message >= NotifyTypes::TYPE_END || !localChatTab)
             return;
         const NotificationInfo &info = notifications[message];
+        if (!*info.text)
+        {
+            soundManager.playSfx(SoundDB::getSound(message));
+            return;
+        }
+
         switch (info.flags)
         {
             case NotifyFlags::EMPTY:
@@ -118,7 +126,7 @@ namespace NotifyManager
         if (message >= NotifyTypes::TYPE_END || !localChatTab)
             return;
         const NotificationInfo &info = notifications[message];
-        if (info.flags == NotifyFlags::INT)
+        if (info.flags == NotifyFlags::INT && *info.text)
         {
             localChatTab->chatLog(strprintf(gettext(info.text),
                 num), ChatMsgType::BY_SERVER);
@@ -131,6 +139,11 @@ namespace NotifyManager
         if (message >= NotifyTypes::TYPE_END || !localChatTab)
             return;
         const NotificationInfo &info = notifications[message];
+        if (!*info.text)
+        {
+            soundManager.playSfx(SoundDB::getSound(message));
+            return;
+        }
         switch (info.flags)
         {
             case NotifyFlags::STRING:
