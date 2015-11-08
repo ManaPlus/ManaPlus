@@ -568,6 +568,45 @@ void Viewport::mousePressed(MouseEvent &event)
     }
 }
 
+void Viewport::getMouseTile(const int x, int y,
+                            int &destX, int &destY)
+{
+    const int tw = mMap->getTileWidth();
+    const int th = mMap->getTileHeight();
+    destX = static_cast<int>(x + mPixelViewX)
+        / static_cast<float>(tw);
+
+    if (mMap->isHeightsPresent())
+    {
+        const int th2 = th / 2;
+        const int clickY = y + mPixelViewY - th2;
+        destY = y + mPixelViewY;
+        int newDiffY = 1000000;
+        const int heightTiles = mainGraphics->mHeight / th;
+        const int tileViewY = mPixelViewY / th;
+        for (int f = tileViewY; f < tileViewY + heightTiles; f ++)
+        {
+            if (!mMap->getWalk(destX, f))
+                continue;
+
+            const int offset = mMap->getHeightOffset(
+                destX, f) * th2;
+            const int pixelF = f * th;
+            const int diff = abs(clickY + offset - pixelF);
+            if (diff < newDiffY)
+            {
+                destY = pixelF;
+                newDiffY = diff;
+            }
+        }
+        destY /= 32;
+    }
+    else
+    {
+        destY = static_cast<int>((y + mPixelViewY) / static_cast<float>(th));
+    }
+}
+
 void Viewport::walkByMouse(const MouseEvent &event)
 {
     if (!mMap || !localPlayer)
@@ -668,40 +707,10 @@ void Viewport::walkByMouse(const MouseEvent &event)
             }
             else
             {
-                const int destX = static_cast<int>((event.getX() + mPixelViewX)
-                    / static_cast<float>(mMap->getTileWidth()));
+                int destX;
                 int destY;
-
-                if (mMap->isHeightsPresent())
-                {
-                    const int clickY = event.getY() + mPixelViewY - 16;
-                    destY = event.getY() + mPixelViewY;
-                    int newDiffY = 1000000;
-                    const int heightTiles = mainGraphics->mHeight
-                        / mMap->getTileHeight();
-                    const int tileViewY = mPixelViewY / 32;
-                    for (int f = tileViewY; f < tileViewY + heightTiles; f ++)
-                    {
-                        if (!mMap->getWalk(destX, f))
-                            continue;
-
-                        const int offset = mMap->getHeightOffset(
-                            destX, f) * 16;
-                        const int pixelF = f * 32;
-                        const int diff = abs(clickY + offset - pixelF);
-                        if (diff < newDiffY)
-                        {
-                            destY = pixelF;
-                            newDiffY = diff;
-                        }
-                    }
-                    destY /= 32;
-                }
-                else
-                {
-                    destY = static_cast<int>((event.getY() + mPixelViewY)
-                        / static_cast<float>(mMap->getTileHeight()));
-                }
+                getMouseTile(event.getX(), event.getY(),
+                    destX, destY);
                 if (playerX != destX || playerY != destY)
                 {
                     if (!localPlayer->navigateTo(destX, destY))

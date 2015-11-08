@@ -204,6 +204,11 @@ class Viewport final : public WindowContainer,
 
         void walkByMouse(const MouseEvent &event);
 
+        void getMouseTile(const int x,
+                          const int y,
+                          int &destX,
+                          int &destY);
+
         /**
          * Make the player go to the mouse position.
          */
