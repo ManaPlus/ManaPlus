@@ -568,6 +568,11 @@ void Viewport::mousePressed(MouseEvent &event)
     }
 }
 
+void Viewport::getMouseTile(int &destX, int &destY)
+{
+    getMouseTile(mMouseX, mMouseY, destX, destY);
+}
+
 void Viewport::getMouseTile(const int x, int y,
                             int &destX, int &destY)
 {

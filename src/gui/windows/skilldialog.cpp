@@ -708,6 +708,16 @@ void SkillDialog::useSkill(const SkillInfo *const info,
                 break;
 
             case SkillType::Ground:
+            {
+                int x = 0;
+                int y = 0;
+                viewport->getMouseTile(x, y);
+                skillHandler->usePos(info->id,
+                    info->level,
+                    x, y);
+                break;
+            }
+
             case SkillType::TargetTrap:
                 // for now unused
                 break;
