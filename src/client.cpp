@@ -116,6 +116,7 @@
 #include "resources/db/npcdialogdb.h"
 #include "resources/db/palettedb.h"
 #include "resources/db/petdb.h"
+#include "resources/db/skillunitdb.h"
 #include "resources/db/weaponsdb.h"
 
 #include "utils/cpu.h"
@@ -564,6 +565,7 @@ void Client::gameClear()
     HomunculusDB::unload();
     MonsterDB::unload();
     NPCDB::unload();
+    SkillUnitDb::unload();
     NpcDialogDB::unload();
     AvatarDB::unload();
     BadgesDB::unload();
@@ -1256,6 +1258,7 @@ int Client::gameExec()
                     BadgesDB::load();
                     WeaponsDB::load();
                     NPCDB::load();
+                    SkillUnitDb::load();
                     NpcDialogDB::load();
                     PETDB::load();
                     HorseDB::load();

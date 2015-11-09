@@ -1100,6 +1100,8 @@ manaplus_SOURCES += main.cpp \
 	      resources/db/palettedb.h \
 	      resources/db/petdb.cpp \
 	      resources/db/petdb.h \
+	      resources/db/skillunitdb.cpp \
+	      resources/db/skillunitdb.h \
 	      resources/db/sounddb.cpp \
 	      resources/db/sounddb.h \
 	      resources/db/weaponsdb.cpp \
