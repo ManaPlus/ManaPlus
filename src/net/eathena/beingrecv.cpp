@@ -1147,16 +1147,21 @@ void BeingRecv::processSkillGroundNoDamage(Net::MessageIn &msg)
 
 void BeingRecv::processSkillEntry(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
     msg.readInt16("len");
-    msg.readInt32("accound id");
-    msg.readInt32("creator accound id");
-    msg.readInt16("x");
-    msg.readInt16("y");
-    msg.readInt32("job");
+    const BeingId id = msg.readBeingId("skill unit id");
+    msg.readBeingId("creator accound id");
+    const int x = msg.readInt16("x");
+    const int y = msg.readInt16("y");
+    const int job = msg.readInt32("job");
     msg.readUInt8("radius");
     msg.readUInt8("visible");
-    msg.readUInt8("level");
+    const int level = msg.readUInt8("level");
+    Being *const dstBeing = createBeing2(msg, id, job, BeingType::SKILL);
+    if (!dstBeing)
+        return;
+    dstBeing->setAction(BeingAction::STAND, 0);
+    dstBeing->setTileCoords(x, y);
+    dstBeing->setLevel(level);
 }
 
 void BeingRecv::processPlaterStatusChange(Net::MessageIn &msg)
@@ -1276,9 +1281,13 @@ void BeingRecv::processPlayerGuilPartyInfo(Net::MessageIn &msg)
 
 void BeingRecv::processBeingRemoveSkill(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
-    // +++ if skill unit was added, here need remove it from actors
-    msg.readInt32("skill unit id");
+    const BeingId id = msg.readBeingId("skill unit id");
+    if (!actorManager)
+        return;
+    Being *const dstBeing = actorManager->findBeing(id);
+    if (!dstBeing)
+        return;
+    actorManager->destroy(dstBeing);
 }
 
 void BeingRecv::processBeingFakeName(Net::MessageIn &msg)
@@ -1657,8 +1666,10 @@ Being *BeingRecv::createBeing2(Net::MessageIn &msg,
         case BeingType::HOMUN:
             type = ActorType::Homunculus;
             break;
-        case BeingType::ITEM:
         case BeingType::SKILL:
+            type = ActorType::SkillUnit;
+            break;
+        case BeingType::ITEM:
         case BeingType::ELEMENTAL:
             logger->log("not supported object type: %d, job: %d",
                 static_cast<int>(beingType), static_cast<int>(job));
