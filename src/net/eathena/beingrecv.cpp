@@ -1460,11 +1460,21 @@ void BeingRecv::processWddingEffect(Net::MessageIn &msg)
 
 void BeingRecv::processBeingSlide(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    Being *const dstBeing = actorManager->findBeing(
+        msg.readBeingId("being id"));
+    const int x = msg.readInt16("x");
+    const int y = msg.readInt16("y");
+    if (!dstBeing)
+        return;
+    if (localPlayer == dstBeing)
+    {
+        localPlayer->stopAttack();
+        localPlayer->navigateClean();
+    }
 
-    msg.readBeingId("being id");
-    msg.readInt16("x");
-    msg.readInt16("y");
+    dstBeing->setAction(BeingAction::STAND, 0);
+    dstBeing->setTileCoords(x, y);
+    dstBeing->updatePets();
 }
 
 void BeingRecv::processStarsKill(Net::MessageIn &msg)
