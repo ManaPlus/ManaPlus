@@ -80,6 +80,7 @@
 #include "resources/db/monsterdb.h"
 #include "resources/db/npcdb.h"
 #include "resources/db/petdb.h"
+#include "resources/db/skillunitdb.h"
 
 #include "resources/map/map.h"
 
@@ -269,8 +270,11 @@ Being::Being(const BeingId id,
         mGotComment = true;
     }
 
-    if (mType == ActorType::Portal)
+    if (mType == ActorType::Portal ||
+        mType == ActorType::SkillUnit)
+    {
         mShowName = false;
+    }
 
     config.addListener("visiblenames", this);
 
@@ -393,6 +397,19 @@ void Being::setSubtype(const BeingTypeId subtype,
     if (mType == ActorType::Homunculus)
     {
         mInfo = HomunculusDB::get(mSubType);
+        if (mInfo)
+        {
+            setName(mInfo->getName());
+            setupSpriteDisplay(mInfo->getDisplay(),
+                ForceDisplay_true,
+                0,
+                mInfo->getColor(fromInt(mLook, ItemColor)));
+            mYDiff = mInfo->getSortOffsetY();
+        }
+    }
+    if (mType == ActorType::SkillUnit)
+    {
+        mInfo = SkillUnitDb::get(mSubType);
         if (mInfo)
         {
             setName(mInfo->getName());
@@ -681,8 +698,9 @@ void Being::takeDamage(Being *const attacker,
                 UserColorId::HIT_PLAYER_MONSTER);
         }
     }
-    else if (mType == ActorType::Player && attacker != localPlayer
-             && this == localPlayer)
+    else if (mType == ActorType::Player &&
+             attacker != localPlayer &&
+             this == localPlayer)
     {
         // here player was attacked by other player. mark him as enemy.
         color = &userPalette->getColor(UserColorId::HIT_PLAYER_PLAYER);
@@ -1439,8 +1457,12 @@ void Being::setAction(const BeingActionT &action, const int attackId)
                     this,
                     false,
                     mX, mY);
-                if (mType == ActorType::Monster || mType == ActorType::Npc)
+                if (mType == ActorType::Monster ||
+                    mType == ActorType::Npc ||
+                    mType == ActorType::SkillUnit)
+                {
                     mYDiff = mInfo->getDeadSortOffsetY();
+                }
             }
             break;
         case BeingAction::STAND:
@@ -2247,6 +2269,21 @@ void Being::updateColors()
         {
             setDefaultNameColor(UserColorId::NPC);
             mTextColor = &userPalette->getColor(UserColorId::NPC);
+        }
+        else if (mType == ActorType::Pet)
+        {
+            setDefaultNameColor(UserColorId::PET);
+            mTextColor = &userPalette->getColor(UserColorId::PET);
+        }
+        else if (mType == ActorType::Homunculus)
+        {
+            setDefaultNameColor(UserColorId::HOMUNCULUS);
+            mTextColor = &userPalette->getColor(UserColorId::HOMUNCULUS);
+        }
+        else if (mType == ActorType::SkillUnit)
+        {
+            setDefaultNameColor(UserColorId::SKILLUNIT);
+            mTextColor = &userPalette->getColor(UserColorId::SKILLUNIT);
         }
         else if (this == localPlayer)
         {

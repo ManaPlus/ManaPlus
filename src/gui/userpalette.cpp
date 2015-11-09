@@ -49,6 +49,7 @@ const std::string ColorTypeNames[static_cast<size_t>(
     "ColorPet",
     "ColorMercenary",
     "ColorHomunculus",
+    "ColorSkillUnit",
     "ColorParty",
     "ColorGuild",
     "ColorTeam1",
@@ -197,6 +198,11 @@ UserPalette::UserPalette() :
         GradientType::STATIC,
         // TRANSLATORS: palette color
         _("Homunculus"));
+    addColor(UserColorId::SKILLUNIT,
+        0xffffff,
+        GradientType::STATIC,
+        // TRANSLATORS: palette color
+        _("Skill unit"));
     addColor(UserColorId::PARTY,
         0xff00d8,
         // TRANSLATORS: palette color

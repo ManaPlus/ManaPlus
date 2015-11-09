@@ -44,6 +44,7 @@ enumStart(UserColorId)
     PET,
     MERCENARY,
     HOMUNCULUS,
+    SKILLUNIT,
     PARTY,
     GUILD,
     TEAM1,
