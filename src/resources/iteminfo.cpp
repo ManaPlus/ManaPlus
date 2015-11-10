@@ -446,3 +446,8 @@ std::string ItemInfo::getIconColor(const ItemColor idx) const
         return std::string();
     return it->second.color;
 }
+
+const std::string ItemInfo::getLink() const
+{
+    return strprintf("[@@%d|%s@@]", mId, mName.c_str());
+}

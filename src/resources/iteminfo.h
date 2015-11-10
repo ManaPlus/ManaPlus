@@ -75,6 +75,8 @@ class ItemInfo final
         const std::string getName(const ItemColor color)
                                   const A_WARN_UNUSED;
 
+        const std::string getLink() const A_WARN_UNUSED;
+
         void setDisplay(const SpriteDisplay &display)
         { mDisplay = display; }
 
