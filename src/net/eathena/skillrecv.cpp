@@ -39,6 +39,10 @@
 
 #include "net/eathena/menu.h"
 
+#include "resources/iteminfo.h"
+
+#include "resources/db/itemdb.h"
+
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
@@ -264,6 +268,43 @@ void SkillRecv::processSkillFailed(Net::MessageIn &msg)
                 // TRANSLATORS: error message
             txt.append(_("You're carrying to much to do this!"));
             break;
+        case RFAIL_NEED_EQUIPMENT:
+        {
+            const int itemId = bskill >> 16;
+            const int amount = bskill & 0xFFFFU;
+            const ItemInfo &info = ItemDB::get(itemId);
+            if (amount == 1)
+            {
+                txt.append(strprintf(_("Need equipment %s."),
+                    info.getLink().c_str()));
+            }
+            else
+            {
+                txt.append(strprintf(_("Need equipment %s and amount %d"),
+                    info.getLink().c_str(),
+                    amount));
+            }
+            break;
+        }
+        case RFAIL_NEED_ITEM:
+        {
+            const int itemId = bskill >> 16;
+            const int amount = bskill & 0xFFFFU;
+            const ItemInfo &info = ItemDB::get(itemId);
+            if (amount == 1)
+            {
+                txt.append(strprintf(_("Need item %s."),
+                    info.getLink().c_str()));
+            }
+            else
+            {
+                txt.append(strprintf(_("Need item %s and amount %d"),
+                    info.getLink().c_str(),
+                    amount));
+            }
+            break;
+        }
+
         default:
             UNIMPLIMENTEDPACKET;
             break;
