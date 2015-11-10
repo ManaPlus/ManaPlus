@@ -1045,6 +1045,7 @@ SET(SRCS
     particle/particleinfo.h
     particle/particlelist.cpp
     particle/particlelist.h
+    particle/particletimer.h
     particle/particlevector.cpp
     particle/particlevector.h
     party.cpp

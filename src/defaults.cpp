@@ -519,6 +519,7 @@ DefaultsData* getPathsDefaults()
     AddDEF("skillRemoveEffectId", -1);
     AddDEF("skillCastingSrcEffectId", -1);
     AddDEF("skillCastingDstEffectId", -1);
+    AddDEF("skillCastingGroundEffectId", -1);
     AddDEF("skillHitEffectId", -1);
     AddDEF("skillMissEffectId", -1);
 

@@ -649,7 +649,8 @@ void SkillDialog::playCastingSrcEffect(const int id, Being *const being) const
         paths.getIntValue("skillCastingSrcEffectId"));
 }
 
-void SkillDialog::playCastingDstEffect(const int id, Being *const being) const
+void SkillDialog::playCastingDstEffect(const int id,
+                                       Being *const being) const
 {
     if (!effectManager)
         return;
@@ -659,6 +660,24 @@ void SkillDialog::playCastingDstEffect(const int id, Being *const being) const
     effectManager->triggerDefault(info->castingDstEffectId,
         being,
         paths.getIntValue("skillCastingDstEffectId"));
+}
+
+
+void SkillDialog::playCastingDstTileEffect(const int id,
+                                           const int x,
+                                           const int y,
+                                           const int delay) const
+{
+    if (!effectManager)
+        return;
+    SkillInfo *const info = getSkill(id);
+    if (!info)
+        return;
+    effectManager->triggerDefault(info->castingDstEffectId,
+        x * 32,
+        y * 32,
+        cur_time + delay / 1000,  // end time in seconds
+        paths.getIntValue("skillCastingGroundEffectId"));
 }
 
 void SkillDialog::useSkill(const SkillInfo *const info,

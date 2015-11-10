@@ -1057,6 +1057,7 @@ manaplus_SOURCES += main.cpp \
 	      particle/particleinfo.h \
 	      particle/particlelist.cpp \
 	      particle/particlelist.h \
+	      particle/particletimer.h \
 	      particle/particlevector.cpp \
 	      particle/particlevector.h \
 	      party.cpp \

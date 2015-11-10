@@ -37,7 +37,8 @@
 EffectManager *effectManager = nullptr;
 
 EffectManager::EffectManager() :
-    mEffects()
+    mEffects(),
+    mTimers()
 {
     logger->log1("Effects are now loading");
     loadXmlFile(paths.getStringValue("effectsFile"));
@@ -80,7 +81,8 @@ EffectManager::~EffectManager()
 {
 }
 
-bool EffectManager::triggerDirection(const int id, Being *const being,
+bool EffectManager::triggerDirection(const int id,
+                                     Being *const being,
                                      const SpriteDirection::Type &direction)
 {
     int rotation;
@@ -110,7 +112,8 @@ bool EffectManager::triggerDirection(const int id, Being *const being,
     return trigger(id, being, rotation);
 }
 
-bool EffectManager::trigger(const int id, Being *const being,
+bool EffectManager::trigger(const int id,
+                            Being *const being,
                             const int rotation)
 {
     if (!being || !particleEngine)
@@ -141,7 +144,8 @@ bool EffectManager::trigger(const int id, Being *const being,
     return rValue;
 }
 
-Particle *EffectManager::triggerReturn(const int id, Being *const being,
+Particle *EffectManager::triggerReturn(const int id,
+                                       Being *const being,
                                        const int rotation)
 {
     if (!being || !particleEngine)
@@ -169,7 +173,9 @@ Particle *EffectManager::triggerReturn(const int id, Being *const being,
     return rValue;
 }
 
-bool EffectManager::trigger(const int id, const int x, const int y,
+bool EffectManager::trigger(const int id,
+                            const int x, const int y,
+                            const int endTime,
                             const int rotation)
 {
     if (!particleEngine)
@@ -183,7 +189,13 @@ bool EffectManager::trigger(const int id, const int x, const int y,
         {
             rValue = true;
             if (!effect.gfx.empty())
-                particleEngine->addEffect(effect.gfx, x, y, rotation);
+            {
+                Particle *const particle = particleEngine->addEffect(effect.gfx,
+                    x, y,
+                    rotation);
+                if (particle)
+                    mTimers.push_back(ParticleTimer(particle, endTime));
+            }
             if (!effect.sfx.empty())
                 soundManager.playSfx(effect.sfx);
             // TODO add sprite effect to position
@@ -202,4 +214,51 @@ void EffectManager::triggerDefault(int effectId,
     if (effectId == -1)
         return;
     trigger(effectId, being);
+}
+
+void EffectManager::triggerDefault(int effectId,
+                                   const int x,
+                                   const int y,
+                                   const int endTime,
+                                   const int defaultEffectId)
+{
+    if (effectId == -1)
+        effectId = defaultEffectId;
+    if (effectId == -1)
+        return;
+    trigger(effectId, x, y, endTime);
+}
+
+void EffectManager::logic()
+{
+    const int time = cur_time;
+    bool found(true);
+    while (found)
+    {
+        found = false;
+        FOR_EACH (std::list<ParticleTimer>::iterator, it, mTimers)
+        {
+            const ParticleTimer &timer = *it;
+            if (timer.endTime < time)
+            {
+                found = true;
+                Particle *const particle = timer.particle;
+                if (particle)
+                    particle->kill();
+                mTimers.erase(it);
+                break;
+            }
+        }
+    }
+}
+
+void EffectManager::clear()
+{
+    FOR_EACH (std::list<ParticleTimer>::iterator, it, mTimers)
+    {
+        Particle *const particle = (*it).particle;
+        if (particle)
+            particle->kill();
+    }
+    mTimers.clear();
 }

@@ -439,6 +439,8 @@ Game::~Game()
     delete2(actorManager)
     if (client->getState() != STATE_CHANGE_MAP)
         delete2(localPlayer)
+    if (effectManager)
+        effectManager->clear();
     delete2(effectManager)
     delete2(particleEngine)
     delete2(viewport)
@@ -622,6 +624,8 @@ void Game::slowLogic()
             config.writeUpdated();
             serverConfig.writeUpdated();
         }
+        if (effectManager)
+            effectManager->logic();
     }
 
     if (mainGraphics->getOpenGL())

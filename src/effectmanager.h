@@ -23,10 +23,13 @@
 #ifndef EFFECTMANAGER_H
 #define EFFECTMANAGER_H
 
+#include "particle/particletimer.h"
+
 #include "resources/effectdescription.h"
 #include "resources/spritedirection.h"
 
 #include <vector>
+#include <list>
 
 #include "localconsts.h"
 
@@ -60,15 +63,28 @@ class EffectManager final
          * Triggers a effect with the id, at
          * the specified x and y coordinate.
          */
-        bool trigger(const int id, const int x, const int y,
+        bool trigger(const int id,
+                     const int x, const int y,
+                     const int endTime,
                      const int rotation = 0);
 
         void triggerDefault(int effectId,
                             Being *const being,
                             const int defaultEffectId);
 
+        void triggerDefault(int effectId,
+                            const int x,
+                            const int y,
+                            const int endTime,
+                            const int defaultEffectId);
+
+        void logic();
+
+        void clear();
+
     private:
         std::vector<EffectDescription> mEffects;
+        std::list<ParticleTimer> mTimers;
 };
 
 extern EffectManager *effectManager;

@@ -130,6 +130,11 @@ class SkillDialog final : public Window,
         void playCastingDstEffect(const int id,
                                   Being *const being) const;
 
+        void playCastingDstTileEffect(const int id,
+                                      const int x,
+                                      const int y,
+                                      const int delay) const;
+
         void slowLogic();
 
         void removeSkill(const int id);
