@@ -21,6 +21,8 @@
 #ifndef PARTICLE_PARTICLETIMER_H
 #define PARTICLE_PARTICLETIMER_H
 
+#include "localconsts.h"
+
 class Particle;
 
 struct ParticleTimer final
