@@ -494,7 +494,8 @@ void Minimap::mouseReleased(MouseEvent &event)
         screenToMap(x, y);
         popupMenu->showMapPopup(viewport->mMouseX,
             viewport->mMouseY,
-            x, y);
+            x, y,
+            true);
     }
 }
 

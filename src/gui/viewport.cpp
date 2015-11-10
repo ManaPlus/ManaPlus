@@ -411,7 +411,8 @@ bool Viewport::openContextMenu(const MouseEvent &event)
             return false;
         popupMenu->showMapPopup(eventX, eventY,
             (mMouseX + mPixelViewX) / mMap->getTileWidth(),
-            (mMouseY + mPixelViewY) / mMap->getTileHeight());
+            (mMouseY + mPixelViewY) / mMap->getTileHeight(),
+            false);
         return true;
     }
     return false;

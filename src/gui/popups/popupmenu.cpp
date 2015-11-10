@@ -41,10 +41,12 @@
 #include "gui/buttontext.h"
 #include "gui/gui.h"
 #include "gui/viewport.h"
+#include "gui/windowmenu.h"
 
 #include "gui/windows/chatwindow.h"
 #include "gui/windows/equipmentwindow.h"
 #include "gui/windows/inventorywindow.h"
+#include "gui/windows/minimap.h"
 #include "gui/windows/ministatuswindow.h"
 #include "gui/windows/npcdialog.h"
 #include "gui/windows/outfitwindow.h"
@@ -52,7 +54,6 @@
 #include "gui/windows/textcommandeditor.h"
 #include "gui/windows/textdialog.h"
 #include "gui/windows/tradewindow.h"
-#include "gui/windowmenu.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/createwidget.h"
@@ -638,10 +639,14 @@ void PopupMenu::showPopup(const int x, const int y, MapItem *const mapItem)
 }
 
 void PopupMenu::showMapPopup(const int x, const int y,
-                             const int x2, const int y2)
+                             const int x2, const int y2,
+                             const bool isMinimap)
 {
     mX = x2;
     mY = y2;
+
+    if (isMinimap)
+        mWindow = minimap;
 
     mBrowserBox->clearRows();
 
@@ -660,6 +665,12 @@ void PopupMenu::showMapPopup(const int x, const int y,
     // TRANSLATORS: popup menu item
     // TRANSLATORS: move camera to map item
     mBrowserBox->addRow("/movecamera 'X' 'Y'", _("Move camera"));
+    mBrowserBox->addRow("##3---");
+    if (isMinimap)
+    {
+        // TRANSLATORS: popup menu item
+        mBrowserBox->addRow("window close", _("Close"));
+    }
     mBrowserBox->addRow("##3---");
     // TRANSLATORS: popup menu item
     // TRANSLATORS: close menu

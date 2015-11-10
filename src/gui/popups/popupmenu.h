@@ -128,7 +128,8 @@ class PopupMenu final : public Popup, public LinkHandler
                               Item *const item);
 
         void showMapPopup(const int x, const int y,
-                          const int x2, const int y2);
+                          const int x2, const int y2,
+                          const bool isMinimap);
 
         /**
          * Shows the related popup menu when right click on the chat
