@@ -983,7 +983,7 @@ void PopupMenu::addWindowMenu(Window *const window)
     if (!window)
         return;
 
-    if (window->getCloseButton())
+    if (window->getAlowClose())
     {
         // TRANSLATORS: popup menu item
         // TRANSLATORS: close window

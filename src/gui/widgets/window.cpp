@@ -157,7 +157,8 @@ Window::Window(const std::string &caption,
     mStickyButtonLock(false),
     mPlayVisibleSound(false),
     mInit(false),
-    mTextChanged(true)
+    mTextChanged(true),
+    mAllowClose(false)
 {
     logger->log("Window::Window(\"%s\")", caption.c_str());
 
@@ -722,6 +723,8 @@ void Window::widgetHidden(const Event &event A_UNUSED)
 void Window::setCloseButton(const bool flag)
 {
     mCloseWindowButton = flag;
+    if (flag)
+        mAllowClose = true;
 }
 
 bool Window::isResizable() const

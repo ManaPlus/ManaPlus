@@ -64,6 +64,7 @@ ShortcutWindow::ShortcutWindow(const std::string &restrict title,
     setResizable(true);
     setDefaultVisible(false);
     setSaveVisible(true);
+    setAllowClose(true);
 
     mDragOffsetX = 0;
     mDragOffsetY = 0;
@@ -123,6 +124,7 @@ ShortcutWindow::ShortcutWindow(const std::string &restrict title,
     setResizable(true);
     setDefaultVisible(false);
     setSaveVisible(true);
+    setAllowClose(true);
 
     mDragOffsetX = 0;
     mDragOffsetY = 0;

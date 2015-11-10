@@ -181,6 +181,12 @@ class Window notfinal : public BasicContainer2,
         bool getCloseButton() const A_WARN_UNUSED
         { return mCloseWindowButton; }
 
+        void setAllowClose(const bool b)
+        { mAllowClose = b; }
+
+        bool getAlowClose() const A_WARN_UNUSED
+        { return mCloseWindowButton || mAllowClose; }
+
         /**
          * Returns whether the window can be resized.
          */
@@ -711,6 +717,7 @@ class Window notfinal : public BasicContainer2,
         bool mPlayVisibleSound;
         bool mInit;
         bool mTextChanged;
+        bool mAllowClose;
 };
 
 #endif  // GUI_WIDGETS_WINDOW_H
