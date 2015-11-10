@@ -265,8 +265,12 @@ void SkillRecv::processSkillFailed(Net::MessageIn &msg)
             txt.append(_("You need another blue gem!"));
             break;
         case RFAIL_OVERWEIGHT:
-                // TRANSLATORS: error message
+            // TRANSLATORS: error message
             txt.append(_("You're carrying to much to do this!"));
+            break;
+        case RFAIL_SUMMON:
+            // TRANSLATORS: error message
+            txt.append(_("Fail summon."));
             break;
         case RFAIL_NEED_EQUIPMENT:
         {

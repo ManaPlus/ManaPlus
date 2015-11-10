@@ -56,6 +56,7 @@ static const unsigned int RFAIL_REDGEM =      0x07;
 static const unsigned int RFAIL_BLUEGEM =     0x08;
 static const unsigned int RFAIL_OVERWEIGHT =  0x09;
 
+static const unsigned int RFAIL_SUMMON         = 19;
 static const unsigned int RFAIL_NEED_ITEM      = 71;
 static const unsigned int RFAIL_NEED_EQUIPMENT = 72;
 
