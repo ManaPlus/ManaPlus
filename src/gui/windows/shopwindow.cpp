@@ -849,8 +849,6 @@ void ShopWindow::showList(const std::string &nick, std::string data)
         {
             // +++ need support for colors
             const Item *const item = inv->findItem(id, ItemColor_zero);
-            bool enabled(true);
-
             if (item)
             {
                 if (item->getQuantity() < amount)
