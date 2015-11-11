@@ -725,8 +725,20 @@ void CharCreateDialog::setButtonsPosition(const int w, const int h)
 {
     if (mainGraphics->getHeight() < 480)
     {
-        mCreateButton->setPosition(340, 150);
-        mCancelButton->setPosition(340, 160 + mCreateButton->getHeight());
+        if (mMaxPoints)
+        {
+            mCreateButton->setPosition(337, 160);
+            mCancelButton->setPosition(337 + mCreateButton->getWidth(), 160);
+        }
+        else
+        {
+            mCancelButton->setPosition(
+                w / 2,
+                160);
+            mCreateButton->setPosition(
+                mCancelButton->getX() - 5 - mCreateButton->getWidth(),
+                160);
+        }
     }
     else
     {
