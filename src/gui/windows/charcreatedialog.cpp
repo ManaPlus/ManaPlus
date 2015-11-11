@@ -137,6 +137,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     mMaxRace(CharDB::getMaxRace()),
     mHairStyle(0),
     mHairColor(0),
+    mMaxY(0),
     mSlot(slot),
     mDefaultGender(Gender::FEMALE),
     mGender(Gender::UNSPECIFIED),
@@ -292,6 +293,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
         if (mRaceNameLabel)
             mRaceNameLabel->setPosition(nameX, y);
     }
+    mMaxY = y + 29 + getTitlePadding();
 
     updateSliders();
     setButtonsPosition(w, h);
@@ -556,8 +558,7 @@ void CharCreateDialog::setAttributes(const StringVect &labels,
 
     const int w = 480;
     int h = 350;
-    const int y = 118 + 29;
-
+    int y = 118 + 29;
     for (unsigned i = 0, sz = static_cast<unsigned>(labels.size());
          i < sz; i++)
     {
@@ -583,13 +584,22 @@ void CharCreateDialog::setAttributes(const StringVect &labels,
     {
         mAttributesLeft->setVisible(Visible_false);
         h = y;
-        setContentSize(w, h);
+    }
+    else
+    {
+        h = 290 + mAttributesLeft->getHeight() + getPadding();
     }
     if (serverFeatures->haveCreateCharGender() && y < 160)
     {
-        h = 160;
-        setContentSize(w, h);
+        if (h < 160)
+            h = 160;
     }
+    if (h < mMaxY)
+        h = mMaxY;
+
+    h += mCreateButton->getHeight();
+
+    setContentSize(w, h);
     setButtonsPosition(w, h);
 }
 
