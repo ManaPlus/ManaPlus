@@ -849,15 +849,25 @@ void ShopWindow::showList(const std::string &nick, std::string data)
         {
             // +++ need support for colors
             const Item *const item = inv->findItem(id, ItemColor_zero);
+            bool enabled(true);
+
             if (item)
             {
                 if (item->getQuantity() < amount)
                     amount = item->getQuantity();
-                if (amount > 0)
-                    sellDialog->addItem(id, 0, ItemColor_one, amount, price);
-                else
-                    sellDialog->addItem(id, 0, ItemColor_one, -1, price);
             }
+            else
+            {
+                amount = 0;
+            }
+            ShopItem *const shopItem = sellDialog->addItem(id,
+                0,
+                ItemColor_one,
+                amount,
+                price);
+
+            if (shopItem && amount <= 0)
+                shopItem->setDisabled(true);
         }
     }
     if (buyDialog)

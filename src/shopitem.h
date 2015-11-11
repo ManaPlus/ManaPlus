@@ -148,6 +148,12 @@ class ShopItem final : public Item
         int getUsedQuantity() const A_WARN_UNUSED
         { return mUsedQuantity; }
 
+        void setDisabled(const bool b)
+        { mDisabled = b; }
+
+        bool getDisabled() const A_WARN_UNUSED
+        { return mDisabled; }
+
     protected:
         void updateDisplayName(const int quantity);
 
@@ -166,6 +172,7 @@ class ShopItem final : public Item
         int mUsedQuantity;
         bool mShowQuantity;
         bool mVisible;
+        bool mDisabled;
 };
 
 #endif  // SHOPITEM_H

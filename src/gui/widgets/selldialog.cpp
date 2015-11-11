@@ -218,18 +218,19 @@ void SellDialog::addItem(const Item *const item, const int price)
     mShopItemList->adjustSize();
 }
 
-void SellDialog::addItem(const int id,
-                         const int type,
-                         const ItemColor color,
-                         const int amount,
-                         const int price)
+ShopItem *SellDialog::addItem(const int id,
+                              const int type,
+                              const ItemColor color,
+                              const int amount,
+                              const int price)
 {
-    mShopItems->addItem(id,
+    ShopItem *const item = mShopItems->addItem(id,
         type,
         color,
         amount,
         price);
     mShopItemList->adjustSize();
+    return item;
 }
 
 

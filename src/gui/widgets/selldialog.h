@@ -34,6 +34,7 @@ class Button;
 class Item;
 class Label;
 class ScrollArea;
+class ShopItem;
 class ShopItems;
 class ShopListBox;
 class Slider;
@@ -93,11 +94,11 @@ class SellDialog notfinal : public Window,
          */
         void setVisible(Visible visible) override final;
 
-        void addItem(const int id,
-                     const int type,
-                     const ItemColor color,
-                     const int amount,
-                     const int price);
+        ShopItem *addItem(const int id,
+                          const int type,
+                          const ItemColor color,
+                          const int amount,
+                          const int price);
 
         /**
          * Returns true if any instances exist.

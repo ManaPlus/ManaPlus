@@ -106,9 +106,10 @@ void ShopListBox::draw(Graphics *graphics)
         Color* backgroundColor = &mBackgroundColor;
 
         ShopItem *const item = mShopItems->at(i);
-        if (item && ((mShopItems && mPlayerMoney < item->getPrice()
-            && mPriceCheck)
-            || (mProtectItems && PlayerInfo::isItemProtected(item->getId()))))
+        if (item &&
+            (item->getDisabled() ||
+            (mShopItems && mPlayerMoney < item->getPrice() && mPriceCheck) ||
+            (mProtectItems && PlayerInfo::isItemProtected(item->getId()))))
         {
             if (i != mSelected)
             {
