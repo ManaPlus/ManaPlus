@@ -559,7 +559,12 @@ void CharCreateDialog::setAttributes(const StringVect &labels,
 
     const int w = 480;
     int h = 350;
-    int y = 118 + 29;
+    int y = 89;
+    if (serverFeatures->haveLookSelection() && mMinLook < mMaxLook)
+        y += 29;
+    if (serverFeatures->haveRaceSelection())
+        y += 29;
+
     for (unsigned i = 0, sz = static_cast<unsigned>(labels.size());
          i < sz; i++)
     {
@@ -589,7 +594,8 @@ void CharCreateDialog::setAttributes(const StringVect &labels,
     }
     else
     {
-        h = 290 + mAttributesLeft->getHeight() + getPadding();
+        h = y + labels.size() * 24 +
+            mAttributesLeft->getHeight() + getPadding();
     }
     if (serverFeatures->haveCreateCharGender() && y < 160)
     {
@@ -598,7 +604,6 @@ void CharCreateDialog::setAttributes(const StringVect &labels,
     }
     if (h < mMaxY)
         h = mMaxY;
-
     h += mCreateButton->getHeight();
 
     setContentSize(w, h);
@@ -723,6 +728,7 @@ void CharCreateDialog::keyPressed(KeyEvent &event)
 
 void CharCreateDialog::setButtonsPosition(const int w, const int h)
 {
+    const int h2 = h - 5 - mCancelButton->getHeight();
     if (mainGraphics->getHeight() < 480)
     {
         if (mMaxPoints)
@@ -744,10 +750,10 @@ void CharCreateDialog::setButtonsPosition(const int w, const int h)
     {
         mCancelButton->setPosition(
             w / 2,
-            h - 5 - mCancelButton->getHeight());
+            h2);
         mCreateButton->setPosition(
             mCancelButton->getX() - 5 - mCreateButton->getWidth(),
-            h - 5 - mCancelButton->getHeight());
+            h2);
     }
-    mAttributesLeft->setPosition(15, 260 + 29);
+    mAttributesLeft->setPosition(15, h2 - mAttributesLeft->getHeight());
 }
