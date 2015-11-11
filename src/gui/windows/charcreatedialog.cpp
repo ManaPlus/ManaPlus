@@ -245,14 +245,15 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     mActionButton->setPosition(385, 100);
     mRotateButton->setPosition(415, 100);
 
-    mNameLabel->setPosition(5, 2);
-    mNameField->setDimension(
-            Rect(60, 2, 300, mNameField->getHeight()));
+    mNameLabel->setPosition(mPadding, 2);
+    mNameField->setDimension(Rect(60, 2,
+        300, mNameField->getHeight()));
 
-    const int leftX = 120;
-    const int rightX = 300;
-    const int labelX = 5;
-    const int nameX = 145;
+    const int labelPadding = getOption("labelPadding", 2);
+    const int leftX = 120 + mPadding;
+    const int rightX = 300 + mPadding;
+    const int labelX = mPadding;
+    const int nameX = leftX + mPrevHairColorButton->getWidth() + labelPadding;
     int y = 30;
 
     mPrevHairColorButton->setPosition(leftX, y);
@@ -564,18 +565,19 @@ void CharCreateDialog::setAttributes(const StringVect &labels,
     {
         mAttributeLabel[i] = new Label(this, labels[i]);
         mAttributeLabel[i]->setWidth(70);
-        mAttributeLabel[i]->setPosition(5, y + i * 24);
+        mAttributeLabel[i]->setPosition(mPadding, y + i * 24);
         mAttributeLabel[i]->adjustSize();
         add(mAttributeLabel[i]);
 
         mAttributeSlider[i] = new Slider(this, min, max, 1.0);
-        mAttributeSlider[i]->setDimension(Rect(140, y + i * 24, 150, 12));
+        mAttributeSlider[i]->setDimension(Rect(140 + mPadding, y + i * 24,
+            150, 12));
         mAttributeSlider[i]->setActionEventId("statslider");
         mAttributeSlider[i]->addActionListener(this);
         add(mAttributeSlider[i]);
 
         mAttributeValue[i] = new Label(this, toString(min));
-        mAttributeValue[i]->setPosition(295, y + i * 24);
+        mAttributeValue[i]->setPosition(295 + mPadding, y + i * 24);
         add(mAttributeValue[i]);
     }
 

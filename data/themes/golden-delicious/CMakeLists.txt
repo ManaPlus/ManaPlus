@@ -7,6 +7,7 @@ SET (FILES
     button_pressed.xml
     button.xml
     buy.xml
+    charcreate.xml
     CHANGELOG.txt
     chat.xml
     checkbox.xml
