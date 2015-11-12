@@ -330,6 +330,8 @@ void SkillDialog::loadXmlFile(const std::string &fileName)
                             node, "castingSrcEffectId", -1);
                         skill->castingDstEffectId = XML::getProperty(
                             node, "castingDstEffectId", -1);
+                        skill->useTextParameter = XML::getBoolProperty(
+                            node, "useTextParameter", false);
                         skill->visible = skill->alwaysVisible;
                         model->addSkill(skill);
                         mSkills[id] = skill;

@@ -67,6 +67,7 @@ struct SkillInfo final
     Modifiable modifiable;
     Visible visible;
     Visible alwaysVisible;
+    bool useTextParameter;
 
     SkillInfo();
     A_DELETE_COPY(SkillInfo)

@@ -55,7 +55,8 @@ SkillInfo::SkillInfo() :
     owner(SkillOwner::Player),
     modifiable(Modifiable_false),
     visible(Visible_false),
-    alwaysVisible(Visible_false)
+    alwaysVisible(Visible_false),
+    useTextParameter(false)
 {
     dataMap[0] = new SkillData();
     data = dataMap[0];
