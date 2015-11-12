@@ -50,8 +50,6 @@ class GameHandler notfinal
 
         virtual void disconnect2() const = 0;
 
-        virtual bool canUseMagicBar() const A_WARN_UNUSED = 0;
-
         virtual bool mustPing() const A_WARN_UNUSED = 0;
 
         virtual void mapLoadedEvent() const = 0;

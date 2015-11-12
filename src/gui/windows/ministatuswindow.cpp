@@ -69,8 +69,7 @@ MiniStatusWindow::MiniStatusWindow() :
     mHpBar(createBar(0, 100, 0, ThemeColorId::HP_BAR, ProgressColorId::PROG_HP,
         "hpprogressbar.xml", "hpprogressbar_fill.xml",
         "hp bar", _("health bar"))),
-    mMpBar(gameHandler->canUseMagicBar()
-        ? createBar(0, 100, 0, playerHandler->canUseMagic()
+    mMpBar(createBar(0, 100, 0, playerHandler->canUseMagic()
         ? ThemeColorId::MP_BAR : ThemeColorId::NO_MP_BAR,
         playerHandler->canUseMagic()
         ? ProgressColorId::PROG_MP : ProgressColorId::PROG_NO_MP,
@@ -79,7 +78,7 @@ MiniStatusWindow::MiniStatusWindow() :
         playerHandler->canUseMagic()
         ? "mpprogressbar_fill.xml" : "nompprogressbar_fill.xml",
         // TRANSLATORS: status bar name
-        "mp bar", _("mana bar")) : nullptr),
+        "mp bar", _("mana bar"))),
     mXpBar(createBar(0, 100, 0, ThemeColorId::XP_BAR, ProgressColorId::PROG_EXP,
         "xpprogressbar.xml", "xpprogressbar_fill.xml",
         // TRANSLATORS: status bar name
@@ -120,7 +119,7 @@ MiniStatusWindow::MiniStatusWindow() :
 {
     StatusWindow::updateHPBar(mHpBar);
 
-    if (gameHandler->canUseMagicBar() && statusWindow)
+    if (statusWindow)
         statusWindow->updateMPBar(mMpBar);
 
     const bool job = serverConfig.getValueBool("showJob", true);

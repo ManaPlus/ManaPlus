@@ -42,9 +42,6 @@ class GameHandler notfinal : public Net::GameHandler
 
         virtual void setMap(const std::string &map);
 
-        bool canUseMagicBar() const override final A_WARN_UNUSED
-        { return true; }
-
         void clear() override final;
 
         void initEngines() const override final;

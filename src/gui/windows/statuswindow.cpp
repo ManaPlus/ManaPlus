@@ -128,39 +128,30 @@ StatusWindow::StatusWindow() :
     mXpBar->setColor(getThemeColor(ThemeColorId::XP_BAR),
         getThemeColor(ThemeColorId::XP_BAR_OUTLINE));
 
-    const bool magicBar = gameHandler->canUseMagicBar();
     const bool job = serverConfig.getValueBool("showJob", true);
 
-    if (magicBar)
+    max = PlayerInfo::getAttribute(Attributes::MAX_MP);
+    // TRANSLATORS: status window label
+    mMpLabel = new Label(this, _("MP:"));
+    const bool useMagic = playerHandler->canUseMagic();
+    mMpBar = new ProgressBar(this,
+        max ? static_cast<float>(PlayerInfo::getAttribute(
+        Attributes::MAX_MP)) / static_cast<float>(max)
+        : static_cast<float>(0),
+        80,
+        0,
+        useMagic ? ProgressColorId::PROG_MP : ProgressColorId::PROG_NO_MP,
+        useMagic ? "mpprogressbar.xml" : "nompprogressbar.xml",
+        useMagic ? "mpprogressbar_fill.xml" : "nompprogressbar_fill.xml");
+    if (useMagic)
     {
-        max = PlayerInfo::getAttribute(Attributes::MAX_MP);
-        // TRANSLATORS: status window label
-        mMpLabel = new Label(this, _("MP:"));
-        const bool useMagic = playerHandler->canUseMagic();
-        mMpBar = new ProgressBar(this,
-            max ? static_cast<float>(PlayerInfo::getAttribute(
-            Attributes::MAX_MP)) / static_cast<float>(max)
-            : static_cast<float>(0),
-            80,
-            0,
-            useMagic ? ProgressColorId::PROG_MP : ProgressColorId::PROG_NO_MP,
-            useMagic ? "mpprogressbar.xml" : "nompprogressbar.xml",
-            useMagic ? "mpprogressbar_fill.xml" : "nompprogressbar_fill.xml");
-        if (useMagic)
-        {
-            mMpBar->setColor(getThemeColor(ThemeColorId::MP_BAR),
-                getThemeColor(ThemeColorId::MP_BAR_OUTLINE));
-        }
-        else
-        {
-            mMpBar->setColor(getThemeColor(ThemeColorId::NO_MP_BAR),
-                getThemeColor(ThemeColorId::NO_MP_BAR_OUTLINE));
-        }
+        mMpBar->setColor(getThemeColor(ThemeColorId::MP_BAR),
+            getThemeColor(ThemeColorId::MP_BAR_OUTLINE));
     }
     else
     {
-        mMpLabel = nullptr;
-        mMpBar = nullptr;
+        mMpBar->setColor(getThemeColor(ThemeColorId::NO_MP_BAR),
+            getThemeColor(ThemeColorId::NO_MP_BAR_OUTLINE));
     }
 
     place(0, 0, mLvlLabel, 3);
@@ -168,15 +159,12 @@ StatusWindow::StatusWindow() :
     place(1, 1, mHpBar, 4);
     place(5, 1, mXpLabel).setPadding(3);
     place(6, 1, mXpBar, 5);
-    if (magicBar)
-    {
-        place(0, 2, mMpLabel).setPadding(3);
-        // 5, 2 and 6, 2 Job Progress Bar
-        if (job)
-            place(1, 2, mMpBar, 4);
-        else
-            place(1, 2, mMpBar, 10);
-    }
+    place(0, 2, mMpLabel).setPadding(3);
+    // 5, 2 and 6, 2 Job Progress Bar
+    if (job)
+        place(1, 2, mMpBar, 4);
+    else
+        place(1, 2, mMpBar, 10);
 
     if (job)
     {
@@ -224,8 +212,7 @@ StatusWindow::StatusWindow() :
 
     // Update bars
     updateHPBar(mHpBar, true);
-    if (magicBar)
-        updateMPBar(mMpBar, true);
+    updateMPBar(mMpBar, true);
     updateXPBar(mXpBar, false);
 
     // TRANSLATORS: status window label
