@@ -125,7 +125,6 @@ class StatusWindow final : public Window,
         ScrollArea *mDAttrScroll A_NONNULLPOINTER;
 
         Label *mCharacterPointsLabel A_NONNULLPOINTER;
-        Label *mCorrectionPointsLabel;
         Button *mCopyButton;
 
         typedef std::map<AttributesT, AttrDisplay*> Attrs;

@@ -59,11 +59,6 @@ void PlayerHandler::ignoreAll(const bool ignore A_UNUSED) const
 {
 }
 
-bool PlayerHandler::canCorrectAttributes() const
-{
-    return false;
-}
-
 Vector PlayerHandler::getDefaultWalkSpeed() const
 {
     // Return an normalized speed for any side

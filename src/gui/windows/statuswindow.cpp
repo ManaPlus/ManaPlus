@@ -83,7 +83,6 @@ StatusWindow::StatusWindow() :
     mDAttrCont(new VertContainer(this, 32)),
     mDAttrScroll(new ScrollArea(this, mDAttrCont, false)),
     mCharacterPointsLabel(new Label(this, "C")),
-    mCorrectionPointsLabel(nullptr),
     // TRANSLATORS: status window button
     mCopyButton(new Button(this, _("Copy to chat"), "copy", this)),
     mAttrs()
@@ -219,12 +218,6 @@ StatusWindow::StatusWindow() :
 
     place(0, 6, mCharacterPointsLabel, 5);
     place(0, 5, mCopyButton);
-
-    if (playerHandler->canCorrectAttributes())
-    {
-        mCorrectionPointsLabel = new Label(this, "C");
-        place(0, 7, mCorrectionPointsLabel, 5);
-    }
 
     loadWindowState();
     enableVisibleSound(true);
@@ -368,11 +361,8 @@ void StatusWindow::attributeChanged(const AttributesT id,
             }
             break;
 
+        // ??
         case Attributes::CORR_POINTS:
-            mCorrectionPointsLabel->setCaption(strprintf(
-                // TRANSLATORS: status window label
-                _("Correction points: %d"), newVal));
-            mCorrectionPointsLabel->adjustSize();
             // Update all attributes
             for (Attrs::const_iterator it = mAttrs.begin();
                  it != mAttrs.end(); ++it)
@@ -761,7 +751,6 @@ ChangeDisplay::ChangeDisplay(const Widget2 *const widget,
     mNeeded(1),
     // TRANSLATORS: status window label
     mPoints(new Label(this, _("Max"))),
-    mDec(nullptr),
     // TRANSLATORS: status window label (plus sign)
     mInc(new Button(this, _("+"), "inc", this))
 {
@@ -772,15 +761,6 @@ ChangeDisplay::ChangeDisplay(const Widget2 *const widget,
     place(4, 0, mValue, 2);
     place(6, 0, mInc);
     place(7, 0, mPoints);
-
-    if (playerHandler->canCorrectAttributes())
-    {
-        // TRANSLATORS: status window label (minus sign)
-        mDec = new Button(this, _("-"), "dec", this);
-        mDec->setWidth(mInc->getWidth());
-
-        place(3, 0, mDec);
-    }
 }
 
 std::string ChangeDisplay::update()
@@ -794,9 +774,6 @@ std::string ChangeDisplay::update()
         // TRANSLATORS: status bar label
         mPoints->setCaption(_("Max"));
     }
-
-    if (mDec)
-        mDec->setEnabled(PlayerInfo::getAttribute(Attributes::CORR_POINTS));
 
     mInc->setEnabled(PlayerInfo::getAttribute(Attributes::CHAR_POINTS)
         >= mNeeded && mNeeded > 0);
@@ -812,23 +789,7 @@ void ChangeDisplay::setPointsNeeded(const int needed)
 
 void ChangeDisplay::action(const ActionEvent &event)
 {
-    if (playerHandler->canCorrectAttributes() &&
-        event.getSource() == mDec)
-    {
-        const int newcorrpoints = PlayerInfo::getAttribute(
-            Attributes::CORR_POINTS);
-        PlayerInfo::setAttribute(Attributes::CORR_POINTS, newcorrpoints - 1);
-
-        const int newpoints = PlayerInfo::getAttribute(
-            Attributes::CHAR_POINTS) + 1;
-        PlayerInfo::setAttribute(Attributes::CHAR_POINTS, newpoints);
-
-        const int newbase = PlayerInfo::getStatBase(mId) - 1;
-        PlayerInfo::setStatBase(mId, newbase);
-
-        playerHandler->decreaseAttribute(mId);
-    }
-    else if (event.getSource() == mInc)
+    if (event.getSource() == mInc)
     {
         int cnt = 1;
         if (config.getBoolValue("quickStats"))

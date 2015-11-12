@@ -73,8 +73,6 @@ class PlayerHandler notfinal
 
         virtual bool canUseMagic() const = 0;
 
-        virtual bool canCorrectAttributes() const = 0;
-
         virtual Vector getDefaultWalkSpeed() const A_WARN_UNUSED = 0;
 
         virtual void requestOnlineList() const = 0;
