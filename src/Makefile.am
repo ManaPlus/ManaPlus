@@ -1039,6 +1039,8 @@ manaplus_SOURCES += main.cpp \
 	      listeners/renamelistener.cpp \
 	      listeners/renamelistener.h \
 	      listeners/requesttradelistener.h \
+	      listeners/textskilllistener.cpp \
+	      listeners/textskilllistener.h \
 	      particle/rotationalparticle.cpp \
 	      particle/rotationalparticle.h \
 	      navigationmanager.cpp \

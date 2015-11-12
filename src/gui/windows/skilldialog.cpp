@@ -40,6 +40,10 @@
 
 #include "gui/widgets/tabs/skilltab.h"
 
+#include "gui/windows/textdialog.h"
+
+#include "listeners/textskilllistener.h"
+
 #include "net/playerhandler.h"
 #include "net/skillhandler.h"
 
@@ -52,6 +56,11 @@
 #include "debug.h"
 
 SkillDialog *skillDialog = nullptr;
+
+namespace
+{
+    TextSkillListener textSkillListener;
+}  // namespace
 
 static SkillOwner::Type parseOwner(const std::string &str)
 {
@@ -687,7 +696,9 @@ void SkillDialog::useSkill(const SkillInfo *const info,
 {
     if (!info || !localPlayer)
         return;
-    const SkillData *const data = info->data;
+    const SkillData *data = info->data;
+    if (!data)
+        data = info->getData1(info->level);
     if (data)
     {
         const std::string cmd = data->invokeCmd;
@@ -733,9 +744,29 @@ void SkillDialog::useSkill(const SkillInfo *const info,
                 int x = 0;
                 int y = 0;
                 viewport->getMouseTile(x, y);
-                skillHandler->usePos(info->id,
-                    info->level,
-                    x, y);
+                if (info->useTextParameter)
+                {
+                    textSkillListener.setSkill(info->id,
+                        x,
+                        y,
+                        info->level);
+                    TextDialog *const dialog = CREATEWIDGETR(TextDialog,
+                        // TRANSLATORS: text skill dialog header
+                        strprintf(_("Add text to skill %s"),
+                        data->name.c_str()),
+                        // TRANSLATORS: text skill dialog field
+                        _("Text: "));
+                    dialog->setModal(Modal_true);
+                    textSkillListener.setDialog(dialog);
+                    dialog->setActionEventId("ok");
+                    dialog->addActionListener(&textSkillListener);
+                }
+                else
+                {
+                    skillHandler->usePos(info->id,
+                        info->level,
+                        x, y);
+                }
                 break;
             }
 
