@@ -414,7 +414,7 @@ void Being::setSubtype(const BeingTypeId subtype,
         {
             setName(mInfo->getName());
             setupSpriteDisplay(mInfo->getDisplay(),
-                ForceDisplay_true,
+                ForceDisplay_false,
                 0,
                 mInfo->getColor(fromInt(mLook, ItemColor)));
             mYDiff = mInfo->getSortOffsetY();

@@ -34,7 +34,6 @@ namespace EAthena
     {
         void processItemDropped(Net::MessageIn &msg);
         void processItemDropped2(Net::MessageIn &msg);
-        void processGraffiti(Net::MessageIn &msg);
         void processItemMvpDropped(Net::MessageIn &msg);
         void processItemVisible(Net::MessageIn &msg);
         void processItemVisible2(Net::MessageIn &msg);

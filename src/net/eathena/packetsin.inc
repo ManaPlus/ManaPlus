@@ -148,7 +148,7 @@ packet(SMSG_FRIENDS_REQUEST_ACK,           0x0209,  36, &FriendsRecv::processReq
 packet(SMSG_GLADIATOR_FEEL_REQUEST,        0x0253,   3, &BeingRecv::processGladiatorFeelRequest);
 packet(SMSG_GM_CHAT,                       0x009a,  -1, &ChatRecv::processGmChat);
 packet(SMSG_GM_CHAT2,                      0x01c3,  -1, &ChatRecv::processGmChat2);
-packet(SMSG_GRAFFITI_VISIBLE,              0x01c9,  97, &ItemRecv::processGraffiti);
+packet(SMSG_GRAFFITI_VISIBLE,              0x01c9,  97, &BeingRecv::processGraffiti);
 packet(SMSG_GUILD_ALIANCE_INFO,            0x014c,  -1, &Ea::GuildRecv::processGuildAlianceInfo);
 packet(SMSG_GUILD_ALLIANCE_ADDED_DISABLED, 0x0185,  34, nullptr);
 packet(SMSG_GUILD_BASIC_INFO,              0x01b6, 114, &Ea::GuildRecv::processGuildBasicInfo);

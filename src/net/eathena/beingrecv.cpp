@@ -1716,6 +1716,27 @@ void BeingRecv::processSolveCharName(Net::MessageIn &msg)
         actorManager->addChar(id, name);
 }
 
+void BeingRecv::processGraffiti(Net::MessageIn &msg)
+{
+    const BeingId id = msg.readBeingId("graffiti id");
+    msg.readBeingId("creator id");
+    const int x = msg.readInt16("x");
+    const int y = msg.readInt16("y");
+    const int job = msg.readUInt8("job");
+    msg.readUInt8("visible");
+    msg.readUInt8("is content");
+    const std::string text = msg.readString(80, "text");
+
+    Being *const dstBeing = createBeing2(msg, id, job, BeingType::SKILL);
+    if (!dstBeing)
+        return;
+
+    dstBeing->setAction(BeingAction::STAND, 0);
+    dstBeing->setTileCoords(x, y);
+    dstBeing->setShowName(true);
+    dstBeing->setName(text);
+}
+
 void BeingRecv::applyPlayerAction(Net::MessageIn &msg,
                                   Being *const being,
                                   const uint8_t type)

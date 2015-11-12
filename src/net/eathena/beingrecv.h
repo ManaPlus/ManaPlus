@@ -111,6 +111,7 @@ namespace EAthena
         void processNameResponse2(Net::MessageIn &msg);
         void processSkillCancel(Net::MessageIn &msg);
         void processSolveCharName(Net::MessageIn &msg);
+        void processGraffiti(Net::MessageIn &msg);
         Being *createBeing2(Net::MessageIn &msg,
                             const BeingId id,
                             const int16_t job,

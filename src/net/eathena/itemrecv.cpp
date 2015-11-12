@@ -96,19 +96,6 @@ void ItemRecv::processItemDropped2(Net::MessageIn &msg)
     }
 }
 
-void ItemRecv::processGraffiti(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    msg.readInt32("graffiti id");
-    msg.readInt32("creator id");
-    msg.readInt16("x");
-    msg.readInt16("y");
-    msg.readUInt8("job");
-    msg.readUInt8("visible");
-    msg.readUInt8("is content");
-    msg.readString(80, "text");
-}
-
 void ItemRecv::processItemMvpDropped(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
