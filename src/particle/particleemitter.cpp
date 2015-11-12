@@ -483,14 +483,13 @@ ParticleEmitter::readParticleEmitterProp(XmlNodePtrConst propertyNode, T def)
     return retval;
 }
 
-std::list<Particle *> ParticleEmitter::createParticles(const int tick)
+void ParticleEmitter::createParticles(const int tick,
+                                      std::vector<Particle*> &newParticles)
 {
-    std::list<Particle *> newParticles;
-
     if (mOutputPauseLeft > 0)
     {
         mOutputPauseLeft --;
-        return newParticles;
+        return;
     }
     mOutputPauseLeft = mOutputPause.value(tick);
 
@@ -574,8 +573,6 @@ std::list<Particle *> ParticleEmitter::createParticles(const int tick)
 
         newParticles.push_back(newParticle);
     }
-
-    return newParticles;
 }
 
 void ParticleEmitter::adjustSize(const int w, const int h)

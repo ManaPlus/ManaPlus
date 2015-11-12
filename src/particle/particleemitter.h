@@ -66,9 +66,9 @@ class ParticleEmitter final
 
         /**
          * Spawns new particles
-         * @return: a list of created particles
          */
-        std::list<Particle *> createParticles(const int tick);
+        void createParticles(const int tick,
+                             std::vector<Particle*> &newParticles);
 
         /**
          * Sets the target of the particles that are created

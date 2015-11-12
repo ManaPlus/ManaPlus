@@ -203,8 +203,11 @@ bool Particle::update()
         {
             FOR_EACH (EmitterConstIterator, e, mChildEmitters)
             {
-                Particles newParticles = (*e)->createParticles(mLifetimePast);
-                FOR_EACH (ParticleConstIterator, it, newParticles)
+                std::vector<Particle*> newParticles;
+                (*e)->createParticles(mLifetimePast, newParticles);
+                FOR_EACH (std::vector<Particle*>::const_iterator,
+                          it,
+                          newParticles)
                 {
                     Particle *const p = *it;
                     p->moveBy(mPos);
