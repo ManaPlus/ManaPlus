@@ -633,6 +633,7 @@ DefaultsData* getFeaturesDefaults()
     AddDEF("allowFollow", true);
     AddDEF("fixDeadAnimation", true);
     AddDEF("forceAccountGender", -1);
+    AddDEF("forceCharGender", -1);
     return configData;
 }
 

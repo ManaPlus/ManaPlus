@@ -215,28 +215,37 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
 
     if (serverFeatures->haveCreateCharGender())
     {
-        const int size = config.getIntValue("fontSize");
-        mGenderStrip = new TabStrip(this,
-            "gender_" + getWindowName(),
-            size + 16);
-        mGenderStrip->setPressFirst(false);
-        mGenderStrip->addActionListener(this);
-        mGenderStrip->setActionEventId("gender_");
-        // TRANSLATORS: one char size female character gender
-        mGenderStrip->addButton(_("F"), "f", false);
-        // TRANSLATORS: one char size male character gender
-        mGenderStrip->addButton(_("M"), "m", false);
-        if (features.getIntValue("forceAccountGender") == -1)
+        const int forceGender = features.getIntValue("forceCharGender");
+        if (forceGender == -1)
         {
-            // TRANSLATORS: one char size unknown character gender
-            mGenderStrip->addButton(_("U"), "u", true);
-        }
-        mGenderStrip->setVisible(Visible_true);
-        add(mGenderStrip);
+            const int size = config.getIntValue("fontSize");
+            mGenderStrip = new TabStrip(this,
+                "gender_" + getWindowName(),
+                size + 16);
+            mGenderStrip->setPressFirst(false);
+            mGenderStrip->addActionListener(this);
+            mGenderStrip->setActionEventId("gender_");
+            // TRANSLATORS: one char size female character gender
+            mGenderStrip->addButton(_("F"), "f", false);
+            // TRANSLATORS: one char size male character gender
+            mGenderStrip->addButton(_("M"), "m", false);
+            if (features.getIntValue("forceAccountGender") == -1)
+            {
+                // TRANSLATORS: one char size unknown character gender
+                mGenderStrip->addButton(_("U"), "u", true);
+            }
+            mGenderStrip->setVisible(Visible_true);
+            add(mGenderStrip);
 
-        mGenderStrip->setPosition(385, 130);
-        mGenderStrip->setWidth(500);
-        mGenderStrip->setHeight(50);
+            mGenderStrip->setPosition(385, 130);
+            mGenderStrip->setWidth(500);
+            mGenderStrip->setHeight(50);
+        }
+        else
+        {
+            mGender = Being::intToGender(forceGender);
+            mPlayer->setGender(mGender);
+        }
     }
 
     mPlayerBox->setWidth(74);
@@ -600,7 +609,9 @@ void CharCreateDialog::setAttributes(const StringVect &labels,
         h = y + labels.size() * 24 +
             mAttributesLeft->getHeight() + getPadding();
     }
-    if (serverFeatures->haveCreateCharGender() && y < 160)
+    if (serverFeatures->haveCreateCharGender() &&
+        features.getIntValue("forceCharGender") == -1 &&
+        y < 160)
     {
         if (h < 160)
             h = 160;
@@ -615,6 +626,9 @@ void CharCreateDialog::setAttributes(const StringVect &labels,
 
 void CharCreateDialog::setDefaultGender(const GenderT gender)
 {
+    if (features.getIntValue("forceCharGender") != -1)
+        return;
+
     mDefaultGender = gender;
     mPlayer->setGender(gender);
 }
