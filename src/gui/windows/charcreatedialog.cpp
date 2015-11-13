@@ -226,8 +226,11 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
         mGenderStrip->addButton(_("F"), "f", false);
         // TRANSLATORS: one char size male character gender
         mGenderStrip->addButton(_("M"), "m", false);
-        // TRANSLATORS: one char size unknown character gender
-        mGenderStrip->addButton(_("U"), "u", true);
+        if (features.getIntValue("forceAccountGender") == -1)
+        {
+            // TRANSLATORS: one char size unknown character gender
+            mGenderStrip->addButton(_("U"), "u", true);
+        }
         mGenderStrip->setVisible(Visible_true);
         add(mGenderStrip);
 

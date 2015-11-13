@@ -632,6 +632,7 @@ DefaultsData* getFeaturesDefaults()
     AddDEF("languageTab", false);
     AddDEF("allowFollow", true);
     AddDEF("fixDeadAnimation", true);
+    AddDEF("forceAccountGender", -1);
     return configData;
 }
 

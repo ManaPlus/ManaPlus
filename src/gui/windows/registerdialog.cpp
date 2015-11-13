@@ -23,6 +23,9 @@
 #include "gui/windows/registerdialog.h"
 
 #include "client.h"
+#include "configuration.h"
+
+#include "being/being.h"
 
 #include "gui/windows/okdialog.h"
 
@@ -85,8 +88,7 @@ RegisterDialog::RegisterDialog(LoginData &data) :
 
     int row = 3;
 
-    // for future usage flag
-    if (true)
+    if (features.getIntValue("forceAccountGender") == -1)
     {
         // TRANSLATORS: register dialog. button.
         mMaleButton = new RadioButton(this, _("Male"), "sex", true);
@@ -265,12 +267,20 @@ void RegisterDialog::action(const ActionEvent &event)
             mRegisterButton->setEnabled(false);
             mLoginData->username = mUserField->getText();
             mLoginData->password = mPasswordField->getText();
-            if (mFemaleButton && mFemaleButton->isSelected())
-                mLoginData->gender = Gender::FEMALE;
-            else if (mOtherButton && mOtherButton->isSelected())
-                mLoginData->gender = Gender::OTHER;
+            if (features.getIntValue("forceAccountGender") == -1)
+            {
+                if (mFemaleButton && mFemaleButton->isSelected())
+                    mLoginData->gender = Gender::FEMALE;
+                else if (mOtherButton && mOtherButton->isSelected())
+                    mLoginData->gender = Gender::OTHER;
+                else
+                    mLoginData->gender = Gender::MALE;
+            }
             else
-                mLoginData->gender = Gender::MALE;
+            {
+                mLoginData->gender = Being::intToGender(
+                    features.getIntValue("forceAccountGender"));
+            }
 
             if (mEmailField)
                 mLoginData->email = mEmailField->getText();
