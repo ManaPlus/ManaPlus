@@ -37,6 +37,7 @@
 
 #include "gui/popups/itempopup.h"
 #include "gui/popups/popupmenu.h"
+#include "gui/popups/skillpopup.h"
 #include "gui/popups/spellpopup.h"
 
 #include "gui/windows/inventorywindow.h"
@@ -547,6 +548,7 @@ void ItemShortcutContainer::mouseMoved(MouseEvent &event)
 
     if (itemId < SPELL_MIN_ID)
     {
+        skillPopup->setVisible(Visible_false);
         spellPopup->setVisible(Visible_false);
 
         Inventory *const inv = PlayerInfo::getInventory();
@@ -566,6 +568,7 @@ void ItemShortcutContainer::mouseMoved(MouseEvent &event)
     }
     else if (itemId < SKILL_MIN_ID && spellManager)
     {
+        skillPopup->setVisible(Visible_false);
         itemPopup->setVisible(Visible_false);
         const TextCommand *const spell = spellManager->getSpellByItem(itemId);
         if (spell && viewport)
@@ -581,6 +584,13 @@ void ItemShortcutContainer::mouseMoved(MouseEvent &event)
     else if (skillDialog)
     {
         itemPopup->setVisible(Visible_false);
+        spellPopup->setVisible(Visible_false);
+        const SkillInfo *const skill = skillDialog->getSkillByItem(itemId);
+        if (!skill)
+            return;
+
+        skillPopup->show(skill);
+        skillPopup->position(viewport->mMouseX, viewport->mMouseY);
     }
 }
 
@@ -591,6 +601,8 @@ void ItemShortcutContainer::mouseExited(MouseEvent &event A_UNUSED)
         itemPopup->setVisible(Visible_false);
     if (spellPopup)
         spellPopup->setVisible(Visible_false);
+    if (skillPopup)
+        skillPopup->setVisible(Visible_false);
 }
 
 void ItemShortcutContainer::widgetHidden(const Event &event A_UNUSED)
