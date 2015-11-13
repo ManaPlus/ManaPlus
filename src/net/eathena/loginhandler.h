@@ -54,8 +54,6 @@ class LoginHandler final : public Ea::LoginHandler
 
         ServerInfo *getCharServer() const override final A_WARN_UNUSED;
 
-        int supportedOptionalActions() const override final A_WARN_UNUSED;
-
         void ping() const override final;
 
     private:

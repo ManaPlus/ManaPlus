@@ -46,11 +46,6 @@ class LoginHandler notfinal
 
         virtual void disconnect() = 0;
 
-        /**
-         * @see OptionalAction
-         */
-        virtual int supportedOptionalActions() const A_WARN_UNUSED = 0;
-
         virtual bool isRegistrationEnabled() const A_WARN_UNUSED = 0;
 
         virtual void getRegistrationDetails() const = 0;

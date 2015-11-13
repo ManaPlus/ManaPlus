@@ -130,14 +130,6 @@ void LoginHandler::sendVersion() const
     generalHandler->flushSend();
 }
 
-int LoginHandler::supportedOptionalActions() const
-{
-    return serverFeatures->haveEmailOnRegister()
-        ? Net::RegistrationOptions::SetEmailOnRegister
-        | Net::RegistrationOptions::SetGenderOnRegister
-        : Net::RegistrationOptions::SetGenderOnRegister;
-}
-
 void LoginHandler::ping() const
 {
     createOutPacket(CMSG_LOGIN_PING);

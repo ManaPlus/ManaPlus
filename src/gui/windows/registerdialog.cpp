@@ -38,7 +38,6 @@
 
 #include "net/logindata.h"
 #include "net/loginhandler.h"
-#include "net/registrationoptions.h"
 #include "net/serverfeatures.h"
 
 #include "utils/delete2.h"
@@ -67,9 +66,6 @@ RegisterDialog::RegisterDialog(LoginData &data) :
 {
     setCloseButton(true);
 
-    const int optionalActions = loginHandler->
-        supportedOptionalActions();
-
     // TRANSLATORS: register dialog. label.
     Label *const userLabel = new Label(this, _("Name:"));
     // TRANSLATORS: register dialog. label.
@@ -89,7 +85,8 @@ RegisterDialog::RegisterDialog(LoginData &data) :
 
     int row = 3;
 
-    if (optionalActions & Net::RegistrationOptions::SetGenderOnRegister)
+    // for future usage flag
+    if (true)
     {
         // TRANSLATORS: register dialog. button.
         mMaleButton = new RadioButton(this, _("Male"), "sex", true);
@@ -112,7 +109,7 @@ RegisterDialog::RegisterDialog(LoginData &data) :
         row++;
     }
 
-    if (optionalActions & Net::RegistrationOptions::SetEmailOnRegister)
+    if (serverFeatures->haveEmailOnRegister())
     {
         // TRANSLATORS: register dialog. label.
         Label *const emailLabel = new Label(this, _("Email:"));

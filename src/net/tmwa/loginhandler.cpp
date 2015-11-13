@@ -125,11 +125,6 @@ void LoginHandler::requestUpdateHosts()
 {
 }
 
-int LoginHandler::supportedOptionalActions() const
-{
-    return Net::RegistrationOptions::SetGenderOnRegister;
-}
-
 void LoginHandler::sendVersion() const
 {
 }

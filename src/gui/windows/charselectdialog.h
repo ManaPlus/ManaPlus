@@ -118,8 +118,6 @@ class CharSelectDialog final : public Window,
 
         Button *mSwitchLoginButton A_NONNULLPOINTER;
         Button *mChangePasswordButton A_NONNULLPOINTER;
-        Button *mUnregisterButton;
-        Button *mChangeEmailButton;
         Button *mPlayButton A_NONNULLPOINTER;
         Button *mInfoButton A_NONNULLPOINTER;
         Button *mDeleteButton A_NONNULLPOINTER;

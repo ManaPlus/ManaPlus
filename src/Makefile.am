@@ -1200,7 +1200,6 @@ manaplus_SOURCES += main.cpp \
 	      net/playerhandler.h \
 	      net/questhandler.h \
 	      net/recvpacketdefine.h \
-	      net/registrationoptions.h \
 	      net/serverfeatures.h \
 	      net/serverinfo.h \
 	      net/skillhandler.h \

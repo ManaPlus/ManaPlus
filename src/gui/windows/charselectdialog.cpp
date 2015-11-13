@@ -49,7 +49,6 @@
 #include "net/charserverhandler.h"
 #include "net/logindata.h"
 #include "net/loginhandler.h"
-#include "net/registrationoptions.h"
 #include "net/serverfeatures.h"
 
 #include "debug.h"
@@ -72,8 +71,6 @@ CharSelectDialog::CharSelectDialog(LoginData &data) :
     // TRANSLATORS: char select dialog. button.
     mChangePasswordButton(new Button(this, _("Password"),
                           "change_password", this)),
-    mUnregisterButton(nullptr),
-    mChangeEmailButton(nullptr),
     // TRANSLATORS: char select dialog. button.
     mPlayButton(new Button(this, _("Play"), "use", this)),
     // TRANSLATORS: char select dialog. button.
@@ -94,35 +91,14 @@ CharSelectDialog::CharSelectDialog(LoginData &data) :
     setCloseButton(true);
     setFocusable(true);
 
-    const int optionalActions = loginHandler->supportedOptionalActions();
-
     ContainerPlacer placer;
     placer = getPlacer(0, 0);
 
     placer(0, 0, mSwitchLoginButton);
 
     int n = 1;
-    if (optionalActions & Net::RegistrationOptions::Unregister)
-    {
-        // TRANSLATORS: char select dialog. button.
-        mUnregisterButton = new Button(this, _("Unregister"),
-                                       "unregister", this);
-        placer(n, 0, mUnregisterButton);
-        n ++;
-    }
-
     placer(n, 0, mChangePasswordButton);
     n ++;
-
-    if (optionalActions & Net::RegistrationOptions::ChangeEmail)
-    {
-        // TRANSLATORS: char select dialog. button.
-        mChangeEmailButton = new Button(this, _("Change Email"),
-                                        "change_email", this);
-        placer(n, 0, mChangeEmailButton);
-        n ++;
-    }
-
     placer(n, 0, mDeleteButton);
     n ++;
     if (serverFeatures->haveCharRename())
@@ -555,10 +531,6 @@ void CharSelectDialog::setLocked(const bool locked)
         mSwitchLoginButton->setEnabled(!locked);
     if (mChangePasswordButton)
         mChangePasswordButton->setEnabled(!locked);
-    if (mUnregisterButton)
-        mUnregisterButton->setEnabled(!locked);
-    if (mChangeEmailButton)
-        mChangeEmailButton->setEnabled(!locked);
     mPlayButton->setEnabled(!locked);
     if (mDeleteButton)
         mDeleteButton->setEnabled(!locked);

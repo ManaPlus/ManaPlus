@@ -25,8 +25,6 @@
 
 #include "net/loginhandler.h"
 
-#include "net/registrationoptions.h"
-
 class LoginData;
 
 struct Token;
@@ -40,9 +38,6 @@ class LoginHandler notfinal : public Net::LoginHandler
         A_DELETE_COPY(LoginHandler)
 
         virtual ~LoginHandler();
-
-        int supportedOptionalActions() const override A_WARN_UNUSED
-        { return Net::RegistrationOptions::SetGenderOnRegister; }
 
         bool isRegistrationEnabled() const override final A_WARN_UNUSED;
 
