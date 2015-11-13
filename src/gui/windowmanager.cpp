@@ -38,6 +38,7 @@
 #include "gui/popups/beingpopup.h"
 #include "gui/popups/itempopup.h"
 #include "gui/popups/popupmenu.h"
+#include "gui/popups/skillpopup.h"
 #include "gui/popups/spellpopup.h"
 #include "gui/popups/textboxpopup.h"
 
@@ -107,6 +108,7 @@ void WindowManager::createWindows()
     CREATEWIDGETV0(textBoxPopup, TextBoxPopup);
     CREATEWIDGETV0(itemPopup, ItemPopup);
     CREATEWIDGETV0(spellPopup, SpellPopup);
+    CREATEWIDGETV0(skillPopup, SkillPopup);
 #endif
     CREATEWIDGETV0(textPopup, TextPopup);
 }
@@ -118,6 +120,7 @@ void WindowManager::deleteWindows()
     delete2(beingPopup);
     delete2(itemPopup);
     delete2(spellPopup);
+    delete2(skillPopup);
     delete2(popupMenu);
     delete2(didYouKnowWindow);
     delete2(helpWindow);

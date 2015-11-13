@@ -52,7 +52,6 @@ class SkillListBox final : public ListBox
                      SkillModel *const model) :
             ListBox(widget, model, "skilllistbox.xml"),
             mModel(model),
-            mPopup(CREATEWIDGETR0(SkillPopup)),
             mTextColor(getThemeColor(ThemeColorId::TEXT)),
             mTextColor2(getThemeColor(ThemeColorId::TEXT_OUTLINE)),
             mCooldownColor(getThemeColor(ThemeColorId::SKILL_COOLDOWN)),
@@ -72,7 +71,6 @@ class SkillListBox final : public ListBox
         ~SkillListBox()
         {
             delete2(mModel)
-            delete2(mPopup)
         }
 
         SkillInfo *getSelectedInfo() const
@@ -197,8 +195,8 @@ class SkillListBox final : public ListBox
                 return;
 
             const SkillInfo *const skill = getSkillByEvent(event);
-            mPopup->show(skill);
-            mPopup->position(viewport->mMouseX, viewport->mMouseY);
+            skillPopup->show(skill);
+            skillPopup->position(viewport->mMouseX, viewport->mMouseY);
         }
 
         void mouseDragged(MouseEvent &event) override final
@@ -245,12 +243,11 @@ class SkillListBox final : public ListBox
 
         void mouseExited(MouseEvent &event A_UNUSED) override final
         {
-            mPopup->hide();
+            skillPopup->hide();
         }
 
     private:
         SkillModel *mModel;
-        SkillPopup *mPopup;
         Color mTextColor;
         Color mTextColor2;
         Color mCooldownColor;
