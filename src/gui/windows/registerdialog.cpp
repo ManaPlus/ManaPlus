@@ -227,18 +227,14 @@ void RegisterDialog::action(const ActionEvent &event)
         else if (mEmailField &&
                  mEmailField->getText().find("@") == std::string::npos)
         {
-            errorMsg = strprintf
-                // TRANSLATORS: error message
-                (_("Incorrect email."),
-                 minUser);
+            // TRANSLATORS: error message
+            errorMsg = _("Incorrect email.");
             error = 1;
         }
         else if (mEmailField && mEmailField->getText().size() > 40)
         {
-            errorMsg = strprintf
-                // TRANSLATORS: error message
-                (_("Email too long."),
-                 minUser);
+            // TRANSLATORS: error message
+            errorMsg = _("Email too long.");
             error = 1;
         }
 
