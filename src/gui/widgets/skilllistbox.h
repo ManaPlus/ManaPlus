@@ -195,6 +195,8 @@ class SkillListBox final : public ListBox
                 return;
 
             const SkillInfo *const skill = getSkillByEvent(event);
+            if (!skill)
+                return;
             skillPopup->show(skill);
             skillPopup->position(viewport->mMouseX, viewport->mMouseY);
         }
