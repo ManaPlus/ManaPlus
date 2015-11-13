@@ -119,6 +119,9 @@ RegisterDialog::RegisterDialog(LoginData &data) :
         mEmailField = new TextField(this);
         placer(0, row, emailLabel);
         placer(1, row, mEmailField, 3).setPadding(2);
+        mEmailField->addKeyListener(this);
+        mEmailField->setActionEventId("register");
+        mEmailField->addActionListener(this);
 //        row++;
     }
 
@@ -221,6 +224,23 @@ void RegisterDialog::action(const ActionEvent &event)
             errorMsg = _("Passwords do not match.");
             error = 2;
         }
+        else if (mEmailField &&
+                 mEmailField->getText().find("@") == std::string::npos)
+        {
+            errorMsg = strprintf
+                // TRANSLATORS: error message
+                (_("Incorrect email."),
+                 minUser);
+            error = 1;
+        }
+        else if (mEmailField && mEmailField->getText().size() > 40)
+        {
+            errorMsg = strprintf
+                // TRANSLATORS: error message
+                (_("Email too long."),
+                 minUser);
+            error = 1;
+        }
 
         if (error > 0)
         {
@@ -296,7 +316,8 @@ bool RegisterDialog::canSubmit() const
     return !mUserField->getText().empty() &&
            !mPasswordField->getText().empty() &&
            !mConfirmField->getText().empty() &&
-           client->getState() == STATE_REGISTER;
+           client->getState() == STATE_REGISTER &&
+           (!mEmailField || !mEmailField->getText().empty());
 }
 
 void RegisterDialog::close()
