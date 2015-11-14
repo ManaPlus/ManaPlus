@@ -61,7 +61,7 @@ class ServerFeatures notfinal
 
         virtual bool haveItemColors() const = 0;
 
-        virtual bool haveOtherGender() const = 0;
+        virtual bool haveAccountOtherGender() const = 0;
 
         virtual bool haveMonsterAttackRange() const = 0;
 

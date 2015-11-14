@@ -109,7 +109,7 @@ bool ServerFeatures::haveItemColors() const
     return false;
 }
 
-bool ServerFeatures::haveOtherGender() const
+bool ServerFeatures::haveAccountOtherGender() const
 {
     return false;
 }

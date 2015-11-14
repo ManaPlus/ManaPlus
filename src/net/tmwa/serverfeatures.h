@@ -64,7 +64,7 @@ class ServerFeatures final : public Net::ServerFeatures
 
         bool haveItemColors() const override final;
 
-        bool haveOtherGender() const override final;
+        bool haveAccountOtherGender() const override final;
 
         bool haveMonsterAttackRange() const override final;
 

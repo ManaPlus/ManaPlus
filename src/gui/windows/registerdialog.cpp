@@ -94,7 +94,7 @@ RegisterDialog::RegisterDialog(LoginData &data) :
         mMaleButton = new RadioButton(this, _("Male"), "sex", true);
         // TRANSLATORS: register dialog. button.
         mFemaleButton = new RadioButton(this, _("Female"), "sex", false);
-        if (serverFeatures->haveOtherGender())
+        if (serverFeatures->haveAccountOtherGender())
         {
             // TRANSLATORS: register dialog. button.
             mOtherButton = new RadioButton(this, _("Other"), "sex", false);
