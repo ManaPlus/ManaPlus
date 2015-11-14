@@ -1358,6 +1358,7 @@ std::string Being::getAttackAction(const Attack *const attack1) const
 
 getSpriteAction(Dead, DEAD)
 getSpriteAction(Spawn, SPAWN)
+getSpriteAction(Cast, CAST)
 
 std::string Being::getStandAction() const
 {
@@ -1441,6 +1442,9 @@ void Being::setAction(const BeingActionT &action, const int attackId)
                     }
                 }
             }
+            break;
+        case BeingAction::CAST:
+            currentAction = getCastAction();
             break;
         case BeingAction::HURT:
             if (mInfo)

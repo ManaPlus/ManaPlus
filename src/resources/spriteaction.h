@@ -44,6 +44,7 @@ namespace SpriteAction
     static const std::string MOVE("walk");
     static const std::string ATTACK("attack");
     static const std::string SPAWN("spawn");
+    static const std::string CAST("cast");
 
     static const std::string FLY("fly");
     static const std::string SWIM("swim");
@@ -57,6 +58,9 @@ namespace SpriteAction
     static const std::string ATTACKSKY("attacksky");
     static const std::string ATTACKWATER("attackwater");
     static const std::string ATTACKRIDE("attackride");
+    static const std::string CASTSKY("castsky");
+    static const std::string CASTWATER("castwater");
+    static const std::string CASTRIDE("castride");
     static const std::string SPAWNSKY("spawnsky");
     static const std::string SPAWNWATER("spawnwater");
     static const std::string SPAWNRIDE("spawnride");

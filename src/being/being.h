@@ -597,6 +597,8 @@ class Being notfinal : public ActorSprite,
          */
         std::string getSitAction() const A_WARN_UNUSED;
 
+        std::string getCastAction() const A_WARN_UNUSED;
+
         std::string getMoveAction() const A_WARN_UNUSED;
 
         std::string getDeadAction() const A_WARN_UNUSED;

@@ -30,6 +30,7 @@ enumStart(BeingAction)
     STAND = 0,
     MOVE,
     ATTACK,
+    CAST,
     SIT,
     DEAD,
     HURT,

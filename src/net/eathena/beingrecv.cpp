@@ -758,8 +758,6 @@ void BeingRecv::processMapType(Net::MessageIn &msg)
 
 void BeingRecv::processSkillCasting(Net::MessageIn &msg)
 {
-    // +++ need use other parameters
-
     const BeingId srcId = msg.readBeingId("src id");
     const BeingId dstId = msg.readBeingId("dst id");
     const int dstX = msg.readInt16("dst x");
@@ -781,11 +779,16 @@ void BeingRecv::processSkillCasting(Net::MessageIn &msg)
     {   // being to being
         Being *const srcBeing = actorManager->findBeing(srcId);
         Being *const dstBeing = actorManager->findBeing(dstId);
+        if (srcBeing)
+            srcBeing->setAction(BeingAction::CAST, skillId);
         skillDialog->playCastingSrcEffect(skillId, srcBeing);
         skillDialog->playCastingDstEffect(skillId, dstBeing);
     }
     else if (dstX != 0 || dstY != 0)
     {   // being to position
+        Being *const srcBeing = actorManager->findBeing(srcId);
+        if (srcBeing)
+            srcBeing->setAction(BeingAction::CAST, skillId);
         skillDialog->playCastingDstTileEffect(skillId,
             dstX, dstY,
             castTime);

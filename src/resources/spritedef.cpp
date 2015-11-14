@@ -157,6 +157,7 @@ void SpriteDef::substituteActions()
     substituteAction(SpriteAction::STAND, SpriteAction::DEFAULT);
     substituteAction(SpriteAction::MOVE, SpriteAction::STAND);
     substituteAction(SpriteAction::ATTACK, SpriteAction::STAND);
+    substituteAction(SpriteAction::CAST, SpriteAction::ATTACK);
     substituteAction(SpriteAction::SIT, SpriteAction::STAND);
     substituteAction(SpriteAction::SITTOP, SpriteAction::SIT);
     substituteAction(SpriteAction::DEAD, SpriteAction::STAND);
@@ -173,6 +174,9 @@ void SpriteDef::substituteActions()
     substituteAction(SpriteAction::ATTACKSKY, SpriteAction::ATTACK);
     substituteAction(SpriteAction::ATTACKWATER, SpriteAction::ATTACK);
     substituteAction(SpriteAction::ATTACKRIDE, SpriteAction::ATTACK);
+    substituteAction(SpriteAction::CASTSKY, SpriteAction::CAST);
+    substituteAction(SpriteAction::CASTWATER, SpriteAction::CAST);
+    substituteAction(SpriteAction::CASTRIDE, SpriteAction::CAST);
     substituteAction(SpriteAction::SPAWNSKY, SpriteAction::SPAWN);
     substituteAction(SpriteAction::SPAWNWATER, SpriteAction::SPAWN);
     substituteAction(SpriteAction::SPAWNRIDE, SpriteAction::SPAWN);
