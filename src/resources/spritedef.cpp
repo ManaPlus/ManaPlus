@@ -157,13 +157,9 @@ void SpriteDef::substituteActions()
     substituteAction(SpriteAction::STAND, SpriteAction::DEFAULT);
     substituteAction(SpriteAction::MOVE, SpriteAction::STAND);
     substituteAction(SpriteAction::ATTACK, SpriteAction::STAND);
-    substituteAction(SpriteAction::CAST_MAGIC, SpriteAction::ATTACK);
-    substituteAction(SpriteAction::USE_ITEM, SpriteAction::CAST_MAGIC);
     substituteAction(SpriteAction::SIT, SpriteAction::STAND);
     substituteAction(SpriteAction::SITTOP, SpriteAction::SIT);
-    substituteAction(SpriteAction::SLEEP, SpriteAction::SIT);
-    substituteAction(SpriteAction::HURT, SpriteAction::STAND);
-    substituteAction(SpriteAction::DEAD, SpriteAction::HURT);
+    substituteAction(SpriteAction::DEAD, SpriteAction::STAND);
     substituteAction(SpriteAction::SPAWN, SpriteAction::STAND);
     substituteAction(SpriteAction::FLY, SpriteAction::MOVE);
     substituteAction(SpriteAction::SWIM, SpriteAction::MOVE);

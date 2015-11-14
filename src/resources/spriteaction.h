@@ -40,14 +40,9 @@ namespace SpriteAction
     static const std::string STAND("stand");
     static const std::string SIT("sit");
     static const std::string SITTOP("sittop");
-    static const std::string SLEEP("sleep");
     static const std::string DEAD("dead");
     static const std::string MOVE("walk");
     static const std::string ATTACK("attack");
-    static const std::string HURT("hurt");
-    static const std::string USE_SPECIAL("special");
-    static const std::string CAST_MAGIC("magic");
-    static const std::string USE_ITEM("item");
     static const std::string SPAWN("spawn");
 
     static const std::string FLY("fly");
