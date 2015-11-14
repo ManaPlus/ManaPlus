@@ -102,6 +102,7 @@ class BeingInfo final
                        const std::string &action,
                        const std::string &skyAttack,
                        const std::string &waterAttack,
+                       const std::string &rideAttack,
                        const int effectId,
                        const int hitEffectId,
                        const int criticalHitEffectId,

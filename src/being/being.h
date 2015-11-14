@@ -607,9 +607,13 @@ class Being notfinal : public ActorSprite,
 
         std::string getSpawnAction() const A_WARN_UNUSED;
 
-        std::string getWeaponAttackAction(const ItemInfo *const weapon) const;
+        std::string getWeaponAttackAction(const ItemInfo *const weapon) const
+                                          A_WARN_UNUSED;
 
-        std::string getAttackAction(const Attack *const attack) const;
+        std::string getAttackAction() const A_WARN_UNUSED;
+
+        std::string getAttackAction(const Attack *const attack) const
+                                    A_WARN_UNUSED;
 
         /**
          * Whether or not this player is a GM.

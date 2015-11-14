@@ -1309,7 +1309,7 @@ std::string Being::getMoveAction() const
 std::string Being::getWeaponAttackAction(const ItemInfo *const weapon) const
 {
     if (!weapon)
-        return SpriteAction::ATTACK;
+        return getAttackAction();
 
     if (mHorseId != 0)
         return weapon->getRideAttackAction();
@@ -1327,8 +1327,10 @@ std::string Being::getWeaponAttackAction(const ItemInfo *const weapon) const
 std::string Being::getAttackAction(const Attack *const attack1) const
 {
     if (!attack1)
-        return SpriteAction::ATTACK;
+        return getAttackAction();
 
+    if (mHorseId != 0)
+        return attack1->mRideAction;
     if (mMap)
     {
         const unsigned char mask = mMap->getBlockMask(mX, mY);
@@ -1356,6 +1358,7 @@ std::string Being::getAttackAction(const Attack *const attack1) const
     return SpriteAction::action; \
 }
 
+getSpriteAction(Attack, ATTACK)
 getSpriteAction(Dead, DEAD)
 getSpriteAction(Spawn, SPAWN)
 getSpriteAction(Cast, CAST)

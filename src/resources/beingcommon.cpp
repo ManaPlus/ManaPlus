@@ -188,13 +188,22 @@ bool BeingCommon::readObjectNodes(XmlNodePtrConst &spriteNode,
             "skyaction", "skyattack");
         const std::string waterSpriteAction = XML::getProperty(spriteNode,
             "wateraction", "waterattack");
+        const std::string rideSpriteAction = XML::getProperty(spriteNode,
+            "rideaction", "rideattack");
 
         const std::string missileParticle = XML::getProperty(spriteNode,
             "missile-particle", "");
 
-        currentInfo->addAttack(attackId, spriteAction, skySpriteAction,
-            waterSpriteAction, effectId, hitEffectId,
-            criticalHitEffectId, missEffectId, missileParticle);
+        currentInfo->addAttack(attackId,
+            spriteAction,
+            skySpriteAction,
+            waterSpriteAction,
+            rideSpriteAction,
+            effectId,
+            hitEffectId,
+            criticalHitEffectId,
+            missEffectId,
+            missileParticle);
         return true;
     }
     else if (xmlNameEqual(spriteNode, "particlefx"))

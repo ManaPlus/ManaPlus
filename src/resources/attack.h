@@ -32,19 +32,26 @@ struct Attack final
     std::string mAction;
     std::string mSkyAction;
     std::string mWaterAction;
+    std::string mRideAction;
     int mEffectId;
     int mHitEffectId;
     int mCriticalHitEffectId;
     int mMissEffectId;
     std::string mMissileParticle;
 
-    Attack(const std::string &action, const std::string &skyAction,
-           const std::string &waterAction, const int effectId,
-           const int hitEffectId, const int criticalHitEffectId,
-           const int missEffectId, const std::string &missileParticle) :
+    Attack(const std::string &action,
+           const std::string &skyAction,
+           const std::string &waterAction,
+           const std::string &rideAction,
+           const int effectId,
+           const int hitEffectId,
+           const int criticalHitEffectId,
+           const int missEffectId,
+           const std::string &missileParticle) :
         mAction(action),
         mSkyAction(skyAction),
         mWaterAction(waterAction),
+        mRideAction(rideAction),
         mEffectId(effectId),
         mHitEffectId(hitEffectId),
         mCriticalHitEffectId(criticalHitEffectId),
