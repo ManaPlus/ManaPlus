@@ -115,6 +115,11 @@ bool ServerFeatures::haveAccountOtherGender() const
     return false;
 }
 
+bool ServerFeatures::haveCharOtherGender() const
+{
+    return serverVersion >= 10;
+}
+
 bool ServerFeatures::haveMonsterAttackRange() const
 {
     return false;

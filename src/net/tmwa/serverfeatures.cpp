@@ -114,6 +114,11 @@ bool ServerFeatures::haveAccountOtherGender() const
     return false;
 }
 
+bool ServerFeatures::haveCharOtherGender() const
+{
+    return false;
+}
+
 bool ServerFeatures::haveMonsterAttackRange() const
 {
     return tmwServerVersion >= 0x0f0513;
