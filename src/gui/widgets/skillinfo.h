@@ -49,6 +49,10 @@ struct SkillInfo final
     std::string skillEffect;
     std::string useButton;
     std::string errorText;
+    std::string castingAction;
+    std::string castingRideAction;
+    std::string castingSkyAction;
+    std::string castingWaterAction;
     SkillDataMap dataMap;
     SkillModel *model;
     SkillData *data;

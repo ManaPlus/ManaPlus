@@ -68,6 +68,7 @@ class Text;
 
 struct ChatObject;
 struct HorseInfo;
+struct SkillInfo;
 struct ParticleInfo;
 
 extern volatile int cur_time;
@@ -598,6 +599,9 @@ class Being notfinal : public ActorSprite,
         std::string getSitAction() const A_WARN_UNUSED;
 
         std::string getCastAction() const A_WARN_UNUSED;
+
+        std::string getCastAction(const SkillInfo *const skill) const
+                                  A_WARN_UNUSED;
 
         std::string getMoveAction() const A_WARN_UNUSED;
 

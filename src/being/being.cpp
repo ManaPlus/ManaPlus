@@ -1342,6 +1342,24 @@ std::string Being::getAttackAction(const Attack *const attack1) const
     return attack1->mAction;
 }
 
+std::string Being::getCastAction(const SkillInfo *const skill) const
+{
+    if (!skill)
+        return getCastAction();
+
+    if (mHorseId != 0)
+        return skill->castingRideAction;
+    if (mMap)
+    {
+        const unsigned char mask = mMap->getBlockMask(mX, mY);
+        if (mask & BlockMask::AIR)
+            return skill->castingSkyAction;
+        else if (mask & BlockMask::WATER)
+            return skill->castingWaterAction;
+    }
+    return skill->castingAction;
+}
+
 #define getSpriteAction(func, action) \
     std::string Being::get##func##Action() const \
 { \
@@ -1359,9 +1377,9 @@ std::string Being::getAttackAction(const Attack *const attack1) const
 }
 
 getSpriteAction(Attack, ATTACK)
+getSpriteAction(Cast, CAST)
 getSpriteAction(Dead, DEAD)
 getSpriteAction(Spawn, SPAWN)
-getSpriteAction(Cast, CAST)
 
 std::string Being::getStandAction() const
 {
@@ -1447,7 +1465,11 @@ void Being::setAction(const BeingActionT &action, const int attackId)
             }
             break;
         case BeingAction::CAST:
-            currentAction = getCastAction();
+            if (skillDialog)
+            {
+                const SkillInfo *const info = skillDialog->getSkill(attackId);
+                currentAction = getCastAction(info);
+            }
             break;
         case BeingAction::HURT:
             if (mInfo)

@@ -52,6 +52,7 @@
 #include "utils/timer.h"
 
 #include "resources/beingcommon.h"
+#include "resources/spriteaction.h"
 
 #include "debug.h"
 
@@ -339,6 +340,14 @@ void SkillDialog::loadXmlFile(const std::string &fileName)
                             node, "castingSrcEffectId", -1);
                         skill->castingDstEffectId = XML::getProperty(
                             node, "castingDstEffectId", -1);
+                        skill->castingAction = XML::getProperty(node,
+                            "castingAction", SpriteAction::CAST);
+                        skill->castingRideAction = XML::getProperty(node,
+                            "castingRideAction", SpriteAction::CASTRIDE);
+                        skill->castingSkyAction = XML::getProperty(node,
+                            "castingSkyAction", SpriteAction::CASTSKY);
+                        skill->castingWaterAction = XML::getProperty(node,
+                            "castingWaterAction", SpriteAction::CASTWATER);
                         skill->useTextParameter = XML::getBoolProperty(
                             node, "useTextParameter", false);
                         skill->visible = skill->alwaysVisible;
