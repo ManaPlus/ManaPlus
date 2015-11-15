@@ -227,13 +227,35 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
             mGenderStrip->setActionEventId("gender_");
             // TRANSLATORS: one char size female character gender
             mGenderStrip->addButton(_("F"), "f", false);
-            // TRANSLATORS: one char size male character gender
-            mGenderStrip->addButton(_("M"), "m", false);
             if (features.getIntValue("forceAccountGender") == -1)
             {
-                // TRANSLATORS: one char size unknown character gender
-                mGenderStrip->addButton(_("U"), "u", true);
+                if (serverFeatures->haveCharOtherGender())
+                {
+                    // TRANSLATORS: one char size male character gender
+                    mGenderStrip->addButton(_("M"), "m", true);
+                    // TRANSLATORS: one char size other character gender
+                    mGenderStrip->addButton(_("O"), "o", false);
+                }
+                else
+                {
+                    // TRANSLATORS: one char size male character gender
+                    mGenderStrip->addButton(_("M"), "m", false);
+                    // TRANSLATORS: one char size unknown character gender
+                    mGenderStrip->addButton(_("U"), "u", true);
+                }
             }
+            else
+            {
+                // TRANSLATORS: one char size male character gender
+                mGenderStrip->addButton(_("M"), "m", true);
+                if (serverFeatures->haveCharOtherGender())
+                {
+                    // TRANSLATORS: one char size other character gender
+                    mGenderStrip->addButton(_("O"), "o", false);
+                }
+            }
+
+
             mGenderStrip->setVisible(Visible_true);
             add(mGenderStrip);
 
@@ -487,6 +509,11 @@ void CharCreateDialog::action(const ActionEvent &event)
     {
         mGender = Gender::UNSPECIFIED;
         mPlayer->setGender(mDefaultGender);
+    }
+    else if (id == "gender_o")
+    {
+        mGender = Gender::OTHER;
+        mPlayer->setGender(Gender::OTHER);
     }
 }
 
