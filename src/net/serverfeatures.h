@@ -118,6 +118,8 @@ class ServerFeatures notfinal
         virtual bool haveExtendedRiding() const = 0;
 
         virtual bool haveAdvancedBuySell() const = 0;
+
+        virtual bool haveSlide() const = 0;
 };
 
 }  // namespace Net

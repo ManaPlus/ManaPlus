@@ -255,4 +255,9 @@ bool ServerFeatures::haveAdvancedBuySell() const
     return true;
 }
 
+bool ServerFeatures::haveSlide() const
+{
+    return serverVersion >= 10;
+}
+
 }  // namespace EAthena

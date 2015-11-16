@@ -254,4 +254,9 @@ bool ServerFeatures::haveAdvancedBuySell() const
     return false;
 }
 
+bool ServerFeatures::haveSlide() const
+{
+    return false;
+}
+
 }  // namespace TmwAthena
