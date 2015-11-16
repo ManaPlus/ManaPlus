@@ -59,7 +59,7 @@ void CharServerRecv::processCharLoginError(Net::MessageIn &msg)
             errorMessage = _("Unknown char-server failure.");
             break;
     }
-    client->setState(STATE_ERROR);
+    client->setState(State::ERROR);
     BLOCK_END("CharServerRecv::processCharLoginError")
 }
 

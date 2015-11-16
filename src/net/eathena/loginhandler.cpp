@@ -62,8 +62,8 @@ void LoginHandler::connect()
     }
     else
     {
-        if (client->getState() != STATE_LOGIN)
-            client->setState(STATE_LOGIN);
+        if (client->getState() != State::LOGIN)
+            client->setState(State::LOGIN);
     }
 }
 

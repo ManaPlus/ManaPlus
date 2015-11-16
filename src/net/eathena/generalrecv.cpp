@@ -51,7 +51,7 @@ void GeneralRecv::processConnectionProblem(Net::MessageIn &msg)
             errorMessage = _("No servers available.");
             break;
         case 2:
-            if (client->getState() == STATE_GAME)
+            if (client->getState() == State::GAME)
             {
                 errorMessage = _("Someone else is trying to use "
                     "this account.");
@@ -136,7 +136,7 @@ void GeneralRecv::processConnectionProblem(Net::MessageIn &msg)
             errorMessage = _("Unknown connection error.");
             break;
     }
-    client->setState(STATE_ERROR);
+    client->setState(State::ERROR);
 }
 
 void GeneralRecv::processMapNotFound(Net::MessageIn &msg)
@@ -144,7 +144,7 @@ void GeneralRecv::processMapNotFound(Net::MessageIn &msg)
     const int sz = msg.readInt16("len") - 4;
     msg.readString(sz, "map name?");
     errorMessage = _("Map not found");
-    client->setState(STATE_ERROR);
+    client->setState(State::ERROR);
 }
 
 }  // namespace EAthena

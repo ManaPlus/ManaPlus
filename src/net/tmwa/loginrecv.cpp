@@ -86,8 +86,8 @@ void LoginRecv::processServerVersion(Net::MessageIn &msg)
 
     if (serverVersion < 5)
     {
-        if (client->getState() != STATE_LOGIN)
-            client->setState(STATE_LOGIN);
+        if (client->getState() != State::LOGIN)
+            client->setState(State::LOGIN);
     }
 
     // Leave this last
@@ -101,7 +101,7 @@ void LoginRecv::processCharPasswordResponse(Net::MessageIn &msg)
     // Successful pass change
     if (errMsg == 1)
     {
-        client->setState(STATE_CHANGEPASSWORD_SUCCESS);
+        client->setState(State::CHANGEPASSWORD_SUCCESS);
     }
     // pass change failed
     else
@@ -126,7 +126,7 @@ void LoginRecv::processCharPasswordResponse(Net::MessageIn &msg)
                 errorMessage = _("Unknown error.");
                 break;
         }
-        client->setState(STATE_ACCOUNTCHANGE_ERROR);
+        client->setState(State::ACCOUNTCHANGE_ERROR);
     }
 }
 

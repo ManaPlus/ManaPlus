@@ -73,10 +73,10 @@ QuitDialog::QuitDialog(QuitDialog **const pointerToMe) :
 
     ContainerPlacer placer = getPlacer(0, 0);
     const State state = client->getState();
-    mNeedForceQuit = (state == STATE_CHOOSE_SERVER
-        || state == STATE_CONNECT_SERVER || state == STATE_LOGIN
-        || state == STATE_PRE_LOGIN || state == STATE_LOGIN_ATTEMPT
-        || state == STATE_UPDATE || state == STATE_LOAD_DATA);
+    mNeedForceQuit = (state == State::CHOOSE_SERVER
+        || state == State::CONNECT_SERVER || state == State::LOGIN
+        || state == State::PRE_LOGIN || state == State::LOGIN_ATTEMPT
+        || state == State::UPDATE || state == State::LOAD_DATA);
 
     // All states, when we're not logged in to someone.
     if (mNeedForceQuit)
@@ -90,7 +90,7 @@ QuitDialog::QuitDialog(QuitDialog **const pointerToMe) :
         placeOption(placer, mSwitchAccountServer);
 
         // Only added if we are connected to a gameserver
-        if (state == STATE_GAME)
+        if (state == State::GAME)
             placeOption(placer, mSwitchCharacter);
     }
 
@@ -157,12 +157,12 @@ void QuitDialog::action(const ActionEvent &event)
 
         if (mForceQuit->isSelected())
         {
-            client->setState(STATE_FORCE_QUIT);
+            client->setState(State::FORCE_QUIT);
         }
         else if (mLogoutQuit->isSelected())
         {
             DialogsManager::closeDialogs();
-            client->setState(STATE_EXIT);
+            client->setState(State::EXIT);
         }
         else if (mRate && mRate->isSelected())
         {
@@ -171,23 +171,23 @@ void QuitDialog::action(const ActionEvent &event)
             config.setValue("rated", true);
             if (mNeedForceQuit)
             {
-                client->setState(STATE_FORCE_QUIT);
+                client->setState(State::FORCE_QUIT);
             }
             else
             {
                 DialogsManager::closeDialogs();
-                client->setState(STATE_EXIT);
+                client->setState(State::EXIT);
             }
         }
         else if (gameHandler->isConnected()
                  && mSwitchAccountServer->isSelected())
         {
             DialogsManager::closeDialogs();
-            client->setState(STATE_SWITCH_SERVER);
+            client->setState(State::SWITCH_SERVER);
         }
         else if (mSwitchCharacter->isSelected())
         {
-            if (client->getState() == STATE_GAME)
+            if (client->getState() == State::GAME)
             {
                 charServerHandler->switchCharacter();
                 DialogsManager::closeDialogs();

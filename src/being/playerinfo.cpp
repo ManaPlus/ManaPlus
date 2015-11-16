@@ -462,7 +462,7 @@ void gameDestroyed()
 
 void stateChange(const State state)
 {
-    if (state == STATE_GAME)
+    if (state == State::GAME)
     {
         if (!mInventory)
         {

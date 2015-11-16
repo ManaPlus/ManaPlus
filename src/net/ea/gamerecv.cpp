@@ -55,7 +55,7 @@ void GameRecv::processWhoAnswer(Net::MessageIn &msg)
 void GameRecv::processCharSwitchResponse(Net::MessageIn &msg)
 {
     if (msg.readUInt8("response"))
-        client->setState(STATE_SWITCH_CHARACTER);
+        client->setState(State::SWITCH_CHARACTER);
 }
 
 void GameRecv::processMapQuitResponse(Net::MessageIn &msg)

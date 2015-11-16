@@ -35,5 +35,5 @@ void ErrorListener::action(const ActionEvent &event)
 {
     if (event.getId() == "yes")
         openBrowser(settings.supportUrl);
-    client->setState(STATE_CHOOSE_SERVER);
+    client->setState(State::CHOOSE_SERVER);
 }

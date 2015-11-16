@@ -462,7 +462,7 @@ void Dirs::initUpdatesDir()
             // TRANSLATORS: update server initialisation error
             errorMessage = strprintf(_("Invalid update host: %s."),
                 settings.updateHost.c_str());
-            client->setState(STATE_ERROR);
+            client->setState(State::ERROR);
         }
     }
     else
@@ -502,14 +502,14 @@ void Dirs::initUpdatesDir()
                             newDir.c_str());
                 // TRANSLATORS: update server initialisation error
                 errorMessage = _("Error creating updates directory!");
-                client->setState(STATE_ERROR);
+                client->setState(State::ERROR);
             }
 #else
             logger->log("Error: %s/%s can't be made, but doesn't exist!",
                 settings.localDataDir.c_str(), settings.updatesDir.c_str());
             // TRANSLATORS: update server initialisation error
             errorMessage = _("Error creating updates directory!");
-            client->setState(STATE_ERROR);
+            client->setState(State::ERROR);
 #endif
         }
     }

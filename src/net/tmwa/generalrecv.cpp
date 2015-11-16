@@ -53,7 +53,7 @@ void GeneralRecv::processConnectionProblem(Net::MessageIn &msg)
             errorMessage = _("No servers available.");
             break;
         case 2:
-            if (client->getState() == STATE_GAME)
+            if (client->getState() == State::GAME)
             {
                 // TRANSLATORS: error message
                 errorMessage = _("Someone else is trying to use this "
@@ -78,7 +78,7 @@ void GeneralRecv::processConnectionProblem(Net::MessageIn &msg)
             errorMessage = _("Unknown connection error.");
             break;
     }
-    client->setState(STATE_ERROR);
+    client->setState(State::ERROR);
 }
 
 }  // namespace TmwAthena

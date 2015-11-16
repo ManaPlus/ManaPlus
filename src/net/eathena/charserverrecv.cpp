@@ -200,7 +200,7 @@ void CharServerRecv::processCharLogin(Net::MessageIn &msg)
         }
     }
 
-    client->setState(STATE_CHAR_SELECT);
+    client->setState(State::CHAR_SELECT);
 }
 
 void CharServerRecv::processCharLogin2(Net::MessageIn &msg)
@@ -247,7 +247,7 @@ void CharServerRecv::processCharMapInfo(Net::MessageIn &restrict msg)
 
     if (network)
         network->disconnect();
-    client->setState(STATE_CONNECT_GAME);
+    client->setState(State::CONNECT_GAME);
     BLOCK_END("CharServerRecv::processCharMapInfo")
 }
 
@@ -277,7 +277,7 @@ void CharServerRecv::processChangeMapServer(Net::MessageIn &msg)
     server.port = msg.readInt16("port");
 
     network->disconnect();
-    client->setState(STATE_CHANGE_MAP);
+    client->setState(State::CHANGE_MAP);
     if (localPlayer)
     {
         localPlayer->setTileCoords(x, y);
@@ -499,7 +499,7 @@ void CharServerRecv::processCharCharacters(Net::MessageIn &msg)
         }
     }
 
-    client->setState(STATE_CHAR_SELECT);
+    client->setState(State::CHAR_SELECT);
 }
 
 void CharServerRecv::processCharBanCharList(Net::MessageIn &msg)

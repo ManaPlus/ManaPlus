@@ -113,8 +113,8 @@ Client::Client() :
 #ifdef ANDROID
     mCloseButton(nullptr),
 #endif
-    mState(STATE_GAME),
-    mOldState(STATE_START),
+    mState(State::GAME),
+    mOldState(State::START),
     mSkin(nullptr),
     mButtonPadding(1),
     mButtonSpacing(3)
@@ -286,8 +286,8 @@ void Client::gameInit()
     if (joystick)
         joystick->update();
 
-//    if (mState != STATE_ERROR)
-//        mState = STATE_CHOOSE_SERVER;
+//    if (mState != State::ERROR)
+//        mState = State::CHOOSE_SERVER;
 
     startTimers();
 
@@ -336,7 +336,7 @@ void Client::initSoundManager()
     }
     catch (const char *const err)
     {
-        mState = STATE_ERROR;
+        mState = State::ERROR;
         errorMessage = err;
         logger->log("Warning: %s", err);
     }
@@ -497,7 +497,7 @@ int Client::gameExec()
 {
     int lastTickTime = tick_time;
 
-    while (mState != STATE_EXIT)
+    while (mState != State::EXIT)
     {
         PROFILER_START();
         if (eventsManager.handleEvents())
@@ -551,7 +551,7 @@ int Client::gameExec()
         BLOCK_END("~Client::SDL_framerateDelay")
 
         BLOCK_START("Client::gameExec 6")
-//        if (mState == STATE_CONNECT_GAME)
+//        if (mState == State::CONNECT_GAME)
 //        {
 //            stateConnectGame1();
 //        }
@@ -578,13 +578,13 @@ int Client::gameExec()
             BLOCK_START("Client::gameExec 8")
             switch (mState)
             {
-                case STATE_GAME:
+                case State::GAME:
                     stateGame();
                     break;
 
-                case STATE_LOAD_DATA:
+                case State::LOAD_DATA:
                 {
-                    BLOCK_START("Client::gameExec STATE_LOAD_DATA")
+                    BLOCK_START("Client::gameExec State::LOAD_DATA")
                     logger->log1("State: LOAD DATA");
 
                     // If another data path has been set,
@@ -618,13 +618,13 @@ int Client::gameExec()
                     if (desktop)
                         desktop->reloadWallpaper();
 
-                    mState = STATE_GET_CHARACTERS;
-                    BLOCK_END("Client::gameExec STATE_LOAD_DATA")
+                    mState = State::GET_CHARACTERS;
+                    BLOCK_END("Client::gameExec State::LOAD_DATA")
                     break;
                 }
-                case STATE_START:
+                case State::START:
                 default:
-                    mState = STATE_FORCE_QUIT;
+                    mState = State::FORCE_QUIT;
                     break;
             }
             BLOCK_END("Client::gameExec 8")
@@ -642,7 +642,7 @@ void Client::action(const ActionEvent &event)
 
     if (eventId == "close")
     {
-        setState(STATE_FORCE_QUIT);
+        setState(State::FORCE_QUIT);
         return;
     }
     if (eventId == "Setup")

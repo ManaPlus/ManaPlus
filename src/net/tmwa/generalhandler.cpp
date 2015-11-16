@@ -207,7 +207,7 @@ void GeneralHandler::flushNetwork()
             errorMessage = _("Got disconnected from server!");
         }
 
-        client->setState(STATE_ERROR);
+        client->setState(State::ERROR);
     }
     BLOCK_END("GeneralHandler::flushNetwork 3")
 }

@@ -216,7 +216,7 @@ void LoginDialog::action(const ActionEvent &event)
     {
         prepareUpdate();
         mLoginData->registerLogin = false;
-        client->setState(STATE_LOGIN_ATTEMPT);
+        client->setState(State::LOGIN_ATTEMPT);
     }
     else if (eventId == "server")
     {
@@ -227,7 +227,7 @@ void LoginDialog::action(const ActionEvent &event)
         if (loginHandler->isRegistrationEnabled())
         {
             prepareUpdate();
-            client->setState(STATE_REGISTER_PREP);
+            client->setState(State::REGISTER_PREP);
         }
         else if (!mLoginData->registerUrl.empty())
         {
@@ -283,7 +283,7 @@ bool LoginDialog::canSubmit() const
 {
     return !mUserField->getText().empty() &&
         !mPassField->getText().empty() &&
-        client->getState() == STATE_LOGIN;
+        client->getState() == State::LOGIN;
 }
 
 void LoginDialog::prepareUpdate()
@@ -354,6 +354,6 @@ void LoginDialog::prepareUpdate()
 
 void LoginDialog::close()
 {
-    client->setState(STATE_SWITCH_SERVER);
+    client->setState(State::SWITCH_SERVER);
     Window::close();
 }

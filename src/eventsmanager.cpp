@@ -78,7 +78,7 @@ bool EventsManager::handleCommonEvents(const SDL_Event &event) const
     switch (event.type)
     {
         case SDL_QUIT:
-            client->setState(STATE_EXIT);
+            client->setState(State::EXIT);
             logger->log1("force exit");
             BLOCK_END("EventsManager::handleCommonEvents")
             return true;
@@ -147,7 +147,7 @@ bool EventsManager::handleEvents() const
                         if ((event.active.state & SDL_APPACTIVE)
                             && !event.active.gain)
                         {
-                            client->setState(STATE_EXIT);
+                            client->setState(State::EXIT);
                             logger->log1("exit on lost focus");
                         }
                         break;
@@ -170,7 +170,7 @@ bool EventsManager::handleEvents() const
             }
 #endif
         }
-        if (client->getState() == STATE_EXIT)
+        if (client->getState() == State::EXIT)
         {
             BLOCK_END("EventsManager::handleEvents")
             return true;
@@ -431,7 +431,7 @@ void EventsManager::handleSDL2WindowEvent(const SDL_Event &event)
     int fpsLimit = 0;
 #endif
     const int eventType = event.window.event;
-    const bool inGame = (client->getState() == STATE_GAME);
+    const bool inGame = (client->getState() == State::GAME);
     switch (eventType)
     {
         case SDL_WINDOWEVENT_RESIZED:
@@ -507,7 +507,7 @@ void EventsManager::handleActive(const SDL_Event &event)
 {
 #ifndef DYECMD
     int fpsLimit = 0;
-    const bool inGame = (client->getState() == STATE_GAME);
+    const bool inGame = (client->getState() == State::GAME);
 #endif
     if (event.active.state & SDL_APPACTIVE)
     {
@@ -527,7 +527,7 @@ void EventsManager::handleActive(const SDL_Event &event)
         else
         {   // window minimization
 #ifdef ANDROID
-            client->setState(STATE_EXIT);
+            client->setState(State::EXIT);
 #else
             WindowManager::setIsMinimized(true);
 #ifndef DYECMD

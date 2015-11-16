@@ -291,10 +291,10 @@ void UpdaterWindow::enable()
     mPlayButton->setEnabled(true);
     mPlayButton->requestFocus();
 
-    if (client->getState() != STATE_GAME)
+    if (client->getState() != State::GAME)
     {
         if (mUpdateType & UpdateType::Close)
-            client->setState(STATE_LOAD_DATA);
+            client->setState(State::LOAD_DATA);
     }
     else
     {
@@ -318,8 +318,8 @@ void UpdaterWindow::action(const ActionEvent &event)
     }
     else if (eventId == "play")
     {
-        if (client->getState() != STATE_GAME)
-            client->setState(STATE_LOAD_DATA);
+        if (client->getState() != State::GAME)
+            client->setState(State::LOAD_DATA);
         else
             deleteSelf();
     }
@@ -331,8 +331,8 @@ void UpdaterWindow::keyPressed(KeyEvent &event)
     if (actionId == InputAction::GUI_CANCEL)
     {
         action(ActionEvent(nullptr, mCancelButton->getActionEventId()));
-        if (client->getState() != STATE_GAME)
-            client->setState(STATE_LOGIN);
+        if (client->getState() != State::GAME)
+            client->setState(State::LOGIN);
         else
             deleteSelf();
     }
@@ -534,8 +534,8 @@ int UpdaterWindow::updateProgress(void *ptr,
 
     uw->setProgress(progress);
 
-    if ((client->getState() != STATE_UPDATE
-        && client->getState() != STATE_GAME)
+    if ((client->getState() != State::UPDATE
+        && client->getState() != State::GAME)
         || uw->mDownloadStatus == UPDATE_ERROR)
     {
         // If the action was canceled return an error code to stop the mThread

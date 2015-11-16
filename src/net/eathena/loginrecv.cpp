@@ -117,7 +117,7 @@ void LoginRecv::processLoginError2(Net::MessageIn &msg)
             UNIMPLIMENTEDPACKET;
             break;
     }
-    client->setState(STATE_ERROR);
+    client->setState(State::ERROR);
 }
 
 void LoginRecv::processUpdateHost2(Net::MessageIn &msg)
@@ -139,8 +139,8 @@ void LoginRecv::processUpdateHost2(Net::MessageIn &msg)
     logger->log("Received update hosts \"%s\" from login server.",
         updateHost.c_str());
 
-    if (client->getState() == STATE_PRE_LOGIN)
-        client->setState(STATE_LOGIN);
+    if (client->getState() == State::PRE_LOGIN)
+        client->setState(State::LOGIN);
 }
 
 void LoginRecv::processServerVersion(Net::MessageIn &msg)
@@ -167,7 +167,7 @@ void LoginRecv::processServerVersion(Net::MessageIn &msg)
         logger->log("Hercules without version");
     }
     updateProtocol();
-    client->setState(STATE_LOGIN);
+    client->setState(State::LOGIN);
 }
 
 void LoginRecv::processCondingKey(Net::MessageIn &msg)
@@ -184,7 +184,7 @@ void LoginRecv::processCharPasswordResponse(Net::MessageIn &msg)
     // Successful pass change
     if (errMsg == 1)
     {
-        client->setState(STATE_CHANGEPASSWORD_SUCCESS);
+        client->setState(State::CHANGEPASSWORD_SUCCESS);
     }
     // pass change failed
     else
@@ -209,7 +209,7 @@ void LoginRecv::processCharPasswordResponse(Net::MessageIn &msg)
                 errorMessage = _("Unknown error.");
                 break;
         }
-        client->setState(STATE_ACCOUNTCHANGE_ERROR);
+        client->setState(State::ACCOUNTCHANGE_ERROR);
     }
 }
 

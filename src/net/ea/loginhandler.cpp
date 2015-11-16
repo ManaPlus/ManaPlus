@@ -61,7 +61,7 @@ bool LoginHandler::isRegistrationEnabled() const
 void LoginHandler::getRegistrationDetails() const
 {
     // Not supported, so move on
-    client->setState(STATE_REGISTER);
+    client->setState(State::REGISTER);
 }
 
 void LoginHandler::loginAccount(LoginData *const loginData1) const
@@ -97,7 +97,7 @@ void LoginHandler::chooseServer(const unsigned int server,
         charServer->port = LoginRecv::mWorlds[server]->port;
     }
 
-    client->setState(STATE_UPDATE);
+    client->setState(State::UPDATE);
 }
 
 void LoginHandler::registerAccount(const LoginData *const loginData1) const

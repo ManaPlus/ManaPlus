@@ -107,12 +107,12 @@ void WorldSelectDialog::action(const ActionEvent &event)
             settings.persistentIp);
 
         // Check in case netcode moves us forward
-        if (client->getState() == STATE_WORLD_SELECT)
-            client->setState(STATE_WORLD_SELECT_ATTEMPT);
+        if (client->getState() == State::WORLD_SELECT)
+            client->setState(State::WORLD_SELECT_ATTEMPT);
     }
     else if (eventId == "login")
     {
-        client->setState(STATE_PRE_LOGIN);
+        client->setState(State::PRE_LOGIN);
     }
 }
 

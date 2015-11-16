@@ -103,7 +103,7 @@ void LoginRecv::processLoginData(Net::MessageIn &msg)
 
         mWorlds.push_back(world);
     }
-    client->setState(STATE_WORLD_SELECT);
+    client->setState(State::WORLD_SELECT);
 }
 
 void LoginRecv::processLoginError(Net::MessageIn &msg)
@@ -171,7 +171,7 @@ void LoginRecv::processLoginError(Net::MessageIn &msg)
             errorMessage = _("Unknown error.");
             break;
     }
-    client->setState(STATE_ERROR);
+    client->setState(State::ERROR);
 }
 
 }  // namespace Ea

@@ -65,7 +65,7 @@ void GameRecv::processMapLogin(Net::MessageIn &msg)
         network->pauseDispatch();
 
     // Switch now or we'll have problems
-    client->setState(STATE_GAME);
+    client->setState(State::GAME);
     if (localPlayer)
         localPlayer->setTileCoords(x, y);
 }

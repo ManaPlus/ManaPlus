@@ -437,7 +437,7 @@ Game::~Game()
     AnimatedSprite::setEnableCache(false);
 
     delete2(actorManager)
-    if (client->getState() != STATE_CHANGE_MAP)
+    if (client->getState() != State::CHANGE_MAP)
         delete2(localPlayer)
     if (effectManager)
         effectManager->clear();
@@ -647,10 +647,10 @@ void Game::slowLogic()
     // Handle network stuff
     if (!gameHandler->isConnected())
     {
-        if (client->getState() == STATE_CHANGE_MAP)
+        if (client->getState() == State::CHANGE_MAP)
             return;  // Not a problem here
 
-        if (client->getState() != STATE_ERROR)
+        if (client->getState() != State::ERROR)
         {
             if (!disconnectedDialog)
             {
@@ -670,15 +670,12 @@ void Game::slowLogic()
         {
             const Map *const map = viewport->getMap();
             if (map)
-            {
-                logger->log("state: %d", client->getState());
                 map->saveExtraLayer();
-            }
         }
         DialogsManager::closeDialogs();
         WindowManager::setFramerate(config.getIntValue("fpslimit"));
         mNextAdjustTime = cur_time + adjustDelay;
-        if (client->getState() != STATE_ERROR)
+        if (client->getState() != State::ERROR)
             errorMessage.clear();
     }
     else
