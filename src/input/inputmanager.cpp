@@ -864,7 +864,7 @@ bool InputManager::executeChatCommand(const InputActionT keyNum,
 void InputManager::updateKeyActionMap(KeyToActionMap &actionMap,
                                       KeyToIdMap &idMap,
                                       KeyTimeMap &keyTimeMap,
-                                      const InputType type) const
+                                      const InputTypeT type) const
 {
     actionMap.clear();
     keyTimeMap.clear();

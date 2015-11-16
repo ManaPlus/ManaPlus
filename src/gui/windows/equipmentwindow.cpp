@@ -358,7 +358,7 @@ void EquipmentWindow::action(const ActionEvent &event)
     }
     else if (eventId == "playerbox")
     {
-        const DragDropSource src = dragDrop.getSource();
+        const DragDropSourceT src = dragDrop.getSource();
         if (dragDrop.isEmpty() || (src != DragDropSource::Inventory
             && src != DragDropSource::Equipment))
         {
@@ -501,7 +501,7 @@ void EquipmentWindow::mousePressed(MouseEvent& event)
 void EquipmentWindow::mouseReleased(MouseEvent &event)
 {
     Window::mouseReleased(event);
-    const DragDropSource src = dragDrop.getSource();
+    const DragDropSourceT src = dragDrop.getSource();
     if (dragDrop.isEmpty() || (src != DragDropSource::Inventory
         && src != DragDropSource::Equipment))
     {

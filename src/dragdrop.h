@@ -39,7 +39,8 @@
 class DragDrop final
 {
     public:
-        DragDrop(Item *const item, const DragDropSource source) :
+        DragDrop(Item *const item,
+                 const DragDropSourceT source) :
             mItemImage(item ? item->getImage() : nullptr),
             mText(),
             mSource(source),
@@ -70,11 +71,11 @@ class DragDrop final
         Image *getItemImage()
         { return mItemImage; }
 
-        DragDropSource getSource() const
+        DragDropSourceT getSource() const
         { return mSource; }
 
         void dragItem(const Item *const item,
-                      const DragDropSource source,
+                      const DragDropSourceT source,
                       const int tag = 0)
         {
             if (mItemImage)
@@ -103,7 +104,7 @@ class DragDrop final
         }
 
         void dragCommand(const TextCommand *const command,
-                         const DragDropSource source,
+                         const DragDropSourceT source,
                          const int tag = 0)
         {
             if (mItemImage)
@@ -137,7 +138,7 @@ class DragDrop final
         }
 
         void dragSkill(const SkillInfo *const info,
-                       const DragDropSource source,
+                       const DragDropSourceT source,
                        const int tag = 0)
         {
             if (mItemImage)
@@ -240,7 +241,7 @@ class DragDrop final
     private:
         Image *mItemImage;
         std::string mText;
-        DragDropSource mSource;
+        DragDropSourceT mSource;
         int mItem;
         int mSelItem;
         int mTag;

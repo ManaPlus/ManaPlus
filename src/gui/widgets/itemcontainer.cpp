@@ -575,7 +575,7 @@ void ItemContainer::mousePressed(MouseEvent &event)
         if (item && mDescItems && chatWindow)
             chatWindow->addItemText(item->getInfo().getName());
 
-        DragDropSource src = DragDropSource::Empty;
+        DragDropSourceT src = DragDropSource::Empty;
         switch (mInventory->getType())
         {
             case InventoryType::Inventory:
@@ -681,8 +681,8 @@ void ItemContainer::mouseReleased(MouseEvent &event)
     }
     else if (mInventory)
     {
-        const DragDropSource src = dragDrop.getSource();
-        DragDropSource dst = DragDropSource::Empty;
+        const DragDropSourceT src = dragDrop.getSource();
+        DragDropSourceT dst = DragDropSource::Empty;
         switch (mInventory->getType())
         {
             case InventoryType::Inventory:

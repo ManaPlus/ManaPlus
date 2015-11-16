@@ -460,7 +460,7 @@ void gameDestroyed()
 #endif
 }
 
-void stateChange(const State state)
+void stateChange(const StateT state)
 {
     if (state == State::GAME)
     {

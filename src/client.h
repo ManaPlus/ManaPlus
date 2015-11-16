@@ -82,10 +82,10 @@ class Client final : public ConfigListener,
 
         static int testsExec();
 
-        void setState(const State state)
+        void setState(const StateT state)
         { mState = state; }
 
-        State getState() const A_WARN_UNUSED
+        StateT getState() const A_WARN_UNUSED
         { return mState; }
 
         static bool isTmw() A_WARN_UNUSED;
@@ -142,8 +142,8 @@ class Client final : public ConfigListener,
         Button *mCloseButton;
 #endif
 
-        State mState;
-        State mOldState;
+        StateT mState;
+        StateT mOldState;
 
         Skin *mSkin;
         int mButtonPadding;

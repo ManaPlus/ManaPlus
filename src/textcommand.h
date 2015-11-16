@@ -107,7 +107,7 @@ class TextCommand final
         unsigned getSchoolLvl() const A_WARN_UNUSED
         { return mSchoolLvl; }
 
-        TextCommandType getCommandType() const A_WARN_UNUSED
+        TextCommandTypeT getCommandType() const A_WARN_UNUSED
         { return mCommandType; }
 
         void setCommand(const std::string &command)
@@ -140,7 +140,7 @@ class TextCommand final
         void setSchoolLvl(const unsigned int schoolLvl)
         { mSchoolLvl = schoolLvl; }
 
-        void setCommandType(const TextCommandType commandType)
+        void setCommandType(const TextCommandTypeT commandType)
         { mCommandType = commandType; }
 
         bool isEmpty() const A_WARN_UNUSED
@@ -163,7 +163,7 @@ class TextCommand final
         MagicSchoolT mSchool;
         unsigned mBaseLvl;
         unsigned mSchoolLvl;
-        TextCommandType mCommandType;
+        TextCommandTypeT mCommandType;
         Image *mImage;
 };
 

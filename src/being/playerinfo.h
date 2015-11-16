@@ -227,7 +227,7 @@ namespace PlayerInfo
 
     void gameDestroyed();
 
-    void stateChange(const State state);
+    void stateChange(const StateT state);
 
     void triggerAttr(const AttributesT id,
                      const int old);

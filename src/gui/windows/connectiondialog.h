@@ -46,7 +46,7 @@ class ConnectionDialog final : public Window,
          *
          * @see Window::Window
          */
-        ConnectionDialog(const std::string &text, const State cancelState);
+        ConnectionDialog(const std::string &text, const StateT cancelState);
 
         A_DELETE_COPY(ConnectionDialog)
 
@@ -63,7 +63,7 @@ class ConnectionDialog final : public Window,
         void safeDraw(Graphics *graphics) override final A_NONNULL(2);
 
     private:
-        State mCancelState;
+        StateT mCancelState;
 };
 
 #endif  // GUI_WINDOWS_CONNECTIONDIALOG_H

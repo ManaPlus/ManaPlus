@@ -284,7 +284,7 @@ void SpellManager::load(const bool oldConfig)
         std::string icon = cfg->getValue("commandShortcutIcon"
                                          + toString(i), "");
 
-        if (static_cast<TextCommandType>(commandType) ==
+        if (static_cast<TextCommandTypeT>(commandType) ==
             TextCommandType::Magic)
         {
             addSpell(new TextCommand(i, symbol, cmd, comment,

@@ -72,7 +72,7 @@ QuitDialog::QuitDialog(QuitDialog **const pointerToMe) :
     addKeyListener(this);
 
     ContainerPlacer placer = getPlacer(0, 0);
-    const State state = client->getState();
+    const StateT state = client->getState();
     mNeedForceQuit = (state == State::CHOOSE_SERVER
         || state == State::CONNECT_SERVER || state == State::LOGIN
         || state == State::PRE_LOGIN || state == State::LOGIN_ATTEMPT

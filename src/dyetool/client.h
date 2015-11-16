@@ -68,10 +68,10 @@ class Client final : public ActionListener
 
         static int testsExec();
 
-        void setState(const State state)
+        void setState(const StateT state)
         { mState = state; }
 
-        State getState() const A_WARN_UNUSED
+        StateT getState() const A_WARN_UNUSED
         { return mState; }
 
         void action(const ActionEvent &event) override final;
@@ -108,8 +108,8 @@ class Client final : public ActionListener
         Button *mCloseButton;
 #endif
 
-        State mState;
-        State mOldState;
+        StateT mState;
+        StateT mOldState;
 
         Skin *mSkin;
         int mButtonPadding;
