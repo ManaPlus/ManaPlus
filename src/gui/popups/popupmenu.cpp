@@ -631,7 +631,7 @@ void PopupMenu::showPopup(const int x, const int y, MapItem *const mapItem)
         mBrowserBox->addRow("##3---");
         // TRANSLATORS: popup menu item
         // TRANSLATORS: warp to map item
-        mBrowserBox->addRow("/warp 'MAPX' 'MAPY'", _("Warp"));
+        mBrowserBox->addRow("/slide 'MAPX' 'MAPY'", _("Warp"));
     }
     mBrowserBox->addRow("##3---");
     // TRANSLATORS: popup menu item
@@ -660,7 +660,7 @@ void PopupMenu::showMapPopup(const int x, const int y,
     {
         // TRANSLATORS: popup menu item
         // TRANSLATORS: warp to map item
-        mBrowserBox->addRow("/warp 'MAPX' 'MAPY'", _("Warp"));
+        mBrowserBox->addRow("/slide 'MAPX' 'MAPY'", _("Warp"));
     }
     // TRANSLATORS: popup menu item
     // TRANSLATORS: move to map item
