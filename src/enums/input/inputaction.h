@@ -604,6 +604,7 @@ enumStart(InputAction)
     SERVER_CONG_GET,
     CHANGE_TARGETING_TYPE,
     TEST_INFO,
+    SLIDE,
     TOTAL
 }
 enumEnd(InputAction);

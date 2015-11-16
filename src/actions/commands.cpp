@@ -1049,4 +1049,17 @@ impHandler(serverConfGet)
     return true;
 }
 
+impHandler(slide)
+{
+    int x = 0;
+    int y = 0;
+
+    if (adminHandler && parse2Int(event.args, x, y))
+    {
+        adminHandler->slide(x, y);
+        return true;
+    }
+    return false;
+}
+
 }  // namespace Actions

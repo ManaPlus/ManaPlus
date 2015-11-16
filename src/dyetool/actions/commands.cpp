@@ -89,5 +89,6 @@ impHandlerVoid(confSet)
 impHandlerVoid(serverConfSet)
 impHandlerVoid(confGet)
 impHandlerVoid(serverConfGet)
+impHandlerVoid(slide)
 
 }  // namespace Actions
