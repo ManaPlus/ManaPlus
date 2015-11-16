@@ -950,7 +950,7 @@ SET(SRCS
     input/inputitem.h
     input/inputmanager.cpp
     input/inputmanager.h
-    input/inputtype.h
+    enums/input/inputtype.h
     events/inputevent.h
     input/joystick.cpp
     input/joystick.h
