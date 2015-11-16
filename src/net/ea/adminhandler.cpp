@@ -22,9 +22,12 @@
 
 #include "net/ea/adminhandler.h"
 
+#include "game.h"
+
 #include "gui/chatconsts.h"
 
 #include "net/chathandler.h"
+#include "net/serverfeatures.h"
 
 #include "utils/stringutils.h"
 
@@ -74,6 +77,19 @@ void AdminHandler::createItems(const int id,
 {
     chatHandler->talk(strprintf("@item %d %d", id, amount),
         GENERAL_CHANNEL);
+}
+
+void AdminHandler::slide(const int x, const int y) const
+{
+    if (serverFeatures->haveSlide())
+    {
+        chatHandler->talk(strprintf("@slide %d %d", x, y),
+            GENERAL_CHANNEL);
+    }
+    else
+    {
+        warp(Game::instance()->getCurrentMapName(), x, y);
+    }
 }
 
 }  // namespace Ea

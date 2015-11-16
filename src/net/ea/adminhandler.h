@@ -55,6 +55,8 @@ class AdminHandler notfinal : public Net::AdminHandler
 
         void ipcheckName(const std::string &name) const override final;
 
+        void slide(const int x, const int y) const override final;
+
         void createItems(const int id,
                          const ItemColor color,
                          const int amount) const override final;

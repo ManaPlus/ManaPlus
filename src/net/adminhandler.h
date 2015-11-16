@@ -70,6 +70,8 @@ class AdminHandler notfinal
         virtual void warp(const std::string &map,
                           const int x, const int y) const = 0;
 
+        virtual void slide(const int x, const int y) const = 0;
+
         virtual void createItems(const int id,
                                  const ItemColor color,
                                  const int amount) const = 0;
