@@ -18,8 +18,10 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef INPUT_INPUTTYPE_H
-#define INPUT_INPUTTYPE_H
+#ifndef ENUMS_INPUT_INPUTTYPE_H
+#define ENUMS_INPUT_INPUTTYPE_H
+
+#include "enums/simpletypes/enumdefines.h"
 
 // hack to avoid conflicts with windows headers.
 #ifdef KEYBOARD
@@ -29,15 +31,13 @@
 #undef MOUSE
 #endif
 
-namespace InputType
+enumStart(InputType)
 {
-    enum Type
-    {
-        UNKNOWN = 0,
-        KEYBOARD = 1,
-        MOUSE = 2,
-        JOYSTICK = 3
-    };
+    UNKNOWN  = 0,
+    KEYBOARD = 1,
+    MOUSE    = 2,
+    JOYSTICK = 3
 }
+enumEnd(InputType);
 
-#endif  // INPUT_INPUTTYPE_H
+#endif  // ENUMS_INPUT_INPUTTYPE_H

@@ -25,15 +25,17 @@
 
 #include "actions/actionfuncptr.h"
 
+#include "enums/input/inputtype.h"
+
 #include "enums/simpletypes/useargs.h"
 #include "enums/simpletypes/protected.h"
 
 struct InputActionData final
 {
     const char *const configField;
-    const int defaultType1;
+    const InputTypeT defaultType1;
     const int defaultValue1;
-    const int defaultType2;
+    const InputTypeT defaultType2;
     const int defaultValue2;
     const int grp;
     const ActionFuncPtr action;

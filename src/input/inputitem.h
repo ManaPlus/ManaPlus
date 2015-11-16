@@ -21,20 +21,24 @@
 #ifndef INPUT_INPUTITEM_H
 #define INPUT_INPUTITEM_H
 
+#include "enums/input/inputtype.h"
+
 #include "localconsts.h"
 
 struct InputItem final
 {
     InputItem() :
-        type(-1),
+        type(InputType::UNKNOWN),
         value(-1)
     { }
 
-    InputItem(const int type0, const int value0) :
-        type(type0), value(value0)
+    InputItem(const InputTypeT type0,
+              const int value0) :
+        type(type0),
+        value(value0)
     { }
 
-    int type;
+    InputTypeT type;
     int value;
 };
 

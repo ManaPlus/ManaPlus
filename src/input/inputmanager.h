@@ -23,6 +23,8 @@
 
 #include "input/inputfunction.h"
 
+#include "enums/input/inputtype.h"
+
 #include "events/inputevent.h"
 
 #include "utils/stringmap.h"
@@ -77,10 +79,11 @@ class InputManager final
         std::string getKeyValueByNameLong(const std::string &keyName);
 
         void addActionKey(const InputActionT action,
-                          const int type,
+                          const InputTypeT type,
                           const int val);
 
-        void setNewKey(const SDL_Event &event, const int type);
+        void setNewKey(const SDL_Event &event,
+                       const InputTypeT type);
 
         void unassignKey();
 
@@ -106,12 +109,13 @@ class InputManager final
 
         void updateKeyActionMap(KeyToActionMap &actionMap,
                                 KeyToIdMap &idMap, KeyTimeMap &keyTimeMap,
-                                const int type) const;
+                                const InputType type) const;
 
         bool invokeKey(const InputActionData *const key,
                        const InputActionT keyNum);
 
-        bool handleAssignKey(const SDL_Event &event, const int type);
+        bool handleAssignKey(const SDL_Event &event,
+                             const InputTypeT type);
 
         static void handleRepeat();
 
@@ -119,7 +123,7 @@ class InputManager final
 
         InputActionT getKeyIndex(const int value,
                                  const int grp,
-                                 const int type) const A_WARN_UNUSED;
+                                 const InputTypeT type) const A_WARN_UNUSED;
 
         static void update();
 

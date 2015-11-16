@@ -35,10 +35,11 @@
 #include "actions/target.h"
 #include "actions/windows.h"
 
+#include "enums/input/inputtype.h"
+
 #include "input/inputactiondata.h"
 #include "input/inputcondition.h"
 #include "input/inputmanager.h"
-#include "input/inputtype.h"
 
 #include "localconsts.h"
 

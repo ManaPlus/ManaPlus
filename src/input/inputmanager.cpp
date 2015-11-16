@@ -146,7 +146,7 @@ void InputManager::retrieve()
                 std::string keyStr2 = *it;
                 if (keyStrSize < 2)
                     continue;
-                int type = InputType::KEYBOARD;
+                InputTypeT type = InputType::KEYBOARD;
                 if ((keyStr2[0] < '0' || keyStr2[0] > '9')
                     && keyStr2[0] != '-')
                 {
@@ -463,7 +463,7 @@ std::string InputManager::getKeyValueByNameLong(const std::string &keyName)
 }
 
 void InputManager::addActionKey(const InputActionT action,
-                                const int type,
+                                const InputTypeT type,
                                 const int val)
 {
     if (static_cast<int>(action) < 0 || action >= InputAction::TOTAL)
@@ -496,7 +496,8 @@ void InputManager::addActionKey(const InputActionT action,
     key.values[idx] = InputItem(type, val);
 }
 
-void InputManager::setNewKey(const SDL_Event &event, const int type)
+void InputManager::setNewKey(const SDL_Event &event,
+                             const InputTypeT type)
 {
     int val = -1;
     if (type == InputType::KEYBOARD)
@@ -525,7 +526,7 @@ void InputManager::unassignKey()
 
 #ifndef DYECMD
 bool InputManager::handleAssignKey(const SDL_Event &event,
-                                   const int type)
+                                   const InputTypeT type)
 {
     if (setupWindow && setupWindow->isWindowVisible() &&
         getNewKeyIndex() > InputAction::NO_VALUE)
@@ -539,7 +540,7 @@ bool InputManager::handleAssignKey(const SDL_Event &event,
 }
 #else
 bool InputManager::handleAssignKey(const SDL_Event &event A_UNUSED,
-                                   const int type A_UNUSED)
+                                   const InputTypeT type A_UNUSED)
 {
     return false;
 }
@@ -863,7 +864,7 @@ bool InputManager::executeChatCommand(const InputActionT keyNum,
 void InputManager::updateKeyActionMap(KeyToActionMap &actionMap,
                                       KeyToIdMap &idMap,
                                       KeyTimeMap &keyTimeMap,
-                                      const int type) const
+                                      const InputType type) const
 {
     actionMap.clear();
     keyTimeMap.clear();
@@ -934,7 +935,7 @@ bool InputManager::triggerAction(const KeysVector *const ptrs)
 
 InputActionT InputManager::getKeyIndex(const int value,
                                        const int grp,
-                                       const int type) const
+                                       const InputTypeT type) const
 {
     for (size_t i = 0; i < static_cast<size_t>(InputAction::TOTAL); i++)
     {
