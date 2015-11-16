@@ -390,7 +390,7 @@ void ItemShortcutContainer::mouseDragged(MouseEvent &event)
                 if (item)
                 {
                     selShortcut->removeItem(index);
-                    dragDrop.dragItem(item, DRAGDROP_SOURCE_SHORTCUTS, index);
+                    dragDrop.dragItem(item, DragDropSource::Shortcuts, index);
                 }
                 else
                 {
@@ -411,7 +411,7 @@ void ItemShortcutContainer::mouseDragged(MouseEvent &event)
                 {
                     selShortcut->removeItem(index);
                     dragDrop.dragCommand(spell,
-                        DRAGDROP_SOURCE_SHORTCUTS, index);
+                        DragDropSource::Shortcuts, index);
                     dragDrop.setItem(itemId);
                 }
                 else
@@ -432,7 +432,7 @@ void ItemShortcutContainer::mouseDragged(MouseEvent &event)
                 {
                     selShortcut->removeItem(index);
                     dragDrop.dragSkill(skill,
-                        DRAGDROP_SOURCE_SHORTCUTS, index);
+                        DragDropSource::Shortcuts, index);
                     dragDrop.setItem(itemId);
                 }
                 else
@@ -509,7 +509,7 @@ void ItemShortcutContainer::mouseReleased(MouseEvent &event)
         }
         else
         {
-            if (dragDrop.getSource() == DRAGDROP_SOURCE_SHORTCUTS)
+            if (dragDrop.getSource() == DragDropSource::Shortcuts)
             {
                 const int oldIndex = dragDrop.getTag();
                 selShortcut->setItem(oldIndex, dragDrop.getItem(),

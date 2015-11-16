@@ -35,7 +35,7 @@
 
 #include "debug.h"
 
-DragDrop dragDrop(nullptr, DRAGDROP_SOURCE_EMPTY);
+DragDrop dragDrop(nullptr, DragDropSource::Empty);
 
 Item::Item(const int id,
            const int type,

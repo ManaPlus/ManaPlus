@@ -200,7 +200,7 @@ void SpellShortcutContainer::mouseDragged(MouseEvent &event)
             TextCommand *const spell = spellManager->getSpell(itemId);
             if (spell)
             {
-                dragDrop.dragCommand(spell, DRAGDROP_SOURCE_SPELLS, index);
+                dragDrop.dragCommand(spell, DragDropSource::Spells, index);
                 dragDrop.setItem(spell->getId() + SPELL_MIN_ID);
             }
             else
@@ -269,7 +269,7 @@ void SpellShortcutContainer::mouseReleased(MouseEvent &event)
 
         if (!dragDrop.isEmpty())
         {
-            if (dragDrop.getSource() == DRAGDROP_SOURCE_SPELLS)
+            if (dragDrop.getSource() == DragDropSource::Spells)
             {
                 const int oldIndex = dragDrop.getTag();
                 const int idx = mNumber * SPELL_SHORTCUT_ITEMS;

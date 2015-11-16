@@ -359,8 +359,8 @@ void EquipmentWindow::action(const ActionEvent &event)
     else if (eventId == "playerbox")
     {
         const DragDropSource src = dragDrop.getSource();
-        if (dragDrop.isEmpty() || (src != DRAGDROP_SOURCE_INVENTORY
-            && src != DRAGDROP_SOURCE_EQUIPMENT))
+        if (dragDrop.isEmpty() || (src != DragDropSource::Inventory
+            && src != DragDropSource::Equipment))
         {
             return;
         }
@@ -373,7 +373,7 @@ void EquipmentWindow::action(const ActionEvent &event)
         if (!item)
             return;
 
-        if (dragDrop.getSource() == DRAGDROP_SOURCE_INVENTORY)
+        if (dragDrop.getSource() == DragDropSource::Inventory)
         {
             if (item->isEquipment() == Equipm_true)
             {
@@ -459,7 +459,7 @@ void EquipmentWindow::mousePressed(MouseEvent& event)
                 {
                     event.consume();
                     setSelected(i);
-                    dragDrop.dragItem(item, DRAGDROP_SOURCE_EQUIPMENT);
+                    dragDrop.dragItem(item, DragDropSource::Equipment);
                     return;
                 }
             }
@@ -502,8 +502,8 @@ void EquipmentWindow::mouseReleased(MouseEvent &event)
 {
     Window::mouseReleased(event);
     const DragDropSource src = dragDrop.getSource();
-    if (dragDrop.isEmpty() || (src != DRAGDROP_SOURCE_INVENTORY
-        && src != DRAGDROP_SOURCE_EQUIPMENT))
+    if (dragDrop.isEmpty() || (src != DragDropSource::Inventory
+        && src != DragDropSource::Equipment))
     {
         return;
     }
@@ -517,7 +517,7 @@ void EquipmentWindow::mouseReleased(MouseEvent &event)
     if (!item)
         return;
 
-    if (dragDrop.getSource() == DRAGDROP_SOURCE_INVENTORY)
+    if (dragDrop.getSource() == DragDropSource::Inventory)
     {
         if (item->isEquipment() == Equipm_true)
         {
@@ -525,7 +525,7 @@ void EquipmentWindow::mouseReleased(MouseEvent &event)
                 PlayerInfo::equipItem(item, Sfx_true);
         }
     }
-    else if (dragDrop.getSource() == DRAGDROP_SOURCE_EQUIPMENT)
+    else if (dragDrop.getSource() == DragDropSource::Equipment)
     {
         if (item->isEquipment() == Equipm_true)
         {

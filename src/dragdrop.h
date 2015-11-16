@@ -97,7 +97,7 @@ class DragDrop final
                 mItem = 0;
                 mItemColor = ItemColor_one;
                 mItemImage = nullptr;
-                mSource = DRAGDROP_SOURCE_EMPTY;
+                mSource = DragDropSource::Empty;
                 mTag = -1;
             }
         }
@@ -146,7 +146,7 @@ class DragDrop final
             mItemColor = ItemColor_one;
             mText.clear();
             mItemImage = nullptr;
-            mSource = DRAGDROP_SOURCE_EMPTY;
+            mSource = DragDropSource::Empty;
             mTag = -1;
             if (info)
             {
@@ -173,13 +173,13 @@ class DragDrop final
             mItem = 0;
             mItemColor = ItemColor_one;
             mItemImage = nullptr;
-            mSource = DRAGDROP_SOURCE_EMPTY;
+            mSource = DragDropSource::Empty;
             mText.clear();
             mTag = -1;
         }
 
         bool isEmpty() const
-        { return mSource == DRAGDROP_SOURCE_EMPTY; }
+        { return mSource == DragDropSource::Empty; }
 
         void select(const Item *const item)
         {
@@ -225,16 +225,16 @@ class DragDrop final
 
         bool isSourceItemContainer() const
         {
-            return mSource == DRAGDROP_SOURCE_INVENTORY
-                || mSource == DRAGDROP_SOURCE_STORAGE
+            return mSource == DragDropSource::Inventory
+                || mSource == DragDropSource::Storage
 #ifdef EATHENA_SUPPORT
-                || mSource == DRAGDROP_SOURCE_CART
+                || mSource == DragDropSource::Cart
 #endif
-                || mSource == DRAGDROP_SOURCE_TRADE
-                || mSource == DRAGDROP_SOURCE_OUTFIT
-                || mSource == DRAGDROP_SOURCE_GROUND
-                || mSource == DRAGDROP_SOURCE_DROP
-                || mSource == DRAGDROP_SOURCE_CRAFT;
+                || mSource == DragDropSource::Trade
+                || mSource == DragDropSource::Outfit
+                || mSource == DragDropSource::Ground
+                || mSource == DragDropSource::Drop
+                || mSource == DragDropSource::Craft;
         }
 
     private:

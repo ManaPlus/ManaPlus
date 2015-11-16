@@ -575,27 +575,27 @@ void ItemContainer::mousePressed(MouseEvent &event)
         if (item && mDescItems && chatWindow)
             chatWindow->addItemText(item->getInfo().getName());
 
-        DragDropSource src = DRAGDROP_SOURCE_EMPTY;
+        DragDropSource src = DragDropSource::Empty;
         switch (mInventory->getType())
         {
             case InventoryType::INVENTORY:
-                src = DRAGDROP_SOURCE_INVENTORY;
+                src = DragDropSource::Inventory;
                 break;
             case InventoryType::STORAGE:
-                src = DRAGDROP_SOURCE_STORAGE;
+                src = DragDropSource::Storage;
                 break;
             case InventoryType::TRADE:
-                src = DRAGDROP_SOURCE_TRADE;
+                src = DragDropSource::Trade;
                 break;
             case InventoryType::NPC:
-                src = DRAGDROP_SOURCE_NPC;
+                src = DragDropSource::Npc;
                 break;
 #ifdef EATHENA_SUPPORT
             case InventoryType::CART:
-                src = DRAGDROP_SOURCE_CART;
+                src = DragDropSource::Cart;
                 break;
             case InventoryType::MAIL:
-                src = DRAGDROP_SOURCE_MAIL;
+                src = DragDropSource::Mail;
                 break;
 #endif
             default:
@@ -682,27 +682,27 @@ void ItemContainer::mouseReleased(MouseEvent &event)
     else if (mInventory)
     {
         const DragDropSource src = dragDrop.getSource();
-        DragDropSource dst = DRAGDROP_SOURCE_EMPTY;
+        DragDropSource dst = DragDropSource::Empty;
         switch (mInventory->getType())
         {
             case InventoryType::INVENTORY:
-                dst = DRAGDROP_SOURCE_INVENTORY;
+                dst = DragDropSource::Inventory;
                 break;
             case InventoryType::STORAGE:
-                dst = DRAGDROP_SOURCE_STORAGE;
+                dst = DragDropSource::Storage;
                 break;
             case InventoryType::TRADE:
-                dst = DRAGDROP_SOURCE_TRADE;
+                dst = DragDropSource::Trade;
                 break;
             case InventoryType::NPC:
-                dst = DRAGDROP_SOURCE_NPC;
+                dst = DragDropSource::Npc;
                 break;
 #ifdef EATHENA_SUPPORT
             case InventoryType::MAIL:
-                dst = DRAGDROP_SOURCE_MAIL;
+                dst = DragDropSource::Mail;
                 break;
             case InventoryType::CART:
-                dst = DRAGDROP_SOURCE_CART;
+                dst = DragDropSource::Cart;
                 break;
 #endif
             default:
@@ -716,30 +716,30 @@ void ItemContainer::mouseReleased(MouseEvent &event)
         int dstContainer = -1;
         bool checkProtection(false);
         Inventory *inventory = nullptr;
-        if (src == DRAGDROP_SOURCE_INVENTORY
-            && dst == DRAGDROP_SOURCE_STORAGE)
+        if (src == DragDropSource::Inventory
+            && dst == DragDropSource::Storage)
         {
             srcContainer = InventoryType::INVENTORY;
             dstContainer = InventoryType::STORAGE;
             inventory = PlayerInfo::getInventory();
         }
-        else if (src == DRAGDROP_SOURCE_STORAGE
-                 && dst == DRAGDROP_SOURCE_INVENTORY)
+        else if (src == DragDropSource::Storage
+                 && dst == DragDropSource::Inventory)
         {
             srcContainer = InventoryType::STORAGE;
             dstContainer = InventoryType::INVENTORY;
             inventory = PlayerInfo::getStorageInventory();
         }
 #ifdef EATHENA_SUPPORT
-        if (src == DRAGDROP_SOURCE_INVENTORY
-            && dst == DRAGDROP_SOURCE_CART)
+        if (src == DragDropSource::Inventory
+            && dst == DragDropSource::Cart)
         {
             srcContainer = InventoryType::INVENTORY;
             dstContainer = InventoryType::CART;
             inventory = PlayerInfo::getInventory();
         }
-        if (src == DRAGDROP_SOURCE_INVENTORY
-            && dst == DRAGDROP_SOURCE_INVENTORY)
+        if (src == DragDropSource::Inventory
+            && dst == DragDropSource::Inventory)
         {
             const int index = getSlotIndex(event.getX(), event.getY());
             if (index == Inventory::NO_SLOT_INDEX)
@@ -750,40 +750,40 @@ void ItemContainer::mouseReleased(MouseEvent &event)
                 inventoryWindow->combineItems(index, mSelectedIndex);
             return;
         }
-        else if (src == DRAGDROP_SOURCE_CART
-                 && dst == DRAGDROP_SOURCE_INVENTORY)
+        else if (src == DragDropSource::Cart
+                 && dst == DragDropSource::Inventory)
         {
             srcContainer = InventoryType::CART;
             dstContainer = InventoryType::INVENTORY;
             inventory = PlayerInfo::getCartInventory();
         }
-        else if (src == DRAGDROP_SOURCE_CART
-                 && dst == DRAGDROP_SOURCE_STORAGE)
+        else if (src == DragDropSource::Cart
+                 && dst == DragDropSource::Storage)
         {
             srcContainer = InventoryType::CART;
             dstContainer = InventoryType::STORAGE;
             inventory = PlayerInfo::getCartInventory();
         }
-        else if (src == DRAGDROP_SOURCE_STORAGE
-                 && dst == DRAGDROP_SOURCE_CART)
+        else if (src == DragDropSource::Storage
+                 && dst == DragDropSource::Cart)
         {
             srcContainer = InventoryType::STORAGE;
             dstContainer = InventoryType::CART;
             inventory = PlayerInfo::getStorageInventory();
         }
 #endif
-        if (src == DRAGDROP_SOURCE_INVENTORY
-            && dst == DRAGDROP_SOURCE_TRADE)
+        if (src == DragDropSource::Inventory
+            && dst == DragDropSource::Trade)
         {
             checkProtection = true;
             inventory = PlayerInfo::getInventory();
         }
-        else if (src == DRAGDROP_SOURCE_INVENTORY
+        else if (src == DragDropSource::Inventory
 #ifdef EATHENA_SUPPORT
-                 && (dst == DRAGDROP_SOURCE_NPC
-                 || dst == DRAGDROP_SOURCE_MAIL))
+                 && (dst == DragDropSource::Npc
+                 || dst == DragDropSource::Mail))
 #else
-                 && dst == DRAGDROP_SOURCE_NPC)
+                 && dst == DragDropSource::Npc)
 #endif
         {
             inventory = PlayerInfo::getInventory();
@@ -799,10 +799,10 @@ void ItemContainer::mouseReleased(MouseEvent &event)
             }
             return;
         }
-        else if (src == DRAGDROP_SOURCE_NPC)
+        else if (src == DragDropSource::Npc)
         {
             inventory = PlayerInfo::getInventory();
-            if (dst == DRAGDROP_SOURCE_NPC)
+            if (dst == DragDropSource::Npc)
             {
                 const Item *const item = mInventory->getItem(
                     dragDrop.getTag());
@@ -847,7 +847,7 @@ void ItemContainer::mouseReleased(MouseEvent &event)
             }
         }
 #ifdef EATHENA_SUPPORT
-        else if (src == DRAGDROP_SOURCE_MAIL)
+        else if (src == DragDropSource::Mail)
         {
             inventory = PlayerInfo::getInventory();
             if (inventory)
