@@ -69,7 +69,8 @@ void SkillUnitDb::loadXmlFile(const std::string &fileName)
     {
         if (xmlNameEqual(skillUnitNode, "include"))
         {
-            const std::string name = XML::getProperty(skillUnitNode, "name", "");
+            const std::string name = XML::getProperty(skillUnitNode,
+                "name", "");
             if (!name.empty())
                 loadXmlFile(name);
             continue;

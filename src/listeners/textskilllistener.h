@@ -27,8 +27,6 @@
 
 class TextDialog;
 
-struct SkillInfo;
-
 class TextSkillListener final : public ActionListener
 {
     public:

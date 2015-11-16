@@ -72,7 +72,8 @@ ShopItem::ShopItem(const int id,
     mPrice(price),
     mUsedQuantity(0),
     mShowQuantity(false),
-    mVisible(true)
+    mVisible(true),
+    mDisabled(false)
 {
     updateDisplayName(0);
     setInvIndex(-1);

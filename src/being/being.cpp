@@ -270,8 +270,12 @@ Being::Being(const BeingId id,
         mGotComment = true;
     }
 
+#ifdef EATHENA_SUPPORT
     if (mType == ActorType::Portal ||
         mType == ActorType::SkillUnit)
+#else
+    if (mType == ActorType::Portal)
+#endif
     {
         mShowName = false;
     }
@@ -1486,9 +1490,14 @@ void Being::setAction(const BeingActionT &action, const int attackId)
                     this,
                     false,
                     mX, mY);
+#ifdef EATHENA_SUPPORT
                 if (mType == ActorType::Monster ||
                     mType == ActorType::Npc ||
                     mType == ActorType::SkillUnit)
+#else
+                if (mType == ActorType::Monster ||
+                    mType == ActorType::Npc)
+#endif
                 {
                     mYDiff = mInfo->getDeadSortOffsetY();
                 }
@@ -1723,6 +1732,7 @@ void Being::logic()
         case BeingAction::DEAD:
         case BeingAction::HURT:
         case BeingAction::SPAWN:
+        case BeingAction::CAST:
         default:
             break;
 
@@ -1944,6 +1954,7 @@ void Being::petLogic()
             case BeingAction::MOVE:
             case BeingAction::HURT:
             case BeingAction::SPAWN:
+            case BeingAction::CAST:
             case BeingAction::PRESTAND:
             default:
                 directionType = mInfo->getDirectionType();
@@ -2299,6 +2310,7 @@ void Being::updateColors()
             setDefaultNameColor(UserColorId::NPC);
             mTextColor = &userPalette->getColor(UserColorId::NPC);
         }
+#ifdef EATHENA_SUPPORT
         else if (mType == ActorType::Pet)
         {
             setDefaultNameColor(UserColorId::PET);
@@ -2314,6 +2326,14 @@ void Being::updateColors()
             setDefaultNameColor(UserColorId::SKILLUNIT);
             mTextColor = &userPalette->getColor(UserColorId::SKILLUNIT);
         }
+#endif
+#ifdef TMWA_SUPPORT
+        else if (mType == ActorType::LocalPet)
+        {
+            setDefaultNameColor(UserColorId::PET);
+            mTextColor = &userPalette->getColor(UserColorId::PET);
+        }
+#endif
         else if (this == localPlayer)
         {
             mNameColor = &userPalette->getColor(UserColorId::SELF);
@@ -3432,6 +3452,7 @@ std::string Being::loadComment(const std::string &name,
         case ActorType::Mercenary:
         case ActorType::Homunculus:
         case ActorType::Pet:
+        case ActorType::SkillUnit:
 #endif
         default:
             return "";
@@ -3471,6 +3492,7 @@ void Being::saveComment(const std::string &restrict name,
         case ActorType::Pet:
         case ActorType::Mercenary:
         case ActorType::Homunculus:
+        case ActorType::SkillUnit:
 #endif
         default:
             return;
@@ -3792,6 +3814,7 @@ void Being::fixPetSpawnPos(int &dstX, int &dstY) const
         case BeingAction::HURT:
         case BeingAction::STAND:
         case BeingAction::PRESTAND:
+        case BeingAction::CAST:
         default:
             offsetX1 = mInfo->getTargetOffsetX();
             offsetY1 = mInfo->getTargetOffsetY();

@@ -46,7 +46,6 @@
 #include "gui/widgets/vertcontainer.h"
 #include "gui/widgets/windowcontainer.h"
 
-#include "net/gamehandler.h"
 #include "net/inventoryhandler.h"
 #include "net/playerhandler.h"
 

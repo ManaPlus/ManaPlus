@@ -190,7 +190,8 @@ bool EffectManager::trigger(const int id,
             rValue = true;
             if (!effect.gfx.empty())
             {
-                Particle *const particle = particleEngine->addEffect(effect.gfx,
+                Particle *const particle = particleEngine->addEffect(
+                    effect.gfx,
                     x, y,
                     rotation);
                 if (particle)

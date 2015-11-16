@@ -26,8 +26,6 @@
 
 #include "localconsts.h"
 
-class Widget;
-
 struct NpcDialogInfo;
 
 /**

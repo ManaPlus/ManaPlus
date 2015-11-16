@@ -366,6 +366,9 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
                 mBrowserBox->addRow("##3---");
             }
             break;
+        case ActorType::SkillUnit:
+            // +++ need impliment menu
+            break;
 #endif
         case ActorType::Avatar:
         case ActorType::Unknown:

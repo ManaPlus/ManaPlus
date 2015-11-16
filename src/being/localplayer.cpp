@@ -719,6 +719,7 @@ bool LocalPlayer::toggleSit() const
         case BeingAction::ATTACK:
         case BeingAction::DEAD:
         case BeingAction::HURT:
+        case BeingAction::CAST:
         default:
             return true;
     }

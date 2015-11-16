@@ -38,7 +38,7 @@ enumStart(ActorType)
     Pet,
     Mercenary,
     Homunculus,
-    SkillUnit,
+    SkillUnit
 #else
     Avatar
 #endif

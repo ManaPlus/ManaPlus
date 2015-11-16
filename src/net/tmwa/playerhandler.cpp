@@ -131,6 +131,7 @@ void PlayerHandler::changeAction(const BeingActionT &action) const
         case BeingAction::DEAD:
         case BeingAction::HURT:
         case BeingAction::SPAWN:
+        case BeingAction::CAST:
             return;
     }
 

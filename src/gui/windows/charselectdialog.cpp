@@ -48,7 +48,6 @@
 #include "net/character.h"
 #include "net/charserverhandler.h"
 #include "net/logindata.h"
-#include "net/loginhandler.h"
 #include "net/serverfeatures.h"
 
 #include "debug.h"

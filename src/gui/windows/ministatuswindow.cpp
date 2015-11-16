@@ -42,7 +42,6 @@
 #include "gui/widgets/progressbar.h"
 
 #include "net/playerhandler.h"
-#include "net/gamehandler.h"
 
 #include "utils/delete2.h"
 #include "utils/dtor.h"
@@ -79,7 +78,8 @@ MiniStatusWindow::MiniStatusWindow() :
         ? "mpprogressbar_fill.xml" : "nompprogressbar_fill.xml",
         // TRANSLATORS: status bar name
         "mp bar", _("mana bar"))),
-    mXpBar(createBar(0, 100, 0, ThemeColorId::XP_BAR, ProgressColorId::PROG_EXP,
+    mXpBar(createBar(0, 100, 0,
+        ThemeColorId::XP_BAR, ProgressColorId::PROG_EXP,
         "xpprogressbar.xml", "xpprogressbar_fill.xml",
         // TRANSLATORS: status bar name
         "xp bar", _("experience bar"))),

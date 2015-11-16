@@ -119,7 +119,6 @@ class ChangeDisplay final : public AttrDisplay,
         int mNeeded;
 
         Label *mPoints;
-        Button *mDec;
         Button *mInc;
 };
 
