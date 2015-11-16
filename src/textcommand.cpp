@@ -34,12 +34,16 @@
 
 #include "debug.h"
 
-TextCommand::TextCommand(const unsigned int id, const std::string &symbol,
+TextCommand::TextCommand(const unsigned int id,
+                         const std::string &symbol,
                          const std::string &command,
                          const std::string &comment,
-                         const CommandTargetT type, const std::string &icon,
-                         const unsigned int basicLvl, const MagicSchool school,
-                         const unsigned int schoolLvl, const int mana) :
+                         const CommandTargetT type,
+                         const std::string &icon,
+                         const unsigned int basicLvl,
+                         const MagicSchoolT school,
+                         const unsigned int schoolLvl,
+                         const int mana) :
     mCommand(command),
     mComment(comment),
     mSymbol(symbol),
@@ -68,7 +72,7 @@ TextCommand::TextCommand(const unsigned int id, const std::string &symbol,
     mIcon(icon),
     mId(id),
     mMana(0),
-    mSchool(SKILL_MAGIC),
+    mSchool(MagicSchool::SkillMagic),
     mBaseLvl(0),
     mSchoolLvl(0),
     mCommandType(TEXT_COMMAND_TEXT),
@@ -85,7 +89,7 @@ TextCommand::TextCommand(const unsigned int id) :
     mIcon(""),
     mId(id),
     mMana(0),
-    mSchool(SKILL_MAGIC),
+    mSchool(MagicSchool::SkillMagic),
     mBaseLvl(0),
     mSchoolLvl(0),
     mCommandType(TEXT_COMMAND_TEXT),

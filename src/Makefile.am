@@ -694,6 +694,7 @@ manaplus_SOURCES += main.cpp \
 	      enums/equipslot.h \
 	      enums/guildpositionflags.h \
 	      enums/inventorytype.h \
+	      enums/magicschool.h \
 	      spellshortcut.cpp \
 	      spellshortcut.h \
 	      statuseffect.cpp \

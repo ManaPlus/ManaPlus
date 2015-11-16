@@ -918,6 +918,7 @@ SET(SRCS
     enums/equipslot.h
     enums/guildpositionflags.h
     enums/inventorytype.h
+    enums/magicschool.h
     particle/imageparticle.cpp
     particle/imageparticle.h
     imagesprite.cpp

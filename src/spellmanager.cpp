@@ -136,7 +136,7 @@ void SpellManager::invoke(const int spellId) const
 
     if (spell->getCommandType() == TEXT_COMMAND_TEXT
         || (playerHandler->canUseMagic()
-        && PlayerInfo::getSkillLevel(SKILL_MAGIC)
+        && PlayerInfo::getSkillLevel(static_cast<int>(MagicSchool::SkillMagic))
         >= static_cast<signed>(spell->getBaseLvl())
         && PlayerInfo::getSkillLevel(static_cast<int>(
         spell->getSchool())) >= static_cast<signed>(spell->getSchoolLvl())
@@ -288,7 +288,7 @@ void SpellManager::load(const bool oldConfig)
         {
             addSpell(new TextCommand(i, symbol, cmd, comment,
                 static_cast<CommandTargetT>(targetType), icon, basicLvl,
-                static_cast<MagicSchool>(school), schoolLvl, mana));
+                static_cast<MagicSchoolT>(school), schoolLvl, mana));
         }
         else
         {

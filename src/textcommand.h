@@ -24,6 +24,7 @@
 #define TEXTCOMMAND_H
 
 #include "enums/commandtarget.h"
+#include "enums/magicschool.h"
 
 #include <string>
 
@@ -32,16 +33,6 @@
 const unsigned int MAGIC_START_ID = 340;
 
 class Image;
-
-enum MagicSchool
-{
-    SKILL_MAGIC = 340,
-    SKILL_MAGIC_LIFE = 341,
-    SKILL_MAGIC_WAR = 342,
-    SKILL_MAGIC_TRANSMUTE = 343,
-    SKILL_MAGIC_NATURE = 344,
-    SKILL_MAGIC_ASTRAL = 345
-};
 
 enum TextCommandType
 {
@@ -58,12 +49,16 @@ class TextCommand final
         /**
          * Constructor.
          */
-        TextCommand(const unsigned int id, const std::string &symbol,
+        TextCommand(const unsigned int id,
+                    const std::string &symbol,
                     const std::string &command,
-                    const std::string &comment, const CommandTargetT type,
-                    const std::string &icon, const unsigned int basicLvl,
-                    const MagicSchool school = SKILL_MAGIC,
-                    const unsigned int schoolLvl = 0, const int mana = 0);
+                    const std::string &comment,
+                    const CommandTargetT type,
+                    const std::string &icon,
+                    const unsigned int basicLvl,
+                    const MagicSchoolT school = MagicSchool::SkillMagic,
+                    const unsigned int schoolLvl = 0,
+                    const int mana = 0);
 
         /**
          * Constructor.
@@ -108,7 +103,7 @@ class TextCommand final
         int getMana() const A_WARN_UNUSED
         { return mMana; }
 
-        MagicSchool getSchool() const A_WARN_UNUSED
+        MagicSchoolT getSchool() const A_WARN_UNUSED
         { return mSchool; }
 
         unsigned getBaseLvl() const A_WARN_UNUSED
@@ -141,7 +136,7 @@ class TextCommand final
         void setMana(const unsigned int mana)
         { mMana = mana; }
 
-        void setSchool(const MagicSchool school)
+        void setSchool(const MagicSchoolT school)
         { mSchool = school; }
 
         void setBaseLvl(const unsigned int baseLvl)
@@ -170,7 +165,7 @@ class TextCommand final
         std::string mIcon;
         unsigned int mId;
         int mMana;
-        MagicSchool mSchool;
+        MagicSchoolT mSchool;
         unsigned mBaseLvl;
         unsigned mSchoolLvl;
         TextCommandType mCommandType;

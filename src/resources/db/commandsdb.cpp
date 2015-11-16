@@ -117,14 +117,25 @@ void CommandsDB::loadXmlFile(const std::string &fileName)
         TextCommand *cmd = nullptr;
         if (skill1)
         {
-            cmd = new TextCommand(id, name, command, comment,
-                targetType, icon, level1, static_cast<MagicSchool>(skill2),
-                level2, mana);
+            cmd = new TextCommand(id,
+                name,
+                command,
+                comment,
+                targetType,
+                icon,
+                level1,
+                static_cast<MagicSchoolT>(skill2),
+                level2,
+                mana);
         }
         else
         {
-            cmd = new TextCommand(id, name, command, comment,
-                targetType, icon);
+            cmd = new TextCommand(id,
+                name,
+                command,
+                comment,
+                targetType,
+                icon);
         }
         mCommands[id] = cmd;
     }
