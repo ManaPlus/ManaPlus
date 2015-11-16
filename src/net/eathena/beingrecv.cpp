@@ -37,6 +37,8 @@
 
 #include "input/keyboardconfig.h"
 
+#include "gui/viewport.h"
+
 #include "gui/windows/skilldialog.h"
 #include "gui/windows/socialwindow.h"
 #include "gui/windows/outfitwindow.h"
@@ -1484,6 +1486,8 @@ void BeingRecv::processBeingSlide(Net::MessageIn &msg)
     {
         localPlayer->stopAttack();
         localPlayer->navigateClean();
+        if (viewport)
+            viewport->returnCamera();
     }
 
     dstBeing->setAction(BeingAction::STAND, 0);
