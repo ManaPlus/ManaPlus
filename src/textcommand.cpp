@@ -54,7 +54,7 @@ TextCommand::TextCommand(const unsigned int id,
     mSchool(school),
     mBaseLvl(basicLvl),
     mSchoolLvl(schoolLvl),
-    mCommandType(TEXT_COMMAND_MAGIC),
+    mCommandType(TextCommandType::Magic),
     mImage(nullptr)
 {
     loadImage();
@@ -75,7 +75,7 @@ TextCommand::TextCommand(const unsigned int id, const std::string &symbol,
     mSchool(MagicSchool::SkillMagic),
     mBaseLvl(0),
     mSchoolLvl(0),
-    mCommandType(TEXT_COMMAND_TEXT),
+    mCommandType(TextCommandType::Text),
     mImage(nullptr)
 {
     loadImage();
@@ -92,7 +92,7 @@ TextCommand::TextCommand(const unsigned int id) :
     mSchool(MagicSchool::SkillMagic),
     mBaseLvl(0),
     mSchoolLvl(0),
-    mCommandType(TEXT_COMMAND_TEXT),
+    mCommandType(TextCommandType::Text),
     mImage(nullptr)
 {
     loadImage();

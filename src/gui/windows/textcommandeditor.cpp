@@ -47,7 +47,8 @@ TextCommandEditor::TextCommandEditor(TextCommand *const command) :
     Window(_("Command Editor"), Modal_false, nullptr, "commandeditor.xml"),
     ActionListener(),
     mIsMagicCommand(command ?
-        (command->getCommandType() == TEXT_COMMAND_MAGIC) : false),
+        (command->getCommandType() == TextCommandType::Magic) :
+        false),
     mCommand(command),
     // TRANSLATORS: command editor button
     mIsMagic(new RadioButton(this, _("magic"), "magic", mIsMagicCommand)),
@@ -131,7 +132,7 @@ TextCommandEditor::TextCommandEditor(TextCommand *const command) :
 
     if (command)
     {
-        if (command->getCommandType() == TEXT_COMMAND_MAGIC)
+        if (command->getCommandType() == TextCommandType::Magic)
             showControls(Visible_true);
         else
             showControls(Visible_false);
@@ -252,9 +253,9 @@ void TextCommandEditor::scheduleDelete()
 void TextCommandEditor::save()
 {
     if (mIsMagicCommand)
-        mCommand->setCommandType(TEXT_COMMAND_MAGIC);
+        mCommand->setCommandType(TextCommandType::Magic);
     else
-        mCommand->setCommandType(TEXT_COMMAND_TEXT);
+        mCommand->setCommandType(TextCommandType::Text);
 
     mCommand->setSymbol(mSymbolTextField->getText());
     mCommand->setCommand(mCommandTextField->getText());
@@ -273,7 +274,7 @@ void TextCommandEditor::save()
 
 void TextCommandEditor::deleteCommand()
 {
-    mCommand->setCommandType(TEXT_COMMAND_TEXT);
+    mCommand->setCommandType(TextCommandType::Text);
     mCommand->setSymbol("");
     mCommand->setCommand("");
     mCommand->setComment("");

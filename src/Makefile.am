@@ -559,6 +559,7 @@ SRC += events/actionevent.h \
 	      settings.h \
 	      enums/screendensity.h \
 	      enums/state.h \
+	      enums/textcommandtype.h \
 	      enums/simpletypes/allowsort.h \
 	      enums/simpletypes/allplayers.h \
 	      enums/simpletypes/autorelease.h \

@@ -134,7 +134,7 @@ void SpellManager::invoke(const int spellId) const
     if (!playerHandler || spell->getCommand().empty())
         return;
 
-    if (spell->getCommandType() == TEXT_COMMAND_TEXT
+    if (spell->getCommandType() == TextCommandType::Text
         || (playerHandler->canUseMagic()
         && PlayerInfo::getSkillLevel(static_cast<int>(MagicSchool::SkillMagic))
         >= static_cast<signed>(spell->getBaseLvl())
@@ -148,7 +148,7 @@ void SpellManager::invoke(const int spellId) const
             invokeSpell(spell);
         }
         if ((target && (target->getType() != ActorType::Monster
-            || spell->getCommandType() == TEXT_COMMAND_TEXT))
+            || spell->getCommandType() == TextCommandType::Text))
             && (spell->getTargetType() == CommandTarget::AllowTarget
             || spell->getTargetType() == CommandTarget::NeedTarget))
         {
@@ -284,7 +284,8 @@ void SpellManager::load(const bool oldConfig)
         std::string icon = cfg->getValue("commandShortcutIcon"
                                          + toString(i), "");
 
-        if (static_cast<TextCommandType>(commandType) == TEXT_COMMAND_MAGIC)
+        if (static_cast<TextCommandType>(commandType) ==
+            TextCommandType::Magic)
         {
             addSpell(new TextCommand(i, symbol, cmd, comment,
                 static_cast<CommandTargetT>(targetType), icon, basicLvl,

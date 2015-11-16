@@ -25,6 +25,7 @@
 
 #include "enums/commandtarget.h"
 #include "enums/magicschool.h"
+#include "enums/textcommandtype.h"
 
 #include <string>
 
@@ -33,12 +34,6 @@
 const unsigned int MAGIC_START_ID = 340;
 
 class Image;
-
-enum TextCommandType
-{
-    TEXT_COMMAND_MAGIC = 0,
-    TEXT_COMMAND_TEXT = 1
-};
 
 /**
  * Represents one or more instances of a certain item type.
