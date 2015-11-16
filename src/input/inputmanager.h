@@ -109,7 +109,7 @@ class InputManager final
 
         void updateKeyActionMap(KeyToActionMap &actionMap,
                                 KeyToIdMap &idMap, KeyTimeMap &keyTimeMap,
-                                const InputType type) const;
+                                const InputTypeT type) const;
 
         bool invokeKey(const InputActionData *const key,
                        const InputActionT keyNum);
