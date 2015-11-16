@@ -23,6 +23,8 @@
 #ifndef TEXTCOMMAND_H
 #define TEXTCOMMAND_H
 
+#include "enums/commandtarget.h"
+
 #include <string>
 
 #include "localconsts.h"
@@ -30,13 +32,6 @@
 const unsigned int MAGIC_START_ID = 340;
 
 class Image;
-
-enum SpellTarget
-{
-    NOTARGET = 0,
-    ALLOWTARGET = 1,
-    NEEDTARGET = 2
-};
 
 enum MagicSchool
 {
@@ -65,7 +60,7 @@ class TextCommand final
          */
         TextCommand(const unsigned int id, const std::string &symbol,
                     const std::string &command,
-                    const std::string &comment, const SpellTarget type,
+                    const std::string &comment, const CommandTargetT type,
                     const std::string &icon, const unsigned int basicLvl,
                     const MagicSchool school = SKILL_MAGIC,
                     const unsigned int schoolLvl = 0, const int mana = 0);
@@ -75,7 +70,7 @@ class TextCommand final
          */
         TextCommand(const unsigned int id, const std::string &symbol,
                     const std::string &command, const std::string &comment,
-                    const SpellTarget type, const std::string &icon);
+                    const CommandTargetT type, const std::string &icon);
 
         /**
          * Constructor.
@@ -104,7 +99,7 @@ class TextCommand final
         unsigned int getId() const A_WARN_UNUSED
         { return mId; }
 
-        SpellTarget getTargetType() const A_WARN_UNUSED
+        CommandTargetT getTargetType() const A_WARN_UNUSED
         { return mTargetType; }
 
         std::string getIcon() const A_WARN_UNUSED
@@ -137,7 +132,7 @@ class TextCommand final
         void setId(const unsigned int id)
         { mId = id; }
 
-        void setTargetType(const SpellTarget targetType)
+        void setTargetType(const CommandTargetT targetType)
         { mTargetType = targetType; }
 
         void setIcon(const std::string &icon)
@@ -171,7 +166,7 @@ class TextCommand final
         std::string mCommand;
         std::string mComment;
         std::string mSymbol;
-        SpellTarget mTargetType;
+        CommandTargetT mTargetType;
         std::string mIcon;
         unsigned int mId;
         int mMana;

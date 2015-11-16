@@ -46,14 +46,14 @@ void CommandsDB::load()
     mLoaded = true;
 }
 
-static SpellTarget parseTarget(const std::string &text)
+static CommandTargetT parseTarget(const std::string &text)
 {
     if (text == "allow target")
-        return ALLOWTARGET;
+        return CommandTarget::AllowTarget;
     else if (text == "need target")
-        return NEEDTARGET;
+        return CommandTarget::NeedTarget;
     else
-        return NOTARGET;
+        return CommandTarget::NoTarget;
 }
 
 void CommandsDB::loadXmlFile(const std::string &fileName)
@@ -99,7 +99,7 @@ void CommandsDB::loadXmlFile(const std::string &fileName)
             commandNode, "command", "");
         const std::string comment = XML::getProperty(
             commandNode, "comment", "");
-        const SpellTarget targetType = parseTarget(XML::getProperty(
+        const CommandTargetT targetType = parseTarget(XML::getProperty(
             commandNode, "target", ""));
         const std::string icon = XML::getProperty(
             commandNode, "icon", "");

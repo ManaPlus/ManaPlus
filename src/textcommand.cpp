@@ -37,7 +37,7 @@
 TextCommand::TextCommand(const unsigned int id, const std::string &symbol,
                          const std::string &command,
                          const std::string &comment,
-                         const SpellTarget type, const std::string &icon,
+                         const CommandTargetT type, const std::string &icon,
                          const unsigned int basicLvl, const MagicSchool school,
                          const unsigned int schoolLvl, const int mana) :
     mCommand(command),
@@ -60,7 +60,7 @@ TextCommand::TextCommand(const unsigned int id, const std::string &symbol,
 TextCommand::TextCommand(const unsigned int id, const std::string &symbol,
                          const std::string &command,
                          const std::string &comment,
-                         const SpellTarget type, const std::string &icon) :
+                         const CommandTargetT type, const std::string &icon) :
     mCommand(command),
     mComment(comment),
     mSymbol(symbol),
@@ -81,7 +81,7 @@ TextCommand::TextCommand(const unsigned int id) :
     mCommand(""),
     mComment(""),
     mSymbol(""),
-    mTargetType(NOTARGET),
+    mTargetType(CommandTarget::NoTarget),
     mIcon(""),
     mId(id),
     mMana(0),

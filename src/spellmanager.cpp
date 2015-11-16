@@ -143,18 +143,18 @@ void SpellManager::invoke(const int spellId) const
         && PlayerInfo::getAttribute(Attributes::MP) >= spell->getMana()))
     {
         const Being *const target = localPlayer->getTarget();
-        if (spell->getTargetType() == NOTARGET)
+        if (spell->getTargetType() == CommandTarget::NoTarget)
         {
             invokeSpell(spell);
         }
         if ((target && (target->getType() != ActorType::Monster
             || spell->getCommandType() == TEXT_COMMAND_TEXT))
-            && (spell->getTargetType() == ALLOWTARGET
-            || spell->getTargetType() == NEEDTARGET))
+            && (spell->getTargetType() == CommandTarget::AllowTarget
+            || spell->getTargetType() == CommandTarget::NeedTarget))
         {
             invokeSpell(spell, target);
         }
-        else if (spell->getTargetType() == ALLOWTARGET)
+        else if (spell->getTargetType() == CommandTarget::AllowTarget)
         {
             invokeSpell(spell);
         }
@@ -287,13 +287,13 @@ void SpellManager::load(const bool oldConfig)
         if (static_cast<TextCommandType>(commandType) == TEXT_COMMAND_MAGIC)
         {
             addSpell(new TextCommand(i, symbol, cmd, comment,
-                static_cast<SpellTarget>(targetType), icon, basicLvl,
+                static_cast<CommandTargetT>(targetType), icon, basicLvl,
                 static_cast<MagicSchool>(school), schoolLvl, mana));
         }
         else
         {
             addSpell(new TextCommand(i, symbol, cmd, comment,
-                static_cast<SpellTarget>(targetType), icon));
+                static_cast<CommandTargetT>(targetType), icon));
         }
     }
 }
@@ -368,8 +368,9 @@ std::string SpellManager::autoComplete(const std::string &partName) const
         }
         ++i;
     }
-    if (!newName.empty() && newCommand
-        && newCommand->getTargetType() == NEEDTARGET)
+    if (!newName.empty() &&
+        newCommand &&
+        newCommand->getTargetType() == CommandTarget::NeedTarget)
     {
         return newName.append(" ");
     }

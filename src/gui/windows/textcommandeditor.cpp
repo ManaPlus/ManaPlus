@@ -261,7 +261,7 @@ void TextCommandEditor::save()
     mCommand->setComment(mCommentTextField->getText());
     mCommand->setMana(mManaField->getValue());
     mCommand->setTargetType(
-            static_cast<SpellTarget>(mTypeDropDown->getSelected()));
+            static_cast<CommandTargetT>(mTypeDropDown->getSelected()));
     mCommand->setIcon(mIconDropDown->getSelectedString());
     mCommand->setBaseLvl(mMagicLvlField->getValue());
     mCommand->setSchool(static_cast<MagicSchool>(
@@ -278,7 +278,7 @@ void TextCommandEditor::deleteCommand()
     mCommand->setCommand("");
     mCommand->setComment("");
     mCommand->setMana(0);
-    mCommand->setTargetType(NOTARGET);
+    mCommand->setTargetType(CommandTarget::NoTarget);
     mCommand->setIcon("");
     mCommand->setBaseLvl(0);
     mCommand->setSchool(SKILL_MAGIC);

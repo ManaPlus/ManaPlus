@@ -913,6 +913,7 @@ SET(SRCS
     graphicsvertexes.h
     guild.cpp
     guild.h
+    enums/commandtarget.h
     enums/dragdropsource.h
     enums/equipslot.h
     enums/guildpositionflags.h
