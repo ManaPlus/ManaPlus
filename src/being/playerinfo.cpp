@@ -466,10 +466,10 @@ void stateChange(const State state)
     {
         if (!mInventory)
         {
-            mInventory = new Inventory(InventoryType::INVENTORY);
+            mInventory = new Inventory(InventoryType::Inventory);
             mEquipment = new Equipment();
 #ifdef EATHENA_SUPPORT
-            mCartInventory = new Inventory(InventoryType::CART);
+            mCartInventory = new Inventory(InventoryType::Cart);
 #endif
         }
     }

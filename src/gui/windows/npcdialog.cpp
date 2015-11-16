@@ -124,7 +124,7 @@ NpcDialog::NpcDialog(const BeingId npcId) :
     mButton3(new Button(this, _("Add"), "add", this)),
     // TRANSLATORS: npc dialog button
     mResetButton(new Button(this, _("Reset"), "reset", this)),
-    mInventory(new Inventory(InventoryType::NPC, 1)),
+    mInventory(new Inventory(InventoryType::Npc, 1)),
     mItemContainer(new ItemContainer(this, mInventory,
         10000, ShowEmptyRows_true)),
     mItemScrollArea(new ScrollArea(this, mItemContainer,

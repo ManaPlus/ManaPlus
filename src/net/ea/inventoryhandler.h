@@ -56,7 +56,8 @@ class InventoryHandler notfinal : public Net::InventoryHandler
 
         void openStorage(const int type) const override final;
 
-        size_t getSize(const int type) const override final A_WARN_UNUSED;
+        size_t getSize(const InventoryTypeT type) const override final
+                       A_WARN_UNUSED;
 
         void pushPickup(const BeingId floorId);
 

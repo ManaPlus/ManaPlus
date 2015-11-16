@@ -148,7 +148,7 @@ void InventoryRecv::processPlayerStorageStatus(Net::MessageIn &msg)
     const int size = msg.readInt16("max size");
 
     if (!mStorage)
-        mStorage = new Inventory(InventoryType::STORAGE, size);
+        mStorage = new Inventory(InventoryType::Storage, size);
 
     FOR_EACH (Ea::InventoryItems::const_iterator, it, mInventoryItems)
     {

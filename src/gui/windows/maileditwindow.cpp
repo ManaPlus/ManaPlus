@@ -66,7 +66,7 @@ MailEditWindow::MailEditWindow() :
     mSubjectField(new TextField(this)),
     mMoneyField(new IntTextField(this, 0, 0, 10000000)),
     mMessageField(new TextField(this)),
-    mInventory(new Inventory(InventoryType::MAIL, 1)),
+    mInventory(new Inventory(InventoryType::Mail, 1)),
     mItemContainer(new ItemContainer(this, mInventory)),
     mItemScrollArea(new ScrollArea(this, mItemContainer,
         getOptionBool("showitemsbackground"), "mailedit_listbackground.xml"))

@@ -1625,7 +1625,7 @@ void PopupMenu::handleLink(const std::string &link,
 void PopupMenu::showPopup(Window *const parent,
                           const int x, const int y,
                           Item *const item,
-                          const InventoryType::Type type)
+                          const InventoryTypeT type)
 {
     if (!item)
         return;
@@ -1644,7 +1644,7 @@ void PopupMenu::showPopup(Window *const parent,
 
     switch (type)
     {
-        case InventoryType::INVENTORY:
+        case InventoryType::Inventory:
             if (tradeWindow && tradeWindow->isWindowVisible() && !isProtected)
             {
                 // TRANSLATORS: popup menu item
@@ -1706,7 +1706,7 @@ void PopupMenu::showPopup(Window *const parent,
             addUseDrop(item, isProtected);
             break;
 
-        case InventoryType::STORAGE:
+        case InventoryType::Storage:
             // TRANSLATORS: popup menu item
             // TRANSLATORS: get item from storage
             mBrowserBox->addRow("/storagetoinv 'INVINDEX'", _("Retrieve"));
@@ -1734,14 +1734,14 @@ void PopupMenu::showPopup(Window *const parent,
             }
             break;
 
-        case InventoryType::TRADE:
-        case InventoryType::NPC:
+        case InventoryType::Trade:
+        case InventoryType::Npc:
 #ifdef EATHENA_SUPPORT
-        case InventoryType::CART:
-        case InventoryType::VENDING:
-        case InventoryType::MAIL:
+        case InventoryType::Cart:
+        case InventoryType::Vending:
+        case InventoryType::Mail:
 #endif
-        case InventoryType::TYPE_END:
+        case InventoryType::TypeEnd:
         default:
             break;
     }

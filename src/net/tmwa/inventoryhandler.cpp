@@ -110,24 +110,26 @@ void InventoryHandler::dropItem(const Item *const item, const int amount) const
     outMsg.writeInt16(static_cast<int16_t>(amount), "amount");
 }
 
-void InventoryHandler::closeStorage(const int type A_UNUSED) const
+void InventoryHandler::closeStorage() const
 {
     createOutPacket(CMSG_CLOSE_STORAGE);
 }
 
-void InventoryHandler::moveItem2(const int source, const int slot,
-                                 const int amount, const int destination) const
+void InventoryHandler::moveItem2(const InventoryTypeT source,
+                                 const int slot,
+                                 const int amount,
+                                 const InventoryTypeT destination) const
 {
-    if (source == InventoryType::INVENTORY
-        && destination == InventoryType::STORAGE)
+    if (source == InventoryType::Inventory &&
+        destination == InventoryType::Storage)
     {
         createOutPacket(CMSG_MOVE_TO_STORAGE);
         outMsg.writeInt16(static_cast<int16_t>(slot + INVENTORY_OFFSET),
             "index");
         outMsg.writeInt32(amount, "amount");
     }
-    else if (source == InventoryType::STORAGE
-             && destination == InventoryType::INVENTORY)
+    else if (source == InventoryType::Storage &&
+             destination == InventoryType::Inventory)
     {
         createOutPacket(CMSG_MOVE_FROM_STORAGE);
         outMsg.writeInt16(static_cast<int16_t>(slot + STORAGE_OFFSET),

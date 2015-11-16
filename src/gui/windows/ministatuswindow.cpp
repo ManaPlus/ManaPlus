@@ -538,7 +538,7 @@ void MiniStatusWindow::slotsChanged(Inventory *const inventory)
     if (!inventory)
         return;
 
-    if (inventory->getType() == InventoryType::INVENTORY)
+    if (inventory->getType() == InventoryType::Inventory)
         StatusWindow::updateInvSlotsBar(mInvSlotsBar);
 }
 

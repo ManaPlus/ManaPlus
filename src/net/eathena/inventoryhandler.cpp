@@ -119,38 +119,38 @@ void InventoryHandler::dropItem(const Item *const item, const int amount) const
     outMsg.writeInt16(static_cast<int16_t>(amount), "amount");
 }
 
-void InventoryHandler::closeStorage(const int type A_UNUSED) const
+void InventoryHandler::closeStorage() const
 {
     createOutPacket(CMSG_CLOSE_STORAGE);
 }
 
-void InventoryHandler::moveItem2(const int source,
+void InventoryHandler::moveItem2(const InventoryTypeT source,
                                  const int slot,
                                  const int amount,
-                                 const int destination) const
+                                 const InventoryTypeT destination) const
 {
     int packet = 0;
     int offset = INVENTORY_OFFSET;
-    if (source == InventoryType::INVENTORY)
+    if (source == InventoryType::Inventory)
     {
-        if (destination == InventoryType::STORAGE)
+        if (destination == InventoryType::Storage)
             packet = CMSG_MOVE_TO_STORAGE;
-        else if (destination == InventoryType::CART)
+        else if (destination == InventoryType::Cart)
             packet = CMSG_MOVE_TO_CART;
     }
-    else if (source == InventoryType::STORAGE)
+    else if (source == InventoryType::Storage)
     {
         offset = STORAGE_OFFSET;
-        if (destination == InventoryType::INVENTORY)
+        if (destination == InventoryType::Inventory)
             packet = CMSG_MOVE_FROM_STORAGE;
-        else if (destination == InventoryType::CART)
+        else if (destination == InventoryType::Cart)
             packet = CMSG_MOVE_FROM_STORAGE_TO_CART;
     }
-    else if (source == InventoryType::CART)
+    else if (source == InventoryType::Cart)
     {
-        if (destination == InventoryType::INVENTORY)
+        if (destination == InventoryType::Inventory)
             packet = CMSG_MOVE_FROM_CART;
-        else if (destination == InventoryType::STORAGE)
+        else if (destination == InventoryType::Storage)
             packet = CMSG_MOVE_FROM_CART_TO_STORAGE;
     }
 

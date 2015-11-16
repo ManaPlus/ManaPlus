@@ -57,7 +57,7 @@ class Inventory final
          *
          * @param size the number of items that fit in the inventory
          */
-        explicit Inventory(const InventoryType::Type type,
+        explicit Inventory(const InventoryTypeT type,
                            const int size = -1);
 
         /**
@@ -159,11 +159,11 @@ class Inventory final
 
         void removeInventoyListener(InventoryListener *const listener);
 
-        InventoryType::Type getType() const A_WARN_UNUSED
+        InventoryTypeT getType() const A_WARN_UNUSED
         { return mType; }
 
         bool isMainInventory() const A_WARN_UNUSED
-        { return mType == InventoryType::INVENTORY; }
+        { return mType == InventoryType::Inventory; }
 
         const Item *findItemBySprite(std::string spritePath,
                                      const GenderT gender,
@@ -194,7 +194,7 @@ class Inventory final
         void distributeSlotsChangedEvent();
 
         IntMap mVirtualRemove;
-        InventoryType::Type mType;
+        InventoryTypeT mType;
         unsigned mSize; /**< The max number of inventory items */
         Item **mItems;  /**< The holder of items */
         int mUsed;      /**< THe number of slots in use */

@@ -46,12 +46,12 @@ class InventoryHandler final : public Ea::InventoryHandler
         void dropItem(const Item *const item,
                       const int amount) const override final;
 
-        void closeStorage(const int type) const override final;
+        void closeStorage() const override final;
 
-        void moveItem2(const int source,
+        void moveItem2(const InventoryTypeT source,
                        const int slot,
                        const int amount,
-                       const int destination) const override final;
+                       const InventoryTypeT destination) const override final;
 
         void useCard(const Item *const item) override final;
 

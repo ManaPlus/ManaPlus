@@ -96,7 +96,7 @@ class PopupMenu final : public Popup, public LinkHandler
         void showPopup(Window *const parent,
                        const int x, const int y,
                        Item *const item,
-                       const InventoryType::Type type);
+                       const InventoryTypeT type);
 
         void showPopup(const int x, const int y, Button *const button);
 

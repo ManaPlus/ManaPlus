@@ -53,7 +53,7 @@ namespace
     };
 }  // namespace
 
-Inventory::Inventory(const InventoryType::Type type, const int size1) :
+Inventory::Inventory(const InventoryTypeT type, const int size1) :
     mInventoryListeners(),
     mVirtualRemove(),
     mType(type),
@@ -298,39 +298,39 @@ std::string Inventory::getName() const
 {
     switch (mType)
     {
-        case InventoryType::INVENTORY:
+        case InventoryType::Inventory:
 #ifdef EATHENA_SUPPORT
-        case InventoryType::VENDING:
+        case InventoryType::Vending:
 #endif
-        case InventoryType::TYPE_END:
+        case InventoryType::TypeEnd:
         default:
         {
             // TRANSLATORS: inventory type name
             return N_("Inventory");
         }
-        case InventoryType::STORAGE:
+        case InventoryType::Storage:
         {
             // TRANSLATORS: inventory type name
             return N_("Storage");
         }
-        case InventoryType::NPC:
+        case InventoryType::Npc:
         {
             // TRANSLATORS: inventory type name
             return N_("Npc");
         }
 #ifdef EATHENA_SUPPORT
-        case InventoryType::CART:
+        case InventoryType::Cart:
         {
             // TRANSLATORS: inventory type name
             return N_("Cart");
         }
-        case InventoryType::MAIL:
+        case InventoryType::Mail:
         {
             // TRANSLATORS: inventory type name
             return N_("Mail");
         }
 #endif
-        case InventoryType::TRADE:
+        case InventoryType::Trade:
         {
             // TRANSLATORS: inventory type name
             return N_("Trade");

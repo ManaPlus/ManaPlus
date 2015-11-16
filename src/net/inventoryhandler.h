@@ -55,13 +55,15 @@ class InventoryHandler notfinal
 
         virtual void openStorage(const int type) const = 0;
 
-        virtual void closeStorage(const int type) const = 0;
+        virtual void closeStorage() const = 0;
 
-        virtual void moveItem2(const int source, const int slot,
+        virtual void moveItem2(const InventoryTypeT source,
+                               const int slot,
                                const int amount,
-                               const int destination) const = 0;
+                               const InventoryTypeT destination) const = 0;
 
-        virtual size_t getSize(const int type) const A_WARN_UNUSED = 0;
+        virtual size_t getSize(const InventoryTypeT type) const
+                               A_WARN_UNUSED = 0;
 
         virtual Inventory *getStorage() const = 0;
 

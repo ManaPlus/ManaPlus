@@ -578,31 +578,31 @@ void ItemContainer::mousePressed(MouseEvent &event)
         DragDropSource src = DragDropSource::Empty;
         switch (mInventory->getType())
         {
-            case InventoryType::INVENTORY:
+            case InventoryType::Inventory:
                 src = DragDropSource::Inventory;
                 break;
-            case InventoryType::STORAGE:
+            case InventoryType::Storage:
                 src = DragDropSource::Storage;
                 break;
-            case InventoryType::TRADE:
+            case InventoryType::Trade:
                 src = DragDropSource::Trade;
                 break;
-            case InventoryType::NPC:
+            case InventoryType::Npc:
                 src = DragDropSource::Npc;
                 break;
 #ifdef EATHENA_SUPPORT
-            case InventoryType::CART:
+            case InventoryType::Cart:
                 src = DragDropSource::Cart;
                 break;
-            case InventoryType::MAIL:
+            case InventoryType::Mail:
                 src = DragDropSource::Mail;
                 break;
 #endif
             default:
 #ifdef EATHENA_SUPPORT
-            case InventoryType::VENDING:
+            case InventoryType::Vending:
 #endif
-            case InventoryType::TYPE_END:
+            case InventoryType::TypeEnd:
                 break;
         }
         if (mSelectedIndex == index && mClicks != 2)
@@ -685,57 +685,57 @@ void ItemContainer::mouseReleased(MouseEvent &event)
         DragDropSource dst = DragDropSource::Empty;
         switch (mInventory->getType())
         {
-            case InventoryType::INVENTORY:
+            case InventoryType::Inventory:
                 dst = DragDropSource::Inventory;
                 break;
-            case InventoryType::STORAGE:
+            case InventoryType::Storage:
                 dst = DragDropSource::Storage;
                 break;
-            case InventoryType::TRADE:
+            case InventoryType::Trade:
                 dst = DragDropSource::Trade;
                 break;
-            case InventoryType::NPC:
+            case InventoryType::Npc:
                 dst = DragDropSource::Npc;
                 break;
 #ifdef EATHENA_SUPPORT
-            case InventoryType::MAIL:
+            case InventoryType::Mail:
                 dst = DragDropSource::Mail;
                 break;
-            case InventoryType::CART:
+            case InventoryType::Cart:
                 dst = DragDropSource::Cart;
                 break;
 #endif
             default:
 #ifdef EATHENA_SUPPORT
-            case InventoryType::VENDING:
+            case InventoryType::Vending:
 #endif
-            case InventoryType::TYPE_END:
+            case InventoryType::TypeEnd:
                 break;
         }
-        int srcContainer = -1;
-        int dstContainer = -1;
+        InventoryTypeT srcContainer = InventoryType::TypeEnd;
+        InventoryTypeT dstContainer = InventoryType::TypeEnd;
         bool checkProtection(false);
         Inventory *inventory = nullptr;
         if (src == DragDropSource::Inventory
             && dst == DragDropSource::Storage)
         {
-            srcContainer = InventoryType::INVENTORY;
-            dstContainer = InventoryType::STORAGE;
+            srcContainer = InventoryType::Inventory;
+            dstContainer = InventoryType::Storage;
             inventory = PlayerInfo::getInventory();
         }
         else if (src == DragDropSource::Storage
                  && dst == DragDropSource::Inventory)
         {
-            srcContainer = InventoryType::STORAGE;
-            dstContainer = InventoryType::INVENTORY;
+            srcContainer = InventoryType::Storage;
+            dstContainer = InventoryType::Inventory;
             inventory = PlayerInfo::getStorageInventory();
         }
 #ifdef EATHENA_SUPPORT
         if (src == DragDropSource::Inventory
             && dst == DragDropSource::Cart)
         {
-            srcContainer = InventoryType::INVENTORY;
-            dstContainer = InventoryType::CART;
+            srcContainer = InventoryType::Inventory;
+            dstContainer = InventoryType::Cart;
             inventory = PlayerInfo::getInventory();
         }
         if (src == DragDropSource::Inventory
@@ -753,22 +753,22 @@ void ItemContainer::mouseReleased(MouseEvent &event)
         else if (src == DragDropSource::Cart
                  && dst == DragDropSource::Inventory)
         {
-            srcContainer = InventoryType::CART;
-            dstContainer = InventoryType::INVENTORY;
+            srcContainer = InventoryType::Cart;
+            dstContainer = InventoryType::Inventory;
             inventory = PlayerInfo::getCartInventory();
         }
         else if (src == DragDropSource::Cart
                  && dst == DragDropSource::Storage)
         {
-            srcContainer = InventoryType::CART;
-            dstContainer = InventoryType::STORAGE;
+            srcContainer = InventoryType::Cart;
+            dstContainer = InventoryType::Storage;
             inventory = PlayerInfo::getCartInventory();
         }
         else if (src == DragDropSource::Storage
                  && dst == DragDropSource::Cart)
         {
-            srcContainer = InventoryType::STORAGE;
-            dstContainer = InventoryType::CART;
+            srcContainer = InventoryType::Storage;
+            dstContainer = InventoryType::Cart;
             inventory = PlayerInfo::getStorageInventory();
         }
 #endif
@@ -865,10 +865,11 @@ void ItemContainer::mouseReleased(MouseEvent &event)
             const Item *const item = inventory->getItem(dragDrop.getTag());
             if (item)
             {
-                if (srcContainer != -1)
+                if (srcContainer != InventoryType::TypeEnd)
                 {   // inventory <--> storage, cart
                     inventoryHandler->moveItem2(srcContainer,
-                        item->getInvIndex(), item->getQuantity(),
+                        item->getInvIndex(),
+                        item->getQuantity(),
                         dstContainer);
                 }
                 else

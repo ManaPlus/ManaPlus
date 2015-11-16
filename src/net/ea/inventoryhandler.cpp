@@ -81,18 +81,18 @@ void InventoryHandler::openStorage(const int type A_UNUSED) const
     // Doesn't apply to eAthena, since opening happens through NPCs?
 }
 
-size_t InventoryHandler::getSize(const int type) const
+size_t InventoryHandler::getSize(const InventoryTypeT type) const
 {
     switch (type)
     {
-        case InventoryType::INVENTORY:
+        case InventoryType::Inventory:
             return 100;
-        case InventoryType::STORAGE:
+        case InventoryType::Storage:
             return 0;  // Comes from server after items
-        case InventoryType::TRADE:
+        case InventoryType::Trade:
             return 12;
         // GUILD_STORAGE
-        case InventoryType::TYPE_END:
+        case InventoryType::TypeEnd:
             return 0;  // Comes from server after items
         default:
             return 0;

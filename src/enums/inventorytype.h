@@ -23,21 +23,21 @@
 #ifndef ENUMS_INVENTORYTYPE_H
 #define ENUMS_INVENTORYTYPE_H
 
-namespace InventoryType
+#include "enums/simpletypes/enumdefines.h"
+
+enumStart(InventoryType)
 {
-    enum Type
-    {
-        INVENTORY = 0,
-        STORAGE,
-        TRADE,
-        NPC,
+    Inventory = 0,
+    Storage,
+    Trade,
+    Npc,
 #ifdef EATHENA_SUPPORT
-        CART,
-        VENDING,
-        MAIL,
+    Cart,
+    Vending,
+    Mail,
 #endif
-        TYPE_END
-    };
-}  // namespace InventoryType
+    TypeEnd
+}
+enumEnd(InventoryType);
 
 #endif  // ENUMS_INVENTORYTYPE_H

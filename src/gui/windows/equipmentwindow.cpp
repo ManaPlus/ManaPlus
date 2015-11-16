@@ -489,7 +489,7 @@ void EquipmentWindow::mousePressed(MouseEvent& event)
                 else
                 {
                     popupMenu->showPopup(this, mx, my, item,
-                        InventoryType::INVENTORY);
+                        InventoryType::Inventory);
                 }
                 return;
             }

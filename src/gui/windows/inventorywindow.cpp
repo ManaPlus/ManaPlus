@@ -117,24 +117,24 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
         setWindowName(inventory->getName());
         switch (inventory->getType())
         {
-            case InventoryType::INVENTORY:
-            case InventoryType::TRADE:
-            case InventoryType::NPC:
+            case InventoryType::Inventory:
+            case InventoryType::Trade:
+            case InventoryType::Npc:
 #ifdef EATHENA_SUPPORT
-            case InventoryType::VENDING:
-            case InventoryType::MAIL:
+            case InventoryType::Vending:
+            case InventoryType::Mail:
 #endif
-            case InventoryType::TYPE_END:
+            case InventoryType::TypeEnd:
             default:
                 mSortDropDown->setSelected(config.getIntValue(
                     "inventorySortOrder"));
                 break;
-            case InventoryType::STORAGE:
+            case InventoryType::Storage:
                 mSortDropDown->setSelected(config.getIntValue(
                     "storageSortOrder"));
                 break;
 #ifdef EATHENA_SUPPORT
-            case InventoryType::CART:
+            case InventoryType::Cart:
                 mSortDropDown->setSelected(config.getIntValue(
                     "cartSortOrder"));
                 break;
@@ -151,7 +151,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
 
     if (setupWindow &&
         inventory &&
-        inventory->getType() != InventoryType::STORAGE)
+        inventory->getType() != InventoryType::Storage)
     {
         setupWindow->registerWindowForReset(this);
     }
@@ -193,7 +193,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
 
     switch (mInventory->getType())
     {
-        case InventoryType::INVENTORY:
+        case InventoryType::Inventory:
         {
             // TRANSLATORS: inventory button
             const std::string equip = _("Equip");
@@ -257,7 +257,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
             break;
         }
 
-        case InventoryType::STORAGE:
+        case InventoryType::Storage:
         {
             // TRANSLATORS: storage button
             mStoreButton = new Button(this, _("Store"), "store", this);
@@ -281,7 +281,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
         }
 
 #ifdef EATHENA_SUPPORT
-        case InventoryType::CART:
+        case InventoryType::Cart:
         {
             // TRANSLATORS: storage button
             mStoreButton = new Button(this, _("Store"), "store", this);
@@ -313,13 +313,13 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
 #endif
 
         default:
-        case InventoryType::TRADE:
-        case InventoryType::NPC:
+        case InventoryType::Trade:
+        case InventoryType::Npc:
 #ifdef EATHENA_SUPPORT
-        case InventoryType::VENDING:
-        case InventoryType::MAIL:
+        case InventoryType::Vending:
+        case InventoryType::Mail:
 #endif
-        case InventoryType::TYPE_END:
+        case InventoryType::TypeEnd:
             break;
     };
 
@@ -351,7 +351,7 @@ void InventoryWindow::postInit()
 
     mItems->setSortType(mSortDropDown->getSelected());
     widgetResized(Event(nullptr));
-    if (mInventory && mInventory->getType() == InventoryType::STORAGE)
+    if (mInventory && mInventory->getType() == InventoryType::Storage)
         setVisible(Visible_true);
 }
 
@@ -373,24 +373,24 @@ void InventoryWindow::storeSortOrder() const
     {
         switch (mInventory->getType())
         {
-            case InventoryType::INVENTORY:
-            case InventoryType::TRADE:
-            case InventoryType::NPC:
+            case InventoryType::Inventory:
+            case InventoryType::Trade:
+            case InventoryType::Npc:
 #ifdef EATHENA_SUPPORT
-            case InventoryType::VENDING:
-            case InventoryType::MAIL:
+            case InventoryType::Vending:
+            case InventoryType::Mail:
 #endif
-            case InventoryType::TYPE_END:
+            case InventoryType::TypeEnd:
             default:
                 config.setValue("inventorySortOrder",
                     mSortDropDown->getSelected());
                 break;
-            case InventoryType::STORAGE:
+            case InventoryType::Storage:
                 config.setValue("storageSortOrder",
                     mSortDropDown->getSelected());
                 break;
 #ifdef EATHENA_SUPPORT
-            case InventoryType::CART:
+            case InventoryType::Cart:
                 config.setValue("cartSortOrder",
                     mSortDropDown->getSelected());
                 break;
@@ -480,16 +480,18 @@ void InventoryWindow::action(const ActionEvent &event)
     {
         if (isStorageActive())
         {
-            inventoryHandler->moveItem2(InventoryType::INVENTORY,
-                item->getInvIndex(), item->getQuantity(),
-                InventoryType::STORAGE);
+            inventoryHandler->moveItem2(InventoryType::Inventory,
+                item->getInvIndex(),
+                item->getQuantity(),
+                InventoryType::Storage);
         }
 #ifdef EATHENA_SUPPORT
         else if (cartWindow && cartWindow->isWindowVisible())
         {
-            inventoryHandler->moveItem2(InventoryType::INVENTORY,
-                item->getInvIndex(), item->getQuantity(),
-                InventoryType::CART);
+            inventoryHandler->moveItem2(InventoryType::Inventory,
+                item->getInvIndex(),
+                item->getQuantity(),
+                InventoryType::Cart);
         }
         else
 #endif
@@ -598,13 +600,15 @@ void InventoryWindow::mouseClicked(MouseEvent &event)
                 if (event.getButton() == MouseButton::RIGHT)
                 {
                     ItemAmountWindow::showWindow(ItemAmountWindow::StoreAdd,
-                        inventoryWindow, item);
+                        inventoryWindow,
+                        item);
                 }
                 else
                 {
-                    inventoryHandler->moveItem2(InventoryType::INVENTORY,
-                        item->getInvIndex(), item->getQuantity(),
-                        InventoryType::STORAGE);
+                    inventoryHandler->moveItem2(InventoryType::Inventory,
+                        item->getInvIndex(),
+                        item->getQuantity(),
+                        InventoryType::Storage);
                 }
             }
             else
@@ -616,9 +620,10 @@ void InventoryWindow::mouseClicked(MouseEvent &event)
                 }
                 else
                 {
-                    inventoryHandler->moveItem2(InventoryType::STORAGE,
-                        item->getInvIndex(), item->getQuantity(),
-                        InventoryType::INVENTORY);
+                    inventoryHandler->moveItem2(InventoryType::Storage,
+                        item->getInvIndex(),
+                        item->getQuantity(),
+                        InventoryType::Inventory);
                 }
             }
         }
@@ -793,30 +798,30 @@ void InventoryWindow::close()
 
     switch (mInventory->getType())
     {
-        case InventoryType::INVENTORY:
+        case InventoryType::Inventory:
 #ifdef EATHENA_SUPPORT
-        case InventoryType::CART:
+        case InventoryType::Cart:
 #endif
             setVisible(Visible_false);
             break;
 
-        case InventoryType::STORAGE:
+        case InventoryType::Storage:
             if (inventoryHandler)
             {
-                inventoryHandler->closeStorage(InventoryType::STORAGE);
+                inventoryHandler->closeStorage();
                 inventoryHandler->forgotStorage();
             }
             scheduleDelete();
             break;
 
         default:
-        case InventoryType::TRADE:
-        case InventoryType::NPC:
+        case InventoryType::Trade:
+        case InventoryType::Npc:
 #ifdef EATHENA_SUPPORT
-        case InventoryType::VENDING:
-        case InventoryType::MAIL:
+        case InventoryType::Vending:
+        case InventoryType::Mail:
 #endif
-        case InventoryType::TYPE_END:
+        case InventoryType::TypeEnd:
             break;
     }
 }
@@ -825,17 +830,18 @@ void InventoryWindow::updateWeight()
 {
     if (!mInventory || !mWeightBar)
         return;
-    const InventoryType::Type type = mInventory->getType();
+    const InventoryTypeT type = mInventory->getType();
 #ifdef EATHENA_SUPPORT
-    if (type != InventoryType::INVENTORY && type != InventoryType::CART)
+    if (type != InventoryType::Inventory &&
+        type != InventoryType::Cart)
 #else
-    if (type != InventoryType::INVENTORY)
+    if (type != InventoryType::Inventory)
 #endif
     {
         return;
     }
 
-    const bool isInv = type == InventoryType::INVENTORY;
+    const bool isInv = type == InventoryType::Inventory;
     const int total = PlayerInfo::getAttribute(isInv
         ? Attributes::TOTAL_WEIGHT : Attributes::CART_TOTAL_WEIGHT);
     const int max = PlayerInfo::getAttribute(isInv
@@ -948,11 +954,12 @@ void InventoryWindow::widgetResized(const Event &event)
 
     if (!mInventory)
         return;
-    const InventoryType::Type type = mInventory->getType();
+    const InventoryTypeT type = mInventory->getType();
 #ifdef EATHENA_SUPPORT
-    if (type != InventoryType::INVENTORY && type != InventoryType::CART)
+    if (type != InventoryType::Inventory &&
+        type != InventoryType::Cart)
 #else
-    if (type != InventoryType::INVENTORY)
+    if (type != InventoryType::Inventory)
 #endif
     {
         return;
