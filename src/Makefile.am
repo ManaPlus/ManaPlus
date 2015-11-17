@@ -695,7 +695,6 @@ manaplus_SOURCES += main.cpp \
 	      enums/equipslot.h \
 	      enums/guildpositionflags.h \
 	      enums/inventorytype.h \
-	      enums/magicschool.h \
 	      spellshortcut.cpp \
 	      spellshortcut.h \
 	      statuseffect.cpp \
@@ -1290,6 +1289,7 @@ manaplus_SOURCES += main.cpp \
 if ENABLE_TMWA
 manaplus_CXXFLAGS += -DTMWA_SUPPORT
 manaplus_SOURCES += \
+	      enums/magicschool.h \
 	      gui/widgets/tabs/chat/emulateguildtab.cpp \
 	      gui/widgets/tabs/chat/emulateguildtab.h \
 	      gui/windows/shopselldialog.cpp \

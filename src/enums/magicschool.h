@@ -21,6 +21,8 @@
 #ifndef ENUMS_MAGICSCHOOL_H
 #define ENUMS_MAGICSCHOOL_H
 
+#ifdef TMWA_SUPPORT
+
 #include "enums/simpletypes/enumdefines.h"
 
 enumStart(MagicSchool)
@@ -34,4 +36,5 @@ enumStart(MagicSchool)
 }
 enumEnd(MagicSchool);
 
+#endif  // TMWA_SUPPORT
 #endif  // ENUMS_MAGICSCHOOL_H

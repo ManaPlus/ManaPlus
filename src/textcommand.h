@@ -41,6 +41,7 @@ class Image;
 class TextCommand final
 {
     public:
+#ifdef TMWA_SUPPORT
         /**
          * Constructor.
          */
@@ -54,13 +55,17 @@ class TextCommand final
                     const MagicSchoolT school = MagicSchool::SkillMagic,
                     const unsigned int schoolLvl = 0,
                     const int mana = 0);
+#endif
 
         /**
          * Constructor.
          */
-        TextCommand(const unsigned int id, const std::string &symbol,
-                    const std::string &command, const std::string &comment,
-                    const CommandTargetT type, const std::string &icon);
+        TextCommand(const unsigned int id,
+                    const std::string &symbol,
+                    const std::string &command,
+                    const std::string &comment,
+                    const CommandTargetT type,
+                    const std::string &icon);
 
         /**
          * Constructor.
@@ -95,6 +100,7 @@ class TextCommand final
         std::string getIcon() const A_WARN_UNUSED
         { return mIcon; }
 
+#ifdef TMWA_SUPPORT
         int getMana() const A_WARN_UNUSED
         { return mMana; }
 
@@ -107,8 +113,24 @@ class TextCommand final
         unsigned getSchoolLvl() const A_WARN_UNUSED
         { return mSchoolLvl; }
 
+        void setMana(const unsigned int mana)
+        { mMana = mana; }
+
+        void setSchool(const MagicSchoolT school)
+        { mSchool = school; }
+
+        void setBaseLvl(const unsigned int baseLvl)
+        { mBaseLvl = baseLvl; }
+
+        void setSchoolLvl(const unsigned int schoolLvl)
+        { mSchoolLvl = schoolLvl; }
+
         TextCommandTypeT getCommandType() const A_WARN_UNUSED
         { return mCommandType; }
+
+        void setCommandType(const TextCommandTypeT commandType)
+        { mCommandType = commandType; }
+#endif
 
         void setCommand(const std::string &command)
         { mCommand = command; }
@@ -128,21 +150,6 @@ class TextCommand final
         void setIcon(const std::string &icon)
         { mIcon = icon; loadImage(); }
 
-        void setMana(const unsigned int mana)
-        { mMana = mana; }
-
-        void setSchool(const MagicSchoolT school)
-        { mSchool = school; }
-
-        void setBaseLvl(const unsigned int baseLvl)
-        { mBaseLvl = baseLvl; }
-
-        void setSchoolLvl(const unsigned int schoolLvl)
-        { mSchoolLvl = schoolLvl; }
-
-        void setCommandType(const TextCommandTypeT commandType)
-        { mCommandType = commandType; }
-
         bool isEmpty() const A_WARN_UNUSED
         { return mCommand.empty() && mSymbol.empty(); }
 
@@ -159,11 +166,13 @@ class TextCommand final
         CommandTargetT mTargetType;
         std::string mIcon;
         unsigned int mId;
+#ifdef TMWA_SUPPORT
         int mMana;
         MagicSchoolT mSchool;
         unsigned mBaseLvl;
         unsigned mSchoolLvl;
         TextCommandTypeT mCommandType;
+#endif
         Image *mImage;
 };
 

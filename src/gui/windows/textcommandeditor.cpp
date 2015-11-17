@@ -46,13 +46,17 @@ TextCommandEditor::TextCommandEditor(TextCommand *const command) :
     // TRANSLATORS: command editor name
     Window(_("Command Editor"), Modal_false, nullptr, "commandeditor.xml"),
     ActionListener(),
+#ifdef TMWA_SUPPORT
     mIsMagicCommand(command ?
         (command->getCommandType() == TextCommandType::Magic) : false),
+#endif
     mCommand(command),
+#ifdef TMWA_SUPPORT
     // TRANSLATORS: command editor button
     mIsMagic(new RadioButton(this, _("magic"), "magic", mIsMagicCommand)),
     // TRANSLATORS: command editor button
     mIsOther(new RadioButton(this, _("other"), "magic", !mIsMagicCommand)),
+#endif
     // TRANSLATORS: command editor label
     mSymbolLabel(new Label(this, _("Symbol:"))),
     mSymbolTextField(new TextField(this)),
@@ -70,6 +74,7 @@ TextCommandEditor::TextCommandEditor(TextCommand *const command) :
     // TRANSLATORS: command editor label
     mIconLabel(new Label(this, _("Icon:"))),
     mIconDropDown(new DropDown(this, mIconsModel)),
+#ifdef TMWA_SUPPORT
     // TRANSLATORS: command editor label
     mManaLabel(new Label(this, _("Mana:"))),
     mManaField(new IntTextField(this, 0)),
@@ -83,6 +88,7 @@ TextCommandEditor::TextCommandEditor(TextCommand *const command) :
     // TRANSLATORS: command editor label
     mSchoolLvlLabel(new Label(this, _("School level:"))),
     mSchoolLvlField(new IntTextField(this, 0)),
+#endif
     // TRANSLATORS: command editor button
     mCancelButton(new Button(this, _("Cancel"), "cancel", this)),
     // TRANSLATORS: command editor button
@@ -99,6 +105,7 @@ TextCommandEditor::TextCommandEditor(TextCommand *const command) :
     setWindowName("TextCommandEditor");
     setDefaultSize(w, h, ImageRect::CENTER);
 
+#ifdef TMWA_SUPPORT
     mIsMagic->setActionEventId("magic");
     mIsMagic->addActionListener(this);
 
@@ -107,13 +114,6 @@ TextCommandEditor::TextCommandEditor(TextCommand *const command) :
 
     mManaField->setRange(0, 500);
     mManaField->setWidth(20);
-
-    mTypeDropDown->setActionEventId("type");
-    mTypeDropDown->addActionListener(this);
-
-    mIconDropDown->setActionEventId("icon");
-    mIconDropDown->addActionListener(this);
-    mIconDropDown->setSelectedString(mCommand->getIcon());
 
     mMagicLvlField->setRange(0, 5);
     mMagicLvlField->setWidth(20);
@@ -124,6 +124,14 @@ TextCommandEditor::TextCommandEditor(TextCommand *const command) :
 
     mSchoolLvlField->setRange(0, 5);
     mSchoolLvlField->setWidth(20);
+#endif
+
+    mTypeDropDown->setActionEventId("type");
+    mTypeDropDown->addActionListener(this);
+
+    mIconDropDown->setActionEventId("icon");
+    mIconDropDown->addActionListener(this);
+    mIconDropDown->setSelectedString(mCommand->getIcon());
 
     mSaveButton->adjustSize();
     mCancelButton->adjustSize();
@@ -131,25 +139,30 @@ TextCommandEditor::TextCommandEditor(TextCommand *const command) :
 
     if (command)
     {
+#ifdef TMWA_SUPPORT
         if (command->getCommandType() == TextCommandType::Magic)
             showControls(Visible_true);
         else
             showControls(Visible_false);
+#endif
 
         mSymbolTextField->setText(command->getSymbol());
         mCommandTextField->setText(command->getCommand());
         mCommentTextField->setText(command->getComment());
-        mManaField->setValue(command->getMana());
         mTypeDropDown->setSelected(static_cast<int>(command->getTargetType()));
+#ifdef TMWA_SUPPORT
+        mManaField->setValue(command->getMana());
         mMagicLvlField->setValue(command->getBaseLvl());
         mSchoolDropDown->setSelected(static_cast<int>(command->getSchool())
             - MAGIC_START_ID);
         mSchoolLvlField->setValue(command->getSchoolLvl());
+#endif
     }
 
     ContainerPlacer placer;
     placer = getPlacer(0, 0);
 
+#ifdef TMWA_SUPPORT
     placer(0, 0, mIsMagic, 1);
     placer(2, 0, mIsOther, 1);
     placer(0, 1, mSymbolLabel, 2).setPadding(3);
@@ -179,6 +192,25 @@ TextCommandEditor::TextCommandEditor(TextCommand *const command) :
     placer(0, 10, mSaveButton, 2).setPadding(3);
     placer(2, 10, mCancelButton, 2).setPadding(3);
     placer(4, 10, mDeleteButton, 2).setPadding(3);
+#else
+    placer(0, 0, mSymbolLabel, 2).setPadding(3);
+    placer(2, 0, mSymbolTextField, 3).setPadding(3);
+    placer(0, 1, mCommandLabel, 2).setPadding(3);
+    placer(2, 1, mCommandTextField, 4).setPadding(3);
+
+    placer(0, 2, mCommentLabel, 2).setPadding(3);
+    placer(2, 2, mCommentTextField, 4).setPadding(3);
+
+    placer(0, 3, mTypeLabel, 2).setPadding(3);
+    placer(2, 3, mTypeDropDown, 3).setPadding(3);
+
+    placer(0, 4, mIconLabel, 2).setPadding(3);
+    placer(2, 4, mIconDropDown, 3).setPadding(3);
+
+    placer(0, 5, mSaveButton, 2).setPadding(3);
+    placer(2, 5, mCancelButton, 2).setPadding(3);
+    placer(4, 5, mDeleteButton, 2).setPadding(3);
+#endif
 
     setWidth(w);
     setHeight(h);
@@ -199,23 +231,15 @@ TextCommandEditor::~TextCommandEditor()
 {
     delete2(mIconsModel);
     delete2(mTargetTypeModel);
+#ifdef TMWA_SUPPORT
     delete2(mMagicSchoolModel);
+#endif
 }
 
 void TextCommandEditor::action(const ActionEvent &event)
 {
     const std::string &eventId = event.getId();
-    if (eventId == "magic")
-    {
-        mIsMagicCommand = true;
-        showControls(Visible_true);
-    }
-    else if (eventId == "other")
-    {
-        mIsMagicCommand = false;
-        showControls(Visible_false);
-    }
-    else if (eventId == "save")
+    if (eventId == "save")
     {
         save();
         scheduleDelete();
@@ -229,8 +253,21 @@ void TextCommandEditor::action(const ActionEvent &event)
         deleteCommand();
         scheduleDelete();
     }
+#ifdef TMWA_SUPPORT
+    else if (eventId == "magic")
+    {
+        mIsMagicCommand = true;
+        showControls(Visible_true);
+    }
+    else if (eventId == "other")
+    {
+        mIsMagicCommand = false;
+        showControls(Visible_false);
+    }
+#endif
 }
 
+#ifdef TMWA_SUPPORT
 void TextCommandEditor::showControls(const Visible show)
 {
     mManaField->setVisible(show);
@@ -242,6 +279,7 @@ void TextCommandEditor::showControls(const Visible show)
     mSchoolLvlLabel->setVisible(show);
     mSchoolLvlField->setVisible(show);
 }
+#endif
 
 void TextCommandEditor::scheduleDelete()
 {
@@ -251,38 +289,45 @@ void TextCommandEditor::scheduleDelete()
 
 void TextCommandEditor::save()
 {
+#ifdef TMWA_SUPPORT
     if (mIsMagicCommand)
         mCommand->setCommandType(TextCommandType::Magic);
     else
         mCommand->setCommandType(TextCommandType::Text);
+#endif
 
     mCommand->setSymbol(mSymbolTextField->getText());
     mCommand->setCommand(mCommandTextField->getText());
     mCommand->setComment(mCommentTextField->getText());
-    mCommand->setMana(mManaField->getValue());
     mCommand->setTargetType(
             static_cast<CommandTargetT>(mTypeDropDown->getSelected()));
     mCommand->setIcon(mIconDropDown->getSelectedString());
+
+#ifdef TMWA_SUPPORT
+    mCommand->setMana(mManaField->getValue());
     mCommand->setBaseLvl(mMagicLvlField->getValue());
     mCommand->setSchool(static_cast<MagicSchoolT>(
             mSchoolDropDown->getSelected() + MAGIC_START_ID));
     mCommand->setSchoolLvl(mSchoolLvlField->getValue());
+#endif
     if (spellManager)
         spellManager->save();
 }
 
 void TextCommandEditor::deleteCommand()
 {
-    mCommand->setCommandType(TextCommandType::Text);
     mCommand->setSymbol("");
     mCommand->setCommand("");
     mCommand->setComment("");
-    mCommand->setMana(0);
     mCommand->setTargetType(CommandTarget::NoTarget);
     mCommand->setIcon("");
+#ifdef TMWA_SUPPORT
+    mCommand->setCommandType(TextCommandType::Text);
+    mCommand->setMana(0);
     mCommand->setBaseLvl(0);
     mCommand->setSchool(MagicSchool::SkillMagic);
     mCommand->setSchoolLvl(0);
+#endif
     if (spellManager)
         spellManager->save();
 }

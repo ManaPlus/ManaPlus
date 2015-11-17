@@ -34,6 +34,7 @@
 
 #include "debug.h"
 
+#ifdef TMWA_SUPPORT
 TextCommand::TextCommand(const unsigned int id,
                          const std::string &symbol,
                          const std::string &command,
@@ -59,23 +60,27 @@ TextCommand::TextCommand(const unsigned int id,
 {
     loadImage();
 }
+#endif
 
-
-TextCommand::TextCommand(const unsigned int id, const std::string &symbol,
+TextCommand::TextCommand(const unsigned int id,
+                         const std::string &symbol,
                          const std::string &command,
                          const std::string &comment,
-                         const CommandTargetT type, const std::string &icon) :
+                         const CommandTargetT type,
+                         const std::string &icon) :
     mCommand(command),
     mComment(comment),
     mSymbol(symbol),
     mTargetType(type),
     mIcon(icon),
     mId(id),
+#ifdef TMWA_SUPPORT
     mMana(0),
     mSchool(MagicSchool::SkillMagic),
     mBaseLvl(0),
     mSchoolLvl(0),
     mCommandType(TextCommandType::Text),
+#endif
     mImage(nullptr)
 {
     loadImage();
@@ -88,11 +93,13 @@ TextCommand::TextCommand(const unsigned int id) :
     mTargetType(CommandTarget::NoTarget),
     mIcon(""),
     mId(id),
+#ifdef TMWA_SUPPORT
     mMana(0),
     mSchool(MagicSchool::SkillMagic),
     mBaseLvl(0),
     mSchoolLvl(0),
     mCommandType(TextCommandType::Text),
+#endif
     mImage(nullptr)
 {
     loadImage();

@@ -134,23 +134,32 @@ void SpellManager::invoke(const int spellId) const
     if (!playerHandler || spell->getCommand().empty())
         return;
 
-    if (spell->getCommandType() == TextCommandType::Text
-        || (playerHandler->canUseMagic()
-        && PlayerInfo::getSkillLevel(static_cast<int>(MagicSchool::SkillMagic))
-        >= static_cast<signed>(spell->getBaseLvl())
-        && PlayerInfo::getSkillLevel(static_cast<int>(
+#ifdef TMWA_SUPPORT
+    if (spell->getCommandType() == TextCommandType::Text ||
+        (playerHandler->canUseMagic() &&
+        PlayerInfo::getSkillLevel(static_cast<int>(MagicSchool::SkillMagic))
+        >= static_cast<signed>(spell->getBaseLvl()) &&
+        PlayerInfo::getSkillLevel(static_cast<int>(
         spell->getSchool())) >= static_cast<signed>(spell->getSchoolLvl())
-        && PlayerInfo::getAttribute(Attributes::MP) >= spell->getMana()))
+        && PlayerInfo::getAttribute(Attributes::MP) >= spell->getMana())
+        )
+#endif
     {
         const Being *const target = localPlayer->getTarget();
         if (spell->getTargetType() == CommandTarget::NoTarget)
         {
             invokeSpell(spell);
         }
-        if ((target && (target->getType() != ActorType::Monster
-            || spell->getCommandType() == TextCommandType::Text))
-            && (spell->getTargetType() == CommandTarget::AllowTarget
-            || spell->getTargetType() == CommandTarget::NeedTarget))
+#ifdef TMWA_SUPPORT
+        if ((target && (target->getType() != ActorType::Monster ||
+            spell->getCommandType() == TextCommandType::Text)) &&
+            (spell->getTargetType() == CommandTarget::AllowTarget ||
+            spell->getTargetType() == CommandTarget::NeedTarget))
+#else
+        if (target &&
+            (spell->getTargetType() == CommandTarget::AllowTarget ||
+            spell->getTargetType() == CommandTarget::NeedTarget))
+#endif
         {
             invokeSpell(spell, target);
         }
@@ -284,6 +293,7 @@ void SpellManager::load(const bool oldConfig)
         std::string icon = cfg->getValue("commandShortcutIcon"
                                          + toString(i), "");
 
+#ifdef TMWA_SUPPORT
         if (static_cast<TextCommandTypeT>(commandType) ==
             TextCommandType::Magic)
         {
@@ -292,6 +302,7 @@ void SpellManager::load(const bool oldConfig)
                 static_cast<MagicSchoolT>(school), schoolLvl, mana));
         }
         else
+#endif
         {
             addSpell(new TextCommand(i, symbol, cmd, comment,
                 static_cast<CommandTargetT>(targetType), icon));
@@ -319,13 +330,24 @@ void SpellManager::save() const
             setOrDel("commandShortcutIcon", getIcon);
             if (spell->getCommand() != "" && spell->getSymbol() != "")
             {
+#ifdef TMWA_SUPPORT
                 serverConfig.setValue("commandShortcutFlags" + toString(i),
-                    strprintf("%u %u %u %u %u %u", static_cast<unsigned>(
-                    spell->getCommandType()), static_cast<unsigned>(
-                    spell->getTargetType()), spell->getBaseLvl(),
+                    strprintf("%u %u %u %u %u %u",
+                    static_cast<unsigned>(spell->getCommandType()),
+                    static_cast<unsigned>(spell->getTargetType()),
+                    spell->getBaseLvl(),
                     static_cast<unsigned>(spell->getSchool()),
-                    spell->getSchoolLvl(), static_cast<unsigned>(
-                    spell->getMana())));
+                    spell->getSchoolLvl(),
+                    static_cast<unsigned>(spell->getMana())));
+#else
+                serverConfig.setValue("commandShortcutFlags" + toString(i),
+                    strprintf("%u %u %u %u %u %u", 1U,
+                    static_cast<unsigned>(spell->getTargetType()),
+                    0U,
+                    0U,
+                    0U,
+                    0U));
+#endif
             }
             else
             {

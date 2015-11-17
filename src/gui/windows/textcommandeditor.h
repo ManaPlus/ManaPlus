@@ -32,7 +32,9 @@ class DropDown;
 class IconsModel;
 class IntTextField;
 class Label;
+#ifdef TMWA_SUPPORT
 class MagicSchoolModel;
+#endif
 class RadioButton;
 class TargetTypeModel;
 class TextCommand;
@@ -61,16 +63,22 @@ class TextCommandEditor final : public Window,
         void scheduleDelete() override final;
 
     private:
+#ifdef TMWA_SUPPORT
         void showControls(const Visible show);
+#endif
 
         void save();
 
         void deleteCommand();
 
+#ifdef TMWA_SUPPORT
         bool mIsMagicCommand;
+#endif
 
         TextCommand*  mCommand;
+#ifdef TMWA_SUPPORT
         RadioButton*  mIsMagic          A_NONNULLPOINTER;
+#endif
         RadioButton*  mIsOther          A_NONNULLPOINTER;
         Label*        mSymbolLabel      A_NONNULLPOINTER;
         TextField*    mSymbolTextField  A_NONNULLPOINTER;
@@ -84,6 +92,7 @@ class TextCommandEditor final : public Window,
         IconsModel*   mIconsModel       A_NONNULLPOINTER;
         Label*        mIconLabel        A_NONNULLPOINTER;
         DropDown*     mIconDropDown     A_NONNULLPOINTER;
+#ifdef TMWA_SUPPORT
         Label*        mManaLabel        A_NONNULLPOINTER;
         IntTextField* mManaField        A_NONNULLPOINTER;
         Label*        mMagicLvlLabel    A_NONNULLPOINTER;
@@ -93,6 +102,7 @@ class TextCommandEditor final : public Window,
         DropDown*     mSchoolDropDown   A_NONNULLPOINTER;
         Label*        mSchoolLvlLabel   A_NONNULLPOINTER;
         IntTextField* mSchoolLvlField   A_NONNULLPOINTER;
+#endif
         Button*       mCancelButton     A_NONNULLPOINTER;
         Button*       mSaveButton       A_NONNULLPOINTER;
         Button*       mDeleteButton     A_NONNULLPOINTER;
