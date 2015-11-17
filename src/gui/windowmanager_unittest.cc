@@ -143,7 +143,7 @@ TEST_CASE("Windows tests", "windowmanager")
         ConnectionDialog *connectionDialog = CREATEWIDGETR(ConnectionDialog,
             // TRANSLATORS: connection dialog header
             _("Connecting to server"),
-            STATE_SWITCH_SERVER);
+            State::SWITCH_SERVER);
         delete2(connectionDialog);
     }
     SECTION("loginDialog")
@@ -160,7 +160,7 @@ TEST_CASE("Windows tests", "windowmanager")
         ConnectionDialog *connectionDialog = CREATEWIDGETR(ConnectionDialog,
             // TRANSLATORS: connection dialog header
             _("Logging in"),
-            STATE_SWITCH_SERVER);
+            State::SWITCH_SERVER);
         delete2(connectionDialog);
     }
 
