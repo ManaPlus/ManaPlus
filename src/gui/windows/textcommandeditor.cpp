@@ -47,8 +47,7 @@ TextCommandEditor::TextCommandEditor(TextCommand *const command) :
     Window(_("Command Editor"), Modal_false, nullptr, "commandeditor.xml"),
     ActionListener(),
     mIsMagicCommand(command ?
-        (command->getCommandType() == TextCommandType::Magic) :
-        false),
+        (command->getCommandType() == TextCommandType::Magic) : false),
     mCommand(command),
     // TRANSLATORS: command editor button
     mIsMagic(new RadioButton(this, _("magic"), "magic", mIsMagicCommand)),
