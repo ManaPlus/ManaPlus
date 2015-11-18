@@ -31,7 +31,8 @@ class AnimationDelayLoad final
 {
     public:
         AnimationDelayLoad(const std::string &fileName,
-                           const int variant, AnimatedSprite *const sprite);
+                           const int variant,
+                           AnimatedSprite *const sprite);
 
         A_DELETE_COPY(AnimationDelayLoad)
 
