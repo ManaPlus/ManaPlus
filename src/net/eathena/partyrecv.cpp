@@ -304,23 +304,11 @@ void PartyRecv::processPartyLeader(Net::MessageIn &msg)
 
 void PartyRecv::processPartyInvited(Net::MessageIn &msg)
 {
-    const BeingId id = msg.readBeingId("account id");
+    const int id = msg.readInt32("party id");
     const std::string partyName = msg.readString(24, "party name");
 
-    std::string nick;
-
-    if (actorManager)
-    {
-        const Being *const being = actorManager->findBeing(id);
-        if (being)
-        {
-            if (being->getType() == ActorType::Player)
-                nick = being->getName();
-        }
-    }
-
     if (socialWindow)
-        socialWindow->showPartyInvite(partyName, nick, 0);
+        socialWindow->showPartyInvite(partyName, std::string(), id);
 }
 
 }  // namespace EAthena
