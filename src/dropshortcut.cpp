@@ -117,7 +117,8 @@ bool DropShortcut::dropItem(const int cnt)
 
     int itemId = 0;
     ItemColor itemColor = ItemColor_one;
-    while (mLastDropIndex < DROP_SHORTCUT_ITEMS && itemId < 1)
+    while (mLastDropIndex < DROP_SHORTCUT_ITEMS &&
+           itemId < 1)
     {
         if (!PlayerInfo::isItemProtected(itemId))
         {
@@ -130,7 +131,8 @@ bool DropShortcut::dropItem(const int cnt)
     if (itemId > 0)
     {
         const Item *const item = inv->findItem(itemId, itemColor);
-        if (item && item->getQuantity() > 0)
+        if (item &&
+            item->getQuantity() > 0)
         {
             PlayerInfo::dropItem(item, cnt, Sfx_true);
             return true;
@@ -141,7 +143,8 @@ bool DropShortcut::dropItem(const int cnt)
 
     if (itemId < 1)
     {
-        while (mLastDropIndex < DROP_SHORTCUT_ITEMS && itemId < 1)
+        while (mLastDropIndex < DROP_SHORTCUT_ITEMS &&
+               itemId < 1)
         {
             if (!PlayerInfo::isItemProtected(itemId))
             {
