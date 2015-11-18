@@ -174,9 +174,11 @@ void Dirs::extractDataDir()
     extractAssets();
 
     const std::string zipName = std::string(getenv(
-        "APPDIR")).append("/data.zip");
+        "APPDIR")).append(
+        "/data.zip");
     const std::string dirName = std::string(getenv(
-        "APPDIR")).append("/data");
+        "APPDIR")).append(
+        "/data");
     Files::extractZip(zipName, "data", dirName);
     Files::extractLocale();
 #endif
@@ -485,8 +487,9 @@ void Dirs::initUpdatesDir()
         if (!PhysFs::mkdir(updateDir.c_str()))
         {
 #if defined WIN32
-            std::string newDir = settings.localDataDir
-                + "\\" + settings.updatesDir;
+            std::string newDir = settings.localDataDir +
+                "\\" +
+                settings.updatesDir;
             size_t loc = newDir.find("/", 0);
 
             while (loc != std::string::npos)
