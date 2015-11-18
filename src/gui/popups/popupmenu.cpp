@@ -1624,7 +1624,7 @@ void PopupMenu::handleLink(const std::string &link,
 
 void PopupMenu::showPopup(Window *const parent,
                           const int x, const int y,
-                          Item *const item,
+                          const Item *const item,
                           const InventoryTypeT type)
 {
     if (!item)
@@ -2120,7 +2120,7 @@ void PopupMenu::showPickupItemPopup(const int x, const int y,
 
 void PopupMenu::showUndressPopup(const int x, const int y,
                                  const Being *const being,
-                                 Item *const item)
+                                 const Item *const item)
 {
     if (!being || !item)
         return;

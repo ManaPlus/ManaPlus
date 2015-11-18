@@ -50,8 +50,8 @@ class Equipment final
         class Backend notfinal
         {
             public:
-                virtual Item *getEquipment(const int index)
-                                           const A_WARN_UNUSED = 0;
+                virtual const Item *getEquipment(const int index)
+                                                 const A_WARN_UNUSED = 0;
 
                 virtual void clear() = 0;
 
@@ -62,7 +62,7 @@ class Equipment final
         /**
          * Get equipment at the given slot.
          */
-        Item *getEquipment(const int index) const A_WARN_UNUSED
+        const Item *getEquipment(const int index) const A_WARN_UNUSED
         { return mBackend ? mBackend->getEquipment(index) : nullptr; }
 
         /**

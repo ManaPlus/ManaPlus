@@ -95,7 +95,7 @@ class PopupMenu final : public Popup, public LinkHandler
          */
         void showPopup(Window *const parent,
                        const int x, const int y,
-                       Item *const item,
+                       const Item *const item,
                        const InventoryTypeT type);
 
         void showPopup(const int x, const int y, Button *const button);
@@ -125,7 +125,7 @@ class PopupMenu final : public Popup, public LinkHandler
 
         void showUndressPopup(const int x, const int y,
                               const Being *const being,
-                              Item *const item);
+                              const Item *const item);
 
         void showMapPopup(const int x, const int y,
                           const int x2, const int y2,
@@ -209,7 +209,7 @@ class PopupMenu final : public Popup, public LinkHandler
 
         BeingId mBeingId;
         BeingId mFloorItemId;
-        Item *mItem;
+        const Item *mItem;
         int mItemId;
         ItemColor mItemColor;
         MapItem *mMapItem;

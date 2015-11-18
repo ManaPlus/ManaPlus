@@ -183,7 +183,7 @@ namespace PlayerInfo
     /**
      * Returns the player's equipment at the given slot.
      */
-    Item *getEquipment(const unsigned int slot) A_WARN_UNUSED;
+    const Item *getEquipment(const unsigned int slot) A_WARN_UNUSED;
 
 // --- Misc -------------------------------------------------------------------
 

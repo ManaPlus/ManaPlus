@@ -397,7 +397,7 @@ void EquipmentWindow::updatePage()
     mRedraw = true;
 }
 
-Item *EquipmentWindow::getItem(const int x, const int y) const
+const Item *EquipmentWindow::getItem(const int x, const int y) const
 {
     if (!mEquipment)
         return nullptr;
@@ -469,7 +469,7 @@ void EquipmentWindow::mousePressed(MouseEvent& event)
     }
     else if (event.getButton() == MouseButton::RIGHT)
     {
-        if (Item *const item = getItem(x, y))
+        if (const Item *const item = getItem(x, y))
         {
             if (itemPopup)
                 itemPopup->setVisible(Visible_false);

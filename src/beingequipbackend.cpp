@@ -44,7 +44,10 @@ BeingEquipBackend::BeingEquipBackend(Being *const being)
             const int id = being->mSpriteIDs[f];
             if (id > 0 && idx >= 0 && idx < EQUIPMENT_SIZE)
             {
-                mEquipment[idx] = new Item(id, 0, 1, 0,
+                mEquipment[idx] = new Item(id,
+                    0,
+                    1,
+                    0,
                     being->mSpriteColorsIds[f],
                     Identified_true,
                     Damaged_false,
@@ -68,12 +71,13 @@ void BeingEquipBackend::clear()
         delete2(mEquipment[i])
 }
 
-void BeingEquipBackend::setEquipment(const int index, Item *const item)
+void BeingEquipBackend::setEquipment(const int index,
+                                     const Item *const item)
 {
     mEquipment[index] = item;
 }
 
-Item *BeingEquipBackend::getEquipment(const int index) const
+const Item *BeingEquipBackend::getEquipment(const int index) const
 {
     if (index < 0 || index >= EQUIPMENT_SIZE)
         return nullptr;

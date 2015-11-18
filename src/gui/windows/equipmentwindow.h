@@ -98,7 +98,7 @@ class EquipmentWindow final : public Window,
         static void prepareSlotNames();
 
     private:
-        Item *getItem(const int x, const int y) const A_WARN_UNUSED;
+        const Item *getItem(const int x, const int y) const A_WARN_UNUSED;
 
         void setSelected(const int index);
 

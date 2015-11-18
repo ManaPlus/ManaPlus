@@ -234,7 +234,7 @@ Equipment *getEquipment()
     return mEquipment;
 }
 
-Item *getEquipment(const unsigned int slot)
+const Item *getEquipment(const unsigned int slot)
 {
     if (mEquipment)
         return mEquipment->getEquipment(slot);
