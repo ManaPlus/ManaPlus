@@ -116,7 +116,9 @@ AnimatedSprite::~AnimatedSprite()
 
 bool AnimatedSprite::reset()
 {
-    const bool ret = mFrameIndex !=0 || mFrameTime != 0 || mLastTime != 0;
+    const bool ret = mFrameIndex !=0 ||
+        mFrameTime != 0 ||
+        mLastTime != 0;
 
     mFrameIndex = 0;
     mFrameTime = 0;
@@ -146,7 +148,9 @@ bool AnimatedSprite::play(const std::string &spriteAction)
     mAction = action;
     const Animation *const animation = mAction->getAnimation(mDirection);
 
-    if (animation && animation != mAnimation && animation->getLength() > 0)
+    if (animation &&
+        animation != mAnimation &&
+        animation->getLength() > 0)
     {
         mAnimation = animation;
         reset();
@@ -195,9 +199,10 @@ bool AnimatedSprite::updateCurrentAnimation(const unsigned int time)
 
     mFrameTime += time;
 
-    while ((mFrameTime > static_cast<unsigned int>(mFrame->delay)
-           && mFrame->delay > 0) || (mFrame->type != Frame::ANIMATION
-           && mFrame->type != Frame::PAUSE))
+    while ((mFrameTime > static_cast<unsigned int>(mFrame->delay) &&
+           mFrame->delay > 0) ||
+           (mFrame->type != Frame::ANIMATION &&
+           mFrame->type != Frame::PAUSE))
     {
         bool fail(true);
         mFrameTime -= static_cast<unsigned int>(mFrame->delay);
@@ -216,15 +221,17 @@ bool AnimatedSprite::updateCurrentAnimation(const unsigned int time)
         {
             fail = false;
         }
-        else if (mFrame->type == Frame::GOTO && !mFrame->nextAction.empty())
+        else if (mFrame->type == Frame::GOTO &&
+                 !mFrame->nextAction.empty())
         {
-            if (mFrame->rand == 100 || rand() % 100 <= mFrame->rand)
+            if (mFrame->rand == 100 ||
+                mFrame->rand >= rand() % 100)
             {
                 for (size_t i = 0; i < mAnimation->getLength(); i ++)
                 {
                     const Frame *const frame = &mAnimation->mFrames[i];
-                    if (frame->type == Frame::LABEL
-                        && mFrame->nextAction == frame->nextAction)
+                    if (frame->type == Frame::LABEL &&
+                        mFrame->nextAction == frame->nextAction)
                     {
                         mFrameIndex = static_cast<unsigned int>(i);
                         if (mFrameIndex >= static_cast<unsigned int>(
@@ -245,18 +252,22 @@ bool AnimatedSprite::updateCurrentAnimation(const unsigned int time)
                 fail = false;
             }
         }
-        else if (mFrame->type == Frame::JUMP && !mFrame->nextAction.empty())
+        else if (mFrame->type == Frame::JUMP &&
+                 !mFrame->nextAction.empty())
         {
-            if (mFrame->rand == 100 || rand() % 100 <= mFrame->rand)
+            if (mFrame->rand == 100 ||
+                mFrame->rand >= rand() % 100)
             {
                 play(mFrame->nextAction);
                 return true;
             }
         }
         // copy code from Animation::isTerminator(*mFrame)
-        else if (!mFrame->image && mFrame->type == Frame::ANIMATION)
+        else if (!mFrame->image &&
+                 mFrame->type == Frame::ANIMATION)
         {
-            if (mFrame->rand == 100 || rand() % 100 <= mFrame->rand)
+            if (mFrame->rand == 100 ||
+                mFrame->rand >= rand() % 100)
             {
                 mAnimation = nullptr;
                 mFrame = nullptr;
@@ -288,7 +299,8 @@ bool AnimatedSprite::updateCurrentAnimation(const unsigned int time)
 }
 
 void AnimatedSprite::draw(Graphics *const graphics,
-                          const int posX, const int posY) const
+                          const int posX,
+                          const int posY) const
 {
     FUNC_BLOCK("AnimatedSprite::draw", 1)
     if (!mFrame || !mFrame->image)
@@ -313,7 +325,9 @@ bool AnimatedSprite::setSpriteDirection(const SpriteDirection::Type direction)
 
         const Animation *const animation = mAction->getAnimation(mDirection);
 
-        if (animation && animation != mAnimation && animation->getLength() > 0)
+        if (animation &&
+            animation != mAnimation &&
+            animation->getLength() > 0)
         {
             mAnimation = animation;
             reset();
@@ -382,10 +396,6 @@ const void *AnimatedSprite::getHash() const
 {
     if (mFrame)
         return mFrame;
-//    if (mFrame && mFrame->image)
-//        return mFrame->image;
-//    if (mAnimation)
-//        return mAnimation;
     return this;
 }
 
