@@ -49,7 +49,8 @@ Avatar::Avatar(const std::string &name) :
 
 std::string Avatar::getComplexName() const
 {
-    if (mName == mOriginalName || mOriginalName.empty())
+    if (mName == mOriginalName ||
+        mOriginalName.empty())
     {
         return mName;
     }
