@@ -129,7 +129,8 @@ void ConfigManager::initConfiguration()
     }
     if (!configFile)
     {
-        logger->log("Can't create %s. Using defaults.", configPath.c_str());
+        logger->log("Can't create %s. Using defaults.",
+            configPath.c_str());
     }
     else
     {
@@ -143,8 +144,11 @@ void ConfigManager::initConfiguration()
 
 void ConfigManager::backupConfig(const std::string &name)
 {
-    const std::string confName = std::string(settings.configDir).append(
-        "/").append(name).append(".bak");
+    const std::string confName = std::string(
+        settings.configDir).append(
+        "/").append(
+        name).append(
+        ".bak");
     const int maxFileIndex = 5;
     ::remove((confName + toString(maxFileIndex)).c_str());
     for (int f = maxFileIndex; f > 1; f --)
