@@ -60,12 +60,14 @@ void ChatLogger::setLogFile(const std::string &logFilename)
     if (mLogFile.is_open())
         mLogFile.close();
 
-    mLogFile.open(logFilename.c_str(), std::ios_base::app);
+    mLogFile.open(logFilename.c_str(),
+        std::ios_base::app);
     mLogFileName = logFilename;
 
     if (!mLogFile.is_open())
     {
-        std::cout << "Warning: error while opening " << logFilename <<
+        std::cout << "Warning: error while opening " <<
+            logFilename <<
             " for writing.\n";
     }
 }
@@ -89,7 +91,8 @@ void ChatLogger::log(std::string str)
     const std::string &dateStr = getDir();
     const std::string logFileName = strprintf(
         "%s/#General.log", dateStr.c_str());
-    if (!mLogFile.is_open() || logFileName != mLogFileName)
+    if (!mLogFile.is_open() ||
+        logFileName != mLogFileName)
     {
         setLogDir(dateStr);
         setLogFile(logFileName);
@@ -99,7 +102,8 @@ void ChatLogger::log(std::string str)
     writeTo(mLogFile, str);
 }
 
-void ChatLogger::log(std::string name, std::string str)
+void ChatLogger::log(std::string name,
+                     std::string str)
 {
     const std::string &dateStr = getDir();
     const std::string logFileName = strprintf("%s/%s.log",
@@ -127,8 +131,10 @@ std::string ChatLogger::getDir() const
 
     strftime(buffer, 79, "%Y-%m/%d", timeinfo);
 
-    date = strprintf("%s/%s/%s", mBaseLogDir.c_str(),
-        mServerName.c_str(), buffer);
+    date = strprintf("%s/%s/%s",
+        mBaseLogDir.c_str(),
+        mServerName.c_str(),
+        buffer);
 
     return date;
 }
@@ -139,13 +145,19 @@ std::string ChatLogger::secureName(std::string &name)
     for (size_t f = 0; f < sz; f ++)
     {
         const unsigned char ch = name[f];
-        if ((ch < '0' || ch > '9')
-            && (ch < 'a' || ch > 'z')
-            && (ch < 'A' || ch > 'Z')
-            && ch != '-' && ch != '+' && ch != '='
-            && ch != '.' && ch != ',' && ch != ')'
-            && ch != '(' && ch != '[' && ch != ']'
-            && ch != '#')
+        if ((ch < '0' || ch > '9') &&
+            (ch < 'a' || ch > 'z') &&
+            (ch < 'A' || ch > 'Z') &&
+            ch != '-' &&
+            ch != '+' &&
+            ch != '=' &&
+            ch != '.' &&
+            ch != ',' &&
+            ch != ')' &&
+            ch != '(' &&
+            ch != '[' &&
+            ch != ']' &&
+            ch != '#')
         {
             name[f] = '_';
         }
@@ -181,11 +193,13 @@ void ChatLogger::setServerName(const std::string &serverName)
     }
 }
 
-void ChatLogger::loadLast(std::string name, std::list<std::string> &list,
-                          const unsigned n) const
+void ChatLogger::loadLast(std::string name,
+                          std::list<std::string> &list,
+                          const unsigned int n) const
 {
     std::ifstream logFile;
-    std::string fileName = strprintf("%s/%s.log", getDir().c_str(),
+    std::string fileName = strprintf("%s/%s.log",
+        getDir().c_str(),
         secureName(name).c_str());
 
     logFile.open(fileName.c_str(), std::ios::in);

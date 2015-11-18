@@ -50,8 +50,9 @@ class ChatLogger final
 
         void log(std::string name, std::string str);
 
-        void loadLast(std::string name, std::list<std::string> &list,
-                      const unsigned n) const;
+        void loadLast(std::string name,
+                      std::list<std::string> &list,
+                      const unsigned int n) const;
 
         std::string getDir() const A_WARN_UNUSED;
 
@@ -72,7 +73,8 @@ class ChatLogger final
 
         void setLogDir(const std::string &logDir);
 
-        static void writeTo(std::ofstream &file, const std::string &str);
+        static void writeTo(std::ofstream &file,
+                            const std::string &str);
 
         std::ofstream mLogFile;
         std::string mLogDir;
