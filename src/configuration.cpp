@@ -223,7 +223,8 @@ void ConfigurationObject::deleteKey(const std::string &key)
     mOptions.erase(key);
 }
 
-void Configuration::setValue(const std::string &key, const std::string &value)
+void Configuration::setValue(const std::string &key,
+                             const std::string &value)
 {
     ConfigurationObject::setValue(key, value);
     mUpdated = true;
@@ -246,7 +247,8 @@ void Configuration::incValue(const std::string &key)
         ? atoi(iter->second.c_str()) + 1 : 1);
 }
 
-void Configuration::setSilent(const std::string &key, const std::string &value)
+void Configuration::setSilent(const std::string &key,
+                              const std::string &value)
 {
     ConfigurationObject::setValue(key, value);
 }
@@ -365,7 +367,8 @@ void Configuration::cleanDefaults()
     if (mDefaultsData)
     {
         for (DefaultsData::const_iterator iter = mDefaultsData->begin();
-             iter != mDefaultsData->end(); ++iter)
+             iter != mDefaultsData->end();
+             ++iter)
         {
             delete (iter->second);
         }
@@ -485,7 +488,8 @@ std::string Configuration::getStringValue(const std::string &key) const
             const DefaultsData::const_iterator
                 itdef = mDefaultsData->find(key);
 
-            if (itdef != mDefaultsData->end() && itdef->second)
+            if (itdef != mDefaultsData->end() &&
+                itdef->second)
             {
                 const VariableData *const data = itdef->second;
                 const VariableData::DataType type = static_cast<const
@@ -535,7 +539,8 @@ float Configuration::getFloatValue(const std::string &key) const
             const DefaultsData::const_iterator itdef
                 = mDefaultsData->find(key);
 
-            if (itdef != mDefaultsData->end() && itdef->second)
+            if (itdef != mDefaultsData->end() &&
+                itdef->second)
             {
                 const VariableData *const data = itdef->second;
                 const VariableData::DataType type = static_cast<
@@ -591,7 +596,8 @@ bool Configuration::getBoolValue(const std::string &key) const
             const DefaultsData::const_iterator itdef
                 = mDefaultsData->find(key);
 
-            if (itdef != mDefaultsData->end() && itdef->second)
+            if (itdef != mDefaultsData->end() &&
+                itdef->second)
             {
                 const VariableData *const data = itdef->second;
                 const VariableData::DataType type = static_cast<
@@ -657,8 +663,9 @@ bool Configuration::resetBoolValue(const std::string &key)
         const DefaultsData::const_iterator itdef = mDefaultsData->find(key);
         const VariableData *const data = itdef->second;
 
-        if (itdef != mDefaultsData->end() && data
-            && data->getType() == VariableData::DATA_BOOL)
+        if (itdef != mDefaultsData->end() &&
+            data &&
+            data->getType() == VariableData::DATA_BOOL)
         {
             defaultValue = (static_cast<const BoolData*>(data))->getData();
         }
@@ -691,8 +698,8 @@ void ConfigurationObject::initFromXML(const XmlNodePtrConst parentNode)
 
             for_each_xml_child_node(subnode, node)
             {
-                if (xmlNameEqual(subnode, name.c_str())
-                    && subnode->type == XML_ELEMENT_NODE)
+                if (xmlNameEqual(subnode, name.c_str()) &&
+                    subnode->type == XML_ELEMENT_NODE)
                 {
                     ConfigurationObject *const cobj = new ConfigurationObject;
                     cobj->initFromXML(subnode);  // recurse
@@ -906,9 +913,9 @@ void Configuration::removeListeners(ConfigListener *const listener)
 
 void Configuration::removeOldKeys()
 {
-    if (mOptions.find(unusedKeys[0]) != mOptions.end()
-        || mOptions.find(unusedKeys[1]) != mOptions.end()
-        || mOptions.find(unusedKeys[2]) != mOptions.end())
+    if (mOptions.find(unusedKeys[0]) != mOptions.end() ||
+        mOptions.find(unusedKeys[1]) != mOptions.end() ||
+        mOptions.find(unusedKeys[2]) != mOptions.end())
     {
         int f = 0;
         while (unusedKeys[f] != "")

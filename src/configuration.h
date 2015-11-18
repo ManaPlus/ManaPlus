@@ -185,7 +185,8 @@ class ConfigurationObject notfinal
                 return container;
 
             for (ConfigurationList::const_iterator it = list->begin();
-                 it != list->end(); ++ it)
+                 it != list->end();
+                 ++ it)
             {
                 container = manager->readConfigItem(*it, container);
             }
@@ -291,33 +292,43 @@ class Configuration final : public ConfigurationObject
 
         void incValue(const std::string &key);
 
-        void setSilent(const std::string &key, const std::string &value);
+        void setSilent(const std::string &key,
+                       const std::string &value);
 
-        inline void setValue(const std::string &key, const char *const value)
+        inline void setValue(const std::string &key,
+                             const char *const value)
         { if (value) setValue(key, std::string(value)); }
 
-        inline void setSilent(const std::string &key, const char *const value)
+        inline void setSilent(const std::string &key,
+                              const char *const value)
         { if (value) setSilent(key, std::string(value)); }
 
-        inline void setValue(const std::string &key, const float value)
+        inline void setValue(const std::string &key,
+                             const float value)
         { setValue(key, toString(value)); }
 
-        inline void setValue(const std::string &key, const double value)
+        inline void setValue(const std::string &key,
+                             const double value)
         { setValue(key, toString(value)); }
 
-        inline void setValue(const std::string &key, const int value)
+        inline void setValue(const std::string &key,
+                             const int value)
         { setValue(key, toString(value)); }
 
-        inline void setValueInt(const std::string &key, const int value)
+        inline void setValueInt(const std::string &key,
+                                const int value)
         { setValue(key, toString(value)); }
 
-        inline void setValue(const std::string &key, const unsigned value)
+        inline void setValue(const std::string &key,
+                             const unsigned value)
         { setValue(key, toString(value)); }
 
-        inline void setValue(const std::string &key, const bool value)
+        inline void setValue(const std::string &key,
+                             const bool value)
         { setValue(key, value ? "1" : "0"); }
 
-        inline void setSilent(const std::string &key, const bool value)
+        inline void setSilent(const std::string &key,
+                              const bool value)
         { setSilent(key, value ? "1" : "0"); }
 
         int resetIntValue(const std::string &key);
@@ -333,8 +344,11 @@ class Configuration final : public ConfigurationObject
          * @see defaults.h
          */
         int getIntValue(const std::string &key) const A_WARN_UNUSED;
+
         float getFloatValue(const std::string &key) const A_WARN_UNUSED;
+
         std::string getStringValue(const std::string &key) const A_WARN_UNUSED;
+
         bool getBoolValue(const std::string &key) const A_WARN_UNUSED;
 
         std::string getDirectory() const A_WARN_UNUSED
