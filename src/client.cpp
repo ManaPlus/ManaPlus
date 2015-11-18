@@ -230,7 +230,8 @@ Client::Client() :
 
 void Client::testsInit()
 {
-    if (!settings.options.test.empty() && settings.options.test != "99")
+    if (!settings.options.test.empty() &&
+        settings.options.test != "99")
     {
         gameInit();
     }
@@ -342,8 +343,9 @@ void Client::gameInit()
     Cpu::detect();
 #if defined(USE_OPENGL) 
 #if !defined(ANDROID) && !defined(__APPLE__) && !defined(__native_client__)
-    if (!settings.options.safeMode && settings.options.test.empty()
-        && !config.getBoolValue("videodetected"))
+    if (!settings.options.safeMode &&
+        settings.options.test.empty() &&
+        !config.getBoolValue("videodetected"))
     {
         graphicsManager.detectVideoSettings();
     }
@@ -790,7 +792,8 @@ void Client::stateConnectServer1()
 
 void Client::stateWorldSelect1()
 {
-    if (mOldState == State::UPDATE && loginHandler)
+    if (mOldState == State::UPDATE &&
+        loginHandler)
     {
         if (loginHandler->getWorlds().size() < 2)
             mState = State::PRE_LOGIN;
@@ -840,8 +843,11 @@ void Client::stateGame1()
 
 void Client::stateSwitchLogin1()
 {
-    if (mOldState == State::GAME && gameHandler)
+    if (mOldState == State::GAME &&
+        gameHandler)
+    {
         gameHandler->disconnect();
+    }
 }
 
 int Client::gameExec()
@@ -864,7 +870,8 @@ int Client::gameExec()
             gui->logic();
         cur_time = static_cast<int>(time(nullptr));
         int k = 0;
-        while (lastTickTime != tick_time && k < 40)
+        while (lastTickTime != tick_time &&
+               k < 40)
         {
             if (mGame)
                 mGame->logic();
@@ -1022,9 +1029,9 @@ int Client::gameExec()
                     // Allow changing this using a server choice dialog
                     // We show the dialog box only if the command-line
                     // options weren't set.
-                    if (settings.options.serverName.empty()
-                        && settings.options.serverPort == 0
-                        && !branding.getValue("onlineServerList", "a").empty())
+                    if (settings.options.serverName.empty() &&
+                        settings.options.serverPort == 0 &&
+                        !branding.getValue("onlineServerList", "a").empty())
                     {
                         // Don't allow an alpha opacity
                         // lower than the default value
@@ -1076,8 +1083,8 @@ int Client::gameExec()
                     mSearchHash = Net::Download::adlerBuffer(
                         const_cast<char*>(mCurrentServer.hostname.c_str()),
                         static_cast<int>(mCurrentServer.hostname.size()));
-                    if (settings.options.username.empty()
-                        || settings.options.password.empty())
+                    if (settings.options.username.empty() ||
+                        settings.options.password.empty())
                     {
                         CREATEWIDGETV(mCurrentDialog, LoginDialog,
                             loginData,
@@ -1182,8 +1189,9 @@ int Client::gameExec()
                     }
                     else
                     {
-                        settings.oldUpdates = settings.localDataDir
-                            + dirSeparator + settings.updatesDir;
+                        settings.oldUpdates = settings.localDataDir +
+                            dirSeparator +
+                            settings.updatesDir;
                         CREATEWIDGETV(mCurrentDialog, UpdaterWindow,
                             settings.updateHost,
                             settings.oldUpdates,
@@ -1216,8 +1224,11 @@ int Client::gameExec()
                             "zip",
                             false);
 
-                        resourceManager->addToSearchPath(settings.localDataDir
-                            + dirSeparator + settings.updatesDir + "/local/",
+                        resourceManager->addToSearchPath(
+                            settings.localDataDir +
+                            dirSeparator +
+                            settings.updatesDir +
+                            "/local/",
                             false);
                     }
 
@@ -1227,7 +1238,8 @@ int Client::gameExec()
                     if (!SpriteReference::Empty)
                     {
                         SpriteReference::Empty = new SpriteReference(
-                            paths.getStringValue("spriteErrorFile"), 0);
+                            paths.getStringValue("spriteErrorFile"),
+                            0);
                     }
 
                     if (!BeingInfo::unknown)
@@ -1494,7 +1506,8 @@ int Client::gameExec()
 
                 case State::CHANGEEMAIL:
                     logger->log1("State: CHANGE EMAIL");
-                    CREATEWIDGETV(mCurrentDialog, ChangeEmailDialog,
+                    CREATEWIDGETV(mCurrentDialog,
+                        ChangeEmailDialog,
                         loginData);
                     mCurrentDialog->setVisible(Visible_true);
                     break;
@@ -1525,7 +1538,8 @@ int Client::gameExec()
 
                 case State::UNREGISTER:
                     logger->log1("State: UNREGISTER");
-                    CREATEWIDGETV(mCurrentDialog, UnRegisterDialog,
+                    CREATEWIDGETV(mCurrentDialog,
+                        UnRegisterDialog,
                         loginData);
                     break;
 
@@ -1534,7 +1548,8 @@ int Client::gameExec()
                     if (loginHandler)
                     {
                         loginHandler->unregisterAccount(
-                            loginData.username, loginData.password);
+                            loginData.username,
+                            loginData.password);
                     }
                     break;
 
@@ -1673,14 +1688,16 @@ void Client::optionChanged(const std::string &name)
         settings.limitFps = fpsLimit > 0;
         WindowManager::setFramerate(fpsLimit);
     }
-    else if (name == "guialpha" || name == "enableGuiOpacity")
+    else if (name == "guialpha" ||
+             name == "enableGuiOpacity")
     {
         const float alpha = config.getFloatValue("guialpha");
         settings.guiAlpha = alpha;
         ImageHelper::setEnableAlpha(alpha != 1.0F &&
             config.getBoolValue("enableGuiOpacity"));
     }
-    else if (name == "gamma" || name == "enableGamma")
+    else if (name == "gamma" ||
+             name == "enableGamma")
     {
         WindowManager::applyGamma();
     }
@@ -1692,7 +1709,8 @@ void Client::optionChanged(const std::string &name)
     {
         WindowManager::applyVSync();
     }
-    else if (name == "repeateInterval" || name == "repeateDelay")
+    else if (name == "repeateInterval" ||
+             name == "repeateDelay")
     {
         WindowManager::applyKeyRepeat();
     }
@@ -1754,7 +1772,8 @@ void Client::action(const ActionEvent &event)
 
 void Client::initFeatures()
 {
-    features.init(paths.getStringValue("featuresFile"), UseResman_true);
+    features.init(paths.getStringValue("featuresFile"),
+        UseResman_true);
     features.setDefaultValues(getFeaturesDefaults());
     settings.fixDeadAnimation = features.getBoolValue("fixDeadAnimation");
 }
@@ -1767,9 +1786,11 @@ void Client::initTradeFilter()
     std::ofstream tradeFile;
     struct stat statbuf;
 
-    if (stat(tradeListName.c_str(), &statbuf) || !S_ISREG(statbuf.st_mode))
+    if (stat(tradeListName.c_str(), &statbuf) ||
+        !S_ISREG(statbuf.st_mode))
     {
-        tradeFile.open(tradeListName.c_str(), std::ios::out);
+        tradeFile.open(tradeListName.c_str(),
+            std::ios::out);
         if (tradeFile.is_open())
         {
             tradeFile << ": sell" << std::endl;
@@ -1795,9 +1816,9 @@ void Client::initTradeFilter()
 bool Client::isTmw()
 {
     const std::string &name = settings.serverName;
-    if (name == "server.themanaworld.org"
-        || name == "themanaworld.org"
-        || name == "167.114.185.71")
+    if (name == "server.themanaworld.org" ||
+        name == "themanaworld.org" ||
+        name == "167.114.129.72")
     {
         return true;
     }
@@ -1849,8 +1870,11 @@ void Client::logVars()
 
 void Client::slowLogic()
 {
-    if (!gameHandler || !gameHandler->mustPing())
+    if (!gameHandler ||
+        !gameHandler->mustPing())
+    {
         return;
+    }
 
     if (get_elapsed_time1(mPing) > 1500)
     {
