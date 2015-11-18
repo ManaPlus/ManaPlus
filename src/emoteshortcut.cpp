@@ -75,7 +75,8 @@ void EmoteShortcut::useEmote(const int index) const
     if (!localPlayer)
         return;
 
-    if (index > 0 && index <= SHORTCUT_EMOTES)
+    if (index > 0 &&
+        index <= SHORTCUT_EMOTES)
     {
        if (mEmotes[index - 1] > 0)
           localPlayer->emote(mEmotes[index - 1]);
