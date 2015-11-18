@@ -51,12 +51,16 @@ class EffectManager final
          * Triggers a effect with the id, at
          * the specified being.
          */
-        bool trigger(const int id, Being *const being, const int rotation = 0);
+        bool trigger(const int id,
+                     Being *const being,
+                     const int rotation = 0);
 
-        bool triggerDirection(const int id, Being *const being,
+        bool triggerDirection(const int id,
+                              Being *const being,
                               const SpriteDirection::Type &direction);
 
-        Particle *triggerReturn(const int id, Being *const being,
+        Particle *triggerReturn(const int id,
+                                Being *const being,
                                 const int rotation = 0);
 
         /**
