@@ -736,7 +736,9 @@ void SkillDialog::useSkill(const SkillInfo *const info,
             }
             case SkillType::Support:
             {
-                const Being *const being = localPlayer->getTarget();
+                const Being *being = localPlayer->getTarget();
+                if (!being)
+                    being = localPlayer;
                 if (being)
                 {
                     skillHandler->useBeing(info->id,
