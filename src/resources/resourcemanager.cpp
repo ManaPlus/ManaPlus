@@ -333,11 +333,12 @@ bool ResourceManager::setWriteDir(const std::string &path) const
 }
 
 bool ResourceManager::addToSearchPath(const std::string &path,
-                                      const bool append) const
+                                      const Append append) const
 {
     logger->log("Adding to PhysicsFS: %s (%s)", path.c_str(),
-                append ? "append" : "prepend");
-    if (!PhysFs::addToSearchPath(path.c_str(), append ? 1 : 0))
+        append == Append_true ? "append" : "prepend");
+    if (!PhysFs::addToSearchPath(path.c_str(),
+        append == Append_true ? 1 : 0))
     {
         logger->log("Error: %s", PHYSFS_getLastError());
         return false;
@@ -358,7 +359,7 @@ bool ResourceManager::removeFromSearchPath(const std::string &path) const
 
 void ResourceManager::searchAndAddArchives(const std::string &restrict path,
                                            const std::string &restrict ext,
-                                           const bool append) const
+                                           const Append append) const
 {
     const char *const dirSep = dirSeparator;
     char **list = PhysFs::enumerateFiles(path.c_str());

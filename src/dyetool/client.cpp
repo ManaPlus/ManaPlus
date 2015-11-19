@@ -246,10 +246,13 @@ void Client::gameInit()
 
     // Add the main data directories to our PhysicsFS search path
     if (!settings.options.dataPath.empty())
-        resourceManager->addToSearchPath(settings.options.dataPath, false);
+    {
+        resourceManager->addToSearchPath(settings.options.dataPath,
+            Append_false);
+    }
 
     // Add the local data directory to PhysicsFS search path
-    resourceManager->addToSearchPath(settings.localDataDir, false);
+    resourceManager->addToSearchPath(settings.localDataDir, Append_false);
     TranslationManager::loadCurrentLang();
 
     WindowManager::initTitle();
@@ -595,7 +598,7 @@ int Client::gameExec()
                         resourceManager->searchAndAddArchives(
                             "customdata/",
                             "zip",
-                            false);
+                            Append_false);
                     }
 
                     if (!settings.options.skipUpdate)
@@ -603,11 +606,11 @@ int Client::gameExec()
                         resourceManager->searchAndAddArchives(
                             settings.updatesDir + "/local/",
                             "zip",
-                            false);
+                            Append_false);
 
                         resourceManager->addToSearchPath(settings.localDataDir
                             + dirSeparator + settings.updatesDir + "/local/",
-                            false);
+                            Append_false);
                     }
 
                     logger->log("Init paths");

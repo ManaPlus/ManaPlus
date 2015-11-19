@@ -23,6 +23,8 @@
 #ifndef RESOURCES_RESOURCEMANAGER_H
 #define RESOURCES_RESOURCEMANAGER_H
 
+#include "enums/simpletypes/append.h"
+
 #include "utils/stringvector.h"
 
 #include <map>
@@ -78,7 +80,8 @@ class ResourceManager final
          *
          * @return <code>true</code> on success, <code>false</code> otherwise.
          */
-        bool addToSearchPath(const std::string &path, const bool append) const;
+        bool addToSearchPath(const std::string &path,
+                             const Append append) const;
 
         /**
          * Remove a directory or archive from the search path.
@@ -92,7 +95,7 @@ class ResourceManager final
         */
         void searchAndAddArchives(const std::string &restrict path,
                                   const std::string &restrict ext,
-                                  const bool append) const;
+                                  const Append append) const;
 
         /**
         * Searches for zip files and remove them from the search path.

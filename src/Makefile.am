@@ -562,6 +562,7 @@ SRC += events/actionevent.h \
 	      enums/textcommandtype.h \
 	      enums/simpletypes/allowsort.h \
 	      enums/simpletypes/allplayers.h \
+	      enums/simpletypes/append.h \
 	      enums/simpletypes/autorelease.h \
 	      enums/simpletypes/autotarget.h \
 	      enums/simpletypes/beingid.h \

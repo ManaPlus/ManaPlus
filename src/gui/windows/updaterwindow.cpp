@@ -663,7 +663,7 @@ void UpdaterWindow::loadUpdates()
         UpdaterWindow::addUpdateFile(mUpdatesDir,
             fixPath,
             file.name,
-            false);
+            Append_false);
     }
     loadManaPlusUpdates(mUpdatesDir);
     loadMods(mUpdatesDir, mUpdateFiles);
@@ -693,7 +693,7 @@ void UpdaterWindow::loadLocalUpdates(const std::string &dir)
         UpdaterWindow::addUpdateFile(dir,
             fixPath,
             file.name,
-            false);
+            Append_false);
     }
     loadManaPlusUpdates(dir);
     loadMods(dir, updateFiles);
@@ -740,7 +740,7 @@ void UpdaterWindow::loadManaPlusUpdates(const std::string &dir)
             std::string fileName = std::string(fixPath).append(
                 "/").append(name);
             if (!stat(fileName.c_str(), &statbuf))
-                resourceManager->addToSearchPath(fileName, false);
+                resourceManager->addToSearchPath(fileName, Append_false);
         }
     }
 }
@@ -769,10 +769,10 @@ void UpdaterWindow::unloadManaPlusUpdates(const std::string &dir)
 void UpdaterWindow::addUpdateFile(const std::string &restrict path,
                                   const std::string &restrict fixPath,
                                   const std::string &restrict file,
-                                  const bool append)
+                                  const Append append)
 {
     const std::string tmpPath = std::string(path).append("/").append(file);
-    if (!append)
+    if (append == Append_false)
         resourceManager->addToSearchPath(tmpPath, append);
 
     const std::string fixFile = std::string(fixPath).append("/").append(file);
@@ -780,7 +780,7 @@ void UpdaterWindow::addUpdateFile(const std::string &restrict path,
     if (!stat(fixFile.c_str(), &statbuf))
         resourceManager->addToSearchPath(fixFile, append);
 
-    if (append)
+    if (append == Append_false)
         resourceManager->addToSearchPath(tmpPath, append);
 }
 
@@ -1097,7 +1097,7 @@ void UpdaterWindow::loadMods(const std::string &dir,
             UpdaterWindow::addUpdateFile(dir,
                 fixPath,
                 file.name,
-                false);
+                Append_false);
         }
     }
 
@@ -1121,7 +1121,7 @@ void UpdaterWindow::loadMods(const std::string &dir,
                 std::string fileName = std::string(fixPath).append(
                     "/").append(name);
                 if (!stat(fileName.c_str(), &statbuf))
-                    resourceManager->addToSearchPath(fileName, false);
+                    resourceManager->addToSearchPath(fileName, Append_false);
             }
         }
     }
@@ -1148,7 +1148,10 @@ void UpdaterWindow::loadDirMods(const std::string &dir)
         {
             const std::string &localDir = mod->getLocalDir();
             if (!localDir.empty())
-                resourceManager->addToSearchPath(dir + "/" + localDir, false);
+            {
+                resourceManager->addToSearchPath(dir + "/" + localDir,
+                    Append_false);
+            }
         }
     }
 }

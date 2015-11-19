@@ -26,6 +26,8 @@
 #include "enums/net/downloadstatus.h"
 #include "enums/net/updatetype.h"
 
+#include "enums/simpletypes/append.h"
+
 #include "gui/widgets/linkhandler.h"
 #include "gui/widgets/window.h"
 
@@ -124,7 +126,7 @@ class UpdaterWindow final : public Window,
         static void addUpdateFile(const std::string &restrict path,
                                   const std::string &restrict fixPath,
                                   const std::string &restrict file,
-                                  const bool append);
+                                  const Append append);
 
         static void removeUpdateFile(const std::string &restrict path,
                                      const std::string &restrict fixPath,

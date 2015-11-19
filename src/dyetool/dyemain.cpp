@@ -77,8 +77,8 @@ int main(int argc, char **argv)
 
     ResourceManager::init();
     resourceManager->setWriteDir(".");
-    resourceManager->addToSearchPath(".", false);
-    resourceManager->addToSearchPath("/", false);
+    resourceManager->addToSearchPath(".", Append_false);
+    resourceManager->addToSearchPath("/", Append_false);
     std::string src = argv[1];
     std::string dst;
     if (argc == 4)
