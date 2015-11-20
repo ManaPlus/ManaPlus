@@ -39,8 +39,8 @@ TEST_CASE("xmlutils readXmlIntVector 1")
     XML::initXML();
     logger = new Logger();
     ResourceManager::init();
-    resourceManager->addToSearchPath("data", false);
-    resourceManager->addToSearchPath("../data", false);
+    resourceManager->addToSearchPath("data", Append_false);
+    resourceManager->addToSearchPath("../data", Append_false);
 
     std::vector<int> arr;
 

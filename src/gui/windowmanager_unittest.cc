@@ -69,8 +69,8 @@ TEST_CASE("Windows tests", "windowmanager")
     SDL_Init(SDL_INIT_VIDEO);
     logger = new Logger();
     ResourceManager::init();
-    resourceManager->addToSearchPath("data", false);
-    resourceManager->addToSearchPath("../data", false);
+    resourceManager->addToSearchPath("data", Append_false);
+    resourceManager->addToSearchPath("../data", Append_false);
     mainGraphics = new SDLGraphics;
     imageHelper = new SDLImageHelper;
     userPalette = new UserPalette;
