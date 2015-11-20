@@ -358,6 +358,10 @@ void Minimap::draw2(Graphics *const graphics)
                 case ActorType::Homunculus:
                     type = UserColorId::HOMUNCULUS;
                     break;
+
+                case ActorType::SkillUnit:
+                    type = UserColorId::SKILLUNIT;
+                    break;
 #endif
                 case ActorType::Avatar:
                 case ActorType::Unknown:

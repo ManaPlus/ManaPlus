@@ -203,6 +203,8 @@ void InputManager::store() const
                         case InputType::JOYSTICK:
                             tmp = "j";
                             break;
+                        case InputType::KEYBOARD:
+                        case InputType::UNKNOWN:
                         default:
                             break;
                     }

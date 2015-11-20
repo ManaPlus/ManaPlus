@@ -23,8 +23,6 @@
 
 #include "input/inputfunction.h"
 
-#include "enums/input/inputtype.h"
-
 #include "events/inputevent.h"
 
 #include "utils/stringmap.h"

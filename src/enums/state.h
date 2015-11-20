@@ -25,6 +25,10 @@
 
 #include "enums/simpletypes/enumdefines.h"
 
+#ifdef WIN32
+#undef ERROR
+#endif
+
 enumStart(State)
 {
     ERROR = -1,

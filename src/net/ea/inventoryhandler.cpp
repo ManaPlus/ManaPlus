@@ -91,9 +91,13 @@ size_t InventoryHandler::getSize(const InventoryTypeT type) const
             return 0;  // Comes from server after items
         case InventoryType::Trade:
             return 12;
-        // GUILD_STORAGE
+        case InventoryType::Npc:
+#ifdef EATHENA_SUPPORT
+        case InventoryType::Cart:
+        case InventoryType::Vending:
+        case InventoryType::Mail:
+#endif
         case InventoryType::TypeEnd:
-            return 0;  // Comes from server after items
         default:
             return 0;
     }

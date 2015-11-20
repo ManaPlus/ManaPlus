@@ -51,6 +51,7 @@
 #ifdef WIN32
 #include <SDL_syswm.h>
 #include "utils/specialfolder.h"
+#undef ERROR
 #endif
 
 #include <sys/stat.h>

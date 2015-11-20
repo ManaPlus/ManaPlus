@@ -27,8 +27,6 @@
 #include "settings.h"
 #include "sdlshared.h"
 
-#include "enums/input/inputtype.h"
-
 #include "input/inputmanager.h"
 
 #include "utils/timer.h"

@@ -21,7 +21,6 @@
 
 #include "net/eathena/partyrecv.h"
 
-#include "actormanager.h"
 #include "notifymanager.h"
 #include "party.h"
 

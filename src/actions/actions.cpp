@@ -247,9 +247,18 @@ static Item *getItemByInvIndex(const InputEvent &event,
             inv = PlayerInfo::getStorageInventory();
             break;
 
-        default:
         case InventoryType::Inventory:
             inv = PlayerInfo::getInventory();
+            break;
+        case InventoryType::Trade:
+        case InventoryType::Npc:
+#ifdef EATHENA_SUPPORT
+        case InventoryType::Cart:
+        case InventoryType::Vending:
+        case InventoryType::Mail:
+#endif
+        case InventoryType::TypeEnd:
+        default:
             break;
     }
     if (inv)

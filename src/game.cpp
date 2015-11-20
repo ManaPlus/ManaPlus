@@ -131,6 +131,7 @@
 
 #ifdef WIN32
 #include <sys/time.h>
+#undef ERROR
 #endif
 
 #include "debug.h"

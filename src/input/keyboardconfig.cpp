@@ -24,8 +24,6 @@
 
 #include "configuration.h"
 
-#include "enums/input/inputtype.h"
-
 #include "input/inputmanager.h"
 
 #include "utils/gettext.h"
