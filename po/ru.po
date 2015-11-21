@@ -19,9 +19,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2015-11-16 16:07+0300\n"
-"PO-Revision-Date: 2015-11-05 18:48+0000\n"
-"Last-Translator: Роман Верменко <dargodet@gmail.com>\n"
+"POT-Creation-Date: 2015-11-21 14:50+0300\n"
+"PO-Revision-Date: 2015-11-17 11:01+0000\n"
+"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/akaras/manaplus/language/"
 "ru/)\n"
 "Language: ru\n"
@@ -46,7 +46,7 @@ msgstr "Файл выгружен"
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: text dialog button
 #. TRANSLATORS: ok dialog button
-#: src/actions/actions.cpp:162 src/client.cpp:1482 src/client.cpp:1516
+#: src/actions/actions.cpp:162 src/client.cpp:1497 src/client.cpp:1532
 #: src/gamemodifiers.cpp:451 src/gui/dialogsmanager.cpp:182
 #: src/gui/dialogsmanager.cpp:202 src/gui/widgets/tabs/setup_input.cpp:164
 #: src/gui/widgets/tabs/setup_theme.cpp:313
@@ -74,40 +74,40 @@ msgstr "ОК"
 
 #. TRANSLATORS: clear graphics command message
 #. TRANSLATORS: clear fonts cache message
-#: src/actions/actions.cpp:1026 src/actions/actions.cpp:1039
+#: src/actions/actions.cpp:1036 src/actions/actions.cpp:1049
 msgid "Cache cleaned"
 msgstr "Кеш очищен"
 
 #. TRANSLATORS: uptime command
-#: src/actions/actions.cpp:1177 src/actions/actions.cpp:1183
+#: src/actions/actions.cpp:1187 src/actions/actions.cpp:1193
 #, c-format
 msgid "Client uptime: %s"
 msgstr "Время работы клиента: %s"
 
 #. TRANSLATORS: dump command
-#: src/actions/actions.cpp:1240 src/actions/actions.cpp:1249
+#: src/actions/actions.cpp:1250 src/actions/actions.cpp:1259
 msgid "Resource images:"
 msgstr "Изображений:"
 
 #. TRANSLATORS: dump command
-#: src/actions/actions.cpp:1243 src/actions/actions.cpp:1253
+#: src/actions/actions.cpp:1253 src/actions/actions.cpp:1263
 msgid "Resource orphaned images:"
 msgstr "Удаленных изображений:"
 
 #. TRANSLATORS: dump environment command
-#: src/actions/actions.cpp:1344
+#: src/actions/actions.cpp:1354
 msgid "Environment variables dumped"
 msgstr "Переменные среды сохранены"
 
-#: src/actions/actions.cpp:1456
+#: src/actions/actions.cpp:1466
 msgid "Uploaded config into:"
 msgstr "Информация о выгруженном конфиге:"
 
-#: src/actions/actions.cpp:1465
+#: src/actions/actions.cpp:1475
 msgid "Uploaded server config into:"
 msgstr "Информация о выгруженном конфиге сервера:"
 
-#: src/actions/actions.cpp:1474
+#: src/actions/actions.cpp:1484
 msgid "Uploaded log into:"
 msgstr "Информация о выгруженном логе:"
 
@@ -450,40 +450,40 @@ msgstr "Плавающий пузырек"
 #. TRANSLATORS: setup tab quick button
 #. TRANSLATORS: full button name
 #. TRANSLATORS: setup window name
-#: src/client.cpp:816 src/dyetool/client.cpp:471 src/gui/windowmenu.cpp:177
+#: src/client.cpp:822 src/dyetool/client.cpp:474 src/gui/windowmenu.cpp:177
 #: src/gui/windows/setupwindow.cpp:64
 msgid "Setup"
 msgstr "Настройка"
 
 #. TRANSLATORS: perfoamance tab quick button
 #. TRANSLATORS: settings tab name
-#: src/client.cpp:819 src/dyetool/client.cpp:474
+#: src/client.cpp:825 src/dyetool/client.cpp:477
 #: src/gui/widgets/tabs/setup_perfomance.cpp:54
 msgid "Performance"
 msgstr "Производительность"
 
 #. TRANSLATORS: video tab quick button
 #. TRANSLATORS: video settings tab name
-#: src/client.cpp:822 src/dyetool/client.cpp:477
+#: src/client.cpp:828 src/dyetool/client.cpp:480
 #: src/gui/widgets/tabs/setup_video.cpp:106
 msgid "Video"
 msgstr "Видео"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: theme settings tab name
-#: src/client.cpp:825 src/dyetool/client.cpp:480
+#: src/client.cpp:831 src/dyetool/client.cpp:483
 #: src/gui/widgets/tabs/setup_theme.cpp:121
 msgid "Theme"
 msgstr "Тема"
 
 #. TRANSLATORS: theme tab quick button
-#: src/client.cpp:828 src/dyetool/client.cpp:483
+#: src/client.cpp:834 src/dyetool/client.cpp:486
 msgid "About"
 msgstr "О Программе"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: help window name
-#: src/client.cpp:831 src/dyetool/client.cpp:486 src/gui/windowmenu.cpp:72
+#: src/client.cpp:837 src/dyetool/client.cpp:489 src/gui/windowmenu.cpp:72
 #: src/gui/windows/helpwindow.cpp:53
 msgid "Help"
 msgstr "Помощь"
@@ -504,8 +504,8 @@ msgstr "Помощь"
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: quests window button
 #. TRANSLATORS: shop window button
-#: src/client.cpp:835 src/client.cpp:1396 src/client.cpp:1415
-#: src/dyetool/client.cpp:490 src/gui/dialogsmanager.cpp:116
+#: src/client.cpp:841 src/client.cpp:1411 src/client.cpp:1430
+#: src/dyetool/client.cpp:493 src/gui/dialogsmanager.cpp:116
 #: src/gui/popups/popupmenu.cpp:675 src/gui/popups/popupmenu.cpp:752
 #: src/gui/popups/popupmenu.cpp:993 src/gui/windows/didyouknowwindow.cpp:81
 #: src/gui/windows/inventorywindow.cpp:268
@@ -517,32 +517,32 @@ msgid "Close"
 msgstr "Закрыть"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1056 src/gui/windowmanager_unittest.cc:145
+#: src/client.cpp:1066 src/gui/windowmanager_unittest.cc:145
 msgid "Connecting to server"
 msgstr "Идет подключение к серверу..."
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1102 src/gui/windowmanager_unittest.cc:162
+#: src/client.cpp:1112 src/gui/windowmanager_unittest.cc:162
 msgid "Logging in"
 msgstr "Авторизация"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1151
+#: src/client.cpp:1161
 msgid "Entering game world"
 msgstr "Входим в игровой мир"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1285
+#: src/client.cpp:1300
 msgid "Requesting characters"
 msgstr "Получение списка персонажей"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1325
+#: src/client.cpp:1340
 msgid "Connecting to the game server"
 msgstr "Подключение к игровому серверу"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1337
+#: src/client.cpp:1352
 msgid "Changing game servers"
 msgstr "Смена игрового сервера"
 
@@ -556,7 +556,7 @@ msgstr "Смена игрового сервера"
 #. TRANSLATORS: error header
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: error header
-#: src/client.cpp:1393 src/client.cpp:1412 src/client.cpp:1642
+#: src/client.cpp:1408 src/client.cpp:1427 src/client.cpp:1660
 #: src/gui/windows/changeemaildialog.cpp:166
 #: src/gui/windows/changepassworddialog.cpp:156
 #: src/gui/windows/charcreatedialog.cpp:424
@@ -571,37 +571,37 @@ msgid "Error"
 msgstr "Ошибка"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1431
+#: src/client.cpp:1446
 msgid "Requesting registration details"
 msgstr "Запрос регистрационных данных"
 
 #. TRANSLATORS: password change message header
-#: src/client.cpp:1478
+#: src/client.cpp:1493
 msgid "Password Change"
 msgstr "Изменить Пароль"
 
 #. TRANSLATORS: password change message text
-#: src/client.cpp:1480
+#: src/client.cpp:1495
 msgid "Password changed successfully!"
 msgstr "Пароль изменен!"
 
 #. TRANSLATORS: email change message header
-#: src/client.cpp:1512
+#: src/client.cpp:1528
 msgid "Email Change"
 msgstr "Сменить Email"
 
 #. TRANSLATORS: email change message text
-#: src/client.cpp:1514
+#: src/client.cpp:1530
 msgid "Email changed successfully!"
 msgstr "Email изменен!"
 
 #. TRANSLATORS: unregister message header
-#: src/client.cpp:1548
+#: src/client.cpp:1566
 msgid "Unregister Successful"
 msgstr "Регистрация удалена"
 
 #. TRANSLATORS: unregister message text
-#: src/client.cpp:1550
+#: src/client.cpp:1568
 msgid "Farewell, come back any time..."
 msgstr "Хорошо, возвращайтесь в любое время..."
 
@@ -611,151 +611,151 @@ msgid "manaplus [options] [manaplus-file]"
 msgstr "manaplus [параметры] [файл-manaplus]"
 
 #. TRANSLATORS: command line help
-#: src/commandline.cpp:44
+#: src/commandline.cpp:45
 msgid "[manaplus-file] : The manaplus file is an XML file (.manaplus)"
 msgstr "[файл-manaplus] : Файл manaplus это xml файл (.manaplus)"
 
 #. TRANSLATORS: command line help
-#: src/commandline.cpp:47
+#: src/commandline.cpp:48
 msgid "                  used to set custom parameters"
 msgstr "                  используется для указания дополнительных параметров"
 
 #. TRANSLATORS: command line help
-#: src/commandline.cpp:49
+#: src/commandline.cpp:51
 msgid "                  to the manaplus client."
 msgstr "                  в клиенте."
 
 #. TRANSLATORS: command line help
-#: src/commandline.cpp:52
+#: src/commandline.cpp:54
 msgid "Options:"
 msgstr "Опции:"
 
 #. TRANSLATORS: command line help
-#: src/commandline.cpp:54
+#: src/commandline.cpp:57
 msgid "  -l --log-file       : Log file to use"
 msgstr "  -l --log-file       : Использовать указанный файл как лог"
 
 #. TRANSLATORS: command line help
-#: src/commandline.cpp:56
+#: src/commandline.cpp:59
 msgid "  -a --chat-log-dir   : Chat log dir to use"
 msgstr "  -a --chat-log-dir   : Использовать указанный каталог для лога"
 
 #. TRANSLATORS: command line help
-#: src/commandline.cpp:58
+#: src/commandline.cpp:61
 msgid "  -v --version        : Display the version"
 msgstr "  -v --version        : Показать версию"
 
 #. TRANSLATORS: command line help
-#: src/commandline.cpp:60
+#: src/commandline.cpp:63
 msgid "  -h --help           : Display this help"
 msgstr "  -h --help           : Показать эту справку"
 
 #. TRANSLATORS: command line help
-#: src/commandline.cpp:62
+#: src/commandline.cpp:65
 msgid "  -C --config-dir     : Configuration directory to use"
 msgstr "  -C --config-dir     : Использовать указанный каталог конфигурации"
 
 #. TRANSLATORS: command line help
-#: src/commandline.cpp:65
+#: src/commandline.cpp:68
 msgid "  -U --username       : Login with this username"
 msgstr "  -U --username       : Войти с указанным логином"
 
 #. TRANSLATORS: command line help
-#: src/commandline.cpp:67
+#: src/commandline.cpp:71
 msgid "  -P --password       : Login with this password"
 msgstr "  -P --password       : Войти с указанным паролем"
 
 #. TRANSLATORS: command line help
-#: src/commandline.cpp:69
+#: src/commandline.cpp:74
 msgid "  -c --character      : Login with this character"
 msgstr "  -c --character      : Использовать указанный персонаж"
 
 #. TRANSLATORS: command line help
-#: src/commandline.cpp:71
+#: src/commandline.cpp:77
 msgid "  -s --server         : Login server name or IP"
 msgstr "  -s --server         : Имя или IP сервера авторизации"
 
 #. TRANSLATORS: command line help
-#: src/commandline.cpp:73
+#: src/commandline.cpp:80
 msgid "  -y --server-type    : Login server type"
 msgstr "  -y --server-type    : Тип сервера"
 
 #. TRANSLATORS: command line help
-#: src/commandline.cpp:75
+#: src/commandline.cpp:83
 msgid "  -p --port           : Login server port"
 msgstr "  -p --port           : Порт сервера авторизации"
 
 #. TRANSLATORS: command line help
-#: src/commandline.cpp:77
+#: src/commandline.cpp:86
 msgid "  -H --update-host    : Use this update host"
 msgstr "  -H --update-host    : Использовать этот узел обновлений"
 
 #. TRANSLATORS: command line help
-#: src/commandline.cpp:79
+#: src/commandline.cpp:89
 msgid "  -D --default        : Choose default character server and character"
 msgstr ""
 "  -D --default        : Выбрать персонаж и сервер персонажей по умолчанию"
 
 #. TRANSLATORS: command line help
-#: src/commandline.cpp:82
+#: src/commandline.cpp:93
 msgid "  -u --skip-update    : Skip the update downloads"
 msgstr "  -u --skip-update    : Пропустить обновление"
 
 #. TRANSLATORS: command line help
-#: src/commandline.cpp:84
+#: src/commandline.cpp:96
 msgid "  -d --data           : Directory to load game data from"
 msgstr "  -d --data           : Загрузить игровые данные из этого каталога"
 
 #. TRANSLATORS: command line help
-#: src/commandline.cpp:87
+#: src/commandline.cpp:99
 msgid "  -L --localdata-dir  : Directory to use as local data directory"
 msgstr "  -L --localdata-dir  : Каталог для локальных данных"
 
 #. TRANSLATORS: command line help
-#: src/commandline.cpp:90
+#: src/commandline.cpp:103
 msgid "     --screenshot-dir : Directory to store screenshots"
 msgstr "     --screenshot-dir : Сохранять скриншоты в указанном каталоге"
 
 #. TRANSLATORS: command line help
-#: src/commandline.cpp:93
+#: src/commandline.cpp:106
 msgid "     --safemode       : Start game in safe mode"
 msgstr "     --safemode       : Запуск игры в безопасном режиме"
 
 #. TRANSLATORS: command line help
-#: src/commandline.cpp:95
+#: src/commandline.cpp:109
 msgid "     --renderer       : Set renderer type"
 msgstr "     --renderer       : Устанавливает тип рендера"
 
 #. TRANSLATORS: command line help
-#: src/commandline.cpp:97
+#: src/commandline.cpp:112
 msgid "  -T --tests          : Start testing drivers and auto configuring"
 msgstr ""
 "  -T --tests          : Запускает проверку драйверов и автоконфигурацию"
 
 #. TRANSLATORS: command line help
-#: src/commandline.cpp:101
+#: src/commandline.cpp:118
 msgid "  -O --no-opengl      : Disable OpenGL for this session"
 msgstr "  -O --no-opengl      : Не использовать OpenGL для этой сессии"
 
 #. TRANSLATORS: directory creation error
-#: src/configmanager.cpp:53 src/dirs.cpp:353 src/dirs.cpp:368 src/dirs.cpp:413
-#: src/dirs.cpp:581 src/dirs.cpp:589
+#: src/configmanager.cpp:53 src/dirs.cpp:358 src/dirs.cpp:373 src/dirs.cpp:418
+#: src/dirs.cpp:587 src/dirs.cpp:595
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%s не существует, и не может быть создано! Выход."
 
 #. TRANSLATORS: update server initialisation error
-#: src/dirs.cpp:463
+#: src/dirs.cpp:468
 #, c-format
 msgid "Invalid update host: %s."
 msgstr "Некорректный сервер обновлений: %s."
 
 #. TRANSLATORS: update server initialisation error
-#: src/dirs.cpp:504 src/dirs.cpp:511
+#: src/dirs.cpp:510 src/dirs.cpp:517
 msgid "Error creating updates directory!"
 msgstr "Ошибка создания директории для обновлений!"
 
-#: src/dirs.cpp:533 src/dirs.cpp:551
+#: src/dirs.cpp:539 src/dirs.cpp:557
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "Ошибка: %s не существует, и не может быть создан! Выход."
@@ -773,36 +773,36 @@ msgid "dyecmd srcdyestring dstfile"
 msgstr "dyecmd файл_строка_цвета файл_назначения"
 
 #. TRANSLATORS: chat tab header
-#: src/game.cpp:253 src/gui/windows/chatwindow.cpp:2197
+#: src/game.cpp:254 src/gui/windows/chatwindow.cpp:2197
 msgid "General"
 msgstr "Общие"
 
 #. TRANSLATORS: chat tab header
 #. TRANSLATORS: full button name
 #. TRANSLATORS: debug window name
-#: src/game.cpp:260 src/gui/windowmenu.cpp:163
+#: src/game.cpp:261 src/gui/windowmenu.cpp:163
 #: src/gui/windows/debugwindow.cpp:43
 msgid "Debug"
 msgstr "Отладка"
 
 #. TRANSLATORS: save file message
-#: src/game.cpp:561
+#: src/game.cpp:562
 #, c-format
 msgid "Screenshot saved as %s"
 msgstr "Снимок экрана сохранен как %s"
 
 #. TRANSLATORS: save file message
-#: src/game.cpp:571
+#: src/game.cpp:572
 msgid "Saving screenshot failed!"
 msgstr "Ошибка при сохранении снимка экрана!"
 
 #. TRANSLATORS: error message text
-#: src/game.cpp:658
+#: src/game.cpp:659
 msgid "The connection to the server was lost."
 msgstr "Соединение с сервером потеряно."
 
 #. TRANSLATORS: error message header
-#: src/game.cpp:661
+#: src/game.cpp:662
 msgid "Network Error"
 msgstr "Ошибка сети"
 
@@ -1744,7 +1744,7 @@ msgstr "Создать группу"
 #: src/gui/windows/editserverdialog.cpp:58
 #: src/gui/windows/itemamountwindow.cpp:181 src/gui/windows/quitdialog.cpp:68
 #: src/gui/windows/registerdialog.cpp:64 src/gui/windows/setupwindow.cpp:99
-#: src/gui/windows/textcommandeditor.cpp:87 src/gui/windows/textdialog.cpp:55
+#: src/gui/windows/textcommandeditor.cpp:93 src/gui/windows/textdialog.cpp:55
 #: src/gui/windows/unregisterdialog.cpp:55
 #: src/gui/windows/updaterwindow.cpp:189 src/input/pages/gui.cpp:103
 msgid "Cancel"
@@ -2214,7 +2214,7 @@ msgstr "Добавить к торговле все"
 #: src/gui/popups/popupmenu.cpp:1681 src/gui/popups/popupmenu.cpp:1833
 #: src/gui/popups/popupmenu.cpp:1874 src/gui/windows/inventorywindow.cpp:263
 #: src/gui/windows/inventorywindow.cpp:287
-#: src/gui/windows/inventorywindow.cpp:885 src/gui/windows/setupwindow.cpp:101
+#: src/gui/windows/inventorywindow.cpp:891 src/gui/windows/setupwindow.cpp:101
 msgid "Store"
 msgstr "Сохранить"
 
@@ -2266,7 +2266,7 @@ msgstr "Получить все"
 #. TRANSLATORS: inventory button
 #: src/gui/popups/popupmenu.cpp:1794 src/gui/popups/popupmenu.cpp:2596
 #: src/gui/windows/inventorywindow.cpp:201
-#: src/gui/windows/inventorywindow.cpp:774 src/gui/windows/skilldialog.cpp:88
+#: src/gui/windows/inventorywindow.cpp:779 src/gui/windows/skilldialog.cpp:88
 #: src/gui/windows/skilldialog.cpp:162 src/gui/windows/skilldialog.cpp:333
 #: src/gui/windows/skilldialog.cpp:507 src/gui/windows/skilldialog.cpp:590
 #: src/resources/itemtypemapdata.h:37 src/resources/itemtypemapdata.h:41
@@ -2463,7 +2463,7 @@ msgstr "Поставить защиту"
 #. TRANSLATORS: drop item
 #. TRANSLATORS: inventory button
 #: src/gui/popups/popupmenu.cpp:2611 src/gui/windows/inventorywindow.cpp:216
-#: src/gui/windows/inventorywindow.cpp:893
+#: src/gui/windows/inventorywindow.cpp:899
 msgid "Drop..."
 msgstr "Бросить..."
 
@@ -2478,7 +2478,7 @@ msgstr "Бросить все"
 #. TRANSLATORS: full button name
 #. TRANSLATORS: inventory button
 #: src/gui/popups/popupmenu.cpp:2620 src/gui/windowmenu.cpp:128
-#: src/gui/windows/inventorywindow.cpp:898
+#: src/gui/windows/inventorywindow.cpp:904
 msgid "Drop"
 msgstr "Бросить"
 
@@ -2665,9 +2665,8 @@ msgstr "Гомункул"
 
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:205
-#, fuzzy
 msgid "Skill unit"
-msgstr "Навык %d"
+msgstr "Объект скила"
 
 #: src/gui/userpalette.cpp:210
 msgid "Party members"
@@ -2862,7 +2861,7 @@ msgstr "Уровень: %u"
 
 #. TRANSLATORS: status window label
 #: src/gui/widgets/characterdisplay.cpp:136
-#: src/gui/windows/inventorywindow.cpp:690 src/gui/windows/statuswindow.cpp:68
+#: src/gui/windows/inventorywindow.cpp:695 src/gui/windows/statuswindow.cpp:68
 #: src/gui/windows/statuswindow.cpp:218 src/gui/windows/statuswindow.cpp:330
 #, c-format
 msgid "Money: %s"
@@ -4823,7 +4822,7 @@ msgstr "Разрешить шептание"
 #: src/gui/widgets/tabs/setup_relations.cpp:77
 #: src/gui/windows/charselectdialog.cpp:78 src/gui/windows/mailwindow.cpp:66
 #: src/gui/windows/serverdialog.cpp:121 src/gui/windows/shopwindow.cpp:126
-#: src/gui/windows/textcommandeditor.cpp:91 src/input/pages/gui.cpp:109
+#: src/gui/windows/textcommandeditor.cpp:97 src/input/pages/gui.cpp:109
 msgid "Delete"
 msgstr "Удалить"
 
@@ -6133,12 +6132,12 @@ msgid "E"
 msgstr "С"
 
 #. TRANSLATORS: question dialog title
-#: src/gui/windows/inventorywindow.cpp:1033
+#: src/gui/windows/inventorywindow.cpp:1040
 msgid "Insert card request"
 msgstr "Вопрос о вставке карты"
 
 #. TRANSLATORS: question dialog message
-#: src/gui/windows/inventorywindow.cpp:1035
+#: src/gui/windows/inventorywindow.cpp:1042
 #, c-format
 msgid "Insert %s into %s?"
 msgstr "Вставить %s в %s?"
@@ -6625,7 +6624,7 @@ msgstr "Неправильный email."
 #. TRANSLATORS: error message
 #: src/gui/windows/registerdialog.cpp:236
 msgid "Email too long."
-msgstr ""
+msgstr "Email слишком длинный."
 
 #. TRANSLATORS: servers dialog name
 #: src/gui/windows/serverdialog.cpp:104
@@ -6765,16 +6764,15 @@ msgid "Failed skill: %s"
 msgstr "Неудача навыка: %s"
 
 #. TRANSLATORS: text skill dialog header
-#: src/gui/windows/skilldialog.cpp:765
-#, fuzzy, c-format
+#: src/gui/windows/skilldialog.cpp:767
+#, c-format
 msgid "Add text to skill %s"
-msgstr "Добавить в список продажи."
+msgstr "Добавить текст к скилу %s"
 
 #. TRANSLATORS: text skill dialog field
-#: src/gui/windows/skilldialog.cpp:768
-#, fuzzy
+#: src/gui/windows/skilldialog.cpp:770
 msgid "Text: "
-msgstr "Текст"
+msgstr "Текст: "
 
 #. TRANSLATORS: here P is title for visible players tab in social window
 #: src/gui/windows/socialwindow.cpp:68
@@ -6932,62 +6930,62 @@ msgid "Command Editor"
 msgstr "Редактор команд"
 
 #. TRANSLATORS: command editor button
-#: src/gui/windows/textcommandeditor.cpp:53
+#: src/gui/windows/textcommandeditor.cpp:56
 msgid "magic"
 msgstr "Магия"
 
 #. TRANSLATORS: command editor button
-#: src/gui/windows/textcommandeditor.cpp:55
+#: src/gui/windows/textcommandeditor.cpp:58
 msgid "other"
 msgstr "Другое"
 
 #. TRANSLATORS: command editor label
-#: src/gui/windows/textcommandeditor.cpp:57
+#: src/gui/windows/textcommandeditor.cpp:61
 msgid "Symbol:"
 msgstr "Символ:"
 
 #. TRANSLATORS: command editor label
-#: src/gui/windows/textcommandeditor.cpp:60
+#: src/gui/windows/textcommandeditor.cpp:64
 msgid "Command:"
 msgstr "Команда:"
 
 #. TRANSLATORS: command editor label
-#: src/gui/windows/textcommandeditor.cpp:63
+#: src/gui/windows/textcommandeditor.cpp:67
 msgid "Comment:"
 msgstr "Комментарий:"
 
 #. TRANSLATORS: command editor label
-#: src/gui/windows/textcommandeditor.cpp:67
+#: src/gui/windows/textcommandeditor.cpp:71
 msgid "Target Type:"
 msgstr "Тип цели:"
 
 #. TRANSLATORS: command editor label
-#: src/gui/windows/textcommandeditor.cpp:71
+#: src/gui/windows/textcommandeditor.cpp:75
 msgid "Icon:"
 msgstr "Картинка:"
 
 #. TRANSLATORS: command editor label
-#: src/gui/windows/textcommandeditor.cpp:74
+#: src/gui/windows/textcommandeditor.cpp:79
 msgid "Mana:"
 msgstr "Мана:"
 
 #. TRANSLATORS: command editor label
-#: src/gui/windows/textcommandeditor.cpp:77
+#: src/gui/windows/textcommandeditor.cpp:82
 msgid "Magic level:"
 msgstr "Уровень Магии:"
 
 #. TRANSLATORS: command editor label
-#: src/gui/windows/textcommandeditor.cpp:81
+#: src/gui/windows/textcommandeditor.cpp:86
 msgid "Magic School:"
 msgstr "Школа Магии:"
 
 #. TRANSLATORS: command editor label
-#: src/gui/windows/textcommandeditor.cpp:84
+#: src/gui/windows/textcommandeditor.cpp:89
 msgid "School level:"
 msgstr "Уровень школы:"
 
 #. TRANSLATORS: command editor button
-#: src/gui/windows/textcommandeditor.cpp:89
+#: src/gui/windows/textcommandeditor.cpp:95
 msgid "Save"
 msgstr "Сохранить"
 
@@ -7134,25 +7132,25 @@ msgstr "Выберите сервер"
 #. TRANSLATORS: long key name. must be short.
 #. TRANSLATORS: short key name. must be very short.
 #. TRANSLATORS: long key name, should be short
-#: src/input/inputmanager.cpp:378 src/input/inputmanager.cpp:422
-#: src/input/keyboardconfig.cpp:102
+#: src/input/inputmanager.cpp:380 src/input/inputmanager.cpp:424
+#: src/input/keyboardconfig.cpp:101
 #, c-format
 msgid "key_%d"
 msgstr "кнопка_%d"
 
 #. TRANSLATORS: long joystick button name. must be short.
-#: src/input/inputmanager.cpp:384
+#: src/input/inputmanager.cpp:386
 #, c-format
 msgid "JButton%d"
 msgstr "КнопДж%d"
 
 #. TRANSLATORS: unknown long key type
-#: src/input/inputmanager.cpp:398
+#: src/input/inputmanager.cpp:400
 msgid "unknown key"
 msgstr "неизвестная кнопка"
 
 #. TRANSLATORS: short joystick button name. muse be very short
-#: src/input/inputmanager.cpp:428
+#: src/input/inputmanager.cpp:430
 #, c-format
 msgid "JB%d"
 msgstr "ДЖ%d"
@@ -7160,7 +7158,7 @@ msgstr "ДЖ%d"
 #. TRANSLATORS: unknown short key type. must be short
 #. TRANSLATORS: Unknown key short string.
 #. TRANSLATORS: This string must be maximum 5 chars
-#: src/input/inputmanager.cpp:442 src/input/keyboardconfig.cpp:146
+#: src/input/inputmanager.cpp:444 src/input/keyboardconfig.cpp:145
 msgid "u key"
 msgstr "неиз."
 
@@ -8920,27 +8918,27 @@ msgstr "Вы несёте слишком много, чтобы сделать �
 #. TRANSLATORS: error message
 #: src/net/eathena/skillrecv.cpp:273
 msgid "Fail summon."
-msgstr ""
+msgstr "Ошибка вызова монстра."
 
 #: src/net/eathena/skillrecv.cpp:282
-#, fuzzy, c-format
+#, c-format
 msgid "Need equipment %s."
-msgstr "Одета шапка: %s."
+msgstr "Необходимо снаряжение %s."
 
 #: src/net/eathena/skillrecv.cpp:287
 #, c-format
 msgid "Need equipment %s and amount %d"
-msgstr ""
+msgstr "Нужно снаряжение %s в количестве %d"
 
 #: src/net/eathena/skillrecv.cpp:300
-#, fuzzy, c-format
+#, c-format
 msgid "Need item %s."
-msgstr "Создание предметов"
+msgstr "Нужен предмет %s."
 
 #: src/net/eathena/skillrecv.cpp:305
 #, c-format
 msgid "Need item %s and amount %d"
-msgstr ""
+msgstr "Нужен предмет %s в количестве %d."
 
 #. TRANSLATORS: trade header
 #: src/net/ea/traderecv.cpp:79
@@ -9224,9 +9222,8 @@ msgstr "животное"
 
 #. TRANSLATORS: unknown info name
 #: src/resources/db/skillunitdb.cpp:100
-#, fuzzy
 msgid "skill"
-msgstr "Навыки"
+msgstr "Скил"
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:38
@@ -10199,9 +10196,3 @@ msgstr "%d секунда"
 #, c-format
 msgid "%d seconds"
 msgstr "%d секунд"
-
-#~ msgid "Change Email"
-#~ msgstr "Сменить адрес E-mail"
-
-#~ msgid "Correction points: %d"
-#~ msgstr "Очков навыков: %d"
