@@ -10296,7 +10296,7 @@ msgstr "Spieler %s täuschte Tod vor."
 #: src/resources/notifications.h:792
 #, c-format
 msgid "Player %s unknown remove."
-msgstr "Unbekannte Entfernung von Spieler %s"
+msgstr "Unbekannte Entfernung von Spieler %s."
 
 #. TRANSLATORS: chat option changed message
 #: src/utils/booleanoptions.h:27
