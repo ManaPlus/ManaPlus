@@ -1,3 +1,25 @@
+2015-11-21 New release 1.5.11.21
+fix: crash with enabled missing status effect.
+fix: scrollbars drawing in jewelry and golden delicious themes.
+fix: dont show empty notifications.
+fix: some skill error messages (hercules)
+fix: char create dialog height.
+fix: not allow registration without email (hercules)
+fix: party invite response (hercules)
+fix: attack animations.
+add: ground skills support (hercules)
+add: skill units support (hercules)
+add: support for casting status effect on ground (hercules)
+add: support for ground skills with text parameter (hercules)
+add: allow use support skills on self (hercules)
+add: slide chat command.
+add: casting animation.
+add: skill popups in shortcuts window.
+add: close button in context menu in minimap and shortcuts windows.
+add: in personal shops in sell dialog show missing items (tmwa only)
+add: update mplus fonts.
+add: features.xml attributes for force account and char gender.
+
 2015-11-07 New release 1.5.11.7
 fix: not reduce tiles in conditional layers.
 fix: cart inventory if it empty.
