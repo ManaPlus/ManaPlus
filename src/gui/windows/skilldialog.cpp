@@ -831,3 +831,16 @@ void SkillDialog::slowLogic()
         }
     }
 }
+
+void SkillDialog::selectSkillLevel(const int skillId,
+                                   const int level)
+{
+    SkillInfo *const info = getSkill(skillId);
+    if (!info)
+        return;
+    if (level > info->level)
+        info->selectedLevel = info->level;
+    else
+        info->selectedLevel = level;
+    info->update();
+}

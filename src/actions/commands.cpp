@@ -40,6 +40,7 @@
 #include "gui/viewport.h"
 
 #include "gui/windows/chatwindow.h"
+#include "gui/windows/skilldialog.h"
 #include "gui/windows/socialwindow.h"
 #include "gui/windows/outfitwindow.h"
 
@@ -1057,6 +1058,19 @@ impHandler(slide)
     if (adminHandler && parse2Int(event.args, x, y))
     {
         adminHandler->slide(x, y);
+        return true;
+    }
+    return false;
+}
+
+impHandler(selectSkillLevel)
+{
+    int skill = 0;
+    int level = 0;
+
+    if (skillDialog && parse2Int(event.args, skill, level))
+    {
+        skillDialog->selectSkillLevel(skill, level);
         return true;
     }
     return false;

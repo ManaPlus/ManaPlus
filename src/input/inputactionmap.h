@@ -5072,6 +5072,12 @@ static const InputActionData inputActionData
         "slide",
         UseArgs_true,
         Protected_false},
+    {"keySelectSkillLevel",
+        defaultAction(&Actions::selectSkillLevel),
+        InputCondition::INGAME,
+        "selectskilllevel",
+        UseArgs_true,
+        Protected_false},
 };
 
 #undef defaultAction

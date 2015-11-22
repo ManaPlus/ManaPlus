@@ -90,6 +90,7 @@ namespace Actions
     decHandler(confGet);
     decHandler(serverConfGet);
     decHandler(slide);
+    decHandler(selectSkillLevel);
 }  // namespace Actions
 
 #undef decHandler

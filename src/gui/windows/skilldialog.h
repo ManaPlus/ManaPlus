@@ -147,6 +147,9 @@ class SkillDialog final : public Window,
         SkillData *getSkillDataByLevel(const int id,
                                        const int level) const;
 
+        void selectSkillLevel(const int skillId,
+                              const int level);
+
     private:
         void addSkillDuration(SkillInfo *const skill);
 

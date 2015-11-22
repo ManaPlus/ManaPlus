@@ -605,6 +605,7 @@ enumStart(InputAction)
     CHANGE_TARGETING_TYPE,
     TEST_INFO,
     SLIDE,
+    SELECT_SKILL_LEVEL,
     TOTAL
 }
 enumEnd(InputAction);
