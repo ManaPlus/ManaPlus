@@ -34,6 +34,7 @@
 
 #include "gui/models/skillmodel.h"
 
+#include "gui/popups/popupmenu.h"
 #include "gui/popups/skillpopup.h"
 
 #include "utils/delete2.h"
@@ -234,6 +235,18 @@ class SkillListBox final : public ListBox
                     return;
                 event.consume();
                 mSkillClicked = true;
+                if (event.getX() >
+                    getWidth() - mPadding - skill->skillLevelWidth)
+                {
+                    SkillModel *const model = static_cast<SkillModel*>(
+                        mListModel);
+                    if (model &&
+                        mSelected >= 0 &&
+                        model->getSkillAt(mSelected) == skill)
+                    {
+                        popupMenu->showSkillPopup(skill);
+                    }
+                }
             }
         }
 

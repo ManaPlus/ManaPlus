@@ -59,6 +59,7 @@
 #include "gui/widgets/createwidget.h"
 #include "gui/widgets/progressbar.h"
 #include "gui/widgets/scrollarea.h"
+#include "gui/widgets/skillinfo.h"
 #include "gui/widgets/textfield.h"
 
 #include "gui/widgets/tabs/chat/whispertab.h"
@@ -2229,6 +2230,34 @@ void PopupMenu::showNpcDialogPopup(const BeingId npcId,
     mBrowserBox->addRow("cancel", _("Cancel"));
 
     showPopup(x, y);
+}
+
+void PopupMenu::showSkillPopup(const SkillInfo *const info)
+{
+    if (!info || info->level <= 1)
+        return;
+    setMousePos();
+
+    // using mItemId as skill id
+    mItemId = info->id;
+    mBrowserBox->clearRows();
+    for(int f = 1; f <= info->level; f ++)
+    {
+        mBrowserBox->addRow(strprintf("/selectskilllevel %d %d", mItemId, f),
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: skill level
+            strprintf(_("Level: %d"), f).c_str());
+    }
+    mBrowserBox->addRow(strprintf("/selectskilllevel %d 0", mItemId),
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: skill level
+        _("Max level"));
+    mBrowserBox->addRow("##3---");
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: close menu
+    mBrowserBox->addRow("cancel", _("Cancel"));
+
+    showPopup(mX, mY);
 }
 
 void PopupMenu::showPopup(int x, int y)

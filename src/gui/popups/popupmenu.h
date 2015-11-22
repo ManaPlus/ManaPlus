@@ -54,6 +54,8 @@ class TextField;
 class ProgressBar;
 class Window;
 
+struct SkillInfo;
+
 /**
  * Window showing popup menu.
  */
@@ -151,6 +153,8 @@ class PopupMenu final : public Popup, public LinkHandler
                                 const int x, const int y);
 
         void showWindowPopup(Window *const window);
+
+        void showSkillPopup(const SkillInfo *const info);
 
         /**
          * Handles link action.
