@@ -46,6 +46,7 @@ SkillInfo::SkillInfo() :
     model(nullptr),
     data(nullptr),
     level(0),
+    selectedLevel(0),
     skillLevelWidth(0),
     id(0),
     range(0),
@@ -96,8 +97,18 @@ void SkillInfo::update()
     }
     else
     {
-        // TRANSLATORS: skill level
-        skillLevel = strprintf(_("Lvl: %d"), baseLevel);
+        if (!selectedLevel)
+        {
+            // TRANSLATORS: skill level
+            skillLevel = strprintf(_("Lvl: %d"), baseLevel);
+        }
+        else
+        {
+            // TRANSLATORS: skill level
+            skillLevel = strprintf(_("Lvl: %d / %d"),
+                selectedLevel,
+                baseLevel);
+        }
     }
 
     // TRANSLATORS: skill type
@@ -156,6 +167,9 @@ void SkillInfo::update()
     }
 
     level = baseLevel;
+    if (selectedLevel > level)
+        selectedLevel = level;
+
     skillLevelWidth = -1;
 
     if (updateVisibility && model)

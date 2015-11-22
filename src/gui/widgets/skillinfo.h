@@ -57,6 +57,7 @@ struct SkillInfo final
     SkillModel *model;
     SkillData *data;
     int level;
+    int selectedLevel;
     int skillLevelWidth;
     unsigned int id;
     int range;
