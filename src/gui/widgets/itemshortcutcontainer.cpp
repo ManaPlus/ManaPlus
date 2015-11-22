@@ -576,7 +576,8 @@ void ItemShortcutContainer::mouseMoved(MouseEvent &event)
         if (spell && viewport)
         {
             spellPopup->setItem(spell);
-            spellPopup->view(viewport->mMouseX, viewport->mMouseY);
+            spellPopup->view(viewport->mMouseX,
+                viewport->mMouseY);
         }
         else
         {
@@ -591,8 +592,10 @@ void ItemShortcutContainer::mouseMoved(MouseEvent &event)
         if (!skill)
             return;
 
-        skillPopup->show(skill);
-        skillPopup->position(viewport->mMouseX, viewport->mMouseY);
+        skillPopup->show(skill,
+            toInt(itemColor, int));
+        skillPopup->position(viewport->mMouseX,
+            viewport->mMouseY);
     }
 }
 

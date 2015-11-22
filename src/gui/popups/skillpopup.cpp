@@ -32,6 +32,9 @@
 #include "gui/widgets/skillinfo.h"
 #include "gui/widgets/textbox.h"
 
+#include "utils/gettext.h"
+#include "utils/stringutils.h"
+
 #include "debug.h"
 
 SkillPopup *skillPopup = nullptr;
@@ -41,7 +44,9 @@ SkillPopup::SkillPopup() :
     mSkillName(new Label(this)),
     mSkillDesc(new TextBox(this)),
     mSkillEffect(new TextBox(this)),
-    mLastId(0U)
+    mSkillLevel(new TextBox(this)),
+    mLastId(0U),
+    mLastLevel(-1)
 {
     mSkillName->setFont(boldFont);
     mSkillName->setPosition(0, 0);
@@ -57,6 +62,11 @@ SkillPopup::SkillPopup() :
     mSkillEffect->setPosition(0, 2 * fontHeight);
     mSkillEffect->setForegroundColorAll(getThemeColor(ThemeColorId::POPUP),
         getThemeColor(ThemeColorId::POPUP_OUTLINE));
+
+    mSkillLevel->setEditable(false);
+    mSkillLevel->setPosition(0, 3 * fontHeight);
+    mSkillLevel->setForegroundColorAll(getThemeColor(ThemeColorId::POPUP),
+        getThemeColor(ThemeColorId::POPUP_OUTLINE));
 }
 
 void SkillPopup::postInit()
@@ -65,6 +75,7 @@ void SkillPopup::postInit()
     add(mSkillName);
     add(mSkillDesc);
     add(mSkillEffect);
+    add(mSkillLevel);
 
     addMouseListener(this);
 }
@@ -73,12 +84,19 @@ SkillPopup::~SkillPopup()
 {
 }
 
-void SkillPopup::show(const SkillInfo *const skill)
+void SkillPopup::show(const SkillInfo *const skill,
+                      int level)
 {
-    if (!skill || !skill->data || skill->id == mLastId)
+    if (!skill ||
+        !skill->data ||
+        (skill->id == mLastId &&
+        level == mLastLevel))
+    {
         return;
+    }
 
     mLastId = skill->id;
+    mLastLevel = level;
 
     mSkillName->setCaption(skill->data->dispName);
     mSkillName->adjustSize();
@@ -93,6 +111,30 @@ void SkillPopup::show(const SkillInfo *const skill)
     }
     mSkillDesc->setTextWrapped(description, 196);
     mSkillEffect->setTextWrapped(effect, 196);
+    if (level != 0)
+    {
+        // TRANSLATORS: skill level
+        mSkillLevel->setTextWrapped(strprintf(
+            _("Level: %d / %d"), level, skill->level),
+            196);
+    }
+    else
+    {
+        if (skill->level != 0)
+        {
+            // TRANSLATORS: skill level
+            mSkillLevel->setTextWrapped(strprintf(
+                _("Level: %d"), skill->level),
+                196);
+        }
+        else
+        {
+            // TRANSLATORS: skill level for tmw fake skills
+            mSkillLevel->setTextWrapped(
+                _("Level: Unknown"),
+                196);
+        }
+    }
 
     int minWidth = mSkillName->getWidth();
 
@@ -102,19 +144,27 @@ void SkillPopup::show(const SkillInfo *const skill)
         minWidth = mSkillDesc->getMinWidth();
     if (mSkillEffect->getMinWidth() > minWidth)
         minWidth = mSkillEffect->getMinWidth();
+    if (mSkillLevel->getMinWidth() > minWidth)
+        minWidth = mSkillLevel->getMinWidth();
 
     const int numRowsDesc = mSkillDesc->getNumberOfRows();
     const int numRowsEffect = mSkillEffect->getNumberOfRows();
+    const int numRowsLevel = mSkillLevel->getNumberOfRows();
     const int height = getFont()->getHeight();
 
     if (skill->skillEffect.empty())
     {
-        setContentSize(minWidth, (numRowsDesc + 1) * height);
+        setContentSize(minWidth,
+            (numRowsDesc + numRowsLevel + 1) * height);
+        mSkillLevel->setPosition(0, (numRowsDesc + 1) * height);
     }
     else
     {
-        setContentSize(minWidth, (numRowsDesc + numRowsEffect + 1) * height);
+        setContentSize(minWidth,
+            (numRowsDesc + numRowsLevel + numRowsEffect + 1) * height);
         mSkillEffect->setPosition(0, (numRowsDesc + 1) * height);
+        mSkillLevel->setPosition(0,
+            (numRowsDesc + numRowsEffect + 1) * height);
     }
 
     mSkillDesc->setPosition(0, 1 * height);

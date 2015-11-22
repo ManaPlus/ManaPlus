@@ -54,7 +54,8 @@ class SkillPopup final : public Popup
         /**
          * Sets the info to be displayed given a particular item.
          */
-        void show(const SkillInfo *const skill);
+        void show(const SkillInfo *const skill,
+                  int level);
 
         void mouseMoved(MouseEvent &event) override final;
 
@@ -62,7 +63,9 @@ class SkillPopup final : public Popup
         Label *mSkillName A_NONNULLPOINTER;
         TextBox *mSkillDesc A_NONNULLPOINTER;
         TextBox *mSkillEffect A_NONNULLPOINTER;
+        TextBox *mSkillLevel A_NONNULLPOINTER;
         unsigned int mLastId;
+        int mLastLevel;
 };
 
 extern SkillPopup *skillPopup;

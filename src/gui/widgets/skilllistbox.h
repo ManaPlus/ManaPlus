@@ -197,8 +197,10 @@ class SkillListBox final : public ListBox
             const SkillInfo *const skill = getSkillByEvent(event);
             if (!skill)
                 return;
-            skillPopup->show(skill);
-            skillPopup->position(viewport->mMouseX, viewport->mMouseY);
+            skillPopup->show(skill,
+                skill->selectedLevel);
+            skillPopup->position(viewport->mMouseX,
+                viewport->mMouseY);
         }
 
         void mouseDragged(MouseEvent &event) override final
