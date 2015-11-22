@@ -704,9 +704,27 @@ void SkillDialog::playCastingDstTileEffect(const int id,
         paths.getIntValue("skillCastingGroundEffectId"));
 }
 
+void SkillDialog::useSkill(const int skillId,
+                           const AutoTarget autoTarget,
+                           int level,
+                           const bool withText,
+                           const std::string &text)
+{
+    SkillInfo *const info = skillDialog->getSkill(skillId);
+    if (!info)
+        return;
+    useSkill(info,
+        autoTarget,
+        level,
+        withText,
+        text);
+}
+
 void SkillDialog::useSkill(const SkillInfo *const info,
                            const AutoTarget autoTarget,
-                           int level)
+                           int level,
+                           const bool withText,
+                           const std::string &text)
 {
     if (!info || !localPlayer)
         return;
@@ -766,20 +784,30 @@ void SkillDialog::useSkill(const SkillInfo *const info,
                 viewport->getMouseTile(x, y);
                 if (info->useTextParameter)
                 {
-                    textSkillListener.setSkill(info->id,
-                        x,
-                        y,
-                        level);
-                    TextDialog *const dialog = CREATEWIDGETR(TextDialog,
-                        // TRANSLATORS: text skill dialog header
-                        strprintf(_("Add text to skill %s"),
-                        data->name.c_str()),
-                        // TRANSLATORS: text skill dialog field
-                        _("Text: "));
-                    dialog->setModal(Modal_true);
-                    textSkillListener.setDialog(dialog);
-                    dialog->setActionEventId("ok");
-                    dialog->addActionListener(&textSkillListener);
+                    if (withText)
+                    {
+                        skillHandler->usePos(info->id,
+                            level,
+                            x, y,
+                            text);
+                    }
+                    else
+                    {
+                        textSkillListener.setSkill(info->id,
+                            x,
+                            y,
+                            level);
+                        TextDialog *const dialog = CREATEWIDGETR(TextDialog,
+                            // TRANSLATORS: text skill dialog header
+                            strprintf(_("Add text to skill %s"),
+                            data->name.c_str()),
+                            // TRANSLATORS: text skill dialog field
+                            _("Text: "));
+                        dialog->setModal(Modal_true);
+                        textSkillListener.setDialog(dialog);
+                        dialog->setActionEventId("ok");
+                        dialog->addActionListener(&textSkillListener);
+                    }
                 }
                 else
                 {

@@ -606,6 +606,7 @@ enumStart(InputAction)
     TEST_INFO,
     SLIDE,
     SELECT_SKILL_LEVEL,
+    SKILL,
     TOTAL
 }
 enumEnd(InputAction);

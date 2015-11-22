@@ -5078,6 +5078,12 @@ static const InputActionData inputActionData
         "selectskilllevel",
         UseArgs_true,
         Protected_false},
+    {"keySkill",
+        defaultAction(&Actions::skill),
+        InputCondition::INGAME,
+        "skill|useskill",
+        UseArgs_true,
+        Protected_false},
 };
 
 #undef defaultAction

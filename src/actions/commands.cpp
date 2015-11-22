@@ -1076,4 +1076,43 @@ impHandler(selectSkillLevel)
     return false;
 }
 
+impHandler(skill)
+{
+    if (!skillDialog)
+        return false;
+
+    StringVect vect;
+    splitToStringVector(vect, event.args, ' ');
+    const int sz = static_cast<int>(vect.size());
+    if (sz < 1)
+        return true;
+    const int skillId = atoi(vect[0].c_str());
+    int level = 0;
+    std::string text;
+    if (sz > 1)
+    {
+        level = atoi(vect[1].c_str());
+        if (sz > 2)
+            text = vect[2];
+    }
+    if (text.empty())
+    {
+        skillDialog->useSkill(skillId,
+            AutoTarget_true,
+            level,
+            false,
+            "");
+    }
+    else
+    {
+        logger->log("text: " + text);
+        skillDialog->useSkill(skillId,
+            AutoTarget_true,
+            level,
+            true,
+            text);
+    }
+    return true;
+}
+
 }  // namespace Actions
