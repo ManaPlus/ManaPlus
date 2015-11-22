@@ -171,7 +171,8 @@ void SkillDialog::action(const ActionEvent &event)
         {
             const SkillInfo *const info = tab->getSelectedInfo();
             useSkill(info,
-                fromBool(config.getBoolValue("skillAutotarget"), AutoTarget));
+                fromBool(config.getBoolValue("skillAutotarget"), AutoTarget),
+                info->selectedLevel);
         }
     }
     else if (eventId == "close")
@@ -569,7 +570,8 @@ void SkillDialog::useItem(const int itemId,
         return;
 
     const SkillInfo *const info = (*it).second;
-    useSkill(info, autoTarget);
+    // +++ need add skill level here
+    useSkill(info, autoTarget, 0);
 }
 
 void SkillDialog::updateTabSelection()
@@ -702,13 +704,15 @@ void SkillDialog::playCastingDstTileEffect(const int id,
 }
 
 void SkillDialog::useSkill(const SkillInfo *const info,
-                           const AutoTarget autoTarget)
+                           const AutoTarget autoTarget,
+                           int level)
 {
     if (!info || !localPlayer)
         return;
-    const SkillData *data = info->data;
-    if (!data)
-        data = info->getData1(info->level);
+    if (!level)
+        level = info->level;
+
+    const SkillData *data = info->getData1(level);
     if (data)
     {
         const std::string cmd = data->invokeCmd;
@@ -730,7 +734,8 @@ void SkillDialog::useSkill(const SkillInfo *const info,
                 if (being)
                 {
                     skillHandler->useBeing(info->id,
-                        info->level, being->getId());
+                        level,
+                        being->getId());
                 }
                 break;
             }
@@ -742,13 +747,15 @@ void SkillDialog::useSkill(const SkillInfo *const info,
                 if (being)
                 {
                     skillHandler->useBeing(info->id,
-                        info->level, being->getId());
+                        level,
+                        being->getId());
                 }
                 break;
             }
             case SkillType::Self:
                 skillHandler->useBeing(info->id,
-                    info->level, localPlayer->getId());
+                    level,
+                    localPlayer->getId());
                 break;
 
             case SkillType::Ground:
@@ -761,7 +768,7 @@ void SkillDialog::useSkill(const SkillInfo *const info,
                     textSkillListener.setSkill(info->id,
                         x,
                         y,
-                        info->level);
+                        level);
                     TextDialog *const dialog = CREATEWIDGETR(TextDialog,
                         // TRANSLATORS: text skill dialog header
                         strprintf(_("Add text to skill %s"),
@@ -776,7 +783,7 @@ void SkillDialog::useSkill(const SkillInfo *const info,
                 else
                 {
                     skillHandler->usePos(info->id,
-                        info->level,
+                        level,
                         x, y);
                 }
                 break;

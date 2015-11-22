@@ -140,7 +140,8 @@ class SkillDialog final : public Window,
         void removeSkill(const int id);
 
         static void useSkill(const SkillInfo *const info,
-                             const AutoTarget autoTarget);
+                             const AutoTarget autoTarget,
+                             int level);
 
         SkillData *getSkillData(const int id) const;
 
