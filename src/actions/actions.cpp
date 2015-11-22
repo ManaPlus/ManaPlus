@@ -1521,7 +1521,8 @@ impHandler(useItem)
     else if (skillDialog)
     {
         skillDialog->useItem(itemId,
-            fromBool(config.getBoolValue("skillAutotarget"), AutoTarget));
+            fromBool(config.getBoolValue("skillAutotarget"), AutoTarget),
+            0);
     }
     return true;
 }

@@ -68,6 +68,9 @@ class DragDrop final
         ItemColor getItemColor() const
         { return mItemColor; }
 
+        void setItemColor(const ItemColor color)
+        { mItemColor = color; }
+
         Image *getItemImage()
         { return mItemImage; }
 
@@ -144,7 +147,7 @@ class DragDrop final
             if (mItemImage)
                 mItemImage->decRef();
             mItem = 0;
-            mItemColor = ItemColor_one;
+            mItemColor = ItemColor_zero;
             mText.clear();
             mItemImage = nullptr;
             mSource = DragDropSource::Empty;
@@ -158,10 +161,12 @@ class DragDrop final
                     mItemImage = data->icon;
                     if (mItemImage)
                         mItemImage->incRef();
-                    mItem = info->id;
                     mSource = source;
                     mTag = tag;
                 }
+                mItem = info->id;
+                mItemColor = fromInt(info->selectedLevel,
+                    ItemColor);
             }
         }
 

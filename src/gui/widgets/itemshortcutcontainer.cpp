@@ -432,8 +432,10 @@ void ItemShortcutContainer::mouseDragged(MouseEvent &event)
                 {
                     selShortcut->removeItem(index);
                     dragDrop.dragSkill(skill,
-                        DragDropSource::Shortcuts, index);
+                        DragDropSource::Shortcuts,
+                        index);
                     dragDrop.setItem(itemId);
+                    dragDrop.setItemColor(itemColor);
                 }
                 else
                 {

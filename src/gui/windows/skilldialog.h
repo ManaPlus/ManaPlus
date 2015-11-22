@@ -114,7 +114,8 @@ class SkillDialog final : public Window,
         void widgetResized(const Event &event) override final;
 
         void useItem(const int itemId,
-                     const AutoTarget autoTarget) const;
+                     const AutoTarget autoTarget,
+                     const int level) const;
 
         void updateTabSelection();
 

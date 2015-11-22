@@ -142,7 +142,8 @@ void ItemShortcut::useItem(const int index) const
         else if (skillDialog)
         {
             skillDialog->useItem(itemId,
-                fromBool(config.getBoolValue("skillAutotarget"), AutoTarget));
+                fromBool(config.getBoolValue("skillAutotarget"), AutoTarget),
+                toInt(itemColor, int));
         }
     }
 }
