@@ -1444,6 +1444,8 @@ manaplus_SOURCES += gui/windows/bankwindow.cpp \
 	      listeners/pincodelistener.h \
 	      listeners/shoprenamelistener.cpp \
 	      listeners/shoprenamelistener.h \
+	      listeners/skillwarplistener.cpp \
+	      listeners/skillwarplistener.h \
 	      listeners/vendingmodelistener.cpp \
 	      listeners/vendingmodelistener.h \
 	      listeners/vendingslotslistener.cpp \
