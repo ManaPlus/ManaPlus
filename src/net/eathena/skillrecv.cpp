@@ -325,14 +325,6 @@ void SkillRecv::processSkillFailed(Net::MessageIn &msg)
     NotifyManager::notify(NotifyTypes::SKILL_FAIL_MESSAGE, txt);
 }
 
-void SkillRecv::processSkillSnap(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-    msg.readBeingId("being id");
-    msg.readInt16("x");
-    msg.readInt16("y");
-}
-
 void SkillRecv::processSkillWarpPoint(Net::MessageIn &msg)
 {
     const int skillId = msg.readInt16("skill id");

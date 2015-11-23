@@ -36,7 +36,6 @@ namespace EAthena
         void processPlayerSkills(Net::MessageIn &msg);
         void processSkillCoolDown(Net::MessageIn &msg);
         void processSkillCoolDownList(Net::MessageIn &msg);
-        void processSkillSnap(Net::MessageIn &msg);
         void processSkillAdd(Net::MessageIn &msg);
         void processSkillUpdate(Net::MessageIn &msg);
         void processSkillDelete(Net::MessageIn &msg);

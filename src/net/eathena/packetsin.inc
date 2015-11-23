@@ -399,7 +399,7 @@ packet(SMSG_SKILL_GROUND_NO_DAMAGE,        0x0117,  18, &BeingRecv::processSkill
 packet(SMSG_SKILL_ITEM_LIST_WINDOW,        0x07e3,   6, &SkillRecv::processSkillItemListWindow);
 packet(SMSG_SKILL_MEMO_MESSAGE,            0x011e,   3, &SkillRecv::processSkillMemoMessage);
 packet(SMSG_SKILL_NO_DAMAGE,               0x011a,  15, &Ea::BeingRecv::processSkillNoDamage);
-packet(SMSG_SKILL_SNAP,                    0x08d2,  10, &SkillRecv::processSkillSnap);
+packet(SMSG_SKILL_SNAP,                    0x08d2,  10, &BeingRecv::processBeingSlide);
 packet(SMSG_SKILL_UNIT_UPDATE,             0x01ac,   6, &SkillRecv::processSkillUnitUpdate);
 packet(SMSG_SKILL_WARP_POINT,              0x011c,  68, &SkillRecv::processSkillWarpPoint);
 packet(SMSG_SOLVE_CHAR_NAME,               0x0194,  30, &BeingRecv::processSolveCharName);
