@@ -29,9 +29,13 @@
 
 #include "enums/resources/notifytypes.h"
 
+#include "gui/widgets/createwidget.h"
 #include "gui/widgets/skillinfo.h"
 
 #include "gui/windows/skilldialog.h"
+#include "gui/windows/textselectdialog.h"
+
+#include "listeners/skillwarplistener.h"
 
 #include "net/messagein.h"
 
@@ -327,12 +331,18 @@ void SkillRecv::processSkillSnap(Net::MessageIn &msg)
 
 void SkillRecv::processSkillWarpPoint(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
-    msg.readInt16("skill id");
-    msg.readString(16, "map name 1");
-    msg.readString(16, "map name 2");
-    msg.readString(16, "map name 3");
-    msg.readString(16, "map name 4");
+    const int skillId = msg.readInt16("skill id");
+
+    TextSelectDialog *const dialog = CREATEWIDGETR(TextSelectDialog,
+        // TRANSLATORS: warp select window name
+        _("Select warp target"),
+        // TRANSLATORS: warp select button
+        _("Warp"));
+    skillWarpListener.setDialog(dialog);
+    skillWarpListener.setSkill(skillId);
+    dialog->addActionListener(&skillWarpListener);
+    for (int f = 0; f < 4; f ++)
+        dialog->addText(msg.readString(16, "map name"));
 }
 
 void SkillRecv::processSkillMemoMessage(Net::MessageIn &msg)
