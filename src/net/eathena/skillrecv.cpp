@@ -276,6 +276,10 @@ void SkillRecv::processSkillFailed(Net::MessageIn &msg)
             // TRANSLATORS: error message
             txt.append(_("Fail summon."));
             break;
+        case RFAIL_SPIRITS:
+            // TRANSLATORS: error message
+            txt.append(_("Need spirits."));
+            break;
         case RFAIL_NEED_EQUIPMENT:
         {
             const int itemId = bskill >> 16;

@@ -59,6 +59,7 @@ static const unsigned int RFAIL_OVERWEIGHT =  0x09;
 static const unsigned int RFAIL_SUMMON         = 19;
 static const unsigned int RFAIL_NEED_ITEM      = 71;
 static const unsigned int RFAIL_NEED_EQUIPMENT = 72;
+static const unsigned int RFAIL_SPIRITS        = 74;
 
 /** should always be zero if failed */
 static const unsigned int SKILL_FAILED =      0x00;
