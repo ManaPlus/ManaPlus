@@ -920,6 +920,12 @@ class Being notfinal : public ActorSprite,
 
         std::string getBuyBoard() const A_WARN_UNUSED
         { return mBuyBoard; }
+
+        void setSpiritBalls(const unsigned int balls)
+        { mSpiritBalls = balls; }
+
+        unsigned int getSpiritBalls() const A_WARN_UNUSED
+        { return mSpiritBalls; }
 #endif
 
         void setKarma(const int karma)
@@ -1154,6 +1160,7 @@ class Being notfinal : public ActorSprite,
         int mCriticalHit;
         unsigned int mPvpRank;
         unsigned int mNumber;
+        unsigned int mSpiritBalls;
         int mUsageCounter;
         int mKarma;
         int mManner;

@@ -1436,18 +1436,11 @@ void BeingRecv::processClassChange(Net::MessageIn &msg)
 
 void BeingRecv::processSpiritBalls(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
-
-    msg.readBeingId("being id");
-    msg.readInt16("spirits amount");
-}
-
-void BeingRecv::processSpiritBallSingle(Net::MessageIn &msg)
-{
-    UNIMPLIMENTEDPACKET;
-
-    msg.readBeingId("being id");
-    msg.readInt16("spirits amount");
+    Being *const dstBeing = actorManager->findBeing(
+        msg.readBeingId("being id"));
+    const int balls = msg.readInt16("spirits amount");
+    if (dstBeing)
+        dstBeing->setSpiritBalls(balls);
 }
 
 void BeingRecv::processBladeStop(Net::MessageIn &msg)

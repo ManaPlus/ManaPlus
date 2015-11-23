@@ -91,7 +91,6 @@ namespace EAthena
         void processMonsterInfo(Net::MessageIn &msg);
         void processClassChange(Net::MessageIn &msg);
         void processSpiritBalls(Net::MessageIn &msg);
-        void processSpiritBallSingle(Net::MessageIn &msg);
         void processBladeStop(Net::MessageIn &msg);
         void processComboDelay(Net::MessageIn &msg);
         void processWddingEffect(Net::MessageIn &msg);

@@ -404,7 +404,7 @@ packet(SMSG_SKILL_UNIT_UPDATE,             0x01ac,   6, &SkillRecv::processSkill
 packet(SMSG_SKILL_WARP_POINT,              0x011c,  68, &SkillRecv::processSkillWarpPoint);
 packet(SMSG_SOLVE_CHAR_NAME,               0x0194,  30, &BeingRecv::processSolveCharName);
 packet(SMSG_SPIRIT_BALLS,                  0x01d0,   8, &BeingRecv::processSpiritBalls);
-packet(SMSG_SPIRIT_BALL_SINGLE,            0x01e1,   8, &BeingRecv::processSpiritBallSingle);
+packet(SMSG_SPIRIT_BALL_SINGLE,            0x01e1,   8, &BeingRecv::processSpiritBalls);
 packet(SMSG_STARS_KILL,                    0x020e,  32, &BeingRecv::processStarsKill);
 packet(SMSG_TAEKWON_RANKS_LIST,            0x0226, 282, &BeingRecv::processTaekwonRanksList);
 packet(SMSG_TRADE_CANCEL,                  0x00ee,   2, &Ea::TradeRecv::processTradeCancel);
