@@ -60,8 +60,10 @@ class MapLayer final: public ConfigListener
          * fringe layer. The fringe layer is the layer that draws the actors.
          * There can be only one fringe layer per map.
          */
-        MapLayer(const int x, const int y,
-                 const int width, const int height,
+        MapLayer(const int x,
+                 const int y,
+                 const int width,
+                 const int height,
                  const bool isFringeLayer,
                  const int mask,
                  const int tileCondition);
@@ -76,12 +78,15 @@ class MapLayer final: public ConfigListener
         /**
          * Set tile image, with x and y in layer coordinates.
          */
-        void setTile(const int x, const int y, Image *const img);
+        void setTile(const int x,
+                     const int y,
+                     Image *const img);
 
         /**
          * Set tile image with x + y * width already known.
          */
-        void setTile(const int index, Image *const img)
+        void setTile(const int index,
+                     Image *const img)
         { mTiles[index].image = img; }
 
         /**
@@ -159,7 +164,8 @@ class MapLayer final: public ConfigListener
                                     int &width) A_WARN_UNUSED;
 
         void updateConditionTiles(MetaTile *const metaTiles,
-                                  const int width, const int height);
+                                  const int width,
+                                  const int height);
 
     private:
         const int mX;
