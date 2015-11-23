@@ -948,6 +948,8 @@ manaplus_SOURCES += main.cpp \
 	      gui/windows/statuswindow.h \
 	      gui/windows/textdialog.cpp \
 	      gui/windows/textdialog.h \
+	      gui/windows/textselectdialog.cpp \
+	      gui/windows/textselectdialog.h \
 	      gui/windows/setupwindow.cpp \
 	      gui/windows/setupwindow.h \
 	      gui/windows/serverdialog.cpp \

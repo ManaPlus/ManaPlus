@@ -496,6 +496,8 @@ SET(SRCS
     gui/windows/statuswindow.h
     gui/windows/textdialog.cpp
     gui/windows/textdialog.h
+    gui/windows/textselectdialog.cpp
+    gui/windows/textselectdialog.h
     gui/popups/textpopup.cpp
     gui/popups/textpopup.h
     gui/skin.cpp
