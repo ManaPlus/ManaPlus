@@ -921,8 +921,7 @@ class Being notfinal : public ActorSprite,
         std::string getBuyBoard() const A_WARN_UNUSED
         { return mBuyBoard; }
 
-        void setSpiritBalls(const unsigned int balls)
-        { mSpiritBalls = balls; }
+        void setSpiritBalls(const unsigned int balls);
 
         unsigned int getSpiritBalls() const A_WARN_UNUSED
         { return mSpiritBalls; }
@@ -1081,6 +1080,11 @@ class Being notfinal : public ActorSprite,
                                        std::vector<int> &slotRemap,
                                        const int val);
 
+        void addSpiritBalls(const unsigned int balls,
+                            const int effectId);
+
+        void removeSpiritBalls(const unsigned int balls);
+
         void dumpSprites() const;
 
         const ActorTypeT mType;
@@ -1112,6 +1116,7 @@ class Being notfinal : public ActorSprite,
         HorseInfo *mHorseInfo;
         std::vector<AnimatedSprite*> mDownHorseSprites;
         std::vector<AnimatedSprite*> mUpHorseSprites;
+        std::vector<Particle*> mSpiritParticles;
 #endif
 
         int mX;             // position in tiles

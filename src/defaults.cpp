@@ -523,6 +523,8 @@ DefaultsData* getPathsDefaults()
     AddDEF("skillHitEffectId", -1);
     AddDEF("skillMissEffectId", -1);
 
+    AddDEF("spiritEffectId", -1);
+
     AddDEF("minimaps", "graphics/minimaps/");
     AddDEF("maps", "maps/");
     AddDEF("sfx", "sfx/");

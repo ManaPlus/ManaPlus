@@ -200,6 +200,7 @@ Being::Being(const BeingId id,
     mHorseInfo(nullptr),
     mDownHorseSprites(),
     mUpHorseSprites(),
+    mSpiritParticles(),
 #endif
     mX(0),
     mY(0),
@@ -340,6 +341,9 @@ Being::~Being()
     mPets.clear();
 
     removeAllItemsParticles();
+#ifdef EATHENA_SUPPORT
+    mSpiritParticles.clear();
+#endif
 }
 
 void Being::createSpeechBubble()
@@ -4241,6 +4245,53 @@ void Being::setTrickDead(const bool b)
     {
         mTrickDead = b;
         setAction(mAction, 0);
+    }
+}
+
+void Being::setSpiritBalls(const unsigned int balls)
+{
+    if (!Particle::enabled)
+    {
+        mSpiritBalls = balls;
+        return;
+    }
+
+    if (balls > mSpiritBalls)
+    {
+        const int effectId = paths.getIntValue("spiritEffectId");
+        if (effectId != -1)
+            addSpiritBalls(balls - mSpiritBalls, effectId);
+    }
+    else if (balls < mSpiritBalls)
+    {
+        removeSpiritBalls(mSpiritBalls - balls);
+    }
+    mSpiritBalls = balls;
+}
+
+void Being::addSpiritBalls(const unsigned int balls,
+                           const int effectId)
+{
+    if (!effectManager)
+        return;
+    for (unsigned int f = 0; f < balls; f ++)
+    {
+        Particle *const particle = effectManager->triggerReturn(
+            effectId,
+            this);
+        mSpiritParticles.push_back(particle);
+    }
+}
+
+void Being::removeSpiritBalls(const unsigned int balls)
+{
+    if (!particleEngine)
+        return;
+    for (unsigned int f = 0; f < balls && !mSpiritParticles.empty(); f ++)
+    {
+        Particle *const particle = mSpiritParticles.back();
+        mChildParticleEffects.removeLocally(particle);
+        mSpiritParticles.pop_back();
     }
 }
 
