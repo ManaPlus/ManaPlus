@@ -36,7 +36,8 @@ ParticleList::ParticleList(ParticleContainer *const parent,
 {}
 
 ParticleList::~ParticleList()
-{}
+{
+}
 
 void ParticleList::addLocally(Particle *const particle)
 {
@@ -57,6 +58,7 @@ void ParticleList::removeLocally(const Particle *const particle)
         if (p == particle)
         {
             p->kill();
+            p->prepareToDie();
             it = mElements.erase(it);
         }
         else

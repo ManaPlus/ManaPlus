@@ -248,6 +248,8 @@ class Particle notfinal : public Actor
         bool isAlive() const A_WARN_UNUSED
         { return mAlive == ALIVE; }
 
+        void prepareToDie();
+
         /**
          * Determines whether the particle and its children are all dead
          */

@@ -477,6 +477,23 @@ void Particle::adjustEmitterSize(const int w, const int h)
     }
 }
 
+void Particle::prepareToDie()
+{
+    FOR_EACH (ParticleIterator, p, mChildParticles)
+    {
+        Particle *const particle = *p;
+        if (!particle)
+            continue;
+        particle->prepareToDie();
+        if (particle->isAlive() &&
+            particle->mLifetimeLeft == -1 &&
+            particle->mAutoDelete)
+        {
+            particle->kill();
+        }
+    }
+}
+
 void Particle::clear()
 {
     delete_all(mChildEmitters);
