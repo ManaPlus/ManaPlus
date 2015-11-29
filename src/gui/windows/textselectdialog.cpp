@@ -29,7 +29,6 @@
 #include "gui/widgets/button.h"
 #include "gui/widgets/containerplacer.h"
 #include "gui/widgets/createwidget.h"
-#include "gui/widgets/label.h"
 #include "gui/widgets/layout.h"
 #include "gui/widgets/layouttype.h"
 #include "gui/widgets/listbox.h"
@@ -37,7 +36,6 @@
 
 #include "utils/delete2.h"
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include "debug.h"
 
@@ -53,7 +51,8 @@ TextSelectDialog::TextSelectDialog(const std::string &name,
     mQuitButton(nullptr),
     mItemList(nullptr),
     mScrollArea(nullptr),
-    mModel(nullptr)
+    mModel(nullptr),
+    mTag(0)
 {
 }
 

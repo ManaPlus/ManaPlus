@@ -20,10 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_WIDGETS_TEXTSELECTDIALOG_H
-#define GUI_WIDGETS_TEXTSELECTDIALOG_H
-
-#include "enums/simpletypes/itemcolor.h"
+#ifndef GUI_WINDOWS_TEXTSELECTDIALOG_H
+#define GUI_WINDOWS_TEXTSELECTDIALOG_H
 
 #include "gui/widgets/window.h"
 
@@ -31,10 +29,7 @@
 #include "listeners/selectionlistener.h"
 
 class Button;
-class Item;
-class Label;
 class ScrollArea;
-class ShopItem;
 class NamesModel;
 class ListBox;
 
@@ -102,4 +97,4 @@ class TextSelectDialog notfinal : public Window,
         int mTag;
 };
 
-#endif  // GUI_WIDGETS_TEXTSELECTDIALOG_H
+#endif  // GUI_WINDOWS_TEXTSELECTDIALOG_H

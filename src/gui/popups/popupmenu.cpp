@@ -2241,7 +2241,7 @@ void PopupMenu::showSkillPopup(const SkillInfo *const info)
     // using mItemId as skill id
     mItemId = info->id;
     mBrowserBox->clearRows();
-    for(int f = 1; f <= info->level; f ++)
+    for (int f = 1; f <= info->level; f ++)
     {
         mBrowserBox->addRow(strprintf("/selectskilllevel %d %d", mItemId, f),
             // TRANSLATORS: popup menu item
