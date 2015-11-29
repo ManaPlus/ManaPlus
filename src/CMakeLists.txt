@@ -815,10 +815,11 @@ SET(SRCS
     utils/naclmessages.h
     utils/mkdir.cpp
     utils/mkdir.h
-    utils/xml.cpp
     utils/xml.h
     utils/xmlutils.cpp
     utils/xmlutils.h
+    utils/xml/libxml.cpp
+    utils/xml/libxml.h
     test/testlauncher.cpp
     test/testlauncher.h
     test/testmain.cpp

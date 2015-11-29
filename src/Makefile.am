@@ -15,9 +15,11 @@ manaplus_CXXFLAGS = -DPKG_DATADIR=\""$(pkgdatadir)/"\"      \
 
 if ENABLE_PUGIXML
 manaplus_CXXFLAGS += -DENABLE_PUGIXML
+dyecmd_CXXFLAGS += -DENABLE_PUGIXML
 endif
 if ENABLE_LIBXML
 manaplus_CXXFLAGS += -DENABLE_LIBXML
+dyecmd_CXXFLAGS += -DENABLE_LIBXML
 endif
 
 if ENABLE_PORTABLE
@@ -470,10 +472,11 @@ SRC += events/actionevent.h \
 	      utils/mutex.h \
 	      utils/naclmessages.cpp \
 	      utils/naclmessages.h \
-	      utils/xml.cpp \
 	      utils/xml.h \
 	      utils/xmlutils.cpp \
 	      utils/xmlutils.h \
+	      utils/xml/libxml.cpp \
+	      utils/xml/libxml.h \
 	      test/testlauncher.cpp \
 	      test/testlauncher.h \
 	      test/testmain.cpp \

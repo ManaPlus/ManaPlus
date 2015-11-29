@@ -20,7 +20,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "utils/xml.h"
+#ifdef ENABLE_LIBXML
+
+#include "utils/xml/libxml.h"
 
 #include "logger.h"
 
@@ -309,3 +311,5 @@ namespace XML
         return true;
     }
 }  // namespace XML
+
+#endif  // ENABLE_LIBXML
