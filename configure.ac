@@ -201,14 +201,50 @@ AC_MSG_ERROR([ *** Unable to find CURL library (http://curl.haxx.se/)]))
 AC_CHECK_HEADERS([curl/curl.h], ,
 AC_MSG_ERROR([ *** CURL library found but cannot find headers (http://curl.haxx.se/)]))
 
-if test -n "$PKG_CONFIG"; then
-    LIBS="$LIBS `$PKG_CONFIG --libs libxml-2.0`"
-    CPPFLAGS="$CPPFLAGS `$PKG_CONFIG --cflags libxml-2.0`"
+
+# select xml lib
+AC_ARG_ENABLE(libxml,
+    AC_HELP_STRING([--enable-libxml=ARG],
+        [xml libs: libxml (default), pugixml]),
+    [
+        xmllib="${enableval}"
+    ],
+    [
+        xmllib="libxml"
+    ]
+)
+
+case $xmllib in
+    "libxml")
+        AM_CONDITIONAL(ENABLE_LIBXML, true)
+        AM_CONDITIONAL(ENABLE_PUGIXML, false)
+        ;;
+    "pugixml")
+        AM_CONDITIONAL(ENABLE_LIBXML, false)
+        AM_CONDITIONAL(ENABLE_PUGIXML, true)
+        ;;
+    *)
+        AC_MSG_ERROR([[Wrong xml lib name]])
+        ;;
+esac
+
+if test "$xmllib" == "libxml"; then
+    if test -n "$PKG_CONFIG"; then
+        LIBS="$LIBS `$PKG_CONFIG --libs libxml-2.0`"
+        CPPFLAGS="$CPPFLAGS `$PKG_CONFIG --cflags libxml-2.0`"
+    fi
+    AC_CHECK_LIB([xml2], [xmlInitParser], ,
+    AC_MSG_ERROR([ *** Unable to find libxml2 library (http://xmlsoft.org/)]))
+    AC_CHECK_HEADERS([libxml/xmlreader.h], ,
+    AC_MSG_ERROR([ *** libxml2 library found but cannot find headers (http://xmlsoft.org/)]))
 fi
-AC_CHECK_LIB([xml2], [xmlInitParser], ,
-AC_MSG_ERROR([ *** Unable to find libxml2 library (http://xmlsoft.org/)]))
-AC_CHECK_HEADERS([libxml/xmlreader.h], ,
-AC_MSG_ERROR([ *** libxml2 library found but cannot find headers (http://xmlsoft.org/)]))
+
+if test "$xmllib" == "pugixml"; then
+    AC_CHECK_LIB([pugixml], [main], ,
+    AC_MSG_ERROR([ *** Unable to find pugixml library (http://pugixml.org/)]))
+    AC_CHECK_HEADERS([pugixml.hpp], ,
+    AC_MSG_ERROR([ *** pugixml library found but cannot find headers (http://pugixml.org/)]))
+fi
 
 AC_CHECK_LIB(png, png_write_info, ,
 AC_MSG_ERROR([ *** Unable to find png library]))

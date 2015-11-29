@@ -13,6 +13,13 @@ manaplus_CXXFLAGS = -DPKG_DATADIR=\""$(pkgdatadir)/"\"      \
 		-DLOCALEDIR=\""$(localedir)"\"           \
 		-Wall
 
+if ENABLE_PUGIXML
+manaplus_CXXFLAGS += -DENABLE_PUGIXML
+endif
+if ENABLE_LIBXML
+manaplus_CXXFLAGS += -DENABLE_LIBXML
+endif
+
 if ENABLE_PORTABLE
 dyecmd_CXXFLAGS += -DENABLE_PORTABLE
 manaplus_CXXFLAGS += -DENABLE_PORTABLE
