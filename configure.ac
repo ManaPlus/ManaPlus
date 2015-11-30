@@ -83,6 +83,8 @@ AC_TYPE_SSIZE_T
 AM_GNU_GETTEXT([external],[need-ngettext])
 AM_GNU_GETTEXT_VERSION([0.16.1])
 
+AC_DEFUN([AC_CHECK_SDL],
+[
 # Enable sdl2
 AC_ARG_WITH(sdl2,[  --with-sdl2        enable SDL 2 support] )
 if test "x$with_sdl2" == "xyes"; then
@@ -104,8 +106,6 @@ if test "x$with_sdl2" == "xyes"; then
     AC_CHECK_LIB([SDL2_mixer], [Mix_OpenAudio], ,
     AC_MSG_ERROR([ *** Unable to find SDL2_mixer library (http://www.libsdl.org/projects/SDL_mixer/)]))
 
-
-
     AC_CHECK_LIB(SDL2_net, SDLNet_Init, ,
     AC_MSG_ERROR([ *** Unable to find SDL2_net library]))
 
@@ -121,7 +121,6 @@ else
         AC_CHECK_LIB([SDL], [SDL_Init], ,
         AC_MSG_ERROR([ *** Unable to find SDL library (http://www.libsdl.org/)]))
 
-
         AC_CHECK_LIB(SDL_image, IMG_LoadPNG_RW, ,
         AC_MSG_ERROR([ *** Unable to find SDL_image library with PNG support
         (http://www.libsdl.org/projects/SDL_image/)]))
@@ -131,7 +130,6 @@ else
 
         AC_CHECK_LIB([SDL_mixer], [Mix_OpenAudio], ,
         AC_MSG_ERROR([ *** Unable to find SDL_mixer library (http://www.libsdl.org/projects/SDL_mixer/)]))
-
 
         AC_CHECK_LIB(SDL_gfx, rotozoomSurfaceXY, ,
         AC_MSG_ERROR([ *** Unable to find SDL_gfx library (http://www.ferzkopp.net/joomla/software-mainmenu-14/4-ferzkopps-linux-software/19-sdlgfx)]))
@@ -159,6 +157,9 @@ else
     AC_DEFINE(USE_INTERNALSDLGFX, 1, [Defines if ManaPlus should use internal sdlgfx2])
 fi
 AM_CONDITIONAL(USE_INTERNALSDLGFX, test x$with_internalsdlgfx = xyes)
+])
+
+AC_CHECK_SDL()
 
 # Search for *-config
 AC_PATH_PROG(PKG_CONFIG, pkg-config)
