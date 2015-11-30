@@ -21,6 +21,10 @@
 #ifndef UTILS_XML_H
 #define UTILS_XML_H
 
+#ifdef ENABLE_PUGIXML
+#include "utils/xml/pugixml.h"
+#else  // ENABLE_PUGIXML
 #include "utils/xml/libxml.h"
+#endif  // ENABLE_PUGIXML
 
 #endif  // UTILS_XML_H

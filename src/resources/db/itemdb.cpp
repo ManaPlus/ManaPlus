@@ -545,11 +545,8 @@ void ItemDB::loadXmlFile(const std::string &fileName, int &tagNum)
             }
             else if (xmlNameEqual(itemChild, "particlefx"))
             {
-                if (itemChild->xmlChildrenNode)
-                {
-                    display.particles.push_back(reinterpret_cast<const char*>(
-                        itemChild->xmlChildrenNode->content));
-                }
+                if (XmlHaveChildContent(itemChild))
+                    display.particles.push_back(XmlChildContent(itemChild));
             }
             else if (xmlNameEqual(itemChild, "sound"))
             {
@@ -844,11 +841,10 @@ static int parseDirectionName(const std::string &name)
 static void loadSpriteRef(ItemInfo *const itemInfo, const XmlNodePtr node)
 {
     const std::string gender = XML::getProperty(node, "gender", "unisex");
-    if (!node || !node->xmlChildrenNode)
+    if (!node || !XmlHaveChildContent(node))
         return;
 
-    const std::string filename = reinterpret_cast<const char*>(
-        node->xmlChildrenNode->content);
+    const std::string filename = XmlChildContent(node);
 
     const int race = XML::getProperty(node, "race", 0);
     if (gender == "male" || gender == "unisex")
@@ -861,11 +857,10 @@ static void loadSpriteRef(ItemInfo *const itemInfo, const XmlNodePtr node)
 
 static void loadSoundRef(ItemInfo *const itemInfo, const XmlNodePtr node)
 {
-    if (!node || !node->xmlChildrenNode)
+    if (!node || !XmlHaveChildContent(node))
         return;
     const std::string event = XML::getProperty(node, "event", "");
-    const std::string filename = reinterpret_cast<const char*>(
-        node->xmlChildrenNode->content);
+    const std::string filename = XmlChildContent(node);
     const int delay = XML::getProperty(node, "delay", 0);
 
     const std::map<std::string, ItemSoundEvent::Type>::const_iterator
@@ -888,21 +883,19 @@ static void loadFloorSprite(SpriteDisplay &display,
         return;
     for_each_xml_child_node(spriteNode, floorNode)
     {
-        if (!spriteNode->xmlChildrenNode)
+        if (!XmlHaveChildContent(spriteNode))
             continue;
         if (xmlNameEqual(spriteNode, "sprite"))
         {
             SpriteReference *const currentSprite = new SpriteReference;
-            currentSprite->sprite = reinterpret_cast<const char*>(
-                spriteNode->xmlChildrenNode->content);
+            currentSprite->sprite = XmlChildContent(spriteNode);
             currentSprite->variant
                 = XML::getProperty(spriteNode, "variant", 0);
             display.sprites.push_back(currentSprite);
         }
         else if (xmlNameEqual(spriteNode, "particlefx"))
         {
-            display.particles.push_back(reinterpret_cast<const char*>(
-                spriteNode->xmlChildrenNode->content));
+            display.particles.push_back(XmlChildContent(spriteNode));
         }
     }
 }

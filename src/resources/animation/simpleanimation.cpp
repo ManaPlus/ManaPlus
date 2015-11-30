@@ -170,8 +170,7 @@ void SimpleAnimation::initializeAnimation(const XmlNodePtr animationNode,
     const int y1 = imageset->getHeight() - mapTileSize;
 
     // Get animation frames
-    for (XmlNodePtr frameNode = animationNode->xmlChildrenNode;
-         frameNode; frameNode = frameNode->next)
+    for_each_xml_child_node (frameNode, animationNode)
     {
         const int delay = XML::getIntProperty(
             frameNode, "delay", 0, 0, 100000);

@@ -614,14 +614,12 @@ bool MapReader::readBase64Layer(const XmlNodePtrConst childNode,
     }
 
     // Read base64 encoded map file
-    XmlNodePtrConst dataChild = childNode->xmlChildrenNode;
-    if (!dataChild)
+    if (!XmlHaveChildContent(childNode))
         return true;
 
-    const size_t len = strlen(
-        reinterpret_cast<const char*>(dataChild->content)) + 1;
+    const size_t len = strlen(XmlChildContent(childNode)) + 1;
     unsigned char *charData = new unsigned char[len + 1];
-    xmlChar *const xmlChars = xmlNodeGetContent(dataChild);
+    const char *const xmlChars = XmlChildContent(childNode);
     const char *charStart = reinterpret_cast<const char*>(xmlChars);
     if (!charStart)
     {
@@ -649,7 +647,7 @@ bool MapReader::readBase64Layer(const XmlNodePtrConst childNode,
         charData))), &binLen);
 
     delete [] charData;
-    xmlFree(xmlChars);
+//    XmlFree(const_cast<char*>(xmlChars));
 
     if (binData)
     {
@@ -710,11 +708,10 @@ bool MapReader::readCsvLayer(const XmlNodePtrConst childNode,
     if (!map || !childNode)
         return false;
 
-    XmlNodePtrConst dataChild = childNode->xmlChildrenNode;
-    if (!dataChild)
+    if (!XmlHaveChildContent(childNode))
         return true;
 
-    xmlChar *const xmlChars = xmlNodeGetContent(dataChild);
+    const char *const xmlChars = XmlChildContent(childNode);
     const char *const data = reinterpret_cast<const char*>(xmlChars);
     if (!data)
         return false;
@@ -747,7 +744,7 @@ bool MapReader::readCsvLayer(const XmlNodePtrConst childNode,
 
         oldPos = pos + 1;
     }
-    xmlFree(xmlChars);
+    //XmlFree(const_cast<char*>(xmlChars));
     return true;
 }
 

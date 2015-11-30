@@ -51,13 +51,15 @@ TEST_CASE("xml doc")
         REQUIRE(xmlNameEqual(doc.rootNode(), "skinset") == true);
         REQUIRE(xmlNameEqual(doc.rootNode(), "skinset123") == false);
         REQUIRE(xmlTypeEqual(doc.rootNode(), XML_ELEMENT_NODE) == true);
+//        REQUIRE(XmlHaveChildContent(doc.rootNode()) == true);
     }
 
     SECTION("load2")
     {
-        const std::string xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>"
-            "<root><data option1=\"false\" option2=\"true\"/></root>";
-        XML::Document doc(xml.c_str(), xml.size());
+        const char *xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+            "<root><data option1=\"false\" option2=\"true\"/>"
+            "<cont>this is test</cont></root>";
+        XML::Document doc(xml, strlen(xml));
         REQUIRE(doc.isLoaded() == true);
         REQUIRE(doc.isValid() == true);
         REQUIRE(doc.rootNode() != nullptr);
@@ -66,6 +68,8 @@ TEST_CASE("xml doc")
         REQUIRE(xmlTypeEqual(doc.rootNode(), XML_ELEMENT_NODE) == true);
         REQUIRE(XmlHasProp(doc.rootNode(), "option1") == false);
         REQUIRE(XmlHasProp(doc.rootNode(), "option123") == false);
+        logger->log("content: '%s'", doc.rootNode().first_child().child_value());
+        REQUIRE(XmlHaveChildContent(doc.rootNode()) == false);
     }
 
     SECTION("load3")
@@ -82,6 +86,24 @@ TEST_CASE("xml doc")
         REQUIRE(xmlTypeEqual(doc.rootNode(), XML_ELEMENT_NODE) == true);
         REQUIRE(XmlHasProp(doc.rootNode(), "option1") == false);
         REQUIRE(XmlHasProp(doc.rootNode(), "option123") == false);
+        REQUIRE(XmlHaveChildContent(doc.rootNode()) == false);
+    }
+
+    SECTION("load4")
+    {
+        const char *xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+            "<root>this is test</root>";
+        XML::Document doc(xml, strlen(xml));
+        REQUIRE(doc.isLoaded() == true);
+        REQUIRE(doc.isValid() == true);
+        REQUIRE(doc.rootNode() != nullptr);
+        REQUIRE(xmlNameEqual(doc.rootNode(), "root") == true);
+        REQUIRE(xmlNameEqual(doc.rootNode(), "root123") == false);
+        REQUIRE(xmlTypeEqual(doc.rootNode(), XML_ELEMENT_NODE) == true);
+        REQUIRE(XmlHasProp(doc.rootNode(), "option1") == false);
+        REQUIRE(XmlHasProp(doc.rootNode(), "option123") == false);
+        REQUIRE(XmlHaveChildContent(doc.rootNode()) == true);
+        REQUIRE(!strcmp(XmlChildContent(doc.rootNode()), "this is test"));
     }
 
     SECTION("properties")
@@ -101,7 +123,8 @@ TEST_CASE("xml doc")
             SkipError_false);
 
         const XmlNodePtr rootNode = doc.rootNode();
-        XmlNodePtr node = nullptr;
+//        REQUIRE(XmlHaveChildContent(rootNode) == true);
+        XmlNodePtr node = XmlNodeDefault;
         for_each_xml_child_node(widgetNode, rootNode)
         {
             node = widgetNode;
@@ -111,6 +134,7 @@ TEST_CASE("xml doc")
         REQUIRE(node != nullptr);
         REQUIRE(xmlTypeEqual(node, XML_ELEMENT_NODE) == true);
         REQUIRE(xmlNameEqual(node, "widget") == true);
+//        REQUIRE(XmlHaveChildContent(node) == true);
         for_each_xml_child_node(optionNode, node)
         {
             node = optionNode;
@@ -120,6 +144,7 @@ TEST_CASE("xml doc")
         REQUIRE(node != nullptr);
         REQUIRE(xmlTypeEqual(node, XML_ELEMENT_NODE) == true);
         REQUIRE(xmlNameEqual(node, "option") == true);
+        REQUIRE(XmlHaveChildContent(node) == false);
         REQUIRE(XmlHasProp(node, "name") == true);
         REQUIRE(XmlHasProp(node, "value") == true);
         REQUIRE(XmlHasProp(node, "option123") == false);
@@ -142,10 +167,12 @@ TEST_CASE("xml doc")
         REQUIRE(node != nullptr);
         REQUIRE(xmlTypeEqual(node, XML_ELEMENT_NODE) == true);
         REQUIRE(xmlNameEqual(node, "widget") == true);
+//        REQUIRE(XmlHaveChildContent(node) == true);
         node = XML::findFirstChildByName(node, "option");
         REQUIRE(node != nullptr);
         REQUIRE(xmlTypeEqual(node, XML_ELEMENT_NODE) == true);
         REQUIRE(xmlNameEqual(node, "option") == true);
+        REQUIRE(XmlHaveChildContent(node) == false);
         REQUIRE(XmlHasProp(node, "name") == true);
         REQUIRE(XmlHasProp(node, "value") == true);
         REQUIRE(XmlHasProp(node, "option123") == false);
@@ -163,15 +190,17 @@ TEST_CASE("xml doc")
 
     SECTION("child2")
     {
-        const std::string xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+        const char *xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>"
             "<root><data option1=\"false\" option2=\"true\" "
             "option3=\"10.5\"/></root>";
-        XML::Document doc(xml.c_str(), xml.size());
+        XML::Document doc(xml, strlen(xml));
         const XmlNodePtr rootNode = doc.rootNode();
+        REQUIRE(XmlHaveChildContent(rootNode) == false);
         XmlNodePtr node = XML::findFirstChildByName(rootNode, "data");
         REQUIRE(node != nullptr);
         REQUIRE(xmlTypeEqual(node, XML_ELEMENT_NODE) == true);
         REQUIRE(xmlNameEqual(node, "data") == true);
+        REQUIRE(XmlHaveChildContent(node) == false);
         REQUIRE(XmlHasProp(node, "option1") == true);
         REQUIRE(XmlHasProp(node, "option123") == false);
         REQUIRE(XML::getBoolProperty(node, "option1", true) == false);
@@ -189,10 +218,12 @@ TEST_CASE("xml doc")
             "option3=\"10.5\"/><!-- comment --></root>";
         XML::Document doc(xml.c_str(), xml.size());
         const XmlNodePtr rootNode = doc.rootNode();
+//        REQUIRE(XmlHaveChildContent(rootNode) == true);
         XmlNodePtr node = XML::findFirstChildByName(rootNode, "data");
         REQUIRE(node != nullptr);
         REQUIRE(xmlTypeEqual(node, XML_ELEMENT_NODE) == true);
         REQUIRE(xmlNameEqual(node, "data") == true);
+        REQUIRE(XmlHaveChildContent(node) == false);
         REQUIRE(XmlHasProp(node, "option1") == true);
         REQUIRE(XmlHasProp(node, "option123") == false);
         REQUIRE(XML::getBoolProperty(node, "option1", true) == false);

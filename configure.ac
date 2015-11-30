@@ -205,7 +205,7 @@ AC_MSG_ERROR([ *** CURL library found but cannot find headers (http://curl.haxx.
 # select xml lib
 AC_ARG_ENABLE(libxml,
     AC_HELP_STRING([--enable-libxml=ARG],
-        [xml libs: libxml (default), pugixml]),
+        [xml libs: libxml (default), pugixml (broken for now)]),
     [
         xmllib="${enableval}"
     ],

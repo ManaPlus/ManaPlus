@@ -706,7 +706,7 @@ void ConfigurationObject::initFromXML(const XmlNodePtrConst parentNode)
             for_each_xml_child_node(subnode, node)
             {
                 if (xmlNameEqual(subnode, name.c_str()) &&
-                    subnode->type == XML_ELEMENT_NODE)
+                    xmlTypeEqual(subnode, XML_ELEMENT_NODE))
                 {
                     ConfigurationObject *const cobj = new ConfigurationObject;
                     cobj->initFromXML(subnode);  // recurse
@@ -855,7 +855,7 @@ void Configuration::write()
         fclose(testFile);
     }
 
-    const XmlTextWriterPtr writer = xmlNewTextWriterFilename(
+    const XmlTextWriterPtr writer = XmlNewTextWriterFilename(
         mConfigPath.c_str(), 0);
 
     if (!writer)
@@ -867,15 +867,15 @@ void Configuration::write()
 
     logger->log1("Configuration::write() writing configuration...");
 
-    xmlTextWriterSetIndent(writer, 1);
-    xmlTextWriterStartDocument(writer, nullptr, nullptr, nullptr);
+    XmlTextWriterSetIndent(writer, 1);
+    XmlTextWriterStartDocument(writer, nullptr, nullptr, nullptr);
 //    xmlTextWriterStartDocument(writer, nullptr, "utf8", nullptr);
     XmlTextWriterStartElement(writer, "configuration");
 
     writeToXML(writer);
 
-    xmlTextWriterEndDocument(writer);
-    xmlFreeTextWriter(writer);
+    XmlTextWriterEndDocument(writer);
+    XmlFreeTextWriter(writer);
     BLOCK_END("Configuration::write")
 }
 

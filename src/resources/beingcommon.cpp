@@ -105,12 +105,11 @@ bool BeingCommon::readObjectNodes(XmlNodePtrConst &spriteNode,
 {
     if (xmlNameEqual(spriteNode, "sprite"))
     {
-        if (!spriteNode->xmlChildrenNode)
+        if (!XmlHaveChildContent(spriteNode))
             return true;
 
         SpriteReference *const currentSprite = new SpriteReference;
-        currentSprite->sprite = reinterpret_cast<const char*>(
-            spriteNode->xmlChildrenNode->content);
+        currentSprite->sprite = XmlChildContent(spriteNode);
 
         currentSprite->variant = XML::getProperty(
             spriteNode, "variant", 0);
@@ -119,15 +118,14 @@ bool BeingCommon::readObjectNodes(XmlNodePtrConst &spriteNode,
     }
     else if (xmlNameEqual(spriteNode, "sound"))
     {
-        if (!spriteNode->xmlChildrenNode)
+        if (!XmlHaveChildContent(spriteNode))
             return true;
 
         const std::string event = XML::getProperty(
             spriteNode, "event", "");
         const int delay = XML::getProperty(
             spriteNode, "delay", 0);
-        const char *const filename = reinterpret_cast<const char*>(
-            spriteNode->xmlChildrenNode->content);
+        const char *const filename = XmlChildContent(spriteNode);
 
         if (event == "hit")
         {
@@ -209,11 +207,10 @@ bool BeingCommon::readObjectNodes(XmlNodePtrConst &spriteNode,
     }
     else if (xmlNameEqual(spriteNode, "particlefx"))
     {
-        if (!spriteNode->xmlChildrenNode)
+        if (!XmlHaveChildContent(spriteNode))
             return true;
 
-        display.particles.push_back(reinterpret_cast<const char*>(
-            spriteNode->xmlChildrenNode->content));
+        display.particles.push_back(XmlChildContent(spriteNode));
         return true;
     }
     return false;

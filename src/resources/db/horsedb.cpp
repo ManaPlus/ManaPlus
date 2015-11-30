@@ -42,8 +42,7 @@ namespace
     { \
         SpriteReference *const currentSprite = new SpriteReference; \
         currentSprite->sprite = paths.getStringValue("sprites").append( \
-            std::string(reinterpret_cast<const char*>( \
-            spriteNode->xmlChildrenNode->content))); \
+            std::string(XmlChildContent(spriteNode))); \
         currentSprite->variant = XML::getProperty( \
             spriteNode, "variant", 0); \
         currentInfo->name.push_back(currentSprite); \
@@ -142,7 +141,7 @@ void HorseDB::loadXmlFile(const std::string &fileName)
 
         for_each_xml_child_node(spriteNode, horseNode)
         {
-            if (!spriteNode->xmlChildrenNode)
+            if (!XmlHaveChildContent(spriteNode))
                 continue;
 
             if (xmlNameEqual(spriteNode, "sprite"))
@@ -162,7 +161,7 @@ static void loadDownSprites(XmlNodePtrConst parentNode,
 {
     for_each_xml_child_node(spriteNode, parentNode)
     {
-        if (!spriteNode->xmlChildrenNode)
+        if (!XmlHaveChildContent(spriteNode))
             continue;
 
         if (xmlNameEqual(spriteNode, "sprite"))
@@ -175,7 +174,7 @@ static void loadUpSprites(XmlNodePtrConst parentNode,
 {
     for_each_xml_child_node(spriteNode, parentNode)
     {
-        if (!spriteNode->xmlChildrenNode)
+        if (!XmlHaveChildContent(spriteNode))
             continue;
 
         if (xmlNameEqual(spriteNode, "sprite"))

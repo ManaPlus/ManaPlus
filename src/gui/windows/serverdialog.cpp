@@ -530,7 +530,7 @@ void ServerDialog::loadServers(const bool addNew)
                     server.port = defaultPortForServerType(server.type);
                 }
             }
-            else if (!subNode->xmlChildrenNode)
+            else if (!XmlHaveChildContent(subNode))
             {
                 continue;
             }
@@ -539,34 +539,28 @@ void ServerDialog::loadServers(const bool addNew)
                 && server.description.empty()) || (!lang.empty()
                 && xmlNameEqual(subNode, description2.c_str())))
             {
-                server.description = reinterpret_cast<const char*>(
-                    subNode->xmlChildrenNode->content);
+                server.description = XmlChildContent(subNode);
             }
             else if (xmlNameEqual(subNode, "registerurl"))
             {
-                server.registerUrl = reinterpret_cast<const char*>(
-                    subNode->xmlChildrenNode->content);
+                server.registerUrl = XmlChildContent(subNode);
             }
             else if (xmlNameEqual(subNode, "onlineListUrl"))
             {
-                server.onlineListUrl = reinterpret_cast<const char*>(
-                    subNode->xmlChildrenNode->content);
+                server.onlineListUrl = XmlChildContent(subNode);
             }
             else if (xmlNameEqual(subNode, "support"))
             {
-                server.supportUrl = reinterpret_cast<const char*>(
-                    subNode->xmlChildrenNode->content);
+                server.supportUrl = XmlChildContent(subNode);
             }
             else if (xmlNameEqual(subNode, "persistentIp"))
             {
-                std::string text = reinterpret_cast<const char*>(
-                    subNode->xmlChildrenNode->content);
+                std::string text = XmlChildContent(subNode);
                 server.persistentIp = (text == "1" || text == "true");
             }
             else if (xmlNameEqual(subNode, "updateMirror"))
             {
-                server.updateMirrors.push_back(reinterpret_cast<const char*>(
-                    subNode->xmlChildrenNode->content));
+                server.updateMirrors.push_back(XmlChildContent(subNode));
             }
         }
 

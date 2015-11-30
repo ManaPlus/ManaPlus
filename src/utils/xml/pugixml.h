@@ -20,55 +20,47 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef UTILS_XML_LIBXML_H
-#define UTILS_XML_LIBXML_H
+#ifndef UTILS_XML_PUGIXML_H
+#define UTILS_XML_PUGIXML_H
 
-#ifdef ENABLE_LIBXML
+#ifdef ENABLE_PUGIXML
 
 #include "enums/simpletypes/skiperror.h"
 #include "enums/simpletypes/useresman.h"
 
-#include <libxml/tree.h>
-#include <libxml/xmlwriter.h>
+#include <pugixml.hpp>
 
 #include <string>
 
 #include "localconsts.h"
 
-#define XmlNodePtr xmlNodePtr
-#define XmlNodePtrConst xmlNode *const
-#define XmlStrEqual(str1, str2) xmlStrEqual(str1, \
-    reinterpret_cast<const xmlChar*>(str2))
-#define xmlNameEqual(node, str) xmlStrEqual((node)->name, \
-    reinterpret_cast<const xmlChar*>(str))
-#define XmlTextWriterPtr xmlTextWriterPtr
-#define xmlTypeEqual(node, typ) ((node)->type == (typ))
-#define XmlHasProp(node, name) (xmlHasProp(node, \
-    reinterpret_cast<const xmlChar*>(name)) != nullptr)
-#define XmlGetProp(node, name) xmlGetProp(node, \
-    reinterpret_cast<const xmlChar*>(name))
-#define XmlTextWriterStartElement(writer, name) \
-    xmlTextWriterStartElement(writer, reinterpret_cast<const xmlChar*>(name))
-#define XmlTextWriterEndElement(writer) xmlTextWriterEndElement(writer)
-#define XmlTextWriterWriteAttribute(writer, name, content) \
-    xmlTextWriterWriteAttribute(writer, \
-    reinterpret_cast<const xmlChar*>(name), \
-    reinterpret_cast<const xmlChar*>(content))
-#define XmlNodeGetContent(node) xmlNodeGetContent(node)
-#define XmlNewTextWriterFilename(name, flags) \
-    xmlNewTextWriterFilename(name, flags)
-#define XmlTextWriterSetIndent(writer, flags) \
-    xmlTextWriterSetIndent(writer, flags)
-#define XmlTextWriterStartDocument(writer, p1, p2, p3) \
-    xmlTextWriterStartDocument(writer, p1, p2, p3)
-#define XmlTextWriterEndDocument(writer) xmlTextWriterEndDocument(writer)
-#define XmlFreeTextWriter(writer) xmlFreeTextWriter(writer)
-#define XmlHaveChildContent(node) ((node)->xmlChildrenNode != nullptr && \
-    (node)->xmlChildrenNode->content != nullptr)
-#define XmlChildContent(node) reinterpret_cast<const char*>(\
-    (node)->xmlChildrenNode->content)
-#define XmlFree(ptr) xmlFree(ptr)
-#define XmlNodeDefault nullptr
+#define XML_ELEMENT_NODE pugi::node_element
+
+#define XmlNodePtr pugi::xml_node
+#define XmlNodePtrConst pugi::xml_node 
+#define xmlNameEqual(node, str) !strcmp((node).name(), str)
+#define xmlTypeEqual(node, typ) ((node).type() == (typ))
+#define XmlHasProp(node, name) (!((node).attribute(name).empty()))
+#define XmlHaveChildContent(node) ((node).child_value() != nullptr && \
+    *(node).child_value())
+#define XmlChildContent(node) (node).child_value()
+#define xmlChar char
+#define XmlFree(ptr)
+#define XmlNodeDefault pugi::xml_node()
+
+// +++ need impliment get context 
+#define XmlNodeGetContent(node) (node).child_value()
+
+// +++ need impliment writing code
+#define XmlTextWriterPtr pugi::xml_writer*
+#define XmlTextWriterStartElement(writer, name)
+#define XmlTextWriterEndElement(writer)
+#define XmlTextWriterWriteAttribute(writer, name, content)
+#define XmlNewTextWriterFilename(name, flags) nullptr;
+#define XmlTextWriterSetIndent(writer, flags)
+#define XmlTextWriterStartDocument(writer, p1, p2, p3)
+#define XmlTextWriterEndDocument(writer)
+#define XmlFreeTextWriter(writer)
 
 /**
  * XML helper functions.
@@ -113,7 +105,7 @@ namespace XML
             XmlNodePtr rootNode() A_WARN_UNUSED;
 
             bool isLoaded() const
-            { return mDoc != nullptr; }
+            { return !mDoc.empty(); }
 
             bool isValid() const
             { return mIsValid; }
@@ -121,7 +113,9 @@ namespace XML
             static bool validateXml(const std::string &fileName);
 
         private:
-            xmlDocPtr mDoc;
+            pugi::xml_document mDoc;
+            pugi::xml_node mRoot;
+            char *mData;
             bool mIsValid;
     };
 
@@ -181,7 +175,7 @@ namespace XML
 }  // namespace XML
 
 #define for_each_xml_child_node(var, parent) \
-    for (XmlNodePtr var = parent->xmlChildrenNode; var; var = var->next)
+    for (pugi::xml_node var = parent.first_child(); var; var = var.next_sibling())
 
-#endif  // ENABLE_LIBXML
-#endif  // UTILS_XML_LIBXML_H
+#endif  // ENABLE_PUGIXML
+#endif  // UTILS_XML_PUGIXML_H

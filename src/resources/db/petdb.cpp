@@ -153,22 +153,20 @@ void PETDB::loadXmlFile(const std::string &fileName)
         SpriteDisplay display;
         for_each_xml_child_node(spriteNode, petNode)
         {
-            if (!spriteNode->xmlChildrenNode)
+            if (!XmlHaveChildContent(spriteNode))
                 continue;
 
             if (xmlNameEqual(spriteNode, "sprite"))
             {
                 SpriteReference *const currentSprite = new SpriteReference;
-                currentSprite->sprite = reinterpret_cast<const char*>(
-                    spriteNode->xmlChildrenNode->content);
+                currentSprite->sprite = XmlChildContent(spriteNode);
                 currentSprite->variant =
                     XML::getProperty(spriteNode, "variant", 0);
                 display.sprites.push_back(currentSprite);
             }
             else if (xmlNameEqual(spriteNode, "particlefx"))
             {
-                std::string particlefx = reinterpret_cast<const char*>(
-                    spriteNode->xmlChildrenNode->content);
+                std::string particlefx = XmlChildContent(spriteNode);
                 display.particles.push_back(particlefx);
             }
         }

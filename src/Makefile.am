@@ -475,8 +475,6 @@ SRC += events/actionevent.h \
 	      utils/xml.h \
 	      utils/xmlutils.cpp \
 	      utils/xmlutils.h \
-	      utils/xml/libxml.cpp \
-	      utils/xml/libxml.h \
 	      test/testlauncher.cpp \
 	      test/testlauncher.h \
 	      test/testmain.cpp \
@@ -691,6 +689,15 @@ SRC += events/actionevent.h \
 	      enums/input/inputgroup.h \
 	      input/inputactionmap.h \
 	      winver.h
+
+if ENABLE_PUGIXML
+SRC += utils/xml/pugixml.cpp \
+	      utils/xml/pugixml.h
+endif
+if ENABLE_LIBXML
+SRC += utils/xml/libxml.cpp \
+	      utils/xml/libxml.h
+endif
 
 dyecmd_SOURCES += ${SRC}
 manaplus_SOURCES += ${SRC}
@@ -1705,20 +1712,20 @@ check_PROGRAMS = manaplustests
 manaplustests_CXXFLAGS = ${manaplus_CXXFLAGS} \
 	      -DUNITTESTS
 manaplustests_SOURCES = ${manaplus_SOURCES} \
-	      resources/sprite/animatedsprite_unittest.cc \
 	      enums/enums_unittest.cc \
-	      gui/windowmanager_unittest.cc \
-	      gui/fonts/textchunklist_unittest.cc \
-	      gui/widgets/browserbox_unittest.cc \
-	      utils/files_unittest.cc \
-	      utils/mathutils_unittest.cc \
-	      utils/stringutils_unittest.cc \
 	      utils/xml_unittest.cc \
 	      utils/xmlutils_unittest.cc \
+	      utils/mathutils_unittest.cc \
+	      utils/stringutils_unittest.cc \
+	      utils/files_unittest.cc \
+	      resources/mstack_unittest.cc \
 	      utils/translation/poparser_unittest.cc \
+	      resources/sprite/animatedsprite_unittest.cc \
+	      gui/fonts/textchunklist_unittest.cc \
+	      gui/widgets/browserbox_unittest.cc \
 	      resources/dye/dye_unittest.cc \
 	      resources/dye/dyepalette_unittest.cc \
-	      resources/mstack_unittest.cc
+	      gui/windowmanager_unittest.cc
 endif
 
 EXTRA_DIST = CMakeLists.txt \

@@ -228,7 +228,7 @@ void QuestsWindow::loadQuest(const int var, const XmlNodePtr node)
         if (!xmlTypeEqual(dataNode, XML_ELEMENT_NODE))
             continue;
         const char *const data = reinterpret_cast<const char*>(
-            xmlNodeGetContent(dataNode));
+            XmlNodeGetContent(dataNode));
         if (!data)
             continue;
         std::string str = translator->getStr(data);
