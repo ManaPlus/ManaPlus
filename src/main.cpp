@@ -29,6 +29,9 @@
 #include "debug.h"
 
 #if !defined(UNITTESTS) && !defined(ANDROID)
+#if defined __native_client__
+extern "C"
+#endif
 int main(int argc, char *argv[])
 {
     return mainGui(argc, argv);
