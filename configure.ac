@@ -157,9 +157,14 @@ else
     AC_DEFINE(USE_INTERNALSDLGFX, 1, [Defines if ManaPlus should use internal sdlgfx2])
 fi
 AM_CONDITIONAL(USE_INTERNALSDLGFX, test x$with_internalsdlgfx = xyes)
+
+AC_CHECK_HEADERS([SDL.h], ,
+AC_MSG_ERROR([ *** SDL library found but cannot find headers (http://www.libsdl.org/)]))
 ])
 
-AC_CHECK_SDL()
+if test "x$naclbuild_enabled" == "xfalse"; then
+    AC_CHECK_SDL()
+fi
 
 # Search for *-config
 AC_PATH_PROG(PKG_CONFIG, pkg-config)
@@ -177,9 +182,6 @@ else
     withoud_pthread=no
 fi
 
-
-AC_CHECK_HEADERS([SDL.h], ,
-AC_MSG_ERROR([ *** SDL library found but cannot find headers (http://www.libsdl.org/)]))
 
 AC_CHECK_LIB([z], [inflate], ,
 AC_MSG_ERROR([ *** Unable to find zlib (http://www.gzip.org/zlib/)]))
@@ -404,6 +406,10 @@ AC_ARG_ENABLE(checkplugin,
 esac],[checkplugin_enabled=false])
 
 AM_CONDITIONAL(ENABLE_CHECKPLUGIN, test x$checkplugin_enabled = xtrue)
+
+if test "x$naclbuild_enabled" == "xtrue"; then
+    AC_CHECK_SDL()
+fi
 
 AC_CONFIG_FILES([
 manaplus.spec
