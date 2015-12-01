@@ -32,7 +32,7 @@
 #elif defined __APPLE__
 #define getFunction(name) nullptr
 #elif defined __native_client__
-#define getFunction(name) SDL_GL_GetProcAddress(name)
+#define getFunction(name) glGetProcAddressREGAL(name)
 #else
 #define getFunction(name) glXGetProcAddress(\
     reinterpret_cast<const GLubyte*>(name))
