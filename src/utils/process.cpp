@@ -268,6 +268,16 @@ bool openBrowser(std::string url)
 {
     return execFile("/usr/bin/xdg-open", "/usr/bin/xdg-open", url, "");
 }
+#elif defined __native_client__
+#include <ppapi_simple/ps.h>
+#include <ppapi/cpp/instance.h>
+#include <ppapi/cpp/var.h>
+bool openBrowser(std::string url)
+{
+    pp::Var msgVar = pp::Var(std::string("open-browser: ").append(url));
+    pp::Instance(PSGetInstanceId()).PostMessage(msgVar);
+    return true;
+}
 #else
 bool openBrowser(std::string url)
 {
