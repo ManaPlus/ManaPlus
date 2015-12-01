@@ -45,6 +45,9 @@
 #define SPECIALLOG(x) __android_log_print(ANDROID_LOG_INFO, "manaplus", x);
 #define DSPECIALLOG(x) __android_log_print(ANDROID_LOG_VERBOSE, \
     "manaplus", x);
+#elif defined __native_client__ && defined(NACL_LOG)
+#define SPECIALLOG(x) std::cerr << x;
+#define DSPECIALLOG(x) std::cerr << x;
 #else
 #define SPECIALLOG(x)
 #define DSPECIALLOG(x)
