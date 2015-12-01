@@ -764,11 +764,19 @@ std::string GraphicsManager::getGLString(const int num)
 void GraphicsManager::setGLVersion()
 {
     mGlVersionString = getGLString(GL_VERSION);
-    sscanf(mGlVersionString.c_str(), "%5d.%5d", &mMajor, &mMinor);
+    std::string version = mGlVersionString;
+    cutFirst(version, "OpenGL ES ");
+    sscanf(version.c_str(), "%5d.%5d", &mMajor, &mMinor);
+    logger->log("Detected gl version: %d.%d", mMajor, mMinor);
     mGlVendor = getGLString(GL_VENDOR);
     mGlRenderer = getGLString(GL_RENDERER);
     mGlShaderVersionString = getGLString(GL_SHADING_LANGUAGE_VERSION);
-    sscanf(mGlShaderVersionString.c_str(), "%5d.%5d", &mSLMajor, &mSLMinor);
+    version = mGlShaderVersionString;
+    cutFirst(version, "OpenGL ES GLSL ES ");
+    cutFirst(version, "OpenGL ES GLSL ");
+    cutFirst(version, "OpenGL ES ");
+    sscanf(version.c_str(), "%5d.%5d", &mSLMajor, &mSLMinor);
+    logger->log("Detected glsl version: %d.%d", mSLMajor, mSLMinor);
 }
 
 void GraphicsManager::logVersion() const
@@ -1227,6 +1235,12 @@ void GraphicsManager::updateLimits()
     logger->log("GL_MAX_ELEMENTS_INDICES: %d", value);
     if (value < mMaxVertices)
         mMaxVertices = value;
+    if (!mMaxVertices)
+    {
+        logger->log("Got 0 max amount of vertices or indicies. "
+            "Overriding to 500");
+        mMaxVertices = 500;
+    }
 
     value = 0;
     glGetIntegerv(GL_MAX_RENDERBUFFER_SIZE, &value);
