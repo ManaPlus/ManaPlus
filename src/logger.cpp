@@ -42,12 +42,12 @@
 
 #if defined(__ANDROID__) && defined(ANDROID_LOG)
 #include <android/log.h>
-#define LOG_ANDROID(x) __android_log_print(ANDROID_LOG_INFO, "manaplus", x);
-#define DLOG_ANDROID(x) __android_log_print(ANDROID_LOG_VERBOSE, \
+#define SPECIALLOG(x) __android_log_print(ANDROID_LOG_INFO, "manaplus", x);
+#define DSPECIALLOG(x) __android_log_print(ANDROID_LOG_VERBOSE, \
     "manaplus", x);
 #else
-#define LOG_ANDROID(x)
-#define DLOG_ANDROID(x)
+#define SPECIALLOG(x)
+#define DSPECIALLOG(x)
 #endif
 
 #include "debug.h"
@@ -119,7 +119,7 @@ void Logger::dlog(const std::string &str)
     // Print the log entry
     std::stringstream timeStr;
     DATESTREAM
-    DLOG_ANDROID(str.c_str())
+    DSPECIALLOG(str.c_str())
 
     if (mLogFile.is_open())
         mLogFile << timeStr.str() << str << std::endl;
@@ -142,7 +142,7 @@ void Logger::dlog2(const std::string &str,
     // Print the log entry
     std::stringstream timeStr;
     DATESTREAM
-    DLOG_ANDROID(str.c_str())
+    DSPECIALLOG(str.c_str())
 
     if (mLogFile.is_open())
     {
@@ -198,7 +198,7 @@ void Logger::log1(const char *const buf)
     // Print the log entry
     std::stringstream timeStr;
     DATESTREAM
-    LOG_ANDROID(buf)
+    SPECIALLOG(buf)
 
     if (mLogFile.is_open())
         mLogFile << timeStr.str() << buf << std::endl;
@@ -232,7 +232,7 @@ void Logger::log(const char *const log_text, ...)
     // Print the log entry
     std::stringstream timeStr;
     DATESTREAM
-    LOG_ANDROID(buf)
+    SPECIALLOG(buf)
 
     if (mLogFile.is_open())
         mLogFile << timeStr.str() << buf << std::endl;
@@ -271,7 +271,7 @@ void Logger::log_r(const char *const log_text, ...)
     // Print the log entry
     std::stringstream timeStr;
     DATESTREAM
-    LOG_ANDROID(buf)
+    SPECIALLOG(buf)
 
     if (mLogFile.is_open())
     {
