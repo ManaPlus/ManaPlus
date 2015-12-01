@@ -30,7 +30,9 @@
 #include <GLES/glext.h>
 #else
 #include <SDL_opengl.h>
+#ifndef __native_client__
 #include <GL/glext.h>
+#endif
 #endif
 
 struct FBOInfo final

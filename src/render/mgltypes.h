@@ -36,7 +36,11 @@
 #define GL_GLEXT_PROTOTYPES 1
 #endif
 #include <SDL_opengl.h>
+#ifdef __native_client__
+#include <GL/Regal.h>
+#else
 #include <GL/glext.h>
+#endif
 #endif
 
 #if defined(__GXX_EXPERIMENTAL_CXX0X__)

@@ -30,6 +30,10 @@
 #include <sys/time.h>
 #endif
 
+#ifdef __native_client__
+#include <sys/time.h>
+#endif
+
 #include "localconsts.h"
 
 class TestLauncher final

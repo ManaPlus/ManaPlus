@@ -254,10 +254,11 @@ if test "x$with_opengl" == "xno"; then
 else
     with_opengl=yes
     if test "x$applebuild_enabled" == "xfalse"; then
-
         if test "x$androidbuild_enabled" == "xfalse"; then
-            AC_CHECK_LIB([GL], [glBegin], ,
-            AC_MSG_ERROR([ *** Unable to find OpenGL library]))
+            if test "x$naclbuild_enabled" == "xfalse"; then
+                AC_CHECK_LIB([GL], [glBegin], ,
+                AC_MSG_ERROR([ *** Unable to find OpenGL library]))
+            fi
         else
             LDFLAGS="$LDFLAGS -lGLESv1_CM -lEGL"
         fi

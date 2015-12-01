@@ -31,6 +31,8 @@
 #ifndef USE_SDL2
 #include <SDL_android.h>
 #endif  // USE_SDL2
+#elif defined(__native_client__)
+#include <GL/Regal.h>
 #else  // ANDROID
 #include <GL/glx.h>
 #endif  // ANDROID

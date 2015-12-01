@@ -39,7 +39,9 @@
 #define GL_GLEXT_PROTOTYPES 1
 #endif
 #include <SDL_opengl.h>
+#ifndef __native_client__
 #include <GL/glext.h>
+#endif
 #endif
 
 class OpenGLGraphicsVertexes;

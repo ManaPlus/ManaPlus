@@ -179,7 +179,7 @@
 // #define ANDROID_LOG 1
 
 // nacl logging
-// #define NACL_LOG 1
+#define NACL_LOG 1
 
 // profiler
 // #define USE_PROFILER 1
