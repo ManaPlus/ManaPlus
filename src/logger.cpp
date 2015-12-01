@@ -81,6 +81,9 @@ Logger::Logger() :
     mDebugLog(false),
     mReportUnimplimented(false)
 {
+#if defined __native_client__ && defined(NACL_LOG)
+    std::cout.setf(std::ios_base::unitbuf);
+#endif
 }
 
 Logger::~Logger()
