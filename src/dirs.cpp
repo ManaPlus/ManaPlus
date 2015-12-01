@@ -184,11 +184,6 @@ void Dirs::extractDataDir()
     Files::extractLocale();
 #endif
 #endif
-
-#if defined __native_client__
-    const std::string dirName = _nacl_dir.append("/data");
-    Files::extractZip("/http/data.zip", "data", dirName);
-#endif
 }
 
 void Dirs::mountDataDir()
@@ -231,7 +226,7 @@ void Dirs::mountDataDir()
 #endif
 
 #if defined __native_client__
-    resourceManager->addToSearchPath(_nacl_dir.append("/data"), Append_false);
+    resourceManager->addToSearchPath("/http/data.zip", Append_false);
 #endif
 
     // Add branding/data to PhysFS search path

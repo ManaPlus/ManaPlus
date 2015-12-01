@@ -258,6 +258,11 @@ std::string Files::getPath(const std::string &file)
     if (tmp)
     {
         path = std::string(tmp).append(dirSeparator).append(file);
+#if defined __native_client__
+        std::string dataZip = "/http/data.zip/";
+        if (path.substr(0, dataZip.length()) == dataZip)
+            path = path.replace(0, dataZip.length(), "/http/data/");
+#endif
     }
     else
     {
