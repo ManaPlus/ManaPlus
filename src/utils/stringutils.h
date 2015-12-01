@@ -222,8 +222,14 @@ bool findFirst(const std::string &restrict str1,
 bool findCutLast(std::string &restrict str1,
                  const std::string &restrict str2) A_WARN_UNUSED;
 
+void cutLast(std::string &restrict str1,
+             const std::string &restrict str2);
+
 bool findCutFirst(std::string &restrict str1,
                   const std::string &restrict str2);
+
+void cutFirst(std::string &restrict str1,
+              const std::string &restrict str2);
 
 std::string &removeProtocol(std::string &url);
 

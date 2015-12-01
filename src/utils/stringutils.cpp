@@ -638,6 +638,16 @@ bool findCutLast(std::string &restrict str1, const std::string &restrict str2)
     return false;
 }
 
+void cutLast(std::string &restrict str1, const std::string &restrict str2)
+{
+    const size_t s1 = str1.size();
+    const size_t s2 = str2.size();
+    if (s1 < s2)
+        return;
+    if (str1.substr(s1 - s2) == str2)
+        str1 = str1.substr(0, s1 - s2);
+}
+
 bool findCutFirst(std::string &restrict str1, const std::string &restrict str2)
 {
     const size_t s1 = str1.size();
@@ -650,6 +660,16 @@ bool findCutFirst(std::string &restrict str1, const std::string &restrict str2)
         return true;
     }
     return false;
+}
+
+void cutFirst(std::string &restrict str1, const std::string &restrict str2)
+{
+    const size_t s1 = str1.size();
+    const size_t s2 = str2.size();
+    if (s1 < s2)
+        return;
+    if (str1.substr(0, s2) == str2)
+        str1 = str1.substr(s2);
 }
 
 std::string &removeProtocol(std::string &url)
