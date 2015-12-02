@@ -300,6 +300,7 @@ Section "Core files (required)" SecCore
   File "${SRCDIR}\data\themes\blackwood\*.png"
   File "${SRCDIR}\data\themes\blackwood\*.xml"
   SetOutPath "$INSTDIR\data\themes\mana"
+  File "${SRCDIR}\data\themes\mana\*.png"
   File "${SRCDIR}\data\themes\mana\*.xml"
   SetOutPath "$INSTDIR\data\themes\enchilado"
   File "${SRCDIR}\data\themes\enchilado\*.png"
