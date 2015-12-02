@@ -38,7 +38,7 @@
 
 InsertCardDialog::InsertCardDialog(const int itemIndex,
                                    const Item *const item) :
-    SellDialog(false, false),
+    SellDialog(IsSell_false, false),
     mItemIndex(itemIndex)
 {
     // TRANSLATORS: insert card dialog name

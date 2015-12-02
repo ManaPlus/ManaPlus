@@ -45,7 +45,7 @@
 #include "debug.h"
 
 NpcSellDialog::NpcSellDialog(const BeingId npcId) :
-    SellDialog(true,
+    SellDialog(IsSell_true,
         serverFeatures ? serverFeatures->haveAdvancedBuySell() : false),
     mNpcId(npcId)
 {

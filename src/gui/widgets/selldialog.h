@@ -23,6 +23,7 @@
 #ifndef GUI_WIDGETS_SELLDIALOG_H
 #define GUI_WIDGETS_SELLDIALOG_H
 
+#include "enums/simpletypes/issell.h"
 #include "enums/simpletypes/itemcolor.h"
 
 #include "gui/widgets/window.h"
@@ -52,7 +53,7 @@ class SellDialog notfinal : public Window,
         /**
          * Constructor.
          */
-        SellDialog(const bool isSell,
+        SellDialog(const IsSell isSell,
                    const bool advanced);
 
         A_DELETE_COPY(SellDialog)
@@ -144,7 +145,7 @@ class SellDialog notfinal : public Window,
         int mMaxItems;
         int mAmountItems;
 
-        bool mIsSell;
+        IsSell mIsSell;
         bool mAdvanced;
 };
 

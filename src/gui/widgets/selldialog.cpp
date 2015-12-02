@@ -47,7 +47,7 @@
 
 SellDialog::DialogList SellDialog::instances;
 
-SellDialog::SellDialog(const bool isSell,
+SellDialog::SellDialog(const IsSell isSell,
                        const bool advanced) :
     // TRANSLATORS: sell dialog name
     Window(_("Sell"), Modal_false, nullptr, "sell.xml"),
@@ -122,7 +122,7 @@ void SellDialog::postInit()
     ContainerPlacer placer;
     placer = getPlacer(0, 0);
 
-    if (mIsSell)
+    if (mIsSell == IsSell_true)
     {
         // TRANSLATORS: sell dialog button
         mIncreaseButton = new Button(this, _("+"), "inc", this);
