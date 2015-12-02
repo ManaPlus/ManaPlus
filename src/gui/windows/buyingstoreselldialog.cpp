@@ -38,7 +38,7 @@
 
 BuyingStoreSellDialog::BuyingStoreSellDialog(const BeingId accountId,
                                              const int storeId) :
-    SellDialog(IsSell_true, false),
+    SellDialog(IsSell_true, Advanced_false),
     mAccountId(accountId),
     mStoreId(storeId)
 {

@@ -48,7 +48,7 @@
 SellDialog::DialogList SellDialog::instances;
 
 SellDialog::SellDialog(const IsSell isSell,
-                       const bool advanced) :
+                       const Advanced advanced) :
     // TRANSLATORS: sell dialog name
     Window(_("Sell"), Modal_false, nullptr, "sell.xml"),
     ActionListener(),
@@ -89,7 +89,7 @@ void SellDialog::postInit()
     // Create a ShopItems instance, that is aware of duplicate entries.
     mShopItems = new ShopItems(true);
 
-    if (mAdvanced)
+    if (mAdvanced == Advanced_true)
         mShopItems->setMergeDuplicates(false);
 
     mShopItemList = CREATEWIDGETR(ShopListBox,
@@ -103,7 +103,7 @@ void SellDialog::postInit()
 
     mSellButton = new Button(this,
         // TRANSLATORS: sell dialog button
-        mAdvanced ? _("Add") : _("Sell"),
+        mAdvanced == Advanced_true ? _("Add") : _("Sell"),
         "presell",
         this);
     // TRANSLATORS: sell dialog button
@@ -138,7 +138,7 @@ void SellDialog::postInit()
         // TRANSLATORS: sell dialog label
         mMoneyLabel = new Label(this, strprintf(_("Price: %s / Total: %s"),
             "", ""));
-        if (mAdvanced)
+        if (mAdvanced == Advanced_true)
         {
             // TRANSLATORS: sell dialog button
             mConfirmButton = new Button(this, _("Sell"), "confirm", this);
@@ -160,7 +160,7 @@ void SellDialog::postInit()
         placer(5, 5, mQuantityLabel, 2);
         placer(7, 5, mAddMaxButton);
         placer(0, 6, mMoneyLabel, 8);
-        if (mAdvanced)
+        if (mAdvanced == Advanced_true)
         {
             placer(5, 7, mSellButton);
             placer(6, 7, mConfirmButton);

@@ -35,7 +35,7 @@
 #include "debug.h"
 
 ShopSellDialog::ShopSellDialog(const std::string &nick) :
-    SellDialog(IsSell_true, false),
+    SellDialog(IsSell_true, Advanced_false),
     mNick(nick)
 {
 }

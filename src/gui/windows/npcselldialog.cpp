@@ -46,7 +46,8 @@
 
 NpcSellDialog::NpcSellDialog(const BeingId npcId) :
     SellDialog(IsSell_true,
-        serverFeatures ? serverFeatures->haveAdvancedBuySell() : false),
+        (serverFeatures && serverFeatures->haveAdvancedBuySell()) ?
+        Advanced_true : Advanced_false),
     mNpcId(npcId)
 {
 }
@@ -81,7 +82,7 @@ void NpcSellDialog::sellAction(const ActionEvent &event)
         }
     }
 
-    if (mAdvanced)
+    if (mAdvanced == Advanced_true)
         sellManyItems(event.getId());
     else
         sellOneItem();
