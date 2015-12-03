@@ -470,6 +470,24 @@ static bool runxsel(std::string& text, const char *p1, const char *p2)
     return true;
 }
 
+#elif defined __native_client__
+
+#include "utils/process.h"
+
+bool retrieveBuffer(std::string& text, size_t& pos)
+{
+    NaclMessageHandle *handle = naclRegisterMessageHandler("clipboard-paste");
+    naclPostMessage("clipboard-paste", "");
+    std::string response = naclWaitForMessage(handle);
+    text.insert(pos, response);
+    return true;
+}
+
+bool sendBuffer(std::string& text)
+{
+    naclPostMessage("clipboard-copy", text);
+    return true;
+}
 #else
 bool retrieveBuffer(std::string&, size_t&)
 {

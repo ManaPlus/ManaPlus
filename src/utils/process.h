@@ -34,4 +34,16 @@ bool openBrowser(std::string url);
 
 void setPriority(const bool big);
 
+#ifdef __native_client__
+
+typedef struct _NaclMessageHandle NaclMessageHandle;
+
+void naclPostMessage(const std::string &type, const std::string &message);
+
+NaclMessageHandle *naclRegisterMessageHandler(const std::string &type);
+void naclUnregisterMessageHandler(NaclMessageHandle *handle);
+std::string naclWaitForMessage(NaclMessageHandle *handle);
+
+#endif
+
 #endif  // UTILS_PROCESS_H
