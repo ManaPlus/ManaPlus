@@ -306,7 +306,8 @@ void setPriority(const bool big A_UNUSED)
 #include <mutex>
 #include <condition_variable>
 
-struct _NaclMessageHandle {
+struct _NaclMessageHandle
+{
     bool handled;
     std::string type;
     std::string message;
@@ -342,13 +343,17 @@ NaclMessageHandle *naclRegisterMessageHandler(const std::string &type)
     handle->handled = false;
     handle->type = type;
 
-    PSEventRegisterMessageHandler(type.c_str(), naclMessageHandlerFunc, (void *)handle);
+    PSEventRegisterMessageHandler(type.c_str(),
+        naclMessageHandlerFunc,
+        (void *)handle);
     return handle;
 }
 
 void naclUnregisterMessageHandler(NaclMessageHandle *handle)
 {
-    PSEventRegisterMessageHandler(handle->type.c_str(), NULL, NULL);
+    PSEventRegisterMessageHandler(handle->type.c_str(),
+        nullptr,
+        nullptr);
     delete handle;
 }
 
