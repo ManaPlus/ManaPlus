@@ -306,7 +306,7 @@ void setPriority(const bool big A_UNUSED)
 #include <mutex>
 #include <condition_variable>
 
-struct _NaclMessageHandle
+struct _NaclMessageHandle final
 {
     bool handled;
     std::string type;
