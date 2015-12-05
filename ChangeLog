@@ -1,3 +1,13 @@
+2015-12-05 New release 1.5.12.5
+fix: allow kill infinite life particles if parent was killed.
+fix: missing selection images in mana theme in windows.
+add: skill level selection for invoking skills.
+add: chat command for invoke skills.
+add: teleport skills location selection (hercules).
+add: spirit balls (hercules).
+add: basic OpenGL support in nacl.
+add: open urls and clipboard support in nacl (vasily_makarov).
+
 2015-11-21 New release 1.5.11.21
 fix: crash with enabled missing status effect.
 fix: scrollbars drawing in jewelry and golden delicious themes.
