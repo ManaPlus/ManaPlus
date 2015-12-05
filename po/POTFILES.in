@@ -32,6 +32,7 @@ src/gui/popups/beingpopup.cpp
 src/gui/popups/createpartypopup.h
 src/gui/popups/itempopup.cpp
 src/gui/popups/popupmenu.cpp
+src/gui/popups/skillpopup.cpp
 src/gui/sdlinput.cpp
 src/gui/sdlinput.h
 src/gui/setupinputpages.cpp
@@ -120,6 +121,7 @@ src/gui/windows/socialwindow.cpp
 src/gui/windows/statuswindow.cpp
 src/gui/windows/textcommandeditor.cpp
 src/gui/windows/textdialog.cpp
+src/gui/windows/textselectdialog.cpp
 src/gui/windows/tradewindow.cpp
 src/gui/windows/unregisterdialog.cpp
 src/gui/windows/updaterwindow.cpp
