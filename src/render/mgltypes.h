@@ -85,55 +85,60 @@ typedef void (APIENTRY *glPopGroupMarker_t) (void);
 typedef void (APIENTRY *glGenVertexArrays_t) (GLsizei n, GLuint *arrays);
 typedef void (APIENTRY *glBindVertexArray_t) (GLuint array);
 typedef void (APIENTRY *glDeleteVertexArrays_t) (GLsizei n, GLuint *arrays);
-typedef void (APIENTRY *glVertexAttribPointer_t) (GLuint index, GLint size,
-    GLenum type, GLboolean normalized, GLsizei stride, const GLvoid *pointer);
-typedef void (APIENTRY *glEnableVertexAttribArray_t) (GLuint index);
 typedef void (APIENTRY *glDisableVertexAttribArray_t) (GLuint index);
+typedef void (APIENTRY *glDeleteShader_t) (GLenum shader);
+typedef void (APIENTRY *glGetShaderInfoLog_t) (GLuint shader,
+    GLsizei maxLength, GLsizei *length, GLchar *infoLog);
+typedef void (APIENTRY *glGetShaderSource_t) (GLuint shader,
+    GLsizei bufSize, GLsizei *length, GLchar *source);
+typedef void (APIENTRY *glDetachShader_t) (GLuint program, GLuint shader);
+typedef void (APIENTRY *glGetAttachedShaders_t) (GLuint program,
+    GLsizei maxCount, GLsizei *count, GLuint *shaders);
+typedef void (APIENTRY *glGetActiveUniform_t) (GLuint program, GLuint index,
+    GLsizei bufSize, GLsizei *length, GLint *size, GLenum *type, GLchar *name);
+typedef GLint (APIENTRY *glBindFragDataLocation_t) (GLuint program,
+    GLuint colorNumber, const char *name);
+#ifndef __native_client__
+typedef void (APIENTRY *glDeleteProgram_t) (GLuint program);
+typedef GLuint (APIENTRY *glCreateProgram_t) (void);
+typedef void (APIENTRY *glGetProgramiv_t) (GLuint program,
+    GLenum pname, GLint *params);
+typedef void (APIENTRY *glLinkProgram_t) (GLuint program);
+typedef void (APIENTRY *glAttachShader_t) (GLuint program, GLuint shader);
+typedef void (APIENTRY *glGetShaderiv_t) (GLuint shader,
+    GLenum pname, GLint *params);
+typedef void (APIENTRY *glCompileShader_t) (GLuint shader);
+typedef void (APIENTRY *glShaderSource_t) (GLuint shader,
+    GLsizei count, const GLchar **string, const GLint *length);
+typedef GLuint (APIENTRY *glCreateShader_t) (GLenum shaderType);
+typedef GLint (APIENTRY *glGetUniformLocation_t) (GLuint program,
+    const GLchar *name);
 typedef void (APIENTRY *glGenBuffers_t) (GLsizei n, GLuint *buffers);
 typedef void (APIENTRY *glDeleteBuffers_t) (GLsizei n, GLuint *buffers);
 typedef void (APIENTRY *glBindBuffer_t) (GLenum target, GLuint buffer);
 typedef void (APIENTRY *glBufferData_t) (GLenum target, GLsizeiptr size,
     const GLvoid *data, GLenum usage);
-typedef GLuint (APIENTRY *glCreateShader_t) (GLenum shaderType);
-typedef void (APIENTRY *glDeleteShader_t) (GLenum shader);
-typedef void (APIENTRY *glGetShaderiv_t) (GLuint shader,
-    GLenum pname, GLint *params);
-typedef void (APIENTRY *glGetShaderInfoLog_t) (GLuint shader,
-    GLsizei maxLength, GLsizei *length, GLchar *infoLog);
-typedef void (APIENTRY *glGetShaderSource_t) (GLuint shader,
-    GLsizei bufSize, GLsizei *length, GLchar *source);
-typedef void (APIENTRY *glShaderSource_t) (GLuint shader,
-    GLsizei count, const GLchar **string, const GLint *length);
-typedef void (APIENTRY *glCompileShader_t) (GLuint shader);
-typedef void (APIENTRY *glLinkProgram_t) (GLuint program);
-typedef void (APIENTRY *glDeleteProgram_t) (GLuint program);
-typedef GLuint (APIENTRY *glCreateProgram_t) (void);
-typedef void (APIENTRY *glAttachShader_t) (GLuint program, GLuint shader);
-typedef void (APIENTRY *glDetachShader_t) (GLuint program, GLuint shader);
-typedef void (APIENTRY *glGetAttachedShaders_t) (GLuint program,
-    GLsizei maxCount, GLsizei *count, GLuint *shaders);
-typedef GLint (APIENTRY *glGetUniformLocation_t) (GLuint program,
-    const GLchar *name);
-typedef void (APIENTRY *glGetActiveUniform_t) (GLuint program, GLuint index,
-    GLsizei bufSize, GLsizei *length, GLint *size, GLenum *type, GLchar *name);
-typedef void (APIENTRY *glGetProgramiv_t) (GLuint program,
-    GLenum pname, GLint *params);
-typedef GLint (APIENTRY *glBindFragDataLocation_t) (GLuint program,
-    GLuint colorNumber, const char *name);
+typedef void (APIENTRY *glEnableVertexAttribArray_t) (GLuint index);
+typedef void (APIENTRY *glVertexAttribPointer_t) (GLuint index, GLint size,
+    GLenum type, GLboolean normalized, GLsizei stride, const GLvoid *pointer);
 typedef void (APIENTRY *glUseProgram_t) (GLuint program);
-typedef void (APIENTRY *glValidateProgram_t) (GLuint program);
-typedef GLint (APIENTRY *glGetAttribLocation_t) (GLuint program,
-    const GLchar *name);
 typedef void (APIENTRY *glUniform1f_t) (GLint location, GLfloat v0);
 typedef void (APIENTRY *glUniform2f_t) (GLint location,
     GLfloat v0, GLfloat v1);
-typedef void (APIENTRY *glUniform3f_t) (GLint location,
-    GLfloat v0, GLfloat v1, GLfloat v2);
 typedef void (APIENTRY *glUniform4f_t) (GLint location,
     GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3);
-typedef GLenum (APIENTRY *glCheckFramebufferStatus_t) (GLenum target);
+typedef void (APIENTRY *glValidateProgram_t) (GLuint program);
 typedef void (APIENTRY *glGetProgramInfoLog_t) (GLuint program,
     GLsizei maxLength, GLsizei *length, GLchar *infoLog);
+typedef void (APIENTRY *glBindAttribLocation_t) (GLuint program,
+    GLuint index, const GLchar *name);
+typedef void (APIENTRY *glActiveTexture_t) (GLenum texture);
+#endif
+typedef GLint (APIENTRY *glGetAttribLocation_t) (GLuint program,
+    const GLchar *name);
+typedef void (APIENTRY *glUniform3f_t) (GLint location,
+    GLfloat v0, GLfloat v1, GLfloat v2);
+typedef GLenum (APIENTRY *glCheckFramebufferStatus_t) (GLenum target);
 typedef void (APIENTRY *glProgramUniform1f_t) (GLuint program,
     GLint location, GLfloat v0);
 typedef void (APIENTRY *glProgramUniform2f_t) (GLuint program,
@@ -185,9 +190,6 @@ typedef void (APIENTRY *glClearTexImage_t) (GLuint texture, GLint level,
 typedef void (APIENTRY *glClearTexSubImage_t) (GLuint texture, GLint level,
     GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height,
     GLsizei depth, GLenum format, GLenum type, const void * data);
-typedef void (APIENTRY *glBindAttribLocation_t) (GLuint program,
-    GLuint index, const GLchar *name);
-typedef void (APIENTRY *glActiveTexture_t) (GLenum texture);
 
 // callback
 typedef void (APIENTRY *GLDEBUGPROC_t) (GLenum source, GLenum type, GLuint id,

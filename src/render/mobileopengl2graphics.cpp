@@ -30,6 +30,9 @@
 #include "logger.h"
 
 #include "render/mgl.h"
+#ifdef __native_client__
+#include "render/naclglfunctions.h"
+#endif
 
 #include "render/shaders/shaderprogram.h"
 #include "render/shaders/shadersmanager.h"

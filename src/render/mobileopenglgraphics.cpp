@@ -30,6 +30,9 @@
 #include "logger.h"
 
 #include "render/mgl.h"
+#ifdef __native_client__
+#include "render/naclglfunctions.h"
+#endif
 
 #include "resources/image.h"
 #include "resources/imagerect.h"
@@ -866,6 +869,7 @@ void MobileOpenGLGraphics::calcWindow(ImageCollection *const vertCol,
     }
     calcImageRect(vert, x, y, w, h, imgRect);
 }
+
 
 void MobileOpenGLGraphics::updateScreen()
 {

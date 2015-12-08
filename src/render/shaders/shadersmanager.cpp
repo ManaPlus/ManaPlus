@@ -26,6 +26,9 @@
 #include "logger.h"
 
 #include "render/mgl.h"
+#ifdef __native_client__
+#include "render/naclglfunctions.h"
+#endif
 
 #include "render/shaders/shader.h"
 #include "render/shaders/shaderprogram.h"

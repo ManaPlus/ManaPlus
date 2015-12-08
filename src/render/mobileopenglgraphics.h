@@ -55,6 +55,8 @@ class MobileOpenGLGraphics final : public Graphics
 
         ~MobileOpenGLGraphics();
 
+        void postInit() override final;
+
         inline void drawTriangleArrayfs(const GLshort *const shortVertArray,
                                         const GLfloat *const floatTexArray,
                                         const int size);
@@ -64,8 +66,6 @@ class MobileOpenGLGraphics final : public Graphics
         inline void drawTriangleArrayfsCached(const int size);
 
         inline void drawLineArrays(const int size);
-
-        void postInit() override final;
 
         #include "render/graphicsdef.hpp"
 

@@ -18,37 +18,17 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifdef USE_OPENGL
+#ifndef RENDER_NACLGLES_H
+#define RENDER_NACLGLES_H
 
-#include "render/shaders/shaderprogram.h"
+#if defined(__native_client__) && defined(USE_OPENGL)
 
-#include "render/mgl.h"
-#ifdef __native_client__
-#include "render/naclglfunctions.h"
-#endif
+#include <ppapi/c/ppb_opengles2.h>
 
-#include "render/shaders/shader.h"
-
-#include "debug.h"
-
-ShaderProgram::ShaderProgram(const unsigned int id,
-                             Shader *const vertex,
-                             Shader *const fragment) :
-    Resource(),
-    mProgramId(id),
-    mVertex(vertex),
-    mFragment(fragment)
+namespace NaclGles
 {
-}
+    void initGles();
+}  // namespace NaclGles
 
-ShaderProgram::~ShaderProgram()
-{
-    if (mProgramId)
-        mglDeleteProgram(mProgramId);
-    if (mVertex)
-        mVertex->decRef();
-    if (mFragment)
-        mFragment->decRef();
-}
-
-#endif  // USE_OPENGL
+#endif  // defined(__native_client__) && defined(USE_OPENGL)
+#endif  // RENDER_NACLGLES_H

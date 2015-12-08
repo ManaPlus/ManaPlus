@@ -33,6 +33,7 @@
 #endif  // USE_SDL2
 #elif defined(__native_client__)
 #include <GL/Regal.h>
+#include "render/naclgles.h"
 #else  // ANDROID
 #include <GL/glx.h>
 #endif  // ANDROID
@@ -893,6 +894,10 @@ void GraphicsManager::deleteFBO(FBOInfo *const fbo)
 
 void GraphicsManager::initOpenGLFunctions()
 {
+#ifdef __native_client__
+    NaclGles::initGles();
+    emulateFunction(glTextureSubImage2D);
+#else
     const bool is10 = checkGLVersion(1, 0);
     const bool is11 = checkGLVersion(1, 1);
     const bool is12 = checkGLVersion(1, 2);
@@ -1262,6 +1267,7 @@ void GraphicsManager::initOpenGLFunctions()
 
 #ifdef WIN32
     assignFunctionARB(wglGetExtensionsString);
+#endif
 #endif
 }
 

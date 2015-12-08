@@ -1,6 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2014-2015  The ManaPlus Developers
+ *  Copyright (C) 2015  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -18,37 +18,32 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifdef USE_OPENGL
+#if defined(__native_client__) && defined(USE_OPENGL)
 
-#include "render/shaders/shaderprogram.h"
+#include "render/naclgles.h"
 
-#include "render/mgl.h"
-#ifdef __native_client__
-#include "render/naclglfunctions.h"
-#endif
+#include "logger.h"
 
-#include "render/shaders/shader.h"
+#include "render/mglfunctions.h"
+
+#include <ppapi_simple/ps.h>
+
+#include <ppapi/c/ppb_opengles2.h>
+
+#include <ppapi/gles2/gl2ext_ppapi.h>
 
 #include "debug.h"
 
-ShaderProgram::ShaderProgram(const unsigned int id,
-                             Shader *const vertex,
-                             Shader *const fragment) :
-    Resource(),
-    mProgramId(id),
-    mVertex(vertex),
-    mFragment(fragment)
+const struct PPB_OpenGLES2* gles2Interface = nullptr;
+PP_Resource gles2Context = nullptr;
+
+void NaclGles::initGles()
 {
+    gles2Interface = static_cast<const PPB_OpenGLES2*>(
+        PSGetInterface(PPB_OPENGLES2_INTERFACE));
+    gles2Context = glGetCurrentContextPPAPI();
+
+    logger->log("InitGles: %p, %d", gles2Interface, gles2Context);
 }
 
-ShaderProgram::~ShaderProgram()
-{
-    if (mProgramId)
-        mglDeleteProgram(mProgramId);
-    if (mVertex)
-        mVertex->decRef();
-    if (mFragment)
-        mFragment->decRef();
-}
-
-#endif  // USE_OPENGL
+#endif  // defined(__native_client__) && defined(USE_OPENGL)
