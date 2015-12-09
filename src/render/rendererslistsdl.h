@@ -46,7 +46,7 @@ const char *OPENGL_NAME[] =
     // TRANSLATORS: draw backend
     N_("Software"),
     // TRANSLATORS: draw backend
-    N_("Mobile OpenGL")
+    N_("Mobile OpenGL ES")
 };
 
 const int renderModesListSize = 2;
@@ -83,7 +83,7 @@ const char *OPENGL_NAME[] =
     // TRANSLATORS: draw backend
     N_("Safe OpenGL"),
     // TRANSLATORS: draw backend
-    N_("Mobile OpenGL"),
+    N_("Mobile OpenGL ES"),
     // TRANSLATORS: draw backend
     N_("Modern OpenGL")
 };

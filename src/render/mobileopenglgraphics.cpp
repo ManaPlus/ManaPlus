@@ -92,7 +92,7 @@ MobileOpenGLGraphics::MobileOpenGLGraphics() :
     mFbo()
 {
     mOpenGL = RENDER_GLES_OPENGL;
-    mName = "mobile OpenGL";
+    mName = "mobile OpenGL ES";
 }
 
 MobileOpenGLGraphics::~MobileOpenGLGraphics()
