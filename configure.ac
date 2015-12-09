@@ -52,12 +52,13 @@ AC_HEADER_TIME
 # Checks for library functions.
 AC_FUNC_ERROR_AT_LINE
 
-if test "x$androidbuild_enabled" == "xfalse"; then
-    if test "x$naclbuild_enabled" == "xfalse"; then
-        AC_FUNC_MALLOC
-        AC_FUNC_REALLOC
-    fi
-fi
+# disabled because look like build issue with some libc versions with asan
+#if test "x$androidbuild_enabled" == "xfalse"; then
+#    if test "x$naclbuild_enabled" == "xfalse"; then
+#        AC_FUNC_MALLOC
+#        AC_FUNC_REALLOC
+#    fi
+#fi
 
 AC_C_INLINE
 AC_FUNC_SELECT_ARGTYPES
