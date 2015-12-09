@@ -1,4 +1,6 @@
 SET(FILES
+    gles2_frag.glsl
+    gles2_vertex.glsl
     simple_frag.glsl
     simple_vertex.glsl
     )
