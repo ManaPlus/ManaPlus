@@ -480,6 +480,7 @@ bool retrieveBuffer(std::string& text, size_t& pos)
     naclPostMessage("clipboard-paste", "");
     std::string response = naclWaitForMessage(handle);
     text.insert(pos, response);
+    pos += response.size();
     return true;
 }
 
