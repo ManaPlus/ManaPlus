@@ -763,6 +763,7 @@ struct ShaderProgramLoader final
 {
     const std::string vertex;
     const std::string fragment;
+    const bool isNewShader;
 
     static Resource *load(const void *const v)
     {
@@ -772,15 +773,18 @@ struct ShaderProgramLoader final
         const ShaderProgramLoader *const rl
             = static_cast<const ShaderProgramLoader *const>(v);
         ShaderProgram *const resource = shaders.createProgram(
-            rl->vertex, rl->fragment);
+            rl->vertex,
+            rl->fragment,
+            rl->isNewShader);
         return resource;
     }
 };
 
 Resource *ResourceManager::getShaderProgram(const std::string &vertex,
-                                            const std::string &fragment)
+                                            const std::string &fragment,
+                                            const bool isNewShader)
 {
-    ShaderProgramLoader rl = { vertex, fragment };
+    ShaderProgramLoader rl = { vertex, fragment, isNewShader };
     return get("program_" + vertex + " + " + fragment,
         ShaderProgramLoader::load, &rl);
 }

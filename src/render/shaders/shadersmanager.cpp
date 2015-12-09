@@ -63,7 +63,8 @@ Shader *ShadersManager::createShader(const unsigned int type,
 }
 
 ShaderProgram *ShadersManager::createProgram(const std::string &vertex,
-                                             const std::string &fragment)
+                                             const std::string &fragment,
+                                             const bool isNewShader)
 {
     Shader *const vertexShader = static_cast<Shader*>(
         resourceManager->getShader(GL_VERTEX_SHADER, vertex));
@@ -89,7 +90,10 @@ ShaderProgram *ShadersManager::createProgram(const std::string &vertex,
 
     mglAttachShader(programId, vertexShader->getShaderId());
     mglAttachShader(programId, fragmentShader->getShaderId());
-    mglBindFragDataLocation(programId, 0, "outColor");
+    if (isNewShader)
+        mglBindFragDataLocation(programId, 0, "outColor");
+    else
+        mglBindAttribLocation(programId, 0, "position");
     mglLinkProgram(programId);
     GLint isLinked = 0;
     mglGetProgramiv(programId, GL_LINK_STATUS, &isLinked);
@@ -122,7 +126,16 @@ ShaderProgram *ShadersManager::getSimpleProgram()
 {
     const std::string dir = paths.getStringValue("shaders");
     return createProgram(dir + paths.getStringValue("simpleVertexShader"),
-        dir + paths.getStringValue("simpleFragmentShader"));
+        dir + paths.getStringValue("simpleFragmentShader"),
+        true);
+}
+
+ShaderProgram *ShadersManager::getGles2Program()
+{
+    const std::string dir = paths.getStringValue("shaders");
+    return createProgram(dir + paths.getStringValue("gles2VertexShader"),
+        dir + paths.getStringValue("gles2FragmentShader"),
+        false);
 }
 
 #endif

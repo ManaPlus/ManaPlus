@@ -501,6 +501,8 @@ DefaultsData* getPathsDefaults()
 
     AddDEF("simpleVertexShader", "simple_vertex.glsl");
     AddDEF("simpleFragmentShader", "simple_frag.glsl");
+    AddDEF("gles2VertexShader", "gles2_vertex.glsl");
+    AddDEF("gles2FragmentShader", "gles2_frag.glsl");
 
     AddDEF("particles", "graphics/particles/");
     AddDEF("portalEffectFile", "warparea.particle.xml");

@@ -37,10 +37,13 @@ class ShadersManager final
                              const std::string &fileName) A_WARN_UNUSED;
 
         ShaderProgram *createProgram(const std::string &vertex,
-                                     const std::string &fragment)
+                                     const std::string &fragment,
+                                     const bool isNewShader)
                                      A_WARN_UNUSED;
 
         ShaderProgram *getSimpleProgram();
+
+        ShaderProgram *getGles2Program();
 };
 
 extern ShadersManager shaders;
