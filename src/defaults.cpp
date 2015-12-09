@@ -139,11 +139,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("fpslimit", 60);
     AddDEF("theme", "");
     AddDEF("showChatColorsList", true);
-#ifdef __native_client__
-    AddDEF("customcursor", false);
-#else
     AddDEF("customcursor", true);
-#endif
     AddDEF("showDidYouKnow", true);
     AddDEF("longmouseclick", false);
 #endif

@@ -98,6 +98,13 @@
 
 #include "net/ipc.h"
 
+#ifdef __native_client__
+#include <ppapi/c/ppb_mouse_cursor.h>
+#include <ppapi/cpp/instance.h>
+#include <ppapi/cpp/mouse_cursor.h>
+#include <ppapi_simple/ps.h>
+#endif
+
 #include "debug.h"
 
 Gui *gui = nullptr;
@@ -532,6 +539,18 @@ void Gui::setUseCustomCursor(const bool customCursor)
     if (customCursor != mCustomCursor)
     {
         mCustomCursor = customCursor;
+
+#ifdef __native_client__
+        PP_MouseCursor_Type cursor;
+        if (mCustomCursor)
+            cursor = PP_MOUSECURSOR_TYPE_NONE; // hide cursor
+        else
+            cursor = PP_MOUSECURSOR_TYPE_POINTER; // show default cursor
+
+        pp::MouseCursor::SetCursor(
+            pp::InstanceHandle(PSGetInstanceId()),
+            cursor);
+#endif
 
         if (mCustomCursor)
         {
