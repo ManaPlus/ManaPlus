@@ -34,6 +34,7 @@
 #include "net/character.h"
 #include "net/charserverhandler.h"
 #include "net/messagein.h"
+#include "net/serverfeatures.h"
 
 #include "net/ea/token.h"
 
@@ -71,7 +72,6 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
 
     LocalPlayer *const tempPlayer = new LocalPlayer(
         msg.readBeingId("account id"), BeingTypeId_zero);
-    tempPlayer->setGender(token.sex);
 
     PlayerInfoBackend &data = character->data;
     data.mAttributes[Attributes::EXP] = msg.readInt32("exp");
@@ -145,7 +145,11 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
     tempPlayer->setSprite(SPRITE_HEAD_MID, misc2);
 
     character->slot = msg.readUInt8("slot");
-    msg.readUInt8("unused");
+    const uint8_t sex = static_cast<uint8_t>(msg.readUInt8("gender"));
+    if (serverFeatures->haveCreateCharGender())
+        tempPlayer->setGender(Being::intToGender(sex));
+    else
+        tempPlayer->setGender(token.sex);
 }
 
 void CharServerRecv::processCharLogin(Net::MessageIn &msg)

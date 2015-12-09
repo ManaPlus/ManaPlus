@@ -116,7 +116,7 @@ bool ServerFeatures::haveAccountOtherGender() const
 
 bool ServerFeatures::haveCharOtherGender() const
 {
-    return false;
+    return tmwServerVersion > 0x0f0b17;
 }
 
 bool ServerFeatures::haveMonsterAttackRange() const
@@ -181,7 +181,7 @@ bool ServerFeatures::haveNpcWhispers() const
 
 bool ServerFeatures::haveCreateCharGender() const
 {
-    return false;
+    return tmwServerVersion > 0x0f0b17;
 }
 
 bool ServerFeatures::haveAttackDirections() const
