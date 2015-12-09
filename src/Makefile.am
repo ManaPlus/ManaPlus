@@ -131,6 +131,8 @@ SRC += events/actionevent.h \
 	      listeners/statlistener.h \
 	      listeners/tablemodellistener.h \
 	      utils/sdlpixel.h \
+	      utils/sdlsharedhelper.cpp \
+	      utils/sdlsharedhelper.h \
 	      gui/widgets/widget.h \
 	      listeners/weightlistener.h \
 	      listeners/widgetlistener.h \

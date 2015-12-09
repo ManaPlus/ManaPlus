@@ -94,16 +94,10 @@
 
 #include "utils/delete2.h"
 #include "utils/langs.h"
+#include "utils/sdlsharedhelper.h"
 #include "utils/timer.h"
 
 #include "net/ipc.h"
-
-#ifdef __native_client__
-#include <ppapi/c/ppb_mouse_cursor.h>
-#include <ppapi/cpp/instance.h>
-#include <ppapi/cpp/mouse_cursor.h>
-#include <ppapi_simple/ps.h>
-#endif
 
 #include "debug.h"
 
@@ -540,22 +534,10 @@ void Gui::setUseCustomCursor(const bool customCursor)
     {
         mCustomCursor = customCursor;
 
-#ifdef __native_client__
-        PP_MouseCursor_Type cursor;
-        if (mCustomCursor)
-            cursor = PP_MOUSECURSOR_TYPE_NONE; // hide cursor
-        else
-            cursor = PP_MOUSECURSOR_TYPE_POINTER; // show default cursor
-
-        pp::MouseCursor::SetCursor(
-            pp::InstanceHandle(PSGetInstanceId()),
-            cursor);
-#endif
-
         if (mCustomCursor)
         {
             // Hide the SDL mouse cursor
-            SDL_ShowCursor(SDL_DISABLE);
+            SDL::showCursor(false);
 
             // Load the mouse cursor
             if (mMouseCursors)
@@ -568,7 +550,7 @@ void Gui::setUseCustomCursor(const bool customCursor)
         else
         {
             // Show the SDL mouse cursor
-            SDL_ShowCursor(SDL_ENABLE);
+            SDL::showCursor(true);
 
             // Unload the mouse cursor
             if (mMouseCursors)

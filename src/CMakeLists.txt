@@ -1242,6 +1242,8 @@ SET(SRCS
     listeners/uploadlistener.cpp
     listeners/uploadlistener.h
     utils/sdlpixel.h
+    utils/sdlsharedhelper.cpp
+    utils/sdlsharedhelper.h
     gui/widgets/widget.h
     listeners/weightlistener.h
     listeners/widgetlistener.h
