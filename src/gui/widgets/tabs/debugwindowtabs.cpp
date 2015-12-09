@@ -108,7 +108,11 @@ MapDebugTab::MapDebugTab(const Widget2 *const widget) :
             break;
         case RENDER_GLES_OPENGL:
             // TRANSLATORS: debug window label
-            mFPSText = _("%d FPS (mobile OpenGL)");
+            mFPSText = _("%d FPS (mobile OpenGL ES)");
+            break;
+        case RENDER_GLES2_OPENGL:
+            // TRANSLATORS: debug window label
+            mFPSText = _("%d FPS (mobile OpenGL ES 2)");
             break;
         case RENDER_MODERN_OPENGL:
             // TRANSLATORS: debug window label

@@ -183,8 +183,8 @@ void Desktop::setBestFittingWallpaper()
         const int height = rect.height;
 
         if (imageHelper->useOpenGL() == RENDER_SOFTWARE &&
-            (nWallPaper->getWidth() != width
-            || nWallPaper->getHeight() != height))
+            (nWallPaper->getWidth() != width ||
+            nWallPaper->getHeight() != height))
         {
             // We rescale to obtain a fullscreen wallpaper...
             Image *const newRsclWlPpr = resourceManager->getRescaled(

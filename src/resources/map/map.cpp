@@ -138,9 +138,10 @@ Map::Map(const int width, const int height,
     mRedrawMap(true),
     mBeingOpacity(false),
 #ifdef USE_OPENGL
-    mCachedDraw(mOpenGL == RENDER_NORMAL_OPENGL
-        || mOpenGL == RENDER_GLES_OPENGL
-        || mOpenGL == RENDER_MODERN_OPENGL),
+    mCachedDraw(mOpenGL == RENDER_NORMAL_OPENGL ||
+        mOpenGL == RENDER_GLES_OPENGL ||
+        mOpenGL == RENDER_GLES2_OPENGL ||
+        mOpenGL == RENDER_MODERN_OPENGL),
 #else
     mCachedDraw(false),
 #endif
@@ -1406,7 +1407,8 @@ void Map::reduce()
 #ifdef USE_SDL2
     return;
 #else
-    if (!mFringeLayer || mOpenGL != RENDER_SOFTWARE ||
+    if (!mFringeLayer ||
+        mOpenGL != RENDER_SOFTWARE ||
         !config.getBoolValue("enableMapReduce"))
     {
         return;

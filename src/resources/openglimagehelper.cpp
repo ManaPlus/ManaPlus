@@ -29,6 +29,7 @@
 
 #include "render/mgl.h"
 #include "render/mglcheck.h"
+#include "render/mobileopengl2graphics.h"
 #include "render/mobileopenglgraphics.h"
 #include "render/modernopenglgraphics.h"
 #include "render/normalopenglgraphics.h"
@@ -266,6 +267,9 @@ void OpenGLImageHelper::bindTexture(const GLuint texture)
         case RENDER_GLES_OPENGL:
             MobileOpenGLGraphics::bindTexture(mTextureType, texture);
             break;
+        case RENDER_GLES2_OPENGL:
+            MobileOpenGL2Graphics::bindTexture(mTextureType, texture);
+            break;
         case RENDER_SOFTWARE:
         case RENDER_SDL2_DEFAULT:
         case RENDER_NULL:
@@ -305,8 +309,11 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
     if (SDL_MUSTLOCK(tmpImage))
         SDL_LockSurface(tmpImage);
 
-    if (mUseOpenGL != RENDER_MODERN_OPENGL && mUseOpenGL != RENDER_GLES_OPENGL)
+    if (mUseOpenGL != RENDER_MODERN_OPENGL &&
+        mUseOpenGL != RENDER_GLES_OPENGL)
+    {
         glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+    }
 
     if (!mUseTextureSampler)
     {

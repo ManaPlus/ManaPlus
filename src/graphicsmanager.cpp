@@ -48,6 +48,7 @@
 #include "render/mglcheck.h"
 #include "render/mgl.h"
 #include "render/mglemu.h"
+#include "render/mobileopengl2graphics.h"
 #include "render/mobileopenglgraphics.h"
 #include "render/modernopenglgraphics.h"
 #include "render/normalopenglgraphics.h"
@@ -306,6 +307,12 @@ void GraphicsManager::createRenderers()
             mainGraphics = new ModernOpenGLGraphics;
             mUseTextureSampler = true;
             break;
+        case RENDER_GLES2_OPENGL:
+            imageHelper = new OpenGLImageHelper;
+            surfaceImageHelper = new SurfaceImageHelper;
+            mainGraphics = new MobileOpenGL2Graphics;
+            mUseTextureSampler = false;
+            break;
 #endif
         case RENDER_GLES_OPENGL:
             imageHelper = new OpenGLImageHelper;
@@ -323,11 +330,12 @@ void GraphicsManager::createRenderers()
             break;
 #endif
     };
-    mUseAtlases = (useOpenGL == RENDER_NORMAL_OPENGL
-        || useOpenGL == RENDER_SAFE_OPENGL
-        || useOpenGL == RENDER_MODERN_OPENGL
-        || useOpenGL == RENDER_GLES_OPENGL)
-        && config.getBoolValue("useAtlases");
+    mUseAtlases = (useOpenGL == RENDER_NORMAL_OPENGL ||
+        useOpenGL == RENDER_SAFE_OPENGL ||
+        useOpenGL == RENDER_MODERN_OPENGL ||
+        useOpenGL == RENDER_GLES_OPENGL ||
+        useOpenGL == RENDER_GLES2_OPENGL) &&
+        config.getBoolValue("useAtlases");
 
 #else  // USE_OPENGL
 
@@ -346,6 +354,7 @@ void GraphicsManager::createRenderers()
         case RENDER_SOFTWARE:
         case RENDER_SAFE_OPENGL:
         case RENDER_GLES_OPENGL:
+        case RENDER_GLES2_OPENGL:
         case RENDER_MODERN_OPENGL:
         case RENDER_NORMAL_OPENGL:
         case RENDER_NULL:
@@ -481,6 +490,15 @@ void GraphicsManager::initGraphics()
     }
     if (openGLMode == RENDER_NORMAL_OPENGL || openGLMode == RENDER_GLES_OPENGL)
     {
+        if (!checkGLVersion(2, 0))
+        {
+            logger->log("Fallback to safe OpenGL mode");
+            openGLMode = RENDER_SAFE_OPENGL;
+        }
+    }
+    if (openGLMode == RENDER_GLES2_OPENGL)
+    {
+        // +++ here need check also not implimented gles flag
         if (!checkGLVersion(2, 0))
         {
             logger->log("Fallback to safe OpenGL mode");
@@ -732,9 +750,10 @@ void GraphicsManager::updateTextureFormat() const
     const int renderer = settings.options.renderer;
 
     // using default formats
-    if (renderer == RENDER_MODERN_OPENGL
-        || renderer == RENDER_GLES_OPENGL
-        || config.getBoolValue("newtextures"))
+    if (renderer == RENDER_MODERN_OPENGL ||
+        renderer == RENDER_GLES_OPENGL ||
+        renderer == RENDER_GLES2_OPENGL ||
+        config.getBoolValue("newtextures"))
     {
         OpenGLImageHelper::setInternalTextureType(GL_RGBA);
         logger->log1("using RGBA texture format");

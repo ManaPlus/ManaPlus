@@ -51,7 +51,8 @@ AmbientLayer::AmbientLayer(Image *const img,
     if (!mImage)
         return;
 
-    if (keepRatio && imageHelper->useOpenGL() == RENDER_SOFTWARE)
+    if (keepRatio &&
+        imageHelper->useOpenGL() == RENDER_SOFTWARE)
     {
         const int width = mainGraphics->mWidth;
         const int height = mainGraphics->mHeight;
@@ -121,7 +122,8 @@ void AmbientLayer::draw(Graphics *const graphics, const int x,
     if (!mImage)
         return;
 
-    if (imageHelper->useOpenGL() == RENDER_SOFTWARE || !mKeepRatio)
+    if (imageHelper->useOpenGL() == RENDER_SOFTWARE ||
+        !mKeepRatio)
     {
         graphics->drawPattern(mImage, static_cast<int>(-mPosX),
             static_cast<int>(-mPosY), x + static_cast<int>(mPosX),
