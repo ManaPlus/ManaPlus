@@ -58,7 +58,8 @@ const int renderToIndex[] =
     1,  // RENDER_SAFE_OPENGL
     1,  // RENDER_GLES_OPENGL
     1,  // RENDER_SDL2_DEFAULT
-    1   // RENDER_MODERN_OPENGL
+    1,  // RENDER_MODERN_OPENGL
+    1   // RENDER_GLES2_OPENGL
 };
 
 #else  // ANDROID
@@ -71,7 +72,8 @@ const RenderType indexToRender[] =
     RENDER_NORMAL_OPENGL,
     RENDER_SAFE_OPENGL,
     RENDER_GLES_OPENGL,
-    RENDER_MODERN_OPENGL
+    RENDER_MODERN_OPENGL,
+    RENDER_GLES2_OPENGL
 };
 
 const char *OPENGL_NAME[] =
@@ -85,10 +87,12 @@ const char *OPENGL_NAME[] =
     // TRANSLATORS: draw backend
     N_("Mobile OpenGL ES"),
     // TRANSLATORS: draw backend
-    N_("Modern OpenGL")
+    N_("Modern OpenGL"),
+    // TRANSLATORS: draw backend
+    N_("Mobile OpenGL ES 2"),
 };
 
-const int renderModesListSize = 5;
+const int renderModesListSize = 6;
 
 const int renderToIndex[] =
 {
@@ -97,7 +101,8 @@ const int renderToIndex[] =
     2,  // RENDER_SAFE_OPENGL
     3,  // RENDER_GLES_OPENGL
     0,  // RENDER_SDL2_DEFAULT
-    4   // RENDER_MODERN_OPENGL
+    4,  // RENDER_MODERN_OPENGL
+    5   // RENDER_GLES2_OPENGL
 };
 
 #endif  // ANDROID
@@ -126,7 +131,8 @@ const int renderToIndex[] =
     0,  // RENDER_SAFE_OPENGL
     0,  // RENDER_GLES_OPENGL
     0,  // RENDER_SDL2_DEFAULT
-    0   // RENDER_MODERN_OPENGL
+    0,  // RENDER_MODERN_OPENGL
+    0   // RENDER_GLES2_OPENGL
 };
 
 #endif  // USE_OPENGL

@@ -67,6 +67,7 @@ class Image notfinal : public Resource
     friend class TestLauncher;
 #ifdef USE_OPENGL
     friend class AtlasManager;
+    friend class MobileOpenGL2Graphics;
     friend class MobileOpenGLGraphics;
     friend class ModernOpenGLGraphics;
     friend class NormalOpenGLGraphics;

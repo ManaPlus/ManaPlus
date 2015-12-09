@@ -1007,6 +1007,8 @@ SET(SRCS
     render/mglxinit.cpp
     render/mglxinit.h
     render/mglxtypes.h
+    render/mobileopengl2graphics.cpp
+    render/mobileopengl2graphics.h
     render/mobileopenglgraphics.cpp
     render/mobileopenglgraphics.h
     render/modernopenglgraphics.cpp
