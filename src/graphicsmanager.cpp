@@ -896,6 +896,7 @@ void GraphicsManager::initOpenGLFunctions()
     const bool is10 = checkGLVersion(1, 0);
     const bool is11 = checkGLVersion(1, 1);
     const bool is12 = checkGLVersion(1, 2);
+    const bool is13 = checkGLVersion(1, 3);
     const bool is15 = checkGLVersion(1, 5);
     const bool is20 = checkGLVersion(2, 0);
     const bool is21 = checkGLVersion(2, 1);
@@ -936,6 +937,7 @@ void GraphicsManager::initOpenGLFunctions()
     {
         mSupportModernOpengl = false;
         emulateFunction(glTextureSubImage2D);
+        emulateFunction(glActiveTexture);
         return;
     }
 
@@ -978,12 +980,6 @@ void GraphicsManager::initOpenGLFunctions()
         }
     }
 
-    if (is20 || supportExtension("GL_ARB_explicit_attrib_location"))
-    {
-        logger->log1("found GL_ARB_explicit_attrib_location");
-        assignFunction(glBindAttribLocation);
-    }
-
     if (is12 && (is42 || supportExtension("GL_ARB_texture_storage")))
     {
         logger->log1("found GL_ARB_texture_storage");
@@ -993,6 +989,28 @@ void GraphicsManager::initOpenGLFunctions()
     {
         logger->log1("GL_ARB_texture_storage not found");
     }
+
+    if (is13 || supportExtension("GL_ARB_multitexture"))
+    {
+        logger->log1("found GL_ARB_multitexture or OpenGL 1.3");
+        assignFunction(glActiveTexture);
+    }
+    else
+    {
+        emulateFunction(glActiveTexture);
+        logger->log1("GL_ARB_multitexture not found");
+    }
+
+    if (is20 || supportExtension("GL_ARB_explicit_attrib_location"))
+    {
+        logger->log1("found GL_ARB_explicit_attrib_location or OpenGL 2.0");
+        assignFunction(glBindAttribLocation);
+    }
+    else
+    {
+        logger->log1("GL_ARB_explicit_attrib_location not found");
+    }
+
     if (is30 || supportExtension("GL_ARB_framebuffer_object"))
     {   // frame buffer supported
         logger->log1("found GL_ARB_framebuffer_object");

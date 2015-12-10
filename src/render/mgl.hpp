@@ -103,6 +103,7 @@ defName(glTextureSubImage2D);
 defName(glClearTexImage);
 defName(glClearTexSubImage);
 defName(glBindAttribLocation);
+defName(glActiveTexture);
 #ifdef WIN32
 defName(wglGetExtensionsString);
 #endif

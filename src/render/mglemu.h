@@ -31,6 +31,7 @@ void APIENTRY emuglTextureSubImage2D(GLuint texture, GLenum target,
                                      GLenum format, GLenum type,
                                      const void *pixels);
 
+void APIENTRY emuglActiveTexture (GLenum texture);
 
 #endif  // USE_OPENGL
 #endif  // RENDER_MGLEMU_H
