@@ -102,7 +102,7 @@ defName(glGetQueryObjectui64v);
 defName(glTextureSubImage2D);
 defName(glClearTexImage);
 defName(glClearTexSubImage);
-
+defName(glBindAttribLocation);
 #ifdef WIN32
 defName(wglGetExtensionsString);
 #endif

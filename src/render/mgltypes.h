@@ -185,6 +185,8 @@ typedef void (APIENTRY *glClearTexImage_t) (GLuint texture, GLint level,
 typedef void (APIENTRY *glClearTexSubImage_t) (GLuint texture, GLint level,
     GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height,
     GLsizei depth, GLenum format, GLenum type, const void * data);
+typedef void (APIENTRY *glBindAttribLocation_t) (GLuint program,
+    GLuint index, const GLchar *name);
 
 // callback
 typedef void (APIENTRY *GLDEBUGPROC_t) (GLenum source, GLenum type, GLuint id,

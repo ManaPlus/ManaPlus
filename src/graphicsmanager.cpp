@@ -978,6 +978,12 @@ void GraphicsManager::initOpenGLFunctions()
         }
     }
 
+    if (is20 || supportExtension("GL_ARB_explicit_attrib_location"))
+    {
+        logger->log1("found GL_ARB_explicit_attrib_location");
+        assignFunction(glBindAttribLocation);
+    }
+
     if (is12 && (is42 || supportExtension("GL_ARB_texture_storage")))
     {
         logger->log1("found GL_ARB_texture_storage");
