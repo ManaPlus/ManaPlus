@@ -65,6 +65,8 @@ class MobileOpenGLGraphics final : public Graphics
 
         inline void drawLineArrays(const int size);
 
+        void postInit() override final;
+
         #include "render/graphicsdef.hpp"
 
         #include "render/openglgraphicsdef1.hpp"

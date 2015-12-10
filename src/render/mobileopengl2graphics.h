@@ -94,7 +94,7 @@ class MobileOpenGL2Graphics final : public Graphics
 
         inline void drawTriangleArray(const int size);
 
-        inline void drawTriangleArray(const GLint *const array,
+        inline void drawTriangleArray(const GLfloat *const array,
                                       const int size);
 
         inline void drawLineArrays(const int size);
@@ -105,8 +105,11 @@ class MobileOpenGL2Graphics final : public Graphics
 
         inline void bindAttributes();
 
-        GLint *mIntArray A_NONNULLPOINTER;
-        GLint *mIntArrayCached A_NONNULLPOINTER;
+        static void bindTexture2(const GLenum target,
+                                 const Image *const image);
+
+        GLfloat *mFloatArray A_NONNULLPOINTER;
+        GLfloat *mFloatArrayCached A_NONNULLPOINTER;
         ShaderProgram *mProgram;
         float mAlphaCached;
         int mVpCached;
@@ -115,6 +118,7 @@ class MobileOpenGL2Graphics final : public Graphics
         int mMaxVertices;
         GLuint mProgramId;
         GLuint mSimpleColorUniform;
+        static GLuint mTextureSizeUniform;
         GLint mPosAttrib;
         GLint mTextureColorUniform;
         GLuint mScreenUniform;

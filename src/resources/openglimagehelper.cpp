@@ -310,7 +310,8 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
         SDL_LockSurface(tmpImage);
 
     if (mUseOpenGL != RENDER_MODERN_OPENGL &&
-        mUseOpenGL != RENDER_GLES_OPENGL)
+        mUseOpenGL != RENDER_GLES_OPENGL &&
+        mUseOpenGL != RENDER_GLES2_OPENGL)
     {
         glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
     }

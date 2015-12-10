@@ -100,6 +100,11 @@ MobileOpenGLGraphics::~MobileOpenGLGraphics()
     deleteArraysInternal();
 }
 
+void MobileOpenGLGraphics::postInit()
+{
+//    glesTest();
+}
+
 void MobileOpenGLGraphics::initArrays(const int vertCount)
 {
     mMaxVertices = vertCount;

@@ -75,15 +75,16 @@
     var[vp + 22] = x2; \
     var[vp + 23] = y2;
 
-GLuint MobileOpenGL2Graphics::mTextureBinded = 0;
+GLuint MobileOpenGL2Graphics::mTextureBinded = 0U;
+GLuint MobileOpenGL2Graphics::mTextureSizeUniform = 0U;
 #ifdef DEBUG_DRAW_CALLS
-unsigned int MobileOpenGL2Graphics::mDrawCalls = 0;
-unsigned int MobileOpenGL2Graphics::mLastDrawCalls = 0;
+unsigned int MobileOpenGL2Graphics::mDrawCalls = 0U;
+unsigned int MobileOpenGL2Graphics::mLastDrawCalls = 0U;
 #endif
 
 MobileOpenGL2Graphics::MobileOpenGL2Graphics() :
-    mIntArray(nullptr),
-    mIntArrayCached(nullptr),
+    mFloatArray(nullptr),
+    mFloatArrayCached(nullptr),
     mProgram(nullptr),
     mAlphaCached(1.0F),
     mVpCached(0),
@@ -123,10 +124,7 @@ void MobileOpenGL2Graphics::deleteGLObjects()
 {
     delete2(mProgram);
     if (mVbo)
-    {
-//        logger->log("delete buffer vbo: %u", mVbo);
         mglDeleteBuffers(1, &mVbo);
-    }
 #ifndef __native_client__
     if (mVao)
         mglDeleteVertexArrays(1, &mVao);
@@ -144,10 +142,10 @@ void MobileOpenGL2Graphics::initArrays(const int vertCount)
     // need alocate small size, after if limit reached reallocate to double size
     const size_t sz = mMaxVertices * 4 + 30;
     vertexBufSize = mMaxVertices;
-    if (!mIntArray)
-        mIntArray = new GLint[sz];
-    if (!mIntArrayCached)
-        mIntArrayCached = new GLint[sz];
+    if (!mFloatArray)
+        mFloatArray = new GLfloat[sz];
+    if (!mFloatArrayCached)
+        mFloatArrayCached = new GLfloat[sz];
 }
 
 void MobileOpenGL2Graphics::postInit()
@@ -161,7 +159,7 @@ void MobileOpenGL2Graphics::postInit()
     bindArrayBuffer(mVbo);
 
     logger->log("Compiling shaders");
-    mProgram = shaders.getSimpleProgram();
+    mProgram = shaders.getGles2Program();
     if (!mProgram)
     {
         graphicsManager.logError();
@@ -169,30 +167,36 @@ void MobileOpenGL2Graphics::postInit()
     }
     mProgramId = mProgram->getProgramId();
     if (!mProgram)
-        logger->error("Shaders compilation error.");
+        logger->safeError("Shaders compilation error.");
 
     logger->log("Shaders compilation done.");
     mglUseProgram(mProgramId);
 
-    mPosAttrib = mglGetAttribLocation(mProgramId, "position");
-    mglEnableVertexAttribArray(mPosAttrib);
-    mglVertexAttribIFormat(mPosAttrib, 4, GL_INT, 0);
+    mPosAttrib = 0;
 
     mSimpleColorUniform = mglGetUniformLocation(mProgramId, "color");
     mScreenUniform = mglGetUniformLocation(mProgramId, "screen");
     mDrawTypeUniform = mglGetUniformLocation(mProgramId, "drawType");
     mTextureColorUniform = mglGetUniformLocation(mProgramId, "alpha");
+    mTextureSizeUniform = mglGetUniformLocation(mProgramId, "textureSize");
 
     mglUniform1f(mTextureColorUniform, 1.0f);
 
-    mglBindVertexBuffer(0, mVbo, 0, 4 * sizeof(GLint));
-    mglVertexAttribBinding(mPosAttrib, 0);
-//    mglVertexAttribIPointer(mPosAttrib, 4, GL_INT, 4 * sizeof(GLint), 0);
+    //mglBindVertexBuffer(0, mVbo, 0, 4 * sizeof(GLfloat));
+
+    mglVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, 0);
+    mglEnableVertexAttribArray(0);
     mAttributesBinded = mVbo;
 
     mglUniform2f(mScreenUniform,
         static_cast<float>(mWidth) / 2.0f,
         static_cast<float>(mHeight) / 2.0f);
+    // for safty init texture size to 1x1
+    mglUniform2f(mTextureSizeUniform,
+        1.0f,
+        1.0f);
+
+    mglActiveTexture(GL_TEXTURE0);
 }
 
 void MobileOpenGL2Graphics::screenResized()
@@ -210,19 +214,19 @@ void MobileOpenGL2Graphics::deleteArrays()
 
 void MobileOpenGL2Graphics::deleteArraysInternal()
 {
-    delete [] mIntArray;
-    mIntArray = nullptr;
-    delete [] mIntArrayCached;
-    mIntArrayCached = nullptr;
+    delete [] mFloatArray;
+    mFloatArray = nullptr;
+    delete [] mFloatArrayCached;
+    mFloatArrayCached = nullptr;
 }
 
 bool MobileOpenGL2Graphics::setVideoMode(const int w, const int h,
-                                        const int scale,
-                                        const int bpp,
-                                        const bool fs,
-                                        const bool hwaccel,
-                                        const bool resize,
-                                        const bool noFrame)
+                                         const int scale,
+                                         const int bpp,
+                                         const bool fs,
+                                         const bool hwaccel,
+                                         const bool resize,
+                                         const bool noFrame)
 {
     setMainFlags(w, h, scale, bpp, fs, hwaccel, resize, noFrame);
 
@@ -256,20 +260,19 @@ void MobileOpenGL2Graphics::drawQuad(const int srcX, const int srcY,
                                      const int dstX, const int dstY,
                                      const int width, const int height)
 {
-    const int texX2 = srcX + width;
-    const int texY2 = srcY + height;
-    const int x2 = dstX + width;
-    const int y2 = dstY + height;
+    const GLfloat texX2 = srcX + width;
+    const GLfloat texY2 = srcY + height;
+    const GLfloat x2 = dstX + width;
+    const GLfloat y2 = dstY + height;
 
-    GLint vertices[] =
+    GLfloat vertices[] =
     {
-        dstX, dstY, srcX, srcY,
-        x2, dstY, texX2, srcY,
-        dstX, y2, srcX, texY2,
-        x2, y2, texX2, texY2
+        dstX, dstY, srcX,  srcY,
+        x2,   dstY, texX2, srcY,
+        dstX, y2,   srcX,  texY2,
+        x2,   y2,   texX2, texY2
     };
 
-//    logger->log("allocate: %d, %ld", mVboBinded, sizeof(vertices));
     mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
         vertices, GL_STREAM_DRAW);
 #ifdef DEBUG_DRAW_CALLS
@@ -284,20 +287,19 @@ void MobileOpenGL2Graphics::drawRescaledQuad(const int srcX, const int srcY,
                                              const int desiredWidth,
                                              const int desiredHeight)
 {
-    const int texX2 = srcX + width;
-    const int texY2 = srcY + height;
-    const int x2 = dstX + desiredWidth;
-    const int y2 = dstY + desiredHeight;
+    const GLfloat texX2 = srcX + width;
+    const GLfloat texY2 = srcY + height;
+    const GLfloat x2 = dstX + desiredWidth;
+    const GLfloat y2 = dstY + desiredHeight;
 
-    GLint vertices[] =
+    GLfloat vertices[] =
     {
-        dstX, dstY, srcX, srcY,
-        x2, dstY, texX2, srcY,
-        dstX, y2, srcX, texY2,
-        x2, y2, texX2, texY2
+        dstX, dstY, srcX,  srcY,
+        x2,   dstY, texX2, srcY,
+        dstX, y2,   srcX,  texY2,
+        x2,   y2,   texX2, texY2
     };
 
-//    logger->log("allocate: %d, %ld", mVboBinded, sizeof(vertices));
     mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
         vertices, GL_STREAM_DRAW);
 #ifdef DEBUG_DRAW_CALLS
@@ -322,16 +324,19 @@ void MobileOpenGL2Graphics::drawImageInline(const Image *const image,
 #ifdef DEBUG_BIND_TEXTURE
     debugBindTexture(image);
 #endif
-    bindTexture(GL_TEXTURE_2D, image->mGLImage);
+    bindTexture2(GL_TEXTURE_2D, image);
     setTexturingAndBlending(true);
     bindArrayBufferAndAttributes(mVbo);
     setColorAlpha(image->mAlpha);
 
     const ClipRect &clipArea = mClipStack.top();
     const SDL_Rect &imageRect = image->mBounds;
-    drawQuad(imageRect.x, imageRect.y,
-        dstX + clipArea.xOffset, dstY + clipArea.yOffset,
-        imageRect.w, imageRect.h);
+    drawQuad(imageRect.x,
+        imageRect.y,
+        dstX + clipArea.xOffset,
+        dstY + clipArea.yOffset,
+        imageRect.w,
+        imageRect.h);
 }
 
 void MobileOpenGL2Graphics::copyImage(const Image *const image,
@@ -343,7 +348,7 @@ void MobileOpenGL2Graphics::copyImage(const Image *const image,
 void MobileOpenGL2Graphics::testDraw()
 {
 /*
-    GLint vertices[] =
+    GLfloat vertices[] =
     {
         0, 0, 0, 0,
         800, 0, 800, 0,
@@ -399,16 +404,20 @@ void MobileOpenGL2Graphics::drawRescaledImage(const Image *const image,
 #ifdef DEBUG_BIND_TEXTURE
     debugBindTexture(image);
 #endif
-    bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
+    bindTexture2(GL_TEXTURE_2D, image);
     setTexturingAndBlending(true);
     bindArrayBufferAndAttributes(mVbo);
 
     const ClipRect &clipArea = mClipStack.top();
     // Draw a textured quad.
-    drawRescaledQuad(imageRect.x, imageRect.y,
-        dstX + clipArea.xOffset, dstY + clipArea.yOffset,
-        imageRect.w, imageRect.h,
-        desiredWidth, desiredHeight);
+    drawRescaledQuad(imageRect.x,
+        imageRect.y,
+        dstX + clipArea.xOffset,
+        dstY + clipArea.yOffset,
+        imageRect.w,
+        imageRect.h,
+        desiredWidth,
+        desiredHeight);
 }
 
 void MobileOpenGL2Graphics::drawPattern(const Image *const image,
@@ -441,7 +450,7 @@ void MobileOpenGL2Graphics::drawPatternInline(const Image *const image,
 #ifdef DEBUG_BIND_TEXTURE
     debugBindTexture(image);
 #endif
-    bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
+    bindTexture2(GL_TEXTURE_2D, image);
 
     setTexturingAndBlending(true);
     bindArrayBufferAndAttributes(mVbo);
@@ -462,7 +471,7 @@ void MobileOpenGL2Graphics::drawPatternInline(const Image *const image,
 
             const int texX2 = srcX + width;
 
-            vertFill2D(mIntArray,
+            vertFill2D(mFloatArray,
                 srcX, srcY, texX2, texY2,
                 dstX, dstY, width, height);
 
@@ -501,7 +510,7 @@ void MobileOpenGL2Graphics::drawRescaledPattern(const Image *const image,
 #ifdef DEBUG_BIND_TEXTURE
     debugBindTexture(image);
 #endif
-    bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
+    bindTexture2(GL_TEXTURE_2D, image);
 
     setTexturingAndBlending(true);
     bindArrayBufferAndAttributes(mVbo);
@@ -530,7 +539,7 @@ void MobileOpenGL2Graphics::drawRescaledPattern(const Image *const image,
             const int dstX = x2 + px;
             const int scaledX = srcX + width / scaleFactorW;
 
-            vertFill2D(mIntArray,
+            vertFill2D(mFloatArray,
                 srcX, srcY, scaledX, scaledY,
                 dstX, dstY, width, height);
 
@@ -555,11 +564,6 @@ inline void MobileOpenGL2Graphics::drawVertexes(const
     std::vector<GLuint>::const_iterator ivbo;
     const std::vector<int>::const_iterator ivp_end = vp.end();
 
-/*
-    if (vp.size() != vbos.size())
-        logger->log("different size in vp and vbos");
-*/
-
     for (ivp = vp.begin(), ivbo = vbos.begin();
          ivp != ivp_end;
          ++ ivp, ++ ivbo)
@@ -568,7 +572,6 @@ inline void MobileOpenGL2Graphics::drawVertexes(const
 #ifdef DEBUG_DRAW_CALLS
         mDrawCalls ++;
 #endif
-//        logger->log("draw from array: %u", *ivbo);
         glDrawArrays(GL_TRIANGLES, 0, *ivp / 4);
     }
 }
@@ -607,7 +610,7 @@ void MobileOpenGL2Graphics::calcPatternInline(ImageVertexes *const vert,
     OpenGLGraphicsVertexes &ogl = vert->ogl;
     unsigned int vp = ogl.continueVp();
 
-    GLint *intArray = ogl.continueIntTexArray();
+    GLfloat *floatArray = ogl.continueFloatTexArray();
 
     for (int py = 0; py < h; py += ih)
     {
@@ -620,14 +623,14 @@ void MobileOpenGL2Graphics::calcPatternInline(ImageVertexes *const vert,
             const int dstX = x2 + px;
             const int texX2 = srcX + width;
 
-            vertFill2D(intArray,
+            vertFill2D(floatArray,
                 srcX, srcY, texX2, texY2,
                 dstX, dstY, width, height);
 
             vp += 24;
             if (vp >= vLimit)
             {
-                intArray = ogl.switchIntTexArray();
+                floatArray = ogl.switchFloatTexArray();
                 ogl.switchVp(vp);
                 vp = 0;
             }
@@ -663,13 +666,6 @@ void MobileOpenGL2Graphics::drawTileCollection(const ImageCollection
     if (!vertCol)
         return;
     setTexturingAndBlending(true);
-/*
-    if (!vertCol)
-    {
-        logger->log("MobileOpenGL2Graphics::drawTileCollection"
-            " vertCol is nullptr");
-    }
-*/
     const ImageVertexesVector &draws = vertCol->draws;
     const ImageCollectionCIter it_end = draws.end();
     for (ImageCollectionCIter it = draws.begin(); it != it_end; ++ it)
@@ -681,7 +677,7 @@ void MobileOpenGL2Graphics::drawTileCollection(const ImageCollection
 #ifdef DEBUG_BIND_TEXTURE
         debugBindTexture(image);
 #endif
-        bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
+        bindTexture2(GL_TEXTURE_2D, image);
         drawVertexes(vert->ogl);
     }
 }
@@ -746,16 +742,16 @@ void MobileOpenGL2Graphics::calcTileVertexesInline(ImageVertexes *const vert,
     int texX2 = srcX + w;
     int texY2 = srcY + h;
 
-    GLint *const intArray = ogl.continueIntTexArray();
+    GLfloat *const floatArray = ogl.continueFloatTexArray();
 
-    vertFill2D(intArray,
+    vertFill2D(floatArray,
         srcX, srcY, texX2, texY2,
         x2, y2, w, h);
 
     vp += 24;
     if (vp >= vLimit)
     {
-        ogl.switchIntTexArray();
+        ogl.switchFloatTexArray();
         ogl.switchVp(vp);
         vp = 0;
     }
@@ -773,7 +769,7 @@ void MobileOpenGL2Graphics::drawTileVertexes(const ImageVertexes *const vert)
 #ifdef DEBUG_BIND_TEXTURE
     debugBindTexture(image);
 #endif
-    bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
+    bindTexture2(GL_TEXTURE_2D, image);
     setTexturingAndBlending(true);
     bindArrayBufferAndAttributes(mVbo);
 
@@ -830,8 +826,10 @@ void MobileOpenGL2Graphics::updateScreen()
 void MobileOpenGL2Graphics::beginDraw()
 {
     setOpenGLFlags();
+#ifndef __native_client__
     glDisable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);
     glHint(GL_FRAGMENT_SHADER_DERIVATIVE_HINT_ARB, GL_FASTEST);
+#endif
     pushClipArea(Rect(0, 0, mRect.w, mRect.h));
 }
 
@@ -928,11 +926,10 @@ void MobileOpenGL2Graphics::drawPoint(int x, int y)
     setTexturingAndBlending(false);
     bindArrayBufferAndAttributes(mVbo);
     const ClipRect &clipArea = mClipStack.top();
-    GLint vertices[] =
+    GLfloat vertices[] =
     {
         x + clipArea.xOffset, y + clipArea.yOffset, 0, 0
     };
-//    logger->log("allocate: %d, %ld", mVboBinded, sizeof(vertices));
     mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
         vertices, GL_STREAM_DRAW);
 #ifdef DEBUG_DRAW_CALLS
@@ -946,12 +943,11 @@ void MobileOpenGL2Graphics::drawLine(int x1, int y1, int x2, int y2)
     setTexturingAndBlending(false);
     bindArrayBufferAndAttributes(mVbo);
     const ClipRect &clipArea = mClipStack.top();
-    GLint vertices[] =
+    GLfloat vertices[] =
     {
         x1 + clipArea.xOffset, y1 + clipArea.yOffset, 0, 0,
         x2 + clipArea.xOffset, y2 + clipArea.yOffset, 0, 0
     };
-//    logger->log("allocate: %d, %ld", mVboBinded, sizeof(vertices));
     mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
         vertices, GL_STREAM_DRAW);
 #ifdef DEBUG_DRAW_CALLS
@@ -969,7 +965,7 @@ void MobileOpenGL2Graphics::drawRectangle(const Rect& rect)
     const int y1 = rect.y + clipArea.yOffset;
     const int x2 = x1 + rect.width;
     const int y2 = y1 + rect.height;
-    GLint vertices[] =
+    GLfloat vertices[] =
     {
         x1, y1, 0, 0,
         x1, y2, 0, 0,
@@ -995,7 +991,7 @@ void MobileOpenGL2Graphics::fillRectangle(const Rect& rect)
     const int y1 = rect.y + clipArea.yOffset;
     const int x2 = x1 + rect.width;
     const int y2 = y1 + rect.height;
-    GLint vertices[] =
+    GLfloat vertices[] =
     {
         x1, y1, 0, 0,
         x2, y1, 0, 0,
@@ -1062,25 +1058,25 @@ void MobileOpenGL2Graphics::drawNet(const int x1, const int y1,
     setTexturingAndBlending(false);
     bindArrayBufferAndAttributes(mVbo);
     const ClipRect &clipArea = mClipStack.top();
-    const GLint dx = clipArea.xOffset;
-    const GLint dy = clipArea.yOffset;
+    const GLfloat dx = clipArea.xOffset;
+    const GLfloat dy = clipArea.yOffset;
 
-    const GLint xs1 = x1 + dx;
-    const GLint xs2 = x2 + dx;
-    const GLint ys1 = y1 + dy;
-    const GLint ys2 = y2 + dy;
+    const GLfloat xs1 = x1 + dx;
+    const GLfloat xs2 = x2 + dx;
+    const GLfloat ys1 = y1 + dy;
+    const GLfloat ys2 = y2 + dy;
 
     for (int y = y1; y < y2; y += height)
     {
-        mIntArray[vp + 0] = xs1;
-        mIntArray[vp + 1] = y;
-        mIntArray[vp + 2] = 0;
-        mIntArray[vp + 3] = 0;
+        mFloatArray[vp + 0] = xs1;
+        mFloatArray[vp + 1] = y;
+        mFloatArray[vp + 2] = 0;
+        mFloatArray[vp + 3] = 0;
 
-        mIntArray[vp + 4] = xs2;
-        mIntArray[vp + 5] = y;
-        mIntArray[vp + 6] = 0;
-        mIntArray[vp + 7] = 0;
+        mFloatArray[vp + 4] = xs2;
+        mFloatArray[vp + 5] = y;
+        mFloatArray[vp + 6] = 0;
+        mFloatArray[vp + 7] = 0;
 
         vp += 8;
         if (vp >= vLimit)
@@ -1092,15 +1088,15 @@ void MobileOpenGL2Graphics::drawNet(const int x1, const int y1,
 
     for (int x = x1; x < x2; x += width)
     {
-        mIntArray[vp + 0] = x;
-        mIntArray[vp + 1] = ys1;
-        mIntArray[vp + 2] = 0.0f;
-        mIntArray[vp + 3] = 0.0f;
+        mFloatArray[vp + 0] = x;
+        mFloatArray[vp + 1] = ys1;
+        mFloatArray[vp + 2] = 0.0f;
+        mFloatArray[vp + 3] = 0.0f;
 
-        mIntArray[vp + 4] = x;
-        mIntArray[vp + 5] = ys2;
-        mIntArray[vp + 6] = 0.0f;
-        mIntArray[vp + 7] = 0.0f;
+        mFloatArray[vp + 4] = x;
+        mFloatArray[vp + 5] = ys2;
+        mFloatArray[vp + 6] = 0.0f;
+        mFloatArray[vp + 7] = 0.0f;
 
         vp += 8;
         if (vp >= vLimit)
@@ -1114,12 +1110,28 @@ void MobileOpenGL2Graphics::drawNet(const int x1, const int y1,
         drawLineArrays(vp);
 }
 
-void MobileOpenGL2Graphics::bindTexture(const GLenum target,
-                                        const GLuint texture)
+void MobileOpenGL2Graphics::bindTexture2(const GLenum target,
+                                         const Image *const image)
 {
+    const GLuint texture = image->mGLImage;
     if (mTextureBinded != texture)
     {
         mTextureBinded = texture;
+        glBindTexture(target, texture);
+        // need check sizes before update uniform
+        mglUniform2f(mTextureSizeUniform,
+            image->mTexWidth,
+            image->mTexHeight);
+    }
+}
+
+void MobileOpenGL2Graphics::bindTexture(const GLenum target A_UNUSED,
+                                        const GLuint texture A_UNUSED)
+{
+    if (mTextureBinded != texture)
+    {
+        // for safty not storing textures because cant update size uniform
+        mTextureBinded = 0;
         glBindTexture(target, texture);
     }
 }
@@ -1132,7 +1144,6 @@ void MobileOpenGL2Graphics::removeArray(const uint32_t sz,
     {
         if (arr[f] == mVboBinded)
             mVboBinded = 0;
-//        logger->log("delete buffers: %u", arr[f]);
     }
 }
 
@@ -1141,12 +1152,7 @@ void MobileOpenGL2Graphics::bindArrayBuffer(const GLuint vbo)
     if (mVboBinded != vbo)
     {
         mVboBinded = vbo;
-//        logger->log("bind array: %u", vbo);
         mglBindBuffer(GL_ARRAY_BUFFER, vbo);
-/*
-        if (mglIsBuffer(vbo) != GL_TRUE)
-            logger->log("bind wrong buffer: %u", vbo);
-*/
         mAttributesBinded = 0U;
     }
 }
@@ -1156,26 +1162,17 @@ void MobileOpenGL2Graphics::bindArrayBufferAndAttributes(const GLuint vbo)
     if (mVboBinded != vbo)
     {
         mVboBinded = vbo;
-//        logger->log("bind array: %u", vbo);
         mglBindBuffer(GL_ARRAY_BUFFER, vbo);
-/*
-        if (mglIsBuffer(vbo) != GL_TRUE)
-            logger->log("bind wrong buffer: %u", vbo);
-*/
 
         mAttributesBinded = mVboBinded;
-//        logger->log("bind vertex buffer: %u", mVboBinded);
-        mglBindVertexBuffer(0, mVboBinded, 0, 4 * sizeof(GLint));
-//        mglVertexAttribIPointer(mPosAttrib, 4, GL_INT, 4 * sizeof(GLint), 0);
-//        mglVertexAttribBinding(mPosAttrib, 0);
+        mglVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, 0);
+//        mglBindVertexBuffer(0, mVboBinded, 0, 4 * sizeof(GLfloat));
     }
     else if (mAttributesBinded != mVboBinded)
     {
         mAttributesBinded = mVboBinded;
-//        logger->log("bind vertex buffer: %u", mVboBinded);
-        mglBindVertexBuffer(0, mVboBinded, 0, 4 * sizeof(GLint));
-//        mglVertexAttribIPointer(mPosAttrib, 4, GL_INT, 4 * sizeof(GLint), 0);
-//        mglVertexAttribBinding(mPosAttrib, 0);
+        mglVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, 0);
+//        mglBindVertexBuffer(0, mVboBinded, 0, 4 * sizeof(GLfloat));
     }
 }
 
@@ -1184,9 +1181,8 @@ void MobileOpenGL2Graphics::bindAttributes()
     if (mAttributesBinded != mVboBinded)
     {
         mAttributesBinded = mVboBinded;
-        mglBindVertexBuffer(0, mVboBinded, 0, 4 * sizeof(GLint));
-//        mglVertexAttribIPointer(mPosAttrib, 4, GL_INT, 4 * sizeof(GLint), 0);
-//        mglVertexAttribBinding(mPosAttrib, 0);
+        mglVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, 0);
+//        mglBindVertexBuffer(0, mVboBinded, 0, 4 * sizeof(GLfloat));
     }
 }
 
@@ -1232,10 +1228,13 @@ void MobileOpenGL2Graphics::clearScreen() const
 
 void MobileOpenGL2Graphics::createGLContext()
 {
+    Graphics::createGLContext();
+/*
     if (mGLContext)
         SDL::makeCurrentContext(mGLContext);
     else
-        mGLContext = SDL::createGLContext(mWindow, 3, 3, 0x01);
+        mGLContext = SDL::createGLContext(mWindow, 2, 0, 0x04);
+*/
 }
 
 void MobileOpenGL2Graphics::finalize(ImageCollection *const col)
@@ -1256,13 +1255,13 @@ void MobileOpenGL2Graphics::finalize(ImageVertexes *const vert)
     const std::vector<int> &vp = ogl.mVp;
     std::vector<int>::const_iterator ivp;
     const std::vector<int>::const_iterator ivp_end = vp.end();
-    std::vector<GLint*> &intTexPool = ogl.mIntTexPool;
-    std::vector<GLint*>::const_iterator ft;
-    const std::vector<GLint*>::const_iterator ft_end = intTexPool.end();
+    std::vector<GLfloat*> &floatTexPool = ogl.mFloatTexPool;
+    std::vector<GLfloat*>::const_iterator ft;
+    const std::vector<GLfloat*>::const_iterator ft_end = floatTexPool.end();
     std::vector<GLuint> &vbos = ogl.mVbo;
     std::vector<GLuint>::const_iterator ivbo;
 
-    const int sz = static_cast<int>(intTexPool.size());
+    const int sz = static_cast<int>(floatTexPool.size());
     vbos.resize(sz);
     mglGenBuffers(sz, &vbos[0]);
 /*
@@ -1270,43 +1269,41 @@ void MobileOpenGL2Graphics::finalize(ImageVertexes *const vert)
         logger->log("gen buffers: %u", vbos[f]);
 */
 
-    for (ft = intTexPool.begin(), ivp = vp.begin(), ivbo = vbos.begin();
+    for (ft = floatTexPool.begin(), ivp = vp.begin(), ivbo = vbos.begin();
          ft != ft_end && ivp != ivp_end;
          ++ ft, ++ ivp, ++ ivbo)
     {
         bindArrayBuffer(*ivbo);
 /*
         logger->log("allocate: %d, %ld", mVboBinded,
-            (*ivp) * sizeof(GLint));
+            (*ivp) * sizeof(GLfloat));
 */
-        mglBufferData(GL_ARRAY_BUFFER, (*ivp) * sizeof(GLint),
+        mglBufferData(GL_ARRAY_BUFFER, (*ivp) * sizeof(GLfloat),
             *ft, GL_STATIC_DRAW);
     }
 
-    for (std::vector<GLint*>::iterator it = intTexPool.begin();
-        it != intTexPool.end(); ++ it)
+    for (std::vector<GLfloat*>::iterator it = floatTexPool.begin();
+        it != floatTexPool.end(); ++ it)
     {
         delete [] (*it);
     }
-    intTexPool.clear();
+    floatTexPool.clear();
 }
 
 void MobileOpenGL2Graphics::drawTriangleArray(const int size)
 {
-//    logger->log("allocate: %d, %ld", mVboBinded, size * sizeof(GLint));
-    mglBufferData(GL_ARRAY_BUFFER, size * sizeof(GLint),
-        mIntArray, GL_STREAM_DRAW);
+    mglBufferData(GL_ARRAY_BUFFER, size * sizeof(GLfloat),
+        mFloatArray, GL_STREAM_DRAW);
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif
     glDrawArrays(GL_TRIANGLES, 0, size / 4);
 }
 
-void MobileOpenGL2Graphics::drawTriangleArray(const GLint *const array,
-                                             const int size)
+void MobileOpenGL2Graphics::drawTriangleArray(const GLfloat *const array,
+                                              const int size)
 {
-//    logger->log("allocate: %d, %ld", mVboBinded, size * sizeof(GLint));
-    mglBufferData(GL_ARRAY_BUFFER, size * sizeof(GLint),
+    mglBufferData(GL_ARRAY_BUFFER, size * sizeof(GLfloat),
         array, GL_STREAM_DRAW);
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
@@ -1316,9 +1313,8 @@ void MobileOpenGL2Graphics::drawTriangleArray(const GLint *const array,
 
 void MobileOpenGL2Graphics::drawLineArrays(const int size)
 {
-//    logger->log("allocate: %d, %ld", mVboBinded, size * sizeof(GLint));
-    mglBufferData(GL_ARRAY_BUFFER, size * sizeof(GLint),
-        mIntArray, GL_STREAM_DRAW);
+    mglBufferData(GL_ARRAY_BUFFER, size * sizeof(GLfloat),
+        mFloatArray, GL_STREAM_DRAW);
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif
