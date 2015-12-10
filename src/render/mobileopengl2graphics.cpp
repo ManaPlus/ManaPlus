@@ -77,6 +77,8 @@
 
 GLuint MobileOpenGL2Graphics::mTextureBinded = 0U;
 GLuint MobileOpenGL2Graphics::mTextureSizeUniform = 0U;
+int MobileOpenGL2Graphics::mTextureWidth = 1;
+int MobileOpenGL2Graphics::mTextureHeight = 1;
 #ifdef DEBUG_DRAW_CALLS
 unsigned int MobileOpenGL2Graphics::mDrawCalls = 0U;
 unsigned int MobileOpenGL2Graphics::mLastDrawCalls = 0U;
@@ -1118,10 +1120,15 @@ void MobileOpenGL2Graphics::bindTexture2(const GLenum target,
     {
         mTextureBinded = texture;
         glBindTexture(target, texture);
-        // need check sizes before update uniform
-        mglUniform2f(mTextureSizeUniform,
-            image->mTexWidth,
-            image->mTexHeight);
+        if (mTextureWidth != image->mTexWidth ||
+            mTextureHeight != image->mTexHeight)
+        {
+            mTextureWidth = image->mTexWidth;
+            mTextureHeight = image->mTexHeight;
+            mglUniform2f(mTextureSizeUniform,
+                image->mTexWidth,
+                image->mTexHeight);
+        }
     }
 }
 

@@ -108,6 +108,10 @@ class MobileOpenGL2Graphics final : public Graphics
         static void bindTexture2(const GLenum target,
                                  const Image *const image);
 
+        static GLuint mTextureSizeUniform;
+        static int mTextureWidth;
+        static int mTextureHeight;
+
         GLfloat *mFloatArray A_NONNULLPOINTER;
         GLfloat *mFloatArrayCached A_NONNULLPOINTER;
         ShaderProgram *mProgram;
@@ -118,7 +122,6 @@ class MobileOpenGL2Graphics final : public Graphics
         int mMaxVertices;
         GLuint mProgramId;
         GLuint mSimpleColorUniform;
-        static GLuint mTextureSizeUniform;
         GLint mPosAttrib;
         GLint mTextureColorUniform;
         GLuint mScreenUniform;
