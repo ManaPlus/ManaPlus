@@ -41,29 +41,56 @@ RenderType intToRenderType(const int mode)
         return getDefault();
 
     if (mode != RENDER_SOFTWARE
-#if defined(USE_OPENGL) && defined(ANDROID) && defined(USE_SDL2)
+#if defined(USE_OPENGL)
+
+// with OpenGL start
+#if defined(ANDROID)
+
+// with OpenGL + with ANDROID start
+#if defined(USE_SDL2)
         && mode != RENDER_GLES_OPENGL
         && mode != RENDER_SDL2_DEFAULT)
-#elif defined(USE_OPENGL) && defined(ANDROID) && !defined(USE_SDL2)
+#else  // defined(USE_SDL2)
+
         && mode != RENDER_GLES_OPENGL)
-#elif defined(USE_OPENGL) && !defined(ANDROID) && defined(USE_SDL2)
+#endif  // defined(USE_SDL2)
+// with OpenGL + with ANDROID end
+
+#else  // defined(ANDROID)
+
+// with OpenGL + without ANDROID start
+#if defined(USE_SDL2)
         && mode != RENDER_NORMAL_OPENGL
         && mode != RENDER_MODERN_OPENGL
         && mode != RENDER_SAFE_OPENGL
         && mode != RENDER_GLES_OPENGL
         && mode != RENDER_GLES2_OPENGL
         && mode != RENDER_SDL2_DEFAULT)
-#elif !defined(USE_OPENGL) && defined(USE_SDL2)
-        && mode != RENDER_SDL2_DEFAULT)
-#elif !defined(USE_OPENGL) && !defined(USE_SDL2)
-        )
-#elif defined(USE_OPENGL) && !defined(ANDROID) && !defined(USE_SDL2)
+#else  //  defined(USE_SDL2)
+
         && mode != RENDER_NORMAL_OPENGL
         && mode != RENDER_MODERN_OPENGL
         && mode != RENDER_SAFE_OPENGL
         && mode != RENDER_GLES_OPENGL
         && mode != RENDER_GLES2_OPENGL)
-#endif
+#endif  // defined(USE_SDL2)
+// with OpenGL + without ANDROID end
+
+#endif  // defined(ANDROID)
+// with OpenGL end
+
+#else  // defined(USE_OPENGL)
+
+// without OpenGL start
+#if defined(USE_SDL2)
+        && mode != RENDER_SDL2_DEFAULT)
+#elif !defined(USE_SDL2)
+        )
+#endif  // defined(USE_SDL2)
+// without OpenGL end
+
+#endif  // defined(USE_OPENGL)
+
     {
         return getDefault();
     }
