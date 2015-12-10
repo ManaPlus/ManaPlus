@@ -119,7 +119,9 @@ class MobileOpenGL2Graphics final : public Graphics
         GLint mTextureColorUniform;
         GLuint mScreenUniform;
         GLuint mDrawTypeUniform;
+#ifndef __native_client__
         GLuint mVao;
+#endif
         GLuint mVbo;
         GLuint mVboBinded;
         GLuint mAttributesBinded;

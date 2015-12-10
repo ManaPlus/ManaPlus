@@ -95,7 +95,9 @@ MobileOpenGL2Graphics::MobileOpenGL2Graphics() :
     mTextureColorUniform(0U),
     mScreenUniform(0U),
     mDrawTypeUniform(0U),
+#ifndef __native_client__
     mVao(0U),
+#endif
     mVbo(0U),
     mVboBinded(0U),
     mAttributesBinded(0U),
@@ -125,8 +127,10 @@ void MobileOpenGL2Graphics::deleteGLObjects()
 //        logger->log("delete buffer vbo: %u", mVbo);
         mglDeleteBuffers(1, &mVbo);
     }
+#ifndef __native_client__
     if (mVao)
         mglDeleteVertexArrays(1, &mVao);
+#endif
 }
 
 void MobileOpenGL2Graphics::initArrays(const int vertCount)
@@ -148,8 +152,10 @@ void MobileOpenGL2Graphics::initArrays(const int vertCount)
 
 void MobileOpenGL2Graphics::postInit()
 {
+#ifndef __native_client__
     mglGenVertexArrays(1, &mVao);
     mglBindVertexArray(mVao);
+#endif
     mglGenBuffers(1, &mVbo);
 //    logger->log("gen vbo buffer: %u", mVbo);
     bindArrayBuffer(mVbo);
