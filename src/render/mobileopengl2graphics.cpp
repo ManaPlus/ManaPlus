@@ -97,9 +97,7 @@ MobileOpenGL2Graphics::MobileOpenGL2Graphics() :
     mDrawTypeUniform(0U),
     mVao(0U),
     mVbo(0U),
-    mEbo(0U),
     mVboBinded(0U),
-    mEboBinded(0U),
     mAttributesBinded(0U),
     mColorAlpha(false),
     mTextureDraw(false),
@@ -126,11 +124,6 @@ void MobileOpenGL2Graphics::deleteGLObjects()
     {
 //        logger->log("delete buffer vbo: %u", mVbo);
         mglDeleteBuffers(1, &mVbo);
-    }
-    if (mEbo)
-    {
-//        logger->log("delete buffer ebo: %u", mEbo);
-        mglDeleteBuffers(1, &mEbo);
     }
     if (mVao)
         mglDeleteVertexArrays(1, &mVao);
@@ -160,9 +153,6 @@ void MobileOpenGL2Graphics::postInit()
     mglGenBuffers(1, &mVbo);
 //    logger->log("gen vbo buffer: %u", mVbo);
     bindArrayBuffer(mVbo);
-    mglGenBuffers(1, &mEbo);
-//    logger->log("gen ebo buffer: %u", mEbo);
-    bindElementBuffer(mEbo);
 
     logger->log("Compiling shaders");
     mProgram = shaders.getSimpleProgram();
@@ -203,7 +193,6 @@ void MobileOpenGL2Graphics::screenResized()
 {
     deleteGLObjects();
     mVboBinded = 0U;
-    mEboBinded = 0U;
     mAttributesBinded = 0U;
     postInit();
 }
@@ -357,11 +346,8 @@ void MobileOpenGL2Graphics::testDraw()
     };
 */
 //    logger->log("allocate: %d, %ld", mVboBinded, sizeof(vertices));
-//    logger->log("allocate ebo: %d, %ld", mEboBinded, sizeof(elements));
 //    mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
 //        vertices, GL_STREAM_DRAW);
-//    mglBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(elements),
-//        elements, GL_STREAM_DRAW);
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif
@@ -1156,20 +1142,6 @@ void MobileOpenGL2Graphics::bindArrayBuffer(const GLuint vbo)
             logger->log("bind wrong buffer: %u", vbo);
 */
         mAttributesBinded = 0U;
-    }
-}
-
-void MobileOpenGL2Graphics::bindElementBuffer(const GLuint ebo)
-{
-    if (mEboBinded != ebo)
-    {
-        mEboBinded = ebo;
-        logger->log("bind element: %u", ebo);
-        mglBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
-/*
-        if (mglIsBuffer(ebo) != GL_TRUE)
-            logger->log("bind wrong buffer: %u", vbo);
-*/
     }
 }
 

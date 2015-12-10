@@ -105,8 +105,6 @@ class MobileOpenGL2Graphics final : public Graphics
 
         inline void bindAttributes();
 
-        inline void bindElementBuffer(const GLuint ebo);
-
         GLint *mIntArray A_NONNULLPOINTER;
         GLint *mIntArrayCached A_NONNULLPOINTER;
         ShaderProgram *mProgram;
@@ -123,9 +121,7 @@ class MobileOpenGL2Graphics final : public Graphics
         GLuint mDrawTypeUniform;
         GLuint mVao;
         GLuint mVbo;
-        GLuint mEbo;
         GLuint mVboBinded;
-        GLuint mEboBinded;
         GLuint mAttributesBinded;
         bool mColorAlpha;
         bool mTextureDraw;
