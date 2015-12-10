@@ -975,7 +975,6 @@ void MobileOpenGL2Graphics::drawRectangle(const Rect& rect)
         x2, y1, 0, 0
     };
 
-//    logger->log("allocate: %d, %ld", mVboBinded, sizeof(vertices));
     mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
         vertices, GL_STREAM_DRAW);
 #ifdef DEBUG_DRAW_CALLS
@@ -1001,7 +1000,6 @@ void MobileOpenGL2Graphics::fillRectangle(const Rect& rect)
         x2, y2, 0, 0
     };
 
-//    logger->log("allocate: %d, %ld", mVboBinded, sizeof(vertices));
     mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
         vertices, GL_STREAM_DRAW);
 #ifdef DEBUG_DRAW_CALLS
@@ -1173,13 +1171,11 @@ void MobileOpenGL2Graphics::bindArrayBufferAndAttributes(const GLuint vbo)
 
         mAttributesBinded = mVboBinded;
         mglVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, 0);
-//        mglBindVertexBuffer(0, mVboBinded, 0, 4 * sizeof(GLfloat));
     }
     else if (mAttributesBinded != mVboBinded)
     {
         mAttributesBinded = mVboBinded;
         mglVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, 0);
-//        mglBindVertexBuffer(0, mVboBinded, 0, 4 * sizeof(GLfloat));
     }
 }
 
@@ -1189,7 +1185,6 @@ void MobileOpenGL2Graphics::bindAttributes()
     {
         mAttributesBinded = mVboBinded;
         mglVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, 0);
-//        mglBindVertexBuffer(0, mVboBinded, 0, 4 * sizeof(GLfloat));
     }
 }
 
@@ -1271,20 +1266,12 @@ void MobileOpenGL2Graphics::finalize(ImageVertexes *const vert)
     const int sz = static_cast<int>(floatTexPool.size());
     vbos.resize(sz);
     mglGenBuffers(sz, &vbos[0]);
-/*
-    for (int f = 0; f < sz; f ++)
-        logger->log("gen buffers: %u", vbos[f]);
-*/
 
     for (ft = floatTexPool.begin(), ivp = vp.begin(), ivbo = vbos.begin();
          ft != ft_end && ivp != ivp_end;
          ++ ft, ++ ivp, ++ ivbo)
     {
         bindArrayBuffer(*ivbo);
-/*
-        logger->log("allocate: %d, %ld", mVboBinded,
-            (*ivp) * sizeof(GLfloat));
-*/
         mglBufferData(GL_ARRAY_BUFFER, (*ivp) * sizeof(GLfloat),
             *ft, GL_STATIC_DRAW);
     }
