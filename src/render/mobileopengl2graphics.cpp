@@ -287,7 +287,7 @@ void MobileOpenGL2Graphics::drawQuad(const int srcX, const int srcY,
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+    mglDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
 
 void MobileOpenGL2Graphics::drawRescaledQuad(const int srcX, const int srcY,
@@ -318,7 +318,7 @@ void MobileOpenGL2Graphics::drawRescaledQuad(const int srcX, const int srcY,
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+    mglDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
 
 void MobileOpenGL2Graphics::drawImage(const Image *const image,
@@ -375,7 +375,7 @@ void MobileOpenGL2Graphics::testDraw()
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+    mglDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 //    glDrawElements(GL_TRIANGLE_STRIP, 4, GL_UNSIGNED_INT, 0);
 }
 
@@ -589,7 +589,7 @@ inline void MobileOpenGL2Graphics::drawVertexes(const
 #ifdef DEBUG_DRAW_CALLS
         mDrawCalls ++;
 #endif
-        glDrawArrays(GL_TRIANGLES, 0, *ivp / 4);
+        mglDrawArrays(GL_TRIANGLES, 0, *ivp / 4);
     }
 }
 
@@ -841,8 +841,6 @@ void MobileOpenGL2Graphics::updateScreen()
     if (isGLNotNull(mglFrameTerminator))
         mglFrameTerminator();
 #endif
-// may be need clear?
-//  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
     BLOCK_END("Graphics::updateScreen")
 }
 
@@ -850,8 +848,8 @@ void MobileOpenGL2Graphics::beginDraw()
 {
     setOpenGLFlags();
 #ifndef __native_client__
-    glDisable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);
-    glHint(GL_FRAGMENT_SHADER_DERIVATIVE_HINT_ARB, GL_FASTEST);
+    mglDisable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);
+    mglHint(GL_FRAGMENT_SHADER_DERIVATIVE_HINT_ARB, GL_FASTEST);
 #endif
     pushClipArea(Rect(0, 0, mRect.w, mRect.h));
 }
@@ -887,7 +885,7 @@ SDL_Surface* MobileOpenGL2Graphics::getScreenshot()
     GLubyte *const buf = new GLubyte[lineSize];
 
     // Grap the pixel buffer and write it to the SDL surface
-    glGetIntegerv(GL_PACK_ALIGNMENT, &pack);
+    mglGetIntegerv(GL_PACK_ALIGNMENT, &pack);
     glPixelStorei(GL_PACK_ALIGNMENT, 1);
     glReadPixels(0, 0, w, h, GL_RGB, GL_UNSIGNED_BYTE, screenshot->pixels);
 
@@ -923,7 +921,7 @@ void MobileOpenGL2Graphics::pushClipArea(const Rect &area)
     Graphics::pushClipArea(area);
     const ClipRect &clipArea = mClipStack.top();
 
-    glScissor(clipArea.x * mScale,
+    mglScissor(clipArea.x * mScale,
         (mRect.h - clipArea.y - clipArea.height) * mScale,
         clipArea.width * mScale,
         clipArea.height * mScale);
@@ -938,7 +936,7 @@ void MobileOpenGL2Graphics::popClipArea()
         return;
 
     const ClipRect &clipArea = mClipStack.top();
-    glScissor(clipArea.x * mScale,
+    mglScissor(clipArea.x * mScale,
         (mRect.h - clipArea.y - clipArea.height) * mScale,
         clipArea.width * mScale,
         clipArea.height * mScale);
@@ -958,7 +956,7 @@ void MobileOpenGL2Graphics::drawPoint(int x, int y)
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif
-    glDrawArrays(GL_POINTS, 0, 1);
+    mglDrawArrays(GL_POINTS, 0, 1);
 }
 
 void MobileOpenGL2Graphics::drawLine(int x1, int y1, int x2, int y2)
@@ -976,7 +974,7 @@ void MobileOpenGL2Graphics::drawLine(int x1, int y1, int x2, int y2)
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif
-    glDrawArrays(GL_LINES, 0, 2);
+    mglDrawArrays(GL_LINES, 0, 2);
 }
 
 void MobileOpenGL2Graphics::drawRectangle(const Rect& rect)
@@ -1001,7 +999,7 @@ void MobileOpenGL2Graphics::drawRectangle(const Rect& rect)
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif
-    glDrawArrays(GL_LINE_LOOP, 0, 4);
+    mglDrawArrays(GL_LINE_LOOP, 0, 4);
 }
 
 void MobileOpenGL2Graphics::fillRectangle(const Rect& rect)
@@ -1026,7 +1024,7 @@ void MobileOpenGL2Graphics::fillRectangle(const Rect& rect)
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+    mglDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
 
 void MobileOpenGL2Graphics::setTexturingAndBlending(const bool enable)
@@ -1040,7 +1038,7 @@ void MobileOpenGL2Graphics::setTexturingAndBlending(const bool enable)
         }
         if (!mAlpha)
         {
-            glEnable(GL_BLEND);
+            mglEnable(GL_BLEND);
             mAlpha = true;
         }
     }
@@ -1053,12 +1051,12 @@ void MobileOpenGL2Graphics::setTexturingAndBlending(const bool enable)
         }
         if (mAlpha && !mColorAlpha)
         {
-            glDisable(GL_BLEND);
+            mglDisable(GL_BLEND);
             mAlpha = false;
         }
         else if (!mAlpha && mColorAlpha)
         {
-            glEnable(GL_BLEND);
+            mglEnable(GL_BLEND);
             mAlpha = true;
         }
     }
@@ -1138,7 +1136,7 @@ void MobileOpenGL2Graphics::bindTexture2(const GLenum target,
     if (mTextureBinded != texture)
     {
         mTextureBinded = texture;
-        glBindTexture(target, texture);
+        mglBindTexture(target, texture);
         if (mTextureWidth != image->mTexWidth ||
             mTextureHeight != image->mTexHeight)
         {
@@ -1158,7 +1156,7 @@ void MobileOpenGL2Graphics::bindTexture(const GLenum target A_UNUSED,
     {
         // for safty not storing textures because cant update size uniform
         mTextureBinded = 0;
-        glBindTexture(target, texture);
+        mglBindTexture(target, texture);
     }
 }
 
@@ -1220,7 +1218,7 @@ void MobileOpenGL2Graphics::dumpSettings()
         test[1] = 0;
         test[2] = 0;
         test[3] = 0;
-        glGetIntegerv(f, &test[0]);
+        mglGetIntegerv(f, &test[0]);
         if (test[0] || test[1] || test[2] || test[3])
         {
             logger->log("\n%d = %d, %d, %d, %d", f,
@@ -1246,7 +1244,9 @@ void MobileOpenGL2Graphics::calcImageRect(ImageVertexes *const vert,
 
 void MobileOpenGL2Graphics::clearScreen() const
 {
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+    mglClear(GL_COLOR_BUFFER_BIT |
+        GL_DEPTH_BUFFER_BIT |
+        GL_STENCIL_BUFFER_BIT);
 }
 
 void MobileOpenGL2Graphics::createGLContext()
@@ -1312,7 +1312,7 @@ void MobileOpenGL2Graphics::drawTriangleArray(const int size)
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif
-    glDrawArrays(GL_TRIANGLES, 0, size / 4);
+    mglDrawArrays(GL_TRIANGLES, 0, size / 4);
 }
 
 void MobileOpenGL2Graphics::drawTriangleArray(const GLfloat *const array,
@@ -1323,7 +1323,7 @@ void MobileOpenGL2Graphics::drawTriangleArray(const GLfloat *const array,
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif
-    glDrawArrays(GL_TRIANGLES, 0, size / 4);
+    mglDrawArrays(GL_TRIANGLES, 0, size / 4);
 }
 
 void MobileOpenGL2Graphics::drawLineArrays(const int size)
@@ -1333,7 +1333,7 @@ void MobileOpenGL2Graphics::drawLineArrays(const int size)
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif
-    glDrawArrays(GL_LINES, 0, size / 4);
+    mglDrawArrays(GL_LINES, 0, size / 4);
 }
 
 #ifdef DEBUG_BIND_TEXTURE

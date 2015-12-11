@@ -283,7 +283,7 @@ void ModernOpenGLGraphics::drawQuad(const int srcX, const int srcY,
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+    mglDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
 
 void ModernOpenGLGraphics::drawRescaledQuad(const int srcX, const int srcY,
@@ -311,7 +311,7 @@ void ModernOpenGLGraphics::drawRescaledQuad(const int srcX, const int srcY,
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+    mglDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
 
 void ModernOpenGLGraphics::drawImage(const Image *const image,
@@ -368,7 +368,7 @@ void ModernOpenGLGraphics::testDraw()
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+    mglDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 //    glDrawElements(GL_TRIANGLE_STRIP, 4, GL_UNSIGNED_INT, 0);
 }
 
@@ -580,7 +580,7 @@ inline void ModernOpenGLGraphics::drawVertexes(const
         mDrawCalls ++;
 #endif
 //        logger->log("draw from array: %u", *ivbo);
-        glDrawArrays(GL_TRIANGLES, 0, *ivp / 4);
+        mglDrawArrays(GL_TRIANGLES, 0, *ivp / 4);
     }
 }
 
@@ -833,16 +833,14 @@ void ModernOpenGLGraphics::updateScreen()
     if (isGLNotNull(mglFrameTerminator))
         mglFrameTerminator();
 #endif
-// may be need clear?
-//  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
     BLOCK_END("Graphics::updateScreen")
 }
 
 void ModernOpenGLGraphics::beginDraw()
 {
     setOpenGLFlags();
-    glDisable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);
-    glHint(GL_FRAGMENT_SHADER_DERIVATIVE_HINT_ARB, GL_FASTEST);
+    mglDisable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);
+    mglHint(GL_FRAGMENT_SHADER_DERIVATIVE_HINT_ARB, GL_FASTEST);
     pushClipArea(Rect(0, 0, mRect.w, mRect.h));
 }
 
@@ -877,7 +875,7 @@ SDL_Surface* ModernOpenGLGraphics::getScreenshot()
     GLubyte *const buf = new GLubyte[lineSize];
 
     // Grap the pixel buffer and write it to the SDL surface
-    glGetIntegerv(GL_PACK_ALIGNMENT, &pack);
+    mglGetIntegerv(GL_PACK_ALIGNMENT, &pack);
     glPixelStorei(GL_PACK_ALIGNMENT, 1);
     glReadPixels(0, 0, w, h, GL_RGB, GL_UNSIGNED_BYTE, screenshot->pixels);
 
@@ -913,7 +911,7 @@ void ModernOpenGLGraphics::pushClipArea(const Rect &area)
     Graphics::pushClipArea(area);
     const ClipRect &clipArea = mClipStack.top();
 
-    glScissor(clipArea.x * mScale,
+    mglScissor(clipArea.x * mScale,
         (mRect.h - clipArea.y - clipArea.height) * mScale,
         clipArea.width * mScale,
         clipArea.height * mScale);
@@ -928,7 +926,7 @@ void ModernOpenGLGraphics::popClipArea()
         return;
 
     const ClipRect &clipArea = mClipStack.top();
-    glScissor(clipArea.x * mScale,
+    mglScissor(clipArea.x * mScale,
         (mRect.h - clipArea.y - clipArea.height) * mScale,
         clipArea.width * mScale,
         clipArea.height * mScale);
@@ -949,7 +947,7 @@ void ModernOpenGLGraphics::drawPoint(int x, int y)
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif
-    glDrawArrays(GL_POINTS, 0, 1);
+    mglDrawArrays(GL_POINTS, 0, 1);
 }
 
 void ModernOpenGLGraphics::drawLine(int x1, int y1, int x2, int y2)
@@ -968,7 +966,7 @@ void ModernOpenGLGraphics::drawLine(int x1, int y1, int x2, int y2)
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif
-    glDrawArrays(GL_LINES, 0, 2);
+    mglDrawArrays(GL_LINES, 0, 2);
 }
 
 void ModernOpenGLGraphics::drawRectangle(const Rect& rect)
@@ -994,7 +992,7 @@ void ModernOpenGLGraphics::drawRectangle(const Rect& rect)
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif
-    glDrawArrays(GL_LINE_LOOP, 0, 4);
+    mglDrawArrays(GL_LINE_LOOP, 0, 4);
 }
 
 void ModernOpenGLGraphics::fillRectangle(const Rect& rect)
@@ -1020,7 +1018,7 @@ void ModernOpenGLGraphics::fillRectangle(const Rect& rect)
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+    mglDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
 
 void ModernOpenGLGraphics::setTexturingAndBlending(const bool enable)
@@ -1034,7 +1032,7 @@ void ModernOpenGLGraphics::setTexturingAndBlending(const bool enable)
         }
         if (!mAlpha)
         {
-            glEnable(GL_BLEND);
+            mglEnable(GL_BLEND);
             mAlpha = true;
         }
     }
@@ -1047,12 +1045,12 @@ void ModernOpenGLGraphics::setTexturingAndBlending(const bool enable)
         }
         if (mAlpha && !mColorAlpha)
         {
-            glDisable(GL_BLEND);
+            mglDisable(GL_BLEND);
             mAlpha = false;
         }
         else if (!mAlpha && mColorAlpha)
         {
-            glEnable(GL_BLEND);
+            mglEnable(GL_BLEND);
             mAlpha = true;
         }
     }
@@ -1131,7 +1129,7 @@ void ModernOpenGLGraphics::bindTexture(const GLenum target,
     if (mTextureBinded != texture)
     {
         mTextureBinded = texture;
-        glBindTexture(target, texture);
+        mglBindTexture(target, texture);
     }
 }
 
@@ -1226,7 +1224,7 @@ void ModernOpenGLGraphics::dumpSettings()
         test[1] = 0;
         test[2] = 0;
         test[3] = 0;
-        glGetIntegerv(f, &test[0]);
+        mglGetIntegerv(f, &test[0]);
         if (test[0] || test[1] || test[2] || test[3])
         {
             logger->log("\n%d = %d, %d, %d, %d", f,
@@ -1252,7 +1250,9 @@ void ModernOpenGLGraphics::calcImageRect(ImageVertexes *const vert,
 
 void ModernOpenGLGraphics::clearScreen() const
 {
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+    mglClear(GL_COLOR_BUFFER_BIT |
+        GL_DEPTH_BUFFER_BIT |
+        GL_STENCIL_BUFFER_BIT);
 }
 
 void ModernOpenGLGraphics::createGLContext()
@@ -1324,7 +1324,7 @@ void ModernOpenGLGraphics::drawTriangleArray(const int size)
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif
-    glDrawArrays(GL_TRIANGLES, 0, size / 4);
+    mglDrawArrays(GL_TRIANGLES, 0, size / 4);
 }
 
 void ModernOpenGLGraphics::drawTriangleArray(const GLint *const array,
@@ -1336,7 +1336,7 @@ void ModernOpenGLGraphics::drawTriangleArray(const GLint *const array,
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif
-    glDrawArrays(GL_TRIANGLES, 0, size / 4);
+    mglDrawArrays(GL_TRIANGLES, 0, size / 4);
 }
 
 void ModernOpenGLGraphics::drawLineArrays(const int size)
@@ -1347,7 +1347,7 @@ void ModernOpenGLGraphics::drawLineArrays(const int size)
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif
-    glDrawArrays(GL_LINES, 0, size / 4);
+    mglDrawArrays(GL_LINES, 0, size / 4);
 }
 
 #ifdef DEBUG_BIND_TEXTURE

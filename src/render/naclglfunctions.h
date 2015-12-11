@@ -88,6 +88,16 @@ extern PP_Resource gles2Context;
     gles2Interface->CreateProgram(gles2Context)
 #define mglGetProgramInfoLog(...) \
     gles2Interface->GetProgramInfoLog(gles2Context, __VA_ARGS__)
+#define mglDisable(...) \
+    gles2Interface->Disable(gles2Context, __VA_ARGS__)
+#define mglHint(...) \
+    gles2Interface->Hint(gles2Context, __VA_ARGS__)
+#define mglScissor(...) \
+    gles2Interface->Scissor(gles2Context, __VA_ARGS__)
+#define mglEnable(...) \
+    gles2Interface->Enable(gles2Context, __VA_ARGS__)
+#define mglGetIntegerv(...) \
+    gles2Interface->GetIntegerv(gles2Context, __VA_ARGS__)
 
 #endif  // defined(__native_client__) && defined(USE_OPENGL)
 #endif  // RENDER_NACLGLFUNCTIONS_H

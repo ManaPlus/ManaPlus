@@ -642,6 +642,8 @@ void Graphics::popClipArea()
 #ifdef USE_OPENGL
 void Graphics::setOpenGLFlags()
 {
+    // here disable/enable probably need convert to mgl
+
     glEnable(GL_SCISSOR_TEST);
 
     glDisable(GL_MULTISAMPLE);

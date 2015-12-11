@@ -76,6 +76,24 @@ defName(glValidateProgram);
 defName(glGetProgramInfoLog);
 defName(glBindAttribLocation);
 defName(glActiveTexture);
+
+#define mglDrawArrays(...) \
+    glDrawArrays(__VA_ARGS__)
+#define mglDisable(...) \
+    glDisable(__VA_ARGS__)
+#define mglHint(...) \
+    glHint(__VA_ARGS__)
+#define mglScissor(...) \
+    glScissor(__VA_ARGS__)
+#define mglEnable(...) \
+    glEnable(__VA_ARGS__)
+#define mglBindTexture(...) \
+    glBindTexture(__VA_ARGS__)
+#define mglGetIntegerv(...) \
+    glGetIntegerv(__VA_ARGS__)
+#define mglClear(...) \
+    glClear(__VA_ARGS__)
+
 #endif
 defName(glGetAttribLocation);
 defName(glUniform3f);
