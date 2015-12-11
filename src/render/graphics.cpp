@@ -77,6 +77,9 @@
 #include "resources/imagehelper.h"
 #ifdef USE_OPENGL
 #include "resources/openglimagehelper.h"
+#if defined(__native_client__)
+#include "render/naclgles.h"
+#endif
 #endif
 
 #ifdef USE_OPENGL
@@ -266,6 +269,10 @@ bool Graphics::setOpenGLMode()
 #if defined(USE_X11)
     Glx::initFunctions();
 #endif
+#ifdef __native_client__
+    NaclGles::initGles();
+#endif
+
 #ifdef USE_SDL2
     int w1 = 0;
     int h1 = 0;

@@ -33,7 +33,7 @@
 #endif  // USE_SDL2
 #elif defined(__native_client__)
 #include <GL/Regal.h>
-#include "render/naclgles.h"
+#include "render/naclglfunctions.h"
 #else  // ANDROID
 #include <GL/glx.h>
 #endif  // ANDROID
@@ -577,7 +577,7 @@ void GraphicsManager::updateExtensions()
     else
     {   // get extensions in old way
         char const *extensions = reinterpret_cast<char const *>(
-            glGetString(GL_EXTENSIONS));
+            mglGetString(GL_EXTENSIONS));
         if (extensions)
         {
             logger->log1(extensions);
@@ -768,7 +768,7 @@ void GraphicsManager::updateTextureFormat() const
 
 void GraphicsManager::logString(const char *const format, const int num)
 {
-    const char *str = reinterpret_cast<const char*>(glGetString(num));
+    const char *str = reinterpret_cast<const char*>(mglGetString(num));
     if (!str)
         logger->log(format, "?");
     else
@@ -777,7 +777,7 @@ void GraphicsManager::logString(const char *const format, const int num)
 
 std::string GraphicsManager::getGLString(const int num)
 {
-    const char *str = reinterpret_cast<const char*>(glGetString(num));
+    const char *str = reinterpret_cast<const char*>(mglGetString(num));
     return str ? str : "";
 }
 
@@ -895,7 +895,6 @@ void GraphicsManager::deleteFBO(FBOInfo *const fbo)
 void GraphicsManager::initOpenGLFunctions()
 {
 #ifdef __native_client__
-    NaclGles::initGles();
     emulateFunction(glTextureSubImage2D);
 #else
     const bool is10 = checkGLVersion(1, 0);

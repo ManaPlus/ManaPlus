@@ -93,6 +93,8 @@ defName(glActiveTexture);
     glGetIntegerv(__VA_ARGS__)
 #define mglClear(...) \
     glClear(__VA_ARGS__)
+#define mglGetString(...) \
+    glGetString(__VA_ARGS__)
 
 #endif
 defName(glGetAttribLocation);

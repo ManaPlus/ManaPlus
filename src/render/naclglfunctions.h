@@ -98,6 +98,8 @@ extern PP_Resource gles2Context;
     gles2Interface->Enable(gles2Context, __VA_ARGS__)
 #define mglGetIntegerv(...) \
     gles2Interface->GetIntegerv(gles2Context, __VA_ARGS__)
+#define mglGetString(...) \
+    gles2Interface->GetString(gles2Context, __VA_ARGS__)
 
 #endif  // defined(__native_client__) && defined(USE_OPENGL)
 #endif  // RENDER_NACLGLFUNCTIONS_H
