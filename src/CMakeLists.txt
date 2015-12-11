@@ -1018,6 +1018,7 @@ SET(SRCS
     mumblemanager.h
     navigationmanager.cpp
     navigationmanager.h
+    render/naclglfunctions.h
     render/normalopenglgraphics.cpp
     render/normalopenglgraphics.h
     notifymanager.cpp

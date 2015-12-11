@@ -520,6 +520,7 @@ SRC += events/actionevent.h \
 	      render/mobileopenglgraphics.h \
 	      render/modernopenglgraphics.cpp \
 	      render/modernopenglgraphics.h \
+	      render/naclglfunctions.h \
 	      render/normalopenglgraphics.cpp \
 	      render/normalopenglgraphics.h \
 	      input/mouseinput.h \
