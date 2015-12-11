@@ -1274,6 +1274,9 @@ void GraphicsManager::initOpenGLFunctions()
 void GraphicsManager::updateLimits()
 {
     GLint value = 0;
+#ifdef __native_client__
+    mMaxVertices = 500;
+#else
     glGetIntegerv(GL_MAX_ELEMENTS_VERTICES, &value);
     logger->log("GL_MAX_ELEMENTS_VERTICES: %d", value);
 
@@ -1290,6 +1293,7 @@ void GraphicsManager::updateLimits()
             "Overriding to 500");
         mMaxVertices = 500;
     }
+#endif
 
     value = 0;
     glGetIntegerv(GL_MAX_RENDERBUFFER_SIZE, &value);
