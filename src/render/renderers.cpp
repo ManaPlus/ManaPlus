@@ -56,6 +56,20 @@ RenderType intToRenderType(const int mode)
 #endif  // defined(USE_SDL2)
 // with OpenGL + with ANDROID end
 
+#elif defined(__native_client__)
+
+// with OpenGL + with nacl start
+#if defined(USE_SDL2)
+        && mode != RENDER_SAFE_OPENGL
+        && mode != RENDER_GLES2_OPENGL
+        && mode != RENDER_SDL2_DEFAULT)
+#else  //  defined(USE_SDL2)
+
+        && mode != RENDER_SAFE_OPENGL
+        && mode != RENDER_GLES2_OPENGL)
+#endif  // defined(USE_SDL2)
+// with OpenGL + with nacl end
+
 #else  // defined(ANDROID)
 
 // with OpenGL + without ANDROID start

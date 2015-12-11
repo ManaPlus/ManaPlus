@@ -60,7 +60,44 @@ const int renderToIndex[] =
     2   // RENDER_GLES_OPENGL
 };
 
-#else  // ANDROID
+#elif defined(__native_client__)
+// defined OPENGL nacl
+
+// map for index to RenderType
+const RenderType indexToRender[] =
+{
+    RENDER_SOFTWARE,
+    RENDER_SDL2_DEFAULT,
+    RENDER_SAFE_OPENGL,
+    RENDER_GLES2_OPENGL
+};
+
+const char *OPENGL_NAME[] =
+{
+    // TRANSLATORS: draw backend
+    N_("Software"),
+    // TRANSLATORS: draw backend
+    N_("SDL2 default"),
+    // TRANSLATORS: draw backend
+    N_("Safe OpenGL"),
+    // TRANSLATORS: draw backend
+    N_("Mobile OpenGL ES 2")
+};
+
+const int renderModesListSize = 4;
+
+const int renderToIndex[] =
+{
+    0,  // RENDER_SOFTWARE
+    3,  // RENDER_NORMAL_OPENGL
+    2,  // RENDER_SAFE_OPENGL
+    3,  // RENDER_GLES_OPENGL
+    1,  // RENDER_SDL2_DEFAULT
+    3,  // RENDER_MODERN_OPENGL
+    3   // RENDER_GLES2_OPENGL
+};
+
+#else  // ANDROID or nacl
 // defined OPENGL
 
 // map for index to RenderType
