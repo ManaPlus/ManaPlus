@@ -75,6 +75,8 @@
     var[vp + 22] = x2; \
     var[vp + 23] = y2;
 
+#define toGL static_cast<GLfloat>
+
 GLuint MobileOpenGL2Graphics::mTextureBinded = 0U;
 GLuint MobileOpenGL2Graphics::mTextureSizeUniform = 0U;
 int MobileOpenGL2Graphics::mTextureWidth = 1;
@@ -184,9 +186,7 @@ void MobileOpenGL2Graphics::postInit()
 
     mglUniform1f(mTextureColorUniform, 1.0f);
 
-    //mglBindVertexBuffer(0, mVbo, 0, 4 * sizeof(GLfloat));
-
-    mglVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, 0);
+    mglVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, nullptr);
     mglEnableVertexAttribArray(0);
     mAttributesBinded = mVbo;
 
@@ -266,13 +266,17 @@ void MobileOpenGL2Graphics::drawQuad(const int srcX, const int srcY,
     const GLfloat texY2 = srcY + height;
     const GLfloat x2 = dstX + width;
     const GLfloat y2 = dstY + height;
+    const GLfloat srcX2 = toGL(srcX);
+    const GLfloat srcY2 = toGL(srcY);
+    const GLfloat dstX2 = toGL(dstX);
+    const GLfloat dstY2 = toGL(dstY);
 
     GLfloat vertices[] =
     {
-        dstX, dstY, srcX,  srcY,
-        x2,   dstY, texX2, srcY,
-        dstX, y2,   srcX,  texY2,
-        x2,   y2,   texX2, texY2
+        dstX2, dstY2, srcX2, srcY2,
+        x2,    dstY2, texX2, srcY2,
+        dstX2, y2,    srcX2, texY2,
+        x2,    y2,    texX2, texY2
     };
 
     mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
@@ -293,13 +297,17 @@ void MobileOpenGL2Graphics::drawRescaledQuad(const int srcX, const int srcY,
     const GLfloat texY2 = srcY + height;
     const GLfloat x2 = dstX + desiredWidth;
     const GLfloat y2 = dstY + desiredHeight;
+    const GLfloat srcX2 = toGL(srcX);
+    const GLfloat srcY2 = toGL(srcY);
+    const GLfloat dstX2 = toGL(dstX);
+    const GLfloat dstY2 = toGL(dstY);
 
     GLfloat vertices[] =
     {
-        dstX, dstY, srcX,  srcY,
-        x2,   dstY, texX2, srcY,
-        dstX, y2,   srcX,  texY2,
-        x2,   y2,   texX2, texY2
+        dstX2, dstY2, srcX2, srcY2,
+        x2,    dstY2, texX2, srcY2,
+        dstX2, y2,    srcX2, texY2,
+        x2,    y2,    texX2, texY2
     };
 
     mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
@@ -437,14 +445,16 @@ void MobileOpenGL2Graphics::drawPatternInline(const Image *const image,
         return;
 
     const SDL_Rect &imageRect = image->mBounds;
-    const int srcX = imageRect.x;
-    const int srcY = imageRect.y;
     const int iw = imageRect.w;
     const int ih = imageRect.h;
 
     if (iw == 0 || ih == 0)
         return;
 
+    const int srcX = imageRect.x;
+    const int srcY = imageRect.y;
+    const GLfloat srcX2 = toGL(srcX);
+    const GLfloat srcY2 = toGL(srcY);
     const ClipRect &clipArea = mClipStack.top();
     const int x2 = x + clipArea.xOffset;
     const int y2 = y + clipArea.yOffset;
@@ -464,18 +474,17 @@ void MobileOpenGL2Graphics::drawPatternInline(const Image *const image,
     for (int py = 0; py < h; py += ih)
     {
         const int height = (py + ih >= h) ? h - py : ih;
-        const int texY2 = srcY + height;
-        const int dstY = y2 + py;
+        const GLfloat texY2 = srcY + height;
+        const GLfloat dstY = y2 + py;
         for (int px = 0; px < w; px += iw)
         {
             const int width = (px + iw >= w) ? w - px : iw;
-            const int dstX = x2 + px;
-
-            const int texX2 = srcX + width;
+            const GLfloat dstX = x2 + px;
+            const GLfloat texX2 = srcX + width;
 
             vertFill2D(mFloatArray,
-                srcX, srcY, texX2, texY2,
-                dstX, dstY, width, height);
+                srcX2, srcY2, texX2, texY2,
+                dstX,  dstY,  width, height);
 
             vp += 24;
             if (vp >= vLimit)
@@ -502,12 +511,15 @@ void MobileOpenGL2Graphics::drawRescaledPattern(const Image *const image,
         return;
 
     const SDL_Rect &imageRect = image->mBounds;
-    const int srcX = imageRect.x;
-    const int srcY = imageRect.y;
     const int iw = imageRect.w;
     const int ih = imageRect.h;
     if (iw == 0 || ih == 0)
         return;
+
+    const int srcX = imageRect.x;
+    const int srcY = imageRect.y;
+    const GLfloat srcX2 = toGL(srcX);
+    const GLfloat srcY2 = toGL(srcY);
 
 #ifdef DEBUG_BIND_TEXTURE
     debugBindTexture(image);
@@ -532,18 +544,18 @@ void MobileOpenGL2Graphics::drawRescaledPattern(const Image *const image,
     {
         const int height = (py + scaledHeight >= h)
             ? h - py : scaledHeight;
-        const int dstY = y2 + py;
-        const int scaledY = srcY + height / scaleFactorH;
+        const GLfloat dstY = y2 + py;
+        const GLfloat scaledY = srcY + height / scaleFactorH;
         for (int px = 0; px < w; px += scaledWidth)
         {
             const int width = (px + scaledWidth >= w)
                 ? w - px : scaledWidth;
             const int dstX = x2 + px;
-            const int scaledX = srcX + width / scaleFactorW;
+            const GLfloat scaledX = srcX + width / scaleFactorW;
 
             vertFill2D(mFloatArray,
-                srcX, srcY, scaledX, scaledY,
-                dstX, dstY, width, height);
+                srcX2, srcY2, scaledX, scaledY,
+                dstX,  dstY,  width,   height);
 
             vp += 24;
             if (vp >= vLimit)
@@ -595,13 +607,16 @@ void MobileOpenGL2Graphics::calcPatternInline(ImageVertexes *const vert,
         return;
 
     const SDL_Rect &imageRect = image->mBounds;
-    const int srcX = imageRect.x;
-    const int srcY = imageRect.y;
     const int iw = imageRect.w;
     const int ih = imageRect.h;
 
     if (iw == 0 || ih == 0)
         return;
+
+    const int srcX = imageRect.x;
+    const int srcY = imageRect.y;
+    const GLfloat srcX2 = toGL(srcX);
+    const GLfloat srcY2 = toGL(srcY);
 
     const ClipRect &clipArea = mClipStack.top();
     const int x2 = x + clipArea.xOffset;
@@ -616,18 +631,18 @@ void MobileOpenGL2Graphics::calcPatternInline(ImageVertexes *const vert,
 
     for (int py = 0; py < h; py += ih)
     {
-        const int height = (py + ih >= h) ? h - py : ih;
-        const int dstY = y2 + py;
-        const int texY2 = srcY + height;
+        const GLfloat height = (py + ih >= h) ? h - py : ih;
+        const GLfloat dstY = y2 + py;
+        const GLfloat texY2 = srcY + height;
         for (int px = 0; px < w; px += iw)
         {
-            const int width = (px + iw >= w) ? w - px : iw;
-            const int dstX = x2 + px;
-            const int texX2 = srcX + width;
+            const GLfloat width = (px + iw >= w) ? w - px : iw;
+            const GLfloat dstX = x2 + px;
+            const GLfloat texX2 = srcX2 + width;
 
             vertFill2D(floatArray,
-                srcX, srcY, texX2, texY2,
-                dstX, dstY, width, height);
+                srcX2, srcY2, texX2, texY2,
+                dstX,  dstY,  width, height);
 
             vp += 24;
             if (vp >= vLimit)
@@ -723,17 +738,20 @@ void MobileOpenGL2Graphics::calcTileVertexesInline(ImageVertexes *const vert,
         return;
 
     const SDL_Rect &imageRect = image->mBounds;
-    const int srcX = imageRect.x;
-    const int srcY = imageRect.y;
     const int w = imageRect.w;
     const int h = imageRect.h;
 
     if (w == 0 || h == 0)
         return;
 
+    const int srcX = imageRect.x;
+    const int srcY = imageRect.y;
+    const GLfloat srcX2 = toGL(srcX);
+    const GLfloat srcY2 = toGL(srcY);
+
     const ClipRect &clipArea = mClipStack.top();
-    const int x2 = dstX + clipArea.xOffset;
-    const int y2 = dstY + clipArea.yOffset;
+    const GLfloat x2 = dstX + clipArea.xOffset;
+    const GLfloat y2 = dstY + clipArea.yOffset;
 
     const unsigned int vLimit = mMaxVertices * 4;
 
@@ -741,14 +759,14 @@ void MobileOpenGL2Graphics::calcTileVertexesInline(ImageVertexes *const vert,
 
     unsigned int vp = ogl.continueVp();
 
-    int texX2 = srcX + w;
-    int texY2 = srcY + h;
+    GLfloat texX2 = srcX + w;
+    GLfloat texY2 = srcY + h;
 
     GLfloat *const floatArray = ogl.continueFloatTexArray();
 
     vertFill2D(floatArray,
-        srcX, srcY, texX2, texY2,
-        x2, y2, w, h);
+        srcX2, srcY2, texX2, texY2,
+        x2,    y2,    w,     h);
 
     vp += 24;
     if (vp >= vLimit)
@@ -930,7 +948,7 @@ void MobileOpenGL2Graphics::drawPoint(int x, int y)
     const ClipRect &clipArea = mClipStack.top();
     GLfloat vertices[] =
     {
-        x + clipArea.xOffset, y + clipArea.yOffset, 0, 0
+        toGL(x + clipArea.xOffset), toGL(y + clipArea.yOffset), 0.0f, 0.0f
     };
     mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
         vertices, GL_STREAM_DRAW);
@@ -947,8 +965,8 @@ void MobileOpenGL2Graphics::drawLine(int x1, int y1, int x2, int y2)
     const ClipRect &clipArea = mClipStack.top();
     GLfloat vertices[] =
     {
-        x1 + clipArea.xOffset, y1 + clipArea.yOffset, 0, 0,
-        x2 + clipArea.xOffset, y2 + clipArea.yOffset, 0, 0
+        toGL(x1 + clipArea.xOffset), toGL(y1 + clipArea.yOffset), 0.0f, 0.0f,
+        toGL(x2 + clipArea.xOffset), toGL(y2 + clipArea.yOffset), 0.0f, 0.0f
     };
     mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
         vertices, GL_STREAM_DRAW);
@@ -963,16 +981,16 @@ void MobileOpenGL2Graphics::drawRectangle(const Rect& rect)
     setTexturingAndBlending(false);
     bindArrayBufferAndAttributes(mVbo);
     const ClipRect &clipArea = mClipStack.top();
-    const int x1 = rect.x + clipArea.xOffset;
-    const int y1 = rect.y + clipArea.yOffset;
-    const int x2 = x1 + rect.width;
-    const int y2 = y1 + rect.height;
+    const GLfloat x1 = rect.x + clipArea.xOffset;
+    const GLfloat y1 = rect.y + clipArea.yOffset;
+    const GLfloat x2 = x1 + rect.width;
+    const GLfloat y2 = y1 + rect.height;
     GLfloat vertices[] =
     {
-        x1, y1, 0, 0,
-        x1, y2, 0, 0,
-        x2, y2, 0, 0,
-        x2, y1, 0, 0
+        x1, y1, 0.0f, 0.0f,
+        x1, y2, 0.0f, 0.0f,
+        x2, y2, 0.0f, 0.0f,
+        x2, y1, 0.0f, 0.0f
     };
 
     mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
@@ -988,16 +1006,16 @@ void MobileOpenGL2Graphics::fillRectangle(const Rect& rect)
     setTexturingAndBlending(false);
     bindArrayBufferAndAttributes(mVbo);
     const ClipRect &clipArea = mClipStack.top();
-    const int x1 = rect.x + clipArea.xOffset;
-    const int y1 = rect.y + clipArea.yOffset;
-    const int x2 = x1 + rect.width;
-    const int y2 = y1 + rect.height;
+    const GLfloat x1 = rect.x + clipArea.xOffset;
+    const GLfloat y1 = rect.y + clipArea.yOffset;
+    const GLfloat x2 = x1 + rect.width;
+    const GLfloat y2 = y1 + rect.height;
     GLfloat vertices[] =
     {
-        x1, y1, 0, 0,
-        x2, y1, 0, 0,
-        x1, y2, 0, 0,
-        x2, y2, 0, 0
+        x1, y1, 0.0f, 0.0f,
+        x2, y1, 0.0f, 0.0f,
+        x1, y2, 0.0f, 0.0f,
+        x2, y2, 0.0f, 0.0f
     };
 
     mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
@@ -1069,14 +1087,14 @@ void MobileOpenGL2Graphics::drawNet(const int x1, const int y1,
     for (int y = y1; y < y2; y += height)
     {
         mFloatArray[vp + 0] = xs1;
-        mFloatArray[vp + 1] = y;
-        mFloatArray[vp + 2] = 0;
-        mFloatArray[vp + 3] = 0;
+        mFloatArray[vp + 1] = toGL(y);
+        mFloatArray[vp + 2] = 0.0f;
+        mFloatArray[vp + 3] = 0.0f;
 
         mFloatArray[vp + 4] = xs2;
-        mFloatArray[vp + 5] = y;
-        mFloatArray[vp + 6] = 0;
-        mFloatArray[vp + 7] = 0;
+        mFloatArray[vp + 5] = toGL(y);
+        mFloatArray[vp + 6] = 0.0f;
+        mFloatArray[vp + 7] = 0.0f;
 
         vp += 8;
         if (vp >= vLimit)
@@ -1088,12 +1106,12 @@ void MobileOpenGL2Graphics::drawNet(const int x1, const int y1,
 
     for (int x = x1; x < x2; x += width)
     {
-        mFloatArray[vp + 0] = x;
+        mFloatArray[vp + 0] = toGL(x);
         mFloatArray[vp + 1] = ys1;
         mFloatArray[vp + 2] = 0.0f;
         mFloatArray[vp + 3] = 0.0f;
 
-        mFloatArray[vp + 4] = x;
+        mFloatArray[vp + 4] = toGL(x);
         mFloatArray[vp + 5] = ys2;
         mFloatArray[vp + 6] = 0.0f;
         mFloatArray[vp + 7] = 0.0f;
@@ -1170,12 +1188,12 @@ void MobileOpenGL2Graphics::bindArrayBufferAndAttributes(const GLuint vbo)
         mglBindBuffer(GL_ARRAY_BUFFER, vbo);
 
         mAttributesBinded = mVboBinded;
-        mglVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, 0);
+        mglVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, nullptr);
     }
     else if (mAttributesBinded != mVboBinded)
     {
         mAttributesBinded = mVboBinded;
-        mglVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, 0);
+        mglVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, nullptr);
     }
 }
 
@@ -1184,7 +1202,7 @@ void MobileOpenGL2Graphics::bindAttributes()
     if (mAttributesBinded != mVboBinded)
     {
         mAttributesBinded = mVboBinded;
-        mglVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, 0);
+        mglVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, nullptr);
     }
 }
 
