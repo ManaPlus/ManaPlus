@@ -23,11 +23,13 @@
 
 #ifdef USE_OPENGL
 
+#ifndef GL_NUM_EXTENSIONS
 #define GL_NUM_EXTENSIONS                 0x821D
 #define GL_DEPTH_ATTACHMENT               0x8D00
 #define GL_COLOR_ATTACHMENT0              0x8CE0
 #define GL_FRAMEBUFFER                    0x8D40
 #define GL_RENDERBUFFER                   0x8D41
+#endif
 
 #ifndef GL_COMPRESSED_RGBA_ARB
 #define GL_COMPRESSED_RGBA_ARB            0x84EE

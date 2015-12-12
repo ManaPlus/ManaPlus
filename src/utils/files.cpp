@@ -74,7 +74,9 @@ void Files::extractLocale()
 
 namespace
 {
+#ifdef ANDROID
     int mFilesCount = 0;
+#endif
     Files::CopyFileCallbackPtr mCallbackPtr = nullptr;
 }  // namespace
 

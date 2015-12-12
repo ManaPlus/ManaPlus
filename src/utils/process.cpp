@@ -32,7 +32,9 @@
 
 #include "debug.h"
 
+#ifndef __native_client__
 const int timeOut = 10;
+#endif
 
 #ifdef WIN32
 
@@ -216,15 +218,19 @@ bool execFile(const std::string &pathName, const std::string &name,
 
 #else
 
-int execFileWait(const std::string &pathName, const std::string &name,
-                 const std::string &arg1, const std::string &arg2,
-                 int waitTime)
+int execFileWait(const std::string &pathName A_UNUSED,
+                 const std::string &name A_UNUSED,
+                 const std::string &arg1 A_UNUSED,
+                 const std::string &arg2 A_UNUSED,
+                 int waitTime A_UNUSED)
 {
     return -1;
 }
 
-bool execFile(const std::string &pathName, const std::string &name,
-              const std::string &arg1, const std::string &arg2)
+bool execFile(const std::string &pathName A_UNUSED,
+              const std::string &name A_UNUSED,
+              const std::string &arg1 A_UNUSED,
+              const std::string &arg2 A_UNUSED)
 {
     return false;
 }
@@ -320,9 +326,9 @@ void naclPostMessage(const std::string &type, const std::string &message)
     pp::Instance(PSGetInstanceId()).PostMessage(msgVar);
 }
 
-void naclMessageHandlerFunc(struct PP_Var key,
-                            struct PP_Var value,
-                            void* user_data)
+static void naclMessageHandlerFunc(struct PP_Var key,
+                                   struct PP_Var value,
+                                   void* user_data)
 {
     NaclMessageHandle *handle = (NaclMessageHandle *)user_data;
 
