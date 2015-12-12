@@ -1149,8 +1149,8 @@ void MobileOpenGL2Graphics::bindTexture2(const GLenum target,
     }
 }
 
-void MobileOpenGL2Graphics::bindTexture(const GLenum target A_UNUSED,
-                                        const GLuint texture A_UNUSED)
+void MobileOpenGL2Graphics::bindTexture(const GLenum target,
+                                        const GLuint texture)
 {
     if (mTextureBinded != texture)
     {
