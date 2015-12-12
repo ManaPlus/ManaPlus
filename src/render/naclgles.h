@@ -23,8 +23,6 @@
 
 #if defined(__native_client__) && defined(USE_OPENGL)
 
-#include <ppapi/c/ppb_opengles2.h>
-
 namespace NaclGles
 {
     void initGles();

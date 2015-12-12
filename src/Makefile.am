@@ -520,6 +520,7 @@ SRC += events/actionevent.h \
 	      render/mobileopenglgraphics.h \
 	      render/modernopenglgraphics.cpp \
 	      render/modernopenglgraphics.h \
+	      render/naclfunctions.h \
 	      render/naclgles.cpp \
 	      render/naclgles.h \
 	      render/naclglfunctions.h \

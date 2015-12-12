@@ -78,6 +78,7 @@
 #ifdef USE_OPENGL
 #include "resources/openglimagehelper.h"
 #if defined(__native_client__)
+#include "render/naclfunctions.h"
 #include "render/naclgles.h"
 #endif
 #endif
@@ -512,7 +513,7 @@ bool Graphics::resizeScreen(const int width, const int height)
     // Setup OpenGL
     glViewport(0, 0, mActualWidth, mActualHeight);
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_FASTEST);
-#else
+#else  // USE_OPENGL
     // +++ need impliment resize in soft mode
 #endif  // USE_OPENGL
 
@@ -520,23 +521,44 @@ bool Graphics::resizeScreen(const int width, const int height)
     beginDraw();
     return true;
 
-#else
+#else  // USE_SDL2
+
     const int prevWidth = mWidth;
     const int prevHeight = mHeight;
 
     endDraw();
 
-    const bool success = setVideoMode(width, height, mScale, mBpp,
-        mFullscreen, mHWAccel, mEnableResize, mNoFrame);
-
-    // If it didn't work, try to restore the previous size. If that didn't
-    // work either, bail out (but then we're in deep trouble).
-    if (!success)
+    const bool success = true;
+#ifdef __native_client__
+    if (mOpenGL != RENDER_SOFTWARE)
     {
-        if (!setVideoMode(prevWidth, prevHeight, mScale, mBpp,
-            mFullscreen, mHWAccel, mEnableResize, mNoFrame))
+        mRect.w = static_cast<int32_t>(width / mScale);
+        mRect.h = static_cast<int32_t>(height / mScale);
+        mWidth = width / mScale;
+        mHeight = height / mScale;
+        mActualWidth = width;
+        mActualHeight = height;
+#ifdef USE_OPENGL
+        naclResizeBuffers(mActualWidth, mActualHeight);
+        glViewport(0, 0, mActualWidth, mActualHeight);
+#endif  // USE_OPENGL
+
+    }
+    else
+#endif  // __native_client__
+    {
+        bool success = setVideoMode(width, height, mScale, mBpp,
+            mFullscreen, mHWAccel, mEnableResize, mNoFrame);
+
+        // If it didn't work, try to restore the previous size. If that didn't
+        // work either, bail out (but then we're in deep trouble).
+        if (!success)
         {
-            return false;
+            if (!setVideoMode(prevWidth, prevHeight, mScale, mBpp,
+                mFullscreen, mHWAccel, mEnableResize, mNoFrame))
+            {
+                return false;
+            }
         }
     }
 

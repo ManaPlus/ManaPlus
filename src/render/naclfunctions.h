@@ -18,36 +18,18 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef RENDER_NACLFUNCTIONS_H
+#define RENDER_NACLFUNCTIONS_H
+
 #if defined(__native_client__) && defined(USE_OPENGL)
 
-#include "render/naclgles.h"
-
-#include "logger.h"
-
-#include "render/mglfunctions.h"
-
-#include <ppapi_simple/ps.h>
-
 #include <ppapi/c/ppb_graphics_3d.h>
-#include <ppapi/c/ppb_opengles2.h>
 
-#include <ppapi/gles2/gl2ext_ppapi.h>
+extern const struct PPB_Graphics3D_1_0 *graphics3dInterface;
+extern PP_Resource gles2Context;
 
-#include "debug.h"
-
-const struct PPB_OpenGLES2* gles2Interface = nullptr;
-PP_Resource gles2Context = nullptr;
-const struct PPB_Graphics3D_1_0 *graphics3dInterface = nullptr;
-
-void NaclGles::initGles()
-{
-    gles2Interface = static_cast<const PPB_OpenGLES2*>(
-        PSGetInterface(PPB_OPENGLES2_INTERFACE));
-    graphics3dInterface = static_cast<const PPB_Graphics3D_1_0*>(
-        PSGetInterface(PPB_GRAPHICS_3D_INTERFACE_1_0));
-    gles2Context = glGetCurrentContextPPAPI();
-
-    logger->log("InitGles: %p, %d", gles2Interface, gles2Context);
-}
+#define naclResizeBuffers(...) \
+    graphics3dInterface->ResizeBuffers(gles2Context, __VA_ARGS__)
 
 #endif  // defined(__native_client__) && defined(USE_OPENGL)
+#endif  // RENDER_NACLFUNCTIONS_H
