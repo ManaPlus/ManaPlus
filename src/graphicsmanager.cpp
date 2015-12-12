@@ -502,11 +502,12 @@ void GraphicsManager::initGraphics()
         // +++ here need check also not implimented gles flag
         if (!checkGLVersion(2, 0))
         {
-            logger->log("Fallback to safe OpenGL mode");
-            openGLMode = RENDER_SAFE_OPENGL;
+            logger->log("Fallback to software mode");
+            openGLMode = RENDER_SOFTWARE;
         }
     }
-    if (openGLMode != oldOpenGLMode && !settings.options.test.empty())
+
+    if (openGLMode != oldOpenGLMode)
     {
         deleteRenderers();
         settings.options.renderer = static_cast<int>(openGLMode);
