@@ -79,7 +79,7 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
     mAltFpsSlider(new Slider(this, 2.0, 160.0, 1.0)),
     // TRANSLATORS: video settings label
     mAltFpsLabel(new Label(this, _("Alt FPS limit: "))),
-#if !defined(ANDROID) && !defined(__APPLE__)
+#if !defined(ANDROID) && !defined(__APPLE__) && !defined(__native_client__)
     // TRANSLATORS: video settings button
     mDetectButton(new Button(this, _("Detect best mode"), "detect", this)),
 #endif
@@ -172,7 +172,7 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
     place(0, 7, mAltFpsSlider);
     place(1, 7, mAltFpsLabel).setPadding(3);
 
-#if !defined(ANDROID) && !defined(__APPLE__)
+#if !defined(ANDROID) && !defined(__APPLE__) && !defined(__native_client__)
     place(0, 8, mDetectButton);
 #else
     mNoFrameCheckBox->setEnabled(false);
