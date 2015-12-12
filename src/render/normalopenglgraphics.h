@@ -23,7 +23,7 @@
 #ifndef RENDER_NORMALOPENGLGRAPHICS_H
 #define RENDER_NORMALOPENGLGRAPHICS_H
 
-#if defined USE_OPENGL && !defined ANDROID
+#if defined USE_OPENGL && !defined ANDROID && !defined(__native_client__)
 
 #include "localconsts.h"
 #include "render/graphics.h"

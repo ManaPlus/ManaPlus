@@ -23,7 +23,7 @@
 #ifndef RENDER_MOBILEOPENGLGRAPHICS_H
 #define RENDER_MOBILEOPENGLGRAPHICS_H
 
-#ifdef USE_OPENGL
+#if defined(USE_OPENGL) && !defined(__native_client__)
 
 #include "localconsts.h"
 #include "render/graphics.h"
@@ -96,6 +96,6 @@ class MobileOpenGLGraphics final : public Graphics
 #endif
         FBOInfo mFbo;
 };
-#endif
+#endif  // defined(USE_OPENGL) && !defined(__native_client__)
 
 #endif  // RENDER_MOBILEOPENGLGRAPHICS_H

@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifdef USE_OPENGL
+#if defined(USE_OPENGL) && !defined(__native_client__)
 
 #include "render/mobileopenglgraphics.h"
 
@@ -1379,4 +1379,4 @@ void MobileOpenGLGraphics::debugBindTexture(const Image *const image A_UNUSED)
 }
 #endif
 
-#endif  // USE_OPENGL
+#endif  // defined(USE_OPENGL) && !defined(__native_client__)

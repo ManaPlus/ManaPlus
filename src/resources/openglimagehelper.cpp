@@ -249,7 +249,27 @@ void OpenGLImageHelper::bindTexture(const GLuint texture)
 {
     switch (mUseOpenGL)
     {
-#ifndef ANDROID
+#ifdef ANDROID
+        case RENDER_NORMAL_OPENGL:
+        case RENDER_SAFE_OPENGL:
+        case RENDER_MODERN_OPENGL:
+        case RENDER_GLES2_OPENGL:
+            break;
+        case RENDER_GLES_OPENGL:
+            MobileOpenGLGraphics::bindTexture(mTextureType, texture);
+            break;
+#elif defined(__native_client__)
+        case RENDER_NORMAL_OPENGL:
+        case RENDER_MODERN_OPENGL:
+        case RENDER_GLES_OPENGL:
+            break;
+        case RENDER_SAFE_OPENGL:
+            SafeOpenGLGraphics::bindTexture(mTextureType, texture);
+            break;
+        case RENDER_GLES2_OPENGL:
+            MobileOpenGL2Graphics::bindTexture(mTextureType, texture);
+            break;
+#else
         case RENDER_NORMAL_OPENGL:
             NormalOpenGLGraphics::bindTexture(mTextureType, texture);
             break;
@@ -259,17 +279,13 @@ void OpenGLImageHelper::bindTexture(const GLuint texture)
         case RENDER_SAFE_OPENGL:
             SafeOpenGLGraphics::bindTexture(mTextureType, texture);
             break;
-#else
-        case RENDER_NORMAL_OPENGL:
-        case RENDER_SAFE_OPENGL:
-        case RENDER_MODERN_OPENGL:
-#endif
         case RENDER_GLES_OPENGL:
             MobileOpenGLGraphics::bindTexture(mTextureType, texture);
             break;
         case RENDER_GLES2_OPENGL:
             MobileOpenGL2Graphics::bindTexture(mTextureType, texture);
             break;
+#endif
         case RENDER_SOFTWARE:
         case RENDER_SDL2_DEFAULT:
         case RENDER_NULL:

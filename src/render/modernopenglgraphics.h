@@ -23,7 +23,7 @@
 #ifndef RENDER_MODERNOPENGLGRAPHICS_H
 #define RENDER_MODERNOPENGLGRAPHICS_H
 
-#if defined USE_OPENGL && !defined ANDROID
+#if defined(USE_OPENGL) && !defined(ANDROID) && !defined(__native_client__)
 
 #include "localconsts.h"
 #include "render/graphics.h"
@@ -135,6 +135,6 @@ class ModernOpenGLGraphics final : public Graphics
 #endif
         FBOInfo mFbo;
 };
-#endif
+#endif  // defined(USE_OPENGL) && !defined(ANDROID) && !defined(__native_client__)
 
 #endif  // RENDER_MODERNOPENGLGRAPHICS_H

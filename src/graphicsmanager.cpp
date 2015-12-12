@@ -166,7 +166,7 @@ int GraphicsManager::detectGraphics()
     logger->log1("enable opengl mode");
     int textureSampler = 0;
     int compressTextures = 0;
-#ifndef ANDROID
+#if !defined(ANDROID) && !defined(__native_client__)
     mainGraphics = new NormalOpenGLGraphics;
 #endif
     SDL_Window *const window = createWindow(100, 100, 0,
@@ -249,6 +249,67 @@ int GraphicsManager::detectGraphics()
         | (1024 * textureSampler) | (2048 * compressTextures);
 }
 
+#ifdef USE_SDL2
+#define RENDER_SOFTWARE_INIT \
+    imageHelper = new SDL2SoftwareImageHelper; \
+    surfaceImageHelper = new SurfaceImageHelper; \
+    mainGraphics = new SDL2SoftwareGraphics;
+#define RENDER_SDL2_DEFAULT_INIT \
+    imageHelper = new SDLImageHelper; \
+    surfaceImageHelper = new SurfaceImageHelper; \
+    mainGraphics = new SDLGraphics; \
+    mainGraphics->setRendererFlags(SDL_RENDERER_ACCELERATED); \
+    mUseTextureSampler = false;
+#else  // USE_SDL2
+#define RENDER_SOFTWARE_INIT \
+    imageHelper = new SDLImageHelper; \
+    surfaceImageHelper = imageHelper; \
+    mainGraphics = new SDLGraphics;
+#define RENDER_SDL2_DEFAULT_INIT
+#endif  // USE_SDL2
+
+#if defined(ANDROID) || defined(__native_client__)
+#define RENDER_NORMAL_OPENGL_INIT
+#define RENDER_MODERN_OPENGL_INIT
+#else  // defined(ANDROID) || defined(__native_client__)
+#define RENDER_NORMAL_OPENGL_INIT \
+    imageHelper = new OpenGLImageHelper; \
+    surfaceImageHelper = new SurfaceImageHelper; \
+    mainGraphics = new NormalOpenGLGraphics; \
+    mUseTextureSampler = true;
+#define RENDER_MODERN_OPENGL_INIT \
+    imageHelper = new OpenGLImageHelper; \
+    surfaceImageHelper = new SurfaceImageHelper; \
+    mainGraphics = new ModernOpenGLGraphics; \
+    mUseTextureSampler = true;
+#endif  // defined(ANDROID) || defined(__native_client__)
+
+#if defined(ANDROID)
+#define RENDER_SAFE_OPENGL_INIT
+#define RENDER_GLES2_OPENGL_INIT
+#else  // defined(ANDROID)
+#define RENDER_SAFE_OPENGL_INIT \
+    imageHelper = new OpenGLImageHelper; \
+    surfaceImageHelper = new SurfaceImageHelper; \
+    mainGraphics = new SafeOpenGLGraphics; \
+    mUseTextureSampler = false;
+#define RENDER_GLES2_OPENGL_INIT \
+    imageHelper = new OpenGLImageHelper; \
+    surfaceImageHelper = new SurfaceImageHelper; \
+    mainGraphics = new MobileOpenGL2Graphics; \
+    mUseTextureSampler = false;
+#endif  // defined(ANDROID)
+
+#if defined(__native_client__)
+#define RENDER_GLES_OPENGL_INIT
+#else  // defined(__native_client__)
+#define RENDER_GLES_OPENGL_INIT \
+    imageHelper = new OpenGLImageHelper; \
+    surfaceImageHelper = new SurfaceImageHelper; \
+    mainGraphics = new MobileOpenGLGraphics; \
+    mUseTextureSampler = false;
+#endif  // defined(__native_client__)
+
 void GraphicsManager::createRenderers()
 {
     RenderType useOpenGL = RENDER_SOFTWARE;
@@ -272,64 +333,31 @@ void GraphicsManager::createRenderers()
     switch (useOpenGL)
     {
         case RENDER_SOFTWARE:
-#ifdef USE_SDL2
-            imageHelper = new SDL2SoftwareImageHelper;
-            surfaceImageHelper = new SurfaceImageHelper;
-            mainGraphics = new SDL2SoftwareGraphics;
-#else
-            imageHelper = new SDLImageHelper;
-            surfaceImageHelper = imageHelper;
-            mainGraphics = new SDLGraphics;
-#endif
+            RENDER_SOFTWARE_INIT
             mUseTextureSampler = false;
             break;
-        case RENDER_NORMAL_OPENGL:
-#ifndef USE_SDL2
-        case RENDER_SDL2_DEFAULT:
-#endif
         case RENDER_LAST:
         case RENDER_NULL:
         default:
-#ifndef ANDROID
-            imageHelper = new OpenGLImageHelper;
-            surfaceImageHelper = new SurfaceImageHelper;
-            mainGraphics = new NormalOpenGLGraphics;
-            mUseTextureSampler = true;
+            break;
+        case RENDER_NORMAL_OPENGL:
+            RENDER_NORMAL_OPENGL_INIT
             break;
         case RENDER_SAFE_OPENGL:
-            imageHelper = new OpenGLImageHelper;
-            surfaceImageHelper = new SurfaceImageHelper;
-            mainGraphics = new SafeOpenGLGraphics;
-            mUseTextureSampler = false;
+            RENDER_SAFE_OPENGL_INIT
             break;
         case RENDER_MODERN_OPENGL:
-            imageHelper = new OpenGLImageHelper;
-            surfaceImageHelper = new SurfaceImageHelper;
-            mainGraphics = new ModernOpenGLGraphics;
-            mUseTextureSampler = true;
+            RENDER_MODERN_OPENGL_INIT
             break;
         case RENDER_GLES2_OPENGL:
-            imageHelper = new OpenGLImageHelper;
-            surfaceImageHelper = new SurfaceImageHelper;
-            mainGraphics = new MobileOpenGL2Graphics;
-            mUseTextureSampler = false;
+            RENDER_GLES2_OPENGL_INIT
             break;
-#endif
         case RENDER_GLES_OPENGL:
-            imageHelper = new OpenGLImageHelper;
-            surfaceImageHelper = new SurfaceImageHelper;
-            mainGraphics = new MobileOpenGLGraphics;
-            mUseTextureSampler = false;
+            RENDER_GLES_OPENGL_INIT
             break;
-#ifdef USE_SDL2
         case RENDER_SDL2_DEFAULT:
-            imageHelper = new SDLImageHelper;
-            surfaceImageHelper = new SurfaceImageHelper;
-            mainGraphics = new SDLGraphics;
-            mainGraphics->setRendererFlags(SDL_RENDERER_ACCELERATED);
-            mUseTextureSampler = false;
+            RENDER_SDL2_DEFAULT_INIT
             break;
-#endif
     };
     mUseAtlases = (useOpenGL == RENDER_NORMAL_OPENGL ||
         useOpenGL == RENDER_SAFE_OPENGL ||

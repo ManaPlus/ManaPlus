@@ -1366,7 +1366,7 @@ impHandler(dumpTests)
 
 impHandler0(dumpOGL)
 {
-#if defined USE_OPENGL && !defined ANDROID
+#if defined(USE_OPENGL) && !defined(ANDROID) && !defined(__native_client__)
     NormalOpenGLGraphics::dumpSettings();
 #endif
     return true;
