@@ -528,7 +528,7 @@ bool Graphics::resizeScreen(const int width, const int height)
 
     endDraw();
 
-    const bool success = true;
+    bool success = true;
 #ifdef __native_client__
     if (mOpenGL != RENDER_SOFTWARE)
     {
@@ -547,7 +547,7 @@ bool Graphics::resizeScreen(const int width, const int height)
     else
 #endif  // __native_client__
     {
-        bool success = setVideoMode(width, height, mScale, mBpp,
+        success = setVideoMode(width, height, mScale, mBpp,
             mFullscreen, mHWAccel, mEnableResize, mNoFrame);
 
         // If it didn't work, try to restore the previous size. If that didn't
