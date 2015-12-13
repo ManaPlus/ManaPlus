@@ -18,10 +18,10 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_SKILLCONSTS_H
-#define RESOURCES_SKILLCONSTS_H
+#ifndef CONST_RESOURCES_SKILL_H
+#define CONST_RESOURCES_SKILL_H
 
 const int SKILL_MIN_ID = 200000;
 const unsigned int SKILL_VAR_MIN_ID = 1000000;
 
-#endif  // RESOURCES_SKILLCONSTS_H
+#endif  // CONST_RESOURCES_SKILL_H

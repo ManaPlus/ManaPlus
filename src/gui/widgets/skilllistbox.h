@@ -39,7 +39,7 @@
 
 #include "utils/delete2.h"
 
-#include "resources/skillconsts.h"
+#include "const/resources/skill.h"
 
 #include "localconsts.h"
 

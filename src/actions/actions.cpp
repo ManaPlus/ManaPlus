@@ -95,7 +95,8 @@
 
 #include "resources/iteminfo.h"
 #include "resources/resourcemanager.h"
-#include "resources/skillconsts.h"
+
+#include "const/resources/skill.h"
 
 #include "utils/chatutils.h"
 #include "utils/delete2.h"

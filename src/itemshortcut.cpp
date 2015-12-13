@@ -33,7 +33,7 @@
 
 #include "gui/windows/skilldialog.h"
 
-#include "resources/skillconsts.h"
+#include "const/resources/skill.h"
 
 #include "debug.h"
 

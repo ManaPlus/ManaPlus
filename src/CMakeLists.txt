@@ -711,7 +711,7 @@ SET(SRCS
     resources/sdlimagehelper.h
     resources/sdlmusic.cpp
     resources/sdlmusic.h
-    resources/skillconsts.h
+    const/resources/skill.h
     resources/skillowner.h
     resources/skilltype.h
     resources/db/sounddb.cpp

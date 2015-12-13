@@ -48,7 +48,7 @@
 
 #include "input/inputactionoperators.h"
 
-#include "resources/skillconsts.h"
+#include "const/resources/skill.h"
 
 #include "utils/stringutils.h"
 

@@ -25,7 +25,7 @@
 
 #include "net/messagein.h"
 
-#include "resources/skillconsts.h"
+#include "const/resources/skill.h"
 
 #include "debug.h"
 
