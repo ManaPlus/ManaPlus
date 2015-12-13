@@ -40,7 +40,7 @@ void APIENTRY emuglTextureSubImage2D(GLuint texture, GLenum target,
         format, type, pixels);
 }
 
-void APIENTRY emuglActiveTexture (GLenum texture A_UNUSED)
+void APIENTRY emuglActiveTexture(GLenum texture A_UNUSED)
 {
 }
 

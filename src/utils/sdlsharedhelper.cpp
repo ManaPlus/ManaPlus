@@ -36,9 +36,9 @@ void SDL::showCursor(const bool show)
 #ifdef __native_client__
     PP_MouseCursor_Type cursor;
     if (show)
-        cursor = PP_MOUSECURSOR_TYPE_POINTER; // show default cursor
+        cursor = PP_MOUSECURSOR_TYPE_POINTER;  // show default cursor
     else
-        cursor = PP_MOUSECURSOR_TYPE_NONE; // hide cursor
+        cursor = PP_MOUSECURSOR_TYPE_NONE;     // hide cursor
 
     pp::MouseCursor::SetCursor(
         pp::InstanceHandle(PSGetInstanceId()),

@@ -135,6 +135,7 @@ class ModernOpenGLGraphics final : public Graphics
 #endif
         FBOInfo mFbo;
 };
-#endif  // defined(USE_OPENGL) && !defined(ANDROID) && !defined(__native_client__)
+#endif  // defined(USE_OPENGL) && !defined(ANDROID) &&
+        // !defined(__native_client__)
 
 #endif  // RENDER_MODERNOPENGLGRAPHICS_H

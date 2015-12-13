@@ -384,7 +384,8 @@ void MobileOpenGL2Graphics::drawImageCached(const Image *const image A_UNUSED,
 {
 }
 
-void MobileOpenGL2Graphics::drawPatternCached(const Image *const image A_UNUSED,
+void MobileOpenGL2Graphics::drawPatternCached(const Image *const image
+                                              A_UNUSED,
                                               const int x A_UNUSED,
                                               const int y A_UNUSED,
                                               const int w A_UNUSED,
@@ -436,7 +437,7 @@ void MobileOpenGL2Graphics::drawRescaledImage(const Image *const image,
 void MobileOpenGL2Graphics::drawPattern(const Image *const image,
                                         const int x, const int y,
                                         const int w, const int h)
-{ 
+{
     drawPatternInline(image, x, y, w, h);
 }
 

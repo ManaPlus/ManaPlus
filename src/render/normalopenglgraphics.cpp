@@ -1725,4 +1725,5 @@ void NormalOpenGLGraphics::debugBindTexture(const Image *const image A_UNUSED)
 }
 #endif
 
-#endif  // defined(USE_OPENGL) && !defined(ANDROID) && !defined(__native_client__)
+#endif  // defined(USE_OPENGL) && !defined(ANDROID) &&
+        // !defined(__native_client__)

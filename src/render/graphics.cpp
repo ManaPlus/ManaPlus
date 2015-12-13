@@ -542,7 +542,6 @@ bool Graphics::resizeScreen(const int width, const int height)
         naclResizeBuffers(mActualWidth, mActualHeight);
         glViewport(0, 0, mActualWidth, mActualHeight);
 #endif  // USE_OPENGL
-
     }
     else
 #endif  // __native_client__
