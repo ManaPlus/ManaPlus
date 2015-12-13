@@ -116,8 +116,14 @@
 
 #ifdef ADVGCC
 #define const2 const
+#if GCC_VERSION >= 60000
+#define PRAGMA6(str) _Pragma(str)
+#else  // GCC_VERSION > 60000
+#define PRAGMA6(str)
+#endif  // GCC_VERSION > 60000
 #else  // ADVGCC
 #define const2
+#define PRAGMA6(str)
 #endif  // ADVGCC
 
 #ifdef __GNUC__

@@ -23,6 +23,8 @@
 
 #include "localconsts.h"
 
+
+
 #ifdef ADVGCC
 
 #define defBoolEnum(name) \
@@ -32,7 +34,8 @@
         MTrue = true \
     }; \
     const name name##_true = name::MTrue; \
-    const name name##_false = name::MFalse
+    const name name##_false = name::MFalse \
+
 #define fromBool(val, name) \
     (val) ? name::MTrue : name::MFalse
 

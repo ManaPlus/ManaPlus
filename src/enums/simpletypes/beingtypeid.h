@@ -23,7 +23,12 @@
 
 #include "enums/simpletypes/intdefines.h"
 
+PRAGMA6("GCC diagnostic push")
+PRAGMA6("GCC diagnostic ignored \"-Wunused-const-variable\"")
+
 defIntEnum(BeingTypeId, int);
 defIntEnumNeg(BeingTypeId);
+
+PRAGMA6("GCC diagnostic pop")
 
 #endif  // ENUMS_SIMPLETYPES_BEINGTYPEID_H
