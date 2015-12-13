@@ -39,6 +39,7 @@ const int timeOut = 10;
 #ifdef WIN32
 
 #include "utils/stringutils.h"
+
 #include <windows.h>
 
 int execFileWait(const std::string &pathName, const std::string &name A_UNUSED,
@@ -275,6 +276,9 @@ bool openBrowser(std::string url)
     return execFile("/usr/bin/xdg-open", "/usr/bin/xdg-open", url, "");
 }
 #elif defined __native_client__
+
+#include "utils/naclmessages.h"
+
 bool openBrowser(std::string url)
 {
     naclPostMessage("open-browser", url);
@@ -300,78 +304,5 @@ void setPriority(const bool big)
 #else
 void setPriority(const bool big A_UNUSED)
 {
-}
-#endif
-
-#ifdef __native_client__
-#include <ppapi_simple/ps.h>
-#include <ppapi_simple/ps_event.h>
-#include <ppapi/cpp/instance.h>
-#include <ppapi/cpp/var.h>
-
-#include <mutex>
-#include <condition_variable>
-
-struct _NaclMessageHandle final
-{
-    bool handled;
-    std::string type;
-    std::string message;
-    std::condition_variable condv;
-};
-
-void naclPostMessage(const std::string &type, const std::string &message)
-{
-    pp::Var msgVar = pp::Var(std::string(type).append(":").append(message));
-    pp::Instance(PSGetInstanceId()).PostMessage(msgVar);
-}
-
-static void naclMessageHandlerFunc(struct PP_Var key,
-                                   struct PP_Var value,
-                                   void* user_data)
-{
-    NaclMessageHandle *handle = (NaclMessageHandle *)user_data;
-
-    if (key.type != PP_VARTYPE_STRING || value.type != PP_VARTYPE_STRING)
-        return;
-    if (pp::Var(key).AsString() != handle->type)
-        return;
-
-    handle->handled = true;
-    handle->message = pp::Var(value).AsString();
-
-    handle->condv.notify_one();
-}
-
-NaclMessageHandle *naclRegisterMessageHandler(const std::string &type)
-{
-    NaclMessageHandle *handle = new NaclMessageHandle;
-    handle->handled = false;
-    handle->type = type;
-
-    PSEventRegisterMessageHandler(type.c_str(),
-        naclMessageHandlerFunc,
-        (void *)handle);
-    return handle;
-}
-
-void naclUnregisterMessageHandler(NaclMessageHandle *handle)
-{
-    PSEventRegisterMessageHandler(handle->type.c_str(),
-        nullptr,
-        nullptr);
-    delete handle;
-}
-
-std::string naclWaitForMessage(NaclMessageHandle *handle)
-{
-    std::mutex mtx;
-    std::unique_lock <std::mutex> lck(mtx);
-
-    while (!handle->handled)
-        handle->condv.wait(lck);
-
-    handle->handled = false;
-    return handle->message;
 }
 #endif

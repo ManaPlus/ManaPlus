@@ -472,7 +472,7 @@ static bool runxsel(std::string& text, const char *p1, const char *p2)
 
 #elif defined __native_client__
 
-#include "utils/process.h"
+#include "utils/naclmessages.h"
 
 bool retrieveBuffer(std::string& text, size_t& pos)
 {

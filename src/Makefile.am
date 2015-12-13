@@ -445,6 +445,8 @@ SRC += events/actionevent.h \
 	      utils/timer.cpp \
 	      utils/timer.h \
 	      utils/mutex.h \
+	      utils/naclmessages.cpp \
+	      utils/naclmessages.h \
 	      utils/xml.cpp \
 	      utils/xml.h \
 	      utils/xmlutils.cpp \

@@ -1,6 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2011-2015  The ManaPlus Developers
+ *  Copyright (C) 2015  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -18,20 +18,24 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef UTILS_PROCESS_H
-#define UTILS_PROCESS_H
+#ifndef UTILS_NACLMESSAGES_H
+#define UTILS_NACLMESSAGES_H
+
+#ifdef __native_client__
 
 #include <string>
 
-int execFileWait(const std::string &pathName, const std::string &name,
-                 const std::string &arg1, const std::string &arg2,
-                 int waitTime = 0);
+#include "localconsts.h"
 
-bool execFile(const std::string &pathName, const std::string &name,
-              const std::string &arg1, const std::string &arg2);
+struct NaclMessageHandle;
 
-bool openBrowser(std::string url);
+void naclPostMessage(const std::string &type, const std::string &message);
 
-void setPriority(const bool big);
+NaclMessageHandle *naclRegisterMessageHandler(const std::string &type);
 
-#endif  // UTILS_PROCESS_H
+void naclUnregisterMessageHandler(NaclMessageHandle *handle);
+
+std::string naclWaitForMessage(NaclMessageHandle *handle);
+
+#endif  // __native_client__
+#endif  // UTILS_NACLMESSAGES_H

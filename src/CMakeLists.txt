@@ -797,6 +797,8 @@ SET(SRCS
     utils/timer.cpp
     utils/timer.h
     utils/mutex.h
+    utils/naclmessages.cpp
+    utils/naclmessages.h
     utils/mkdir.cpp
     utils/mkdir.h
     utils/xml.cpp
