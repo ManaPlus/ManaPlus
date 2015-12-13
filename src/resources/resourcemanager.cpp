@@ -520,7 +520,7 @@ Resource *ResourceManager::get(const std::string &idPath,
 
 struct ResourceLoader final
 {
-    ResourceManager *manager = nullptr;
+    ResourceManager *manager;
     std::string path;
     ResourceManager::loader fun;
 
@@ -556,7 +556,7 @@ SoundEffect *ResourceManager::getSoundEffect(const std::string &idPath)
 
 struct DyedImageLoader final
 {
-    ResourceManager *manager = nullptr;
+    ResourceManager *manager;
     std::string path;
     static Resource *load(const void *const v)
     {
@@ -606,10 +606,9 @@ Image *ResourceManager::getImage(const std::string &idPath)
 
 struct ImageSetLoader final
 {
-    ResourceManager *manager = nullptr;
+    ResourceManager *manager;
     std::string path;
-    int w = 0;
-    int h = 0;
+    int w, h;
     static Resource *load(const void *const v)
     {
         if (!v)
@@ -641,10 +640,9 @@ ImageSet *ResourceManager::getImageSet(const std::string &imagePath,
 
 struct SubImageSetLoader final
 {
-    ResourceManager *manager = nullptr;
-    Image *parent = nullptr;
-    int width = 0;
-    int height = 0;
+    ResourceManager *manager;
+    Image *parent;
+    int width, height;
     static Resource *load(const void *const v)
     {
         if (!v)
@@ -677,12 +675,10 @@ ImageSet *ResourceManager::getSubImageSet(Image *const parent,
 
 struct SubImageLoader final
 {
-    ResourceManager *manager = nullptr;
-    Image *parent = nullptr;
-    int x = 0;
-    int y = 0;
-    int width = 0;
-    int height = 0;
+    ResourceManager *manager;
+    Image *parent;
+    int x, y;
+    int width, height;
     static Resource *load(const void *const v)
     {
         if (!v)
@@ -718,7 +714,7 @@ Image *ResourceManager::getSubImage(Image *const parent,
 struct AtlasLoader final
 {
     const std::string name;
-    const StringVect *files = nullptr;
+    const StringVect *files;
 
     static Resource *load(const void *const v)
     {
@@ -742,7 +738,7 @@ Resource *ResourceManager::getAtlas(const std::string &name,
 struct ShaderLoader final
 {
     const std::string name;
-    const unsigned int type = 0U;
+    const unsigned int type;
 
     static Resource *load(const void *const v)
     {
@@ -767,7 +763,7 @@ struct ShaderProgramLoader final
 {
     const std::string vertex;
     const std::string fragment;
-    const bool isNewShader = true;
+    const bool isNewShader;
 
     static Resource *load(const void *const v)
     {
