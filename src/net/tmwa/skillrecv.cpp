@@ -27,6 +27,8 @@
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
+#include "const/net/skill.h"
+
 #include "enums/resources/notifytypes.h"
 
 #include "gui/windows/skilldialog.h"

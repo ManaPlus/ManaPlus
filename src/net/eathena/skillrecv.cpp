@@ -27,6 +27,8 @@
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
+#include "const/net/skill.h"
+
 #include "enums/resources/notifytypes.h"
 
 #include "gui/widgets/createwidget.h"
@@ -51,6 +53,11 @@
 #include "utils/stringutils.h"
 
 #include "debug.h"
+
+static const unsigned int RFAIL_SUMMON         = 19;
+static const unsigned int RFAIL_NEED_ITEM      = 71;
+static const unsigned int RFAIL_NEED_EQUIPMENT = 72;
+static const unsigned int RFAIL_SPIRITS        = 74;
 
 namespace EAthena
 {
