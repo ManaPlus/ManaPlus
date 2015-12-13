@@ -23,7 +23,6 @@
 
 struct SetupActionData;
 
-const int touchActionDataSize = 4;
 extern SetupActionData *const touchActionData[];
 
 #endif  // GUI_TOUCHACTIONDATA_H
