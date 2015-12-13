@@ -36,9 +36,6 @@ class Graphics;
 class Map;
 class MapItem;
 
-/** Delay between two mouse calls when dragging mouse and move the player */
-const int walkingMouseDelay = 500;
-
 /**
  * The viewport on the map. Displays the current map and handles mouse input
  * and the popup menu.

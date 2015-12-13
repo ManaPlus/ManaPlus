@@ -36,6 +36,8 @@
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
+#include "const/spells.h"
+
 #include "gui/gui.h"
 #include "gui/popupmanager.h"
 #include "gui/sdlinput.h"

@@ -21,6 +21,8 @@
 
 #include "resources/ambientlayer.h"
 
+#include "const/render/graphics.h"
+
 #include "render/graphics.h"
 
 #include "resources/image.h"

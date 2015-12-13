@@ -54,6 +54,8 @@
 
 #define end_foreach }
 
+static const unsigned int STATUS_EFFECTS = 32;
+
 AnimatedSprite *ActorSprite::targetCursor
     [static_cast<size_t>(TargetCursorType::NUM_TCT)]
     [static_cast<size_t>(TargetCursorSize::NUM_TC)];

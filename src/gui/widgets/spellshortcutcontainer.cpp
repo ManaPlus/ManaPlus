@@ -25,7 +25,10 @@
 #include "dragdrop.h"
 #include "itemshortcut.h"
 #include "settings.h"
+#include "spellmanager.h"
 #include "spellshortcut.h"
+
+#include "const/spells.h"
 
 #include "gui/viewport.h"
 

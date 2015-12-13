@@ -23,9 +23,7 @@
 #ifndef SPELLSHORTCUT_H
 #define SPELLSHORTCUT_H
 
-#include "spellmanager.h"
-
-const unsigned int SPELLS_SIZE = SPELL_SHORTCUT_ITEMS * SPELL_SHORTCUT_TABS;
+#include "const/spells.h"
 
 /**
  * The class which keeps track of the item shortcuts.
@@ -86,6 +84,5 @@ class SpellShortcut final
 };
 
 extern SpellShortcut *spellShortcut;
-extern SpellManager *spellManager;
 
 #endif  // SPELLSHORTCUT_H

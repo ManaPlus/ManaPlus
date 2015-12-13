@@ -34,6 +34,7 @@
 #include "party.h"
 #include "settings.h"
 #include "soundmanager.h"
+#include "spellmanager.h"
 #include "spellshortcut.h"
 #include "statuseffect.h"
 #include "units.h"

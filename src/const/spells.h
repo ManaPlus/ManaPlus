@@ -1,6 +1,5 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  Andrei Karas
  *  Copyright (C) 2011-2015  The ManaPlus Developers
  *
@@ -20,45 +19,14 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "spellshortcut.h"
+#ifndef CONST_SPELLMINID_H
+#define CONST_SPELLMINID_H
 
-#include "spellmanager.h"
+#include "localconsts.h"
 
-#include "const/spells.h"
+const int SPELL_MIN_ID = 100000;
+const unsigned int SPELL_SHORTCUT_ITEMS = 49;
+const unsigned int SPELL_SHORTCUT_TABS = 5;
+const unsigned int SPELLS_SIZE = SPELL_SHORTCUT_ITEMS * SPELL_SHORTCUT_TABS;
 
-#include "debug.h"
-
-SpellShortcut *spellShortcut = nullptr;
-
-SpellShortcut::SpellShortcut() :
-    mItemSelected(-1)
-{
-    load();
-}
-
-SpellShortcut::~SpellShortcut()
-{
-}
-
-void SpellShortcut::load()
-{
-    for (unsigned f = 0; f < SPELLS_SIZE; f ++)
-        mItems[f] = -1;
-
-    if (!spellManager)
-        return;
-
-    const std::vector<TextCommand*> &spells = spellManager->getAll();
-    unsigned k = 0;
-
-    for (std::vector<TextCommand*>::const_iterator i = spells.begin(),
-         i_end = spells.end(); i != i_end && k < SPELLS_SIZE; ++i)
-    {
-        mItems[k++] = (*i)->getId();
-    }
-}
-
-unsigned int SpellShortcut::getSpellsCount() const
-{
-    return SPELL_SHORTCUT_ITEMS;
-}
+#endif  // CONST_SPELLMINID_H

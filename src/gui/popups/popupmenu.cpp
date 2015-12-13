@@ -34,6 +34,8 @@
 #include "being/playerrelation.h"
 #include "being/playerrelations.h"
 
+#include "const/spells.h"
+
 #include "enums/resources/map/mapitemtype.h"
 
 #include "input/inputmanager.h"

@@ -26,6 +26,8 @@
 
 #include "being/beingspeech.h"
 
+#include "const/render/graphics.h"
+
 #include "enums/screendensity.h"
 
 #include "enums/input/inputaction.h"

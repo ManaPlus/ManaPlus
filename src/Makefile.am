@@ -109,7 +109,6 @@ SRC += events/actionevent.h \
 	      listeners/guitableactionlistener.h \
 	      listeners/tooltiplistener.cpp \
 	      listeners/tooltiplistener.h \
-	      render/graphics.h \
 	      events/inputguievent.h \
 	      input/key.h \
 	      events/keyevent.h \
@@ -472,6 +471,8 @@ SRC += events/actionevent.h \
 	      dirs.h \
 	      eventsmanager.cpp \
 	      eventsmanager.h \
+	      const/spells.h \
+	      const/render/graphics.h \
 	      render/graphics.cpp \
 	      render/graphics.h \
 	      graphicsmanager.cpp \

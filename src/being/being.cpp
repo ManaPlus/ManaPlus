@@ -126,6 +126,10 @@ std::list<BeingCacheEntry*> beingInfoCache;
 typedef std::map<int, Guild*>::const_iterator GuildsMapCIter;
 typedef std::map<int, int>::const_iterator IntMapCIter;
 
+static const unsigned int SPEECH_TIME = 500;
+static const unsigned int SPEECH_MIN_TIME = 200;
+static const unsigned int SPEECH_MAX_TIME = 800;
+
 #define for_each_badges() \
     for (int f = 0; f < BadgeIndex::BadgeIndexSize; f++)
 

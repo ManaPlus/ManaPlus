@@ -27,6 +27,7 @@
 #include "guild.h"
 #include "party.h"
 #include "settings.h"
+#include "spellmanager.h"
 #include "spellshortcut.h"
 
 #include "being/localplayer.h"

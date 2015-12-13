@@ -99,9 +99,6 @@ class ImageVertexes;
 
 struct SDL_Window;
 
-static const int defaultScreenWidth = 800;
-static const int defaultScreenHeight = 600;
-
 /**
  * A central point of control for graphics.
  */

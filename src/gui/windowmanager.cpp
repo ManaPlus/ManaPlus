@@ -26,6 +26,7 @@
 #include "configuration.h"
 #include "game.h"
 #include "settings.h"
+#include "spellmanager.h"
 #include "spellshortcut.h"
 #include "touchmanager.h"
 

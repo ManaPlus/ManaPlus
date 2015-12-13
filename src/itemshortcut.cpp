@@ -29,6 +29,8 @@
 
 #include "being/playerinfo.h"
 
+#include "const/spells.h"
+
 #include "gui/windows/skilldialog.h"
 
 #include "resources/skillconsts.h"

@@ -37,6 +37,8 @@
 
 #include "debug.h"
 
+static const unsigned int FIRST_IGNORE_EMOTE = 14;
+
 typedef std::map<std::string, PlayerRelation *> PlayerRelations;
 typedef PlayerRelations::const_iterator PlayerRelationsCIter;
 typedef std::list<PlayerRelationsListener *> PlayerRelationListeners;

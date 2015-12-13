@@ -25,9 +25,12 @@
 #include "dragdrop.h"
 #include "itemshortcut.h"
 #include "settings.h"
+#include "spellmanager.h"
 #include "spellshortcut.h"
 
 #include "being/playerinfo.h"
+
+#include "const/spells.h"
 
 #include "input/inputmanager.h"
 
