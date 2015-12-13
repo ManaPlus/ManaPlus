@@ -21,8 +21,9 @@
 #ifndef GUI_WIDGETS_WIDGET2_H
 #define GUI_WIDGETS_WIDGET2_H
 
-#include "gui/themecolorsidoperators.h"
+#include "const/gui/theme.h"
 
+#include "gui/themecolorsidoperators.h"
 #include "gui/theme.h"
 
 class Widget;

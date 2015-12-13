@@ -912,6 +912,7 @@ SET(SRCS
     const/equipment.h
     const/spells.h
     const/utils/timer.h
+    const/gui/theme.h
     const/render/graphics.h
     render/graphics.cpp
     render/graphics.h

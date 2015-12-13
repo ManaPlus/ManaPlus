@@ -46,8 +46,6 @@ class Theme;
 
 struct ThemeInfo;
 
-const int THEME_PALETTES = 5;
-
 extern Theme *theme;
 
 class Theme final : public Palette,

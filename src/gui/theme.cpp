@@ -27,6 +27,8 @@
 #include "configuration.h"
 #include "graphicsmanager.h"
 
+#include "const/gui/theme.h"
+
 #include "gui/skin.h"
 #include "gui/themeinfo.h"
 
