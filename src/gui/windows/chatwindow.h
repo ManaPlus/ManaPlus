@@ -48,8 +48,6 @@ class TabbedArea;
 class ItemLinkHandler;
 class WhisperTab;
 
-const int DEFAULT_CHAT_WINDOW_SCROLL = 7;
-
 /**
  * The chat window.
  *

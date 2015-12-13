@@ -47,6 +47,8 @@
 
 #include "debug.h"
 
+const int DEFAULT_CHAT_WINDOW_SCROLL = 7;
+
 namespace Actions
 {
 
