@@ -1,5 +1,7 @@
 /*
  *  The ManaPlus Client
+ *  Copyright (C) 2004-2009  The Mana World Development Team
+ *  Copyright (C) 2009-2010  The Mana Developers
  *  Copyright (C) 2011-2015  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
@@ -18,36 +20,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BEINGEQUIPBACKEND_H
-#define BEINGEQUIPBACKEND_H
-
-#include "equipment.h"
-
-#include "const/equipment.h"
+#ifndef CONST_EQUIPMENT_H
+#define CONST_EQUIPMENT_H
 
 #include "localconsts.h"
 
-class Being;
+static const int EQUIPMENT_SIZE = 27;
 
-class BeingEquipBackend final : public Equipment::Backend
-{
-    public:
-        explicit BeingEquipBackend(Being *const being);
-
-        A_DELETE_COPY(BeingEquipBackend)
-
-        ~BeingEquipBackend();
-
-        const Item *getEquipment(const int index) const override final
-                                 A_WARN_UNUSED;
-
-        void clear() override final;
-
-        void setEquipment(const int index,
-                          const Item *const item);
-
-    private:
-        const Item *mEquipment[EQUIPMENT_SIZE];
-};
-
-#endif  // BEINGEQUIPBACKEND_H
+#endif  // CONST_EQUIPMENT_H

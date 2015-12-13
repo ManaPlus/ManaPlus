@@ -27,7 +27,10 @@
 
 #include "being/playerinfo.h"
 
+#include "const/equipment.h"
+
 #include "gui/windows/inventorywindow.h"
+
 namespace Ea
 {
 
