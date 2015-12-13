@@ -20,6 +20,8 @@
 
 #include "utils/timer.h"
 
+#include "const/utils/timer.h"
+
 #include <SDL_timer.h>
 
 #include <climits>

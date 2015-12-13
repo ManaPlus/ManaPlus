@@ -39,6 +39,8 @@
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
 
+#include "const/utils/timer.h"
+
 #include "enums/being/beingdirection.h"
 
 #include "particle/particleinfo.h"

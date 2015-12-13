@@ -28,6 +28,8 @@
 
 #include "being/localplayer.h"
 
+#include "const/utils/timer.h"
+
 #include "gui/theme.h"
 
 #include "listeners/debugmessagelistener.h"

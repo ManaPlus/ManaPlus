@@ -910,6 +910,7 @@ SET(SRCS
     gamemodifiers.cpp
     gamemodifiers.h
     const/spells.h
+    const/utils/timer.h
     const/render/graphics.h
     render/graphics.cpp
     render/graphics.h

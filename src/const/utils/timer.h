@@ -18,27 +18,14 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef UTILS_TIMER_H
-#define UTILS_TIMER_H
+#ifndef CONST_UTILS_TIMER_H
+#define CONST_UTILS_TIMER_H
 
 #include "localconsts.h"
 
-extern volatile int fps;
-extern volatile int lps;
-extern volatile int tick_time;
-extern volatile int cur_time;
-extern volatile int frame_count;
-extern volatile int logic_count;
-
-void startTimers();
-
-void stopTimers();
-
 /**
- * Returns elapsed time. (Warning: supposes the delay is always < 100 seconds)
+ * Set the milliseconds value of a tick time.
  */
-int get_elapsed_time(const int startTime) A_WARN_UNUSED;
+static const int MILLISECONDS_IN_A_TICK = 10;
 
-int get_elapsed_time1(const int startTime) A_WARN_UNUSED;
-
-#endif  // UTILS_TIMER_H
+#endif  // CONST_UTILS_TIMER_H

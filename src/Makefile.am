@@ -472,6 +472,7 @@ SRC += events/actionevent.h \
 	      eventsmanager.cpp \
 	      eventsmanager.h \
 	      const/spells.h \
+	      const/utils/timer.h \
 	      const/render/graphics.h \
 	      render/graphics.cpp \
 	      render/graphics.h \
