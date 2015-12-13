@@ -42,6 +42,8 @@
 
 #include "debug.h"
 
+const unsigned int MAGIC_START_ID = 340;
+
 TextCommandEditor::TextCommandEditor(TextCommand *const command) :
     // TRANSLATORS: command editor name
     Window(_("Command Editor"), Modal_false, nullptr, "commandeditor.xml"),

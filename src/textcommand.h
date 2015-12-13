@@ -31,8 +31,6 @@
 
 #include "localconsts.h"
 
-const unsigned int MAGIC_START_ID = 340;
-
 class Image;
 
 /**
