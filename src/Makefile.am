@@ -634,7 +634,7 @@ SRC += events/actionevent.h \
 	      simpleanimation.cpp \
 	      simpleanimation.h \
 	      sprite.h \
-	      soundconsts.h \
+	      const/sound.h \
 	      soundmanager.cpp \
 	      soundmanager.h \
 	      text.cpp \

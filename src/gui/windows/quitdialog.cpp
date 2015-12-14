@@ -24,8 +24,9 @@
 
 #include "client.h"
 #include "configuration.h"
-#include "soundconsts.h"
 #include "soundmanager.h"
+
+#include "const/sound.h"
 
 #include "gui/dialogsmanager.h"
 #include "gui/viewport.h"

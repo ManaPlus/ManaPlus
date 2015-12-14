@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SOUNDCONSTS_H
-#define SOUNDCONSTS_H
+#ifndef CONST_SOUND_H
+#define CONST_SOUND_H
 
 #include <string>
 
@@ -34,4 +34,4 @@ static const std::string SOUND_GUILD = "soundguild";
 static const std::string SOUND_SHOW_WINDOW = "soundshowwindow";
 static const std::string SOUND_HIDE_WINDOW = "soundhidewindow";
 
-#endif  // SOUNDCONSTS_H
+#endif  // CONST_SOUND_H

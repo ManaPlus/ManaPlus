@@ -73,8 +73,9 @@
 #include "resources/image.h"
 #endif
 #include "graphicsvertexes.h"
-#include "soundconsts.h"
 #include "soundmanager.h"
+
+#include "const/sound.h"
 
 #include "gui/focushandler.h"
 #include "gui/gui.h"

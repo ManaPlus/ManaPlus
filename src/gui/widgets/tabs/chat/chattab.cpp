@@ -25,10 +25,11 @@
 #include "chatlogger.h"
 #include "configuration.h"
 #include "settings.h"
-#include "soundconsts.h"
 #include "soundmanager.h"
 
 #include "being/localplayer.h"
+
+#include "const/sound.h"
 
 #include "gui/chatlog.h"
 #include "gui/windowmanager.h"

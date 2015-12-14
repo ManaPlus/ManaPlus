@@ -23,8 +23,9 @@
 #include "gui/widgets/tabs/chat/emulateguildtab.h"
 
 #include "configuration.h"
-#include "soundconsts.h"
 #include "soundmanager.h"
+
+#include "const/sound.h"
 
 #include "gui/windows/chatwindow.h"
 

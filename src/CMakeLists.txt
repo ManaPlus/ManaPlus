@@ -1111,7 +1111,7 @@ SET(SRCS
     shortcutbase.h
     simpleanimation.cpp
     simpleanimation.h
-    soundconsts.h
+    const/sound.h
     soundmanager.cpp
     soundmanager.h
     sprite.h

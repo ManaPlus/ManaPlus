@@ -26,8 +26,9 @@
 #include "configuration.h"
 #include "item.h"
 #include "settings.h"
-#include "soundconsts.h"
 #include "soundmanager.h"
+
+#include "const/sound.h"
 
 #include "being/being.h"
 #include "being/playerinfo.h"

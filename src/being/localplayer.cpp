@@ -30,15 +30,15 @@
 #include "item.h"
 #include "party.h"
 #include "settings.h"
-#include "soundconsts.h"
 #include "soundmanager.h"
 #include "statuseffect.h"
-#include "resources/map/walklayer.h"
 
 #include "being/beingflag.h"
 #include "being/crazymoves.h"
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
+
+#include "const/sound.h"
 
 #include "enums/being/beingdirection.h"
 
@@ -78,6 +78,7 @@
 #include "resources/map/map.h"
 #include "resources/map/mapitem.h"
 #include "resources/map/speciallayer.h"
+#include "resources/map/walklayer.h"
 
 #include "listeners/awaylistener.h"
 

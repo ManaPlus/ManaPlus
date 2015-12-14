@@ -24,10 +24,11 @@
 
 #include "configuration.h"
 #include "party.h"
-#include "soundconsts.h"
 #include "soundmanager.h"
 
 #include "being/localplayer.h"
+
+#include "const/sound.h"
 
 #include "net/partyhandler.h"
 #include "net/serverfeatures.h"

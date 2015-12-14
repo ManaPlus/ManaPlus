@@ -22,8 +22,9 @@
 
 #include "gui/windows/okdialog.h"
 
-#include "soundconsts.h"
 #include "soundmanager.h"
+
+#include "const/sound.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/textbox.h"

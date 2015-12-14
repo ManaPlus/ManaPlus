@@ -23,8 +23,9 @@
 #include "gui/widgets/tabs/chat/guildtab.h"
 
 #include "configuration.h"
-#include "soundconsts.h"
 #include "soundmanager.h"
+
+#include "const/sound.h"
 
 #include "net/guildhandler.h"
 
