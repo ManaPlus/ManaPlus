@@ -22,7 +22,7 @@
 
 #include "simpleanimation.h"
 
-#include "resources/map/mapconsts.h"
+#include "const/resources/map/map.h"
 
 #include "render/graphics.h"
 

@@ -20,9 +20,10 @@
 
 #include "resources/map/speciallayer.h"
 
+#include "const/resources/map/map.h"
+
 #include "enums/resources/map/mapitemtype.h"
 
-#include "resources/map/mapconsts.h"
 #include "resources/map/mapitem.h"
 
 #include "utils/delete2.h"

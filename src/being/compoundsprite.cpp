@@ -32,8 +32,9 @@
 
 #include "being/compounditem.h"
 
+#include "const/resources/map/map.h"
+
 #include "resources/map/map.h"
-#include "resources/map/mapconsts.h"
 
 #include "render/surfacegraphics.h"
 

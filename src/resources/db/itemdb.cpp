@@ -22,7 +22,7 @@
 
 #include "resources/db/itemdb.h"
 
-#include "resources/map/mapconsts.h"
+#include "const/resources/map/map.h"
 
 #include "configuration.h"
 #include "logger.h"

@@ -26,7 +26,7 @@
 #include "logger.h"
 #include "settings.h"
 
-#include "resources/map/mapconsts.h"
+#include "const/resources/map/map.h"
 
 #include "resources/action.h"
 #include "resources/animation.h"

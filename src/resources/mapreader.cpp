@@ -28,10 +28,11 @@
 #endif
 #include "logger.h"
 
+#include "const/resources/map/map.h"
+
 #include "enums/resources/map/mapitemtype.h"
 
 #include "resources/map/map.h"
-#include "resources/map/mapconsts.h"
 #include "resources/map/mapheights.h"
 #include "resources/map/tileset.h"
 

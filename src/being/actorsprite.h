@@ -22,10 +22,10 @@
 #ifndef BEING_ACTORSPRITE_H
 #define BEING_ACTORSPRITE_H
 
-#include "resources/map/mapconsts.h"
-
 #include "being/actor.h"
 #include "being/compoundsprite.h"
+
+#include "const/resources/map/map.h"
 
 #include "enums/being/actortype.h"
 #include "enums/being/targetcursorsize.h"

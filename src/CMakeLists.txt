@@ -987,7 +987,7 @@ SET(SRCS
     resources/map/location.h
     resources/map/map.cpp
     resources/map/map.h
-    resources/map/mapconsts.h
+    const/resources/map/map.h
     resources/map/mapheights.cpp
     resources/map/mapheights.h
     resources/map/mapitem.cpp

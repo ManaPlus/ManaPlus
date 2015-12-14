@@ -22,6 +22,10 @@
 
 #include "gui/widgets/tabs/setup_other.h"
 
+#include "configuration.h"
+
+#include "const/resources/map/map.h"
+
 #include "gui/models/namesmodel.h"
 
 #include "gui/widgets/containerplacer.h"
@@ -30,10 +34,6 @@
 #include "gui/widgets/scrollarea.h"
 
 #include "listeners/uploadlistener.h"
-
-#include "configuration.h"
-
-#include "resources/map/mapconsts.h"
 
 #include "net/net.h"
 

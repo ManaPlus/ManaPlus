@@ -24,7 +24,7 @@
 
 #include "logger.h"
 
-#include "resources/map/mapconsts.h"
+#include "const/resources/map/map.h"
 
 #include "particle/animationparticle.h"
 #include "particle/rotationalparticle.h"
