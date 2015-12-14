@@ -43,6 +43,8 @@
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
 
+#include "const/net/net.h"
+
 #include "input/inputmanager.h"
 #include "input/joystick.h"
 #include "input/keyboardconfig.h"
@@ -84,7 +86,6 @@
 #include "net/ipc.h"
 #include "net/loginhandler.h"
 #include "net/net.h"
-#include "net/netconsts.h"
 #include "net/updatetypeoperators.h"
 #include "net/packetlimiter.h"
 #include "net/partyhandler.h"

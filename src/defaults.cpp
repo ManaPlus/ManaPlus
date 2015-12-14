@@ -34,7 +34,7 @@
 
 #include "render/graphics.h"
 
-#include "net/netconsts.h"
+#include "const/net/net.h"
 
 #ifndef USE_SDL2
 #include <SDL_keyboard.h>

@@ -1216,7 +1216,7 @@ manaplus_SOURCES += main.cpp \
 	      net/messageout.h \
 	      net/net.cpp \
 	      net/net.h \
-	      net/netconsts.h \
+	      const/net/net.h \
 	      net/npchandler.h \
 	      net/partyhandler.h \
 	      net/pethandler.h \
