@@ -22,7 +22,7 @@
 #ifndef EMOTESHORTCUT_H
 #define EMOTESHORTCUT_H
 
-#include "emoteshortcutconsts.h"
+#include "const/emoteshortcut.h"
 
 #include "localconsts.h"
 

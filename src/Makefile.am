@@ -790,7 +790,7 @@ manaplus_SOURCES += main.cpp \
 	      effectmanager.h \
 	      emoteshortcut.cpp \
 	      emoteshortcut.h \
-	      emoteshortcutconsts.h \
+	      const/emoteshortcut.h \
 	      equipment.h \
 	      listeners/actorspritelistener.h \
 	      listeners/arrowslistener.cpp \

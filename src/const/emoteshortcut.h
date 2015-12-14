@@ -18,9 +18,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef EMOTESHORTCUTCONSTS_H
-#define EMOTESHORTCUTCONSTS_H
+#ifndef CONST_EMOTESHORTCUT_H
+#define CONST_EMOTESHORTCUT_H
 
 static const int SHORTCUT_EMOTES = 48;
 
-#endif  // EMOTESHORTCUTCONSTS_H
+#endif  // CONST_EMOTESHORTCUT_H

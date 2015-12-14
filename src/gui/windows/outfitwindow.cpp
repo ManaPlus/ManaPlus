@@ -24,11 +24,12 @@
 
 #include "configuration.h"
 #include "dragdrop.h"
-#include "emoteshortcutconsts.h"
 #include "game.h"
 #include "inventory.h"
 
 #include "being/playerinfo.h"
+
+#include "const/emoteshortcut.h"
 
 #include "input/inputactionoperators.h"
 #include "input/inputmanager.h"

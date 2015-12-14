@@ -900,7 +900,7 @@ SET(SRCS
     effectmanager.h
     emoteshortcut.cpp
     emoteshortcut.h
-    emoteshortcutconsts.h
+    const/emoteshortcut.h
     equipment.h
     eventsmanager.cpp
     eventsmanager.h
