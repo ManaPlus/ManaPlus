@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_CHATCONSTS_H
-#define GUI_CHATCONSTS_H
+#ifndef CONST_GUI_CHAT_H
+#define CONST_GUI_CHAT_H
 
 #include <string>
 
@@ -29,4 +29,4 @@ const std::string GENERAL_CHANNEL = "";
 const std::string GM_CHANNEL = "#gm";
 const std::string TRADE_CHANNEL = "#trade";
 
-#endif  // GUI_CHATCONSTS_H
+#endif  // CONST_GUI_CHAT_H

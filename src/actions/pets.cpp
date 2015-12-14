@@ -31,7 +31,7 @@
 
 #include "enums/being/beingdirection.h"
 
-#include "gui/chatconsts.h"
+#include "const/gui/chat.h"
 
 #include "input/inputactionoperators.h"
 

@@ -43,6 +43,8 @@
 
 #include "const/spells.h"
 
+#include "const/gui/chat.h"
+
 #include "enums/being/beingdirection.h"
 
 #include "particle/particle.h"
@@ -51,7 +53,6 @@
 #include "input/joystick.h"
 #include "input/keyboardconfig.h"
 
-#include "gui/chatconsts.h"
 #include "gui/dialogsmanager.h"
 #include "gui/gui.h"
 #include "gui/popupmanager.h"

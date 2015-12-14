@@ -24,7 +24,7 @@
 
 #include "actions/actiondef.h"
 
-#include "gui/chatconsts.h"
+#include "const/gui/chat.h"
 
 #include "gui/windows/chatwindow.h"
 

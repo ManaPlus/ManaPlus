@@ -29,7 +29,7 @@
 #include "being/playerrelation.h"
 #include "being/playerrelations.h"
 
-#include "gui/chatconsts.h"
+#include "const/gui/chat.h"
 
 #include "gui/widgets/tabs/chat/gmtab.h"
 

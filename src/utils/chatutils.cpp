@@ -25,7 +25,7 @@
 
 #include "being/localplayer.h"
 
-#include "gui/chatconsts.h"
+#include "const/gui/chat.h"
 
 #include "gui/widgets/tabs/chat/whispertab.h"
 

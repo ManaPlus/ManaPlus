@@ -22,7 +22,7 @@
 
 #include "net/tmwa/adminhandler.h"
 
-#include "gui/chatconsts.h"
+#include "const/gui/chat.h"
 
 #include "net/chathandler.h"
 

@@ -29,7 +29,7 @@
 #include "gui/windows/shopselldialog.h"
 #include "gui/windows/tradewindow.h"
 
-#include "gui/chatconsts.h"
+#include "const/gui/chat.h"
 #endif
 
 #ifdef EATHENA_SUPPORT

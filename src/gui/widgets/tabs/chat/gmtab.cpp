@@ -20,12 +20,13 @@
 
 #include "gui/widgets/tabs/chat/gmtab.h"
 
-#include "gui/chatconsts.h"
-#include "net/chathandler.h"
+#include "const/gui/chat.h"
 
 #include "gui/windows/chatwindow.h"
 
 #include "utils/gettext.h"
+
+#include "net/chathandler.h"
 
 #include "debug.h"
 

@@ -34,9 +34,10 @@
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
 
+#include "const/gui/chat.h"
+
 #include "input/inputmanager.h"
 
-#include "gui/chatconsts.h"
 #include "gui/focushandler.h"
 #include "gui/gui.h"
 #include "gui/skin.h"
