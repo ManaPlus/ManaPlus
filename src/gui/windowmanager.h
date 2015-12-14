@@ -49,6 +49,10 @@ namespace WindowManager
 
     void applyKeyRepeat();
 
+    void doResizeVideo(int actualWidth,
+                       int actualHeight,
+                       const bool always);
+
     void resizeVideo(int actualWidth,
                      int actualHeight,
                      const bool always);

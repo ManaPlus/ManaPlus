@@ -378,7 +378,7 @@ void Setup_Video::action(const ActionEvent &event)
             if (intToRenderType(config.getIntValue("opengl"))
                 == RENDER_SOFTWARE)
             {
-                WindowManager::resizeVideo(width, height, false);
+                WindowManager::doResizeVideo(width, height, false);
             }
             else
             {
@@ -419,7 +419,7 @@ void Setup_Video::action(const ActionEvent &event)
             }
 #else
             mainGraphics->setWindowSize(width, height);
-            WindowManager::resizeVideo(width, height, false);
+            WindowManager::doResizeVideo(width, height, false);
 #endif
         }
 

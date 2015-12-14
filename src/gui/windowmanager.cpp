@@ -55,6 +55,9 @@
 #include "utils/files.h"
 #include "utils/sdlcheckutils.h"
 #include "utils/sdlhelper.h"
+#ifdef __native_client__
+#include "utils/naclmessages.h"
+#endif  // __native_client__
 
 #ifdef ANDROID
 #ifndef USE_SDL2
@@ -175,6 +178,25 @@ int WindowManager::getFramerate()
     return SDL_getFramerate(&fpsManager);
 }
 
+void WindowManager::doResizeVideo(int actualWidth,
+                                  int actualHeight,
+                                  const bool always)
+{
+    if (!always
+        && mainGraphics->mActualWidth == actualWidth
+        && mainGraphics->mActualHeight == actualHeight)
+    {
+        return;
+    }
+
+#ifdef __native_client__
+    naclPostMessage("resize-window",
+        strprintf("%d,%d", actualWidth, actualHeight));
+#else
+    resizeVideo(actualWidth, actualHeight, always);
+#endif
+}
+
 void WindowManager::resizeVideo(int actualWidth,
                                 int actualHeight,
                                 const bool always)
@@ -257,7 +279,7 @@ void WindowManager::applyScale()
     if (mainGraphics->getScale() == scale)
         return;
     mainGraphics->setScale(scale);
-    resizeVideo(mainGraphics->mActualWidth,
+    doResizeVideo(mainGraphics->mActualWidth,
         mainGraphics->mActualHeight,
         true);
 }
