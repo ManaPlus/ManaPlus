@@ -40,14 +40,28 @@
 
 #include <sstream>
 
-#if defined(__ANDROID__) && defined(ANDROID_LOG)
+#if defined(__ANDROID__)
 #include <android/log.h>
+#ifdef SPECIAL_LOGGING
 #define SPECIALLOG(x) __android_log_print(ANDROID_LOG_INFO, "manaplus", x);
 #define DSPECIALLOG(x) __android_log_print(ANDROID_LOG_VERBOSE, \
     "manaplus", x);
-#elif defined __native_client__ && defined(NACL_LOG)
+#else  // SPECIAL_LOGGING
+#define SPECIALLOG(x) if (mDebugLog) \
+    __android_log_print(ANDROID_LOG_INFO, "manaplus", x);
+#define DSPECIALLOG(x) if (mDebugLog) \
+    __android_log_print(ANDROID_LOG_VERBOSE, "manaplus", x);
+#endif  // SPECIAL_LOGGING
+#elif defined __native_client__
+#ifdef SPECIAL_LOGGING
 #define SPECIALLOG(x) std::cerr << x;
 #define DSPECIALLOG(x) std::cerr << x;
+#else  // SPECIAL_LOGGING
+#define SPECIALLOG(x) if (mDebugLog) \
+    std::cerr << x;
+#define DSPECIALLOG(x) if (mDebugLog) \
+    std::cerr << x;
+#endif  // SPECIAL_LOGGING
 #else
 #define SPECIALLOG(x)
 #define DSPECIALLOG(x)

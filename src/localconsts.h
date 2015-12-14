@@ -181,11 +181,8 @@
 // #define DEBUG_DUMP_LEAKS1 1
 // #define DEBUG_SDLFONT 1
 
-// Android logging
-// #define ANDROID_LOG 1
-
-// nacl logging
-#define NACL_LOG 1
+// android or nacl logging
+// #define SPECIAL_LOGGING 1
 
 // profiler
 // #define USE_PROFILER 1
