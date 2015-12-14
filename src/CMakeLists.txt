@@ -1197,7 +1197,7 @@ SET(SRCS
     gui/widgets/basiccontainer.h
     gui/buttoninfo.h
     gui/buttontext.h
-    gui/chatconsts.h
+    const/gui/chat.h
     gui/chatlog.h
     enums/gui/chatmsgtype.h
     gui/cliprect.h
