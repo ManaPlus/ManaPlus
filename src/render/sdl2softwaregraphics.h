@@ -42,6 +42,8 @@ struct SDL_Surface;
 class SDL2SoftwareGraphics final : public Graphics
 {
     public:
+        friend class Sdl2SoftwareScreenshotHelper;
+
         /**
          * Constructor.
          */

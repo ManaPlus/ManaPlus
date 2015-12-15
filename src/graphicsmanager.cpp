@@ -75,6 +75,7 @@
 #include "render/sdl2softwaregraphics.h"
 
 #include "resources/sdl2softwareimagehelper.h"
+#include "resources/sdl2softwarescreenshothelper.h"
 #include "resources/surfaceimagehelper.h"
 #endif
 
@@ -260,7 +261,7 @@ int GraphicsManager::detectGraphics()
     imageHelper = new SDL2SoftwareImageHelper; \
     surfaceImageHelper = new SurfaceImageHelper; \
     mainGraphics = new SDL2SoftwareGraphics; \
-    screenshortHelper = new SdlScreenshotHelper;
+    screenshortHelper = new Sdl2SoftwareScreenshotHelper;
 #define RENDER_SDL2_DEFAULT_INIT \
     imageHelper = new SDLImageHelper; \
     surfaceImageHelper = new SurfaceImageHelper; \
@@ -391,7 +392,6 @@ void GraphicsManager::createRenderers()
     // Setup image loading for the right image format
     ImageHelper::setOpenGlMode(useOpenGL);
 
-    screenshortHelper = new OpenGLScreenshotHelper;
     // Create the graphics context
     switch (useOpenGL)
     {
@@ -411,10 +411,12 @@ void GraphicsManager::createRenderers()
             imageHelper = new SDL2SoftwareImageHelper;
             surfaceImageHelper = new SurfaceImageHelper;
             mainGraphics = new SDL2SoftwareGraphics;
+            screenshortHelper = new Sdl2SoftwareScreenshotHelper;
 #else
             imageHelper = new SDLImageHelper;
             surfaceImageHelper = imageHelper;
             mainGraphics = new SDLGraphics;
+            screenshortHelper = new SdlScreenshotHelper;
 #endif
             break;
 #ifdef USE_SDL2
@@ -423,6 +425,7 @@ void GraphicsManager::createRenderers()
             surfaceImageHelper = new SurfaceImageHelper;
             mainGraphics = new SDLGraphics;
             mainGraphics->setRendererFlags(SDL_RENDERER_ACCELERATED);
+            screenshortHelper = new SdlScreenshotHelper;
             break;
 #endif
     };

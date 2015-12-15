@@ -712,6 +712,8 @@ SET(SRCS
     resources/sdl2imagehelper.h
     resources/sdl2softwareimagehelper.cpp
     resources/sdl2softwareimagehelper.h
+    resources/sdl2softwarescreenshothelper.cpp
+    resources/sdl2softwarescreenshothelper.h
     resources/sdlimagehelper.cpp
     resources/sdlimagehelper.h
     resources/sdlmusic.cpp
