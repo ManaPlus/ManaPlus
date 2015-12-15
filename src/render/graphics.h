@@ -105,6 +105,8 @@ struct SDL_Window;
 class Graphics notfinal
 {
     public:
+        friend class SdlScreenshotHelper;
+
         A_DELETE_COPY(Graphics)
 
         /**

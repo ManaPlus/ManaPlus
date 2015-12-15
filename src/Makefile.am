@@ -370,6 +370,8 @@ SRC += events/actionevent.h \
 	      resources/sdlimagehelper.h \
 	      resources/sdlmusic.cpp \
 	      resources/sdlmusic.h \
+	      resources/sdlscreenshothelper.cpp \
+	      resources/sdlscreenshothelper.h \
 	      const/net/skill.h \
 	      const/resources/skill.h \
 	      resources/skillowner.h \
