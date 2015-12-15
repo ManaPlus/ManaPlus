@@ -55,7 +55,6 @@ class Image notfinal : public Resource
     friend class CompoundSprite;
     friend class Graphics;
     friend class ImageHelper;
-    friend class OpenGLImageHelper;
     friend class SDLGraphics;
     friend class SDLImageHelper;
     friend class SurfaceGraphics;
@@ -73,7 +72,11 @@ class Image notfinal : public Resource
     friend class NormalOpenGLGraphics;
     friend class NullOpenGLGraphics;
     friend class SafeOpenGLGraphics;
-#endif
+    friend class OpenGLImageHelper;
+#ifndef ANDROID
+    friend class SafeOpenGLImageHelper;
+#endif  // ANDROID
+#endif  // USE_OPENGL
 
     public:
         A_DELETE_COPY(Image)

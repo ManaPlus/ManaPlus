@@ -30,7 +30,7 @@
 
 #include "resources/image.h"
 #include "resources/imagerect.h"
-#include "resources/openglimagehelper.h"
+#include "resources/safeopenglimagehelper.h"
 
 #include "utils/sdlcheckutils.h"
 
@@ -81,7 +81,7 @@ static inline void drawQuad(const Image *image,
                             const int dstX, const int dstY,
                             const int width, const int height)
 {
-    if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
+    if (SafeOpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
     {
         const float tw = static_cast<float>(image->mTexWidth);
         const float th = static_cast<float>(image->mTexHeight);
@@ -127,7 +127,7 @@ static inline void drawRescaledQuad(const Image *const image,
                                     const int desiredWidth,
                                     const int desiredHeight)
 {
-    if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
+    if (SafeOpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
     {
         const float tw = static_cast<float>(image->mTexWidth);
         const float th = static_cast<float>(image->mTexHeight);
@@ -173,7 +173,7 @@ void SafeOpenGLGraphics::drawImageInline(const Image *const image,
         return;
 
     setColorAlpha(image->mAlpha);
-    bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
+    bindTexture(SafeOpenGLImageHelper::mTextureType, image->mGLImage);
     setTexturingAndBlending(true);
 
     const SDL_Rect &bounds = image->mBounds;
@@ -192,7 +192,7 @@ void SafeOpenGLGraphics::copyImage(const Image *const image,
 
 void SafeOpenGLGraphics::testDraw()
 {
-    if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
+    if (SafeOpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
     {
         glBegin(GL_QUADS);
         glTexCoord2f(0.0f, 0.781250f);
@@ -228,7 +228,7 @@ void SafeOpenGLGraphics::drawImageCached(const Image *const image,
         return;
 
     setColorAlpha(image->mAlpha);
-    bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
+    bindTexture(SafeOpenGLImageHelper::mTextureType, image->mGLImage);
     setTexturingAndBlending(true);
 
     const SDL_Rect &bounds = image->mBounds;
@@ -256,7 +256,7 @@ void SafeOpenGLGraphics::drawPatternCached(const Image *const image,
     const int srcY = imageRect.y;
 
     setColorAlpha(image->mAlpha);
-    bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
+    bindTexture(SafeOpenGLImageHelper::mTextureType, image->mGLImage);
     setTexturingAndBlending(true);
 
     // Draw a set of textured rectangles
@@ -300,7 +300,7 @@ void SafeOpenGLGraphics::drawRescaledImage(const Image *const image,
     }
 
     setColorAlpha(image->mAlpha);
-    bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
+    bindTexture(SafeOpenGLImageHelper::mTextureType, image->mGLImage);
     setTexturingAndBlending(true);
 
     // Draw a textured quad.
@@ -335,7 +335,7 @@ void SafeOpenGLGraphics::drawPatternInline(const Image *const image,
     const int srcY = imageRect.y;
 
     setColorAlpha(image->mAlpha);
-    bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
+    bindTexture(SafeOpenGLImageHelper::mTextureType, image->mGLImage);
     setTexturingAndBlending(true);
 
     // Draw a set of textured rectangles
@@ -375,7 +375,7 @@ void SafeOpenGLGraphics::drawRescaledPattern(const Image *const image,
     const int srcY = imageRect.y;
 
     setColorAlpha(image->mAlpha);
-    bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
+    bindTexture(SafeOpenGLImageHelper::mTextureType, image->mGLImage);
     setTexturingAndBlending(true);
 
     // Draw a set of textured rectangles
@@ -676,7 +676,7 @@ void SafeOpenGLGraphics::setTexturingAndBlending(const bool enable)
     {
         if (!mTexture)
         {
-            glEnable(OpenGLImageHelper::mTextureType);
+            glEnable(SafeOpenGLImageHelper::mTextureType);
             mTexture = true;
         }
 
@@ -702,7 +702,7 @@ void SafeOpenGLGraphics::setTexturingAndBlending(const bool enable)
 
         if (mTexture)
         {
-            glDisable(OpenGLImageHelper::mTextureType);
+            glDisable(SafeOpenGLImageHelper::mTextureType);
             mTexture = false;
         }
     }

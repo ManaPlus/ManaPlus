@@ -28,7 +28,10 @@
 
 #ifdef USE_OPENGL
 #include "resources/openglimagehelper.h"
-#endif
+#ifndef ANDROID
+#include "resources/safeopenglimagehelper.h"
+#endif  // ANDROID
+#endif  // USE_OPENGL
 #include "resources/sdlimagehelper.h"
 #include "resources/subimage.h"
 
@@ -36,9 +39,9 @@
 
 #ifdef USE_SDL2
 #include <SDL2_rotozoom.h>
-#else
+#else  // USE_SDL2
 #include <SDL_rotozoom.h>
-#endif
+#endif  // USE_SDL2
 
 #include "debug.h"
 

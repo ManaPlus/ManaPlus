@@ -61,9 +61,11 @@
 #ifdef USE_OPENGL
 #include "resources/fboinfo.h"
 #include "resources/openglimagehelper.h"
-
+#ifndef ANDROID
+#include "resources/safeopenglimagehelper.h"
+#endif  // ANDROID
 #include "render/mglfunctions.h"
-#endif
+#endif  // USE_OPENGL
 
 #include "resources/sdlimagehelper.h"
 
@@ -289,7 +291,7 @@ int GraphicsManager::detectGraphics()
 #define RENDER_GLES2_OPENGL_INIT
 #else  // defined(ANDROID)
 #define RENDER_SAFE_OPENGL_INIT \
-    imageHelper = new OpenGLImageHelper; \
+    imageHelper = new SafeOpenGLImageHelper; \
     surfaceImageHelper = new SurfaceImageHelper; \
     mainGraphics = new SafeOpenGLGraphics; \
     mUseTextureSampler = false;
@@ -494,6 +496,9 @@ void GraphicsManager::initGraphics()
     openGLMode = intToRenderType(config.getIntValue("opengl"));
 #ifdef USE_OPENGL
     OpenGLImageHelper::setBlur(config.getBoolValue("blur"));
+#ifndef ANDROID
+    SafeOpenGLImageHelper::setBlur(config.getBoolValue("blur"));
+#endif  // ANDROID
     SurfaceImageHelper::SDLSetEnableAlphaCache(
         config.getBoolValue("alphaCache") && !openGLMode);
     ImageHelper::setEnableAlpha((config.getFloatValue("guialpha") != 1.0F ||
@@ -786,11 +791,17 @@ void GraphicsManager::updateTextureFormat() const
         config.getBoolValue("newtextures"))
     {
         OpenGLImageHelper::setInternalTextureType(GL_RGBA);
+#ifndef ANDROID
+        SafeOpenGLImageHelper::setInternalTextureType(GL_RGBA);
+#endif
         logger->log1("using RGBA texture format");
     }
     else
     {
         OpenGLImageHelper::setInternalTextureType(4);
+#ifndef ANDROID
+        SafeOpenGLImageHelper::setInternalTextureType(4);
+#endif
         logger->log1("using 4 texture format");
     }
 }
@@ -1365,6 +1376,9 @@ void GraphicsManager::createTextureSampler()
         }
     }
     OpenGLImageHelper::setUseTextureSampler(mUseTextureSampler);
+#ifndef ANDROID
+    SafeOpenGLImageHelper::setUseTextureSampler(false);
+#endif
 }
 
 GLenum GraphicsManager::getLastError()

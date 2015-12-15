@@ -77,11 +77,14 @@
 #include "resources/imagehelper.h"
 #ifdef USE_OPENGL
 #include "resources/openglimagehelper.h"
-#if defined(__native_client__)
+#ifndef ANDROID
+#include "resources/safeopenglimagehelper.h"
+#endif  // ANDROID
+#ifdef __native_client__
 #include "render/naclfunctions.h"
 #include "render/naclgles.h"
-#endif
-#endif
+#endif  // __native_client__
+#endif  // USE_OPENGL
 
 #ifdef USE_OPENGL
 #ifdef __APPLE__
@@ -332,12 +335,20 @@ bool Graphics::setOpenGLMode()
         OpenGLImageHelper::mTextureSize = texSize;
         logger->log("OpenGL texture size: %d pixels (rectangle textures)",
             OpenGLImageHelper::mTextureSize);
+#ifndef ANDROID
+        SafeOpenGLImageHelper::mTextureType = GL_TEXTURE_RECTANGLE_ARB;
+        SafeOpenGLImageHelper::mTextureSize = texSize;
+#endif
     }
     else
     {
-        OpenGLImageHelper::mTextureType = GL_TEXTURE_2D;
         glGetIntegerv(GL_MAX_TEXTURE_SIZE, &texSize);
+        OpenGLImageHelper::mTextureType = GL_TEXTURE_2D;
         OpenGLImageHelper::mTextureSize = texSize;
+#ifndef ANDROID
+        SafeOpenGLImageHelper::mTextureType = GL_TEXTURE_2D;
+        SafeOpenGLImageHelper::mTextureSize = texSize;
+#endif
         logger->log("OpenGL texture size: %d pixels",
             OpenGLImageHelper::mTextureSize);
     }

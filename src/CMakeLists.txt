@@ -703,6 +703,8 @@ SET(SRCS
     resources/resource.h
     resources/resourcemanager.cpp
     resources/resourcemanager.h
+    resources/safeopenglimagehelper.cpp
+    resources/safeopenglimagehelper.h
     resources/sdl2imagehelper.cpp
     resources/sdl2imagehelper.h
     resources/sdl2softwareimagehelper.cpp
