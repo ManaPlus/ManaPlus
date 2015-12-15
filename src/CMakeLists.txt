@@ -689,6 +689,8 @@ SET(SRCS
     resources/db/npcdialogdb.h
     resources/openglimagehelper.cpp
     resources/openglimagehelper.h
+    resources/openglscreenshothelper.cpp
+    resources/openglscreenshothelper.h
     resources/questeffect.h
     resources/questitem.h
     resources/questitemtext.h
