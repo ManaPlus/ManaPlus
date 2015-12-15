@@ -336,20 +336,20 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
     {
         if (mBlur)
         {
-            glTexParameteri(mTextureType, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-            glTexParameteri(mTextureType, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+            mglTexParameteri(mTextureType, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+            mglTexParameteri(mTextureType, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         }
         else
         {
-            glTexParameteri(mTextureType, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-            glTexParameteri(mTextureType, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+            mglTexParameteri(mTextureType, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+            mglTexParameteri(mTextureType, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
         }
     }
 #ifndef ANDROID
-    glTexParameteri(mTextureType, GL_TEXTURE_MAX_LEVEL, 0);
+    mglTexParameteri(mTextureType, GL_TEXTURE_MAX_LEVEL, 0);
 #endif
 
-    glTexImage2D(mTextureType, 0, mInternalTextureType,
+    mglTexImage2D(mTextureType, 0, mInternalTextureType,
         tmpImage->w, tmpImage->h,
         0, GL_RGBA, GL_UNSIGNED_BYTE, tmpImage->pixels);
 
@@ -445,7 +445,7 @@ GLuint OpenGLImageHelper::getNewTexture()
 
 void OpenGLImageHelper::postInit()
 {
-    glGenTextures(texturesSize, &mTextures[mFreeTextureIndex]);
+    mglGenTextures(texturesSize, &mTextures[mFreeTextureIndex]);
 }
 
 void OpenGLImageHelper::invalidate(const GLuint textureId)

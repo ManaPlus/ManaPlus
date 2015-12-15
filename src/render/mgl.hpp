@@ -95,6 +95,12 @@ defName(glActiveTexture);
     glClear(__VA_ARGS__)
 #define mglGetString(...) \
     glGetString(__VA_ARGS__)
+#define mglTexParameteri(...) \
+    glTexParameteri(__VA_ARGS__)
+#define mglTexImage2D(...) \
+    glTexImage2D(__VA_ARGS__)
+#define mglGenTextures(...) \
+    glGenTextures(__VA_ARGS__)
 
 #endif
 defName(glGetAttribLocation);
