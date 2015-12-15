@@ -61,6 +61,7 @@
 #ifdef USE_OPENGL
 #include "resources/fboinfo.h"
 #include "resources/openglimagehelper.h"
+#include "resources/openglscreenshothelper.h"
 #ifndef ANDROID
 #include "resources/safeopenglimagehelper.h"
 #endif  // ANDROID
@@ -68,6 +69,7 @@
 #endif  // USE_OPENGL
 
 #include "resources/sdlimagehelper.h"
+#include "resources/sdlscreenshothelper.h"
 
 #ifdef USE_SDL2
 #include "render/sdl2softwaregraphics.h"
@@ -99,6 +101,8 @@
 GraphicsManager graphicsManager;
 
 RenderType openGLMode = RENDER_SOFTWARE;
+
+ScreenshotHelper *screenshortHelper = nullptr;
 
 const int densitySize = 6;
 
@@ -255,18 +259,21 @@ int GraphicsManager::detectGraphics()
 #define RENDER_SOFTWARE_INIT \
     imageHelper = new SDL2SoftwareImageHelper; \
     surfaceImageHelper = new SurfaceImageHelper; \
-    mainGraphics = new SDL2SoftwareGraphics;
+    mainGraphics = new SDL2SoftwareGraphics; \
+    screenshortHelper = new SdlScreenshotHelper;
 #define RENDER_SDL2_DEFAULT_INIT \
     imageHelper = new SDLImageHelper; \
     surfaceImageHelper = new SurfaceImageHelper; \
     mainGraphics = new SDLGraphics; \
+    screenshortHelper = new SdlScreenshotHelper; \
     mainGraphics->setRendererFlags(SDL_RENDERER_ACCELERATED); \
     mUseTextureSampler = false;
 #else  // USE_SDL2
 #define RENDER_SOFTWARE_INIT \
     imageHelper = new SDLImageHelper; \
     surfaceImageHelper = imageHelper; \
-    mainGraphics = new SDLGraphics;
+    mainGraphics = new SDLGraphics; \
+    screenshortHelper = new SdlScreenshotHelper;
 #define RENDER_SDL2_DEFAULT_INIT
 #endif  // USE_SDL2
 
@@ -278,11 +285,13 @@ int GraphicsManager::detectGraphics()
     imageHelper = new OpenGLImageHelper; \
     surfaceImageHelper = new SurfaceImageHelper; \
     mainGraphics = new NormalOpenGLGraphics; \
+    screenshortHelper = new OpenGLScreenshotHelper; \
     mUseTextureSampler = true;
 #define RENDER_MODERN_OPENGL_INIT \
     imageHelper = new OpenGLImageHelper; \
     surfaceImageHelper = new SurfaceImageHelper; \
     mainGraphics = new ModernOpenGLGraphics; \
+    screenshortHelper = new OpenGLScreenshotHelper; \
     mUseTextureSampler = true;
 #endif  // defined(ANDROID) || defined(__native_client__)
 
@@ -294,11 +303,13 @@ int GraphicsManager::detectGraphics()
     imageHelper = new SafeOpenGLImageHelper; \
     surfaceImageHelper = new SurfaceImageHelper; \
     mainGraphics = new SafeOpenGLGraphics; \
+    screenshortHelper = new OpenGLScreenshotHelper; \
     mUseTextureSampler = false;
 #define RENDER_GLES2_OPENGL_INIT \
     imageHelper = new OpenGLImageHelper; \
     surfaceImageHelper = new SurfaceImageHelper; \
     mainGraphics = new MobileOpenGL2Graphics; \
+    screenshortHelper = new OpenGLScreenshotHelper; \
     mUseTextureSampler = false;
 #endif  // defined(ANDROID)
 
@@ -309,6 +320,7 @@ int GraphicsManager::detectGraphics()
     imageHelper = new OpenGLImageHelper; \
     surfaceImageHelper = new SurfaceImageHelper; \
     mainGraphics = new MobileOpenGLGraphics; \
+    screenshortHelper = new OpenGLScreenshotHelper; \
     mUseTextureSampler = false;
 #endif  // defined(__native_client__)
 
@@ -379,6 +391,7 @@ void GraphicsManager::createRenderers()
     // Setup image loading for the right image format
     ImageHelper::setOpenGlMode(useOpenGL);
 
+    screenshortHelper = new OpenGLScreenshotHelper;
     // Create the graphics context
     switch (useOpenGL)
     {

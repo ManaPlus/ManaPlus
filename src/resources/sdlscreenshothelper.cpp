@@ -39,14 +39,15 @@ SdlScreenshotHelper::~SdlScreenshotHelper()
 {
 }
 
-void SdlScreenshotHelper::prepare(const int width A_UNUSED,
-                                  const int height A_UNUSED)
+void SdlScreenshotHelper::prepare()
 {
 }
 
-SDL_Surface *SdlScreenshotHelper::getScreenshot(const int width,
-                                                const int height)
+SDL_Surface *SdlScreenshotHelper::getScreenshot()
 {
+    if (!mainGraphics)
+        return nullptr;
+
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
     const int rmask = 0xff000000;
     const int gmask = 0x00ff0000;
@@ -59,7 +60,7 @@ SDL_Surface *SdlScreenshotHelper::getScreenshot(const int width,
     const int amask = 0x00000000;
 
     SDL_Surface *const screenshot = MSDL_CreateRGBSurface(SDL_SWSURFACE,
-        width, height,
+        mainGraphics->mWidth, mainGraphics->mHeight,
         24,
         rmask, gmask, bmask, amask);
 

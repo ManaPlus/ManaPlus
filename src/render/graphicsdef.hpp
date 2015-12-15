@@ -84,11 +84,6 @@ public:
 
     void updateScreen() override final;
 
-    /**
-    * Takes a screenshot and returns it as SDL surface.
-    */
-    SDL_Surface *getScreenshot() override final A_WARN_UNUSED;
-
     void calcWindow(ImageCollection *const vertCol,
                     const int x, const int y,
                     const int w, const int h,

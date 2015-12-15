@@ -44,18 +44,18 @@ OpenGLScreenshotHelper::~OpenGLScreenshotHelper()
 {
 }
 
-void OpenGLScreenshotHelper::prepare(const int width,
-                                     const int height)
+void OpenGLScreenshotHelper::prepare()
 {
     if (config.getBoolValue("usefbo"))
-        graphicsManager.createFBO(width, height, &mFbo);
+        graphicsManager.createFBO(mainGraphics->mWidth,
+            mainGraphics->mHeight,
+            &mFbo);
 }
 
-SDL_Surface *OpenGLScreenshotHelper::getScreenshot(const int width,
-                                                   const int height)
+SDL_Surface *OpenGLScreenshotHelper::getScreenshot()
 {
-    const int h = height;
-    const int w = width - (width % 4);
+    const int h = mainGraphics->mHeight;
+    const int w = mainGraphics->mWidth - (mainGraphics->mWidth % 4);
     GLint pack = 1;
 
     SDL_Surface *const screenshot = MSDL_CreateRGBSurface(

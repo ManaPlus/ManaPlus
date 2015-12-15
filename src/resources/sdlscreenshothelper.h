@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_SDL2IMAGEHELPER_H
-#define RESOURCES_SDL2IMAGEHELPER_H
+#ifndef RESOURCES_SDLSCREENSHOTHELPER_H
+#define RESOURCES_SDLSCREENSHOTHELPER_H
 
 #include "resources/screenshothelper.h"
 
@@ -36,11 +36,9 @@ class SdlScreenshotHelper final : public ScreenshotHelper
 
         ~SdlScreenshotHelper();
 
-        void prepare(const int width,
-                     const int height) override final;
+        void prepare() override final;
 
-        SDL_Surface *getScreenshot(const int width,
-                                   const int height) override final;
+        SDL_Surface *getScreenshot() override final;
 };
 
-#endif  // RESOURCES_SDL2IMAGEHELPER_H
+#endif  // RESOURCES_SDLSCREENSHOTHELPER_H

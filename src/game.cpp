@@ -110,6 +110,7 @@
 #include "resources/imagewriter.h"
 #include "resources/mapreader.h"
 #include "resources/resourcemanager.h"
+#include "resources/screenshothelper.h"
 
 #include "resources/db/mapdb.h"
 
@@ -483,7 +484,7 @@ void Game::addWatermark()
 
 bool Game::createScreenshot()
 {
-    if (!mainGraphics)
+    if (!mainGraphics || !screenshortHelper)
         return false;
 
     SDL_Surface *screenshot = nullptr;
@@ -491,16 +492,16 @@ bool Game::createScreenshot()
     if (!config.getBoolValue("showip") && gui)
     {
         mainGraphics->setSecure(true);
-        mainGraphics->prepareScreenshot();
+        screenshortHelper->prepare();
         gui->draw();
         addWatermark();
-        screenshot = mainGraphics->getScreenshot();
+        screenshot = screenshortHelper->getScreenshot();
         mainGraphics->setSecure(false);
     }
     else
     {
         addWatermark();
-        screenshot = mainGraphics->getScreenshot();
+        screenshot = screenshortHelper->getScreenshot();
     }
 
     if (!screenshot)

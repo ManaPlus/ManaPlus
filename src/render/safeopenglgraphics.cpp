@@ -517,62 +517,6 @@ void SafeOpenGLGraphics::endDraw()
     popClipArea();
 }
 
-void SafeOpenGLGraphics::prepareScreenshot()
-{
-    if (config.getBoolValue("usefbo"))
-        graphicsManager.createFBO(mRect.w, mRect.h, &mFbo);
-}
-
-SDL_Surface* SafeOpenGLGraphics::getScreenshot()
-{
-    const int h = mRect.h;
-    const int w = mRect.w - (mRect.w % 4);
-    GLint pack = 1;
-
-    SDL_Surface *const screenshot = MSDL_CreateRGBSurface(
-        SDL_SWSURFACE, w, h, 24, 0xff0000, 0x00ff00, 0x0000ff, 0x000000);
-
-    if (!screenshot || !screenshot->pixels)
-        return nullptr;
-
-    if (SDL_MUSTLOCK(screenshot))
-        SDL_LockSurface(screenshot);
-
-    // Grap the pixel buffer and write it to the SDL surface
-    glGetIntegerv(GL_PACK_ALIGNMENT, &pack);
-    glPixelStorei(GL_PACK_ALIGNMENT, 1);
-    glReadPixels(0, 0, w, h, GL_RGB, GL_UNSIGNED_BYTE, screenshot->pixels);
-
-    // Flip the screenshot, as OpenGL has 0,0 in bottom left
-    size_t lineSize = 3 * w;
-    GLubyte* buf = new GLubyte[lineSize];
-
-    const int h2 = h / 2;
-    for (int i = 0; i < h2; i++)
-    {
-        GLubyte *const top = static_cast<GLubyte*>(
-            screenshot->pixels) + lineSize * i;
-        GLubyte *const bot = static_cast<GLubyte*>(
-            screenshot->pixels) + lineSize * (h - 1 - i);
-
-        memcpy(buf, top, lineSize);
-        memcpy(top, bot, lineSize);
-        memcpy(bot, buf, lineSize);
-    }
-
-    delete [] buf;
-
-    if (config.getBoolValue("usefbo"))
-        graphicsManager.deleteFBO(&mFbo);
-
-    glPixelStorei(GL_PACK_ALIGNMENT, pack);
-
-    if (SDL_MUSTLOCK(screenshot))
-        SDL_UnlockSurface(screenshot);
-
-    return screenshot;
-}
-
 void SafeOpenGLGraphics::pushClipArea(const Rect &area)
 {
     int transX = 0;

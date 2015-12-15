@@ -30,8 +30,6 @@ public:
 
     static void dumpSettings();
 
-    void prepareScreenshot() override final;
-
     int getMemoryUsage() A_WARN_UNUSED;
 
     void updateTextureFormat();

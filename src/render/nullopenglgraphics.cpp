@@ -956,15 +956,6 @@ void NullOpenGLGraphics::endDraw()
     popClipArea();
 }
 
-void NullOpenGLGraphics::prepareScreenshot()
-{
-}
-
-SDL_Surface* NullOpenGLGraphics::getScreenshot()
-{
-    return nullptr;
-}
-
 void NullOpenGLGraphics::pushClipArea(const Rect &area)
 {
     int transX = 0;

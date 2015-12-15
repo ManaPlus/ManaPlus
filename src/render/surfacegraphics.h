@@ -131,9 +131,6 @@ class SurfaceGraphics final : public Graphics
         void updateScreen() override final
         { }
 
-        SDL_Surface *getScreenshot() override final A_WARN_UNUSED
-        { return nullptr; }
-
         void drawNet(const int x1 A_UNUSED,
                      const int y1 A_UNUSED,
                      const int x2 A_UNUSED,

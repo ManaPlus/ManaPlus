@@ -38,11 +38,11 @@ class ScreenshotHelper notfinal
         virtual ~ScreenshotHelper()
         { }
 
-        virtual void prepare(const int width,
-                             const int height) = 0;
+        virtual void prepare() = 0;
 
-        virtual SDL_Surface *getScreenshot(const int width,
-                                           const int height) = 0;
+        virtual SDL_Surface *getScreenshot() = 0;
 };
+
+extern ScreenshotHelper *screenshortHelper;
 
 #endif  // RESOURCES_SCREENSHOTHELPER_H

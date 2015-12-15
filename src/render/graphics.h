@@ -105,6 +105,9 @@ struct SDL_Window;
 class Graphics notfinal
 {
     public:
+#ifdef USE_OPENGL
+        friend class OpenGLScreenshotHelper;
+#endif
         friend class SdlScreenshotHelper;
 
         A_DELETE_COPY(Graphics)
@@ -245,14 +248,6 @@ class Graphics notfinal
          * Returns the height of the screen.
          */
         int getHeight() const A_WARN_UNUSED;
-
-        /**
-         * Takes a screenshot and returns it as SDL surface.
-         */
-        virtual SDL_Surface *getScreenshot() A_WARN_UNUSED = 0;
-
-        virtual void prepareScreenshot()
-        { }
 
         int getMemoryUsage() const A_WARN_UNUSED;
 
