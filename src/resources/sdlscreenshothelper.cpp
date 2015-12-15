@@ -64,8 +64,10 @@ SDL_Surface *SdlScreenshotHelper::getScreenshot()
         24,
         rmask, gmask, bmask, amask);
 
+#ifndef USE_SDL2
     if (screenshot)
         SDL_BlitSurface(mainGraphics->mWindow, nullptr, screenshot, nullptr);
+#endif
 
     return screenshot;
 }
