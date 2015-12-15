@@ -562,7 +562,10 @@ bool Game::saveScreenshot(SDL_Surface *const screenshot)
     const std::string fileNameStr = filename.str();
     const bool success = ImageWriter::writePNG(screenshot, fileNameStr);
 #ifdef __native_client__
-    naclPostMessage("copy-from-persistent", fileNameStr);
+    std::string nacScreenshotlDir = fileNameStr;
+    cutFirst(nacScreenshotlDir, "/persistent");
+    naclPostMessage("copy-from-persistent", nacScreenshotlDir);
+    logger->log("nacl screenshot path: " + nacScreenshotlDir);
 #endif
     if (success)
     {

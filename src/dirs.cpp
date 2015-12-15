@@ -537,6 +537,9 @@ void Dirs::initScreenshotDir()
     }
     else if (settings.screenshotDir.empty())
     {
+#ifdef __native_client__
+        settings.screenshotDir = _nacl_dir + "/screenshots/";
+#else  // __native_client__
         settings.screenshotDir = decodeBase64String(
             config.getStringValue("screenshotDirectory3"));
         if (settings.screenshotDir.empty())
@@ -552,9 +555,9 @@ void Dirs::initScreenshotDir()
                     _("Error: %s doesn't exist and can't be created! "
                     "Exiting."), settings.screenshotDir.c_str()));
             }
-#else
+#else  // ANDROID
             settings.screenshotDir = getPicturesDir();
-#endif
+#endif  // ANDROID
             if (config.getBoolValue("useScreenshotDirectorySuffix"))
             {
                 const std::string configScreenshotSuffix =
@@ -569,6 +572,7 @@ void Dirs::initScreenshotDir()
             config.setValue("screenshotDirectory3",
                 encodeBase64String(settings.screenshotDir));
         }
+#endif  // __native_client__
     }
     logger->log("screenshotDirectory: " + settings.screenshotDir);
 }
