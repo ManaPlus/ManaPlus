@@ -359,6 +359,7 @@ SRC += events/actionevent.h \
 	      resources/resourcemanager.h \
 	      resources/safeopenglimagehelper.cpp \
 	      resources/safeopenglimagehelper.h \
+	      resources/screenshothelper.h \
 	      resources/sdl2imagehelper.cpp \
 	      resources/sdl2imagehelper.h \
 	      resources/sdl2softwareimagehelper.cpp \
