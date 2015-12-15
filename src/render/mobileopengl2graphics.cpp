@@ -887,8 +887,8 @@ SDL_Surface* MobileOpenGL2Graphics::getScreenshot()
 
     // Grap the pixel buffer and write it to the SDL surface
     mglGetIntegerv(GL_PACK_ALIGNMENT, &pack);
-    glPixelStorei(GL_PACK_ALIGNMENT, 1);
-    glReadPixels(0, 0, w, h, GL_RGB, GL_UNSIGNED_BYTE, screenshot->pixels);
+    mglPixelStorei(GL_PACK_ALIGNMENT, 1);
+    mglReadPixels(0, 0, w, h, GL_RGB, GL_UNSIGNED_BYTE, screenshot->pixels);
 
     // Flip the screenshot, as OpenGL has 0,0 in bottom left
     const int h2 = h / 2;
@@ -909,7 +909,7 @@ SDL_Surface* MobileOpenGL2Graphics::getScreenshot()
     if (config.getBoolValue("usefbo"))
         graphicsManager.deleteFBO(&mFbo);
 
-    glPixelStorei(GL_PACK_ALIGNMENT, pack);
+    mglPixelStorei(GL_PACK_ALIGNMENT, pack);
 
     if (SDL_MUSTLOCK(screenshot))
         SDL_UnlockSurface(screenshot);

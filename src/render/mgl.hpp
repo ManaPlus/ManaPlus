@@ -101,6 +101,10 @@ defName(glActiveTexture);
     glTexImage2D(__VA_ARGS__)
 #define mglGenTextures(...) \
     glGenTextures(__VA_ARGS__)
+#define mglPixelStorei(...) \
+    glPixelStorei(__VA_ARGS__)
+#define mglReadPixels(...) \
+    glReadPixels(__VA_ARGS__)
 
 #endif
 defName(glGetAttribLocation);
