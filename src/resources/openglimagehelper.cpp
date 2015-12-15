@@ -32,6 +32,9 @@
 #include "render/mobileopengl2graphics.h"
 #include "render/mobileopenglgraphics.h"
 #include "render/modernopenglgraphics.h"
+#ifdef __native_client__
+#include "render/naclglfunctions.h"
+#endif
 #include "render/normalopenglgraphics.h"
 #include "render/safeopenglgraphics.h"
 
