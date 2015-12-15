@@ -122,6 +122,10 @@
 #include "utils/sdlcheckutils.h"
 #include "utils/timer.h"
 
+#ifdef __native_client__
+#include "utils/naclmessages.h"
+#endif  // __native_client__
+
 #include "listeners/errorlistener.h"
 
 #ifdef TMWA_SUPPORT
@@ -557,6 +561,9 @@ bool Game::saveScreenshot(SDL_Surface *const screenshot)
 
     const std::string fileNameStr = filename.str();
     const bool success = ImageWriter::writePNG(screenshot, fileNameStr);
+#ifdef __native_client__
+    naclPostMessage("copy-from-persistent", fileNameStr);
+#endif
     if (success)
     {
         if (localChatTab)
