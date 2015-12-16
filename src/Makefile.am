@@ -351,6 +351,8 @@ SRC += events/actionevent.h \
 	      resources/openglimagehelper.h \
 	      resources/openglscreenshothelper.cpp \
 	      resources/openglscreenshothelper.h \
+	      resources/mobileopenglscreenshothelper.cpp \
+	      resources/mobileopenglscreenshothelper.h \
 	      resources/questeffect.h \
 	      resources/questitem.h \
 	      resources/questitemtext.h \
@@ -1152,8 +1154,6 @@ manaplus_SOURCES += main.cpp \
 	      enums/resources/map/mapitemtype.h \
 	      resources/mapreader.cpp \
 	      resources/mapreader.h \
-	      resources/mobileopenglscreenshothelper.cpp \
-	      resources/mobileopenglscreenshothelper.h \
 	      resources/modinfo.cpp \
 	      resources/modinfo.h \
 	      resources/beingcommon.cpp \
