@@ -348,7 +348,7 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
             mglTexParameteri(mTextureType, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
         }
     }
-#ifndef ANDROID
+#if !defined(ANDROID) && !defined(__native_client__)
     mglTexParameteri(mTextureType, GL_TEXTURE_MAX_LEVEL, 0);
 #endif
 
