@@ -103,6 +103,9 @@ class GraphicsManager final
         bool checkGLVersion(const int major, const int minor)
                             const A_WARN_UNUSED;
 
+        bool checkGLesVersion(const int major, const int minor)
+                              const A_WARN_UNUSED;
+
         bool checkSLVersion(const int major, const int minor)
                             const A_WARN_UNUSED;
 
@@ -213,6 +216,8 @@ class GraphicsManager final
         int mSupportDebug;
 
         bool mSupportModernOpengl;
+
+        bool mGles;
 #endif
         bool mUseAtlases;
 };

@@ -147,6 +147,7 @@ GraphicsManager::GraphicsManager() :
     mTextureSampler(0),
     mSupportDebug(0),
     mSupportModernOpengl(false),
+    mGles(false),
 #endif
     mUseAtlases(false)
 {
@@ -725,14 +726,16 @@ void GraphicsManager::updateTextureCompressionFormat() const
 {
     const int compressionFormat = config.getIntValue("compresstextures");
     // using extensions if can
-    if (checkGLVersion(3, 1) || supportExtension("GL_ARB_texture_compression"))
+    if (checkGLVersion(3, 1) ||
+        checkGLesVersion(2,0) ||
+        supportExtension("GL_ARB_texture_compression"))
     {
         GLint num = 0;
-        glGetIntegerv(GL_NUM_COMPRESSED_TEXTURE_FORMATS, &num);
+        mglGetIntegerv(GL_NUM_COMPRESSED_TEXTURE_FORMATS, &num);
         logger->log("support %d compressed formats", num);
         GLint *const formats = new GLint[num > 10
             ? static_cast<size_t>(num) : 10];
-        glGetIntegerv(GL_COMPRESSED_TEXTURE_FORMATS, formats);
+        mglGetIntegerv(GL_COMPRESSED_TEXTURE_FORMATS, formats);
         for (int f = 0; f < num; f ++)
             logger->log(" 0x%x", static_cast<unsigned int>(formats[f]));
 
@@ -842,7 +845,8 @@ void GraphicsManager::setGLVersion()
 {
     mGlVersionString = getGLString(GL_VERSION);
     std::string version = mGlVersionString;
-    cutFirst(version, "OpenGL ES ");
+    if (findCutFirst(version, "OpenGL ES "))
+        mGles = true;
     sscanf(version.c_str(), "%5d.%5d", &mMajor, &mMinor);
     logger->log("Detected gl version: %d.%d", mMajor, mMinor);
     mGlVendor = getGLString(GL_VENDOR);
@@ -872,6 +876,11 @@ bool GraphicsManager::checkGLVersion(const int major, const int minor) const
 bool GraphicsManager::checkSLVersion(const int major, const int minor) const
 {
     return mSLMajor > major || (mSLMajor == major && mSLMinor >= minor);
+}
+
+bool GraphicsManager::checkGLesVersion(const int major, const int minor) const
+{
+    return mGles && (mMajor > major || (mMajor == major && mMinor >= minor));
 }
 
 bool GraphicsManager::checkPlatformVersion(const int major,
