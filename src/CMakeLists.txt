@@ -668,6 +668,8 @@ SET(SRCS
     enums/resources/map/mapitemtype.h
     resources/mapreader.cpp
     resources/mapreader.h
+    resources/mobileopenglscreenshothelper.cpp
+    resources/mobileopenglscreenshothelper.h
     resources/modinfo.cpp
     resources/modinfo.h
     resources/mstack.h

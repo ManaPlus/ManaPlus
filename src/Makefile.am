@@ -1152,6 +1152,8 @@ manaplus_SOURCES += main.cpp \
 	      enums/resources/map/mapitemtype.h \
 	      resources/mapreader.cpp \
 	      resources/mapreader.h \
+	      resources/mobileopenglscreenshothelper.cpp \
+	      resources/mobileopenglscreenshothelper.h \
 	      resources/modinfo.cpp \
 	      resources/modinfo.h \
 	      resources/beingcommon.cpp \

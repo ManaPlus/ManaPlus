@@ -63,6 +63,7 @@
 #include "resources/openglimagehelper.h"
 #include "resources/openglscreenshothelper.h"
 #ifndef ANDROID
+#include "resources/mobileopenglscreenshothelper.h"
 #include "resources/safeopenglimagehelper.h"
 #endif  // ANDROID
 #include "render/mglfunctions.h"
@@ -310,7 +311,7 @@ int GraphicsManager::detectGraphics()
     imageHelper = new OpenGLImageHelper; \
     surfaceImageHelper = new SurfaceImageHelper; \
     mainGraphics = new MobileOpenGL2Graphics; \
-    screenshortHelper = new OpenGLScreenshotHelper; \
+    screenshortHelper = new MobileOpenGLScreenshotHelper; \
     mUseTextureSampler = false;
 #endif  // defined(ANDROID)
 
