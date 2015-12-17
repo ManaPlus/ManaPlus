@@ -177,7 +177,9 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
 #else
     mNoFrameCheckBox->setEnabled(false);
     mEnableResizeCheckBox->setEnabled(false);
+#ifndef __native_client__
     mFsCheckBox->setEnabled(false);
+#endif  // __native_client__
 #endif
 
     int width = 600;
@@ -214,10 +216,10 @@ void Setup_Video::apply()
         if (intToRenderType(config.getIntValue("opengl")) == RENDER_SOFTWARE)
         {
 #endif
-            if (!mainGraphics->setFullscreen(fullscreen))
+            if (!WindowManager::setFullScreen(fullscreen))
             {
                 fullscreen = !fullscreen;
-                if (!mainGraphics->setFullscreen(fullscreen))
+                if (!WindowManager::setFullScreen(fullscreen))
                 {
                     std::stringstream errorMsg;
                     if (fullscreen)

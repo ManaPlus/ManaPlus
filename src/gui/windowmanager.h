@@ -57,6 +57,8 @@ namespace WindowManager
                      int actualHeight,
                      const bool always);
 
+    bool setFullScreen(const bool fs);
+
     void applyScale();
 
 #ifndef USE_SDL2

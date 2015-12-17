@@ -41,6 +41,7 @@
 #include "gui/gui.h"
 #include "gui/popupmanager.h"
 #include "gui/sdlinput.h"
+#include "gui/windowmanager.h"
 
 #include "gui/popups/popupmenu.h"
 
@@ -909,8 +910,7 @@ impHandler0(attackHuman)
 
 impHandler0(safeVideoMode)
 {
-    if (mainGraphics)
-        mainGraphics->setFullscreen(false);
+    WindowManager::setFullScreen(false);
 
     return true;
 }

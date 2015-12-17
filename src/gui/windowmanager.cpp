@@ -243,6 +243,19 @@ void WindowManager::resizeVideo(int actualWidth,
     }
 }
 
+bool WindowManager::setFullScreen(const bool fs)
+{
+#ifdef __native_client__
+    naclPostMessage("set-fullscreen",
+        fs ? "on" : "off");
+    return true;
+#else
+    if (!mainGraphics)
+        return false;
+    return mainGraphics->setFullscreen(fs);
+#endif
+}
+
 void WindowManager::applyGrabMode()
 {
     SDL::grabInput(mainGraphics->getWindow(),
