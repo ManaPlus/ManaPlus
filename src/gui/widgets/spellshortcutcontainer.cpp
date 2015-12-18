@@ -28,8 +28,6 @@
 #include "spellmanager.h"
 #include "spellshortcut.h"
 
-#include "const/spells.h"
-
 #include "gui/viewport.h"
 
 #include "gui/fonts/font.h"

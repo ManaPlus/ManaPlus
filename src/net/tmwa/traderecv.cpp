@@ -39,7 +39,6 @@
 #include "net/messagein.h"
 #include "net/tradehandler.h"
 
-#include "net/ea/eaprotocol.h"
 #include "net/ea/traderecv.h"
 
 #include "utils/stringutils.h"

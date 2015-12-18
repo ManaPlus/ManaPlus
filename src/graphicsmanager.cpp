@@ -727,7 +727,7 @@ void GraphicsManager::updateTextureCompressionFormat() const
     const int compressionFormat = config.getIntValue("compresstextures");
     // using extensions if can
     if (checkGLVersion(3, 1) ||
-        checkGLesVersion(2,0) ||
+        checkGLesVersion(2, 0) ||
         supportExtension("GL_ARB_texture_compression"))
     {
         GLint num = 0;

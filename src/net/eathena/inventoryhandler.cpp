@@ -33,8 +33,6 @@
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocolout.h"
 
-#include "net/ea/eaprotocol.h"
-
 #include "debug.h"
 
 extern Net::InventoryHandler *inventoryHandler;

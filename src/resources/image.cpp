@@ -28,9 +28,6 @@
 
 #ifdef USE_OPENGL
 #include "resources/openglimagehelper.h"
-#ifndef ANDROID
-#include "resources/safeopenglimagehelper.h"
-#endif  // ANDROID
 #endif  // USE_OPENGL
 #include "resources/sdlimagehelper.h"
 #include "resources/subimage.h"

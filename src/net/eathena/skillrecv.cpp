@@ -41,8 +41,6 @@
 
 #include "net/messagein.h"
 
-#include "net/ea/skillrecv.h"
-
 #include "net/eathena/menu.h"
 
 #include "resources/iteminfo.h"

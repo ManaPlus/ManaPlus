@@ -35,7 +35,6 @@
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocolout.h"
 
-#include "net/ea/eaprotocol.h"
 #include "net/ea/npcrecv.h"
 
 #include "debug.h"

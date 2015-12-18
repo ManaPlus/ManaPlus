@@ -51,7 +51,8 @@ static void naclMessageHandlerFunc(struct PP_Var key,
                                    struct PP_Var value,
                                    void* user_data)
 {
-    NaclMessageHandle *handle = (NaclMessageHandle *)user_data;
+    NaclMessageHandle *handle = reinterpret_cast<NaclMessageHandle *>(
+        user_data);
 
     if (key.type != PP_VARTYPE_STRING || value.type != PP_VARTYPE_STRING)
         return;
@@ -72,7 +73,7 @@ NaclMessageHandle *naclRegisterMessageHandler(const std::string &type)
 
     PSEventRegisterMessageHandler(type.c_str(),
         naclMessageHandlerFunc,
-        (void *)handle);
+        reinterpret_cast<void *>(handle));
     return handle;
 }
 

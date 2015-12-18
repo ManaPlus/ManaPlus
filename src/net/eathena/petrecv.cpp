@@ -40,8 +40,6 @@
 #include "net/inventoryhandler.h"
 #include "net/messagein.h"
 
-#include "net/ea/eaprotocol.h"
-
 #include "net/eathena/menu.h"
 
 #include "utils/gettext.h"

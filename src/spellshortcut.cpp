@@ -24,8 +24,6 @@
 
 #include "spellmanager.h"
 
-#include "const/spells.h"
-
 #include "debug.h"
 
 SpellShortcut *spellShortcut = nullptr;

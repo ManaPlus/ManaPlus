@@ -30,8 +30,6 @@
 
 #include "being/playerinfo.h"
 
-#include "const/spells.h"
-
 #include "input/inputmanager.h"
 
 #include "gui/viewport.h"

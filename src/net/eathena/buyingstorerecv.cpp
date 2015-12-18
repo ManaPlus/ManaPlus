@@ -42,8 +42,6 @@
 
 #include "net/messagein.h"
 
-#include "net/ea/eaprotocol.h"
-
 #include "debug.h"
 
 namespace EAthena

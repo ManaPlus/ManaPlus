@@ -31,8 +31,6 @@
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocolout.h"
 
-#include "net/ea/eaprotocol.h"
-
 #include "debug.h"
 
 extern Net::TradeHandler *tradeHandler;

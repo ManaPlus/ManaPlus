@@ -35,8 +35,6 @@
 
 #include "net/messagein.h"
 
-#include "net/ea/skillrecv.h"
-
 #include "utils/gettext.h"
 
 #include "debug.h"

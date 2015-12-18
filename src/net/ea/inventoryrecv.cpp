@@ -37,7 +37,6 @@
 #include "net/inventoryhandler.h"
 #include "net/messagein.h"
 
-#include "net/ea/eaprotocol.h"
 #include "net/ea/equipbackend.h"
 
 #include "utils/delete2.h"

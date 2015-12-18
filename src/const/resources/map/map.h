@@ -20,9 +20,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_MAP_MAPCONSTS_H
-#define RESOURCES_MAP_MAPCONSTS_H
+#ifndef CONST_RESOURCES_MAP_MAP_H
+#define CONST_RESOURCES_MAP_MAP_H
 
 static const int mapTileSize = 32;
 
-#endif  // RESOURCES_MAP_MAPCONSTS_H
+#endif  // CONST_RESOURCES_MAP_MAP_H

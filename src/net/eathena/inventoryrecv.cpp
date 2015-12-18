@@ -48,7 +48,6 @@
 #include "net/eathena/itemflags.h"
 #include "net/eathena/menu.h"
 
-#include "net/ea/eaprotocol.h"
 #include "net/ea/equipbackend.h"
 #include "net/ea/inventoryrecv.h"
 
@@ -924,7 +923,6 @@ void InventoryRecv::processPlayerRefine(Net::MessageIn &msg)
     const Inventory *const inv = PlayerInfo::getInventory();
     const Item *item = nullptr;
     int notifyType;
-    std::string message;
     std::string itemName;
     if (inv)
         item = inv->getItem(index);

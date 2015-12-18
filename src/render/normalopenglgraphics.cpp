@@ -24,8 +24,6 @@
 
 #include "render/normalopenglgraphics.h"
 
-#include "configuration.h"
-#include "graphicsmanager.h"
 #include "graphicsvertexes.h"
 #include "logger.h"
 

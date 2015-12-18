@@ -27,7 +27,6 @@
 #include "gamemodifiers.h"
 #include "item.h"
 #include "party.h"
-#include "spellmanager.h"
 
 #include "being/localplayer.h"
 #include "being/playerinfo.h"

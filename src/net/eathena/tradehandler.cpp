@@ -32,8 +32,6 @@
 #include "net/eathena/protocolout.h"
 #include "net/eathena/traderecv.h"
 
-#include "net/ea/eaprotocol.h"
-
 #include "debug.h"
 
 extern Net::TradeHandler *tradeHandler;

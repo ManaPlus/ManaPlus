@@ -34,7 +34,6 @@
 #include "itemshortcut.h"
 #include "soundmanager.h"
 #include "settings.h"
-#include "spellshortcut.h"
 #include "touchmanager.h"
 
 #include "being/crazymoves.h"

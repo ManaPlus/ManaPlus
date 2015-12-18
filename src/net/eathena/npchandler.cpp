@@ -34,7 +34,6 @@
 
 #include "net/messagein.h"
 
-#include "net/ea/eaprotocol.h"
 #include "net/ea/npcrecv.h"
 
 #include "net/eathena/messageout.h"

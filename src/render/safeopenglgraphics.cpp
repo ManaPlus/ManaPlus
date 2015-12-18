@@ -23,9 +23,6 @@
 #if defined USE_OPENGL && !defined ANDROID
 #include "render/safeopenglgraphics.h"
 
-#include "configuration.h"
-#include "graphicsmanager.h"
-
 #include "render/mgl.h"
 
 #include "resources/image.h"

@@ -28,7 +28,6 @@
 #include "party.h"
 #include "settings.h"
 #include "spellmanager.h"
-#include "spellshortcut.h"
 
 #include "being/localplayer.h"
 #include "being/playerinfo.h"

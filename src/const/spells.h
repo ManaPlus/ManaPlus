@@ -19,8 +19,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef CONST_SPELLMINID_H
-#define CONST_SPELLMINID_H
+#ifndef CONST_SPELLS_H
+#define CONST_SPELLS_H
 
 #include "localconsts.h"
 
@@ -29,4 +29,4 @@ const unsigned int SPELL_SHORTCUT_ITEMS = 49;
 const unsigned int SPELL_SHORTCUT_TABS = 5;
 const unsigned int SPELLS_SIZE = SPELL_SHORTCUT_ITEMS * SPELL_SHORTCUT_TABS;
 
-#endif  // CONST_SPELLMINID_H
+#endif  // CONST_SPELLS_H
