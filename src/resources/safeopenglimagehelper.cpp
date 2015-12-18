@@ -22,7 +22,7 @@
 
 #include "resources/safeopenglimagehelper.h"
 
-#ifdef USE_OPENGL
+#if defined(USE_OPENGL) && !defined(ANDROID)
 
 #include "graphicsmanager.h"
 #include "logger.h"
@@ -265,6 +265,15 @@ void SafeOpenGLImageHelper::bindTexture(const GLuint texture)
         case RENDER_GLES2_OPENGL:
             MobileOpenGL2Graphics::bindTexture(mTextureType, texture);
             break;
+#elif defined(ANDROID)
+        case RENDER_NORMAL_OPENGL:
+        case RENDER_MODERN_OPENGL:
+        case RENDER_SAFE_OPENGL:
+        case RENDER_GLES2_OPENGL:
+            break;
+        case RENDER_GLES_OPENGL:
+            MobileOpenGLGraphics::bindTexture(mTextureType, texture);
+            break;
 #else  // __native_client__
         case RENDER_NORMAL_OPENGL:
             NormalOpenGLGraphics::bindTexture(mTextureType, texture);
@@ -472,4 +481,4 @@ void SafeOpenGLImageHelper::copySurfaceToImage(const Image *const image,
         MSDL_FreeSurface(surface);
 }
 
-#endif
+#endif  // defined(USE_OPENGL) && !defined(ANDROID)

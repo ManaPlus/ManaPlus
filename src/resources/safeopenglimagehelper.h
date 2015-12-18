@@ -26,7 +26,7 @@
 #include "localconsts.h"
 #include "main.h"
 
-#ifdef USE_OPENGL
+#if defined(USE_OPENGL) && !defined(ANDROID)
 
 #ifndef GL_TEXTURE_RECTANGLE_ARB
 #define GL_TEXTURE_RECTANGLE_ARB 0x84F5
@@ -155,5 +155,5 @@ class SafeOpenGLImageHelper final : public ImageHelper
         static bool mUseTextureSampler;
 };
 
-#endif
+#endif  // defined(USE_OPENGL) && !defined(ANDROID)
 #endif  // RESOURCES_SAFEOPENGLIMAGEHELPER_H
