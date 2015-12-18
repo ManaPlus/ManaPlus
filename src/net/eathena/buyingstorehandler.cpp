@@ -25,6 +25,8 @@
 #include "being/being.h"
 #include "being/playerinfo.h"
 
+#include "const/net/inventory.h"
+
 #include "net/ea/eaprotocol.h"
 
 #include "net/eathena/messageout.h"

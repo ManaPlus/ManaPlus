@@ -28,6 +28,8 @@
 
 #include "being/playerinfo.h"
 
+#include "const/net/inventory.h"
+
 #include "enums/resources/notifytypes.h"
 
 #include "gui/windows/buydialog.h"

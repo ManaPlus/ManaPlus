@@ -102,7 +102,4 @@ enum
     EA_SPRITE_VECTOREND
 };
 
-static const int INVENTORY_OFFSET = 2;
-static const int STORAGE_OFFSET = 1;
-
 #endif  // NET_EA_EAPROTOCOL_H

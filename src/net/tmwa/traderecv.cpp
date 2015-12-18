@@ -30,6 +30,8 @@
 #include "being/playerrelation.h"
 #include "being/playerrelations.h"
 
+#include "const/net/inventory.h"
+
 #include "enums/resources/notifytypes.h"
 
 #include "gui/windows/tradewindow.h"

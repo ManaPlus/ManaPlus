@@ -26,6 +26,8 @@
 
 #include "being/localplayer.h"
 
+#include "const/net/inventory.h"
+
 #include "enums/equipslot.h"
 
 #include "enums/resources/notifytypes.h"

@@ -24,6 +24,8 @@
 
 #include "item.h"
 
+#include "const/net/inventory.h"
+
 #include "enums/equipslot.h"
 
 #include "net/eathena/inventoryrecv.h"

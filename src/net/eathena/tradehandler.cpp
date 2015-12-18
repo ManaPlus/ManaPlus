@@ -26,6 +26,8 @@
 
 #include "being/playerinfo.h"
 
+#include "const/net/inventory.h"
+
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocolout.h"
 #include "net/eathena/traderecv.h"

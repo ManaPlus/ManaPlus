@@ -24,6 +24,8 @@
 
 #include "being/localplayer.h"
 
+#include "const/net/inventory.h"
+
 #include "gui/windows/npcdialog.h"
 
 #include "gui/widgets/createwidget.h"

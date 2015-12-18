@@ -26,6 +26,8 @@
 
 #include "being/playerinfo.h"
 
+#include "const/net/inventory.h"
+
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocolout.h"
 

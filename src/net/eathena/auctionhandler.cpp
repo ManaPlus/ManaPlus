@@ -22,6 +22,8 @@
 
 #include "item.h"
 
+#include "const/net/inventory.h"
+
 #include "net/ea/eaprotocol.h"
 
 #include "net/eathena/messageout.h"

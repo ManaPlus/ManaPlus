@@ -557,6 +557,7 @@ SET(SRCS
     net/npchandler.h
     net/net.cpp
     net/net.h
+    const/net/inventory.h
     const/net/net.h
     net/partyhandler.h
     enums/net/partyshare.h
