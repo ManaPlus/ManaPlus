@@ -540,9 +540,17 @@ void GraphicsManager::initGraphics()
             openGLMode = RENDER_NORMAL_OPENGL;
         }
     }
-    if (openGLMode == RENDER_NORMAL_OPENGL || openGLMode == RENDER_GLES_OPENGL)
+    if (openGLMode == RENDER_NORMAL_OPENGL)
     {
         if (!checkGLVersion(2, 0))
+        {
+            logger->log("Fallback to safe OpenGL mode");
+            openGLMode = RENDER_SAFE_OPENGL;
+        }
+    }
+    if (openGLMode == RENDER_GLES_OPENGL)
+    {
+        if (!checkGLVersion(2, 0) && !checkGLesVersion(1, 0))
         {
             logger->log("Fallback to safe OpenGL mode");
             openGLMode = RENDER_SAFE_OPENGL;
@@ -858,6 +866,15 @@ void GraphicsManager::setGLVersion()
     cutFirst(version, "OpenGL ES ");
     sscanf(version.c_str(), "%5d.%5d", &mSLMajor, &mSLMinor);
     logger->log("Detected glsl version: %d.%d", mSLMajor, mSLMinor);
+#ifdef ANDROID
+    if (!mMajor && !mMinor)
+    {
+        logger->log("Overriding detected OpenGL version on Android to 1.0");
+        mGles = true;
+        mMajor = 1;
+        mMinor = 0;
+    }
+#endif
 }
 
 void GraphicsManager::logVersion() const
