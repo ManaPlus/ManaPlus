@@ -1,3 +1,12 @@
+2015-12-19 New release 1.5.12.19
+fix: custom cursor in nacl.
+fix: render fallback.
+add: per char gender (tmwa)
+add: OpenGL ES 2 renderer.
+add: nacl OpenGL support.
+add: screenshots support (nacl).
+add: full screen support (nacl).
+
 2015-12-05 New release 1.5.12.5
 fix: allow kill infinite life particles if parent was killed.
 fix: missing selection images in mana theme in windows.
