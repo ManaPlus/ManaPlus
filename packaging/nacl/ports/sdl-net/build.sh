@@ -6,6 +6,4 @@
 # with shared libraries, so for now we disable the shared build.
 # In the future we could instead filter out this flag or remove
 # it and force SDL2 programs to add it themselves.
-EXTRA_CONFIGURE_ARGS="--enable-mmx=no --host=nacl --disable-shared"
-export RANLIB=${NACLRANLIB}
-
+EXTRA_CONFIGURE_ARGS=--disable-shared

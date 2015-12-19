@@ -1,8 +1,0 @@
-NAME=regal
-VERSION=f106e4cd
-URL=https://github.com/p3/regal/archive/f106e4cd/Regal-f106e4cd.tar.gz
-ARCHIVE_ROOT=regal-f106e4cd0e780b0995a26498365dceb0ed025832
-DEPENDS=(libpng)
-DISABLED_ARCH=(pnacl)
-DISABLED_LIBC=(bionic)
-SHA1=6e8cd18c44a83e7eb17d123b5e0ec8cdceff9ea2
