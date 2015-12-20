@@ -21,7 +21,6 @@
 
 #include "resources/db/emotedb.h"
 
-#include "animatedsprite.h"
 #include "client.h"
 #include "logger.h"
 
@@ -30,6 +29,8 @@
 #include "resources/beingcommon.h"
 #include "resources/emoteinfo.h"
 #include "resources/emotesprite.h"
+
+#include "resources/sprite/animatedsprite.h"
 
 #include "debug.h"
 

@@ -18,17 +18,18 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "animatedsprite.h"
+#include "resources/sprite/animatedsprite.h"
 
 #include "catch.hpp"
 #include "client.h"
+
+#include "const/resources/spriteaction.h"
 
 #include "gui/theme.h"
 
 #include "resources/animation.h"
 #include "resources/resourcemanager.h"
 #include "resources/sdlimagehelper.h"
-#include "resources/spriteaction.h"
 
 #include "utils/env.h"
 #include "utils/physfstools.h"

@@ -682,8 +682,8 @@ manaplus_SOURCES += main.cpp \
 	      avatar.h \
 	      actormanager.cpp \
 	      actormanager.h \
-	      animatedsprite.cpp \
-	      animatedsprite.h \
+	      resources/sprite/animatedsprite.cpp \
+	      resources/sprite/animatedsprite.h \
 	      animationdelayload.cpp \
 	      animationdelayload.h \
 	      actions/actions.cpp \
@@ -1680,7 +1680,7 @@ check_PROGRAMS = manaplustests
 manaplustests_CXXFLAGS = ${manaplus_CXXFLAGS} \
 	      -DUNITTESTS
 manaplustests_SOURCES = ${manaplus_SOURCES} \
-	      animatedsprite_unittest.cc \
+	      resources/sprite/animatedsprite_unittest.cc \
 	      enums/enums_unittest.cc \
 	      gui/windowmanager_unittest.cc \
 	      gui/fonts/textchunklist_unittest.cc \

@@ -22,7 +22,6 @@
 
 #include "statuseffect.h"
 
-#include "animatedsprite.h"
 #include "configuration.h"
 #include "soundmanager.h"
 
@@ -35,6 +34,8 @@
 #include "listeners/debugmessagelistener.h"
 
 #include "resources/beingcommon.h"
+
+#include "resources/sprite/animatedsprite.h"
 
 #include "debug.h"
 

@@ -23,7 +23,6 @@
 #include "game.h"
 
 #include "actormanager.h"
-#include "animatedsprite.h"
 #include "client.h"
 #include "configuration.h"
 #include "dropshortcut.h"
@@ -114,6 +113,8 @@
 #include "resources/db/mapdb.h"
 
 #include "resources/map/map.h"
+
+#include "resources/sprite/animatedsprite.h"
 
 #include "utils/delete2.h"
 #include "utils/gettext.h"

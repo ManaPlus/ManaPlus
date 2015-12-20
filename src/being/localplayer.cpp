@@ -23,7 +23,6 @@
 #include "being/localplayer.h"
 
 #include "actormanager.h"
-#include "animatedsprite.h"
 #include "configuration.h"
 #include "gamemodifiers.h"
 #include "guild.h"
@@ -81,6 +80,8 @@
 #include "resources/map/walklayer.h"
 
 #include "listeners/awaylistener.h"
+
+#include "resources/sprite/animatedsprite.h"
 
 #include "utils/delete2.h"
 #include "utils/gettext.h"

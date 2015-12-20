@@ -18,8 +18,6 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "animatedsprite.h"
-
 #include "catch.hpp"
 #include "client.h"
 #include "settings.h"
@@ -50,6 +48,8 @@
 
 #include "resources/resourcemanager.h"
 #include "resources/sdlimagehelper.h"
+
+#include "resources/sprite/animatedsprite.h"
 
 #include "utils/delete2.h"
 #include "utils/env.h"

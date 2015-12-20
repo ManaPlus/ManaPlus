@@ -20,11 +20,11 @@
 
 #include "animationdelayload.h"
 
-#include "animatedsprite.h"
-
 #include "const/resources/spriteaction.h"
 
 #include "resources/resourcemanager.h"
+
+#include "resources/sprite/animatedsprite.h"
 
 #include "debug.h"
 

@@ -22,7 +22,6 @@
 
 #include "gui/windows/ministatuswindow.h"
 
-#include "animatedsprite.h"
 #include "configuration.h"
 #include "inventory.h"
 
@@ -42,6 +41,8 @@
 #include "gui/widgets/progressbar.h"
 
 #include "net/playerhandler.h"
+
+#include "resources/sprite/animatedsprite.h"
 
 #include "utils/delete2.h"
 #include "utils/dtor.h"

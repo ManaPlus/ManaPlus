@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ANIMATEDSPRITE_H
-#define ANIMATEDSPRITE_H
+#ifndef RESOURCES_SPRITE_ANIMATEDSPRITE_H
+#define RESOURCES_SPRITE_ANIMATEDSPRITE_H
 
 #include "resources/sprite/sprite.h"
 
@@ -145,4 +145,4 @@ class AnimatedSprite final : public Sprite
         static bool mEnableCache;
 };
 
-#endif  // ANIMATEDSPRITE_H
+#endif  // RESOURCES_SPRITE_ANIMATEDSPRITE_H

@@ -23,7 +23,6 @@
 #include "being/being.h"
 
 #include "actormanager.h"
-#include "animatedsprite.h"
 #include "beingequipbackend.h"
 #include "configuration.h"
 #include "effectmanager.h"
@@ -86,6 +85,8 @@
 #include "resources/db/skillunitdb.h"
 
 #include "resources/map/map.h"
+
+#include "resources/sprite/animatedsprite.h"
 
 #include "gui/widgets/createwidget.h"
 #include "gui/widgets/skilldata.h"
