@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SHORTCUTBASE_H
-#define SHORTCUTBASE_H
+#ifndef GUI_SHORTCUT_SHORTCUTBASE_H
+#define GUI_SHORTCUT_SHORTCUTBASE_H
 
 #include "enums/simpletypes/itemcolor.h"
 
@@ -136,4 +136,4 @@ class ShortcutBase notfinal
         ItemColor mItemColorSelected;
 };
 
-#endif  // SHORTCUTBASE_H
+#endif  // GUI_SHORTCUT_SHORTCUTBASE_H

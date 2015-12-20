@@ -21,7 +21,6 @@
 
 #include "gui/widgets/emoteshortcutcontainer.h"
 
-#include "emoteshortcut.h"
 #include "settings.h"
 
 #include "input/inputmanager.h"
@@ -29,6 +28,8 @@
 #include "gui/viewport.h"
 
 #include "gui/fonts/font.h"
+
+#include "gui/shortcut/emoteshortcut.h"
 
 #include "gui/popups/textpopup.h"
 

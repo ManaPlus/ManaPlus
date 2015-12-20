@@ -22,7 +22,6 @@
 
 #include "actormanager.h"
 #include "game.h"
-#include "emoteshortcut.h"
 
 #include "actions/actiondef.h"
 
@@ -36,6 +35,8 @@
 #include "input/inputactionoperators.h"
 
 #include "listeners/inputactionreplaylistener.h"
+
+#include "gui/shortcut/emoteshortcut.h"
 
 #include "net/chathandler.h"
 #ifdef TMWA_SUPPORT

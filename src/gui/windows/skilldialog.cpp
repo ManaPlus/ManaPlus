@@ -24,13 +24,14 @@
 
 #include "configuration.h"
 #include "effectmanager.h"
-#include "itemshortcut.h"
 #include "spellmanager.h"
 
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
 #include "const/resources/spriteaction.h"
+
+#include "gui/shortcut/itemshortcut.h"
 
 #include "gui/windows/setupwindow.h"
 #include "gui/windows/shortcutwindow.h"

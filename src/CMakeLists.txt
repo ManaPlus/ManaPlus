@@ -910,8 +910,8 @@ SET(SRCS
     dragdrop.h
     effectmanager.cpp
     effectmanager.h
-    emoteshortcut.cpp
-    emoteshortcut.h
+    gui/shortcut/emoteshortcut.cpp
+    gui/shortcut/emoteshortcut.h
     const/emoteshortcut.h
     equipment.h
     eventsmanager.cpp
@@ -952,14 +952,14 @@ SET(SRCS
     item.h
     itemcolormanager.cpp
     itemcolormanager.h
-    itemshortcut.cpp
-    itemshortcut.h
+    gui/shortcut/itemshortcut.cpp
+    gui/shortcut/itemshortcut.h
     itemsoundmanager.cpp
     itemsoundmanager.h
-    dropshortcut.cpp
-    dropshortcut.h
-    spellshortcut.cpp
-    spellshortcut.h
+    gui/shortcut/dropshortcut.cpp
+    gui/shortcut/dropshortcut.h
+    gui/shortcut/spellshortcut.cpp
+    gui/shortcut/spellshortcut.h
     textcommand.cpp
     textcommand.h
     enums/input/inputaction.h
@@ -1119,8 +1119,8 @@ SET(SRCS
     settings.h
     shopitem.cpp
     shopitem.h
-    shortcutbase.cpp
-    shortcutbase.h
+    gui/shortcut/shortcutbase.cpp
+    gui/shortcut/shortcutbase.h
     simpleanimation.cpp
     simpleanimation.h
     const/sound.h

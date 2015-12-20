@@ -19,8 +19,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef EMOTESHORTCUT_H
-#define EMOTESHORTCUT_H
+#ifndef GUI_SHORTCUT_EMOTESHORTCUT_H
+#define GUI_SHORTCUT_EMOTESHORTCUT_H
 
 #include "const/emoteshortcut.h"
 
@@ -125,4 +125,4 @@ class EmoteShortcut final
 
 extern EmoteShortcut *emoteShortcut;
 
-#endif  // EMOTESHORTCUT_H
+#endif  // GUI_SHORTCUT_EMOTESHORTCUT_H

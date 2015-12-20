@@ -19,7 +19,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "emoteshortcut.h"
+#include "gui/shortcut/emoteshortcut.h"
 
 #include "configuration.h"
 

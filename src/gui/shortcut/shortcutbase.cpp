@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "shortcutbase.h"
+#include "gui/shortcut/shortcutbase.h"
 
 #include "configuration.h"
 #include "item.h"

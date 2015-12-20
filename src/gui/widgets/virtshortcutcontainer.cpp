@@ -23,7 +23,6 @@
 #include "gui/widgets/virtshortcutcontainer.h"
 
 #include "dragdrop.h"
-#include "shortcutbase.h"
 #include "settings.h"
 
 #include "being/playerinfo.h"
@@ -31,6 +30,8 @@
 #include "gui/viewport.h"
 
 #include "gui/fonts/font.h"
+
+#include "gui/shortcut/shortcutbase.h"
 
 #include "gui/popups/itempopup.h"
 #include "gui/popups/popupmenu.h"

@@ -21,12 +21,13 @@
 #include "being/crazymoves.h"
 
 #include "configuration.h"
-#include "dropshortcut.h"
 #include "settings.h"
 
 #include "being/localplayer.h"
 
 #include "enums/being/beingdirection.h"
+
+#include "gui/shortcut/dropshortcut.h"
 
 #include "gui/windows/outfitwindow.h"
 

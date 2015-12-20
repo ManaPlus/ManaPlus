@@ -27,11 +27,12 @@
 #include "game.h"
 #include "settings.h"
 #include "spellmanager.h"
-#include "spellshortcut.h"
 #include "touchmanager.h"
 
 #include "gui/gui.h"
 #include "gui/userpalette.h"
+
+#include "gui/shortcut/spellshortcut.h"
 
 #include "gui/popups/textpopup.h"
 

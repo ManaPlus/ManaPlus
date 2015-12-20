@@ -20,10 +20,10 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef DROPSHORTCUT_H
-#define DROPSHORTCUT_H
+#ifndef GUI_SHORTCUT_DROPSHORTCUT_H
+#define GUI_SHORTCUT_DROPSHORTCUT_H
 
-#include "shortcutbase.h"
+#include "gui/shortcut/shortcutbase.h"
 
 #include "localconsts.h"
 
@@ -66,4 +66,4 @@ class DropShortcut final : public ShortcutBase
 
 extern DropShortcut *dropShortcut;
 
-#endif  // DROPSHORTCUT_H
+#endif  // GUI_SHORTCUT_DROPSHORTCUT_H

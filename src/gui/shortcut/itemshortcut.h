@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ITEMSHORTCUT_H
-#define ITEMSHORTCUT_H
+#ifndef GUI_SHORTCUT_ITEMSHORTCUT_H
+#define GUI_SHORTCUT_ITEMSHORTCUT_H
 
 #include "enums/simpletypes/itemcolor.h"
 
@@ -162,4 +162,4 @@ class ItemShortcut final
 
 extern ItemShortcut *itemShortcut[SHORTCUT_TABS];
 
-#endif  // ITEMSHORTCUT_H
+#endif  // GUI_SHORTCUT_ITEMSHORTCUT_H

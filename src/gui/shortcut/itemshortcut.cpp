@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "itemshortcut.h"
+#include "gui/shortcut/itemshortcut.h"
 
 #include "configuration.h"
 #include "inventory.h"

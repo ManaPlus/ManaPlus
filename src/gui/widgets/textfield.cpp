@@ -287,6 +287,8 @@ int TextField::getValue() const
 void TextField::keyPressed(KeyEvent &event)
 {
     const int val = event.getKey().getValue();
+    logger->log("TextField::keyPressed %d", val);
+
 #ifdef USE_SDL2
     if (val == Key::TEXTINPUT)
     {

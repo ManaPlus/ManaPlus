@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SPELLSHORTCUT_H
-#define SPELLSHORTCUT_H
+#ifndef GUI_SHORTCUT_SPELLSHORTCUT_H
+#define GUI_SHORTCUT_SPELLSHORTCUT_H
 
 #include "const/spells.h"
 
@@ -85,4 +85,4 @@ class SpellShortcut final
 
 extern SpellShortcut *spellShortcut;
 
-#endif  // SPELLSHORTCUT_H
+#endif  // GUI_SHORTCUT_SPELLSHORTCUT_H

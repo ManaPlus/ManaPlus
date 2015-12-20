@@ -716,8 +716,8 @@ manaplus_SOURCES += main.cpp \
 	      item.h \
 	      itemcolormanager.cpp \
 	      itemcolormanager.h \
-	      itemshortcut.cpp \
-	      itemshortcut.h \
+	      gui/shortcut/itemshortcut.cpp \
+	      gui/shortcut/itemshortcut.h \
 	      itemsoundmanager.cpp \
 	      itemsoundmanager.h \
 	      enums/commandtarget.h \
@@ -725,8 +725,8 @@ manaplus_SOURCES += main.cpp \
 	      enums/equipslot.h \
 	      enums/guildpositionflags.h \
 	      enums/inventorytype.h \
-	      spellshortcut.cpp \
-	      spellshortcut.h \
+	      gui/shortcut/spellshortcut.cpp \
+	      gui/shortcut/spellshortcut.h \
 	      statuseffect.cpp \
 	      statuseffect.h \
 	      units.cpp \
@@ -770,8 +770,8 @@ manaplus_SOURCES += main.cpp \
 	      catch.hpp \
 	      chatlogger.cpp \
 	      chatlogger.h \
-	      shortcutbase.cpp \
-	      shortcutbase.h \
+	      gui/shortcut/shortcutbase.cpp \
+	      gui/shortcut/shortcutbase.h \
 	      being/playerinfo.cpp \
 	      being/playerinfo.h \
 	      being/playerrelation.cpp \
@@ -796,12 +796,12 @@ manaplus_SOURCES += main.cpp \
 	      enums/being/attributes.h \
 	      enums/being/badgeindex.h \
 	      dragdrop.h \
-	      dropshortcut.cpp \
-	      dropshortcut.h \
+	      gui/shortcut/dropshortcut.cpp \
+	      gui/shortcut/dropshortcut.h \
 	      effectmanager.cpp \
 	      effectmanager.h \
-	      emoteshortcut.cpp \
-	      emoteshortcut.h \
+	      gui/shortcut/emoteshortcut.cpp \
+	      gui/shortcut/emoteshortcut.h \
 	      const/emoteshortcut.h \
 	      equipment.h \
 	      listeners/actorspritelistener.h \

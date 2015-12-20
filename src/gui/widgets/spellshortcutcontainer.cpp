@@ -23,14 +23,15 @@
 #include "gui/widgets/spellshortcutcontainer.h"
 
 #include "dragdrop.h"
-#include "itemshortcut.h"
 #include "settings.h"
 #include "spellmanager.h"
-#include "spellshortcut.h"
 
 #include "gui/viewport.h"
 
 #include "gui/fonts/font.h"
+
+#include "gui/shortcut/itemshortcut.h"
+#include "gui/shortcut/spellshortcut.h"
 
 #include "gui/popups/popupmenu.h"
 #include "gui/popups/spellpopup.h"

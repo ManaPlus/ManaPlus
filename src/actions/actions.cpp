@@ -22,13 +22,10 @@
 
 #include "actormanager.h"
 #include "configuration.h"
-#include "dropshortcut.h"
-#include "emoteshortcut.h"
 #include "game.h"
 #ifdef USE_OPENGL
 #include "graphicsmanager.h"
 #endif
-#include "itemshortcut.h"
 #include "spellmanager.h"
 
 #include "actions/actiondef.h"
@@ -42,6 +39,10 @@
 #include "gui/popupmanager.h"
 #include "gui/sdlinput.h"
 #include "gui/windowmanager.h"
+
+#include "gui/shortcut/dropshortcut.h"
+#include "gui/shortcut/emoteshortcut.h"
+#include "gui/shortcut/itemshortcut.h"
 
 #include "gui/popups/popupmenu.h"
 

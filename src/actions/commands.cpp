@@ -22,9 +22,6 @@
 
 #include "actormanager.h"
 #include "configuration.h"
-#ifdef EATHENA_SUPPORT
-#include "emoteshortcut.h"
-#endif
 #include "game.h"
 #include "inventory.h"
 #include "item.h"
@@ -39,6 +36,10 @@
 #include "const/gui/chat.h"
 
 #include "gui/viewport.h"
+
+#ifdef EATHENA_SUPPORT
+#include "gui/shortcut/emoteshortcut.h"
+#endif
 
 #include "gui/windows/chatwindow.h"
 #include "gui/windows/skilldialog.h"

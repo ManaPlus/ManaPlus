@@ -25,12 +25,9 @@
 #include "actormanager.h"
 #include "client.h"
 #include "configuration.h"
-#include "dropshortcut.h"
 #include "effectmanager.h"
-#include "emoteshortcut.h"
 #include "eventsmanager.h"
 #include "gamemodifiers.h"
-#include "itemshortcut.h"
 #include "soundmanager.h"
 #include "settings.h"
 #include "touchmanager.h"
@@ -59,6 +56,10 @@
 #include "gui/windowmenu.h"
 
 #include "gui/fonts/font.h"
+
+#include "gui/shortcut/dropshortcut.h"
+#include "gui/shortcut/emoteshortcut.h"
+#include "gui/shortcut/itemshortcut.h"
 
 #include "gui/popups/popupmenu.h"
 
