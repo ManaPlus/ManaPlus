@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RENDER_MGLXTYPES_H
-#define RENDER_MGLXTYPES_H
+#ifndef RENDER_OPENGLX_MGLXTYPES_H
+#define RENDER_OPENGLX_MGLXTYPES_H
 
 #include "main.h"
 
@@ -48,4 +48,4 @@ typedef bool (*glXMakeCurrent_t) (Display *dpy,
 typedef void (*glXSwapBuffers_t) (Display *dpy, GLXDrawable drawable);
 
 #endif  // USE_OPENGL
-#endif  // RENDER_MGLXTYPES_H
+#endif  // RENDER_OPENGLX_MGLXTYPES_H

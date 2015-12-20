@@ -18,15 +18,26 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "render/mglx.h"
+#include "render/openglx/mglxinit.h"
 
 #if defined(USE_OPENGL) && defined(USE_X11)
 
+#include "render/opengl/mglfunctions.h"
+
+#include "render/openglx/mglx.h"
+#include "render/openglx/mglxtypes.h"
+
 #include "debug.h"
 
-#define defName(name) name##_t m##name = nullptr
-
-// include function defines
-#include "render/mglx.hpp"
+void Glx::initFunctions()
+{
+    assignFunction(glXCreateContext);
+    assignFunction(glXGetCurrentContext);
+    assignFunctionARB(glXCreateContextAttribs);
+    assignFunction(glXChooseFBConfig);
+    assignFunction(glXDestroyContext);
+    assignFunction(glXMakeCurrent);
+    assignFunction(glXSwapBuffers);
+}
 
 #endif

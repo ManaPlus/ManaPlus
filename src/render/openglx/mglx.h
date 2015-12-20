@@ -18,16 +18,18 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RENDER_MGLXINIT_H
-#define RENDER_MGLXINIT_H
+#ifndef RENDER_OPENGLX_MGLX_H
+#define RENDER_OPENGLX_MGLX_H
 
 #include "main.h"
+
 #if defined(USE_OPENGL) && defined(USE_X11)
 
-namespace Glx
-{
-    void initFunctions();
-}  // namespace Glx
+#include "render/openglx/mglxtypes.h"
+
+#define defName(name) extern name##_t m##name
+#include "render/openglx/mglx.hpp"
+#undef defName
 
 #endif  // defined(USE_OPENGL) && defined(USE_X11)
-#endif  // RENDER_MGLXINIT_H
+#endif  // RENDER_OPENGLX_MGLX_H

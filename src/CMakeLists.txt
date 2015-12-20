@@ -1022,12 +1022,12 @@ SET(SRCS
     render/opengl/mglemu.h
     render/opengl/mglfunctions.h
     render/opengl/mgltypes.h
-    render/mglx.cpp
-    render/mglx.h
-    render/mglx.hpp
-    render/mglxinit.cpp
-    render/mglxinit.h
-    render/mglxtypes.h
+    render/openglx/mglx.cpp
+    render/openglx/mglx.h
+    render/openglx/mglx.hpp
+    render/openglx/mglxinit.cpp
+    render/openglx/mglxinit.h
+    render/openglx/mglxtypes.h
     render/mobileopengl2graphics.cpp
     render/mobileopengl2graphics.h
     render/mobileopenglgraphics.cpp

@@ -71,7 +71,7 @@
 #endif
 
 #if defined(USE_OPENGL) && defined(USE_X11)
-#include "render/mglxinit.h"
+#include "render/openglx/mglxinit.h"
 #endif
 
 #include "resources/imagehelper.h"
