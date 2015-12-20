@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_SPRITEDISPLAY_H
-#define RESOURCES_SPRITEDISPLAY_H
+#ifndef RESOURCES_SPRITE_SPRITEDISPLAY_H
+#define RESOURCES_SPRITE_SPRITEDISPLAY_H
 
 #include "utils/stringvector.h"
 
@@ -43,4 +43,4 @@ struct SpriteDisplay final
     StringVect particles;
 };
 
-#endif  // RESOURCES_SPRITEDISPLAY_H
+#endif  // RESOURCES_SPRITE_SPRITEDISPLAY_H

@@ -1170,7 +1170,7 @@ manaplus_SOURCES += main.cpp \
 	      resources/emotesprite.h \
 	      resources/equipmentslots.h \
 	      resources/horseinfo.h \
-	      resources/spritedisplay.h \
+	      resources/sprite/spritedisplay.h \
 	      resources/spritereference.h \
 	      resources/textureatlas.h \
 	      resources/updatefile.h \

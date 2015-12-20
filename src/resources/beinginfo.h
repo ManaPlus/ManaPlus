@@ -33,7 +33,8 @@
 #include "resources/beingmenuitem.h"
 #include "resources/cursor.h"
 #include "resources/soundinfo.h"
-#include "resources/spritedisplay.h"
+
+#include "resources/sprite/spritedisplay.h"
 
 struct Attack;
 
