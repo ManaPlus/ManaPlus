@@ -706,8 +706,8 @@ manaplus_SOURCES += main.cpp \
 	      actions/windows.h \
 	      client.cpp \
 	      client.h \
-	      imagesprite.cpp \
-	      imagesprite.h \
+	      resources/sprite/imagesprite.cpp \
+	      resources/sprite/imagesprite.h \
 	      inventory.cpp \
 	      inventory.h \
 	      textcommand.cpp \

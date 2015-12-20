@@ -944,8 +944,8 @@ SET(SRCS
     enums/magicschool.h
     particle/imageparticle.cpp
     particle/imageparticle.h
-    imagesprite.cpp
-    imagesprite.h
+    resources/sprite/imagesprite.cpp
+    resources/sprite/imagesprite.h
     inventory.cpp
     inventory.h
     item.cpp

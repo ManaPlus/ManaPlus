@@ -19,8 +19,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef IMAGESPRITE_H
-#define IMAGESPRITE_H
+#ifndef RESOURCES_SPRITE_IMAGESPRITE_H
+#define RESOURCES_SPRITE_IMAGESPRITE_H
 
 #include "resources/sprite/sprite.h"
 
@@ -79,4 +79,4 @@ class ImageSprite final : public Sprite
         Image *mImage;
 };
 
-#endif  // IMAGESPRITE_H
+#endif  // RESOURCES_SPRITE_IMAGESPRITE_H

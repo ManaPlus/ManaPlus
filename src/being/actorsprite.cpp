@@ -22,7 +22,6 @@
 #include "being/actorsprite.h"
 
 #include "configuration.h"
-#include "imagesprite.h"
 #include "statuseffect.h"
 
 #include "being/localplayer.h"
@@ -38,6 +37,7 @@
 #include "resources/resourcemanager.h"
 
 #include "resources/sprite/animatedsprite.h"
+#include "resources/sprite/imagesprite.h"
 #include "resources/sprite/spritereference.h"
 
 #include "utils/checkutils.h"

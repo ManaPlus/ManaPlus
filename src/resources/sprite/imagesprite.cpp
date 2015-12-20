@@ -19,7 +19,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "imagesprite.h"
+#include "resources/sprite/imagesprite.h"
 
 #include "render/graphics.h"
 
