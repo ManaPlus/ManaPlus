@@ -32,10 +32,11 @@
 #include "gui/skin.h"
 #include "gui/themeinfo.h"
 
-#include "resources/dyepalette.h"
 #include "resources/image.h"
 #include "resources/imagerect.h"
 #include "resources/resourcemanager.h"
+
+#include "resources/dye/dyepalette.h"
 
 #include "utils/dtor.h"
 #include "utils/files.h"

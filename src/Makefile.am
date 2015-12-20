@@ -320,11 +320,11 @@ SRC += events/actionevent.h \
 	      resources/attack.h \
 	      resources/cursor.cpp \
 	      resources/cursor.h \
-	      resources/dye.cpp \
-	      resources/dye.h \
-	      resources/dyecolor.h \
-	      resources/dyepalette.cpp \
-	      resources/dyepalette.h \
+	      resources/dye/dye.cpp \
+	      resources/dye/dye.h \
+	      resources/dye/dyecolor.h \
+	      resources/dye/dyepalette.cpp \
+	      resources/dye/dyepalette.h \
 	      resources/fboinfo.h \
 	      resources/frame.h \
 	      resources/image.cpp \
@@ -1689,7 +1689,7 @@ manaplustests_SOURCES = ${manaplus_SOURCES} \
 	      utils/mathutils_unittest.cc \
 	      utils/stringutils_unittest.cc \
 	      utils/xmlutils_unittest.cc \
-	      resources/dye_unittest.cc \
+	      resources/dye/dye_unittest.cc \
 	      resources/mstack_unittest.cc
 endif
 

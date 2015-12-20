@@ -23,7 +23,6 @@
 #include "particle/particle.h"
 
 #include "configuration.h"
-#include "resources/dye.h"
 #include "logger.h"
 
 #include "particle/animationparticle.h"
@@ -32,6 +31,8 @@
 #include "particle/textparticle.h"
 
 #include "resources/resourcemanager.h"
+
+#include "resources/dye/dye.h"
 
 #include "utils/dtor.h"
 #include "utils/mathutils.h"

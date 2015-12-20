@@ -20,11 +20,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "resources/dye.h"
+#include "resources/dye/dye.h"
 
 #include "logger.h"
 
-#include "resources/dyepalette.h"
+#include "resources/dye/dyepalette.h"
 
 #include "utils/delete2.h"
 

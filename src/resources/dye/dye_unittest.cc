@@ -20,9 +20,8 @@
 
 #include "catch.hpp"
 
-#include "resources/dye.h"
-
-#include "resources/dyepalette.h"
+#include "resources/dye/dye.h"
+#include "resources/dye/dyepalette.h"
 
 #include "debug.h"
 

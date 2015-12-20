@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_DYECOLOR_H
-#define RESOURCES_DYECOLOR_H
+#ifndef RESOURCES_DYE_DYECOLOR_H
+#define RESOURCES_DYE_DYECOLOR_H
 
 #include "localconsts.h"
 
@@ -50,4 +50,4 @@ struct DyeColor final
     uint8_t value[4];
 };
 
-#endif  // RESOURCES_DYECOLOR_H
+#endif  // RESOURCES_DYE_DYECOLOR_H

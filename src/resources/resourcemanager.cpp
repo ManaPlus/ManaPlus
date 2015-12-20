@@ -32,12 +32,13 @@
 #include "resources/atlas/atlasmanager.h"
 #include "resources/atlas/atlasresource.h"
 #endif
-#include "resources/dye.h"
 #include "resources/image.h"
 #include "resources/imagehelper.h"
 #include "resources/imageset.h"
 #include "resources/sdlmusic.h"
 #include "resources/soundeffect.h"
+
+#include "resources/dye/dye.h"
 
 #include "resources/sprite/spritedef.h"
 

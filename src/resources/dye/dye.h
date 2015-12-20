@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_DYE_H
-#define RESOURCES_DYE_H
+#ifndef RESOURCES_DYE_DYE_H
+#define RESOURCES_DYE_DYE_H
 
 #include <string>
 
@@ -90,4 +90,4 @@ class Dye final
         DyePalette *mDyePalettes[dyePalateSize];
 };
 
-#endif  // RESOURCES_DYE_H
+#endif  // RESOURCES_DYE_DYE_H

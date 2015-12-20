@@ -27,9 +27,10 @@
 #include "render/graphics.h"
 
 #include "resources/animation.h"
-#include "resources/dye.h"
 #include "resources/imageset.h"
 #include "resources/resourcemanager.h"
+
+#include "resources/dye/dye.h"
 
 #include "utils/delete2.h"
 

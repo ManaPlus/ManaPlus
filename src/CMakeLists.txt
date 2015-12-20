@@ -622,11 +622,11 @@ SET(SRCS
     resources/delayedmanager.h
     resources/db/deaddb.cpp
     resources/db/deaddb.h
-    resources/dye.cpp
-    resources/dye.h
-    resources/dyecolor.h
-    resources/dyepalette.cpp
-    resources/dyepalette.h
+    resources/dye/dye.cpp
+    resources/dye/dye.h
+    resources/dye/dyecolor.h
+    resources/dye/dyepalette.cpp
+    resources/dye/dyepalette.h
     resources/effectdescription.h
     resources/emoteinfo.h
     resources/emotesprite.h
@@ -1336,10 +1336,10 @@ SET(DYE_CMD_SRCS
     resources/db/palettedb.h
     resources/delayedmanager.cpp
     resources/delayedmanager.h
-    resources/dye.cpp
-    resources/dye.h
-    resources/dyepalette.cpp
-    resources/dyepalette.h
+    resources/dye/dye.cpp
+    resources/dye/dye.h
+    resources/dye/dyepalette.cpp
+    resources/dye/dyepalette.h
     resources/effectdescription.h
     resources/emoteinfo.h
     resources/emotesprite.h

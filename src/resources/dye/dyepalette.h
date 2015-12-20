@@ -20,10 +20,10 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_DYEPALETTE_H
-#define RESOURCES_DYEPALETTE_H
+#ifndef RESOURCES_DYE_DYEPALETTE_H
+#define RESOURCES_DYE_DYEPALETTE_H
 
-#include "resources/dyecolor.h"
+#include "resources/dye/dyecolor.h"
 
 #include <string>
 #include <vector>
@@ -85,4 +85,4 @@ class DyePalette final
         std::vector<DyeColor> mColors;
 };
 
-#endif  // RESOURCES_DYEPALETTE_H
+#endif  // RESOURCES_DYE_DYEPALETTE_H

@@ -24,8 +24,9 @@
 
 #include "resources/surfaceimagehelper.h"
 
-#include "resources/dye.h"
 #include "resources/resourcemanager.h"
+
+#include "resources/dye/dye.h"
 
 #include "logger.h"
 #include "main.h"

@@ -37,8 +37,6 @@
 #include "utils/physfscheckutils.h"
 #include "utils/physfsrwops.h"
 
-#include "resources/dye.h"
-#include "resources/dyepalette.h"
 #include "resources/image.h"
 #include "resources/imagewriter.h"
 #include "resources/mstack.h"
@@ -46,6 +44,9 @@
 #include "resources/screenshothelper.h"
 #include "resources/surfaceimagehelper.h"
 #include "resources/wallpaper.h"
+
+#include "resources/dye/dye.h"
+#include "resources/dye/dyepalette.h"
 
 #include <unistd.h>
 
