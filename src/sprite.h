@@ -22,7 +22,7 @@
 #ifndef SPRITE_H
 #define SPRITE_H
 
-#include "resources/spritedef.h"
+#include "resources/sprite/spritedef.h"
 
 #include "localconsts.h"
 

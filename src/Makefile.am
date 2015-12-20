@@ -384,8 +384,8 @@ SRC += events/actionevent.h \
 	      resources/soundeffect.h \
 	      resources/soundinfo.h \
 	      resources/spriteaction.h \
-	      resources/spritedef.cpp \
-	      resources/spritedef.h \
+	      resources/sprite/spritedef.cpp \
+	      resources/sprite/spritedef.h \
 	      resources/spritedirection.h \
 	      resources/subimage.cpp \
 	      resources/subimage.h \

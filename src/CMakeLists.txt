@@ -735,8 +735,8 @@ SET(SRCS
     resources/soundeffect.h
     resources/soundinfo.h
     resources/spriteaction.h
-    resources/spritedef.h
-    resources/spritedef.cpp
+    resources/sprite/spritedef.h
+    resources/sprite/spritedef.cpp
     resources/spritedirection.h
     resources/spritedisplay.h
     resources/spritereference.h
@@ -1373,8 +1373,8 @@ SET(DYE_CMD_SRCS
     resources/surfaceimagehelper.h
     resources/textureatlas.h
     resources/updatefile.h
-    resources/spritedef.cpp
-    resources/spritedef.h
+    resources/sprite/spritedef.cpp
+    resources/sprite/spritedef.h
     resources/spritedisplay.h
     resources/spritereference.h
     utils/files.cpp

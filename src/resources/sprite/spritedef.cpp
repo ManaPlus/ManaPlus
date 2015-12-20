@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "resources/spritedef.h"
+#include "resources/sprite/spritedef.h"
 
 #include "configuration.h"
 #include "logger.h"

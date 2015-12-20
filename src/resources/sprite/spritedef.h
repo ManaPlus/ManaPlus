@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_SPRITEDEF_H
-#define RESOURCES_SPRITEDEF_H
+#ifndef RESOURCES_SPRITE_SPRITEDEF_H
+#define RESOURCES_SPRITE_SPRITEDEF_H
 
 #include "resources/resource.h"
 
@@ -156,4 +156,4 @@ class SpriteDef final : public Resource
         std::set<std::string> mProcessedFiles;
 };
 
-#endif  // RESOURCES_SPRITEDEF_H
+#endif  // RESOURCES_SPRITE_SPRITEDEF_H

@@ -38,7 +38,8 @@
 #include "resources/imageset.h"
 #include "resources/sdlmusic.h"
 #include "resources/soundeffect.h"
-#include "resources/spritedef.h"
+
+#include "resources/sprite/spritedef.h"
 
 #include "utils/delete2.h"
 #include "utils/physfscheckutils.h"
