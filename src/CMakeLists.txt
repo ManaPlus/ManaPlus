@@ -1034,9 +1034,9 @@ SET(SRCS
     render/mobileopenglgraphics.h
     render/modernopenglgraphics.cpp
     render/modernopenglgraphics.h
-    render/naclfunctions.h
-    render/naclgles.cpp
-    render/naclgles.h
+    render/nacl/naclfunctions.h
+    render/nacl/naclgles.cpp
+    render/nacl/naclgles.h
     input/mouseinput.h
     mumblemanager.cpp
     mumblemanager.h

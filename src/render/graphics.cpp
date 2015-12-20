@@ -81,8 +81,8 @@
 #include "resources/safeopenglimagehelper.h"
 #endif  // ANDROID
 #ifdef __native_client__
-#include "render/naclfunctions.h"
-#include "render/naclgles.h"
+#include "render/nacl/naclfunctions.h"
+#include "render/nacl/naclgles.h"
 #endif  // __native_client__
 #endif  // USE_OPENGL
 
