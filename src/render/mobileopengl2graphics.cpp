@@ -28,10 +28,10 @@
 #include "graphicsvertexes.h"
 #include "logger.h"
 
+#include "render/opengl/mgl.h"
 #ifdef __native_client__
 #include "render/opengl/naclglfunctions.h"
 #endif
-#include "render/opengl/mgl.h"
 
 #include "render/shaders/shaderprogram.h"
 #include "render/shaders/shadersmanager.h"
