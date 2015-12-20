@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_ATLASRESOURCE_H
-#define RESOURCES_ATLASRESOURCE_H
+#ifndef RESOURCES_ATLAS_ATLASRESOURCE_H
+#define RESOURCES_ATLAS_ATLASRESOURCE_H
 
 #ifdef USE_OPENGL
 
@@ -50,4 +50,4 @@ class AtlasResource final : public Resource
 };
 
 #endif  // USE_OPENGL
-#endif  // RESOURCES_ATLASRESOURCE_H
+#endif  // RESOURCES_ATLAS_ATLASRESOURCE_H

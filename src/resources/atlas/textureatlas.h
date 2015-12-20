@@ -18,36 +18,44 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_ATLASITEM_H
-#define RESOURCES_ATLASITEM_H
+#ifndef RESOURCES_ATLAS_TEXTUREATLAS_H
+#define RESOURCES_ATLAS_TEXTUREATLAS_H
 
 #ifdef USE_OPENGL
 
-#include "resources/image.h"
+#include "utils/stringvector.h"
 
-#include <string>
+#include <vector>
 
-struct AtlasItem final
+#include <SDL.h>
+
+#include "localconsts.h"
+
+class AtlasResource;
+class Image;
+class Resource;
+
+struct AtlasItem;
+
+struct TextureAtlas final
 {
-    explicit AtlasItem(Image *const image0) :
-        image(image0),
+    TextureAtlas() :
         name(),
-        x(0),
-        y(0),
-        width(image0 ? image0->mBounds.w : 0),
-        height(image0 ? image0->mBounds.h : 0)
+        atlasImage(nullptr),
+        width(0),
+        height(0),
+        items()
     {
     }
 
-    A_DELETE_COPY(AtlasItem)
+    A_DELETE_COPY(TextureAtlas)
 
-    Image *image;
     std::string name;
-    int x;
-    int y;
+    Image *atlasImage;
     int width;
     int height;
+    std::vector <AtlasItem*> items;
 };
 
 #endif  // USE_OPENGL
-#endif  // RESOURCES_ATLASITEM_H
+#endif  // RESOURCES_ATLAS_TEXTUREATLAS_H

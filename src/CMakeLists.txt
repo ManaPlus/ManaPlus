@@ -593,11 +593,11 @@ SET(SRCS
     resources/ambientlayer.h
     resources/animation.cpp
     resources/animation.h
-    resources/atlasitem.h
-    resources/atlasmanager.cpp
-    resources/atlasmanager.h
-    resources/atlasresource.cpp
-    resources/atlasresource.h
+    resources/atlas/atlasitem.h
+    resources/atlas/atlasmanager.cpp
+    resources/atlas/atlasmanager.h
+    resources/atlas/atlasresource.cpp
+    resources/atlas/atlasresource.h
     resources/attack.h
     resources/db/avatardb.cpp
     resources/db/avatardb.h
@@ -744,7 +744,7 @@ SET(SRCS
     resources/subimage.h
     resources/surfaceimagehelper.cpp
     resources/surfaceimagehelper.h
-    resources/textureatlas.h
+    resources/atlas/textureatlas.h
     resources/updatefile.h
     resources/wallpaper.cpp
     resources/wallpaper.h
@@ -1371,7 +1371,7 @@ SET(DYE_CMD_SRCS
     resources/subimage.h
     resources/surfaceimagehelper.cpp
     resources/surfaceimagehelper.h
-    resources/textureatlas.h
+    resources/atlas/textureatlas.h
     resources/updatefile.h
     resources/sprite/spritedef.cpp
     resources/sprite/spritedef.h

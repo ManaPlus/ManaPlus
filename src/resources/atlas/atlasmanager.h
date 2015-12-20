@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_ATLASMANAGER_H
-#define RESOURCES_ATLASMANAGER_H
+#ifndef RESOURCES_ATLAS_ATLASMANAGER_H
+#define RESOURCES_ATLAS_ATLASMANAGER_H
 
 #ifdef USE_OPENGL
 
@@ -67,4 +67,4 @@ class AtlasManager final
 };
 
 #endif  // USE_OPENGL
-#endif  // RESOURCES_ATLASMANAGER_H
+#endif  // RESOURCES_ATLAS_ATLASMANAGER_H

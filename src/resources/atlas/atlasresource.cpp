@@ -20,12 +20,13 @@
 
 #ifdef USE_OPENGL
 
-#include "resources/atlasresource.h"
+#include "resources/atlas/atlasresource.h"
 
-#include "resources/atlasitem.h"
-#include "resources/atlasmanager.h"
 #include "resources/resourcemanager.h"
-#include "resources/textureatlas.h"
+
+#include "resources/atlas/atlasitem.h"
+#include "resources/atlas/atlasmanager.h"
+#include "resources/atlas/textureatlas.h"
 
 #include "debug.h"
 

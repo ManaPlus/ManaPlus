@@ -20,7 +20,7 @@
 
 #ifdef USE_OPENGL
 
-#include "resources/atlasmanager.h"
+#include "resources/atlas/atlasmanager.h"
 
 #include "settings.h"
 
@@ -33,14 +33,15 @@
 #include "utils/physfsrwops.h"
 #include "utils/sdlcheckutils.h"
 
-#include "resources/atlasitem.h"
-#include "resources/atlasresource.h"
 #include "resources/dye.h"
 #include "resources/imagehelper.h"
 #include "resources/openglimagehelper.h"
 #include "resources/resourcemanager.h"
 #include "resources/sdlimagehelper.h"
-#include "resources/textureatlas.h"
+
+#include "resources/atlas/atlasitem.h"
+#include "resources/atlas/atlasresource.h"
+#include "resources/atlas/textureatlas.h"
 
 #include "debug.h"
 

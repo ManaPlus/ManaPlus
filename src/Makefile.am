@@ -312,11 +312,11 @@ SRC += events/actionevent.h \
 	      resources/action.h \
 	      resources/ambientlayer.cpp \
 	      resources/ambientlayer.h \
-	      resources/atlasitem.h \
-	      resources/atlasmanager.cpp \
-	      resources/atlasmanager.h \
-	      resources/atlasresource.cpp \
-	      resources/atlasresource.h \
+	      resources/atlas/atlasitem.h \
+	      resources/atlas/atlasmanager.cpp \
+	      resources/atlas/atlasmanager.h \
+	      resources/atlas/atlasresource.cpp \
+	      resources/atlas/atlasresource.h \
 	      resources/attack.h \
 	      resources/cursor.cpp \
 	      resources/cursor.h \
@@ -1172,7 +1172,7 @@ manaplus_SOURCES += main.cpp \
 	      resources/horseinfo.h \
 	      resources/sprite/spritedisplay.h \
 	      resources/sprite/spritereference.h \
-	      resources/textureatlas.h \
+	      resources/atlas/textureatlas.h \
 	      resources/updatefile.h \
 	      enums/resources/map/blockmask.h \
 	      enums/resources/map/blocktype.h \

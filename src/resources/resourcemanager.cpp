@@ -29,8 +29,8 @@
 #include "resources/map/walklayer.h"
 
 #ifdef USE_OPENGL
-#include "resources/atlasmanager.h"
-#include "resources/atlasresource.h"
+#include "resources/atlas/atlasmanager.h"
+#include "resources/atlas/atlasresource.h"
 #endif
 #include "resources/dye.h"
 #include "resources/image.h"
