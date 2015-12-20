@@ -23,7 +23,7 @@
 #ifndef RESOURCES_ACTION_H
 #define RESOURCES_ACTION_H
 
-#include "resources/spritedirection.h"
+#include "enums/resources/spritedirection.h"
 
 #include <map>
 

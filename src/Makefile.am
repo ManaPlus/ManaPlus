@@ -386,7 +386,7 @@ SRC += events/actionevent.h \
 	      const/resources/spriteaction.h \
 	      resources/sprite/spritedef.cpp \
 	      resources/sprite/spritedef.h \
-	      resources/spritedirection.h \
+	      enums/resources/spritedirection.h \
 	      resources/subimage.cpp \
 	      resources/subimage.h \
 	      resources/surfaceimagehelper.cpp \

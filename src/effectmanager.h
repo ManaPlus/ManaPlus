@@ -23,10 +23,11 @@
 #ifndef EFFECTMANAGER_H
 #define EFFECTMANAGER_H
 
+#include "enums/resources/spritedirection.h"
+
 #include "particle/particletimer.h"
 
 #include "resources/effectdescription.h"
-#include "resources/spritedirection.h"
 
 #include <vector>
 #include <list>

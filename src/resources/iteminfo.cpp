@@ -26,7 +26,7 @@
 
 #include "const/resources/map/map.h"
 
-#include "resources/spritedirection.h"
+#include "enums/resources/spritedirection.h"
 
 #include "resources/db/colordb.h"
 #include "resources/db/itemdb.h"

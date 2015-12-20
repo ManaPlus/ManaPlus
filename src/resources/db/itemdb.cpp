@@ -27,10 +27,11 @@
 #include "configuration.h"
 #include "logger.h"
 
+#include "enums/resources/spritedirection.h"
+
 #include "resources/beingcommon.h"
 #include "resources/iteminfo.h"
 #include "resources/itemtypemapdata.h"
-#include "resources/spritedirection.h"
 #include "resources/spritereference.h"
 
 #include "resources/db/itemdbstat.h"

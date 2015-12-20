@@ -25,7 +25,7 @@
 
 #include "resources/resource.h"
 
-#include "resources/spritedirection.h"
+#include "enums/resources/spritedirection.h"
 
 #include "utils/xml.h"
 

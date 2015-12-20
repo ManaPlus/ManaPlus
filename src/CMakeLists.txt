@@ -737,7 +737,7 @@ SET(SRCS
     const/resources/spriteaction.h
     resources/sprite/spritedef.h
     resources/sprite/spritedef.cpp
-    resources/spritedirection.h
+    enums/resources/spritedirection.h
     resources/spritedisplay.h
     resources/spritereference.h
     resources/subimage.cpp
