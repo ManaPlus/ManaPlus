@@ -20,7 +20,7 @@
 
 #ifdef USE_OPENGL
 
-#include "render/mglemu.h"
+#include "render/opengl/mglemu.h"
 
 #include "resources/openglimagehelper.h"
 

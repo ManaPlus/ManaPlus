@@ -1,6 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2014-2015  The ManaPlus Developers
+ *  Copyright (C) 2012-2015  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -18,19 +18,14 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RENDER_OPENGLDEBUG_H
-#define RENDER_OPENGLDEBUG_H
+#ifndef RENDER_OPENGL_MGLCHECK_H
+#define RENDER_OPENGL_MGLCHECK_H
 
-#include "render/mgl.h"
+#include "main.h"
+#ifdef USE_OPENGL
 
-#if defined(DEBUG_OPENGL) && defined(USE_OPENGL)
-#define GLDEBUG_START(text) if (mglPushGroupMarker) \
-    mglPushGroupMarker(sizeof(text), text);
-#define GLDEBUG_END() if (mglPopGroupMarker) \
-    mglPopGroupMarker();
-#else
-#define GLDEBUG_START(text)
-#define GLDEBUG_END()
-#endif
+#define isGLNull(func) (!(func))
+#define isGLNotNull(func) ((func) != nullptr)
 
-#endif  // RENDER_OPENGLDEBUG_H
+#endif  // USE_OPENGL
+#endif  // RENDER_OPENGL_MGLCHECK_H

@@ -90,7 +90,7 @@
 #ifdef __APPLE__
 #include <OpenGL/OpenGL.h>
 #endif
-#include "render/mgldefines.h"
+#include "render/opengl/mgldefines.h"
 #endif
 
 #include "debug.h"

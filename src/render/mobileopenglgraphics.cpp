@@ -27,10 +27,10 @@
 #include "graphicsvertexes.h"
 #include "logger.h"
 
-#include "render/mgl.h"
 #ifdef __native_client__
-#include "render/naclglfunctions.h"
+#include "render/opengl/naclglfunctions.h"
 #endif
+#include "render/opengl/mgl.h"
 
 #include "resources/image.h"
 #include "resources/imagerect.h"

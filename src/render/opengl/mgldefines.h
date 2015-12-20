@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RENDER_MGLDEFINES_H
-#define RENDER_MGLDEFINES_H
+#ifndef RENDER_OPENGL_MGLDEFINES_H
+#define RENDER_OPENGL_MGLDEFINES_H
 
 #ifdef USE_OPENGL
 
@@ -128,4 +128,4 @@
 
 #endif  // USE_OPENGL
 
-#endif  // RENDER_MGLDEFINES_H
+#endif  // RENDER_OPENGL_MGLDEFINES_H

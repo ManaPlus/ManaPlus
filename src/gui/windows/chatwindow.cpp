@@ -64,7 +64,7 @@
 #include "gui/widgets/tabs/chat/tradetab.h"
 #include "gui/widgets/tabs/chat/whispertab.h"
 
-#include "render/opengldebug.h"
+#include "render/opengl/opengldebug.h"
 
 #include "net/chathandler.h"
 #include "net/serverfeatures.h"

@@ -33,7 +33,7 @@
 #endif  // USE_SDL2
 #elif defined(__native_client__)
 #include <GL/Regal.h>
-#include "render/naclglfunctions.h"
+#include "render/opengl/naclglfunctions.h"
 #else  // ANDROID
 #include <GL/glx.h>
 #endif  // ANDROID
@@ -46,14 +46,15 @@
 #include "settings.h"
 
 #ifdef USE_OPENGL
-#include "render/mglcheck.h"
-#include "render/mgl.h"
-#include "render/mglemu.h"
 #include "render/mobileopengl2graphics.h"
 #include "render/mobileopenglgraphics.h"
 #include "render/modernopenglgraphics.h"
 #include "render/normalopenglgraphics.h"
 #include "render/safeopenglgraphics.h"
+
+#include "render/opengl/mgl.h"
+#include "render/opengl/mglcheck.h"
+#include "render/opengl/mglemu.h"
 #endif
 #include "render/renderers.h"
 #include "render/sdlgraphics.h"
@@ -66,7 +67,7 @@
 #include "resources/mobileopenglscreenshothelper.h"
 #include "resources/safeopenglimagehelper.h"
 #endif  // ANDROID
-#include "render/mglfunctions.h"
+#include "render/opengl/mglfunctions.h"
 #endif  // USE_OPENGL
 
 #include "resources/sdlimagehelper.h"

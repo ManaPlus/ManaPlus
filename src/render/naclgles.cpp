@@ -24,7 +24,7 @@
 
 #include "logger.h"
 
-#include "render/mglfunctions.h"
+#include "render/opengl/mglfunctions.h"
 
 #include <ppapi_simple/ps.h>
 

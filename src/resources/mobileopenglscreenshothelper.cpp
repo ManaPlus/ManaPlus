@@ -27,10 +27,10 @@
 #include "configuration.h"
 #include "graphicsmanager.h"
 
-#include "render/mgl.h"
 #ifdef __native_client__
-#include "render/naclglfunctions.h"
+#include "render/opengl/naclglfunctions.h"
 #endif
+#include "render/opengl/mgl.h"
 
 #include "debug.h"
 

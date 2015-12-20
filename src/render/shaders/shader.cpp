@@ -22,7 +22,7 @@
 
 #include "render/shaders/shader.h"
 
-#include "render/mgl.h"
+#include "render/opengl/mgl.h"
 
 #include "debug.h"
 

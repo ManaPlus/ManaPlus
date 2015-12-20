@@ -518,15 +518,15 @@ SRC += events/actionevent.h \
 	      logger.h \
 	      maingui.cpp \
 	      maingui.h \
-	      render/mgl.cpp \
-	      render/mgl.h \
-	      render/mgl.hpp \
-	      render/mglcheck.h \
-	      render/mgldefines.h \
-	      render/mglemu.cpp \
-	      render/mglemu.h \
-	      render/mglfunctions.h \
-	      render/mgltypes.h \
+	      render/opengl/mgl.cpp \
+	      render/opengl/mgl.h \
+	      render/opengl/mgl.hpp \
+	      render/opengl/mglcheck.h \
+	      render/opengl/mgldefines.h \
+	      render/opengl/mglemu.cpp \
+	      render/opengl/mglemu.h \
+	      render/opengl/mglfunctions.h \
+	      render/opengl/mgltypes.h \
 	      render/mglx.cpp \
 	      render/mglx.h \
 	      render/mglx.hpp \
@@ -542,7 +542,7 @@ SRC += events/actionevent.h \
 	      render/naclfunctions.h \
 	      render/naclgles.cpp \
 	      render/naclgles.h \
-	      render/naclglfunctions.h \
+	      render/opengl/naclglfunctions.h \
 	      render/normalopenglgraphics.cpp \
 	      render/normalopenglgraphics.h \
 	      input/mouseinput.h \
@@ -554,7 +554,7 @@ SRC += events/actionevent.h \
 	      render/graphics_drawImageRect.hpp \
 	      render/nullopenglgraphics.cpp \
 	      render/nullopenglgraphics.h \
-	      render/opengldebug.h \
+	      render/opengl/opengldebug.h \
 	      render/openglgraphicsdef.hpp \
 	      render/openglgraphicsdef1.hpp \
 	      render/openglgraphicsdefadvanced.hpp \

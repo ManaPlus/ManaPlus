@@ -22,9 +22,10 @@
 
 #if defined(USE_OPENGL) && defined(USE_X11)
 
-#include "render/mglfunctions.h"
 #include "render/mglx.h"
 #include "render/mglxtypes.h"
+
+#include "render/opengl/mglfunctions.h"
 
 #include "debug.h"
 

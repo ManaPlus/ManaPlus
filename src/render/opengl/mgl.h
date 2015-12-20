@@ -18,14 +18,21 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RENDER_MGLCHECK_H
-#define RENDER_MGLCHECK_H
+#ifndef RENDER_OPENGLMGL_H
+#define RENDER_OPENGLMGL_H
 
 #include "main.h"
+
 #ifdef USE_OPENGL
 
-#define isGLNull(func) (!(func))
-#define isGLNotNull(func) ((func) != nullptr)
+#include "render/opengl/mgldefines.h"
+#include "render/opengl/mgltypes.h"
+
+#define defName(name) extern name##_t m##name
+
+#include "render/opengl/mgl.hpp"
+
+#undef defName
 
 #endif  // USE_OPENGL
-#endif  // RENDER_MGLCHECK_H
+#endif  // RENDER_OPENGLMGL_H

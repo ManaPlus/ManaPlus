@@ -18,7 +18,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "render/mgl.h"
+#include "render/opengl/mgl.h"
 
 #ifdef USE_OPENGL
 
@@ -27,6 +27,6 @@
 #define defName(name) name##_t m##name = nullptr
 
 // include function defines
-#include "render/mgl.hpp"
+#include "render/opengl/mgl.hpp"
 
 #endif

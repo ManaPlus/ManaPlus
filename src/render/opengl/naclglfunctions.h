@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RENDER_NACLGLFUNCTIONS_H
-#define RENDER_NACLGLFUNCTIONS_H
+#ifndef RENDER_OPENGL_NACLGLFUNCTIONS_H
+#define RENDER_OPENGL_NACLGLFUNCTIONS_H
 
 #if defined(__native_client__) && defined(USE_OPENGL)
 
@@ -319,4 +319,4 @@ extern PP_Resource gles2Context;
     gles2Interface->VertexAttrib4fv(gles2Context, __VA_ARGS__)
 
 #endif  // defined(__native_client__) && defined(USE_OPENGL)
-#endif  // RENDER_NACLGLFUNCTIONS_H
+#endif  // RENDER_OPENGL_NACLGLFUNCTIONS_H

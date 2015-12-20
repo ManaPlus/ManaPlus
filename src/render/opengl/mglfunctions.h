@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RENDER_MGLFUNCTIONS_H
-#define RENDER_MGLFUNCTIONS_H
+#ifndef RENDER_OPENGL_MGLFUNCTIONS_H
+#define RENDER_OPENGL_MGLFUNCTIONS_H
 
 #ifdef USE_OPENGL
 
@@ -96,4 +96,4 @@
     logger->log("emulated function: " #func)
 
 #endif  // USE_OPENGL
-#endif  // RENDER_MGLFUNCTIONS_H
+#endif  // RENDER_OPENGL_MGLFUNCTIONS_H

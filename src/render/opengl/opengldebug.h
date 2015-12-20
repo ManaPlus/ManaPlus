@@ -18,24 +18,19 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RENDER_MGLEMU_H
-#define RENDER_MGLEMU_H
-#ifdef USE_OPENGL
+#ifndef RENDER_OPENGL_OPENGLDEBUG_H
+#define RENDER_OPENGL_OPENGLDEBUG_H
 
-#include "render/mgltypes.h"
+#include "render/opengl/mgl.h"
 
-void APIENTRY emuglTextureSubImage2D(GLuint texture,
-                                     GLenum target,
-                                     GLint level,
-                                     GLint xoffset,
-                                     GLint yoffset,
-                                     GLsizei width,
-                                     GLsizei height,
-                                     GLenum format,
-                                     GLenum type,
-                                     const void *pixels);
+#if defined(DEBUG_OPENGL) && defined(USE_OPENGL)
+#define GLDEBUG_START(text) if (mglPushGroupMarker) \
+    mglPushGroupMarker(sizeof(text), text);
+#define GLDEBUG_END() if (mglPopGroupMarker) \
+    mglPopGroupMarker();
+#else
+#define GLDEBUG_START(text)
+#define GLDEBUG_END()
+#endif
 
-void APIENTRY emuglActiveTexture(GLenum texture);
-
-#endif  // USE_OPENGL
-#endif  // RENDER_MGLEMU_H
+#endif  // RENDER_OPENGL_OPENGLDEBUG_H

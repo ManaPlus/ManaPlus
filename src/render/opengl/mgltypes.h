@@ -18,14 +18,14 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RENDER_MGLTYPES_H
-#define RENDER_MGLTYPES_H
+#ifndef RENDER_OPENGL_MGLTYPES_H
+#define RENDER_OPENGL_MGLTYPES_H
 
 #include "main.h"
 
 #ifdef USE_OPENGL
 
-#include "render/mgldefines.h"
+#include "render/opengl/mgldefines.h"
 
 #ifdef ANDROID
 #include <GLES/gl.h>
@@ -206,4 +206,4 @@ typedef const char* (APIENTRY * wglGetExtensionsString_t) (HDC hdc);
 #endif
 
 #endif  // USE_OPENGL
-#endif  // RENDER_MGLTYPES_H
+#endif  // RENDER_OPENGL_MGLTYPES_H

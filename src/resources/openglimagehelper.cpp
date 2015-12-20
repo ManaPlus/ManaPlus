@@ -27,16 +27,17 @@
 #include "graphicsmanager.h"
 #include "logger.h"
 
-#include "render/mgl.h"
-#include "render/mglcheck.h"
 #include "render/mobileopengl2graphics.h"
 #include "render/mobileopenglgraphics.h"
 #include "render/modernopenglgraphics.h"
 #ifdef __native_client__
-#include "render/naclglfunctions.h"
+#include "render/opengl/naclglfunctions.h"
 #endif
 #include "render/normalopenglgraphics.h"
 #include "render/safeopenglgraphics.h"
+
+#include "render/opengl/mgl.h"
+#include "render/opengl/mglcheck.h"
 
 #include "resources/dye.h"
 #include "resources/dyepalette.h"

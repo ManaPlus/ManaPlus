@@ -29,7 +29,7 @@
 
 #include "input/inputmanager.h"
 
-#include "render/opengldebug.h"
+#include "render/opengl/opengldebug.h"
 
 #include "resources/image.h"
 #include "resources/imagehelper.h"
