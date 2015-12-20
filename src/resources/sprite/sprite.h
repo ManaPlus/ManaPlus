@@ -19,8 +19,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SPRITE_H
-#define SPRITE_H
+#ifndef RESOURCES_SPRITE_SPRITE_H
+#define RESOURCES_SPRITE_SPRITE_H
 
 #include "resources/sprite/spritedef.h"
 
@@ -127,4 +127,4 @@ class Sprite notfinal
         float mAlpha;                  /**< The alpha opacity used to draw */
 };
 
-#endif  // SPRITE_H
+#endif  // RESOURCES_SPRITE_SPRITE_H

@@ -22,7 +22,7 @@
 #ifndef IMAGESPRITE_H
 #define IMAGESPRITE_H
 
-#include "sprite.h"
+#include "resources/sprite/sprite.h"
 
 #include "resources/image.h"
 

@@ -23,7 +23,7 @@
 #ifndef ANIMATEDSPRITE_H
 #define ANIMATEDSPRITE_H
 
-#include "sprite.h"
+#include "resources/sprite/sprite.h"
 
 class Animation;
 class AnimationDelayLoad;

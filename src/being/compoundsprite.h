@@ -22,7 +22,7 @@
 #ifndef BEING_COMPOUNDSPRITE_H
 #define BEING_COMPOUNDSPRITE_H
 
-#include "sprite.h"
+#include "resources/sprite/sprite.h"
 
 #include <list>
 #include <vector>

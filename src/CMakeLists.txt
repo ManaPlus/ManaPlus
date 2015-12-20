@@ -1126,7 +1126,7 @@ SET(SRCS
     const/sound.h
     soundmanager.cpp
     soundmanager.h
-    sprite.h
+    resources/sprite/sprite.h
     enums/screendensity.h
     enums/state.h
     enums/textcommandtype.h
