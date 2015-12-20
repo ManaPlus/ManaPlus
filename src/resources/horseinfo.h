@@ -22,7 +22,7 @@
 #ifndef RESOURCES_HORSEINFO_H
 #define RESOURCES_HORSEINFO_H
 
-#include "resources/spritereference.h"
+#include "resources/sprite/spritereference.h"
 
 #include "localconsts.h"
 

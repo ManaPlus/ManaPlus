@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_SPRITEREFERENCE_H
-#define RESOURCES_SPRITEREFERENCE_H
+#ifndef RESOURCES_SPRITE_SPRITEREFERENCE_H
+#define RESOURCES_SPRITE_SPRITEREFERENCE_H
 
 #include "utils/stringvector.h"
 
@@ -50,4 +50,4 @@ struct SpriteReference final
 
 typedef std::vector<SpriteReference*>::const_iterator SpriteRefs;
 
-#endif  // RESOURCES_SPRITEREFERENCE_H
+#endif  // RESOURCES_SPRITE_SPRITEREFERENCE_H

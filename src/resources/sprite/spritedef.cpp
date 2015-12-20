@@ -35,7 +35,8 @@
 #include "resources/dye.h"
 #include "resources/imageset.h"
 #include "resources/resourcemanager.h"
-#include "resources/spritereference.h"
+
+#include "resources/sprite/spritereference.h"
 
 #include "debug.h"
 

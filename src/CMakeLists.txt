@@ -739,7 +739,7 @@ SET(SRCS
     resources/sprite/spritedef.cpp
     enums/resources/spritedirection.h
     resources/sprite/spritedisplay.h
-    resources/spritereference.h
+    resources/sprite/spritereference.h
     resources/subimage.cpp
     resources/subimage.h
     resources/surfaceimagehelper.cpp
@@ -1376,7 +1376,7 @@ SET(DYE_CMD_SRCS
     resources/sprite/spritedef.cpp
     resources/sprite/spritedef.h
     resources/sprite/spritedisplay.h
-    resources/spritereference.h
+    resources/sprite/spritereference.h
     utils/files.cpp
     utils/files.h
     utils/mkdir.cpp

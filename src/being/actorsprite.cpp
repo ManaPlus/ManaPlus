@@ -37,7 +37,8 @@
 #include "particle/particle.h"
 
 #include "resources/resourcemanager.h"
-#include "resources/spritereference.h"
+
+#include "resources/sprite/spritereference.h"
 
 #include "utils/checkutils.h"
 #include "utils/delete2.h"

@@ -30,7 +30,8 @@
 #include "enums/resources/map/blockmask.h"
 
 #include "resources/attack.h"
-#include "resources/spritereference.h"
+
+#include "resources/sprite/spritereference.h"
 
 #include "resources/db/colordb.h"
 

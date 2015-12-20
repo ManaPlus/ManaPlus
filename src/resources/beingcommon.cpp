@@ -28,7 +28,8 @@
 #include "utils/files.h"
 
 #include "resources/beinginfo.h"
-#include "resources/spritereference.h"
+
+#include "resources/sprite/spritereference.h"
 
 #include <algorithm>
 

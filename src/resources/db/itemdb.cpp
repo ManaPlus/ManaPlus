@@ -32,7 +32,8 @@
 #include "resources/beingcommon.h"
 #include "resources/iteminfo.h"
 #include "resources/itemtypemapdata.h"
-#include "resources/spritereference.h"
+
+#include "resources/sprite/spritereference.h"
 
 #include "resources/db/itemdbstat.h"
 

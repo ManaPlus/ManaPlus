@@ -98,7 +98,8 @@
 
 #include "resources/imagehelper.h"
 #include "resources/resourcemanager.h"
-#include "resources/spritereference.h"
+
+#include "resources/sprite/spritereference.h"
 
 #include "resources/db/avatardb.h"
 #include "resources/db/badgesdb.h"
