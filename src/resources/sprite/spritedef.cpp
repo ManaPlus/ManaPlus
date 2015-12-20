@@ -26,6 +26,8 @@
 #include "logger.h"
 #include "settings.h"
 
+#include "const/resources/spriteaction.h"
+
 #include "const/resources/map/map.h"
 
 #include "resources/action.h"
@@ -33,7 +35,6 @@
 #include "resources/dye.h"
 #include "resources/imageset.h"
 #include "resources/resourcemanager.h"
-#include "resources/spriteaction.h"
 #include "resources/spritereference.h"
 
 #include "debug.h"

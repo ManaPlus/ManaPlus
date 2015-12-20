@@ -26,6 +26,8 @@
 #include "configuration.h"
 #include "soundmanager.h"
 
+#include "const/resources/spriteaction.h"
+
 #include "gui/widgets/tabs/chat/chattab.h"
 
 #include "particle/particle.h"
@@ -33,7 +35,6 @@
 #include "listeners/debugmessagelistener.h"
 
 #include "resources/beingcommon.h"
-#include "resources/spriteaction.h"
 
 #include "debug.h"
 

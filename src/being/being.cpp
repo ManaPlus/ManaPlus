@@ -41,6 +41,8 @@
 
 #include "const/utils/timer.h"
 
+#include "const/resources/spriteaction.h"
+
 #include "enums/being/beingdirection.h"
 
 #include "particle/particleinfo.h"
@@ -70,7 +72,6 @@
 #include "resources/emotesprite.h"
 #include "resources/horseinfo.h"
 #include "resources/iteminfo.h"
-#include "resources/spriteaction.h"
 
 #include "resources/db/avatardb.h"
 #include "resources/db/badgesdb.h"

@@ -24,6 +24,8 @@
 
 #include "animationdelayload.h"
 
+#include "const/resources/spriteaction.h"
+
 #include "render/graphics.h"
 
 #include "resources/action.h"
@@ -31,7 +33,6 @@
 #include "resources/delayedmanager.h"
 #include "resources/image.h"
 #include "resources/resourcemanager.h"
-#include "resources/spriteaction.h"
 
 #include "utils/delete2.h"
 

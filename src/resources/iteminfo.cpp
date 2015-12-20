@@ -22,10 +22,11 @@
 
 #include "resources/iteminfo.h"
 
-#include "resources/spriteaction.h"
-#include "resources/spritedirection.h"
+#include "const/resources/spriteaction.h"
 
 #include "const/resources/map/map.h"
+
+#include "resources/spritedirection.h"
 
 #include "resources/db/colordb.h"
 #include "resources/db/itemdb.h"

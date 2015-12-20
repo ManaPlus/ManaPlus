@@ -30,6 +30,8 @@
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
+#include "const/resources/spriteaction.h"
+
 #include "gui/windows/setupwindow.h"
 #include "gui/windows/shortcutwindow.h"
 
@@ -53,7 +55,6 @@
 #include "utils/timer.h"
 
 #include "resources/beingcommon.h"
-#include "resources/spriteaction.h"
 
 #include "debug.h"
 

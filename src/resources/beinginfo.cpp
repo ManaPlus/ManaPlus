@@ -25,10 +25,11 @@
 #include "configuration.h"
 #include "logger.h"
 
+#include "const/resources/spriteaction.h"
+
 #include "enums/resources/map/blockmask.h"
 
 #include "resources/attack.h"
-#include "resources/spriteaction.h"
 #include "resources/spritereference.h"
 
 #include "resources/db/colordb.h"

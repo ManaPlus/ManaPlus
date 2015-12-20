@@ -734,7 +734,7 @@ SET(SRCS
     resources/soundeffect.cpp
     resources/soundeffect.h
     resources/soundinfo.h
-    resources/spriteaction.h
+    const/resources/spriteaction.h
     resources/sprite/spritedef.h
     resources/sprite/spritedef.cpp
     resources/spritedirection.h

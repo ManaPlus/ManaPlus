@@ -383,7 +383,7 @@ SRC += events/actionevent.h \
 	      resources/soundeffect.cpp \
 	      resources/soundeffect.h \
 	      resources/soundinfo.h \
-	      resources/spriteaction.h \
+	      const/resources/spriteaction.h \
 	      resources/sprite/spritedef.cpp \
 	      resources/sprite/spritedef.h \
 	      resources/spritedirection.h \

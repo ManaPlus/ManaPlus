@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_SPRITEACTION_H
-#define RESOURCES_SPRITEACTION_H
+#ifndef CONST_RESOURCES_SPRITEACTION_H
+#define CONST_RESOURCES_SPRITEACTION_H
 
 #include <string>
 
@@ -71,4 +71,4 @@ namespace SpriteAction
     static const std::string INVALID("");
 }  // namespace SpriteAction
 
-#endif  // RESOURCES_SPRITEACTION_H
+#endif  // CONST_RESOURCES_SPRITEACTION_H
