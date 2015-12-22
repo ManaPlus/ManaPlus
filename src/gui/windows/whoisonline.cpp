@@ -488,13 +488,15 @@ void WhoIsOnline::loadWebList()
     mEnemy.clear();
 }
 
-size_t WhoIsOnline::memoryWrite(void *ptr, size_t size,
-                                size_t nmemb, FILE *stream)
+size_t WhoIsOnline::memoryWrite(void *restrict ptr,
+                                size_t size,
+                                size_t nmemb,
+                                FILE *restrict stream)
 {
     if (!stream)
         return 0;
 
-    WhoIsOnline *const wio = reinterpret_cast<WhoIsOnline *>(stream);
+    WhoIsOnline *restrict const wio = reinterpret_cast<WhoIsOnline *restrict>(stream);
     const size_t totalMem = size * nmemb;
     wio->mMemoryBuffer = static_cast<char*>(realloc(wio->mMemoryBuffer,
         static_cast<size_t>(wio->mDownloadedBytes) + totalMem));

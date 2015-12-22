@@ -116,9 +116,10 @@ class WhoIsOnline final : public Window,
         /**
          * A libcurl callback for writing to memory.
          */
-        static size_t memoryWrite(void *ptr, size_t size,
+        static size_t memoryWrite(void *restrict ptr,
+                                  size_t size,
                                   size_t nmemb,
-                                  FILE *stream);
+                                  FILE *restrict stream);
 #endif
 
         const std::string prepareNick(const std::string &restrict nick,
