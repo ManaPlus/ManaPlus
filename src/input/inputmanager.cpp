@@ -971,11 +971,13 @@ InputActionT InputManager::getActionByKey(const SDL_Event &event) const
     return InputAction::NO_VALUE;
 }
 
-void InputManager::addChatCommands(std::list<std::string> &arr)
+void InputManager::addChatCommands(std::list<std::string> &restrict arr)
+                                   restrict
 {
-    for (int i = 0; i < static_cast<int>(InputAction::TOTAL); i++)
+    const int sz = static_cast<int>(InputAction::TOTAL);
+    for (int i = 0; i < sz; i++)
     {
-        const InputActionData &ad = inputActionData[i];
+        const InputActionData &restrict ad = inputActionData[i];
         std::string cmd = ad.chatCommand;
         if (!cmd.empty())
         {

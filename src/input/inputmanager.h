@@ -144,7 +144,7 @@ class InputManager final
                                 const std::string &args,
                                 ChatTab *const tab);
 
-        void addChatCommands(std::list<std::string> &arr);
+        void addChatCommands(std::list<std::string> &restrict arr) restrict;
 
     protected:
         void resetKey(const InputActionT i);
