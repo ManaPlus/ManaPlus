@@ -43,11 +43,11 @@ class PlayerTableModel final : public Widget2,
 
         int getRows() const override final;
 
-        int getColumns() const override final;
+        int getColumns() const override final A_CONST;
 
-        int getRowHeight() const override final;
+        int getRowHeight() const override final A_CONST;
 
-        int getColumnWidth(const int index) const override final;
+        int getColumnWidth(const int index) const override final A_CONST;
 
         void playerRelationsUpdated();
 

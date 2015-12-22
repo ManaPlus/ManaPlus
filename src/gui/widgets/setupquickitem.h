@@ -49,22 +49,23 @@ class SetupQuickItem final : public SetupItem,
 
         void createControls();
 
-        void fromWidget() override final;
+        void fromWidget() override final A_CONST;
 
         void toWidget() override final;
 
         void action(const ActionEvent &event) override final;
 
-        void apply(const std::string &eventName) override final;
+        void apply(const std::string &eventName) override final A_CONST;
 
-        void cancel(const std::string &eventName A_UNUSED) override final;
+        void cancel(const std::string &eventName A_UNUSED) override final
+                    A_CONST;
 
         void externalUpdated(const std::string &eventName A_UNUSED)
-                             override final;
+                             override final A_CONST;
 
-        void rereadValue() override final;
+        void rereadValue() override final A_CONST;
 
-        void save() override final;
+        void save() override final A_CONST;
 
         void gameModifiersChanged() override final;
 

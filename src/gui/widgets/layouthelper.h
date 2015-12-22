@@ -53,7 +53,7 @@ class LayoutHelper final : public WidgetListener
         /**
          * Gets the layout handler.
          */
-        const Layout &getLayout() const A_WARN_UNUSED;
+        const Layout &getLayout() const A_WARN_UNUSED A_CONST;
 
         /**
          * Computes the position of the widgets according to the current

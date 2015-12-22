@@ -858,7 +858,7 @@ class Widget notfinal : public Widget2
           * @since 0.6.0
           */
         const std::list<MouseListener*>& getMouseListeners() const
-                                         A_WARN_UNUSED;
+                                         A_CONST A_WARN_UNUSED;
 
         /**
           * Gets the key listeners of the widget.
@@ -867,7 +867,7 @@ class Widget notfinal : public Widget2
           * @since 0.6.0
           */
         const std::list<KeyListener*>& getKeyListeners() const
-                                       A_WARN_UNUSED;
+                                       A_CONST A_WARN_UNUSED;
 
         /**
           * Gets the focus listeners of the widget.
@@ -876,7 +876,7 @@ class Widget notfinal : public Widget2
           * @since 0.7.0
           */
         const std::list<FocusListener*>& getFocusListeners() const
-                                         A_WARN_UNUSED;
+                                         A_CONST A_WARN_UNUSED;
 
         /**
           * Gets the area of the widget occupied by the widget's children.

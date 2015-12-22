@@ -56,7 +56,7 @@ class EmoteShortcutContainer final : public ShortcutContainer
         /**
          * Handles mouse when dragged.
          */
-        void mouseDragged(MouseEvent &event) override final;
+        void mouseDragged(MouseEvent &event) override final A_CONST;
 
         /**
          * Handles mouse when pressed.

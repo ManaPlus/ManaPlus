@@ -174,9 +174,13 @@ class TextField notfinal : public Widget,
 
         void handleCopy() const;
 
+#ifdef ANDROID
         void focusGained(const Event &event) override final;
+#else
+        void focusGained(const Event &event) override final A_CONST;
+#endif
 
-        void focusLost(const Event &event) override;
+        void focusLost(const Event &event) override A_CONST;
 
         void moveCaretBack();
 

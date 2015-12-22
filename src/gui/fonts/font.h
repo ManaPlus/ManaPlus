@@ -101,7 +101,7 @@ class Font final
 
         int getHeight() const A_WARN_UNUSED;
 
-        const TextChunkList *getCache() const A_WARN_UNUSED;
+        const TextChunkList *getCache() const A_CONST A_WARN_UNUSED;
 
         /**
          * @see Font::drawString

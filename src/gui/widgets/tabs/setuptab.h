@@ -53,9 +53,9 @@ class SetupTab notfinal : public Container,
          */
         virtual void cancel() = 0;
 
-        virtual void externalUpdated();
+        virtual void externalUpdated() A_CONST;
 
-        virtual void externalUnloaded();
+        virtual void externalUnloaded() A_CONST;
 
     protected:
         explicit SetupTab(const Widget2 *const widget);

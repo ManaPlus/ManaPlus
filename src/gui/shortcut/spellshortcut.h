@@ -41,14 +41,14 @@ class SpellShortcut final
         /**
          * Destructor.
          */
-        ~SpellShortcut();
+        ~SpellShortcut() A_CONST;
 
         /**
          * Load the configuration information.
          */
         void load();
 
-        unsigned int getSpellsCount() const A_WARN_UNUSED;
+        unsigned int getSpellsCount() const A_CONST A_WARN_UNUSED;
 
         /**
          * Set the item that is selected.
