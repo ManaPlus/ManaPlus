@@ -80,6 +80,8 @@
 #define A_WARN_UNUSED __attribute__ ((warn_unused_result))
 #define DEPRECATED __attribute__ ((deprecated))
 #define restrict __restrict__
+#define A_CONST __attribute__ ((const))
+#define A_PURE __attribute__ ((pure))
 
 #ifdef __INTEL_COMPILER
 #define RETURNS_NONNULL
