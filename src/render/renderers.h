@@ -23,7 +23,9 @@
 
 #include "enums/render/rendertype.h"
 
-RenderType intToRenderType(const int mode);
+#include "localconsts.h"
+
+RenderType intToRenderType(const int mode) A_CONST;
 
 #define isBatchDrawRenders(val) ((val) != RENDER_SAFE_OPENGL)
 

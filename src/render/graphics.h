@@ -237,7 +237,11 @@ class Graphics notfinal
          */
         virtual void updateScreen() = 0;
 
+#ifdef USE_SDL2
         void setWindowSize(const int width, const int height);
+#else
+        void setWindowSize(const int width, const int height) A_CONST;
+#endif
 
         /**
          * Returns the width of the screen.
@@ -386,7 +390,11 @@ class Graphics notfinal
         virtual void drawRectangle(const Rect &rectangle) = 0;
 
 #ifdef USE_OPENGL
+#ifdef USE_SDL2
         virtual void createGLContext();
+#else
+        virtual void createGLContext() A_CONST;
+#endif
 #endif
 
         /**
