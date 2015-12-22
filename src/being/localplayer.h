@@ -356,7 +356,7 @@ class LocalPlayer final : public Being,
 
         int getPathLength(const Being *const being) const A_WARN_UNUSED;
 
-        void targetMoved() const;
+        void targetMoved() const A_CONST;
 
         void setLastHitFrom(const std::string &n)
         { mLastHitFrom = n; }
@@ -365,7 +365,8 @@ class LocalPlayer final : public Being,
 
         void checkNewName(Being *const being);
 
-        unsigned char getBlockWalkMask() const override final A_WARN_UNUSED;
+        unsigned char getBlockWalkMask() const override final
+                                       A_CONST A_WARN_UNUSED;
 
         void saveHomes();
 

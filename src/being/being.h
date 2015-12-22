@@ -236,7 +236,7 @@ class Being notfinal : public ActorSprite,
          */
         void setGuildName(const std::string &name);
 
-        void setGuildPos(const std::string &pos);
+        void setGuildPos(const std::string &pos) A_CONST;
 
         /**
          * Adds a guild to the being.
@@ -859,9 +859,9 @@ class Being notfinal : public ActorSprite,
 
         void setLook(const uint16_t look);
 
-        static uint8_t genderToInt(const GenderT sex) A_WARN_UNUSED;
+        static uint8_t genderToInt(const GenderT sex) A_CONST A_WARN_UNUSED;
 
-        static GenderT intToGender(const uint8_t sex) A_WARN_UNUSED;
+        static GenderT intToGender(const uint8_t sex) A_CONST A_WARN_UNUSED;
 
         NextSoundInfo mNextSound;
 

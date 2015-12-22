@@ -389,10 +389,6 @@ int getCharId()
     return mCharId;
 }
 
-void logic()
-{
-}
-
 Trading isTrading()
 {
     return mTrading;

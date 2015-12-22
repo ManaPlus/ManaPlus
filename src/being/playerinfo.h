@@ -197,11 +197,6 @@ namespace PlayerInfo
     int getCharId();
 
     /**
-     * Does necessary updates every tick.
-     */
-    void logic();
-
-    /**
      * Returns true if the player is involved in a trade at the moment, false
      * otherwise.
      */
@@ -217,7 +212,7 @@ namespace PlayerInfo
     /**
      * Initializes some internals.
      */
-    void init();
+    void init() A_CONST;
 
     void deinit();
 
