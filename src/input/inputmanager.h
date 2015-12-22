@@ -64,7 +64,7 @@ class InputManager final
 
         void callbackNewKey();
 
-        InputFunction &getKey(InputActionT index) A_WARN_UNUSED;
+        InputFunction &getKey(InputActionT index) A_CONST A_WARN_UNUSED;
 
         std::string getKeyValueString(const InputActionT index)
                                       const A_WARN_UNUSED;
