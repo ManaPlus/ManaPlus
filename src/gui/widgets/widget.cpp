@@ -428,17 +428,17 @@ bool Widget::isModalMouseInputFocused() const
     return mFocusHandler->getModalMouseInputFocused() == this;
 }
 
-const std::list<MouseListener*>& Widget::getMouseListeners()
+const std::list<MouseListener*> &Widget::getMouseListeners() const
 {
     return mMouseListeners;
 }
 
-const std::list<KeyListener*>& Widget::getKeyListeners()
+const std::list<KeyListener*> &Widget::getKeyListeners() const
 {
     return mKeyListeners;
 }
 
-const std::list<FocusListener*>& Widget::getFocusListeners()
+const std::list<FocusListener*> &Widget::getFocusListeners() const
 {
     return mFocusListeners;
 }
