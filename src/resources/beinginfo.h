@@ -325,7 +325,7 @@ class BeingInfo final
 
         void addMenu(const std::string &name, const std::string &command);
 
-        const std::vector<BeingMenuItem> &getMenu() const;
+        const std::vector<BeingMenuItem> &getMenu() const A_CONST;
 
         static void init();
 

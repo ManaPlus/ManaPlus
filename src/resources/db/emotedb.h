@@ -54,7 +54,7 @@ namespace EmoteDB
     const EmoteSprite *getSprite(const int id, const bool allowNull = false)
                                  A_WARN_UNUSED;
 
-    const int &getLast() A_WARN_UNUSED;
+    const int &getLast() A_CONST A_WARN_UNUSED;
 
     int getIdByIndex(const int index);
 
