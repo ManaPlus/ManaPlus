@@ -89,7 +89,8 @@ class MessageOut notfinal
         virtual ~MessageOut()
         { }
 
-        static unsigned char toServerDirection(unsigned char direction);
+        static unsigned char toServerDirection(unsigned char direction)
+                                               A_CONST;
 
     protected:
         /**

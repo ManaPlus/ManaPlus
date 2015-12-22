@@ -53,7 +53,8 @@ class CharServerHandler final : public Ea::CharServerHandler
                              const std::string &email) override final;
 
         void renameCharacter(const BeingId id,
-                             const std::string &newName) override final;
+                             const std::string &newName) override final
+                             A_CONST;
 
         void switchCharacter() const override final;
 
@@ -73,11 +74,12 @@ class CharServerHandler final : public Ea::CharServerHandler
         void setCharCreateDialog(CharCreateDialog *const window)
                                  override final;
 
-        void changeSlot(const int oldSlot, const int newSlot) override final;
+        void changeSlot(const int oldSlot,
+                        const int newSlot) override final A_CONST;
 
-        void ping() const override final;
+        void ping() const override final A_CONST;
 
-        unsigned int hatSprite() const override final A_WARN_UNUSED;
+        unsigned int hatSprite() const override final A_CONST A_WARN_UNUSED;
 };
 
 }  // namespace TmwAthena

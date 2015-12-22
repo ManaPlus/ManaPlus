@@ -36,51 +36,51 @@ class ServerFeatures final : public Net::ServerFeatures
 
         bool haveServerOnlineList() const override final;
 
-        bool haveOnlineList() const override final;
+        bool haveOnlineList() const override final A_CONST;
 
-        bool havePartyNickInvite() const override final;
+        bool havePartyNickInvite() const override final A_CONST;
 
-        bool haveChangePartyLeader() const override final;
+        bool haveChangePartyLeader() const override final A_CONST;
 
-        bool haveServerHp() const override final;
+        bool haveServerHp() const override final A_CONST;
 
         bool havePlayerStatusUpdate() const override final;
 
-        bool haveBrokenPlayerAttackDistance() const override final;
+        bool haveBrokenPlayerAttackDistance() const override final A_CONST;
 
-        bool haveNativeGuilds() const override final;
+        bool haveNativeGuilds() const override final A_CONST;
 
-        bool haveIncompleteChatMessages() const override final;
+        bool haveIncompleteChatMessages() const override final A_CONST;
 
         bool haveRaceSelection() const override final;
 
         bool haveLookSelection() const override final;
 
-        bool haveChatChannels() const override final;
+        bool haveChatChannels() const override final A_CONST;
 
-        bool haveServerIgnore() const override final;
+        bool haveServerIgnore() const override final A_CONST;
 
         bool haveMove3() const override final;
 
-        bool haveItemColors() const override final;
+        bool haveItemColors() const override final A_CONST;
 
-        bool haveAccountOtherGender() const override final;
+        bool haveAccountOtherGender() const override final A_CONST;
 
         bool haveCharOtherGender() const override final;
 
-        bool haveMonsterAttackRange() const override final;
+        bool haveMonsterAttackRange() const override final A_CONST;
 
-        bool haveMonsterName() const override final;
+        bool haveMonsterName() const override final A_CONST;
 
         bool haveEmailOnRegister() const override final;
 
         bool haveEmailOnDelete() const override final;
 
-        bool haveEightDirections() const override final;
+        bool haveEightDirections() const override final A_CONST;
 
-        bool haveCharRename() const override final;
+        bool haveCharRename() const override final A_CONST;
 
-        bool haveBankApi() const override final;
+        bool haveBankApi() const override final A_CONST;
 
         bool haveServerVersion() const override final;
 
@@ -90,15 +90,15 @@ class ServerFeatures final : public Net::ServerFeatures
 
         bool haveJoinChannel() const override final;
 
-        bool haveNpcWhispers() const override final;
+        bool haveNpcWhispers() const override final A_CONST;
 
         bool haveCreateCharGender() const override final;
 
-        bool haveAttackDirections() const override final;
+        bool haveAttackDirections() const override final A_CONST;
 
-        bool haveVending() const override final;
+        bool haveVending() const override final A_CONST;
 
-        bool haveCart() const override final;
+        bool haveCart() const override final A_CONST;
 
         bool haveTalkPet() const override final;
 
@@ -106,21 +106,21 @@ class ServerFeatures final : public Net::ServerFeatures
 
         bool haveServerWarpNames() const override final;
 
-        bool haveExpPacket() const override final;
+        bool haveExpPacket() const override final A_CONST;
 
-        bool haveMute() const override final;
+        bool haveMute() const override final A_CONST;
 
         bool haveChangePassword() const override final;
 
-        bool haveTeamId() const override final;
+        bool haveTeamId() const override final A_CONST;
 
-        bool haveNewGuild() const override final;
+        bool haveNewGuild() const override final A_CONST;
 
         bool haveAdvancedSprites() const override final;
 
         bool haveExtendedRiding() const override final;
 
-        bool haveAdvancedBuySell() const override final;
+        bool haveAdvancedBuySell() const override final A_CONST;
 
         bool haveSlide() const override final;
 };

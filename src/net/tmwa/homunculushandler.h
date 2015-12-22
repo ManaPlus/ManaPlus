@@ -35,24 +35,26 @@ class HomunculusHandler final : public Net::HomunculusHandler
 
         A_DELETE_COPY(HomunculusHandler)
 
-        void setName(const std::string &name) const override final;
+        void setName(const std::string &name) const override final A_CONST;
 
-        void moveToMaster() const override final;
+        void moveToMaster() const override final A_CONST;
 
-        void move(const int x, const int y) const override final;
+        void move(const int x, const int y) const override final A_CONST;
 
         void attack(const BeingId targetId,
-                    const Keep keep) const override final;
+                    const Keep keep) const override final A_CONST;
 
-        void feed() const override final;
+        void feed() const override final A_CONST;
 
-        void fire() const override final;
+        void fire() const override final A_CONST;
 
-        void talk(const std::string &restrict text) const override final;
+        void talk(const std::string &restrict text) const override final
+                  A_CONST;
 
-        void emote(const uint8_t emoteId) const override final;
+        void emote(const uint8_t emoteId) const override final A_CONST;
 
-        void setDirection(const unsigned char type) const override final;
+        void setDirection(const unsigned char type) const override final
+                          A_CONST;
 };
 
 }  // namespace TmwAthena

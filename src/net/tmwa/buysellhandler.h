@@ -49,7 +49,7 @@ class BuySellHandler final : public Ea::BuySellHandler
                              const ShopItem *const item,
                              const int amount) const override final;
 
-        void close() const override final;
+        void close() const override final A_CONST;
 };
 
 }  // namespace TmwAthena

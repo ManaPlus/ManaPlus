@@ -76,11 +76,6 @@ void InventoryHandler::moveItem(const int oldIndex A_UNUSED,
     // Not implemented for eAthena (possible?)
 }
 
-void InventoryHandler::openStorage(const int type A_UNUSED) const
-{
-    // Doesn't apply to eAthena, since opening happens through NPCs?
-}
-
 size_t InventoryHandler::getSize(const InventoryTypeT type) const
 {
     switch (type)

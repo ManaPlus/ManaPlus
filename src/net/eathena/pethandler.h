@@ -38,7 +38,7 @@ class PetHandler final :  public Net::PetHandler
 
         void spawn(const Being *const being,
                    const int petId,
-                   const int x, const int y) const override final;
+                   const int x, const int y) const override final A_CONST;
 
         void emote(const uint8_t emoteId,
                    const int petId) override final;
@@ -61,7 +61,7 @@ class PetHandler final :  public Net::PetHandler
 
         void setDirection(const unsigned char type) const override final;
 
-        void startAi(const bool start) const override final;
+        void startAi(const bool start) const override final A_CONST;
 };
 
 }  // namespace EAthena

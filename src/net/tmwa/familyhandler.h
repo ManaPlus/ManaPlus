@@ -35,9 +35,9 @@ class FamilyHandler final : public Net::FamilyHandler
 
         A_DELETE_COPY(FamilyHandler)
 
-        void askForChild(const Being *const being) override final;
+        void askForChild(const Being *const being) override final A_CONST;
 
-        void askForChildReply(const bool accept) override final;
+        void askForChildReply(const bool accept) override final A_CONST;
 };
 
 }  // namespace TmwAthena

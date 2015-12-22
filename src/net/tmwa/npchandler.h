@@ -59,15 +59,17 @@ class NpcHandler final : public Ea::NpcHandler
                      const ItemColor color,
                      const int amount) const override final;
 
-        void buyItems(std::vector<ShopItem*> &items) const override final;
+        void buyItems(std::vector<ShopItem*> &items) const override final
+                      A_CONST;
 
         void sellItem(const BeingId beingId,
                       const int itemId,
                       const int amount) const override final;
 
-        void sellItems(std::vector<ShopItem*> &items) const override final;
+        void sellItems(std::vector<ShopItem*> &items) const override final
+                       A_CONST;
 
-        void completeProgressBar() const override final;
+        void completeProgressBar() const override final A_CONST;
 
         BeingId getNpc(Net::MessageIn &msg,
                        const NpcActionT action) override final;
@@ -75,22 +77,22 @@ class NpcHandler final : public Ea::NpcHandler
         void produceMix(const int nameId,
                         const int materialId1,
                         const int materialId2,
-                        const int materialId3) const override final;
+                        const int materialId3) const override final A_CONST;
 
 #ifdef EATHENA_SUPPORT
         void cooking(const CookingTypeT type,
-                     const int nameId) const override final;
+                     const int nameId) const override final A_CONST;
 #endif
 
-        void repair(const int index) const override final;
+        void repair(const int index) const override final A_CONST;
 
-        void refine(const int index) const override final;
+        void refine(const int index) const override final A_CONST;
 
-        void identify(const int index) const override final;
+        void identify(const int index) const override final A_CONST;
 
-        void selectArrow(const int nameId) const override final;
+        void selectArrow(const int nameId) const override final A_CONST;
 
-        void selectAutoSpell(const int skillId) const override final;
+        void selectAutoSpell(const int skillId) const override final A_CONST;
 };
 
 }  // namespace TmwAthena

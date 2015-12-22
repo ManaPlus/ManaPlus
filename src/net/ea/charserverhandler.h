@@ -41,11 +41,11 @@ class CharServerHandler notfinal : public Net::CharServerHandler
 
         void requestCharacters() override final;
 
-        unsigned int baseSprite() const override final A_WARN_UNUSED;
+        unsigned int baseSprite() const override final A_CONST A_WARN_UNUSED;
 
-        unsigned int hairSprite() const override final A_WARN_UNUSED;
+        unsigned int hairSprite() const override final A_CONST A_WARN_UNUSED;
 
-        unsigned int maxSprite() const override final A_WARN_UNUSED;
+        unsigned int maxSprite() const override final A_CONST A_WARN_UNUSED;
 
         virtual void connect() = 0;
 

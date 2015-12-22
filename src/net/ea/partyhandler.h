@@ -37,7 +37,7 @@ class PartyHandler notfinal : public Net::PartyHandler
 
         virtual ~PartyHandler();
 
-        void join(const int partyId) const override final;
+        void join(const int partyId) const override final A_CONST;
 
         PartyShareT getShareExperience() const override final A_WARN_UNUSED;
 

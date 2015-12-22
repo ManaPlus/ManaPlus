@@ -53,8 +53,6 @@ class InventoryHandler notfinal
         virtual void moveItem(const int oldIndex,
                               const int newIndex) const = 0;
 
-        virtual void openStorage(const int type) const = 0;
-
         virtual void closeStorage() const = 0;
 
         virtual void moveItem2(const InventoryTypeT source,

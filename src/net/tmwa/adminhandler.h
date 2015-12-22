@@ -43,14 +43,14 @@ class AdminHandler final : public Ea::AdminHandler
 
         void kick(const BeingId playerId) const override final;
 
-        void kickAll() const override final;
+        void kickAll() const override final A_CONST;
 
         void warp(const std::string &map,
                   const int x, const int y) const override final;
 
-        void resetStats() const override final;
+        void resetStats() const override final A_CONST;
 
-        void resetSkills() const override final;
+        void resetSkills() const override final A_CONST;
 
         void gotoName(const std::string &name) const override final;
 
@@ -58,18 +58,19 @@ class AdminHandler final : public Ea::AdminHandler
 
         void mute(const Being *const being,
                   const int type,
-                  const int limit) const override final;
+                  const int limit) const override final A_CONST;
 
-        void muteName(const std::string &name) const override final;
+        void muteName(const std::string &name) const override final A_CONST;
 
-        void requestLogin(const Being *const being) const override final;
+        void requestLogin(const Being *const being) const override final
+                          A_CONST;
 
         void setTileType(const int x, const int y,
-                         const int type) const override final;
+                         const int type) const override final A_CONST;
 
-        void unequipAll(const Being *const being) const override final;
+        void unequipAll(const Being *const being) const override final A_CONST;
 
-        void requestStats(const std::string &name) override final;
+        void requestStats(const std::string &name) override final A_CONST;
 };
 
 }  // namespace TmwAthena

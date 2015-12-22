@@ -50,13 +50,13 @@ class LoginHandler final : public Ea::LoginHandler
                             const std::string &restrict newPassword)
                             const override final;
 
-        ServerInfo *getCharServer() const override final A_WARN_UNUSED;
+        ServerInfo *getCharServer() const override final A_CONST A_WARN_UNUSED;
 
-        void sendVersion() const override final;
+        void sendVersion() const override final A_CONST;
 
-        void ping() const override final;
+        void ping() const override final A_CONST;
 
-        static void requestUpdateHosts();
+        static void requestUpdateHosts() A_CONST;
 
     private:
         void sendLoginRegister(const std::string &restrict username,

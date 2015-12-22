@@ -42,12 +42,13 @@ class PlayerHandler notfinal : public Net::PlayerHandler
 
         A_DELETE_COPY(PlayerHandler)
 
-        void decreaseAttribute(const AttributesT attr) const override final;
+        void decreaseAttribute(const AttributesT attr) const
+                               override final A_CONST;
 
         void ignorePlayer(const std::string &player,
-                          const bool ignore) const override final;
+                          const bool ignore) const override final A_CONST;
 
-        void ignoreAll(const bool ignore) const override final;
+        void ignoreAll(const bool ignore) const override final A_CONST;
 
         bool canUseMagic() const override final;
 

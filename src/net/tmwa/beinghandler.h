@@ -40,13 +40,14 @@ class BeingHandler final : public Ea::BeingHandler
         void undress(Being *const being) const override final;
 
 #ifdef EATHENA_SUPPORT
-        void requestRanks(const RankT rank A_UNUSED) const override final;
+        void requestRanks(const RankT rank A_UNUSED) const override final
+                          A_CONST;
 #endif
 
-        void requestNameByCharId(const int id) const override final;
+        void requestNameByCharId(const int id) const override final A_CONST;
 
     protected:
-        void viewPlayerEquipment(const Being *const being);
+        void viewPlayerEquipment(const Being *const being) A_CONST;
 };
 
 }  // namespace TmwAthena

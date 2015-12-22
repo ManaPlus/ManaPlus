@@ -53,15 +53,15 @@ class InventoryHandler final : public Ea::InventoryHandler
                        const int amount,
                        const InventoryTypeT destination) const override final;
 
-        void useCard(const Item *const item) override final;
+        void useCard(const Item *const item) override final A_CONST;
 
         void insertCard(const int cardIndex,
-                        const int itemIndex) const override final;
+                        const int itemIndex) const override final A_CONST;
 
         void favoriteItem(const Item *const item,
-                          const bool favorite) const override final;
+                          const bool favorite) const override final A_CONST;
 
-        void selectEgg(const Item *const item) const override final;
+        void selectEgg(const Item *const item) const override final A_CONST;
 
         int convertFromServerSlot(const int serverSlot)
                                   const override final A_WARN_UNUSED;

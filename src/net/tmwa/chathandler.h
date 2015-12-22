@@ -47,7 +47,7 @@ class ChatHandler final : public Ea::ChatHandler
         void channelMessage(const std::string &restrict channel,
                             const std::string &restrict text) override final;
 
-        void joinChannel(const std::string &channel) override final;
+        void joinChannel(const std::string &channel) override final A_CONST;
 
         void who() const override final;
 
@@ -60,34 +60,38 @@ class ChatHandler final : public Ea::ChatHandler
         void createChatRoom(const std::string &title,
                             const std::string &password,
                             const int limit,
-                            const bool isPublic) override final;
+                            const bool isPublic) override final A_CONST;
 
         void ignore(const std::string &nick) const override final;
 
         void unIgnore(const std::string &nick) const override final;
 
-        void requestIgnoreList() const override final;
+        void requestIgnoreList() const override final A_CONST;
 
-        void battleTalk(const std::string &text) const override final;
+        void battleTalk(const std::string &text) const override final A_CONST;
 
         void joinChat(const ChatObject *const chat,
-                      const std::string &password) const override final;
+                      const std::string &password) const override final
+                      A_CONST;
 
-        void partChannel(const std::string &channel) override final;
+        void partChannel(const std::string &channel) override final A_CONST;
 
         void talkPet(const std::string &restrict text,
                      const std::string &restrict channel) const override final;
 
-        void leaveChatRoom() const override final;
+        void leaveChatRoom() const override final A_CONST;
 
         void setChatRoomOptions(const int limit,
                                 const bool isPublic,
                                 const std::string &password,
-                                const std::string &title) const override final;
+                                const std::string &title) const override final
+                                A_CONST;
 
-        void setChatRoomOwner(const std::string &nick) const override final;
+        void setChatRoomOwner(const std::string &nick) const override final
+                              A_CONST;
 
-        void kickFromChatRoom(const std::string &nick) const override final;
+        void kickFromChatRoom(const std::string &nick) const override final
+                              A_CONST;
 
     protected:
         static void processRaw(MessageOut &restrict outMsg,
