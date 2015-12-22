@@ -36,7 +36,7 @@ class ImageCollection;
 class ImageRect;
 class MouseInput;
 
-typedef void (*TouchFuncPtr) (const MouseInput &mouseInput);
+typedef void (*TouchFuncPtr) (const MouseInput &restrict mouseInput);
 
 const int actionsSize = static_cast<int>(InputAction::TOTAL);
 const int buttonsCount = 12;
@@ -44,13 +44,18 @@ const int buttonsCount = 12;
 struct TouchItem final
 {
     TouchItem(const std::string &text0,
-              const Rect &rect0, const int type0,
-              const std::string &eventPressed0,
-              const std::string &eventReleased0,
-              ImageRect *const images0, Image *const icon0,
-              const int x0, const int y0, const int width0, const int height0,
-              const TouchFuncPtr ptrAll, const TouchFuncPtr ptrPressed,
-              const TouchFuncPtr ptrReleased, const TouchFuncPtr ptrOut) :
+              const Rect &rect0,
+              const int type0,
+              const std::string &restrict eventPressed0,
+              const std::string &restrict eventReleased0,
+              ImageRect *restrict const images0,
+              Image *restrict const icon0,
+              const int x0, const int y0,
+              const int width0, const int height0,
+              const TouchFuncPtr ptrAll,
+              const TouchFuncPtr ptrPressed,
+              const TouchFuncPtr ptrReleased,
+              const TouchFuncPtr ptrOut) :
         text(text0),
         rect(rect0),
         type(type0),
@@ -108,36 +113,37 @@ class TouchManager final : public ConfigListener
             RIGHT = 2
         };
 
-        void init();
+        void init() restrict;
 
-        void loadTouchItem(TouchItem **item,
-                           const std::string &name,
-                           const std::string &imageName,
-                           const std::string &text,
+        void loadTouchItem(TouchItem **restrict item,
+                           const std::string &restrict name,
+                           const std::string &restrict imageName,
+                           const std::string &restrict text,
                            int x, int y,
                            const int width, const int height,
                            const int type,
-                           const std::string &eventPressed,
-                           const std::string &eventReleased,
+                           const std::string &restrict eventPressed,
+                           const std::string &restrict eventReleased,
                            const TouchFuncPtr fAll = nullptr,
                            const TouchFuncPtr fPressed = nullptr,
                            const TouchFuncPtr fReleased = nullptr,
-                           const TouchFuncPtr fOut = nullptr) A_NONNULL(2);
+                           const TouchFuncPtr fOut = nullptr)
+                           restrict A_NONNULL(2);
 
-        void clear();
+        void clear() restrict;
 
-        void draw();
+        void draw() restrict;
 
-        void safeDraw();
+        void safeDraw() restrict;
 
-        void drawText();
+        void drawText() restrict;
 
-        bool processEvent(const MouseInput &mouseInput);
+        bool processEvent(const MouseInput &mouseInput) restrict;
 
-        bool isActionActive(const InputActionT index) const;
+        bool isActionActive(const InputActionT index) restrict const;
 
         void setActionActive(const InputActionT index,
-                             const bool value)
+                             const bool value) restrict
         {
             if (static_cast<int>(index) >= 0 &&
                 static_cast<int>(index) < actionsSize)
@@ -146,30 +152,30 @@ class TouchManager final : public ConfigListener
             }
         }
 
-        void resize(const int width, const int height);
+        void resize(const int width, const int height) restrict;
 
-        static void unload(TouchItem *const item);
+        static void unload(TouchItem *restrict const item);
 
-        void unloadTouchItem(TouchItem **unloadItem);
+        void unloadTouchItem(TouchItem *restrict *unloadItem) restrict;
 
-        void optionChanged(const std::string &value) override final;
+        void optionChanged(const std::string &value) restrict override final;
 
-        void loadPad();
+        void loadPad() restrict;
 
-        void loadButtons();
+        void loadButtons() restrict;
 
-        void loadKeyboard();
+        void loadKeyboard() restrict;
 
-        int getPadSize() const
+        int getPadSize() restrict const
         { return (mJoystickSize + 2) * 50; }
 
-        void setInGame(const bool b);
+        void setInGame(const bool b) restrict;
 
-        void setTempHide(const bool b);
+        void setTempHide(const bool b) restrict;
 
-        void shutdown();
+        void shutdown() restrict;
 
-        static void executeAction(const std::string &event);
+        static void executeAction(const std::string &restrict event);
 
     private:
         TouchItem *mKeyboard;
