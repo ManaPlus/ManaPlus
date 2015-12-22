@@ -31,11 +31,11 @@ struct MetaTile;
 class NavigationManager final
 {
     public:
-        NavigationManager();
+        NavigationManager() A_CONST;
 
         A_DELETE_COPY(NavigationManager)
 
-        ~NavigationManager();
+        ~NavigationManager() A_CONST;
 
 #ifndef DYECMD
         static Resource *loadWalkLayer(const Map *const map);

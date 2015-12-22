@@ -168,8 +168,7 @@ void Dirs::updateDataPath()
 
 void Dirs::extractDataDir()
 {
-#ifdef ANDROID
-#ifdef USE_SDL2
+#if defined(ANDROID) && defined(USE_SDL2)
     Files::setCopyCallBack(&updateProgress);
     resetProgress();
     extractAssets();
@@ -182,7 +181,6 @@ void Dirs::extractDataDir()
         "/data");
     Files::extractZip(zipName, "data", dirName);
     Files::extractLocale();
-#endif
 #endif
 }
 

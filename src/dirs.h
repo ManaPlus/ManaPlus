@@ -32,7 +32,11 @@ class Dirs final
 
         static void updateDataPath();
 
+#if defined(ANDROID) && defined(USE_SDL2)
         static void extractDataDir();
+#else
+        static void extractDataDir() A_CONST;
+#endif
 
         static void mountDataDir();
 

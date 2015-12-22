@@ -138,7 +138,7 @@ int compareStrI(const std::string &a, const std::string &b) A_WARN_UNUSED;
 /**
  * Tells wether the character is a word separator.
  */
-bool isWordSeparator(const signed char chr) A_WARN_UNUSED;
+bool isWordSeparator(const signed char chr) A_CONST A_WARN_UNUSED;
 
 size_t findI(std::string str, std::string subStr) A_WARN_UNUSED;
 

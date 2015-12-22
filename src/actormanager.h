@@ -217,7 +217,7 @@ class ActorManager final: public ConfigListener
         /**
          * Returns the whole list of beings.
          */
-        const ActorSprites &getAll() const;
+        const ActorSprites &getAll() const A_CONST;
 
         /**
          * Returns true if the given ActorSprite is in the manager's list,
