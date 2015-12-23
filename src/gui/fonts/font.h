@@ -95,49 +95,50 @@ class Font final
 
         void loadFont(std::string filename,
                       const int size,
-                      const int style = 0);
+                      const int style = 0) restrict;
 
-        int getWidth(const std::string &text) const A_WARN_UNUSED;
+        int getWidth(const std::string &text) const restrict A_WARN_UNUSED;
 
-        int getHeight() const A_WARN_UNUSED;
+        int getHeight() const restrict A_WARN_UNUSED;
 
-        const TextChunkList *getCache() const A_CONST A_WARN_UNUSED;
+        const TextChunkList *getCache() const restrict A_CONST A_WARN_UNUSED;
 
         /**
          * @see Font::drawString
          */
-        void drawString(Graphics *const graphics,
+        void drawString(Graphics *restrict const graphics,
                         Color col,
-                        const Color &col2,
-                        const std::string &text,
+                        const Color &restrict col2,
+                        const std::string &restrict text,
                         const int x,
-                        const int y) A_NONNULL(2);
+                        const int y) restrict A_NONNULL(2);
 
-        void clear();
+        void clear() restrict;
 
-        void doClean();
+        void doClean() restrict;
 
-        void slowLogic(const int rnd);
+        void slowLogic(const int rnd) restrict;
 
-        int getCreateCounter() const A_WARN_UNUSED
+        int getCreateCounter() const restrict A_WARN_UNUSED
         { return mCreateCounter; }
 
-        int getDeleteCounter() const A_WARN_UNUSED
+        int getDeleteCounter() const restrict A_WARN_UNUSED
         { return mDeleteCounter; }
 
-        int getStringIndexAt(const std::string& text,
-                             const int x) const A_WARN_UNUSED;
+        int getStringIndexAt(const std::string &restrict text,
+                             const int x) const restrict A_WARN_UNUSED;
 
-        void generate(TextChunk &chunk);
+        void generate(TextChunk &restrict chunk) restrict;
 
-        void insertChunk(TextChunk *const chunk);
+        void insertChunk(TextChunk *const chunk) restrict;
 
         static bool mSoftMode;
 
     private:
-        static TTF_Font *openFont(const char *const name, const int size);
+        static TTF_Font *openFont(const char *restrict const name,
+                                  const int size);
 
-        TTF_Font *mFont;
+        TTF_Font *restrict mFont;
         unsigned mCreateCounter;
         unsigned mDeleteCounter;
 
