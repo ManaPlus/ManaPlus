@@ -51,7 +51,7 @@ bool TextChunkSmall::operator<(const TextChunkSmall &chunk) const
     if (chunk.text != text)
         return chunk.text > text;
 
-    const Color &c = chunk.color;
+    const Color &restrict c = chunk.color;
     if (c.r != color.r)
         return c.r > color.r;
     if (c.g != color.g)
@@ -59,7 +59,7 @@ bool TextChunkSmall::operator<(const TextChunkSmall &chunk) const
     if (c.b != color.b)
         return c.b > color.b;
 
-    const Color &c2 = chunk.color2;
+    const Color &restrict c2 = chunk.color2;
     if (c2.r != color2.r)
         return c2.r > color2.r;
     if (c2.g != color2.g)

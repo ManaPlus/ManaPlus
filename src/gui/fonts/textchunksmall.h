@@ -30,14 +30,14 @@
 class TextChunkSmall final
 {
     public:
-        TextChunkSmall(const std::string &text0,
-                       const Color &color0,
-                       const Color &color1);
+        TextChunkSmall(const std::string &restrict text0,
+                       const Color &restrict color0,
+                       const Color &restrict color1);
 
-        TextChunkSmall(const TextChunkSmall &old);
+        TextChunkSmall(const TextChunkSmall &restrict old);
 
-        bool operator==(const TextChunkSmall &chunk) const;
-        bool operator<(const TextChunkSmall &chunk) const;
+        bool operator==(const TextChunkSmall &restrict chunk) const restrict;
+        bool operator<(const TextChunkSmall &restrict chunk) const restrict;
 
         std::string text;
         Color color;
