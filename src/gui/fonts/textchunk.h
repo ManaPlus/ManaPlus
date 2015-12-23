@@ -40,28 +40,29 @@ class TextChunk final
     public:
         TextChunk();
 
-        TextChunk(const std::string &text0,
-                  const Color &color0,
-                  const Color &color1,
-                  Font *const font);
+        TextChunk(const std::string &restrict text0,
+                  const Color &restrict color0,
+                  const Color &restrict color1,
+                  Font *restrict const font);
 
         A_DELETE_COPY(TextChunk)
 
         ~TextChunk();
 
-        bool operator==(const TextChunk &chunk) const;
+        bool operator==(const TextChunk &restrict chunk) const restrict;
 
-        void generate(TTF_Font *const font, const float alpha);
+        void generate(TTF_Font *restrict const font,
+                      const float alpha) restrict;
 
-        void deleteImage();
+        void deleteImage() restrict;
 
-        Image *img;
-        Font *textFont;
+        Image *restrict img;
+        Font *restrict textFont;
         std::string text;
         Color color;
         Color color2;
-        TextChunk *prev;
-        TextChunk *next;
+        TextChunk *restrict prev;
+        TextChunk *restrict next;
 };
 
 #ifdef UNITTESTS

@@ -41,7 +41,7 @@ namespace
     const int OUTLINE_SIZE = 1;
 }  // namespace
 
-char *strBuf = nullptr;
+char *restrict strBuf = nullptr;
 
 #ifdef UNITTESTS
 int textChunkCnt = 0;
