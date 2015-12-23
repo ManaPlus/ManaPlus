@@ -471,7 +471,7 @@ bool Graphics::videoInfo()
 
     ImageHelper::dumpSurfaceFormat(mWindow);
 
-    const SDL_VideoInfo *const vi = SDL_GetVideoInfo();
+    const SDL_VideoInfo *restrict const vi = SDL_GetVideoInfo();
     if (!vi)
         return false;
 

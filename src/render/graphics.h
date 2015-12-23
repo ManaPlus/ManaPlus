@@ -127,24 +127,24 @@ class Graphics notfinal
             RIGHT
         };
 
-        void setWindow(SDL_Window *const window,
-                       const int width, const int height)
+        void setWindow(SDL_Window *restrict const window,
+                       const int width, const int height) restrict
         {
             mWindow = window;
             mRect.w = static_cast<RectSize>(width);
             mRect.h = static_cast<RectSize>(height);
         }
 
-        SDL_Window *getWindow() const
+        SDL_Window *getWindow() restrict const
         { return mWindow; }
 
         /**
          * Sets whether vertical refresh syncing is enabled. Takes effect after
          * the next call to setVideoMode(). Only implemented on MacOS for now.
          */
-        void setSync(const bool sync);
+        void setSync(const bool sync) restrict;
 
-        bool getSync() const A_WARN_UNUSED
+        bool getSync() const restrict A_WARN_UNUSED
         { return mSync; }
 
         /**
@@ -156,170 +156,172 @@ class Graphics notfinal
                                   const bool fs,
                                   const bool hwaccel,
                                   const bool resize,
-                                  const bool noFrame) = 0;
+                                  const bool noFrame) restrict = 0;
 
         /**
          * Set fullscreen mode.
          */
-        bool setFullscreen(const bool fs);
+        bool setFullscreen(const bool fs) restrict;
 
         /**
          * Resize the window to the specified size.
          */
-        virtual bool resizeScreen(const int width, const int height);
+        virtual bool resizeScreen(const int width, const int height) restrict;
 
-        virtual void restoreContext()
+        virtual void restoreContext() restrict
         { }
 
         /**
          * Draws a resclaled version of the image
          */
-        virtual void drawRescaledImage(const Image *const image,
+        virtual void drawRescaledImage(const Image *restrict const image,
                                        int dstX, int dstY,
                                        const int desiredWidth,
-                                       const int desiredHeight) = 0;
+                                       const int desiredHeight) restrict = 0;
 
-        virtual void drawPattern(const Image *const image,
+        virtual void drawPattern(const Image *restrict const image,
                                  const int x, const int y,
-                                 const int w, const int h) = 0;
+                                 const int w, const int h) restrict = 0;
 
         /**
          * Draw a pattern based on a rescaled version of the given image...
          */
-        virtual void drawRescaledPattern(const Image *const image,
+        virtual void drawRescaledPattern(const Image *restrict const image,
                                          const int x, const int y,
                                          const int w, const int h,
                                          const int scaledWidth,
-                                         const int scaledHeight) = 0;
+                                         const int scaledHeight) restrict = 0;
 
         virtual void drawImageRect(const int x, const int y,
                                    const int w, const int h,
-                                   const ImageRect &imgRect) = 0;
+                                   const ImageRect &restrict imgRect)
+                                   restrict = 0;
 
-        virtual void calcPattern(ImageVertexes *const vert,
-                                 const Image *const image,
+        virtual void calcPattern(ImageVertexes *restrict const vert,
+                                 const Image *restrict const image,
                                  const int x, const int y,
-                                 const int w, const int h) const = 0;
+                                 const int w, const int h) const restrict = 0;
 
-        virtual void calcPattern(ImageCollection *const vert,
-                                 const Image *const image,
+        virtual void calcPattern(ImageCollection *restrict const vert,
+                                 const Image *restrict const image,
                                  const int x, const int y,
-                                 const int w, const int h) const = 0;
+                                 const int w, const int h) const restrict = 0;
 
-        virtual void calcTileVertexes(ImageVertexes *const vert,
-                                      const Image *const image,
-                                      int x, int y) const = 0;
+        virtual void calcTileVertexes(ImageVertexes *restrict const vert,
+                                      const Image *restrict const image,
+                                      int x, int y) const restrict = 0;
 
-        virtual void calcTileSDL(ImageVertexes *const vert A_UNUSED,
-                                 int x A_UNUSED, int y A_UNUSED) const
+        virtual void calcTileSDL(ImageVertexes *restrict const vert A_UNUSED,
+                                 int x A_UNUSED, int y A_UNUSED) const restrict
         {
         }
 
-        virtual void drawTileVertexes(const ImageVertexes *const vert) = 0;
+        virtual void drawTileVertexes(const ImageVertexes *restrict const vert)
+                                      restrict = 0;
 
         virtual void drawTileCollection(const ImageCollection
-                                        *const vertCol) = 0;
+                                        *restrict const vertCol) restrict = 0;
 
-        virtual void calcTileCollection(ImageCollection *const vertCol,
-                                        const Image *const image,
-                                        int x, int y) = 0;
+        virtual void calcTileCollection(ImageCollection *restrict const vertCol,
+                                        const Image *restrict const image,
+                                        int x, int y) restrict = 0;
 
-        virtual void calcWindow(ImageCollection *const vertCol,
+        virtual void calcWindow(ImageCollection *restrict const vertCol,
                                 const int x, const int y,
                                 const int w, const int h,
-                                const ImageRect &imgRect) = 0;
+                                const ImageRect &restrict imgRect) restrict = 0;
 
-        virtual void fillRectangle(const Rect& rectangle) = 0;
+        virtual void fillRectangle(const Rect &restrict rectangle) restrict = 0;
 
         /**
          * Updates the screen. This is done by either copying the buffer to the
          * screen or swapping pages.
          */
-        virtual void updateScreen() = 0;
+        virtual void updateScreen() restrict = 0;
 
 #ifdef USE_SDL2
-        void setWindowSize(const int width, const int height);
+        void setWindowSize(const int width, const int height) restrict;
 #else
-        void setWindowSize(const int width, const int height) A_CONST;
+        void setWindowSize(const int width, const int height) restrict A_CONST;
 #endif
 
         /**
          * Returns the width of the screen.
          */
-        int getWidth() const A_WARN_UNUSED;
+        int getWidth() const restrict A_WARN_UNUSED;
 
         /**
          * Returns the height of the screen.
          */
-        int getHeight() const A_WARN_UNUSED;
+        int getHeight() const restrict A_WARN_UNUSED;
 
-        int getMemoryUsage() const A_WARN_UNUSED;
+        int getMemoryUsage() const restrict A_WARN_UNUSED;
 
         virtual void drawNet(const int x1, const int y1,
                              const int x2, const int y2,
-                             const int width, const int height);
+                             const int width, const int height) restrict;
 
-        ClipRect &getTopClip() A_WARN_UNUSED
+        ClipRect &getTopClip() restrict A_WARN_UNUSED
         { return mClipStack.top(); }
 
-        void setRedraw(const bool n)
+        void setRedraw(const bool n) restrict
         { mRedraw = n; }
 
-        bool getRedraw() const A_WARN_UNUSED
+        bool getRedraw() const restrict A_WARN_UNUSED
         { return mRedraw; }
 
-        void setSecure(const bool n)
+        void setSecure(const bool n) restrict
         { mSecure = n; }
 
-        bool getSecure() const A_WARN_UNUSED
+        bool getSecure() const restrict A_WARN_UNUSED
         { return mSecure; }
 
-        int getBpp() const A_WARN_UNUSED
+        int getBpp() const restrict A_WARN_UNUSED
         { return mBpp; }
 
-        bool getFullScreen() const A_WARN_UNUSED
+        bool getFullScreen() const restrict A_WARN_UNUSED
         { return mFullscreen; }
 
-        bool getHWAccel() const A_WARN_UNUSED
+        bool getHWAccel() const restrict A_WARN_UNUSED
         { return mHWAccel; }
 
-        bool getDoubleBuffer() const A_WARN_UNUSED
+        bool getDoubleBuffer() const restrict A_WARN_UNUSED
         { return mDoubleBuffer; }
 
-        RenderType getOpenGL() const A_WARN_UNUSED
+        RenderType getOpenGL() const restrict A_WARN_UNUSED
         { return mOpenGL; }
 
-        void setNoFrame(const bool n)
+        void setNoFrame(const bool n) restrict
         { mNoFrame = n; }
 
-        const std::string &getName() const A_WARN_UNUSED
+        const std::string &getName() const restrict A_WARN_UNUSED
         { return mName; }
 
-        virtual void initArrays(const int vertCount A_UNUSED)
+        virtual void initArrays(const int vertCount A_UNUSED) restrict
         { }
 
-        virtual void setColor(const Color &color)
+        virtual void setColor(const Color &restrict color) restrict
         {
             mColor = color;
             mAlpha = (color.a != 255);
         }
 
-        const Color &getColor() const
+        const Color &getColor() const restrict
         { return mColor; }
 
 #ifdef DEBUG_DRAW_CALLS
-        virtual unsigned int getDrawCalls() const
+        virtual unsigned int getDrawCalls() const restrict
         { return 0; }
 #endif
 #ifdef DEBUG_BIND_TEXTURE
-        virtual unsigned int getBinds() const
+        virtual unsigned int getBinds() const restrict
         { return 0; }
 #endif
 #ifdef USE_SDL2
-        void dumpRendererInfo(const char *const str,
-                              const SDL_RendererInfo &info);
+        void dumpRendererInfo(const char *restrict const str,
+                              const SDL_RendererInfo &restrict info) restrict;
 
-        virtual void setRendererFlags(const uint32_t flags A_UNUSED)
+        virtual void setRendererFlags(const uint32_t flags A_UNUSED) restrict
         { }
 #endif
 
@@ -329,28 +331,28 @@ class Graphics notfinal
          * @return <code>true</code> if the image was blitted properly
          *         <code>false</code> otherwise.
          */
-        virtual void drawImage(const Image *const image,
-                               int dstX, int dstY) = 0;
+        virtual void drawImage(const Image *restrict const image,
+                               int dstX, int dstY) restrict = 0;
 
-        virtual void copyImage(const Image *const image,
-                               int dstX, int dstY) = 0;
+        virtual void copyImage(const Image *restrict const image,
+                               int dstX, int dstY) restrict = 0;
 
-        virtual void drawImageCached(const Image *const image,
-                                     int srcX, int srcY) = 0;
+        virtual void drawImageCached(const Image *restrict const image,
+                                     int srcX, int srcY) restrict = 0;
 
-        virtual void drawPatternCached(const Image *const image,
+        virtual void drawPatternCached(const Image *restrict const image,
                                        const int x, const int y,
-                                       const int w, const int h) = 0;
+                                       const int w, const int h) restrict = 0;
 
-        virtual void completeCache() = 0;
+        virtual void completeCache() restrict = 0;
 
-        int getScale() const
+        int getScale() const restrict
         { return mScale; }
 
-        virtual bool isAllowScale() const
+        virtual bool isAllowScale() const restrict
         { return false; }
 
-        void setScale(int scale);
+        void setScale(int scale) restrict;
 
         /**
          * Pushes a clip area onto the stack. The x and y coordinates in the
@@ -363,14 +365,14 @@ class Graphics notfinal
          *
          * @param area The clip area to be pushed onto the stack.
          */
-        virtual void pushClipArea(const Rect &area);
+        virtual void pushClipArea(const Rect &restrict area) restrict;
 
         /**
          * Removes the top most clip area from the stack.
          *
          * @throws Exception if the stack is empty.
          */
-        virtual void popClipArea();
+        virtual void popClipArea() restrict;
 
         /**
          * Ddraws a line.
@@ -380,20 +382,21 @@ class Graphics notfinal
          * @param x2 The second x coordinate.
          * @param y2 The second y coordinate.
          */
-        virtual void drawLine(int x1, int y1, int x2, int y2) = 0;
+        virtual void drawLine(int x1, int y1, int x2, int y2) restrict = 0;
 
         /**
          * Draws a simple, non-filled, rectangle with a one pixel width.
          *
          * @param rectangle The rectangle to draw.
          */
-        virtual void drawRectangle(const Rect &rectangle) = 0;
+        virtual void drawRectangle(const Rect &restrict rectangle)
+                                   restrict = 0;
 
 #ifdef USE_OPENGL
 #ifdef USE_SDL2
-        virtual void createGLContext();
+        virtual void createGLContext() restrict;
 #else
-        virtual void createGLContext() A_CONST;
+        virtual void createGLContext() restrict A_CONST;
 #endif
 #endif
 
@@ -403,7 +406,7 @@ class Graphics notfinal
          * @param x The x coordinate.
          * @param y The y coordinate.
          */
-        virtual void drawPoint(int x, int y) = 0;
+        virtual void drawPoint(int x, int y) restrict = 0;
 
         /**
           * Initializes drawing. Called by the Gui when Gui::draw() is called.
@@ -416,7 +419,7 @@ class Graphics notfinal
           *
           * @see endDraw, Gui::draw
           */
-        virtual void beginDraw()
+        virtual void beginDraw() restrict
         { }
 
         /**
@@ -428,32 +431,35 @@ class Graphics notfinal
           *
           * @see beginDraw, Gui::draw
           */
-        virtual void endDraw()
+        virtual void endDraw() restrict
         { }
 
-        virtual void clearScreen() const
+        virtual void clearScreen() const restrict
         { }
 
-        virtual void deleteArrays()
+        virtual void deleteArrays() restrict
         { }
 
-        virtual void postInit()
+        virtual void postInit() restrict
         { }
 
-        virtual void finalize(ImageCollection *const col A_UNUSED)
+        virtual void finalize(ImageCollection *restrict const col A_UNUSED)
+                              restrict
         { }
 
-        virtual void finalize(ImageVertexes *const vert A_UNUSED)
+        virtual void finalize(ImageVertexes *restrict const vert A_UNUSED)
+                              restrict
         { }
 
-        virtual void testDraw()
+        virtual void testDraw() restrict
         { }
 
         virtual void removeArray(const uint32_t sz A_UNUSED,
-                                 uint32_t *const arr A_UNUSED)
+                                 uint32_t *restrict const arr A_UNUSED)
+                                 restrict
         { }
 
-        virtual void screenResized()
+        virtual void screenResized() restrict
         { }
 
         int mWidth;
@@ -473,37 +479,37 @@ class Graphics notfinal
                           const bool fs,
                           const bool hwaccel,
                           const bool resize,
-                          const bool noFrame);
+                          const bool noFrame) restrict;
 
-        int getOpenGLFlags() const A_WARN_UNUSED;
+        int getOpenGLFlags() const restrict A_WARN_UNUSED;
 
-        int getSoftwareFlags() const A_WARN_UNUSED;
+        int getSoftwareFlags() const restrict A_WARN_UNUSED;
 
-        bool setOpenGLMode();
+        bool setOpenGLMode() restrict;
 
-        void updateMemoryInfo();
+        void updateMemoryInfo() restrict;
 
-        bool videoInfo();
+        bool videoInfo() restrict;
 
 #ifdef USE_OPENGL
-        void setOpenGLFlags();
+        void setOpenGLFlags() restrict;
 #endif
         /**
          * Holds the clip area stack.
          */
         MStack<ClipRect> mClipStack;
 
-        SDL_Window *mWindow;
+        SDL_Window *restrict mWindow;
 
 #ifdef USE_SDL2
-        SDL_Renderer *mRenderer;
+        SDL_Renderer *restrict mRenderer;
 #endif  // USE_SDL2
 #ifdef USE_OPENGL
 #ifdef USE_SDL2
         SDL_GLContext mGLContext;
 #else  // USE_SDL2
 
-        void *mGLContext;
+        void *restrict mGLContext;
 #endif  // USE_SDL2
 #endif  // USE_OPENGL
 
