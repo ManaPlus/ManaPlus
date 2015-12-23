@@ -80,13 +80,13 @@ class MapLayer final: public ConfigListener
          */
         void setTile(const int x,
                      const int y,
-                     Image *const img);
+                     Image *restrict const img) restrict;
 
         /**
          * Set tile image with x + y * width already known.
          */
         void setTile(const int index,
-                     Image *const img)
+                     Image *restrict const img) restrict
         { mTiles[index].image = img; }
 
         /**
@@ -97,85 +97,88 @@ class MapLayer final: public ConfigListener
          * The given actors are only drawn when this layer is the fringe
          * layer.
          */
-        void draw(Graphics *const graphics,
+        void draw(Graphics *restrict const graphics,
                   int startX,
                   int startY,
                   int endX,
                   int endY,
                   const int scrollX,
-                  const int scrollY) const A_NONNULL(2);
+                  const int scrollY) const restrict A_NONNULL(2);
 
-        void drawSDL(Graphics *const graphics) const A_NONNULL(2);
+        void drawSDL(Graphics *restrict const graphics) const restrict
+                     A_NONNULL(2);
 
 #ifdef USE_OPENGL
-        void drawOGL(Graphics *const graphics) const A_NONNULL(2);
+        void drawOGL(Graphics *restrict const graphics) const restrict
+                     A_NONNULL(2);
 
-        void updateOGL(Graphics *const graphics,
+        void updateOGL(Graphics *restrict const graphics,
                        int startX,
                        int startY,
                        int endX,
                        int endY,
                        const int scrollX,
-                       const int scrollY) A_NONNULL(2);
+                       const int scrollY) restrict A_NONNULL(2);
 #endif
 
-        void updateSDL(const Graphics *const graphics,
+        void updateSDL(const Graphics *restrict const graphics,
                        int startX,
                        int startY,
                        int endX,
                        int endY,
                        const int scrollX,
-                       const int scrollY) A_NONNULL(2);
+                       const int scrollY) restrict A_NONNULL(2);
 
-        void drawFringe(Graphics *const graphics,
+        void drawFringe(Graphics *restrict const graphics,
                         int startX,
                         int startY,
                         int endX,
                         int endY,
                         const int scrollX,
                         const int scrollY,
-                        const Actors &actors) const A_NONNULL(2);
+                        const Actors &actors) const restrict A_NONNULL(2);
 
-        bool isFringeLayer() const A_WARN_UNUSED
+        bool isFringeLayer() const restrict A_WARN_UNUSED
         { return mIsFringeLayer; }
 
-        void setSpecialLayer(SpecialLayer *const val)
+        void setSpecialLayer(SpecialLayer *restrict const val) restrict
         { mSpecialLayer = val; }
 
-        void setTempLayer(SpecialLayer *const val)
+        void setTempLayer(SpecialLayer *restrict const val) restrict
         { mTempLayer = val; }
 
-        int getWidth() const A_WARN_UNUSED
+        int getWidth() const restrict A_WARN_UNUSED
         { return mWidth; }
 
-        int getHeight() const A_WARN_UNUSED
+        int getHeight() const restrict A_WARN_UNUSED
         { return mHeight; }
 
-        void optionChanged(const std::string &value) override final;
+        void optionChanged(const std::string &restrict value)
+                           restrict override final;
 
-        void setDrawLayerFlags(const MapTypeT &n);
+        void setDrawLayerFlags(const MapTypeT &restrict n) restrict;
 
-        void setActorsFix(const int y)
+        void setActorsFix(const int y) restrict
         { mActorsFix = y; }
 
     protected:
-        static int getTileDrawWidth(const TileInfo *img,
+        static int getTileDrawWidth(const TileInfo *restrict img,
                                     const int endX,
                                     int &width) A_WARN_UNUSED;
 
-        void updateConditionTiles(MetaTile *const metaTiles,
+        void updateConditionTiles(MetaTile *restrict const metaTiles,
                                   const int width,
-                                  const int height);
+                                  const int height) restrict;
 
     private:
         const int mX;
         const int mY;
         const int mWidth;
         const int mHeight;
-        TileInfo *const mTiles;
+        TileInfo *restrict const mTiles;
         MapTypeT mDrawLayerFlags;
-        const SpecialLayer *mSpecialLayer;
-        const SpecialLayer *mTempLayer;
+        const SpecialLayer *restrict mSpecialLayer;
+        const SpecialLayer *restrict mTempLayer;
         typedef std::vector<MapRowVertexes*> MapRows;
         MapRows mTempRows;
         int mMask;
