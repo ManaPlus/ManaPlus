@@ -36,20 +36,20 @@ class TextChunkList final
 
         A_DELETE_COPY(TextChunkList)
 
-        void insertFirst(TextChunk *const item) A_NONNULL(2);
+        void insertFirst(TextChunk *restrict const item) restrict A_NONNULL(2);
 
-        void moveToFirst(TextChunk *const item) A_NONNULL(2);
+        void moveToFirst(TextChunk *restrict const item) restrict A_NONNULL(2);
 
-        void remove(const TextChunk *const item);
+        void remove(const TextChunk *restrict const item) restrict;
 
-        void removeBack();
+        void removeBack() restrict;
 
-        void removeBack(int n);
+        void removeBack(int n) restrict;
 
-        void clear();
+        void clear() restrict;
 
-        TextChunk *start;
-        TextChunk *end;
+        TextChunk *restrict start;
+        TextChunk *restrict end;
         uint32_t size;
         std::map<TextChunkSmall, TextChunk*> search;
         std::map<std::string, TextChunk*> searchWidth;

@@ -35,7 +35,7 @@ TextChunkList::TextChunkList() :
 
 void TextChunkList::insertFirst(TextChunk *const item)
 {
-    TextChunk *const oldFirst = start;
+    TextChunk *restrict const oldFirst = start;
     if (start)
         start->prev = item;
     item->prev = nullptr;
@@ -54,15 +54,15 @@ void TextChunkList::moveToFirst(TextChunk *const item)
     if (item == start)
         return;
 
-    TextChunk *const oldPrev = item->prev;
+    TextChunk *restrict const oldPrev = item->prev;
     if (oldPrev)
         oldPrev->next = item->next;
-    TextChunk *const oldNext = item->next;
+    TextChunk *restrict const oldNext = item->next;
     if (oldNext)
         oldNext->prev = item->prev;
     else
         end = oldPrev;
-    TextChunk *const oldFirst = start;
+    TextChunk *restrict const oldFirst = start;
     if (start)
         start->prev = item;
     item->prev = nullptr;
@@ -75,8 +75,8 @@ void TextChunkList::remove(const TextChunk *const item)
     if (!item)
         return;
 
-    TextChunk *const oldPrev = item->prev;
-    TextChunk *const oldNext = item->next;
+    TextChunk *restrict const oldPrev = item->prev;
+    TextChunk *restrict const oldNext = item->next;
     if (oldPrev)
         oldPrev->next = item->next;
     else
@@ -94,7 +94,7 @@ void TextChunkList::remove(const TextChunk *const item)
 
 void TextChunkList::removeBack()
 {
-    TextChunk *oldEnd = end;
+    TextChunk *restrict oldEnd = end;
     if (oldEnd)
     {
         end = oldEnd->prev;
@@ -112,7 +112,7 @@ void TextChunkList::removeBack()
 
 void TextChunkList::removeBack(int n)
 {
-    TextChunk *item = end;
+    TextChunk *restrict item = end;
     while (n && item)
     {
         n --;
@@ -140,10 +140,10 @@ void TextChunkList::clear()
 {
     search.clear();
     searchWidth.clear();
-    TextChunk *item = start;
+    TextChunk *restrict item = start;
     while (item)
     {
-        TextChunk *const item2 = item->next;
+        TextChunk *restrict const item2 = item->next;
         delete item;
         item = item2;
     }
