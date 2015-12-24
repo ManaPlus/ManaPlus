@@ -72,10 +72,10 @@ SDL2SoftwareGraphics::~SDL2SoftwareGraphics()
 {
 }
 
-void SDL2SoftwareGraphics::drawRescaledImage(const Image *const image,
+void SDL2SoftwareGraphics::drawRescaledImage(const Image *restrict const image,
                                              int dstX, int dstY,
                                              const int desiredWidth,
-                                             const int desiredHeight)
+                                             const int desiredHeight) restrict2
 {
     FUNC_BLOCK("Graphics::drawRescaledImage", 1)
     // Check that preconditions for blitting are met.
@@ -111,14 +111,14 @@ void SDL2SoftwareGraphics::drawRescaledImage(const Image *const image,
     delete tmpImage;
 }
 
-void SDL2SoftwareGraphics::drawImage(const Image *const image,
-                                     int dstX, int dstY)
+void SDL2SoftwareGraphics::drawImage(const Image *restrict const image,
+                                     int dstX, int dstY) restrict2
 {
     drawImageInline(image, dstX, dstY);
 }
 
-void SDL2SoftwareGraphics::drawImageInline(const Image *const image,
-                                           int dstX, int dstY)
+void SDL2SoftwareGraphics::drawImageInline(const Image *restrict const image,
+                                           int dstX, int dstY) restrict2
 {
     FUNC_BLOCK("Graphics::drawImage", 1)
     // Check that preconditions for blitting are met.
@@ -204,14 +204,14 @@ void SDL2SoftwareGraphics::drawImageInline(const Image *const image,
     }
 }
 
-void SDL2SoftwareGraphics::copyImage(const Image *const image,
-                                     int dstX, int dstY)
+void SDL2SoftwareGraphics::copyImage(const Image *restrict const image,
+                                     int dstX, int dstY) restrict2
 {
     drawImageInline(image, dstX, dstY);
 }
 
-void SDL2SoftwareGraphics::drawImageCached(const Image *const image,
-                                           int x, int y)
+void SDL2SoftwareGraphics::drawImageCached(const Image *restrict const image,
+                                           int x, int y) restrict2
 {
     FUNC_BLOCK("Graphics::drawImageCached", 1)
     // Check that preconditions for blitting are met.
@@ -297,9 +297,9 @@ void SDL2SoftwareGraphics::drawImageCached(const Image *const image,
     }
 }
 
-void SDL2SoftwareGraphics::drawPatternCached(const Image *const image,
+void SDL2SoftwareGraphics::drawPatternCached(const Image *restrict const image,
                                              const int x, const int y,
-                                             const int w, const int h)
+                                             const int w, const int h) restrict2
 {
     FUNC_BLOCK("Graphics::drawPatternCached", 1)
     // Check that preconditions for blitting are met.
@@ -407,20 +407,20 @@ void SDL2SoftwareGraphics::drawPatternCached(const Image *const image,
     }
 }
 
-void SDL2SoftwareGraphics::completeCache()
+void SDL2SoftwareGraphics::completeCache() restrict2
 {
 }
 
-void SDL2SoftwareGraphics::drawPattern(const Image *const image,
+void SDL2SoftwareGraphics::drawPattern(const Image *restrict const image,
                                        const int x, const int y,
-                                       const int w, const int h)
+                                       const int w, const int h) restrict2
 {
     drawPatternInline(image, x, y, w, h);
 }
 
-void SDL2SoftwareGraphics::drawPatternInline(const Image *const image,
+void SDL2SoftwareGraphics::drawPatternInline(const Image *restrict const image,
                                              const int x, const int y,
-                                             const int w, const int h)
+                                             const int w, const int h) restrict2
 {
     FUNC_BLOCK("Graphics::drawPattern", 1)
     // Check that preconditions for blitting are met.
@@ -528,11 +528,13 @@ void SDL2SoftwareGraphics::drawPatternInline(const Image *const image,
     }
 }
 
-void SDL2SoftwareGraphics::drawRescaledPattern(const Image *const image,
+void SDL2SoftwareGraphics::drawRescaledPattern(const Image *
+                                               restrict const image,
                                                const int x, const int y,
                                                const int w, const int h,
                                                const int scaledWidth,
                                                const int scaledHeight)
+                                               restrict2
 {
     // Check that preconditions for blitting are met.
     if (!mSurface || !image)
@@ -594,18 +596,23 @@ void SDL2SoftwareGraphics::drawRescaledPattern(const Image *const image,
     delete tmpImage;
 }
 
-void SDL2SoftwareGraphics::calcPattern(ImageVertexes* const vert,
-                                       const Image *const image,
-                                       const int x, const int y,
-                                       const int w, const int h) const
+void SDL2SoftwareGraphics::calcPattern(ImageVertexes *restrict const vert,
+                                       const Image *restrict const image,
+                                       const int x,
+                                       const int y,
+                                       const int w,
+                                       const int h) const restrict2
 {
     calcPatternInline(vert, image, x, y, w, h);
 }
 
-void SDL2SoftwareGraphics::calcPatternInline(ImageVertexes* const vert,
-                                             const Image *const image,
-                                             const int x, const int y,
-                                             const int w, const int h) const
+void SDL2SoftwareGraphics::calcPatternInline(ImageVertexes *
+                                             restrict const vert,
+                                             const Image *restrict const image,
+                                             const int x,
+                                             const int y,
+                                             const int w,
+                                             const int h) const restrict2
 {
     // Check that preconditions for blitting are met.
     if (!vert || !mSurface || !image || !image->mSDLSurface)
@@ -656,10 +663,12 @@ void SDL2SoftwareGraphics::calcPatternInline(ImageVertexes* const vert,
     }
 }
 
-void SDL2SoftwareGraphics::calcPattern(ImageCollection* const vertCol,
-                                       const Image *const image,
-                                       const int x, const int y,
-                                       const int w, const int h) const
+void SDL2SoftwareGraphics::calcPattern(ImageCollection *restrict const vertCol,
+                                       const Image *restrict const image,
+                                       const int x,
+                                       const int y,
+                                       const int w,
+                                       const int h) const restrict2
 {
     ImageVertexes *vert = nullptr;
     if (vertCol->currentImage != image)
@@ -678,24 +687,26 @@ void SDL2SoftwareGraphics::calcPattern(ImageCollection* const vertCol,
     calcPatternInline(vert, image, x, y, w, h);
 }
 
-void SDL2SoftwareGraphics::calcTileVertexes(ImageVertexes *const vert,
-                                            const Image *const image,
-                                            int x, int y) const
+void SDL2SoftwareGraphics::calcTileVertexes(ImageVertexes *restrict const vert,
+                                            const Image *restrict const image,
+                                            int x, int y) const restrict2
 {
     vert->image = image;
     calcTileSDL(vert, x, y);
 }
 
-void SDL2SoftwareGraphics::calcTileVertexesInline(ImageVertexes *const vert,
-                                                  const Image *const image,
-                                                  int x, int y) const
+void SDL2SoftwareGraphics::calcTileVertexesInline(ImageVertexes *
+                                                  restrict const vert,
+                                                  const Image *
+                                                  restrict const image,
+                                                  int x, int y) const restrict2
 {
     vert->image = image;
     calcTileSDL(vert, x, y);
 }
 
 void SDL2SoftwareGraphics::calcTileSDL(ImageVertexes *const vert,
-                                       int x, int y) const
+                                       int x, int y) const restrict2
 {
     // Check that preconditions for blitting are met.
     if (!vert || !vert->image || !vert->image->mSDLSurface)
@@ -723,9 +734,11 @@ void SDL2SoftwareGraphics::calcTileSDL(ImageVertexes *const vert,
     }
 }
 
-void SDL2SoftwareGraphics::calcTileCollection(ImageCollection *const vertCol,
-                                              const Image *const image,
-                                              int x, int y)
+void SDL2SoftwareGraphics::calcTileCollection(ImageCollection *
+                                              restrict const vertCol,
+                                              const Image *
+                                              restrict const image,
+                                              int x, int y) restrict2
 {
     if (!vertCol)
         return;
@@ -745,7 +758,8 @@ void SDL2SoftwareGraphics::calcTileCollection(ImageCollection *const vertCol,
 }
 
 void SDL2SoftwareGraphics::drawTileCollection(const ImageCollection
-                                              *const vertCol)
+                                              *restrict const vertCol)
+                                              restrict2
 {
     if (!vertCol)
         return;
@@ -767,7 +781,8 @@ void SDL2SoftwareGraphics::drawTileCollection(const ImageCollection
     }
 }
 
-void SDL2SoftwareGraphics::drawTileVertexes(const ImageVertexes *const vert)
+void SDL2SoftwareGraphics::drawTileVertexes(const ImageVertexes *
+                                            restrict const vert) restrict2
 {
     if (!vert)
         return;
@@ -783,17 +798,18 @@ void SDL2SoftwareGraphics::drawTileVertexes(const ImageVertexes *const vert)
     }
 }
 
-void SDL2SoftwareGraphics::updateScreen()
+void SDL2SoftwareGraphics::updateScreen() restrict2
 {
     BLOCK_START("Graphics::updateScreen")
     SDL_UpdateWindowSurfaceRects(mWindow, &mRect, 1);
     BLOCK_END("Graphics::updateScreen")
 }
 
-void SDL2SoftwareGraphics::calcWindow(ImageCollection *const vertCol,
+void SDL2SoftwareGraphics::calcWindow(ImageCollection *restrict const vertCol,
                                       const int x, const int y,
                                       const int w, const int h,
-                                      const ImageRect &imgRect)
+                                      const ImageRect &restrict imgRect)
+                                      restrict2
 {
     ImageVertexes *vert = nullptr;
     Image *const image = imgRect.grid[4];
@@ -896,7 +912,8 @@ int SDL2SoftwareGraphics::SDL_FakeUpperBlit(const SDL_Surface *const src,
     return 0;
 }
 
-void SDL2SoftwareGraphics::fillRectangle(const Rect &rectangle)
+void SDL2SoftwareGraphics::fillRectangle(const Rect &restrict rectangle)
+                                         restrict2
 {
     FUNC_BLOCK("Graphics::fillRectangle", 1)
     if (mClipStack.empty())
@@ -1087,17 +1104,17 @@ void SDL2SoftwareGraphics::fillRectangle(const Rect &rectangle)
     }
 }
 
-void SDL2SoftwareGraphics::beginDraw()
+void SDL2SoftwareGraphics::beginDraw() restrict2
 {
     pushClipArea(Rect(0, 0, mRect.w, mRect.h));
 }
 
-void SDL2SoftwareGraphics::endDraw()
+void SDL2SoftwareGraphics::endDraw() restrict2
 {
     popClipArea();
 }
 
-void SDL2SoftwareGraphics::pushClipArea(const Rect &area)
+void SDL2SoftwareGraphics::pushClipArea(const Rect &restrict area) restrict2
 {
     Graphics::pushClipArea(area);
 
@@ -1106,7 +1123,7 @@ void SDL2SoftwareGraphics::pushClipArea(const Rect &area)
     SDL_SetClipRect(mSurface, &rect);
 }
 
-void SDL2SoftwareGraphics::popClipArea()
+void SDL2SoftwareGraphics::popClipArea() restrict2
 {
     Graphics::popClipArea();
 
@@ -1118,7 +1135,7 @@ void SDL2SoftwareGraphics::popClipArea()
     SDL_SetClipRect(mSurface, &rect);
 }
 
-void SDL2SoftwareGraphics::drawPoint(int x, int y)
+void SDL2SoftwareGraphics::drawPoint(int x, int y) restrict2
 {
     if (mClipStack.empty())
         return;
@@ -1264,7 +1281,7 @@ void SDL2SoftwareGraphics::drawHLine(int x1, int y, int x2)
     SDL_UnlockSurface(mSurface);
 }
 
-void SDL2SoftwareGraphics::drawVLine(int x, int y1, int y2)
+void SDL2SoftwareGraphics::drawVLine(int x, int y1, int y2) restrict2
 {
     if (mClipStack.empty())
         return;
@@ -1399,7 +1416,8 @@ void SDL2SoftwareGraphics::drawVLine(int x, int y1, int y2)
     SDL_UnlockSurface(mSurface);
 }
 
-void SDL2SoftwareGraphics::drawRectangle(const Rect &rectangle)
+void SDL2SoftwareGraphics::drawRectangle(const Rect &restrict rectangle)
+                                         restrict2
 {
     const int x1 = rectangle.x;
     const int x2 = x1 + rectangle.width - 1;
@@ -1413,7 +1431,8 @@ void SDL2SoftwareGraphics::drawRectangle(const Rect &rectangle)
     drawVLine(x2, y1, y2);
 }
 
-void SDL2SoftwareGraphics::drawLine(int x1, int y1, int x2, int y2)
+void SDL2SoftwareGraphics::drawLine(int x1, int y1,
+                                    int x2, int y2) restrict2
 {
     if (x1 == x2)
     {
@@ -1433,7 +1452,7 @@ bool SDL2SoftwareGraphics::setVideoMode(const int w, const int h,
                                         const bool fs,
                                         const bool hwaccel,
                                         const bool resize,
-                                        const bool noFrame)
+                                        const bool noFrame) restrict2
 {
     setMainFlags(w, h, scale, bpp, fs, hwaccel, resize, noFrame);
 
@@ -1471,15 +1490,17 @@ bool SDL2SoftwareGraphics::resizeScreen(const int width, const int height)
 
 void SDL2SoftwareGraphics::drawImageRect(const int x, const int y,
                                          const int w, const int h,
-                                         const ImageRect &imgRect)
+                                         const ImageRect &restrict imgRect)
+                                         restrict2
 {
     #include "render/graphics_drawImageRect.hpp"
 }
 
-void SDL2SoftwareGraphics::calcImageRect(ImageVertexes *const vert,
+void SDL2SoftwareGraphics::calcImageRect(ImageVertexes *restrict const vert,
                                          const int x, const int y,
                                          const int w, const int h,
-                                         const ImageRect &imgRect)
+                                         const ImageRect &restrict imgRect)
+                                         restrict2
 {
     #include "render/graphics_calcImageRect.hpp"
 }

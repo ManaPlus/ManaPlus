@@ -230,7 +230,7 @@ bool ModernOpenGLGraphics::setVideoMode(const int w, const int h,
                                         const bool fs,
                                         const bool hwaccel,
                                         const bool resize,
-                                        const bool noFrame)
+                                        const bool noFrame) restrict2
 {
     setMainFlags(w, h, scale, bpp, fs, hwaccel, resize, noFrame);
 
@@ -314,14 +314,14 @@ void ModernOpenGLGraphics::drawRescaledQuad(const int srcX, const int srcY,
     mglDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
 
-void ModernOpenGLGraphics::drawImage(const Image *const image,
-                                     int dstX, int dstY)
+void ModernOpenGLGraphics::drawImage(const Image *restrict const image,
+                                     int dstX, int dstY) restrict2
 {
     drawImageInline(image, dstX, dstY);
 }
 
-void ModernOpenGLGraphics::drawImageInline(const Image *const image,
-                                           int dstX, int dstY)
+void ModernOpenGLGraphics::drawImageInline(const Image *restrict const image,
+                                           int dstX, int dstY) restrict2
 {
     FUNC_BLOCK("Graphics::drawImage", 1)
     if (!image)
@@ -342,8 +342,8 @@ void ModernOpenGLGraphics::drawImageInline(const Image *const image,
         imageRect.w, imageRect.h);
 }
 
-void ModernOpenGLGraphics::copyImage(const Image *const image,
-                                     int dstX, int dstY)
+void ModernOpenGLGraphics::copyImage(const Image *restrict const image,
+                                     int dstX, int dstY) restrict2
 {
     drawImageInline(image, dstX, dstY);
 }
@@ -372,27 +372,29 @@ void ModernOpenGLGraphics::testDraw()
 //    glDrawElements(GL_TRIANGLE_STRIP, 4, GL_UNSIGNED_INT, 0);
 }
 
-void ModernOpenGLGraphics::drawImageCached(const Image *const image A_UNUSED,
-                                           int A_UNUSED x, int y A_UNUSED)
+void ModernOpenGLGraphics::drawImageCached(const Image *restrict const image
+                                           A_UNUSED,
+                                           int A_UNUSED x, int y A_UNUSED) restrict2
 {
 }
 
-void ModernOpenGLGraphics::drawPatternCached(const Image *const image A_UNUSED,
+void ModernOpenGLGraphics::drawPatternCached(const Image *restrict const image
+                                             A_UNUSED,
                                              const int x A_UNUSED,
                                              const int y A_UNUSED,
                                              const int w A_UNUSED,
-                                             const int h A_UNUSED)
+                                             const int h A_UNUSED) restrict2
 {
 }
 
-void ModernOpenGLGraphics::completeCache()
+void ModernOpenGLGraphics::completeCache() restrict2
 {
 }
 
-void ModernOpenGLGraphics::drawRescaledImage(const Image *const image,
+void ModernOpenGLGraphics::drawRescaledImage(const Image *restrict const image,
                                              int dstX, int dstY,
                                              const int desiredWidth,
-                                             const int desiredHeight)
+                                             const int desiredHeight) restrict2
 {
     if (!image)
         return;
@@ -422,16 +424,16 @@ void ModernOpenGLGraphics::drawRescaledImage(const Image *const image,
         desiredWidth, desiredHeight);
 }
 
-void ModernOpenGLGraphics::drawPattern(const Image *const image,
+void ModernOpenGLGraphics::drawPattern(const Image *restrict const image,
                                        const int x, const int y,
-                                       const int w, const int h)
+                                       const int w, const int h) restrict2
 {
     drawPatternInline(image, x, y, w, h);
 }
 
-void ModernOpenGLGraphics::drawPatternInline(const Image *const image,
+void ModernOpenGLGraphics::drawPatternInline(const Image *restrict const image,
                                              const int x, const int y,
-                                             const int w, const int h)
+                                             const int w, const int h) restrict2
 {
     if (!image)
         return;
@@ -489,11 +491,12 @@ void ModernOpenGLGraphics::drawPatternInline(const Image *const image,
         drawTriangleArray(vp);
 }
 
-void ModernOpenGLGraphics::drawRescaledPattern(const Image *const image,
+void ModernOpenGLGraphics::drawRescaledPattern(const Image *
+                                               restrict const image,
                                                const int x, const int y,
                                                const int w, const int h,
                                                const int scaledWidth,
-                                               const int scaledHeight)
+                                               const int scaledHeight) restrict2
 {
     if (!image)
         return;
@@ -584,18 +587,23 @@ inline void ModernOpenGLGraphics::drawVertexes(const
     }
 }
 
-void ModernOpenGLGraphics::calcPattern(ImageVertexes *const vert,
-                                       const Image *const image,
-                                       const int x, const int y,
-                                       const int w, const int h) const
+void ModernOpenGLGraphics::calcPattern(ImageVertexes *restrict const vert,
+                                       const Image *restrict const image,
+                                       const int x,
+                                       const int y,
+                                       const int w,
+                                       const int h) const restrict2
 {
     calcPatternInline(vert, image, x, y, w, h);
 }
 
-void ModernOpenGLGraphics::calcPatternInline(ImageVertexes *const vert,
-                                             const Image *const image,
-                                             const int x, const int y,
-                                             const int w, const int h) const
+void ModernOpenGLGraphics::calcPatternInline(ImageVertexes *
+                                             restrict const vert,
+                                             const Image *restrict const image,
+                                             const int x,
+                                             const int y,
+                                             const int w,
+                                             const int h) const restrict2
 {
     if (!image || !vert)
         return;
@@ -647,9 +655,11 @@ void ModernOpenGLGraphics::calcPatternInline(ImageVertexes *const vert,
     ogl.switchVp(vp);
 }
 
-void ModernOpenGLGraphics::calcTileCollection(ImageCollection *const vertCol,
-                                              const Image *const image,
-                                              int x, int y)
+void ModernOpenGLGraphics::calcTileCollection(ImageCollection *
+                                              restrict const vertCol,
+                                              const Image *
+                                              restrict const image,
+                                              int x, int y) restrict2
 {
     if (!vertCol || !image)
         return;
@@ -669,7 +679,7 @@ void ModernOpenGLGraphics::calcTileCollection(ImageCollection *const vertCol,
 }
 
 void ModernOpenGLGraphics::drawTileCollection(const ImageCollection
-                                              *const vertCol)
+                                              *restrict const vertCol) restrict2
 {
     if (!vertCol)
         return;
@@ -697,10 +707,10 @@ void ModernOpenGLGraphics::drawTileCollection(const ImageCollection
     }
 }
 
-void ModernOpenGLGraphics::calcPattern(ImageCollection* const vertCol,
-                                       const Image *const image,
+void ModernOpenGLGraphics::calcPattern(ImageCollection *restrict const vertCol,
+                                       const Image *restrict const image,
                                        const int x, const int y,
-                                       const int w, const int h) const
+                                       const int w, const int h) const restrict2
 {
     if (!vertCol || !image)
         return;
@@ -721,16 +731,19 @@ void ModernOpenGLGraphics::calcPattern(ImageCollection* const vertCol,
     calcPatternInline(vert, image, x, y, w, h);
 }
 
-void ModernOpenGLGraphics::calcTileVertexes(ImageVertexes *const vert,
-                                            const Image *const image,
-                                            int dstX, int dstY) const
+void ModernOpenGLGraphics::calcTileVertexes(ImageVertexes *restrict const vert,
+                                            const Image *restrict const image,
+                                            int dstX, int dstY) const restrict2
 {
     calcTileVertexesInline(vert, image, dstX, dstY);
 }
 
-void ModernOpenGLGraphics::calcTileVertexesInline(ImageVertexes *const vert,
-                                                  const Image *const image,
-                                                  int dstX, int dstY) const
+void ModernOpenGLGraphics::calcTileVertexesInline(ImageVertexes *
+                                                  restrict const vert,
+                                                  const Image *
+                                                  restrict const image,
+                                                  int dstX,
+                                                  int dstY) const restrict2
 {
     if (!vert || !image)
         return;
@@ -774,7 +787,8 @@ void ModernOpenGLGraphics::calcTileVertexesInline(ImageVertexes *const vert,
     ogl.switchVp(vp);
 }
 
-void ModernOpenGLGraphics::drawTileVertexes(const ImageVertexes *const vert)
+void ModernOpenGLGraphics::drawTileVertexes(const ImageVertexes *
+                                            restrict const vert) restrict2
 {
     if (!vert)
         return;
@@ -791,10 +805,11 @@ void ModernOpenGLGraphics::drawTileVertexes(const ImageVertexes *const vert)
     drawVertexes(vert->ogl);
 }
 
-void ModernOpenGLGraphics::calcWindow(ImageCollection *const vertCol,
+void ModernOpenGLGraphics::calcWindow(ImageCollection *restrict const vertCol,
                                       const int x, const int y,
                                       const int w, const int h,
-                                      const ImageRect &imgRect)
+                                      const ImageRect &restrict imgRect)
+                                      restrict2
 {
     if (!vertCol)
         return;
@@ -817,7 +832,7 @@ void ModernOpenGLGraphics::calcWindow(ImageCollection *const vertCol,
     calcImageRect(vert, x, y, w, h, imgRect);
 }
 
-void ModernOpenGLGraphics::updateScreen()
+void ModernOpenGLGraphics::updateScreen() restrict2
 {
     BLOCK_START("Graphics::updateScreen")
 #ifdef DEBUG_DRAW_CALLS
@@ -836,7 +851,7 @@ void ModernOpenGLGraphics::updateScreen()
     BLOCK_END("Graphics::updateScreen")
 }
 
-void ModernOpenGLGraphics::beginDraw()
+void ModernOpenGLGraphics::beginDraw() restrict2
 {
     setOpenGLFlags();
     mglDisable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);
@@ -844,12 +859,12 @@ void ModernOpenGLGraphics::beginDraw()
     pushClipArea(Rect(0, 0, mRect.w, mRect.h));
 }
 
-void ModernOpenGLGraphics::endDraw()
+void ModernOpenGLGraphics::endDraw() restrict2
 {
     popClipArea();
 }
 
-void ModernOpenGLGraphics::pushClipArea(const Rect &area)
+void ModernOpenGLGraphics::pushClipArea(const Rect &restrict area) restrict2
 {
     Graphics::pushClipArea(area);
     const ClipRect &clipArea = mClipStack.top();
@@ -860,7 +875,7 @@ void ModernOpenGLGraphics::pushClipArea(const Rect &area)
         clipArea.height * mScale);
 }
 
-void ModernOpenGLGraphics::popClipArea()
+void ModernOpenGLGraphics::popClipArea() restrict2
 {
     if (mClipStack.empty())
         return;
@@ -875,7 +890,7 @@ void ModernOpenGLGraphics::popClipArea()
         clipArea.height * mScale);
 }
 
-void ModernOpenGLGraphics::drawPoint(int x, int y)
+void ModernOpenGLGraphics::drawPoint(int x, int y) restrict2
 {
     setTexturingAndBlending(false);
     bindArrayBufferAndAttributes(mVbo);
@@ -893,7 +908,8 @@ void ModernOpenGLGraphics::drawPoint(int x, int y)
     mglDrawArrays(GL_POINTS, 0, 1);
 }
 
-void ModernOpenGLGraphics::drawLine(int x1, int y1, int x2, int y2)
+void ModernOpenGLGraphics::drawLine(int x1, int y1,
+                                    int x2, int y2) restrict2
 {
     setTexturingAndBlending(false);
     bindArrayBufferAndAttributes(mVbo);
@@ -912,7 +928,7 @@ void ModernOpenGLGraphics::drawLine(int x1, int y1, int x2, int y2)
     mglDrawArrays(GL_LINES, 0, 2);
 }
 
-void ModernOpenGLGraphics::drawRectangle(const Rect& rect)
+void ModernOpenGLGraphics::drawRectangle(const Rect &restrict rect) restrict2
 {
     setTexturingAndBlending(false);
     bindArrayBufferAndAttributes(mVbo);
@@ -938,7 +954,7 @@ void ModernOpenGLGraphics::drawRectangle(const Rect& rect)
     mglDrawArrays(GL_LINE_LOOP, 0, 4);
 }
 
-void ModernOpenGLGraphics::fillRectangle(const Rect& rect)
+void ModernOpenGLGraphics::fillRectangle(const Rect &restrict rect) restrict2
 {
     setTexturingAndBlending(false);
     bindArrayBufferAndAttributes(mVbo);
@@ -999,14 +1015,14 @@ void ModernOpenGLGraphics::setTexturingAndBlending(const bool enable)
     }
 }
 
-void ModernOpenGLGraphics::drawRectangle(const Rect& rect A_UNUSED,
-                                         const bool filled A_UNUSED)
+void ModernOpenGLGraphics::drawRectangle(const Rect &restrict rect A_UNUSED,
+                                         const bool filled A_UNUSED) restrict2
 {
 }
 
 void ModernOpenGLGraphics::drawNet(const int x1, const int y1,
                                    const int x2, const int y2,
-                                   const int width, const int height)
+                                   const int width, const int height) restrict2
 {
     unsigned int vp = 0;
     const unsigned int vLimit = mMaxVertices * 4;
@@ -1178,15 +1194,16 @@ void ModernOpenGLGraphics::dumpSettings()
 
 void ModernOpenGLGraphics::drawImageRect(const int x, const int y,
                                          const int w, const int h,
-                                         const ImageRect &imgRect)
+                                         const ImageRect &restrict imgRect)
+                                         restrict2
 {
     #include "render/graphics_drawImageRect.hpp"
 }
 
-void ModernOpenGLGraphics::calcImageRect(ImageVertexes *const vert,
+void ModernOpenGLGraphics::calcImageRect(ImageVertexes *restrict const vert,
                                          const int x, const int y,
                                          const int w, const int h,
-                                         const ImageRect &imgRect)
+                                         const ImageRect &restrict imgRect)
 {
     #include "render/graphics_calcImageRect.hpp"
 }

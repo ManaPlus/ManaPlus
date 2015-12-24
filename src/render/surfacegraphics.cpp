@@ -40,8 +40,8 @@ SurfaceGraphics::~SurfaceGraphics()
 {
 }
 
-void SurfaceGraphics::drawImage(const Image *const image,
-                                int dstX, int dstY)
+void SurfaceGraphics::drawImage(const Image *restrict const image,
+                                int dstX, int dstY) restrict2
 {
     FUNC_BLOCK("Graphics::drawImage", 1)
     // Check that preconditions for blitting are met.
@@ -73,8 +73,8 @@ void SurfaceGraphics::drawImage(const Image *const image,
 #endif
 }
 
-void SurfaceGraphics::copyImage(const Image *const image,
-                                int dstX, int dstY)
+void SurfaceGraphics::copyImage(const Image *restrict const image,
+                                int dstX, int dstY) restrict2
 {
     FUNC_BLOCK("Graphics::drawImage", 1)
     // Check that preconditions for blitting are met.
@@ -99,8 +99,8 @@ void SurfaceGraphics::copyImage(const Image *const image,
 #endif
 }
 
-void SurfaceGraphics::drawImageCached(const Image *const image,
-                                      int x, int y)
+void SurfaceGraphics::drawImageCached(const Image *restrict const image,
+                                      int x, int y) restrict2
 {
     FUNC_BLOCK("Graphics::drawImageCached", 1)
     // Check that preconditions for blitting are met.
@@ -133,6 +133,6 @@ void SurfaceGraphics::drawImageCached(const Image *const image,
 #endif
 }
 
-void SurfaceGraphics::completeCache()
+void SurfaceGraphics::completeCache() restrict2
 {
 }

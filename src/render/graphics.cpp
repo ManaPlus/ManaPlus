@@ -169,7 +169,7 @@ void Graphics::setMainFlags(const int w, const int h,
                             const bool fs,
                             const bool hwaccel,
                             const bool resize,
-                            const bool noFrame)
+                            const bool noFrame) restrict2
 {
     logger->log("graphics backend: %s", getName().c_str());
     logger->log("Setting video mode %dx%d %s",
@@ -185,7 +185,7 @@ void Graphics::setMainFlags(const int w, const int h,
     setScale(scale);
 }
 
-void Graphics::setScale(int scale)
+void Graphics::setScale(int scale) restrict2
 {
     if (isAllowScale())
     {
@@ -591,7 +591,7 @@ int Graphics::getHeight() const
 
 void Graphics::drawNet(const int x1, const int y1,
                        const int x2, const int y2,
-                       const int width, const int height)
+                       const int width, const int height) restrict2
 {
     for (int y = y1; y < y2; y += height)
         drawLine(x1, y, x2, y);
@@ -608,7 +608,7 @@ void Graphics::setWindowSize(const int width A_UNUSED,
 #endif
 }
 
-void Graphics::pushClipArea(const Rect &area)
+void Graphics::pushClipArea(const Rect &restrict area) restrict2
 {
     // Ignore area with a negate width or height
     // by simple pushing an empty clip area
@@ -670,7 +670,7 @@ void Graphics::pushClipArea(const Rect &area)
     }
 }
 
-void Graphics::popClipArea()
+void Graphics::popClipArea() restrict2
 {
     if (mClipStack.empty())
         return;

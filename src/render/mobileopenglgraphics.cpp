@@ -150,7 +150,7 @@ bool MobileOpenGLGraphics::setVideoMode(const int w, const int h,
                                         const bool fs,
                                         const bool hwaccel,
                                         const bool resize,
-                                        const bool noFrame)
+                                        const bool noFrame) restrict2
 {
     setMainFlags(w, h, scale, bpp, fs, hwaccel, resize, noFrame);
 
@@ -256,14 +256,14 @@ static inline void drawRescaledQuad(const Image *const image,
     }
 }
 
-void MobileOpenGLGraphics::drawImage(const Image *const image,
-                                     int dstX, int dstY)
+void MobileOpenGLGraphics::drawImage(const Image *restrict const image,
+                                     int dstX, int dstY) restrict2
 {
     drawImageInline(image, dstX, dstY);
 }
 
-void MobileOpenGLGraphics::drawImageInline(const Image *const image,
-                                           int dstX, int dstY)
+void MobileOpenGLGraphics::drawImageInline(const Image *restrict const image,
+                                           int dstX, int dstY) restrict2
 {
     FUNC_BLOCK("Graphics::drawImage", 1)
     if (!image)
@@ -281,14 +281,14 @@ void MobileOpenGLGraphics::drawImageInline(const Image *const image,
         dstX, dstY, imageRect.w, imageRect.h);
 }
 
-void MobileOpenGLGraphics::copyImage(const Image *const image,
-                                     int dstX, int dstY)
+void MobileOpenGLGraphics::copyImage(const Image *restrict const image,
+                                     int dstX, int dstY) restrict2
 {
     drawImageInline(image, dstX, dstY);
 }
 
-void MobileOpenGLGraphics::drawImageCached(const Image *const image,
-                                           int x, int y)
+void MobileOpenGLGraphics::drawImageCached(const Image *restrict const image,
+                                           int x, int y) restrict2
 {
     if (!image)
         return;
@@ -341,9 +341,11 @@ void MobileOpenGLGraphics::drawImageCached(const Image *const image,
     }
 }
 
-void MobileOpenGLGraphics::drawPatternCached(const Image *const image,
-                                             const int x, const int y,
-                                             const int w, const int h)
+void MobileOpenGLGraphics::drawPatternCached(const Image *restrict const image,
+                                             const int x,
+                                             const int y,
+                                             const int w,
+                                             const int h) restrict2
 {
     if (!image)
         return;
@@ -402,7 +404,7 @@ void MobileOpenGLGraphics::drawPatternCached(const Image *const image,
     mVpCached = vp;
 }
 
-void MobileOpenGLGraphics::completeCache()
+void MobileOpenGLGraphics::completeCache() restrict2
 {
     if (!mImageCached)
         return;
@@ -419,10 +421,10 @@ void MobileOpenGLGraphics::completeCache()
     mVpCached = 0;
 }
 
-void MobileOpenGLGraphics::drawRescaledImage(const Image *const image,
+void MobileOpenGLGraphics::drawRescaledImage(const Image *restrict const image,
                                              int dstX, int dstY,
                                              const int desiredWidth,
-                                             const int desiredHeight)
+                                             const int desiredHeight) restrict2
 {
     FUNC_BLOCK("Graphics::drawRescaledImage", 1)
     if (!image)
@@ -449,16 +451,16 @@ void MobileOpenGLGraphics::drawRescaledImage(const Image *const image,
         imageRect.w, imageRect.h, desiredWidth, desiredHeight);
 }
 
-void MobileOpenGLGraphics::drawPattern(const Image *const image,
+void MobileOpenGLGraphics::drawPattern(const Image *restrict const image,
                                        const int x, const int y,
-                                       const int w, const int h)
+                                       const int w, const int h) restrict2
 {
     drawPatternInline(image, x, y, w, h);
 }
 
-void MobileOpenGLGraphics::drawPatternInline(const Image *const image,
+void MobileOpenGLGraphics::drawPatternInline(const Image *restrict const image,
                                              const int x, const int y,
-                                             const int w, const int h)
+                                             const int w, const int h) restrict2
 {
     FUNC_BLOCK("Graphics::drawPattern", 1)
     if (!image)
@@ -522,11 +524,12 @@ void MobileOpenGLGraphics::drawPatternInline(const Image *const image,
 //    }
 }
 
-void MobileOpenGLGraphics::drawRescaledPattern(const Image *const image,
+void MobileOpenGLGraphics::drawRescaledPattern(const Image *
+                                               restrict const image,
                                                const int x, const int y,
                                                const int w, const int h,
                                                const int scaledWidth,
-                                               const int scaledHeight)
+                                               const int scaledHeight) restrict2
 {
     if (!image)
         return;
@@ -629,18 +632,21 @@ inline void MobileOpenGLGraphics::drawVertexes(const
     }
 }
 
-void MobileOpenGLGraphics::calcPattern(ImageVertexes *const vert,
-                                       const Image *const image,
+void MobileOpenGLGraphics::calcPattern(ImageVertexes *restrict const vert,
+                                       const Image *restrict const image,
                                        const int x, const int y,
-                                       const int w, const int h) const
+                                       const int w, const int h) const restrict2
 {
     calcPatternInline(vert, image, x, y, w, h);
 }
 
-void MobileOpenGLGraphics::calcPatternInline(ImageVertexes *const vert,
-                                             const Image *const image,
-                                             const int x, const int y,
-                                             const int w, const int h) const
+void MobileOpenGLGraphics::calcPatternInline(ImageVertexes *
+                                             restrict const vert,
+                                             const Image *restrict const image,
+                                             const int x,
+                                             const int y,
+                                             const int w,
+                                             const int h) const restrict2
 {
     if (!image || !vert)
         return;
@@ -700,9 +706,11 @@ void MobileOpenGLGraphics::calcPatternInline(ImageVertexes *const vert,
     ogl.switchVp(vp);
 }
 
-void MobileOpenGLGraphics::calcTileCollection(ImageCollection *const vertCol,
-                                              const Image *const image,
-                                              int x, int y)
+void MobileOpenGLGraphics::calcTileCollection(ImageCollection *
+                                              restrict const vertCol,
+                                              const Image *
+                                              restrict const image,
+                                              int x, int y) restrict2
 {
     if (!vertCol || !image)
         return;
@@ -721,8 +729,9 @@ void MobileOpenGLGraphics::calcTileCollection(ImageCollection *const vertCol,
     }
 }
 
-void MobileOpenGLGraphics::drawTileCollection(const ImageCollection
-                                              *const vertCol)
+void MobileOpenGLGraphics::drawTileCollection(const ImageCollection *
+                                              restrict const vertCol)
+                                              restrict2
 {
     if (!vertCol)
         return;
@@ -743,10 +752,12 @@ void MobileOpenGLGraphics::drawTileCollection(const ImageCollection
     }
 }
 
-void MobileOpenGLGraphics::calcPattern(ImageCollection* const vertCol,
-                                       const Image *const image,
-                                       const int x, const int y,
-                                       const int w, const int h) const
+void MobileOpenGLGraphics::calcPattern(ImageCollection *restrict const vertCol,
+                                       const Image *restrict const image,
+                                       const int x,
+                                       const int y,
+                                       const int w,
+                                       const int h) const restrict2
 {
     if (!vertCol || !image)
         return;
@@ -767,16 +778,19 @@ void MobileOpenGLGraphics::calcPattern(ImageCollection* const vertCol,
     calcPatternInline(vert, image, x, y, w, h);
 }
 
-void MobileOpenGLGraphics::calcTileVertexes(ImageVertexes *const vert,
-                                            const Image *const image,
-                                            int dstX, int dstY) const
+void MobileOpenGLGraphics::calcTileVertexes(ImageVertexes *restrict const vert,
+                                            const Image *restrict const image,
+                                            int dstX, int dstY) const restrict2
 {
     calcTileVertexesInline(vert, image, dstX, dstY);
 }
 
-void MobileOpenGLGraphics::calcTileVertexesInline(ImageVertexes *const vert,
-                                                  const Image *const image,
-                                                  int dstX, int dstY) const
+void MobileOpenGLGraphics::calcTileVertexesInline(ImageVertexes *
+                                                  restrict const vert,
+                                                  const Image *
+                                                  restrict const image,
+                                                  int dstX,
+                                                  int dstY) const restrict2
 {
     if (!vert || !image)
         return;
@@ -827,7 +841,8 @@ void MobileOpenGLGraphics::calcTileVertexesInline(ImageVertexes *const vert,
     ogl.switchVp(vp);
 }
 
-void MobileOpenGLGraphics::drawTileVertexes(const ImageVertexes *const vert)
+void MobileOpenGLGraphics::drawTileVertexes(const ImageVertexes *
+                                            restrict const vert) restrict2
 {
     if (!vert)
         return;
@@ -842,10 +857,11 @@ void MobileOpenGLGraphics::drawTileVertexes(const ImageVertexes *const vert)
     drawVertexes(vert->ogl);
 }
 
-void MobileOpenGLGraphics::calcWindow(ImageCollection *const vertCol,
+void MobileOpenGLGraphics::calcWindow(ImageCollection *restrict const vertCol,
                                       const int x, const int y,
                                       const int w, const int h,
-                                      const ImageRect &imgRect)
+                                      const ImageRect &restrict imgRect)
+                                      restrict2
 {
     if (!vertCol)
         return;
@@ -869,7 +885,7 @@ void MobileOpenGLGraphics::calcWindow(ImageCollection *const vertCol,
 }
 
 
-void MobileOpenGLGraphics::updateScreen()
+void MobileOpenGLGraphics::updateScreen() restrict2
 {
     BLOCK_START("Graphics::updateScreen")
 //    glFlush();
@@ -890,7 +906,7 @@ void MobileOpenGLGraphics::updateScreen()
     BLOCK_END("Graphics::updateScreen")
 }
 
-void MobileOpenGLGraphics::beginDraw()
+void MobileOpenGLGraphics::beginDraw() restrict2
 {
     glMatrixMode(GL_TEXTURE);
     glLoadIdentity();
@@ -931,12 +947,12 @@ void MobileOpenGLGraphics::beginDraw()
     pushClipArea(Rect(0, 0, mRect.w, mRect.h));
 }
 
-void MobileOpenGLGraphics::endDraw()
+void MobileOpenGLGraphics::endDraw() restrict2
 {
     popClipArea();
 }
 
-void MobileOpenGLGraphics::pushClipArea(const Rect &area)
+void MobileOpenGLGraphics::pushClipArea(const Rect &restrict area) restrict2
 {
     int transX = 0;
     int transY = 0;
@@ -965,7 +981,7 @@ void MobileOpenGLGraphics::pushClipArea(const Rect &area)
         clipArea.height * mScale);
 }
 
-void MobileOpenGLGraphics::popClipArea()
+void MobileOpenGLGraphics::popClipArea() restrict2
 {
     if (mClipStack.empty())
         return;
@@ -994,9 +1010,9 @@ void MobileOpenGLGraphics::popClipArea()
 }
 
 #ifdef ANDROID
-void MobileOpenGLGraphics::drawPoint(int x A_UNUSED, int y A_UNUSED)
+void MobileOpenGLGraphics::drawPoint(int x A_UNUSED, int y A_UNUSED) restrict2
 #else
-void MobileOpenGLGraphics::drawPoint(int x, int y)
+void MobileOpenGLGraphics::drawPoint(int x, int y) restrict2
 #endif
 {
     setTexturingAndBlending(false);
@@ -1011,7 +1027,8 @@ void MobileOpenGLGraphics::drawPoint(int x, int y)
 #endif
 }
 
-void MobileOpenGLGraphics::drawLine(int x1, int y1, int x2, int y2)
+void MobileOpenGLGraphics::drawLine(int x1, int y1,
+                                    int x2, int y2) restrict2
 {
     setTexturingAndBlending(false);
     restoreColor();
@@ -1024,12 +1041,12 @@ void MobileOpenGLGraphics::drawLine(int x1, int y1, int x2, int y2)
     drawLineArrays(4);
 }
 
-void MobileOpenGLGraphics::drawRectangle(const Rect& rect)
+void MobileOpenGLGraphics::drawRectangle(const Rect &restrict rect) restrict2
 {
     drawRectangle(rect, false);
 }
 
-void MobileOpenGLGraphics::fillRectangle(const Rect& rect)
+void MobileOpenGLGraphics::fillRectangle(const Rect &restrict rect) restrict2
 {
     drawRectangle(rect, true);
 }
@@ -1074,8 +1091,8 @@ void MobileOpenGLGraphics::setTexturingAndBlending(const bool enable)
     }
 }
 
-void MobileOpenGLGraphics::drawRectangle(const Rect& rect,
-                                         const bool filled)
+void MobileOpenGLGraphics::drawRectangle(const Rect &restrict rect,
+                                         const bool filled) restrict2
 {
     BLOCK_START("Graphics::drawRectangle")
     setTexturingAndBlending(false);
@@ -1125,7 +1142,7 @@ void MobileOpenGLGraphics::drawRectangle(const Rect& rect,
 
 void MobileOpenGLGraphics::drawNet(const int x1, const int y1,
                                    const int x2, const int y2,
-                                   const int width, const int height)
+                                   const int width, const int height) restrict2
 {
     unsigned int vp = 0;
     const unsigned int vLimit = mMaxVertices * 4;
@@ -1278,15 +1295,17 @@ void MobileOpenGLGraphics::restoreColor()
 
 void MobileOpenGLGraphics::drawImageRect(const int x, const int y,
                                          const int w, const int h,
-                                         const ImageRect &imgRect)
+                                         const ImageRect &restrict imgRect)
+                                         restrict2
 {
     #include "render/graphics_drawImageRect.hpp"
 }
 
-void MobileOpenGLGraphics::calcImageRect(ImageVertexes *const vert,
+void MobileOpenGLGraphics::calcImageRect(ImageVertexes *restrict const vert,
                                          const int x, const int y,
                                          const int w, const int h,
-                                         const ImageRect &imgRect)
+                                         const ImageRect &restrict imgRect)
+                                         restrict2
 {
     #include "render/graphics_calcImageRect.hpp"
 }

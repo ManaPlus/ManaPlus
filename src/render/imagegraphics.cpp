@@ -40,26 +40,26 @@ ImegeGraphics::~ImegeGraphics()
 {
 }
 
-void ImegeGraphics::drawImage(const Image *const image A_UNUSED,
-                              int dstX A_UNUSED, int dstY A_UNUSED)
+void ImegeGraphics::drawImage(const Image *restrict const image A_UNUSED,
+                              int dstX A_UNUSED, int dstY A_UNUSED) restrict2
 {
     // for now not implimented
 }
 
-void ImegeGraphics::copyImage(const Image *const image,
-                              int dstX A_UNUSED, int dstY A_UNUSED)
+void ImegeGraphics::copyImage(const Image *restrict const image,
+                              int dstX A_UNUSED, int dstY A_UNUSED) restrict2
 {
     if (!mTarget || !image)
         return;
 }
 
-void ImegeGraphics::drawImageCached(const Image *const image,
-                                    int x, int y)
+void ImegeGraphics::drawImageCached(const Image *restrict const image,
+                                    int x, int y) restrict2
 {
     drawImage(image, x, y);
 }
 
-void ImegeGraphics::completeCache()
+void ImegeGraphics::completeCache() restrict2
 {
 }
 

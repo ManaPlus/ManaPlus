@@ -135,7 +135,7 @@ class Graphics notfinal
             mRect.h = static_cast<RectSize>(height);
         }
 
-        SDL_Window *getWindow() restrict2 const
+        SDL_Window *getWindow() const restrict2
         { return mWindow; }
 
         /**

@@ -99,7 +99,7 @@ bool NullOpenGLGraphics::setVideoMode(const int w, const int h,
                                       const bool fs,
                                       const bool hwaccel,
                                       const bool resize,
-                                      const bool noFrame)
+                                      const bool noFrame) restrict2
 {
     setMainFlags(w, h, scale, bpp, fs, hwaccel, resize, noFrame);
 
@@ -156,20 +156,20 @@ static inline void drawRescaledQuad(const Image *const image A_UNUSED,
     }
 }
 
-void NullOpenGLGraphics::drawImage(const Image *const image,
-                                   int dstX, int dstY)
+void NullOpenGLGraphics::drawImage(const Image *restrict const image,
+                                   int dstX, int dstY) restrict2
 {
     drawImageInline(image, dstX, dstY);
 }
 
-void NullOpenGLGraphics::copyImage(const Image *const image,
-                                   int dstX, int dstY)
+void NullOpenGLGraphics::copyImage(const Image *restrict const image,
+                                   int dstX, int dstY) restrict2
 {
     drawImageInline(image, dstX, dstY);
 }
 
-void NullOpenGLGraphics::drawImageInline(const Image *const image,
-                                         int dstX, int dstY)
+void NullOpenGLGraphics::drawImageInline(const Image *restrict const image,
+                                         int dstX, int dstY) restrict2
 {
     FUNC_BLOCK("Graphics::drawImage", 1)
     if (!image)
@@ -187,27 +187,30 @@ void NullOpenGLGraphics::drawImageInline(const Image *const image,
         imageRect.w, imageRect.h);
 }
 
-void NullOpenGLGraphics::drawImageCached(const Image *const image A_UNUSED,
-                                         int x A_UNUSED, int y A_UNUSED)
+void NullOpenGLGraphics::drawImageCached(const Image *restrict const image
+                                         A_UNUSED,
+                                         int x A_UNUSED,
+                                         int y A_UNUSED) restrict2
 {
 }
 
-void NullOpenGLGraphics::drawPatternCached(const Image *const image A_UNUSED,
+void NullOpenGLGraphics::drawPatternCached(const Image *restrict const image
+                                           A_UNUSED,
                                            const int x A_UNUSED,
                                            const int y A_UNUSED,
                                            const int w A_UNUSED,
-                                           const int h A_UNUSED)
+                                           const int h A_UNUSED) restrict2
 {
 }
 
-void NullOpenGLGraphics::completeCache()
+void NullOpenGLGraphics::completeCache() restrict2
 {
 }
 
-void NullOpenGLGraphics::drawRescaledImage(const Image *const image,
+void NullOpenGLGraphics::drawRescaledImage(const Image *restrict const image,
                                            int dstX, int dstY,
                                            const int desiredWidth,
-                                           const int desiredHeight)
+                                           const int desiredHeight) restrict2
 {
     FUNC_BLOCK("Graphics::drawRescaledImage", 1)
     if (!image)
@@ -234,16 +237,16 @@ void NullOpenGLGraphics::drawRescaledImage(const Image *const image,
         imageRect.w, imageRect.h, desiredWidth, desiredHeight);
 }
 
-void NullOpenGLGraphics::drawPattern(const Image *const image,
+void NullOpenGLGraphics::drawPattern(const Image *restrict const image,
                                      const int x, const int y,
-                                     const int w, const int h)
+                                     const int w, const int h) restrict2
 {
     drawPatternInline(image, x, y, w, h);
 }
 
-void NullOpenGLGraphics::drawPatternInline(const Image *const image,
+void NullOpenGLGraphics::drawPatternInline(const Image *restrict const image,
                                            const int x, const int y,
-                                           const int w, const int h)
+                                           const int w, const int h) restrict2
 {
     FUNC_BLOCK("Graphics::drawPattern", 1)
     if (!image)
@@ -373,11 +376,11 @@ void NullOpenGLGraphics::drawPatternInline(const Image *const image,
     }
 }
 
-void NullOpenGLGraphics::drawRescaledPattern(const Image *const image,
+void NullOpenGLGraphics::drawRescaledPattern(const Image *restrict const image,
                                              const int x, const int y,
                                              const int w, const int h,
                                              const int scaledWidth,
-                                             const int scaledHeight)
+                                             const int scaledHeight) restrict2
 {
     if (!image)
         return;
@@ -568,18 +571,20 @@ inline void NullOpenGLGraphics::drawVertexes(const
     }
 }
 
-void NullOpenGLGraphics::calcPattern(ImageVertexes* const vert,
-                                     const Image *const image,
+void NullOpenGLGraphics::calcPattern(ImageVertexes *restrict const vert,
+                                     const Image *restrict const image,
                                      const int x, const int y,
-                                     const int w, const int h) const
+                                     const int w, const int h) const restrict2
 {
     calcPatternInline(vert, image, x, y, w, h);
 }
 
-void NullOpenGLGraphics::calcPatternInline(ImageVertexes* const vert,
-                                           const Image *const image,
-                                           const int x, const int y,
-                                           const int w, const int h) const
+void NullOpenGLGraphics::calcPatternInline(ImageVertexes *restrict const vert,
+                                           const Image *restrict const image,
+                                           const int x,
+                                           const int y,
+                                           const int w,
+                                           const int h) const restrict2
 {
     if (!image || !vert)
         return;
@@ -708,9 +713,10 @@ void NullOpenGLGraphics::calcPatternInline(ImageVertexes* const vert,
     ogl.switchVp(vp);
 }
 
-void NullOpenGLGraphics::calcTileCollection(ImageCollection *const vertCol,
-                                            const Image *const image,
-                                            int x, int y)
+void NullOpenGLGraphics::calcTileCollection(ImageCollection *
+                                            restrict const vertCol,
+                                            const Image *restrict const image,
+                                            int x, int y) restrict2
 {
     if (!vertCol || !image)
         return;
@@ -730,7 +736,7 @@ void NullOpenGLGraphics::calcTileCollection(ImageCollection *const vertCol,
 }
 
 void NullOpenGLGraphics::drawTileCollection(const ImageCollection
-                                            *const vertCol)
+                                            *restrict const vertCol) restrict2
 {
     if (!vertCol)
         return;
@@ -751,10 +757,10 @@ void NullOpenGLGraphics::drawTileCollection(const ImageCollection
     }
 }
 
-void NullOpenGLGraphics::calcPattern(ImageCollection* const vertCol,
-                                     const Image *const image,
+void NullOpenGLGraphics::calcPattern(ImageCollection *restrict  const vertCol,
+                                     const Image *restrict const image,
                                      const int x, const int y,
-                                     const int w, const int h) const
+                                     const int w, const int h) const restrict2
 {
     if (!vertCol || !image)
         return;
@@ -775,16 +781,19 @@ void NullOpenGLGraphics::calcPattern(ImageCollection* const vertCol,
     calcPatternInline(vert, image, x, y, w, h);
 }
 
-void NullOpenGLGraphics::calcTileVertexes(ImageVertexes *const vert,
-                                          const Image *const image,
-                                          int dstX, int dstY) const
+void NullOpenGLGraphics::calcTileVertexes(ImageVertexes *restrict const vert,
+                                          const Image *restrict const image,
+                                          int dstX, int dstY) const restrict2
 {
     calcTileVertexesInline(vert, image, dstX, dstY);
 }
 
-void NullOpenGLGraphics::calcTileVertexesInline(ImageVertexes *const vert,
-                                                const Image *const image,
-                                                int dstX, int dstY) const
+void NullOpenGLGraphics::calcTileVertexesInline(ImageVertexes *
+                                                restrict const vert,
+                                                const Image *
+                                                restrict const image,
+                                                int dstX,
+                                                int dstY) const restrict2
 {
     if (!vert || !image)
         return;
@@ -895,7 +904,8 @@ void NullOpenGLGraphics::calcTileVertexesInline(ImageVertexes *const vert,
     ogl.switchVp(vp);
 }
 
-void NullOpenGLGraphics::drawTileVertexes(const ImageVertexes *const vert)
+void NullOpenGLGraphics::drawTileVertexes(const ImageVertexes *
+                                          restrict const vert) restrict2
 {
     if (!vert)
         return;
@@ -910,10 +920,10 @@ void NullOpenGLGraphics::drawTileVertexes(const ImageVertexes *const vert)
     drawVertexes(vert->ogl);
 }
 
-void NullOpenGLGraphics::calcWindow(ImageCollection *const vertCol,
+void NullOpenGLGraphics::calcWindow(ImageCollection *restrict const vertCol,
                                     const int x, const int y,
                                     const int w, const int h,
-                                    const ImageRect &imgRect)
+                                    const ImageRect &restrict imgRect) restrict2
 {
     if (!vertCol)
         return;
@@ -936,7 +946,7 @@ void NullOpenGLGraphics::calcWindow(ImageCollection *const vertCol,
     calcImageRect(vert, x, y, w, h, imgRect);
 }
 
-void NullOpenGLGraphics::updateScreen()
+void NullOpenGLGraphics::updateScreen() restrict2
 {
     BLOCK_START("Graphics::updateScreen")
 #ifdef DEBUG_DRAW_CALLS
@@ -946,17 +956,17 @@ void NullOpenGLGraphics::updateScreen()
     BLOCK_END("Graphics::updateScreen")
 }
 
-void NullOpenGLGraphics::beginDraw()
+void NullOpenGLGraphics::beginDraw() restrict2
 {
     pushClipArea(Rect(0, 0, 640, 480));
 }
 
-void NullOpenGLGraphics::endDraw()
+void NullOpenGLGraphics::endDraw() restrict2
 {
     popClipArea();
 }
 
-void NullOpenGLGraphics::pushClipArea(const Rect &area)
+void NullOpenGLGraphics::pushClipArea(const Rect &restrict area) restrict2
 {
     int transX = 0;
     int transY = 0;
@@ -975,7 +985,7 @@ void NullOpenGLGraphics::pushClipArea(const Rect &area)
     transY += clipArea.yOffset;
 }
 
-void NullOpenGLGraphics::popClipArea()
+void NullOpenGLGraphics::popClipArea() restrict2
 {
     Graphics::popClipArea();
 
@@ -983,14 +993,14 @@ void NullOpenGLGraphics::popClipArea()
         return;
 }
 
-void NullOpenGLGraphics::drawPoint(int x A_UNUSED, int y A_UNUSED)
+void NullOpenGLGraphics::drawPoint(int x A_UNUSED, int y A_UNUSED) restrict2
 {
     setTexturingAndBlending(false);
     restoreColor();
 }
 
 void NullOpenGLGraphics::drawLine(int x1, int y1,
-                                  int x2, int y2)
+                                  int x2, int y2) restrict2
 {
     setTexturingAndBlending(false);
     restoreColor();
@@ -1003,12 +1013,12 @@ void NullOpenGLGraphics::drawLine(int x1, int y1,
     drawLineArrayf(4);
 }
 
-void NullOpenGLGraphics::drawRectangle(const Rect& rect)
+void NullOpenGLGraphics::drawRectangle(const Rect &restrict rect) restrict2
 {
     drawRectangle(rect, false);
 }
 
-void NullOpenGLGraphics::fillRectangle(const Rect& rect)
+void NullOpenGLGraphics::fillRectangle(const Rect &restrict rect) restrict2
 {
     drawRectangle(rect, true);
 }
@@ -1036,8 +1046,8 @@ void NullOpenGLGraphics::setTexturingAndBlending(const bool enable)
     }
 }
 
-void NullOpenGLGraphics::drawRectangle(const Rect& rect A_UNUSED,
-                                       const bool filled A_UNUSED)
+void NullOpenGLGraphics::drawRectangle(const Rect &restrict rect A_UNUSED,
+                                       const bool filled A_UNUSED) restrict2
 {
     BLOCK_START("Graphics::drawRectangle")
     setTexturingAndBlending(false);
@@ -1051,7 +1061,7 @@ void NullOpenGLGraphics::drawRectangle(const Rect& rect A_UNUSED,
 
 void NullOpenGLGraphics::drawNet(const int x1, const int y1,
                                  const int x2, const int y2,
-                                 const int width, const int height)
+                                 const int width, const int height) restrict2
 {
     unsigned int vp = 0;
     const unsigned int vLimit = mMaxVertices * 4;
@@ -1181,15 +1191,16 @@ void NullOpenGLGraphics::restoreColor()
 
 void NullOpenGLGraphics::drawImageRect(const int x, const int y,
                                        const int w, const int h,
-                                       const ImageRect &imgRect)
+                                       const ImageRect &restrict imgRect)
+                                       restrict2
 {
     #include "render/graphics_drawImageRect.hpp"
 }
 
-void NullOpenGLGraphics::calcImageRect(ImageVertexes *const vert,
+void NullOpenGLGraphics::calcImageRect(ImageVertexes *restrict const vert,
                                        const int x, const int y,
                                        const int w, const int h,
-                                       const ImageRect &imgRect)
+                                       const ImageRect &restrict imgRect)
 {
     #include "render/graphics_calcImageRect.hpp"
 }

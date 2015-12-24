@@ -61,7 +61,7 @@ bool SafeOpenGLGraphics::setVideoMode(const int w, const int h,
                                       const bool fs,
                                       const bool hwaccel,
                                       const bool resize,
-                                      const bool noFrame)
+                                      const bool noFrame) restrict2
 {
     setMainFlags(w, h, scale, bpp, fs, hwaccel, resize, noFrame);
 
@@ -156,14 +156,14 @@ static inline void drawRescaledQuad(const Image *const image,
     }
 }
 
-void SafeOpenGLGraphics::drawImage(const Image *const image,
-                                   int dstX, int dstY)
+void SafeOpenGLGraphics::drawImage(const Image *restrict const image,
+                                   int dstX, int dstY) restrict2
 {
     drawImageInline(image, dstX, dstY);
 }
 
-void SafeOpenGLGraphics::drawImageInline(const Image *const image,
-                                         int dstX, int dstY)
+void SafeOpenGLGraphics::drawImageInline(const Image *restrict const image,
+                                         int dstX, int dstY) restrict2
 {
     FUNC_BLOCK("Graphics::drawImage", 1)
     if (!image)
@@ -181,8 +181,8 @@ void SafeOpenGLGraphics::drawImageInline(const Image *const image,
     glEnd();
 }
 
-void SafeOpenGLGraphics::copyImage(const Image *const image,
-                                   int dstX, int dstY)
+void SafeOpenGLGraphics::copyImage(const Image *restrict const image,
+                                   int dstX, int dstY) restrict2
 {
     drawImageInline(image, dstX, dstY);
 }
@@ -217,8 +217,8 @@ void SafeOpenGLGraphics::testDraw()
     }
 }
 
-void SafeOpenGLGraphics::drawImageCached(const Image *const image,
-                                         int x, int y)
+void SafeOpenGLGraphics::drawImageCached(const Image *restrict const image,
+                                         int x, int y) restrict2
 {
     FUNC_BLOCK("Graphics::drawImageCached", 1)
     if (!image)
@@ -235,9 +235,9 @@ void SafeOpenGLGraphics::drawImageCached(const Image *const image,
     glEnd();
 }
 
-void SafeOpenGLGraphics::drawPatternCached(const Image *const image,
+void SafeOpenGLGraphics::drawPatternCached(const Image *restrict const image,
                                            const int x, const int y,
-                                           const int w, const int h)
+                                           const int w, const int h) restrict2
 {
     FUNC_BLOCK("Graphics::drawPatternCached", 1)
     if (!image)
@@ -274,14 +274,14 @@ void SafeOpenGLGraphics::drawPatternCached(const Image *const image,
     glEnd();
 }
 
-void SafeOpenGLGraphics::completeCache()
+void SafeOpenGLGraphics::completeCache() restrict2
 {
 }
 
-void SafeOpenGLGraphics::drawRescaledImage(const Image *const image,
+void SafeOpenGLGraphics::drawRescaledImage(const Image *restrict const image,
                                            int dstX, int dstY,
                                            const int desiredWidth,
-                                           const int desiredHeight)
+                                           const int desiredHeight) restrict2
 {
     FUNC_BLOCK("Graphics::drawRescaledImage", 1)
     if (!image)
@@ -307,16 +307,16 @@ void SafeOpenGLGraphics::drawRescaledImage(const Image *const image,
     glEnd();
 }
 
-void SafeOpenGLGraphics::drawPattern(const Image *const image,
+void SafeOpenGLGraphics::drawPattern(const Image *restrict const image,
                                      const int x, const int y,
-                                     const int w, const int h)
+                                     const int w, const int h) restrict2
 {
     drawPatternInline(image, x, y, w, h);
 }
 
-void SafeOpenGLGraphics::drawPatternInline(const Image *const image,
+void SafeOpenGLGraphics::drawPatternInline(const Image *restrict const image,
                                            const int x, const int y,
-                                           const int w, const int h)
+                                           const int w, const int h) restrict2
 {
     FUNC_BLOCK("Graphics::drawPattern", 1)
     if (!image)
@@ -353,11 +353,11 @@ void SafeOpenGLGraphics::drawPatternInline(const Image *const image,
     glEnd();
 }
 
-void SafeOpenGLGraphics::drawRescaledPattern(const Image *const image,
+void SafeOpenGLGraphics::drawRescaledPattern(const Image *restrict const image,
                                              const int x, const int y,
                                              const int w, const int h,
                                              const int scaledWidth,
-                                             const int scaledHeight)
+                                             const int scaledHeight) restrict2
 {
     if (!image)
         return;
@@ -401,66 +401,79 @@ void SafeOpenGLGraphics::drawRescaledPattern(const Image *const image,
     glEnd();
 }
 
-void SafeOpenGLGraphics::calcTileCollection(ImageCollection *const
+void SafeOpenGLGraphics::calcTileCollection(ImageCollection *restrict const
                                             vertCol A_UNUSED,
-                                            const Image *const image A_UNUSED,
-                                            int x A_UNUSED, int y A_UNUSED)
+                                            const Image *restrict const image
+                                            A_UNUSED,
+                                            int x A_UNUSED,
+                                            int y A_UNUSED) restrict2
 {
 }
 
-void SafeOpenGLGraphics::calcTileVertexes(ImageVertexes *const vert A_UNUSED,
-                                          const Image *const image A_UNUSED,
-                                          int x A_UNUSED, int y A_UNUSED) const
+void SafeOpenGLGraphics::calcTileVertexes(ImageVertexes *restrict const vert
+                                          A_UNUSED,
+                                          const Image *restrict const image
+                                          A_UNUSED,
+                                          int x A_UNUSED,
+                                          int y A_UNUSED) const restrict2
 {
 }
 
-void SafeOpenGLGraphics::calcTileVertexesInline(ImageVertexes *const
+void SafeOpenGLGraphics::calcTileVertexesInline(ImageVertexes *restrict const
                                                 vert A_UNUSED,
-                                                const Image *const
+                                                const Image *restrict const
                                                 image A_UNUSED,
                                                 int x A_UNUSED,
-                                                int y A_UNUSED) const
+                                                int y A_UNUSED) const restrict2
 {
 }
 
-void SafeOpenGLGraphics::calcPattern(ImageVertexes *const vert A_UNUSED,
-                                     const Image *const image A_UNUSED,
+void SafeOpenGLGraphics::calcPattern(ImageVertexes *restrict const vert
+                                     A_UNUSED,
+                                     const Image *restrict const image
+                                     A_UNUSED,
                                      const int x A_UNUSED,
                                      const int y A_UNUSED,
                                      const int w A_UNUSED,
-                                     const int h A_UNUSED) const
+                                     const int h A_UNUSED) const restrict2
 {
 }
 
-void SafeOpenGLGraphics::calcPatternInline(ImageVertexes *const vert A_UNUSED,
-                                           const Image *const image A_UNUSED,
+void SafeOpenGLGraphics::calcPatternInline(ImageVertexes *restrict const vert
+                                           A_UNUSED,
+                                           const Image *restrict const image
+                                           A_UNUSED,
                                            const int x A_UNUSED,
                                            const int y A_UNUSED,
                                            const int w A_UNUSED,
-                                           const int h A_UNUSED) const
+                                           const int h A_UNUSED) const restrict2
 {
 }
 
-void SafeOpenGLGraphics::calcPattern(ImageCollection *const vert A_UNUSED,
-                                     const Image *const image A_UNUSED,
+void SafeOpenGLGraphics::calcPattern(ImageCollection *restrict const vert
+                                     A_UNUSED,
+                                     const Image *restrict const image
+                                     A_UNUSED,
                                      const int x A_UNUSED,
                                      const int y A_UNUSED,
                                      const int w A_UNUSED,
-                                     const int h A_UNUSED) const
+                                     const int h A_UNUSED) const restrict2
 {
 }
 
 void SafeOpenGLGraphics::drawTileVertexes(const ImageVertexes
-                                          *const vert A_UNUSED)
+                                          *restrict const vert A_UNUSED)
+                                          restrict2
 {
 }
 
-void SafeOpenGLGraphics::drawTileCollection(const ImageCollection *const
-                                            vertCol A_UNUSED)
+void SafeOpenGLGraphics::drawTileCollection(const ImageCollection *
+                                            restrict const vertCol A_UNUSED)
+                                            restrict2
 {
 }
 
-void SafeOpenGLGraphics::updateScreen()
+void SafeOpenGLGraphics::updateScreen() restrict2
 {
     BLOCK_START("Graphics::updateScreen")
     glFlush();
@@ -477,14 +490,16 @@ void SafeOpenGLGraphics::updateScreen()
     BLOCK_END("Graphics::updateScreen")
 }
 
-void SafeOpenGLGraphics::calcWindow(ImageCollection *const vertCol A_UNUSED,
+void SafeOpenGLGraphics::calcWindow(ImageCollection *restrict const vertCol
+                                    A_UNUSED,
                                     const int x A_UNUSED, const int y A_UNUSED,
                                     const int w A_UNUSED, const int h A_UNUSED,
-                                    const ImageRect &imgRect A_UNUSED)
+                                    const ImageRect &restrict imgRect A_UNUSED)
+                                    restrict2
 {
 }
 
-void SafeOpenGLGraphics::beginDraw()
+void SafeOpenGLGraphics::beginDraw() restrict2
 {
     glMatrixMode(GL_TEXTURE);
     glLoadIdentity();
@@ -509,12 +524,12 @@ void SafeOpenGLGraphics::beginDraw()
     pushClipArea(Rect(0, 0, mRect.w, mRect.h));
 }
 
-void SafeOpenGLGraphics::endDraw()
+void SafeOpenGLGraphics::endDraw() restrict2
 {
     popClipArea();
 }
 
-void SafeOpenGLGraphics::pushClipArea(const Rect &area)
+void SafeOpenGLGraphics::pushClipArea(const Rect &restrict area) restrict2
 {
     int transX = 0;
     int transY = 0;
@@ -539,7 +554,7 @@ void SafeOpenGLGraphics::pushClipArea(const Rect &area)
         clipArea.height * mScale);
 }
 
-void SafeOpenGLGraphics::popClipArea()
+void SafeOpenGLGraphics::popClipArea() restrict2
 {
     Graphics::popClipArea();
 
@@ -554,7 +569,7 @@ void SafeOpenGLGraphics::popClipArea()
         clipArea.height * mScale);
 }
 
-void SafeOpenGLGraphics::drawPoint(int x, int y)
+void SafeOpenGLGraphics::drawPoint(int x, int y) restrict2
 {
     setTexturingAndBlending(false);
     restoreColor();
@@ -566,7 +581,7 @@ void SafeOpenGLGraphics::drawPoint(int x, int y)
 
 void SafeOpenGLGraphics::drawNet(const int x1, const int y1,
                                  const int x2, const int y2,
-                                 const int width, const int height)
+                                 const int width, const int height) restrict2
 {
     setTexturingAndBlending(false);
     restoreColor();
@@ -590,7 +605,8 @@ void SafeOpenGLGraphics::drawNet(const int x1, const int y1,
     glEnd();
 }
 
-void SafeOpenGLGraphics::drawLine(int x1, int y1, int x2, int y2)
+void SafeOpenGLGraphics::drawLine(int x1, int y1,
+                                  int x2, int y2) restrict2
 {
     setTexturingAndBlending(false);
     restoreColor();
@@ -601,12 +617,12 @@ void SafeOpenGLGraphics::drawLine(int x1, int y1, int x2, int y2)
     glEnd();
 }
 
-void SafeOpenGLGraphics::drawRectangle(const Rect& rect)
+void SafeOpenGLGraphics::drawRectangle(const Rect &restrict rect) restrict2
 {
     drawRectangle(rect, false);
 }
 
-void SafeOpenGLGraphics::fillRectangle(const Rect& rect)
+void SafeOpenGLGraphics::fillRectangle(const Rect &restrict rect) restrict2
 {
     drawRectangle(rect, true);
 }
@@ -649,8 +665,8 @@ void SafeOpenGLGraphics::setTexturingAndBlending(const bool enable)
     }
 }
 
-void SafeOpenGLGraphics::drawRectangle(const Rect& rect,
-                                       const bool filled)
+void SafeOpenGLGraphics::drawRectangle(const Rect &restrict rect,
+                                       const bool filled) restrict2
 {
     BLOCK_START("Graphics::drawRectangle")
     const float offset = filled ? 0 : 0.5F;
@@ -710,15 +726,17 @@ void SafeOpenGLGraphics::clearScreen() const
 
 void SafeOpenGLGraphics::drawImageRect(const int x, const int y,
                                        const int w, const int h,
-                                       const ImageRect &imgRect)
+                                       const ImageRect &restrict imgRect)
+                                       restrict2
 {
     #include "render/graphics_drawImageRect.hpp"
 }
 
-void SafeOpenGLGraphics::calcImageRect(ImageVertexes *const vert,
+void SafeOpenGLGraphics::calcImageRect(ImageVertexes *restrict const vert,
                                        const int x, const int y,
                                        const int w, const int h,
-                                       const ImageRect &imgRect)
+                                       const ImageRect &restrict imgRect)
+                                       restrict2
 {
     #include "render/graphics_calcImageRect.hpp"
 }

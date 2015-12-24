@@ -62,7 +62,7 @@ class SurfaceGraphics final : public Graphics
         void pushClipArea(const Rect &rect A_UNUSED) override final
         { }
 
-        void popClipArea() override final
+        void popClipArea() restrict2 override final
         { }
 
         void drawRescaledImage(const Image *const image A_UNUSED,
@@ -169,14 +169,14 @@ class SurfaceGraphics final : public Graphics
                           const int bpp A_UNUSED,
                           const bool fs A_UNUSED, const bool hwaccel A_UNUSED,
                           const bool resize A_UNUSED,
-                          const bool noFrame A_UNUSED) override final
+                          const bool noFrame A_UNUSED) restrict2 override final
         { return false; }
 
         void drawImage(const Image *const image,
                        int dstX, int dstY) override final;
 
         void copyImage(const Image *const image,
-                       int dstX, int dstY) override final;
+                       int dstX, int dstY) restrict2 override final;
 
         void drawImageCached(const Image *const image,
                              int x, int y) override final;
