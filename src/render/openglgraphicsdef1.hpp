@@ -21,7 +21,7 @@
  */
 
 public:
-    void setColor(const Color &color) override final
+    void setColor(const Color &restrict color) override final
     {
         mColor = color;
         mColorAlpha = (color.a != 255);

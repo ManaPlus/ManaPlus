@@ -58,7 +58,7 @@ class ModernOpenGLGraphics final : public Graphics
 
         void postInit() override final;
 
-        void setColor(const Color &color) override final;
+        void setColor(const Color &restrict color) restrict2 override final;
 
         void screenResized() override final;
 

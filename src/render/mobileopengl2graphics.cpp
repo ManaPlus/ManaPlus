@@ -237,7 +237,7 @@ bool MobileOpenGL2Graphics::setVideoMode(const int w, const int h,
     return setOpenGLMode();
 }
 
-void MobileOpenGL2Graphics::setColor(const Color &color)
+void MobileOpenGL2Graphics::setColor(const Color &restrict color) restrict2
 {
     mColorAlpha = (color.a != 255);
     if (mColor != color)

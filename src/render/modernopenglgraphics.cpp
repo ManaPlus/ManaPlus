@@ -237,7 +237,7 @@ bool ModernOpenGLGraphics::setVideoMode(const int w, const int h,
     return setOpenGLMode();
 }
 
-void ModernOpenGLGraphics::setColor(const Color &color)
+void ModernOpenGLGraphics::setColor(const Color &restrict color) restrict2
 {
     mColorAlpha = (color.a != 255);
     if (mColor != color)
