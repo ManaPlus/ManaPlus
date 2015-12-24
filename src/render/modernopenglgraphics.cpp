@@ -139,7 +139,7 @@ void ModernOpenGLGraphics::deleteGLObjects()
         mglDeleteVertexArrays(1, &mVao);
 }
 
-void ModernOpenGLGraphics::initArrays(const int vertCount)
+void ModernOpenGLGraphics::initArrays(const int vertCount) restrict2
 {
     mMaxVertices = vertCount;
     if (mMaxVertices < 500)
@@ -216,7 +216,7 @@ void ModernOpenGLGraphics::deleteArrays() restrict2
     deleteArraysInternal();
 }
 
-void ModernOpenGLGraphics::deleteArraysInternal()
+void ModernOpenGLGraphics::deleteArraysInternal() restrict2
 {
     delete [] mIntArray;
     mIntArray = nullptr;
@@ -561,7 +561,8 @@ void ModernOpenGLGraphics::drawRescaledPattern(const Image *
 }
 
 inline void ModernOpenGLGraphics::drawVertexes(const
-                                               OpenGLGraphicsVertexes &ogl)
+                                               OpenGLGraphicsVertexes &
+                                               restrict ogl) restrict2
 {
     const std::vector<int> &vp = ogl.mVp;
     const std::vector<GLuint> &vbos = ogl.mVbo;
@@ -1311,7 +1312,8 @@ void ModernOpenGLGraphics::drawLineArrays(const int size)
 }
 
 #ifdef DEBUG_BIND_TEXTURE
-void ModernOpenGLGraphics::debugBindTexture(const Image *const image)
+void ModernOpenGLGraphics::debugBindTexture(const Image *restrict const image)
+                                            restrict2
 {
     const std::string texture = image->getIdPath();
     if (mOldTexture != texture)
@@ -1327,7 +1329,8 @@ void ModernOpenGLGraphics::debugBindTexture(const Image *const image)
     }
 }
 #else
-void ModernOpenGLGraphics::debugBindTexture(const Image *const image A_UNUSED)
+void ModernOpenGLGraphics::debugBindTexture(const Image *restrict const
+                                            image A_UNUSED) restrict2
 {
 }
 #endif

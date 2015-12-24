@@ -120,7 +120,7 @@ NormalOpenGLGraphics::~NormalOpenGLGraphics()
     deleteArraysInternal();
 }
 
-void NormalOpenGLGraphics::initArrays(const int vertCount)
+void NormalOpenGLGraphics::initArrays(const int vertCount) restrict2
 {
     mMaxVertices = vertCount;
     if (mMaxVertices < 500)
@@ -150,7 +150,7 @@ void NormalOpenGLGraphics::deleteArrays() restrict2
     deleteArraysInternal();
 }
 
-void NormalOpenGLGraphics::deleteArraysInternal()
+void NormalOpenGLGraphics::deleteArraysInternal() restrict2
 {
     delete [] mFloatTexArray;
     mFloatTexArray = nullptr;
@@ -862,7 +862,7 @@ void NormalOpenGLGraphics::drawRescaledPattern(const Image *
 
 inline void NormalOpenGLGraphics::drawVertexes(const
                                                OpenGLGraphicsVertexes
-                                               &ogl)
+                                               &restrict ogl) restrict2
 {
     const std::vector<GLint*> &intVertPool = ogl.mIntVertPool;
     std::vector<GLint*>::const_iterator iv;
@@ -1660,7 +1660,8 @@ void NormalOpenGLGraphics::clearScreen() const restrict2
 }
 
 #ifdef DEBUG_BIND_TEXTURE
-void NormalOpenGLGraphics::debugBindTexture(const Image *const image)
+void NormalOpenGLGraphics::debugBindTexture(const Image *restrict const image)
+                                            restrict2
 {
     const std::string texture = image->getIdPath();
     if (mOldTexture != texture)
@@ -1676,7 +1677,8 @@ void NormalOpenGLGraphics::debugBindTexture(const Image *const image)
     }
 }
 #else
-void NormalOpenGLGraphics::debugBindTexture(const Image *const image A_UNUSED)
+void NormalOpenGLGraphics::debugBindTexture(const Image *restrict const
+                                            image A_UNUSED) restrict2
 {
 }
 #endif

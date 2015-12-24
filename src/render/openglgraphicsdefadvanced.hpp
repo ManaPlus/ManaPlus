@@ -21,12 +21,13 @@
  */
 
 public:
-    inline void drawVertexes(const OpenGLGraphicsVertexes &ogl);
+    inline void drawVertexes(const OpenGLGraphicsVertexes &restrict ogl)
+                             restrict2;
 
-    void initArrays(const int vertCount) override final;
+    void initArrays(const int vertCount) restrict2 override final;
 
 #ifdef DEBUG_DRAW_CALLS
-    unsigned int getDrawCalls() const
+    unsigned int getDrawCalls() restrict2 const
     { return mLastDrawCalls; }
 
     static unsigned int mDrawCalls;
@@ -35,6 +36,6 @@ public:
 #endif
 
 protected:
-    void debugBindTexture(const Image *const image);
+    void debugBindTexture(const Image *restrict const image) restrict2;
 
-    void deleteArraysInternal();
+    void deleteArraysInternal() restrict2;

@@ -137,7 +137,7 @@ void MobileOpenGL2Graphics::deleteGLObjects()
 #endif
 }
 
-void MobileOpenGL2Graphics::initArrays(const int vertCount)
+void MobileOpenGL2Graphics::initArrays(const int vertCount) restrict2
 {
     mMaxVertices = vertCount;
     if (mMaxVertices < 500)
@@ -216,7 +216,7 @@ void MobileOpenGL2Graphics::deleteArrays() restrict2
     deleteArraysInternal();
 }
 
-void MobileOpenGL2Graphics::deleteArraysInternal()
+void MobileOpenGL2Graphics::deleteArraysInternal() restrict2
 {
     delete [] mFloatArray;
     mFloatArray = nullptr;
@@ -580,7 +580,8 @@ void MobileOpenGL2Graphics::drawRescaledPattern(const Image *
 }
 
 inline void MobileOpenGL2Graphics::drawVertexes(const
-                                                OpenGLGraphicsVertexes &ogl)
+                                                OpenGLGraphicsVertexes &
+                                                restrict ogl) restrict2
 {
     const std::vector<int> &vp = ogl.mVp;
     const std::vector<GLuint> &vbos = ogl.mVbo;
@@ -1306,7 +1307,8 @@ void MobileOpenGL2Graphics::drawLineArrays(const int size)
 }
 
 #ifdef DEBUG_BIND_TEXTURE
-void MobileOpenGL2Graphics::debugBindTexture(const Image *const image)
+void MobileOpenGL2Graphics::debugBindTexture(const Image *restrict const image)
+                                             restrict2
 {
     const std::string texture = image->getIdPath();
     if (mOldTexture != texture)
@@ -1322,7 +1324,8 @@ void MobileOpenGL2Graphics::debugBindTexture(const Image *const image)
     }
 }
 #else
-void MobileOpenGL2Graphics::debugBindTexture(const Image *const image A_UNUSED)
+void MobileOpenGL2Graphics::debugBindTexture(const Image *restrict const
+                                             image A_UNUSED) restrict2
 {
 }
 #endif
