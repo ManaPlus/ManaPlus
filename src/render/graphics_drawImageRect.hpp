@@ -27,16 +27,16 @@
 
 BLOCK_START("Graphics::drawImageRect")
 
-const Image *const *const grid = imgRect.grid;
-const Image *const topLeft = grid[0];
-const Image *const topRight = grid[2];
-const Image *const bottomLeft = grid[6];
-const Image *const bottomRight = grid[8];
-const Image *const top = grid[1];
-const Image *const right = grid[5];
-const Image *const bottom = grid[7];
-const Image *const left = grid[3];
-const Image *const center = grid[4];
+const Image *restrict const *restrict const grid = imgRect.grid;
+const Image *restrict const topLeft = grid[0];
+const Image *restrict const topRight = grid[2];
+const Image *restrict const bottomLeft = grid[6];
+const Image *restrict const bottomRight = grid[8];
+const Image *restrict const top = grid[1];
+const Image *restrict const right = grid[5];
+const Image *restrict const bottom = grid[7];
+const Image *restrict const left = grid[3];
+const Image *restrict const center = grid[4];
 
 const bool drawMain = center && topLeft && topRight
     && bottomLeft && bottomRight;
