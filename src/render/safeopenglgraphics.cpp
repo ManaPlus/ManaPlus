@@ -51,7 +51,7 @@ SafeOpenGLGraphics::~SafeOpenGLGraphics()
 {
 }
 
-void SafeOpenGLGraphics::deleteArrays()
+void SafeOpenGLGraphics::deleteArrays() restrict2
 {
 }
 
@@ -627,7 +627,7 @@ void SafeOpenGLGraphics::fillRectangle(const Rect &restrict rect) restrict2
     drawRectangle(rect, true);
 }
 
-void SafeOpenGLGraphics::setTexturingAndBlending(const bool enable)
+void SafeOpenGLGraphics::setTexturingAndBlending(const bool enable) restrict2
 {
     if (enable)
     {
@@ -696,7 +696,7 @@ void SafeOpenGLGraphics::bindTexture(const GLenum target, const GLuint texture)
     }
 }
 
-void SafeOpenGLGraphics::setColorAlpha(const float alpha)
+void SafeOpenGLGraphics::setColorAlpha(const float alpha) restrict2
 {
     if (!mIsByteColor && mFloatColor == alpha)
         return;
@@ -706,7 +706,7 @@ void SafeOpenGLGraphics::setColorAlpha(const float alpha)
     mFloatColor = alpha;
 }
 
-void SafeOpenGLGraphics::restoreColor()
+void SafeOpenGLGraphics::restoreColor() restrict2
 {
     if (mIsByteColor && mByteColor == mColor)
         return;
@@ -719,7 +719,7 @@ void SafeOpenGLGraphics::restoreColor()
     mByteColor = mColor;
 }
 
-void SafeOpenGLGraphics::clearScreen() const
+void SafeOpenGLGraphics::clearScreen() const restrict2
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 }

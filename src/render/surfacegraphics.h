@@ -154,7 +154,7 @@ class SurfaceGraphics final : public Graphics
         void fillRectangle(const Rect &rect A_UNUSED) override final
         { }
 
-        void drawRectangle(const Rect &rect A_UNUSED) override final
+        void drawRectangle(const Rect &rect A_UNUSED) restrict2 override final
         { }
 
         void drawPoint(int x A_UNUSED, int y A_UNUSED) override final

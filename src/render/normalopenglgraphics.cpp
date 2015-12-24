@@ -145,7 +145,7 @@ void NormalOpenGLGraphics::initArrays(const int vertCount)
         mIntVertArrayCached = new GLint[sz];
 }
 
-void NormalOpenGLGraphics::deleteArrays()
+void NormalOpenGLGraphics::deleteArrays() restrict2
 {
     deleteArraysInternal();
 }
@@ -1374,7 +1374,7 @@ void NormalOpenGLGraphics::fillRectangle(const Rect &restrict rect) restrict2
     drawRectangle(rect, true);
 }
 
-void NormalOpenGLGraphics::setTexturingAndBlending(const bool enable)
+void NormalOpenGLGraphics::setTexturingAndBlending(const bool enable) restrict2
 {
     if (enable)
     {
@@ -1614,7 +1614,7 @@ void NormalOpenGLGraphics::dumpSettings()
     }
 }
 
-void NormalOpenGLGraphics::setColorAlpha(const float alpha)
+void NormalOpenGLGraphics::setColorAlpha(const float alpha) restrict2
 {
     if (!mIsByteColor && mFloatColor == alpha)
         return;
@@ -1624,7 +1624,7 @@ void NormalOpenGLGraphics::setColorAlpha(const float alpha)
     mFloatColor = alpha;
 }
 
-void NormalOpenGLGraphics::restoreColor()
+void NormalOpenGLGraphics::restoreColor() restrict2
 {
     if (mIsByteColor && mByteColor == mColor)
         return;
@@ -1654,7 +1654,7 @@ void NormalOpenGLGraphics::calcImageRect(ImageVertexes *restrict const vert,
     #include "render/graphics_calcImageRect.hpp"
 }
 
-void NormalOpenGLGraphics::clearScreen() const
+void NormalOpenGLGraphics::clearScreen() const restrict2
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 }

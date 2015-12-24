@@ -406,7 +406,7 @@ void Graphics::updateMemoryInfo()
 #endif
 }
 
-int Graphics::getMemoryUsage() const
+int Graphics::getMemoryUsage() const restrict2
 {
 #ifdef USE_OPENGL
     if (!mStartFreeMem)

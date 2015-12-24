@@ -211,7 +211,7 @@ void MobileOpenGL2Graphics::screenResized()
     postInit();
 }
 
-void MobileOpenGL2Graphics::deleteArrays()
+void MobileOpenGL2Graphics::deleteArrays() restrict2
 {
     deleteArraysInternal();
 }
@@ -251,7 +251,7 @@ void MobileOpenGL2Graphics::setColor(const Color &color)
     }
 }
 
-void MobileOpenGL2Graphics::setColorAlpha(const float alpha)
+void MobileOpenGL2Graphics::setColorAlpha(const float alpha) restrict2
 {
     if (mAlphaCached != alpha)
     {
@@ -994,7 +994,7 @@ void MobileOpenGL2Graphics::fillRectangle(const Rect &restrict rect) restrict2
     mglDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
 
-void MobileOpenGL2Graphics::setTexturingAndBlending(const bool enable)
+void MobileOpenGL2Graphics::setTexturingAndBlending(const bool enable) restrict2
 {
     if (enable)
     {
@@ -1211,7 +1211,7 @@ void MobileOpenGL2Graphics::calcImageRect(ImageVertexes *restrict const vert,
     #include "render/graphics_calcImageRect.hpp"
 }
 
-void MobileOpenGL2Graphics::clearScreen() const
+void MobileOpenGL2Graphics::clearScreen() const restrict2
 {
     mglClear(GL_COLOR_BUFFER_BIT |
         GL_DEPTH_BUFFER_BIT |

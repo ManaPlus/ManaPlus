@@ -89,7 +89,7 @@ void NullOpenGLGraphics::initArrays(const int vertCount)
         mIntVertArray = new GLint[sz];
 }
 
-void NullOpenGLGraphics::deleteArrays()
+void NullOpenGLGraphics::deleteArrays() restrict2
 {
 }
 
@@ -1023,7 +1023,7 @@ void NullOpenGLGraphics::fillRectangle(const Rect &restrict rect) restrict2
     drawRectangle(rect, true);
 }
 
-void NullOpenGLGraphics::setTexturingAndBlending(const bool enable)
+void NullOpenGLGraphics::setTexturingAndBlending(const bool enable) restrict2
 {
     if (enable)
     {
@@ -1171,7 +1171,7 @@ void NullOpenGLGraphics::dumpSettings()
 {
 }
 
-void NullOpenGLGraphics::setColorAlpha(const float alpha)
+void NullOpenGLGraphics::setColorAlpha(const float alpha) restrict2
 {
     if (!mIsByteColor && mFloatColor == alpha)
         return;
@@ -1180,7 +1180,7 @@ void NullOpenGLGraphics::setColorAlpha(const float alpha)
     mFloatColor = alpha;
 }
 
-void NullOpenGLGraphics::restoreColor()
+void NullOpenGLGraphics::restoreColor() restrict2
 {
     if (mIsByteColor && mByteColor == mColor)
         return;
@@ -1205,7 +1205,7 @@ void NullOpenGLGraphics::calcImageRect(ImageVertexes *restrict const vert,
     #include "render/graphics_calcImageRect.hpp"
 }
 
-void NullOpenGLGraphics::clearScreen() const
+void NullOpenGLGraphics::clearScreen() const restrict2
 {
 }
 

@@ -21,34 +21,34 @@
  */
 
 public:
-    void drawRectangle(const Rect &rect,
-                       const bool filled);
+    void drawRectangle(const Rect &restrict rect,
+                       const bool filled) restrict2;
 
     void drawNet(const int x1, const int y1,
                  const int x2, const int y2,
-                 const int width, const int height) override final;
+                 const int width, const int height) restrict2 override final;
 
     static void dumpSettings();
 
-    int getMemoryUsage() A_WARN_UNUSED;
+    int getMemoryUsage() restrict2 A_WARN_UNUSED;
 
-    void updateTextureFormat();
+    void updateTextureFormat() restrict2;
 
-    bool isAllowScale() const override final
+    bool isAllowScale() const restrict2 override final
     { return true; }
 
-    void clearScreen() const override final;
+    void clearScreen() const restrict2 override final;
 
-    void deleteArrays() override final;
+    void deleteArrays() restrict2 override final;
 
     static void bindTexture(const GLenum target, const GLuint texture);
 
     static GLuint mTextureBinded;
 
 protected:
-    void setTexturingAndBlending(const bool enable);
+    void setTexturingAndBlending(const bool enable) restrict2;
 
 private:
-    void inline setColorAlpha(const float alpha);
+    void inline setColorAlpha(const float alpha) restrict2;
 
-    void inline restoreColor();
+    void inline restoreColor() restrict2;

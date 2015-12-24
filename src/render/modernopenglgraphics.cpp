@@ -211,7 +211,7 @@ void ModernOpenGLGraphics::screenResized()
     postInit();
 }
 
-void ModernOpenGLGraphics::deleteArrays()
+void ModernOpenGLGraphics::deleteArrays() restrict2
 {
     deleteArraysInternal();
 }
@@ -251,7 +251,7 @@ void ModernOpenGLGraphics::setColor(const Color &color)
     }
 }
 
-void ModernOpenGLGraphics::setColorAlpha(const float alpha)
+void ModernOpenGLGraphics::setColorAlpha(const float alpha) restrict2
 {
     if (mAlphaCached != alpha)
     {
@@ -980,7 +980,7 @@ void ModernOpenGLGraphics::fillRectangle(const Rect &restrict rect) restrict2
     mglDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
 
-void ModernOpenGLGraphics::setTexturingAndBlending(const bool enable)
+void ModernOpenGLGraphics::setTexturingAndBlending(const bool enable) restrict2
 {
     if (enable)
     {
@@ -1208,7 +1208,7 @@ void ModernOpenGLGraphics::calcImageRect(ImageVertexes *restrict const vert,
     #include "render/graphics_calcImageRect.hpp"
 }
 
-void ModernOpenGLGraphics::clearScreen() const
+void ModernOpenGLGraphics::clearScreen() const restrict2
 {
     mglClear(GL_COLOR_BUFFER_BIT |
         GL_DEPTH_BUFFER_BIT |
