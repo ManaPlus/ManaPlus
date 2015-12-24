@@ -80,6 +80,11 @@
 #define A_WARN_UNUSED __attribute__ ((warn_unused_result))
 #define DEPRECATED __attribute__ ((deprecated))
 #define restrict __restrict__
+#ifdef __clang__
+#define restrict2
+#else
+#define restrict2 __restrict__
+#endif
 #define A_CONST __attribute__ ((const))
 #define A_PURE __attribute__ ((pure))
 
@@ -105,6 +110,7 @@
 #define gnu_printf printf
 #define DEPRECATED
 #define restrict
+#define restrict2
 #define RETURNS_NONNULL
 #define A_NONNULL(...)
 #endif
