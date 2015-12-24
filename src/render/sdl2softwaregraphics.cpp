@@ -705,7 +705,7 @@ void SDL2SoftwareGraphics::calcTileVertexesInline(ImageVertexes *
     calcTileSDL(vert, x, y);
 }
 
-void SDL2SoftwareGraphics::calcTileSDL(ImageVertexes *const vert,
+void SDL2SoftwareGraphics::calcTileSDL(ImageVertexes *restrict const vert,
                                        int x, int y) const restrict2
 {
     // Check that preconditions for blitting are met.

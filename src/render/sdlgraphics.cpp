@@ -686,7 +686,8 @@ void SDLGraphics::calcTileVertexesInline(ImageVertexes *restrict const vert,
     calcTileSDL(vert, x, y);
 }
 
-void SDLGraphics::calcTileSDL(ImageVertexes *const vert, int x, int y) const
+void SDLGraphics::calcTileSDL(ImageVertexes *restrict const vert,
+                              int x, int y) const restrict2
 {
     // Check that preconditions for blitting are met.
     if (!vert || !vert->image || !vert->image->mSDLSurface)

@@ -21,5 +21,5 @@
  */
 
 public:
-    void calcTileSDL(ImageVertexes *const vert,
-                     int x, int y) const override final;
+    void calcTileSDL(ImageVertexes *restrict const vert,
+                     int x, int y) const restrict2 override final;
