@@ -36,17 +36,17 @@ class TextChunkList final
 
         A_DELETE_COPY(TextChunkList)
 
-        void insertFirst(TextChunk *restrict const item) restrict A_NONNULL(2);
+        void insertFirst(TextChunk *restrict const item) restrict2 A_NONNULL(2);
 
-        void moveToFirst(TextChunk *restrict const item) restrict A_NONNULL(2);
+        void moveToFirst(TextChunk *restrict const item) restrict2 A_NONNULL(2);
 
-        void remove(const TextChunk *restrict const item) restrict;
+        void remove(const TextChunk *restrict const item) restrict2;
 
-        void removeBack() restrict;
+        void removeBack() restrict2;
 
-        void removeBack(int n) restrict;
+        void removeBack(int n) restrict2;
 
-        void clear() restrict;
+        void clear() restrict2;
 
         TextChunk *restrict start;
         TextChunk *restrict end;

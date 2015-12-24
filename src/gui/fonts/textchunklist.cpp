@@ -33,7 +33,7 @@ TextChunkList::TextChunkList() :
 {
 }
 
-void TextChunkList::insertFirst(TextChunk *const item)
+void TextChunkList::insertFirst(TextChunk *restrict const item)
 {
     TextChunk *restrict const oldFirst = start;
     if (start)
@@ -49,7 +49,7 @@ void TextChunkList::insertFirst(TextChunk *const item)
     searchWidth[item->text] = item;
 }
 
-void TextChunkList::moveToFirst(TextChunk *const item)
+void TextChunkList::moveToFirst(TextChunk *restrict const item)
 {
     if (item == start)
         return;
@@ -70,7 +70,7 @@ void TextChunkList::moveToFirst(TextChunk *const item)
     start = item;
 }
 
-void TextChunkList::remove(const TextChunk *const item)
+void TextChunkList::remove(const TextChunk *restrict const item)
 {
     if (!item)
         return;

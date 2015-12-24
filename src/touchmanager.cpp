@@ -77,12 +77,12 @@ TouchManager::~TouchManager()
     CHECKLISTENERS
 }
 
-void TouchManager::shutdown() restrict
+void TouchManager::shutdown() restrict2
 {
     config.removeListeners(this);
 }
 
-void TouchManager::init() restrict
+void TouchManager::init() restrict2
 {
     config.addListener("showScreenJoystick", this);
     config.addListener("showScreenButtons", this);
@@ -122,7 +122,7 @@ void TouchManager::loadTouchItem(TouchItem **restrict item,
                                  const TouchFuncPtr fAll,
                                  const TouchFuncPtr fPressed,
                                  const TouchFuncPtr fReleased,
-                                 const TouchFuncPtr fOut) restrict
+                                 const TouchFuncPtr fOut) restrict2
 {
     *item = nullptr;
     if (!theme)
@@ -185,7 +185,7 @@ void TouchManager::loadTouchItem(TouchItem **restrict item,
     mRedraw = true;
 }
 
-void TouchManager::clear() restrict
+void TouchManager::clear() restrict2
 {
     FOR_EACH (TouchItemVectorCIter, it, mObjects)
         unload(*it);
@@ -193,7 +193,7 @@ void TouchManager::clear() restrict
     mRedraw = true;
 }
 
-void TouchManager::draw() restrict
+void TouchManager::draw() restrict2
 {
     if (mRedraw)
     {
@@ -222,7 +222,7 @@ void TouchManager::draw() restrict
     drawText();
 }
 
-void TouchManager::safeDraw() restrict
+void TouchManager::safeDraw() restrict2
 {
     FOR_EACH (TouchItemVectorCIter, it, mObjects)
     {
@@ -244,7 +244,7 @@ void TouchManager::safeDraw() restrict
     drawText();
 }
 
-void TouchManager::drawText() restrict
+void TouchManager::drawText() restrict2
 {
     if (!gui)
         return;
@@ -271,7 +271,7 @@ void TouchManager::drawText() restrict
     }
 }
 
-bool TouchManager::processEvent(const MouseInput &mouseInput) restrict
+bool TouchManager::processEvent(const MouseInput &mouseInput) restrict2
 {
     const int x = mouseInput.getTouchX();
     const int y = mouseInput.getTouchY();
@@ -325,7 +325,7 @@ bool TouchManager::processEvent(const MouseInput &mouseInput) restrict
     return false;
 }
 
-bool TouchManager::isActionActive(const InputActionT index) restrict const
+bool TouchManager::isActionActive(const InputActionT index) restrict2 const
 {
     if (static_cast<int>(index) < 0 ||
         static_cast<int>(index) >= actionsSize)
@@ -335,7 +335,7 @@ bool TouchManager::isActionActive(const InputActionT index) restrict const
     return mActions[static_cast<size_t>(index)];
 }
 
-void TouchManager::resize(const int width, const int height) restrict
+void TouchManager::resize(const int width, const int height) restrict2
 {
     mRedraw = true;
     const int maxHeight = mHeight;
@@ -391,7 +391,7 @@ void TouchManager::unload(TouchItem *restrict const item)
     }
 }
 
-void TouchManager::unloadTouchItem(TouchItem *restrict *unloadItem) restrict
+void TouchManager::unloadTouchItem(TouchItem *restrict *unloadItem) restrict2
 {
     FOR_EACH (TouchItemVectorIter, it, mObjects)
     {
@@ -405,14 +405,14 @@ void TouchManager::unloadTouchItem(TouchItem *restrict *unloadItem) restrict
     }
 }
 
-void TouchManager::loadPad() restrict
+void TouchManager::loadPad() restrict2
 {
     const int sz = (mJoystickSize + 2) * 50;
     loadTouchItem(&mPad, "dpad.xml", "dpad_image.xml", "", -1, -1, sz, sz,
         LEFT, "", "", &padEvents, &padClick, &padUp, &padOut);
 }
 
-void TouchManager::loadButtons() restrict
+void TouchManager::loadButtons() restrict2
 {
     const int sz = (mButtonsSize + 1) * 50;
     if (!theme)
@@ -570,13 +570,13 @@ void TouchManager::loadButtons() restrict
     }
 }
 
-void TouchManager::loadKeyboard() restrict
+void TouchManager::loadKeyboard() restrict2
 {
     loadTouchItem(&mKeyboard, "keyboard_icon.xml", "", "", -1, -1, 28, 28,
         NORMAL, "", "screenActionKeyboard");
 }
 
-void TouchManager::optionChanged(const std::string &value) restrict
+void TouchManager::optionChanged(const std::string &value) restrict2
 {
     if (value == "showScreenJoystick")
     {
@@ -654,14 +654,14 @@ void TouchManager::optionChanged(const std::string &value) restrict
     }
 }
 
-void TouchManager::setInGame(const bool b) restrict
+void TouchManager::setInGame(const bool b) restrict2
 {
     mInGame = b;
     mShow = mInGame && !mTempHideButtons;
     mRedraw = true;
 }
 
-void TouchManager::setTempHide(const bool b) restrict
+void TouchManager::setTempHide(const bool b) restrict2
 {
     mTempHideButtons = b;
     mShow = mInGame && !mTempHideButtons;

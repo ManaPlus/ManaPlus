@@ -105,11 +105,11 @@ class MapLayer final: public ConfigListener
                   const int scrollX,
                   const int scrollY) const restrict A_NONNULL(2);
 
-        void drawSDL(Graphics *restrict const graphics) const restrict
+        void drawSDL(Graphics *restrict const graphics) const restrict2
                      A_NONNULL(2);
 
 #ifdef USE_OPENGL
-        void drawOGL(Graphics *restrict const graphics) const restrict
+        void drawOGL(Graphics *restrict const graphics) const restrict2
                      A_NONNULL(2);
 
         void updateOGL(Graphics *restrict const graphics,
@@ -118,7 +118,7 @@ class MapLayer final: public ConfigListener
                        int endX,
                        int endY,
                        const int scrollX,
-                       const int scrollY) restrict A_NONNULL(2);
+                       const int scrollY) restrict2 A_NONNULL(2);
 #endif
 
         void updateSDL(const Graphics *restrict const graphics,
@@ -127,7 +127,7 @@ class MapLayer final: public ConfigListener
                        int endX,
                        int endY,
                        const int scrollX,
-                       const int scrollY) restrict A_NONNULL(2);
+                       const int scrollY) restrict2 A_NONNULL(2);
 
         void drawFringe(Graphics *restrict const graphics,
                         int startX,

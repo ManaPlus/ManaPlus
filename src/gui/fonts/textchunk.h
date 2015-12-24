@@ -49,12 +49,12 @@ class TextChunk final
 
         ~TextChunk();
 
-        bool operator==(const TextChunk &restrict chunk) const restrict;
+        bool operator==(const TextChunk &restrict chunk) const restrict2;
 
         void generate(TTF_Font *restrict const font,
-                      const float alpha) restrict;
+                      const float alpha) restrict2;
 
-        void deleteImage() restrict;
+        void deleteImage() restrict2;
 
         Image *restrict img;
         Font *restrict textFont;

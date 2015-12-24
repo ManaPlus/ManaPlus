@@ -83,7 +83,7 @@ MapLayer::~MapLayer()
     mTempRows.clear();
 }
 
-void MapLayer::optionChanged(const std::string &value)
+void MapLayer::optionChanged(const std::string &value) restrict
 {
     if (value == "highlightAttackRange")
     {
@@ -94,7 +94,7 @@ void MapLayer::optionChanged(const std::string &value)
 
 void MapLayer::setTile(const int x,
                        const int y,
-                       Image *const img)
+                       Image *const img) restrict
 {
     mTiles[x + y * mWidth].image = img;
 }
@@ -105,7 +105,7 @@ void MapLayer::draw(Graphics *const graphics,
                     int endX,
                     int endY,
                     const int scrollX,
-                    const int scrollY) const
+                    const int scrollY) const restrict
 {
     if (!localPlayer)
         return;
@@ -175,7 +175,7 @@ void MapLayer::draw(Graphics *const graphics,
     BLOCK_END("MapLayer::draw")
 }
 
-void MapLayer::drawSDL(Graphics *const graphics) const
+void MapLayer::drawSDL(Graphics *const graphics) const restrict2
 {
     BLOCK_START("MapLayer::drawSDL")
     MapRows::const_iterator rit = mTempRows.begin();
@@ -202,7 +202,7 @@ void MapLayer::updateSDL(const Graphics *const graphics,
                          int endX,
                          int endY,
                          const int scrollX,
-                         const int scrollY)
+                         const int scrollY) restrict2
 {
     BLOCK_START("MapLayer::updateSDL")
     delete_all(mTempRows);
@@ -270,7 +270,7 @@ void MapLayer::updateOGL(Graphics *const graphics,
                          int endX,
                          int endY,
                          const int scrollX,
-                         const int scrollY)
+                         const int scrollY) restrict2
 {
     BLOCK_START("MapLayer::updateOGL")
     delete_all(mTempRows);
@@ -353,7 +353,7 @@ void MapLayer::updateOGL(Graphics *const graphics,
     BLOCK_END("MapLayer::updateOGL")
 }
 
-void MapLayer::drawOGL(Graphics *const graphics) const
+void MapLayer::drawOGL(Graphics *const graphics) const restrict2
 {
     BLOCK_START("MapLayer::drawOGL")
     MapRows::const_iterator rit = mTempRows.begin();
@@ -384,7 +384,7 @@ void MapLayer::drawFringe(Graphics *const graphics,
                           int endY,
                           const int scrollX,
                           const int scrollY,
-                          const Actors &actors) const
+                          const Actors &actors) const restrict
 {
     BLOCK_START("MapLayer::drawFringe")
     if (!localPlayer ||
@@ -680,7 +680,7 @@ void MapLayer::drawFringe(Graphics *const graphics,
     BLOCK_END("MapLayer::drawFringe")
 }
 
-int MapLayer::getTileDrawWidth(const TileInfo *tilePtr,
+int MapLayer::getTileDrawWidth(const TileInfo *restrict tilePtr,
                                const int endX,
                                int &width)
 {
@@ -708,7 +708,7 @@ int MapLayer::getTileDrawWidth(const TileInfo *tilePtr,
     return c;
 }
 
-void MapLayer::setDrawLayerFlags(const MapTypeT &n)
+void MapLayer::setDrawLayerFlags(const MapTypeT &n) restrict
 {
     mDrawLayerFlags = n;
     mSpecialFlag = (mDrawLayerFlags != MapType::SPECIAL &&
@@ -718,7 +718,7 @@ void MapLayer::setDrawLayerFlags(const MapTypeT &n)
 
 void MapLayer::updateConditionTiles(MetaTile *const metaTiles,
                                     const int width,
-                                    const int height)
+                                    const int height) restrict
 {
     const int width1 = width < mWidth ? width : mWidth;
     const int height1 = height < mHeight ? height : mHeight;

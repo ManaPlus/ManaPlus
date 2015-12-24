@@ -61,10 +61,10 @@ TextChunk::TextChunk() :
 #endif
 }
 
-TextChunk::TextChunk(const std::string &text0,
-                     const Color &color0,
-                     const Color &color1,
-                     Font *const font) :
+TextChunk::TextChunk(const std::string &restrict text0,
+                     const Color &restrict color0,
+                     const Color &restrict color1,
+                     Font *restrict const font) :
     img(nullptr),
     textFont(font),
     text(text0),
@@ -86,13 +86,14 @@ TextChunk::~TextChunk()
 #endif
 }
 
-bool TextChunk::operator==(const TextChunk &chunk) const
+bool TextChunk::operator==(const TextChunk &restrict chunk) const
 {
     return (chunk.text == text && chunk.color == color
             && chunk.color2 == color2);
 }
 
-void TextChunk::generate(TTF_Font *const font, const float alpha)
+void TextChunk::generate(TTF_Font *restrict const font,
+                         const float alpha)
 {
     BLOCK_START("TextChunk::generate")
     SDL_Color sdlCol;

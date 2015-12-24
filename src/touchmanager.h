@@ -113,7 +113,7 @@ class TouchManager final : public ConfigListener
             RIGHT = 2
         };
 
-        void init() restrict;
+        void init() restrict2;
 
         void loadTouchItem(TouchItem **restrict item,
                            const std::string &restrict name,
@@ -128,22 +128,22 @@ class TouchManager final : public ConfigListener
                            const TouchFuncPtr fPressed = nullptr,
                            const TouchFuncPtr fReleased = nullptr,
                            const TouchFuncPtr fOut = nullptr)
-                           restrict A_NONNULL(2);
+                           restrict2 A_NONNULL(2);
 
-        void clear() restrict;
+        void clear() restrict2;
 
-        void draw() restrict;
+        void draw() restrict2;
 
-        void safeDraw() restrict;
+        void safeDraw() restrict2;
 
-        void drawText() restrict;
+        void drawText() restrict2;
 
-        bool processEvent(const MouseInput &mouseInput) restrict;
+        bool processEvent(const MouseInput &mouseInput) restrict2;
 
-        bool isActionActive(const InputActionT index) restrict const;
+        bool isActionActive(const InputActionT index) restrict2 const;
 
         void setActionActive(const InputActionT index,
-                             const bool value) restrict
+                             const bool value) restrict2
         {
             if (static_cast<int>(index) >= 0 &&
                 static_cast<int>(index) < actionsSize)
@@ -152,28 +152,28 @@ class TouchManager final : public ConfigListener
             }
         }
 
-        void resize(const int width, const int height) restrict;
+        void resize(const int width, const int height) restrict2;
 
         static void unload(TouchItem *restrict const item);
 
-        void unloadTouchItem(TouchItem *restrict *unloadItem) restrict;
+        void unloadTouchItem(TouchItem *restrict *unloadItem) restrict2;
 
-        void optionChanged(const std::string &value) restrict override final;
+        void optionChanged(const std::string &value) restrict2 override final;
 
-        void loadPad() restrict;
+        void loadPad() restrict2;
 
-        void loadButtons() restrict;
+        void loadButtons() restrict2;
 
-        void loadKeyboard() restrict;
+        void loadKeyboard() restrict2;
 
-        int getPadSize() restrict const
+        int getPadSize() restrict2 const
         { return (mJoystickSize + 2) * 50; }
 
-        void setInGame(const bool b) restrict;
+        void setInGame(const bool b) restrict2;
 
-        void setTempHide(const bool b) restrict;
+        void setTempHide(const bool b) restrict2;
 
-        void shutdown() restrict;
+        void shutdown() restrict2;
 
         static void executeAction(const std::string &restrict event);
 

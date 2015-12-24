@@ -95,13 +95,13 @@ class Font final
 
         void loadFont(std::string filename,
                       const int size,
-                      const int style = 0) restrict;
+                      const int style = 0) restrict2;
 
-        int getWidth(const std::string &text) const restrict A_WARN_UNUSED;
+        int getWidth(const std::string &text) const restrict2 A_WARN_UNUSED;
 
-        int getHeight() const restrict A_WARN_UNUSED;
+        int getHeight() const restrict2 A_WARN_UNUSED;
 
-        const TextChunkList *getCache() const restrict A_CONST A_WARN_UNUSED;
+        const TextChunkList *getCache() const restrict2 A_CONST A_WARN_UNUSED;
 
         /**
          * @see Font::drawString
@@ -111,26 +111,26 @@ class Font final
                         const Color &restrict col2,
                         const std::string &restrict text,
                         const int x,
-                        const int y) restrict A_NONNULL(2);
+                        const int y) restrict2 A_NONNULL(2);
 
-        void clear() restrict;
+        void clear() restrict2;
 
-        void doClean() restrict;
+        void doClean() restrict2;
 
-        void slowLogic(const int rnd) restrict;
+        void slowLogic(const int rnd) restrict2;
 
-        int getCreateCounter() const restrict A_WARN_UNUSED
+        int getCreateCounter() const restrict2 A_WARN_UNUSED
         { return mCreateCounter; }
 
-        int getDeleteCounter() const restrict A_WARN_UNUSED
+        int getDeleteCounter() const restrict2 A_WARN_UNUSED
         { return mDeleteCounter; }
 
         int getStringIndexAt(const std::string &restrict text,
-                             const int x) const restrict A_WARN_UNUSED;
+                             const int x) const restrict2 A_WARN_UNUSED;
 
-        void generate(TextChunk &restrict chunk) restrict;
+        void generate(TextChunk &restrict chunk) restrict2;
 
-        void insertChunk(TextChunk *const chunk) restrict;
+        void insertChunk(TextChunk *const chunk) restrict2;
 
         static bool mSoftMode;
 
