@@ -63,7 +63,8 @@ class SDL2SoftwareGraphics final : public Graphics
 
         #include "render/softwaregraphicsdef.hpp"
 
-        bool resizeScreen(const int width, const int height) override final;
+        bool resizeScreen(const int width,
+                          const int height) restrict2 override final;
 
     protected:
         int SDL_FakeUpperBlit(const SDL_Surface *const src,

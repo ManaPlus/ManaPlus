@@ -71,7 +71,7 @@ class ModernOpenGLGraphics final : public Graphics
         void removeArray(const uint32_t id,
                          uint32_t *const arr) override final A_NONNULL(3);
 
-        void createGLContext() override final;
+        void createGLContext() restrict2 override final;
 
         #include "render/graphicsdef.hpp"
 

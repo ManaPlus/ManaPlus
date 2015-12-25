@@ -158,7 +158,7 @@ Graphics::~Graphics()
 #endif
 }
 
-void Graphics::setSync(const bool sync)
+void Graphics::setSync(const bool sync) restrict2
 {
     mSync = sync;
 }
@@ -221,7 +221,7 @@ void Graphics::setScale(int scale) restrict2
     mRect.h = static_cast<RectSize>(mHeight);
 }
 
-int Graphics::getOpenGLFlags() const
+int Graphics::getOpenGLFlags() const restrict2
 {
 #ifdef USE_OPENGL
 
@@ -256,7 +256,7 @@ int Graphics::getOpenGLFlags() const
 #endif  // USE_OPENGL
 }
 
-bool Graphics::setOpenGLMode()
+bool Graphics::setOpenGLMode() restrict2
 {
 #ifdef USE_OPENGL
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
@@ -359,7 +359,7 @@ bool Graphics::setOpenGLMode()
 #endif  // USE_OPENGL
 }
 
-int Graphics::getSoftwareFlags() const
+int Graphics::getSoftwareFlags() const restrict2
 {
 #ifdef USE_SDL2
     int displayFlags = SDL_WINDOW_SHOWN;
@@ -383,7 +383,7 @@ int Graphics::getSoftwareFlags() const
 }
 
 #ifdef USE_OPENGL
-void Graphics::createGLContext()
+void Graphics::createGLContext() restrict2
 {
 #ifdef USE_SDL2
     mGLContext = SDL_GL_CreateContext(mWindow);
@@ -391,7 +391,7 @@ void Graphics::createGLContext()
 }
 #endif
 
-void Graphics::updateMemoryInfo()
+void Graphics::updateMemoryInfo() restrict2
 {
 #ifdef USE_OPENGL
     if (mStartFreeMem)
@@ -424,8 +424,9 @@ int Graphics::getMemoryUsage() const restrict2
 }
 
 #ifdef USE_SDL2
-void Graphics::dumpRendererInfo(const char *const str,
-                                const SDL_RendererInfo &info)
+void Graphics::dumpRendererInfo(const char *restrict const str,
+                                const SDL_RendererInfo &restrict info)
+                                restrict2
 {
     logger->log(str, info.name);
     logger->log("flags:");
@@ -440,7 +441,7 @@ void Graphics::dumpRendererInfo(const char *const str,
 }
 #endif
 
-bool Graphics::videoInfo()
+bool Graphics::videoInfo() restrict2
 {
     logger->log("SDL video info");
 #ifdef USE_SDL2
@@ -498,7 +499,7 @@ bool Graphics::videoInfo()
     return true;
 }
 
-bool Graphics::setFullscreen(const bool fs)
+bool Graphics::setFullscreen(const bool fs) restrict2
 {
     if (mFullscreen == fs)
         return true;
@@ -507,7 +508,8 @@ bool Graphics::setFullscreen(const bool fs)
         mHWAccel, mEnableResize, mNoFrame);
 }
 
-bool Graphics::resizeScreen(const int width, const int height)
+bool Graphics::resizeScreen(const int width,
+                            const int height) restrict2
 {
 #ifdef USE_SDL2
     endDraw();
@@ -579,12 +581,12 @@ bool Graphics::resizeScreen(const int width, const int height)
 #endif  // USE_SDL2
 }
 
-int Graphics::getWidth() const
+int Graphics::getWidth() const restrict2
 {
     return mWidth;
 }
 
-int Graphics::getHeight() const
+int Graphics::getHeight() const restrict2
 {
     return mHeight;
 }
@@ -600,13 +602,18 @@ void Graphics::drawNet(const int x1, const int y1,
         drawLine(x, y1, x, y2);
 }
 
-void Graphics::setWindowSize(const int width A_UNUSED,
-                             const int height A_UNUSED)
-{
 #ifdef USE_SDL2
+void Graphics::setWindowSize(const int width,
+                             const int height) restrict2
+{
     SDL_SetWindowSize(mWindow, width, height);
-#endif
 }
+#else
+void Graphics::setWindowSize(const int width A_UNUSED,
+                             const int height A_UNUSED) restrict2
+{
+}
+#endif
 
 void Graphics::pushClipArea(const Rect &restrict area) restrict2
 {
@@ -679,7 +686,7 @@ void Graphics::popClipArea() restrict2
 }
 
 #ifdef USE_OPENGL
-void Graphics::setOpenGLFlags()
+void Graphics::setOpenGLFlags() restrict2
 {
     // here disable/enable probably need convert to mgl
 

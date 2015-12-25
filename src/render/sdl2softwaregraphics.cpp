@@ -1479,7 +1479,8 @@ bool SDL2SoftwareGraphics::setVideoMode(const int w, const int h,
     return videoInfo();
 }
 
-bool SDL2SoftwareGraphics::resizeScreen(const int width, const int height)
+bool SDL2SoftwareGraphics::resizeScreen(const int width,
+                                        const int height) restrict2
 {
     const bool ret = Graphics::resizeScreen(width, height);
 

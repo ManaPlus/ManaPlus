@@ -1216,7 +1216,7 @@ void ModernOpenGLGraphics::clearScreen() const restrict2
         GL_STENCIL_BUFFER_BIT);
 }
 
-void ModernOpenGLGraphics::createGLContext()
+void ModernOpenGLGraphics::createGLContext() restrict2
 {
     if (mGLContext)
         SDL::makeCurrentContext(mGLContext);

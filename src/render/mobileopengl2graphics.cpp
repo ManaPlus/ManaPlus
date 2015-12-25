@@ -1219,7 +1219,7 @@ void MobileOpenGL2Graphics::clearScreen() const restrict2
         GL_STENCIL_BUFFER_BIT);
 }
 
-void MobileOpenGL2Graphics::createGLContext()
+void MobileOpenGL2Graphics::createGLContext() restrict2
 {
     Graphics::createGLContext();
 /*
