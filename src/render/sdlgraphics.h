@@ -59,14 +59,14 @@ class SDLGraphics final : public Graphics
         #include "render/softwaregraphicsdef.hpp"
 
     protected:
-        int SDL_FakeUpperBlit(const SDL_Surface *const src,
-                              SDL_Rect *const srcrect,
-                              const SDL_Surface *const dst,
-                              SDL_Rect *dstrect) const;
+        int SDL_FakeUpperBlit(const SDL_Surface *restrict const src,
+                              SDL_Rect *restrict const srcrect,
+                              const SDL_Surface *restrict const dst,
+                              SDL_Rect *restrict dstrect) const restrict2;
 
-        void drawHLine(int x1, int y, int x2);
+        void drawHLine(int x1, int y, int x2) restrict2;
 
-        void drawVLine(int x, int y1, int y2);
+        void drawVLine(int x, int y1, int y2) restrict2;
 
         uint32_t mOldPixel;
         unsigned int mOldAlpha;

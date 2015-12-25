@@ -179,8 +179,8 @@ bool NormalOpenGLGraphics::setVideoMode(const int w, const int h,
     return setOpenGLMode();
 }
 
-static inline void bindPointerIntFloat(const GLint *const vert,
-                                       const GLfloat *const tex)
+static inline void bindPointerIntFloat(const GLint *restrict const vert,
+                                       const GLfloat *restrict const tex)
 {
     if (vertPtr != vert)
     {
@@ -190,8 +190,8 @@ static inline void bindPointerIntFloat(const GLint *const vert,
     }
 }
 
-static inline void bindPointerInt(const GLint *const vert,
-                                  const GLint *const tex)
+static inline void bindPointerInt(const GLint *restrict const vert,
+                                  const GLint *restrict const tex)
 {
     if (vertPtr != vert)
     {
@@ -201,12 +201,12 @@ static inline void bindPointerInt(const GLint *const vert,
     }
 }
 
-static inline void drawQuad(const Image *const image,
+static inline void drawQuad(const Image *restrict const image,
                             const int srcX, const int srcY,
                             const int dstX, const int dstY,
                             const int width, const int height) A_NONNULL(1);
 
-static inline void drawQuad(const Image *const image,
+static inline void drawQuad(const Image *restrict const image,
                             const int srcX, const int srcY,
                             const int dstX, const int dstY,
                             const int width, const int height)
@@ -268,14 +268,14 @@ static inline void drawQuad(const Image *const image,
     }
 }
 
-static inline void drawRescaledQuad(const Image *const image,
+static inline void drawRescaledQuad(const Image *restrict const image,
                                     const int srcX, const int srcY,
                                     const int dstX, const int dstY,
                                     const int width, const int height,
                                     const int desiredWidth,
                                     const int desiredHeight) A_NONNULL(1);
 
-static inline void drawRescaledQuad(const Image *const image,
+static inline void drawRescaledQuad(const Image *restrict const image,
                                     const int srcX, const int srcY,
                                     const int dstX, const int dstY,
                                     const int width, const int height,
@@ -370,7 +370,7 @@ void NormalOpenGLGraphics::copyImage(const Image *restrict const image,
     drawImageInline(image, dstX, dstY);
 }
 
-void NormalOpenGLGraphics::testDraw()
+void NormalOpenGLGraphics::testDraw() restrict2
 {
     if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
     {
@@ -1508,7 +1508,7 @@ void NormalOpenGLGraphics::bindTexture(const GLenum target,
     }
 }
 
-inline void NormalOpenGLGraphics::drawQuadArrayfi(const int size)
+inline void NormalOpenGLGraphics::drawQuadArrayfi(const int size) restrict2
 {
     bindPointerIntFloat(&mIntVertArray[0], &mFloatTexArray[0]);
 #ifdef DEBUG_DRAW_CALLS
@@ -1518,6 +1518,7 @@ inline void NormalOpenGLGraphics::drawQuadArrayfi(const int size)
 }
 
 inline void NormalOpenGLGraphics::drawQuadArrayfiCached(const int size)
+                                                        restrict2
 {
     bindPointerIntFloat(&mIntVertArrayCached[0], &mFloatTexArrayCached[0]);
 #ifdef DEBUG_DRAW_CALLS
@@ -1526,11 +1527,11 @@ inline void NormalOpenGLGraphics::drawQuadArrayfiCached(const int size)
     glDrawArrays(GL_QUADS, 0, size / 2);
 }
 
-inline void NormalOpenGLGraphics::drawQuadArrayfi(const GLint *const
+inline void NormalOpenGLGraphics::drawQuadArrayfi(const GLint *restrict const
                                                   intVertArray,
-                                                  const GLfloat *const
+                                                  const GLfloat *restrict const
                                                   floatTexArray,
-                                                  const int size)
+                                                  const int size) restrict2
 {
     vertPtr = intVertArray;
     glVertexPointer(2, GL_INT, 0, intVertArray);
@@ -1541,7 +1542,7 @@ inline void NormalOpenGLGraphics::drawQuadArrayfi(const GLint *const
     glDrawArrays(GL_QUADS, 0, size / 2);
 }
 
-inline void NormalOpenGLGraphics::drawQuadArrayii(const int size)
+inline void NormalOpenGLGraphics::drawQuadArrayii(const int size) restrict2
 {
     bindPointerInt(&mIntVertArray[0], &mIntTexArray[0]);
 #ifdef DEBUG_DRAW_CALLS
@@ -1551,6 +1552,7 @@ inline void NormalOpenGLGraphics::drawQuadArrayii(const int size)
 }
 
 inline void NormalOpenGLGraphics::drawQuadArrayiiCached(const int size)
+                                                        restrict2
 {
     bindPointerInt(&mIntVertArrayCached[0], &mIntTexArrayCached[0]);
 #ifdef DEBUG_DRAW_CALLS
@@ -1559,11 +1561,11 @@ inline void NormalOpenGLGraphics::drawQuadArrayiiCached(const int size)
     glDrawArrays(GL_QUADS, 0, size / 2);
 }
 
-inline void NormalOpenGLGraphics::drawQuadArrayii(const GLint *const
+inline void NormalOpenGLGraphics::drawQuadArrayii(const GLint *restrict const
                                                   intVertArray,
-                                                  const GLint *const
+                                                  const GLint *restrict const
                                                   intTexArray,
-                                                  const int size)
+                                                  const int size) restrict2
 {
     vertPtr = intVertArray;
     glVertexPointer(2, GL_INT, 0, intVertArray);
@@ -1574,7 +1576,7 @@ inline void NormalOpenGLGraphics::drawQuadArrayii(const GLint *const
     glDrawArrays(GL_QUADS, 0, size / 2);
 }
 
-inline void NormalOpenGLGraphics::drawLineArrayi(const int size)
+inline void NormalOpenGLGraphics::drawLineArrayi(const int size) restrict2
 {
     glVertexPointer(2, GL_INT, 0, mIntVertArray);
     vertPtr = nullptr;
@@ -1584,7 +1586,7 @@ inline void NormalOpenGLGraphics::drawLineArrayi(const int size)
     glDrawArrays(GL_LINES, 0, size / 2);
 }
 
-inline void NormalOpenGLGraphics::drawLineArrayf(const int size)
+inline void NormalOpenGLGraphics::drawLineArrayf(const int size) restrict2
 {
     glVertexPointer(2, GL_FLOAT, 0, mFloatTexArray);
     vertPtr = nullptr;

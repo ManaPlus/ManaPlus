@@ -68,15 +68,21 @@ bool SafeOpenGLGraphics::setVideoMode(const int w, const int h,
     return setOpenGLMode();
 }
 
-static inline void drawQuad(const Image *image,
-                            const int srcX, const int srcY,
-                            const int dstX, const int dstY,
-                            const int width, const int height) A_NONNULL(1);
+static inline void drawQuad(const Image *restrict image,
+                            const int srcX,
+                            const int srcY,
+                            const int dstX,
+                            const int dstY,
+                            const int width,
+                            const int height) A_NONNULL(1);
 
-static inline void drawQuad(const Image *image,
-                            const int srcX, const int srcY,
-                            const int dstX, const int dstY,
-                            const int width, const int height)
+static inline void drawQuad(const Image *restrict image,
+                            const int srcX,
+                            const int srcY,
+                            const int dstX,
+                            const int dstY,
+                            const int width,
+                            const int height)
 {
     if (SafeOpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
     {
@@ -110,14 +116,14 @@ static inline void drawQuad(const Image *image,
     }
 }
 
-static inline void drawRescaledQuad(const Image *const image,
+static inline void drawRescaledQuad(const Image *restrict const image,
                                     const int srcX, const int srcY,
                                     const int dstX, const int dstY,
                                     const int width, const int height,
                                     const int desiredWidth,
                                     const int desiredHeight) A_NONNULL(1);
 
-static inline void drawRescaledQuad(const Image *const image,
+static inline void drawRescaledQuad(const Image *restrict const image,
                                     const int srcX, const int srcY,
                                     const int dstX, const int dstY,
                                     const int width, const int height,
@@ -187,7 +193,7 @@ void SafeOpenGLGraphics::copyImage(const Image *restrict const image,
     drawImageInline(image, dstX, dstY);
 }
 
-void SafeOpenGLGraphics::testDraw()
+void SafeOpenGLGraphics::testDraw() restrict2
 {
     if (SafeOpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
     {
@@ -687,7 +693,8 @@ void SafeOpenGLGraphics::drawRectangle(const Rect &restrict rect,
     BLOCK_END("Graphics::drawRectangle")
 }
 
-void SafeOpenGLGraphics::bindTexture(const GLenum target, const GLuint texture)
+void SafeOpenGLGraphics::bindTexture(const GLenum target,
+                                     const GLuint texture)
 {
     if (mTextureBinded != texture)
     {

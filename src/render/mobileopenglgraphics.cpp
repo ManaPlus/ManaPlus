@@ -101,7 +101,7 @@ MobileOpenGLGraphics::~MobileOpenGLGraphics()
     deleteArraysInternal();
 }
 
-void MobileOpenGLGraphics::postInit()
+void MobileOpenGLGraphics::postInit() restrict2
 {
 //    glesTest();
 }
@@ -157,15 +157,21 @@ bool MobileOpenGLGraphics::setVideoMode(const int w, const int h,
     return setOpenGLMode();
 }
 
-static inline void drawQuad(const Image *const image,
-                            const int srcX, const int srcY,
-                            const int dstX, const int dstY,
-                            const int width, const int height) A_NONNULL(1);
+static inline void drawQuad(const Image *restrict const image,
+                            const int srcX,
+                            const int srcY,
+                            const int dstX,
+                            const int dstY,
+                            const int width,
+                            const int height) A_NONNULL(1);
 
-static inline void drawQuad(const Image *const image,
-                            const int srcX, const int srcY,
-                            const int dstX, const int dstY,
-                            const int width, const int height)
+static inline void drawQuad(const Image *restrict const image,
+                            const int srcX,
+                            const int srcY,
+                            const int dstX,
+                            const int dstY,
+                            const int width,
+                            const int height)
 {
 //    if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
     {
@@ -204,14 +210,14 @@ static inline void drawQuad(const Image *const image,
     }
 }
 
-static inline void drawRescaledQuad(const Image *const image,
+static inline void drawRescaledQuad(const Image *restrict const image,
                                     const int srcX, const int srcY,
                                     const int dstX, const int dstY,
                                     const int width, const int height,
                                     const int desiredWidth,
                                     const int desiredHeight) A_NONNULL(1);
 
-static inline void drawRescaledQuad(const Image *const image,
+static inline void drawRescaledQuad(const Image *restrict const image,
                                     const int srcX, const int srcY,
                                     const int dstX, const int dstY,
                                     const int width, const int height,
@@ -1203,7 +1209,7 @@ void MobileOpenGLGraphics::bindTexture(const GLenum target,
     }
 }
 
-inline void MobileOpenGLGraphics::drawTriangleArrayfs(const int size)
+inline void MobileOpenGLGraphics::drawTriangleArrayfs(const int size) restrict2
 {
     glVertexPointer(2, GL_SHORT, 0, mShortVertArray);
     glTexCoordPointer(2, GL_FLOAT, 0, mFloatTexArray);
@@ -1214,7 +1220,7 @@ inline void MobileOpenGLGraphics::drawTriangleArrayfs(const int size)
     mglDrawArrays(GL_TRIANGLES, 0, size / 2);
 }
 
-inline void MobileOpenGLGraphics::drawTriangleArrayfsCached(const int size)
+inline void MobileOpenGLGraphics::drawTriangleArrayfsCached(const int size) restrict2
 {
     glVertexPointer(2, GL_SHORT, 0, mShortVertArrayCached);
     glTexCoordPointer(2, GL_FLOAT, 0, mFloatTexArrayCached);
@@ -1225,11 +1231,11 @@ inline void MobileOpenGLGraphics::drawTriangleArrayfsCached(const int size)
     mglDrawArrays(GL_TRIANGLES, 0, size / 2);
 }
 
-inline void MobileOpenGLGraphics::drawTriangleArrayfs(const GLshort *const
-                                                      shortVertArray,
-                                                      const GLfloat *const
-                                                      floatTexArray,
-                                                      const int size)
+inline void MobileOpenGLGraphics::drawTriangleArrayfs(const GLshort *restrict
+                                                      const shortVertArray,
+                                                      const GLfloat *restrict
+                                                      const floatTexArray,
+                                                      const int size) restrict2
 {
     glVertexPointer(2, GL_SHORT, 0, shortVertArray);
     glTexCoordPointer(2, GL_FLOAT, 0, floatTexArray);
@@ -1240,7 +1246,7 @@ inline void MobileOpenGLGraphics::drawTriangleArrayfs(const GLshort *const
     mglDrawArrays(GL_TRIANGLES, 0, size / 2);
 }
 
-inline void MobileOpenGLGraphics::drawLineArrays(const int size)
+inline void MobileOpenGLGraphics::drawLineArrays(const int size) restrict2
 {
     glVertexPointer(2, GL_SHORT, 0, mShortVertArray);
 

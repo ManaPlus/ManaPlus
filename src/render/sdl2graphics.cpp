@@ -90,10 +90,10 @@
 #define MSDL_RenderCopy(render, texture, src, dst) \
     FakeSDL_RenderCopy(render, texture, src, dst)
 
-static int FakeSDL_RenderCopy(SDL_Renderer *const renderer,
-                              SDL_Texture *const texture,
-                              const SDL_Rect *const srcrect,
-                              const SDL_Rect *const dstrect)
+static int FakeSDL_RenderCopy(SDL_Renderer *restrict const renderer,
+                              SDL_Texture *restrict const texture,
+                              const SDL_Rect *restrict const srcrect,
+                              const SDL_Rect *restrict const dstrect)
 {
     int ret = SDL_RenderCopy(renderer, texture, srcrect, dstrect);
     if (ret)
@@ -780,7 +780,7 @@ void SDLGraphics::drawImageRect(const int x, const int y,
 void SDLGraphics::calcImageRect(ImageVertexes *restrict const vert,
                                 const int x, const int y,
                                 const int w, const int h,
-                                const ImageRect &restrict imgRect)
+                                const ImageRect &restrict imgRect) restrict2
 {
     #include "render/graphics_calcImageRect.hpp"
 }

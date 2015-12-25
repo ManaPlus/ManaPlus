@@ -126,7 +126,7 @@ MobileOpenGL2Graphics::~MobileOpenGL2Graphics()
     deleteGLObjects();
 }
 
-void MobileOpenGL2Graphics::deleteGLObjects()
+void MobileOpenGL2Graphics::deleteGLObjects() restrict2
 {
     delete2(mProgram);
     if (mVbo)
@@ -154,7 +154,7 @@ void MobileOpenGL2Graphics::initArrays(const int vertCount) restrict2
         mFloatArrayCached = new GLfloat[sz];
 }
 
-void MobileOpenGL2Graphics::postInit()
+void MobileOpenGL2Graphics::postInit() restrict2
 {
 #ifndef __native_client__
     mglGenVertexArrays(1, &mVao);
@@ -203,7 +203,7 @@ void MobileOpenGL2Graphics::postInit()
     mglActiveTexture(GL_TEXTURE0);
 }
 
-void MobileOpenGL2Graphics::screenResized()
+void MobileOpenGL2Graphics::screenResized() restrict2
 {
     deleteGLObjects();
     mVboBinded = 0U;
@@ -260,9 +260,12 @@ void MobileOpenGL2Graphics::setColorAlpha(const float alpha) restrict2
     }
 }
 
-void MobileOpenGL2Graphics::drawQuad(const int srcX, const int srcY,
-                                     const int dstX, const int dstY,
-                                     const int width, const int height)
+void MobileOpenGL2Graphics::drawQuad(const int srcX,
+                                     const int srcY,
+                                     const int dstX,
+                                     const int dstY,
+                                     const int width,
+                                     const int height) restrict2
 {
     const GLfloat texX2 = srcX + width;
     const GLfloat texY2 = srcY + height;
@@ -293,7 +296,7 @@ void MobileOpenGL2Graphics::drawRescaledQuad(const int srcX, const int srcY,
                                              const int dstX, const int dstY,
                                              const int width, const int height,
                                              const int desiredWidth,
-                                             const int desiredHeight)
+                                             const int desiredHeight) restrict2
 {
     const GLfloat texX2 = srcX + width;
     const GLfloat texY2 = srcY + height;
@@ -357,7 +360,7 @@ void MobileOpenGL2Graphics::copyImage(const Image *restrict const image,
     drawImageInline(image, dstX, dstY);
 }
 
-void MobileOpenGL2Graphics::testDraw()
+void MobileOpenGL2Graphics::testDraw() restrict2
 {
 /*
     GLfloat vertices[] =
@@ -718,8 +721,8 @@ void MobileOpenGL2Graphics::drawTileCollection(const ImageCollection
     }
 }
 
-void MobileOpenGL2Graphics::calcPattern(ImageCollection* const vertCol,
-                                        const Image *const image,
+void MobileOpenGL2Graphics::calcPattern(ImageCollection *restrict const vertCol,
+                                        const Image *restrict const image,
                                         const int x,
                                         const int y,
                                         const int w,
@@ -1098,7 +1101,7 @@ void MobileOpenGL2Graphics::drawNet(const int x1, const int y1,
 }
 
 void MobileOpenGL2Graphics::bindTexture2(const GLenum target,
-                                         const Image *const image)
+                                         const Image *restrict const image)
 {
     const GLuint texture = image->mGLImage;
     if (mTextureBinded != texture)
@@ -1129,7 +1132,7 @@ void MobileOpenGL2Graphics::bindTexture(const GLenum target,
 }
 
 void MobileOpenGL2Graphics::removeArray(const uint32_t sz,
-                                        uint32_t *const arr)
+                                        uint32_t *restrict const arr) restrict2
 {
     mglDeleteBuffers(sz, arr);
     for (size_t f = 0; f < sz; f ++)
@@ -1139,7 +1142,7 @@ void MobileOpenGL2Graphics::removeArray(const uint32_t sz,
     }
 }
 
-void MobileOpenGL2Graphics::bindArrayBuffer(const GLuint vbo)
+void MobileOpenGL2Graphics::bindArrayBuffer(const GLuint vbo) restrict2
 {
     if (mVboBinded != vbo)
     {
@@ -1150,6 +1153,7 @@ void MobileOpenGL2Graphics::bindArrayBuffer(const GLuint vbo)
 }
 
 void MobileOpenGL2Graphics::bindArrayBufferAndAttributes(const GLuint vbo)
+                                                         restrict2
 {
     if (mVboBinded != vbo)
     {
@@ -1166,7 +1170,7 @@ void MobileOpenGL2Graphics::bindArrayBufferAndAttributes(const GLuint vbo)
     }
 }
 
-void MobileOpenGL2Graphics::bindAttributes()
+void MobileOpenGL2Graphics::bindAttributes() restrict2
 {
     if (mAttributesBinded != mVboBinded)
     {
@@ -1230,7 +1234,8 @@ void MobileOpenGL2Graphics::createGLContext() restrict2
 */
 }
 
-void MobileOpenGL2Graphics::finalize(ImageCollection *const col)
+void MobileOpenGL2Graphics::finalize(ImageCollection *restrict const col)
+                                     restrict2
 {
     if (!col)
         return;
@@ -1238,7 +1243,8 @@ void MobileOpenGL2Graphics::finalize(ImageCollection *const col)
         finalize(*it);
 }
 
-void MobileOpenGL2Graphics::finalize(ImageVertexes *const vert)
+void MobileOpenGL2Graphics::finalize(ImageVertexes *restrict const vert)
+                                     restrict2
 {
     // in future need convert in each switchVp/continueVp
 
@@ -1275,7 +1281,7 @@ void MobileOpenGL2Graphics::finalize(ImageVertexes *const vert)
     floatTexPool.clear();
 }
 
-void MobileOpenGL2Graphics::drawTriangleArray(const int size)
+void MobileOpenGL2Graphics::drawTriangleArray(const int size) restrict2
 {
     mglBufferData(GL_ARRAY_BUFFER, size * sizeof(GLfloat),
         mFloatArray, GL_STREAM_DRAW);
@@ -1285,8 +1291,9 @@ void MobileOpenGL2Graphics::drawTriangleArray(const int size)
     mglDrawArrays(GL_TRIANGLES, 0, size / 4);
 }
 
-void MobileOpenGL2Graphics::drawTriangleArray(const GLfloat *const array,
-                                              const int size)
+void MobileOpenGL2Graphics::drawTriangleArray(const GLfloat *restrict const
+                                              array,
+                                              const int size) restrict2
 {
     mglBufferData(GL_ARRAY_BUFFER, size * sizeof(GLfloat),
         array, GL_STREAM_DRAW);
@@ -1296,7 +1303,7 @@ void MobileOpenGL2Graphics::drawTriangleArray(const GLfloat *const array,
     mglDrawArrays(GL_TRIANGLES, 0, size / 4);
 }
 
-void MobileOpenGL2Graphics::drawLineArrays(const int size)
+void MobileOpenGL2Graphics::drawLineArrays(const int size) restrict2
 {
     mglBufferData(GL_ARRAY_BUFFER, size * sizeof(GLfloat),
         mFloatArray, GL_STREAM_DRAW);

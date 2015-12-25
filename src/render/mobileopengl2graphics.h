@@ -56,20 +56,23 @@ class MobileOpenGL2Graphics final : public Graphics
 
         ~MobileOpenGL2Graphics();
 
-        void postInit() override final;
+        void postInit() restrict2 override final;
 
         void setColor(const Color &restrict color) restrict2 override final;
 
-        void screenResized() override final;
+        void screenResized() restrict2 override final;
 
-        void finalize(ImageCollection *const col) override final;
+        void finalize(ImageCollection *restrict const col)
+                      restrict2 override final;
 
-        void finalize(ImageVertexes *const vert) override final;
+        void finalize(ImageVertexes *restrict const vert)
+                      restrict2 override final;
 
-        void testDraw() override final;
+        void testDraw() restrict2 override final;
 
         void removeArray(const uint32_t id,
-                         uint32_t *const arr) override final A_NONNULL(3);
+                         uint32_t *restrict const arr)
+                         restrict2 override final A_NONNULL(3);
 
         void createGLContext() restrict2 override final;
 
@@ -80,33 +83,33 @@ class MobileOpenGL2Graphics final : public Graphics
         #include "render/openglgraphicsdefadvanced.hpp"
 
     private:
-        void deleteGLObjects();
+        void deleteGLObjects() restrict2;
 
         inline void drawQuad(const int srcX, const int srcY,
                              const int dstX, const int dstY,
-                             const int width, const int height);
+                             const int width, const int height) restrict2;
 
         inline void drawRescaledQuad(const int srcX, const int srcY,
                                      const int dstX, const int dstY,
                                      const int width, const int height,
                                      const int desiredWidth,
-                                     const int desiredHeight);
+                                     const int desiredHeight) restrict2;
 
-        inline void drawTriangleArray(const int size);
+        inline void drawTriangleArray(const int size) restrict2;
 
-        inline void drawTriangleArray(const GLfloat *const array,
-                                      const int size);
+        inline void drawTriangleArray(const GLfloat *restrict const array,
+                                      const int size) restrict2;
 
-        inline void drawLineArrays(const int size);
+        inline void drawLineArrays(const int size) restrict2;
 
-        inline void bindArrayBuffer(const GLuint vbo);
+        inline void bindArrayBuffer(const GLuint vbo) restrict2;
 
-        inline void bindArrayBufferAndAttributes(const GLuint vbo);
+        inline void bindArrayBufferAndAttributes(const GLuint vbo) restrict2;
 
-        inline void bindAttributes();
+        inline void bindAttributes() restrict2;
 
         static void bindTexture2(const GLenum target,
-                                 const Image *const image);
+                                 const Image *restrict const image);
 
         static GLuint mTextureSizeUniform;
         static int mTextureWidth;

@@ -55,27 +55,28 @@ class NormalOpenGLGraphics final : public Graphics
 
         ~NormalOpenGLGraphics();
 
-        inline void drawQuadArrayfi(const int size);
+        inline void drawQuadArrayfi(const int size) restrict2;
 
-        inline void drawQuadArrayfiCached(const int size);
+        inline void drawQuadArrayfiCached(const int size) restrict2;
 
-        inline void drawQuadArrayfi(const GLint *const intVertArray,
-                                    const GLfloat *const floatTexArray,
-                                    const int size);
+        inline void drawQuadArrayfi(const GLint *restrict const intVertArray,
+                                    const GLfloat *restrict const
+                                    floatTexArray,
+                                    const int size) restrict2;
 
-        inline void drawQuadArrayii(const int size);
+        inline void drawQuadArrayii(const int size) restrict2;
 
-        inline void drawQuadArrayiiCached(const int size);
+        inline void drawQuadArrayiiCached(const int size) restrict2;
 
-        inline void drawQuadArrayii(const GLint *const intVertArray,
-                                    const GLint *const intTexArray,
-                                    const int size);
+        inline void drawQuadArrayii(const GLint *restrict const intVertArray,
+                                    const GLint *restrict const intTexArray,
+                                    const int size) restrict2;
 
-        inline void drawLineArrayi(const int size);
+        inline void drawLineArrayi(const int size) restrict2;
 
-        inline void drawLineArrayf(const int size);
+        inline void drawLineArrayf(const int size) restrict2;
 
-        void testDraw() override final;
+        void testDraw() restrict2 override final;
 
         #include "render/graphicsdef.hpp"
 
@@ -86,7 +87,7 @@ class NormalOpenGLGraphics final : public Graphics
         #include "render/openglgraphicsdefadvanced.hpp"
 
 #ifdef DEBUG_BIND_TEXTURE
-        unsigned int getBinds() const
+        unsigned int getBinds() const restrict2
         { return mLastBinds; }
 #endif
 

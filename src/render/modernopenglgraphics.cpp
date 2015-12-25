@@ -122,7 +122,7 @@ ModernOpenGLGraphics::~ModernOpenGLGraphics()
     deleteGLObjects();
 }
 
-void ModernOpenGLGraphics::deleteGLObjects()
+void ModernOpenGLGraphics::deleteGLObjects() restrict2
 {
     delete2(mProgram);
     if (mVbo)
@@ -156,7 +156,7 @@ void ModernOpenGLGraphics::initArrays(const int vertCount) restrict2
         mIntArrayCached = new GLint[sz];
 }
 
-void ModernOpenGLGraphics::postInit()
+void ModernOpenGLGraphics::postInit() restrict2
 {
     mglGenVertexArrays(1, &mVao);
     mglBindVertexArray(mVao);
@@ -202,7 +202,7 @@ void ModernOpenGLGraphics::postInit()
         static_cast<float>(mHeight) / 2.0f);
 }
 
-void ModernOpenGLGraphics::screenResized()
+void ModernOpenGLGraphics::screenResized() restrict2
 {
     deleteGLObjects();
     mVboBinded = 0U;
@@ -260,9 +260,12 @@ void ModernOpenGLGraphics::setColorAlpha(const float alpha) restrict2
     }
 }
 
-void ModernOpenGLGraphics::drawQuad(const int srcX, const int srcY,
-                                    const int dstX, const int dstY,
-                                    const int width, const int height)
+void ModernOpenGLGraphics::drawQuad(const int srcX,
+                                    const int srcY,
+                                    const int dstX,
+                                    const int dstY,
+                                    const int width,
+                                    const int height) restrict2
 {
     const int texX2 = srcX + width;
     const int texY2 = srcY + height;
@@ -290,7 +293,7 @@ void ModernOpenGLGraphics::drawRescaledQuad(const int srcX, const int srcY,
                                             const int dstX, const int dstY,
                                             const int width, const int height,
                                             const int desiredWidth,
-                                            const int desiredHeight)
+                                            const int desiredHeight) restrict2
 {
     const int texX2 = srcX + width;
     const int texY2 = srcY + height;
@@ -348,7 +351,7 @@ void ModernOpenGLGraphics::copyImage(const Image *restrict const image,
     drawImageInline(image, dstX, dstY);
 }
 
-void ModernOpenGLGraphics::testDraw()
+void ModernOpenGLGraphics::testDraw() restrict2
 {
 /*
     GLint vertices[] =
@@ -1094,7 +1097,7 @@ void ModernOpenGLGraphics::bindTexture(const GLenum target,
 }
 
 void ModernOpenGLGraphics::removeArray(const uint32_t sz,
-                                       uint32_t *const arr)
+                                       uint32_t *restrict const arr) restrict2
 {
     mglDeleteBuffers(sz, arr);
     for (size_t f = 0; f < sz; f ++)
@@ -1105,7 +1108,7 @@ void ModernOpenGLGraphics::removeArray(const uint32_t sz,
     }
 }
 
-void ModernOpenGLGraphics::bindArrayBuffer(const GLuint vbo)
+void ModernOpenGLGraphics::bindArrayBuffer(const GLuint vbo) restrict2
 {
     if (mVboBinded != vbo)
     {
@@ -1120,7 +1123,7 @@ void ModernOpenGLGraphics::bindArrayBuffer(const GLuint vbo)
     }
 }
 
-void ModernOpenGLGraphics::bindElementBuffer(const GLuint ebo)
+void ModernOpenGLGraphics::bindElementBuffer(const GLuint ebo) restrict2
 {
     if (mEboBinded != ebo)
     {
@@ -1135,6 +1138,7 @@ void ModernOpenGLGraphics::bindElementBuffer(const GLuint ebo)
 }
 
 void ModernOpenGLGraphics::bindArrayBufferAndAttributes(const GLuint vbo)
+                                                        restrict2
 {
     if (mVboBinded != vbo)
     {
@@ -1162,7 +1166,7 @@ void ModernOpenGLGraphics::bindArrayBufferAndAttributes(const GLuint vbo)
     }
 }
 
-void ModernOpenGLGraphics::bindAttributes()
+void ModernOpenGLGraphics::bindAttributes() restrict2
 {
     if (mAttributesBinded != mVboBinded)
     {
@@ -1205,6 +1209,7 @@ void ModernOpenGLGraphics::calcImageRect(ImageVertexes *restrict const vert,
                                          const int x, const int y,
                                          const int w, const int h,
                                          const ImageRect &restrict imgRect)
+                                         restrict2
 {
     #include "render/graphics_calcImageRect.hpp"
 }
@@ -1224,7 +1229,8 @@ void ModernOpenGLGraphics::createGLContext() restrict2
         mGLContext = SDL::createGLContext(mWindow, 3, 3, 0x01);
 }
 
-void ModernOpenGLGraphics::finalize(ImageCollection *const col)
+void ModernOpenGLGraphics::finalize(ImageCollection *restrict const col)
+                                    restrict2
 {
     if (!col)
         return;
@@ -1232,7 +1238,8 @@ void ModernOpenGLGraphics::finalize(ImageCollection *const col)
         finalize(*it);
 }
 
-void ModernOpenGLGraphics::finalize(ImageVertexes *const vert)
+void ModernOpenGLGraphics::finalize(ImageVertexes *restrict const vert)
+                                    restrict2
 {
     // in future need convert in each switchVp/continueVp
 
@@ -1277,7 +1284,7 @@ void ModernOpenGLGraphics::finalize(ImageVertexes *const vert)
     intTexPool.clear();
 }
 
-void ModernOpenGLGraphics::drawTriangleArray(const int size)
+void ModernOpenGLGraphics::drawTriangleArray(const int size) restrict2
 {
 //    logger->log("allocate: %d, %ld", mVboBinded, size * sizeof(GLint));
     mglBufferData(GL_ARRAY_BUFFER, size * sizeof(GLint),
@@ -1288,8 +1295,8 @@ void ModernOpenGLGraphics::drawTriangleArray(const int size)
     mglDrawArrays(GL_TRIANGLES, 0, size / 4);
 }
 
-void ModernOpenGLGraphics::drawTriangleArray(const GLint *const array,
-                                             const int size)
+void ModernOpenGLGraphics::drawTriangleArray(const GLint *restrict const array,
+                                             const int size) restrict2
 {
 //    logger->log("allocate: %d, %ld", mVboBinded, size * sizeof(GLint));
     mglBufferData(GL_ARRAY_BUFFER, size * sizeof(GLint),

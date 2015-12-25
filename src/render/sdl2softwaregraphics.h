@@ -56,7 +56,7 @@ class SDL2SoftwareGraphics final : public Graphics
          */
         ~SDL2SoftwareGraphics();
 
-        void setRendererFlags(const uint32_t flags) override final
+        void setRendererFlags(const uint32_t flags) restrict2 override final
         { mRendererFlags = flags; }
 
         #include "render/graphicsdef.hpp"
@@ -67,14 +67,14 @@ class SDL2SoftwareGraphics final : public Graphics
                           const int height) restrict2 override final;
 
     protected:
-        int SDL_FakeUpperBlit(const SDL_Surface *const src,
-                              SDL_Rect *const srcrect,
-                              const SDL_Surface *const dst,
-                              SDL_Rect *dstrect) const;
+        int SDL_FakeUpperBlit(const SDL_Surface *restrict const src,
+                              SDL_Rect *restrict const srcrect,
+                              const SDL_Surface *restrict const dst,
+                              SDL_Rect *restrict dstrect) const restrict2;
 
-        void drawHLine(int x1, int y, int x2);
+        void drawHLine(int x1, int y, int x2) restrict2;
 
-        void drawVLine(int x, int y1, int y2);
+        void drawVLine(int x, int y1, int y2) restrict2;
 
         uint32_t mRendererFlags;
         SDL_Surface *mSurface;

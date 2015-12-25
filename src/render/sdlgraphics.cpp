@@ -818,10 +818,10 @@ void SDLGraphics::calcWindow(ImageCollection *restrict const vertCol,
     calcImageRect(vert, x, y, w, h, imgRect);
 }
 
-int SDLGraphics::SDL_FakeUpperBlit(const SDL_Surface *const src,
-                                   SDL_Rect *const srcrect,
-                                   const SDL_Surface *const dst,
-                                   SDL_Rect *dstrect) const
+int SDLGraphics::SDL_FakeUpperBlit(const SDL_Surface *restrict const src,
+                                   SDL_Rect *restrict const srcrect,
+                                   const SDL_Surface *restrict const dst,
+                                   SDL_Rect *restrict dstrect) const restrict2
 {
     int srcx, srcy, w, h;
 
@@ -903,7 +903,7 @@ void SDLGraphics::fillRectangle(const Rect &restrict rectangle) restrict2
     if (mClipStack.empty())
         return;
 
-    const ClipRect& top = mClipStack.top();
+    const ClipRect &restrict top = mClipStack.top();
 
     Rect area = rectangle;
     area.x += top.xOffset;
@@ -1110,7 +1110,7 @@ void SDLGraphics::endDraw() restrict2
 void SDLGraphics::pushClipArea(const Rect &restrict area) restrict2
 {
     Graphics::pushClipArea(area);
-    const ClipRect &carea = mClipStack.top();
+    const ClipRect &restrict carea = mClipStack.top();
     const SDL_Rect rect =
     {
         static_cast<int16_t>(carea.x),
@@ -1128,7 +1128,7 @@ void SDLGraphics::popClipArea() restrict2
     if (mClipStack.empty())
         return;
 
-    const ClipRect &carea = mClipStack.top();
+    const ClipRect &restrict carea = mClipStack.top();
     const SDL_Rect rect =
     {
         static_cast<int16_t>(carea.x),
@@ -1159,7 +1159,7 @@ void SDLGraphics::drawPoint(int x, int y) restrict2
         SDLputPixel(mWindow, x, y, mColor);
 }
 
-void SDLGraphics::drawHLine(int x1, int y, int x2)
+void SDLGraphics::drawHLine(int x1, int y, int x2) restrict2
 {
     if (mClipStack.empty())
         return;
@@ -1286,12 +1286,12 @@ void SDLGraphics::drawHLine(int x1, int y, int x2)
     SDL_UnlockSurface(mWindow);
 }
 
-void SDLGraphics::drawVLine(int x, int y1, int y2)
+void SDLGraphics::drawVLine(int x, int y1, int y2) restrict2
 {
     if (mClipStack.empty())
         return;
 
-    const ClipRect& top = mClipStack.top();
+    const ClipRect &restrict top = mClipStack.top();
 
     const int yOffset = top.yOffset;
     x += top.xOffset;

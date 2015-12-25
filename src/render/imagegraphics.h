@@ -45,36 +45,37 @@ class ImegeGraphics final : public Graphics
 
         ~ImegeGraphics();
 
-        void setTarget(Image *const target)
+        void setTarget(Image *const target) restrict2
         { mTarget = target; }
 
-        Image *getTarget() const
+        Image *getTarget() const restrict2
         { return mTarget; }
 
-        void beginDraw() override final
+        void beginDraw() restrict2 override final
         { }
 
-        void endDraw() override final
+        void endDraw() restrict2 override final
         { }
 
-        void pushClipArea(const Rect &rect A_UNUSED) override final
+        void pushClipArea(const Rect &restrict rect A_UNUSED)
+                          restrict2 override final
         { }
 
         void popClipArea() restrict2 override final
         { }
 
-        void drawRescaledImage(const Image *const image A_UNUSED,
+        void drawRescaledImage(const Image *restrict const image A_UNUSED,
                                int dstX A_UNUSED, int dstY A_UNUSED,
                                const int desiredWidth A_UNUSED,
                                const int desiredHeight A_UNUSED)
-                               override final
+                               restrict2 override final
         { }
 
-        void drawPattern(const Image *const image A_UNUSED,
+        void drawPattern(const Image *restrict const image A_UNUSED,
                          const int x A_UNUSED,
                          const int y A_UNUSED,
                          const int w A_UNUSED,
-                         const int h A_UNUSED) override final
+                         const int h A_UNUSED) restrict2 override final
         { }
 
         void drawRescaledPattern(const Image *const image A_UNUSED,
@@ -87,35 +88,37 @@ class ImegeGraphics final : public Graphics
                                  override final
         { }
 
-        void calcPattern(ImageVertexes *const vert A_UNUSED,
-                         const Image *const image A_UNUSED,
+        void calcPattern(ImageVertexes *restrict const vert A_UNUSED,
+                         const Image *restrict const image A_UNUSED,
                          const int x A_UNUSED,
                          const int y A_UNUSED,
                          const int w A_UNUSED,
-                         const int h A_UNUSED) const override final
+                         const int h A_UNUSED) const restrict2 override final
         { }
 
-        void calcPattern(ImageCollection *const vert A_UNUSED,
-                         const Image *const image A_UNUSED,
+        void calcPattern(ImageCollection *restrict const vert A_UNUSED,
+                         const Image *restrict const image A_UNUSED,
                          const int x A_UNUSED,
                          const int y A_UNUSED,
                          const int w A_UNUSED,
-                         const int h A_UNUSED) const override final
+                         const int h A_UNUSED) const restrict2 override final
         { }
 
-        void calcTileVertexes(ImageVertexes *const vert A_UNUSED,
-                              const Image *const image A_UNUSED,
+        void calcTileVertexes(ImageVertexes *restrict const vert A_UNUSED,
+                              const Image *restrict const image A_UNUSED,
                               int x A_UNUSED,
-                              int y A_UNUSED) const override final
+                              int y A_UNUSED) const restrict2 override final
         { }
 
-        void calcTileSDL(ImageVertexes *const vert A_UNUSED,
-                         int x A_UNUSED, int y A_UNUSED) const override final
+        void calcTileSDL(ImageVertexes *restrict const vert A_UNUSED,
+                         int x A_UNUSED,
+                         int y A_UNUSED) const restrict2 override final
         { }
 
-        void calcTileCollection(ImageCollection *const vertCol A_UNUSED,
-                                const Image *const image A_UNUSED,
-                                int x A_UNUSED, int y A_UNUSED) override final
+        void calcTileCollection(ImageCollection *restrict const vertCol A_UNUSED,
+                                const Image *restrict const image A_UNUSED,
+                                int x A_UNUSED,
+                                int y A_UNUSED) restrict2 override final
         { }
 
         void drawTileVertexes(const ImageVertexes *const
@@ -137,10 +140,11 @@ class ImegeGraphics final : public Graphics
                      const int height A_UNUSED) override final
         { }
 
-        void calcWindow(ImageCollection *const vertCol A_UNUSED,
+        void calcWindow(ImageCollection *restrict const vertCol A_UNUSED,
                         const int x A_UNUSED, const int y A_UNUSED,
                         const int w A_UNUSED, const int h A_UNUSED,
-                        const ImageRect &imgRect A_UNUSED) override final
+                        const ImageRect &restrict imgRect A_UNUSED)
+                        restrict2 override final
         { }
 
         void fillRectangle(const Rect &rect A_UNUSED) override final
@@ -153,7 +157,8 @@ class ImegeGraphics final : public Graphics
         { }
 
         void drawLine(int x1 A_UNUSED, int y1 A_UNUSED,
-                      int x2 A_UNUSED, int y2 A_UNUSED) override final
+                      int x2 A_UNUSED, int y2 A_UNUSED)
+                      restrict2 override final
         { }
 
         bool setVideoMode(const int w A_UNUSED, const int h A_UNUSED,
@@ -173,14 +178,14 @@ class ImegeGraphics final : public Graphics
         void drawImageCached(const Image *const image,
                              int x, int y) override final;
 
-        void drawPatternCached(const Image *const image A_UNUSED,
+        void drawPatternCached(const Image *restrict const image A_UNUSED,
                                const int x A_UNUSED,
                                const int y A_UNUSED,
                                const int w A_UNUSED,
-                               const int h A_UNUSED) override final
+                               const int h A_UNUSED) restrict2 override final
         { }
 
-        void completeCache() override final;
+        void completeCache() restrict2 override final;
 
         /**
          * Draws a rectangle using images. 4 corner images, 4 side images and 1

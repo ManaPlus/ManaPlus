@@ -830,10 +830,13 @@ void SDL2SoftwareGraphics::calcWindow(ImageCollection *restrict const vertCol,
     calcImageRect(vert, x, y, w, h, imgRect);
 }
 
-int SDL2SoftwareGraphics::SDL_FakeUpperBlit(const SDL_Surface *const src,
-                                            SDL_Rect *const srcrect,
-                                            const SDL_Surface *const dst,
-                                            SDL_Rect *dstrect) const
+int SDL2SoftwareGraphics::SDL_FakeUpperBlit(const SDL_Surface *restrict const
+                                            src,
+                                            SDL_Rect *restrict const srcrect,
+                                            const SDL_Surface *restrict const
+                                            dst,
+                                            SDL_Rect *restrict dstrect)
+                                            const restrict2
 {
     int srcx, srcy, w, h;
 
@@ -1154,7 +1157,7 @@ void SDL2SoftwareGraphics::drawPoint(int x, int y) restrict2
         SDLputPixel(mSurface, x, y, mColor);
 }
 
-void SDL2SoftwareGraphics::drawHLine(int x1, int y, int x2)
+void SDL2SoftwareGraphics::drawHLine(int x1, int y, int x2) restrict2
 {
     if (mClipStack.empty())
         return;

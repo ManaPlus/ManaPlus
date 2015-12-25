@@ -106,13 +106,13 @@ bool NullOpenGLGraphics::setVideoMode(const int w, const int h,
     return setOpenGLMode();
 }
 
-static inline void drawQuad(const Image *const image A_UNUSED,
+static inline void drawQuad(const Image *restrict const image A_UNUSED,
                             const int srcX A_UNUSED, const int srcY A_UNUSED,
                             const int dstX A_UNUSED, const int dstY A_UNUSED,
                             const int width A_UNUSED,
                             const int height A_UNUSED) A_NONNULL(1);
 
-static inline void drawQuad(const Image *const image A_UNUSED,
+static inline void drawQuad(const Image *restrict const image A_UNUSED,
                             const int srcX A_UNUSED, const int srcY A_UNUSED,
                             const int dstX A_UNUSED, const int dstY A_UNUSED,
                             const int width A_UNUSED,
@@ -132,7 +132,7 @@ static inline void drawQuad(const Image *const image A_UNUSED,
     }
 }
 
-static inline void drawRescaledQuad(const Image *const image A_UNUSED,
+static inline void drawRescaledQuad(const Image *restrict const image A_UNUSED,
                                     const int srcX A_UNUSED,
                                     const int srcY A_UNUSED,
                                     const int dstX A_UNUSED,
@@ -1118,35 +1118,37 @@ void NullOpenGLGraphics::bindTexture(const GLenum target A_UNUSED,
 }
 
 inline void NullOpenGLGraphics::drawQuadArrayfi(const int size A_UNUSED)
+                                                restrict2
 {
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif
 }
 
-inline void NullOpenGLGraphics::drawQuadArrayfi(const GLint *const
+inline void NullOpenGLGraphics::drawQuadArrayfi(const GLint *restrict const
                                                 intVertArray A_UNUSED,
-                                                const GLfloat *const
+                                                const GLfloat *restrict const
                                                 floatTexArray A_UNUSED,
                                                 const int size A_UNUSED)
+                                                restrict2
 {
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif
 }
 
-inline void NullOpenGLGraphics::drawQuadArrayii(const int size A_UNUSED)
+inline void NullOpenGLGraphics::drawQuadArrayii(const int size A_UNUSED) restrict2
 {
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif
 }
 
-inline void NullOpenGLGraphics::drawQuadArrayii(const GLint *const
+inline void NullOpenGLGraphics::drawQuadArrayii(const GLint *restrict const
                                                 intVertArray A_UNUSED,
-                                                const GLint *const
+                                                const GLint *restrict const
                                                 intTexArray A_UNUSED,
-                                                const int size A_UNUSED)
+                                                const int size A_UNUSED) restrict2
 {
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
@@ -1154,6 +1156,7 @@ inline void NullOpenGLGraphics::drawQuadArrayii(const GLint *const
 }
 
 inline void NullOpenGLGraphics::drawLineArrayi(const int size A_UNUSED)
+                                               restrict2
 {
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
@@ -1161,6 +1164,7 @@ inline void NullOpenGLGraphics::drawLineArrayi(const int size A_UNUSED)
 }
 
 inline void NullOpenGLGraphics::drawLineArrayf(const int size A_UNUSED)
+                                               restrict2
 {
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
@@ -1201,6 +1205,7 @@ void NullOpenGLGraphics::calcImageRect(ImageVertexes *restrict const vert,
                                        const int x, const int y,
                                        const int w, const int h,
                                        const ImageRect &restrict imgRect)
+                                       restrict2
 {
     #include "render/graphics_calcImageRect.hpp"
 }

@@ -55,17 +55,19 @@ class MobileOpenGLGraphics final : public Graphics
 
         ~MobileOpenGLGraphics();
 
-        void postInit() override final;
+        void postInit() restrict2 override final;
 
-        inline void drawTriangleArrayfs(const GLshort *const shortVertArray,
-                                        const GLfloat *const floatTexArray,
-                                        const int size);
+        inline void drawTriangleArrayfs(const GLshort *restrict const
+                                        shortVertArray,
+                                        const GLfloat *restrict const
+                                        floatTexArray,
+                                        const int size) restrict2;
 
-        inline void drawTriangleArrayfs(const int size);
+        inline void drawTriangleArrayfs(const int size) restrict2;
 
-        inline void drawTriangleArrayfsCached(const int size);
+        inline void drawTriangleArrayfsCached(const int size) restrict2;
 
-        inline void drawLineArrays(const int size);
+        inline void drawLineArrays(const int size) restrict2;
 
         #include "render/graphicsdef.hpp"
 
