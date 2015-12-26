@@ -495,8 +495,10 @@ void NormalOpenGLGraphics::drawImageCached(const Image *restrict const image,
 }
 
 void NormalOpenGLGraphics::drawPatternCached(const Image *restrict const image,
-                                             const int x, const int y,
-                                             const int w, const int h) restrict2
+                                             const int x,
+                                             const int y,
+                                             const int w,
+                                             const int h) restrict2
 {
     FUNC_BLOCK("Graphics::drawPatternCached", 1)
     if (!image)
@@ -638,8 +640,10 @@ void NormalOpenGLGraphics::drawPattern(const Image *restrict const image,
 }
 
 void NormalOpenGLGraphics::drawPatternInline(const Image *restrict const image,
-                                             const int x, const int y,
-                                             const int w, const int h) restrict2
+                                             const int x,
+                                             const int y,
+                                             const int w,
+                                             const int h) restrict2
 {
     FUNC_BLOCK("Graphics::drawPattern", 1)
     if (!image)
@@ -732,7 +736,8 @@ void NormalOpenGLGraphics::drawRescaledPattern(const Image *
                                                const int x, const int y,
                                                const int w, const int h,
                                                const int scaledWidth,
-                                               const int scaledHeight) restrict2
+                                               const int scaledHeight)
+                                               restrict2
 {
     if (!image)
         return;
@@ -905,8 +910,10 @@ inline void NormalOpenGLGraphics::drawVertexes(const
 
 void NormalOpenGLGraphics::calcPattern(ImageVertexes *restrict const vert,
                                        const Image *restrict const image,
-                                       const int x, const int y,
-                                       const int w, const int h) const restrict2
+                                       const int x,
+                                       const int y,
+                                       const int w,
+                                       const int h) const restrict2
 {
     calcPatternInline(vert, image, x, y, w, h);
 }
@@ -1029,7 +1036,8 @@ void NormalOpenGLGraphics::calcTileCollection(ImageCollection *
 }
 
 void NormalOpenGLGraphics::drawTileCollection(const ImageCollection
-                                              *restrict const vertCol) restrict2
+                                              *restrict const vertCol)
+                                              restrict2
 {
     if (!vertCol)
         return;

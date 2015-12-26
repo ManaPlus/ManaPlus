@@ -115,7 +115,8 @@ class ImegeGraphics final : public Graphics
                          int y A_UNUSED) const restrict2 override final
         { }
 
-        void calcTileCollection(ImageCollection *restrict const vertCol A_UNUSED,
+        void calcTileCollection(ImageCollection *restrict const
+                                vertCol A_UNUSED,
                                 const Image *restrict const image A_UNUSED,
                                 int x A_UNUSED,
                                 int y A_UNUSED) restrict2 override final

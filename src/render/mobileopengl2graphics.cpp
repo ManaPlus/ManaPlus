@@ -405,7 +405,8 @@ void MobileOpenGL2Graphics::drawRescaledImage(const Image *
                                               restrict const image,
                                               int dstX, int dstY,
                                               const int desiredWidth,
-                                              const int desiredHeight) restrict2
+                                              const int desiredHeight)
+                                              restrict2
 {
     if (!image)
         return;
@@ -700,7 +701,8 @@ void MobileOpenGL2Graphics::calcTileCollection(ImageCollection *
 }
 
 void MobileOpenGL2Graphics::drawTileCollection(const ImageCollection
-                                               *restrict const vertCol) restrict2
+                                               *restrict const vertCol)
+                                               restrict2
 {
     if (!vertCol)
         return;
@@ -750,7 +752,8 @@ void MobileOpenGL2Graphics::calcPattern(ImageCollection *restrict const vertCol,
 void MobileOpenGL2Graphics::calcTileVertexes(ImageVertexes *
                                              restrict const vert,
                                              const Image *restrict const image,
-                                             int dstX, int dstY) const restrict2
+                                             int dstX,
+                                             int dstY) const restrict2
 {
     calcTileVertexesInline(vert, image, dstX, dstY);
 }
@@ -998,7 +1001,8 @@ void MobileOpenGL2Graphics::fillRectangle(const Rect &restrict rect) restrict2
     mglDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
 
-void MobileOpenGL2Graphics::setTexturingAndBlending(const bool enable) restrict2
+void MobileOpenGL2Graphics::setTexturingAndBlending(const bool enable)
+                                                    restrict2
 {
     if (enable)
     {
@@ -1038,9 +1042,12 @@ void MobileOpenGL2Graphics::drawRectangle(const Rect &restrict rect A_UNUSED,
 {
 }
 
-void MobileOpenGL2Graphics::drawNet(const int x1, const int y1,
-                                    const int x2, const int y2,
-                                    const int width, const int height) restrict2
+void MobileOpenGL2Graphics::drawNet(const int x1,
+                                    const int y1,
+                                    const int x2,
+                                    const int y2,
+                                    const int width,
+                                    const int height) restrict2
 {
     unsigned int vp = 0;
     const unsigned int vLimit = mMaxVertices * 4;

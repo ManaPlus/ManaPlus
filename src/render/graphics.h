@@ -213,7 +213,8 @@ class Graphics notfinal
                                       int x, int y) const restrict2 = 0;
 
         virtual void calcTileSDL(ImageVertexes *restrict const vert A_UNUSED,
-                                 int x A_UNUSED, int y A_UNUSED) const restrict2
+                                 int x A_UNUSED,
+                                 int y A_UNUSED) const restrict2
         {
         }
 
@@ -223,16 +224,20 @@ class Graphics notfinal
         virtual void drawTileCollection(const ImageCollection
                                         *restrict const vertCol) restrict2 = 0;
 
-        virtual void calcTileCollection(ImageCollection *restrict const vertCol,
+        virtual void calcTileCollection(ImageCollection *restrict const
+                                        vertCol,
                                         const Image *restrict const image,
-                                        int x, int y) restrict2 = 0;
+                                        int x,
+                                        int y) restrict2 = 0;
 
         virtual void calcWindow(ImageCollection *restrict const vertCol,
                                 const int x, const int y,
                                 const int w, const int h,
-                                const ImageRect &restrict imgRect) restrict2 = 0;
+                                const ImageRect &restrict imgRect)
+                                restrict2 = 0;
 
-        virtual void fillRectangle(const Rect &restrict rectangle) restrict2 = 0;
+        virtual void fillRectangle(const Rect &restrict rectangle)
+                                   restrict2 = 0;
 
         /**
          * Updates the screen. This is done by either copying the buffer to the
@@ -240,10 +245,11 @@ class Graphics notfinal
          */
         virtual void updateScreen() restrict2 = 0;
 
+        void setWindowSize(const int width,
 #ifdef USE_SDL2
-        void setWindowSize(const int width, const int height) restrict2;
+            const int height) restrict2;
 #else
-        void setWindowSize(const int width, const int height) restrict2 A_CONST;
+            const int height) restrict2 A_CONST;
 #endif
 
         /**

@@ -465,8 +465,10 @@ void MobileOpenGLGraphics::drawPattern(const Image *restrict const image,
 }
 
 void MobileOpenGLGraphics::drawPatternInline(const Image *restrict const image,
-                                             const int x, const int y,
-                                             const int w, const int h) restrict2
+                                             const int x,
+                                             const int y,
+                                             const int w,
+                                             const int h) restrict2
 {
     FUNC_BLOCK("Graphics::drawPattern", 1)
     if (!image)
@@ -535,7 +537,8 @@ void MobileOpenGLGraphics::drawRescaledPattern(const Image *
                                                const int x, const int y,
                                                const int w, const int h,
                                                const int scaledWidth,
-                                               const int scaledHeight) restrict2
+                                               const int scaledHeight)
+                                               restrict2
 {
     if (!image)
         return;
@@ -640,8 +643,10 @@ inline void MobileOpenGLGraphics::drawVertexes(const
 
 void MobileOpenGLGraphics::calcPattern(ImageVertexes *restrict const vert,
                                        const Image *restrict const image,
-                                       const int x, const int y,
-                                       const int w, const int h) const restrict2
+                                       const int x,
+                                       const int y,
+                                       const int w,
+                                       const int h) const restrict2
 {
     calcPatternInline(vert, image, x, y, w, h);
 }
@@ -1220,7 +1225,8 @@ inline void MobileOpenGLGraphics::drawTriangleArrayfs(const int size) restrict2
     mglDrawArrays(GL_TRIANGLES, 0, size / 2);
 }
 
-inline void MobileOpenGLGraphics::drawTriangleArrayfsCached(const int size) restrict2
+inline void MobileOpenGLGraphics::drawTriangleArrayfsCached(const int size)
+                                                            restrict2
 {
     glVertexPointer(2, GL_SHORT, 0, mShortVertArrayCached);
     glTexCoordPointer(2, GL_FLOAT, 0, mFloatTexArrayCached);

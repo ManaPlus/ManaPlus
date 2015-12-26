@@ -496,7 +496,8 @@ size_t WhoIsOnline::memoryWrite(void *restrict ptr,
     if (!stream)
         return 0;
 
-    WhoIsOnline *restrict const wio = reinterpret_cast<WhoIsOnline *restrict>(stream);
+    WhoIsOnline *restrict const wio =
+        reinterpret_cast<WhoIsOnline *restrict>(stream);
     const size_t totalMem = size * nmemb;
     wio->mMemoryBuffer = static_cast<char*>(realloc(wio->mMemoryBuffer,
         static_cast<size_t>(wio->mDownloadedBytes) + totalMem));

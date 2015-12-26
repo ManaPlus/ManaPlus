@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_SPRITEDIRECTION_H
-#define RESOURCES_SPRITEDIRECTION_H
+#ifndef ENUMS_RESOURCES_SPRITEDIRECTION_H
+#define ENUMS_RESOURCES_SPRITEDIRECTION_H
 
 namespace SpriteDirection
 {
@@ -40,4 +40,4 @@ namespace SpriteDirection
     };
 }  // namespace SpriteDirection
 
-#endif  // RESOURCES_SPRITEDIRECTION_H
+#endif  // ENUMS_RESOURCES_SPRITEDIRECTION_H

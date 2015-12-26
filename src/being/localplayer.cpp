@@ -2686,4 +2686,3 @@ void LocalPlayer::playerDeath()
         recalcSpritesOrder();
     }
 }
-

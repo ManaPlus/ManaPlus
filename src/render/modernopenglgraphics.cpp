@@ -377,7 +377,8 @@ void ModernOpenGLGraphics::testDraw() restrict2
 
 void ModernOpenGLGraphics::drawImageCached(const Image *restrict const image
                                            A_UNUSED,
-                                           int A_UNUSED x, int y A_UNUSED) restrict2
+                                           int A_UNUSED x,
+                                           int y A_UNUSED) restrict2
 {
 }
 
@@ -435,8 +436,10 @@ void ModernOpenGLGraphics::drawPattern(const Image *restrict const image,
 }
 
 void ModernOpenGLGraphics::drawPatternInline(const Image *restrict const image,
-                                             const int x, const int y,
-                                             const int w, const int h) restrict2
+                                             const int x,
+                                             const int y,
+                                             const int w,
+                                             const int h) restrict2
 {
     if (!image)
         return;
@@ -499,7 +502,8 @@ void ModernOpenGLGraphics::drawRescaledPattern(const Image *
                                                const int x, const int y,
                                                const int w, const int h,
                                                const int scaledWidth,
-                                               const int scaledHeight) restrict2
+                                               const int scaledHeight)
+                                               restrict2
 {
     if (!image)
         return;
@@ -683,7 +687,8 @@ void ModernOpenGLGraphics::calcTileCollection(ImageCollection *
 }
 
 void ModernOpenGLGraphics::drawTileCollection(const ImageCollection
-                                              *restrict const vertCol) restrict2
+                                              *restrict const vertCol)
+                                              restrict2
 {
     if (!vertCol)
         return;
@@ -713,8 +718,10 @@ void ModernOpenGLGraphics::drawTileCollection(const ImageCollection
 
 void ModernOpenGLGraphics::calcPattern(ImageCollection *restrict const vertCol,
                                        const Image *restrict const image,
-                                       const int x, const int y,
-                                       const int w, const int h) const restrict2
+                                       const int x,
+                                       const int y,
+                                       const int w,
+                                       const int h) const restrict2
 {
     if (!vertCol || !image)
         return;

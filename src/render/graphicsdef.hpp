@@ -89,7 +89,8 @@ public:
     void calcWindow(ImageCollection *restrict const vertCol,
                     const int x, const int y,
                     const int w, const int h,
-                    const ImageRect &restrict imgRect) restrict2 override final;
+                    const ImageRect &restrict imgRect)
+                    restrict2 override final;
 
     void drawRectangle(const Rect &restrict rect) restrict2 override final;
 

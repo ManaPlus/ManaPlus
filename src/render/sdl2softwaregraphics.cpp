@@ -298,8 +298,10 @@ void SDL2SoftwareGraphics::drawImageCached(const Image *restrict const image,
 }
 
 void SDL2SoftwareGraphics::drawPatternCached(const Image *restrict const image,
-                                             const int x, const int y,
-                                             const int w, const int h) restrict2
+                                             const int x,
+                                             const int y,
+                                             const int w,
+                                             const int h) restrict2
 {
     FUNC_BLOCK("Graphics::drawPatternCached", 1)
     // Check that preconditions for blitting are met.
@@ -419,8 +421,10 @@ void SDL2SoftwareGraphics::drawPattern(const Image *restrict const image,
 }
 
 void SDL2SoftwareGraphics::drawPatternInline(const Image *restrict const image,
-                                             const int x, const int y,
-                                             const int w, const int h) restrict2
+                                             const int x,
+                                             const int y,
+                                             const int w,
+                                             const int h) restrict2
 {
     FUNC_BLOCK("Graphics::drawPattern", 1)
     // Check that preconditions for blitting are met.

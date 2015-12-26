@@ -27,8 +27,6 @@
 
 #include <vector>
 
-class Resource;
-
 struct TextureAtlas;
 
 class AtlasResource final : public Resource

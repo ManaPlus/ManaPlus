@@ -452,7 +452,8 @@ void SafeOpenGLGraphics::calcPatternInline(ImageVertexes *restrict const vert
                                            const int x A_UNUSED,
                                            const int y A_UNUSED,
                                            const int w A_UNUSED,
-                                           const int h A_UNUSED) const restrict2
+                                           const int h A_UNUSED)
+                                           const restrict2
 {
 }
 

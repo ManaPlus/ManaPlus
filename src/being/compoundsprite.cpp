@@ -67,7 +67,9 @@ CompoundSprite::CompoundSprite() :
     mOffsetX(0),
     mOffsetY(0),
     mSprites(),
+#ifndef USE_SDL2
     mNextRedrawTime(0),
+#endif
     mNeedsRedraw(false),
     mEnableAlphaFix(config.getBoolValue("enableAlphaFix")),
     mDisableAdvBeingCaching(config.getBoolValue("disableAdvBeingCaching")),

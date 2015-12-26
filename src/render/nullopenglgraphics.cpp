@@ -923,7 +923,8 @@ void NullOpenGLGraphics::drawTileVertexes(const ImageVertexes *
 void NullOpenGLGraphics::calcWindow(ImageCollection *restrict const vertCol,
                                     const int x, const int y,
                                     const int w, const int h,
-                                    const ImageRect &restrict imgRect) restrict2
+                                    const ImageRect &restrict imgRect)
+                                    restrict2
 {
     if (!vertCol)
         return;
@@ -1137,7 +1138,8 @@ inline void NullOpenGLGraphics::drawQuadArrayfi(const GLint *restrict const
 #endif
 }
 
-inline void NullOpenGLGraphics::drawQuadArrayii(const int size A_UNUSED) restrict2
+inline void NullOpenGLGraphics::drawQuadArrayii(const int size A_UNUSED)
+                                                restrict2
 {
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
@@ -1148,7 +1150,8 @@ inline void NullOpenGLGraphics::drawQuadArrayii(const GLint *restrict const
                                                 intVertArray A_UNUSED,
                                                 const GLint *restrict const
                                                 intTexArray A_UNUSED,
-                                                const int size A_UNUSED) restrict2
+                                                const int size A_UNUSED)
+                                                restrict2
 {
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;

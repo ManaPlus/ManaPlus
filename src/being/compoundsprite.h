@@ -138,7 +138,9 @@ class CompoundSprite notfinal : public Sprite
         mutable int mOffsetX;
         mutable int mOffsetY;
         std::vector<Sprite*> mSprites;
+#ifndef USE_SDL2
         mutable int mNextRedrawTime;
+#endif
         static bool mEnableDelay;
         mutable bool mNeedsRedraw;
         bool mEnableAlphaFix;
