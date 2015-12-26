@@ -85,8 +85,13 @@
 #else
 #define restrict2 __restrict__
 #endif
+#ifndef ENABLE_CILKPLUS
 #define A_CONST __attribute__ ((const))
 #define A_PURE __attribute__ ((pure))
+#else
+#define A_CONST
+#define A_PURE
+#endif
 
 #ifdef __INTEL_COMPILER
 #define RETURNS_NONNULL
