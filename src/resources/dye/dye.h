@@ -45,7 +45,7 @@ class Dye final
          * The parts of string are separated by semi-colons. Each part starts
          * by an uppercase letter, followed by a colon and then a palette name.
          */
-        explicit Dye(const std::string &dye);
+        explicit Dye(const std::string &restrict dye);
 
         A_DELETE_COPY(Dye)
 
@@ -75,11 +75,13 @@ class Dye final
         /**
          * Return dye type for S - 1, for A - 2, 0 for other
          */
-        int getType() const A_WARN_UNUSED;
+        int getType() const restrict2 A_WARN_UNUSED;
 
-        void normalDye(uint32_t *restrict pixels, const int bufSize) const;
+        void normalDye(uint32_t *restrict pixels,
+                       const int bufSize) const restrict2;
 
-        void normalOGLDye(uint32_t *restrict pixels, const int bufSize) const;
+        void normalOGLDye(uint32_t *restrict pixels,
+                          const int bufSize) const restrict2;
 
     private:
         /**
@@ -87,7 +89,7 @@ class Dye final
          *
          * Red, Green, Yellow, Blue, Magenta, White (or rather gray), Simple.
          */
-        DyePalette *mDyePalettes[dyePalateSize];
+        DyePalette *restrict mDyePalettes[dyePalateSize];
 };
 
 #endif  // RESOURCES_DYE_DYE_H

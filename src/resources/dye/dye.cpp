@@ -34,7 +34,7 @@
 
 #include "debug.h"
 
-Dye::Dye(const std::string &description)
+Dye::Dye(const std::string &restrict description)
 {
     for (int i = 0; i < dyePalateSize; ++i)
         mDyePalettes[i] = nullptr;
@@ -139,7 +139,7 @@ void Dye::instantiate(std::string &restrict target,
     target = s.str();
 }
 
-int Dye::getType() const
+int Dye::getType() const restrict2
 {
     if (mDyePalettes[sPaleteIndex])
         return 1;
@@ -148,7 +148,8 @@ int Dye::getType() const
     return 0;
 }
 
-void Dye::normalDye(uint32_t *restrict pixels, const int bufSize) const
+void Dye::normalDye(uint32_t *restrict pixels,
+                    const int bufSize) const restrict2
 {
     if (!pixels)
         return;
@@ -266,7 +267,8 @@ endlabel:{}
 #endif  // ENABLE_CILKPLUS
 }
 
-void Dye::normalOGLDye(uint32_t *restrict pixels, const int bufSize) const
+void Dye::normalOGLDye(uint32_t *restrict pixels,
+                       const int bufSize) const restrict2
 {
     if (!pixels)
         return;
