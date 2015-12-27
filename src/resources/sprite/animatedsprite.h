@@ -39,7 +39,7 @@ class AnimatedSprite final : public Sprite
          * Constructor.
          * @param sprite the sprite to animate
          */
-        explicit AnimatedSprite(SpriteDef *const sprite);
+        explicit AnimatedSprite(SpriteDef *restrict const sprite);
 
         A_DELETE_COPY(AnimatedSprite)
 
@@ -50,83 +50,90 @@ class AnimatedSprite final : public Sprite
          * @param filename the file of the sprite to animate
          * @param variant  the sprite variant
          */
-        static AnimatedSprite *load(const std::string &filename,
+        static AnimatedSprite *load(const std::string &restrict filename,
                                     const int variant = 0) A_WARN_UNUSED;
 
-        static AnimatedSprite *delayedLoad(const std::string &filename,
+        static AnimatedSprite *delayedLoad(const std::string &restrict
+                                           filename,
                                            const int variant = 0)
                                            A_WARN_UNUSED;
 
-        static AnimatedSprite *clone(const AnimatedSprite *const anim);
+        static AnimatedSprite *clone(const AnimatedSprite *restrict const
+                                     anim);
 
         ~AnimatedSprite();
 
-        bool reset() override final;
+        bool reset() restrict2 override final;
 
-        bool play(const std::string &action) override final;
+        bool play(const std::string &restrict action) restrict2 override final;
 
-        bool update(const int time) override final;
+        bool update(const int time) restrict2 override final;
 
-        void draw(Graphics *const graphics,
+        void draw(Graphics *restrict const graphics,
                   const int posX,
-                  const int posY) const override final A_NONNULL(2);
+                  const int posY) const restrict2 override final A_NONNULL(2);
 
-        int getWidth() const override final A_WARN_UNUSED;
+        int getWidth() const restrict2 override final A_WARN_UNUSED;
 
-        int getHeight() const override final A_WARN_UNUSED;
+        int getHeight() const restrict2 override final A_WARN_UNUSED;
 
-        const Image* getImage() const override final A_WARN_UNUSED;
+        const Image* getImage() const restrict2 override final A_WARN_UNUSED;
 
         bool setSpriteDirection(const SpriteDirection::Type direction)
-                                override final;
+                                restrict2 override final;
 
-        int getNumberOfLayers() const A_WARN_UNUSED
+        int getNumberOfLayers() const restrict2 A_WARN_UNUSED
         { return 1; }
 
-        std::string getIdPath() const A_WARN_UNUSED;
+        std::string getIdPath() const restrict2 A_WARN_UNUSED;
 
-        unsigned int getCurrentFrame() const override final A_WARN_UNUSED;
+        unsigned int getCurrentFrame() const
+                                     restrict2 override final A_WARN_UNUSED
+        { return mFrameIndex; }
 
-        unsigned int getFrameCount() const override final A_WARN_UNUSED;
+        unsigned int getFrameCount() const
+                                   restrict2 override final A_WARN_UNUSED;
 
-        void setAlpha(float alpha) override final;
+        void setAlpha(float alpha) restrict2 override final;
 
-        const void *getHash() const override final A_WARN_UNUSED;
+        const void *getHash() const restrict2 override final A_WARN_UNUSED;
 
-        bool updateNumber(const unsigned num) override final;
+        bool updateNumber(const unsigned num) restrict2 override final;
 
-        void clearDelayLoad();
+        void clearDelayLoad() restrict2
+        { mDelayLoad = nullptr; }
 
-        void setSprite(SpriteDef *const sprite)
+        void setSprite(SpriteDef *restrict const sprite) restrict2
         { mSprite = sprite; }
 
-        bool isTerminated() const
+        bool isTerminated() const restrict2
         { return mTerminated; }
 
         static void setEnableCache(const bool b)
         { mEnableCache = b; }
 
 #ifdef UNITTESTS
-        SpriteDef *getSprite()
+        SpriteDef *getSprite() restrict2
         { return mSprite; }
 
-        const Frame *getFrame() const
+        const Frame *getFrame() const restrict2
         { return mFrame; }
 
-        const Animation *getAnimation() const
+        const Animation *getAnimation() const restrict2
         { return mAnimation; }
 
-        unsigned int getFrameIndex() const
+        unsigned int getFrameIndex() const restrict2
         { return mFrameIndex; }
 
-        unsigned int getFrameTime() const
+        unsigned int getFrameTime() const restrict2
         { return mFrameTime; }
 #endif
 
     private:
-        bool updateCurrentAnimation(const unsigned int dt);
+        bool updateCurrentAnimation(const unsigned int dt) restrict2;
 
-        void setDelayLoad(const std::string &filename, const int variant);
+        void setDelayLoad(const std::string &restrict filename,
+                          const int variant) restrict2;
 
         SpriteDirection::Type mDirection;  /**< The sprite direction. */
         int mLastTime;                 /**< The last time update was called. */
@@ -134,10 +141,10 @@ class AnimatedSprite final : public Sprite
         unsigned int mFrameIndex;      /**< The index of the current frame. */
         unsigned int mFrameTime;       /**< The time since start of frame. */
 
-        SpriteDef *mSprite;            /**< The sprite definition. */
-        const Action *mAction;         /**< The currently active action. */
-        const Animation *mAnimation;   /**< The currently active animation. */
-        const Frame *mFrame;           /**< The currently active frame. */
+        SpriteDef *restrict mSprite;            /**< The sprite definition. */
+        const Action *restrict mAction;         /**< The currently active action. */
+        const Animation *restrict mAnimation;   /**< The currently active animation. */
+        const Frame *restrict mFrame;           /**< The currently active frame. */
         unsigned mNumber;
         unsigned mNumber1;
         AnimationDelayLoad *mDelayLoad;

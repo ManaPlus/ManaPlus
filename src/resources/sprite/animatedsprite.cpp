@@ -40,7 +40,7 @@
 
 bool AnimatedSprite::mEnableCache = false;
 
-AnimatedSprite::AnimatedSprite(SpriteDef *const sprite) :
+AnimatedSprite::AnimatedSprite(SpriteDef *restrict const sprite) :
     mDirection(SpriteDirection::DOWN),
     mLastTime(0),
     mFrameIndex(0),
@@ -61,41 +61,45 @@ AnimatedSprite::AnimatedSprite(SpriteDef *const sprite) :
         mSprite->incRef();
 }
 
-AnimatedSprite *AnimatedSprite::load(const std::string &filename,
+AnimatedSprite *AnimatedSprite::load(const std::string &restrict filename,
                                      const int variant)
 {
-    SpriteDef *const s = resourceManager->getSprite(filename, variant);
+    SpriteDef *restrict const s = resourceManager->getSprite(
+        filename, variant);
     if (!s)
         return nullptr;
-    AnimatedSprite *const as = new AnimatedSprite(s);
+    AnimatedSprite *restrict const as = new AnimatedSprite(s);
     as->play(SpriteAction::STAND);
     s->decRef();
     return as;
 }
 
-AnimatedSprite *AnimatedSprite::delayedLoad(const std::string &filename,
+AnimatedSprite *AnimatedSprite::delayedLoad(const std::string &restrict
+                                            filename,
                                             const int variant)
 {
     if (!mEnableCache)
         return load(filename, variant);
-    Resource *const res = resourceManager->getFromCache(filename, variant);
+    Resource *restrict const res = resourceManager->getFromCache(
+        filename, variant);
     if (res)
     {
         res->decRef();
         return load(filename, variant);
     }
 
-    AnimatedSprite *const as = new AnimatedSprite(nullptr);
+    AnimatedSprite *restrict const as = new AnimatedSprite(nullptr);
     as->play(SpriteAction::STAND);
     as->setDelayLoad(filename, variant);
     return as;
 }
 
-AnimatedSprite *AnimatedSprite::clone(const AnimatedSprite *const anim)
+AnimatedSprite *AnimatedSprite::clone(const AnimatedSprite *restrict const
+                                      anim)
 {
     if (!anim)
         return nullptr;
-    AnimatedSprite *const sprite = new AnimatedSprite(anim->mSprite);
+    AnimatedSprite *restrict const sprite = new AnimatedSprite(anim->mSprite);
     sprite->play(SpriteAction::STAND);
     return sprite;
 }
@@ -115,7 +119,7 @@ AnimatedSprite::~AnimatedSprite()
     }
 }
 
-bool AnimatedSprite::reset()
+bool AnimatedSprite::reset() restrict2
 {
     const bool ret = mFrameIndex !=0 ||
         mFrameTime != 0 ||
@@ -132,7 +136,7 @@ bool AnimatedSprite::reset()
     return ret;
 }
 
-bool AnimatedSprite::play(const std::string &spriteAction)
+bool AnimatedSprite::play(const std::string &restrict spriteAction) restrict2
 {
     if (!mSprite)
     {
@@ -162,7 +166,7 @@ bool AnimatedSprite::play(const std::string &spriteAction)
     return false;
 }
 
-bool AnimatedSprite::update(const int time)
+bool AnimatedSprite::update(const int time) restrict2
 {
     // Avoid freaking out at first frame or when tick_time overflows
     if (time < mLastTime || mLastTime == 0)
@@ -175,8 +179,8 @@ bool AnimatedSprite::update(const int time)
     const unsigned int dt = time - mLastTime;
     mLastTime = time;
 
-    const Animation *const animation = mAnimation;
-    const Frame *const frame = mFrame;
+    const Animation *restrict const animation = mAnimation;
+    const Frame *restrict const frame = mFrame;
 
     if (!updateCurrentAnimation(dt))
     {
@@ -189,7 +193,7 @@ bool AnimatedSprite::update(const int time)
     return animation != mAnimation || frame != mFrame;
 }
 
-bool AnimatedSprite::updateCurrentAnimation(const unsigned int time)
+bool AnimatedSprite::updateCurrentAnimation(const unsigned int time) restrict2
 {
     // move code from Animation::isTerminator(*mFrame)
     if (!mFrame || !mAnimation || (!mFrame->image
@@ -230,7 +234,7 @@ bool AnimatedSprite::updateCurrentAnimation(const unsigned int time)
             {
                 for (size_t i = 0; i < mAnimation->getLength(); i ++)
                 {
-                    const Frame *const frame = &mAnimation->mFrames[i];
+                    const Frame *restrict const frame = &mAnimation->mFrames[i];
                     if (frame->type == Frame::LABEL &&
                         mFrame->nextAction == frame->nextAction)
                     {
@@ -299,15 +303,15 @@ bool AnimatedSprite::updateCurrentAnimation(const unsigned int time)
     return true;
 }
 
-void AnimatedSprite::draw(Graphics *const graphics,
+void AnimatedSprite::draw(Graphics *restrict const graphics,
                           const int posX,
-                          const int posY) const
+                          const int posY) const restrict2
 {
     FUNC_BLOCK("AnimatedSprite::draw", 1)
     if (!mFrame || !mFrame->image)
         return;
 
-    Image *const image = mFrame->image;
+    Image *restrict const image = mFrame->image;
     if (image->getAlpha() != mAlpha)
         image->setAlpha(mAlpha);
 
@@ -316,6 +320,7 @@ void AnimatedSprite::draw(Graphics *const graphics,
 }
 
 bool AnimatedSprite::setSpriteDirection(const SpriteDirection::Type direction)
+                                        restrict2
 {
     if (mDirection != direction)
     {
@@ -324,7 +329,8 @@ bool AnimatedSprite::setSpriteDirection(const SpriteDirection::Type direction)
         if (!mAction)
             return false;
 
-        const Animation *const animation = mAction->getAnimation(mDirection);
+        const Animation *restrict const animation =
+            mAction->getAnimation(mDirection);
 
         if (animation &&
             animation != mAnimation &&
@@ -340,12 +346,7 @@ bool AnimatedSprite::setSpriteDirection(const SpriteDirection::Type direction)
     return false;
 }
 
-unsigned int AnimatedSprite::getCurrentFrame() const
-{
-    return mFrameIndex;
-}
-
-unsigned int AnimatedSprite::getFrameCount() const
+unsigned int AnimatedSprite::getFrameCount() const restrict2
 {
     if (mAnimation)
         return static_cast<unsigned int>(mAnimation->getLength());
@@ -353,7 +354,7 @@ unsigned int AnimatedSprite::getFrameCount() const
         return 0;
 }
 
-int AnimatedSprite::getWidth() const
+int AnimatedSprite::getWidth() const restrict2
 {
     if (mFrame && mFrame->image)
         return mFrame->image->mBounds.w;
@@ -361,7 +362,7 @@ int AnimatedSprite::getWidth() const
         return 0;
 }
 
-int AnimatedSprite::getHeight() const
+int AnimatedSprite::getHeight() const restrict2
 {
     if (mFrame && mFrame->image)
         return mFrame->image->mBounds.h;
@@ -369,38 +370,38 @@ int AnimatedSprite::getHeight() const
         return 0;
 }
 
-std::string AnimatedSprite::getIdPath() const
+std::string AnimatedSprite::getIdPath() const restrict2
 {
     if (!mSprite)
         return "";
     return mSprite->getIdPath();
 }
 
-const Image* AnimatedSprite::getImage() const
+const Image* AnimatedSprite::getImage() const restrict2
 {
     return mFrame ? mFrame->image : nullptr;
 }
 
-void AnimatedSprite::setAlpha(float alpha)
+void AnimatedSprite::setAlpha(float alpha) restrict2
 {
     mAlpha = alpha;
 
     if (mFrame)
     {
-        Image *const image = mFrame->image;
+        Image *restrict const image = mFrame->image;
         if (image && image->getAlpha() != mAlpha)
             image->setAlpha(mAlpha);
     }
 }
 
-const void *AnimatedSprite::getHash() const
+const void *AnimatedSprite::getHash() const restrict2
 {
     if (mFrame)
         return mFrame;
     return this;
 }
 
-bool AnimatedSprite::updateNumber(const unsigned num)
+bool AnimatedSprite::updateNumber(const unsigned num) restrict2
 {
     // TODO need store num in delayed object if it exist for future usage
     if (!mSprite)
@@ -420,8 +421,8 @@ bool AnimatedSprite::updateNumber(const unsigned num)
     return false;
 }
 
-void AnimatedSprite::setDelayLoad(const std::string &filename,
-                                  const int variant)
+void AnimatedSprite::setDelayLoad(const std::string &restrict filename,
+                                  const int variant) restrict2
 {
     if (mDelayLoad)
     {
@@ -431,9 +432,4 @@ void AnimatedSprite::setDelayLoad(const std::string &filename,
     }
     mDelayLoad = new AnimationDelayLoad(filename, variant, this);
     DelayedManager::addDelayedAnimation(mDelayLoad);
-}
-
-void AnimatedSprite::clearDelayLoad()
-{
-    mDelayLoad = nullptr;
 }
