@@ -81,7 +81,7 @@ InputManager::InputManager() :
 {
 }
 
-void InputManager::init()
+void InputManager::init() restrict2
 {
     for (unsigned int i = 0;
          i < static_cast<unsigned int>(InputAction::TOTAL);
@@ -110,11 +110,11 @@ void InputManager::update()
         joystick->update();
 }
 
-void InputManager::retrieve()
+void InputManager::retrieve() restrict2
 {
     for (int i = 0; i < static_cast<int>(InputAction::TOTAL); i ++)
     {
-        const std::string &cmd = inputActionData[i].chatCommand;
+        const std::string &restrict cmd = inputActionData[i].chatCommand;
         if (!cmd.empty())
         {
             StringVect tokens;
@@ -131,7 +131,7 @@ void InputManager::retrieve()
         if (!cf.empty())
         {
             mNameMap[cf] = static_cast<InputActionT>(i);
-            InputFunction &kf = mKey[i];
+            InputFunction &restrict kf = mKey[i];
             const std::string keyStr = config.getValue(cf, "");
             const size_t keyStrSize = keyStr.size();
             if (keyStr.empty())
@@ -174,7 +174,7 @@ void InputManager::retrieve()
     }
 }
 
-void InputManager::store() const
+void InputManager::store() const restrict2
 {
     for (int i = 0; i < static_cast<int>(InputAction::TOTAL); i ++)
     {
@@ -187,11 +187,11 @@ void InputManager::store() const
         if (!cf.empty())
         {
             std::string keyStr;
-            const InputFunction &kf = mKey[i];
+            const InputFunction &restrict kf = mKey[i];
 
             for (size_t i2 = 0; i2 < inputFunctionSize; i2 ++)
             {
-                const InputItem &key = kf.values[i2];
+                const InputItem &restrict key = kf.values[i2];
                 if (key.type != InputType::UNKNOWN)
                 {
                     std::string tmp("k");
@@ -230,19 +230,20 @@ void InputManager::store() const
     }
 }
 
-void InputManager::resetKey(const InputActionT i)
+void InputManager::resetKey(const InputActionT i) restrict2
 {
-    InputFunction &key = mKey[static_cast<size_t>(i)];
+    InputFunction &restrict key = mKey[static_cast<size_t>(i)];
     for (size_t i2 = 1; i2 < inputFunctionSize; i2 ++)
     {
-        InputItem &ki2 = key.values[i2];
+        InputItem &restrict ki2 = key.values[i2];
         ki2.type = InputType::UNKNOWN;
         ki2.value = -1;
     }
-    const InputActionData &kd = inputActionData[static_cast<size_t>(i)];
-    InputItem &val0 = key.values[0];
+    const InputActionData &restrict kd =
+        inputActionData[static_cast<size_t>(i)];
+    InputItem &restrict val0 = key.values[0];
     val0.type = kd.defaultType1;
-    InputItem &val1 = key.values[1];
+    InputItem &restrict val1 = key.values[1];
     val1.type = kd.defaultType2;
 #ifdef USE_SDL2
     if (kd.defaultType1 == InputType::KEYBOARD)
@@ -259,13 +260,13 @@ void InputManager::resetKey(const InputActionT i)
 #endif
 }
 
-void InputManager::resetKeys()
+void InputManager::resetKeys() restrict2
 {
     for (int i = 0; i < static_cast<int>(InputAction::TOTAL); i++)
         resetKey(static_cast<InputActionT>(i));
 }
 
-void InputManager::makeDefault(const InputActionT i)
+void InputManager::makeDefault(const InputActionT i) restrict2
 {
     if (i > InputAction::NO_VALUE && i < InputAction::TOTAL)
     {
@@ -275,7 +276,7 @@ void InputManager::makeDefault(const InputActionT i)
 }
 
 bool InputManager::hasConflicts(InputActionT &restrict key1,
-                                InputActionT &restrict key2) const
+                                InputActionT &restrict key2) const restrict2
 {
     /**
      * No need to parse the square matrix: only check one triangle
@@ -283,14 +284,14 @@ bool InputManager::hasConflicts(InputActionT &restrict key1,
      */
     for (int i = 0; i < static_cast<int>(InputAction::TOTAL); i++)
     {
-        const InputActionData &kdi = inputActionData[i];
+        const InputActionData &restrict kdi = inputActionData[i];
         if (!*kdi.configField)
             continue;
 
-        const InputFunction &ki = mKey[i];
+        const InputFunction &restrict ki = mKey[i];
         for (size_t i2 = 0; i2 < inputFunctionSize; i2 ++)
         {
-            const InputItem &vali2 = ki.values[i2];
+            const InputItem &restrict vali2 = ki.values[i2];
             if (vali2.value == -1)
                 continue;
 
@@ -305,7 +306,7 @@ bool InputManager::hasConflicts(InputActionT &restrict key1,
 
                 for (size_t j2 = 0; j2 < inputFunctionSize; j2 ++)
                 {
-                    const InputItem &valj2 = mKey[j].values[j2];
+                    const InputItem &restrict valj2 = mKey[j].values[j2];
                     // Allow for item shortcut and emote keys to overlap
                     // as well as emote and ignore keys, but no other keys
                     if (valj2.type != InputType::UNKNOWN
@@ -323,19 +324,20 @@ bool InputManager::hasConflicts(InputActionT &restrict key1,
     return false;
 }
 
-void InputManager::callbackNewKey()
+void InputManager::callbackNewKey() restrict2
 {
 #ifndef DYECMD
     mSetupInput->newKeyCallback(mNewKeyIndex);
 #endif
 }
 
-bool InputManager::isActionActive(const InputActionT index) const
+bool InputManager::isActionActive(const InputActionT index) const restrict2
 {
     if (!isActionActive0(index))
         return false;
 
-    const InputActionData &key = inputActionData[static_cast<size_t>(index)];
+    const InputActionData &restrict key =
+        inputActionData[static_cast<size_t>(index)];
 //    logger->log("isActionActive mask=%d, condition=%d, index=%d",
 //        mMask, key.condition, index);
     if ((key.condition & mMask) != key.condition)
@@ -352,7 +354,7 @@ bool InputManager::isActionActive0(const InputActionT index)
     return touchManager.isActionActive(index);
 }
 
-InputFunction &InputManager::getKey(InputActionT index)
+InputFunction &InputManager::getKey(InputActionT index) restrict2
 {
     if (static_cast<int>(index) < 0 || index >= InputAction::TOTAL)
         index = InputAction::MOVE_UP;
@@ -360,13 +362,14 @@ InputFunction &InputManager::getKey(InputActionT index)
 }
 
 std::string InputManager::getKeyStringLong(const InputActionT index) const
+                                           restrict2
 {
     std::string keyStr;
-    const InputFunction &ki = mKey[static_cast<size_t>(index)];
+    const InputFunction &restrict ki = mKey[static_cast<size_t>(index)];
 
     for (size_t i = 0; i < inputFunctionSize; i ++)
     {
-        const InputItem &key = ki.values[i];
+        const InputItem &restrict key = ki.values[i];
         std::string str;
         if (key.type == InputType::KEYBOARD)
         {
@@ -403,13 +406,14 @@ std::string InputManager::getKeyStringLong(const InputActionT index) const
 }
 
 std::string InputManager::getKeyValueString(const InputActionT index) const
+                                            restrict2
 {
     std::string keyStr;
-    const InputFunction &ki = mKey[static_cast<size_t>(index)];
+    const InputFunction &restrict ki = mKey[static_cast<size_t>(index)];
 
     for (size_t i = 0; i < inputFunctionSize; i ++)
     {
-        const InputItem &key = ki.values[i];
+        const InputItem &restrict key = ki.values[i];
         std::string str;
         if (key.type == InputType::KEYBOARD)
         {
@@ -446,7 +450,8 @@ std::string InputManager::getKeyValueString(const InputActionT index) const
     return keyStr;
 }
 
-std::string InputManager::getKeyValueByName(const std::string &keyName)
+std::string InputManager::getKeyValueByName(const std::string &restrict
+                                            keyName) restrict2
 {
     const StringInpActionMapCIter it = mNameMap.find(keyName);
 
@@ -455,7 +460,8 @@ std::string InputManager::getKeyValueByName(const std::string &keyName)
     return getKeyValueString((*it).second);
 }
 
-std::string InputManager::getKeyValueByNameLong(const std::string &keyName)
+std::string InputManager::getKeyValueByNameLong(const std::string &restrict
+                                                keyName) restrict2
 {
     const StringInpActionMapCIter it = mNameMap.find(keyName);
 
@@ -466,18 +472,18 @@ std::string InputManager::getKeyValueByNameLong(const std::string &keyName)
 
 void InputManager::addActionKey(const InputActionT action,
                                 const InputTypeT type,
-                                const int val)
+                                const int val) restrict2
 {
     if (static_cast<int>(action) < 0 || action >= InputAction::TOTAL)
         return;
 
     int idx = -1;
-    InputFunction &key = mKey[static_cast<size_t>(action)];
+    InputFunction &restrict key = mKey[static_cast<size_t>(action)];
     for (size_t i = 0; i < inputFunctionSize; i ++)
     {
-        const InputItem &val2 = key.values[i];
-        if (val2.type == InputType::UNKNOWN || (val2.type == type
-            && val2.value == val))
+        const InputItem &restrict val2 = key.values[i];
+        if (val2.type == InputType::UNKNOWN ||
+            (val2.type == type && val2.value == val))
         {
             idx = static_cast<int>(i);
             break;
@@ -487,8 +493,8 @@ void InputManager::addActionKey(const InputActionT action,
     {
         for (size_t i = 1; i < inputFunctionSize; i ++)
         {
-            InputItem &val1 = key.values[i - 1];
-            InputItem &val2 = key.values[i];
+            InputItem &restrict val1 = key.values[i - 1];
+            InputItem &restrict val2 = key.values[i];
             val1.type = val2.type;
             val1.value = val2.value;
         }
@@ -499,7 +505,7 @@ void InputManager::addActionKey(const InputActionT action,
 }
 
 void InputManager::setNewKey(const SDL_Event &event,
-                             const InputTypeT type)
+                             const InputTypeT type) restrict2
 {
     int val = -1;
     if (type == InputType::KEYBOARD)
@@ -514,12 +520,12 @@ void InputManager::setNewKey(const SDL_Event &event,
     }
 }
 
-void InputManager::unassignKey()
+void InputManager::unassignKey() restrict2
 {
-    InputFunction &key = mKey[static_cast<size_t>(mNewKeyIndex)];
+    InputFunction &restrict key = mKey[static_cast<size_t>(mNewKeyIndex)];
     for (size_t i = 0; i < inputFunctionSize; i ++)
     {
-        InputItem &val = key.values[i];
+        InputItem &restrict val = key.values[i];
         val.type = InputType::UNKNOWN;
         val.value = -1;
     }
@@ -527,8 +533,8 @@ void InputManager::unassignKey()
 }
 
 #ifndef DYECMD
-bool InputManager::handleAssignKey(const SDL_Event &event,
-                                   const InputTypeT type)
+bool InputManager::handleAssignKey(const SDL_Event &restrict event,
+                                   const InputTypeT type) restrict2
 {
     if (setupWindow && setupWindow->isWindowVisible() &&
         getNewKeyIndex() > InputAction::NO_VALUE)
@@ -541,14 +547,14 @@ bool InputManager::handleAssignKey(const SDL_Event &event,
     return false;
 }
 #else
-bool InputManager::handleAssignKey(const SDL_Event &event A_UNUSED,
-                                   const InputTypeT type A_UNUSED)
+bool InputManager::handleAssignKey(const SDL_Event &restrict event A_UNUSED,
+                                   const InputTypeT type A_UNUSED) restrict2
 {
     return false;
 }
 #endif
 
-bool InputManager::handleEvent(const SDL_Event &event)
+bool InputManager::handleEvent(const SDL_Event &restrict event) restrict2
 {
     BLOCK_START("InputManager::handleEvent")
     switch (event.type)
@@ -677,7 +683,7 @@ void InputManager::handleRepeat()
         joystick->handleRepeat(time);
 }
 
-void InputManager::updateConditionMask()
+void InputManager::updateConditionMask() restrict2
 {
     mMask = 1;
     if (keyboard.isEnabled())
@@ -690,7 +696,7 @@ void InputManager::updateConditionMask()
     {
         if (gui)
         {
-            FocusHandler *const focus = gui->getFocusHandler();
+            FocusHandler *restrict const focus = gui->getFocusHandler();
             if (focus)
             {
                 if (!dynamic_cast<TextField*>(focus->getFocused()))
@@ -717,7 +723,7 @@ void InputManager::updateConditionMask()
 #endif
         mMask |= InputCondition::NOROOM;
 
-    const NpcDialog *const dialog = NpcDialog::getActive();
+    const NpcDialog *restrict const dialog = NpcDialog::getActive();
     if (!dialog || !dialog->isTextInputFocused())
         mMask |= InputCondition::NONPCINPUT;
     if (!dialog || dialog->isCloseState())
@@ -769,7 +775,8 @@ void InputManager::updateConditionMask()
     }
 }
 
-bool InputManager::checkKey(const InputActionData *const key) const
+bool InputManager::checkKey(const InputActionData *restrict const key) const
+                            restrict2
 {
     // logger->log("checkKey mask=%d, condition=%d", mMask, key->condition);
     if (!key || (key->condition & mMask) != key->condition)
@@ -779,8 +786,8 @@ bool InputManager::checkKey(const InputActionData *const key) const
         || isActionActive0(key->modKeyIndex));
 }
 
-bool InputManager::invokeKey(const InputActionData *const key,
-                             const InputActionT keyNum)
+bool InputManager::invokeKey(const InputActionData *restrict const key,
+                             const InputActionT keyNum) restrict2
 {
     // no validation to keyNum because it validated in caller
 
@@ -795,7 +802,7 @@ bool InputManager::invokeKey(const InputActionData *const key,
     return false;
 }
 
-void InputManager::executeAction(const InputActionT keyNum)
+void InputManager::executeAction(const InputActionT keyNum) restrict2
 {
     if (keyNum < InputAction::MOVE_UP || keyNum >= InputAction::TOTAL)
         return;
@@ -807,9 +814,9 @@ void InputManager::executeAction(const InputActionT keyNum)
         func(evt);
 }
 
-bool InputManager::executeChatCommand(const std::string &cmd,
-                                      const std::string &args,
-                                      ChatTab *const tab)
+bool InputManager::executeChatCommand(const std::string &restrict cmd,
+                                      const std::string &restrict args,
+                                      ChatTab *restrict const tab) restrict2
 {
     const StringIntMapCIter it = mChatMap.find(cmd);
     if (it != mChatMap.end())
@@ -825,14 +832,15 @@ bool InputManager::executeChatCommand(const std::string &cmd,
     return false;
 }
 
-bool InputManager::executeRemoteChatCommand(const std::string &cmd,
-                                            const std::string &args,
-                                            ChatTab *const tab)
+bool InputManager::executeRemoteChatCommand(const std::string &restrict cmd,
+                                            const std::string &restrict args,
+                                            ChatTab *restrict const tab)
+                                            restrict2
 {
     const StringIntMapCIter it = mChatMap.find(cmd);
     if (it != mChatMap.end())
     {
-        const InputActionData &data = inputActionData[(*it).second];
+        const InputActionData &restrict data = inputActionData[(*it).second];
         if (data.isProtected == Protected_true)
             return false;
         ActionFuncPtr func = *(data.action);
@@ -847,8 +855,8 @@ bool InputManager::executeRemoteChatCommand(const std::string &cmd,
 }
 
 bool InputManager::executeChatCommand(const InputActionT keyNum,
-                                      const std::string &args,
-                                      ChatTab *const tab)
+                                      const std::string &restrict args,
+                                      ChatTab *restrict const tab) restrict2
 {
     if (static_cast<int>(keyNum) < 0 || keyNum >= InputAction::TOTAL)
         return false;
@@ -863,23 +871,23 @@ bool InputManager::executeChatCommand(const InputActionT keyNum,
     return false;
 }
 
-void InputManager::updateKeyActionMap(KeyToActionMap &actionMap,
-                                      KeyToIdMap &idMap,
-                                      KeyTimeMap &keyTimeMap,
-                                      const InputTypeT type) const
+void InputManager::updateKeyActionMap(KeyToActionMap &restrict actionMap,
+                                      KeyToIdMap &restrict idMap,
+                                      KeyTimeMap &restrict keyTimeMap,
+                                      const InputTypeT type) const restrict2
 {
     actionMap.clear();
     keyTimeMap.clear();
 
     for (size_t i = 0; i < static_cast<size_t>(InputAction::TOTAL); i ++)
     {
-        const InputFunction &key = mKey[i];
-        const InputActionData &kd = inputActionData[i];
+        const InputFunction &restrict key = mKey[i];
+        const InputActionData &restrict kd = inputActionData[i];
         if (kd.action)
         {
             for (size_t i2 = 0; i2 < inputFunctionSize; i2 ++)
             {
-                const InputItem &ki = key.values[i2];
+                const InputItem &restrict ki = key.values[i2];
                 if (ki.type == type && ki.value != -1)
                 {
                     actionMap[ki.value].push_back(
@@ -891,7 +899,7 @@ void InputManager::updateKeyActionMap(KeyToActionMap &actionMap,
         {
             for (size_t i2 = 0; i2 < inputFunctionSize; i2 ++)
             {
-                const InputItem &ki = key.values[i2];
+                const InputItem &restrict ki = key.values[i2];
                 if (ki.type == type && ki.value != -1)
                     idMap[ki.value] = static_cast<InputActionT>(i);
             }
@@ -900,7 +908,7 @@ void InputManager::updateKeyActionMap(KeyToActionMap &actionMap,
         {
             for (size_t i2 = 0; i2 < inputFunctionSize; i2 ++)
             {
-                const InputItem &ki = key.values[i2];
+                const InputItem &restrict ki = key.values[i2];
                 if (ki.type == type && ki.value != -1)
                     keyTimeMap[ki.value] = 0;
             }
@@ -916,7 +924,8 @@ void InputManager::updateKeyActionMap(KeyToActionMap &actionMap,
     }
 }
 
-bool InputManager::triggerAction(const KeysVector *const ptrs)
+bool InputManager::triggerAction(const KeysVector *restrict const ptrs)
+                                 restrict2
 {
     if (!ptrs)
         return false;
@@ -937,17 +946,17 @@ bool InputManager::triggerAction(const KeysVector *const ptrs)
 
 InputActionT InputManager::getKeyIndex(const int value,
                                        const int grp,
-                                       const InputTypeT type) const
+                                       const InputTypeT type) const restrict2
 {
     for (size_t i = 0; i < static_cast<size_t>(InputAction::TOTAL); i++)
     {
-        const InputFunction &key = mKey[i];
-        const InputActionData &kd = inputActionData[i];
+        const InputFunction &restrict key = mKey[i];
+        const InputActionData &restrict kd = inputActionData[i];
         for (size_t i2 = 0; i2 < inputFunctionSize; i2 ++)
         {
-            const InputItem &vali2 = key.values[i2];
-            if (value == vali2.value && (grp & kd.grp) != 0
-                && vali2.type == type)
+            const InputItem &restrict vali2 = key.values[i2];
+            if (value == vali2.value &&
+                (grp & kd.grp) != 0 && vali2.type == type)
             {
                 return static_cast<InputActionT>(i);
             }
@@ -956,7 +965,8 @@ InputActionT InputManager::getKeyIndex(const int value,
     return InputAction::NO_VALUE;
 }
 
-InputActionT InputManager::getActionByKey(const SDL_Event &event) const
+InputActionT InputManager::getActionByKey(const SDL_Event &restrict event)
+                                          const restrict2
 {
     // for now support only keyboard events
     if (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP)

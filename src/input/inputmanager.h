@@ -45,109 +45,118 @@ class InputManager final
 
         A_DELETE_COPY(InputManager)
 
-        void init();
+        void init() restrict2;
 
-        bool handleEvent(const SDL_Event &event);
+        bool handleEvent(const SDL_Event &restrict event) restrict2;
 
-        bool checkKey(const InputActionData *const key) const A_WARN_UNUSED;
+        bool checkKey(const InputActionData *restrict const key) const
+                      restrict2 A_WARN_UNUSED;
 
-        void retrieve();
+        void retrieve() restrict2;
 
-        void store() const;
+        void store() const restrict2;
 
-        void resetKeys();
+        void resetKeys() restrict2;
 
-        void makeDefault(const InputActionT i);
+        void makeDefault(const InputActionT i) restrict2;
 
         bool hasConflicts(InputActionT &restrict key1,
-                          InputActionT &restrict key2) const A_WARN_UNUSED;
+                          InputActionT &restrict key2) const
+                          restrict2 A_WARN_UNUSED;
 
-        void callbackNewKey();
+        void callbackNewKey() restrict2;
 
-        InputFunction &getKey(InputActionT index) A_CONST A_WARN_UNUSED;
+        InputFunction &getKey(InputActionT index)
+                              restrict2 A_CONST A_WARN_UNUSED;
 
         std::string getKeyValueString(const InputActionT index)
-                                      const A_WARN_UNUSED;
+                                      const restrict2 A_WARN_UNUSED;
 
         std::string getKeyStringLong(const InputActionT index)
-                                     const A_WARN_UNUSED;
+                                     const restrict2 A_WARN_UNUSED;
 
-        std::string getKeyValueByName(const std::string &keyName);
+        std::string getKeyValueByName(const std::string &restrict keyName)
+                                      restrict2;
 
-        std::string getKeyValueByNameLong(const std::string &keyName);
+        std::string getKeyValueByNameLong(const std::string &restrict keyName)
+                                          restrict2;
 
         void addActionKey(const InputActionT action,
                           const InputTypeT type,
-                          const int val);
+                          const int val) restrict2;
 
         void setNewKey(const SDL_Event &event,
-                       const InputTypeT type);
+                       const InputTypeT type) restrict2;
 
-        void unassignKey();
+        void unassignKey() restrict2;
 
-        bool isActionActive(const InputActionT index) const A_WARN_UNUSED;
+        bool isActionActive(const InputActionT index) const
+                            restrict2 A_WARN_UNUSED;
 
         /**
          * Set the index of the new key to be assigned.
          */
-        void setNewKeyIndex(const InputActionT value)
+        void setNewKeyIndex(const InputActionT value) restrict2
         { mNewKeyIndex = value; }
 
         /**
          * Set a reference to the key setup window.
          */
-        void setSetupInput(Setup_Input *const setupInput) A_NONNULL(2)
+        void setSetupInput(Setup_Input *restrict const setupInput)
+                           restrict2 A_NONNULL(2)
         { mSetupInput = setupInput; }
 
         /**
          * Get the index of the new key to be assigned.
          */
-        InputActionT getNewKeyIndex() const A_WARN_UNUSED
+        InputActionT getNewKeyIndex() const restrict2 A_WARN_UNUSED
         { return mNewKeyIndex; }
 
-        void updateKeyActionMap(KeyToActionMap &actionMap,
-                                KeyToIdMap &idMap, KeyTimeMap &keyTimeMap,
-                                const InputTypeT type) const;
+        void updateKeyActionMap(KeyToActionMap &restrict actionMap,
+                                KeyToIdMap &restrict idMap,
+                                KeyTimeMap &restrict keyTimeMap,
+                                const InputTypeT type) const restrict2;
 
-        bool invokeKey(const InputActionData *const key,
-                       const InputActionT keyNum);
+        bool invokeKey(const InputActionData *restrict const key,
+                       const InputActionT keyNum) restrict2;
 
-        bool handleAssignKey(const SDL_Event &event,
-                             const InputTypeT type);
+        bool handleAssignKey(const SDL_Event &restrict event,
+                             const InputTypeT type) restrict2;
 
         static void handleRepeat();
 
-        bool triggerAction(const KeysVector *const ptrs);
+        bool triggerAction(const KeysVector *restrict const ptrs) restrict2;
 
         InputActionT getKeyIndex(const int value,
                                  const int grp,
-                                 const InputTypeT type) const A_WARN_UNUSED;
+                                 const InputTypeT type) const
+                                 restrict2 A_WARN_UNUSED;
 
         static void update();
 
-        void updateConditionMask();
+        void updateConditionMask() restrict2;
 
-        InputActionT getActionByKey(const SDL_Event &event)
-                                    const A_WARN_UNUSED;
+        InputActionT getActionByKey(const SDL_Event &restrict event)
+                                    const restrict2 A_WARN_UNUSED;
 
-        void executeAction(const InputActionT keyNum);
+        void executeAction(const InputActionT keyNum) restrict2;
 
-        bool executeChatCommand(const std::string &cmd,
-                                const std::string &args,
-                                ChatTab *const tab);
+        bool executeChatCommand(const std::string &restrict cmd,
+                                const std::string &restrict args,
+                                ChatTab *restrict const tab) restrict2;
 
-        bool executeRemoteChatCommand(const std::string &cmd,
-                                      const std::string &args,
-                                      ChatTab *const tab);
+        bool executeRemoteChatCommand(const std::string &restrict cmd,
+                                      const std::string &restrict args,
+                                      ChatTab *restrict const tab) restrict2;
 
         bool executeChatCommand(const InputActionT keyNum,
-                                const std::string &args,
-                                ChatTab *const tab);
+                                const std::string &restrict args,
+                                ChatTab *restrict const tab) restrict2;
 
         void addChatCommands(std::list<std::string> &restrict arr) restrict;
 
     protected:
-        void resetKey(const InputActionT i);
+        void resetKey(const InputActionT i) restrict2;
 
         static bool isActionActive0(const InputActionT index) A_WARN_UNUSED;
 
