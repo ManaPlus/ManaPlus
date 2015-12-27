@@ -34,7 +34,7 @@
 
 #include "debug.h"
 
-DyePalette::DyePalette(const std::string &description,
+DyePalette::DyePalette(const std::string &restrict description,
                        const uint8_t blockSize) :
     mColors()
 {
@@ -103,7 +103,7 @@ unsigned int DyePalette::hexDecode(const signed char c)
 }
 
 void DyePalette::getColor(const unsigned int intensity,
-                          unsigned int (&color)[3]) const
+                          unsigned int (&restrict color)[3]) const restrict2
 {
     if (intensity == 0)
     {
@@ -160,7 +160,8 @@ void DyePalette::getColor(const unsigned int intensity,
     }
 }
 
-void DyePalette::getColor(double intensity, int (&color)[3]) const
+void DyePalette::getColor(double intensity,
+                          int (&restrict color)[3]) const restrict2
 {
     // Nothing to do here
     if (mColors.empty())
@@ -203,7 +204,7 @@ void DyePalette::getColor(double intensity, int (&color)[3]) const
 }
 
 void DyePalette::replaceSColor(uint32_t *restrict pixels,
-                               const int bufSize) const
+                               const int bufSize) const restrict2
 {
     std::vector<DyeColor>::const_iterator it_end = mColors.end();
     const size_t sz = mColors.size();
@@ -311,7 +312,7 @@ void DyePalette::replaceSColor(uint32_t *restrict pixels,
 }
 
 void DyePalette::replaceAColor(uint32_t *restrict pixels,
-                               const int bufSize) const
+                               const int bufSize) const restrict2
 {
     std::vector<DyeColor>::const_iterator it_end = mColors.end();
     const size_t sz = mColors.size();
@@ -402,7 +403,7 @@ void DyePalette::replaceAColor(uint32_t *restrict pixels,
 }
 
 void DyePalette::replaceSOGLColor(uint32_t *restrict pixels,
-                                  const int bufSize) const
+                                  const int bufSize) const restrict2
 {
     std::vector<DyeColor>::const_iterator it_end = mColors.end();
     const size_t sz = mColors.size();
@@ -497,7 +498,7 @@ void DyePalette::replaceSOGLColor(uint32_t *restrict pixels,
 }
 
 void DyePalette::replaceAOGLColor(uint32_t *restrict pixels,
-                                  const int bufSize) const
+                                  const int bufSize) const restrict2
 {
     std::vector<DyeColor>::const_iterator it_end = mColors.end();
     const size_t sz = mColors.size();

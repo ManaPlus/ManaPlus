@@ -41,7 +41,8 @@ class DyePalette final
          * The string is either a file name or a sequence of hexadecimal RGB
          * values separated by ',' and starting with '#'.
          */
-        DyePalette(const std::string &pallete, const uint8_t blockSize);
+        DyePalette(const std::string &restrict pallete,
+                   const uint8_t blockSize);
 
         A_DELETE_COPY(DyePalette)
 
@@ -50,34 +51,37 @@ class DyePalette final
          * implicitly black (0, 0, 0).
          */
         void getColor(const unsigned int intensity,
-                      unsigned int (&color)[3]) const;
+                      unsigned int (&restrict color)[3]) const restrict2;
 
         /**
          * Gets a pixel color depending on its intensity.
          */
-        void getColor(double intensity, int (&color)[3]) const;
+        void getColor(double intensity,
+                      int (&restrict color)[3]) const restrict2;
 
         /**
          * replace colors for SDL for S dye.
          */
-        void replaceSColor(uint32_t *restrict pixels, const int bufSize) const;
+        void replaceSColor(uint32_t *restrict pixels,
+                           const int bufSize) const restrict2;
 
         /**
-         * replace colors for SDL for S dye.
+         * replace colors for SDL for A dye.
          */
-        void replaceAColor(uint32_t *restrict pixels, const int bufSize) const;
+        void replaceAColor(uint32_t *restrict pixels,
+                           const int bufSize) const restrict2;
 
         /**
          * replace colors for OpenGL for S dye.
          */
         void replaceSOGLColor(uint32_t *restrict pixels,
-                              const int bufSize) const;
+                              const int bufSize) const restrict2;
 
         /**
          * replace colors for OpenGL for A dye.
          */
         void replaceAOGLColor(uint32_t *restrict pixels,
-                              const int bufSize) const;
+                              const int bufSize) const restrict2;
 
         static unsigned int hexDecode(const signed char c)
                                       A_CONST A_WARN_UNUSED;
