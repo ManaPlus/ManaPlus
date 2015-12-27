@@ -28,14 +28,14 @@
 
 #include "debug.h"
 
-AnimationParticle::AnimationParticle(Animation *const animation) :
+AnimationParticle::AnimationParticle(Animation *restrict const animation) :
     ImageParticle(nullptr),
     mAnimation(new SimpleAnimation(animation))
 {
 }
 
 AnimationParticle::AnimationParticle(XmlNodePtrConst animationNode,
-                                     const std::string& dyePalettes) :
+                                     const std::string &restrict dyePalettes) :
     ImageParticle(nullptr),
     mAnimation(new SimpleAnimation(animationNode, dyePalettes))
 {
@@ -47,7 +47,7 @@ AnimationParticle::~AnimationParticle()
     mImage = nullptr;
 }
 
-bool AnimationParticle::update()
+bool AnimationParticle::update() restrict2
 {
     if (mAnimation)
     {

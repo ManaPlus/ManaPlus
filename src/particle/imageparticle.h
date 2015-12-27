@@ -41,7 +41,7 @@ class ImageParticle notfinal : public Particle
          * @param map   the map this particle appears on
          * @param image an Image instance, may not be NULL
          */
-        explicit ImageParticle(Image *const image);
+        explicit ImageParticle(Image *restrict const image);
 
         A_DELETE_COPY(ImageParticle)
 
@@ -53,16 +53,17 @@ class ImageParticle notfinal : public Particle
         /**
          * Draws the particle image
          */
-        virtual void draw(Graphics *const graphics,
+        virtual void draw(Graphics *restrict const graphics,
                           const int offsetX,
-                          const int offsetY) const override final A_NONNULL(2);
+                          const int offsetY) const
+                          restrict2 override final A_NONNULL(2);
 
-        void setAlpha(const float alpha) override final
+        void setAlpha(const float alpha) restrict2 override final
         { mAlpha = alpha; }
 
         static StringIntMap imageParticleCountByName;
     protected:
-        Image *mImage;   /**< The image used for this particle. */
+        Image *restrict mImage;   /**< The image used for this particle. */
 };
 
 #endif  // PARTICLE_IMAGEPARTICLE_H

@@ -87,7 +87,7 @@ Particle::~Particle()
     Particle::particleCount--;
 }
 
-void Particle::setupEngine()
+void Particle::setupEngine() restrict2
 {
     Particle::maxCount = config.getIntValue("particleMaxCount");
     Particle::fastPhysics = config.getIntValue("particleFastPhysics");
@@ -99,11 +99,12 @@ void Particle::setupEngine()
     logger->log1("Particle engine set up");
 }
 
-void Particle::draw(Graphics *const, const int, const int) const
+void Particle::draw(Graphics *restrict const,
+                    const int, const int) const restrict2
 {
 }
 
-bool Particle::update()
+bool Particle::update() restrict2
 {
     if (!mMap)
         return false;
@@ -224,7 +225,7 @@ bool Particle::update()
         if ((static_cast<unsigned int>(mAlive) & mDeathEffectConditions)
             > 0x00  && !mDeathEffect.empty())
         {
-            Particle *const deathEffect = particleEngine->addEffect(
+            Particle *restrict const deathEffect = particleEngine->addEffect(
                 mDeathEffect, 0, 0);
             if (deathEffect)
                 deathEffect->moveBy(mPos);
@@ -239,7 +240,7 @@ bool Particle::update()
     for (ParticleIterator p = mChildParticles.begin(),
          p2 = mChildParticles.end(); p != p2; )
     {
-        Particle *const particle = *p;
+        Particle *restrict const particle = *p;
         // move particle with its parent if desired
         if (particle->mFollow)
             particle->moveBy(change);
@@ -261,23 +262,23 @@ bool Particle::update()
     return true;
 }
 
-void Particle::moveBy(const Vector &change)
+void Particle::moveBy(const Vector &restrict change) restrict2
 {
     mPos += change;
     FOR_EACH (ParticleConstIterator, p, mChildParticles)
     {
-        Particle *const particle = *p;
+        Particle *restrict const particle = *p;
         if (particle->mFollow)
             particle->moveBy(change);
     }
 }
 
-void Particle::moveTo(const float x, const float y)
+void Particle::moveTo(const float x, const float y) restrict2
 {
     moveTo(Vector(x, y, mPos.z));
 }
 
-Particle *Particle::createChild()
+Particle *Particle::createChild() restrict2
 {
     Particle *const newParticle = new Particle();
     newParticle->setMap(mMap);
@@ -285,9 +286,9 @@ Particle *Particle::createChild()
     return newParticle;
 }
 
-Particle *Particle::addEffect(const std::string &particleEffectFile,
+Particle *Particle::addEffect(const std::string &restrict particleEffectFile,
                               const int pixelX, const int pixelY,
-                              const int rotation)
+                              const int rotation) restrict2
 {
     Particle *newParticle = nullptr;
 
@@ -375,8 +376,13 @@ Particle *Particle::addEffect(const std::string &particleEffectFile,
         {
             if (xmlNameEqual(emitterNode, "emitter"))
             {
-                ParticleEmitter *const newEmitter = new ParticleEmitter(
-                    emitterNode, newParticle, mMap, rotation, dyePalettes);
+                ParticleEmitter *restrict const newEmitter =
+                    new ParticleEmitter(
+                    emitterNode,
+                    newParticle,
+                    mMap,
+                    rotation,
+                    dyePalettes);
                 newParticle->addEmitter(newEmitter);
             }
             else if (xmlNameEqual(emitterNode, "deatheffect"))
@@ -425,15 +431,20 @@ Particle *Particle::addEffect(const std::string &particleEffectFile,
     return newParticle;
 }
 
-Particle *Particle::addTextSplashEffect(const std::string &text,
+Particle *Particle::addTextSplashEffect(const std::string &restrict text,
                                         const int x, const int y,
-                                        const Color *const color,
-                                        Font *const font,
-                                        const bool outline)
+                                        const Color *restrict const color,
+                                        Font *restrict const font,
+                                        const bool outline) restrict2
 {
-    Particle *const newParticle = new TextParticle(text, color, font, outline);
+    Particle *const newParticle = new TextParticle(
+        text,
+        color,
+        font,
+        outline);
     newParticle->setMap(mMap);
-    newParticle->moveTo(static_cast<float>(x), static_cast<float>(y));
+    newParticle->moveTo(static_cast<float>(x),
+        static_cast<float>(y));
     newParticle->setVelocity(
         static_cast<float>((rand() % 100) - 50) / 200.0F,       // X
         static_cast<float>((rand() % 100) - 50) / 200.0F,       // Y
@@ -449,15 +460,20 @@ Particle *Particle::addTextSplashEffect(const std::string &text,
     return newParticle;
 }
 
-Particle *Particle::addTextRiseFadeOutEffect(const std::string &text,
+Particle *Particle::addTextRiseFadeOutEffect(const std::string &restrict text,
                                              const int x, const int y,
-                                             const Color *const color,
-                                             Font *const font,
-                                             const bool outline)
+                                             const Color *restrict const color,
+                                             Font *restrict const font,
+                                             const bool outline) restrict2
 {
-    Particle *const newParticle = new TextParticle(text, color, font, outline);
+    Particle *const newParticle = new TextParticle(
+        text,
+        color,
+        font,
+        outline);
     newParticle->setMap(mMap);
-    newParticle->moveTo(static_cast<float>(x), static_cast<float>(y));
+    newParticle->moveTo(static_cast<float>(x),
+        static_cast<float>(y));
     newParticle->setVelocity(0.0F, 0.0F, 0.5F);
     newParticle->setGravity(0.0015F);
     newParticle->setLifetime(300);
@@ -469,7 +485,7 @@ Particle *Particle::addTextRiseFadeOutEffect(const std::string &text,
     return newParticle;
 }
 
-void Particle::adjustEmitterSize(const int w, const int h)
+void Particle::adjustEmitterSize(const int w, const int h) restrict2
 {
     if (mAllowSizeAdjust)
     {
@@ -478,11 +494,11 @@ void Particle::adjustEmitterSize(const int w, const int h)
     }
 }
 
-void Particle::prepareToDie()
+void Particle::prepareToDie() restrict2
 {
     FOR_EACH (ParticleIterator, p, mChildParticles)
     {
-        Particle *const particle = *p;
+        Particle *restrict const particle = *p;
         if (!particle)
             continue;
         particle->prepareToDie();
@@ -495,7 +511,7 @@ void Particle::prepareToDie()
     }
 }
 
-void Particle::clear()
+void Particle::clear() restrict2
 {
     delete_all(mChildEmitters);
     mChildEmitters.clear();

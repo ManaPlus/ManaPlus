@@ -33,20 +33,21 @@ class SimpleAnimation;
 class AnimationParticle final : public ImageParticle
 {
     public:
-        explicit AnimationParticle(Animation *const animation);
+        explicit AnimationParticle(Animation *restrict const animation);
 
         explicit AnimationParticle(XmlNodePtrConst animationNode,
-                                   const std::string& dyePalettes
+                                   const std::string &restrict dyePalettes
                                    = std::string());
 
         A_DELETE_COPY(AnimationParticle)
 
         ~AnimationParticle();
 
-        bool update() override final;
+        bool update() restrict2 override final;
 
     private:
-        SimpleAnimation *mAnimation; /**< Used animation for this particle */
+        /**< Used animation for this particle */
+        SimpleAnimation *restrict mAnimation;
 };
 
 #endif  // PARTICLE_ANIMATIONPARTICLE_H

@@ -32,30 +32,32 @@ class TextParticle final : public Particle
          * Constructor.
          */
         TextParticle(const std::string &text,
-                     const Color *const color,
-                     Font *const font, const bool outline = false);
+                     const Color *restrict const color,
+                     Font *restrict const font,
+                     const bool outline = false);
 
         A_DELETE_COPY(TextParticle)
 
         /**
          * Draws the particle image.
          */
-        void draw(Graphics *const graphics,
+        void draw(Graphics *restrict const graphics,
                   const int offsetX,
-                  const int offsetY) const override final A_NONNULL(2);
+                  const int offsetY) const
+                  restrict2 override final A_NONNULL(2);
 
         // hack to improve text visibility
-        int getPixelY() const override final A_WARN_UNUSED
+        int getPixelY() const restrict2 override final A_WARN_UNUSED
         { return static_cast<int>(mPos.y + mPos.z); }
 
         // hack to improve text visibility (for sorting only)
-        int getSortPixelY() const override final A_WARN_UNUSED
+        int getSortPixelY() const restrict2 override final A_WARN_UNUSED
         { return static_cast<int>(mPos.y + mPos.z); }
 
     private:
         std::string mText;             /**< Text of the particle. */
-        Font *mTextFont;          /**< Font used for drawing the text. */
-        const Color *mColor;      /**< Color used for drawing the text. */
+        Font *restrict mTextFont;      /**< Font used for drawing the text. */
+        const Color *restrict mColor;  /**< Color used for drawing the text. */
         int mTextWidth;
         bool mOutline;                 /**< Make the text better readable */
 };

@@ -31,14 +31,15 @@
 static const double PI = M_PI;
 static const float PI2 = 2 * M_PI;
 
-RotationalParticle::RotationalParticle(Animation *const animation) :
+RotationalParticle::RotationalParticle(Animation *restrict const animation) :
     ImageParticle(nullptr),
     mAnimation(new SimpleAnimation(animation))
 {
 }
 
 RotationalParticle::RotationalParticle(const XmlNodePtr animationNode,
-                                       const std::string& dyePalettes) :
+                                       const std::string &restrict
+                                       dyePalettes) :
     ImageParticle(nullptr),
     mAnimation(new SimpleAnimation(animationNode, dyePalettes))
 {
@@ -50,7 +51,7 @@ RotationalParticle::~RotationalParticle()
     mImage = nullptr;
 }
 
-bool RotationalParticle::update()
+bool RotationalParticle::update() restrict2
 {
     if (!mAnimation)
         return false;

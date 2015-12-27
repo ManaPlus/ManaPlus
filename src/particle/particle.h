@@ -76,157 +76,159 @@ class Particle notfinal : public Actor
         /**
          * Deletes all child particles and emitters.
          */
-        void clear();
+        void clear() restrict2;
 
         /**
          * Gives a particle the properties of an engine root particle and loads
          * the particle-related config settings.
          */
-        void setupEngine();
+        void setupEngine() restrict2;
 
         /**
          * Updates particle position, returns false when the particle should
          * be deleted.
          */
-        virtual bool update();
+        virtual bool update() restrict2;
 
         /**
          * Draws the particle image.
          */
-        virtual void draw(Graphics *const graphics,
+        virtual void draw(Graphics *restrict const graphics,
                           const int offsetX,
-                          const int offsetY) const override
+                          const int offsetY) const restrict2 override
                           A_CONST A_NONNULL(2);
 
         /**
          * Necessary for sorting with the other sprites.
          */
-        int getPixelY() const override A_WARN_UNUSED
+        int getPixelY() const restrict2 override A_WARN_UNUSED
         { return static_cast<int>(mPos.y) - 16; }
 
         /**
          * Necessary for sorting with the other sprites for sorting only.
          */
-        int getSortPixelY() const override A_WARN_UNUSED
+        int getSortPixelY() const restrict2 override A_WARN_UNUSED
         { return static_cast<int>(mPos.y) - 16; }
 
         /**
          * Creates a blank particle as a child of the current particle
          * Useful for creating target particles
          */
-        Particle *createChild();
+        Particle *createChild() restrict2;
 
         /**
          * Creates a child particle that hosts some emitters described in the
          * particleEffectFile.
          */
-        Particle *addEffect(const std::string &particleEffectFile,
+        Particle *addEffect(const std::string &restrict particleEffectFile,
                             const int pixelX, const int pixelY,
-                            const int rotation = 0);
+                            const int rotation = 0) restrict2;
 
         /**
          * Creates a standalone text particle.
          */
-        Particle *addTextSplashEffect(const std::string &text,
+        Particle *addTextSplashEffect(const std::string &restrict text,
                                       const int x, const int y,
-                                      const Color *const color,
-                                      Font *const font,
-                                      const bool outline = false);
+                                      const Color *restrict const color,
+                                      Font *restrict const font,
+                                      const bool outline = false) restrict2;
 
         /**
          * Creates a standalone text particle.
          */
-        Particle *addTextRiseFadeOutEffect(const std::string &text,
+        Particle *addTextRiseFadeOutEffect(const std::string &restrict text,
                                            const int x, const int y,
-                                           const Color *const color,
-                                           Font *const font,
-                                           const bool outline = false);
+                                           const Color *restrict const color,
+                                           Font *restrict const font,
+                                           const bool outline = false)
+                                           restrict2;
 
         /**
          * Adds an emitter to the particle.
          */
-        void addEmitter(ParticleEmitter *const emitter)
+        void addEmitter(ParticleEmitter *const emitter) restrict2
         { mChildEmitters.push_back(emitter); }
 
         /**
          * Sets the position in 3 dimensional space in pixels relative to map.
          */
-        void moveTo(const Vector &pos)
+        void moveTo(const Vector &restrict pos) restrict2
         { moveBy(pos - mPos); }
 
         /**
          * Sets the position in 2 dimensional space in pixels relative to map.
          */
-        void moveTo(const float x, const float y);
+        void moveTo(const float x, const float y) restrict2;
 
         /**
          * Changes the particle position relative
          */
-        void moveBy(const Vector &change);
+        void moveBy(const Vector &restrict change) restrict2;
 
         /**
          * Sets the time in game ticks until the particle is destroyed.
          */
-        void setLifetime(const int lifetime)
+        void setLifetime(const int lifetime) restrict2
         { mLifetimeLeft = lifetime; mLifetimePast = 0; }
 
         /**
          * Sets the age of the pixel in game ticks where the particle has
          * faded in completely.
          */
-        void setFadeOut(const int fadeOut)
+        void setFadeOut(const int fadeOut) restrict2
         { mFadeOut = fadeOut; }
 
         /**
          * Sets the remaining particle lifetime where the particle starts to
          * fade out.
          */
-        void setFadeIn(const int fadeIn)
+        void setFadeIn(const int fadeIn) restrict2
         { mFadeIn = fadeIn; }
 
         /**
          * Sets the current velocity in 3 dimensional space.
          */
-        void setVelocity(const float x, const float y, const float z)
+        void setVelocity(const float x, const float y, const float z) restrict2
         { mVelocity.x = x; mVelocity.y = y; mVelocity.z = z; }
 
         /**
          * Sets the downward acceleration.
          */
-        void setGravity(const float gravity)
+        void setGravity(const float gravity) restrict2
         { mGravity = gravity; }
 
         /**
          * Sets the ammount of random vector changes
          */
-        void setRandomness(const int r)
+        void setRandomness(const int r) restrict2
         { mRandomness = r; }
 
         /**
          * Sets the ammount of velocity particles retain after
          * hitting the ground.
          */
-        void setBounce(const float bouncieness)
+        void setBounce(const float bouncieness) restrict2
         { mBounce = bouncieness; }
 
         /**
          * Sets the flag if the particle is supposed to be moved by its parent
          */
-        void setFollow(const bool follow)
+        void setFollow(const bool follow) restrict2
         { mFollow = follow; }
 
         /**
          * Gets the flag if the particle is supposed to be moved by its parent
          */
-        bool doesFollow() const A_WARN_UNUSED
+        bool doesFollow() const restrict2 A_WARN_UNUSED
         { return mFollow; }
 
         /**
          * Makes the particle move toward another particle with a
          * given acceleration and momentum
          */
-        void setDestination(Particle *const target,
-                            const float accel, const float moment)
+        void setDestination(Particle *restrict const target,
+                            const float accel,
+                            const float moment) restrict2
         { mTarget = target; mAcceleration = accel; mMomentum = moment; }
 
         /**
@@ -234,54 +236,54 @@ class Particle notfinal : public Actor
          * particle before it is destroyed. Does only make sense after a target
          * particle has been set using setDestination.
          */
-        void setDieDistance(const float dist)
+        void setDieDistance(const float dist) restrict2
         { mInvDieDistance = 1.0F / dist; }
 
         /**
          * Changes the size of the emitters so that the effect fills a
          * rectangle of this size
          */
-        void adjustEmitterSize(const int w, const int h);
+        void adjustEmitterSize(const int w, const int h) restrict2;
 
-        void setAllowSizeAdjust(const bool adjust)
+        void setAllowSizeAdjust(const bool adjust) restrict2
         { mAllowSizeAdjust = adjust; }
 
-        bool isAlive() const A_WARN_UNUSED
+        bool isAlive() const restrict2 A_WARN_UNUSED
         { return mAlive == ALIVE; }
 
-        void prepareToDie();
+        void prepareToDie() restrict2;
 
         /**
          * Determines whether the particle and its children are all dead
          */
-        bool isExtinct() const A_WARN_UNUSED
+        bool isExtinct() const restrict2 A_WARN_UNUSED
         { return !isAlive() && mChildParticles.empty(); }
 
         /**
          * Manually marks the particle for deletion.
          */
-        void kill()
+        void kill() restrict2
         { mAlive = DEAD_OTHER; mAutoDelete = true; }
 
         /**
          * After calling this function the particle will only request
          * deletion when kill() is called
          */
-        void disableAutoDelete()
+        void disableAutoDelete() restrict2
         { mAutoDelete = false; }
 
         /** We consider particles (at least for now) to be one layer-sprites */
-        int getNumberOfLayers() const override final
+        int getNumberOfLayers() const restrict2 override final
         { return 1; }
 
-        float getAlpha() const override final
+        float getAlpha() const restrict2 override final
         { return 1.0F; }
 
-        void setAlpha(const float alpha A_UNUSED) override
+        void setAlpha(const float alpha A_UNUSED) restrict2 override
         { }
 
-        virtual void setDeathEffect(const std::string &effectFile,
-                                    const signed char conditions)
+        virtual void setDeathEffect(const std::string &restrict effectFile,
+                                    const signed char conditions) restrict2
         { mDeathEffect = effectFile; mDeathEffectConditions = conditions; }
 
     protected:
@@ -333,7 +335,7 @@ class Particle notfinal : public Actor
         float mMomentum;
 
         // The particle that attracts this particle
-        Particle *mTarget;
+        Particle *restrict mTarget;
 
         // Ammount of random vector change
         int mRandomness;

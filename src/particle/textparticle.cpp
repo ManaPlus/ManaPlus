@@ -28,9 +28,10 @@
 
 #include "debug.h"
 
-TextParticle::TextParticle(const std::string &text,
-                           const Color *const color,
-                           Font *const font, const bool outline) :
+TextParticle::TextParticle(const std::string &restrict text,
+                           const Color *restrict const color,
+                           Font *restrict const font,
+                           const bool outline) :
     Particle(),
     mText(text),
     mTextFont(font),
@@ -40,8 +41,9 @@ TextParticle::TextParticle(const std::string &text,
 {
 }
 
-void TextParticle::draw(Graphics *const graphics,
-                        const int offsetX, const int offsetY) const
+void TextParticle::draw(Graphics *restrict const graphics,
+                        const int offsetX,
+                        const int offsetY) const restrict2
 {
     if (!mColor || !mTextFont)
         return;
@@ -77,7 +79,7 @@ void TextParticle::draw(Graphics *const graphics,
     graphics->setColor(color);
     if (mOutline)
     {
-        const Color &color2 = theme->getColor(ThemeColorId::OUTLINE,
+        const Color &restrict color2 = theme->getColor(ThemeColorId::OUTLINE,
             static_cast<int>(alpha));
         mTextFont->drawString(graphics,
             color, color2,

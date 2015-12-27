@@ -30,7 +30,7 @@
 
 StringIntMap ImageParticle::imageParticleCountByName;
 
-ImageParticle::ImageParticle(Image *const image) :
+ImageParticle::ImageParticle(Image *restrict const image) :
     Particle(),
     mImage(image)
 {
@@ -38,7 +38,7 @@ ImageParticle::ImageParticle(Image *const image) :
     {
         mImage->incRef();
 
-        const std::string &name = mImage->getIdPath();
+        const std::string &restrict name = mImage->getIdPath();
         StringIntMapIter it
             = ImageParticle::imageParticleCountByName.find(name);
         if (it == ImageParticle::imageParticleCountByName.end())
@@ -52,7 +52,7 @@ ImageParticle::~ImageParticle()
 {
     if (mImage)
     {
-        const std::string &name = mImage->getIdPath();
+        const std::string &restrict name = mImage->getIdPath();
         StringIntMapIter it
             = ImageParticle::imageParticleCountByName.find(name);
         if (it != ImageParticle::imageParticleCountByName.end())
@@ -67,8 +67,9 @@ ImageParticle::~ImageParticle()
     }
 }
 
-void ImageParticle::draw(Graphics *const graphics,
-                         const int offsetX, const int offsetY) const
+void ImageParticle::draw(Graphics *restrict const graphics,
+                         const int offsetX,
+                         const int offsetY) const restrict2
 {
     FUNC_BLOCK("ImageParticle::draw", 1)
     if (mAlive != ALIVE || !mImage)

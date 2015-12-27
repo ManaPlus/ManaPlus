@@ -33,20 +33,21 @@ class SimpleAnimation;
 class RotationalParticle final : public ImageParticle
 {
     public:
-        explicit RotationalParticle(Animation *const animation);
+        explicit RotationalParticle(Animation *restrict const animation);
 
         explicit RotationalParticle(const XmlNodePtr animationNode,
-                                    const std::string& dyePalettes
+                                    const std::string &restrict dyePalettes
                                     = std::string());
 
         A_DELETE_COPY(RotationalParticle)
 
         ~RotationalParticle();
 
-        bool update() override final;
+        bool update() restrict2 override final;
 
     private:
-        SimpleAnimation *mAnimation; /**< Used animation for this particle */
+        /**< Used animation for this particle */
+        SimpleAnimation *restrict mAnimation;
 };
 
 #endif  // PARTICLE_ROTATIONALPARTICLE_H
