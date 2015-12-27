@@ -70,7 +70,7 @@ OpenGLGraphicsVertexes::~OpenGLGraphicsVertexes()
     clear();
 }
 
-void OpenGLGraphicsVertexes::clear()
+void OpenGLGraphicsVertexes::clear() restrict2
 {
     for (std::vector<GLfloat*>::iterator it = mFloatTexPool.begin();
         it != mFloatTexPool.end(); ++ it)
@@ -122,45 +122,45 @@ void OpenGLGraphicsVertexes::clear()
     }
 }
 
-void OpenGLGraphicsVertexes::init()
+void OpenGLGraphicsVertexes::init() restrict2
 {
     clear();
 }
 
-GLfloat *OpenGLGraphicsVertexes::switchFloatTexArray()
+GLfloat *OpenGLGraphicsVertexes::switchFloatTexArray() restrict2
 {
     mFloatTexArray = new GLfloat[static_cast<size_t>(vertexBufSize * 4 + 30)];
     mFloatTexPool.push_back(mFloatTexArray);
     return mFloatTexArray;
 }
 
-GLint *OpenGLGraphicsVertexes::switchIntVertArray()
+GLint *OpenGLGraphicsVertexes::switchIntVertArray() restrict2
 {
     mIntVertArray = new GLint[static_cast<size_t>(vertexBufSize * 4 + 30)];
     mIntVertPool.push_back(mIntVertArray);
     return mIntVertArray;
 }
 
-GLshort *OpenGLGraphicsVertexes::switchShortVertArray()
+GLshort *OpenGLGraphicsVertexes::switchShortVertArray() restrict2
 {
     mShortVertArray = new GLshort[static_cast<size_t>(vertexBufSize * 4 + 30)];
     mShortVertPool.push_back(mShortVertArray);
     return mShortVertArray;
 }
 
-GLint *OpenGLGraphicsVertexes::switchIntTexArray()
+GLint *OpenGLGraphicsVertexes::switchIntTexArray() restrict2
 {
     mIntTexArray = new GLint[static_cast<size_t>(vertexBufSize * 4 + 30)];
     mIntTexPool.push_back(mIntTexArray);
     return mIntTexArray;
 }
 
-void OpenGLGraphicsVertexes::switchVp(const int n)
+void OpenGLGraphicsVertexes::switchVp(const int n) restrict2
 {
     mVp.push_back(n);
 }
 
-int OpenGLGraphicsVertexes::continueVp()
+int OpenGLGraphicsVertexes::continueVp() restrict2
 {
     if (mVp.empty())
     {
@@ -174,14 +174,14 @@ int OpenGLGraphicsVertexes::continueVp()
     }
 }
 
-void OpenGLGraphicsVertexes::updateVp(const int n)
+void OpenGLGraphicsVertexes::updateVp(const int n) restrict2
 {
     if (!mVp.empty())
         mVp.pop_back();
     mVp.push_back(n);
 }
 
-GLfloat *OpenGLGraphicsVertexes::continueFloatTexArray()
+GLfloat *OpenGLGraphicsVertexes::continueFloatTexArray() restrict2
 {
     if (mFloatTexPool.empty())
     {
@@ -196,7 +196,7 @@ GLfloat *OpenGLGraphicsVertexes::continueFloatTexArray()
     return mFloatTexArray;
 }
 
-GLint *OpenGLGraphicsVertexes::continueIntVertArray()
+GLint *OpenGLGraphicsVertexes::continueIntVertArray() restrict2
 {
     if (mIntVertPool.empty())
     {
@@ -210,7 +210,7 @@ GLint *OpenGLGraphicsVertexes::continueIntVertArray()
     return mIntVertArray;
 }
 
-GLshort *OpenGLGraphicsVertexes::continueShortVertArray()
+GLshort *OpenGLGraphicsVertexes::continueShortVertArray() restrict2
 {
     if (mShortVertPool.empty())
     {
@@ -225,7 +225,7 @@ GLshort *OpenGLGraphicsVertexes::continueShortVertArray()
     return mShortVertArray;
 }
 
-GLint *OpenGLGraphicsVertexes::continueIntTexArray()
+GLint *OpenGLGraphicsVertexes::continueIntTexArray() restrict2
 {
     if (mIntTexPool.empty())
     {
@@ -271,7 +271,7 @@ ImageCollection::~ImageCollection()
     clear();
 }
 
-void ImageCollection::clear()
+void ImageCollection::clear() restrict2
 {
 #ifdef USE_OPENGL
     currentGLImage = 0;

@@ -72,46 +72,46 @@ class OpenGLGraphicsVertexes final
 
         ~OpenGLGraphicsVertexes();
 
-        GLfloat *switchFloatTexArray();
+        GLfloat *switchFloatTexArray() restrict2;
 
-        GLint *switchIntVertArray();
+        GLint *switchIntVertArray() restrict2;
 
-        GLint *switchIntTexArray();
+        GLint *switchIntTexArray() restrict2;
 
-        GLshort *switchShortVertArray();
+        GLshort *switchShortVertArray() restrict2;
 
-        std::vector<GLfloat*> *getFloatTexPool() A_WARN_UNUSED
+        std::vector<GLfloat*> *getFloatTexPool() restrict2 A_WARN_UNUSED
         { return &mFloatTexPool; }
 
-        std::vector<GLint*> *getIntVertPool() A_WARN_UNUSED
+        std::vector<GLint*> *getIntVertPool() restrict2 A_WARN_UNUSED
         { return &mIntVertPool; }
 
-        std::vector<GLshort*> *getShortVertPool() A_WARN_UNUSED
+        std::vector<GLshort*> *getShortVertPool() restrict2 A_WARN_UNUSED
         { return &mShortVertPool; }
 
-        std::vector<GLint*> *getIntTexPool() A_WARN_UNUSED
+        std::vector<GLint*> *getIntTexPool() restrict2 A_WARN_UNUSED
         { return &mIntTexPool; }
 
-        void switchVp(const int n);
+        void switchVp(const int n) restrict2;
 
-        GLfloat *continueFloatTexArray() RETURNS_NONNULL;
+        GLfloat *continueFloatTexArray() restrict2 RETURNS_NONNULL;
 
-        GLint *continueIntVertArray() RETURNS_NONNULL;
+        GLint *continueIntVertArray() restrict2 RETURNS_NONNULL;
 
-        GLshort *continueShortVertArray() RETURNS_NONNULL;
+        GLshort *continueShortVertArray() restrict2 RETURNS_NONNULL;
 
-        GLint *continueIntTexArray() RETURNS_NONNULL;
+        GLint *continueIntTexArray() restrict2 RETURNS_NONNULL;
 
-        int continueVp();
+        int continueVp() restrict2;
 
-        void updateVp(const int n);
+        void updateVp(const int n) restrict2;
 
-        std::vector<int> *getVp() A_WARN_UNUSED
+        std::vector<int> *getVp() restrict2 A_WARN_UNUSED
         { return &mVp; }
 
-        void init();
+        void init() restrict2;
 
-        void clear();
+        void clear() restrict2;
 
         int ptr;
 
@@ -139,7 +139,7 @@ class ImageVertexes final
 
         ~ImageVertexes();
 
-        const Image *image;
+        const Image *restrict image;
 #ifdef USE_OPENGL
         OpenGLGraphicsVertexes ogl;
 #endif
@@ -159,14 +159,14 @@ class ImageCollection final
 
         ~ImageCollection();
 
-        void clear();
+        void clear() restrict2;
 
 #ifdef USE_OPENGL
         GLuint currentGLImage;
 #endif
-        const Image *currentImage;
+        const Image *restrict currentImage;
 
-        ImageVertexes *currentVert;
+        ImageVertexes *restrict currentVert;
 
         ImageVertexesVector draws;
 };
