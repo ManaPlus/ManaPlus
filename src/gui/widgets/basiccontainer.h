@@ -80,7 +80,7 @@ class BasicContainer notfinal : public Widget,
                                 public WidgetDeathListener
 {
     public:
-        explicit BasicContainer(const Widget2 *const widget) :
+        explicit BasicContainer(const Widget2 *restrict const widget) :
             Widget(widget),
             WidgetDeathListener(),
             mWidgets(),
@@ -105,34 +105,37 @@ class BasicContainer notfinal : public Widget,
           *               itself to be visible.
           * @param rectangle The rectangle to be visible.
           */
-        void showWidgetPart(Widget *const widget,
-                            const Rect &area) override;
+        void showWidgetPart(Widget *restrict const widget,
+                            const Rect &restrict area) restrict2 override;
 
         // Inherited from Widget
 
-        void moveToTop(Widget* widget) override;
+        void moveToTop(Widget *widget) restrict2 override;
 
-        void moveToBottom(Widget* widget) override;
+        void moveToBottom(Widget *widget) restrict2 override;
 
-        Rect getChildrenArea() override A_WARN_UNUSED;
+        Rect getChildrenArea() restrict2 override A_WARN_UNUSED;
 
-        void focusNext() override;
+        void focusNext() restrict2 override;
 
-        void focusPrevious() override;
+        void focusPrevious() restrict2 override;
 
-        void logic() override;
+        void logic() restrict2 override;
 
-        void setFocusHandler(FocusHandler *const focusHandler) override;
+        void setFocusHandler(FocusHandler *restrict const focusHandler)
+                             restrict2 override;
 
-        void setInternalFocusHandler(FocusHandler* focusHandler);
+        void setInternalFocusHandler(FocusHandler *restrict focusHandler)
+                                     restrict2;
 
-        Widget *getWidgetAt(int x, int y) override A_WARN_UNUSED;
+        Widget *getWidgetAt(int x, int y) restrict2 override A_WARN_UNUSED;
 
         // Inherited from WidgetDeathListener
 
-        void death(const Event& event) override;
+        void death(const Event &restrict event) restrict2 override;
 
-        Widget *findFirstWidget(const std::set<Widget*> &list);
+        Widget *findFirstWidget(const std::set<Widget*> &restrict list)
+                                restrict2;
 
         /**
           * Adds a widget to the basic container.
@@ -140,7 +143,7 @@ class BasicContainer notfinal : public Widget,
           * @param widget The widget to add.
           * @see remove, clear
           */
-        void add(Widget *const widget);
+        void add(Widget *const widget) restrict2;
 
         /**
           * Removes a widget from the basic container.
@@ -148,14 +151,14 @@ class BasicContainer notfinal : public Widget,
           * @param widget The widget to remove.
           * @see add, clear
           */
-        virtual void remove(Widget* widget);
+        virtual void remove(Widget *restrict widget) restrict2;
 
         /**
           * Clears the basic container from all widgets.
           *
           * @see remove, clear
           */
-        virtual void clear();
+        virtual void clear() restrict2;
 
     protected:
         /**
@@ -163,15 +166,17 @@ class BasicContainer notfinal : public Widget,
           *
           * @param graphics A graphics object to draw with.
           */
-        virtual void drawChildren(Graphics* graphics) A_NONNULL(2);
+        virtual void drawChildren(Graphics *restrict graphics)
+                                  restrict2 A_NONNULL(2);
 
-        virtual void safeDrawChildren(Graphics* graphics) A_NONNULL(2);
+        virtual void safeDrawChildren(Graphics *restrict graphics)
+                                      restrict2 A_NONNULL(2);
 
         /**
           * Calls logic for the children widgets of the basic
           * container.
           */
-        virtual void logicChildren();
+        virtual void logicChildren() restrict2;
 
         /**
           * Typedef.

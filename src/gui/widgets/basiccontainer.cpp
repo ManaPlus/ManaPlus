@@ -72,7 +72,7 @@ BasicContainer::~BasicContainer()
     clear();
 }
 
-void BasicContainer::moveToTop(Widget* widget)
+void BasicContainer::moveToTop(Widget *widget) restrict2
 {
     FOR_EACH (WidgetListIterator, iter, mWidgets)
     {
@@ -94,7 +94,7 @@ void BasicContainer::moveToTop(Widget* widget)
     }
 }
 
-void BasicContainer::moveToBottom(Widget* widget)
+void BasicContainer::moveToBottom(Widget *widget) restrict2
 {
     WidgetListIterator iter = std::find(mWidgets.begin(),
         mWidgets.end(), widget);
@@ -113,7 +113,7 @@ void BasicContainer::moveToBottom(Widget* widget)
     }
 }
 
-void BasicContainer::death(const Event &event)
+void BasicContainer::death(const Event &restrict event) restrict2
 {
     WidgetListIterator iter = std::find(mWidgets.begin(),
         mWidgets.end(), event.getSource());
@@ -126,12 +126,12 @@ void BasicContainer::death(const Event &event)
         mLogicWidgets.erase(iter2);
 }
 
-Rect BasicContainer::getChildrenArea()
+Rect BasicContainer::getChildrenArea() restrict2
 {
     return Rect(0, 0, mDimension.width, mDimension.height);
 }
 
-void BasicContainer::focusNext()
+void BasicContainer::focusNext() restrict2
 {
     WidgetListConstIterator it;
 
@@ -161,7 +161,7 @@ void BasicContainer::focusNext()
     }
 }
 
-void BasicContainer::focusPrevious()
+void BasicContainer::focusPrevious() restrict2
 {
     WidgetListReverseIterator it;
 
@@ -191,7 +191,7 @@ void BasicContainer::focusPrevious()
     }
 }
 
-Widget *BasicContainer::getWidgetAt(int x, int y)
+Widget *BasicContainer::getWidgetAt(int x, int y) restrict2
 {
     const Rect r = getChildrenArea();
 
@@ -204,9 +204,9 @@ Widget *BasicContainer::getWidgetAt(int x, int y)
     for (WidgetListReverseIterator it = mWidgets.rbegin();
          it != mWidgets.rend(); ++ it)
     {
-        const Widget *const widget = *it;
-        if (widget->isVisible() && widget->getDimension()
-            .isPointInRect(x, y))
+        const Widget *restrict const widget = *it;
+        if (widget->isVisible() &&
+            widget->getDimension().isPointInRect(x, y))
         {
             return *it;
         }
@@ -215,7 +215,7 @@ Widget *BasicContainer::getWidgetAt(int x, int y)
     return nullptr;
 }
 
-void BasicContainer::logic()
+void BasicContainer::logic() restrict2
 {
     BLOCK_START("BasicContainer::logic")
     if (mVisible == Visible_false)
@@ -227,7 +227,8 @@ void BasicContainer::logic()
     BLOCK_END("BasicContainer::logic")
 }
 
-void BasicContainer::setFocusHandler(FocusHandler *const focusHandler)
+void BasicContainer::setFocusHandler(FocusHandler *restrict2 const
+                                     focusHandler) restrict2
 {
     Widget::setFocusHandler(focusHandler);
 
@@ -238,7 +239,7 @@ void BasicContainer::setFocusHandler(FocusHandler *const focusHandler)
         (*iter)->setFocusHandler(focusHandler);
 }
 
-void BasicContainer::add(Widget *const widget)
+void BasicContainer::add(Widget *const widget) restrict2
 {
     if (!widget)
         return;
@@ -255,7 +256,7 @@ void BasicContainer::add(Widget *const widget)
     widget->addDeathListener(this);
 }
 
-void BasicContainer::remove(Widget* widget)
+void BasicContainer::remove(Widget *restrict widget) restrict2
 {
     if (!widget)
         return;
@@ -281,11 +282,11 @@ void BasicContainer::remove(Widget* widget)
     }
 }
 
-void BasicContainer::clear()
+void BasicContainer::clear() restrict2
 {
     FOR_EACH (WidgetListConstIterator, iter, mWidgets)
     {
-        Widget *const widget = *iter;
+        Widget *restrict const widget = *iter;
         widget->setFocusHandler(nullptr);
         widget->setWindow(nullptr);
         widget->setParent(nullptr);
@@ -296,14 +297,14 @@ void BasicContainer::clear()
     mLogicWidgets.clear();
 }
 
-void BasicContainer::drawChildren(Graphics* graphics)
+void BasicContainer::drawChildren(Graphics *restrict graphics) restrict2
 {
     BLOCK_START("BasicContainer::drawChildren")
     graphics->pushClipArea(getChildrenArea());
 
     FOR_EACH (WidgetListConstIterator, iter, mWidgets)
     {
-        Widget *const widget = *iter;
+        Widget *restrict const widget = *iter;
         if (widget->isVisibleLocal())
         {
             // If the widget has a frame,
@@ -336,14 +337,14 @@ void BasicContainer::drawChildren(Graphics* graphics)
     BLOCK_END("BasicContainer::drawChildren")
 }
 
-void BasicContainer::safeDrawChildren(Graphics* graphics)
+void BasicContainer::safeDrawChildren(Graphics *restrict graphics) restrict2
 {
     BLOCK_START("BasicContainer::drawChildren")
     graphics->pushClipArea(getChildrenArea());
 
     FOR_EACH (WidgetListConstIterator, iter, mWidgets)
     {
-        Widget *const widget = *iter;
+        Widget *restrict const widget = *iter;
         if (widget->isVisibleLocal())
         {
             // If the widget has a frame,
@@ -376,7 +377,7 @@ void BasicContainer::safeDrawChildren(Graphics* graphics)
     BLOCK_END("BasicContainer::drawChildren")
 }
 
-void BasicContainer::logicChildren()
+void BasicContainer::logicChildren() restrict2
 {
     BLOCK_START("BasicContainer::logicChildren")
     FOR_EACH (WidgetListConstIterator, iter, mLogicWidgets)
@@ -384,7 +385,8 @@ void BasicContainer::logicChildren()
     BLOCK_END("BasicContainer::logicChildren")
 }
 
-void BasicContainer::showWidgetPart(Widget *const widget, const Rect &area)
+void BasicContainer::showWidgetPart(Widget *restrict const widget,
+                                    const Rect &restrict area) restrict2
 {
     if (!widget)
         return;
@@ -407,11 +409,12 @@ void BasicContainer::showWidgetPart(Widget *const widget, const Rect &area)
         widget->setY(widgetArea.height - area.y - area.height);
 }
 
-void BasicContainer::setInternalFocusHandler(FocusHandler* focusHandler)
+void BasicContainer::setInternalFocusHandler(FocusHandler *restrict
+                                             focusHandler) restrict2
 {
     Widget::setInternalFocusHandler(focusHandler);
 
-    FocusHandler *handler = mInternalFocusHandler ?
+    FocusHandler *restrict handler = mInternalFocusHandler ?
         mInternalFocusHandler : getFocusHandler();
     FOR_EACH (WidgetListConstIterator, iter, mWidgets)
     {
@@ -419,7 +422,8 @@ void BasicContainer::setInternalFocusHandler(FocusHandler* focusHandler)
     }
 }
 
-Widget *BasicContainer::findFirstWidget(const std::set<Widget*> &list)
+Widget *BasicContainer::findFirstWidget(const std::set<Widget*> &restrict list)
+                                        restrict2
 {
     FOR_EACHR (WidgetListReverseIterator, iter, mWidgets)
     {
