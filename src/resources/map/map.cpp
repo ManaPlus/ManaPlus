@@ -188,7 +188,7 @@ Map::~Map()
     delete2(mHeights);
 }
 
-void Map::optionChanged(const std::string &value)
+void Map::optionChanged(const std::string &restrict value) restrict2
 {
     if (value == "OverlayDetail")
     {
@@ -211,7 +211,7 @@ void Map::optionChanged(const std::string &value)
     }
 }
 
-void Map::initializeAmbientLayers()
+void Map::initializeAmbientLayers() restrict2
 {
     // search for "foreground*" or "overlay*" (old term) in map properties
     for (int i = 0; /* terminated by a break */; i++)
@@ -232,7 +232,7 @@ void Map::initializeAmbientLayers()
             break;  // the FOR loop
         }
 
-        Image *const img = resourceManager->getImage(
+        Image *restrict const img = resourceManager->getImage(
             getProperty(name + "image"));
         if (img)
         {
@@ -260,7 +260,7 @@ void Map::initializeAmbientLayers()
          toString(i)).append("image")); i ++)
     {
         const std::string name("background" + toString(i));
-        Image *const img = resourceManager->getImage(
+        Image *restrict const img = resourceManager->getImage(
             getProperty(name + "image"));
 
         if (img)
@@ -286,7 +286,7 @@ void Map::initializeAmbientLayers()
     }
 }
 
-void Map::addLayer(MapLayer *const layer)
+void Map::addLayer(MapLayer *const layer) restrict2
 {
     if (layer)
     {
@@ -296,7 +296,7 @@ void Map::addLayer(MapLayer *const layer)
     }
 }
 
-void Map::addTileset(Tileset *const tileset)
+void Map::addTileset(Tileset *const tileset) restrict2
 {
     if (!tileset)
         return;
@@ -307,18 +307,19 @@ void Map::addTileset(Tileset *const tileset)
         mMaxTileHeight = height;
 }
 
-void Map::update(const int ticks)
+void Map::update(const int ticks) restrict2
 {
     // Update animated tiles
     FOR_EACH (TileAnimationMapCIter, iAni, mTileAnimations)
     {
-        TileAnimation *const tileAni = iAni->second;
+        TileAnimation *restrict const tileAni = iAni->second;
         if (tileAni && tileAni->update(ticks))
             mRedrawMap = true;
     }
 }
 
-void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
+void Map::draw(Graphics *restrict const graphics,
+               int scrollX, int scrollY) restrict2
 {
     if (!localPlayer)
         return;
@@ -478,7 +479,7 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
         {
             while (ai != ai_end)
             {
-                if (Actor *const actor = *ai)
+                if (Actor *restrict const actor = *ai)
                 {
                     const int x = actor->getTileX();
                     const int y = actor->getTileY();
@@ -544,10 +545,10 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
         }\
     }\
 
-void Map::drawCollision(Graphics *const graphics,
+void Map::drawCollision(Graphics *restrict const graphics,
                         const int scrollX,
                         const int scrollY,
-                        const MapTypeT drawFlags) const
+                        const MapTypeT drawFlags) const restrict2
 {
     const int endPixelY = graphics->mHeight + scrollY + mTileHeight - 1;
     int startX = scrollX / mTileWidth;
@@ -592,7 +593,8 @@ void Map::drawCollision(Graphics *const graphics,
     }
 }
 
-void Map::updateAmbientLayers(const float scrollX, const float scrollY)
+void Map::updateAmbientLayers(const float scrollX,
+                              const float scrollY) restrict2
 {
     BLOCK_START("Map::updateAmbientLayers")
     static int lastTick = tick_time;
@@ -631,9 +633,9 @@ void Map::updateAmbientLayers(const float scrollX, const float scrollY)
     BLOCK_END("Map::updateAmbientLayers")
 }
 
-void Map::drawAmbientLayers(Graphics *const graphics,
+void Map::drawAmbientLayers(Graphics *restrict const graphics,
                             const LayerType type,
-                            const int detail) const
+                            const int detail) const restrict2
 {
     BLOCK_START("Map::drawAmbientLayers")
     // Detail 0 = no ambient effects except background image
@@ -644,7 +646,7 @@ void Map::drawAmbientLayers(Graphics *const graphics,
     }
 
     // find out which layer list to draw
-    const AmbientLayerVector *layers = nullptr;
+    const AmbientLayerVector *restrict layers = nullptr;
     switch (type)
     {
         case FOREGROUND_LAYERS:
@@ -660,7 +662,7 @@ void Map::drawAmbientLayers(Graphics *const graphics,
     // Draw overlays
     FOR_EACHP (AmbientLayerVectorCIter, i, layers)
     {
-        const AmbientLayer *const layer = *i;
+        const AmbientLayer *restrict const layer = *i;
         // need check mask to draw or not to draw
         if (layer && (layer->mMask & mMask))
             (layer)->draw(graphics, graphics->mWidth, graphics->mHeight);
@@ -672,7 +674,7 @@ void Map::drawAmbientLayers(Graphics *const graphics,
     BLOCK_END("Map::drawAmbientLayers")
 }
 
-const Tileset *Map::getTilesetWithGid(const int gid) const
+const Tileset *Map::getTilesetWithGid(const int gid) const restrict2
 {
     if (gid >= 0 && gid < mIndexedTilesetsSize)
         return mIndexedTilesets[gid];
@@ -681,7 +683,7 @@ const Tileset *Map::getTilesetWithGid(const int gid) const
 }
 
 void Map::addBlockMask(const int x, const int y,
-                       const BlockTypeT type)
+                       const BlockTypeT type) restrict2
 {
     if (type == BlockType::NONE || !contains(x, y))
         return;
@@ -714,7 +716,7 @@ void Map::addBlockMask(const int x, const int y,
 }
 
 void Map::setBlockMask(const int x, const int y,
-                       const BlockTypeT type)
+                       const BlockTypeT type) restrict2
 {
     if (type == BlockType::NONE || !contains(x, y))
         return;
@@ -747,7 +749,7 @@ void Map::setBlockMask(const int x, const int y,
 }
 
 bool Map::getWalk(const int x, const int y,
-                  const unsigned char blockWalkMask) const
+                  const unsigned char blockWalkMask) const restrict2
 {
     // You can't walk outside of the map
     if (x < 0 || y < 0 || x >= mWidth || y >= mHeight)
@@ -757,7 +759,8 @@ bool Map::getWalk(const int x, const int y,
     return !(mMetaTiles[x + y * mWidth].blockmask & blockWalkMask);
 }
 
-unsigned char Map::getBlockMask(const int x, const int y) const
+unsigned char Map::getBlockMask(const int x,
+                                const int y) const restrict2
 {
     // You can't walk outside of the map
     if (x < 0 || y < 0 || x >= mWidth || y >= mHeight)
@@ -767,40 +770,40 @@ unsigned char Map::getBlockMask(const int x, const int y) const
     return mMetaTiles[x + y * mWidth].blockmask;
 }
 
-void Map::setWalk(const int x, const int y)
+void Map::setWalk(const int x, const int y) restrict2
 {
     addBlockMask(x, y, BlockType::GROUNDTOP);
 }
 
-bool Map::contains(const int x, const int y) const
+bool Map::contains(const int x, const int y) const restrict2
 {
     return x >= 0 && y >= 0 && x < mWidth && y < mHeight;
 }
 
-const MetaTile *Map::getMetaTile(const int x, const int y) const
+const MetaTile *Map::getMetaTile(const int x, const int y) const restrict2
 {
     return &mMetaTiles[x + y * mWidth];
 }
 
-Actors::iterator Map::addActor(Actor *const actor)
+Actors::iterator Map::addActor(Actor *restrict2 const actor) restrict2
 {
     mActors.push_front(actor);
 //    mSpritesUpdated = true;
     return mActors.begin();
 }
 
-void Map::removeActor(const Actors::iterator &iterator)
+void Map::removeActor(const Actors::iterator &restrict iterator) restrict2
 {
     mActors.erase(iterator);
 //    mSpritesUpdated = true;
 }
 
-const std::string Map::getMusicFile() const
+const std::string Map::getMusicFile() const restrict2
 {
     return getProperty("music");
 }
 
-const std::string Map::getName() const
+const std::string Map::getName() const restrict2
 {
     if (hasProperty("name"))
         return getProperty("name");
@@ -808,14 +811,14 @@ const std::string Map::getName() const
     return getProperty("mapname");
 }
 
-const std::string Map::getFilename() const
+const std::string Map::getFilename() const restrict2
 {
     const std::string fileName = getProperty("_filename");
     const size_t lastSlash = fileName.rfind("/") + 1;
     return fileName.substr(lastSlash, fileName.rfind(".") - lastSlash);
 }
 
-const std::string Map::getGatName() const
+const std::string Map::getGatName() const restrict2
 {
     const std::string fileName = getProperty("_filename");
     const size_t lastSlash = fileName.rfind("/") + 1;
@@ -826,7 +829,7 @@ const std::string Map::getGatName() const
 Path Map::findPath(const int startX, const int startY,
                    const int destX, const int destY,
                    const unsigned char blockWalkMask,
-                   const int maxCost)
+                   const int maxCost) restrict2
 {
     BLOCK_START("Map::findPath")
     // The basic walking cost of a tile.
@@ -1061,13 +1064,14 @@ Path Map::findPath(const int startX, const int startY,
 
 void Map::addParticleEffect(const std::string &effectFile,
                             const int x, const int y,
-                            const int w, const int h)
+                            const int w, const int h) restrict2
 {
     ParticleEffectData newEffect(effectFile, x, y, w, h);
     mParticleEffects.push_back(newEffect);
 }
 
-void Map::initializeParticleEffects(Particle *const engine) const
+void Map::initializeParticleEffects(Particle *restrict const engine)
+                                    const restrict2
 {
     BLOCK_START("Map::initializeParticleEffects")
     if (!engine)
@@ -1090,7 +1094,7 @@ void Map::initializeParticleEffects(Particle *const engine) const
      BLOCK_END("Map::initializeParticleEffects")
 }
 
-void Map::addExtraLayer()
+void Map::addExtraLayer() restrict2
 {
     BLOCK_START("Map::addExtraLayer")
     if (!mSpecialLayer)
@@ -1165,7 +1169,7 @@ void Map::addExtraLayer()
     BLOCK_END("Map::addExtraLayer")
 }
 
-void Map::saveExtraLayer() const
+void Map::saveExtraLayer() const restrict2
 {
     if (!mSpecialLayer)
     {
@@ -1198,7 +1202,7 @@ void Map::saveExtraLayer() const
     {
         for (int y = 0; y < height; y ++)
         {
-            const MapItem *const item = mSpecialLayer->getTile(x, y);
+            const MapItem *restrict const item = mSpecialLayer->getTile(x, y);
             if (item && item->mType != MapItemType::EMPTY
                 && item->mType != MapItemType::HOME)
             {
@@ -1211,15 +1215,16 @@ void Map::saveExtraLayer() const
     mapFile.close();
 }
 
-std::string Map::getUserMapDirectory() const
+std::string Map::getUserMapDirectory() const restrict2
 {
     return settings.serverConfigDir +
         dirSeparator + getProperty("_realfilename");
 }
 
-void Map::addRange(const std::string &name, const int type,
+void Map::addRange(const std::string &restrict name,
+                   const int type,
                    const int x, const int y,
-                   const int dx, const int dy)
+                   const int dx, const int dy) restrict2
 {
     if (!mObjects)
         return;
@@ -1228,16 +1233,18 @@ void Map::addRange(const std::string &name, const int type,
         dx / mapTileSize, dy / mapTileSize);
 }
 
-void Map::addPortal(const std::string &name, const int type,
+void Map::addPortal(const std::string &restrict name,
+                    const int type,
                     const int x, const int y,
-                    const int dx, const int dy)
+                    const int dx, const int dy) restrict2
 {
     addPortalTile(name, type, (x / mapTileSize) + (dx / mapTileSize / 2),
         (y / mapTileSize) + (dy / mapTileSize / 2));
 }
 
-void Map::addPortalTile(const std::string &name, const int type,
-                        const int x, const int y)
+void Map::addPortalTile(const std::string &restrict name,
+                        const int type,
+                        const int x, const int y) restrict2
 {
     if (mSpecialLayer)
         mSpecialLayer->setTile(x, y, new MapItem(type, name, x, y));
@@ -1245,10 +1252,12 @@ void Map::addPortalTile(const std::string &name, const int type,
     mMapPortals.push_back(new MapItem(type, name, x, y));
 }
 
-void Map::updatePortalTile(const std::string &name, const int type,
-                           const int x, const int y, const bool addNew)
+void Map::updatePortalTile(const std::string &restrict name,
+                           const int type,
+                           const int x, const int y,
+                           const bool addNew) restrict2
 {
-    MapItem *item = findPortalXY(x, y);
+    MapItem *restrict item = findPortalXY(x, y);
     if (item)
     {
         item->mComment = name;
@@ -1267,21 +1276,21 @@ void Map::updatePortalTile(const std::string &name, const int type,
     }
 }
 
-MapItem *Map::findPortalXY(const int x, const int y) const
+MapItem *Map::findPortalXY(const int x, const int y) const restrict2
 {
     FOR_EACH (std::vector<MapItem*>::const_iterator, it, mMapPortals)
     {
         if (!*it)
             continue;
 
-        MapItem *const item = *it;
+        MapItem *restrict const item = *it;
         if (item->mX == x && item->mY == y)
             return item;
     }
     return nullptr;
 }
 
-const TileAnimation *Map::getAnimationForGid(const int gid) const
+const TileAnimation *Map::getAnimationForGid(const int gid) const restrict2
 {
     if (mTileAnimations.empty())
         return nullptr;
@@ -1290,7 +1299,7 @@ const TileAnimation *Map::getAnimationForGid(const int gid) const
     return (i == mTileAnimations.end()) ? nullptr : i->second;
 }
 
-void Map::setPvpMode(const int mode)
+void Map::setPvpMode(const int mode) restrict2
 {
     const int oldMode = mPvp;
 
@@ -1323,12 +1332,12 @@ void Map::setPvpMode(const int mode)
 }
 
 std::string Map::getObjectData(const unsigned x, const unsigned y,
-                               const int type) const
+                               const int type) const restrict2
 {
     if (!mObjects)
         return "";
 
-    MapObjectList *const list = mObjects->getAt(x, y);
+    MapObjectList *restrict const list = mObjects->getAt(x, y);
     if (!list)
         return "";
 
@@ -1344,14 +1353,14 @@ std::string Map::getObjectData(const unsigned x, const unsigned y,
     return "";
 }
 
-void Map::indexTilesets()
+void Map::indexTilesets() restrict2
 {
     if (mTilesetsIndexed)
         return;
 
     mTilesetsIndexed = true;
 
-    const Tileset *s = nullptr;
+    const Tileset *restrict s = nullptr;
     size_t sSz = 0;
     FOR_EACH (Tilesets::const_iterator, it, mTilesets)
     {
@@ -1378,7 +1387,7 @@ void Map::indexTilesets()
 
     FOR_EACH (Tilesets::const_iterator, it, mTilesets)
     {
-        Tileset *const s2 = *it;
+        Tileset *restrict const s2 = *it;
         if (s2)
         {
             const int start = s2->getFirstGid();
@@ -1392,7 +1401,7 @@ void Map::indexTilesets()
     }
 }
 
-void Map::clearIndexedTilesets()
+void Map::clearIndexedTilesets() restrict2
 {
     if (!mTilesetsIndexed)
         return;
@@ -1402,7 +1411,7 @@ void Map::clearIndexedTilesets()
     mIndexedTilesetsSize = 0;
 }
 
-void Map::reduce()
+void Map::reduce() restrict2
 {
 #ifdef USE_SDL2
     return;
@@ -1424,7 +1433,7 @@ void Map::reduce()
 
             FOR_EACH (LayersCIter, layeri, mLayers)
             {
-                const MapLayer *const layer = *layeri;
+                const MapLayer *restrict const layer = *layeri;
                 if (x >= layer->mWidth || y >= layer->mHeight)
                     continue;
 
@@ -1432,7 +1441,8 @@ void Map::reduce()
                 if (layer->mTileCondition != -1 || layer->mMask != 1)
                     continue;
 
-                Image *const img = layer->mTiles[x + y * layer->mWidth].image;
+                Image *restrict const img =
+                    layer->mTiles[x + y * layer->mWidth].image;
                 if (img)
                 {
                     if (img->hasAlphaChannel() && img->isAlphaCalculated())
@@ -1457,14 +1467,15 @@ void Map::reduce()
                     }
                     else if (img->hasAlphaChannel())
                     {
-                        const uint8_t *const arr = img->SDLgetAlphaChannel();
+                        const uint8_t *restrict const arr =
+                            img->SDLgetAlphaChannel();
                         if (!arr)
                             continue;
 
                         bool bad(false);
                         bool stop(false);
                         int width;
-                        const SubImage *const subImg
+                        const SubImage *restrict const subImg
                             = dynamic_cast<SubImage*>(img);
                         if (subImg)
                             width = subImg->mInternalBounds.w;
@@ -1507,7 +1518,7 @@ void Map::reduce()
             Layers::reverse_iterator ri = mLayers.rbegin();
             while (ri != mLayers.rend())
             {
-                const MapLayer *const layer = *ri;
+                const MapLayer *restrict const layer = *ri;
                 if (x >= layer->mWidth || y >= layer->mHeight)
                 {
                     ++ ri;
@@ -1521,13 +1532,14 @@ void Map::reduce()
                     continue;
                 }
 
-                const Image *img = layer->mTiles[x + y * layer->mWidth].image;
+                const Image *restrict img =
+                    layer->mTiles[x + y * layer->mWidth].image;
                 if (img && !img->isAlphaVisible())
                 {   // removing all down tiles
                     ++ ri;
                     while (ri != mLayers.rend())
                     {
-                        MapLayer *const layer2 = *ri;
+                        MapLayer *restrict const layer2 = *ri;
                         // skip layers with flags
                         if (layer2->mTileCondition != -1 || layer2->mMask != 1)
                         {
@@ -1554,25 +1566,20 @@ void Map::reduce()
 #endif
 }
 
-void Map::redrawMap()
-{
-    mRedrawMap = true;
-}
-
-void Map::addHeights(MapHeights *const heights)
+void Map::addHeights(MapHeights *restrict const heights) restrict2
 {
     delete mHeights;
     mHeights = heights;
 }
 
-uint8_t Map::getHeightOffset(const int x, const int y) const
+uint8_t Map::getHeightOffset(const int x, const int y) const restrict2
 {
     if (!mHeights)
         return 0;
     return mHeights->getHeight(x, y);
 }
 
-void Map::updateDrawLayersList()
+void Map::updateDrawLayersList() restrict2
 {
     mDrawUnderLayers.clear();
     mDrawOverLayers.clear();
@@ -1610,7 +1617,7 @@ void Map::updateDrawLayersList()
     }
 }
 
-void Map::setMask(const int mask)
+void Map::setMask(const int mask) restrict2
 {
     if (mask != mMask)
     {
@@ -1620,12 +1627,13 @@ void Map::setMask(const int mask)
     }
 }
 
-void Map::setMusicFile(const std::string &file)
+void Map::setMusicFile(const std::string &restrict file) restrict2
 {
     setProperty("music", file);
 }
 
-void Map::addAnimation(const int gid, TileAnimation *const animation)
+void Map::addAnimation(const int gid,
+                       TileAnimation *restrict const animation) restrict2
 {
     std::map<int, TileAnimation*>::iterator it = mTileAnimations.find(gid);
     if (it != mTileAnimations.end())
@@ -1636,12 +1644,12 @@ void Map::addAnimation(const int gid, TileAnimation *const animation)
     mTileAnimations[gid] = animation;
 }
 
-void Map::setDrawLayersFlags(const MapTypeT &n)
+void Map::setDrawLayersFlags(const MapTypeT &restrict n) restrict2
 {
     mDrawLayersFlags = n;
-    if (mDrawLayersFlags == MapType::SPECIAL3
-        || mDrawLayersFlags == MapType::SPECIAL4
-        || mDrawLayersFlags == MapType::BLACKWHITE)
+    if (mDrawLayersFlags == MapType::SPECIAL3 ||
+        mDrawLayersFlags == MapType::SPECIAL4 ||
+        mDrawLayersFlags == MapType::BLACKWHITE)
     {
         mDrawOnlyFringe = true;
     }
@@ -1652,12 +1660,12 @@ void Map::setDrawLayersFlags(const MapTypeT &n)
     updateDrawLayersList();
     FOR_EACH (Layers::iterator, it, mLayers)
     {
-        MapLayer *const layer = *it;
+        MapLayer *restrict const layer = *it;
         layer->setDrawLayerFlags(mDrawLayersFlags);
     }
 }
 
-void Map::setActorsFix(const int x, const int y)
+void Map::setActorsFix(const int x, const int y) restrict2
 {
     mActorFixX = x;
     mActorFixY = y;
@@ -1665,13 +1673,13 @@ void Map::setActorsFix(const int x, const int y)
         mFringeLayer->setActorsFix(y);
 }
 
-void Map::updateConditionLayers()
+void Map::updateConditionLayers() restrict2
 {
     mRedrawMap = true;
 
     FOR_EACH (LayersCIter, it, mLayers)
     {
-        MapLayer *const layer = *it;
+        MapLayer *restrict const layer = *it;
         if (!layer || layer->mTileCondition == -1)
             continue;
         layer->updateConditionTiles(mMetaTiles,

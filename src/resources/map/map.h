@@ -94,12 +94,12 @@ class Map final : public Properties, public ConfigListener
          * Initialize ambient layers. Has to be called after all the properties
          * are set.
          */
-        void initializeAmbientLayers();
+        void initializeAmbientLayers() restrict2;
 
         /**
          * Updates animations. Called as needed.
          */
-        void update(const int ticks = 1);
+        void update(const int ticks = 1) restrict2;
 
         /**
          * Draws the map to the given graphics output. This method draws all
@@ -109,44 +109,47 @@ class Map final : public Properties, public ConfigListener
          * the clipping rectangle set on the Graphics object. However,
          * currently the map is always drawn full-screen.
          */
-        void draw(Graphics *const graphics,
+        void draw(Graphics *restrict const graphics,
                   int scrollX,
-                  int scrollY) A_NONNULL(2);
+                  int scrollY) restrict2 A_NONNULL(2);
 
         /**
          * Visualizes collision layer for debugging
          */
-        void drawCollision(Graphics *const graphics,
+        void drawCollision(Graphics *restrict const graphics,
                            const int scrollX,
                            const int scrollY,
-                           const MapTypeT drawFlags) const A_NONNULL(2);
+                           const MapTypeT drawFlags) const
+                           restrict2 A_NONNULL(2);
 
         /**
          * Adds a layer to this map. The map takes ownership of the layer.
          */
-        void addLayer(MapLayer *const layer);
+        void addLayer(MapLayer *const layer) restrict2;
 
         /**
          * Adds a tileset to this map. The map takes ownership of the tileset.
          */
-        void addTileset(Tileset *const tileset);
+        void addTileset(Tileset *const tileset) restrict2;
 
         /**
          * Finds the tile set that a tile with the given global id is part of.
          */
-        const Tileset *getTilesetWithGid(const int gid) const A_WARN_UNUSED;
+        const Tileset *getTilesetWithGid(const int gid) const
+                                         restrict2 A_WARN_UNUSED;
 
         /**
          * Get tile reference.
          */
         const MetaTile *getMetaTile(const int x,
-                                    const int y) const A_WARN_UNUSED;
+                                    const int y) const
+                                    restrict2 A_WARN_UNUSED;
 
         void addBlockMask(const int x, const int y,
-                          const BlockTypeT type);
+                          const BlockTypeT type) restrict2;
 
         void setBlockMask(const int x, const int y,
-                          const BlockTypeT type);
+                          const BlockTypeT type) restrict2;
 
         /**
          * Gets walkability for a tile with a blocking bitmask. When called
@@ -154,48 +157,50 @@ class Map final : public Properties, public ConfigListener
          */
         bool getWalk(const int x, const int y,
                      const unsigned char blockWalkMask = BlockMask::WALL
-                     | BlockMask::AIR | BlockMask::WATER) const A_WARN_UNUSED;
+                     | BlockMask::AIR | BlockMask::WATER) const
+                     restrict2 A_WARN_UNUSED;
 
-        void setWalk(const int x, const int y);
+        void setWalk(const int x, const int y) restrict2;
 
-        unsigned char getBlockMask(const int x, const int y) const;
+        unsigned char getBlockMask(const int x,
+                                   const int y) const restrict2;
 
         /**
          * Returns the width of this map in tiles.
          */
-        int getWidth() const A_WARN_UNUSED
+        int getWidth() const restrict2 A_WARN_UNUSED
         { return mWidth; }
 
         /**
          * Returns the height of this map in tiles.
          */
-        int getHeight() const A_WARN_UNUSED
+        int getHeight() const restrict2 A_WARN_UNUSED
         { return mHeight; }
 
         /**
          * Returns the tile width of this map.
          */
-        int getTileWidth() const A_WARN_UNUSED
+        int getTileWidth() const restrict2 A_WARN_UNUSED
         { return mTileWidth; }
 
         /**
          * Returns the tile height used by this map.
          */
-        int getTileHeight() const A_WARN_UNUSED
+        int getTileHeight() const restrict2 A_WARN_UNUSED
         { return mTileHeight; }
 
-        const std::string getMusicFile() const A_WARN_UNUSED;
+        const std::string getMusicFile() const restrict2 A_WARN_UNUSED;
 
-        void setMusicFile(const std::string &file);
+        void setMusicFile(const std::string &restrict file) restrict2;
 
-        const std::string getName() const A_WARN_UNUSED;
+        const std::string getName() const restrict2 A_WARN_UNUSED;
 
         /**
          * Gives the map id based on filepath (ex: 009-1)
          */
-        const std::string getFilename() const A_WARN_UNUSED;
+        const std::string getFilename() const restrict2 A_WARN_UNUSED;
 
-        const std::string getGatName() const A_WARN_UNUSED;
+        const std::string getGatName() const restrict2 A_WARN_UNUSED;
 
         /**
          * Find a path from one location to the next.
@@ -203,143 +208,154 @@ class Map final : public Properties, public ConfigListener
         Path findPath(const int startX, const int startY,
                       const int destX, const int destY,
                       const unsigned char blockWalkmask,
-                      const int maxCost = 20) A_WARN_UNUSED;
+                      const int maxCost = 20) restrict2 A_WARN_UNUSED;
 
         /**
          * Adds a particle effect
          */
-        void addParticleEffect(const std::string &effectFile,
-                               const int x, const int y,
-                               const int w = 0, const int h = 0);
+        void addParticleEffect(const std::string &restrict effectFile,
+                               const int x,
+                               const int y,
+                               const int w = 0,
+                               const int h = 0) restrict2;
 
         /**
          * Initializes all added particle effects
          */
-        void initializeParticleEffects(Particle *const particleEngine) const;
+        void initializeParticleEffects(Particle *restrict const particleEngine)
+                                       const restrict2;
 
         /**
          * Adds a tile animation to the map
          */
-        void addAnimation(const int gid, TileAnimation *const animation);
+        void addAnimation(const int gid,
+                          TileAnimation *restrict const animation) restrict2;
 
-        void setDrawLayersFlags(const MapTypeT &n);
+        void setDrawLayersFlags(const MapTypeT &restrict n) restrict2;
 
-        MapTypeT getDrawLayersFlags() const A_WARN_UNUSED
+        MapTypeT getDrawLayersFlags() const restrict2 A_WARN_UNUSED
         { return mDrawLayersFlags; }
 
-        void addExtraLayer();
+        void addExtraLayer() restrict2;
 
-        void saveExtraLayer() const;
+        void saveExtraLayer() const restrict2;
 
-        SpecialLayer *getTempLayer() const A_WARN_UNUSED
+        SpecialLayer *getTempLayer() const restrict2 A_WARN_UNUSED
         { return mTempLayer; }
 
-        SpecialLayer *getSpecialLayer() const A_WARN_UNUSED
+        SpecialLayer *getSpecialLayer() const restrict2 A_WARN_UNUSED
         { return mSpecialLayer; }
 
-        void setHasWarps(const bool n)
+        void setHasWarps(const bool n) restrict2
         { mHasWarps = n; }
 
-        bool getHasWarps() const A_WARN_UNUSED
+        bool getHasWarps() const restrict2 A_WARN_UNUSED
         { return mHasWarps; }
 
-        std::string getUserMapDirectory() const A_WARN_UNUSED;
+        std::string getUserMapDirectory() const restrict2 A_WARN_UNUSED;
 
-        void addPortal(const std::string &name, const int type,
+        void addPortal(const std::string &restrict name,
+                       const int type,
                        const int x, const int y,
-                       const int dx, const int dy);
+                       const int dx, const int dy) restrict2;
 
-        void addRange(const std::string &name, const int type,
+        void addRange(const std::string &restrict name,
+                      const int type,
                       const int x, const int y,
-                      const int dx, const int dy);
+                      const int dx, const int dy) restrict2;
 
-        void addPortalTile(const std::string &name, const int type,
-                           const int x, const int y);
+        void addPortalTile(const std::string &restrict name,
+                           const int type,
+                           const int x, const int y) restrict2;
 
-        void updatePortalTile(const std::string &name, const int type,
+        void updatePortalTile(const std::string &restrict name,
+                              const int type,
                               const int x, const int y,
-                              const bool addNew = true);
+                              const bool addNew = true) restrict2;
 
-        const std::vector<MapItem*> &getPortals() const A_WARN_UNUSED
+        const std::vector<MapItem*> &getPortals() const restrict2 A_WARN_UNUSED
         { return mMapPortals; }
 
         /**
          * Gets the tile animation for a specific gid
          */
         const TileAnimation *getAnimationForGid(const int gid)
-                                                const A_WARN_UNUSED;
+                                                const restrict2 A_WARN_UNUSED;
 
-        void optionChanged(const std::string &value) override final;
+        void optionChanged(const std::string &restrict value)
+                           restrict2 override final;
 
-        MapItem *findPortalXY(const int x, const int y) const A_WARN_UNUSED;
+        MapItem *findPortalXY(const int x,
+                              const int y) const restrict2 A_WARN_UNUSED;
 
-        int getActorsCount() const A_WARN_UNUSED
+        int getActorsCount() const restrict2 A_WARN_UNUSED
         { return static_cast<int>(mActors.size()); }
 
-        void setPvpMode(const int mode);
+        void setPvpMode(const int mode) restrict2;
 
-        int getPvpMode() const A_WARN_UNUSED
+        int getPvpMode() const restrict2 A_WARN_UNUSED
         { return mPvp; }
 
-        const ObjectsLayer* getObjectsLayer() const A_WARN_UNUSED
+        const ObjectsLayer* getObjectsLayer() const restrict2 A_WARN_UNUSED
         { return mObjects; }
 
         std::string getObjectData(const unsigned x, const unsigned y,
-                                  const int type) const A_WARN_UNUSED;
+                                  const int type) const restrict2 A_WARN_UNUSED;
 
-        void indexTilesets();
+        void indexTilesets() restrict2;
 
-        void clearIndexedTilesets();
+        void clearIndexedTilesets() restrict2;
 
-        void setActorsFix(const int x, const int y);
+        void setActorsFix(const int x, const int y) restrict2;
 
-        int getVersion() const A_WARN_UNUSED
+        int getVersion() const restrict2 A_WARN_UNUSED
         { return mVersion; }
 
-        void setVersion(const int n)
+        void setVersion(const int n) restrict2
         { mVersion = n; }
 
-        void reduce();
+        void reduce() restrict2;
 
-        void redrawMap();
+        void redrawMap() restrict2
+        { mRedrawMap = true; }
 
-        bool empty() const A_WARN_UNUSED
+        bool empty() const restrict2 A_WARN_UNUSED
         { return mLayers.empty(); }
 
-        void setCustom(const bool b)
+        void setCustom(const bool b) restrict2
         { mCustom = b; }
 
-        bool isCustom() const A_WARN_UNUSED
+        bool isCustom() const restrict2 A_WARN_UNUSED
         { return mCustom; }
 
         const std::map<int, TileAnimation*> &getTileAnimations()
-                                            const A_WARN_UNUSED
+                                            const restrict2 A_WARN_UNUSED
         { return mTileAnimations; }
 
-        void setAtlas(Resource *const atlas)
+        void setAtlas(Resource *restrict const atlas) restrict2
         { mAtlas = atlas; }
 
-        const MetaTile *getMetaTiles() const
+        const MetaTile *getMetaTiles() const restrict2
         { return mMetaTiles; }
 
-        const WalkLayer *getWalkLayer() const
+        const WalkLayer *getWalkLayer() const restrict2
         { return mWalkLayer; }
 
-        void setWalkLayer(WalkLayer *const layer)
+        void setWalkLayer(WalkLayer *restrict const layer) restrict2
         { mWalkLayer = layer; }
 
-        void addHeights(MapHeights *const heights);
+        void addHeights(MapHeights *restrict const heights) restrict2;
 
-        uint8_t getHeightOffset(const int x, const int y) const;
+        uint8_t getHeightOffset(const int x, const int y) const restrict2;
 
-        void setMask(const int mask);
+        void setMask(const int mask) restrict2;
 
-        void updateDrawLayersList();
+        void updateDrawLayersList() restrict2;
 
-        bool isHeightsPresent() const
+        bool isHeightsPresent() const restrict2
         { return mHeights != nullptr; }
 
-        void updateConditionLayers();
+        void updateConditionLayers() restrict2;
 
     protected:
         friend class Actor;
@@ -348,12 +364,12 @@ class Map final : public Properties, public ConfigListener
         /**
          * Adds an actor to the map.
          */
-        Actors::iterator addActor(Actor *const actor);
+        Actors::iterator addActor(Actor *restrict2 const actor) restrict2;
 
         /**
          * Removes an actor from the map.
          */
-        void removeActor(const Actors::iterator &iterator);
+        void removeActor(const Actors::iterator &restrict iterator) restrict2;
 
     private:
         enum LayerType
@@ -365,19 +381,21 @@ class Map final : public Properties, public ConfigListener
         /**
          * Updates scrolling of ambient layers. Has to be called each game tick.
          */
-        void updateAmbientLayers(const float scrollX, const float scrollY);
+        void updateAmbientLayers(const float scrollX,
+                                 const float scrollY) restrict2;
 
         /**
          * Draws the foreground or background layers to the given graphics output.
          */
-        void drawAmbientLayers(Graphics *const graphics,
+        void drawAmbientLayers(Graphics *restrict const graphics,
                                const LayerType type,
-                               const int detail) const A_NONNULL(2);
+                               const int detail) const restrict2 A_NONNULL(2);
 
         /**
          * Tells whether the given coordinates fall within the map boundaries.
          */
-        bool contains(const int x, const int y) const A_WARN_UNUSED;
+        bool contains(const int x,
+                      const int y) const restrict2 A_WARN_UNUSED;
 
         const int mWidth;
         const int mHeight;
@@ -409,7 +427,7 @@ class Map final : public Properties, public ConfigListener
         // Particle effect data
         struct ParticleEffectData final
         {
-            ParticleEffectData(const std::string &file0,
+            ParticleEffectData(const std::string &restrict file0,
                                const int x0,
                                const int y0,
                                const int w0,
