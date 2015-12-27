@@ -785,7 +785,7 @@ const MetaTile *Map::getMetaTile(const int x, const int y) const restrict2
     return &mMetaTiles[x + y * mWidth];
 }
 
-Actors::iterator Map::addActor(Actor *restrict2 const actor) restrict2
+Actors::iterator Map::addActor(Actor *const actor) restrict2
 {
     mActors.push_front(actor);
 //    mSpritesUpdated = true;

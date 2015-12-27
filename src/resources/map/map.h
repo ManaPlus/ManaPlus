@@ -364,7 +364,7 @@ class Map final : public Properties, public ConfigListener
         /**
          * Adds an actor to the map.
          */
-        Actors::iterator addActor(Actor *restrict2 const actor) restrict2;
+        Actors::iterator addActor(Actor *const actor) restrict2;
 
         /**
          * Removes an actor from the map.

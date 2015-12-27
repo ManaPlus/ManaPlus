@@ -32,7 +32,7 @@ class Actor;
 class Graphics;
 class Map;
 
-typedef std::list<Actor*restrict2> Actors;
+typedef std::list<Actor*> Actors;
 typedef Actors::const_iterator ActorsCIter;
 
 class Actor notfinal
