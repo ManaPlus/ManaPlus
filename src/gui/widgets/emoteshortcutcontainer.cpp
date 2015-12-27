@@ -48,7 +48,8 @@
 
 static const int MAX_ITEMS = 48;
 
-EmoteShortcutContainer::EmoteShortcutContainer(Widget2 *const widget) :
+EmoteShortcutContainer::EmoteShortcutContainer(Widget2 *restrict const
+                                               widget) :
     ShortcutContainer(widget),
     mEmoteImg(),
     mEmoteClicked(false),
@@ -72,14 +73,15 @@ EmoteShortcutContainer::~EmoteShortcutContainer()
 {
 }
 
-void EmoteShortcutContainer::setWidget2(const Widget2 *const widget)
+void EmoteShortcutContainer::setWidget2(const Widget2 *restrict const widget)
+                                        restrict2
 {
     Widget2::setWidget2(widget);
     mForegroundColor = getThemeColor(ThemeColorId::TEXT);
     mForegroundColor2 = getThemeColor(ThemeColorId::TEXT_OUTLINE);
 }
 
-void EmoteShortcutContainer::draw(Graphics *graphics)
+void EmoteShortcutContainer::draw(Graphics *restrict graphics) restrict2
 {
     if (!emoteShortcut)
         return;
@@ -100,10 +102,10 @@ void EmoteShortcutContainer::draw(Graphics *graphics)
         sz = mMaxItems;
     for (unsigned i = 0; i < sz; i++)
     {
-        const EmoteSprite *const emoteImg = mEmoteImg[i];
+        const EmoteSprite *restrict const emoteImg = mEmoteImg[i];
         if (emoteImg)
         {
-            const AnimatedSprite *const sprite = emoteImg->sprite;
+            const AnimatedSprite *restrict const sprite = emoteImg->sprite;
             if (sprite)
             {
                 sprite->draw(graphics,
@@ -131,7 +133,7 @@ void EmoteShortcutContainer::draw(Graphics *graphics)
     BLOCK_END("EmoteShortcutContainer::draw")
 }
 
-void EmoteShortcutContainer::safeDraw(Graphics *graphics)
+void EmoteShortcutContainer::safeDraw(Graphics *restrict graphics) restrict2
 {
     if (!emoteShortcut)
         return;
@@ -152,10 +154,10 @@ void EmoteShortcutContainer::safeDraw(Graphics *graphics)
         sz = mMaxItems;
     for (unsigned i = 0; i < sz; i++)
     {
-        const EmoteSprite *const emoteImg = mEmoteImg[i];
+        const EmoteSprite *restrict const emoteImg = mEmoteImg[i];
         if (emoteImg)
         {
-            const AnimatedSprite *const sprite = emoteImg->sprite;
+            const AnimatedSprite *restrict const sprite = emoteImg->sprite;
             if (sprite)
             {
                 sprite->draw(graphics,
@@ -183,11 +185,12 @@ void EmoteShortcutContainer::safeDraw(Graphics *graphics)
     BLOCK_END("EmoteShortcutContainer::draw")
 }
 
-void EmoteShortcutContainer::mouseDragged(MouseEvent &event A_UNUSED)
+void EmoteShortcutContainer::mouseDragged(MouseEvent &restrict event A_UNUSED)
+                                          restrict2
 {
 }
 
-void EmoteShortcutContainer::mousePressed(MouseEvent &event)
+void EmoteShortcutContainer::mousePressed(MouseEvent &restrict event) restrict2
 {
     if (!emoteShortcut)
         return;
@@ -210,7 +213,8 @@ void EmoteShortcutContainer::mousePressed(MouseEvent &event)
     }
 }
 
-void EmoteShortcutContainer::mouseReleased(MouseEvent &event)
+void EmoteShortcutContainer::mouseReleased(MouseEvent &restrict event)
+                                           restrict2
 {
     if (!emoteShortcut)
         return;
@@ -242,7 +246,7 @@ void EmoteShortcutContainer::mouseReleased(MouseEvent &event)
     }
 }
 
-void EmoteShortcutContainer::mouseMoved(MouseEvent &event)
+void EmoteShortcutContainer::mouseMoved(MouseEvent &restrict event) restrict2
 {
     if (!emoteShortcut || !textPopup)
         return;
@@ -256,19 +260,21 @@ void EmoteShortcutContainer::mouseMoved(MouseEvent &event)
 
     if (static_cast<size_t>(index) < mEmoteImg.size() && mEmoteImg[index])
     {
-        const EmoteSprite *const sprite = mEmoteImg[index];
+        const EmoteSprite *restrict const sprite = mEmoteImg[index];
         textPopup->show(viewport->mMouseX, viewport->mMouseY,
             strprintf("%s, %d", sprite->name.c_str(), sprite->id));
     }
 }
 
-void EmoteShortcutContainer::mouseExited(MouseEvent &event A_UNUSED)
+void EmoteShortcutContainer::mouseExited(MouseEvent &restrict event A_UNUSED)
+                                         restrict2
 {
     if (textPopup)
         textPopup->setVisible(Visible_false);
 }
 
-void EmoteShortcutContainer::widgetHidden(const Event &event A_UNUSED)
+void EmoteShortcutContainer::widgetHidden(const Event &restrict event A_UNUSED)
+                                          restrict2
 {
     if (textPopup)
         textPopup->setVisible(Visible_false);

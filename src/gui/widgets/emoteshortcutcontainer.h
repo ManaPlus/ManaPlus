@@ -37,7 +37,7 @@ class EmoteShortcutContainer final : public ShortcutContainer
         /**
          * Constructor. Initializes the graphic.
          */
-        explicit EmoteShortcutContainer(Widget2 *const widget);
+        explicit EmoteShortcutContainer(Widget2 *restrict const widget);
 
         A_DELETE_COPY(EmoteShortcutContainer)
 
@@ -49,32 +49,38 @@ class EmoteShortcutContainer final : public ShortcutContainer
         /**
          * Draws the items.
          */
-        void draw(Graphics *graphics) override final A_NONNULL(2);
+        void draw(Graphics *restrict graphics)
+                  restrict2 override final A_NONNULL(2);
 
-        void safeDraw(Graphics *graphics) override final A_NONNULL(2);
+        void safeDraw(Graphics *restrict graphics)
+                      restrict2 override final A_NONNULL(2);
 
         /**
          * Handles mouse when dragged.
          */
-        void mouseDragged(MouseEvent &event) override final A_CONST;
+        void mouseDragged(MouseEvent &restrict event)
+                          restrict2 override final A_CONST;
 
         /**
          * Handles mouse when pressed.
          */
-        void mousePressed(MouseEvent &event) override final;
+        void mousePressed(MouseEvent &restrict event) restrict2 override final;
 
         /**
          * Handles mouse release.
          */
-        void mouseReleased(MouseEvent &event) override final;
+        void mouseReleased(MouseEvent &restrict event)
+                           restrict2 override final;
 
-        void mouseMoved(MouseEvent &event) override final;
+        void mouseMoved(MouseEvent &restrict event) restrict2 override final;
 
-        void mouseExited(MouseEvent &event) override final;
+        void mouseExited(MouseEvent &restrict event) restrict2 override final;
 
-        void widgetHidden(const Event &event) override final;
+        void widgetHidden(const Event &restrict event)
+                          restrict2 override final;
 
-        void setWidget2(const Widget2 *const widget) override final;
+        void setWidget2(const Widget2 *restrict const widget)
+                        restrict2 override final;
 
     private:
         std::vector<const EmoteSprite*> mEmoteImg;
