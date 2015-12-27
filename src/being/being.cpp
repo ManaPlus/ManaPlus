@@ -354,13 +354,13 @@ Being::~Being()
 #endif
 }
 
-void Being::createSpeechBubble()
+void Being::createSpeechBubble() restrict2
 {
     CREATEWIDGETV0(mSpeechBubble, SpeechBubble);
 }
 
 void Being::setSubtype(const BeingTypeId subtype,
-                       const uint16_t look)
+                       const uint16_t look) restrict2
 {
     if (!mInfo)
         return;
@@ -490,7 +490,7 @@ void Being::setSubtype(const BeingTypeId subtype,
         }
         else
         {
-            const ItemInfo &info = ItemDB::get(id);
+            const ItemInfo &restrict info = ItemDB::get(id);
             setRaceName(info.getName());
             if (charServerHandler)
             {
@@ -501,7 +501,7 @@ void Being::setSubtype(const BeingTypeId subtype,
     }
 }
 
-TargetCursorSizeT Being::getTargetCursorSize() const
+TargetCursorSizeT Being::getTargetCursorSize() const restrict2
 {
     if (!mInfo)
         return TargetCursorSize::SMALL;
@@ -509,7 +509,7 @@ TargetCursorSizeT Being::getTargetCursorSize() const
     return mInfo->getTargetCursorSize();
 }
 
-void Being::setPosition(const Vector &pos)
+void Being::setPosition(const Vector &restrict pos) restrict2
 {
     Actor::setPosition(pos);
 
@@ -523,7 +523,7 @@ void Being::setPosition(const Vector &pos)
     }
 }
 
-void Being::setDestination(const int dstX, const int dstY)
+void Being::setDestination(const int dstX, const int dstY) restrict2
 {
     // We can't calculate anything without a map anyway.
     if (!mMap)
@@ -532,12 +532,12 @@ void Being::setDestination(const int dstX, const int dstY)
     setPath(mMap->findPath(mX, mY, dstX, dstY, getBlockWalkMask()));
 }
 
-void Being::clearPath()
+void Being::clearPath() restrict2
 {
     mPath.clear();
 }
 
-void Being::setPath(const Path &path)
+void Being::setPath(const Path &restrict path) restrict2
 {
     mPath = path;
     if (mPath.empty())
@@ -550,8 +550,9 @@ void Being::setPath(const Path &path)
     }
 }
 
-void Being::setSpeech(const std::string &text, const std::string &channel,
-                      int time)
+void Being::setSpeech(const std::string &restrict text,
+                      const std::string &restrict channel,
+                      int time) restrict2
 {
     if (!userPalette)
         return;
@@ -647,11 +648,11 @@ void Being::setSpeech(const std::string &text, const std::string &channel,
     }
 }
 
-void Being::takeDamage(Being *const attacker,
+void Being::takeDamage(Being *restrict const attacker,
                        const int amount,
                        const AttackTypeT type,
                        const int attackId,
-                       const int level)
+                       const int level) restrict2
 {
     if (!userPalette || !attacker)
         return;
@@ -832,10 +833,10 @@ void Being::takeDamage(Being *const attacker,
     BLOCK_END("Being::takeDamage2")
 }
 
-int Being::getHitEffect(const Being *const attacker,
+int Being::getHitEffect(const Being *restrict const attacker,
                         const AttackTypeT type,
                         const int attackId,
-                        const int level) const
+                        const int level) const restrict2
 {
     if (!effectManager)
         return 0;
@@ -846,7 +847,7 @@ int Being::getHitEffect(const Being *const attacker,
     int hitEffectId = 0;
     if (type == AttackType::SKILL || type == AttackType::SKILLMISS)
     {
-        SkillData *const data = skillDialog->getSkillDataByLevel(
+        SkillData *restrict const data = skillDialog->getSkillDataByLevel(
             attackId, level);
         if (!data)
             return -1;
@@ -867,7 +868,7 @@ int Being::getHitEffect(const Being *const attacker,
     {
         if (attacker)
         {
-            const ItemInfo *const attackerWeapon
+            const ItemInfo *restrict const attackerWeapon
                 = attacker->getEquippedWeapon();
             if (attackerWeapon && attacker->getType() == ActorType::Player)
             {
@@ -880,10 +881,11 @@ int Being::getHitEffect(const Being *const attacker,
             }
             else if (attacker->getType() == ActorType::Monster)
             {
-                const BeingInfo *const info = attacker->getInfo();
+                const BeingInfo *restrict const info = attacker->getInfo();
                 if (info)
                 {
-                    const Attack *const atk = info->getAttack(attackId);
+                    const Attack *restrict const atk =
+                        info->getAttack(attackId);
                     if (atk)
                     {
                         if (type == AttackType::MISS)
@@ -913,7 +915,7 @@ int Being::getHitEffect(const Being *const attacker,
     return hitEffectId;
 }
 
-int Being::getDefaultEffectId(const AttackTypeT &type)
+int Being::getDefaultEffectId(const AttackTypeT &restrict type)
 {
     if (type == AttackType::MISS)
         return paths.getIntValue("missEffectId");
@@ -923,8 +925,9 @@ int Being::getDefaultEffectId(const AttackTypeT &type)
         return paths.getIntValue("criticalHitEffectId");
 }
 
-void Being::handleAttack(Being *const victim, const int damage,
-                         const int attackId)
+void Being::handleAttack(Being *restrict const victim,
+                         const int damage,
+                         const int attackId) restrict2
 {
     if (!victim || !mInfo)
         return;
@@ -985,14 +988,16 @@ void Being::handleAttack(Being *const victim, const int damage,
     BLOCK_END("Being::handleAttack")
 }
 
-void Being::handleSkill(Being *const victim, const int damage,
-                        const int skillId, const int skillLevel)
+void Being::handleSkill(Being *restrict const victim,
+                        const int damage,
+                        const int skillId,
+                        const int skillLevel) restrict2
 {
     if (!victim || !mInfo || !skillDialog)
         return;
 
-    const SkillInfo *const skill = skillDialog->getSkill(skillId);
-    const SkillData *const data = skill
+    const SkillInfo *restrict const skill = skillDialog->getSkill(skillId);
+    const SkillData *restrict const data = skill
         ? skill->getData1(skillLevel) : nullptr;
     if (data)
         fireMissile(victim, data->particle);
@@ -1031,11 +1036,14 @@ void Being::handleSkill(Being *const victim, const int damage,
     else
     {
         playSfx(mInfo->getSound((damage > 0) ?
-            ItemSoundEvent::HIT : ItemSoundEvent::MISS), victim, true, mX, mY);
+            ItemSoundEvent::HIT : ItemSoundEvent::MISS),
+            victim,
+            true,
+            mX, mY);
     }
 }
 
-void Being::showNameBadge(const bool show)
+void Being::showNameBadge(const bool show) restrict2
 {
     delete2(mBadges[BadgeIndex::Name]);
     if (show && !mName.empty() && mShowBadges)
@@ -1049,7 +1057,7 @@ void Being::showNameBadge(const bool show)
     }
 }
 
-void Being::setName(const std::string &name)
+void Being::setName(const std::string &restrict name) restrict2
 {
     if (mType == ActorType::Npc)
     {
@@ -1078,7 +1086,7 @@ void Being::setName(const std::string &name)
     }
 }
 
-void Being::setShowName(const bool doShowName)
+void Being::setShowName(const bool doShowName) restrict2
 {
     if (mShowName == doShowName)
         return;
@@ -1091,7 +1099,7 @@ void Being::setShowName(const bool doShowName)
         delete2(mDispName)
 }
 
-void Being::showGuildBadge(const bool show)
+void Being::showGuildBadge(const bool show) restrict2
 {
     delete2(mBadges[BadgeIndex::Guild]);
     if (show && !mGuildName.empty() && mShowBadges)
@@ -1105,7 +1113,7 @@ void Being::showGuildBadge(const bool show)
     }
 }
 
-void Being::setGuildName(const std::string &name)
+void Being::setGuildName(const std::string &restrict name) restrict2
 {
     if (mGuildName != name)
     {
@@ -1115,11 +1123,11 @@ void Being::setGuildName(const std::string &name)
     }
 }
 
-void Being::setGuildPos(const std::string &pos A_UNUSED)
+void Being::setGuildPos(const std::string &restrict pos A_UNUSED) restrict2
 {
 }
 
-void Being::addGuild(Guild *const guild)
+void Being::addGuild(Guild *restrict const guild) restrict2
 {
     if (!guild)
         return;
@@ -1130,7 +1138,7 @@ void Being::addGuild(Guild *const guild)
         socialWindow->addTab(guild);
 }
 
-void Being::removeGuild(const int id)
+void Being::removeGuild(const int id) restrict2
 {
     if (this == localPlayer && socialWindow)
         socialWindow->removeTab(mGuilds[id]);
@@ -1140,11 +1148,12 @@ void Being::removeGuild(const int id)
     mGuilds.erase(id);
 }
 
-const Guild *Being::getGuild(const std::string &guildName) const
+const Guild *Being::getGuild(const std::string &restrict guildName) const
+                             restrict2
 {
     FOR_EACH (GuildsMapCIter, itr, mGuilds)
     {
-        const Guild *const guild = itr->second;
+        const Guild *restrict const guild = itr->second;
         if (guild && guild->getName() == guildName)
             return guild;
     }
@@ -1152,7 +1161,7 @@ const Guild *Being::getGuild(const std::string &guildName) const
     return nullptr;
 }
 
-const Guild *Being::getGuild(const int id) const
+const Guild *Being::getGuild(const int id) const restrict2
 {
     const std::map<int, Guild*>::const_iterator itr = mGuilds.find(id);
     if (itr != mGuilds.end())
@@ -1161,7 +1170,7 @@ const Guild *Being::getGuild(const int id) const
     return nullptr;
 }
 
-Guild *Being::getGuild() const
+Guild *Being::getGuild() const restrict2
 {
     const std::map<int, Guild*>::const_iterator itr = mGuilds.begin();
     if (itr != mGuilds.end())
@@ -1170,7 +1179,7 @@ Guild *Being::getGuild() const
     return nullptr;
 }
 
-void Being::clearGuilds()
+void Being::clearGuilds() restrict2
 {
     FOR_EACH (GuildsMapCIter, itr, mGuilds)
     {
@@ -1188,7 +1197,7 @@ void Being::clearGuilds()
     mGuilds.clear();
 }
 
-void Being::setParty(Party *const party)
+void Being::setParty(Party *restrict const party) restrict2
 {
     if (party == mParty)
         return;
@@ -1214,12 +1223,12 @@ void Being::setParty(Party *const party)
     }
 }
 
-void Being::updateGuild()
+void Being::updateGuild() restrict2
 {
     if (!localPlayer)
         return;
 
-    Guild *const guild = localPlayer->getGuild();
+    Guild *restrict const guild = localPlayer->getGuild();
     if (!guild)
     {
         clearGuilds();
@@ -1235,9 +1244,9 @@ void Being::updateGuild()
     updateColors();
 }
 
-void Being::setGuild(Guild *const guild)
+void Being::setGuild(Guild *restrict const guild) restrict2
 {
-    Guild *const old = getGuild();
+    Guild *restrict const old = getGuild();
     if (guild == old)
         return;
 
@@ -1259,14 +1268,15 @@ void Being::setGuild(Guild *const guild)
     }
 }
 
-void Being::fireMissile(Being *const victim, const std::string &particle) const
+void Being::fireMissile(Being *restrict const victim,
+                        const std::string &restrict particle) const restrict2
 {
     if (!victim || particle.empty() || !particleEngine)
         return;
 
     BLOCK_START("Being::fireMissile")
 
-    Particle *const target = particleEngine->createChild();
+    Particle *restrict const target = particleEngine->createChild();
 
     if (!target)
     {
@@ -1274,7 +1284,7 @@ void Being::fireMissile(Being *const victim, const std::string &particle) const
         return;
     }
 
-    Particle *const missile = target->addEffect(
+    Particle *restrict const missile = target->addEffect(
         particle, getPixelX(), getPixelY());
 
     if (missile)
@@ -1290,7 +1300,7 @@ void Being::fireMissile(Being *const victim, const std::string &particle) const
     BLOCK_END("Being::fireMissile")
 }
 
-std::string Being::getSitAction() const
+std::string Being::getSitAction() const restrict2
 {
     if (mHorseId != 0)
         return SpriteAction::SITRIDE;
@@ -1308,7 +1318,7 @@ std::string Being::getSitAction() const
 }
 
 
-std::string Being::getMoveAction() const
+std::string Being::getMoveAction() const restrict2
 {
     if (mHorseId != 0)
         return SpriteAction::RIDE;
@@ -1323,7 +1333,8 @@ std::string Being::getMoveAction() const
     return SpriteAction::MOVE;
 }
 
-std::string Being::getWeaponAttackAction(const ItemInfo *const weapon) const
+std::string Being::getWeaponAttackAction(const ItemInfo *restrict const weapon)
+                                         const restrict2
 {
     if (!weapon)
         return getAttackAction();
@@ -1341,7 +1352,8 @@ std::string Being::getWeaponAttackAction(const ItemInfo *const weapon) const
     return weapon->getAttackAction();
 }
 
-std::string Being::getAttackAction(const Attack *const attack1) const
+std::string Being::getAttackAction(const Attack *restrict const attack1) const
+                                   restrict2
 {
     if (!attack1)
         return getAttackAction();
@@ -1359,7 +1371,8 @@ std::string Being::getAttackAction(const Attack *const attack1) const
     return attack1->mAction;
 }
 
-std::string Being::getCastAction(const SkillInfo *const skill) const
+std::string Being::getCastAction(const SkillInfo *restrict const skill) const
+                                 restrict2
 {
     if (!skill)
         return getCastAction();
@@ -1378,7 +1391,7 @@ std::string Being::getCastAction(const SkillInfo *const skill) const
 }
 
 #define getSpriteAction(func, action) \
-    std::string Being::get##func##Action() const \
+    std::string Being::get##func##Action() const restrict2\
 { \
     if (mHorseId != 0) \
         return SpriteAction::action##RIDE; \
@@ -1398,7 +1411,7 @@ getSpriteAction(Cast, CAST)
 getSpriteAction(Dead, DEAD)
 getSpriteAction(Spawn, SPAWN)
 
-std::string Being::getStandAction() const
+std::string Being::getStandAction() const restrict2
 {
     if (mHorseId != 0)
         return SpriteAction::STANDRIDE;
@@ -1425,7 +1438,8 @@ std::string Being::getStandAction() const
     return SpriteAction::STAND;
 }
 
-void Being::setAction(const BeingActionT &action, const int attackId)
+void Being::setAction(const BeingActionT &restrict action,
+                      const int attackId) restrict2
 {
     std::string currentAction = SpriteAction::INVALID;
 
@@ -1484,7 +1498,8 @@ void Being::setAction(const BeingActionT &action, const int attackId)
         case BeingAction::CAST:
             if (skillDialog)
             {
-                const SkillInfo *const info = skillDialog->getSkill(attackId);
+                const SkillInfo *restrict const info =
+                    skillDialog->getSkill(attackId);
                 currentAction = getCastAction(info);
             }
             break;
@@ -1565,7 +1580,7 @@ void Being::setAction(const BeingActionT &action, const int attackId)
     }
 }
 
-void Being::setDirection(const uint8_t direction)
+void Being::setDirection(const uint8_t direction) restrict2
 {
     if (mDirection == direction)
         return;
@@ -1630,7 +1645,7 @@ void Being::setDirection(const uint8_t direction)
     recalcSpritesOrder();
 }
 
-uint8_t Being::calcDirection() const
+uint8_t Being::calcDirection() const restrict2
 {
     uint8_t dir = 0;
     if (mDest.x > mX)
@@ -1644,7 +1659,8 @@ uint8_t Being::calcDirection() const
     return dir;
 }
 
-uint8_t Being::calcDirection(const int dstX, const int dstY) const
+uint8_t Being::calcDirection(const int dstX,
+                             const int dstY) const restrict2
 {
     uint8_t dir = 0;
     if (dstX > mX)
@@ -1658,7 +1674,7 @@ uint8_t Being::calcDirection(const int dstX, const int dstY) const
     return dir;
 }
 
-void Being::nextTile()
+void Being::nextTile() restrict2
 {
     if (mPath.empty())
     {
@@ -1702,7 +1718,7 @@ void Being::nextTile()
     setAction(BeingAction::MOVE, 0);
 }
 
-void Being::logic()
+void Being::logic() restrict2
 {
     BLOCK_START("Being::logic")
     // Reduce the time that speech is still displayed
@@ -1731,7 +1747,7 @@ void Being::logic()
     }
     for_each_badges()
     {
-        AnimatedSprite *const sprite = mBadges[f];
+        AnimatedSprite *restrict const sprite = mBadges[f];
         if (sprite)
             sprite->update(time);
     }
@@ -1843,7 +1859,7 @@ void Being::logic()
             pet->petLogic();
     }
 
-    const SoundInfo *const sound = mNextSound.sound;
+    const SoundInfo *restrict const sound = mNextSound.sound;
     if (sound)
     {
         const int time2 = tick_time;
@@ -1859,7 +1875,7 @@ void Being::logic()
     BLOCK_END("Being::logic")
 }
 
-void Being::petLogic()
+void Being::petLogic() restrict2
 {
     if (!mOwner || !mMap || !mInfo)
         return;
@@ -2036,9 +2052,9 @@ void Being::petLogic()
     }
 }
 
-void Being::drawEmotion(Graphics *const graphics,
+void Being::drawEmotion(Graphics *restrict const graphics,
                         const int offsetX,
-                        const int offsetY) const
+                        const int offsetY) const restrict2
 {
     const int px = getPixelX() - offsetX - mapTileSize / 2;
     const int py = getPixelY() - offsetY - mapTileSize * 2 - mapTileSize;
@@ -2050,7 +2066,7 @@ void Being::drawEmotion(Graphics *const graphics,
         int y;
         if (mShowBadges == 2 && mDispName && gui)
         {
-            Font *const font = gui->getFont();
+            Font *restrict const font = gui->getFont();
             x = mDispName->getX() - offsetX + mDispName->getWidth();
             y = mDispName->getY() - offsetY - font->getHeight();
         }
@@ -2066,7 +2082,7 @@ void Being::drawEmotion(Graphics *const graphics,
         }
         for_each_badges()
         {
-            AnimatedSprite *const sprite = mBadges[f];
+            AnimatedSprite *restrict const sprite = mBadges[f];
             if (sprite)
             {
                 sprite->draw(graphics, x, y);
@@ -2078,7 +2094,8 @@ void Being::drawEmotion(Graphics *const graphics,
         mEmotionSprite->draw(graphics, px, py);
 }
 
-void Being::drawSpeech(const int offsetX, const int offsetY)
+void Being::drawSpeech(const int offsetX,
+                       const int offsetY) restrict2
 {
     if (mSpeech.empty())
         return;
@@ -2130,7 +2147,8 @@ void Being::drawSpeech(const int offsetX, const int offsetY)
     }
 }
 
-int Being::getOffset(const signed char pos, const signed char neg) const
+int Being::getOffset(const signed char pos,
+                     const signed char neg) const restrict2
 {
     // Check whether we're walking in the requested direction
     if (mAction != BeingAction::MOVE ||  !(mDirection & (pos | neg)))
@@ -2166,7 +2184,7 @@ int Being::getOffset(const signed char pos, const signed char neg) const
     return offset;
 }
 
-void Being::updateCoords()
+void Being::updateCoords() restrict2
 {
     if (!mDispName)
         return;
@@ -2185,28 +2203,28 @@ void Being::updateCoords()
     mDispName->adviseXY(offsetX, offsetY, mMoveNames);
 }
 
-void Being::optionChanged(const std::string &value)
+void Being::optionChanged(const std::string &restrict value) restrict2
 {
     if (mType == ActorType::Player && value == "visiblenames")
         setShowName(config.getBoolValue("visiblenames"));
 }
 
-void Being::flashName(const int time)
+void Being::flashName(const int time) restrict2
 {
     if (mDispName)
         mDispName->flash(time);
 }
 
-std::string Being::getGenderSignWithSpace() const
+std::string Being::getGenderSignWithSpace() const restrict2
 {
-    const std::string &str = getGenderSign();
+    const std::string &restrict str = getGenderSign();
     if (str.empty())
         return str;
     else
         return std::string(" ").append(str);
 }
 
-std::string Being::getGenderSign() const
+std::string Being::getGenderSign() const restrict2
 {
     std::string str;
     if (mShowGender)
@@ -2234,7 +2252,7 @@ std::string Being::getGenderSign() const
     return str;
 }
 
-void Being::showName()
+void Being::showName() restrict2
 {
     if (mName.empty())
         return;
@@ -2289,7 +2307,7 @@ void Being::showName()
     updateCoords();
 }
 
-void Being::setDefaultNameColor(const UserColorIdT defaultColor)
+void Being::setDefaultNameColor(const UserColorIdT defaultColor) restrict2
 {
     switch (mTeamId)
     {
@@ -2417,7 +2435,7 @@ void Being::updateSprite(const unsigned int slot,
                          std::string color,
                          const ItemColor colorId,
                          const bool isWeapon,
-                         const bool isTempSprite)
+                         const bool isTempSprite) restrict2
 {
     if (!charServerHandler || slot >= charServerHandler->maxSprite())
         return;
@@ -2435,7 +2453,7 @@ void Being::setSprite(const unsigned int slot,
                       std::string color,
                       const ItemColor colorId,
                       const bool isWeapon,
-                      const bool isTempSprite)
+                      const bool isTempSprite) restrict2
 {
     if (!charServerHandler || slot >= charServerHandler->maxSprite())
         return;
@@ -2480,9 +2498,9 @@ void Being::setSprite(const unsigned int slot,
     else
     {
         const ItemInfo &info = ItemDB::get(id);
-        const std::string &filename = info.getSprite(
+        const std::string &restrict filename = info.getSprite(
             mGender, mSubType);
-        AnimatedSprite *equipmentSprite = nullptr;
+        AnimatedSprite *restrict equipmentSprite = nullptr;
 
         if (!isTempSprite && mType == ActorType::Player)
         {
@@ -2526,31 +2544,35 @@ void Being::setSprite(const unsigned int slot,
     }
 }
 
-void Being::setSpriteID(const unsigned int slot, const int id)
+void Being::setSpriteID(const unsigned int slot,
+                        const int id) restrict2
 {
     setSprite(slot, id, mSpriteColors[slot]);
 }
 
-void Being::setSpriteColor(const unsigned int slot, const std::string &color)
+void Being::setSpriteColor(const unsigned int slot,
+                           const std::string &restrict color) restrict2
 {
     setSprite(slot, mSpriteIDs[slot], color);
 }
 
-void Being::setHairStyle(const unsigned int slot, const int id)
+void Being::setHairStyle(const unsigned int slot,
+                         const int id) restrict2
 {
 //    dumpSprites();
     setSprite(slot, id, ItemDB::get(id).getDyeColorsString(mHairColor));
 //    dumpSprites();
 }
 
-void Being::setHairColor(const unsigned int slot, const ItemColor color)
+void Being::setHairColor(const unsigned int slot,
+                         const ItemColor color) restrict2
 {
     mHairColor = color;
     setSprite(slot, mSpriteIDs[slot], ItemDB::get(
         getSpriteID(slot)).getDyeColorsString(color));
 }
 
-void Being::dumpSprites() const
+void Being::dumpSprites() const restrict2
 {
     std::vector<int>::const_iterator it1 = mSpriteIDs.begin();
     const std::vector<int>::const_iterator it1_end = mSpriteIDs.end();
@@ -2589,7 +2611,7 @@ void Being::load()
     mNumberOfRaces = races - 100;
 }
 
-void Being::updateName()
+void Being::updateName() restrict2
 {
     if (mShowName)
         showName();
@@ -2625,9 +2647,10 @@ void Being::reReadConfig()
     BLOCK_END("Being::reReadConfig")
 }
 
-bool Being::updateFromCache()
+bool Being::updateFromCache() restrict2
 {
-    const BeingCacheEntry *const entry = Being::getCacheEntry(getId());
+    const BeingCacheEntry *restrict const entry =
+        Being::getCacheEntry(getId());
 
     if (entry && entry->getTime() + 120 >= cur_time)
     {
@@ -2670,7 +2693,7 @@ bool Being::updateFromCache()
     return false;
 }
 
-void Being::addToCache() const
+void Being::addToCache() const restrict2
 {
     if (localPlayer == this)
         return;
@@ -2738,7 +2761,7 @@ BeingCacheEntry* Being::getCacheEntry(const BeingId id)
 }
 
 
-void Being::setGender(const GenderT gender)
+void Being::setGender(const GenderT gender) restrict2
 {
     if (gender != mGender)
     {
@@ -2757,7 +2780,7 @@ void Being::setGender(const GenderT gender)
     }
 }
 
-void Being::showGmBadge(const bool show)
+void Being::showGmBadge(const bool show) restrict2
 {
     delete2(mBadges[BadgeIndex::Gm]);
     if (show && mIsGM && mShowBadges)
@@ -2772,7 +2795,7 @@ void Being::showGmBadge(const bool show)
     updateBadgesCount();
 }
 
-void Being::setGM(const bool gm)
+void Being::setGM(const bool gm) restrict2
 {
     if (mIsGM != gm)
     {
@@ -2783,7 +2806,7 @@ void Being::setGM(const bool gm)
     }
 }
 
-void Being::talkTo() const
+void Being::talkTo() const restrict2
 {
     if (!npcHandler)
         return;
@@ -2802,9 +2825,9 @@ void Being::talkTo() const
     npcHandler->talk(mId);
 }
 
-void Being::draw(Graphics *const graphics,
+void Being::draw(Graphics *restrict const graphics,
                  const int offsetX,
-                 const int offsetY) const
+                 const int offsetY) const restrict2
 {
     if (!mErased)
     {
@@ -2842,8 +2865,8 @@ void Being::draw(Graphics *const graphics,
     }
 }
 
-void Being::drawSprites(Graphics *const graphics,
-                        int posX, int posY) const
+void Being::drawSprites(Graphics *restrict const graphics,
+                        int posX, int posY) const restrict2
 {
     const int sz = getNumberOfLayers();
     for (int f = 0; f < sz; f ++)
@@ -2852,7 +2875,7 @@ void Being::drawSprites(Graphics *const graphics,
         if (rSprite == 1)
             continue;
 
-        Sprite *const sprite = getSprite(mSpriteRemap[f]);
+        Sprite *restrict const sprite = getSprite(mSpriteRemap[f]);
         if (sprite)
         {
             sprite->setAlpha(mAlpha);
@@ -2861,8 +2884,8 @@ void Being::drawSprites(Graphics *const graphics,
     }
 }
 
-void Being::drawSpritesSDL(Graphics *const graphics,
-                           int posX, int posY) const
+void Being::drawSpritesSDL(Graphics *restrict const graphics,
+                           int posX, int posY) const restrict2
 {
     const unsigned int sz = static_cast<unsigned int>(size());
     for (unsigned int f = 0; f < sz; f ++)
@@ -2871,14 +2894,15 @@ void Being::drawSpritesSDL(Graphics *const graphics,
         if (rSprite == 1)
             continue;
 
-        const Sprite *const sprite = getSprite(mSpriteRemap[f]);
+        const Sprite *restrict const sprite = getSprite(mSpriteRemap[f]);
         if (sprite)
             sprite->draw(graphics, posX, posY);
     }
 }
 
-void Being::drawSpriteAt(Graphics *const graphics,
-                         const int x, const int y) const
+void Being::drawSpriteAt(Graphics *restrict const graphics,
+                         const int x,
+                         const int y) const restrict2
 {
     if (!userPalette)
     {
@@ -2956,7 +2980,7 @@ void Being::drawSpriteAt(Graphics *const graphics,
     }
 }
 
-void Being::drawHpBar(Graphics *const graphics,
+void Being::drawHpBar(Graphics *restrict const graphics,
                       const int maxHP,
                       const int hp,
                       const int damage,
@@ -2965,7 +2989,7 @@ void Being::drawHpBar(Graphics *const graphics,
                       const int x,
                       const int y,
                       const int width,
-                      const int height) const
+                      const int height) const restrict2
 {
     if (maxHP <= 0 || !userPalette)
         return;
@@ -3035,7 +3059,7 @@ void Being::drawHpBar(Graphics *const graphics,
     graphics->fillRectangle(Rect(x + dx, y, width - dx, height));
 }
 
-void Being::setHP(const int hp)
+void Being::setHP(const int hp) restrict2
 {
     mHP = hp;
     if (mMaxHP < mHP)
@@ -3044,14 +3068,14 @@ void Being::setHP(const int hp)
         updatePercentHP();
 }
 
-void Being::setMaxHP(const int hp)
+void Being::setMaxHP(const int hp) restrict2
 {
     mMaxHP = hp;
     if (mMaxHP < mHP)
         mMaxHP = mHP;
 }
 
-void Being::resetCounters()
+void Being::resetCounters() restrict2
 {
     mMoveTime = 0;
     mAttackTime = 0;
@@ -3060,7 +3084,7 @@ void Being::resetCounters()
     mTestTime = cur_time;
 }
 
-void Being::recalcSpritesOrder()
+void Being::recalcSpritesOrder() restrict2
 {
     if (!mEnableReorderSprites)
         return;
@@ -3109,7 +3133,7 @@ void Being::recalcSpritesOrder()
 
         if (info.isRemoveSprites())
         {
-            const SpriteToItemMap *const spriteToItems
+            const SpriteToItemMap *restrict const spriteToItems
                 = info.getSpriteToItemReplaceMap(dir);
 
             if (spriteToItems)
@@ -3117,7 +3141,7 @@ void Being::recalcSpritesOrder()
                 FOR_EACHP (SpriteToItemMapCIter, itr, spriteToItems)
                 {
                     const int remSprite = itr->first;
-                    const IntMap &itemReplacer = itr->second;
+                    const IntMap &restrict itemReplacer = itr->second;
                     if (remSprite >= 0)
                     {   // slot known
                         if (itemReplacer.empty())
@@ -3359,8 +3383,8 @@ void Being::recalcSpritesOrder()
     }
 }
 
-int Being::searchSlotValue(const std::vector<int> &slotRemap,
-                           const int val) const
+int Being::searchSlotValue(const std::vector<int> &restrict slotRemap,
+                           const int val) const restrict2
 {
     const size_t sz = size();
     for (size_t slot = 0; slot < sz; slot ++)
@@ -3371,8 +3395,9 @@ int Being::searchSlotValue(const std::vector<int> &slotRemap,
     return getNumberOfLayers() - 1;
 }
 
-void Being::searchSlotValueItr(std::vector<int>::iterator &it, int &idx,
-                               std::vector<int> &slotRemap,
+void Being::searchSlotValueItr(std::vector<int>::iterator &restrict it,
+                               int &restrict idx,
+                               std::vector<int> &restrict slotRemap,
                                const int val)
 {
 //    logger->log("searching %d", val);
@@ -3395,7 +3420,7 @@ void Being::searchSlotValueItr(std::vector<int>::iterator &it, int &idx,
     return;
 }
 
-void Being::updateHit(const int amount)
+void Being::updateHit(const int amount) restrict2
 {
     if (amount > 0)
     {
@@ -3406,15 +3431,15 @@ void Being::updateHit(const int amount)
     }
 }
 
-Equipment *Being::getEquipment()
+Equipment *Being::getEquipment() restrict2
 {
-    Equipment *const eq = new Equipment();
-    Equipment::Backend *const bk = new BeingEquipBackend(this);
+    Equipment *restrict const eq = new Equipment();
+    Equipment::Backend *restrict const bk = new BeingEquipBackend(this);
     eq->setBackend(bk);
     return eq;
 }
 
-void Being::undressItemById(const int id)
+void Being::undressItemById(const int id) restrict2
 {
     const size_t sz = mSpriteIDs.size();
 
@@ -3434,7 +3459,7 @@ void Being::clearCache()
     beingInfoCache.clear();
 }
 
-void Being::updateComment()
+void Being::updateComment() restrict2
 {
     if (mGotComment || mName.empty())
         return;
@@ -3443,8 +3468,8 @@ void Being::updateComment()
     mComment = loadComment(mName, mType);
 }
 
-std::string Being::loadComment(const std::string &name,
-                               const ActorTypeT &type)
+std::string Being::loadComment(const std::string &restrict name,
+                               const ActorTypeT &restrict type)
 {
     std::string str;
     switch (type)
@@ -3516,7 +3541,7 @@ void Being::saveComment(const std::string &restrict name,
         (name + "\n").append(comment));
 }
 
-void Being::setState(const uint8_t state)
+void Being::setState(const uint8_t state) restrict2
 {
     const bool shop = ((state & BeingFlag::SHOP) != 0);
     const bool away = ((state & BeingFlag::AWAY) != 0);
@@ -3542,7 +3567,8 @@ void Being::setState(const uint8_t state)
     }
 }
 
-void Being::setEmote(const uint8_t emotion, const int emote_time)
+void Being::setEmote(const uint8_t emotion,
+                     const int emote_time) restrict2
 {
     if ((emotion & BeingFlag::SPECIAL) == BeingFlag::SPECIAL)
     {
@@ -3558,7 +3584,8 @@ void Being::setEmote(const uint8_t emotion, const int emote_time)
             const EmoteInfo *const info = EmoteDB::get2(emotionIndex, true);
             if (info)
             {
-                const EmoteSprite *const sprite = info->sprites.front();
+                const EmoteSprite *restrict const sprite =
+                    info->sprites.front();
                 if (sprite)
                 {
                     mEmotionSprite = AnimatedSprite::clone(sprite->sprite);
@@ -3587,7 +3614,7 @@ void Being::setEmote(const uint8_t emotion, const int emote_time)
     }
 }
 
-void Being::updatePercentHP()
+void Being::updatePercentHP() restrict2
 {
     if (!mMaxHP)
         return;
@@ -3634,7 +3661,7 @@ GenderT Being::intToGender(const uint8_t sex)
     }
 }
 
-int Being::getSpriteID(const int slot) const
+int Being::getSpriteID(const int slot) const restrict2
 {
     if (slot < 0 || static_cast<size_t>(slot) >= mSpriteIDs.size())
         return -1;
@@ -3642,7 +3669,7 @@ int Being::getSpriteID(const int slot) const
     return mSpriteIDs[slot];
 }
 
-ItemColor Being::getSpriteColor(const int slot) const
+ItemColor Being::getSpriteColor(const int slot) const restrict2
 {
     if (slot < 0 || static_cast<size_t>(slot) >= mSpriteColorsIds.size())
         return ItemColor_one;
@@ -3650,26 +3677,28 @@ ItemColor Being::getSpriteColor(const int slot) const
     return mSpriteColorsIds[slot];
 }
 
-void Being::addAfkEffect()
+void Being::addAfkEffect() restrict2
 {
     addSpecialEffect(mAwayEffect);
 }
 
-void Being::removeAfkEffect()
+void Being::removeAfkEffect() restrict2
 {
     removeSpecialEffect();
 }
 
-void Being::addSpecialEffect(const int effect)
+void Being::addSpecialEffect(const int effect) restrict2
 {
-    if (effectManager && Particle::enabled
-        && !mSpecialParticle && effect != -1)
+    if (effectManager &&
+        Particle::enabled &&
+        !mSpecialParticle &&
+        effect != -1)
     {
         mSpecialParticle = effectManager->triggerReturn(effect, this);
     }
 }
 
-void Being::removeSpecialEffect()
+void Being::removeSpecialEffect() restrict2
 {
     if (effectManager && mSpecialParticle)
     {
@@ -3679,7 +3708,7 @@ void Being::removeSpecialEffect()
     delete2(mAnimationEffect);
 }
 
-void Being::updateAwayEffect()
+void Being::updateAwayEffect() restrict2
 {
     if (mAway)
         addAfkEffect();
@@ -3687,19 +3716,19 @@ void Being::updateAwayEffect()
         removeAfkEffect();
 }
 
-void Being::addEffect(const std::string &name)
+void Being::addEffect(const std::string &restrict name) restrict2
 {
     delete mAnimationEffect;
     mAnimationEffect = AnimatedSprite::load(
         paths.getStringValue("sprites") + name);
 }
 
-void Being::addPet(const BeingId id)
+void Being::addPet(const BeingId id) restrict2
 {
     if (!actorManager || !config.getBoolValue("usepets"))
         return;
 
-    Being *const pet = findChildPet(id);
+    Being *restrict const pet = findChildPet(id);
     if (pet)
     {
         pet->incUsage();
@@ -3719,25 +3748,25 @@ void Being::addPet(const BeingId id)
     }
 }
 
-Being *Being::findChildPet(const BeingId id)
+Being *Being::findChildPet(const BeingId id) restrict2
 {
     FOR_EACH (std::vector<Being*>::iterator, it, mPets)
     {
-        Being *const pet = *it;
+        Being *restrict const pet = *it;
         if (pet && pet->mId == id)
             return pet;
     }
     return nullptr;
 }
 
-void Being::removePet(const BeingId id)
+void Being::removePet(const BeingId id) restrict2
 {
     if (!actorManager)
         return;
 
     FOR_EACH (std::vector<Being*>::iterator, it, mPets)
     {
-        Being *const pet = *it;
+        Being *restrict const pet = *it;
         if (pet && pet->mId == id)
         {
             if (!pet->decUsage())
@@ -3752,11 +3781,11 @@ void Being::removePet(const BeingId id)
     }
 }
 
-void Being::removeAllPets()
+void Being::removeAllPets() restrict2
 {
     FOR_EACH (std::vector<Being*>::iterator, it, mPets)
     {
-        Being *const pet = *it;
+        Being *restrict const pet = *it;
         if (pet)
         {
             pet->setOwner(nullptr);
@@ -3767,7 +3796,7 @@ void Being::removeAllPets()
     mPets.clear();
 }
 
-void Being::updatePets()
+void Being::updatePets() restrict2
 {
     removeAllPets();
     FOR_EACH (std::vector<int>::const_iterator, it, mSpriteIDs)
@@ -3775,14 +3804,14 @@ void Being::updatePets()
         const int id = *it;
         if (!id)
             continue;
-        const ItemInfo &info = ItemDB::get(id);
+        const ItemInfo &restrict info = ItemDB::get(id);
         const BeingId pet = fromInt(info.getPet(), BeingId);
         if (pet != BeingId_zero)
             addPet(pet);
     }
 }
 
-void Being::unassignPet(const Being *const pet1)
+void Being::unassignPet(const Being *restrict const pet1) restrict2
 {
     FOR_EACH (std::vector<Being*>::iterator, it, mPets)
     {
@@ -3794,7 +3823,8 @@ void Being::unassignPet(const Being *const pet1)
     }
 }
 
-void Being::fixPetSpawnPos(int &dstX, int &dstY) const
+void Being::fixPetSpawnPos(int &restrict dstX,
+                           int &restrict dstY) const
 {
     if (!mInfo || !mOwner)
         return;
@@ -3867,9 +3897,9 @@ void Being::fixPetSpawnPos(int &dstX, int &dstY) const
 }
 
 void Being::playSfx(const SoundInfo &sound,
-                    Being *const being,
+                    Being *restrict const being,
                     const bool main,
-                    const int x, const int y) const
+                    const int x, const int y) const restrict2
 {
     BLOCK_START("Being::playSfx")
 
@@ -3903,13 +3933,13 @@ void Being::playSfx(const SoundInfo &sound,
     BLOCK_END("Being::playSfx")
 }
 
-void Being::setLook(const uint16_t look)
+void Being::setLook(const uint16_t look) restrict2
 {
     if (mType == ActorType::Player)
         setSubtype(mSubType, look);
 }
 
-void Being::setTileCoords(const int x, const int y)
+void Being::setTileCoords(const int x, const int y) restrict2
 {
     mX = x;
     mY = y;
@@ -3922,7 +3952,7 @@ void Being::setTileCoords(const int x, const int y)
     }
 }
 
-void Being::setMap(Map *const map)
+void Being::setMap(Map *restrict const map) restrict2
 {
     ActorSprite::setMap(map);
     if (mMap)
@@ -3934,17 +3964,18 @@ void Being::setMap(Map *const map)
     }
 }
 
-void Being::removeAllItemsParticles()
+void Being::removeAllItemsParticles() restrict2
 {
     FOR_EACH (SpriteParticleInfoIter, it, mSpriteParticles)
         delete (*it).second;
     mSpriteParticles.clear();
 }
 
-void Being::addItemParticles(const int id, const SpriteDisplay &display)
+void Being::addItemParticles(const int id,
+                             const SpriteDisplay &restrict display) restrict2
 {
     SpriteParticleInfoIter it = mSpriteParticles.find(id);
-    ParticleInfo *pi = nullptr;
+    ParticleInfo *restrict pi = nullptr;
     if (it == mSpriteParticles.end())
     {
         pi = new ParticleInfo();
@@ -3976,12 +4007,12 @@ void Being::addItemParticles(const int id, const SpriteDisplay &display)
     }
 }
 
-void Being::removeItemParticles(const int id)
+void Being::removeItemParticles(const int id) restrict2
 {
     SpriteParticleInfoIter it = mSpriteParticles.find(id);
     if (it == mSpriteParticles.end())
         return;
-    ParticleInfo *const pi = (*it).second;
+    ParticleInfo *restrict const pi = (*it).second;
     if (pi)
     {
         FOR_EACH (std::vector<Particle*>::const_iterator, itp, pi->particles)
@@ -3991,11 +4022,11 @@ void Being::removeItemParticles(const int id)
     mSpriteParticles.erase(it);
 }
 
-void Being::recreateItemParticles()
+void Being::recreateItemParticles() restrict2
 {
     FOR_EACH (SpriteParticleInfoIter, it, mSpriteParticles)
     {
-        ParticleInfo *const pi = (*it).second;
+        ParticleInfo *restrict const pi = (*it).second;
         if (pi && !pi->files.empty())
         {
             FOR_EACH (std::vector<Particle*>::const_iterator,
@@ -4006,7 +4037,8 @@ void Being::recreateItemParticles()
 
             FOR_EACH (std::vector<std::string>::const_iterator, str, pi->files)
             {
-                Particle *const p = particleEngine->addEffect(*str, 0, 0);
+                Particle *const p = particleEngine->addEffect(
+                    *str, 0, 0);
                 controlParticle(p);
                 pi->particles.push_back(p);
             }
@@ -4014,7 +4046,7 @@ void Being::recreateItemParticles()
     }
 }
 
-void Being::setTeamId(const uint16_t teamId)
+void Being::setTeamId(const uint16_t teamId) restrict2
 {
     if (mTeamId != teamId)
     {
@@ -4024,7 +4056,7 @@ void Being::setTeamId(const uint16_t teamId)
     }
 }
 
-void Being::showTeamBadge(const bool show)
+void Being::showTeamBadge(const bool show) restrict2
 {
     delete2(mBadges[BadgeIndex::Team]);
     if (show && mTeamId && mShowBadges)
@@ -4038,7 +4070,7 @@ void Being::showTeamBadge(const bool show)
     updateBadgesCount();
 }
 
-void Being::showBadges(const bool show)
+void Being::showBadges(const bool show) restrict2
 {
     showTeamBadge(show);
     showGuildBadge(show);
@@ -4050,7 +4082,7 @@ void Being::showBadges(const bool show)
     showAwayBadge(show);
 }
 
-void Being::showPartyBadge(const bool show)
+void Being::showPartyBadge(const bool show) restrict2
 {
     delete2(mBadges[BadgeIndex::Party]);
     if (show && !mPartyName.empty() && mShowBadges)
@@ -4066,7 +4098,7 @@ void Being::showPartyBadge(const bool show)
 }
 
 
-void Being::setPartyName(const std::string &name)
+void Being::setPartyName(const std::string &restrict name) restrict2
 {
     if (mPartyName != name)
     {
@@ -4075,7 +4107,7 @@ void Being::setPartyName(const std::string &name)
     }
 }
 
-void Being::showShopBadge(const bool show)
+void Being::showShopBadge(const bool show) restrict2
 {
     delete2(mBadges[BadgeIndex::Shop]);
     if (show && mShop && mShowBadges)
@@ -4090,7 +4122,7 @@ void Being::showShopBadge(const bool show)
     updateBadgesCount();
 }
 
-void Being::showInactiveBadge(const bool show)
+void Being::showInactiveBadge(const bool show) restrict2
 {
     delete2(mBadges[BadgeIndex::Inactive]);
     if (show && mInactive && mShowBadges)
@@ -4105,7 +4137,7 @@ void Being::showInactiveBadge(const bool show)
     updateBadgesCount();
 }
 
-void Being::showAwayBadge(const bool show)
+void Being::showAwayBadge(const bool show) restrict2
 {
     delete2(mBadges[BadgeIndex::Away]);
     if (show && mAway && mShowBadges)
@@ -4120,7 +4152,7 @@ void Being::showAwayBadge(const bool show)
     updateBadgesCount();
 }
 
-void Being::updateBadgesCount()
+void Being::updateBadgesCount() restrict2
 {
     mBadgesCount = 0;
     for_each_badges()
@@ -4131,13 +4163,13 @@ void Being::updateBadgesCount()
 }
 
 #ifdef EATHENA_SUPPORT
-void Being::setChat(ChatObject *const obj)
+void Being::setChat(ChatObject *restrict const obj) restrict2
 {
     delete mChat;
     mChat = obj;
 }
 
-void Being::setSellBoard(const std::string &text)
+void Being::setSellBoard(const std::string &restrict text) restrict2
 {
     mShop = !text.empty() || !mBuyBoard.empty();
     mSellBoard = text;
@@ -4145,7 +4177,7 @@ void Being::setSellBoard(const std::string &text)
     showShopBadge(mShop);
 }
 
-void Being::setBuyBoard(const std::string &text)
+void Being::setBuyBoard(const std::string &restrict text) restrict2
 {
     mShop = !text.empty() || !mSellBoard.empty();
     mBuyBoard = text;
@@ -4154,14 +4186,14 @@ void Being::setBuyBoard(const std::string &text)
 }
 #endif
 
-void Being::enableShop(const bool b)
+void Being::enableShop(const bool b) restrict2
 {
     mShop = b;
     updateName();
     showShopBadge(mShop);
 }
 
-bool Being::isBuyShopEnabled() const
+bool Being::isBuyShopEnabled() const restrict2
 {
 #ifdef EATHENA_SUPPORT
     return mShop && (!serverFeatures->haveVending() || !mBuyBoard.empty());
@@ -4170,7 +4202,7 @@ bool Being::isBuyShopEnabled() const
 #endif
 }
 
-bool Being::isSellShopEnabled() const
+bool Being::isSellShopEnabled() const restrict2
 {
 #ifdef EATHENA_SUPPORT
     return mShop && (!serverFeatures->haveVending() || !mSellBoard.empty());
@@ -4179,14 +4211,14 @@ bool Being::isSellShopEnabled() const
 #endif
 }
 
-void Being::serverRemove()
+void Being::serverRemove() restrict2
 {
     // remove some flags what can survive player remove and next visible
     mTrickDead = false;
 }
 
 #ifdef EATHENA_SUPPORT
-void Being::removeHorse()
+void Being::removeHorse() restrict2
 {
     delete_all(mUpHorseSprites);
     mUpHorseSprites.clear();
@@ -4194,7 +4226,7 @@ void Being::removeHorse()
     mDownHorseSprites.clear();
 }
 
-void Being::setRiding(const bool b)
+void Being::setRiding(const bool b) restrict2
 {
     if (serverFeatures->haveExtendedRiding())
         return;
@@ -4207,7 +4239,7 @@ void Being::setRiding(const bool b)
         setHorse(0);
 }
 
-void Being::setHorse(const int horseId)
+void Being::setHorse(const int horseId) restrict2
 {
     if (mHorseId == horseId)
         return;
@@ -4221,7 +4253,7 @@ void Being::setHorse(const int horseId)
         {
             FOR_EACH (SpriteRefs, it, mHorseInfo->downSprites)
             {
-                SpriteReference *const ref = *it;
+                SpriteReference *restrict const ref = *it;
                 AnimatedSprite *const sprite = AnimatedSprite::load(
                     ref->sprite,
                     ref->variant);
@@ -4231,8 +4263,8 @@ void Being::setHorse(const int horseId)
             }
             FOR_EACH (SpriteRefs, it, mHorseInfo->upSprites)
             {
-                SpriteReference *const ref = *it;
-                AnimatedSprite *const sprite = AnimatedSprite::load(
+                SpriteReference *restrict const ref = *it;
+                AnimatedSprite *sprite = AnimatedSprite::load(
                     ref->sprite,
                     ref->variant);
                 mUpHorseSprites.push_back(sprite);
@@ -4247,7 +4279,7 @@ void Being::setHorse(const int horseId)
     }
 }
 
-void Being::setTrickDead(const bool b)
+void Being::setTrickDead(const bool b) restrict2
 {
     if (b != mTrickDead)
     {
@@ -4256,7 +4288,7 @@ void Being::setTrickDead(const bool b)
     }
 }
 
-void Being::setSpiritBalls(const unsigned int balls)
+void Being::setSpiritBalls(const unsigned int balls) restrict2
 {
     if (!Particle::enabled)
     {
@@ -4278,26 +4310,26 @@ void Being::setSpiritBalls(const unsigned int balls)
 }
 
 void Being::addSpiritBalls(const unsigned int balls,
-                           const int effectId)
+                           const int effectId) restrict2
 {
     if (!effectManager)
         return;
     for (unsigned int f = 0; f < balls; f ++)
     {
-        Particle *const particle = effectManager->triggerReturn(
+        Particle *particle = effectManager->triggerReturn(
             effectId,
             this);
         mSpiritParticles.push_back(particle);
     }
 }
 
-void Being::removeSpiritBalls(const unsigned int balls)
+void Being::removeSpiritBalls(const unsigned int balls) restrict2
 {
     if (!particleEngine)
         return;
     for (unsigned int f = 0; f < balls && !mSpiritParticles.empty(); f ++)
     {
-        Particle *const particle = mSpiritParticles.back();
+        Particle *restrict const particle = mSpiritParticles.back();
         mChildParticleEffects.removeLocally(particle);
         mSpiritParticles.pop_back();
     }
