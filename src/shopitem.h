@@ -23,7 +23,7 @@
 #ifndef SHOPITEM_H
 #define SHOPITEM_H
 
-#include "item.h"
+#include "resources/item/item.h"
 
 #include <stack>
 

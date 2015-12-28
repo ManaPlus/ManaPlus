@@ -23,7 +23,7 @@
 #ifndef NET_EA_EQUIPBACKEND_H
 #define NET_EA_EQUIPBACKEND_H
 
-#include "item.h"
+#include "resources/item/item.h"
 
 #include "being/playerinfo.h"
 

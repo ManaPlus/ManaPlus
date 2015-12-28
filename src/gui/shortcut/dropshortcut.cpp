@@ -23,11 +23,12 @@
 #include "gui/shortcut/dropshortcut.h"
 
 #include "inventory.h"
-#include "item.h"
 #include "settings.h"
 
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
+
+#include "resources/item/item.h"
 
 #include "net/packetlimiter.h"
 

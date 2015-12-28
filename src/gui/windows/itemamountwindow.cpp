@@ -22,8 +22,6 @@
 
 #include "gui/windows/itemamountwindow.h"
 
-#include "item.h"
-
 #include "being/playerinfo.h"
 
 #include "input/keyboardconfig.h"
@@ -47,6 +45,8 @@
 #include "gui/widgets/inttextfield.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/slider.h"
+
+#include "resources/item/item.h"
 
 #include "utils/gettext.h"
 

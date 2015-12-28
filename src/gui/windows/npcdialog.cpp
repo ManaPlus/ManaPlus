@@ -24,7 +24,6 @@
 
 #include "actormanager.h"
 #include "configuration.h"
-#include "item.h"
 #include "settings.h"
 #include "soundmanager.h"
 
@@ -61,6 +60,8 @@
 #include "resources/db/avatardb.h"
 #include "resources/db/npcdb.h"
 #include "resources/db/npcdialogdb.h"
+
+#include "resources/item/item.h"
 
 #include "net/npchandler.h"
 #include "net/packetlimiter.h"

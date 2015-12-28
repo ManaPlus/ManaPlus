@@ -23,7 +23,8 @@
 #include "gui/shortcut/shortcutbase.h"
 
 #include "configuration.h"
-#include "item.h"
+
+#include "resources/item/item.h"
 
 #include "debug.h"
 

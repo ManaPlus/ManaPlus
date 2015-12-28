@@ -26,7 +26,6 @@
 #include "configuration.h"
 #include "gamemodifiers.h"
 #include "guild.h"
-#include "item.h"
 #include "party.h"
 #include "settings.h"
 #include "soundmanager.h"
@@ -73,6 +72,8 @@
 #include "resources/itemslot.h"
 
 #include "resources/db/weaponsdb.h"
+
+#include "resources/item/item.h"
 
 #include "resources/map/map.h"
 #include "resources/map/mapitem.h"

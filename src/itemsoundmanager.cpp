@@ -21,12 +21,13 @@
 #include "itemsoundmanager.h"
 
 #include "flooritem.h"
-#include "item.h"
 #include "soundmanager.h"
 
 #include "being/localplayer.h"
 
 #include "resources/iteminfo.h"
+
+#include "resources/item/item.h"
 
 #include "debug.h"
 

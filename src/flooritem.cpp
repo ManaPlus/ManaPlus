@@ -23,7 +23,6 @@
 #include "flooritem.h"
 
 #include "configuration.h"
-#include "item.h"
 
 #include "render/graphics.h"
 
@@ -33,6 +32,8 @@
 #include "gui/fonts/font.h"
 
 #include "resources/iteminfo.h"
+
+#include "resources/item/item.h"
 
 #include "resources/map/map.h"
 

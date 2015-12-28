@@ -25,7 +25,6 @@
 #include "actormanager.h"
 #include "configuration.h"
 #include "gamemodifiers.h"
-#include "item.h"
 #include "party.h"
 
 #include "being/localplayer.h"
@@ -84,6 +83,8 @@
 #include "resources/iteminfo.h"
 
 #include "resources/db/npcdb.h"
+
+#include "resources/item/item.h"
 
 #include "resources/map/map.h"
 #include "resources/map/mapitem.h"

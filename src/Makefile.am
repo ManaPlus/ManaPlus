@@ -712,8 +712,8 @@ manaplus_SOURCES += main.cpp \
 	      inventory.h \
 	      textcommand.cpp \
 	      textcommand.h \
-	      item.cpp \
-	      item.h \
+	      resources/item/item.cpp \
+	      resources/item/item.h \
 	      itemcolormanager.cpp \
 	      itemcolormanager.h \
 	      gui/shortcut/itemshortcut.cpp \

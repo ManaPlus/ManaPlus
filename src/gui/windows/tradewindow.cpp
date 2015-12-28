@@ -24,7 +24,6 @@
 
 #include "configuration.h"
 #include "game.h"
-#include "item.h"
 #include "units.h"
 
 #include "being/localplayer.h"
@@ -49,6 +48,8 @@
 #include "gui/widgets/textfield.h"
 
 #include "gui/widgets/tabs/chat/chattab.h"
+
+#include "resources/item/item.h"
 
 #include "net/tradehandler.h"
 

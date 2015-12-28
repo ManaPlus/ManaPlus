@@ -948,8 +948,8 @@ SET(SRCS
     resources/sprite/imagesprite.h
     inventory.cpp
     inventory.h
-    item.cpp
-    item.h
+    resources/item/item.cpp
+    resources/item/item.h
     itemcolormanager.cpp
     itemcolormanager.h
     gui/shortcut/itemshortcut.cpp

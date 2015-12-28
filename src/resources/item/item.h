@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ITEM_H
-#define ITEM_H
+#ifndef RESOURCES_ITEM_ITEM_H
+#define RESOURCES_ITEM_ITEM_H
 
 #include "enums/simpletypes/damaged.h"
 #include "enums/simpletypes/equipm.h"
@@ -246,4 +246,4 @@ class Item notfinal
         Favorite mFavorite;
 };
 
-#endif  // ITEM_H
+#endif  // RESOURCES_ITEM_ITEM_H

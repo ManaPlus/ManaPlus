@@ -20,10 +20,7 @@
 
 #include "gui/windows/maileditwindow.h"
 
-#include "item.h"
-
 #include "being/playerinfo.h"
-#include "net/mailhandler.h"
 
 #include "gui/windows/inventorywindow.h"
 #include "gui/windows/itemamountwindow.h"
@@ -34,6 +31,10 @@
 #include "gui/widgets/itemcontainer.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/scrollarea.h"
+
+#include "resources/item/item.h"
+
+#include "net/mailhandler.h"
 
 #include "utils/delete2.h"
 #include "utils/gettext.h"

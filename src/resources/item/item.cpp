@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "item.h"
+#include "resources/item/item.h"
 
 #include "configuration.h"
 #include "dragdrop.h"

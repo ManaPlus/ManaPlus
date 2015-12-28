@@ -22,7 +22,6 @@
 
 #include "actormanager.h"
 #include "inventory.h"
-#include "item.h"
 #include "notifymanager.h"
 
 #include "being/localplayer.h"
@@ -41,6 +40,8 @@
 #include "listeners/buyingstoreslotslistener.h"
 
 #include "net/messagein.h"
+
+#include "resources/item/item.h"
 
 #include "debug.h"
 

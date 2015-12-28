@@ -24,7 +24,6 @@
 #include "configuration.h"
 #include "game.h"
 #include "inventory.h"
-#include "item.h"
 #include "party.h"
 
 #include "actions/actiondef.h"
@@ -63,6 +62,8 @@
 
 #include "resources/iteminfo.h"
 #include "resources/chatobject.h"
+
+#include "resources/item/item.h"
 
 #include "utils/chatutils.h"
 #include "utils/gettext.h"

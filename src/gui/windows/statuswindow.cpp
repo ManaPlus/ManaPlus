@@ -24,7 +24,6 @@
 
 #include "configuration.h"
 #include "gamemodifiers.h"
-#include "item.h"
 #include "settings.h"
 #include "units.h"
 
@@ -48,6 +47,8 @@
 
 #include "net/inventoryhandler.h"
 #include "net/playerhandler.h"
+
+#include "resources/item/item.h"
 
 #include "utils/delete2.h"
 #include "utils/gettext.h"

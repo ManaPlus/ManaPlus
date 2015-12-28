@@ -22,7 +22,6 @@
 
 #include "inventory.h"
 
-#include "item.h"
 #include "logger.h"
 
 #include "being/playerinfo.h"
@@ -30,6 +29,8 @@
 #include "net/inventoryhandler.h"
 
 #include "resources/iteminfo.h"
+
+#include "resources/item/item.h"
 
 #include "listeners/inventorylistener.h"
 

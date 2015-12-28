@@ -21,7 +21,8 @@
 #ifndef DRAGDROP_H
 #define DRAGDROP_H
 
-#include "item.h"
+#include "resources/item/item.h"
+
 #include "itemsoundmanager.h"
 #include "textcommand.h"
 

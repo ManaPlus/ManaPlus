@@ -22,7 +22,6 @@
 #include "being/playerinfo.h"
 
 #include "configuration.h"
-#include "item.h"
 #include "itemsoundmanager.h"
 
 #include "being/localplayer.h"
@@ -44,6 +43,8 @@
 #ifdef EATHENA_SUPPORT
 #include "resources/itemtype.h"
 #endif
+
+#include "resources/item/item.h"
 
 #include "utils/delete2.h"
 

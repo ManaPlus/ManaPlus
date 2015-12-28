@@ -24,16 +24,17 @@
 
 #include "configuration.h"
 #include "inventory.h"
-#include "item.h"
 #include "spellmanager.h"
 
 #include "being/playerinfo.h"
 
 #include "const/spells.h"
 
+#include "const/resources/skill.h"
+
 #include "gui/windows/skilldialog.h"
 
-#include "const/resources/skill.h"
+#include "resources/item/item.h"
 
 #include "debug.h"
 

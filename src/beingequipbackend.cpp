@@ -20,11 +20,11 @@
 
 #include "beingequipbackend.h"
 
-#include "item.h"
-
 #include "being/being.h"
 
 #include "net/inventoryhandler.h"
+
+#include "resources/item/item.h"
 
 #include "utils/delete2.h"
 

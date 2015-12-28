@@ -23,7 +23,6 @@
 #include "gui/windows/inventorywindow.h"
 
 #include "configuration.h"
-#include "item.h"
 #include "units.h"
 
 #include "being/playerinfo.h"
@@ -61,6 +60,8 @@
 #include "listeners/insertcardlistener.h"
 
 #include "resources/iteminfo.h"
+
+#include "resources/item/item.h"
 
 #include "utils/delete2.h"
 
