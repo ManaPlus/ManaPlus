@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef INPUT_MULTITOUCHMANAGER_H
-#define INPUT_MULTITOUCHMANAGER_H
+#ifndef INPUT_TOUCH_MULTITOUCHMANAGER_H
+#define INPUT_TOUCH_MULTITOUCHMANAGER_H
 
 #include <map>
 
@@ -67,5 +67,5 @@ class MultiTouchManager final
 
 extern MultiTouchManager multiTouchManager;
 
-#endif  // INPUT_MULTITOUCHMANAGER_H
+#endif  // INPUT_TOUCH_MULTITOUCHMANAGER_H
 

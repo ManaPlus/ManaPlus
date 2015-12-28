@@ -980,8 +980,8 @@ SET(SRCS
     input/keyboardconfig.cpp
     input/keyboardconfig.h
     input/keyinput.h
-    input/multitouchmanager.cpp
-    input/multitouchmanager.h
+    input/touch/multitouchmanager.cpp
+    input/touch/multitouchmanager.h
     localconsts.h
     being/localplayer.cpp
     being/localplayer.h

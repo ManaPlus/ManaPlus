@@ -32,7 +32,7 @@
 #include "input/joystick.h"
 #include "input/keyboardconfig.h"
 #ifdef USE_SDL2
-#include "input/multitouchmanager.h"
+#include "input/touch/multitouchmanager.h"
 #endif
 
 #include "input/touch/touchmanager.h"

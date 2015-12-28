@@ -511,8 +511,8 @@ SRC += events/actionevent.h \
 	      input/keyboardconfig.cpp \
 	      input/keyboardconfig.h \
 	      input/keyinput.h \
-	      input/multitouchmanager.cpp \
-	      input/multitouchmanager.h \
+	      input/touch/multitouchmanager.cpp \
+	      input/touch/multitouchmanager.h \
 	      localconsts.h \
 	      logger.cpp \
 	      logger.h \

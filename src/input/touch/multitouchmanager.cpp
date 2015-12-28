@@ -18,7 +18,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "input/multitouchmanager.h"
+#include "input/touch/multitouchmanager.h"
 
 #ifdef USE_SDL2
 #include "render/graphics.h"
