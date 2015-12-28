@@ -79,12 +79,19 @@
 #define A_UNUSED  __attribute__ ((unused))
 #define A_WARN_UNUSED __attribute__ ((warn_unused_result))
 #define DEPRECATED __attribute__ ((deprecated))
+
+#ifdef __native_client__
+#define restrict
+#define restrict2
+#else  // __native_client__
 #define restrict __restrict__
 #ifdef __clang__
 #define restrict2
-#else
+#else  // __clang__
 #define restrict2 __restrict__
-#endif
+#endif  // __clang__
+#endif  // __native_client__
+
 #ifndef ENABLE_CILKPLUS
 #define A_CONST __attribute__ ((const))
 #define A_PURE __attribute__ ((pure))
