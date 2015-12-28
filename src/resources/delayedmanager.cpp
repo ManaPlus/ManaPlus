@@ -20,7 +20,7 @@
 
 #include "resources/delayedmanager.h"
 
-#include "animationdelayload.h"
+#include "resources/sprite/animationdelayload.h"
 
 #include "utils/timer.h"
 

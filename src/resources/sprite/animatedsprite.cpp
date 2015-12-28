@@ -22,8 +22,6 @@
 
 #include "resources/sprite/animatedsprite.h"
 
-#include "animationdelayload.h"
-
 #include "const/resources/spriteaction.h"
 
 #include "render/graphics.h"
@@ -34,6 +32,8 @@
 #include "resources/resourcemanager.h"
 
 #include "resources/animation/animation.h"
+
+#include "resources/sprite/animationdelayload.h"
 
 #include "utils/delete2.h"
 

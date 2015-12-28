@@ -18,7 +18,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "animationdelayload.h"
+#include "resources/sprite/animationdelayload.h"
 
 #include "const/resources/spriteaction.h"
 

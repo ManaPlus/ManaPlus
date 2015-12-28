@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ANIMATIONDELAYLOAD_H
-#define ANIMATIONDELAYLOAD_H
+#ifndef RESOURCES_SPRITE_ANIMATIONDELAYLOAD_H
+#define RESOURCES_SPRITE_ANIMATIONDELAYLOAD_H
 
 #include <string>
 
@@ -52,4 +52,4 @@ class AnimationDelayLoad final
         std::string mAction;
 };
 
-#endif  // ANIMATIONDELAYLOAD_H
+#endif  // RESOURCES_SPRITE_ANIMATIONDELAYLOAD_H

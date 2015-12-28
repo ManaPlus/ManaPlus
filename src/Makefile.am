@@ -684,8 +684,8 @@ manaplus_SOURCES += main.cpp \
 	      actormanager.h \
 	      resources/sprite/animatedsprite.cpp \
 	      resources/sprite/animatedsprite.h \
-	      animationdelayload.cpp \
-	      animationdelayload.h \
+	      resources/sprite/animationdelayload.cpp \
+	      resources/sprite/animationdelayload.h \
 	      actions/actions.cpp \
 	      actions/actions.h \
 	      actions/chat.cpp \

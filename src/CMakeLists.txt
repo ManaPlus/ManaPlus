@@ -864,8 +864,8 @@ SET(SRCS
     actormanager.h
     resources/sprite/animatedsprite.cpp
     resources/sprite/animatedsprite.h
-    animationdelayload.cpp
-    animationdelayload.h
+    resources/sprite/animationdelayload.cpp
+    resources/sprite/animationdelayload.h
     particle/animationparticle.cpp
     particle/animationparticle.h
     avatar.cpp
@@ -1298,8 +1298,8 @@ SET(DYE_CMD_SRCS
     dyetool/dyemain.cpp
     resources/sprite/animatedsprite.cpp
     resources/sprite/animatedsprite.h
-    animationdelayload.cpp
-    animationdelayload.h
+    resources/sprite/animationdelayload.cpp
+    resources/sprite/animationdelayload.h
     configuration.cpp
     configuration.h
     graphicsmanager.cpp
