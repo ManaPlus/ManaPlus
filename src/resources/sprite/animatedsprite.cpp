@@ -29,10 +29,11 @@
 #include "render/graphics.h"
 
 #include "resources/action.h"
-#include "resources/animation.h"
 #include "resources/delayedmanager.h"
 #include "resources/image.h"
 #include "resources/resourcemanager.h"
+
+#include "resources/animation/animation.h"
 
 #include "utils/delete2.h"
 

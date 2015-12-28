@@ -25,8 +25,9 @@
 
 #include "gui/gui.h"
 
-#include "resources/animation.h"
 #include "resources/imageset.h"
+
+#include "resources/animation/animation.h"
 
 #include "utils/delete2.h"
 

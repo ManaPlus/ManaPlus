@@ -591,8 +591,8 @@ SET(SRCS
     resources/action.h
     resources/ambientlayer.cpp
     resources/ambientlayer.h
-    resources/animation.cpp
-    resources/animation.h
+    resources/animation/animation.cpp
+    resources/animation/animation.h
     resources/atlas/atlasitem.h
     resources/atlas/atlasmanager.cpp
     resources/atlas/atlasmanager.h
@@ -1330,8 +1330,8 @@ SET(DYE_CMD_SRCS
     render/mgltypes.h
     resources/action.cpp
     resources/action.h
-    resources/animation.cpp
-    resources/animation.h
+    resources/animation/animation.cpp
+    resources/animation/animation.h
     resources/db/palettedb.cpp
     resources/db/palettedb.h
     resources/delayedmanager.cpp

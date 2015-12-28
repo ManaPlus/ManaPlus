@@ -36,10 +36,11 @@
 #include "resources/map/mapheights.h"
 #include "resources/map/tileset.h"
 
-#include "resources/animation.h"
 #include "resources/beingcommon.h"
 #include "resources/image.h"
 #include "resources/resourcemanager.h"
+
+#include "resources/animation/animation.h"
 
 #ifdef USE_OPENGL
 #include "resources/db/mapdb.h"

@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_ANIMATION_H
-#define RESOURCES_ANIMATION_H
+#ifndef RESOURCES_ANIMATION_ANIMATION_H
+#define RESOURCES_ANIMATION_ANIMATION_H
 
 #include "resources/frame.h"
 
@@ -92,4 +92,4 @@ class Animation final
         int mDuration;
 };
 
-#endif  // RESOURCES_ANIMATION_H
+#endif  // RESOURCES_ANIMATION_ANIMATION_H

@@ -25,7 +25,7 @@
 
 #include "particle/particleemitterprop.h"
 
-#include "resources/animation.h"
+#include "resources/animation/animation.h"
 
 #include "utils/xml.h"
 

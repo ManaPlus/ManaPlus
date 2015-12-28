@@ -640,8 +640,8 @@ SRC += events/actionevent.h \
 	      render/shaders/shaderprogram.h \
 	      render/shaders/shadersmanager.cpp \
 	      render/shaders/shadersmanager.h \
-	      resources/animation.cpp \
-	      resources/animation.h \
+	      resources/animation/animation.cpp \
+	      resources/animation/animation.h \
 	      simpleanimation.cpp \
 	      simpleanimation.h \
 	      resources/sprite/sprite.h \
