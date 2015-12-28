@@ -18,7 +18,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "touchactions.h"
+#include "input/touch/touchactions.h"
 
 #include "input/inputmanager.h"
 #include "input/mouseinput.h"

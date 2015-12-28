@@ -652,8 +652,8 @@ SRC += events/actionevent.h \
 	      text.h \
 	      textmanager.cpp \
 	      textmanager.h \
-	      touchactions.cpp \
-	      touchactions.h \
+	      input/touch/touchactions.cpp \
+	      input/touch/touchactions.h \
 	      input/touch/touchmanager.cpp \
 	      input/touch/touchmanager.h \
 	      variabledata.h \

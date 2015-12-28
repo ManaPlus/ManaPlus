@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TOUCHACTIONS_H
-#define TOUCHACTIONS_H
+#ifndef INPUT_TOUCH_TOUCHACTIONS_H
+#define INPUT_TOUCH_TOUCHACTIONS_H
 
 #include "localconsts.h"
 
@@ -36,4 +36,4 @@ void setHalfJoyPad(const int s);
 
 #undef decHandler
 
-#endif  // TOUCHACTIONS_H
+#endif  // INPUT_TOUCH_TOUCHACTIONS_H

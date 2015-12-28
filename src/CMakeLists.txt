@@ -1193,8 +1193,8 @@ SET(SRCS
     particle/textparticle.h
     resources/map/tileinfo.h
     resources/map/tileset.h
-    touchactions.cpp
-    touchactions.h
+    input/touch/touchactions.cpp
+    input/touch/touchactions.h
     input/touch/touchmanager.cpp
     input/touch/touchmanager.h
     units.cpp
