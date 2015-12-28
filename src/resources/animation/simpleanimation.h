@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SIMPLEANIMATION_H
-#define SIMPLEANIMATION_H
+#ifndef RESOURCES_ANIMATION_SIMPLEANIMATION_H
+#define RESOURCES_ANIMATION_SIMPLEANIMATION_H
 
 #include "utils/xml.h"
 
@@ -96,4 +96,4 @@ class SimpleAnimation final
         ImageSet *mImageSet;
 };
 
-#endif  // SIMPLEANIMATION_H
+#endif  // RESOURCES_ANIMATION_SIMPLEANIMATION_H

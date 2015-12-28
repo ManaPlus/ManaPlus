@@ -642,8 +642,8 @@ SRC += events/actionevent.h \
 	      render/shaders/shadersmanager.h \
 	      resources/animation/animation.cpp \
 	      resources/animation/animation.h \
-	      simpleanimation.cpp \
-	      simpleanimation.h \
+	      resources/animation/simpleanimation.cpp \
+	      resources/animation/simpleanimation.h \
 	      resources/sprite/sprite.h \
 	      const/sound.h \
 	      soundmanager.cpp \

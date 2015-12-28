@@ -22,7 +22,7 @@
 
 #include "particle/rotationalparticle.h"
 
-#include "simpleanimation.h"
+#include "resources/animation/simpleanimation.h"
 
 #include "utils/delete2.h"
 

@@ -1121,8 +1121,8 @@ SET(SRCS
     shopitem.h
     gui/shortcut/shortcutbase.cpp
     gui/shortcut/shortcutbase.h
-    simpleanimation.cpp
-    simpleanimation.h
+    resources/animation/simpleanimation.cpp
+    resources/animation/simpleanimation.h
     const/sound.h
     soundmanager.cpp
     soundmanager.h

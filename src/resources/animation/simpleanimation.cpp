@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "simpleanimation.h"
+#include "resources/animation/simpleanimation.h"
 
 #include "const/resources/map/map.h"
 

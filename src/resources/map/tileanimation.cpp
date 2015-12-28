@@ -22,7 +22,7 @@
 
 #include "resources/map/tileanimation.h"
 
-#include "simpleanimation.h"
+#include "resources/animation/simpleanimation.h"
 
 #include "resources/map/maplayer.h"
 

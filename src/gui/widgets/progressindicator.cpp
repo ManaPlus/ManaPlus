@@ -21,13 +21,12 @@
 
 #include "gui/widgets/progressindicator.h"
 
-#include "simpleanimation.h"
-
 #include "gui/gui.h"
 
 #include "resources/imageset.h"
 
 #include "resources/animation/animation.h"
+#include "resources/animation/simpleanimation.h"
 
 #include "utils/delete2.h"
 
