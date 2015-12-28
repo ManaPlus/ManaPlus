@@ -22,7 +22,6 @@
 
 #include "actormanager.h"
 #include "itemcolormanager.h"
-#include "shopitem.h"
 
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
@@ -35,6 +34,8 @@
 #include "listeners/vendingslotslistener.h"
 
 #include "net/messagein.h"
+
+#include "resources/item/shopitem.h"
 
 #include "debug.h"
 

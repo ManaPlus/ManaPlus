@@ -1117,8 +1117,8 @@ SET(SRCS
     sdlshared.h
     settings.cpp
     settings.h
-    shopitem.cpp
-    shopitem.h
+    resources/item/shopitem.cpp
+    resources/item/shopitem.h
     gui/shortcut/shortcutbase.cpp
     gui/shortcut/shortcutbase.h
     resources/animation/simpleanimation.cpp

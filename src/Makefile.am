@@ -755,8 +755,8 @@ manaplus_SOURCES += main.cpp \
 	      enums/being/pickup.h \
 	      beingequipbackend.cpp \
 	      beingequipbackend.h \
-	      shopitem.cpp \
-	      shopitem.h \
+	      resources/item/shopitem.cpp \
+	      resources/item/shopitem.h \
 	      flooritem.cpp \
 	      flooritem.h \
 	      game.cpp \

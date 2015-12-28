@@ -24,7 +24,6 @@
 
 #include "actormanager.h"
 #include "inventory.h"
-#include "shopitem.h"
 
 #include "being/playerinfo.h"
 
@@ -33,6 +32,8 @@
 #include "gui/widgets/shoplistbox.h"
 
 #include "net/buyingstorehandler.h"
+
+#include "resources/item/shopitem.h"
 
 #include "debug.h"
 

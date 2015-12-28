@@ -18,13 +18,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "shopitem.h"
-
 #include "net/eathena/markethandler.h"
 
 #include "net/eathena/marketrecv.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocolout.h"
+
+#include "resources/item/shopitem.h"
 
 #include "debug.h"
 

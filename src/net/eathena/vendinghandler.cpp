@@ -20,8 +20,6 @@
 
 #include "net/eathena/vendinghandler.h"
 
-#include "shopitem.h"
-
 #include "being/being.h"
 #include "being/playerinfo.h"
 
@@ -30,6 +28,8 @@
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocolout.h"
 #include "net/eathena/vendingrecv.h"
+
+#include "resources/item/shopitem.h"
 
 #include "debug.h"
 

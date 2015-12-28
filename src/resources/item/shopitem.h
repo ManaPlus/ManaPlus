@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SHOPITEM_H
-#define SHOPITEM_H
+#ifndef RESOURCES_ITEM_SHOPITEM_H
+#define RESOURCES_ITEM_SHOPITEM_H
 
 #include "resources/item/item.h"
 
@@ -175,4 +175,4 @@ class ShopItem final : public Item
         bool mDisabled;
 };
 
-#endif  // SHOPITEM_H
+#endif  // RESOURCES_ITEM_SHOPITEM_H

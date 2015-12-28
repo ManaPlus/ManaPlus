@@ -22,8 +22,6 @@
 
 #include "gui/windows/insertcarddialog.h"
 
-#include "shopitem.h"
-
 #include "gui/models/shopitems.h"
 
 #include "gui/widgets/button.h"
@@ -33,6 +31,8 @@
 
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
+
+#include "resources/item/shopitem.h"
 
 #include "debug.h"
 

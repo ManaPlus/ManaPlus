@@ -62,7 +62,6 @@
 #include "configuration.h"
 #include "inventory.h"
 #include "settings.h"
-#include "shopitem.h"
 
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
@@ -86,6 +85,8 @@
 #ifdef TMWA_SUPPORT
 #include "resources/iteminfo.h"
 #endif
+
+#include "resources/item/shopitem.h"
 
 #include <sys/stat.h>
 

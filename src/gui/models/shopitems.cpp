@@ -22,7 +22,7 @@
 
 #include "gui/models/shopitems.h"
 
-#include "shopitem.h"
+#include "resources/item/shopitem.h"
 
 #include "utils/dtor.h"
 

@@ -23,7 +23,6 @@
 #include "gui/widgets/shoplistbox.h"
 
 #include "settings.h"
-#include "shopitem.h"
 
 #include "being/playerinfo.h"
 
@@ -37,6 +36,8 @@
 #include "gui/models/shopitems.h"
 
 #include "resources/image.h"
+
+#include "resources/item/shopitem.h"
 
 #include "debug.h"
 

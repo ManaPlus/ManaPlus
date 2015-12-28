@@ -23,7 +23,7 @@
 #ifndef NET_BUYSELLHANDLER_H
 #define NET_BUYSELLHANDLER_H
 
-#include "shopitem.h"
+#include "resources/item/shopitem.h"
 
 namespace Net
 {

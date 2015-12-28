@@ -22,8 +22,6 @@
 
 #include "gui/windows/eggselectiondialog.h"
 
-#include "shopitem.h"
-
 #include "gui/models/shopitems.h"
 
 #include "gui/widgets/button.h"
@@ -32,6 +30,8 @@
 #include "net/inventoryhandler.h"
 
 #include "utils/gettext.h"
+
+#include "resources/item/shopitem.h"
 
 #include "debug.h"
 

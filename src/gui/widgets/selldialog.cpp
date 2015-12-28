@@ -22,7 +22,6 @@
 
 #include "gui/widgets/selldialog.h"
 
-#include "shopitem.h"
 #include "units.h"
 
 #include "gui/windows/setupwindow.h"
@@ -42,6 +41,8 @@
 #include "utils/delete2.h"
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
+
+#include "resources/item/shopitem.h"
 
 #include "debug.h"
 
