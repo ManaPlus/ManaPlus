@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TOUCHMANAGER_H
-#define TOUCHMANAGER_H
+#ifndef INPUT_TOUCH_TOUCHMANAGER_H
+#define INPUT_TOUCH_TOUCHMANAGER_H
 
 #include "listeners/configlistener.h"
 
@@ -200,4 +200,4 @@ class TouchManager final : public ConfigListener
 
 extern TouchManager touchManager;
 
-#endif  // TOUCHMANAGER_H
+#endif  // INPUT_TOUCH_TOUCHMANAGER_H

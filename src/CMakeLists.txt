@@ -1195,8 +1195,8 @@ SET(SRCS
     resources/map/tileset.h
     touchactions.cpp
     touchactions.h
-    touchmanager.cpp
-    touchmanager.h
+    input/touch/touchmanager.cpp
+    input/touch/touchmanager.h
     units.cpp
     units.h
     variabledata.h

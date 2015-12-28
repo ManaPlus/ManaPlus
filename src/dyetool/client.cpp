@@ -28,11 +28,12 @@
 #include "graphicsmanager.h"
 #include "settings.h"
 #include "soundmanager.h"
-#include "touchmanager.h"
 
 #include "input/inputmanager.h"
 #include "input/joystick.h"
 #include "input/keyboardconfig.h"
+
+#include "input/touch/touchmanager.h"
 
 #include "gui/dialogsmanager.h"
 #include "gui/gui.h"

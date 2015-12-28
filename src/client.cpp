@@ -34,7 +34,6 @@
 #include "spellmanager.h"
 #include "statuseffect.h"
 #include "units.h"
-#include "touchmanager.h"
 
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
@@ -44,6 +43,8 @@
 #include "input/inputmanager.h"
 #include "input/joystick.h"
 #include "input/keyboardconfig.h"
+
+#include "input/touch/touchmanager.h"
 
 #include "gui/dialogsmanager.h"
 #include "gui/gui.h"

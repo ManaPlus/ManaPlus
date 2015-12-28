@@ -79,13 +79,14 @@
 #include "resources/image.h"
 #endif
 #include "settings.h"
-#include "touchmanager.h"
 
 #include "listeners/focuslistener.h"
 #include "listeners/guiconfiglistener.h"
 #include "listeners/keylistener.h"
 
 #include "input/inputmanager.h"
+
+#include "input/touch/touchmanager.h"
 
 #include "render/renderers.h"
 

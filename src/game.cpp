@@ -30,7 +30,6 @@
 #include "gamemodifiers.h"
 #include "soundmanager.h"
 #include "settings.h"
-#include "touchmanager.h"
 
 #include "being/crazymoves.h"
 #include "being/localplayer.h"
@@ -47,6 +46,8 @@
 #include "input/inputmanager.h"
 #include "input/joystick.h"
 #include "input/keyboardconfig.h"
+
+#include "input/touch/touchmanager.h"
 
 #include "gui/dialogsmanager.h"
 #include "gui/gui.h"

@@ -24,7 +24,6 @@
 
 #include "configuration.h"
 #include "game.h"
-#include "touchmanager.h"
 
 #include "gui/windows/chatwindow.h"
 
@@ -49,6 +48,8 @@
 #include "gui/widgets/button.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/tabbedarea.h"
+
+#include "input/touch/touchmanager.h"
 
 #include "utils/delete2.h"
 #include "utils/dtor.h"

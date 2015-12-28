@@ -23,7 +23,6 @@
 #include "configuration.h"
 #include "game.h"
 #include "settings.h"
-#include "touchmanager.h"
 
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
@@ -35,6 +34,8 @@
 #ifdef USE_SDL2
 #include "input/multitouchmanager.h"
 #endif
+
+#include "input/touch/touchmanager.h"
 
 #include "gui/gui.h"
 #include "gui/sdlinput.h"

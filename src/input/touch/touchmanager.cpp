@@ -18,7 +18,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "touchmanager.h"
+#include "input/touch/touchmanager.h"
 
 #include "configuration.h"
 #include "graphicsvertexes.h"

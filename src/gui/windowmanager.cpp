@@ -27,7 +27,6 @@
 #include "game.h"
 #include "settings.h"
 #include "spellmanager.h"
-#include "touchmanager.h"
 
 #include "gui/gui.h"
 #include "gui/userpalette.h"
@@ -51,6 +50,8 @@
 
 #include "gui/widgets/createwidget.h"
 #include "gui/widgets/desktop.h"
+
+#include "input/touch/touchmanager.h"
 
 #include "utils/delete2.h"
 #include "utils/files.h"

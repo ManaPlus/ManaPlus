@@ -20,10 +20,10 @@
 
 #include "touchactions.h"
 
-#include "touchmanager.h"
-
 #include "input/inputmanager.h"
 #include "input/mouseinput.h"
+
+#include "input/touch/touchmanager.h"
 
 #include "debug.h"
 
