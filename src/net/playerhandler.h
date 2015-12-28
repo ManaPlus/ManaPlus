@@ -23,7 +23,7 @@
 #ifndef NET_PLAYERHANDLER_H
 #define NET_PLAYERHANDLER_H
 
-#include "flooritem.h"
+#include "being/flooritem.h"
 
 #include "enums/being/attributes.h"
 #include "enums/being/beingaction.h"

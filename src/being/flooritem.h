@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef FLOORITEM_H
-#define FLOORITEM_H
+#ifndef BEING_FLOORITEM_H
+#define BEING_FLOORITEM_H
 
 #include "enums/simpletypes/damaged.h"
 #include "enums/simpletypes/identified.h"
@@ -144,4 +144,4 @@ class FloorItem final : public ActorSprite
         bool mHighlight;
 };
 
-#endif  // FLOORITEM_H
+#endif  // BEING_FLOORITEM_H

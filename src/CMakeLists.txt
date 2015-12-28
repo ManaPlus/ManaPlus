@@ -916,8 +916,8 @@ SET(SRCS
     equipment.h
     eventsmanager.cpp
     eventsmanager.h
-    flooritem.cpp
-    flooritem.h
+    being/flooritem.cpp
+    being/flooritem.h
     game.cpp
     game.h
     gamemodifiers.cpp

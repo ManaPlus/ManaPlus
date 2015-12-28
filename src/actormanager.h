@@ -23,7 +23,7 @@
 #ifndef ACTORMANAGER_H
 #define ACTORMANAGER_H
 
-#include "flooritem.h"
+#include "being/flooritem.h"
 
 #include "enums/simpletypes/allowsort.h"
 #include "enums/simpletypes/allplayers.h"

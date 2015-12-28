@@ -20,9 +20,9 @@
 
 #include "itemsoundmanager.h"
 
-#include "flooritem.h"
 #include "soundmanager.h"
 
+#include "being/flooritem.h"
 #include "being/localplayer.h"
 
 #include "resources/iteminfo.h"

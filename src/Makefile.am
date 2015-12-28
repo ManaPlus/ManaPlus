@@ -757,8 +757,8 @@ manaplus_SOURCES += main.cpp \
 	      beingequipbackend.h \
 	      resources/item/shopitem.cpp \
 	      resources/item/shopitem.h \
-	      flooritem.cpp \
-	      flooritem.h \
+	      being/flooritem.cpp \
+	      being/flooritem.h \
 	      game.cpp \
 	      game.h \
 	      gamemodifiers.cpp \
