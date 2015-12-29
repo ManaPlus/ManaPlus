@@ -27,9 +27,10 @@
 
 #include "gui/theme.h"
 
-#include "resources/animation.h"
 #include "resources/resourcemanager.h"
 #include "resources/sdlimagehelper.h"
+
+#include "resources/animation/animation.h"
 
 #include "utils/env.h"
 #include "utils/physfstools.h"
