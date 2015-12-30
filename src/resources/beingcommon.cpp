@@ -54,7 +54,7 @@ void BeingCommon::readBasicAttributes(BeingInfo *const info,
     info->setHpBarOffsetX(XML::getProperty(node, "hpBarOffsetX", 0));
     info->setHpBarOffsetY(XML::getProperty(node, "hpBarOffsetY", 0));
 
-    unsigned char block = BlockMask::WALL;
+    unsigned char block = 0;
     std::string walkStr = XML::getProperty(
         node, "walkType", "walk");
 
