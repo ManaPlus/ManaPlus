@@ -119,6 +119,12 @@ class CompoundSprite notfinal : public Sprite
         static void setEnableDelay(bool b)
         { mEnableDelay = b; }
 
+        int getLastTime() const A_WARN_UNUSED
+        { return mLastTime; }
+
+        int getStartTime() const A_WARN_UNUSED
+        { return mStartTime; }
+
     private:
         void redraw() const;
 
@@ -137,6 +143,8 @@ class CompoundSprite notfinal : public Sprite
 
         mutable int mOffsetX;
         mutable int mOffsetY;
+        int mStartTime;
+        int mLastTime;
         std::vector<Sprite*> mSprites;
 #ifndef USE_SDL2
         mutable int mNextRedrawTime;

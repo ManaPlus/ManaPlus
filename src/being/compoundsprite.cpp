@@ -66,6 +66,8 @@ CompoundSprite::CompoundSprite() :
     mAlphaImage(nullptr),
     mOffsetX(0),
     mOffsetY(0),
+    mStartTime(0),
+    mLastTime(0),
     mSprites(),
 #ifndef USE_SDL2
     mNextRedrawTime(0),
@@ -93,6 +95,8 @@ bool CompoundSprite::reset()
         if (*it)
             ret |= (*it)->reset();
     }
+    if (ret)
+        mLastTime = 0;
     mNeedsRedraw |= ret;
     return ret;
 }
@@ -100,18 +104,28 @@ bool CompoundSprite::reset()
 bool CompoundSprite::play(const std::string &action)
 {
     bool ret = false;
+    bool ret2 = true;
     FOR_EACH (SpriteIterator, it, mSprites)
     {
         if (*it)
-            ret |= (*it)->play(action);
+        {
+            const bool tmpVal = (*it)->play(action);
+            ret |= tmpVal;
+            ret2 &= tmpVal;
+        }
     }
     mNeedsRedraw |= ret;
+    if (ret2)
+        mLastTime = 0;
     return ret;
 }
 
 bool CompoundSprite::update(const int time)
 {
     bool ret = false;
+    if (!mLastTime)
+        mStartTime = time;
+    mLastTime = time;
     FOR_EACH (SpriteIterator, it, mSprites)
     {
         if (*it)
@@ -207,6 +221,8 @@ bool CompoundSprite::setSpriteDirection(const SpriteDirection::Type direction)
         if (*it)
             ret |= (*it)->setSpriteDirection(direction);
     }
+    if (ret)
+        mLastTime = 0;
     mNeedsRedraw |= ret;
     return ret;
 }
@@ -278,6 +294,7 @@ void CompoundSprite::clear()
     delete_all(imagesCache);
     imagesCache.clear();
     delete2(mCacheItem);
+    mLastTime = 0;
 }
 
 void CompoundSprite::ensureSize(size_t layerCount)

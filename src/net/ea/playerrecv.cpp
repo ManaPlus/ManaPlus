@@ -115,6 +115,7 @@ void PlayerRecv::processPlayerWarp(Net::MessageIn &msg)
         localPlayer->setTileCoords(x, y);
         localPlayer->updatePets();
         localPlayer->navigateClean();
+        localPlayer->reset();
     }
 
     logger->log("Adjust scrolling by %d:%d", scrollOffsetX, scrollOffsetY);

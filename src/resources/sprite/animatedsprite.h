@@ -112,6 +112,9 @@ class AnimatedSprite final : public Sprite
         static void setEnableCache(const bool b)
         { mEnableCache = b; }
 
+        void setLastTime(const int time)
+        { mLastTime = time; }
+
 #ifdef UNITTESTS
         SpriteDef *getSprite() restrict2
         { return mSprite; }

@@ -2500,6 +2500,8 @@ void Being::setSprite(const unsigned int slot,
         const ItemInfo &info = ItemDB::get(id);
         const std::string &restrict filename = info.getSprite(
             mGender, mSubType);
+        int lastTime = 0;
+        int startTime = 0;
         AnimatedSprite *restrict equipmentSprite = nullptr;
 
         if (!isTempSprite && mType == ActorType::Player)
@@ -2522,10 +2524,8 @@ void Being::setSprite(const unsigned int slot,
         if (equipmentSprite)
         {
             equipmentSprite->setSpriteDirection(getSpriteDirection());
-
-            // call reset here is not the best idea, but for now this is
-            // only way to sync just loaded sprite
-            reset();
+            startTime = getStartTime();
+            lastTime = getLastTime();
         }
 
         CompoundSprite::setSprite(slot, equipmentSprite);
@@ -2537,6 +2537,14 @@ void Being::setSprite(const unsigned int slot,
             mEquippedWeapon = &ItemDB::get(id);
 
         setAction(mAction, 0);
+        if (equipmentSprite)
+        {
+            if (lastTime > 0)
+            {
+                equipmentSprite->setLastTime(startTime);
+                equipmentSprite->update(lastTime);
+            }
+        }
     }
 
     if (!isTempSprite)
