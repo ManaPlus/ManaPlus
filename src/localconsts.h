@@ -225,6 +225,9 @@
 // use OpenGL debug features
 // #define DEBUG_OPENGL 1
 
+// debug animations
+// #define DEBUG_ANIMATIONS 1
+
 #ifdef DYECMD
 #undef USE_FUZZER
 #endif

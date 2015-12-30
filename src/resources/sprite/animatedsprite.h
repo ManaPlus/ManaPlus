@@ -129,12 +129,23 @@ class AnimatedSprite final : public Sprite
         { return mFrameTime; }
 #endif
 
+#ifdef DEBUG_ANIMATIONS
+        void setSpriteName(const std::string &restrict name)
+        { mSpriteName = name; }
+
+        std::string getSpriteName() const A_WARN_UNUSED
+        { return mSpriteName; }
+#endif
+
     private:
         bool updateCurrentAnimation(const unsigned int dt) restrict2;
 
         void setDelayLoad(const std::string &restrict filename,
                           const int variant) restrict2;
 
+#ifdef DEBUG_ANIMATIONS
+        std::string mSpriteName;
+#endif
         SpriteDirection::Type mDirection;  /**< The sprite direction. */
         int mLastTime;                 /**< The last time update was called. */
 
