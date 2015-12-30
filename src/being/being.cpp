@@ -2520,7 +2520,13 @@ void Being::setSprite(const unsigned int slot,
         }
 
         if (equipmentSprite)
+        {
             equipmentSprite->setSpriteDirection(getSpriteDirection());
+
+            // call reset here is not the best idea, but for now this is
+            // only way to sync just loaded sprite
+            reset();
+        }
 
         CompoundSprite::setSprite(slot, equipmentSprite);
         mSpriteDraw[slot] = id;
