@@ -670,6 +670,7 @@ SRC += events/actionevent.h \
 	      gui/popupmanager.cpp \
 	      gui/popupmanager.h \
 	      enums/input/inputaction.h \
+	      enums/input/inputgroup.h \
 	      input/inputactionmap.h \
 	      winver.h
 

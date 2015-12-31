@@ -964,6 +964,7 @@ SET(SRCS
     textcommand.cpp
     textcommand.h
     enums/input/inputaction.h
+    enums/input/inputgroup.h
     input/inputactiondata.h
     input/inputactionmap.h
     input/inputactionoperators.cpp

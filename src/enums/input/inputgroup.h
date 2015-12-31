@@ -20,32 +20,26 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef INPUT_INPUTACTIONDATA_H
-#define INPUT_INPUTACTIONDATA_H
+#ifndef ENUMS_INPUT_INPUTGROUP_H
+#define ENUMS_INPUT_INPUTGROUP_H
 
-#include "actions/actionfuncptr.h"
+#include "localconsts.h"
 
-#include "enums/input/inputgroup.h"
-#include "enums/input/inputtype.h"
-
-#include "enums/simpletypes/useargs.h"
-#include "enums/simpletypes/protected.h"
-
-struct InputActionData final
+namespace Input
 {
-    const char *const configField;
-    const InputTypeT defaultType1;
-    const int defaultValue1;
-    const InputTypeT defaultType2;
-    const int defaultValue2;
-    const int grp;
-    const ActionFuncPtr action;
-    const InputActionT modKeyIndex;
-    const int priority;
-    const int condition;
-    const std::string chatCommand;
-    const UseArgs useArgs;
-    const Protected isProtected;
-};
+    enum InputGroup
+    {
+        GRP_DEFAULT = 1,           // default game key
+        GRP_CHAT = 2,              // chat key
+        GRP_EMOTION = 4,           // emotions key
+        GRP_OUTFIT = 8,            // outfit key
+        GRP_GUI = 16,              // gui key
+        GRP_MOVETOPOINT = 32,      // move to point key
+        GRP_GUICHAN = 64,          // for guichan based controls
+        GRP_REPEAT = 128,          // repeat emulation keys
+        GRP_PET_EMOTION = 256,     // pet emotions key
+        GRP_HOMUN_EMOTION = 512    // homunculus/mercenary emotetions key
+    };
+}  // namespace Input
 
-#endif  // INPUT_INPUTACTIONDATA_H
+#endif  // ENUMS_INPUT_INPUTGROUP_H
