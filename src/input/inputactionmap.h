@@ -35,8 +35,9 @@
 #include "actions/target.h"
 #include "actions/windows.h"
 
+#include "enums/input/inputcondition.h"
+
 #include "input/inputactiondata.h"
-#include "input/inputcondition.h"
 #include "input/inputmanager.h"
 
 #include "localconsts.h"

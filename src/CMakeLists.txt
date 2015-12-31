@@ -970,7 +970,7 @@ SET(SRCS
     input/inputactionoperators.cpp
     input/inputactionoperators.h
     input/inputactionsortfunctor.h
-    input/inputcondition.h
+    enums/input/inputcondition.h
     input/inputfunction.h
     input/inputitem.h
     input/inputmanager.cpp

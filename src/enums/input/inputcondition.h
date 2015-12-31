@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef INPUT_INPUTCONDITION_H
-#define INPUT_INPUTCONDITION_H
+#ifndef ENUMS_INPUT_INPUTCONDITION_H
+#define ENUMS_INPUT_INPUTCONDITION_H
 
 namespace InputCondition
 {
@@ -56,4 +56,4 @@ namespace InputCondition
     };
 }  // namespace InputCondition
 
-#endif  // INPUT_INPUTCONDITION_H
+#endif  // ENUMS_INPUT_INPUTCONDITION_H
