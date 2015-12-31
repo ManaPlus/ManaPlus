@@ -77,6 +77,8 @@
 
 #include "sdlshared.h"
 
+#include "enums/input/keyvalue.h"
+
 #include "input/inputmanager.h"
 
 #include "gui/gui.h"
@@ -154,7 +156,7 @@ void SDLInput::pushInput(const SDL_Event &event)
 #ifdef USE_SDL2
         case SDL_TEXTINPUT:
             keyInput.setType(KeyEventType::PRESSED);
-            keyInput.setKey(Key(Key::TEXTINPUT));
+            keyInput.setKey(Key(KeyValue::TEXTINPUT));
             keyInput.setText(event.text.text);
             mKeyInputQueue.push(keyInput);
             break;
@@ -334,31 +336,31 @@ int SDLInput::convertKeyCharacter(const SDL_Event &event)
     switch (keysym.sym)
     {
       case SDLK_TAB:
-          value = Key::TAB;
+          value = KeyValue::TAB;
           break;
       case SDLK_LALT:
-          value = Key::LEFT_ALT;
+          value = KeyValue::LEFT_ALT;
           break;
       case SDLK_RALT:
-          value = Key::RIGHT_ALT;
+          value = KeyValue::RIGHT_ALT;
           break;
       case SDLK_LSHIFT:
-          value = Key::LEFT_SHIFT;
+          value = KeyValue::LEFT_SHIFT;
           break;
       case SDLK_RSHIFT:
-          value = Key::RIGHT_SHIFT;
+          value = KeyValue::RIGHT_SHIFT;
           break;
       case SDLK_LCTRL:
-          value = Key::LEFT_CONTROL;
+          value = KeyValue::LEFT_CONTROL;
           break;
       case SDLK_RCTRL:
-          value = Key::RIGHT_CONTROL;
+          value = KeyValue::RIGHT_CONTROL;
           break;
       case SDLK_BACKSPACE:
-          value = Key::BACKSPACE;
+          value = KeyValue::BACKSPACE;
           break;
       case SDLK_PAUSE:
-          value = Key::PAUSE;
+          value = KeyValue::PAUSE;
           break;
       case SDLK_SPACE:
           // Special characters like ~ (tilde) ends up
@@ -369,124 +371,124 @@ int SDLInput::convertKeyCharacter(const SDL_Event &event)
           if (event.type == SDL_KEYUP || keysym.unicode == ' ')
 #endif
           {
-              value = Key::SPACE;
+              value = KeyValue::SPACE;
           }
           break;
       case SDLK_ESCAPE:
 #ifdef USE_SDL2
       case SDLK_AC_BACK:
 #endif
-          value = Key::ESCAPE;
+          value = KeyValue::ESCAPE;
           break;
       case SDLK_DELETE:
-          value = Key::DELETE_;
+          value = KeyValue::DELETE_;
           break;
       case SDLK_INSERT:
-          value = Key::INSERT;
+          value = KeyValue::INSERT;
           break;
       case SDLK_HOME:
-          value = Key::HOME;
+          value = KeyValue::HOME;
           break;
       case SDLK_END:
-          value = Key::END;
+          value = KeyValue::END;
           break;
       case SDLK_PAGEUP:
-          value = Key::PAGE_UP;
+          value = KeyValue::PAGE_UP;
           break;
       case SDLK_PRINT:
-          value = Key::PRINT_SCREEN;
+          value = KeyValue::PRINT_SCREEN;
           break;
       case SDLK_PAGEDOWN:
-          value = Key::PAGE_DOWN;
+          value = KeyValue::PAGE_DOWN;
           break;
       case SDLK_F1:
-          value = Key::F1;
+          value = KeyValue::F1;
           break;
       case SDLK_F2:
-          value = Key::F2;
+          value = KeyValue::F2;
           break;
       case SDLK_F3:
-          value = Key::F3;
+          value = KeyValue::F3;
           break;
       case SDLK_F4:
-          value = Key::F4;
+          value = KeyValue::F4;
           break;
       case SDLK_F5:
-          value = Key::F5;
+          value = KeyValue::F5;
           break;
       case SDLK_F6:
-          value = Key::F6;
+          value = KeyValue::F6;
           break;
       case SDLK_F7:
-          value = Key::F7;
+          value = KeyValue::F7;
           break;
       case SDLK_F8:
-          value = Key::F8;
+          value = KeyValue::F8;
           break;
       case SDLK_F9:
-          value = Key::F9;
+          value = KeyValue::F9;
           break;
       case SDLK_F10:
-          value = Key::F10;
+          value = KeyValue::F10;
           break;
       case SDLK_F11:
-          value = Key::F11;
+          value = KeyValue::F11;
           break;
       case SDLK_F12:
-          value = Key::F12;
+          value = KeyValue::F12;
           break;
       case SDLK_F13:
-          value = Key::F13;
+          value = KeyValue::F13;
           break;
       case SDLK_F14:
-          value = Key::F14;
+          value = KeyValue::F14;
           break;
       case SDLK_F15:
-          value = Key::F15;
+          value = KeyValue::F15;
           break;
       case SDLK_NUMLOCK:
-          value = Key::NUM_LOCK;
+          value = KeyValue::NUM_LOCK;
           break;
       case SDLK_CAPSLOCK:
-          value = Key::CAPS_LOCK;
+          value = KeyValue::CAPS_LOCK;
           break;
       case SDLK_SCROLLOCK:
-          value = Key::SCROLL_LOCK;
+          value = KeyValue::SCROLL_LOCK;
           break;
       case SDLK_RMETA:
-          value = Key::RIGHT_META;
+          value = KeyValue::RIGHT_META;
           break;
       case SDLK_LMETA:
-          value = Key::LEFT_META;
+          value = KeyValue::LEFT_META;
           break;
 #ifndef USE_SDL2
       case SDLK_LSUPER:
-          value = Key::LEFT_SUPER;
+          value = KeyValue::LEFT_SUPER;
           break;
       case SDLK_RSUPER:
-          value = Key::RIGHT_SUPER;
+          value = KeyValue::RIGHT_SUPER;
           break;
 #endif
       case SDLK_MODE:
-          value = Key::ALT_GR;
+          value = KeyValue::ALT_GR;
           break;
       case SDLK_UP:
-          value = Key::UP;
+          value = KeyValue::UP;
           break;
       case SDLK_DOWN:
-          value = Key::DOWN;
+          value = KeyValue::DOWN;
           break;
       case SDLK_LEFT:
-          value = Key::LEFT;
+          value = KeyValue::LEFT;
           break;
       case SDLK_RIGHT:
-          value = Key::RIGHT;
+          value = KeyValue::RIGHT;
           break;
       case SDLK_RETURN:
-          value = Key::ENTER;
+          value = KeyValue::ENTER;
           break;
       case SDLK_KP_ENTER:
-          value = Key::ENTER;
+          value = KeyValue::ENTER;
           break;
 
       default:
@@ -498,34 +500,34 @@ int SDLInput::convertKeyCharacter(const SDL_Event &event)
         switch (keysym.sym)
         {
           case SDLK_KP0:
-              value = Key::INSERT;
+              value = KeyValue::INSERT;
               break;
           case SDLK_KP1:
-              value = Key::END;
+              value = KeyValue::END;
               break;
           case SDLK_KP2:
-              value = Key::DOWN;
+              value = KeyValue::DOWN;
               break;
           case SDLK_KP3:
-              value = Key::PAGE_DOWN;
+              value = KeyValue::PAGE_DOWN;
               break;
           case SDLK_KP4:
-              value = Key::LEFT;
+              value = KeyValue::LEFT;
               break;
           case SDLK_KP5:
               value = 0;
               break;
           case SDLK_KP6:
-              value = Key::RIGHT;
+              value = KeyValue::RIGHT;
               break;
           case SDLK_KP7:
-              value = Key::HOME;
+              value = KeyValue::HOME;
               break;
           case SDLK_KP8:
-              value = Key::UP;
+              value = KeyValue::UP;
               break;
           case SDLK_KP9:
-              value = Key::PAGE_UP;
+              value = KeyValue::PAGE_UP;
               break;
           default:
               break;

@@ -506,6 +506,7 @@ SRC += events/actionevent.h \
 	      input/inputmanager.cpp \
 	      input/inputmanager.h \
 	      enums/input/inputtype.h \
+	      enums/input/keyvalue.h \
 	      input/joystick.cpp \
 	      input/joystick.h \
 	      input/keyboardconfig.cpp \
