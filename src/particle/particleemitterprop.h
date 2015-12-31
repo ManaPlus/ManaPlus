@@ -25,27 +25,19 @@
 
 #include <cmath>
 
+#include "enums/particle/particlechangefunc.h"
+
 #include "localconsts.h"
-
-/**
- * Returns a random numeric value that is larger than or equal min and smaller
- * than max
- */
-
-enum ChangeFunc
-{
-    FUNC_NONE = 0,
-    FUNC_SINE,
-    FUNC_SAW,
-    FUNC_TRIANGLE,
-    FUNC_SQUARE
-};
 
 template <typename T> struct ParticleEmitterProp final
 {
     ParticleEmitterProp() :
-        minVal(0), maxVal(0), changeFunc(FUNC_NONE),
-        changeAmplitude(0), changePeriod(0), changePhase(0)
+        minVal(0),
+        maxVal(0),
+        changeFunc(ParticleChangeFunc::FUNC_NONE),
+        changeAmplitude(0),
+        changePeriod(0),
+        changePhase(0)
     {
     }
 
@@ -60,8 +52,10 @@ template <typename T> struct ParticleEmitterProp final
         set(val, val);
     }
 
-    void setFunction(ChangeFunc func, T amplitude,
-                     const int period, const int phase)
+    void setFunction(ParticleChangeFuncT func,
+                     T amplitude,
+                     const int period,
+                     const int phase)
     {
         changeFunc = func;
         changeAmplitude = amplitude;
@@ -79,17 +73,17 @@ template <typename T> struct ParticleEmitterProp final
 
         switch (changeFunc)
         {
-            case FUNC_SINE:
+            case ParticleChangeFunc::FUNC_SINE:
                 val += static_cast<T>(std::sin(M_PI * 2 * (static_cast<double>(
                     tick % changePeriod) / static_cast<double>(
                     changePeriod)))) * changeAmplitude;
                 break;
-            case FUNC_SAW:
+            case ParticleChangeFunc::FUNC_SAW:
                 val += static_cast<T>(changeAmplitude * (static_cast<double>(
                     tick % changePeriod) / static_cast<double>(
                     changePeriod))) * 2 - changeAmplitude;
                 break;
-            case FUNC_TRIANGLE:
+            case ParticleChangeFunc::FUNC_TRIANGLE:
                 if ((tick % changePeriod) * 2 < changePeriod)
                 {
                     val += changeAmplitude - static_cast<T>((
@@ -104,13 +98,13 @@ template <typename T> struct ParticleEmitterProp final
                     // I have no idea why this works but it does
                 }
                 break;
-            case FUNC_SQUARE:
+            case ParticleChangeFunc::FUNC_SQUARE:
                 if ((tick % changePeriod) * 2 < changePeriod)
                     val += changeAmplitude;
                 else
                     val -= changeAmplitude;
                 break;
-            case FUNC_NONE:
+            case ParticleChangeFunc::FUNC_NONE:
             default:
                 // nothing
                 break;
@@ -122,7 +116,7 @@ template <typename T> struct ParticleEmitterProp final
     T minVal;
     T maxVal;
 
-    ChangeFunc changeFunc;
+    ParticleChangeFuncT changeFunc;
     T changeAmplitude;
     int changePeriod;
     int changePhase;

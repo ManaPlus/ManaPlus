@@ -1067,6 +1067,7 @@ SET(SRCS
     render/rendererslistsdl.h
     render/rendererslistsdl2.h
     enums/particle/alivestatus.h
+    enums/particle/particlechangefunc.h
     enums/render/rendertype.h
     particle/particle.cpp
     particle/particle.h

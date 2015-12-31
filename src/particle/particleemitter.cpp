@@ -473,13 +473,25 @@ ParticleEmitter::readParticleEmitterProp(XmlNodePtrConst propertyNode, T def)
     const int period = XML::getProperty(propertyNode, "change-period", 0);
     const int phase = XML::getProperty(propertyNode, "change-phase", 0);
     if (change == "saw" || change == "sawtooth")
-        retval.setFunction(FUNC_SAW, amplitude, period, phase);
+    {
+        retval.setFunction(ParticleChangeFunc::FUNC_SAW,
+            amplitude, period, phase);
+    }
     else if (change == "sine" || change == "sinewave")
-        retval.setFunction(FUNC_SINE, amplitude, period, phase);
+    {
+        retval.setFunction(ParticleChangeFunc::FUNC_SINE,
+            amplitude, period, phase);
+    }
     else if (change == "triangle")
-        retval.setFunction(FUNC_TRIANGLE, amplitude, period, phase);
+    {
+        retval.setFunction(ParticleChangeFunc::FUNC_TRIANGLE,
+            amplitude, period, phase);
+    }
     else if (change == "square")
-        retval.setFunction(FUNC_SQUARE, amplitude, period, phase);
+    {
+        retval.setFunction(ParticleChangeFunc::FUNC_SQUARE,
+            amplitude, period, phase);
+    }
 
     return retval;
 }

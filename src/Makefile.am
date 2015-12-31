@@ -564,6 +564,7 @@ SRC += events/actionevent.h \
 	      render/rendererslistsdl.h \
 	      render/rendererslistsdl2.h \
 	      enums/particle/alivestatus.h \
+	      enums/particle/particlechangefunc.h \
 	      enums/render/blitmode.h \
 	      enums/render/rendertype.h \
 	      being/playerignorestrategy.h \
