@@ -79,6 +79,10 @@
 
 #include "gui/popups/popupmenu.h"
 
+#ifdef USE_SDL2
+#include "enums/input/keyvalue.h"
+#endif
+
 #include "resources/image.h"
 #include "resources/imagerect.h"
 
@@ -290,7 +294,7 @@ void TextField::keyPressed(KeyEvent &event)
     logger->log("TextField::keyPressed %d", val);
 
 #ifdef USE_SDL2
-    if (val == Key::TEXTINPUT)
+    if (val == KeyValue::TEXTINPUT)
     {
         std::string str = event.getText();
         mText.insert(mCaretPosition, str);

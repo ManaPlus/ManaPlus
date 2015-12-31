@@ -23,6 +23,8 @@
 #include "gui/widgets/inttextfield.h"
 
 #ifdef USE_SDL2
+#include "enums/input/keyvalue.h"
+
 #include "gui/sdlinput.h"
 #endif
 
@@ -68,7 +70,7 @@ void IntTextField::keyPressed(KeyEvent &event)
 
 #ifdef USE_SDL2
     const int val = event.getKey().getValue();
-    if (val != Key::TEXTINPUT)
+    if (val != KeyValue::TEXTINPUT)
         return;
 
     const std::string str = event.getText();
