@@ -25,6 +25,8 @@
 
 #include "being/actor.h"
 
+#include "enums/particle/alivestatus.h"
+
 #include "localconsts.h"
 
 class Color;
@@ -45,16 +47,6 @@ typedef Emitters::const_iterator EmitterConstIterator;
 class Particle notfinal : public Actor
 {
     public:
-        enum AliveStatus
-        {
-            ALIVE = 0,
-            DEAD_TIMEOUT = 1,
-            DEAD_FLOOR = 2,
-            DEAD_SKY = 4,
-            DEAD_IMPACT = 8,
-            DEAD_OTHER = 16,
-            DEAD_LONG_AGO = 128
-        };
         static const float PARTICLE_SKY;  // Maximum Z position of particles
         static int fastPhysics;           // Mode of squareroot calculation
         static int particleCount;         // Current number of particles
@@ -249,7 +241,7 @@ class Particle notfinal : public Actor
         { mAllowSizeAdjust = adjust; }
 
         bool isAlive() const restrict2 A_WARN_UNUSED
-        { return mAlive == ALIVE; }
+        { return mAlive == AliveStatus::ALIVE; }
 
         void prepareToDie() restrict2;
 
@@ -263,7 +255,7 @@ class Particle notfinal : public Actor
          * Manually marks the particle for deletion.
          */
         void kill() restrict2
-        { mAlive = DEAD_OTHER; mAutoDelete = true; }
+        { mAlive = AliveStatus::DEAD_OTHER; mAutoDelete = true; }
 
         /**
          * After calling this function the particle will only request
@@ -306,7 +298,7 @@ class Particle notfinal : public Actor
         Vector mVelocity;
 
         // Is the particle supposed to be drawn and updated?
-        AliveStatus mAlive;
+        AliveStatusT mAlive;
     private:
         // List of child emitters.
         Emitters mChildEmitters;

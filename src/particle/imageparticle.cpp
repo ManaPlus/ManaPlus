@@ -72,7 +72,7 @@ void ImageParticle::draw(Graphics *restrict const graphics,
                          const int offsetY) const restrict2
 {
     FUNC_BLOCK("ImageParticle::draw", 1)
-    if (mAlive != ALIVE || !mImage)
+    if (mAlive != AliveStatus::ALIVE || !mImage)
         return;
 
     const int screenX = static_cast<int>(mPos.x)

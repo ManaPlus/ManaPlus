@@ -325,27 +325,27 @@ ParticleEmitter::ParticleEmitter(const XmlNodePtrConst emitterNode,
             if (XML::getBoolProperty(propertyNode, "on-floor", true))
             {
                 mDeathEffectConditions += static_cast<signed char>(
-                    Particle::DEAD_FLOOR);
+                    AliveStatus::DEAD_FLOOR);
             }
             if (XML::getBoolProperty(propertyNode, "on-sky", true))
             {
                 mDeathEffectConditions += static_cast<signed char>(
-                    Particle::DEAD_SKY);
+                    AliveStatus::DEAD_SKY);
             }
             if (XML::getBoolProperty(propertyNode, "on-other", false))
             {
                 mDeathEffectConditions += static_cast<signed char>(
-                    Particle::DEAD_OTHER);
+                    AliveStatus::DEAD_OTHER);
             }
             if (XML::getBoolProperty(propertyNode, "on-impact", true))
             {
                 mDeathEffectConditions += static_cast<signed char>(
-                    Particle::DEAD_IMPACT);
+                    AliveStatus::DEAD_IMPACT);
             }
             if (XML::getBoolProperty(propertyNode, "on-timeout", true))
             {
                 mDeathEffectConditions += static_cast<signed char>(
-                    Particle::DEAD_TIMEOUT);
+                    AliveStatus::DEAD_TIMEOUT);
             }
         }
     }

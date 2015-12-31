@@ -61,7 +61,7 @@ Particle::Particle() :
     mFadeOut(0),
     mFadeIn(0),
     mVelocity(),
-    mAlive(ALIVE),
+    mAlive(AliveStatus::ALIVE),
     mChildEmitters(),
     mChildParticles(),
     mDeathEffect(),
@@ -109,12 +109,12 @@ bool Particle::update() restrict2
     if (!mMap)
         return false;
 
-    if (mLifetimeLeft == 0 && mAlive == ALIVE)
-        mAlive = DEAD_TIMEOUT;
+    if (mLifetimeLeft == 0 && mAlive == AliveStatus::ALIVE)
+        mAlive = AliveStatus::DEAD_TIMEOUT;
 
     const Vector oldPos = mPos;
 
-    if (mAlive == ALIVE)
+    if (mAlive == AliveStatus::ALIVE)
     {
         // calculate particle movement
         if (mMomentum != 1.0F)
@@ -152,7 +152,7 @@ bool Particle::update() restrict2
             if (invHypotenuse)
             {
                 if (mInvDieDistance > 0.0F && invHypotenuse > mInvDieDistance)
-                    mAlive = DEAD_IMPACT;
+                    mAlive = AliveStatus::DEAD_IMPACT;
                 const float accFactor = invHypotenuse * mAcceleration;
                 mVelocity -= dist * accFactor;
             }
@@ -191,12 +191,12 @@ bool Particle::update() restrict2
             }
             else
             {
-                mAlive = DEAD_FLOOR;
+                mAlive = AliveStatus::DEAD_FLOOR;
             }
         }
         else if (mPos.z > PARTICLE_SKY)
         {
-            mAlive = DEAD_SKY;
+            mAlive = AliveStatus::DEAD_SKY;
         }
 
         // Update child emitters
@@ -220,7 +220,8 @@ bool Particle::update() restrict2
     }
 
     // create death effect when the particle died
-    if (mAlive != ALIVE && mAlive != DEAD_LONG_AGO)
+    if (mAlive != AliveStatus::ALIVE &&
+        mAlive != AliveStatus::DEAD_LONG_AGO)
     {
         if ((static_cast<unsigned int>(mAlive) & mDeathEffectConditions)
             > 0x00  && !mDeathEffect.empty())
@@ -230,7 +231,7 @@ bool Particle::update() restrict2
             if (deathEffect)
                 deathEffect->moveBy(mPos);
         }
-        mAlive = DEAD_LONG_AGO;
+        mAlive = AliveStatus::DEAD_LONG_AGO;
     }
 
     const Vector change = mPos - oldPos;
@@ -256,8 +257,12 @@ bool Particle::update() restrict2
             p = mChildParticles.erase(p);
         }
     }
-    if (mAlive != ALIVE && mChildParticles.empty() && mAutoDelete)
+    if (mAlive != AliveStatus::ALIVE &&
+        mChildParticles.empty() &&
+        mAutoDelete)
+    {
         return false;
+    }
 
     return true;
 }
@@ -398,27 +403,27 @@ Particle *Particle::addEffect(const std::string &restrict particleEffectFile,
                 if (XML::getBoolProperty(emitterNode, "on-floor", true))
                 {
                     deathEffectConditions += static_cast<signed char>(
-                        Particle::DEAD_FLOOR);
+                        AliveStatus::DEAD_FLOOR);
                 }
                 if (XML::getBoolProperty(emitterNode, "on-sky", true))
                 {
                     deathEffectConditions += static_cast<signed char>(
-                        Particle::DEAD_SKY);
+                        AliveStatus::DEAD_SKY);
                 }
                 if (XML::getBoolProperty(emitterNode, "on-other", false))
                 {
                     deathEffectConditions += static_cast<signed char>(
-                        Particle::DEAD_OTHER);
+                        AliveStatus::DEAD_OTHER);
                 }
                 if (XML::getBoolProperty(emitterNode, "on-impact", true))
                 {
                     deathEffectConditions += static_cast<signed char>(
-                        Particle::DEAD_IMPACT);
+                        AliveStatus::DEAD_IMPACT);
                 }
                 if (XML::getBoolProperty(emitterNode, "on-timeout", true))
                 {
                     deathEffectConditions += static_cast<signed char>(
-                        Particle::DEAD_TIMEOUT);
+                        AliveStatus::DEAD_TIMEOUT);
                 }
                 newParticle->setDeathEffect(
                     deathEffect, deathEffectConditions);
