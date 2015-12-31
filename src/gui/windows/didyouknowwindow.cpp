@@ -74,7 +74,7 @@ DidYouKnowWindow::DidYouKnowWindow() :
 
     if (setupWindow)
         setupWindow->registerWindowForReset(this);
-    setDefaultSize(500, 400, ImageRect::CENTER);
+    setDefaultSize(500, 400, ImagePosition::CENTER);
 
     mBrowserBox->setOpaque(false);
     // TRANSLATORS: did you know window button

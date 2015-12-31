@@ -105,7 +105,7 @@ TextCommandEditor::TextCommandEditor(TextCommand *const command) :
     keyboard.setEnabled(false);
 
     setWindowName("TextCommandEditor");
-    setDefaultSize(w, h, ImageRect::CENTER);
+    setDefaultSize(w, h, ImagePosition::CENTER);
 
 #ifdef TMWA_SUPPORT
     mIsMagic->setActionEventId("magic");

@@ -26,6 +26,8 @@
 
 #include "settings.h"
 
+#include "enums/resources/imageposition.h"
+
 #include "resources/image.h"
 #include "resources/imagerect.h"
 
@@ -124,24 +126,26 @@ void Skin::updateAlpha(const float minimumOpacityAllowed)
 
 int Skin::getMinWidth() const
 {
-    if (!mBorder || !mBorder->grid[ImageRect::UPPER_LEFT]
-        || !mBorder->grid[ImageRect::UPPER_RIGHT])
+    if (!mBorder ||
+        !mBorder->grid[ImagePosition::UPPER_LEFT] ||
+        !mBorder->grid[ImagePosition::UPPER_RIGHT])
     {
         return 1;
     }
 
-    return mBorder->grid[ImageRect::UPPER_LEFT]->getWidth() +
-           mBorder->grid[ImageRect::UPPER_RIGHT]->getWidth();
+    return mBorder->grid[ImagePosition::UPPER_LEFT]->getWidth() +
+           mBorder->grid[ImagePosition::UPPER_RIGHT]->getWidth();
 }
 
 int Skin::getMinHeight() const
 {
-    if (!mBorder || !mBorder->grid[ImageRect::UPPER_LEFT]
-        || !mBorder->grid[ImageRect::LOWER_LEFT])
+    if (!mBorder ||
+        !mBorder->grid[ImagePosition::UPPER_LEFT] ||
+        !mBorder->grid[ImagePosition::LOWER_LEFT])
     {
         return 1;
     }
 
-    return mBorder->grid[ImageRect::UPPER_LEFT]->getHeight() +
-           mBorder->grid[ImageRect::LOWER_LEFT]->getHeight();
+    return mBorder->grid[ImagePosition::UPPER_LEFT]->getHeight() +
+           mBorder->grid[ImagePosition::LOWER_LEFT]->getHeight();
 }

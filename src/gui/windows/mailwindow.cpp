@@ -79,7 +79,7 @@ MailWindow::MailWindow() :
     if (setupWindow)
         setupWindow->registerWindowForReset(this);
 
-    setDefaultSize(310, 180, ImageRect::CENTER);
+    setDefaultSize(310, 180, ImagePosition::CENTER);
     setMinWidth(310);
     setMinHeight(250);
     center();

@@ -163,9 +163,9 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
     setStickyButtonLock(true);
 
     if (mainGraphics->mWidth > 600)
-        setDefaultSize(450, 310, ImageRect::CENTER);
+        setDefaultSize(450, 310, ImagePosition::CENTER);
     else
-        setDefaultSize(387, 307, ImageRect::CENTER);
+        setDefaultSize(387, 307, ImagePosition::CENTER);
     setMinWidth(310);
     setMinHeight(179);
     addKeyListener(this);

@@ -90,7 +90,7 @@ ShortcutWindow::ShortcutWindow(const std::string &restrict title,
         if (height == 0)
             height = bh * maxItems + border;
 
-        setDefaultSize(width, height, ImageRect::LOWER_RIGHT);
+        setDefaultSize(width, height, ImagePosition::LOWER_RIGHT);
 
         mBoxesWidth += bw + border;
     }
@@ -133,7 +133,7 @@ ShortcutWindow::ShortcutWindow(const std::string &restrict title,
         setupWindow->registerWindowForReset(this);
 
     if (width && height)
-        setDefaultSize(width, height, ImageRect::LOWER_RIGHT);
+        setDefaultSize(width, height, ImagePosition::LOWER_RIGHT);
 
     setMinWidth(32);
     setMinHeight(32);

@@ -210,7 +210,7 @@ UpdaterWindow::UpdaterWindow(const std::string &restrict updateHost,
 {
     setWindowName("UpdaterWindow");
     setResizable(true);
-    setDefaultSize(450, 400, ImageRect::CENTER);
+    setDefaultSize(450, 400, ImagePosition::CENTER);
     setMinWidth(310);
     setMinHeight(220);
 

@@ -179,7 +179,7 @@ ServerDialog::ServerDialog(ServerInfo *const serverInfo,
 
     setMinWidth(310);
     setMinHeight(220);
-    setDefaultSize(getWidth(), getHeight(), ImageRect::CENTER);
+    setDefaultSize(getWidth(), getHeight(), ImagePosition::CENTER);
 
     setResizable(true);
     addKeyListener(this);

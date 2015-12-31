@@ -94,7 +94,7 @@ QuestsWindow::QuestsWindow() :
     setStickyButtonLock(true);
     setSaveVisible(true);
 
-    setDefaultSize(400, 350, ImageRect::RIGHT);
+    setDefaultSize(400, 350, ImagePosition::RIGHT);
     setMinWidth(310);
     setMinHeight(220);
 

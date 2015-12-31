@@ -66,7 +66,7 @@ BankWindow::BankWindow() :
     placer(5, 2, mWithdrawButton, 5);
 
     setContentSize(300, 100);
-    setDefaultSize(300, 100, ImageRect::CENTER, 0, 0);
+    setDefaultSize(300, 100, ImagePosition::CENTER, 0, 0);
 
     center();
     setDefaultSize();

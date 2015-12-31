@@ -85,7 +85,7 @@ MailViewWindow::MailViewWindow(const MailMessage *const message) :
     setStickyButtonLock(true);
     setVisible(Visible_true);
 
-    setDefaultSize(380, 230, ImageRect::CENTER);
+    setDefaultSize(380, 230, ImagePosition::CENTER);
     setMinWidth(200);
     setMinHeight(100);
     center();

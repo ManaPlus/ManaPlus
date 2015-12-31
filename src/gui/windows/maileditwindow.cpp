@@ -80,7 +80,7 @@ MailEditWindow::MailEditWindow() :
     setStickyButtonLock(true);
     setVisible(Visible_true);
 
-    setDefaultSize(380, 200, ImageRect::CENTER);
+    setDefaultSize(380, 200, ImagePosition::CENTER);
     setMinWidth(200);
     setMinHeight(200);
     center();

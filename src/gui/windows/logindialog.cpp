@@ -178,9 +178,9 @@ void LoginDialog::postInit()
         setContentSize(310, 250);
     setContentSize(310, h);
 #ifdef ANDROID
-    setDefaultSize(310, h, ImageRect::UPPER_CENTER, 0, 0);
+    setDefaultSize(310, h, ImagePosition::UPPER_CENTER, 0, 0);
 #else
-    setDefaultSize(310, h, ImageRect::CENTER, 0, 0);
+    setDefaultSize(310, h, ImagePosition::CENTER, 0, 0);
 #endif
     center();
     loadWindowState();

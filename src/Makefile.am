@@ -1146,6 +1146,7 @@ manaplus_SOURCES += main.cpp \
 	      resources/iteminfo.h \
 	      resources/iteminfo.cpp \
 	      resources/itemslot.h \
+	      enums/resources/imageposition.h \
 	      enums/resources/itemsoundevent.h \
 	      resources/itemtype.h \
 	      resources/itemtypemap.h \

@@ -55,7 +55,7 @@ DebugWindow::DebugWindow() :
     setSaveVisible(true);
     setStickyButtonLock(true);
 
-    setDefaultSize(400, 300, ImageRect::CENTER);
+    setDefaultSize(400, 300, ImagePosition::CENTER);
 
     // TRANSLATORS: debug window tab
     mTabs->addTab(std::string(_("Map")), mMapWidget);

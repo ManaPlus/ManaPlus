@@ -153,9 +153,9 @@ ShopWindow::ShopWindow() :
     setMinWidth(300);
     setMinHeight(220);
     if (mainGraphics->mWidth > 600)
-        setDefaultSize(500, 300, ImageRect::CENTER);
+        setDefaultSize(500, 300, ImagePosition::CENTER);
     else
-        setDefaultSize(380, 300, ImageRect::CENTER);
+        setDefaultSize(380, 300, ImagePosition::CENTER);
 
     if (setupWindow)
         setupWindow->registerWindowForReset(this);

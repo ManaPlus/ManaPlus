@@ -124,7 +124,7 @@ EditServerDialog::EditServerDialog(ServerDialog *const parent,
 
     setMinWidth(getWidth());
     setMinHeight(getHeight());
-    setDefaultSize(getWidth(), getHeight(), ImageRect::CENTER);
+    setDefaultSize(getWidth(), getHeight(), ImagePosition::CENTER);
 
     setResizable(false);
     addKeyListener(this);

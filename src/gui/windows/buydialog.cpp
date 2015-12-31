@@ -237,7 +237,7 @@ void BuyDialog::init()
     setStickyButtonLock(true);
     setMinWidth(260);
     setMinHeight(220);
-    setDefaultSize(260, 230, ImageRect::CENTER);
+    setDefaultSize(260, 230, ImagePosition::CENTER);
 
     // reset advance flag for personal shops and cash shop
     if (mAdvanced &&

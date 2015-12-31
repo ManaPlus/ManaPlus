@@ -68,6 +68,8 @@
 
 #include "enums/simpletypes/modal.h"
 
+#include "enums/resources/imageposition.h"
+
 #include "listeners/mouselistener.h"
 #include "listeners/widgetlistener.h"
 
@@ -151,7 +153,7 @@ class Window notfinal : public BasicContainer2,
         /**
          * Sets the location relative to the given enumerated position.
          */
-        void setLocationRelativeTo(const ImageRect::ImagePosition &position,
+        void setLocationRelativeTo(const ImagePosition::Type &position,
                                    int offsetX = 0, int offsetY = 0);
 
         /**
@@ -391,7 +393,7 @@ class Window notfinal : public BasicContainer2,
          * on a relative enumerated position, rather than a coordinate position.
          */
         void setDefaultSize(const int defaultWidth, const int defaultHeight,
-                            const ImageRect::ImagePosition &position,
+                            const ImagePosition::Type &position,
                             const int offsetx = 0, const int offsetY = 0);
 
         /**

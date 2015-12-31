@@ -516,44 +516,44 @@ void Window::setLocationHorisontallyRelativeTo(const Widget *const widget)
         - mDimension.width) / 2 - x), 0);
 }
 
-void Window::setLocationRelativeTo(const ImageRect::ImagePosition &position,
+void Window::setLocationRelativeTo(const ImagePosition::Type &position,
                                    int offsetX, int offsetY)
 {
-    if (position == ImageRect::UPPER_LEFT)
+    if (position == ImagePosition::UPPER_LEFT)
     {
     }
-    else if (position == ImageRect::UPPER_CENTER)
+    else if (position == ImagePosition::UPPER_CENTER)
     {
         offsetX += (mainGraphics->mWidth - mDimension.width) / 2;
     }
-    else if (position == ImageRect::UPPER_RIGHT)
+    else if (position == ImagePosition::UPPER_RIGHT)
     {
         offsetX += mainGraphics->mWidth - mDimension.width;
     }
-    else if (position == ImageRect::LEFT)
+    else if (position == ImagePosition::LEFT)
     {
         offsetY += (mainGraphics->mHeight - mDimension.height) / 2;
     }
-    else if (position == ImageRect::CENTER)
+    else if (position == ImagePosition::CENTER)
     {
         offsetX += (mainGraphics->mWidth - mDimension.width) / 2;
         offsetY += (mainGraphics->mHeight - mDimension.height) / 2;
     }
-    else if (position == ImageRect::RIGHT)
+    else if (position == ImagePosition::RIGHT)
     {
         offsetX += mainGraphics->mWidth - mDimension.width;
         offsetY += (mainGraphics->mHeight - mDimension.height) / 2;
     }
-    else if (position == ImageRect::LOWER_LEFT)
+    else if (position == ImagePosition::LOWER_LEFT)
     {
         offsetY += mainGraphics->mHeight - mDimension.height;
     }
-    else if (position == ImageRect::LOWER_CENTER)
+    else if (position == ImagePosition::LOWER_CENTER)
     {
         offsetX += (mainGraphics->mWidth - mDimension.width) / 2;
         offsetY += mainGraphics->mHeight - mDimension.height;
     }
-    else if (position == ImageRect::LOWER_RIGHT)
+    else if (position == ImagePosition::LOWER_RIGHT)
     {
         offsetX += mainGraphics->mWidth - mDimension.width;
         offsetY += mainGraphics->mHeight - mDimension.height;
@@ -1175,47 +1175,47 @@ void Window::setDefaultSize()
 }
 
 void Window::setDefaultSize(const int defaultWidth, const int defaultHeight,
-                            const ImageRect::ImagePosition &position,
+                            const ImagePosition::Type &position,
                             const int offsetX, const int offsetY)
 {
     int x = 0;
     int y = 0;
 
-    if (position == ImageRect::UPPER_LEFT)
+    if (position == ImagePosition::UPPER_LEFT)
     {
     }
-    else if (position == ImageRect::UPPER_CENTER)
+    else if (position == ImagePosition::UPPER_CENTER)
     {
         x = (mainGraphics->mWidth - defaultWidth) / 2;
     }
-    else if (position == ImageRect::UPPER_RIGHT)
+    else if (position == ImagePosition::UPPER_RIGHT)
     {
         x = mainGraphics->mWidth - defaultWidth;
     }
-    else if (position == ImageRect::LEFT)
+    else if (position == ImagePosition::LEFT)
     {
         y = (mainGraphics->mHeight - defaultHeight) / 2;
     }
-    else if (position == ImageRect::CENTER)
+    else if (position == ImagePosition::CENTER)
     {
         x = (mainGraphics->mWidth - defaultWidth) / 2;
         y = (mainGraphics->mHeight - defaultHeight) / 2;
     }
-    else if (position == ImageRect::RIGHT)
+    else if (position == ImagePosition::RIGHT)
     {
         x = mainGraphics->mWidth - defaultWidth;
         y = (mainGraphics->mHeight - defaultHeight) / 2;
     }
-    else if (position == ImageRect::LOWER_LEFT)
+    else if (position == ImagePosition::LOWER_LEFT)
     {
         y = mainGraphics->mHeight - defaultHeight;
     }
-    else if (position == ImageRect::LOWER_CENTER)
+    else if (position == ImagePosition::LOWER_CENTER)
     {
         x = (mainGraphics->mWidth - defaultWidth) / 2;
         y = mainGraphics->mHeight - defaultHeight;
     }
-    else if (position == ImageRect::LOWER_RIGHT)
+    else if (position == ImagePosition::LOWER_RIGHT)
     {
         x = mainGraphics->mWidth - defaultWidth;
         y = mainGraphics->mHeight - defaultHeight;

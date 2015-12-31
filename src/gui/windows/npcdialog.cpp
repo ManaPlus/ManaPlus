@@ -154,7 +154,7 @@ NpcDialog::NpcDialog(const BeingId npcId) :
     setMinWidth(200);
     setMinHeight(150);
 
-    setDefaultSize(300, 578, ImageRect::LOWER_LEFT);
+    setDefaultSize(300, 578, ImagePosition::LOWER_LEFT);
 
     mPlayerBox->setWidth(70);
     mPlayerBox->setHeight(100);

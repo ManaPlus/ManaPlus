@@ -811,7 +811,7 @@ void EquipmentWindow::recalcSize()
     mMaxY += mMinY;
     mTabs->setWidth(mMaxX);
     mMaxY += mUnequip->getHeight() - mYPadding;
-    setDefaultSize(mMaxX, mMaxY, ImageRect::CENTER);
+    setDefaultSize(mMaxX, mMaxY, ImagePosition::CENTER);
 }
 
 int EquipmentWindow::addPage(const std::string &name)

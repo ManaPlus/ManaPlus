@@ -136,15 +136,15 @@ ChatWindow::ChatWindow() :
     if (w < 100)
         w = 100;
     if (mainGraphics->getHeight() < 480)
-        setDefaultSize(w, 90, ImageRect::UPPER_LEFT, -110, -35);
+        setDefaultSize(w, 90, ImagePosition::UPPER_LEFT, -110, -35);
     else
-        setDefaultSize(w, 123, ImageRect::UPPER_LEFT, -110, -35);
+        setDefaultSize(w, 123, ImagePosition::UPPER_LEFT, -110, -35);
 #else
     if (mainGraphics->getWidth() < 600)
         w = mainGraphics->getWidth() - 10;
     if (w < 100)
         w = 100;
-    setDefaultSize(w, 123, ImageRect::LOWER_LEFT);
+    setDefaultSize(w, 123, ImagePosition::LOWER_LEFT);
 #endif
     setMinWidth(150);
     setMinHeight(90);
