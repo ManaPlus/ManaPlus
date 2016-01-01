@@ -29,16 +29,11 @@
 #include "sdlshared.h"
 #include "textmanager.h"
 
-#include "enums/resources/map/mapitemtype.h"
-
-#include "resources/map/map.h"
-#include "resources/map/mapitem.h"
-#include "resources/map/speciallayer.h"
-
+#include "being/flooritem.h"
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
-#include "input/inputmanager.h"
+#include "enums/resources/map/mapitemtype.h"
 
 #include "gui/gui.h"
 #include "gui/popupmanager.h"
@@ -51,6 +46,12 @@
 #include "gui/popups/textpopup.h"
 
 #include "gui/windows/ministatuswindow.h"
+
+#include "input/inputmanager.h"
+
+#include "resources/map/map.h"
+#include "resources/map/mapitem.h"
+#include "resources/map/speciallayer.h"
 
 #include "debug.h"
 

@@ -27,6 +27,7 @@
 #include "gamemodifiers.h"
 #include "party.h"
 
+#include "being/flooritem.h"
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 #include "being/playerrelation.h"

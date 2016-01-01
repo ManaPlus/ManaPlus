@@ -42,13 +42,13 @@ class NavigationManager final
 #endif
 
     private:
+#ifndef DYECMD
         static bool findWalkableTile(int &x1, int &y1,
                                      const int width,
                                      const int height,
                                      const MetaTile *const tiles,
                                      const int *const data) A_NONNULL(5, 6);
 
-#ifndef DYECMD
         static void fillNum(int x, int y,
                             const int width,
                             const int height,

@@ -244,7 +244,8 @@ bool AnimatedSprite::updateCurrentAnimation(const unsigned int time) restrict2
             {
                 for (size_t i = 0; i < mAnimation->getLength(); i ++)
                 {
-                    const Frame *restrict const frame = &mAnimation->mFrames[i];
+                    const Frame *restrict const frame =
+                        &mAnimation->mFrames[i];
                     if (frame->type == Frame::LABEL &&
                         mFrame->nextAction == frame->nextAction)
                     {

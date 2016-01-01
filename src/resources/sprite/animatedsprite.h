@@ -155,10 +155,14 @@ class AnimatedSprite final : public Sprite
         unsigned int mFrameIndex;      /**< The index of the current frame. */
         unsigned int mFrameTime;       /**< The time since start of frame. */
 
-        SpriteDef *restrict mSprite;            /**< The sprite definition. */
-        const Action *restrict mAction;         /**< The currently active action. */
-        const Animation *restrict mAnimation;   /**< The currently active animation. */
-        const Frame *restrict mFrame;           /**< The currently active frame. */
+        /**< The sprite definition. */
+        SpriteDef *restrict mSprite;
+        /**< The currently active action. */
+        const Action *restrict mAction;
+        /**< The currently active animation. */
+        const Animation *restrict mAnimation;
+        /**< The currently active frame. */
+        const Frame *restrict mFrame;
         unsigned mNumber;
         unsigned mNumber1;
         AnimationDelayLoad *mDelayLoad;

@@ -25,7 +25,6 @@
 
 #include "actions/actionfuncptr.h"
 
-#include "enums/input/inputgroup.h"
 #include "enums/input/inputtype.h"
 
 #include "enums/simpletypes/useargs.h"

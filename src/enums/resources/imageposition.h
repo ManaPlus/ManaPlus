@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ENUMS_RESOURCES_IMAGERECT_H
-#define ENUMS_RESOURCES_IMAGERECT_H
+#ifndef ENUMS_RESOURCES_IMAGEPOSIITON_H
+#define ENUMS_RESOURCES_IMAGEPOSIITON_H
 
 #include "localconsts.h"
 
@@ -58,4 +58,4 @@ namespace ImagePosition
     };
 }  // namespace imagePosition
 
-#endif  // ENUMS_RESOURCES_IMAGERECT_H
+#endif  // ENUMS_RESOURCES_IMAGEPOSIITON_H

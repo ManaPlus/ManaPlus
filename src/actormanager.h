@@ -23,11 +23,15 @@
 #ifndef ACTORMANAGER_H
 #define ACTORMANAGER_H
 
-#include "being/flooritem.h"
+#include "enums/being/actortype.h"
 
 #include "enums/simpletypes/allowsort.h"
 #include "enums/simpletypes/allplayers.h"
+#include "enums/simpletypes/beingid.h"
 #include "enums/simpletypes/beingtypeid.h"
+#include "enums/simpletypes/damaged.h"
+#include "enums/simpletypes/identified.h"
+#include "enums/simpletypes/itemcolor.h"
 #include "enums/simpletypes/npcnames.h"
 
 #include "listeners/configlistener.h"
@@ -35,9 +39,14 @@
 #include "utils/stringmap.h"
 #include "utils/stringvector.h"
 
+#include <list>
+#include <set>
+
 #include "localconsts.h"
 
+class ActorSprite;
 class Being;
+class FloorItem;
 class LocalPlayer;
 class Map;
 

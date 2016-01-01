@@ -24,6 +24,8 @@
 
 #include "actormanager.h"
 
+#include "being/flooritem.h"
+
 #include "net/messagein.h"
 
 #include "debug.h"

@@ -299,8 +299,10 @@ class Map final : public Properties, public ConfigListener
         const ObjectsLayer* getObjectsLayer() const restrict2 A_WARN_UNUSED
         { return mObjects; }
 
-        std::string getObjectData(const unsigned x, const unsigned y,
-                                  const int type) const restrict2 A_WARN_UNUSED;
+        std::string getObjectData(const unsigned x,
+                                  const unsigned y,
+                                  const int type) const
+                                  restrict2 A_WARN_UNUSED;
 
         void indexTilesets() restrict2;
 

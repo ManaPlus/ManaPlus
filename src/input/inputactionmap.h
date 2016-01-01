@@ -36,6 +36,7 @@
 #include "actions/windows.h"
 
 #include "enums/input/inputcondition.h"
+#include "enums/input/inputgroup.h"
 
 #include "input/inputactiondata.h"
 #include "input/inputmanager.h"

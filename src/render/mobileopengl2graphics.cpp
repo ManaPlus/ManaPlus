@@ -723,7 +723,8 @@ void MobileOpenGL2Graphics::drawTileCollection(const ImageCollection
     }
 }
 
-void MobileOpenGL2Graphics::calcPattern(ImageCollection *restrict const vertCol,
+void MobileOpenGL2Graphics::calcPattern(ImageCollection *restrict const
+                                        vertCol,
                                         const Image *restrict const image,
                                         const int x,
                                         const int y,

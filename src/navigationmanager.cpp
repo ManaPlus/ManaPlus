@@ -146,7 +146,6 @@ void NavigationManager::fillNum(int x, int y,
         }
     }
 }
-#endif
 
 bool NavigationManager::findWalkableTile(int &x1, int &y1,
                                          const int width,
@@ -170,3 +169,4 @@ bool NavigationManager::findWalkableTile(int &x1, int &y1,
     }
     return false;
 }
+#endif
