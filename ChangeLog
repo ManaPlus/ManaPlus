@@ -1,3 +1,8 @@
+2016-01-02 New release 1.6.1.2
+fix: sprites animation for just loaded sprites.
+fix: default beings walk mask.
+add: refactor some code.
+
 2015-12-19 New release 1.5.12.19
 fix: custom cursor in nacl.
 fix: render fallback.
