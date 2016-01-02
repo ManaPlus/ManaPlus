@@ -246,6 +246,7 @@ void Client::testsInit()
         Dirs::initLocalDataDir();
         Dirs::initTempDir();
         Dirs::initConfigDir();
+        GettextHelper::initLang();
     }
 }
 
@@ -376,6 +377,9 @@ void Client::gameInit()
     // Add the local data directory to PhysicsFS search path
     resourceManager->addToSearchPath(settings.localDataDir, Append_false);
     TranslationManager::loadCurrentLang();
+#ifdef ENABLE_CUSTOMNLS
+    TranslationManager::loadGettextLang();
+#endif
 
     WindowManager::initTitle();
 

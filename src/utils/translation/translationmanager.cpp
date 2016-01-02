@@ -44,6 +44,14 @@ void TranslationManager::loadCurrentLang()
     translator = loadLang(getLang(), "help/", translator);
 }
 
+#ifdef ENABLE_CUSTOMNLS
+void TranslationManager::loadGettextLang()
+{
+    delete mainTranslator;
+    mainTranslator = loadLang(getLang(), "manaplus/");
+}
+#endif
+
 void TranslationManager::close()
 {
     delete2(translator);

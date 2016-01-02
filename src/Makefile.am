@@ -18,6 +18,11 @@ dyecmd_CXXFLAGS += -DENABLE_PORTABLE
 manaplus_CXXFLAGS += -DENABLE_PORTABLE
 endif
 
+if ENABLE_CUSTOMNLS
+dyecmd_CXXFLAGS += -DENABLE_CUSTOMNLS
+manaplus_CXXFLAGS += -DENABLE_CUSTOMNLS
+endif
+
 if ENABLE_CHECKPLUGIN
 dyecmd_CXXFLAGS += -DENABLE_CHECKPLUGIN -fplugin=../build/checkplugin.so -fplugin-arg-checkplugin-command=detectnullpointers
 manaplus_CXXFLAGS += -DENABLE_CHECKPLUGIN -fplugin=../build/checkplugin.so -fplugin-arg-checkplugin-command=detectnullpointers

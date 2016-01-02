@@ -33,8 +33,10 @@
 #ifdef WIN32
 #include <string>
 extern "C" char const *_nl_locale_name_default(void);
-#endif
-#endif
+#endif  // WIN32
+#elif defined(ENABLE_CUSTOMNLS)
+#include "utils/translation/podict.h"
+#endif  // ENABLE_NLS
 
 #include "debug.h"
 
@@ -97,6 +99,8 @@ void GettextHelper::initLang()
     }
     bind_textdomain_codeset("manaplus", "UTF-8");
     textdomain("manaplus");
+#elif defined(ENABLE_CUSTOMNLS)
+    mainTranslator = new PoDict("en");
 #endif  // ENABLE_NLS
 }
 

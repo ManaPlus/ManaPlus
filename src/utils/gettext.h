@@ -34,12 +34,22 @@
 #define _(s) (const_cast <char*>(gettext(s)))
 #define N_(s) (const_cast <char*>(s))
 
-#else
+#elif defined(ENABLE_CUSTOMNLS)  // ENABLE_NLS
+
+#include "utils/translation/podict.h"
+
+#define gettext(s) const_cast <char*>(mainTranslator->getChar(s))
+#define _(s) const_cast <char*>(mainTranslator->getChar(s))
+#define N_(s) (const_cast <char*>(s))
+#define ngettext(s1, s2, i1) const_cast <char*>(mainTranslator->getChar(s1))
+
+#else  // ENABLE_NLS
+
 #define gettext(s) (const_cast <char*>(s))
 #define _(s) (const_cast <char*>(s))
 #define N_(s) (const_cast <char*>(s))
 #define ngettext(s1, s2, i1) (const_cast <char*>(s1))
 
-#endif
+#endif  // ENABLE_NLS
 
 #endif  // UTILS_GETTEXT_H

@@ -41,6 +41,10 @@ class TranslationManager final
 
         static void loadCurrentLang();
 
+#ifdef ENABLE_CUSTOMNLS
+        static void loadGettextLang();
+#endif
+
         static bool translateFile(const std::string &fileName,
                                   PoDict *const dict,
                                   StringVect &lines);

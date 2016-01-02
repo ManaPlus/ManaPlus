@@ -409,6 +409,17 @@ esac],[checkplugin_enabled=false])
 
 AM_CONDITIONAL(ENABLE_CHECKPLUGIN, test x$checkplugin_enabled = xtrue)
 
+# Enable custom NLS
+AC_ARG_ENABLE(customnls,
+[  --enable-customnls    Turn on build in translation system (NLS)],
+[case "${enableval}" in
+  yes) customnls_enabled=true ;;
+  no)  customnls_enabled=false ;;
+  *) AC_MSG_ERROR(bad value ${enableval} for --enable-customnls) ;;
+esac],[customnls_enabled=false])
+
+AM_CONDITIONAL(ENABLE_CUSTOMNLS, test x$customnls_enabled = xtrue)
+
 if test "x$naclbuild_enabled" == "xtrue"; then
     AC_CHECK_SDL()
 fi
