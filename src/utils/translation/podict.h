@@ -41,7 +41,9 @@ class PoDict final
 
         const char *getChar(const char *const str);
 
+#ifndef UNITTESTS
     protected:
+#endif
         friend class PoParser;
 
         PoMap *getMap()

@@ -1,4 +1,4 @@
-SUBDIRS = help
+SUBDIRS = help test
 
 translationsdir = $(pkgdatadir)/data/translations
 

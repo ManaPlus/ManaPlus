@@ -1,1 +1,1 @@
-ADD_SUBDIRECTORY(help)
+ADD_SUBDIRECTORY(help test)

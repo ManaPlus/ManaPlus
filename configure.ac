@@ -451,6 +451,7 @@ data/perserver/Makefile
 data/perserver/default/Makefile
 data/translations/Makefile
 data/translations/help/Makefile
+data/translations/test/Makefile
 docs/Makefile
 po/Makefile.in
 ])
