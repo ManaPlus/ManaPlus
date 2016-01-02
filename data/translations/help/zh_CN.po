@@ -9,9 +9,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2015-02-08 11:59+0000\n"
+"PO-Revision-Date: 2016-01-02 11:55+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
-"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/manaplus/language/zh_CN/)\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/akaras/manaplus/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -28,10 +28,10 @@ msgid "/atkhuman - select and attack nearest player."
 msgstr "/atkhuman - 选择并攻击最近的玩家."
 
 msgid "\"Outfit shortcut 12\""
-msgstr ""
+msgstr "装备快捷键12"
 
 msgid "/cacheinfo - show text cache info."
-msgstr "/cacheinfo —— 显示文本缓存信息."
+msgstr "/cacheinfo - 显示文本缓存信息."
 
 msgid ""
 "You can imitate other players by selecting \"imitation\" in player context menu\n"
@@ -44,25 +44,25 @@ msgid ""
 msgstr ""
 
 msgid "\"Emote shortcut 9\""
-msgstr ""
+msgstr "表情快捷键9"
 
 msgid "/addignoreattack NAME - add monster to ignore attack list."
-msgstr "/addignoreattact 怪物名称 - 将怪物加入到非攻击列表中."
+msgstr "/addignoreattact 名称 - 将目标加入到非攻击列表中."
 
 msgid "Back to Index"
-msgstr "退回到索引"
+msgstr "回到目录"
 
 msgid "\"Quests window\""
-msgstr ""
+msgstr "任务窗口"
 
 msgid "/firehomunculus - fire homunculus."
 msgstr ""
 
 msgid "\"Quick drop window\""
-msgstr ""
+msgstr "快速丢弃窗口"
 
 msgid "Official site:"
-msgstr ""
+msgstr "官方网站:"
 
 msgid ""
 " You can improve your skills by increasing job level. Each job level\n"
@@ -70,43 +70,43 @@ msgid ""
 msgstr " 你可以通过提升工作等级来增强你的技能.\n 每级工作等级给你 1 点用于增强基本技能."
 
 msgid "\"Emote shortcut 10\""
-msgstr ""
+msgstr "表情快捷键10"
 
 msgid "Content devs"
 msgstr ""
 
 msgid "Guild chat commands"
-msgstr ""
+msgstr "工会聊天指令"
 
 msgid "/away, /away MSG - set away mode."
-msgstr ""
+msgstr "/away, /away 文本 - 设定暂离状态."
 
 msgid "GM"
 msgstr ""
 
 msgid "/addattack NAME - add monster to attack list."
-msgstr "/addattack 名称 —— 将怪兽加入攻击列表."
+msgstr "/addattack 名称 - 将目标加入攻击列表."
 
 msgid "\"Emote shortcut 2\""
-msgstr ""
+msgstr "\"表情快捷键2\""
 
 msgid "/announce MESSAGE - show global message."
-msgstr ""
+msgstr "/announce 文本 - 发送公告."
 
 msgid "/serverunignoreall - unignore all whispers on server side."
-msgstr "/serverunignoreall —— 在服务器端取消忽视所有私信."
+msgstr "/serverunignoreall - 取消在服务器端忽视所有私信."
 
 msgid "/createparty NAME - create party with selected name."
-msgstr "/createparty 名称 —— 创建帮会."
+msgstr "/createparty 名称 — 创建团队."
 
 msgid "/heal NICK - heal nick."
-msgstr "/heal 昵称 —— 治疗昵称."
+msgstr "/heal 名称 — 治疗目标."
 
 msgid "\"Select OK\""
-msgstr ""
+msgstr "\"选择确定\""
 
 msgid "/dumpe - dump environment variables into chat."
-msgstr ""
+msgstr "/dumpe - 查看环境变量."
 
 msgid ""
 "If client working very slow, you can improve speed\n"
@@ -114,7 +114,7 @@ msgid ""
 msgstr ""
 
 msgid "\"Enable/disable trading\""
-msgstr ""
+msgstr "启用/禁用 交易"
 
 msgid "/wait NAME - wait for nick or moster with name."
 msgstr ""
@@ -123,19 +123,19 @@ msgid "##2Trade:##9 enables the ability to trade with others."
 msgstr ""
 
 msgid "\"Use magic attack\""
-msgstr ""
+msgstr "\"使用魔法攻击\""
 
 msgid "\"Who is online window\""
-msgstr ""
+msgstr "查看在线玩家"
 
 msgid "\"Switch pvp attack\""
-msgstr ""
+msgstr "\"切换PVP状态\""
 
 msgid "\"Deactivate chat input\""
-msgstr ""
+msgstr "\"禁用聊天输入\""
 
 msgid "\"Move to navigation point\""
-msgstr ""
+msgstr "\"移动至导航点\""
 
 msgid "ManaPlus Contributors"
 msgstr "ManaPlus 贡献者"
@@ -151,13 +151,13 @@ msgid "ABOUT MANAPLUS"
 msgstr "关于 MANAPLUS"
 
 msgid "/pseudoaway, /pseudoaway MSG - set/unset pseudo away mode."
-msgstr ""
+msgstr "/pseudoaway, /pseudoaway 文本 - 设定假离状态."
 
 msgid "Other contributors"
 msgstr "其他贡献者"
 
 msgid "\"Item shortcuts Key\""
-msgstr ""
+msgstr "物品快捷键"
 
 msgid ""
 "Communication is often essential to success in this game. You can communicate\n"
@@ -166,26 +166,26 @@ msgid ""
 msgstr "在这个游戏中交流通常是成功必需的。你可以通过多种方式交流：通过聊天和使用表情(参考上面)，通过交易(使用右键菜单)，以及使用私信."
 
 msgid "\"Item shortcut 3\""
-msgstr ""
+msgstr "物品快捷键3"
 
 msgid "\"Change move type\""
-msgstr ""
+msgstr "\"更改移动类型\""
 
 msgid "Tabs"
-msgstr ""
+msgstr "标签页"
 
 msgid "\"Outfit shortcut 4\""
-msgstr ""
+msgstr "装备快捷键4"
 
 msgid "\"Did you know window\""
-msgstr ""
+msgstr "你知道吗?"
 
 msgid ""
 "/mail NICK MSG - send offline message to NICK. Working only in tmw server."
-msgstr ""
+msgstr "/mail 名称 文本 - 向目标发送离线消息,仅支持TMW服务器."
 
 msgid "Download"
-msgstr ""
+msgstr "下载"
 
 msgid "/dropn - drop N items from any slot."
 msgstr ""
@@ -200,39 +200,39 @@ msgid "\"Copy equiped to Outfit\""
 msgstr ""
 
 msgid "/outfit next - wear next outfit."
-msgstr ""
+msgstr "/outfit next - 穿戴后一个装备."
 
 msgid "\"Outfit shortcut 3\""
-msgstr ""
+msgstr "装备快捷键3"
 
 msgid "\"Quick drop N items\""
-msgstr ""
+msgstr "\"快速丢弃物品N\""
 
 msgid ""
 "/msg NICK text, /whisper NICK text, /w NICK text - send whisper message to "
 "nick."
-msgstr ""
+msgstr "/msg 名称 文本, /whisper 名称 文本, /w 名称 文本 - 向目标发送私聊信息."
 
 msgid "/movetotarget - move to target position."
-msgstr ""
+msgstr "/movetotarget - 移动至目标位置."
 
 msgid "/catchpet - try to catch pet."
-msgstr ""
+msgstr "/catchpet - 尝试捉起宠物."
 
 msgid "/outfit prev - wear previous outfit."
-msgstr ""
+msgstr "/outfit prev - 穿戴前一个装备."
 
 msgid "##2Party level2:##9 enables a char to create a party."
 msgstr ""
 
 msgid "/target NICK - select nick as target. Can be monster or player nick."
-msgstr ""
+msgstr "/target 名称 - 选向目标,可以是怪物或玩家."
 
 msgid "##2ManaPlus version: ##6%VER%"
 msgstr ""
 
 msgid "COMMANDS"
-msgstr "命令"
+msgstr "指令"
 
 msgid "For other server look servers pages for support."
 msgstr "对于其它的服务器，请查阅服务器的网页获取支持."
@@ -244,34 +244,34 @@ msgid "/talkpet TEXT - talk from your pet."
 msgstr ""
 
 msgid "\"Change attack type\""
-msgstr ""
+msgstr "\"更改攻击类型\""
 
 msgid "Manaplus Developers"
 msgstr "Manaplus 开发者"
 
 msgid "\"On / off audio\""
-msgstr ""
+msgstr "\"开启/关闭音频\""
 
 msgid "You can change any key in keyboard settings."
 msgstr ""
 
 msgid "\"Previous chat tab line\""
-msgstr ""
+msgstr "\"上一个标签行\""
 
 msgid "\"Emote shortcut 13\""
-msgstr ""
+msgstr "\"表情快捷键13\""
 
 msgid "/disregard NICK - add nick to disregarded list."
 msgstr ""
 
 msgid "/enablehighlight - enable highlight in current tab."
-msgstr ""
+msgstr "/enablehighlight - 启用当前标签页高亮."
 
 msgid "/disableaway - disable away messages in current tab."
 msgstr ""
 
 msgid "\"Smilie\""
-msgstr ""
+msgstr "\"微笑\""
 
 msgid "Main development"
 msgstr ""
@@ -286,7 +286,7 @@ msgid "Search string not found."
 msgstr ""
 
 msgid "\"Emote shortcut 7\""
-msgstr ""
+msgstr "表情快捷键7"
 
 msgid ""
 "You can set any client resolution. In settings in video tab,\n"
@@ -297,13 +297,13 @@ msgid "/attack - attack target."
 msgstr "/attack - 攻击目标."
 
 msgid "\"Set home location/set arrow\""
-msgstr ""
+msgstr "\"设置居所坐标/设置方向\""
 
 msgid "\"Set direction left\""
-msgstr ""
+msgstr "\"设置左方\""
 
 msgid "\"Equipment window\""
-msgstr ""
+msgstr "装备窗口"
 
 msgid ""
 " To add an item to the shortcut bar click on the item in the inventory window,\n"
@@ -314,22 +314,22 @@ msgid ""
 msgstr ""
 
 msgid "/dumpt - dump tests info into chat."
-msgstr ""
+msgstr "/dumpt - 查看测试信息."
 
 msgid "Different patches"
 msgstr ""
 
 msgid "Sound effects"
-msgstr ""
+msgstr "音响效果"
 
 msgid "\"Talk\""
-msgstr ""
+msgstr "\"谈话\""
 
 msgid "\"Item shortcut 8\""
-msgstr ""
+msgstr "物品快捷键8"
 
 msgid "/all - show visible beings list in debug tab."
-msgstr "/all —— 将可见之物显于调试页."
+msgstr "/all - 在调试标签页中查看可见生物."
 
 msgid ""
 "Most commands working in whispers.\n"
@@ -341,7 +341,7 @@ msgid "\"Ignore input 1\""
 msgstr ""
 
 msgid "\"Item shortcut 6\""
-msgstr ""
+msgstr "\"物品快捷键6\""
 
 msgid ""
 " If you're having troubles, please first of all read the FAQ. If you\n"
@@ -350,13 +350,13 @@ msgid ""
 msgstr ""
 
 msgid "/help - show this help."
-msgstr ""
+msgstr "/help - 显示帮助."
 
 msgid "\"Outfit shortcut 7\""
-msgstr ""
+msgstr "\"装备快捷键7\""
 
 msgid "/addpriorityattack NAME - add monster to priority attack list."
-msgstr "/addpriorityattack 名称 —— 将怪兽加入优先攻击列表."
+msgstr "/addpriorityattack 名称 - 添加目标至优先攻击列表."
 
 msgid "For TMW support:"
 msgstr ""
@@ -370,16 +370,16 @@ msgid ""
 msgstr ""
 
 msgid "\"Item shortcut 13\""
-msgstr ""
+msgstr "\"物品快捷键13\""
 
 msgid "For other servers may exists other copyrights."
 msgstr ""
 
 msgid "\"Change crazy Move mode\""
-msgstr ""
+msgstr "\"更改狂暴移动类型\""
 
 msgid "/sethome - set home position."
-msgstr ""
+msgstr "/sethome - 设置居所位置."
 
 msgid ""
 " - ##2allow whispers##9: Do you wish to allow arbitrary players to send\n"
@@ -390,16 +390,16 @@ msgid "\"Copy outfit\""
 msgstr ""
 
 msgid "/present - print visible players number to chat."
-msgstr ""
+msgstr "/present - 查看可见玩家."
 
 msgid "/dumpogl - dump all OpenGL variables into log file."
-msgstr ""
+msgstr "/dumpogl - 输出所有OpenGL变量至日志文件."
 
 msgid "Contributors to client development"
 msgstr "客户端开发贡献者"
 
 msgid "/gm MESSAGE - send message to all online gms."
-msgstr ""
+msgstr "/gm 文本 - 向在线管理发送信息."
 
 msgid ""
 "You can do basic searching in help by using command\n"
@@ -412,7 +412,7 @@ msgid ""
 msgstr ""
 
 msgid "/unignore NICK - Remove nick from ignore list."
-msgstr "/unignore 昵称 —— 将昵称从忽视列表移除."
+msgstr "/unignore 名称 - 取消忽略目标信息."
 
 msgid ""
 "You can restore yellow bar settings,\n"
@@ -420,16 +420,16 @@ msgid ""
 msgstr "你可以通过右键点击并选择“重置黄色栏”来重置黄色栏."
 
 msgid "\"Emote shortcut 3\""
-msgstr ""
+msgstr "\"表情快捷键3\""
 
 msgid "/dumpg - dump graphics and some other settings to chat."
-msgstr "/dumpg 将图像和其他设定输出到聊天框中."
+msgstr "/dumpg - 查看图像和一些其他设定."
 
 msgid "/trade NICK - start trade with nick."
-msgstr "/trade 昵称 -- 与对应的人物进行交易."
+msgstr "/trade 名称 - 与目标进行交易."
 
 msgid "\"Switch magic attack\""
-msgstr ""
+msgstr "\"切换魔法攻击状态\""
 
 msgid ""
 "You can hide/show bars and buttons by right click and select menu item."
@@ -439,10 +439,10 @@ msgid "/petmoveleft - move pet one tile left."
 msgstr ""
 
 msgid "\"Enable / disable away mode\""
-msgstr ""
+msgstr "\"开启/停止暂离状态\""
 
 msgid "\"Commands window\""
-msgstr ""
+msgstr "\"指令窗口\""
 
 msgid "Android porting"
 msgstr ""
@@ -456,28 +456,28 @@ msgid "Magic skills:"
 msgstr "魔法技能:"
 
 msgid "Server news"
-msgstr ""
+msgstr "服务器新闻"
 
 msgid "/clear - clear current chat tab."
-msgstr "/clear - 清楚当前的聊天项."
+msgstr "/clear - 清除当前标签页."
 
 msgid "\"Social window\""
-msgstr ""
+msgstr "社交窗口"
 
 msgid "\"Emote shortcut 4\""
-msgstr ""
+msgstr "表情快捷键4"
 
 msgid "\"Close chat tab\""
-msgstr ""
+msgstr "\"关闭标签页\""
 
 msgid "/petdirectright - rorate pet right."
 msgstr ""
 
 msgid "\"Target player\""
-msgstr ""
+msgstr "\"选向玩家\""
 
 msgid "/invite NICK - invite a player to your party."
-msgstr ""
+msgstr "/invite 名称 - 邀请目标加入你的团队."
 
 msgid ""
 " - ##2disregarded##9:  You wish to disregard this player, meaning that his or\n"
@@ -486,43 +486,43 @@ msgid ""
 msgstr ""
 
 msgid "\"Debug window\""
-msgstr ""
+msgstr "\"调试窗口\""
 
 msgid "\"Next chat tab\""
-msgstr ""
+msgstr "\"下一个标签页\""
 
 msgid "\"Change move to target type\""
-msgstr ""
+msgstr "\"更改移动至目标的类型\""
 
 msgid "\"Pickup\""
-msgstr ""
+msgstr "\"拾起\""
 
 msgid "\"Item shortcut 2\""
-msgstr ""
+msgstr "\"物品快捷键2\""
 
 msgid "About current server"
-msgstr ""
+msgstr "关于当前服务器"
 
 msgid "/petaistop - disable pet ai."
-msgstr ""
+msgstr "/petaistop - 关闭宠物智能."
 
 msgid "\"Quick heal target or self\""
-msgstr ""
+msgstr "\"快速治疗目标或自己\""
 
 msgid "Search error"
 msgstr ""
 
 msgid "/targetpet - target pet."
-msgstr ""
+msgstr "/targetpet - 选向宠物."
 
 msgid "\"Outfit shortcut 9\""
-msgstr ""
+msgstr "\"装备快捷键9\""
 
 msgid "\"Change attack weapon type\""
-msgstr ""
+msgstr "\"更改攻击时武器类型\""
 
 msgid "\"Move left\""
-msgstr ""
+msgstr "\"向左移动\""
 
 msgid ""
 "##9 This file lists all contributors up to the current release. Check the wiki\n"
@@ -530,19 +530,19 @@ msgid ""
 msgstr ""
 
 msgid "\"Chat window\""
-msgstr ""
+msgstr "聊天窗口"
 
 msgid "/closeall - close all whispers."
-msgstr ""
+msgstr "/closeall - 关闭所有私聊."
 
 msgid "\"Previous chat tab\""
-msgstr ""
+msgstr "\"上一个标签页\""
 
 msgid "\"Kills stats window\""
-msgstr ""
+msgstr "\"击杀状态窗口\""
 
 msgid "\"Outfit shortcut 2\""
-msgstr ""
+msgstr "\"装备快捷键2\""
 
 msgid "IGNORING COMMUNICATION"
 msgstr "正在忽略交流"
@@ -551,61 +551,61 @@ msgid "Powered By"
 msgstr ""
 
 msgid "Other"
-msgstr ""
+msgstr "其他"
 
 msgid "\"Outfit shortcut 14\""
-msgstr ""
+msgstr "\"装备快捷键14\""
 
 msgid "\"Emote shortcut window\""
-msgstr ""
+msgstr "\"表情快捷键窗口\""
 
 msgid "\"Wear outfit\""
-msgstr ""
+msgstr "\"穿戴装备\""
 
 msgid "\"Change map view mode\""
-msgstr ""
+msgstr "\"更改地图显示类型\""
 
 msgid "Instructions"
 msgstr ""
 
 msgid "\"Emote shortcut 12\""
-msgstr ""
+msgstr "\"表情快捷键12\""
 
 msgid "About The Mana World"
-msgstr ""
+msgstr "关于The Mana World"
 
 msgid "/serverignoreall - ignore all whispers on server side."
-msgstr "/serverignoreall - 在服务器端忽视所有私信."
+msgstr "/serverignoreall - 在服务器端忽视所有私聊."
 
 msgid "/notice TEXT - set notice guild text."
-msgstr ""
+msgstr "/notice 文本 - 设置工会公告."
 
 msgid "\"Sit\""
-msgstr ""
+msgstr "\"坐下\""
 
 msgid "/navigate x y - move to position x,y in current map in any distance."
-msgstr ""
+msgstr "/navigate x y - 移动至当前地图的坐标(x,y)."
 
 msgid "SKILLS"
-msgstr ""
+msgstr "技能"
 
 msgid "Actions"
-msgstr ""
+msgstr "动作"
 
 msgid "To type chat message, press ###keyChat;"
 msgstr ""
 
 msgid "/item 0 - disable party item sharing options."
-msgstr ""
+msgstr "/item 0 - 关闭团队物品共享选项."
 
 msgid "\"Target closest monster\""
-msgstr ""
+msgstr "\"选向最近的怪物\""
 
 msgid "\"Outfits window\""
-msgstr ""
+msgstr "\"服装窗口\""
 
 msgid "Party chat commands"
-msgstr ""
+msgstr "团队聊天指令"
 
 msgid ""
 "You can walk to warps automatically.\n"
@@ -624,19 +624,19 @@ msgid ""
 msgstr ""
 
 msgid "\"Screenshot\""
-msgstr ""
+msgstr "\"截图\""
 
 msgid "\"Change follow mode\""
-msgstr ""
+msgstr "\"更改跟随模式\""
 
 msgid "Mana Contributors"
 msgstr "Mana 贡献者"
 
 msgid "/query NICK, /q NICK - open new whisper tab for nick."
-msgstr "/query 昵称，/q 昵称 —— 为昵称创建新的私信标签页."
+msgstr "/query 名称,/q 名称 - 为目标创建新的私聊标签页."
 
 msgid "\"Item shortcut 5\""
-msgstr ""
+msgstr "物品快捷键5"
 
 msgid "\"Scroll chat up\""
 msgstr ""
@@ -649,7 +649,7 @@ msgid ""
 msgstr ""
 
 msgid "\"Outfit shortcut 6\""
-msgstr ""
+msgstr "装备快捷键6"
 
 msgid "Visit IRC channel:"
 msgstr "访问 IRC 频道:"
@@ -658,28 +658,28 @@ msgid "/petdirectup - rotate pet up."
 msgstr ""
 
 msgid "\"Target & attack\""
-msgstr ""
+msgstr "\"瞄准与攻击\""
 
 msgid "\"Item shortcut 10\""
-msgstr ""
+msgstr "物品快捷键10"
 
 msgid "/where - print current player position to chat."
-msgstr "/where —— 显示玩家当前的位置."
+msgstr "/where - 显示玩家当前的位置."
 
 msgid "/exp - show party experience sharing options."
-msgstr ""
+msgstr "/exp - 查看团队经验共享选项."
 
 msgid "/dumpmods - dump all enabled mod names into chat."
-msgstr ""
+msgstr "/dumpmods - 查看所有使用中的模块."
 
 msgid "INDEX"
 msgstr "索引"
 
 msgid "\"Outfit shortcut 10\""
-msgstr ""
+msgstr "\"装备快捷键10\""
 
 msgid "\"Crazy moves\""
-msgstr ""
+msgstr "\"暴走\""
 
 msgid ""
 " - ##2save player list##9: Should your acquaintance list be saved when you\n"
@@ -688,7 +688,7 @@ msgid ""
 msgstr ""
 
 msgid "/uptime - show client uptime."
-msgstr "/uptime —— 显示客户端在线时间."
+msgstr "/uptime - 查看客户端在线时间."
 
 msgid "/imitation NICK - start imitation mode."
 msgstr "/imitation 昵称 -- 开启模仿模式."
@@ -700,25 +700,25 @@ msgid "\"Scroll chat down\""
 msgstr ""
 
 msgid "\"Move to target\""
-msgstr ""
+msgstr "\"移动至目标位置\""
 
 msgid "/ignoreall - add all whispers to ignore list."
-msgstr "/ignoreall --忽略所有私信."
+msgstr "/ignoreall - 忽略所有私聊."
 
 msgid "\"Chat auto complete\""
-msgstr ""
+msgstr "单词自动完成"
 
 msgid "/ignore NICK - add nick to ignore list."
-msgstr "/ignore 昵称 -- 忽略某个人的信息."
+msgstr "/ignore 名称 - 忽略目标信息."
 
 msgid "/targetmercenary - target closest mercenary."
-msgstr ""
+msgstr "/targetmercenary - 选向最近的佣兵."
 
 msgid "\"Attack\""
-msgstr ""
+msgstr "\"攻击\""
 
 msgid "/magicattack - attack target with magic."
-msgstr ""
+msgstr "/magicattack - 使用魔法攻击目标."
 
 msgid "/petdirectdown - rotate pet down."
 msgstr ""
@@ -730,16 +730,16 @@ msgid "/petdirectleft - rotate pet left."
 msgstr ""
 
 msgid "\"Set direction right\""
-msgstr ""
+msgstr "\"设置右方\""
 
 msgid "Other linux:"
 msgstr ""
 
 msgid "DOWNLOADS"
-msgstr ""
+msgstr "下载"
 
 msgid "/item 1 - enable party item sharing options."
-msgstr ""
+msgstr "/item 1 - 启用团队物品共享选项."
 
 msgid "##9Magic skills can be obtain by doing quests and missions in game."
 msgstr ""
@@ -754,25 +754,25 @@ msgid "Search results"
 msgstr ""
 
 msgid "\"Inventory window\""
-msgstr ""
+msgstr "\"物品栏窗口\""
 
 msgid "\"Change pickup type\""
-msgstr ""
+msgstr "\"更改拾取类型\""
 
 msgid "/item - show party item sharing options."
-msgstr ""
+msgstr "/item - 查看团队物品共享选项."
 
 msgid "move key"
-msgstr ""
+msgstr "移动键"
 
 msgid "\"Emote shortcut 5\""
-msgstr ""
+msgstr "\"表情快捷键5\""
 
 msgid "/petmoveright - move pet one tile right."
 msgstr ""
 
 msgid "/open URL - open url in browser."
-msgstr ""
+msgstr "/open 网址 - 在浏览器中断开."
 
 msgid ""
 " The player list lists all of your acquaintances.  They are categorised as one\n"
@@ -780,10 +780,10 @@ msgid ""
 msgstr ""
 
 msgid "/cleanfonts - remove all cached render strings."
-msgstr ""
+msgstr "/cleanfonts - 清除文字缓存."
 
 msgid "/dumpgl - dump OpenGL version into chat."
-msgstr ""
+msgstr "/dumpgl - 查看OpenGL版本."
 
 msgid "MOUSE:"
 msgstr "鼠标:"
@@ -800,25 +800,25 @@ msgid ""
 msgstr ""
 
 msgid "\"Item shortcut 14\""
-msgstr ""
+msgstr "\"物品快捷键14\""
 
 msgid "/outfit N - wear outfit number N."
-msgstr ""
+msgstr "/outfit N - 穿戴装备N."
 
 msgid "/dirs - show client dirs in debug chat tab."
-msgstr ""
+msgstr "/dirs - 在调试标签页中查看客户端目录."
 
 msgid "/movetohome - move to home position."
-msgstr ""
+msgstr "/movetohome - 回家."
 
 msgid "\"Switch quick drop counter\""
 msgstr ""
 
 msgid "\"Outfit shortcut 13\""
-msgstr ""
+msgstr "\"装备快捷键13\""
 
 msgid "\"Outfit shortcut 8\""
-msgstr ""
+msgstr "\"装备快捷键8\""
 
 msgid "\"Change imitation mode\""
 msgstr ""
@@ -845,16 +845,16 @@ msgid ""
 msgstr ""
 
 msgid "/petaistart - enable pet ai."
-msgstr ""
+msgstr "/petaistart - 启动宠物智能."
 
 msgid "/url URL - insert url into chat."
-msgstr ""
+msgstr "/url 网址 - 在聊天窗中插入网址."
 
 msgid "\"Help window\""
-msgstr ""
+msgstr "\"帮助窗口\""
 
 msgid "\"Outfit shortcut 1\""
-msgstr ""
+msgstr "\"装备快捷键1\""
 
 msgid ""
 " You may find that not all communication is to your liking.  While most people\n"
@@ -866,7 +866,7 @@ msgid "About"
 msgstr "关于"
 
 msgid "\"Outfit shortcut 15\""
-msgstr ""
+msgstr "\"装备快捷键15\""
 
 msgid "\"Move right\""
 msgstr ""
@@ -875,13 +875,13 @@ msgid "##2Emote:##9 enables the ability to express emotions."
 msgstr ""
 
 msgid "\"Emote shortcut 8\""
-msgstr ""
+msgstr "\"表情快捷键8\""
 
 msgid "For Evol Online support:"
 msgstr ""
 
 msgid "/follow NICK - start follow mode."
-msgstr ""
+msgstr "/follow 名称 - 追随目标移动."
 
 msgid "To read about whispering and other chat commands, look here:"
 msgstr "关于私信以及其他聊天命令请看这里:"
@@ -893,13 +893,13 @@ msgid ""
 msgstr ""
 
 msgid "\"Emote shortcut 11\""
-msgstr ""
+msgstr "表情快捷键11"
 
 msgid "/petmoveup - move pet one tile up."
 msgstr ""
 
 msgid "Pets"
-msgstr ""
+msgstr "宠物"
 
 msgid "\"Set direction down\""
 msgstr ""
@@ -908,19 +908,19 @@ msgid "\"Target NPC\""
 msgstr ""
 
 msgid "/info - show guild info. Only for native guilds only."
-msgstr ""
+msgstr "/info - 查看工会信息,仅适用于当地工会."
 
 msgid "/neutral NICK - add nick to neutral relation list."
-msgstr "/neutral 昵称 —— 将昵称加入中立列表."
+msgstr "/neutral 名称 - 添加目标至中立列表."
 
 msgid "THE PLAYER LIST"
 msgstr "玩家列表"
 
 msgid "\"Item shortcut window\""
-msgstr ""
+msgstr "\"物品快捷键窗口\""
 
 msgid "\"Emote shortcut 1\""
-msgstr ""
+msgstr "\"表情快捷键1\""
 
 msgid ""
 " - ##2ignored##9:  You wish to completely ignore this player.  You will not\n"
@@ -928,28 +928,28 @@ msgid ""
 msgstr ""
 
 msgid "/me text - send text to chat as /me command in irc."
-msgstr "/me 文本 —— 将文本作为 /me 命令发送."
+msgstr "/me 文本 - 将文本作为 /me 命令发送."
 
 msgid "/help - show small help about chat commands. "
-msgstr ""
+msgstr "/help - 显示一部分关于聊天指令的帮助. "
 
 msgid "Debug"
 msgstr "调试"
 
 msgid "/setdrop N - set drop counter to requested value."
-msgstr "/setdrop 数目 —— 将丢弃数设为指定值."
+msgstr "/setdrop 数目 —— 设置默认丢弃量."
 
 msgid "\"Shop window\""
-msgstr ""
+msgstr "\"商店窗口\""
 
 msgid "\"Move down\""
 msgstr ""
 
 msgid "\"Setup window\""
-msgstr ""
+msgstr "\"设置窗口\""
 
 msgid "/removeattack NAME - remove monster from attack list."
-msgstr "/removeattach 名称 —— 将怪物从攻击列表移除."
+msgstr "/removeattach 名称 - 在攻击列表中移除目标."
 
 msgid "\"Set direction up\""
 msgstr ""
@@ -992,19 +992,19 @@ msgid "Here contributors from parent projects"
 msgstr ""
 
 msgid "\"Item shortcut 4\""
-msgstr ""
+msgstr "\"物品快捷键4\""
 
 msgid "/who - print online players number to chat."
-msgstr "/who —— 显示在线玩家数."
+msgstr "/who - 查看在线玩家."
 
 msgid "/createitems - open dialog for creating items."
-msgstr ""
+msgstr "/createitems - 开启制作窗口."
 
 msgid "##2Party Level1:##9 enables a char to join a party."
 msgstr ""
 
 msgid "\"Outfit shortcut 5\""
-msgstr ""
+msgstr "\"装备快捷键5\""
 
 msgid "KEYBOARD:"
 msgstr "键盘:"
@@ -1021,11 +1021,11 @@ msgid ""
 msgstr ""
 
 msgid "\"Item shortcut 11\""
-msgstr ""
+msgstr "\"物品快捷键11\""
 
 msgid ""
 "/cleangraphics - remove all cached graphics. Useful for content developers."
-msgstr ""
+msgstr "/cleangraphics - 清除图形缓存,用于开发者."
 
 msgid "\"Emulate right click from keyboard\""
 msgstr ""
@@ -1042,25 +1042,25 @@ msgid "/drop - drop N items from 0 slot."
 msgstr ""
 
 msgid "/kick NICK - kick someone from the party you are in."
-msgstr ""
+msgstr "/kick 名称 - 将目标踢出你的团队."
 
 msgid "\"Outfit shortcut 11\""
-msgstr ""
+msgstr "\"装备快捷键11\""
 
 msgid "\"Disable / enable game modifier keys\""
-msgstr ""
+msgstr "\"启用/禁用组合键\""
 
 msgid "\"Quit\""
-msgstr ""
+msgstr "\"退出\""
 
 msgid "/move X Y - move to X,Y position in short distance."
 msgstr "/move X Y - 短距离内移动到 X,Y 位置."
 
 msgid "Themes:"
-msgstr ""
+msgstr "主题:"
 
 msgid "\"Hide windows\""
-msgstr ""
+msgstr "\"隐藏窗口\""
 
 msgid "Chat commands"
 msgstr "聊天命令"
@@ -1069,13 +1069,13 @@ msgid "Trade"
 msgstr "交易"
 
 msgid "/blacklist NICK - add nick to blacklist relation list."
-msgstr "/blacklist 昵称 - 将昵称加入到黑名单列表."
+msgstr "/blacklist 名称 - 添加目标至黑名单."
 
 msgid "Art or images contributors"
 msgstr ""
 
 msgid "/exp 0 - disable party experience sharing options."
-msgstr ""
+msgstr "/exp 0 -关闭团队经验共享选项."
 
 msgid "Basic skills:"
 msgstr "基本技能:"
@@ -1084,13 +1084,13 @@ msgid "/uploadlog - upload log into pastebin service."
 msgstr ""
 
 msgid "/leave - leave the party you are in."
-msgstr ""
+msgstr "/leave - 离开队伍."
 
 msgid "/petmovedown - move pet one tile down."
 msgstr ""
 
 msgid "\"Status window\""
-msgstr ""
+msgstr "\"状态窗口\""
 
 msgid ""
 "##2               SDL, SDL_image, SDL_mixer (Media framework)\n"
@@ -1103,19 +1103,19 @@ msgid ""
 msgstr ""
 
 msgid "/friend NICK, /befriend NICK - add nick to friends list."
-msgstr ""
+msgstr "/friend 名称, /befriend 名称 - 添加目标为好友."
 
 msgid "ABOUT THE MANA WORLD"
 msgstr ""
 
 msgid "\"Emote shortcut 14\""
-msgstr ""
+msgstr "\"表情快捷键14\""
 
 msgid "Commands"
-msgstr ""
+msgstr "指令"
 
 msgid "\"Stop Attack\""
-msgstr ""
+msgstr "\"停止攻击\""
 
 msgid "Contributors to client/server development"
 msgstr ""
@@ -1124,16 +1124,16 @@ msgid "Sources:"
 msgstr ""
 
 msgid "/emote N - use emotion number N."
-msgstr ""
+msgstr "/emote N -使用N号表情."
 
 msgid "Translators"
 msgstr "译者"
 
 msgid "\"Next chat tab line\""
-msgstr ""
+msgstr "\"下一个标签行\""
 
 msgid "\"Move to home location\""
-msgstr ""
+msgstr "\"回家\""
 
 msgid "/sethomunname NAME - set homunculus name."
 msgstr ""
@@ -1142,28 +1142,28 @@ msgid "Website: @@http://manaplus.org/|http://manaplus.org/@@"
 msgstr ""
 
 msgid "\"Skill window\""
-msgstr ""
+msgstr "\"技能窗口\""
 
 msgid "\"Emote shortcut 6\""
-msgstr ""
+msgstr "\"表情快捷键6\""
 
 msgid "/disconnect - quick disconnect from server."
-msgstr ""
+msgstr "/disconnect - 从服务器中断开连接."
 
 msgid "/enemy NICK - add nick to enemies list."
-msgstr ""
+msgstr "/enemy 名称 - 添加目标到敌人列表."
 
 msgid "\"Item shortcut 1\""
-msgstr ""
+msgstr "\"物品快捷键1\""
 
 msgid "\"Use #itenplz spell\""
 msgstr ""
 
 msgid "/exp 1 - enable party experience sharing options."
-msgstr ""
+msgstr "/exp 1 -启用团队经验共享选项."
 
 msgid "/undress NICK - remove all clothes from nick. Local effect only."
-msgstr ""
+msgstr "/undress 名称 - 为目标褪去所有衣物.仅本地有效."
 
 msgid "\"Quick drop N items from 0 slot\""
 msgstr ""
@@ -1172,25 +1172,25 @@ msgid "/mercenaryfire - fire mercenary."
 msgstr ""
 
 msgid "/disablehighlight - disable highlight in current tab."
-msgstr ""
+msgstr "/disablehighlight - 禁用当前标签页高亮."
 
 msgid "\"Item shortcut 15\""
-msgstr ""
+msgstr "\"物品快捷键15\""
 
 msgid "Whispers commands"
-msgstr ""
+msgstr "私聊指令"
 
 msgid "/setpetname NAME - set new pet name."
-msgstr ""
+msgstr "/setpetname <名称> - 给宠物新的称呼."
 
 msgid "Whispers"
-msgstr ""
+msgstr "私聊"
 
 msgid "emote key"
-msgstr ""
+msgstr "表情键"
 
 msgid "\"Item shortcut 9\""
-msgstr ""
+msgstr "\"物品快捷键9\""
 
 msgid ""
 " There you will find a list of all players you are acquainted with, as well as\n"
@@ -1201,10 +1201,10 @@ msgid "Skills"
 msgstr "技能"
 
 msgid "\"Item shortcut 7\""
-msgstr ""
+msgstr "物品快捷键7"
 
 msgid "\"Minimap window\""
-msgstr ""
+msgstr "小地图"
 
 msgid ""
 " However, you can protect yourself from such players by ignoring them.  Right-\n"
@@ -1215,7 +1215,7 @@ msgid ""
 msgstr ""
 
 msgid "\"Item shortcut 12\""
-msgstr ""
+msgstr "物品快捷键12"
 
 msgid "SHORTCUTS:"
-msgstr ""
+msgstr "快捷键:"
