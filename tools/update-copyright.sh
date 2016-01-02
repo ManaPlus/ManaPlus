@@ -12,7 +12,7 @@ tmp_file="w$RANDOM$RANDOM$RANDOM$RANDOM"
 [[ -e $tmp_file ]] && tmp_file="w$RANDOM$RANDOM$RANDOM$RANDOM"
 
 # update the dates, creating the interval if it doesn't exist yet
-find -iname "*.cpp" -or -iname "*.h" -or -iname "*.hpp" -or -iname "*.inc" | 
+find -iname "*.cpp" -or -iname "*.h" -or -iname "*.hpp" -or -iname "*.inc" -or -iname "*.cc" | 
   xargs sed -i "/Copyright.*The ManaPlus Developers/ s,\(20[0-9]*\) \|\(20[0-9]*\)-20[0-9]* ,\1\2-$new_year ,"
 
 # do a semi-automated commit check
