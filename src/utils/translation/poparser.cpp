@@ -120,6 +120,12 @@ bool PoParser::readLine()
     char line[1001];
     if (!mFile.getline(line, 1000))
         return false;
+    // skip plurals msgid if present
+    if (strStartWith(line, "msgid_plural \""))
+    {
+        if (!mFile.getline(line, 1000))
+            return false;
+    }
     mLine = line;
     return true;
 }
@@ -172,7 +178,10 @@ bool PoParser::readMsgId()
 
 bool PoParser::readMsgStr()
 {
+    // normal msgstr
     const std::string msgStr1("msgstr \"");
+    // plurals first msgstr
+    const std::string msgStr2("msgstr[0] \"");
 
     // check if in reading process
     if (mReadingStr)
@@ -200,9 +209,20 @@ bool PoParser::readMsgStr()
         {
             mReadingStr = true;
             const size_t msgStr1Size = msgStr1.size();
-            // reading text from: msgid "text"
+            // reading text from: msgstr "text"
             mMsgStr.append(mLine.substr(msgStr1Size,
                 mLine.size() - 1 - msgStr1Size));
+            mLine.clear();
+            return true;
+        }
+        // checl list start from msgstr[0] "
+        else if (strStartWith(mLine, msgStr2))
+        {
+            mReadingStr = true;
+            const size_t msgStr2Size = msgStr2.size();
+            // reading text from: msgstr[0] "text"
+            mMsgStr.append(mLine.substr(msgStr2Size,
+                mLine.size() - 1 - msgStr2Size));
             mLine.clear();
             return true;
         }
