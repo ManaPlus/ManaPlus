@@ -15,6 +15,7 @@
 # Jacques Bossu <ja.bossu@caramail.com>, 2015
 # Jumpy <antoinebcn@hotmail.com>, 2011
 # mortis tmw <mortistmw@gmail.com>, 2015
+# mortis tmw <mortistmw@gmail.com>, 2015
 # reid <reidyaro@gmail.com>, 2011-2012
 # reid <reidyaro@gmail.com>, 2011, 2012
 # Steel Style <steelstyle@free.fr>, 2012
@@ -23,7 +24,7 @@ msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2016-01-03 19:26+0300\n"
-"PO-Revision-Date: 2015-12-23 01:41+0000\n"
+"PO-Revision-Date: 2016-01-03 17:01+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: French (http://www.transifex.com/akaras/manaplus/language/"
 "fr/)\n"
@@ -641,86 +642,86 @@ msgstr "  -l --log-file       : fichier journal à utiliser"
 #: src/commandline.cpp:59
 msgid "  -a --chat-log-dir   : Chat log dir to use"
 msgstr ""
-" -a --chat-log-dir : Répertoire de l'historique de conversation à utiliser"
+"  -a --chat-log-dir   : Répertoire de l'historique de conversation à utiliser"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:61
 msgid "  -v --version        : Display the version"
-msgstr "  -v --version : Affiche la version"
+msgstr "  -v --version        : Affiche la version"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:63
 msgid "  -h --help           : Display this help"
-msgstr "  -h --help : Montre cette rubrique d'aide"
+msgstr "  -h --help           : Montre cette rubrique d'aide"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:65
 msgid "  -C --config-dir     : Configuration directory to use"
-msgstr "  -C --config-dir : Répertoire de configuration à utiliser"
+msgstr "  -C --config-dir     : Répertoire de configuration à utiliser"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:68
 msgid "  -U --username       : Login with this username"
-msgstr "  -U --username : Se connecter avec ce nom d'utilisateur"
+msgstr "  -U --username       : Se connecter avec ce nom d'utilisateur"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:71
 msgid "  -P --password       : Login with this password"
-msgstr "  -P --password : Se connecter avec ce mot de passe"
+msgstr "  -P --password       : Se connecter avec ce mot de passe"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:74
 msgid "  -c --character      : Login with this character"
-msgstr "  -c --character : Se connecter avec ce personnage"
+msgstr "  -c --character      : Se connecter avec ce personnage"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:77
 msgid "  -s --server         : Login server name or IP"
-msgstr "  -s --server : Nom du serveur (ou IP) pour la connexion"
+msgstr "  -s --server         : Nom du serveur (ou IP) pour la connexion"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:80
 msgid "  -y --server-type    : Login server type"
-msgstr "  -y --server-type : Type de connexion au serveur"
+msgstr "  -y --server-type    : Type de connexion au serveur"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:83
 msgid "  -p --port           : Login server port"
-msgstr "  -p --port : Port de connexion au serveur"
+msgstr "  -p --port           : Port de connexion au serveur"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:86
 msgid "  -H --update-host    : Use this update host"
-msgstr " -H --update-host : Utilise cet hôte de mise à jour"
+msgstr "  -H --update-host    : Utilise cet hôte de mise à jour"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:89
 msgid "  -D --default        : Choose default character server and character"
 msgstr ""
-"  -D --default : Choisir le serveur de personnages et le personnage par "
-"défaut"
+"  -D --default        : Choisir le serveur de personnages et le personnage "
+"par défaut"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:93
 msgid "  -u --skip-update    : Skip the update downloads"
 msgstr ""
-"  -u --skip-update : Ne pas effectuer le téléchargement des mises à jour"
+"  -u --skip-update    : Ne pas effectuer le téléchargement des mises à jour"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:96
 msgid "  -d --data           : Directory to load game data from"
-msgstr "  -d --data : Répertoire des données du jeu à charger"
+msgstr "  -d --data           : Répertoire des données du jeu à charger"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:99
 msgid "  -L --localdata-dir  : Directory to use as local data directory"
 msgstr ""
-"  -L --localdata-dir : Répertoire à utiliser comme répertoire principal"
+"  -L --localdata-dir  : Répertoire à utiliser comme répertoire principal"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:103
 msgid "     --screenshot-dir : Directory to store screenshots"
-msgstr "      --screenshot-dir : Répertoire à utiliser pour les imprime-écrans"
+msgstr "     --screenshot-dir : Répertoire à utiliser pour les imprime-écrans"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:106
@@ -742,7 +743,7 @@ msgstr ""
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:118
 msgid "  -O --no-opengl      : Disable OpenGL for this session"
-msgstr " -O --no-opengl : Désactiver OpenGL pour cette session"
+msgstr "  -O --no-opengl      : Désactiver OpenGL pour cette session"
 
 #. TRANSLATORS: directory creation error
 #: src/configmanager.cpp:53 src/dirs.cpp:351 src/dirs.cpp:366 src/dirs.cpp:411
@@ -6644,7 +6645,7 @@ msgstr "Le nom d'utilisateur doit être long d'au plus %u caractères."
 #: src/gui/windows/unregisterdialog.cpp:128
 #, c-format
 msgid "The password needs to be at least %u characters long."
-msgstr " Le mot de passe doit être long d'au moins %u caractères."
+msgstr "Le mot de passe doit être long d'au moins %u caractères."
 
 #. TRANSLATORS: error message
 #. TRANSLATORS: unregister dialog. error message.
@@ -6652,7 +6653,7 @@ msgstr " Le mot de passe doit être long d'au moins %u caractères."
 #: src/gui/windows/unregisterdialog.cpp:135
 #, c-format
 msgid "The password needs to be less than %u characters long."
-msgstr " Le mot de passe doit être long d'au plus %u caractères."
+msgstr "Le mot de passe doit être long d'au plus %u caractères."
 
 #. TRANSLATORS: error message
 #: src/gui/windows/registerdialog.cpp:223

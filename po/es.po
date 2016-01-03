@@ -22,7 +22,7 @@ msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2016-01-03 19:26+0300\n"
-"PO-Revision-Date: 2016-01-02 11:56+0000\n"
+"PO-Revision-Date: 2016-01-03 16:56+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Spanish (http://www.transifex.com/akaras/manaplus/language/"
 "es/)\n"
@@ -617,12 +617,12 @@ msgstr "[manaplus-file] : El archivo manaplus es un archivo XML (.manaplus)"
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:48
 msgid "                  used to set custom parameters"
-msgstr "              usado para establecer parámetros personalizados."
+msgstr "                  usado para establecer parámetros personalizados"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:51
 msgid "                  to the manaplus client."
-msgstr "              al cliente manaplus."
+msgstr "                  al cliente manaplus."
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:54

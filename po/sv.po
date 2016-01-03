@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2016-01-03 19:26+0300\n"
-"PO-Revision-Date: 2015-12-15 09:08+0000\n"
+"PO-Revision-Date: 2016-01-03 17:05+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Swedish (Sweden) (http://www.transifex.com/akaras/manaplus/"
 "language/sv_SE/)\n"
@@ -856,7 +856,7 @@ msgstr "(2) närmar sig target med distance 2"
 #. TRANSLATORS: move to target type in status bar
 #: src/gamemodifiers.cpp:208
 msgid "(3) moves to target in distance 3"
-msgstr " (3) närmar sig target med distans 3"
+msgstr "(3) närmar sig target med distans 3"
 
 #. TRANSLATORS: move to target type in status bar
 #: src/gamemodifiers.cpp:210
@@ -866,7 +866,7 @@ msgstr ""
 #. TRANSLATORS: move to target type in status bar
 #: src/gamemodifiers.cpp:212
 msgid "(5) moves to target in distance 5"
-msgstr " (5) närmar sig target med distans 5"
+msgstr "(5) närmar sig target med distans 5"
 
 #. TRANSLATORS: move to target type in status bar
 #: src/gamemodifiers.cpp:214
@@ -876,7 +876,7 @@ msgstr ""
 #. TRANSLATORS: move to target type in status bar
 #: src/gamemodifiers.cpp:216
 msgid "(7) moves to target in distance 7"
-msgstr " (7) närmar sig target med distans 7"
+msgstr "(7) närmar sig target med distans 7"
 
 #. TRANSLATORS: move to target type in status bar
 #: src/gamemodifiers.cpp:218
@@ -891,7 +891,7 @@ msgstr ""
 #. TRANSLATORS: move to target type in status bar
 #: src/gamemodifiers.cpp:222
 msgid "(A) moves to target in attack range"
-msgstr " (A) närmar sig target till attack range"
+msgstr "(A) närmar sig target till attack range"
 
 #. TRANSLATORS: move to target type in status bar
 #: src/gamemodifiers.cpp:224

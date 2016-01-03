@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2016-01-03 19:26+0300\n"
-"PO-Revision-Date: 2015-12-15 09:08+0000\n"
+"PO-Revision-Date: 2016-01-03 17:03+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Dutch (Belgium) (http://www.transifex.com/akaras/manaplus/"
 "language/nl_BE/)\n"
@@ -606,12 +606,12 @@ msgstr ""
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:48
 msgid "                  used to set custom parameters"
-msgstr "              om manuele parameters te gebruiken"
+msgstr "                  om manuele parameters te gebruiken"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:51
 msgid "                  to the manaplus client."
-msgstr "              aan de manaplus client."
+msgstr "                  aan de manaplus client."
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:54
@@ -3599,7 +3599,7 @@ msgstr "Commando's"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:86
 msgid "Allow magic and GM commands in all chat tabs"
-msgstr " magie en GM commandos toe in alle chat tabs"
+msgstr "Magie en GM commandos toe in alle chat tabs"
 
 #: src/gui/widgets/tabs/setup_chat.cpp:87
 msgid ""
