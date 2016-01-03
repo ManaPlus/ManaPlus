@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2016-01-02 14:19+0300\n"
+"POT-Creation-Date: 2016-01-03 19:26+0300\n"
 "PO-Revision-Date: 2015-12-15 09:08+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Italian (http://www.transifex.com/akaras/manaplus/language/"
@@ -43,7 +43,7 @@ msgstr "File caricato"
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: text dialog button
 #. TRANSLATORS: ok dialog button
-#: src/actions/actions.cpp:167 src/client.cpp:1502 src/client.cpp:1537
+#: src/actions/actions.cpp:167 src/client.cpp:1506 src/client.cpp:1541
 #: src/gamemodifiers.cpp:451 src/gui/dialogsmanager.cpp:182
 #: src/gui/dialogsmanager.cpp:202 src/gui/widgets/tabs/setup_input.cpp:164
 #: src/gui/widgets/tabs/setup_theme.cpp:313
@@ -446,40 +446,40 @@ msgstr ""
 #. TRANSLATORS: setup tab quick button
 #. TRANSLATORS: full button name
 #. TRANSLATORS: setup window name
-#: src/client.cpp:827 src/dyetool/client.cpp:475 src/gui/windowmenu.cpp:177
+#: src/client.cpp:831 src/dyetool/client.cpp:478 src/gui/windowmenu.cpp:177
 #: src/gui/windows/setupwindow.cpp:65
 msgid "Setup"
 msgstr "Impostazioni"
 
 #. TRANSLATORS: perfoamance tab quick button
 #. TRANSLATORS: settings tab name
-#: src/client.cpp:830 src/dyetool/client.cpp:478
+#: src/client.cpp:834 src/dyetool/client.cpp:481
 #: src/gui/widgets/tabs/setup_perfomance.cpp:54
 msgid "Performance"
 msgstr ""
 
 #. TRANSLATORS: video tab quick button
 #. TRANSLATORS: video settings tab name
-#: src/client.cpp:833 src/dyetool/client.cpp:481
+#: src/client.cpp:837 src/dyetool/client.cpp:484
 #: src/gui/widgets/tabs/setup_video.cpp:106
 msgid "Video"
 msgstr "Video"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: theme settings tab name
-#: src/client.cpp:836 src/dyetool/client.cpp:484
+#: src/client.cpp:840 src/dyetool/client.cpp:487
 #: src/gui/widgets/tabs/setup_theme.cpp:121
 msgid "Theme"
 msgstr "Tema"
 
 #. TRANSLATORS: theme tab quick button
-#: src/client.cpp:839 src/dyetool/client.cpp:487
+#: src/client.cpp:843 src/dyetool/client.cpp:490
 msgid "About"
 msgstr ""
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: help window name
-#: src/client.cpp:842 src/dyetool/client.cpp:490 src/gui/windowmenu.cpp:72
+#: src/client.cpp:846 src/dyetool/client.cpp:493 src/gui/windowmenu.cpp:72
 #: src/gui/windows/helpwindow.cpp:53
 msgid "Help"
 msgstr "Aiuto"
@@ -500,8 +500,8 @@ msgstr "Aiuto"
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: quests window button
 #. TRANSLATORS: shop window button
-#: src/client.cpp:846 src/client.cpp:1416 src/client.cpp:1435
-#: src/dyetool/client.cpp:494 src/gui/dialogsmanager.cpp:116
+#: src/client.cpp:850 src/client.cpp:1420 src/client.cpp:1439
+#: src/dyetool/client.cpp:497 src/gui/dialogsmanager.cpp:116
 #: src/gui/popups/popupmenu.cpp:679 src/gui/popups/popupmenu.cpp:756
 #: src/gui/popups/popupmenu.cpp:997 src/gui/windows/didyouknowwindow.cpp:81
 #: src/gui/windows/inventorywindow.cpp:269
@@ -513,32 +513,32 @@ msgid "Close"
 msgstr "Chiudi"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1071 src/gui/windowmanager_unittest.cc:145
+#: src/client.cpp:1075 src/gui/windowmanager_unittest.cc:145
 msgid "Connecting to server"
 msgstr "Connessione al server"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1117 src/gui/windowmanager_unittest.cc:162
+#: src/client.cpp:1121 src/gui/windowmanager_unittest.cc:162
 msgid "Logging in"
 msgstr "Accesso all'account"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1166
+#: src/client.cpp:1170
 msgid "Entering game world"
 msgstr "Accesso al gioco"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1305
+#: src/client.cpp:1309
 msgid "Requesting characters"
 msgstr "Caricamento personaggi"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1345
+#: src/client.cpp:1349
 msgid "Connecting to the game server"
 msgstr "Connessione al server del gioco"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1357
+#: src/client.cpp:1361
 msgid "Changing game servers"
 msgstr "Cambiamento server del gioco"
 
@@ -552,7 +552,7 @@ msgstr "Cambiamento server del gioco"
 #. TRANSLATORS: error header
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: error header
-#: src/client.cpp:1413 src/client.cpp:1432 src/client.cpp:1665
+#: src/client.cpp:1417 src/client.cpp:1436 src/client.cpp:1669
 #: src/gui/windows/changeemaildialog.cpp:166
 #: src/gui/windows/changepassworddialog.cpp:156
 #: src/gui/windows/charcreatedialog.cpp:424
@@ -567,37 +567,37 @@ msgid "Error"
 msgstr "Errore"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1451
+#: src/client.cpp:1455
 msgid "Requesting registration details"
 msgstr "Richiesta dettagli di registrazione"
 
 #. TRANSLATORS: password change message header
-#: src/client.cpp:1498
+#: src/client.cpp:1502
 msgid "Password Change"
 msgstr "Cambia password"
 
 #. TRANSLATORS: password change message text
-#: src/client.cpp:1500
+#: src/client.cpp:1504
 msgid "Password changed successfully!"
 msgstr "Password modificata con successo!"
 
 #. TRANSLATORS: email change message header
-#: src/client.cpp:1533
+#: src/client.cpp:1537
 msgid "Email Change"
 msgstr "Cambia Email"
 
 #. TRANSLATORS: email change message text
-#: src/client.cpp:1535
+#: src/client.cpp:1539
 msgid "Email changed successfully!"
 msgstr "Email cambiata con successo!"
 
 #. TRANSLATORS: unregister message header
-#: src/client.cpp:1571
+#: src/client.cpp:1575
 msgid "Unregister Successful"
 msgstr "Annullamento registrazione effettuato con successo"
 
 #. TRANSLATORS: unregister message text
-#: src/client.cpp:1573
+#: src/client.cpp:1577
 msgid "Farewell, come back any time..."
 msgstr "Addio, torna quando vuoi..."
 
