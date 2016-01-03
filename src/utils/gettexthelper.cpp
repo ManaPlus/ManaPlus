@@ -20,12 +20,12 @@
 
 #include "utils/gettexthelper.h"
 
+#include "configuration.h"
+
 #ifdef ENABLE_NLS
 #include "client.h"
-#include "configuration.h"
 #include "logger.h"
 
-#include "utils/env.h"
 #include "utils/physfstools.h"
 
 #include <libintl.h>
@@ -36,30 +36,63 @@ extern "C" char const *_nl_locale_name_default(void);
 #endif  // WIN32
 #elif defined(ENABLE_CUSTOMNLS)
 #include "utils/translation/podict.h"
+#ifdef __native_client__
+#include "utils/naclmessages.h"
+#endif  // __native_client__
 #endif  // ENABLE_NLS
 
+#if defined(ENABLE_NLS) || defined(ENABLE_CUSTOMNLS) && !defined(WIN32)
+#include "utils/env.h"
+#endif  // defined(ENABLE_NLS) || defined(ENABLE_CUSTOMNLS) && !defined(WIN32)
+
 #include "debug.h"
+
+static std::string setLangEnv()
+{
+    std::string lang = config.getStringValue("lang");
+#if defined(ENABLE_NLS) && defined(WIN32)
+    if (lang.empty())
+        lang = std::string(_nl_locale_name_default());
+#elif defined(ENABLE_CUSTOMNLS) && defined(__native_client__)
+    if (lang.empty())
+    {
+        NaclMessageHandle *handle = naclRegisterMessageHandler(
+            "get-uilanguage");
+        naclPostMessage("get-uilanguage", "");
+        lang = naclWaitForMessage(handle);
+    }
+#endif  // defined(ENABLE_NLS) && defined(WIN32)
+
+#if defined(ENABLE_NLS) || defined(ENABLE_CUSTOMNLS)
+    if (!lang.empty())
+    {
+#ifdef WIN32
+        putenv(const_cast<char*>(("LANG=" + lang).c_str()));
+        putenv(const_cast<char*>(("LANGUAGE=" + lang).c_str()));
+#else  // WIN32
+
+        if (!lang.empty())
+        {
+            setEnv("LANG", lang.c_str());
+            setEnv("LANGUAGE", lang.c_str());
+        }
+#endif  // WIN32
+
+    }
+#endif  // defined(ENABLE_NLS) || defined(ENABLE_CUSTOMNLS)
+
+    return lang;
+}
 
 void GettextHelper::initLang()
 {
 #ifdef ENABLE_NLS
-    std::string lang = config.getStringValue("lang");
+    const std::string lang = setLangEnv();
 #ifdef WIN32
-    if (lang.empty())
-        lang = std::string(_nl_locale_name_default());
-
-    putenv(const_cast<char*>(("LANG=" + lang).c_str()));
-    putenv(const_cast<char*>(("LANGUAGE=" + lang).c_str()));
     // mingw doesn't like LOCALEDIR to be defined for some reason
     if (lang != "C")
         bindTextDomain("translations/");
 #else  // WIN32
-
-    if (!lang.empty())
-    {
-        setEnv("LANG", lang.c_str());
-        setEnv("LANGUAGE", lang.c_str());
-    }
 #ifdef ANDROID
 #ifdef USE_SDL2
     bindTextDomain((std::string(getenv("APPDIR")).append("/locale")).c_str());
@@ -101,6 +134,7 @@ void GettextHelper::initLang()
     textdomain("manaplus");
 #elif defined(ENABLE_CUSTOMNLS)
     mainTranslator = new PoDict("en");
+    setLangEnv();
 #endif  // ENABLE_NLS
 }
 
