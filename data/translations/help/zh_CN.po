@@ -28,7 +28,7 @@ msgid "/atkhuman - select and attack nearest player."
 msgstr "/atkhuman - 选择并攻击最近的玩家."
 
 msgid "\"Outfit shortcut 12\""
-msgstr "装备快捷键12"
+msgstr "\"装备快捷键12\""
 
 msgid "/cacheinfo - show text cache info."
 msgstr "/cacheinfo - 显示文本缓存信息."
@@ -44,7 +44,7 @@ msgid ""
 msgstr ""
 
 msgid "\"Emote shortcut 9\""
-msgstr "表情快捷键9"
+msgstr "\"表情快捷键9\""
 
 msgid "/addignoreattack NAME - add monster to ignore attack list."
 msgstr "/addignoreattact 名称 - 将目标加入到非攻击列表中."
@@ -53,13 +53,13 @@ msgid "Back to Index"
 msgstr "回到目录"
 
 msgid "\"Quests window\""
-msgstr "任务窗口"
+msgstr "\"任务窗口\""
 
 msgid "/firehomunculus - fire homunculus."
 msgstr ""
 
 msgid "\"Quick drop window\""
-msgstr "快速丢弃窗口"
+msgstr "\"快速丢弃窗口\""
 
 msgid "Official site:"
 msgstr "官方网站:"
@@ -70,7 +70,7 @@ msgid ""
 msgstr " 你可以通过提升工作等级来增强你的技能.\n 每级工作等级给你 1 点用于增强基本技能."
 
 msgid "\"Emote shortcut 10\""
-msgstr "表情快捷键10"
+msgstr "\"表情快捷键10\""
 
 msgid "Content devs"
 msgstr ""
@@ -114,7 +114,7 @@ msgid ""
 msgstr ""
 
 msgid "\"Enable/disable trading\""
-msgstr "启用/禁用 交易"
+msgstr "\"启用/禁用 交易\""
 
 msgid "/wait NAME - wait for nick or moster with name."
 msgstr ""
@@ -126,7 +126,7 @@ msgid "\"Use magic attack\""
 msgstr "\"使用魔法攻击\""
 
 msgid "\"Who is online window\""
-msgstr "查看在线玩家"
+msgstr "\"查看在线玩家\""
 
 msgid "\"Switch pvp attack\""
 msgstr "\"切换PVP状态\""
@@ -157,7 +157,7 @@ msgid "Other contributors"
 msgstr "其他贡献者"
 
 msgid "\"Item shortcuts Key\""
-msgstr "物品快捷键"
+msgstr "\"物品快捷键\""
 
 msgid ""
 "Communication is often essential to success in this game. You can communicate\n"
@@ -166,7 +166,7 @@ msgid ""
 msgstr "在这个游戏中交流通常是成功必需的。你可以通过多种方式交流：通过聊天和使用表情(参考上面)，通过交易(使用右键菜单)，以及使用私信."
 
 msgid "\"Item shortcut 3\""
-msgstr "物品快捷键3"
+msgstr "\"物品快捷键3\""
 
 msgid "\"Change move type\""
 msgstr "\"更改移动类型\""
@@ -175,10 +175,10 @@ msgid "Tabs"
 msgstr "标签页"
 
 msgid "\"Outfit shortcut 4\""
-msgstr "装备快捷键4"
+msgstr "\"装备快捷键4\""
 
 msgid "\"Did you know window\""
-msgstr "你知道吗?"
+msgstr "\"你知道吗?\""
 
 msgid ""
 "/mail NICK MSG - send offline message to NICK. Working only in tmw server."
@@ -203,7 +203,7 @@ msgid "/outfit next - wear next outfit."
 msgstr "/outfit next - 穿戴后一个装备."
 
 msgid "\"Outfit shortcut 3\""
-msgstr "装备快捷键3"
+msgstr "\"装备快捷键3\""
 
 msgid "\"Quick drop N items\""
 msgstr "\"快速丢弃物品N\""
@@ -286,7 +286,7 @@ msgid "Search string not found."
 msgstr ""
 
 msgid "\"Emote shortcut 7\""
-msgstr "表情快捷键7"
+msgstr "\"表情快捷键7\""
 
 msgid ""
 "You can set any client resolution. In settings in video tab,\n"
@@ -303,7 +303,7 @@ msgid "\"Set direction left\""
 msgstr "\"设置左方\""
 
 msgid "\"Equipment window\""
-msgstr "装备窗口"
+msgstr "\"装备窗口\""
 
 msgid ""
 " To add an item to the shortcut bar click on the item in the inventory window,\n"
@@ -326,7 +326,7 @@ msgid "\"Talk\""
 msgstr "\"谈话\""
 
 msgid "\"Item shortcut 8\""
-msgstr "物品快捷键8"
+msgstr "\"物品快捷键8\""
 
 msgid "/all - show visible beings list in debug tab."
 msgstr "/all - 在调试标签页中查看可见生物."
@@ -462,10 +462,10 @@ msgid "/clear - clear current chat tab."
 msgstr "/clear - 清除当前标签页."
 
 msgid "\"Social window\""
-msgstr "社交窗口"
+msgstr "\"社交窗口\""
 
 msgid "\"Emote shortcut 4\""
-msgstr "表情快捷键4"
+msgstr "\"表情快捷键4\""
 
 msgid "\"Close chat tab\""
 msgstr "\"关闭标签页\""
@@ -530,7 +530,7 @@ msgid ""
 msgstr ""
 
 msgid "\"Chat window\""
-msgstr "聊天窗口"
+msgstr "\"聊天窗口\""
 
 msgid "/closeall - close all whispers."
 msgstr "/closeall - 关闭所有私聊."
@@ -636,7 +636,7 @@ msgid "/query NICK, /q NICK - open new whisper tab for nick."
 msgstr "/query 名称,/q 名称 - 为目标创建新的私聊标签页."
 
 msgid "\"Item shortcut 5\""
-msgstr "物品快捷键5"
+msgstr "\"物品快捷键5\""
 
 msgid "\"Scroll chat up\""
 msgstr ""
@@ -649,7 +649,7 @@ msgid ""
 msgstr ""
 
 msgid "\"Outfit shortcut 6\""
-msgstr "装备快捷键6"
+msgstr "\"装备快捷键6\""
 
 msgid "Visit IRC channel:"
 msgstr "访问 IRC 频道:"
@@ -661,7 +661,7 @@ msgid "\"Target & attack\""
 msgstr "\"瞄准与攻击\""
 
 msgid "\"Item shortcut 10\""
-msgstr "物品快捷键10"
+msgstr "\"物品快捷键10\""
 
 msgid "/where - print current player position to chat."
 msgstr "/where - 显示玩家当前的位置."
@@ -706,7 +706,7 @@ msgid "/ignoreall - add all whispers to ignore list."
 msgstr "/ignoreall - 忽略所有私聊."
 
 msgid "\"Chat auto complete\""
-msgstr "单词自动完成"
+msgstr "\"单词自动完成\""
 
 msgid "/ignore NICK - add nick to ignore list."
 msgstr "/ignore 名称 - 忽略目标信息."
@@ -893,7 +893,7 @@ msgid ""
 msgstr ""
 
 msgid "\"Emote shortcut 11\""
-msgstr "表情快捷键11"
+msgstr "\"表情快捷键11\""
 
 msgid "/petmoveup - move pet one tile up."
 msgstr ""
@@ -1201,10 +1201,10 @@ msgid "Skills"
 msgstr "技能"
 
 msgid "\"Item shortcut 7\""
-msgstr "物品快捷键7"
+msgstr "\"物品快捷键7\""
 
 msgid "\"Minimap window\""
-msgstr "小地图"
+msgstr "\"小地图\""
 
 msgid ""
 " However, you can protect yourself from such players by ignoring them.  Right-\n"
@@ -1215,7 +1215,7 @@ msgid ""
 msgstr ""
 
 msgid "\"Item shortcut 12\""
-msgstr "物品快捷键12"
+msgstr "\"物品快捷键12\""
 
 msgid "SHORTCUTS:"
 msgstr "快捷键:"

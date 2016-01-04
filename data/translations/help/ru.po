@@ -773,7 +773,7 @@ msgid "/item - show party item sharing options."
 msgstr "/item - показать настройки общих предметов в группе."
 
 msgid "move key"
-msgstr "\"Кнопка движения\""
+msgstr "Кнопка движения"
 
 msgid "\"Emote shortcut 5\""
 msgstr "\"Смайл 5\""
@@ -876,7 +876,7 @@ msgid "About"
 msgstr "Об игре"
 
 msgid "\"Outfit shortcut 15\""
-msgstr "Наряд 15"
+msgstr "\"Наряд 15\""
 
 msgid "\"Move right\""
 msgstr "\"Движение вправо\""

@@ -199,7 +199,7 @@ msgid "Support"
 msgstr "Support"
 
 msgid "\"Copy equiped to Outfit\""
-msgstr "Copier l'équipement porté dans les tenues"
+msgstr "\"Copier l'équipement porté dans les tenues\""
 
 msgid "/outfit next - wear next outfit."
 msgstr "/outfit next - met la tenue suivante."
@@ -491,7 +491,7 @@ msgid "\"Debug window\""
 msgstr "\"Fenêtre de débogage\""
 
 msgid "\"Next chat tab\""
-msgstr "Onglet de dialogue suivant"
+msgstr "\"Onglet de dialogue suivant\""
 
 msgid "\"Change move to target type\""
 msgstr "\"Changer le type de déplacement vers les cibles\""
@@ -521,7 +521,7 @@ msgid "\"Outfit shortcut 9\""
 msgstr "\"Raccourci de tenue 9\""
 
 msgid "\"Change attack weapon type\""
-msgstr "Changer de type d'arme d'attaque"
+msgstr "\"Changer de type d'arme d'attaque\""
 
 msgid "\"Move left\""
 msgstr "\"Aller vers la gauche\""
@@ -538,7 +538,7 @@ msgid "/closeall - close all whispers."
 msgstr "/closeall - fermer toutes les fenêtres de chuchotement."
 
 msgid "\"Previous chat tab\""
-msgstr "Onglet de conversation précédent"
+msgstr "\"Onglet de conversation précédent\""
 
 msgid "\"Kills stats window\""
 msgstr "\"Fenêtre des statistiques de combat\""
