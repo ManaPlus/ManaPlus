@@ -220,6 +220,7 @@ Setup_Other::Setup_Other(const Widget2 *const widget) :
     // TRANSLATORS: settings group
     new SetupItemLabel(_("Player"), "", this);
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show own hp bar"), "",
         "showOwnHP", this, "showOwnHPEvent");
 
@@ -265,6 +266,7 @@ Setup_Other::Setup_Other(const Widget2 *const widget) :
     new SetupItemCheckBox(_("Enabled pets support"),
         "", "usepets", this, "usepetsEvent");
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable weight notifications"), "",
         "weightMsg", this, "weightMsgEvent");
 

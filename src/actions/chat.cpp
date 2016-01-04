@@ -423,8 +423,8 @@ impHandler(toggle)
     {
         if (chatWindow && event.tab)
         {
-            // TRANSLATORS: message from toggle chat command
             event.tab->chatLog(chatWindow->getReturnTogglesChat() ?
+                // TRANSLATORS: message from toggle chat command
                 _("Return toggles chat.") : _("Message closes chat."),
                 ChatMsgType::BY_SERVER);
         }
@@ -597,6 +597,7 @@ impHandler(hat)
     const int sprite = localPlayer->getSpriteID(
         charServerHandler->hatSprite());
     const ItemInfo &info = ItemDB::get(sprite);
+    // TRANSLATORS: equipped hat chat message
     const std::string str = strprintf(_("equipped hat %s."),
         info.getName().c_str());
     outString(event.tab, str, str);

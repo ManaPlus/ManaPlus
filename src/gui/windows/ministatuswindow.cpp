@@ -65,9 +65,9 @@ MiniStatusWindow::MiniStatusWindow() :
     mBars(),
     mBarNames(),
     mIcons(),
-    // TRANSLATORS: status bar name
     mHpBar(createBar(0, 100, 0, ThemeColorId::HP_BAR, ProgressColorId::PROG_HP,
         "hpprogressbar.xml", "hpprogressbar_fill.xml",
+        // TRANSLATORS: status bar name
         "hp bar", _("health bar"))),
     mMpBar(createBar(0, 100, 0, playerHandler->canUseMagic()
         ? ThemeColorId::MP_BAR : ThemeColorId::NO_MP_BAR,
@@ -132,8 +132,8 @@ MiniStatusWindow::MiniStatusWindow() :
         mJobBar = createBar(0, 100, 0,
             ThemeColorId::JOB_BAR,
             ProgressColorId::PROG_JOB,
-            // TRANSLATORS: status bar name
             "jobprogressbar.xml", "jobprogressbar_fill.xml",
+            // TRANSLATORS: status bar name
             "job bar", _("job bar"));
         StatusWindow::updateJobBar(mJobBar);
     }

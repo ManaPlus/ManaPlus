@@ -64,9 +64,12 @@ void PetRecv::processPetMessage(Net::MessageIn &msg)
     {
         if (localChatTab && localPlayer)
         {
+            // TRANSLATORS: user's pet
             std::string nick = strprintf(_("%s's pet"),
                 localPlayer->getName().c_str());
-            localChatTab->chatLog(nick, strprintf("hungry level %d", hungry));
+            localChatTab->chatLog(nick,
+                // TRANSLATORS: pet hungry level
+                strprintf(_("hungry level %d"), hungry));
         }
         PetInfo *const info = PlayerInfo::getPet();
         if (!info || info->id != id)

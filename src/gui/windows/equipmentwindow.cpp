@@ -666,6 +666,7 @@ void EquipmentWindow::addDefaultPage()
     if (!mHaveDefaultPage)
     {
         mHaveDefaultPage = true;
+        // TRANSLATORS: equipment window tab
         addPage(_("default"));
     }
 }

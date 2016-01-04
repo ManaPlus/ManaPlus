@@ -1111,6 +1111,7 @@ impHandler0(cacheInfo)
         return;
 
     unsigned int all = 0;
+    // TRANSLATORS: chat fonts message
     debugChatTab->chatLog(_("font cache size"), ChatMsgType::BY_SERVER);
     std::string str;
     for (int f = 0; f < 256; f ++)
@@ -1123,14 +1124,17 @@ impHandler0(cacheInfo)
         }
     }
     debugChatTab->chatLog(str, ChatMsgType::BY_SERVER);
+    // TRANSLATORS: chat fonts message
     debugChatTab->chatLog(strprintf("%s %d", _("Cache size:"), all),
         ChatMsgType::BY_SERVER);
 #ifdef DEBUG_FONT_COUNTERS
     debugChatTab->chatLog("", ChatMsgType::BY_SERVER);
     debugChatTab->chatLog(strprintf("%s %d",
+        // TRANSLATORS: chat fonts message
         _("Created:"), font->getCreateCounter()),
         ChatMsgType::BY_SERVER);
     debugChatTab->chatLog(strprintf("%s %d",
+        // TRANSLATORS: chat fonts message
         _("Deleted:"), font->getDeleteCounter()),
         ChatMsgType::BY_SERVER);
 #endif
@@ -1467,6 +1471,7 @@ impHandler0(createItems)
 
 impHandler(uploadConfig)
 {
+    // TRANSLATORS: upload config chat message
     uploadFile(_("Uploaded config into:"),
         config.getFileName(),
         "?xml",
@@ -1476,6 +1481,7 @@ impHandler(uploadConfig)
 
 impHandler(uploadServerConfig)
 {
+    // TRANSLATORS: upload config chat message
     uploadFile(_("Uploaded server config into:"),
         serverConfig.getFileName(),
         "?xml",
@@ -1485,6 +1491,7 @@ impHandler(uploadServerConfig)
 
 impHandler(uploadLog)
 {
+    // TRANSLATORS: upload log chat message
     uploadFile(_("Uploaded log into:"),
         settings.logFileName,
         "?txt",

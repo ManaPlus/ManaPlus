@@ -407,6 +407,7 @@ void UpdaterWindow::loadNews()
     if (cnt > maxNews)
     {
         mBrowserBox->addRow("");
+        // TRANSLATORS: updater window checkbox
         mBrowserBox->addRow("news", _("Show all news (can be slow)"));
         mBrowserBox->addRow("");
     }

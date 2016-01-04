@@ -440,6 +440,7 @@ Map *MapReader::readMap(XmlNodePtrConst node, const std::string &path)
                     }
                     else if (objType == "SPAWN")
                     {
+                        // TRANSLATORS: spawn name
 //                      map->addPortal(_("Spawn: ") + objName,
 //                            MapItemType::PORTAL,
 //                            objX, objY, objW, objH);

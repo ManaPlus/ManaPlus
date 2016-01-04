@@ -58,15 +58,6 @@ GuildTab::~GuildTab()
 bool GuildTab::handleCommand(const std::string &restrict type,
                              const std::string &restrict args)
 {
-/*
-    else if (type == "create" || type == "new")
-    {
-        if (args.empty())
-            chatLog(_("Guild name is missing."), ChatMsgType::BY_SERVER);
-        else
-            guildHandler->create(args);
-    }
-*/
     if (type == "invite" && Ea::taGuild)
     {
         guildHandler->invite(args);

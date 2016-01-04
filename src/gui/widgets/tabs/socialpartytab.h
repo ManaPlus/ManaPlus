@@ -81,8 +81,8 @@ class SocialPartyTab final : public SocialTab,
 
                 if (localChatTab)
                 {
-                    // TRANSLATORS: chat message
                     localChatTab->chatLog(strprintf(
+                        // TRANSLATORS: chat message
                         _("Invited user %s to party."),
                         name.c_str()),
                         ChatMsgType::BY_SERVER);
@@ -98,8 +98,8 @@ class SocialPartyTab final : public SocialTab,
                 partyHandler->leave();
                 if (localChatTab)
                 {
-                    // TRANSLATORS: tab in social window
                     localChatTab->chatLog(strprintf(
+                        // TRANSLATORS: tab in social window
                         _("Party %s quit requested."),
                         mParty->getName().c_str()),
                         ChatMsgType::BY_SERVER);

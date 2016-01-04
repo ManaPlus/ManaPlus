@@ -45,94 +45,122 @@ void GeneralRecv::processConnectionProblem(Net::MessageIn &msg)
     switch (code)
     {
         case 0:
+            // TRANSLATORS: error message
             errorMessage = _("Authentication failed.");
             break;
         case 1:
+            // TRANSLATORS: error message
             errorMessage = _("No servers available.");
             break;
         case 2:
             if (client->getState() == State::GAME)
             {
+                // TRANSLATORS: error message
                 errorMessage = _("Someone else is trying to use "
                     "this account.");
             }
             else
             {
+                // TRANSLATORS: error message
                 errorMessage = _("This account is already logged in.");
             }
             break;
         case 3:
+            // TRANSLATORS: error message
             errorMessage = _("Speed hack detected.");
             break;
         case 4:
+            // TRANSLATORS: error message
             errorMessage = _("Server full.");
             break;
         case 5:
+            // TRANSLATORS: error message
             errorMessage = _("Sorry, you are underaged.");
             break;
         case 8:
+            // TRANSLATORS: error message
             errorMessage = _("Duplicated login.");
             break;
         case 9:
+            // TRANSLATORS: error message
             errorMessage = _("To many connections from same ip.");
             break;
         case 10:
+            // TRANSLATORS: error message
             errorMessage = _("Not paid for this time.");
             break;
         case 11:
+            // TRANSLATORS: error message
             errorMessage = _("Pay suspended.");
             break;
         case 12:
+            // TRANSLATORS: error message
             errorMessage = _("Pay changed.");
             break;
         case 13:
+            // TRANSLATORS: error message
             errorMessage = _("Pay wrong ip.");
             break;
         case 14:
+            // TRANSLATORS: error message
             errorMessage = _("Pay game room.");
             break;
         case 15:
+            // TRANSLATORS: error message
             errorMessage = _("Disconnect forced by GM.");
             break;
         case 16:
         case 17:
+            // TRANSLATORS: error message
             errorMessage = _("Ban japan refuse.");
             break;
         case 18:
+            // TRANSLATORS: error message
             errorMessage = _("Remained other account.");
             break;
         case 100:
+            // TRANSLATORS: error message
             errorMessage = _("Ip unfair.");
             break;
         case 101:
+            // TRANSLATORS: error message
             errorMessage = _("Ip count all.");
             break;
         case 102:
+            // TRANSLATORS: error message
             errorMessage = _("Ip count.");
             break;
         case 103:
         case 104:
+            // TRANSLATORS: error message
             errorMessage = _("Memory.");
             break;
         case 105:
+            // TRANSLATORS: error message
             errorMessage = _("Han valid.");
             break;
         case 106:
+            // TRANSLATORS: error message
             errorMessage = _("Ip limited access.");
             break;
         case 107:
+            // TRANSLATORS: error message
             errorMessage = _("Over characters list.");
             break;
         case 108:
+            // TRANSLATORS: error message
             errorMessage = _("Ip blocked.");
             break;
         case 109:
+            // TRANSLATORS: error message
             errorMessage = _("Invalid password count.");
             break;
         case 110:
+            // TRANSLATORS: error message
             errorMessage = _("Not allowed race.");
             break;
         default:
+            // TRANSLATORS: error message
             errorMessage = _("Unknown connection error.");
             break;
     }
@@ -143,6 +171,7 @@ void GeneralRecv::processMapNotFound(Net::MessageIn &msg)
 {
     const int sz = msg.readInt16("len") - 4;
     msg.readString(sz, "map name?");
+    // TRANSLATORS: error message
     errorMessage = _("Map not found");
     client->setState(State::ERROR);
 }

@@ -2193,9 +2193,14 @@ void ChatWindow::joinRoom(const bool isJoin)
     {
         std::string name;
         if (isJoin)
+        {
             name = PlayerInfo::getRoomName();
+        }
         else
+        {
+            // TRANSLATORS: chat tab name
             name = _("General");
+        }
         tab->setCaption(name);
     }
 }

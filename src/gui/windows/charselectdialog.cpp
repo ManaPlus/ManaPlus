@@ -102,7 +102,11 @@ CharSelectDialog::CharSelectDialog(LoginData &data) :
     n ++;
     if (serverFeatures->haveCharRename())
     {
-        mRenameButton = new Button(this, _("Rename"), "rename", this);
+        mRenameButton = new Button(this,
+            // TRANSLATORS: character rename button
+            _("Rename"),
+            "rename",
+            this);
         placer(n, 0, mRenameButton);
         n ++;
     }
@@ -296,8 +300,9 @@ void CharSelectDialog::action(const ActionEvent &event)
             else
             {
                 CREATEWIDGET(OkDialog,
-                    // TRANSLATORS: error message
+                    // TRANSLATORS: error header
                     _("Error"),
+                    // TRANSLATORS: error message
                     _("Incorrect password"),
                     // TRANSLATORS: ok dialog button
                     _("OK"),

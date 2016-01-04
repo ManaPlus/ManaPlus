@@ -496,8 +496,8 @@ void SocialWindow::showPartyInvite(const std::string &restrict partyName,
         localChatTab->chatLog(msg, ChatMsgType::BY_SERVER);
 
     // show invite
-    // TRANSLATORS: party invite message
     CREATEWIDGETV(mPartyAcceptDialog, ConfirmDialog,
+        // TRANSLATORS: party invite message
         _("Accept Party Invite"),
         msg,
         SOUND_REQUEST,
@@ -519,6 +519,7 @@ void SocialWindow::showPartyCreate()
         CREATEWIDGET(OkDialog,
             // TRANSLATORS: party creation message
             _("Create Party"),
+            // TRANSLATORS: party creation error
             _("Cannot create party. You are already in a party"),
             // TRANSLATORS: ok dialog button
             _("OK"),

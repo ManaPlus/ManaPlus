@@ -66,20 +66,26 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
     setFocusable(false);
     // TRANSLATORS: short button name for who is online window.
     addButton(N_("ONL"),
+        // TRANSLATORS: long button name for who is online window.
         _("Who is online"), x, h, InputAction::WINDOW_ONLINE);
     // TRANSLATORS: short button name for help window.
     addButton(N_("HLP"),
+        // TRANSLATORS: long button name for help window.
         _("Help"), x, h, InputAction::WINDOW_HELP);
     // TRANSLATORS: short button name for quests window.
     addButton(N_("QE"),
+        // TRANSLATORS: long button name for quests window.
         _("Quests"), x, h, InputAction::WINDOW_QUESTS);
     // TRANSLATORS: short button name for kill stats window.
     addButton(N_("KS"),
+        // TRANSLATORS: long button name for kill stats window.
         _("Kill stats"), x, h, InputAction::WINDOW_KILLS);
     addButton(":-)",
+        // TRANSLATORS: long button name for emotes window.
         _("Smilies"), x, h, InputAction::WINDOW_EMOTE_SHORTCUT);
     // TRANSLATORS: short button name for chat window.
     addButton(N_("CH"),
+        // TRANSLATORS: longt button name for chat window.
         _("Chat"), x, h, InputAction::WINDOW_CHAT,
 #ifdef ANDROID
         Visible_true);
@@ -88,18 +94,23 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
 #endif
     // TRANSLATORS: short button name for status window.
     addButton(N_("STA"),
+        // TRANSLATORS: long button name for status window.
         _("Status"), x, h, InputAction::WINDOW_STATUS);
     // TRANSLATORS: short button name for equipment window.
     addButton(N_("EQU"),
+        // TRANSLATORS: long button name for equipment window.
         _("Equipment"), x, h, InputAction::WINDOW_EQUIPMENT);
     // TRANSLATORS: short button name for inventory window.
     addButton(N_("INV"),
+        // TRANSLATORS: long button name for inventory window.
         _("Inventory"), x, h, InputAction::WINDOW_INVENTORY);
     // TRANSLATORS: short button name for cart window.
     addButton(N_("CA"),
+        // TRANSLATORS: long button name for cart window.
         _("Cart"), x, h, InputAction::WINDOW_CART);
     // TRANSLATORS: short button name for map window.
     addButton(N_("MAP"),
+        // TRANSLATORS: long button name for map window.
         _("Map"), x, h, InputAction::WINDOW_MINIMAP,
         Visible_false);
 
@@ -107,59 +118,60 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
     {
         // TRANSLATORS: short button name for skills window.
         addButton(N_("SKI"),
+            // TRANSLATORS: long button name for skills window.
             _("Skills"), x, h, InputAction::WINDOW_SKILL);
     }
 
     // TRANSLATORS: short button name for social window.
     addButton(N_("SOC"),
-    // TRANSLATORS: full button name
+        // TRANSLATORS: long button name for social window.
         _("Social"), x, h, InputAction::WINDOW_SOCIAL);
     // TRANSLATORS: short button name for shortcuts window.
     addButton(N_("SH"),
-        // TRANSLATORS: full button name
+        // TRANSLATORS: long button name for shortcuts window.
         _("Shortcuts"), x, h, InputAction::WINDOW_SHORTCUT);
     // TRANSLATORS: short button name for spells window.
     addButton(N_("SP"),
-        // TRANSLATORS: full button name
+        // TRANSLATORS: long button name for spells window.
         _("Spells"), x, h, InputAction::WINDOW_SPELLS);
     // TRANSLATORS: short button name for drops window.
     addButton(N_("DR"),
-        // TRANSLATORS: full button name
+        // TRANSLATORS: long button name for drops window.
         _("Drop"), x, h, InputAction::WINDOW_DROP,
         Visible_false);
     // TRANSLATORS: short button name for did you know window.
     addButton(N_("YK"),
-        // TRANSLATORS: full button name
+        // TRANSLATORS: long button name for did you know window.
         _("Did you know"), x, h, InputAction::WINDOW_DIDYOUKNOW,
         Visible_false);
     // TRANSLATORS: short button name for shop window.
     addButton(N_("SHP"),
-        // TRANSLATORS: full button name
+        // TRANSLATORS: long button name for shop window.
         _("Shop"), x, h, InputAction::WINDOW_SHOP,
         Visible_false);
     // TRANSLATORS: short button name for outfits window.
     addButton(N_("OU"),
-        // TRANSLATORS: full button name
+        // TRANSLATORS: long button name for outfits window.
         _("Outfits"), x, h, InputAction::WINDOW_OUTFIT,
         Visible_false);
     // TRANSLATORS: short button name for updates window.
     addButton(N_("UP"),
-        // TRANSLATORS: full button name
+        // TRANSLATORS: long button name for updates window.
         _("Updates"), x, h, InputAction::WINDOW_UPDATER,
         Visible_false);
     // TRANSLATORS: short button name for bank window.
     addButton(N_("BA"),
-        // TRANSLATORS: full button name
+        // TRANSLATORS: long button name for bank window.
         _("Bank"), x, h, InputAction::WINDOW_BANK,
         Visible_true);
     // TRANSLATORS: short button name for mail window.
     addButton(N_("MA"),
-        // TRANSLATORS: full button name
+        // TRANSLATORS: long button name for mail window.
         _("Mail"), x, h, InputAction::WINDOW_MAIL,
         Visible_true),
     // TRANSLATORS: short button name for debug window.
     addButton(N_("DBG"),
-        // TRANSLATORS: full button name
+        // TRANSLATORS: long button name for debug window.
         _("Debug"), x, h, InputAction::WINDOW_DEBUG,
 #ifdef ANDROID
         Visible_true);
@@ -168,12 +180,12 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
 #endif
     // TRANSLATORS: short button name for windows list menu.
     addButton(N_("WIN"),
-        // TRANSLATORS: full button name
+        // TRANSLATORS: long button name for windows list menu.
         _("Windows"), x, h, InputAction::SHOW_WINDOWS,
         Visible_false);
     // TRANSLATORS: short button name for setup window.
     addButton(N_("SET"),
-        // TRANSLATORS: full button name
+        // TRANSLATORS: long button name for setup window.
         _("Setup"), x, h, InputAction::WINDOW_SETUP);
 
     x += mPadding - mSpacing;

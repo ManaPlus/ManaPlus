@@ -954,6 +954,7 @@ std::string timeDiffToString(int timeDiff)
     }
     if (str.empty())
     {
+        // TRANSLATORS: uptime command
         str.append(strprintf(ngettext(N_("%d second"), N_("%d seconds"),
             0), 0));
     }

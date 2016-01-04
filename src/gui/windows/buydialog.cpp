@@ -260,8 +260,8 @@ void BuyDialog::init()
     mQuantityLabel = new Label(this, strprintf(
         "%d / %d", mAmountItems, mMaxItems));
     mQuantityLabel->setAlignment(Graphics::CENTER);
-    // TRANSLATORS: buy dialog label
     mMoneyLabel = new Label(this, strprintf(
+        // TRANSLATORS: buy dialog label
         _("Price: %s / Total: %s"), "", ""));
 
     mAmountField = new IntTextField(this, 1, 1, 123);

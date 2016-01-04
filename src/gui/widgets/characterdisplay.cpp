@@ -130,9 +130,13 @@ void CharacterDisplay::mouseMoved(MouseEvent &event A_UNUSED)
     const std::string &name = mName->getCaption();
     if (!name.empty())
     {
-        textPopup->show(mouseX, mouseY, name, strprintf(_("Level: %u"),
+        textPopup->show(mouseX, mouseY,
+            name,
+            // TRANSLATORS: character level
+            strprintf(_("Level: %u"),
             static_cast<uint32_t>(
             mCharacter->data.mAttributes[Attributes::LEVEL])),
+            // TRANSLATORS: character money
             strprintf(_("Money: %s"), Units::formatCurrency(
             mCharacter->data.mAttributes[Attributes::MONEY]).c_str()));
     }

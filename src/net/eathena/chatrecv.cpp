@@ -132,18 +132,23 @@ void ChatRecv::processFormatMessage(Net::MessageIn &msg)
     switch (msgId)
     {
         case 1334:
+            // TRANSLATORS: error message
             chatMsg = _("Can't cast skill in this area.");
             break;
         case 1335:
+            // TRANSLATORS: error message
             chatMsg = _("Can't use item in this area.");
             break;
         case 1773:
+            // TRANSLATORS: error message
             chatMsg = _("Can't equip. Wrong level.");
             break;
         case 1774:
+            // TRANSLATORS: error message
             chatMsg = _("Can't use. Wrong level.");
             break;
         case 1923:
+            // TRANSLATORS: error message
             chatMsg = _("Work in progress.");  // busy with npc
             break;
         default:

@@ -157,12 +157,16 @@ void SkillInfo::update()
     }
 
     if (sp)
+    {
+        // TRANSLATORS: skill mana
         skillEffect.append(strprintf(_(" / Mana: -%d"), sp));
+    }
 
     if (range > 0)
     {
         if (!skillEffect.empty())
             skillEffect.append(" / ");
+        // TRANSLATORS: skill range
         skillEffect.append(strprintf(_("Range: %d"), range));
     }
 

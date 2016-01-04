@@ -119,11 +119,17 @@ GeneralHandler::GeneralHandler() :
     generalHandler = this;
 
     std::vector<ItemDB::Stat> stats;
+    // TRANSLATORS: player stat
     stats.push_back(ItemDB::Stat("str", _("Strength %s")));
+    // TRANSLATORS: player stat
     stats.push_back(ItemDB::Stat("agi", _("Agility %s")));
+    // TRANSLATORS: player stat
     stats.push_back(ItemDB::Stat("vit", _("Vitality %s")));
+    // TRANSLATORS: player stat
     stats.push_back(ItemDB::Stat("int", _("Intelligence %s")));
+    // TRANSLATORS: player stat
     stats.push_back(ItemDB::Stat("dex", _("Dexterity %s")));
+    // TRANSLATORS: player stat
     stats.push_back(ItemDB::Stat("luck", _("Luck %s")));
 
     ItemDB::setStatsList(stats);
@@ -182,9 +188,14 @@ void GeneralHandler::flushNetwork()
     if (Network::mInstance->getState() == Network::NET_ERROR)
     {
         if (!Network::mInstance->getError().empty())
+        {
             errorMessage = Network::mInstance->getError();
+        }
         else
+        {
+            // TRANSLATORS: error message
             errorMessage = _("Got disconnected from server!");
+        }
 
         client->setState(State::ERROR);
     }
@@ -208,33 +219,52 @@ void GeneralHandler::gameStarted() const
     statusWindow->clearAttributes();
 
     statusWindow->addAttribute(Attributes::STR,
+        // TRANSLATORS: player stat
         _("Strength"), "str", Modifiable_true);
     statusWindow->addAttribute(Attributes::AGI,
+        // TRANSLATORS: player stat
         _("Agility"), "agi", Modifiable_true);
     statusWindow->addAttribute(Attributes::VIT,
+        // TRANSLATORS: player stat
         _("Vitality"), "vit", Modifiable_true);
     statusWindow->addAttribute(Attributes::INT,
+        // TRANSLATORS: player stat
         _("Intelligence"), "int", Modifiable_true);
     statusWindow->addAttribute(Attributes::DEX,
+        // TRANSLATORS: player stat
         _("Dexterity"), "dex", Modifiable_true);
     statusWindow->addAttribute(Attributes::LUK,
+        // TRANSLATORS: player stat
         _("Luck"), "luk", Modifiable_true);
 
+    // TRANSLATORS: player stat
     statusWindow->addAttribute(Attributes::ATK, _("Attack"));
+    // TRANSLATORS: player stat
     statusWindow->addAttribute(Attributes::DEF, _("Defense"));
+    // TRANSLATORS: player stat
     statusWindow->addAttribute(Attributes::MATK, _("M.Attack"));
+    // TRANSLATORS: player stat
     statusWindow->addAttribute(Attributes::MDEF, _("M.Defense"));
+    // TRANSLATORS: player stat
     // xgettext:no-c-format
     statusWindow->addAttribute(Attributes::HIT, _("% Accuracy"));
+    // TRANSLATORS: player stat
     // xgettext:no-c-format
     statusWindow->addAttribute(Attributes::FLEE, _("% Evade"));
+    // TRANSLATORS: player stat
     // xgettext:no-c-format
     statusWindow->addAttribute(Attributes::CRIT, _("% Critical"));
+    // TRANSLATORS: player stat
     statusWindow->addAttribute(Attributes::ATTACK_DELAY, _("Attack Delay"));
+    // TRANSLATORS: player stat
     statusWindow->addAttribute(Attributes::WALK_SPEED, _("Walk Delay"));
+    // TRANSLATORS: player stat
     statusWindow->addAttribute(Attributes::ATTACK_RANGE, _("Attack Range"));
+    // TRANSLATORS: player stat
     statusWindow->addAttribute(Attributes::ATTACK_SPEED, _("Damage per sec."));
+    // TRANSLATORS: player stat
     statusWindow->addAttribute(Attributes::KARMA, _("Karma"));
+    // TRANSLATORS: player stat
     statusWindow->addAttribute(Attributes::MANNER, _("Manner"));
 }
 

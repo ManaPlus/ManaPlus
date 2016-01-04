@@ -97,8 +97,8 @@ class SocialGuildTab final : public SocialTab,
                 guildHandler->leave(mGuild->getId());
                 if (localChatTab)
                 {
-                    // TRANSLATORS: chat message
                     localChatTab->chatLog(strprintf(
+                        // TRANSLATORS: chat message
                         _("Guild %s quit requested."),
                         mGuild->getName().c_str()),
                         ChatMsgType::BY_SERVER);

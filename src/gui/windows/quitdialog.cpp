@@ -100,6 +100,7 @@ QuitDialog::QuitDialog(QuitDialog **const pointerToMe) :
     if (config.getBoolValue("rated") == false
         && config.getIntValue("gamecount") > 3)
     {
+        // TRANSLATORS: rate button
         mRate = new RadioButton(this, _("Rate in google play"), "quitdialog");
         placeOption(placer, mRate);
         mOptions[mOptions.size() - 1]->setSelected(true);

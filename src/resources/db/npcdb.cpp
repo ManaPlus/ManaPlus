@@ -148,8 +148,11 @@ void NPCDB::loadXmlFile(const std::string &fileName)
         currentInfo->setDisplay(display);
         if (currentInfo->getMenu().empty())
         {
+            // TRANSLATORS: npc context menu item
             currentInfo->addMenu(_("Talk"), "talk 'NAME'");
+            // TRANSLATORS: npc context menu item
             currentInfo->addMenu(_("Buy"), "buy 'NAME'");
+            // TRANSLATORS: npc context menu item
             currentInfo->addMenu(_("Sell"), "sell 'NAME'");
         }
         mNPCInfos[id] = currentInfo;

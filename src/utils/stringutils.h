@@ -101,8 +101,6 @@ const char *ipToString(const uint32_t address) A_WARN_UNUSED;
  */
 std::string strprintf(const char *const format, ...) A_NONNULL(1) A_WARN_UNUSED
 #ifdef __GNUC__
-    /* This attribute is nice: it even works through gettext invokation. For
-       example, gcc will complain that strprintf(_("%s"), 42) is ill-formed. */
 #ifdef __OpenBSD__
     __attribute__((__format__(printf, 1, 2)))
 #else

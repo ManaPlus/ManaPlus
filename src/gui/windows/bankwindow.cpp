@@ -43,8 +43,8 @@ BankWindow::BankWindow() :
     Window(_("Bank"), Modal_false, nullptr, "bank.xml"),
     ActionListener(),
     BankListener(),
-    // TRANSLATORS: bank window money label
     mBankMoneyLabel(new Label(this, strprintf(
+        // TRANSLATORS: bank window money label
         _("Money in bank: %s"), "            "))),
     mInputMoneyTextField(new IntTextField(this, 0, 0, 2147483647)),
     // TRANSLATORS: bank window button
@@ -87,6 +87,7 @@ void BankWindow::widgetShown(const Event &event)
 
 void BankWindow::bankMoneyChanged(const int money)
 {
+    // TRANSLATORS: bank window money label
     mBankMoneyLabel->setCaption(strprintf(_("Money in bank: %s"),
         Units::formatCurrency(money).c_str()));
 }

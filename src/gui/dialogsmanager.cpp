@@ -140,8 +140,8 @@ void DialogsManager::playerDeath()
 #ifndef DYECMD
     if (!deathNotice)
     {
-        // TRANSLATORS: message header
         CREATEWIDGETV(deathNotice, OkDialog,
+            // TRANSLATORS: message header
             _("Message"),
             DeadDB::getRandomString(),
             // TRANSLATORS: ok dialog button

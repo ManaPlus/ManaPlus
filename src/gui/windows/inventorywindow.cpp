@@ -693,6 +693,7 @@ void InventoryWindow::mouseMoved(MouseEvent &event)
     const Rect &rect = mDimension;
     if (src == mSlotsBar || src == mWeightBar)
     {
+        // TRANSLATORS: money label
         textPopup->show(rect.x + x, rect.y + y, strprintf(_("Money: %s"),
             Units::formatCurrency(PlayerInfo::getAttribute(
             Attributes::MONEY)).c_str()));
@@ -777,6 +778,7 @@ void InventoryWindow::updateButtons(const Item *item)
         if (str.empty())
         {
             mUseButton->setEnabled(false);
+            // TRANSLATORS: default use button name
             mUseButton->setCaption(_("Use"));
         }
         else

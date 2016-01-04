@@ -220,17 +220,27 @@ void SkillRecv::processSkillFailed(Net::MessageIn &msg)
 
         SkillInfo *const info = skillDialog->getSkill(bskill);
         if (info)
+        {
             txt = info->errorText;
+        }
         else
+        {
+            // TRANSLATORS: skill error message
             txt = strprintf(_("Unknown skill error: %d"), bskill);
+        }
     }
     else
     {
         SkillInfo *const info = skillDialog->getSkill(skillId);
         if (info)
+        {
             txt = info->errorText + ".";
+        }
         else
+        {
+            // TRANSLATORS: skill error message
             txt = strprintf(_("Unknown skill error: %d."), skillId);
+        }
     }
 
     txt.append(" ");
@@ -292,11 +302,13 @@ void SkillRecv::processSkillFailed(Net::MessageIn &msg)
             const ItemInfo &info = ItemDB::get(itemId);
             if (amount == 1)
             {
+                // TRANSLATORS: skill error message
                 txt.append(strprintf(_("Need equipment %s."),
                     info.getLink().c_str()));
             }
             else
             {
+                // TRANSLATORS: skill error message
                 txt.append(strprintf(_("Need equipment %s and amount %d"),
                     info.getLink().c_str(),
                     amount));
@@ -310,11 +322,13 @@ void SkillRecv::processSkillFailed(Net::MessageIn &msg)
             const ItemInfo &info = ItemDB::get(itemId);
             if (amount == 1)
             {
+                // TRANSLATORS: skill error message
                 txt.append(strprintf(_("Need item %s."),
                     info.getLink().c_str()));
             }
             else
             {
+                // TRANSLATORS: skill error message
                 txt.append(strprintf(_("Need item %s and amount %d"),
                     info.getLink().c_str(),
                     amount));

@@ -239,8 +239,9 @@ void Setup_Theme::updateInfo()
     mInfo = Theme::loadInfo(mTheme);
     if (mInfo)
     {
-        // TRANSLATORS: theme info dialog
+        // TRANSLATORS: theme name
         mThemeInfo = std::string(_("Name: ")).append(mInfo->name)
+            // TRANSLATORS: theme copyright
             .append("\n").append(_("Copyright:")).append("\n")
             .append(mInfo->copyright);
     }

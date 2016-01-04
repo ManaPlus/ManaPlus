@@ -117,19 +117,29 @@ MailViewWindow::MailViewWindow(const MailMessage *const message) :
         mIcon = new Icon(this, image);
         if (message->itemAmount != 1)
         {
-            mItemLabel = new Label(this, std::string(_("Item:")).append(
-                " (").append(toString(message->itemAmount)).append(") "));
+            mItemLabel = new Label(this, std::string(
+                // TRANSLATORS: mail view item label
+                _("Item:")).append(
+                " (").append(
+                toString(message->itemAmount)).append(
+                ") "));
         }
         else
         {
-            mItemLabel = new Label(this, std::string(_("Item:")).append(" "));
+            mItemLabel = new Label(this,
+                // TRANSLATORS: mail view item label
+                std::string(_("Item:")).append(" "));
         }
         placer(0, n, mItemLabel);
         placer(1, n++, mIcon);
     }
     if (message->money || message->itemId)
     {
-        mGetAttachButton = new Button(this, _("Get attach"), "attach", this);
+        mGetAttachButton = new Button(this,
+            // TRANSLATORS: mail view attach button
+            _("Get attach"),
+             "attach",
+            this);
         placer(0, n++, mGetAttachButton);
     }
     ContainerPlacer placer2;

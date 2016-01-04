@@ -206,8 +206,8 @@ void EditServerDialog::action(const ActionEvent &event)
         if (mServerAddressField->getText().empty()
             || mPortField->getText().empty())
         {
-            // TRANSLATORS: edit server dialog error header
             OkDialog *const dlg = CREATEWIDGETR(OkDialog,
+                // TRANSLATORS: edit server dialog error header
                 _("Error"),
                 // TRANSLATORS: edit server dialog error message
                 _("Please at least type both the address and the port "

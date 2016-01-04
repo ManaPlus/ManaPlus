@@ -319,6 +319,7 @@ impHandler0(quickWindowShow)
         if (setupWindow->isWindowVisible())
             setupWindow->doCancel();
         setupWindow->setVisible(Visible_true);
+        // TRANSLATORS: settings tab name
         setupWindow->activateTab(_("Quick"));
         setupWindow->requestMoveToTop();
         return true;

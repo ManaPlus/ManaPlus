@@ -228,9 +228,9 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
                         || (guildManager && guildManager->havePower()))
 #endif
                     {
-                        // TRANSLATORS: popup menu item
-                        // TRANSLATORS: invite player to guild
                         mBrowserBox->addRow("/guild 'NAME'",
+                            // TRANSLATORS: popup menu item
+                            // TRANSLATORS: invite player to guild
                             _("Invite to guild"));
                     }
                 }
@@ -258,9 +258,9 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
                 mBrowserBox->addRow("/talk 'NAME'", _("Talk"));
                 if (serverFeatures->haveNpcWhispers())
                 {
-                    // TRANSLATORS: popup menu item
-                    // TRANSLATORS: whisper to npc
                     mBrowserBox->addRow("/whispertext NPC:'NAME'",
+                        // TRANSLATORS: popup menu item
+                        // TRANSLATORS: whisper to npc
                         _("Whisper"));
                 }
                 // TRANSLATORS: popup menu item
@@ -531,9 +531,9 @@ void PopupMenu::showPlayerPopup(const std::string &nick)
             }
             if (guild2->getServerGuild())
             {
-                // TRANSLATORS: popup menu item
-                // TRANSLATORS: change player position in guild
                 mBrowserBox->addRow(strprintf(
+                    // TRANSLATORS: popup menu item
+                    // TRANSLATORS: change player position in guild
                     "@@guild-pos|%s >@@", _("Change pos in guild")));
             }
         }
@@ -865,9 +865,9 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
                         }
                         if (guild2->getServerGuild())
                         {
-                            // TRANSLATORS: popup menu item
-                            // TRANSLATORS: change player position in guild
                             mBrowserBox->addRow(strprintf("@@guild-pos|%s >@@",
+                                // TRANSLATORS: popup menu item
+                                // TRANSLATORS: change player position in guild
                                  _("Change pos in guild")));
                         }
                     }
@@ -879,9 +879,9 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
                         && guildManager->havePower()))
 #endif
                     {
-                        // TRANSLATORS: popup menu item
-                        // TRANSLATORS: invite player to guild
                         mBrowserBox->addRow("/guild 'NAME'",
+                            // TRANSLATORS: popup menu item
+                            // TRANSLATORS: invite player to guild
                             _("Invite to guild"));
                     }
                 }
@@ -1056,10 +1056,12 @@ void PopupMenu::handleLink(const std::string &link,
     else if (link == "rename map" && mMapItem)
     {
         mRenameListener.setMapItem(mMapItem);
-        // TRANSLATORS: number of chars in string should be near original
         CREATEWIDGETV(mDialog, TextDialog,
+            // TRANSLATORS: dialog caption
+            // TRANSLATORS: number of chars in string should be near original
             _("Rename map sign          "),
-        // TRANSLATORS: number of chars in string should be near original
+            // TRANSLATORS: label
+            // TRANSLATORS: number of chars in string should be near original
             _("Name:                    "));
         mRenameListener.setDialog(mDialog);
         mDialog->setText(mMapItem->getComment());
@@ -1076,9 +1078,11 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "addcomment" && !mNick.empty())
     {
-        // TRANSLATORS: number of chars in string should be near original
         TextDialog *const dialog = CREATEWIDGETR(TextDialog,
+            // TRANSLATORS: dialog caption
+            // TRANSLATORS: number of chars in string should be near original
             _("Player comment            "),
+            // TRANSLATORS: label
             // TRANSLATORS: number of chars in string should be near original
             _("Comment:                      "));
         mPlayerListener.setDialog(dialog);
@@ -1658,22 +1662,22 @@ void PopupMenu::showPopup(Window *const parent,
                 {
                     if (cnt > 10)
                     {
-                        // TRANSLATORS: popup menu item
-                        // TRANSLATORS: add 10 item amount to trade
                         mBrowserBox->addRow("/addtrade 'INVINDEX' 10",
+                            // TRANSLATORS: popup menu item
+                            // TRANSLATORS: add 10 item amount to trade
                             _("Add to trade 10"));
                     }
-                    // TRANSLATORS: popup menu item
-                    // TRANSLATORS: add half item amount to trade
                     mBrowserBox->addRow("/addtrade 'INVINDEX' /",
+                        // TRANSLATORS: popup menu item
+                        // TRANSLATORS: add half item amount to trade
                         _("Add to trade half"));
-                    // TRANSLATORS: popup menu item
-                    // TRANSLATORS: add all amount except one item to trade
                     mBrowserBox->addRow("/addtrade 'INVINDEX' -1",
+                        // TRANSLATORS: popup menu item
+                        // TRANSLATORS: add all amount except one item to trade
                         _("Add to trade all-1"));
-                    // TRANSLATORS: popup menu item
-                    // TRANSLATORS: add all amount item to trade
                     mBrowserBox->addRow("/addtrade 'INVINDEX' all",
+                        // TRANSLATORS: popup menu item
+                        // TRANSLATORS: add all amount item to trade
                         _("Add to trade all"));
                 }
                 mBrowserBox->addRow("##3---");
@@ -1687,22 +1691,22 @@ void PopupMenu::showPopup(Window *const parent,
                 {
                     if (cnt > 10)
                     {
-                        // TRANSLATORS: popup menu item
-                        // TRANSLATORS: add 10 item amount to storage
                         mBrowserBox->addRow("/invtostorage 'INVINDEX' 10",
+                            // TRANSLATORS: popup menu item
+                            // TRANSLATORS: add 10 item amount to storage
                             _("Store 10"));
                     }
-                    // TRANSLATORS: popup menu item
-                    // TRANSLATORS: add half item amount to storage
                     mBrowserBox->addRow("/invtostorage 'INVINDEX' /",
+                        // TRANSLATORS: popup menu item
+                        // TRANSLATORS: add half item amount to storage
                         _("Store half"));
-                    // TRANSLATORS: popup menu item
-                    // TRANSLATORS: add all except one item amount to storage
                     mBrowserBox->addRow("/invtostorage 'INVINDEX' -1",
+                        // TRANSLATORS: popup menu item
+                        // TRANSLATORS: add all except one item to storage
                         _("Store all-1"));
-                    // TRANSLATORS: popup menu item
-                    // TRANSLATORS: add all item amount to storage
                     mBrowserBox->addRow("/invtostorage 'INVINDEX' all",
+                        // TRANSLATORS: popup menu item
+                        // TRANSLATORS: add all item amount to storage
                         _("Store all"));
                 }
                 mBrowserBox->addRow("##3---");
@@ -1718,22 +1722,22 @@ void PopupMenu::showPopup(Window *const parent,
             {
                 if (cnt > 10)
                 {
-                    // TRANSLATORS: popup menu item
-                    // TRANSLATORS: get 10 item amount from storage
                     mBrowserBox->addRow("/storagetoinv 'INVINDEX' 10",
+                        // TRANSLATORS: popup menu item
+                        // TRANSLATORS: get 10 item amount from storage
                         _("Retrieve 10"));
                 }
-                // TRANSLATORS: popup menu item
-                // TRANSLATORS: get half item amount from storage
                 mBrowserBox->addRow("/storagetoinv 'INVINDEX' /",
+                    // TRANSLATORS: popup menu item
+                    // TRANSLATORS: get half item amount from storage
                     _("Retrieve half"));
-                // TRANSLATORS: popup menu item
-                // TRANSLATORS: get all except one item amount from storage
                 mBrowserBox->addRow("/storagetoinv 'INVINDEX' -1",
+                    // TRANSLATORS: popup menu item
+                    // TRANSLATORS: get all except one item amount from storage
                     _("Retrieve all-1"));
-                // TRANSLATORS: popup menu item
-                // TRANSLATORS: get all item amount from storage
                 mBrowserBox->addRow("/storagetoinv 'INVINDEX' all",
+                    // TRANSLATORS: popup menu item
+                    // TRANSLATORS: get all item amount from storage
                     _("Retrieve all"));
             }
             break;
@@ -2518,9 +2522,9 @@ void PopupMenu::addChat(const Being *const being)
     const ChatObject *const chat = being->getChat();
     if (chat)
     {
-        // TRANSLATORS: popup menu item
-        // TRANSLATORS: invite player to party
         mBrowserBox->addRow("join chat",
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: invite player to party
             strprintf(_("Join chat %s"), chat->title.c_str()).c_str());
         mBrowserBox->addRow("##3---");
     }

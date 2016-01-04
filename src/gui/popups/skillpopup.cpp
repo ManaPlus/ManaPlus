@@ -113,8 +113,8 @@ void SkillPopup::show(const SkillInfo *const skill,
     mSkillEffect->setTextWrapped(effect, 196);
     if (level != 0)
     {
-        // TRANSLATORS: skill level
         mSkillLevel->setTextWrapped(strprintf(
+            // TRANSLATORS: skill level
             _("Level: %d / %d"), level, skill->level),
             196);
     }
@@ -122,15 +122,15 @@ void SkillPopup::show(const SkillInfo *const skill,
     {
         if (skill->level != 0)
         {
-            // TRANSLATORS: skill level
             mSkillLevel->setTextWrapped(strprintf(
+                // TRANSLATORS: skill level
                 _("Level: %d"), skill->level),
                 196);
         }
         else
         {
-            // TRANSLATORS: skill level for tmw fake skills
             mSkillLevel->setTextWrapped(
+                // TRANSLATORS: skill level for tmw fake skills
                 _("Level: Unknown"),
                 196);
         }

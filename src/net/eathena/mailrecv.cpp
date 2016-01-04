@@ -144,6 +144,7 @@ void MailRecv::processNewMail(Net::MessageIn &msg)
     const std::string subj = msg.readString(40, "title");
     const std::string sender = msg.readString(24, "sender name");
     NotifyManager::notify(NotifyTypes::NEW_MAIL,
+        // TRANSLATORS: mail message notification
         strprintf(_("You have new mail from %s with subject %s"),
         sender.c_str(), subj.c_str()));
     mailHandler->refresh();

@@ -44,8 +44,11 @@
 
 static void printHelp()
 {
+    // TRANSLATORS: command line help
     std::cout << _("dyecmd srcfile dyestring dstfile") << std::endl;
+    // TRANSLATORS: command line help
     std::cout << _("or") << std::endl;
+    // TRANSLATORS: command line help
     std::cout << _("dyecmd srcdyestring dstfile") << std::endl;
 }
 

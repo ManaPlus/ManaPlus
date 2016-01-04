@@ -107,6 +107,7 @@ impHandler(setPetName)
         const Being *const pet = getPet();
         if (!pet)
             return false;
+        // TRANSLATORS: dialog header
         inputActionReplayListener.openDialog(_("Rename your pet"),
             pet->getName(),
             InputAction::PET_SET_NAME);

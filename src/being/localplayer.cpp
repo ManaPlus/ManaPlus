@@ -1085,8 +1085,9 @@ void LocalPlayer::addJobMessage(const int change)
         {
             MessagePair pair = mMessages.back();
             // TRANSLATORS: this is normal experience
-            if (pair.first.find(strprintf(" %s", _("xp")))
-                == pair.first.size() - strlen(_("xp")) - 1)
+            if (pair.first.find(strprintf(" %s", _("xp"))) ==
+                // TRANSLATORS: this is normal experience
+                pair.first.size() - strlen(_("xp")) - 1)
             {
                 mMessages.pop_back();
                 // TRANSLATORS: this is job experience

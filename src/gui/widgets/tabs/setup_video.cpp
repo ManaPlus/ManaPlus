@@ -118,8 +118,9 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
     mFpsLabel->setCaption(mFps > 0 ? toString(mFps) : _("None"));
     mFpsLabel->setWidth(60);
     // TRANSLATORS: video settings label
-    mAltFpsLabel->setCaption(_("Alt FPS limit: ") + (mAltFps > 0
-                             ? toString(mAltFps) : _("None")));
+    mAltFpsLabel->setCaption(_("Alt FPS limit: ") + (mAltFps > 0 ?
+        // TRANSLATORS: video settings label value
+        toString(mAltFps) : _("None")));
     mAltFpsLabel->setWidth(150);
     mFpsSlider->setEnabled(mFps > 0);
     mFpsSlider->setValue(mFps);
@@ -392,6 +393,7 @@ void Setup_Video::action(const ActionEvent &event)
                         _("Screen Resolution Changed"),
                         // TRANSLATORS: video settings warning
                        _("Restart your client for the change to take effect.")
+                        // TRANSLATORS: video settings warning
                        + std::string("\n") + _("Some windows may be moved to "
                         "fit the lowered resolution."),
                         // TRANSLATORS: ok dialog button

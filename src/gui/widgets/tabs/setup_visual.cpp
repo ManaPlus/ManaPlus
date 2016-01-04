@@ -171,6 +171,7 @@ Setup_Visual::Setup_Visual(const Widget2 *const widget) :
     mParticleList->push_back(_("high"));
     // TRANSLATORS: particle details
     mParticleList->push_back(_("max"));
+    // TRANSLATORS: settings option
     (new SetupItemSlider2(_("Particle detail"), "", "particleEmitterSkip",
         this, "particleEmitterSkipEvent", 0, 3, 1, mParticleList,
         OnTheFly_true,
@@ -220,6 +221,7 @@ Setup_Visual::Setup_Visual(const Widget2 *const widget) :
     // TRANSLATORS: settings group
     new SetupItemLabel(_("Screenshots"), "", this);
 
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Add water mark into screenshots"),
         "", "addwatermark", this, "addwatermarkEvent");
 

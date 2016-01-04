@@ -1664,8 +1664,8 @@ int Client::gameExec()
                         serverConfig.write();
                     logger->log1("State: ERROR");
                     logger->log("Error: %s\n", errorMessage.c_str());
-                    // TRANSLATORS: error message header
                     mCurrentDialog = DialogsManager::openErrorDialog(
+                        // TRANSLATORS: error message header
                         _("Error"),
                         errorMessage,
                         Modal_true);

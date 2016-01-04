@@ -205,13 +205,13 @@ UserPalette::UserPalette() :
         _("Skill unit"));
     addColor(UserColorId::PARTY,
         0xff00d8,
-        // TRANSLATORS: palette color
         GradientType::STATIC,
+        // TRANSLATORS: palette color
         _("Party members"));
     addColor(UserColorId::GUILD,
         0xff00d8,
-        // TRANSLATORS: palette color
         GradientType::STATIC,
+        // TRANSLATORS: palette color
         _("Guild members"));
     addColor(UserColorId::TEAM1,
         0x0000ff,

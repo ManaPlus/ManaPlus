@@ -527,8 +527,8 @@ void Dirs::initScreenshotDir()
         settings.screenshotDir = settings.options.screenshotDir;
         if (mkdir_r(settings.screenshotDir.c_str()))
         {
-            // TRANSLATORS: directory creation error
             logger->log(strprintf(
+                // TRANSLATORS: directory creation error
                 _("Error: %s doesn't exist and can't be created! "
                 "Exiting."), settings.screenshotDir.c_str()));
         }
@@ -548,8 +548,8 @@ void Dirs::initScreenshotDir()
 
             if (mkdir_r(settings.screenshotDir.c_str()))
             {
-                // TRANSLATORS: directory creation error
                 logger->log(strprintf(
+                    // TRANSLATORS: directory creation error
                     _("Error: %s doesn't exist and can't be created! "
                     "Exiting."), settings.screenshotDir.c_str()));
             }

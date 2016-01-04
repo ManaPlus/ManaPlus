@@ -45,8 +45,8 @@
 
 #include "debug.h"
 
-// TRANSLATORS: color selection preview message
 const char *const Setup_Colors::rawmsg =
+    // TRANSLATORS: color selection preview message
     N_("This is what the color looks like");
 
 Setup_Colors::Setup_Colors(const Widget2 *const widget) :
@@ -105,16 +105,19 @@ Setup_Colors::Setup_Colors(const Widget2 *const widget) :
     std::string longText = _("Static");
 
     const Font *const font = getFont();
+    // TRANSLATORS: color type
     if (getFont()->getWidth(_("Pulse")) > font->getWidth(longText))
     {
         // TRANSLATORS: color type
         longText = _("Pulse");
     }
+    // TRANSLATORS: color type
     if (getFont()->getWidth(_("Rainbow")) > font->getWidth(longText))
     {
         // TRANSLATORS: color type
         longText = _("Rainbow");
     }
+    // TRANSLATORS: color type
     if (getFont()->getWidth(_("Spectrum")) > font->getWidth(longText))
     {
         // TRANSLATORS: color type

@@ -161,6 +161,7 @@ void SkillDialog::action(const ActionEvent &event)
             {
                 mUseButton->setEnabled(false);
                 mIncreaseButton->setEnabled(false);
+                // TRANSLATORS: skills dialog button
                 mUseButton->setCaption(_("Use"));
             }
         }
@@ -333,6 +334,7 @@ void SkillDialog::loadXmlFile(const std::string &fileName)
                         skill->model = model;
                         skill->update();
                         skill->useButton = XML::getProperty(
+                            // TRANSLATORS: skills dialog button
                             node, "useButton", _("Use"));
                         skill->owner = parseOwner(XML::getProperty(
                             node, "owner", "player"));
@@ -507,7 +509,9 @@ void SkillDialog::addSkill(const SkillOwner::Type owner,
         skill->range = range;
         skill->sp = sp;
         skill->update();
+        // TRANSLATORS: skills dialog button
         skill->useButton = _("Use");
+        // TRANSLATORS: skill error message
         skill->errorText = strprintf(_("Failed skill: %s"), name.c_str());
         mDefaultModel->addSkill(skill);
 
@@ -592,6 +596,7 @@ void SkillDialog::updateTabSelection()
         else
         {
             mUseButton->setEnabled(false);
+            // TRANSLATORS: inventory button
             mUseButton->setCaption(_("Use"));
         }
     }

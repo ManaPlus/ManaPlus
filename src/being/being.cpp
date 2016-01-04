@@ -660,9 +660,9 @@ void Being::takeDamage(Being *restrict const attacker,
     BLOCK_START("Being::takeDamage1")
 
     Font *font = nullptr;
-    // TRANSLATORS: hit or miss message in attacks
-    const std::string damage = amount ? toString(amount)
-        : type == AttackType::FLEE ? _("dodge") : _("miss");
+    const std::string damage = amount ? toString(amount) :
+        // TRANSLATORS: dodge or miss message in attacks
+        type == AttackType::FLEE ? _("dodge") : _("miss");
     const Color *color;
 
     if (gui)

@@ -430,9 +430,15 @@ void ShopWindow::updateButtonsAndLabels()
         if (mPublishButton)
         {
             if (mEnableBuyingStore)
+            {
+                // TRANSLATORS: unpublish shop button
                 mPublishButton->setCaption(_("Unpublish"));
+            }
             else
+            {
+                // TRANSLATORS: publish shop button
                 mPublishButton->setCaption(_("Publish"));
+            }
             mPublishButton->adjustSize();
             if (mBuyShopSize > 0)
                 mPublishButton->setEnabled(true);
@@ -449,9 +455,15 @@ void ShopWindow::updateButtonsAndLabels()
         if (mPublishButton)
         {
             if (mEnableVending)
+            {
+                // TRANSLATORS: unpublish shop button
                 mPublishButton->setCaption(_("Unpublish"));
+            }
             else
+            {
+                // TRANSLATORS: publish shop button
                 mPublishButton->setCaption(_("Publish"));
+            }
             mPublishButton->adjustSize();
             if (sellNotEmpty
                 && mSellShopSize > 0
@@ -788,7 +800,8 @@ void ShopWindow::giveList(const std::string &nick, const int mode)
 }
 
 void ShopWindow::sendMessage(const std::string &nick,
-                             std::string data, const bool random)
+                             std::string data,
+                             const bool random)
 {
     if (!chatWindow)
         return;
@@ -898,7 +911,10 @@ void ShopWindow::processRequest(const std::string &nick, std::string data,
 
     if (!mTradeNick.empty())
     {
-        sendMessage(nick, "error: player busy ", true);
+        sendMessage(nick,
+            // TRANSLATORS: error buy/sell shop request
+            _("error: player busy") + std::string(" "),
+            true);
         return;
     }
 
@@ -908,7 +924,6 @@ void ShopWindow::processRequest(const std::string &nick, std::string data,
     std::string part2;
     std::string part3;
     std::stringstream ss(data);
-    std::string msg;
     int id;
     int price;
     int amount;
@@ -938,20 +953,24 @@ void ShopWindow::processRequest(const std::string &nick, std::string data,
         if (!item2 || item2->getQuantity() < amount
             || !findShopItem(mTradeItem, SELL))
         {
-            sendMessage(nick, "error: Can't sell this item ", true);
+            sendMessage(nick,
+                // TRANSLATORS: error buy/sell shop request
+                _("error: Can't sell this item") + std::string(" "),
+                true);
             return;
         }
-        msg = "buy";
         mTradeMoney = 0;
     }
     else
     {
         if (!findShopItem(mTradeItem, BUY))
         {
-            sendMessage(nick, "error: Can't buy this item ", true);
+            sendMessage(nick,
+                // TRANSLATORS: error buy/sell shop request
+                _("error: Can't buy this item") + std::string(" "),
+                true);
             return;
         }
-        msg = "sell";
         mTradeMoney = mTradeItem->getPrice() * mTradeItem->getQuantity();
     }
 
@@ -964,12 +983,26 @@ void ShopWindow::processRequest(const std::string &nick, std::string data,
     }
     else
     {
+        std::string msg;
+        if (mode == BUY)
+        {
+            // TRANSLATORS: buy shop request (nick, item)
+            msg = strprintf(_("%s wants to buy %s do you accept?"),
+                nick.c_str(),
+                mTradeItem->getInfo().getName().c_str());
+        }
+        else
+        {
+            // TRANSLATORS: sell shop request (nick, item)
+            msg = strprintf(_("%s wants to sell %s do you accept?"),
+                nick.c_str(),
+                mTradeItem->getInfo().getName().c_str());
+        }
+
         ConfirmDialog *const confirmDlg = CREATEWIDGETR(ConfirmDialog,
             // TRANSLATORS: shop window dialog
             _("Request for Trade"),
-            strprintf(_("%s wants to %s %s do you accept?"),
-            nick.c_str(), msg.c_str(),
-            mTradeItem->getInfo().getName().c_str()),
+            msg,
             SOUND_REQUEST,
             true);
         confirmDlg->addActionListener(this);
