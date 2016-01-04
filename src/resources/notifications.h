@@ -375,7 +375,7 @@ namespace NotifyManager
             NotifyFlags::EMPTY},
         {"pet catch success",
             // TRANSLATORS: notification message
-            N_("Pet catched."),
+            N_("Pet caught."),
             NotifyFlags::EMPTY},
         {"pet catch unknown error",
             // TRANSLATORS: notification message
