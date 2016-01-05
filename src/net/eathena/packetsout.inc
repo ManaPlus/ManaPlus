@@ -175,6 +175,7 @@ packet(CMSG_IGNORE_NICK,             0x00cf);
 packet(CMSG_REQUEST_IGNORE_LIST,     0x00d3);
 packet(CMSG_REQUEST_RANKS,           0x097c);
 packet(CMSG_SET_SHORTCUTS,           0x02ba);
+packet(CMSG_SHORTCUTS_ROW_SHIFT,     0x0a01);
 packet(CMSG_NPC_COMPLETE_PROGRESS_BAR, 0x02f1);
 packet(CMSG_NPC_PRODUCE_MIX,         0x018e);
 packet(CMSG_NPC_COOKING,             0x025b);

@@ -59,6 +59,8 @@ class PlayerHandler final : public Ea::PlayerHandler
                          const int id,
                          const int level) const override final A_CONST;
 
+        void shortcutShiftRow(const int row) const override final;
+
         void removeOption() const override final A_CONST;
 
         void changeCart(const int type) const override final A_CONST;

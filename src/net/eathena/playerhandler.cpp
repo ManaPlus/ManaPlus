@@ -31,6 +31,7 @@
 #include "debug.h"
 
 extern Net::PlayerHandler *playerHandler;
+extern int serverVersion;
 
 namespace EAthena
 {
@@ -168,6 +169,14 @@ void PlayerHandler::setShortcut(const int idx,
     outMsg.writeInt8(static_cast<int8_t>(type), "type");
     outMsg.writeInt32(id, "id");
     outMsg.writeInt16(static_cast<int16_t>(level), "level");
+}
+
+void PlayerHandler::shortcutShiftRow(const int row) const
+{
+    if (serverVersion != 0 && serverVersion < 11)
+        return;
+    createOutPacket(CMSG_SHORTCUTS_ROW_SHIFT);
+    outMsg.writeInt8(static_cast<int8_t>(row), "row");
 }
 
 void PlayerHandler::removeOption() const

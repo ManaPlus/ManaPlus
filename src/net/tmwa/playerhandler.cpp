@@ -189,6 +189,10 @@ void PlayerHandler::revive() const
 {
 }
 
+void PlayerHandler::shortcutShiftRow(const int row A_UNUSED) const
+{
+}
+
 void PlayerHandler::setViewEquipment(const bool allow A_UNUSED) const
 {
 }
