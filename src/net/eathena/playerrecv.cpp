@@ -419,4 +419,10 @@ void PlayerRecv::processOnlineList(Net::MessageIn &msg)
     BLOCK_END("PlayerRecv::processOnlineList")
 }
 
+void PlayerRecv::processDressRoomOpen(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+    msg.readInt16("view");
+}
+
 }  // namespace EAthena

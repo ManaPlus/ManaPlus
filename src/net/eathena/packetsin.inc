@@ -460,3 +460,9 @@ if (serverVersion >= 8 && packetVersion >= 20150226)
     packet(SMSG_PLAYER_CART_EQUIP,             0x0a0f,  -1, &InventoryRecv::processPlayerCartEquip);
     packet(SMSG_PLAYER_STORAGE_EQUIP,          0x0a10,  -1, &InventoryRecv::processPlayerStorageEquip);
 }
+
+// partial implimentation for future use
+if (packetVersion >= 20150513)
+{
+    packet(SMSG_DRESS_ROOM_OPEN,               0x0a02,   4, &PlayerRecv::processDressRoomOpen);
+}
