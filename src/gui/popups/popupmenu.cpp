@@ -108,8 +108,8 @@ PopupMenu::PopupMenu() :
     mScrollArea(nullptr),
     mBeingId(BeingId_zero),
     mFloorItemId(BeingId_zero),
-    mItem(nullptr),
     mItemId(0),
+    mItemIndex(-1),
     mItemColor(ItemColor_one),
     mMapItem(nullptr),
     mTab(nullptr),
@@ -955,7 +955,8 @@ void PopupMenu::showChangePos(const int x, const int y)
     {
         mBeingId = BeingId_zero;
         mFloorItemId = BeingId_zero;
-        mItem = nullptr;
+        mItemIndex = -1;
+        mItemId = 0;
         mMapItem = nullptr;
         mNick.clear();
         mType = ActorType::Unknown;
@@ -1583,8 +1584,8 @@ void PopupMenu::handleLink(const std::string &link,
         replaceAll(cmd, "'ITEMCOLOR'", toString(toInt(mItemColor, int)));
         replaceAll(cmd, "'BEINGTYPEID'", toString(static_cast<int>(mType)));
         replaceAll(cmd, "'PLAYER'", localPlayer->getName());
-        if (mItem)
-            replaceAll(cmd, "'INVINDEX'", toString(mItem->getInvIndex()));
+        if (mItemIndex >= 0)
+            replaceAll(cmd, "'INVINDEX'", toString(mItemIndex));
         else
             replaceAll(cmd, "'INVINDEX'", "0");
         if (mMapItem)
@@ -1614,8 +1615,8 @@ void PopupMenu::handleLink(const std::string &link,
 
     mBeingId = BeingId_zero;
     mFloorItemId = BeingId_zero;
-    mItem = nullptr;
     mItemId = 0;
+    mItemIndex = -1;
     mItemColor = ItemColor_one;
     mMapItem = nullptr;
     mTab = nullptr;
@@ -1638,8 +1639,8 @@ void PopupMenu::showPopup(Window *const parent,
     if (!item)
         return;
 
-    mItem = item;
     mItemId = item->getId();
+    mItemIndex = item->getInvIndex();
     mItemColor = item->getColor();
     mWindow = parent;
     mX = x;
@@ -1788,8 +1789,8 @@ void PopupMenu::showItemPopup(const int x, const int y,
     }
     else
     {
-        mItem = nullptr;
         mItemId = itemId;
+        mItemIndex = -1;
         mItemColor = color;
         mX = x;
         mY = y;
@@ -1814,18 +1815,19 @@ void PopupMenu::showItemPopup(const int x, const int y,
 void PopupMenu::showItemPopup(const int x, const int y,
                               Item *const item)
 {
-    mItem = item;
     mX = x;
     mY = y;
     if (item)
     {
         mItemId = item->getId();
         mItemColor = item->getColor();
+        mItemIndex = item->getInvIndex();
     }
     else
     {
         mItemId = 0;
         mItemColor = ItemColor_one;
+        mItemIndex = -1;
     }
     mNick.clear();
     mBrowserBox->clearRows();
@@ -1863,7 +1865,6 @@ void PopupMenu::showItemPopup(const int x, const int y,
 
 void PopupMenu::showDropPopup(const int x, const int y, Item *const item)
 {
-    mItem = item;
     mX = x;
     mY = y;
     mNick.clear();
@@ -1873,6 +1874,7 @@ void PopupMenu::showDropPopup(const int x, const int y, Item *const item)
     {
         mItemId = item->getId();
         mItemColor = item->getColor();
+        mItemIndex = item->getInvIndex();
         const bool isProtected = PlayerInfo::isItemProtected(mItemId);
         addUseDrop(item, isProtected);
         if (InventoryWindow::isStorageActive())
@@ -2134,9 +2136,9 @@ void PopupMenu::showUndressPopup(const int x, const int y,
         return;
 
     mBeingId = being->getId();
-    mItem = item;
     mItemId = item->getId();
     mItemColor = item->getColor();
+    mItemIndex = item->getInvIndex();
     mX = x;
     mY = y;
 
@@ -2589,7 +2591,8 @@ void PopupMenu::clear()
         mDialog->close();
         mDialog = nullptr;
     }
-    mItem = nullptr;
+    mItemIndex = -1;
+    mItemId = 0;
     mMapItem = nullptr;
     mTab = nullptr;
     mSpell = nullptr;

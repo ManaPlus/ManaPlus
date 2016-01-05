@@ -213,8 +213,8 @@ class PopupMenu final : public Popup, public LinkHandler
 
         BeingId mBeingId;
         BeingId mFloorItemId;
-        const Item *mItem;
         int mItemId;
+        int mItemIndex;
         ItemColor mItemColor;
         MapItem *mMapItem;
         ChatTab *mTab;
