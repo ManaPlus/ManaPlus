@@ -65,6 +65,8 @@
 
 #include "debug.h"
 
+extern int serverVersion;
+
 namespace EAthena
 {
 
@@ -253,6 +255,8 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
 
     // Information about a being in range
     const BeingId id = msg.readBeingId("being id");
+    if (serverVersion == 0 || serverVersion >= 11)
+        msg.readBeingId("char id");
     BeingId spawnId;
     if (id == Ea::BeingRecv::mSpawnId)
         spawnId = Ea::BeingRecv::mSpawnId;
@@ -413,6 +417,8 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
 
     // Information about a being in range
     const BeingId id = msg.readBeingId("being id");
+    if (serverVersion == 0 || serverVersion >= 11)
+        msg.readBeingId("char id");
     BeingId spawnId;
     if (id == Ea::BeingRecv::mSpawnId)
         spawnId = Ea::BeingRecv::mSpawnId;
@@ -587,6 +593,8 @@ void BeingRecv::processBeingSpawn(Net::MessageIn &msg)
 
     // Information about a being in range
     const BeingId id = msg.readBeingId("being id");
+    if (serverVersion == 0 || serverVersion >= 11)
+        msg.readBeingId("char id");
     Ea::BeingRecv::mSpawnId = id;
     const BeingId spawnId = id;
     int16_t speed = msg.readInt16("speed");
@@ -910,6 +918,8 @@ void BeingRecv::processBeingAction2(Net::MessageIn &msg)
     const int srcSpeed = msg.readInt32("src speed");
     msg.readInt32("dst speed");
     const int param1 = msg.readInt32("damage");
+    if (serverVersion == 0 || serverVersion >= 11)
+        msg.readUInt8("is sp damaged");
     msg.readInt16("count");
     const AttackTypeT type = static_cast<AttackTypeT>(
         msg.readUInt8("action"));

@@ -20,6 +20,16 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+// < 20131223
+if (serverVersion > 0 && serverVersion <= 10)
+{
+    packet(SMSG_BEING_VISIBLE,                 0x0915,  -1, &BeingRecv::processBeingVisible);
+    packet(SMSG_BEING_ACTION2,                 0x02e1,  33, &BeingRecv::processBeingAction2);
+    packet(SMSG_BEING_SPAWN,                   0x090f,  -1, &BeingRecv::processBeingSpawn);
+    packet(SMSG_BEING_MOVE,                    0x0914,  -1, &BeingRecv::processBeingMove);
+}
+
+// 20150000 or near
 packet(SMSG_ADMIN_ACCOUNT_STATS,           0x0214,  42, &AdminRecv::processAccountStats);
 packet(SMSG_ADMIN_GET_LOGIN_ACK,           0x01e0,  30, &AdminRecv::processAdminGetLoginAck);
 packet(SMSG_ADMIN_KICK_ACK,                0x00cd,   6, &Ea::AdminRecv::processKickAck);
@@ -46,7 +56,6 @@ packet(SMSG_BATTLE_QUEUE_ACK,              0x08d8,  27, &BattleGroundRecv::proce
 packet(SMSG_BATTLE_UPDATE_COORDS,          0x02df,  36, &BattleGroundRecv::processBattleUpdateCoords);
 packet(SMSG_BATTLE_UPDATE_SCORE,           0x02de,   6, &BattleGroundRecv::processBattleUpdateScore);
 packet(SMSG_BEING_ACTION,                  0x008a,  29, &Ea::BeingRecv::processBeingAction);
-packet(SMSG_BEING_ACTION2,                 0x02e1,  33, &BeingRecv::processBeingAction2);
 packet(SMSG_BEING_ATTRS,                   0x0b0a,  -1, &BeingRecv::processBeingAttrs);
 packet(SMSG_BEING_CHANGE_DIRECTION,        0x009c,   9, &BeingRecv::processBeingChangeDirection);
 packet(SMSG_BEING_CHANGE_LOOKS2,           0x01d7,  11, &BeingRecv::processBeingChangeLook2);
@@ -58,7 +67,6 @@ packet(SMSG_BEING_EMOTION,                 0x00c0,   7, &Ea::BeingRecv::processB
 packet(SMSG_BEING_FAKE_NAME,               0x0078,  55, &BeingRecv::processBeingFakeName);
 packet(SMSG_BEING_FONT,                    0x02ef,   8, &BeingRecv::processBeingFont);
 packet(SMSG_BEING_MILLENIUM_SHIELD,        0x0440,  10, &BeingRecv::processBeingMilleniumShield);
-packet(SMSG_BEING_MOVE,                    0x0914,  -1, &BeingRecv::processBeingMove);
 packet(SMSG_BEING_MOVE2,                   0x0086,  16, &BeingRecv::processBeingMove2);
 packet(SMSG_BEING_MOVE3,                   0x0b04,  -1, &Ea::BeingRecv::processBeingMove3);
 packet(SMSG_BEING_NAME_RESPONSE,           0x0095,  30, &Ea::BeingRecv::processNameResponse);
@@ -69,14 +77,12 @@ packet(SMSG_BEING_RESURRECT,               0x0148,   8, &BeingRecv::processBeing
 packet(SMSG_BEING_SELFEFFECT,              0x019b,  10, &BeingRecv::processBeingSelfEffect);
 packet(SMSG_BEING_SLIDE,                   0x01ff,  10, &BeingRecv::processBeingSlide);
 packet(SMSG_BEING_SOUND_EFFECT,            0x01d3,  35, &BeingRecv::processBeingSoundEffect);
-packet(SMSG_BEING_SPAWN,                   0x090f,  -1, &BeingRecv::processBeingSpawn);
 packet(SMSG_BEING_SPECIAL_EFFECT,          0x01f3,  10, &BeingRecv::processBeingSpecialEffect);
 packet(SMSG_BEING_SPECIAL_EFFECT_NUM,      0x0284,  14, &BeingRecv::processBeingSpecialEffectNum);
 packet(SMSG_BEING_STATUS_CHANGE,           0x0983,  29, &BeingRecv::processBeingStatusChange);
 packet(SMSG_BEING_STATUS_CHANGE2,          0x043f,  25, &BeingRecv::processBeingStatusChange2);
 packet(SMSG_BEING_STAT_UPDATE_1,           0x01ab,  12, &BeingRecv::processBeingStatUpdate1);
 packet(SMSG_BEING_VIEW_EQUIPMENT,          0x0997,  -1, &BeingRecv::processBeingViewEquipment);
-packet(SMSG_BEING_VISIBLE,                 0x0915,  -1, &BeingRecv::processBeingVisible);
 packet(SMSG_BIND_ITEM,                     0x02d3,   4, &InventoryRecv::processBindItem);
 packet(SMSG_BLACKSMITH_RANKS_LIST,         0x0219, 282, &BeingRecv::processBlacksmithRanksList);
 packet(SMSG_BLADE_STOP,                    0x01d1,  14, &BeingRecv::processBladeStop);
@@ -431,6 +437,15 @@ packet(SMSG_WEDDING_EFFECT,                0x01ea,   6, &BeingRecv::processWddin
 packet(SMSG_WHISPER,                       0x0097,  -1, &ChatRecv::processWhisper);
 packet(SMSG_WHISPER_RESPONSE,              0x09df,   7, &ChatRecv::processWhisperResponse);
 packet(SMSG_WHO_ANSWER,                    0x00c2,   6, &Ea::GameRecv::processWhoAnswer);
+
+// 20150000 fix
+if (serverVersion >= 11)
+{
+    packet(SMSG_BEING_VISIBLE,                 0x09dd,  -1, &BeingRecv::processBeingVisible);
+    packet(SMSG_BEING_ACTION2,                 0x08c8,  34, &BeingRecv::processBeingAction2);
+    packet(SMSG_BEING_SPAWN,                   0x09dc,  -1, &BeingRecv::processBeingSpawn);
+    packet(SMSG_BEING_MOVE,                    0x09db,  -1, &BeingRecv::processBeingMove);
+}
 
 if (serverVersion >= 8 && packetVersion >= 20150226)
 {
