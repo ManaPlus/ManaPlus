@@ -168,25 +168,25 @@ class Map final : public Properties, public ConfigListener
         /**
          * Returns the width of this map in tiles.
          */
-        int getWidth() const restrict2 A_WARN_UNUSED
+        int getWidth() const restrict2 noexcept A_WARN_UNUSED
         { return mWidth; }
 
         /**
          * Returns the height of this map in tiles.
          */
-        int getHeight() const restrict2 A_WARN_UNUSED
+        int getHeight() const restrict2 noexcept A_WARN_UNUSED
         { return mHeight; }
 
         /**
          * Returns the tile width of this map.
          */
-        int getTileWidth() const restrict2 A_WARN_UNUSED
+        int getTileWidth() const restrict2 noexcept A_WARN_UNUSED
         { return mTileWidth; }
 
         /**
          * Returns the tile height used by this map.
          */
-        int getTileHeight() const restrict2 A_WARN_UNUSED
+        int getTileHeight() const restrict2 noexcept A_WARN_UNUSED
         { return mTileHeight; }
 
         const std::string getMusicFile() const restrict2 A_WARN_UNUSED;
@@ -240,16 +240,16 @@ class Map final : public Properties, public ConfigListener
 
         void saveExtraLayer() const restrict2;
 
-        SpecialLayer *getTempLayer() const restrict2 A_WARN_UNUSED
+        SpecialLayer *getTempLayer() const restrict2 noexcept A_WARN_UNUSED
         { return mTempLayer; }
 
-        SpecialLayer *getSpecialLayer() const restrict2 A_WARN_UNUSED
+        SpecialLayer *getSpecialLayer() const restrict2 noexcept A_WARN_UNUSED
         { return mSpecialLayer; }
 
-        void setHasWarps(const bool n) restrict2
+        void setHasWarps(const bool n) restrict2 noexcept
         { mHasWarps = n; }
 
-        bool getHasWarps() const restrict2 A_WARN_UNUSED
+        bool getHasWarps() const restrict2 noexcept A_WARN_UNUSED
         { return mHasWarps; }
 
         std::string getUserMapDirectory() const restrict2 A_WARN_UNUSED;
@@ -273,7 +273,8 @@ class Map final : public Properties, public ConfigListener
                               const int x, const int y,
                               const bool addNew = true) restrict2;
 
-        const std::vector<MapItem*> &getPortals() const restrict2 A_WARN_UNUSED
+        const std::vector<MapItem*> &getPortals() const restrict2 noexcept
+                                                A_WARN_UNUSED
         { return mMapPortals; }
 
         /**
@@ -293,10 +294,11 @@ class Map final : public Properties, public ConfigListener
 
         void setPvpMode(const int mode) restrict2;
 
-        int getPvpMode() const restrict2 A_WARN_UNUSED
+        int getPvpMode() const restrict2 noexcept A_WARN_UNUSED
         { return mPvp; }
 
-        const ObjectsLayer* getObjectsLayer() const restrict2 A_WARN_UNUSED
+        const ObjectsLayer* getObjectsLayer() const restrict2 noexcept
+                                            A_WARN_UNUSED
         { return mObjects; }
 
         std::string getObjectData(const unsigned x,
@@ -310,40 +312,40 @@ class Map final : public Properties, public ConfigListener
 
         void setActorsFix(const int x, const int y) restrict2;
 
-        int getVersion() const restrict2 A_WARN_UNUSED
+        int getVersion() const restrict2 noexcept A_WARN_UNUSED
         { return mVersion; }
 
-        void setVersion(const int n) restrict2
+        void setVersion(const int n) restrict2 noexcept
         { mVersion = n; }
 
         void reduce() restrict2;
 
-        void redrawMap() restrict2
+        void redrawMap() restrict2 noexcept
         { mRedrawMap = true; }
 
         bool empty() const restrict2 A_WARN_UNUSED
         { return mLayers.empty(); }
 
-        void setCustom(const bool b) restrict2
+        void setCustom(const bool b) restrict2 noexcept
         { mCustom = b; }
 
-        bool isCustom() const restrict2 A_WARN_UNUSED
+        bool isCustom() const restrict2 noexcept A_WARN_UNUSED
         { return mCustom; }
 
-        const std::map<int, TileAnimation*> &getTileAnimations()
-                                            const restrict2 A_WARN_UNUSED
+        const std::map<int, TileAnimation*> &getTileAnimations() const
+                                            restrict2 noexcept A_WARN_UNUSED
         { return mTileAnimations; }
 
-        void setAtlas(Resource *restrict const atlas) restrict2
+        void setAtlas(Resource *restrict const atlas) restrict2 noexcept
         { mAtlas = atlas; }
 
-        const MetaTile *getMetaTiles() const restrict2
+        const MetaTile *getMetaTiles() const restrict2 noexcept
         { return mMetaTiles; }
 
-        const WalkLayer *getWalkLayer() const restrict2
+        const WalkLayer *getWalkLayer() const restrict2 noexcept
         { return mWalkLayer; }
 
-        void setWalkLayer(WalkLayer *restrict const layer) restrict2
+        void setWalkLayer(WalkLayer *restrict const layer) restrict2 noexcept
         { mWalkLayer = layer; }
 
         void addHeights(MapHeights *restrict const heights) restrict2;
@@ -354,7 +356,7 @@ class Map final : public Properties, public ConfigListener
 
         void updateDrawLayersList() restrict2;
 
-        bool isHeightsPresent() const restrict2
+        bool isHeightsPresent() const restrict2 noexcept
         { return mHeights != nullptr; }
 
         void updateConditionLayers() restrict2;
@@ -433,7 +435,7 @@ class Map final : public Properties, public ConfigListener
                                const int x0,
                                const int y0,
                                const int w0,
-                               const int h0) :
+                               const int h0) noexcept :
                 file(file0),
                 x(x0),
                 y(y0),
