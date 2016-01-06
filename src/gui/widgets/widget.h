@@ -165,7 +165,7 @@ class Widget notfinal : public Widget2
           * @see getFrameSize, drawFrame
           * @since 0.8.0
           */
-        void setFrameSize(const unsigned int frameSize)
+        void setFrameSize(const unsigned int frameSize) noexcept
         { mFrameSize = frameSize; }
 
         /**
@@ -182,7 +182,7 @@ class Widget notfinal : public Widget2
           * @see setFrameSize, drawFrame
           * @since 0.8.0
           */
-        unsigned int getFrameSize() const A_WARN_UNUSED
+        unsigned int getFrameSize() const noexcept A_WARN_UNUSED
         { return mFrameSize; }
 
         /**
@@ -202,7 +202,7 @@ class Widget notfinal : public Widget2
           *         has no parent.
           * @since 0.1.0
           */
-        Widget* getParent() const A_WARN_UNUSED
+        Widget* getParent() const noexcept A_WARN_UNUSED
         { return mParent; }
 
         /**
@@ -329,7 +329,7 @@ class Widget notfinal : public Widget2
           * @see getDimension, setX, getX, setY, getY, setPosition
           * @since 0.1.0
           */
-        const Rect& getDimension() const A_WARN_UNUSED
+        const Rect& getDimension() const noexcept A_WARN_UNUSED
         { return mDimension; }
 
         /**
@@ -368,7 +368,7 @@ class Widget notfinal : public Widget2
           * @see isEnabled
           * @since 0.1.0
           */
-        void setEnabled(const bool enabled)
+        void setEnabled(const bool enabled) noexcept
         { mEnabled = enabled; }
 
         /**
@@ -401,7 +401,7 @@ class Widget notfinal : public Widget2
         { return mVisible == Visible_true &&
             (!mParent || mParent->isVisible()); }
 
-        bool isVisibleLocal() const A_WARN_UNUSED
+        bool isVisibleLocal() const noexcept A_WARN_UNUSED
         { return mVisible == Visible_true; }
 
         /**
@@ -411,7 +411,7 @@ class Widget notfinal : public Widget2
           * @see getBaseColor
           * @since 0.1.0
           */
-        void setBaseColor(const Color& color)
+        void setBaseColor(const Color& color) noexcept
         { mBaseColor = color; }
 
         /**
@@ -421,7 +421,7 @@ class Widget notfinal : public Widget2
           * @see setBaseColor
           * @since 0.1.0
           */
-        const Color& getBaseColor() const A_WARN_UNUSED
+        const Color& getBaseColor() const noexcept A_WARN_UNUSED
         { return mBaseColor; }
 
         /**
@@ -431,7 +431,7 @@ class Widget notfinal : public Widget2
           * @see getForegroundColor
           * @since 0.1.0
           */
-        void setForegroundColor(const Color& color)
+        void setForegroundColor(const Color& color) noexcept
         { mForegroundColor = color; }
 
         /**
@@ -440,7 +440,7 @@ class Widget notfinal : public Widget2
           * @see setForegroundColor
           * @since 0.1.0
           */
-        const Color& getForegroundColor() const A_WARN_UNUSED
+        const Color& getForegroundColor() const noexcept A_WARN_UNUSED
         { return mForegroundColor; }
 
         /**
@@ -450,7 +450,7 @@ class Widget notfinal : public Widget2
           * @see setBackgroundColor
           * @since 0.1.0
           */
-        void setBackgroundColor(const Color& color)
+        void setBackgroundColor(const Color &color) noexcept
         { mBackgroundColor = color; }
 
         /**
@@ -459,7 +459,7 @@ class Widget notfinal : public Widget2
           * @see setBackgroundColor
           * @since 0.1.0
           */
-        const Color& getBackgroundColor() const A_WARN_UNUSED
+        const Color &getBackgroundColor() const noexcept A_WARN_UNUSED
         { return mBackgroundColor; }
 
         /**
@@ -502,7 +502,7 @@ class Widget notfinal : public Widget2
           * @see setFocusHandler
           * @since 0.1.0
           */
-        virtual FocusHandler* getFocusHandler() A_WARN_UNUSED
+        FocusHandler* getFocusHandler() noexcept A_WARN_UNUSED
         { return mFocusHandler; }
 
         /**
@@ -637,7 +637,7 @@ class Widget notfinal : public Widget2
           * @see getActionEventId
           * @since 0.6.0
           */
-        void setActionEventId(const std::string& actionEventId)
+        void setActionEventId(const std::string &actionEventId) noexcept
         { mActionEventId = actionEventId; }
 
         /**
@@ -647,7 +647,7 @@ class Widget notfinal : public Widget2
           * @see setActionEventId
           * @since 0.6.0
           */
-        const std::string& getActionEventId() const
+        const std::string &getActionEventId() const noexcept
         { return mActionEventId; }
 
         /**
@@ -733,7 +733,7 @@ class Widget notfinal : public Widget2
           * @see setTabInEnabled
           * @since 0.1.0
           */
-        bool isTabInEnabled() const A_WARN_UNUSED
+        bool isTabInEnabled() const noexcept A_WARN_UNUSED
         { return mTabIn; }
 
         /**
@@ -746,7 +746,7 @@ class Widget notfinal : public Widget2
           * @see isTabInEnabled
           * @since 0.1.0
           */
-        void setTabInEnabled(const bool enabled)
+        void setTabInEnabled(const bool enabled) noexcept
         { mTabIn = enabled; }
 
         /**
@@ -759,7 +759,7 @@ class Widget notfinal : public Widget2
           * @see setTabOutEnabled
           * @since 0.1.0
           */
-        bool isTabOutEnabled() const A_WARN_UNUSED
+        bool isTabOutEnabled() const noexcept A_WARN_UNUSED
         { return mTabOut; }
 
         /**
@@ -772,7 +772,7 @@ class Widget notfinal : public Widget2
           * @see isTabOutEnabled
           * @since 0.1.0
           */
-        void setTabOutEnabled(const bool enabled)
+        void setTabOutEnabled(const bool enabled) noexcept
         { mTabOut = enabled; }
 
         /**
@@ -996,7 +996,7 @@ class Widget notfinal : public Widget2
           * @see setId
           * @since 0.8.0
           */
-        const std::string& getId() const A_WARN_UNUSED
+        const std::string& getId() const noexcept A_WARN_UNUSED
         { return mId; }
 
         /**
@@ -1011,16 +1011,16 @@ class Widget notfinal : public Widget2
           */
         virtual void showPart(const Rect &rectangle);
 
-        bool isAllowLogic() const A_WARN_UNUSED
+        bool isAllowLogic() const noexcept A_WARN_UNUSED
         { return mAllowLogic; }
 
-        void setMouseConsume(const bool b)
+        void setMouseConsume(const bool b) noexcept
         { mMouseConsume = b; }
 
-        bool isMouseConsume() const A_WARN_UNUSED
+        bool isMouseConsume() const noexcept A_WARN_UNUSED
         { return mMouseConsume; }
 
-        void setRedraw(const bool b)
+        void setRedraw(const bool b) noexcept
         { mRedraw = b; }
 
         static void distributeWindowResizeEvent();
