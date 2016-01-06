@@ -38,7 +38,7 @@ class ShaderProgram final : public Resource
 
         A_DELETE_COPY(ShaderProgram)
 
-        unsigned int getProgramId() const
+        unsigned int getProgramId() const noexcept
         { return mProgramId; }
 
     protected:
