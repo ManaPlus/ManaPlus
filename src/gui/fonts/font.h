@@ -101,7 +101,8 @@ class Font final
 
         int getHeight() const restrict2 A_WARN_UNUSED;
 
-        const TextChunkList *getCache() const restrict2 A_CONST A_WARN_UNUSED;
+        const TextChunkList *getCache() const restrict2 noexcept
+                                      A_CONST A_WARN_UNUSED;
 
         /**
          * @see Font::drawString
@@ -119,10 +120,10 @@ class Font final
 
         void slowLogic(const int rnd) restrict2;
 
-        int getCreateCounter() const restrict2 A_WARN_UNUSED
+        int getCreateCounter() const restrict2 noexcept A_WARN_UNUSED
         { return mCreateCounter; }
 
-        int getDeleteCounter() const restrict2 A_WARN_UNUSED
+        int getDeleteCounter() const restrict2 noexcept A_WARN_UNUSED
         { return mDeleteCounter; }
 
         int getStringIndexAt(const std::string &restrict text,

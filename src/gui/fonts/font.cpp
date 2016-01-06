@@ -366,7 +366,7 @@ int Font::getStringIndexAt(const std::string& text, const int x) const
     return static_cast<int>(sz);
 }
 
-const TextChunkList *Font::getCache() const
+const TextChunkList *Font::getCache() const noexcept
 {
     return mCache;
 }
