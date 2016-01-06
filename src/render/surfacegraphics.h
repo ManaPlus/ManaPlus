@@ -47,10 +47,10 @@ class SurfaceGraphics final : public Graphics
 
         ~SurfaceGraphics();
 
-        void setTarget(SDL_Surface *restrict const target) restrict2
+        void setTarget(SDL_Surface *restrict const target) restrict2 noexcept
         { mTarget = target; }
 
-        SDL_Surface *getTarget() const restrict2
+        SDL_Surface *getTarget() const restrict2 noexcept
         { return mTarget; }
 
         void beginDraw() restrict2 override final
@@ -151,10 +151,10 @@ class SurfaceGraphics final : public Graphics
                         restrict2 override final
         { }
 
-        void setBlitMode(const BlitModeT mode) restrict2
+        void setBlitMode(const BlitModeT mode) restrict2 noexcept
         { mBlitMode = mode; }
 
-        BlitModeT getBlitMode() const restrict2 A_WARN_UNUSED
+        BlitModeT getBlitMode() const restrict2 noexcept A_WARN_UNUSED
         { return mBlitMode; }
 
         void fillRectangle(const Rect &restrict rect A_UNUSED)

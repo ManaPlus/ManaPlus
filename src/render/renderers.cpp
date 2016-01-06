@@ -22,7 +22,9 @@
 
 #include "debug.h"
 
-static RenderType getDefault()
+static RenderType getDefault() noexcept A_CONST;
+
+static RenderType getDefault() noexcept
 {
 #ifdef USE_OPENGL
 #ifdef ANDROID
@@ -35,7 +37,7 @@ static RenderType getDefault()
 #endif
 }
 
-RenderType intToRenderType(const int mode)
+RenderType intToRenderType(const int mode) noexcept
 {
     if (mode < 0 || mode >= RENDER_LAST)
         return getDefault();

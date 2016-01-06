@@ -56,7 +56,8 @@ class SDL2SoftwareGraphics final : public Graphics
          */
         ~SDL2SoftwareGraphics();
 
-        void setRendererFlags(const uint32_t flags) restrict2 override final
+        void setRendererFlags(const uint32_t flags)
+                              restrict2 noexcept override final
         { mRendererFlags = flags; }
 
         #include "render/graphicsdef.hpp"
