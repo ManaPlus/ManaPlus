@@ -66,7 +66,7 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
         /**
          * Returns the type of the ActorSprite.
          */
-        virtual ActorTypeT getType() const A_WARN_UNUSED
+        virtual ActorTypeT getType() const noexcept A_WARN_UNUSED
         { return ActorType::Unknown; }
 
         void draw1(Graphics *const graphics,

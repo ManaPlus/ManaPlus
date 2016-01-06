@@ -64,7 +64,7 @@ class FloorItem final : public ActorSprite
 
         void postInit(Map *const map, int subX, int subY);
 
-        ActorTypeT getType() const override final A_WARN_UNUSED
+        ActorTypeT getType() const noexcept override final A_WARN_UNUSED
         { return ActorType::FloorItem; }
 
         void draw(Graphics *const graphics,
