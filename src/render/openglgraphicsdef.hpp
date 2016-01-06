@@ -34,7 +34,7 @@ public:
 
     void updateTextureFormat() restrict2;
 
-    bool isAllowScale() const restrict2 override final
+    bool isAllowScale() const restrict2 noexcept override final
     { return true; }
 
     void clearScreen() const restrict2 override final;
