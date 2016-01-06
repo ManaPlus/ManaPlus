@@ -160,58 +160,60 @@ class Particle notfinal : public Actor
         /**
          * Sets the time in game ticks until the particle is destroyed.
          */
-        void setLifetime(const int lifetime) restrict2
+        void setLifetime(const int lifetime) restrict2 noexcept
         { mLifetimeLeft = lifetime; mLifetimePast = 0; }
 
         /**
          * Sets the age of the pixel in game ticks where the particle has
          * faded in completely.
          */
-        void setFadeOut(const int fadeOut) restrict2
+        void setFadeOut(const int fadeOut) restrict2 noexcept
         { mFadeOut = fadeOut; }
 
         /**
          * Sets the remaining particle lifetime where the particle starts to
          * fade out.
          */
-        void setFadeIn(const int fadeIn) restrict2
+        void setFadeIn(const int fadeIn) restrict2 noexcept
         { mFadeIn = fadeIn; }
 
         /**
          * Sets the current velocity in 3 dimensional space.
          */
-        void setVelocity(const float x, const float y, const float z) restrict2
+        void setVelocity(const float x,
+                         const float y,
+                         const float z) restrict2 noexcept
         { mVelocity.x = x; mVelocity.y = y; mVelocity.z = z; }
 
         /**
          * Sets the downward acceleration.
          */
-        void setGravity(const float gravity) restrict2
+        void setGravity(const float gravity) restrict2 noexcept
         { mGravity = gravity; }
 
         /**
          * Sets the ammount of random vector changes
          */
-        void setRandomness(const int r) restrict2
+        void setRandomness(const int r) restrict2 noexcept
         { mRandomness = r; }
 
         /**
          * Sets the ammount of velocity particles retain after
          * hitting the ground.
          */
-        void setBounce(const float bouncieness) restrict2
+        void setBounce(const float bouncieness) restrict2 noexcept
         { mBounce = bouncieness; }
 
         /**
          * Sets the flag if the particle is supposed to be moved by its parent
          */
-        void setFollow(const bool follow) restrict2
+        void setFollow(const bool follow) restrict2 noexcept
         { mFollow = follow; }
 
         /**
          * Gets the flag if the particle is supposed to be moved by its parent
          */
-        bool doesFollow() const restrict2 A_WARN_UNUSED
+        bool doesFollow() const restrict2 noexcept A_WARN_UNUSED
         { return mFollow; }
 
         /**
@@ -220,7 +222,7 @@ class Particle notfinal : public Actor
          */
         void setDestination(Particle *restrict const target,
                             const float accel,
-                            const float moment) restrict2
+                            const float moment) restrict2 noexcept
         { mTarget = target; mAcceleration = accel; mMomentum = moment; }
 
         /**
@@ -237,10 +239,10 @@ class Particle notfinal : public Actor
          */
         void adjustEmitterSize(const int w, const int h) restrict2;
 
-        void setAllowSizeAdjust(const bool adjust) restrict2
+        void setAllowSizeAdjust(const bool adjust) restrict2 noexcept
         { mAllowSizeAdjust = adjust; }
 
-        bool isAlive() const restrict2 A_WARN_UNUSED
+        bool isAlive() const restrict2 noexcept A_WARN_UNUSED
         { return mAlive == AliveStatus::ALIVE; }
 
         void prepareToDie() restrict2;
@@ -248,20 +250,20 @@ class Particle notfinal : public Actor
         /**
          * Determines whether the particle and its children are all dead
          */
-        bool isExtinct() const restrict2 A_WARN_UNUSED
+        bool isExtinct() const restrict2 noexcept A_WARN_UNUSED
         { return !isAlive() && mChildParticles.empty(); }
 
         /**
          * Manually marks the particle for deletion.
          */
-        void kill() restrict2
+        void kill() restrict2 noexcept
         { mAlive = AliveStatus::DEAD_OTHER; mAutoDelete = true; }
 
         /**
          * After calling this function the particle will only request
          * deletion when kill() is called
          */
-        void disableAutoDelete() restrict2
+        void disableAutoDelete() restrict2 noexcept
         { mAutoDelete = false; }
 
         /** We consider particles (at least for now) to be one layer-sprites */
