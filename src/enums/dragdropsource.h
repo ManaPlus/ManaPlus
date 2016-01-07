@@ -35,12 +35,12 @@ enumStart(DragDropSource)
     Ground,
     Drop,
     Shortcuts,
-    Craft,
     Npc,
 #ifdef EATHENA_SUPPORT
     Equipment,
     Cart,
-    Mail
+    Mail,
+    Craft
 #else
     Equipment
 #endif

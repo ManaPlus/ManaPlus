@@ -330,6 +330,11 @@ std::string Inventory::getName() const
             // TRANSLATORS: inventory type name
             return N_("Mail");
         }
+        case InventoryType::Craft:
+        {
+            // TRANSLATORS: inventory type name
+            return N_("Craft");
+        }
 #endif
         case InventoryType::Trade:
         {

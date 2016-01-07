@@ -598,6 +598,9 @@ void ItemContainer::mousePressed(MouseEvent &event)
             case InventoryType::Mail:
                 src = DragDropSource::Mail;
                 break;
+            case InventoryType::Craft:
+                src = DragDropSource::Craft;
+                break;
 #endif
             default:
 #ifdef EATHENA_SUPPORT
@@ -704,6 +707,9 @@ void ItemContainer::mouseReleased(MouseEvent &event)
                 break;
             case InventoryType::Cart:
                 dst = DragDropSource::Cart;
+                break;
+            case InventoryType::Craft:
+                dst = DragDropSource::Craft;
                 break;
 #endif
             default:
@@ -848,6 +854,69 @@ void ItemContainer::mouseReleased(MouseEvent &event)
             }
         }
 #ifdef EATHENA_SUPPORT
+        else if (src == DragDropSource::Inventory &&
+                 dst == DragDropSource::Craft)
+        {
+            inventory = PlayerInfo::getInventory();
+            if (inventory)
+            {
+                Item *const item = inventory->getItem(dragDrop.getTag());
+                if (mInventory->addVirtualItem(
+                    item,
+                    getSlotByXY(event.getX(), event.getY())))
+                {
+                    inventory->virtualRemove(item, 1);
+                }
+            }
+            return;
+        }
+        else if (src == DragDropSource::Craft)
+        {
+            inventory = PlayerInfo::getInventory();
+            if (dst == DragDropSource::Craft)
+            {
+                const Item *const item = mInventory->getItem(
+                    dragDrop.getTag());
+                const int index = getSlotByXY(event.getX(), event.getY());
+                if (index == Inventory::NO_SLOT_INDEX)
+                {
+                    if (inventory)
+                        inventory->virtualRestore(item, 1);
+                    mInventory->removeItemAt(dragDrop.getTag());
+                    return;
+                }
+                mInventory->removeItemAt(index);
+                mInventory->setItem(index,
+                    item->getId(),
+                    item->getType(),
+                    1,
+                    1,
+                    item->getColor(),
+                    item->getIdentified(),
+                    item->getDamaged(),
+                    item->getFavorite(),
+                    Equipm_false,
+                    Equipped_false);
+                Item *const item2 = mInventory->getItem(index);
+                if (item2)
+                    item2->setTag(item->getTag());
+                mInventory->removeItemAt(dragDrop.getTag());
+            }
+            else
+            {
+                if (inventory)
+                {
+                    const Item *const item = inventory->getItem(
+                        dragDrop.getTag());
+                    if (item)
+                    {
+                        inventory->virtualRestore(item, 1);
+                        mInventory->removeItemAt(dragDrop.getTag());
+                    }
+                }
+                return;
+            }
+        }
         else if (src == DragDropSource::Mail)
         {
             inventory = PlayerInfo::getInventory();

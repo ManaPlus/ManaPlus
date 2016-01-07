@@ -202,6 +202,15 @@ void NpcRecv::processNpcCommand(Net::MessageIn &msg)
                 mDialog->itemIndexRequest(invSize);
             break;
         }
+        case 12:  // send complex items
+        {
+            int invSize = toInt(id, int);
+            if (!invSize)
+                invSize = 1;
+            if (mDialog)
+                mDialog->itemCraftRequest(invSize);
+            break;
+        }
         default:
             UNIMPLIMENTEDPACKET;
             break;

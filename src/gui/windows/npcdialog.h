@@ -35,6 +35,7 @@
 class Being;
 class Button;
 class BrowserBox;
+class ComplexInventory;
 class Container;
 class ExtendedListBox;
 class ItemLinkHandler;
@@ -168,6 +169,8 @@ class NpcDialog final : public Window,
 
         void itemIndexRequest(const int size);
 
+        void itemCraftRequest(const int size);
+
         void move(const int amount);
 
         void setVisible(Visible visible) override final;
@@ -286,6 +289,7 @@ class NpcDialog final : public Window,
         Button *mResetButton A_NONNULLPOINTER;
 
         Inventory *mInventory A_NONNULLPOINTER;
+        ComplexInventory *mComplexInventory A_NONNULLPOINTER;
         ItemContainer *mItemContainer A_NONNULLPOINTER;
         ScrollArea *mItemScrollArea A_NONNULLPOINTER;
 
@@ -296,7 +300,8 @@ class NpcDialog final : public Window,
             NPC_INPUT_STRING,
             NPC_INPUT_INTEGER,
             NPC_INPUT_ITEM,
-            NPC_INPUT_ITEM_INDEX
+            NPC_INPUT_ITEM_INDEX,
+            NPC_INPUT_ITEM_CRAFT
         };
 
         enum NpcActionState

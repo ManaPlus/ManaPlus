@@ -61,6 +61,8 @@
 #include "resources/db/npcdb.h"
 #include "resources/db/npcdialogdb.h"
 
+#include "resources/inventory/complexinventory.h"
+
 #include "resources/item/item.h"
 
 #include "net/npchandler.h"
@@ -126,7 +128,8 @@ NpcDialog::NpcDialog(const BeingId npcId) :
     mButton3(new Button(this, _("Add"), "add", this)),
     // TRANSLATORS: npc dialog button
     mResetButton(new Button(this, _("Reset"), "reset", this)),
-    mInventory(new Inventory(InventoryType::Npc, 1)),
+    mInventory(new Inventory(InventoryType::Craft, 1)),
+    mComplexInventory(new ComplexInventory(InventoryType::Npc, 1)),
     mItemContainer(new ItemContainer(this, mInventory,
         10000, ShowEmptyRows_true)),
     mItemScrollArea(new ScrollArea(this, mItemContainer,
@@ -258,6 +261,7 @@ NpcDialog::~NpcDialog()
     delete2(mItemLinkHandler);
     delete2(mItemContainer);
     delete2(mInventory);
+    delete2(mComplexInventory);
     delete2(mItemScrollArea);
     delete2(mListScrollArea);
     delete2(mSkinScrollArea);
@@ -459,13 +463,64 @@ void NpcDialog::action(const ActionEvent &event)
                     mInventory->clear();
                     break;
                 }
+                case NPC_INPUT_ITEM_CRAFT:
+                {
+                    restoreVirtuals();
+                    if (!PacketLimiter::limitPackets(
+                        PacketType::PACKET_NPC_INPUT))
+                    {
+                        return;
+                    }
+
+                    std::string str;
+                    const int sz = mInventory->getSize();
+                    if (sz == 0)
+                    {
+                        str = "";
+                    }
+                    else
+                    {
+                        const Item *item = mInventory->getItem(0);
+                        if (item)
+                        {
+                            str = strprintf("%d,%d",
+                                item->getTag(),
+                                item->getQuantity());
+                        }
+                        else
+                        {
+                            str = "";
+                        }
+                        for (int f = 1; f < sz; f ++)
+                        {
+                            str.append("|");
+                            item = mInventory->getItem(f);
+                            if (item)
+                            {
+                                str.append(strprintf("%d,%d",
+                                    item->getTag(),
+                                    item->getQuantity()));
+                            }
+                            else
+                            {
+                                str.append("");
+                            }
+                        }
+                    }
+
+                    // need send selected item
+                    npcHandler->stringInput(mNpcId, str);
+                    mInventory->clear();
+                    break;
+                }
 
                 case NPC_INPUT_NONE:
                 default:
                     break;
             }
             if (mInputState != NPC_INPUT_ITEM &&
-                mInputState != NPC_INPUT_ITEM_INDEX)
+                mInputState != NPC_INPUT_ITEM_INDEX &&
+                mInputState != NPC_INPUT_ITEM_CRAFT)
             {
                 // addText will auto remove the input layout
                 addText(strprintf("> \"%s\"", printText.c_str()), false);
@@ -488,6 +543,7 @@ void NpcDialog::action(const ActionEvent &event)
                 break;
             case NPC_INPUT_ITEM:
             case NPC_INPUT_ITEM_INDEX:
+            case NPC_INPUT_ITEM_CRAFT:
                 mInventory->clear();
                 break;
             case NPC_INPUT_NONE:
@@ -510,6 +566,7 @@ void NpcDialog::action(const ActionEvent &event)
         {
             case NPC_INPUT_ITEM:
             case NPC_INPUT_ITEM_INDEX:
+            case NPC_INPUT_ITEM_CRAFT:
                 mInventory->clear();
                 break;
             case NPC_INPUT_STRING:
@@ -533,6 +590,9 @@ void NpcDialog::action(const ActionEvent &event)
                     break;
                 case NPC_INPUT_ITEM_INDEX:
                     npcHandler->stringInput(mNpcId, "-1");
+                    break;
+                case NPC_INPUT_ITEM_CRAFT:
+                    npcHandler->stringInput(mNpcId, "");
                     break;
                 case NPC_INPUT_STRING:
                 case NPC_INPUT_INTEGER:
@@ -568,7 +628,8 @@ void NpcDialog::action(const ActionEvent &event)
                 printText = mItems[cnt];
 
                 if (mInputState != NPC_INPUT_ITEM &&
-                    mInputState != NPC_INPUT_ITEM_INDEX)
+                    mInputState != NPC_INPUT_ITEM_INDEX &&
+                    mInputState != NPC_INPUT_ITEM_CRAFT)
                 {
                     // addText will auto remove the input layout
                     addText(strprintf("> \"%s\"", printText.c_str()), false);
@@ -727,6 +788,14 @@ void NpcDialog::itemIndexRequest(const int size)
     buildLayout();
 }
 
+void NpcDialog::itemCraftRequest(const int size)
+{
+    mActionState = NPC_ACTION_INPUT;
+    mInputState = NPC_INPUT_ITEM_CRAFT;
+    mInventory->resize(size);
+    buildLayout();
+}
+
 void NpcDialog::move(const int amount)
 {
     if (mActionState != NPC_ACTION_INPUT)
@@ -744,6 +813,7 @@ void NpcDialog::move(const int amount)
         case NPC_INPUT_STRING:
         case NPC_INPUT_ITEM:
         case NPC_INPUT_ITEM_INDEX:
+        case NPC_INPUT_ITEM_CRAFT:
         default:
             break;
     }
@@ -995,6 +1065,7 @@ void NpcDialog::buildLayout()
 
             case NPC_INPUT_ITEM:
             case NPC_INPUT_ITEM_INDEX:
+            case NPC_INPUT_ITEM_CRAFT:
                 placeItemInputControls();
                 break;
 

@@ -124,6 +124,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
 #ifdef EATHENA_SUPPORT
             case InventoryType::Vending:
             case InventoryType::Mail:
+            case InventoryType::Craft:
 #endif
             case InventoryType::TypeEnd:
             default:
@@ -319,6 +320,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
 #ifdef EATHENA_SUPPORT
         case InventoryType::Vending:
         case InventoryType::Mail:
+        case InventoryType::Craft:
 #endif
         case InventoryType::TypeEnd:
             break;
@@ -380,6 +382,7 @@ void InventoryWindow::storeSortOrder() const
 #ifdef EATHENA_SUPPORT
             case InventoryType::Vending:
             case InventoryType::Mail:
+            case InventoryType::Craft:
 #endif
             case InventoryType::TypeEnd:
             default:
@@ -823,6 +826,7 @@ void InventoryWindow::close()
 #ifdef EATHENA_SUPPORT
         case InventoryType::Vending:
         case InventoryType::Mail:
+        case InventoryType::Craft:
 #endif
         case InventoryType::TypeEnd:
             break;

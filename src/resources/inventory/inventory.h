@@ -45,7 +45,7 @@
 class InventoryListener;
 class Item;
 
-class Inventory final
+class Inventory notfinal
 {
     public:
         A_DELETE_COPY(Inventory)
