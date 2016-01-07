@@ -21,7 +21,6 @@
 #include "net/eathena/buyingstorerecv.h"
 
 #include "actormanager.h"
-#include "inventory.h"
 #include "notifymanager.h"
 
 #include "being/localplayer.h"
@@ -40,6 +39,8 @@
 #include "listeners/buyingstoreslotslistener.h"
 
 #include "net/messagein.h"
+
+#include "resources/inventory/inventory.h"
 
 #include "resources/item/item.h"
 

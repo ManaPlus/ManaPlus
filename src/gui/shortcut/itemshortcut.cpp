@@ -23,7 +23,6 @@
 #include "gui/shortcut/itemshortcut.h"
 
 #include "configuration.h"
-#include "inventory.h"
 #include "spellmanager.h"
 
 #include "being/playerinfo.h"
@@ -33,6 +32,8 @@
 #include "const/resources/skill.h"
 
 #include "gui/windows/skilldialog.h"
+
+#include "resources/inventory/inventory.h"
 
 #include "resources/item/item.h"
 

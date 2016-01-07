@@ -717,8 +717,8 @@ manaplus_SOURCES += main.cpp \
 	      client.h \
 	      resources/sprite/imagesprite.cpp \
 	      resources/sprite/imagesprite.h \
-	      inventory.cpp \
-	      inventory.h \
+	      resources/inventory/inventory.cpp \
+	      resources/inventory/inventory.h \
 	      textcommand.cpp \
 	      textcommand.h \
 	      resources/item/item.cpp \

@@ -22,7 +22,6 @@
 
 #include "net/ea/buysellrecv.h"
 
-#include "inventory.h"
 #include "notifymanager.h"
 
 #include "being/playerinfo.h"
@@ -38,6 +37,8 @@
 #include "gui/widgets/createwidget.h"
 
 #include "net/messagein.h"
+
+#include "resources/inventory/inventory.h"
 
 #include "resources/item/item.h"
 

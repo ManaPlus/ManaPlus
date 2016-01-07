@@ -22,7 +22,6 @@
 
 #include "net/tmwa/traderecv.h"
 
-#include "inventory.h"
 #include "notifymanager.h"
 
 #include "being/playerinfo.h"
@@ -39,6 +38,8 @@
 #include "net/tradehandler.h"
 
 #include "net/ea/traderecv.h"
+
+#include "resources/inventory/inventory.h"
 
 #include "resources/item/item.h"
 

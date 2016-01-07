@@ -60,7 +60,6 @@
 #include "soundmanager.h"
 #endif
 #include "configuration.h"
-#include "inventory.h"
 #include "settings.h"
 
 #include "being/localplayer.h"
@@ -85,6 +84,8 @@
 #ifdef TMWA_SUPPORT
 #include "resources/iteminfo.h"
 #endif
+
+#include "resources/inventory/inventory.h"
 
 #include "resources/item/shopitem.h"
 

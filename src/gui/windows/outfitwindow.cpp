@@ -25,7 +25,6 @@
 #include "configuration.h"
 #include "dragdrop.h"
 #include "game.h"
-#include "inventory.h"
 
 #include "being/playerinfo.h"
 
@@ -47,6 +46,8 @@
 #include "gui/widgets/layouttype.h"
 
 #include "utils/gettext.h"
+
+#include "resources/inventory/inventory.h"
 
 #include <sstream>
 

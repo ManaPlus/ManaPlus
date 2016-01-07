@@ -71,6 +71,7 @@ LOCAL_SRC_FILES := $(SDL_PATH)/src/main/android/SDL_android_main.c \
     $(wildcard $(LOCAL_PATH)/src/resources/atlas/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/resources/db/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/resources/dye/*.cpp) \
+    $(wildcard $(LOCAL_PATH)/src/resources/inventory/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/resources/item/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/resources/map/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/resources/sprite/*.cpp) \

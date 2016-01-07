@@ -22,7 +22,6 @@
 
 #include "net/eathena/traderecv.h"
 
-#include "inventory.h"
 #include "itemcolormanager.h"
 #include "notifymanager.h"
 
@@ -35,6 +34,8 @@
 #include "net/messagein.h"
 
 #include "net/ea/traderecv.h"
+
+#include "resources/inventory/inventory.h"
 
 #include "resources/item/item.h"
 

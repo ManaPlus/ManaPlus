@@ -23,7 +23,7 @@
 #ifndef GUI_WINDOWS_INVENTORYWINDOW_H
 #define GUI_WINDOWS_INVENTORYWINDOW_H
 
-#include "inventory.h"
+#include "resources/inventory/inventory.h"
 
 #include "gui/widgets/window.h"
 

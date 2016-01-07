@@ -22,11 +22,12 @@
 
 #include "gui/shortcut/dropshortcut.h"
 
-#include "inventory.h"
 #include "settings.h"
 
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
+
+#include "resources/inventory/inventory.h"
 
 #include "resources/item/item.h"
 

@@ -23,7 +23,6 @@
 #include "gui/windows/ministatuswindow.h"
 
 #include "configuration.h"
-#include "inventory.h"
 
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
@@ -41,6 +40,8 @@
 #include "gui/widgets/progressbar.h"
 
 #include "net/playerhandler.h"
+
+#include "resources/inventory/inventory.h"
 
 #include "resources/sprite/animatedsprite.h"
 

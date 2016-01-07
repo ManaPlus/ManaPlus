@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "inventory.h"
+#include "resources/inventory/inventory.h"
 
 #include "logger.h"
 

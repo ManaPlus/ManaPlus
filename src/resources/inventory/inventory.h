@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef INVENTORY_H
-#define INVENTORY_H
+#ifndef RESOURCES_INVENTORY_INVENTORY_H
+#define RESOURCES_INVENTORY_INVENTORY_H
 
 #include "enums/inventorytype.h"
 
@@ -200,4 +200,4 @@ class Inventory final
         int mUsed;      /**< THe number of slots in use */
 };
 
-#endif  // INVENTORY_H
+#endif  // RESOURCES_INVENTORY_INVENTORY_H

@@ -23,7 +23,7 @@
 #ifndef NET_INVENTORYHANDLER_H
 #define NET_INVENTORYHANDLER_H
 
-#include "inventory.h"
+#include "resources/inventory/inventory.h"
 
 namespace Net
 {

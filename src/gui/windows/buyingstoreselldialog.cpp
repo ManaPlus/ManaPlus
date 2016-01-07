@@ -23,7 +23,6 @@
 #include "gui/windows/buyingstoreselldialog.h"
 
 #include "actormanager.h"
-#include "inventory.h"
 
 #include "being/playerinfo.h"
 
@@ -32,6 +31,8 @@
 #include "gui/widgets/shoplistbox.h"
 
 #include "net/buyingstorehandler.h"
+
+#include "resources/inventory/inventory.h"
 
 #include "resources/item/shopitem.h"
 
