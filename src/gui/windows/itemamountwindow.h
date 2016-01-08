@@ -58,6 +58,7 @@ class ItemAmountWindow final : public Window,
             ShopBuyAdd,
             ShopSellAdd,
 #ifdef EATHENA_SUPPORT
+            CraftAdd,
             MailAdd
 #endif
         };
@@ -91,13 +92,16 @@ class ItemAmountWindow final : public Window,
         /**
          * Creates the dialog, or bypass it if there aren't enough items.
          */
-        static void showWindow(const Usage usage, Window *const parent,
-                               Item *const item, int maxRange = 0);
+        static void showWindow(const Usage usage,
+                               Window *const parent,
+                               Item *const item,
+                               int maxRange = 0,
+                               const int tag = 0);
 
         ~ItemAmountWindow();
 
     private:
-        static void finish(const Item *const item,
+        static void finish(Item *const item,
                            const int amount,
                            const int price,
                            const Usage usage);

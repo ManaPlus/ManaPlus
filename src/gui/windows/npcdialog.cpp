@@ -1370,3 +1370,24 @@ std::string NpcDialog::complexItemToStr(const ComplexItem *const item)
     }
     return str;
 }
+
+void NpcDialog::addCraftItem(Item *const item,
+                             const int amount,
+                             const int slot)
+{
+    if (mInputState != NPC_INPUT_ITEM_CRAFT)
+        return;
+
+    Inventory *const inventory = PlayerInfo::getInventory();
+
+    if (!inventory)
+        return;
+
+    if (mComplexInventory->addVirtualItem(
+        item,
+        slot,
+        amount))
+    {
+        inventory->virtualRemove(item, amount);
+    }
+}

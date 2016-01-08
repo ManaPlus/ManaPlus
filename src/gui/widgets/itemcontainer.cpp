@@ -41,8 +41,15 @@
 #include "gui/windows/inventorywindow.h"
 #include "gui/windows/shopwindow.h"
 #include "gui/windows/shortcutwindow.h"
+#ifdef EATHENA_SUPPORT
+#include "gui/windows/itemamountwindow.h"
+#include "gui/windows/npcdialog.h"
+#endif
 
 #include "net/inventoryhandler.h"
+#ifdef EATHENA_SUPPORT
+#include "net/npchandler.h"
+#endif
 #include "net/tradehandler.h"
 
 #include "utils/delete2.h"
@@ -862,12 +869,24 @@ void ItemContainer::mouseReleased(MouseEvent &event)
             if (inventory)
             {
                 Item *const item = inventory->getItem(dragDrop.getTag());
-                if (mInventory->addVirtualItem(
-                    item,
-                    getSlotByXY(event.getX(), event.getY()),
-                    1))
+                const int slot = getSlotByXY(event.getX(), event.getY());
+                if (item->getQuantity() > 1)
                 {
-                    inventory->virtualRemove(item, 1);
+                    ItemAmountWindow::showWindow(ItemAmountWindow::CraftAdd,
+                        npcHandler->getCurrentNpcDialog(),
+                        item,
+                        0,
+                        slot);
+                }
+                else
+                {
+                    if (mInventory->addVirtualItem(
+                        item,
+                        slot,
+                        1))
+                    {
+                        inventory->virtualRemove(item, 1);
+                    }
                 }
             }
             return;

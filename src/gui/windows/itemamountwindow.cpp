@@ -26,7 +26,6 @@
 
 #include "input/keyboardconfig.h"
 
-#include "net/inventoryhandler.h"
 #include "gui/viewport.h"
 
 #include "gui/models/itemsmodel.h"
@@ -34,6 +33,9 @@
 #include "gui/popups/itempopup.h"
 
 #include "gui/windows/maileditwindow.h"
+#ifdef EATHENA_SUPPORT
+#include "gui/windows/npcdialog.h"
+#endif
 #include "gui/windows/shopwindow.h"
 #include "gui/windows/tradewindow.h"
 
@@ -46,6 +48,11 @@
 #include "gui/widgets/label.h"
 #include "gui/widgets/slider.h"
 
+#include "net/inventoryhandler.h"
+#ifdef EATHENA_SUPPORT
+#include "net/npchandler.h"
+#endif
+
 #include "resources/item/item.h"
 
 #include "utils/gettext.h"
@@ -54,7 +61,7 @@
 
 #include "debug.h"
 
-void ItemAmountWindow::finish(const Item *const item,
+void ItemAmountWindow::finish(Item *const item,
                               const int amount,
                               const int price,
                               const Usage usage)
@@ -102,6 +109,12 @@ void ItemAmountWindow::finish(const Item *const item,
             if (mailEditWindow)
                 mailEditWindow->addItem(item, amount);
             break;
+        case CraftAdd:
+        {
+            NpcDialog *const dialog = npcHandler->getCurrentNpcDialog();
+            if (dialog)
+                dialog->addCraftItem(item, amount, price);  // price as slot
+        }
 #endif
         default:
             break;
@@ -336,13 +349,27 @@ void ItemAmountWindow::action(const ActionEvent &event)
     {
         if (mItemPriceTextField)
         {
-            finish(mItem, mItemAmountTextField->getValue(),
-                   mItemPriceTextField->getValue(), mUsage);
+            finish(mItem,
+                mItemAmountTextField->getValue(),
+                mItemPriceTextField->getValue(),
+                mUsage);
         }
         else
         {
-            finish(mItem, mItemAmountTextField->getValue(),
-                   0, mUsage);
+            if (mUsage == CraftAdd)
+            {
+                finish(mItem,
+                    mItemAmountTextField->getValue(),
+                    mPrice,
+                    mUsage);
+            }
+            else
+            {
+                finish(mItem,
+                    mItemAmountTextField->getValue(),
+                    0,
+                    mUsage);
+            }
         }
         close();
         return;
@@ -431,8 +458,11 @@ void ItemAmountWindow::keyReleased(KeyEvent &event A_UNUSED)
     mItemAmountSlide->setValue(mItemAmountTextField->getValue());
 }
 
-void ItemAmountWindow::showWindow(const Usage usage, Window *const parent,
-                                  Item *const item, int maxRange)
+void ItemAmountWindow::showWindow(const Usage usage,
+                                  Window *const parent,
+                                  Item *const item,
+                                  int maxRange,
+                                  int tag)
 {
     if (!item)
         return;
@@ -441,7 +471,17 @@ void ItemAmountWindow::showWindow(const Usage usage, Window *const parent,
         maxRange = item->getQuantity();
 
     if (usage != ShopBuyAdd && usage != ShopSellAdd && maxRange <= 1)
-        finish(item, maxRange, 0, usage);
+    {
+        if (usage == CraftAdd)
+            finish(item, maxRange, tag, usage);
+        else
+            finish(item, maxRange, 0, usage);
+    }
     else
-        CREATEWIDGET(ItemAmountWindow, usage, parent, item, maxRange);
+    {
+        ItemAmountWindow *const window = CREATEWIDGETR(ItemAmountWindow,
+            usage, parent, item, maxRange);
+        if (usage == CraftAdd)
+            window->mPrice = tag;
+    }
 }

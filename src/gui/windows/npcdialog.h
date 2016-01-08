@@ -39,6 +39,7 @@ class ComplexInventory;
 class ComplexItem;
 class Container;
 class ExtendedListBox;
+class Item;
 class ItemLinkHandler;
 class Inventory;
 class IntTextField;
@@ -222,6 +223,10 @@ class NpcDialog final : public Window,
         { return mActionState == NPC_ACTION_CLOSE; }
 
         void setSkin(const std::string &skin);
+
+        void addCraftItem(Item *const item,
+                          const int amount,
+                          const int slot);
 
         static void copyToClipboard(const BeingId npcId,
                                     const int x, const int y);
