@@ -138,7 +138,6 @@ src/input/pages/other.cpp
 src/input/pages/outfits.cpp
 src/input/pages/shortcuts.cpp
 src/input/pages/windows.cpp
-src/inventory.cpp
 src/localconsts.h
 src/logger.h
 src/net/ea/charserverrecv.cpp
@@ -175,6 +174,7 @@ src/resources/db/monsterdb.cpp
 src/resources/db/npcdb.cpp
 src/resources/db/petdb.cpp
 src/resources/db/skillunitdb.cpp
+src/resources/inventory/inventory.cpp
 src/resources/itemtypemapdata.h
 src/resources/mapreader.cpp
 src/resources/modinfo.cpp

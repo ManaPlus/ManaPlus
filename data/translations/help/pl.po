@@ -9,9 +9,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2015-03-01 13:02+0000\n"
+"PO-Revision-Date: 2016-01-04 17:36+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
-"Language-Team: Polish (http://www.transifex.com/projects/p/manaplus/language/pl/)\n"
+"Language-Team: Polish (http://www.transifex.com/akaras/manaplus/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -305,6 +305,9 @@ msgstr "\"Ustaw w prawy kierunek\""
 msgid "\"Equipment window\""
 msgstr "\"Okno Ekwipunku\""
 
+msgid "Chrome store"
+msgstr ""
+
 msgid ""
 " To add an item to the shortcut bar click on the item in the inventory window,\n"
 " then click on the box in the shortcut-window which should be associated with\n"
@@ -540,6 +543,9 @@ msgstr "\"Poprzednia zakładka czatu\""
 
 msgid "\"Kills stats window\""
 msgstr "\"Okno statystyk bitewnych\""
+
+msgid "Chrome (nacl) porting"
+msgstr ""
 
 msgid "\"Outfit shortcut 2\""
 msgstr "\"Skrót ubioru 2\""

@@ -3,7 +3,7 @@
 # Alexandr Uspensky <AlexandrUSP@yandex.com>, 2012
 # Alexsl <alexlsh@mail.ru>, 2014
 # Alexsl <alexlsh@mail.ru>, 2014
-# Andrei Karas <akaras@inbox.ru>, 2012-2015
+# Andrei Karas <akaras@inbox.ru>, 2012-2016
 # vislav <bizadmin@list.ru>, 2015
 # BoBaH <BoBaH4spam@ukr.net>, 2012
 # BoBaH <BoBaH4spam@ukr.net>, 2012
@@ -19,7 +19,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2016-01-03 16:53+0000\n"
+"PO-Revision-Date: 2016-01-04 17:37+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/akaras/manaplus/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -315,6 +315,9 @@ msgstr "\"Установить направление влево\""
 msgid "\"Equipment window\""
 msgstr "\"Окно экипировки\""
 
+msgid "Chrome store"
+msgstr "Магазин chrome"
+
 msgid ""
 " To add an item to the shortcut bar click on the item in the inventory window,\n"
 " then click on the box in the shortcut-window which should be associated with\n"
@@ -550,6 +553,9 @@ msgstr "\"Предыдущая закладка чата\""
 
 msgid "\"Kills stats window\""
 msgstr "\"Окно статистики атак\""
+
+msgid "Chrome (nacl) porting"
+msgstr "Портирование на chrome (nacl)"
 
 msgid "\"Outfit shortcut 2\""
 msgstr "\"Наряд 2\""

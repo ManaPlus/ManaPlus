@@ -10,9 +10,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2015-04-06 16:14+0000\n"
-"Last-Translator: Nelson Martell <nelson6e65-manaplus@yahoo.es>\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/manaplus/language/es/)\n"
+"PO-Revision-Date: 2016-01-04 17:36+0000\n"
+"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"Language-Team: Spanish (http://www.transifex.com/akaras/manaplus/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -306,6 +306,9 @@ msgstr "\"Voltear a la izquierda\""
 msgid "\"Equipment window\""
 msgstr "\"Ventana de Equipamiento\""
 
+msgid "Chrome store"
+msgstr ""
+
 msgid ""
 " To add an item to the shortcut bar click on the item in the inventory window,\n"
 " then click on the box in the shortcut-window which should be associated with\n"
@@ -541,6 +544,9 @@ msgstr "\"Pestaña previa del chat\""
 
 msgid "\"Kills stats window\""
 msgstr "\"Ventana de estadisticas de matanzas\""
+
+msgid "Chrome (nacl) porting"
+msgstr ""
 
 msgid "\"Outfit shortcut 2\""
 msgstr "\"Atajo para vestimenta 2\""
