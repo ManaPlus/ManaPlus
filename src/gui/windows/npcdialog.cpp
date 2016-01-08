@@ -63,7 +63,7 @@
 
 #include "resources/inventory/complexinventory.h"
 
-#include "resources/item/item.h"
+#include "resources/item/complexitem.h"
 
 #include "net/npchandler.h"
 #include "net/packetlimiter.h"
@@ -129,7 +129,7 @@ NpcDialog::NpcDialog(const BeingId npcId) :
     // TRANSLATORS: npc dialog button
     mResetButton(new Button(this, _("Reset"), "reset", this)),
     mInventory(new Inventory(InventoryType::Craft, 1)),
-    mComplexInventory(new ComplexInventory(InventoryType::Npc, 1)),
+    mComplexInventory(new ComplexInventory(InventoryType::Craft, 1)),
     mItemContainer(new ItemContainer(this, mInventory,
         10000, ShowEmptyRows_true)),
     mItemScrollArea(new ScrollArea(this, mItemContainer,
@@ -473,38 +473,22 @@ void NpcDialog::action(const ActionEvent &event)
                     }
 
                     std::string str;
-                    const int sz = mInventory->getSize();
+                    const int sz = mComplexInventory->getSize();
                     if (sz == 0)
                     {
                         str = "";
                     }
                     else
                     {
-                        const Item *item = mInventory->getItem(0);
-                        if (item)
-                        {
-                            str = strprintf("%d,%d",
-                                item->getTag(),
-                                item->getQuantity());
-                        }
-                        else
-                        {
-                            str = "";
-                        }
+                        const ComplexItem *item = dynamic_cast<ComplexItem*>(
+                            mComplexInventory->getItem(0));
+                        str = complexItemToStr(item);
                         for (int f = 1; f < sz; f ++)
                         {
                             str.append("|");
-                            item = mInventory->getItem(f);
-                            if (item)
-                            {
-                                str.append(strprintf("%d,%d",
-                                    item->getTag(),
-                                    item->getQuantity()));
-                            }
-                            else
-                            {
-                                str.append("");
-                            }
+                            item = dynamic_cast<ComplexItem*>(
+                                mComplexInventory->getItem(f));
+                            str.append(complexItemToStr(item));
                         }
                     }
 
@@ -543,8 +527,10 @@ void NpcDialog::action(const ActionEvent &event)
                 break;
             case NPC_INPUT_ITEM:
             case NPC_INPUT_ITEM_INDEX:
-            case NPC_INPUT_ITEM_CRAFT:
                 mInventory->clear();
+                break;
+            case NPC_INPUT_ITEM_CRAFT:
+                mComplexInventory->clear();
                 break;
             case NPC_INPUT_NONE:
             case NPC_INPUT_LIST:
@@ -566,8 +552,10 @@ void NpcDialog::action(const ActionEvent &event)
         {
             case NPC_INPUT_ITEM:
             case NPC_INPUT_ITEM_INDEX:
-            case NPC_INPUT_ITEM_CRAFT:
                 mInventory->clear();
+                break;
+            case NPC_INPUT_ITEM_CRAFT:
+                mComplexInventory->clear();
                 break;
             case NPC_INPUT_STRING:
             case NPC_INPUT_INTEGER:
@@ -611,8 +599,19 @@ void NpcDialog::action(const ActionEvent &event)
         {
             Item *const item = inventoryWindow->getSelectedItem();
             Inventory *const inventory = PlayerInfo::getInventory();
-            if (mInventory->addVirtualItem(item, 0) && inventory)
-                inventory->virtualRemove(item, 1);
+            if (inventory)
+            {
+                if (mInputState == NPC_INPUT_ITEM_CRAFT)
+                {
+                    if (mComplexInventory->addVirtualItem(item, 0, 1))
+                        inventory->virtualRemove(item, 1);
+                }
+                else
+                {
+                    if (mInventory->addVirtualItem(item, 0, 1))
+                        inventory->virtualRemove(item, 1);
+                }
+            }
         }
     }
     else if (eventId.find("skin_") == 0)
@@ -792,7 +791,7 @@ void NpcDialog::itemCraftRequest(const int size)
 {
     mActionState = NPC_ACTION_INPUT;
     mInputState = NPC_INPUT_ITEM_CRAFT;
-    mInventory->resize(size);
+    mComplexInventory->resize(size);
     buildLayout();
 }
 
@@ -987,6 +986,11 @@ void NpcDialog::placeItemInputControls()
         mItemContainer->setCellBackgroundImage("inventory_cell.xml");
         mItemContainer->setMaxColumns(10000);
     }
+
+    if (mInputState == NPC_INPUT_ITEM_CRAFT)
+        mItemContainer->setInventory(mComplexInventory);
+    else
+        mItemContainer->setInventory(mInventory);
 
     if (mDialogInfo && mDialogInfo->hideText)
     {
@@ -1333,4 +1337,36 @@ void NpcDialog::restoreVirtuals()
     Inventory *const inventory = PlayerInfo::getInventory();
     if (inventory)
         inventory->restoreVirtuals();
+}
+
+std::string NpcDialog::complexItemToStr(const ComplexItem *const item)
+{
+    std::string str;
+    if (item)
+    {
+        const std::vector<Item*> &items = item->getChilds();
+        const int sz = items.size();
+        logger->log("complexItemToStr size=%d", sz);
+        if (!sz)
+            return str;
+
+        const Item *item2 = items[0];
+
+        str = strprintf("%d,%d",
+            item2->getInvIndex(),
+            item2->getQuantity());
+        for (int f = 1; f < sz; f ++)
+        {
+            str.append(";");
+            item2 = items[f];
+            str.append(strprintf("%d,%d",
+                item2->getInvIndex(),
+                item2->getQuantity()));
+        }
+    }
+    else
+    {
+        str = "";
+    }
+    return str;
 }

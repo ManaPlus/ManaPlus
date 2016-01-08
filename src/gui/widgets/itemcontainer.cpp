@@ -799,7 +799,8 @@ void ItemContainer::mouseReleased(MouseEvent &event)
                 Item *const item = inventory->getItem(dragDrop.getTag());
                 if (mInventory->addVirtualItem(
                     item,
-                    getSlotByXY(event.getX(), event.getY())))
+                    getSlotByXY(event.getX(), event.getY()),
+                    1))
                 {
                     inventory->virtualRemove(item, 1);
                 }
@@ -863,7 +864,8 @@ void ItemContainer::mouseReleased(MouseEvent &event)
                 Item *const item = inventory->getItem(dragDrop.getTag());
                 if (mInventory->addVirtualItem(
                     item,
-                    getSlotByXY(event.getX(), event.getY())))
+                    getSlotByXY(event.getX(), event.getY()),
+                    1))
                 {
                     inventory->virtualRemove(item, 1);
                 }
@@ -881,26 +883,14 @@ void ItemContainer::mouseReleased(MouseEvent &event)
                 if (index == Inventory::NO_SLOT_INDEX)
                 {
                     if (inventory)
-                        inventory->virtualRestore(item, 1);
-                    mInventory->removeItemAt(dragDrop.getTag());
+                    {
+                        inventory->virtualRestore(item,
+                            item->getQuantity());
+                        mInventory->removeItemAt(dragDrop.getTag());
+                    }
                     return;
                 }
-                mInventory->removeItemAt(index);
-                mInventory->setItem(index,
-                    item->getId(),
-                    item->getType(),
-                    1,
-                    1,
-                    item->getColor(),
-                    item->getIdentified(),
-                    item->getDamaged(),
-                    item->getFavorite(),
-                    Equipm_false,
-                    Equipped_false);
-                Item *const item2 = mInventory->getItem(index);
-                if (item2)
-                    item2->setTag(item->getTag());
-                mInventory->removeItemAt(dragDrop.getTag());
+                mInventory->moveItem(index, dragDrop.getTag());
             }
             else
             {
@@ -910,7 +900,8 @@ void ItemContainer::mouseReleased(MouseEvent &event)
                         dragDrop.getTag());
                     if (item)
                     {
-                        inventory->virtualRestore(item, 1);
+                        inventory->virtualRestore(item,
+                            item->getQuantity());
                         mInventory->removeItemAt(dragDrop.getTag());
                     }
                 }

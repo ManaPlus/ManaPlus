@@ -36,6 +36,7 @@ class Being;
 class Button;
 class BrowserBox;
 class ComplexInventory;
+class ComplexItem;
 class Container;
 class ExtendedListBox;
 class ItemLinkHandler;
@@ -252,6 +253,8 @@ class NpcDialog final : public Window,
         void deleteSkinControls();
 
         void restoreVirtuals();
+
+        std::string complexItemToStr(const ComplexItem *const item);
 
         BeingId mNpcId;
 

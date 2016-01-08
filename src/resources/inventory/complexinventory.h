@@ -44,6 +44,22 @@ class ComplexInventory final : public Inventory
          * Destructor.
          */
         ~ComplexInventory();
+
+        bool addVirtualItem(const Item *const item,
+                            int index,
+                            const int amount) override final;
+
+        void setItem(const int index,
+                     const int id,
+                     const int type,
+                     const int quantity,
+                     const uint8_t refine,
+                     const ItemColor color,
+                     const Identified identified,
+                     const Damaged damaged,
+                     const Favorite favorite,
+                     const Equipm equipment,
+                     const Equipped equipped) override final;
 };
 
 #endif  // RESOURCES_INVENTORY_COMPLEXINVENTORY_H

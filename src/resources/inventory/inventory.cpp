@@ -372,7 +372,8 @@ int Inventory::findIndexByTag(const int tag) const
 }
 
 bool Inventory::addVirtualItem(const Item *const item,
-                               int index)
+                               int index,
+                               const int amount)
 {
     if (item && !PlayerInfo::isItemProtected(item->getId()))
     {
@@ -383,7 +384,7 @@ bool Inventory::addVirtualItem(const Item *const item,
             setItem(index,
                 item->getId(),
                 item->getType(),
-                1,
+                amount,
                 1,
                 item->getColor(),
                 item->getIdentified(),
@@ -396,7 +397,7 @@ bool Inventory::addVirtualItem(const Item *const item,
         {
             index = addItem(item->getId(),
                 item->getType(),
-                1,
+                amount,
                 1,
                 item->getColor(),
                 item->getIdentified(),
@@ -464,4 +465,26 @@ void Inventory::virtualRestore(const Item *const item,
             return;
         mItems[index]->mQuantity += amount;
     }
+}
+
+void Inventory::moveItem(const int index1,
+                         const int index2)
+{
+    if (index1 < 0 ||
+        index1 >= static_cast<int>(mSize) ||
+        index2 < 0 ||
+        index2 >= static_cast<int>(mSize))
+    {
+        return;
+    }
+
+    Item *const item1 = mItems[index1];
+    Item *const item2 = mItems[index2];
+    if (item1)
+        item1->setInvIndex(index2);
+    if (item2)
+        item2->setInvIndex(index1);
+    mItems[index1] = item2;
+    mItems[index2] = item1;
+    distributeSlotsChangedEvent();
 }

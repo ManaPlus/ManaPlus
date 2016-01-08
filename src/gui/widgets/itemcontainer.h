@@ -138,6 +138,9 @@ class ItemContainer final : public Widget,
         void unsetInventory()
         { mInventory = nullptr; }
 
+        void setInventory(Inventory *const inventory)
+        { mInventory = inventory; }
+
         void setCellBackgroundImage(const std::string &xmlName);
 
         void setMaxColumns(const int maxColumns);

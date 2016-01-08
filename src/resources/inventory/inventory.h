@@ -63,7 +63,7 @@ class Inventory notfinal
         /**
          * Destructor.
          */
-        ~Inventory();
+        virtual ~Inventory();
 
         /**
          * Returns the size that this instance is configured for.
@@ -103,21 +103,24 @@ class Inventory notfinal
         /**
          * Sets the item at the given position.
          */
-        void setItem(const int index,
-                     const int id,
-                     const int type,
-                     const int quantity,
-                     const uint8_t refine,
-                     const ItemColor color,
-                     const Identified identified,
-                     const Damaged damaged,
-                     const Favorite favorite,
-                     const Equipm equipment,
-                     const Equipped equipped);
+        virtual void setItem(const int index,
+                             const int id,
+                             const int type,
+                             const int quantity,
+                             const uint8_t refine,
+                             const ItemColor color,
+                             const Identified identified,
+                             const Damaged damaged,
+                             const Favorite favorite,
+                             const Equipm equipment,
+                             const Equipped equipped);
 
         void setCards(const int index,
                       const int *const cards,
                       const int size) const;
+
+        void moveItem(const int index1,
+                      const int index2);
 
         /**
          * Remove a item from the inventory.
@@ -176,8 +179,9 @@ class Inventory notfinal
 
         int findIndexByTag(const int tag) const;
 
-        bool addVirtualItem(const Item *const item,
-                            int index);
+        virtual bool addVirtualItem(const Item *const item,
+                                    int index,
+                                    const int amount);
 
         void virtualRemove(Item *const item,
                            const int amount);

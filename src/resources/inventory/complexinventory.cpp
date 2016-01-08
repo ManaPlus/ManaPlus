@@ -22,6 +22,12 @@
 
 #include "resources/inventory/complexinventory.h"
 
+#include "logger.h"
+
+#include "being/playerinfo.h"
+
+#include "resources/item/complexitem.h"
+
 #include "debug.h"
 
 ComplexInventory::ComplexInventory(const InventoryTypeT type,
@@ -32,4 +38,130 @@ ComplexInventory::ComplexInventory(const InventoryTypeT type,
 
 ComplexInventory::~ComplexInventory()
 {
+}
+
+bool ComplexInventory::addVirtualItem(const Item *const item,
+                                      int index,
+                                      const int amount)
+{
+    if (!item || PlayerInfo::isItemProtected(item->getId()))
+        return false;
+
+    if (index >= 0 && index < static_cast<int>(mSize))
+    {
+        ComplexItem *citem = nullptr;
+        if (mItems[index] != nullptr)
+        {
+            Item *const item2 = mItems[index];
+            if (item->getId() != item2->getId() ||
+                item->getColor() != item2->getColor())
+            {   // not same id or color
+                return false;
+            }
+            citem = dynamic_cast<ComplexItem*>(mItems[index]);
+            if (!citem)
+            {   // if in inventory not complex item, converting it to complex
+                citem = new ComplexItem(item2->getId(),
+                    item2->getType(),
+                    item2->getQuantity(),
+                    item2->getRefine(),
+                    item2->getColor(),
+                    item2->getIdentified(),
+                    item2->getDamaged(),
+                    item2->getFavorite(),
+                    Equipm_false,
+                    Equipped_false);
+                citem->setTag(item2->getTag());
+                delete mItems[index];
+                mItems[index] = citem;
+            }
+        }
+        else
+        {
+            citem = new ComplexItem(item->getId(),
+                item->getType(),
+                0,
+                item->getRefine(),
+                item->getColor(),
+                item->getIdentified(),
+                item->getDamaged(),
+                item->getFavorite(),
+                Equipm_false,
+                Equipped_false);
+            mItems[index] = citem;
+        }
+        citem->addChild(item, amount);
+    }
+    else
+    {
+        index = addItem(item->getId(),
+            item->getType(),
+            1,
+            1,
+            item->getColor(),
+            item->getIdentified(),
+            item->getDamaged(),
+            item->getFavorite(),
+            Equipm_false,
+            Equipped_false);
+    }
+    if (index == -1)
+        return false;
+
+    Item *const item2 = getItem(index);
+    if (item2)
+        item2->setTag(item->getInvIndex());
+    return true;
+}
+
+void ComplexInventory::setItem(const int index,
+                               const int id,
+                               const int type,
+                               const int quantity,
+                               const uint8_t refine,
+                               const ItemColor color,
+                               const Identified identified,
+                               const Damaged damaged,
+                               const Favorite favorite,
+                               const Equipm equipment,
+                               const Equipped equipped)
+{
+    if (index < 0 || index >= static_cast<int>(mSize))
+    {
+        logger->log("Warning: invalid inventory index: %d", index);
+        return;
+    }
+
+    Item *const item1 = mItems[index];
+    if (!item1 && id > 0)
+    {
+        ComplexItem *const item = new ComplexItem(id,
+            type,
+            quantity,
+            refine,
+            color,
+            identified,
+            damaged,
+            favorite,
+            equipment,
+            equipped);
+        item->setInvIndex(index);
+
+        Item *const item2 = new Item(id,
+            type,
+            quantity,
+            refine,
+            color,
+            identified,
+            damaged,
+            favorite,
+            equipment,
+            equipped);
+        item2->setInvIndex(index);
+        item->addChild(item2, quantity);
+
+        mItems[index] = item;
+        mUsed ++;
+        distributeSlotsChangedEvent();
+    }
 }
