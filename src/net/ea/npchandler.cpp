@@ -35,4 +35,9 @@ NpcHandler::NpcHandler()
     NpcRecv::mRequestLang = false;
 }
 
+NpcDialog *NpcHandler::getCurrentNpcDialog() const
+{
+    return NpcRecv::mDialog;
+}
+
 }  // namespace Ea

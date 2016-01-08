@@ -36,6 +36,7 @@
 
 #include "localconsts.h"
 
+class NpcDialog;
 class ShopItem;
 
 namespace Net
@@ -105,6 +106,8 @@ class NpcHandler notfinal
         virtual void selectArrow(const int nameId) const = 0;
 
         virtual void selectAutoSpell(const int skillId) const = 0;
+
+        virtual NpcDialog *getCurrentNpcDialog() const = 0;
 };
 
 }  // namespace Net
