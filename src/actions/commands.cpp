@@ -581,8 +581,8 @@ impHandler(wait)
 
 impHandler(addPriorityAttack)
 {
-    if (!actorManager
-        || actorManager->isInPriorityAttackList(event.args))
+    if (!actorManager ||
+        actorManager->isInPriorityAttackList(event.args))
     {
         return false;
     }
@@ -610,9 +610,9 @@ impHandler(addAttack)
 
 impHandler(removeAttack)
 {
-    if (!actorManager || event.args.empty() || (
-        !actorManager->isInIgnoreAttackList(event.args) &&
-        !actorManager->isInPriorityAttackList(event.args)))
+    if (!actorManager ||
+        event.args.empty() ||
+        !actorManager->isInAttackList(event.args))
     {
         return false;
     }
