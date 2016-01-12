@@ -69,9 +69,9 @@ DyePalette::DyePalette(const std::string &restrict description,
             }
             else
             {
-                DyeColor color(0, 0, 0, 0);
-                hexToColor(str, blockSize, color);
-                mColors.push_back(color);
+                DyeColor color2(0, 0, 0, 0);
+                hexToColor(str, blockSize, color2);
+                mColors.push_back(color2);
             }
         }
         return;
@@ -81,7 +81,7 @@ DyePalette::DyePalette(const std::string &restrict description,
 }
 
 void DyePalette::hexToColor(const std::string &hexStr,
-                            const int blockSize,
+                            const uint8_t blockSize,
                             DyeColor &color)
 {
     for (size_t i = 0, colorIdx = 0;

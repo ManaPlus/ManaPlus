@@ -87,7 +87,7 @@ class DyePalette final
                                       A_CONST A_WARN_UNUSED;
 
         static void hexToColor(const std::string &hexStr,
-                               const int blockSize,
+                               const uint8_t blockSize,
                                DyeColor &color);
 
 #ifndef UNITTESTS
