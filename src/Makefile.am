@@ -1705,6 +1705,7 @@ manaplustests_SOURCES = ${manaplus_SOURCES} \
 	      utils/xmlutils_unittest.cc \
 	      utils/translation/poparser_unittest.cc \
 	      resources/dye/dye_unittest.cc \
+	      resources/dye/dyepalette_unittest.cc \
 	      resources/mstack_unittest.cc
 endif
 

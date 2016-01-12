@@ -85,8 +85,9 @@ class DyePalette final
 
         static unsigned int hexDecode(const signed char c)
                                       A_CONST A_WARN_UNUSED;
-
+#ifndef UNITTESTS
     private:
+#endif
         std::vector<DyeColor> mColors;
 };
 

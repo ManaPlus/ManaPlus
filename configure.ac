@@ -442,6 +442,7 @@ data/graphics/shaders/Makefile
 data/graphics/sprites/Makefile
 data/sfx/Makefile
 data/sfx/system/Makefile
+data/test/Makefile
 data/themes/Makefile
 data/themes/blacknblack/Makefile
 data/themes/blackwood/Makefile
