@@ -28,6 +28,8 @@
 #include "resources/db/palettedb.h"
 #endif
 
+#include "utils/stringutils.h"
+
 #include <cmath>
 
 #include <SDL_endian.h>
@@ -42,49 +44,33 @@ DyePalette::DyePalette(const std::string &restrict description,
     if (size == 0)
         return;
 
+    StringVect parts;
+    splitToStringVector(parts, description.substr(1), ',');
     if (description[0] == '#')
     {
-        size_t pos = 1;
-        for ( ; ; )
+        FOR_EACH (StringVectCIter, it, parts)
         {
-            if (pos + blockSize > size)
-                break;
-
             DyeColor color(0, 0, 0, 0);
+            const std::string str = *it;
 
-            for (size_t i = 0, colorIdx = 0; i < blockSize && colorIdx < 4;
+            for (size_t i = 0, colorIdx = 0;
+                 i < blockSize && colorIdx < 4;
                  i += 2, colorIdx ++)
             {
                 color.value[colorIdx] = static_cast<unsigned char>((
-                    hexDecode(description[pos + i]) << 4)
-                    + hexDecode(description[pos + i + 1]));
+                    hexDecode(str[i]) << 4)
+                    + hexDecode(str[i + 1]));
             }
             mColors.push_back(color);
-            pos += blockSize;
-
-            if (pos == size)
-                return;
-            if (description[pos] != ',')
-                break;
-
-            ++pos;
         }
+        return;
     }
 #ifndef DYECMD
     else if (description[0] == '@')
     {
-        size_t pos = 1;
-        for ( ; pos < size ; )
-        {
-            const size_t idx = description.find(',', pos);
-            if (idx == std::string::npos)
-                return;
-            if (idx == pos)
-                break;
-            mColors.push_back(PaletteDB::getColor(
-                description.substr(pos, idx - pos)));
-            pos = idx + 1;
-        }
+        FOR_EACH (StringVectCIter, it, parts)
+            mColors.push_back(PaletteDB::getColor(*it));
+        return;
     }
 #endif
     logger->log("Error, invalid embedded palette: %s", description.c_str());
