@@ -34,7 +34,6 @@ namespace
 {
     bool mLoaded = false;
     std::map<std::string, DyeColor> mColors;
-    DyeColor mEmpty(0, 0, 0, 0);
 }
 
 void PaletteDB::load()
@@ -113,11 +112,11 @@ void PaletteDB::unload()
     mColors.clear();
 }
 
-const DyeColor &PaletteDB::getColor(const std::string &name)
+const DyeColor *PaletteDB::getColor(const std::string &name)
 {
     std::map<std::string, DyeColor>::const_iterator it = mColors.find(name);
     if (it != mColors.end())
-        return (*it).second;
+        return &(*it).second;
     else
-        return mEmpty;
+        return nullptr;
 }

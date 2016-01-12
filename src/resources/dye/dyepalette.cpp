@@ -51,16 +51,7 @@ DyePalette::DyePalette(const std::string &restrict description,
         FOR_EACH (StringVectCIter, it, parts)
         {
             DyeColor color(0, 0, 0, 0);
-            const std::string str = *it;
-
-            for (size_t i = 0, colorIdx = 0;
-                 i < blockSize && colorIdx < 4;
-                 i += 2, colorIdx ++)
-            {
-                color.value[colorIdx] = static_cast<unsigned char>((
-                    hexDecode(str[i]) << 4)
-                    + hexDecode(str[i + 1]));
-            }
+            hexToColor(*it, blockSize, color);
             mColors.push_back(color);
         }
         return;
@@ -69,11 +60,38 @@ DyePalette::DyePalette(const std::string &restrict description,
     else if (description[0] == '@')
     {
         FOR_EACH (StringVectCIter, it, parts)
-            mColors.push_back(PaletteDB::getColor(*it));
+        {
+            const std::string str = *it;
+            const DyeColor *const color = PaletteDB::getColor(str);
+            if (color)
+            {
+                mColors.push_back(*color);
+            }
+            else
+            {
+                DyeColor color(0, 0, 0, 0);
+                hexToColor(str, blockSize, color);
+                mColors.push_back(color);
+            }
+        }
         return;
     }
 #endif
     logger->log("Error, invalid embedded palette: %s", description.c_str());
+}
+
+void DyePalette::hexToColor(const std::string &hexStr,
+                            const int blockSize,
+                            DyeColor &color)
+{
+    for (size_t i = 0, colorIdx = 0;
+         i < blockSize && colorIdx < 4;
+         i += 2, colorIdx ++)
+    {
+        color.value[colorIdx] = static_cast<unsigned char>((
+            hexDecode(hexStr[i]) << 4)
+            + hexDecode(hexStr[i + 1]));
+    }
 }
 
 unsigned int DyePalette::hexDecode(const signed char c)

@@ -32,7 +32,7 @@ namespace PaletteDB
     void load();
     void unload();
     void loadPalette();
-    const DyeColor &getColor(const std::string &name);
+    const DyeColor *getColor(const std::string &name);
 
 }  // namespace PaletteDB
 
