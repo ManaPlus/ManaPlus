@@ -459,6 +459,7 @@ if (serverVersion >= 8 && packetVersion >= 20150226)
     packet(SMSG_PLAYER_EQUIPMENT,              0x0a0d,  -1, &InventoryRecv::processPlayerEquipment);
     packet(SMSG_PLAYER_CART_EQUIP,             0x0a0f,  -1, &InventoryRecv::processPlayerCartEquip);
     packet(SMSG_PLAYER_STORAGE_EQUIP,          0x0a10,  -1, &InventoryRecv::processPlayerStorageEquip);
+    packet(SMSG_BEING_VIEW_EQUIPMENT,          0x0a2d,  -1, &BeingRecv::processBeingViewEquipment);
 }
 
 // partial implimentation for future use
