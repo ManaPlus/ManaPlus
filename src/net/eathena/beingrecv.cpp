@@ -65,6 +65,7 @@
 
 #include "debug.h"
 
+extern int packetVersion;
 extern int serverVersion;
 
 namespace EAthena
@@ -398,6 +399,8 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
     dstBeing->setHP(hp);
 
     msg.readInt8("is boss");
+    if (packetVersion >= 20150513)
+        msg.readInt16("body2");
 
     dstBeing->setStunMode(stunMode);
     dstBeing->setStatusEffectBlock(0, static_cast<uint16_t>(
@@ -574,6 +577,8 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
     dstBeing->setHP(hp);
 
     msg.readInt8("is boss");
+    if (packetVersion >= 20150513)
+        msg.readInt16("body2");
 
     dstBeing->setStunMode(stunMode);
     dstBeing->setStatusEffectBlock(0, static_cast<uint16_t>(
@@ -730,6 +735,8 @@ void BeingRecv::processBeingSpawn(Net::MessageIn &msg)
     dstBeing->setHP(hp);
 
     msg.readInt8("is boss");
+    if (packetVersion >= 20150513)
+        msg.readInt16("body2");
 
     dstBeing->setStunMode(stunMode);
     dstBeing->setStatusEffectBlock(0, static_cast<uint16_t>(

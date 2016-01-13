@@ -268,5 +268,9 @@ packet(CMSG_SET_STATUS,              0x0b0e);
 packet(CMSG_ONLINE_LIST,             0x0b0f);
 
 #ifdef PACKETS_UPDATE
-// condition code here
+if (packetVersion >= 20150513)
+{
+    packet(CMSG_SEARCHSTORE_CLICK,       0x0838);
+    packet(CMSG_BUYINGSTORE_CLOSE,       0x022d);
+}
 #endif
