@@ -213,4 +213,12 @@ int InventoryHandler::convertFromServerSlot(const int serverSlot) const
     return static_cast<int>(EQUIP_CONVERT[serverSlot]);
 }
 
+void InventoryHandler::selectCart(const BeingId accountId,
+                                  const int type) const
+{
+    createOutPacket(CMSG_SELECT_CART);
+    outMsg.writeBeingId(accountId, "account id");
+    outMsg.writeInt8(type, "type");
+}
+
 }  // namespace EAthena

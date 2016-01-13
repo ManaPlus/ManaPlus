@@ -66,6 +66,9 @@ class InventoryHandler final : public Ea::InventoryHandler
         int convertFromServerSlot(const int serverSlot)
                                   const override final A_WARN_UNUSED;
 
+        void selectCart(const BeingId accountId,
+                        const int type) const override final;
+
         int getProjectileSlot() const override final
         { return 23; }
 

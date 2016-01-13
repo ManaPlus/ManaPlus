@@ -164,4 +164,9 @@ int InventoryHandler::convertFromServerSlot(const int serverSlot) const
     return static_cast<int>(EQUIP_CONVERT[serverSlot]);
 }
 
+void InventoryHandler::selectCart(const BeingId accountId A_UNUSED,
+                                  const int type A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

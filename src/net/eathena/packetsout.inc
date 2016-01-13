@@ -274,3 +274,6 @@ if (packetVersion >= 20150513)
     packet(CMSG_BUYINGSTORE_CLOSE,       0x022d);
 }
 #endif
+
+// introduced in 20150805
+packet(CMSG_SELECT_CART,             0x0980);

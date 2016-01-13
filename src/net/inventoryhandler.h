@@ -23,6 +23,8 @@
 #ifndef NET_INVENTORYHANDLER_H
 #define NET_INVENTORYHANDLER_H
 
+#include "enums/simpletypes/beingid.h"
+
 #include "resources/inventory/inventory.h"
 
 namespace Net
@@ -84,6 +86,9 @@ class InventoryHandler notfinal
         virtual int getProjectileSlot() const = 0;
 
         virtual int getItemIndex() const A_WARN_UNUSED = 0;
+
+        virtual void selectCart(const BeingId accountId,
+                                const int type) const = 0;
 };
 
 }  // namespace Net
