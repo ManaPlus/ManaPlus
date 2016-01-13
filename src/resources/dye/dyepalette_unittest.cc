@@ -140,7 +140,7 @@ TEST_CASE("DyePalette tests")
         REQUIRE(palette.mColors[1].value[3] == 0x33);
     }
 
-    SECTION("palette test 8")
+    SECTION("palette test 1")
     {
         DyePalette palette("@Untitled1", 6);
         REQUIRE(palette.mColors.size() == 1);
@@ -150,7 +150,7 @@ TEST_CASE("DyePalette tests")
         REQUIRE(palette.mColors[0].value[3] == 255);
     }
 
-    SECTION("palette test 9")
+    SECTION("palette test 2")
     {
         DyePalette palette("@Untitled1,Untitled8", 6);
         REQUIRE(palette.mColors.size() == 2);
@@ -165,7 +165,7 @@ TEST_CASE("DyePalette tests")
         REQUIRE(palette.mColors[1].value[3] == 255);
     }
 
-    SECTION("palette test 10")
+    SECTION("palette test 3")
     {
         DyePalette palette("@Untitled1,", 6);
         REQUIRE(palette.mColors.size() == 1);
@@ -175,7 +175,7 @@ TEST_CASE("DyePalette tests")
         REQUIRE(palette.mColors[0].value[3] == 255);
     }
 
-    SECTION("palette test 11")
+    SECTION("palette test 4")
     {
         DyePalette palette("@,,,Untitled1,,Untitled8", 6);
         REQUIRE(palette.mColors.size() == 2);
@@ -190,7 +190,7 @@ TEST_CASE("DyePalette tests")
         REQUIRE(palette.mColors[1].value[3] == 255);
     }
 
-    SECTION("palette test 12")
+    SECTION("palette test 5")
     {
         DyePalette palette("@12ff34", 6);
         REQUIRE(palette.mColors.size() == 1);
@@ -200,7 +200,7 @@ TEST_CASE("DyePalette tests")
         REQUIRE(palette.mColors[0].value[3] == 0x00);
     }
 
-    SECTION("palette test 13")
+    SECTION("palette test 6")
     {
         DyePalette palette("@12ff3456", 8);
         REQUIRE(palette.mColors.size() == 1);
@@ -210,7 +210,7 @@ TEST_CASE("DyePalette tests")
         REQUIRE(palette.mColors[0].value[3] == 0x56);
     }
 
-    SECTION("palette test 14")
+    SECTION("palette test 7")
     {
         DyePalette palette("@12ff34,002211", 6);
         REQUIRE(palette.mColors.size() == 2);
@@ -225,7 +225,7 @@ TEST_CASE("DyePalette tests")
         REQUIRE(palette.mColors[1].value[3] == 0x00);
     }
 
-    SECTION("palette test 15")
+    SECTION("palette test 8")
     {
         DyePalette palette("@12ff3412,00221133", 8);
         REQUIRE(palette.mColors.size() == 2);
@@ -240,7 +240,7 @@ TEST_CASE("DyePalette tests")
         REQUIRE(palette.mColors[1].value[3] == 0x33);
     }
 
-    SECTION("palette test 16")
+    SECTION("palette test 9")
     {
         DyePalette palette("@12ff34,", 6);
         REQUIRE(palette.mColors.size() == 1);
@@ -250,7 +250,7 @@ TEST_CASE("DyePalette tests")
         REQUIRE(palette.mColors[0].value[3] == 0x00);
     }
 
-    SECTION("palette test 17")
+    SECTION("palette test 10")
     {
         DyePalette palette("@12ff3456,", 8);
         REQUIRE(palette.mColors.size() == 1);
@@ -260,7 +260,7 @@ TEST_CASE("DyePalette tests")
         REQUIRE(palette.mColors[0].value[3] == 0x56);
     }
 
-    SECTION("palette test 18")
+    SECTION("palette test 11")
     {
         DyePalette palette("@,,,12ff3412,,00221133", 8);
         REQUIRE(palette.mColors.size() == 2);
@@ -275,7 +275,7 @@ TEST_CASE("DyePalette tests")
         REQUIRE(palette.mColors[1].value[3] == 0x33);
     }
 
-    SECTION("palette test 19")
+    SECTION("palette test 12")
     {
         DyePalette palette("@Untitled1,334455", 6);
         REQUIRE(palette.mColors.size() == 2);
@@ -290,7 +290,7 @@ TEST_CASE("DyePalette tests")
         REQUIRE(palette.mColors[1].value[3] == 0x00);
     }
 
-    SECTION("palette test 20")
+    SECTION("palette test 13")
     {
         DyePalette palette("@Untitled1,33445566", 8);
         REQUIRE(palette.mColors.size() == 2);
@@ -304,4 +304,55 @@ TEST_CASE("DyePalette tests")
         REQUIRE(palette.mColors[1].value[2] == 0x55);
         REQUIRE(palette.mColors[1].value[3] == 0x66);
     }
+
+    SECTION("palette test 14")
+    {
+        DyePalette palette("@+77,Untitled1", 8);
+        REQUIRE(palette.mColors.size() == 1);
+        REQUIRE(palette.mColors[0].value[0] == 47);
+        REQUIRE(palette.mColors[0].value[1] == 56);
+        REQUIRE(palette.mColors[0].value[2] == 46);
+        REQUIRE(palette.mColors[0].value[3] == 0x77);
+    }
+
+    SECTION("palette test 15")
+    {
+        DyePalette palette("@+87,Untitled1,Untitled8", 8);
+        REQUIRE(palette.mColors.size() == 2);
+        REQUIRE(palette.mColors[0].value[0] == 47);
+        REQUIRE(palette.mColors[0].value[1] == 56);
+        REQUIRE(palette.mColors[0].value[2] == 46);
+        REQUIRE(palette.mColors[0].value[3] == 0x87);
+
+        REQUIRE(palette.mColors[1].value[0] == 0);
+        REQUIRE(palette.mColors[1].value[1] == 0);
+        REQUIRE(palette.mColors[1].value[2] == 255);
+        REQUIRE(palette.mColors[1].value[3] == 0x87);
+    }
+
+    SECTION("palette test 16")
+    {
+        DyePalette palette("@+87,Untitled1,+34,Untitled8", 8);
+        REQUIRE(palette.mColors.size() == 2);
+        REQUIRE(palette.mColors[0].value[0] == 47);
+        REQUIRE(palette.mColors[0].value[1] == 56);
+        REQUIRE(palette.mColors[0].value[2] == 46);
+        REQUIRE(palette.mColors[0].value[3] == 0x87);
+
+        REQUIRE(palette.mColors[1].value[0] == 0);
+        REQUIRE(palette.mColors[1].value[1] == 0);
+        REQUIRE(palette.mColors[1].value[2] == 255);
+        REQUIRE(palette.mColors[1].value[3] == 0x34);
+    }
+
+    SECTION("palette test 17")
+    {
+        DyePalette palette("@+12,+23,+77,Untitled1", 8);
+        REQUIRE(palette.mColors.size() == 1);
+        REQUIRE(palette.mColors[0].value[0] == 47);
+        REQUIRE(palette.mColors[0].value[1] == 56);
+        REQUIRE(palette.mColors[0].value[2] == 46);
+        REQUIRE(palette.mColors[0].value[3] == 0x77);
+    }
+
 }

@@ -59,13 +59,25 @@ DyePalette::DyePalette(const std::string &restrict description,
 #ifndef DYECMD
     else if (description[0] == '@')
     {
+        uint8_t alpha = 255;
         FOR_EACH (StringVectCIter, it, parts)
         {
             const std::string str = *it;
+            if (str.empty())
+                continue;
+            if (str[0] == '+')
+            {
+                if (str.size() != 3)
+                    continue;
+                alpha = (hexDecode(str[1]) << 4) + hexDecode(str[2]);
+                continue;
+            }
             const DyeColor *const color = PaletteDB::getColor(str);
             if (color)
             {
-                mColors.push_back(*color);
+                DyeColor color2 = *color;
+                color2.value[3] = alpha;
+                mColors.push_back(color2);
             }
             else
             {
