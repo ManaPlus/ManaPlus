@@ -1098,4 +1098,14 @@ void InventoryRecv::processPlayerInventoryRemove(Net::MessageIn &msg)
     BLOCK_END("InventoryRecv::processPlayerInventoryRemove")
 }
 
+void InventoryRecv::processSelectCart(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+
+    const int count = msg.readInt16("len") - 8;
+    msg.readBeingId("account id");
+    for (int f = 0; f < count; f ++)
+        msg.readUInt8("cart type");
+}
+
 }  // namespace EAthena

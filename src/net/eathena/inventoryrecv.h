@@ -70,6 +70,7 @@ namespace EAthena
         void processCartAddError(Net::MessageIn &msg);
         void processBindItem(Net::MessageIn &msg);
         void processPlayerInventoryRemove(Net::MessageIn &msg);
+        void processSelectCart(Net::MessageIn &msg);
     }  // namespace InventoryRecv
 }  // namespace EAthena
 

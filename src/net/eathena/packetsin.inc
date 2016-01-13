@@ -470,3 +470,6 @@ if (packetVersion >= 20150513)
     packet(SMSG_BEING_SPAWN,                   0x09fe,  -1, &BeingRecv::processBeingSpawn);
     packet(SMSG_BEING_MOVE,                    0x09fd,  -1, &BeingRecv::processBeingMove);
 }
+
+// introduced in 20150805
+packet(SMSG_SELECT_CART,                   0x00c2,  -1, &InventoryRecv::processSelectCart);
