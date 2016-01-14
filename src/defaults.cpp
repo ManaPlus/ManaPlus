@@ -625,6 +625,8 @@ DefaultsData* getPathsDefaults()
     AddDEF("inactivebadge", "inactive.xml");
     AddDEF("awaybadge", "away.xml");
 
+    AddDEF("defaultPaletteFile", "palette.gpl");
+
     return configData;
 }
 

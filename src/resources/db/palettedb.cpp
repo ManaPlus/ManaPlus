@@ -20,6 +20,7 @@
 
 #include "resources/db/palettedb.h"
 
+#include "configuration.h"
 #include "logger.h"
 
 #include "utils/files.h"
@@ -48,7 +49,9 @@ void PaletteDB::loadPalette()
 {
     mLoaded = true;
     StringVect lines;
-    Files::loadTextFile("palette.gpl", lines);
+    Files::loadTextFile(paths.getStringValue(
+        "defaultPaletteFile"),
+        lines);
     StringVectCIter it = lines.begin();
     if (it == lines.end())
     {
