@@ -49,8 +49,8 @@ void PaletteDB::loadPalette()
 {
     mLoaded = true;
     StringVect lines;
-    Files::loadTextFile(paths.getStringValue(
-        "defaultPaletteFile"),
+    Files::loadTextFile(paths.getStringValue("palettesDir") +
+        paths.getStringValue("defaultPaletteFile"),
         lines);
     StringVectCIter it = lines.begin();
     if (it == lines.end())
