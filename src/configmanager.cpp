@@ -163,7 +163,31 @@ void ConfigManager::backupConfig(const std::string &name)
     Files::copyFile(fileName3, fileName4);
 }
 
-#ifndef ANDROID
+#ifdef __native_client__
+void ConfigManager::storeSafeParameters()
+{
+    RenderType tmpOpengl;
+
+    isSafeMode = config.getBoolValue("safemode");
+    if (isSafeMode)
+        logger->log1("Run in safe mode");
+
+    tmpOpengl = intToRenderType(config.getIntValue("opengl"));
+
+    config.setValue("opengl", static_cast<int>(RENDER_SOFTWARE));
+
+    config.write();
+
+    if (settings.options.safeMode)
+    {
+        isSafeMode = true;
+        return;
+    }
+
+    config.setValue("safemode", false);
+    config.setValue("opengl", static_cast<int>(tmpOpengl));
+}
+#elif !defined(ANDROID)
 void ConfigManager::storeSafeParameters()
 {
     bool tmpHwaccel;
