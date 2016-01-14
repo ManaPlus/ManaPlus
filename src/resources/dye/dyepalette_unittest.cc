@@ -21,6 +21,7 @@
 #include "catch.hpp"
 
 #include "client.h"
+#include "configuration.h"
 #include "logger.h"
 
 #include "resources/resourcemanager.h"
@@ -53,6 +54,7 @@ TEST_CASE("DyePalette tests")
     imageHelper = new SDLImageHelper();
     SDL_SetVideoMode(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
 
+    paths.setDefaultValues(getPathsDefaults());
     PaletteDB::load();
 
     SECTION("simple test 1")
