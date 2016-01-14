@@ -22,6 +22,8 @@
 
 #include "gui/widgets/itemlinkhandler.h"
 
+#include "itemcolormanager.h"
+
 #include "gui/viewport.h"
 
 #include "gui/popups/itempopup.h"
@@ -111,14 +113,19 @@ void ItemLinkHandler::handleLink(const std::string &link, MouseEvent *event)
         splitToIntVector(str, link, ',');
         if (str.empty())
             return;
-        ItemColor color = ItemColor_one;
-        if (str.size() > 1)
-            color = fromInt(str[1], ItemColor);
+
         const int id = str[0];
+
         if (id > 0)
         {
+            str.erase(str.begin());
+            while (str.size() < 4)
+                str.push_back(0);
+            const ItemColor color =
+                ItemColorManager::getColorFromCards(&str[0]);
+
             const ItemInfo &itemInfo = ItemDB::get(id);
-            itemPopup->setItem(itemInfo, color, true, -1, nullptr);
+            itemPopup->setItem(itemInfo, color, true, -1, &str[0]);
             if (itemPopup->isPopupVisible())
             {
                 itemPopup->setVisible(Visible_false);

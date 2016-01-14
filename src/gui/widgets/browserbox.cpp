@@ -23,6 +23,7 @@
 
 #include "gui/widgets/browserbox.h"
 
+#include "itemcolormanager.h"
 #include "settings.h"
 
 #include "input/inputmanager.h"
@@ -235,13 +236,30 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
             bLink.y2 = bLink.y1 + font->getHeight();
             if (bLink.caption.empty())
             {
+                bLink.caption = bLink.link;
 #ifndef DYECMD
-                const int id = atoi(bLink.link.c_str());
-                if (id)
-                    bLink.caption = ItemDB::get(id).getName();
+                size_t idx = bLink.link.find(",");
+                if (idx != std::string::npos)
+                {
+                    const int id = atoi(bLink.link.substr(0, idx).c_str());
+                    if (id)
+                    {
+                        std::vector<int> parts;
+                        splitToIntVector(parts, bLink.link.substr(idx), ',');
+                        while (parts.size() < 4)
+                            parts.push_back(0);
+                        const ItemColor itemColor =
+                            ItemColorManager::getColorFromCards(&parts[0]);
+                        bLink.caption = ItemDB::get(id).getName(itemColor);
+                    }
+                }
                 else
+                {
+                    const int id = atoi(bLink.link.c_str());
+                    if (id)
+                        bLink.caption = ItemDB::get(id).getName();
+                }
 #endif
-                    bLink.caption = bLink.link;
                 if (translator)
                     bLink.caption = translator->getStr(bLink.caption);
             }
