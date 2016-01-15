@@ -20,8 +20,6 @@
 
 #include "resources/item/complexitem.h"
 
-#include "logger.h"
-
 #include "utils/dtor.h"
 
 #include "debug.h"

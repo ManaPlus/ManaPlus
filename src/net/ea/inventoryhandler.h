@@ -25,8 +25,6 @@
 
 #include "localconsts.h"
 
-#include "enums/simpletypes/beingid.h"
-
 #include "net/inventoryhandler.h"
 
 #include <queue>

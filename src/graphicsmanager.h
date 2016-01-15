@@ -96,7 +96,7 @@ class GraphicsManager final
 
         bool supportExtension(const std::string &ext) const A_WARN_UNUSED;
 
-        void updateTextureFormat() const;
+        static void updateTextureFormat();
 
         void updateTextureCompressionFormat() const;
 

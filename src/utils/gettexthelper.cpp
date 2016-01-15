@@ -20,7 +20,9 @@
 
 #include "utils/gettexthelper.h"
 
+#if defined(ENABLE_NLS) || defined(ENABLE_CUSTOMNLS)
 #include "configuration.h"
+#endif
 
 #ifdef ENABLE_NLS
 #include "client.h"
@@ -77,7 +79,6 @@ static std::string setLangEnv()
             setEnv("LANGUAGE", lang.c_str());
         }
 #endif  // WIN32
-
     }
 
     return lang;

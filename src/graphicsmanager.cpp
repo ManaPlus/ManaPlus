@@ -809,7 +809,7 @@ void GraphicsManager::updateTextureCompressionFormat() const
     }
 }
 
-void GraphicsManager::updateTextureFormat() const
+void GraphicsManager::updateTextureFormat()
 {
     const int renderer = settings.options.renderer;
 

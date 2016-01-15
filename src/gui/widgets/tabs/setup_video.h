@@ -68,7 +68,7 @@ class Setup_Video final : public SetupTab,
         Label *mFpsLabel;
         Slider *mAltFpsSlider;
         Label *mAltFpsLabel;
-#if !defined(ANDROID) && !defined(__APPLE__) || !defined(__native_client__)
+#if !defined(ANDROID) && !defined(__APPLE__) && !defined(__native_client__)
         Button *mDetectButton;
 #endif
         TextDialog *mDialog;

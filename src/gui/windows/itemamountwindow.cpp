@@ -264,6 +264,10 @@ ItemAmountWindow::ItemAmountWindow(const Usage usage,
             // TRANSLATORS: amount window message
             setCaption(_("Select amount of items to send."));
             break;
+        case CraftAdd:
+            // TRANSLATORS: amount window message
+            setCaption(_("Select amount of items to craft."));
+            break;
 #endif
         case CartAdd:
             // TRANSLATORS: amount window message

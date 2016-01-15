@@ -74,7 +74,7 @@ class Joystick final
 
         void close();
 
-        bool isEnabled() const A_WARN_UNUSED
+        static bool isEnabled() A_WARN_UNUSED
         { return mEnabled; }
 
         void setNumber(const int n);

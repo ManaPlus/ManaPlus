@@ -23,8 +23,6 @@
 
 #include "resources/item/item.h"
 
-#include <vector>
-
 #include "localconsts.h"
 
 /**

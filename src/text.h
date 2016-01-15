@@ -76,12 +76,12 @@ class Text notfinal
         virtual void draw(Graphics *const graphics,
                           const int xOff, const int yOff) A_NONNULL(2);
 
-        int getWidth() A_WARN_UNUSED;
+//        int getWidth() A_WARN_UNUSED;
 
-        int getX() A_WARN_UNUSED
+        int getX() const A_WARN_UNUSED
         { return mX; }
 
-        int getY() A_WARN_UNUSED
+        int getY() const A_WARN_UNUSED
         { return mY; }
 
     private:

@@ -111,8 +111,8 @@ void ChatRecv::processWhisperResponseContinue(Net::MessageIn &msg,
             {
                 chatWindow->addWhisper(nick,
                     // TRANSLATORS: chat message
-                    strprintf(_("Whisper could not "
-                    "be sent, you ignored by all players.")),
+                    _("Whisper could not "
+                    "be sent, you ignored by all players."),
                     ChatMsgType::BY_SERVER);
             }
             break;

@@ -51,11 +51,11 @@
 MapDebugTab::MapDebugTab(const Widget2 *const widget) :
     DebugTab(widget),
     // TRANSLATORS: debug window label
-    mMusicFileLabel(new Label(this, strprintf(_("Music:")))),
+    mMusicFileLabel(new Label(this, _("Music:"))),
     // TRANSLATORS: debug window label
-    mMapLabel(new Label(this, strprintf(_("Map:")))),
+    mMapLabel(new Label(this, _("Map:"))),
     // TRANSLATORS: debug window label
-    mMinimapLabel(new Label(this, strprintf(_("Minimap:")))),
+    mMinimapLabel(new Label(this, _("Minimap:"))),
     mTileMouseLabel(new Label(this, strprintf("%s (%d, %d)",
         // TRANSLATORS: debug window label
         _("Cursor:"), 0, 0))),
