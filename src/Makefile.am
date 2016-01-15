@@ -717,8 +717,6 @@ manaplus_SOURCES += main.cpp \
 	      client.h \
 	      resources/sprite/imagesprite.cpp \
 	      resources/sprite/imagesprite.h \
-	      resources/inventory/complexinventory.cpp \
-	      resources/inventory/complexinventory.h \
 	      resources/inventory/inventory.cpp \
 	      resources/inventory/inventory.h \
 	      textcommand.cpp \
@@ -1494,6 +1492,8 @@ manaplus_SOURCES += gui/windows/bankwindow.cpp \
 	      listeners/vendingmodelistener.h \
 	      listeners/vendingslotslistener.cpp \
 	      listeners/vendingslotslistener.h \
+	      resources/inventory/complexinventory.cpp \
+	      resources/inventory/complexinventory.h \
 	      net/auctionhandler.h \
 	      net/bankhandler.h \
 	      net/battlegroundhandler.h \

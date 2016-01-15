@@ -128,8 +128,10 @@ NpcDialog::NpcDialog(const BeingId npcId) :
     mButton3(new Button(this, _("Add"), "add", this)),
     // TRANSLATORS: npc dialog button
     mResetButton(new Button(this, _("Reset"), "reset", this)),
-    mInventory(new Inventory(InventoryType::Craft, 1)),
+    mInventory(new Inventory(InventoryType::Npc, 1)),
+#ifdef EATHENA_SUPPORT
     mComplexInventory(new ComplexInventory(InventoryType::Craft, 1)),
+#endif
     mItemContainer(new ItemContainer(this, mInventory,
         10000, ShowEmptyRows_true)),
     mItemScrollArea(new ScrollArea(this, mItemContainer,
@@ -261,7 +263,9 @@ NpcDialog::~NpcDialog()
     delete2(mItemLinkHandler);
     delete2(mItemContainer);
     delete2(mInventory);
+#ifdef EATHENA_SUPPORT
     delete2(mComplexInventory);
+#endif
     delete2(mItemScrollArea);
     delete2(mListScrollArea);
     delete2(mSkinScrollArea);
@@ -465,6 +469,7 @@ void NpcDialog::action(const ActionEvent &event)
                 }
                 case NPC_INPUT_ITEM_CRAFT:
                 {
+#ifdef EATHENA_SUPPORT
                     restoreVirtuals();
                     if (!PacketLimiter::limitPackets(
                         PacketType::PACKET_NPC_INPUT))
@@ -495,6 +500,7 @@ void NpcDialog::action(const ActionEvent &event)
                     // need send selected item
                     npcHandler->stringInput(mNpcId, str);
                     mInventory->clear();
+#endif
                     break;
                 }
 
@@ -530,7 +536,9 @@ void NpcDialog::action(const ActionEvent &event)
                 mInventory->clear();
                 break;
             case NPC_INPUT_ITEM_CRAFT:
+#ifdef EATHENA_SUPPORT
                 mComplexInventory->clear();
+#endif
                 break;
             case NPC_INPUT_NONE:
             case NPC_INPUT_LIST:
@@ -555,7 +563,9 @@ void NpcDialog::action(const ActionEvent &event)
                 mInventory->clear();
                 break;
             case NPC_INPUT_ITEM_CRAFT:
+#ifdef EATHENA_SUPPORT
                 mComplexInventory->clear();
+#endif
                 break;
             case NPC_INPUT_STRING:
             case NPC_INPUT_INTEGER:
@@ -601,12 +611,14 @@ void NpcDialog::action(const ActionEvent &event)
             Inventory *const inventory = PlayerInfo::getInventory();
             if (inventory)
             {
+#ifdef EATHENA_SUPPORT
                 if (mInputState == NPC_INPUT_ITEM_CRAFT)
                 {
                     if (mComplexInventory->addVirtualItem(item, 0, 1))
                         inventory->virtualRemove(item, 1);
                 }
                 else
+#endif
                 {
                     if (mInventory->addVirtualItem(item, 0, 1))
                         inventory->virtualRemove(item, 1);
@@ -789,10 +801,12 @@ void NpcDialog::itemIndexRequest(const int size)
 
 void NpcDialog::itemCraftRequest(const int size)
 {
+#ifdef EATHENA_SUPPORT
     mActionState = NPC_ACTION_INPUT;
     mInputState = NPC_INPUT_ITEM_CRAFT;
     mComplexInventory->resize(size);
     buildLayout();
+#endif
 }
 
 void NpcDialog::move(const int amount)
@@ -987,9 +1001,11 @@ void NpcDialog::placeItemInputControls()
         mItemContainer->setMaxColumns(10000);
     }
 
+#ifdef EATHENA_SUPPORT
     if (mInputState == NPC_INPUT_ITEM_CRAFT)
         mItemContainer->setInventory(mComplexInventory);
     else
+#endif
         mItemContainer->setInventory(mInventory);
 
     if (mDialogInfo && mDialogInfo->hideText)
@@ -1383,6 +1399,7 @@ void NpcDialog::addCraftItem(Item *const item,
     if (!inventory)
         return;
 
+#ifdef EATHENA_SUPPORT
     if (mComplexInventory->addVirtualItem(
         item,
         slot,
@@ -1390,4 +1407,5 @@ void NpcDialog::addCraftItem(Item *const item,
     {
         inventory->virtualRemove(item, amount);
     }
+#endif
 }

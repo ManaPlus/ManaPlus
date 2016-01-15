@@ -356,6 +356,7 @@ void ItemAmountWindow::action(const ActionEvent &event)
         }
         else
         {
+#ifdef EATHENA_SUPPORT
             if (mUsage == CraftAdd)
             {
                 finish(mItem,
@@ -364,6 +365,7 @@ void ItemAmountWindow::action(const ActionEvent &event)
                     mUsage);
             }
             else
+#endif
             {
                 finish(mItem,
                     mItemAmountTextField->getValue(),
@@ -472,16 +474,23 @@ void ItemAmountWindow::showWindow(const Usage usage,
 
     if (usage != ShopBuyAdd && usage != ShopSellAdd && maxRange <= 1)
     {
+#ifdef EATHENA_SUPPORT
         if (usage == CraftAdd)
             finish(item, maxRange, tag, usage);
         else
+#endif
             finish(item, maxRange, 0, usage);
     }
     else
     {
+#ifdef EATHENA_SUPPORT
         ItemAmountWindow *const window = CREATEWIDGETR(ItemAmountWindow,
             usage, parent, item, maxRange);
         if (usage == CraftAdd)
             window->mPrice = tag;
+#else
+        CREATEWIDGET(ItemAmountWindow,
+            usage, parent, item, maxRange);
+#endif
     }
 }

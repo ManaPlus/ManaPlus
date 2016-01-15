@@ -236,12 +236,12 @@ class DragDrop final
                 || mSource == DragDropSource::Storage
 #ifdef EATHENA_SUPPORT
                 || mSource == DragDropSource::Cart
+                || mSource == DragDropSource::Craft
 #endif
                 || mSource == DragDropSource::Trade
                 || mSource == DragDropSource::Outfit
                 || mSource == DragDropSource::Ground
-                || mSource == DragDropSource::Drop
-                || mSource == DragDropSource::Craft;
+                || mSource == DragDropSource::Drop;
         }
 
     private:

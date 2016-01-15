@@ -47,6 +47,7 @@ extern "C" char const *_nl_locale_name_default(void);
 
 #include "debug.h"
 
+#if defined(ENABLE_NLS) || defined(ENABLE_CUSTOMNLS)
 static std::string setLangEnv()
 {
     std::string lang = config.getStringValue("lang");
@@ -63,7 +64,6 @@ static std::string setLangEnv()
     }
 #endif  // defined(ENABLE_NLS) && defined(WIN32)
 
-#if defined(ENABLE_NLS) || defined(ENABLE_CUSTOMNLS)
     if (!lang.empty())
     {
 #ifdef WIN32
@@ -79,10 +79,10 @@ static std::string setLangEnv()
 #endif  // WIN32
 
     }
-#endif  // defined(ENABLE_NLS) || defined(ENABLE_CUSTOMNLS)
 
     return lang;
 }
+#endif  // defined(ENABLE_NLS) || defined(ENABLE_CUSTOMNLS)
 
 void GettextHelper::initLang()
 {

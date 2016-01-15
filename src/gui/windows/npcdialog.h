@@ -297,7 +297,9 @@ class NpcDialog final : public Window,
         Button *mResetButton A_NONNULLPOINTER;
 
         Inventory *mInventory A_NONNULLPOINTER;
+#ifdef EATHENA_SUPPORT
         ComplexInventory *mComplexInventory A_NONNULLPOINTER;
+#endif
         ItemContainer *mItemContainer A_NONNULLPOINTER;
         ScrollArea *mItemScrollArea A_NONNULLPOINTER;
 
