@@ -976,11 +976,13 @@ void replaceItemLinks(std::string &msg)
     // Check for item link
     size_t start2 = msg.find('[');
     size_t sz = msg.size();
-    while (start2 + 1 < sz && start2 != std::string::npos
-           && msg[start2 + 1] != '@')
+    while (start2 + 1 < sz &&
+           start2 != std::string::npos &&
+           msg[start2 + 1] != '@')
     {
         const size_t end = msg.find(']', start2);
-        if (start2 + 1 != end && end != std::string::npos)
+        if (start2 + 1 != end &&
+            end != std::string::npos)
         {
             // Catch multiple embeds and ignore them
             // so it doesn't crash the client.
@@ -990,18 +992,18 @@ void replaceItemLinks(std::string &msg)
                 start2 = msg.find('[', start2 + 1);
             }
 
-            std::string temp;
-            if (start2 + 1 < sz && end < sz && end > start2 + 1)
+            if (start2 + 1 < sz &&
+                end < sz &&
+                end > start2 + 1)
             {
-                temp = msg.substr(start2 + 1, end - start2 - 1);
+                std::string itemStr = msg.substr(start2 + 1, end - start2 - 1);
 
-                const ItemInfo &itemInfo = ItemDB::get(temp);
+                const ItemInfo &itemInfo = ItemDB::get(itemStr);
                 if (itemInfo.getId() != 0)
                 {
+                    std::string temp = strprintf("@@%d|", itemInfo.getId());
                     msg.insert(end, "@@");
-                    msg.insert(start2 + 1, "|");
-                    msg.insert(start2 + 1, toString(itemInfo.getId()));
-                    msg.insert(start2 + 1, "@@");
+                    msg.insert(start2 + 1, temp);
                     sz = msg.size();
                 }
             }
