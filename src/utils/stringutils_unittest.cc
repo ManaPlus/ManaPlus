@@ -22,6 +22,10 @@
 
 #include "utils/stringutils.h"
 
+#include "resources/iteminfo.h"
+
+#include "resources/db/itemdb.h"
+
 #include <list>
 #include <string>
 #include <vector>
@@ -587,4 +591,184 @@ TEST_CASE("stringuntils isDigit")
     REQUIRE_FALSE(isDigit("-123"));
     REQUIRE_FALSE(isDigit("1.23"));
     REQUIRE_FALSE(isDigit("12-34"));
+}
+
+TEST_CASE("stringuntils replaceItemLinks")
+{
+    ItemDB::NamedItemInfos &infos = ItemDB::getNamedItemInfosTest();
+    ItemInfo *info = new ItemInfo;
+    info->setId(123456);
+    info->setName("test name 1");
+    infos["test name 1"] = info;
+
+    info = new ItemInfo;
+    info->setId(123);
+    info->setName("test name 2");
+    infos["test name 2"] = info;
+
+    std::string str;
+
+    SECTION("empty")
+    {
+        str = "test line";
+        replaceItemLinks(str);
+        REQUIRE(str == "test line");
+
+        str = "";
+        replaceItemLinks(str);
+        REQUIRE(str == "");
+
+        str = "[]";
+        replaceItemLinks(str);
+        REQUIRE(str == "[]");
+
+        str = "[qqq]";
+        replaceItemLinks(str);
+        REQUIRE(str == "[qqq]");
+    }
+
+    SECTION("simple")
+    {
+        str = "[test name 1]";
+        replaceItemLinks(str);
+        REQUIRE(str == "[@@123456|test name 1@@]");
+
+        str = "text1 [test name 1] text2";
+        replaceItemLinks(str);
+        REQUIRE(str == "text1 [@@123456|test name 1@@] text2");
+
+        str = "[test name 1][test name 1]";
+        replaceItemLinks(str);
+        REQUIRE(str == "[@@123456|test name 1@@][@@123456|test name 1@@]");
+
+        str = "[test name 1] [test name 1]";
+        replaceItemLinks(str);
+        REQUIRE(str == "[@@123456|test name 1@@] [@@123456|test name 1@@]");
+
+        str = "test1 [test name 1]test2[test name 1] test3";
+        replaceItemLinks(str);
+        REQUIRE(str == "test1 [@@123456|test name 1@@]test2"
+            "[@@123456|test name 1@@] test3");
+
+        str = "[test name 1] [no link]";
+        replaceItemLinks(str);
+        REQUIRE(str == "[@@123456|test name 1@@] [no link]");
+    }
+
+    SECTION("broken")
+    {
+        str = "[";
+        replaceItemLinks(str);
+        REQUIRE(str == "[");
+
+        str = "]";
+        replaceItemLinks(str);
+        REQUIRE(str == "]");
+
+        str = "][";
+        replaceItemLinks(str);
+        REQUIRE(str == "][");
+
+        str = "]]";
+        replaceItemLinks(str);
+        REQUIRE(str == "]]");
+
+        str = "]t";
+        replaceItemLinks(str);
+        REQUIRE(str == "]t");
+
+        str = "t[";
+        replaceItemLinks(str);
+        REQUIRE(str == "t[");
+
+        str = "t]";
+        replaceItemLinks(str);
+        REQUIRE(str == "t]");
+
+        str = "[[[";
+        replaceItemLinks(str);
+        REQUIRE(str == "[[[");
+
+        str = "[[]";
+        replaceItemLinks(str);
+        REQUIRE(str == "[[]");
+
+        str = "[[t";
+        replaceItemLinks(str);
+        REQUIRE(str == "[[t");
+
+        str = "[][";
+        replaceItemLinks(str);
+        REQUIRE(str == "[][");
+
+        str = "[]]";
+        replaceItemLinks(str);
+        REQUIRE(str == "[]]");
+
+        str = "[]t";
+        replaceItemLinks(str);
+        REQUIRE(str == "[]t");
+
+        str = "[t[";
+        replaceItemLinks(str);
+        REQUIRE(str == "[t[");
+
+        str = "[t]";
+        replaceItemLinks(str);
+        REQUIRE(str == "[t]");
+
+        str = "t[[";
+        replaceItemLinks(str);
+        REQUIRE(str == "t[[");
+
+        str = "t[]";
+        replaceItemLinks(str);
+        REQUIRE(str == "t[]");
+
+        str = "t[[";
+        replaceItemLinks(str);
+        REQUIRE(str == "t[[");
+
+        str = "]]]";
+        replaceItemLinks(str);
+        REQUIRE(str == "]]]");
+    }
+
+    SECTION("broken2")
+    {
+        str = "[][]";
+        replaceItemLinks(str);
+        REQUIRE(str == "[][]");
+
+        str = "[[]]";
+        replaceItemLinks(str);
+        REQUIRE(str == "[[]]");
+
+        str = "][[]";
+        replaceItemLinks(str);
+        REQUIRE(str == "][[]");
+    }
+
+    SECTION("broken3")
+    {
+        str = "[[test name 1]]";
+        replaceItemLinks(str);
+        REQUIRE(str == "[[@@123456|test name 1@@]]");
+
+        str = "[[test name 1]";
+        replaceItemLinks(str);
+        REQUIRE(str == "[[@@123456|test name 1@@]");
+
+        str = "[[test] name 1]";
+        replaceItemLinks(str);
+        REQUIRE(str == "[[test] name 1]");
+
+        str = "[[test name 1]test name 1]";
+        replaceItemLinks(str);
+        REQUIRE(str == "[[@@123456|test name 1@@]test name 1]");
+
+        str = "[[test name 1[]test name 1]";
+        replaceItemLinks(str);
+        REQUIRE(str == "[[test name 1[]test name 1]");
+    }
 }

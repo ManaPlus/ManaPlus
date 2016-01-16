@@ -1055,3 +1055,10 @@ static void loadOrderSprite(ItemInfo *const itemInfo,
         itemInfo->setDrawBefore(direction, sprite);
     itemInfo->setDrawPriority(direction, priority);
 }
+
+#ifdef UNITTESTS
+ItemDB::NamedItemInfos &ItemDB::getNamedItemInfosTest()
+{
+    return mNamedItemInfos;
+}
+#endif

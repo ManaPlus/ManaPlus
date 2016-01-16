@@ -60,6 +60,10 @@ namespace ItemDB
 
     const ItemDB::ItemInfos &getItemInfos();
 
+#ifdef UNITTESTS
+    ItemDB::NamedItemInfos &getNamedItemInfosTest();
+#endif
+
     int getTagId(const std::string &tagName) A_WARN_UNUSED;
 
     void setStatsList(const std::vector<Stat> &stats);
