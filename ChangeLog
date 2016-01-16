@@ -1,3 +1,15 @@
+2016-01-16 New release 1.6.1.16
+fix: removing monster from attack list.
+fix: dye palette parsing with GIMP colors.
+fix: dont reset settings except OpenGL in safe mode (nacl).
+add: translation support in nacl.
+add: impliment new hercules packets.
+add: craft inventory (hercules).
+add: hex colors in dye palettes with GIMP colors.
+add: alpha channel in dye palettes with GIMP colors.
+add: into paths.xml options for GIMP palette.
+add: show cards in links.
+
 2016-01-02 New release 1.6.1.2
 fix: sprites animation for just loaded sprites.
 fix: default beings walk mask.
