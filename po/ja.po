@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2016-01-08 23:18+0300\n"
-"PO-Revision-Date: 2016-01-05 09:13+0000\n"
+"POT-Creation-Date: 2016-01-16 15:57+0300\n"
+"PO-Revision-Date: 2016-01-09 09:12+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Japanese (http://www.transifex.com/akaras/manaplus/language/"
 "ja/)\n"
@@ -2957,7 +2957,7 @@ msgid "Eq."
 msgstr "装着."
 
 #. TRANSLATORS: dialog message
-#: src/gui/widgets/itemlinkhandler.cpp:72
+#: src/gui/widgets/itemlinkhandler.cpp:74
 msgid "Open url"
 msgstr "URLを開く"
 
@@ -6301,37 +6301,43 @@ msgid "Select amount of items to send."
 msgstr ""
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:270
+#: src/gui/windows/itemamountwindow.cpp:269
+#, fuzzy
+msgid "Select amount of items to craft."
+msgstr "トレードするアイテムの数量を入力してください."
+
+#. TRANSLATORS: amount window message
+#: src/gui/windows/itemamountwindow.cpp:274
 msgid "Select amount of items to store to cart."
 msgstr ""
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:274
+#: src/gui/windows/itemamountwindow.cpp:278
 msgid "Select amount of items to retrieve."
 msgstr "取出すアイテムの数量を入力してください."
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:278
+#: src/gui/windows/itemamountwindow.cpp:282
 msgid "Select amount of items to retrieve from cart."
 msgstr ""
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:282
+#: src/gui/windows/itemamountwindow.cpp:286
 msgid "Select amount of items to split."
 msgstr "分割するアイテムの量を選択してください."
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:286
+#: src/gui/windows/itemamountwindow.cpp:290
 msgid "Add to buy shop."
 msgstr "購入リストに追加."
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:290
+#: src/gui/windows/itemamountwindow.cpp:294
 msgid "Add to sell shop."
 msgstr "販売リストに追加."
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:294
+#: src/gui/windows/itemamountwindow.cpp:298
 msgid "Unknown."
 msgstr "不明."
 

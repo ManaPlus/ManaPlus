@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2016-01-08 23:18+0300\n"
+"POT-Creation-Date: 2016-01-16 15:57+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2948,7 +2948,7 @@ msgid "Eq."
 msgstr ""
 
 #. TRANSLATORS: dialog message
-#: src/gui/widgets/itemlinkhandler.cpp:72
+#: src/gui/widgets/itemlinkhandler.cpp:74
 msgid "Open url"
 msgstr ""
 
@@ -6290,37 +6290,42 @@ msgid "Select amount of items to send."
 msgstr ""
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:270
-msgid "Select amount of items to store to cart."
+#: src/gui/windows/itemamountwindow.cpp:269
+msgid "Select amount of items to craft."
 msgstr ""
 
 #. TRANSLATORS: amount window message
 #: src/gui/windows/itemamountwindow.cpp:274
-msgid "Select amount of items to retrieve."
+msgid "Select amount of items to store to cart."
 msgstr ""
 
 #. TRANSLATORS: amount window message
 #: src/gui/windows/itemamountwindow.cpp:278
-msgid "Select amount of items to retrieve from cart."
+msgid "Select amount of items to retrieve."
 msgstr ""
 
 #. TRANSLATORS: amount window message
 #: src/gui/windows/itemamountwindow.cpp:282
-msgid "Select amount of items to split."
+msgid "Select amount of items to retrieve from cart."
 msgstr ""
 
 #. TRANSLATORS: amount window message
 #: src/gui/windows/itemamountwindow.cpp:286
-msgid "Add to buy shop."
+msgid "Select amount of items to split."
 msgstr ""
 
 #. TRANSLATORS: amount window message
 #: src/gui/windows/itemamountwindow.cpp:290
-msgid "Add to sell shop."
+msgid "Add to buy shop."
 msgstr ""
 
 #. TRANSLATORS: amount window message
 #: src/gui/windows/itemamountwindow.cpp:294
+msgid "Add to sell shop."
+msgstr ""
+
+#. TRANSLATORS: amount window message
+#: src/gui/windows/itemamountwindow.cpp:298
 msgid "Unknown."
 msgstr ""
 

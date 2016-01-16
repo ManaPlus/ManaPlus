@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2016-01-08 23:18+0300\n"
-"PO-Revision-Date: 2016-01-05 09:13+0000\n"
+"POT-Creation-Date: 2016-01-16 15:57+0300\n"
+"PO-Revision-Date: 2016-01-09 09:13+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Swedish (Sweden) (http://www.transifex.com/akaras/manaplus/"
 "language/sv_SE/)\n"
@@ -2952,7 +2952,7 @@ msgid "Eq."
 msgstr "Eq."
 
 #. TRANSLATORS: dialog message
-#: src/gui/widgets/itemlinkhandler.cpp:72
+#: src/gui/widgets/itemlinkhandler.cpp:74
 msgid "Open url"
 msgstr "Öppna url"
 
@@ -6308,37 +6308,43 @@ msgid "Select amount of items to send."
 msgstr ""
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:270
+#: src/gui/windows/itemamountwindow.cpp:269
+#, fuzzy
+msgid "Select amount of items to craft."
+msgstr "Välj antal items att byta."
+
+#. TRANSLATORS: amount window message
+#: src/gui/windows/itemamountwindow.cpp:274
 msgid "Select amount of items to store to cart."
 msgstr ""
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:274
+#: src/gui/windows/itemamountwindow.cpp:278
 msgid "Select amount of items to retrieve."
 msgstr "Välj antal items att apportera."
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:278
+#: src/gui/windows/itemamountwindow.cpp:282
 msgid "Select amount of items to retrieve from cart."
 msgstr ""
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:282
+#: src/gui/windows/itemamountwindow.cpp:286
 msgid "Select amount of items to split."
 msgstr "Välj antal items att dela."
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:286
+#: src/gui/windows/itemamountwindow.cpp:290
 msgid "Add to buy shop."
 msgstr "Lägg till i buy shop."
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:290
+#: src/gui/windows/itemamountwindow.cpp:294
 msgid "Add to sell shop."
 msgstr "Lägg till i sell shop."
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:294
+#: src/gui/windows/itemamountwindow.cpp:298
 msgid "Unknown."
 msgstr "Okänd."
 
