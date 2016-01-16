@@ -22,6 +22,12 @@
 
 #include "utils/stringutils.h"
 
+#ifndef DYECMD
+#include "resources/iteminfo.h"
+
+#include "resources/db/itemdb.h"
+#endif
+
 #include <algorithm>
 #include <sstream>
 
@@ -204,8 +210,11 @@ size_t findI(std::string text, const StringVect &list)
     return std::string::npos;
 }
 
-unsigned int base = 94;
-unsigned int start = 33;
+namespace
+{
+    unsigned int base = 94;
+    unsigned int start = 33;
+}  // namespace
 
 const std::string encodeStr(unsigned int value, const unsigned int size)
 {
@@ -959,4 +968,45 @@ std::string timeDiffToString(int timeDiff)
             0), 0));
     }
     return str;
+}
+
+void replaceItemLinks(std::string &msg)
+{
+#ifndef DYECMD
+    // Check for item link
+    size_t start2 = msg.find('[');
+    size_t sz = msg.size();
+    while (start2 + 1 < sz && start2 != std::string::npos
+           && msg[start2 + 1] != '@')
+    {
+        const size_t end = msg.find(']', start2);
+        if (start2 + 1 != end && end != std::string::npos)
+        {
+            // Catch multiple embeds and ignore them
+            // so it doesn't crash the client.
+            while ((msg.find('[', start2 + 1) != std::string::npos) &&
+                   (msg.find('[', start2 + 1) < end))
+            {
+                start2 = msg.find('[', start2 + 1);
+            }
+
+            std::string temp;
+            if (start2 + 1 < sz && end < sz && end > start2 + 1)
+            {
+                temp = msg.substr(start2 + 1, end - start2 - 1);
+
+                const ItemInfo &itemInfo = ItemDB::get(temp);
+                if (itemInfo.getId() != 0)
+                {
+                    msg.insert(end, "@@");
+                    msg.insert(start2 + 1, "|");
+                    msg.insert(start2 + 1, toString(itemInfo.getId()));
+                    msg.insert(start2 + 1, "@@");
+                    sz = msg.size();
+                }
+            }
+        }
+        start2 = msg.find('[', start2 + 1);
+    }
+#endif
 }

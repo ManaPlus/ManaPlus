@@ -258,4 +258,6 @@ std::string timeToStr(const int time);
 
 std::string timeDiffToString(int timeDiff);
 
+void replaceItemLinks(std::string &msg);
+
 #endif  // UTILS_STRINGUTILS_H

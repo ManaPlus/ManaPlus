@@ -379,42 +379,7 @@ void ChatTab::chatInput(const std::string &message)
     if (msg.empty())
         return;
 
-    // Check for item link
-    size_t start = msg.find('[');
-    size_t sz = msg.size();
-    while (start + 1 < sz && start != std::string::npos
-           && msg[start + 1] != '@')
-    {
-        const size_t end = msg.find(']', start);
-        if (start + 1 != end && end != std::string::npos)
-        {
-            // Catch multiple embeds and ignore them
-            // so it doesn't crash the client.
-            while ((msg.find('[', start + 1) != std::string::npos) &&
-                   (msg.find('[', start + 1) < end))
-            {
-                start = msg.find('[', start + 1);
-            }
-
-            std::string temp;
-            if (start + 1 < sz && end < sz && end > start + 1)
-            {
-                temp = msg.substr(start + 1, end - start - 1);
-
-                const ItemInfo &itemInfo = ItemDB::get(temp);
-                if (itemInfo.getId() != 0)
-                {
-                    msg.insert(end, "@@");
-                    msg.insert(start + 1, "|");
-                    msg.insert(start + 1, toString(itemInfo.getId()));
-                    msg.insert(start + 1, "@@");
-                    sz = msg.size();
-                }
-            }
-        }
-        start = msg.find('[', start + 1);
-    }
-
+    replaceItemLinks(msg);
     replaceVars(msg);
 
     switch (msg[0])
