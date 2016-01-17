@@ -1642,30 +1642,6 @@ bool ChatWindow::resortChatLog(std::string line,
         }
     }
 
-    if (tradeChatTab)
-    {
-        const size_t idx1 = line.find("@@");
-        if (idx1 != std::string::npos)
-        {
-            idx2 = line.find("|", idx1);
-            if (idx2 != std::string::npos)
-            {
-                const size_t idx3 = line.find("@@", idx2);
-                if (idx3 != std::string::npos)
-                {
-                    if (line.find("http", idx1) != idx1 + 2)
-                    {
-                        tradeChatTab->chatLog(prefix + line,
-                            own,
-                            ignoreRecord,
-                            tryRemoveColors);
-                        return false;
-                    }
-                }
-            }
-        }
-    }
-
     if (!channel.empty())
     {
         if (langChatTab)
