@@ -664,11 +664,11 @@ TEST_CASE("stringuntils replaceItemLinks")
 
         str = "[test name 1,test name 2]";
         replaceItemLinks(str);
-        REQUIRE(str == "[@@123456,123|test name 1@@]");
+        REQUIRE(str == "[@@123456,123|@@]");
 
         str = "[test name 1, test name 2 ]";
         replaceItemLinks(str);
-        REQUIRE(str == "[@@123456,123|test name 1@@]");
+        REQUIRE(str == "[@@123456,123|@@]");
     }
 
     SECTION("broken")
