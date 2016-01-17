@@ -625,6 +625,14 @@ TEST_CASE("stringuntils replaceItemLinks")
         str = "[qqq]";
         replaceItemLinks(str);
         REQUIRE(str == "[qqq]");
+
+        str = "[,]";
+        replaceItemLinks(str);
+        REQUIRE(str == "[,]");
+
+        str = "[, ]";
+        replaceItemLinks(str);
+        REQUIRE(str == "[, ]");
     }
 
     SECTION("simple")
@@ -653,6 +661,14 @@ TEST_CASE("stringuntils replaceItemLinks")
         str = "[test name 1] [no link]";
         replaceItemLinks(str);
         REQUIRE(str == "[@@123456|test name 1@@] [no link]");
+
+        str = "[test name 1,test name 2]";
+        replaceItemLinks(str);
+        REQUIRE(str == "[@@123456,123|test name 1@@]");
+
+        str = "[test name 1, test name 2 ]";
+        replaceItemLinks(str);
+        REQUIRE(str == "[@@123456,123|test name 1@@]");
     }
 
     SECTION("broken")
@@ -770,5 +786,21 @@ TEST_CASE("stringuntils replaceItemLinks")
         str = "[[test name 1[]test name 1]";
         replaceItemLinks(str);
         REQUIRE(str == "[[test name 1[]test name 1]");
+
+        str = "[[test name 1],test name2,test name 1]";
+        replaceItemLinks(str);
+        REQUIRE(str == "[[@@123456|test name 1@@],test name2,test name 1]");
+
+        str = "[[ test name 1], test name2,test name 1 ]";
+        replaceItemLinks(str);
+        REQUIRE(str == "[[@@123456|test name 1@@], test name2,test name 1 ]");
+
+        str = "[[test name 1,test name2[]test name 1]";
+        replaceItemLinks(str);
+        REQUIRE(str == "[[test name 1,test name2[]test name 1]");
+
+        str = "[[test name 1 ,test name2[] test name 1]";
+        replaceItemLinks(str);
+        REQUIRE(str == "[[test name 1 ,test name2[] test name 1]");
     }
 }

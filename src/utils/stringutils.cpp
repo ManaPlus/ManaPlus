@@ -970,9 +970,11 @@ std::string timeDiffToString(int timeDiff)
     return str;
 }
 
+#include "logger.h"
+
+#ifndef DYECMD
 void replaceItemLinks(std::string &msg)
 {
-#ifndef DYECMD
     // Check for item link
     size_t start2 = msg.find('[');
     size_t sz = msg.size();
@@ -998,11 +1000,34 @@ void replaceItemLinks(std::string &msg)
             {
                 std::string itemStr = msg.substr(start2 + 1, end - start2 - 1);
 
-                const ItemInfo &itemInfo = ItemDB::get(itemStr);
-                if (itemInfo.getId() != 0)
+                StringVect parts;
+                splitToStringVector(parts, itemStr, ',');
+                if (parts.empty())
+                    return;
+
+                const ItemInfo &itemInfo = ItemDB::get(parts[0]);
+                const int itemId = itemInfo.getId();
+                if (itemId != 0)
                 {
-                    std::string temp = strprintf("@@%d|", itemInfo.getId());
-                    msg.insert(end, "@@");
+                    std::string temp = strprintf("@@%d", itemId);
+                    std::string name = parts[0];
+                    msg.erase(start2 + 1, end - start2 - 1);
+                    parts.erase(parts.begin());
+                    if (!parts.empty())
+                        name.clear();
+
+                    FOR_EACH (StringVectCIter, it, parts)
+                    {
+                        std:: string str = *it;
+                        trim(str);
+                        const ItemInfo &itemInfo2 = ItemDB::get(str);
+                        const int cardId = itemInfo2.getId();
+                        if (cardId != 0)
+                            temp.append(strprintf(",%d", cardId));
+                    }
+                    temp.append("|");
+                    temp.append(name);
+                    temp.append("@@");
                     msg.insert(start2 + 1, temp);
                     sz = msg.size();
                 }
@@ -1010,5 +1035,9 @@ void replaceItemLinks(std::string &msg)
         }
         start2 = msg.find('[', start2 + 1);
     }
-#endif
 }
+#else
+void replaceItemLinks(std::string &msg A_UNUSED)
+{
+}
+#endif
