@@ -60,6 +60,8 @@ namespace ItemDB
 
     const ItemDB::ItemInfos &getItemInfos();
 
+    std::string getNamesStr(const std::vector<int> &parts);
+
 #ifdef UNITTESTS
     ItemDB::NamedItemInfos &getNamedItemInfosTest();
 #endif

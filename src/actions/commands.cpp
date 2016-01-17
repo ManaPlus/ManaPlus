@@ -284,22 +284,20 @@ impHandler(chatAdd)
     if (event.args.empty())
         return true;
 
-    const int id = atoi(event.args.c_str());
+    std::vector<int> str;
+    splitToIntVector(str, event.args, ',');
+    if (str.empty())
+        return true;
+
+    int id = str[0];
     if (id == 0)
         return true;
 
-    Inventory *const inv = PlayerInfo::getInventory();
-    const Item *item = nullptr;
-    if (inv)
+    if (ItemDB::exists(id))
     {
-        // +++ need add also color here
-        item = inv->findItem(id, ItemColor_one);
-    }
-
-    if (item)
-    {
-        // +++ need add also color here
-        chatWindow->addItemText(item->getInfo().getName());
+        const std::string names = ItemDB::getNamesStr(str);
+        if (!names.empty())
+            chatWindow->addItemText(names);
         return true;
     }
 
@@ -308,8 +306,10 @@ impHandler(chatAdd)
 
     if (floorItem)
     {
-        // +++ need add also color here
-        chatWindow->addItemText(floorItem->getInfo().getName());
+        str[0] =  floorItem->getItemId();
+        logger->log("parts: %d", (int)str.size());
+        const std::string names = ItemDB::getNamesStr(str);
+        chatWindow->addItemText(names);
     }
     return true;
 }

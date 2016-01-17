@@ -1056,6 +1056,22 @@ static void loadOrderSprite(ItemInfo *const itemInfo,
     itemInfo->setDrawPriority(direction, priority);
 }
 
+std::string ItemDB::getNamesStr(const std::vector<int> &parts)
+{
+    std::string str;
+    FOR_EACH (std::vector<int>::const_iterator, it, parts)
+    {
+        const int id = *it;
+        if (exists(id))
+        {
+            if (!str.empty())
+                str.append(",");
+            str.append(get(id).getName());
+        }
+    }
+    return str;
+}
+
 #ifdef UNITTESTS
 ItemDB::NamedItemInfos &ItemDB::getNamedItemInfosTest()
 {
