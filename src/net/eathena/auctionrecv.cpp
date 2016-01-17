@@ -22,6 +22,8 @@
 
 #include "logger.h"
 
+#include "const/resources/item/cards.h"
+
 #include "net/messagein.h"
 
 #include "debug.h"
@@ -51,7 +53,7 @@ void AuctionRecv::processAuctionResults(Net::MessageIn &msg)
         msg.readUInt8("identify");
         msg.readUInt8("attribute");
         msg.readUInt8("refine");
-        for (int d = 0; d < 4; d ++)
+        for (int d = 0; d < maxCards; d ++)
             msg.readInt16("card");
         msg.readInt32("price");
         msg.readInt32("buy now");

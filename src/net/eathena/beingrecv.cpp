@@ -31,6 +31,8 @@
 
 #include "being/mercenaryinfo.h"
 
+#include "const/resources/item/cards.h"
+
 #include "enums/resources/notifytypes.h"
 
 #include "particle/particle.h"
@@ -94,7 +96,7 @@ void BeingRecv::processBeingChangeLook2(Net::MessageIn &msg)
 void BeingRecv::processBeingChangeLookCards(Net::MessageIn &msg)
 {
     Being *dstBeing = nullptr;
-    int cards[4];
+    int cards[maxCards];
 
     if (!actorManager)
     { // here can be look from char server
@@ -126,7 +128,7 @@ void BeingRecv::processBeingChangeLookCards(Net::MessageIn &msg)
     if (type != 2)
         id2 = 1;
 
-    for (int f = 0; f < 4; f ++)
+    for (int f = 0; f < maxCards; f ++)
         cards[f] = msg.readInt16("card");
 
     if (!dstBeing)
@@ -1585,7 +1587,7 @@ void BeingRecv::processBeingViewEquipment(Net::MessageIn &msg)
         msg.readInt32("location");
         msg.readInt32("wear state");
         msg.readInt8("refine");
-        for (int d = 0; d < 4; d ++)
+        for (int d = 0; d < maxCards; d ++)
             msg.readInt16("card");
         msg.readInt32("hire expire date (?)");
         msg.readInt16("equip type");

@@ -77,8 +77,8 @@ void TradeRecv::processTradeItemAdd(Net::MessageIn &msg)
     const uint8_t identify = msg.readUInt8("identify");
     const Damaged damaged = fromBool(msg.readUInt8("attribute"), Damaged);
     const uint8_t refine = msg.readUInt8("refine");
-    int cards[4];
-    for (int f = 0; f < 4; f++)
+    int cards[maxCards];
+    for (int f = 0; f < maxCards; f++)
         cards[f] = msg.readInt16("card");
     if (serverVersion >= 8 && packetVersion >= 20150226)
     {

@@ -68,8 +68,8 @@ void InventoryRecv::processPlayerEquipment(Net::MessageIn &msg)
         const int equipType = msg.readInt16("equip type");
         msg.readUInt8("attribute");
         const uint8_t refine = msg.readUInt8("refine");
-        int cards[4];
-        for (int f = 0; f < 4; f++)
+        int cards[maxCards];
+        for (int f = 0; f < maxCards; f++)
             cards[f] = msg.readInt16("card");
 
         if (Ea::InventoryRecv::mDebugInventory)
@@ -121,8 +121,8 @@ void InventoryRecv::processPlayerInventoryAdd(Net::MessageIn &msg)
     const uint8_t identified = msg.readUInt8("identified");
     msg.readUInt8("attribute");
     const uint8_t refine = msg.readUInt8("refine");
-    int cards[4];
-    for (int f = 0; f < 4; f++)
+    int cards[maxCards];
+    for (int f = 0; f < maxCards; f++)
         cards[f] = msg.readInt16("card");
     const int equipType = msg.readInt16("equip type");
     const int type = msg.readUInt8("item type");
@@ -234,14 +234,14 @@ void InventoryRecv::processPlayerInventory(Net::MessageIn &msg)
 
     for (int loop = 0; loop < number; loop++)
     {
-        int cards[4];
+        int cards[maxCards];
         const int index = msg.readInt16("index") - INVENTORY_OFFSET;
         const int itemId = msg.readInt16("item id");
         const uint8_t itemType = msg.readUInt8("item type");
         const uint8_t identified = msg.readUInt8("identified");
         const int amount = msg.readInt16("amount");
         const int arrow = msg.readInt16("arrow");
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < maxCards; i++)
             cards[i] = msg.readInt16("card");
 
         if (Ea::InventoryRecv::mDebugInventory)
@@ -284,14 +284,14 @@ void InventoryRecv::processPlayerStorage(Net::MessageIn &msg)
 
     for (int loop = 0; loop < number; loop++)
     {
-        int cards[4];
+        int cards[maxCards];
         const int index = msg.readInt16("index") - STORAGE_OFFSET;
         const int itemId = msg.readInt16("item id");
         const uint8_t itemType = msg.readUInt8("item type");
         const uint8_t identified = msg.readUInt8("identified");
         const int amount = msg.readInt16("amount");
         msg.readInt16("arrow");
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < maxCards; i++)
             cards[i] = msg.readInt16("card");
 
         if (Ea::InventoryRecv::mDebugInventory)
@@ -362,7 +362,7 @@ void InventoryRecv::processPlayerStorageEquip(Net::MessageIn &msg)
 
     for (int loop = 0; loop < number; loop++)
     {
-        int cards[4];
+        int cards[maxCards];
         const int index = msg.readInt16("index") - STORAGE_OFFSET;
         const int itemId = msg.readInt16("item id");
         const uint8_t itemType = msg.readUInt8("item type");
@@ -372,7 +372,7 @@ void InventoryRecv::processPlayerStorageEquip(Net::MessageIn &msg)
         msg.readInt16("another equip point?");
         msg.readUInt8("attribute (broken)");
         const uint8_t refine = msg.readUInt8("refine");
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < maxCards; i++)
             cards[i] = msg.readInt16("card");
 
         if (Ea::InventoryRecv::mDebugInventory)
@@ -411,8 +411,8 @@ void InventoryRecv::processPlayerStorageAdd(Net::MessageIn &msg)
     const unsigned char identified = msg.readUInt8("identified");
     msg.readUInt8("attribute");
     const uint8_t refine = msg.readUInt8("refine");
-    int cards[4];
-    for (int f = 0; f < 4; f++)
+    int cards[maxCards];
+    for (int f = 0; f < maxCards; f++)
         cards[f] = msg.readInt16("card");
 
     if (Item *const item = Ea::InventoryRecv::mStorage->getItem(index))

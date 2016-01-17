@@ -26,6 +26,8 @@
 #include "itemcolormanager.h"
 #include "settings.h"
 
+#include "const/resources/item/cards.h"
+
 #include "input/inputmanager.h"
 
 #include "gui/gui.h"
@@ -246,7 +248,7 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
                     {
                         std::vector<int> parts;
                         splitToIntVector(parts, bLink.link.substr(idx), ',');
-                        while (parts.size() < 4)
+                        while (parts.size() < maxCards)
                             parts.push_back(0);
                         const ItemColor itemColor =
                             ItemColorManager::getColorFromCards(&parts[0]);

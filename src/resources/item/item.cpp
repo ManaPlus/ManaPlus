@@ -66,7 +66,7 @@ Item::Item(const int id,
     mFavorite(favorite)
 {
     setId(id, color);
-    for (int f = 0; f < 4; f ++)
+    for (int f = 0; f < maxCards; f ++)
         mCards[f] = 0;
 }
 

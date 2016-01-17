@@ -98,8 +98,8 @@ void InventoryRecv::processPlayerEquipment(Net::MessageIn &msg)
         msg.readInt32("location");
         const int equipType = msg.readInt32("wear state");
         const uint8_t refine = static_cast<uint8_t>(msg.readInt8("refine"));
-        int cards[4];
-        for (int f = 0; f < 4; f++)
+        int cards[maxCards];
+        for (int f = 0; f < maxCards; f++)
             cards[f] = msg.readInt16("card");
         msg.readInt32("hire expire date (?)");
         msg.readInt16("equip type");
@@ -159,8 +159,8 @@ void InventoryRecv::processPlayerInventoryAdd(Net::MessageIn &msg)
     uint8_t identified = msg.readUInt8("identified");
     const uint8_t damaged = msg.readUInt8("is damaged");
     const uint8_t refine = msg.readUInt8("refine");
-    int cards[4];
-    for (int f = 0; f < 4; f++)
+    int cards[maxCards];
+    for (int f = 0; f < maxCards; f++)
         cards[f] = msg.readInt16("card");
     const int equipType = msg.readInt32("location");
     const int itemType = msg.readUInt8("item type");
@@ -289,8 +289,8 @@ void InventoryRecv::processPlayerInventory(Net::MessageIn &msg)
         const int itemType = msg.readUInt8("item type");
         const int amount = msg.readInt16("count");
         msg.readInt32("wear state / equip");
-        int cards[4];
-        for (int f = 0; f < 4; f++)
+        int cards[maxCards];
+        for (int f = 0; f < maxCards; f++)
             cards[f] = msg.readInt16("card");
         msg.readInt32("hire expire date (?)");
         ItemFlags flags;
@@ -332,8 +332,8 @@ void InventoryRecv::processPlayerStorage(Net::MessageIn &msg)
         const int itemType = msg.readUInt8("item type");
         const int amount = msg.readInt16("count");
         msg.readInt32("wear state / equip");
-        int cards[4];
-        for (int f = 0; f < 4; f++)
+        int cards[maxCards];
+        for (int f = 0; f < maxCards; f++)
             cards[f] = msg.readInt16("card");
         msg.readInt32("hire expire date (?)");
         ItemFlags flags;
@@ -488,8 +488,8 @@ void InventoryRecv::processPlayerStorageEquip(Net::MessageIn &msg)
         msg.readInt32("location");
         msg.readInt32("wear state");
         const uint8_t refine = msg.readUInt8("refine level");
-        int cards[4];
-        for (int f = 0; f < 4; f++)
+        int cards[maxCards];
+        for (int f = 0; f < maxCards; f++)
             cards[f] = msg.readInt16("card");
         msg.readInt32("hire expire date");
         msg.readInt16("bind on equip");
@@ -535,8 +535,8 @@ void InventoryRecv::processPlayerStorageAdd(Net::MessageIn &msg)
     const unsigned char identified = msg.readUInt8("identify");
     const Damaged damaged = fromBool(msg.readUInt8("attribute"), Damaged);
     const uint8_t refine = msg.readUInt8("refine");
-    int cards[4];
-    for (int f = 0; f < 4; f++)
+    int cards[maxCards];
+    for (int f = 0; f < maxCards; f++)
         cards[f] = msg.readInt16("card");
     if (serverVersion >= 8 && packetVersion >= 20150226)
     {
@@ -736,8 +736,8 @@ void InventoryRecv::processPlayerCartAdd(Net::MessageIn &msg)
     uint8_t identified = msg.readUInt8("identified");
     const Damaged damaged = fromBool(msg.readUInt8("attribute"), Damaged);
     const uint8_t refine = msg.readUInt8("refine");
-    int cards[4];
-    for (int f = 0; f < 4; f++)
+    int cards[maxCards];
+    for (int f = 0; f < maxCards; f++)
         cards[f] = msg.readInt16("card");
     if (serverVersion >= 8 && packetVersion >= 20150226)
     {
@@ -807,8 +807,8 @@ void InventoryRecv::processPlayerCartEquip(Net::MessageIn &msg)
         msg.readInt32("location");
         msg.readInt32("wear state");
         const uint8_t refine = msg.readUInt8("refine level");
-        int cards[4];
-        for (int f = 0; f < 4; f++)
+        int cards[maxCards];
+        for (int f = 0; f < maxCards; f++)
             cards[f] = msg.readInt16("card");
         msg.readInt32("hire expire date");
         msg.readInt16("bind on equip");
@@ -856,8 +856,8 @@ void InventoryRecv::processPlayerCartItems(Net::MessageIn &msg)
         const int itemType = msg.readUInt8("item type");
         const int amount = msg.readInt16("count");
         msg.readInt32("wear state / equip");
-        int cards[4];
-        for (int f = 0; f < 4; f++)
+        int cards[maxCards];
+        for (int f = 0; f < maxCards; f++)
             cards[f] = msg.readInt16("card");
         msg.readInt32("hire expire date (?)");
         ItemFlags flags;
@@ -964,7 +964,7 @@ void InventoryRecv::processPlayerRepairList(Net::MessageIn &msg)
         msg.readInt16("index");
         msg.readInt16("item id");
         msg.readUInt8("refine");
-        for (int d = 0; d < 4; d ++)
+        for (int d = 0; d < maxCards; d ++)
             msg.readInt16("card");
     }
     menu = MenuType::RepairWespon;
@@ -989,7 +989,7 @@ void InventoryRecv::processPlayerRefineList(Net::MessageIn &msg)
         msg.readInt16("item index");
         msg.readInt16("item id");
         msg.readUInt8("refine");
-        for (int d = 0; d < 4; d ++)
+        for (int d = 0; d < maxCards; d ++)
             msg.readInt16("card");
     }
     menu = MenuType::WeaponeRefine;

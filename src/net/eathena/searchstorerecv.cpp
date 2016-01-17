@@ -23,6 +23,8 @@
 #include "logger.h"
 #include "notifymanager.h"
 
+#include "const/resources/item/cards.h"
+
 #include "enums/resources/notifytypes.h"
 
 #include "net/messagein.h"
@@ -49,7 +51,7 @@ void SearchStoreRecv::processSearchAck(Net::MessageIn &msg)
         msg.readInt32("price");
         msg.readInt16("amount");
         msg.readUInt8("refine");
-        for (int d = 0; d < 4; d++)
+        for (int d = 0; d < maxCards; d++)
             msg.readInt16("card");
 
         // +++ need use ItemColorManager for colors

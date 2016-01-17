@@ -23,6 +23,8 @@
 #ifndef RESOURCES_ITEM_ITEM_H
 #define RESOURCES_ITEM_ITEM_H
 
+#include "const/resources/item/cards.h"
+
 #include "enums/simpletypes/damaged.h"
 #include "enums/simpletypes/equipm.h"
 #include "enums/simpletypes/equipped.h"
@@ -35,8 +37,6 @@
 #include "localconsts.h"
 
 class Image;
-
-const int maxCards = 4;
 
 /**
  * Represents one or more instances of a certain item type.

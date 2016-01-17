@@ -23,6 +23,8 @@
 #ifndef NET_EA_INVENTORYITEM_H
 #define NET_EA_INVENTORYITEM_H
 
+#include "const/resources/item/cards.h"
+
 #include "enums/simpletypes/damaged.h"
 #include "enums/simpletypes/equipm.h"
 #include "enums/simpletypes/favorite.h"
@@ -51,7 +53,7 @@ class InventoryItem final
         int slot;
         int id;
         int type;
-        int cards[4];
+        int cards[maxCards];
         int quantity;
         uint8_t refine;
         ItemColor color;

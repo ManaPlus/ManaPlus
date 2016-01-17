@@ -64,8 +64,8 @@ void TradeRecv::processTradeItemAdd(Net::MessageIn &msg)
     const uint8_t identify = msg.readUInt8("identify");
     msg.readUInt8("attribute");
     const uint8_t refine = msg.readUInt8("refine");
-    int cards[4];
-    for (int f = 0; f < 4; f++)
+    int cards[maxCards];
+    for (int f = 0; f < maxCards; f++)
         cards[f] = msg.readInt16("card");
 
     if (tradeWindow)

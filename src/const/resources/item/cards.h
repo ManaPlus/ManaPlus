@@ -1,6 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2015-2016  The ManaPlus Developers
+ *  Copyright (C) 2011-2016  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -18,26 +18,10 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "itemcolormanager.h"
+#ifndef CONST_RESOURCES_ITEM_ITEM_H
+#define CONST_RESOURCES_ITEM_ITEM_H
 
-#include "const/resources/item/cards.h"
+const int maxCards = 4;
+const int maxMailCards = 4;
 
-#include "resources/iteminfo.h"
-
-#include "resources/db/itemdb.h"
-
-#include "debug.h"
-
-ItemColor ItemColorManager::getColorFromCards(const int *const cards)
-{
-    if (!cards)
-        return ItemColor_one;
-    for (int f = 0; f < maxCards; f ++)
-    {
-        const ItemInfo &info = ItemDB::get(cards[f]);
-        const ItemColor &color = info.getCardColor();
-        if (color != ItemColor_zero)
-            return color;
-    }
-    return ItemColor_one;
-}
+#endif  // CONST_RESOURCES_ITEM_ITEM_H

@@ -21,6 +21,8 @@
 #ifndef GUI_MAILMESSAGE_H
 #define GUI_MAILMESSAGE_H
 
+#include "const/resources/item/cards.h"
+
 #include <string>
 
 #include "localconsts.h"
@@ -53,7 +55,7 @@ struct MailMessage final
     std::string sender;
     std::string strTime;
     std::string text;
-    uint16_t card[4];
+    uint16_t card[maxMailCards];
     int id;
     int time;
     int money;

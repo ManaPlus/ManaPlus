@@ -26,6 +26,8 @@
 
 #include "being/localplayer.h"
 
+#include "const/resources/item/cards.h"
+
 #include "enums/resources/notifytypes.h"
 
 #include "gui/windows/chatwindow.h"
@@ -282,7 +284,7 @@ void PartyRecv::processPartyItemPickup(Net::MessageIn &msg)
     msg.readUInt8("identify");
     msg.readUInt8("attribute");
     msg.readUInt8("refine");
-    for (int f = 0; f < 4; f++)
+    for (int f = 0; f < maxCards; f++)
         msg.readInt16("card");
     msg.readInt16("equip location");
     msg.readUInt8("item type");

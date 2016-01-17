@@ -26,6 +26,8 @@
 #include "itemcolormanager.h"
 #include "logger.h"
 
+#include "const/resources/item/cards.h"
+
 #include "net/messagein.h"
 
 #include "debug.h"
@@ -71,8 +73,8 @@ void ItemRecv::processItemDropped2(Net::MessageIn &msg)
         msg.readUInt8("identify"), Identified);
     const Damaged damaged = fromBool(msg.readUInt8("attribute"), Damaged);
     const uint8_t refine = msg.readUInt8("refine");
-    int cards[4];
-    for (int f = 0; f < 4; f++)
+    int cards[maxCards];
+    for (int f = 0; f < maxCards; f++)
         cards[f] = msg.readInt16("card");
     const int x = msg.readInt16("x");
     const int y = msg.readInt16("y");
@@ -145,8 +147,8 @@ void ItemRecv::processItemVisible2(Net::MessageIn &msg)
         msg.readUInt8("identify"), Identified);
     const Damaged damaged = fromBool(msg.readUInt8("attribute"), Damaged);
     const uint8_t refine = msg.readUInt8("refine");
-    int cards[4];
-    for (int f = 0; f < 4; f++)
+    int cards[maxCards];
+    for (int f = 0; f < maxCards; f++)
         cards[f] = msg.readInt16("card");
     const int x = msg.readInt16("x");
     const int y = msg.readInt16("y");

@@ -23,6 +23,8 @@
 #ifndef BEING_FLOORITEM_H
 #define BEING_FLOORITEM_H
 
+#include "const/resources/item/cards.h"
+
 #include "enums/simpletypes/damaged.h"
 #include "enums/simpletypes/identified.h"
 #include "enums/simpletypes/itemcolor.h"
@@ -127,7 +129,7 @@ class FloorItem final : public ActorSprite
         { return mDamaged; }
 
     private:
-        int mCards[4];
+        int mCards[maxCards];
         int mItemId;
         int mX, mY;
         int mDropTime;

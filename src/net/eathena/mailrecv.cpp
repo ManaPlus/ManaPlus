@@ -92,7 +92,7 @@ void MailRecv::processReadMail(Net::MessageIn &msg)
     mail->itemIdentify = msg.readUInt8("identify");
     mail->itemAttribute = msg.readUInt8("attribute");
     mail->itemRefine = msg.readUInt8("refine");
-    for (int f = 0; f < 4; f ++)
+    for (int f = 0; f < maxCards; f ++)
         mail->card[f] = msg.readInt16("card");
     const int msgLen = msg.readUInt8("msg len");
     if (msgLen != sz)

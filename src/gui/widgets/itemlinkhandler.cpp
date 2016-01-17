@@ -24,6 +24,8 @@
 
 #include "itemcolormanager.h"
 
+#include "const/resources/item/cards.h"
+
 #include "gui/viewport.h"
 
 #include "gui/popups/itempopup.h"
@@ -119,7 +121,7 @@ void ItemLinkHandler::handleLink(const std::string &link, MouseEvent *event)
         if (id > 0)
         {
             str.erase(str.begin());
-            while (str.size() < 4)
+            while (str.size() < maxCards)
                 str.push_back(0);
             const ItemColor color =
                 ItemColorManager::getColorFromCards(&str[0]);

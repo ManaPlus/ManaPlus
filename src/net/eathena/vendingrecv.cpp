@@ -84,7 +84,7 @@ void VendingRecv::processItemsList(Net::MessageIn &msg)
     Being *const being = actorManager->findBeing(id);
     if (!being)
         return;
-    int cards[4];
+    int cards[maxCards];
     CREATEWIDGETV(mBuyDialog, BuyDialog, being->getName());
     mBuyDialog->setMoney(PlayerInfo::getAttribute(Attributes::MONEY));
     msg.readInt32("vender id");
@@ -98,7 +98,7 @@ void VendingRecv::processItemsList(Net::MessageIn &msg)
         msg.readUInt8("identify");
         msg.readUInt8("attribute");
         msg.readUInt8("refine");
-        for (int d = 0; d < 4; d ++)
+        for (int d = 0; d < maxCards; d ++)
             cards[d] = msg.readInt16("card");
         if (serverVersion >= 8 && packetVersion >= 20150226)
         {
@@ -141,7 +141,7 @@ void VendingRecv::processOpen(Net::MessageIn &msg)
         msg.readUInt8("identify");
         msg.readUInt8("attribute");
         msg.readUInt8("refine");
-        for (int d = 0; d < 4; d ++)
+        for (int d = 0; d < maxCards; d ++)
             msg.readInt16("card");
         if (serverVersion >= 8 && packetVersion >= 20150226)
         {
