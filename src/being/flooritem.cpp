@@ -197,3 +197,10 @@ void FloorItem::draw(Graphics *const graphics,
     }
     BLOCK_END("FloorItem::draw")
 }
+
+int FloorItem::getCard(const int index) const
+{
+    if (index < 0 || index >= maxCards)
+        return 0;
+    return mCards[index];
+}

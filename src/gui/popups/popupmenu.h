@@ -25,6 +25,8 @@
 
 #ifndef DYECMD
 
+#include "const/resources/item/cards.h"
+
 #include "enums/inventorytype.h"
 
 #include "enums/simpletypes/beingid.h"
@@ -215,6 +217,7 @@ class PopupMenu final : public Popup, public LinkHandler
         BeingId mFloorItemId;
         int mItemId;
         int mItemIndex;
+        int mItemCards[maxCards];
         ItemColor mItemColor;
         MapItem *mMapItem;
         ChatTab *mTab;

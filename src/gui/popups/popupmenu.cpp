@@ -573,6 +573,8 @@ void PopupMenu::showPopup(const int x, const int y,
     mY = y;
     mFloorItemId = floorItem->getId();
     mType = ActorType::FloorItem;
+    for (int f = 0; f < maxCards; f ++)
+        mItemCards[f] = floorItem->getCard(f);
     mBrowserBox->clearRows();
     const std::string name = floorItem->getName();
     mNick = name;
@@ -601,7 +603,7 @@ void PopupMenu::showPopup(const int x, const int y,
     addProtection();
     // TRANSLATORS: popup menu item
     // TRANSLATORS: add item name to chat
-    mBrowserBox->addRow("/addchat 'FLOORID'", _("Add to chat"));
+    mBrowserBox->addRow("/addchat 'FLOORID''CARDS'", _("Add to chat"));
     mBrowserBox->addRow("##3---");
     // TRANSLATORS: popup menu item
     // TRANSLATORS: close menu
@@ -957,6 +959,8 @@ void PopupMenu::showChangePos(const int x, const int y)
         mFloorItemId = BeingId_zero;
         mItemIndex = -1;
         mItemId = 0;
+        for (int f = 0; f < maxCards; f ++)
+            mItemCards[f] = 0;
         mMapItem = nullptr;
         mNick.clear();
         mType = ActorType::Unknown;
@@ -1524,6 +1528,8 @@ void PopupMenu::handleLink(const std::string &link,
                 if (item)
                 {
                     mFloorItemId = item->getId();
+                    for (int f = 0; f < maxCards; f ++)
+                        mItemCards[f] = item->getCard(f);
                     showPopup(getX(), getY(), item);
                     return;
                 }
@@ -1599,6 +1605,17 @@ void PopupMenu::handleLink(const std::string &link,
             replaceAll(cmd, "'MAPY'", toString(mY));
         }
 
+        std::string cards;
+        for (int f = 0; f < maxCards; f ++)
+        {
+            const int id = mItemCards[f];
+            if (id)
+            {
+                cards.append(",");
+                cards.append(toString(id));
+            }
+        }
+        replaceAll(cmd, "'CARDS'", cards);
         const size_t pos = cmd.find(' ');
         const std::string type(cmd, 0, pos);
         std::string args(cmd, pos == std::string::npos ? cmd.size() : pos + 1);
@@ -1617,6 +1634,8 @@ void PopupMenu::handleLink(const std::string &link,
     mFloorItemId = BeingId_zero;
     mItemId = 0;
     mItemIndex = -1;
+    for (int f = 0; f < maxCards; f ++)
+        mItemCards[f] = 0;
     mItemColor = ItemColor_one;
     mMapItem = nullptr;
     mTab = nullptr;
@@ -1641,6 +1660,8 @@ void PopupMenu::showPopup(Window *const parent,
 
     mItemId = item->getId();
     mItemIndex = item->getInvIndex();
+    for (int f = 0; f < maxCards; f ++)
+        mItemCards[f] = item->getCard(f);
     mItemColor = item->getColor();
     mWindow = parent;
     mX = x;
@@ -1766,7 +1787,7 @@ void PopupMenu::showPopup(Window *const parent,
     }
     // TRANSLATORS: popup menu item
     // TRANSLATORS: add item name to chat
-    mBrowserBox->addRow("/addchat 'ITEMID'", _("Add to chat"));
+    mBrowserBox->addRow("/addchat 'ITEMID''CARDS'", _("Add to chat"));
     mBrowserBox->addRow("##3---");
     // TRANSLATORS: popup menu item
     // TRANSLATORS: close menu
@@ -1793,6 +1814,8 @@ void PopupMenu::showItemPopup(const int x, const int y,
         mItemId = itemId;
         mItemIndex = -1;
         mItemColor = color;
+        for (int f = 0; f < maxCards; f ++)
+            mItemCards[f] = 0;
         mX = x;
         mY = y;
         mBrowserBox->clearRows();
@@ -1823,12 +1846,16 @@ void PopupMenu::showItemPopup(const int x, const int y,
         mItemId = item->getId();
         mItemColor = item->getColor();
         mItemIndex = item->getInvIndex();
+        for (int f = 0; f < maxCards; f ++)
+            mItemCards[f] = item->getCard(f);
     }
     else
     {
         mItemId = 0;
         mItemColor = ItemColor_one;
         mItemIndex = -1;
+        for (int f = 0; f < maxCards; f ++)
+            mItemCards[f] = 0;
     }
     mNick.clear();
     mBrowserBox->clearRows();
@@ -1845,7 +1872,7 @@ void PopupMenu::showItemPopup(const int x, const int y,
         }
         // TRANSLATORS: popup menu item
         // TRANSLATORS: add item name to chat
-        mBrowserBox->addRow("/addchat 'ITEMID'", _("Add to chat"));
+        mBrowserBox->addRow("/addchat 'ITEMID''CARDS'", _("Add to chat"));
 
         if (config.getBoolValue("enablePickupFilter"))
         {
@@ -1876,6 +1903,8 @@ void PopupMenu::showDropPopup(const int x, const int y, Item *const item)
         mItemId = item->getId();
         mItemColor = item->getColor();
         mItemIndex = item->getInvIndex();
+        for (int f = 0; f < maxCards; f ++)
+            mItemCards[f] = item->getCard(f);
         const bool isProtected = PlayerInfo::isItemProtected(mItemId);
         addUseDrop(item, isProtected);
         if (InventoryWindow::isStorageActive())
@@ -1887,7 +1916,7 @@ void PopupMenu::showDropPopup(const int x, const int y, Item *const item)
         addProtection();
         // TRANSLATORS: popup menu item
         // TRANSLATORS: add item name to chat
-        mBrowserBox->addRow("/addchat 'ITEMID'", _("Add to chat"));
+        mBrowserBox->addRow("/addchat 'ITEMID''CARDS'", _("Add to chat"));
         if (config.getBoolValue("enablePickupFilter"))
         {
             mNick = item->getName();
@@ -2140,6 +2169,8 @@ void PopupMenu::showUndressPopup(const int x, const int y,
     mItemId = item->getId();
     mItemColor = item->getColor();
     mItemIndex = item->getInvIndex();
+    for (int f = 0; f < maxCards; f ++)
+        mItemCards[f] = item->getCard(f);
     mX = x;
     mY = y;
 
@@ -2250,6 +2281,8 @@ void PopupMenu::showSkillPopup(const SkillInfo *const info)
 
     // using mItemId as skill id
     mItemId = info->id;
+    for (int f = 0; f < maxCards; f ++)
+        mItemCards[f] = 0;
     mBrowserBox->clearRows();
     for (int f = 1; f <= info->level; f ++)
     {
@@ -2594,6 +2627,8 @@ void PopupMenu::clear()
     }
     mItemIndex = -1;
     mItemId = 0;
+    for (int f = 0; f < maxCards; f ++)
+        mItemCards[f] = 0;
     mMapItem = nullptr;
     mTab = nullptr;
     mSpell = nullptr;

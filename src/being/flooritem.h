@@ -116,6 +116,8 @@ class FloorItem final : public ActorSprite
 
         void setCards(const int *const cards, int sz);
 
+        int getCard(const int index) const;
+
         int getRefine() const A_WARN_UNUSED
         { return mRefine; }
 
