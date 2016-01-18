@@ -29,6 +29,9 @@
 
 #include "utils/delete2.h"
 #include "utils/paths.h"
+#ifdef DEBUG_CONFIG
+#include "utils/stringmap.h"
+#endif
 
 #include "debug.h"
 
@@ -48,7 +51,11 @@ Configuration paths;               // XML default paths information reader
 
 const std::string unusedKeys[] =
 {
+    "BotCheckerWindowSticky",
     "afkmessage",
+    "BotCheckerWindowVisible",
+    "BotCheckerWindowWinX",
+    "BotCheckerWindowWinY",
     "hideShield",
     "AttackRange",
     "emoteshortcut0",
