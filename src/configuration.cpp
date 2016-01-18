@@ -800,7 +800,7 @@ void ConfigurationObject::writeToXML(const XmlTextWriterPtr writer)
         XmlTextWriterStartElement(writer, "option");
         XmlTextWriterWriteAttribute(writer, "name", i->first.c_str());
         XmlTextWriterWriteAttribute(writer, "value", i->second.c_str());
-        xmlTextWriterEndElement(writer);
+        XmlTextWriterEndElement(writer);
     }
 
     for (std::map<std::string, ConfigurationList>::const_iterator
@@ -818,10 +818,10 @@ void ConfigurationObject::writeToXML(const XmlTextWriterPtr writer)
             XmlTextWriterStartElement(writer, name);
             if (*elt_it)
                 (*elt_it)->writeToXML(writer);
-            xmlTextWriterEndElement(writer);
+            XmlTextWriterEndElement(writer);
         }
 
-        xmlTextWriterEndElement(writer);
+        XmlTextWriterEndElement(writer);
     }
 }
 

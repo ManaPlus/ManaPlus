@@ -47,6 +47,7 @@
     reinterpret_cast<const xmlChar*>(name))
 #define XmlTextWriterStartElement(writer, name) \
     xmlTextWriterStartElement(writer, reinterpret_cast<const xmlChar*>(name))
+#define XmlTextWriterEndElement(writer) xmlTextWriterEndElement(writer)
 #define XmlTextWriterWriteAttribute(writer, name, content) \
     xmlTextWriterWriteAttribute(writer, \
     reinterpret_cast<const xmlChar*>(name), \
