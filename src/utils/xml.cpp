@@ -167,7 +167,7 @@ namespace XML
         xmlChar *const prop = XmlGetProp(node, name);
         if (prop)
         {
-            ret = atoi(reinterpret_cast<char*>(prop));
+            ret = atoi(reinterpret_cast<const char*>(prop));
             xmlFree(prop);
         }
 
@@ -241,7 +241,7 @@ namespace XML
                          const char *const name,
                          const bool def)
     {
-        const xmlChar *const prop = XmlGetProp(node, name);
+        xmlChar *const prop = XmlGetProp(node, name);
 
         if (XmlStrEqual(prop, "true"))
             return true;

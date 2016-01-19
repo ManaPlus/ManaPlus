@@ -49,6 +49,8 @@ TEST_CASE("xml doc")
         REQUIRE(doc.isValid() == true);
         REQUIRE(doc.rootNode() != nullptr);
         REQUIRE(xmlNameEqual(doc.rootNode(), "skinset") == true);
+        REQUIRE(xmlNameEqual(doc.rootNode(), "skinset123") == false);
+        REQUIRE(xmlTypeEqual(doc.rootNode(), XML_ELEMENT_NODE) == true);
     }
 
     SECTION("load2")
@@ -60,6 +62,10 @@ TEST_CASE("xml doc")
         REQUIRE(doc.isValid() == true);
         REQUIRE(doc.rootNode() != nullptr);
         REQUIRE(xmlNameEqual(doc.rootNode(), "root") == true);
+        REQUIRE(xmlNameEqual(doc.rootNode(), "root123") == false);
+        REQUIRE(xmlTypeEqual(doc.rootNode(), XML_ELEMENT_NODE) == true);
+        REQUIRE(XmlHasProp(doc.rootNode(), "option1") == false);
+        REQUIRE(XmlHasProp(doc.rootNode(), "option123") == false);
     }
 
     SECTION("load3")
@@ -72,6 +78,10 @@ TEST_CASE("xml doc")
         REQUIRE(doc.isValid() == true);
         REQUIRE(doc.rootNode() != nullptr);
         REQUIRE(xmlNameEqual(doc.rootNode(), "root") == true);
+        REQUIRE(xmlNameEqual(doc.rootNode(), "root123") == false);
+        REQUIRE(xmlTypeEqual(doc.rootNode(), XML_ELEMENT_NODE) == true);
+        REQUIRE(XmlHasProp(doc.rootNode(), "option1") == false);
+        REQUIRE(XmlHasProp(doc.rootNode(), "option123") == false);
     }
 
     SECTION("properties")
@@ -99,6 +109,7 @@ TEST_CASE("xml doc")
                 break;
         }
         REQUIRE(node != nullptr);
+        REQUIRE(xmlTypeEqual(node, XML_ELEMENT_NODE) == true);
         REQUIRE(xmlNameEqual(node, "widget") == true);
         for_each_xml_child_node(optionNode, node)
         {
@@ -107,7 +118,11 @@ TEST_CASE("xml doc")
                 break;
         }
         REQUIRE(node != nullptr);
+        REQUIRE(xmlTypeEqual(node, XML_ELEMENT_NODE) == true);
         REQUIRE(xmlNameEqual(node, "option") == true);
+        REQUIRE(XmlHasProp(node, "name") == true);
+        REQUIRE(XmlHasProp(node, "value") == true);
+        REQUIRE(XmlHasProp(node, "option123") == false);
         REQUIRE(XML::getProperty(node, "name", "") == "padding");
         REQUIRE(XML::langProperty(node, "name", "") == "padding");
         REQUIRE(XML::getProperty(node, "value", 0) == 1);
@@ -125,10 +140,15 @@ TEST_CASE("xml doc")
         const XmlNodePtr rootNode = doc.rootNode();
         XmlNodePtr node = XML::findFirstChildByName(rootNode, "widget");
         REQUIRE(node != nullptr);
+        REQUIRE(xmlTypeEqual(node, XML_ELEMENT_NODE) == true);
         REQUIRE(xmlNameEqual(node, "widget") == true);
         node = XML::findFirstChildByName(node, "option");
         REQUIRE(node != nullptr);
+        REQUIRE(xmlTypeEqual(node, XML_ELEMENT_NODE) == true);
         REQUIRE(xmlNameEqual(node, "option") == true);
+        REQUIRE(XmlHasProp(node, "name") == true);
+        REQUIRE(XmlHasProp(node, "value") == true);
+        REQUIRE(XmlHasProp(node, "option123") == false);
         REQUIRE(XML::getProperty(node, "name", "") == "padding");
         REQUIRE(XML::langProperty(node, "name", "") == "padding");
         REQUIRE(XML::langProperty(node, "name123", "") == "");
@@ -150,7 +170,10 @@ TEST_CASE("xml doc")
         const XmlNodePtr rootNode = doc.rootNode();
         XmlNodePtr node = XML::findFirstChildByName(rootNode, "data");
         REQUIRE(node != nullptr);
+        REQUIRE(xmlTypeEqual(node, XML_ELEMENT_NODE) == true);
         REQUIRE(xmlNameEqual(node, "data") == true);
+        REQUIRE(XmlHasProp(node, "option1") == true);
+        REQUIRE(XmlHasProp(node, "option123") == false);
         REQUIRE(XML::getBoolProperty(node, "option1", true) == false);
         REQUIRE(XML::getBoolProperty(node, "option2", false) == true);
         const float opt3 = XML::getFloatProperty(node, "option3", 0.0);
@@ -168,7 +191,10 @@ TEST_CASE("xml doc")
         const XmlNodePtr rootNode = doc.rootNode();
         XmlNodePtr node = XML::findFirstChildByName(rootNode, "data");
         REQUIRE(node != nullptr);
+        REQUIRE(xmlTypeEqual(node, XML_ELEMENT_NODE) == true);
         REQUIRE(xmlNameEqual(node, "data") == true);
+        REQUIRE(XmlHasProp(node, "option1") == true);
+        REQUIRE(XmlHasProp(node, "option123") == false);
         REQUIRE(XML::getBoolProperty(node, "option1", true) == false);
         REQUIRE(XML::getBoolProperty(node, "option2", false) == true);
         const float opt3 = XML::getFloatProperty(node, "option3", 0.0);

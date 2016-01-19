@@ -41,8 +41,8 @@
     reinterpret_cast<const xmlChar*>(str))
 #define XmlTextWriterPtr xmlTextWriterPtr
 #define xmlTypeEqual(node, typ) ((node)->type == (typ))
-#define XmlHasProp(node, name) xmlHasProp(node, \
-    reinterpret_cast<const xmlChar*>(name))
+#define XmlHasProp(node, name) (xmlHasProp(node, \
+    reinterpret_cast<const xmlChar*>(name)) != nullptr)
 #define XmlGetProp(node, name) xmlGetProp(node, \
     reinterpret_cast<const xmlChar*>(name))
 #define XmlTextWriterStartElement(writer, name) \
