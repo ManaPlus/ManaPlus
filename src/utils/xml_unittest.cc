@@ -62,6 +62,18 @@ TEST_CASE("xml doc")
         REQUIRE(xmlNameEqual(doc.rootNode(), "root") == true);
     }
 
+    SECTION("load3")
+    {
+        const std::string xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+            "<!-- comment here\nand here -->"
+            "<root><data option1=\"false\" option2=\"true\"/></root>";
+        XML::Document doc(xml.c_str(), xml.size());
+        REQUIRE(doc.isLoaded() == true);
+        REQUIRE(doc.isValid() == true);
+        REQUIRE(doc.rootNode() != nullptr);
+        REQUIRE(xmlNameEqual(doc.rootNode(), "root") == true);
+    }
+
     SECTION("properties")
     {
         XML::Document doc("graphics/gui/browserbox.xml",
@@ -134,6 +146,24 @@ TEST_CASE("xml doc")
         const std::string xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>"
             "<root><data option1=\"false\" option2=\"true\" "
             "option3=\"10.5\"/></root>";
+        XML::Document doc(xml.c_str(), xml.size());
+        const XmlNodePtr rootNode = doc.rootNode();
+        XmlNodePtr node = XML::findFirstChildByName(rootNode, "data");
+        REQUIRE(node != nullptr);
+        REQUIRE(xmlNameEqual(node, "data") == true);
+        REQUIRE(XML::getBoolProperty(node, "option1", true) == false);
+        REQUIRE(XML::getBoolProperty(node, "option2", false) == true);
+        const float opt3 = XML::getFloatProperty(node, "option3", 0.0);
+        REQUIRE(opt3 > 10);
+        REQUIRE(opt3 < 11);
+    }
+
+    SECTION("child3")
+    {
+        const std::string xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+            "<!-- comment --><root><!-- comment -->"
+            "<data option1=\"false\" option2=\"true\" "
+            "option3=\"10.5\"/><!-- comment --></root>";
         XML::Document doc(xml.c_str(), xml.size());
         const XmlNodePtr rootNode = doc.rootNode();
         XmlNodePtr node = XML::findFirstChildByName(rootNode, "data");
