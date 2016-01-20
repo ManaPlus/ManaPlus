@@ -473,6 +473,7 @@ SRC += events/actionevent.h \
 	      utils/naclmessages.cpp \
 	      utils/naclmessages.h \
 	      utils/xml.h \
+	      utils/xml.inc \
 	      utils/xmlutils.cpp \
 	      utils/xmlutils.h \
 	      test/testlauncher.cpp \
@@ -692,11 +693,13 @@ SRC += events/actionevent.h \
 
 if ENABLE_PUGIXML
 SRC += utils/xml/pugixml.cpp \
-	      utils/xml/pugixml.h
+	      utils/xml/pugixml.h \
+	      utils/xml/pugixml.inc
 endif
 if ENABLE_LIBXML
 SRC += utils/xml/libxml.cpp \
-	      utils/xml/libxml.h
+	      utils/xml/libxml.h \
+	      utils/xml/libxml.inc
 endif
 
 dyecmd_SOURCES += ${SRC}

@@ -28,47 +28,14 @@
 #include "enums/simpletypes/skiperror.h"
 #include "enums/simpletypes/useresman.h"
 
+#include "utils/xml/libxml.inc"
+
 #include <libxml/tree.h>
 #include <libxml/xmlwriter.h>
 
 #include <string>
 
 #include "localconsts.h"
-
-#define XmlNodePtr xmlNodePtr
-#define XmlNodePtrConst xmlNode *const
-#define XmlStrEqual(str1, str2) xmlStrEqual(str1, \
-    reinterpret_cast<const xmlChar*>(str2))
-#define xmlNameEqual(node, str) xmlStrEqual((node)->name, \
-    reinterpret_cast<const xmlChar*>(str))
-#define XmlTextWriterPtr xmlTextWriterPtr
-#define xmlTypeEqual(node, typ) ((node)->type == (typ))
-#define XmlHasProp(node, name) (xmlHasProp(node, \
-    reinterpret_cast<const xmlChar*>(name)) != nullptr)
-#define XmlGetProp(node, name) xmlGetProp(node, \
-    reinterpret_cast<const xmlChar*>(name))
-#define XmlTextWriterStartElement(writer, name) \
-    xmlTextWriterStartElement(writer, reinterpret_cast<const xmlChar*>(name))
-#define XmlTextWriterEndElement(writer) xmlTextWriterEndElement(writer)
-#define XmlTextWriterWriteAttribute(writer, name, content) \
-    xmlTextWriterWriteAttribute(writer, \
-    reinterpret_cast<const xmlChar*>(name), \
-    reinterpret_cast<const xmlChar*>(content))
-#define XmlNodeGetContent(node) xmlNodeGetContent(node)
-#define XmlNewTextWriterFilename(name, flags) \
-    xmlNewTextWriterFilename(name, flags)
-#define XmlTextWriterSetIndent(writer, flags) \
-    xmlTextWriterSetIndent(writer, flags)
-#define XmlTextWriterStartDocument(writer, p1, p2, p3) \
-    xmlTextWriterStartDocument(writer, p1, p2, p3)
-#define XmlTextWriterEndDocument(writer) xmlTextWriterEndDocument(writer)
-#define XmlFreeTextWriter(writer) xmlFreeTextWriter(writer)
-#define XmlHaveChildContent(node) ((node)->xmlChildrenNode != nullptr && \
-    (node)->xmlChildrenNode->content != nullptr)
-#define XmlChildContent(node) reinterpret_cast<const char*>(\
-    (node)->xmlChildrenNode->content)
-#define XmlFree(ptr) xmlFree(ptr)
-#define XmlNodeDefault nullptr
 
 /**
  * XML helper functions.

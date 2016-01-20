@@ -816,10 +816,12 @@ SET(SRCS
     utils/mkdir.cpp
     utils/mkdir.h
     utils/xml.h
+    utils/xml.inc
     utils/xmlutils.cpp
     utils/xmlutils.h
     utils/xml/libxml.cpp
     utils/xml/libxml.h
+    utils/xml/libxml.inc
     test/testlauncher.cpp
     test/testlauncher.h
     test/testmain.cpp
@@ -1412,6 +1414,7 @@ SET(DYE_CMD_SRCS
     utils/timer.h
     utils/xml.cpp
     utils/xml.h
+    utils/xml.inc
     utils/xmlutils.cpp
     utils/xmlutils.h
     utils/translation/podict.cpp

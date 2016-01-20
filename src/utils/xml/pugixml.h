@@ -28,39 +28,13 @@
 #include "enums/simpletypes/skiperror.h"
 #include "enums/simpletypes/useresman.h"
 
+#include "utils/xml/pugixml.inc"
+
 #include <pugixml.hpp>
 
 #include <string>
 
 #include "localconsts.h"
-
-#define XML_ELEMENT_NODE pugi::node_element
-
-#define XmlNodePtr pugi::xml_node
-#define XmlNodePtrConst pugi::xml_node 
-#define xmlNameEqual(node, str) !strcmp((node).name(), str)
-#define xmlTypeEqual(node, typ) ((node).type() == (typ))
-#define XmlHasProp(node, name) (!((node).attribute(name).empty()))
-#define XmlHaveChildContent(node) ((node).child_value() != nullptr && \
-    *(node).child_value())
-#define XmlChildContent(node) (node).child_value()
-#define xmlChar char
-#define XmlFree(ptr)
-#define XmlNodeDefault pugi::xml_node()
-
-// +++ need impliment get context 
-#define XmlNodeGetContent(node) (node).child_value()
-
-// +++ need impliment writing code
-#define XmlTextWriterPtr pugi::xml_writer*
-#define XmlTextWriterStartElement(writer, name)
-#define XmlTextWriterEndElement(writer)
-#define XmlTextWriterWriteAttribute(writer, name, content)
-#define XmlNewTextWriterFilename(name, flags) nullptr;
-#define XmlTextWriterSetIndent(writer, flags)
-#define XmlTextWriterStartDocument(writer, p1, p2, p3)
-#define XmlTextWriterEndDocument(writer)
-#define XmlFreeTextWriter(writer)
 
 /**
  * XML helper functions.
