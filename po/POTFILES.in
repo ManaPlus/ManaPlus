@@ -183,4 +183,4 @@ src/utils/booleanoptions.h
 src/utils/gettext.h
 src/utils/stringutils.cpp
 src/utils/stringutils.h
-src/utils/xml.cpp
+src/utils/xml/libxml.cpp
