@@ -39,6 +39,7 @@ TEST_CASE("xml doc")
     ResourceManager::init();
     resourceManager->addToSearchPath("data", Append_false);
     resourceManager->addToSearchPath("../data", Append_false);
+    const char *const tempXmlName = "tempxml.xml";
 
     SECTION("load1")
     {
@@ -68,7 +69,6 @@ TEST_CASE("xml doc")
         REQUIRE(xmlTypeEqual(doc.rootNode(), XML_ELEMENT_NODE) == true);
         REQUIRE(XmlHasProp(doc.rootNode(), "option1") == false);
         REQUIRE(XmlHasProp(doc.rootNode(), "option123") == false);
-        logger->log("content: '%s'", doc.rootNode().first_child().child_value());
         REQUIRE(XmlHaveChildContent(doc.rootNode()) == false);
     }
 
@@ -241,5 +241,89 @@ TEST_CASE("xml doc")
             "graphics/gui/bubble.png") == false);
         REQUIRE(XML::Document::validateXml(
             "graphics/gui/testfile123.xml") == false);
+    }
+
+    SECTION("save1")
+    {
+        // clean
+        ::remove(tempXmlName);
+
+        // save
+        FILE *const testFile = fopen(tempXmlName, "w");
+        REQUIRE(testFile);
+        fclose(testFile);
+        const XmlTextWriterPtr writer = XmlNewTextWriterFilename(
+            tempXmlName,
+            0);
+        XmlTextWriterSetIndent(writer, 1);
+        XmlTextWriterStartDocument(writer, nullptr, nullptr, nullptr);
+        XmlTextWriterStartElement(writer, "root");
+        XmlTextWriterEndDocument(writer);
+        XmlFreeTextWriter(writer);
+
+        // load
+        XML::Document doc(tempXmlName,
+            UseResman_false,
+            SkipError_false);
+        REQUIRE(doc.isLoaded() == true);
+        REQUIRE(doc.isValid() == true);
+        REQUIRE(doc.rootNode() != nullptr);
+        REQUIRE(xmlNameEqual(doc.rootNode(), "root") == true);
+        REQUIRE(xmlNameEqual(doc.rootNode(), "skinset123") == false);
+        REQUIRE(xmlTypeEqual(doc.rootNode(), XML_ELEMENT_NODE) == true);
+//        REQUIRE(XmlHaveChildContent(doc.rootNode()) == true);
+
+        // clean again
+        ::remove(tempXmlName);
+    }
+
+    SECTION("save2")
+    {
+        // clean
+        ::remove(tempXmlName);
+
+        // save
+        FILE *const testFile = fopen(tempXmlName, "w");
+        REQUIRE(testFile);
+        fclose(testFile);
+        const XmlTextWriterPtr writer = XmlNewTextWriterFilename(
+            tempXmlName,
+            0);
+        XmlTextWriterSetIndent(writer, 1);
+        XmlTextWriterStartDocument(writer, nullptr, nullptr, nullptr);
+        XmlTextWriterStartElement(writer, "root");
+
+        XmlTextWriterStartElement(writer, "option");
+        XmlTextWriterWriteAttribute(writer, "name", "the name");
+        XmlTextWriterWriteAttribute(writer, "value", "the value");
+        XmlTextWriterEndElement(writer);
+
+        XmlTextWriterEndDocument(writer);
+        XmlFreeTextWriter(writer);
+
+        // load
+        XML::Document doc(tempXmlName,
+            UseResman_false,
+            SkipError_false);
+        REQUIRE(doc.isLoaded() == true);
+        REQUIRE(doc.isValid() == true);
+        REQUIRE(doc.rootNode() != nullptr);
+        REQUIRE(xmlNameEqual(doc.rootNode(), "root") == true);
+        REQUIRE(xmlNameEqual(doc.rootNode(), "skinset123") == false);
+        REQUIRE(xmlTypeEqual(doc.rootNode(), XML_ELEMENT_NODE) == true);
+//        REQUIRE(XmlHaveChildContent(doc.rootNode()) == true);
+        XmlNodePtr node = XML::findFirstChildByName(doc.rootNode(), "option");
+        REQUIRE(node != nullptr);
+        REQUIRE(xmlTypeEqual(node, XML_ELEMENT_NODE) == true);
+        REQUIRE(xmlNameEqual(node, "option") == true);
+        REQUIRE(XmlHaveChildContent(node) == false);
+        REQUIRE(XmlHasProp(node, "name") == true);
+        REQUIRE(XmlHasProp(node, "value") == true);
+        REQUIRE(XmlHasProp(node, "option123") == false);
+        REQUIRE(XML::getProperty(node, "name", "") == "the name");
+        REQUIRE(XML::getProperty(node, "value", "") == "the value");
+
+        // clean again
+        ::remove(tempXmlName);
     }
 }
