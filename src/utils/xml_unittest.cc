@@ -24,6 +24,7 @@
 
 #include "utils/physfstools.h"
 #include "utils/xml.h"
+#include "utils/xmlwriter.h"
 
 #include "resources/resourcemanager.h"
 

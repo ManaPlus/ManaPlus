@@ -59,7 +59,6 @@ namespace XML
                        const UseResman useResman,
                        const SkipError skipError) :
         mDoc(),
-        mRoot(),
         mData(nullptr),
         mIsValid(false)
     {
@@ -121,7 +120,6 @@ namespace XML
                 mData = data;
             }
 
-            mRoot = mDoc.first_child();
 //            if (!mDoc)
 //                logger->log("Error parsing XML file %s", filename.c_str());
         }
@@ -135,7 +133,6 @@ namespace XML
 
     Document::Document(const char *const data, const int size) :
         mDoc(),
-        mRoot(),
         mData(nullptr),
         mIsValid(true)
     {
@@ -156,7 +153,6 @@ namespace XML
         }
         else
         {
-            mRoot = mDoc.first_child();
             mData = buf;
         }
     }

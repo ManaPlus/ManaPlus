@@ -25,6 +25,7 @@
 
 #include "utils/stringutils.h"
 #include "utils/xml.h"
+#include "utils/xmlwriter.h"
 
 #include "defaults.h"
 #include "localconsts.h"

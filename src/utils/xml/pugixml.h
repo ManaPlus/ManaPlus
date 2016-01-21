@@ -88,7 +88,6 @@ namespace XML
 
         private:
             pugi::xml_document mDoc;
-            pugi::xml_node mRoot;
             char *mData;
             bool mIsValid;
     };

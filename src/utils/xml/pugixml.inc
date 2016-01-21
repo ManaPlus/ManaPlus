@@ -36,20 +36,17 @@
 #define xmlChar char
 #define XmlFree(ptr)
 #define XmlNodeDefault pugi::xml_node()
-
-// +++ need impliment get context 
 #define XmlNodeGetContent(node) (node).child_value()
-
-// +++ need impliment writing code
-#define XmlTextWriterPtr pugi::xml_writer*
-#define XmlTextWriterStartElement(writer, name)
-#define XmlTextWriterEndElement(writer)
-#define XmlTextWriterWriteAttribute(writer, name, content)
-#define XmlNewTextWriterFilename(name, flags) nullptr;
+#define XmlTextWriterPtr XML::Writer *
+#define XmlTextWriterStartElement(writer, name) (writer)->startNode(name)
+#define XmlTextWriterEndElement(writer) (writer)->endNode()
+#define XmlTextWriterWriteAttribute(writer, name, content) \
+    (writer)->addAttribute(name, content)
+#define XmlNewTextWriterFilename(name, flags) new XML::Writer(name);
 #define XmlTextWriterSetIndent(writer, flags)
 #define XmlTextWriterStartDocument(writer, p1, p2, p3)
-#define XmlTextWriterEndDocument(writer)
-#define XmlFreeTextWriter(writer)
+#define XmlTextWriterEndDocument(writer) (writer)->endDocument()
+#define XmlFreeTextWriter(writer) delete writer
 
 #endif  // ENABLE_PUGIXML
 #endif  // UTILS_XML_PUGIXML_INC

@@ -476,6 +476,7 @@ SRC += events/actionevent.h \
 	      utils/xml.inc \
 	      utils/xmlutils.cpp \
 	      utils/xmlutils.h \
+	      utils/xmlwriter.h \
 	      test/testlauncher.cpp \
 	      test/testlauncher.h \
 	      test/testmain.cpp \
@@ -694,7 +695,9 @@ SRC += events/actionevent.h \
 if ENABLE_PUGIXML
 SRC += utils/xml/pugixml.cpp \
 	      utils/xml/pugixml.h \
-	      utils/xml/pugixml.inc
+	      utils/xml/pugixml.inc \
+	      utils/xml/pugixmlwriter.cpp \
+	      utils/xml/pugixmlwriter.h
 endif
 if ENABLE_LIBXML
 SRC += utils/xml/libxml.cpp \

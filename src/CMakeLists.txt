@@ -821,6 +821,7 @@ SET(SRCS
     utils/xml.inc
     utils/xmlutils.cpp
     utils/xmlutils.h
+    utils/xmlwriter.h
     utils/xml/libxml.cpp
     utils/xml/libxml.h
     utils/xml/libxml.inc

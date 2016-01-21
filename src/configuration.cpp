@@ -31,7 +31,7 @@
 #include "utils/paths.h"
 #ifdef DEBUG_CONFIG
 #include "utils/stringmap.h"
-#endif
+#endif  // DEBUG_CONFIG
 
 #include "debug.h"
 
