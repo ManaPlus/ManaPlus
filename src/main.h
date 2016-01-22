@@ -143,11 +143,20 @@
 #else
 #define SDL_NAME "SDL1.2"
 #endif
+#if  defined(ENABLE_PUGIXML)
+#define XML_NAME "pugixml"
+#elif defined(ENABLE_LIBXML)
+#define XML_NAME "libxml2"
+#else
+#define XML_NAME "unknown"
+#endif
+
 #define PACKAGE_EXTENDED_VERSION "ManaPlus (" PACKAGE_OS \
-"; %s; " SDL_NAME "; 4144 v" SMALL_VERSION ")"
+"; %s; " SDL_NAME ", " XML_NAME "; 4144 v" SMALL_VERSION ")"
 #define PACKAGE_VERSION_4144 "ManaPlus 4144-" SMALL_VERSION ""
 
-#define FULL_VERSION "ManaPlus " SMALL_VERSION " " PACKAGE_OS ", " SDL_NAME
+#define FULL_VERSION "ManaPlus " SMALL_VERSION " " PACKAGE_OS ", " \
+    SDL_NAME ", " XML_NAME
 
 #ifdef ANDROID
 #ifdef PKG_DATADIR
