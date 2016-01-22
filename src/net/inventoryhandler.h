@@ -89,6 +89,8 @@ class InventoryHandler notfinal
 
         virtual void selectCart(const BeingId accountId,
                                 const int type) const = 0;
+
+        virtual void identifyItem(const Item *const item) const = 0;
 };
 
 }  // namespace Net

@@ -275,5 +275,8 @@ if (packetVersion >= 20150513)
 }
 #endif
 
+// introduced in 20150513
+packet(CMSG_QUICK_IDENTIFY_ITEM,     0x0a35);
+
 // introduced in 20150805
 packet(CMSG_SELECT_CART,             0x0980);

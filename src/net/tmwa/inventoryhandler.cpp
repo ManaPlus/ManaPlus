@@ -169,4 +169,8 @@ void InventoryHandler::selectCart(const BeingId accountId A_UNUSED,
 {
 }
 
+void InventoryHandler::identifyItem(const Item *const item A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

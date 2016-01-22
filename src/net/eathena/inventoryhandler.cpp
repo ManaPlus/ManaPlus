@@ -221,4 +221,11 @@ void InventoryHandler::selectCart(const BeingId accountId,
     outMsg.writeInt8(type, "type");
 }
 
+void InventoryHandler::identifyItem(const Item *const item) const
+{
+    createOutPacket(CMSG_QUICK_IDENTIFY_ITEM);
+    outMsg.writeInt16(static_cast<int16_t>(item->getInvIndex()),
+        "item index");
+}
+
 }  // namespace EAthena

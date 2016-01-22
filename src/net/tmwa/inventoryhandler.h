@@ -69,6 +69,8 @@ class InventoryHandler final : public Ea::InventoryHandler
         void selectCart(const BeingId accountId,
                         const int type) const override final;
 
+        void identifyItem(const Item *const item) const override final;
+
         int getProjectileSlot() const override final
         { return 10; }
 
