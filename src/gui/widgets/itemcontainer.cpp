@@ -869,6 +869,8 @@ void ItemContainer::mouseReleased(MouseEvent &event)
             if (inventory)
             {
                 Item *const item = inventory->getItem(dragDrop.getTag());
+                if (!item || item->isEquipped() == Equipped_true)
+                    return;
                 const int slot = getSlotByXY(event.getX(), event.getY());
                 if (item->getQuantity() > 1)
                 {
