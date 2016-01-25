@@ -192,7 +192,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
 
     mNameField->setMaximum(24);
 
-    if (serverFeatures->haveRaceSelection())
+    if (serverFeatures->haveRaceSelection() && mMinRace < mMaxRace)
     {
         // TRANSLATORS: char create dialog button
         mNextRaceButton = new Button(this, _(">"), "nextrace", this);
@@ -315,7 +315,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
         if (mLookNameLabel)
             mLookNameLabel->setPosition(nameX, y);  // 93
     }
-    if (serverFeatures->haveRaceSelection())
+    if (serverFeatures->haveRaceSelection() && mMinRace < mMaxRace)
     {
         y += 24;
         if (mPrevRaceButton)
@@ -355,7 +355,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
         add(mLookNameLabel);
     }
 
-    if (serverFeatures->haveRaceSelection())
+    if (serverFeatures->haveRaceSelection() && mMinRace < mMaxRace)
     {
         add(mNextRaceButton);
         add(mPrevRaceButton);
@@ -372,7 +372,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     mNameField->requestFocus();
 
     updateHair();
-    if (serverFeatures->haveRaceSelection())
+    if (serverFeatures->haveRaceSelection() && mMinRace < mMaxRace)
         updateRace();
     if (serverFeatures->haveLookSelection() && mMinLook < mMaxLook)
         updateLook();
@@ -601,7 +601,7 @@ void CharCreateDialog::setAttributes(const StringVect &labels,
     int y = 89;
     if (serverFeatures->haveLookSelection() && mMinLook < mMaxLook)
         y += 29;
-    if (serverFeatures->haveRaceSelection())
+    if (serverFeatures->haveRaceSelection() && mMinRace < mMaxRace)
         y += 29;
 
     for (unsigned i = 0, sz = static_cast<unsigned>(labels.size());
