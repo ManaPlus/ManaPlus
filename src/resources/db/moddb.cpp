@@ -28,6 +28,7 @@
 #include "resources/beingcommon.h"
 
 #include "utils/dtor.h"
+#include "utils/files.h"
 #include "utils/gettext.h"
 
 #include "debug.h"

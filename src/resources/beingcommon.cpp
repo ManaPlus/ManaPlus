@@ -82,22 +82,6 @@ void BeingCommon::readBasicAttributes(BeingInfo *const info,
     info->setBlockWalkMask(static_cast<unsigned char>(block ^ allFlags));
 }
 
-void BeingCommon::getIncludeFiles(const std::string &dir,
-                                  StringVect &list,
-                                  const std::string &ext)
-{
-    const std::string path = dir + "/";
-    StringVect tempList;
-    Files::getFilesWithDir(path, tempList);
-    FOR_EACH (StringVectCIter, it, tempList)
-    {
-        const std::string &str = *it;
-        if (findLast(str, ext))
-            list.push_back(str);
-    }
-    std::sort(list.begin(), list.end());
-}
-
 bool BeingCommon::readObjectNodes(XmlNodePtrConst &spriteNode,
                                   SpriteDisplay &display,
                                   BeingInfo *const currentInfo,

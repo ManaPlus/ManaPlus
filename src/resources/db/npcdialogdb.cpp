@@ -27,6 +27,7 @@
 #include "resources/npcdialoginfo.h"
 
 #include "utils/dtor.h"
+#include "utils/files.h"
 
 #include "debug.h"
 

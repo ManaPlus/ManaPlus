@@ -23,6 +23,7 @@
 #include "configuration.h"
 #include "logger.h"
 
+#include "utils/files.h"
 #include "utils/translation/podict.h"
 
 #include "resources/beingcommon.h"

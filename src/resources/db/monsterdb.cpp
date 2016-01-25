@@ -28,6 +28,7 @@
 #include "resources/beinginfo.h"
 
 #include "utils/dtor.h"
+#include "utils/files.h"
 #include "utils/gettext.h"
 
 #include "configuration.h"

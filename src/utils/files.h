@@ -77,6 +77,11 @@ namespace Files
                       const std::string &restrict text);
 
     void deleteFilesInDirectory(std::string path);
+
+    void getFilesInDir(const std::string &dir,
+                       StringVect &list,
+                       const std::string &ext);
+
 }  // namespace Files
 
 #endif  // UTILS_FILES_H

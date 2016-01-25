@@ -34,7 +34,7 @@ struct SpriteDisplay;
 #define loadXmlDir(name, function) \
     { \
         StringVect listVect; \
-        BeingCommon::getIncludeFiles(paths.getStringValue( \
+        Files::getFilesInDir(paths.getStringValue( \
             name), listVect, ".xml"); \
         FOR_EACH (StringVectCIter, itVect, listVect) \
             function(*itVect); \
@@ -43,7 +43,7 @@ struct SpriteDisplay;
 #define loadXmlDir2(name, function, ext) \
     { \
         StringVect listVect; \
-        BeingCommon::getIncludeFiles(name, listVect, ext); \
+        Files::getFilesInDir(name, listVect, ext); \
         FOR_EACH (StringVectCIter, itVect, listVect) \
             function(*itVect); \
     }

@@ -31,7 +31,9 @@
 #include "utils/mkdir.h"
 #include "utils/paths.h"
 #include "utils/physfstools.h"
+#include "utils/stringutils.h"
 
+#include <algorithm>
 #include <dirent.h>
 #include <fstream>
 #include <sstream>
@@ -362,4 +364,20 @@ void Files::deleteFilesInDirectory(std::string path)
     }
     if (dir)
         closedir(dir);
+}
+
+void Files::getFilesInDir(const std::string &dir,
+                          StringVect &list,
+                          const std::string &ext)
+{
+    const std::string path = dir + "/";
+    StringVect tempList;
+    Files::getFilesWithDir(path, tempList);
+    FOR_EACH (StringVectCIter, it, tempList)
+    {
+        const std::string &str = *it;
+        if (findLast(str, ext))
+            list.push_back(str);
+    }
+    std::sort(list.begin(), list.end());
 }

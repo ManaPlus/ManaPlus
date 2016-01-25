@@ -41,6 +41,7 @@
 
 #include "utils/delete2.h"
 #include "utils/dtor.h"
+#include "utils/files.h"
 #include "utils/stringmap.h"
 
 #include "debug.h"
@@ -250,7 +251,7 @@ void ItemDB::load()
     loadXmlFile(paths.getStringValue("itemsPatchFile"), tagNum);
 
     StringVect list;
-    BeingCommon::getIncludeFiles(paths.getStringValue("itemsPatchDir"),
+    Files::getFilesInDir(paths.getStringValue("itemsPatchDir"),
         list,
         ".xml");
     FOR_EACH (StringVectCIter, it, list)

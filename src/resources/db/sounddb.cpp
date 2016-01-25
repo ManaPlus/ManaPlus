@@ -27,6 +27,8 @@
 
 #include "resources/beingcommon.h"
 
+#include "utils/files.h"
+
 #include "debug.h"
 
 namespace

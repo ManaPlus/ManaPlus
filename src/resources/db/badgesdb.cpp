@@ -24,6 +24,7 @@
 
 #include "resources/beingcommon.h"
 
+#include "utils/files.h"
 #include "utils/xmlutils.h"
 
 #include "debug.h"
@@ -57,7 +58,7 @@ static void loadDB(const std::string &name, BadgesInfos &arr)
         name, arr);
 
     StringVect listVect;
-    BeingCommon::getIncludeFiles(paths.getStringValue(
+    Files::getFilesInDir(paths.getStringValue(
         "badgesPatchDir"), listVect, ".xml");
     FOR_EACH (StringVectCIter, itVect, listVect)
         loadXmlFile(*itVect, name, arr);

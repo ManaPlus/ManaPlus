@@ -28,6 +28,7 @@
 #include "resources/horseinfo.h"
 
 #include "utils/dtor.h"
+#include "utils/files.h"
 
 #include "debug.h"
 
