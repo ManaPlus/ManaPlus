@@ -144,17 +144,23 @@ void HelpWindow::loadFile(std::string file)
 
 void HelpWindow::loadTags()
 {
-    std::string helpPath = branding.getStringValue("helpPath");
+    std::string helpPath = branding.getStringValue("tagsPath");
     if (helpPath.empty())
-        helpPath = paths.getStringValue("help");
-    StringVect lines;
-    Files::loadTextFile(helpPath.append("tags.idx"), lines);
-    FOR_EACH (StringVectCIter, it, lines)
+        helpPath = paths.getStringValue("tags");
+
+    StringVect filesVect;
+    Files::getFilesInDir(helpPath, filesVect, ".idx");
+    FOR_EACH (StringVectCIter, itVect, filesVect)
     {
-        const std::string &str = *it;
-        const size_t idx = str.find('|');
-        if (idx != std::string::npos)
-            mTagFileMap[str.substr(idx + 1)].insert(str.substr(0, idx));
+        StringVect lines;
+        Files::loadTextFile(*itVect, lines);
+        FOR_EACH (StringVectCIter, it, lines)
+        {
+            const std::string &str = *it;
+            const size_t idx = str.find('|');
+            if (idx != std::string::npos)
+                mTagFileMap[str.substr(idx + 1)].insert(str.substr(0, idx));
+        }
     }
 }
 

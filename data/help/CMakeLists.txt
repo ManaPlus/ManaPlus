@@ -14,11 +14,10 @@ SET(FILES
     searchnotfound.txt
     skills.txt
     support.txt
-    tags.idx
     team.txt
     windows.txt
     )
 
-ADD_SUBDIRECTORY(tips)
+ADD_SUBDIRECTORY(idx tips)
 
 INSTALL(FILES ${FILES} DESTINATION ${DATA_DIR}/help)

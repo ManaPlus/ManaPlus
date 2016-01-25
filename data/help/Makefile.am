@@ -1,4 +1,4 @@
-SUBDIRS = tips
+SUBDIRS = idx tips
 
 helpdir = $(pkgdatadir)/data/help
 
@@ -18,7 +18,6 @@ help_DATA =				\
 	searchnotfound.txt	\
 	skills.txt			\
 	support.txt			\
-	tags.idx			\
 	team.txt			\
 	windows.txt
 

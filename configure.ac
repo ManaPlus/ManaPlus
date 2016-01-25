@@ -493,6 +493,7 @@ data/themes/wood/Makefile
 data/tmw/tmw.desktop
 data/tmw/Makefile
 data/help/Makefile
+data/help/idx/Makefile
 data/help/tips/Makefile
 data/icons/Makefile
 data/perserver/Makefile

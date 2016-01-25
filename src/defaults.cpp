@@ -452,6 +452,7 @@ DefaultsData* getBrandingDefaults()
     AddDEF("screenshots", "ManaPlus");
     AddDEF("defaultUpdateHost", "");
     AddDEF("helpPath", "");
+    AddDEF("tagsPath", "");
     AddDEF("theme", "");
     AddDEF("font", "fonts/dejavusans.ttf");
     AddDEF("boldFont", "fonts/dejavusans-bold.ttf");
@@ -499,6 +500,7 @@ DefaultsData* getPathsDefaults()
     AddDEF("guiIcons", "graphics/guiicons/");
     AddDEF("shaders", "graphics/shaders/");
     AddDEF("help", "help/");
+    AddDEF("tags", "help/idx/");
     AddDEF("badges", "graphics/badges/");
 
     AddDEF("simpleVertexShader", "simple_vertex.glsl");
