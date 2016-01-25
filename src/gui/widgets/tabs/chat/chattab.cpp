@@ -433,7 +433,10 @@ void ChatTab::handleCommandStr(const std::string &msg)
 void ChatTab::handleHelp(const std::string &msg)
 {
     if (helpWindow)
+    {
         helpWindow->search(msg);
+        helpWindow->requestMoveToTop();
+    }
 }
 
 bool ChatTab::handleCommands(const std::string &type, const std::string &args)
