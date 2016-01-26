@@ -514,7 +514,6 @@ void Viewport::mousePressed(MouseEvent &event)
     if (event.getSource() != this || event.isConsumed())
         return;
 
-    mMouseClicked = true;
     // Check if we are alive and kickin'
     if (!mMap || !localPlayer)
         return;
@@ -522,7 +521,12 @@ void Viewport::mousePressed(MouseEvent &event)
     // Check if we are busy
     // if commented, allow context menu if npc dialog open
     if (PlayerInfo::isTalking())
+    {
+        mMouseClicked = false;
         return;
+    }
+
+    mMouseClicked = true;
 
     mMousePressX = event.getX();
     mMousePressY = event.getY();
@@ -753,9 +757,9 @@ void Viewport::mouseDragged(MouseEvent &event)
         {
             mPlayerFollowMouse = true;
         }
-    }
 
-    walkByMouse(event);
+        walkByMouse(event);
+    }
 }
 
 void Viewport::mouseReleased(MouseEvent &event)
