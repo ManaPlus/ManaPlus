@@ -46,6 +46,10 @@
 #include "gui/windows/npcdialog.h"
 #endif
 
+#ifdef EATHENA_SUPPORT
+#include "input/inputmanager.h"
+#endif
+
 #include "net/inventoryhandler.h"
 #ifdef EATHENA_SUPPORT
 #include "net/npchandler.h"
@@ -872,7 +876,8 @@ void ItemContainer::mouseReleased(MouseEvent &event)
                 if (!item || item->isEquipped() == Equipped_true)
                     return;
                 const int slot = getSlotByXY(event.getX(), event.getY());
-                if (item->getQuantity() > 1)
+                if (item->getQuantity() > 1
+                    && !inputManager.isActionActive(InputAction::STOP_ATTACK))
                 {
                     ItemAmountWindow::showWindow(ItemAmountWindow::CraftAdd,
                         npcHandler->getCurrentNpcDialog(),
