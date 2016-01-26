@@ -77,6 +77,25 @@ class NpcDialog final : public Window,
 
         void postInit() override final;
 
+        enum NpcInputState
+        {
+            NPC_INPUT_NONE = 0,
+            NPC_INPUT_LIST,
+            NPC_INPUT_STRING,
+            NPC_INPUT_INTEGER,
+            NPC_INPUT_ITEM,
+            NPC_INPUT_ITEM_INDEX,
+            NPC_INPUT_ITEM_CRAFT
+        };
+
+        enum NpcActionState
+        {
+            NPC_ACTION_WAIT = 0,
+            NPC_ACTION_NEXT,
+            NPC_ACTION_INPUT,
+            NPC_ACTION_CLOSE
+        };
+
         /**
          * Called when receiving actions from the widgets.
          */
@@ -228,6 +247,9 @@ class NpcDialog final : public Window,
                           const int amount,
                           const int slot);
 
+        NpcInputState getInputState()
+        { return mInputState; }
+
         static void copyToClipboard(const BeingId npcId,
                                     const int x, const int y);
 
@@ -303,24 +325,6 @@ class NpcDialog final : public Window,
         ItemContainer *mItemContainer A_NONNULLPOINTER;
         ScrollArea *mItemScrollArea A_NONNULLPOINTER;
 
-        enum NpcInputState
-        {
-            NPC_INPUT_NONE = 0,
-            NPC_INPUT_LIST,
-            NPC_INPUT_STRING,
-            NPC_INPUT_INTEGER,
-            NPC_INPUT_ITEM,
-            NPC_INPUT_ITEM_INDEX,
-            NPC_INPUT_ITEM_CRAFT
-        };
-
-        enum NpcActionState
-        {
-            NPC_ACTION_WAIT = 0,
-            NPC_ACTION_NEXT,
-            NPC_ACTION_INPUT,
-            NPC_ACTION_CLOSE
-        };
 
         NpcInputState mInputState;
         NpcActionState mActionState;

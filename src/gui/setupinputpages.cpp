@@ -27,6 +27,7 @@
 
 #include "input/pages/basic.h"
 #include "input/pages/chat.h"
+#include "input/pages/craft.h"
 #include "input/pages/emotes.h"
 #include "input/pages/gui.h"
 #include "input/pages/move.h"
@@ -48,6 +49,8 @@ const char *const pages[] =
     // TRANSLATORS: input tab sub tab name
     N_("Windows"),
     // TRANSLATORS: input tab sub tab name
+    N_("Craft"),
+    // TRANSLATORS: input tab sub tab name
     N_("Emotes"),
     // TRANSLATORS: input tab sub tab name
     N_("Outfits"),
@@ -66,6 +69,7 @@ SetupActionData *const setupActionData[] =
     setupActionDataMove,
     setupActionDataShortcuts,
     setupActionDataWindows,
+    setupActionDataCraft,
     setupActionDataEmotes,
     setupActionDataOutfits,
     setupActionDataChat,

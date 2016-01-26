@@ -106,5 +106,6 @@ impHandlerVoid(unprotectItem)
 impHandlerVoid(kick)
 impHandlerVoid(clearDrop)
 impHandlerVoid(testInfo)
+impHandlerVoid(craftKey)
 
 }  // namespace Actions

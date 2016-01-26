@@ -156,8 +156,12 @@ class InventoryWindow final : public Window,
                               const int oldVal,
                               const int newVal) override final;
 
+#ifdef EATHENA_SUPPORT
         void combineItems(const int index1,
                           const int index2);
+
+        void moveItemToCraft(const int craftSlot);
+#endif
 
         static bool isAnyInputFocused();
 

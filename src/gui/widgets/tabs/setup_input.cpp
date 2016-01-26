@@ -29,6 +29,7 @@
 #include "input/inputmanager.h"
 #include "input/keyboardconfig.h"
 
+#include "input/pages/craft.h"
 #include "input/pages/emotes.h"
 #include "input/pages/move.h"
 #include "input/pages/outfits.h"
@@ -380,6 +381,11 @@ void Setup_Input::fixTranslations()
         InputAction::EMOTE_1,
         InputAction::EMOTE_48,
         "Emote Shortcut %d");
+
+    fixTranslation(setupActionDataCraft,
+        InputAction::CRAFT_1,
+        InputAction::CRAFT_9,
+        "Craft shortcut %d");
 
     fixTranslation(setupActionDataOutfits,
         InputAction::OUTFIT_1,

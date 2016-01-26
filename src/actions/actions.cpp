@@ -1674,4 +1674,18 @@ impHandler0(testInfo)
     return false;
 }
 
+impHandler(craftKey)
+{
+#ifdef EATHENA_SUPPORT
+    const int slot = (event.action - InputAction::CRAFT_1);
+    if (slot >= 0 && slot < 9)
+    {
+        if (inventoryWindow)
+            inventoryWindow->moveItemToCraft(slot);
+        return true;
+    }
+#endif
+    return false;
+}
+
 }  // namespace Actions

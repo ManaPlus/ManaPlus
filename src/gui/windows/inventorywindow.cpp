@@ -41,6 +41,7 @@
 
 #include "gui/windows/confirmdialog.h"
 #include "gui/windows/itemamountwindow.h"
+#include "gui/windows/npcdialog.h"
 #include "gui/windows/setupwindow.h"
 #include "gui/windows/tradewindow.h"
 
@@ -58,6 +59,8 @@
 #include "gui/widgets/windowcontainer.h"
 
 #include "listeners/insertcardlistener.h"
+
+#include "net/npchandler.h"
 
 #include "resources/iteminfo.h"
 
@@ -1055,5 +1058,34 @@ void InventoryWindow::combineItems(const int index1,
     insertCardListener.itemIndex = item2->getInvIndex();
     insertCardListener.cardIndex = item1->getInvIndex();
     confirmDlg->addActionListener(&insertCardListener);
+}
+
+void InventoryWindow::moveItemToCraft(const int craftSlot)
+{
+    if (!npcHandler)
+        return;
+
+    Item *const item = mItems->getSelectedItem();
+    if (!item)
+        return;
+
+    NpcDialog *const dialog = npcHandler->getCurrentNpcDialog();
+    if (dialog &&
+        dialog->getInputState() == NpcDialog::NPC_INPUT_ITEM_CRAFT)
+    {
+        if (item->getQuantity() > 1
+            && !inputManager.isActionActive(InputAction::STOP_ATTACK))
+        {
+            ItemAmountWindow::showWindow(ItemAmountWindow::CraftAdd,
+                npcHandler->getCurrentNpcDialog(),
+                item,
+                0,
+                craftSlot);
+        }
+        else
+        {
+            dialog->addCraftItem(item, 1, craftSlot);
+        }
+    }
 }
 #endif

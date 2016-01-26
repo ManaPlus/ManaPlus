@@ -109,6 +109,7 @@ namespace Actions
     decHandler(kick);
     decHandler(clearDrop);
     decHandler(testInfo);
+    decHandler(craftKey);
 }  // namespace Actions
 
 #undef decHandler

@@ -607,6 +607,15 @@ enumStart(InputAction)
     SLIDE,
     SELECT_SKILL_LEVEL,
     SKILL,
+    CRAFT_1,
+    CRAFT_2,
+    CRAFT_3,
+    CRAFT_4,
+    CRAFT_5,
+    CRAFT_6,
+    CRAFT_7,
+    CRAFT_8,
+    CRAFT_9,
     TOTAL
 }
 enumEnd(InputAction);
