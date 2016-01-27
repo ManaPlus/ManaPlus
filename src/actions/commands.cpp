@@ -41,9 +41,10 @@
 #endif
 
 #include "gui/windows/chatwindow.h"
+#include "gui/windows/inventorywindow.h"
+#include "gui/windows/outfitwindow.h"
 #include "gui/windows/skilldialog.h"
 #include "gui/windows/socialwindow.h"
-#include "gui/windows/outfitwindow.h"
 
 #include "gui/widgets/tabs/chat/whispertab.h"
 
@@ -1119,6 +1120,16 @@ impHandler(skill)
             true,
             text);
     }
+    return true;
+}
+
+impHandler(craft)
+{
+    const std::string args = event.args;
+    if (args.empty() || !inventoryWindow)
+        return false;
+
+    inventoryWindow->moveItemToCraft(atoi(args.c_str()));
     return true;
 }
 

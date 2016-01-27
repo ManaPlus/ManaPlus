@@ -5185,6 +5185,12 @@ static const InputActionData inputActionData
         "",
         UseArgs_false,
         Protected_true},
+    {"keyCraft",
+        defaultAction(&Actions::craft),
+        InputCondition::INGAME,
+        "craft",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

@@ -92,6 +92,7 @@ namespace Actions
     decHandler(slide);
     decHandler(selectSkillLevel);
     decHandler(skill);
+    decHandler(craft);
 }  // namespace Actions
 
 #undef decHandler

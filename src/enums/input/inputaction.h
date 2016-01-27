@@ -616,6 +616,7 @@ enumStart(InputAction)
     CRAFT_7,
     CRAFT_8,
     CRAFT_9,
+    CRAFT,
     TOTAL
 }
 enumEnd(InputAction);

@@ -92,4 +92,6 @@ impHandlerVoid(serverConfGet)
 impHandlerVoid(slide)
 impHandlerVoid(selectSkillLevel)
 impHandlerVoid(skill)
+impHandlerVoid(craft)
+
 }  // namespace Actions
