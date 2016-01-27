@@ -5227,6 +5227,12 @@ static const InputActionData inputActionData
         "resetyellowbar|resetmodifiers|resetgamemodifiers",
         UseArgs_false,
         Protected_true},
+    {"keyBarToChat",
+        defaultAction(&Actions::barToChat),
+        InputCondition::INGAME,
+        "bartochat",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

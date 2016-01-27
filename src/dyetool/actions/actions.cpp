@@ -108,5 +108,6 @@ impHandlerVoid(clearDrop)
 impHandlerVoid(testInfo)
 impHandlerVoid(craftKey)
 impHandlerVoid(resetGameModifiers)
+impHandlerVoid(barToChat)
 
 }  // namespace Actions

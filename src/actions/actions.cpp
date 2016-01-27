@@ -1709,4 +1709,14 @@ impHandler0(resetGameModifiers)
     return true;
 }
 
+impHandler(barToChat)
+{
+    if (chatWindow)
+    {
+        chatWindow->addInputText(event.args);
+        return true;
+    }
+    return false;
+}
+
 }  // namespace Actions

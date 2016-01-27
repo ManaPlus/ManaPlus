@@ -1264,11 +1264,6 @@ void PopupMenu::handleLink(const std::string &link,
             }
         }
     }
-    else if (link == "bar to chat" && !mNick.empty())
-    {
-        if (chatWindow)
-            chatWindow->addInputText(mNick);
-    }
     else if (link == "items" && being)
     {
         if (being == localPlayer)
@@ -1964,7 +1959,7 @@ void PopupMenu::showPopup(const int x, const int y, const ProgressBar *const b)
     mBrowserBox->addRow("##3---");
     // TRANSLATORS: popup menu item
     // TRANSLATORS: copy status to chat
-    mBrowserBox->addRow("bar to chat", _("Copy to chat"));
+    mBrowserBox->addRow("/bartochat 'NAME'", _("Copy to chat"));
     // TRANSLATORS: popup menu item
     // TRANSLATORS: close menu
     mBrowserBox->addRow("cancel", _("Cancel"));

@@ -623,6 +623,7 @@ enumStart(InputAction)
     REMOVE_PICKUP,
     IGNORE_PICKUP,
     RESET_MODIFIERS,
+    BAR_TO_CHAT,
     TOTAL
 }
 enumEnd(InputAction);
