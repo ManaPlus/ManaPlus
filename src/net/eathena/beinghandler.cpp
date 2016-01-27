@@ -52,7 +52,15 @@ void BeingHandler::undress(Being *const being) const
         return;
     being->setSprite(SPRITE_WEAPON, 0);
     being->setSprite(SPRITE_HEAD_BOTTOM, 0);
+    being->setSprite(SPRITE_HEAD_TOP, 0);
+    being->setSprite(SPRITE_HEAD_MID, 0);
     being->setSprite(SPRITE_CLOTHES_COLOR, 0);
+    being->setSprite(SPRITE_SHIELD, 0);
+    being->setSprite(SPRITE_FLOOR, 0);
+    being->setSprite(SPRITE_ROBE, 0);
+    being->setSprite(SPRITE_EVOL2, 0);
+    being->setSprite(SPRITE_EVOL3, 0);
+    being->setSprite(SPRITE_EVOL4, 0);
     being->setSprite(SPRITE_HAIR, 0);
     being->setSprite(SPRITE_SHOES, 0);
 //    being->setSprite(SPRITE_BODY, 0, "", true);
