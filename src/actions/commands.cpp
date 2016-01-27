@@ -601,7 +601,7 @@ impHandler(addPriorityAttack)
 
 impHandler(addAttack)
 {
-    if (!actorManager || actorManager->isInAttackList(event.args))
+    if (!actorManager)
         return false;
 
     actorManager->removeAttackMob(event.args);
@@ -614,16 +614,27 @@ impHandler(addAttack)
 
 impHandler(removeAttack)
 {
-    if (!actorManager ||
-        event.args.empty() ||
-        (!actorManager->isInAttackList(event.args) &&
-        !actorManager->isInPriorityAttackList(event.args) &&
-        !actorManager->isInIgnoreAttackList(event.args)))
-    {
+    if (!actorManager)
         return false;
+
+    if (event.args.empty())
+    {
+        if (actorManager->isInAttackList(event.args))
+        {
+            actorManager->removeAttackMob(event.args);
+            actorManager->addIgnoreAttackMob(event.args);
+        }
+        else
+        {
+            actorManager->removeAttackMob(event.args);
+            actorManager->addAttackMob(event.args);
+        }
+    }
+    else
+    {
+        actorManager->removeAttackMob(event.args);
     }
 
-    actorManager->removeAttackMob(event.args);
 
     if (socialWindow)
         socialWindow->updateAttackFilter();
@@ -632,7 +643,7 @@ impHandler(removeAttack)
 
 impHandler(addIgnoreAttack)
 {
-    if (!actorManager || actorManager->isInIgnoreAttackList(event.args))
+    if (!actorManager)
         return false;
 
     actorManager->removeAttackMob(event.args);

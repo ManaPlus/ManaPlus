@@ -1264,31 +1264,6 @@ void PopupMenu::handleLink(const std::string &link,
             }
         }
     }
-    else if (link == "attack remove")
-    {
-        if (actorManager)
-        {
-            if (mNick.empty())
-            {
-                if (actorManager->isInAttackList(mNick))
-                {
-                    actorManager->removeAttackMob(mNick);
-                    actorManager->addIgnoreAttackMob(mNick);
-                }
-                else
-                {
-                    actorManager->removeAttackMob(mNick);
-                    actorManager->addAttackMob(mNick);
-                }
-            }
-            else
-            {
-                actorManager->removeAttackMob(mNick);
-            }
-            if (socialWindow)
-                socialWindow->updateAttackFilter();
-        }
-    }
     else if (link == "reset yellow")
     {
         GameModifiers::resetModifiers();
@@ -2070,7 +2045,7 @@ void PopupMenu::showAttackMonsterPopup(const int x, const int y,
 
     // TRANSLATORS: popup menu item
     // TRANSLATORS: remove attack target
-    mBrowserBox->addRow("attack remove", _("Remove"));
+    mBrowserBox->addRow("/removeattack 'NAME'", _("Remove"));
     mBrowserBox->addRow("##3---");
     // TRANSLATORS: popup menu item
     // TRANSLATORS: close menu
