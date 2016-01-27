@@ -84,13 +84,10 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     mPrevHairColorButton(nullptr),
     mHairColorLabel(nullptr),
     mHairColorNameLabel(nullptr),
-    // TRANSLATORS: char create dialog button
-    mNextHairStyleButton(new Button(this, _(">"), "nextstyle", this)),
-    // TRANSLATORS: char create dialog button
-    mPrevHairStyleButton(new Button(this, _("<"), "prevstyle", this)),
-    // TRANSLATORS: char create dialog label
-    mHairStyleLabel(new Label(this, _("Hair style:"))),
-    mHairStyleNameLabel(new Label(this, "")),
+    mNextHairStyleButton(nullptr),
+    mPrevHairStyleButton(nullptr),
+    mHairStyleLabel(nullptr),
+    mHairStyleNameLabel(nullptr),
     mNextRaceButton(nullptr),
     mPrevRaceButton(nullptr),
     mRaceLabel(nullptr),
@@ -198,6 +195,17 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
         // TRANSLATORS: char create dialog label
         mHairColorLabel = new Label(this, _("Hair color:"));
         mHairColorNameLabel = new Label(this, "");
+    }
+
+    if (maxHairStyle > minHairStyle)
+    {
+        // TRANSLATORS: char create dialog button
+        mNextHairStyleButton = new Button(this, _(">"), "nextstyle", this);
+        // TRANSLATORS: char create dialog button
+        mPrevHairStyleButton = new Button(this, _("<"), "prevstyle", this);
+        // TRANSLATORS: char create dialog label
+        mHairStyleLabel = new Label(this, _("Hair style:"));
+        mHairStyleNameLabel = new Label(this, "");
     }
 
     if (serverFeatures->haveRaceSelection() && mMinRace < mMaxRace)
@@ -315,15 +323,18 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
         mHairColorNameLabel->setPosition(nameX, y);
         y += 24;
     }
-    mPrevHairStyleButton->setPosition(leftX, y);
-    mNextHairStyleButton->setPosition(rightX, y);
-    y += 5;
-    mHairStyleLabel->setPosition(labelX, y);
-    mHairStyleNameLabel->setPosition(nameX, y);
+    if (maxHairStyle > minHairStyle)
+    {
+        mPrevHairStyleButton->setPosition(leftX, y);
+        mNextHairStyleButton->setPosition(rightX, y);
+        y += 5;
+        mHairStyleLabel->setPosition(labelX, y);
+        mHairStyleNameLabel->setPosition(nameX, y);
+        y += 24;
+    }
 
     if (serverFeatures->haveLookSelection() && mMinLook < mMaxLook)
     {
-        y += 24;
         if (mPrevLookButton)
             mPrevLookButton->setPosition(leftX, y);
         if (mNextLookButton)
@@ -333,10 +344,10 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
             mLookLabel->setPosition(labelX, y);
         if (mLookNameLabel)
             mLookNameLabel->setPosition(nameX, y);  // 93
+        y += 24;
     }
     if (serverFeatures->haveRaceSelection() && mMinRace < mMaxRace)
     {
-        y += 24;
         if (mPrevRaceButton)
             mPrevRaceButton->setPosition(leftX, y);
         if (mNextRaceButton)
@@ -364,10 +375,13 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
         add(mHairColorNameLabel);
     }
 
-    add(mNextHairStyleButton);
-    add(mPrevHairStyleButton);
-    add(mHairStyleLabel);
-    add(mHairStyleNameLabel);
+    if (maxHairStyle > minHairStyle)
+    {
+        add(mNextHairStyleButton);
+        add(mPrevHairStyleButton);
+        add(mHairStyleLabel);
+        add(mHairStyleNameLabel);
+    }
     add(mActionButton);
     add(mRotateButton);
 
@@ -696,8 +710,11 @@ void CharCreateDialog::updateHair()
         mHairStyle = minHairStyle;
     }
     const ItemInfo &item = ItemDB::get(-mHairStyle);
-    mHairStyleNameLabel->setCaption(item.getName());
-    mHairStyleNameLabel->resizeTo(150, 150);
+    if (mHairStyleNameLabel)
+    {
+        mHairStyleNameLabel->setCaption(item.getName());
+        mHairStyleNameLabel->resizeTo(150, 150);
+    }
 
     if (ColorDB::getHairSize())
         mHairColor %= ColorDB::getHairSize();
