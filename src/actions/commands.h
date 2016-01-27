@@ -94,6 +94,9 @@ namespace Actions
     decHandler(skill);
     decHandler(craft);
     decHandler(npcClipboard);
+    decHandler(addPickup);
+    decHandler(removePickup);
+    decHandler(ignorePickup);
 }  // namespace Actions
 
 #undef decHandler

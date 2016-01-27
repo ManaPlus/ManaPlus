@@ -1154,4 +1154,40 @@ impHandler(npcClipboard)
     return false;
 }
 
+impHandler(addPickup)
+{
+    if (actorManager)
+    {
+        actorManager->addPickupItem(event.args);
+        if (socialWindow)
+            socialWindow->updatePickupFilter();
+        return true;
+    }
+    return false;
+}
+
+impHandler(removePickup)
+{
+    if (actorManager)
+    {
+        actorManager->removePickupItem(event.args);
+        if (socialWindow)
+            socialWindow->updatePickupFilter();
+        return true;
+    }
+    return false;
+}
+
+impHandler(ignorePickup)
+{
+    if (actorManager)
+    {
+        actorManager->addIgnorePickupItem(event.args);
+        if (socialWindow)
+            socialWindow->updatePickupFilter();
+        return true;
+    }
+    return false;
+}
+
 }  // namespace Actions

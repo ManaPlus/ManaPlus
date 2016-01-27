@@ -619,6 +619,9 @@ enumStart(InputAction)
     CRAFT,
     CHAT_CLIPBOARD,
     NPC_CLIPBOARD,
+    ADD_PICKUP,
+    REMOVE_PICKUP,
+    IGNORE_PICKUP,
     TOTAL
 }
 enumEnd(InputAction);

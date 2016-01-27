@@ -93,6 +93,9 @@ impHandlerVoid(slide)
 impHandlerVoid(selectSkillLevel)
 impHandlerVoid(skill)
 impHandlerVoid(craft)
-impHandlerVoid(npcClipboard);
+impHandlerVoid(npcClipboard)
+impHandlerVoid(addPickup)
+impHandlerVoid(removePickup)
+impHandlerVoid(ignorePickup)
 
 }  // namespace Actions
