@@ -5221,6 +5221,12 @@ static const InputActionData inputActionData
         "ignorepickup|pickupignore",
         UseArgs_true,
         Protected_true},
+    {"keyResetModifiers",
+        defaultAction(&Actions::resetGameModifiers),
+        InputCondition::INGAME,
+        "resetyellowbar|resetmodifiers|resetgamemodifiers",
+        UseArgs_false,
+        Protected_true},
 };
 
 #undef defaultAction

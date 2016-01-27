@@ -1703,4 +1703,10 @@ impHandler(craftKey)
     return false;
 }
 
+impHandler0(resetGameModifiers)
+{
+    GameModifiers::resetModifiers();
+    return true;
+}
+
 }  // namespace Actions

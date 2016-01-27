@@ -622,6 +622,7 @@ enumStart(InputAction)
     ADD_PICKUP,
     REMOVE_PICKUP,
     IGNORE_PICKUP,
+    RESET_MODIFIERS,
     TOTAL
 }
 enumEnd(InputAction);

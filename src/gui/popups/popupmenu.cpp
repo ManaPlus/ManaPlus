@@ -1264,10 +1264,6 @@ void PopupMenu::handleLink(const std::string &link,
             }
         }
     }
-    else if (link == "reset yellow")
-    {
-        GameModifiers::resetModifiers();
-    }
     else if (link == "bar to chat" && !mNick.empty())
     {
         if (chatWindow)
@@ -1964,7 +1960,7 @@ void PopupMenu::showPopup(const int x, const int y, const ProgressBar *const b)
     // TRANSLATORS: popup menu item
     mBrowserBox->addRow("/yellowbar", _("Open yellow bar settings"));
     // TRANSLATORS: popup menu item
-    mBrowserBox->addRow("reset yellow", _("Reset yellow bar"));
+    mBrowserBox->addRow("/resetmodifiers", _("Reset yellow bar"));
     mBrowserBox->addRow("##3---");
     // TRANSLATORS: popup menu item
     // TRANSLATORS: copy status to chat

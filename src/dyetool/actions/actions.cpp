@@ -107,5 +107,6 @@ impHandlerVoid(kick)
 impHandlerVoid(clearDrop)
 impHandlerVoid(testInfo)
 impHandlerVoid(craftKey)
+impHandlerVoid(resetGameModifiers)
 
 }  // namespace Actions

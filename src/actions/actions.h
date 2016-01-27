@@ -110,6 +110,7 @@ namespace Actions
     decHandler(clearDrop);
     decHandler(testInfo);
     decHandler(craftKey);
+    decHandler(resetGameModifiers);
 }  // namespace Actions
 
 #undef decHandler
