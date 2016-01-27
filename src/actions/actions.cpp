@@ -1155,9 +1155,24 @@ impHandler(undress)
     if (!actorManager || !localPlayer)
         return false;
 
+    const std::string args = event.args;
+
     Being *target = nullptr;
-    if (!event.args.empty())
-        target = actorManager->findNearestByName(event.args);
+    if (!args.empty())
+    {
+        if (args[0] == ':')
+        {
+            target = actorManager->findBeing(fromInt(atoi(
+                args.substr(1).c_str()), BeingId));
+            if (target && target->getType() == ActorType::Monster)
+                target = nullptr;
+        }
+        else
+        {
+            target = actorManager->findNearestByName(event.args);
+        }
+    }
+
     if (!target)
         target = localPlayer->getTarget();
     if (target && beingHandler)

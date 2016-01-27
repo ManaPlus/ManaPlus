@@ -1078,10 +1078,6 @@ void PopupMenu::handleLink(const std::string &link,
     {
         CREATEWIDGET(TextCommandEditor, mSpell);
     }
-    else if (link == "undress" && being)
-    {
-        beingHandler->undress(being);
-    }
     else if (link == "addcomment" && !mNick.empty())
     {
         TextDialog *const dialog = CREATEWIDGETR(TextDialog,
@@ -2593,7 +2589,7 @@ void PopupMenu::addPlayerMisc()
     mBrowserBox->addRow("items", _("Show Items"));
     // TRANSLATORS: popup menu item
     // TRANSLATORS: undress player
-    mBrowserBox->addRow("undress", _("Undress"));
+    mBrowserBox->addRow("/undress :'BEINGID'", _("Undress"));
     // TRANSLATORS: popup menu item
     // TRANSLATORS: add comment to player
     mBrowserBox->addRow("addcomment", _("Add comment"));
