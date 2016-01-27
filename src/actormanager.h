@@ -347,6 +347,8 @@ class ActorManager final: public ConfigListener
 
         bool checkForPickup(const FloorItem *const item) const A_WARN_UNUSED;
 
+        bool checkDefaultPickup() const A_WARN_UNUSED;
+
         void updateEffects(const std::map<BeingTypeId, int> &addEffects,
                            const std::set<BeingTypeId> &removeEffects) const;
 

@@ -1158,6 +1158,7 @@ impHandler(addPickup)
 {
     if (actorManager)
     {
+        actorManager->removePickupItem(event.args);
         actorManager->addPickupItem(event.args);
         if (socialWindow)
             socialWindow->updatePickupFilter();
@@ -1170,7 +1171,23 @@ impHandler(removePickup)
 {
     if (actorManager)
     {
-        actorManager->removePickupItem(event.args);
+        if (event.args.empty())
+        {   // default pickup manipulation
+            if (actorManager->checkDefaultPickup())
+            {
+                actorManager->removePickupItem(event.args);
+                actorManager->addIgnorePickupItem(event.args);
+            }
+            else
+            {
+                actorManager->removePickupItem(event.args);
+                actorManager->addPickupItem(event.args);
+            }
+        }
+        else
+        {   // any other pickups
+            actorManager->removePickupItem(event.args);
+        }
         if (socialWindow)
             socialWindow->updatePickupFilter();
         return true;
@@ -1182,6 +1199,7 @@ impHandler(ignorePickup)
 {
     if (actorManager)
     {
+        actorManager->removePickupItem(event.args);
         actorManager->addIgnorePickupItem(event.args);
         if (socialWindow)
             socialWindow->updatePickupFilter();

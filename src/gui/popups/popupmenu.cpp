@@ -1289,31 +1289,6 @@ void PopupMenu::handleLink(const std::string &link,
                 socialWindow->updateAttackFilter();
         }
     }
-    else if (link == "pickup remove")
-    {
-        if (actorManager)
-        {
-            if (mNick.empty())
-            {
-                if (actorManager->isInPickupList(mNick))
-                {
-                    actorManager->removePickupItem(mNick);
-                    actorManager->addIgnorePickupItem(mNick);
-                }
-                else
-                {
-                    actorManager->removePickupItem(mNick);
-                    actorManager->addPickupItem(mNick);
-                }
-            }
-            else
-            {
-                actorManager->removePickupItem(mNick);
-            }
-            if (socialWindow)
-                socialWindow->updatePickupFilter();
-        }
-    }
     else if (link == "reset yellow")
     {
         GameModifiers::resetModifiers();
@@ -2129,7 +2104,7 @@ void PopupMenu::showPickupItemPopup(const int x, const int y,
 
     // TRANSLATORS: popup menu item
     // TRANSLATORS: remove item from pickup filter
-    mBrowserBox->addRow("pickup remove", _("Remove"));
+    mBrowserBox->addRow("/removepickup 'NAME'", _("Remove"));
     mBrowserBox->addRow("##3---");
     // TRANSLATORS: popup menu item
     // TRANSLATORS: close menu

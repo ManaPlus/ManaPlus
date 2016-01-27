@@ -1879,6 +1879,11 @@ bool ActorManager::checkForPickup(const FloorItem *const item) const
     return false;
 }
 
+bool ActorManager::checkDefaultPickup() const
+{
+    return mPickupItemsSet.find("") != mPickupItemsSet.end();
+}
+
 void ActorManager::updateEffects(const std::map<BeingTypeId, int> &addEffects,
                                  const std::set<BeingTypeId> &removeEffects)
                                  const
