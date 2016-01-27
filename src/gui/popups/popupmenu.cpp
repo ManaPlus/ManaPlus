@@ -1134,33 +1134,6 @@ void PopupMenu::handleLink(const std::string &link,
         inputManager.executeChatCommand(InputAction::ENABLE_AWAY,
             std::string(), mTab);
     }
-    else if (link == "remove pickup" && !mNick.empty())
-    {
-        if (actorManager)
-        {
-            actorManager->removePickupItem(mNick);
-            if (socialWindow)
-                socialWindow->updatePickupFilter();
-        }
-    }
-    else if (link == "add pickup" && !mNick.empty())
-    {
-        if (actorManager)
-        {
-            actorManager->addPickupItem(mNick);
-            if (socialWindow)
-                socialWindow->updatePickupFilter();
-        }
-    }
-    else if (link == "add pickup ignore" && !mNick.empty())
-    {
-        if (actorManager)
-        {
-            actorManager->addIgnorePickupItem(mNick);
-            if (socialWindow)
-                socialWindow->updatePickupFilter();
-        }
-    }
     else if (link == "attack moveup")
     {
         if (actorManager)
@@ -2591,16 +2564,18 @@ void PopupMenu::addPickupFilter(const std::string &name)
     if (actorManager->isInPickupList(name)
         || actorManager->isInIgnorePickupList(name))
     {
-        mBrowserBox->addRow("remove pickup",
+        mBrowserBox->addRow("/removepickup 'NAME'",
             // TRANSLATORS: popup menu item
             // TRANSLATORS: remove item from pickup list
             _("Remove from pickup list"));
     }
     else
     {
-        // TRANSLATORS: popup menu item
-        mBrowserBox->addRow("add pickup", _("Add to pickup list"));
-        mBrowserBox->addRow("add pickup ignore",
+        mBrowserBox->addRow("/addpickup 'NAME'",
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: popup menu item
+            _("Add to pickup list"));
+        mBrowserBox->addRow("/ignorepickup 'NAME'",
             // TRANSLATORS: popup menu item
             // TRANSLATORS: add item to pickup list
             _("Add to ignore list"));
