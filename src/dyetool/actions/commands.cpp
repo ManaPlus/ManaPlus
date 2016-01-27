@@ -93,5 +93,6 @@ impHandlerVoid(slide)
 impHandlerVoid(selectSkillLevel)
 impHandlerVoid(skill)
 impHandlerVoid(craft)
+impHandlerVoid(npcClipboard);
 
 }  // namespace Actions

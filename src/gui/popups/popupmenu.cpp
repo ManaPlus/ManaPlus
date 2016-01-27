@@ -1134,10 +1134,6 @@ void PopupMenu::handleLink(const std::string &link,
         inputManager.executeChatCommand(InputAction::ENABLE_AWAY,
             std::string(), mTab);
     }
-    else if (link == "npc clipboard" && mBeingId != BeingId_zero)
-    {
-        NpcDialog::copyToClipboard(mBeingId, mX, mY);
-    }
     else if (link == "remove pickup" && !mNick.empty())
     {
         if (actorManager)
@@ -2275,7 +2271,7 @@ void PopupMenu::showNpcDialogPopup(const BeingId npcId,
     mBrowserBox->clearRows();
     // TRANSLATORS: popup menu item
     // TRANSLATORS: copy npc text to clipboard
-    mBrowserBox->addRow("npc clipboard", _("Copy to clipboard"));
+    mBrowserBox->addRow("/npcclipboard 'X' 'Y'", _("Copy to clipboard"));
     mBrowserBox->addRow("##3---");
     // TRANSLATORS: popup menu item
     // TRANSLATORS: close menu

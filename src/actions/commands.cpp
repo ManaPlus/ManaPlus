@@ -38,6 +38,8 @@
 
 #ifdef EATHENA_SUPPORT
 #include "gui/shortcut/emoteshortcut.h"
+
+#include "gui/windows/npcdialog.h"
 #endif
 
 #include "gui/windows/chatwindow.h"
@@ -57,6 +59,7 @@
 #include "net/homunculushandler.h"
 #include "net/mailhandler.h"
 #include "net/net.h"
+#include "net/npchandler.h"
 #endif
 #include "net/partyhandler.h"
 #include "net/serverfeatures.h"
@@ -1131,6 +1134,24 @@ impHandler(craft)
 
     inventoryWindow->moveItemToCraft(atoi(args.c_str()));
     return true;
+}
+
+impHandler(npcClipboard)
+{
+    int x = 0;
+    int y = 0;
+
+    if (npcHandler)
+    {
+        NpcDialog *const dialog = npcHandler->getCurrentNpcDialog();
+
+        if (dialog && parse2Int(event.args, x, y))
+        {
+            dialog->copyToClipboard(x, y);
+            return true;
+        }
+    }
+    return false;
 }
 
 }  // namespace Actions

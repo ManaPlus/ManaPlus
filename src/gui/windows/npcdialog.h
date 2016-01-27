@@ -250,8 +250,7 @@ class NpcDialog final : public Window,
         NpcInputState getInputState()
         { return mInputState; }
 
-        static void copyToClipboard(const BeingId npcId,
-                                    const int x, const int y);
+        void copyToClipboard(const int x, const int y) const;
 
         static NpcDialogs mNpcDialogs;
 

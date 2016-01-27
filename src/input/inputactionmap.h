@@ -5197,6 +5197,12 @@ static const InputActionData inputActionData
         "chatclipboard",
         UseArgs_true,
         Protected_true},
+    {"keyNpcClipboard",
+        defaultAction(&Actions::npcClipboard),
+        InputCondition::INGAME,
+        "npcclipboard",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

@@ -1241,19 +1241,10 @@ void NpcDialog::mousePressed(MouseEvent &event)
     }
 }
 
-void NpcDialog::copyToClipboard(const BeingId npcId,
-                                const int x, const int y)
+void NpcDialog::copyToClipboard(const int x, const int y) const
 {
-    NpcDialogs::iterator it = mNpcDialogs.find(npcId);
-    if (it != mNpcDialogs.end())
-    {
-        const BrowserBox *const text = (*it).second->mTextBox;
-        if (!text)
-            return;
-
-        std::string str = text->getTextAtPos(x, y);
-        sendBuffer(str);
-    }
+    std::string str = mTextBox->getTextAtPos(x, y);
+    sendBuffer(str);
 }
 
 void NpcDialog::setSkin(const std::string &skin)

@@ -93,6 +93,7 @@ namespace Actions
     decHandler(selectSkillLevel);
     decHandler(skill);
     decHandler(craft);
+    decHandler(npcClipboard);
 }  // namespace Actions
 
 #undef decHandler
