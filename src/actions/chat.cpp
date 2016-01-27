@@ -604,4 +604,17 @@ impHandler(hat)
     return true;
 }
 
+impHandler(chatClipboard)
+{
+    int x = 0;
+    int y = 0;
+
+    if (chatWindow && parse2Int(event.args, x, y))
+    {
+        chatWindow->copyToClipboard(x, y);
+        return true;
+    }
+    return false;
+}
+
 }  // namespace Actions

@@ -617,6 +617,7 @@ enumStart(InputAction)
     CRAFT_8,
     CRAFT_9,
     CRAFT,
+    CHAT_CLIPBOARD,
     TOTAL
 }
 enumEnd(InputAction);

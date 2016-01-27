@@ -5191,6 +5191,12 @@ static const InputActionData inputActionData
         "craft",
         UseArgs_true,
         Protected_true},
+    {"keyChatClipboard",
+        defaultAction(&Actions::chatClipboard),
+        InputCondition::INGAME,
+        "chatclipboard",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

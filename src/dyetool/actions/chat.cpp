@@ -59,5 +59,6 @@ impHandlerVoid(chatGmTab)
 impHandlerVoid(chatPartyTab)
 impHandlerVoid(chatGuildTab)
 impHandlerVoid(hat)
+impHandlerVoid(chatClipboard)
 
 }  // namespace Actions

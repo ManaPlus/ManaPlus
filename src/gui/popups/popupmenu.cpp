@@ -810,7 +810,7 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
     }
     // TRANSLATORS: popup menu item
     // TRANSLATORS: copy selected text to clipboard
-    mBrowserBox->addRow("chat clipboard", _("Copy to clipboard"));
+    mBrowserBox->addRow("/chatclipboard 'X' 'Y'", _("Copy to clipboard"));
     mBrowserBox->addRow("##3---");
 
     if (type == ChatTabType::WHISPER)
@@ -1133,11 +1133,6 @@ void PopupMenu::handleLink(const std::string &link,
     {
         inputManager.executeChatCommand(InputAction::ENABLE_AWAY,
             std::string(), mTab);
-    }
-    else if (link == "chat clipboard" && mTab)
-    {
-        if (chatWindow)
-            chatWindow->copyToClipboard(mX, mY);
     }
     else if (link == "npc clipboard" && mBeingId != BeingId_zero)
     {
