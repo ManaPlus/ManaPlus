@@ -80,17 +80,10 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     mNameField(new TextField(this, "")),
     // TRANSLATORS: char create dialog label
     mNameLabel(new Label(this, _("Name:"))),
-    // TRANSLATORS: This is a narrow symbol used to denote 'next'.
-    // You may change this symbol if your language uses another.
-    // TRANSLATORS: char create dialog button
-    mNextHairColorButton(new Button(this, _(">"), "nextcolor", this)),
-    // TRANSLATORS: This is a narrow symbol used to denote 'previous'.
-    // You may change this symbol if your language uses another.
-    // TRANSLATORS: char create dialog button
-    mPrevHairColorButton(new Button(this, _("<"), "prevcolor", this)),
-    // TRANSLATORS: char create dialog label
-    mHairColorLabel(new Label(this, _("Hair color:"))),
-    mHairColorNameLabel(new Label(this, "")),
+    mNextHairColorButton(nullptr),
+    mPrevHairColorButton(nullptr),
+    mHairColorLabel(nullptr),
+    mHairColorNameLabel(nullptr),
     // TRANSLATORS: char create dialog button
     mNextHairStyleButton(new Button(this, _(">"), "nextstyle", this)),
     // TRANSLATORS: char create dialog button
@@ -192,6 +185,21 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
 
     mNameField->setMaximum(24);
 
+    if (maxHairColor > minHairColor)
+    {
+        // TRANSLATORS: This is a narrow symbol used to denote 'next'.
+        // You may change this symbol if your language uses another.
+        // TRANSLATORS: char create dialog button
+        mNextHairColorButton = new Button(this, _(">"), "nextcolor", this);
+        // TRANSLATORS: This is a narrow symbol used to denote 'previous'.
+        // You may change this symbol if your language uses another.
+        // TRANSLATORS: char create dialog button
+        mPrevHairColorButton = new Button(this, _("<"), "prevcolor", this);
+        // TRANSLATORS: char create dialog label
+        mHairColorLabel = new Label(this, _("Hair color:"));
+        mHairColorNameLabel = new Label(this, "");
+    }
+
     if (serverFeatures->haveRaceSelection() && mMinRace < mMaxRace)
     {
         // TRANSLATORS: char create dialog button
@@ -287,15 +295,26 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     const int leftX = 120 + mPadding;
     const int rightX = 300 + mPadding;
     const int labelX = mPadding;
-    const int nameX = leftX + mPrevHairColorButton->getWidth() + labelPadding;
+    int nameX = leftX + labelPadding;
     int y = 30;
+    if (mPrevHairColorButton)
+        nameX += mPrevHairColorButton->getWidth();
+    else if (mPrevHairStyleButton)
+        nameX += mPrevHairStyleButton->getWidth();
+    else if (mPrevLookButton)
+        nameX += mPrevLookButton->getWidth();
+    else if (mPrevRaceButton)
+        nameX += mPrevRaceButton->getWidth();
 
-    mPrevHairColorButton->setPosition(leftX, y);
-    mNextHairColorButton->setPosition(rightX, y);
-    y += 5;
-    mHairColorLabel->setPosition(labelX, y);
-    mHairColorNameLabel->setPosition(nameX, y);
-    y += 24;
+    if (maxHairColor > minHairColor)
+    {
+        mPrevHairColorButton->setPosition(leftX, y);
+        mNextHairColorButton->setPosition(rightX, y);
+        y += 5;
+        mHairColorLabel->setPosition(labelX, y);
+        mHairColorNameLabel->setPosition(nameX, y);
+        y += 24;
+    }
     mPrevHairStyleButton->setPosition(leftX, y);
     mNextHairStyleButton->setPosition(rightX, y);
     y += 5;
@@ -336,10 +355,15 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     add(mPlayerBox);
     add(mNameField);
     add(mNameLabel);
-    add(mNextHairColorButton);
-    add(mPrevHairColorButton);
-    add(mHairColorLabel);
-    add(mHairColorNameLabel);
+
+    if (maxHairColor > minHairColor)
+    {
+        add(mNextHairColorButton);
+        add(mPrevHairColorButton);
+        add(mHairColorLabel);
+        add(mHairColorNameLabel);
+    }
+
     add(mNextHairStyleButton);
     add(mPrevHairStyleButton);
     add(mHairStyleLabel);
@@ -686,9 +710,12 @@ void CharCreateDialog::updateHair()
     {
         mHairColor = minHairColor;
     }
-    mHairColorNameLabel->setCaption(ColorDB::getHairColorName(
-        fromInt(mHairColor, ItemColor)));
-    mHairColorNameLabel->resizeTo(150, 150);
+    if (mHairColorNameLabel)
+    {
+        mHairColorNameLabel->setCaption(ColorDB::getHairColorName(
+            fromInt(mHairColor, ItemColor)));
+        mHairColorNameLabel->resizeTo(150, 150);
+    }
 
     mPlayer->setSprite(charServerHandler->hairSprite(),
         mHairStyle * -1,
