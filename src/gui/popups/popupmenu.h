@@ -158,6 +158,10 @@ class PopupMenu final : public Popup, public LinkHandler
 
         void showSkillPopup(const SkillInfo *const info);
 
+#ifdef EATHENA_SUPPORT
+        void showCraftPopup();
+#endif
+
         /**
          * Handles link action.
          */

@@ -72,6 +72,7 @@
 #ifdef EATHENA_SUPPORT
 #include "net/homunculushandler.h"
 #include "net/mercenaryhandler.h"
+#include "net/npchandler.h"
 #endif
 #include "net/pethandler.h"
 #include "net/serverfeatures.h"
@@ -1473,6 +1474,11 @@ void PopupMenu::handleLink(const std::string &link,
     {
         homunculusHandler->fire();
     }
+    else if (link == "craftmenu")
+    {
+        showCraftPopup();
+        return;
+    }
 #endif
     else if (link == "pet feed")
     {
@@ -1733,6 +1739,20 @@ void PopupMenu::showPopup(Window *const parent,
                 }
                 mBrowserBox->addRow("##3---");
             }
+#ifdef EATHENA_SUPPORT
+            if (npcHandler)
+            {
+                NpcDialog *const dialog = npcHandler->getCurrentNpcDialog();
+                if (dialog &&
+                    dialog->getInputState() == NpcDialog::NPC_INPUT_ITEM_CRAFT)
+                {
+                    mBrowserBox->addRow("craftmenu",
+                        // TRANSLATORS: popup menu item
+                        // TRANSLATORS: sub menu for craft
+                        _("Move to craft..."));
+                }
+            }
+#endif
             addUseDrop(item, isProtected);
             break;
 
@@ -2786,6 +2806,28 @@ void PopupMenu::showGMPopup()
 
     showPopup(getX(), getY());
 }
+
+#ifdef EATHENA_SUPPORT
+void PopupMenu::showCraftPopup()
+{
+    mBrowserBox->clearRows();
+
+    for (int f = 0; f < 9; f ++)
+    {
+        const std::string cmd = strprintf("/craft %d", f);
+        mBrowserBox->addRow(cmd,
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: move current item to craft slot
+            strprintf(_("Move to craft %d"), f + 1).c_str());
+    }
+
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: close menu
+    mBrowserBox->addRow("cancel", _("Cancel"));
+
+    showPopup(mX, mY);
+}
+#endif
 
 void PopupMenu::moveUp()
 {
