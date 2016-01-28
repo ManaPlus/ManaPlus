@@ -41,14 +41,24 @@ namespace EAthena
 
 void MailRecv::processMailOpen(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
     const int flag = msg.readInt32("flag");
     switch (flag)
     {
         case 0:  // open window
+            if (mailWindow)
+            {
+                if (!mailWindow->isWindowVisible())
+                    mailWindow->setVisible(Visible_true);
+                mailWindow->requestMoveToTop();
+            }
             break;
 
         case 1:  // close window
+            if (mailWindow)
+            {
+                if (mailWindow->isWindowVisible())
+                    mailWindow->setVisible(Visible_false);
+            }
             break;
 
         default:
