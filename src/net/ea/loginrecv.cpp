@@ -138,7 +138,7 @@ void LoginRecv::processLoginError(Net::MessageIn &msg)
             break;
         case 5:
             // TRANSLATORS: error message
-            errorMessage = _("Client too old.");
+            errorMessage = _("Client too old or wrong server type.");
             break;
         case 6:
             // TRANSLATORS: error message
