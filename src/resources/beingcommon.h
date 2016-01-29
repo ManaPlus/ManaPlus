@@ -21,6 +21,7 @@
 #ifndef RESOURCES_BEINGCOMMON_H
 #define RESOURCES_BEINGCOMMON_H
 
+#include "utils/files.h"
 #include "utils/xml.h"
 
 #include "utils/stringvector.h"

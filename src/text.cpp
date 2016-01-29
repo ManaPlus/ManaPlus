@@ -178,11 +178,6 @@ void Text::draw(Graphics *const graphics, const int xOff, const int yOff)
     BLOCK_END("Text::draw")
 }
 
-//int Text::getWidth()
-//{
-//    return mTextChunk.img->getWidth();
-//}
-
 FlashText::FlashText(const std::string &text,
                      const int x, const int y,
                      const Graphics::Alignment alignment,

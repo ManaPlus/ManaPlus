@@ -22,8 +22,6 @@
 
 #include "configuration.h"
 
-#include "resources/beingcommon.h"
-
 #include "utils/files.h"
 #include "utils/xmlutils.h"
 

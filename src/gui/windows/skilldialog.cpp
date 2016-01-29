@@ -52,7 +52,6 @@
 #include "net/skillhandler.h"
 
 #include "utils/dtor.h"
-#include "utils/files.h"
 #include "utils/gettext.h"
 #include "utils/timer.h"
 

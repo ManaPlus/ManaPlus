@@ -25,13 +25,9 @@
 
 #include "enums/resources/map/blockmask.h"
 
-#include "utils/files.h"
-
 #include "resources/beinginfo.h"
 
 #include "resources/sprite/spritereference.h"
-
-#include <algorithm>
 
 #include "debug.h"
 

@@ -50,7 +50,6 @@
 
 #include "utils/base64.h"
 #include "utils/delete2.h"
-#include "utils/files.h"
 #include "utils/stringmap.h"
 
 #include <zlib.h>
@@ -745,7 +744,6 @@ bool MapReader::readCsvLayer(const XmlNodePtrConst childNode,
 
         oldPos = pos + 1;
     }
-    //XmlFree(const_cast<char*>(xmlChars));
     return true;
 }
 

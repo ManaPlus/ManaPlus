@@ -148,7 +148,8 @@ namespace XML
 }  // namespace XML
 
 #define for_each_xml_child_node(var, parent) \
-    for (pugi::xml_node var = parent.first_child(); var; var = var.next_sibling())
+    for (pugi::xml_node var = parent.first_child(); \
+    var; var = var.next_sibling())
 
 #endif  // ENABLE_PUGIXML
 #endif  // UTILS_XML_PUGIXML_H

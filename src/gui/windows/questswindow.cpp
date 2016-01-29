@@ -46,7 +46,6 @@
 
 #include "utils/delete2.h"
 #include "utils/dtor.h"
-#include "utils/files.h"
 #include "utils/gettext.h"
 
 #include "utils/translation/podict.h"

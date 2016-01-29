@@ -29,7 +29,6 @@
 
 #include "being/flooritem.h"
 #include "being/localplayer.h"
-#include "being/playerinfo.h"
 #include "being/playerrelations.h"
 
 #include "const/gui/chat.h"
@@ -64,12 +63,9 @@
 #include "net/partyhandler.h"
 #include "net/serverfeatures.h"
 
-#include "resources/iteminfo.h"
 #include "resources/chatobject.h"
 
-#include "resources/inventory/inventory.h"
-
-#include "resources/item/item.h"
+#include "resources/db/itemdb.h"
 
 #include "utils/chatutils.h"
 #include "utils/gettext.h"
@@ -311,7 +307,6 @@ impHandler(chatAdd)
     if (floorItem)
     {
         str[0] =  floorItem->getItemId();
-        logger->log("parts: %d", (int)str.size());
         const std::string names = ItemDB::getNamesStr(str);
         chatWindow->addItemText(names);
     }

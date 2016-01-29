@@ -70,7 +70,7 @@ void Files::extractLocale()
     resourceManager->removeFromSearchPath(fileName2);
     remove(fileName2.c_str());
 }
-#endif // ANDROID
+#endif  // ANDROID
 
 #if defined(ANDROID) || defined(__native_client__)
 

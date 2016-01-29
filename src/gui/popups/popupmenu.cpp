@@ -24,7 +24,6 @@
 
 #include "actormanager.h"
 #include "configuration.h"
-#include "gamemodifiers.h"
 #include "party.h"
 
 #include "being/flooritem.h"
@@ -66,7 +65,6 @@
 #include "gui/widgets/tabs/chat/whispertab.h"
 
 #include "net/adminhandler.h"
-#include "net/beinghandler.h"
 #include "net/chathandler.h"
 #include "net/guildhandler.h"
 #ifdef EATHENA_SUPPORT

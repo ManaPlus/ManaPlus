@@ -33,7 +33,7 @@
 
 #include "resources/iteminfo.h"
 
-#include "resources/item/item.h"
+#include "resources/db/itemdb.h"
 
 #include "resources/map/map.h"
 

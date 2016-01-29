@@ -32,8 +32,6 @@
 
 #include "resources/sprite/animatedsprite.h"
 
-#include "utils/files.h"
-
 #include "debug.h"
 
 namespace

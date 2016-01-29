@@ -18,10 +18,10 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef CONST_RESOURCES_ITEM_ITEM_H
-#define CONST_RESOURCES_ITEM_ITEM_H
+#ifndef CONST_RESOURCES_ITEM_CARDS_H
+#define CONST_RESOURCES_ITEM_CARDS_H
 
-const int maxCards = 4;
-const int maxMailCards = 4;
+#define maxCards 4
+#define maxMailCards 4
 
-#endif  // CONST_RESOURCES_ITEM_ITEM_H
+#endif  // CONST_RESOURCES_ITEM_CARDS_H

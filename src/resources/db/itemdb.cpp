@@ -29,7 +29,6 @@
 
 #include "enums/resources/spritedirection.h"
 
-#include "resources/beingcommon.h"
 #include "resources/iteminfo.h"
 #include "resources/itemtypemapdata.h"
 

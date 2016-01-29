@@ -970,8 +970,6 @@ std::string timeDiffToString(int timeDiff)
     return str;
 }
 
-#include "logger.h"
-
 #ifndef DYECMD
 void replaceItemLinks(std::string &msg)
 {

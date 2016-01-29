@@ -46,10 +46,6 @@
 #include "net/chathandler.h"
 #include "net/serverfeatures.h"
 
-#include "resources/iteminfo.h"
-
-#include "resources/db/itemdb.h"
-
 #include "utils/chatutils.h"
 #include "utils/delete2.h"
 #include "utils/gettext.h"
