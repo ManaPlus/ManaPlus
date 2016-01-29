@@ -131,6 +131,7 @@ src/input/inputmanager.cpp
 src/input/keyboardconfig.cpp
 src/input/pages/basic.cpp
 src/input/pages/chat.cpp
+src/input/pages/craft.cpp
 src/input/pages/emotes.cpp
 src/input/pages/gui.cpp
 src/input/pages/move.cpp
