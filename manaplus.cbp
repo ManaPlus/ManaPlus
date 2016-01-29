@@ -469,6 +469,7 @@
 		<Unit filename="src/input/key.cpp" />
 		<Unit filename="src/input/joystick.cpp" />
 		<Unit filename="src/input/pages/basic.cpp" />
+		<Unit filename="src/input/pages/craft.cpp" />
 		<Unit filename="src/input/pages/other.cpp" />
 		<Unit filename="src/input/pages/chat.cpp" />
 		<Unit filename="src/input/pages/shortcuts.cpp" />
@@ -1316,6 +1317,7 @@
 		<Unit filename="src/input/inputactiondata.h" />
 		<Unit filename="src/input/inputactionsortfunctor.h" />
 		<Unit filename="src/input/key.h" />
+		<Unit filename="src/input/pages/craft.h" />
 		<Unit filename="src/input/pages/windows.h" />
 		<Unit filename="src/input/pages/gui.h" />
 		<Unit filename="src/input/pages/emotes.h" />
