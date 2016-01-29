@@ -25,7 +25,6 @@
 
 #ifdef USE_OPENGL
 
-#include "render/opengl/mgldefines.h"
 
 #ifdef ANDROID
 #include <GLES/gl.h>
@@ -42,6 +41,8 @@
 #include <GL/glext.h>
 #endif
 #endif
+
+#include "render/opengl/mgldefines.h"
 
 #if defined(__GXX_EXPERIMENTAL_CXX0X__)
 #include <cstdint>

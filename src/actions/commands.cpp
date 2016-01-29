@@ -39,11 +39,11 @@
 #ifdef EATHENA_SUPPORT
 #include "gui/shortcut/emoteshortcut.h"
 
-#include "gui/windows/npcdialog.h"
 #endif
 
 #include "gui/windows/chatwindow.h"
 #include "gui/windows/inventorywindow.h"
+#include "gui/windows/npcdialog.h"
 #include "gui/windows/outfitwindow.h"
 #include "gui/windows/skilldialog.h"
 #include "gui/windows/socialwindow.h"
@@ -59,8 +59,8 @@
 #include "net/homunculushandler.h"
 #include "net/mailhandler.h"
 #include "net/net.h"
-#include "net/npchandler.h"
 #endif
+#include "net/npchandler.h"
 #include "net/partyhandler.h"
 #include "net/serverfeatures.h"
 
@@ -1139,12 +1139,16 @@ impHandler(skill)
 
 impHandler(craft)
 {
+#ifdef EATHENA_SUPPORT
     const std::string args = event.args;
     if (args.empty() || !inventoryWindow)
         return false;
 
     inventoryWindow->moveItemToCraft(atoi(args.c_str()));
     return true;
+#else
+    return false;
+#endif
 }
 
 impHandler(npcClipboard)
