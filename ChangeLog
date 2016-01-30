@@ -1,3 +1,19 @@
+2016-01-30 New release 1.6.1.30
+fix: not allow add equipped items into craft.
+fix: /who command (hercules)
+fix: commands for remove moster from attack lists.
+fix: not allow walking by mouse if npc dialog is open.
+fix: undress in hercules.
+add: support for adding cards in item links.
+add: not move chat messages with links to debug tab.
+add: support for xml library pugixml (disabled by default).
+add: multy file help search index.
+add: in char create dialog hide fields if values not allow change it.
+add: move items by one to craft with stop attack key pressed.
+add: quick shortcuts for move current item to each craft slot (unasisgned).
+add: item menu for move current item to each craft slot (unasisgned).
+add: char commands for add/remove pickups in list.
+
 2016-01-16 New release 1.6.1.16
 fix: removing monster from attack list.
 fix: dye palette parsing with GIMP colors.
