@@ -39,10 +39,14 @@
 #define DEBUGLOG2(str, pos, comment) \
     if (logger && !mIgnore) \
         logger->dlog2(str, pos, comment)
+#define DEBUGLOGSTR(str) \
+    if (logger) \
+        logger->dlog(str)
 #define IGNOREDEBUGLOG mIgnore = Net::isIgnorePacket(mId)
 #else
 #define DEBUGLOG(str) {}
 #define DEBUGLOG2(str, comment) {}
+#define DEBUGLOGSTR(str)
 #define IGNOREDEBUGLOG {}
 #endif
 

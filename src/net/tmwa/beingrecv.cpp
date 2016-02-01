@@ -1152,6 +1152,7 @@ void BeingRecv::processBeingChangeDirection(Net::MessageIn &msg)
 
     if (!dstBeing)
     {
+        DEBUGLOGSTR("invisible player?");
         msg.readInt16("unused");
         msg.readUInt8("direction");
         BLOCK_END("BeingRecv::processBeingChangeDirection");
@@ -1182,7 +1183,7 @@ void BeingRecv::processPlaterStatusChange(Net::MessageIn &msg)
     Being *const dstBeing = actorManager->findBeing(id);
     if (!dstBeing)
     {
-        logger->log("invisible player?");
+        DEBUGLOGSTR("invisible player?");
         msg.readInt16("stun mode");
         msg.readInt16("status effect");
         msg.readInt16("opt?");
