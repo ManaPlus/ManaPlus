@@ -1181,7 +1181,14 @@ void BeingRecv::processPlaterStatusChange(Net::MessageIn &msg)
     const BeingId id = msg.readBeingId("account id");
     Being *const dstBeing = actorManager->findBeing(id);
     if (!dstBeing)
+    {
+        logger->log("invisible player?");
+        msg.readInt16("stun mode");
+        msg.readInt16("status effect");
+        msg.readInt16("opt?");
+        msg.readUInt8("Unused?");
         return;
+    }
 
     const uint16_t stunMode = msg.readInt16("stun mode");
     uint32_t statusEffects = msg.readInt16("status effect");
