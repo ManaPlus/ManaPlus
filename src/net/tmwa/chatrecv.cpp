@@ -290,12 +290,8 @@ void ChatRecv::processBeingChat(Net::MessageIn &msg)
 
     BLOCK_START("ChatRecv::processBeingChat")
     int chatMsgLength = msg.readInt16("len") - 8;
-    Being *const being = actorManager->findBeing(msg.readBeingId("being id"));
-    if (!being)
-    {
-        BLOCK_END("ChatRecv::processBeingChat")
-        return;
-    }
+    const BeingId beingId = msg.readBeingId("being id");
+    Being *const being = actorManager->findBeing(beingId);
 
     if (chatMsgLength <= 0)
     {
@@ -305,7 +301,7 @@ void ChatRecv::processBeingChat(Net::MessageIn &msg)
 
     std::string chatMsg = msg.readRawString(chatMsgLength, "message");
 
-    if (being->getType() == ActorType::Player)
+    if (being && being->getType() == ActorType::Player)
         being->setTalkTime();
 
     const size_t pos = chatMsg.find(" : ", 0);
@@ -315,12 +311,14 @@ void ChatRecv::processBeingChat(Net::MessageIn &msg)
     if (serverFeatures->haveIncompleteChatMessages())
     {
         // work around for "new" tmw server
-        sender_name = being->getName();
+        if (being)
+            sender_name = being->getName();
         if (sender_name.empty())
-            sender_name = "?";
+            sender_name = "?" + toString(static_cast<int>(beingId));
     }
-    else if (sender_name != being->getName()
-             && being->getType() == ActorType::Player)
+    else if (being &&
+             sender_name != being->getName() &&
+             being->getType() == ActorType::Player)
     {
         if (!being->getName().empty())
             sender_name = being->getName();
@@ -337,7 +335,8 @@ void ChatRecv::processBeingChat(Net::MessageIn &msg)
     // because ignorePlayer' side effects are triggered
     // right below for Being::IGNORE_SPEECH_FLOAT.
     if (player_relations.checkPermissionSilently(sender_name,
-        PlayerRelation::SPEECH_LOG) && chatWindow)
+        PlayerRelation::SPEECH_LOG) &&
+        chatWindow)
     {
         allow = chatWindow->resortChatLog(
             removeColors(sender_name).append(" : ").append(chatMsg),
@@ -347,7 +346,9 @@ void ChatRecv::processBeingChat(Net::MessageIn &msg)
             TryRemoveColors_true);
     }
 
-    if (allow && player_relations.hasPermission(sender_name,
+    if (allow &&
+        being &&
+        player_relations.hasPermission(sender_name,
         PlayerRelation::SPEECH_FLOAT))
     {
         being->setSpeech(chatMsg, GENERAL_CHANNEL);
