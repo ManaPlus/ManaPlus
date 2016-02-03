@@ -461,6 +461,7 @@ SRC += events/actionevent.h \
 	      utils/sdlcheckutils.h \
 	      utils/sdlhelper.cpp \
 	      utils/sdlhelper.h \
+	      utils/sdlmemoryobject.h \
 	      utils/specialfolder.cpp \
 	      utils/specialfolder.h \
 	      utils/stringmap.h \
