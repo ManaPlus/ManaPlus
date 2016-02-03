@@ -272,9 +272,10 @@ Map *MapReader::readMap(const std::string &restrict filename,
 
         if (map->getProperty("music").empty())
             updateMusic(map);
+
+        map->updateConditionLayers();
     }
 
-    map->updateConditionLayers();
     BLOCK_END("MapReader::readMap str")
     return map;
 }
