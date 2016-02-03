@@ -280,6 +280,8 @@ void BeingRecv::processBeingEmotion(Net::MessageIn &msg)
         msg.readBeingId("being id"));
     if (!dstBeing)
     {
+        DEBUGLOGSTR("invisible player?");
+        msg.readUInt8("emote");
         BLOCK_END("BeingRecv::processBeingEmotion")
         return;
     }
