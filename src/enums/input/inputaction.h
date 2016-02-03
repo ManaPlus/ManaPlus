@@ -624,6 +624,7 @@ enumStart(InputAction)
     IGNORE_PICKUP,
     RESET_MODIFIERS,
     BAR_TO_CHAT,
+    SEEN,
     TOTAL
 }
 enumEnd(InputAction);

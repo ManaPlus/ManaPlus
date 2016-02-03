@@ -5233,6 +5233,12 @@ static const InputActionData inputActionData
         "bartochat",
         UseArgs_true,
         Protected_true},
+    {"keySeenCmd",
+        defaultAction(&Actions::seen),
+        InputCondition::INGAME,
+        "seen|lastseen",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

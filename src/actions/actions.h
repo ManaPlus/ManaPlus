@@ -112,6 +112,7 @@ namespace Actions
     decHandler(craftKey);
     decHandler(resetGameModifiers);
     decHandler(barToChat);
+    decHandler(seen);
 }  // namespace Actions
 
 #undef decHandler

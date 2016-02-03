@@ -103,6 +103,7 @@
 #include "utils/chatutils.h"
 #include "utils/delete2.h"
 #include "utils/gettext.h"
+#include "utils/files.h"
 #include "utils/timer.h"
 #include "utils/mathutils.h"
 
@@ -1717,6 +1718,51 @@ impHandler(barToChat)
         return true;
     }
     return false;
+}
+
+impHandler(seen)
+{
+    if (!actorManager)
+        return false;
+
+    const std::string name = event.args;
+    if (name.empty())
+        return false;
+
+    ChatTab *tab = event.tab;
+    if (!tab)
+        tab = localChatTab;
+    if (!tab)
+        return false;
+
+    std::string dir = settings.usersDir;
+    dir.append(stringToHexPath(name)).append("/seen.txt");
+    if (Files::existsLocal(dir))
+    {
+        StringVect lines;
+        Files::loadTextFileLocal(dir, lines);
+        if (lines.size() < 3)
+        {
+            // TRANSLATORS: last seen error
+            tab->chatLog(_("You not saw this nick."),
+                ChatMsgType::BY_SERVER);
+            return true;
+        }
+        const std::string message = strprintf(
+            // TRANSLATORS: last seen message
+            _("Last seen for %s: %s"),
+            name.c_str(),
+            lines[2].c_str());
+        tab->chatLog(message, ChatMsgType::BY_SERVER);
+    }
+    else
+    {
+        // TRANSLATORS: last seen error
+        tab->chatLog(_("You not saw this nick."),
+            ChatMsgType::BY_SERVER);
+    }
+
+    return true;
 }
 
 }  // namespace Actions
