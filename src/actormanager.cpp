@@ -1965,28 +1965,50 @@ void ActorManager::updateNameId(const std::string &name,
     if (!mEnableIdCollecting)
         return;
     const int id = static_cast<int>(beingId);
-    if (id < 2000000 || id >= 110000000)
+    if (id &&
+        id < 2000000 ||
+        id >= 110000000)
+    {
         return;
+    }
 
     if (mIdName.find(beingId) == mIdName.end() ||
         mIdName[beingId].find(name) == mIdName[beingId].end())
     {
         mIdName[beingId].insert(name);
-        std::string dir = settings.usersIdDir;
         const std::string idStr = toString(id);
-        dir.append(idStr);
-        dir.append("/");
-        dir.append(stringToHexPath(name));
         const std::string dateStr = getDateTimeString();
-        Files::saveTextFile(dir,
-            "info.txt",
-            (name + "\n").append(dateStr));
+        std::string dir;
+        if (beingId != BeingId_zero)
+        {
+            dir = settings.usersIdDir;
+            dir.append(idStr);
+            dir.append("/");
+            dir.append(stringToHexPath(name));
+            Files::saveTextFile(dir,
+                "info.txt",
+                (name + "\n").append(dateStr));
+        }
 
         dir = settings.usersDir;
         dir.append(stringToHexPath(name));
         Files::saveTextFile(dir,
             "seen.txt",
             (name + "\n").append(idStr).append("\n").append(dateStr));
+    }
+}
+
+void ActorManager::updateSeenPlayers(const std::set<std::string>
+                                     &onlinePlayers)
+{
+    if (!mEnableIdCollecting)
+        return;
+
+    FOR_EACH (std::set<std::string>::const_iterator, it, onlinePlayers)
+    {
+        const std::string name = *it;
+        if (!findBeingByName(name, ActorType::Player))
+            updateNameId(name, BeingId_zero);
     }
 }
 

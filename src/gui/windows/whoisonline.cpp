@@ -346,6 +346,8 @@ void WhoIsOnline::loadList(const std::vector<OnlinePlayer*> &list)
             chatWindow->updateOnline(mOnlineNicks);
         if (socialWindow)
             socialWindow->updateActiveList();
+        if (actorManager)
+            actorManager->updateSeenPlayers(mOnlineNicks);
     }
     updateSize();
     mFriends.clear();
@@ -681,6 +683,8 @@ void WhoIsOnline::slowLogic()
                         chatWindow->updateOnline(mOnlineNicks);
                     if (socialWindow)
                         socialWindow->updateActiveList();
+                    if (actorManager)
+                        actorManager->updateSeenPlayers(mOnlineNicks);
                 }
             }
             break;
