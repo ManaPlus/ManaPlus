@@ -192,6 +192,7 @@ class SortBeingFunctor final
 ActorManager::ActorManager() :
     mActors(),
     mDeleteActors(),
+    mActorsIdMap(),
     mIdName(),
     mBlockedBeings(),
 #ifdef EATHENA_SUPPORT
@@ -254,6 +255,8 @@ void ActorManager::setPlayer(LocalPlayer *const player)
 {
     localPlayer = player;
     mActors.insert(player);
+    if (player)
+        mActorsIdMap[player->getId()] = player;
     if (socialWindow)
         socialWindow->updateAttackFilter();
     if (socialWindow)
@@ -267,6 +270,9 @@ Being *ActorManager::createBeing(const BeingId id,
     Being *const being = new Being(id, type, subtype, mMap);
 
     mActors.insert(being);
+
+    mActorsIdMap[being->getId()] = being;
+
     if (type == ActorType::Player
 #ifdef EATHENA_SUPPORT
         || type == ActorType::Mercenary
@@ -334,6 +340,7 @@ FloorItem *ActorManager::createItem(const BeingId id,
     if (!checkForPickup(floorItem))
         floorItem->disableHightlight();
     mActors.insert(floorItem);
+    mActorsIdMap[floorItem->getId()] = floorItem;
     return floorItem;
 }
 
@@ -351,6 +358,9 @@ void ActorManager::erase(ActorSprite *const actor)
         return;
 
     mActors.erase(actor);
+    ActorSpritesMapIterator it = mActorsIdMap.find(actor->getId());
+    if (it != mActorsIdMap.end() && (*it).second == actor)
+        mActorsIdMap.erase(it);
 }
 
 void ActorManager::undelete(const ActorSprite *const actor)
@@ -370,16 +380,17 @@ void ActorManager::undelete(const ActorSprite *const actor)
 
 Being *ActorManager::findBeing(const BeingId id) const
 {
-    for_actors
+    ActorSpritesMapConstIterator it = mActorsIdMap.find(id);
+    if (it != mActorsIdMap.end())
     {
-        ActorSprite *const actor = *it;
-        if (actor->getId() == id &&
+        ActorSprite *const actor = (*it).second;
+        if (actor &&
+            actor->getId() == id &&
             actor->getType() != ActorType::FloorItem)
         {
             return static_cast<Being*>(actor);
         }
     }
-
     return nullptr;
 }
 
@@ -585,18 +596,17 @@ Being *ActorManager::findPortalByTile(const int x, const int y) const
 
 FloorItem *ActorManager::findItem(const BeingId id) const
 {
-    for_actorsm
+    ActorSpritesMapConstIterator it = mActorsIdMap.find(id);
+    if (it != mActorsIdMap.end())
     {
-        if (!*it)
-            continue;
-
-        if ((*it)->getId() == id &&
-            (*it)->getType() == ActorType::FloorItem)
+        ActorSprite *const actor = (*it).second;
+        if (actor &&
+            actor->getId() == id &&
+            actor->getType() == ActorType::FloorItem)
         {
-            return static_cast<FloorItem*>(*it);
+            return static_cast<FloorItem*>(actor);
         }
     }
-
     return nullptr;
 }
 
@@ -889,7 +899,15 @@ void ActorManager::logic()
     {
         ActorSprite *actor = *it;
         mActors.erase(actor);
-        delete actor;
+
+        if (actor)
+        {
+            ActorSpritesMapIterator itr = mActorsIdMap.find(actor->getId());
+            if (itr != mActorsIdMap.end() && (*itr).second == actor)
+                mActorsIdMap.erase(itr);
+
+            delete actor;
+        }
     }
 
     mDeleteActors.clear();
@@ -913,9 +931,13 @@ void ActorManager::clear()
         delete *it;
     mActors.clear();
     mDeleteActors.clear();
+    mActorsIdMap.clear();
 
     if (localPlayer)
+    {
         mActors.insert(localPlayer);
+        mActorsIdMap[localPlayer->getId()] = localPlayer;
+    }
 
 #ifdef EATHENA_SUPPORT
     mChars.clear();

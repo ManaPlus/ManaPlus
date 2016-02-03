@@ -55,6 +55,9 @@ struct ChatObject;
 typedef std::set<ActorSprite*> ActorSprites;
 typedef ActorSprites::iterator ActorSpritesIterator;
 typedef ActorSprites::const_iterator ActorSpritesConstIterator;
+typedef std::map<BeingId, ActorSprite*> ActorSpritesMap;
+typedef ActorSpritesMap::iterator ActorSpritesMapIterator;
+typedef ActorSpritesMap::const_iterator ActorSpritesMapConstIterator;
 
 typedef std::map<BeingId, std::set<std::string> > IdNameMapping;
 
@@ -396,6 +399,7 @@ class ActorManager final: public ConfigListener
 
         ActorSprites mActors;
         ActorSprites mDeleteActors;
+        ActorSpritesMap mActorsIdMap;
         IdNameMapping mIdName;
         std::set<BeingId> mBlockedBeings;
 #ifdef EATHENA_SUPPORT
