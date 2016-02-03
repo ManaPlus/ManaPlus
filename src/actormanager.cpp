@@ -1973,12 +1973,20 @@ void ActorManager::updateNameId(const std::string &name,
     {
         mIdName[beingId].insert(name);
         std::string dir = settings.usersIdDir;
-        dir.append(toString(id));
+        const std::string idStr = toString(id);
+        dir.append(idStr);
         dir.append("/");
         dir.append(stringToHexPath(name));
+        const std::string dateStr = getDateString();
         Files::saveTextFile(dir,
             "info.txt",
-            (name + "\n").append(getDateString()));
+            (name + "\n").append(dateStr));
+
+        dir = settings.usersDir;
+        dir.append(stringToHexPath(name));
+        Files::saveTextFile(dir,
+            "seen.txt",
+            (name + "\n").append(idStr).append("\n").append(dateStr));
     }
 }
 
