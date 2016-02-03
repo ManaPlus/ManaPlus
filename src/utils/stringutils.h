@@ -236,6 +236,8 @@ bool strStartWith(const std::string &restrict str,
 
 std::string getDateString() A_WARN_UNUSED;
 
+std::string getDateTimeString() A_WARN_UNUSED;
+
 signed char parseBoolean(const std::string &value);
 
 std::string encodeLinkText(std::string data);

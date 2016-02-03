@@ -1977,7 +1977,7 @@ void ActorManager::updateNameId(const std::string &name,
         dir.append(idStr);
         dir.append("/");
         dir.append(stringToHexPath(name));
-        const std::string dateStr = getDateString();
+        const std::string dateStr = getDateTimeString();
         Files::saveTextFile(dir,
             "info.txt",
             (name + "\n").append(dateStr));

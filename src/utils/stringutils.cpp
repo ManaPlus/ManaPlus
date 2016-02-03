@@ -709,6 +709,17 @@ std::string getDateString()
     return std::string(buffer);
 }
 
+std::string getDateTimeString()
+{
+    char buffer[80];
+    time_t rawtime;
+    time(&rawtime);
+    const tm *const timeinfo = localtime(&rawtime);
+
+    strftime(buffer, 79, "%Y-%m-%d %H:%M:%S", timeinfo);
+    return std::string(buffer);
+}
+
 signed char parseBoolean(const std::string &value)
 {
     const std::string opt = value.substr(0, 1);
