@@ -1481,14 +1481,13 @@ bool ActorManager::isBlocked(const BeingId id) const
     return mBlockedBeings.find(id) != mBlockedBeings.end();
 }
 
-void ActorManager::printAllToChat() const
+void ActorManager::printAllToChat()
 {
     // TRANSLATORS: visible beings on map
-    printBeingsToChat(getAll(), _("Visible on map"));
+    printBeingsToChat(_("Visible on map"));
 }
 
-void ActorManager::printBeingsToChat(const ActorSprites &beings,
-                                     const std::string &header)
+void ActorManager::printBeingsToChat(const std::string &header)
 {
     if (!debugChatTab)
         return;
@@ -1496,7 +1495,7 @@ void ActorManager::printBeingsToChat(const ActorSprites &beings,
     debugChatTab->chatLog("---------------------------------------",
         ChatMsgType::BY_SERVER);
     debugChatTab->chatLog(header, ChatMsgType::BY_SERVER);
-    FOR_EACH (std::set<ActorSprite*>::const_iterator, it, beings)
+    for_actors
     {
         if (!*it)
             continue;
@@ -1509,9 +1508,38 @@ void ActorManager::printBeingsToChat(const ActorSprites &beings,
         debugChatTab->chatLog(strprintf("%s (%d,%d) %d",
             being->getName().c_str(), being->getTileX(), being->getTileY(),
             toInt(being->getSubType(), int)), ChatMsgType::BY_SERVER);
+        if (mActorsIdMap.find(being->getId()) == mActorsIdMap.end())
+        {
+            debugChatTab->chatLog("missing in id map: %s",
+                being->getName().c_str());
+        }
     }
     debugChatTab->chatLog("---------------------------------------",
         ChatMsgType::BY_SERVER);
+    FOR_EACH (ActorSpritesMapConstIterator, itr, mActorsIdMap)
+    {
+        ActorSprite *actor = (*itr).second;
+        if (!actor)
+            continue;
+        if (actor->getId() != (*itr).first)
+            debugChatTab->chatLog("Actor with wrong key in map", "");
+
+        bool found(false);
+
+        for_actors
+        {
+            if (!*it)
+                continue;
+
+            if ((*it)->getId() == actor->getId())
+            {
+                found = true;
+                break;
+            }
+        }
+        if (!found)
+            debugChatTab->chatLog("Actor present in map but not in set", "");
+    }
 }
 
 void ActorManager::printBeingsToChat(const std::vector<Being*> &beings,

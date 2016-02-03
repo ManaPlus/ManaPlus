@@ -259,10 +259,9 @@ class ActorManager final: public ConfigListener
 
         bool isBlocked(const BeingId id) const;
 
-        void printAllToChat() const;
+        void printAllToChat();
 
-        static void printBeingsToChat(const ActorSprites &beings,
-                                      const std::string &header);
+        void printBeingsToChat(const std::string &header);
 
         static void printBeingsToChat(const std::vector<Being*> &beings,
                                       const std::string &header);
