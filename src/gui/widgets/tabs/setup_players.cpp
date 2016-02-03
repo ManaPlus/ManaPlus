@@ -121,7 +121,7 @@ Setup_Players::Setup_Players(const Widget2 *const widget) :
         "hideErased", this, "hideErasedEvent");
 
     // TRANSLATORS: settings option
-    new SetupItemCheckBox(_("Collect players id"),
+    new SetupItemCheckBox(_("Collect players id and seen log"),
         "", "enableIdCollecting", this, "enableIdCollectingEvent");
 
     // TRANSLATORS: settings option
