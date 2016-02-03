@@ -116,6 +116,7 @@ ChatWindow::ChatWindow() :
     mAutoHide(config.getBoolValue("autohideChat")),
     mShowBattleEvents(config.getBoolValue("showBattleEvents")),
     mShowAllLang(serverConfig.getValue("showAllLang", 0)),
+    mEnableTradeFilter(config.getBoolValue("enableTradeFilter")),
     mTmpVisible(false)
 {
     setWindowName("Chat");
@@ -191,6 +192,7 @@ ChatWindow::ChatWindow() :
     config.addListener("autohideChat", this);
     config.addListener("showBattleEvents", this);
     config.addListener("globalsFilter", this);
+    config.addListener("enableTradeFilter", this);
 
     enableVisibleSound(true);
 }
@@ -1540,7 +1542,8 @@ bool ChatWindow::resortChatLog(std::string line,
     {
         prefix = std::string("##3").append(channel).append("##0");
     }
-    else if (tradeChatTab &&
+    else if (mEnableTradeFilter &&
+             tradeChatTab &&
              findI(line, mTradeFilter) != std::string::npos)
     {
         tradeChatTab->chatLog(std::string("##S") +  _("Moved: ") + line,
@@ -2059,6 +2062,8 @@ void ChatWindow::optionChanged(const std::string &name)
         mShowBattleEvents = config.getBoolValue("showBattleEvents");
     else if (name == "globalsFilter")
         parseGlobalsFilter();
+    else if (name == "enableTradeFilter")
+        mEnableTradeFilter = config.getBoolValue("enableTradeFilter");
 }
 
 void ChatWindow::mouseMoved(MouseEvent &event)

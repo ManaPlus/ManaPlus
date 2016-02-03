@@ -383,6 +383,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("skillAutotarget", true);
     AddDEF("logPlayerActions", false);
     AddDEF("enableGuiOpacity", true);
+    AddDEF("enableTradeFilter", true);
     return configData;
 }
 

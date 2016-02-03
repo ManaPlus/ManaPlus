@@ -416,6 +416,7 @@ class ChatWindow final : public Window,
         bool mAutoHide;
         bool mShowBattleEvents;
         bool mShowAllLang;
+        bool mEnableTradeFilter;
         bool mTmpVisible;
 };
 

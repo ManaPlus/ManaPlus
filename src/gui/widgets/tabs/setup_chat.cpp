@@ -275,6 +275,10 @@ Setup_Chat::Setup_Chat(const Widget2 *const widget) :
         "less usable space for text."),
         "hideChatInput", this, "hideChatInputEvent");
 
+    // TRANSLATORS: settings option
+    new SetupItemCheckBox(_("Enable trade spam filter"),
+        "", "enableTradeFilter", this, "enableTradeFilterEvent");
+
 
     // TRANSLATORS: settings group
     new SetupItemLabel(_("Time"), "", this);
