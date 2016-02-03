@@ -1537,18 +1537,25 @@ bool ChatWindow::resortChatLog(std::string line,
 
     std::string prefix;
     if (!channel.empty())
-        prefix = std::string("##3").append(channel).append("##0");
-
-    if (findI(line, mTradeFilter) != std::string::npos)
     {
-        if (tradeChatTab)
+        prefix = std::string("##3").append(channel).append("##0");
+    }
+    else if (tradeChatTab &&
+             findI(line, mTradeFilter) != std::string::npos)
+    {
+        tradeChatTab->chatLog(std::string("##S") +  _("Moved: ") + line,
+            own,
+            ignoreRecord,
+            tryRemoveColors);
+        if (own == ChatMsgType::BY_PLAYER)
         {
-            tradeChatTab->chatLog(prefix + line,
-                own,
-                ignoreRecord,
-                tryRemoveColors);
+            own = ChatMsgType::BY_SERVER;
+            line = _("Your message was moved to trade tab");
         }
-        return false;
+        else
+        {
+            return false;
+        }
     }
 
     size_t idx2 = line.find(": ");
