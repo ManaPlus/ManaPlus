@@ -1966,8 +1966,8 @@ void ActorManager::updateNameId(const std::string &name,
         return;
     const int id = static_cast<int>(beingId);
     if (id &&
-        id < 2000000 ||
-        id >= 110000000)
+        (id < 2000000 ||
+        id >= 110000000))
     {
         return;
     }
