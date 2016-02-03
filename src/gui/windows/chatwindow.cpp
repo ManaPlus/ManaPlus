@@ -1546,6 +1546,7 @@ bool ChatWindow::resortChatLog(std::string line,
              tradeChatTab &&
              findI(line, mTradeFilter) != std::string::npos)
     {
+        // TRANSLATORS: prefix for moved message to trade tab.
         tradeChatTab->chatLog(std::string("##S") +  _("Moved: ") + line,
             own,
             ignoreRecord,
@@ -1553,6 +1554,7 @@ bool ChatWindow::resortChatLog(std::string line,
         if (own == ChatMsgType::BY_PLAYER)
         {
             own = ChatMsgType::BY_SERVER;
+            // TRANSLATORS: moved message to trade tab warning.
             line = _("Your message was moved to trade tab");
         }
         else
