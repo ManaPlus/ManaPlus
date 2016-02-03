@@ -581,15 +581,23 @@ void Dirs::initUsersDir()
     if (mkdir_r(settings.usersDir.c_str()))
     {
         // TRANSLATORS: directory creation error
-        logger->error(strprintf(_("%s doesn't exist and can't be created! "
-            "Exiting."), settings.usersDir.c_str()));
+        logger->error(strprintf(_("%s doesn't exist and can't be created!"),
+            settings.usersDir.c_str()));
     }
 
     settings.npcsDir = settings.serverConfigDir + "/npcs/";
     if (mkdir_r(settings.npcsDir.c_str()))
     {
         // TRANSLATORS: directory creation error
-        logger->error(strprintf(_("%s doesn't exist and can't be created! "
-            "Exiting."), settings.npcsDir.c_str()));
+        logger->error(strprintf(_("%s doesn't exist and can't be created!"),
+            settings.npcsDir.c_str()));
+    }
+
+    settings.usersIdDir = settings.serverConfigDir + "/usersid/";
+    if (mkdir_r(settings.usersIdDir.c_str()))
+    {
+        // TRANSLATORS: directory creation error
+        logger->error(strprintf(_("%s doesn't exist and can't be created!"),
+            settings.usersIdDir.c_str()));
     }
 }

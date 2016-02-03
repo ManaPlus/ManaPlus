@@ -44,6 +44,7 @@ class Settings final
             onlineListUrl(),
             serverConfigDir(),
             usersDir(),
+            usersIdDir(),
             npcsDir(),
             supportUrl(),
             logFileName(),
@@ -90,6 +91,7 @@ class Settings final
         std::string onlineListUrl;
         std::string serverConfigDir;
         std::string usersDir;
+        std::string usersIdDir;
         std::string npcsDir;
         std::string supportUrl;
         std::string logFileName;

@@ -121,6 +121,10 @@ Setup_Players::Setup_Players(const Widget2 *const widget) :
         "hideErased", this, "hideErasedEvent");
 
     // TRANSLATORS: settings option
+    new SetupItemCheckBox(_("Collect players id"),
+        "", "enableIdCollecting", this, "enableIdCollectingEvent");
+
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Use special diagonal speed in players moving"),
         "", "useDiagonalSpeed", this, "useDiagonalSpeedEvent");
 

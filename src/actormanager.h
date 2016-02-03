@@ -56,6 +56,8 @@ typedef std::set<ActorSprite*> ActorSprites;
 typedef ActorSprites::iterator ActorSpritesIterator;
 typedef ActorSprites::const_iterator ActorSpritesConstIterator;
 
+typedef std::map<BeingId, std::set<std::string> > IdNameMapping;
+
 class ActorManager final: public ConfigListener
 {
     public:
@@ -354,6 +356,9 @@ class ActorManager final: public ConfigListener
 
         void updateBadges();
 
+        void updateNameId(const std::string &name,
+                          const BeingId beingId);
+
         size_t size() const
         { return mActors.size(); }
 
@@ -389,6 +394,7 @@ class ActorManager final: public ConfigListener
 
         ActorSprites mActors;
         ActorSprites mDeleteActors;
+        IdNameMapping mIdName;
         std::set<BeingId> mBlockedBeings;
 #ifdef EATHENA_SUPPORT
         std::map<int32_t, std::string> mChars;
@@ -403,6 +409,7 @@ class ActorManager final: public ConfigListener
         bool mCycleMonsters;
         bool mCycleNPC;
         bool mExtMouseTargeting;
+        bool mEnableIdCollecting;
 
 #define defVarsP(mob) \
         std::list<std::string> mPriority##mob;\

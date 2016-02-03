@@ -384,6 +384,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("logPlayerActions", false);
     AddDEF("enableGuiOpacity", true);
     AddDEF("enableTradeFilter", true);
+    AddDEF("enableIdCollecting", true);
     return configData;
 }
 

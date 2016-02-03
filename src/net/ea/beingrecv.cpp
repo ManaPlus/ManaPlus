@@ -310,7 +310,10 @@ void BeingRecv::processNameResponse(Net::MessageIn &msg)
     }
 
     const BeingId beingId = msg.readBeingId("being id");
+    const std::string name = msg.readString(24, "name");
     Being *const dstBeing = actorManager->findBeing(beingId);
+
+    actorManager->updateNameId(name, beingId);
 
     if (dstBeing)
     {
@@ -320,7 +323,6 @@ void BeingRecv::processNameResponse(Net::MessageIn &msg)
         }
         else
         {
-            const std::string name = msg.readString(24, "name");
             if (dstBeing->getType() != ActorType::Portal)
             {
                 dstBeing->setName(name);
@@ -357,7 +359,6 @@ void BeingRecv::processNameResponse(Net::MessageIn &msg)
             return;
         }
     }
-    msg.readString(24, "name");
     BLOCK_END("BeingRecv::processNameResponse")
 }
 

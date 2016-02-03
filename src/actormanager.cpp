@@ -42,6 +42,7 @@
 #include "input/inputmanager.h"
 
 #include "utils/checkutils.h"
+#include "utils/files.h"
 #include "utils/mathutils.h"
 #include "utils/gettext.h"
 
@@ -191,6 +192,7 @@ class SortBeingFunctor final
 ActorManager::ActorManager() :
     mActors(),
     mDeleteActors(),
+    mIdName(),
     mBlockedBeings(),
 #ifdef EATHENA_SUPPORT
     mChars(),
@@ -205,6 +207,7 @@ ActorManager::ActorManager() :
     mCycleMonsters(config.getBoolValue("cycleMonsters")),
     mCycleNPC(config.getBoolValue("cycleNPC")),
     mExtMouseTargeting(config.getBoolValue("extMouseTargeting")),
+    mEnableIdCollecting(config.getBoolValue("enableIdCollecting")),
     mPriorityAttackMobs(),
     mPriorityAttackMobsSet(),
     mPriorityAttackMobsMap(),
@@ -226,6 +229,7 @@ ActorManager::ActorManager() :
     config.addListener("cycleNPC", this);
     config.addListener("extMouseTargeting", this);
     config.addListener("showBadges", this);
+    config.addListener("enableIdCollecting", this);
 
     loadAttackList();
 }
@@ -1666,6 +1670,8 @@ void ActorManager::optionChanged(const std::string &name)
         mExtMouseTargeting = config.getBoolValue("extMouseTargeting");
     else if (name == "showBadges")
         updateBadges();
+    else if (name == "enableIdCollecting")
+        mEnableIdCollecting = config.getBoolValue("enableIdCollecting");
 }
 
 void ActorManager::removeAttackMob(const std::string &name)
@@ -1950,6 +1956,29 @@ void ActorManager::updateBadges()
             Being *const being = static_cast<Being*>(actor);
             being->showBadges(showBadges);
         }
+    }
+}
+
+void ActorManager::updateNameId(const std::string &name,
+                                const BeingId beingId)
+{
+    if (!mEnableIdCollecting)
+        return;
+    const int id = static_cast<int>(beingId);
+    if (id < 2000000 || id >= 110000000)
+        return;
+
+    if (mIdName.find(beingId) == mIdName.end() ||
+        mIdName[beingId].find(name) == mIdName[beingId].end())
+    {
+        mIdName[beingId].insert(name);
+        std::string dir = settings.usersIdDir;
+        dir.append(toString(id));
+        dir.append("/");
+        dir.append(stringToHexPath(name));
+        Files::saveTextFile(dir,
+            "info.txt",
+            (name + "\n").append(getDateString()));
     }
 }
 

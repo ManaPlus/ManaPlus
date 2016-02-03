@@ -1291,12 +1291,13 @@ void BeingRecv::processPlayerGuilPartyInfo(Net::MessageIn &msg)
         return;
     }
 
-    Being *const dstBeing = actorManager->findBeing(
-        msg.readBeingId("being id"));
-
+    const BeingId beingId = msg.readBeingId("being id");
+    const std::string name = msg.readString(24, "char name");
+    actorManager->updateNameId(name, beingId);
+    Being *const dstBeing = actorManager->findBeing(beingId);
     if (dstBeing)
     {
-        dstBeing->setName(msg.readString(24, "char name"));
+        dstBeing->setName(name);
         dstBeing->setPartyName(msg.readString(24, "party name"));
         dstBeing->setGuildName(msg.readString(24, "guild name"));
         dstBeing->setGuildPos(msg.readString(24, "guild pos"));
@@ -1621,8 +1622,9 @@ void BeingRecv::processNameResponse2(Net::MessageIn &msg)
     }
 
     const int len = msg.readInt16("len");
-    const BeingId beingId = msg.readBeingId("account ic");
+    const BeingId beingId = msg.readBeingId("account id");
     const std::string str = msg.readString(len - 8, "name");
+    actorManager->updateNameId(str, beingId);
     Being *const dstBeing = actorManager->findBeing(beingId);
     if (dstBeing)
     {
