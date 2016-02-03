@@ -439,7 +439,7 @@ packet(SMSG_WHISPER_RESPONSE,              0x09df,   7, &ChatRecv::processWhispe
 packet(SMSG_WHO_ANSWER,                    0x00c2,   6, &Ea::GameRecv::processWhoAnswer);
 
 // 20150000 fix
-if (serverVersion >= 11)
+if (serverVersion >= 11 || serverVersion == 0)
 {
     packet(SMSG_BEING_VISIBLE,                 0x09dd,  -1, &BeingRecv::processBeingVisible);
     packet(SMSG_BEING_ACTION2,                 0x08c8,  34, &BeingRecv::processBeingAction2);
