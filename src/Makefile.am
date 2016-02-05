@@ -129,7 +129,6 @@ SRC += events/actionevent.h \
 	      enums/events/keyeventtype.h \
 	      listeners/keylistener.h \
 	      gui/models/listmodel.h \
-	      gui/models/magicschoolmodel.h \
 	      events/mouseevent.h \
 	      enums/events/mousebutton.h \
 	      enums/events/mouseeventtype.h \
@@ -1362,6 +1361,7 @@ if ENABLE_TMWA
 manaplus_CXXFLAGS += -DTMWA_SUPPORT
 manaplus_SOURCES += \
 	      enums/magicschool.h \
+	      gui/models/magicschoolmodel.h \
 	      gui/widgets/tabs/chat/emulateguildtab.cpp \
 	      gui/widgets/tabs/chat/emulateguildtab.h \
 	      gui/windows/shopselldialog.cpp \
@@ -1493,6 +1493,8 @@ manaplus_SOURCES += gui/windows/bankwindow.cpp \
 	      gui/windows/bankwindow.h \
 	      gui/windows/buyingstoreselldialog.cpp \
 	      gui/windows/buyingstoreselldialog.h \
+	      gui/windows/cutinwindow.cpp \
+	      gui/windows/cutinwindow.h \
 	      gui/windows/eggselectiondialog.cpp \
 	      gui/windows/eggselectiondialog.h \
 	      gui/windows/insertcarddialog.cpp \
@@ -1503,6 +1505,7 @@ manaplus_SOURCES += gui/windows/bankwindow.cpp \
 	      gui/windows/mailviewwindow.h \
 	      gui/windows/mailwindow.cpp \
 	      gui/windows/mailwindow.h \
+	      enums/cutin.h \
 	      listeners/banklistener.cpp \
 	      listeners/banklistener.h \
 	      listeners/buyingstoremodelistener.cpp \

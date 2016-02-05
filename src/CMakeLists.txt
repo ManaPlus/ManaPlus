@@ -351,6 +351,8 @@ SET(SRCS
     gui/windows/confirmdialog.h
     gui/windows/connectiondialog.cpp
     gui/windows/connectiondialog.h
+    gui/windows/cutinwindow.cpp
+    gui/windows/cutinwindow.h
     gui/windows/debugwindow.cpp
     gui/windows/debugwindow.h
     gui/windows/didyouknowwindow.cpp
@@ -946,6 +948,7 @@ SET(SRCS
     guild.cpp
     guild.h
     enums/commandtarget.h
+    enums/cutin.h
     enums/dragdropsource.h
     enums/equipslot.h
     enums/guildpositionflags.h

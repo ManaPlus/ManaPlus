@@ -66,6 +66,7 @@
 
 #ifdef EATHENA_SUPPORT
 #include "gui/windows/bankwindow.h"
+#include "gui/windows/cutinwindow.h"
 #include "gui/windows/mailwindow.h"
 #endif
 #include "gui/windows/chatwindow.h"
@@ -212,6 +213,7 @@ static void createGuiWindows()
         CREATEWIDGETV(cartWindow, InventoryWindow,
             PlayerInfo::getCartInventory());
     }
+    CREATEWIDGETV0(cutInWindow, CutInWindow);
 #endif
     CREATEWIDGETV0(shopWindow, ShopWindow);
     CREATEWIDGETV0(skillDialog, SkillDialog);
@@ -353,6 +355,7 @@ static void destroyGuiWindows()
     delete2(spellShortcutWindow);
 #ifdef EATHENA_SUPPORT
     delete2(bankWindow);
+    delete2(cutInWindow);
     delete2(mailWindow);
 #endif
     delete2(questsWindow);

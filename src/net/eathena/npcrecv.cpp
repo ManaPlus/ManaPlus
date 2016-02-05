@@ -24,6 +24,9 @@
 
 #include "being/being.h"
 
+#include "enums/cutin.h"
+
+#include "gui/windows/cutinwindow.h"
 #include "gui/windows/npcdialog.h"
 
 #include "net/messagein.h"
@@ -39,10 +42,10 @@ namespace EAthena
 
 void NpcRecv::processNpcCutin(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
     Ea::NpcRecv::mRequestLang = false;
-    msg.readString(64, "image name");
-    msg.readUInt8("type");
+    const std::string image = msg.readString(64, "image name");
+    const CutIn cutin = fromInt(msg.readUInt8("type"), CutIn);
+    cutInWindow->show(image, cutin);
 }
 
 void NpcRecv::processNpcViewPoint(Net::MessageIn &msg)

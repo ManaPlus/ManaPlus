@@ -641,6 +641,7 @@ class Window notfinal : public BasicContainer2,
         int mDefaultY;                /**< Default window Y position */
         int mDefaultWidth;            /**< Default window width */
         int mDefaultHeight;           /**< Default window height */
+        bool mShowTitle;              /**< Window has a title bar */
         bool mLastRedraw;
 
     private:
@@ -707,7 +708,6 @@ class Window notfinal : public BasicContainer2,
         int mStickyPadding;
         Font *mCaptionFont A_NONNULLPOINTER;
         Modal mModal;                 /**< Window is modal */
-        bool mShowTitle;              /**< Window has a title bar */
         bool mCloseWindowButton;      /**< Window has a close button */
         bool mDefaultVisible;         /**< Window's default visibility */
         bool mSaveVisible;            /**< Window will save visibility */

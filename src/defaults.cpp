@@ -628,6 +628,7 @@ DefaultsData* getPathsDefaults()
     AddDEF("shopbadge", "shop.xml");
     AddDEF("inactivebadge", "inactive.xml");
     AddDEF("awaybadge", "away.xml");
+    AddDEF("cutInsDir", "graphics/cutins");
 
     AddDEF("palettesDir", "");
     AddDEF("defaultPaletteFile", "palette.gpl");
