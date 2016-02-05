@@ -44,7 +44,7 @@ void NpcRecv::processNpcCutin(Net::MessageIn &msg)
 {
     Ea::NpcRecv::mRequestLang = false;
     const std::string image = msg.readString(64, "image name");
-    const CutInT cutin = fromInt(msg.readUInt8("type"), CutInT);
+    const CutInT cutin = static_cast<CutInT>(msg.readUInt8("type"));
     cutInWindow->show(image, cutin);
 }
 
