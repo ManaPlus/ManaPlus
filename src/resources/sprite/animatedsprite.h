@@ -120,9 +120,6 @@ class AnimatedSprite final : public Sprite
         void setLastTime(const int time) noexcept
         { mLastTime = time; }
 
-        const Frame *getFrame() const restrict2
-        { return mFrame; }
-
 #ifdef UNITTESTS
         SpriteDef *getSprite() restrict2
         { return mSprite; }
