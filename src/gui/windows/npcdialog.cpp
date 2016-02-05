@@ -172,6 +172,7 @@ NpcDialog::NpcDialog(const BeingId npcId) :
     mTextBox->setFont(gui->getNpcFont());
     mTextBox->setEnableKeys(true);
     mTextBox->setEnableTabs(true);
+    mTextBox->setEnableImages(true);
 
     mScrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
     mScrollArea->setVerticalScrollPolicy(ScrollArea::SHOW_ALWAYS);
