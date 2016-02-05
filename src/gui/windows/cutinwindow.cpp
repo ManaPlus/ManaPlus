@@ -24,8 +24,12 @@
 
 #include "configuration.h"
 
-#include "resources/image.h"
-#include "resources/resourcemanager.h"
+#include "const/utils/timer.h"
+
+#include "resources/sprite/animatedsprite.h"
+
+#include "utils/delete2.h"
+#include "utils/timer.h"
 
 #include "debug.h"
 
@@ -48,16 +52,7 @@ CutInWindow::CutInWindow() :
 
 CutInWindow::~CutInWindow()
 {
-    deleteImage();
-}
-
-void CutInWindow::deleteImage()
-{
-    if (mImage)
-    {
-        mImage->decRef();
-        mImage = nullptr;
-    }
+    delete2(mImage);
 }
 
 void CutInWindow::draw(Graphics *graphics)
@@ -75,35 +70,37 @@ void CutInWindow::safeDraw(Graphics *graphics)
 void CutInWindow::draw2(Graphics *const graphics)
 {
     if (mImage)
-        graphics->drawImage(mImage, mPadding, mTitleBarHeight);
+        mImage->drawRaw(graphics, mPadding, mTitleBarHeight);
 }
 
 void CutInWindow::show(const std::string &name,
                        const CutIn cutin)
 {
-    deleteImage();
+    delete2(mImage);
     if (name.empty())
     {
         setVisible(Visible_false);
     }
     else
     {
-        mImage = resourceManager->getImage(
+        mImage = AnimatedSprite::load(
             std::string(paths.getStringValue("cutInsDir")).append(
             "/").append(
             name).append(
-            ".png"));
+            ".xml"));
         if (mImage)
         {
+            mImage->update(1);
             const bool showTitle = (cutin == CutIn::MovableClose);
             if (showTitle)
                 mTitleBarHeight = mOldTitleBarHeight;
             else
                 mTitleBarHeight = mPadding;
-            const int width = mImage->mBounds.w + 2 * mPadding;
-            const int height = mImage->mBounds.h + mTitleBarHeight
+            const int width = mImage->getWidth() + 2 * mPadding;
+            const int height = mImage->getHeight() + mTitleBarHeight
                 + mPadding;
 
+            logger->log("detected sizes: %d, %d", mImage->getWidth(), mImage->getHeight());
             const int screenWidth = mainGraphics->mWidth;
             const int screenHeight = mainGraphics->mHeight;
 
@@ -139,5 +136,14 @@ void CutInWindow::show(const std::string &name,
             setVisible(Visible_true);
             requestMoveToTop();
         }
+    }
+}
+
+void CutInWindow::logic()
+{
+    if (mImage)
+    {
+        const int time = tick_time * MILLISECONDS_IN_A_TICK;
+        mImage->update(time);
     }
 }

@@ -330,6 +330,22 @@ void AnimatedSprite::draw(Graphics *restrict const graphics,
         posX + mFrame->offsetX, posY + mFrame->offsetY);
 }
 
+void AnimatedSprite::drawRaw(Graphics *restrict const graphics,
+                             const int posX,
+                             const int posY) const restrict2
+{
+    if (!mFrame || !mFrame->image)
+        return;
+
+    Image *restrict const image = mFrame->image;
+    if (image->getAlpha() != mAlpha)
+        image->setAlpha(mAlpha);
+
+    graphics->drawImage(image,
+        posX,
+        posY);
+}
+
 bool AnimatedSprite::setSpriteDirection(const SpriteDirection::Type direction)
                                         restrict2
 {

@@ -27,7 +27,7 @@
 
 #include "enums/cutin.h"
 
-class Image;
+class AnimatedSprite;
 
 class CutInWindow final : public Window
 {
@@ -47,10 +47,10 @@ class CutInWindow final : public Window
         void show(const std::string &name,
                   const CutIn cutin);
 
-    private:
-        void deleteImage();
+        void logic() override final;
 
-        Image *mImage;
+    private:
+        AnimatedSprite *mImage;
         int mOldTitleBarHeight;
 };
 

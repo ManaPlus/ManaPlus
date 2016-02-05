@@ -73,6 +73,10 @@ class AnimatedSprite final : public Sprite
                   const int posX,
                   const int posY) const restrict2 override final A_NONNULL(2);
 
+        void drawRaw(Graphics *restrict const graphics,
+                     const int posX,
+                     const int posY) const restrict2 A_NONNULL(2);
+
         int getWidth() const restrict2 override final A_WARN_UNUSED;
 
         int getHeight() const restrict2 override final A_WARN_UNUSED;
@@ -115,6 +119,9 @@ class AnimatedSprite final : public Sprite
 
         void setLastTime(const int time) noexcept
         { mLastTime = time; }
+
+        const Frame *getFrame() const restrict2
+        { return mFrame; }
 
 #ifdef UNITTESTS
         SpriteDef *getSprite() restrict2
