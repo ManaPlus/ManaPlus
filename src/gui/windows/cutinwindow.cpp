@@ -74,7 +74,7 @@ void CutInWindow::draw2(Graphics *const graphics)
 }
 
 void CutInWindow::show(const std::string &name,
-                       const CutIn cutin)
+                       const CutInT cutin)
 {
     delete2(mImage);
     if (name.empty())

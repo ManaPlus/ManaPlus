@@ -45,7 +45,7 @@ class CutInWindow final : public Window
         void draw2(Graphics *const graphics) A_NONNULL(2);
 
         void show(const std::string &name,
-                  const CutIn cutin);
+                  const CutInT cutin);
 
         void logic() override final;
 
