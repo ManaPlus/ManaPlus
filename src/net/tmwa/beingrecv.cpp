@@ -1283,6 +1283,8 @@ void BeingRecv::processBeingSelfEffect(Net::MessageIn &msg)
     Being *const being = actorManager->findBeing(id);
     if (!being)
     {
+        DEBUGLOGSTR("insible player?");
+        msg.readInt32("effect type");
         BLOCK_END("BeingRecv::processBeingSelfEffect")
         return;
     }
