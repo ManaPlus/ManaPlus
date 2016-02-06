@@ -139,6 +139,12 @@ void CutInWindow::show(const std::string &name,
     }
 }
 
+void CutInWindow::hide()
+{
+    delete2(mImage);
+    setVisible(Visible_false);
+}
+
 void CutInWindow::logic()
 {
     if (mImage)

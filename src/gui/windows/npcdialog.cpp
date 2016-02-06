@@ -39,6 +39,9 @@
 
 #include "gui/popups/popupmenu.h"
 
+#ifdef EATHENA_SUPPORT
+#include "gui/windows/cutinwindow.h"
+#endif
 #include "gui/windows/inventorywindow.h"
 
 #include "gui/widgets/browserbox.h"
@@ -325,6 +328,10 @@ void NpcDialog::action(const ActionEvent &event)
         else if (mActionState == NPC_ACTION_CLOSE
                  || mActionState == NPC_ACTION_WAIT)
         {
+#ifdef EATHENA_SUPPORT
+            if (cutInWindow)
+                cutInWindow->hide();
+#endif
             closeDialog();
         }
         else if (mActionState == NPC_ACTION_INPUT)
@@ -601,6 +608,10 @@ void NpcDialog::action(const ActionEvent &event)
                     npcHandler->listInput(mNpcId, 255);
                     break;
             }
+#ifdef EATHENA_SUPPORT
+            if (cutInWindow)
+                cutInWindow->hide();
+#endif
             closeDialog();
         }
     }

@@ -47,6 +47,8 @@ class CutInWindow final : public Window
         void show(const std::string &name,
                   const CutInT cutin);
 
+        void hide();
+
         void logic() override final;
 
     private:
