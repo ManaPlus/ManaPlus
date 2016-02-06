@@ -126,9 +126,9 @@ Color Color::operator-(const Color& color) const
 
 Color Color::operator*(const float value) const
 {
-    Color result(static_cast<int>(static_cast<float>(r) * value),
-                 static_cast<int>(static_cast<float>(g) * value),
-                 static_cast<int>(static_cast<float>(b) * value),
+    Color result(static_cast<unsigned int>(static_cast<float>(r) * value),
+                 static_cast<unsigned int>(static_cast<float>(g) * value),
+                 static_cast<unsigned int>(static_cast<float>(b) * value),
                  a);
 
     result.r = (result.r > 255U ? 255U : result.r);

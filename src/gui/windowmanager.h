@@ -37,7 +37,7 @@ namespace WindowManager
 
     bool isKeyboardVisible();
 
-    void setFramerate(const int fpsLimit);
+    void setFramerate(const unsigned int fpsLimit);
 
     int getFramerate() A_WARN_UNUSED;
 

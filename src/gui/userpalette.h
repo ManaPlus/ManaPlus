@@ -162,7 +162,8 @@ class UserPalette final : public Palette, public ListModel
          * @return the requested color
          */
         inline const Color &getColor(UserColorIdT type,
-                                     const int alpha = 255) A_WARN_UNUSED
+                                     const unsigned int alpha = 255U)
+                                     A_WARN_UNUSED
         {
             if (static_cast<size_t>(type) >= mColors.size())
             {
@@ -204,7 +205,8 @@ class UserPalette final : public Palette, public ListModel
                                               A_WARN_UNUSED
         {
             Color *const col = &mColors[static_cast<size_t>(type)].color;
-            col->a = mColors[static_cast<size_t>(type)].delay;
+            col->a = static_cast<unsigned int>(
+                mColors[static_cast<size_t>(type)].delay);
             return *col;
         }
 

@@ -36,10 +36,12 @@ ColorPage::ColorPage(const Widget2 *const widget,
     mItemPadding = mSkin ? mSkin->getOption("itemPadding") : 1;
     mRowHeight = 13;
     const Font *const font = getFont();
-    mRowHeight = font->getHeight() + 2 * mItemPadding;
+    mRowHeight = static_cast<unsigned int>(font->getHeight() +
+        2 * mItemPadding);
     if (mListModel)
     {
-        setHeight(getRowHeight() * mListModel->getNumberOfElements()
+        setHeight(static_cast<int>(getRowHeight()) *
+            mListModel->getNumberOfElements()
             + 2 * mPadding + 20);
     }
 }
@@ -55,11 +57,11 @@ void ColorPage::draw(Graphics *graphics)
     const ColorModel *const model = static_cast<ColorModel* const>(
         mListModel);
 
-    mHighlightColor.a = static_cast<int>(mAlpha * 255.0F);
+    mHighlightColor.a = static_cast<unsigned int>(mAlpha * 255.0F);
     updateAlpha();
     Font *const font = getFont();
 
-    const int rowHeight = getRowHeight();
+    const int rowHeight = static_cast<int>(getRowHeight());
     const int width = mDimension.width;
 
     if (mSelected >= 0)
@@ -113,8 +115,9 @@ void ColorPage::adjustSize()
     BLOCK_START("ColorPage::adjustSize")
     if (mListModel)
     {
-        setHeight(getRowHeight() * mListModel->getNumberOfElements()
-            + 2 * mPadding + 20);
+        setHeight(static_cast<int>(getRowHeight()) *
+            mListModel->getNumberOfElements() +
+            2 * mPadding + 20);
     }
     BLOCK_END("ColorPage::adjustSize")
 }

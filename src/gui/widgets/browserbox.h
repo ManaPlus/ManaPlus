@@ -193,7 +193,7 @@ class BrowserBox final : public Widget,
         void setForegroundColorAll(const Color &color1,
                                    const Color &color2);
 
-        int getDataWidth() const A_WARN_UNUSED
+        unsigned int getDataWidth() const A_WARN_UNUSED
         { return mDataWidth; }
 
         void moveSelectionUp();
@@ -230,7 +230,7 @@ class BrowserBox final : public Widget,
         int mYStart;
         int mUpdateTime;
         int mPadding;
-        int mNewLinePadding;
+        unsigned int mNewLinePadding;
         int mItemPadding;
         unsigned int mDataWidth;
 

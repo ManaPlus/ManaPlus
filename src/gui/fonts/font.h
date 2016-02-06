@@ -120,10 +120,10 @@ class Font final
 
         void slowLogic(const int rnd) restrict2;
 
-        int getCreateCounter() const restrict2 noexcept A_WARN_UNUSED
+        unsigned int getCreateCounter() const restrict2 noexcept A_WARN_UNUSED
         { return mCreateCounter; }
 
-        int getDeleteCounter() const restrict2 noexcept A_WARN_UNUSED
+        unsigned int getDeleteCounter() const restrict2 noexcept A_WARN_UNUSED
         { return mDeleteCounter; }
 
         int getStringIndexAt(const std::string &restrict text,
@@ -140,8 +140,8 @@ class Font final
                                   const int size);
 
         TTF_Font *restrict mFont;
-        unsigned mCreateCounter;
-        unsigned mDeleteCounter;
+        unsigned int mCreateCounter;
+        unsigned int mDeleteCounter;
 
         // Word surfaces cache
         int mCleanTime;

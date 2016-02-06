@@ -35,7 +35,7 @@
 #include "debug.h"
 
 #ifdef TMWA_SUPPORT
-TextCommand::TextCommand(const unsigned int id,
+TextCommand::TextCommand(const int id,
                          const std::string &symbol,
                          const std::string &command,
                          const std::string &comment,
@@ -44,7 +44,7 @@ TextCommand::TextCommand(const unsigned int id,
                          const unsigned int basicLvl,
                          const MagicSchoolT school,
                          const unsigned int schoolLvl,
-                         const int mana) :
+                         const unsigned int mana) :
     mCommand(command),
     mComment(comment),
     mSymbol(symbol),
@@ -62,7 +62,7 @@ TextCommand::TextCommand(const unsigned int id,
 }
 #endif
 
-TextCommand::TextCommand(const unsigned int id,
+TextCommand::TextCommand(const int id,
                          const std::string &symbol,
                          const std::string &command,
                          const std::string &comment,
@@ -75,7 +75,7 @@ TextCommand::TextCommand(const unsigned int id,
     mIcon(icon),
     mId(id),
 #ifdef TMWA_SUPPORT
-    mMana(0),
+    mMana(0U),
     mSchool(MagicSchool::SkillMagic),
     mBaseLvl(0),
     mSchoolLvl(0),
@@ -86,7 +86,7 @@ TextCommand::TextCommand(const unsigned int id,
     loadImage();
 }
 
-TextCommand::TextCommand(const unsigned int id) :
+TextCommand::TextCommand(const int id) :
     mCommand(""),
     mComment(""),
     mSymbol(""),
@@ -94,7 +94,7 @@ TextCommand::TextCommand(const unsigned int id) :
     mIcon(""),
     mId(id),
 #ifdef TMWA_SUPPORT
-    mMana(0),
+    mMana(0U),
     mSchool(MagicSchool::SkillMagic),
     mBaseLvl(0),
     mSchoolLvl(0),

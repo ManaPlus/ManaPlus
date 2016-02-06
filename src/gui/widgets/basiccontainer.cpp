@@ -312,7 +312,7 @@ void BasicContainer::drawChildren(Graphics *restrict graphics) restrict2
             if (widget->mFrameSize > 0)
             {
                 Rect rec = widget->mDimension;
-                const int frame = widget->mFrameSize;
+                const int frame = static_cast<int>(widget->mFrameSize);
                 const int frame2 = frame * 2;
                 rec.x -= frame;
                 rec.y -= frame;
@@ -352,7 +352,7 @@ void BasicContainer::safeDrawChildren(Graphics *restrict graphics) restrict2
             if (widget->mFrameSize > 0)
             {
                 Rect rec = widget->mDimension;
-                const int frame = widget->mFrameSize;
+                const int frame = static_cast<int>(widget->mFrameSize);
                 const int frame2 = frame * 2;
                 rec.x -= frame;
                 rec.y -= frame;

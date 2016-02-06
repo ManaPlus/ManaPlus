@@ -793,7 +793,7 @@ void ChangeDisplay::action(const ActionEvent &event)
         const int newbase = PlayerInfo::getStatBase(mId) + cnt;
         PlayerInfo::setStatBase(mId, newbase);
 
-        for (unsigned f = 0; f < mInc->getClickCount(); f ++)
+        for (int f = 0; f < mInc->getClickCount(); f ++)
         {
             playerHandler->increaseAttribute(mId);
             if (cnt != 1)

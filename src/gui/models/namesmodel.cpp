@@ -42,7 +42,7 @@ std::string NamesModel::getElementAt(int i)
 {
     if (i >= getNumberOfElements() || i < 0)
         return "???";
-    return mNames[i];
+    return mNames[static_cast<size_t>(i)];
 }
 
 void NamesModel::fillFromArray(const char *const *const arr, std::size_t sz)

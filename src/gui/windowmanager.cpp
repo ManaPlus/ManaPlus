@@ -161,7 +161,7 @@ void WindowManager::initTitle()
 #endif
 }
 
-void WindowManager::setFramerate(const int fpsLimit)
+void WindowManager::setFramerate(const unsigned int fpsLimit)
 {
     if (!fpsLimit)
         return;

@@ -74,7 +74,7 @@ void TextParticle::draw(Graphics *restrict const graphics,
     }
 
     Color color = *mColor;
-    color.a = static_cast<int>(alpha);
+    color.a = static_cast<unsigned int>(alpha);
 
     graphics->setColor(color);
     if (mOutline)

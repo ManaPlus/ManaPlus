@@ -235,7 +235,7 @@ void GuiTable::draw(Graphics* graphics)
     const int y = rect.y;
     if (mOpaque)
     {
-        mBackgroundColor.a = static_cast<int>(mAlpha * 255.0F);
+        mBackgroundColor.a = static_cast<unsigned int>(mAlpha * 255.0F);
         graphics->setColor(mBackgroundColor);
         graphics->fillRectangle(Rect(0, 0, width, height));
     }
@@ -250,30 +250,41 @@ void GuiTable::draw(Graphics* graphics)
     if (first_row < 0)
         first_row = 0;
 
-    unsigned rows_nr = 1 + (height / rHeight);  // May overestimate by one.
-    unsigned max_rows_nr;
+    unsigned int rows_nr = static_cast<unsigned int>(1 +
+        height / rHeight);  // May overestimate by one.
+    unsigned int max_rows_nr;
     if (mModel->getRows() < first_row)
-        max_rows_nr = 0;
+    {
+        max_rows_nr = 0U;
+    }
     else
-        max_rows_nr = mModel->getRows() - first_row;  // clip if neccessary:
+    {
+        max_rows_nr = static_cast<unsigned int>(
+            mModel->getRows() - first_row);  // clip if neccessary:
+    }
     if (max_rows_nr < rows_nr)
         rows_nr = max_rows_nr;
 
     // Now determine the first and last column
     // Take the easy way out; these are usually bounded and all visible.
     const unsigned first_column = 0;
-    const unsigned last_column1 = mModel->getColumns();
+    const unsigned last_column1 = static_cast<unsigned int>(
+        mModel->getColumns());
 
     int y_offset = first_row * rHeight;
 
-    for (unsigned r = first_row; r < first_row + rows_nr; ++r)
+    for (unsigned int r = static_cast<unsigned int>(first_row);
+         r < static_cast<unsigned int>(first_row) + rows_nr;
+         ++r)
     {
         int x_offset = 0;
 
         for (unsigned c = first_column; c + 1 <= last_column1; ++c)
         {
-            Widget *const widget = mModel->getElementAt(r, c);
-            const int cWidth = getColumnWidth(c);
+            Widget *const widget = mModel->getElementAt(static_cast<int>(r),
+                static_cast<int>(c));
+            const int cWidth = static_cast<int>(getColumnWidth(
+                static_cast<int>(c)));
             if (widget)
             {
                 Rect bounds(x_offset, y_offset, cWidth, rHeight);
@@ -288,7 +299,8 @@ void GuiTable::draw(Graphics* graphics)
 
                 if (mSelectedRow > -1)
                 {
-                    mHighlightColor.a = static_cast<int>(mAlpha * 255.0F);
+                    mHighlightColor.a = static_cast<unsigned int>(
+                        mAlpha * 255.0F);
                     graphics->setColor(mHighlightColor);
 
                     if (mLinewiseMode && r == static_cast<unsigned>(
@@ -341,7 +353,7 @@ void GuiTable::safeDraw(Graphics* graphics)
     const int y = rect.y;
     if (mOpaque)
     {
-        mBackgroundColor.a = static_cast<int>(mAlpha * 255.0F);
+        mBackgroundColor.a = static_cast<unsigned int>(mAlpha * 255.0F);
         graphics->setColor(mBackgroundColor);
         graphics->fillRectangle(Rect(0, 0, width, height));
     }
@@ -356,30 +368,41 @@ void GuiTable::safeDraw(Graphics* graphics)
     if (first_row < 0)
         first_row = 0;
 
-    unsigned rows_nr = 1 + (height / rHeight);  // May overestimate by one.
-    unsigned max_rows_nr;
+    unsigned int rows_nr = static_cast<unsigned int>(
+        1 + height / rHeight);  // May overestimate by one.
+    unsigned int max_rows_nr;
     if (mModel->getRows() < first_row)
+    {
         max_rows_nr = 0;
+    }
     else
-        max_rows_nr = mModel->getRows() - first_row;  // clip if neccessary:
+    {
+        max_rows_nr = static_cast<unsigned int>(
+            mModel->getRows() - first_row);  // clip if neccessary:
+    }
     if (max_rows_nr < rows_nr)
         rows_nr = max_rows_nr;
 
     // Now determine the first and last column
     // Take the easy way out; these are usually bounded and all visible.
-    const unsigned first_column = 0;
-    const unsigned last_column1 = mModel->getColumns();
+    const unsigned int first_column = 0;
+    const unsigned int last_column1 = static_cast<unsigned int>(
+        mModel->getColumns());
 
     int y_offset = first_row * rHeight;
 
-    for (unsigned r = first_row; r < first_row + rows_nr; ++r)
+    for (unsigned int r = static_cast<unsigned int>(first_row);
+         r < static_cast<unsigned int>(first_row + static_cast<int>(rows_nr));
+         ++r)
     {
         int x_offset = 0;
 
         for (unsigned c = first_column; c + 1 <= last_column1; ++c)
         {
-            Widget *const widget = mModel->getElementAt(r, c);
-            const int cWidth = getColumnWidth(c);
+            Widget *const widget = mModel->getElementAt(static_cast<int>(r),
+                static_cast<int>(c));
+            const int cWidth = static_cast<int>(getColumnWidth(
+                static_cast<int>(c)));
             if (widget)
             {
                 Rect bounds(x_offset, y_offset, cWidth, rHeight);
@@ -394,7 +417,8 @@ void GuiTable::safeDraw(Graphics* graphics)
 
                 if (mSelectedRow > -1)
                 {
-                    mHighlightColor.a = static_cast<int>(mAlpha * 255.0F);
+                    mHighlightColor.a = static_cast<unsigned int>(
+                        mAlpha * 255.0F);
                     graphics->setColor(mHighlightColor);
 
                     if (mLinewiseMode && r == static_cast<unsigned>(

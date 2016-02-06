@@ -122,7 +122,8 @@ ListBox::ListBox(const Widget2 *const widget,
     }
 
     const Font *const font = getFont();
-    mRowHeight = font->getHeight() + 2 * mItemPadding;
+    mRowHeight = static_cast<unsigned int>(
+        font->getHeight() + 2 * mItemPadding);
 }
 
 void ListBox::postInit()
@@ -156,10 +157,10 @@ void ListBox::draw(Graphics *graphics)
     BLOCK_START("ListBox::draw")
     updateAlpha();
 
-    mHighlightColor.a = static_cast<int>(mAlpha * 255.0F);
+    mHighlightColor.a = static_cast<unsigned int>(mAlpha * 255.0F);
     graphics->setColor(mHighlightColor);
     Font *const font = getFont();
-    const int rowHeight = getRowHeight();
+    const int rowHeight = static_cast<int>(getRowHeight());
     const int width = mDimension.width;
 
     if (mCenterText)
@@ -358,8 +359,8 @@ void ListBox::adjustSize()
     BLOCK_START("ListBox::adjustSize")
     if (mListModel)
     {
-        setHeight(getRowHeight() * mListModel->getNumberOfElements()
-            + 2 * mPadding);
+        setHeight(static_cast<int>(getRowHeight()) *
+            mListModel->getNumberOfElements() + 2 * mPadding);
     }
     BLOCK_END("ListBox::adjustSize")
 }
@@ -375,7 +376,7 @@ int ListBox::getSelectionByMouse(const int y) const
 {
     if (y < mPadding)
         return -1;
-    return static_cast<unsigned int>(y - mPadding) / getRowHeight();
+    return (y - mPadding) / static_cast<int>(getRowHeight());
 }
 
 void ListBox::setSelected(const int selected)
@@ -399,9 +400,9 @@ void ListBox::setSelected(const int selected)
     if (mSelected < 0)
         scroll.y = 0;
     else
-        scroll.y = getRowHeight() * mSelected;
+        scroll.y = static_cast<int>(getRowHeight()) * mSelected;
 
-    scroll.height = getRowHeight();
+    scroll.height = static_cast<int>(getRowHeight());
     showPart(scroll);
 
     distributeValueChangedEvent();

@@ -131,7 +131,8 @@ class TextField notfinal : public Widget,
         /**
          * Set the range on the field if it is numeric
          */
-        void setRange(const int min, const int max)
+        void setRange(const int min,
+                      const int max)
         {
             mMinimum = min;
             mMaximum = max;
@@ -274,7 +275,7 @@ class TextField notfinal : public Widget,
         static float mAlpha;
         static ImageRect skin;
         int mMinimum;
-        unsigned int mMaximum;
+        int mMaximum;
         int mLastEventPaste;
         int mPadding;
         bool mNumeric;

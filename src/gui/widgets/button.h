@@ -168,7 +168,7 @@ class Button final : public Widget,
         std::string getDescription() const A_WARN_UNUSED
         { return mDescription; }
 
-        unsigned getClickCount() const A_WARN_UNUSED
+        int getClickCount() const A_WARN_UNUSED
         { return mClickCount; }
 
         void setTag(int tag)
@@ -309,7 +309,7 @@ class Button final : public Widget,
          */
         Graphics::Alignment mAlignment;
 
-        unsigned mClickCount;
+        int mClickCount;
 
         /**
          * Holds the spacing between the border and the caption.

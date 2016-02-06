@@ -83,9 +83,9 @@ class CompoundSprite notfinal : public Sprite
 
         void addSprite(Sprite *const sprite);
 
-        void setSprite(const int layer, Sprite *const sprite);
+        void setSprite(const size_t layer, Sprite *const sprite);
 
-        Sprite *getSprite(int layer) const A_WARN_UNUSED
+        Sprite *getSprite(const size_t layer) const A_WARN_UNUSED
         { return mSprites.at(layer); }
 
         void removeSprite(const int layer);

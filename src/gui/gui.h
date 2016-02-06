@@ -473,7 +473,7 @@ class Gui final
         /**
          * Holds the last mouse press time stamp.
          */
-        int mLastMousePressTimeStamp;
+        unsigned int mLastMousePressTimeStamp;
 
         /**
          * Holds the last mouse x coordinate.

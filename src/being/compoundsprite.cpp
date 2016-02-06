@@ -261,7 +261,7 @@ void CompoundSprite::addSprite(Sprite *const sprite)
     mNeedsRedraw = true;
 }
 
-void CompoundSprite::setSprite(const int layer, Sprite *const sprite)
+void CompoundSprite::setSprite(const size_t layer, Sprite *const sprite)
 {
     // Skip if it won't change anything
     if (mSprites.at(layer) == sprite)

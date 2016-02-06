@@ -202,7 +202,8 @@ Window::Window(const std::string &caption,
             {
                 mCaptionAlign = Graphics::LEFT;
             }
-            setTitleBarHeight(getOption("titlebarHeight"));
+            setTitleBarHeight(static_cast<unsigned int>(
+                getOption("titlebarHeight")));
             if (!mTitleBarHeight)
                 mTitleBarHeight = mCaptionFont->getHeight() + mPadding;
 
@@ -1287,8 +1288,10 @@ int Window::getResizeHandles(const MouseEvent &event)
 
     if (!mStickyButtonLock || !mSticky)
     {
-        if (mGrip && (y > mTitleBarHeight || (y < mPadding
-            && mTitleBarHeight > mPadding)))
+        if (mGrip &&
+            (y > mTitleBarHeight ||
+            (static_cast<int>(y) < mPadding &&
+            static_cast<int>(mTitleBarHeight) > mPadding)))
         {
             if (!getWindowArea().isPointInRect(x, y)
                 && event.getSource() == this)
@@ -1315,8 +1318,9 @@ bool Window::isResizeAllowed(const MouseEvent &event) const
 {
     const int y = event.getY();
 
-    if (mGrip && (y > static_cast<int>(mTitleBarHeight)
-        || y < static_cast<int>(mPadding)))
+    if (mGrip &&
+        (y > static_cast<int>(mTitleBarHeight) ||
+        y < mPadding))
     {
         const int x = event.getX();
 

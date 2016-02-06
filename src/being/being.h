@@ -664,19 +664,19 @@ class Being notfinal : public ActorSprite,
         void setOtherTime() restrict2 noexcept
         { mOtherTime = cur_time; }
 
-        unsigned int getMoveTime() const restrict2 noexcept
+        int getMoveTime() const restrict2 noexcept
         { return mMoveTime; }
 
-        unsigned int getAttackTime() const restrict2 noexcept
+        int getAttackTime() const restrict2 noexcept
         { return mAttackTime; }
 
-        unsigned int getTalkTime() const restrict2 noexcept
+        int getTalkTime() const restrict2 noexcept
         { return mTalkTime; }
 
-        unsigned int getTestTime() const restrict2 noexcept
+        int getTestTime() const restrict2 noexcept
         { return mTestTime; }
 
-        unsigned int getOtherTime() const restrict2 noexcept
+        int getOtherTime() const restrict2 noexcept
         { return mOtherTime; }
 
         void resetCounters() restrict2;
@@ -1168,11 +1168,11 @@ class Being notfinal : public ActorSprite,
         static uint8_t mShowBadges;
         static int mAwayEffect;
 
-        unsigned int mMoveTime;
-        unsigned int mAttackTime;
-        unsigned int mTalkTime;
-        unsigned int mOtherTime;
-        unsigned int mTestTime;
+        int mMoveTime;
+        int mAttackTime;
+        int mTalkTime;
+        int mOtherTime;
+        int mTestTime;
         int mAttackDelay;
         int mMinHit;
         int mMaxHit;

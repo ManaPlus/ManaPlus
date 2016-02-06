@@ -49,7 +49,7 @@ class PasswordField final : public TextField
         void safeDraw(Graphics *graphics) override final A_NONNULL(2);
 
     protected:
-        unsigned char mPasswordChar;
+        char mPasswordChar;
 };
 
 #endif  // GUI_WIDGETS_PASSWORDFIELD_H

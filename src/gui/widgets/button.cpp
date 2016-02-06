@@ -425,7 +425,7 @@ void Button::loadImageSet(const std::string &imageName)
         return;
     mImages = new Image*[BUTTON_COUNT];
     mImages[0] = nullptr;
-    for (int f = 0; f < BUTTON_COUNT; f ++)
+    for (size_t f = 0; f < BUTTON_COUNT; f ++)
     {
         Image *const img = mImageSet->get(f);
         if (img)

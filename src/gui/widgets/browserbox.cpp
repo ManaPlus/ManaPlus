@@ -99,7 +99,7 @@ BrowserBox::BrowserBox(const Widget2 *const widget,
     mYStart(0),
     mUpdateTime(-1),
     mPadding(0),
-    mNewLinePadding(15),
+    mNewLinePadding(15U),
     mItemPadding(0),
     mDataWidth(0),
     mHighlightColor(getThemeColor(ThemeColorId::HIGHLIGHT)),
@@ -132,7 +132,8 @@ BrowserBox::BrowserBox(const Widget2 *const widget,
     if (mSkin)
     {
         mPadding = mSkin->getPadding();
-        mNewLinePadding = mSkin->getOption("newLinePadding", 15);
+        mNewLinePadding = static_cast<unsigned int>(
+            mSkin->getOption("newLinePadding", 15));
         mItemPadding = mSkin->getOption("itemPadding");
         if (mSkin->getOption("highlightBackground"))
             mHighMode |= BACKGROUND;
@@ -205,7 +206,7 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
         BrowserLink bLink;
 
         // Check for links in format "@@link|Caption@@"
-        const int sz = static_cast<int>(mTextRows.size());
+        const unsigned int sz = mTextRows.size();
 
         if (mEnableKeys)
         {
@@ -234,7 +235,7 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
                 break;
             bLink.link = tmp.substr(idx1 + 2, idx2 - (idx1 + 2));
             bLink.caption = tmp.substr(idx2 + 1, idx3 - (idx2 + 1));
-            bLink.y1 = sz * font->getHeight();
+            bLink.y1 = static_cast<int>(sz) * font->getHeight();
             bLink.y2 = bLink.y1 + font->getHeight();
             if (bLink.caption.empty())
             {
@@ -310,8 +311,9 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
             if (idx2 == std::string::npos)
                 break;
 
-            const unsigned int newSize = atoi(newRow.substr(
-                idx1 + 2, idx2 - idx1 - 2).c_str());
+            const unsigned int newSize = static_cast<unsigned int>(
+                atoi(newRow.substr(
+                idx1 + 2, idx2 - idx1 - 2).c_str()));
             std::string str = newRow.substr(0, idx1);
             while (str.size() < newSize)
                 str.append(" ");
@@ -372,30 +374,31 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
         unsigned int y = 0;
         unsigned int nextChar;
         const char *const hyphen = "~";
-        const int hyphenWidth = font->getWidth(hyphen);
-        unsigned x = 0;
+        const unsigned int hyphenWidth = static_cast<unsigned int>(
+            font->getWidth(hyphen));
+        unsigned int x = 0;
 
         FOR_EACH (TextRowCIter, i, mTextRows)
         {
             std::string tempRow = *i;
-            for (unsigned int j = 0, sz = static_cast<unsigned int>(
-                 tempRow.size()); j < sz; j++)
+            for (unsigned int j = 0, sz = tempRow.size(); j < sz; j++)
             {
                 const std::string character = tempRow.substr(j, 1);
-                x += font->getWidth(character);
+                x += static_cast<unsigned int>(font->getWidth(character));
                 nextChar = j + 1;
 
                 // Wraping between words (at blank spaces)
                 if (nextChar < sz && tempRow.at(nextChar) == ' ')
                 {
-                    int nextSpacePos = static_cast<int>(
+                    unsigned int nextSpacePos = static_cast<unsigned int>(
                         tempRow.find(" ", (nextChar + 1)));
                     if (nextSpacePos <= 0)
-                        nextSpacePos = static_cast<int>(sz) - 1;
+                        nextSpacePos = static_cast<unsigned int>(sz) - 1U;
 
-                    const unsigned nextWordWidth = font->getWidth(
+                    const unsigned int nextWordWidth =
+                        static_cast<unsigned int>(font->getWidth(
                         tempRow.substr(nextChar,
-                        (nextSpacePos - nextChar)));
+                        (nextSpacePos - nextChar))));
 
                     if ((x + nextWordWidth + 10)
                         > static_cast<unsigned>(getWidth()))
@@ -415,7 +418,8 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
             }
         }
 
-        setHeight(fontHeight * (static_cast<int>(mTextRows.size()) + y));
+        setHeight(fontHeight * (static_cast<int>(
+            static_cast<unsigned int>(mTextRows.size()) + y)));
     }
     else
     {
@@ -506,7 +510,7 @@ void BrowserBox::draw(Graphics *graphics)
     {
         if ((mHighMode & BACKGROUND))
         {
-            BrowserLink &link = mLinks[mSelectedLink];
+            BrowserLink &link = mLinks[static_cast<size_t>(mSelectedLink)];
             graphics->setColor(mHighlightColor);
             graphics->fillRectangle(Rect(
                 link.x1,
@@ -517,7 +521,7 @@ void BrowserBox::draw(Graphics *graphics)
 
         if ((mHighMode & UNDERLINE))
         {
-            BrowserLink &link = mLinks[mSelectedLink];
+            BrowserLink &link = mLinks[static_cast<size_t>(mSelectedLink)];
             graphics->setColor(mHyperLinkColor);
             graphics->drawLine(
                 link.x1,
@@ -571,13 +575,13 @@ void BrowserBox::safeDraw(Graphics *graphics)
 
 int BrowserBox::calcHeight()
 {
-    unsigned int y = mPadding;
+    unsigned int y = static_cast<unsigned int>(mPadding);
     int wrappedLines = 0;
     int moreHeight = 0;
     int maxWidth = mDimension.width - mPadding;
     int link = 0;
     bool bold = false;
-    unsigned int wWidth = maxWidth;
+    unsigned int wWidth = static_cast<unsigned int>(maxWidth);
 
     if (maxWidth < 0)
         return 1;
@@ -594,7 +598,7 @@ int BrowserBox::calcHeight()
 
     FOR_EACH (TextRowCIter, i, mTextRows)
     {
-        unsigned int x = mPadding;
+        unsigned int x = static_cast<unsigned int>(mPadding);
         const std::string row = *(i);
         bool wrapped = false;
         int objects = 0;
@@ -603,14 +607,16 @@ int BrowserBox::calcHeight()
         if (row.find("---", 0) == 0)
         {
             const int dashWidth = fontWidthMinus;
-            for (x = mPadding; x < wWidth; x ++)
+            for (x = static_cast<unsigned int>(mPadding); x < wWidth; x ++)
             {
-                mLineParts.push_back(LinePart(x, y + mItemPadding,
+                mLineParts.push_back(LinePart(static_cast<int>(x),
+                    static_cast<int>(y) + mItemPadding,
                     selColor[0], selColor[1], "-", false));
-                x += dashWidth - 2;
+                x += static_cast<unsigned int>(static_cast<int>(
+                    dashWidth) - 2);
             }
 
-            y += fontHeight;
+            y += static_cast<unsigned int>(fontHeight);
             continue;
         }
         else if (mEnableImages && row.find("~~~", 0) == 0)
@@ -623,9 +629,10 @@ int BrowserBox::calcHeight()
             if (img)
             {
                 img->incRef();
-                mLineParts.push_back(LinePart(x, y + mItemPadding,
+                mLineParts.push_back(LinePart(static_cast<int>(x),
+                    static_cast<int>(y) + mItemPadding,
                     selColor[0], selColor[1], img));
-                y += img->getHeight() + 2;
+                y += static_cast<unsigned int>(img->getHeight() + 2);
                 moreHeight += img->getHeight();
                 if (img->getWidth() > maxWidth)
                     maxWidth = img->getWidth() + 2;
@@ -638,7 +645,7 @@ int BrowserBox::calcHeight()
         prevColor[1] = selColor[1];
         bold = false;
 
-        const int xPadding = mNewLinePadding + mPadding;
+        const int xPadding = static_cast<int>(mNewLinePadding) + mPadding;
 
         for (size_t start = 0, end = std::string::npos;
              start != std::string::npos;
@@ -649,8 +656,8 @@ int BrowserBox::calcHeight()
             // Wrapped line continuation shall be indented
             if (wrapped)
             {
-                y += fontHeight;
-                x = xPadding;
+                y += static_cast<unsigned int>(fontHeight);
+                x = static_cast<unsigned int>(xPadding);
                 wrapped = false;
             }
 
@@ -758,14 +765,15 @@ int BrowserBox::calcHeight()
 
                     if (c == '<' && link < static_cast<signed>(mLinks.size()))
                     {
-                        const int size =
-                            font->getWidth(mLinks[link].caption) + 1;
+                        const int size = font->getWidth(
+                            mLinks[static_cast<size_t>(link)].caption) + 1;
 
-                        BrowserLink &linkRef = mLinks[link];
-                        linkRef.x1 = x;
-                        linkRef.y1 = y;
+                        BrowserLink &linkRef = mLinks[static_cast<size_t>(
+                            link)];
+                        linkRef.x1 = static_cast<int>(x);
+                        linkRef.y1 = static_cast<int>(y);
                         linkRef.x2 = linkRef.x1 + size;
-                        linkRef.y2 = y + fontHeight - 1;
+                        linkRef.y2 = static_cast<int>(y) + fontHeight - 1;
                         link++;
                     }
 
@@ -796,11 +804,13 @@ int BrowserBox::calcHeight()
                                 const size_t sz = mEmotes->size();
                                 if (static_cast<size_t>(cid) < sz)
                                 {
-                                    Image *const img = mEmotes->get(cid);
+                                    Image *const img = mEmotes->get(
+                                        static_cast<size_t>(cid));
                                     if (img)
                                     {
                                         mLineParts.push_back(LinePart(
-                                            x, y + mItemPadding,
+                                            static_cast<int>(x),
+                                            static_cast<int>(y) + mItemPadding,
                                             selColor[0], selColor[1], img));
                                         x += 18;
                                     }
@@ -834,7 +844,7 @@ int BrowserBox::calcHeight()
 
             // Auto wrap mode
             if (mMode == AUTO_WRAP && wWidth > 0 && width > 0
-                && (x + width + 10) > wWidth)
+                && (x + static_cast<unsigned int>(width) + 10) > wWidth)
             {
                 bool forced = false;
 
@@ -852,7 +862,7 @@ int BrowserBox::calcHeight()
                     {
                         forced = true;
                         end = row.size();
-                        x += hyphenWidth;  // Account for the wrap-notifier
+                        x += static_cast<unsigned int>(hyphenWidth);
                         continue;
                     }
 
@@ -867,13 +877,16 @@ int BrowserBox::calcHeight()
                     else
                         width = font->getWidth(part);
                 }
-                while (end > start && width > 0 && (x + width + 10) > wWidth);
+                while (end > start &&
+                       width > 0 &&
+                       (x + static_cast<unsigned int>(width) + 10) > wWidth);
 
                 if (forced)
                 {
-                    x -= hyphenWidth;  // Remove the wrap-notifier accounting
+                    x -= static_cast<unsigned int>(hyphenWidth);
                     mLineParts.push_back(LinePart(
-                        wWidth - hyphenWidth, y + mItemPadding,
+                        static_cast<int>(wWidth) - hyphenWidth,
+                        static_cast<int>(y) + mItemPadding,
                         selColor[0], selColor[1], hyphen, bold));
                     end++;  // Skip to the next character
                 }
@@ -886,7 +899,8 @@ int BrowserBox::calcHeight()
                 wrappedLines++;
             }
 
-            mLineParts.push_back(LinePart(x, y + mItemPadding,
+            mLineParts.push_back(LinePart(static_cast<int>(x),
+                static_cast<int>(y) + mItemPadding,
                 selColor[0], selColor[1], part.c_str(), bold));
 
             if (bold)
@@ -897,11 +911,11 @@ int BrowserBox::calcHeight()
             if (mMode == AUTO_WRAP && (width == 0 && !processed))
                 break;
 
-            x += width;
+            x += static_cast<unsigned int>(width);
             if (x > mDataWidth)
                 mDataWidth = x;
         }
-        y += fontHeight;
+        y += static_cast<unsigned int>(fontHeight);
     }
     if (static_cast<signed>(wWidth) != maxWidth)
         setWidth(maxWidth);
@@ -988,5 +1002,6 @@ void BrowserBox::selectSelection()
         return;
     }
 
-    mLinkHandler->handleLink(mLinks[mSelectedLink].link, nullptr);
+    mLinkHandler->handleLink(mLinks[static_cast<size_t>(mSelectedLink)].link,
+        nullptr);
 }

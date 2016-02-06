@@ -161,7 +161,7 @@ void ProgressBar::draw(Graphics *graphics)
     }
 
     updateAlpha();
-    mBackgroundColor.a = static_cast<int>(mAlpha * 255);
+    mBackgroundColor.a = static_cast<unsigned int>(mAlpha * 255);
 
     if (mRedraw || graphics->getRedraw())
     {
@@ -240,7 +240,7 @@ void ProgressBar::safeDraw(Graphics *graphics)
     }
 
     updateAlpha();
-    mBackgroundColor.a = static_cast<int>(mAlpha * 255);
+    mBackgroundColor.a = static_cast<unsigned int>(mAlpha * 255);
 
     graphics->drawImageRect(0, 0, mDimension.width, mDimension.height,
         mSkin->getBorder());

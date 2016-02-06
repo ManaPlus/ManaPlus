@@ -112,7 +112,7 @@ Gui::Gui() :
     mFocusHandler(new FocusHandler),
     mKeyListeners(),
     mLastMousePressButton(MouseButton::EMPTY),
-    mLastMousePressTimeStamp(0),
+    mLastMousePressTimeStamp(0U),
     mLastMouseX(0),
     mLastMouseY(0),
     mClickCount(1),
@@ -501,7 +501,7 @@ void Gui::draw()
         }
 #endif
         Image *const mouseCursor = mMouseCursors->get(
-            static_cast<int>(mCursorType));
+            static_cast<size_t>(mCursorType));
         if (mouseCursor)
         {
             mouseCursor->setAlpha(mMouseCursorAlpha);
@@ -638,7 +638,7 @@ void Gui::handleMouseMoved(const MouseInput &mouseInput)
                                          true,
                                          true);
                     mClickCount = 1;
-                    mLastMousePressTimeStamp = 0;
+                    mLastMousePressTimeStamp = 0U;
                     mWidgetWithMouseQueue.erase(iter);
                     break;
                 }
@@ -741,7 +741,7 @@ void Gui::handleMousePressed(const MouseInput &mouseInput)
     const int x = mouseInput.getX();
     const int y = mouseInput.getY();
     const MouseButtonT button = mouseInput.getButton();
-    const int timeStamp = mouseInput.getTimeStamp();
+    const unsigned int timeStamp = mouseInput.getTimeStamp();
 
     Widget *sourceWidget = getMouseEventSource(x, y);
 
@@ -761,8 +761,9 @@ void Gui::handleMousePressed(const MouseInput &mouseInput)
         sourceWidget->requestFocus();
     }
 
-    if (mDoubleClick && timeStamp - mLastMousePressTimeStamp < 250
-        && mLastMousePressButton == button)
+    if (mDoubleClick &&
+        timeStamp - mLastMousePressTimeStamp < 250U &&
+        mLastMousePressButton == button)
     {
         mClickCount ++;
     }
@@ -1466,7 +1467,7 @@ int Gui::getMousePressLength() const
 {
     if (!mLastMousePressTimeStamp)
         return 0;
-    int ticks = SDL_GetTicks();
+    unsigned int ticks = SDL_GetTicks();
     if (ticks > mLastMousePressTimeStamp)
         return ticks - mLastMousePressTimeStamp;
     return mLastMousePressTimeStamp - ticks;

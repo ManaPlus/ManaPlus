@@ -73,7 +73,7 @@ class Palette notfinal
          * @return the color char of the color with the given index
          */
         inline char getColorChar(const int type) const A_WARN_UNUSED
-        { return mColors[type].ch; }
+        { return mColors[static_cast<size_t>(type)].ch; }
 
         /**
          * Updates all colors, that are non-static.

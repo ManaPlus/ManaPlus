@@ -45,7 +45,7 @@ std::string ColorModel::getElementAt(int i)
 {
     if (i >= getNumberOfElements() || i < 0)
         return "???";
-    return mNames[i];
+    return mNames[static_cast<size_t>(i)];
 }
 
 const ColorPair *ColorModel::getColorAt(const int i) const
@@ -53,7 +53,7 @@ const ColorPair *ColorModel::getColorAt(const int i) const
     if (i >= static_cast<int>(mColors.size()) || i < 0)
         return &mColors[0];
 
-    return &mColors[i];
+    return &mColors[static_cast<size_t>(i)];
 }
 
 void ColorModel::add(const std::string &name, const Color *const color1,

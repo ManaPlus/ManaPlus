@@ -49,7 +49,7 @@ class ModeListModel final : public ListModel
          * Returns element from container.
          */
         std::string getElementAt(int i) override final
-        { return mVideoModes[i]; }
+        { return mVideoModes[static_cast<size_t>(i)]; }
 
         /**
          * Returns the index corresponding to the given video mode.

@@ -133,7 +133,8 @@ class Theme final : public Palette,
          * @return the requested color
          */
         inline const Color &getColor(ThemeColorIdT type,
-                                     const int alpha = 255) A_WARN_UNUSED
+                                     const unsigned int alpha = 255U)
+                                     A_WARN_UNUSED
         {
             if (static_cast<size_t>(type) >= mColors.size())
             {

@@ -43,7 +43,7 @@ class TextCommand final
         /**
          * Constructor.
          */
-        TextCommand(const unsigned int id,
+        TextCommand(const int id,
                     const std::string &symbol,
                     const std::string &command,
                     const std::string &comment,
@@ -51,14 +51,14 @@ class TextCommand final
                     const std::string &icon,
                     const unsigned int basicLvl,
                     const MagicSchoolT school = MagicSchool::SkillMagic,
-                    const unsigned int schoolLvl = 0,
-                    const int mana = 0);
+                    const unsigned int schoolLvl = 0U,
+                    const unsigned int mana = 0U);
 #endif
 
         /**
          * Constructor.
          */
-        TextCommand(const unsigned int id,
+        TextCommand(const int id,
                     const std::string &symbol,
                     const std::string &command,
                     const std::string &comment,
@@ -68,7 +68,7 @@ class TextCommand final
         /**
          * Constructor.
          */
-        explicit TextCommand(const unsigned int id);
+        explicit TextCommand(const int id);
 
         A_DELETE_COPY(TextCommand)
 
@@ -89,7 +89,7 @@ class TextCommand final
         std::string getSymbol() const A_WARN_UNUSED
         { return mSymbol; }
 
-        unsigned int getId() const A_WARN_UNUSED
+        int getId() const A_WARN_UNUSED
         { return mId; }
 
         CommandTargetT getTargetType() const A_WARN_UNUSED
@@ -99,7 +99,7 @@ class TextCommand final
         { return mIcon; }
 
 #ifdef TMWA_SUPPORT
-        int getMana() const A_WARN_UNUSED
+        unsigned int getMana() const A_WARN_UNUSED
         { return mMana; }
 
         MagicSchoolT getSchool() const A_WARN_UNUSED
@@ -139,7 +139,7 @@ class TextCommand final
         void setSymbol(const std::string &symbol)
         { mSymbol = symbol; }
 
-        void setId(const unsigned int id)
+        void setId(const int id)
         { mId = id; }
 
         void setTargetType(const CommandTargetT targetType)
@@ -163,9 +163,9 @@ class TextCommand final
         std::string mSymbol;
         CommandTargetT mTargetType;
         std::string mIcon;
-        unsigned int mId;
+        int mId;
 #ifdef TMWA_SUPPORT
-        int mMana;
+        unsigned int mMana;
         MagicSchoolT mSchool;
         unsigned mBaseLvl;
         unsigned mSchoolLvl;

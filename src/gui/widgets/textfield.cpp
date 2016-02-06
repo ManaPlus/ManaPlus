@@ -282,7 +282,7 @@ int TextField::getValue() const
     if (value < mMinimum)
         return mMinimum;
 
-    if (value > static_cast<signed>(mMaximum))
+    if (value > mMaximum)
         return mMaximum;
 
     return value;
@@ -326,7 +326,8 @@ void TextField::keyPressed(KeyEvent &event)
                 return;
             }
         }
-        else if (!mMaximum || mText.size() < mMaximum)
+        else if (!mMaximum ||
+                 static_cast<int>(mText.size()) < mMaximum)
         {
             int len;
             if (val < 128)

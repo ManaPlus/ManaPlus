@@ -42,7 +42,7 @@ std::string ExtendedNamesModel::getElementAt(int i)
 {
     if (i >= getNumberOfElements() || i < 0)
         return "???";
-    return mNames[i];
+    return mNames[static_cast<size_t>(i)];
 }
 
 const Image *ExtendedNamesModel::getImageAt(int i)
@@ -50,7 +50,7 @@ const Image *ExtendedNamesModel::getImageAt(int i)
     if (i >= static_cast<int>(mImages.size()) || i < 0)
         return nullptr;
 
-    return mImages[i];
+    return mImages[static_cast<size_t>(i)];
 }
 
 void ExtendedNamesModel::clear()

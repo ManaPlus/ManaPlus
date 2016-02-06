@@ -481,7 +481,7 @@ class Window notfinal : public BasicContainer2,
          * @param padding The padding of the window.
          * @see getPadding
          */
-        void setPadding(unsigned int padding)
+        void setPadding(int padding)
         { mPadding = padding; }
 
         /**
@@ -491,7 +491,7 @@ class Window notfinal : public BasicContainer2,
          * @return The padding of the window.
          * @see setPadding
          */
-        unsigned int getPadding() const
+        int getPadding() const
         { return mPadding; }
 
         /**
@@ -605,7 +605,7 @@ class Window notfinal : public BasicContainer2,
         /**
          * Holds the padding of the window.
          */ 
-        unsigned int mPadding;
+        int mPadding;
 
         /**
          * Holds the title bar height of the window.

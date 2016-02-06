@@ -31,7 +31,7 @@
 ExtendedListBox::ExtendedListBox(const Widget2 *const widget,
                                  ListModel *const listModel,
                                  const std::string &skin,
-                                 const int rowHeight) :
+                                 const unsigned int rowHeight) :
     ListBox(widget, listModel, skin),
     mImagePadding(mSkin ? mSkin->getOption("imagePadding") : 0),
     mSpacing(mSkin ? mSkin->getOption("spacing") : 0),
@@ -59,7 +59,7 @@ void ExtendedListBox::draw(Graphics *graphics)
     updateAlpha();
     Font *const font = getFont();
 
-    const int height = mRowHeight;
+    const int height = static_cast<int>(mRowHeight);
     const int pad2 = 2 + mPadding;
     const int width = mDimension.width;
     int textPos = (height - font->getHeight()) / 2 + mPadding;
@@ -130,7 +130,7 @@ void ExtendedListBox::draw(Graphics *graphics)
 
     if (minY != -1)
     {
-        mHighlightColor.a = static_cast<int>(mAlpha * 255.0F);
+        mHighlightColor.a = static_cast<unsigned int>(mAlpha * 255.0F);
         graphics->setColor(mHighlightColor);
         graphics->fillRectangle(Rect(mPadding, minY + mPadding,
             width - pad2, maxY - minY + height));
@@ -233,7 +233,7 @@ int ExtendedListBox::getSelectionByMouse(const int y) const
     if (mListItems.empty() && mSelectedItems.empty())
         return ListBox::getSelectionByMouse(y);
 
-    const int height = mRowHeight;
+    const int height = static_cast<int>(mRowHeight);
     const size_t itemsSz = mListItems.size();
     for (size_t f = 0; f < itemsSz; f ++)
     {
