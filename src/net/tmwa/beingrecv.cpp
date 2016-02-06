@@ -1219,6 +1219,8 @@ void BeingRecv::processBeingResurrect(Net::MessageIn &msg)
     Being *const dstBeing = actorManager->findBeing(id);
     if (!dstBeing)
     {
+        DEBUGLOGSTR("insible player?");
+        msg.readUInt8("flag?");
         BLOCK_END("BeingRecv::processBeingResurrect")
         return;
     }
