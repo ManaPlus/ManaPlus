@@ -74,7 +74,6 @@
 #include "render/openglx/mglxinit.h"
 #endif
 
-#include "resources/imagehelper.h"
 #ifdef USE_OPENGL
 #include "resources/openglimagehelper.h"
 #ifndef ANDROID
@@ -84,6 +83,8 @@
 #include "render/nacl/naclfunctions.h"
 #include "render/nacl/naclgles.h"
 #endif  // __native_client__
+#else  // USE_OPENGL
+#include "resources/imagehelper.h"
 #endif  // USE_OPENGL
 
 #ifdef USE_OPENGL

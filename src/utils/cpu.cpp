@@ -22,7 +22,9 @@
 
 #include "logger.h"
 
+#if defined(__linux__) || defined(__linux)
 #include "utils/stringutils.h"
+#endif
 
 #include "debug.h"
 

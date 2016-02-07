@@ -27,8 +27,6 @@
 
 #include "resources/dye/dyecolor.h"
 
-#include <map>
-
 #include "debug.h"
 
 namespace

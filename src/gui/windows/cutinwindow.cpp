@@ -100,7 +100,6 @@ void CutInWindow::show(const std::string &name,
             const int height = mImage->getHeight() + mTitleBarHeight
                 + mPadding;
 
-            logger->log("detected sizes: %d, %d", mImage->getWidth(), mImage->getHeight());
             const int screenWidth = mainGraphics->mWidth;
             const int screenHeight = mainGraphics->mHeight;
 

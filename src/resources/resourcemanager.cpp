@@ -31,8 +31,9 @@
 #ifdef USE_OPENGL
 #include "resources/atlas/atlasmanager.h"
 #include "resources/atlas/atlasresource.h"
-#endif
+#else  // USE_OPENGL
 #include "resources/image.h"
+#endif  // USE_OPENGL
 #include "resources/imagehelper.h"
 #include "resources/imageset.h"
 #include "resources/sdlmusic.h"

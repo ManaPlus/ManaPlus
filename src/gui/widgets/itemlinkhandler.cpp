@@ -24,8 +24,6 @@
 
 #include "itemcolormanager.h"
 
-#include "const/resources/item/cards.h"
-
 #include "gui/viewport.h"
 
 #include "gui/popups/itempopup.h"

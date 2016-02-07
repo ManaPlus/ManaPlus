@@ -24,8 +24,6 @@
 
 #include "being/being.h"
 
-#include "enums/cutin.h"
-
 #include "gui/windows/cutinwindow.h"
 #include "gui/windows/npcdialog.h"
 

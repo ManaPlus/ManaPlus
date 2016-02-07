@@ -390,7 +390,7 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
                 // Wraping between words (at blank spaces)
                 if (nextChar < sz && tempRow.at(nextChar) == ' ')
                 {
-                    unsigned int nextSpacePos = CAST_U32(
+                    int nextSpacePos = CAST_U32(
                         tempRow.find(" ", (nextChar + 1)));
                     if (nextSpacePos <= 0)
                         nextSpacePos = CAST_U32(sz) - 1U;
@@ -398,7 +398,7 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
                     const unsigned int nextWordWidth =
                         CAST_U32(font->getWidth(
                         tempRow.substr(nextChar,
-                        (nextSpacePos - nextChar))));
+                        (CAST_U32(nextSpacePos) - nextChar))));
 
                     if ((x + nextWordWidth + 10)
                         > CAST_U32(getWidth()))

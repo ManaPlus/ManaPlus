@@ -18,8 +18,6 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "logger.h"
-
 #include "catch.hpp"
 #include "client.h"
 
